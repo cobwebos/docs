@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2016
 ms.author: naziml
-ms.openlocfilehash: db69852cffd1ff331ac4a640b04ea4360d00bf75
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bdf8731b2a5028f47c2baf6f164d75123f716ebb
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22985762"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857633"
 ---
 # <a name="how-to-configure-tls-mutual-authentication-for-web-app"></a>如何为 Web 应用配置 TLS 相互身份验证
 ## <a name="overview"></a>概述
@@ -32,9 +32,9 @@ ms.locfileid: "22985762"
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="configure-web-app-for-client-certificate-authentication"></a>将 Web 应用配置为使用客户端证书身份验证
-要将 Web 应用设置为要求使用客户端证书，需要为 Web 应用添加 clientCertEnabled 站点设置并将该设置指定为 true。 目前无法通过门户中的管理体验进行此设置，需要使用 REST API 来实现此目的。
+要将 Web 应用设置为要求使用客户端证书，需要为 Web 应用添加 clientCertEnabled 站点设置并将该设置指定为 true。 也可在 SSL 证书边栏选项卡下的 Azure 门户中配置此设置。
 
-可以使用 [ARMClient 工具](https://github.com/projectkudu/ARMClient)轻松创建 REST API 调用。 使用该工具登录之后，需要发出以下命令：
+可以使用 [ARMClient 工具](https://github.com/projectkudu/ARMClient)轻松创建 REST API 调用。 使用该工具登录之后，将需要发出以下命令：
 
     ARMClient PUT subscriptions/{Subscription Id}/resourcegroups/{Resource Group Name}/providers/Microsoft.Web/sites/{Website Name}?api-version=2015-04-01 @enableclientcert.json -verbose
 
@@ -49,7 +49,7 @@ ms.locfileid: "22985762"
 
 确保将“location”的值更改为 Web 应用所在的位置，例如美国中北部、美国西部等。
 
-也可使用 https://resources.azure.com 将 `clientCertEnabled` 属性切换为 `true`。
+还可以使用 https://resources.azure.com 将 `clientCertEnabled` 属性切换为 `true`。
 
 > **注意：** 如果从 Powershell 运行 ARMClient，必须使用重音符 ` 为 JSON 文件转义 @ 符号。
 > 

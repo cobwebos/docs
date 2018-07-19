@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: juluk
-ms.openlocfilehash: 72338a4c168b4d3b7c918fbb16758724f73fefc2
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 4ee02bc2a1956994da0ba49a24eefabf9608565c
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29844099"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856454"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell 的概述
 Azure Cloud Shell 是一个用于管理 Azure 资源的交互式的可通过浏览器访问的 shell。
@@ -49,7 +49,7 @@ Linux 用户可以使用 Bash in Cloud Shell，而 Windows 用户可以使用 sh
 ### <a name="authenticated-and-configured-azure-workstation"></a>经身份验证的已配置 Azure 工作站
 Cloud Shell 由 Microsoft 管理，因此附带了常用的命令行工具和语言支持。 此外，Cloud Shell 能够安全地自动执行身份验证以立即通过 Azure CLI 2.0 或 Azure PowerShell cmdlet 访问资源。
 
-查看 [Bash 体验](features.md#tools)和 [PowerShell（预览版）体验](features-powershell.md#tools)的完整工具列表。
+查看完整[工具列表。](features.md#tools)
 
 ### <a name="multiple-access-points"></a>多个访问点
 Cloud Shell 是一个灵活的工具，可以通过以下项使用：
@@ -94,7 +94,7 @@ Cloud Shell 计算机是临时的，因此需要装载 Azure 文件共享作为 
 * Cloud Shell 需要装载 Azure 文件共享
 * Cloud Shell 对 Bash 和 PowerShell 使用相同的 Azure 文件共享
 * 将针对每个用户帐户为 Cloud Shell 分配一台计算机
-* Bash 使用文件共享中保存的 5 GB 映像持久保存 $Home
+* Cloud Shell 使用文件共享中保存的 5 GB 映像持久保存 $Home
 * 在 Bash 中权限是按常规 Linux 用户设置的
 
 详细了解 [Bash in Cloud Shell](features.md) 和 [PowerShell in Cloud Shell（预览版）](features-powershell.md)的功能。

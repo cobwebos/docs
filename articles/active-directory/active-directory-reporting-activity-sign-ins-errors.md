@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 05/31/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: dc01a775579455ae24c95ecc6f3858ce28149dea
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: bbd826b636bebca90eacba43ca879a725cddf7d2
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231863"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971068"
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的登录活动报告错误代码
 
@@ -75,9 +75,10 @@ ms.locfileid: "36231863"
 |50008|SAML 断言在令牌中缺失或配置错误。 请联系联合提供者。|
 |50010|由于未配置令牌受众，应用程序的受众 URI 验证失败。 请联系应用程序所有者|
 |50011|回复地址缺失、配置错误或者与为应用程序配置的回复地址不匹配。 请尝试 [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application) 中所列的解决方法。 如果仍然出现问题，请联系应用程序所有者或应用管理员|
+|50012| 这是一条通用错误消息，指示身份验证失败。 这可能是请求中的凭据或声明缺失或无效等原因导致的。 请确保使用正确的凭据和声明发送请求。 |
 |50013|多种原因导致断言无效 - 令牌颁发者与令牌有效时间范围内的 API 版本不匹配 - 已过期 - 格式不正确 - 断言中的刷新令牌不是主要刷新令牌。|
 |50017|证书验证失败，原因如下：<ul><li>在受信任的证书列表中找不到颁发证书</li><li>找不到所需的 CrlSegment</li><li>在受信任的证书列表中找不到颁发证书</li><li>在没有对应 CRL 分发点的情况下配置了增量 CRL 分发点</li><li>由于超时问题，无法检索有效的 CRL 段</li><li>无法下载 CRL</li></ul>请联系租户管理员。|
-|50020|用户未授权 - 由于版本问题，无法颁发令牌 - 未指定颁发者名称 - 颁发者名称有问题（null - 最大长度）。 请联系应用所有者|
+|50020|由于以下原因之一，未对该用户授权。<ul><li>该用户正在尝试在 v1 终结点上使用 MSA 帐户登录</li><li>租户中不存在该用户。</li></ul> 请联系应用程序所有者。|
 |50027|以下原因导致 JWT 令牌无效：<ul><li>不包含 nonce 声明和子声明</li><li>使用者标识符不匹配</li><li>idToken 声明中存在重复声明</li><li>意外的颁发者</li><li>意外的受众</li><li>不在有效的时间范围内 </li><li>令牌格式不正确</li><li>颁发者的外部 ID 令牌未通过签名验证。</li></ul>请联系应用程序所有者|
 |50029|URI 无效 - 域名包含无效字符。 请联系租户管理员。|
 |50034|用户在目录中不存在。 请联系租户管理员。|
@@ -99,7 +100,7 @@ ms.locfileid: "36231863"
 |50089|流令牌过期 - 身份验证失败。 请让用户尝试使用用户名和密码再次登录|
 |50097|需要设备身份验证 - DeviceId -DeviceAltSecId 声明为 null，或者与设备标识符对应的设备不存在|
 |50099|JWT 签名无效。 请联系应用程序所有者。|
-|50105|未将已登录用户分配到已登录应用程序的角色。 请将该用户分配到应用程序。 有关详细信息，请参阅 [https://docs.microsoft.com/en-us/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role](https://docs.microsoft.com/en-us/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role)|
+|50105|未将已登录用户分配到已登录应用程序的角色。 请将该用户分配到应用程序。 有关详细信息，请参阅 [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role)|
 |50107|请求的联合领域对象不存在。 请联系租户管理员。|
 |50120|JWT 标头有问题。 请联系租户管理员。|
 |50124|声明转换包含无效的输入参数。 请联系租户管理员来更新策略。|
@@ -173,7 +174,10 @@ ms.locfileid: "36231863"
 |81001|用户的 Kerberos 票证太大。 如果用户处于过多的组中，从而使得 Kerberos 票证包含过多的组成员身份，则可能会出现此问题。 减少用户的组成员身份，然后重试。|
 |81005|身份验证包不受支持|
 |81007|没有为租户启用无缝 SSO|
-
+|90010|出于各种原因，不支持该请求。 例如，该请求是使用不受支持的请求方法（仅支持 POST 方法）发出的，或者不支持请求的令牌签名算法。 请与应用程序开发人员联系。|
+|90014| 协议消息的必填字段缺失，请与应用程序所有者联系。 如果你是应用程序所有者，请确保具有登录请求所需的所有参数。 |
+|90072| 该帐户需要先作为外部用户添加到租户中。 注销并使用其他 Azure AD 帐户重新登录。|
+|90094| 该授权需要管理员权限。 让租户管理员同意此应用程序。|
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: 6b0aaa075b8b2881e269d79a67e75528d0d9a86a
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: e53f1e62b9265d2eec2f49537cc05c865e1436f3
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129852"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902956"
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的更改源支持
 
@@ -383,89 +383,89 @@ Azure Cosmos DB 的 [SQL SDK](sql-api-sdk-dotnet.md) 提供用于读取和管理
             await result.StartAsync();
             Console.Read();
             await result.StopAsync();    
-            ```
+    ```
 
-That’s it. After these few steps documents will start showing up into the **DocumentFeedObserver.ProcessChangesAsync** method.
+就这么简单。 完成这几个步骤后，文档会开始显示在 **DocumentFeedObserver ProcessChangesAsync** 方法中。
 
-Above code is for illustration purpose to show different kind of objects and their interaction. You have to define proper variables and initiate them with correct values. You can get the complete code used in this article from the [GitHub repo](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessorV2).
+上述代码用于说明目的，以显示不同类型的对象及其交互。 必须定义适当的变量并使用正确的值启动它们。 可从 [GitHub 存储库](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessorV2)获取本文中使用的完整代码。
 
 > [!NOTE]
-> You should never have a master key in your code or in config file as shown in above code. Please see [how to use Key-Vault to retrive the keys](https://sarosh.wordpress.com/2017/11/23/cosmos-db-and-key-vault/).
+> 不应在代码或配置文件中包含主密钥，如上述代码所示。 请参阅[如何使用 Key Vault 检索密钥](https://sarosh.wordpress.com/2017/11/23/cosmos-db-and-key-vault/)。
 
 
-## FAQ
+## <a name="faq"></a>常见问题解答
 
-### What are the different ways you can read Change Feed? and when to use each method?
+### <a name="what-are-the-different-ways-you-can-read-change-feed-and-when-to-use-each-method"></a>可通过哪些不同的方法读取更改源？何时使用哪种方法？
 
-There are three options for you to read change feed:
+可通过三个选项读取更改源：
 
-* **[Using Azure Cosmos DB SQL API .NET SDK](#sql-sdk)**
+* **[使用 Azure Cosmos DB SQL API .NET SDK](#sql-sdk)**
    
-   By using this method, you get low level of control on change feed. You can manage the checkpoint, you can access a particular partition key etc. If you have multiple readers, you can use [ChangeFeedOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.changefeedoptions?view=azure-dotnet) to distribute read load to different threads or different clients. .
+   使用此方法可对更改源进行低级控制。 可以管理检查点、访问特定的分区键，等等。如果有多个读取者，可以使用 [ChangeFeedOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.changefeedoptions?view=azure-dotnet) 将读取负载分配到不同的线程或不同的客户端。 。
 
-* **[Using the Azure Cosmos DB change feed processor library](#change-feed-processor)**
+* **[使用 Azure Cosmos DB 更改源处理器库](#change-feed-processor)**
 
-   If you want to outsource lot of complexity of change feed then you can use change feed processor library. This library hides lot of complexity, but still gives you complete control on change feed. This library follows an [observer pattern](https://en.wikipedia.org/wiki/Observer_pattern), your processing function is called by the SDK. 
+   若要大量转移更改源的复杂性，可以使用更改源处理器库。 此库可以大幅消除复杂性，同时仍让你保持更改源的完全控制度。 此库遵循[观察程序模式](https://en.wikipedia.org/wiki/Observer_pattern)，处理函数由 SDK 调用。 
 
-   If you have a high throughput change feed, you can instantiate multiple clients to read the change feed. Because you are using “change feed processor library”, it will automatically divide the load among different clients. You do not have to do anything. All the complexity is handled by SDK. However, if you want to have your own load balancer, then you can implement IParitionLoadBalancingStrategy for custom partition strategy. Implement IPartitionProcessor – for custom processing changes on a partition. However, with SDK, you can process a partition range but if you want to process a particular partition key then you have to use SDK for SQL API.
+   如果有高吞吐量的更改源，可以实例化多个客户端来读取更改源。 由于使用的是“更改源处理器库”，它会自动在不同的客户端之间分配负载。 你不需要执行任何操作。 SDK 会解决所有的复杂性。 但是，若要使用自己的负载均衡器，可以针对自定义的分区策略实现 IParitionLoadBalancingStrategy。 实现 IPartitionProcessor - 用于对分区进行自定义处理更改。 使用 SDK 可以处理分区范围，但是，若要处理特定的分区键，则必须使用 SDK for SQL API。
 
-* **[Using Azure Functions](#azure-functions)** 
+* **[使用 Azure Functions](#azure-functions)** 
    
-   The last option Azure Function is the simplest option. We recommend using this option. When you create an Azure Cosmos DB trigger in an Azure Functions app, you select the Azure Cosmos DB collection to connect to and the function is triggered whenever a change to the collection is made. watch a [screen cast](https://www.youtube.com/watch?v=Mnq0O91i-0s&t=14s) of using Azure function and change feed
+   Azure 函数是最后一个选项，也是最简单的选项。 我们建议使用此选项。 在 Azure Functions 应用中创建 Azure Cosmos DB 触发器时，请选择要连接到的 Azure Cosmos DB 集合，以及每当对该集合做出更改时要触发的函数。 观看使用 Azure 函数和更改源的[幻灯片](https://www.youtube.com/watch?v=Mnq0O91i-0s&t=14s)
 
-   Triggers can be created in the Azure Functions portal, in the Azure Cosmos DB portal, or programmatically. Visual Studio and VS Code has great support to write Azure Function. You can write and debug the code on your desktop, and then deploy the function with one click. For more information, see [Azure Cosmos DB: Serverless database computing using Azure Functions](serverless-computing-database.md) article.
+   可在 Azure Functions 门户、Azure Cosmos DB 门户中或以编程方式创建触发器。 Visual Studio 和 VS Code 很好地支持编写 Azure 函数。 可以在桌面上编写和调试代码，然后单击一下鼠标部署函数。 有关详细信息，请参阅 [Azure Cosmos DB：使用 Azure Functions 进行无服务器数据库计算](serverless-computing-database.md)一文。
 
-### What is the sort order of documents in change feed?
+### <a name="what-is-the-sort-order-of-documents-in-change-feed"></a>更改源中文档的排序顺序是什么？
 
-Change feed documents comes in order of their modification time. This sort order is guaranteed only per partition.
+更改源文档按其修改时间排序。 只能按分区保证这种排序顺序。
 
-### For a multi-region account, what happens to the change feed when the write-region fails-over? Does the change feed also failover? Would the change feed still appear contiguous or would the fail-over cause change feed to reset?
+### <a name="for-a-multi-region-account-what-happens-to-the-change-feed-when-the-write-region-fails-over-does-the-change-feed-also-failover-would-the-change-feed-still-appear-contiguous-or-would-the-fail-over-cause-change-feed-to-reset"></a>对于多区域帐户，写入区域故障转移时更改源会发生什么情况？ 更改源是否也故障转移？ 更改源是否仍显示为连续状态，或者，故障转移是否导致更改源重置？
 
-Yes, change feed will work across the manual failover operation and it will be contiguous.
+是的，每次执行手动故障转移操作时，更改源会正常工作，并且是连续的。
 
-### How long change feed persist the changed data if I set the TTL (Time to Live) property for the document to -1?
+### <a name="how-long-change-feed-persist-the-changed-data-if-i-set-the-ttl-time-to-live-property-for-the-document-to--1"></a>如果将文档的 TTL（生存时间）属性设置为 -1，更改源会将更改的数据保留多久？
 
-Change feed will persist forever. If data is not deleted, it will remain in change feed.
+更改源会永久保留。 如果数据未被删除，它会保留在更改源中。
 
-### How can I configure Azure functions to read from a particular region, as change feed is available in all the read regions by default?
+### <a name="how-can-i-configure-azure-functions-to-read-from-a-particular-region-as-change-feed-is-available-in-all-the-read-regions-by-default"></a>如何将 Azure Functions 配置为从特定的区域读取数据，因为更改源默认已在所有读取区域提供？
 
-Currently it’s not possible to configure Azure Functions to read from a particular region. There is a GitHub issue in the Azure Functions repo to set the preferred regions of any Azure Cosmos DB binding and trigger.
+目前无法将 Azure Functions 配置为从特定的区域读取数据。 设置任何 Azure Cosmos DB 绑定和触发器的首选区域时，Azure Functions 存储库中会出现一个 GitHub 问题。
 
-Azure Functions uses the default connection policy. You can configure connection mode in Azure Functions and by default, it reads from the write region, so it is best to co-locate Azure Functions on the same region.
+Azure Functions 使用默认连接策略。 可以在 Azure Functions 中配置连接模式，默认情况下，Azure Functions 从写入区域读取数据，因此，最好是将 Azure Functions 共置在同一区域。
 
-### What is the default size of batches in Azure Functions?
+### <a name="what-is-the-default-size-of-batches-in-azure-functions"></a>Azure Functions 中的默认批大小是什么？
 
-100 documents at every invocation of Azure Functions. However, this number is configurable within the function.json file. Here is complete [list of configuration options](../azure-functions/functions-run-local.md). If you are developing locally, update the application settings within the [local.settings.json](../azure-functions/functions-run-local.md) file.
+每次调用 Azure Functions 时会读取 100 个文档。 但是，可在 function.json 文件中配置此数字。 下面是完整的[配置选项列表](../azure-functions/functions-run-local.md)。 如果在本地进行开发，请更新 [local.settings.json](../azure-functions/functions-run-local.md) 文件中的应用程序设置。
 
-### I am monitoring a collection and reading its change feed, however I see I am not getting all the inserted document, some documents are missing. What is going on here?
+### <a name="i-am-monitoring-a-collection-and-reading-its-change-feed-however-i-see-i-am-not-getting-all-the-inserted-document-some-documents-are-missing-what-is-going-on-here"></a>我正在监视一个集合并读取其更改源，但发现无法获取所有插入的文档，某些文档已缺失。 这是怎么回事？
 
-Please make sure that there is no other function reading the same collection with the same lease collection. It happened to me, and later I realized the missing documents are processed by my other Azure functions, which is also using the same lease.
+请确保没有其他函数正在读取具有相同租用集合的相同集合。 我也遇到过这种情况，后来我认识到，缺少的文档已由另一个 Azure 函数处理，该函数也使用了相同的租约。
 
-Therefore, if you are creating multiple Azure Functions to read the same change feed then they must use different lease collection or use the “leasePrefix” configuration to share the same collection. However, when you use change feed processor library you can start multiple instances of your function and SDK will divide the documents between different instances automatically for you.
+因此，如果创建多个 Azure 函数来读取相同的更改源，则这些函数必须使用不同的租用集合，或使用“leasePrefix”配置来共享相同的集合。 但是，如果使用更改源处理器库，则可以启动函数的多个实例，SDK 会自动在不同的实例之间分割文档。
 
-### My document is updated every second, and I am not getting all the changes in Azure Functions listening to change feed.
+### <a name="my-document-is-updated-every-second-and-i-am-not-getting-all-the-changes-in-azure-functions-listening-to-change-feed"></a>我的文档每隔一秒更新一次，但无法在侦听更改源的 Azure Functions 中获取所有更改。
 
-Azure Functions polls change feed for every 5 seconds, so any changes made between 5 seconds are lost. Azure Cosmos DB stores just one version for every 5 seconds so you will get the 5th change on the document. However, if you want to go below 5 second, and want to poll change Feed every second, You can configure the polling time “feedPollTime”, see [Azure Cosmos DB bindings](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration). It is defined in milliseconds with a default of 5000. Below 1 second is possible but not advisable, as you will start burning more CPU.
+Azure Functions 每隔 5 秒轮询更改源一次，因此，在 5 秒间隔内发生的任何更改都会丢失。 Azure Cosmos DB 只存储 5 秒间隔的一个版本，因此，你会获取文档的第 5 次更改。 但是，若要使用 5 秒以下的频率，每隔一秒轮询更改源，则可以配置轮询时间“feedPollTime”，具体请参阅 [Azure Cosmos DB 绑定](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration)。 该时间以毫秒定义，默认值为 5000。 可以使用小于 1 秒的时间，但不建议使用，否则会消耗更多的 CPU。
 
-### I inserted a document in the Mongo API collection, but when I get the document in change feed, it shows a different id value. What is wrong here?
+### <a name="i-inserted-a-document-in-the-mongo-api-collection-but-when-i-get-the-document-in-change-feed-it-shows-a-different-id-value-what-is-wrong-here"></a>我在 Mongo API 集合中插入了一个文档，但在更改源中获取该文档时，显示了一个不同的 ID 值。 原因是什么？
 
-Your collection is Mongo API collection. Remember, change feed is read using the SQL client and serializes items into JSON format. Because of the JSON formatting, MongoDB clients will experience a mismatch between BSON formatted documents and the JSON formatted change feed. You are seeing is the representation of a BSON document in JSON. If you use binary attributes in a Mongo accounts, they are converted to JSON.
+你的集合是 Mongo API 集合。 请记住，更改源是使用 SQL 客户端读取的，会将项序列化为 JSON 格式。 由于采用 JSON 格式，MongoDB 客户端会遇到 BSON 格式的文档与 JSON 格式的更改源不匹配的情况。 显示的是 BSON 文档的 JSON 表示形式。 如果在 Mongo 帐户中使用二进制属性，它们会转换为 JSON。
 
-### Is there a way to control change feed for updates only and not inserts?
+### <a name="is-there-a-way-to-control-change-feed-for-updates-only-and-not-inserts"></a>是否可以通过某种方式来只控制更改源的更新，而不控制插入？
 
-Not today, but this functionality is on roadmap. Today, you can add a soft marker on the document for updates.
+暂时不可以，但此功能已在规划中。 目前，可以在文档中添加更新软标记。
 
-### Is there a way to get deletes in change feed?
+### <a name="is-there-a-way-to-get-deletes-in-change-feed"></a>是否可以通过某种方式来获取更改源的删除？
 
-Currently change feed doesn’t log deletes. Change feed is continuously improving, and this functionality is on roadmap. Today, you can add a soft marker on the document for delete. Add an attribute on the document called “deleted” and set it to “true” and set a TTL on the document so that it can be automatically deleted.
+目前更改源不会记录日志删除操作。 更改源在不断改进，此功能已在规划中。 目前，可以在文档中添加删除软标记。 在文档中添加名为“deleted”的属性并将其设置为“true”，并在文档中设置 TTL，以便自动删除文档。
 
-### Can I read change feed for historic documents(for example, documents that were added 5 years back) ?
+### <a name="can-i-read-change-feed-for-historic-documentsfor-example-documents-that-were-added-5-years-back-"></a>是否可以读取历史文档的更改源（例如，5 年前添加的文档）？
 
-Yes, if the document is not deleted you can read the change feed as far as the origin of your collection.
+是的，如果未删除该文档，则可以读取不超过集合原始时间的更改源。
 
-### Can I read change feed using JavaScript?
+### <a name="can-i-read-change-feed-using-javascript"></a>是否可以使用 JavaScript 读取更改源？
 
-Yes, Node.js SDK initial support for change feed is recently added. It can be used as shown in the following example, please update documentdb module to current version before you run the code:
+是的，最近已添加对更改源的 Node.js SDK 初始支持。 可按以下示例中所示使用 JavaScript。在运行代码之前，请将 documentdb 模块更新到新版本：
 
 ```js
 

@@ -15,15 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
-ms.openlocfilehash: c3402c824b70d357b68e71ed7cb5783a7489b2b0
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: d9d9bfc6f8571ab30804d76b9ab9490b0d2e43c7
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837372"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37934189"
 ---
 # <a name="perform-advanced-analytics-with-azure-machine-learning-using-data-from-an-on-premises-sql-server-database"></a>在 Azure 机器学习中使用本地 SQL Server 数据库中的数据执行高级分析
-
 [!INCLUDE [import-data-into-aml-studio-selector](../../../includes/machine-learning-import-data-into-aml-studio.md)]
 
 通常，使用本地数据的企业希望利用云的规模和灵活性来平衡其机器学习工作负荷。 但他们并不希望在将企业的本地数据移动到云时中断其当前业务处理和工作流。 Azure 机器学习现在支持从本地 SQL Server 数据库读取数据，并使用该数据训练和评分模型。 再也不必在云和本地服务器之间手动复制并同步数据。 相反，Azure 机器学习工作室中的**导入数据**模块现在可以为训练和评分作业直接从本地 SQL Server 数据库中读取。
@@ -39,44 +38,46 @@ ms.locfileid: "34837372"
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
-## <a name="install-the-microsoft-data-management-gateway"></a>安装 Microsoft 数据管理网关
-若要在 Azure 机器学习中访问本地 SQL Server 数据库，需要下载并安装 Microsoft 数据管理网关。 在机器学习工作室中配置网关连接时，将有机会使用如下所述的“下载并注册数据网关”对话框下载并安装网关。
+## <a name="install-the-data-factory-self-hosted-integration-runtime"></a>安装数据工厂自承载集成运行时
+若要在 Azure 机器学习中访问本地 SQL Server 数据库，需要下载并安装数据工厂自承载集成运行时（之前称为数据管理网关）。 在机器学习工作室中配置连接时，将有机会使用如下所述的“下载并注册数据网关”对话框下载并安装集成运行时 (IR)。
 
-还可以提前通过从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=39717)下载并运行 MSI 安装包来安装数据管理网关。
-选择最新版本，选择 32 位版本还是选择 64 位版本取决于计算机。 MSI 还可以用于将现有数据管理网关升级到最新版本，同时保留所有设置。
 
-该网关要求满足以下先决条件：
+还可以通过从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=39717)下载并运行 MSI 安装包来提前安装 IR。MSI 也可用于将现有 IR 升级至最新版本，并会保留所有设置。
 
-* 支持的 Windows 操作系统版本为 Windows 7、Windows 8/8.1、Windows 10、Windows Server 2008 R2、Windows Server 2012 和 Windows Server 2012 R2。
-* 推荐的网关计算机配置至少为 2 GHz，4 核，8 GB RAM 和 80 GB 磁盘。
-* 如果主机计算机进入休眠状态，则网关不响应数据请求。 因此，安装网关之前，请在计算机上配置相应的电源计划。 如果计算机配置为休眠，网关安装会显示一条消息。
+下面是数据工厂自承载运行时的先决条件：
+
+* 数据工厂自承载运行时需要带有 .NET Framework 4.6.1 或更高版本的 64 位操作系统。
+* 支持的 Windows 操作系统版本有 Windows 10、Windows Server 2012、Windows Server 2012 R2 和 Windows Server 2016。 
+* IR 计算机的推荐配置至少为：2 GHz、4 核 CPU、8 GB RAM 和 80 GB 磁盘。
+* 如果主机计算机进入休眠状态，则 IR 不会响应数据请求。 因此，安装 IR 之前，请在计算机上配置相应的电源计划。 如果计算机配置为休眠，则 IR 安装会显示一条消息。
 * 由于复制活动按特定频率发生，因此计算机上的资源使用率（CPU、内存）也遵循相同的高峰期和空闲期模式。 资源利用率很大程度上还取决于正在移动的数据量。 进行多个复制作业时，将观察到资源使用率在高峰期上升。 尽管以上所列最低配置从技术上讲足够，但你可能希望具有更多资源的配置（相对于最低配置），具体取决于数据移动的特定负载。
 
-在设置并使用数据管理网关时，请考虑以下几点：
+在设置并使用数据工厂自承载集成运行时的时候，请注意以下几点：
 
-* 一台计算机上只能安装数据管理网关的一个实例。
-* 可以将单个网关用于多个本地数据源。
-* 可以将不同计算机上的多个网关连接到同一个本地数据源。
-* 一次只为一个工作区配置网关。 目前，不能跨工作区共享网关。
-* 可以为单个工作区配置多个网关。 例如，可能希望在开发期间使用与测试数据源连接的网关，而在准备实施时使用生产网关。
-* 网关不需要位于数据源所在的计算机上。 但是，如果离数据源较近，可以减少网关连接到数据源的时间。 建议在不同于托管本地数据源的计算机上安装网关，以便网关和数据源不会因资源而竞争。
-* 如果已在计算机中安装了为 Power BI 或 Azure 数据工厂方案提供服务的网关，那么在其他计算机上安装用于 Azure 机器学习的单独网关。
+* 一台计算机上只能安装一个 IR 实例。
+* 可以将单个 IR 用于多个本地数据源。
+* 可以将不同计算机上的多个 IR 连接到同一个本地数据源。
+* 一次只能为一个工作区配置 IR。 目前不能跨工作区共享 IR。
+* 可以为单个工作区配置多个 IR。 例如，在开发期间可能希望使用与测试数据源连接的 IR，而在准备实施时则希望使用生产 IR。
+* IR 不需要位于数据源所在的计算机上。 但是，如果离数据源较近，可以减少网关连接到数据源的时间。 建议不要在托管本地数据源的计算机上安装 IR，从而避免 IR 和数据源之间的资源争用。
+* 如果已在计算机中安装了服务于 Power BI 或 Azure 数据工厂方案的 IR，请在其他计算机上安装用于 Azure 机器学习的独立 IR。
 
   > [!NOTE]
-  > 数据管理网关和 Power BI 网关不能在同一台计算机上运行。
+  > 数据工厂自承载集成运行时和 Power BI Gateway 不能在同一台计算机上运行。
   >
   >
-* 即使对其他数据使用 Azure ExpressRoute，也需要为 Azure 机器学习使用数据管理网关。 即使使用 ExpressRoute，也应将数据源视为本地数据源（位于防火墙之后）。 使用数据管理网关在机器学习和数据源之间建立连接。
+* 即使对其他数据使用 Azure ExpressRoute，也需要将数据工厂自承载集成运行时用于 Azure 机器学习。 即使使用 ExpressRoute，也应将数据源视为本地数据源（位于防火墙之后）。 使用数据工厂自承载集成运行时建立机器学习和数据源之间的连接性。
 
-有关安装先决条件、安装步骤和故障排除提示的详细信息，请参阅[数据管理网关](../../data-factory/v1/data-factory-data-management-gateway.md)一文。
+若要详细了解安装先决条件、安装步骤和故障排除提示，请参阅[数据工厂中的集成运行时](../../data-factory/concepts-integration-runtime.md)一文。
 
 ## <a name="span-idusing-the-data-gateway-step-by-step-walk-classanchorspan-idtoc450838866-classanchorspanspaningress-data-from-your-on-premises-sql-server-database-into-azure-machine-learning"></a><span id="using-the-data-gateway-step-by-step-walk" class="anchor"><span id="_Toc450838866" class="anchor"></span></span>将本地 SQL Server 数据库中的数据导入 Azure 机器学习
-在本演练中，会在 Azure 机器学习工作区中安装数据管理网关、配置该网关，然后从本地 SQL Server 数据库中读取数据。
+在本演练中，会在 Azure 机器学习工作区中安装 Azure 数据工厂集成运行时、配置该集成运行时并从本地 SQL Server 数据库中读取数据。
 
 > [!TIP]
 > 开始之前，请在浏览器中禁用 `studio.azureml.net` 的弹出窗口阻止程序。 如果使用的是 Google Chrome 浏览器，请下载并安装 Google Chrome WebStore [ClickOnce 应用扩展](https://chrome.google.com/webstore/search/clickonce?_category=extensions)中提供的几个插件中的一个。
 >
->
+> [!NOTE]
+> Azure 数据工厂自承载集成运行时之前名为“数据管理网关”。 此分步教程将继续称其为网关。  
 
 ### <a name="step-1-create-a-gateway"></a>步骤 1：创建网关
 第一步是创建并设置用于访问本地 SQL 数据库的网关。
@@ -92,7 +93,7 @@ ms.locfileid: "34837372"
 5. 在“下载并注册数据网关”对话框中，将网关注册密钥复制到剪贴板。
 
     ![下载并注册数据网关](./media/use-data-from-an-on-premises-sql-server/download-and-register-data-gateway.png)
-6. <span id="note-1" class="anchor"></span>如果尚未下载并安装 Microsoft 数据管理网关，则单击“下载数据管理网关”。 这会你将转到 Microsoft 下载中心，可以在其中选择所需网关版本、下载并安装它。 有关安装先决条件、安装步骤和故障排除提示的详细信息，请参阅[使用数据管理网关在本地资源和云之间移动数据](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md)一文的开头部分。
+6. <span id="note-1" class="anchor"></span>如果尚未下载并安装 Microsoft 数据管理网关，则单击“下载数据管理网关”。 这会你将转到 Microsoft 下载中心，可以在其中选择所需网关版本、下载并安装它。 有关安装先决条件、安装步骤和故障排除提示的详细信息，请参阅[使用数据管理网关在本地资源和云之间移动数据](../../data-factory/tutorial-hybrid-copy-portal.md)一文的开头部分。
 7. 网关安装完成后，数据管理网关配置管理器将打开，还会显示“注册网关”对话框。 粘贴已复制到剪贴板的“网关注册密钥”，并单击“注册”。
 8. 如果已安装网关，请运行数据管理网关配置管理器。 单击 **更改密钥** 、粘贴在上一步中已复制到剪贴板的 **网关注册密钥** ，并单击 **确定** 。
 9. 安装完成后，会显示 Microsoft 数据管理网关配置管理器的“注册网关”对话框。 粘贴在上一步中已复制到剪贴板的“网关注册密钥”，并单击 **注册**。
@@ -123,7 +124,7 @@ ms.locfileid: "34837372"
 这完成了 Azure 机器学习中的网关设置过程。
 现在，已可以使用本地数据。
 
-可以在工作室中为每个工作区创建并设置多个网关。 例如，可能希望开发期间某个网关与测试数据源连接，而其他网关用于生产数据源。 Azure 机器学习使你可以灵活地设置多个网关，具体取决于企业环境。 目前，不能在工作区之间共享网关，一台计算机上只能安装一个网关。 有关详细信息，请参阅[使用数据管理网关在本地源与云之间移动数据](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md)。
+可以在工作室中为每个工作区创建并设置多个网关。 例如，可能希望开发期间某个网关与测试数据源连接，而其他网关用于生产数据源。 Azure 机器学习使你可以灵活地设置多个网关，具体取决于企业环境。 目前，不能在工作区之间共享网关，一台计算机上只能安装一个网关。 有关详细信息，请参阅[使用数据管理网关在本地源与云之间移动数据](../../data-factory/tutorial-hybrid-copy-portal.md)。
 
 ### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>步骤 2：使用网关从本地数据源读取数据
 在完成设置网关后，可以将“导入数据”模块添加到从本地 SQL Server 数据库输入数据的实验。

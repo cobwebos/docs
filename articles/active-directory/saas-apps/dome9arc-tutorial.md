@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 1fd7fc6560c3378765623b46f8af59cfc8c65286
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: c84f98da4d179aaee198fc489b9fc18650220b33
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231440"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048260"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dome9-arc"></a>教程：Azure Active Directory 与 Dome9 Arc 的集成
 
@@ -110,9 +110,9 @@ ms.locfileid: "36231440"
 
     ![Dome9 Arc 域和 URL 单一登录信息](./media/dome9arc-tutorial/tutorial_dome9arc_url.png)
 
-    a. 在“标识符”文本框中，键入 URL：`https://secure.dome9.com/`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，键入 URL：`https://secure.dome9.com/`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://secure.dome9.com/sso/saml/yourcompanyname`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://secure.dome9.com/sso/saml/yourcompanyname`
 
     > [!NOTE]
     > 需在 dome9 管理门户中选择公司名称值，这一点稍后在教程中讲述。
@@ -121,7 +121,7 @@ ms.locfileid: "36231440"
 
     ![Dome9 Arc 域和 URL 单一登录信息](./media/dome9arc-tutorial/tutorial_dome9arc_url1.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://secure.dome9.com/sso/saml/<yourcompanyname>`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://secure.dome9.com/sso/saml/<yourcompanyname>`
      
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“回复 URL”和“注销 URL”更新这些值。 请联系 [Dome9 Arc 客户端支持团队](https://dome9.com/about/contact-us/)以获取这些值。 
@@ -136,7 +136,7 @@ ms.locfileid: "36231440"
     | --------------- | --------------- | 
     | memberof | user.assignedroles | 
     
-    a. 单击“添加属性”，打开“添加属性”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录 add 属性](./media/dome9arc-tutorial/tutorial_dome9_04.png)
 
@@ -174,7 +174,7 @@ ms.locfileid: "36231440"
 
     ![Dome9 Arc 配置](./media/dome9arc-tutorial/configure3.png)
 
-    a. 在“帐户 ID”文本框中输入公司名称。 此值将在“Azure 门户 URL”部分提到的回复 URL 中使用。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“帐户 ID”文本框中输入公司名称。 此值将在“Azure 门户 URL”部分提到的回复 URL 中使用。
 
     b. 将从 Azure 门户复制的“SAML 实体 ID”的值粘贴到“颁发者”文本框中。
 
@@ -211,7 +211,7 @@ ms.locfileid: "36231440"
 
     ![“用户”对话框](./media/dome9arc-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -242,7 +242,7 @@ ms.locfileid: "36231440"
     
     ![添加员工](./media/dome9arc-tutorial/user3.png)
 
-    a. 在“电子邮件”文本框中，键入用户的电子邮件，例如 Brittasimon@contoso.com。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“电子邮件”文本框中，键入用户的电子邮件，例如 Brittasimon@contoso.com。
 
     b. 在“名字”文本框中，键入用户的名字（如 Britta）。
 
@@ -287,7 +287,7 @@ ms.locfileid: "36231440"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 Dome9 Arc 磁贴时，会自动登录到 Dome9 Arc 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

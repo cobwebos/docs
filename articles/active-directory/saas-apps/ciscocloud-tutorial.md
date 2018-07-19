@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/16/2018
+ms.date: 07/05/2018
 ms.author: jeedes
-ms.openlocfilehash: 7a0f9e54b920ee2c16a141ee62d22784f75c0af6
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 79b0aa9ae435defa980b4da0c8d376fdb69542f3
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224145"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866553"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>教程：Azure Active Directory 与 Cisco Cloud 的集成
 
@@ -101,7 +101,7 @@ ms.locfileid: "36224145"
     ![配置单一登录链接][4]
 
 2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
+
     ![“单一登录”对话框](./media/ciscocloud-tutorial/tutorial_ciscocloud_samlbase.png)
 
 3. 在“Cisco Cloud 域和 URL”部分中，如果要在 **IDP** 发起的模式下配置应用程序，请执行以下步骤：
@@ -110,26 +110,52 @@ ms.locfileid: "36224145"
 
     a. 在“标识符”文本框中，使用以下模式键入 URL：`<subdomain>.cisco.com`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.cisco.com/sp/ACS.saml2`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<subdomain>.cisco.com/sp/ACS.saml2`
 
 4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
 
     ![Cisco Cloud 域和 URL 单一登录信息](./media/ciscocloud-tutorial/tutorial_ciscocloud_url1.png)
 
     在“登录 URL”文本框中，键入 URL `https://<subdomain>.cloudapps.cisco.com`
-     
-    > [!NOTE] 
+
+    > [!NOTE]
     > 这些不是实际值。 使用实际标识符、回复 URL 和登录 URL 更新这些值。 请联系 [Cisco Cloud 客户端支持团队](mailto:cpr-ops@cisco.com)来获取这些值。
 
-5. 在“SAML 签名证书”部分上，单击”复制”按钮来复制**应用联合元数据 URL**，并将其粘贴到记事本。
+5. Cisco Cloud 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。
+ 以下屏幕截图显示了关于它的示例。
+
+    ![配置单一登录](./media/ciscocloud-tutorial/attribute.png)
+
+6. 在“用户属性”部分中，单击“查看和编辑所有其他用户属性”复选框展开属性。 对显示的各个属性执行以下步骤：
+
+    | 属性名称 | 属性值 |
+    | ---------------| ----------------|
+    | country      |user.country |
+    | company      |user.companyname |
+
+    a. 单击“添加属性”，打开“添加属性”对话框。
+
+    ![配置单一登录](./media/ciscocloud-tutorial/tutorial_attribute_04.png)
+
+    ![配置单一登录](./media/ciscocloud-tutorial/tutorial_attribute_05.png)
+
+    b. 在“名称”文本框中，键入为该行显示的属性名称。
+
+    c. 在“值”列表中，选择为该行显示的属性值。
+
+    d. 将“命名空间”值保留空白。
+
+    e. 单击“确定” 。
+
+7. 在“SAML 签名证书”部分上，单击”复制”按钮来复制**应用联合元数据 URL**，并将其粘贴到记事本。
 
     ![证书下载链接](./media/ciscocloud-tutorial/tutorial_ciscocloud_certificate.png)
 
-6. 单击“保存”按钮。
+8. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/ciscocloud-tutorial/tutorial_general_400.png)
 
-7. 若要在 **Cisco Cloud** 端配置单一登录，需要将下载的**应用联合元数据 URL** 发送给 [Cisco Cloud 支持团队](mailto:cpr-ops@cisco.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+9. 若要在 **Cisco Cloud** 端配置单一登录，需要将下载的**应用联合元数据 URL** 发送给 [Cisco Cloud 支持团队](mailto:cpr-ops@cisco.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 

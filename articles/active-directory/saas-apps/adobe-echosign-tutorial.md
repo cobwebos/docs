@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 9a1a1f1a1866e5221775d583a9bafe86eef17131
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d5cdc2ec0c6cfcf52f84629485d0dd879fbf6fa2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221217"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053992"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>教程：Azure Active Directory 与 Adobe Sign 集成
 
@@ -105,7 +105,7 @@ ms.locfileid: "36221217"
 
     ![“Adobe Sign 域和 URL”部分的屏幕截图](./media/adobe-echosign-tutorial/tutorial_adobesign_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.echosign.com/`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.echosign.com/`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<companyname>.echosign.com`
 
@@ -126,7 +126,7 @@ ms.locfileid: "36221217"
 
 7. 在配置之前，请联系 [Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)，以便将域添加到 Adobe Sign 的白名单中。 下面介绍如何添加域：
 
-    a. [Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)会向你发送随机生成的令牌。 对于域，令牌将如下所示：**adobe-sign-verification= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx**
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 [Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)会向你发送随机生成的令牌。 对于域，令牌将如下所示：**adobe-sign-verification= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx**
 
     b. 在 DNS 文本记录中发布该验证令牌并通知 [Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)。
     
@@ -153,7 +153,7 @@ ms.locfileid: "36221217"
   
     ![SAML 设置的屏幕截图](./media/adobe-echosign-tutorial/ic789521.png "SAML 设置")
    
-    a. 在“SAML 模式”下，选择“SAML 强制”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“SAML 模式”下，选择“SAML 强制”。
    
     b. 选择“允许 Echosign 帐户管理员使用 Echosign 凭据登录”。
    
@@ -190,7 +190,7 @@ ms.locfileid: "36221217"
  
     ![“用户”对话框的屏幕截图](./media/adobe-echosign-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入“BrittaSimon”。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的电子邮件地址。
 
@@ -215,7 +215,7 @@ ms.locfileid: "36221217"
    
     ![“创建新用户”部分的屏幕截图](./media/adobe-echosign-tutorial/ic789525.png "创建用户")
    
-    a. 键入希望在相关文本框中预配的有效 Azure AD 帐户的“电子邮件地址”、“名字”和“姓氏”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 键入希望在相关文本框中预配的有效 Azure AD 帐户的“电子邮件地址”、“名字”和“姓氏”。
    
     b. 选择“创建用户”。
 
@@ -252,7 +252,7 @@ ms.locfileid: "36221217"
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 
-在访问面板中选择 Adobe Sign 磁贴时，应会自动登录到 Adobe Sign 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+在访问面板中选择 Adobe Sign 磁贴时，应会自动登录到 Adobe Sign 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

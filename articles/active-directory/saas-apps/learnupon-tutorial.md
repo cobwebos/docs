@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 7a50d1f17293bb86c69ece10e05af0017b1fabf9
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 3409545169208adc87eb63358082afc6c6d8d575
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219449"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042106"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>教程：Azure Active Directory 与 LearnUpon 的集成
 
@@ -145,7 +145,7 @@ ms.locfileid: "36219449"
    
     ![配置单一登录](./media/learnupon-tutorial/tutorial_learnupon_08.png)  
   
-    a. 选择“启用”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“启用”。
 
     b. 将“版本”选择为“2.0”。
 
@@ -165,7 +165,7 @@ ms.locfileid: "36219449"
    
      ![配置单一登录](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
  
-    a. 在“名字标识符格式”文本框中，键入相应的值，指明用户名字在 SAML 断言中所处的位置，例如：**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名字标识符格式”文本框中，键入相应的值，指明用户名字在 SAML 断言中所处的位置，例如：**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**。
   
     b. 在“姓氏标识符格式”文本框中，键入相应的值，指明用户姓氏在 SAML 断言中所处的位置，例如：**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**。
 
@@ -196,7 +196,7 @@ ms.locfileid: "36219449"
  
     ![创建 Azure AD 测试用户](./media/learnupon-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -248,7 +248,7 @@ ms.locfileid: "36219449"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 LearnUpon 磁贴时，应当会自动登录到 LearnUpon 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

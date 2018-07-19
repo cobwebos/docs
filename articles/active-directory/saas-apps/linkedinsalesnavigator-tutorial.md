@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 2bc4f42b0a22ce804db9290728944575888f9c72
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 1df301e197c90970aa1e73620f94f977ecd34ba0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287440"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046900"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-sales-navigator"></a>教程：Azure Active Directory 与 LinkedIn Sales Navigator 的集成
 
@@ -122,7 +122,7 @@ ms.locfileid: "36287440"
 
     ![配置单一登录](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_url1.png)
 
-    a. 在“标识符”文本框中，输入从 LinkedIn 门户复制的“实体 ID” 
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，输入从 LinkedIn 门户复制的“实体 ID” 
 
     b. 在“回复 URL”文本框中，输入从 LinkedIn 门户复制的“断言使用者访问(ACS) URL”
 
@@ -147,7 +147,7 @@ ms.locfileid: "36287440"
     
     ![创建 Azure AD 测试用户](./media/linkedinsalesnavigator-tutorial/userattribute.png)
     
-    a. 单击“添加属性”打开属性对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”打开属性对话框。
     
     ![创建 Azure AD 测试用户](./media/linkedinsalesnavigator-tutorial/tutorial_attribute_04.png)
     
@@ -161,7 +161,7 @@ ms.locfileid: "36287440"
 
 10. 对 name 属性执行以下步骤
 
-    a. 单击该属性打开“编辑属性”窗口。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击该属性打开“编辑属性”窗口。
 
     ![配置单一登录](./media/linkedinsalesnavigator-tutorial/url_update.png)
 
@@ -213,7 +213,7 @@ ms.locfileid: "36287440"
  
     ![创建 Azure AD 测试用户](./media/linkedinsalesnavigator-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -261,7 +261,7 @@ LinkedIn Sales Navigator 应用程序支持适时用户 (JIT) 预配，且进行
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“LinkedIn Sales Navigator”磁贴时，应会重定向到组织页，需要在其中提供个人 LinkedIn 帐户详细信息。 个人帐户将与 LinkedIn 业务帐户相链接。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+在访问面板中单击“LinkedIn Sales Navigator”磁贴时，应会重定向到组织页，需要在其中提供个人 LinkedIn 帐户详细信息。 个人帐户将与 LinkedIn 业务帐户相链接。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

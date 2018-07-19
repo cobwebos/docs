@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 4aa2a2f41bcdd78991184e026f22f8e04754eccb
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 066ae92056e4b80b6627b371d6ebeb3235b2781d
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286107"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043772"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>教程：Azure Active Directory 与 Absorb LMS 的集成
 
@@ -104,7 +104,7 @@ ms.locfileid: "36286107"
 
     ![Absorb LMS 域和 URL 单一登录信息](./media/absorblms-tutorial/tutorial_absorblms_url.png)
 
-    a. 在“标识符”框中，键入使用以下语法的 URL：`https://<subdomain>.myabsorb.com/Account/SAML`。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”框中，键入使用以下语法的 URL：`https://<subdomain>.myabsorb.com/Account/SAML`。
 
     b. 在“回复 URL”框中，键入使用以下语法的 URL：`https://<subdomain>.myabsorb.com/Account/SAML`。
      
@@ -141,7 +141,7 @@ ms.locfileid: "36286107"
 
     ![“单一登录”配置页](./media/absorblms-tutorial/4.png)
 
-    a. 在“模式”框中，选择“发起的标识提供者”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“模式”框中，选择“发起的标识提供者”。
 
     b. 在记事本中，打开从 Azure 门户下载的证书。 删除 ---BEGIN CERTIFICATE--- 和 ---END CERTIFICATE--- 标记。 然后，在“密钥”框中，粘贴其余内容。
     
@@ -184,7 +184,7 @@ ms.locfileid: "36286107"
  
     ![“用户”对话框](./media/absorblms-tutorial/create_aaduser_04.png) 
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”文本框中，键入 Britta Simon 的电子邮件地址。
 
@@ -218,7 +218,7 @@ ms.locfileid: "36286107"
 
     ![“添加用户”页](./media/absorblms-tutorial/user.png)
 
-    a. 在“名字”框中键入名字，例如 Britta。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名字”框中键入名字，例如 Britta。
 
     b. 在“姓氏”框中键入姓氏，例如 Simon。
     
@@ -266,7 +266,7 @@ ms.locfileid: "36286107"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在“访问面板”中，选择“Absorb LMS”磁贴可自动登录到 Absorb LMS 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+在“访问面板”中，选择“Absorb LMS”磁贴可自动登录到 Absorb LMS 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

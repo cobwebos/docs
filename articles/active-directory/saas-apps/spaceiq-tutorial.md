@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: jeedes
-ms.openlocfilehash: d69a0f801f1bf3fbd44514289dff4b9a95305ba4
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: c9997f27723b399344a18292905b558a9f61d6bd
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227915"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051121"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spaceiq"></a>教程：Azure Active Directory 与 SpaceIQ 集成
 
@@ -110,9 +110,9 @@ ms.locfileid: "36227915"
 
     ![SpaceIQ 域和 URL 单一登录信息](./media/spaceiq-tutorial/tutorial_spaceiq_url.png)
 
-    a. 在“标识符”文本框中，键入 URL：`https://api.spaceiq.com`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，键入 URL：`https://api.spaceiq.com`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://api.spaceiq.com/saml/<instanceid>/callback`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://api.spaceiq.com/saml/<instanceid>/callback`
 
     > [!NOTE] 
     > 本教程稍后将介绍如何使用实际的回复 URL 和标识符来更新该值。
@@ -143,7 +143,7 @@ ms.locfileid: "36227915"
 
     ![SAML 身份验证设置](./media/spaceiq-tutorial/setting3.png)
 
-    a. 在“SAML 颁发者 URL”框中，粘贴从 Azure AD 应用程序配置窗口复制的“SAML 实体 ID”值。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“SAML 颁发者 URL”框中，粘贴从 Azure AD 应用程序配置窗口复制的“SAML 实体 ID”值。
     
     b. 在 SpaceIQ“域和 URL”部分下，复制“SAML 回调终结点 URL (只读)”值，并将该值粘贴到 Azure 门户的“回复 URL”框中。
     
@@ -180,7 +180,7 @@ ms.locfileid: "36227915"
 
     ![“用户”对话框](./media/spaceiq-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -227,7 +227,7 @@ ms.locfileid: "36227915"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 SpaceIQ 磁贴时，应会自动登录到 SpaceIQ 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

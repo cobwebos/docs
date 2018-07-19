@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: jeedes
-ms.openlocfilehash: 5e77858edc3acfe8491c90eac3b8a146a230556e
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 59546e19190e11a1f32b24e0d7b8fb293556c69c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213643"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046118"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moxi-engage"></a>教程：Azure Active Directory 与 Moxi Engage 集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "36213643"
 
     ![配置单一登录](./media/moxiengage-tutorial/tutorial_moxiengage_url.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://svc.<moxiworks-integration-domain>/service/v1/auth/inbound/saml/aad`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://svc.<moxiworks-integration-domain>/service/v1/auth/inbound/saml/aad`
 
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新此值。 若要获取此值，请与 [Moxi Engage 客户端支持团队](mailto:support@moxiworks.com)联系。 
@@ -154,7 +154,7 @@ ms.locfileid: "36213643"
  
     ![创建 Azure AD 测试用户](./media/moxiengage-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -201,7 +201,7 @@ ms.locfileid: "36213643"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 Moxi Engage 磁贴时，应该会自动登录 Moxi Engage 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

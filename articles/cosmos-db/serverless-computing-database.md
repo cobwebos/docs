@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: 26d5fe3cf96f7a63b725f1b46d85e453a8aa6ada
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dfca26f36287cfd856beb98edeb2b2362f36bc4b
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34613959"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858800"
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB：使用 Azure Functions 的无服务器数据库计算
 
@@ -27,8 +27,8 @@ ms.locfileid: "34613959"
 Azure Cosmos DB 和 Azure Functions 支持采用以下方式集成数据库和无服务器应用：
 
 * 在 Azure Function 中创建事件驱动的 **Azure Cosmos DB 触发器**。 此触发器依靠[更改源](change-feed.md)流监视 Azure Cosmos DB 容器的更改情况。 当对容器进行任何更改时，更改源流将发送到可调用 Azure Function 的触发器。
-* 或者，使用“输入绑定”将 Azure Function 绑定到 Azure Cosmos DB 集合。 执行某个函数时，输入绑定将从容器中读取函数。
-* 使用“输出绑定”将函数绑定到 Azure Cosmos DB 集合。 当函数执行完成时，输出绑定会将数据写入容器。
+* 或者，使用“输入绑定”将 Azure Function 绑定到 Azure Cosmos DB 容器。 执行某个函数时，输入绑定将从容器中读取函数。
+* 使用“输出绑定”将函数绑定到 Azure Cosmos DB 容器。 当函数执行完成时，输出绑定会将数据写入容器。
 
 > [!NOTE]
 > 此时，Azure Cosmos DB 触发器、输入绑定和输出绑定仅可与 SQL API 和图形 API 帐户一起使用。
@@ -58,7 +58,7 @@ Azure Cosmos DB 触发器、输入绑定和输出绑定可在以下组合中使�
 4. 每当传感器数据集合发生数据更改时都会调用触发器，因为所有更改均通过更改源流式传输。
 5. 在函数中使用阈值条件以将传感器数据发送到保修部门。
 6. 如果温度也超过特定值，也会向所有者发送警报。
-7. 函数中的“输出绑定”更新其他 Azure Cosmos DB 集合中的汽车记录，以存储关于检查引擎事件的信息。
+7. 函数中的“输出绑定”更新其他 Azure Cosmos DB 容器中的汽车记录，以存储关于检查引擎事件的信息。
 
 下图显示在 Azure 门户中为此触发器编写的代码。
 
@@ -95,7 +95,7 @@ Azure Cosmos DB 触发器、输入绑定和输出绑定可在以下组合中使�
 
 在零售实现中，当用户向购物篮添加商品时，可以为可选业务管道组件灵活创建和调用函数。
 
-**实现：** 侦听一个集合的多个 Azure Cosmos DB 触发器
+**实现：** 侦听一个容器的多个 Azure Cosmos DB 触发器
 
 1. 通过将 Azure Cosmos DB 触发器添加到每个 Azure Functions 可以创建多个 Azure Functions，它们全部都侦听购物车数据的同一更改源。 请注意，当多个函数侦听同一更改源时，需要为每个函数提供新的租用集合。 有关租约集合的详细信息，请参阅[了解更改源处理器库](change-feed.md#understand-cf)。
 2. 每当新商品添加到用户的购物车时，更改源都将从购物车容器中独立调用每个函数。
@@ -130,7 +130,7 @@ Azure Functions 提供创建可扩展工作单元的功能，或者提供按需�
 
 * **无架构**。 Azure Cosmos DB 没有架构，因此只有它可以处理来自 Azure Function 的任何数据输出。 这种“处理任何数据”的方法可以直接创建全部输出到 Azure Cosmos DB 的各种 Functions。
 
-* **可缩放的吞吐量**。 在 Azure Cosmos DB 中，吞吐量可以立即增加和减少。 如果在同一集合中拥有数百或数千个 Functions 查询和写入，可以增加 [RU/s](request-units.md) 以处理负载。 通过使用分配的 RU/s，所有函数都可并行运行，并且可保证数据[一致](consistency-levels.md)。
+* **可缩放的吞吐量**。 在 Azure Cosmos DB 中，吞吐量可以立即增加和减少。 如果在同一容器中拥有数百或数千个 Functions 查询和写入，可以增加 [RU/s](request-units.md) 以处理负载。 通过使用分配的 RU/s，所有函数都可并行运行，并且可保证数据[一致](consistency-levels.md)。
 
 * **全局复制**。 可以[全局](distribute-data-globally.md)复制 Azure Cosmos DB 数据以减少延迟，因为这样可以使数据在地理位置上最靠近用户。 对于全部 Azure Cosmos DB 查询，事件驱动的触发器的数据从最靠近用户的 Azure Cosmos DB 读取。
 

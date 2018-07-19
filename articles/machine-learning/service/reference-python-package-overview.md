@@ -2,18 +2,18 @@
 title: 适用于 Azure 机器学习的 Python 包
 description: 了解适用于 Azure 机器学习用户的 Python 包。
 ms.service: machine-learning
-ms.component: studio
+ms.component: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: jmartens
 author: j-martens
 ms.date: 05/07/2018
-ms.openlocfilehash: 7a8f9e9d757aaab04706dd3b7dc2b962b3a04130
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 36322c5fde7c992faa830fe272971b53fbf10211
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833257"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37870301"
 ---
 # <a name="python-packages-for-azure-machine-learning"></a>适用于 Azure 机器学习的 Python 包
 

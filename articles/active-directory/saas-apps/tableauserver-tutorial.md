@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: be600fa6707e86e483e21f638d0d80515f9372b4
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 4c88d6a8b22e4c5c19112c30e15bc960bc8ed1b5
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294986"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045217"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>教程：Azure Active Directory 与 Tableau Server 集成
 
@@ -112,11 +112,11 @@ ms.locfileid: "36294986"
 
     ![配置单一登录](./media/tableauserver-tutorial/tutorial_tableauserver_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://azure.<domain name>.link`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://azure.<domain name>.link`
     
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://azure.<domain name>.link`
 
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://azure.<domain name>.link/wg/saml/SSO/index.html`
+    c. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://azure.<domain name>.link/wg/saml/SSO/index.html`
      
     > [!NOTE] 
     > 上面的值不是实际值。 稍后，将使用实际 URL 和标识符从“Tableau Server”配置页中更新这些值。 
@@ -131,7 +131,7 @@ ms.locfileid: "36294986"
     | ---------------| --------------- |    
     | username | user.mailnickname |
 
-    a. 单击“添加属性”，打开“添加属性”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录](./media/tableauserver-tutorial/tutorial_officespace_04.png)
 
@@ -154,7 +154,7 @@ ms.locfileid: "36294986"
 <CS>
 8. 若要为应用程序配置 SSO，需要以管理员身份登录 Tableau Server 租户。
    
-   a. 在 Tableau Server 配置中，单击“SAML”选项卡。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 Tableau Server 配置中，单击“SAML”选项卡。
   
     ![配置单一登录](./media/tableauserver-tutorial/tutorial_tableauserver_001.png) 
   
@@ -203,7 +203,7 @@ ms.locfileid: "36294986"
  
     ![创建 Azure AD 测试用户](./media/tableauserver-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -257,7 +257,7 @@ ms.locfileid: "36294986"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Tableau Server”磁贴时，用户应自动登录到 Tableau Server 应用程序。
-有关访问面板的详细信息，请参阅 [introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

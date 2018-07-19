@@ -17,12 +17,12 @@ ms.date: 04/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 07fbda30cdc76e5e4e82b79954d0b0a56e032b50
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 676e23f3136836975616865a9b9dc97605a97929
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34158381"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866247"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>v2.0 协议 - 使用隐式流的 SPA
 使用 v2.0 终结点，可以让具有 Microsoft 的个人和工作/学校帐户的用户登录单一页面应用。 主要在浏览器上运行的单一页面和其他 JavaScript 应用程序在身份验证时面临一些有趣的挑战：
@@ -51,7 +51,7 @@ ms.locfileid: "34158381"
 要一开始将用户登录到应用，可以发送 [OpenID Connect](active-directory-v2-protocols-oidc.md) 授权请求，以及从 v2.0 终结点获取 `id_token`：
 
 > [!IMPORTANT]
-> 为了成功请求 ID 令牌，[注册门户](https://apps.dev.microsoft.com)中的应用注册必须已为 Web 客户端启用**[隐式授权](active-directory-v2-protocols-implicit.md)**。 如果未启用，将返回 `unsupported_response` 错误：“输入参数“response_type”提供的值不允许用于此客户端。 预期值为“code””
+> 为了成功请求 ID 令牌，[注册门户](https://apps.dev.microsoft.com)中的应用注册必须已为 Web 客户端启用[隐式授权](active-directory-v2-protocols-implicit.md)。 如果未启用，将返回 `unsupported_response` 错误：“输入参数“response_type”提供的值不允许用于此客户端。 预期值为“code””
 
 ```
 // Line breaks for legibility only

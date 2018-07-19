@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: 3e247b6f81a9306cbad630d42c3a41d8ce3045a5
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 32dc9015f5e1a58d02571eb84e6ceeb0e9e8582d
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345118"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069033"
 ---
 # <a name="tutorial-create-a-custom-acoustic-model"></a>教程：创建自定义声学模型
 
@@ -144,5 +144,5 @@ ms.locfileid: "37345118"
 ## <a name="next-steps"></a>后续步骤
 
 - [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)
-- [如何在 C# 应用中识别语音](quickstart-csharp-windows.md)
+- [如何在 C# 应用中识别语音](quickstart-csharp-dotnet-windows.md)
 - [Git 示例数据](https://github.com/Microsoft/Cognitive-Custom-Speech-Service)

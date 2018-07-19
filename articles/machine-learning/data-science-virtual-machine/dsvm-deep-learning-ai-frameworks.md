@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: cd8579fe29282f3875ecfddf67a34444e3de9ef5
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 891059a440189112c834f3402725781a6b4a3960
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952818"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>深度学习和人工智能框架
 [数据科学虚拟机](http://aka.ms/dsvm) (DSVM) 和[深度学习 VM](http://aka.ms/dsvm/deeplearning) 支持多个深度学习框架，可帮助生成具有预测分析和认知功能（例如图像和语言理解）的人工智能 (AI) 应用程序。 
@@ -65,7 +66,7 @@ ms.lasthandoff: 05/14/2018
 
 |    |           |
 | ------------- | ------------- |
-| 它是什么？   | 深度学习框架      |
+| 它是什么？   | 高级别的深度学习 API      |
 | 支持的 DSVM 版本      | Windows、Linux     |
 | 如何在 DSVM 上配置/安装它？  | TensorFlow 在 [Linux 和 Windows 2012](dsvm-languages.md#python-linux-and-windows-server-2012-edition) 上安装于 Python 3.5 中，在 [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition) 上安装于 Python 3.6 中。 |
 | 示例链接      | https://github.com/fchollet/keras/tree/master/examples      |
@@ -120,7 +121,7 @@ jupyter notebook
 | 如何在 DSVM 上配置/安装它？  | Chainer 安装在 [Python 3.5](dsvm-languages.md#python-linux-and-windows-server-2012-edition) 中。 同时还会安装 ChainerRL 和 ChainerCV。   |
 | 示例链接      | 示例笔记本包含在 JupyterHub 中。 |
 | DSVM 上的相关工具      | Caffe      |
-| 如何使用/运行它？  | *在终端上：激活 [Python 3.5](dsvm-languages.md#python-linux-and-windows-server-2012-edition) 环境，运行 _python_，然后导入 Chainer。 <br/>
+| 如何使用/运行它？  | *在终端上：激活 [Python 3.5](dsvm-languages.md#python-linux-and-windows-server-2012-edition) 环境，运行 python，然后导入 Chainer。 <br/>
 * 在 JupyterHub 中：[连接到 JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux)，然后导航到要查找示例笔记本的 Chainer 目录。
 
 
@@ -177,7 +178,7 @@ export CUDA_ROOT=/usr/local/cuda-8.0
 
 
 
-## <a name="nvdia-smi"></a>nvdia-smi
+## <a name="nvidia-smi"></a>nvidia-smi
 
 |    |           |
 | ------------- | ------------- |

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: jeedes
-ms.openlocfilehash: fe8dd3f0771a2692488ddea2000b06d0ed212faf
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: adf3b1310a3e79b12be5294fe9d7a012bfc0d433
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216440"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042932"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>教程：Azure Active Directory 与 ClickTime 的集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "36216440"
 
     ![ClickTime 域和 URL 单一登录信息](./media/clicktime-tutorial/tutorial_clicktime_url.png)
 
-    a. 在“标识符”文本框中，键入 URL：`https://app.clicktime.com/sp/`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，键入 URL：`https://app.clicktime.com/sp/`
     
     b. 在“回复 URL”文本框中，使用以下模式键入 URL： 
 
@@ -139,7 +139,7 @@ ms.locfileid: "36216440"
    
     ![安全设置](./media/clicktime-tutorial/tic777280.png "安全设置")
    
-    a.  选择“允许”通过“Azure AD”使用单一登录 (SSO) 进行登录。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  选择“允许”通过“Azure AD”使用单一登录 (SSO) 进行登录。
    
     b. 在“标识提供者终结点”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”。
    
@@ -173,7 +173,7 @@ ms.locfileid: "36216440"
  
     ![“用户”对话框](./media/clicktime-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -201,7 +201,7 @@ ms.locfileid: "36216440"
    
     ![人员](./media/clicktime-tutorial/tic777284.png "人员")
    
-    a.  在“全名”文本框中，键入用户的全名，例如 Britta Simon。 
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  在“全名”文本框中，键入用户的全名，例如 Britta Simon。 
   
     b.  在“电子邮件地址”文本框中，键入用户的电子邮件，例如 brittasimon@contoso.com。
        
@@ -245,7 +245,7 @@ ms.locfileid: "36216440"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 ClickTime 磁贴时，应当会自动登录到 ClickTime 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

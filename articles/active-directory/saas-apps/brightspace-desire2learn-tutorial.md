@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: b15012fae7ffacd63762c723f14cae62f9a0817d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 2387cb6517675e59bc84c6283d31575c9a0aff60
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211139"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043581"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightspace-by-desire2learn"></a>教程：Azure Active Directory 与 Brightspace by Desire2Learn 集成
 
@@ -112,13 +112,13 @@ ms.locfileid: "36211139"
 
     ![配置单一登录](./media/brightspace-desire2learn-tutorial/tutorial_brightspacebydesire2learn_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：
     | |
     |--|
     | `https://<companyname>.tenants.brightspace.com/samlLogin`|
     | `https://<companyname>.desire2learn.com/shibboleth-sp`|
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.desire2learn.com/d2l/lp/auth/login/samlLogin.d2l`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<companyname>.desire2learn.com/d2l/lp/auth/login/samlLogin.d2l`
 
     > [!NOTE] 
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 若要获取这些值，请与 [Brightspace by Desire2Learn 支持团队](https://www.d2l.com/contact/)联系。
@@ -162,7 +162,7 @@ ms.locfileid: "36211139"
  
     ![创建 Azure AD 测试用户](./media/brightspace-desire2learn-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -214,7 +214,7 @@ ms.locfileid: "36211139"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 Brightspace by Desire2Learn 磁贴时，应该会自动登录 Brightspace by Desire2Learn 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

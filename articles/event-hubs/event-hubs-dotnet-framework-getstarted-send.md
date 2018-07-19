@@ -12,18 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2018
+ms.date: 07/03/2018
 ms.author: sethm
-ms.openlocfilehash: feb4332f8f6b5ab26067b5c80a376cdee62c7739
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 0886c220dfe926c7dfd9fa378ebb3c13fc900cbf
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
-ms.locfileid: "28984980"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37860031"
 ---
 # <a name="send-events-to-azure-event-hubs-using-the-net-framework"></a>使用 .NET Framework 将事件发送到 Azure 事件中心
-
-## <a name="introduction"></a>介绍
 
 事件中心是一个服务，可用于处理来自连接设备和应用程序的大量事件数据（遥测）。 将数据采集到事件中心后，可以使用任何实时分析提供程序或存储群集来转换和存储数据。 这种大规模事件收集和处理功能是现代应用程序体系结构（包括物联网 (IoT)）的重要组件。
 
@@ -31,7 +29,7 @@ ms.locfileid: "28984980"
 
 若要完成本教程，需要具备以下先决条件：
 
-* [Microsoft Visual Studio 2015 或更高版本](http://visualstudio.com)。 本教程中的屏幕截图使用 Visual Studio 2017。
+* [Microsoft Visual Studio 2017 或更高版本](http://visualstudio.com)。
 * 有效的 Azure 帐户。 如果没有帐户，只需几分钟的时间就能创建一个免费帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/free/)。
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>创建事件中心命名空间和事件中心
@@ -51,7 +49,7 @@ ms.locfileid: "28984980"
     ![](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp2.png)
    
     Visual Studio 下载、安装 [Azure 服务总线库 NuGet 包](https://www.nuget.org/packages/WindowsAzure.ServiceBus)并添加对它的引用。
-4. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
+4. 在 Program.cs 文件顶部添加以下 `using` 语句：
    
   ```csharp
   using System.Threading;
@@ -60,8 +58,8 @@ ms.locfileid: "28984980"
 5. 将以下字段添加到 **Program** 类，并将占位符值分别替换成在上一节中创建的事件中心的名称和前面保存的命名空间级别连接字符串。
    
   ```csharp
-  static string eventHubName = "{Event Hub name}";
-  static string connectionString = "{send connection string}";
+  static string eventHubName = "Your Event Hub name";
+  static string connectionString = "namespace connection string";
   ```
 6. 将以下方法添加到 **Program** 类：
    
@@ -103,6 +101,7 @@ ms.locfileid: "28984980"
 祝贺你！ 现在已向事件中心发送消息。
 
 ## <a name="next-steps"></a>后续步骤
+
 现在已生成了一个可以创建事件中心以及发送数据的有效应用程序，接下来请继续学习以下方案：
 
 * [使用事件处理程序主机接收事件](event-hubs-dotnet-framework-getstarted-receive-eph.md)

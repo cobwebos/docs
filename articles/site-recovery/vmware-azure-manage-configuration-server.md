@@ -3,15 +3,15 @@ title: 通过 Azure Site Recovery 管理配置服务器，以便进行 VMware �
 description: 本文介绍了如何通过 Azure Site Recovery 管理现有配置服务器，以便执行 VMware 到 Azure 的 灾难恢复。
 author: rayne-wiselman
 ms.service: site-recovery
-ms.topic: conceptual
-ms.date: 06/20/2018
+ms.topic: article
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 753e123c660b1aacea1157157f0e580e15c47536
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: d7c2224e6529d1675cdad5b29de887f19135a2a6
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287399"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916904"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>为 VMware VM 管理配置服务器
 
@@ -27,7 +27,7 @@ ms.locfileid: "36287399"
    
 ### <a name="modify-vmware-server-settings"></a>修改 VMware 服务器设置
 
-1. 若要将不同 VMware 服务器与配置服务器相关联，请在登录后选择“添加 vCenter Server/vSphere ESXi 服务器”。
+1. 要将不同 VMware 服务器与配置服务器相关联，请在登录后选择“添加 vCenter Server/vSphere ESXi 服务器”。
 2. 输入详细信息，然后选择“确定”。
 
 
@@ -59,7 +59,7 @@ ms.locfileid: "36287399"
 
 开放虚拟化格式 (OVF) 模板部署具有单个网络适配器的配置服务器 VM。
 
-- 可以[将其他适配器添加到 VM](vmware-azure-deploy-configuration-server.md#add-an-additional-adapter)，但必须在将配置服务器注册到保管库中之前添加它。
+- 可[将其他适配器添加到 VM](vmware-azure-deploy-configuration-server.md#add-an-additional-adapter)，但必须在将配置服务器注册到保管库之前添加它。
 - 在保管库中注册配置服务器之后，若要添加适配器，请在 VM 属性中添加适配器。 然后，需要在保管库中重新注册服务器。
 
 
@@ -96,21 +96,18 @@ ms.locfileid: "36287399"
 
 1. 在保管库中，转到“管理” > “Site Recovery 基础结构” > “配置服务器”。
 2. 如果有可用的更新，链接将显示在“代理版本”> 列中。
-
     ![更新](./media/vmware-azure-manage-configuration-server/update2.png)
-
-1. 将更新安装程序文件下载到配置服务器上。
+3. 将更新安装程序文件下载到配置服务器上。
 
     ![更新](./media/vmware-azure-manage-configuration-server/update1.png)
 
 4. 双击以运行安装程序。
-2. 安装程序检测计算机上运行的当前版本。 单击“是”开始升级。 
-3. 升级完成时，验证服务器配置。
+5. 安装程序检测计算机上运行的当前版本。 单击“是”开始升级。
+6. 升级完成时，验证服务器配置。
 
     ![更新](./media/vmware-azure-manage-configuration-server/update3.png)
-
-4. 单击“完成”关闭安装程序。
-
+    
+7. 单击“完成”关闭安装程序。
 
 ## <a name="delete-or-unregister-a-configuration-server"></a>删除或取消注册配置服务器
 
@@ -150,7 +147,12 @@ ms.locfileid: "36287399"
 > [!NOTE]
 > 可使用 Remove-AzureRmSiteRecoveryFabric 中的 -Force 选项强制执行删除配置服务器。
  
+## <a name="generate-configuration-server-passphrase"></a>生成配置服务器通行短语
 
+1. 登录配置服务器，并以管理员身份打开“命令提示符”窗口。
+2. 要将目录更改到 bin 文件夹，请执行命令 cd %ProgramData%\ASR\home\svsystems\bin
+3. 要生成通行短语文件，请执行 genpassphrase.exe v > MobSvc.passphrase。
+4. 你的通行短语将存储在 %ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase 中。
 
 ## <a name="renew-ssl-certificates"></a>续订 SSL 证书
 

@@ -16,18 +16,18 @@ ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: a44c9ec9270e4ba76f0ff367e039f5ef72eb04a5
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: ede8fab67c04eb7ce8d26280de2d1563b6cc8ad2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "31601631"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38678734"
 ---
 # <a name="create-a-windows-virtual-machine-with-the-simplified-new-azurermvm-cmdlet-in-cloud-shell"></a>在 Cloud Shell 中使用简化 New-AzureRMVM cmdlet 创建 Windows 虚拟机 
 
 [New-AzureRMVM](/powershell/module/azurerm.resources/new-azurermvm) cmdlet 已添加一组简化的参数，用于使用 PowerShell 创建新的 VM。 本主题演示如何通过 Azure Cloud Shell 中的 PowerShell，使用预安装的最新版本 New-AzureVM cmdlet 创建新的 VM。 我们将使用简化的参数集，以使用智能默认设置自动创建所有必需的资源。 
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 
 [!INCLUDE [cloud-shell-powershell](../../../includes/cloud-shell-powershell.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "31601631"
 
 ## <a name="create-the-vm"></a>创建 VM
 
-可以使用 [New-AzureRMVM](/powershell/module/azurerm.resources/new-azurermvm) cmdlet 创建具有智能默认设置（包括使用 Azure Marketplace 中的 Windows Server 2016 Datacenter 映像）的 VM。 可以将 New-AzureRMVM 仅与 **-Name** 参数配合使用，它会将该值用于所有资源名称。 在本示例中，我们将设置 **-Name** 参数设置为 *myVM*。 
+可以使用 [New-AzureRMVM](/powershell/module/azurerm.resources/new-azurermvm) cmdlet 创建具有智能默认设置（包括使用 Azure 市场中的 Windows Server 2016 Datacenter 映像）的 VM。 可以将 New-AzureRMVM 仅与 **-Name** 参数配合使用，它会将该值用于所有资源名称。 在本示例中，我们将设置 **-Name** 参数设置为 *myVM*。 
 
 请确保在 Cloud Shell 中选择 **PowerShell** 并键入：
 
@@ -46,11 +46,11 @@ New-AzureRMVm -Name myVM
 
 系统会要求为 VM 创建用户名和密码，稍后在本主题中连接到该 VM 时需要用到这些凭据。 密码长度必须为 12 到 123 个字符，并且必须满足以下 4 个复杂性要求的其中 3 个：1 个小写字符、1 个大写字符、1 个数字和 1 个特殊字符。
 
-创建 VM 和关联的资源需要一分钟时间。 完成后，可以使用 [Find-AzureRmResource](/powershell/module/azurerm.resources/find-azurermresource) cmdlet 查看创建的所有资源。
+创建 VM 和关联的资源需要一分钟时间。 完成后，可以使用 [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) cmdlet 查看创建的所有资源。
 
 ```azurepowershell-interactive
-Find-AzureRmResource `
-    -ResourceGroupNameEquals myVMResourceGroup | Format-Table Name
+Get-AzureRmResource `
+    -ResourceGroupName myVMResourceGroup | Format-Table Name
 ```
 
 ## <a name="connect-to-the-vm"></a>连接到 VM

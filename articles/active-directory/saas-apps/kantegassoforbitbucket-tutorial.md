@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: dddf05946685b09500c74e9f678b638ee54870bb
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ce88ff333cd24e331c0d9c9b3b58372d5b09fdec
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223148"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042888"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bitbucket"></a>教程：Azure Active Directory 与 Kantega SSO for Bitbucket 集成
 
@@ -112,15 +112,15 @@ ms.locfileid: "36223148"
 
     ![配置单一登录](./media/kantegassoforbitbucket-tutorial/tutorial_kantegassoforbitbucket_url1.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
 4. 在“SP”发起的模式下，请选中“显示高级 URL 设置”并执行以下步骤：
 
     ![配置单一登录](./media/kantegassoforbitbucket-tutorial/tutorial_kantegassoforbitbucket_url2.png)
     
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 在配置 Bitbucket 插件的过程中，将接收这些值，这将在教程的后面部分进行说明。
@@ -171,25 +171,25 @@ ms.locfileid: "36223148"
 
     ![配置单一登录](./media/kantegassoforbitbucket-tutorial/addon6.png)
 
-    a. 复制“应用 ID URI”值并将其用作 Azure 门户中“Kantega SSO for Bitbucket 域和 URL”部分中的“标识符、回复 URL 和登录 URL”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 复制“应用 ID URI”值并将其用作 Azure 门户中“Kantega SSO for Bitbucket 域和 URL”部分中的“标识符、回复 URL 和登录 URL”。
 
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b. 单击“下一步”。
 
 17. 在“元数据导入”部分，执行以下步骤：
 
     ![配置单一登录](./media/kantegassoforbitbucket-tutorial/addon7.png)
 
-    a. 选择“我的计算机上的元数据文件”，上传从 Azure 门户下载的元数据文件。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“我的计算机上的元数据文件”，上传从 Azure 门户下载的元数据文件。
 
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b. 单击“下一步”。
 
 18. 在“名称和 SSO 位置”部分，执行以下步骤：
 
     ![配置单一登录](./media/kantegassoforbitbucket-tutorial/addon8.png)
 
-    a. 在“标识提供者名称”文本框中添加标识提供者名称（例如 Azure AD）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识提供者名称”文本框中添加标识提供者名称（例如 Azure AD）。
 
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b. 单击“下一步”。
 
 19. 验证签名证书，然后单击“下一步”。  
 
@@ -199,11 +199,11 @@ ms.locfileid: "36223148"
 
     ![配置单一登录](./media/kantegassoforbitbucket-tutorial/addon10.png)
 
-    a. 选择“根据需要在 Bitbucket 的内部目录中创建用户”，并输入用户的组的合适名称（可以为多个 组，用逗号隔开）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“根据需要在 Bitbucket 的内部目录中创建用户”，并输入用户的组的合适名称（可以为多个 组，用逗号隔开）。
 
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b. 单击“下一步”。
 
-21. 单击“完成” 。
+21. 单击“完成”。
 
     ![配置单一登录](./media/kantegassoforbitbucket-tutorial/addon11.png)
 
@@ -211,7 +211,7 @@ ms.locfileid: "36223148"
 
     ![配置单一登录](./media/kantegassoforbitbucket-tutorial/addon12.png)
 
-    a. 从页的左侧面板中选择“已知域”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 从页的左侧面板中选择“已知域”。
 
     b. 在“已知域”文本框中输入域名。
 
@@ -244,7 +244,7 @@ ms.locfileid: "36223148"
  
     ![创建 Azure AD 测试用户](./media/kantegassoforbitbucket-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -276,7 +276,7 @@ ms.locfileid: "36223148"
 
     ![添加员工](./media/kantegassoforbitbucket-tutorial/user4.png) 
 
-    a. 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
     
     b. 在“全名”文本框中，键入用户（例如 Britta Simon）的全名。
     
@@ -323,7 +323,7 @@ ms.locfileid: "36223148"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击“Kantega SSO for Bitbucket”磁贴就会自动登录到 Kantega SSO for Bitbucket 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

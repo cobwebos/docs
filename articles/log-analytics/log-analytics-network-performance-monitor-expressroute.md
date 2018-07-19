@@ -1,6 +1,6 @@
 ---
 title: Azure Log Analytics 中的网络性能监视器解决方案 | Microsoft 文档
-description: 使用网络性能监视器中的 ExpressRoute 管理器功能通过 Azure ExpressRoute 监视分支办事处与 Azure 之间的端到端连接和性能。
+description: 使用网络性能监视器中的 ExpressRoute 监视器功能通过 Azure ExpressRoute 监视分支办事处与 Azure 之间的端到端连接和性能。
 services: log-analytics
 documentationcenter: ''
 author: abshamsft
@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: na
-ms.openlocfilehash: 55308c2f144ea90636fb477f82c19fd3f8276af5
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 27169193a468d98be879164b80e63fffde419002
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131122"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38633343"
 ---
-# <a name="expressroute-manager"></a>ExpressRoute 管理器
+# <a name="expressroute-monitor"></a>ExpressRoute 监视器
 
-可以使用[网络性能监视器](log-analytics-network-performance-monitor.md)中的 Azure ExpressRoute 管理器功能通过 Azure ExpressRoute 监视分支办事处与 Azure 之间的端到端连接和性能。 主要优势包括： 
+可以使用[网络性能监视器](log-analytics-network-performance-monitor.md)中的 Azure ExpressRoute 监视器功能通过 Azure ExpressRoute 监视分支办事处与 Azure 之间的端到端连接和性能。 主要优势包括： 
 
 - 自动检测与你的订阅关联的 ExpressRoute 线路。
 - 跟踪 ExpressRoute 在线路、对等互连和 Azure 虚拟网络级别的带宽利用率、丢包情况和延迟。

@@ -1,5 +1,5 @@
 ---
-title: 向/从 Azure Data Lake Store 复制数据 | Microsoft Docs
+title: 向/从 Azure Data Lake Storage Gen1 复制数据 | Microsoft Docs
 description: 了解如何使用 Azure 数据工厂向/从 Data Lake Store 复制数据
 services: data-factory
 documentationcenter: ''
@@ -14,22 +14,22 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8f86f43b4d8c474f338285abffb3c444f5ebc2d7
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 97bd2081df8c90f885996629862f25cbec8fd2c2
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054732"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37860225"
 ---
-# <a name="copy-data-to-and-from-data-lake-store-by-using-data-factory"></a>使用数据工厂向/从 Data Lake Store 复制数据
+# <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>使用数据工厂向/从 Data Lake Storage Gen1 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [第 1 版](data-factory-azure-datalake-connector.md)
 > * [版本 2（当前版本）](../connector-azure-data-lake-store.md)
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1。 如果使用数据工厂服务的当前版本，请参阅 [V2 中的 Azure Data Lake Store 连接器](../connector-azure-data-lake-store.md)。
+> 本文适用于数据工厂版本 1。 如果使用数据工厂服务的当前版本，请参阅 [V2 中的 Azure Data Lake Storage Gen1 连接器](../connector-azure-data-lake-store.md)。
 
-本文介绍如何使用 Azure 数据工厂中的复制活动将数据移入/移出 Azure Data Lake Store。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，后者概述了如何使用复制活动移动数据。
+本文介绍了如何使用 Azure 数据工厂中的复制活动向/从 Azure Data Lake Storage Gen1（以前称为 Azure Data Lake Store）移动数据。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，后者概述了如何使用复制活动移动数据。
 
 ## <a name="supported-scenarios"></a>支持的方案
 可以将数据**从 Azure Data Lake Store** 复制到以下数据存储：

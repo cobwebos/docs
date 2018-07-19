@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 173d0ba6a93e4db1c39bb777a1290dc933fa4a78
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ecc8799e9d9fa711d2e2f52427cd5314a64dfc26
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230227"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051299"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oneteam"></a>教程：Azure Active Directory 与 Oneteam 的集成
 
@@ -112,15 +112,15 @@ ms.locfileid: "36230227"
 
     ![配置单一登录](./media/oneteam-tutorial/tutorial_oneteam_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://api.one-team.io/teams/<team name>`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://api.one-team.io/teams/<team name>`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://api.one-team.io/teams/<team name>/auth/saml/callback`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://api.one-team.io/teams/<team name>/auth/saml/callback`
 
 4. 如果要在“SP”发起的模式下配置应用程序，请选中“显示高级 URL 设置”：
 
     ![配置单一登录](./media/oneteam-tutorial/tutorial_oneteam_url1.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<team name>.one-team.io/`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<team name>.one-team.io/`
      
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Oneteam 客户端支持团队](https://support.one-team.com/hc/requests/new)获取这些值。 
@@ -164,7 +164,7 @@ ms.locfileid: "36230227"
  
     ![创建 Azure AD 测试用户](./media/oneteam-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -216,7 +216,7 @@ ms.locfileid: "36230227"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 Oneteam 磁贴时，应当会自动登录到 Oneteam 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

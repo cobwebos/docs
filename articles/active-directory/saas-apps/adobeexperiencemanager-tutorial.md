@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 4279211d130c8fe00a6b89c66222071de480fc52
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 56b392e57809cea0ae93800df39bb9dacd164ce2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216253"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054176"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>教程：Azure Active Directory 与 Adobe Experience Manager 的集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "36216253"
 
     ![Adobe Experience Manager 域和 URL 单一登录信息](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_url1.png)
 
-    a. 在“标识符”框中，键入同样已在 AEM 服务器上定义的唯一值。 
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”框中，键入同样已在 AEM 服务器上定义的唯一值。 
 
     b. 在“回复 URL”框中，使用以下模式键入 URL：`https://<AEM Server Url>/saml_login`。
 
@@ -181,7 +181,7 @@ ms.locfileid: "36216253"
 
     ![配置单一登录“保存”按钮](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin4.png)
 
-    a. 在“路径”框中，输入 **/**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“路径”框中，输入 **/**。
 
     b. 在“IDP URL”框中，输入从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
@@ -228,7 +228,7 @@ ms.locfileid: "36216253"
 
     ![“用户”对话框](./media/adobeexperiencemanager-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -278,7 +278,7 @@ ms.locfileid: "36216253"
 
 在访问面板中选择 Adobe Experience Manager 磁贴时，应会自动登录到 Adobe Experience Manager 应用程序。
 
-有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 

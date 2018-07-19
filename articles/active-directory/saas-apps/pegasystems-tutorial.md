@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 005f487b46ca3894ed2d94ec032bb009c3051796
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: c1b29cb7d09bcaa25457cf6f99731beae30fa7b2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223376"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046135"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>教程：Azure Active Directory 与 Pega Systems 集成
 
@@ -110,9 +110,9 @@ ms.locfileid: "36223376"
 
     ![Pega Systems 域和 URL 单一登录信息](./media/pegasystems-tutorial/tutorial_pegasystems_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<CUSTOMERNAME>.pegacloud.io:443/prweb/sp/<INSTANCEID>`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<CUSTOMERNAME>.pegacloud.io:443/prweb/sp/<INSTANCEID>`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<CUSTOMERNAME>.pegacloud.io:443/prweb/PRRestService/WebSSO/SAML/AssertionConsumerService`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<CUSTOMERNAME>.pegacloud.io:443/prweb/PRRestService/WebSSO/SAML/AssertionConsumerService`
 
 4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
 
@@ -144,7 +144,7 @@ ms.locfileid: "36223376"
     > [!NOTE]
     > 这些是客户特定的值。 请提供适当的值。
 
-    a. 单击“添加属性”，打开“添加属性”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录](./media/pegasystems-tutorial/tutorial_attribute_04.png)
 
@@ -173,7 +173,7 @@ ms.locfileid: "36223376"
 
     ![配置单一登录“保存”按钮](./media/pegasystems-tutorial/tutorial_pegasystems_admin1.png)
 
-    a. 从“类型”中选择“SAML 2.0”
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 从“类型”中选择“SAML 2.0”
 
     b. 在“名称”文本框中，输入任何名称，例如 Azure AD SSO
 
@@ -193,7 +193,7 @@ ms.locfileid: "36223376"
 
     ![配置单一登录“保存”按钮](./media/pegasystems-tutorial/tutorial_pegasystems_admin4.png)
 
-    a. 复制“实体标识”值并粘贴回 Azure 门户的“标识符”文本框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 复制“实体标识”值并粘贴回 Azure 门户的“标识符”文本框。
 
     b.  复制“断言使用者服务 (ACS) 位置”值并粘贴回 Azure 门户的“回复 URL”文本框。
 
@@ -228,7 +228,7 @@ ms.locfileid: "36223376"
 
     ![“用户”对话框](./media/pegasystems-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -276,7 +276,7 @@ ms.locfileid: "36223376"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Pega Systems 磁贴时，应自动登录到 Pega Systems 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

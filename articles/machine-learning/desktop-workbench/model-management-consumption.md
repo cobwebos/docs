@@ -7,23 +7,24 @@ ms.author: raymondl
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: f87f865ef6d2c3403903a1bdcc402c01c3e9f939
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 4a49ccff68003cf7b81a7d945176992a2893d1ac
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831983"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38973169"
 ---
 # <a name="consuming-web-services"></a>使用 Web 服务
 将模型部署为实时 Web 服务后，可以从各种平台和应用程序向其发送数据并获取预测数据。 实时 Web 服务公开了一个用于获取预测数据的 REST API。 可以采用单行或多行格式向 Web 服务发送数据，从而一次获取一行或多行预测数据。
 
 使用 [Azure 机器学习 Web 服务](model-management-service-deploy.md)，外部应用程序可通过对服务 URL 进行 HTTP POST 调用以同步与预测模型进行通信。 若要进行 Web 服务调用，客户端应用程序需要指定在部署预测时创建的 API 密钥，并将请求数据置于 POST 请求正文中。
 
-请注意，API 密钥仅在群集部署模式下可用。 本地 Web 服务没有密钥。
+> [!NOTE]
+> 请注意，API 密钥仅在群集部署模式下可用。 本地 Web 服务没有密钥。
 
 ## <a name="service-deployment-options"></a>服务部署选项
 对于生产方案和测试方案，都可以将 Azure 机器学习 Web 服务部署到基于云的群集，还可以将其部署到使用 Docker 引擎的本地工作站。 在两种情况下，预测模型的功能是相同的。 基于群集的部署提供了基于 Azure 容器服务的可伸缩和高性能解决方案，而本地部署可以用于调试。 
@@ -72,11 +73,11 @@ az ml service keys realtime -i <web service id>
 1. 在 Visual Studio 中，创建一个新的控制台应用： 
     * 在菜单中，单击“文件”->“新建”->“项目”
     * 在 Visual Studio C# 下，单击“Windows 经典桌面”，然后选择“控制台应用”。
-2. 输入“MyFirstService”作为项目名称，然后单击“确定”。
-3. 在“项目引用”中，设置对 _System.Net_ 和 _System.Net.Http_ 的引用。
+2. 输入 `MyFirstService` 作为项目名称，然后单击“确定”。
+3. 在项目引用中，将引用设置为 `System.Net` 和 `System.Net.Http`。
 4. 单击“工具”->“NuGet 包管理器”->“包管理器控制台”，然后安装 Microsoft.AspNet.WebApi.Client 包。
 5. 打开 Program.cs 文件，将代码替换为以下代码：
-6. 使用来自你的 Web 服务的信息更新 _SERVICE_URL_ 和 _API_KEY_ 参数。
+6. 使用来自你的 Web 服务的信息更新 `SERVICE_URL` 和 `API_KEY` 参数。
 7. 运行该项目。
 
 ```csharp

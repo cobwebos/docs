@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: jeedes
-ms.openlocfilehash: 6d8562965a5616c39aab598d48046dc2362c3e67
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8ead383ef0967fcaf67f3157f0a51104126ad618
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227796"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045404"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>教程：Azure Active Directory 与 UserVoice 集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "36227796"
 
     ![UserVoice 域和 URL 单一登录信息](./media/uservoice-tutorial/tutorial_uservoice_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenantname>.UserVoice.com`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<tenantname>.UserVoice.com`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<tenantname>.UserVoice.com`
 
@@ -143,7 +143,7 @@ ms.locfileid: "36227796"
    
     ![编辑用户身份验证](./media/uservoice-tutorial/ic777521.png "编辑用户身份验证")
    
-    a. 单击“单一登录(SSO)”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“单一登录(SSO)”。
  
     b. 在“SSO 远程登录”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
@@ -181,7 +181,7 @@ ms.locfileid: "36227796"
 
     ![“用户”对话框](./media/uservoice-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -214,7 +214,7 @@ ms.locfileid: "36227796"
    
     ![邀请管理员](./media/uservoice-tutorial/ic777814.png "邀请管理员")
    
-    a. 在“电子邮件”文本框中，键入要预配帐户的电子邮件地址，并单击“添加”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“电子邮件”文本框中，键入要预配帐户的电子邮件地址，并单击“添加”。
    
     b. 单击“邀请”。
 
@@ -256,7 +256,7 @@ ms.locfileid: "36227796"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击“访问面板”中的 UserVoice 磁贴时，应会自动登录到 UserVoice 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

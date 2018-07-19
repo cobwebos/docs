@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.openlocfilehash: cb4c530f8fd58d95b75c23aae165bd826a698bb0
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 7f8bedda36e4008bdb9c3aeefc4d5acdf6ba253e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211479"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042123"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>教程：Azure Active Directory 与 TOPdesk - Public 集成
 
@@ -110,11 +110,11 @@ ms.locfileid: "36211479"
 
     ![TOPdesk - Public 域和 URL 单一登录信息](./media/topdesk-public-tutorial/tutorial_topdesk-public_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.topdesk.net`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.topdesk.net`
     
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<companyname>.topdesk.net/tas/public/login/verify`
 
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.topdesk.net/tas/public/login/saml`
+    c. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<companyname>.topdesk.net/tas/public/login/saml`
      
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 本教程稍后会解释“回复 URL”。 请联系 [TOPdesk - Public 客户端支持团队](https://help.topdesk.com/saas/enterprise/user/)获取这些值。  
@@ -149,7 +149,7 @@ ms.locfileid: "36211479"
    
     ![技术设置](./media/topdesk-public-tutorial/ic790601.png "技术设置")
    
-    a. 单击“下载”下载公共元数据文件，并将该文件保存到本地计算机上。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“下载”下载公共元数据文件，并将该文件保存到本地计算机上。
    
     b. 打开下载的元数据文件，找到 **AssertionConsumerService** 节点。
 
@@ -161,7 +161,7 @@ ms.locfileid: "36211479"
     
     ![证书](./media/topdesk-public-tutorial/ic790606.png "证书")
     
-    a. 在 Azure 门户中打开下载的元数据文件。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 Azure 门户中打开下载的元数据文件。
     
     b. 展开其 **xsi:type** 为 **fed:ApplicationServiceType** 的 **RoleDescriptor** 节点。
     
@@ -177,7 +177,7 @@ ms.locfileid: "36211479"
     
     ![SAML 配置助手](./media/topdesk-public-tutorial/ic790608.png "SAML 配置助手")
     
-    a. 若要从 Azure 门户上传已下载的元数据文件，请在“联合元数据”下单击“浏览”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 若要从 Azure 门户上传已下载的元数据文件，请在“联合元数据”下单击“浏览”。
 
     b. 若要上载证书文件，请在“证书(RSA)”下，单击“浏览”。
 
@@ -216,7 +216,7 @@ ms.locfileid: "36211479"
 
     ![“用户”对话框](./media/topdesk-public-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -240,7 +240,7 @@ ms.locfileid: "36211479"
    
     ![新建人员](./media/topdesk-public-tutorial/ic790629.png "新建人员")
    
-    a. 单击“常规”选项卡。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“常规”选项卡。
 
     b. 在“姓氏”文本框中，键入用户的姓氏（如 Simon）
  
@@ -286,7 +286,7 @@ ms.locfileid: "36211479"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 TOPdesk - Public 磁贴时，应会自动登录到 TOPdesk - Public 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

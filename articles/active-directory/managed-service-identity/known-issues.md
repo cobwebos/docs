@@ -10,17 +10,17 @@ ms.assetid: 2097381a-a7ec-4e3b-b4ff-5d2fb17403b6
 ms.service: active-directory
 ms.component: msi
 ms.devlang: ''
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: 552f9e7cae4d7f46ea1548cfe7d9482bff79e5bc
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 05096050dfc29aebd2859b298eef884dcd9a1111
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33930980"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37906213"
 ---
 # <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Azure Active Directory 的托管服务标识 (MSI) 的常见问题解答和已知问题
 
@@ -60,7 +60,7 @@ Azure IaaS 支持的所有 Linux 发行版都可以通过 IMDS 终结点与 MSI 
 注意：MSI VM 扩展仅支持以下 Linux 发行版：
 - CoreOS Stable
 - CentOS 7.1
-- RedHat 7.2
+- Red Hat 7.2
 - Ubuntu 15.04
 - Ubuntu 16.04
 
@@ -128,7 +128,8 @@ az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 - 由于 DNS 查找失败，配置 VM 的 VM 扩展可能失败。 重新启动 VM，然后重试。 
 - 添加“不存在”的用户分配标识将会导致 VM 失败。 
 - 不支持在名称中使用特殊字符（即下划线）创建用户分配的标识。
-- 用于端到端方案中的用户分配标识名称限制为 24 个字符。 名称长度超过 24 个字符的用户分配标识将无法进行分配。  
+- 用于端到端方案中的用户分配标识名称限制为 24 个字符。 名称长度超过 24 个字符的用户分配标识将无法进行分配。
+- 如果使用的是托管标识虚拟机扩展，支持的限制为 32 个用户分配的托管标识。 如果不使用托管标识虚拟机扩展，支持的限制为 512 个。  
 - 当添加第二个用户分配的标识时，clientID 可能无法用于 VM 扩展的请求令牌。 使用以下两个 bash 命令重新启动 MSI VM 扩展可缓解此问题：
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler disable"`
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler enable"`

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: jeedes
-ms.openlocfilehash: b4a247c53277a26cb704b87e57e019b63967d8cf
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 26a9d24346cbcd0a928308bed487d6eef9ecfea3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222740"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041422"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-synergi"></a>教程：Azure Active Directory 与 Synergi 集成
 
@@ -110,9 +110,9 @@ ms.locfileid: "36222740"
 
     ![Synergi 域和 URL 单一登录信息](./media/synergi-tutorial/tutorial_synergi_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<company name>.irmsecurity.com`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<company name>.irmsecurity.com`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<company name>.irmsecurity.com/sso/<organization id>`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<company name>.irmsecurity.com/sso/<organization id>`
 
     > [!NOTE] 
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 要获取这些值，请联系 [Synergi 支持团队](https://www.irmsecurity.com/contact/)。
@@ -158,7 +158,7 @@ ms.locfileid: "36222740"
 
     ![“用户”对话框](./media/synergi-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -205,7 +205,7 @@ ms.locfileid: "36222740"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Synergi”磁贴时，用户应自动登录到 Synergi 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

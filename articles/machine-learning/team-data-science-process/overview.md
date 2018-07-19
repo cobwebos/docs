@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: deguhath
-ms.openlocfilehash: 8479b23f49402962acbf50016226ea0f2eb67b68
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 474efbf3a9255e4699c27c6b0bfcc30ff54c4b45
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839072"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971445"
 ---
 # <a name="what-is-the-team-data-science-process"></a>什么是团队数据科学过程？
 
@@ -94,7 +94,7 @@ TDSP 提供有关管理共享分析和存储基础结构的建议，例如：
 - 大数据（Hadoop 或 Spark）群集 
 - 机器学习服务 
 
-分析和存储基础结构可以在云中或本地。 这是原始数据集和已处理数据集的存储位置。 此基础结构实现重现的分析。 它还可以避免重复，防止产生不一致情况和不必要的基础结构成本。 TDSP 提供了工具用于预配和跟踪共享资源，并让每位团队成员安全连接到这些资源。 让项目成员创建一致的计算环境也是一种良好的做法。 然后，不同的团队成员可以复制和验证试验。
+分析和存储基础结构可以在云中或本地。 这是原始数据集和已处理数据集的存储位置。 此基础结构实现重现的分析。 它还可以避免重复，防止产生不一致情况和不必要的基础结构成本。 TDSP 提供了工具用于预配和跟踪共享资源，并让每位团队成员安全连接到这些资源。 让项目成员创建一致的计算环境也是一种不错的做法。 然后，不同的团队成员可以复制和验证试验。
 
 下面是团队处理多个项目和共享各个云分析基础结构组件的示例。
 

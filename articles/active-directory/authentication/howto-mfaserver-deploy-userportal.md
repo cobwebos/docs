@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 7254e8d1b5a525c3ab06230837bd368e17911dbe
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: ff5227ab61145ab372fdc6e28f1b97ec31e47023
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100273"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049137"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>适用于 Azure 多重身份验证服务器的用户门户
 
@@ -30,7 +30,7 @@ ms.locfileid: "37100273"
 ![MFA 用户门户](./media/howto-mfaserver-deploy-userportal/portal.png)
 
 > [!NOTE]
-> 用户门户仅适用于多重身份验证服务器。 如果在云中使用多重身份验证，则让用户参阅[设置双重验证帐户](end-user/current/multi-factor-authentication-end-user-first-time.md)或[管理双重验证设置](end-user/current/multi-factor-authentication-end-user-manage-settings.md)。
+> 用户门户仅适用于多重身份验证服务器。 如果在云中使用多重身份验证，则让用户参阅[设置双重验证帐户](../user-help/multi-factor-authentication-end-user-first-time.md)或[管理双重验证设置](../user-help/multi-factor-authentication-end-user-manage-settings.md)。
 
 ## <a name="install-the-web-service-sdk"></a>安装 Web 服务 SDK
 
@@ -125,7 +125,7 @@ ms.locfileid: "37100273"
 
 Azure 多重身份验证服务器为用户门户提供了多个选项。 下表列出了这些选项及其用途的说明。
 
-| 用户门户设置 | 说明 |
+| 用户门户设置 | Description |
 |:--- |:--- |
 | 用户门户 URL | 输入托管门户的 URL。 |
 | 主要身份验证 | 指定在登录门户时要使用的身份验证类型。 Windows、Radius 或 LDAP 身份验证。 |

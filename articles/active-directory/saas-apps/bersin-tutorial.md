@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 6803ae61d8cb8d71fdee763473926e8935dc40b7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1811f15f10beaed167d9682554be74bcc439dad1
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210432"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047971"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bersin"></a>教程：Azure Active Directory 与 Bersin 集成
 
@@ -108,7 +108,7 @@ ms.locfileid: "36210432"
 
     ![Bersin 域和 URL 单一登录信息](./media/bersin-tutorial/tutorial_bersin_url.png)
 
-    a. 在“标识符”文本框中，键入一个 URL：`https://www.bersin.com/shibboleth`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，键入一个 URL：`https://www.bersin.com/shibboleth`
 
     b. 选中“显示高级 URL 设置”，并在“中继状态”文本框中键入 URL：`https://www.bersin.com/secure/`
 
@@ -155,7 +155,7 @@ ms.locfileid: "36210432"
 
     ![“用户”对话框](./media/bersin-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -202,7 +202,7 @@ ms.locfileid: "36210432"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Bersin”磁贴时，应该会自动登录到 Bersin 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

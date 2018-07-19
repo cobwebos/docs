@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: e74138deda20ebb4fbb83ceaa3304dcca82767e7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ad0aed1ded41a422160679dc238ee8814cac4b71
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228843"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053319"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-direct"></a>教程：Azure Active Directory 与 Direct 的集成
 
@@ -157,7 +157,7 @@ ms.locfileid: "36228843"
  
     ![创建 Azure AD 测试用户](./media/direct-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -209,11 +209,11 @@ ms.locfileid: "36228843"
 
 2. 如果要在“SP 发起的模式”下进行测试：
     
-    a. 单击访问面板中的 Direct 磁贴时，将会重定向到应用程序登录页。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击访问面板中的 Direct 磁贴时，将会重定向到应用程序登录页。
 
     b. 在显示的文本框中输入 `subdomain`，然后按“次へ (下一步)”，此时应当会自动登录到 Direct 应用程序。
     
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

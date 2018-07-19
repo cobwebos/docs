@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/27/2018
+ms.date: 07/06/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8927b2a32956f73e75ac7b157ebad6bf6596ea88
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 412872e607f62f710e013d88822cddc59255992e
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063623"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859946"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>HANA 大型实例的支持方案
 本文档介绍 HANA 大型实例 (HLI) 的支持方案及其体系结构详细信息。
@@ -54,10 +54,11 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 
 ### <a name="ethernet"></a>以太网
 
-配置的每台服务器都已预配了以太网集。 以下是每个 HLI 单元上配置的以太网的详细信息。
+预配的每台服务器都预先配置了以太网接口集。 以下是每个 HLI 单元上配置的以太网接口的详细信息。
 
-- **A**：用于客户端访问。
-- **B**：用于节点到节点的通信。 所有服务器上均进行此配置（不论所请求的拓扑为何），但仅用于横向扩展方案。
+- **A**：此接口用于客户端访问。
+- **B**：此接口用于节点到节点的通信。 所有服务器上均配置了此接口（不论所请求的拓扑为何），但仅用于 
+- 横向扩展方案。
 - **C**：此接口用于建立节点到存储的连接。
 - **D**：此接口用于建立节点到 ISCSI 设备的连接，以进行 STONITH 设置。 仅在请求 HSR 设置时配置此接口。  
 
@@ -81,19 +82,19 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 
 分配有两个 IP 地址的单元的分布形式应如下所示：
 
-应为以太网“A”分配一个位于提交给 Microsoft 的服务器 IP 池地址范围以外的 IP 地址。 此 IP 地址用于在 OS 的 /etc/hosts 中进行维护。
+- 应为以太网“A”分配一个位于提交给 Microsoft 的服务器 IP 池地址范围以外的 IP 地址。 此 IP 地址用于在 OS 的 /etc/hosts 中进行维护。
 
-应为以太网“B”分配一个用来与 NFS 通信的 IP 地址。 因此，**不**需要在 etc/hosts 中维护这些地址即可在租户中允许实例间的通信流量。
+- 应为以太网“C”分配一个用来与 NFS 通信的 IP 地址。 因此，**不**需要在 etc/hosts 中维护这些地址即可在租户中允许实例间的通信流量。
 
 对于 HANA 系统复制或 HANA 横向扩展部署用例，不适合使用分配有两个 IP 地址的刀片式服务器配置。 如果只分配了两个 IP 地址，且希望部署此类配置，请联系 Azure 上的 SAP HANA 服务管理部门，让其在第三个 VLAN 中分配第三个 IP 地址。 对于在三个 NIC 端口上分配了三个 IP 地址的 HANA 大型实例单元，请注意以下使用规则：
 
 - 应为以太网“A”分配一个位于提交给 Microsoft 的服务器 IP 池地址范围以外的 IP 地址。 因此，此 IP 地址不会用于在 OS 的 /etc/hosts 中进行维护。
 
-- 应为以太网“B”分配一个用来与 NFS 存储通信的 IP 地址。 因此，不应在 etc/hosts 中维护此类地址。
+- 应在 etc/hosts 中以独占方式维护以太网“B”，以便在不同的实例之间通信。 在横向扩展 HANA 配置中，也需要将这些 IP 地址作为 HANA 用于节点间配置的 IP 地址进行维护。
 
-- 应在 etc/hosts 中以独占方式维护 以太网“C”，以便在不同的实例之间通信。 在横向扩展 HANA 配置中，也需要将这些 IP 地址作为 HANA 用于节点间配置的 IP 地址进行维护。
+- 应为以太网“C”分配一个用来与 NFS 存储通信的 IP 地址。 因此，不应在 etc/hosts 中维护此类地址。
 
-- 应以独占方式使用以太网“D”访问 pacemaker 的 STONITH 设备。 配置 HANA 系统复制 (HSR) 并且希望在使用基于 SBD 的设备的操作系统上实现自动故障转移时，这是必需条件。
+- 应以独占方式使用以太网“D”访问 pacemaker 的 STONITH 设备。 配置 HANA 系统复制 (HSR) 并且希望使用基于 SBD 的设备在操作系统上实现自动故障转移时，需要此接口。
 
 
 ### <a name="storage"></a>存储
@@ -118,9 +119,9 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 5. 具有 STONITH 的 HSR
 6. 具有 DR（常规/多用途）的 HSR 
 7. 主机自动故障转移 (1+1) 
-8. 使用备用横向扩展
-9. 不使用备用横向扩展
-10. 利用 DR 横向扩展
+8. 使用备用节点的横向扩展
+9. 不使用备用节点的横向扩展
+10. 使用 DR 的横向扩展
 
 
 
@@ -236,7 +237,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
 - 对于 MCOS：卷大小分配取决于内存中的数据库大小。 请参阅[概述和体系结构](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture)部分，了解多 SID 环境支持的内存中数据库大小。
 - 在 DR：在 DR HLI 单元为生产 HANA 实例安装配置卷和装入点（标记为“HANA 安装所需”）。 
-- 在 DR：通过生产站点的快照复制数据、日志备份和共享卷（标记为“存储复制”）。 这些卷仅在故障转移期间装载。 有关详细信息，请参阅[灾难恢复故障转移过程](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)。
+- 在 DR：通过生产站点的快照复制数据、日志备份和共享卷（标记为“存储复制”）。 这些卷仅在故障转移期间装载。 有关详细信息，请阅读文档[灾难恢复故障转移过程](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)以获取更多详细信息。
 - SKU 第 I 类级别的启动卷将复制到 DR 节点。
 
 
@@ -285,13 +286,13 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
 - 对于 MCOS：卷大小分配取决于内存中的数据库大小。 请参阅[概述和体系结构](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture)部分，了解多 SID 环境支持的内存中数据库大小。
 - 在 DR：在 DR HLI 单元为生产 HANA 实例安装配置卷和装入点（标记为“HANA 安装所需”）。 
-- 在 DR：通过生产站点的快照复制数据、日志备份和共享卷（标记为“存储复制”）。 这些卷仅在故障转移期间装载。 有关详细信息，请参阅[灾难恢复故障转移过程](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)。 
+- 在 DR：通过生产站点的快照复制数据、日志备份和共享卷（标记为“存储复制”）。 这些卷仅在故障转移期间装载。 有关详细信息，请阅读文档[灾难恢复故障转移过程](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)以获取更多详细信息。 
 - 在 DR：为 QA 实例安装配置 QA 的数据、日志备份、日志、共享卷（标记为“QA 实例安装”）。
 - SKU 第 I 类级别的启动卷将复制到 DR 节点。
 
 ## <a name="5-hsr-with-stonith"></a>5.具有 STONITH 的 HSR
  
-此拓扑支持 HANA 系统复制 (HSR) 配置的两个节点。 
+此拓扑支持 HANA 系统复制 (HSR) 配置的两个节点。 此配置仅适用于节点上的单个 HANA 实例。 这意味着，不支持 MCOS 方案。
 
 截至目前，SUSE 操作系统仅支持此体系结构。
 
@@ -340,7 +341,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 
 ## <a name="6-hsr-with-dr"></a>6.具有 DR 的 HSR
  
-此拓扑支持 HANA 系统复制 (HSR) 配置的两个节点。 支持常规和多用途 DR。 
+此拓扑支持 HANA 系统复制 (HSR) 配置的两个节点。 支持常规和多用途 DR。 这些配置仅适用于节点上的单个 HANA 实例。 这意味着，这些配置不支持 MCOS 方案。
 
 在该关系图中，在 DR 站点处展示了多用途方案，从主站点运行生产操作时，HLI 单元用于 QA 实例。 在 DR 故障转移（或故障转移测试）时，系统会停用 DR 站点上的 QA 实例。 
 
@@ -394,7 +395,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 - STONITH：为 STONITH 设置配置 SBD。 但是，可选择是否使用 STONITH。
 - 在 DR：主节点和辅助节点复制需要两组存储卷。
 - 在 DR：在 DR HLI 单元为生产 HANA 实例安装配置卷和装入点（标记为“HANA 安装所需”）。 
-- 在 DR：通过生产站点的快照复制数据、日志备份和共享卷（标记为“存储复制”）。 这些卷仅在故障转移期间装载。 有关详细信息，请参阅[灾难恢复故障转移过程](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)。 
+- 在 DR：通过生产站点的快照复制数据、日志备份和共享卷（标记为“存储复制”）。 这些卷仅在故障转移期间装载。 有关详细信息，请阅读文档[灾难恢复故障转移过程](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)以获取更多详细信息。 
 - 在 DR：为 QA 实例安装配置 QA 的数据、日志备份、日志、共享卷（标记为“QA 实例安装”）。
 - SKU 第 I 类级别的启动卷将复制到 DR 节点。
 
@@ -441,7 +442,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 - 在备用节点上：在备用单元上为 HANA 实例安装配置卷和装入点（标记为“HANA 安装所需”）。
  
 
-## <a name="8-scale-out-with-standby"></a>8.使用备用横向扩展
+## <a name="8-scale-out-with-standby"></a>8.使用备用节点的横向扩展
  
 此拓扑支持横向扩展配置中的多个节点。 其中一个节点具有主角色，一个或多个节点具有辅助角色，一个或多个节点作为备用节点。 但是，在任何给定时间点只能有一个主节点。
 
@@ -476,7 +477,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 |/hana/logbackups/SID | 生产 SID 的恢复日志 |
 
 
-## <a name="9-scale-out-without-standby"></a>9.不使用备用横向扩展
+## <a name="9-scale-out-without-standby"></a>9.不使用备用节点的横向扩展
  
 此拓扑支持横向扩展配置中的多个节点。 其中一个节点具有主角色，一个或多个节点具有辅助角色。 但是，在任何给定时间点只能有一个主节点。
 
@@ -515,9 +516,9 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 ### <a name="key-considerations"></a>重要注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
 
-## <a name="10-scale-out-with-dr"></a>10.利用 DR 横向扩展
+## <a name="10-scale-out-with-dr"></a>10.使用 DR 的横向扩展
  
-此拓扑支持使用 DR 进行横向扩展中的多个节点。 支持常规和多用途 DR。 在该关系图中，仅展示单一目的 DR。 可在有或没有备用节点的情况下请求此拓扑。
+此拓扑支持使用 DR 的横向扩展中的多个节点。 支持常规和多用途 DR。 在该关系图中，仅展示单一目的 DR。 可在有或没有备用节点的情况下请求此拓扑。
 
 
 ### <a name="architecture-diagram"></a>体系结构关系图  
@@ -558,7 +559,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 ### <a name="key-considerations"></a>重要注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
 -  在 DR：在 DR HLI 单元为生产 HANA 实例安装配置卷和装入点（标记为“HANA 安装所需”）。 
-- 在 DR：通过生产站点的快照复制数据、日志备份和共享卷（标记为“存储复制”）。 这些卷仅在故障转移期间装载。 有关详细信息，请参阅[灾难恢复故障转移过程](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)。 
+- 在 DR：通过生产站点的快照复制数据、日志备份和共享卷（标记为“存储复制”）。 这些卷仅在故障转移期间装载。 有关详细信息，请阅读文档[灾难恢复故障转移过程](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)以获取更多详细信息。 
 - SKU 第 I 类级别的启动卷将复制到 DR 节点。
 
 

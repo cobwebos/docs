@@ -3,7 +3,7 @@ title: Node.js 入门指南
 description: 了解如何创建简单的 Node.js Web 应用程序并将其部署到 Azure 云服务。
 services: cloud-services
 documentationcenter: nodejs
-author: thraka
+author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: 50951a87-fed4-48e0-bcfa-453b9e50452e
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: hero-article
 ms.date: 08/17/2017
-ms.author: adegeo
-ms.openlocfilehash: 5d69f83aed9160f94260b71e60fcf0e15b435569
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.author: jeconnoc
+ms.openlocfilehash: 7af18272c335c835a2aa406fc635f3e7afda2a3a
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003446"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>生成 Node.js 应用程序并将其部署到 Azure 云服务
 
@@ -40,7 +41,7 @@ ms.lasthandoff: 05/10/2018
 > 本教程使用 Azure PowerShell，因此需要在 Windows 上运行。
 
 * 安装和配置 [Azure PowerShell]。
-* 下载并安装 [Azure SDK for .NET 2.7]。 在安装设置中，选择：
+* 下载并安装 [用于 .NET 2.7 的 Azure SDK]。 在安装设置中，选择：
   * MicrosoftAzureAuthoringTools
   * MicrosoftAzureComputeEmulator
 
@@ -48,7 +49,7 @@ ms.lasthandoff: 05/10/2018
 执行以下任务可创建一个新的 Azure 云服务项目以及基本的 Node.js 基架：
 
 1. 以管理员身份运行 **Windows PowerShell**；在“开始”菜单或“开始”屏幕中，搜索 **Windows PowerShell**。
-2. [将 PowerShell 连接] 到订阅。
+2. [连接 PowerShell] 到订阅。
 3. 输入以下 PowerShell cmdlet 来创建项目：
 
         New-AzureServiceProject helloworld
@@ -166,8 +167,8 @@ Node.js 应用在 **server.js** 文件中定义，该文件位于 Web 角色（�
 [Azure 网站、云服务和虚拟机的比较]: ../app-service/choose-web-site-cloud-service-vm.md
 [使用轻型 Web 应用]: ../app-service/app-service-web-get-started-nodejs.md
 [Azure PowerShell]: /powershell/azureps-cmdlets-docs
-[Azure SDK for .NET 2.7]: http://www.microsoft.com/en-us/download/details.aspx?id=48178
-[将 PowerShell 连接]: /powershell/azureps-cmdlets-docs#step-3-connect
+[用于 .NET 2.7 的 Azure SDK]: http://www.microsoft.com/en-us/download/details.aspx?id=48178
+[连接 PowerShell]: /powershell/azureps-cmdlets-docs#step-3-connect
 [nodejs.org]: http://nodejs.org/
 [创建 Azure 托管服务概述]: https://azure.microsoft.com/documentation/services/cloud-services/
 [Node.js 开发人员中心]: https://azure.microsoft.com/develop/nodejs/

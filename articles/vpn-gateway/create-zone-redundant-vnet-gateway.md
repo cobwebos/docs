@@ -7,14 +7,14 @@ author: cherylmc
 Customer intent: As someone with a basic network background, I want to understand how to create zone-redundant gateways.
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 06/28/2018
+ms.date: 07/09/2018
 ms.author: cherylmc
-ms.openlocfilehash: c484358bf98f0121cfc3ce270b162b01c75b5b09
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: fa349555a5effd41ca519cbd5a29005203d79543
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096227"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952549"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones---preview"></a>在 Azure 可用性区域中创建区域冗余虚拟网络网关 - 预览版
 
@@ -207,10 +207,6 @@ $gwipconf1 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GwIPConf1 -Subnet $
 
 创建虚拟网络网关。
 
->[!NOTE]
->暂无法指定网关 SKU。 ExpressRoute 网关和 VPN 网关的 SKU 分别自动默认为 ErGw1AZ 和 VpnGw1AZ。
->
-
 ### <a name="for-expressroute"></a>对于 ExpressRoute 网关
 
 ```azurepowershell-interactive
@@ -236,6 +232,10 @@ New-AzureRmVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name 
 ### <a name="what-will-change-when-i-enroll"></a>我注册后会有什么变化？
 
 从你的角度来看，在预览版期间，可以部署区域冗余网关。 也就是说，所有网关实例都会跨 Azure 可用性区域部署，每个可用性区域都是不同的容错域和更新域。 这样可以提高网关的可靠性、可用性和区域故障复原性。
+
+### <a name="can-i-use-the-azure-portal"></a>是否可以使用 Azure 门户？
+
+是的，可以使用预览版 Azure 门户。 但仍需使用 PowerShell 注册，否则将无法在预览版期间使用该门户。
 
 ### <a name="what-regions-are-available-for-the-preview"></a>预览版在哪些区域推出？
 

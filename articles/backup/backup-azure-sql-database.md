@@ -13,15 +13,15 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 6/1/2018
+ms.date: 7/6/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: 4ae64fefb58840214104a4e1cb338ec404fac1a8
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 32f45b66c4b1d22da3ffc4310a8a47c17319301f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235407"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38302817"
 ---
 # <a name="back-up-sql-server-database-in-azure"></a>在 Azure 中备份 SQL 数据库
 
@@ -78,7 +78,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 ## <a name="supported-operating-systems-and-versions-of-sql-server"></a>支持的 SQL server 操作系统和版本
 
-以下受支持的 SQL Server 操作系统和版本适用于 SQL 市场 Azure 虚拟机，而不适用于非市场虚拟机（其中的 SQL Server 是手动安装的）。
+支持以下操作系统。 支持 SQL 市场 Azure 虚拟机和非市场虚拟机（其中 SQL Server 为手动安装）。
 
 ### <a name="supported-operating-systems"></a>支持的操作系统
 
@@ -131,7 +131,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 ## <a name="set-permissions-for-non-marketplace-sql-vms"></a>设置非市场 SQL VM 的权限
 
-若要备份虚拟机，Azure 备份要求安装 **AzureBackupWindowsWorkload** 扩展。 如果使用的是 Azure 市场虚拟机，请转到[发现 SQL Server 数据库](backup-azure-sql-database.md#discover-sql-server-databases)。 如果托管 SQL 数据库的虚拟机不是从 Azure 市场创建的，请完成以下部分来安装扩展并设置相应的权限。 除了 **AzureBackupWindowsWorkload** 扩展以外，Azure 备份还需要 SQL sysadmin 特权才能保护 SQL 数据库。 发现虚拟机上的数据库时，Azure 备份会创建帐户 NT Service\AzureWLBackupPluginSvc。 要使 Azure 备份能够发现 SQL 数据库，NT Service\AzureWLBackupPluginSvc 帐户必须具有 SQL 登录和 SQL sysadmin 权限。 以下过程说明如何提供这些权限。
+若要备份虚拟机，Azure 备份要求安装 **AzureBackupWindowsWorkload** 扩展。 如果使用的是 Azure 市场虚拟机，请转到[发现 SQL Server 数据库](backup-azure-sql-database.md#discover-sql-server-databases)。 如果托管 SQL 数据库的虚拟机不是从 Azure 市场创建的，请完成以下部分来安装扩展并设置相应的权限。 除了 **AzureBackupWindowsWorkload** 扩展以外，Azure 备份还需要 SQL sysadmin 特权才能保护 SQL 数据库。 发现虚拟机上的数据库时，Azure 备份会创建帐户 NT Service\AzureWLBackupPluginSvc。 要使 Azure 备份能够发现 SQL 数据库，NT Service\AzureWLBackupPluginSvc 帐户必须具有 SQL 和 SQL sysadmin 权限。 以下过程说明如何提供这些权限。
 
 配置权限：
 
@@ -168,7 +168,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 ### <a name="fixing-sql-sysadmin-permissions"></a>修复 SQL sysadmin 权限
 
-在安装过程中，如果出现错误 **UserErrorSQLNoSysadminMembership**，请使用拥有 SQL sysadmin 权限的帐户登录到 SQL Server Management Studio (SSMS)。 除非需要特殊权限，否则应该能够使用 Windows 身份验证来识别帐户。
+在安装过程中，如果出现错误 **UserErrorSQLNoSysadminMembership**，请使用拥有 SQL sysadmin 权限的帐户登录到 SQL Server Management Studio (SSMS)。 除非需要特殊权限，否则 Windows 身份验证应该正常运行。
 
 1. 在 SQL 服务器上，打开“安全/登录名”文件夹。
 
@@ -251,7 +251,7 @@ Azure 备份可以发现 SQL Server 实例上的所有数据库，因此你可�
 
 - 在虚拟机上安装 **AzureBackupWindowsWorkload** 扩展。 备份 SQL 数据库是一种无代理的解决方案，也就是说，在虚拟机上安装扩展后，无需在 SQL 数据库上安装任何代理。
 
-- 在虚拟机上创建服务帐户 **NT Service\AzureWLBackupPluginSvc**。 所有备份和还原操作使用该服务帐户。 **NT Server\AzureWLBackupPluginSvc** 需要 SQL sysadmin 权限。 所有 SQL 市场虚拟机上都已安装 SqlIaaSExtension，AzureBackupWindowsWorkload 使用 SQLIaaSExtension 自动获取所需的权限。 如果虚拟机上未安装 SqlIaaSExtension，则“发现数据库”操作将会失败，并且会出现错误消息 **UserErrorSQLNoSysAdminMembership**。 若要添加用于备份的 sysadmin 权限，请遵照[为非市场 SQL VM 设置 Azure 备份权限](backup-azure-sql-database.md#set-permissions-for-non--marketplace-sql-vms)中的说明。
+- 在虚拟机上创建服务帐户 **NT Service\AzureWLBackupPluginSvc**。 所有备份和还原操作使用该服务帐户。 **NT Service\AzureWLBackupPluginSvc** 需要 SQL sysadmin 权限。 所有 SQL 市场虚拟机上都已安装 SqlIaaSExtension，AzureBackupWindowsWorkload 使用 SQLIaaSExtension 自动获取所需的权限。 如果虚拟机上未安装 SqlIaaSExtension，则“发现数据库”操作将会失败，并且会出现错误消息 **UserErrorSQLNoSysAdminMembership**。 若要添加用于备份的 sysadmin 权限，请遵照[为非市场 SQL VM 设置 Azure 备份权限](backup-azure-sql-database.md#set-permissions-for-non--marketplace-sql-vms)中的说明。
 
     ![选择 VM 和数据库](./media/backup-azure-sql-database/registration-errors.png)
 
@@ -286,7 +286,7 @@ Azure 备份提供管理服务用于保护 SQL Server 数据库和管理备份�
     Azure 备份服务会显示包含独立数据库的所有 SQL 实例，以及 SQL AlwaysOn 可用性组。 若要查看 SQL 实例中的独立数据库，请单击实例名称旁边的 V 形图标以查看数据库。 下图显示独立实例和 Always On 可用性组的示例。
 
     > [!NOTE]
-    > 完整备份和差异备份从主节点发生，因为 SQL 平台存在限制。 日志备份可根据备份首选项发生。 由于这种限制，必须注册主节点。
+    > 对于 SQL Always On 可用性组，我们会优先使用 SQL 备份首选项。 但由于 SQL 平台存在限制，完整备份和差异备份需要从主节点执行。 日志备份可根据备份首选项发生。 由于这种限制，必须始终为可用性组注册主节点。
     >
 
     ![SQL 实例中的数据库列表](./media/backup-azure-sql-database/discovered-databases.png)
@@ -394,13 +394,16 @@ Azure 备份提供管理服务用于保护 SQL Server 数据库和管理备份�
 
 8. 完成备份策略的所有编辑后，单击“确定”。 
 
-   ![差异备份保留范围](./media/backup-azure-sql-database/differential-backup-policy.png)
+   ![接受新策略](./media/backup-azure-sql-database/backup-policy-click-ok.png)
 
 ## <a name="restore-a-sql-database"></a>还原 SQL 数据库
 
 Azure 备份提供使用事务日志备份将单个数据库还原到特定的日期或时间的功能，精度可达到特定的秒。 根据提供的还原时间，Azure 备份会自动确定还原数据所需的相应完整、差异和日志链备份。
 
 或者，可以选择特定的完整备份或差异备份来还原到特定的恢复点而不是特定的时间。
+ > [!Note]
+ > 在触发还原“主”数据库的操作之前，请使用启动选项“-m AzureWorkloadBackup”在单用户模式下启动 SQL Server。 -m 的参数是客户端的名称，仅允许此客户端打开连接。 对于所有系统数据库（模型数据库、主数据库、msdb 数据库），请在触发还原操作之前停止 SQL 代理服务。 关闭任何可能尝试窃取到其中任何数据库的连接的应用程序。
+>
 
 还原数据库
 
@@ -442,6 +445,10 @@ Azure 备份提供使用事务日志备份将单个数据库还原到特定的�
 ### <a name="restore-to-an-alternate-location"></a>还原到备用位置
 
 此过程会逐步将数据还原到备用位置。 如果希望在还原时覆盖数据库，请转到[还原并覆盖数据库](backup-azure-sql-database.md#restore-and-overwrite-the-database)部分。 此过程假设已打开恢复服务保管库，并且在“还原配置”菜单中操作。 否则，请从[还原 SQL 数据库](backup-azure-sql-database.md#restore-a-sql-database)着手。
+
+> [!NOTE]
+> 可将数据库还原到同一 Azure 区域中的 SQL Server，且目标服务器需要注册到恢复服务保管库。 
+>
 
 “服务器”下拉菜单仅显示已注册到恢复服务保管库的 SQL 服务器。 如果所需的服务器不在“服务器”列表中，请参阅[发现 SQL Server 数据库](backup-azure-sql-database.md#discover-sql-server-databases)部分来查找服务器。 在数据库发现过程中，所有新服务器会注册到恢复服务保管库。
 
@@ -607,10 +614,40 @@ Azure 备份提供使用事务日志备份将单个数据库还原到特定的�
 * 取消注册 SQL Server
 
 ### <a name="monitor-jobs"></a>监视作业
+作为企业级解决方案，Azure 备份可为任何故障提供高级备份警报和通知（请参阅下面的“备份警报”部分）。 如果仍想监视特定作业，可根据自己的要求使用以下任何选项：
 
-Azure 备份使用 SQL 本机 API 执行所有备份操作。 使用本机 API 可以从 msdb 数据库中的 [SQL backupset 表](https://docs.microsoft.com/sql/relational-databases/system-tables/backupset-transact-sql?view=sql-server-2017)提取所有作业信息。 此外，Azure 备份在备份作业门户中显示所有手动触发的作业或临时作业。 门户中显示的作业包括：所有配置备份操作、还原操作、注册和发现数据库操作，以及停止备份操作。 还可以使用 OMS Log Analytics 监视所有计划的作业。 使用 Log Analytics 可以消除作业混杂情况，并灵活细致地监视或筛选特定的作业。
-
+#### <a name="use-azure-portal-for-all-adhoc-operations"></a>将 Azure 门户用于所有临时操作
+Azure 备份在备份作业门户中显示所有手动触发的作业或临时作业。 门户中显示的作业包括：所有配置备份操作、手动触发的备份操作、还原操作、注册和发现数据库操作，以及停止备份操作。 
 ![高级配置菜单](./media/backup-azure-sql-database/jobs-list.png)
+
+> [!NOTE]
+> 所有计划的备份作业（包括完整备份、差异备份和日志备份）都不会在门户中显示，并且可使用 SQL Server Management Studio 进行监视，如下所述。
+>
+
+#### <a name="use-sql-server-management-studio-for-backup-jobs"></a>将 SQL Server Management Studio 用于备份作业
+Azure 备份使用 SQL 本机 API 执行所有备份操作。 借助本机 API，可从 msdb 数据库中的 [SQL backupset 表](https://docs.microsoft.com/sql/relational-databases/system-tables/backupset-transact-sql?view=sql-server-2017)提取所有作业信息。
+
+以下示例是用于获取名为 **DB1** 的数据库的所有备份作业的查询。 自定义查询以进行更高级的监视。
+```
+select CAST (
+Case type
+                when 'D' 
+                                 then 'Full'
+                when  'I'
+                               then 'Differential' 
+                ELSE 'Log'
+                END         
+                AS varchar ) AS 'BackupType',
+database_name, 
+server_name,
+machine_name,
+backup_start_date,
+backup_finish_date,
+DATEDIFF(SECOND, backup_start_date, backup_finish_date) AS TimeTakenByBackupInSeconds,
+backup_size AS BackupSizeInBytes
+  from msdb.dbo.backupset where user_name = 'NT SERVICE\AzureWLBackupPluginSvc' AND database_name =  <DB1>  
+ 
+```
 
 ### <a name="backup-alerts"></a>备份警报
 
@@ -711,6 +748,42 @@ Azure 备份使用 SQL 本机 API 执行所有备份操作。 使用本机 API �
 5. 在“受保护的服务器”菜单中，右键单击受保护的服务器，并选择“删除”。 
 
    ![恢复数据库保护](./media/backup-azure-sql-database/delete-protected-server.png)
+
+## <a name="sql-database-backup-faq"></a>SQL 数据库备份常见问题解答
+
+以下部分提供有关 SQL 数据库备份的其他信息。
+
+### <a name="can-i-throttle-the-speed-of-the-sql-backup-policy-so-it-minimizes-impact-on-the-sql-server"></a>我是否可以限制 SQL 备份策略的速度，以便最大限度地减少对 SQL 服务器的影响
+
+是，可限制备份策略的执行速率。 若要更改设置，请执行以下操作：
+
+1. 在 SQL Server 的 `C:\Program Files\Azure Workload Backup\bin` 文件夹中，打开 **TaskThrottlerSettings.json**。
+
+2. 在 **TaskThrottlerSettings.json** 文件中，将“DefaultBackupTasksThreshold”更改为较小的值，例如 5。
+
+3. 保存更改，然后关闭文件。
+
+4. 在 SQL Server 上，打开“任务管理器”，然后重新启动“Azure 备份工作负载协调器服务”。
+
+### <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>我是否可以从次要副本运行完整备份
+
+否，不支持此功能。
+
+### <a name="do-successful-backup-jobs-create-alerts"></a>成功的备份作业是否会创建警报
+
+不是。 成功的备份作业不会生成警报。 仅针对失败的备份作业发送警报。
+
+### <a name="are-scheduled-backup-job-details-shown-in-the-jobs-menu"></a>“作业”菜单中是否会显示计划的备份作业的详细信息
+
+不是。 “作业”菜单显示临时作业的详细信息，但不显示计划的备份作业。 如果有任何计划的备份作业失败，可在失败的作业警报中找到所有详细信息。 如果想要监视所有计划的备份作业和临时备份作业，[请使用 SQL Server Management Studio](backup-azure-sql-database.md#use-sql-server-management-studio-for-backup-jobs)。
+
+### <a name="if-i-select-a-sql-server-will-future-databases-automatically-be-added"></a>如果我选择 SQL 服务器，未来的数据库是否会自动添加
+
+不是。 为 SQL 服务器配置保护时，如果选中服务器级别的复选框，则会添加所有数据库。 但是，如果在配置保护后将数据库添加到 SQL 服务器，则必须手动添加新数据库才能保护它们。 已配置的保护不会自动包含数据库。
+
+### <a name="if-i-change-the-recovery-model-how-do-i-restart-protection"></a>如果我更改恢复模式，如何重新启动保护
+
+如果更改了恢复模式，请触发完整备份，日志备份将按预期开始。
 
 ## <a name="next-steps"></a>后续步骤
 

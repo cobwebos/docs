@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 8505474687728f8dcf0927e4d2b7ce59e7a4c742
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 447a3911bc1f021fb1ca2658716de1910b5379b6
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231281"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044065"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>教程：Azure Active Directory 与 AnswerHub 集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "36231281"
 
     ![配置单一登录](./media/answerhub-tutorial/tutorial_answerhub_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company>.answerhub.com`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<company>.answerhub.com`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<company>.answerhub.com`
 
@@ -148,7 +148,7 @@ ms.locfileid: "36231281"
 
      ![SAML 设置](./media/answerhub-tutorial/ic785172.png "SAML 设置")  
   
-     a. 在“IDP 登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”。
+     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“IDP 登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”。
   
      b. 在“IDP 注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
      
@@ -160,7 +160,7 @@ ms.locfileid: "36231281"
     
      ![密钥和证书](./media/answerhub-tutorial/ic785173.png "密钥和证书")  
  
-     a. 在记事本中打开从 Azure 门户下载的 base-64 编码证书，将其内容复制到剪贴板，然后再粘贴到“IDP 公钥（x509 格式）”文本框中。
+     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在记事本中打开从 Azure 门户下载的 base-64 编码证书，将其内容复制到剪贴板，然后再粘贴到“IDP 公钥（x509 格式）”文本框中。
   
      b. 单击“ **保存**”。
 
@@ -192,7 +192,7 @@ ms.locfileid: "36231281"
  
     ![创建 Azure AD 测试用户](./media/answerhub-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -257,7 +257,7 @@ ms.locfileid: "36231281"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 AnswerHub 磁贴时，应该会自动登录 AnswerHub 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

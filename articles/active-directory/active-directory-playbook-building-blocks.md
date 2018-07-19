@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 45dedd8c4d6ae2f9b54873d87f82c2e605a8c2aa
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fa399e3644e1050a4f264890583a388f7abd84ed
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38451693"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049463"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念证明操作手册：构建基块
 
 ## <a name="catalog-of-roles"></a>角色的目录
 
-| 角色 | 说明 | 概念证明 (PoC) 责任 |
+| 角色 | Description | 概念证明 (PoC) 责任 |
 | --- | --- | --- |
 | 标识体系结构/开发团队 | 此团队通常负责设计解决方案、实现原型、推动审批但最终不涉及运营 | 他们提供环境，并从可管理性角度评估不同的方案 |
 | **本地标识运营团队** | 管理不同的本地标识源：Active Directory 林、LDAP 目录、HR 系统和联合身份验证标识提供程序。 | 提供 PoC 方案所需的对本地资源的访问权限。<br/>他们应尽量少涉及|
@@ -157,7 +157,7 @@ ms.locfileid: "38451693"
 | 按照说明配置 ServiceNow |  |
 | 在 ServiceNow 应用的“预配”边栏选项卡中，启用“自动”设置 | [在新的 Azure 门户中管理企业应用的用户帐户预配](manage-apps/configure-automatic-user-provisioning-portal.md) |
 | 稍等几分钟，等待预配完成。  在此期间，可以查看预配报告 |  |
-| 以具有访问权限的测试用户身份登录 https://myapps.microsoft.com/ | [访问面板是什么？](active-directory-saas-access-panel-introduction.md) |
+| 以具有访问权限的测试用户身份登录 https://myapps.microsoft.com/ | [访问面板是什么？](user-help/active-directory-saas-access-panel-introduction.md) |
 | 单击刚刚创建的应用程序的磁贴。 确认访问 |  |
 | 或者可以查看应用程序使用情况报告。 请注意，存在一定程度的延迟，因此需要等待一段时间才能在报告中看到流量。 | [Azure Active Directory 门户中的登录活动报告：托管应用程序的使用情况](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory 报告保留策略](active-directory-reporting-retention.md) |
 
@@ -190,8 +190,8 @@ ms.locfileid: "38451693"
 | 配置密码 SSO | [在新的 Azure 门户中管理企业应用的单一登录：基于密码的登录](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
 | 将应用分配给在先决条件中标识的组 | [在 Azure Active Directory 中向企业应用分配用户或组](manage-apps/assign-user-or-group-access-portal.md) |
 | 以具有访问权限的测试用户身份登录 https://myapps.microsoft.com/ |  |
-| 单击刚刚创建的应用程序的磁贴。 | [访问面板是什么？：没有标识预配的基于密码的 SSO](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
-| 提供应用程序凭据 | [访问面板是什么？：没有标识预配的基于密码的 SSO](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
+| 单击刚刚创建的应用程序的磁贴。 | [访问面板是什么？：没有标识预配的基于密码的 SSO](user-help/active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
+| 提供应用程序凭据 | [访问面板是什么？：没有标识预配的基于密码的 SSO](user-help/active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
 | 关闭浏览器并再次输入登录名。 此时用户应该可以看到对应用程序的无缝访问权限。 |  |
 | 或者可以查看应用程序使用情况报告。 请注意，存在一定程度的延迟，因此需要等待一段时间才能在报告中看到流量。 | [Azure Active Directory 门户中的登录活动报告：托管应用程序的使用情况](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory 报告保留策略](active-directory-reporting-retention.md) |
 
@@ -311,7 +311,7 @@ ms.locfileid: "38451693"
 | 已配置 SaaS 应用程序（联合 SSO 或密码 SSO） | 构建基块：[SaaS 联合 SSO 配置](#saas-federated-sso-configuration) |
 | 已标识云组，并且已为该组分配对 #1 中的应用程序的访问权限 | 构建基块：[SaaS 联合 SSO 配置](#saas-federated-sso-configuration) <br/>[在 Azure Active Directory 中创建组并添加成员](fundamentals/active-directory-groups-create-azure-portal.md) |
 | 组所有者的凭据可用 | [使用 Azure Active Directory 组管理对资源的访问权限](fundamentals/active-directory-manage-groups.md) |
-| 已标识访问应用的信息辅助角色的凭据 | [访问面板是什么？](active-directory-saas-access-panel-introduction.md) |
+| 已标识访问应用的信息辅助角色的凭据 | [访问面板是什么？](user-help/active-directory-saas-access-panel-introduction.md) |
 
 
 ### <a name="steps"></a>步骤
@@ -321,7 +321,7 @@ ms.locfileid: "38451693"
 | 标识已被授权访问应用程序的组，并配置给定组的所有者| [在 Azure Active Directory 中管理组的设置](fundamentals/active-directory-groups-settings-azure-portal.md) |
 | 以组所有者身份登录，在访问面板的组选项卡中查看组成员 | [Azure Active Directory 组管理页面](https://account.activedirectory.windowsazure.com/r#/groups) |
 | 添加要测试的信息辅助角色 |  |
-| 以信息辅助角色身份登录，确认磁贴可用 | [访问面板是什么？](active-directory-saas-access-panel-introduction.md) |
+| 以信息辅助角色身份登录，确认磁贴可用 | [访问面板是什么？](user-help/active-directory-saas-access-panel-introduction.md) |
 
 ### <a name="considerations"></a>注意事项
 
@@ -335,7 +335,7 @@ ms.locfileid: "38451693"
 | --- | --- |
 | 已配置 SaaS 应用程序（联合 SSO 或密码 SSO） | 构建基块：[SaaS 联合 SSO 配置](#saas-federated-sso-configuration) |
 | 已标识云组，并且已为该组分配对 #1 中的应用程序的访问权限 | 构建基块：[SaaS 联合 SSO 配置](#saas-federated-sso-configuration) <br/>[在 Azure Active Directory 中创建组并添加成员](fundamentals/active-directory-groups-create-azure-portal.md) |
-| 已标识访问应用的信息辅助角色的凭据 | [访问面板是什么？](active-directory-saas-access-panel-introduction.md) |
+| 已标识访问应用的信息辅助角色的凭据 | [访问面板是什么？](user-help/active-directory-saas-access-panel-introduction.md) |
 
 
 ### <a name="steps"></a>步骤
@@ -383,7 +383,7 @@ ms.locfileid: "38451693"
 
 | 先决条件 | 资源 |
 | --- | --- |
-| 在租户中启用自助密码管理。 | [Azure Active Directory 中针对 IT 管理员的密码重置](active-directory-passwords-update-your-own-password.md) |
+| 在租户中启用自助密码管理。 | [Azure Active Directory 中针对 IT 管理员的密码重置](user-help/active-directory-passwords-update-your-own-password.md) |
 | 启用密码写回，以便在本地管理密码。 请注意，此操作需要特定的 Azure AD Connect 版本 | [密码写回先决条件](authentication/howto-sspr-writeback.md) |
 | 标识将使用此功能的 PoC 用户，并确保这些用户是安全组的成员。 这些用户不能是管理员，这样才能完全展示此功能 | [自定义：Azure AD 密码管理：限制对密码重置的访问](authentication/howto-sspr-writeback.md) |
 
@@ -398,7 +398,7 @@ ms.locfileid: "38451693"
 | 提供在步骤 2 中配置的自助密码重置数据 | https://aka.ms/ssprsetup |
 | 关闭浏览器 |  |
 | 以步骤 4 中使用的辅助角色身份启动登录过程 |  |
-| 重置密码 | [更新自己的密码：重置我的密码](active-directory-passwords-update-your-own-password.md) |
+| 重置密码 | [更新自己的密码：重置我的密码](user-help/active-directory-passwords-update-your-own-password.md) |
 | 尝试使用新密码登录到 Azure AD 和本地资源 |  |
 
 ### <a name="considerations"></a>注意事项
@@ -431,7 +431,7 @@ ms.locfileid: "38451693"
 ### <a name="considerations"></a>注意事项
 
 1. 此构建基块中的 PoC 步骤为用户的所有登录名明确设置了 MFA。 还有条件访问和 Identity Protection 等其他工具可以将 MFA 用于目标更明确的方案。 从 POC 转移到生产时需要考虑这些问题。
-2. 为方便起见，本构建基块中的 PoC 步骤明确使用电话呼叫作为 MFA 方法。 从 POC 转换为生产时，建议使用 [Microsoft Authenticator](authentication/end-user/current/microsoft-authenticator-app-how-to.md) 等应用程序作为第二个考虑的因素（如果需要）。
+2. 为方便起见，本构建基块中的 PoC 步骤明确使用电话呼叫作为 MFA 方法。 从 POC 转换为生产时，建议使用 [Microsoft Authenticator](user-help/microsoft-authenticator-app-how-to.md) 等应用程序作为第二个考虑的因素（如果需要）。
 有关详细信息，请参阅 [DRAFT NIST Special Publication 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html)（DRAFT NIST 特别发布 800-63B）
 
 ## <a name="mfa-conditional-access-for-saas-applications"></a>SaaS 应用程序的 MFA 条件访问
@@ -556,7 +556,7 @@ ms.locfileid: "38451693"
 | --- | --- |
 | 已从企业 PKI 预配了用户证书的设备（Windows、iOS 或 Android） | [部署用户证书](https://msdn.microsoft.com/library/cc770857.aspx) |
 | 与 ADFS 联合的 Azure AD 域 | [Azure AD Connect 和联合身份验证](./connect/active-directory-aadconnectfed-whatis.md)<br/>[Active Directory 证书服务概述](https://technet.microsoft.com/library/hh831740.aspx)|
-| iOS 设备需要安装 Microsoft Authenticator 应用 | [Microsoft Authenticator 应用入门](authentication/end-user/current/microsoft-authenticator-app-how-to.md) |
+| iOS 设备需要安装 Microsoft Authenticator 应用 | [Microsoft Authenticator 应用入门](user-help/microsoft-authenticator-app-how-to.md) |
 
 ### <a name="steps"></a>步骤
 

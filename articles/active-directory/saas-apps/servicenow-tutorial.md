@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: fa11e2c527f870821565315de7a9e7e8a680e841
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8aebe6bef536840722d9b07c846687eaf6d195db
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214281"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051063"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>教程：Azure Active Directory 与 ServiceNow 集成
 
@@ -114,7 +114,7 @@ ms.locfileid: "36214281"
 
     ![ServiceNow 域和 URL 单一登录信息](./media/servicenow-tutorial/tutorial_servicenow_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<instance-name>.service-now.com/navpage.do`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<instance-name>.service-now.com/navpage.do`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<instance-name>.service-now.com`
 
@@ -125,7 +125,7 @@ ms.locfileid: "36214281"
 
     ![证书下载链接](./media/servicenow-tutorial/tutorial_servicenow_certificate.png)
 
-    a. 单击“复制”按钮来复制**应用联合元数据 URL** 并将其粘贴到记事本，因为本教程中稍后将使用此应用联合元数据 URL。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“复制”按钮来复制**应用联合元数据 URL** 并将其粘贴到记事本，因为本教程中稍后将使用此应用联合元数据 URL。
 
     b. 单击“证书(Base64)”，然后将证书保存在计算机上。
 
@@ -137,7 +137,7 @@ ms.locfileid: "36214281"
 
 7. 请按照以下步骤操作，激活“集成 - 多提供程序单一登录安装程序”插件：
 
-    a. 在左侧导航窗格中，通过搜索栏搜索“系统定义”部分，单击“插件”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在左侧导航窗格中，通过搜索栏搜索“系统定义”部分，单击“插件”。
 
     ![激活插件](./media/servicenow-tutorial/tutorial_servicenow_03.png "激活插件")
 
@@ -153,7 +153,7 @@ ms.locfileid: "36214281"
 
 9. 若要自动配置 **ServiceNow**，请执行以下步骤
 
-    a. 返回到 Azure 门户中的 **ServiceNow** 单一登录页。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 返回到 Azure 门户中的 **ServiceNow** 单一登录页。
 
     b. 针对 ServiceNow 提供了一键式配置服务，即，让 Azure AD 自动配置 ServiceNow 的基于 SAML 的身份验证。 若要启用此服务，请转到“ServiceNow 配置”部分，单击“配置 ServiceNow”打开“配置登录”窗口。
 
@@ -199,7 +199,7 @@ ms.locfileid: "36214281"
 
     ![配置应用 URL](./media/servicenow-tutorial/ic7694981.png "配置应用 URL")
 
-    a. 对于“启用多提供程序 SSO”，选择“是”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“启用多提供程序 SSO”，选择“是”。
 
     b. 对于“启用将所有标识提供者中的用户自动导入用户表”，选择“是”。
 
@@ -221,7 +221,7 @@ ms.locfileid: "36214281"
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694975.png "配置单一登录")
 
-    a. 在“名称”文本框中，键入配置名称（例如：**TestSAML2.0**）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入配置名称（例如：**TestSAML2.0**）。
 
     b. 选择“活动”。
 
@@ -249,7 +249,7 @@ ms.locfileid: "36214281"
 
     ![配置单一登录](./media/servicenow-tutorial/idp.png "配置单一登录")
 
-    a. 在“导入标识提供者元数据”对话框中选择“URL”选项。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“导入标识提供者元数据”对话框中选择“URL”选项。
 
     b. 输入从 Azure 门户复制的**应用联合元数据 URL**。
 
@@ -259,7 +259,7 @@ ms.locfileid: "36214281"
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694982.png "配置单一登录")
 
-    a. 在“名称”文本框中，键入配置名称（例如 **SAML 2.0**）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入配置名称（例如 **SAML 2.0**）。
     
     b. 复制“ServiceNow 主页”值，将其粘贴到 Azure 门户上“ServiceNow 域和 URL”部分中的“登录 URL”文本框内。
 
@@ -294,7 +294,7 @@ ms.locfileid: "36214281"
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694995.png "配置单一登录")
 
-    a. 在“名称”文本框中输入 `glide.authenticate.sso.redirect.idp` 值。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中输入 `glide.authenticate.sso.redirect.idp` 值。
 
     b. 在“值”文本框中，粘贴在前面的步骤中复制的“副本 sys_id”值。
 
@@ -310,7 +310,7 @@ ms.locfileid: "36214281"
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694996.png "配置单一登录")
 
-    a. 在“名称”文本框中输入 `glide.authenticate.multisso.test.connection.mandatory` 值。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中输入 `glide.authenticate.multisso.test.connection.mandatory` 值。
 
     b. 在“值”文本框中，输入 **false**。
 
@@ -335,7 +335,7 @@ ms.locfileid: "36214281"
 
     ![配置单一登录](./media/servicenow-tutorial/tutorial_servicenow_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入值：`https://<instance-name>.service-now.com/navpage.do`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入值：`https://<instance-name>.service-now.com/navpage.do`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<instance-name>.service-now.com`
 
@@ -368,7 +368,7 @@ ms.locfileid: "36214281"
 
     ![配置应用 URL](./media/servicenow-tutorial/ic7694981ex.png "配置应用 URL")
 
-    a. 将“启用多提供程序 SSO”切换到右侧。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将“启用多提供程序 SSO”切换到右侧。
     
     b. 将“为多提供程序 SSO 集成启用调试日志记录”切换到右侧。
     
@@ -382,7 +382,7 @@ ms.locfileid: "36214281"
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694975.png "配置单一登录")
 
-    a. 在“名称”文本框中，键入配置名称（例如：**TestSAML2.0**）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入配置名称（例如：**TestSAML2.0**）。
 
     b. 选择“活动”。
 
@@ -402,7 +402,7 @@ ms.locfileid: "36214281"
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694982ex.png "配置单一登录")
 
-    a. 在“名称”文本框中，键入配置名称（例如：**SAML 2.0**）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入配置名称（例如：**SAML 2.0**）。
 
     b. 在“标识提供者 URL”字段中，粘贴从 Azure 门户复制的“标识提供者 ID”的值。
     
@@ -416,7 +416,7 @@ ms.locfileid: "36214281"
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694983ex.png "配置单一登录")
 
-    a. 在“IDP 的 SingleLogoutRequest 协议绑定”文本框中，键入“urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“IDP 的 SingleLogoutRequest 协议绑定”文本框中，键入“urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect”。
 
     b. 在“NameID 策略”文本框中，键入“urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified”。
 
@@ -428,7 +428,7 @@ ms.locfileid: "36214281"
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694984ex.png "配置单一登录")
 
-    a. 在“ServiceNow 主页”文本框中，键入 ServiceNow 实例主页的 URL。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“ServiceNow 主页”文本框中，键入 ServiceNow 实例主页的 URL。
 
     > [!NOTE]
     > ServiceNow 实例主页是 **ServieNow 租户 URL** 和 **/navpage.do** 的串联（例如：`https://fabrikam.service-now.com/navpage.do`）。
@@ -470,7 +470,7 @@ ms.locfileid: "36214281"
 
     ![“用户”对话框](./media/servicenow-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -520,7 +520,7 @@ ms.locfileid: "36214281"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击“访问面板”中的 ServiceNow 磁贴时，应自动登录到 ServiceNow 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

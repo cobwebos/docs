@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 8b45eb87af7ed56a6641ffcaeb6ea47c3d07389c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 120acc30c968670cd81fac4c45e246991f5f9c81
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226201"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046220"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mypolicies"></a>教程：Azure Active Directory 与 myPolicies 集成
 
@@ -112,9 +112,9 @@ ms.locfileid: "36226201"
 
     ![配置单一登录](./media/mypolicies-tutorial/tutorial_mypolicies_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<tenantname>.mypolicies.com/`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<tenantname>.mypolicies.com/`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<tenantname>.mypolicies.com/users/auth/saml/callback`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<tenantname>.mypolicies.com/users/auth/saml/callback`
 
     > [!NOTE] 
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [myPolicies 支持团队](mailto:support@mypolicies.com)获取这些值。
@@ -132,7 +132,7 @@ ms.locfileid: "36226201"
     | emailaddress | user.mail |
     | name | user.userprincipalname |
     
-    a. 单击该属性打开“编辑属性”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击该属性打开“编辑属性”对话框。
     
     ![配置单一登录](./media/mypolicies-tutorial/tutorial_attribute_05.png)
     
@@ -181,7 +181,7 @@ ms.locfileid: "36226201"
  
     ![创建 Azure AD 测试用户](./media/mypolicies-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -228,7 +228,7 @@ ms.locfileid: "36226201"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 myPolicies 磁贴时，应自动登录到 myPolicies 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

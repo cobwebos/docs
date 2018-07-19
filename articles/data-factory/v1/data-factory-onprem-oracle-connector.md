@@ -1,5 +1,5 @@
 ---
-title: 使用数据工厂向/从 Oracle 复制数据 | Microsoft Docs
+title: 使用数据工厂向或从 Oracle 复制数据 | Microsoft Docs
 description: 了解如何使用 Azure 数据工厂向/从本地 Oracle 数据库复制数据复制。
 services: data-factory
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fe1ca45b0f79781b2fa17bfb605df03d334cc8d1
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 10535e75a32a9f95e759340cf14d693f43639473
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046707"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856835"
 ---
-# <a name="copy-data-tofrom-on-premises-oracle-using-azure-data-factory"></a>使用 Azure 数据工厂向/从本地 Oracle 复制数据
+# <a name="copy-data-to-or-from-on-premises-oracle-using-azure-data-factory"></a>使用 Azure 数据工厂向或从本地 Oracle 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [第 1 版](data-factory-onprem-oracle-connector.md)
 > * [版本 2（当前版本）](../connector-oracle.md)
@@ -103,6 +103,10 @@ Oracle 连接器支持两个版本的驱动程序：
 | gatewayName | 用于连接到本地 Oracle 服务器的网关的名称 |是 |
 
 **示例：使用 Microsoft 驱动程序：**
+
+>[!TIP]
+>如果遇到错误消息指出“ORA-01025: UPI 参数超出范围”，且 Oracle 版本为 8i，请将 `WireProtocolMode=1` 添加到连接字符串并重试。
+
 ```json
 {
     "name": "OnPremisesOracleLinkedService",

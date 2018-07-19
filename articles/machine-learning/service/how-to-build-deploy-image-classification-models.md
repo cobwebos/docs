@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 04/23/2018
-ms.openlocfilehash: 72f5215bac9254c9e3295b2cade7b6d44d516af6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6b7f73573cb1465b89e54e30894b3549153e4acb
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637729"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888426"
 ---
 # <a name="build-and-deploy-image-classification-models-with-azure-machine-learning"></a>使用 Azure 机器学习生成和部署图像分类模型
 
@@ -34,13 +34,13 @@ ms.locfileid: "34637729"
 7. Web 服务部署
 8. Web 服务负载测试
 
-[CNTK](https://www.microsoft.com/cognitive-toolkit/) 用作深度学习框架，训练在配备 GPU 的计算机（例如 [深度学习数据科学 VM](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)）本地执行，部署使用 Azure 机器学习操作化 CLI。
+[CNTK](https://www.microsoft.com/en-us/cognitive-toolkit/) 用作深度学习框架，训练在配备 GPU 的计算机（例如 [深度学习数据科学 VM](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)）本地执行，部署使用 Azure 机器学习操作化 CLI。
 
 有关每个模块和类的详细参考，请查阅[包参考文档](https://aka.ms/aml-packages/vision)。
 
 ## <a name="prerequisites"></a>先决条件
 
-1. 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+1. 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 1. 必须设置并安装以下帐户和应用程序：
    - 一个 Azure 机器学习试验帐户 
@@ -66,12 +66,6 @@ ms.locfileid: "34637729"
 
 ![Azure 机器学习数据集](media/how-to-build-deploy-image-classification-models/recycling_examples.jpg)
 
-## <a name="storage-context"></a>存储上下文
-
-存储上下文用于确定各种输出文件（例如增强的图像或 DNN 模型文件）的存储位置。 有关存储上下文的详细信息，请参阅 [StorageContext 文档](https://review.docs.microsoft.com/en-us/python/api/cvtk.core.context.storagecontext?view=azure-python&branch=smoke-test)。 
-
-一般情况下，不需要显式设置存储内容。 但是，为了避免达到 Azure Machine Learning Workbench 对项目大小施加的 25-MB 限制，请将用于计算机视觉的 Azure 机器学习包的输出目录设置为 Azure 机器学习项目外部的某个位置 ("../../../../cvtk_output")。 不再需要“cvtk_output”目录时，请务必将其删除。
-
 
 ```python
 import warnings
@@ -84,29 +78,19 @@ from sklearn import svm
 from cvtk import ClassificationDataset, CNTKTLModel, Context, Splitter, StorageContext
 from cvtk.augmentation import augment_dataset
 from cvtk.core.classifier import ScikitClassifier
-from cvtk.evaluation import ClassificationEvaluation, graph_roc_curve, graph_pr_curve, graph_confusion_matrix, basic_plot
+from cvtk.evaluation import ClassificationEvaluation, graph_roc_curve, graph_pr_curve, graph_confusion_matrix
 import matplotlib.pyplot as plt
+
+from classification.notebook.ui_utils.ui_annotation import AnnotationUI
+from classification.notebook.ui_utils.ui_results_viewer import ResultsUI
+from classification.notebook.ui_utils.ui_precision_recall import PrecisionRecallUI
+
 %matplotlib inline
 
 # Disable printing of logging messages
 from azuremltkbase.logging import ToolkitLogger
 ToolkitLogger.getInstance().setEnabled(False)
-
-# Set storage context.
-out_root_path = "../../../cvtk_output"
-Context.create(outputs_path=out_root_path, persistent_path=out_root_path, temp_path=out_root_path)
 ```
-
-
-
-
-    {
-        "storage": {
-            "outputs_path": "../../../cvtk_output",
-            "persistent_path": "../../../cvtk_output",
-            "temp_path": "../../../cvtk_output"
-        }
-    }
 
 
 
@@ -125,8 +109,8 @@ Context.create(outputs_path=out_root_path, persistent_path=out_root_path, temp_p
 
 
 ```python
-# Root image directory 
-dataset_location = os.path.abspath(os.path.join(os.getcwd(), "../sample_data/imgs_recycling"))
+# Root image directory
+dataset_location = os.path.abspath("classification/sample_data/imgs_recycling")
 
 dataset_name = 'recycling'
 dataset = ClassificationDataset.create_from_dir(dataset_name, dataset_location)
@@ -182,7 +166,6 @@ print("Select information for image 2: name={}, label={}, unique id={}.".format(
 
 
 ```python
-from ui_utils.ui_annotation import AnnotationUI
 annotation_ui = AnnotationUI(dataset, Context.get_global_context())
 display(annotation_ui.ui)
 ```
@@ -407,7 +390,6 @@ labels = [l.name for l in dataset.labels]
 pred_scores = ce.scores #classification scores for all images and all classes
 pred_labels = [labels[i] for i in np.argmax(pred_scores, axis=1)]
 
-from ui_utils.ui_results_viewer import ResultsUI
 results_ui = ResultsUI(test_set, Context.get_global_context(), pred_scores, pred_labels)
 display(results_ui.ui)
 ```
@@ -420,7 +402,6 @@ display(results_ui.ui)
 precisions, recalls, thresholds = ce.compute_precision_recall_curve() 
 thresholds = list(thresholds)
 thresholds.append(thresholds[-1])
-from ui_utils.ui_precision_recall import PrecisionRecallUI
 pr_ui = PrecisionRecallUI(100*precisions[::-1], 100*recalls[::-1], thresholds[::-1])
 display(pr_ui.ui) 
 ```

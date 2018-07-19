@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 65848473139036cc431b9a142c8c0a375505f383
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 32feac32af01e518ad6cede43cc4b4f00c097d3b
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225636"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041273"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>教程：Azure Active Directory 与 SmarterU 集成
 
@@ -132,7 +132,7 @@ ms.locfileid: "36225636"
    
     ![外部授权](./media/smarteru-tutorial/IC777327.png "外部授权") 
  
-      a. 选择“启用外部授权”。
+      a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“启用外部授权”。
   
       b. 在“主登录控制”部分中，选择“SmarterU”选项卡。
   
@@ -171,7 +171,7 @@ ms.locfileid: "36225636"
  
     ![创建 Azure AD 测试用户](./media/smarteru-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -195,7 +195,7 @@ ms.locfileid: "36225636"
    
     ![新建用户](./media/smarteru-tutorial/IC777329.png "New User")  
 
-    a. 单击“+用户”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“+用户”。
     
     b. 在以下文本框中键入 Azure AD 用户帐户的相关属性值：**主电子邮件**、**员工 ID**、**密码**、**验证密码**、**名字**、**姓氏**。
     
@@ -242,7 +242,7 @@ ms.locfileid: "36225636"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
  
 单击访问面板中的“SmarterU”磁贴时，应自动登录到 SmarterU 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 
 ## <a name="additional-resources"></a>其他资源

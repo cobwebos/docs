@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 05/25/2018
+ms.date: 07/09/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 5ff397e8b13d56b3b034854c507f8bef05008812
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: db5941528eedd10cf252607dbe2160bd498a70de
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054715"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951961"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用“执行 SSIS 包”活动运行 SSIS 包
 本文介绍如何使用“执行 SSIS 包”活动在 Azure 数据工厂管道中运行 SSIS 包。 
@@ -92,9 +92,11 @@ ms.locfileid: "37054715"
 
 ### <a name="optionally-parameterize-the-activity"></a>（可选）将活动参数化
 
-（可选）在“高级”选项卡上以 JSON 格式将值、表达式或函数（可引用数据工厂系统变量）分配给项目或包参数。例如，可以将数据工厂管道参数分配给 SSIS 项目或包参数，如以下屏幕截图所示：
+（可选）使用“执行 SSIS 包”活动框底部的“查看源代码”按钮，或管道区域右上角的“代码”按钮，将可以引用数据工厂系统变量的值、表达式或函数分配给 JSON 格式的项目或包参数。 例如，可以将数据工厂管道参数分配给 SSIS 项目或包参数，如以下屏幕截图所示：
 
-![将参数添加到“执行 SSIS 包”活动](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters.png)
+![编辑“执行 SSIS 包”活动的 JSON 脚本](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters.png)
+
+![将参数添加到“执行 SSIS 包”活动](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters2.png)
 
 ### <a name="run-and-monitor-the-pipeline"></a>运行和监视管道
 在此部分中，将触发管道运行，然后对其进行监视。 
@@ -174,7 +176,7 @@ ms.locfileid: "37054715"
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 * 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于**参与者**或**所有者**角色，或者是 Azure 订阅的**管理员**。
-* 目前，数据工厂仅允许在“美国东部”、“美国东部 2”、“西欧”和“东南亚”区域创建数据工厂。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+* 要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
 ### <a name="create-a-pipeline-with-an-ssis-activity"></a>创建包含 SSIS 活动的管道。 
 本步骤创建包含 SSIS 活动的管道。 该活动运行 SSIS 包。 

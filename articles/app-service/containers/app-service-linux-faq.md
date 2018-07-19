@@ -1,11 +1,11 @@
 ---
 title: Linux 上的 Azure 应用服务常见问题解答 | Microsoft Docs
 description: Linux 上的 Azure 应用服务常见问题解答。
-keywords: Azure 应用服务, Web 应用, 常见问题解答, Linux, oss
+keywords: Azure 应用服务, Web 应用, 常见问题解答, Linux, oss, 用于容器的 Web 应用, 多容器, 多容器
 services: app-service
 documentationCenter: ''
-author: ahmedelnably
-manager: cfowler
+author: yili
+manager: apurvajo
 editor: ''
 ms.assetid: ''
 ms.service: app-service
@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/18/2018
-ms.author: msangapu
-ms.openlocfilehash: 5b3b3d3946b56ff53ad74c2ab93a646baa787d05
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.date: 06/26/2018
+ms.author: yili
+ms.openlocfilehash: ea2e9d9fd1d9390cdd689b4f33b72cd471feeb8c
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222971"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916850"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure 应用服务常见问题解答
 
@@ -66,7 +66,7 @@ ms.locfileid: "36222971"
 
 是的。
 
-**是否可以使用 *Web 部署*来部署 Web 应用？**
+**是否可以使用 *WebDeploy/MSDeploy* 来部署 Web 应用？**
 
 可以，需要将名为 `WEBSITE_WEBDEPLOY_USE_SCM` 的应用设置设置为 *false*。
 
@@ -144,6 +144,35 @@ SCM 站点在单独的容器中运行。 用户无法查看应用容器的文件
 **是否需要在自定义容器中实现 HTTPS？**
 
 不需要，平台会处理共享前端上的 HTTPS 终止。
+
+## <a name="multi-container-with-docker-compose-and-kubernetes"></a>多容器与 Docker Compose 和 Kubernetes 结合使用
+
+**如何将 Azure 容器注册表 (ACR) 配置为用于多容器？**
+
+若要将 ACR 用于多容器，**所有容器映像**都必须托管在同一台 ACR 注册表服务器上。 在将它们托管在同一台注册表服务器上之后，需要创建应用程序设置，然后更新 Docker Compose 或 Kubernetes 配置文件以包含 ACR 映像名称。
+
+创建以下应用程序设置：
+
+- DOCKER_REGISTRY_SERVER_USERNAME
+- DOCKER_REGISTRY_SERVER_URL（完整 URL，例如：https://<server-name>.azurecr.io）
+- DOCKER_REGISTRY_SERVER_PASSWORD（在 ACR 设置中启用管理员访问权限）
+
+在配置文件内引用 ACR 映像，如下例所示：
+
+```yaml
+image: <server-name>.azurecr.io/<image-name>:<tag>
+```
+
+**怎么知道哪个容器可以访问 Internet？**
+
+- 只能打开一个容器进行访问
+- 只能访问端口 80 和 8080（公开的端口）
+
+以下规则用于确定哪个容器可供访问 — 按优先顺序排列：
+
+- 设置为容器名称的应用程序设置 `WEBSITES_WEB_CONTAINER_NAME`
+- 第一个定义端口 80 或 8080 的容器
+- 如果以上规则均不适用，则文件中定义的第一个容器将可供访问（公开）
 
 ## <a name="pricing-and-sla"></a>定价和 SLA
 

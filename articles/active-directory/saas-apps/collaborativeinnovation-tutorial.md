@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 897db5a4d794c22f436fa074ec2c359edc5b590c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0e2936d0b428249226e428ddc0912d62e29a84f3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225052"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042382"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-collaborative-innovation"></a>教程：Azure Active Directory 与 Collaborative Innovation 集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "36225052"
 
     ![配置单一登录](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<instancename>.foundry.<companyname>.com/`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<instancename>.foundry.<companyname>.com/`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<instancename>.foundry.<companyname>.com`
     
@@ -132,7 +132,7 @@ ms.locfileid: "36225052"
     | emailaddress | user.userprincipalname |
     | 名称 | user.userprincipalname |
 
-    a. 单击属性打开“编辑属性”窗口。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击属性打开“编辑属性”窗口。
 
     ![配置单一登录](./media/collaborativeinnovation-tutorial/url_update.png)
 
@@ -177,7 +177,7 @@ ms.locfileid: "36225052"
  
     ![创建 Azure AD 测试用户](./media/collaborativeinnovation-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -226,7 +226,7 @@ ms.locfileid: "36225052"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击“访问面板”中的“Collaborative Innovation”磁贴时，将转到“Collaborative Innovation”应用程序的登录页。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

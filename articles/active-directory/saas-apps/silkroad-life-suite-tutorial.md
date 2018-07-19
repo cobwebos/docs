@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 0fb2bf12c239366f92e4f54d2afdd6400aa83dc6
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 962b3f0e18c2dbedf80c0cfca6bc8275b394307b
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225239"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046009"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silkroad-life-suite"></a>教程：Azure Active Directory 与 SilkRoad Life Suite 集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "36225239"
 
     ![SilkRoad Life Suite 域和 URL 单一登录信息](./media/silkroad-life-suite-tutorial/tutorial_silkroadlifesuite_url1.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.silkroad-eng.com/Authentication/`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.silkroad-eng.com/Authentication/`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL： 
     | |
@@ -164,7 +164,7 @@ ms.locfileid: "36225239"
    
     ![Azure AD 单一登录][14]
   
-    a. 在“选项 2 - 元数据文件”下，单击“浏览”上传从 Azure 门户下载的元数据文件。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“选项 2 - 元数据文件”下，单击“浏览”上传从 Azure 门户下载的元数据文件。
   
     b. 单击“使用文件数据创建标识提供者”。
 
@@ -176,7 +176,7 @@ ms.locfileid: "36225239"
     
      ![Azure AD 单一登录][16] 
 
-    a. 对于“启用”，请选择“是”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“启用”，请选择“是”。
 
     b. 将从 Azure 门户复制的“SAML 实体 ID”值粘贴到“实体 ID”文本框中。
    
@@ -223,7 +223,7 @@ ms.locfileid: "36225239"
 
     ![“用户”对话框](./media/silkroad-life-suite-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -270,7 +270,7 @@ ms.locfileid: "36225239"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“SilkRoad Life Suite”磁贴时，用户应自动登录到 SilkRoad Life Suite 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

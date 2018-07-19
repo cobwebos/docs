@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/05/2018
 ms.author: harijay
-ms.openlocfilehash: 99d09455ed73b366fb3acfb414b9bd095df6319b
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 00a776131321500386b507f45ea84817b08147f7
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36962362"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867855"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>虚拟机串行控制台（预览版） 
 
@@ -158,5 +158,5 @@ A. 这是一个已知问题，若要解决此问题，只需在 bash 模式下�
 A. 此预览功能遵守 Azure 预览条款。 最好是通过上面所述的渠道请求此功能的支持。 
 
 ## <a name="next-steps"></a>后续步骤
-* 串行控制台也适用于 [Windows](../windows/serial-console.md) VM。
+* 串行控制台也适用于 [Windows](../windows/serial-console.md) VM
 * 详细了解[启动诊断](boot-diagnostics.md)

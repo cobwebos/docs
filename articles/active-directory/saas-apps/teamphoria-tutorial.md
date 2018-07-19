@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 0ff053b88a718c152d31b593a7759b034347f3ef
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 794945caeea113dc6f1cc2ab5e11a76c3e88c83e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293659"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041902"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamphoria"></a>教程：Azure Active Directory 与 Teamphoria 集成
 
@@ -142,7 +142,7 @@ ms.locfileid: "36293659"
 
     ![配置单一登录](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
 
-    a. 显示名称：在管理页上输入插件的显示名称。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 显示名称：在管理页上输入插件的显示名称。
 
     b. 按钮名称：会在用于通过 SSO 登录的登录页上显示的选项卡的名称。
 
@@ -175,7 +175,7 @@ ms.locfileid: "36293659"
  
     ![创建 Azure AD 测试用户](./media/teamphoria-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -203,7 +203,7 @@ ms.locfileid: "36293659"
     
     ![邀请人员](./media/teamphoria-tutorial/manual_user_invite.png)
 
-    a. 在“电子邮件地址”文本框中，键入 Britta Simon 的“电子邮件地址”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“电子邮件地址”文本框中，键入 Britta Simon 的“电子邮件地址”。
 
     b. 在“名字”文本框中，键入“Britta”。
 
@@ -245,7 +245,7 @@ ms.locfileid: "36293659"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

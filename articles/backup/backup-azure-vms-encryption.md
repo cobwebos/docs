@@ -6,27 +6,23 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/13/2017
+ms.date: 7/10/2018
 ms.author: sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 49361aef774e9eb5a0995bc106e73b236a71b0bb
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 16620678c38dcdc1564d8cb18f3393352170cefe
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441125"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38598418"
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>使用 Azure 备份来备份和还原已加密的虚拟机
 本文介绍使用 Azure 备份来备份和还原虚拟机 (VM) 的步骤。 此外，提供有关受支持的方案、先决条件以及针对错误案例的疑难解答步骤的详细信息。
 
 ## <a name="supported-scenarios"></a>支持的方案
 
- * 只有使用 Azure 资源管理器部署模型的已加密 VM 才支持备份和还原。 使用经典部署模型的 VM 不支持备份和还原。 <br>
- * 使用 Azure 磁盘加密的 Windows 和 Linux VM 支持备份和还原。 磁盘加密使用 Windows 的行业标准 BitLocker 功能和 Linux 的 dm-crypt 功能提供磁盘加密。 <br>
- 
- 下表显示了仅使用 BitLocker 加密密钥 (BEK) 加密的 VM 支持的方案，以及使用 BEK 和密钥加密密钥 (KEK) 加密的 VM 支持的方案：
- 
- 
+ 只有使用 Azure 资源管理器部署模型的已加密 VM 才支持备份和还原。 使用经典部署模型的 VM 不支持备份和还原。 使用 Azure 磁盘加密的 Windows 和 Linux VM 支持备份和还原加密的 VM。 磁盘加密使用 Windows 的行业标准 BitLocker 功能和 Linux 的 dm-crypt 功能提供磁盘加密。 下表显示了加密类型和对 VM 的支持。
+
    |  | BEK + KEK VM | 仅限 BEK 的 VM |
    | --- | --- | --- |
    | **非托管 VM**  | 是 | 是  |

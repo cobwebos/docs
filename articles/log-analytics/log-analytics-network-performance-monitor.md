@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: na
-ms.openlocfilehash: d083783fb4c648cde5d8f4ab611990f65e48a16e
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 28f5ac882051250903fc2f45def95eb65d1b1ce3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129991"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38635532"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
@@ -35,7 +35,7 @@ ms.locfileid: "37129991"
 
 * [性能监视器](log-analytics-network-performance-monitor-performance-monitor.md)：可以跨云部署和本地位置、多个数据中心和分支机构、任务关健型多层应用程序或微服务监视网络连接。 使用性能监视器，可以在用户产生抱怨之前检测到网络问题。
 
-* [服务终结点监视器](log-analytics-network-performance-monitor-service-endpoint.md)：可以监视从用户到所关注的服务的连接，确定路径中存在的具体基础结构，并识别网络瓶颈的发生位置。 可以赶在用户之前了解中断情况，沿网络路径查看问题的具体位置。 
+* [服务连接性监视器](log-analytics-network-performance-monitor-service-endpoint.md)：可监视从用户到所关注的服务的连接，确定路径中存在的具体基础结构，并识别网络瓶颈的发生位置。 可以赶在用户之前了解中断情况，沿网络路径查看问题的具体位置。 
 
     此功能可以用来执行基于 HTTP、HTTPS、TCP 和 ICMP 的测试，以近实时的方式或根据历史事实的方式监视服务的可用性和响应时间。 还可以监视网络在多大程度上造成了包丢失和延迟。 使用网络拓扑图可以隔离导致网络速度下降的问题点。 凭借每个跃点上的延迟数据，可以确定从节点到服务这一段网络路径中出现的问题点。 可以通过内置的测试在不使用任何预配置的情况下监视 Office 365 和 Dynamics CRM 的网络连接。 可以使用此功能监视到任何支持 TCP 的终结点（例如网站、SaaS 应用程序、PaaS 应用程序和 SQL 数据库）的网络连接。
 
@@ -68,13 +68,13 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
     要监视某个网络链接，请在该链接的两个终结点上安装代理。 如果不确定网络的拓扑，请在具有关键工作负荷且这些负荷之间的网络性能需要进行监视的服务器上安装代理。 例如，如果需要监视 Web 服务器和运行 SQL 的服务器之间的网络连接，请将代理安装在这两个服务器上。 代理会监视主机之间的网络连接（链接），而不是主机本身。 
 
-* **服务终结点监视器**：如果需要监视从节点到服务终结点的网络连接，则在每个这样的节点上安装 Operations Management Suite 代理。 例如，假设要监视从标记为 O1、O2 和 O3 的办公网站到 Office 365 的网络连接。 分别在 O1、O2 和 O3 中的至少一个节点上安装 Operations Management Suite 代理。 
+* **服务终结点监视器**：要监视节点到服务终结点的网络连接，需在每个此类节点上安装 Operations Management Suite 代理。 例如，假设要监视从标记为 O1、O2 和 O3 的办公网站到 Office 365 的网络连接。 分别在 O1、O2 和 O3 中的至少一个节点上安装 Operations Management Suite 代理。 
 
 * **ExpressRoute 监视器**：在 Azure 虚拟网络中安装至少一个 Operations Management Suite 代理。 并在通过 ExpressRoute 专用对等互连连接的本地子网中安装至少一个代理。  
 
 ### <a name="configure-operations-management-suite-agents-for-monitoring"></a>配置 Operations Management Suite 代理的监视功能 
 
-网络性能监视器使用综合事务来监视源代理和目标代理之间的网络性能。 在性能监视器和服务终结点监视器功能中，可在 TCP 和 ICMP 之间选择一项作为用于监视的协议。 TCP 用于 ExpressRoute 监视器。 请确保防火墙允许在 Operations Management Suite 代理之间通信，这些代理用于监视选定的协议。 
+网络性能监视器使用综合事务来监视源代理和目标代理之间的网络性能。 在性能监视器和服务连接性监视器功能中，可选择 TCP 或 ICMP 作为监视协议。 只有 TCP 可用作 ExpressRoute 监视器的监视协议。 请确保防火墙允许在 Operations Management Suite 代理之间通信，这些代理用于监视选定的协议。 
 
 * **TCP 协议**：如果选择 TCP 作为用于监视的协议，请在用于网络性能监视器和 ExpressRoute 监视器的代理上打开防火墙端口，确保代理能够互相连接。 若要打开端口，请使用管理员权限在 PowerShell 窗口中运行不带任何参数的 [EnableRules.ps1](https://aka.ms/npmpowershellscript) PowerShell 脚本。
 
@@ -114,7 +114,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
    ![“性能监视器”视图](media/log-analytics-network-performance-monitor/npm-synthetic-transactions.png)
     
-   **服务终结点监视器**：此功能提供内置的预配置测试，用于监视从代理到 Office 365 和 Dynamics 365 的网络连接。 通过选中 Office 365 和 Dynamics 365 服务旁边的复选框，选择需要监视的服务。 要选择要从其进行监视的代理，请选择“添加代理”。 如果不希望使用此功能，或希望在以后进行设置，请不要做出任何选择，而是选择“保存并继续”。
+   **服务连接性监视器**：此功能提供内置的预配置测试，用于监视代理到 Office 365 和 Dynamics 365 的网络连接。 通过选中 Office 365 和 Dynamics 365 服务旁边的复选框，选择需要监视的服务。 要选择要从其进行监视的代理，请选择“添加代理”。 如果不希望使用此功能，或希望在以后进行设置，请不要做出任何选择，而是选择“保存并继续”。
 
    ![“服务终结点监视器”视图](media/log-analytics-network-performance-monitor/npm-service-endpoint-monitor.png)
 
@@ -143,7 +143,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 启用或禁用对特定子网的监视：
 
-1. 选中或清除 **“子网 ID”** 旁的复选框。 然后，请确保选中或清除 **“用于监视”** （视情况而定）。 可以选择或清除多个子网。 禁用时，不会监视子网，但会更新代理以停止 ping 其他代理。 
+1. 选中或清除“子网 ID”旁的复选框 ****。 然后，请确保选中或清除 **“用于监视”** （视情况而定）。 可以选择或清除多个子网。 禁用时，不会监视子网，但会更新代理以停止 ping 其他代理。 
 2. 在特定子网中选择要监视的节点。 从列表中选择子网，并在包含未监视节点的列表与包含已监视节点的列表之间移动所需节点。 可以向子网添加自定义说明。
 3. 选择“保存”以保存配置。 
 
@@ -196,7 +196,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 * **ExpressRoute 监视器**：本页提供解决方案监视的各个 ExpressRoute 对等互连连接的运行状况摘要。 “拓扑”磁贴显示在网络中受监视的通过 ExpressRoute 线路的网络路径数。 选择此磁贴转到“拓扑”视图。
 
-* **服务终结点监视器**：本页提供所创建的不同测试的运行状况摘要。 “拓扑”磁贴显示受监视的终结点数。 选择此磁贴转到“拓扑”视图。
+* **服务连接性监视器**：本页提供所创建的不同测试的运行状况摘要。 “拓扑”磁贴显示受监视的终结点数。 选择此磁贴转到“拓扑”视图。
 
 * **性能监视器**：本页提供解决方案监视的“网络”链接和“子网”链接的运行状况摘要。 “拓扑”磁贴显示在网络中受监视的网络路径数。 选择此磁贴转到“拓扑”视图。 
 
@@ -281,4 +281,4 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 * **加入我们的队伍**：我们总是希望一直有新客户不断加入我们的队伍。 那样，能够在早期接触到新功能并有机会帮助我们改进网络性能监视器。 如果有兴趣加入，请填写此 [快速调查](https://aka.ms/npmcohort)。 
 
 ## <a name="next-steps"></a>后续步骤 
-详细了解[性能监视器](log-analytics-network-performance-monitor-performance-monitor.md)、[服务终结点监视器](log-analytics-network-performance-monitor-performance-monitor.md)和 [ExpressRoute 监视器](log-analytics-network-performance-monitor-expressroute.md)。 
+详细了解[性能监视器](log-analytics-network-performance-monitor-performance-monitor.md)、[服务连接性监视器](log-analytics-network-performance-monitor-performance-monitor.md)和 [ExpressRoute 监视器](log-analytics-network-performance-monitor-expressroute.md)。 

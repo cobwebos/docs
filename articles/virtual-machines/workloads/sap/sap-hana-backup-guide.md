@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 3/13/2017
+ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 9346ed6b26b4fa4a7875354153b6847938253d1e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9d72bc885bdaaed521042df236dd722b80533186
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657003"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866995"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Azure 虚拟机上的 SAP HANA 备份指南
 
@@ -33,7 +33,7 @@ ms.locfileid: "34657003"
 
 SAP HANA 提供一个备份 API，第三方备份工具可以借助此 API 来直接与 SAP HANA 集成。 （这不在本指南的介绍范畴内。）目前，无法基于此 API 将 SAP HANA 直接与 Azure 备份服务集成。
 
-Azure VM GS5 类型正式支持将 SAP HANA 用作单一实例，但会对 OLAP 工作负荷实施更多的限制（参阅 SAP 网站上的 [Find Certified IaaS Platforms](https://global.sap.com/community/ebook/2014-09-02-hana-hardware/enEN/iaas.html)（查找认证的 IaaS 平台））。 随着 Azure 上的 SAP HANA 新产品的推出，本文将不断更新。
+SAP HANA 受到了各种 Azure VM 类型的官方支持，例如 Azure M 系列。 有关 SAP HANA 认证的 Azure VM 的完整列表，请查看 [Find Certified IaaS Platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)（查找已认证的 IaaS 平台）。 随着 Azure 上的 SAP HANA 新产品的推出，本文将不断更新。
 
 Azure 上还提供了一个 SAP HANA 混合解决方案，其中的 SAP HANA 以非虚拟化的方式在物理服务器上运行。 但是，本 SAP HANA Azure 备份指南只涉及单纯的 Azure 环境，其中的 SAP HANA 在 Azure VM 中运行，而不是在&quot;大型实例&quot;上运行。有关在&quot;大型实例&quot;上基于存储快照使用此备份解决方案的详细信息，请参阅 [Azure 上的 SAP HANA（大型实例）概述和体系结构](hana-overview-architecture.md)。
 
@@ -175,7 +175,7 @@ Azure 备份服务可以处理加密的 VM/磁盘（请参阅[如何使用 Azure
 
 ### <a name="test-virtual-machine-on-azure"></a>在 Azure 上测试虚拟机
 
-我们已使用 Azure GS5 VM 中的 SAP HANA 安装进行以下备份/还原测试。
+为了执行测试，我们已使用 Azure GS5 VM 中的 SAP HANA 安装进行以下备份/还原测试。 原则与 M 系列 VM 的原则相同。
 
 ![此图显示了 HANA 测试 VM 的一部分 Azure 门户概览](media/sap-hana-backup-guide/image007.png)
 

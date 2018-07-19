@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/8/2017
 ms.author: jeedes
-ms.openlocfilehash: 916b87dfe216f54f806c7866e327eac8f821992f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a210d19fb16bb214bab9f952c4612dbe039fe1e0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224804"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39040969"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sequr"></a>教程：Azure Active Directory 与 Sequr 的集成
 
@@ -116,7 +116,7 @@ ms.locfileid: "36224804"
 
     ![Sequr 域和 URL 单一登录信息](./media/sequr-tutorial/tutorial_sequr_url1.png)
 
-    a. 在“登录 URL”文本框中，键入 URL：`https://login.sequr.io`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，键入 URL：`https://login.sequr.io`
 
     b. 你将从“中继状态”文本框中获取此值，本教程下文中进行了说明。
      
@@ -146,7 +146,7 @@ ms.locfileid: "36224804"
 
     ![Sequr 配置](./media/sequr-tutorial/configure3.png)
 
-    a. 在“标识提供者登录 URL”文本框中，粘贴从 Azure 门户中复制的“SAML 单一登录服务 URL”值。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识提供者登录 URL”文本框中，粘贴从 Azure 门户中复制的“SAML 单一登录服务 URL”值。
 
     b. 拖放已从 Azure 门户中下载的**证书**文件，或者手动输入证书的内容。
 
@@ -181,7 +181,7 @@ ms.locfileid: "36224804"
 
     ![“用户”对话框](./media/sequr-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -228,7 +228,7 @@ ms.locfileid: "36224804"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 Sequr 磁贴时，应该会自动登录到 Sequr 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

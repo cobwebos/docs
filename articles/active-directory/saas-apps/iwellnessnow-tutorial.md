@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: d5fe4b6703f9b860932e36a296f3d103a4f94807
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4f5ff9906ec5a4f57d64704a4b10cf7027878e72
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219850"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047070"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iwellnessnow"></a>教程：Azure Active Directory 与 iWellnessNow 集成
 
@@ -108,7 +108,7 @@ ms.locfileid: "36219850"
 
     ![iWellnessNow 域和 URL 单一登录上传](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_upload.png)
 
-    a. 单击“上传元数据文件”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“上传元数据文件”。
 
     ![iWellnessNow 域和 URL 单一登录上传配置](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_uploadconfig.png)
 
@@ -122,15 +122,15 @@ ms.locfileid: "36219850"
 
     ![iWellnessNow 域和 URL 单一登录信息](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`http://<CustomerName>.iwellnessnow.com`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`http://<CustomerName>.iwellnessnow.com`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<CustomerName>.iwellnessnow.com/ssologin`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<CustomerName>.iwellnessnow.com/ssologin`
 
 5. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
 
     ![iWellnessNow 域和 URL 单一登录信息](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_url1.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<CustomerName>.iwellnessnow.com/`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<CustomerName>.iwellnessnow.com/`
      
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [iWellnessNow 客户端支持团队](mailto:info@iwellnessnow.com)来获取这些值。
@@ -169,7 +169,7 @@ ms.locfileid: "36219850"
 
     ![“用户”对话框](./media/iwellnessnow-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -216,7 +216,7 @@ ms.locfileid: "36219850"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 iWellnessNow 磁贴时，应当会自动登录到 iWellnessNow 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

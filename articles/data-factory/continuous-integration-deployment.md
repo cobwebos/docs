@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: douglasl
-ms.openlocfilehash: febd43586ab3006303143ca04ce8a37941a6fd60
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: ee01980229495d9b3f372ec85ee874955c291e5c
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36267919"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868314"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>在 Azure 数据工厂中进行持续集成和部署
 
@@ -101,7 +101,7 @@ ms.locfileid: "36267919"
 
     c.  选择“创建或更新资源组”操作。
 
-    d.  在“模板”字段中 选择“…”。 以浏览方式查找在门户中通过发布操作创建的资源管理器模板 (*ARMTemplateForFactory.json*)。 在 `adf_publish` 分支的文件夹 `<FactoryName>` 中查找该文件。
+    d.  在“替代模板参数”字段旁边 选择“…”。 以浏览方式查找在门户中通过发布操作创建的资源管理器模板 (*ARMTemplateForFactory.json*)。 在 `adf_publish` 分支的文件夹 `<FactoryName>` 中查找该文件。
 
     e.  针对参数文件执行相同的操作。 选择正确的文件，具体取决于你是创建了副本，还是使用默认的 *ARMTemplateParametersForFactory.json* 文件。
 
@@ -794,3 +794,94 @@ else {
     $deletedintegrationruntimes | ForEach-Object { Remove-AzureRmDataFactoryV2IntegrationRuntime -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force }
 }
 ```
+
+## <a name="use-custom-parameters-with-the-resource-manager-template"></a>将自定义参数用于资源管理器模板
+
+可为资源管理器模板定义自定义参数。 只需使用存储库根文件夹中一个名为 `arm-template-parameters-definition.json` 的文件。 （文件名必须与此处显示的名称完全匹配。）数据工厂会尝试从正在使用的任何分支读取文件，而不仅仅是从协作分支读取文件。 如果未找到任何文件，数据工厂则使用默认定义。
+
+以下示例显示了示例参数文件。 使用此示例作为参考，创建自己的自定义参数文件。 如果提供的文件不是正确的 JSON 格式，则数据工厂会在浏览器控制台中输出错误消息，并重新使用数据工厂 UI 中显示的默认定义。
+
+```json
+{
+    "Microsoft.DataFactory/factories/pipelines": {},
+    "Microsoft.DataFactory/factories/integrationRuntimes": {
+        "properties": {
+            "typeProperties": {
+                "ssisProperties": {
+                    "catalogInfo": {
+                        "catalogServerEndpoint": "=",
+                        "catalogAdminUserName": "=",
+                        "catalogAdminPassword": {
+                            "value": "-::secureString"
+                        }
+                    },
+                    "customSetupScriptProperties": {
+                        "sasToken": {
+                            "value": "-::secureString"
+                        }
+                    }
+                },
+                "linkedInfo": {
+                    "key": {
+                        "value": "-::secureString"
+                    }
+                }
+            }
+        }
+    },
+    "Microsoft.DataFactory/factories/triggers": {
+        "properties": {
+            "pipelines": [{
+                    "parameters": {
+                        "*": "="
+                    }
+                },
+                "pipelineReference.referenceName"
+            ],
+            "pipeline": {
+                "parameters": {
+                    "*": "="
+                }
+            }
+        }
+    },
+    "Microsoft.DataFactory/factories/linkedServices": {
+        "*": {
+            "properties": {
+                "typeProperties": {
+                    "accountName": "=",
+                    "username": "=",
+                    "userName": "=",
+                    "accessKeyId": "=",
+                    "servicePrincipalId": "=",
+                    "userId": "=",
+                    "clientId": "=",
+                    "clusterUserName": "=",
+                    "clusterSshUserName": "=",
+                    "hostSubscriptionId": "=",
+                    "clusterResourceGroup": "=",
+                    "subscriptionId": "=",
+                    "resourceGroupName": "=",
+                    "tenant": "=",
+                    "dataLakeStoreUri": "=",
+                    "baseUrl": "=",
+                    "connectionString": {
+                        "secretName": "="
+                    }
+                }
+            }
+        }
+    },
+    "Microsoft.DataFactory/factories/datasets": {
+        "*": {
+            "properties": {
+                "typeProperties": {
+                    "folderPath": "=",
+                    "fileName": "="
+                }
+            }
+        }
+    }
+}
+```
+

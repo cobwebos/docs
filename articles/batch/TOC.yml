@@ -121,18 +121,14 @@
           href: batch-get-resource-counts.md
         - name: 有效查询资源
           href: batch-efficient-list-queries.md
-    - name: 使用开发人员工具
+    - name: 使用脚本工具
       items:
-        - name: 使用 Batch .NET
-          href: batch-dotnet-get-started.md
-        - name: 使用 Batch Python
-          href: batch-python-tutorial.md
-        - name: 使用 Batch Node.js
-          href: batch-nodejs-get-started.md
         - name: 使用 PowerShell cmdlet
           href: batch-powershell-cmdlets-get-started.md
         - name: 使用 Azure CLI
           href: batch-cli-get-started.md
+    - name: 使用 Batch Node.js SDK
+      href: batch-nodejs-get-started.md
 - name: 引用
   items:
     - name: Azure CLI

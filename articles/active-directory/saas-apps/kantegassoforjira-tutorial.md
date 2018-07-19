@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 9355af15ed8156fee5f4b3584aa3342ea40c0628
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 51088f73d5ac456b2e754ce276eb4a4cd37d7c11
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112059"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042344"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-jira"></a>教程：Azure Active Directory 与 Kantega SSO for JIRA 集成
 
@@ -112,15 +112,15 @@ ms.locfileid: "37112059"
 
     ![配置单一登录](./media/kantegassoforjira-tutorial/tutorial_kantegassoforjira_url1.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
 4. 在“SP”发起的模式下，请选中“显示高级 URL 设置”并执行以下步骤：
 
     ![配置单一登录](./media/kantegassoforjira-tutorial/tutorial_kantegassoforjira_url2.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 在配置 JIRA 插件的过程中，将接收这些值，这将在教程的后面部分进行说明。
@@ -171,7 +171,7 @@ ms.locfileid: "37112059"
 
     ![配置单一登录](./media/kantegassoforjira-tutorial/addon6.png)
 
-    a. 复制“应用 ID URI”值并将其用作 Azure 门户中“Kantega SSO for JIRA 域和 URL”部分中的“标识符、回复 URL 和登录 URL”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 复制“应用 ID URI”值并将其用作 Azure 门户中“Kantega SSO for JIRA 域和 URL”部分中的“标识符、回复 URL 和登录 URL”。
 
     b. 单击“下一步”。
 
@@ -179,7 +179,7 @@ ms.locfileid: "37112059"
 
     ![配置单一登录](./media/kantegassoforjira-tutorial/addon7.png)
 
-    a. 选择“我的计算机上的元数据文件”，上传从 Azure 门户下载的元数据文件。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“我的计算机上的元数据文件”，上传从 Azure 门户下载的元数据文件。
 
     b. 单击“下一步”。
 
@@ -187,7 +187,7 @@ ms.locfileid: "37112059"
 
     ![配置单一登录](./media/kantegassoforjira-tutorial/addon8.png)
     
-    a. 在“标识提供者名称”文本框中添加标识提供者名称（例如 Azure AD）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识提供者名称”文本框中添加标识提供者名称（例如 Azure AD）。
 
     b. 单击“下一步”。
 
@@ -199,7 +199,7 @@ ms.locfileid: "37112059"
 
     ![配置单一登录](./media/kantegassoforjira-tutorial/addon10.png)
 
-    a. 选择“根据需要在 JIRA 的内部目录中创建用户”，并输入用户的组的合适名称（可以为多个 组，用逗号隔开）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“根据需要在 JIRA 的内部目录中创建用户”，并输入用户的组的合适名称（可以为多个 组，用逗号隔开）。
 
     b. 单击“下一步”。
 
@@ -211,7 +211,7 @@ ms.locfileid: "37112059"
 
     ![配置单一登录](./media/kantegassoforjira-tutorial/addon12.png)
 
-    a. 从页的左侧面板中选择“已知域”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 从页的左侧面板中选择“已知域”。
 
     b. 在“已知域”文本框中输入域名。
 
@@ -244,7 +244,7 @@ ms.locfileid: "37112059"
  
     ![创建 Azure AD 测试用户](./media/kantegassoforjira-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -272,7 +272,7 @@ ms.locfileid: "37112059"
 
     ![添加员工](./media/kantegassoforjira-tutorial/user3.png) 
 
-    a. 在“电子邮件地址”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“电子邮件地址”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
     b. 在“全名”文本框中，键入用户（例如 Britta Simon）的全名。
 
@@ -317,7 +317,7 @@ ms.locfileid: "37112059"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击“Kantega SSO for JIRA”磁贴就会自动登录到 Kantega SSO for JIRA 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

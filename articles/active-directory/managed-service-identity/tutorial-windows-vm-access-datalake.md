@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: afd35c963c2c1c4badb32f7e8f7dba1dce87481c
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: a7935aa245239ed32527d2c22fd41845c6da2ae1
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904282"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39007961"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>教程：使用 Windows VM 托管服务标识 (MSI) 访问 Azure Data Lake Store
 
@@ -53,7 +53,7 @@ ms.locfileid: "37904282"
 5. 要选择在其中创建虚拟机的新资源组，请选择“新建”。 完成后，单击“确定”。
 6. 选择 VM 大小。 若要查看更多的大小，请选择“全部查看”或更改“支持的磁盘类型”筛选器。 在“设置”页中保留默认值，然后单击“确定”。
 
-   ![Alt 图像文本](../media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
+   ![Alt 图像文本](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
 ## <a name="enable-msi-on-your-vm"></a>在 VM 上启用 MSI 
 
@@ -63,11 +63,11 @@ ms.locfileid: "37904282"
 2. 在左侧导航栏中，单击“配置”。 
 3. 此时，将会看到托管服务标识。 若要注册并启用 MSI，请选择“是”，若要禁用，请选择“否”。 
 4. 务必单击“保存”，以保存配置。  
-   ![Alt 图像文本](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+   ![Alt 图像文本](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 5. 若要查看并确认在此 VM 上安装了哪些扩展，请单击“扩展”。 如果 MSI 已启用，列表中会显示现“ManagedIdentityExtensionforWindows”。
 
-   ![Alt 图像文本](../media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
+   ![Alt 图像文本](media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
 
 ## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>授予 VM 对 Azure Data Lake Store 的访问权限
 

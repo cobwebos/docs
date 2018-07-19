@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 9cd6a373f23c69f920d0e46bad368f17c8d21035
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ebd8e28e8adc357f0e6a0582f422085ddf50749f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214989"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041015"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-supermood"></a>教程：Azure Active Directory 与 Supermood 的集成
 
@@ -108,7 +108,7 @@ ms.locfileid: "36214989"
 
     ![Supermood 域和 URL 单一登录信息](./media/supermood-tutorial/tutorial_supermood_url.png)
 
-    a. 选中“显示高级 URL 设置”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选中“显示高级 URL 设置”。
 
     b. 如果要在 **IDP** 发起的模式下配置应用程序，请在“中继 状态”文本框中键入一个 URL：`https://supermood.co/auth/sso/saml20`
 
@@ -125,7 +125,7 @@ ms.locfileid: "36214989"
     | firstName | user.givenname |
     | lastName | user.surname |
 
-    a. 单击“添加属性”，打开“添加属性”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录](./media/supermood-tutorial/tutorial_attribute_04.png)
 
@@ -160,7 +160,7 @@ ms.locfileid: "36214989"
 
     ![证书 SAML](./media/supermood-tutorial/tutorial_supermood_saml.png)
 
-    a. 在“此标识提供者的电子邮件域”文本框中，键入你的域名。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“此标识提供者的电子邮件域”文本框中，键入你的域名。
 
     b. 在“使用元数据 URL”文本框中，粘贴从 Azure 门户复制的**应用联合元数据 URL**。
 
@@ -190,7 +190,7 @@ ms.locfileid: "36214989"
 
     ![“用户”对话框](./media/supermood-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -241,7 +241,7 @@ ms.locfileid: "36214989"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Supermood 磁贴时，应当会自动登录到 Supermood 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

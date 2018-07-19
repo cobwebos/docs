@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jeedes
-ms.openlocfilehash: ae5cbd2926f4429cda3138f40a40426efe64627a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: edfa9d31688cc88fb8e50ec0f5f7d2d366487030
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216977"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042055"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sciforma"></a>教程：Azure Active Directory 与 Sciforma 集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "36216977"
 
     ![配置单一登录](./media/sciforma-tutorial/tutorial_sciforma_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.sciforma.net/sciforma/main.html`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.sciforma.net/sciforma/main.html`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.sciforma.net/sciforma/saml`
 
@@ -158,7 +158,7 @@ ms.locfileid: "36216977"
  
     ![创建 Azure AD 测试用户](./media/sciforma-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -204,7 +204,7 @@ ms.locfileid: "36216977"
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 
-如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

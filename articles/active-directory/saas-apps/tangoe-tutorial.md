@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 42d1b40e01653e8fb5fa5bf118c65de758832f4d
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: d76ee059720baa1f91dd157c093b476e4cfaf035
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308602"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39040698"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tangoe-command-premium-mobile"></a>教程：Azure Active Directory 与 Tangoe Command Premium Mobile 集成
 
@@ -109,9 +109,9 @@ ms.locfileid: "36308602"
 
     ![Tangoe Command Premium Mobile 域和 URL](./media/tangoe-tutorial/tutorial_tangoe_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://sso.tangoe.com/sp/startSSO.ping?PartnerIdpId=<tenant issuer>&TARGET=<target page url>`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://sso.tangoe.com/sp/startSSO.ping?PartnerIdpId=<tenant issuer>&TARGET=<target page url>`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://sso.tangoe.com/sp/ACS.saml2`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://sso.tangoe.com/sp/ACS.saml2`
 
     > [!NOTE] 
     > 这些不是实际值。 使用实际的回复 URL 和登录 URL 更新这些值。 请联系 [Tangoe Command Premium Mobile 客户端支持团队](https://www.tangoe.com/contact-us/)获取这些值。 
@@ -162,7 +162,7 @@ ms.locfileid: "36308602"
  
     ![“用户”对话框页](./media/tangoe-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -210,7 +210,7 @@ ms.locfileid: "36308602"
 
 在本部分中，使用访问面板测试 Azure AD SSO 配置。
 
-单击访问面板中的“Tangoe Command Premium Mobile”磁贴时，用户应自动登录到 Tangoe Command Premium Mobile 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+单击访问面板中的“Tangoe Command Premium Mobile”磁贴时，用户应自动登录到 Tangoe Command Premium Mobile 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

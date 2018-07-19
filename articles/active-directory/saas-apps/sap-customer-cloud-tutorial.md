@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 661bb15f93c505ad069e826b1506f6e69c5339e0
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8855a82c1490c916e040f61c07e1116d9125e7e6
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223342"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045856"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-for-customer"></a>教程：将 Azure Active Directory 与 SAP Cloud for Customer 集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "36223342"
 
     ![配置单一登录](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<server name>.crm.ondemand.com`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<server name>.crm.ondemand.com`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<server name>.crm.ondemand.com`
 
@@ -123,7 +123,7 @@ ms.locfileid: "36223342"
 
     ![配置单一登录](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_attribute.png)
 
-    a. 在“用户标识符”列表中选择“ExtractMailPrefix()”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“用户标识符”列表中选择“ExtractMailPrefix()”。
 
     b. 从“邮件”列表中，选择要用于实现的用户属性。
     例如，如果想要使用 EmployeeID 作为唯一用户标识符并且已在 ExtensionAttribute2 中存储属性值，则选择 user.extensionattribute2。  
@@ -142,7 +142,7 @@ ms.locfileid: "36223342"
 
 8. 若要配置 SSO，请执行以下步骤：
    
-    a. 以管理员权限登录到 SAP Cloud for Customer 门户。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 以管理员权限登录到 SAP Cloud for Customer 门户。
    
     b. 导航到“应用程序和用户管理常见任务”，单击“标识提供者”选项卡。
    
@@ -210,7 +210,7 @@ ms.locfileid: "36223342"
  
     ![创建 Azure AD 测试用户](./media/sap-customer-cloud-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -260,7 +260,7 @@ ms.locfileid: "36223342"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“SAP Cloud for Customer”磁贴时，用户应自动登录到 SAP Cloud for Customer 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

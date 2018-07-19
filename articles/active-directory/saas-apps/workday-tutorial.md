@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: jeedes
-ms.openlocfilehash: d3d85dd3ec074d01d597e34a45f27434214fc0ad
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 641f2e19791be48d014eeb61fb2848fc2a33a9cc
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212258"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042038"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>教程：Azure Active Directory 与 Workday 的集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "36212258"
 
     ![Workday 域和 URL 单一登录信息](./media/workday-tutorial/tutorial_workday_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://impl.workday.com/<tenant>/login-saml2.htmld`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://impl.workday.com/<tenant>/login-saml2.htmld`
 
     b. 在“标识符”文本框中，键入一个 URL：`http://www.workday.com`
 
@@ -118,7 +118,7 @@ ms.locfileid: "36212258"
 
     ![Workday 域和 URL 单一登录信息](./media/workday-tutorial/tutorial_workday_url1.png)
 
-    在“回复 URL”文本框中，使用以下模式键入 URL：`https://impl.workday.com/<tenant>/login-saml.htmld`
+    在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://impl.workday.com/<tenant>/login-saml.htmld`
      
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的登录 URL 和回复 URL 更新这些值。 回复 URL 必须具有一个子域（例如：www、wd2、wd3、wd3-impl、wd5 和 wd5-impl）。 使用类似于“*http://www.myworkday.com*”的内容有效，但“*http://myworkday.com*”无效。 请联系 [Workday 客户端支持团队](https://www.workday.com/en-us/partners-services/services/support.html)获取这些值。  
@@ -145,7 +145,7 @@ ms.locfileid: "36212258"
    
     ![重定向 URL](./media/workday-tutorial/IC7829581.png "重定向 URL")
    
-    a. 单机“添加行”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单机“添加行”。
    
     b. 在“登录重定向 URL”文本框和“移动重定向 URL”文本框中，键入在 Azure 门户的“Workday 域和 URL”部分中输入的登录 URL。
    
@@ -162,7 +162,7 @@ ms.locfileid: "36212258"
    
     ![SAML 设置](./media/workday-tutorial/IC782926.png "SAML 设置")
    
-    a.  选择“启用 SAML 身份验证”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  选择“启用 SAML 身份验证”。
    
     b.  单击“添加行”。
 
@@ -170,7 +170,7 @@ ms.locfileid: "36212258"
    
     ![SAML 标识提供者](./media/workday-tutorial/IC7829271.png "SAML 标识提供者")
    
-    a. 在“标识提供者名称”文本框中，键入提供者名称（例如：*SPInitiatedSSO*）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识提供者名称”文本框中，键入提供者名称（例如：*SPInitiatedSSO*）。
    
     b. 在 Azure 门户的“配置登录”窗口中，复制“SAML 实体 ID”值，然后将其粘贴到“颁发者”文本框。
 
@@ -194,7 +194,7 @@ ms.locfileid: "36212258"
    
     ![查看 x509 公钥](./media/workday-tutorial/IC782930.png "查看 x509 公钥") 
    
-    a. 在“名称”文本框中，键入证书名称（例如：PPE\_SP）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入证书名称（例如：PPE\_SP）。
    
     b. 在**有效起始日期**文本框中，键入证书的“有效起始日期”属性值。
    
@@ -215,7 +215,7 @@ ms.locfileid: "36212258"
    
     ![SSO 配置](./media/workday-tutorial/WorkdaySSOConfiguratio.png "SSO 配置")
    
-    a.  在“服务提供商 ID”文本框中，键入 **http://www.workday.com**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  在“服务提供商 ID”文本框中，键入 **http://www.workday.com**。
    
     b. 选择“不削弱 SP 发起的身份验证请求”。
    
@@ -251,7 +251,7 @@ ms.locfileid: "36212258"
 
     ![“用户”对话框](./media/workday-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -298,7 +298,7 @@ ms.locfileid: "36212258"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击“Workday”磁贴时，应当会自动登录到 Workday 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 05/14/2018
 ms.author: danlep
-ms.openlocfilehash: 025ff3dea365ab75af55f107da1fb7331861eb06
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: c4fd48e40eb4f03daf4bcb7e3b7d6794880799cf
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34166363"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036483"
 ---
 # <a name="submit-hpc-jobs-from-an-on-premises-computer-to-an-hpc-pack-cluster-deployed-in-azure"></a>将 HPC 作业从本地计算机提交到部署在 Azure 中的 HPC Pack 群集
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -90,7 +90,7 @@ ms.locfileid: "34166363"
 
 1. 在头节点上，向 Microsoft 管理控制台中添加用于“本地计算机”帐户的证书管理单元。 有关添加此管理单元的步骤，请参阅[向 MMC 中添加证书管理单元](https://technet.microsoft.com/library/cc754431.aspx)。
 2. 在控制台树中，依次展开“证书 - 本地计算机” > “个人”，并单击“证书”。
-3. 找到在[步骤 1：在头节点上安装并配置 Web 组件](#step-1:-install-and-configure-the-web-components-on-the-head-node)中为 HPC Pack Web 组件配置的证书（例如，CN=&lt;*HeadNodeDnsName*&gt;.cloudapp.net）。
+3. 找到在[步骤 1：在头节点上安装并配置 Web 组件](#step-1-install-and-configure-the-web-components-on-the-head-node)中为 HPC Pack Web 组件配置的证书（例如，CN=&lt;*HeadNodeDnsName*&gt;.cloudapp.net）。
 4. 右键单击该证书，并单击“所有任务” > “导出”。
 5. 在证书导出向导中，单击“下一步”并确保选中“否，不导出私钥”。
 6. 执行此向导中的其余步骤，以“DER 编码二进制 X.509 (.CER)”格式导出证书。
@@ -137,7 +137,7 @@ ms.locfileid: "34166363"
 
 1. 如果以前在提交作业时未存储群集用户的域凭据，可以在凭据管理器中添加凭据。
    
-    a. 在客户端计算机上的控制面板中，启动凭据管理器。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在客户端计算机上的控制面板中，启动凭据管理器。
    
     b. 单击“Windows 凭据” > “添加普通凭据”。
    

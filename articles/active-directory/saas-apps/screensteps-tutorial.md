@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.openlocfilehash: d977c0f014d38dbfdddeb9b544b52159905cff47
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 40aa948547587b224a81ac97a3554345d8ca783d
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228690"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051360"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screensteps"></a>教程：Azure Active Directory 与 ScreenSteps 集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "36228690"
 
     ![ScreenSteps 域和 URL 单一登录信息](./media/screensteps-tutorial/tutorial_screensteps_url.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenantname>.ScreenSteps.com`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<tenantname>.ScreenSteps.com`
 
     > [!NOTE] 
     > 此值不是真实值。 本教程稍后将介绍如何使用实际登录 URL 来更新该值。 
@@ -145,7 +145,7 @@ ms.locfileid: "36228690"
 
     ![创建身份验证终结点](./media/screensteps-tutorial/ic778526.png "创建身份验证终结点")
     
-    a. 在“标题”文本框中，键入标题。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标题”文本框中，键入标题。
     
     b. 从“模式”列表中，选择“SAML”。
     
@@ -159,7 +159,7 @@ ms.locfileid: "36228690"
 
     ![远程身份验证终结点](./media/screensteps-tutorial/ic778527.png "远程身份验证终结点")
 
-    a. 单击“上传新 SAML 证书文件”，然后上传从 Azure 门户下载的证书。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“上传新 SAML 证书文件”，然后上传从 Azure 门户下载的证书。
     
     b. 在“远程登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
     
@@ -203,7 +203,7 @@ ms.locfileid: "36228690"
 
     ![“用户”对话框](./media/screensteps-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -250,7 +250,7 @@ ms.locfileid: "36228690"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 ScreenSteps 磁贴时，应自动登录到 ScreenSteps 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

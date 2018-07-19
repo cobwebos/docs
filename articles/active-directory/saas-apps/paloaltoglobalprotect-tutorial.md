@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: e840a8cbcbf03bf6a658047686f4d4a29994af09
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6f395897687235f0956928fd0a5dccf00d4c7d12
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219928"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041035"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---globalprotect"></a>教程：Azure Active Directory 与 Palo Alto Networks - GlobalProtect 集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "36219928"
 
     ![Palo Alto Networks - GlobalProtect 域和 URL 单一登录信息](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoglobal_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<Customer Firewall URL>`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<Customer Firewall URL>`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<Customer Firewall URL>/SAML20/SP`
 
@@ -127,7 +127,7 @@ ms.locfileid: "36219928"
     | --- | --- |    
     | username | user.userprincipalname |
 
-    a. 单击“添加属性”，打开“添加属性”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录](./media/paloaltoglobalprotect-tutorial/tutorial_attribute_04.png)
 
@@ -162,7 +162,7 @@ ms.locfileid: "36219928"
 
     ![配置 Palo Alto 单一登录](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoadmin_admin3.png)
 
-    a. 在“配置文件名称”文本框中提供名称，如 Azure AD GlobalProtect。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“配置文件名称”文本框中提供名称，如 Azure AD GlobalProtect。
     
     b. 在“标识提供者元数据”中，单击“浏览”并选择从 Azure 门户下载的元数据 xml 文件。
     
@@ -196,7 +196,7 @@ ms.locfileid: "36219928"
 
     ![“用户”对话框](./media/paloaltoglobalprotect-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -243,7 +243,7 @@ Palo Alto Networks - GlobalProtect 支持实时用户设置，因此，在成功
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击“Palo Alto Networks - GlobalProtect”磁贴时，应会自动登录到 Palo Alto Networks - GlobalProtect 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

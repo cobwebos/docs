@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 70a67f5205ee9b1249d3db2cda3eb4af9acabe31
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 10f4749524c4d4b35b83e5637d35f4ef9a8f9ab6
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230166"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041324"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-replicon"></a>教程：Azure Active Directory 与 Replicon 集成
 
@@ -110,11 +110,11 @@ ms.locfileid: "36230166"
 
     ![Replicon 域和 URL 单一登录信息](./media/replicon-tutorial/tutorial_replicon_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://na2.replicon.com/<companyname>/saml2/sp-sso/post`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://na2.replicon.com/<companyname>/saml2/sp-sso/post`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://global.replicon.com/<companyname>`
 
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://global.replicon.com/!/saml2/<companyname>/sso/post`
+    c. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://global.replicon.com/!/saml2/<companyname>/sso/post`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Replicon 客户端支持团队](https://www.replicon.com/customerzone/contact-support)获取这些值。 
@@ -133,7 +133,7 @@ ms.locfileid: "36230166"
 
     ![启用 SAML 身份验证](./media/replicon-tutorial/ic777805.png "启用 SAML 身份验证")
 
-    a. 要显示 **EnableSAML Authentication2** 对话框，请将以下内容追加到 URL 中的公司密钥后面：`/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 要显示 **EnableSAML Authentication2** 对话框，请将以下内容追加到 URL 中的公司密钥后面：`/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
     * 下面显示完整 URL 的架构：`https://na2.replicon.com/\<YourCompanyKey\>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
@@ -167,7 +167,7 @@ ms.locfileid: "36230166"
 
     ![“用户”对话框](./media/replicon-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -195,7 +195,7 @@ ms.locfileid: "36230166"
 
     ![用户配置文件](./media/replicon-tutorial/ic777808.png "用户配置文件")
 
-    a. 在“登录名”文本框中，键入要预配的 Azure AD 用户的 Azure AD 电子邮件地址，如 **BrittaSimon@contoso.com**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录名”文本框中，键入要预配的 Azure AD 用户的 Azure AD 电子邮件地址，如 **BrittaSimon@contoso.com**。
 
     b. 对于“身份验证类型”，选择“SSO”。
 
@@ -243,7 +243,7 @@ ms.locfileid: "36230166"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 Replicon 磁贴时，应当会自动登录到 Replicon 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -412,38 +412,50 @@ items:
                 href: cassandra-import-data.md
   - name: 操作方法指南
     items:
-      - name: 密钥和一致性
-        href: manage-account.md
-      - name: Throughput
-        href: set-throughput.md
-      - name: 防火墙支持
-        href: firewall-support.md
-      - name: 设置虚拟网络服务终结点
-        href: vnet-service-endpoint.md
-      - name: 度量值
-        href: use-metrics.md
-      - name: 监视 SLA
-        href: monitor-accounts.md
+      - name: 管理
+        items:
+          - name: 使用 PowerShell 管理
+            href: manage-account-with-powershell.md
+          - name: 使用存储资源管理器进行管理
+            href: storage-explorer.md
+          - name: 使用数据资源管理器进行管理
+            href: data-explorer.md
+          - name: 管理密钥和一致性级别
+            href: manage-account.md
+          - name: Throughput
+            href: set-throughput.md
+          - name: 使数据自动过期
+            href: time-to-live.md
+          - name: 诊断日志记录
+            href: logging.md
+      - name: 保护数据
+        items:
+          - name: 防火墙支持
+            href: firewall-support.md
+          - name: 设置虚拟网络服务终结点
+            href: vnet-service-endpoint.md
+      - name: 监视
+        items:
+          - name: 使用指标进行监视
+            href: use-metrics.md
+          - name: 监视 SLA
+            href: monitor-accounts.md
       - name: 备份和还原
-        href: online-backup-and-restore.md
-      - name: 区域性故障转移
-        href: regional-failover.md
-      - name: 诊断日志记录
-        href: logging.md
-      - name: 存储过程、触发器和 UDF
-        href: programming.md
-      - name: BulkExecutor 概述
+        items:
+          - name: 联机备份和还原
+            href: online-backup-and-restore.md
+          - name: 区域性故障转移
+            href: regional-failover.md
+      - name: 自动化
+        items:
+          - name: 存储过程、触发器和 UDF
+            href: programming.md
+          - name: 多主设置
+            href: multi-master-workaround.md
+      - name: 批量执行程序库
         href: bulk-executor-overview.md
       - name: 以经济高效的方式读取和写入
         href: key-value-store-cost.md
-      - name: 使数据自动过期
-        href: time-to-live.md
-      - name: 使用 PowerShell 管理
-        href: manage-account-with-powershell.md
-      - name: 使用存储资源管理器进行管理
-        href: storage-explorer.md
-      - name: 多主设置
-        href: multi-master-workaround.md
   - name: 资源
     items:
       - name: 查询备忘单

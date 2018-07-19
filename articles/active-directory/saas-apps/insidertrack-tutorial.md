@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2018
 ms.author: jeedes
-ms.openlocfilehash: 9fdddd1b80fe7d374249b8baf490a9efe8d481f9
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 09f0e38dc8eab2042a28e6816155ad14b185a034
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226946"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047257"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insider-track"></a>教程：Azure Active Directory 与 Insider Track 的集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "36226946"
 
     ![Insider Track 域和 URL 单一登录信息](./media/insidertrack-tutorial/tutorial_insidertrack_url.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>/InsiderTrack.Portal.<companyname>/Sso/`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>/InsiderTrack.Portal.<companyname>/Sso/`
 
     > [!NOTE] 
     > 登录 URL 值不是真实值。 使用实际登录 URL 更新此值。 若要获取此值，请与 [Insider Track 客户端支持团队](https://cytecsolutions.com/contact/)联系。
@@ -157,7 +157,7 @@ ms.locfileid: "36226946"
 
     ![“用户”对话框](./media/insidertrack-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -204,7 +204,7 @@ ms.locfileid: "36226946"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Insider Track”磁贴时，会自动登录到 Insider Track 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

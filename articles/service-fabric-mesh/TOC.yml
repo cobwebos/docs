@@ -9,17 +9,17 @@
   items:
     - name: 部署 Hello World
       href: service-fabric-mesh-quickstart-deploy-container.md
-    - name: 创建和部署 Web 应用程序
+    - name: 创建 Web 应用并将其部署到 Azure Service Fabric 网格
       href: service-fabric-mesh-quickstart-dotnet-core.md
 - name: 教程
   items:
-    - name: 创建并部署多服务 Web 应用
+    - name: 创建、调试和部署多服务 Service Fabric 网格 Web 应用
       items:
-        - name: 1- 生成 ASP.NET Core 应用程序
+        - name: 1- 生成 Service Fabric 网格 Web 应用
           href: service-fabric-mesh-tutorial-create-dotnetcore.md
-        - name: 2- 调试应用程序
+        - name: 2- 调试 Service Fabric 网格 Web 应用
           href: service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md
-        - name: 3- 部署应用程序
+        - name: 3- 部署 Service Fabric 网格 Web 应用
           href: service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md
 - name: 概念
   items:

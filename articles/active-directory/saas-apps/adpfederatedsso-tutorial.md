@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: jeedes
-ms.openlocfilehash: 7e7ecce9129f3bf9f70a2ba153ba6ba47bd27731
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 75b84c2856373126ceba0fc536e41d270f4d2d05
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36209878"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048773"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp"></a>教程：Azure Active Directory 与 ADP 集成
 
@@ -104,7 +104,7 @@ ms.locfileid: "36209878"
 
     ![单一登录属性](./media/adpfederatedsso-tutorial/tutorial_adp_prop.png)
 
-    a. 将“允许用户登录”字段值设置为“是”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将“允许用户登录”字段值设置为“是”。
 
     b. 复制“用户访问 URL”并将其粘贴到“配置登录 URL”部分，教程稍后将对此进行说明。
 
@@ -138,7 +138,7 @@ ms.locfileid: "36209878"
     | ------------------- | -------------------- |    
     | PersonImmutableID | user.employeeid |
     
-    a. 单击“添加属性”，打开“添加属性”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录](./media/adpfederatedsso-tutorial/tutorial_attribute_04.png)
 
@@ -188,7 +188,7 @@ ms.locfileid: "36209878"
 
     ![单一登录 linkedproperties](./media/adpfederatedsso-tutorial/tutorial_adp_linkedproperties.png)
 
-    a.  将“允许用户登录”字段值设置为“是”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  将“允许用户登录”字段值设置为“是”。
 
     b.  将“需要进行用户分配”字段值设置为“是”。
 
@@ -206,7 +206,7 @@ ms.locfileid: "36209878"
 
     ![单一登录属性](./media/adpfederatedsso-tutorial/tutorial_adp_linkedsignon.png)
                                                               
-    a. 粘贴从上述“属性”选项卡复制的“用户访问 URL”（在 ADP 主应用中）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 粘贴从上述“属性”选项卡复制的“用户访问 URL”（在 ADP 主应用中）。
                                                              
     b. 以下 5 个不同的应用支持“中继状态 URL”。 必须手动将特定应用程序的相应“中继状态 URL”值追加到“用户访问 URL”。
     
@@ -234,7 +234,7 @@ ms.locfileid: "36209878"
 
 10. 收到 ADP 代表的确认后，可以开始使用一个或两个用户进行测试。
 
-    a. 将少量的用户分配到 ADP 服务应用，以测试联合访问。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将少量的用户分配到 ADP 服务应用，以测试联合访问。
 
     b. 如果这些用户能够访问库中的 ADP 服务应用，并且能够访问其 ADP 服务，则表示测试成功。
  
@@ -264,7 +264,7 @@ ms.locfileid: "36209878"
 
     ![“用户”对话框](./media/adpfederatedsso-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -311,7 +311,7 @@ ms.locfileid: "36209878"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“ADP”磁贴时，应当会自动登录到 ADP 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -15,12 +15,12 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: robmcm
-ms.openlocfilehash: fa19f3dc7dded712102d4ba9b66dd4df1bfd20dd
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6ea1d249b7f9aec3a45923b162a97ce7f83d0d31
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29397591"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901147"
 ---
 # <a name="ruby-on-rails-web-application-on-an-azure-vm"></a>Azure 虚拟机上的 Ruby on Rails Web 应用程序
 本教程介绍如何在 Azure 中使用 Linux 虚拟机托管 Ruby on Rails 网站。  
@@ -100,7 +100,7 @@ ms.locfileid: "29397591"
     [2015-06-09 23:34:23] INFO  WEBrick::HTTPServer#start: pid=27766 port=3000
 
 ## <a name="add-an-endpoint"></a>添加终结点
-1. 转到 [Azure 门户] [https://portal.azure.com] ，并选择 VM。
+1. 转到 [Azure 门户][https://portal.azure.com] 并选择 VM。
 
 2. 选择页面左侧“设置”中的“终结点”。
 
@@ -129,7 +129,7 @@ ms.locfileid: "29397591"
     ![默认 rails 页面][default-rails-cloud]
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，手动执行大多数步骤。 在生产环境中，会在开发计算机上编写应用，然后将其部署到 Azure VM。 此外，大多数生产环境都结合其他服务器进程（如 Apache 或 NginX）来托管 Rails 应用程序，这些进程会处理路由到多个 Rails 应用程序实例的请求并提供静态资源。 有关详细信息，请参阅 http://rubyonrails.org/deploy/。
+在本教程中，手动执行大多数步骤。 在生产环境中，会在开发计算机上编写应用，然后将其部署到 Azure VM。 此外，大多数生产环境都结合其他服务器进程（如 Apache 或 NginX）来托管 Rails 应用程序，这些进程会处理路由到多个 Rails 应用程序实例的请求并提供静态资源。 有关详细信息，请参阅 http://guides.rubyonrails.org/routing.html。
 
 若要详细了解 Ruby on Rails，请参阅 [Ruby on Rails 指南][rails-guides]。
 
@@ -137,7 +137,7 @@ ms.locfileid: "29397591"
 
 * [使用 Blob 存储非结构化数据][blobs]
 * [使用表存储键/值对][tables]
-* [使用内容交付网络提供高带宽内容][cdn-howto]
+* [使用内容分发网络提供高带宽内容][cdn-howto]
 
 <!-- WA.com links -->
 [blobs]:../../../storage/blobs/storage-ruby-how-to-use-blob-storage.md

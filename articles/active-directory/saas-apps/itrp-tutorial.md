@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 0834980cf4cba1e3b9eef3b8f938b67e61a8eafe
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e29f167abeb2cfabcf874dd4a0162745e5575deb
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218140"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046917"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>教程：Azure Active Directory 与 ITRP 集成
 
@@ -113,7 +113,7 @@ ms.locfileid: "36218140"
 
     ![配置单一登录](./media/itrp-tutorial/tutorial_itrp_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenant-name>.itrp.com`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<tenant-name>.itrp.com`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<tenant-name>.itrp.com`
 
@@ -148,7 +148,7 @@ ms.locfileid: "36218140"
     
     ![单一登录](./media/itrp-tutorial/ic775573.png "单一登录")   
 
-    a. 单击“启用”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“启用”。
 
     b. 在“远程注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
 
@@ -185,7 +185,7 @@ ms.locfileid: "36218140"
  
     ![创建 Azure AD 测试用户](./media/itrp-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -219,7 +219,7 @@ ms.locfileid: "36218140"
    
     ![用户](./media/itrp-tutorial/ic775577.png "用户") 
       
-    a. 键入要预配的有效 AAD 帐户的“名称”、“电子邮件”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 键入要预配的有效 AAD 帐户的“名称”、“电子邮件”。
 
     b. 单击“ **保存**”。
 
@@ -262,7 +262,7 @@ ms.locfileid: "36218140"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 ITRP 磁贴时，应自动登录到 ITRP 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

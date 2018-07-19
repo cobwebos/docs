@@ -15,12 +15,12 @@ ms.prod: vs-devops-alm
 ms.date: 03/02/2018
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 7809e0b9265ec62bded67d0b0ed851ee0ba98315
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: ce587fcbc3bcbea129db1d3d9d0fb60cebdf8e0e
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301693"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972360"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 上的 Visual Studio 映像
 使用预配置的 Azure 虚拟机 (VM) 中的 Visual Studio 是从无到启动并运行的开发环境的简单快捷方法。 具有不同 Visual Studio 配置的系统映像位于 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps?search=%22visual%20studio%202017%22&page=1)。
@@ -32,9 +32,9 @@ ms.locfileid: "36301693"
 
 | 发行版本                                              | 版本                     |     产品版本     |
 |:------------------------------------------------------------:|:----------------------------:|:-----------------------:|
-| Visual Studio 2017：最新（版本 15.7）                    |    Enterprise、Community     |      版本 15.7.3     |
-| Visual Studio 2017：最新预览版（版本 15.8，预览版 2） |    Enterprise、Community     |      版本 15.8.2     |
-|         Visual Studio 2017：RTW                              |    Enterprise、Community     |      版本 15.0.13    |
+| Visual Studio 2017：最新（版本 15.7）                    |    Enterprise、Community     |      版本 15.7.5     |
+| Visual Studio 2017：最新预览版（版本 15.8，预览版 4） |    Enterprise、Community     |      版本 15.8.4     |
+|         Visual Studio 2017：RTW                              |    Enterprise、Community     |      版本 15.0.15    |
 |   Visual Studio 2015：最新 (Update 3)                      |    Enterprise、Community     |  版本 14.0.25431.01  |
 |         Visual Studio 2015：RTW                              |             无             | （已过期，无法进行维护） |
 

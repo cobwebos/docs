@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 2f3c3c8db93ae638cfc0bf82ee26ff2e26646d49
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 176ed1718818b24866620d86d7eff4d9af1d378f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220268"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050868"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>教程：将 Azure Active Directory 与 SAP Cloud Platform 集成
 
@@ -41,7 +41,7 @@ ms.locfileid: "36220268"
 - Azure AD 订阅
 - 已启用 SAP Cloud Platform 单一登录的订阅
 
-完成本教程后，已向 SAP Cloud Platform 分配的 Azure AD 用户能够使用[访问面板简介](../active-directory-saas-access-panel-introduction.md)单一登录到该应用程序。
+完成本教程后，已向 SAP Cloud Platform 分配的 Azure AD 用户能够使用[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)单一登录到该应用程序。
 
 >[!IMPORTANT]
 >用户需要部署自己的应用程序或订阅 SAP Cloud Platform 帐户上的应用程序来测试单一登录。 在本教程中，会在帐户中部署应用程序。
@@ -113,7 +113,7 @@ ms.locfileid: "36220268"
 
     ![SAP Cloud Platform 域和 URL 单一登录信息](./media/sap-hana-cloud-platform-tutorial/tutorial_sapcloudplatform_url.png)
 
-    a. 在“登录 URL”文本框中，键入用户用于登录“SAP Cloud Platform”应用程序的 URL。 这是“SAP Cloud Platform”应用程序中受保护资源的特定于帐户的 URL。 URL 基于以下模式：`https://<applicationName><accountName>.<landscape host>.ondemand.com/<path_to_protected_resource>`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，键入用户用于登录“SAP Cloud Platform”应用程序的 URL。 这是“SAP Cloud Platform”应用程序中受保护资源的特定于帐户的 URL。 URL 基于以下模式：`https://<applicationName><accountName>.<landscape host>.ondemand.com/<path_to_protected_resource>`
       
      >[!NOTE]
      >这是“SAP Cloud Platform”应用程序中要求用户进行身份验证的 URL。
@@ -167,7 +167,7 @@ ms.locfileid: "36220268"
 
     ![信任管理](./media/sap-hana-cloud-platform-tutorial/ic793931.png "信任管理")
    
-    a. 单击“编辑”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“编辑”。
 
     b. 对于“配置类型”，选择“自定义”。
 
@@ -185,7 +185,7 @@ ms.locfileid: "36220268"
    
     ![获取元数据](./media/sap-hana-cloud-platform-tutorial/ic793930.png "获取元数据")
 
-    a. 单击“获取元数据”下载 SAP Cloud Platform 元数据文件。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“获取元数据”下载 SAP Cloud Platform 元数据文件。
 
     b. 打开下载的 SAP Cloud Platform 元数据 XML 文件，并找到 **ns3:AssertionConsumerService** 标记。
  
@@ -214,7 +214,7 @@ ms.locfileid: "36220268"
     
     ![属性](./media/sap-hana-cloud-platform-tutorial/ic790804.png "属性") 
 
-    a. 单击“添加基于断言的属性”，并添加以下基于断言的属性：
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加基于断言的属性”，并添加以下基于断言的属性：
        
     | 断言属性 | 主体属性 |
     | --- | --- |
@@ -268,7 +268,7 @@ ms.locfileid: "36220268"
 
     ![“用户”对话框](./media/sap-hana-cloud-platform-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -288,7 +288,7 @@ ms.locfileid: "36220268"
    
     ![授权](./media/sap-hana-cloud-platform-tutorial/ic790805.png "授权")
    
-    a. 单击“授权”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“授权”。
 
     b. 单击“用户”选项卡。
 

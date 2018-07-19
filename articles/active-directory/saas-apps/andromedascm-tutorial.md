@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 09f2f854e3b5a70938b6c47bb7dfb5fdf6d52df3
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 047e1ea6a474d95c57ffc2bdff5ad8a5c45e0d36
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223205"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048559"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>教程：Azure Active Directory 与 Andromeda 集成
 
@@ -108,15 +108,15 @@ ms.locfileid: "36223205"
 
     ![Andromeda 域和 URL 单一登录信息](./media/andromedascm-tutorial/tutorial_andromedascm_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<tenantURL>.ngcxpress.com/`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<tenantURL>.ngcxpress.com/`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<tenantURL>.ngcxpress.com/SAMLConsumer.aspx`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<tenantURL>.ngcxpress.com/SAMLConsumer.aspx`
 
 4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
 
     ![Andromeda 域和 URL 单一登录信息](./media/andromedascm-tutorial/tutorial_andromedascm_url1.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenantURL>.ngcxpress.com/SAMLLogon.aspx`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<tenantURL>.ngcxpress.com/SAMLLogon.aspx`
      
     > [!NOTE] 
     > 上面的值不是实际值。 本教程稍后将介绍如何使用实际的登录 URL 和标识符来更新该值。
@@ -139,7 +139,7 @@ ms.locfileid: "36223205"
     > [!NOTE]
     > 这些不是实际值。 这些值仅用于演示，请使用组织角色。
 
-    a. 单击“添加属性”，打开“添加属性”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录 Add](./media/andromedascm-tutorial/tutorial_attribute_04.png)
 
@@ -179,7 +179,7 @@ ms.locfileid: "36223205"
 
     ![Andromeda 配置](./media/andromedascm-tutorial/tutorial_andromedascm_config.png)
 
-    a. 选中“使用 SAML 启用 SSO”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选中“使用 SAML 启用 SSO”。
 
     b. 在“Andromeda 信息”部分下，复制“SP 标识”值并将其粘贴到“Andromeda 域和 URL”部分的“标识符”文本框中。
 
@@ -226,7 +226,7 @@ ms.locfileid: "36223205"
 
     ![“用户”对话框](./media/andromedascm-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -276,7 +276,7 @@ ms.locfileid: "36223205"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Andromeda”磁贴时，应当会自动登录到 Andromeda 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

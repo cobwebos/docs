@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 76980214daf6e7dd019c56db089095ae121b853f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: accafab55c6c1aa34ccf7aa9cfc4adb2a902f5e3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215345"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043425"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex"></a>教程：Azure Active Directory 与 Cisco Webex 的集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "36215345"
 
     ![Cisco Webex 域和 URL 单一登录信息](./media/cisco-webex-tutorial/tutorial_ciscowebex_url.png)
 
-    a. 在“登录 URL”框中，使用以下模式键入 URL：`https://<subdomain>.webex.com`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”框中，使用以下模式键入 URL：`https://<subdomain>.webex.com`
 
     b. 在“标识符”框中键入 URL `http://www.webex.com`。
 
@@ -147,7 +147,7 @@ ms.locfileid: "36215345"
    
     ![联合 SSO 配置](./media/cisco-webex-tutorial/ic777623.png "Federated SSO Configuration")  
 
-    a. 在“联合身份验证协议”列表中，选择“SAML 2.0”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“联合身份验证协议”列表中，选择“SAML 2.0”。
 
     b. 对于“SSO 配置文件”，请选择“SP 发起”。
 
@@ -194,7 +194,7 @@ ms.locfileid: "36215345"
 
     ![“用户”对话框](./media/cisco-webex-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -218,7 +218,7 @@ ms.locfileid: "36215345"
    
     ![添加用户](./media/cisco-webex-tutorial/ic777626.png "添加用户")   
 
-    a. 对于“帐户类型”，请选择“主机”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“帐户类型”，请选择“主机”。
 
     b. 在“名字”框中，键入用户的名字（在此示例中为“Britta”）。
 
@@ -275,7 +275,7 @@ ms.locfileid: "36215345"
 
 在访问面板中选择 Cisco Webex 磁贴时，应会自动登录到 Cisco Webex 应用程序。
 
-有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 

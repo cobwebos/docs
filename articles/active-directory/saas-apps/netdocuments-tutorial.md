@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 787a2794148cdcc27db7ec2da705944b60666762
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1dbcb2999afedcea03013b258073d39350b4fcdb
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213563"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051663"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netdocuments"></a>教程：Azure Active Directory 与 NetDocuments 的集成
 
@@ -112,9 +112,9 @@ ms.locfileid: "36213563"
 
     ![配置单一登录](./media/netdocuments-tutorial/tutorial_netdocuments_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<user identifier>`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<user identifier>`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<user identifier>`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<user identifier>`
 
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的登录 URL 和回复 URL 更新这些值。 请联系 [NetDocuments 支持团队](https://support.netdocuments.com/hc/)获取这些值。
@@ -143,7 +143,7 @@ ms.locfileid: "36213563"
    
     ![联合身份](./media/netdocuments-tutorial/ic795049.png "联合身份")
    
-    a. 选择“Active Directory 联合身份验证服务”作为“联合身份服务器类型”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“Active Directory 联合身份验证服务”作为“联合身份服务器类型”。
    
     b. 单击“选择文件”，上传从 Azure 门户下载的元数据文件。
    
@@ -175,7 +175,7 @@ ms.locfileid: "36213563"
  
     ![创建 Azure AD 测试用户](./media/netdocuments-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -242,7 +242,7 @@ ms.locfileid: "36213563"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 NetDocuments 磁贴时，应当会自动登录到 NetDocuments 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

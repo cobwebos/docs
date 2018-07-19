@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 69a9aa2ab6c1fd379d7f3421fc70cc8cffd1cb3a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 24a5c1a260cf86f0860e0292c2eb9527f976a363
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214264"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39040504"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signalfx"></a>教程：Azure Active Directory 与 SignalFx 的集成
 
@@ -108,9 +108,9 @@ ms.locfileid: "36214264"
 
     ![SignalFx 域和 URL 单一登录信息](./media/signalfx-tutorial/tutorial_signalfx_url.png)
 
-    a. 在“标识符”文本框中，键入一个 URL：`https://api.signalfx.com/v1/saml/metadata`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，键入一个 URL：`https://api.signalfx.com/v1/saml/metadata`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://api.signalfx.com/v1/saml/acs/<integration ID>`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://api.signalfx.com/v1/saml/acs/<integration ID>`
 
     > [!NOTE] 
     > 上面的值不是实际值。 需要使用实际的回复 URL 更新该值（本教程稍后将会介绍）。
@@ -128,7 +128,7 @@ ms.locfileid: "36214264"
     | PersonImmutableID       | user.userprincipalname    |
     | User.LastName       | user.surname    |
 
-    a. 单击“添加属性”，打开“添加属性”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录 Add](./media/signalfx-tutorial/tutorial_attribute_04.png)
 
@@ -146,7 +146,7 @@ ms.locfileid: "36214264"
 
     ![证书下载链接](./media/signalfx-tutorial/tutorial_signalfx_certificate.png)
 
-    a. 单击“复制”按钮，复制**应用联合元数据 URL** 并将其粘贴到记事本。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“复制”按钮，复制**应用联合元数据 URL** 并将其粘贴到记事本。
 
     b. 单击“证书(Base64)”，然后将证书保存在计算机上。
 
@@ -172,7 +172,7 @@ ms.locfileid: "36214264"
  
     ![SignalFx samlintgpage](./media/signalfx-tutorial/tutorial_signalfx_azure.png)
 
-    a. 在“名称”文本框中，键入一个新的集成名称，例如 **OurOrgName SAML SSO**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入一个新的集成名称，例如 **OurOrgName SAML SSO**。
 
     b. 复制“集成 ID”值，在 Azure 门户中将其附加到“SignalFx 域和 URL”部分的“回复 URL”文本框中的“回复 URL”，例如 `https://api.signalfx.com/v1/saml/acs/<integration ID>`。
 
@@ -208,7 +208,7 @@ ms.locfileid: "36214264"
 
     ![“用户”对话框](./media/signalfx-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -260,7 +260,7 @@ ms.locfileid: "36214264"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 SignalFx 磁贴时，应当会自动登录到 SignalFx 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

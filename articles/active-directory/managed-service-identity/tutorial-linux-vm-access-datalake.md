@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 92bd7190832da6ee9da7d1679b9f27b66a15e3a4
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: ce38dabbe9aa69f7c54bb49888ad83e01a7c9522
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904299"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004874"
 ---
 # <a name="tutorial-use-managed-service-identity-for-a-linux-vm-to-access-azure-data-lake-store"></a>教程：使用 Linux VM 的托管服务标识访问 Azure Data Lake Store
 
@@ -52,7 +52,7 @@ ms.locfileid: "37904299"
 2. 选择“计算”，然后选择“Ubuntu Server 16.04 LTS”。
 3. 输入虚拟机信息。 对于“身份验证类型”，选择“SSH 公钥”或“密码”。 使用创建的凭据可以登录 VM。
 
-   ![用于创建虚拟机的“基本信息”窗格](../media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
+   ![用于创建虚拟机的“基本信息”窗格](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
 
 4. 在“订阅”列表中，选择虚拟机的订阅。
 5. 若要选择要在其中创建虚拟机的新资源组，请选择“资源组” > “新建”。 完成后，选择“确定”。
@@ -65,7 +65,7 @@ ms.locfileid: "37904299"
 1. 对于“虚拟机”，请选择要在其上启用 MSI 的虚拟机。
 2. 在左窗格中，选择“配置”。
 3. 此时会显示“托管服务标识”。 若要注册并启用 MSI，请选择“是”。 若要禁用 MSI，请选择“否”。
-   ![“注册到 Azure Active Directory”选项](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+   ![“注册到 Azure Active Directory”选项](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 4. 选择“保存”。
 
 ## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>授予 VM 对 Azure Data Lake Store 的访问权限

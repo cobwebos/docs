@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: 40a8cd256164bb66e82c651e58d37b1afbb4a652
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: a3bba4e8fd83b160472a2dc6a9425192b4bbd301
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287797"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38531573"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>在 Azure VM 中手动配置 Always On 可用性组
 
@@ -86,7 +86,7 @@ ms.locfileid: "36287797"
 
    ![群集属性](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/42_IPProperties.png)
 
-3. 选择“静态 IP 地址”，并在“地址”文本框中指定一个自动专有 IP 寻址 (APIPA) 范围 (169.254.0.1 - 169.254.255.254) 内的一个可用地址。 此示例中可使用该范围内的任意地址。 例如，`169.254.0.1`。 然后单击“确定”。
+3. 选择“静态 IP 地址”，并指定虚拟机所在子网中的可用地址。
 
 4. 在“群集核心资源”部分中，右键单击群集名称，并单击“联机”。 然后等待这两个资源都处于联机状态。 当该群集名称资源联机时，它会用新的 AD 计算机帐户更新 DC 服务器。 稍后需使用此 AD 帐户运行可用性组群集服务。
 
@@ -341,7 +341,7 @@ Repeat these steps on the second SQL Server.
 
 ## <a name="create-an-azure-load-balancer"></a>创建 Azure 负载均衡器
 
-SQL Server 可用性组在 Azure 虚拟机上需要负载均衡器。 负载均衡器存储可用性组侦听器的 IP 地址。 本部分概述如何在 Azure 门户中创建负载均衡器。
+SQL Server 可用性组在 Azure 虚拟机上需要负载均衡器。 负载均衡器保留可用性组侦听程序和 Windows Server 故障转移群集的 IP 地址。 本部分概述如何在 Azure 门户中创建负载均衡器。
 
 1. 在 Azure 门户中，转到 SQL Server 所在的资源组，并单击“+ 添加”。
 2. 搜索“负载均衡器”。 选择 Microsoft 发布的负载均衡器。
@@ -370,7 +370,7 @@ SQL Server 可用性组在 Azure 虚拟机上需要负载均衡器。 负载均�
 
 若要配置负载均衡器，需要创建一个后端池，一个探测，并设置负载均衡规则。 在 Azure 门户中进行这些操作。
 
-### <a name="add-backend-pool"></a>添加后端池
+### <a name="add-backend-pool-for-the-availability-group-listener"></a>为可用性组侦听程序添加后端池
 
 1. 在 Azure 门户中，转到可用性组。 可能需要刷新视图以便查看新建的负载均衡器。
 
@@ -416,6 +416,46 @@ SQL Server 可用性组在 Azure 虚拟机上需要负载均衡器。 负载均�
    | 端口 | 使用可用性组侦听程序的端口 | 1435 |
    | 后端端口 | 当直接服务器返回设置为浮动 IP时，不使用此字段 | 1435 |
    | 探测 |为探测指定的名称 | SQLAlwaysOnEndPointProbe |
+   | “会话暂留” | 下拉列表 | 无 |
+   | “空闲超时” | 使 TCP 连接保持打开所需的分钟数 | 4 |
+   | 浮动 IP (直接服务器返回) | |已启用 |
+
+   > [!WARNING]
+   > 创建过程中已设置直接服务器返回。 无法进行更改。
+
+1. 单击“确定”以设置负载均衡规则。
+
+### <a name="add-the-front-end-ip-address-for-the-wsfc"></a>为 WSFC 添加前端 IP 地址
+
+WSFC IP 地址也必须在负载均衡器上。 
+
+1. 在门户中，为 WSFC 添加新的前端 IP 配置。 请使用在群集核心资源中为 WSFC 配置的 IP 地址。 将 IP 地址设置为静态。 
+
+1. 单击负载均衡器，单击“运行状况探测”，并单击“+ 添加”。
+
+1. 对运行状况探测进行如下设置：
+
+   | 设置 | 说明 | 示例
+   | --- | --- |---
+   | 名称 | 文本 | WSFCEndPointProbe |
+   | 协议 | 选择 TCP | TCP |
+   | 端口 | 任何未使用的端口 | 58888 |
+   | 间隔  | 探测尝试之间的时间长短（秒） |5 |
+   | 不正常阈值 | 虚拟机不可避免且被视为不正常的连续探测失败次数  | 2 |
+
+1. 单击“确定”以设置运行状况探测。
+
+1. 设置负载均衡规则。 单击“负载均衡规则”，并单击“+添加”。
+
+1. 对负载均衡器规则进行如下设置。
+   | 设置 | 说明 | 示例
+   | --- | --- |---
+   | 名称 | 文本 | WSFCPointListener |
+   | “前端 IP 地址” | 选择一个地址 |使用配置 WSFC IP 地址时所创建的地址。 |
+   | 协议 | 选择 TCP |TCP |
+   | 端口 | 使用可用性组侦听程序的端口 | 58888 |
+   | 后端端口 | 当直接服务器返回设置为浮动 IP时，不使用此字段 | 58888 |
+   | 探测 |为探测指定的名称 | WSFCEndPointProbe |
    | “会话暂留” | 下拉列表 | 无 |
    | “空闲超时” | 使 TCP 连接保持打开所需的分钟数 | 4 |
    | 浮动 IP (直接服务器返回) | |已启用 |

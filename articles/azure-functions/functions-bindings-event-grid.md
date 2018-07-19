@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 01/26/2018
+ms.date: 06/08/2018
 ms.author: tdykstra
-ms.openlocfilehash: 7e0fb3cee8d4ec72e1ec44f7444264fabb1dd202
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 6678109414eaa71ced369e87e1cd15544fee5ee5
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724724"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723429"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions 的事件网格触发器
 
@@ -30,7 +30,7 @@ ms.locfileid: "34724724"
 
 事件处理程序接收并处理事件。 Azure Functions 是[原生支持处理事件网格事件的多个 Azure 服务](../event-grid/overview.md#event-handlers)之一。 本文将会介绍在收到事件网格发出的事件时，如何使用事件网格触发器调用某个函数。
 
-如果需要，可以使用 HTTP 触发器来处理事件网格事件；请参阅本文稍后介绍的[将 HTTP 触发器用作事件网格触发器](#use-an-http-trigger-as-an-event-grid-trigger)。
+如果需要，可以使用 HTTP 触发器来处理事件网格事件；请参阅本文稍后介绍的[将 HTTP 触发器用作事件网格触发器](#use-an-http-trigger-as-an-event-grid-trigger)。 目前，在以 [CloudEvents 架构](../event-grid/cloudevents-schema.md)传递事件时，无法为 Azure Functions 应用使用事件网格触发器。 应转而使用 HTTP 触发器。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -105,9 +105,9 @@ namespace Company.Function
 
 ### <a name="c-script-example"></a>C# 脚本示例
 
-以下示例演示 *function.json* 文件中的一个触发器绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。
+以下示例演示 function.json 文件中的一个触发器绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。
 
-下面是 *function.json* 文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json
 {
@@ -152,9 +152,9 @@ public static void Run(EventGridEvent eventGridEvent, TraceWriter log)
 
 ### <a name="javascript-example"></a>JavaScript 示例
 
-以下示例演示 *function.json* 文件中的一个触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。
+以下示例演示 function.json 文件中的一个触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。
 
-下面是 *function.json* 文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json
 {
@@ -199,13 +199,13 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, Trac
 
 ## <a name="configuration"></a>配置
 
-下表解释了在 *function.json* 文件中设置的绑定配置属性。 无法在 `EventGridTrigger` 特性中设置任何构造函数参数或属性。
+下表解释了在 function.json 文件中设置的绑定配置属性。 无法在 `EventGridTrigger` 特性中设置任何构造函数参数或属性。
 
 |function.json 属性 |说明|
 |---------|---------|----------------------|
-| **类型** | 必需 - 必须设置为 `eventGridTrigger`。 |
-| **direction** | 必需 - 必须设置为 `in`。 |
-| **name** | 必需 - 在函数代码中对接收事件数据的参数使用的变量名称。 |
+| type | 必需 - 必须设置为 `eventGridTrigger`。 |
+| direction | 必需 - 必须设置为 `in`。 |
+| name | 必需 - 在函数代码中对接收事件数据的参数使用的变量名称。 |
 
 ## <a name="usage"></a>使用情况
 
@@ -331,45 +331,44 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 
 或者，可以发送 HTTP PUT 以自行指定密钥值。
 
-## <a name="local-testing-with-requestbin"></a>使用 RequestBin 进行本地测试
-
-> [!NOTE]
-> RequestBin 站点当前不可用，但可以改为通过 https://hookbin.com 使用此方法。 如果该站点已关闭，则可以使用 [ngrok](#local-testing-with-ngrok)。
+## <a name="local-testing-with-viewer-web-app"></a>使用查看器 Web 应用进行本地测试
 
 若要在本地测试事件网格触发器，必须获取从云中的来源位置传送到本地计算机的事件网格 HTTP 请求。 实现此目的的方法之一是在线捕获请求，然后手动将其重新发送到本地计算机：
 
-2. [创建 RequestBin 终结点](#create-a-RequestBin-endpoint)。
-3. [创建事件网格订阅](#create-an-event-grid-subscription)，用于向 RequestBin 终结点发送事件。
-4. [生成请求](#generate-a-request)，并从 RequestBin 站点复制请求正文。
+2. [创建查看器 Web 应用](#create-a-viewer-web-app)，用于捕获事件消息。
+3. [创建事件网格订阅](#create-an-event-grid-subscription)，用于向查看器应用发送事件。
+4. [生成请求](#generate-a-request)，并从查看器应用复制请求正文。
 5. [将请求手动发布](#manually-post-the-request)到事件网格触发器函数的 localhost URL。
 
 完成测试后，可以更新终结点，将同一订阅用于生产。 使用 [az eventgrid event-subscription update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update) Azure CLI 命令。
 
-### <a name="create-a-requestbin-endpoint"></a>创建 RequestBin 终结点
+### <a name="create-a-viewer-web-app"></a>创建查看器 Web 应用
 
-RequestBin 是一个开源工具，可接受 HTTP 请求并显示请求正文。 Azure 事件网格会对 http://requestb.in URL 进行特殊处理。 为便于测试，事件网格会将事件发送到 RequestBin URL，且无需正确响应订阅验证请求。 向另一个测试工具提供相同的处理方式：http://hookbin.com。
+若要简化事件消息捕获，可部署用于显示事件消息的[预建 Web 应用](https://github.com/dbarkol/azure-event-grid-viewer)。 部署的解决方案包括应用服务计划、应用服务 Web 应用和 GitHub 中的源代码。
 
-RequestBin 并不适合在高吞吐量方案中使用。 如果一次推送多个事件，可能不会在工具中看到所有事件。
+选择“部署到 Azure”将解决方案部署到你的订阅。 在 Azure 门户中，为参数提供值。
 
-创建终结点。
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdbarkol%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 
-![创建 RequestBin 终结点](media/functions-bindings-event-grid/create-requestbin.png)
+部署可能需要几分钟才能完成。 部署成功后，请查看 Web 应用以确保它正在运行。 在 Web 浏览器中导航到 `https://<your-site-name>.azurewebsites.net`
 
-复制终结点 URL。
+查看站点，但是尚未有事件发布到它。
 
-![复制 RequestBin 终结点](media/functions-bindings-event-grid/save-requestbin-url.png)
+![查看新站点](media/functions-bindings-event-grid/view-site.png)
 
 ### <a name="create-an-event-grid-subscription"></a>创建事件网格订阅
 
-创建想要测试的类型的事件网格订阅，并在其中指定你的 RequestBin 终结点。 有关如何创建订阅的信息，请参阅本文前面所述的[创建订阅](#create-a-subscription)。
+创建要测试的类型的事件网格订阅，并将 Web 应用中的 URL 作为事件通知的终结点。 Web 应用的终结点必须包括后缀 `/api/updates/`。 因此，完整的 URL 是 `https://<your-site-name>.azurewebsites.net/api/updates`
+
+有关如何使用 Azure 门户创建订阅的信息，请参阅事件网格文档中的[创建自定义事件 - Azure 门户](../event-grid/custom-event-quickstart-portal.md)。
 
 ### <a name="generate-a-request"></a>生成请求
 
-触发一个事件，以便向 RequestBin 终结点生成 HTTP 流量。  例如，如果创建了 Blob 存储订阅，请上传或删除一个 Blob。 RequestBin 页中显示请求后，请复制请求正文。
+触发一个事件，以便向 Web 应用终结点生成 HTTP 流量。  例如，如果创建了 Blob 存储订阅，请上传或删除一个 Blob。 Web 应用中显示请求后，请复制请求正文。
 
 首先会接收订阅验证请求，忽略任何验证请求，并复制事件请求。
 
-![从 RequestBin 复制请求正文](media/functions-bindings-event-grid/copy-request-body.png)
+![从 Web 应用复制请求正文](media/functions-bindings-event-grid/view-results.png)
 
 ### <a name="manually-post-the-request"></a>手动发布请求
 
@@ -467,14 +466,18 @@ az eventgrid event-subscription create --resource-id /subscriptions/aeb4b7cb-b7c
 
 ## <a name="use-an-http-trigger-as-an-event-grid-trigger"></a>将 HTTP 触发器用作事件网格触发器
 
-事件网格事件以 HTTP 请求的形式接收，因此，可以使用 HTTP 触发器而不是事件网格触发器来处理事件。 使用 HTTP 触发器的可能原因之一是能够更好地控制调用函数的终结点 URL。 
+事件网格事件以 HTTP 请求的形式接收，因此，可以使用 HTTP 触发器而不是事件网格触发器来处理事件。 使用 HTTP 触发器的可能原因之一是能够更好地控制调用函数的终结点 URL。 另一个原因是需要以 [CloudEvents 架构](../event-grid/cloudevents-schema.md)接收事件。 目前，事件网格触发器不支持 CloudEvents 架构。 本部分中的示例显示了有关事件网格架构和 CloudEvents 架构问题的解决方案。
 
 如果使用 HTTP 触发器，必须编写代码来指定事件网格触发器自动执行的操作：
 
 * 将验证响应发送到[订阅验证请求](../event-grid/security-authentication.md#webhook-event-delivery)。
 * 针对请求正文中包含的事件数组的每个元素调用该函数一次。
 
-以下 HTTP 触发器的示例 C# 代码模拟事件网格触发器的行为：
+有关用于在本地调用函数或者在 Azure 中运行函数的 URL 的信息，请参阅 [HTTP 触发器绑定参考文档](functions-bindings-http-webhook.md)
+
+### <a name="event-grid-schema"></a>事件网格架构
+
+以下 HTTP 触发器的示例 C# 代码可模拟事件网格触发器的行为。 将此示例用于以事件网格架构传递的事件。
 
 ```csharp
 [FunctionName("HttpTrigger")]
@@ -512,7 +515,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-以下 HTTP 触发器的示例 JavaScript 代码模拟事件网格触发器的行为：
+以下 HTTP 触发器的示例 JavaScript 代码可模拟事件网格触发器的行为。 将此示例用于以事件网格架构传递的事件。
 
 ```javascript
 module.exports = function (context, req) {
@@ -522,10 +525,12 @@ module.exports = function (context, req) {
     // If the request is for subscription validation, send back the validation code.
     if (messages.length > 0 && messages[0].eventType == "Microsoft.EventGrid.SubscriptionValidationEvent") {
         context.log('Validate request received');
-        context.res = { status: 200, body: JSON.stringify({validationResponse: messages[0].data.validationCode}) }
+        var code = messages[0].data.validationCode;
+        context.res = { status: 200, body: { "ValidationResponse": code } };
     }
     else {
         // The request is not for subscription validation, so it's for one or more events.
+        // Event Grid schema delivers events in an array.
         for (var i = 0; i < messages.length; i++) {
             // Handle one event.
             var message = messages[i];
@@ -540,7 +545,70 @@ module.exports = function (context, req) {
 
 事件处理代码通过 `messages` 数组进入循环内部。
 
-有关用于在本地调用函数或者在 Azure 中运行函数的 URL 的信息，请参阅 [HTTP 触发器绑定参考文档](functions-bindings-http-webhook.md) 
+### <a name="cloudevents-schema"></a>CloudEvents 架构
+
+以下 HTTP 触发器的示例 C# 代码可模拟事件网格触发器的行为。  将此示例用于以 CloudEvents 架构传递的事件。
+
+```csharp
+[FunctionName("HttpTrigger")]
+public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]HttpRequestMessage req, TraceWriter log)
+{
+    log.Info("C# HTTP trigger function processed a request.");
+
+    var requestmessage = await req.Content.ReadAsStringAsync();
+    var message = JToken.Parse(requestmessage);
+
+    if (message.Type == JTokenType.Array)
+    {
+        // If the request is for subscription validation, send back the validation code.
+        if (string.Equals((string)message[0]["eventType"],
+        "Microsoft.EventGrid.SubscriptionValidationEvent",
+        System.StringComparison.OrdinalIgnoreCase))
+        {
+            log.Info("Validate request received");
+            return req.CreateResponse<object>(new
+            {
+                validationResponse = message[0]["data"]["validationCode"]
+            });
+        }
+    }
+    else
+    {
+        // The request is not for subscription validation, so it's for an event.
+        // CloudEvents schema delivers one event at a time.
+        log.Info($"Source: {message["source"]}");
+        log.Info($"Time: {message["eventTime"]}");
+        log.Info($"Event data: {message["data"].ToString()}");
+    }
+
+    return req.CreateResponse(HttpStatusCode.OK);
+}
+```
+
+以下 HTTP 触发器的示例 JavaScript 代码可模拟事件网格触发器的行为。 将此示例用于以 CloudEvents 架构传递的事件。
+
+```javascript
+module.exports = function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    var message = req.body;
+    // If the request is for subscription validation, send back the validation code.
+    if (message.length > 0 && message[0].eventType == "Microsoft.EventGrid.SubscriptionValidationEvent") {
+        context.log('Validate request received');
+        var code = message[0].data.validationCode;
+        context.res = { status: 200, body: { "ValidationResponse": code } };
+    }
+    else {
+        // The request is not for subscription validation, so it's for an event.
+        // CloudEvents schema delivers one event at a time.
+        var event = JSON.parse(message);
+        context.log('Source: ' + event.source);
+        context.log('Time: ' + event.eventTime);
+        context.log('Data: ' + JSON.stringify(event.data));
+    }
+    context.done();
+};
+```
 
 ## <a name="next-steps"></a>后续步骤
 

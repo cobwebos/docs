@@ -1,0 +1,196 @@
+---
+title: 如何使用 Linux VM 托管服务标识 (MSI) 访问 Azure Data Lake Store
+description: 本教程介绍如何使用 Linux VM 托管服务标识 (MSI) 访问 Azure Data Lake Store。
+services: active-directory
+documentationcenter: ''
+author: daveba
+manager: mtillman
+editor: ''
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 12/15/2017
+ms.author: skwan
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: b1091ae25e247a0e2ce00de831886cde44ae14a7
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39007826"
+---
+# <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>使用 Linux VM 托管服务标识 (MSI) 访问 Azure Data Lake Store
+
+[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
+
+本教程介绍如何使用 Linux 虚拟机 (VM) 的托管服务标识 (MSI) 访问 Azure Data Lake Store。 托管服务标识由 Azure 自动管理，可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中插入凭据了。 学习如何：
+
+> [!div class="checklist"]
+> * 在 Linux VM 上启用 MSI 
+> * 授予 VM 对 Azure Data Lake Store 的访问权限
+> * 使用 VM 标识获取访问令牌，并使用它访问 Azure Data Lake Store
+
+## <a name="prerequisites"></a>先决条件
+
+[!INCLUDE [msi-core-prereqs](~/includes/active-directory-msi-core-prereqs-ua.md)]
+
+[!INCLUDE [msi-tut-prereqs](~/includes/active-directory-msi-tut-prereqs.md)]
+
+## <a name="sign-in-to-azure"></a>登录 Azure
+
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
+
+## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>在新的资源组中创建 Linux 虚拟机
+
+本教程将新建一个 Linux VM。 另外，还可以在现有 VM 上启用 MSI。
+
+1. 单击 Azure 门户左上角的“创建资源”。
+2. 选择“计算”，然后选择“Ubuntu Server 16.04 LTS”。
+3. 输入虚拟机信息。 对于“身份验证类型”，选择“SSH 公钥”或“密码”。 使用创建的凭据可以登录 VM。
+
+   ![Alt 图像文本](../managed-service-identity/media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
+
+4. 在“订阅”下拉列表中，选择虚拟机对应的订阅。
+5. 若要在新资源组中创建虚拟机，请选择“资源组”中的“新建”。 完成后，单击“确定”。
+6. 选择 VM 大小。 若要查看更多大小，请选择“全部查看”或更改“支持的磁盘类型”筛选器。 在设置边栏选项卡中保留默认值，然后单击“确定”。
+
+## <a name="enable-msi-on-your-vm"></a>在 VM 上启用 MSI
+
+通过虚拟机 MSI，可以从 Azure AD 获取访问令牌，而无需在代码中插入凭据。 事实上，启用 MSI 会执行两项操作：在 VM 上安装 MSI VM 扩展，以及在 Azure 资源管理器中启用 MSI。  
+
+1. 选择要在其上启用 MSI 的虚拟机。
+2. 在左侧导航栏中，单击“配置”。
+3. 此时，将会看到托管服务标识。 若要注册并启用 MSI，请选择“是”，若要禁用，请选择“否”。
+4. 务必单击“保存”，以保存配置。
+
+   ![Alt 图像文本](../managed-service-identity/media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+
+5. 若要检查在此 Linux VM 上安装了哪些扩展，请单击“扩展”。 如果 MSI 已启用，列表中会显示“ManagedIdentityExtensionforLinux”。
+
+   ![Alt 图像文本](../managed-service-identity/media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
+
+## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>授予 VM 对 Azure Data Lake Store 的访问权限
+
+现在可以授予 VM 对 Azure Data Lake Store 中的文件和文件夹的访问权限。  对于此步骤，可以使用现有 Data Lake Store，也可以重新创建。  若要使用 Azure 门户新建 Data Lake Store，请按照此 [Azure Data Lake Store 快速入门](~/articles/data-lake-store/data-lake-store-get-started-portal.md)执行操作。 [Azure Data Lake Store 文档](~/articles/data-lake-store/data-lake-store-overview.md)中还提供了有关使用 Azure CLI 和 Azure PowerShell 执行这些操作的快速入门。
+
+在 Data Lake Store 中新建文件夹，并为 VM MSI 授予读取、写入和执行该文件夹中的文件的权限：
+
+1. 在 Azure 门户中，单击左侧导航栏中的“Data Lake Store”。
+2. 单击要用于本教程的 Data Lake Store。
+3. 单击命令栏中的“数据资源管理器”。
+4. 选择此 Data Lake Store 的根文件夹。  单击命令栏中的“访问权限”。
+5. 单击 **“添加”**。  在“选择”字段中，输入 VM 的名称，如“DevTestVM”。  单击以从搜索结果中选择 VM，然后单击“选择”。
+6. 单击“选择权限”。  选择“读取”和“执行”，并以“仅为访问权限”的形式添加到“此文件夹”。  单击“确定” 。  权限应已成功添加。
+7. 关闭“访问权限”边栏选项卡。
+8. 本教程将新建一个文件夹。  单击命令栏中的“新建文件夹”并为新文件夹命名，如“TestFolder”。  单击“确定” 。
+9. 单击创建的文件夹，然后单击命令栏中的“访问权限”。
+10. 与步骤 5 类似，单击“添加”，在“选择”字段中输入 VM 的名称，选中此名称，然后单击“选择”。
+11. 与步骤 6 类似，单击“选择权限”，选择“读取”、“写入”和“执行”，并以“访问权限条目和默认访问权限条目”的形式添加到“此文件夹”。  单击“确定” 。  权限应已成功添加。
+
+VM MSI 现在可以对所创建文件夹中的文件执行所有操作。  若要详细了解管理 Data Lake Store 的访问权限，请在 [Data Lake Store 中的访问控制](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control)阅读相应文章。
+
+## <a name="get-an-access-token-using-the-vm-msi-and-use-it-to-call-the-azure-data-lake-store-filesystem"></a>使用 VM MSI 获取访问令牌，并使用它调用 Azure Data Lake Store 文件系统
+
+Azure Data Lake Store 原生支持 Azure AD 身份验证，因此可以直接接受使用 MSI 获取的访问令牌。  若要对 Data Lake Store 文件系统进行身份验证，请将 Azure AD 颁发的访问令牌发送到 Data Lake Store 文件系统终结点，并且身份验证标头的格式应为“Bearer \<ACCESS_TOKEN_VALUE\>”。  若要详细了解 Data Lake Store 对 Azure AD 身份验证的支持情况，请阅读[使用 Azure Active Directory 进行 Data Lake Store 身份验证](~/articles/data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)
+
+在本教程中，将通过使用 CURL 发出 REST 请求来对 Data Lake Store 文件系统 REST API 进行身份验证。
+
+> [!NOTE]
+> Data Lake Store 文件系统客户端 SDK 目前不支持托管服务标识。  添加对 SDK 的支持后，本教程将随之更新。
+
+若要完成这些步骤，需要使用 SSH 客户端。 如果使用的是 Windows，可以在[适用于 Linux 的 Windows 子系统](https://msdn.microsoft.com/commandline/wsl/about)中使用 SSH 客户端。 如果需要有关配置 SSH 客户端密钥的帮助，请参阅[如何在 Azure 上将 SSH 密钥与 Windows 配合使用](~/articles/virtual-machines/linux/ssh-from-windows.md)或[如何创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对](~/articles/virtual-machines/linux/mac-create-ssh-keys.md)。
+
+1. 在门户中，转到 Linux VM，并单击“概述”中的“连接”。  
+2. 使用所选的 SSH 客户端连接到 VM。 
+3. 在终端窗口中，使用 CURL 向本地 MSI 终结点发出请求，获取访问 Data Lake Store 系统所需的访问令牌。  Data Lake Store 的资源标识符是“https://datalake.azure.net/”。  请务必在资源标识符中包含尾部反斜杠。
+    
+   ```bash
+   curl http://localhost:50342/oauth2/token --data "resource=https://datalake.azure.net/" -H Metadata:true   
+   ```
+    
+   成功响应将返回对 Data Lake Store 进行身份验证需使用的访问令牌：
+
+   ```bash
+   {"access_token":"eyJ0eXAiOiJ...",
+    "refresh_token":"",
+    "expires_in":"3599",
+    "expires_on":"1508119757",
+    "not_before":"1508115857",
+    "resource":"https://datalake.azure.net/",
+    "token_type":"Bearer"}
+   ```
+
+4. 使用 CURL 向 Data Lake Store 文件系统 REST 终结点发出请求，在根文件夹中列出文件夹。  使用此方法可轻松检查是否所有内容都已正确配置。  复制上一步中的访问令牌值。  身份验证标头中“Bearer”字符串的首字母“B”必须大写。  在 Azure 门户中，可以在 Data Lake Store 边栏选项卡中的“概述”部分找到你的 Data Lake Store 的名称。
+
+   ```bash
+   curl https://<YOUR_ADLS_NAME>.azuredatalakestore.net/webhdfs/v1/?op=LISTSTATUS -H "Authorization: Bearer <ACCESS_TOKEN>"
+   ```
+    
+   成功响应如下所示：
+
+   ```bash
+   {"FileStatuses":{"FileStatus":[{"length":0,"pathSuffix":"TestFolder","type":"DIRECTORY","blockSize":0,"accessTime":1507934941392,"modificationTime":1508105430590,"replication":0,"permission":"770","owner":"bd0e76d8-ad45-4fe1-8941-04a7bf27f071","group":"bd0e76d8-ad45-4fe1-8941-04a7bf27f071"}]}}
+   ```
+
+5. 现在可尝试将文件上传到 Data Lake Store。  首先，创建要上传的文件。
+
+   ```bash
+   echo "Test file." > Test1.txt
+   ```
+
+6. 使用 CURL 向 Data Lake Store 文件系统 REST 终结点发出请求，将文件上传到之前创建的文件夹。  上传需要使用重定向，CURL 将自动遵循此重定向。 
+
+   ```bash
+   curl -i -X PUT -L -T Test1.txt -H "Authorization: Bearer <ACCESS_TOKEN>" 'https://<YOUR_ADLS_NAME>.azuredatalakestore.net/webhdfs/v1/<FOLDER_NAME>/Test1.txt?op=CREATE' 
+   ```
+
+    成功响应如下所示：
+
+   ```bash
+   HTTP/1.1 100 Continue
+   HTTP/1.1 307 Temporary Redirect
+   Cache-Control: no-cache, no-cache, no-store, max-age=0
+   Pragma: no-cache
+   Expires: -1
+   Location: https://mytestadls.azuredatalakestore.net/webhdfs/v1/TestFolder/Test1.txt?op=CREATE&write=true
+   x-ms-request-id: 756f6b24-0cca-47ef-aa12-52c3b45b954c
+   ContentLength: 0
+   x-ms-webhdfs-version: 17.04.22.00
+   Status: 0x0
+   X-Content-Type-Options: nosniff
+   Strict-Transport-Security: max-age=15724800; includeSubDomains
+   Date: Sun, 15 Oct 2017 22:10:30 GMT
+   Content-Length: 0
+       
+   HTTP/1.1 100 Continue
+       
+   HTTP/1.1 201 Created
+   Cache-Control: no-cache, no-cache, no-store, max-age=0
+   Pragma: no-cache
+   Expires: -1
+   Location: https://mytestadls.azuredatalakestore.net/webhdfs/v1/TestFolder/Test1.txt?op=CREATE&write=true
+   x-ms-request-id: af5baa07-3c79-43af-a01a-71d63d53e6c4
+   ContentLength: 0
+   x-ms-webhdfs-version: 17.04.22.00
+   Status: 0x0
+   X-Content-Type-Options: nosniff
+   Strict-Transport-Security: max-age=15724800; includeSubDomains
+   Date: Sun, 15 Oct 2017 22:10:30 GMT
+   Content-Length: 0
+   ```
+
+使用其他 Data Lake Store 文件系统 API 可以执行追加文件、下载文件以及其他操作。
+
+祝贺你！  你已成功使用 VM MSI 对 Data Lake Store 进行身份验证。
+
+## <a name="related-content"></a>相关内容
+
+- 有关 MSI 的概述，请参阅[托管服务标识概述](msi-overview.md)。
+- 对于管理操作，Data Lake Store 使用 Azure 资源管理器。  有关使用 VM MSI 对资源管理器进行身份验证的详细信息，请阅读[使用 Linux VM 托管服务标识 (MSI) 访问资源管理器](../managed-service-identity/msi-tutorial-linux-vm-access-arm.md)。
+- 详细了解[使用 Azure Active Directory 进行 Data Lake Store 身份验证](~/articles/data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)。
+- 详细了解[使用 REST API 在 Azure Data Lake Store 上进行的文件系统操作](~/articles/data-lake-store/data-lake-store-data-operations-rest-api.md)或 [WebHDFS 文件系统 API](https://docs.microsoft.com/rest/api/datalakestore/webhdfs-filesystem-apis)。
+- 详细了解 [Data Lake Store 中的访问控制](~/articles/data-lake-store/data-lake-store-access-control.md)。
+
+使用以下评论部分提供反馈，帮助我们改进内容。

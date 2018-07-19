@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 2d636eb381710c5e8341e24af8cd157a627348ef
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: b9ec9867e9abd188142067e593c925e3c8acdd0b
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053830"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37113334"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>数据管理网关 - 高可用性和可伸缩性（预览）
 > [!NOTE]
@@ -229,7 +229,7 @@ Azure 门户提供具有粒度节点级别详情的管道监视体验。 例如�
 
 ## <a name="scale-considerations"></a>扩展注意事项
 
-### <a name="scale-out"></a>向外扩展
+### <a name="scale-out"></a>横向扩展
 如果“可用内存较低”且“CPU 使用量较高”，添加新节点有助于跨计算机提高负载。 如果活动因超时或网关节点处于脱机状态而失败，则向网关添加节点会有所作用。
  
 ### <a name="scale-up"></a>纵向扩展

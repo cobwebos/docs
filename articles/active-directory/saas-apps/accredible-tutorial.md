@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: jeedes
-ms.openlocfilehash: 270c3b9965665643b8406827cb7421ba46198b4a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b997d03534fdd7c5075b1bd483dac9ad5e1ddbd3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221104"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048321"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-accredible"></a>教程：Azure Active Directory 与 Accredible 集成
 
@@ -110,13 +110,13 @@ ms.locfileid: "36221104"
 
     ![Accredible 域和 URL SSO 信息](./media/accredible-tutorial/tutorial_accredible_url.png)
 
-    a. 在“标识符”文本框中，键入一个 URL：
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，键入一个 URL：
     | |
     |--|
     |  `https://api.accredible.com/sp/admin/accredible` |
     | `https://api.accredible.com/sp/user/accredible` |
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://api.accredible.com/v1/saml/admin/<Unique id>/consume`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://api.accredible.com/v1/saml/admin/<Unique id>/consume`
 
     > [!NOTE] 
     > 答复 URL 值不是真实值。 根据用户角色，使用相应的标识符值。 每个客户具有唯一的回复 URL，具体取决于其 ID。 请联系 [Accredible 支持团队](mailto:support@accredible.com)获取这些值。
@@ -158,7 +158,7 @@ ms.locfileid: "36221104"
 
     ![“用户”对话框](./media/accredible-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -205,7 +205,7 @@ ms.locfileid: "36221104"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 Accredible 磁贴时，应该会自动登录 Accredible 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

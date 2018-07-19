@@ -2,7 +2,7 @@
 title: Azure Active Directory Identity Protection 检测到的漏洞 | Microsoft 文档
 description: Azure Active Directory Identity Protection 检测到的漏洞概述。
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
+keywords: Azure Active Directory Identity Protection, Cloud Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 06/27/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 9ee926ff7cf44041c1969d541ca225395ba31a2f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 804ee23a8e27eda89861ef820d266f93013d7ffe
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34713688"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38307324"
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection 检测到的漏洞
 漏洞是环境中可能由攻击者利用的弱点。 我们建议解决这些漏洞，以提高组织的安全状态并防止攻击者利用它们。
@@ -47,9 +47,9 @@ Azure 多重身份验证提供用户身份验证的第二层安全。 它可帮�
 
 在现代企业中，IT 部门不一定了解组织用户执行其工作所使用的所有云应用程序。 很容易理解为什么管理员对未经授权访问公司数据、可能的数据泄漏和其他安全风险有所顾虑。 
 
-我们建议部署 Cloud App Discovery 来发现非托管的云应用程序，并使用 Azure Active Directory 管理这些应用程序。
+我们建议部署 Cloud Discovery 来发现非托管的云应用程序，并使用 Azure Active Directory 管理这些应用程序。
 
-有关详细信息，请参阅[使用 Cloud App Discovery 查找非托管的云应用程序](manage-apps/cloud-app-discovery.md)。
+有关详细信息，请参阅 [Cloud Discovery](/cloud-app-security/set-up-cloud-discovery)。
 
 ## <a name="security-alerts-from-privileged-identity-management"></a>来自 Privileged Identity Management 的安全警报
 此漏洞可帮助你发现和解决有关组织中特权标识的警报。  
@@ -58,7 +58,7 @@ Azure 多重身份验证提供用户身份验证的第二层安全。 它可帮�
 
 我们建议组织使用 Azure AD Privileged Identity Management 管理、控制和监视特权标识及其对 Azure AD 中和 Office 365 或 Microsoft Intune 等其他 Microsoft Online Services 中资源的访问权限。
 
-有关详细信息，请参阅 [Azure AD Privileged Identity Management](active-directory-privileged-identity-management-configure.md)。 
+有关详细信息，请参阅 [Azure AD Privileged Identity Management](privileged-identity-management/pim-configure.md)。 
 
 ## <a name="see-also"></a>另请参阅
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)

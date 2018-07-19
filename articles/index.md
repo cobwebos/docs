@@ -6,12 +6,12 @@ description: 了解如何使用 Microsoft Azure 云服务构建和管理功能�
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: ea6241c98cd65af14242301be4681e613d867fbc
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 7ee5d5a3f177352c2ae2ba9692e795e4dae7b357
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071175"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136819"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -275,6 +275,11 @@ Visual Studio Team Services </a>
                                                         <a class="barLink" href="https://docs.microsoft.com/azure/devops">
                                                             <img src="https://docs.microsoft.com/media/logos/logo_vs-team-services.svg" alt="">
 了解如何将 DevOps 与 Azure 配合使用</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="barLink" href="/azure/devops-project/">
+                                                            <img src="https://docs.microsoft.com/media/logos/logo_vs-team-services.svg" alt="">
+Azure DevOps Project </a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -1189,6 +1194,12 @@ Visual Studio Team Services </a>
                                             <a href="https://support.hockeyapp.net/kb">
                                                 <img src="media/index/HockeyApp.svg" alt="" />
                                                 <p>HockeyApp</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/devops-project">
+                                                <img src="media/index/logo_vs-team-services.svg" alt="" />
+                                                <p>Azure DevOps 项目</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -4569,6 +4580,25 @@ Visual Studio Team Services </a>
                                                 <div class="cardText">
                                                     <h3>HockeyApp</h3>
                                                     <p>部署移动应用、收集反馈和崩溃报告以及监视使用情况</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/devops-project">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/logo_vs-team-services.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure DevOps Project</h3>
+                                                    <p>将任何平台上的任何语言快速部署到 Azure</p>
                                                 </div>
                                             </div>
                                         </div>

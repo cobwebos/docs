@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
-ms.openlocfilehash: e2c7e7d5a8f359eb811f67a7502f5fc11c05baba
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 3f45f9337a5522f490c268bbdae3ef1a41205175
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047320"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859368"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365 (Common Data Service) 或 Dynamics CRM 复制数据
 
@@ -210,6 +210,9 @@ Dynamics 链接服务支持以下属性。
 | type | 复制活动源的 type 属性必须设置为 **DynamicsSource**。 | 是 |
 | query | FetchXML 是在 Dynamics（联机和本地）中使用的专属查询语言。 请参阅以下示例。 有关详细信息，请参阅[使用 FeachXML 生成查询](https://msdn.microsoft.com/library/gg328332.aspx)。 | 否（如果指定了数据集中的“entityName”） |
 
+>[!NOTE]
+>即使在 FetchXML 查询中配置的列投影不包含 PK 列，也将始终复制该列。
+
 **示例：**
 
 ```json
@@ -330,7 +333,7 @@ Dynamics 链接服务支持以下属性。
 | AttributeType.Double | Double | ✓ | ✓ |
 | AttributeType.EntityName | String | ✓ | ✓ |
 | AttributeType.Integer | Int32 | ✓ | ✓ |
-| AttributeType.Lookup | Guid | ✓ | ✓ |
+| AttributeType.Lookup | Guid | ✓ | ✓（关联单个类型） |
 | AttributeType.ManagedProperty | 布尔 | ✓ | |
 | AttributeType.Memo | String | ✓ | ✓ |
 | AttributeType.Money | 小数 | ✓ | ✓ |

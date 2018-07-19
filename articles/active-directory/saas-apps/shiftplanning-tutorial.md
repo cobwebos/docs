@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: b0cd33370f5940e7f74fed0938320c96ae15a447
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a0f9a0a76f001d6126e5b0924d0e5a3aaefa528b
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226888"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041368"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-humanity"></a>教程：Azure Active Directory 与 Humanity 的集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "36226888"
 
     ![配置单一登录](./media/shiftplanning-tutorial/tutorial_humanity_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://company.humanity.com/includes/saml/`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://company.humanity.com/includes/saml/`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://company.humanity.com/app/`
 
@@ -145,7 +145,7 @@ ms.locfileid: "36226888"
    
     ![单一登录](./media/shiftplanning-tutorial/iC786905.png "单一登录")
    
-    a. 选择“已启用 SAML”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“已启用 SAML”。
 
     b. 选择“允许密码登录”。
 
@@ -184,7 +184,7 @@ ms.locfileid: "36226888"
  
     ![创建 Azure AD 测试用户](./media/shiftplanning-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -216,7 +216,7 @@ ms.locfileid: "36226888"
    
     ![保存员工](./media/shiftplanning-tutorial/iC786625.png "保存员工")
    
-    a. 将要预配的有效 AAD 帐户的“名字”、“姓氏”和“电子邮件”键入到相关文本框中。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将要预配的有效 AAD 帐户的“名字”、“姓氏”和“电子邮件”键入到相关文本框中。
 
     b. 单击“保存员工”。
 
@@ -258,7 +258,7 @@ ms.locfileid: "36226888"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Humanity 磁贴时，应当会自动登录到 Humanity 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

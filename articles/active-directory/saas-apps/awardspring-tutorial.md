@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: jeedes
-ms.openlocfilehash: e9c67a9ac733a1dd7e4810f3f8a3185ff7142041
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b63d0b194bb844221cdfae9674017389c20e00bb
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212598"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043486"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-awardspring"></a>教程：Azure Active Directory 与 AwardSpring 集成
 
@@ -108,15 +108,15 @@ ms.locfileid: "36212598"
 
     ![AwardSpring 域和 URL 单一登录信息](./media/awardspring-tutorial/tutorial_awardspring_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.awardspring.com/SignIn/SamlMetaData`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.awardspring.com/SignIn/SamlMetaData`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.awardspring.com/SignIn/SamlAcs`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<subdomain>.awardspring.com/SignIn/SamlAcs`
 
 4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
 
     ![AwardSpring 域和 URL 单一登录信息](./media/awardspring-tutorial/tutorial_awardspring_url1.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.awardspring.com/`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.awardspring.com/`
      
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [AwardSpring 客户端支持团队](mailto:support@awardspring.com)获取这些值。 
@@ -131,14 +131,14 @@ ms.locfileid: "36212598"
     | ---------------| --------------- |    
     | 名字 | user.givenname |
     | 姓氏 | user.surname |
-    | Email | user.mail |
+    | 电子邮件 | user.mail |
     | 用户名 | user.userprinicipalname |
     | StudentID | < Student ID > |
 
     > [!NOTE]
     > StudentID 属性映射需传回声明的实际学生 ID。 请联系 [AwardSpring 客户端支持团队](mailto:support@awardspring.com)获取此值。
 
-    a. 删除现有属性并添加新属性。 单击“添加属性”，打开“添加属性”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 删除现有属性并添加新属性。 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录](./media/awardspring-tutorial/tutorial_attribute_04.png)
 
@@ -186,7 +186,7 @@ ms.locfileid: "36212598"
 
     ![“用户”对话框](./media/awardspring-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -236,7 +236,7 @@ ms.locfileid: "36212598"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“AwardSpring”磁贴时，应会自动登录到 AwardSpring 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

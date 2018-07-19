@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: d4e754192d15bce6f7803ba34500e7c018c4dc54
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 5be27723e6dfea9ce0d720baab2b650cff9c0f64
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222758"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866281"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jostle"></a>教程：Azure Active Directory 与 Jostle 集成
 
@@ -49,7 +49,8 @@ ms.locfileid: "36222758"
 - 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 
 ## <a name="scenario-description"></a>方案描述
-在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
+在本教程中，将在测试环境中测试 Azure AD 单一登录。
+本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Jostle
 2. 配置和测试 Azure AD 单一登录
@@ -59,21 +60,21 @@ ms.locfileid: "36222758"
 
 **若要从库中添加 Jostle，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
     ![Active Directory][1]
 
 2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
-    
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![应用程序][3]
+3. 单击窗口顶部的“添加”。
 
-4. 在搜索框中，键入“Jostle”。
+    ![add_01](./media/jostle-tutorial/add_01.png)
 
-    ![创建 Azure AD 测试用户](./media/jostle-tutorial/tutorial_jostle_search.png)
+4. 在“添加应用程序”下面的搜索框中，键入“Jostle”。
+
+    ![add_02](./media/jostle-tutorial/add_02.png)
 
 5. 在结果面板中，选择 “Jostle”，然后单击“添加”按钮添加该应用程序。
 
@@ -105,35 +106,36 @@ ms.locfileid: "36222758"
     ![配置单一登录][4]
 
 2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
+
     ![配置单一登录](./media/jostle-tutorial/tutorial_jostle_samlbase.png)
 
 3. 在“Jostle 域和 URL”部分中，执行以下步骤：
 
-    ![配置单一登录](./media/jostle-tutorial/tutorial_jostle_url.png)
+    ![url_01](./media/jostle-tutorial/url_01.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tanent name>.jostle.us/jostle-prod/`
+    a. 在“登录 URL”文本框中，输入：`https://login-prod.jostle.us`
 
-    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<tanent name>.jostle.us`
+    b. 在“标识符”文本框中，输入：`https://jostle.us`
 
-    > [!NOTE] 
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 若要获取这些值，请联系 [Jostle 支持团队](mailto:support@jostle.me)。 
- 
+    c. 勾选“显示高级 URL 设置”旁边的框
 
+    d. 在“回复 URL”文本框中，输入：`https://login-prod.jostle.us/saml/SSO/alias/newjostle.us`
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
+4. 在“用户属性”部分中，在“用户标识符”字段中，输入：`user.userprincipalname`
 
-    ![配置单一登录](./media/jostle-tutorial/tutorial_jostle_certificate.png) 
+    ![url_02](./media/jostle-tutorial/url_02.png)
 
-5. 单击“保存”按钮。
+5. 单击窗口顶部的“保存”。
 
-    ![配置单一登录](./media/jostle-tutorial/tutorial_general_400.png)
+6. 转到“SAML 签名证书”，并验证其已设置为“Active”****。 然后单击“元数据 XML”，下载元数据文件。
 
-7. 若要在 Jostle 端配置单一登录，需要将下载的元数据 XML 发送给 [Jostle 支持团队](mailto:support@jostle.me)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。 
+    ![url_03](./media/jostle-tutorial/url_03.png)
+
+7. 若要在 Jostle 端配置单一登录，需要将下载的元数据 XML 发送给 [Jostle 支持团队](mailto:support@jostle.me)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+>
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
@@ -144,19 +146,19 @@ ms.locfileid: "36222758"
 
 1. 在 **Azure 门户**的左侧导航窗格中，单击“Azure Active Directory”图标。
 
-    ![创建 Azure AD 测试用户](./media/jostle-tutorial/create_aaduser_01.png) 
+    ![创建 Azure AD 测试用户](./media/jostle-tutorial/create_aaduser_01.png)
 
 2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
-    
-    ![创建 Azure AD 测试用户](./media/jostle-tutorial/create_aaduser_02.png) 
+
+    ![创建 Azure AD 测试用户](./media/jostle-tutorial/create_aaduser_02.png)
 
 3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
- 
-    ![创建 Azure AD 测试用户](./media/jostle-tutorial/create_aaduser_03.png) 
+
+    ![创建 Azure AD 测试用户](./media/jostle-tutorial/create_aaduser_03.png)
 
 4. 在“用户”对话框页上，执行以下步骤：
- 
-    ![创建 Azure AD 测试用户](./media/jostle-tutorial/create_aaduser_04.png) 
+
+    ![创建 Azure AD 测试用户](./media/jostle-tutorial/create_aaduser_04.png)
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
@@ -165,7 +167,7 @@ ms.locfileid: "36222758"
     c. 选择“显示密码”并记下“密码”的值。
 
     d. 单击“创建”。
- 
+
 ### <a name="creating-a-jostle-test-user"></a>创建 Jostle 测试用户
 
 在本部分中，会在 Jostle 中创建一个名为“Britta Simon”的用户。 如果不知道如何在 Jostle 中添加 Britta Simon，请求助 [Jostle 支持团队](mailto:support@jostle.me)来添加测试用户并启用 SSO。
@@ -177,21 +179,21 @@ ms.locfileid: "36222758"
 
 在本部分中，通过授予 Britta Simon 访问 Jostle 的权限，允许她使用 Azure 单一登录。
 
-![分配用户][200] 
+![分配用户][200]
 
 **要将 Britta Simon 分配到 Jostle，请执行以下步骤：**
 
 1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
-    ![分配用户][201] 
+    ![分配用户][201]
 
 2. 在应用程序列表中，选择“Jostle”。
 
-    ![配置单一登录](./media/jostle-tutorial/tutorial_jostle_app.png) 
+    ![配置单一登录](./media/jostle-tutorial/tutorial_jostle_app.png)
 
 3. 在左侧菜单中，单击“用户和组”。
 
-    ![分配用户][202] 
+    ![分配用户][202]
 
 4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
@@ -202,7 +204,7 @@ ms.locfileid: "36222758"
 6. 在“用户和组”对话框中单击“选择”按钮。
 
 7. 在“添加分配”对话框中单击“分配”按钮。
-    
+
 ### <a name="testing-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
@@ -230,4 +232,3 @@ ms.locfileid: "36222758"
 [201]: ./media/jostle-tutorial/tutorial_general_201.png
 [202]: ./media/jostle-tutorial/tutorial_general_202.png
 [203]: ./media/jostle-tutorial/tutorial_general_203.png
-

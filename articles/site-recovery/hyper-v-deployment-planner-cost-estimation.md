@@ -6,14 +6,14 @@ author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/14/2018
+ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: 31461e70e81f0f48a8d67e31b98cfae2dd627a54
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 01d4f3873c854776078986918e6ece55017c9193
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
-ms.locfileid: "29466823"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917466"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery 部署规划器成本估算报表 
 
@@ -39,9 +39,9 @@ Azure Site Recovery 部署规划器报表以[建议](hyper-v-deployment-planner-
 **每月/年的 Azure 存储成本**：针对高级和标准存储进行复制和 DR 演练时产生的总存储成本。
 
 ## <a name="detailed-cost-analysis"></a>详细成本分析
-计算、存储和网络的 Azure 价格因 Azure 区域而异。 可以根据订阅、与订阅相关联的产品/服务、指定的目标 Azure 区域和指定的货币，使用最新的 Azure 价格生成成本估算报表。 默认情况下，此工具使用“美国西部 2”Azure 区域和美元 (USD) 货币。 如果使用了任何其他区域和货币，则下一次在不使用订阅 ID、产品/服务 ID、目标区域和货币的情况下生成报表时，该工具会使用上次使用的目标区域和货币所对应的价格进行成本估算。
+计算、存储和网络的 Azure 价格因 Azure 区域而异。 可以根据订阅、与订阅相关联的套餐、指定的目标 Azure 区域和指定的货币，使用最新的 Azure 价格生成成本估算报表。 默认情况下，此工具使用“美国西部 2”Azure 区域和美元 (USD) 货币。 如果使用了任何其他区域和货币，则下一次在不使用订阅 ID、套餐 ID、目标区域和货币的情况下生成报表时，该工具会使用上次使用的目标区域和货币所对应的价格进行成本估算。
 
-此部分显示用于生成报表的订阅 ID 和产品/服务 ID。 如果这些项未使用过，则为空白。
+此部分显示用于生成报表的订阅 ID 和套餐 ID。 如果这些项未使用过，则为空白。
 
 在整个报表中，标为灰色的单元格为只读。 白色的单元格可以根据要求修改。
 
@@ -113,7 +113,7 @@ Azure Site Recovery 部署规划器报表以[建议](hyper-v-deployment-planner-
 
     c. **存储类型(标准/高级)**
 
-    d.单击“下一步”。 **VM 总存储大小(GB)**
+    d. **VM 总存储大小(GB)**
 
     e. **一年的 DR 演练次数**
 

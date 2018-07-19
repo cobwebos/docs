@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 617487acb396828d3d9515b084901aec6d8deced
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b8c224c6c2178e82b7130715df1bfa8b3a0096a5
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230312"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042905"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>教程：Azure Active Directory 与 Greenhouse 集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "36230312"
 
     ![Greenhouse 域和 URL 单一登录信息](./media/greenhouse-tutorial/tutorial_greenhouse_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.greenhouse.io`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.greenhouse.io`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<companyname>.greenhouse.io`
 
@@ -157,7 +157,7 @@ ms.locfileid: "36230312"
 
     ![“用户”对话框](./media/greenhouse-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -188,7 +188,7 @@ ms.locfileid: "36230312"
    
    ![添加新用户](./media/greenhouse-tutorial/ic790793.png "添加新用户")
 
-   a. 在“输入用户电子邮件”文本框中，键入要预配的有效 Azure Active Directory 帐户的电子邮件地址。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“输入用户电子邮件”文本框中，键入要预配的有效 Azure Active Directory 帐户的电子邮件地址。
 
    b. 单击“ **保存**”。    
    
@@ -230,7 +230,7 @@ ms.locfileid: "36230312"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 Greenhouse 磁贴时，应该会自动登录 Greenhouse 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

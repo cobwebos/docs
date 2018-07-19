@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 3d4d217fba55b8329937575042f0ac909aad09e9
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 4b0c5d55c8a62dadbe11382997f4d258e66e1a31
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838470"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951135"
 ---
 # <a name="platforms-and-tools-for-data-science-team-projects"></a>用于数据科学团队项目的平台和工具
 
@@ -102,9 +102,9 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 
 R 服务（数据库内部）提供一个平台用于开发和部署可以发现新见解的智能应用程序。 可以使用丰富强大的 R 语言（包括 R 社区提供的许多包）来创建模型，基于 SQL Server 数据生成预测。 由于 R 服务（数据库内部）可将 R 语言与 SQL Server 集成，因此可以保持与数据接近的分析结果，同时消除与数据移动相关的成本和安全风险。
 
-R 服务（数据库内部）凭借一套综合性的 SQL Server 工具和技术来支持开源 R 语言。 它们提供优异的性能、安全性、可靠性和可管理性。 可以使用便捷、熟悉的工具部署 R 解决方案。 生产应用程序可以使用 Transact-SQL 调用 R 运行时以及检索预测数据和视觉对象。 还可以使用 ScaleR 库来改善 R 解决方案的缩放性和性能。 有关详细信息，请参阅 [SQL Server R 服务](https://msdn.microsoft.com/library/mt604845.aspx)。
+R 服务（数据库内部）凭借一套综合性的 SQL Server 工具和技术来支持开源 R 语言。 它们提供优异的性能、安全性、可靠性和可管理性。 可以使用便捷、熟悉的工具部署 R 解决方案。 生产应用程序可以使用 Transact-SQL 调用 R 运行时以及检索预测数据和视觉对象。 还可以使用 ScaleR 库来改善 R 解决方案的缩放性和性能。 有关详细信息，请参阅 [SQL Server R Services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services)。
 
-Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何在 SQL Server 2016 R 服务中生成数据科学解决方案：一篇面向 R 程序员，另一篇面向 SQL 开发人员。 **R 程序员**可参阅[数据科学端到端演练](https://msdn.microsoft.com/library/mt612857.aspx)。 **SQL 开发人员**可参阅[面向 SQL 开发人员的数据库内部高级分析（教程）](https://msdn.microsoft.com/library/mt683480.aspx)。
+Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何在 SQL Server 2016 R 服务中生成数据科学解决方案：一篇面向 R 程序员，另一篇面向 SQL 开发人员。 **R 程序员**可参阅[数据科学端到端演练](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)。 **SQL 开发人员**可参阅[面向 SQL 开发人员的数据库内部高级分析（教程）](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)。
 
 
 ## <a name="appendix"></a>附录：用于设置数据科学项目的工具

@@ -12,14 +12,14 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: 
   ms.topic: landing-page
-  ms.date: 04/01/2018
+  ms.date: 07/07/2018
   ms.author: carlrab
-  ms.openlocfilehash: 5fcfe7b12acc943224d3c3158f2b39b4c35de1ee
-  ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+  ms.openlocfilehash: eae18cf5956582f3b66eb2ed837412815efbd4cf
+  ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/09/2018
-  ms.locfileid: "37916143"
+  ms.lasthandoff: 07/18/2018
+  ms.locfileid: "39112495"
 abstract:
   description: Azure SQL 数据库是基于最新稳定版 Microsoft SQL Server 数据库引擎的关系数据库即服务 (DBaaS)。 SQL 数据库是高性能、可靠且安全的数据库，可用于以所选编程语言构建数据驱动的应用程序和网站，而无需管理基础结构。 使用我们的快速入门、教程和示例了解如何使用 SQL 数据库。
   aside:
@@ -39,35 +39,50 @@ sections:
     columns: 3
     items:
     - href: /azure/sql-database/sql-database-technical-overview
-      html: <p><a href="/azure/sql-database/sql-database-high-availability">高度可用的</a> PaaS 数据库，它始终运行于最新稳定版的 SQL Server 数据库引擎和已使用<a href="/azure/sql-database/sql-database-automated-backups">自动数据库备份</a>修补的 OS 之上。</p>
+      html: <p>一种 PaaS 数据库，它始终运行于最新稳定版 SQL Server 数据库引擎和具有 99.99% 可用性的已修补 OS 之上。</p>
       image:
         src: media/index/i_managed.svg
       title: 完全托管
     - href: /azure/sql-database/sql-database-service-tiers
-      html: <p>通过<a href="/azure/sql-database/sql-database-service-tiers">灵活的性能层</a>（跨度从经济实惠的 5$/月的数据库到功能强大的 80 核数据库）定制价格/性能比，以满足你的需求。</p>
+      html: <p>通过灵活的性能层（跨度从经济实惠的 $5/月的数据库到功能强大的 80 核数据库）定制符合你的需求的价格/性能比。</p>
       image:
         src: media/index/i_perftier.svg
       title: 价格/性能层
     - href: /azure/sql-database/sql-database-scale-resources
-      html: <p>轻松地对数据库进行<a href="/azure/sql-database/sql-database-single-database-scale">纵向扩展</a>、<a href="/azure/sql-database/sql-database-read-scale-out">横向扩展</a>或分片，具体取决于提高应用程序性能的需求。</p>
+      html: <p>轻松地对数据库进行纵向扩展、横向扩展或分片，具体取决于提高应用程序性能的需求。</p>
       image:
         src: media/index/i_scale.svg
-      title: 可伸缩性和弹性
-    - href: /azure/sql-database/sql-database-technical-overview#built-in-intelligence
-      html: <p>使得内置于服务中的智能<a href="/azure/sql-database/sql-database-automatic-tuning">自动优化数据库性能</a>、<a href="/azure/sql-database/sql-advanced-threat-protection">识别数据库中的威胁</a>和<a href="/azure/sql-database/sql-vulnerability-assessment">漏洞</a>。</p>
-      image:
-        src: media/index/i_intelligence.svg
-      title: 内置智能
+      title: 可伸缩性
     - href: /azure/sql-database/sql-database-servers-databases
-      html: <p>将<a href="/azure/sql-database/sql-database-managed-instance">逻辑服务器中托管的单一数据库</a>用于需要一个具有可预测性能的单一数据库的 <a href="/azure/sql-database/saas-tenancy-app-design-patterns">SaaS 应用程序</a>和微服务。</p>
+      html: <p>将逻辑服务器中托管的单一数据库用于需要一个具有可预测性能的单一数据库的 SaaS 应用程序和微服务。</p>
       image:
         src: media/index/i_db.svg
       title: 单一数据库
+    - href: /azure/sql-database/sql-database-elastic-pool
+      html: <p>SQL 数据库弹性池是一种简单且经济高效的解决方案，用于管理和缩放具有不断变化且不可预测的使用需求的多个数据库。</p>
+      image:
+        src: media/index/i_elasticpool.svg
+      title: 弹性池
     - href: /azure/sql-database/sql-database-managed-instance
-      html: <p>使用<a href="/azure/sql-database/sql-database-managed-instance">托管实例</a>可轻松地<a href="azure/sql-database/sql-database-managed-instance-migrate">将本地数据库迁移</a>到 Azure PaaS，只需更改极少数据库代码或无需更改数据库代码。</p>
+      html: <p>使用托管实例可轻松地将本地数据库迁移到完全托管的 Azure PaaS 数据库服务，只需更改极少数据库代码或无需更改数据库代码。</p>
       image:
         src: media/index/i_mi.svg
       title: 托管实例
+    - href: /azure/sql-database/sql-database-business-continuity
+      html: <p>内置的高可用性、自动备份和异地复制将防止维护操作、基础结构或硬件故障停止你的业务。</p>
+      image:
+        src: media/index/gear.svg
+      title: 业务连续性
+    - href: /azure/sql-database/sql-database-security-overview
+      html: <p>使用 Azure AD 身份验证、虚拟网络、防火墙、Always Encrypted 连接保护数据库。 通过内置的安全功能识别威胁和漏洞。</p>
+      image:
+        src: media/index/i_security.svg
+      title: 高级安全
+    - href: /azure/sql-database/sql-database-technical-overview#built-in-intelligence
+      html: <p>内置智能将帮助你大幅降低运行和管理数据库的成本，并最大程度地提高应用程序的性能和安全性。</p>
+      image:
+        src: media/index/i_intelligence.svg
+      title: 内置智能
 - title: 5 分钟快速入门
   items:
   - type: paragraph
@@ -174,6 +189,6 @@ sections:
     - title: REST
       html: <p><a href="/rest/api/sql/">REST API 参考</a></p>
     - title: SQL Server 工具
-      html: <p><a href="https://msdn.microsoft.com/library/mt238365.aspx">SQL Server工具</a></p><p><a href="https://msdn.microsoft.com/library/mt238290.aspx">SQL Server Management Studio (SSMS)</a></p><p><a href="https://msdn.microsoft.com/library/mt204009.aspx">SQL Server Data Tools (SSDT)</a></p><p><a href="https://msdn.microsoft.com/library/ms162802.aspx">BCP</a></p><p><a href="https://msdn.microsoft.com/library/ms162773.aspx">SQLCMD</a></p><p><a href="https://msdn.microsoft.com/hh550080.aspx">SqlPackage</a></p><p><a href="https://www.nuget.org/packages/Microsoft.Azure.Management.Sql">SQL 数据库管理库包</a></p>
+      html: <p><a href="https://msdn.microsoft.com/library/mt238365.aspx">SQL Server工具</a></p><p><a href="https://msdn.microsoft.com/library/mt238290.aspx">SQL Server Management Studio (SSMS)</a></p><p><a href="https://msdn.microsoft.com/library/mt204009.aspx">SQL Server Data Tools (SSDT)</a></p><p><a href="https://msdn.microsoft.com/library/ms162802.aspx">BCP</a></p><p><a href="https://msdn.microsoft.com/library/ms162773.aspx">SQLCMD</a></p><p><a href="https://docs.microsoft.com/sql/tools/sqlpackage">SqlPackage</a></p><p><a href="https://www.nuget.org/packages/Microsoft.Azure.Management.Sql">SQL 数据库管理库包</a></p>
     - title: SQL Server 驱动程序
       html: <p><a href="https://msdn.microsoft.com/library/mt654049.aspx">SQL Server 驱动程序</a></p><p><a href="https://msdn.microsoft.com/library/mt657768.aspx">ADO.NET</a></p><p><a href="https://msdn.microsoft.com/library/mt484311.aspx">JDBC</a></p><p><a href="https://msdn.microsoft.com/library/mt654048.aspx">ODBC</a></p>

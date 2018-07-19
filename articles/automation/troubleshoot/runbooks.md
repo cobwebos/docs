@@ -8,12 +8,12 @@ ms.date: 06/19/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: bb340b8439927f191bc4a22f385d85d4e21b1cdb
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: b96d723f6c7ca423343c0586f59770abb55ada9f
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064272"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929343"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook 错误故障排除
 
@@ -205,6 +205,20 @@ Runbook 可能会出于多种原因而暂停。 发生暂停的主要原因是�
 
 避免此问题的有记录解决方法是在工作流中使用检查点。 若要了解详细信息，请参阅[了解 PowerShell 工作流](../automation-powershell-workflow.md#checkpoints)。 [在 Runbook 中使用检查点](https://azure.microsoft.com/blog/azure-automation-reliable-fault-tolerant-runbook-execution-using-checkpoints/)博客文章中提供了有关“公平份额”和检查点的更全面说明。
 
+### <a name="long-running-runbook"></a>方案：长时间运行的 runbook 无法完成
+
+#### <a name="issue"></a>问题
+
+此行为是 Azure 沙盒的设计使然，因为 Azure 自动化中对进程的“公平份额”监视会自动暂停执行时间超过 3 小时的 Runbook。
+
+#### <a name="cause"></a>原因
+
+Runbook 超出了 Azure 沙盒中公平份额允许的 3 小时限制
+
+#### <a name="resolution"></a>解决方法
+
+建议的解决方案是在[混合 Runbook 辅助角色](../automation-hrw-run-runbooks.md)上运行 runbook。 混合辅助角色不受[公平份额](../automation-runbook-execution.md#fair-share) 3 小时 runbook 限制，而 Azure 沙盒受限于此限制。
+
 ## <a name="common-errors-when-importing-modules"></a>导入模块时的常见错误
 
 ### <a name="module-fails-to-import"></a>场景：模块无法导入，或者 cmdlet 在导入后无法执行
@@ -232,8 +246,8 @@ Runbook 可能会出于多种原因而暂停。 发生暂停的主要原因是�
 
 ## <a name="next-steps"></a>后续步骤
 
-如果未看到问题或者不能解决问题，请访问以下通道获取更多支持：
+如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
 * 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答
 * 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
-* 如果需要更多帮助，可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。
+* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。

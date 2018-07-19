@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: tdykstra
-ms.openlocfilehash: 5a3070582a32adeda45dff233782c3a971885c14
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 68377ffd53d5f2b99ddc08386529a40dda12e1b2
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018449"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901545"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>用于事件驱动的后台处理的 Azure WebJobs SDK 入门
 
@@ -46,7 +46,7 @@ public static void Run(
 
 ### <a name="versions-2x-and-3x"></a>版本 2.x 和 3.x
 
-本文中的说明介绍如何创建 WebJobs SDK 版本 2.x 项目，并提供有关版本 3.x（预览版）中不同之处的备注。 3.x 中引入的主要更改是使用 .NET Core 而不是 .NET Framework。
+相关说明介绍了如何创建 WebJobs SDK 版本 2.x 项目。 WebJobs SDK 的最新版本是 3.x，但它目前处于预览状态，本文尚未提供该版本的说明。 版本 3.x 中引入的主要更改是使用 .NET Core 而不是 .NET Framework。
 
 ### <a name="azure-functions"></a>Azure Functions
 
@@ -65,18 +65,13 @@ public static void Run(
 
 2. 选择“Windows 经典桌面”>“控制台应用(.NET Framework)”。
 
-   若要创建 3.x 项目，请选择“.NET Core”>“控制台应用(.NET Core)”。
-   
-   > [!NOTE]
-   > 3.x 仍在预览中且正处于开发阶段。 本文中的 3.x 说明并不完整，有关最新信息，请参阅页面底部的 GitHub 问题。
-
 3. 将项目命名为 *WebJobsSDKSample*，然后选择“确定”。
 
    ![“新建项目”对话框](./media/webjobs-sdk-get-started/new-project.png)
 
 ## <a name="add-webjobs-nuget-package"></a>添加 WebJobs NuGet 包
 
-1. 安装 NuGet 包 `Microsoft.Azure.WebJobs` 的最新稳定 2.x 版本。 （对于 WebJobs SDK 3.x，请选择最新的 3.x 版本。）
+1. 安装 NuGet 包 `Microsoft.Azure.WebJobs` 的最新稳定 2.x 版本。
  
    下面是版本 2.2.0 的“包管理器控制台”命令：
 
@@ -353,7 +348,7 @@ WebJobs SDK 在“应用设置”集合中查找存储连接字符串。 在本�
 
 ### <a name="add-application-insights-logging-provider"></a>添加 Application Insights 日志记录提供程序
 
-1. 为 Application Insights 日志记录提供程序安装 NuGet 包的最新稳定 2.x 版本：`Microsoft.Azure.WebJobs.Logging.ApplicationInsights`。 （对于 WebJobs SDK 3.x，请选择最新的 3.x 版包。）
+1. 为 Application Insights 日志记录提供程序安装 NuGet 包的最新稳定 2.x 版本：`Microsoft.Azure.WebJobs.Logging.ApplicationInsights`。
 
    下面是版本 2.2.0 的“包管理器控制台”命令：
 

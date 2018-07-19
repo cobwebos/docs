@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 8bcc89f9ec7c73fd1f690e00e831fbd5b960eef9
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 5d5ddd83a2335e7a08bac587aa627f1dcae9738c
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850002"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970894"
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Azure Active Directory 中的设备管理简介
 
@@ -75,8 +75,8 @@ Azure AD 加入设备旨在简化：
 ![Azure AD 注册设备](./media/device-management-introduction/02.png)
 
 Azure AD 加入可以通过下列任何方法进行部署： 
- - [Windows Autopilot](https://docs.microsoft.com/en-us/windows/deployment/windows-autopilot/windows-10-autopilot)
- - [批量部署](https://docs.microsoft.com/en-us/intune/windows-bulk-enroll)
+ - [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot)
+ - [批量部署](https://docs.microsoft.com/intune/windows-bulk-enroll)
  - [自助部署体验](device-management-azuread-joined-devices-frx.md) 
 
 Azure AD 加入适用于希望成为云优先（即主要使用云服务，旨在减少使用本地基础结构）或仅限云（无本地基础结构）的组织。 对可以部署 Azure AD 加入的组织的规模或类型没有任何限制。 即使在混合环境中，Azure AD 加入也可以良好运行，提供对云和本地应用及资源的访问。
@@ -93,7 +93,7 @@ Azure AD 加入适用于希望成为云优先（即主要使用云服务，旨�
 
 - 仅限使用满足符合性策略的设备访问应用。
 
-- 当设备对本地域控制器具有视觉线时，可以无缝访问本地资源。 
+- 当设备与本地域控制器建立直接连接时，**可以无缝访问本地资源**。 
 
 
 虽然 Azure AD 加入主要面向没有本地 Windows Server Active Directory 基础结构的组织，但当然也可以用于以下方案：

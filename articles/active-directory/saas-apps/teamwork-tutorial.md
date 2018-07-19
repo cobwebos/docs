@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 6cb1e569981f58325bad9b982c97310a81487960
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 46f23f880423cdb0317369755eb9c3268492c07f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215284"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049606"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamworkcom"></a>教程：Azure Active Directory 与 Teamwork.com 的集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "36215284"
 
     ![Teamwork.com 域和 URL 单一登录信息](./media/teamwork-tutorial/tutorial_teamwork_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company name>.teamwork.com`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<company name>.teamwork.com`
 
     b. 在“标识符”文本框中，键入 URL：
 
@@ -156,7 +156,7 @@ ms.locfileid: "36215284"
 
     ![“用户”对话框](./media/teamwork-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -203,7 +203,7 @@ ms.locfileid: "36215284"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 Teamwork.com 磁贴时，应该会自动登录 Teamwork.com 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

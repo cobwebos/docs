@@ -1,23 +1,20 @@
 ---
 title: 使用 Ambari 优化 HDInsight 群集配置 - Azure | Microsoft Docs
 description: 使用 Ambari Web UI 来配置和优化 HDInsight 群集。
-documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 07/09/2018
 ms.author: ashish
-ms.openlocfilehash: f3c1edc767ab07bcdd8b09a0e40e291cbd1f3d9a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2f0956c1cbbc6a351b2fc76a6918280dbead298f
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31406176"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951210"
 ---
 # <a name="use-ambari-to-optimize-hdinsight-cluster-configurations"></a>使用 Ambari 优化 HDInsight 群集配置
 
@@ -245,9 +242,9 @@ Hive 允许在表中插入记录时创建动态分区，且无需预定义每个
 
 2. 将动态分区模式更改为 *strict*。 在 strict（严格）模式下，必须至少有一个分区是静态的。 这可以阻止未在 WHERE 子句中包含分区筛选器的查询，即，*strict* 可阻止扫描所有分区的查询。 导航到 Hive 的“配置”选项卡，并将 `hive.exec.dynamic.partition.mode` 设置为 **strict**。 默认值为 **nonstrict**。
  
-3. 若要限制要创建的动态分区数，请修改“hive.exec.max.dynamic.partitions”参数。 默认值为 5,000。
+3. 若要限制要创建的动态分区数，请修改 `hive.exec.max.dynamic.partitions` 参数。 默认值为 5000。
  
-4. 若要限制每个节点的动态分区总数，请修改 `hive.exec.max.dynamic.partitions.pernode`。 默认值为 2,000。
+4. 若要限制每个节点的动态分区总数，请修改 `hive.exec.max.dynamic.partitions.pernode`。 默认值为 2000。
 
 ### <a name="enable-local-mode"></a>启用本地模式
 

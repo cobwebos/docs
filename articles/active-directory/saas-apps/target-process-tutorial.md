@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 48c59a20a86bca5de8c3c4874f3f758fef92a124
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ae49e60188c554a2eaa0221c05b49ca67c835f0c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227575"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39055930"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>教程：Azure Active Directory 与 TargetProcess 集成
 
@@ -109,7 +109,7 @@ ms.locfileid: "36227575"
 
     ![“TargetProcess 域和 URL”部分](./media/target-process-tutorial/tutorial_target-process_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.tpondemand.com/`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.tpondemand.com/`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.tpondemand.com/`
 
@@ -146,7 +146,7 @@ ms.locfileid: "36227575"
    
     ![配置单一登录](./media/target-process-tutorial/tutorial_target_process_08.png)
     
-    a. 单击“启用单一登录”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“启用单一登录”。
     
     b. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
@@ -183,7 +183,7 @@ ms.locfileid: "36227575"
  
     ![“用户”部分](./media/target-process-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -233,7 +233,7 @@ TargetProcess 支持实时预配。 已在[配置 Azure AD 单一登录](#config
 
 本部分旨在使用“访问面板”测试 Azure AD 单一登录配置。
 
-单击访问面板中的“TargetProcess”磁贴时，用户应自动登录到 TargetProcess 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+单击访问面板中的“TargetProcess”磁贴时，用户应自动登录到 TargetProcess 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

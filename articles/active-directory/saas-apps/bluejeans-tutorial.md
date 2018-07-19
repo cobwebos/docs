@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 1e6875fb3795d558afdf05b0a57c6c9d3bf9dc78
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d485c16719c07062249e8d40f0feca9685851834
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216423"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043459"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bluejeans"></a>教程：Azure Active Directory 与 BlueJeans 集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "36216423"
 
     ![配置单一登录](./media/bluejeans-tutorial/tutorial_bluejeans_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.BlueJeans.com`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.BlueJeans.com`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<companyname>.BlueJeans.com`
 
@@ -141,7 +141,7 @@ ms.locfileid: "36216423"
 
    ![SAML 单一登录](./media/bluejeans-tutorial/IC785869.png "SAML 单一登录")
 
-   a. 选择“SAML 单一登录”。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“SAML 单一登录”。
 
    b. 选择“启用自动预配”。
 
@@ -149,7 +149,7 @@ ms.locfileid: "36216423"
 
     ![证书路径](./media/bluejeans-tutorial/IC785870.png "证书路径")
 
-    a. 单击“选择文件”，并上载所下载的证书。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“选择文件”，并上载所下载的证书。
 
     b. 将“SAML 单一登录服务 URL”粘贴到“登录 URL”文本框。
 
@@ -161,7 +161,7 @@ ms.locfileid: "36216423"
 
     ![保存更改](./media/bluejeans-tutorial/IC785874.png "保存更改")
 
-    a. 在“用户 ID”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“用户 ID”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
 
     b. 在“电子邮件”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
 
@@ -190,7 +190,7 @@ ms.locfileid: "36216423"
 
     ![创建 Azure AD 测试用户](./media/bluejeans-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -217,7 +217,7 @@ ms.locfileid: "36216423"
 
     ![添加用户](./media/bluejeans-tutorial/IC785886.png "添加用户")
 
-    a. 在相关文本框中键入 **BlueJeans 用户名**、**电子邮件地址**、**BlueJeans 会议 ID**、**审查方密码**、**全名**、要配置的有效 AAD 帐户的**公司**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在相关文本框中键入 **BlueJeans 用户名**、**电子邮件地址**、**BlueJeans 会议 ID**、**审查方密码**、**全名**、要配置的有效 AAD 帐户的**公司**。
 
     b. 单击“添加用户”。
 
@@ -259,7 +259,7 @@ ms.locfileid: "36216423"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 BlueJeans 磁贴时，应显示 BlueJeans 应用程序的登录页。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

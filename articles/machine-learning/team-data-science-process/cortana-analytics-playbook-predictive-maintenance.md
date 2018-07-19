@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: ff2e1660ffcc1f397697b27084e000371c7c84f3
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 816ba560ccb9b06414dff8ffaea054e88d216b10
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36938003"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972377"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>针对预测性维护解决方案的 Azure AI 指南
 
@@ -387,7 +387,7 @@ PdM 的建议方法是以时间相关的方式将示例拆分为训练、验证�
 - [接收方操作曲线 (ROC)](https://en.wikipedia.org/wiki/Receiver_operating_characteristic) 也是一个常用的指标。 在 ROC 曲线中，模型性能根据 ROC 上的固定操作点来解释。
 - 但对于 PdM 问题，十分位表和提升图更具参考性。 它们只注重正类（故障），提供的算法性能图比 ROC 曲线更复杂。
   - 十分位表是使用文本示例根据故障概率的降序创建的。 然后，将排序的示例分组成十分位（具有最高概率的样本的 10%、20%、30%，依此类推）。 每个十分位的比率（真实正比率）/（随机基线）可帮助估计每个十分位的算法性能。 随机基线采用值 0.1、0.2，依此类推。
-  - [提升图](http://www2.cs.uregina.ca/~dbd/cs831/notes/lift_chart/lift_chart.html)绘制十分位的真实正比率，而不是所有十分位的随机真实正比率。 最前面的十分位是结果的重点，因为它们展示了最大增益。 用于 PdM 时，也可以将最前面的十分位视为“有风险”的代表。
+  - 提升图绘制十分位的真实正比率，而不是所有十分位的随机真实正比率。[](http://www2.cs.uregina.ca/~dbd/cs831/notes/lift_chart/lift_chart.html) 最前面的十分位是结果的重点，因为它们展示了最大增益。 用于 PdM 时，也可以将最前面的十分位视为“有风险”的代表。
 
 ## <a name="model-operationalization-for-predictive-maintenance"></a>预测性维护的模型操作化
 
@@ -415,7 +415,7 @@ PdM 的建议方法是以时间相关的方式将示例拆分为训练、验证�
 | # | 标题 | 说明 |
 |--:|:------|-------------|
 | 1 | [Azure 预防性维护机器学习示例](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance) |用于预测将来 N 个时间单位内的故障的 PdM 示例。 此示例编写为 Azure ML Workbench 项目，非常适合 PdM 的初学者学习。 与此示例相关的[其他文档](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/scenario-predictive-maintenance)。|
-| 2 | [Azure 预测性维护解决方案模板](https://github.com/Azure/AI-PredictiveMaintenance) | 用于演示多个 PdM 场景的端到端框架。 此模板演示两个场景：第一个场景是实时故障状态分类的新用例。 第二个场景只是演示如何将解决方案 [1] 集成到此解决方案模板。 其中演示了如何重复使用部署的同一基础结构来添加其他新的或现有的方案。|
+| 2 | [Azure 预测性维护解决方案模板](https://github.com/Azure/AI-PredictiveMaintenance) | 开放源代码解决方案模板，用于演示机器学习建模和完整的 Azure 基础结构，该结构可支持 IoT 远程监视环境中的预测性维护方案。 |
 | 3 | [预测性维护的深度学习](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | 包含一个演示解决方案的 Azure Notebook。该解决方案使用 LSTM （长短期记忆）网络（某类递归神经网络）进行预测性维护。请参阅[有关此示例的博客文章](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance)。|
 | 4 | [预测性维护的 R 建模指南](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) | 有关使用 R 脚本进行 PdM 建模的指南|
 | 5 | [面向航天工业的 Azure 预测性维护](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | 基于 Azure ML v1.0 的首批 PdM 解决方案模板之一，适用于飞机维护。 本指南源于此项目。 |

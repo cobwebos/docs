@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/16/2018
+ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: add80b17c76e7262f55e50cd07d4e9b053cfa1ff
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 81dbb61d696da84febc89563f946581315fdf527
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209825"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37922745"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure 到 Azure 复制中的移动服务自动更新
 
@@ -29,6 +29,11 @@ Azure Site Recovery 每月发布一次，增加对现有功能或新功能的增
 
 > [!NOTE]
 > 启用自动更新不需要重新启动 Azure VM，并且不影响正在进行的复制。
+
+> [!NOTE]
+> 自动化帐户使用的作业账单基于当月使用的作业运行时间分钟数，默认情况下，自动化帐户有 500 分钟的免费单位数。 每天执行的作业量为几秒至大约一分钟，并且将包含在免费额度中。
+
+包含的免费单位数（每月）**   价格作业运行时间    500 分钟 ₹0.14/分钟
 
 ## <a name="enable-automatic-updates"></a>启用自动更新
 
@@ -64,7 +69,7 @@ Azure Site Recovery 每月发布一次，增加对现有功能或新功能的增
 如果尝试启用自动更新但操作失败，请参阅以下内容进行故障排除。
 
 **错误**：没有权限创建 Azure 运行方式帐户（服务主体）并向服务主体授予参与者角色。 
-- 建议的操作：请确保已为登录的帐户分配“参与者”角色，然后重试操作。
+- 建议的操作：请确保已为登录的帐户分配“参与者”角色，然后重试操作。 有关分配正确权限的详细信息，请参阅[此](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)文档。
  
 启用自动更新后，Site Recovery 服务可修复大部分问题，这需要单击“修复”按钮。
 

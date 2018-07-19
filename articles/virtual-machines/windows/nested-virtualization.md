@@ -11,18 +11,18 @@ ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 0648a7555cb94543dadf5d73e0187927a90f5b5a
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 3b606fc78327035e135e0f037288a817171385dd
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31526512"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857938"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>如何在 Azure VM 中启用嵌套虚拟化
 
 Azure 虚拟机的 Dv3 和 Ev3 系列支持嵌套虚拟化。 此功能可在支持开发、测试、培训和演示环境等方面提供极大的灵活性。 
 
-本文逐步介绍如何在 Azure VM 上启用嵌套虚拟化，并配置到该来宾虚拟机的 Internet 连接。
+所有 Dv3 和 Ev3 系列虚拟机都支持嵌套虚拟化，而无需添加配置。  本文逐步介绍如何在 Azure VM 上启用 Hyper-V，并配置到该来宾虚拟机的 Internet 连接。
 
 ## <a name="create-a-dv3-or-ev3-series-azure-vm"></a>创建 Dv3 或 Ev3 系列 Azure VM
 

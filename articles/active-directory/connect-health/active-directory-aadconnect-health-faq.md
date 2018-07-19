@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 05720e6c290b0b54e5b6d5170a6eb22306e9cb04
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 957a68c80f9fcc07ef6f84b2b08f344745a58d95
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30282192"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866018"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常见问题
 本文提供有关 Azure Active Directory (Azure AD) Connect Health 的常见问题 (FAQ) 解答。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。
@@ -62,8 +62,16 @@ ms.locfileid: "30282192"
 
 **问：Azure AD Connect Health 是否支持 Azure 德国云？**
 
-Azure AD Connect Health 包含 Azure 德国的[安装](active-directory-aadconnect-health-agent-install.md)。 德语云客户的所有数据都保留在 Azure 德国云内。
+Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](active-directory-aadconnect-health-sync.md#object-level-synchronization-error-report-preview)除外。 
 
+| 角色 | 功能 | 德国云支持 |
+| ------ | --------------- | --- |
+| 适用于同步的 Connect Health | 监视/见解/警报/分析 | 否 |
+|  | 同步错误报告 | 是 |
+| 适用于 ADFS 的 Connect Health | 监视/见解/警报/分析 | 否 |
+| 适用于 ADDS 的 Connect Health | 监视/见解/警报/分析 | 否 |
+
+若要确保适用于同步的 Connect Health 的代理连接，请相应地配置[安装要求](active-directory-aadconnect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints)。   
 
 ## <a name="installation-questions"></a>安装问题
 
@@ -86,7 +94,7 @@ Azure AD Connect Health 包含 Azure 德国的[安装](active-directory-aadconne
 
 **问：在 Azure AD Connect Health 代理安装期间，我必须重新启动我的服务器吗？**
 
-不会。 安装代理时不需要重新启动服务器。 但是，安装某些先决条件步骤可能需要重新启动服务器。
+不是。 安装代理时不需要重新启动服务器。 但是，安装某些先决条件步骤可能需要重新启动服务器。
 
 例如，在 Windows Server 2008 R2 上安装 .NET 4.5 Framework 需要重新启动服务器。
 
@@ -103,7 +111,7 @@ Azure AD Connect Health 包含 Azure 德国的[安装](active-directory-aadconne
 
 **问：Azure AD Connect Health 在连接到 HTTP 代理时是否支持基本身份验证？**
 
-不会。 目前不支持指定任意用户名和密码进行基本身份验证的机制。
+不是。 目前不支持指定任意用户名和密码进行基本身份验证的机制。
 
 **问：若要确保 Azure AD Connect Health 代理正常使用，需要打开哪些防火墙端口？**
 

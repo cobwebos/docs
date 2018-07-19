@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/24/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 61369fbf864db28ee0a9415bbb87dca2a185ed43
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 2480ad464f2fc716cf68672387a189aeb92f5737
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809669"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37918826"
 ---
 # <a name="sap-hana-on-azure-operations-guide"></a>Azure 上的 SAP HANA 操作指南
 本文档提供有关操作 Azure 本机虚拟机 (VM) 上部署的 SAP HANA 系统的指导。 本文档并不旨在取代标准 SAP 文档，后者包括以下内容：
@@ -95,7 +95,20 @@ Azure 针对 Azure 标准和高级存储上的 VHD 提供两种部署方法。 �
 
 在 RAID 下面累积多个 Azure VHD 可以提高 IOPS 和存储吞吐量。 因此，如果使用 3 倍的 P30 Azure 高级存储磁盘构建 RAID 0，则单个 Azure 高级存储 P30 磁盘的 IOPS 和存储吞吐量会提高 3 倍。
 
-不要在用于 /hana/data 和 /hana/log 的磁盘上配置高级存储缓存。 用于构建这些卷的所有磁盘的缓存应设置为“无”。
+以下缓存建议假设列出的 SAP HANA 的 I/O 特征如下所示：
+
+- 几乎没有任何针对 HANA 数据文件的读取工作负荷。 HANA 实例重启后或 Azure VM 在数据加载到 HANA 时重启后出现的大型 I/O 例外。 执行 HANA 数据库备份后，也可能出现大量针对数据文件的读取 I/O。 因此，大多数情况下读取缓存没有意义，因为在大多数情况下，需要完全读取所有数据文件卷。
+- HANA 写入点和 HANA 故障恢复会产生大量针对数据文件的写入。 写入保存点是异步进行的，不阻止任何用户事务。 在故障恢复期间写入数据对性能要严格要求，以便系统再次快速响应。 但是，故障恢复更确切地说应该是异常情况
+- 几乎不会从 HANA 重做文件进行任何读取。 执行事务日志备份、故障恢复或在 HANA 实例重启阶段出现的大型 I/O 例外。  
+- 针对 SAP HANA 重做日志文件的主要负载是写入负载。 根据工作负载的性质，I/O 可以小至 4 KB，也可达到 1 MB 或更大。 针对 SAP HANA 重做文件的写入延迟对性能要很高要求。
+- 需要以一种可靠的方式在磁盘上保留所有写入
+
+对于这些观察到的 SAP HANA 的 I/O 模式，使用 Azure 高级存储的不同卷的缓存应设置为如下形式：
+
+- /hana/data - 无缓存
+- /hana/log - 无缓存 - M 系列例外（详见本文稍后部分）
+- /hana/shared - 服务缓存
+
 
 在确定 VM 大小或决定 VM 时，还要考虑总体 VM I/O 吞吐量。 [内存优化虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)一文中记录了总体 VM 存储吞吐量。
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 0141694b87664a83872f7b270631d454f863d5a8
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 5077982bdef4d0e8fbf1ab485566909b4dc97a8a
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046160"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857372"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure 数据工厂中的 If Condition 活动
 If Condition 活动可提供 if 语句在编程语言中提供相同的功能。 当条件计算结果为 `true` 时，它会计算一组活动，当条件计算结果为 `false` 时，它会计算另一组活动。 
@@ -69,9 +69,9 @@ If Condition 活动可提供 if 语句在编程语言中提供相同的功能。
 -------- | ----------- | -------------- | --------
 名称 | if-condition 活动名称。 | String | 是
 type | 必须设置为“IfCondition” | String | 是
-表达式 | 计算结果必须为 true 或 false 的表达式 | 是
-ifTrueActivities | 表达式计算结果为 `true` 时将执行的活动集。 | 是
-ifFalseActivities | 表达式计算结果为 `false` 时将执行的活动集。 | 是
+表达式 | 计算结果必须为 true 或 false 的表达式 | 具有结果类型布尔的表达式 | 是
+ifTrueActivities | 表达式计算结果为 `true` 时将执行的活动集。 | Array | 是
+ifFalseActivities | 表达式计算结果为 `false` 时将执行的活动集。 | Array | 是
 
 ## <a name="example"></a>示例
 此示例中的管道可将数据从输入文件夹复制到一个输出文件夹。 输出文件夹由管道参数的值决定：routeSelection。 如果 routeSelection 的值为 true，数据将复制到 outputPath1。 而如果 routeSelection 的值为 false，数据将复制到 outputPath2。 

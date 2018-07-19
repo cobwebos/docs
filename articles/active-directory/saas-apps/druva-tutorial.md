@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 8a274ea6a31c907060893fe128c1125b0072781e
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e536663669cadc0352a52c7f4f24ed9669661d2d
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229595"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042973"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-druva"></a>教程：Azure Active Directory 与 Druva 集成
 
@@ -132,7 +132,7 @@ ms.locfileid: "36229595"
     | ------------------- | -------------------- |
     | insync\_auth\_token |输入令牌生成的值 |
     
-    a. 单击“添加属性”，打开“添加属性”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
     
     ![配置单一登录](./media/druva-tutorial/tutorial_attribute_04.png)
     
@@ -162,7 +162,7 @@ ms.locfileid: "36229595"
 
     ![单一登录设置](./media/druva-tutorial/ic795092.png "Single Sign-On Settings")
     
-    a. 在“ID 提供程序登录 URL”文本框中，粘贴从 Azure 门户复制的“单一登录服务 URL”的值。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“ID 提供程序登录 URL”文本框中，粘贴从 Azure 门户复制的“单一登录服务 URL”的值。
         
     b. 在“ID 提供程序注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”的值。
         
@@ -178,7 +178,7 @@ ms.locfileid: "36229595"
 
     ![SSO 令牌](./media/druva-tutorial/ic795094.png "SSO Token")
     
-    a. 单击“复制”，在 Azure 门户的“添加属性”部分的“值”文本框中，粘贴复制的值。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“复制”，在 Azure 门户的“添加属性”部分的“值”文本框中，粘贴复制的值。
     
     b. 单击“关闭”。
 
@@ -210,7 +210,7 @@ ms.locfileid: "36229595"
 
     ![“用户”对话框](./media/druva-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -238,7 +238,7 @@ ms.locfileid: "36229595"
    
    ![新建用户](./media/druva-tutorial/ic795099.png "Create NewUser")
    
-   a. 在“电子邮件地址”文本框中，输入用户的电子邮件地址（例如 brittasimon@contoso.com）。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“电子邮件地址”文本框中，输入用户的电子邮件地址（例如 brittasimon@contoso.com）。
    
    b. 在“名称”文本框中输入用户的姓名，例如“BrittaSimon”。
    
@@ -282,7 +282,7 @@ ms.locfileid: "36229595"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 Druva 磁贴时，应该会自动登录 Druva 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: jeedes
-ms.openlocfilehash: a92fd3557455c5293ce72582210d3261c9ef0adb
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ef8e493816321d9aaffbf6e4870ff3e3a9e1180b
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218293"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041385"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trello"></a>教程：Azure Active Directory 与 Trello 集成
 
@@ -114,17 +114,17 @@ ms.locfileid: "36218293"
 
     ![Trello 域和 URL 单一登录信息](./media/trello-tutorial/tutorial_trello_url.png)
     
-    a. 在“标识符”文本框中，键入以下 URL：`https://trello.com/auth/saml/metadata`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，键入以下 URL：`https://trello.com/auth/saml/metadata`
     
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://trello.com/auth/saml/consume/<enterprise>`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://trello.com/auth/saml/consume/<enterprise>`
 
 4. 如果要在“SP 发起的模式”下配置应用程序，请执行以下步骤：
 
     ![Trello 域和 URL 单一登录信息](./media/trello-tutorial/tutorial_trello_url1.png)
 
-    a. 选中“显示高级 URL 设置”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选中“显示高级 URL 设置”。
 
-    b. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://trello.com/auth/saml/login/<enterprise>` 
+    b. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://trello.com/auth/saml/login/<enterprise>` 
 
 5. Trello 应用程序需要 SAML 断言包含特定属性。 请为此应用程序配置以下属性。 可从应用程序的“用户属性”下管理这些属性的值。 以下屏幕截图显示一个示例。
 
@@ -138,7 +138,7 @@ ms.locfileid: "36218293"
     | User.FirstName | user.givenname |
     | User.LastName | user.surname |
 
-    a. 单击“添加属性”，打开“添加属性”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录](./media/trello-tutorial/tutorial_officespace_04.png)
 
@@ -191,7 +191,7 @@ ms.locfileid: "36218293"
 
     ![“用户”对话框](./media/trello-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -242,7 +242,7 @@ ms.locfileid: "36218293"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Trello”磁贴时，用户应自动登录到 Trello 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

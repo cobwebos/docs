@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: a6e3bb31886f1b682ef20404b536bfc4a0c07151
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4b584dfa49c42328a44fff0645dcdec2504abaa2
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656877"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37904214"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>创建、更改或删除网络接口
 
@@ -62,7 +62,7 @@ ms.locfileid: "34656877"
 
 创建网络接口时，门户不会提供向接口分配公共 IP 地址的选项，但使用门户创建虚拟机时，门户会创建一个公共 IP 地址并将其分配到网络接口。 若要了解创建网络接口后如何向其添加公共 IP 地址，请参阅[管理 IP 地址](virtual-network-network-interface-addresses.md)。 若要使用公共 IP 地址创建网络接口，必须使用 CLI 或 PowerShell 创建网络接口。
 
-门户不提供将网络接口分配到应用程序安全组的选项，但 Azure CLI 和 PowerShell 提供。 若要了解有关应用程序安全组的详细信息，请参阅[应用程序安全组](security-overview.md#application-security-groups)。
+创建网络接口时，门户不提供将网络接口分配给应用程序安全组的选项，但是 Azure CLI 和 PowerShell 提供。 但是，只要网络接口连接到虚拟机，就可以使用门户将现有网络接口分配给应用程序安全组。 要了解如何将网络接口分配给应用程序安全组，请参阅[添加到应用程序安全组或从中删除](#add-to-or-remove-from-application-security-groups)。
 
 >[!Note]
 > 只有在网络接口附加到虚拟机后首次启动虚拟机时，Azure 才向网络接口分配 MAC 地址。 无法自行指定 Azure 要分配给网络接口的 MAC 地址。 除非网络接口被删除或者分配给主网络接口的主 IP 配置的专用 IP 地址发生更改，否则该 MAC 地址将始终分配给该网络接口。 若要详细了解 IP 地址和 IP 配置，请参阅[管理 IP 地址](virtual-network-network-interface-addresses.md)
@@ -161,7 +161,10 @@ IP 转发使网络接口附加到的虚拟机能够：
 
 ## <a name="add-to-or-remove-from-application-security-groups"></a>添加到应用程序安全组或从中删除
 
-门户不提供将网络接口分配给应用程序安全组或从中删除网络接口的选项，但是 Azure CLI 和 PowerShell 提供。 若要了解有关应用程序安全组的详细信息，请参阅[应用程序安全组](security-overview.md#application-security-groups)和[创建应用程序安全组](#create-an-application-security-group)。
+只有在网络接口连接到虚拟机的情况下，才可以使用门户将网络接口添加到应用程序安全组或从中删除。 无论网络接口是否连接到虚拟机，都可使用 PowerShell 或 Azure CLI 将网络接口添加到应用程序安全组或从中删除。 了解[应用程序安全组](security-overview.md#application-security-groups)以及如何[创建应用程序安全组](manage-network-security-group.md#create-an-application-security-group)。
+
+1. 在门户顶部的“搜索资源、服务和文档”框中，键入虚拟机的名称，该虚拟机具有要添加到应用程序安全组或要从应用程序安全组中删除的网络接口。 当 VM 名称显示在搜索结果中时，将其选中。
+2. 在“设置”下选择“网络”。  选择“配置应用程序安全组”，选中要在其中添加网络接口的应用程序安全组，或取消选中要从中删除网络接口的应用程序安全组，然后选择“保存”。 只有位于同一虚拟网络的网络接口才能添加到同一应用程序安全组。 应用程序安全组必须与网络接口位于同一位置。
 
 **命令**
 
@@ -264,6 +267,6 @@ Azure 网络观察程序的下一个跃点功能还有助于确定路由是否�
 
 - 使用 [Azure CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 创建具有多个 NIC 的 VM
 - 使用 [Azure CLI](virtual-network-multiple-ip-addresses-cli.md) 或 [PowerShell](virtual-network-multiple-ip-addresses-powershell.md) 创建具有多个 IPv4 地址的单个 NIC VM
-- 使用 [Azure CLI](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Azure 资源管理器模板](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|创建具有专用 IPv6 地址的单个 NIC VM（在 Azure 负载平衡器的后面）
+- 使用 [Azure CLI](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Azure 资源管理器模板](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)创建具有专用 IPv6 地址的单个 NIC VM（在 Azure 负载均衡器的后面）
 - 使用 [PowerShell](powershell-samples.md) 或 [Azure CLI](cli-samples.md) 示例脚本或使用 Azure [资源管理器模板](template-samples.md)创建网络接口
 - 为虚拟网络创建并应用 [Azure 策略](policy-samples.md)

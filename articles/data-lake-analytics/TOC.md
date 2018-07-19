@@ -59,6 +59,9 @@
 #### [自定义代码](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
 #### [本地运行和调试](data-lake-tools-for-vscode-local-run-and-debug.md)
 
+## 计划 U-SQL 作业
+### [使用 SSIS 计划作业](data-lake-analytics-schedule-jobs-ssis.md)
+
 ## 持续集成和持续部署
 ### [概述](data-lake-analytics-cicd-overview.md)
 ### [设置测试](data-lake-analytics-cicd-test.md)
@@ -80,6 +83,6 @@
 ## [定价](https://azure.microsoft.com/pricing/details/data-lake-analytics/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=data-lake-analytics)
-## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-data-lake)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-lake)
 ## [视频](https://azure.microsoft.com/resources/videos/index/?services=data-lake-analytics)
 ## [代码示例](https://azure.microsoft.com/resources/samples/?service=data-lake-analytics)

@@ -4,15 +4,15 @@ description: 请阅读本文了解如何规划容量和缩放，以便使用 Azu
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
+ms.date: 07/06/2018
 ms.topic: conceptual
-ms.date: 06/20/2018
 ms.author: rayne
-ms.openlocfilehash: 30e4534fbc235a228ac887ddc3336f09909b4fa6
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 905798acd5836c31953714d7984cfb19f16cecab
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287348"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920791"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-replication-with-azure-site-recovery"></a>通过 Azure Site Recovery，针对 VMware 复制规划容量和缩放
 
@@ -24,7 +24,7 @@ ms.locfileid: "36287348"
 
 ## <a name="capacity-considerations"></a>容量注意事项
 
-**组件** | **详细信息** |
+组件 | **详细信息** |
 --- | --- | ---
 **复制** | **每日最大更改率：** 一台受保护的计算机只能使用一个进程服务器，一个进程服务器可处理的每日更改率最高可达 2 TB。 因此，2 TB 是受保护计算机支持的每日数据更改率上限。<br/><br/> **最大吞吐量：** 在 Azure 中，一个复制的计算机可能属于一个存储帐户。 标准存储帐户每秒最多可以处理 20,000 个请求，因此建议将源计算机中的每秒输入/输出操作数 (IOPS) 保持在 20,000。 例如，如果源计算机有 5 个磁盘，每个磁盘在源计算机上生成 120 IOPS（8K 大小），则 Azure 中单磁盘 IOPS 限制为 500。 （所需的存储帐户数等于源计算机总 IOPS 除以 20,000。）
 **配置服务器** | 配置服务器应该能够处理跨所有工作负荷（运行在受保护的计算机上）的每日更改率容量，并需要有足够的带宽，才能持续将数据复制到 Azure 存储。<br/><br/> 最佳做法是，将配置服务器置于与所要保护的计算机相同的网络和 LAN 网段上。 可以将配置服务器置于另一网络中，但所要保护的计算机应可通过第 3 层网络来查看它。<br/><br/> 以下部分的表中汇总了配置服务器的建议大小。
@@ -32,7 +32,7 @@ ms.locfileid: "36287348"
 
 ## <a name="size-recommendations-for-the-configuration-server"></a>配置服务器的建议大小
 
-**CPU** | **内存** | **缓存磁盘大小** | **数据更改率** | **受保护的计算机**
+CPU | **内存** | **缓存磁盘大小** | **数据更改率** | **受保护的计算机**
 --- | --- | --- | --- | ---
 8 个 vCPU（2 个插槽 * 4 个核心 @ 2.5 千兆赫 [GHz]） | 16 GB | 300 GB | 500 GB 或更少 | 复制少于 100 台计算机。
 12 个 vCPU（2 个插槽 * 6 个核心 @ 2.5 GHz） | 18 GB | 600 GB | 500 GB 到 1 TB | 复制 100-150 台计算机。
@@ -107,24 +107,10 @@ ms.locfileid: "36287348"
 
 ## <a name="deploy-additional-process-servers"></a>部署附加的进程服务器
 
-如果必须将部署扩大到 200 台以上源计算机，或者每日总改动率超过 2 TB，则需要额外的进程服务器来处理流量。 按照这些说明设置进程服务器。 设置服务器后，可以迁移源计算机来使用它。
-
-1. 在“Site Recovery 服务器”中，单击配置服务器，并单击“进程服务器”。
-
-    ![“Site Recovery 服务器”选项（用于添加进程服务器）的屏幕截图](./media/site-recovery-vmware-to-azure/migrate-ps1.png)
-2. 在“服务器类型”中，单击“进程服务器(本地)”。
-
-    ![“进程服务器”对话框的屏幕截图](./media/site-recovery-vmware-to-azure/migrate-ps2.png)
-3. 下载并运行 Site Recovery 统一安装程序文件来安装进程服务器。 这还会将其注册到保管库中。
-4. 在“开始之前”中选择“添加额外的进程服务器以扩大部署”。
-5. 完成向导，完成方式与[安装](#step-2-set-up-the-source-environment)配置服务器时采用的方式相同。
-
-    ![Azure Site Recovery 统一安装程序向导的屏幕截图](./media/site-recovery-vmware-to-azure/add-ps1.png)
-6. 在“配置服务器详细信息”中，指定配置服务器的 IP 地址和通行短语。 若要获取密码，请在配置服务器上运行 **[SiteRecoveryInstallationFolder]\home\sysystems\bin\genpassphrase.exe –n**。
-
-    ![“配置服务器详细信息”页的屏幕截图](./media/site-recovery-vmware-to-azure/add-ps2.png)
+如果必须将部署扩大到 200 台以上源计算机，或者每日总改动率超过 2 TB，则需要额外的进程服务器来处理流量。 按照[本文](vmware-azure-set-up-process-server-scale.md)所述说明设置进程服务器。 设置服务器后，可以迁移源计算机来使用它。
 
 ### <a name="migrate-machines-to-use-the-new-process-server"></a>对计算机进行迁移，以使用新的进程服务器
+
 1. 在“设置” > “Site Recovery 服务器”中，单击配置服务器，并展开“进程服务器”。
 
     ![“进程服务器”对话框的屏幕截图](./media/site-recovery-vmware-to-azure/migrate-ps2.png)
@@ -133,6 +119,30 @@ ms.locfileid: "36287348"
     ![“配置服务器”对话框的屏幕截图](./media/site-recovery-vmware-to-azure/migrate-ps3.png)
 3. 在“选择目标进程服务器”中，选择要使用的新进程服务器，然后选择该服务器将要处理的虚拟机。 单击信息图标，获取服务器的相关信息。 为了帮助你做出负载决策，随后会显示将每个所选虚拟机复制到新进程服务器所需的平均空间。 单击复选标记，开始复制到新的进程服务器。
 
+## <a name="deploy-additional-master-target-servers"></a>部署其他主目标服务器
+
+在以下方案中将需要其他主目标服务器
+
+1. 如果尝试保护基于 Linux 的虚拟机。
+2. 如果配置服务器上可用的主目标服务器不能访问 VM 的数据存储。
+3. 如果主目标服务器上的磁盘总数（服务器上的 本地磁盘数 + 要保护的磁盘数）超过 60。
+
+若要为基于 Linux 的虚拟机添加新的主目标服务器，请[单击此处](vmware-azure-install-linux-master-target.md)。
+
+对于基于 Windows 的虚拟机，请按照以下说明进行操作。
+
+1. 导航到“恢复服务保管库” > “Site Recovery 基础结构” > “配置服务器”。
+2. 单击所需的“配置服务器”>“+主目标服务器”。![add-master-target-server.png](media/site-recovery-plan-capacity-vmware/add-master-target-server.png)
+3. 下载统一设置并在 VM 上运行，以设置主目标服务器。
+4. 选择“安装主目标服务器” > “下一步”。 ![choose-MT.PNG](media/site-recovery-plan-capacity-vmware/choose-MT.PNG)
+5. 选择默认安装位置 >单击“安装”。 ![MT-installation](media/site-recovery-plan-capacity-vmware/MT-installation.PNG)
+6. 单击“转到配置”向配置服务器注册主目标服务器。 ![MT-proceed-configuration.PNG](media/site-recovery-plan-capacity-vmware/MT-proceed-configuration.PNG)
+7. 输入配置服务器的 IP 地址和密码。 [单击此处](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase)了解如何生成密码。![cs-ip-passphrase](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
+8. 单击“注册”，并在注册后单击“完成”。
+9. 注册成功后，此服务器在“恢复服务保管库” > “Site Recovery 基础结构” > “配置服务器”>“相关配置服务器的主目标服务器”下的门户上列出。
+
+ >[!NOTE]
+ >还可在[此处](https://aka.ms/latestmobsvc)下载适用于 Windows 的最新版本的主目标服务器统一设置。
 
 ## <a name="next-steps"></a>后续步骤
 

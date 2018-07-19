@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 4885863519ab2ba0a37a0f14ccab12bbfc35a03a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 05a91e66d046bb7869179175c3a7d0b13b1942e4
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225263"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042184"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>教程：Azure Active Directory 与 SAML SSO for Jira by resolution GmbH 集成
 
@@ -112,15 +112,15 @@ ms.locfileid: "36225263"
 
     ![配置单一登录](./media/samlssojira-tutorial/tutorial_samlssojira_url_1.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/samlsso`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/samlsso`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/samlsso`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/samlsso`
 
 4. 选中“显示高级 URL 设置”。 如果要在“SP”发起的模式下配置应用程序：
 
     ![配置单一登录](./media/samlssojira-tutorial/tutorial_samlssojira_url_2.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/samlsso`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<server-base-url>/plugins/servlet/samlsso`
      
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 若要获取这些值，请联系 [SAML SSO for Jira by resolution GmbH 客户支持团队](https://www.resolution.de/go/support)。 
@@ -169,13 +169,13 @@ ms.locfileid: "36225263"
 
     ![配置单一登录](./media/samlssojira-tutorial/addon5a.png)
  
-    a. 设置“Azure AD”作为 IdP 类型。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 设置“Azure AD”作为 IdP 类型。
     
     b. 添加标识提供者（例如 Azure AD）的“名称”。
     
     c. 添加标识提供者（例如 Azure AD）的“说明”。
     
-    d. 单击“资源组名称” 的 Azure 数据工厂。
+    d. 单击“下一步”。
     
 16. 在“标识提供者配置”页上，单击“下一步”按钮。
 
@@ -185,7 +185,7 @@ ms.locfileid: "36225263"
 
     ![配置单一登录](./media/samlssojira-tutorial/addon5c.png)
 
-    a. 单击“加载文件”按钮，然后选择在步骤 5 中下载的元数据 XML 文件。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“加载文件”按钮，然后选择在步骤 5 中下载的元数据 XML 文件。
 
     b. 单击“导入”按钮。
     
@@ -236,7 +236,7 @@ ms.locfileid: "36225263"
  
     ![创建 Azure AD 测试用户](./media/samlssojira-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -269,7 +269,7 @@ ms.locfileid: "36225263"
 
     ![添加员工](./media/samlssojira-tutorial/user4.png) 
 
-    a. 在“电子邮件地址”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“电子邮件地址”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
     b. 在“全名”文本框中，键入用户（例如 Britta Simon）的全名。
 
@@ -314,7 +314,7 @@ ms.locfileid: "36225263"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击“SAML SSO for Jira by resolution GmbH”磁贴就会自动登录到 SAML SSO for Jira by resolution GmbH 应用程序。
-有关访问面板的详细信息，请参阅 [introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.openlocfilehash: 4073fbb534ae712f8a5cad6c2e4aa750cec365b7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f3bbcbb70759e7a995797cf89ad75a2a39314927
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213278"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048474"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-airwatch"></a>教程：Azure Active Directory 与 AirWatch 集成
 
@@ -113,7 +113,7 @@ ms.locfileid: "36213278"
 
     ![配置单一登录](./media/airwatch-tutorial/tutorial_airwatch_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.awmdm.com/AirWatch/Login?gid=companycode`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.awmdm.com/AirWatch/Login?gid=companycode`
 
     b. 在“标识符”文本框中，键入 `AirWatch` 值。
 
@@ -154,7 +154,7 @@ ms.locfileid: "36213278"
     
     ![上传](./media/airwatch-tutorial/ic791924.png "上传")   
     
-    a. 对于“目录类型”，选择“无”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“目录类型”，选择“无”。
 
     b. 选择“将 SAML 用于身份验证”。
 
@@ -164,7 +164,7 @@ ms.locfileid: "36213278"
     
     ![请求](./media/airwatch-tutorial/ic791925.png "请求")  
 
-    a. 对于“请求绑定类型”，请选择“POST”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“请求绑定类型”，请选择“POST”。
 
     b. 在 Azure 门户的“配置 Airwatch 的单一登录”对话框上，复制“SAML 单一登录服务 URL”值，然后将其粘贴到“标识提供程序单一登录 URL”文本框。
 
@@ -180,7 +180,7 @@ ms.locfileid: "36213278"
     
     ![属性](./media/airwatch-tutorial/ic791927.png "属性")
 
-    a. 在“对象标识符”文本框中，键入 **http://schemas.microsoft.com/identity/claims/objectidentifier**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“对象标识符”文本框中，键入 **http://schemas.microsoft.com/identity/claims/objectidentifier**。
 
     b. 在“用户名”文本框中，键入 **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**。
 
@@ -219,7 +219,7 @@ ms.locfileid: "36213278"
  
     ![创建 Azure AD 测试用户](./media/airwatch-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 Britta Simon 的**电子邮件地址**。
 
@@ -286,7 +286,7 @@ ms.locfileid: "36213278"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 
 ## <a name="additional-resources"></a>其他资源

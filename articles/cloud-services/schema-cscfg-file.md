@@ -10,15 +10,15 @@ ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 3ddc7fea-3339-4fc0-bdf9-853c32b25f69
 caps.latest.revision: 35
-author: thraka
-ms.author: adegeo
+author: jpconnock
+ms.author: jeconnoc
 manager: timlt
-ms.openlocfilehash: 6347314e7f279356f4f3944f3238deda84f10fc0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 96df87a0d49296280140e392509c0d735f904957
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358211"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39007016"
 ---
 # <a name="azure-cloud-services-config-schema-cscfg-file"></a>Azure 云服务配置架构（.cscfg 文件）
 服务配置文件指定要为服务中每个角色部署的角色实例数、任何配置设置的值，以及与角色关联的任何证书的缩略图。 如果服务属于虚拟网络，必须在服务配置文件以及虚拟网络配置文件中提供网络的配置信息。 服务配置文件的默认扩展名为 .csdef。
@@ -60,7 +60,7 @@ ms.locfileid: "34358211"
 
 下表介绍了 `ServiceConfiguration` 元素的属性。 所有属性值均为字符串类型。
 
-| 属性 | 说明 |
+| 属性 | Description |
 | --------- | ----------- |
 |serviceName|必需。 云服务的名称。 此处提供的名称需要匹配服务定义文件中指定的名称。|
 |osFamily|可选。 指定要在云服务的角色实例上运行的来宾 OS。 有关支持的来宾 OS 版本的信息，请参阅 [Azure 来宾 OS 版本和 SDK 兼容性对照表](cloud-services-guestos-update-matrix.md)。<br /><br /> 如果不包含 `osFamily` 值，并且未将 `osVersion` 属性设置为特定的来宾 OS 版本，将使用默认值 1。|

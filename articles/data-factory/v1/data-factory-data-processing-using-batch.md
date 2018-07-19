@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f6b2be357ad53a1852973d40e221da3d41b09ffb
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: b097a85ee97fb815106803ab95f3e4f6edde4896
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050567"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136666"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>使用数据工厂和 Batch 来处理大规模数据集
 > [!NOTE]
@@ -109,7 +109,7 @@ ms.locfileid: "37050567"
 
 4. 在“池”边栏选项卡中，选择工具栏上的“添加”按钮以添加池。
 
-   a. 输入池的 ID（“池 ID”）。 记下池的 ID。 创建数据工厂解决方案时需要它。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 输入池的 ID（“池 ID”）。 记下池的 ID。 创建数据工厂解决方案时需要它。
 
    b. 为“操作系统系列”设置指定“Windows Server 2012 R2”。
 
@@ -178,7 +178,7 @@ public IDictionary<string, string> Execute(
 #### <a name="procedure-create-the-custom-activity"></a>过程：创建自定义活动
 1. 在 Visual Studio 中创建 .NET 类库项目。
 
-   a. 启动 Visual Studio 2012/2013/2015。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 启动 Visual Studio 2012/2013/2015。
 
    b. 选择“文件” > “新建” > “项目”。
 
@@ -526,7 +526,7 @@ test custom activity Microsoft test custom activity Microsoft
 #### <a name="step-1-create-the-data-factory"></a>步骤 1：创建数据工厂
 1. 登录到 [Azure 门户](https://portal.azure.com/)之后，请执行以下步骤：
 
-   a. 选择左侧菜单上的“新建”。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择左侧菜单上的“新建”。
 
    b. 选择“新建”边栏选项卡中的“数据 + 分析”。
 
@@ -569,7 +569,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 2. 在 JSON 脚本中：
 
-   a. 将**帐户名称**替换为 Batch 帐户的名称。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将**帐户名称**替换为 Batch 帐户的名称。
 
    b. 将**访问密钥**替换为 Batch 帐户的访问密钥。
 
@@ -968,14 +968,14 @@ test custom activity Microsoft test custom activity Microsoft
 * [Azure 数据工厂](https://azure.microsoft.com/documentation/services/data-factory/)
 
   * [数据工厂服务简介](data-factory-introduction.md)
-  * [数据工厂入门](data-factory-build-your-first-pipeline.md)
+  * [](data-factory-build-your-first-pipeline.md)
   * [在数据工厂管道中使用自定义活动](data-factory-use-custom-activities.md)
 * [Azure Batch](https://azure.microsoft.com/documentation/services/batch/)
 
   * [Batch 基本信息](../../batch/batch-technical-overview.md)
   * [Batch 功能概述](../../batch/batch-api-basics.md)
   * [在 Azure 门户中创建和管理 Batch 帐户](../../batch/batch-account-create-portal.md)
-  * [适用于 .NET 的 Batch 客户端库入门](../../batch/batch-dotnet-get-started.md)
+  * [适用于 .NET 的 Batch 客户端库入门](../../batch/quick-run-dotnet.md)
 
 [batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [batch-explorer-walkthrough]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx

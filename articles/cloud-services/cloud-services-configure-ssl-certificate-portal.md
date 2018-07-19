@@ -3,7 +3,7 @@ title: 为云服务配置 SSL | Microsoft Docs
 description: 了解如何为 Web 角色指定 HTTPS 终结点以及如何上传 SSL 证书来保护应用程序。 这些示例使用 Azure 门户。
 services: cloud-services
 documentationcenter: .net
-author: Thraka
+author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: 371ba204-48b6-41af-ab9f-ed1d64efe704
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
-ms.author: adegeo
-ms.openlocfilehash: 0e053ad7f1033317948b6ef0856984b21e56e425
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.author: jeconnoc
+ms.openlocfilehash: e3e7d271375cd9c3f49d8fedd963b5234dab7902
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
-ms.locfileid: "24859770"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001518"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>在 Azure 中为应用程序配置 SSL
 
@@ -82,7 +82,7 @@ ms.locfileid: "24859770"
 
    权限（`permisionLevel` 属性）可以设置为以下值之一：
 
-   | 权限值 | 说明 |
+   | 权限值 | Description |
    | --- | --- |
    | limitedOrElevated |**（默认）** 所有角色进程都可以访问该私钥。 |
    | 提升的 |仅提升的进程可以访问该私钥。 |

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: jeedes
-ms.openlocfilehash: b29d8e9a8e8d63cdeacb8093935de5fba3b25170
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e27a1c834c48b640ab5ed7ab8d6e54f7d1784abd
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226759"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045934"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>教程：Azure Active Directory 与 Citrix ShareFile 的集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "36226759"
 
     ![Citrix ShareFile 域和 URL 单一登录信息](./media/sharefile-tutorial/tutorial_sharefile_url.png)
     
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenant-name>.sharefile.com/saml/login`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<tenant-name>.sharefile.com/saml/login`
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
 
@@ -158,7 +158,7 @@ ms.locfileid: "36226759"
    
     ![单一登录](./media/sharefile-tutorial/ic773628.png "单一登录")
    
-    a. 单击“启用 SAML”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“启用 SAML”。
     
     b. 在“你的 IDP 颁发者/实体 ID”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
 
@@ -194,7 +194,7 @@ ms.locfileid: "36226759"
 
     ![“用户”对话框](./media/sharefile-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -218,7 +218,7 @@ ms.locfileid: "36226759"
    
    ![基本信息](./media/sharefile-tutorial/IC799951.png "基本信息")
    
-   a. 在“电子邮件地址”文本框中，键入 Britta Simon 的电子邮件地址，如 brittasimon@contoso.com。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“电子邮件地址”文本框中，键入 Britta Simon 的电子邮件地址，如 brittasimon@contoso.com。
    
    b. 在“名字”文本框中，输入用户的名字，如 Britta。
    
@@ -264,7 +264,7 @@ ms.locfileid: "36226759"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Citrix ShareFile 磁贴时，应自动登录到 Citrix ShareFile 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

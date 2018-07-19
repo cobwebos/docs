@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: ba24422f7ff5759153a6e067cc61251b43a7a091
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 3e3546a5161c62c137af0a29daf5140133f91eb6
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286926"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046101"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-purelyhr"></a>教程：Azure Active Directory 与 PurelyHR 的集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "36286926"
 
     ![配置单一登录](./media/purelyhr-tutorial/tutorial_purelyhr_url.png)
    
-    在“回复 URL”文本框中，使用以下模式键入 URL：`https://<companyID>.purelyhr.com/sso-consume`
+    在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<companyID>.purelyhr.com/sso-consume`
 
 4. 如果要在“SP”发起的模式下配置应用程序，请选中“显示高级 URL 设置”：
 
@@ -143,7 +143,7 @@ ms.locfileid: "36286926"
 
     ![配置单一登录](./media/purelyhr-tutorial/purelyhr-dashboard-sso-settings.png)  
 
-    a. 在记事本中打开从 Azure 门户下载的 **Certificate(Bas64)** 并复制证书值。 将复制的值粘贴到“X.509 证书”框中。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在记事本中打开从 Azure 门户下载的 **Certificate(Bas64)** 并复制证书值。 将复制的值粘贴到“X.509 证书”框中。
 
     b. 在“Idp 颁发者 URL”中，粘贴从 Azure 门户复制的“SAML 实体 ID”。
 
@@ -180,7 +180,7 @@ ms.locfileid: "36286926"
  
     ![创建 Azure AD 测试用户](./media/purelyhr-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -228,7 +228,7 @@ ms.locfileid: "36286926"
 
 单击访问面板中的 Absorb LMS 磁贴时，会自动登录到 Absorb LMS 应用程序。
 
-有关访问面板的详细信息，请参阅。 [访问面板简介](../active-directory-saas-access-panel-introduction.md)。
+有关访问面板的详细信息，请参阅。 [访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="additional-resources"></a>其他资源
 

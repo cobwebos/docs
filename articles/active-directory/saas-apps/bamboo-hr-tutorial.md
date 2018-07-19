@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: jeedes
-ms.openlocfilehash: d31d8d92590f665b847bb92370967e88ef4590ff
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 77625296797ec8ed8364e7d8bff3e5a15b4b74b5
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210697"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048032"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bamboohr"></a>教程：Azure Active Directory 与 BambooHR 集成
 
@@ -102,7 +102,7 @@ ms.locfileid: "36210697"
 
     ![“BambooHR 域和 URL”部分](./media/bamboo-hr-tutorial/tutorial_bamboohr_url.png)
 
-    a. 在“登录 URL”框中，键入采用以下格式的 URL：`https://<company>.bamboohr.com`。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”框中，键入采用以下格式的 URL：`https://<company>.bamboohr.com`。
 
     b. 在“标识符”框中，键入一个值：`BambooHR-SAML`。
 
@@ -127,7 +127,7 @@ ms.locfileid: "36210697"
    
     ![BambooHR 单一登录页面](./media/bamboo-hr-tutorial/ic796691.png "单一登录")   
 
-    a. 选择“应用”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“应用”。
    
     b. 在“应用”窗格中，选择“单一登录”。
    
@@ -137,7 +137,7 @@ ms.locfileid: "36210697"
    
     ![“SAML 单一登录”窗格](./media/bamboo-hr-tutorial/IC796692.png "SAML 单一登录")
    
-    a. 在“SSO 登录 URL”框中，粘贴在步骤 6 中从 Azure 门户复制的“SAML 单一登录服务 URL”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“SSO 登录 URL”框中，粘贴在步骤 6 中从 Azure 门户复制的“SAML 单一登录服务 URL”。
       
     b. 在记事本中，打开从 Azure 门户下载的 base-64 编码证书，复制其内容，然后将其粘贴到“X.509 证书”框中。
    
@@ -236,7 +236,7 @@ ms.locfileid: "36210697"
 
 在访问面板中单击 **BambooHR** 磁贴时，应该会自动登录到 BambooHR 应用程序。
 
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

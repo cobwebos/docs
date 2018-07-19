@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 33eae0b2a7fe9e920ed1bd0e120d49ad090e2466
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e7368a54945d3107f9eb8973c6aaa261da4c2154
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223013"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045285"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartrecruiters"></a>教程：Azure Active Directory 与 SmartRecruiters 的集成
 
@@ -110,15 +110,15 @@ ms.locfileid: "36223013"
 
     ![SmartRecruiters 域和 URL 单一登录信息](./media/smartrecruiters-tutorial/tutorial_smartrecruiters_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.smartrecruiters.com/web-sso/saml/<companyname>`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://www.smartrecruiters.com/web-sso/saml/<companyname>`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://www.smartrecruiters.com/web-sso/saml/<companyname>/callback`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://www.smartrecruiters.com/web-sso/saml/<companyname>/callback`
 
 4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
 
     ![SmartRecruiters 域和 URL 单一登录信息](./media/smartrecruiters-tutorial/tutorial_smartrecruiters_url1.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.smartrecruiters.com/web-sso/saml/<companyname>/login`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://www.smartrecruiters.com/web-sso/saml/<companyname>/login`
      
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [SmartRecruiters 客户端支持团队](https://www.smartrecruiters.com/about-us/contact-us/)获取这些值。 
@@ -153,7 +153,7 @@ ms.locfileid: "36223013"
 
     ![SmartRecruiters 配置](./media/smartrecruiters-tutorial/configure4.png)
 
-    a. 在“标识提供者 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识提供者 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
     b. 打开从 Azure 门户下载的 **certificate(Base64)**，并将值粘贴到“标识提供者证书”文本框中。
 
@@ -186,7 +186,7 @@ ms.locfileid: "36223013"
 
     ![“用户”对话框](./media/smartrecruiters-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -233,7 +233,7 @@ ms.locfileid: "36223013"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 SmartRecruiters 磁贴时，应会自动登录到 SmartRecruiters 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

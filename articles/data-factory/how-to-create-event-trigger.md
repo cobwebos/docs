@@ -10,20 +10,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/27/2018
+ms.date: 07/10/2018
 ms.author: douglasl
-ms.openlocfilehash: a9c15b239ee0bd0dde0b1f11691565b2676e3d07
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 313f4915a8c522ae2b9fc5ebbbe85fdfb4741cc4
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062115"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969572"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>如何运行管道的触发器来响应事件
 
 本文介绍了可以在数据工厂管道中创建的基于事件的触发器。
 
 事件驱动的体系结构 (EDA) 是一种常见数据集成模式，其中涉及到事件的生成、检测、消耗和响应。 数据集成方案通常要求数据工厂客户基于事件触发管道。 数据工厂现在已与 [Azure 事件网格](https://azure.microsoft.com/services/event-grid/)集成，后者可以根据事件触发管道。
+
+> [!NOTE]
+> 本文中所介绍的集成依赖于 [Azure 事件网格](https://azure.microsoft.com/services/event-grid/)。 请确保订阅已注册事件网格资源提供程序。 有关详细信息，请参阅[资源提供程序和类型](../azure-resource-manager/resource-manager-supported-services.md#portal)。
 
 ## <a name="data-factory-ui"></a>数据工厂 UI
 
@@ -36,17 +39,17 @@ Azure 存储帐户中文件的到达或删除就是一个典型的事件。 你�
 
 ![创建新的事件触发器](media/how-to-create-event-trigger/event-based-trigger-image1.png)
 
-### <a name="select-the-event-trigger-type"></a>选择事件触发器类型
-
-只要文件到达存储位置并且创建了相应的 blob，此事件就会触发并运行数据工厂管道。 可以在数据工厂管道中创建触发器来响应 blob 创建事件、blob 删除事件或同时响应两者。
-
-![选择触发器类型作为事件](media/how-to-create-event-trigger/event-based-trigger-image2.png)
-
 ### <a name="configure-the-event-trigger"></a>配置事件触发器
 
 使用“Blob 路径开头为”和“Blob路径结尾为”属性，你可以指定要为其接收事件的容器、文件夹和 Blob 的名称。 可以为“Blob 路径开头为”和“Blob路径结尾为”属性使用各种模式，如本文中后面的示例所示。 至少需要这些属性中的一个。
 
-![配置事件触发器](media/how-to-create-event-trigger/event-based-trigger-image3.png)
+![配置事件触发器](media/how-to-create-event-trigger/event-based-trigger-image2.png)
+
+### <a name="select-the-event-trigger-type"></a>选择事件触发器类型
+
+只要文件到达存储位置并且创建了相应的 blob，此事件就会触发并运行数据工厂管道。 可以在数据工厂管道中创建触发器来响应 blob 创建事件、blob 删除事件或同时响应两者。
+
+![选择触发器类型作为事件](media/how-to-create-event-trigger/event-based-trigger-image3.png)
 
 ## <a name="json-schema"></a>JSON 架构
 
@@ -73,11 +76,13 @@ Azure 存储帐户中文件的到达或删除就是一个典型的事件。 你�
 > [!NOTE]
 > 每当指定容器和文件夹、容器和文件或容器、文件夹和文件时，都必须包含路径的 `/blobs/` 段。
 
-## <a name="using-blob-events-trigger-properties"></a>使用 Blob 事件触发器属性
+## <a name="map-trigger-properties-to-pipeline-parameters"></a>将触发器属性映射至管道参数
 
-当 blob 事件触发器触发时，它会向管道提供两个变量：*folderPath* 和 *fileName*。 若要访问这些变量，请使用 `@triggerBody().fileName` 或 `@triggerBody().folderPath` 表达式。
+当事件触发器为特定 blob 触发时，事件会将该 blob 的文件夹路径和文件名捕获至属性 `@triggerBody().folderPath` 和 `@triggerBody().fileName` 中。 若要在管道中使用这些属性的值，必须将这些属性映射至管道参数。 将这些属性映射至参数后，可以通过管道中的 `@pipeline.parameters.parameterName` 表达式访问由触发器捕获的值。
 
-例如，考虑配置为当使用 `.csv` 作为 `blobPathEndsWith` 的值创建 blob 时要触发的触发器。 将 .csv 文件放入存储帐户时，*folderPath* 和 *fileName* 描述 .csv 文件的位置。 例如，*folderPath* 的值为 `/containername/foldername/nestedfoldername`，*fileName* 的值为 `filename.csv`。
+![将属性映射至管道参数](media/how-to-create-event-trigger/event-based-trigger-image4.png)
+
+例如，在前面的屏幕截图中。 如果在存储帐户中创建了以 `.csv` 结尾的 blob 路径，则会触发该触发器。 所以，无论在存储帐户的任何位置创建了扩展名为 `.csv` 的 blob，`folderPath` 和 `fileName` 属性都会捕获这个新建的 blob 的位置。 例如，`@triggerBody().folderPath` 的值类似于 `/containername/foldername/nestedfoldername`，`@triggerBody().fileName` 的值类似于 `filename.csv`。 该示例将这些值映射至管道参数 `sourceFolder` 和 `sourceFile`。 它们可以分别作为 `@pipeline.parameters.sourceFolder` 和 `@pipeline.parameters.sourceFile` 用于整个管道。
 
 ## <a name="next-steps"></a>后续步骤
 有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md#triggers)。

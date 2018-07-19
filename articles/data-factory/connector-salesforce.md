@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/26/2018
+ms.date: 07/18/2018
 ms.author: jingwang
-ms.openlocfilehash: c139b68421061362f40856af55ad0338118ab49a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 69e3e308fb5af98dd5763c56503cc28bd4ecfa9e
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051876"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125242"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Salesforce 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -302,15 +302,15 @@ Salesforce 链接服务支持以下属性。
 |:--- |:--- |
 | 自动编号 |String |
 | 复选框 |布尔 |
-| 货币 |Double |
+| 货币 |小数 |
 | 日期 |DateTime |
 | 日期/时间 |DateTime |
 | 电子邮件 |String |
 | ID |String |
 | 查找关系 |String |
 | 多选择列表 |String |
-| Number |Double |
-| 百分比 |Double |
+| Number |小数 |
+| 百分比 |小数 |
 | 电话 |String |
 | 选择列表 |String |
 | 文本 |String |

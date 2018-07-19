@@ -6,20 +6,20 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/23/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: a4c83e495e269cdca35844a699d714b55cf1f500
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 173423c1a578500a990d6a7b43017d06ea96f6e7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643305"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38704894"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>针对本地物理服务器设置到 Azure 的灾难恢复
 
 [Azure Site Recovery](site-recovery-overview.md) 服务可管理和协调本地计算机和 Azure 虚拟机 (VM) 的复制、故障转移和故障回复，进而有利于灾难恢复策略。
 
-本教程演示如何对本地物理 Windows 和 Linux 服务器设置到 Azure 的灾难恢复。 本教程介绍如何执行下列操作：
+本教程演示如何对本地物理 Windows 和 Linux 服务器设置到 Azure 的灾难恢复。 本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 设置 Azure 和本地先决条件
@@ -124,19 +124,25 @@ ms.locfileid: "34643305"
 
 开始之前，请执行以下操作： 
 
-- 在配置服务器计算机上，确保将系统时钟与[时间服务器](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)进行同步。 它应与之匹配。 如果它提前或落后 15 分钟，安装程序可能会失败。
-- 请确保计算机可访问这些 URL：[!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
+#### <a name="verify-time-accuracy"></a>验证时间准确性
+在配置服务器计算机上，确保将系统时钟与[时间服务器](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)进行同步。 它应与之匹配。 如果它提前或落后 15 分钟，安装程序可能会失败。
 
-- 基于 IP 地址的防火墙规则应允许与 Azure 通信。
-- 允许 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/confirmation.aspx?id=41653)和 HTTPS (443) 端口。
-- 允许订阅的 Azure 区域的 IP 地址范围以及美国西部的 IP 地址范围（用于访问控制和标识管理）。
+#### <a name="verify-connectivity"></a>验证连接性
+确保计算机可以根据你的环境访问这些 URL： 
 
+[!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
+
+基于 IP 地址的防火墙规则应允许通过 HTTPS (443) 端口与上面列出的所有 Azure URL 进行通信。 为了简化和限制 IP 范围，建议进行 URL 筛选。
+
+- **商用 IP**：允许 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/confirmation.aspx?id=41653)和 HTTPS (443) 端口。 允许订阅的 Azure 区域的 IP 地址范围以支持 AAD、备份、复制和存储 URL。  
+- **政府 IP**：允许所有 USGov 区域（弗吉尼亚州、德克萨斯州、亚利桑那州和爱荷华州）的 [Azure 政府数据中心 IP 范围](https://www.microsoft.com/en-us/download/details.aspx?id=57063)和 HTTPS (443) 端口，以支持 AAD、备份、复制和存储 URL。  
+
+#### <a name="run-setup"></a>运行安装程序
 以本地管理员身份运行统一安装程序，安装配置服务器。 进程服务器和主目标服务器也默认安装在配置服务器上。
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 注册完成后，配置服务器会显示在保管库的“设置” > “服务器”页中。
-
 
 ## <a name="set-up-the-target-environment"></a>设置目标环境
 

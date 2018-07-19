@@ -1,6 +1,6 @@
 ---
-title: 为 Azure Marketplace 创建本地虚拟机映像 | Microsoft Docs
-description: 了解并执行相关步骤，以便创建本地 VM 映像并针对要购买的其他用户部署到 Azure Marketplace。
+title: 为 Azure 市场创建本地虚拟机映像 | Microsoft Docs
+description: 了解并执行相关步骤，以便创建本地 VM 映像并针对要购买的其他用户部署到 Azure 市场。
 services: marketplace-publishing
 documentationcenter: ''
 author: msmbaldwin
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
 ms.author: mbaldwin
-ms.openlocfilehash: 6b927ce6032092ce258eeebca49da0571439dbfb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 58be44e05a0b293b1f8f200cb01b4a483bae10b2
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29944425"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006506"
 ---
-# <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure Marketplace 部署本地虚拟机映像
+# <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure 市场部署本地虚拟机映像
 我们强烈建议使用远程桌面协议直接在云中开发 Azure 虚拟硬盘 (VHD)。 但是，如有必要，可以下载 VHD 并使用本地基础结构进行开发。  
 
 对于本地开发，必须下载所创建 VM 的操作系统 VHD。 这些步骤将作为上述步骤 3.3 的一部分执行。  
@@ -117,7 +117,7 @@ ms.locfileid: "29944425"
 
         New-AzureStorageAccount -StorageAccountName “mystorageaccount” -Location “West US”
 
-然后，可以使用 [NewAzureStorageContainer](http://msdn.microsoft.com/library/dn495291.aspx) cmdlet 在存储帐户中创建容器。
+然后，可以使用 [NewAzureStorageContainer](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontainer) cmdlet 在存储帐户中创建容器。
 
         New-AzureStorageContainer -Name “containername” -Permission “Off”
 
@@ -147,6 +147,7 @@ ms.locfileid: "29944425"
 借助 [Linux 命令行工具](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)，使用以下项：azure vm image create <image name> --location <Location of the data center> --OS Linux <LocationOfLocalVHD>
 
 ## <a name="see-also"></a>另请参阅
-* [为 Marketplace 创建虚拟机映像](marketplace-publishing-vm-image-creation.md)
+* 
+  [为市场创建虚拟机映像](marketplace-publishing-vm-image-creation.md)
 * [设置 Azure PowerShell](marketplace-publishing-powershell-setup.md)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeedes
-ms.openlocfilehash: ee9c1494cb2bca4193bfe8b16b72ba5d317f9f3e
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: cbfb35df529a8caef59c459729225051a45a8ab1
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295464"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041768"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wingspan-etmf"></a>教程：Azure Active Directory 与 Wingspan eTMF 的集成
 
@@ -112,11 +112,11 @@ ms.locfileid: "36295464"
 
     ![配置单一登录](./media/wingspanetmf-tutorial/tutorial_wingspanetmf_url11.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<customer name>.<instance name>.mywingspan.com/saml`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<customer name>.<instance name>.mywingspan.com/saml`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`http://saml.<instance name>.wingspan.com/shibboleth`
 
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<customer name>.<instance name>.mywingspan.com/`
+    c. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<customer name>.<instance name>.mywingspan.com/`
      
     > [!NOTE] 
     > 这些不是实际值。 将这些值更新为实际的登录 URL、标识符和回复 URL，包括实际的客户名称和实例名称。 请联系 [Wingspan eTMF 客户端支持团队](http://www.wingspan.com/contact-us/)来获取这些值。 
@@ -158,7 +158,7 @@ ms.locfileid: "36295464"
  
     ![创建 Azure AD 测试用户](./media/wingspanetmf-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -204,7 +204,7 @@ ms.locfileid: "36295464"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。 
 
-单击访问面板中的 Wingspan eTMF 磁贴，会被重定向到组织登录页面。 成功登录后，将登录到 Wingspan eTMF 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+单击访问面板中的 Wingspan eTMF 磁贴，会被重定向到组织登录页面。 成功登录后，将登录到 Wingspan eTMF 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

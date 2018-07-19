@@ -27,9 +27,9 @@
       href: apache-spark-use-bi-tools.md
     - name: 运行流式处理作业
       href: apache-spark-eventhub-streaming.md
-    - name: 创建机器学习应用程序
+    - name: 创建机器学习应用
       href: apache-spark-ipython-notebook-machine-learning.md
-    - name: 使用 IntelliJ 创建 Spark 应用程序
+    - name: 在 IntelliJ 中创建 spark 应用
       href: apache-spark-create-standalone-application.md
 - name: 如何
   items:

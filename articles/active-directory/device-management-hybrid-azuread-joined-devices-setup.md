@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: fabe19a7348591b4a299868dfc3e618c049198c3
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: fd23da29324dc5cb212c144f5bb303a46d6f4d42
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261179"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868429"
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>如何配置联接到混合 Azure Active Directory 的设备
 
@@ -57,8 +57,8 @@ ms.locfileid: "35261179"
     - Windows Server 2012 R2
     - Windows Server 2012
     - Windows Server 2008 R2
-- 在非联合环境中，通过无缝单一登录支持 Windows 下层设备的注册 [Azure Active Directory 无缝单一登录](https://aka.ms/hybrid/sso)。 
-- 使用 Azure AD 直通身份验证时，不支持注册 Windows 下级设备。
+- 在非联合环境中，通过无缝单一登录支持 Windows 下层设备的注册 [Azure Active Directory 无缝单一登录](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start)。 
+- 使用 Azure AD 直通身份验证但不使用无缝单一登录时，不支持注册 Windows 下级设备。
 - 使用漫游配置文件的设备不支持 Windows 下层设备的注册。 如果依赖于配置文件或设置漫游，请使用 Windows 10。
 
 
@@ -92,8 +92,6 @@ Azure AD Connect：
 如果组织计划使用无缝 SSO，则必须可从组织内的计算机访问以下 URL，并且还必须将这些 URL 添加到用户的本地 Intranet 区域：
 
 - https://autologon.microsoftazuread-sso.com
-
-- https://aadg.windows.net.nsatc.net
 
 - 此外，应在用户的 Intranet 区域中启用以下设置：“允许通过脚本更新状态栏”。
 
@@ -179,7 +177,6 @@ cmdlet：
 
     $de = New-Object System.DirectoryServices.DirectoryEntry
     $de.Path = "LDAP://CN=Services," + $configNC
-
     $deDRC = $de.Children.Add("CN=Device Registration Configuration", "container")
     $deDRC.CommitChanges()
 
@@ -572,7 +569,7 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
 
 ### <a name="remarks"></a>备注
 
-- 可以使用组策略对象来控制推出已加入域的 Windows 10 和 Windows Server 2016 计算机的自动注册。 如果不想将这些设备自动注册到 Azure AD 或想要控制注册，则在开始配置步骤之前，必须首先推出对所有这些设备禁用自动注册的组策略。 配置完成后，在测试准备就绪时，必须推出仅对测试设备启用自动注册，然后再对选择的所有其他设备启用自动注册的组策略。
+- 可以使用组策略对象或系统中心配置管理器客户端设置来控制推出已加入域的 Windows 10 和 Windows Server 2016 计算机的自动注册。 **如果不希望这些设备自动注册到 Azure AD，或希望控制注册**，则必须先推出组策略，禁止所有这些设备自动注册，或者如果使用的是配置管理器，则在开始执行任何配置步骤前，必须在云服务下配置客户端设置，将“自动将加入域的新 Windows 10 设备注册到 Azure Active Directory”设置为“否”。 配置完成后，在测试准备就绪时，必须推出仅对测试设备启用自动注册，然后再对选择的所有其他设备启用自动注册的组策略。
 
 - 要实施 Windows 下层计算机，可将 [Windows Installer 包](#windows-installer-packages-for-non-windows-10-computers)部署到所选计算机。
 

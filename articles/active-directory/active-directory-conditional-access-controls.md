@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: dc1e3fd3984d0ccbfb0565a3216ec907894e88ea
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: c4cc8035e83ca97971050a5b6ced5bbc912ac791
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37028942"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928312"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的访问控制是什么？ 
 
@@ -77,7 +77,7 @@ ms.locfileid: "37028942"
 
 ### <a name="compliant-device"></a>合规的设备
 
-可以配置基于设备的条件访问策略。 基于设备的条件性访问策略旨在仅从[受管理设备](active-directory-conditional-access-policy-connected-applications.md#managed-devices)授予对已配置资源的访问权限。 要求兼容设备是一个必须定义什么是受管理设备的选项。 如果选择此选项，条件访问策略会授权访问以下设备所做的访问尝试：已向 Azure Active Directory [注册](device-management-introduction.md)，且由 Intune（适用于任何设备 OS）或由 Windows 10 设备的第三方 MDM 系统标记为兼容的设备。 不支持除 Windows 10 以外的设备 OS 类型第三方 MDM 系统。
+可以配置基于设备的条件访问策略。 基于设备的条件性访问策略旨在仅从[受管理设备](active-directory-conditional-access-policy-connected-applications.md#managed-devices)授予对已配置资源的访问权限。 要求兼容设备是一个必须定义什么是受管理设备的选项。 如果选择此选项，条件访问策略会授权访问以下设备所做的访问尝试：已向 Azure Active Directory [注册](device-management-introduction.md)，且由 Intune（适用于任何设备 OS）或由 Windows 10 设备的第三方 MDM 系统标记为兼容的设备。 不支持除 Windows 10 以外的设备 OS 类型的第三方 MDM 系统。
 
 有关详细信息，请参阅[设置 Azure Active Directory 基于设备的条件访问策略](active-directory-conditional-access-policy-connected-applications.md)。
 
@@ -111,7 +111,7 @@ ms.locfileid: "37028942"
 
 ## <a name="custom-controls"></a>自定义控件
 
-自定义控件是 Azure Active Directory Premium P2 版提供的一项功能。 使用自定义控件时，用户将被重定向至兼容服务，以满足 Azure Active Directory 之外的其他要求。 若要满足此控件要求，用户浏览器将重定向至外部服务，执行任何需要的身份验证或验证活动，然后重定向回 Azure Active Directory。 Azure Active Directory 将验证响应，如果用户已成功完成身份验证或验证，该用户将继续留在条件访问流中。
+自定义控件是 Azure Active Directory Premium P1 版的一项功能。 使用自定义控件时，用户将被重定向至兼容服务，以满足 Azure Active Directory 之外的其他要求。 若要满足此控件要求，用户浏览器将重定向至外部服务，执行任何需要的身份验证或验证活动，然后重定向回 Azure Active Directory。 Azure Active Directory 将验证响应，如果用户已成功完成身份验证或验证，该用户将继续留在条件访问流中。
 
 通过这些控件可以将某些外部或自定义服务用作条件访问控制，并在一般情况下扩展条件访问的功能。
 

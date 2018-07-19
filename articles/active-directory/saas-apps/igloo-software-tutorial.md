@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: cea66f48d3ec1ab99b2b1e3dc40ab559e0ca55a5
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: acec9379661226dc53607aa9fd12197a193166e0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229152"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042380"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>教程：Azure Active Directory 与 Igloo Software 集成
 
@@ -112,11 +112,11 @@ ms.locfileid: "36229152"
 
     ![配置单一登录](./media/igloo-software-tutorial/tutorial_igloosoftware_url.png)
     
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company name>.igloocommmunities.com`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<company name>.igloocommmunities.com`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<company name>.igloocommmunities.com/saml.digest`
 
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<company name>.igloocommmunities.com/saml.digest`
+    c. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<company name>.igloocommmunities.com/saml.digest`
 
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Igloo Software 客户端支持团队](https://www.igloosoftware.com/services/support)获取这些值。 
@@ -151,7 +151,7 @@ ms.locfileid: "36229152"
    
     ![常规配置](./media/igloo-software-tutorial/ic783970.png "常规配置")
 
-    a. 在“连接名称”文本框中，键入配置的自定义名称。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“连接名称”文本框中，键入配置的自定义名称。
    
     b. 在“IdP 登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
    
@@ -165,7 +165,7 @@ ms.locfileid: "36229152"
     
     ![响应和身份验证配置](./media/igloo-software-tutorial/IC783971.png "响应和身份验证配置")
   
-      a. 对于“标识提供者”，选择“Microsoft ADFS”。
+      a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“标识提供者”，选择“Microsoft ADFS”。
       
       b. 对于“标识符类型”，选择“电子邮件地址”。 
 
@@ -179,7 +179,7 @@ ms.locfileid: "36229152"
     
     ![登录时创建用户](./media/igloo-software-tutorial/IC783972.png "登录时创建用户") 
 
-     a. 对于“登录时创建用户”，选择“用户登录时在站点中创建新用户”。
+     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“登录时创建用户”，选择“用户登录时在站点中创建新用户”。
 
      b. 对于“登录设置”，选择“使用‘登录’屏幕上的 SAML 按钮”。
 
@@ -211,7 +211,7 @@ ms.locfileid: "36229152"
  
     ![创建 Azure AD 测试用户](./media/igloo-software-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -260,7 +260,7 @@ ms.locfileid: "36229152"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Igloo Software 磁贴时，用户应自动登录到 Igloo Software 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

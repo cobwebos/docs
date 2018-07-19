@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jeedes
-ms.openlocfilehash: 57c811f0f29c885ef4bbe78c46ddc6b10b0f71f3
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 22352261e7bf2796e1c258cd86a9e11474239926
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212523"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041767"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobile-xpense"></a>教程：Azure Active Directory 与 Mobile Xpense 的集成
 
@@ -110,15 +110,15 @@ ms.locfileid: "36212523"
 
     ![Mobile Xpense 域和 URL 单一登录信息](./media/mobilexpense-tutorial/tutorial_mobilexpense_url11.png)
 
-    a. 在“标识符”文本框中，键入一个 URL：`https://mobilexpense.com/ServiceProvider`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，键入一个 URL：`https://mobilexpense.com/ServiceProvider`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<sub-domain>.mobilexpense.com/NET/SSO/SAML20/SAML/AssertionConsumerService.aspx`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<sub-domain>.mobilexpense.com/NET/SSO/SAML20/SAML/AssertionConsumerService.aspx`
 
 4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
 
     ![Mobile Xpense 域和 URL 单一登录信息](./media/mobilexpense-tutorial/tutorial_mobilexpense_url22.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<sub-domain>.mobilexpense.com/<customername>`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<sub-domain>.mobilexpense.com/<customername>`
      
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的回复 URL 和注销 URL 更新这些值。 请联系 [Mobile Xpense 客户端支持团队](http://www.mobilexpense.net/contact)获取这些值。 
@@ -160,7 +160,7 @@ ms.locfileid: "36212523"
 
     ![“用户”对话框](./media/mobilexpense-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -207,7 +207,7 @@ ms.locfileid: "36212523"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击“Mobile Xpense”磁贴，即可自动登录到 Mobile Xpense 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

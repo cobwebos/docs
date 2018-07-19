@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: e9dc784d84c43600f3ba4fda92e023c01afe8995
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: b5826fd3067ac337808b9e27040dee808cd6a01c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301126"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045951"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>教程：Azure Active Directory 与 Shmoop For Schools 的集成
 
@@ -108,7 +108,7 @@ ms.locfileid: "36301126"
 
     ![配置单一登录](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_url.png)
 
-    a. 在“登录 URL”框中，使用以下模式键入 URL：`https://schools.shmoop.com/public-api/saml2/start/<uniqueid>`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”框中，使用以下模式键入 URL：`https://schools.shmoop.com/public-api/saml2/start/<uniqueid>`
 
     b. 在“标识符”框中，使用以下模式键入 URL：`https://schools.shmoop.com/<uniqueid>`
 
@@ -128,7 +128,7 @@ ms.locfileid: "36301126"
     | -------------- | --------------- |
     | role           | user.assignedroles |
 
-    a. 若要打开“添加属性”对话框，请选择“添加属性”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 若要打开“添加属性”对话框，请选择“添加属性”。
     
     ![配置单一登录 ](./media/shmoopforschools-tutorial/tutorial_attribute_04.png)
     
@@ -176,7 +176,7 @@ ms.locfileid: "36301126"
 
     ![“用户”对话框](./media/shmoopforschools-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -227,7 +227,7 @@ ms.locfileid: "36301126"
 
 选择访问面板中的“Shmoop For Schools”磁贴时，应会自动登录到 Shmoop For Schools 应用程序。
 
-有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 

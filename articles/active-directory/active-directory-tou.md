@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.component: compliance-reports
-ms.date: 06/18/2018
+ms.date: 06/29/2018
 ms.author: rolyon
-ms.openlocfilehash: 2919ce1d7c57b7a92420ac11b61503caa1fdd3b0
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 7833c9da2303d119f0cb421f21bea455ab449898
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36267551"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856410"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory 使用条款功能
 组织可以通过 Azure AD 使用条款这种简单的方法向最终用户显示信息。 可以通过这样的呈现方式确保用户看到法律要求或符合性要求的相关免责声明。 本文介绍如何开始使用 Azure AD 使用条款。
@@ -30,7 +30,7 @@ ms.locfileid: "36267551"
 可以通过 Azure AD 使用条款来完成以下事项：
 - 要求员工或来宾在获得访问权限之前先同意使用条款。
 - 显示针对组织中所有用户的常规使用条款。
-- 显示基于用户属性（例如， [动态组](active-directory-groups-dynamic-membership-azure-portal.md)中的医生与护士或国内员工和国际员工）的具体使用条款。
+- 显示基于用户属性（例如， [动态组](users-groups-roles/groups-dynamic-membership.md)中的医生与护士或国内员工和国际员工）的具体使用条款。
 - 在用户访问业务影响大的应用程序（例如 Salesforce）时显示特定使用条款。
 - 以不同的语言显示使用条款。
 - 列出已同意或尚未同意使用条款的人员。
@@ -167,7 +167,7 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 ## <a name="frequently-asked-questions"></a>常见问题
 
 **问：如何查看用户何时/是否接受了使用条款？**</br>
-答：可以单击使用条款旁边“已接受”下的数字。  有关详细信息，请参阅[查看接受的和拒绝的用户](#view-who-has-accepted-and-declined)。  另外，已将接受了使用条款的用户写入审核日志。 可以搜索 Azure AD 审核日志来查看结果。  
+答：在“使用条款”边栏选项卡中单击“已接受”下的数字。 还可在审核日志中查看或搜索接受活动。 有关详细信息，请参阅[查看接受的和拒绝的用户](#view-who-has-accepted-and-declined)以及[查看审核日志](#view-audit-logs)。
 
 **问：更改使用条款的条款后，是否需要用户重新接受该条款？**</br>
 答：是的，管理员可以更改使用条款的条款，这需要用户重新接受新的条款。
@@ -179,13 +179,16 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 答：在登录体验期间触发使用条款。
 
 **问：我可以将哪些应用程序作为使用条款的目标？**</br>
-答：可以使用新式验证对企业应用程序创建条件访问策略。  有关详细信息，请参阅[企业应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-view-azure-portal)。
+答：可以使用新式验证对企业应用程序创建条件访问策略。  有关详细信息，请参阅[企业应用程序](./manage-apps/view-applications-portal.md)。
 
 **问：是否可以向给定用户或应用添加多个使用条款？**</br>
 答：可以，方法是创建多个以这些组或应用程序为目标的条件访问策略。 如果用户处于多个使用条款的范围内，他们可一次同意一个使用条款。
  
 **问：用户拒绝使用条款后会发生什么？**</br>
 答：将阻止此用户访问该应用程序。 用户需要重新登录并同意条款才能获得访问权限。
+ 
+**问：是否可以取消接受以前接受的使用条款？**</br>
+答：可以[查看以前接受的使用条款](#how-users-can-review-their-terms-of-use)，但目前没有办法取消接受。
  
 **问：信息的存储时间为多长？**</br>
 答：在使用条款有效期内，会存储用户计数以及接受用户/拒绝用户。 审核日志存储 30 天。

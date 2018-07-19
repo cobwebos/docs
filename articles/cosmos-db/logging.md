@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: sngun
-ms.openlocfilehash: 66ee0856851a301a6849b71b64cb904c925ad18d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: acc327bd9fa6828a65243b6d0ad0c6da4b98f48d
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34612208"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857093"
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Azure Cosmos DB 诊断日志记录
 
@@ -42,7 +42,7 @@ ms.locfileid: "34612208"
 
 Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级别事件的订阅日志。 活动日志在“管理”类别下报告订阅的控制平面事件。 通过活动日志，可确定订阅中资源上进行的任何写入操作 (PUT, POST, DELETE) 的“什么操作、谁操作和操作时间”等信息。 还可以了解该操作和其他相关属性的状态。 
 
-活动日志不同于诊断日志。 活动日志提供有关从外部（“控制面”）对资源所执行操作的数据。 在 Azure Cosmos DB 上下文中，控制平面操作包括创建集合、列出密钥、删除密钥、列出数据库，等等。 诊断日志由资源发出，并提供有关该资源（“数据面”）的操作信息。 诊断日志中部分数据平面操作的示例包括 Delete、Insert 和 ReadFeed。
+活动日志不同于诊断日志。 活动日志提供有关从外部（“控制面”）对资源所执行操作的数据。 在 Azure Cosmos DB 上下文中，控制平面操作包括创建容器、列出密钥、删除密钥、列出数据库，等等。 诊断日志由资源发出，并提供有关该资源（“数据面”）的操作信息。 诊断日志中部分数据平面操作的示例包括 Delete、Insert 和 ReadFeed。
 
 活动日志（控制平面操作）在本质上可能要丰富得多，可能包括：调用方的完整电子邮件地址、调用方 IP 地址、资源名称、操作名称、TenantId，等等。 活动日志包含多个数据[类别](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema)。 有关这些类别的架构的完整详细信息，请参阅 [Azure 活动日志事件架构](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema)。 但是，诊断日志在本质上可能是限制性的，因为通常会将个人数据从这些日志中剥离出来。 因此，你可能有调用方的 IP 地址，但最后的八进制数已删除。
 
@@ -354,7 +354,7 @@ $blobs | Get-AzureStorageBlobContent `
 <a id="#view-in-loganalytics"></a>
 ## <a name="view-logs-in-log-analytics"></a>在 Log Analytics 中查看日志
 
-如果在启用诊断日志记录时选择了“发送到 Log Analytics”选项，则集合中的诊断数据会在两个小时内转发到 Log Analytics。 如果在启用日志记录之后立即查看 Log Analytics，将看不到任何数据。 请等待两个小时并重试。 
+如果在启用诊断日志记录时选择了“发送到 Log Analytics”选项，则容器中的诊断数据会在两个小时内转发到 Log Analytics。 如果在启用日志记录之后立即查看 Log Analytics，将看不到任何数据。 请等待两个小时并重试。 
 
 在查看日志之前，请检查并确定 Log Analytics 工作区是否已升级为使用新的 Log Analytics 查询语言。 若要检查，请打开 [Azure 门户](https://portal.azure.com)，在最左侧选择“Log Analytics”，然后选择工作区名称，如下图所示。 此时会显示“OMS 工作区”页：
 
@@ -446,7 +446,7 @@ $blobs | Get-AzureStorageBlobContent `
 | **properties** | 不适用 | 下面的行中描述了此字段的内容。 |
 | **activityId** | **activityId_g** | 日志记录操作的唯一 GUID。 |
 | **userAgent** | **userAgent_s** | 一个字符串，指定执行请求的客户端用户代理。 格式为 {用户代理名}/{版本}。|
-| **resourceType** | **ResourceType** | 所访问资源的类型。 此值可以是以下任意资源类型：数据库、集合、文档、附件、用户、权限、StoredProcedure、触发器、UserDefinedFunction 或产品/服务。 |
+| **resourceType** | **ResourceType** | 所访问资源的类型。 此值可以是以下任意资源类型：数据库、容器、文档、附件、用户、权限、StoredProcedure、触发器、UserDefinedFunction 或产品/服务。 |
 | **statusCode** | **statusCode_s** | 操作的响应状态。 |
 | **requestResourceId** | **ResourceId** | 与请求相关的 resourceId。 值可以指向 databaseRid、collectionRid 或 documentRid（具体取决于所执行的操作）。|
 | **clientIpAddress** | **clientIpAddress_s** | 客户端的 IP 地址。 |

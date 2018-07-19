@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 6fda373f832d6e24d1252587a19c88b0f464dda6
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 5065399f161bcaee2f9518236a28f0f5faa0ea5b
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231853"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902021"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>预览版：部署 Azure AD 密码保护
 
@@ -103,7 +103,7 @@ Azure AD 密码保护代理预览版存在一个已知限制。 不支持使用�
          仅当当前登录的用户也是根域的 Active Directory 域管理员时，该示例才有效。 另一种做法是通过 -ForestCredential 参数提供所需的域凭据。
 
          > [!NOTE]
-         > 如果环境中安装了多个代理服务器，要针对哪个具体的代理服务器执行上述过程并不重要。
+         > 如果环境中安装了多个代理服务器，在上述过程中指定哪个代理服务器并不重要。
 
          > [!TIP]
          > 首次针对给定的 Azure 租户运行此 cmdlet 时，在 cmdlet 完成执行之前，可能会出现明显的延迟（数秒）。 除非报告了失败，否则应将这种延迟视为警告。

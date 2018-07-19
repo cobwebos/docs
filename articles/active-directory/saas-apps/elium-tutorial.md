@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: jeedes
-ms.openlocfilehash: 1ce186978d910cfdae068e68b5f86a8ebd5fa712
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 2957fffecbf448fa456d80200aba9752569b5f69
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227415"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042718"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-elium"></a>教程：Azure Active Directory 与 Elium 集成
 
@@ -108,15 +108,15 @@ ms.locfileid: "36227415"
 
     ![Elium 域和 URL 单一登录信息](./media/elium-tutorial/tutorial_elium_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<platform-domain>.elium.com/login/saml2/metadata`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<platform-domain>.elium.com/login/saml2/metadata`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<platform-domain>.elium.com/login/saml2/acs`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<platform-domain>.elium.com/login/saml2/acs`
 
 4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
 
     ![Elium 域和 URL 单一登录信息](./media/elium-tutorial/tutorial_elium_url1.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：` https://<platform-domain>.elium.com/login/saml2/login`
+    在“登录 URL”文本框中，使用以下模式键入 URL： ` https://<platform-domain>.elium.com/login/saml2/login`
      
     > [!NOTE] 
     > 这些不是实际值。 从可以在 `https://<platform-domain>.elium.com/login/saml2/metadata` 中下载的 **SP 元数据文件**获取这些值。本教程稍后将对此做出说明。
@@ -138,7 +138,7 @@ ms.locfileid: "36227415"
     > [!NOTE]
     > 这是默认声明。 **只需电子邮件声明**。 对于 JIT 预配，也只需电子邮件声明。 其他自定义声明根据客户平台的不同而异。
 
-    a. 单击“添加属性”，打开“添加属性”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录](./media/elium-tutorial/tutorial_attribute_04.png)
 
@@ -174,7 +174,7 @@ ms.locfileid: "36227415"
 
     ![配置单一登录](./media/elium-tutorial/user3.png)
 
-    a. 复制“验证 SAML2 身份验证是否适用于你的帐户”值，并将其粘贴到 Azure 门户上“Elium 域和 URL”部分中的“登录 URL”文本框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 复制“验证 SAML2 身份验证是否适用于你的帐户”值，并将其粘贴到 Azure 门户上“Elium 域和 URL”部分中的“登录 URL”文本框。
 
     > [!NOTE]
     > 配置 SSO 后，始终可以通过以下 URL 访问默认的远程登录页：`https://<platform_domain>/login/regular/login` 
@@ -221,7 +221,7 @@ ms.locfileid: "36227415"
 
     ![“用户”对话框](./media/elium-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -270,7 +270,7 @@ ms.locfileid: "36227415"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 Elium 磁贴时，应会自动登录到 Elium 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

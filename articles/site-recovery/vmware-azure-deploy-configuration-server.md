@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/06/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 841176d8c5f215d18edf25b1f191792b37555fa9
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 240f5270d083fa5f4742f3ed2cd61feee2b635ec
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318113"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38718951"
 ---
 # <a name="deploy-a-configuration-server"></a>部署配置服务器
 
@@ -99,8 +99,10 @@ ms.locfileid: "36318113"
 
 1. 在配置服务器管理向导中选择“设置连接”，然后选择进程服务器用于接收来自 VM 的复制流量的 NIC。 再选择“保存”。 配置后无法更改此设置。
 2. 在“选择恢复服务保管库”中，登录到 Microsoft Azure，选择自己的 Azure 订阅以及相关的资源组和保管库。
-    >[!NOTE]
+
+    > [!NOTE]
     > 注册后，不能随意更改恢复服务保管库。
+    
 3. 在“安装第三方软件”中，
 
     |场景   |执行的步骤  |
@@ -115,13 +117,29 @@ ms.locfileid: "36318113"
 8. 选择“完成配置”以完成注册。
 9. 完成注册后，打开 Azure 门户，验证配置服务器和 VMware 服务器是否在“恢复服务保管库” > “管理” > “Site Recovery 基础结构” > “配置服务器”中列出。
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
-1. 可以使用安装有配置服务器以实现其他用途的 VM 吗？ 不可以，配置服务器必须是单一用途服务器，不支持将它用作共享服务器。
-2. 可以将已在配置服务器中注册的保管库切换为新创建的保管库吗？ 不可以，将保管库注册到配置服务器后，就无法更改。
-3. 可以使用同一配置服务器来同时保护物理计算机和虚拟机吗？ 可以，同一配置服务器可以用于复制物理计算机和虚拟机。 但是，不支持故障回复到物理计算机。
-4. 配置服务器将用于何处？ 请在[此处](vmware-azure-architecture.md)参阅我们的 Azure Site Recovery 体系结构，详细了解配置服务器及其功能。
-5. 在哪里可以找到最新版本的配置服务器？ 可以从 [Microsoft 下载中心](https://aka.ms/asrconfigurationserver)直接下载。 请参阅[此处](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)有关升级配置服务器的步骤的文章。
+1. 可以使用安装有配置服务器的 VM 实现其他用途吗？
+
+    不可以，我们建议仅将 VM 用于配置服务器。 请确保遵循[上一部分](vmware-azure-deploy-configuration-server.md#Prerequisites)中所述的所有规范，以便有效管理灾难恢复。
+2. 可以将已在配置服务器中注册的保管库切换为新创建的保管库吗？
+
+    不可以，将保管库注册到配置服务器后，就无法更改。
+3. 可以使用同一配置服务器来同时保护物理计算机和虚拟机吗？
+
+    可以，同一配置服务器可以用于复制物理计算机和虚拟机。 但是，物理计算机仅可故障回复到 VMware VM。
+4. 配置服务器有何用途，可用于何处？
+
+    请在[此处](vmware-azure-architecture.md)参阅我们的 Azure Site Recovery 体系结构，详细了解配置服务器及其功能。
+5. 在哪里可以找到最新版本的配置服务器？
+
+    请参阅[门户中](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)有关升级配置服务器的步骤的文章。 还可以从 [Microsoft 下载中心](https://aka.ms/asrconfigurationserver)直接下载。
+6. 在哪里可以下载配置服务器的密码？
+
+    请参阅[本文](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase)下载密码。
+7. 在哪里可以下载保管库注册密钥？
+
+    在“恢复服务保管库”中，“管理” > “Site Recovery 基础结构” > “配置服务器”。 在“服务器”中，选择“下载注册密钥”以下载保管库凭据文件。
 
 ## <a name="upgrade-the-configuration-server"></a>升级配置服务器
 

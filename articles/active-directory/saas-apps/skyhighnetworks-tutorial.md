@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: jeedes
-ms.openlocfilehash: 8f3f892d085c6fcea7d7891c16d7121a99cfe650
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 403d5754052e616354413160c6c34fa16ff0d837
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214335"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041936"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skyhigh-networks"></a>教程：Azure Active Directory 与 Skyhigh Networks 集成
 
@@ -108,15 +108,15 @@ ms.locfileid: "36214335"
 
     ![Skyhigh Networks 域和 URL 单一登录信息](./media/skyhighnetworks-tutorial/tutorial_skyhighnetworks_url.png)
 
-    a. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<ENV>.myshn.net/shndash/saml/Azure_SSO`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL： `https://<ENV>.myshn.net/shndash/saml/Azure_SSO`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<ENV>.myshn.net/shndash/response/saml-postlogin`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<ENV>.myshn.net/shndash/response/saml-postlogin`
 
 4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
 
     ![Skyhigh Networks 域和 URL 单一登录信息](./media/skyhighnetworks-tutorial/tutorial_skyhighnetworks_url1.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<ENV>.myshn.net/shndash/saml/Azure_SSO`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<ENV>.myshn.net/shndash/saml/Azure_SSO`
      
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Skyhigh Networks 客户端支持团队](mailto:support@skyhighnetworks.com)获取这些值。 
@@ -159,7 +159,7 @@ ms.locfileid: "36214335"
 
     ![“用户”对话框](./media/skyhighnetworks-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -206,7 +206,7 @@ ms.locfileid: "36214335"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Skyhigh Networks”磁贴时，应自动登录到 Skyhigh Networks 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

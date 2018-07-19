@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 数据工厂向 Azure Data Lake Store 加载数据 | Microsoft Docs
-description: 使用 Azure 数据工厂将数据复制到 Azure Data Lake Store
+title: 使用 Azure 数据工厂向 Azure Data Lake Storage Gen1 加载数据 | Microsoft Docs
+description: 使用 Azure 数据工厂将数据复制到 Azure Data Lake Storage Gen1 中
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 25df96664f6b5fe9da26bee43bc726e05504e5b8
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 7cdc4f0ef436fbd7ea3bdf1431b08be3b840290f
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055264"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857195"
 ---
-# <a name="load-data-into-azure-data-lake-store-by-using-azure-data-factory"></a>使用 Azure 数据工厂向 Azure Data Lake Store 加载数据
+# <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>使用 Azure 数据工厂向 Azure Data Lake Storage Gen1 加载数据
 
-[Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) 是一个企业范围的超大规模存储库，适用于大数据分析工作负荷。 使用 Azure Data Lake 可以捕获任何大小、类型和引入速度的数据。 可在单个位置捕获数据以用于操作和探索性分析。
+[Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md)（以前称为 Azure Data Lake Store）是一个企业范围的超大规模存储库，适用于大数据分析工作负载。 使用 Azure Data Lake 可以捕获任何大小、类型和引入速度的数据。 可在单个位置捕获数据以用于操作和探索性分析。
 
 Azure 数据工厂是一个完全托管的基于云的数据集成服务。 该服务可用于使用现有系统中的数据填充 Lake，在生成分析解决方案时节省时间。
 
@@ -77,7 +77,7 @@ Azure 数据工厂在将数据加载到 Azure Data Lake Store 方面提供以下
     
     选择“Amazon S3”，然后选择“继续”
     
-    ![“源数据存储 s3”页](./media/load-data-into-azure-data-lake-store/source-data-store-page-s3.png)
+    ![“源数据存储 S3”页](./media/load-data-into-azure-data-lake-store/source-data-store-page-s3.png)
     
 4. 在“指定 Amazon S3 连接”页中，执行以下步骤： 
    1. 指定“访问密钥 ID”值。

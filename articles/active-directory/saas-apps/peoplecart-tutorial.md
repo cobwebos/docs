@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: aa7a97a7233e84e19671f77974495eedbe083177
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 7188be263ccf73c6bb7e503c1ef7a28b7b721758
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219816"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39040926"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peoplecart"></a>教程：Azure Active Directory 与 Peoplecart 的集成
 
@@ -109,7 +109,7 @@ ms.locfileid: "36219816"
 
     ![Peoplecart 域和 URL 单一登录信息](./media/peoplecart-tutorial/tutorial_peoplecart_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenantname>.peoplecart.com/SignIn.aspx`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<tenantname>.peoplecart.com/SignIn.aspx`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<tenantname>.peoplecart.com`
 
@@ -157,7 +157,7 @@ ms.locfileid: "36219816"
  
     ![“用户”对话框](./media/peoplecart-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -204,7 +204,7 @@ ms.locfileid: "36219816"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Peoplecart 磁贴时，应当会显示 Peoplecart 应用程序的登录页。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

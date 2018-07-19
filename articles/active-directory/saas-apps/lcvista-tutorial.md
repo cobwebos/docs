@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 0cd42f5863293dfe5b52ab1fd99c2fc04aa9aeee
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 20c7656fc3f3cfd54007f5dbbf6dd91557020b20
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285808"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046798"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lcvista"></a>教程：Azure Active Directory 与 LCVista 集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "36285808"
 
     ![配置单一登录](./media/lcvista-tutorial/tutorial_lcvista_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.lcvista.com/rainier/login`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.lcvista.com/rainier/login`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.lcvista.com` 
      
@@ -137,7 +137,7 @@ ms.locfileid: "36285808"
 
     ![配置单一登录](./media/lcvista-tutorial/tutorial_lcvista_config.png)
 
-    a. 在“实体 ID”部分中粘贴从 Azure AD 复制的**颁发者 URL**。 
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“实体 ID”部分中粘贴从 Azure AD 复制的**颁发者 URL**。 
 
     b. 在“URL”部分中粘贴从 Azure AD 复制的**单一登录服务 URL**。
 
@@ -180,7 +180,7 @@ ms.locfileid: "36285808"
  
     ![创建 Azure AD 测试用户](./media/lcvista-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -224,7 +224,7 @@ ms.locfileid: "36285808"
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。 单击访问面板中的“LCVista”磁贴，将重定向到组织登录页面。 成功登录后，将登录到 LCVista 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+在本部分中，使用访问面板测试 Azure AD 单一登录配置。 单击访问面板中的“LCVista”磁贴，将重定向到组织登录页面。 成功登录后，将登录到 LCVista 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

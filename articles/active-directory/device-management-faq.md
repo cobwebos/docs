@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 60b77f5956cb627905eb955995652098337c4dea
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 864f790db48d3d4542ed56a4c7272a198df5bd56
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311111"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901130"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
 
@@ -86,11 +86,18 @@ USER 设备下面只会列出以下设备：
 3.  键入 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`。
 
 ---
-**问：如何在设备上本地取消加入已加入 Azure AD 的设备？
+**问：如何在设备上本地取消与 Azure AD 联接设备的联接？**
+
 **答：** 
 - 对于已加入混合 Azure AD 的设备，请确保关闭自动注册，以便计划任务不会再次注册该设备。 接下来，以管理员身份打开命令提示符并键入 `dsregcmd.exe /debug /leave`。 或者，可以将该命令作为脚本跨多个设备运行，以批量取消加入。
 
 - 对于已加入纯 Azure AD 的设备，请确保你有脱机本地管理员帐户或创建一个，因为你将无法使用任何 Azure AD 用户凭据登录。 接下来，转到“设置” > “帐户” > “访问工作单位或学校”。 选择帐户，然后单击“断开连接”。 按照提示操作，并在出现提示时提供本地管理员凭据。 重新启动设备以完成取消加入过程。
+
+---
+
+**问：我的用户无法从 Azure AD 联接设备中搜索打印机。如何从 Azure AD 联接设备启用打印？**
+
+**答：** 有关为 Azure AD 联接设备部署打印机的信息，请参阅[混合云打印](https://docs.microsoft.com/en-us/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)。 需要安装本地 Windows Server 才能部署混合云打印。 当前，无法使用基于云的打印服务。 
 
 ---
 
@@ -124,6 +131,11 @@ USER 设备下面只会列出以下设备：
 
 ---
 
+**问：为什么我的一些用户无法在 Azure AD 联接设备上获得 MFA 提示？**
+
+**答：** 如果用户通过使用多重身份验证的 Azure AD 联接或注册设备，该设备本身将成为该特定用户的受信任第二个因数。 随后，每次同一用户登录到该设备并访问应用程序时，Azure AD 都会将该设备视为第二个因素，使该用户可无缝地访问他们的应用程序，而无需其他 MFA 提示。 此行为对登录到该设备的任何其他用户都不适用，因此访问该设备的所有其他用户仍将在访问要求 MFA 的应用程序之前收到相关的 MFA 提示。
+
+---
 
 **问：我在 Azure 门户中的“用户信息”下看到了设备记录，设备状态为已在设备上注册。我的设置是否正确，可以使用条件访问？**
 
@@ -173,5 +185,6 @@ USER 设备下面只会列出以下设备：
 
 - 请参阅[排查已加入 Azure AD 域的计算机的自动注册问题 - Windows 下层客户端](device-management-troubleshoot-hybrid-join-windows-legacy.md)
  
+
 ---
 

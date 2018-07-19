@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 4f49d841cc9d6d799b1cd047454acaa2c618af73
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 2c571ebc45875167373b592abc720b045d1835bd
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211309"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048749"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>教程：Azure Active Directory 与 Central Desktop 集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "36211309"
 
     ![Central Desktop 域和 URL 单一登录信息](./media/central-desktop-tutorial/tutorial_centraldesktop_url.png)
 
-    a. 在“登录 URL”框中，使用以下模式键入 URL：`https://<companyname>.centraldesktop.com`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”框中，使用以下模式键入 URL：`https://<companyname>.centraldesktop.com`
 
     b. 在“标识符”框中，使用以下模式键入 URL：
     | |
@@ -145,7 +145,7 @@ ms.locfileid: "36211309"
 
     ![单一登录设置](./media/central-desktop-tutorial/ic769564.png "Single Sign-On Settings")
     
-    a. 选择“启用 SAML v2 单一登录”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“启用 SAML v2 单一登录”。
     
     b. 在“SSO URL”框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
     
@@ -192,7 +192,7 @@ ms.locfileid: "36211309"
 
     ![“用户”对话框](./media/central-desktop-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -265,7 +265,7 @@ ms.locfileid: "36211309"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中选择“Central Desktop”磁贴时，可自动登录到 Central Desktop 应用程序。
-有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 

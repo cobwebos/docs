@@ -14,20 +14,20 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/20/2018
 ms.author: tdykstra
-ms.openlocfilehash: 50e517e5719fb102fd91072abe59d3908176278e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 020a775c45ef3c46f9dfc5da7d4a7e470def4705
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33762456"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969905"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>从 Durable Functions 发布到 Azure 事件网格（预览）
 
-本文介绍如何设置 Azure Durable Functions，以便将业务流程生命周期事件（例如“已创建”、“已完成”和“失败”）发布到自定义的 [Azure 事件网格主题](https://docs.microsoft.com/en-us/azure/event-grid/overview)。 
+本文介绍如何设置 Azure Durable Functions，以便将业务流程生命周期事件（例如“已创建”、“已完成”和“失败”）发布到自定义的 [Azure 事件网格主题](https://docs.microsoft.com/azure/event-grid/overview)。 
 
 此功能在以下场景中非常有用：
 
-* **蓝/绿部署等 DevOps 场景**：在实施[并列部署策略](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-versioning#side-by-side-deployments)之前，你可能想要了解是否有任何任务正在运行。
+* **蓝/绿部署等 DevOps 场景**：在实施[并列部署策略](https://docs.microsoft.com/azure/azure-functions/durable-functions-versioning#side-by-side-deployments)之前，你可能想要了解是否有任何任务正在运行。
 
 * **高级监视和诊断支持**：可以在针对查询优化的外部存储（例如 SQL 数据库或 CosmosDB）中跟踪业务流程状态信息。
 
@@ -36,19 +36,19 @@ ms.locfileid: "33762456"
 ## <a name="prerequisites"></a>先决条件
 
 * 在 Durable Functions 项目中安装 [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) 1.3.0-rc 或更高版本。
-* 安装 [Azure 存储模拟器](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator)。
-* 安装 [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) 或使用 [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview)
+* 安装 [Azure 存储模拟器](https://docs.microsoft.com/azure/storage/common/storage-use-emulator)。
+* 安装 [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 或使用 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)
 
 ## <a name="create-a-custom-event-grid-topic"></a>创建自定义事件网格主题
 
 创建事件网格主题，以便从 Durable Functions 发送事件。 以下说明介绍如何使用 Azure CLI 创建主题。 有关如何使用 PowerShell 或 Azure 门户执行此操作的信息，请参阅以下文章：
 
-* [事件网格快速入门：创建自定义事件 - PowerShell](https://docs.microsoft.com/en-us/azure/event-grid/custom-event-quickstart-powershell)
-* [事件网格快速入门：创建自定义事件 - Azure 门户](https://docs.microsoft.com/en-us/azure/event-grid/custom-event-quickstart-portal)
+* [事件网格快速入门：创建自定义事件 - PowerShell](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-powershell)
+* [事件网格快速入门：创建自定义事件 - Azure 门户](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-portal)
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-使用 `az group create` 命令创建资源组。 目前，事件网格不支持所有区域。 有关支持哪些区域的信息，请参阅[事件网格概述](https://docs.microsoft.com/en-us/azure/event-grid/overview)。 
+使用 `az group create` 命令创建资源组。 目前，事件网格不支持所有区域。 有关支持哪些区域的信息，请参阅[事件网格概述](https://docs.microsoft.com/azure/event-grid/overview)。 
 
 ```bash
 az group create --name eventResourceGroup --location westus2
@@ -93,8 +93,12 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 }
 ```
 
-* **EventGridTopicEndpoint** - 事件网格主题的终结点。
+可能的 Azure 事件网格配置属性如下所示：
+
+* **EventGridTopicEndpoint** - 事件网格主题的终结点。 *%AppSettingName%* 语法可用于从应用程序设置或环境变量中解析此值。
 * **EventGridKeySettingName** - Azure 函数中应用程序设置的密钥。 Durable Functions 将从该值获取事件网格主题密钥。
+* **EventGridPublishRetryCount**：[可选] 发布到事件网格主题失败时要重试的次数。
+* **EventGridPublishRetryInterval**：[可选] 事件网格发布重试间隔（采用 *hh:mm:ss* 格式）。 如果未指定，默认重试间隔为 5 分钟。
 
 配置 `host.json` 文件后，Durable Functions 项目会开始向事件网格主题发送生命周期事件。 在函数应用中运行以及在本地运行时，它都会这样做。
 
@@ -111,7 +115,7 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 }
 ```
 
-确保[存储模拟器](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator)正在运行。 最好是在执行之前运行 `AzureStorageEmulator.exe clear all` 命令。
+确保[存储模拟器](https://docs.microsoft.com/azure/storage/common/storage-use-emulator)正在运行。 最好是在执行之前运行 `AzureStorageEmulator.exe clear all` 命令。
 
 ## <a name="create-functions-that-listen-for-events"></a>创建用于侦听事件的函数
 
@@ -143,7 +147,7 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 }
 ```
 
-选择 `Add Event Grid Subscription`。 此操作为添加的事件网格主题创建事件网格订阅。 有关详细信息，请参阅 [Azure 事件网格中的概念](https://docs.microsoft.com/en-us/azure/event-grid/concepts)。
+选择 `Add Event Grid Subscription`。 此操作为添加的事件网格主题创建事件网格订阅。 有关详细信息，请参阅 [Azure 事件网格中的概念](https://docs.microsoft.com/azure/event-grid/concepts)。
 
 ![选择“事件网格触发器”链接。](media/durable-functions-event-publishing/eventgrid-trigger-link.png)
 
@@ -258,10 +262,10 @@ namespace LifeCycleEventSpike
 * **id**：事件网格事件的唯一标识符。
 * **subject**：事件主题的路径。 `durable/orchestrator/{orchestrationRuntimeStatus}`。 `{orchestrationRuntimeStatus}` 为 `Running`、`Completed`、`Failed` 和 `Terminated`。  
 * **data**：Durable Functions 特定的参数。
-    * **hubName**：[任务中心](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-task-hubs)名称。
+    * **hubName**：[任务中心](https://docs.microsoft.com/azure/azure-functions/durable-functions-task-hubs)名称。
     * **functionName**：业务流程协调程序函数名称。
     * **instanceId**：Durable Functions instanceId。
-    * **reason**：与跟踪事件关联的其他数据。 有关详细信息，请参阅 [Durable Functions 中的诊断 (Azure Functions)](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-diagnostics)
+    * **reason**：与跟踪事件关联的其他数据。 有关详细信息，请参阅 [Durable Functions 中的诊断 (Azure Functions)](https://docs.microsoft.com/azure/azure-functions/durable-functions-diagnostics)
     * **runtimeStatus**：业务流程运行时状态。 值为 Running、Completed、Failed 和 Canceled。 
 * **eventType**："orchestratorEvent"
 * **eventTime**：事件时间 (UTC)。

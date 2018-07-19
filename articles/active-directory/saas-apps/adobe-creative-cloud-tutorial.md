@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 07/10/2018
 ms.author: jeedes
-ms.openlocfilehash: fbdb6d052dc3c79eeb7fefcd57f36a48ba88722f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e1788de7c2372797b2034eb1753ab435c1299889
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224729"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38548266"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>教程：Azure Active Directory 与 Adobe Creative Cloud 集成
 
@@ -40,6 +40,7 @@ ms.locfileid: "36224729"
 
 - Azure AD 订阅
 - 启用了 Adobe Creative Cloud 单一登录的订阅
+- 需要 Adobe Creative Cloud 企业版
 
 > [!NOTE]
 > 为了测试本教程中的步骤，我们不建议使用生产环境。
@@ -50,12 +51,14 @@ ms.locfileid: "36224729"
 - 如果没有 Azure AD 试用环境，可以[获取一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>方案描述
+
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Adobe Creative Cloud
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-adobe-creative-cloud-from-the-gallery"></a>从库中添加 Adobe Creative Cloud
+
 要配置 Adobe Creative Cloud 与 Azure AD 的集成，需要从库中将 Adobe Creative Cloud 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Adobe Creative Cloud，请执行以下步骤：**
@@ -110,10 +113,10 @@ ms.locfileid: "36224729"
 
     a. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.okta.com/saml2/service-provider/<token>`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<company name>.okta.com/auth/saml20/accauthlinktest`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<company name>.okta.com/auth/saml20/accauthlinktest`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Adobe Creative Cloud 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)获取这些值。
+    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Adobe Creative Cloud 企业版](https://www.adobe.com/au/creativecloud/business/teams/plans.html)获取这些值。
 
 4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
 
@@ -135,7 +138,7 @@ ms.locfileid: "36224729"
     | ---------------| ----------------|
     | FirstName |user.givenname |
     | LastName |user.surname |
-    | Email |user.mail |
+    | 电子邮件 |user.mail |
 
     a. 单击“添加属性”，打开“添加属性”对话框。
 

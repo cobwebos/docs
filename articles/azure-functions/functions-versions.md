@@ -12,26 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: glenga
-ms.openlocfilehash: 9f916aaa8032ff519709d73a1c1f51195f811686
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 8ba12f21d76d8deded047f40489c46657c9380b8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28919349"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38602111"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 运行时版本概述
 
- Azure Functions 运行时有两个主版本：1.x 和 2.x。 本文介绍如何选择要使用的主版本。
-
-> [!IMPORTANT] 
-> 运行时 1.x 是批准在生产环境中使用的唯一版本。
+ Azure Functions 运行时有两个主版本：1.x 和 2.x。 仅 1.x 获批投入生产。 本文介绍预览版 2.x 中的新增功能。
 
 | 运行时 | 状态 |
 |---------|---------|
 |1.x|正式发布 (GA)|
 |2.x|预览|
 
-有关如何针对特定版本配置函数应用或开发环境的信息，请参阅[如何面向 Azure Functions 运行时版本](set-runtime-version.md)和[在本地编码和测试 Azure Functions](functions-run-local.md)。
+> [!NOTE] 
+> 本文引用了云服务 Azure Functions。 如需深入了解可运行本地 Azure Functions 的产品，请参阅 [Azure Functions 运行时概述](functions-runtime-overview.md)。
 
 ## <a name="cross-platform-development"></a>跨平台开发
 
@@ -65,8 +63,8 @@ ms.locfileid: "28919349"
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [在本地开发环境中指定 2.0 运行时](functions-run-local.md)
+有关详细信息，请参阅以下资源：
 
-> [!div class="nextstepaction"]
-> [查看运行时版本的发行说明](https://github.com/Azure/azure-webjobs-sdk-script/releases)
+* [在本地对 Azure Functions 进行编码和测试](functions-run-local.md)
+* [如何面向 Azure Functions 运行时版本](set-runtime-version.md)
+* [发行说明](https://github.com/Azure/azure-functions-host/releases)

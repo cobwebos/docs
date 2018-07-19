@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 42be83af52298e1fc6b01793b7692a3fcd7d6250
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: eb458f7ce55ace0375b9bf7e4a79391ebcdb5e4a
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218244"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39040382"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdlight"></a>教程：Azure Active Directory 与 ThirdLight 集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "36218244"
 
     ![配置单一登录](./media/thirdlight-tutorial/tutorial_thirdlight_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.thirdlight.com/`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.thirdlight.com/`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.thirdlight.com/saml/sp`
 
@@ -137,7 +137,7 @@ ms.locfileid: "36218244"
    
     ![SAML 单一登录](./media/thirdlight-tutorial/ic805844.png "SAML 单一登录")   
 
-     a. 选择“启用 SAML2 单一登录”。
+     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“启用 SAML2 单一登录”。
  
      b. 选择“从 XML 加载 IdP 元数据”作为 **IdP 元数据的源**。
  
@@ -171,7 +171,7 @@ ms.locfileid: "36218244"
  
     ![创建 Azure AD 测试用户](./media/thirdlight-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 Britta Simon 的**电子邮件地址**。
 
@@ -236,7 +236,7 @@ ms.locfileid: "36218244"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“ThirdLight”磁贴时，用户应当会自动登录到 ThirdLight 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 16e2e51e3ae8263773adec1151340103c720b3a5
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d52672099c309dfeac641cb3aedaf32c7230b676
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225552"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047753"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-egnyte"></a>教程：Azure Active Directory 与 Egnyte 的集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "36225552"
 
     ![配置单一登录](./media/egnyte-tutorial/tutorial_egnyte_url.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.egnyte.com`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.egnyte.com`
 
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新此值。 请联系 [Egnyte 客户端支持团队](https://www.egnyte.com/corp/contact_egnyte.html)获取此值。 
@@ -147,7 +147,7 @@ ms.locfileid: "36225552"
 
     ![单一登录身份验证](./media/egnyte-tutorial/ic787822.png "Single Sign On Authentication")   
     
-    a. 对于“单一登录身份验证”，选择“SAML 2.0”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“单一登录身份验证”，选择“SAML 2.0”。
    
     b. 对于“标识提供者”，选择“AzureAD”。
    
@@ -190,7 +190,7 @@ ms.locfileid: "36225552"
  
     ![创建 Azure AD 测试用户](./media/egnyte-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -216,7 +216,7 @@ ms.locfileid: "36225552"
    
    ![新建标准用户](./media/egnyte-tutorial/ic787825.png "New Standard User")   
 
-   a. 键入要预配的有效 Azure Active Directory 帐户的“电子邮件”、“用户名”和其他详细信息。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 键入要预配的有效 Azure Active Directory 帐户的“电子邮件”、“用户名”和其他详细信息。
    
    b. 单击“ **保存**”。
     
@@ -263,7 +263,7 @@ ms.locfileid: "36225552"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Egnyte 磁贴时，应当会自动登录到 Egnyte 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

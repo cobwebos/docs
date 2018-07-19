@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 228354fe86bd8758a9c338d980e2a80e577a11be
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8aec15cbd3094adeceb12574c47c8246825e4ece
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211343"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043731"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-huddle"></a>教程：Azure Active Directory 与 Huddle 集成
 
@@ -118,7 +118,7 @@ ms.locfileid: "36211343"
 
     ![配置单一登录](./media/huddle-tutorial/tutorial_huddle_url.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`http://<company name>.huddle.com`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `http://<company name>.huddle.com`
 
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新此值。 请联系 [Huddle 客户端支持团队](https://huddle.zendesk.com)获取这些值。 
@@ -169,7 +169,7 @@ ms.locfileid: "36211343"
  
     ![创建 Azure AD 测试用户](./media/huddle-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -193,7 +193,7 @@ ms.locfileid: "36211343"
    
    ![新建邀请](./media/huddle-tutorial/IC787839.png "New Invitation")
    
-   a. 在“选择要邀请人员加入的团队”列表中，选择“团队”。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“选择要邀请人员加入的团队”列表中，选择“团队”。
 
    b. 在“输入要邀请的人员的电子邮件地址”文本框中，键入希望预配的有效 Azure AD 帐户的“电子邮件地址”。
 
@@ -242,7 +242,7 @@ ms.locfileid: "36211343"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 Huddle 磁贴时，应自动登录到 Huddle 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

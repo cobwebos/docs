@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2018
 ms.author: jeedes
-ms.openlocfilehash: dc62d7a24a53ffa04026c0f1a40b05b18e6db71d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 97e77fdbb352e1fcf66044f48e17cb19a8aa2e1d
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231383"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042140"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform-identity-authentication"></a>教程：将 Azure Active Directory 与 SAP Cloud Platform Identity Authentication 集成
 
@@ -132,7 +132,7 @@ ms.locfileid: "36231383"
 
     ![SAP Cloud Platform Identity Authentication 域和 URL 单一登录信息](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sapcpia_url.png)
 
-    a. 在“标识符”框中，使用以下模式键入 URL：`<IAS-tenant-id>.accounts.ondemand.com`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”框中，使用以下模式键入 URL：`<IAS-tenant-id>.accounts.ondemand.com`
 
     b. 在“回复 URL”框中，使用以下模式键入 URL：`https://<IAS-tenant-id>.accounts.ondemand.com/saml2/idp/acs/<IAS-tenant-id>.accounts.ondemand.com`
 
@@ -158,7 +158,7 @@ ms.locfileid: "36231383"
 
 7. 如果 SAP 应用需要 firstName 等属性，请在“用户属性”部分中添加“firstName”属性。 在“SAML 令牌属性”对话框的“单一登录”对话框中，可以使用此选项。
 
-    a. 若要打开“添加属性”对话框，请选择“添加属性”。 
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 若要打开“添加属性”对话框，请选择“添加属性”。 
     
     ![配置单一登录](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_attribute_04.png)
     
@@ -221,7 +221,7 @@ ms.locfileid: "36231383"
 
     ![“用户”对话框](./media/sap-hana-cloud-platform-identity-authentication-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -275,7 +275,7 @@ SAP Cloud Platform Identity Authentication 支持“联合身份验证”选项�
 
 在访问面板中选择“SAP Cloud Platform Identity Authentication”磁贴后，就会自动登录 SAP Cloud Platform Identity Authentication 应用。
 
-有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -67,6 +67,44 @@
 ### [X.509 CA 证书安全性概念](iot-hub-x509ca-concept.md)
 
 # 操作指南
+## 计划
+### [比较 IoT 中心与事件中心](iot-hub-compare-event-hubs.md)
+### [选择适当的层](iot-hub-scaling.md)
+### [高可用性和灾难恢复](iot-hub-ha-dr.md)
+### [支持其他协议](iot-hub-protocol-gateway.md)
+### [比较消息和事件路由](iot-hub-event-grid-routing-comparison.md)
+## [开发](iot-hub-how-to.md)
+### [开发人员指南](iot-hub-devguide.md)
+#### [设备到云的功能指南](iot-hub-devguide-d2c-guidance.md)
+#### [云到设备的功能指南](iot-hub-devguide-c2d-guidance.md)
+#### [发送和接收消息](iot-hub-devguide-messaging.md)
+##### [将设备到云的消息发送到 IoT 中心](iot-hub-devguide-messages-d2c.md)
+##### [从内置终结点读取设备到云的消息](iot-hub-devguide-messages-read-builtin.md)
+##### [响应 IoT 中心事件](iot-hub-event-grid.md)
+##### [对设备到云的消息使用自定义终结点和路由规则](iot-hub-devguide-messages-read-custom.md)
+##### [从 IoT 中心发送云到设备的消息](iot-hub-devguide-messages-c2d.md)
+##### [创建和读取 IoT 中心消息](iot-hub-devguide-messages-construct.md)
+##### [选择通信协议](iot-hub-devguide-protocols.md)
+#### [从设备上传文件](iot-hub-devguide-file-upload.md)
+#### [管理设备标识](iot-hub-devguide-identity-registry.md)
+#### [控制对 IoT 中心的访问](iot-hub-devguide-security.md)
+#### [了解设备孪生](iot-hub-devguide-device-twins.md)
+#### [了解模块孪生](iot-hub-devguide-module-twins.md)
+#### [对设备调用直接方法](iot-hub-devguide-direct-methods.md)
+#### [在多个设备上计划作业](iot-hub-devguide-jobs.md)
+#### [IoT 中心终结点](iot-hub-devguide-endpoints.md)
+#### [查询语言](iot-hub-devguide-query-language.md)
+#### [配额和限制](iot-hub-devguide-quotas-throttling.md)
+#### [定价示例](iot-hub-devguide-pricing.md)
+#### [MQTT 支持](iot-hub-mqtt-support.md)
+#### [术语表](iot-hub-devguide-glossary.md)
+### [使用设备和服务 SDK](iot-hub-devguide-sdks.md)
+#### [使用适用于 C 的 IoT 设备 SDK](iot-hub-device-sdk-c-intro.md)
+##### [使用 IoTHubClient](iot-hub-device-sdk-c-iothubclient.md)
+##### [使用序列化程序](iot-hub-device-sdk-c-serializer.md)
+#### [针对受约束设备进行开发](iot-hub-devguide-develop-for-constrained-devices.md)
+#### [为移动设备进行开发](iot-hub-how-to-develop-for-mobile-devices.md)
+#### [管理连接和可靠的消息传送](iot-hub-reliability-features-in-sdks.md)
 
 ## 开发
 ### [使用适用于 C 的 IoT 设备 SDK](iot-hub-device-sdk-c-intro.md)
@@ -180,7 +218,8 @@
 # 相关内容
 ## 解决方案 
 ### [IoT 解决方案加速器](/azure/iot-accelerators) 
-### [IoT Central](https://docs.microsoft.com/microsoft-iot-central/) 
+### 
+  [IoT Central](https://docs.microsoft.com/microsoft-iot-central/) 
 ## 平台服务 
 ### [IoT 中心](/azure/iot-hub) 
 ### [IoT 中心设备预配服务](/azure/iot-dps)
@@ -200,7 +239,7 @@
 ## [Azure IoT 已认证设备目录](https://catalog.azureiotsuite.com/)
 ## [Azure IoT 开发人员中心](https://azure.microsoft.com/develop/iot/)
 ## [客户数据请求](iot-hub-customer-data-requests.md)
-## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=internet-of-things)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=iot)
 ## [Azure IoT Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)
 ## [DeviceExplorer 工具](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)
 ## [iothub-diagnostics 工具](https://github.com/Azure/iothub-diagnostics)

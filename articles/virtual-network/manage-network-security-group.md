@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: f2fe02a6e7e696fa2c0ab301e7469060d6bd4ab6
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 5ca70b085b5ac9db4d108966fa695f042c20489d
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36292032"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920505"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>创建、更改或删除网络安全组
 
@@ -121,17 +121,15 @@ ms.locfileid: "36292032"
     
     |设置  |值  |详细信息  |
     |---------|---------|---------|
-    |Source     | 选择“任何”、“IP 地址”或“服务标记”。        | 如果选择“IP 地址”，那么必须指定“源 IP 地址/CIDR 范围”。 可指定单个值或以逗号分隔的多个值的列表。 多个值的示例为 10.0.0.0/16, 192.188.1.1。 可指定的值的数目有限制。 有关详细信息，请参阅 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。 如果选择“服务标记”，那么必须选择一个服务标记。 服务标记是 IP 地址类别的预定义标识符。 若要了解有关可用服务标记以及每个标记表示的含义的详细信息，请参阅[服务标记](security-overview.md#service-tags)。 如果指定的 IP 地址已分配给 Azure 虚拟机，请确保指定的是专用 IP 地址，而不是公共 IP 地址（如果公共 IP 地址已分配给虚拟机）。 在 Azure 将公共 IP 地址转换为专用 IP 地址以实现入站安全规则后，在 Azure 将专用 IP 地址转换为公共 IP 地址以实现出站规则之前，会处理安全规则。 若要了解有关 Azure 中的公共和专用 IP 地址的详细信息，请参阅 [IP 地址类型](virtual-network-ip-addresses-overview-arm.md)。        |
+    |Source     | 为入站安全规则选择“任何项”、“应用程序安全组”、“IP 地址”或“服务标记”。 如果要创建出站安全规则，所用选项与为“目标”列出的选项相同。       | 如果选择“应用程序安全组”，则选择一个或多个与网络接口存在于同一区域的现有的应用程序安全组。 了解如何[创建应用程序安全组](#create-an-application-security-group)。 如果为“源”和“目标”都选择“应用程序安全组”，则两个应用程序安全组中的网络接口必须在同一虚拟网络中。 如果选择“IP 地址”，请指定“源 IP 地址/CIDR 范围”。 可指定单个值或以逗号分隔的多个值的列表。 多个值的示例为 10.0.0.0/16, 192.188.1.1。 可指定的值的数目有限制。 有关详细信息，请参阅 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。 如果选择“服务标记”，请选择一个服务标记。 服务标记是 IP 地址类别的预定义标识符。 若要了解有关可用服务标记以及每个标记表示的含义的详细信息，请参阅[服务标记](security-overview.md#service-tags)。 如果指定的 IP 地址已分配给 Azure 虚拟机，请确保指定的是专用 IP，而不是已分配给虚拟机的公共 IP 地址。 在 Azure 将公共 IP 地址转换为专用 IP 地址以符合入站安全规则后，在 Azure 将专用 IP 地址转换为公共 IP 地址以符合出站规则之前，会处理安全规则。 若要了解有关 Azure 中的公共和专用 IP 地址的详细信息，请参阅 [IP 地址类型](virtual-network-ip-addresses-overview-arm.md)。        |
     |源端口范围     | 指定单个端口（如 80）、端口范围（如 1024-65535）或单个端口和/或端口范围的以逗号分隔的列表（如 80, 1024-65535）。 输入星号可允许任何端口上的流量。 | 端口和范围指定规则允许或拒绝哪个端口流量。 可指定的端口数目有限制。 有关详细信息，请参阅 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。  |
-    |目标     | 选择“任何”、“IP 地址”或“虚拟网络”。        | 如果选择“IP 地址”，那么必须指定“目标 IP 地址/CIDR 范围”。 类似于“源”和“源 IP 地址/CIDR 范围”，你可指定单个或多个地址或范围，并且可指定的数目有限制。 选择“虚拟网络”，它是一个服务标记，意味着流量可到虚拟网络地址空间内的所有 IP 地址。 如果指定的 IP 地址已分配给 Azure 虚拟机，请确保指定的是专用 IP 地址，而不是公共 IP 地址（如果公共 IP 地址已分配给虚拟机）。 在 Azure 将公共 IP 地址转换为专用 IP 地址以符合入站安全规则后，在 Azure 将专用 IP 地址转换为公共 IP 地址以符合出站规则之前，会处理安全规则。 若要了解有关 Azure 中的公共和专用 IP 地址的详细信息，请参阅 [IP 地址类型](virtual-network-ip-addresses-overview-arm.md)。        |
+    |目标     | 为入站安全规则选择“任何项”、“应用程序安全组”、“IP 地址”或“虚拟网络”。 如果要创建出站安全规则，则使用选项与为“源”列出的选项相同。        | 如果选择“应用程序安全组”，那么必须选择一个或多个与网络接口存在于同一区域的现有的应用程序安全组。 了解如何[创建应用程序安全组](#create-an-application-security-group)。 如果选择“应用程序安全组”，则选择一个与网络接口存在于同一区域的现有的应用程序安全组。 如果选择“IP 地址”，则指定“目标 IP 地址/CIDR 范围”。 类似于“源”和“源 IP 地址/CIDR 范围”，你可指定单个或多个地址或范围，并且可指定的数目有限制。 选择“虚拟网络”，它是一个服务标记，意味着流量可到虚拟网络地址空间内的所有 IP 地址。 如果指定的 IP 地址已分配给 Azure 虚拟机，请确保指定的是专用 IP，而不是已分配给虚拟机的公共 IP 地址。 在 Azure 将公共 IP 地址转换为专用 IP 地址以符合入站安全规则后，在 Azure 将专用 IP 地址转换为公共 IP 地址以符合出站规则之前，会处理安全规则。 若要了解有关 Azure 中的公共和专用 IP 地址的详细信息，请参阅 [IP 地址类型](virtual-network-ip-addresses-overview-arm.md)。        |
     |目标端口范围     | 指定单个值或以逗号分隔的多个值的列表。 | 类似于“源端口范围”，可指定单个或多个端口和范围，并且可指定的数目有限制。 |
     |协议     | 选择“任何”、“TCP”或“UDP”。        |         |
     |操作     | 选择“允许”或“拒绝”。        |         |
     |Priority     | 输入一个介于 100-4096 之间的值，该值对于网络安全组内的所有安全规则都是唯一的。 |规则按优先顺序处理。 编号越低，优先级越高。 建议创建规则时在优先级数字之间留出空隙，例如 100, 200, 300。 留出空隙后，未来在需要使规则高于或低于现有规则时，可更轻松添加规则。         |
     |名称     | 网络安全组内规则的唯一名称。        |  名称最多可包含 80 个字符。 它必须以字母或数字开头，以字母、数字或下划线结尾，且仅可包含字母、数字、下划线、句点或连字符。       |
     |说明     | 可选说明。        |         |
-
-    无法使用门户为“源”或“目标”设置指定[应用程序安全组](#work-with-application-security-groups)。 但是，可使用 Azure CLI 或 PowerShell 指定。 “出站安全规则”的设置与此类似，因此不单独进行说明。
 
 **命令**
 
@@ -185,29 +183,54 @@ ms.locfileid: "36292032"
 - Azure CLI: [az network nsg rule delete](/cli/azure/network/nsg/rule#az-network-nsg-rule-delete)
 - PowerShell: [Remove-AzureRmSecurityRuleConfig](/powershell/module/azurerm.network/remove-azurermnetworksecurityruleconfig)
 
-
 ## <a name="work-with-application-security-groups"></a>使用应用程序安全组
 
-应用程序安全组包含零个或多个网络接口。 要了解详细信息，请参阅[应用程序安全组](security-overview.md#application-security-groups)。 无法使用门户中的应用程序安全组，但可以使用 PowerShell 或 Azure CLI。 应用程序安全组中的所有网络接口必须存在于同一虚拟网络中。 添加到应用程序安全组的第一个网络接口确定后续所有网络接口必须位于哪个虚拟网络中。 要了解如何将网络接口添加到应用程序安全组，请参阅[将网络接口添加到应用程序安全组](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups)。
+应用程序安全组包含零个或多个网络接口。 要了解详细信息，请参阅[应用程序安全组](security-overview.md#application-security-groups)。 应用程序安全组中的所有网络接口必须存在于同一虚拟网络中。 要了解如何将网络接口添加到应用程序安全组，请参阅[将网络接口添加到应用程序安全组](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups)。
 
 ### <a name="create-an-application-security-group"></a>创建应用程序安全组
+
+1. 选择 Azure 门户左上角的“+ 创建资源”。
+2. 在“在市场中搜索”框中输入“应用程序安全组”。 当“应用程序安全组”显示在搜索结果中时，将其选中，再次在“所有项”下选择“应用程序安全组”，然后选择“创建”。
+3. 输入或选择以下信息，然后选择“创建”：
+
+    | 设置        | 值                                                   |
+    | ---            | ---                                                     |
+    | 名称           | 名称在资源组中必须唯一。        |
+    | 订阅   | 选择订阅。                               |
+    | 资源组 | 选择现有的资源组，或创建一个新的组。 |
+    | 位置       | 选择一个位置                                       |
+
+**命令**
 
 - Azure CLI: [az network asg create](/cli/azure/network/asg#az-network-asg-create)
 - PowerShell: [New-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/new-azurermapplicationsecuritygroup)
 
 ### <a name="view-all-application-security-groups"></a>查看所有应用程序安全组
 
+1. 选择 Azure 门户左上角的“所有服务”。
+2. 在“所有服务筛选器”框中输入“应用程序安全组”，然后在其显示在搜索结果中时，选择“应用程序安全组”。
+
+**命令**
+
 - Azure CLI: [az network asg list](/cli/azure/network/asg#az-network-asg-list)
 - PowerShell: [Get-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/get-azurermapplicationsecuritygroup)
 
 ### <a name="view-details-of-a-specific-application-security-group"></a>查看特定应用程序安全组的详细信息
+
+1. 选择 Azure 门户左上角的“所有服务”。
+2. 在“所有服务筛选器”框中输入“应用程序安全组”，然后在其显示在搜索结果中时，选择“应用程序安全组”。
+3. 选择要查看其详细信息的应用程序安全组。
+
+**命令**
 
 - Azure CLI: [az network asg show](/cli/azure/network/asg#az-network-asg-show)
 - PowerShell: [Get-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/get-azurermapplicationsecuritygroup)
 
 ### <a name="change-an-application-security-group"></a>更改应用程序安全组
 
-虽然可以更改现有应用程序安全组的某些设置（如标记和权限），但无法更改其名称或位置。
+1. 选择 Azure 门户左上角的“所有服务”。
+2. 在“所有服务筛选器”框中输入“应用程序安全组”，然后在其显示在搜索结果中时，选择“应用程序安全组”。
+3. 选择要更改其设置的应用程序安全组。 可以对应用程序安全组添加或删除标记，或者分配或删除权限。
 
 - Azure CLI: [az network asg update](/cli/azure/network/asg#az-network-asg-update)
 - PowerShell: No PowerShell cmdlet.
@@ -215,6 +238,11 @@ ms.locfileid: "36292032"
 ### <a name="delete-an-application-security-group"></a>删除应用程序安全组
 
 如果应用程序安全组中有任何网络接口，则不能将其删除。 通过更改网络接口设置或删除网络接口，从应用程序安全组中移除所有网络接口。 有关详细信息，请参阅[在应用程序安全组中添加或删除网络接口](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups)或[删除网络接口](virtual-network-network-interface.md#delete-a-network-interface)。
+
+1. 选择 Azure 门户左上角的“所有服务”。
+2. 在“所有服务筛选器”框中输入“应用程序安全组”，然后在其显示在搜索结果中时，选择“应用程序安全组”。
+3. 选择要删除的应用程序安全组。
+4. 选择“删除”，然后选择“是”，删除应用程序安全组。
 
 **命令**
 
@@ -225,21 +253,25 @@ ms.locfileid: "36292032"
 
 若要在网络安全组、安全规则和应用程序安全组上执行任务，必须将你的帐户分配给[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或分配有下表中所列相应权限的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)：
 
-### <a name="network-security-groups"></a>网络安全组
+### <a name="network-security-group"></a>网络安全组
 
 | 操作                                                        |   名称                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
-| Microsoft.Network/ruleTables/read                             |   获取网络安全组                                          |
-| Microsoft.Network/ruleTables/write                            |   创建或更新网络安全组                             |
-| Microsoft.Network/ruleTables/delete                           |   删除网络安全组                                       |
-| Microsoft.Network/ruleTables/join/action                      |   将网络安全组与子网或网络接口关联 |
-| Microsoft.Network/ruleTables/rules/read                       |   获取规则                                                            |
-| Microsoft.Network/ruleTables/rules/write                      |   创建或更新规则                                               |
-| Microsoft.Network/ruleTables/rules/delete                     |   删除规则                                                         |
-| Microsoft.Network/networkInterfaces/effectiveruleTable/action |   获取网络接口有效的网络安全组              |
-| Microsoft.Network/networkWatchers/nextHop/action              |   从 VM 获取下一跃点                                         |
+| Microsoft.Network/networkSecurityGroups/read                  |   获取网络安全组                                          |
+| Microsoft.Network/networkSecurityGroups/write                 |   创建或更新网络安全组                             |
+| Microsoft.Network/networkSecurityGroups/delete                |   删除网络安全组                                       |
+| Microsoft.Network/networkSecurityGroups/join/action           |   将网络安全组与子网或网络接口关联 
 
-### <a name="application-security-groups"></a>应用程序安全组
+
+### <a name="network-security-group-rule"></a>网络安全组规则
+
+| 操作                                                        |   名称                                                                |
+|-------------------------------------------------------------- |   -------------------------------------------                         |
+| Microsoft.Network/networkSecurityGroups/rules/read            |   获取规则                                                            |
+| Microsoft.Network/networkSecurityGroups/rules/write           |   创建或更新规则                                               |
+| Microsoft.Network/networkSecurityGroups/rules/delete          |   删除规则                                                         |
+
+### <a name="application-security-group"></a>应用程序安全组
 
 | 操作                                                                     | 名称                                                     |
 | --------------------------------------------------------------             | -------------------------------------------              |

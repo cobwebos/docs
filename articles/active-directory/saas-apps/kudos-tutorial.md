@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jeedes
-ms.openlocfilehash: c7bf7efe76f9fdee6a5508131c4d86d503a87366
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 5807ab0090f401c02599db40f110b7a9b1504060
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36217051"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047046"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kudos"></a>教程：Azure Active Directory 与 Kudos 的集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "36217051"
 
     ![配置单一登录](./media/kudos-tutorial/tutorial_kudos_url.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company>.kudosnow.com`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<company>.kudosnow.com`
     
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新此值。 请联系 [Kudos 客户端支持团队](http://success.kudosnow.com/home)获取此值。 
@@ -141,7 +141,7 @@ ms.locfileid: "36217051"
    
     ![SSO](./media/kudos-tutorial/ic787807.png "SSO")
    
-    a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。 
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。 
 
     b. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将其粘贴到“X.509 证书”文本框中
    
@@ -178,7 +178,7 @@ ms.locfileid: "36217051"
  
     ![创建 Azure AD 测试用户](./media/kudos-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -210,7 +210,7 @@ ms.locfileid: "36217051"
    
     ![添加用户](./media/kudos-tutorial/ic787810.png "添加用户")
    
-    a. 在相关文本框中键入要预配的有效 Azure Active Directory 帐户的“名字”、“姓氏”、“电子邮件地址”和其他详细信息。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在相关文本框中键入要预配的有效 Azure Active Directory 帐户的“名字”、“姓氏”、“电子邮件地址”和其他详细信息。
    
     b. 单击“创建用户”。
 
@@ -251,7 +251,7 @@ ms.locfileid: "36217051"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Kudos 磁贴时，应当会自动登录到 Kudos 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+单击访问面板中的 Kudos 磁贴时，应当会自动登录到 Kudos 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

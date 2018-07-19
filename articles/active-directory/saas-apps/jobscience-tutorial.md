@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 12dbf4483e3f049948df6b825b0e0937a79ad826
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0d717c9a70d078300b59a4e3fd6df08e971e8075
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211890"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042956"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>教程：Azure Active Directory 与 Jobscience 集成
 
@@ -151,7 +151,7 @@ ms.locfileid: "36211890"
     
     ![单一登录设置](./media/jobscience-tutorial/ic781026.png "Single Sign-On Settings")
     
-    a. 选择“已启用 SAML”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“已启用 SAML”。
 
     b. 单击“新建” 。
 
@@ -159,7 +159,7 @@ ms.locfileid: "36211890"
     
     ![SAML 单一登录设置](./media/jobscience-tutorial/ic784365.png "SAML Single Sign-On Settings")
     
-    a. 在“名称”文本框中，键入配置名称。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入配置名称。
 
     b. 将从 Azure 门户复制的“SAML 实体 ID”的值粘贴到“颁发者”文本框中。
 
@@ -222,7 +222,7 @@ ms.locfileid: "36211890"
  
     ![创建 Azure AD 测试用户](./media/jobscience-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -255,7 +255,7 @@ ms.locfileid: "36211890"
    
    ![用户编辑](./media/jobscience-tutorial/ic784371.png "用户编辑")
    
-   a. 在“名”文本框中键入用户的名（如 Britta）。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名”文本框中键入用户的名（如 Britta）。
    
    b. 在“姓”文本框中键入用户的姓（如 Simon）。
    
@@ -308,7 +308,7 @@ ms.locfileid: "36211890"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Jobscience 磁贴时，应自动登录到 Jobscience 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

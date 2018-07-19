@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 71f3a850d4b60c9ca2e3742ea8c83587e04f1dca
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 70b9d41ff9ed47e9ac376f1e13627cc82d87130f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221455"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048287"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-abintegro"></a>教程：Azure Active Directory 与 Abintegro 的集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "36221455"
 
     ![配置单一登录](./media/abintegro-tutorial/tutorial_abintegro_url.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://dev.abintegro.com/Shibboleth.sso/Login?entityID=<Issuer>&target=https://dev.abintegro.com/secure/`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://dev.abintegro.com/Shibboleth.sso/Login?entityID=<Issuer>&target=https://dev.abintegro.com/secure/`
 
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新此值。 若要获取此值，请与 [Abintegro 客户端支持团队](mailto:support@abintegro.com)联系。 
@@ -153,7 +153,7 @@ ms.locfileid: "36221455"
  
     ![创建 Azure AD 测试用户](./media/abintegro-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -202,7 +202,7 @@ ms.locfileid: "36221455"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Abintegro 磁贴时，应显示 Abintegro 应用程序的登录页。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

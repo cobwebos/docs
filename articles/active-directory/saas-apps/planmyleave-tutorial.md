@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 3c33c545e2b630ef501ebd81f4bd29b16cf77759
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: c064223e06768dc40892774f00b0588b7ec32fdc
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223862"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051473"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-planmyleave"></a>教程：Azure Active Directory 与 PlanMyLeave 的集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "36223862"
 
     ![PlanMyLeave 域和 URL 单一登录信息](./media/planmyleave-tutorial/tutorial_planmyleave_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company-name>.planmyleave.com/Login.aspx`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<company-name>.planmyleave.com/Login.aspx`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<company-name>.planmyleave.com`
 
@@ -142,7 +142,7 @@ ms.locfileid: "36223862"
 
     ![在应用端配置单一登录](./media/planmyleave-tutorial/tutorial_planmyleave_004.png)
 
-    a.  在“登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  在“登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”。
 
     b.  打开下载的元数据，复制 **X509Certificate** 值，然后将其粘贴到“证书”文本框。
 
@@ -177,7 +177,7 @@ ms.locfileid: "36223862"
 
     ![“用户”对话框](./media/planmyleave-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -229,7 +229,7 @@ ms.locfileid: "36223862"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 PlanMyLeave 磁贴时，应当会自动登录到 PlanMyLeave 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 4813c492ba25b0d6dd524e2c0b4b5b6e8c2a2bfa
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 7e1d942d593fc01f68c1cdb7ffd923d2529cf171
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308235"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050606"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timeoffmanager"></a>教程：Azure Active Directory 与 TimeOffManager 集成
 
@@ -109,7 +109,7 @@ ms.locfileid: "36308235"
 
      ![“TimeOffManager 域和 URL”部分](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_url.png)
 
-    在“回复 URL”文本框中，使用以下模式键入 URL：`https://www.timeoffmanager.com/cpanel/sso/consume.aspx?company_id=<companyid>`
+    在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://www.timeoffmanager.com/cpanel/sso/consume.aspx?company_id=<companyid>`
 
     > [!NOTE] 
     > 此值不是真实值。 请使用实际回复 URL 更新此值。 可以从教程后面介绍的“单一登录设置页面”中获取此值，也可以联系 [TimeOffManager 支持团队](https://www.purelyhr.com/contact-us)。
@@ -130,7 +130,7 @@ ms.locfileid: "36308235"
     | Lastname |User.surname |
     | 电子邮件 |User.mail |
     
-    a.  对于上表中的每个数据行，单击“添加用户属性”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  对于上表中的每个数据行，单击“添加用户属性”。
     
     ![SAML 令牌属性](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_addattrb.png "SAML 令牌属性")
     
@@ -159,7 +159,7 @@ ms.locfileid: "36308235"
    
    ![单一登录设置](./media/timeoffmanager-tutorial/ic795918.png "Single Sign-On Settings")
    
-   a. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将整个证书粘贴到“X.509 证书”文本框中。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将整个证书粘贴到“X.509 证书”文本框中。
    
    b. 在“Idp 颁发者”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
    
@@ -204,7 +204,7 @@ ms.locfileid: "36308235"
  
     ![“用户”对话框页](./media/timeoffmanager-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -258,7 +258,7 @@ TimeOffManager 支持实时用户预配。 不存在任何操作项。
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“TimeOffManager”磁贴时，应该会自动登录 TimeOffManager 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+在访问面板中单击“TimeOffManager”磁贴时，应该会自动登录 TimeOffManager 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

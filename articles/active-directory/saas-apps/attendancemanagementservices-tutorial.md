@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: jeedes
-ms.openlocfilehash: c718284ca65bc17990fb16b07a27787f28f362c2
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e664d9d337b4709b320fdbe1d8e7bd71df3441f9
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227109"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048202"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>教程：Azure Active Directory 与 Attendance Management Services 的集成
 
@@ -108,7 +108,7 @@ ms.locfileid: "36227109"
 
     ![Attendance Management Services 域和 URL 单一登录信息](./media/attendancemanagementservices-tutorial/tutorial_attendancemanagementservices_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://id.obc.jp/<tenant information >/`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://id.obc.jp/<tenant information >/`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://id.obc.jp/<tenant information >/`
 
@@ -137,7 +137,7 @@ ms.locfileid: "36227109"
 
     ![Attendance Management Services 配置](./media/attendancemanagementservices-tutorial/user2.png)
 
-    a. 选择“使用 SAML 身份验证”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“使用 SAML 身份验证”。
 
     b. 在“标识符”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。 
 
@@ -177,7 +177,7 @@ ms.locfileid: "36227109"
 
     ![“用户”对话框](./media/attendancemanagementservices-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -205,7 +205,7 @@ ms.locfileid: "36227109"
 
     ![添加员工](./media/attendancemanagementservices-tutorial/user4.png)
 
-    a. 在“OBCiD”文本框中，键入用户的电子邮件，例如 BrittaSimon@contoso.com。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“OBCiD”文本框中，键入用户的电子邮件，例如 BrittaSimon@contoso.com。
 
     b. 在“密码”文本框中，键入用户的密码。
 
@@ -247,7 +247,7 @@ ms.locfileid: "36227109"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 Attendance Management Services 磁贴时，应该会自动登录 Attendance Management Services 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

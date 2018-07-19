@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: db6fa96e713878c75fd6ebc6056ee825458e986b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1fd442556a5634cdd4fb358a9c977abedd99f3d3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231223"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043374"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-contractworks"></a>教程：Azure Active Directory 与 ContractWorks 集成
 
@@ -127,7 +127,7 @@ ms.locfileid: "36231223"
     | mail | user.mail |
     | displayName | user.displayname |
 
-    a. 单击“添加属性”，打开“添加属性”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录](./media/contractworks-tutorial/tutorial_attribute_04.png)
 
@@ -175,7 +175,7 @@ ms.locfileid: "36231223"
 
     ![“用户”对话框](./media/contractworks-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -222,7 +222,7 @@ ms.locfileid: "36231223"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 ContractWorks 磁贴时，应会自动登录到 ContractWorks 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

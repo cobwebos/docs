@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: d99311dfe096c1fca94bafd630385ef856123ca1
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6c13bb4c10adeeba59ff8d0f2c8d7120d6fae43a
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36209827"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050640"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>教程：Azure Active Directory 与 TeamSeer 集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "36209827"
 
     ![配置单一登录](./media/teamseer-tutorial/tutorial_teamseer_url.png)
 
-     在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.teamseer.com/<companyid>`
+     在“登录 URL”文本框中，使用以下模式键入 URL： `https://www.teamseer.com/<companyid>`
 
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新该值。 若要获取该值，请与 [TeamSeer 客户端支持团队](http://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html)联系。 
@@ -147,7 +147,7 @@ ms.locfileid: "36209827"
    
     ![SAML 设置](./media/teamseer-tutorial/ic789637.png "SAML 设置")   
 
-    a. 将“单一登录服务 URL”值粘贴到“URL”文本框中。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将“单一登录服务 URL”值粘贴到“URL”文本框中。
           
     b. 在记事本中打开 base-64 编码证书，将其内容复制到剪贴板，然后将其粘贴到“IdP 公共证书”文本框中。
 
@@ -155,7 +155,7 @@ ms.locfileid: "36209827"
     
     ![SAML 设置](./media/teamseer-tutorial/ic789638.png "SAML 设置") 
 
-    a. 在“测试电子邮件地址”中，键入测试用户的电子邮件地址。 
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“测试电子邮件地址”中，键入测试用户的电子邮件地址。 
   
     b. 在“颁发者”文本框中，键入服务提供商的颁发者 URL。 
   
@@ -188,7 +188,7 @@ ms.locfileid: "36209827"
  
     ![创建 Azure AD 测试用户](./media/teamseer-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -208,7 +208,7 @@ ms.locfileid: "36209827"
    
     ![HR 管理员](./media/teamseer-tutorial/ic789640.png "HR 管理员")  
  
-    a. 转到“HR 管理员”\>“用户”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 转到“HR 管理员”\>“用户”。
   
     b. 单击“运行新建用户向导”。
 
@@ -216,9 +216,9 @@ ms.locfileid: "36209827"
    
     ![用户详细信息](./media/teamseer-tutorial/ic789641.png "用户详细信息")
 
-    a. 在相关文本框中键入要预配的有效 AAD 帐户的“名字”、“姓氏”和“用户名(电子邮件地址)”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在相关文本框中键入要预配的有效 AAD 帐户的“名字”、“姓氏”和“用户名(电子邮件地址)”。
   
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b. 单击“下一步”。
 
 4. 按照屏幕上的说明添加新用户，然后单击“完成”。
 
@@ -257,7 +257,7 @@ ms.locfileid: "36209827"
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 
-如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

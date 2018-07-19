@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: jeedes
-ms.openlocfilehash: f68c5d6a022cccecde3b3eb272e51f75ae6bc50e
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 5679c815b26bf0b5e3a427e9551dde7b5dffa3d2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222055"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046536"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>教程：Azure Active Directory 与 OrgChart Now 集成
 
@@ -114,7 +114,7 @@ ms.locfileid: "36222055"
 
     ![OrgChart Now 域和 URL 单一登录信息](./media/orgchartnow-tutorial/tutorial_orgchartnow_url1.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://sso2.orgchartnow.com/Shibboleth.sso/Login?entityID=<YourEntityID>&target=https://sso2.orgchartnow.com`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://sso2.orgchartnow.com/Shibboleth.sso/Login?entityID=<YourEntityID>&target=https://sso2.orgchartnow.com`
      
     > [!NOTE]
     > `<YourEntityID>` 是从教程下文中介绍的“快速参考”部分中复制的 SAML 实体 ID。
@@ -157,7 +157,7 @@ ms.locfileid: "36222055"
 
     ![“用户”对话框](./media/orgchartnow-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -171,7 +171,7 @@ ms.locfileid: "36222055"
 
 1. OrgChart Now 支持在默认情况下启用的实时预配。 尝试访问 OrgChart Now 期间，如果尚不存在用户，则会创建一个新用户。 仅当 SSO 请求来自已识别的 IDP，并且在用户列表中未找到 SAML 断言中的电子邮件时，实时用户预配功能才会创建**只读**用户。 对于此自动预配功能，需要在 OrgChart Now 中创建标题为“常规”的访问组。 请遵循以下步骤创建访问组：
 
-    a. 单击 UI 右上角的**齿轮**图标后，转到“管理组”选项。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击 UI 右上角的**齿轮**图标后，转到“管理组”选项。
 
     ![OrgChart Now 组](./media/orgchartnow-tutorial/tutorial_orgchartnow_manage.png)    
 
@@ -189,7 +189,7 @@ ms.locfileid: "36222055"
 
 2. 若要创建**管理员**用户和**读/写**用户，必须手动创建用户，以通过 SSO 获取对其特权级别的访问。 若要预配用户帐户，请执行以下步骤：
 
-    a. 以安全管理员身份登录到 OrgChart Now。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 以安全管理员身份登录到 OrgChart Now。
 
     b.  单击右上角的“设置”，然后导航到“管理用户”。
 
@@ -240,7 +240,7 @@ ms.locfileid: "36222055"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击“OrgChart Now”磁贴时，应会自动登录到 OrgChart Now 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

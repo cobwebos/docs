@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 0692c81577706b4d8cce64a912548feec4608f18
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1eb11b52a89e25603939af9ec42d922d6e7ac0df
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231485"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047403"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fiscalnote"></a>教程：Azure Active Directory 与 FiscalNote 集成
 
@@ -108,7 +108,7 @@ ms.locfileid: "36231485"
 
     ![FiscalNote 域和 URL 单一登录信息](./media/fiscalnote-tutorial/tutorial_fiscalnote_url.png)
     
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<InstanceName>.fiscalnote.com/login?client=<ClientID>&redirect_uri=https://app.fiscalnote.com/saml-login.html&audience=https://api.fiscalnote.com/&connection=<CONNECTION_NAME>&response_type=id_token%20token`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<InstanceName>.fiscalnote.com/login?client=<ClientID>&redirect_uri=https://app.fiscalnote.com/saml-login.html&audience=https://api.fiscalnote.com/&connection=<CONNECTION_NAME>&response_type=id_token%20token`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`urn:auth0:fiscalnote:<CONNECTIONNAME>`
 
@@ -132,7 +132,7 @@ ms.locfileid: "36231485"
     | familyName| user.surname|
     | 电子邮件| user.mail|
     
-    a. 删除现有属性并添加新属性。 单击“添加属性”打开“添加属性”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 删除现有属性并添加新属性。 单击“添加属性”打开“添加属性”对话框。
 
     ![配置单一登录](./media/fiscalnote-tutorial/tutorial_attribute_04.png)
     
@@ -180,7 +180,7 @@ ms.locfileid: "36231485"
 
     ![“用户”对话框](./media/fiscalnote-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -229,7 +229,7 @@ ms.locfileid: "36231485"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击“FiscalNote”磁贴，应会自动登录到 FiscalNote 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

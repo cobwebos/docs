@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: f156f8dfdde5f9b13494d837c64c0f2117e4d1d7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0ad1c1e66ac0719889760d4685607bd6e5f39f1f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219017"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046054"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-projectplace"></a>教程：Azure Active Directory 与 Projectplace 的集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "36219017"
 
     ![配置单一登录](./media/projectplace-tutorial/tutorial_projectplace_url.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company>.projectplace.com`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<company>.projectplace.com`
 
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新此值。 请联系 [Projectplace 客户端支持团队](https://success.planview.com/Projectplace/Support)获取此值。 
@@ -156,7 +156,7 @@ ms.locfileid: "36219017"
  
     ![创建 Azure AD 测试用户](./media/projectplace-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -184,7 +184,7 @@ ms.locfileid: "36219017"
    
     ![新建成员](./media/projectplace-tutorial/ic790233.png "新建成员")
    
-    a. 在“新建成员”文本框中，键入要在相关文本框中预配的有效 AAD 帐户的电子邮件地址。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“新建成员”文本框中，键入要在相关文本框中预配的有效 AAD 帐户的电子邮件地址。
    
     b. 单击“Send”。
 
@@ -228,7 +228,7 @@ ms.locfileid: "36219017"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Projectplace”磁贴时，用户就会自动登录到 Projectplace 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

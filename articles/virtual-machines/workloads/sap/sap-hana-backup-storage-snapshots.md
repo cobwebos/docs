@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 3/13/2017
+ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 819888800b9663f9b920fbaf11b30ad28287a0b5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1d3089052a67b899e2e4b38123145bd4ae51693f
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658717"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902293"
 ---
 # <a name="sap-hana-backup-based-on-storage-snapshots"></a>基于存储快照的 SAP HANA 备份
 
@@ -28,9 +28,9 @@ ms.locfileid: "34658717"
 
 针对单实例多合一演示系统使用 VM 备份功能时，应该考虑执行 VM 备份，而不是在 OS 级别管理 HANA 备份。 创建 Azure Blob 快照的替代做法是为附加到虚拟机的单个虚拟磁盘创建副本，并保留 HANA 数据文件。 但一个要点是，在系统已启动并运行的情况下，应该在创建 VM 备份或磁盘快照时保持应用一致性。 请参阅相关文章[Azure 虚拟机上的 SAP HANA 备份指南](sap-hana-backup-guide.md)中的_创建存储快照时保持 SAP HANA 数据一致性_。 SAP HANA 提供了一项功能用于支持此类存储快照。
 
-## <a name="sap-hana-snapshots"></a>SAP HANA 快照
+## <a name="sap-hana-snapshots-as-central-part-of-application-consistent-backups"></a>作为应用程序一致性备份的核心部分的 SAP HANA 快照
 
-SAP HANA 中提供了一项用于支持创建存储快照的功能。 但是，截止 2016 年 12 月，仅限于对单容器系统使用该功能。 多租户容器配置不支持此类数据库快照（请参阅[创建存储快照 (SAP HANA Studio)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a0/3f8f08501e44d89115db3c5aa08e3f/content.htm)）。
+SAP HANA 中提供了一项用于支持创建存储快照的功能。 仅限于对单容器系统使用该功能。 具有多个租户的 SAP HANA MCS 方案不支持这种类型的 SAP HANA 数据库快照（请参阅[创建存储快照 (SAP HANA Studio)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a0/3f8f08501e44d89115db3c5aa08e3f/content.htm)）。
 
 此功能的工作原理如下：
 
@@ -59,7 +59,9 @@ SAP HANA 中提供了一项用于支持创建存储快照的功能。 但是，�
 
 ## <a name="hana-vm-backup-via-azure-backup-service"></a>通过 Azure 备份服务进行 HANA VM 备份
 
-截止 2016 年 12 月，Azure 备份服务的备份代理不适用于 Linux VM。 要利用文件/目录级别的 Azure 备份，需将 SAP HANA 备份文件复制到 Windows VM，然后使用备份代理。 否则，只能通过 Azure 备份服务进行完整的 Linux VM 备份。 有关详细信息，请参阅 [Azure 备份中的功能概述](../../../backup/backup-introduction-to-azure-backup.md)。
+Azure 备份服务的备份代理不适用于 Linux VM。 此外，Linux 不具有与 Windows 类似带 VSS 的功能。  要利用文件/目录级别的 Azure 备份，需将 SAP HANA 备份文件复制到 Windows VM，然后使用备份代理。 
+
+否则，只能通过 Azure 备份服务进行完整的 Linux VM 备份。 有关详细信息，请参阅 [Azure 备份中的功能概述](../../../backup/backup-introduction-to-azure-backup.md)。
 
 Azure 备份服务提供一个选项用于备份和还原 VM。 有关此服务及其工作原理的详细信息，请参阅[在 Azure 中规划 VM 备份基础结构](../../../backup/backup-azure-vms-introduction.md)一文。
 
@@ -75,52 +77,32 @@ _&quot;应用程序需要对还原的数据实施自身的&quot;修复&quot;机�
 
 _&quot;强烈建议在创建存储快照后，尽快确认或丢弃该快照。准备或创建存储快照时，快照相关的数据会被冻结。当快照相关的数据保持冻结状态时，仍可在数据库中进行更改。此类更改不会导致冻结的快照相关数据发生更改。这些更改将写入到数据区域中独立于存储快照的位置。另外，这些更改还会写入到日志中。但是，快照相关数据保持冻结的时间越长，增长的数据量可能越大。&quot;_
 
-Azure 备份通过 Azure VM 扩展来处理文件系统一致性。 这些扩展不可单独使用，只能与 Azure 备份服务结合使用。 但无论如何，都必须管理 SAP HANA 快照，以保证应用一致性。
+Azure 备份通过 Azure VM 扩展来处理文件系统一致性。 这些扩展不可单独使用，只能与 Azure 备份服务结合使用。 但无论如何，都必须提供脚本才能创建和删除 SAP HANA 快照，以保证应用一致性。
 
-Azure 备份包括两个主要阶段：
+Azure 备份包括四个主要阶段：
 
+- 执行准备脚本 - 脚本需要创建 SAP HANA 快照
 - 创建快照
+- 执行快照后脚本 - 脚本需要删除由准备脚本创建的 SAP HANA
 - 将数据传输到保管库
 
-因此，在完成 Azure 备份服务的创建快照阶段后，便可以确认 SAP HANA 快照。 可能需要在几分钟后，快照才会显示在 Azure 门户中。
+如需深入了解在何处复制这些脚本和 Azure 备份的工作原理信息，请参阅以下文章：
 
-![此图显示了 Azure 备份服务的备份作业列表的一部分](media/sap-hana-backup-storage-snapshots/image014.png)
+- [在 Azure 中计划 VM 备份基础结构](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-introduction)
+- [Azure Linux VM 的应用程序一致性备份](https://docs.microsoft.com/en-us/azure/backup/backup-azure-linux-app-consistent)
 
-此图显示了用于备份 HANA 测试 VM 的 Azure 备份服务备份作业列表的一部分。
 
-![若要显示作业详细信息，请在 Azure 门户中单击备份作业](media/sap-hana-backup-storage-snapshots/image015.png)
 
-若要显示作业详细信息，请在 Azure 门户中单击备份作业。 此处显示了两个阶段。 可能需要在几分钟后，门户中才显示快照阶段已完成。 大部分时间花费在数据传输阶段。
+在此时间点，Microsoft 还未发布 SAP HANA 准备脚本和快照后脚本。 客户或系统集成商可能需要创建这些脚本并基于上面引用的文档配置该过程。
 
-## <a name="hana-vm-backup-automation-via-azure-backup-service"></a>通过 Azure 备份服务自动进行 HANA VM 备份
 
-完成 Azure 备份的快照阶段后，可按前文所述手动确认 SAP HANA 快照，但最好是考虑自动备份，因为管理员可能不会在 Azure 门户中监视备份作业列表。
+## <a name="restore-from-application-consistent-backup-against-a-vm"></a>对 VM 从应用程序一致性备份中还原
+有关 Azure 备份执行的应用程序一致性备份的还原过程，请参阅[从 Azure 虚拟机备份恢复文件](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm)一文。 
 
-下面介绍了如何通过 Azure PowerShell cmdlet 实现自动备份。
+> [!IMPORTANT]
+> [从 Azure 虚拟机备份恢复文件](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm)这篇文章列出了使用磁盘条带集时出现的异常以及相关步骤。 条带磁盘很可能就是 SAP HANA 的常规 VM 配置。 因此，请务必阅读该文章并测试本文所述情况的还原过程。 
 
-![已创建名为 hana-backup-vault 的 Azure 备份服务](media/sap-hana-backup-storage-snapshots/image016.png)
 
-已创建名为 &quot;hana-backup-vault&quot; 的 Azure 备份服务。PS 命令 **Get-AzureRmRecoveryServicesVault -Name hana-backup-vault** 检索相应的对象。 然后，使用此对象设置下图所示的备份上下文。
-
-![用户可以检查当前正在进行的备份作业](media/sap-hana-backup-storage-snapshots/image017.png)
-
-设置正确的上下文后，可以检查当前正在进行的备份作业，并查看其作业详细信息。 子任务列表显示 Azure 备份作业的快照阶段是否已完成：
-
-```
-$ars = Get-AzureRmRecoveryServicesVault -Name hana-backup-vault
-Set-AzureRmRecoveryServicesVaultContext -Vault $ars
-$jid = Get-AzureRmRecoveryServicesBackupJob -Status InProgress | select -ExpandProperty jobid
-Get-AzureRmRecoveryServicesBackupJobDetails -Jobid $jid | select -ExpandProperty subtasks
-```
-
-![在循环中轮询值，直到状态变为 Completed](media/sap-hana-backup-storage-snapshots/image018.png)
-
-将作业详细信息存储到变量后，只需使用 PS 语法来获取第一个数组项并检索状态值。 若要完成自动化脚本，请在循环中轮询值，直到状态变为 &quot;Completed&quot;。
-
-```
-$st = Get-AzureRmRecoveryServicesBackupJobDetails -Jobid $jid | select -ExpandProperty subtasks
-$st[0] | select -ExpandProperty status
-```
 
 ## <a name="hana-license-key-and-vm-restore-via-azure-backup-service"></a>HANA 许可证密钥和通过 Azure 备份服务还原 VM
 
@@ -144,7 +126,7 @@ Azure 备份最终会允许备份单个 Azure 虚拟磁盘，以及 VM 内部的
 
 这种方法提供更大的灵活性，但无法解决本文档前面所述的问题：
 
-- 仍然必须确保 SAP HANA 处于一致状态
+- 仍然必须通过创建 SAP HANA 快照确保 SAP HANA 处于一致状态
 - 即使解除分配 VM，也无法覆盖 OS 磁盘，因为有一条错误消息指出存在租约。 这种方法只适合在删除 VM 后使用，而这又会导致生成新的唯一 VM ID，并且需要安装新的 SAP 许可证。
 
 ![可以只还原 Azure VM 的数据磁盘](media/sap-hana-backup-storage-snapshots/image021.png)

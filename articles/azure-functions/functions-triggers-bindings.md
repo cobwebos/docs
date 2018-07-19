@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/24/2018
 ms.author: tdykstra
-ms.openlocfilehash: 5e7e6608003b365d5516ca2e94a51c0710ad1125
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 1b22357b201306ec09e586bfa52fbe9a821250da
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061347"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37887464"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions 触发器和绑定概念
 
@@ -37,62 +37,6 @@ ms.locfileid: "37061347"
 使用 Azure 门户开发函数时，会在 function.json 文件中配置触发器和绑定。 门户提供此配置的 UI，但可通过更换为“高级编辑器”，直接编辑文件。
 
 当使用 Visual Studio 开发一个用于创建类库的函数时，通过使用属性修饰方法和参数来配置触发器和绑定。
-
-## <a name="supported-bindings"></a>支持的绑定
-
-[!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
-
-有关哪些绑定处于预览状态或已批准在生产环境中使用的信息，请参阅[支持的语言](supported-languages.md)。
-
-## <a name="register-binding-extensions"></a>注册绑定扩展
-
-在某些开发环境中，必须显式注册要使用的绑定。 绑定扩展在 NuGet 包中提供，且需要安装包才可注册扩展。 下表显示了注册绑定扩展的时间和方式。
-
-|开发环境 |在 <br/> Functions 1.x 中注册  |在 <br/> Functions 2.x 中注册  |
-|---------|---------|---------|
-|Azure 门户|自动|[自动，带有提示](#azure-portal-development)|
-|使用 Azure Functions Core Tools 的本地环境|自动|[使用 Core Tools CLI 命令](#local-development-azure-functions-core-tools)|
-|使用 Visual Studio 2017 的 C# 类库|[使用 NuGet 工具](#c-class-library-with-visual-studio-2017)|[使用 NuGet 工具](#c-class-library-with-visual-studio-2017)|
-|使用 Visual Studio Code 的 C# 类库|不适用|[使用 .NET Core CLI](#c-class-library-with-visual-studio-code)|
-
-以下绑定类型例外，它们不需要显式注册，因为它们会在所有版本和环境中自动注册：HTTP、计时器和 Azure 存储（blob、队列和表）。 
-
-### <a name="azure-portal-development"></a>使用 Azure 门户进行开发
-
-创建函数或添加绑定时，如果触发器或绑定的扩展需要注册，则系统会显示提示。 单击“安装”注册扩展，以响应提示。 在消耗计划中，安装最多需要 10 分钟。
-
-对于给定的函数应用，只需安装每个扩展一次。 
-
-### <a name="local-development-azure-functions-core-tools"></a>使用 Azure Functions Core Tools 进行本地开发
-
-[!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
-
-<a name="local-csharp"></a>
-### <a name="c-class-library-with-visual-studio-2017"></a>使用 Visual Studio 2017 的 C# 类库
-
-在“Visual Studio 2017”中，可使用 [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) 命令从包管理器控制台安装包，如以下示例所示：
-
-```powershell
-Install-Package Microsoft.Azure.WebJobs.ServiceBus --Version <target_version>
-```
-
-用于给定绑定的包的名称在该绑定的参考文章中提供。 有关示例，请参阅[服务总线绑定参考文章的“包”部分](functions-bindings-service-bus.md#packages---functions-1x)。
-
-将示例中的 `<target_version>` 替换为特定包版本，例如 `3.0.0-beta5`。 在 [NuGet.org](https://nuget.org) 上的单个包页上列出了有效版本。与 Functions 运行时 1.x 或 2.x 对应的主版本在绑定的参考文章中指定。
-
-### <a name="c-class-library-with-visual-studio-code"></a>使用 Visual Studio Code 的 C# 类库
-
-在“Visual Studio Code”中，可在 .NET Core CLI 中，通过命令提示符使用 [dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) 命令来安装包，如以下示例所示：
-
-```terminal
-dotnet add package Microsoft.Azure.WebJobs.ServiceBus --version <target_version>
-```
-
-.NET Core CLI 只能用于 Azure Functions 2.x 开发。
-
-用于给定绑定的包的名称在该绑定的参考文章中提供。 有关示例，请参阅[服务总线绑定参考文章的“包”部分](functions-bindings-service-bus.md#packages---functions-1x)。
-
-将示例中的 `<target_version>` 替换为特定包版本，例如 `3.0.0-beta5`。 在 [NuGet.org](https://nuget.org) 上的单个包页上列出了有效版本。与 Functions 运行时 1.x 或 2.x 对应的主版本在绑定的参考文章中指定。
 
 ## <a name="example-trigger-and-binding"></a>示例触发器和绑定
 
@@ -202,6 +146,66 @@ function generateRandomId() {
      public string MobileNumber { get; set; }
  }
 ```
+
+## <a name="supported-bindings"></a>支持的绑定
+
+[!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
+
+有关哪些绑定处于预览状态或已批准在生产环境中使用的信息，请参阅[支持的语言](supported-languages.md)。
+
+## <a name="register-binding-extensions"></a>注册绑定扩展
+
+在某些开发环境中，必须显式注册要使用的绑定。 绑定扩展在 NuGet 包中提供，且需要安装包才可注册扩展。 下表显示了注册绑定扩展的时间和方式。
+
+|开发环境 |注册<br/> Functions 1.x 中注册  |注册<br/> Functions 2.x 中注册  |
+|---------|---------|---------|
+|Azure 门户|自动|[自动，带有提示](#azure-portal-development)|
+|使用 Azure Functions Core Tools 的本地环境|自动|[使用 Core Tools CLI 命令](#local-development-azure-functions-core-tools)|
+|使用 Visual Studio 2017 的 C# 类库|[使用 NuGet 工具](#c-class-library-with-visual-studio-2017)|[使用 NuGet 工具](#c-class-library-with-visual-studio-2017)|
+|使用 Visual Studio Code 的 C# 类库|不适用|[使用 .NET Core CLI](#c-class-library-with-visual-studio-code)|
+
+以下绑定类型例外，它们不需要显式注册，因为它们会在所有版本和环境中自动注册：HTTP、计时器和 Azure 存储（blob、队列和表）。 
+
+### <a name="azure-portal-development"></a>使用 Azure 门户进行开发
+
+此部分仅适用于 Functions 2.x。 绑定扩展无需在 Functions 1.x 中显式注册。
+
+创建函数或添加绑定时，如果触发器或绑定的扩展需要注册，则系统会显示提示。 单击“安装”注册扩展，以响应提示。 在消耗计划中，安装最多需要 10 分钟。
+
+对于给定的函数应用，只需安装每个扩展一次。 
+
+### <a name="local-development-azure-functions-core-tools"></a>使用 Azure Functions Core Tools 进行本地开发
+
+此部分仅适用于 Functions 2.x。 绑定扩展无需在 Functions 1.x 中显式注册。
+
+[!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
+
+<a name="local-csharp"></a>
+### <a name="c-class-library-with-visual-studio-2017"></a>使用 Visual Studio 2017 的 C# 类库
+
+在“Visual Studio 2017”中，可使用 [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) 命令从包管理器控制台安装包，如以下示例所示：
+
+```powershell
+Install-Package Microsoft.Azure.WebJobs.ServiceBus --Version <target_version>
+```
+
+用于给定绑定的包的名称在该绑定的参考文章中提供。 有关示例，请参阅[服务总线绑定参考文章的“包”部分](functions-bindings-service-bus.md#packages---functions-1x)。
+
+将示例中的 `<target_version>` 替换为特定包版本，例如 `3.0.0-beta5`。 在 [NuGet.org](https://nuget.org) 上的单个包页上列出了有效版本。与 Functions 运行时 1.x 或 2.x 对应的主版本在绑定的参考文章中指定。
+
+### <a name="c-class-library-with-visual-studio-code"></a>使用 Visual Studio Code 的 C# 类库
+
+在“Visual Studio Code”中，可在 .NET Core CLI 中，通过命令提示符使用 [dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) 命令来安装包，如以下示例所示：
+
+```terminal
+dotnet add package Microsoft.Azure.WebJobs.ServiceBus --version <target_version>
+```
+
+.NET Core CLI 只能用于 Azure Functions 2.x 开发。
+
+用于给定绑定的包的名称在该绑定的参考文章中提供。 有关示例，请参阅[服务总线绑定参考文章的“包”部分](functions-bindings-service-bus.md#packages---functions-1x)。
+
+将示例中的 `<target_version>` 替换为特定包版本，例如 `3.0.0-beta5`。 在 [NuGet.org](https://nuget.org) 上的单个包页上列出了有效版本。与 Functions 运行时 1.x 或 2.x 对应的主版本在绑定的参考文章中指定。
 
 ## <a name="binding-direction"></a>绑定方向
 
@@ -526,7 +530,7 @@ public static void Run(
       "name": "blobContents",
       "type": "blob",
       "direction": "in",
-      "path": "strings/{BlobName.FileName}.{BlobName.Extension}",
+      "path": "strings/{BlobName}",
       "connection": "AzureWebJobsStorage"
     },
     {

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: caabe0fea6286c9439e8929b054d771868dcb6f1
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 6445bcdc361bcda3beb6abcb6196fecc9c6c0024
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34272142"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952869"
 ---
 # <a name="install-and-use-solr-on-windows-based-hdinsight-clusters"></a>在基于 Windows 的 HDInsight 群集上安装并使用 Solr
 
@@ -149,21 +149,27 @@ ms.locfileid: "34272142"
            http://localhost:8983/solr/replication?command=backup
 
        应该看到如下所示的响应：
-
-           <?xml version="1.0" encoding="UTF-8"?>
-           <response>
+            
+      ```xml
+      <?xml version="1.0" encoding="UTF-8"?>
+          <response>
              <lst name="responseHeader">
                <int name="status">0</int>
                <int name="QTime">9</int>
              </lst>
-             <str name="status">OK</str>
-           </response>
-   2. 在远程会话中，导航到 {SOLR_HOME}\{Collection}\data。 对于通过示例脚本创建的群集，该目录应该是 **C:\apps\dist\solr-4.7.2\example\solr\collection1\data**。 在此位置，应该会看到使用类似于 **snapshot.* timestamp*** 的名称创建的快照文件夹。
+            <str name="status">OK</str>
+          </response>
+      ```
+      
+   2. 在远程会话中，导航到 {SOLR_HOME}\{Collection}\data。 对于通过示例脚本创建的群集，此位置应为 `C:\apps\dist\solr-4.7.2\example\solr\collection1\data`。 在此位置，应该会看到使用类似于 **snapshot.* timestamp*** 的名称创建的快照文件夹。
+   
    3. 压缩快照文件夹，并将其上传到 Azure Blob 存储。 从 Hadoop 命令行，通过使用以下命令导航到快照文件夹所在的位置：
 
-             hadoop fs -CopyFromLocal snapshot._timestamp_.zip /example/data
+      ```
+      hadoop fs -CopyFromLocal snapshot._timestamp_.zip /example/data
+      ```
 
-       此命令会将快照复制到与群集关联的默认存储帐户中容器下方的 /example/data/。
+   此命令会将快照复制到与群集关联的默认存储帐户中容器下方的 /example/data/。
 
 ## <a name="install-solr-using-aure-powershell"></a>使用 Azure PowerShell 安装 Solr
 请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell)。  此示例演示如何使用 Azure PowerShell 安装 Spark。 需要自定义脚本以使用 [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1)。

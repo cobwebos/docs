@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/11/2017
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 52d4297d2e86ad67672d38f1c527041b813f8d61
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 6190a8ee90855223779751373bf16ca3db0fe761
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34723681"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37870341"
 ---
 # <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>迁移要求在 Azure 门户中进行多重身份验证的经典策略 
 
@@ -103,8 +103,6 @@ ms.locfileid: "34723681"
 
 6. 在“新建”页的“分配”部分中单击“云应用”，打开“云应用”页。
 
-    ![条件性访问](./media/active-directory-conditional-access-azure-portal-get-started/07.png)
-
 8. 在“云应用”页上执行以下步骤：
 
     ![条件性访问](./media/active-directory-conditional-access-migration/08.png)
@@ -151,6 +149,6 @@ ms.locfileid: "34723681"
 - 有关经典策略迁移的详细信息，请参阅[在 Azure 门户中迁移经典策略](active-directory-conditional-access-migration.md)。
 
 
-- 若要了解如何配置条件性访问策略，请参阅 [Get started with conditional access in Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md)（Azure Active Directory 中的条件性访问入门）。
+- 若要了解如何配置条件访问策略，请参阅[通过 Azure Active Directory 条件访问要求特定应用必须使用 MFA](active-directory-conditional-access-app-based-mfa.md)。
 
 - 如果已准备好配置环境的条件访问策略，请参阅 [Azure Active Directory 中条件访问的最佳做法](active-directory-conditional-access-best-practices.md)。 

@@ -14,18 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/27/2018
 ms.author: jomolesk
-ms.openlocfilehash: e627019f6219509c21ca6245ee1f7f54f2e1669a
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: f58466bb4cc90823d8e75e0371b400ee674e8b5d
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "33894307"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37113225"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure 安全性和符合性蓝图 - HIPAA/HITRUST 健康数据和 AI
 
 ## <a name="overview"></a>概述
 
-**Azure 安全性和符合性蓝图 - HIPAA/HITRUST 健康数据和 AI 提供了包含 Azure PaaS 解决方案在内的一整套部署，用于演示如何在遵循行业符合性要求的情况下，安全地引入、存储、分析健康数据并与之交互。对于其数据受到监管的客户来说，本蓝图有助于他们加速采用和利用云。**
+
+  **Azure 安全性和符合性蓝图 - HIPAA/HITRUST 健康数据和 AI 提供了包含 Azure PaaS 解决方案在内的一整套部署，用于演示如何在遵循行业符合性要求的情况下，安全地引入、存储、分析健康数据并与之交互。对于其数据受到监管的客户来说，本蓝图有助于他们加速采用和利用云。**
 
 Azure 安全性和符合性蓝图 - HIPAA/HITRUST 健康数据和 AI 蓝图提供的工具和指南有助于部署安全且符合美国健康保险流通与责任法案 (HIPAA) 和健康信息信托联盟 (HITRUST) 规定的平台即服务 (PaaS) 环境，以便在安全的已部署为端到端解决方案的多层云环境中引入、存储、分析个人与非个人医疗记录并与之交互。 其中展示了常用的参考体系结构，旨在简化 Microsoft Azure 的采用。 这个规定的体系结构演示了一个解决方案，寻求通过基于云的方法减轻部署负担和成本的组织可以利用此解决方案解决其需求。
 

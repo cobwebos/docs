@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 06f5d267245311ad829a82562e740db08eb97b12
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 7f30752b2963ee2e3dd837008831ba9a38e4e9e3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212346"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043436"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bynder"></a>教程：Azure Active Directory 与 Bynder 集成
 
@@ -110,15 +110,15 @@ ms.locfileid: "36212346"
 
     ![Bynder 域和 URL 单一登录信息](./media/bynder-tutorial/tutorial_bynder_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<company name>.getbynder.com`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<company name>.getbynder.com`
     
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<company name>.getbynder.com/sso/SAML/authenticate/`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<company name>.getbynder.com/sso/SAML/authenticate/`
 
 4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
 
     ![Bynder 域和 URL 单一登录信息](./media/bynder-tutorial/tutorial_bynder_url1.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company name>.getbynder.com/login/`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<company name>.getbynder.com/login/`
 
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Bynder 客户端支持团队](https://www.bynder.com/en/support/)获取这些值。 
@@ -161,7 +161,7 @@ ms.locfileid: "36212346"
 
     ![“用户”对话框](./media/bynder-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -211,7 +211,7 @@ ms.locfileid: "36212346"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 Bynder 磁贴时，应该会自动登录 Bynder 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

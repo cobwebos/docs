@@ -10,12 +10,12 @@ ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b110f83274b2b42896bd18fb364c355ecc97a028
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 717cf6b2abfb529313699836b790bd3f07844a67
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34258254"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867947"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>使用更改跟踪解决方案跟踪环境中的更改
 
@@ -57,6 +57,7 @@ ms.locfileid: "34258254"
 |递归     | 确定在查找要跟踪的项时是否使用递归。        |
 |使用 Sudo     | 此设置决定了在查找该项时是否使用 Sudo。         |
 |链接     | 此设置决定了在遍历目录时如何处理符号链接。<br> **忽略** - 忽略符号链接，不包括引用的文件/目录。<br>**追随** - 在递归期间追随符号链接，并且包括引用的文件/目录。<br>**管理** - 追随符号链接并允许修改返回内容的处置方式。     |
+|上传所有设置的文件内容| 针对已跟踪的更改启用或关闭文件内容上传功能。 可用选项：“True”或“False”。|
 
 > [!NOTE]
 > 不建议使用“管理”链接选项。 不支持文件内容检索。
@@ -75,6 +76,13 @@ ms.locfileid: "34258254"
 |项目名称     | 要跟踪的文件的友好名称。        |
 |组     | 一个组名，用于对文件进行逻辑分组。        |
 |输入路径     | 用于查看文件的路径，例如“c:\temp\myfile.txt”       |
+|上传所有设置的文件内容| 针对已跟踪的更改启用或关闭文件内容上传功能。 可用选项：“True”或“False”。|
+
+## <a name="configure-file-content-tracking"></a>配置文件内容跟踪
+
+可以使用文件内容更改跟踪功能查看更改文件之前和之后的内容。 这适用于 Windows 和 Linux 文件，每次更改文件时，文件的内容都存储在存储帐户中，并以内联或并排的方式显示更改之前和之后的文件。 若要了解详细信息，请参阅[查看所跟踪文件的内容](change-tracking-file-contents.md)。
+
+![查看文件中的更改](./media/change-tracking-file-contents/view-file-changes.png)
 
 ### <a name="configure-windows-registry-keys-to-track"></a>配置要跟踪的 Windows 注册表项
 
@@ -125,11 +133,22 @@ ms.locfileid: "34258254"
 | Windows 注册表 | 50 分钟 |
 | Windows 文件 | 30 分钟 |
 | Linux 文件 | 15 分钟 |
-| Windows 服务 | 30 分钟 |
+| Windows 服务 | 10 秒到 30 分钟</br> 默认值：30 分钟 |
 | Linux 守护程序 | 5 分钟 |
 | Windows 软件 | 30 分钟 |
 | Linux 软件 | 5 分钟 |
 
+### <a name="windows-service-tracking"></a>Windows 服务跟踪
+
+Windows 服务的默认收集频率为 30 分钟。 若要配置该频率，请转到“更改跟踪”。 在“Windows 服务”选项卡上的“编辑设置”下，有一个滑块，可使用它将 Windows 服务的收集频率从短短 10 秒更改为长达 30 分钟。 请将滑块移至所需的频率，它会自动进行保存。
+
+![Windows 服务滑块](./media/automation-change-tracking/windowservices.png)
+
+代理仅跟踪更改，这可以优化代理的性能。 将阈值设置得过高时，如果服务还原到其原始状态，则可能错过更改。 将频率设置为较小的值可以捕获可能会错过的更改。
+
+> [!NOTE]
+> 虽然代理可以按 10 秒的间隔跟踪更改，但数据仍要在几分钟后才能显示在门户中。 对于这段时间内的更改，代理仍会对其进行跟踪和日志记录。
+  
 ### <a name="registry-key-change-tracking"></a>注册表项更改跟踪
 
 监视注册表项更改的目的是确定第三方代码和恶意软件可以激活的可扩展性点。 以下列表显示预配置的注册表项的列表。 配置了这些密钥，但未启用。 若要跟踪这些注册表项，必须启用每个项。
