@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 2d0a4df20ef513b2a6524ba92656a7f861da8458
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: c59f4291726b24b7c96bb60d0497c1578a3e4b0f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37115277"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048175"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bomgar-remote-support"></a>教程：Azure Active Directory 与 Bomgar Remote Support 的集成
 
@@ -107,7 +107,7 @@ ms.locfileid: "37115277"
 
     ![Bomgar Remote Support 域和 URL 单一登录信息](./media/bomgarremotesupport-tutorial/tutorial_bomgarremotesupport_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<SUBDOMAIN>.trafficmanager.net/saml`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<SUBDOMAIN>.trafficmanager.net/saml`
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL： `https://<SUBDOMAIN>.trafficmanager.net`
 
@@ -148,7 +148,7 @@ ms.locfileid: "37115277"
 
     ![“用户”对话框](./media/bomgarremotesupport-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -197,7 +197,7 @@ ms.locfileid: "37115277"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Bomgar Remote Support”磁贴时，应会自动登录到 Bomgar Remote Support 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

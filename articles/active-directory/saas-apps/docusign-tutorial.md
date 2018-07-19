@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 027bf154fb57e8f324757fd6b32ea6c421bbc705
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 05ec113db5fbdc0f2ea7d1f176c9be654f53a946
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229506"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053336"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-docusign"></a>教程：Azure Active Directory 与 DocuSign 的集成
 
@@ -141,7 +141,7 @@ ms.locfileid: "36229506"
    
     ![配置单一登录][56]
 
-    a. 在“名称”文本框中，为配置键入一个唯一的名称。 请不要使用空格。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，为配置键入一个唯一的名称。 请不要使用空格。
 
     b. 将 SAML 实体 ID 粘贴到“标识提供者颁发者”文本框中。
 
@@ -176,7 +176,7 @@ ms.locfileid: "36229506"
    
     ![配置单一登录][60]
    
-    a. 复制“服务提供程序颁发者 URL”，然后将其粘贴到 Azure 门户的“DocuSign 域和 URL”部分中的“标识符”文本框中，其模式如下：`https://<subdomain>.docusign.com/organization/<uniqueID>/saml2/login/sp/<uniqueID>`。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 复制“服务提供程序颁发者 URL”，然后将其粘贴到 Azure 门户的“DocuSign 域和 URL”部分中的“标识符”文本框中，其模式如下：`https://<subdomain>.docusign.com/organization/<uniqueID>/saml2/login/sp/<uniqueID>`。
    
     b. 复制“服务提供程序登录 URL”，然后将其粘贴到 Azure 门户的“DocuSign 域和 URL”部分中的“登录 URL”文本框中，其模式如下：`https://<subdomain>.docusign.com/organization/<uniqueID>/saml2/`。
 
@@ -214,7 +214,7 @@ ms.locfileid: "36229506"
  
     ![创建 Azure AD 测试用户](./media/docusign-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -261,7 +261,7 @@ ms.locfileid: "36229506"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 DocuSign 磁贴时，应该会自动登录到 DocuSign 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

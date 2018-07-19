@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 2678cf043bb4b2569555309e873ae9ce0ab64eab
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: dfbabdc7d5a02b21103ac709b8dbc89d69cde0e0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36217791"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054249"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>教程：Azure Active Directory 与多个 Amazon Web Services (AWS) 帐户的集成
 
@@ -125,7 +125,7 @@ ms.locfileid: "36217791"
     >[!TIP]
     >需要在 Azure AD 中配置用户预配以从 AWS 控制台中提取所有角色。 请参阅下文中的预配步骤。
 
-    a. 单击“添加属性”，打开“添加属性”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录 add](./media/aws-multi-accounts-tutorial/tutorial_attribute_04.png)
 
@@ -165,7 +165,7 @@ ms.locfileid: "36217791"
    
     ![配置单一登录对话框][14]
  
-    a. 对于“提供者类型”，请选择“SAML”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“提供者类型”，请选择“SAML”。
 
     b. 在“提供者名称”文本框中，键入提供者名称（例如：*WAAD*）。
 
@@ -185,7 +185,7 @@ ms.locfileid: "36217791"
     
     ![配置单一登录信任][19] 
 
-    a. 在“选择可信实体的类型”下选择“SAML 2.0 联合身份验证”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“选择可信实体的类型”下选择“SAML 2.0 联合身份验证”。
 
     b. 在“选择 SAML 2.0 提供程序”部分中，选择之前创建的 SAML 提供程序（例如：*WAAD*）
 
@@ -201,11 +201,11 @@ ms.locfileid: "36217791"
     
     ![配置单一登录审阅][34] 
 
-    a. 在“角色名称”文本框中，输入你的角色名称。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“角色名称”文本框中，输入你的角色名称。
 
     b. 在“角色说明”文本框中，输入说明。
 
-    a. 单击“创建角色”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“创建角色”。
 
     b. 创建所需数量的角色，并将其映射到标识提供者。
 
@@ -227,7 +227,7 @@ ms.locfileid: "36217791"
 
 24. 在另一个窗口中打开 [Azure AD Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)。
 
-    a. 使用租户的全局管理员/共同管理员凭据登录到 Graph 浏览器站点。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 使用租户的全局管理员/共同管理员凭据登录到 Graph 浏览器站点。
 
     b. 需要拥有足够的权限才能创建角色。 单击“修改权限”以获取所需的权限。 
 
@@ -334,7 +334,7 @@ ms.locfileid: "36217791"
 
 ![配置单一登录 Add](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_test_saml.png)
 
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

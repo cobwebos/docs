@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: afcd39e6512ac7bcb46f56df157822efa463113e
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 23a2897142f5cba90513e8b79e4cd461f1dd25b7
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448788"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054584"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>为自助密码重置自定义 Azure AD 功能
 
@@ -81,8 +81,8 @@ Active Directory 联合身份验证服务 (AD FS) 管理员可以使用[添加�
 ## <a name="next-steps"></a>后续步骤
 
 * [如何成功推出 SSPR？](howto-sspr-deployment.md)
-* [重置或更改密码](../active-directory-passwords-update-your-own-password.md)
-* [注册自助密码重置](../active-directory-passwords-reset-register.md)
+* [重置或更改密码](../user-help/active-directory-passwords-update-your-own-password.md)
+* [注册自助密码重置](../user-help/active-directory-passwords-reset-register.md)
 * [是否有许可问题？](concept-sspr-licensing.md)
 * [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
 * [哪些身份验证方法可供用户使用？](concept-sspr-howitworks.md#authentication-methods)

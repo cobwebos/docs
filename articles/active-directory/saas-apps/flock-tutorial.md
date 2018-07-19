@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 633828cc7e244dca1e43c45852910211aeda68d9
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f0bb2b336927b4279403bf87d44a9a5ef1539607
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229489"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053098"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flock"></a>教程：Azure Active Directory 与 Flock 集成
 
@@ -108,7 +108,7 @@ ms.locfileid: "36229489"
 
     ![Flock 域和 URL 单一登录信息](./media/flock-tutorial/tutorial_flock_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.flock.com/`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.flock.com/`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.flock.com/`
 
@@ -137,7 +137,7 @@ ms.locfileid: "36229489"
 
     ![Flock 配置](./media/flock-tutorial/configure2.png)
 
-    a. 在“SAML 2.0 终结点(HTTP)”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“SAML 2.0 终结点(HTTP)”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
     b. 在“标识提供者颁发者”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
 
@@ -169,7 +169,7 @@ ms.locfileid: "36229489"
 
     ![“用户”对话框](./media/flock-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -232,7 +232,7 @@ ms.locfileid: "36229489"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Flock”磁贴时，应自动登录到 Flock 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

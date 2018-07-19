@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 31b14d82142e6b229e779316b46848af28ac915b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 7372a51cda8c4f84de6cab3c0cd39ecbd1854175
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36337065"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39052476"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insight4grc"></a>教程：Azure Active Directory 与 Insight4GRC 集成
 
@@ -107,15 +107,15 @@ ms.locfileid: "36337065"
 
     ![“Insight4GRC 域和 URL”单一登录信息](./media/insight4grc-tutorial/tutorial_insight_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.Insight4GRC.com/SAML`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.Insight4GRC.com/SAML`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.Insight4GRC.com/Public/SAML/ACS.aspx`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<subdomain>.Insight4GRC.com/Public/SAML/ACS.aspx`
 
 4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
 
     ![“Insight4GRC 域和 URL”单一登录信息](./media/insight4grc-tutorial/tutorial_insight_url1.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.Insight4GRC.com/Public/Login.aspx`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.Insight4GRC.com/Public/Login.aspx`
      
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 若要获取这些值，请联系 [Insight4GRC 客户端支持团队](mailto:support.ss@rsmuk.com)。 
@@ -154,7 +154,7 @@ ms.locfileid: "36337065"
 
     ![“用户”对话框](./media/insight4grc-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -204,7 +204,7 @@ ms.locfileid: "36337065"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 如果单击访问面板中的“Insight4GRC”磁贴，应该会自动登录 Insight4GRC 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

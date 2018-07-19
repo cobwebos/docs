@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: a6b3751361b198126c2d05d1650acbf89d2bbc1b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 7285ef4bea1dccb651360520bfe8bc4289d54f8c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215794"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046033"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>教程：Azure Active Directory 与 Panorama9 的集成
 
@@ -113,7 +113,7 @@ ms.locfileid: "36215794"
 
     ![配置单一登录](./media/panorama9-tutorial/tutorial_panorama9_url.png)
 
-    a. 在“登录 URL”文本框中，键入 URL `https://dashboard.panorama9.com/saml/access/3262`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，键入 URL `https://dashboard.panorama9.com/saml/access/3262`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`http://www.panorama9.com/saml20/<tenant-name>`
 
@@ -144,7 +144,7 @@ ms.locfileid: "36215794"
    
    ![设置](./media/panorama9-tutorial/ic790025.png "设置")
    
-    a. 在“标识提供者 URL”文本框中，粘贴从 Azure 门户复制的“单一登录服务 URL”值。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识提供者 URL”文本框中，粘贴从 Azure 门户复制的“单一登录服务 URL”值。
    
     b. 在“证书指纹”文本框中，粘贴从 Azure 门户复制的证书“指纹”值。    
          
@@ -177,7 +177,7 @@ ms.locfileid: "36215794"
  
     ![创建 Azure AD 测试用户](./media/panorama9-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -245,7 +245,7 @@ ms.locfileid: "36215794"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 Panorama9 磁贴就会自动登录到 Panorama9 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

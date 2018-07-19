@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: e5c322971b182a0d837c3cf6e23df7a7df17fd35
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a1e279f9cb4eebd97b76449a7d28227c91407cb1
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222536"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053032"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-formcom"></a>教程：Azure Active Directory 与 Form.com 集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "36222536"
 
     ![Form.com 域和 URL 单一登录信息](./media/formcom-tutorial/tutorial_form.com_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.wa-form.com`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.wa-form.com`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.form.com`
 
@@ -127,7 +127,7 @@ ms.locfileid: "36222536"
     
     ![配置单一登录](./media/formcom-tutorial/tutorial_metadataurl.png)
 
-    a. 单击“复制”按钮，复制**应用联合元数据 URL** 并将其粘贴到记事本。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“复制”按钮，复制**应用联合元数据 URL** 并将其粘贴到记事本。
 
     b. 单击“证书(Base64)”，并在计算机上保存证书文件。
      
@@ -165,7 +165,7 @@ ms.locfileid: "36222536"
 
     ![“用户”对话框](./media/formcom-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -212,7 +212,7 @@ ms.locfileid: "36222536"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Form.com 磁贴时，应自动登录到 Form.com 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

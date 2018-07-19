@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2017
 ms.author: jeedes
-ms.openlocfilehash: c5a55f00273ea070d824f0b3d75fc86b4ff6be11
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 791d1d7c514815962d815925f49a03ccfa1f76f3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286885"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053668"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asc-contracts"></a>教程：Azure Active Directory 与 ASC Contracts 集成
 
@@ -112,9 +112,9 @@ ms.locfileid: "36286885"
 
     ![配置单一登录](./media/asccontracts-tutorial/tutorial_asccontracts_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.asccontracts.com/shibboleth`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.asccontracts.com/shibboleth`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.asccontracts.com/shibboleth.sso/login`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<subdomain>.asccontracts.com/shibboleth.sso/login`
 
     > [!NOTE] 
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 若要获取这些值，请联系 ASC Networks Inc. (ASC) 团队，其电话是 **613.599.6178**。
@@ -155,7 +155,7 @@ ms.locfileid: "36286885"
  
     ![创建 Azure AD 测试用户](./media/asccontracts-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -201,7 +201,7 @@ ms.locfileid: "36286885"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-当在访问面板中单击 ASC Contracts 磁贴时，应该会自动登录 ASC Contracts 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+当在访问面板中单击 ASC Contracts 磁贴时，应该会自动登录 ASC Contracts 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

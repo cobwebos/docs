@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/03/2017
 ms.author: jeedes
-ms.openlocfilehash: 647ee5f3b51b45277119d20e3375c478646cd8b0
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d19c0262205b801dd3e5723bba2a1a190eaf8b67
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36217096"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054067"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cherwell"></a>教程：Azure Active Directory 与 Cherwell 集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "36217096"
 
     ![配置单一登录](./media/cherwell-tutorial/tutorial_cherwell_url.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.cherwellondemand.com/cherwellclient`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.cherwellondemand.com/cherwellclient`
 
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新此值。 若要获取此值，请与 [Cherwell 支持团队](https://csm.cherwell.com/contact)联系。
@@ -162,7 +162,7 @@ ms.locfileid: "36217096"
  
     ![创建 Azure AD 测试用户](./media/cherwell-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -211,7 +211,7 @@ ms.locfileid: "36217096"
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 
-如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

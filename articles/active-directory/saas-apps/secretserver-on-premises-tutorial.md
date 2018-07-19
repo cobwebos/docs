@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: jeedes
-ms.openlocfilehash: c9229afd7bd8ebad85ce9e329fb11f992236bce0
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 37ae91743077a9cb9ef9b8f97747563a580fada9
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220095"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051272"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secret-server-on-premises"></a>教程：Azure Active Directory 与 Secret Server (On-Premises) 的集成
 
@@ -108,9 +108,9 @@ ms.locfileid: "36220095"
 
     ![Secret Server (On-Premises) 域和 URL 单一登录信息](./media/secretserver-on-premises-tutorial/tutorial_secretserver_url.png)
 
-    a. 在“标识符”文本框中，输入用户选择的值，例如：`https://secretserveronpremises.azure`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，输入用户选择的值，例如：`https://secretserveronpremises.azure`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SecretServerURL>/SAML/AssertionConsumerService.aspx `
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<SecretServerURL>/SAML/AssertionConsumerService.aspx `
 
     > [!NOTE]
     > 上面所示的“实体 ID”只是一个示例。可以任意选择用于在 Azure AD 中标识 Secret Server 实例的唯一值。 需要将此“实体 ID”发送到 [Secret Server (On-Premises) 客户端支持团队](https://thycotic.force.com/support/s/)，让他们在其一端进行配置。 有关详细信息，请阅读[此文](https://thycotic.force.com/support/s/article/Configuring-SAML-in-Secret-Server)。
@@ -119,7 +119,7 @@ ms.locfileid: "36220095"
 
     ![Secret Server (On-Premises) 域和 URL 单一登录信息](./media/secretserver-on-premises-tutorial/tutorial_secretserver_url1.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SecretServerURL>/login.aspx`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<SecretServerURL>/login.aspx`
      
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“回复 URL”和“注销 URL”更新这些值。 请联系 [Secret Server (On-Premises) 客户端支持团队](https://thycotic.force.com/support/s/)获取这些值。
@@ -166,7 +166,7 @@ ms.locfileid: "36220095"
 
     ![“用户”对话框](./media/secretserver-on-premises-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -213,7 +213,7 @@ ms.locfileid: "36220095"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Secret Server (On-Premises)”磁贴时，应会自动登录到 Secret Server (On-Premises) 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

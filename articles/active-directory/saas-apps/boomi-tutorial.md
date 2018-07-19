@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: jeedes
-ms.openlocfilehash: ee97eaf4624b1a34dbc66d1d4e8febab761b7b09
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e0128d4422c462d4424583306af0b30174178bac
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221472"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049246"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boomi"></a>教程：Azure Active Directory 与 Boomi 集成
 
@@ -110,9 +110,9 @@ ms.locfileid: "36221472"
 
     ![Boomi 域和 URL 单一登录信息](./media/boomi-tutorial/tutorial_boomi_url.png)
 
-    a. 在“标识符”文本框中，键入一个 URL：`https://platform.boomi.com/`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，键入一个 URL：`https://platform.boomi.com/`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://platform.boomi.com/sso/<boomi-tenant>/saml`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://platform.boomi.com/sso/<boomi-tenant>/saml`
 
     > [!NOTE] 
     > 答复 URL 值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [Boomi 支持团队](https://boomi.com/company/contact/)获取此值。
@@ -127,7 +127,7 @@ ms.locfileid: "36221472"
     | -------------- | --------------- |
     | FEDERATION_ID | user.mail |
     
-    a. 单击“添加属性”，打开“添加属性”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
     
     ![配置单一登录](./media/boomi-tutorial/tutorial_officespace_04.png)
     
@@ -159,7 +159,7 @@ ms.locfileid: "36221472"
 
     ![在应用端配置单一登录](./media/boomi-tutorial/tutorial_boomi_11.png)
 
-    a. 选中“启用 SAML 单一登录”复选框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选中“启用 SAML 单一登录”复选框。
 
     b. 单击“导入”，将已下载的证书从 Azure AD 上传到“标识提供者证书”。
     
@@ -196,7 +196,7 @@ ms.locfileid: "36221472"
 
     ![“用户”对话框](./media/boomi-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -222,7 +222,7 @@ ms.locfileid: "36221472"
 
     ![用户](./media/boomi-tutorial/tutorial_boomi_003.png "用户")
 
-    a. 在“用户电子邮件地址”文本框中，键入用户的电子邮件地址（例如 BrittaSimon@contoso.com）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“用户电子邮件地址”文本框中，键入用户的电子邮件地址（例如 BrittaSimon@contoso.com）。
     
     b. 在“名字”文本框中，键入用户的名字（如“Britta”）。
 
@@ -272,7 +272,7 @@ ms.locfileid: "36221472"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Boomi”磁贴时，用户应自动登录到 Boomi 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

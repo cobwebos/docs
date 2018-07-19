@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 14ac5aab1488c86949f44f712d80966719f60c4c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: c2d8470581fb5bb25b6c1271079508b0e951694d
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231434"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046866"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intime"></a>教程：Azure Active Directory 与 InTime 的集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "36231434"
 
     ![InTime 域和 URL 单一登录信息](./media/intime-tutorial/tutorial_intime_url.png)
 
-    a. 在“登录 URL”文本框中，键入 URL：`https://intime6.intimesoft.com/mytime/login/login.xhtml`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，键入 URL：`https://intime6.intimesoft.com/mytime/login/login.xhtml`
 
     b. 在“标识符”文本框中，键入 URL：`https://auth.intimesoft.com/auth/realms/master`
 
@@ -160,7 +160,7 @@ ms.locfileid: "36231434"
 
     ![“用户”对话框](./media/intime-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -206,7 +206,7 @@ ms.locfileid: "36231434"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 InTime 磁贴时，应当会显示 InTime 应用程序的登录页。 单击“登录”按钮，然后一系列 IdP 将显示在按钮列表中。 单击由 [InTime 支持团队](mailto:hdollard@intimesoft.com)提供的“IDP 名称”，登录到 InTime 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+单击访问面板中的 InTime 磁贴时，应当会显示 InTime 应用程序的登录页。 单击“登录”按钮，然后一系列 IdP 将显示在按钮列表中。 单击由 [InTime 支持团队](mailto:hdollard@intimesoft.com)提供的“IDP 名称”，登录到 InTime 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

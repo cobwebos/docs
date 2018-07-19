@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: fca447b24a299fed116356ca0f985020e079344b
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: dc07dce24152f9f58253ad96c80f6b004cd1198b
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36317596"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050777"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-11-token-enabled-lob-app"></a>教程：Azure Active Directory 与 SAML 1.1 Token enabled LOB App 的集成
 
@@ -108,9 +108,9 @@ ms.locfileid: "36317596"
 
     ![SAML 1.1 Token enabled LOB App 域和 URL 单一登录信息](./media/saml-tutorial/tutorial_saml_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://your-app-url`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://your-app-url`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://your-app-url`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL： `https://your-app-url`
      
     > [!NOTE] 
     > 这些不是实际值。 请将这些值替换为应用程序特定的 URL。  
@@ -153,7 +153,7 @@ ms.locfileid: "36317596"
 
     ![“用户”对话框](./media/saml-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -200,7 +200,7 @@ ms.locfileid: "36317596"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“SAML 1.1 Token enabled LOB App”磁贴时，应会自动登录到 SAML 1.1 Token enabled LOB App 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

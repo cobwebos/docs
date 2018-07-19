@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: jeedes
-ms.openlocfilehash: c1bf5ba68d8242a0ef0831987ac6fd041c62ace9
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: eafd7998e5bc21a539b6709794fe3cd70d9e3179
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969361"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054312"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>教程：Azure Active Directory 与 Arc Publishing - SSO 的集成
 
@@ -116,7 +116,7 @@ ms.locfileid: "38969361"
 
     ![Arc Publishing - SSO 域和 URL 单一登录信息](./media/arc-tutorial/tutorial_arc_url1.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://arcpublishing-<Customer>.okta.com/sso/saml2/<Unique ID>`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://arcpublishing-<Customer>.okta.com/sso/saml2/<Unique ID>`
      
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Arc Publishing - SSO 客户端支持团队](mailto:inf@washpost.com)获取这些值。 
@@ -239,7 +239,7 @@ ms.locfileid: "38969361"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 Arc Publishing - SSO 磁贴时，应会自动登录到 Arc Publishing - SSO 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

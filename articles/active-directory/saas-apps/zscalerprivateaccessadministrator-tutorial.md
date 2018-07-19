@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 25517f6f04b43152c72ad1f223e12456aac89a00
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0be7f71f5995be269bb630491003678e0640699b
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221387"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39055162"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>教程：Azure Active Directory 与 Zscaler Private Access Administrator 的集成
 
@@ -108,9 +108,9 @@ ms.locfileid: "36221387"
 
     ![Zscaler Private Access Administrator 域和 URL 单一登录信息](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.private.zscaler.com/auth/metadata`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.private.zscaler.com/auth/metadata`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.private.zscaler.com/auth/sso`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<subdomain>.private.zscaler.com/auth/sso`
 
     c. 选中“显示高级 URL 设置”
 
@@ -118,7 +118,7 @@ ms.locfileid: "36221387"
 
 4.  如果要在“SP 发起的模式”下配置应用程序，请执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.private.zscaler.com/auth/sso`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.private.zscaler.com/auth/sso`
 
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 若要获取这些值，请联系 [Zscaler Private Access Administrator 支持团队](https://help.zscaler.com/zpa-submit-ticket)。
@@ -145,7 +145,7 @@ ms.locfileid: "36221387"
  
     ![Zscaler Private Access Administrator idpselect](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_idpselect.png)
 
-    a. 在“IdP 元数据文件上传”字段中单击“选择文件”，上传从 Azure AD 下载的元数据文件。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“IdP 元数据文件上传”字段中单击“选择文件”，上传从 Azure AD 下载的元数据文件。
 
     b. 它会从 Azure AD 读取 **IdP 元数据**，并填充所有字段信息，如下所示。
 
@@ -184,7 +184,7 @@ ms.locfileid: "36221387"
 
     ![“用户”对话框](./media/zscalerprivateaccessadministrator-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -216,7 +216,7 @@ ms.locfileid: "36221387"
 
     ![Zscaler Private Access Administrator 用户管理](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_useradmin.png)
 
-    a. 在“用户名”文本框中，键入用户的电子邮件地址（例如 **BrittaSimon@contoso.com**）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“用户名”文本框中，键入用户的电子邮件地址（例如 **BrittaSimon@contoso.com**）。
 
     b. 在“密码”文本框中，键入密码。
 
@@ -267,7 +267,7 @@ ms.locfileid: "36221387"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击“Zscaler Private Access Administrator”磁贴时，应会自动登录到 Zscaler Private Access Administrator 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: fdcbf8efa9a8d77fba30c8cec3d8ee30506fe7d8
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ecbe627697fc4f8b5fbfecf96c3cb65d9ffe4607
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223222"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054346"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-123contactform"></a>教程：Azure Active Directory 与 123ContactForm 的集成
 
@@ -112,15 +112,15 @@ ms.locfileid: "36223222"
 
     ![配置单一登录](./media/123contactform-tutorial/url1.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.123contactform.com/saml/azure_ad/<tenant_id>/metadata`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://www.123contactform.com/saml/azure_ad/<tenant_id>/metadata`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://www.123contactform.com/saml/azure_ad/<tenant_id>/acs`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://www.123contactform.com/saml/azure_ad/<tenant_id>/acs`
 
 4. 如果要在“SP 发起的模式”下配置应用程序，请执行以下步骤：
 
     ![配置单一登录](./media/123contactform-tutorial/url2.png)
 
-    a. 单击“显示高级 URL 设置”选项
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“显示高级 URL 设置”选项
 
     b. 在“登录 URL”文本框中，键入 URL：`https://www.123contactform.com/saml/azure_ad/<tenant_id>/sso`
 
@@ -139,7 +139,7 @@ ms.locfileid: "36223222"
 
     ![配置单一登录](./media/123contactform-tutorial/submit.png) 
 
-    a. 在“电子邮件”文本框中，键入用户的电子邮件，如 **BrittaSimon@Contoso.com**：
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“电子邮件”文本框中，键入用户的电子邮件，如 **BrittaSimon@Contoso.com**：
 
     b. 单击“上传”，然后浏览已从 Azure 门户下载的元数据 XML 文件。
 
@@ -149,7 +149,7 @@ ms.locfileid: "36223222"
     
     ![配置单一登录](./media/123contactform-tutorial/url3.png)
 
-    a. 如果想要在“IDP 发起的模式”下配置应用程序，请复制实例的“标识符”值，并将其粘贴在 Azure 门户的“123ContactForm 域和 URL”部分的“标识符”文本框中。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 如果想要在“IDP 发起的模式”下配置应用程序，请复制实例的“标识符”值，并将其粘贴在 Azure 门户的“123ContactForm 域和 URL”部分的“标识符”文本框中。
     
     b. 如果想要在“IDP 发起的模式”下配置应用程序，请复制实例的“答复 URL”值，并将其粘贴在 Azure 门户的“123ContactForm 域和 URL”部分中的“答复 URL”文本框中。
 
@@ -182,7 +182,7 @@ ms.locfileid: "36223222"
  
     ![创建 Azure AD 测试用户](./media/123contactform-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -229,7 +229,7 @@ ms.locfileid: "36223222"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 123ContactForm 磁贴时，应当会自动登录到 123ContactForm 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

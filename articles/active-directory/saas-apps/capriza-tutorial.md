@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 250e9d6f4d5c3148f1e960a7683ba2417605ab65
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 95f8d4561855e31f6bbcfa03a2db7931265c3524
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212506"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048158"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-capriza-platform"></a>教程：Azure Active Directory 与 Capriza Platform 集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "36212506"
 
     ![配置单一登录](./media/capriza-tutorial/tutorial_caprizaplatform_url.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.capriza.com/<tenantid>`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.capriza.com/<tenantid>`
 
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新此值。 请联系 [Capriza Platform 客户端支持团队](mailTo:support@capriza.com)获取此值。 
@@ -157,7 +157,7 @@ ms.locfileid: "36212506"
  
     ![创建 Azure AD 测试用户](./media/capriza-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -205,7 +205,7 @@ ms.locfileid: "36212506"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击 Capriza Platform 磁贴时，应该会自动登录到 Capriza 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+在访问面板中单击 Capriza Platform 磁贴时，应该会自动登录到 Capriza 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

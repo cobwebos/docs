@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 36c7bfeece12fe2bb2738e50de03ba2c8fc07bfa
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: adad60611f1447b78173368ed137205f077cb8b7
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37111940"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047804"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>教程：Azure Active Directory 与 Coupa 的集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "37111940"
 
     ![Coupa 域和 URL 单一登录信息](./media/coupa-tutorial/tutorial_coupa_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.coupahost.com`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.coupahost.com`
 
     > [!NOTE]
     > 登录 URL 值不是实际值。 使用实际登录 URL 更新此值。 请联系 [Coupa 客户端支持团队](https://success.coupa.com/Support/Contact_Us?)获取此值。
@@ -149,7 +149,7 @@ ms.locfileid: "37111940"
 
     ![Coupa SP 元数据](./media/coupa-tutorial/ic791901.png "Coupa SP 元数据")
 
-    a. 选择“使用 SAML 进行登录”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“使用 SAML 进行登录”。
 
     b. 单击“浏览”上传从 Azure 门户下载的元数据。
 
@@ -179,7 +179,7 @@ ms.locfileid: "37111940"
 
     ![“用户”对话框](./media/coupa-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -209,7 +209,7 @@ ms.locfileid: "37111940"
 
    ![用户详细信息](./media/coupa-tutorial/ic791910.png "用户详细信息")
 
-   a. 将要预配的有效 Azure Active Directory 帐户的**登录名**、**名字**、**姓氏**、**单一登录 ID**、**电子邮件**属性键入到相关文本框中。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将要预配的有效 Azure Active Directory 帐户的**登录名**、**名字**、**姓氏**、**单一登录 ID**、**电子邮件**属性键入到相关文本框中。
 
    b. 单击“创建”。
 
@@ -255,7 +255,7 @@ ms.locfileid: "37111940"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 Coupa 磁贴时，应该会自动登录 Coupa 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

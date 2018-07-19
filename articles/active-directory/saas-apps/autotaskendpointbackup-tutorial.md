@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: jeedes
-ms.openlocfilehash: 0cbdb297f7f92c247295f11df459fe682ccebf47
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4c5284fbddc9808f54d49419cf1a6d7c5ae06b06
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220561"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053890"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-endpoint-backup"></a>教程：Azure Active Directory 与 Autotask Endpoint Backup 集成
 
@@ -109,9 +109,9 @@ ms.locfileid: "36220561"
 
     ![Autotask Endpoint Backup 域和 URL 单一登录信息](./media/autotaskendpointbackup-tutorial/tutorial_autotaskendpointbackup_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.backup.autotask.net/singlesignon/saml/metadata`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.backup.autotask.net/singlesignon/saml/metadata`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.backup.autotask.net/singlesignon/saml/SSO`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<subdomain>.backup.autotask.net/singlesignon/saml/SSO`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 若要获取这些值，请与 [Autotask Endpoint Backup 客户端支持团队](https://backup.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm)联系。
@@ -150,7 +150,7 @@ ms.locfileid: "36220561"
 
     ![“用户”对话框](./media/autotaskendpointbackup-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -197,7 +197,7 @@ ms.locfileid: "36220561"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Autotask Endpoint Backup”磁贴时，应自动登录到 Autotask Endpoint Backup 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

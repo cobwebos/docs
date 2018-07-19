@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 925d4b0d8c116887c14d22f821500273daefba40
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 245482ec708534a8a6df2efaac193c6bb2e26397
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218588"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39055553"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workpath"></a>教程：Azure Active Directory 与 Workpath 的集成
 
@@ -112,15 +112,15 @@ ms.locfileid: "36218588"
 
     ![配置单一登录](./media/workpath-tutorial/tutorial_workpath_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://api.workpath.com/v1/saml/metadata/<instancename>`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://api.workpath.com/v1/saml/metadata/<instancename>`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://api.workpath.com/v1/saml/assert/<instancename>`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://api.workpath.com/v1/saml/assert/<instancename>`
 
 4. 选中“显示高级 URL 设置”。 如果要在“SP”发起的模式下配置应用程序，请执行以下步骤：
 
     ![配置单一登录](./media/workpath-tutorial/tutorial_workpath_url1.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.workpath.com/ `
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.workpath.com/ `
 
     > [!NOTE] 
     > 这些不是实际值。 使用实际登录 URL、标识符和回复 URL 更新这些值。 若要获取这些值，请联系 [Workpath 支持团队](https://help.workpath.com)。
@@ -136,7 +136,7 @@ ms.locfileid: "36218588"
     | first_name | user.givenname |
     | last_name | user.surname |
     
-    a. 单击“添加属性”，打开“添加属性”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录](./media/workpath-tutorial/tutorial_attribute_04.png)
 
@@ -192,7 +192,7 @@ ms.locfileid: "36218588"
  
     ![创建 Azure AD 测试用户](./media/workpath-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -240,7 +240,7 @@ Workpath 支持实时用户预配。 进行身份验证后，会自动在应用�
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击“Workpath”磁贴，即可自动登录到 Workpath 应用程序。
-有关访问面板的详细信息，请参阅 [introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

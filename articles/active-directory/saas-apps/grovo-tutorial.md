@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2018
 ms.author: jeedes
-ms.openlocfilehash: f43a0270a1c9211c71f92311c3c024b14bd4e77a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b5ab8a87fe3075951b3fb9935c9a06d9c99e3f85
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230482"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053380"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-grovo"></a>教程：Azure Active Directory 与 Grovo 集成
 
@@ -110,15 +110,15 @@ ms.locfileid: "36230482"
 
     ![Grovo 域和 URL 单一登录信息](./media/grovo-tutorial/tutorial_grovo_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.grovo.com/sso/saml2/metadata`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.grovo.com/sso/saml2/metadata`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.grovo.com/sso/saml2/saml-assertion`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<subdomain>.grovo.com/sso/saml2/saml-assertion`
 
 4. 选中“显示高级 URL 设置”，执行以下步骤：
 
     ![Grovo 域和 URL 单一登录信息](./media/grovo-tutorial/tutorial_grovo_url1.png)
 
-    a. 在“中继状态”文本框中，使用以下格式键入 URL：`https://<subdomain>.grovo.com`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“中继状态”文本框中，使用以下格式键入 URL：`https://<subdomain>.grovo.com`
 
     b. 如果要在“SP”发起的模式下配置应用程序，请执行以下步骤：
 
@@ -142,7 +142,7 @@ ms.locfileid: "36230482"
     | 电子邮件地址       | user.mail    |
     | employeeID          | user.employeeid |
 
-    a. 单击“添加属性”，打开“添加属性”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录 Add](./media/grovo-tutorial/tutorial_attribute_04.png)
 
@@ -183,7 +183,7 @@ ms.locfileid: "36230482"
 
     ![Grovo 配置](./media/grovo-tutorial/tutorial_grovo_saml.png)
 
-    a. 将从 Azure 门户复制的“SAML 实体 ID”值粘贴到“实体 ID”文本框中。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将从 Azure 门户复制的“SAML 实体 ID”值粘贴到“实体 ID”文本框中。
 
     b. 在“单一登录服务终结点”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
@@ -191,7 +191,7 @@ ms.locfileid: "36230482"
     
     d. 在记事本中打开从 Azure 门户下载的 **Base64 编码证书**，将其粘贴到“公钥”文本框中。
 
-    e. 单击“资源组名称” 的 Azure 数据工厂。
+    e. 单击“下一步”。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -220,7 +220,7 @@ ms.locfileid: "36230482"
 
     ![“用户”对话框](./media/grovo-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -269,7 +269,7 @@ ms.locfileid: "36230482"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 Grovo 磁贴时，应会自动登录到 Grovo 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

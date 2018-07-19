@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: fc8918ed2901d2f443b94bac8587e24c3f04eeec
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 6362bcb701b444c8cd71b270222ce4f87b4cc2e3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308741"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39055852"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>教程：Azure Active Directory 与 vxMaintain 集成
 
@@ -106,7 +106,7 @@ ms.locfileid: "36308741"
 
     ![“vxMaintain 域和 URL”部分](./media/vxmaintain-tutorial/tutorial_vxmaintain_url.png)
 
-    a. 在“标识符”框中，键入包含 `https://<company name>.verisae.com` 语句的 URL
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”框中，键入包含 `https://<company name>.verisae.com` 语句的 URL
 
     b. 在“回复 URL”框中，键入具有以下语法的 URL：`https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`
 
@@ -151,7 +151,7 @@ ms.locfileid: "36308741"
  
     ![“用户”对话框](./media/vxmaintain-tutorial/create_aaduser_04.png) 
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入测试用户 Britta Simon 的电子邮件地址。
 
@@ -195,7 +195,7 @@ ms.locfileid: "36308741"
 
 选择“访问面板”中的“vxMaintain”磁贴时，会自动登录到 vxMaintain 应用程序。
 
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="next-steps"></a>后续步骤
 

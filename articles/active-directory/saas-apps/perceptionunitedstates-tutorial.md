@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: e4f0fe0399b1230a27460df1718223736176ff01
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: c027aa3d980d22e60c24db68aceb49fbef59d101
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228214"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046172"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>教程：Azure Active Directory 与 Perception United States (Non-UltiPro) 的集成
 
@@ -110,9 +110,9 @@ ms.locfileid: "36228214"
 
     ![Perception United States (Non-UltiPro) 域和 URL 单一登录信息](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_url.png)
 
-    a. 在“标识符”文本框中，键入 URL：`https://perception.kanjoya.com/sp`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，键入 URL：`https://perception.kanjoya.com/sp`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://perception.kanjoya.com/sso?idp=<entity_id>`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://perception.kanjoya.com/sso?idp=<entity_id>`
 
     > [!NOTE] 
     > 此值不是真实值。 用户将使用实际的回复 URL 更新该值（本教程稍后将会介绍）。
@@ -127,7 +127,7 @@ ms.locfileid: "36228214"
 
 6. 在“Perception United States (Non-UltiPro)配置”部分中，单击“配置 Perception United States (Non-UltiPro)”打开“配置登录”窗口。 从“快速参考”部分复制“SAML 实体 ID”。
 
-    a. **Perception United States (Non-UltiPro)** 应用程序要求对复制的“SAML 实体 ID”值进行 URL 编码。 若要获取 URI 编码值，请使用以下链接：**http://www.url-encode-decode.com/**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **Perception United States (Non-UltiPro)** 应用程序要求对复制的“SAML 实体 ID”值进行 URL 编码。 若要获取 URI 编码值，请使用以下链接：**http://www.url-encode-decode.com/**。
 
     b. 获取 URI 编码值之后，请将它与下面所述的“回复 URL”合并：
 
@@ -147,7 +147,7 @@ ms.locfileid: "36228214"
 
     ![Perception United States (Non-UltiPro) 用户](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_account.png)
 
-    a. 在“公司名称”文本框中，键入**公司**的名称。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“公司名称”文本框中，键入**公司**的名称。
     
     b. 在“帐户名”文本框中，键入**帐户**的名称。
 
@@ -159,7 +159,7 @@ ms.locfileid: "36228214"
 
     ![Perception United States (Non-UltiPro) SSO 配置](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_ssoconfig.png)
 
-    a. 选择“电子邮件”作为“SAML NameID 类型”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“电子邮件”作为“SAML NameID 类型”。
 
     b. 在“SSO 配置名称”文本框中，键入**配置**的名称。
     
@@ -199,7 +199,7 @@ ms.locfileid: "36228214"
 
     ![“用户”对话框](./media/perceptionunitedstates-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -246,7 +246,7 @@ ms.locfileid: "36228214"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Perception United States (Non-UltiPro) 磁贴时，应会自动登录到 Perception United States (Non-UltiPro) 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 
