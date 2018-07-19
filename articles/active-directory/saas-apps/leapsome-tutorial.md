@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: jeedes
-ms.openlocfilehash: b23a93db7912aa25b420157241c41533f4f48a27
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 4b2c23745a5e624bcf668dfbfe5d085392d7a583
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939703"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39052445"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-leapsome"></a>教程：Azure Active Directory 与 Leapsome 集成
 
@@ -107,15 +107,15 @@ ms.locfileid: "36939703"
 
     ![“Leapsome 域和 URL”单一登录信息](./media/leapsome-tutorial/tutorial_leapsome_url.png)
 
-    a. 在“标识符”文本框中，键入一个 URL：`https://www.leapsome.com`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，键入一个 URL：`https://www.leapsome.com`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://www.leapsome.com/api/users/auth/saml/<CLIENTID>/assert`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://www.leapsome.com/api/users/auth/saml/<CLIENTID>/assert`
 
 4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
 
     ![“Leapsome 域和 URL”单一登录信息](./media/leapsome-tutorial/tutorial_leapsome_url1.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.leapsome.com/api/users/auth/saml/<CLIENTID>/login`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://www.leapsome.com/api/users/auth/saml/<CLIENTID>/login`
      
     > [!NOTE] 
     > 上面的回复 URL 和登录 URL 不是实际值。 将使用实际值更新这些值（本教程稍后将会介绍）。
@@ -136,7 +136,7 @@ ms.locfileid: "36939703"
     > [!Note]
     > 图片属性值不是实际值。 请使用实际图片 URL 更新此值。 若要获取此值，请联系 [Leapsome 客户端支持团队](mailto:support@leapsome.com)。
     
-    a. 单击“添加属性”，打开“添加属性”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录](./media/leapsome-tutorial/tutorial_attribute_04.png)
 
@@ -172,7 +172,7 @@ ms.locfileid: "36939703"
     
     ![Leapsome saml](./media/leapsome-tutorial/tutorial_leapsome_samlsettings.png)
 
-    a. 选中“启用基于 SAML 的单一登录”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选中“启用基于 SAML 的单一登录”。
 
     b. 将“登录 URL (指引用户开始登录)”值复制并粘贴到 Azure 门户上“Leapsome 域和 URL”部分中的“登录 URL”文本框。
 
@@ -208,7 +208,7 @@ ms.locfileid: "36939703"
 
     ![“用户”对话框](./media/leapsome-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -255,7 +255,7 @@ ms.locfileid: "36939703"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 如果单击访问面板中的“Leapsome”磁贴，应该会自动登录 Leapsome 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

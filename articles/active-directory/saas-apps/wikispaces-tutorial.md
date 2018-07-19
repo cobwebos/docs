@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 334dd3b2f126d42c9c71f5fabb3515a68eb52c57
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 920777aa56d9ea9c619815b99b234b66bd676b44
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227313"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050565"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>教程：Azure Active Directory 与 Wikispaces 的集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "36227313"
 
     ![配置单一登录](./media/wikispaces-tutorial/tutorial_wikispaces_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.wikispaces.net`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.wikispaces.net`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://session.wikispaces.net/<instancename>`
 
@@ -155,7 +155,7 @@ ms.locfileid: "36227313"
  
     ![创建 Azure AD 测试用户](./media/wikispaces-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -182,7 +182,7 @@ ms.locfileid: "36227313"
    
     ![邀请人员](./media/wikispaces-tutorial/ic787208.png "邀请人员")
    
-    a. 在相关文本框中键入要预配的有效 AAD 帐户的“用户名或电子邮件地址”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在相关文本框中键入要预配的有效 AAD 帐户的“用户名或电子邮件地址”。
    
     b. 单击“Send”。  
       
@@ -227,7 +227,7 @@ ms.locfileid: "36227313"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Wikispaces 磁贴时，应当会自动登录 Wikispaces 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

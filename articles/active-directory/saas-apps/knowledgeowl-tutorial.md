@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 95e8199ab57bcc5ba617403f1551da21a7625885
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e4d86fc2e29c4d93567bedd045d57cd8d4e22cf5
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221404"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39052428"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-knowledgeowl"></a>教程：Azure Active Directory 与 KnowledgeOwl 集成
 
@@ -108,7 +108,7 @@ ms.locfileid: "36221404"
 
     ![KnowledgeOwl 域和 URL 单一登录信息](./media/knowledgeowl-tutorial/tutorial_knowledgeowl_url.png)
 
-    a. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
     |||
     |-|-|
     | `https://app.knowledgeowl.com/sp`|
@@ -154,7 +154,7 @@ ms.locfileid: "36221404"
     | ------------------- | -------------------- | -----|
     | ssoid | user.mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
     
-    a. 单击“添加属性”，打开“添加属性”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
     
     ![配置单一登录](./media/knowledgeowl-tutorial/tutorial_attribute_04.png)
 
@@ -190,7 +190,7 @@ ms.locfileid: "36221404"
     
     ![KnowledgeOwl 配置](./media/knowledgeowl-tutorial/configure2.png)
 
-    a. 选择“启用 SAML SSO”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“启用 SAML SSO”。
 
     b. 复制“SP 实体 ID”值并将其粘贴到 Azure 门户上“KnowledgeOwl 域和 URL”部分的“标识符(实体 ID)”中。
 
@@ -242,7 +242,7 @@ ms.locfileid: "36221404"
 
     ![“用户”对话框](./media/knowledgeowl-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -291,7 +291,7 @@ ms.locfileid: "36221404"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 KnowledgeOwl 磁贴时，应自动登录到 KnowledgeOwl 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

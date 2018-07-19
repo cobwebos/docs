@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: jeedes
-ms.openlocfilehash: ee38ea88ef5f74e4e5a9a78f5253812ecc27698f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 36668708cc787e7d515efdaa1c2038b967a74093
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224090"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051721"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proofpoint-on-demand"></a>教程：Azure Active Directory 与 Proofpoint on Demand 的集成
 
@@ -110,11 +110,11 @@ ms.locfileid: "36224090"
 
     ![Proofpoint on Demand 域和 URL 单一登录信息](./media/proofpoint-ondemand-tutorial/tutorial_proofpointondemand_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<hostname>.pphosted.com/ppssamlsp_hostname`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<hostname>.pphosted.com/ppssamlsp_hostname`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<hostname>.pphosted.com/ppssamlsp`
 
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<hostname>.pphosted.com:portnumber/v1/samlauth/samlconsumer`
+    c. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<hostname>.pphosted.com:portnumber/v1/samlauth/samlconsumer`
     
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Proofpoint on Demand 客户端支持团队](https://www.proofpoint.com/us/support-services)获取这些值。
@@ -160,7 +160,7 @@ ms.locfileid: "36224090"
 
     ![“用户”对话框](./media/proofpoint-ondemand-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -207,7 +207,7 @@ ms.locfileid: "36224090"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Proofpoint on Demand”磁贴时，用户应自动登录到 Proofpoint on Demand 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 9168b58cda54fa5de497ba331e1e4995dbc4d4e7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 9f1db693ac75d7ab4b9776d60f63a0ca7524f760
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220527"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050178"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>教程：Azure Active Directory 与 Zoho One 的集成
 
@@ -108,9 +108,9 @@ ms.locfileid: "36220527"
 
     ![Zoho One 域和 URL 单一登录信息](./media/zohoone-tutorial/tutorial_zohoone_url.png)
 
-    a. 在“标识符(实体 ID)”文本框中，键入 URL：`one.zoho.com`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符(实体 ID)”文本框中，键入 URL：`one.zoho.com`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://accounts.zoho.com/samlresponse/<saml-identifier>`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://accounts.zoho.com/samlresponse/<saml-identifier>`
 
     c. 选中“显示高级 URL 设置”。
 
@@ -118,7 +118,7 @@ ms.locfileid: "36220527"
 
 4. 如果要在 **SP** 发起的模式下配置应用程序，请执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://accounts.zoho.com/samlauthrequest/<domain_name>?serviceurl=https://one.zoho.com`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://accounts.zoho.com/samlauthrequest/<domain_name>?serviceurl=https://one.zoho.com`
      
     > [!NOTE] 
     > 上面的**回复 URL** 和**登录 URL** 不是实际值。 本教程稍后将介绍如何使用实际的回复 URL 和登录 URL 来更新该值。 
@@ -145,7 +145,7 @@ ms.locfileid: "36220527"
 
     ![Zoho One 登录](./media/zohoone-tutorial/tutorial_zohoone_save.png)
 
-    a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
     b. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
 
@@ -165,7 +165,7 @@ ms.locfileid: "36220527"
 
     ![Zoho One 添加域](./media/zohoone-tutorial/tutorial_zohoone_adddomain.png)
 
-    a. 在“域名”文本框中，键入域，例如 **contoso.com**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“域名”文本框中，键入域，例如 **contoso.com**。
 
     b. 单击 **“添加”**。
 
@@ -196,7 +196,7 @@ ms.locfileid: "36220527"
 
     ![“用户”对话框](./media/zohoone-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -220,7 +220,7 @@ ms.locfileid: "36220527"
 
     ![Zoho One 添加用户](./media/zohoone-tutorial/tutorial_zohoone_adduser.png)
     
-    a. 在“姓名”文本框中，输入用户名，例如 Britta Simon。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”文本框中，输入用户名，例如 Britta Simon。
     
     b. 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如 **brittasimon@contoso.com**。
 
@@ -264,7 +264,7 @@ ms.locfileid: "36220527"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Zoho One 磁贴时，应当会自动登录到 Zoho One 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

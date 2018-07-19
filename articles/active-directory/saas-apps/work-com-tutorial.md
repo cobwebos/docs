@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 143cf41f597050cb27b97ff2584860a6c22aae74
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f51f9eff7a2ab0dd7ca466931f9de78355b917c0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213529"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050718"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>教程：Azure Active Directory 与 Work.com 的集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "36213529"
 
     ![“Work.com 域和 URL”部分](./media/work-com-tutorial/tutorial_work-com_url.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`http://<companyname>.my.salesforce.com`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `http://<companyname>.my.salesforce.com`
 
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新此值。 请联系 [Work.com 客户端支持团队](https://help.salesforce.com/articleView?id=000159855&type=3)获取此值。 
@@ -156,7 +156,7 @@ ms.locfileid: "36213529"
     
     ![已启用 SAML](./media/work-com-tutorial/ic781026.png "已启用 SAML")
     
-    a. 选择“已启用 SAML”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“已启用 SAML”。
     
     b. 单击“新建” 。
 
@@ -164,7 +164,7 @@ ms.locfileid: "36213529"
     
     ![SAML 单一登录设置](./media/work-com-tutorial/ic794114.png "SAML Single Sign-On Settings")
     
-    a. 在“名称”文本框中，键入配置名称。  
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入配置名称。  
        
     > [!NOTE]
     > 提供“名称”值时会自动填充“API 名称”文本框。
@@ -226,7 +226,7 @@ ms.locfileid: "36213529"
  
     ![“用户”对话框页](./media/work-com-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -255,7 +255,7 @@ ms.locfileid: "36213529"
    
     ![用户编辑](./media/work-com-tutorial/ic794118.png "用户编辑")
    
-    a. 在“名字”文本框中，键入用户的**名字** (**Britta**)。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名字”文本框中，键入用户的**名字** (**Britta**)。
     
     b. 在“姓氏”文本框中，键入用户的**姓氏** (**Simon**)。
     
@@ -311,7 +311,7 @@ ms.locfileid: "36213529"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击“Work.com”磁贴时，应会自动登录到 Work.com 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

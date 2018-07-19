@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 8266da9c6b7aaa0aea2cd5cefb73febc090f3ba5
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 3c0c91e293f04665bc284daa4f496b9bff74aa3c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214886"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051921"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moxtra"></a>教程：Azure Active Directory 与 Moxtra 的集成
 
@@ -129,7 +129,7 @@ ms.locfileid: "36214886"
     > [!Note]
     > idpid 属性的值不是真实值。 可以从“Moxtra 配置”下的“快速参考”部分获取实际值。
     
-    a. 单击“添加属性”，打开“添加属性”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录](./media/moxtra-tutorial/tutorial_attribute_04.png)
 
@@ -163,7 +163,7 @@ ms.locfileid: "36214886"
    
     ![配置单一登录](./media/moxtra-tutorial/tutorial_moxtra_08.png)   
  
-    a. 在“名称”文本框中，键入配置名称（例如：*SAML*）。 
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入配置名称（例如：*SAML*）。 
   
     b. 在“IdP 实体 ID”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。 
  
@@ -208,7 +208,7 @@ ms.locfileid: "36214886"
  
     ![创建 Azure AD 测试用户](./media/moxtra-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -230,7 +230,7 @@ ms.locfileid: "36214886"
 
 3. 在“添加用户”对话框中，执行以下步骤：
   
-    a. 在“名字”文本框中，键入“Britta”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名字”文本框中，键入“Britta”。
   
     b. 在“姓氏”文本框中，键入“Simon”。
   
@@ -279,7 +279,7 @@ ms.locfileid: "36214886"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 Moxtra 磁贴时，应当会自动登录到 Moxtra 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
