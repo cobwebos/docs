@@ -1,6 +1,6 @@
 ---
-title: 在本地开发并运行 Azure Functions | Microsoft Docs
-description: 了解如何在本地计算机上对 Azure 函数进行编码和测试，然后在 Azure Functions 中运行。
+title: 使用 Azure Functions Core Tools | Microsoft Docs
+description: 了解如何通过本地计算机上的命令提示符或终端编写和测试 Azure 函数，然后在 Azure Functions 中运行这些函数。
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -12,30 +12,34 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 06/03/2018
+ms.date: 06/26/2018
 ms.author: glenga
-ms.openlocfilehash: 5613b6b30d97b88bdfa6b00f90e334f1756ad614
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 5c582b080ec6f2cff801758fc4bff4f7d07fd7df
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294469"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083063"
 ---
-# <a name="code-and-test-azure-functions-locally"></a>在本地对 Azure Functions 进行编码和测试
+# <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
-虽然 [Azure 门户]提供了一整套用于开发和测试 Azure Functions 的工具，但许多开发人员更喜欢本地开发体验。 Azure Functions 方便用户使用其喜欢的代码编辑器和本地开发工具在本地计算机上开发和测试函数。 其函数可在 Azure 中触发事件，并且用户可以在本地计算机上调试 C# 和 JavaScript 函数。 
+使用 Azure Functions Core Tools 可以在本地计算机上通过命令提示符或终端开发和测试函数。 本地函数可以连接到实时 Azure 服务，你可以在本地计算机上使用完整的 Functions 运行时调试函数。 甚至可以将函数应用部署到 Azure 订阅。
 
-如果是 Visual Studio C# 开发人员，Azure Functions 还可以[与 Visual Studio 2017 集成](functions-develop-vs.md)。
+[!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
 
->[!IMPORTANT]  
-> 不要将本地开发和门户开发混合在同一函数应用中。 从本地项目创建和发布函数时，不应尝试维护或修改门户中的项目代码。
+## <a name="core-tools-versions"></a>Core Tools 版本
+
+Azure Functions Core Tools 有两个版本。 使用的版本取决于本地开发环境、所选的语言以及所需的支持级别：
+
++ [版本 1.x](#v1)：支持 1.x 版的运行时，即正式版 (GA)。 此 Tools 版本仅在 Windows 计算机上受支持，需从 [npm 包](https://docs.npmjs.com/getting-started/what-is-npm)安装。 借助此版本，可以使用不受官方支持的试验性语言创建函数。 有关详细信息，请参阅 [Azure Functions 中支持的语言](supported-languages.md)。
+
++ [2.x 版](#v2)：支持 2.x 版运行时。 此版本支持 [Windows](#windows-npm)、[macOS](#brew) 和 [Linux](#linux)。 使用特定于平台的包管理器或 npm 进行安装。 与 2.x 运行时一样，此 Core Tools 版本目前以预览版提供。
+
+除非另有说明，否则本文中的示例适用于版本 2.x。
 
 ## <a name="install-the-azure-functions-core-tools"></a>安装 Azure Functions Core Tools
 
-[Azure Functions Core Tools] 是 Azure Functions 运行时的本地版本，可在本地开发计算机上运行。 它既不是仿真器，也不是模拟器。 它与在 Azure 中运行的 Functions 运行时相同。 有两个版本的 Azure Functions Core Tools：
-
-+ [1.x 版](#v1)：支持 1.x 版运行时。 此版本仅在 Windows 计算机上受支持，是从 [npm 包](https://docs.npmjs.com/getting-started/what-is-npm)安装的。
-+ [2.x 版](#v2)：支持 2.x 版运行时。 此版本支持 [Windows](#windows-npm)、[macOS](#brew) 和 [Linux](#linux)。 使用特定于平台的包管理器或 npm 进行安装。 
+[Azure Functions Core Tools] 包含同一运行时的另一版本，该版本为本地开发计算机上可运行的 Azure Functions 运行时提供支持。 它还提供用于创建函数、连接到 Azure 和部署函数项目的命令。
 
 ### <a name="v1"></a>1.x 版
 
@@ -115,23 +119,11 @@ npm install -g azure-functions-core-tools
     sudo apt-get install azure-functions-core-tools
     ```
 
-## <a name="run-azure-functions-core-tools"></a>运行 Azure Functions Core Tools
-
-Azure Functions Core Tools 添加了以下命令别名：
-
-+ func
-+ azfun
-+ azurefunctions
-
-在示例中显示的 `func` 位置，可以使用其中的任何别名。
-
-```bash
-func init MyFunctionProj
-```
-
 ## <a name="create-a-local-functions-project"></a>创建本地 Functions 项目
 
-在本地运行时，Functions 项目是包含 [host.json](functions-host-json.md) 和 [local.settings.json](#local-settings-file) 的目录。 此目录相当于 Azure 中的一个函数应用。 若要深入了解 Azure Functions 文件夹结构，请参阅 [Azure Functions 开发人员指南](functions-reference.md#folder-structure)。
+Functions 项目目录包含文件 [host.json](functions-host-json.md) 和 [local.settings.json](#local-settings-file) 以及若干个子文件夹，这些子文件夹包含各个函数的代码。 此目录相当于 Azure 中的一个函数应用。 若要详细了解 Functions 文件夹的结构，请参阅 [Azure Functions 开发人员指南](functions-reference.md#folder-structure)。
+
+版本 2.x 要求在初始化项目时为项目选择默认语言，添加的所有函数使用默认语言模板。 在版本 1.x 中，每次创建函数时都要指定语言。
 
 在终端窗口中或者在命令提示符下，运行以下命令创建项目和本地 Git 存储库：
 
@@ -139,14 +131,23 @@ func init MyFunctionProj
 func init MyFunctionProj
 ```
 
-输出如以下示例所示：
+在版本 2.x 中运行命令时，必须为项目选择一个运行时。 如果你打算开发 JavaScript 函数，请选择“节点”：
 
 ```output
+Select a worker runtime:
+dotnet
+node
+```
+
+使用向上/向下箭头键选择语言，然后按 Enter。 JavaScript 项目的输出如以下示例所示：
+
+```output
+Select a worker runtime: node
 Writing .gitignore
 Writing host.json
 Writing local.settings.json
-Created launch.json
-Initialized empty Git repository in D:/Code/Playground/MyFunctionProj/.git/
+Writing C:\myfunctions\myMyFunctionProj\.vscode\extensions.json
+Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 ```
 
 若要创建不包含本地 Git 存储库的项目，请使用 `--no-source-control [-n]` 选项。
@@ -165,15 +166,15 @@ Initialized empty Git repository in D:/Code/Playground/MyFunctionProj/.git/
 
 ```json
 {
-  "IsEncrypted": false,   
+  "IsEncrypted": false,
   "Values": {
-    "AzureWebJobsStorage": "<connection-string>", 
+    "AzureWebJobsStorage": "<connection-string>",
     "AzureWebJobsDashboard": "<connection-string>",
     "MyBindingConnection": "<binding-connection-string>"
   },
   "Host": {
-    "LocalHttpPort": 7071, 
-    "CORS": "*" 
+    "LocalHttpPort": 7071,
+    "CORS": "*"
   },
   "ConnectionStrings": {
     "SQLConnectionString": "Value"
@@ -188,7 +189,7 @@ Initialized empty Git repository in D:/Code/Playground/MyFunctionProj/.git/
 | **主机** | 在本地运行时，本部分中的设置会自定义 Functions 主机进程。 |
 | LocalHttpPort | 设置运行本地 Functions 主机时使用的默认端口（`func host start` 和 `func run`）。 `--port` 命令行选项优先于此值。 |
 | **CORS** | 定义[跨域资源共享 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)可以使用的来源。 以逗号分隔的列表提供来源，其中不含空格。 支持通配符值 (\*)，它允许使用任何来源的请求。 |
-| ConnectionStrings | 不要将此集合用于函数绑定使用的连接字符串。 此集合仅供必须从配置文件的 **ConnectionStrings** 部分获取连接字符串的框架使用，例如[实体框架](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx)。 此对象中的连接字符串添加到提供者类型为 System.Data.SqlClient[](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx) 的环境中。 此集合中的项不使用其他应用设置发布到 Azure 中。 必须显式将这些值添加到你的函数应用的**应用程序设置**的**连接字符串**部分中。 |
+| ConnectionStrings | 不要将此集合用于函数绑定使用的连接字符串。 此集合仅供必须从配置文件的 **ConnectionStrings** 部分获取连接字符串的框架使用，例如[实体框架](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx)。 此对象中的连接字符串添加到提供者类型为 [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx) 的环境中。 此集合中的项不使用其他应用设置发布到 Azure 中。 必须显式将这些值添加到你的函数应用的**应用程序设置**的**连接字符串**部分中。 |
 
 还可以在代码中将函数应用设置值读取为环境变量。 有关详细信息，请参阅以下特定于语言的参考主题的“环境变量”部分：
 
@@ -229,39 +230,65 @@ Initialized empty Git repository in D:/Code/Playground/MyFunctionProj/.git/
     func azure storage fetch-connection-string <StorageAccountName>
     ```
     
-    这两个命令都要求首先登录到 Azure。
+    如果你尚未登录到 Azure，系统会要求登录。
 
-<a name="create-func"></a>
-## <a name="create-a-function"></a>创建函数
+## <a name="create-func"></a>创建函数
 
 若要创建函数，请运行以下命令：
 
 ```bash
 func new
-``` 
-`func new` 支持以下可选参数：
-
-| 参数     | 说明                            |
-| ------------ | -------------------------------------- |
-| **`--language -l`** | C#、F# 或 JavaScript 等模板编程语言。 |
-| **`--template -t`** | 模板名称。 |
-| **`--name -n`** | 函数名称。 |
-
-例如，若要创建 JavaScript HTTP 触发器，运行：
-
-```bash
-func new --language JavaScript --template "Http Trigger" --name MyHttpTrigger
 ```
 
-若要创建由队列触发的函数，运行：
+在版本 2.x 中运行 `func new` 时，系统会提示你选择采用函数应用默认语言的模板，另外还会提示你选择函数的名称。 在版本 1.x 中，系统还会提示你选择语言。
+
+```output
+Select a language: Select a template:
+Blob trigger
+Cosmos DB trigger
+Event Grid trigger
+HTTP trigger
+Queue trigger
+SendGrid
+Service Bus Queue trigger
+Service Bus Topic trigger
+Timer trigger
+```
+
+函数代码在具有所提供的函数名称的子文件夹中生成，如以下队列触发器输出中所示：
+
+```output
+Select a language: Select a template: Queue trigger
+Function name: [QueueTriggerJS] MyQueueTrigger
+Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\index.js
+Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\readme.md
+Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\sample.dat
+Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
+```
+
+也可以在命令中使用以下参数指定这些选项：
+
+| 参数     | 说明                            |
+| ------------------------------------------ | -------------------------------------- |
+| **`--language -l`**| C#、F# 或 JavaScript 等模板编程语言。 此选项在版本 1.x 中是必需的。 在版本 2.x 中，请不要使用此选项或选择项目的默认语言。 |
+| **`--template -t`** | 模板名称，可以是以下值之一：<br/><ul><li>`Blob trigger`</li><li>`Cosmos DB trigger`</li><li>`Event Grid trigger`</li><li>`HTTP trigger`</li><li>`Queue trigger`</li><li>`SendGrid`</li><li>`Service Bus Queue trigger`</li><li>`Service Bus Topic trigger`</li><li>`Timer trigger`</li></ul> |
+| **`--name -n`** | 函数名称。 |
+
+例如，若要在单个命令中创建 JavaScript HTTP 触发器，请运行：
 
 ```bash
-func new --language JavaScript --template "Queue Trigger" --name QueueTriggerJS
-```bash
-<a name="start"></a>
-## Run functions locally
+func new --template "Http Trigger" --name MyHttpTrigger
+```
 
-To run a Functions project, run the Functions host. The host enables triggers for all functions in the project:
+若要在单个命令中创建队列触发的函数，请运行：
+
+```bash
+func new --template "Queue Trigger" --name QueueTriggerJS
+```
+
+## <a name="start"></a>在本地运行函数
+
+若要运行 Functions 项目，请运行 Functions 主机。 主机为项目中的所有函数启用触发器：
 
 ```bash
 func host start
@@ -272,13 +299,13 @@ func host start
 | 选项     | 说明                            |
 | ------------ | -------------------------------------- |
 |**`--port -p`** | 要侦听的本地端口。 默认值：7071。 |
-| **`--debug <type>`** | 选项为 `VSCode` 和 `VS`。 |
+| **`--debug <type>`** | 在调试端口打开的情况下启动主机，以便可以从 [Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started) 或 [Visual Studio 2017](functions-dotnet-class-library.md) 附加到 **func.exe** 进程。 *\<type\>* 选项为 `VSCode` 和 `VS`。  |
 | **`--cors`** | 以逗号分隔的 CORS 来源列表，其中不包含空格。 |
 | **`--nodeDebugPort -n`** | 节点调试程序要使用的端口。 默认值：launch.json 中的值或 5858。 |
 | **`--debugLevel -d`** | 控制台跟踪级别（关闭、详情、信息、警告或错误）。 默认：信息。|
 | **`--timeout -t`** | Functions 主机启动的超时时间（以秒为单位）。 默认值：20 秒。|
-| **`--useHttps`** | 绑定到 https://localhost:{port}，而不是绑定到 http://localhost:{port}。 默认情况下，此选项会在计算机上创建可信证书。|
-| **`--pause-on-error`** | 退出进程前，暂停增加其他输入。 十分适用于从集成开发环境 (IDE) 启动 Azure Functions Core Tools 的情况。|
+| **`--useHttps`** | 绑定到 `https://localhost:{port}` ，而不是绑定到 `http://localhost:{port}` 。 默认情况下，此选项会在计算机上创建可信证书。|
+| **`--pause-on-error`** | 退出进程前，暂停增加其他输入。 从 Visual Studio 或 VS Code 启动 Core Tools 时使用。|
 
 Functions 主机启动时，会输出 HTTP 触发的函数的 URL：
 
@@ -290,28 +317,9 @@ Job host started
 Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
-### <a name="vs-debug"></a>在 VS Code 或 Visual Studio 中进行调试
-
-若要附加调试程序，请传递 `--debug` 参数。 若要调试 JavaScript 函数，请使用 Visual Studio Code。 对于 C# 函数，请使用 Visual Studio。
-
-若要调试 C# 函数，请使用 `--debug vs`。 还可使用 [Azure Functions Visual Studio 2017 Tools](https://blogs.msdn.microsoft.com/webdev/2017/05/10/azure-function-tools-for-visual-studio-2017/)。 
-
-若要启动主机并设置 JavaScript 调试，运行：
-
-```bash
-func host start --debug vscode
-```
-
-> [!IMPORTANT]
-> 对于调试，仅支持 Node.js 8.x。 不支持 Node.js 9.x。 
-
-然后，在 Visual Studio Code 中的“调试”视图中，选择“附加到 Azure Functions”。 可附加断点、检查变量和逐步执行代码。
-
-![使用 Visual Studio Code 调试 JavaScript](./media/functions-run-local/vscode-javascript-debugging.png)
-
 ### <a name="passing-test-data-to-a-function"></a>将测试数据传递给函数
 
-若要在本地测试函数，请[启动 Functions 主机](#start)，并在本地服务器上使用 HTTP 请求调用终结点。 你调用的终结点要取决于函数的类型。 
+若要在本地测试函数，请[启动 Functions 主机](#start)，并在本地服务器上使用 HTTP 请求调用终结点。 你调用的终结点要取决于函数的类型。
 
 >[!NOTE]  
 > 本主题中的示例使用 cURL 工具从终端或命令提示符发送 HTTP 请求。 你可以使用所选的工具将 HTTP 请求发送到本地服务器。 默认情况下，在基于 Linux 的系统上提供 cURL 工具。 在 Windows 上，必须先下载并安装 [cURL 工具](https://curl.haxx.se/)。
@@ -340,6 +348,7 @@ curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azu
 可以从在查询字符串中传递数据的浏览器发出 GET 请求。 对于所有其他 HTTP 方法，必须使用 cURL、Fiddler、Postman 或类似的 HTTP 测试工具。  
 
 #### <a name="non-http-triggered-functions"></a>非 HTTP 触发的函数
+
 对于 HTTP 触发器和 webhook 以外的所有类型函数，你可以通过调用管理终结点在本地测试函数。 在本地服务器上通过 HTTP POST 请求调用此终结点会触发该函数。 可以选择通过 POST 请求正文将测试数据传递给执行。 此功能类似于 Azure 门户中的“测试”选项卡。  
 
 可以调用以下管理员终结点以触发非 HTTP 函数：
@@ -352,8 +361,9 @@ curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azu
 {
     "input": "<trigger_input>"
 }
-```` 
-`<trigger_input>` 值包含函数所需格式的数据。 下面的 cURL 示例是指向 `QueueTriggerJS` 函数的 POST。 在这种情况下，输入是一个字符串，等同于期望在队列中找到的消息。      
+````
+
+`<trigger_input>` 值包含函数所需格式的数据。 下面的 cURL 示例是指向 `QueueTriggerJS` 函数的 POST。 在这种情况下，输入是一个字符串，等同于期望在队列中找到的消息。
 
 ```bash
 curl --request POST -H "Content-Type:application/json" --data '{"input":"sample queue data"}' http://localhost:7071/admin/functions/QueueTriggerJS
@@ -407,7 +417,8 @@ func azure functionapp publish <FunctionAppName>
 
 >[!IMPORTANT]  
 > 在 Azure 中创建函数应用时，该应用默认使用 1.x 版函数运行时。 若要让函数应用使用 2.x 版运行时，请添加应用程序设置 `FUNCTIONS_EXTENSION_VERSION=beta`。  
-使用以下 Azure CLI 代码将此设置添加到函数应用： 
+使用以下 Azure CLI 代码将此设置添加到函数应用：
+
 ```azurecli-interactive
 az functionapp config appsettings set --name <function_app> \
 --resource-group myResourceGroup \
@@ -417,7 +428,7 @@ az functionapp config appsettings set --name <function_app> \
 ## <a name="next-steps"></a>后续步骤
 
 Azure Functions Core Tools 是[开源工具且托管在 GitHub 上](https://github.com/azure/azure-functions-cli)。  
-若要提交 bug 或功能请求，[请打开 GitHub 问题](https://github.com/azure/azure-functions-cli/issues)。 
+若要提交 bug 或功能请求，[请打开 GitHub 问题](https://github.com/azure/azure-functions-cli/issues)。
 
 <!-- LINKS -->
 
