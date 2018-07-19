@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: b4c5bf3b11c2ee661d95dc50f5c93e12fe2d56bf
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 446fe139e3d1abe79b877d663842f7c7c6168f19
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901035"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126688"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>选择适用于解决方案的 IoT 中心层
 
@@ -53,34 +53,34 @@ IoT 中心基本层和标准层所支持的功能存在差异，也就是说，�
 
 | API | 基本层 | 标准层 |
 | --- | ---------- | ------------- |
-| [删除设备](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/deletedevice) | 是 | 是 |
-| [获取设备](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getdevice) | 是 | 是 |
+| [删除设备](https://docs.microsoft.com/rest/api/iothub/service/deletedevice) | 是 | 是 |
+| [获取设备](https://docs.microsoft.com/rest/api/iothub/service/getdevice) | 是 | 是 |
 | 删除模块 | 是 | 是 |
 | 获取模块 | 是 | 是 |
-| [获取注册表统计信息](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getdeviceregistrystatistics) | 是 | 是 |
-| [获取服务统计信息](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getservicestatistics) | 是 | 是 |
-| [放置设备](https://docs.microsoft.com/rest/api/iothub/deviceapi/putdevice) | 是 | 是 |
+| [获取注册表统计信息](https://docs.microsoft.com/rest/api/iothub/service/getdeviceregistrystatistics) | 是 | 是 |
+| [获取服务统计信息](https://docs.microsoft.com/rest/api/iothub/service/getservicestatistics) | 是 | 是 |
+| [创建或更新设备](https://docs.microsoft.com/rest/api/iothub/service/createorupdatedevice) | 是 | 是 |
 | 放置模块 | 是 | 是 |
-| [查询设备](https://docs.microsoft.com/rest/api/iothub/deviceapi/querydevices) | 是 | 是 |
+| [查询 IoT 中心](https://docs.microsoft.com/rest/api/iothub/service/queryiothub) | 是 | 是 |
 | 查询模块 | 是 | 是 |
-| [创建文件上传 SAS URI](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/createfileuploadsasuri) | 是 | 是 |
-| [接收发往设备的通知](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/receivedeviceboundnotification) | 是 | 是 |
-| [发送设备事件](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/senddeviceevent) | 是 | 是 |
+| [创建文件上传 SAS URI](https://docs.microsoft.com/rest/api/iothub/device/createfileuploadsasuri) | 是 | 是 |
+| [接收发往设备的通知](https://docs.microsoft.com/rest/api/iothub/device/receivedeviceboundnotification) | 是 | 是 |
+| [发送设备事件](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | 是 | 是 |
 | 发送模块事件 | 是 | 是 |
-| [更新文件上传状态](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/updatefileuploadstatus) | 是 | 是 |
-| [批量设备操作](https://docs.microsoft.com/en-us/rest/api/iot-dps/deviceenrollment/bulkoperation) | 是的，IoT Edge 功能除外 | 是 | 
-| [清除命令队列](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/purgecommandqueue) |   | 是 |
-| [获取设备孪生](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/gettwin) |   | 是 |
+| [更新文件上传状态](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | 是 | 是 |
+| [批量设备操作](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollment/bulkoperation) | 是的，IoT Edge 功能除外 | 是 | 
+| [清除命令队列](https://docs.microsoft.com/rest/api/iothub/service/purgecommandqueue) |   | 是 |
+| [获取设备孪生](https://docs.microsoft.com/rest/api/iothub/service/gettwin) |   | 是 |
 | 获取模块孪生 |   | 是 |
-| [调用设备方法](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/invokedevicemethod) |   | 是 |
-| [更新设备孪生](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/updatetwin) |   | 是 | 
+| [调用设备方法](https://docs.microsoft.com/rest/api/iothub/service/invokedevicemethod) |   | 是 |
+| [更新设备孪生](https://docs.microsoft.com/rest/api/iothub/service/updatetwin) |   | 是 | 
 | 更新模块孪生 |   | 是 | 
-| [放弃发往设备的通知](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/abandondeviceboundnotification) |   | 是 |
-| [完成发往设备的通知](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/completedeviceboundnotification) |   | 是 |
-| [取消作业](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/canceljob) |   | 是 |
-| [创建作业](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/createjob) |   | 是 |
-| [获取作业](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getjob) |   | 是 |
-| [查询作业](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/queryjobs) |   | 是 |
+| [放弃发往设备的通知](https://docs.microsoft.com/rest/api/iothub/device/abandondeviceboundnotification) |   | 是 |
+| [完成发往设备的通知](https://docs.microsoft.com/rest/api/iothub/device/completedeviceboundnotification) |   | 是 |
+| [取消作业](https://docs.microsoft.com/rest/api/iothub/service/canceljob) |   | 是 |
+| [创建作业](https://docs.microsoft.com/rest/api/iothub/service/createjob) |   | 是 |
+| [获取作业](https://docs.microsoft.com/rest/api/iothub/service/getjob) |   | 是 |
+| [查询作业](https://docs.microsoft.com/rest/api/iothub/service/queryjobs) |   | 是 |
 
 ## <a name="message-throughput"></a>消息吞吐量
 

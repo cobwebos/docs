@@ -9,11 +9,11 @@ ms.date: 05/18/2018
 ms.author: jroth
 ms.custom: include file
 ms.openlocfilehash: 3daf0e214c2c10d682e908ca430f4852df105926
-ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2018
-ms.locfileid: "35414648"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38755544"
 ---
 | 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |

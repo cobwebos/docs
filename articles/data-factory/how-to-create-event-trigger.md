@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/10/2018
+ms.date: 07/11/2018
 ms.author: douglasl
-ms.openlocfilehash: 313f4915a8c522ae2b9fc5ebbbe85fdfb4741cc4
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: ecd5f242d2dcb5662376541ac0a9e75ce533b59f
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969572"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005826"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>如何运行管道的触发器来响应事件
 
@@ -51,6 +51,14 @@ Azure 存储帐户中文件的到达或删除就是一个典型的事件。 你�
 
 ![选择触发器类型作为事件](media/how-to-create-event-trigger/event-based-trigger-image3.png)
 
+### <a name="map-trigger-properties-to-pipeline-parameters"></a>将触发器属性映射至管道参数
+
+当事件触发器为特定 blob 触发时，事件会将该 blob 的文件夹路径和文件名捕获至属性 `@triggerBody().folderPath` 和 `@triggerBody().fileName` 中。 若要在管道中使用这些属性的值，必须将这些属性映射至管道参数。 将这些属性映射至参数后，可以通过管道中的 `@pipeline.parameters.parameterName` 表达式访问由触发器捕获的值。
+
+![将属性映射至管道参数](media/how-to-create-event-trigger/event-based-trigger-image4.png)
+
+例如，在前面的屏幕截图中。 如果在存储帐户中创建了以 `.csv` 结尾的 blob 路径，则会触发该触发器。 所以，无论在存储帐户的任何位置创建了扩展名为 `.csv` 的 blob，`folderPath` 和 `fileName` 属性都会捕获这个新建的 blob 的位置。 例如，`@triggerBody().folderPath` 的值类似于 `/containername/foldername/nestedfoldername`，`@triggerBody().fileName` 的值类似于 `filename.csv`。 该示例将这些值映射至管道参数 `sourceFolder` 和 `sourceFile`。 它们可以分别作为 `@pipeline.parameters.sourceFolder` 和 `@pipeline.parameters.sourceFile` 用于整个管道。
+
 ## <a name="json-schema"></a>JSON 架构
 
 下表概述了与基于事件的触发器相关的架构元素：
@@ -75,14 +83,6 @@ Azure 存储帐户中文件的到达或删除就是一个典型的事件。 你�
 
 > [!NOTE]
 > 每当指定容器和文件夹、容器和文件或容器、文件夹和文件时，都必须包含路径的 `/blobs/` 段。
-
-## <a name="map-trigger-properties-to-pipeline-parameters"></a>将触发器属性映射至管道参数
-
-当事件触发器为特定 blob 触发时，事件会将该 blob 的文件夹路径和文件名捕获至属性 `@triggerBody().folderPath` 和 `@triggerBody().fileName` 中。 若要在管道中使用这些属性的值，必须将这些属性映射至管道参数。 将这些属性映射至参数后，可以通过管道中的 `@pipeline.parameters.parameterName` 表达式访问由触发器捕获的值。
-
-![将属性映射至管道参数](media/how-to-create-event-trigger/event-based-trigger-image4.png)
-
-例如，在前面的屏幕截图中。 如果在存储帐户中创建了以 `.csv` 结尾的 blob 路径，则会触发该触发器。 所以，无论在存储帐户的任何位置创建了扩展名为 `.csv` 的 blob，`folderPath` 和 `fileName` 属性都会捕获这个新建的 blob 的位置。 例如，`@triggerBody().folderPath` 的值类似于 `/containername/foldername/nestedfoldername`，`@triggerBody().fileName` 的值类似于 `filename.csv`。 该示例将这些值映射至管道参数 `sourceFolder` 和 `sourceFile`。 它们可以分别作为 `@pipeline.parameters.sourceFolder` 和 `@pipeline.parameters.sourceFile` 用于整个管道。
 
 ## <a name="next-steps"></a>后续步骤
 有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md#triggers)。

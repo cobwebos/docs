@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2016
 ms.author: naziml
-ms.openlocfilehash: bdf8731b2a5028f47c2baf6f164d75123f716ebb
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 894a77be05de131ab122f18c62d209e9829357f9
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857633"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056202"
 ---
 # <a name="how-to-configure-tls-mutual-authentication-for-web-app"></a>如何为 Web 应用配置 TLS 相互身份验证
 ## <a name="overview"></a>概述
@@ -51,7 +51,7 @@ ms.locfileid: "37857633"
 
 还可以使用 https://resources.azure.com 将 `clientCertEnabled` 属性切换为 `true`。
 
-> **注意：** 如果从 Powershell 运行 ARMClient，必须使用重音符 ` 为 JSON 文件转义 @ 符号。
+> **注意：** 如果从 Powershell 运行 ARMClient，必须使用重音符 ` 为 JSON 文件转义 \@ 符号。
 > 
 > 
 

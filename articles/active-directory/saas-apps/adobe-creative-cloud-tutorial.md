@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2018
 ms.author: jeedes
-ms.openlocfilehash: e1788de7c2372797b2034eb1753ab435c1299889
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 506f52faf916aa0d5ca2e8587bdbcc16ab88e130
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38548266"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054278"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>教程：Azure Active Directory 与 Adobe Creative Cloud 集成
 
@@ -111,7 +111,7 @@ ms.locfileid: "38548266"
 
     ![Adobe Creative Cloud 域和 URL 单一登录信息](./media/adobe-creative-cloud-tutorial/tutorial_adobecreativecloud_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.okta.com/saml2/service-provider/<token>`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://www.okta.com/saml2/service-provider/<token>`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<company name>.okta.com/auth/saml20/accauthlinktest`
 
@@ -140,7 +140,7 @@ ms.locfileid: "38548266"
     | LastName |user.surname |
     | 电子邮件 |user.mail |
 
-    a. 单击“添加属性”，打开“添加属性”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录](./media/adobe-creative-cloud-tutorial/tutorial_attribute_04.png)
 
@@ -169,7 +169,7 @@ ms.locfileid: "38548266"
 
     ![设置](https://helpx.adobe.com/content/dam/help/en/enterprise/using/configure-microsoft-azure-with-adobe-sso/_jcr_content/main-pars/procedure_719391630/proc_par/step_3/step_par/image/edit-sso-configuration.png "设置")
 
-    a. 单击“浏览”，将已下载的证书从 Azure AD 上传到“IDP 证书”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“浏览”，将已下载的证书从 Azure AD 上传到“IDP 证书”。
 
     b. 在“IDP 颁发者”文本框中，放置从 Azure 门户中的“配置登录”部分复制的“SAML 实体 ID”的值。
 
@@ -185,7 +185,7 @@ ms.locfileid: "38548266"
 
     ![在应用端配置单一登录](./media/adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_003.png)
 
-    a. 在“配置应用设置”对话框上，将 Adobe 提供的 EntityDescriptor 值用于**标识符**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“配置应用设置”对话框上，将 Adobe 提供的 EntityDescriptor 值用于**标识符**。
 
     b. 在“配置应用设置”对话框上，将 Adobe 提供的 AssertionConsumerService 值用于**回复 URL**。
 
@@ -213,7 +213,7 @@ ms.locfileid: "38548266"
 
     ![“用户”对话框](./media/adobe-creative-cloud-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -271,7 +271,7 @@ ms.locfileid: "38548266"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 Adobe Creative Cloud 磁贴时，应当会自动登录到 Adobe Creative Cloud 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

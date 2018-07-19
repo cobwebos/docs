@@ -9,11 +9,11 @@ ms.date: 06/04/2018
 ms.author: sethm
 ms.custom: include file
 ms.openlocfilehash: 0ff1e31e52c7db5c41f92cb9e4cb1a17f28dea6f
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34806394"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38755543"
 ---
 下表列出了特定于服务总线消息的配额信息。 有关服务总线的定价及其他配额的信息，请参阅[服务总线定价](https://azure.microsoft.com/pricing/details/service-bus/)概述。
 

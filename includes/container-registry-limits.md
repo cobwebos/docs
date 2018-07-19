@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 05/29/2018
 ms.author: marsma
 ms.custom: include file
-ms.openlocfilehash: 942b9bdf0201acaefe3333bcf928772899b9bdc2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 92a5d162e7a0b2c752a2f8e9c5941edf43e539e3
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34665039"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991065"
 ---
 | 资源 | 基本 | 标准 | 高级 |
 |---|---|---|---|---|
 | 存储 | 10 GiB | 100 GiB| 500 GiB |
 | 最大映像层大小 | 20 GiB | 20 GiB | 50 GiB |
-| 每分钟读取操作数<sup>1、2</sup> | 1000 | 3000 | 10000 |
-| 每分钟写入操作数<sup>1、3</sup> | 100 | 500 | 2000 |
+| 每分钟读取操作数<sup>1、2</sup> | 1,000 | 3,000 | 10,000 |
+| 每分钟写入操作数<sup>1、3</sup> | 100 | 500 | 2,000 |
 | 下载带宽 (MBps)<sup>1</sup> | 30 | 60 | 100 |
 | 上传带宽 (MBps)<sup>1</sup> | 10 | 20 | 50 |
 | Webhook | 2 | 10 | 100 |

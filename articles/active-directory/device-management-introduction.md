@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 5d5ddd83a2335e7a08bac587aa627f1dcae9738c
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 1a2b32e7e0e86608f879941485395ebe379a5c1e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970894"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048855"
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Azure Active Directory 中的设备管理简介
 
@@ -181,8 +181,8 @@ Azure AD 加入适用于希望成为云优先（即主要使用云服务，旨�
 - 有关基于设备的条件性访问的详细信息，请参阅[配置 Azure Active Directory 基于设备的条件性访问策略](active-directory-conditional-access-policy-connected-applications.md)。
 
 - 设备设置：
-    - 若要设置已注册 Azure Active Directory 的 Windows 10 设备，请参阅[如何配置已注册 Azure Active Directory 的 Windows 10 设备](device-management-azuread-registered-devices-windows10-setup.md)
-    - 若要设置已加入 Azure Active Directory 的设备，请参阅[如何配置已加入 Azure Active Directory 的设备](device-management-azuread-joined-devices-setup.md)
+    - 若要设置已注册 Azure Active Directory 的 Windows 10 设备，请参阅[如何配置已注册 Azure Active Directory 的 Windows 10 设备](user-help/device-management-azuread-registered-devices-windows10-setup.md)
+    - 若要设置已加入 Azure Active Directory 的设备，请参阅[如何配置已加入 Azure Active Directory 的设备](user-help/device-management-azuread-joined-devices-setup.md)
     - 若要设置已加入混合 Azure AD 的设备，请参阅[如何配置已加入混合 Azure Active Directory 的设备](device-management-hybrid-azuread-joined-devices-setup.md)。
 
 

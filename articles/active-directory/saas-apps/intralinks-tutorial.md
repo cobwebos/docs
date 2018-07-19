@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: fbe3ceb3d26de90bd46ee02263d09c822ee90c29
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 2dbf52d0e157379687b144feba5c7933a7c5a3e3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868841"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046832"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intralinks"></a>教程：Azure Active Directory 与 Intralinks 集成
 
@@ -153,7 +153,7 @@ ms.locfileid: "37868841"
  
     ![创建 Azure AD 测试用户](./media/intralinks-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -225,7 +225,7 @@ Intralinks 对所有其他 Intralinks 应用程序（不包括 Deal Nexus 应用
 
     ![添加 Intralinks VIA 或 Elite 应用程序](./media/intralinks-tutorial/tutorial_intralinks_addapp.png)
 
-    a. 在“名称”文本框中，输入合适的应用程序名称，例如“Intralinks Elite”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，输入合适的应用程序名称，例如“Intralinks Elite”。
 
     b. 单击“添加”按钮。
 
@@ -256,7 +256,7 @@ Intralinks 对所有其他 Intralinks 应用程序（不包括 Deal Nexus 应用
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Intralinks 磁贴时，应自动登录到 Intralinks 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

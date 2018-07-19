@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 1ba9f827abeb0c0cf6430089e1fb504288550737
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 8779600f2c85a8bb309f7b2a8874608170de8877
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37900457"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035235"
 ---
 # <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-the-azure-portal"></a>使用 Azure 门户配置虚拟机规模集托管服务标识 (MSI)
 
@@ -56,7 +56,7 @@ ms.locfileid: "37900457"
 
 3. 通过选择“是”在 VM 上启用系统分配标识，然后在“托管服务标识”下单击“保存”。 此操作可能需要 60 秒或更长时间才能完成：
 
-   [![“配置”页屏幕截图](../media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png)](../media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png#lightbox)  
+   [![“配置”页屏幕截图](../managed-service-identity/media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png)](../managed-service-identity/media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png#lightbox)  
 
 ## <a name="remove-managed-service-identity-from-an-azure-virtual-machine-scale-set"></a>从 Azure 虚拟机规模集移除托管服务标识
 
@@ -68,7 +68,7 @@ ms.locfileid: "37900457"
 
 3. 通过选择“否”在 VM 上禁用系统分配标识，然后在“托管服务标识”下单击“保存”。 此操作可能需要 60 秒或更长时间才能完成：
 
-   ![“配置”页屏幕截图](../media/msi-qs-configure-portal-windows-vmss/disable-windows-vmss-portal-configuration-blade.png)  
+   ![“配置”页屏幕截图](../managed-service-identity/media/msi-qs-configure-portal-windows-vmss/disable-windows-vmss-portal-configuration-blade.png)  
 
 ## <a name="related-content"></a>相关内容
 

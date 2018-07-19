@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 9c6d819234111c461bf4793376324dbe77e85ae2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d86004680bf13c9716b4ff4e7a41af73ea186f27
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38295356"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047182"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-imagineer-webvision"></a>教程：Azure Active Directory 与 Imagineer WebVision 集成
 
@@ -107,7 +107,7 @@ ms.locfileid: "38295356"
 
     ![Imagineer WebVision 域和 URL 单一登录信息](./media/imagineerwebvision-tutorial/tutorial_imagineerwebvision_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<YOUR SERVER URL>/<yourapplicationloginpage>`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<YOUR SERVER URL>/<yourapplicationloginpage>`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<YOUR SERVER URL>/<yourapplicationloginpage>`
 
@@ -148,7 +148,7 @@ ms.locfileid: "38295356"
 
     ![“用户”对话框](./media/imagineerwebvision-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -195,7 +195,7 @@ ms.locfileid: "38295356"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 Imagineer WebVision 磁贴时，应当会自动登录到 Imagineer WebVision 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: 05096050dfc29aebd2859b298eef884dcd9a1111
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: c48d03b6e8a3d850d02d2c36c35915f8214b00e8
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37906213"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035806"
 ---
 # <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Azure Active Directory 的托管服务标识 (MSI) 的常见问题解答和已知问题
 
@@ -85,7 +85,7 @@ Set-AzureRmVMExtension -Name <extension name>  -Type <extension Type>  -Location
 
 如果在 VM 上启用了托管服务标识，当尝试将“自动化脚本”功能用于 VM 或其资源组时，将显示以下错误：
 
-![MSI 自动化脚本导出错误](../media/msi-known-issues/automation-script-export-error.png)
+![MSI 自动化脚本导出错误](../managed-service-identity/media/msi-known-issues/automation-script-export-error.png)
 
 托管服务标识 VM 扩展当前不支持将其架构导出到资源组模板的功能。 因此，生成的模板不显示用于在资源上启用托管服务标识的配置参数。 可以按照[使用模板配置 VM 托管服务标识](qs-configure-template-windows-vm.md)中的示例，手动添加这些节。
 

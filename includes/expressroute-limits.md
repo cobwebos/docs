@@ -9,11 +9,11 @@ ms.date: 06/12/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 6e0d2b881e00acc6b1fccd3196187309fc36cba2
-ms.sourcegitcommit: 8659efc885be98f42edae0b516ca576e38940c97
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2018
-ms.locfileid: "35568137"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38755468"
 ---
 #### <a name="expressroute-limits"></a>ExpressRoute 限制
 下列限制适用于每个订阅的 ExpressRoute 资源。

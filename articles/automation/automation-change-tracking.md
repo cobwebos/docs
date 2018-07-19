@@ -10,18 +10,37 @@ ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 717cf6b2abfb529313699836b790bd3f07844a67
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 891206e88173d72a0bacf6694a331c4ad8cc9acc
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867947"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069441"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>使用更改跟踪解决方案跟踪环境中的更改
 
 本文可帮助你使用更改跟踪解决方案轻松识别环境中的更改。 该解决方案会跟踪对 Windows 和 Linux 软件、Windows 文件和注册表项、Windows 服务和 Linux 守护程序的更改。 标识配置更改可帮助你查明操作问题。
 
 系统会读取对受监视服务器上的已安装软件、Windows 服务、Windows 注册表与文件以及 Linux 守护程序的更改，然后将数据发送到云中的 Log Analytics 服务进行处理。 逻辑应用于接收的数据，云服务记录数据。 通过使用“更改跟踪”仪表板上的信息，可以轻松看到服务器基础结构中所做的更改。
+
+## <a name="supported-windows-operating-systems"></a>支持的 Windows 操作系统
+
+Windows 代理正式支持以下版本的 Windows 操作系统：
+
+* Windows Server 2008 Service Pack 1 (SP1) 或更高版本
+* Windows 7 SP1 及更高版本。
+
+## <a name="supported-linux-operating-systems"></a>支持的 Linux 操作系统
+
+以下 Linux 分发版受官方支持。 不过，Linux 代理在未列出的其他发行版上可能也可以运行。 除非另行说明，列出每个主要版本支持所有的次要版本。  
+
+* Amazon Linux 2012.09 到 2015.09 (x86/x64)
+* CentOS Linux 5、6 和 7 (x86/x64)  
+* Oracle Linux 5、6 和 7 (x86/x64)
+* Red Hat Enterprise Linux Server 5、6 和 7 (x86/x64)
+* Debian GNU/Linux 6、7 和 8 (x86/x64)
+* Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)
+* SUSE Linux Enterprise Server 11 和 12 (x86/x64)
 
 ## <a name="enable-change-tracking-and-inventory"></a>启用更改跟踪和清单
 
@@ -47,7 +66,7 @@ ms.locfileid: "37867947"
 2. 上**更改跟踪**页上，选择 **Linux 文件**，然后单击 **+ 添加**以添加要跟踪的新文件。
 3. 在“添加用于更改跟踪的 Linux 文件”中，输入要求该文件或目录进行跟踪的信息，然后单击“保存”。
 
-|属性  |说明  |
+|属性  |Description  |
 |---------|---------|
 |已启用     | 确定是否应用了设置。        |
 |项目名称     | 要跟踪的文件的友好名称。        |
@@ -70,7 +89,7 @@ ms.locfileid: "37867947"
 2. 在**更改跟踪**页上，选择 **Windows 文件**，然后单击 **+ 添加**以添加要跟踪的新文件。
 3. 在“添加用于更改跟踪的 Windows 文件”中，输入要求该文件进行跟踪的信息，然后单击“保存”。
 
-|属性  |说明  |
+|属性  |Description  |
 |---------|---------|
 |已启用     | 确定是否应用了设置。        |
 |项目名称     | 要跟踪的文件的友好名称。        |
@@ -92,7 +111,7 @@ ms.locfileid: "37867947"
 2. 在**更改跟踪**页上，选择 **Windows 注册表**，然后单击 **+ 添加**以添加要跟踪的新注册表项。
 3. 在“添加用于更改跟踪的 Windows 注册表”中，输入要求该项进行跟踪的信息，然后单击“保存”。
 
-|属性  |说明  |
+|属性  |Description  |
 |---------|---------|
 |已启用     | 确定是否应用了设置。        |
 |项目名称     | 要跟踪的文件的友好名称。        |
@@ -211,7 +230,7 @@ Windows 服务的默认收集频率为 30 分钟。 若要配置该频率，请�
 
 下表提供了此解决方案收集的更改记录的示例日志搜索。
 
-|查询  |说明  |
+|查询  |Description  |
 |---------|---------|
 |ConfigurationData<br>&#124; where   ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"<br>&#124; where SvcState == "Stopped"<br>&#124; summarize arg_max(TimeGenerated, *) by SoftwareName, Computer         | 显示已设置为自动，但被报告为正在停止 Windows 服务的最新的清单记录<br>结果仅限于该 SoftwareName 和计算机的最新记录      |
 |ConfigurationChange<br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Removed"<br>&#124; order by TimeGenerated desc|显示已删除软件的更改记录|
