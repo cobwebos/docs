@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: f2d0b009c4451a4108222ac7aa7954ba6dd86699
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 04a446f43bd39ef7bfca590af67289813eab4032
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37869001"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048873"
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Azure AD 中的自助密码重置深入探讨
 
@@ -248,8 +248,8 @@ ms.locfileid: "37869001"
 以下文章提供了有关通过 Azure AD 进行密码重置的更多信息：
 
 * [如何成功推出 SSPR？](howto-sspr-deployment.md)
-* [重置或更改密码](../active-directory-passwords-update-your-own-password.md)
-* [注册自助密码重置](../active-directory-passwords-reset-register.md)
+* [重置或更改密码](../user-help/active-directory-passwords-update-your-own-password.md)
+* [注册自助密码重置](../user-help/active-directory-passwords-reset-register.md)
 * [是否有许可问题？](concept-sspr-licensing.md)
 * [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
 * [哪些身份验证方法可供用户使用？](concept-sspr-howitworks.md#authentication-methods)

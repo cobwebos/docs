@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: df46a4de32482f9da46b81e6b0fbc55c2cc1af35
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: e2c4c59e52f277358027f5d228fdf43822822992
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37444236"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044522"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>用于 Azure AD 密码管理的报告选项
 
@@ -173,8 +173,8 @@ ms.locfileid: "37444236"
 ## <a name="next-steps"></a>后续步骤
 
 * [如何成功推出 SSPR？](howto-sspr-deployment.md)
-* [重置或更改密码](../active-directory-passwords-update-your-own-password.md)。
-* [注册自助服务密码重置](../active-directory-passwords-reset-register.md)。
+* [重置或更改密码](../user-help/active-directory-passwords-update-your-own-password.md)。
+* [注册自助服务密码重置](../user-help/active-directory-passwords-reset-register.md)。
 * [是否有许可问题？](concept-sspr-licensing.md)
 * [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
 * [哪些身份验证方法可供用户使用？](concept-sspr-howitworks.md#authentication-methods)

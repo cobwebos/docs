@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: ea976f7ac80f0c485320713117c9ff2b484a287b
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 00eab947120cdfa76de64536ddaa0600c2dff2ec
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128684"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049405"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>有关 Azure 多重身份验证的常见问题解答
 
@@ -118,7 +118,7 @@ Microsoft 不保证相同号码传送的短信或基于语音的多重身份验�
 
 但愿用户已配置多种验证方法。 请告诉他们再次尝试登录，但需要在登录页上选择另一种验证方法。
 
-可以让用户转到[最终用户故障排除指南](end-user/current/multi-factor-authentication-end-user-troubleshoot.md)。
+可以让用户转到[最终用户故障排除指南](../user-help/multi-factor-authentication-end-user-troubleshoot.md)。
 
 
 **问：如果某个用户无法进入其帐户，我该办什么？**
@@ -131,7 +131,7 @@ Microsoft 不保证相同号码传送的短信或基于语音的多重身份验�
 
 **问：如果用户无法登录到非浏览器应用，该怎么办？**
 
-如果组织仍然使用传统客户端，并且[允许使用应用密码](howto-mfa-mfasettings.md#app-passwords)，则用户无法使用其用户名和密码登录到这些传统客户端。 他们需要[设置应用密码](end-user/current/multi-factor-authentication-end-user-app-passwords.md)。 用户必须清除（删除）其登录信息、重新启动应用，并使用其用户名和*应用密码*而不是普通的密码登录。
+如果组织仍然使用传统客户端，并且[允许使用应用密码](howto-mfa-mfasettings.md#app-passwords)，则用户无法使用其用户名和密码登录到这些传统客户端。 他们需要[设置应用密码](../user-help/multi-factor-authentication-end-user-app-passwords.md)。 用户必须清除（删除）其登录信息、重新启动应用，并使用其用户名和*应用密码*而不是普通的密码登录。
 
 如果组织不使用传统客户端，则应不允许用户创建应用密码。
 

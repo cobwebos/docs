@@ -1,19 +1,19 @@
 ---
 title: 接收有关 Azure 服务通知的活动日志警报
 description: 在 Azure 服务发生时，通过短信、电子邮件或 webhook 接收通知。
-author: johnkemnetz
+author: shawntabrizi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/09/2018
-ms.author: johnkem
+ms.author: shtabriz
 ms.component: alerts
-ms.openlocfilehash: 1e79fee75b2361dd7da8c46c175a5a6532089ad6
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 1cd82f7ffa9360dbc35f9c9d790df34355d9dd1a
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437233"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035707"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>创建有关服务通知的活动日志警报
 ## <a name="overview"></a>概述
@@ -70,7 +70,7 @@ ms.locfileid: "37437233"
 
 9. 通过提供接收方来定义接收方的列表：
 
-    a. 名称：输入接收方的名称、别名或标识符。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 名称：输入接收方的名称、别名或标识符。
 
     b. **操作类型**：选择短信、电子邮件、Webhook、Azure 应用等。
 

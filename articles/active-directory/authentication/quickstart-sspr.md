@@ -10,21 +10,21 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 856ae994e49f809ca2ef906ba6cdc7f8624dd201
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c99ae755705dddf501609c8f199d1977d0bde415
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33870016"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39057355"
 ---
 # <a name="azure-ad-self-service-password-reset-rapid-deployment"></a>Azure AD 自助密码重置快速部署
 
 > [!IMPORTANT]
-> 你是否因登录时遇到问题而浏览至此？ 如果是这样，请参阅[请为我提供帮助，我忘记了 Azure AD 密码](../active-directory-passwords-update-your-own-password.md)。
+> 你是否因登录时遇到问题而浏览至此？ 如果是这样，请参阅[请为我提供帮助，我忘记了 Azure AD 密码](../user-help/active-directory-passwords-update-your-own-password.md)。
 
 IT 管理员可以让用户通过自助密码重置 (SSPR) 这种简单的方法来重置或解锁其密码或帐户。 系统提供详细的报告，用于跟踪用户访问系统的时间，同时还提供通知，提醒用户存在误用或滥用情况。
 
-本指南假定已经有了一个可以运行的试用版或许可版 Azure Active Directory (Azure AD) 租户。 如需 Azure AD 设置帮助，请参阅 [Azure AD 入门](../get-started-azure-ad.md)。
+本指南假定已经有了一个可以运行的试用版或许可版 Azure Active Directory (Azure AD) 租户。 如需 Azure AD 设置帮助，请参阅 [Azure AD 入门](../fundamentals/get-started-azure-ad.md)。
 
 ## <a name="enable-sspr-for-your-azure-ad-tenant"></a>为 Azure AD 租户启用 SSPR
 
@@ -62,7 +62,7 @@ IT 管理员可以让用户通过自助密码重置 (SSPR) 这种简单的方法
    * 重置密码时通知用户。
    * 当其他管理员重置其密码时通知所有管理员。
 
-你目前已为 Azure AD 租户配置 SSPR。 用户现在可以根据[注册自助密码重置](../active-directory-passwords-reset-register.md)和[重置或更改密码](../active-directory-passwords-update-your-own-password.md)这两篇文章中的说明来更新其密码，不需求助管理员。 如果只需执行仅限云的操作，则可在此打住。 如果要将密码配置为同步到本地 Active Directory 域，则可继续阅读下一部分。
+你目前已为 Azure AD 租户配置 SSPR。 用户现在可以根据[注册自助密码重置](../user-help/active-directory-passwords-reset-register.md)和[重置或更改密码](../user-help/active-directory-passwords-update-your-own-password.md)这两篇文章中的说明来更新其密码，不需求助管理员。 如果只需执行仅限云的操作，则可在此打住。 如果要将密码配置为同步到本地 Active Directory 域，则可继续阅读下一部分。
 
 > [!TIP]
 > 请使用用户而不是管理员来测试 SSPR，因为 Microsoft 对 Azure 管理员帐户强制实施强身份验证要求。 有关管理员密码策略的详细信息，请参阅[密码策略](concept-sspr-policy.md#administrator-password-policy-differences)文章。
@@ -95,8 +95,8 @@ IT 管理员可以让用户通过自助密码重置 (SSPR) 这种简单的方法
 以下文章提供了有关通过 Azure AD 进行密码重置的更多信息：
 
 * [如何成功推出 SSPR？](howto-sspr-deployment.md)
-* [重置或更改密码](../active-directory-passwords-update-your-own-password.md)
-* [注册自助密码重置](../active-directory-passwords-reset-register.md)
+* [重置或更改密码](../user-help/active-directory-passwords-update-your-own-password.md)
+* [注册自助密码重置](../user-help/active-directory-passwords-reset-register.md)
 * [是否有许可问题？](concept-sspr-licensing.md)
 * [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
 * [哪些身份验证方法可供用户使用？](concept-sspr-howitworks.md#authentication-methods)

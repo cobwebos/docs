@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: daveba
-ms.openlocfilehash: 9d9c18d576f3975d4c8272efff7161366f3f53fe
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 27ecb00bddb41ae45e790a54702c058ff3f1d24b
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901351"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035935"
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-the-azure-portal"></a>使用 Azure 门户配置 VM 托管服务标识 (MSI)
 
@@ -59,7 +59,7 @@ ms.locfileid: "37901351"
     > [!NOTE]
     > 不支持通过 Azure 门户向 VM 添加用户分配标识。
 
-   ![“配置”页屏幕截图](../media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
+   ![“配置”页屏幕截图](../managed-service-identity/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
 
 ## <a name="remove-managed-service-identity-from-an-azure-vm"></a>从 Azure VM 移除托管服务标识
 
@@ -74,7 +74,7 @@ ms.locfileid: "37901351"
     > [!NOTE]
     > 不支持通过 Azure 门户向 VM 添加用户分配标识。
 
-   ![“配置”页屏幕截图](../media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade-disable.png)  
+   ![“配置”页屏幕截图](../managed-service-identity/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade-disable.png)  
 
 ## <a name="related-content"></a>相关内容
 

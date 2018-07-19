@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/31/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c2a830fa873f7277440d1baa9049a9c8eafcbf55
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: e808d4bf116dcab344308c3dd2aa06c72e0318ba
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261774"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049511"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发布历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -917,7 +917,7 @@ AD FS 管理
 **新的预览功能：**
 
 * [用于同步的 Azure AD Connect Health](../connect-health/active-directory-aadconnect-health-sync.md)。
-* 支持 [Azure AD 域服务](../active-directory-passwords-update-your-own-password.md)密码同步。
+* 支持 [Azure AD 域服务](../user-help/active-directory-passwords-update-your-own-password.md)密码同步。
 
 **新的受支持方案：**
 

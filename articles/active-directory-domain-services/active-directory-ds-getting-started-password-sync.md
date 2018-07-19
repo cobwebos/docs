@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/02/2018
 ms.author: maheshu
-ms.openlocfilehash: 701fe17869d6e7744751d80330422ea47361b411
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ff2659ed7dbdb21bccb8b5858d946b47951e40cc
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216134"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048927"
 ---
 # <a name="enable-password-hash-synchronization-to-azure-active-directory-domain-services"></a>允许将密码哈希同步到 Azure Active Directory 域服务
 在前述任务中，你为 Azure Active Directory (Azure AD) 租户启用了 Azure Active Directory 域服务。 下一个任务是使 NT LAN Manager (NTLM) 和 Kerberos 身份验证所需的密码哈希同步到 Azure AD 域服务。 设置密码哈希同步以后，用户即可使用其公司凭据登录到托管域。
@@ -78,7 +78,7 @@ Azure Active Directory 域服务需要密码哈希的格式适用于 NTLM 和 Ke
 更改密码后，新密码数分钟后会在 Azure Active Directory 域服务中可用。 大约 20 分钟后，便可以使用新更改的密码登录到已加入托管域的计算机了。
 
 ## <a name="related-content"></a>相关内容
-* [如何更新自己的密码](../active-directory/active-directory-passwords-update-your-own-password.md)
+* [如何更新自己的密码](../active-directory/user-help/active-directory-passwords-update-your-own-password.md)
 * [Azure AD 中的密码管理入门](../active-directory/authentication/quickstart-sspr.md)
 * [对已同步的 Azure AD 租户启用 Azure Active Directory 域服务密码哈希同步](active-directory-ds-getting-started-password-sync-synced-tenant.md)
 * [管理 Azure Active Directory 域服务托管域](active-directory-ds-admin-guide-administer-domain.md)

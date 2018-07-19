@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 07cbc047179c3de19d6f648d0342d47970c81dbc
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 235ba5fd1365ed8b400edce3db22420369540cce
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231366"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39052663"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>将 Azure Active Directory 与 E Sales Manager Remix 集成
 
@@ -100,7 +100,7 @@ ms.locfileid: "36231366"
 
     ![E Sales Manager Remix 域和 URL 单一登录信息](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下格式键入 URL：*https://\<Server-Based-URL>/\<sub-domain>/esales-pc*
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下格式键入 URL：*https://\<Server-Based-URL>/\<sub-domain>/esales-pc*
 
     b. 在“标识符”文本框中，使用以下格式键入 URL：*https://\<Server-Based-URL>/\<sub-domain>/*
 
@@ -153,7 +153,7 @@ ms.locfileid: "36231366"
 
     ![“SAML 身份验证设置”部分](./media/esalesmanagerremix-tutorial/configure3.png)
     
-    a. 选中“电脑版本”复选框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选中“电脑版本”复选框。
     
     b. 在“协作项”部分的下拉列表中选择“电子邮件”。
 
@@ -221,7 +221,7 @@ ms.locfileid: "36231366"
     
     ![“新员工注册”部分](./media/esalesmanagerremix-tutorial/user2.png)
 
-    a. 在“员工姓名”框中，键入用户名（如 **Britta**）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“员工姓名”框中，键入用户名（如 **Britta**）。
 
     b. 填写剩余的必填字段。
     
@@ -267,7 +267,7 @@ ms.locfileid: "36231366"
 
 在访问面板中选择 E Sales Manager Remix 磁贴时，应会自动登录到 E Sales Manager Remix 应用程序。
 
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

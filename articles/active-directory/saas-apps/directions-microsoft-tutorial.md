@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 282869295f26f85683a2d28706280c4bf62fa54b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b83f452300295078e4edf797ec2ef2f0c5223031
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221370"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047467"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-directions-on-microsoft"></a>教程：Azure Active Directory 与 Directions on Microsoft 的集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "36221370"
 
     ![配置单一登录](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：
     |  |
     | --- |
     | `https://www.directionsonmicrosoft.com/user/login` |
@@ -167,7 +167,7 @@ ms.locfileid: "36221370"
  
     ![创建 Azure AD 测试用户](./media/directions-microsoft-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -217,7 +217,7 @@ ms.locfileid: "36221370"
  
 单击访问面板中的 Directions on Microsoft 磁贴时，应当会自动登录到 Directions on Microsoft 应用程序。
 
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

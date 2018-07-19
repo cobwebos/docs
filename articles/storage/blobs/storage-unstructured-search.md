@@ -2,19 +2,19 @@
 title: 在 Azure 云存储中搜索非结构化数据
 description: 使用 Azure 搜索来搜索非结构化数据。
 author: roygara
-manager: timlt
+manager: twooley
 services: storage
 ms.service: storage
 ms.topic: tutorial
 ms.date: 10/12/2017
-ms.author: rogara
+ms.author: rogarana
 ms.custom: mvc
-ms.openlocfilehash: 930b735eb03aea6ce701b694ca527049b4c3f24d
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: e50ff3b3a53a13d1604fcb7872853d758259ff9f
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
-ms.locfileid: "23451634"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136530"
 ---
 # <a name="search-unstructured-data-in-cloud-storage"></a>在云存储中搜索非结构化数据
 
@@ -142,13 +142,13 @@ Azure 搜索是一种搜索即服务云解决方案，它提供开发人员 API 
 
 1. 输入数据源的名称。 在“要提取的数据”下，选择“内容和元数据”。 数据源指定要对 blob 的哪些部分编制索引。
     
-    a. 在自己将来的应用场景中，还可以选择“仅存储元数据”。 如果希望将编制索引的数据限制为标准 blob 属性或用户定义的属性，可选择此选项。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在自己将来的应用场景中，还可以选择“仅存储元数据”。 如果希望将编制索引的数据限制为标准 blob 属性或用户定义的属性，可选择此选项。
     
     b. 另外，还可以选择“所有元数据”来获取两个标准 blob 属性和所有内容类型特定的元数据。 
 
 2. 由于所用的 blob 是文本文件，因此请将“分析模式”设置为“文本”。
     
-    a. 在将来的应用场景中，用户可能想要选择[其他分析模式](../../search/search-howto-indexing-azure-blob-storage.md)，具体取决于 blob 的内容。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在将来的应用场景中，用户可能想要选择[其他分析模式](../../search/search-howto-indexing-azure-blob-storage.md)，具体取决于 blob 的内容。
 
   ![非结构化搜索](media/storage-unstructured-search/datasources.png)
 
@@ -179,7 +179,7 @@ Azure 搜索是一种搜索即服务云解决方案，它提供开发人员 API 
 “字段名称”列包含参数。 下表提供了可用属性及其说明的列表。
 
 ### <a name="field-attributes"></a>字段属性
-| 属性 | 说明 |
+| 属性 | Description |
 | --- | --- |
 | *键* |为每个文档提供唯一 ID 以便查找文档的字符串。 每个索引必须有一个 key。 只有一个字段可以是 key，并且此字段类型必须设置为 Edm.String。 |
 | *Retrievable* |指定是否可以在搜索结果中返回字段。 |

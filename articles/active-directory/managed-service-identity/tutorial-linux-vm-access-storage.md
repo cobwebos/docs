@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
 ms.author: daveba
-ms.openlocfilehash: fb67d1eea588d96129c4b58a8c1b2f569c9663bf
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: d4daccfdcb2bc11831e960aa20533e32801db946
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904401"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049331"
 ---
 # <a name="tutorial-use-a-linux-vms-managed-identity-to-access-azure-storage"></a>教程：使用 Linux VM 托管标识访问 Azure 存储 
 
@@ -61,7 +61,7 @@ ms.locfileid: "37904401"
 2. 选择“计算”，然后选择“Ubuntu Server 16.04 LTS”。
 3. 输入虚拟机信息。 对于“身份验证类型”，选择“SSH 公钥”或“密码”。 使用创建的凭据可以登录 VM。
 
-   ![用于创建虚拟机的“基本信息”窗格](../media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
+   ![用于创建虚拟机的“基本信息”窗格](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
 
 4. 在“订阅”列表中，选择虚拟机的订阅。
 5. 若要选择要在其中创建虚拟机的新资源组，请选择“资源组” > “新建”。 完成后，选择“确定”。
@@ -87,7 +87,7 @@ ms.locfileid: "37904401"
 5. 确保“订阅”和“资源组”与上一步中创建 VM 时指定的名称匹配。
 6. 单击“创建”。
 
-    ![新建存储帐户](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
+    ![新建存储帐户](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
 ## <a name="create-a-blob-container-and-upload-a-file-to-the-storage-account"></a>创建 blob 容器，并将文件上传到存储帐户
 
@@ -98,14 +98,14 @@ ms.locfileid: "37904401"
 3. 单击页面顶部的“+ 容器”。
 4. 在“新建容器”下，为容器输入一个名称，在“公共访问级别”下，保留默认值。
 
-    ![创建存储容器](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
+    ![创建存储容器](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
 5. 使用你选择的编辑器，在本地计算机上创建一个标题为 *hello world.txt* 的文件。  打开该文件并添加文本“Hello world! :）”（不包括引号），然后保存该文件。 
 
 6. 通过单击容器名称并单击“上传”，将该文件上传到新创建的容器。
 7. 在“上传 blob”窗格中，在“文件”下，单击文件夹图标并浏览到本地计算机上的文件 **hello_world.txt**，选择该文件，然后单击“上传”。
 
-    ![上传文本文件](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
+    ![上传文本文件](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
 
 ## <a name="grant-your-vm-access-to-an-azure-storage-container"></a>向 VM 授予对 Azure 存储容器的访问权限 
 

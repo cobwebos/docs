@@ -3,7 +3,7 @@ title: 如何更新云服务 | Microsoft Docs
 description: 了解如何在 Azure 中更新云服务。 了解如何云服务上进行更新以确保可用性。
 services: cloud-services
 documentationcenter: ''
-author: Thraka
+author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: c6a8b5e6-5c99-454c-9911-5c7ae8d1af63
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: adegeo
-ms.openlocfilehash: 36d4ee9dabd39f4103d17455e47521b378af6ebb
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.author: jeconnoc
+ms.openlocfilehash: 2f5a82fac18ab34bfa9d6b46f553227ed44a994a
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
-ms.locfileid: "24860665"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008087"
 ---
 # <a name="how-to-update-a-cloud-service"></a>如何更新云服务
 
@@ -106,7 +106,7 @@ Azure 将角色实例划分为称为升级域 (UD) 的逻辑组。 升级域 (UD
 
 在将服务从单个实例升级到多个实例时，由于 Azure 升级服务的方式，会在执行升级时停止服务。 保证服务可用性的服务级别协议仅适用于部署的具有多个实例的服务。 以下列表描述了每种 Azure 服务升级方案如何影响每个驱动器上的数据：
 
-|方案|C 盘|D 盘|E 盘|
+|场景|C 盘|D 盘|E 盘|
 |--------|-------|-------|-------|
 |VM 重启|已保留|已保留|已保留|
 |门户重启|已保留|已保留|已破坏|

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 6f28df6f2faa78af90fb4b5e62f218e3b391000b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 1137f1dac9570b56dc202194e5f94dfd72c31c9f
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37066078"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39029996"
 ---
 # <a name="internet-of-things-security-architecture"></a>物联网安全体系结构
 
@@ -176,7 +176,7 @@ Microsoft 使用上述体系结构来对 Azure IoT 进行威胁建模。 以下�
 
 | **组件** | **威胁** | **缓解措施** | **风险** | **实现** |
 | --- | --- | --- | --- | --- |
-| 设备 |S |将标识分配给设备并对设备进行身份验证 |用其他设备替换设备或部分设备。 如何确定是否在与正确的设备通信？ |使用传输层安全性 (TLS) 或 IPSec 来验证设备。 如果设备无法处理完全非对称加密，则基础结构应该支持在这些设备上使用预共享密钥 (PSK)。 利用 Azure AD，[OAuth](http://www.rfc-editor.org/in-notes/internet-drafts/draft-ietf-ace-oauth-authz-01.txt) |
+| 设备 |S |将标识分配给设备并对设备进行身份验证 |用其他设备替换设备或部分设备。 如何确定是否在与正确的设备通信？ |使用传输层安全性 (TLS) 或 IPSec 来验证设备。 如果设备无法处理完全非对称加密，则基础结构应该支持在这些设备上使用预共享密钥 (PSK)。 利用 Azure AD，[OAuth](https://www.rfc-editor.org/pdfrfc/rfc6755.txt.pdf) |
 || TRID |通过让人很难甚至不可能从设备提取密钥和其他加密材料等方法，为设备应用防篡改机制。 |但风险是我们不知道设备是不是已受到篡改（物理干扰）。 如何确定设备未受到篡改。 |最有效的缓解措施是信赖平台模块 (TPM) 功能，它可让你将密钥存放在特殊的芯片电路中，以确保密钥不被读取，而仅可用于只使用密钥而不会揭露密钥的加密操作。 设备的内存加密。 设备的密钥管理。 为代码签名。 | |
 || E |针对设备使用访问控制。 授权方案。 |如果设备可以根据外部源甚至遭入侵的传感器的命令来执行各项操作，则意味着攻击可以凭此执行操作，而不仅是访问内容。 |针对设备使用授权方案 | |
 | 现场网关 |S |现场网关到云网关的验证（例如证书式、PSK 或基于声明）。 |如果某人可以欺骗现场网关，则就可以伪装成任何设备。 |TLS RSA/PSK、IPSec、[RFC 4279](https://tools.ietf.org/html/rfc4279)。 同样地，一般的设备密钥存储和证明考虑因素都高度建议使用 TPM。 IPSec 的 6LowPAN 扩展可支持无线传感器网络 (WSN)。 |

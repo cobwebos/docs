@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: wolfma
-ms.openlocfilehash: d410dda09fdd30181b633c454b1d44610b10c472
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: fe171ba9f6f0ff36a7c23c47f145d83f7a94fb5d
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "35366987"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069482"
 ---
 # <a name="shipping-an-application"></a>交付应用程序
 
@@ -64,4 +64,4 @@ sudo apt-get install libssl1.0.0 libcurl3 libasound2 wget
 ## <a name="next-steps"></a>后续步骤
 
 * [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)
-* [了解如何在 C# 中识别语音](quickstart-csharp-windows.md)
+* [了解如何在 C# 中识别语音](quickstart-csharp-dotnet-windows.md)

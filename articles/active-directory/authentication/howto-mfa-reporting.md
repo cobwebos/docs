@@ -10,18 +10,18 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 4eb91e37331a5af064d2af0e937eb071d805688f
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 146a86058adc73626e532f33e9fdbc83d9cf27e8
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097873"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048980"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure 多重身份验证中的报告
 
 Azure 多重身份验证提供了几个可通过 Azure 门户访问的报告，供你和你的组织使用。 下表列出了可用的报告：
 
-| 报表 | 位置 | 说明 |
+| 报表 | 位置 | Description |
 |:--- |:--- |:--- |
 | 阻止的用户历史记录 | Azure AD > MFA 服务器 > 阻止/解除阻止用户 | 显示请求阻止或解除阻止用户的历史记录。 |
 | 使用情况和欺诈警报 | Azure AD > 登录 | 提供有关总体使用情况、用户摘要和用户详细信息的信息；以及指定日期范围内提交的欺诈警报的历史记录。 |
@@ -49,5 +49,5 @@ Azure 多重身份验证提供了几个可通过 Azure 门户访问的报告，�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [面向用户](end-user/current/multi-factor-authentication-end-user.md)
+* [面向用户](../user-help/multi-factor-authentication-end-user.md)
 * [部署位置](concept-mfa-whichversion.md)

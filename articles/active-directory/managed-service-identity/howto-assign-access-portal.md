@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 06f316a7c96ff266e9f4593fa3a9ac871b2979aa
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: cf6df6dd87de56ca3c8180d5377e35d9be9bbd79
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33929766"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036439"
 ---
 # <a name="assign-a-managed-service-identity-access-to-a-resource-by-using-the-azure-portal"></a>使用 Azure 门户授予托管服务标识对资源的访问权限
 
@@ -41,20 +41,20 @@ ms.locfileid: "33929766"
 
 3. 对 Azure 虚拟机，依次选择资源的“访问控制(IAM)”页和“+ 添加”。 然后，指定**角色**、“将访问权限分配给虚拟机”，指定相应**订阅**和资源所在的**资源组**。 在搜索条件区域下，应该会看到该资源。 选择该资源，并选择“保存”。 
 
-   ![访问控制(IAM)”屏幕截图](../media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
+   ![访问控制(IAM)”屏幕截图](../managed-service-identity/media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
    对 Azure 虚拟机规模集，依次选择资源的“访问控制(IAM)”页和“+ 添加”。 然后指定“角色”、“将访问权限分配到”。 在搜索条件区域下，搜索虚拟机规模集。 选择该资源，并选择“保存”。
    
-   ![“访问控制(IAM)”屏幕截图](../media/msi-howto-assign-access-vmss-portal/assign-access-control-vmss-iam-blade-before.png)  
+   ![“访问控制(IAM)”屏幕截图](../managed-service-identity/media/msi-howto-assign-access-vmss-portal/assign-access-control-vmss-iam-blade-before.png)  
 
 4. 返回到“访问控制(IAM)”主页，其中显示资源 MSI 对应的新条目。
 
     Azure 虚拟机：
 
-   ![“访问控制(IAM)”屏幕截图](../media/msi-howto-assign-access-portal/assign-access-control-iam-blade-after.png)
+   ![“访问控制(IAM)”屏幕截图](../managed-service-identity/media/msi-howto-assign-access-portal/assign-access-control-iam-blade-after.png)
 
     Azure 虚拟机规模集：
 
-    ![“访问控制(IAM)”屏幕截图](../media/msi-howto-assign-access-vmss-portal/assign-access-control-vmss-iam-blade-after.png)
+    ![“访问控制(IAM)”屏幕截图](../managed-service-identity/media/msi-howto-assign-access-vmss-portal/assign-access-control-vmss-iam-blade-after.png)
 
 ## <a name="troubleshooting"></a>故障排除
 

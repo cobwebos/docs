@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 0c09ad0dd6ca2748a19aabc161390d9e0d09c6e8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 89bbf0bff107cd297f69c0bf5a4017959ea238cd
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594911"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043969"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>教程：使用 Windows VM 托管服务标识通过 SAS 凭据访问 Azure 存储
 
@@ -56,7 +56,7 @@ ms.locfileid: "34594911"
 5.  若要在新资源组中创建虚拟机，请选择“资源组”中的“新建”。 完成后，单击“确定”。
 6.  选择 VM 大小。 若要查看更多的大小，请选择“全部查看”或更改“支持的磁盘类型”筛选器。 在设置边栏选项卡中保留默认值，然后单击“确定”。
 
-    ![Alt 图像文本](../media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
+    ![Alt 图像文本](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
 ## <a name="enable-msi-on-your-vm"></a>在 VM 上启用 MSI
 
@@ -67,7 +67,7 @@ ms.locfileid: "34594911"
 3. 若要注册并启用 MSI，请选择“是”，若要禁用，请选择“否”。
 4. 务必单击“保存”，以保存配置。
 
-    ![Alt 图像文本](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+    ![Alt 图像文本](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="create-a-storage-account"></a>创建存储帐户 
 
@@ -80,7 +80,7 @@ ms.locfileid: "34594911"
 5. 确保“订阅”和“资源组”与上一步中创建 VM 时指定的名称匹配。
 6. 单击“创建”。
 
-    ![新建存储帐户](../media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
+    ![新建存储帐户](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
 ## <a name="create-a-blob-container-in-the-storage-account"></a>在存储帐户中创建 Blob 容器
 
@@ -91,7 +91,7 @@ ms.locfileid: "34594911"
 3. 单击页面顶部的“+ 容器”，将滑出“新建容器”面板。
 4. 为容器指定名称，选择访问级别，单击“确定”。 在本教程中的后面部分将使用所指定的名称。 
 
-    ![创建存储容器](../media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
+    ![创建存储容器](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
 ## <a name="grant-your-vms-msi-access-to-use-a-storage-sas"></a>向 VM 的 MSI 授予访问权限以使用存储 SAS 
 
@@ -105,7 +105,7 @@ Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用 MSI 
 6. 接下来，确保“订阅”下拉列表中列出了正确的订阅，然后将“资源组”设置为“所有资源组”。  
 7. 最后，在“选择”下，从下拉列表中选择 Windows 虚拟机，然后单击“保存”。 
 
-    ![Alt 图像文本](../media/msi-tutorial-linux-vm-access-storage/msi-storage-role-sas.png)
+    ![Alt 图像文本](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/msi-storage-role-sas.png)
 
 ## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>使用 VM 标识获取访问令牌，并使用它调用 Azure 资源管理器 
 

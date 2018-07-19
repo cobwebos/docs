@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 16b715261329544687fd78ed9c022d7392cc32d9
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: e775ed9d918e53b8381a010691c679d80e7dd216
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901470"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044044"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>教程：使用 Linux VM 托管服务标识 (MSI) 访问 Azure Key Vault 
 
@@ -51,7 +51,7 @@ ms.locfileid: "37901470"
 2. 选择“计算”，然后选择“Ubuntu Server 16.04 LTS”。
 3. 输入虚拟机信息。 对于“身份验证类型”，选择“SSH 公钥”或“密码”。 使用创建的凭据可以登录 VM。
 
-    ![Alt 图像文本](../media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
+    ![Alt 图像文本](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
 
 4. 在“订阅”下拉列表中，选择虚拟机对应的订阅。
 5. 若要在新资源组中创建虚拟机，请选择“资源组”中的“新建”。 完成后，单击“确定”。
@@ -66,7 +66,7 @@ ms.locfileid: "37901470"
 3. 此时，将会看到托管服务标识。 若要注册并启用 MSI，请选择“是”，若要禁用，请选择“否”。
 4. 务必单击“保存”，以保存配置。
 
-    ![Alt 图像文本](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+    ![Alt 图像文本](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>授予 VM 对 Key Vault 中存储的密钥的访问权限  
 
@@ -83,7 +83,7 @@ ms.locfileid: "37901470"
 7. 单击“确定”完成添加新的访问策略，然后单击“确定”完成访问策略选择。 
 8. 单击“创建”完成创建 Key Vault。 
 
-    ![Alt 图像文本](../media/msi-tutorial-windows-vm-access-nonaad/msi-blade.png)
+    ![Alt 图像文本](../managed-service-identity/media/msi-tutorial-windows-vm-access-nonaad/msi-blade.png)
 
 接下来，将密钥添加到 Key Vault，以便稍后可以使用在 VM 中运行的代码检索此密钥： 
 

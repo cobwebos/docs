@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: article
 ms.date: 06/14/2018
 ms.author: jaredmoo
-ms.openlocfilehash: fb6e4ebd635d8afa8e679ee5bb0f5646f28f887b
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: ca21355c836a58591bbbd09874d0c5d0b5c17435
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311401"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126419"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>使用 Transact-SQL (T-SQL) 创建和管理弹性数据库作业
 
@@ -80,7 +80,7 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name='ServerGroup1';
 --Connect to the job database specified when creating the job agent
 
 -- Add a target group containing server(s)
-EXEC [jobs].sp_add_target_group = N'ServerGroup'
+EXEC [jobs].sp_add_target_group N'ServerGroup'
 GO
 
 -- Add a server target member
@@ -396,7 +396,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 
 
 
-|存储过程  |说明  |
+|存储过程  |Description  |
 |---------|---------|
 |[sp_add_job](#spaddjob)     |     添加新的作业。    |
 |[sp_update_job ](#spupdatejob)    |      更新现有的作业。   |
@@ -1183,7 +1183,7 @@ GO
 以下视图在[作业数据库](elastic-jobs-overview.md#job-database)中提供。
 
 
-|查看  |说明  |
+|查看  |Description  |
 |---------|---------|
 |[jobs_executions](#jobsexecutions-view)     |  显示作业执行历史记录。      |
 |[jobs](#jobs-view)     |   显示所有作业。      |
@@ -1201,7 +1201,7 @@ GO
 显示作业执行历史记录。
 
 
-|列名称|   数据类型   |说明|
+|列名称|   数据类型   |Description|
 |---------|---------|---------|
 |**job_execution_id**   |uniqueidentifier|  一个作业执行操作实例的唯一 ID。
 |**job_name**   |nvarchar(128)  |作业的名称。
@@ -1229,7 +1229,7 @@ GO
 
 显示所有作业。
 
-|列名称|   数据类型|  说明|
+|列名称|   数据类型|  Description|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |作业的名称。|
 |**job_id**|    uniqueidentifier    |作业的唯一 ID。|
@@ -1247,7 +1247,7 @@ GO
 
 显示所有作业版本。
 
-|列名称|   数据类型|  说明|
+|列名称|   数据类型|  Description|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |作业的名称。|
 |**job_id**|    uniqueidentifier    |作业的唯一 ID。|
@@ -1260,7 +1260,7 @@ GO
 
 显示每项作业的当前版本中的所有步骤。
 
-|列名称    |数据类型| 说明|
+|列名称    |数据类型| Description|
 |------|------|-------|
 |**job_name**   |nvarchar(128)| 作业的名称。|
 |**job_id** |uniqueidentifier   |作业的唯一 ID。|
@@ -1301,7 +1301,7 @@ GO
 
 列出所有目标组。
 
-|列名称|数据类型| 说明|
+|列名称|数据类型| Description|
 |-----|-----|-----|
 |**target_group_name**| nvarchar(128)   |目标组（数据库集合）的名称。 
 |**target_group_id**    |uniqueidentifier   |目标组的唯一 ID。
@@ -1312,7 +1312,7 @@ GO
 
 显示所有目标组的所有成员。
 
-|列名称|数据类型| 说明|
+|列名称|数据类型| Description|
 |-----|-----|-----|
 |**target_group_name**  |nvarchar(128|目标组（数据库集合）的名称。 |
 |**target_group_id**    |uniqueidentifier   |目标组的唯一 ID。|

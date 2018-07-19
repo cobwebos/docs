@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: ramamill
-ms.openlocfilehash: f305f552d576f58914bc33351331f1da3c68bc23
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: c2100ee2388ae09bd309167b1be77f7bdbe32f69
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951642"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126011"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>解决 VMware VM 和物理服务器的复制问题
 
@@ -74,25 +74,7 @@ ms.locfileid: "37951642"
 
 * **检查进程服务器上基于 URL 的防火墙是否未阻止访问**：如果在服务器上使用基于 URL 的防火墙规则，请确保将以下 URL 添加到防火墙配置。
 
-  `*.accesscontrol.windows.net:` 用于访问控制和标识管理
-
-  `*.backup.windowsazure.com:` 用于复制数据传输和协调
-
-  `*.blob.core.windows.net:` 用于访问存储所复制数据的存储帐户
-
-  `*.hypervrecoverymanager.windowsazure.com:` 用于复制管理操作和协调
-
-  `time.nist.gov` 和 `time.windows.com`：用于检查系统时间与全球时间之间的时间同步。
-
-Azure 政府云的 URL：
-
-`* .ugv.hypervrecoverymanager.windowsazure.us`
-
-`* .ugv.backup.windowsazure.us`
-
-`* .ugi.hypervrecoverymanager.windowsazure.us`
-
-`* .ugi.backup.windowsazure.us`
+[!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
 
 * **检查进程服务器上的代理设置是否未阻止访问**。  如果使用代理服务器，请确保代理服务器名称由 DNS 服务器解析。
 若要查看在配置服务器安装期间提供的信息， 请转到注册表项

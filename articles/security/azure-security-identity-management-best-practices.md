@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 6632ab962f3df0cfee8d28d7dad40bad8baf3f50
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 210781b36f6215afc925266e597031d772a94002
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365774"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39059199"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 
 许多人将标识视为安全性的新边界层，从传统的以网络为中心的角度来看可以接管这种角色。 安全关注与投资主轴的这种演变来源于这样一个事实：网络周边的漏洞越来越多，在 [BYOD](http://aka.ms/byodcg) 设备和云应用程序呈爆炸性增长之前，周边防御不如以前那么有效。
 
-本文介绍一系列 Azure 标识管理和访问控制安全最佳实践。 这些最佳做法衍生自我们的 [Azure AD](../active-directory/active-directory-whatis.md) 经验和客户经验。
+本文介绍一系列 Azure 标识管理和访问控制安全最佳实践。 这些最佳做法衍生自我们的 [Azure AD](../active-directory/fundamentals/active-directory-whatis.md) 经验和客户经验。
 
 对于每项最佳做法，本文将说明：
 
@@ -65,7 +65,7 @@ ms.locfileid: "34365774"
 
 如果要管理多个目录，则不仅会给 IT 人员造成管理问题，而且最终用户还必须记住多个密码。 通过使用 [SSO](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)，可让用户能够使用相同凭据集登录并访问所需资源，无需考虑此资源是位于本地还是云中。
 
-用户可使用 SSO 基于 Azure AD 中的组织帐户访问 [SaaS 应用程序](../active-directory/manage-apps/what-is-single-sign-on.md)。 这不仅适用于 Microsoft SaaS 应用，还适用于其他应用，例如 [Google Apps](../active-directory/active-directory-saas-google-apps-tutorial.md) 和 [Salesforce](../active-directory/active-directory-saas-salesforce-tutorial.md)。 可将应用程序配置为使用 Azure AD 作为[基于 SAML 的标识](../active-directory/fundamentals-identity.md)提供者。 作为安全控制机制，Azure AD 不会发出可让用户登录应用程序的令牌，除非使用 Azure AD 向他们授予了访问权限。 可以直接或者通过他们所属的组授予访问权限。
+用户可使用 SSO 基于 Azure AD 中的组织帐户访问 [SaaS 应用程序](../active-directory/manage-apps/what-is-single-sign-on.md)。 这不仅适用于 Microsoft SaaS 应用，还适用于其他应用，例如 [Google Apps](../active-directory/saas-apps/google-apps-tutorial.md) 和 [Salesforce](../active-directory/saas-apps/salesforce-tutorial.md)。 可将应用程序配置为使用 Azure AD 作为[基于 SAML 的标识](../active-directory/fundamentals-identity.md)提供者。 作为安全控制机制，Azure AD 不会发出可让用户登录应用程序的令牌，除非使用 Azure AD 向他们授予了访问权限。 可以直接或者通过他们所属的组授予访问权限。
 
 > [!NOTE]
 > 是否使用 SSO 的决定会影响到如何将本地目录与云目录集成。 如果要使用 SSO，则需要使用联合，因为目录同步只提供[相同登录体验](../active-directory/active-directory-aadconnect.md)。
@@ -78,7 +78,7 @@ ms.locfileid: "34365774"
 
 ## <a name="deploy-password-management"></a>部署密码管理
 
-如果有多个租户或者想要允许用户[重置自己的密码](../active-directory/active-directory-passwords-update-your-own-password.md)，则必须使用适当的安全策略来防止滥用。 在 Azure 中，可以利用自助密码重置功能并自定义安全选项来满足业务要求。
+如果有多个租户或者想要允许用户[重置自己的密码](../active-directory/user-help/active-directory-passwords-update-your-own-password.md)，则必须使用适当的安全策略来防止滥用。 在 Azure 中，可以利用自助密码重置功能并自定义安全选项来满足业务要求。
 
 必须从这些用户获取反馈，并在用户尝试执行这些步骤时，从用户的体验中获得经验教训，这一点很重要。 根据这些经验制定计划，以减少在部署大型组时可能出现的潜在问题。 此外，建议使用[密码重置注册活动报告](../active-directory/active-directory-passwords-get-insights.md)来监视正在注册的用户。
 

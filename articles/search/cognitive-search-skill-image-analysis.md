@@ -4,21 +4,18 @@ description: 在 Azure 搜索扩充管道中使用 ImageAnalysis 认知技能通
 services: search
 manager: pablocas
 author: luiscabrer
-documentationcenter: ''
-ms.assetid: ''
 ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: dd26dbe34cd04d1ad3184e2cd62afae5166ac914
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ad1946436b2b5bab55ff53dcce09446ef1220829
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640500"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39011525"
 ---
 #   <a name="image-analysis-cognitive-skill"></a>图像分析认知技能
 
@@ -31,7 +28,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 参数区分大小写。
 
-| 参数名称     | 说明 |
+| 参数名称     | Description |
 |--------------------|-------------|
 | defaultLanguageCode   |  表示要返回的语言的字符串。 该服务以指定的语言返回识别结果。 如果未指定此参数，则默认值为“en”。 <br/><br/>支持的语言为： <br/>en - 英语（默认） <br/> zh - 简体中文|
 |visualFeatures |   表示要返回的可视特征类型的一组字符串。 有效的可视特征类型包括：  <ul><li> categories - 根据认知服务[文档](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)中定义的分类对图像内容进行分类。</li><li> tags - 使用与图像内容相关字词的详细列表来标记图像。</li><li>Description - 用完整的英文句子描述图像内容。</li><li>Faces - 检测人脸是否存在。 如果存在，则生成位置、性别和年龄。</li><li> ImageType - 检测图像是剪贴画还是素描。</li><li>   Color - 确定主题色、主色以及图像是否为黑白。</li><li>Adult - 检测图片是否具有色情性质（描绘裸体或性行为）。 也检测性暗示内容。</li></ul> 可视特征的名称区分大小写。|
@@ -40,7 +37,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 ## <a name="skill-inputs"></a>技能输入
 
-| 输入名称      | 说明                                          |
+| 输入名称      | Description                                          |
 |---------------|------------------------------------------------------|
 | 图像         | 复杂类型。 当前仅适用于“/document/normalized_images”字段，当 ```imageAction``` 设置为 ```generateNormalizedImages``` 时由 Azure Blob 索引器生成。 请参阅[此示例](#sample-output)获取详细信息。|
 
@@ -51,6 +48,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 ```json
 {
     "@odata.type": "#Microsoft.Skills.Vision.ImageAnalysisSkill",
+    "context": "/document/normalized_images/*",
     "visualFeatures": [
         "Tags",
         "Faces",
@@ -235,7 +233,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 ## <a name="error-cases"></a>错误案例
 在以下错误案例中，未提取任何元素。
 
-| 错误代码 | 说明 |
+| 错误代码 | Description |
 |------------|-------------|
 | NotSupportedLanguage | 不支持提供的语言。 |
 | InvalidImageUrl | 图片 URL 格式不正确或无法访问。|

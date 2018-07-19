@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: hero-article
 ms.date: 05/10/2018
 ms.author: danlep
-ms.openlocfilehash: 954a67ed126b505c9ba0da81b3ace0d25e840adb
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: f07b3ce85641f34462c97d16bbed8cf9e2e50652
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128582"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114535"
 ---
 # <a name="get-started-with-batch-rendering"></a>Batch 渲染入门 
 
@@ -123,7 +123,7 @@ Azure 提供 Windows 和 Linux 映像，每个都预先安装了单一版本的 
 
 有了 3ds Max Batch 实验室模板，即可使用 Batch 渲染来渲染 VRay 和 Arnold 场景。 适用于 VRay 和 Arnold 的模板有两个变体，一个用于标准场景，另一个用于较复杂的场景，需要资产和纹理的 3ds Max 路径文件（.mxp 文件）。 有关 3ds Max Batch 实验室模板的详细信息，请参阅 GitHub 上的 [BatchLabs-data](https://github.com/Azure/BatchLabs-data/tree/master/ncj/3dsmax) 存储库。
 
-另外，可以使用 [Batch Python SDK](https://docs.microsoft.com/azure/batch/batch-python-tutorial) 将渲染与现有管道集成。
+另外，可以使用 [Batch Python SDK](/python/api/overview/azure/batch) 将渲染与现有管道集成。
 
 
 ## <a name="use-the-batch-plug-in-for-maya-to-submit-a-render-job"></a>使用用于 Maya 的 Batch 插件提交渲染作业

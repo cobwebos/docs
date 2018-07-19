@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/14/2017
 ms.author: lizross
-ms.openlocfilehash: 8b0a591f84dd8ece0f6a8e2de19cddfee21b28e4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: e304242718478cae2670372a06abe07f926fbed2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448794"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054737"
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory 常见问题
 Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决方案，涉及到标识、访问管理和安全的方方面面。
@@ -93,7 +93,7 @@ Azure AD 提供另一组管理员角色来管理与目录和标识相关的功�
 
 **答：** 是的，Azure AD 提供 [Azure AD 访问面板](http://myapps.microsoft.com) ，方便用户使用自助服务以及进行应用程序访问。 如果是 Office 365 客户，可以在 Office 365 门户中找到许多相同的功能。
 
-有关详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。
+有关详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 - - -
 **问：Azure AD 是否可以帮助我管理本地基础结构？**

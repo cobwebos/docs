@@ -17,6 +17,8 @@
           items:
             - name: 'C#'
               href: luis-get-started-cs-get-intent.md
+            - name: Go
+              href: luis-get-started-go-get-intent.md
             - name: Java
               href: luis-get-started-java-get-intent.md
             - name: JavaScript
@@ -33,6 +35,8 @@
           items:
             - name: 'C#'
               href: luis-get-started-cs-add-utterance.md
+            - name: Go
+              href: luis-get-started-go-add-utterance.md
             - name: Java
               href: luis-get-started-java-add-utterance.md
             - name: JavaScript
@@ -69,7 +73,7 @@
           href: luis-quickstart-intent-and-sentiment-analysis.md
     - name: 改进应用
       items:
-        - name: 查看终结点表述
+        - name: 查看终结点话语
           href: luis-tutorial-review-endpoint-utterances.md
         - name: 使用批处理测试
           href: luis-tutorial-batch-testing.md
@@ -220,7 +224,7 @@
             - name: 使用 PowerShell 查看终结点使用情况
               href: luis-how-to-manage-from-cloud-shell.md
             - name: 使用流量管理器将终结点配额分布在各个密钥上
-              href: traffic-manager.md
+              href: luis-traffic-manager.md
     - name: 迁移到 V2 API
       href: migration-v1-to-v2.md
     - name: 以编程方式查找区域

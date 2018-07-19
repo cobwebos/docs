@@ -7,14 +7,14 @@ author: v-jaswel
 ms.service: cognitive-services
 ms.component: translator-speech
 ms.topic: article
-ms.date: 3/5/2018
+ms.date: 07/17/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 29722b3fa7fe61aff0b2406002453020d999ea41
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 40535f400bc5359019e89320489721bf481c1210
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365664"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39124820"
 ---
 # <a name="quickstart-for-microsoft-translator-speech-api-with-python"></a>将 Microsoft 语音翻译 API 与 Python 配合使用的快速入门 
 <a name="HOLTop"></a>
@@ -27,7 +27,7 @@ ms.locfileid: "35365664"
 
 需为 Python 安装 [websocket-client 包](https://pypi.python.org/pypi/websocket-client)。
 
-将需要一个名为“speak.wav”的 .wav 文件，该文件与从以下代码编译的可执行文件位于同一文件夹中。 此 .wav 文件应采用标准 PCM、16 位、16 kHz 单声道格式。 可从[文本翻译朗读 API](http://docs.microsofttranslator.com/text-translate.html#!/default/get_Speak) 获取此类 .wav 文件。
+将需要一个名为“speak.wav”的 .wav 文件，该文件与从以下代码编译的可执行文件位于同一文件夹中。 此 .wav 文件应采用标准 PCM、16 位、16 kHz 单声道格式。
 
 必须创建一个具有 Microsoft 语音翻译 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 需要一个来自 [Azure 仪表板](https://portal.azure.com/#create/Microsoft.CognitiveServices)的付费订阅密钥。
 
@@ -37,7 +37,7 @@ ms.locfileid: "35365664"
 
 1. 在喜欢使用的 IDE 中创建新的 Python 项目。
 2. 添加下方提供的代码。
-3. 将 `key` 值替换为对订阅有效的访问密钥。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```python

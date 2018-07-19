@@ -11,12 +11,12 @@ ms.workload: azure
 ms.topic: conceptual
 ms.date: 11/11/2016
 ms.author: ghogen
-ms.openlocfilehash: 866575a483e705e1c972a0b56d98f26e9cf0c631
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 872ca1dcd48c953180227580d805838c94ea232d
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798115"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115538"
 ---
 # <a name="using-windows-powershell-scripts-to-publish-to-dev-and-test-environments"></a>使用 Windows PowerShell 脚本发布到开发和测试环境
 
@@ -36,7 +36,7 @@ ms.locfileid: "31798115"
 
 ## <a name="generating-the-publish-scripts"></a>生成发布脚本
 
-在创建新项目时，可以遵照[这些说明](virtual-machines/windows/classic/web-app-visual-studio.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)为托管网站的虚拟机生成发布脚本。 还可以[为 Azure 应用服务中的 Web 应用生成发布脚本](app-service/app-service-web-get-started-dotnet.md)。
+在创建新项目时，可以遵照[这些说明](virtual-machines/windows/classic/web-app-visual-studio.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)为托管网站的虚拟机生成发布脚本。 还可以[为 Azure 应用服务中的 Web 应用生成发布脚本](app-service/scripts/app-service-powershell-deploy-github.md)。
 
 ## <a name="scripts-that-visual-studio-generates"></a>Visual Studio 生成的脚本
 
@@ -309,7 +309,7 @@ return $WebDeployPackage
 
 **AzureWebAppPublishModule**
 
-| 函数名称 | 说明 |
+| 函数名称 | Description |
 | --- | --- |
 | Add-AzureSQLDatabase |创建新的 Azure SQL 数据库。 |
 | Add-AzureSQLDatabases |基于 Visual Studio 生成的 JSON 配置文件中的值创建 Azure SQL 数据库。 |
@@ -338,7 +338,7 @@ return $WebDeployPackage
 
 **Publish-WebApplication**
 
-| 函数名称 | 说明 |
+| 函数名称 | Description |
 | --- | --- |
 | New-AzureWebApplicationEnvironment |创建 Azure 资源，例如网站或虚拟机。 |
 | New-WebDeployPackage |未实现此函数。 可以在此函数中添加命令以生成项目。 |

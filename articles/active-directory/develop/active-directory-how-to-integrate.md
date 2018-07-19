@@ -17,12 +17,12 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.reviewer: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: b6de3094e903c3584aa4a57e7792e4b07711f74a
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 79721c2ad0ae83e3c8bd103aee94916f1e2995aa
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937132"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054631"
 ---
 # <a name="integrating-with-azure-active-directory"></a>与 Azure Active Directory 集成
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -52,7 +52,7 @@ Azure Active Directory 为组织的云应用程序提供企业级标识管理。
 ### <a name="promote-your-application-in-the-azure-and-office-365-marketplaces"></a>在 Azure 和 Office 365 市场中推广应用程序
 **向数百万个已使用 Azure AD 的组织推广应用程序。**  搜索和浏览这些市场的用户已在使用一个或多个云服务，这让他们成为合格的云服务客户。 深入了解如何在 [Azure 市场](https://azure.microsoft.com/marketplace/partner-program/)中推广应用程序。
 
-**用户注册应用程序后，该程序会在其 Azure AD 访问面板和 Office 365 应用启动器中显示。**  之后，用户能够快速轻松地返回应用程序，可提高用户参与度。 深入了解 [Azure AD 访问面板](../active-directory-saas-access-panel-introduction.md)。
+**用户注册应用程序后，该程序会在其 Azure AD 访问面板和 Office 365 应用启动器中显示。**  之后，用户能够快速轻松地返回应用程序，可提高用户参与度。 深入了解 [Azure AD 访问面板](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 ### <a name="secure-device-to-service-and-service-to-service-communication"></a>保护设备与服务之间以及服务与服务之间的通信
 **利用 Azure AD 进行服务和设备的标识管理，减少需编写的代码并使 IT 人员能够管理访问权限。**  服务和设备可以使用 OAuth 从 Azure AD 获取令牌，并使用这些令牌来访问 Web API。 使用 Azure AD 可以避免编写复杂的身份验证代码。 由于服务和设备的标识存储在 Azure AD 中，IT 人员可以在一个位置管理密钥和吊销，而无需单独在应用程序中执行此操作。

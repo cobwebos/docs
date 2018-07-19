@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f4278dc3af1074b6de299444d2b205396bc0a9c0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7be5569654cb537260117ecd452e58cff9824a88
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595302"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044768"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect 同步：了解默认配置
 本文介绍现成的配置规则。 其中说明这些规则及其对配置将有何影响。 此外还将逐步介绍如何完成 Azure AD Connect 同步的默认配置。其目的是让读者了解配置模型（名为声明性预配）在实际示例中的运行情形。 本文假设已使用安装向导安装并配置了 Azure AD Connect 同步。
@@ -77,9 +77,9 @@ ms.locfileid: "34595302"
 
 * 联系人必须已启用邮件。 这可以使用以下规则来验证：
   * `IsPresent([proxyAddresses]) = True)`。 必须填充 proxyAddresses 属性。
-  * 可在 proxyAddresses 属性或 mail 属性中找到主要电子邮件地址。 提供的 @ 用于验证内容是否为电子邮件地址。 以下两条规则之一必须评估为 True。
-    * `(Contains([proxyAddresses], "SMTP:") > 0) && (InStr(Item([proxyAddresses], Contains([proxyAddresses], "SMTP:")), "@") > 0))`。 是否有包含“SMTP:”的项，如果有，是否可在字符串中找到 @？
-    * `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)`。 是否已填充邮件属性，如果是，是否可在字符串中找到 @？
+  * 可在 proxyAddresses 属性或 mail 属性中找到主要电子邮件地址。 提供的 \@ 用于验证内容是否为电子邮件地址。 以下两条规则之一必须评估为 True。
+    * `(Contains([proxyAddresses], "SMTP:") > 0) && (InStr(Item([proxyAddresses], Contains([proxyAddresses], "SMTP:")), "@") > 0))`。 是否有包含“SMTP:”的项，如果有，是否可在字符串中找到 \@？
+    * `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)`。 是否已填充邮件属性，如果是，是否可在字符串中找到 \@？
 
 以下联系人对象**不会**同步到 Azure AD：
 
@@ -147,7 +147,7 @@ SRE 是一个资源套件工具，将随 Azure AD Connect 同步一起安装。�
 
 同步规则具有四个配置部分：“描述”、“范围筛选器”、“联接规则”和“转换”。
 
-#### <a name="description"></a>说明
+#### <a name="description"></a>Description
 第一部分提供名称和描述等基本信息。
 
 ![同步规则编辑器中的“说明”选项卡 ](./media/active-directory-aadconnectsync-understanding-default-configuration/syncruledescription.png)

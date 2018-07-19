@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 43fcde887c21794989aa43540a214ef34893a630
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a569c968d444c36ceb3bce4779d2eca39c21f9bc
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366806"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069188"
 ---
 # <a name="about-the-speech-translation-api"></a>关于语音翻译 API
 
@@ -43,4 +43,4 @@ ms.locfileid: "35366806"
 ## <a name="next-steps"></a>后续步骤
 
 * [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)
-* [了解如何在 C# 应用中识别语音](quickstart-csharp-windows.md)
+* [了解如何在 C# 中识别语音](quickstart-csharp-dotnet-windows.md)

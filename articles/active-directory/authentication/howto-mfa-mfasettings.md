@@ -10,18 +10,18 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: bf25ae5703a632005dd73820fc05347f7b5e16a6
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 1d5e7683050c5e1e4216b81e23554724f12d45f9
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097489"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054703"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>配置 Azure 多重身份验证设置
 
 在启动并运行 Azure 多重身份验证后，可以参考本文进行管理。 本文涵盖了各种主题，可帮助你充分利用 Azure 多重身份验证。 并非所有 [Azure 多重身份验证版本](concept-mfa-whichversion.md#what-features-do-i-need)都提供全部功能。
 
-| 功能 | 说明 | 
+| 功能 | Description | 
 |:--- |:--- |
 | [阻止和解除阻止用户](#block-and-unblock-users) |使用阻止/解除阻止用户功能，防止用户收到身份验证请求。 |
 | [欺诈警报](#fraud-alert) |配置欺诈警报，以便用户举报企图访问其资源的欺诈行为。 |
@@ -292,7 +292,7 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 
 用户可以在最初注册时创建应用密码。 用户可在注册过程结束时选择创建应用密码。
 
-用户还可以在注册后创建应用密码。 可通过 Azure 门户或 Office 365 门户中的设置来更改应用密码。 有关适用于用户的详细信息和详细步骤，请参阅 [Azure 多重身份验证中的应用密码是什么？](end-user/current/multi-factor-authentication-end-user-app-passwords.md)。
+用户还可以在注册后创建应用密码。 可通过 Azure 门户或 Office 365 门户中的设置来更改应用密码。 有关适用于用户的详细信息和详细步骤，请参阅 [Azure 多重身份验证中的应用密码是什么？](../user-help/multi-factor-authentication-end-user-app-passwords.md)。
 
 <a name="remember-multi-factor-authentication-for-devices-that-users-trust"></a>
 ## <a name="remember-multi-factor-authentication-for-trusted-devices"></a>为受信任的设备记住多重身份验证
@@ -301,7 +301,7 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 >[!IMPORTANT]
 >请记住，如果帐户或设备遭到入侵，受信任的设备的多重身份验证可能影响安全性。 如果公司帐户受到安全威胁，或者受信任的设备已丢失或被盗，则应[在所有设备上还原多重身份验证](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user)。
 >
->还原操作会撤销所有设备的受信任状态，需要用户重新执行双重验证。 还可以指示用户按照[管理双重验证设置](end-user/current/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted)中的说明在其自己的设备上还原多重身份验证。
+>还原操作会撤销所有设备的受信任状态，需要用户重新执行双重验证。 还可以指示用户按照[管理双重验证设置](../user-help/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted)中的说明在其自己的设备上还原多重身份验证。
 >
 
 ### <a name="how-the-feature-works"></a>该功能的工作原理
@@ -341,9 +341,9 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 
 可使用“可选择验证方法”功能，选择用户可使用的验证方法。 下表提供了这些方法的简要概述。
 
-用户为其帐户注册 Azure 多重身份验证时，可从你启用的选项中选择其首选验证方法。 [为我的帐户设置双重验证帐户](end-user/current/multi-factor-authentication-end-user-first-time.md)中提供了用户注册过程指导。
+用户为其帐户注册 Azure 多重身份验证时，可从你启用的选项中选择其首选验证方法。 [为我的帐户设置双重验证帐户](../user-help/multi-factor-authentication-end-user-first-time.md)中提供了用户注册过程指导。
 
-| 方法 | 说明 |
+| 方法 | Description |
 |:--- |:--- |
 | 拨打电话 |拨打自动语音电话。 用户接听电话，并按电话键盘上的 # 进行身份验证。 此电话号码不会同步到本地 Active Directory。 |
 | 向手机发送短信 |发送包含验证码的短信。 系统会提示用户在登录界面中输入验证代码。 此过程称为单向短信。 双向短信意味着用户必须短信回复一个特定代码。 已弃用双向短信，2018 年 11 月 14 日后不再受到支持。 届时，配置为使用双向短信的用户会自动切换到“电话呼叫”验证。|

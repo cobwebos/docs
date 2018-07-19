@@ -165,7 +165,7 @@
         - name: 配置 PremiumV2 层
           href: app-service-configure-premium-tier.md
         - name: 横向扩展到多个实例
-          href: ../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json
+          href: ../monitoring-and-diagnostics/monitoring-autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json
         - name: 高密度承载
           href: app-service-high-density-hosting.md
     - name: 监视应用
@@ -266,7 +266,7 @@
           href: app-service-web-troubleshoot-performance-degradation.md
         - name: 排查域和证书问题
           href: app-service-web-troubleshoot-domain-ssl-certificates.md
-        - name: 常见问题
+        - name: 常见问题解答
           items:
             - name: 可用性、性能和应用程序常见问题解答
               href: app-service-web-availability-performance-application-issues-faq.md

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: cephalin
-ms.openlocfilehash: cd04be2046a23901471cb7bd0da9e0ed2d514d0d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a5d031622103183fa9aa7a3f3771a055fc16edb2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307290"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049970"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>将活动 DNS 名称迁移到 Azure 应用服务
 
@@ -55,7 +55,7 @@ ms.locfileid: "38307290"
 
 | DNS 记录示例 | TXT 主机 | TXT 值 |
 | - | - | - |
-| @（根域） | awverify | &lt;appname>.azurewebsites.net |
+| \@（根） | awverify | &lt;appname>.azurewebsites.net |
 | www（子域） | awverify.www | &lt;appname>.azurewebsites.net |
 | \*（通配符） | awverify.\* | &lt;appname>.azurewebsites.net |
 

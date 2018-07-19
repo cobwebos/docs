@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 4fbb0e5512511842e020e5670f1290c6b6359305
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: ea6008092f8fbfde8963da50d5273d36a4a30fe3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308724"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050004"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>教程：Azure Active Directory 与 Zscaler ZSCloud 的集成
 
@@ -144,7 +144,7 @@ ms.locfileid: "36308724"
                 
     ![身份验证](./media/zscaler-zscloud-tutorial/ic800208.png "身份验证")
    
-    a. 选择“使用 SAML 单一登录进行身份验证”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“使用 SAML 单一登录进行身份验证”。
 
     b. 单击“配置 SAML 单一登录参数”。
 
@@ -152,7 +152,7 @@ ms.locfileid: "36308724"
 
     ![单一登录](./media/zscaler-zscloud-tutorial/ic800209.png "单一登录")
     
-    a. 将“SAML 单一登录服务 URL”值粘贴到“发送给用户进行身份验证的 SAML 门户 URL”文本框中。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将“SAML 单一登录服务 URL”值粘贴到“发送给用户进行身份验证的 SAML 门户 URL”文本框中。
     
     b. 在“属性包含登录名”文本框中，键入 **NameID** 。
     
@@ -164,7 +164,7 @@ ms.locfileid: "36308724"
 
     ![管理](./media/zscaler-zscloud-tutorial/ic800210.png "Administration")
     
-    a. 单击“ **保存**”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“ **保存**”。
 
     b. 单击“立即激活”。
 
@@ -187,7 +187,7 @@ ms.locfileid: "36308724"
    
     ![代理服务器](./media/zscaler-zscloud-tutorial/ic769494.png "代理服务器")
 
-    a. 选择“为 LAN 使用代理服务器”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“为 LAN 使用代理服务器”。
 
     b. 在“地址”文本框中，键入 **gateway.zscalerone.net**。
 
@@ -222,7 +222,7 @@ ms.locfileid: "36308724"
  
     ![创建 Azure AD 测试用户](./media/zscaler-zscloud-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -255,7 +255,7 @@ ms.locfileid: "36308724"
         
     ![添加用户](./media/zscaler-zscloud-tutorial/ic781038.png "添加用户")
    
-    a. 键入“UserID”、“用户显示名称”、“密码”和“确认密码”，并选择想要预配的有效 AAD 帐户的“组”和“部门”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 键入“UserID”、“用户显示名称”、“密码”和“确认密码”，并选择想要预配的有效 AAD 帐户的“组”和“部门”。
 
     b. 单击“ **保存**”。
 
@@ -298,7 +298,7 @@ ms.locfileid: "36308724"
 
 在访问面板中单击 Zscaler ZSCloud 磁贴时，应会自动登录到 Zscaler ZSCloud 应用程序。
 
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

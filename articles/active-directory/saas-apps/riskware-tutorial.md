@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jeedes
-ms.openlocfilehash: d234b34f7583441f496fb96d37166c5472cadb4c
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 7705baa0ba912f24d7859110c75d36703aeb4a77
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110821"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041953"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>教程：Azure Active Directory 与 Riskware 的集成
 
@@ -108,7 +108,7 @@ ms.locfileid: "37110821"
 
     ![Riskware 域和 URL 单一登录信息](./media/riskware-tutorial/tutorial_riskware_url.png)
 
-    a. 在“登录 URL”文本框中，键入使用以下模式的 URL：
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，键入使用以下模式的 URL：
     | 环境| URL 模式|
     |--|--|
     | UAT|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
@@ -153,7 +153,7 @@ ms.locfileid: "37110821"
 
     ![Riskware 配置 - 身份验证配置](./media/riskware-tutorial/tutorial_riskware_config.png)
 
-    a. 选择“SAML”作为身份验证的**类型**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“SAML”作为身份验证的**类型**。
 
     b. 在“代码”文本框中，键入类似于 AZURE_UAT 的代码。
 
@@ -206,7 +206,7 @@ ms.locfileid: "37110821"
 
     ![“用户”对话框](./media/riskware-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -234,7 +234,7 @@ ms.locfileid: "37110821"
 
     ![Riskware 配置 - 详细信息](./media/riskware-tutorial/tutorial_riskware_details.png)
 
-    a. 选择“人员类型”，例如“员工”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“人员类型”，例如“员工”。
 
     b. 在“名字”文本框中，输入用户的名字（如“Britta”）。
 
@@ -244,7 +244,7 @@ ms.locfileid: "37110821"
 
     ![Riskware 配置 - 安全性](./media/riskware-tutorial/tutorial_riskware_security.png)
 
-    a. 在“身份验证”部分下，选择设置的“身份验证”模式（例如“AZURE Configuration for SSO”）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“身份验证”部分下，选择设置的“身份验证”模式（例如“AZURE Configuration for SSO”）。
 
     b. 在“登录详细信息”部分下的“用户 ID”文本框中，输入类似于 **brittasimon@contoso.com** 的用户电子邮件。
 
@@ -254,7 +254,7 @@ ms.locfileid: "37110821"
 
     ![Riskware 配置 - 组织](./media/riskware-tutorial/tutorial_riskware_org.png)
 
-    a. 选择作为 **Level1** 组织的选项。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择作为 **Level1** 组织的选项。
 
     b. 在“人员的主要工作区”部分下的“位置”文本框中，键入自己的位置。
 
@@ -297,7 +297,7 @@ ms.locfileid: "37110821"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击“Riskware”磁贴，即可自动登录到 Riskware 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

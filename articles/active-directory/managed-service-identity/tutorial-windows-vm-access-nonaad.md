@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 81509108060b636e47154a8c375f5569cac73648
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: aed990c01e781ae766f421c1dd34ad64f13985cf
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902728"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048732"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>教程：使用 Windows VM 托管服务标识 (MSI) 访问 Azure Key Vault 
 
@@ -56,7 +56,7 @@ ms.locfileid: "37902728"
 5.  若要在新资源组中创建虚拟机，请选择“资源组”中的“新建”。 完成后，单击“确定”。
 6.  选择 VM 大小。 若要查看更多的大小，请选择“全部查看”或更改“支持的磁盘类型”筛选器。 在设置边栏选项卡中保留默认值，然后单击“确定”。
 
-    ![Alt 图像文本](../media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
+    ![Alt 图像文本](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
 ## <a name="enable-msi-on-your-vm"></a>在 VM 上启用 MSI 
 
@@ -67,7 +67,7 @@ ms.locfileid: "37902728"
 3.  此时，将会看到托管服务标识。 若要注册并启用 MSI，请选择“是”，若要禁用，请选择“否”。 
 4.  务必单击“保存”，以保存配置。  
 
-    ![Alt 图像文本](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+    ![Alt 图像文本](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>授予 VM 对 Key Vault 中存储的密钥的访问权限 
  
@@ -84,7 +84,7 @@ ms.locfileid: "37902728"
 7. 单击“确定”完成添加新的访问策略，然后单击“确定”完成访问策略选择。 
 8. 单击“创建”完成创建 Key Vault。 
 
-    ![Alt 图像文本](../media/msi-tutorial-windows-vm-access-nonaad/msi-blade.png)
+    ![Alt 图像文本](../managed-service-identity/media/msi-tutorial-windows-vm-access-nonaad/msi-blade.png)
 
 
 接下来，将密钥添加到 Key Vault，以便稍后可以使用在 VM 中运行的代码检索此密钥： 

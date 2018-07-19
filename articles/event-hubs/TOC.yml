@@ -26,6 +26,10 @@
   items:
     - name: 事件处理器主机概述
       href: event-hubs-event-processor-host.md
+    - name: IP 连接筛选器
+      href: event-hubs-ip-filtering.md
+    - name: 虚拟网络服务终结点
+      href: event-hubs-service-endpoints.md
     - name: 编程指南
       href: event-hubs-programming-guide.md
     - name: 与事件网格集成
@@ -147,10 +151,10 @@
       href: event-hubs-quotas.md
 - name: 资源
   items:
-    - name: 常见问题
+    - name: 常见问题解答
       href: event-hubs-faq.md
     - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'
     - name: 学习路径
       href: 'https://azure.microsoft.com/documentation/learning-paths/event-hubs/'
     - name: 定价

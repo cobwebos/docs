@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: jeedes
-ms.openlocfilehash: 1189a60b33c385377767ea44877dd5fdf853f260
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4ae5c9834352bd2413075e87c79e27a9a3c354b9
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221523"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047637"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flatter-files"></a>教程：Azure Active Directory 与 Flatter Files 的集成
 
@@ -134,7 +134,7 @@ ms.locfileid: "36221523"
    
     ![配置单一登录](./media/flatter-files-tutorial/tutorial_flatter_files_06.png)  
     
-    a. 选择“使用 SAML 2.0 进行身份验证”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“使用 SAML 2.0 进行身份验证”。
     
     b. 单击“配置 SAML”。
 
@@ -142,7 +142,7 @@ ms.locfileid: "36221523"
    
     ![配置单一登录](./media/flatter-files-tutorial/tutorial_flatter_files_08.png)  
    
-    a. 在“域”文本框中，键入已注册域。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“域”文本框中，键入已注册域。
    
     >[!NOTE]
     >如果尚没有已注册域，请通过 [support@flatterfiles.com](mailto:support@flatterfiles.com) 联系 Flatter Files 支持团队。 
@@ -180,7 +180,7 @@ ms.locfileid: "36221523"
  
     ![创建 Azure AD 测试用户](./media/flatter-files-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -206,7 +206,7 @@ ms.locfileid: "36221523"
    
     ![创建 Flatter Files 用户](./media/flatter-files-tutorial/tutorial_flatter_files_10.png)
 
-    a. 在“名字”文本框中，键入“Britta”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名字”文本框中，键入“Britta”。
    
     b. 在“姓氏”文本框中，键入“Simon”。 
    
@@ -250,7 +250,7 @@ ms.locfileid: "36221523"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 Flatter Files 磁贴时，应当会自动登录到 Flatter Files 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

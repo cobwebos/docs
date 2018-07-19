@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 42eb1c8332a29ff07c83b962aaa8f8e2f04fd07b
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: ffd4480a13549caba17becff27a43f51fcaa1988
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308293"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041732"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>教程：将 Azure Active Directory 与 SAP Business Object Cloud 集成
 
@@ -278,7 +278,7 @@ ms.locfileid: "36308293"
 
 选择访问面板中的“SAP Business Object Cloud”磁贴时，应自动登录到 SAP Business Object Cloud 应用程序。
 
-有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="additional-resources"></a>其他资源
 

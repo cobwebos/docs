@@ -10,12 +10,12 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 6470bb5b7b5b8404683d1ae6fd4f16f0436982ef
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 569ae89a712d14fb36989e756f99725dce398c0a
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366628"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126552"
 ---
 # <a name="using-an-insights-token-to-get-insights-about-an-image"></a>使用见解标记获取有关图像的见解
 
@@ -62,7 +62,8 @@ Content-Disposition: form-data; name="knowledgeRequest"
 
 有关使用见解标记的示例，请参阅 [C#](#using-csharp) | [Java](#using-java) | [Node.js](#using-nodejs) | [Python](#using-python)。
 
-<a name="csharp" />
+<a name="using-csharp" />
+
 ## <a name="using-c"></a>使用 C#
 
 ### <a name="prerequisites"></a>先决条件
@@ -237,8 +238,7 @@ namespace VisualSearchInsightsToken
 }
 ```
 
-
-
+<a name="using-java" />
 
 ## <a name="using-java"></a>使用 Java
 
@@ -357,6 +357,7 @@ public class InsightsToken {
 
 
 <a name="using-nodejs" />
+
 ## <a name="using-nodejs"></a>使用 Node.js
 
 ### <a name="prerequisites"></a>先决条件
@@ -422,7 +423,7 @@ function requestCallback(err, res, body) {
 ```
 
 
-
+<a name="using-python" />
 
 ## <a name="using-python"></a>使用 Python
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 4d3e07c6c395645ef34b1707f33a4e37a20bf05d
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 3e14c51d644a29985e759da7c8a29927680d3891
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866977"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048945"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>如何成功推出自助密码重置
 
@@ -55,7 +55,7 @@ ms.locfileid: "33866977"
 
 ## <a name="create-your-own-password-portal"></a>创建自己的密码门户
 
-许多客户选择托管网页并创建根 DNS 条目，例如 https://passwords.contoso.com。他们在此页中填充以下信息的链接：
+许多客户选择托管网页并创建根 DNS 条目，例如 https://passwords.contoso.com。 他们在此页中填充以下信息的链接：
 
 * [Azure AD 密码重置门户 - https://aka.ms/sspr](https://aka.ms/sspr)
 * [Azure AD 密码重置注册门户 - https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)
@@ -86,8 +86,8 @@ Azure Active Directory 产品组创建了[分步部署计划](https://aka.ms/SSP
 
 ## <a name="next-steps"></a>后续步骤
 
-* [重置或更改密码](../active-directory-passwords-update-your-own-password.md)
-* [注册自助密码重置](../active-directory-passwords-reset-register.md)
+* [重置或更改密码](../user-help/active-directory-passwords-update-your-own-password.md)
+* [注册自助密码重置](../user-help/active-directory-passwords-reset-register.md)
 * [是否有许可问题？](concept-sspr-licensing.md)
 * [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
 * [SSPR 有哪些策略选项？](concept-sspr-policy.md)

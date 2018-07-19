@@ -4,17 +4,17 @@ description: 使用 Azure 策略强制执行标准、满足法规遵从性、审
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/24/2018
+ms.date: 07/13/2018
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 5a26a07bae46fb62e067853b9d85dc905f63d5f8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b8ac93da2f0dd4099ab1aa2df93e5d979ecdd285
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34602153"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049738"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>创建和管理策略以强制实施符合性
 
@@ -26,7 +26,7 @@ ms.locfileid: "34602153"
 > - 解决不符合或遭拒绝的资源
 > - 在组织中实施新策略
 
-若要分配一个策略用于识别现有资源的当前符合性状态，请参阅快速入门文章。 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
+若要分配一个策略用于识别现有资源的当前符合性状态，请参阅快速入门文章。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="assign-a-policy"></a>分配策略
 
@@ -189,10 +189,8 @@ $definition = New-AzureRmPolicyDefinition -Name 'denyCoolTiering' -Description '
                 "equals": "BlobStorage"
             },
             {
-                "not": {
-                    "field": "Microsoft.Storage/storageAccounts/accessTier",
-                    "equals": "cool"
-                }
+                "field": "Microsoft.Storage/storageAccounts/accessTier",
+                "equals": "cool"
             }
         ]
     },
@@ -277,10 +275,8 @@ az policy definition create --name 'denyCoolTiering' --description 'Deny cool ac
                 "equals": "BlobStorage"
             },
             {
-                "not": {
-                    "field": "Microsoft.Storage/storageAccounts/accessTier",
-                    "equals": "cool"
-                }
+                "field": "Microsoft.Storage/storageAccounts/accessTier",
+                "equals": "cool"
             }
         ]
     },

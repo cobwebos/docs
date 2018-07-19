@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: bf5fb050e81b59195d9bf9bfed9372e1fe8402ab
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8401462ed4bf5ef2ac1ff10cf3f6750cbed7b4e5
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231264"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050795"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-successfactors"></a>教程：Azure Active Directory 与 SuccessFactors 集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "36231264"
 
     ![SuccessFactors 域和 URL 单一登录信息](./media/successfactors-tutorial/tutorial_successfactors_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：
     | |
     |--|
     | `https://<companyname>.successfactors.com/<companyname>`|
@@ -175,7 +175,7 @@ ms.locfileid: "36231264"
    
     ![在应用端配置单一登录][12]
    
-    a. 选择“SAML v2 SSO”单选按钮
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“SAML v2 SSO”单选按钮
    
     b. 设置“SAML 声明方名称”（例如，SAML 颁发者+公司名称）。
    
@@ -200,7 +200,7 @@ ms.locfileid: "36231264"
    
     ![在应用端配置单一登录][13]
    
-    a. 对于“支持 SP 启动的全局注销”，选择“是”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“支持 SP 启动的全局注销”，选择“是”。
    
     b. 在“全局注销服务URL (LogoutRequest 目标)”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
    
@@ -216,7 +216,7 @@ ms.locfileid: "36231264"
    
     ![配置单一登录][29]
     
-    a. 请访问“公司设置”（靠近底部）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 请访问“公司设置”（靠近底部）。
    
     b. 选中“启用不区分大小写的用户名”旁边的复选框。
    
@@ -252,7 +252,7 @@ ms.locfileid: "36231264"
 
     ![“用户”对话框](./media/successfactors-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -302,7 +302,7 @@ ms.locfileid: "36231264"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“SuccessFactors”磁贴时，应会自动登录 SuccessFactors 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

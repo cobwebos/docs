@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: d05a86d98bbdedc2200020aeeb1e561c3786a150
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1ad18bd1aea36c5f185f7a8e3062b1c2103017c5
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218745"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049783"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tinfoil-security"></a>教程：Azure Active Directory 与 TINFOIL SECURITY 集成
 
@@ -122,7 +122,7 @@ ms.locfileid: "36218745"
     | ------------------- | -------------------- |
     | 帐户 ID | UXXXXXXXXXXXXX |
     
-    a. 单击“添加用户属性”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加用户属性”。
     
     ![添加属性](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_attribute.png "属性")
     
@@ -156,7 +156,7 @@ ms.locfileid: "36218745"
    
     ![单一登录](./media/tinfoil-security-tutorial/ic798973.png "单一登录")
    
-    a. 选择“启用 SAML”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“启用 SAML”。
    
     b. 单击“手动配置”。
    
@@ -195,7 +195,7 @@ ms.locfileid: "36218745"
  
     ![创建 Azure AD 测试用户](./media/tinfoil-security-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -252,7 +252,7 @@ ms.locfileid: "36218745"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击 TINFOIL SECURITY 磁贴时，应会自动登录到 TINFOIL SECURITY 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+在访问面板中单击 TINFOIL SECURITY 磁贴时，应会自动登录到 TINFOIL SECURITY 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 7a296c1e358bffa70ed88ba40380266e8731afd8
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b39879cc8548139879a3039c5e0c6b924e83c107
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211581"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046665"
 ---
 # <a name="integrate-azure-active-directory-with-palo-alto-networks---admin-ui"></a>将 Azure Active Directory 与 Palo Alto Networks - Admin UI 集成
 
@@ -78,7 +78,7 @@ ms.locfileid: "36211581"
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，根据名为“Britta Simon”的测试用户，配置和测试 Palo Alto Networks - Admin UI 的 Azure AD 单一登录。
+在本部分中，通过名为“Britta Simon”的测试用户，配置和测试 Palo Alto Networks - Admin UI 的 Azure AD 单一登录。
 
 若要运行单一登录，Azure AD 需要知道与 Azure AD 中的用户相对应的 Palo Alto Networks - Admin UI 用户。 换句话说，必须建立 Azure AD 用户与 Palo Alto Networks - Admin UI 中同一用户之间的链接关系。
 
@@ -111,7 +111,7 @@ ms.locfileid: "36211581"
     > [!NOTE] 
     > 上面的值不是实际值。 使用实际登录 URL 和标识符更新这些值。 若要获取这些值，请联系 [Palo Alto Networks - Admin UI 客户端支持团队](https://support.paloaltonetworks.com/support)。 
  
-4. Palo Alto Networks - Admin UI 应用程序需要采用特定格式的 SAML 断言。请按下图所示配置声明。 执行以下步骤，在“应用程序集成”页的“用户属性”部分中管理属性值：
+4. Palo Alto Networks - Admin UI 应用程序需要采用特定格式的 SAML 断言，因此请按下图所示配置声明。 执行以下步骤，在“应用程序集成”页的“用户属性”部分中管理属性值：
     
     ![SAML 令牌属性列表](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_attribute.png)
     
@@ -191,7 +191,7 @@ ms.locfileid: "36211581"
 13. 选择“添加”按钮。 
 
 14. 在“管理员角色配置文件”窗口中的“名称”框内，为管理员角色提供一个名称（例如 **fwadmin**）。  
-    此管理员角色名称应与标识提供者发送的 SAML 管理员角色属性名称匹配。 在步骤 4 中，已创建管理员角色名称和值。
+    此管理员角色名称应与标识提供者发送的 SAML 管理员角色属性名称匹配。 管理员角色名称和值已在步骤 4 中创建。
 
     ![配置 Palo Alto 网络管理员角色](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_adminrole.png)
   
@@ -269,7 +269,7 @@ ms.locfileid: "36211581"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 选择**创建**。
+    d. 选择“创建”。
  
 ### <a name="create-a-palo-alto-networks---admin-ui-test-user"></a>创建 Palo Alto Networks - 管理 UI 测试用户
 
@@ -309,7 +309,7 @@ Palo Alto Networks - Admin UI 支持实时用户预配。 如果用户尚不存�
 
 在访问面板中选择“Palo Alto Networks - Admin UI”磁贴时，应会自动登录到 Palo Alto Networks - Admin UI 应用程序。
 
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

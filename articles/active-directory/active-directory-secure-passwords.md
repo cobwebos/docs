@@ -3,31 +3,31 @@ title: Azure AD 分层密码安全性 | Microsoft Docs
 description: 介绍 Azure AD 如何强制实施强密码，并防止用户密码被网络罪犯利用。
 services: active-directory
 documentationcenter: ''
-author: barlanmsft
+author: eross-msft
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 08/28/2017
-ms.author: barlan
-ms.openlocfilehash: 04e437eb5a040f418df22e0857cb96d7ef99bbbb
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: lizross
+ms.openlocfilehash: e3e97a5a9b768b3b9d4a36627d28955be1f3d9df
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31586368"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056913"
 ---
 # <a name="a-multi-tiered-approach-to-azure-ad-password-security"></a>Azure AD 密码安全性多层方法
 
 本文介绍用户或管理员在保护 Azure Active Directory (Azure AD) 或 Microsoft 帐户时可遵循的一些最佳做法。
 
  > [!NOTE]
- > 你是否因登录时遇到问题而浏览至此？ 如果是这样，[可按以下方式更改和重置密码](active-directory-passwords-update-your-own-password.md)。
+ > 你是否因登录时遇到问题而浏览至此？ 如果是这样，[可按以下方式更改和重置密码](user-help/active-directory-passwords-update-your-own-password.md)。
  >
- > Azure AD 管理员可使用[在 Azure Active Directory 中重置用户密码](active-directory-users-reset-password-azure-portal.md)一文中的指南重置用户密码。
+ > Azure AD 管理员可使用[在 Azure Active Directory 中重置用户密码](fundamentals/active-directory-users-reset-password-azure-portal.md)一文中的指南重置用户密码。
  >
 
 ## <a name="password-requirements"></a>密码要求
@@ -38,7 +38,7 @@ Azure AD 整合了以下常用功能用于保护密码：
 * 密码复杂性要求
 * 常规和定期密码过期
 
-有关 Azure Active Directory 中密码重置的信息，请参阅 [面向 IT 专业人员的 Azure AD 自助服务密码重置](active-directory-passwords-update-your-own-password.md)主题。
+有关 Azure Active Directory 中密码重置的信息，请参阅 [面向 IT 专业人员的 Azure AD 自助服务密码重置](user-help/active-directory-passwords-update-your-own-password.md)主题。
 
 ## <a name="azure-ad-password-protections"></a>Azure AD 密码保护
 
@@ -75,7 +75,7 @@ Microsoft 会持续分析[数据破解](https://www.privacyrights.org/data-breac
 
   ![Microsoft 帐户被锁定](./media/active-directory-secure-passwords/locked-out-ms-accounts.png)
 
-有关 Azure Active Directory 中密码重置的信息，请参阅 [面向 IT 专业人员的 Azure AD 自助服务密码重置](active-directory-passwords-update-your-own-password.md)主题。
+有关 Azure Active Directory 中密码重置的信息，请参阅 [面向 IT 专业人员的 Azure AD 自助服务密码重置](user-help/active-directory-passwords-update-your-own-password.md)主题。
 
   >[!NOTE]
   >如果是 Azure AD 管理员，可以使用 [Windows Hello](https://www.microsoft.com/windows/windows-hello) 来完全避免用户创建传统密码。
@@ -83,6 +83,6 @@ Microsoft 会持续分析[数据破解](https://www.privacyrights.org/data-breac
 
 ## <a name="next-steps"></a>后续步骤
 
-* [如何更新自己的密码](active-directory-passwords-update-your-own-password.md)
+* [如何更新自己的密码](user-help/active-directory-passwords-update-your-own-password.md)
 * [Azure 标识管理基础知识](fundamentals-identity.md)
 * [报告密码重置活动](authentication/howto-sspr-reporting.md)

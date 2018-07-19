@@ -3,7 +3,7 @@ title: 在云服务中配置自定义域名 | Microsoft Docs
 description: 了解如何通过配置 DNS 设置在自定义域上向 Internet 公开 Azure 应用程序或数据。  这些示例使用 Azure 门户。
 services: cloud-services
 documentationcenter: .net
-author: Thraka
+author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: 5783a246-a151-4fb1-b488-441bfb29ee44
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: adegeo
-ms.openlocfilehash: 139ec6578dc9e76039c5fb13e7a7741aa8ba4e0d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: jeconnoc
+ms.openlocfilehash: 43a3458ba0f08d73931b5ecddf6a2c7b1ae259f4
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "25946768"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044809"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>为 Azure 云服务配置自定义域名
 创建云服务时，Azure 会将其分配给 **cloudapp.net** 的子域。 例如，如果云服务名为“contoso”，则用户能够在 URL（如 http://contoso.cloudapp.net）上访问应用程序。 Azure 还会将分配一个虚拟 IP 地址。
 
-但是，还可以在自己的域名（例如 **contoso.com**）上公开应用程序。此文章介绍了如何保留或配置云服务 Web 角色的自定义域名称。
+但是，还可以在自己的域名（例如 **contoso.com**）上公开应用程序。 此文章介绍了如何保留或配置云服务 Web 角色的自定义域名称。
 
 是否已经了解什么是 CNAME 和 A 记录？ [跳过解释](#add-a-cname-record-for-your-custom-domain)。
 
@@ -47,7 +47,7 @@ CNAME（即别名记录）和 A 记录都允许将域名与特定服务器（在
 CNAME 记录将*特定*域（例如 **contoso.com** 或 **www.contoso.com**）映射到规范域名。 在这种情况下，规范域名是 Azure 托管应用程序的 **[myapp].cloudapp.net** 域名。 CNAME 创建后，将为 **[myapp].cloudapp.net** 创建一个别名。 CNAME 条目会自动解析为 **[myapp].cloudapp.net** 服务的 IP 地址，因此，如果该云服务的 IP 地址发生更改，无需执行任何操作。
 
 > [!NOTE]
-> 某些域注册机构只允许在使用 CNAME 记录（例如 www.contoso.com）时映射子域，而不允许在使用根名称（例如 contoso.com）时映射。有关 CNAME 记录的详细信息，请参阅由注册机构提供的文档、[CNAME 记录上的 Wikipedia 条目](http://en.wikipedia.org/wiki/CNAME_record)或 [IETF 域名 - 实现和规范](http://tools.ietf.org/html/rfc1035)文档。
+> 某些域注册机构只允许在使用 CNAME 记录（例如 www.contoso.com）时映射子域，而不允许在使用根名称（例如 contoso.com）时映射。 有关 CNAME 记录的详细信息，请参阅由注册机构提供的文档、[CNAME 记录上的 Wikipedia 条目](http://en.wikipedia.org/wiki/CNAME_record)或 [IETF 域名 - 实现和规范](http://tools.ietf.org/html/rfc1035)文档。
 > 
 > 
 
@@ -80,7 +80,7 @@ CNAME 记录将*特定*域（例如 **contoso.com** 或 **www.contoso.com**）�
      保存任一方法返回的 URL 中所使用的域名，因为创建 CNAME 记录时需要它。
 2. 登录到 DNS 注册机构的网站，并转到用于管理 DNS 的页面。 查找网站中标签为“域名”、“DNS”或“名称服务器管理”的链接或区域。
 3. 现在找到可以在其中选择或输入 CNAME 记录的位置。 可能需要从下拉列表中选择记录类型，或者需要转到高级设置页面。 应查找 **CNAME**、**别名**或**子域**字样。
-4. 如果希望为 **www.customdomain.com** 创建别名，还必须为 CNAME 提供域或子域别名，例如 **www**。如果希望为根域创建别名，它可能在注册机构的 DNS 工具中以符号“**@**”的形式列出。
+4. 如果希望为 **www.customdomain.com** 创建别名，还必须为 CNAME 提供域或子域别名，例如 **www**。 如果希望为根域创建别名，它可能在注册机构的 DNS 工具中以符号“**@**”的形式列出。
 5. 然后，必须提供一个规范主机名，在此示例中它是应用程序的“cloudapp.net”域。
 
 例如，以下 CNAME 记录会将 **www.contoso.com** 的全部流量都转发至 **contoso.cloudapp.net**（已部署应用程序的自定义域名）：
@@ -115,7 +115,7 @@ CNAME 记录将*特定*域（例如 **contoso.com** 或 **www.contoso.com**）�
      保存该 IP 地址，因为创建 A 记录时需要它。
 2. 登录到 DNS 注册机构的网站，并转到用于管理 DNS 的页面。 查找网站中标签为“域名”、“DNS”或“名称服务器管理”的链接或区域。
 3. 然后找到用于选择或输入 A 记录的位置。 可能需要从下拉列表中选择记录类型，或者需要转到高级设置页面。
-4. 选择或输入将使用此 A 记录的域或子域。 例如，如果希望为 **www.customdomain.com** 创建别名，请选择“www”。如果希望为所有子域创建通配符条目，请输入“*****”。 这会涵盖所有子域，例如 **mail.customdomain.com**、**login.customdomain.com** 和 **www.customdomain.com**。
+4. 选择或输入将使用此 A 记录的域或子域。 例如，如果希望为 **www.customdomain.com** 创建别名，请选择“www”。 如果希望为所有子域创建通配符条目，请输入“*****”。 这会涵盖所有子域，例如 **mail.customdomain.com**、**login.customdomain.com** 和 **www.customdomain.com**。
    
     如果希望为根域创建 A 记录，它可能在注册机构的 DNS 工具中以符号“**@**”的形式列出。
 5. 在提供的字段中输入云服务的 IP 地址。 这会将 A 记录中使用的域条目与云服务部署的 IP 地址相关联。
@@ -124,7 +124,7 @@ CNAME 记录将*特定*域（例如 **contoso.com** 或 **www.contoso.com**）�
 
 | 主机名/子域 | IP 地址 |
 | --- | --- |
-| @ |137.135.70.239 |
+| \@ |137.135.70.239 |
 
 此示例展示了如何为根域创建 A 记录。 若要创建一个通配符条目来涵盖所有子域，请输入“*****”作为子域。
 

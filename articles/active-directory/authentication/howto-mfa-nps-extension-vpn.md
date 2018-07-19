@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: dfd28c5abea668e704fb5ee8b02d85d552e9ae77
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: cd59e7956855de52750614c800a46e6bf817cd14
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098866"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054771"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>使用 Azure 网络策略服务器扩展集成 VPN 基础结构与 Azure MFA
 
@@ -242,7 +242,7 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
 
 7. 在“添加 RADIUS 服务器”窗口中，进行以下操作：
 
-    a. 在“服务器名称”框中，输入上一部分中配置的 RADIUS 服务器的名称或 IP 地址。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“服务器名称”框中，输入上一部分中配置的 RADIUS 服务器的名称或 IP 地址。
 
     b. 对于“共享密钥”，选择“更改”，然后输入之前创建和记录的共享密钥密码。
 
@@ -305,7 +305,7 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
  
 ## <a name="configure-multi-factor-authentication"></a>配置多重身份验证
 
-如需针对多重身份验证配置用户的帮助，请参阅文章[如何对用户或组要求双重验证](howto-mfa-userstates.md)和[为双重验证设置帐户](end-user/current/multi-factor-authentication-end-user-first-time.md)
+如需针对多重身份验证配置用户的帮助，请参阅文章[如何对用户或组要求双重验证](howto-mfa-userstates.md)和[为双重验证设置帐户](../user-help/multi-factor-authentication-end-user-first-time.md)
 
 ## <a name="install-and-configure-the-nps-extension"></a>安装和配置 NPS 扩展
 

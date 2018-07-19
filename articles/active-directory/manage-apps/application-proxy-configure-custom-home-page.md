@@ -15,12 +15,12 @@ ms.date: 09/08/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: a1801af582e9e4bfa82dab4b5916c164fcf3bb76
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 3ea8b74eb6ef5b6bcab2935236e2ee3551117b12
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34161560"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054363"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理为发布的应用设置自定义主页
 
@@ -35,7 +35,7 @@ ms.locfileid: "34161560"
 - 请将 *https://ExpenseApp-contoso.msappproxy.net/login/login.aspx* 设置为主页 URL。 
 
 >[!NOTE]
->向用户提供对已发布应用的访问权限时，会在 [Azure AD 访问面板](../active-directory-saas-access-panel-introduction.md)和 [Office 365 应用启动器](https://blogs.office.com/2016/09/27/introducing-the-new-office-365-app-launcher)中显示这些应用。
+>向用户提供对已发布应用的访问权限时，会在 [Azure AD 访问面板](../user-help/active-directory-saas-access-panel-introduction.md)和 [Office 365 应用启动器](https://blogs.office.com/2016/09/27/introducing-the-new-office-365-app-launcher)中显示这些应用。
 
 ## <a name="before-you-start"></a>开始之前
 

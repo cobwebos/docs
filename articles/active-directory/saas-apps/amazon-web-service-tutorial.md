@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 884e07880b76ec1ff53071d03d0ce340188586e3
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 60d2f8109fbd5f11042d915dc7f43f3c9dd602d5
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018144"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048890"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>教程：Azure Active Directory 与 Amazon Web Services (AWS) 集成
 
@@ -124,7 +124,7 @@ ms.locfileid: "37018144"
     >[!TIP]
     >需要在 Azure AD 中配置用户预配以从 AWS 控制台中提取所有角色。 请参阅下文中的预配步骤。
 
-    a. 单击“添加属性”，打开“添加属性”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录 add](./media/amazon-web-service-tutorial/tutorial_attribute_04.png)
 
@@ -164,7 +164,7 @@ ms.locfileid: "37018144"
    
     ![配置单一登录对话框][14]
  
-    a. 对于“提供者类型”，请选择“SAML”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“提供者类型”，请选择“SAML”。
 
     b. 在“提供者名称”文本框中，键入提供者名称（例如：*WAAD*）。
 
@@ -184,7 +184,7 @@ ms.locfileid: "37018144"
     
     ![配置单一登录信任][19] 
 
-    a. 在“选择可信实体的类型”下选择“SAML 2.0 联合身份验证”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“选择可信实体的类型”下选择“SAML 2.0 联合身份验证”。
 
     b. 在“选择 SAML 2.0 提供程序”部分中，选择之前创建的 SAML 提供程序（例如：*WAAD*）
 
@@ -200,7 +200,7 @@ ms.locfileid: "37018144"
     
     ![配置单一登录审阅][34] 
 
-    a. 在“角色名称”文本框中，输入你的角色名称。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“角色名称”文本框中，输入你的角色名称。
 
     b. 在“角色说明”文本框中，输入说明。
 
@@ -226,7 +226,7 @@ ms.locfileid: "37018144"
 
     ![创建新策略](./media/amazon-web-service-tutorial/policy1.png)
 
-    a. 在“创建策略”部分中单击“JSON”选项卡。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“创建策略”部分中单击“JSON”选项卡。
 
     b. 在策略文档中，添加以下 JSON。
     
@@ -266,7 +266,7 @@ ms.locfileid: "37018144"
 
     ![定义新策略](./media/amazon-web-service-tutorial/policy2.png)
 
-    a. 提供 **AzureAD_SSOUserRole_Policy** 作为“策略名称”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 提供 **AzureAD_SSOUserRole_Policy** 作为“策略名称”。
 
     b. 可以提供“此策略将允许从 AWS 帐户提取角色”作为策略的“说明”。
     
@@ -274,7 +274,7 @@ ms.locfileid: "37018144"
 
 24. 通过执行以下步骤，在 AWS IAM 服务中创建新的用户帐户：
 
-    a. 在 AWS IAM 控制台中单击“用户”导航。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 AWS IAM 控制台中单击“用户”导航。
 
     ![定义新策略](./media/amazon-web-service-tutorial/policy3.png)
     
@@ -296,7 +296,7 @@ ms.locfileid: "37018144"
 
     ![添加用户](./media/amazon-web-service-tutorial/adduser2.png)
     
-    a. 单击“直接附加现有策略”按钮。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“直接附加现有策略”按钮。
 
     b. 在筛选器部分中搜索新创建的策略 **AzureAD_SSOUserRole_Policy**。
     
@@ -306,7 +306,7 @@ ms.locfileid: "37018144"
 
     ![添加用户](./media/amazon-web-service-tutorial/adduser3.png)
     
-    a. 审阅映射到该用户的用户名、访问类型和策略。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 审阅映射到该用户的用户名、访问类型和策略。
     
     b. 单击右下角的“创建用户”按钮创建用户。
 
@@ -314,7 +314,7 @@ ms.locfileid: "37018144"
 
     ![添加用户](./media/amazon-web-service-tutorial/adduser4.png)
     
-    a. 复制用户的“访问密钥 ID”和“密码访问密钥”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 复制用户的“访问密钥 ID”和“密码访问密钥”。
     
     b. 在 Azure AD 用户预配部分输入这些凭据，以便从 AWS 控制台提取角色。
     
@@ -328,7 +328,7 @@ ms.locfileid: "37018144"
 
     ![添加用户](./media/amazon-web-service-tutorial/provisioning1.png)
     
-    a. 在“客户端密码”字段中输入 AWS 用户访问密钥。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“客户端密码”字段中输入 AWS 用户访问密钥。
     
     b. 在“密码令牌”字段中输入 AWS 用户密码。
     
@@ -368,7 +368,7 @@ ms.locfileid: "37018144"
 
     ![“用户”对话框](./media/amazon-web-service-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -414,7 +414,7 @@ ms.locfileid: "37018144"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Amazon Web Services (AWS)”磁贴时，应该会自动登录 Amazon Web Services (AWS) 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+在访问面板中单击“Amazon Web Services (AWS)”磁贴时，应该会自动登录 Amazon Web Services (AWS) 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 
