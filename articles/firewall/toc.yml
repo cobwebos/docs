@@ -40,6 +40,8 @@
       href: ../azure-resource-manager/resource-group-overview.md
 - name: 资源
   items:
+    - name: 常见问题解答
+      href: firewall-faq.md
     - name: 创作模板
       href: ../azure-resource-manager/resource-group-authoring-templates.md
     - name: Azure 路线图

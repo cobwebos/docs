@@ -230,9 +230,9 @@
     - name: 以编程方式查找区域
       items:
         - name: '使用 C#'
-          href: find-region-csharp.md
+          href: luis-find-region-csharp.md
         - name: 使用 Node.js
-          href: find-region-nodejs.md
+          href: luis-find-region-nodejs.md
 - name: 引用
   items:
     - name: 用户隐私

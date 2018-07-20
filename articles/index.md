@@ -6,12 +6,12 @@ description: 了解如何使用 Microsoft Azure 云服务构建和管理功能�
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 7ee5d5a3f177352c2ae2ba9692e795e4dae7b357
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 6f1378116ce41646a0d94f1b6f010e1010d9c507
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136819"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145513"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -4597,7 +4597,7 @@ Azure DevOps Project </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure DevOps Project</h3>
+                                                    <h3>Azure DevOps 项目</h3>
                                                     <p>将任何平台上的任何语言快速部署到 Azure</p>
                                                 </div>
                                             </div>
@@ -5895,7 +5895,7 @@ Service Fabric SDK and Tools 3.0.467 </h3>
                                         <div class="card">
                                             <div class="cardImageOuter">
                                                 <div class="cardImage">
-                                                    <img src="https://docs.microsoft.com/media/common/i_tools.svg" alt="" />
+                                                    <img src="media/index/database-migration.svg" alt="" />
                                                 </div>
                                             </div>
                                             <div class="cardText">
