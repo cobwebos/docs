@@ -49,6 +49,8 @@
           href: aad-integration.md
         - name: 使用虚拟 Kubelet
           href: virtual-kubelet.md
+        - name: 使用群集自动缩放程序
+          href: autoscaler.md
         - name: 使用 Terraform 部署 AKS
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
           maintainContext: true

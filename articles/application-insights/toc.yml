@@ -164,6 +164,8 @@
               href: app-insights-proactive-application-security-detection-pack.md
             - name: Azure 云服务
               href: app-insights-proactive-cloud-services.md
+            - name: 管理智能检测规则
+              href: app-insights-proactive-arm-config.md
         - name: 创建资源
           href: app-insights-create-new-resource.md
     - name: 分析
@@ -351,7 +353,7 @@
           href: app-insights-release-notes.md
         - name: Developer Analytics Tools 发行说明
           href: app-insights-release-notes-vsix.md
-    - name: 常见问题
+    - name: 常见问题解答
       href: app-insights-troubleshoot-faq.md
     - name: 帮助
       items:

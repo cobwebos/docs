@@ -1,0 +1,208 @@
+- name: Azure 资源管理器文档
+  href: index.md
+- name: 概述
+  items:
+    - name: 什么是资源管理器？
+      href: resource-group-overview.md
+    - name: 资源管理器部署和经典部署
+      href: resource-manager-deployment-model.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 创建模板 - 门户
+      href: resource-manager-quickstart-create-templates-use-the-portal.md
+    - name: 创建模板 - VS Code
+      href: resource-manager-quickstart-create-templates-use-visual-studio-code.md
+    - name: 创建模板 - Visual Studio
+      href: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
+- name: 概念
+  items:
+    - name: 资源提供程序和类型
+      href: resource-manager-supported-services.md
+    - name: 管理组
+      href: management-groups-overview.md
+    - name: 订阅监管
+      href: /azure/architecture/cloud-adoption-guide/subscription-governance
+      maintainContext: true
+    - name: 用于提供云一致性的模板
+      href: templates-cloud-consistency.md
+- name: 如何
+  items:
+    - name: 创建模板
+      items:
+        - name: 模板节
+          href: resource-group-authoring-templates.md
+          items:
+            - name: parameters
+              href: resource-manager-templates-parameters.md
+            - name: 变量
+              href: resource-manager-templates-variables.md
+            - name: 函数
+              href: 'resource-group-authoring-templates.md#functions'
+            - name: 资源
+              href: resource-manager-templates-resources.md
+            - name: Outputs
+              href: resource-manager-templates-outputs.md
+        - name: 链接的模板和嵌套的模板
+          href: resource-group-linked-templates.md
+        - name: 定义资源之间的依赖关系
+          href: resource-group-define-dependencies.md
+        - name: 创建多个实例
+          href: resource-group-create-multiple.md
+        - name: 更新资源
+          href: /azure/architecture/building-blocks/extending-templates/update-resource
+    - name: 部署
+      items:
+        - name: Azure PowerShell
+          items:
+            - name: 部署模板
+              href: resource-group-template-deploy.md
+            - name: 使用 SAS 令牌部署专用模板
+              href: resource-manager-powershell-sas-token.md
+            - name: 导出模板并进行重新部署
+              href: resource-manager-export-template-powershell.md
+        - name: Azure CLI
+          items:
+            - name: 部署模板
+              href: resource-group-template-deploy-cli.md
+            - name: 使用 SAS 令牌部署专用模板
+              href: resource-manager-cli-sas-token.md
+            - name: 导出模板并进行重新部署
+              href: resource-manager-export-template-cli.md
+        - name: Azure 门户
+          items:
+            - name: 部署资源
+              href: resource-group-template-deploy-portal.md
+            - name: 导出模板
+              href: resource-manager-export-template.md
+        - name: REST API
+          href: resource-group-template-deploy-rest.md
+        - name: 多个资源组或订阅
+          href: resource-manager-cross-resource-group-deployment.md
+        - name: 与 Visual Studio Team Services 的持续集成
+          href: ../vs-azure-tools-resource-groups-ci-in-vsts.md
+          maintainContext: true
+        - name: 在部署期间传递安全值
+          href: resource-manager-keyvault-parameter.md
+    - name: 管理
+      items:
+        - name: Azure PowerShell
+          href: powershell-azure-resource-manager.md
+        - name: Azure CLI
+          href: xplat-cli-azure-resource-manager.md
+        - name: Azure 门户
+          href: resource-group-portal.md
+        - name: 使用标记来组织资源
+          href: resource-group-using-tags.md
+        - name: 将资源移到新组或订阅
+          href: resource-group-move-resources.md
+        - name: 创建 EA 订阅
+          href: programmatically-create-subscription.md
+        - name: 授予访问权限以创建 EA 订阅
+          href: grant-access-to-create-subscription.md
+        - name: 创建管理组
+          href: management-groups-create.md
+        - name: 管理你的管理组
+          href: management-groups-manage.md
+    - name: 控制访问
+      items:
+        - name: 创建服务主体
+          items:
+            - name: Azure PowerShell
+              href: resource-group-authenticate-service-principal.md
+            - name: Azure CLI
+              href: /cli/azure/create-an-azure-service-principal-azure-cli
+              maintainContext: true
+            - name: Azure 门户
+              href: resource-group-create-service-principal-portal.md
+        - name: 用于访问订阅的身份验证 API
+          href: resource-manager-api-authentication.md
+        - name: 锁定资源
+          href: resource-group-lock-resources.md
+    - name: 审核
+      items:
+        - name: 查看活动日志
+          href: resource-group-audit.md
+        - name: 查看部署操作
+          href: resource-manager-deployment-operations.md
+    - name: 故障排除
+      items:
+        - name: 排查部署错误
+          href: resource-manager-common-deployment-errors.md
+        - name: AccountNameInvalid
+          href: resource-manager-storage-account-name-errors.md
+        - name: InvalidTemplate
+          href: resource-manager-invalid-template-errors.md
+        - name: Linux 部署问题
+          href: ../virtual-machines/linux/troubleshoot-deploy-vm.md
+        - name: NoRegisteredProviderFound
+          href: resource-manager-register-provider-errors.md
+        - name: NotFound
+          href: resource-manager-not-found-errors.md
+        - name: ParentResourceNotFound
+          href: resource-manager-parent-resource-errors.md
+        - name: Linux 预配和分配问题
+          href: ../virtual-machines/linux/troubleshoot-deployment-new-vm.md
+        - name: Windows 预配和分配问题
+          href: ../virtual-machines/windows/troubleshoot-deployment-new-vm.md
+        - name: RequestDisallowedByPolicy
+          href: resource-manager-policy-requestdisallowedbypolicy-error.md
+        - name: ReservedResourceName
+          href: resource-manager-reserved-resource-name.md
+        - name: ResourceQuotaExceeded
+          href: resource-manager-quota-errors.md
+        - name: SkuNotAvailable
+          href: resource-manager-sku-not-available-errors.md
+        - name: Windows 部署问题
+          href: ../virtual-machines/windows/troubleshoot-deploy-vm.md
+- name: 引用
+  items:
+    - name: 模板参考
+      href: subtoc/toc.yml
+    - name: 模板函数
+      href: resource-group-template-functions.md
+      items:
+        - name: 数组和对象函数
+          href: resource-group-template-functions-array.md
+        - name: 比较函数
+          href: resource-group-template-functions-comparison.md
+        - name: 部署函数
+          href: resource-group-template-functions-deployment.md
+        - name: 逻辑函数
+          href: resource-group-template-functions-logical.md
+        - name: 数值函数
+          href: resource-group-template-functions-numeric.md
+        - name: 资源函数
+          href: resource-group-template-functions-resource.md
+        - name: 字符串函数
+          href: resource-group-template-functions-string.md
+    - name: PowerShell
+      href: /powershell/module/azurerm.resources
+    - name: Azure CLI
+      href: /cli/azure/resource
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.resourcemanager
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.resources
+    - name: Python
+      href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagement.html'
+    - name: REST
+      href: /rest/api/resources/
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=azure-resource-manager'
+    - name: 堆栈溢出
+      href: 'http://stackoverflow.com/questions/tagged/azure-resource-manager'
+    - name: 管理个人数据
+      href: resource-manager-personal-data.md
+    - name: 限制请求
+      href: resource-manager-request-limits.md
+    - name: 跟踪异步操作
+      href: resource-manager-async-operations.md
+    - name: 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager'
