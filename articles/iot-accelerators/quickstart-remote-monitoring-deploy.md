@@ -7,22 +7,20 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 06/07/2018
+ms.date: 07/12/2018
 ms.author: dobett
-ms.openlocfilehash: e3eff46299ecfbfe39b57bc2cf5ed4a655a6d7f1
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 8dd630650498f3698fea3ed03882fe8c5c3d338e
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37087889"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004312"
 ---
-# <a name="quickstart-deploy-a-cloud-based-remote-monitoring-solution"></a>快速入门：部署基于云的远程监视解决方案
+# <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>快速入门：尝试基于云的远程监视解决方案
 
-本快速入门介绍如何部署要为 IoT 设备用作基于云的远程监视解决方案的 Azure IoT 远程监视解决方案加速器。 部署该解决方案加速器后，使用解决方案的“仪表板”页在地图上直观显示模拟设备，并使用“维护”页对模拟的冷却器设备发出的压力警报做出响应。
+本快速入门介绍了如何部署 Azure IoT 远程监视解决方案加速器来运行基于云的远程监视模拟。 部署该解决方案加速器后，使用解决方案的“仪表板”页在地图上直观显示模拟设备，并使用“维护”页对模拟的冷却器设备发出的压力警报做出响应。 可以将此解决方案加速器用作你自己的实现的起点，或者将其用作学习工具。
 
-默认部署将为称作 Contoso 的公司配置远程监视解决方案加速器。 Contoso 管理不同物理环境中部署的各种不同设备类型，例如冷却器。 冷却器设备将温度、湿度和压力遥测数据发送到远程监视解决方案加速器。
-
-## <a name="prerequisites"></a>先决条件
+初始部署为名为 Contoso 的公司配置远程监视解决方案加速器。 Contoso 管理不同物理环境中部署的各种不同设备类型，例如冷却器。 冷却器设备将温度、湿度和压力遥测数据发送到远程监视解决方案加速器。
 
 若要完成本快速入门，需要一个有效的 Azure 订阅。
 
@@ -42,9 +40,9 @@ ms.locfileid: "37087889"
 
 选择“.NET”作为语言。 Java 和 .NET 实现具有相同的功能。
 
-确保为远程监视解决方案加速器输入唯一的**解决方案名称**。
+确保为远程监视解决方案加速器输入唯一的**解决方案名称**。 对于本快速入门，我们将其命名为 **contoso-rm2**。
 
-选择要用于部署解决方案加速器的**订阅**和**区域**。 通常，我们会选择离自己最近的区域。 只有订阅中的[全局管理员或用户](iot-accelerators-permissions.md)才能完成部署。
+选择要用于部署解决方案加速器的**订阅**和**区域**。 通常，我们会选择离自己最近的区域。 对于本快速入门，我们使用 **Visual Studio Enterprise** 和**西部欧洲**。 只有订阅中的[全局管理员或用户](iot-accelerators-permissions.md)才能完成部署。
 
 单击“创建解决方案”开始部署。 此过程至少需要五分钟才能完成运行：
 
@@ -52,7 +50,7 @@ ms.locfileid: "37087889"
 
 ## <a name="sign-in-to-the-solution"></a>登录到解决方案
 
-完成部署到 Azure 订阅后，可以登录到远程监视解决方案加速器仪表板。
+在完成到 Azure 订阅的部署后，可以在解决方案磁贴上看到一个绿色的对号和“就绪”。 现在，你可以登录到你的远程监视解决方案加速器仪表板。
 
 在“预配的解决方案”页上，单击新的远程监视解决方案加速器：
 
@@ -68,7 +66,7 @@ ms.locfileid: "37087889"
 
 ## <a name="view-your-devices"></a>查看设备
 
-解决方案仪表板显示有关 Contoso 设备的以下信息：
+解决方案仪表板显示有关 Contoso 的模拟设备的以下信息：
 
 * “设备统计信息”显示有关警报和设备总数的摘要信息。 在默认部署中，Contoso 有 10 个不同类型的模拟设备。
 
@@ -110,7 +108,7 @@ Contoso 的操作员可以通过解决方案仪表板监视设备。 “设备�
 
 [![选择设备并计划操作](./media/quickstart-remote-monitoring-deploy/maintenanceschedule-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceschedule-expanded.png#lightbox)
 
-在“作业”面板中选择“运行方法”，选择“EmergencyValveRelease”方法，添加作业名称 **ChillerPressureRelease**，然后单击“应用”。 这些设置会创建一个可立即执行的作业。
+在“作业”面板中，选择“运行方法”，然后选择“EmergencyValveRelease”方法。 添加作业名称“ChillerPressureRelease”，单击“应用”。 这些设置会创建一个可立即执行的作业。
 
 若要查看作业状态，请返回“维护”页，并在“作业”视图中查看作业列表。 可能需要等待几秒钟才能看到该作业已运行，以释放冷却器的阀门压力：
 
@@ -132,7 +130,7 @@ Contoso 的操作员可以通过解决方案仪表板监视设备。 “设备�
 
 如果打算继续学习教程，请将远程监视解决方案加速器保持为部署状态。
 
-如果不再需要该解决方案加速器，请从[预配的解决方案](https://www.azureiotsolutions.com/Accelerators#dashboard)页中将其删除：
+如果不再需要该解决方案加速器，请从[预配的解决方案](https://www.azureiotsolutions.com/Accelerators#dashboard)页中选择它，然后单击“删除解决方案”以将其删除：
 
 ![删除解决方案](media/quickstart-remote-monitoring-deploy/deletesolution.png)
 
@@ -140,7 +138,7 @@ Contoso 的操作员可以通过解决方案仪表板监视设备。 “设备�
 
 在本快速入门中，我们已部署远程监视解决方案加速器，并使用默认 Contoso 部署中的模拟设备完成了监视任务。
 
-若要了解如何更新联网设备中的固件以及如何组织解决方案加速器中的资产，请继续学习下一篇教程。
+若要详细了解使用模拟设备的解决方案加速器，请继续阅读以下文章。
 
 > [!div class="nextstepaction"]
 > [教程：监视 IoT 设备](iot-accelerators-remote-monitoring-monitor.md)

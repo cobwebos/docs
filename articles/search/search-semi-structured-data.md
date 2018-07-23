@@ -1,21 +1,21 @@
 ---
-title: 在 Azure 云存储中搜索半结构化数据
-description: 使用 Azure 搜索来搜索半结构化 Blob 数据。
-author: roygara
+title: 教程：在 Azure 搜索中从 Azure 云存储中搜索半结构化数据 | Microsoft Docs
+description: 在本教程中，了解如何使用 Azure 搜索来搜索半结构化 Azure blob 数据。
+author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 10/12/2017
-ms.author: v-rogara
-ms.openlocfilehash: 7579862e132724d101e4267023afd9e3336bc3b1
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.date: 07/12/2018
+ms.author: heidist
+ms.openlocfilehash: a7b006bd8469ddce1415ab6cb7c52c0171ae11cd
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795035"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005071"
 ---
-# <a name="part-2-search-semi-structured-data-in-cloud-storage"></a>第 2 部分：在云存储中搜索半结构化数据
+# <a name="tutorial-search-semi-structured-data-in-azure-cloud-storage"></a>教程：在 Azure 云存储中搜索半结构化数据
 
 在由两个部分组成的教程系列中，介绍如何使用 Azure 搜索来搜索半结构化和非结构化数据。 [第 1 部分](../storage/blobs/storage-unstructured-search.md)指导你完成搜索非结构化数据，但还包括本教程的重要先决条件，例如创建存储帐户。 
 
@@ -28,14 +28,16 @@ ms.locfileid: "31795035"
 > * 创建并填充 Azure 搜索索引和索引器，以便抓取容器和提取可搜索内容
 > * 搜索刚刚创建的索引
 
-> [!NOTE]
-> 本教程依赖于 JSON 数组支持，该项当前是 Azure 搜索中的预览功能。 该功能在门户中不可用。 为此，我们会使用可提供此功能的预览版 REST API，并使用某个 REST 客户端工具来调用该 API。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
 * 完成[前一教程](../storage/blobs/storage-unstructured-search.md)后，会获得前一教程中创建的存储帐户和搜索服务。
 
 * 安装 REST 客户端，并了解如何构造 HTTP 请求。 本教程使用 [Postman](https://www.getpostman.com/)。 可以任意使用你所熟悉的其他 REST 客户端。
+
+> [!NOTE]
+> 本教程依赖于 JSON 数组支持，该项当前是 Azure 搜索中的预览功能。 该功能在门户中不可用。 为此，我们会使用可提供此功能的预览版 REST API，并使用某个 REST 客户端工具来调用该 API。
 
 ## <a name="set-up-postman"></a>设置 Postman
 
@@ -55,7 +57,7 @@ ms.locfileid: "31795035"
 
 该示例中包含示例 JSON 文件，这些文件是从 [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results) 获取的原始文本文件。 为方便起见，我们已将其转换为 JSON。
 
-## <a name="log-in-to-azure"></a>登录 Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
 登录到 [Azure 门户](http://portal.azure.com)。
 
@@ -277,15 +279,13 @@ ms.locfileid: "31795035"
 
 `$filter` 参数只适用于在创建索引时标记为可筛选的元数据。
 
+## <a name="clean-up-resources"></a>清理资源
+
+完成本教程后，最快的清理方式是删除包含 Azure 搜索服务的资源组。 现在，你可以删除资源组以永久删除其中的所有内容。 在门户中，资源组名称显示在 Azure 搜索服务的“概述”页上。
+
 ## <a name="next-steps"></a>后续步骤
 
-本教程已介绍如何使用 Azure 搜索来搜索半结构化数据，例如，如何执行以下操作：
-
-> [!div class="checklist"]
-> * 使用 REST API 创建 Azure 搜索服务
-> * 使用 Azure 搜索服务来搜索容器
-
-请单击以下链接了解有关搜索的详细信息。
+可以将支持 AI 的算法附加到索引器管道中。 下一步，继续学习下面的教程。
 
 > [!div class="nextstepaction"]
 > [为 Azure Blob 存储中的文档编制索引](search-howto-indexing-azure-blob-storage.md)

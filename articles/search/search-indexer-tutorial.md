@@ -1,22 +1,22 @@
 ---
 title: 有关在 Azure 搜索中为 Azure SQL 数据库编制索引的教程 | Microsoft Docs
-description: 对 Azure SQL 数据库进行爬网，提取可搜索的数据并填充 Azure 搜索索引。
+description: 在本教程中，对 Azure SQL 数据库进行爬网，提取可搜索的数据并填充 Azure 搜索索引。
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/10/2017
+ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: abf121ec369d84dd307416d2c08971d9096de4a8
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: b40d3a74904d6814eb01b5d41d10632e8c9af5be
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799509"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988789"
 ---
-# <a name="how-to-crawl-an-azure-sql-database-using-azure-search-indexers"></a>如何使用 Azure 搜索索引器对 Azure SQL 数据库进行爬网
+# <a name="tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>教程：使用 Azure 搜索索引器对 Azure SQL 数据库进行爬网
 
 本教程演示如何配置索引器，以便从示例 Azure SQL 数据库提取可搜索的数据。 [索引器](search-indexer-overview.md)是 Azure 搜索组件，用于对外部数据源进行爬网，使用内容来填充[搜索索引](search-what-is-an-index.md)。 Azure SQL 数据库的索引器是所有索引器中使用最广泛的。 
 
@@ -33,9 +33,9 @@ ms.locfileid: "31799509"
 > * 搜索索引
 > * 查看门户中的索引器配置
 
-## <a name="prerequisites"></a>先决条件
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* 有效的 Azure 帐户。 如果没有，可以注册[免费试用版](https://azure.microsoft.com/free/)。 
+## <a name="prerequisites"></a>先决条件
 
 * Azure 搜索服务。 如需设置方面的帮助，请参阅[创建搜索服务](search-create-service-portal.md)。
 
@@ -90,7 +90,7 @@ ms.locfileid: "31799509"
 4. 在 Visual Studio 中将其作为第一个条目复制并粘贴到 **appsettings.json**。
 
   > [!Note]
-  > 服务名称是包含 search.windows.net 的终结点的一部分。 如果有兴趣，可以在“概述”页的“概要”中查看完整 URL。 URL 如以下示例所示：https://your-service-name.search.windows.net
+  > 服务名称是包含 search.windows.net 的终结点的一部分。 如果有兴趣，可以在“概述”页的“概要”中查看完整 URL。 URL 如以下示例所示： https://your-service-name.search.windows.net
 
 5. 在左侧的“设置” > “密钥”中，复制其中一个管理密钥并将其作为第二个条目粘贴到 **appsettings.json**。 密钥是在预配期间为服务生成的字母数字字符串，是对服务操作进行授权访问所必需的。 
 
@@ -269,21 +269,14 @@ public string HotelName { get; set; }
 
   ![索引器和数据源磁贴](./media/search-indexer-tutorial/tiles-portal.png)
 
+
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不打算继续使用这些服务，请执行以下步骤，删除本教程在 Azure 门户中创建的所有资源。 
-
-1. 在 Azure 门户的左侧菜单中，单击“资源组”，并单击已创建资源的名称。 
-2. 在资源组页上单击“删除资源组”，在文本框中键入要删除的资源的名称，然后单击“删除”。
+完成本教程后，最快的清理方式是删除包含 Azure 搜索服务的资源组。 现在，你可以删除资源组以永久删除其中的所有内容。 在门户中，资源组名称显示在 Azure 搜索服务的“概述”页上。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关其他受支持数据源的特定详细信息和任务，请参阅以下文章：
+可以将支持 AI 的算法附加到索引器管道中。 下一步，继续学习下面的教程。
 
-* [Azure SQL 数据库或 Azure 虚拟机上的 SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure 表存储](search-howto-indexing-azure-tables.md)
-* [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)
-* [使用 Azure 搜索 Blob 索引器为 CSV blob 编制索引](search-howto-index-csv-blobs.md)
-* [使用 Azure 搜索 Blob 索引器为 JSON blob 编制索引](search-howto-index-json-blobs.md)
-
+> [!div class="nextstepaction"]
+> [为 Azure Blob 存储中的文档编制索引](search-howto-indexing-azure-blob-storage.md)

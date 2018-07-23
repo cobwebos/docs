@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 04/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: f933788968ffdbd4a856a84476d8d82b32637d62
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 4dbb8b7abf6da77115d0e1d12621ec20ec60d174
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100328"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035194"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 的服务主体
 
@@ -35,7 +35,7 @@ AKS 群集需要 [Azure Active Directory 服务主体][aad-service-principal]才
 
 在以下示例中，已经创建了 AKS 群集，但由于未指定现有的服务主体，因此为群集创建了一个服务主体。 若要完成此操作，帐户必须具有创建服务主体所需的相应权限。
 
-```azurecli
+```azurecli-interactive
 az aks create --name myAKSCluster --resource-group myResourceGroup --generate-ssh-keys
 ```
 
@@ -47,7 +47,7 @@ az aks create --name myAKSCluster --resource-group myResourceGroup --generate-ss
 
 若要通过 Azure CLI 来创建服务主体，请使用 [az ad sp create-for-rbac][az-ad-sp-create] 命令。
 
-```azurecli
+```azurecli-interactive
 az ad sp create-for-rbac --skip-assignment
 ```
 
@@ -80,11 +80,16 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --service-pri
 使用 AKS 和 Azure AD 服务主体时，请牢记以下注意事项。
 
 * Kubernetes 的服务主体是群集配置的一部分。 但是，请勿使用标识来部署群集。
-* 每个服务主体都与一个 Azure AD 应用程序相关联。 Kubernetes 群集的服务主体可以与任何有效的 Azure AD 应用程序名称（例如 `https://www.contoso.org/example`）相关联。 应用程序的 URL 不一定是实际的终结点。
-* 指定服务主体的“客户端 ID”时，可以使用 `appId` 的值（如本文所示）或相应的服务主体 `name`（例如，`https://www.contoso.org/example`）。
+* 每个服务主体都与一个 Azure AD 应用程序相关联。 Kubernetes 群集的服务主体可以与任何有效的 Azure AD 应用程序名称（例如 `https://www.contoso.org/example` ）相关联。 应用程序的 URL 不一定是实际的终结点。
+* 指定服务主体的“客户端 ID”时，可以使用 `appId` 的值（如本文所示）或相应的服务主体 `name`（例如， `https://www.contoso.org/example` ）。
 * 在 Kubernetes 群集的主 VM 和节点 VM 中，服务主体凭据存储在 `/etc/kubernetes/azure.json` 文件中。
 * 使用 `az aks create` 命令自动生成服务主体时，会将服务主体凭据写入用于运行命令的计算机上的 `~/.azure/aksServicePrincipal.json` 文件中。
-* 删除由 `az aks create` 创建的 AKS 群集时，不会删除自动创建的服务主体。 使用 `az ad sp delete --id $clientID` 将其删除。
+* 删除由 `az aks create` 创建的 AKS 群集时，不会删除自动创建的服务主体。 若要删除服务主体，请首先使用 [az ad app list][az-ad-app-list] 获取服务主体的 ID。 以下示例查询名为 *myAKSCluster* 的群集，然后使用 [az ad app delete][az-ad-app-delete] 删除应用 ID。 将以下名称替换为你自己的值：
+
+    ```azurecli-interactive
+    az ad app list --query "[?displayName=='myAKSCluster'].{Name:displayName,Id:appId}" --output table
+    az ad app delete --id <appId>
+    ```
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -101,3 +106,5 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --service-pri
 [install-azure-cli]: /cli/azure/install-azure-cli
 [service-principal]: ../active-directory/develop/active-directory-application-objects.md
 [user-defined-routes]: ../load-balancer/load-balancer-overview.md
+[az-ad-app-list]: /cli/azure/ad/app#az-ad-app-list
+[az-ad-app-delete]: /cli/azure/ad/app#az-ad-app-delete

@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 12/12/2017
+ms.date: 07/11/2018
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 7248e2477a217c769bd232b87a8e510fcfd59790
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: c0a1caca1c7b026965d2a83211c87d49db53c4ca
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798434"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991573"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>开始监视 Java Web 应用程序
 
@@ -33,7 +33,7 @@ ms.locfileid: "34798434"
  
 如果没有 Java 动态 Web 项目，可以使用[创建 Java Web 应用快速入门](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-java)创建一个。
 
-如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 如果你更喜欢 Spring 框架，请尝试[配置 Spring Boot 初始值设定程序以使用 Application Insights 指南](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)
 
@@ -53,7 +53,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
     | 设置        | 值           | 说明  |
    | ------------- |:-------------|:-----|
-   | **名称**      | 全局唯一值 | 标识所监视的应用的名称 |
+   | **Name**      | 全局唯一值 | 标识所监视的应用的名称 |
    | **应用程序类型** | Java Web 应用程序 | 所监视的应用的类型 |
    | **资源组**     | myResourceGroup      | 用于托管 App Insights 数据的新资源组的名称 |
    | **位置** | 美国东部 | 选择离你近的位置或离托管应用的位置近的位置 |
@@ -89,25 +89,25 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
 1. 现在可以在 Azure 门户中重新打开 Application Insights“概述”页（已在其中检索到检测密钥），查看有关当前正在运行的应用程序的详细信息。
 
-   ![Application Insights 概述菜单](./media/app-insights-java-quick-start/0008-j.png)
+   ![Application Insights 概述菜单](./media/app-insights-java-quick-start/overview-001.png)
 
-2. 单击“应用映射”以获取应用程序组件之间依赖关系的可视布局。 每个组件均显示 KPI，如负载、性能、失败和警报。
+2. 单击“应用程序映射”以获取应用程序组件之间依赖关系的可视布局。 每个组件均显示 KPI，如负载、性能、失败和警报。
 
-   ![应用程序地图](./media/app-insights-java-quick-start/005-j.png)
+   ![应用程序地图](./media/app-insights-java-quick-start/application-map-001.png)
 
 3. 单击“应用分析”图标 ![“应用程序映射”图标](./media/app-insights-java-quick-start/006.png)。 这将打开“Application Insights Analytics”，该软件提供丰富的查询语言，可用于分析 Application Insights 收集的所有数据。 在本示例中，将生成以图表形式呈现请求计数的查询。 可以编写自己的查询来分析其他数据。
 
    ![一段时间内用户请求的分析图](./media/app-insights-java-quick-start/0010-j.png)
 
-4. 返回到“概述”页，并检查“运行状况概述时间线”。  此仪表板提供有关应用程序运行状况的统计信息，包括传入请求数、这些请求的持续时间，以及发生的任何故障。
+4. 返回到“概述”页并检查 KPI 图形。  此仪表板提供有关应用程序运行状况的统计信息，包括传入请求数、这些请求的持续时间，以及发生的任何故障。
 
-   ![“运行状况概述时间线”图](./media/app-insights-java-quick-start/0009-j.png)
+   ![“运行状况概述时间线”图](./media/app-insights-java-quick-start/overview-perf.png)
 
    若要启用“页面视图加载时间”图表以填充“客户端遥测”数据，请将此脚本添加到要跟踪的每一页：
 
    ```HTML
    <!-- 
-   To collect end-user usage analytics about your application, 
+   To collect user behavior analytics about your application, 
    insert the following script into each page you want to track.
    Place this code immediately before the closing </head> tag,
    and before any other scripts. Your first data will appear 

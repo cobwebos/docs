@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/30/2018
+ms.date: 07/16/2018
 ms.author: juliako
-ms.openlocfilehash: 0faed5d72002f24d7be7602c5f16c18e66a0089e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5cc109467f9affa9cf5f43342203e8d4298269e0
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38308607"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115200"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-with-rest"></a>教程：使用 REST 上传、编码和流式传输视频
 
@@ -77,22 +77,23 @@ ms.locfileid: "38308607"
     > [!Note]
     > 使用从上面的“访问媒体服务 API”部分获得的值更新访问权限变量。
 
-7. 关闭对话框。
-8. 从下拉列表中选择“Azure Media Service v3 Environment”环境。
+7. 双击所选的文件，并输入通过执行[访问 API](#access-the-media-services-api) 步骤获得的值。
+8. 关闭对话框。
+9. 从下拉列表中选择“Azure Media Service v3 Environment”环境。
 
     ![选择环境](./media/develop-with-postman/choose-env.png)
    
 ### <a name="configure-the-collection"></a>配置集合
 
 1. 单击“导入”导入该集合文件。
-1. 浏览到克隆 `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` 时下载的 `Media Services v3 (2018-03-30-preview).postman_collection.json` 文件
-3. 选择 **Media Services v3 (2018-03-30-preview).postman_collection.json** 文件。
+1. 浏览到克隆 `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` 时下载的 `Media Services v3.postman_collection.json` 文件
+3. 选择 **Media Services v3.postman_collection.json** 文件。
 
     ![导入文件](./media/develop-with-postman/postman-import-collection.png)
 
 ## <a name="send-requests-using-postman"></a>使用 Postman 发送请求
 
-在此部分，请发送与编码和创建 URL 相关的请求，以便能够流式传输文件。 具体说来，将发送以下请求：
+在本部分中，请发送与编码和创建 URL 相关的请求，以便能够流式传输文件。 具体说来，将发送以下请求：
 
 1. 获取适用于服务主体身份验证的 Azure AD 令牌
 2. 创建输出资产
@@ -128,11 +129,21 @@ ms.locfileid: "38308607"
 2. 然后选择“创建或更新资产”。
 3. 按“发送”。
 
-    将会发送以下 **PUT** 操作。
+    * 将会发送以下 **PUT** 操作：
 
-    ```
-    https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/assets/:assetName?api-version={{api-version}}
-    ```
+        ```
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/assets/:assetName?api-version={{api-version}}
+        ```
+    * 该操作具有以下正文：
+
+        ```json
+        {
+        "properties": {
+            "description": "My Asset",
+            "alternateId" : "some GUID"
+         }
+        }
+        ```
 
 ### <a name="create-a-transform"></a>创建转换
 
@@ -149,11 +160,30 @@ ms.locfileid: "38308607"
 2. 然后选择“创建转换”。
 3. 按“发送”。
 
-    将会发送以下 **PUT** 操作。
+    * 将会发送以下 **PUT** 操作。
 
-    ```
-    https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName?api-version={{api-version}}
-    ```
+        ```
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName?api-version={{api-version}}
+        ```
+    * 该操作具有以下正文：
+
+        ```json
+        {
+            "properties": {
+                "description": "Basic Transform using an Adaptive Streaming encoding preset from the libray of built-in Standard Encoder presets",
+                "outputs": [
+                    {
+                    "onError": "StopProcessingJob",
+                "relativePriority": "Normal",
+                    "preset": {
+                        "@odata.type": "#Microsoft.Media.BuiltInStandardEncoderPreset",
+                        "presetName": "AdaptiveStreaming"
+                    }
+                    }
+                ]
+            }
+        }
+        ```
 
 ### <a name="create-a-job"></a>创建作业
 
@@ -165,11 +195,32 @@ ms.locfileid: "38308607"
 2. 然后选择“创建或更新作业”。
 3. 按“发送”。
 
-    将会发送以下 **PUT** 操作。
+    * 将会发送以下 **PUT** 操作。
 
-    ```
-    https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName/jobs/:jobName?api-version={{api-version}}
-    ```
+        ```
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName/jobs/:jobName?api-version={{api-version}}
+        ```
+    * 该操作具有以下正文：
+
+        ```json
+        {
+        "properties": {
+            "input": {
+            "@odata.type": "#Microsoft.Media.JobInputHttp",
+            "baseUri": "https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/",
+            "files": [
+                    "Ignite-short.mp4"
+                ]
+            },
+            "outputs": [
+            {
+                "@odata.type": "#Microsoft.Media.JobOutputAsset",
+                "assetName": "testAsset1"
+            }
+            ]
+        }
+        }
+        ```
 
 此作业需要一些时间才能完成，完成时可发出通知。 若要查看作业的进度，建议使用事件网格。 事件网格旨在实现高可用性、一致性能和动态缩放。 使用事件网格，应用可以侦听和响应来自几乎所有 Azure 服务和自定义源的事件。 处理基于 HTTP 的反应事件非常简单，这有助于通过对事件的智能筛选和路由生成高效的解决方案。  请参阅[将事件路由到自定义 Web 终结点](job-state-events-cli-how-to.md)。
 
@@ -189,14 +240,24 @@ ms.locfileid: "38308607"
 媒体服务帐户具有对应于 StreamingPolicy 条目数的配额。 不应为每个 StreamingLocator 创建新的 StreamingPolicy。
 
 1. 在 Postman 的左窗口中，选择“流式处理策略”。
-2. 然后选择“创建流式处理策略”。
+2. 然后选择“创建流式处理定位符”。
 3. 按“发送”。
 
-    将会发送以下 **PUT** 操作。
+    * 将会发送以下 **PUT** 操作。
 
-    ```
-    https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingPolicies/:streamingPolicyName?api-version={{api-version}}
-    ```
+        ```
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingPolicies/:streamingPolicyName?api-version={{api-version}}
+        ```
+    * 该操作具有以下正文：
+
+        ```json
+        {
+            "properties":{
+            "assetName": "{{assetName}}",
+            "streamingPolicyName": "{{streamingPolicyName}}"
+            }
+        }
+        ```
 
 ### <a name="list-paths-and-build-streaming-urls"></a>列出路径和生成流式处理 URL
 
@@ -208,40 +269,40 @@ ms.locfileid: "38308607"
 2. 然后，选择“列出路径”。
 3. 按“发送”。
 
-    将会发送以下 **POST** 操作。
+    * 将会发送以下 **POST** 操作。
 
-    ```
-    https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingLocators/:streamingLocatorName/listPaths?api-version={{api-version}}
-    ```
+        ```
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingLocators/:streamingLocatorName/listPaths?api-version={{api-version}}
+        ```
+        
+    * 该操作没有正文：
+        
 4. 记下要用于流式处理的某个路径，以便在下一部分使用。 在这种情况下，返回以下路径：
     
     ```
-    {
-        "streamingPaths": [
-            {
-                "streamingProtocol": "Hls",
-                "encryptionScheme": "NoEncryption",
-                "paths": [
-                    "/fd384f76-2d23-4e50-8fad-f9b3ebcd675b/Ignite-short.ism/manifest(format=m3u8-aapl)"
-                ]
-            },
-            {
-                "streamingProtocol": "Dash",
-                "encryptionScheme": "NoEncryption",
-                "paths": [
-                    "/fd384f76-2d23-4e50-8fad-f9b3ebcd675b/Ignite-short.ism/manifest(format=mpd-time-csf)"
-                ]
-            },
-            {
-                "streamingProtocol": "SmoothStreaming",
-                "encryptionScheme": "NoEncryption",
-                "paths": [
-                    "/fd384f76-2d23-4e50-8fad-f9b3ebcd675b/Ignite-short.ism/manifest"
-                ]
-            }
-        ],
-        "downloadPaths": []
-    }
+    "streamingPaths": [
+        {
+            "streamingProtocol": "Hls",
+            "encryptionScheme": "NoEncryption",
+            "paths": [
+                "/cdb80234-1d94-42a9-b056-0eefa78e5c63/Ignite-short.ism/manifest(format=m3u8-aapl)"
+            ]
+        },
+        {
+            "streamingProtocol": "Dash",
+            "encryptionScheme": "NoEncryption",
+            "paths": [
+                "/cdb80234-1d94-42a9-b056-0eefa78e5c63/Ignite-short.ism/manifest(format=mpd-time-csf)"
+            ]
+        },
+        {
+            "streamingProtocol": "SmoothStreaming",
+            "encryptionScheme": "NoEncryption",
+            "paths": [
+                "/cdb80234-1d94-42a9-b056-0eefa78e5c63/Ignite-short.ism/manifest"
+            ]
+        }
+    ]
     ```
 
 #### <a name="build-the-streaming-urls"></a>生成流式处理 URL
@@ -253,16 +314,27 @@ ms.locfileid: "38308607"
     > [!NOTE]
     > 如果播放器在 Https 站点上进行托管，请确保将 URL 更新为“https”。
 
-2. StreamingEndpoint 的主机名。 在此示例中，该名称为“amsaccount-usw22.streaming.media.azure.net”。
-3. 在上一部分获得的路径。  
+2. StreamingEndpoint 的主机名。 在本例中，该名称为“amsaccount-usw22.streaming.media.azure.net”。
+
+    若要获取主机名，可以使用以下 GET 操作：
+    
+    ```
+    https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amsaccount/streamingEndpoints/default?api-version={{api-version}}
+    ```
+    
+3. 在前面的（列出路径）部分中获得的路径。  
 
 因此，生成了以下 HLS URL
 
 ```
-https://amsaccount-usw22.streaming.media.azure.net/fd384f76-2d23-4e50-8fad-f9b3ebcd675b/Ignite-short.ism/manifest(format=m3u8-aapl)
+https://amsaccount-usw22.streaming.media.azure.net/cdb80234-1d94-42a9-b056-0eefa78e5c63/Ignite-short.ism/manifest(format=m3u8-aapl)
 ```
 
 ## <a name="test-the-streaming-url"></a>测试流式 URL
+
+
+> [!NOTE]
+> 确保要从中进行流式传输的流式处理终结点正在运行。
 
 本文使用 Azure Media Player 测试流式传输。 
 

@@ -9,18 +9,16 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/05/2018
 ms.author: dobett
-ms.openlocfilehash: f3a252d6f7c49a65e0c548599b1958825b134ee8
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: fd4a637ebb05493bf0c0a940c3ff0cb56ad94c54
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37966876"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005027"
 ---
 # <a name="quickstart-deploy-and-run-a-cloud-based-device-simulation-solution"></a>快速入门：部署并运行基于云的设备模拟解决方案
 
 本快速入门介绍如何部署用于测试 IoT 解决方案的 Azure IoT 设备模拟解决方案加速器。 在部署解决方案加速器以后，请使用“模拟”页来创建并运行模拟。
-
-## <a name="prerequisites"></a>先决条件
 
 若要完成本快速入门，需要一个有效的 Azure 订阅。
 
@@ -88,7 +86,7 @@ ms.locfileid: "37966876"
 
 如果打算深入进行探索，请保留已部署的设备模拟解决方案加速器。
 
-如果不再需要该解决方案加速器，请从[预配的解决方案](https://www.azureiotsolutions.com/Accelerators#dashboard)页中将其删除：
+如果不再需要该解决方案加速器，请从[预配的解决方案](https://www.azureiotsolutions.com/Accelerators#dashboard)页中选择它，然后单击“删除解决方案”以将其删除：
 
 ![删除解决方案](media/quickstart-device-simulation-deploy/deletesolution.png)
 
@@ -96,7 +94,7 @@ ms.locfileid: "37966876"
 
 本快速入门介绍了如何部署设备模拟解决方案加速器并运行 IoT 设备模拟。
 
-若要了解如何在模拟中使用现有的 IoT 中心，请参阅操作方法指南：
+若要了解如何在模拟中使用现有的 IoT 中心，请参阅以下操作方法指南：
 
 > [!div class="nextstepaction"]
 > [将现有的 IoT 中心与设备模拟解决方案加速器配合使用](iot-accelerators-device-simulation-choose-hub.md)

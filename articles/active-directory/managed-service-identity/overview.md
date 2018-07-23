@@ -14,12 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/28/2018
 ms.author: daveba
-ms.openlocfilehash: 3d6df04df8ceac1f868e64f0e8fbc7eb0fa317e3
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d25d868d8f3542d74de8edf8d7d5d26037409911
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38547967"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006924"
 ---
 #  <a name="what-is-managed-service-identity-for-azure-resources"></a>什么是 Azure 资源的托管服务标识？
 
@@ -40,7 +40,7 @@ Azure Active Directory Free 随附托管服务标识，这是 Azure 订阅的默
 
 下面的示例展示了系统分配的标识如何与 Azure 虚拟机协同工作：
 
-![虚拟机托管标识示例](overview/msi-vm-vmextension-imds-example.png)
+![虚拟机托管标识示例](media/overview/msi-vm-vmextension-imds-example.png)
 
 1. Azure 资源管理器收到请求，要求在 VM 上启用系统分配的标识。
 2. Azure 资源管理器在 Azure AD 中创建服务主体，用于表示 VM 的标识。 服务主体是在此订阅信任的 Azure AD 租户中进行创建。
@@ -101,6 +101,7 @@ Azure Active Directory Free 随附托管服务标识，这是 Azure 订阅的默
 | Azure Functions    | [将托管服务标识与 Azure 应用服务或 Azure Functions 结合使用](/azure/app-service/app-service-managed-service-identity) |
 | Azure 服务总线  | [将托管服务标识与 Azure 服务总线配合使用](../../service-bus-messaging/service-bus-managed-service-identity.md) |
 | Azure 事件中心   | [将托管服务标识与 Azure 事件中心一起使用](../../event-hubs/event-hubs-managed-service-identity.md) |
+| Azure API 管理 | [将托管服务标识与 Azure API 管理一起使用](../../api-management/api-management-howto-use-managed-service-identity.md) |
 
 ## <a name="which-azure-services-support-managed-service-identity"></a>哪些 Azure 服务支持托管服务标识？
 

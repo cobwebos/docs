@@ -12,24 +12,24 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/28/2018
+ms.date: 07/12/2018
 ms.author: ryanwi,mikhegn
 ms.custom: mvc
-ms.openlocfilehash: f83ebcce68a7abe53d7b8eaeff5913a907e3df9a
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 58b7dc532511ae25c7db2bf021a42fecc3dd9bb5
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344183"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056672"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>教程：将 Service Fabric 应用程序部署到 Azure 中的群集
 
-本教程是一个系列的第二部分，介绍如何将 Azure Service Fabric 应用程序直接从 Visual Studio 部署到 Azure 中的新群集。
+本教程是一个系列的第二部分，介绍如何将 Azure Service Fabric 应用程序部署到 Azure 中的新群集。
 
 本教程介绍如何执行下列操作：
 > [!div class="checklist"]
-> * 通过 Visual Studio 创建群集
-> * 使用 Visual Studio 将应用程序部署到远程群集
+> * 创建一个合作群集。
+> * 使用 Visual Studio 将应用程序部署到远程群集。
 
 此教程系列介绍了如何：
 > [!div class="checklist"]
@@ -43,9 +43,9 @@ ms.locfileid: "37344183"
 
 在开始学习本教程之前：
 
-* 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [安装 Visual Studio 2017](https://www.visualstudio.com/)，并安装 **Azure 开发**以及 **ASP.NET 和 Web 开发**工作负荷。
-* [安装 Service Fabric SDK](service-fabric-get-started.md)
+* [安装 Service Fabric SDK](service-fabric-get-started.md)。
 
 ## <a name="download-the-voting-sample-application"></a>下载投票示例应用程序
 
@@ -55,69 +55,91 @@ ms.locfileid: "37344183"
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 ```
 
-## <a name="create-a-service-fabric-cluster"></a>创建 Service Fabric 群集
+## <a name="publish-to-a-service-fabric-cluster"></a>发布到 Service Fabric 群集
 
-至此，应用程序已准备就绪，可以直接通过 Visual Studio 将它部署到群集了。 [Service Fabric 群集](/service-fabric/service-fabric-deploy-anywhere.md)是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理
+至此，应用程序已准备就绪，可以直接通过 Visual Studio 将它部署到群集了。 [Service Fabric 群集](/service-fabric/service-fabric-deploy-anywhere.md)是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。
 
-Visual Studio 中有两个部署选项：
+对于本教程，使用 Visual Studio 将投票应用程序部署到 Service Fabric 群集时有两个选项可用：
 
-* 通过 Visual Studio 在 Azure 中创建群集。 可以通过此选项使用首选的配置直接从 Visual Studio 创建安全的群集。 此类群集适用于测试方案。可以先创建群集，然后在 Visual Studio 中将内容直接发布到该群集。
+* 发布到一个试用（合作）群集。
 * 发布到订阅中的现有群集。  可以通过 [Azure 门户](https://portal.azure.com)、[PowerShel](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)、[Azure CLI](./scripts/cli-create-cluster.md) 脚本或 [Azure 资源管理器模板](service-fabric-tutorial-create-vnet-and-windows-cluster.md)创建 Service Fabric 群集。
 
-本教程通过 Visual Studio 创建群集。 如果已部署群集，则可复制并粘贴连接终结点，或者从订阅中进行选择。
 > [!NOTE]
 > 许多服务使用反向代理来互相通信。 通过 Visual Studio 创建的群集以及合作群集默认启用反向代理。  如果使用现有的群集，则必须[在群集中启用反向代理](service-fabric-reverseproxy.md#setup-and-configuration)。
 
-### <a name="find-the-votingweb-service-endpoint"></a>找到 VotingWeb 服务终结点
 
-首先，找到前端 Web 服务的终结点。  前端 Web 服务在特定端口上进行侦听。  当应用程序部署到 Azure 中的群集时，该群集和应用程序都在 Azure 负载均衡器之后运行。  应用程序端口必须在 Azure 负载均衡器中打开，以便入站流量能够通过并抵达 Web 服务。  端口（例如 8080）可以在 *VotingWeb/PackageRoot/ServiceManifest.xml* 文件的 **Endpoint** 元素中找到：
+### <a name="find-the-votingweb-service-endpoint-for-your-azure-subscription"></a>查找你的 Azure 订阅的 VotingWeb 服务终结点
+
+如果打算将投票应用程序发布到你自己的 Azure 订阅，请找到前端 Web 服务的终结点。 如果使用合作群集，则投票示例使用的端口 8080 会自动打开，不需要在合作群集的负载均衡器中配置它。
+
+前端 Web 服务在特定端口上进行侦听。  当应用程序部署到 Azure 中的群集时，该群集和应用程序都在 Azure 负载均衡器之后运行。  必须使用规则在此群集的 Azure 负载均衡器中打开应用程序端口，以便入站流量能够通过并抵达 Web 服务。  端口（例如 8080）可以在 *VotingWeb/PackageRoot/ServiceManifest.xml* 文件的 **Endpoint** 元素中找到：
 
 ```xml
 <Endpoint Protocol="http" Name="ServiceEndpoint" Type="Input" Port="8080" />
 ```
 
-在下一步，请在“创建群集”对话框的“高级”选项卡中指定此端口。  如果要将应用程序部署到现有的群集，可以在 Azure 负载均衡器中使用 [PowerShell 脚本](./scripts/service-fabric-powershell-open-port-in-load-balancer.md)来打开此端口，也可以在 [Azure 门户](https://portal.azure.com)中将其打开。
+对于你的 Azure 订阅，通过 [PowerShell 脚本](./scripts/service-fabric-powershell-open-port-in-load-balancer.md)使用 Azure 中的某个负载均衡规则或者在 [Azure 门户](https://portal.azure.com)中通过此群集的负载均衡器打开此端口。
 
-### <a name="create-a-cluster-in-azure-through-visual-studio"></a>通过 Visual Studio 在 Azure 中创建群集
+### <a name="join-a-party-cluster"></a>加入合作群集
 
-在解决方案资源管理器中右键单击应用程序项目，选择“发布”。
+> [!NOTE]
+> 如果打算将应用程序发布到 Azure 订阅中你自己的群集，请跳转到下一部分中的“使用 Visual Studio 部署应用程序”。
 
-使用 Azure 帐户登录，以便访问订阅。 如果使用的是合作群集，则此步骤为可选步骤。
+合作群集是在 Azure 上托管的、由 Service Fabric 团队运行的免费限时 Service Fabric 群集，任何人都可以在其中部署应用程序及了解平台的情况。 该群集使用单个自签名证书来确保节点到节点和客户端到节点的安全。
 
-选择**连接终结点**对应的下拉列表，然后选择“<Create New Cluster...>”选项。
+登录并[加入 Windows 群集](http://aka.ms/tryservicefabric)。 通过单击 **PFX** 链接，将 PFX 证书下载到计算机。 单击“如何连接到安全合作群集?”链接并复制证书密码。 后续步骤中需要使用证书、证书密码和“连接终结点”值。
 
-![发布对话框](./media/service-fabric-tutorial-deploy-app-to-party-cluster/publish-app.png)
+![PFX 和连接终结点](./media/service-fabric-quickstart-dotnet/party-cluster-cert.png)
 
-在“创建群集”对话框中，修改以下设置：
+> [!Note]
+> 每小时可用的合作群集数目有限。 如果在尝试注册合作群集时出错，可以等待一段时间再重试，或者遵循[部署 .NET 应用](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-deploy-app-to-party-cluster#deploy-the-sample-application)教程中的步骤，在 Azure 订阅中创建一个 Service Fabric 群集并在其中部署应用程序。 如果没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+>
 
-1. 在“群集名称”字段中指定群集的名称，并指定要使用的订阅和位置。
-2. 可选：可以修改节点数。 默认有三个节点，这是测试 Service Fabric 方案的最低要求。
-3. 选择“证书”选项卡。在此选项卡中键入一个密码，用于确保群集证书的安全。 此证书有助于确保群集的安全。 也可修改用于保存证书的路径。 Visual Studio 还可以为你导入证书，因为这是将应用程序发布到群集的必需步骤。
-4. 选择“VM 详细信息”选项卡。指定一个密码，以便将其用于构成群集的虚拟机 (VM)。 可以使用用户名和密码远程连接到 VM。 此外还必须选择 VM 大小，并可根据需要更改 VM 映像。
-5. 在“高级”选项卡上，可以修改要在 Azure 负载均衡器上打开的端口的列表，该均衡器是与群集一起创建的。  添加在前面的步骤中发现的 VotingWeb 服务终结点。 还可以添加现有的 Application Insights 密钥，用于向其路由应用程序日志文件。
-6. 修改完设置以后，选择“创建”按钮。 需要数分钟才能创建完毕；输出窗口会指示群集何时完全创建好。
+在 Windows 计算机上，将 PFX 安装到 *CurrentUser\My* 证书存储中。
 
-![“创建群集”对话框](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
+```powershell
+PS C:\mycertificates> Import-PfxCertificate -FilePath .\party-cluster-873689604-client-cert.pfx -CertStoreLocation Cert:\CurrentUser\My -Password (ConvertTo-SecureString 873689604 -AsPlainText -Force)
 
-## <a name="deploy-the-sample-application"></a>部署示例应用程序
 
-要使用的群集就绪以后，右键单击应用程序项目，然后选择“发布”。
+   PSParentPath: Microsoft.PowerShell.Security\Certificate::CurrentUser\My
 
-完成发布后，应该可以通过浏览器向应用程序发送请求。
+Thumbprint                                Subject
+----------                                -------
+3B138D84C077C292579BA35E4410634E164075CD  CN=zwin7fh14scd.westus.cloudapp.azure.com
+```
 
-打开首选的浏览器，键入群集地址（不含端口信息的连接终结点 - 例如 win1kw5649s.westus.cloudapp.azure.com）。
+请记住一个后续步骤的指纹。
 
-现在，应会看到在本地运行该应用程序时所看到的相同结果。
+> [!Note]
+> 默认情况下，Web 前端服务被配置为侦听端口 8080 上是否有传入流量。 端口 8080 在 Party 群集中打开。  如果需要更改应用程序端口，将其更改为在 Party 群集中打开的端口之一。
+>
 
-![来自群集的 API 响应](./media/service-fabric-tutorial-deploy-app-to-party-cluster/response-from-cluster.png)
+### <a name="publish-the-application-using-visual-studio"></a>使用 Visual Studio 发布应用程序
+
+至此，应用程序已准备就绪，可以直接通过 Visual Studio 将它部署到群集了。
+
+1. 在解决方案资源管理器中，右键单击“投票”，再选择“发布”。 此时，“发布”对话框显示。
+
+2. 将合作群集页面中或 Azure 订阅中的“连接终结点”复制到“连接终结点”字段。 例如，`zwin7fh14scd.westus.cloudapp.azure.com:19000`。 单击“高级连接参数”，并确保 *FindValue* 和 *ServerCertThumbprint* 值与在前面的步骤中为合作群集安装的证书的指纹匹配，或者与和你的 Azure 订阅匹配的证书匹配。
+
+    ![发布对话框](./media/service-fabric-quickstart-dotnet/publish-app.png)
+
+    群集中的每个应用程序都必须具有唯一名称。  Party 群集是一个公共、共享的环境，但是可能与现有应用程序存在冲突。  如果存在名称冲突，请重命名 Visual Studio 项目并重新部署。
+
+3. 单击“发布” 。
+
+4. 打开浏览器，键入群集地址（后跟“:8080”或所配置的其他端口），以转到群集中的投票应用程序，例如 `http://zwin7fh14scd.westus.cloudapp.azure.com:8080`。 此时，应该能够看到应用程序在 Azure 群集中运行。 在投票网页中，尝试添加和删除投票选项，并针对这些选项中的一个或多个进行投票。
+
+    ![应用程序前端](./media/service-fabric-quickstart-dotnet/application-screenshot-new-azure.png)
+
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了以下操作：
+本教程介绍了如何：
 
 > [!div class="checklist"]
-> * 通过 Visual Studio 创建群集
-> * 使用 Visual Studio 将应用程序部署到远程群集
+> * 创建一个合作群集。
+> * 使用 Visual Studio 将应用程序部署到远程群集。
 
 转到下一教程：
 > [!div class="nextstepaction"]

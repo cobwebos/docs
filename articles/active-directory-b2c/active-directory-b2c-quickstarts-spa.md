@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
-ms.date: 2/13/2018
+ms.date: 7/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7e600f55b9eeb2682b005b8c84c74ec25e054c36
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 155cdaf51ac5725a315259a0d809ba644f64110c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447245"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048910"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>快速入门：使用 Azure Active Directory B2C 为单页应用设置登录
 
@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) B2C 提供云身份管理来保护应用程序
 
 * 带有 ASP.NET 和 Web 开发工作负荷的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
 * 安装 [Node.js](https://nodejs.org/en/download/)
-* Facebook、Google、Microsoft 或 Twitter 中的社交帐户。
+* 一个 Facebook 帐户。
 
 ## <a name="download-the-sample"></a>下载示例
 
@@ -63,21 +63,17 @@ Listening on port 6420...
 
 单击“登录”按钮，启动基于 Azure AD B2C 策略的 Azure AD B2C “注册或登录”工作流。 
 
-此示例支持多个注册选项，包括使用社交标识提供者，或者使用电子邮件地址来创建本地帐户。 对于本快速入门，将使用 Facebook、Google、Microsoft 或 Twitter 社交标识提供者帐户。 
+此示例支持多个注册选项，包括使用电子邮件地址创建本地帐户。 对于本快速入门，请使用 Facebook 帐户。 
 
 ### <a name="sign-up-using-a-social-identity-provider"></a>使用社交标识提供者注册
 
 Azure AD B2C 为示例 Web 应用的虚构品牌“Wingtip Toys”提供了一个自定义登录页。 
 
-1. 要使用社交标识提供者注册，请单击要使用的标识提供者按钮。
-
-    ![登录或注册提供程序](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-spa.png)
+1. 若要使用社交标识提供者进行注册，请单击 Facebook 标识提供者的按钮。
 
     请使用社交帐户凭据进行身份验证（登录）并授权应用程序读取社交帐户的信息。 通过授予访问权限，应用程序可以从社交帐户检索个人资料信息，如姓名和城市。 
 
-2. 完成标识提供者的登录进程。 例如，如果你选择 Twitter，请输入你的 Twitter 凭据，然后单击“登录”。
-
-    ![使用社交帐户进行身份验证和授权](media/active-directory-b2c-quickstarts-spa/twitter-authenticate-authorize-spa.png)
+2. 通过输入你的凭据完成标识提供者的登录过程。
 
     新帐户个人资料详细信息已预先填充社交帐户的信息。 
 
