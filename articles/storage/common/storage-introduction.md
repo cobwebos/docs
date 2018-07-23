@@ -6,14 +6,14 @@ author: tamram
 manager: jeconnoc
 ms.service: storage
 ms.topic: get-started-article
-ms.date: 04/05/2018
+ms.date: 07/11/2018
 ms.author: tamram
-ms.openlocfilehash: 0ae4e196c81e767b2bbee4340f5d99b9f803df3b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 30741e48adbdb621317c13ec286b419bed2f9ea1
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34653648"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001535"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure 存储简介
 
@@ -140,6 +140,7 @@ Blob 存储帐户是专用于存储块 Blob 和追加 Blob 的存储帐户。 �
 
 静态 Azure 存储服务加密 (SSE) 可帮助保护数据，使组织能够信守在安全性与符合性方面所做的承诺。 使用此功能，Azure 存储可以先自动加密数据，再将数据保存到存储，并在检索之前解密数据。 加密、解密和密钥管理对于用户而言是完全透明的。
 
+
 SSE 自动加密所有性能层（标准和高级）、所有部署模型（Azure 资源管理器和经典）、所有 Azure 存储服务（Blob、队列、表和文件）中的数据。 SSE 不影响 Azure 存储性能。
 
 有关 SSE 静态加密的详细信息，请参阅[静态数据的 Azure 存储服务加密](storage-service-encryption.md)。
@@ -168,6 +169,8 @@ SSE 自动加密所有性能层（标准和高级）、所有部署模型（Azur
 AzCopy 在 [Azure 数据移动库](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)的基础上构建，当前以预览版提供。
 
 可以使用 Azure 导入/导出服务将大量 Blob 数据导入或导出存储帐户。 你需要准备多个硬盘驱动器并将其邮寄到 Azure 数据中心，由该中心的人员将数据传入/传出硬盘驱动器，再将硬盘驱动器寄回给你。 有关导入/导出服务的详细信息，请参阅[使用 Microsoft Azure 导入/导出服务将数据传输到 Blob 存储中](../storage-import-export-service.md)。
+
+若要快速以低成本且可靠的方式将大量 Blob 数据导入到存储帐户中，还可以使用 Azure Data Box 磁盘。 Microsoft 通过区域运营商向你的数据中心发运最多 5 个容量为 40 TB 的加密固态磁盘 (SSD)。 你快速配置磁盘，通过 USB 连接将数据复制到磁盘，然后将磁盘发运回 Azure。 在 Azure 数据中心内，你的数据自动从驱动器上传到云。 有关此解决方案的详细信息，请转到 [Azure Data Box 磁盘概述](https://docs.microsoft.com/azure/databox/data-box-disk-overview)。
 
 ## <a name="pricing"></a>定价
 

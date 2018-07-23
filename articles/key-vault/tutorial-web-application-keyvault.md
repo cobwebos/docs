@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/17/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: b82eeb43c29fd52f4df2d453bb24bb2b3bd581ad
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 747a0fc7f66edbae8d4a99eeaf0ea45f844d6465
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030509"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125917"
 ---
 # <a name="tutorial-configure-an-azure-web-application-to-read-a-secret-from-key-vault"></a>教程：将 Azure Web 应用程序配置为从 Key Vault 读取机密
 
@@ -30,7 +30,7 @@ ms.locfileid: "37030509"
 > * 启用托管服务标识
 > * 授予所需的权限，让应用程序从 Key Vault 读取数据。
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -128,8 +128,8 @@ az keyvault secret show --name "AppSecret" --vault-name "ContosoKeyVault"
 3. 选中搜索框旁边的复选框。 **包括预发行版**
 4. 搜索下面列出的两个 NuGet 包，并确认将其添加到解决方案：
 
-    * [Microsoft.Azure.Services.AppAuthentication (预览版)](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) - 方便提取服务到 Azure 服务身份验证方案的访问令牌。 
-    * [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/2.4.0-preview) - 包含用来与 Key Vault 交互的方法。
+    * [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) - 方便提取服务到 Azure 服务身份验证方案的访问令牌。 
+    * [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) - 包含用来与 Key Vault 交互的方法。
 
 5. 使用解决方案资源管理器打开 `Program.cs`，将 Program.cs 文件的内容替换为以下代码。 将 ```<YourKeyVaultName>``` 替换为 Key Vault 的名称：
 
@@ -142,37 +142,36 @@ az keyvault secret show --name "AppSecret" --vault-name "ContosoKeyVault"
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureKeyVault;
     
-        namespace WebKeyVault
-        {
-        public class Program
-        {
-        public static void Main(string[] args)
-        {
-        BuildWebHost(args).Run();
-        }
-    
-            public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration((ctx, builder) =>
-                {
-                    var keyVaultEndpoint = GetKeyVaultEndpoint();
-                    if (!string.IsNullOrEmpty(keyVaultEndpoint))
-                    {
-                        var azureServiceTokenProvider = new AzureServiceTokenProvider();
-                        var keyVaultClient = new KeyVaultClient(
-                            new KeyVaultClient.AuthenticationCallback(
-                                azureServiceTokenProvider.KeyVaultTokenCallback));
-                        builder.AddAzureKeyVault(
-                            keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
-                    }
-                }
-             )
-                .UseStartup<Startup>()
-                .Build();
-    
-            private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
-        }
-        }
+    namespace WebKeyVault
+    {
+       public class Program
+       {
+           public static void Main(string[] args)
+           {
+               BuildWebHost(args).Run();
+           }
+
+           public static IWebHost BuildWebHost(string[] args) =>
+           WebHost.CreateDefaultBuilder(args)
+               .ConfigureAppConfiguration((ctx, builder) =>
+               {
+                   var keyVaultEndpoint = GetKeyVaultEndpoint();
+                   if (!string.IsNullOrEmpty(keyVaultEndpoint))
+                   {
+                       var azureServiceTokenProvider = new AzureServiceTokenProvider();
+                       var keyVaultClient = new KeyVaultClient(
+                           new KeyVaultClient.AuthenticationCallback(
+                               azureServiceTokenProvider.KeyVaultTokenCallback));
+                       builder.AddAzureKeyVault(
+                           keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
+                   }
+               }
+            ).UseStartup<Startup>()
+             .Build();
+
+           private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
+         }
+    }
     ```
 
 6. 使用解决方案资源管理器导航到“页面”部分并打开 `About.cshtml`。 将 **About.cshtml.cs** 的内容替换为以下代码：
@@ -206,7 +205,8 @@ az keyvault secret show --name "AppSecret" --vault-name "ContosoKeyVault"
 7. 在主菜单中，选择“调试” > “开始执行(不调试)”。 显示浏览器时，导航到“关于”页。 此时将显示 AppSecret 的值。
 
 >[!IMPORTANT]
-> 如果收到“HTTP 错误 502.5 - 进程失败”消息，请检查 `Program.cs` 中指定的 Key Vault 名称
+> 如果收到 HTTP 错误 502.5 - 进程失败消息
+> > 则验证在 `Program.cs` 中指定的密钥保管库的名称
 
 ## <a name="publish-the-web-application-to-azure"></a>将 Web 应用程序发布到 Azure
 

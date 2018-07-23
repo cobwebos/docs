@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,DBs & servers
 ms.topic: quickstart
-ms.date: 07/02/2018
+ms.date: 07/16/2018
 ms.author: sachinp
-ms.openlocfilehash: 264397fee8ea37321841a4130cb5977219861053
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 172ee6c2200334a57ebaa073d7ff530d19b2f07d
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345417"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090524"
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>在 Azure 门户中创建 Azure SQL 数据库
 
@@ -24,7 +24,7 @@ ms.locfileid: "37345417"
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
   >[!NOTE]
-  >本教程使用的是基于 DTU 的购买模型，但[基于 vCore 的购买模型（预览版）](sql-database-service-tiers-vcore.md)也可用。
+  >本教程使用的是基于 DTU 的购买模型，但[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)也可用。
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 

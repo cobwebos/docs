@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 05/08/2018
+ms.date: 07/17/2018
 ms.author: barclayn
-ms.openlocfilehash: f9648e15c720c076a65e84a95f4160f27eec598d
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 2cda30c85ce8a8dc9b7a6c0134b7cabc58b842a4
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34068592"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115314"
 ---
 # <a name="what-is-azure-key-vault"></a>什么是 Azure 密钥保管库？
 
@@ -39,9 +39,9 @@ Azure Key Vault 是一项云服务，用作安全的机密存储。
 
 应用程序的密钥或机密存储在 Azure Key Vault 中以后，应用程序可以使用 URI 来检索特定版本的机密，从而安全地访问所需的信息。 这样就不需编写自定义代码来保护任何机密信息。
 
-### <a name="securely-store-secrets"></a>安全地存储机密
+### <a name="securely-store-secrets-and-keys"></a>安全地存储机密和密钥
 
-密钥由 Azure 使用行业标准算法、密钥长度和硬件安全模块 (HSM) 进行保护。 使用的 HSM 是经验证的联邦信息处理标准 (FIPS) 140-2 级别 2。
+机密和密钥由 Azure 使用行业标准的算法、密钥长度和硬件安全模块 (HSM) 进行保护。 使用的 HSM 是经验证的联邦信息处理标准 (FIPS) 140-2 级别 2。
 
 访问密钥保管库需要适当的身份验证和授权，否则调用方（用户或应用程序）无法进行访问。 身份验证用于确定调用方的身份，而授权则决定了调用方能够执行的操作。
 
@@ -49,7 +49,7 @@ Azure Key Vault 是一项云服务，用作安全的机密存储。
 
 可以对 Azure Key Vault 进行软件或硬件 HSM 保护。 如果需要提高可靠性，可以在硬件安全模块 (HSM) 中导入或生成永不超出 HSM 边界的密钥。 Microsoft 使用 Thales 硬件安全模块。 可以使用 Thales 工具将密钥从 HSM 移到 Azure Key Vault。
 
-最后需要指出的是，根据 Azure Key Vault 的设计，Microsoft 无法查看或提取密钥。
+最后需要指出的是，根据 Azure Key Vault 的设计，Microsoft 无法查看或提取数据。
 
 ### <a name="monitor-access-and-use"></a>监视访问和使用情况
 

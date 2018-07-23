@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: af8b91ee20ccb4d16e7666c317ea7d08a265e6d6
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 62e376a345be837e910ea615f8648e6b8d196ae1
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435538"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006241"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>通过 Visual Studio 创建和部署 Azure 资源组
 使用 Visual Studio 可以创建一个项目，用于将基础结构和代码部署到 Azure。 例如，可以为应用定义 Web 主机、网站和数据库，并将该基础结构与代码一起部署。 Visual Studio 许多不同的入门模板用于部署常见方案。 本文部署 Web 应用和 SQL 数据库。  
@@ -292,7 +292,6 @@ Visual Studio 还提供 intellisense，帮助你了解在编辑模板时哪些�
         "hidden-title": "[concat('OPS-',resourceGroup().name)]"
       }
     }
-  }
   ```
 
 2. 重新部署资源组。 在 Azure 门户中查看仪表板，可以看到，共享的仪表板已添加到所选列表。

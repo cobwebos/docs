@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5346467dff40832aa35799ee3d532e99bf14d569
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5e0da540b2784ef13986c6089d31f22df992ee59
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38482068"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005809"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>快速入门：将第一个 IoT Edge 模块部署到 Linux x64 设备
 
@@ -76,7 +76,7 @@ Azure IoT Edge 将云带来的价值转移至物联网设备。 本快速入门�
 1. 在新的资源组中创建 IoT 中心。 以下代码在资源组“IoTEdgeResources”中创建免费的“F1”中心。 将 *{hub_name}* 替换为 IoT 中心的唯一名称。
 
    ```azurecli-interactive
-   az iot hub create --resource-group TestResources --name {hub_name} --sku F1 
+   az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 
    ```
 
    如果由于订阅中已经有一个免费的中心而出现错误，请将 SKU 更改为 **S1**。 
@@ -250,12 +250,11 @@ IoT Edge 运行时是一组容器，而部署到 IoT Edge 设备的逻辑则以�
 
 如果是在新资源组中创建的虚拟机和 IoT 中心，则可删除该组以及所有关联的资源。 如果该资源组中有需要保留的内容，则请将要清除的资源逐一删除。 
 
-若要删除资源组，请执行以下步骤： 
+删除 **IoTEdgeResources** 组。 
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。
-2. 在“按名称筛选...”文本框中键入包含 IoT 中心的资源组的名称。 
-3. 在结果列表中的资源组右侧，单击“...”，然后单击“删除资源组”。
-4. 系统会要求确认是否删除资源组。 再次键入资源组的名称进行确认，然后单击“删除”。 片刻之后，将会删除该资源组及其包含的所有资源。
+   ```azurecli-interactive
+   az group delete --name IoTEdgeResources 
+   ```
 
 ### <a name="remove-the-iot-edge-runtime"></a>删除 IoT Edge 运行时
 

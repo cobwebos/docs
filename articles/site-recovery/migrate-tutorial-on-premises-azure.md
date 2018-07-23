@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 07/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b297e2ef2f4c276b9183d1874e104d686b304a14
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: bc04483c35162c0b461fd03c63aaa894b1bc199a
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919115"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070671"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>将本地计算机迁移到 Azure
 
@@ -40,7 +40,10 @@ ms.locfileid: "37919115"
 
 ## <a name="prerequisites"></a>先决条件
 
-不支持半虚拟化驱动程序导出的设备。
+- 不支持半虚拟化驱动程序导出的设备。
+ 
+> [!WARNING]
+> 可以通过将 VM 视为物理服务器，迁移诸如 XenServer 的其他虚拟化平台（VMware、Hyper-V 除外）上的 VM。 但是，此方法未经 Microsoft 测试和验证，可能起作用，也可能不起作用。 例如，在 XenServer 平台上运行的 VM 无法在 Azure 中运行，除非在开始迁移之前从 VM 中卸载了 XenServer 工具和半虚拟化的存储和网络驱动程序。
 
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
@@ -109,7 +112,7 @@ ms.locfileid: "37919115"
 1. 在“设置” > “复制的项”中，单击计算机 >“故障转移”。
 2. 在“故障转移”中，选择要故障转移到的“恢复点”。 选择最新的恢复点。
 3. 加密密钥设置与此方案无关。
-4. 选择“在开始故障转移前关闭计算机”。 在触发故障转移之前，Site Recovery 将尝试关闭源虚拟机。 即使关机失败，故障转移也仍会继续。 可以在“作业”页上跟踪故障转移进度。
+4. 选择“在开始故障转移前关闭计算机”。 在触发故障转移之前，Site Recovery 会尝试关闭虚拟机。 即使关机失败，故障转移也仍会继续。 可以在“作业”页上跟踪故障转移进度。
 5. 检查 Azure VM 是否在 Azure 中按预期显示。
 6. 在“复制的项”中，右键单击 VM >“完成迁移”。 该操作将完成迁移过程、停止 VM 的复制，并停止对 VM 的 Site Recovery 计费。
 
@@ -124,7 +127,7 @@ ms.locfileid: "37919115"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已将本地 VM 迁移到 Azure VM。 现在可以为 Azure VM 配置灾难恢复。
-
-> [!div class="nextstepaction"]
-> 从本地站点迁移后为 Azure VM [设置灾难恢复](azure-to-azure-replicate-after-migration.md)。
+在本教程中，已将本地 VM 迁移到 Azure VM。 现在，你已成功迁移了VM：
+- 为迁移的 VM [设置灾难恢复](azure-to-azure-replicate-after-migration.md)。
+- 利用 Azure 的[安全且妥善管理的云](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)功能管理 Azure 中的 VM。
+  

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/09/2018
 ms.author: ganesr
-ms.openlocfilehash: 998d4f8017af51a21e13695a8491e9b6bd62af9a
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 7fd2dd870338dc6778d192658143d14d9d9895cc
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930522"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072140"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute 路由要求
 若要使用 ExpressRoute 连接到 Microsoft 云服务，需要设置并管理路由。 某些连接服务提供商以托管服务形式提供路由的设置和管理。 请咨询连接服务提供商，以确定他们是否提供此类服务。 如果不提供，则必须遵守以下要求：
@@ -221,7 +221,7 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 > 
 > 
 
-### <a name="bgp-community-support-in-national-clouds-preview"></a>区域云中的 BGP 社区支持（预览版）
+### <a name="bgp-community-support-in-national-clouds"></a>区域云中的 BGP 社区支持
 
 | **国家/地区云 Azure 区域**| **BGP 社区值** |
 | --- | --- |

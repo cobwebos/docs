@@ -8,14 +8,14 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
-ms.date: 04/13/2018
+ms.date: 07/11/2018
 ms.author: tomfitz
-ms.openlocfilehash: d87b27101b5bbb3fb589987865649e102d7835de
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 628a936d85eb94a1ee332205047527b0f9795d50
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639201"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990508"
 ---
 # <a name="azure-managed-applications-overview"></a>Azure 托管应用程序概述
 
@@ -41,7 +41,7 @@ IT 团队可以使用托管应用程序为组织中的用户提供预先批准�
 
 ### <a name="service-catalog"></a>服务目录
 
-服务目录是为组织中的用户提供的已批准解决方案内部目录。 可以使用该目录来确保符合特定的组织标准，同时让他们为组织提供解决方案。 员工可以使用目录轻松发现 IT 部门推荐和批准的丰富应用程序集。 他们可以看到组织中其他人员与他们共享的托管应用程序。
+服务目录是为组织中的用户提供的已批准解决方案内部目录。 可以使用该目录来确保符合特定的组织标准，同时让他们为组织提供解决方案。 员工可以使用目录轻松发现 IT 部门推荐和批准的应用程序。 他们可以看到组织中其他人员与他们共享的托管应用程序。
 
 有关发布服务目录托管应用程序的信息，请参阅[创建服务目录应用程序](publish-service-catalog-app.md)。
 
@@ -70,6 +70,10 @@ IT 团队可以使用托管应用程序为组织中的用户提供预先批准�
 此资源组包含托管应用程序所需的所有资源。 例如，此资源组包含解决方案的虚拟机、存储帐户和虚拟网络。 使用者对此资源组拥有有限的访问权限，因为使用者不会管理托管应用程序的单个资源。 发布者对此资源组的访问权限对应于托管应用程序定义中指定的角色。 例如，发布者可以请求此资源组的“所有者”或“参与者”角色。
 
 当使用者删除托管应用程序时，也会一并删除托管资源组。
+
+## <a name="azure-policy"></a>Azure 策略
+
+可以向托管应用程序应用 [Azure 策略](../azure-policy/azure-policy-introduction.md)。 可以应用策略来确保你的托管应用程序的已部署实例符合数据和安全性要求。 如果应用程序与敏感数据进行交互，请确保你已评估应当如何对该数据进行保护。 例如，如果应用程序与来自 Office 365 的数据进行交互，请应用策略来确保启用数据加密。
 
 ## <a name="next-steps"></a>后续步骤
 

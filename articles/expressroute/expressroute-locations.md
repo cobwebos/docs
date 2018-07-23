@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2018
 ms.author: jaredro
-ms.openlocfilehash: 8fa32350412b3a27c06d218342cdd7ad99ca5245
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 35d15811f31e64d0c27a23da802a16ce2e4570aa
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972411"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113977"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -107,7 +107,7 @@ ms.locfileid: "38972411"
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |支持 |支持 |阿姆斯特丹、芝加哥、达拉斯、伦敦、新港、圣保罗、西雅图、硅谷、新加坡、华盛顿特区 |
 | **LG CNS** |支持 |支持 |釜山、首尔 |
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |支持 |支持 |开普敦、约翰内斯堡 |
-| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |支持 |支持 |阿姆斯特丹、芝加哥、达拉斯、丹佛、都柏林、香港特别行政区、拉斯维加斯、伦敦、洛杉矶、墨尔本、迈阿密、纽约、魁北克市、圣安东尼奥、西雅图、硅谷、新加坡、新加坡 2、悉尼、多伦多、华盛顿特区 |
+| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |支持 |支持 |阿姆斯特丹、亚特兰大、芝加哥、达拉斯、丹佛、都柏林、香港特别行政区、拉斯维加斯、伦敦、洛杉矶、墨尔本、迈阿密、纽约、魁北克市、圣安东尼奥、西雅图、硅谷、新加坡、新加坡 2、悉尼、多伦多、华盛顿特区 |
 | **MTN** |支持 |支持 |伦敦 |
 | **[Neutrona Networks](http://www.neutrona.com/index.php/azure-expressroute/)** |支持 |支持 |达拉斯、迈阿密、圣保罗 |
 | **[Next Generation Data](http://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |支持 |支持 |Newport(Wales) |

@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 02/27/2018
 ms.author: marsma
-ms.openlocfilehash: 22be921c7ab437e08d8ea5032befb8671dc90ed0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1bc890abc8b406ae75f292f37775e4cb62cf0473
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32163361"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115269"
 ---
 # <a name="quotas-and-region-availability-for-azure-container-instances"></a>Azure 容器实例的配额和区域可用性
 
@@ -27,10 +27,11 @@ ms.locfileid: "32163361"
 
 Azure 容器实例在具有指定 CPU 和内存限制的以下区域中可用。
 
-| Location | 操作系统 | CPU | 内存 (GB) |
+| 位置 | OS | CPU | 内存 (GB) |
 | -------- | -- | :---: | :-----------: |
 | 美国西部、美国东部、西欧、北欧 | Linux | 4 | 14 |
 | 美国西部 2 区、东南亚 | Linux | 2 | 7 |
+| 澳大利亚东部、美国东部 2、美国中部 | Linux | 1 | 1.5 |
 | 美国西部、美国东部、西欧、北欧 | Windows | 4 | 14 |
 | 美国西部 2 区、东南亚 | Windows | 2 | 3.5 |
 

@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: overview
-ms.date: 06/06/2018
+ms.date: 07/17/2018
 ms.author: marsma
-ms.openlocfilehash: a0772d1009021ca64b448710c5353407a5492fae
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: e4c1efbf4c2c844bae971fa1136e0fe3bed18bcc
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809857"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112957"
 ---
 # <a name="container-instance-logging-with-azure-log-analytics"></a>使用 Azure Log Analytics 进行容器实例日志记录
 
@@ -43,9 +43,26 @@ Azure 容器实例需要权限才能向 Log Analytics 工作区发送数据。 �
 
 ## <a name="create-container-group"></a>创建容器组
 
-有了 Log Analytics 工作区 ID 和主密钥以后，即可创建启用日志记录的容器组。 以下示例创建的容器组包含单个 [fluentd][fluentd] 容器。 Fluentd 容器在其默认配置中生成多行输出。 由于该输出发送到 Log Analytics 工作区，因此适用于演示如何查看和查询日志。
+有了 Log Analytics 工作区 ID 和主密钥以后，即可创建启用日志记录的容器组。
 
-首先，将以下 YAML（用于定义包含单个容器的容器组）复制到新文件中。 将 `LOG_ANALYTICS_WORKSPACE_ID` 和 `LOG_ANALYTICS_WORKSPACE_KEY` 替换为在上一步获得的值，然后将文件另存为 **deploy-aci.yaml**。
+下面的示例演示了创建包含单个 [fluentd][fluentd] 容器的容器组的两种方式：Azure CLI、Azure CLI 与 YAML 模板。 Fluentd 容器在其默认配置中生成多行输出。 由于该输出发送到 Log Analytics 工作区，因此适用于演示如何查看和查询日志。
+
+### <a name="deploy-with-azure-cli"></a>使用 Azure CLI 进行部署
+
+若要使用 Azure CLI 进行部署，请在 [az container create][az-container-create] 命令中指定 `--log-analytics-workspace` 和 `--log-analytics-workspace-key` 参数。 在运行下面的命令之前，请将两个工作区值替换为在前面的步骤中获得的值（并更新资源组名称）。
+
+```azurecli-interactive
+az container create \
+    --resource-group myResourceGroup \
+    --name mycontainergroup001 \
+    --image fluent/fluentd \
+    --log-analytics-workspace <WORKSPACE_ID> \
+    --log-analytics-workspace-key <WORKSPACE_KEY>
+```
+
+### <a name="deploy-with-yaml"></a>使用 YAML 进行部署
+
+如果喜欢使用 YAML 部署容器组，请使用此方法。 下面的 YAML 定义包含单个容器的容器组。 将 YAML 复制到一个新文件中，然后将 `LOG_ANALYTICS_WORKSPACE_ID` 和 `LOG_ANALYTICS_WORKSPACE_KEY` 替换为在前面的步骤中获得的值。 将该文件保存为 **deploy-aci.yaml**。
 
 ```yaml
 apiVersion: 2018-06-01
@@ -75,7 +92,7 @@ type: Microsoft.ContainerInstance/containerGroups
 接下来执行以下命令，以便部署容器组；将 `myResourceGroup` 替换为订阅中的资源组（或者先创建名为“myResourceGroup”的资源组）：
 
 ```azurecli-interactive
-az container create -g myResourceGroup -n mycontainergroup001 -f deploy-aci.yaml
+az container create --resource-group myResourceGroup --name mycontainergroup001 --file deploy-aci.yaml
 ```
 
 在发出命令以后，很快就会收到来自 Azure 的响应，其中包含部署详细信息。
@@ -135,3 +152,4 @@ ContainerInstanceLog_CL
 [query_lang]: https://docs.loganalytics.io/
 
 <!-- LINKS - Internal -->
+[az-container-create]: /cli/azure/container#az-container-create

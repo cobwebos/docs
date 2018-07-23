@@ -15,12 +15,12 @@ ms.date: 06/13/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: c6800e5a00d2fb837538141571c105a1d21e4374
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 5f5aab6a8514636e8be09deb773748080871b9d4
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860313"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005225"
 ---
 # <a name="group-based-licensing-basics-in-azure-active-directory"></a>Azure Active Directory 中基于组的许可基础知识
 
@@ -30,8 +30,8 @@ Microsoft 付费云服务（如 Office 365、企业移动性 + 安全性、Dynam
 
 为了解决这些难题，Azure AD 现在提供基于组的许可功能。 可将一个或多个产品许可证分配给某个组。 Azure AD 确保将许可证分配给该组的所有成员。 将向加入该组的任何新成员分配适当的许可证。 在这些成员离开组时，将删除相应的许可证。 这样就不再需要通过 PowerShell 自动执行许可证管理以反映每个用户的组织和部门结构变化。
 
->[!NOTE]
->此功能目前处于公共预览状态。 应准备好还原或删除所做的任何更改。 在公共预览版推出期间，可在任何付费 Azure Active Directory (Azure AD) 许可计划中使用此功能。 但是，当此功能正式推出时，此功能的某些方面可能需要一个或多个 Azure Active Directory Premium 证书。
+>[!Note]
+>基于组的许可是 Azure Active Directory (Azure AD) 的一项公共预览版功能，可通过任何付费 Azure AD 许可计划获得。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="features"></a>功能
 

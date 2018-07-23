@@ -7,37 +7,37 @@ manager: jwillis
 ms.service: storage
 ms.workload: storage
 ms.topic: get-started-article
-ms.date: 07/03/2018
+ms.date: 07/14/2018
 ms.author: hux
-ms.openlocfilehash: 6efc50bfee54c38511fb3346f1341f81741d14eb
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 9ea4a6f0d1ff6e78d97fbc64b8a23406172ebf36
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445411"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072408"
 ---
 # <a name="azure-storage-account-options"></a>Azure 存储帐户选项
 
 ## <a name="overview"></a>概述
 Azure 存储提供三个不同的帐户选项，支持不同的定价和功能。 在创建存储帐户之前，需考虑到这些差异，以便确定最适合应用程序的选项。 三个不同的存储帐户选项为：
 
-* **常规用途 v2 (GPv2)** 帐户 
-* **常规用途 v1 (GPv1)** 帐户
-* **Blob 存储**帐户
+* [**常规用途 v2 (GPv2)** 帐户](#general-purpose-v2-accounts)
+* [**常规用途 v1 (GPv1)** 帐户](#general-purpose-v1-accounts)
+* [**Blob 存储**帐户](#blob-storage-accounts)
 
 以下部分更详细地介绍了每类帐户：
 
 ## <a name="storage-account-options"></a>存储帐户选项
 
-### <a name="general-purpose-v2"></a>常规用途 v2
+### <a name="general-purpose-v2-accounts"></a>常规用途 v2 帐户
 
-常规用途 v2 (GPv2) 帐户是存储帐户，支持适用于 Blob、文件、队列和表的所有最新功能。 GPv2 帐户支持在 GPv1 和 Blob 存储帐户中受支持的所有 API 和功能， 同时还支持在这些帐户类型中提供的持续性、可用性、可伸缩性和性能。 设计 GPv2 帐户定价的目的是为了提供最低的单 GB 价格和具有行业竞争优势的事务价格。
+常规用途 v2 (GPv2) 帐户是存储帐户，支持适用于 Blob、文件、队列和表的所有最新功能。 GPv2 帐户支持常规用途 v1 (GPv1) 和 Blob 存储帐户支持的所有 API、服务和功能。 它们还保留了所有存储帐户类型提供的相同持续性、可用性、可伸缩性和性能。 设计 GPv2 帐户定价的目的是为了提供最低的单 GB 价格和具有行业竞争优势的事务价格。
 
 可以使用 Azure 门户、PowerShell 或 Azure CLI 将 GPv1 或 Blob 存储帐户升级为 GPv2 帐户。 
 
-对于 GPv2 存储帐户中的块 Blob，可以根据访问模式在帐户级别选择热或冷存储层，或者在 Blob 级别选择热、冷或存档层。 可以将经常访问的、不常访问的和很少访问的数据分别存储在热、冷和存档存储层中，以便优化成本。 
+对于 GPv2 存储帐户中的块 Blob，可以根据使用模式在帐户级别选择热或冷存储访问层，或者在 Blob 级别选择热、冷或存档访问层。 可以将经常访问的、不常访问的和很少访问的数据分别存储在热、冷和存档存储层中，以便优化存储和事务成本。 
 
-GPv2 存储帐户在帐户级别公开“访问层”属性，可以将默认存储帐户层指定为“热”或“冷”。 默认存储帐户层可以应用到任何 Blob，前提是该 Blob 没有在 Blob 级别设置任何显式层。 如果数据的使用模式有所更改，也可以随时在这些存储层之间切换。 **存档层**仅适用于 Blob 级别。
+GPv2 存储帐户在帐户级别公开“访问层”属性，可以将默认存储帐户层指定为“热”或“冷”。 默认存储帐户层可以应用到任何 Blob，前提是该 Blob 没有在 Blob 级别设置任何显式层。 如果数据的使用模式有所更改，也可以随时在这些存储层之间切换。 **存档**层仅适用于 Blob 级别。
 
 > [!NOTE]
 > 更改存储层可能会产生额外费用。 有关详细信息，请参阅[定价和计费](#pricing-and-billing)部分。
@@ -46,7 +46,10 @@ GPv2 存储帐户在帐户级别公开“访问层”属性，可以将默认存
 
 ### <a name="upgrade-a-storage-account-to-gpv2"></a>将存储帐户升级为 GPv2
 
-用户随时可以使用 Azure 门户、PowerShell 或 Azure CLI 将 GPv1 或 Blob 存储帐户升级为 GPv2 帐户。 此更改无法撤消，不允许其他更改。
+用户随时可以使用 Azure 门户、PowerShell 或 Azure CLI 将 GPv1 或 Blob 存储帐户升级为 GPv2 帐户。 此更改无法撤消，不允许其他帐户类型更改。 有关对现有存储帐户进行评估的详细信息，请参阅[进行评估以及迁移到 GPv2 存储帐户](#evaluating-and-migrating-to-gpv2-storage-accounts)部分。
+* [使用 Azure 门户升级到 GPv2](#upgrade-with-azure-portal)
+* [使用 PowerShell 升级到 GPv2](#upgrade-with-powershell)
+* [使用 Azure CLI 升级到 GPv2](#upgrade-with-azure-cli)
 
 #### <a name="upgrade-with-azure-portal"></a>使用 Azure 门户进行升级
 若要使用 Azure 门户将 GPv1 或 Blob 存储帐户升级为 GPv2 帐户，请先登录到 [Azure 门户](https://portal.azure.com)，然后选择存储帐户。 选择“设置” > “配置”。 此时将显示“升级”按钮，以及有关升级过程的说明。
@@ -67,7 +70,7 @@ Set-AzureRmStorageAccount -ResourceGroupName <resource-group> -AccountName <stor
 az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2
 ```` 
 
-### <a name="general-purpose-v1"></a>常规用途 v1
+### <a name="general-purpose-v1-accounts"></a>常规用途 v1 帐户
 
 常规用途 v1 (GPv1) 帐户可以访问所有 Azure 存储服务，但可能没有最新功能，其单 GB 定价也可能不是最低的。 例如，GPv1 不支持冷存储和存档存储。 GPv1 事务定价较低，因此改动率或读取率高的工作负荷适合此帐户类型。
 
@@ -196,14 +199,19 @@ Blob 存储帐户支持 GPv2 帐户所支持的所有块 Blob 功能，但其局
 * 已经有了一个 GPv1 存储帐户，想要使用适当的存储层来评估对 GPv2 存储帐户所做的更改。
 * 已经决定使用 GPv2 存储帐户，或者已经有了一个这种帐户，想要评估一下是应使用热存储层还是冷存储层。
 
-在这两种情况下，首要任务是评估一下对存储在 GPv2 存储帐户中的数据进行存储和访问操作所需的成本，并将该成本与当前成本进行比较。
+在这两种情况下，首要任务都是评估对存储在 GPv2 存储帐户中的数据进行存储、访问和操作所需的成本，并将该成本与当前成本进行比较。
 
 ## <a name="evaluating-gpv2-storage-account-tiers"></a>评估 GPv2 存储帐户层
 
 若要估算在 GPv2 存储帐户中存储和访问数据所需的成本，需评估现有的使用模式，或对预期的使用模式进行一个大致的估计。 一般情况下，需了解：
 
-* 存储消耗 - 正在存储的数据量以及每月如何变化？
-* 存储访问模式 - 从帐户读取以及写入到帐户的数据量（包括新数据）？ 使用了多少事务来进行数据访问？这些事务是什么类型的事务？
+* 你的数据存储消耗 (GB)
+    - 有多少数据存储在存储帐户中？
+    - 数据量每月如何变化；新数据是否不断替换旧数据？
+* 你的存储访问模式（操作和数据传输）
+    - 从存储帐户读取了多少数据（流出量），向其写入了多少数据（流入量）？ 
+    - 对存储帐户中的数据执行了多少操作？
+    - 对数据执行了哪种类型的操作，读取还是写入？
 
 ## <a name="monitoring-existing-storage-accounts"></a>监视现有存储帐户
 
@@ -244,7 +252,7 @@ Blob 存储帐户支持 GPv2 帐户所支持的所有块 Blob 功能，但其局
 若要估算 Blob 存储帐户的事务费用，需将事务细分成三组，因为这些事务价格不一样。
 
 * 写入事务，例如 'PutBlob'、'PutBlock'、'PutBlockList'、'AppendBlock'、'ListBlobs'、'ListContainers'、'CreateContainer'、'SnapshotBlob' 和 'CopyBlob'。
-* 删除事务，例如 'DeleteBlob' 和 'DeleteContainer'。
+* 读取事务，例如 'GetBlob'。
 * 所有其他事务。
 
 若要估算 GPv1 存储帐户的事务成本，需聚合所有事务而不考虑操作/API。

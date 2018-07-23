@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/06/2017
 ms.author: eamono
-ms.openlocfilehash: 9a4d6ecf19fc96a9c7b92cf246effbf3948fb478
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 6270f8bad893798f46d8db91e7b1140b6a125350
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
-ms.locfileid: "26349063"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049858"
 ---
 # <a name="integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>将 Azure 自动化与事件网格和 Microsoft Teams 相集成
 
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 导入事件网格示例 runbook。
@@ -32,20 +32,23 @@ ms.locfileid: "26349063"
 > * 创建事件网格订阅。
 > * 创建触发 runbook 的 VM。
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要完成此教程，需要 [Azure 自动化帐户](../automation/automation-offering-get-started.md)，以保存从 Azure 事件网格订阅触发的 runbook。
 
+* 需要将 `AzureRM.Tags` 模块加载到你的自动化帐户中，请参阅[如何在 Azure 自动化中导入模块](../automation/automation-update-azure-modules.md)来了解如何将模块导入到 Azure 自动化中。
+
 ## <a name="import-an-event-grid-sample-runbook"></a>导入事件网格示例 runbook
+
 1. 选择自动化帐户并选择 Runbook 页。
 
    ![选择 runbook](./media/ensure-tags-exists-on-new-virtual-machines/select-runbooks.png)
 
 2. 选择“浏览库”按钮。
 
-3. 搜索“事件网格”并选择“集成 Azure 自动化与事件网格”。 
+3. 搜索“事件网格”并选择“集成 Azure 自动化与事件网格”。
 
     ![导入库 runbook](media/ensure-tags-exists-on-new-virtual-machines/gallery-event-grid.png)
 
@@ -53,7 +56,11 @@ ms.locfileid: "26349063"
 
 5. 导入后，选择“编辑”查看 runbook 源。 选择“发布”按钮。
 
+> [!NOTE]
+> 需要将脚本中的第 74 行更改为 `Update-AzureRmVM -ResourceGroupName $VMResourceGroup -VM $VM -Tag $Tag | Write-Verbose`。 `-Tags` 参数现在是 `-Tag`。
+
 ## <a name="create-an-optional-microsoft-teams-webhook"></a>创建可选 Microsoft Teams Webhook
+
 1. 在 Microsoft Teams 中，选择通道名称旁的“更多选项”，然后选择“连接器”。
 
     ![Microsoft Teams 连接](media/ensure-tags-exists-on-new-virtual-machines/teams-webhook.png)
@@ -67,6 +74,7 @@ ms.locfileid: "26349063"
 5. 选择“完成”保存 Webhook。
 
 ## <a name="create-a-webhook-for-the-runbook"></a>为 runbook 创建 Webhook
+
 1. 打开 Watch-VMWrite runbook。
 
 2. 选择 Webhook 并选择“添加 Webhook”按钮。

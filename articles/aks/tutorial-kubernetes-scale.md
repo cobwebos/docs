@@ -9,25 +9,25 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 7b962ccd8349996cd33cc3960391cba8fce549ad
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 22f7f9aee791d315300ffdc4dc9f708a80a5baf7
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33934357"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39127398"
 ---
 # <a name="tutorial-scale-application-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中缩放应用程序
 
 如果已按照教程执行，则在 AKS 中已有可正常工作的 Kubernetes 群集，并且已部署了 Azure 投票应用。
 
-在本教程第 5 部分（共 8 部分）中，会在应用中扩大 Pod 并尝试 Pod 自动缩放。 还会了解如何缩放 Azure VM 节点数以更改群集用于托管工作负荷的容量。 已完成的任务包括：
+在本教程第 5 部分（共 7 部分）中，会在应用中扩大 Pod 并尝试 Pod 自动缩放。 还会了解如何缩放 Azure VM 节点数以更改群集用于托管工作负荷的容量。 已完成的任务包括：
 
 > [!div class="checklist"]
 > * 缩放 Kubernetes Azure 节点
 > * 手动缩放 Kubernetes Pod
 > * 配置运行应用前端的自动缩放 Pod
 
-在后续教程中，将会更新 Azure 投票应用程序，并将 Log Analytics 配置为监视 Kubernetes 群集。
+在后续教程中，Azure 投票应用程序将更新为新版本。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -105,7 +105,12 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 
 ## <a name="autoscale-pods"></a>自动缩放 Pod
 
-Kubernetes 支持[水平 Pod 自动缩放][kubernetes-hpa]以根据 CPU 利用率或其他选择指标调整部署中的 Pod 数。
+Kubernetes 支持[水平 Pod 自动缩放][kubernetes-hpa]以根据 CPU 利用率或其他选择指标调整部署中的 Pod 数。 [指标服务器][metrics-server]用来将资源利用率提供给 Kubernetes。 若要安装指标服务器，请克隆 `metrics-server` GitHub 存储库并安装示例资源定义。 若要查看这些 YAML 定义的内容，请参阅[适用于 Kuberenetes 1.8+ 的指标服务器][metrics-server-github]。
+
+```console
+git clone https://github.com/kubernetes-incubator/metrics-server.git
+kubectl create -f metrics-server/deploy/1.8+/
+```
 
 若要使用自动缩放程序，Pod 必须定义了 CPU 请求和限制。 在 `azure-vote-front` 部署中，前端容器请求 0.25 个 CPU，限制为 0.5 个 CPU。 设置与下面类似：
 
@@ -118,7 +123,6 @@ resources:
 ```
 
 下面的示例使用 [kubectl autoscale][kubectl-autoscale] 命令自动缩放 `azure-vote-front` 部署中的 Pod 数。 在此处，如果 CPU 利用率超过 50%，则自动缩放程序会将 Pod 增加到最多 10 个。
-
 
 ```azurecli
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
@@ -158,6 +162,8 @@ azure-vote-front   Deployment/azure-vote-front   0% / 50%   3         10        
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-scale]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#scale
 [kubernetes-hpa]: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
+[metrics-server-github]: https://github.com/kubernetes-incubator/metrics-server/tree/master/deploy/1.8%2B
+[metrics-server]: https://kubernetes.io/docs/tasks/debug-application-cluster/core-metrics-pipeline/
 
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md

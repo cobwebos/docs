@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2018
+ms.date: 07/11/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 463ac7ee3e640f8bc275adb9e6ac27cc3e6a037a
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 8e78528783d57d31e1eb9bcda82fa9acccf69dde
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127953"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005243"
 ---
 # <a name="what-is-azure-log-analytics"></a>什么是 Azure Log Analytics？
 Log Analytics 在 Azure 管理中发挥中心作用，具体表现在：从各种源收集遥测数据和其他数据，以及提供查询语言和分析引擎，用于了解应用程序和资源的运行情况。  可以通过日志搜索和视图直接与 Log Analytics 数据交互，也可以在其他 Azure 服务（例如 Application Insights 或 Azure 安全中心，可以将其数据存储在 Log Analytics 中）中使用分析工具。  
@@ -41,12 +41,12 @@ Log Analytics 从各种源收集数据。  收集以后，数据会按数据类�
 
 将数据收集到 Log Analytics 中的方法包括：
 
-- 配置 Azure Monitor，让其复制自己从 Azure 资源收集的指标和日志。
-- [Windows](log-analytics-windows-agent.md) 和 [Linux](log-analytics-linux-agents.md) 虚拟机上的代理会根据所配置的[数据源](log-analytics-data-sources.md)，将遥测数据从来宾操作系统和应用程序发送到 Log Analytics。  
-- 将 [System Center Operations Manager 管理组](log-analytics-om-agents.md)连接到 Log Analytics，以便从其代理收集数据。
+- 对 Azure Monitor 进行配置，以复制它从 Azure 资源收集的[指标和日志](../monitoring/monitoring-data-collection.md#types-of-monitoring-data)。
+- 收集写入到 [Azure 存储](log-analytics-azure-storage-iis-table.md)的遥测数据。
+- [Windows](log-analytics-windows-agent.md) 和 [Linux](log-analytics-linux-agents.md) 虚拟机上的代理会根据所配置的[数据源](log-analytics-data-sources.md)，将遥测数据从来宾操作系统和应用程序发送到 Log Analytics。 代理可以直接连接，在没有防火墙访问权限时通过 [OMS 网关](log-analytics-oms-gateway.md)进行连接，或者通过 [System Center Operations Manager 管理组](log-analytics-om-agents.md)进行连接。
 - Azure 服务（例如 [Application Insights](https://docs.microsoft.com/azure/application-insights/) 和 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/)）将其数据直接存储在 Log Analytics 中，不需任何配置。
 - 使用 Log Analytics cmdlet，从 PowerShell 命令行或 [Azure 自动化 runbook](../automation/automation-runbook-types.md) 写入数据。
-- 如果有自定义方面的要求，可以使用 [HTTP 数据收集器 API](log-analytics-data-collector-api.md) 将数据从任何 REST API 客户端写入 Log Analytics。
+- 如果有自定义的要求，则可以使用 [HTTP 数据收集器 API](log-analytics-data-collector-api.md) 将数据从任何 REST API 客户端或 [Azure 逻辑应用](https://docs.microsoft.com/azure/logic-apps/)写入到 Log Analytics 以写入来自自定义流的数据。
 
 
 ![Log Analytics 组件](media/log-analytics-overview/collecting-data.png)

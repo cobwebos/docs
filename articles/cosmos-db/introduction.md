@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: dcc384fad0479c66211fe31e547ad7076150b58e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 256c951b5bf193f5ee5bfe5f70c3549ef17a4d9b
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611222"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071972"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>欢迎使用 Azure Cosmos DB
 
@@ -68,7 +68,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布式多模型数据库。 �
     * Azure Cosmos DB 的数据库引擎完全与架构无关 – 它自动索引所引入的所有数据而无需任何架构或索引，并提供速度超快的快速查询。 
 
 * 拥有成本低廉
-    * [成本效益](https://aka.ms/cosmos-db-tco-paper)是非托管解决方案或本地 NoSQL 解决方案的 5 到 10 倍。
+    * 成本效益是非托管解决方案或本地 NoSQL 解决方案的 5 到 10 倍。
     * 是 AWS DynamoDB 或 Google Spanner 价格的三分之一。
 
 ## <a name="capability-comparison"></a>功能比较

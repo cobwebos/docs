@@ -1,25 +1,22 @@
 ---
-title: 什么是 HDInsight 以及 Hadoop 和 Spark 技术堆栈？ - Azure | Microsoft Docs
+title: 什么是 HDInsight 以及 Hadoop 和 Spark 技术堆栈？ - Azure
 description: 介绍 HDInsight 以及 Hadoop 和 Spark 技术堆栈和组件，其中包括适用于大数据分析的 Kafka、Hive、Storm 和 HBase。
 keywords: azure hadoop, hadoop azure, hadoop 简介, hadoop 技术堆栈, 什么是 hadoop 群集, hadoop 的用途
 services: hdinsight
-documentationcenter: ''
 author: cjgronlund
+ms.author: cgronlun
 manager: jhubbard
-editor: cgronlun
 ms.assetid: e56a396a-1b39-43e0-b543-f2dee5b8dd3a
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017, mvc
-ms.devlang: na
 ms.topic: overview
 ms.date: 05/07/2018
-ms.author: cgronlun
-ms.openlocfilehash: b84389c1d52c0c43f1e71da3eed86f4057b85559
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: c7bed171a3b866f4b1f94d6a5348dd25d8820f2b
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051376"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115335"
 ---
 # <a name="what-is-azure-hdinsight-and-the-hadoop-technology-stack"></a>什么是 Azure HDInsight 和 Hadoop 技术堆栈
 
@@ -44,7 +41,7 @@ Azure HDInsight 是 [Hortonworks Data Platform (HDP)](https://hortonworks.com/pr
 本部分列出了 Azure HDInsight 的功能。
 
 
-|功能  |说明  |
+|功能  |Description  |
 |---------|---------|
 |云原生     |     可以使用 Azure HDInsight 在 Azure 上为 [Hadoop](apache-hadoop-linux-tutorial-get-started.md)、 [Spark](../spark/apache-spark-jupyter-spark-sql.md)、 [交互式查询 (LLAP)](../interactive-query/apache-interactive-query-get-started.md)、 [Kafka](../kafka/apache-kafka-get-started.md)、 [Storm](../storm/apache-storm-tutorial-get-started-linux.md)、 [HBase](../hbase/apache-hbase-tutorial-get-started-linux.md) 和  [ML Services](../r-server/r-server-get-started.md) 创建优化群集。 HDInsight 还在所有生产工作负荷上提供端到端 SLA。  |
 |低成本且可缩放     | 可以通过 HDInsight 纵向[缩放](../hdinsight-administer-use-portal-linux.md) 工作负荷。 可以通过 [创建按需群集](../hdinsight-hadoop-create-linux-clusters-adf.md) 来降低成本，只为自己使用的东西付费。 还可以生成数据管道，使作业可操作化。 使计算和存储分离，提高性能和灵活性。 |
@@ -87,9 +84,9 @@ Azure HDInsight 适用于各种方案的大数据处理。 大数据可以是历
 ![HDInsight 体系结构：混合](./media/apache-hadoop-introduction/hdinsight-architecture-hybrid.png "HDInsight 混合体系结构")
 
 ## <a name="cluster-types-in-hdinsight"></a>HDInsight 中的群集类型
-HDInsight 包括特定的群集类型和群集自定义功能，例如添加组件、实用程序和语言的功能。 HDInsight 提供了以下群集类型：
+HDInsight 包括特定的群集类型和群集自定义功能，例如添加组件、实用程序和语言的功能。 HDInsight 提供以下群集类型：
 
-* **[Apache Hadoop](https://wiki.apache.org/hadoop)**：一个框架，使用 [HDFS](#hdfs)、[YARN](#yarn) 资源管理和简单的 [MapReduce](#mapreduce) 编程模型并行处理和分析批处理数据。
+* **[Apache Hadoop](https://wiki.apache.org/hadoop)**：一个框架，使用 HDFS、YARN 资源管理和简单的 MapReduce 编程模型并行处理和分析批处理数据。
 
 * **[Apache Spark](http://spark.apache.org/)**：一种开源并行处理框架，支持使用内存中处理来提升大数据分析应用程序的性能。 请参阅[什么是 HDInsight 中的 Apache Spark？](../spark/apache-spark-overview.md)
 

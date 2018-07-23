@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: kumud
-ms.openlocfilehash: 0322b3510cfd4f94031d8c1db8f1cc032b997fa8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 63a78332742dcefab20401575b1df0e23c06aa78
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22719919"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035140"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>将公司 Internet 域指向 Azure 流量管理器域
 
 创建流量管理器配置文件时，Azure 会自动为该配置文件分配一个 DNS 名称。 若要使用 DNS 区域中的某个名称，请创建一条映射到流量管理器配置文件域名的 CNAME DNS 记录。 可以在流量管理器配置文件的“配置”页上的“常规”部分中找到流量管理器域名。
 
-例如，要将名称 www.contoso.com 指向流量管理器 DNS 名称 contoso.trafficmanager.net，请创建以下 DNS 资源记录：
+例如，若要将名称 `www.contoso.com` 指向流量管理器 DNS 名称 `contoso.trafficmanager.net`，请创建以下 DNS 资源记录：
 
     www.contoso.com IN CNAME contoso.trafficmanager.net
 

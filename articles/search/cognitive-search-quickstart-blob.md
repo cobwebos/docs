@@ -3,16 +3,17 @@ title: 快速入门：使用门户在 Azure 搜索中创建认知搜索管道 | 
 description: 在 Azure 门户中使用示例数据添加数据提取、自动语言和图像处理技能的示例。
 manager: cgronlun
 author: HeidiSteen
+services: search
 ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: c5b6036efa4fcd6b7b8d756fa20d63952482518e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3dda4c330f2dc620662c476aa4e5dbfe3a60fa76
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640255"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003690"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>快速入门：使用技能和示例数据创建认知搜索管道
 
@@ -28,9 +29,9 @@ ms.locfileid: "34640255"
 可在以下区域中创建的 Azure 搜索服务中试用认知搜索：
 
 * 美国中南部
-* 欧洲西部
+* 西欧
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -60,7 +61,7 @@ ms.locfileid: "34640255"
   “免费”服务限制为 3 个索引、最大 16 MB 的 Blob 和 2 分钟的索引，这不足以演练认知搜索的完整功能。 若要查看不同层的限制，请参阅[服务限制](search-limits-quotas-capacity.md)。
 
   > [!NOTE]
-  > Azure 搜索目前以公共预览版提供。 技能集执行目前已在所有层中推出，包括免费层。 我们日后会公布此功能的定价。
+  > 认知搜索目前为公共预览版。 技能集执行目前已在所有层中推出，包括免费层。 我们日后会公布此功能的定价。
 
 1. 将服务固定到仪表板，以快速访问服务信息。
 
@@ -72,7 +73,7 @@ ms.locfileid: "34640255"
 
 1. [下载示例数据](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)，其中包括不同类型的小型文件集。 
 
-1. 注册 Azure Blob 存储，创建存储帐户，登录到存储资源管理器，并创建一个容器。 有关所有步骤的说明，请参阅 [Azure 存储资源管理器快速入门](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)。
+1. 注册 Azure Blob 存储，创建存储帐户，登录到存储资源管理器，并创建容器。 有关所有步骤的说明，请参阅 [Azure 存储资源管理器快速入门](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)。
 
 1. 使用 Azure 存储资源管理器，在创建的容器中单击“上传”以上传示例文件。
 

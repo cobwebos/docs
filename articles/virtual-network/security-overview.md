@@ -1,6 +1,6 @@
 ---
-title: Azure 网络安全概述 | Microsoft Docs
-description: 了解用于控制 Azure 资源之间的网络流量流的安全选项。
+title: Azure 安全组概述 | Microsoft Docs
+description: 了解网络和应用程序安全组。 安全组可以帮助你筛选 Azure 资源之间的网络流量。
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
-ms.openlocfilehash: 11178c574bcfa2224d15f81653f7d202ba88fb55
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8e43f476c6f816a912e5739d5e2c13676cd1ca3e
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657581"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092659"
 ---
-# <a name="network-security"></a>网络安全
+# <a name="network-and-application-security-groups"></a>网络和应用程序安全组
 
-可以使用网络安全组限制发往虚拟网络中的资源的网络流量。 网络安全组包含一个安全规则列表，这些规则可根据源或目标 IP 地址、端口和协议允许或拒绝入站或出站网络流量。 
+可以使用网络和应用程序安全组限制发往虚拟网络中的资源的网络流量。 网络安全组包含一个安全规则列表，这些规则可根据源或目标 IP 地址、端口和协议允许或拒绝入站或出站网络流量。 使用应用程序安全组可以将功能类似的虚拟机（例如 Web 服务器）分组在一起。 可将应用程序安全组指定为网络安全组规则中的源或目标。
 
 ## <a name="network-security-groups"></a>网络安全组
 
-每个网络接口有零个或一个关联的网络安全组。 每个网络接口位于[虚拟网络](virtual-networks-overview.md)子网中。 一个子网也可以有零个或一个关联的网络安全组。 
+每个网络接口有零个或一个关联的网络安全组。 每个网络接口位于[虚拟网络](virtual-networks-overview.md)子网中。 一个子网也可以有零个或一个关联的网络安全组。
 
 应用到某个子网时，安全规则会应用到该子网中的所有资源。 除了部署网络接口以外，还可以在子网中部署其他 Azure 服务的实例，例如 HDInsight、虚拟机规模集和应用程序服务环境。
 
@@ -167,10 +167,10 @@ ms.locfileid: "34657581"
 
      - **企业协议**：允许端口 25 的出站通信。 可以将出站电子邮件直接从虚拟机发送到外部电子邮件提供商，不受 Azure 平台的限制。 
      - **即用即付：** 阻止所有资源通过端口 25 进行出站通信。 如需将电子邮件从虚拟机直接发送到外部电子邮件提供商（不使用经身份验证的 SMTP 中继），可以请求去除该限制。 Microsoft 会自行审核和批准此类请求，并且只在进行防欺诈检查后授予相关权限。 若要提交请求，请建立一个问题类型为“技术”、“虚拟网络连接”、“无法发送电子邮件（SMTP/端口 25）”的支持案例。 在支持案例中，请详细说明为何你的订阅需要将电子邮件直接发送到邮件提供商，而不经过经身份验证的 SMTP 中继。 如果订阅得到豁免，则只有在豁免日期之后创建的虚拟机能够经端口 25 进行出站通信。
-     - **云服务提供商 (CSP)、MSDN、Azure Pass、Azure 开放许可、教育、BizSpark 和免费试用版**：阻止所有资源经端口 25 进行出站通信。 不能请求去除该限制，因为不会针对请求授予相关权限。 如果必须从虚拟机发送电子邮件，则必须使用 SMTP 中继服务。
+     - **MSDN、Azure Pass、Azure 开放许可、教育、BizSpark 和免费试用版**：阻止所有资源经端口 25 进行出站通信。 不能请求去除该限制，因为不会针对请求授予相关权限。 如果必须从虚拟机发送电子邮件，则必须使用 SMTP 中继服务。
+     - **云服务提供商**：如果无法使用安全的 SMTP 中继，通过云服务提供商消耗 Azure 资源的客户可以通过其云服务提供商创建支持案例，并请求提供商代表他们创建取消阻止案例。
 
-  即使 Azure 允许经端口 25 发送电子邮件，Microsoft 也不能保证电子邮件提供商会接受来自你的虚拟机的入站电子邮件。 如果特定的提供商拒绝了来自你的虚拟机的邮件，你必须直接与该提供商协商解决邮件传送问题或垃圾邮件过滤问题，否则只能使用经身份验证的 SMTP 中继服务。 
-
+  即使 Azure 允许经端口 25 发送电子邮件，Microsoft 也不能保证电子邮件提供商会接受来自你的虚拟机的入站电子邮件。 如果特定的提供商拒绝了来自你的虚拟机的邮件，你必须直接与该提供商协商解决邮件传送问题或垃圾邮件过滤问题，否则只能使用经身份验证的 SMTP 中继服务。
 
 ## <a name="next-steps"></a>后续步骤
 

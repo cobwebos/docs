@@ -14,19 +14,19 @@ ms.topic: tutorial
 ms.date: 06/11/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: f66aaa23a631bd71494587683aab87a74a5aef20
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 30dbe6590cc1d70dfc026330a09645c86be24288
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261264"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036881"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>教程：将自定义域添加到 Azure CDN 终结点
 本教程介绍如何将自定义域添加到 Azure 内容分发网络 (CDN) 终结点。 使用 CDN 终结点来交付内容时，如果希望自己的域名在 CDN URL 中可见，则必须使用自定义域。 使用可见的域名可以方便客户，适用于推广品牌。 
 
 在配置文件中创建 CDN 终结点以后，终结点名称（azureedge.net 的子域）就会默认包括在用于交付 CDN 内容的 URL（例如 https:\//contoso.azureedge.net/photo.png）中。 为方便起见，Azure CDN 提供了用于将自定义域与 CDN 终结点相关联的选项。 使用此选项时，请在 URL 中使用自定义域而不是终结点名称来交付内容（例如，https:\//www.contoso.com/photo.png）。 
 
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 > [!div class="checklist"]
 > - 创建 CNAME DNS 记录。
 > - 将自定义域与 CDN 终结点相关联。
@@ -54,11 +54,11 @@ ms.locfileid: "35261264"
 
 映射现有的生产环境中的域时，有一些特殊注意事项。 在 Azure 门户中注册自定义域时，该域可能会出现短暂的停机现象。 为了避免 Web 流量中断，请先将自定义域映射到包含 Azure cdnverify 子域的 CDN 终结点主机名，以便创建临时的 CNAME 映射。 使用此方法，用户可以在进行 DNS 映射时访问域，不会出现中断现象。 
 
-否则，如果你是第一次使用自定义域，其上没有生产流量在运行，则可直接将自定义域映射到 CDN 终结点。 请转到[映射永久自定义域](#map-permanent-custom-domain)。
+否则，如果你是第一次使用自定义域，其上没有生产流量在运行，则可直接将自定义域映射到 CDN 终结点。 前进到[映射永久自定义域](#map-the-permanent-custom-domain)。
 
 若要使用 cdnverify 子域创建 CNAME 记录，请执行以下操作：
 
-1. 登录到自定义域的域提供商的网站。
+1. 登录到你的自定义域的域提供商的网站。
 
 2. 查阅提供商的文档，或者在网站中搜索标有“域名”、“DNS”或“名称服务器管理”的区域，找到用于管理 DNS 记录的页面。 
 
@@ -134,7 +134,7 @@ ms.locfileid: "35261264"
    新的自定义域设置传播到所有 CDN 边缘节点可能需要一些时间： 
     - 对于 **Microsoft 推出的 Azure CDN 标准版**配置文件，传播通常可在 10 分钟内完成。 
     - 对于 **Akamai 的 Azure CDN 标准版**配置文件，传播通常可在一分钟内完成。 
-    - 对于 Verizon 的 Azure CDN 标准版和 Verizon 的 Azure CDN 高级版配置文件，传播通常可在 10 分钟内完成。   
+    - 对于“Verizon 提供的 Azure CDN 标准版”和“Verizon 提供的 Azure CDN 高级版”配置文件，传播通常在 10 分钟内完成。   
 
 
 ## <a name="verify-the-custom-domain"></a>验证自定义域
@@ -152,7 +152,7 @@ ms.locfileid: "35261264"
 
 若要创建自定义域的 CNAME 记录，请执行以下操作：
 
-1. 登录到自定义域的域提供商的网站。
+1. 登录到你的自定义域的域提供商的网站。
 
 2. 查阅提供商的文档，或者在网站中搜索标有“域名”、“DNS”或“名称服务器管理”的区域，找到用于管理 DNS 记录的页面。 
 

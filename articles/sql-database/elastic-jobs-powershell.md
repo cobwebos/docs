@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: tutorial
 ms.date: 06/14/2018
 ms.author: joke
-ms.openlocfilehash: dc2776e0f3b14d5fd2375f735c18345c32ca743a
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 2cc8db0ce849e0f0d376824665aac7dbc2af29db
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37033490"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035211"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>使用 PowerShell 创建弹性作业代理
 
@@ -35,18 +35,25 @@ ms.locfileid: "37033490"
 
 如果还没有 Azure 订阅，请在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-最新最新的预览版 **AzureRM.Sql** 模块，以便获取弹性作业 cmdlet。 在提升的命令提示符处运行以下命令（以管理员身份运行）。
+安装 **AzureRM.Sql** 4.8.1-preview 模块以获得最新弹性作业 cmdlet。 以管理员访问权限在 PowerShell 中运行以下命令：
 
 ```powershell
 # Installs the latest PackageManagement powershell package which PowershellGet v1.6.5 is dependent on
 Find-Package PackageManagement -RequiredVersion 1.1.7.2 | Install-Package -Force
 
-# You may need to restart the powershell session
 # Installs the latest PowershellGet module which adds the -AllowPrerelease flag to Install-Module
 Find-Package PowerShellGet -RequiredVersion 1.6.5 | Install-Package -Force
 
+# Restart your powershell session with administrative access
+
 # Places AzureRM.Sql preview cmdlets side by side with existing AzureRM.Sql version
-Install-Module -Name AzureRM.Sql -AllowPrerelease -Force
+Install-Module -Name AzureRM.Sql -AllowPrerelease -RequiredVersion 4.8.1-preview -Force
+
+# Import the AzureRM.Sql 4.8.1 module
+Import-Module AzureRM.Sql -RequiredVersion 4.8.1
+
+# Confirm if module successfully imported - if the imported version is 4.8.1, then continue
+Get-Module AzureRM.Sql
 ```
 
 ## <a name="create-required-resources"></a>创建所需资源

@@ -16,12 +16,12 @@ ms.workload: ''
 ms.date: 04/20/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: cbe7bf95574ca7a77d666981691da05357ce9a0d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 9bc4d25b587b7167601765758a0529868d1c6f15
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38467820"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988725"
 ---
 # <a name="create-a-function-app-that-connects-to-an-azure-storage-account"></a>创建一个可连接到 Azure 存储帐户的函数应用
 
@@ -54,11 +54,9 @@ ms.locfileid: "38467820"
 
 | 命令 | 说明 |
 |---|---|
-| [az login](https://docs.microsoft.com/cli/azure/reference-index#az_login) | 登录 Azure。 |
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | 使用相关位置创建资源组 |
-| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account) | 创建存储帐户 |
-| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az_functionapp_create) | 创建一个新的 Function App |
-| [az group delete](https://docs.microsoft.com/cli/azure/group#az_group_delete) | 清理 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | 使用相关位置创建资源组。 |
+| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | 创建存储帐户。 |
+| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az-functionapp-create) | 在无服务器[消耗计划](../functions-scale.md#consumption-plan)中创建函数应用。 |
 
 ## <a name="next-steps"></a>后续步骤
 

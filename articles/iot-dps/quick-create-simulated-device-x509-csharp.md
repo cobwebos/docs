@@ -1,8 +1,8 @@
 ---
 title: 使用 C# 将模拟的 X.509 设备预配到 Azure IoT 中心 | Microsoft Docs
 description: Azure 快速入门 - 使用适用于 Azure IoT 中心设备预配服务的 C# 设备 SDK 创建和预配模拟的 X.509 设备
-author: bryanla
-ms.author: bryanla
+author: wesmc7777
+ms.author: wesmc
 ms.date: 04/09/18
 ms.topic: quickstart
 ms.service: iot-dps
@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 697526b243fad585b8692edd59650661ea60fd62
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 28e6158a3dcd4cee98c380c53a1a345983bdf4f7
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629715"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090813"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>使用适用于 IoT 中心设备预配服务的 C# 设备 SDK 创建和预配模拟的 X.509 设备
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
@@ -40,6 +40,14 @@ ms.locfileid: "34629715"
     ```
 
 ## <a name="create-a-self-signed-x509-device-certificate-and-individual-enrollment-entry"></a>创建自签名的 X.509 设备证书和单个注册项
+
+在本部分中，你将使用自签名 X.509 证书，请务必记住以下事项：
+
+* 自签名证书仅用于测试，不应在生产中使用。
+* 自签名证书的默认到期日期为 1 年。
+
+你将使用来自 [Azure IoT SDK for .NET](https://github.com/Azure/azure-iot-sdk-csharp.git) 的示例代码创建要与模拟设备的个体注册条目一起使用的证书。
+
 
 1. 在命令提示符处将目录更改为 X.509 设备预配示例的项目目录。
 

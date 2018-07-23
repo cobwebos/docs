@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/19/2017
+ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 01a9120af2fb240eed1463613f7a6f946a9c16ed
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: cf9c56fa2ba75dc5b5ad4af59d111a0124f1a9df
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33934677"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39057321"
 ---
 # <a name="debug-your-apis-using-request-tracing"></a>使用请求跟踪调试 API
 
 本教程介绍如何检查请求处理，以帮助对 API 进行调试和故障排除。 
 
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 跟踪调用
@@ -44,6 +44,12 @@ ms.locfileid: "33934677"
 3. 选择“GetSpeakers”操作。
 4. 切换到“测试”选项卡。
 5. 请确保包含名为 **Ocp-Apim-Trace**、值设置为 **true** 的 HTTP 标头。
+
+    ![API 跟踪标头](media/api-management-howto-api-inspector/api-management-tracing-header.png)
+
+    > [!NOTE]
+    > 如果 Ocp-Apim-Subscription-Key 未自动填充，可以通过转到开发人员门户并在配置文件页面上公开密钥来检索它。
+
 6. 单击“发送”发出 API 调用。 
 7. 等待调用完成。 
 8. 在“API 控制台”中转到“跟踪”选项卡。 可以单击以下任一链接跳转到详细跟踪信息：“入站”、“后端”或“出站”。

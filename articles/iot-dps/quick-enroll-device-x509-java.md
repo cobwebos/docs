@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: cea83fbe9c60bab687eb3d43fc269fa9f6bea325
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e9400c476179d801eb66f574373bf75cfb672d9d
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34630453"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091078"
 ---
 # <a name="enroll-x509-devices-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>使用 Java 服务 SDK 将 X.509 设备注册到 IoT 中心设备预配服务
 
@@ -54,7 +54,12 @@ ms.locfileid: "34630453"
 
 ## <a name="download-and-modify-the-java-sample-code"></a>下载并修改 Java 示例代码
 
-此部分演示如何向示例代码添加 X.509 设备的预配详细信息。 
+本部分中将使用自签名 X.509 证书，请务必记住以下事项：
+
+* 自签名证书仅用于测试，不应在生产中使用。
+* 自签名证书的默认到期日期为 1 年。
+
+下面的步骤展示了如何向示例代码添加 X.509 设备的预配详细信息。 
 
 1. 打开命令提示符。 使用 Java 服务 SDK 克隆设备注册代码示例的 GitHub 存储库：
     

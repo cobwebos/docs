@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8bf8388829504b18e71ec597d21b844e29a82346
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 6e5b9ce7a4625cccdfaa29492250a5e8255ec23d
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931121"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136513"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>教程：使用 Azure PowerShell 为 Windows 虚拟机创建和管理 Azure 虚拟网络
 
@@ -49,7 +49,7 @@ Azure 虚拟网络在虚拟机、Internet 与其他 Azure 服务（例如 Azure 
 - *myVNet* - VM 彼此进行通信以及与 Internet 进行通信时使用的虚拟网络。
 - *myFrontendSubnet* - *myVNet* 中供前端资源使用的子网。
 - *myPublicIPAddress* - 用于从 Internet 访问 *myFrontendVM* 的公共 IP 地址。
-- *myFrontentNic* - *myFrontendVM* 用来与 *myBackendVM* 进行通信的网络接口。
+- *myFrontendNic* - *myFrontendVM* 用来与 *myBackendVM* 进行通信的网络接口。
 - *myFrontendVM* - 用于在 Internet 和 *myBackendVM* 之间进行通信的 VM。
 - *myBackendNSG* - 控制 *myFrontendVM* 和 *myBackendVM* 之间的通信的网络安全组。
 - *myBackendSubnet* - 与 *myBackendNSG* 关联且供后端资源使用的子网。

@@ -4,18 +4,19 @@ description: 提供有关快速安装移动应用以使用 Application Insights 
 services: application-insights
 keywords: ''
 author: mrbullwinkle
-ms.author: daviste; mbullwin
-ms.date: 10/05/2017
+ms.author: mbullwin
+ms.date: 07/11/2018
 ms.service: application-insights
+ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 252d16a5c4ef2d1f8230746dff681f7fbf5f44b1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: fd594e65de79844720462996a89477e0a6237ceb
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33867944"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988919"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>开始使用 App Center 和 Application Insights 分析移动应用
 
@@ -28,7 +29,7 @@ ms.locfileid: "33867944"
 - Azure 订阅。
 - iOS、Android、Xamarin、通用 Windows 或 React 本机应用。
  
-如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="onboard-to-app-center"></a>载入到 App Center
 
@@ -144,7 +145,7 @@ Application Insights 可以查询、分段、筛选和分析来自应用的自�
 
    用户流工具直观显示用户在某些起始事件之后发送的事件。 它可用于获取用户浏览应用的整体情况。 它可以显示许多用户改动应用的地方，或反复执行相同操作的地方。
 
-   除了用户流，Application Insights 还提供几种其他使用情况分析工具来回答特定的问题：
+   除了用户流，Application Insights 还提供几种其他用户行为分析工具来回答特定的问题：
 
    * 漏斗图，用于分析和监视转换率。
    * 保留，用于分析随着时间的推移应用保留用户的情况。

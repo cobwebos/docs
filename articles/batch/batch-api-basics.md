@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 04/06/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3fe0d3836046ad143e746503210099ee5c640a08
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 9de4b00b2fff1feabcaee4e30667dfbdc75d9266
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129092"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114433"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>使用 Batch 开发大规模并行计算解决方案
 
@@ -504,7 +504,7 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 
 ## <a name="next-steps"></a>后续步骤
 * 了解适用于生成批处理解决方案的[批处理 API 和工具](batch-apis-tools.md)。
-* 在 [Get started with the Azure Batch Library for .NET](batch-dotnet-get-started.md)（适用于 .NET 的 Azure Batch 库入门）中逐步演练一个示例 Batch 应用程序。 另请参阅该教程的 [Python 版本](batch-python-tutorial.md) ，其中介绍了如何在 Linux 计算节点上运行工作负荷。
+* 了解使用[批处理 .NET 客户端库](quick-run-dotnet.md)或 [Python](quick-run-python.md) 开发支持批处理的应用程序的基本概念。 这些快速入门介绍了使用 Batch 服务在多个计算节点上执行工作负荷的示例应用程序，并说明了如何使用 Azure 存储进行工作负荷文件暂存和检索。
 * 下载并安装 [BatchLabs][batch_labs]，供开发 Batch 解决方案时使用。 借助 BatchLabs 来创建、调试和监视 Azure Batch 应用程序。 
 * 请参阅社区资源，包括 [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-batch)、[Batch 社区存储库](https://github.com/Azure/Batch)和 MSDN 上的 [Azure Batch 论坛][batch_forum]。 
 

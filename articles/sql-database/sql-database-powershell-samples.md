@@ -11,14 +11,14 @@ ms.service: sql-database
 ms.custom: overview-samples, mvc
 ms.devlang: PowerShell
 ms.topic: sample
-ms.date: 04/01/2018
+ms.date: 07/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 2245964cab3361e0f298cf35d26e8b0a1b8456f0
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 81f39c2ecc014ee53dcff2fab88ff0f890e1a610
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30924113"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091876"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database"></a>适用于 Azure SQL 数据库的 Azure PowerShell 示例
 
@@ -32,7 +32,7 @@ ms.locfileid: "30924113"
 |**配置异地复制和故障转移**||
 | [配置单一数据库并使用活动异地复制对其进行故障转移](scripts/sql-database-setup-geodr-and-failover-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 脚本为单个 Azure SQL 数据库配置活动异地复制，并将其故障转移到次要副本。 |
 | [配置入池数据库并使用活动异地复制对其进行故障转移](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 脚本为 SQL 弹性池中的 Azure SQL 数据库配置活动异地复制，并将其故障转移到次要副本。 |
-| [针对单个数据库配置并故障转移一个故障转移组（预览版）](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 此 PowerShell 脚本为 Azure SQL 数据库服务器实例配置故障转移组，将数据库添加到故障转移组，并将其故障转移到辅助服务器 |
+| [针对单个数据库配置并故障转移一个故障转移组](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 此 PowerShell 脚本为 Azure SQL 数据库服务器实例配置故障转移组，将数据库添加到故障转移组，并将其故障转移到辅助服务器 |
 |**缩放单一数据库和弹性池**||
 | [缩放单一数据库](scripts/sql-database-monitor-and-scale-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 此 PowerShell 脚本监视单个 Azure SQL 数据库的性能指标，将其缩放为更高的性能级别，并基于性能指标之一创建预警规则。 |
 | [缩放弹性池](scripts/sql-database-monitor-and-scale-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 此 PowerShell 脚本监视 Azure SQL 数据库弹性池的性能指标，将其缩放为更高的性能级别，并基于性能指标之一创建预警规则。  |

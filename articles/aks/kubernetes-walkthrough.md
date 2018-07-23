@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 06/13/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 5b5ae6ba945b1428ffc2877711ebdc73937ea0a3
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 8b9f53b34b75f9827e4976681a78f873b812ad96
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915936"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39055111"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>快速入门：部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -34,20 +34,20 @@ ms.locfileid: "37915936"
 
 创建资源组时，系统会要求你指定一个位置，该位置是资源在 Azure 中进行存储的地方。
 
-以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
+以下示例在 *eastus* 位置创建名为 *myAKSCluster* 的资源组。
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location eastus
+az group create --name myAKSCluster --location eastus
 ```
 
 输出：
 
 ```json
 {
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myAKSCluster",
   "location": "eastus",
   "managedBy": null,
-  "name": "myResourceGroup",
+  "name": "myAKSCluster",
   "properties": {
     "provisioningState": "Succeeded"
   },
@@ -60,7 +60,7 @@ az group create --name myResourceGroup --location eastus
 使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为 myAKSCluster 的群集。 在部署 AKS 群集时，还可以启用容器运行状况监视解决方案。 有关启用容器运行状况监视解决方案的详细信息，请参阅[监视 Azure Kubernetes 服务运行状况][aks-monitor]。
 
 ```azurecli-interactive
-az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys
+az aks create --resource-group myAKSCluster --name myAKSCluster --node-count 1 --generate-ssh-keys
 ```
 
 几分钟后，该命令完成并返回有关群集的 JSON 格式信息。
@@ -79,7 +79,7 @@ az aks install-cli
 若要将 kubectl 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials][az-aks-get-credentials] 命令。 此步骤下载凭据，并将 Kubernetes CLI 配置为使用这些凭据。
 
 ```azurecli-interactive
-az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
+az aks get-credentials --resource-group myAKSCluster --name myAKSCluster
 ```
 
 若要验证到群集的连接，请使用 [kubectl get][kubectl-get] 命令返回群集节点的列表。 请注意，可能需要几分钟才会显示。
@@ -209,8 +209,11 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 如果不再需要群集，可以使用 [az group delete][az-group-delete] 命令删除资源组、容器服务及所有相关资源。
 
 ```azurecli-interactive
-az group delete --name myResourceGroup --yes --no-wait
+az group delete --name myAKSCluster --yes --no-wait
 ```
+
+> [!NOTE]
+> 删除群集时，AKS 群集使用的 Azure Active Directory 服务主体不会被删除。 有关如何删除服务主体的步骤，请参阅 [AKS 服务主体的注意事项和删除][sp-delete]。
 
 ## <a name="get-the-code"></a>获取代码
 
@@ -246,4 +249,4 @@ az group delete --name myResourceGroup --yes --no-wait
 [az-group-create]: /cli/azure/group#az_group_create
 [az-group-delete]: /cli/azure/group#az_group_delete
 [azure-cli-install]: /cli/azure/install-azure-cli
-
+[sp-delete]: kubernetes-service-principal.md#additional-considerations

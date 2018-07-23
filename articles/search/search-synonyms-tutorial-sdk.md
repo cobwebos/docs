@@ -1,28 +1,34 @@
 ---
-title: Azure 搜索中的同义词教程 | Microsoft Docs
-description: 向 Azure 搜索中的索引添加同义词功能。
+title: Azure 搜索中的同义词 C# 教程 | Microsoft Docs
+description: 在本教程中，将向 Azure 搜索中的索引添加同义词功能。
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 04/20/2018
+ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: 5482185a4a4cc8b76c1094ce12a7ac52985ec57c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8340c4dc2a855911073905a3aea93e19fc7b520d
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32182083"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990555"
 ---
-# <a name="synonym-c-tutorial-for-azure-search"></a>适用于 Azure 搜索的同义词 C# 教程
+# <a name="tutorial-add-synonyms-for-azure-search-in-c"></a>教程：使用 C# 为 Azure 搜索添加同义词
 
-使用同义词进行搜索时，在语义上被视为与输入字词等效的字词也属于匹配项，从而扩展了查询的范围。 例如，使用“car”进行搜索时，也可将包含“automobile”或“vehicle”字词的文档视为匹配项。
+使用同义词进行搜索时，在语义上被视为与输入字词等效的字词也属于匹配项，从而扩展了查询的范围。 例如，使用“car”进行搜索时，也可将包含“automobile”或“vehicle”字词的文档视为匹配项。 
 
-在 Azure 搜索中，同义词在“同义词映射”中通过可将等效字词关联在一起的“映射规则”进行定义。 可以创建多个同义词映射，将其发布为在服务范围内可供任何索引使用的资源，然后引用要在字段级别使用的资源。 在查询时，除了搜索索引，Azure 搜索还会查看同义词映射（如果在查询所用的字段上指定了该映射）。
+在 Azure 搜索中，同义词在“同义词映射”中通过可将等效字词关联在一起的“映射规则”进行定义。 本教程介绍了用于添加同义词并将其与现有索引一起使用的基本步骤。 学习如何：
+
+> [!div class="checklist"]
+> * 通过创建并发布映射规则启用同义词 
+> * 在查询字符串中引用同义词映射
+
+可以创建多个同义词映射，将其发布为在服务范围内可供任何索引使用的资源，然后引用要在字段级别使用的资源。 在查询时，除了搜索索引，Azure 搜索还会查看同义词映射（如果在查询所用的字段上指定了该映射）。
 
 > [!NOTE]
-> 最新的 API 和 SDK 版本（api-version=2017-11-11，SDK 版本为 5.0.0）支持同义词功能。 此次没有 Azure 门户支持。 如果 Azure 门户支持同义词将对你很有用，请在 [UserVoice](https://feedback.azure.com/forums/263029-azure-search) 上提供反馈
+> 最新的 API 和 SDK 版本（api-version=2017-11-11，SDK 版本为 5.0.0）支持同义词。 此次没有 Azure 门户支持。 如果 Azure 门户支持同义词将对你很有用，请在 [UserVoice](https://feedback.azure.com/forums/263029-azure-search) 上提供反馈
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -73,7 +79,7 @@ ms.locfileid: "32182083"
 
 ## <a name="before-queries"></a>“启用前”查询
 
-在 `RunQueriesWithNonExistentTermsInIndex` 中，我们使用“five star”、“internet”和“economy AND hotel”发出搜索查询。
+在 `RunQueriesWithNonExistentTermsInIndex` 中，使用“five star”、“internet”和“economy AND hotel”发出搜索查询。
 ```csharp
 Console.WriteLine("Search the entire index for the phrase \"five star\":\n");
 results = indexClient.Documents.Search<Hotel>("\"five star\"", parameters);
@@ -159,8 +165,13 @@ Name: Roach Motel       Category: Budget        Tags: [motel, budget]
 ## <a name="sample-application-source-code"></a>示例应用程序源代码
 可以在 [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms) 上找到本演练中所用示例应用程序的完整源代码。
 
+## <a name="clean-up-resources"></a>清理资源
+
+完成本教程后，最快的清理方式是删除包含 Azure 搜索服务的资源组。 现在，你可以删除资源组以永久删除其中的所有内容。 在门户中，资源组名称显示在 Azure 搜索服务的“概述”页上。
+
 ## <a name="next-steps"></a>后续步骤
 
-* 查看[如何在 Azure 搜索中使用同义词功能](search-synonyms.md)
-* 查看[同义词 REST API 文档](https://aka.ms/rgm6rq)
-* 浏览 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) 和 [REST API](https://docs.microsoft.com/rest/api/searchservice/) 的参考资料。
+本教程使用 C# 代码演示了[同义词 REST API](https://aka.ms/rgm6rq)，创建并发布了映射规则，然后在查询中调用同义词映射。 可以在 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) 和 [REST API](https://docs.microsoft.com/rest/api/searchservice/) 参考文档中找到更多信息。
+
+> [!div class="nextstepaction"]
+> [如何在 Azure 搜索中使用同义词](search-synonyms.md)

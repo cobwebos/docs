@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 06/14/2018
+ms.date: 07/14/2018
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 5205a6746f6a698768a60375e2e77db9cb535a71
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: ad3b8755615332249ac00f43a2d0cc5fa13a7233
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971901"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113277"
 ---
 # <a name="what-is-azure-media-services-v3"></a>什么是 Azure 媒体服务 v3？
 
@@ -69,6 +69,52 @@ Azure 媒体服务 v3 资源名称（例如，资产、作业、转换）需遵�
 
 有关 Azure 资源管理器命名的详细信息，请参阅[命名要求](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource)和[命名约定](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)。
 
+## <a name="media-services-v3-api-design-principles"></a>媒体服务 v3 API 设计原则
+
+V3 API 的主要设计原则之一是使 API 更安全。 v3 API 不在 **Get** 或 **List** 操作中返回机密或凭据。 在响应中，密钥始终为 null、空值或进行了净化。 你需要调用单独的操作方法来获取机密或凭据。 当某些 API 会检索/显示机密而另一些 API 不会这样做时，可以使用单独的操作设置不同的 RBAC 安全权限。 有关如何使用 RBAC 管理访问权限的信息，请参阅[使用 RBAC 管理访问权限](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)。
+
+此类示例包括 
+
+* 不在 StreamingLocator 的 Get 中返回 ContentKey 值， 
+* 不在 ContentKeyPolicy 的 Get 中返回限制密钥， 
+* 不返回作业的 HTTP 输入 URL 的查询字符串部分（删除签名）。
+
+下面的 .NET 示例展示了如何从现有策略中获取签名密钥。 需要使用 **GetPolicyPropertiesWithSecretsAsync** 来访问密钥。
+
+```csharp
+private static async Task<ContentKeyPolicy> GetOrCreateContentKeyPolicyAsync(
+    IAzureMediaServicesClient client,
+    string resourceGroupName,
+    string accountName,
+    string contentKeyPolicyName)
+{
+    ContentKeyPolicy policy = await client.ContentKeyPolicies.GetAsync(resourceGroupName, accountName, contentKeyPolicyName);
+
+    if (policy == null)
+    {
+        // Configure and create a new policy.
+        
+        . . . 
+        policy = await client.ContentKeyPolicies.CreateOrUpdateAsync(resourceGroupName, accountName, contentKeyPolicyName, options);
+    }
+    else
+    {
+        var policyProperties = await client.ContentKeyPolicies.GetPolicyPropertiesWithSecretsAsync(resourceGroupName, accountName, contentKeyPolicyName);
+        var restriction = policyProperties.Options[0].Restriction as ContentKeyPolicyTokenRestriction;
+        if (restriction != null)
+        {
+            var signingKey = restriction.PrimaryVerificationKey as ContentKeyPolicySymmetricTokenKey;
+            if (signingKey != null)
+            {
+                TokenSigningKey = signingKey.KeyValue;
+            }
+        }
+    }
+
+    return policy;
+}
+```
+
 ## <a name="how-can-i-get-started-with-v3"></a>如何开始使用 v3？
 
 作为开发者，可以利用媒体服务 [REST API](https://go.microsoft.com/fwlink/p/?linkid=873030) 或客户端库，与 REST API 交互，轻松创建、管理和维护自定义媒体工作流。 可在[此处](https://github.com/Azure-Samples/media-services-v3-rest-postman)找到 REST Postman 示例。 也可使用[基于 Azure 资源管理器的 REST API](https://github.com/Azure-Samples/media-services-v3-arm-templates)。
@@ -77,10 +123,10 @@ Microsoft 生成并支持以下客户端库：
 
 |客户端库|示例|
 |---|---|
-|[Azure CLI SDK](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)|[Azure CLI 示例](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services)|
+|[Azure CLI SDK](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)|[Azure CLI 示例](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services)|
 |[.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/1.0.0)|[.NET 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials)|
 |[.NET Core SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/1.0.0)（选择“.NET CLI”选项卡）|[.NET Core 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials)|
-|[Java SDK](https://docs.microsoft.com/java/api/overview/azure/mediaservices)||
+|[Java SDK](https://docs.microsoft.com/java/api/mediaservices/management?view=azure-java-stable)||
 |[Node.js SDK](https://docs.microsoft.com/javascript/api/azure-arm-mediaservices/index?view=azure-node-latest)|[Node.js 示例](https://github.com/Azure-Samples/media-services-v3-node-tutorials)|
 |[Python SDK](https://pypi.org/project/azure-mgmt-media/1.0.0rc1/)||
 |[Go SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/mediaservices/mgmt/2018-03-30-preview/media)||

@@ -1,20 +1,20 @@
 ---
 title: 教程：在 Azure 搜索中调用认知搜索 API | Microsoft Docs
-description: 用于数据提取和转换的 Azure 搜索索引中数据提取、自然语言和图像 AI 处理的示例。
+description: 在本教程中，在用于数据提取和转换的 Azure 搜索索引中分步完成数据提取、自然语言和图像 AI 处理的示例。
 manager: pablocas
 author: luiscabrer
 services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: tutorial
-ms.date: 05/01/2018
+ms.date: 07/11/2018
 ms.author: luisca
-ms.openlocfilehash: 0bca64675ed656373d6a73ca772fa713ad36a57e
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 35295f00b9264e4b6fba2ff9d293772c22b91c50
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757564"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991844"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>教程：了解如何调用认知搜索 API（预览版）
 
@@ -23,15 +23,15 @@ ms.locfileid: "34757564"
 在本教程中，我们将发出 REST API 调用来执行以下任务：
 
 > [!div class="checklist"]
-> * 创建一个索引管道，用于扩充索引路由中的源数据
-> * 针对样本数据使用内置技能：实体识别、语言检测、文本处理、关键短语提取
+> * 创建一个索引管道，用于扩充索引路由中的示例数据
+> * 应用内置技能：实体识别、语言检测、文本处理、关键短语提取
 > * 了解如何通过在技能集中将输入映射到输出来链接技能
 > * 执行请求并查看结果
 > * 重置索引和索引器以进一步开发
 
 输出是 Azure 搜索中的全文搜索索引。 可以使用[同义词](search-synonyms.md)、[评分配置文件](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)、[分析器](search-analyzers.md)和[筛选器](search-filters.md)等其他标准功能来增强索引。
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -60,7 +60,7 @@ ms.locfileid: "34757564"
   “免费”服务限制为 3 个索引、最大 16 MB 的 Blob 和 2 分钟的索引，这不足以演练认知搜索的完整功能。 若要查看不同层的限制，请参阅[服务限制](search-limits-quotas-capacity.md)。
 
   > [!NOTE]
-  > Azure 搜索目前以公共预览版提供。 技能集执行目前已在所有层中推出，包括免费层。 我们日后会公布此功能的定价。
+  > 认知搜索目前为公共预览版。 技能集执行目前已在所有层中推出，包括免费层。 我们日后会公布此功能的定价。
 
 1. 将服务固定到仪表板，以快速访问服务信息。
 
@@ -80,7 +80,7 @@ ms.locfileid: "34757564"
 
 1. 使用 Azure 存储资源管理器，在创建的 `basicdemo` 容器中单击“上传”以上传示例文件。
 
-1. 加载示例文件后，获取 Blob 存储的容器名称和连接字符串。 为此，可在 Azure 门户中导航到自己的存储帐户。 在“访问密钥”中，复制“连接字符串”字段值。
+1. 加载示例文件后，获取 Blob 存储的容器名称和连接字符串。 为此，请在 Azure 门户中导航到你的存储帐户。 在“访问密钥”中，复制“连接字符串”字段值。
 
   存储连接字符串应是类似于以下示例的 URL：
 

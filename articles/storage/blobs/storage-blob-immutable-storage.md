@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: sangsinh
-ms.openlocfilehash: 195537b271c442b954d6d6e6fa8d1491c07822e8
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 04e88725c04fc88a8394bafd455d25ea13718f7d
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970238"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070002"
 ---
 # <a name="immutable-storage-feature-of-azure-blob-storage-preview"></a>Azure Blob 存储的不可变存储功能（预览版）
 
@@ -178,11 +178,11 @@ Blob 的不可变存储功能适用于任何 Blob 类型。  但请注意，建�
 
 **如果尝试删除某个容器，而该容器使用锁定的基于时间的保留策略或法定保留，会发生什么情况？**
 
-如果至少有一个 Blob 使用锁定的基于时间的保留策略或法定保留，则“删除容器”操作会失败。 如果没有 Blob 存在活动的保留时间间隔，也没有法定保留，则“删除容器”操作会成功。 必须先删除 Blob，然后才能删除容器。
+如果至少有一个 Blob 使用锁定的基于时间的保留策略或法定保留，则“删除容器”操作会失败。 即使数据被[软删除](storage-blob-soft-delete.md)，也是如此。如果没有 Blob 存在活动的保留时间间隔，也没有法定保留，则“删除容器”操作会成功。 必须先删除 Blob，然后才能删除容器。 
 
 **如果尝试删除的存储帐户有一个 WORM 容器，而该容器使用锁定的基于时间的保留策略或法定保留，会发生什么情况？**
 
-如果至少有一个 WORM 容器有法定保留，或者有一个 Blob 有活动的保留时间间隔，则存储帐户删除操作会失败。  必须先删除所有 WORM 容器，然后才能删除存储帐户。  有关容器删除的信息，请查看问题 2。
+如果至少有一个 WORM 容器有法定保留，或者有一个 Blob 有活动的保留时间间隔，则存储帐户删除操作会失败。  必须先删除所有 WORM 容器，然后才能删除存储帐户。  有关容器删除的信息，请查看上一个问题。
 
 **当 Blob 处于不可变状态时，是否可以跨不同的 Blob 层（热、凉、冷）来移动数据？**
 

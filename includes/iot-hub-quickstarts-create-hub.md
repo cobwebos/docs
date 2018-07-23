@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: ddecf2f75e80f95291b12d9c139a8da85f45ac94
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 63acf0297a694ff442d56e67d52fd9b4e49f812d
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36288033"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008580"
 ---
 第一步是使用 Azure 门户在订阅中创建 IoT 中心。 IoT 中心用于将大量遥测数据从许多设备引入到云中。 然后，该中心会允许一个或多个在云中运行的后端服务读取和处理该遥测数据。
 
@@ -26,12 +26,9 @@ ms.locfileid: "36288033"
 1. 在“IoT 中心”窗格中，输入 IoT 中心的以下信息：
 
    * **订阅**：选择需要将其用于创建此 IoT 中心的订阅。
-
-   * **资源组**：创建用于托管 IoT 中心的资源组，或使用现有的资源组。 通过将所有相关资源都放在一个组中，可以一起管理它们。 例如，删除资源组会删除包含在该组中的所有资源。 有关详细信息，请参阅[使用资源组管理 Azure 资源][lnk-resource-groups]。
-
-   * **区域**：选择最近的位置。
-
-   * **名称**：创建 IoT 中心的名称。 如果输入的名称可用，会显示一个绿色复选标记。
+   * **资源组**：创建用来存放 IoT 中心的资源组，或使用现有的资源组。 通过将所有相关资源都放在一个组（例如 **TestResources**）中，可以一起管理它们。 例如，删除资源组会删除包含在该组中的所有资源。 有关详细信息，请参阅[使用资源组管理 Azure 资源][lnk-resource-groups]。
+   * **区域**：选择离你的设备最近的位置。
+   * **名称**：为你的 IoT 中心创建一个唯一名称。 如果输入的名称可用，会显示一个绿色复选标记。
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 

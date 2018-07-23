@@ -3,51 +3,44 @@ title: 在 Azure 门户中设置设备预配 | Microsoft Docs
 description: Azure 快速入门 - 在 Azure 门户中设置 Azure IoT 中心设备预配服务
 author: dsk-2015
 ms.author: dkshir
-ms.date: 09/05/2017
+ms.date: 07/12/2018
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 276bd33f5724db4d67da0cc31b16297915c9a417
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5509027b9c41a021ce8ab5dd468627bd8307d354
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629433"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036415"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>使用 Azure 门户设置 IoT 中心设备预配服务
 
-以下步骤演示了如何在门户中设置用于预配设备的 Azure 云资源。 其中包括：如何创建 IoT 中心、如何创建新的 IoT 中心设备预配服务并将两个服务链接到一起。 
+以下步骤演示了如何在门户中设置用于预配设备的 Azure 云资源。 本文包括用于以下操作的步骤：创建 IoT 中心、创建新的 IoT 中心设备预配服务，以及将两个服务链接到一起。 
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-
-## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
-
-登录到 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
-1. 单击 Azure 门户左上角的“创建资源”按钮。
-
-2. 选择“物联网”，选择“IoT 中心”，然后单击“创建”按钮。 
-
-3. 为 IoT 中心命名。 从可用定价选项中进行选择，输入 [IoT 中心单位数](https://azure.microsoft.com/pricing/details/iot-hub/)，选择适用于设备到云消息的分区数，以及将用于此资源的订阅。 输入新的或现有的资源组的名称，然后选择位置。 完成后，单击“创建”。
-
-    ![在门户边栏选项卡中输入 IoT 中心的基本信息](./media/quick-setup-auto-provision/create-iot-hub-portal.png)  
-
-4. 成功部署 IoT 中心以后，中心摘要边栏选项卡会自动打开。
+[!INCLUDE [iot-hub-quickstarts-create-hub](../../includes/iot-hub-quickstarts-create-hub.md)]
 
 
 ## <a name="create-a-new-instance-for-the-iot-hub-device-provisioning-service"></a>为 IoT 中心设备预配服务创建新实例
 
 1. 单击 Azure 门户左上角的“创建资源”按钮。
 
-2. 
-  *在市场中搜索***设备预配服务**。 选择“IoT 中心设备预配服务”，然后单击“创建”按钮。 
+2. *在市场中搜索***设备预配服务**。 选择“IoT 中心设备预配服务”，然后单击“创建”按钮。 
 
-3. 为设备预配服务实例命名。 选择将用于此实例的订阅，然后命名新的或现有的资源组。 选择位置。 完成后，单击“创建”。
+3. 提供新的设备预配服务实例的以下信息，然后单击“创建”。
+
+    * **名称：** 为新的设备预配服务实例提供唯一名称。 如果输入的名称可用，会显示一个绿色复选标记。
+    * **订阅**：选择要用来创建此设备预配服务实例的订阅。
+    * **资源组：** 此字段允许你创建一个新的资源组，或者选择一个现有资源组来包含新实例。 选择包含你之前创建的 IoT 中心的同一资源组，例如 **TestResources**。 通过将所有相关资源都放在一个组中，可以一起管理它们。 例如，删除资源组会删除包含在该组中的所有资源。 有关详细信息，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-portal.md)。
+    * **位置**：选择离你的设备最近的位置。
+    * **固定到仪表板：** 选择此选项会将实例固定到仪表板，使其更易于查找。
 
     ![在门户边栏选项卡中输入 DPS 实例的基本信息](./media/quick-setup-auto-provision/create-iot-dps-portal.png)  
 
@@ -56,11 +49,17 @@ ms.locfileid: "34629433"
 
 ## <a name="link-the-iot-hub-and-your-device-provisioning-service"></a>将 IoT 中心和设备预配服务相链接
 
+在本部分中，你将向设备预配服务实例添加配置。 此配置设置将为其预配设备的 IoT 中心。
+
 1. 在 Azure 门户的左侧菜单中单击“所有资源”按钮。 选择在上一部分创建的设备预配服务实例。  
 
 2. 在设备预配服务摘要边栏选项卡上，选择“链接的 IoT 中心”。 单击显示在顶部的“+ 添加”按钮。 
 
-3. 在“添加 IoT 中心的链接”门户边栏选项卡中，选择当前订阅，或者输入另一订阅的名称和连接字符串。 从下拉列表中选择中心的名称。 完成后，单击“保存”。 
+3. 在“添加 IoT 中心的链接”页面上，提供以下信息来将新的设备预配服务实例链接到 IoT 中心。 然后单击“保存”。 
+
+    * **订阅：** 选择包含要与新的设备预配服务实例进行链接的 IoT 中心的订阅。
+    * **IoT 中心：** 选择要与新的设备预配服务实例进行链接的 IoT 中心。
+    * **访问策略：** 选择 **iothubowner** 作为用于与 IoT 中心建立链接的凭据。  
 
     ![链接中心名称，以便链接到门户边栏选项卡中的 DPS 实例](./media/quick-setup-auto-provision/link-iot-hub-to-dps-portal.png)  
 

@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 12/12/2017
+ms.date: 07/11/2018
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: ccd55633f71be172edc330459bf8610f2146ad8d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 008e61841611f36c440bb4896ae5a85d0bf4d874
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29386373"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991562"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>开始监视 ASP.NET Core Web 应用程序
 
@@ -33,9 +33,9 @@ ms.locfileid: "29386373"
 - [安装 .NET Core 2.0 SDK](https://www.microsoft.com/net/core)
 - 将需要 Azure 订阅和现有 .NET Core Web 应用程序。
 
-如果没有 ASP.NET Core Web 应用程序，则可以按照[创建 ASP.NET Core Web 应用指南](https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vs)创建一个。
+如果没有 ASP.NET Core Web 应用程序，可以使用分步指南来[创建 ASP.NET Core 应用并添加 Application Insights](app-insights-asp-net-core.md)。
 
-如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -77,25 +77,25 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
 1. 现在可以在 Azure 门户中重新打开 Application Insights“概述”页（通过选择“项目” > “Application Insights” > “打开 Application Insights 门户”），查看有关当前正在运行的应用程序的详细信息。
 
-   ![Application Insights 概述菜单](./media/app-insights-dotnetcore-quick-start/004-Black.png)
+   ![Application Insights 概述菜单](./media/app-insights-dotnetcore-quick-start/overview-001.png)
 
-2. 单击“应用映射”以获取应用程序组件之间依赖关系的可视布局。 每个组件均显示 KPI，如负载、性能、失败和警报。
+2. 单击“应用程序映射”以获取应用程序组件之间依赖关系的可视布局。 每个组件均显示 KPI，如负载、性能、失败和警报。
 
-   ![应用程序地图](./media/app-insights-dotnetcore-quick-start/0002-dc.png)
+   ![应用程序地图](./media/app-insights-dotnetcore-quick-start/application-map.png)
 
 3. 单击“应用分析”图标 ![“应用程序映射”图标](./media/app-insights-dotnetcore-quick-start/006.png)。  这将打开“Application Insights Analytics”，该软件提供丰富的查询语言，可用于分析 Application Insights 收集的所有数据。 在本示例中，将生成以图表形式呈现请求计数的查询。 可以编写自己的查询来分析其他数据。
 
    ![一段时间内用户请求的分析图](./media/app-insights-dotnetcore-quick-start/0007-dc.png)
 
-4. 返回到“概述”页，并检查“运行状况概述时间线”。  此仪表板提供有关应用程序运行状况的统计信息，包括传入请求数、这些请求的持续时间，以及发生的任何故障。 
+4. 返回到“概述”页并检查 KPI 仪表板。  此仪表板提供有关应用程序运行状况的统计信息，包括传入请求数、这些请求的持续时间，以及发生的任何故障。 
 
-   ![“运行状况概述时间线”图](./media/app-insights-dotnetcore-quick-start/0008-dc.png)
+   ![“运行状况概述时间线”图](./media/app-insights-dotnetcore-quick-start/overview-graphs.png)
 
    若要启用“页面视图加载时间”图表以填充“客户端遥测”数据，请将此脚本添加到要跟踪的每一页：
 
    ```HTML
    <!-- 
-   To collect end-user usage analytics about your application, 
+   To collect user behavior analytics about your application, 
    insert the following script into each page you want to track.
    Place this code immediately before the closing </head> tag,
    and before any other scripts. Your first data will appear 

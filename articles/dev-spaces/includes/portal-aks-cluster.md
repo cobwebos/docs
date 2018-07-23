@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 6d2940712f8a76173de47badd45d7c7f0f0be05c
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 05736495d0d4a0c3a5072d29ad27801b6d4a7241
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825470"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37967608"
 ---
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>创建为 Azure Dev Spaces 启用的 Kubernetes 群集
 
@@ -25,10 +25,10 @@ ms.locfileid: "34825470"
    在创建 AKS 群集窗体的每个标题下完成以下步骤。
 
     - **项目详细信息**：选择 Azure 订阅和一个新的或现有的 Azure 资源组。
-    - **群集详细信息**：输入 AKS 群集的名称、区域（当前必须选择 EastUS、WestEurope 或 CanadaEast）、版本和 DNS 名称前缀。
+    - **群集详细信息**：输入 AKS 群集的名称、区域（当前必须选择 EastUS、Central US、WestEurope、WestUS2、CanadaCentral 或 CanadaEast）、版本和 DNS 名称前缀。
     - **规模**：选择 AKS 代理节点的 VM 大小和节点数。 如果是刚开始使用 Azure Dev Spaces，则采用一个节点来公开所有功能就足够了。 在部署群集后，随时可以轻松调整节点数。 请注意，在部署 AKS 群集后无法更改 VM 大小。 但是，在部署 AKS 群集后，如果需要纵向扩展，可以轻松创建具有更大 VM 的新 AKS 群集并使用 Dev Spaces 重新部署到该更大的群集。
 
-   请确保选择 Kubernetes 版本 1.9.6 或更高版本。
+   请确保选择 Kubernetes 版本 1.10.3 或更高版本。
 
    ![Kubernetes 配置设置](../media/common/Kubernetes-Create-Cluster-2.PNG)
 
@@ -40,5 +40,9 @@ ms.locfileid: "34825470"
 
     > [!IMPORTANT]
     > 创建 AKS 群集时必须确保启用 Http 应用程序路由。 以后无法更改此设置。
+
+1. 为基于角色的访问控制 (RBAC) 选择所需设置。 Azure Dev Spaces 支持启用或禁用了 RBAC 的群集。
+
+    ![RBAC 设置](../media/common/k8s-RBAC.PNG)
 
 1. 完成时依次选择“评审 + 创建”、“创建”。

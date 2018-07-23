@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: overview
 ms.date: 07/09/2018
 ms.author: heidist
-ms.openlocfilehash: 9391668438dedad755fcf62e044825eaf944bcd9
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 4874e42139e277400c866a7fc4c7094faeae136d
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950941"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39002198"
 ---
 # <a name="what-is-azure-search"></a>什么是 Azure 搜索？
 Azure 搜索是一种搜索即服务云解决方案，它为开发人员提供 API 和工具，以便基于 Web、移动和企业应用程序中的专用异类内容添加丰富的搜索体验。

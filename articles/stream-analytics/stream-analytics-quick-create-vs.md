@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: da81f26109eb140135eb972fd28e487139470b82
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: a69bfbe4c062012e82ca49233226eb1fcb8eb75e
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37032570"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113534"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-stream-analytics-tools-for-visual-studio"></a>快速入门：使用用于 Visual Studio 的 Azure 流分析工具创建流分析作业
 
@@ -72,6 +72,11 @@ ms.locfileid: "37032570"
 
    ![创建流分析项目](./media/stream-analytics-quick-create-vs/create-stream-analytics-project.png)
 
+注意 Azure 流分析项目中包括的元素。
+
+   <img src="./media/stream-analytics-quick-create-vs/stream-analytics-project.png" alt="Azure Stream Analytics project elements" width="300px"/>
+
+
 ## <a name="choose-the-required-subscription"></a>选择所需的订阅
 
 1. 在 Visual Studio 中，在“视图”菜单中选择“服务器资源管理器”。
@@ -88,7 +93,7 @@ ms.locfileid: "37032570"
    |---------|---------|---------|
    |输入别名  |  输入   |  输入一个名称，用于标识作业的输入。   |
    |源类型   |  数据流 |  选择合适的输入源：数据流或引用数据。   |
-   |源  |  Blob 存储 |  选择合适的输入源。   |
+   |Source  |  Blob 存储 |  选择合适的输入源。   |
    |资源  | 选择当前帐户中的数据源 | 选择手动输入数据或选择现有帐户。   |
    |订阅  |  用户的订阅\<\>   | 选择包含已创建的存储帐户的 Azure 订阅。 存储帐户可以在同一订阅中，也可以在另一订阅中。 此示例假定已在同一订阅中创建存储帐户。   |
    |存储帐户  |  asaquickstartstorage   |  选择或输入存储帐户的名称。 如果在同一订阅中创建存储帐户名称，则会自动将其删除。   |

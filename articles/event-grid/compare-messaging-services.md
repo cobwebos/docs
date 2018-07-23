@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: overview
 ms.date: 07/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 69db32698951519c2630a0a8697e4ebe74f69b04
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: c54f5c5fba31933a6dd9f98d1ecfb6d03a3ad9be
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930471"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003741"
 ---
 # <a name="choose-between-azure-services-that-deliver-messages"></a>在传递消息的 Azure 服务之间进行选择
 
@@ -82,7 +82,8 @@ Azure 事件中心是大数据管道。 它促进遥测数据和事件流数据�
 
 * 需要轮询的可靠异步消息传递（企业消息传递作为服务）
 * 高级消息传递功能，例如，FIFO、批处理/会话、事务、死信、时态控制、路由和筛选以及重复检测
-* “刚好一次”交付
+* “至少一次”交付
+* 可选的按序交付
 
 ## <a name="use-the-services-together"></a>同时使用多种服务
 

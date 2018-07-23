@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c72ae695c33bf9147bce7f326e8501ce2a88bb33
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: de30085ae5ff95e7067684ff3af9ccb0d45357de
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916596"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990857"
 ---
 # <a name="replicate-an-azure-vm-to-another-azure-region"></a>将 Azure VM 复制到另一个 Azure 区域
 
@@ -34,7 +34,7 @@ ms.locfileid: "37916596"
 
 1. 在 Azure 门户中，单击“虚拟机”，并选择要复制的 VM。
 
-2. 在“设置”中，单击“灾难恢复”。
+2. 在“操作”中，单击“灾难恢复”。
 3. 在“配置灾难恢复” > “目标区域”中，选择要复制到的目标区域。
 4. 在本快速入门中，接受其他默认设置。
 5. 单击“启用复制”。 这将启动用于为 VM 启用复制的作业。

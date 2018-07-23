@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 07/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 1962a4aac8e2d15caf4ec33998da1985d3b8a9af
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0ee83446bb08e66c7f325bdd5585b8cc0484a74e
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38306467"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090922"
 ---
 # <a name="import-a-function-app-as-an-api"></a>将函数应用导入为 API
 
@@ -34,7 +34,8 @@ ms.locfileid: "38306467"
 ## <a name="prerequisites"></a>先决条件
 
 + 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)
-+ 确保订阅中已有函数应用。 有关详细信息，请参阅[创建函数应用](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)。
++ 确保你的订阅中有 Azure 函数应用。 有关详细信息，请参阅[创建函数应用](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)。
++ 为你的 Azure 函数应用[创建 OpenAPI 定义](../azure-functions/functions-openapi-definition.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -56,6 +57,24 @@ ms.locfileid: "38306467"
     * **入门**
     * **不受限制**   
 7. 选择**创建**。
+
+## <a name="populate-azure-functions-keys-in-azure-api-management"></a>在 Azure API 管理中填充 Azure 函数密钥
+
+如果导入的 Azure 函数受密钥保护，则 Azure API 管理会自动为它们创建**命名值**，但不使用机密来填充条目。 对于每个条目，你需要执行以下步骤。  
+
+1. 导航到 API 管理实例中的“命名值”选项卡。
+2. 单击某个条目，然后按侧栏中的“显示值”。
+
+    ![命名值](./media/import-function-app-as-api/apim-named-values.png)
+
+3. 如果内容类似于 *{Azure Function name} 的代码*，则转至导入的 Azure 函数应用并导航到你的 Azure 函数。
+4. 转到所需 Azure 函数的“管理”部分，并根据 Azure 函数的身份验证方法复制相关密钥。
+
+    ![函数应用](./media/import-function-app-as-api/azure-functions-app-keys.png)
+
+5. 从“命名值”将密钥粘贴到文本框中并单击“保存”。
+
+    ![函数应用](./media/import-function-app-as-api/apim-named-values-2.png)
 
 ## <a name="test-the-new-apim-api-in-the-azure-portal"></a>在 Azure 门户中测试新的 APIM API
 

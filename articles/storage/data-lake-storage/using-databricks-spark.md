@@ -1,29 +1,29 @@
 ---
-title: 使用 Spark 通过 DataBricks 访问 Azure Data Lake Storage Gen2 预览版数据 | Microsoft Docs
-description: 了解如何在 DataBricks 群集上运行 Spark 查询，以便访问 Azure Data Lake Storage Gen2 存储帐户中的数据。
+title: 使用 Spark 通过 Azure Databricks 访问 Azure Data Lake Storage Gen2 预览版数据 | Microsoft Docs
+description: 了解如何在 Azure Databricks 群集上运行 Spark 查询，以便访问 Azure Data Lake Storage Gen2 存储帐户中的数据。
 services: hdinsight,storage
 tags: azure-portal
 author: dineshm
 manager: twooley
 ms.component: data-lake-storage-gen2
-ms.service: hdinsight
+ms.service: storage
 ms.workload: big-data
 ms.topic: tutorial
 ms.date: 6/27/2018
 ms.author: dineshm
-ms.openlocfilehash: 27ed860c7dd3b979a25860d453231de74d3f46be
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 41c34b2c1459178c59af66a75e7b34e2ec158025
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096910"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136397"
 ---
-# <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-databricks-using-spark"></a>教程：使用 Spark 通过 DataBricks 访问 Azure Data Lake Storage Gen2 预览版数据
+# <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>教程：使用 Spark 通过 Azure Databricks 访问 Azure Data Lake Storage Gen2 预览版数据
 
-本教程介绍如何在 DataBricks 群集上运行 Spark 查询，以便查询支持 Azure Data Lake Storage Gen2 预览版的帐户中的数据。
+本教程介绍如何在 Azure Databricks 群集上运行 Spark 查询，以便查询支持 Azure Data Lake Storage Gen2 预览版的帐户中的数据。
 
 > [!div class="checklist"]
-> * 创建 DataBricks 群集
+> * 创建 Databricks 群集
 > * 将非结构化数据引入存储帐户中
 > * 触发用于处理数据的 Azure Functions
 > * 对 Blob 存储中的数据运行分析
@@ -47,11 +47,11 @@ ms.locfileid: "37096910"
 
 本教程后面的步骤需要此帐户名称和密钥。 打开一个文本编辑器，在其中存储此帐户名称和密钥，供将来引用。
 
-## <a name="create-a-databricks-cluster"></a>创建 DataBricks 群集
+## <a name="create-a-databricks-cluster"></a>创建 Databricks 群集
 
-下一步是创建 [DataBricks 群集](https://docs.azuredatabricks.net/)，以便创建数据工作区。
+下一步是创建 [Databricks 群集](https://docs.azuredatabricks.net/)，以便创建数据工作区。
 
-1. 创建一个 [DataBricks 服务](https://ms.portal.azure.com/#create/Microsoft.Databricks)，将其命名为 **myFlightDataService**（确保在创建此服务时勾选“固定到仪表板”复选框）。
+1. 创建一个 [Databricks 服务](https://ms.portal.azure.com/#create/Microsoft.Databricks)，将其命名为 **myFlightDataService**（确保在创建此服务时勾选“固定到仪表板”复选框）。
 2. 单击“启动工作区”，在新浏览器窗口中打开工作区。
 3. 在左侧导航栏中单击“群集”。
 4. 单击“创建群集”。
@@ -85,9 +85,9 @@ set ACCOUNT_KEY=<ACCOUNT_KEY>
 azcopy cp "<DOWNLOAD_FILE_PATH>" https://<ACCOUNT_NAME>.dfs.core.windows.net/dbricks/folder1/On_Time --recursive 
 ```
 
-### <a name="use-databricks-notebook-to-convert-csv-to-parquet"></a>使用 DataBricks Notebook 将 CSV 转换为 Parquet
+### <a name="use-databricks-notebook-to-convert-csv-to-parquet"></a>使用 Databricks Notebook 将 CSV 转换为 Parquet
 
-在浏览器中重新打开 DataBricks，执行以下步骤：
+在浏览器中重新打开 Databricks，执行以下步骤：
 
 1. 在导航栏的左上角选择“Azure Databricks”。
 2. 在页面下半部的“新建”部分下选择“Notebook”。
@@ -116,7 +116,7 @@ azcopy cp "<DOWNLOAD_FILE_PATH>" https://<ACCOUNT_NAME>.dfs.core.windows.net/dbr
 
 ## <a name="explore-data-using-hadoop-distributed-file-system"></a>使用 Hadoop 分布式文件系统浏览数据
 
-返回到 DataBricks 工作区，单击左侧导航栏中的“最新”图标。
+返回到 Databricks 工作区，单击左侧导航栏中的“最新”图标。
 
 1. 单击“航班数据分析”Notebook。
 2. 按 **Ctrl + Alt + N** 创建新的单元格。
