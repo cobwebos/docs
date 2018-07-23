@@ -1,0 +1,405 @@
+- name: Azure IoT 基础
+  href: /azure/iot-fundamentals
+- name: IoT 中心文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: Azure IoT 中心是什么？
+      href: about-iot-hub.md
+- name: 快速入门
+  items:
+    - name: 发送遥测数据 (Node.js)
+      href: quickstart-send-telemetry-node.md
+    - name: 发送遥测数据 (.NET)
+      href: quickstart-send-telemetry-dotnet.md
+    - name: 发送遥测数据 (Java)
+      href: quickstart-send-telemetry-java.md
+    - name: 发送遥测数据 (Python)
+      href: quickstart-send-telemetry-python.md
+    - name: 发送遥测数据 (iOS)
+      href: quickstart-send-telemetry-ios.md
+    - name: 控制设备 (Node.js)
+      href: quickstart-control-device-node.md
+    - name: 控制设备 (.NET)
+      href: quickstart-control-device-dotnet.md
+    - name: 控制设备 (Java)
+      href: quickstart-control-device-java.md
+    - name: 控制设备 (Python)
+      href: quickstart-control-device-python.md
+- name: 教程
+  items:
+    - name: 路由消息
+      href: tutorial-routing.md
+    - name: 配置设备
+      href: tutorial-device-twins.md
+    - name: 管理固件更新
+      href: tutorial-firmware-update.md
+    - name: 测试设备连接性
+      href: tutorial-connectivity.md
+- name: 概念
+  items:
+    - name: 设备管理概述
+      href: iot-hub-device-management-overview.md
+    - name: 比较 IoT 中心与事件中心
+      href: iot-hub-compare-event-hubs.md
+    - name: 选择适当的层
+      href: iot-hub-scaling.md
+    - name: 高可用性和灾难恢复
+      href: iot-hub-ha-dr.md
+    - name: 支持其他协议
+      href: iot-hub-protocol-gateway.md
+    - name: 比较消息和事件路由
+      href: iot-hub-event-grid-routing-comparison.md
+    - name: 设备配置最佳做法
+      href: iot-hub-configuration-best-practices.md
+    - name: 开发人员指南
+      href: iot-hub-devguide.md
+      items:
+        - name: 设备到云的功能指南
+          href: iot-hub-devguide-d2c-guidance.md
+        - name: 云到设备的功能指南
+          href: iot-hub-devguide-c2d-guidance.md
+        - name: 发送和接收消息
+          href: iot-hub-devguide-messaging.md
+          items:
+            - name: 将设备到云的消息发送到 IoT 中心
+              href: iot-hub-devguide-messages-d2c.md
+            - name: 通过内置终结点读取设备到云的消息
+              href: iot-hub-devguide-messages-read-builtin.md
+            - name: 响应 IoT 中心事件
+              href: iot-hub-event-grid.md
+            - name: 对设备到云的消息使用自定义终结点和路由规则
+              href: iot-hub-devguide-messages-read-custom.md
+            - name: 从 IoT 中心发送云到设备的消息
+              href: iot-hub-devguide-messages-c2d.md
+            - name: 创建和读取 IoT 中心消息
+              href: iot-hub-devguide-messages-construct.md
+            - name: 选择通信协议
+              href: iot-hub-devguide-protocols.md
+        - name: 从设备上传文件
+          href: iot-hub-devguide-file-upload.md
+        - name: 管理设备标识
+          href: iot-hub-devguide-identity-registry.md
+        - name: 控制对 IoT 中心的访问
+          href: iot-hub-devguide-security.md
+        - name: 了解设备孪生
+          href: iot-hub-devguide-device-twins.md
+        - name: 了解模块孪生
+          href: iot-hub-devguide-module-twins.md
+        - name: 对设备调用直接方法
+          href: iot-hub-devguide-direct-methods.md
+        - name: 在多个设备上计划作业
+          href: iot-hub-devguide-jobs.md
+        - name: IoT 中心终结点
+          href: iot-hub-devguide-endpoints.md
+        - name: 查询语言
+          href: iot-hub-devguide-query-language.md
+        - name: 配额和限制
+          href: iot-hub-devguide-quotas-throttling.md
+        - name: 定价示例
+          href: iot-hub-devguide-pricing.md
+        - name: 设备和服务 SDK
+          href: iot-hub-devguide-sdks.md
+        - name: MQTT 支持
+          href: iot-hub-mqtt-support.md
+        - name: 术语表
+          href: iot-hub-devguide-glossary.md
+    - name: “安全”
+      items:
+        - name: 安全基础知识
+          href: /azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-hub/rc/rc
+        - name: 安全最佳实践
+          href: /azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-hub/rc/rc
+        - name: 安全体系结构
+          href: /azure/iot-fundamentals/iot-security-architecture?context=azure/iot-hub/rc/rc
+        - name: 保护 IoT 部署
+          href: /azure/iot-fundamentals/iot-security-deployment?context=azure/iot-hub/rc/rc
+    - name: 使用 X.509 CA 证书进行保护
+      items:
+        - name: X.509 CA 证书安全性概述
+          href: iot-hub-x509ca-overview.md
+        - name: X.509 CA 证书安全性概念
+          href: iot-hub-x509ca-concept.md
+- name: 操作指南
+  items:
+    - name: 开发
+      items:
+        - name: 使用适用于 C 的 IoT 设备 SDK
+          href: iot-hub-device-sdk-c-intro.md
+          items:
+            - name: 使用 IoTHubClient
+              href: iot-hub-device-sdk-c-iothubclient.md
+            - name: 使用序列化程序
+              href: iot-hub-device-sdk-c-serializer.md
+        - name: 针对受约束设备进行开发
+          href: iot-hub-devguide-develop-for-constrained-devices.md
+        - name: 为移动设备进行开发
+          href: iot-hub-how-to-develop-for-mobile-devices.md
+        - name: 管理连接和可靠的消息传送
+          href: iot-hub-reliability-features-in-sdks.md
+        - name: 查询中心路由中的 Avro 数据
+          href: iot-hub-query-avro-data.md
+        - name: 发送“云到设备”消息
+          items:
+            - name: .NET
+              href: iot-hub-csharp-csharp-c2d.md
+            - name: Java
+              href: iot-hub-java-java-c2d.md
+            - name: Node.js
+              href: iot-hub-node-node-c2d.md
+            - name: Python
+              href: iot-hub-python-python-c2d.md
+            - name: iOS
+              href: iot-hub-ios-swift-c2d.md
+        - name: 从设备上传文件
+          items:
+            - name: .NET
+              href: iot-hub-csharp-csharp-file-upload.md
+            - name: Java
+              href: iot-hub-java-java-file-upload.md
+            - name: Node.js
+              href: iot-hub-node-node-file-upload.md
+            - name: Python
+              href: iot-hub-python-python-file-upload.md
+        - name: 设备孪生入门
+          items:
+            - name: Node.js
+              href: iot-hub-node-node-twin-getstarted.md
+            - name: .NET
+              href: iot-hub-csharp-csharp-twin-getstarted.md
+            - name: Java
+              href: iot-hub-java-java-twin-getstarted.md
+            - name: Python
+              href: iot-hub-python-twin-getstarted.md
+        - name: 模块孪生入门
+          items:
+            - name: 门户
+              href: iot-hub-portal-csharp-module-twin-getstarted.md
+            - name: .NET
+              href: iot-hub-csharp-csharp-module-twin-getstarted.md
+            - name: Python
+              href: iot-hub-python-python-module-twin-getstarted.md
+            - name: C
+              href: iot-hub-c-c-module-twin-getstarted.md
+            - name: 节点
+              href: iot-hub-node-node-module-twin-getstarted.md
+        - name: 设备管理入门
+          items:
+            - name: Node.js
+              href: iot-hub-node-node-device-management-get-started.md
+            - name: .NET
+              href: iot-hub-csharp-csharp-device-management-get-started.md
+            - name: Java
+              href: iot-hub-java-java-device-management-getstarted.md
+            - name: Python
+              href: iot-hub-python-python-device-management-get-started.md
+        - name: 计划和广播作业
+          items:
+            - name: Node.js
+              href: iot-hub-node-node-schedule-jobs.md
+            - name: .NET
+              href: iot-hub-csharp-csharp-schedule-jobs.md
+            - name: Java
+              href: iot-hub-java-java-schedule-jobs.md
+            - name: Python
+              href: iot-hub-python-python-schedule-jobs.md
+    - name: 管理
+      items:
+        - name: 创建 IoT 中心
+          items:
+            - name: 使用 Azure 门户
+              href: iot-hub-create-through-portal.md
+            - name: 使用 Azure PowerShell
+              href: iot-hub-create-using-powershell.md
+            - name: 使用 Azure CLI
+              href: iot-hub-create-using-cli.md
+            - name: 使用 CLI
+              href: iot-hub-create-using-cli-nodejs.md
+            - name: 使用 REST API
+              href: iot-hub-rm-rest.md
+            - name: 通过 Azure PowerShell 使用模板
+              href: iot-hub-rm-template-powershell.md
+            - name: 通过 .NET 使用模板
+              href: iot-hub-rm-template.md
+        - name: 配置文件上传
+          items:
+            - name: 使用 Azure 门户
+              href: iot-hub-configure-file-upload.md
+            - name: 使用 Azure PowerShell
+              href: iot-hub-configure-file-upload-powershell.md
+            - name: 使用 Azure CLI
+              href: iot-hub-configure-file-upload-cli.md
+        - name: 使用诊断进行监视
+          href: iot-hub-monitor-resource-health.md
+          items:
+            - name: 迁移到诊断设置
+              href: iot-hub-migrate-to-diagnostics-settings.md
+            - name: 操作监视
+              href: iot-hub-operations-monitoring.md
+        - name: 使用 X.509 证书来保护中心
+          href: iot-hub-security-x509-get-started.md
+        - name: 升级 IoT 中心
+          href: iot-hub-upgrade.md
+        - name: 使用指标
+          href: iot-hub-metrics.md
+        - name: 配置 IP 筛选
+          href: iot-hub-ip-filtering.md
+        - name: 大规模配置设备
+          items:
+            - name: 使用 Azure 门户
+              href: iot-hub-auto-device-config.md
+            - name: 使用 Azure CLI
+              href: iot-hub-auto-device-config-cli.md
+        - name: 批量管理 IoT 设备
+          href: iot-hub-bulk-identity-mgmt.md
+    - name: 使用真实设备
+      items:
+        - name: 使用联机模拟器
+          href: iot-hub-raspberry-pi-web-simulator-get-started.md
+        - name: 使用物理设备
+          href: iot-hub-get-started-physical.md
+          items:
+            - name: 将 Raspberry Pi 与 Python 配合使用
+              href: iot-hub-raspberry-pi-kit-python-get-started.md
+            - name: 将 Raspberry Pi 与 Node.js 配合使用
+              href: iot-hub-raspberry-pi-kit-node-get-started.md
+            - name: 将 Raspberry Pi 与 C 配合使用
+              href: iot-hub-raspberry-pi-kit-c-get-started.md
+            - name: 将 MXChip IoT DevKit 与 Arduino 配合使用
+              href: iot-hub-arduino-iot-devkit-az3166-get-started.md
+            - name: 将 Intel Edison 与 Node.js 配合使用
+              href: iot-hub-intel-edison-kit-node-get-started.md
+            - name: 将 Intel Edison 与 C 配合使用
+              href: iot-hub-intel-edison-kit-c-get-started.md
+            - name: 将 Adafruit Feather HUZZAH ESP8266 与 Arduino 配合使用
+              href: iot-hub-arduino-huzzah-esp8266-get-started.md
+            - name: 将 Sparkfun ESP8266 Thing Dev 与 Arduino 配合使用
+              href: iot-hub-sparkfun-esp8266-thing-dev-get-started.md
+            - name: 将 Adafruit Feather M0 与 Arduino 配合使用
+              href: iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md
+        - name: 使用 MXChip IoT DevKit
+          items:
+            - name: 使用 Azure 认知服务翻译语音消息
+              href: iot-hub-arduino-iot-devkit-az3166-translator.md
+            - name: 使用 Azure Functions 检索 Twitter 消息
+              href: iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md
+            - name: 使用 Eclipse Paho API 将消息发送到 MQTT 服务器
+              href: iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md
+            - name: 使用 Azure Functions 监视磁传感器并发送电子邮件通知
+              href: iot-hub-arduino-iot-devkit-az3166-door-monitor.md
+        - name: 扩展的 IoT 方案
+          items:
+            - name: 使用 iothub-explorer 管理云设备消息传送
+              href: iot-hub-explorer-cloud-device-messaging.md
+            - name: 将 IoT 中心消息保存到 Azure Blob 存储
+              href: iot-hub-store-data-in-azure-table-storage.md
+            - name: Power BI 中的数据可视化
+              href: iot-hub-live-data-visualization-in-power-bi.md
+            - name: 使用 Web 应用进行数据可视化
+              href: iot-hub-live-data-visualization-in-web-apps.md
+            - name: 使用 Azure 机器学习预测天气
+              href: iot-hub-weather-forecast-machine-learning.md
+            - name: 使用 iothub-explorer 进行设备管理
+              href: iot-hub-device-management-iothub-explorer.md
+            - name: 使用适用于 Azure CLI 2.0 的 IoT 扩展进行设备管理
+              href: iot-hub-device-management-iot-extension-azure-cli-2-0.md
+            - name: 使用逻辑应用执行远程监视和发送通知
+              href: iot-hub-monitoring-notifications-with-azure-logic-apps.md
+- name: 引用
+  items:
+    - name: Azure CLI
+      href: /cli/azure/iot
+    - name: .NET（服务）
+      href: /dotnet/api/microsoft.azure.devices
+    - name: .NET（设备）
+      href: /dotnet/api/microsoft.azure.devices.client
+    - name: Java（服务）
+      href: /java/api/com.microsoft.azure.sdk.iot.service
+    - name: Java（设备）
+      href: /java/api/com.microsoft.azure.sdk.iot.device
+    - name: Node.js（设备）
+      href: 'https://docs.microsoft.com/javascript/api/azure-iot-device/'
+    - name: Node.js（服务）
+      href: 'https://docs.microsoft.com/javascript/api/azure-iothub/'
+    - name: C 设备 SDK
+      href: 'https://azure.github.io/azure-iot-sdk-c/index.html'
+    - name: Azure IoT Edge
+      href: 'http://azure.github.io/iot-edge/'
+    - name: REST（设备）
+      href: 'https://docs.microsoft.com/rest/api/iothub/device'
+    - name: REST（服务）
+      href: 'https://docs.microsoft.com/rest/api/iothub/service'
+    - name: REST（IoT 中心资源）
+      href: 'https://docs.microsoft.com/rest/api/iothub/iothubresource'
+    - name: REST（证书）
+      href: 'https://docs.microsoft.com/rest/api/iothub/certificates'
+- name: 相关内容
+  items:
+    - name: 解决方案
+      items:
+        - name: IoT 解决方案加速器
+          href: /azure/iot-accelerators
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+    - name: 平台服务
+      items:
+        - name: IoT 中心
+          href: /azure/iot-hub
+        - name: IoT 中心设备预配服务
+          href: /azure/iot-dps
+        - name: IoT 服务 SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: 地图
+          href: /azure/azure-maps
+        - name: 时序见解
+          href: /azure/time-series-insights
+    - name: Microsoft Edge
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT 设备 SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+- name: 资源
+  items:
+    - name: '适用于 C# 的 Azure IoT 示例 (.NET)'
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
+    - name: 适用于 Node.js 的 Azure IoT 示例
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
+    - name: 适用于 Java 的 Azure IoT 示例
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
+    - name: 适用于 Python 的 Azure IoT 示例
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
+    - name: 适用于 iOS 平台的 Azure IoT 示例
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
+    - name: Azure IoT 已认证设备目录
+      href: 'https://catalog.azureiotsuite.com/'
+    - name: Azure IoT 开发人员中心
+      href: 'https://azure.microsoft.com/develop/iot/'
+    - name: 客户数据请求
+      href: iot-hub-customer-data-requests.md
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'
+    - name: Azure IoT 工具包
+      href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit'
+    - name: DeviceExplorer 工具
+      href: 'https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer'
+    - name: iothub-diagnostics 工具
+      href: 'https://github.com/Azure/iothub-diagnostics'
+    - name: iothub-explorer 工具
+      href: 'https://github.com/Azure/iothub-explorer'
+    - name: 学习路径
+      href: 'https://azure.microsoft.com/documentation/learning-paths/iot-hub/'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureiothub'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/iot-hub/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=iot-hub'
+    - name: 堆栈溢出
+      href: 'http://stackoverflow.com/questions/tagged/azure-iot-hub'
+    - name: 技术案例研究
+      href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
+    - name: 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=iot-hub'

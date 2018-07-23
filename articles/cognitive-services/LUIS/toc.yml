@@ -79,6 +79,10 @@
           href: luis-tutorial-batch-testing.md
         - name: 使用模式
           href: luis-tutorial-pattern.md
+        - name: 使用角色
+          href: luis-tutorial-pattern-roles.md
+        - name: 使用 Pattern.any 实体
+          href: luis-tutorial-pattern-any.md
 - name: 示例
   items:
     - name: 代码示例
@@ -194,7 +198,7 @@
     - name: 测试
       items:
         - name: 交互式测试
-          href: interactive-test.md
+          href: luis-interactive-test.md
         - name: 批处理测试
           href: luis-how-to-batch-test.md
     - name: 发布应用
@@ -226,7 +230,7 @@
             - name: 使用流量管理器将终结点配额分布在各个密钥上
               href: luis-traffic-manager.md
     - name: 迁移到 V2 API
-      href: migration-v1-to-v2.md
+      href: luis-migration-api-v1-to-v2.md
     - name: 以编程方式查找区域
       items:
         - name: '使用 C#'

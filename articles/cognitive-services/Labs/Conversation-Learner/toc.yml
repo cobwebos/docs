@@ -48,6 +48,8 @@
       href: tutorials/15-branching-and-undo.md
     - name: 版本控制和标记
       href: tutorials/16-versioning-and-tagging.md
+    - name: 混合机器人
+      href: tutorials/17-hybrid-bots.md
     - name: 演示 - 密码重置
       href: tutorials/demo-password-reset.md
     - name: 演示 - 披萨订单
