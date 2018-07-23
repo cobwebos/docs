@@ -12,12 +12,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/14/2018
   ms.author: sethm
-  ms.openlocfilehash: 481a11b284f0bfba73fe8a44b640eac0cdc6f833
-  ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+  ms.openlocfilehash: 84ef019b64bba2d5b581593ae293ea612ecb4bc4
+  ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/02/2018
-  ms.locfileid: "37344057"
+  ms.lasthandoff: 07/20/2018
+  ms.locfileid: "39170926"
 abstract:
   description: Azure 事件中心是一个数据流式处理平台，也是一种事件处理服务，能够每秒接收和处理数百万事件。 对于事件发布而言，该服务支持 HTTPS 和 AMQP 1.0 协议以及 Apache Kafka 生态系统。
   aside:
@@ -56,7 +56,7 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="https://review.docs.microsoft.com/en-us/azure/event-hubs/event-hubs-tutorial-visualize-anomalies?branch=release-mvc-event-hubs">使用 Azure 流分析读取事件中心数据流并直观显示异常</a>
+    - html: <a href="https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-tutorial-visualize-anomalies">使用 Azure 流分析读取事件中心数据流并直观显示异常</a>
 - title: 免费 Pluralsight 视频培训
   items:
   - type: list

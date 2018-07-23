@@ -6,20 +6,19 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 28F360AD-789A-488D-965F-FC6E6CCF3329
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2018
+ms.date: 07/19/2018
 ms.author: mabrigg
-ms.openlocfilehash: f4c4d907fe76c5e6ee5893b5b4dd1b2d766877a7
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 9c1e4abe50b06db58a4ca05a99e1ae4a531b2294
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287241"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187445"
 ---
 # <a name="download-azure-stack-tools-from-github"></a>从 GitHub 下载 Azure Stack 工具
 
@@ -61,12 +60,12 @@ AzureStack-Tools 存储库包含支持以下 Azure Stack 功能的 PowerShell �
 
 | 功能 | 说明 | 谁可以使用此模块？ |
 | --- | --- | --- |
-| [云功能](azure-stack-validate-templates.md) | 使用此模块可获取云的云功能。 例如，可以使用此模块来获取 Azure Stack 和 Azure 云的 API 版本、Azure 资源管理器资源、VM 扩展等云功能。 | 云管理员和用户。 |
+| [云功能](https://github.com/Azure/AzureStack-Tools/tree/master/CloudCapabilities) | 使用此模块可获取云的云功能。 例如，可以使用此模块来获取 Azure Stack 和 Azure 云的 API 版本、Azure 资源管理器资源、VM 扩展等云功能。 | 云管理员和用户。 |
 | [Azure Stack 的资源管理器策略](azure-stack-policy-module.md) | 使用此模块可以配置版本和服务可用性与 Azure Stack 相同的 Azure 订阅或 Azure 资源组。 | 云管理员和用户 |
 | [连接到 Azure Stack](azure-stack-connect-azure-stack.md) | 使用此模块可通过 PowerShell 连接到 Azure Stack 实例，并配置与 Azure Stack 的 VPN 连接。 | 云管理员和用户 |
 | [模板验证程序](azure-stack-validate-templates.md) | 使用此模块可以验证是否可将现有或新的模板部署到 Azure Stack。 | 云管理员和用户 |
 
 ## <a name="next-steps"></a>后续步骤
 
-* [配置 Azure Stack 用户的 PowerShell 环境](azure-stack-powershell-configure-user.md)
-* [通过 VPN 连接到 Azure Stack 开发工具包](azure-stack-connect-azure-stack.md)
+- [配置 Azure Stack 用户的 PowerShell 环境](azure-stack-powershell-configure-user.md)
+- [通过 VPN 连接到 Azure Stack 开发工具包](azure-stack-connect-azure-stack.md)

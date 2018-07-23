@@ -89,14 +89,6 @@
       href: /powershell/module/azurerm.eventgrid
     - name: REST
       href: /rest/api/eventgrid
-    - name: 模板资源
-      items:
-        - name: 事件订阅
-          href: /azure/templates/microsoft.eventgrid/eventsubscriptions
-        - name: 主题
-          href: /azure/templates/microsoft.eventgrid/topics
-    - name: SDK
-      href: sdk-overview.md
     - name: 订阅架构
       href: subscription-creation-schema.md
     - name: 事件架构
@@ -106,6 +98,8 @@
           href: event-schema-subscriptions.md
         - name: Blob 存储
           href: event-schema-blob-storage.md
+        - name: 容器注册表
+          href: event-schema-container-registry.md
         - name: 事件中心
           href: event-schema-event-hubs.md
         - name: IoT 中心
@@ -116,6 +110,14 @@
           href: event-schema-resource-groups.md
         - name: 服务总线
           href: event-schema-service-bus.md
+    - name: 模板资源
+      items:
+        - name: 事件订阅
+          href: /azure/templates/microsoft.eventgrid/eventsubscriptions
+        - name: 主题
+          href: /azure/templates/microsoft.eventgrid/topics
+    - name: SDK
+      href: sdk-overview.md
 - name: 资源
   items:
     - name: Azure 路线图

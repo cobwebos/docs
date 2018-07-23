@@ -59,7 +59,7 @@
               href: azure-stack-manage-vm-disks.md
             - name: 保护 VM
               href: azure-stack-manage-vm-protect.md
-            - name: SQL Server 虚拟机的注意事项
+            - name: SQL Server VM 注意事项
               href: azure-stack-sql-server-vm-considerations.md
         - name: 存储
           items:
@@ -110,8 +110,9 @@
         - name: 设置开发环境
           items:
             - name: 安装 Azure Stack PowerShell
-              href: 'https://docs.microsoft.com/azure/azure-stack/user/azure-stack-powershell-install'
-            - name: 下载 Azure 堆栈工具
+              href: ../azure-stack-powershell-install.md
+              maintainContext: true
+            - name: 下载 Azure Stack 工具
               href: azure-stack-powershell-download.md
             - name: 配置 PowerShell - 用户
               href: azure-stack-powershell-configure-user.md
@@ -132,7 +133,7 @@
                   href: azure-stack-version-profiles-python.md
                 - name: 配置文件支持的资源提供程序 API
                   href: azure-stack-profiles-azure-resource-manager-versions.md
-        - name: 使用 Azure 堆栈策略模块
+        - name: 使用 Azure Stack 策略模块
           href: azure-stack-policy-module.md
         - name: 使用模板
           items:

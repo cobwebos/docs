@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 04/13/2018
 ms.author: carolz
-ms.openlocfilehash: 04b2853729296d158fee77d96a807972bd4f92e5
-ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
+ms.openlocfilehash: b39c3c47325b7bca4e9bc1e68024fb9c04fabea3
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36946034"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171834"
 ---
 # <a name="azure-active-directory-documentation"></a>Azure Active Directory 文档
 
@@ -81,8 +81,8 @@ Azure Active Directory (Azure AD) 是多租户、基于云的目录和标识管�
                     <div class="cardText">
                         <h3>身份验证</h3>
                         <p>
-                        <a href="/azure/active-directory/active-directory-passwords-overview">密码</a><br/>
-                        <a href="/azure/active-directory/active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements">多重身份验证</a><br/>
+                        <a href="/azure/active-directory/authentication/concept-sspr-howitworks">密码</a><br/>
+                        <a href="/azure/active-directory/authentication/concept-mfa-howitworks">多重身份验证</a><br/>
                         <a href="/azure/active-directory/active-directory-azureadjoin-passport">Windows Hello</a><br/>
                         <a href="/azure/active-directory/active-directory-certificate-based-authentication-get-started">基于证书的身份验证</a>
                         </p>

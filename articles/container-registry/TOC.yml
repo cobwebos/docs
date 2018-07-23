@@ -67,7 +67,7 @@
           href: container-registry-auth-service-principal.md
         - name: Azure 容器实例
           href: container-registry-auth-aci.md
-        - name: Azure 容器服务
+        - name: Azure Kubernetes 服务 (AKS)
           href: container-registry-auth-aks.md
 - name: 引用
   items:
