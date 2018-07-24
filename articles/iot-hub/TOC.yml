@@ -291,6 +291,8 @@
           items:
             - name: 使用 iothub-explorer 管理云设备消息传送
               href: iot-hub-explorer-cloud-device-messaging.md
+            - name: 使用用于 VS Code 的 Azure IoT 工具包管理云设备消息传送
+              href: iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
             - name: 将 IoT 中心消息保存到 Azure Blob 存储
               href: iot-hub-store-data-in-azure-table-storage.md
             - name: Power BI 中的数据可视化
