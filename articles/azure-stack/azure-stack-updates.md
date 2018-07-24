@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: mabrigg
-ms.openlocfilehash: 43ec962c91b354d8f07f1be8885b89424d00e452
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 484f04dc2ed523d3f979b0ba857c92f90d9d32ad
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069853"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215804"
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>在 Azure Stack 中管理更新概述
 
 *适用于：Azure Stack 集成系统*
 
-Microsoft 更新包的 Azure Stack 集成系统通常发布围绕每个月的第四个星期二。 有关特定通知过程，以确保更新通知达到你的组织的信息，请咨询 OEM。 您还可以查看此文档库中下下**概述** > **发行说明**有关处于活动状态的支持的版本信息。 
+Microsoft 更新包的 Azure Stack 集成系统通常发布围绕每个月的第四个星期二。 有关特定通知过程，以确保更新通知达到你的组织的信息，请咨询 OEM。 您还可以在此文档库中检查**概述** > **发行说明**有关处于活动状态的支持的版本信息。 
 
 每次发布的 Microsoft 软件更新均打包为单个更新包。 Azure Stack 操作员，可以导入、 安装和监视安装进度的这些更新在管理员门户中的包。 
 
