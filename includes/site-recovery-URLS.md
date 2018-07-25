@@ -1,11 +1,28 @@
-``*.accesscontrol.windows.net``。 用于访问控制和标识管理。 （基于 ACS 的身份验证将在 2017 年 12 月弃用） <br/>
-``https://login.microsoftonline.com`` 用于使用 AAD 的访问控制和标识管理
+---
+title: include 文件
+description: include 文件
+services: site-recovery
+author: rayne-wiselman
+manager: carmonm
+ms.service: site-recovery
+ms.topic: include
+ms.date: 06/28/2018
+ms.author: raynew
+ms.openlocfilehash: f7d6c3f68618fec839ccff06b73ba44d106999d2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38765532"
+---
+| 名称 | 商用 URL | 政府 URL | 说明 |
+|---|---|---|---|
+| Azure AD | ``login.microsoftonline.com`` | ``login.microsoftonline.us`` | 用于使用 AAD 的访问控制和标识管理 |
+| 备份 | ``*.backup.windowsazure.com`` | ``*.backup.windowsazure.us`` | 用于复制数据传输和协调 |
+| 复制 | ``*.hypervrecoverymanager.windowsazure.com`` | ``*.hypervrecoverymanager.windowsazure.us``  | 用于复制管理操作和协调 |
+| 存储 | ``*.blob.core.windows.net`` | ``*.blob.core.usgovcloudapi.net``  | 用于访问存储所复制数据的存储帐户 |
+| 遥测（可选） | ``dc.services.visualstudio.com`` | ``dc.services.visualstudio.com`` | 用于遥测 |
 
-``*.backup.windowsazure.com``。 用于复制数据传输和协调。 <br/> ``*.blob.core.windows.net``。 用于访问存储所复制数据的存储帐户。<br/> ``*.hypervrecoverymanager.windowsazure.com``。 用于复制管理操作和协调。<br/>
-``dc.services.visualstudio.com`` - 用于遥测。 <br>
-``time.nist.gov`` 和 ``time.windows.com``。 用于检查系统时间与全球时间之间的时间同步。
-<br/><br/>
-Azure 政府云的 URL：<br/>- .ugv.hypervrecoverymanager.windowsazure.us<br/>- .ugv.backup.windowsazure.us<br/>- .ugi.hypervrecoverymanager.windowsazure.us<br/>- .ugi.backup.windowsazure.us<br/>-
-https://login.microsoftonline.us<br/>-
-https://login.microsoftonline.com<br/>
+``time.nist.gov`` 和 ``time.windows.com`` 用于检查所有部署中的系统时间与全球时间之间的时间同步。
+
 

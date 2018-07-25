@@ -2,28 +2,28 @@
 title: 将 Azure Active Directory 与 Azure Kubernetes Service 集成
 description: 如何创建支持 Azure Active Directory 的 Azure Kubernetes Service 群集。
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 6/17/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 7d157d50bbcd25edd9cd6693a71fb04535cbeb79
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: e75577ae917cbe14a123ff5e2d44da2edc8062ef
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937375"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38307307"
 ---
 # <a name="integrate-azure-active-directory-with-aks---preview"></a>将 Azure Active Directory 与 AKS 集成 - 预览版
 
 可将 Azure Kubernetes Service (AKS) 配置为使用 Azure Active Directory 进行用户身份验证。 在此配置中，你可以使用自己的 Azure Active Directory 身份验证令牌登录到 Azure Kubernetes Service 群集。 此外，群集管理员可以根据用户标识或目录组成员身份来配置 Kubernetes 基于角色的访问控制。
 
-本文档详细介绍如何创建 AKS 和 Azure AD 的所有必备组件、部署支持 Azure AD 的群集，以及在 AKS 群集中创建简单的 RBAC 角色。
+本文档详细介绍如何创建 AKS 和 Azure AD 的所有必备组件、部署支持 Azure AD 的群集，以及在 AKS 群集中创建简单的 RBAC 角色。 请注意，当前不能对现有非 RBAC 启用的 AKS 群集更新以供 RBAC 使用。
 
 > [!IMPORTANT]
-> Azure Kubernetes Service (AKS) RBAC 与 Azure AD 集成目前以**预览版**提供。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版推出之前，此功能的某些方面可能会有所更改。
+> Azure Kubernetes Service (AKS) RBAC 与 Azure AD 集成目前以**预览版**提供。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
 >
 
 ## <a name="authentication-details"></a>身份验证详细信息
@@ -59,19 +59,21 @@ ms.locfileid: "36937375"
 
 4. 返回 Azure AD 应用程序，选择“设置” > “所需的权限” > “添加” > “选择 API” > “Microsoft Graph” > “选择”。
 
-  在“应用程序权限”下，勾选“读取目录数据”。
+  ![选择图形 API](media/aad-integration/graph-api.png)
+
+5. 在“应用程序权限”下，勾选“读取目录数据”。
 
   ![设置应用程序 Graph 权限](media/aad-integration/read-directory.png)
 
-5. 在“委派权限”下，勾选“登录并读取用户个人资料”和“读取目录数据”。 完成后保存更新。
+6. 在“委派权限”下，勾选“登录并读取用户个人资料”和“读取目录数据”。 完成后保存更新。
 
   ![设置应用程序 Graph 权限](media/aad-integration/delegated-permissions.png)
 
-6. 选择“完成”和“授予权限”完成此步骤。 如果当前帐户不是租户管理员，此步骤将会失败。
+7. 选择“完成”，选择 API 列表中的“Microsoft Graph”，然后选择“授予权限”。 如果当前帐户不是租户管理员，此步骤将会失败。
 
   ![设置应用程序 Graph 权限](media/aad-integration/grant-permissions.png)
 
-7. 返回应用程序并记下“应用程序 ID”。 部署支持 Azure AD 的 AKS 群集时，此值称为 `Server application ID`。
+8. 返回应用程序并记下“应用程序 ID”。 部署支持 Azure AD 的 AKS 群集时，此值称为 `Server application ID`。
 
   ![获取应用程序 ID](media/aad-integration/application-id.png)
 
@@ -154,7 +156,7 @@ subjects:
   name: "user@contoso.com"
 ```
 
-此外，可为 Azure AD 组的所有成员创建角色绑定。 以下清单向 `kubernetes-admin` 组的所有成员授予对群集的管理员访问权限。
+此外，可为 Azure AD 组的所有成员创建角色绑定。 使用组对象 ID 指定 Azure AD 组。
 
  ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -168,7 +170,7 @@ roleRef:
 subjects:
 - apiGroup: rbac.authorization.k8s.io
    kind: Group
-   name: "kubernetes-admin"
+   name: "894656e1-39f8-4bfe-b16a-510f61af6f41"
 ```
 
 有关使用 RBAC 保护 Kubernetes 群集的详细信息，请参阅[使用 RBAC 授权][rbac-authorization]。
@@ -195,6 +197,12 @@ aks-nodepool1-42032720-2   Ready     agent     1h        v1.9.6
 ```
 
 完成后，身份验证令牌将会缓存。 仅当令牌已过期或者重新创建了 Kubernetes 配置文件时，系统才会再次提示。
+
+如果在成功登录后看到授权错误消息，请确认你在 Azure AD 中不是以来宾用户的身份登录（在使用来自不同目录中的联合登录时，通常会出现此情况）。
+```console
+error: You must be logged in to the server (Unauthorized)
+```
+
 
 ## <a name="next-steps"></a>后续步骤
 

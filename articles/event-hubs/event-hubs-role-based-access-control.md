@@ -5,21 +5,17 @@ services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/19/2017
+ms.date: 07/05/2018
 ms.author: sethm
-ms.openlocfilehash: 0d3a779eb2cccf242bcd42d82c1a90048b3512ab
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 9c38f74cd4499fad1feaadb6c1bbc99da791ebd6
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26783328"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888361"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Active Directory 基于角色的访问控制（预览版）
 
@@ -59,18 +55,18 @@ Microsoft Azure 基于 Azure Active Directory (Azure AD) 针对资源和应用�
 
 在可以运行示例应用程序之前，将它注册到 Azure AD 中并批准允许应用程序以其身份访问事件中心的许可提示。 
 
-由于示例应用程序是一个控制台应用程序，因此必须注册一个本机应用程序并将 **Microsoft.EventHub** 的 API 权限添加到“必需的权限”集。 本机应用程序在 Azure AD 中还需要有一个充当标识符的 **redirect-URI**，该 URI 不需要是网络目的地。 对于此示例请使用 `http://eventhubs.microsoft.com`，因为示例代码已使用了该 URI。
+由于示例应用程序是一个控制台应用程序，因此必须注册一个本机应用程序并将 **Microsoft.EventHub** 的 API 权限添加到“必需的权限”集。 本机应用程序在 Azure AD 中还需要有一个充当标识符的 redirect-URI，该 URI 不需要是网络目的地。 对于此示例请使用 `http://eventhubs.microsoft.com`，因为示例代码已使用了该 URI。
 
 [此教程](../active-directory/develop/active-directory-integrating-applications.md)中介绍了详细的注册步骤。 请按照那些步骤注册一个**本机**应用，然后按照更新说明将 **Microsoft.EventHub** API 添加到必需的权限。 执行那些步骤时，请记下 **TenantId** 和 **ApplicationId**，因为到时要使用这些值来运行应用程序。
 
-### <a name="run-the-app"></a>运行应用程序
+### <a name="run-the-app"></a>运行应用
 
 在可以运行示例前，请编辑 App.config 文件并根据方案设置以下值：
 
 - `tenantId`：设置为 **TenantId** 值。
 - `clientId`：设置为 **ApplicationId** 值。 
 - `clientSecret`：如果希望使用客户端机密进行登录，请在 Azure AD 中创建它。 此外，请使用 Web 应用或 API 而非本机应用。 另外，请在之前创建的命名空间中将该应用添加到“访问控制(IAM)”下。
-- `eventHubNamespaceFQDN`：设置为新创建的事件中心命名空间的完整 DNS 名称，例如 `example.servicebus.windows.net`。
+- `eventHubNamespaceFQDN`：设置为新创建的事件中心命名空间的完全限定的 DNS 名称，例如 `example.servicebus.windows.net`。
 - `eventHubName`：设置为创建的事件中心的名称。
 - 执行前面的步骤时在应用中指定的重定向 URI。
  
@@ -81,6 +77,6 @@ Microsoft Azure 基于 Azure Active Directory (Azure AD) 针对资源和应用�
 有关事件中心的详细信息，请访问以下链接：
 
 * 使用 [事件中心教程](event-hubs-dotnet-standard-getstarted-send.md)
-* [事件中心常见问题](event-hubs-faq.md)
+* [事件中心常见问题解答](event-hubs-faq.md)
 * [事件中心定价详细信息](https://azure.microsoft.com/pricing/details/event-hubs/)
 * [使用事件中心的示例应用程序](https://github.com/Azure/azure-event-hubs/tree/master/samples)

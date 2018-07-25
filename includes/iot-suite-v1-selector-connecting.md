@@ -1,3 +1,20 @@
+---
+title: include 文件
+description: include 文件
+services: iot-accelerators
+author: dominicbetts
+ms.service: iot-accelerators
+ms.topic: include
+ms.date: 05/30/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 55920b6c147626f68f51b9e0479949330c71a748
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "38756389"
+---
 > [!div class="op_single_selector"]
 > * [Windows 上的 C](../articles/iot-suite/iot-suite-v1-connecting-devices.md)
 > * [Linux 上的 C](../articles/iot-suite/iot-suite-v1-connecting-devices-linux.md)
@@ -24,13 +41,13 @@
 ### <a name="provision-your-remote-monitoring-preconfigured-solution"></a>预配远程监视预配置解决方案
 本教程中创建的设备会将数据发送到[远程监视][lnk-remote-monitoring]预配置解决方案的实例中。 如果尚未在 Azure 帐户中预配远程监视预配置解决方案，请使用以下步骤：
 
-1. 在 <https://www.azureiotsuite.com/> 页上，单击“+”创建解决方案。
+1. 在 <https://www.azureiotsolutions.com/> 页上，单击“+”以创建解决方案。
 2. 单击“远程监视”面板上的“选择”创建解决方案。
 3. 在“创建远程监视解决方案”页上，输入所选的**解决方案名称**，选择要部署到的**区域**，并选择要使用的 Azure 订阅。 然后单击“创建解决方案”。
 4. 等待预配过程完成。
 
 > [!WARNING]
-> 预配置的解决方案使用可计费的 Azure 服务。 当使用完预配置的解决方案之后，请务必将它从订阅中删除，以避免产生任何不必要的费用。 只需访问 <https://www.azureiotsuite.com/> 页，即可将预配置的解决方案从订阅中完全删除。
+> 预配置的解决方案使用可计费的 Azure 服务。 当使用完预配置的解决方案之后，请务必将它从订阅中删除，以避免产生任何不必要的费用。 通过访问 <https://www.azureiotsolutions.com/> 页，即可将预配置的解决方案从订阅中完全删除。
 > 
 > 
 

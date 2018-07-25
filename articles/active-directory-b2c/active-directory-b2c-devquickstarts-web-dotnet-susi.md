@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/17/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ec106b46097f9a35b9e41e08de4c18339f1b28f0
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 66cd3644611c1d837de717661a3515a0c0d3956f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34710400"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38308025"
 ---
 # <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>使用 Azure Active Directory B2C 注册、登录、配置文件编辑和密码重置创建 ASP.NET Web 应用
 
@@ -31,19 +31,21 @@ ms.locfileid: "34710400"
 - 必须将 B2C 租户连接到 Azure 帐户。 可以[在此](https://azure.microsoft.com/)创建一个免费的 Azure 帐户。
 - 需要 [Microsoft Visual Studio](https://www.visualstudio.com/)或类似程序，才能查看和修改示例代码。
 
-## <a name="create-an-azure-ad-b2c-directory"></a>创建 Azure AD B2C 目录
+## <a name="create-an-azure-ad-b2c-tenant"></a>创建 Azure AD B2C 租户
 
-只有在创建目录或租户之后，才可使用 Azure AD B2C。 目录是所有用户、应用、组等对象的容器。 如果还没有目录，请先创建 B2C 目录，然后继续执行本指南中的步骤。
+只有在创建租户之后，才可使用 Azure AD B2C。 租户是所有用户、应用、组等对象的容器。 如果没有容器，请先创建 B2C 租户，然后继续执行本指南中的步骤。
 
 [!INCLUDE [active-directory-b2c-create-tenant](../../includes/active-directory-b2c-create-tenant.md)]
 
 > [!NOTE]
 > 
-> 需要将 B2C 租户连接到 Azure 订阅。 选择“创建”，再选择“将现有的 Azure AD B2C 租户链接到我的 Azure 订阅”选项，然后在“Azure AD B2C 租户”下拉列表中，选择要关联的租户。
+> 需要将 Azure AD B2C 租户连接到 Azure 订阅。 选择“创建”，再选择“将现有的 Azure AD B2C 租户链接到我的 Azure 订阅”选项，然后在“Azure AD B2C 租户”下拉列表中，选择要关联的租户。
 
 ## <a name="create-and-register-an-application"></a>创建并注册应用程序
 
-接下来，需要在 B2C 目录中创建并注册应用。 这将提供 Azure AD B2C 所需信息，使之能够与应用安全通信。 
+接下来，需要在 Azure AD B2C 租户中创建并注册应用。 这将提供 Azure AD B2C 所需信息，使之能够与应用安全通信。 
+
+选择 Azure 门户左上角的“所有服务”，搜索并选择 **Azure AD B2C**。 现在应该使用之前创建的租户。
 
 [!INCLUDE [active-directory-b2c-register-web-api](../../includes/active-directory-b2c-register-web-api.md)]
 

@@ -2,18 +2,18 @@
 title: include 文件
 description: include 文件
 services: virtual-machines
-author: rogara
+author: roygara
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 812f11a1ced3bac765441bf66f402abb4da4bc3f
-ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
+ms.openlocfilehash: 336e6e163178cd6d244460dbf9bee2a5bc9d714e
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2018
-ms.locfileid: "35414563"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37935764"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>有关 Azure IaaS VM 磁盘以及托管和非托管高级磁盘的常见问题解答
 
@@ -102,7 +102,7 @@ ms.locfileid: "35414563"
 是的，非托管磁盘和托管磁盘均受支持。 我们建议你对新的工作负荷使用托管磁盘，并将当前的工作负荷迁移到托管磁盘。
 
 
-如果创建 128 GB 磁盘，然后将大小增加到 130 GB，是否会针对下一磁盘大小 (512 GB) 进行收费？
+如果创建 128 GB 磁盘，然后将大小增加到 130 GB，是否会针对下一磁盘大小 (256 GB) 进行收费？
 
 是的。
 
@@ -126,6 +126,10 @@ Azure 托管磁盘当前仅支持本地冗余存储托管磁盘。
 * [使用托管磁盘的模板列表](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
 * https://github.com/chagarw/MDPP
 
+是否可以在同一 VM 上归置非托管和托管磁盘？
+
+不是。
+
 ## <a name="standard-ssd-disks-preview"></a>标准 SSD 盘（预览）
 
 Azure 标准 SSD 盘是什么？
@@ -133,6 +137,13 @@ Azure 标准 SSD 盘是什么？
 
 <a id="standard-ssds-azure-regions"></a>当前支持标准 SSD 盘（预览）的区域有哪些？
 * 北欧
+* 法国中部
+* 美国东部 2
+* 美国中部
+* 加拿大中部
+* 东亚
+* 韩国南部
+* 澳大利亚东部
 
 如何创建标准 SSD 盘？
 目前可以使用 Azure 资源管理器模板创建标准 SSD 盘。 以下为创建标准 SSD 盘时资源管理器模板中所需的参数：
@@ -156,8 +167,15 @@ Azure 标准 SSD 盘是什么？
 
 有关如何使用模板创建标准 SSD 盘的完整模板示例，请参阅[使用标准 SSD 数据磁盘从 Windows 映像创建 VM](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/)。
 
+是否可以将现有磁盘转换为标准 SSD？
+可以。 请参阅[将 Azure 托管磁盘存储从标准转换为高级，反之亦然](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/convert-disk-storage)，以了解有关转换托管磁盘的常规指南。 此外，使用以下值将磁盘类型更新为标准 SSD。
+-AccountType StandardSSD_LRS
+
 是否可将标准 SSD 用作非托管磁盘？
 不可以，标准 SSD 盘仅可用作托管磁盘。
+
+标准 SSD 磁盘是否支持“单实例 VM SLA”？
+不是，标准 SSD 没有单实例 VM SLA。 将高级 SSD 磁盘用于单实例 VM SLA。
 
 ## <a name="migrate-to-managed-disks"></a>迁移到托管磁盘 
 
@@ -209,11 +227,11 @@ Microsoft 管理加密密钥。
 
 存储服务加密是否仅适用于特定区域？
 
-不可以。 它适用于托管磁盘可用的所有区域。 托管磁盘适用于所有公共区域和德国。
+不可以。 它适用于托管磁盘可用的所有区域。 托管磁盘适用于所有公共区域和德国。 这也适用于中国，但是，仅适用于 Microsoft 托管密钥，不适用于客户托管密钥。
 
 如何确定我的托管磁盘是否已加密？
 
-你可以从 Azure 门户、Azure CLI 和 PowerShell 确定托管磁盘的创建时间。 如果时间是在 2017 年 6 月 9 日之后，则磁盘已加密。 
+你可以从 Azure 门户、Azure CLI 和 PowerShell 确定托管磁盘的创建时间。 如果时间是在 2017 年 6 月 9 日之后，则磁盘已加密。
 
 如何对 2017 年 6 月 10 日之前创建的现有磁盘加密？
 
