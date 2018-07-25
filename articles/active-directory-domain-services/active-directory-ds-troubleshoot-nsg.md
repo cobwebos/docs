@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: ergreenl
-ms.openlocfilehash: 807dd2bdcc1e2ad18b1a93c3337c8244e3f1366b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 67f4f0850d0600fc7ca0f1323e7c7801187089f5
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218973"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950728"
 ---
 # <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>排查托管域的无效网络配置问题
 本文可帮助你排查和解决导致以下警报消息的与网络相关的配置错误：
@@ -35,8 +35,8 @@ ms.locfileid: "36218973"
 1. 在 Azure 门户中导航到[网络安全组](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups)页面
 2. 从表中选择与启用了托管域的子网关联的 NSG。
 3. 在左侧面板的“设置”下，单击“入站安全规则”
-4. 就地检查规则并识别是哪些规则阻止了对[这些端口](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services)的访问。
-5. 通过删除规则、添加规则来编辑 NSG，或创建一个全新的 NSG，以确保合规性。 转到[添加规则](#add-a-rule-to-a-network-security-group-using-the-azure-portal)或[创建一个新的合规性 NSG](#create-a-nsg-for-azure-ad-domain-services-using-powershell)，如下所示。
+4. 就地检查规则并识别是哪些规则阻止了对[这些端口](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services)的访问
+5. 通过删除规则、添加规则来编辑 NSG，或创建一个全新的 NSG，以确保合规性。 [添加规则](#add-a-rule-to-a-network-security-group-using-the-azure-portal)或[创建一个新的合规性 NSG](#create-a-nsg-for-azure-ad-domain-services-using-powershell)的步骤如下所示
 
 ## <a name="sample-nsg"></a>示例 NSG
 下表描述了一个示例 NSG，它将在允许 Microsoft 监视、管理和更新信息的同时保持托管域的安全。
@@ -49,7 +49,7 @@ ms.locfileid: "36218973"
 ## <a name="add-a-rule-to-a-network-security-group-using-the-azure-portal"></a>使用 Azure 门户将规则添加到网络安全组
 如果不想使用 PowerShell，则可以使用 Azure 门户手动将单个规则添加到 NSG。 若要在网络安全组中创建规则，请完成以下步骤：
 
-1. 在 Azure 门户中导航到[网络安全组](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups)页面
+1. 在 Azure 门户中导航到[网络安全组](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups)页面。
 2. 从表中选择与启用了托管域的子网关联的 NSG。
 3. 在左侧面板的“设置”下，单击“入站安全规则”或“出站安全规则”。
 4. 通过单击“添加”并填写信息来创建规则。 单击“确定”。

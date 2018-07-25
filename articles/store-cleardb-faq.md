@@ -2,28 +2,30 @@
 title: ClearDB MySql 数据库与 Azure 应用服务搭配使用时的常见问题解答 | Microsoft Docs
 description: 解答将 ClearDB MySQL 数据库与 Azure 应用服务搭配使用时的常见问题。
 documentationcenter: php
-services: ''
+services: mysql
 author: sunbuild
 manager: yochayk
-editor: ''
 tags: mysql
-ms.assetid: c2ed5e78-6d7d-4d0c-b7ee-a52ae41ceab8
 ms.service: multiple
 ms.workload: data-management
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
-ms.openlocfilehash: 8186e86bd7a441fcefb0759d75ded6f063a4722f
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: ff36a67cd09dd1e5cb5635be17d1dd76fc824d1a
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28948030"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917068"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>ClearDB MySql 数据库搭配 Azure 应用服务的 FAQ
 此 FAQ 解答了为 Azure Web 应用使用和购买 ClearDB MySQL 数据库的常见问题。
+
+> [!IMPORTANT]
+> 截至 2018 年 6 月 13 日，ClearDB 将当前由 Microsoft 计费的基于 Azure 的客户转换为使用 ClearDB 的直接计费模型。 本文中的信息现在已过时。 你将无法再创建或升级在 Azure 中创建的 ClearDB 数据库。
+>
+> 有关详细信息和后续步骤，请参阅[对 ClearDB 服务计划所做的更改](http://w2.cleardb.net/important-change-of-billing-notice-for-all-azure-cleardb-service-plans/)。
+
 
 ## <a name="what-options-do-i-have-for-mysql-on-azure"></a>Azure 上的 MySQL 有哪些选项？
 有几种选项：
@@ -35,16 +37,16 @@ ms.locfileid: "28948030"
 
 ClearDB 是一种 MySQL 托管服务，可管理 MySQL 基础结构。 在 Azure 虚拟机上运行自己的 MySQL 群集或数据库时，必须设置 MySQL 服务器，并使用补丁使其保持更新。
 
-## <a name="do-i-need-a-credit-card-for-the-web-app--mysql-template-in-the-azure-marketplace"></a>要获取 Azure Marketplace 中的 Web 应用和 MySQL 模板需要使用信用卡吗？
+## <a name="do-i-need-a-credit-card-for-the-web-app--mysql-template-in-the-azure-marketplace"></a>要获取 Azure 市场中的 Web 应用和 MySQL 模板需要使用信用卡吗？
 这取决于所使用订阅的类型。 下面是一些常用订阅类型：
 
 * [即用即付](/offers/ms-azr-0003p/)：需要信用卡，购买付费的 MySQL 数据库时会向信用卡收费。
 * [免费试用版](https://azure.microsoft.com/pricing/free-trial/)：包括可用于 Microsoft Azure 服务的信用额度，但不允许购买第三方资源。 若要购买第三方服务或付费的 MySQL 数据库，需使用支持信用卡的订阅。 对于 Web 应用，可以创建免费的 ClearDB MySQL 数据库。
 * [MSDN 订阅](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/)和 **MSDN 即用即付开发/测试**：类似于免费试用版，MSDN 订阅需要用户使用信用卡从 ClearDB 购买付费的 MySQL 解决方案。
-* [企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)：每季以单独的合并发票按照 EA 向客户从 Azure Marketplace（第三方）购买的所有商品收费。 针对任何应用商店购买，以货币承诺付款以外的方式收费。 请注意，Azure 应用商店目前无法供在阿塞拜疆、克罗地亚、挪威和波多黎各注册的客户使用。 
-* [DreamSpark](https://www.dreamspark.com/Product/Product.aspx?productid=99)：只能为 Web 应用创建免费的 ClearDB 数据库。 可以创建的免费 ClearDB MySQL 数据库数目没有任何限制。 请注意，免费数据库不适用于生产 Web 应用，因为此服务仅供试用。
+* 
+  [企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)：每季以单独的合并发票按照 EA 向客户从 Azure 市场（第三方）购买的所有商品收费。 针对任何市场购买，以货币承诺付款以外的方式收费。 请注意，Azure 应用商店目前无法供在阿塞拜疆、克罗地亚、挪威和波多黎各注册的客户使用。 
 
-## <a name="why-was-i-charged-350-for-a-web-app--mysql-from-the-azure-marketplace"></a>为什么我要为 Azure Marketplace 中的 Web 应用和 MySQL 付 3.50 美元的费用？
+## <a name="why-was-i-charged-350-for-a-web-app--mysql-from-the-azure-marketplace"></a>为什么我要为 Azure 市场中的 Web 应用和 MySQL 付 3.50 美元的费用？
 默认数据库选项是 Titan，需 3.50 美元。 创建数据库时我们不会显示成本，可能会错误地购买不想要的数据库。 我们正在设法改善此体验，但在那之前，需要先检查为 Web 应用和数据库选择的定价层，然后再单击“创建”并开始部署资源。
 
 ## <a name="i-am-running-mysql-on-my-own-azure-virtual-machine-can-i-connect-my-azure-web-app-to-my-database"></a>我在自己的 Azure 虚拟机上运行 MySQL。 我是否可以将 Azure Web 应用连接到数据库？
@@ -57,10 +59,10 @@ ClearDB 是一种 MySQL 托管服务，可管理 MySQL 基础结构。 在 Azure
 否，不支持创建空的 ClearDB 群集。 通过 Azure 门户，可以在群集中创建数据库，同时可能会创建新的群集。
 
 ## <a name="will-i-be-warned-if-i-try-to-delete-a-cleardb-mysql-database-that-is-in-use-by-one-of-my-applications"></a>如果我尝试删除正由我的某个应用程序使用的 ClearDB MySQL 数据库，会收到警告吗？
-不会，如果删除应用程序所依赖的应用商店购买商品，Azure 不会发出警告。
+不会，如果删除应用程序所依赖的市场购买商品，Azure 不会发出警告。
 
 ## <a name="which-regions-can-i-create-cleardb-databases-in"></a>可以在哪些区域创建 ClearDB 数据库？
-Azure Marketplace 无法供在阿塞拜疆、克罗地亚、挪威或波多黎各注册的客户使用。 这些区域不提供 ClearDB。
+Azure 市场无法供在阿塞拜疆、克罗地亚、挪威或波多黎各注册的客户使用。 这些区域不提供 ClearDB。
 
 ## <a name="what-pricing-tier-should-i-choose-for-a-production-web-app-and-database"></a>针对生产 Web 应用和数据库，应该选择哪个定价层？
 对 Web 应用使用“基本”或更高的定价层。 对于 ClearDB，建议使用 Saturn 或 Jupiter 计划。 请查看 [Web 应用](https://azure.microsoft.com/pricing/details/app-service/)和 [ClearDB MySQL 数据库](/marketplace/partners/cleardb/databases/)每个定价层的功能和限制，以选择符合需要的定价层。
@@ -75,7 +77,7 @@ Azure Marketplace 无法供在阿塞拜疆、克罗地亚、挪威或波多黎�
 如有任何数据库相关问题，请联系 [ClearDB 支持人员](https://www.cleardb.com/developers/help/support)。 准备好向其提供 Azure 订阅信息。
 
 ## <a name="can-i-create-additional-users-for-my-cleardb-mysql-database-cluster-solution"></a>我是否可以为自己的 ClearDB MySQL 数据库群集解决方案创建其他用户？
-不会。 无法创建其他用户，但可以在自己的 ClearDB 数据库群集上创建其他数据库。  
+不是。 无法创建其他用户，但可以在自己的 ClearDB 数据库群集上创建其他数据库。  
 
 ## <a name="can-basicpro-series-databases-be-upgraded-in-place-similar-to-planetary-plans-today-on-cleardb-portal"></a>是否可以像 ClearDB 门户上目前的 Planetary 计划一样，就地升级 Basic/Pro 系列数据库？
 是，可以就地升级 Basic 系列数据库（Basic 60 到 Basic 500）。 可以就地升级 Pro 系列（Pro 125 到 Pro 1000），但 Pro 60 除外。 我们目前不支持升级 Pro 60 数据库。 
@@ -94,18 +96,19 @@ Azure Marketplace 无法供在阿塞拜疆、克罗地亚、挪威或波多黎�
 * 更新应用程序以使用新数据库。
 * 删除旧的 ClearDB 数据库。
 
-使用 MySQL (ClearDB) 创建新 Web 应用或创建 MySQL 数据库 (ClearDB) 时，所选订阅决定服务的支付方式。 对于 EA 订阅，不会阻止用户在 Azure 门户采购 ClearDB 等第三方服务。 EA 订阅不按货币承诺付款计费，会在每季扣取相关费用和逾期欠款。 EA 客户必须设置付款方式，例如信用卡，才能支付任何第三方应用商店服务。
+使用 MySQL (ClearDB) 创建新 Web 应用或创建 MySQL 数据库 (ClearDB) 时，所选订阅决定服务的支付方式。 对于 EA 订阅，不会阻止用户在 Azure 门户采购 ClearDB 等第三方服务。 EA 订阅不按货币承诺付款计费，会在每季扣取相关费用和逾期欠款。 EA 客户必须设置付款方式，例如信用卡，才能支付任何第三方市场服务。
 
 ## <a name="where-can-i-see-the-charges-for-cleardb-resources-in-an-ea-subscription"></a>在何处可查看 EA 订阅中 ClearDB 资源的计费情况？
-直接 EA 客户可以在企业门户上看到 Azure Marketplace 费用。 请注意，所有应用商店购买和使用均会在每季季末就货币承诺付款以外收费。 EA 客户需要直接付费给第三方服务提供商，或者通过启用其 EA 帐户的付款方式（例如信用卡）完成付费。
+直接 EA 客户可以在企业门户上看到 Azure 市场费用。 请注意，所有市场购买和使用均会在每季季末就货币承诺付款以外收费。 EA 客户需要直接付费给第三方服务提供商，或者通过启用其 EA 帐户的付款方式（例如信用卡）完成付费。
 
-间接 EA 客户可以在企业门户的“管理订阅”页上找到其 Azure Marketplace 订阅，但定价处于隐藏状态。 客户应该联系其 LSP 以了解应用商店费用的相关信息。
+间接 EA 客户可以在企业门户的“管理订阅”页上找到其 Azure 市场订阅，但定价处于隐藏状态。 客户应该联系其 LSP 以了解市场费用的相关信息。
 
-EA Azure 注册管理员可以管理 Azure Marketplace 第三方服务的访问权限。 在企业门户中，管理员可在“帐户”部分下的“管理帐户和订阅”中禁用或重新启用对应用商店内所购第三方服务的访问权限。
+EA Azure 注册管理员可以管理 Azure 市场第三方服务的访问权限。 在企业门户中，管理员可在“帐户”部分下的“管理帐户和订阅”中禁用或重新启用对应用商店内所购第三方服务的访问权限。
 
 ## <a name="who-do-i-contact-for-questions-about-my-bill-for-cleardb-services-in-my-ea-subscription"></a>有关 EA 订阅中的 ClearDB 服务帐单问题，应联系谁？
 有关根据 EA 注册计费的问题，请联系[企业客户支持人员](http://aka.ms/AzureEntSupport)。 EA 门户支持团队会回答问题或帮你解决问题。
 
 ## <a name="more-information"></a>详细信息
-[Azure Marketplace 常见问题解答](/marketplace/faq/)
+
+  [Azure 市场常见问题解答](/marketplace/faq/)
 

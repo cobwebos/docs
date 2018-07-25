@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
 ms.openlocfilehash: 31bbeff8049c6005671b991f965fae7316e3adf6
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
-ms.locfileid: "24010870"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38309585"
 ---
 # <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-enable-remote-firmware-updates-using-nodejs"></a>使用 Node.js 将 Raspberry Pi 3 连接到远程监视解决方案并启用远程固件更新
 
@@ -144,7 +144,7 @@ sudo node ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/advanced/1.0/re
 
 1. 在“调用方法”页的“方法”下拉列表中，选择“InitiateFirmwareUpdate”。
 
-1. 在“FWPackageURI”字段中，输入 https://raw.githubusercontent.com/Azure-Samples/iot-remote-monitoring-node-raspberrypi-getstartedkit/master/advanced/2.0/raspberry.js。 此文件包含固件版本 2.0 的实现。
+1. 在 FWPackageURI 字段中，输入 https://raw.githubusercontent.com/Azure-Samples/iot-remote-monitoring-node-raspberrypi-getstartedkit/master/advanced/2.0/raspberry.js。 此文件包含固件版本 2.0 的实现。
 
 1. 选择“InvokeMethod”。 Raspberry Pi 上的应用会将确认发送回解决方案仪表板。 然后，它通过下载新版本的固件来启动固件更新过程：
 

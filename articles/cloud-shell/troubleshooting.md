@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 07/03/2018
 ms.author: damaerte
-ms.openlocfilehash: cffa67509690f4c594182fbe8104f0620da56bee
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 21bc0633a9cc607325b48998791cb12631ecd0d7
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608944"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856481"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的故障排除和限制
 
@@ -52,16 +52,6 @@ ms.locfileid: "34608944"
 
 ## <a name="powershell-troubleshooting"></a>PowerShell 故障排除
 
-### <a name="no-home-directory-persistence"></a>$Home 目录没有持久性
-
-- **详细信息**：应用程序（例如 git、vim，等等）向 `$Home` 写入的任何数据未在 PowerShell 会话之间持久保留。
-- **解决方法**：在 PowerShell 配置文件中，在 `clouddrive` 中创建指向 $Home 的应用程序特定文件夹的符号链接。
-
-### <a name="ctrlc-doesnt-exit-out-of-a-cmdlet-prompt"></a>按 Ctrl+C 不会退出 Cmdlet 提示符
-
-- **详细信息**：尝试退出 Cmdlet 提示符时，按 `Ctrl+C` 不会退出提示符。
-- **解决方法**：若要退出提示符，请依次按 `Ctrl+C` 和 `Enter`。
-
 ### <a name="gui-applications-are-not-supported"></a>不支持 GUI 应用程序
 
 - **详细信息**：如果用户启动 GUI 应用，提示符不会返回。 例如，当用户克隆已启用双因素身份验证的专用 GitHub 存储库时，会显示用于完成双因素身份验证的对话框。  
@@ -75,18 +65,8 @@ ms.locfileid: "34608944"
 ### <a name="troubleshooting-remote-management-of-azure-vms"></a>Azure VM 的远程管理故障排除
 
 - **详细信息**：由于 WinRM 的默认 Windows 防火墙设置，用户可能会看到以下错误：`Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
-- **解决方法**：确保 VM 正在运行。 可以运行 `Get-AzureRmVM -Status` 确定 VM 状态。  接下来，在远程 VM 上添加新的防火墙规则，允许从任何子网建立 WinRM 连接，例如，
-
- ``` Powershell
- New-NetFirewallRule -Name 'WINRM-HTTP-In-TCP-PSCloudShell' -Group 'Windows Remote Management' -Enabled True -Protocol TCP -LocalPort 5985 -Direction Inbound -Action Allow -DisplayName 'Windows Remote Management - PSCloud (HTTP-In)' -Profile Public
- ```
- 可以使用 [Azure custom script extension](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript) 来避免在添加新防火墙规则时登录到远程 VM。
- 可将上述脚本保存在某个文件（例如 `addfirerule.ps1`）中，并将其上传到 Azure 存储容器。
- 然后尝试以下命令：
-
- ``` Powershell
- Get-AzureRmVM -Name MyVM1 -ResourceGroupName MyResourceGroup | Set-AzureRmVMCustomScriptExtension -VMName MyVM1 -FileUri https://mystorageaccount.blob.core.windows.net/mycontainer/addfirerule.ps1 -Run 'addfirerule.ps1' -Name myextension
- ```
+- 解决方法：运行 `Enable-AzureRmVMPSRemoting` 以启用目标计算机上 PowerShell 远程处理的所有方面。
+ 
 
 ### <a name="dir-caches-the-result-in-azure-drive"></a>`dir` 在 Azure 驱动器中缓存结果
 
@@ -133,21 +113,39 @@ Cloud Shell 适用于交互式用例。 因此，任何长时间运行的非交�
 
 ## <a name="powershell-limitations"></a>PowerShell 限制
 
-### <a name="slow-startup-time"></a>启动速度缓慢
+### <a name="azuread-module-name"></a>`AzureAD` 模块名称
 
-PowerShell in Azure Cloud Shell（预览版）最长可能需要 60 秒才能完成初始化。
+`AzureAD` 模块名称当前为 `AzureAD.Standard.Preview`，该模块提供相同的功能。
+
+### <a name="sqlserver-module-functionality"></a>`SqlServer` 模块功能
+
+Cloud Shell 中包含的 `SqlServer` 模块仅具有对 PowerShell Core 的预发布版本支持。 具体而言，`Invoke-SqlCmd` 尚不可用。
 
 ### <a name="default-file-location-when-created-from-azure-drive"></a>从 Azure 驱动器创建时的默认文件位置：
 
-使用 PowerShell cmdlet，用户无法在 Azure 驱动器下创建文件。 当用户使用其他工具（如 vim 或 nano）创建新文件时，文件将默认保存到 C:\Users 文件夹。 
+使用 PowerShell cmdlet，用户无法在 Azure 驱动器下创建文件。 当用户使用其他工具（如 vim 或 nano）创建新文件时，文件将默认保存到 `$HOME`。 
 
 ### <a name="gui-applications-are-not-supported"></a>不支持 GUI 应用程序
 
 如果用户运行一条会创建 Windows 对话框的命令（例如 `Connect-AzureAD` 或 `Connect-AzureRmAccount`），将看到如下所示的错误消息：`Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`。
 
-## <a name="gdpr-compliance-for-cloud-shell"></a>Cloud Shell 的 GDPR 符合性
+### <a name="tab-completion-crashes-psreadline"></a>Tab 自动补全导致 PSReadline 崩溃
 
-Azure Cloud Shell 非常重视你的个人数据，Azure Cloud Shell 服务捕获和存储的数据用于为你的体验提供默认值，例如最近使用的 shell、首选字号、首选字体类型和支持 clouddrive 的文件共享详细信息。 如果想要导出或删除此数据，我们添加了以下说明。
+如果用户的 EditMode 在 PSReadline 中设置为 Emacs，用户尝试通过 Tab 自动补全显示所有可能性，而窗口大小过小，无法显示所有可能性，则 PSReadline 将崩溃。
+
+### <a name="large-gap-after-displaying-progress-bar"></a>在显示进度栏后出现大间距型
+
+如果用户执行显示进度栏的操作（例如，在 `Azure:` 驱动器中的 tab 自动补全），则光标可能设置不正确，且在以前的进度栏处出现间距。
+
+### <a name="random-characters-appear-inline"></a>随机字符以内联显示
+
+光标位置序列代码（例如 `5;13R`）可以在用户输入时显示。  这些字符可以手动删除。
+
+## <a name="personal-data-in-cloud-shell"></a>Cloud Shell 中的个人数据
+
+Azure Cloud Shell 非常重视你的个人数据，Azure Cloud Shell 服务捕获和存储的数据用于为你的体验提供默认值，例如最近使用的 shell、首选字号、首选字体类型和支持云驱动器的文件共享详细信息。 如果想要导出或删除此数据，我们添加了以下说明。
+
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ### <a name="export"></a>导出
 若要导出 Cloud Shell 为你保存的用户设置（如首选 shell、字号和字体类型），请运行以下命令。

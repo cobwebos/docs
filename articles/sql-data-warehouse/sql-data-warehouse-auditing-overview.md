@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 306032ece4feda0e8132db1e95c4a229472e6c04
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 3630d4d694452f2c619e707d1e2e58f1bfe71c0e
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "34643492"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858946"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中的审核
 
@@ -52,8 +52,9 @@ SQL 数据仓库审核允许用户将数据库中的事件记录到 Azure 存储
 > * 需要对特定数据库使用不同的*存储帐户*或*保留期*。
 > * 对于与服务器上其他数据库不同的特定数据库，应审核事件类型或类别。 例如，可能拥有仅需要针对特定数据库进行审核的表插入。
 > * 需要使用威胁检测，它目前仅支持数据库级审核。
->
 
+> [!IMPORTANT]
+>在 Azure SQL 数据仓库或在具有 Azure SQL 数据仓库的服务器上启用审核将导致数据仓库恢复，即使在以前被暂停的情况下也是如此。 请确保在启用审核后再次暂停数据仓库。
 
 ## <a id="subheading-5"></a>为所有数据库设置服务器级审核
 

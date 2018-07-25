@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 5cbe6f1f8f15e9da8e1fe6961d3da9b9e2a31e4b
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 4c14bfbad58849acefdc8c3a5513f681aba84ab8
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34806377"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37910048"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>VM 的高性能高级存储和托管磁盘
 Azure 高级存储为运行输入/输出 (I/O) 密集型工作负荷的虚拟机 (VM) 提供高性能、低延迟的磁盘支持。 使用高级存储的 VM 磁盘在固态硬盘 (SSD) 上存储数据。 要利用高级存储磁盘的速度和性能优势，可将现有的 VM 磁盘迁移到高级存储。
@@ -52,7 +52,7 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 
 * **高级存储磁盘**
 
-    高级存储支持可附加到特定大小系列 VM 的 VM 磁盘。 高级存储支持 DS 系列、DSv2 系列、GS 系列、Ls 系列、Fs 系列和 Esv3 系列 VM。 可以选择七种磁盘大小：P4 (32 GB)、P6 (64 GB)、P10 (128 GB)、P20 (512 GB)、P30 (1024 GB)、P40 (2048 GB)、P50 (4095 GB)。 不过，仅托管磁盘支持 P4 和 P6 磁盘大小。 每种磁盘大小都有自身的性能规范。 根据应用程序的要求，可将一个或多个磁盘附加到 VM。 [高级存储的可伸缩性和性能目标](#scalability-and-performance-targets)中更详细介绍了规范。
+    高级存储支持可附加到特定大小系列 VM 的 VM 磁盘。 高级存储支持各种 Azure VM。 可以选择七种磁盘大小：P4 (32 GB)、P6 (64 GB)、P10 (128 GB)、P20 (512 GB)、P30 (1024 GB)、P40 (2048 GB)、P50 (4095 GB)。 不过，仅托管磁盘支持 P4 和 P6 磁盘大小。 每种磁盘大小都有自身的性能规范。 根据应用程序的要求，可将一个或多个磁盘附加到 VM。 [高级存储的可伸缩性和性能目标](#scalability-and-performance-targets)中更详细介绍了规范。
 
 * **高级页 Blob**
 
@@ -78,16 +78,16 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 
 ## <a name="supported-vms"></a>支持的 VM
 
-高级存储支持 B 系列、DS 系列、DSv2 系列、DSv3 系列、Esv3 系列、GS 系列、Ls 系列、M 系列和 Fs 系列 VM。 可将标准和高级存储磁盘用于这些 VM 类型。 不能在不兼容高级存储的 VM 系列中使用高级存储磁盘。
+各种 Azure VM 均支持高级存储。 可将标准和高级存储磁盘用于这些 VM 类型。 不能在不兼容高级存储的 VM 系列中使用高级存储磁盘。
 
 
 有关 Azure 中适用于 Windows 的 VM 类型和大小的信息，请参阅 [Windows VM 大小](../articles/virtual-machines/windows/sizes.md)。 有关 Azure 中适用于 Linux 的 VM 类型和大小的信息，请参阅 [Linux VM 大小](../articles/virtual-machines/linux/sizes.md)。
 
-下面是 DS 系列、DSv2 系列、GS 系列和 Fs 系列 VM 的一些功能：
+以下是启用高级存储的 VM 上支持的一些功能：
 
-* **云服务**
+* 可用性集
 
-    可将 DS 系列 VM 添加到仅包含 DS 系列 VM 的云服务。 不要将 DS 系列虚拟机添加到类型不是 DS 系列 VM 的现有云服务。 可将现有 VHD 迁移到只运行 DS 系列 VM 的新云服务。 如果想要对托管 DS 系列 VM 的新云服务使用相同的虚拟 IP 地址，请使用[保留 IP 地址](../articles/virtual-network/virtual-networks-instance-level-public-ip.md)。 可将 GS 系列 VM 添加到只包含 GS 系列 VM 的现有云服务。
+    使用 DS 系列 VM 的示例，可以将 DS 系列 VM 添加到仅具有 DS 系列 VM 的云服务。 不要将 DS 系列虚拟机添加到类型不是 DS 系列 VM 的现有云服务。 可将现有 VHD 迁移到只运行 DS 系列 VM 的新云服务。 如果想要对托管 DS 系列 VM 的新云服务使用相同的虚拟 IP 地址，请使用[保留 IP 地址](../articles/virtual-network/virtual-networks-instance-level-public-ip.md)。
 
 * **操作系统磁盘**
 
@@ -104,7 +104,13 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 
 * **缓存**
 
-    支持高级存储的大小系列中的 VM 提供独特的缓存功能来实现较高级别的吞吐量和延迟。 缓存功能可以在底层高级存储磁盘性能的基础上提升性能。 可以在高级存储磁盘上将磁盘缓存策略设置为 ReadOnly、ReadWrite 或 None。 所有高级数据磁盘的默认磁盘缓存策略都是 ReadOnly，而操作系统磁盘的磁盘缓存策略则是 ReadWrite。 为了让应用程序达到最佳性能，请使用正确的缓存设置。 例如，对于读取频繁或只读数据磁盘（如 SQL Server 数据文件），可将磁盘缓存策略设置为 ReadOnly。 对于写入频繁或只写数据磁盘（如 SQL Server 日志文件），可将磁盘缓存策略设置为 None。 若要详细了解如何优化高级存储的设计，请参阅[使用高级存储实现高性能设计](../articles/virtual-machines/windows/premium-storage-performance.md)。
+    支持高级存储的虚拟机 (VM) 具有独特的缓存功能，可实现较高级别的吞吐量和更短的延迟。 它们的缓存功能可以在底层高级存储磁盘性能的基础上提升性能。 但是，并非所有 VM 都支持缓存，因此请查看 VM 说明了解你感兴趣的 VM 的大小及更多信息。  支持缓存的 VM 将在其说明中以“最大缓存和临时存储吞吐量”度量进行指示。  它们还会直接在 VM 标题下指定。
+    
+    借助缓存，可以在高级存储磁盘上将磁盘缓存策略设置为 ReadOnly、ReadWrite 或 None。 所有高级数据磁盘的默认磁盘缓存策略都是 ReadOnly，而操作系统磁盘的磁盘缓存策略则是 ReadWrite。 为了让应用程序达到最佳性能，请务必使用正确的缓存设置。 
+    
+    例如，对于读取频繁或只读数据磁盘（如 SQL Server 数据文件），可将磁盘缓存策略设置为 ReadOnly。 对于写入频繁或只写数据磁盘（如 SQL Server 日志文件），可将磁盘缓存策略设置为 None。 
+    
+    若要详细了解如何优化高级存储的设计，请参阅[使用高级存储实现高性能设计](../articles/virtual-machines/windows/premium-storage-performance.md)。
 
 * **分析**
 

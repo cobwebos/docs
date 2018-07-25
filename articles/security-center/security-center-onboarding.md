@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/14/2017
+ms.date: 07/10/2018
 ms.author: terrylan
-ms.openlocfilehash: d83beecfc5a8f6b8a01c64e809bc84c6fd0238bf
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a68c0ecc15f81efe6045f4c298b48f9809916297
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38479455"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>载入到 Azure 安全中心标准层以增强安全性
 升级到安全中心标准层后，可以将增强的安全管理和威胁防护功能用于混合云工作负载。  可以免费试用标准层 60 天。 请参阅安全中心[定价页](https://azure.microsoft.com/pricing/details/security-center/)了解详细信息。
@@ -41,7 +42,7 @@ ms.lasthandoff: 04/16/2018
 
 ## <a name="upgrade-an-azure-subscription"></a>升级 Azure 订阅
 将所有订阅升级到标准层：
-1. 在“安全中心”主菜单下，选择“载入”。
+1. 在“安全中心”主菜单下，选择“载入高级安全”。
 2. 在“载入高级安全”下，安全中心将列出符合载入条件的订阅。 可以通过选择“应用标准层计划”升级所有列出的订阅。
 
   ![升级所有订阅][1]
@@ -112,8 +113,8 @@ ms.lasthandoff: 04/16/2018
 
    ![概述][5]
 
-2. 选择“计算”磁贴。
-3. 在“计算”下，选择“添加计算机”。
+2. 选择“计算和应用”。
+3. 在“计算和应用程序”下，选择“添加计算机”。
 
    ![“计算”边栏选项卡][6]
 

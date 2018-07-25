@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 8cb7cd84e68420006e7c598c224580c9150ab1c7
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 6cdfb40ce02cc5f80e3347b921e2b2c75ae3d8ea
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "34070492"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37437131"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务配置和管理问题：常见问题解答 (FAQ)
 
@@ -207,7 +207,7 @@ Windows 10 和 Windows Server 2016 随附了对客户端和服务器端上的 HT
 ### <a name="how-can-i-implement-role-based-access-for-cloud-services"></a>如何为云服务实现基于角色的访问？
 云服务不支持基于角色的访问控制 (RBAC) 模型，因为它不是基于 Azure 资源管理器的服务。
 
-请参阅 [Azure RBAC 与经典订阅管理员](../role-based-access-control/overview.md#azure-rbac-vs-classic-subscription-administrators)。
+请参阅[了解 Azure 中的不同角色](../role-based-access-control/rbac-and-directory-admin-roles.md)。
 
 ## <a name="remote-desktop"></a>远程桌面
 

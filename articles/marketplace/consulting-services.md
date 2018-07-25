@@ -1,6 +1,6 @@
 ---
-title: Azure Marketplace 顾问服务
-description: 本文介绍 Azure Marketplace 中新咨询服务产品的合格条件和发布要求。
+title: Azure 市场顾问服务
+description: 本文介绍 Azure 市场中新咨询服务产品的合格条件和发布要求。
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
 author: ellacroi
@@ -14,22 +14,22 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/9/2018
 ms.author: ellacroi
-ms.openlocfilehash: 7cd902f289d0743b4aecf004f5f64a04024aa790
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 0bfb06add64f5f1cd6ccfb772f604ab588bb1baf
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32312077"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950400"
 ---
-# <a name="azure-marketplace-consulting-services"></a>Azure Marketplace 顾问服务
-Azure Marketplace 中的咨询服务为 Microsoft 合作伙伴提供通过支持和扩展客户对 Azure 的使用来连接客户的目标。 Azure Marketplace 支持来自 Microsoft 系统集成者 (SI) 合作伙伴的咨询服务产品的列表。 
+# <a name="azure-marketplace-consulting-services"></a>Azure 市场顾问服务
+Azure 市场中的咨询服务为 Microsoft 合作伙伴提供通过支持和扩展客户对 Azure 的使用来连接客户的目标。 Azure 市场支持来自 Microsoft 系统集成者 (SI) 合作伙伴的咨询服务产品。 
 
-这些咨询服务产品是特定于客户的互动， 其服务范围和持续时间是固定的，可以定价或免费提供，并且产生的效果有保障。 潜在客户可以轻松请求与合作伙伴取得联系。 合作伙伴在其 CRM 系统中收到通知，目标是在 48 小时内响应请求。
+这些咨询服务产品是特定于客户的互动， 发布者可以选择确定列表类型，具有固定范围和持续时间，固定价格或免费，以及具有提供给客户的已定义可交付成果。 合作伙伴在其 CRM 系统中收到通知，目标是在 48 小时内响应请求。
 
-## <a name="consulting-services-in-azure-marketplace-vs-appsource-storefront"></a>Azure Marketplace 中的咨询服务和 AppSource 店面
-Marketplace 店面与受众需求和 Microsoft 云产品的特点相匹配，从而帮助客户找到所需产品。 每个店面都提供专门的发布选项来帮助你最大程度地优化发布投资。 下表汇总了这些选项：
+## <a name="consulting-services-in-azure-marketplace-vs-appsource-storefront"></a>Azure 市场中的咨询服务和 AppSource 店面
+市场店面与受众需求和 Microsoft 云产品的特点相匹配，从而帮助客户找到所需产品。 每个店面都提供专门的发布选项来帮助你最大程度地优化发布投资。 下表汇总了这些选项：
 
-|         |Azure Marketplace  |AppSource |
+|         |Azure 市场  |AppSource |
 |---------|---------|---------|
 |目标受众   |IT 专业人员和云开发人员|业务用户/业务线决策者|
 |解决方案相关性     |为 Azure 构建或在其上构建的技术应用|利用 Extend D365、Power BI、O365 和 Azure 的业务应用。 （已完成的外接程序或附加设备应用）|
@@ -37,17 +37,18 @@ Marketplace 店面与受众需求和 Microsoft 云产品的特点相匹配，从
 |在产品体验中      |Azure 管理门户|Dynamics 365、Office 365、Office 客户端应用| 
 |其他      |通过 Azure Stack 本地发布|针对 Dynamics 和 Power BI 的咨询服务|
 
-Azure Marketplace 中的咨询服务应利用为技术人员提供的产品，着重于 Azure 技术解决方案和服务。
+>[!Note]
+>Azure 市场中的咨询服务应利用为技术人员提供的产品，着重于 Azure 技术解决方案和服务。
 
 
 基于 Microsoft Dynamics 365、Office 365 和 Power BI 的服务产品可以列在 AppSource 中。 有关详细信息，请参阅 [Microsoft AppSource 咨询服务列出准则](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf)。 
 
 >[!TIP]
->此信息仅适用于 Azure Marketplace 服务。 若要发布到 Azure Marketplace 店面，请在进行选择时，从云合作伙伴门户的“主产品”下拉菜单中选择“Azure”。 若要发布到 AppSource，请在进行选择时，从云合作伙伴门户的“主产品”下拉菜单中选择“Dynamics 365”、“Power BI”或“Power Apps”。
+>此信息仅适用于 Azure 市场服务。 若要发布到 Azure 市场店面，请在进行选择时，从云合作伙伴门户的“主产品”下拉菜单中选择“Azure”。 若要发布到 AppSource，请在进行选择时，从云合作伙伴门户的“主产品”下拉菜单中选择“Dynamics 365”、“Power BI”或“Power Apps”。
 
 ## <a name="eligible-partners-and-supported-countries"></a>符合条件的合作伙伴和受支持的国家/地区
 
-合作伙伴还需要在其服务领域拥有银级或金级资质。 下表列出了合格资质：
+合作伙伴还需要在其服务的相关领域拥有**银级或金级资质**。 下表列出了合格资质：
 
 |资质  |解决方案领域  |
 |---------|---------|
@@ -69,10 +70,18 @@ SI 合作伙伴可针对以下 18 个国家/地区提交咨询服务产品。
 |芬兰     |墨西哥         |英国         |
 |法国     |荷兰         |美国         |
 
-Azure Marketplace 咨询服务首先在澳大利亚、加拿大、英国和美国推出。 由合作伙伴提交且由 Microsoft 批准一定数量的有吸引力服务产品选项后，面向其他国家/地区的目录将会推出。
+Azure 市场咨询服务首先在澳大利亚、加拿大、英国和美国推出。 由合作伙伴提交且由 Microsoft 批准一定数量的有吸引力服务产品选项后，面向其他国家/地区的目录将会推出。
+
+## <a name="how-to-register-for-consulting-services-in-azure-marketplace"></a>如何在 Azure 市场中注册咨询服务
+从在 [Azure 市场](https://azuremarketplace.microsoft.com/en-us/sell/signup)中注册咨询服务开始。 发布者可以参考[成为 Marketplace 中的发布者](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher)，获取注册要求的完整清单。 
+
+**注册后的期望** 实施团队将在 1-3 个工作日内通过欢迎电子邮件与你联系，其中包括你的云合作伙伴门户 (CPP) 登录信息。 [云合作伙伴门户](https://cloudpartner.azure.com)是产品/服务列表门户，发布者可以在其中提交列表信息和提交。 
+
+>[!Note]
+>合作伙伴只需要注册一次，即可成为发布者。 收到欢迎电子邮件且云合作伙伴门户登录后，发布者无需重新注册即可发布不同的列表类型。 
 
 ## <a name="prepare-your-publishing-artifacts"></a>准备发布项目
-即使是在指定服务之前，也仍可以开始收集和准备内容，以帮助向目标客户主张服务和解决方案的价值。 
+在注册之前，可以开始收集和准备内容，以帮助通过列表向目标客户主张服务和解决方案的价值。 
 
 |设置新的发布服务器  |
 |---------|
@@ -94,14 +103,16 @@ Azure Marketplace 咨询服务首先在澳大利亚、加拿大、英国和美�
 
 
 ## <a name="publishing-process"></a>发布过程
-在 Azure Marketplace 中列出咨询服务产品涉及以下阶段：
+在 Azure 市场中列出咨询服务产品涉及以下阶段：
 
-1. **请求**：若要发送请求，请使用 [Azure Marketplace 提名表格](https://azuremarketplace.microsoft.com/en-us/sell/nominate)，并告诉我们有关你的组织的详细信息。 注意：发布者只需提交一次提名进程，以在 Azure Marketplace 或 AppSource 上列出。 提名和载入进程完成后，将创建一个云合作伙伴门户，发布者可以在其中创建和提交其产品列表。
+1. 
+  **请求**：若要发送请求，请使用 [Azure 市场提名表格](https://azuremarketplace.microsoft.com/en-us/sell/nominate)，并告诉我们有关你的组织的详细信息。 注意：发布者只需提交一次提名进程，以在 Azure 市场或 AppSource 上列出。 提名和载入进程完成后，将创建一个云合作伙伴门户，发布者可以在其中创建和提交其产品列表。
 2. **验证：** 将评审你的请求，以确保你符合条件。 然后，我们会发送有关列出咨询服务产品的说明。 
 3. **提交：** 提供说明中列出的必需信息。 所有内容和支持材料都必须以英文提交。 
 4. **评审：** 我们的营销和编辑团队将会评审提交内容，并针对内可读性、语法和效果对其进行优化。 
 5. **暂存**：提交内容将暂存以供查阅。 
-6. **发布：** 在你和 Microsoft 都对暂存内容感到满意后，你的列表便可以在 Azure Marketplace 中推出。 列表推出日期取决于产品/服务中指定的国家/地区。 如果所选国家/地区的目录已在 Azure Marketplace 中推出，则你的列表会在几小时内显示。 否则，该目录一推出，就会显示列表。
+6. 
+  **发布：** 在你和 Microsoft 都对暂存内容感到满意后，你的商品便可以在 Azure 市场中推出。 列表推出日期取决于产品/服务中指定的国家/地区。 如果所选国家/地区的目录已在 Azure 市场中推出，则你的商品会在几小时内显示。 否则，该目录一推出，就会显示列表。
 
 ## <a name="offer-listings-and-content-review-criteria"></a>产品列表和内容审核标准
 产品/服务必须属于以下五种服务类型之一（可以列出多个）： 
@@ -120,7 +131,7 @@ Azure Marketplace 咨询服务首先在澳大利亚、加拿大、英国和美�
 
 请注意，标题字段有一个 50 字符的限制，必须指出产品/服务的持续时间和服务类型。 这是为了尽量优化搜索引擎。 所需格式如下：名称：持续时间类型
 
-示例:
+示例：
 
 
 |标题示例  |正确格式  |
@@ -142,3 +153,12 @@ Azure Marketplace 咨询服务首先在澳大利亚、加拿大、英国和美�
 |研讨会    |   包括一个详细的每日、每周或每月议程，具体取决于所选择的产品/服务持续时间。 说明研讨会的学习目标或其他可交付结果     |   使用最常用的搜索引擎优化关键字来优化产品/服务摘要      |
 
 在云合作伙伴门户中，可以通过 [Markdown](https://docs.microsoft.com/en-us/contribute/how-to-write-use-markdown) 向商品信息添加格式。 这是一种轻型设计语言，用于优化商品信息。 
+
+**示例 Markdown 说明**
+*   在复制块的开头和结尾添加 *（无空格）以创建斜体（例如：*content*）
+* 在“:”冒号后添加换行符
+*   针对项目符号的“*”后空格（例如：*(space)Content）
+*    ### <a name="space-for-heading-ex-spaceagendadeliverables"></a>针对标题的空格（例如：###(space)Agenda/Deliverables）
+*   标题后换行
+*   ** = 加粗（无空格）（例如：**No Space**）•   “产品/服务摘要”设置为斜体 •   “议程和可交付结果”为标题
+

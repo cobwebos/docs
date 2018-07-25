@@ -4,14 +4,14 @@ description: 概述 Azure Migrate 服务中的评估计算。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/05/2018
 ms.author: raynew
-ms.openlocfilehash: 6fd0af65e63e9fc1c09232cd1e002da105a9d086
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 6d5a0b959b25c0ee294b22b3f4066d006806b524
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287882"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920917"
 ---
 # <a name="assessment-calculations"></a>评估计算
 
@@ -58,7 +58,7 @@ Windows Server 2016 和所有 SP | Azure 提供完全支持。 | Azure 已就绪
 Windows Server 2012 R2 和所有 SP | Azure 提供完全支持。 | Azure 已就绪
 Windows Server 2012 和所有 SP | Azure 提供完全支持。 | Azure 已就绪
 Windows Server 2008 R2 和所有 SP | Azure 提供完全支持。| Azure 已就绪
-Windows Server 2003-2008 R2 | 这些操作系统的支持日期已结束，需要[自定义支持协议 (CSA)](https://aka.ms/WSosstatement) 以获取 Azure 支持。 | Azure 有条件的就绪，请考虑在迁移到 Azure 前升级 OS。
+Windows Server 2003-2008 | 这些操作系统的支持日期已结束，需要[自定义支持协议 (CSA)](https://aka.ms/WSosstatement) 以获取 Azure 支持。 | Azure 有条件的就绪，请考虑在迁移到 Azure 前升级 OS。
 Windows 2000、98、95、NT、3.1、MS-DOS | 这些操作系统的支持日期已结束，计算机可以在 Azure 中启动，但 Azure 不提供 OS 支持。 | Azure 有条件的就绪，建议在迁移到 Azure 前升级 OS。
 Windows Client 7、8 和 10 | Azure 仅支持 Visual Studio 订阅。 | Azure 有条件的就绪
 Windows Vista、XP Professional | 这些操作系统的支持日期已结束，计算机可以在 Azure 中启动，但 Azure 不提供 OS 支持。 | Azure 有条件的就绪，建议在迁移到 Azure 前升级 OS。

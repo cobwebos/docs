@@ -2,19 +2,19 @@
 title: 将 Azure 磁盘与 AKS 配合使用
 description: 将 Azure 磁盘与 AKS 配合使用
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/21/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4af4620ff7a17cae76c4d5f2cf1a30ce4a3dccd8
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: f807264dc2c2e07ccd175fb1b0427b7ce9e9f524
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34597061"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868239"
 ---
 # <a name="volumes-with-azure-disks"></a>含 Azure 磁盘的卷
 
@@ -49,6 +49,12 @@ az disk create \
 ```console
 /subscriptions/<subscriptionID>/resourceGroups/MC_myAKSCluster_myAKSCluster_eastus/providers/Microsoft.Compute/disks/myAKSDisk
 ```
+> [!NOTE]
+> Azure 托管磁盘依据特定大小的 SKU 收取费用。 这些 SKU 的范围从用于 S4 或 P4 磁盘的 32 GiB 到用于 S50 或 P50 磁盘的 4 TiB。 此外，高级托管磁盘的吞吐量和 IOPS 性能取决于 SKU 和 AKS 群集中节点的实例大小。 请参阅[托管磁盘的定价和性能][managed-disk-pricing-performance]。
+
+> [!NOTE]
+> 如果需要在单独的资源组中创建磁盘，还需要将群集的 Azure Kubernetes 服务 (AKS) 服务主体添加到托管具有 `Contributor` 角色的磁盘的资源组。 
+>
 
 ## <a name="mount-disk-as-volume"></a>装载磁盘作为卷
 
@@ -94,6 +100,7 @@ kubectl apply -f azure-disk-pod.yaml
 <!-- LINKS - external -->
 [kubernetes-disks]: https://github.com/kubernetes/examples/blob/master/staging/volumes/azure_disk/README.md
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/volumes/
+[managed-disk-pricing-performance]: https://azure.microsoft.com/pricing/details/managed-disks/
 
 <!-- LINKS - internal -->
 [az-disk-list]: /cli/azure/disk#az_disk_list

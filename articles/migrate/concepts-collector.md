@@ -4,15 +4,15 @@ description: 概述了收集器设备及其配置方法。
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 07/10/2018
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: d0f36370f5093f8c1d06c83a62532b3854597fa4
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8cc5863489c58a0603d8aa464911031a22dba8f3
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211661"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951033"
 ---
 # <a name="collector-appliance"></a>收集器设备
 
@@ -176,7 +176,7 @@ Azure Migrate 收集器服务应该正在计算机上运行。 此服务在计�
 根据所选范围中虚拟机数目的不同，可能需要长达 15 分钟的时间才能将静态元数据发送到项目。 静态元数据在门户中可用以后，就会在门户中看到计算机的列表，此时就可以开始创建组。 必须等到收集作业完成且项目已处理数据后，才能创建评估。 收集器上的收集作业完成后，可能需要长达一小时的时间才能在门户中提供性能数据，具体取决于所选范围中虚拟机的数目。
 
 ## <a name="locking-down-the-collector-appliance"></a>锁定收集器设备
-我们建议在收集器设备上运行持续的 Windows 更新。 如果收集器已有 45 天未更新，收集器将开始自动关闭计算机。 如果正在运行发现，即使已超过 45 天，也不会关闭计算机。 发现作业完成后，将关闭计算机。 如果使用收集器超过 45 天，我们建议通过运行 Windows 更新来始终保持计算机处于已更新状态。
+我们建议在收集器设备上运行持续的 Windows 更新。 如果收集器已有 60 天未更新，收集器将开始自动关闭计算机。 如果正在运行发现，即使已超过 60 天，也不会关闭计算机。 发现作业完成后，将关闭计算机。 如果使用收集器超过 45 天，我们建议通过运行 Windows 更新来始终保持计算机处于已更新状态。
 
 我们还建议执行以下步骤来保护设备
 1. 请勿与未授权方共享管理员密码或将其错放。

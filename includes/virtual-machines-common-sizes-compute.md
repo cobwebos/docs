@@ -5,15 +5,15 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/09/2018
+ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 638b52edb554b6bddb206943fca42b03bdc69060
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 033ae1de25fbaada0c2bce715e6bdd71818b341a
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "30845125"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37906796"
 ---
 <!-- F-series, Fs-series* -->
 
@@ -32,6 +32,10 @@ Fs 系列具有 F 系列的所有优势（在高级存储的基础上）。
 ## <a name="fsv2-series-sup1sup"></a>Fsv2 系列 <sup>1</sup>
 
 ACU：195 - 210
+
+高级存储：支持
+
+高级存储缓存：支持
 
 | 大小             | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 缓存和临时存储的最大吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大 NIC 数/预期网络带宽 (MBps) |
 |------------------|--------|-------------|----------------|----------------|-----------------------------------------------------------------------|------------------------------------------------|
@@ -53,6 +57,10 @@ ACU：195 - 210
 
 ACU：210 - 250
 
+高级存储：支持
+
+高级存储缓存：支持
+
 | 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 缓存和临时存储的最大吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数/预期网络带宽 (MBps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_F1s |1 |2 |4 |4 |4,000 / 32 (12) |3,200 / 48 |2 / 750 |
@@ -71,6 +79,10 @@ MBps = 每秒 10^6 字节，GiB = 1024^3 字节。
 ## <a name="f-series"></a>F 系列
 
 ACU：210 - 250
+
+高级存储：不支持
+
+高级存储缓存：不支持
 
 | 大小         | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 临时存储的最大吞吐量：IOPS/读取 MBps/写入 MBps | 最大的数据磁盘/吞吐量：IOPS | 最大 NIC 数/预期网络带宽 (MBps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|

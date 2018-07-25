@@ -5,25 +5,23 @@ services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-ms.assetid: 2c6273de-0106-47e5-b45d-59040e51f2c5
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2017
+ms.date: 07/03/2018
 ms.author: sethm
-ms.openlocfilehash: 964475ba8b42ac41707fa78468bfe551677c595f
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 22fcedfdb1921c941250b63f09bfa7fcff9c2f1b
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26783122"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856699"
 ---
 # <a name="event-hubs-messaging-exceptions"></a>事件中心消息传送异常
 
-本文列出 Azure 服务总线消息传送 API 库生成的一些异常，其中包括事件中心 API。 这些参考信息可随时更改，请不时返回查看更新内容。
+本文列出 Azure 服务总线消息传送 API 库生成的一些异常，其中包括 .NET Framework 事件中心 API。 这些参考信息可随时更改，请不时返回查看更新内容。
 
 ## <a name="exception-categories"></a>异常类别
 
@@ -87,7 +85,7 @@ ms.locfileid: "26783122"
 
 2. 事件中心命名空间没有足够的吞吐量单位（可以在 [Azure 门户](https://portal.azure.com)中检查事件中心命名空间窗口中的“指标”屏幕来确认）。 请注意，门户显示聚合（1 分钟）的信息，但吞吐量是实时测量的 - 因此吞吐量只是一个估计值。
 
-    解决方法：增加命名空间上的吞吐量单位可有所帮助。 可在门户上的事件中心命名空间屏幕的“缩放”窗口中执行此操作。
+    解决方法：增加命名空间上的吞吐量单位可有所帮助。 可在门户上的事件中心命名空间屏幕的“缩放”窗口中执行此操作。 或者，可以使用[自动膨胀](event-hubs-auto-inflate.md)。
 
 ### <a name="error-code-50001"></a>错误代码 50001
 
@@ -95,6 +93,7 @@ ms.locfileid: "26783122"
 
 
 ## <a name="next-steps"></a>后续步骤
+
 访问以下链接可以了解有关事件中心的详细信息：
 
 * [事件中心概述](event-hubs-what-is-event-hubs.md)

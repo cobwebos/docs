@@ -15,11 +15,12 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ba85e075c39251b0b3d7c4b8bc3f8d53a1afadf7
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 6a9b44ed56774466bae2f0f5d48b5e012382721b
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865227"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>创建任务依赖关系，以运行依赖于其他任务的任务
 
@@ -67,7 +68,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 此代码片段创建任务 ID 为“Flowers”的依赖任务。 “Flowers”任务依赖于“Rain”和“Sun”任务。 “Flowers”任务将计划为仅在“Rain”和“Sun”任务已成功完成后才在计算节点上运行。
 
 > [!NOTE]
-> 当任务处于**已完成**状态并且其**退出代码**为 `0` 时，该任务视为已成功完成。 在 Batch .NET 中，这意味着 [CloudTask][net_cloudtask].[State][net_taskstate] 属性值为 `Completed`，CloudTask 的 [TaskExecutionInformation][net_taskexecutioninformation].[ExitCode][net_exitcode] 属性值为 `0`。
+> 默认情况下，当任务处于“已完成”状态并且其“退出代码”为 `0` 时，该任务视为已成功完成。 在 Batch .NET 中，这意味着 [CloudTask][net_cloudtask].[State][net_taskstate] 属性值为 `Completed`，CloudTask 的 [TaskExecutionInformation][net_taskexecutioninformation].[ExitCode][net_exitcode] 属性值为 `0`。 有关如何更改此设置，请参阅[依赖项操作](#dependency-actions)部分。
 > 
 > 
 
@@ -120,7 +121,9 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 若要创建该依赖关系，请在填充 [CloudTask][net_cloudtask] 的 [DependsOn][net_dependson] 属性时，为 [TaskDependencies][net_taskdependencies].[OnIdRange][net_onidrange] 静态方法提供该范围内的第一个和最后一个任务 ID。
 
 > [!IMPORTANT]
-> 将任务 ID 范围用于依赖关系时，范围内的任务 ID 必须采用整数值的字符串表示形式。
+> 将任务 ID 范围用于依赖项时，只有 ID 表示整数值的任务将由范围选定。 因此范围 `1..10` 将选择任务 `3` 和 `7`，而不是 `5flamingoes`。 
+> 
+> 在评估范围依赖关系时，前导零不重要，因此，带字符串标识符 `4`、`04` 和 `004` 的任务都将处于范围内，它们将全部视为任务 `4`，因此，要完成的第一个任务将满足依赖关系。
 > 
 > 范围内的每个任务必须通过成功完成或者已完成但出现了映射到设置为 **Satisfy** 的某个依赖关系操作的失败，来满足该依赖关系。 有关详细信息，请参阅[依赖关系操作](#dependency-actions)部分。
 >

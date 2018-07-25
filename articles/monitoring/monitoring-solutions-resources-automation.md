@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a7f32cc47c96f6fc8adaedef8f8ea3156ee70115
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 95d5b2499f9e260e6ed134c4191b053325ca3f42
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887467"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868812"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>将 Azure 自动化资源添加到管理解决方案（预览版）
 > [!NOTE]
@@ -215,7 +215,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../automation/aut
 
 
 ### <a name="job-schedules"></a>作业计划
-作业计划资源将 runbook 与一个计划链接。  作业计划资源具有类型 **Microsoft.Automation/automationAccounts/jobSchedules** 和以下结构。  这包括常见变量和参数，以便可以将此代码片段复制并粘贴到解决方案文件，并更改参数名称。 
+作业计划资源将 runbook 与一个计划链接。  作业计划资源具有 Microsoft.Automation/automationAccounts/jobSchedules 类型和以下结构。  这包括常见变量和参数，以便可以将此代码片段复制并粘贴到解决方案文件，并更改参数名称。 
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Schedule').LinkGuid)]",

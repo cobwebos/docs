@@ -6,19 +6,22 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e16130dc41418b22f2dea4ceae5e0a90ed963161
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: e56b6f9360bdbfe2c5dcb2e81862cb80310bf54c
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939704"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928726"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常见问题解答 (FAQ) 
 此页面解答了有关 Azure Active Directory (Azure AD) B2C 的常见问题。 请随时返回查看更新信息。
+
+### <a name="why-cant-i-access-the-azure-ad-b2c-extension-in-the-azure-portal"></a>为什么我在 Azure 门户中无法访问 Azure AD B2C 扩展？
+如果 Azure AD 扩展无法正常工作，通常有两个原因。  Azure AD B2C 要求你在目录中具备全局管理员的用户角色。  如果你认为应具有访问权限，请与管理员联系。  如果你拥有全局管理员权限，请确保处于 Azure AD B2C 目录（而不是 Azure Active Directory 目录）中。  可以参阅此处的[创建 Azure AD B2C 目录](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)说明。
 
 ### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>我可以在基于员工的现有 Azure AD 租户中使用 Azure AD B2C 功能吗？
 Azure AD 和 Azure AD B2C 是独立的产品/服务，不能在同一租户中共存。  Azure AD 租户表示组织。  Azure AD B2C 租户表示信赖方应用使用的标识集合。  通过自定义策略（在公共预览版中），Azure AD B2C 可以联合 Azure AD，允许对组织中的员工进行身份验证。
@@ -97,9 +100,9 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 ### <a name="what-reporting-and-auditing-features-does-azure-ad-b2c-provide-are-they-the-same-as-in-azure-ad-premium"></a>Azure AD B2C 提供哪些报告和审核功能？ 它们是否与 Azure AD Premium 中提供的功能相同？
 否，Azure AD B2C 不支持与 Azure AD Premium 相同的报告集。 但是，有许多共性：
 
-* **登录报告**仅在 Azure 门户中提供（Azure Active Directory >“活动”>“登录”），无法通过图形 API 获得。 登录报告提供每次登录的记录以及简短的详细信息。
-* **审核报告**仅在 Azure 门户中提供（Azure Active Directory >“活动”>“审核日志”），无法通过图形 API 获得。 审核报告包括管理活动和应用程序活动。 
-* **使用情况报告**只能通过[使用情况报告 API](active-directory-b2c-reference-usage-reporting-api.md) 获得，无法通过 Azure 门户获得。 使用情况报告包括用户数、登录次数和 MFA 次数。 
+* 登录报告提供每次登录的记录以及简短的详细信息。
+* 审核报告包括管理活动和应用程序活动。 
+* 使用情况报告包括用户数、登录次数和 MFA 次数。 
 
 ### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>我可以本地化 Azure AD B2C 所提供页面的 UI 吗？ 支持哪些语言？
 能！  请阅读公共预览版中的[语言自定义](active-directory-b2c-reference-language-customization.md)。  我们提供 36 种语言的翻译版本，并且你可以根据需要替代任何字符串。

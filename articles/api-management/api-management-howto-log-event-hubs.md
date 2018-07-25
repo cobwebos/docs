@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 2334aefdfb442054226ef6d7d55a8c097a433565
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 496928697af069f773e47974129bb7d3de3e1cbc
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36316317"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37886965"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>如何在 Azure API 管理中将事件记录到 Azure 事件中心
 Azure 事件中心是一个高度可缩放的数据引入服务，每秒可以引入数百万的事件，从而使你能够处理和分析连接设备和应用程序生成的海量数据。 事件中心充当事件管道“前门”，将数据收集到事件中心后，可以使用任何实时分析提供程序或批处理/存储适配器来转换和存储这些数据。 事件中心可将事件流的生成与这些事件的使用分离开来，因此，事件使用者可以根据自己的计划访问事件。
@@ -55,7 +55,7 @@ Azure 事件中心是一个高度可缩放的数据引入服务，每秒可以�
   "loggerType" : "AzureEventHub",
   "description" : "Sample logger description",
   "credentials" : {
-    "name" : "Name of the Event Hub from the Azure Classic Portal",
+    "name" : "Name of the Event Hub from the portal",
     "connectionString" : "Endpoint=Event Hub Sender connection string"
     }
 }
@@ -65,7 +65,21 @@ Azure 事件中心是一个高度可缩放的数据引入服务，每秒可以�
 * `description` 提供记录器的可选说明，并且可在需要时为零长度。
 * `credentials` 包含 Azure 事件中心的 `name` 和 `connectionString`。
 
-发出请求时，如果创建记录器，则返回 `201 Created` 的状态代码。
+发出请求时，如果创建记录器，则返回 `201 Created` 的状态代码。 基于上面示例请求的示例响应，如下所示。
+
+```json
+{
+    "id": "/loggers/{new logger name}",
+    "loggerType": "azureEventHub",
+    "description": "Sample logger description",
+    "credentials": {
+        "name": "Name of the Event Hub from the Portal",
+        "connectionString": "{{Logger-Credentials-xxxxxxxxxxxxxxx}}"
+    },
+    "isBuffered": true,
+    "resourceId": null
+}
+```
 
 > [!NOTE]
 > 有关其他可能的返回代码及其原因，请参阅[创建记录器](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity#PUT)。 若要查看如何执行其他操作，如列表、更新和删除，请参阅[记录器](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)实体文档。
@@ -91,7 +105,7 @@ Azure 事件中心是一个高度可缩放的数据引入服务，每秒可以�
   @( string.Join(",", DateTime.UtcNow, context.Deployment.ServiceName, context.RequestId, context.Request.IpAddress, context.Operation.Name))
 </log-to-eventhub>
 ```
-将 `logger-id` 替换为在上一步中配置的 API 管理记录器的名称。
+将 `logger-id` 替换为 URL 中用于 `{new logger name}` 的值以在上一步中创建记录器。
 
 可使用返回字符串作为 `log-to-eventhub` 元素值的任何表达式。 在此示例中，将记录包含日期和时间、服务名称、请求 ID、请求 IP 地址和操作名称的字符串。
 

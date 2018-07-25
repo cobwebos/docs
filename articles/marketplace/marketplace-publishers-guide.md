@@ -3,8 +3,8 @@ title: Azure 市场和 AppSource 发布者指南 | Azure
 description: 概述适用于应用和服务发布者的 Azure 市场和 AppSource
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
-author: jm-aditi-ms
-manager: pabutler
+author: ellacroi
+manager: nunoc
 editor: ''
 ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
 ms.service: marketplace
@@ -12,108 +12,81 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/11/2018
+ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: e40b3a9f1454e892e07f7749ba900cd74c42c339
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 0572caa1cd09c164d6c5a53bfe1c143bccffd535
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309225"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859082"
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Azure 市场和 AppSource 发布者指南  
 
-## <a name="overview"></a>概述  
-欢迎访问市场店面上的发布者指南。
-*  AppSource  
-*  Azure 市场  
+## <a name="overview"></a>概述 
 
-使用本指南，新的和现有的发布者可了解以下主题的详细信息。 
-*   如何使用 Azure 市场和 AppSource 店面
-*   如何发布应用和产品/服务  
-*   如何与 Microsoft 合作扩展业务  
+欢迎使用 Azure 市场发布者指南。 本指南旨在帮助有意向发布者和现有发布者了解如何利用 Azure 市场 (www.azuremarketplace.com) 和 AppSource (www.appsource.com) 的店面列出他们的应用程序和服务，从而在与 Microsoft 的合作中发展自己的业务。  
 
-可更好地理解下列主题。
-*   加入市场店面有什么好处  
-*   如何使用店面  
-*   哪种店面最适合所提供的产品和服务  
-*   可能发布哪些类型的应用和产品/服务  
-*   每个发布选项都有什么技术和商业需求  
-*   如何创建预发布资产清单  
-*   如何成为发布者  
-*   在哪里创建和发布产品  
-*   如何优化列表方式并使用市场推广资源增强影响  
-*   可在何处获得帮助和支持  
+本指南包含以下主题： 
+*   什么是市场及其工作原理 
+*   Azure 市场和 AppSource 店面之间的区别 
+*   加入市场后可以获得的权益 
+*   如何成为发布者并列出应用程序或服务 
+*   如何发展业务 
 
-有关市场或发布指南的问题和意见，请发送电子邮件至 [ cloudmarketplace@microsoft.com](mailto:cloudmarketplace@microsoft.com)。  
+本指南包含在列出你的应用程序和服务之前，需要了解的步骤相关的技术和业务信息。 使用位于本页左侧的导航栏，可以跳转到本指南的不同部分并直接导航到关键主题。   
+
+有关 Azure 市场和 AppSource 的其他问题，请在“问题类型”>“市场载入”下向我们发送消息。 我们的市场发布者载入团队将乐于为你提供帮助！ 
 
 ---  
 
-## <a name="benefits"></a>优点  
+## <a name="benefits-of-participating-in-the-marketplace"></a>加入市场的好处 
 
-### <a name="benefits-of-participating-on-the-marketplace"></a>加入市场的好处  
-市场中的店面是与 Microsoft 一同进行市场推广活动的启动板。  
-*   AppSource  
-*   Azure 市场  
+市场是与 Microsoft 联合进行市场推广活动的启动平台，可以加速业务增长。 通过提供推广支持、刺激需求和联合进行市场营销，市场产品/服务可成为云业务引擎的核心。 加入市场不收取任何费用。  
 
-店面是通往联合销售就绪的合作伙伴关系商机的入口。 可选择在以下角色中使用应用或产品/服务。  
-*   云业务引擎的核心  
-*   扩展业务的飞轮 
+我们的目标是实现 Microsoft 客户与我们的伙伴生态系统提供的最佳解决方案之间的连接。 为此，我们在你的整个载入、发布和业务增长过程中提供支持。 
 
-可选择使用市场的以下功能扩展业务。  
-*    举行促销  
-*    需求挖掘  
-*    共同销售和营销  
+充分利用市场的功能来扩展业务： 
 
-加入市场中的店面不收取任何费用。 Microsoft 致力于连接 Microsoft 合作伙伴提供的最佳解决方案和服务。 
+### <a name="expand-to-new-markets-and-segments-and-generate-new-sales-opportunities"></a>扩展到新的市场和细分市场，并创造新的销售机会
 
-可充分利用市场的功能来扩展业务。  
+将市场作为渠道，利用你的解决方案组合进入新市场、细分市场并获得 Microsoft 云用户。 开发新的市场营销潜在客户并培养成为销售机会。 利用联合市场营销和销售活动的优势，获得更多客户。  
 
-#### <a name="generate-leads-and-sales-opportunities"></a>培养潜在顾客和销售商机。  
-利用市场店面中扩展的解决方案组合进入新的市场。 对市场产品进行追加销售和交叉销售。  
+### <a name="enhance-business-value-and-increase-deal-size-with-existing-and-new-customers"></a>提高业务价值并增加与现有客户及新客户的交易规模 
 
-#### <a name="enhance-business-value-and-increase-deal-size-with-existing-and-new-customers"></a>提高业务价值并增加与现有客户及新客户的交易规模  
-将工作负载移至 Azure 后增加交易规模并解决客户难题。 减少销售周期，通过销售面向特定工作负荷和行业方案的完整解决方案增加交易收益。  
+将工作负载移动到云后，通过解决客户问题追加销售和交叉销售解决方案。 如果通过市场开展销售或部署，可以通过销售面向特定工作负载和行业方案的完整解决方案减少销售周期、加快项目进度，并增加交易收益。 
+  
+### <a name="get-actionable-insights"></a>获取可操作见解 
 
-#### <a name="get-actionable-insights"></a>获取可操作见解  
-你的成功就是我们双方的成功。 通过云合作伙伴门户洞察产品的性能。 获取有关性能、潜在客户和如何最大化利用应用的市场活动的详细信息。  
+通过为你提供的见解和分析，深入了解产品性能。 获取有关广告系列效果、订单和付款以及如何最大化利用解决方案的营销活动的详细信息。  
 
->[!NOTE]
->扩展 Office 的应用必须通过 Office 应用的发布过程访问见解。  
+### <a name="marketplace-go-to-market-benefits"></a>市场的市场推广权益 
 
-### <a name="go-to-market-benefits"></a>市场推广福利  
-店面可用于向数以百万计的客户展示解决方案。 市场中的新产品将自动获得一系列免费的市场推广福利，这些福利可以提高产品/服务在市场中的知名度。  
+市场上的新发布产品有资格获得多种免费权益，帮助合作伙伴在市场中拓展业务。 这些权益分为以下类别： 
 
- 与 Microsoft 一同进行市场推广活动的第一步是将产品/服务发布到店面中。  店面是通往联合销售就绪的合作伙伴关系商机的入口。 所有的新应用和产品/服务将自动获得一系列免费的市场推广福利，这些福利可以提高应用或产品/服务在 Microsoft 客户中的知名度。 市场推广福利提供多个共同营销和联合销售活动。  共同营销和联合销售活动旨在帮助你使用下列资源提高解决方案的知名度并促成销售。
-*   Microsoft 品牌  
-*   Microsoft 渠道  
-*   Microsoft 客户和合作伙伴  
+*   技术权益：使应用程序准备好发布所需的一切内容。 范围从技术支持、应用程序设计和体系结构设计，到用于开发和测试的 Azure 额度。 
 
-无需执行任何其他操作。 发布产品/服务后，Microsoft 市场推广团队会与你联系并开始传递。  
-*   有关 Microsoft 市场推广福利以及如何在市场中扩展业务的详细信息，请访问 Microsoft 市场推广服务页面，地址是 [partner.microsoft.com/reach-customers/gtm](https://partner.microsoft.com/reach-customers/gtm)。  
+*   联合营销：发布产品/服务所需的一切内容。 了解免费的市场推广基础知识，帮助发布和推广解决方案。 还可能有资格参加 Microsoft 其他市场营销活动，其中包含成为市场主打产品的机会。  
+
+*   联合销售：通过市场开始或加速与 Microsoft 的合作销售。 访问程序和支持，促进与 Microsoft 团队之间的联合销售。  
+
+在向市场[提交解决方案](https://azuremarketplace.microsoft.com/sell/signup)之后，我们的载入团队会联系你，为你的发布体验提供支持。  
+
+有关 Microsoft 市场推广权益以及如何在市场中扩展业务的详细信息，请访问 [Microsoft 市场推广服务页面](https://partner.microsoft.com/reach-customers/gtm)。
 
 ---  
+## <a name="marketplace-and-storefronts"></a>市场和店面 
 
-## <a name="storefronts"></a>店面  
-Microsoft 在市场上提供了两个不同的店面。 店面能够让你列出产品/服务、启用试用，并直接与 Microsoft 客户进行交易。  
-*   比较 AppSource 和 Azure 市场
-    *   有关店面的详细信息，请访问[比较 AppSource 和 Azure 市场](./comparing-appsource-azure-marketplace.md)页。
-*   AppSource 
-    *   有关 AppSource 的详细信息，请访问 [使用 AppSource 发展业务](./grow-your-business-with-appsource.md)页。  
-*   Azure 市场 
-    *   有关 Azure 市场的详细信息，请访问 [使用 Azure 市场 扩展业务](./grow-your-business-with-azure-marketplace.md)页。  
+Microsoft 在市场中提供了两个不同的店面：AppSource 和 Azure 市场。 市场店面与受众需求和 Microsoft 云产品的特点相匹配，从而帮助客户轻松准确地找到所需产品。 
 
-这些店面有助于进行查找、试用、购买应用和服务，能加速你的数字化转型。 店面通过增加 Microsoft 客户和合作伙伴的访问量帮助发布者扩展业务。  
- 
-每个店面都提供专门的选项来帮助你最大程度地优化发布投资。 下表汇总了这些选项。  
+要选择店面，首先从确定解决方案的目标受众开始。 使用下表可以决定： 
 
-|  | AppSource | Azure 市场 |  
-|:--- |:--- |:--- |  
-| 目标读者 | 业务线决策者<table> <tr> <th>专家角色 </th> </tr> <tr> <td>计帐</td> </tr> <tr> <td>采购</td> </tr> <tr> <td>制造</td> </tr> </table> | IT 专业人员和开发人员<table> <tr> <th>专家角色 </th> </tr> <tr> <td>DevOps</td> </tr> <tr> <td>DBAs</td> </tr> <tr> <td>SecOps</td> </tr> </table> |  
+|  | AppSource | Azure 市场 |
+|:--- |:--- |:--- |
+| 目标读者 | 业务线决策者 | IT 专业人员和开发人员 | 
 | 以扩展为目标 | Azure<br />Dynamics 365<br />Office 365<br />Power BI<br />PowerApps | Azure |  
-| 解决方案和服务类型 | 已完成的业务线云应用<br />Office 365 加载项 | 基础结构解决方案<br />专业服务 |  
-| 产品/服务类型 | 咨询服务<br />与我联系<br />免费试用<br />立即获取<br />体验版 | Azure 应用：托管应用<br />Azure 应用：解决方案模板<br />咨询服务<br />与我联系<br />试用<br />虚拟机 |  
-| 应用内体验，为用户提供<br />应用上下文中的<br />应用和服务访问权限 | Dynamics 365<br />Office 365<br />Office 客户端应用<br />Power BI | Azure 门户<br />Azure 资源管理器 CLI |  
+
+每个店面都提供专用选项和功能，最大程度地提供业务机会。 有关店面的更详细比较，请访问[比较 AppSource 和 Azure 市场](./comparing-appsource-azure-marketplace.md)。 
 
 ---   
 

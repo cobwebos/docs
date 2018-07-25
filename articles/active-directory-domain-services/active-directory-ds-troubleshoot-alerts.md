@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: ergreenl
-ms.openlocfilehash: 9eefbdb8acd7dff14817c8358a05ae0f91e5eb11
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 360c6c98227e52f0540b00ef136888d3d143b9fb
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218871"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951068"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD 域服务 - 排查警报问题
 本文提供有关排查托管域中可能出现的任何警报问题的指南。
@@ -39,7 +39,7 @@ ms.locfileid: "36218871"
 | AADDS105 | *应用程序 ID 为“d87dcbc6-a371-462e-88e3-28ad15ec4e64”的服务主体已删除并重新创建。重新创建会导致在为托管域提供服务所需的 Azure AD 域服务资源上出现不一致的权限。托管域上的密码同步可能会受影响。* | [密码同步应用程序已过期](active-directory-ds-troubleshoot-service-principals.md#alert-aadds105-password-synchronization-application-is-out-of-date) |
 | AADDS500 | *托管域上次于 [date] 与 Azure AD 进行同步。用户可能无法登录到托管域，或者组成员身份可能未与 Azure AD 同步。* | [已在一段时间内未进行同步](#aadds500-synchronization-has-not-completed-in-a-while) |
 | AADDS501 | *托管域上次于 [date] 进行备份。* | [已在一段时间内未执行备份](#aadds501-a-backup-has-not-been-taken-in-a-while) |
-| AADDS502 | *托管域的安全 LDAP 证书将于 XX 到期。* | [安全 LDAP 证书即将到期](active-directory-ds-troubleshoot-ldaps.md#aadds502-secure-ldap-certificate-expiring) |
+| AADDS502 | 托管域的安全 LDAP 证书将于 [date] 到期。 | [安全 LDAP 证书即将到期](active-directory-ds-troubleshoot-ldaps.md#aadds502-secure-ldap-certificate-expiring) |
 | AADDS503 | *由于与域关联的 Azure 订阅未处于活动状态，托管域已暂停。* | [由于订阅禁用而暂停](#aadds503-suspension-due-to-disabled-subscription) |
 | AADDS504 | *由于配置无效，托管域已暂停。服务已很长时间无法为托管域管理、修补或更新域控制器。* | [由于配置无效而暂停](#aadds504-suspension-due-to-an-invalid-configuration) |
 
@@ -112,6 +112,9 @@ ms.locfileid: "36218871"
 
 [检查域的运行状况](active-directory-ds-check-health.md)，看是否有任何警报指示托管域的配置有问题。 有时，配置问题可能会阻止 Microsoft 对托管域进行同步操作。 如果能够解决任何警报，请等待两个小时再返回检查同步是否已已完成。
 
+以下是托管域停止同步的一些常见原因：
+- 托管域上的网络连接受阻。 若要了解有关检查网络是否存在问题的详细信息，请参阅如何[对网络安全组进行故障排除](active-directory-ds-troubleshoot-nsg.md)以及 [Azure AD 域服务的网络要求](active-directory-ds-networking.md)。
+-  从未设置或完成密码同步。 若要设置密码同步，请阅读[本文](active-directory-ds-getting-started-password-sync.md)。
 
 ## <a name="aadds501-a-backup-has-not-been-taken-in-a-while"></a>AADDS501：已在一段时间内未执行备份
 
@@ -132,6 +135,9 @@ ms.locfileid: "36218871"
 
 **解决方法：**
 
+> [!WARNING]
+> 如果托管域挂起很长一段时间，则很有可能会将其删除。 最好尽快解决挂起问题。 若要了解详细信息，请访问[本文](active-directory-ds-suspension.md)。
+
 若要还原服务，请[续订与托管域关联的 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable)。
 
 ## <a name="aadds504-suspension-due-to-an-invalid-configuration"></a>AADDS504：由于配置无效而暂停
@@ -142,7 +148,11 @@ ms.locfileid: "36218871"
 
 **解决方法：**
 
+> [!WARNING]
+> 如果托管域挂起很长一段时间，则很有可能会将其删除。 最好尽快解决挂起问题。 若要了解详细信息，请访问[本文](active-directory-ds-suspension.md)。
+
 [检查域的运行状况](active-directory-ds-check-health.md)，看是否有任何警报指示托管域的配置有问题。 如果可以解决其中任何警报，请这样做。 之后，请联系支持人员以重新启用订阅。
+
 
 ## <a name="contact-us"></a>联系我们
 欢迎联系 Azure Active Directory 域服务产品团队[分享看法或请求支持](active-directory-ds-contact-us.md)。

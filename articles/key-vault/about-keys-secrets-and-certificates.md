@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: alleonar
-ms.openlocfilehash: a6bd63598781a60c2dd717c07b96fcb498a67d30
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 77675b3c0b2ed9fcdb923c92638384d215bddc40
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636600"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972394"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>关于密钥、机密和证书
 用户通过 Azure Key Vault 可以在 Microsoft Azure 环境中存储和使用加密密钥。 Key Vault 支持多种密钥类型和算法，可以对高价值的密钥使用硬件安全模块 (HSM)。 此外，用户还可以使用 Key Vault 安全地存储机密。 机密是有限大小的八位组对象，无任何特定语义。 Key Vault 还支持基于密钥和机密并且添加了自动续订功能的证书。
@@ -122,7 +122,7 @@ Azure Key Vault 的初始版本仅支持 RSA 密钥；未来版本可能会支�
 -   **RSA**：2048 位 RSA 密钥。 这是一种“软”密钥，在软件中由 Key Vault 处理，但在存储时使用 HSM 中的系统密钥进行静态加密。 客户端可以导入现有 RSA 密钥，也可以请求 Azure Key Vault 生成该密钥。  
 -   **RSA HSM**：在 HSM 中处理的 RSA 密钥。 RSA-HSM 密钥在一个 Azure Key Vault HSM 安全体系中受到保护（按地理位置设置安全体系，以保持隔离）。 客户端可以采用软性形式或通过从兼容 HSM 设备导出的方式来导入 RSA 密钥，也可以请求 Azure Key Vault 生成该密钥。 此密钥类型可以将 T 属性添加到获得的 JWK 以携带 HSM 密钥材料。  
 
-     有关地理边界的详细信息，请参阅 [Microsoft Azure 信任中心](https://azure.microsoft.com/en-us/support/trust-center/privacy/)  
+     有关地理边界的详细信息，请参阅 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/privacy/)  
 
 ###  <a name="BKMK_RSAAlgorithms"></a> RSA 算法  
  Azure Key Vault 中的 RSA 密钥支持以下算法标识符。  
@@ -172,7 +172,7 @@ Azure Key Vault 支持对密钥对象执行以下操作：
 -   备份：导出受保护窗体中的密钥。  
 -   还原：导入以前备份的密钥。  
 
-有关详细信息，请参阅[密钥操作](/rest/api/keyvault/key-operations.md)。  
+有关详细信息，请参阅[密钥操作](/rest/api/keyvault/key-operations)。  
 
 在 Azure Key Vault 中创建密钥后，即可使用密钥执行以下加密操作：  
 
@@ -281,7 +281,7 @@ Azure Key Vault 中托管的机密的访问控制是在充当这些机密的容�
 -   删除：删除机密  
 -   所有：所有权限  
 
-有关使用机密的详细信息，请参阅[机密操作](/rest/api/keyvault/secret-operations.md)。  
+有关使用机密的详细信息，请参阅[机密操作](/rest/api/keyvault/secret-operations)。  
 
 ###  <a name="BKMK_SecretTags"></a> 机密标记  
 可以用标记的形式指定其他特定于应用程序的元数据。 Azure Key Vault 支持多达 15 种标记，每种标记可以有 256 个字符的名称和 256 个字符的值。  
@@ -443,9 +443,9 @@ Key Vault 允许使用其他颁发者提供者的配置创建多个颁发者对�
 
 ## <a name="additional-information-for-certificates"></a>证书的其他信息
 
-- [证书和策略](/rest/api/keyvault/certificates-and-policies.md)
-- [证书颁发者](/rest/api/keyvault/certificate-issuers.md)
-- [证书联系人](/rest/api/keyvault/certificate-contacts.md)
+- [证书和策略](/rest/api/keyvault/certificates-and-policies)
+- [证书颁发者](/rest/api/keyvault/certificate-issuers)
+- [证书联系人](/rest/api/keyvault/certificate-contacts)
 
 ## <a name="see-also"></a>另请参阅
 

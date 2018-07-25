@@ -8,14 +8,14 @@ manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 07/05/2018
 ms.author: clemensv
-ms.openlocfilehash: 7716ff503bd492cc4b5d510758cb20d74eb82a4f
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: f8874a1d9db754485e9624596465560981bd6425
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034652"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858039"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>使用具有 Azure 服务总线的虚拟网络服务终结点
 
@@ -24,6 +24,12 @@ ms.locfileid: "37034652"
 配置为绑定到至少一个虚拟网络子网服务终结点后，相应的服务总线命名空间将不再接受授权虚拟网络以外的任何位置的流量。 从虚拟网络的角度来看，通过将服务总线命名空间绑定到服务终结点，可配置从虚拟网络子网到消息传递服务的独立网络隧道。
 
 然后，绑定到子网的工作负荷与相应的服务总线命名空间之间将存在专用和独立的关系，消息传递服务终结点的可观察网络地址位于公共 IP 范围内对此没有影响。
+
+## <a name="enable-service-endpoints-with-service-bus"></a>在服务总线中启用服务终结点
+
+虚拟网络仅在[高级层](service-bus-premium-messaging.md)服务总线命名空间中受支持。 
+
+在服务总线中使用 VNet 服务终结点的一个重要考虑因素是，不应在将标准层服务总线命名空间和高级层服务总线命名空间混合使用的应用程序中启用这些终结点。 因为标准层不支持 VNet，所以终结点将被限制为仅用于高级层命名空间。 VNet 将阻止到标准命名空间的通信。 
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>通过 VNet 集成启用的高级安全方案 
 

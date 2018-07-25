@@ -1,6 +1,6 @@
 ---
 title: 在 Azure Kubernetes 服务 (AKS) 群集中运行虚拟 kubelet
-description: 使用虚拟 kubelet 在 Azure 容器实例上运行 Kubernetes 容器。
+description: 了解如何结合使用虚拟 Kubelet 和 Azure Kubernetes 服务 (AKS) 以在 Azure 容器实例上运行 Linux 和 Windows 容器。
 services: container-service
 author: iainfoulds
 manager: jeconnoc
@@ -8,14 +8,14 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: iainfou
-ms.openlocfilehash: 04fdb1620dc6e7147ed10ae6eeeaeb3eeae14b62
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 0466f416568b2a1a82e264a8508697fc9de87287
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097353"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952472"
 ---
-# <a name="virtual-kubelet-with-aks"></a>带有 AKS 的虚拟 Kubelet
+# <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>结合使用虚拟 Kubelet 和 Azure Kubernetes 服务 (AKS)
 
 Azure 容器实例 (ACI) 提供托管环境，以便在 Azure 中运行容器。 使用 ACI 时，无需管理基础计算基础结构，Azure 会处理此管理。 在 ACI 中运行容器时，每个正在运行的容器将按秒收费。
 
@@ -32,7 +32,38 @@ Azure 容器实例 (ACI) 提供托管环境，以便在 Azure 中运行容器。
 
 还需要 Azure CLI 版本 2.0.33 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-为了安装虚拟 Kubelet，还需要 [Helm](https://docs.helm.sh/using_helm/#installing-helm)。
+若要安装虚拟 Kubelet，还需要 [Helm](https://docs.helm.sh/using_helm/#installing-helm)。
+
+### <a name="for-rbac-enabled-clusters"></a>对于启用 RBAC 的群集
+
+如果 AKS 群集已启用 RBAC，则必须创建服务帐户和角色绑定以便与 Tiller 一起使用。 有关详细信息，请参阅 [Helm 基于角色的访问控制][helm-rbac]。
+
+还必须为虚拟 Kubelet 创建一个 ClusterRoleBinding。 若要创建一个绑定，请创建名为 rbac-virtualkubelet.yaml 的文件并粘贴以下定义：
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: virtual-kubelet
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: default
+```
+
+使用 [kubectl apply][kubectl-apply] 应用绑定并指定 rbac-virtualkubelet.yaml 文件，如以下示例所示：
+
+```
+$ kubectl apply -f rbac-virtual-kubelet.yaml
+
+clusterrolebinding.rbac.authorization.k8s.io/virtual-kubelet created
+```
+
+现在可以继续将虚拟 Kubelet 安装到 AKS 群集。
 
 ## <a name="installation"></a>安装
 
@@ -61,7 +92,7 @@ az aks install-connector --resource-group myAKSCluster --name myAKSCluster --con
 
 若要验证已安装虚拟 Kubelet，请使用 [kubectl get nodes][kubectl-get] 命令返回 Kubernetes 节点的列表。
 
-```console
+```
 $ kubectl get nodes
 
 NAME                                    STATUS    ROLES     AGE       VERSION
@@ -102,13 +133,13 @@ spec:
 
 使用 [kubectl create][kubectl-create] 命令运行该应用程序。
 
-```azurecli-interactive
+```console
 kubectl create -f virtual-kubelet-linux.yaml
 ```
 
 使用带有 `-o wide` 参数的 [kubectl get pods][kubectl-get] 命令输出具有计划节点的 pod 列表。 请注意，已在 `virtual-kubelet-virtual-kubelet-linux` 节点上计划 `aci-helloworld` pod。
 
-```console
+```
 $ kubectl get pods -o wide
 
 NAME                                READY     STATUS    RESTARTS   AGE       IP             NODE
@@ -145,13 +176,13 @@ spec:
 
 使用 [kubectl create][kubectl-create] 命令运行该应用程序。
 
-```azurecli-interactive
+```console
 kubectl create -f virtual-kubelet-windows.yaml
 ```
 
 使用带有 `-o wide` 参数的 [kubectl get pods][kubectl-get] 命令输出具有计划节点的 pod 列表。 请注意，已在 `virtual-kubelet-virtual-kubelet-win` 节点上计划 `nanoserver-iis` pod。
 
-```console
+```
 $ kubectl get pods -o wide
 
 NAME                                READY     STATUS    RESTARTS   AGE       IP             NODE
@@ -182,3 +213,5 @@ az aks remove-connector --resource-group myAKSCluster --name myAKSCluster --conn
 [node-selector]:https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
 [toleration]: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
 [vk-github]: https://github.com/virtual-kubelet/virtual-kubelet
+[helm-rbac]: https://docs.helm.sh/using_helm/#role-based-access-control
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply

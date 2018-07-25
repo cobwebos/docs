@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: 687356b60ad0bbc469d67e071ce3bccc8b61ebd7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c58c2b255d269aef7e8b3fea62d003ad0c16ef0a
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608995"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971242"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>部署 Azure Log Analytics Nozzle 以监视 Cloud Foundry 系统
 
@@ -246,6 +246,6 @@ Azure Log Analytics Nozzle 是开放源代码。 若有问题和反馈，请发�
 
 ## <a name="next-step"></a>后续步骤
 
-自 PCF2.0 起，VM 性能指标将由系统指标转发器传输至 Azure Log Analytics Nozzle，并集成到 OMS 工作区。 你不再需要 OMS 代理来获取 VM 性能指标。 但仍然可以使用 OMS 代理来收集 Syslog 信息。 OMS 代理可作为 Bosh 加载项安装到 CF VM 中。 
+自 PCF2.0 起，VM 性能指标将由系统指标转发器传输至 Azure Log Analytics Nozzle，并集成到 OMS 工作区。 不再需要 OMS 代理来获取 VM 性能指标。 但仍然可以使用 OMS 代理来收集 Syslog 信息。 OMS 代理可作为 Bosh 加载项安装到 CF VM 中。 
 
 有关详细信息，请参阅[将 OMS 代理部署到 Cloud Foundry 部署](https://github.com/Azure/oms-agent-for-linux-boshrelease)。

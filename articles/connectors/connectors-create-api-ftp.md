@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 983e8f84e6e44bc9e5de5f4e7fff361b92b316c9
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 4355a767d2ecd500662cdf4522e8a7e12de86b80
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295687"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866145"
 ---
 # <a name="get-started-with-the-ftp-connector"></a>FTP 连接器入门
 使用 FTP 连接器在 FTP 服务器上监视、管理和创建文件。 
@@ -62,7 +62,7 @@ ms.locfileid: "35295687"
 
 现已添加触发器，按照以下步骤添加将获取由该触发器找到的新文件或已修改文件内容的操作。    
 
-1. 选择“+ 新步骤”添加在 FTP 服务器上获取文件内容的操作。  
+1. 选择“+ 新步骤”添加在 FTP 服务器上获取文件内容的操作  
 2. 选择**添加操作**链接。  
    ![FTP 操作图 1](./media/connectors-create-api-ftp/ftp-action-1.png)  
 3. 输入 *FTP* 搜索与 FTP 相关的所有操作。

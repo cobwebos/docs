@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: juluk
-ms.openlocfilehash: 15e3dd11c371e0b23d5b506da9d824e1409fd359
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 135496e17ae884db580922aa31f6824b2e7fd934
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37855978"
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的限制
 
@@ -30,7 +31,7 @@ Azure Cloud Shell 有以下已知限制：
 
 提供 Cloud Shell 会话的计算机是暂时性的，在会话处于非活动状态 20 分钟后会被回收。 Cloud Shell 需要装载 Azure 文件共享。 因此，订阅必须能够设置存储资源才能访问 Cloud Shell。 其他注意事项包括：
 
-* 使用装载的存储时，仅持久保存 `clouddrive` 目录中的修改。 在 Bash 中，`$Home` 目录也会持久保存。
+* 使用装载的存储时，仅持久保存 `$Home` 目录中的修改。
 * 仅可从[已分配区域](persisting-shell-storage.md#mount-a-new-clouddrive)内部装载 Azure 文件共享。
   * 在 Bash 中，运行 `env` 可以找到设置为 `ACC_LOCATION` 的区域。
 
@@ -62,21 +63,33 @@ Cloud Shell 适用于交互式用例。 因此，任何长时间运行的非交�
 
 ## <a name="powershell-limitations"></a>PowerShell 限制
 
-### <a name="slow-startup-time"></a>启动速度缓慢
+### <a name="azuread-module-name"></a>`AzureAD` 模块名称
 
-PowerShell in Azure Cloud Shell（预览版）最长可能需要 60 秒才能完成初始化。
+`AzureAD` 模块名称当前为 `AzureAD.Standard.Preview`，该模块提供相同的功能。
 
-### <a name="no-home-directory-persistence"></a>$Home 目录没有持久性
+### <a name="sqlserver-module-functionality"></a>`SqlServer` 模块功能
 
-由任何应用程序（例如 git、vim，等等）写入 `$Home` 的数据不会在 PowerShell 会话之间持久保留。 有关解决方法，请[参阅此文](troubleshooting.md#powershell-troubleshooting)。
+Cloud Shell 中包含的 `SqlServer` 模块仅具有对 PowerShell Core 的预发布版本支持。 具体而言，`Invoke-SqlCmd` 尚不可用。
 
 ### <a name="default-file-location-when-created-from-azure-drive"></a>从 Azure 驱动器创建时的默认文件位置：
 
-使用 PowerShell cmdlet，用户无法在 Azure 驱动器下创建文件。 当用户使用其他工具（如 vim 或 nano）创建新文件时，文件将默认保存到 C:\Users 文件夹。 
+使用 PowerShell cmdlet，用户无法在 Azure 驱动器下创建文件。 当用户使用其他工具（如 vim 或 nano）创建新文件时，文件将默认保存到 `$HOME`。 
 
 ### <a name="gui-applications-are-not-supported"></a>不支持 GUI 应用程序
 
 如果用户运行一条会创建 Windows 对话框的命令（例如 `Connect-AzureAD` 或 `Connect-AzureRmAccount`），将看到如下所示的错误消息：`Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`。
+
+### <a name="tab-completion-crashes-psreadline"></a>Tab 自动补全导致 PSReadline 崩溃
+
+如果用户的 EditMode 在 PSReadline 中设置为 Emacs，用户尝试通过 Tab 自动补全显示所有可能性，而窗口大小过小，无法显示所有可能性，则 PSReadline 将崩溃。
+
+### <a name="large-gap-after-displaying-progress-bar"></a>在显示进度栏后出现大间距型
+
+如果用户执行显示进度栏的操作（例如，在 `Azure:` 驱动器中的 tab 自动补全），则光标可能设置不正确，且在以前的进度栏处出现间距。
+
+### <a name="random-characters-appear-inline"></a>随机字符以内联显示
+
+光标位置序列代码（例如 `5;13R`）可以在用户输入时显示。  这些字符可以手动删除。
 
 ## <a name="next-steps"></a>后续步骤
 
