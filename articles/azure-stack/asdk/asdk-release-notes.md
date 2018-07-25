@@ -11,46 +11,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 06/04/2018
 ms.author: brenduns
 ms.reviewer: misainat
-ms.openlocfilehash: 86ac1f1b5433104faa89e1f107fa36fc1da5f70e
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: d86f0e96f64a56644b3161725f7f6a430568a72f
+ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989888"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39242693"
 ---
-# <a name="azure-stack-development-kit-release-notes"></a>Azure Stack 开发工具包发行说明  
+# <a name="azure-stack-development-kit-release-notes"></a>Azure Stack 开发工具包发行说明
 这些发行说明提供 Azure Stack 开发工具包的改进、修复和已知问题的相关信息。 如果不确定所运行的版本，可以[使用门户检查版本](.\.\azure-stack-updates.md#determine-the-current-version)。
 
 > 请订阅 [![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [源](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#)，随时了解 ASDK 的新增功能。
 
-## <a name="build-11805147"></a>内部版本 1.1805.1.47
+## <a name="build-11805142"></a>生成 1.1805.1.42
 
-> [!TIP]  
-> 根据客户反馈，没有用于 Microsoft Azure Stack 中的版本架构的更新。 从 1805 更新开始，新架构更能代表当前的云版本。  
-> 
-> 版本架构目前为 *Version.YearYearMonthMonth.MinorVersion.BuildNumber*，其中的第二和第三组数字表示版本和发行版。 例如，1805.1 表示 1805 的正式发布 (RTM) 版本。  
-
-
-### <a name="new-features"></a>新增功能 
-此内部版本包含以下适用于 Azure Stack 的改进和修复。  
-
-- <!-- 2297790 - IS, ASDK --> **Azure Stack 现已将 *Syslog* 客户端**包含为预览功能。 此客户端允许将与 Azure Stack 基础结构相关的审核和安全日志转发到 Azure Stack 外部的 Syslog 服务器或安全信息与事件管理 (SIEM) 软件。 目前，Syslog 客户端仅支持通过默认端口 514 建立的未经身份验证的 UDP 连接。 每条 Syslog 消息的有效负载采用通用事件格式 (CEF)。 
-
-  若要配置 Syslog 客户端，请使用特权终结点中公开的 **Set-SyslogServer** cmdlet。 
-
-  此预览版中可能会出现以下三种警报。 当 Azure Stack 显示这些警报时，警报中会包含说明和补救指导。 
-  - 标题：代码完整性关闭  
-  - 标题：代码完整性处于审核模式 
-  - 标题：已创建用户帐户
-
-  此功能目前以预览版提供，在生产环境中请不要依赖此功能。   
+<!-- ### New features 
+This build includes the following improvements and fixes for Azure Stack.  
+-->
 
 
 ### <a name="fixed-issues"></a>修复的问题
-- 修复以下问题阻止[从下拉列表中打开新的支持请求](.\.\azure-stack-manage-portals.md#quick-access-to-help-and-support)从管理门户中。 此选项现在按预期工作。 
 
 - 针对性能、稳定性、安全性以及 Azure Stack 所用操作系统的**各种修复**
 
@@ -64,14 +47,6 @@ ms.locfileid: "38989888"
 ### <a name="known-issues"></a>已知问题
  
 #### <a name="portal"></a>门户
-- <!-- 2551834 - IS, ASDK --> 在管理员门户或用户门户中选择存储帐户的“概述”时，“概要”窗格中的信息不会显示。  “概要”窗格显示有关帐户的信息，例如其资源组、位置和订阅 ID。  可以访问“概述”中的其他选项，例如“服务”和“监视”，以及“在资源管理器中打开”或“删除存储帐户”。  
-
-  若要查看未显示的信息，请使用 [Get-azureRMstorageaccount](https://docs.microsoft.com/powershell/module/azurerm.storage/get-azurermstorageaccount?view=azurermps-6.2.0) PowerShell cmdlet。 
-
-- <!-- 2551834 - IS, ASDK --> 在管理员门户或用户门户中选择存储帐户的“标记”时，信息无法加载且不显示。  
-
-  若要查看未显示的信息，请使用 [Get-AzureRmTag](https://docs.microsoft.com/powershell/module/azurerm.tags/get-azurermtag?view=azurermps-6.2.0) PowerShell cmdlet。
-
 - <!-- TBD - IS ASDK --> 不要使用新的管理订阅类型：“计量订阅”和“消耗订阅”。 这些新订阅类型是在版本 1804 中引入的，目前尚不可用。 请继续使用“默认提供程序”订阅类型。  
 
 - <!-- 2403291 - IS ASDK --> 可能无法使用管理员和用户门户底部的水平滚动条。 如果无法访问水平滚动条，请使用痕迹导航到门户中的上一边栏选项卡，只需从门户左上角的痕迹列表中选择要查看的边栏选项卡的名称即可。
@@ -97,40 +72,9 @@ ms.locfileid: "38989888"
    - 组件：运行状况控制器
    - 说明：运行状况控制器故障扫描仪不可用。 这可能会影响运行状况报告和指标。
 
-  可以安全地忽略 #1 和 2 这两个警报，它们将自动关闭随着时间的推移。 
-
-  您可能还会看到以下警报*容量*。 此警报描述中标识的可用内存的百分比而异：  
-
-  警报 #3:
-   - 名称： 低内存容量
-   - 严重性： 严重
-   - 组件： 容量
-   - 说明： 区域占用了多个 80.00%的可用内存。 使用大量的内存中创建虚拟机可能会失败。  
-
-  在此版本的 Azure Stack 中，可以正确触发此警报。 如果租户虚拟机继续成功部署，可以安全地忽略此警报。 
-  
-  警报 #3 不会自动关闭。 如果关闭此警报 Azure Stack 将在 15 分钟内创建的同一个警报。  
-
-- <!-- 2368581 - IS ASDK --> 如果 Azure Stack 操作员收到内存不足的警报，并且租户虚拟机无法部署并出现“Fabric VM 创建错误”，则可能表示 Azure Stack 模组的可用内存不足。 请使用 [Azure Stack 容量规划工具](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822)来充分了解可供工作负荷使用的容量。 
-
+  可以放心地忽略这两个警报。 它们将随着时间的推移自动关闭。  
 
 #### <a name="compute"></a>计算
-- <!-- TBD - IS, ASDK --> 选择虚拟机大小进行虚拟机部署时，某些 F 系列 VM 大小在创建 VM 时所需的大小选择器中不可见。 以下 VM 大小不显示在选择器中：*F8s_v2*、*F16s_v2*、*F32s_v2* 和 *F64s_v2*。  
-  解决方法是，使用下列方法之一部署 VM。 在每种方法中，都需要指定要使用的 VM 大小。
-
-  - **Azure 资源管理器模板：** 使用模板时，请将模板中的 *vmSize* 设置为想要使用的 VM 大小。 例如，以下条目用于部署使用 *F32s_v2* 大小的 VM：  
-
-    ```
-        "properties": {
-        "hardwareProfile": {
-                "vmSize": "Standard_F32s_v2"
-        },
-    ```  
-  - **Azure CLI：** 可以使用 [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) 命令并将 VM 大小指定为参数，类似于 `--size "Standard_F32s_v2"`。
-
-  - **PowerShell：** 通过 PowerShell，可以将 [New-AzureRMVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?view=azurermps-6.0.0) 与指定了 VM 大小的参数一起使用，类似于 `-VMSize "Standard_F32s_v2"`。
-
-
 - <!-- TBD -  IS ASDK --> 无法在门户中使用虚拟机规模集的缩放设置。 解决方法是使用 [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set)。 由于 PowerShell 版本差异，必须使用 `-Name` 参数，而不是 `-VMScaleSetName`。
 
 - <!-- TBD -  IS ASDK --> 在 Azure Stack 用户门户中创建虚拟机时，该门户显示的可以附加到 D 系列 VM 的数据磁盘数不正确。 所有受支持的 D 系列 VM 可以容纳的数据磁盘数取决于 Azure 配置。
@@ -146,16 +90,13 @@ ms.locfileid: "38989888"
 - <!-- 1662991 - IS ASDK --> Azure Stack 不支持 Linux VM 诊断。 在部署启用 VM 诊断的 Linux VM 时，部署会失败。 如果通过诊断设置启用 Linux VM 的基本指标，部署也会失败。 
 
 #### <a name="networking"></a>网络
-- <!-- TBD - IS ASDK --> 无法在管理员或用户门户创建用户定义的路由。 作为一种解决方法，使用[Azure PowerShell](https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-powershell)。
-
 - <!-- 1766332 - IS, ASDK --> 如果在“网络”下单击“创建 VPN 网关”来设置 VPN 连接，则会将“基于策略”列为 VPN 类型。 请不要选择此选项。 Azure Stack 仅支持“基于路由”选项。
 
 - <!-- 2388980 -  IS ASDK --> 创建 VM 并将其与公共 IP 地址关联以后，就无法取消该 VM 与该 IP 地址的关联。 取消关联看似可以正常使用，但以前分配的公共 IP 地址仍与原始 VM 相关联。
 
   目前只能将新建的公共 IP 地址用于新建的 VM。
 
-  即使将 IP 地址重新分配给新的 VM（通常名为“VIP 交换”），也还会发生这种行为。 以后尝试通过此 IP 地址建立连接都会导致连接到原始 VM，而不是新的 VM。
-
+  即使将 IP 地址重新分配给新的 VM（通常名为“VIP 交换”），也还会发生这种行为。 以后尝试通过此 IP 地址建立连接都会导致连接到原先关联的 VM，而不是新的 VM。
 
 - <!-- 2292271 - IS ASDK --> 如果提高属于某个套餐和计划的网络资源的配额限制，而该套餐和计划与租户订阅相关联，则新的限制不会应用到该订阅。 但是，新限制会应用到在配额提高后创建的新订阅。 
 
@@ -284,7 +225,7 @@ ms.locfileid: "38989888"
 
   目前只能将新建的公共 IP 地址用于新建的 VM。
 
-  即使将 IP 地址重新分配给新的 VM（通常名为“VIP 交换”），也还会发生这种行为。 以后尝试通过此 IP 地址建立连接都会导致连接到原始 VM，而不是新的 VM。
+  即使将 IP 地址重新分配给新的 VM（通常名为“VIP 交换”），也还会发生这种行为。 以后尝试通过此 IP 地址建立连接都会导致连接到原先关联的 VM，而不是新的 VM。
 
 - <!-- 2292271 - IS ASDK --> 如果提高属于某个套餐和计划的网络资源的配额限制，而该套餐和计划与租户订阅相关联，则新的限制不会应用到该订阅。 但是，新限制会应用到在配额提高后创建的新订阅。 
 
@@ -414,7 +355,7 @@ ms.locfileid: "38989888"
 
   目前只能将新建的公共 IP 地址用于新建的 VM。
 
-  即使将 IP 地址重新分配给新的 VM（通常名为“VIP 交换”），也还会发生这种行为。 以后尝试通过此 IP 地址建立连接都会导致连接到原始 VM，而不是新的 VM。
+  即使将 IP 地址重新分配给新的 VM（通常名为“VIP 交换”），也还会发生这种行为。 以后尝试通过此 IP 地址建立连接都会导致连接到原先关联的 VM，而不是新的 VM。
 
 
 
@@ -451,8 +392,3 @@ ms.locfileid: "38989888"
   之所以发生此错误，是因为最近的 GitHub 支持弃用了 Tlsv1 和 Tlsv1.1 加密标准（PowerShell 的默认设置）。 有关详细信息，请参阅 [Weak cryptographic standards removal notice](https://githubengineering.com/crypto-removal-notice/)（弱加密标准删除通知）。
 
   若要解决此问题，请将 `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` 添加到脚本顶部，强制 PowerShell 控制台在从 GitHub 存储库下载项目时使用 TLSv1.2。
-
-
-
-
-

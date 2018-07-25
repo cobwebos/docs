@@ -12,8 +12,6 @@
           href: azure-stack-update-1804.md
         - name: 1803 更新
           href: azure-stack-update-1803.md
-        - name: 1802 更新
-          href: azure-stack-update-1802.md
 - name: 快速入门
   expanded: true
   items:
@@ -71,7 +69,7 @@
               href: azure-stack-remediate-certs.md
         - name: 部署资源
           items:
-            - name: 有关部署网络
+            - name: 关于部署网络
               href: deployment-networking.md
         - name: 验证 Azure 注册
           href: azure-stack-validate-registration.md
@@ -189,7 +187,7 @@
               href: azure-stack-enable-multitenancy.md
         - name: 轮换机密
           href: azure-stack-rotate-secrets.md
-        - name: 更新防病毒
+        - name: 更新防病毒定义
           href: azure-stack-security-av.md
     - name: 提供服务
       items:
@@ -269,7 +267,7 @@
               href: azure-stack-app-service-release-notes-update-one.md
             - name: 基于 Azure Stack 的应用服务 Update 2 发行说明
               href: azure-stack-app-service-release-notes-update-two.md
-        - name: 部署 Ethereum
+        - name: 部署以太坊
           href: azure-stack-ethereum.md
         - name: 充实市场
           items:

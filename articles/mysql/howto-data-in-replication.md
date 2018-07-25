@@ -63,7 +63,7 @@ ms.locfileid: "36294415"
 
    在主服务器上创建一个配置有复制特权的用户帐户。 可以通过 SQL 命令或 MySQL Workbench 等工具实现此目的。 考虑是否打算使用 SSL 进行复制，因为这需要在创建用户时指定。 请参阅 MySQL 文档，了解如何在主服务器上[添加用户帐户](https://dev.mysql.com/doc/refman/5.7/en/adding-users.html)。 
 
-   在以下命令中，创建的新复制角色能够从任何计算机访问主服务器，而不仅仅是托管主服务器本身的计算机访问主服务器。 可以通过在 create user 命令中指定“syncuser@'%”来实现此目的。 请参阅 MySQL 文档，详细了解如何[指定帐户名称](https://dev.mysql.com/doc/refman/5.7/en/account-names.html)。
+   在以下命令中，创建的新复制角色能够从任何计算机访问主服务器，而不仅仅是托管主服务器本身的计算机访问主服务器。 可以通过在 create user 命令中指定“syncuser \@\ '%”来实现此目的。 请参阅 MySQL 文档，详细了解如何[指定帐户名称](https://dev.mysql.com/doc/refman/5.7/en/account-names.html)。
 
    **SQL 命令**
 

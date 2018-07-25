@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 4/20/2017
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: 7ca3945dd3768ac71e0a962417f0a621aa83be1e
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: f1582efa7d357f6f535c562a656ec17024357320
+ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34075714"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39242863"
 ---
 # <a name="recover-from-catastrophic-data-loss"></a>在发生灾难性数据丢失后进行恢复
 
@@ -65,11 +65,11 @@ Azure Stack 支持称为云恢复模式的部署类型。 只有当灾难或产�
  - 内部标识系统
  - 联合标识配置（断开连接部署）
  - 内部证书颁发机构使用的根证书
- - Azure 资源管理器配置用户数据，例如订阅、计划、产品/服务，以及存储、网络和计算资源的配额
+ - Azure 资源管理器配置用户数据，例如订阅、计划、套餐，以及存储、网络和计算资源的配额
  - KeyVault 机密和保管库
  - RBAC 策略分配和角色分配 
 
-在部署期间不会恢复任何用户基础结构即服务 (IaaS) 或平台即服务 (PaaS) 资源。 也就是说，IaaS VM、存储帐户、blob、表、网络配置等等都会丢失。 云恢复的目的是为了确保操作员和用户在部署完成后可以重新登录回门户。 重新登录回来的用户不会看到其任何资源。 用户将还原其订阅以及由管理员定义的原始计划和产品/服务策略。 重新登录回系统的用户在操作时将受原始解决方案在发生灾难前施加的相同约束制约。 在云恢复完成后，操作员可以手动还原增值 RP 和第三方 RP 以及关联的数据。
+在部署期间不会恢复任何用户基础结构即服务 (IaaS) 或平台即服务 (PaaS) 资源。 也就是说，IaaS VM、存储帐户、blob、表、网络配置等等都会丢失。 云恢复的目的是为了确保操作员和用户在部署完成后可以重新登录回门户。 重新登录回来的用户不会看到其任何资源。 用户将还原其订阅以及由管理员定义的原始计划和套餐策略。 重新登录回系统的用户在操作时将受原始解决方案在发生灾难前施加的相同约束制约。 在云恢复完成后，操作员可以手动还原增值 RP 和第三方 RP 以及关联的数据。
 
 ## <a name="next-steps"></a>后续步骤
 

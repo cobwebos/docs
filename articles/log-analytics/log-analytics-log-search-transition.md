@@ -50,7 +50,7 @@ Log Analytics 最近实现了新的查询语言。  本文提供有关转换到�
 |                        | Type=Event &#124; top 100 | Event &#124; take 100 |
 | 字符串比较      | Type=Event Computer=srv01.contoso.com   | Event &#124; where Computer == "srv01.contoso.com" |
 |                        | Type=Event Computer=contains("contoso") | Event &#124; where Computer contains "contoso"（不区分大小写）<br>Event &#124; where Computer contains_cs "Contoso"（不区分大小写） |
-|                        | Type=Event Computer=RegEx("\@contoso@")  | Event &#124; where Computer matches regex ".*contoso*" |
+|                        | Type=Event Computer=RegEx("\@contoso \@\")  | Event &#124; where Computer matches regex ".*contoso*" |
 | 日期比较        | Type=Event TimeGenerated > NOW-1DAYS | Event &#124; where TimeGenerated > ago(1d) |
 |                        | Type=Event TimeGenerated>2017-05-01 TimeGenerated<2017-05-31 | Event &amp;#124; where TimeGenerated between (datetime(2017-05-01) . datetime(2017-05-31)) |
 | 布尔比较     | Type=Heartbeat IsGatewayInstalled=false  | Heartbeat \| where IsGatewayInstalled == false |

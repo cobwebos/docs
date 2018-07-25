@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 05/15/2018
+ms.date: 07/16/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: ee1c48c4a33d699dcb3da24b2e9a3d6e001b16c5
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 706afa7cb79b7b5c2afcd729f36ff150b87dd6df
+ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801467"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39242931"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack 数据中心集成 - 标识
 可以使用 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识提供者来部署 Azure Stack。 必须在部署 Azure Stack 之前做出选择。 使用 AD FS 的部署也称为在断开连接模式下部署 Azure Stack。
@@ -162,7 +162,7 @@ Azure Stack 中的 Graph 服务使用以下协议和端口来与目标 Active Di
 |参数|说明|示例|
 |---------|---------|---------|
 |CustomAdfsName|声明提供程序的名称。 AD FS 登录页上会显示此名称。|Contoso|
-|CustomADFSFederationMetadataFile|联合元数据文件|https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml|
+|CustomADFSFederationMetadataFileContent|元数据内容|$using: federationMetadataFileContent|
 
 ### <a name="create-federation-metadata-file"></a>创建联合元数据文件
 
@@ -176,27 +176,22 @@ Azure Stack 中的 Graph 服务使用以下协议和端口来与目标 Active Di
    $Metadata.outerxml|out-file c:\metadata.xml
    ```
 
-2. 将元数据文件复制到可从特权终结点访问的共享。
-
+2. 将元数据文件复制到可以与特权终结点进行通信的计算机。
 
 ### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack"></a>触发自动化以便在 Azure Stack 中配置声明提供程序信任
 
-对于此过程，请使用能够与 Azure Stack 中特权终结点通信的计算机。
+对于此过程，使用能够与 Azure Stack 中特权终结点和到上一步中创建的元数据文件具有访问权限的计算机。
 
-1. 打开权限提升的 Windows PowerShell 会话并连接到特权终结点。
+1. 打开提升的 Windows PowerShell 会话。
 
    ```PowerShell  
+   $federationMetadataFileContent = get-content c:\metadata.cml
    $creds=Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
+   Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataFileContent $using:federationMetadataFileContent
    ```
 
-2. 连接到特权终结点之后，使用适用于环境的参数运行以下命令：
-
-   ```PowerShell  
-   Register-CustomAdfs -CustomAdfsName Contoso – CustomADFSFederationMetadataFile \\share\metadataexample.xml
-   ```
-
-3. 使用适用于环境的参数运行以下命令，更新默认提供商订阅的所有者：
+2. 使用适用于环境的参数运行以下命令，更新默认提供商订阅的所有者：
 
    ```PowerShell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
@@ -275,7 +270,7 @@ Microsoft 提供了用于配置信赖方信任（包括声明转换规则）的�
    Set-AdfsProperties -IgnoreTokenBinding $true
    ```
 
-5. Azure 堆栈门户和工具 (Visual Studio) 需要刷新令牌。 必须通过依赖方信任配置这些选项。 打开提升的 Windows PowerShell 会话，并运行以下命令：
+5. Azure Stack 门户和工具 (Visual Studio) 需要使用刷新令牌。 必须通过信赖方信任配置这些令牌。 打开权限提升的 Windows PowerShell 会话，并运行以下命令：
 
    ```PowerShell  
    Set-ADFSRelyingPartyTrust -TargetName AzureStack -TokenLifeTime 1440

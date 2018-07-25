@@ -3,7 +3,7 @@ title: Azure Stack 的基础结构备份服务最佳做法 | Microsoft Docs
 description: 在数据中心内部署和管理 Azure Stack 时可以遵守一套最佳做法，以便在发生灾难性故障时帮助减轻数据损失。
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: 221FDE40-3EF8-4F54-A075-0C4D66EECE1A
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/18/2018
-ms.author: jeffgilb
+ms.date: 4/20/2017
+ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: 0b6153a863b0637f314b4f333b255ec8d24b5b0c
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 4a0166856cf4d3f91c6cadf3e71f93000fbf158d
+ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136428"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39242965"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>基础结构备份服务最佳做法
 
@@ -34,7 +34,7 @@ ms.locfileid: "39136428"
 
 ### <a name="deployment"></a>部署
 
-在部署每个 Azure Stack 云后启用基础结构备份 使用 Azure Stack PowerShell 可以安排从任何具有访问权限的客户端/服务器到操作员管理 API 终结点备份。
+在部署每个 Azure Stack 云后启用基础结构备份 可以使用 AzureStack-Tools 通过访问操作员管理 API 终结点从任何客户端/服务器来计划备份。
 
 ### <a name="networking"></a>网络
 

@@ -16,11 +16,11 @@ ms.date: 4/20/2017
 ms.author: mabrigg
 ms.reviewer: hectorl
 ms.openlocfilehash: 608f3043e0e4b851820274ca743cbc44d1c8c0f1
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34075836"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39242897"
 ---
 # <a name="infrastructure-backup-service-reference"></a>基础结构备份服务参考
 
@@ -64,7 +64,7 @@ Azure Stack 由许多服务构成，其中包括门户、Azure 资源管理器�
 
 这些要求包括：
 
-  - **软件要求**– 介绍支持的存储位置和大小调整指南。 
+  - **软件要求**– 介绍受支持的存储位置和大小调整指南。 
   - **网络要求**– 介绍不同的存储位置的网络要求。  
 
 ### <a name="software-requirements"></a>软件要求
@@ -103,7 +103,7 @@ Azure Stack 由许多服务构成，其中包括门户、Azure 资源管理器�
 
 ## <a name="infrastructure-backup-limits"></a>基础结构备份限制
 
-当你规划、 部署和运行您的 Microsoft Azure 堆栈实例，请考虑这些限制。 下表介绍了这些限制。
+如计划、 部署和操作 Microsoft Azure Stack 实例，请考虑这些限制。 下表介绍了这些限制。
 
 ### <a name="infrastructure-backup-limits"></a>基础结构备份限制
 | 限制标识符                                                 | 限制        | 注释                                                                                                                                    |
