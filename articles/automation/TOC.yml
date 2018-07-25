@@ -99,6 +99,8 @@
           href: automation-runbook-output-and-messages.md
         - name: 源代码管理集成
           href: automation-source-control-integration.md
+        - name: 使用Graphical runbook SDK 创建 runbook
+          href: graphical-runbook-sdk.md
     - name: 自动化
       items:
         - name: 启动 Runbook
