@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 11af7a7a8acde263ad278239546e145245343581
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: deba3ad8a283b111dc94a5361f3fa4e73d95c0b8
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437189"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187377"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何在虚拟网络中使用 Azure API 管理
 使用 Azure 虚拟网络 (VNET) 可将多个 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 然后，可以使用各种 VPN 技术将这些网络连接到本地网络。 若要了解有关 Azure 虚拟网络的详细信息，请先了解以下信息：[Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
@@ -111,7 +111,7 @@ ms.locfileid: "37437189"
 | * / 80, 443 |入站 |TCP |INTERNET / VIRTUAL_NETWORK|客户端与 API 管理的通信|外部 |
 | * / 3443 |入站 |TCP |INTERNET / VIRTUAL_NETWORK|Azure 门户和 Powershell 的管理终结点 |内部 |
 | * / 80, 443 |出站 |TCP |VIRTUAL_NETWORK/INTERNET|Azure 存储上的依赖项、Azure 服务总线和 Azure Active Directory（如果适用）。|外部和内部 |
-| * / 1433 |出站 |TCP |VIRTUAL_NETWORK/INTERNET|**访问 Azure SQL 终结点** |外部和内部 |
+| * / 1433 |出站 |TCP |VIRTUAL_NETWORK / SQL|**访问 Azure SQL 终结点** |外部和内部 |
 | * / 5672 |出站 |TCP |VIRTUAL_NETWORK/INTERNET|事件中心策略日志和监视代理的依赖项 |外部和内部 |
 | * / 445 |出站 |TCP |VIRTUAL_NETWORK/INTERNET|与适用于 GIT 的 Azure 文件共享的依赖关系 |外部和内部 |
 | * / 1886 |出站 |TCP |VIRTUAL_NETWORK/INTERNET|需要为发布到资源运行状况的运行状况状态 |外部和内部 |
@@ -150,6 +150,7 @@ ms.locfileid: "37437189"
 * **初始安装**：如果在某个子网中初始部署 API 管理服务未成功，建议首先在同一子网中部署一个虚拟机。 接下来，在虚拟机中部署远程桌面，并验证是否存在与 Azure 订阅中的以下每个源的连接
     * Azure 存储 Blob
     * Azure SQL 数据库
+    * Azure 存储表
 
  > [!IMPORTANT]
  > 在验证连接后，在将 API 管理部署到子网中之前，请确保删除子网中部署的所有资源。
