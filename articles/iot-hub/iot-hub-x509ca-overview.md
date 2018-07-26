@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: eebaf679ada9da554f8582ad89db4e7491dcc134
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: b5028010953b9dbe2386c30e6fa05cc4a94cb971
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004347"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185486"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>使用 X.509 CA 证书进行设备身份验证
 
@@ -30,7 +30,7 @@ ms.locfileid: "39004347"
 
 ## <a name="prerequisite"></a>先决条件
 
-使用 X.509 CA 功能需要有一个 IoT 中心帐户。  [了解如何创建 IoT 中心实例](iot-hub-csharp-csharp-getstarted.md)（如果没有）。
+使用 X.509 CA 功能需要有一个 IoT 中心帐户。  [了解如何创建 IoT 中心实例](quickstart-send-telemetry-dotnet.md)（如果没有）。
 
 ## <a name="how-to-get-an-x509-ca-certificate"></a>如何获取 X.509 CA 证书
 

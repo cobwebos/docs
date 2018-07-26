@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 9a3d3d1c93ce0c8bc782a2634eb7be9b95fcf4b4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2039b7760704de35c688dda41e3b75425e5ec0e8
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633564"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186265"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>了解 IoT 中心的标识注册表
 
@@ -180,7 +180,7 @@ iothub-message-schema | moduleLifecycleNotification |
 
 设备识别表示为包含以下属性的 JSON 文档：
 
-| 属性 | 选项 | 说明 |
+| 属性 | 选项 | Description |
 | --- | --- | --- |
 | deviceId |必需，更新时只读 |ASCII 7 位字母数字字符 + 某些特殊字符（`- . + % _ # * ? ! ( ) , = @ $ '`）的区分大小写字符串（最长为 128 个字符）。 |
 | generationId |必需，只读 |IoT 中心生成的区分大小写字符串，最长为 128 个字符。 删除并重新创建设备时，此值用于区分具有相同 **deviceId** 的设备。 |
@@ -201,7 +201,7 @@ iothub-message-schema | moduleLifecycleNotification |
 
 模块识别表示为包含以下属性的 JSON 文档：
 
-| 属性 | 选项 | 说明 |
+| 属性 | 选项 | Description |
 | --- | --- | --- |
 | deviceId |必需，更新时只读 |ASCII 7 位字母数字字符 + 某些特殊字符（`- . + % _ # * ? ! ( ) , = @ $ '`）的区分大小写字符串（最长为 128 个字符）。 |
 | moduleId |必需，更新时只读 |ASCII 7 位字母数字字符 + 某些特殊字符（`- . + % _ # * ? ! ( ) , = @ $ '`）的区分大小写字符串（最长为 128 个字符）。 |
@@ -264,5 +264,5 @@ IoT 中心开发人员指南中的其他参考主题包括：
 [lnk-devguide-directmethods]: iot-hub-devguide-direct-methods.md
 [lnk-devguide-jobs]: iot-hub-devguide-jobs.md
 
-[lnk-getstarted-tutorial]: iot-hub-csharp-csharp-getstarted.md
+[lnk-getstarted-tutorial]: quickstart-send-telemetry-dotnet.md
 [lnk-dps]: https://azure.microsoft.com/documentation/services/iot-dps

@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: kgremban
-ms.openlocfilehash: 532ae26dfd7add5c5ecc61db259903239e449f40
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: eb5e7ce608f434bd880baae4d6780dd5038099f8
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38299138"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187210"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>使用 IoT 中心将文件从设备上传到云
 
@@ -25,7 +25,7 @@ ms.locfileid: "38299138"
 - 安全地提供存储容器用于文件上传。
 - 使用 Python 客户端通过 IoT 中心上传文件。
 
-[IoT 中心入门](iot-hub-node-node-getstarted.md)教程展示了 IoT 中心基本的设备到云消息功能。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 需要从设备上传文件时，仍可以使用 IoT 中心的安全性和可靠性。
+[IoT 中心入门](quickstart-send-telemetry-node.md)教程展示了 IoT 中心基本的设备到云消息功能。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 需要从设备上传文件时，仍可以使用 IoT 中心的安全性和可靠性。
 
 > [!NOTE]
 > IoT 中心 Python SDK 目前仅支持上传基于字符的文件，如 .txt 文件。

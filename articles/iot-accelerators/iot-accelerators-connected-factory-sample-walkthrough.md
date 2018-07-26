@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 214573374498955c4abf018e8c7854c6d9c2c164
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ae5218bae12b9489d67b0264f0e5fdb6d833cb9e
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627136"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187761"
 ---
 # <a name="connected-factory-solution-accelerator-walkthrough"></a>连接工厂解决方案加速器演练
 
@@ -32,7 +32,7 @@ ms.locfileid: "34627136"
 
 * 排查解决方案中的问题。
 * 规划如何根据具体要求自定义该解决方案。
-* 设计自己的 IoT 解决方案，以使用 Azure 服务。
+* 设计使用 Azure 服务的 IoT 解决方案。
 
 有关详细信息，请参阅[连接工厂常见问题解答](iot-accelerators-faq-cf.md)。
 
@@ -231,7 +231,7 @@ TSI 使用一个搜索跨度（Time.From、Time.To）对节点数据进行查询
 
 [connected-factory-logical]:media/iot-accelerators-connected-factory-sample-walkthrough/cf-logical-architecture.png
 
-[lnk-preconfigured-solutions]:iot-accelerators-what-are-solution-accelerators.md
+[lnk-preconfigured-solutions]:about-iot-accelerators.md
 [lnk-customize]: iot-accelerators-connected-factory-customize.md
 [lnk-IoT Hub]: https://azure.microsoft.com/documentation/services/iot-hub/
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md

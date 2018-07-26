@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c51c79b85f5277496a3b8f80fe2487136a9fcbc1
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 12628b5a552b864784d780e5f2adc00aac579911
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228608"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215027"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>将作业状态和作业流从自动化转发到 Log Analytics
 自动化可以将 Runbook 作业状态和作业流发送到 Log Analytics 工作区。 可在 Azure 门户中或使用 PowerShell 查看单个作业的作业日志和作业流，这使用户可执行简单的调查。 现在，使用 Log Analytics，可以：
@@ -37,14 +37,14 @@ ms.locfileid: "36228608"
 
 ```powershell-interactive
 # Find the ResourceId for the Automation Account
-Find-AzureRmResource -ResourceType "Microsoft.Automation/automationAccounts"
+Get-AzureRmResource -ResourceType "Microsoft.Automation/automationAccounts"
 ```
 
 要查找 Log Analytics 工作区的 ResourceId，请运行以下 PowerShell：
 
 ```powershell-interactive
 # Find the ResourceId for the Log Analytics workspace
-Find-AzureRmResource -ResourceType "Microsoft.OperationalInsights/workspaces"
+Get-AzureRmResource -ResourceType "Microsoft.OperationalInsights/workspaces"
 ```
 
 如果有多个自动化帐户或工作区，请在上述命令的输出中找到需要配置的*名称*，并复制 *ResourceId* 的值。
@@ -83,7 +83,7 @@ Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 来自 Azure 自动化的诊断将在 Log Analytics 中创建两种类型的记录，并标记为 **AzureDiagnostics**。 下面的查询使用了升级后的 Log Analytics 查询语言。 有关旧查询语言与新 Azure Log Analytics 查询语言之间的共有查询的相关信息，请访问 [Legacy to new Azure Log Analytics Query Language cheat sheet](https://docs.loganalytics.io/docs/Learn/References/Legacy-to-new-to-Azure-Log-Analytics-Language)（新旧 Azure Log Analytics 查询语言速查表）。
 
 ### <a name="job-logs"></a>作业日志
-| 属性 | 说明 |
+| 属性 | Description |
 | --- | --- |
 | TimeGenerated |执行 Runbook 作业的日期和时间。 |
 | RunbookName_s |Runbook 的名称。 |
@@ -105,7 +105,7 @@ Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 
 
 ### <a name="job-streams"></a>作业流
-| 属性 | 说明 |
+| 属性 | Description |
 | --- | --- |
 | TimeGenerated |执行 Runbook 作业的日期和时间。 |
 | RunbookName_s |Runbook 的名称。 |

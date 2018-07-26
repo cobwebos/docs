@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 91a89d5db7c763fc3fe275d6c01f5fe9dd9af3af
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 1dae926a3a368e518877b210fb1caf487688750c
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125909"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187360"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT 中心术语词汇表
 本文列出了一些在 IoT 中心文章中使用的常用术语。
@@ -151,7 +151,7 @@ IoT 中心公开了多个[终结点](iot-hub-devguide-endpoints.md)，以便使�
 若要读取发送到 IoT 中心的[设备到云](#device-to-cloud)消息，可以连接到中心上的终结点，并使用任何事件中心兼容的方法读取这些消息。 事件中心兼容的方法包括使用[事件中心 SDK](../event-hubs/event-hubs-programming-guide.md) 和 [Azure 流分析](../stream-analytics/stream-analytics-introduction.md)。
 
 ## <a name="field-gateway"></a>现场网关
-使用现场网关与无法直接连接到 [IoT 中心](#iot-hub)的设备建立连接。现场网关通常部署在设备本地。 有关详细信息，请参阅[什么是 Azure IoT 中心？](iot-hub-what-is-iot-hub.md)
+使用现场网关与无法直接连接到 [IoT 中心](#iot-hub)的设备建立连接。现场网关通常部署在设备本地。 有关详细信息，请参阅[什么是 Azure IoT 中心？](about-iot-hub.md)
 
 ## <a name="free-account"></a>免费帐户
 可以创建[免费的 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)，以便使用 IoT 中心服务（及其他 Azure 服务）完成 IoT 中心教程和试验。
@@ -168,7 +168,7 @@ IoT 中心公开了多个[终结点](iot-hub-devguide-endpoints.md)，以便使�
 [!INCLUDE [azure-iot-hub-edge-glossary-includes](../../includes/azure-iot-hub-edge-glossary-includes.md)]
 
 ## <a name="iot-hub"></a>IoT 中心
-IoT 中心是完全托管的 Azure 服务，用于支持数百万台设备和解决方案后端之间可靠、安全的双向通信。 有关详细信息，请参阅[什么是 Azure IoT 中心？](iot-hub-what-is-iot-hub.md) 使用 [Azure 订阅](#subscription)可以创建 IoT 中心来处理 IoT 消息传送工作负荷。
+IoT 中心是完全托管的 Azure 服务，用于支持数百万台设备和解决方案后端之间可靠、安全的双向通信。 有关详细信息，请参阅[什么是 Azure IoT 中心？](about-iot-hub.md) 使用 [Azure 订阅](#subscription)可以创建 IoT 中心来处理 IoT 消息传送工作负荷。
 
 ## <a name="iot-hub-metrics"></a>IoT 中心指标
 [IoT 中心指标](iot-hub-metrics.md)向用户提供有关 [Azure 订阅](#subscription)中的 IoT 中心的状态数据。 可以使用 IoT 中心度量值评估服务以及连接到服务的设备的总体运行状况。 IoT 中心度量值可以帮助用户了解 IoT 中心发生的情况，并调查根本原因，而无需联系 Azure 支持部门。
@@ -180,7 +180,7 @@ IoT 中心是完全托管的 Azure 服务，用于支持数百万台设备和解
 使用 [IoT 中心资源 REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource)，可以管理 [Azure 订阅](#subscription)中的 IoT 中心，包括创建、更新和删除中心等操作。
 
 ## <a name="iot-solution-accelerators"></a>IoT 解决方案加速器
-Azure IoT 解决方案加速器将多个 Azure 服务一起打包到解决方案中。 利用这些解决方案，能够快速开始使用常用 IoT 方案的端到端实现。 有关详细信息，请参阅 [Azure IoT 解决方案加速器是什么？](../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md)
+Azure IoT 解决方案加速器将多个 Azure 服务一起打包到解决方案中。 利用这些解决方案，能够快速开始使用常用 IoT 方案的端到端实现。 有关详细信息，请参阅 [Azure IoT 解决方案加速器是什么？](../iot-accelerators/about-iot-accelerators.md)
 
 ## <a name="the-iot-extension-for-azure-cli-20"></a>适用于 Azure CLI 2.0 的 IoT 扩展
 [适用于 Azure CLI 2.0 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)是一个跨平台的命令行工具。 使用该工具可以管理[标识注册表](#identity-registry)中的设备、向设备发送消息和文件和接收来自设备的消息和文件，以及监视 IoT 中心的操作。
@@ -201,7 +201,7 @@ Azure IoT 解决方案加速器将多个 Azure 服务一起打包到解决方案
 连接到 IoT 中心的面向设备或面向服务的终结点时，[连接字符串](#connection-string)包含用于授权的密钥。 在[标识注册表](#identity-registry)中添加设备或者在中心添加[共享访问策略](#shared-access-policy)时，服务将生成主要和次要密钥。 拥有两个密钥能够在更新密钥时从一个密钥切换到另一个密钥，而不会失去 IoT 中心访问权限。
 
 ## <a name="protocol-gateway"></a>协议网关
-协议网关通常部署在云中，为连接到 [IoT 中心](#iot-hub)的设备提供协议转换服务。 有关详细信息，请参阅[什么是 Azure IoT 中心？](iot-hub-what-is-iot-hub.md)
+协议网关通常部署在云中，为连接到 [IoT 中心](#iot-hub)的设备提供协议转换服务。 有关详细信息，请参阅[什么是 Azure IoT 中心？](about-iot-hub.md)
 
 ## <a name="quotas-and-throttling"></a>配额和限制
 各种[配额](iot-hub-devguide-quotas-throttling.md)可用于 [IoT 中心](#iot-hub)，其中许多配额因所在的中心的层而异。 [IoT 中心](#iot-hub)在运行时也对服务的使用实施一些[限制](iot-hub-devguide-quotas-throttling.md)。

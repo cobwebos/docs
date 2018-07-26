@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: ponatara
-ms.openlocfilehash: c4bc8a1b2ab8f6569d6893f5c4fc16339ebddbe6
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 45d366842416ddfa7b0153a1d075ee6de58e45a1
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917204"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213627"
 ---
 # <a name="replicate-a-multi-tier-citrix-xenapp-and-xendesktop-deployment-using-azure-site-recovery"></a>使用 Azure Site Recovery 复制多层 Citrix XenApp 和 XenDesktop 部署
 
@@ -182,7 +182,7 @@ Citrix XenApp 和 XenDesktop 场通常具有以下部署模式：
 
 
    >[!NOTE]
-   >可以使用[此处](https://github.com/Azure/azure-quickstart-templates/blob/>master/asr-automation-recovery/scripts)的脚本，根据需要使用已故障转移虚拟机的新 IP 更新 DNS 或在已故障转移虚拟机上附加负载均衡器。
+   >可以使用[此处](https://github.com/Azure/azure-quickstart-templates/tree/master/asr-automation-recovery/scripts)的脚本，根据需要使用已故障转移虚拟机的新 IP 更新 DNS 或在已故障转移虚拟机上附加负载均衡器。
 
 
 ## <a name="doing-a-test-failover"></a>执行测试故障转移

@@ -3,7 +3,7 @@ title: 将 Azure DNS 与 Azure 资源集成 | Microsoft Docs
 description: 了解如何使用 Azure DNS 来为 Azure 资源提供 DNS。
 services: dns
 documentationcenter: na
-author: KumudD
+author: vhorne
 manager: jeconnoc
 ms.service: dns
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/19/2018
-ms.author: kumud
-ms.openlocfilehash: cbc769cd7356b3057fd2aae295071b04d2e40d91
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.author: victorh
+ms.openlocfilehash: 9c0ccb7c5ccb3eced32ea5bcd9f1961c5ccd2110
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2018
-ms.locfileid: "27994376"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173837"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>使用 Azure DNS 为 Azure 服务提供自定义域设置
 
@@ -43,7 +43,7 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 
 导航到 DNS 区域，单击“+ 记录集”。 在“添加记录集”边栏选项卡上填写以下信息，单击“确定”创建该记录集。
 
-|属性  |值  |说明  |
+|属性  |值  |Description  |
 |---------|---------|---------|
 |名称     | myfunctionapp        | 此值连同域名标签是自定义域名的 FQDN。        |
 |Type     | CNAME        | 使用 CNAME 记录相当于使用别名。        |
@@ -68,7 +68,7 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 导航到 DNS 区域，单击“+ 记录集”。 在“添加记录集”边栏选项卡上填写以下信息，单击“确定”创建该记录集。
 
 
-|属性  |值  |说明  |
+|属性  |值  |Description  |
 |---------|---------|---------|
 |名称     | mywebserver        | 此值连同域名标签是自定义域名的 FQDN。        |
 |Type     | A        | 由于资源是 IP 地址，因此应使用 A 记录。        |
@@ -95,7 +95,7 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 导航到 DNS 区域，单击“+ 记录集”。 在“添加记录集”边栏选项卡上填写以下信息，单击“确定”创建该记录集。
 
 
-|属性  |值  |说明  |
+|属性  |值  |Description  |
 |---------|---------|---------|
 |名称     | mywebserver        | 此值连同域名标签是自定义域名的 FQDN。        |
 |Type     | CNAME        | 使用 CNAME 记录相当于使用别名。 如果资源使用了 IP 地址，则会使用 A 记录。        |
@@ -129,7 +129,7 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 导航到 DNS 区域，单击“+ 记录集”。 在“添加记录集”边栏选项卡上填写以下信息，单击“确定”创建该记录集。
 
 
-|属性  |值  |说明  |
+|属性  |值  |Description  |
 |---------|---------|---------|
 |名称     | asverify.mystorageaccount        | 此值连同域名标签是自定义域名的 FQDN。        |
 |Type     | CNAME        | 使用 CNAME 记录相当于使用别名。        |
@@ -157,7 +157,7 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 
 导航到 DNS 区域，单击“+ 记录集”。 在“添加记录集”边栏选项卡上填写以下信息，单击“确定”创建该记录集。
 
-|属性  |值  |说明  |
+|属性  |值  |Description  |
 |---------|---------|---------|
 |名称     | cdnverify.mycdnendpoint        | 此值连同域名标签是自定义域名的 FQDN。        |
 |Type     | CNAME        | 使用 CNAME 记录相当于使用别名。        |

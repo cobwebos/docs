@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 09/05/2017
 ms.author: fryu
-ms.openlocfilehash: 05021d5ab8d33e36bff16ce7d2ebacd3db72639a
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: dd11dd9edd5a90f6f541b56263cea4c4c76225bd
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034322"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249132"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 存储指标
 
@@ -31,7 +31,7 @@ Azure Monitor 提供统一的用户界面用于监视不同的 Azure 服务。 �
 
 Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https://portal.azure.com)、Azure Monitor API（REST 和 .Net）与分析解决方案（例如 Operation Management Suite 和事件中心）访问指标。 有关详细信息，请参阅 [Azure Monitor 指标](../../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
 
-默认情况下，已启用指标，并且可访问过去 30 天的数据。 如需将数据保留更长一段时间，可将指标数据存档到 Azure 存储帐户。 可在 Azure Monitor 的 [诊断设置](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) 中完成这种配置。
+默认情况下，已启用指标，并且可访问过去 30 天的数据。 如需将数据保留更长一段时间，可将指标数据存档到 Azure 存储帐户。 可在 Azure Monitor 的 [诊断设置](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) 中完成这种配置。
 
 ### <a name="access-metrics-in-the-azure-portal"></a>在 Azure 门户中访问指标
 
@@ -336,13 +336,13 @@ Azure 存储在 Azure Monitor 中提供以下容量指标。
 
 ### <a name="account-level"></a>帐户级别
 
-| 指标名称 | 说明 |
+| 指标名称 | Description |
 | ------------------- | ----------------- |
 | UsedCapacity | 存储帐户使用的存储量。 对于标准存储帐户，该指标是 Blob、表、文件和队列使用的容量总和。 对于高级存储帐户和 Blob 存储帐户，它与 BlobCapacity 相同。 <br/><br/> 单元：字节 <br/> 聚合类型：平均 <br/> 值示例：1024 |
 
 ### <a name="blob-storage"></a>Blob 存储
 
-| 指标名称 | 说明 |
+| 指标名称 | Description |
 | ------------------- | ----------------- |
 | BlobCapacity | 存储帐户中使用的 Blob 存储总计。 <br/><br/> 单元：字节 <br/> 聚合类型：平均 <br/> 值示例：1024 <br/> 维度：BlobType（[定义](#metrics-dimensions)） |
 | BlobCount    | 在存储帐户中存储的 Blob 对象数。 <br/><br/> 单位：计数 <br/> 聚合类型：平均 <br/> 值示例：1024 <br/> 维度：BlobType（[定义](#metrics-dimensions)） |
@@ -350,7 +350,7 @@ Azure 存储在 Azure Monitor 中提供以下容量指标。
 
 ### <a name="table-storage"></a>表存储
 
-| 指标名称 | 说明 |
+| 指标名称 | Description |
 | ------------------- | ----------------- |
 | TableCapacity | 存储帐户使用的表存储量。 <br/><br/> 单元：字节 <br/> 聚合类型：平均 <br/> 值示例：1024 |
 | TableCount   | 存储帐户中的表数目。 <br/><br/> 单位：计数 <br/> 聚合类型：平均 <br/> 值示例：1024 |
@@ -358,7 +358,7 @@ Azure 存储在 Azure Monitor 中提供以下容量指标。
 
 ### <a name="queue-storage"></a>队列存储
 
-| 指标名称 | 说明 |
+| 指标名称 | Description |
 | ------------------- | ----------------- |
 | QueueCapacity | 存储帐户使用的队列存储量。 <br/><br/> 单元：字节 <br/> 聚合类型：平均 <br/> 值示例：1024 |
 | QueueCount   | 存储帐户中的队列数目。 <br/><br/> 单位：计数 <br/> 聚合类型：平均 <br/> 值示例：1024 |
@@ -366,7 +366,7 @@ Azure 存储在 Azure Monitor 中提供以下容量指标。
 
 ### <a name="file-storage"></a>文件存储
 
-| 指标名称 | 说明 |
+| 指标名称 | Description |
 | ------------------- | ----------------- |
 | FileCapacity | 存储帐户使用的文件存储量。 <br/><br/> 单元：字节 <br/> 聚合类型：平均 <br/> 值示例：1024 |
 | FileCount   | 存储帐户中的文件数目。 <br/><br/> 单位：计数 <br/> 聚合类型：平均 <br/> 值示例：1024 |
@@ -378,7 +378,7 @@ Azure 存储在 Azure Monitor 中提供以下容量指标。
 
 Azure 存储在 Azure Monitor 中提供以下事务指标。
 
-| 指标名称 | 说明 |
+| 指标名称 | Description |
 | ------------------- | ----------------- |
 | 事务 | 向存储服务或指定的 API 操作发出的请求数。 此数字包括成功和失败的请求数，以及引发错误的请求数。 <br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 适用的维度：ResponseType、GeoType、ApiName（[定义](#metrics-dimensions)）<br/> 值示例：1024 |
 | 流入量 | 流入数据量。 此数字包括从外部客户端到 Azure 存储流入的数据量，以及流入 Azure 中的数据量。 <br/><br/> 单元：字节 <br/> 聚合类型：总计 <br/> 适用的维度：GeoType、ApiName（[定义](#metrics-dimensions)） <br/> 值示例：1024 |
@@ -391,7 +391,7 @@ Azure 存储在 Azure Monitor 中提供以下事务指标。
 
 Azure 存储支持对 Azure Monitor 中的指标使用以下维度。
 
-| 维度名称 | 说明 |
+| 维度名称 | Description |
 | ------------------- | ----------------- |
 | /BlobType | 仅限 Blob 指标的 Blob 类型。 支持的值为 **BlockBlob** 和 **PageBlob**。 BlockBlob 中包含追加 Blob。 |
 | ResponseType | 事务响应类型。 可用的值包括： <br/><br/> <li>ServerOtherError：除描述的错误以外的其他所有服务器端错误 </li> <li> ServerBusyError：返回了 HTTP 503 状态代码的已经过身份验证的请求。 </li> <li> ServerTimeoutError：返回了 HTTP 500 状态代码的已超时且经过身份验证的请求。 由于服务器错误而发生超时。 </li> <li> AuthorizationError：由于未经授权访问数据或者授权失败，经过身份验证的请求失败。 </li> <li> NetworkError：由于网络错误，经过身份验证的请求失败。 往往发生于客户端在超时失效之前提前关闭了连接时。 </li> <li>    ClientThrottlingError：客户端限制错误。 </li> <li> ClientTimeoutError：返回了 HTTP 500 状态代码的已超时且经过身份验证的请求。 如果将客户端的网络超时或请求超时设置为比存储服务预期值更小的值，则预期会发生此超时。 否则，会报告为 ServerTimeoutError。 </li> <li> ClientOtherError：除描述的错误以外的其他所有客户端错误。 </li> <li> Success：成功请求|
@@ -404,7 +404,7 @@ Azure 存储支持对 Azure Monitor 中的指标使用以下维度。
 
 旧指标可与 Azure Monitor 托管的指标一同使用。 在 Azure 存储终止旧指标的服务之前，支持范围保持不变。
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 **Azure 存储是否支持托管磁盘或非托管磁盘的指标？**
 

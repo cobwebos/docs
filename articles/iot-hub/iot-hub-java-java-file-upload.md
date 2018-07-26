@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.author: dobett
-ms.openlocfilehash: 09580f3bb5d6f6f5ccb15adddf0cf1f9e19c2210
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 165c6ed53b611ba6b4f56260f20069661cf22da7
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38619397"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186553"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>使用 IoT 中心将文件从设备上传到云
 
@@ -25,7 +25,7 @@ ms.locfileid: "38619397"
 - 安全提供具有 Azure blob URI 的设备，用于上传文件。
 - 使用 IoT 中心文件上传通知触发处理应用后端中的文件。
 
-[IoT 中心入门](iot-hub-java-java-getstarted.md)和[使用 IoT 中心发送云到设备的消息](iot-hub-java-java-c2d.md)教程介绍了 IoT 中心提供的基本的设备到云和云到设备的消息传送功能。 [处理设备到云的消息](tutorial-routing.md)教程介绍了一种在 Azure Blob 存储中可靠存储设备到云消息的方法。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
+[IoT 中心入门](quickstart-send-telemetry-java.md)和[使用 IoT 中心发送云到设备的消息](iot-hub-java-java-c2d.md)教程介绍了 IoT 中心提供的基本的设备到云和云到设备的消息传送功能。 [处理设备到云的消息](tutorial-routing.md)教程介绍了一种在 Azure Blob 存储中可靠存储设备到云消息的方法。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
 
 * 包含图像的大型文件
 * 视频

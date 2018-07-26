@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: elioda
-ms.openlocfilehash: c002685dfd3b8f86a8657b5d30dee29641cef932
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e94b023275f3992bea9595195688eebf42f0f229
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632870"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186782"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>了解并在 IoT 中心内使用设备孪生
 
@@ -376,7 +376,7 @@ IoT 中心开发人员指南中的其他参考主题包括：
 [lnk-devguide-directmethods]: iot-hub-devguide-direct-methods.md
 [lnk-devguide-jobs]: iot-hub-devguide-jobs.md
 [lnk-twin-tutorial]: iot-hub-node-node-twin-getstarted.md
-[lnk-twin-properties]: iot-hub-node-node-twin-how-to-configure.md
+[lnk-twin-properties]: tutorial-device-twins.md
 [lnk-twin-metadata]: iot-hub-devguide-device-twins.md#device-twin-metadata
 [lnk-concurrency]: iot-hub-devguide-device-twins.md#optimistic-concurrency
 [lnk-reconnection]: iot-hub-devguide-device-twins.md#device-reconnection-flow

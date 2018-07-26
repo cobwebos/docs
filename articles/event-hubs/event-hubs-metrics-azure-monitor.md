@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/12/2018
 ms.author: sethm
-ms.openlocfilehash: 445b439ff77a88a4b7783427f5fab0e40a485542
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f25900ddffd9d8be008abbb3672a3f6a2eabd481
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31405134"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248107"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor-preview"></a>Azure Monitor（预览版）中的 Azure 事件中心指标
 
@@ -31,7 +31,7 @@ Azure Monitor 提供了统一的用户界面，可用于监视各种 Azure 服�
 
 Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https://portal.azure.com)、Azure Monitor API（REST 和 .Net）与分析解决方案（例如 Operation Management Suite 和事件中心）访问指标。 有关详细信息，请参阅 [Azure Monitor 指标](../monitoring-and-diagnostics/monitoring-overview-metrics.md#access-metrics-via-the-rest-api)。
 
-默认情况下，已启用指标，并且可访问最近 30 天的数据。 如需将数据保留更长一段时间，可将指标数据存档到 Azure 存储帐户。 可在 Azure Monitor 的 [诊断设置](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) 中完成这种配置。
+默认情况下，已启用指标，并且可访问最近 30 天的数据。 如需将数据保留更长一段时间，可将指标数据存档到 Azure 存储帐户。 可在 Azure Monitor 的 [诊断设置](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) 中完成这种配置。
 
 ## <a name="access-metrics-in-the-portal"></a>在门户中访问指标
 
@@ -60,7 +60,7 @@ Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https:/
 
 计算数据量和管理操作请求数。
 
-| 指标名称 | 说明 |
+| 指标名称 | Description |
 | ------------------- | ----------------- |
 | 传入的请求数（预览版） | 在指定期间内向 Azure 事件中心服务发送的请求数。 <br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName |
 | 成功的请求（预览）   | 在指定期间内向 Azure 事件中心服务发送成功的请求数。 <br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName |
@@ -71,13 +71,13 @@ Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https:/
 
 ## <a name="throughput-metrics"></a>吞吐量指标
 
-| 指标名称 | 说明 |
+| 指标名称 | Description |
 | ------------------- | ----------------- |
 |限制的请求数（预览版）|由于超出吞吐量单位用量而被限制的请求数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 
 ## <a name="message-metrics"></a>消息指标
 
-| 指标名称 | 说明 |
+| 指标名称 | Description |
 | ------------------- | ----------------- |
 |传入的消息数（预览版）|在指定期间内发送到事件中心的事件或邮件数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 |待发邮件（预览）|在指定期间内从事件中心检索的事件或邮件数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
@@ -86,7 +86,7 @@ Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https:/
 
 ## <a name="connection-metrics"></a>连接指标
 
-| 指标名称 | 说明 |
+| 指标名称 | Description |
 | ------------------- | ----------------- |
 |ActiveConnections（预览版）|命名空间以及实体上的活动连接数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 |打开的连接数（预览版）|打开的连接数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
@@ -96,7 +96,7 @@ Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https:/
 
 当为事件中心启用捕获功能时，即可监视事件中心捕获指标。 以下指标描述了在启用捕获的情况下可监视的内容。
 
-| 指标名称 | 说明 |
+| 指标名称 | Description |
 | ------------------- | ----------------- |
 |捕获的积压工作（预览）|尚未捕获到所选目标的字节数。<br/><br/> 单元：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 |捕获的邮件（预览）|在指定期间内捕获到所选目标的邮件或事件数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
@@ -106,7 +106,7 @@ Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https:/
 
 Azure 事件中心支持对 Azure Monitor 中的指标使用以下维度。 为指标添加维度是可选项。 如果不添加维度，则指标是在命名空间级别指定的。 
 
-| 指标名称 | 说明 |
+| 指标名称 | Description |
 | ------------------- | ----------------- |
 |EntityName| 事件中心支持命名空间下的事件中心实体。|
 
@@ -118,7 +118,7 @@ Azure 事件中心支持对 Azure Monitor 中的指标使用以下维度。 为�
 有关事件中心的详细信息，请访问以下链接：
 
 * 使用 [事件中心教程](event-hubs-dotnet-standard-getstarted-send.md)
-* [事件中心常见问题](event-hubs-faq.md)
+* [事件中心常见问题解答](event-hubs-faq.md)
 * [使用事件中心的示例应用程序](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 
 [1]: ./media/event-hubs-metrics-azure-monitor/event-hubs-monitor1.png

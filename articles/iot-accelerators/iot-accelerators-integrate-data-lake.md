@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 5ba9b5534e986be1cbe55043a9acdd981d2ed7fd
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: a918866ff5e206ea4d2dedde2711424924a478fe
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971731"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188058"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>将远程监视解决方案与 Azure Data Lake Store 集成
 
@@ -25,7 +25,7 @@ ms.locfileid: "38971731"
 
 若要完成本操作指南，需要满足以下条件：
 
-* [部署远程监视解决方案加速器](iot-accelerators-remote-monitoring-deploy.md)。
+* [部署远程监视解决方案加速器](quickstart-remote-monitoring-deploy.md)。
   * 远程监视解决方案会将本文中使用的 IoT 中心和 Azure 流分析作业部署到 Azure 订阅。
 * [部署 Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md)
   * 应将 Data Lake Store 部署到远程监视解决方案所在的同一区域。

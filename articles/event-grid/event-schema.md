@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 07/06/2018
+ms.date: 07/20/2018
 ms.author: babanisa
-ms.openlocfilehash: 266ddced5f1949fa72508d914f76953101a7aac6
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: f7be7e5f5e51a47b95d39047af9bcf08e463ca34
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902219"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186105"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure 事件网格事件架构
 
@@ -80,7 +80,7 @@ ms.locfileid: "37902219"
 
 所有事件均具有以下相同的顶级数据：
 
-| 属性 | Type | 说明 |
+| 属性 | Type | Description |
 | -------- | ---- | ----------- |
 | 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | 字符串 | 事件主题的发布者定义路径。 |
@@ -94,6 +94,7 @@ ms.locfileid: "37902219"
 若要了解数据对象中的属性，请参阅事件源：
 
 * [Azure 订阅（管理操作）](event-schema-subscriptions.md)
+* [容器注册表](event-schema-container-registry.md)
 * [Blob 存储](event-schema-blob-storage.md)
 * [事件中心](event-schema-event-hubs.md)
 * [IoT 中心](event-schema-iot-hub.md)

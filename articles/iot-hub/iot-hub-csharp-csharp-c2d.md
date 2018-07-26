@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: elioda
-ms.openlocfilehash: e4bec631550d6ca3dc2c702b3b3f56bd29c59f03
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e2090977813f5335f2170ff543bde19cd8bf123b
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631881"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185785"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>使用 IoT 中心 (.NET) 将消息从云发送到设备
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -101,7 +101,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 4. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
    
         using Microsoft.Azure.Devices;
-5. 将以下字段添加到 **Program** 类。 将占位符值替换为在 [IoT 中心入门]中获取的 IoT 中心连接字符串：
+5. 将以下字段添加到 Program 类。 将占位符值替换为在 [IoT 中心入门]中获取的 IoT 中心连接字符串：
    
         static ServiceClient serviceClient;
         static string connectionString = "{iot hub connection string}";
@@ -189,7 +189,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 [IoT Hub developer guide - C2D]: iot-hub-devguide-messaging.md
 
 [IoT 中心开发人员指南]: iot-hub-devguide.md
-[IoT 中心入门]: iot-hub-csharp-csharp-getstarted.md
+[IoT 中心入门]: quickstart-send-telemetry-dotnet.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [Azure IoT 远程监视解决方案加速器]: https://docs.microsoft.com/azure/iot-suite/
 [Azure IoT 设备 SDK]: iot-hub-devguide-sdks.md

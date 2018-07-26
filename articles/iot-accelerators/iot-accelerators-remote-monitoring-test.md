@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: 33566bd31f320ccc21f32a256d96d89ee25198bb
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 8d8835bd97b489a730a040e86748c668963c7196
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37088399"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187717"
 ---
 # <a name="create-a-new-simulated-device"></a>创建新的模拟设备
 
@@ -71,7 +71,7 @@ ms.locfileid: "37088399"
 
 本教程介绍如何在远程监视解决方案加速器中使用设备模拟器：
 
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 
 >[!div class="checklist"]
 > * 创建新设备类型
@@ -87,7 +87,7 @@ ms.locfileid: "37088399"
 
 若要学习本教程，需要：
 
-* 在 Azure 订阅中部署远程监视解决方案的实例。 如果尚未部署远程监视解决方案，应完成[部署远程监视解决方案加速器](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md)教程。
+* 在 Azure 订阅中部署远程监视解决方案的实例。 如果尚未部署远程监视解决方案，应完成[部署远程监视解决方案加速器](../iot-accelerators/quickstart-remote-monitoring-deploy.md)教程。
 
 * Visual Studio 2017。 如果尚未安装 Visual Studio 2017，可以下载免费的[Visual Studio Community Edition](https://www.visualstudio.com/free-developer-offers/)。
 

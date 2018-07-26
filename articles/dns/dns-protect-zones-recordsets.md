@@ -3,7 +3,7 @@ title: 保护 DNS 区域和记录 | Microsoft Docs
 description: 如何保护 DNS 区域和 Microsoft Azure DNS 中的记录集。
 services: dns
 documentationcenter: na
-author: KumudD
+author: vhorne
 manager: jeconnoc
 ms.assetid: 190e69eb-e820-4fc8-8e9a-baaf0b3fb74a
 ms.service: dns
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2016
-ms.author: kumud
-ms.openlocfilehash: d13556eb274990eadf58070c119a3e9960b90699
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: victorh
+ms.openlocfilehash: ff20c16c89ca5bf27bfddc654119b428cc425d2d
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32775306"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173461"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>如何保护 DNS 区域和记录
 

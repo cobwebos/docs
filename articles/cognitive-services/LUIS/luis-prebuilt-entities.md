@@ -2,20 +2,19 @@
 title: LUIS 中的预构建实体 | Microsoft Docs
 description: 本文包含了语言理解智能服务 (LUIS) 中包括的预构建实体的列表。
 services: cognitive-services
-author: cahann
-manager: hsalama
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 02/15/2018
-ms.author: cahann
-ms.reviewer: v-geberr
-ms.openlocfilehash: 0dc1dbf32114e989fd2b9c2be61bd531f7b5e839
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.author: diberry
+ms.openlocfilehash: 95ff173a843e7ad18ec396a1130b2e2b4035f656
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347280"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248231"
 ---
 # <a name="prebuilt-entities"></a>预构建实体
 
@@ -37,7 +36,7 @@ LUIS 包括一组预构建实体，用于识别常见类型的信息，如日期
 ## <a name="use-a-prebuilt-number-entity"></a>使用预构建数字实体
 当预构建实体包含在应用程序中时，其预测将包含在发布的应用程序中。 预构建实体的行为是预先训练的，**不能**修改的。 请按照以下步骤了解预构建实体的工作原理：
 
-1. 在应用中添加**数字**实体，然后[训练](interactive-test.md)并[发布](luis-how-to-publish-app.md)该应用。
+1. 在应用中添加**数字**实体，然后[训练](luis-interactive-test.md)并[发布](luis-how-to-publish-app.md)该应用。
 2. 单击“发布应用”页中的终结点 URL，在 Web 浏览器中打开 LUIS 终结点。 
 3. 将陈述追加到包含数字表达式的 URL 后面。 例如，可以键入 `buy two plane ticktets`，并看到 LUIS 将 `two` 标识为 `builtin.number` 实体，并在 `resolution` 字段中将 `2` 标识为其值。 `resolution` 字段可帮助你将数字和日期解析为规范形式，以便客户端应用程序更轻松地使用。 
 
@@ -70,7 +69,7 @@ LUIS 可以智能识别非标准形式的数字。 在陈述中尝试不同的�
 ## <a name="use-a-prebuilt-datetimev2-entity"></a>使用预构建的 datetimeV2 实体
 **datetimeV2** 预构建实体可识别日期、时间、日期范围和持续时间。 请按照以下步骤了解 `datetimeV2` 预构建实体的工作原理：
 
-1. 在应用中添加 **datetimeV2** 实体，然后[训练](interactive-test.md)并[发布](luis-how-to-publish-app.md)该应用。
+1. 在应用中添加 **datetimeV2** 实体，然后[训练](luis-interactive-test.md)并[发布](luis-how-to-publish-app.md)该应用。
 2. 单击“发布应用”页中的终结点 URL，在 Web 浏览器中打开 LUIS 终结点。 
 3. 将陈述追加到包含日期范围的 URL 后面。 例如，可以键入 `book a flight tomorrow`，并看到 LUIS 将 `tomorrow` 标识为 `builtin.datetimeV2.date` 实体，并在 `resolution` 字段中将明天的日期标识为其值。 
 

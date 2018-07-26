@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 451a8226bbc52727dad562a4be352e352925bd0b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b0667f820145f16c75a07ebe1849e20d2de36cc7
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632700"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185503"
 ---
 # <a name="device-to-cloud-and-cloud-to-device-messaging-with-iot-hub"></a>使用 IoT 中心进行设备到云和云到设备的消息传递
 
@@ -41,7 +41,7 @@ IoT 中心消息传送功能的核心属性是消息的可靠性和持久性。 
 * 了解 IoT 中心[云到设备的消息传递][lnk-c2d]。
 
 [lnk-azure-iot]: ../iot-fundamentals/index.yml
-[lnk-iot-hub-overview]: iot-hub-what-is-iot-hub.md
+[lnk-iot-hub-overview]: about-iot-hub.md
 [lnk-d2c]: iot-hub-devguide-messages-d2c.md
 [lnk-c2d]: iot-hub-devguide-messages-c2d.md
 [lnk-c2d-guidance]: iot-hub-devguide-c2d-guidance.md

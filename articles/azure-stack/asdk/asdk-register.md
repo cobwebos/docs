@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 07/25/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 08a300d0e2d1565428f282a2073d91b5dd08c060
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 19fb5d3cb793b6e1e8e715c41edf8cde5746278b
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37016993"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257916"
 ---
 # <a name="azure-stack-registration"></a>Azure Stack 注册
 可将 Azure Stack 开发工具包 (ASDK) 安装注册到 Azure，以便从 Azure 下载市场项，并设置向 Microsoft 报告商务数据的功能。 需要注册才能支持完整的 Azure Stack 功能，包括市场联合。 之所以建议注册，是因为这样可以测试重要的 Azure Stack 功能，例如市场联合和使用情况报告。 注册 Azure Stack 之后，使用情况将报告给 Azure 商业组件。 用于注册的订阅下会显示此信息。 但是，ASDK 用户无需付费，不管他们报告的用量是多少。
@@ -27,15 +27,15 @@ ms.locfileid: "37016993"
 如果未注册 ASDK，则可能会看到“需要激活”警告警报，建议注册 Azure Stack 开发工具包。 这是预期的行为。
 
 ## <a name="prerequisites"></a>必备组件
-在使用这些说明向 Azure 注册 ASDK 之前, 确保你已安装了 Azure 堆栈 PowerShell 并下载 Azure 堆栈工具中所述[后期部署配置](asdk-post-deploy.md)文章。
+在遵照这些说明将 ASDK 注册到 Azure 之前，请确保已安装 Azure Stack PowerShell，并已下载[部署后配置](asdk-post-deploy.md)一文中所述的 Azure Stack 工具。
 
-此外，PowerShell 语言模式必须设置为**FullLanguageMode**用于向 Azure 注册 ASDK 的计算机上。 若要验证的当前语言模式设置为完全，打开提升的 PowerShell 窗口并运行以下 PowerShell 命令：
+此外，在用于向 Azure 注册 ASDK 的计算机上，PowerShell 语言模式必须设置为 **FullLanguageMode**。 若要验证当前的语言模式是否设置为 Full，请打开权限提升的 PowerShell 窗口，并运行以下 PowerShell 命令：
 
-```powershell
+```PowerShell  
 $ExecutionContext.SessionState.LanguageMode
 ```
 
-确保输出将返回**FullLanguageMode**。 如果返回其他任何语言模式、 注册将需要在另一台计算机上运行或语言模式将需要设置为**FullLanguageMode**才能继续。
+确保输出返回的是 **FullLanguageMode**。 如果返回了其他任何语言模式，则需要在另一台计算机上运行注册，或者将语言模式设置为 **FullLanguageMode**，然后才能继续。
 
 ## <a name="register-azure-stack-with-azure"></a>将 Azure Stack 注册到 Azure
 遵循以下步骤将 ASDK 注册到 Azure。
@@ -45,9 +45,11 @@ $ExecutionContext.SessionState.LanguageMode
 
 1. 以管理员身份打开 PowerShell 控制台。  
 
-2. 运行下面的 PowerShell 命令，以向 Azure 注册 ASDK 安装。 你将需要登录到你的 Azure 订阅和本地 ASDK 安装。 如果你没有 Azure 订阅，你可以[创建免费的 Azure 帐户此处](https://azure.microsoft.com/free/?b=17.06)。 注册 Azure Stack 不会对 Azure 订阅收取任何费用。
+2. 运行以下 PowerShell 命令，将 ASDK 安装注册到 Azure。 你将需要登录到你的 Azure 订阅和本地 ASDK 安装。 如果还没有 Azure 订阅，你可以[创建免费的 Azure 帐户此处](https://azure.microsoft.com/free/?b=17.06)。 注册 Azure Stack 不会对 Azure 订阅收取任何费用。
 
-  ```powershell
+    如果正在注册脚本的 Azure Stack 的多个实例上使用相同的 Azure 订阅 ID，设置注册的唯一名称，在运行时**Set-azsregistration** cmdlet。 **RegistrationName**参数具有默认值为**AzureStackRegistration**。 但是，如果在多个实例的 Azure Stack 上使用相同的名称，该脚本将失败。
+
+  ```PowerShell  
   # Add the Azure cloud subscription environment name. Supported environment names are AzureCloud or, if using a China Azure Subscription, AzureChinaCloud.
   Add-AzureRmAccount -EnvironmentName "AzureCloud"
 
@@ -60,25 +62,27 @@ $ExecutionContext.SessionState.LanguageMode
   #Register Azure Stack
   $AzureContext = Get-AzureRmContext
   $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the credentials to access the privileged endpoint."
+  $RegistrationName = "<unique-registration-name>"
   Set-AzsRegistration `
       -PrivilegedEndpointCredential $CloudAdminCred `
       -PrivilegedEndpoint AzS-ERCS01 `
       -BillingModel Development
+      -RegistrationName $RegistrationName
   ```
-3. 完成脚本后，你应看到此消息：**你的环境现在已注册和激活使用提供的参数。**
+3. 完成脚本后，应会看到此消息：**环境现在已注册和激活使用提供的参数。**
 
-    ![](media/asdk-register/1.PNG)
+    ![现在注册你的环境](media/asdk-register/1.PNG)
 
 ## <a name="verify-the-registration-was-successful"></a>验证注册成功
 请按照下列步骤以验证与 Azure 的 ASDK 注册成功。
 
-1. 登录到[Azure 堆栈管理门户](https://adminportal.local.azurestack.external)。
+1. 登录到[Azure Stack 管理门户](https://adminportal.local.azurestack.external)。
 
-2. 单击**应用商店管理** > **添加从 Azure**。
+2. 单击**Marketplace 管理** > **从 Azure 添加**。
 
     ![](media/asdk-register/2.PNG)
 
-3. 如果你看到的 Azure 上提供的项的列表，已成功激活。
+3. 请参阅 Azure 上提供的项的列表，如果你激活已成功。
 
     ![](media/asdk-register/3.PNG)
 

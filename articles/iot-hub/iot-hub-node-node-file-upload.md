@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.author: dobett
-ms.openlocfilehash: 48a2d302727f2f8e9c87552a05bc7506fbef3120
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 936063e1419d5e2261033ea74d75687eade928e8
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38235553"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187310"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>使用 IoT 中心将文件从设备上传到云
 
@@ -25,7 +25,7 @@ ms.locfileid: "38235553"
 - 安全提供具有 Azure blob URI 的设备，用于上传文件。
 - 使用 IoT 中心文件上传通知触发处理应用后端中的文件。
 
-[IoT 中心入门](iot-hub-node-node-getstarted.md)教程展示了 IoT 中心基本的设备到云消息功能。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
+[IoT 中心入门](quickstart-send-telemetry-node.md)教程展示了 IoT 中心基本的设备到云消息功能。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
 
 * 包含图像的大型文件
 * 视频

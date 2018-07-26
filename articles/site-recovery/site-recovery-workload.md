@@ -2,24 +2,17 @@
 title: 可以通过 Azure Site Recovery 保护哪些工作负荷？ | Microsoft Docs
 description: 介绍可以通过将灾难恢复与 Azure Site Recovery 服务配合使用来保护的工作负荷。
 services: site-recovery
-documentationcenter: ''
 author: rayne-wiselman
-manager: cfreeman
-editor: ''
-ms.assetid: 4953948f-26c0-4699-8fe7-59d3bfc1d3da
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 07/22/2018
 ms.author: raynew
-ms.openlocfilehash: e0094b48bc602a1b59339458b430319f4a705d44
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 5295002e823dc864f0f0dcc67594f49b5431bce7
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920097"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205946"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>可以通过 Azure Site Recovery 保护哪些工作负荷？
 
@@ -61,7 +54,6 @@ Site Recovery 集成 Microsoft 应用程序，其中包括 SharePoint、Exchange
 | 远程桌面/VDI |Y |Y |Y |Y |Y|
 | Linux（操作系统和应用） |Y（Microsoft 已测试） |Y（Microsoft 已测试） |Y（Microsoft 已测试） |Y（Microsoft 已测试） |Y（Microsoft 已测试）|
 | Dynamics AX |Y |Y |Y |Y |Y|
-| Oracle |Y（Microsoft 已测试） |Y（Microsoft 已测试） |Y（Microsoft 已测试） |Y（Microsoft 已测试） |Y（Microsoft 已测试）|
 | Windows 文件服务器 |Y |Y |Y |Y |Y|
 | Citrix XenApp 和 XenDesktop |Y|不适用 |Y |不适用 |Y |
 

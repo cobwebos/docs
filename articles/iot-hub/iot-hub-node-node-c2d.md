@@ -9,12 +9,12 @@ ms.devlang: javascript
 ms.topic: conceptual
 ms.date: 06/16/2017
 ms.author: dobett
-ms.openlocfilehash: 640a7740e3451a8bd07fdea6a82af2f5cae4c25f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 61b1dd31039df0db777e7e35d849889047a6588d
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637457"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186676"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-node"></a>使用 IoT 中心发送云到设备的消息 (Node)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -187,7 +187,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 <!-- Links -->
 
-[IoT 中心入门]: iot-hub-node-node-getstarted.md
+[IoT 中心入门]: quickstart-send-telemetry-node.md
 [IoT Hub developer guide - C2D]: iot-hub-devguide-messaging.md
 [IoT 中心开发人员指南]: iot-hub-devguide.md
 [Azure IoT 开发人员中心]: http://azure.microsoft.com/develop/iot

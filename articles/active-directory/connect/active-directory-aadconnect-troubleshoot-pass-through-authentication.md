@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2e7f3b0f01dbd6656413c233fcf64c46963d00ef
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 6cd6b139699b38a06a8e3f9fce5eb6e24fe24654
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917364"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214169"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>对 Azure Active Directory 直通身份验证进行故障排除
 
@@ -43,7 +43,7 @@ ms.locfileid: "37917364"
 
 如果用户无法使用直通身份验证进行登录，可能会在 Azure AD 登录屏幕上看到下列面向用户的错误之一： 
 
-|错误|说明|解决方法
+|错误|Description|解决方法
 | --- | --- | ---
 |AADSTS80001|无法连接到 Active Directory|确保代理服务器是需要验证其密码的用户所在的 AD 林的成员，并且能够连接到 Active Directory。  
 |AADSTS8002|连接到 Active Directory 时超时|检查以确保 Active Directory 可用，并且可以响应代理的请求。
@@ -97,7 +97,7 @@ ms.locfileid: "37917364"
 
 如果在租户中启用了直通身份验证，则当尝试卸载 Azure AD Connect 时，会显示以下警告消息：“除非已在其他服务器上安装其他直通身份验证代理，否则用户无法登录到 Azure AD。”
 
-在卸载 Azure AD Connect 之前，确保设置具有[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)，以免影响用户登录。
+在卸载 Azure AD Connect 之前，确保设置具有[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability)，以免影响用户登录。
 
 ## <a name="issues-with-enabling-the-feature"></a>启用该功能时的问题
 
@@ -112,18 +112,6 @@ ms.locfileid: "37917364"
 ### <a name="enabling-the-feature-failed-due-to-token-or-account-authorization-errors"></a>由于令牌或帐户授权错误，启用该功能失败
 
 启用该功能时，确保使用仅限云的全局管理员帐户。 已启用多重身份验证 (MFA) 的全局管理员帐户存在一个已知问题；作为解决方法，请暂时关闭 MFA（只是为了完成操作）。
-
-## <a name="exchange-activesync-configuration-issues"></a>Exchange ActiveSync 配置问题
-
-这些问题是为传递身份验证配置 Exchange ActiveSync 支持时的常见问题。
-
-### <a name="exchange-powershell-issue"></a>Exchange PowerShell 问题
-
-如果看到“找不到与参数名称‘PerTenantSwitchToESTSEnabled’\.相匹配的参数” 错误（在运行 `Set-OrganizationConfig` Exchange PowerShell 命令时），请联系 Microsoft 支持部门。
-
-### <a name="exchange-activesync-not-working"></a>Exchange ActiveSync 不能正常工作
-
-配置需要一段时间才能生效 - 时长取决于环境。 如果此情况持续时间较长，请联系 Microsoft 支持部门。
 
 ## <a name="collecting-pass-through-authentication-agent-logs"></a>收集直通身份验证代理日志
 

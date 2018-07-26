@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: juanpere
-ms.openlocfilehash: 28cc4327951fcd333b7b950045cd8f062f31a503
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 2161cd12f8bdb6aa3018d81a7864816a97ed122a
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056369"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187744"
 ---
 # <a name="schedule-and-broadcast-jobs-node"></a>计划和广播作业 (Node)
 
@@ -261,8 +261,8 @@ scheduleJobService.js，它调用模拟设备应用中的直接方法，并通�
 若要继续完成 IoT 中心入门内容，请参阅 [Azure IoT Edge 入门][lnk-iot-edge]。
 
 [lnk-get-started-twin]: iot-hub-node-node-twin-getstarted.md
-[lnk-twin-props]: iot-hub-node-node-twin-how-to-configure.md
-[lnk-c2d-methods]: iot-hub-node-node-direct-methods.md
+[lnk-twin-props]: tutorial-device-twins.md
+[lnk-c2d-methods]: quickstart-control-device-node.md
 [lnk-dev-methods]: iot-hub-devguide-direct-methods.md
 [lnk-fwupdate]: tutorial-firmware-update.md
 [lnk-iot-edge]: ../iot-edge/tutorial-simulate-device-linux.md

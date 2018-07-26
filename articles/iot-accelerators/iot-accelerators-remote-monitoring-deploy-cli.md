@@ -8,16 +8,16 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 736d0394b61bd2830a155d6ad714a2a8d19af82b
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: dd696330c9ee78ef84ac9fcf85946c837ad5b824
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37017503"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187999"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>使用 CLI 部署远程监视解决方案加速器
 
-本教程演示如何预配远程监视解决方案加速器。 使用 CLI 部署解决方案。 还可以从 azureiotsuite.com 使用基于 Web 的 UI 部署解决方案。有关此选项的详细信息，请参阅[部署远程监视解决方案加速器](iot-accelerators-remote-monitoring-deploy.md)。
+本教程演示如何预配远程监视解决方案加速器。 使用 CLI 部署解决方案。 还可以从 azureiotsuite.com 使用基于 Web 的 UI 部署解决方案。有关此选项的详细信息，请参阅[部署远程监视解决方案加速器](quickstart-remote-monitoring-deploy.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -49,7 +49,7 @@ pcs login
 
 在部署解决方案加速器时，有几种选项可用于配置部署进程：
 
-| 选项 | 值 | 说明 |
+| 选项 | 值 | Description |
 | ------ | ------ | ----------- |
 | SKU    | `basic`、`standard`、`local` | 基本部署适用于测试和演示，它将所有微服务部署到一个虚拟机上。 标准部署适用于生产，它将微服务部署到多个虚拟机上。 本地部署通过配置 Docker 容器在本地计算机中运行微服务，并在云中使用 Azure 服务（如存储和 Cosmos DB）。 |
 | 运行时 | `dotnet`、`java` | 选择微服务的语言实现。 |
@@ -135,6 +135,6 @@ pcs -h
 > * 部署解决方案加速器
 > * 登录到解决方案加速器
 
-现在已部署远程监视解决方案，下一步是[浏览解决方案仪表板的功能](./iot-accelerators-remote-monitoring-deploy.md)。
+现在已部署远程监视解决方案，下一步是[浏览解决方案仪表板的功能](./quickstart-remote-monitoring-deploy.md)。
 
 <!-- Next tutorials in the sequence -->

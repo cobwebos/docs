@@ -2,22 +2,22 @@
 title: Azure 流分析中 JavaScript 用户定义的聚合
 description: 本文介绍如何在 Azure 流分析中通过 JavaScript 用户定义的聚合执行高级查询机制。
 services: stream-analytics
-author: minhe-msft
-ms.author: minhe
-manager: santoshb
-ms.reviewer: jasonh
+author: rodrigoamicrosoft
+ms.author: rodrigoa
+manager: kfile
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: 718109d17309747a3c19f22921e4a316b0b88dc6
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: eb433a322f8077c947fd6db1aaa0e2266a109938
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30907317"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187048"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates-preview"></a>Azure 流分析 JavaScript 用户定义的聚合（预览）
-
+ 
 Azure 流分析支持以 JavaScript 编写的用户定义的聚合 (UDA)，可实现复杂的有状态业务逻辑。 在 UDA 中，我们可以全面控制状态数据结构、状态累积、状态分散和聚合结果计算。 本文介绍两个不同的 JavaScript UDA 接口、UDA 的创建步骤，以及如何在流分析查询中将 UDA 与基于窗口的操作结合使用。
 
 ## <a name="javascript-user-defined-aggregates"></a>JavaScript 用户定义的聚合

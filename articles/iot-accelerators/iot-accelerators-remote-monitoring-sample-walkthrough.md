@@ -8,16 +8,16 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: a8b5d9e3917c854cb255a35d3bbc901bcce52c24
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: dfe584532efeab1dbc0d2928b7afb0a6695a21ee
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37084519"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39184939"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>远程监视解决方案加速器概述
 
-远程监视[解决方案加速器](../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md)针对远程位置中的多台计算机实现端到端监视解决方案。 该解决方案结合了关键 Azure 服务来提供业务方案的通用实现。 可将其用作自己实现的起点，并可以根据特定的业务要求[自定义](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md)该解决方案。
+远程监视[解决方案加速器](../iot-accelerators/about-iot-accelerators.md)针对远程位置中的多台计算机实现端到端监视解决方案。 该解决方案结合了关键 Azure 服务来提供业务方案的通用实现。 可将其用作自己实现的起点，并可以根据特定的业务要求[自定义](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md)该解决方案。
 
 本文将逐步讲解远程监视解决方案的一些关键要素，以帮助你了解其工作原理。 这一知识有助于：
 
@@ -27,7 +27,7 @@ ms.locfileid: "37084519"
 
 ## <a name="logical-architecture"></a>逻辑体系结构
 
-下图描绘了叠加在 [IoT 体系结构](../iot-accelerators/iot-accelerators-what-is-azure-iot.md)之上的远程监视解决方案加速器的逻辑组件：
+下图描绘了叠加在 [IoT 体系结构](../iot-fundamentals/iot-introduction.md)之上的远程监视解决方案加速器的逻辑组件：
 
 ![逻辑体系结构](./media/iot-accelerators-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
 

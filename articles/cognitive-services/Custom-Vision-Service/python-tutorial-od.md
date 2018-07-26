@@ -9,12 +9,12 @@ ms.component: custom-vision
 ms.topic: article
 ms.date: 05/03/2018
 ms.author: areddish
-ms.openlocfilehash: b946265b431a7dcb16bf99e3bf78e09f2d0a7de3
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 37bdb9ebf7c74586c728e171a9897903b8ad2ee8
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301006"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213575"
 ---
 # <a name="use-custom-vision-api-to-build-an-object-detection-project-with-python"></a>通过 Python 使用自定义视觉 API 构建对象检测项目
 
@@ -194,7 +194,7 @@ from azure.cognitiveservices.vision.customvision.prediction.prediction_endpoint 
 predictor = prediction_endpoint.PredictionEndpoint(prediction_key)
 
 # Open the sample image and get back the prediction results.
-with open("images/test/test_image.jpg", mode="rb") as test_data:
+with open("images/Test/test_od_image.jpg", mode="rb") as test_data:
     results = predictor.predict_image(project.id, test_data, iteration.id)
 
 # Display the results.

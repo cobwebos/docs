@@ -3,26 +3,29 @@ title: 适用于 Azure SQL 数据库的虚拟网络服务终结点和规则 | Mi
 description: 将子网标记为虚拟网络服务终结点。 然后将终结点标记为适用于 Azure SQL 数据库 ACL 的虚拟网络规则。 然后，SQL 数据库就会接受来自子网上所有虚拟机和其他节点的通信。
 services: sql-database
 ms.service: sql-database
+ms.prod_service: sql-database, sql-data-warehouse
 author: DhruvMsft
 manager: craigg
 ms.custom: VNet Service endpoints
 ms.topic: conceptual
-ms.date: 06/05/2018
-ms.reviewer: genemi
+ms.date: 07/18/2018
+ms.reviewer: carlrab
 ms.author: dmalik
-ms.openlocfilehash: d708d55c64306636910a85b5b490e25ecc794bd6
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: cdf067839c73f9da40d03628ff1c9920764e2219
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802589"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39127468"
 ---
-# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>使用适用于 Azure SQL 数据库的虚拟网络服务终结点和规则
+# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database-and-sql-data-warehouse"></a>对 Azure SQL 数据库和 SQL 数据仓库使用虚拟网络服务终结点和规则
 
-虚拟网络规则是一种防火墙安全功能，用于控制是否允许 Azure SQL 数据库服务器接受从虚拟网络中的特定子网发送的通信。 本文说明了为何有时候最好选择虚拟网络规则功能来安全地启用到 Azure SQL 数据库的通信。
+虚拟网络规则是一种防火墙安全功能，用于控制是否允许 Azure [SQL 数据库](sql-database-technical-overview.md)或 [SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)服务器接受从虚拟网络中特定子网发送的通信。 本文说明了为何有时候最好选择虚拟网络规则功能来安全地启用到 Azure SQL 数据库的通信。
+
+> [!NOTE]
+> 本主题适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。
 
 若要创建虚拟网络规则，首先必须具有可供规则引用的[虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d]。
-
 
 #### <a name="how-to-create-a-virtual-network-rule"></a>如何创建虚拟网络规则
 
@@ -39,7 +42,7 @@ ms.locfileid: "34802589"
 
 虚拟网络：可以让虚拟网络与 Azure 订阅相关联。
 
-**子网：** 虚拟网络包含**子网**。 你所拥有的任何 Azure 虚拟机 (VM) 都会分配到子网。 一个子网可能包含多个 VM 或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
+****子网：虚拟网络包含子网。 你所拥有的任何 Azure 虚拟机 (VM) 都会分配到子网。 一个子网可能包含多个 VM 或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
 
 虚拟网络服务终结点：[虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d]是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 本文介绍 **Microsoft.Sql** 的类型名称，即名为“SQL 数据库”的 Azure 服务。
 
@@ -141,7 +144,6 @@ RBAC 备用：
 在使用 Azure SQL 数据库的服务终结点时，请查看以下注意事项：
 
 - **需要 Azure SQL 数据库公共 IP 的出站连接**：必须为 Azure SQL 数据库 IP 启用网络安全组 (NSG) 才能进行连接。 可以使用 Azure SQL 数据库的 NSG [服务标记](../virtual-network/security-overview.md#service-tags)执行此操作。
-- **不支持 Azure Database for PostgreSQL 和 Azure Database for MySQL**：服务终结点不支持 Azure Database for PostgreSQL 或 Azure Database for MySQL。 启用到 SQL 数据库的服务终结点将中断与这些服务的连接。 我们提供了此方面的缓解措施，请联系 *dmalik@microsoft.com* 以了解详细信息。
 
 #### <a name="expressroute"></a>ExpressRoute
 

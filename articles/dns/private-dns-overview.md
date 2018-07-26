@@ -3,7 +3,7 @@ title: 将 Azure DNS 用于专用域 | Microsoft Docs
 description: Microsoft Azure 上的专用 DNS 托管服务概述。
 services: dns
 documentationcenter: na
-author: KumudD
+author: vhorne
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2018
-ms.author: kumud
-ms.openlocfilehash: 0ee3b18b7f874c4f6b7b2c9c559aa7e393ad7d8d
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.author: victorh
+ms.openlocfilehash: 2ab7070a4cf46dae543af8d3e1d688e12ec1eb2a
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700598"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173636"
 ---
 # <a name="use-azure-dns-for-private-domains"></a>将 Azure DNS 用于专用域
 域名系统（或称为 DNS）负责将服务名称转换（或解析）为其 IP 地址。 Azure DNS 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 除了支持面向 Internet 的 DNS 域之外，作为一项预览版功能，Azure DNS 现在还支持专用 DNS 域。 

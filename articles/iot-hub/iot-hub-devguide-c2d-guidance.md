@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: elioda
-ms.openlocfilehash: ff81be4bbf6d297c623c5d98b5dc22a540112fcc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2cc9bd39371741caaa3ae025df494e225dc754b0
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634431"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187030"
 ---
 # <a name="cloud-to-device-communications-guidance"></a>从云到设备通信指南
 IoT 中心提供三个选项，允许设备应用向后端应用公开功能：
@@ -48,6 +48,6 @@ IoT 中心提供三个选项，允许设备应用向后端应用公开功能：
 [lnk-jobs]: iot-hub-devguide-jobs.md
 [lnk-c2d]: iot-hub-devguide-messages-c2d.md
 [lnk-methods]: iot-hub-devguide-direct-methods.md
-[lnk-methods-tutorial]: iot-hub-node-node-direct-methods.md
-[lnk-twin-properties]: iot-hub-node-node-twin-how-to-configure.md
+[lnk-methods-tutorial]: quickstart-control-device-node.md
+[lnk-twin-properties]: tutorial-device-twins.md
 [lnk-c2d-tutorial]: iot-hub-node-node-c2d.md

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/26/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 3ca55bb0a9f4719bd2229aca626d20c53af9fd1e
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 748070d43c34b501af3455d03429be1f44178b7f
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299522"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172011"
 ---
 # <a name="create-custom-apis-that-you-can-call-from-logic-app-workflows"></a>创建可从逻辑应用工作流调用的自定义 API
 
@@ -43,7 +43,8 @@ ms.locfileid: "35299522"
 > * [Java](../app-service/app-service-web-get-started-java.md)
 > * [Node.js](../app-service/app-service-web-get-started-nodejs.md)
 > * [PHP](../app-service/app-service-web-get-started-php.md)
-> * [Python](../app-service/app-service-web-get-started-python.md)
+> * [Python](../app-service/containers/quickstart-python.md)
+> * [Ruby](../app-service/containers/quickstart-ruby.md)
 >
 > 有关为逻辑应用生成的 API 应用示例，请访问 [Azure 逻辑应用 GitHub 存储库](http://github.com/logicappsio)或[博客](http://aka.ms/logicappsblog)。
 
