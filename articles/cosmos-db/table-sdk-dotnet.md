@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/26/2018
 ms.author: rnagpal
-ms.openlocfilehash: 391948af7fe00e0a5e6171d5322c09c05fcd1cc3
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 2fba67b247ad0b53e11ca012969163a68013e82f
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798468"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126705"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB 表 .NET API：下载和发行说明
 > [!div class="op_single_selector"]
@@ -37,6 +37,10 @@ ms.locfileid: "34798468"
 >
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name113113"></a><a name="1.1.3"/>1.1.3
+* 已修复 Nuget 包对 Microsoft.Azure.Storage.Common 和 Microsoft.Azure.DocumentDB 的依赖关系。
+* 修复了配置 JsonConvert.DefaultSettings 时表序列化的 Bug。
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
 * 针对直接模式下格式不正确的 ETAG 添加了验证。
@@ -65,6 +69,7 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.1.3](#1.1.3) |2018 年 7 月 17 日|--- |
 | [1.1.1](#1.1.1) |2018 年 3 月 26 日|--- |
 | [1.1.0](#1.1.0) |2018 年 2 月 21 日|--- |
 | [1.0.0](#1.0.0) |2017 年 11 月 15 日|--- |
@@ -88,7 +93,7 @@ Unable to resolve dependency 'Microsoft.Azure.Storage.Common'. Source(s) used: '
     
 * 使用首选 Nuget 包管理工具先安装 Microsoft.Azure.Storage.Common Nuget 包，再安装 Microsoft.Azure.CosmosDB.Table。
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

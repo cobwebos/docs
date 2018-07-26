@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/11/2018
+ms.date: 07/12/2018
 ms.author: rclaus
 ms.custom: ''
-ms.openlocfilehash: f2d342558e83c54e101e0ff9128611da9bec1e77
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d1d2bd74a5118b48f7ed79a77ca2d7b6545607c6
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656952"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072374"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>在 Microsoft Azure 上运行的 SAP 认证和配置
 
@@ -33,7 +33,7 @@ SAP 和 Microsoft 具有悠久的合作历史，建立了强大的合作伙伴�
 
 - [SAP HANA 认证的 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)，提供对本机 Azure VM 和 HANA 大型实例的 SAP HANA 支持。
 
-| SAP 产品 | 支持的 OS | Azure 产品 |
+| SAP 产品 | 支持的 OS | Azure 产品/服务 |
 | --- | --- | --- |
 | SAP HANA Developer Edition（包括由 SQLODBC、ODBO（仅限 Windows）、ODBC 和 JDBC 驱动程序组成的 HANA Client 软件）、HANA Studio 和 HANA 数据库 | Red Hat Enterprise Linux、SUSE Linux Enterprise | D 系列 VM 系列 |
 | HANA 上的 Business One | SUSE Linux Enterprise | DS14_v2 |
@@ -62,7 +62,7 @@ SAP 和 Microsoft 具有悠久的合作历史，建立了强大的合作伙伴�
 
 | SAP 产品 | 来宾 OS | RDBMS | 虚拟机类型 |
 | --- | --- | --- | --- |
-| SQL Server 上的 SAP Business On | Windows  | SQL Server | 所有 NetWeaver 认证的 VM 类型 |
+| SQL Server 上的 SAP Business On | Windows  | SQL Server | 所有 NetWeaver 认证的 VM 类型<br /> [SAP 说明 #928839](https://launchpad.support.sap.com/#/notes/928839) |
 | SAP BPC 10.01 MS SP08 | Windows 和 Linux | | 所有 NetWeaver 认证的 VM 类型<br /> SAP 说明 #2451795 |
 | SAP 业务对象 BI 平台 | Windows 和 Linux | | SAP 说明 #2145537 |
 | SAP 数据服务 4.2 | | | SAP 说明 #2288344 |

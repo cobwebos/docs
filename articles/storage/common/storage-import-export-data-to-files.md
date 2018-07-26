@@ -6,14 +6,14 @@ manager: jeconnoc
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 07/17/2018
 ms.author: alkohli
-ms.openlocfilehash: 4349b471f960e7844511c473bffcd2177a34e055
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4f48097fa1ece66dd9e20a7a7939ac43cb0f48b4
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659228"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113471"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>使用 Azure 导入/导出服务将数据导入到 Azure 文件
 
@@ -27,9 +27,17 @@ ms.locfileid: "34659228"
 
 - 拥有可以用于导入/导出服务的活动 Azure 订阅。
 - 拥有至少一个 Azure 存储帐户。 请参阅[导入/导出服务支持的存储帐户和存储类型](storage-import-export-requirements.md)的列表。 有关创建新存储帐户的信息，请参阅[如何创建存储帐户](storage-create-storage-account.md#create-a-storage-account)。
-- 拥有[受支持类型](storage-import-export-requirements.md#supported-disks)的足够数量的磁盘。 
+- 拥有足够数量的[受支持类型](storage-import-export-requirements.md#supported-disks)的磁盘。 
 - 拥有运行[受支持 OS 版本](storage-import-export-requirements.md#supported-operating-systems)的 Windows 系统。
 - 在 Windows 系统上[下载 WAImportExport 版本 2](https://www.microsoft.com/download/details.aspx?id=55280)。 解压缩到默认文件夹 `waimportexport`。 例如，`C:\WaImportExport`。
+- 具有 FedEx/DHL 帐户。 
+    - 该帐户必须是有余额的有效帐户，且有退货功能。
+    - 生成导出作业的跟踪号。
+    - 每个作业都应有一个单独的跟踪号。 不支持多个作业共享相同跟踪号。
+    - 如果没有承运商帐户，请转到：
+        - [创建 FedEX 帐户](https://www.fedex.com/en-us/create-account.html)，或 
+        - [创建 DHL 帐户](http://www.dhl-usa.com/en/express/shipping/open_account.html)。
+ 
 
 
 ## <a name="step-1-prepare-the-drives"></a>步骤 1：准备驱动器
@@ -115,14 +123,14 @@ ms.locfileid: "34659228"
 
 3. 单击“创建导入/导出作业”。
 
-    ![单击“导入/导出作业”](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
+    ![单击导入/导出作业](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
 
 4. 在“基本信息”中：
 
     - 选择“导入到 Azure”。
     - 输入导入作业的描述性名称。 在作业进行过程中以及作业完成后，可以使用此名称来跟踪作业。
         -  此名称只能包含小写字母、数字、连字符和下划线。
-        -  此名称必须以字母开头，且不能包含空格。 
+        -  此名称必须以字母开头，并且不得包含空格。 
     - 选择一个订阅。
     - 选一个择资源组。 
 
@@ -140,7 +148,10 @@ ms.locfileid: "34659228"
 
     - 从下拉列表中选择承运商。
     - 输入你已在该承运商那里创建的有效承运商帐户编号。 导入作业完成后，Microsoft 使用此帐户寄回驱动器。 
-    - 提供完整、有效的联系人姓名、电话号码、电子邮件地址、街道地址、城市、邮政编码、州/省/自治区/直辖市和国家/地区。
+    - 提供完整、有效的联系人姓名、电话号码、电子邮件地址、街道地址、城市、邮政编码、省/自治区/直辖市和国家/地区。
+
+        > [!TIP] 
+        > 请提供组电子邮件，而非为单个用户指定电子邮件地址。 这可确保即使管理员离开也会收到通知。
 
        ![创建导入作业 - 步骤 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
 
@@ -159,6 +170,10 @@ ms.locfileid: "34659228"
 ## <a name="step-4-update-the-job-with-tracking-information"></a>步骤 4：使用跟踪信息更新作业
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
+
+## <a name="step-5-verify-data-upload-to-azure"></a>步骤 5：验证数据上传到 Azure
+
+跟踪作业直至完成。 作业完成后，验证数据已上传到 Azure。 仅在已确认上传成功后才删除本地数据。
 
 ## <a name="samples-for-journal-files"></a>日志文件示例
 

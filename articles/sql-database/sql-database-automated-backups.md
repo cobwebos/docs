@@ -8,15 +8,15 @@ ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
 ms.workload: Active
-ms.date: 05/25/2018
+ms.date: 07/18/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 558480d0e58a92277a0c56d0f197ee3b5c1c3f60
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: cedad5f48769ed864fef10cfd7059111a4502fd3
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "35631765"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136598"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>了解 SQL 数据库自动备份
 
@@ -26,7 +26,7 @@ SQL 数据库会自动创建数据库备份，并使用 Azure 读取访问异地
 
 ## <a name="what-is-a-sql-database-backup"></a>什么是 SQL 数据库备份？
 
-SQL 数据库使用 SQL Server 技术创建[完整](https://msdn.microsoft.com/library/ms186289.aspx)、[差异](http://msdn.microsoft.com/library/ms175526.aspx)和[事务日志](https://msdn.microsoft.com/library/ms191429.aspx)备份，以便用于时间点还原 (PITR)。 一般每隔 5-10 分钟创建一次事务日志备份，具体频率取决于性能级别和数据库活动量。 借助事务日志备份以及完整备份和差异备份，可将数据库还原到托管数据库的服务器上的特定时间点。 还原数据库时，服务会确定需要还原哪些完整、差异备份和事务日志备份。
+SQL 数据库使用 SQL Server 技术创建[完整](https://msdn.microsoft.com/library/ms186289.aspx)、[差异](http://msdn.microsoft.com/library/ms175526.aspx)和[事务日志](https://msdn.microsoft.com/library/ms191429.aspx)备份，以便用于时间点还原 (PITR)。 一般每隔 5 - 10 分钟创建一次事务日志备份，每隔 12 小时创建一次差异备份，具体频率取决于性能级别和数据库活动量。 借助事务日志备份以及完整备份和差异备份，可将数据库还原到托管数据库的服务器上的特定时间点。 还原数据库时，服务会确定需要还原哪些完整、差异备份和事务日志备份。
 
 
 可使用这些备份执行以下任务：
@@ -42,11 +42,11 @@ SQL 数据库使用 SQL Server 技术创建[完整](https://msdn.microsoft.com/l
 > 
 
 ## <a name="how-long-are-backups-kept"></a>备份保留多长时间？
-每个 SQL 数据库备份都有一个基于数据库服务层的默认保留期，并且[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型（预览版）](sql-database-service-tiers-vcore.md)之间存在差异。 可以更新数据库的备份保留期。 请参阅[更改备份保留期](#how-to-change-backup-retention-period)，了解详细信息。
+每个 SQL 数据库备份都有一个基于数据库服务层的默认保留期，并且[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)之间存在差异。 可以更新数据库的备份保留期。 请参阅[更改备份保留期](#how-to-change-backup-retention-period)，了解详细信息。
 
 如果删除一个数据库，SQL 数据库将保留其备份，就像保留联机数据库的备份一样。 例如，如果删除保留期为 7 天的基本数据库，已保留 4 天的备份将继续保存 3 天。
 
-如果需要备份保留时间超过最长的 PITR 保持期，可以修改备份属性，向数据库添加一个或多个长期保持期。 请参阅[长期备份保留](sql-database-long-term-retention.md)，了解详细信息。
+如果需要备份保留时间超过最长的 PITR 保留期，可以修改备份属性，向数据库添加一个或多个长期保留期。 请参阅[长期备份保留](sql-database-long-term-retention.md)，了解详细信息。
 
 > [!IMPORTANT]
 > 如果删除了托管 SQL 数据库的 Azure SQL 服务器，则属于该服务器的所有弹性池和数据库也会被删除且不可恢复。 无法还原已删除的服务器。 但是，如果配置了长期保留，将不会删除具有 LTR 的数据库的备份，并且可以还原这些数据库。
@@ -62,14 +62,9 @@ SQL 数据库使用 SQL Server 技术创建[完整](https://msdn.microsoft.com/l
 
 如果延长当前 PITR 保持期，SQL 数据库将保留现有备份，直至达到更长的保持期。
 
-### <a name="pitr-retention-for-the-vcore-based-service-tiers-preview"></a>基于 vCore 的服务层的 PITR 保留（预览）
-
-在预览期间，使用基于 vCore 的购买模型创建的数据库的 PITR 保持期设置为 7 天。 已包含免费的关联存储。    
-
-
 ## <a name="how-often-do-backups-happen"></a>备份频率如何？
 ### <a name="backups-for-point-in-time-restore"></a>时间点还原的备份
-SQL 数据库通过自动创建完整备份、差异备份和事务日志备份支持时间点还原 (PITR) 的自助服务。 每周创建完整数据库备份，每隔数小时创建差异数据库备份，每隔 5-10 分钟创建事务日志备份。 会在数据库创建后立即计划第一次完整备份。 完整备份通常可在 30 分钟内完成，但如果数据库很大，花费的时间可能更长。 例如，对已还原的数据库或数据库副本执行初始备份可能需要更长时间。 在完成首次完整备份后，会在后台以静默方式自动计划和管理所有后续备份。 在平衡整体系统工作负荷时，SQL 数据库服务会确定所有数据库备份的确切时间。
+SQL 数据库通过自动创建完整备份、差异备份和事务日志备份支持时间点还原 (PITR) 的自助服务。 每周创建一次完整数据库备份，一般每隔 12 小时创建一次差异数据库备份，一般每隔 5 - 10 分钟创建一次事务日志备份，具体频率取决于性能级别和数据库活动量。 会在数据库创建后立即计划第一次完整备份。 完整备份通常可在 30 分钟内完成，但如果数据库很大，花费的时间可能更长。 例如，对已还原的数据库或数据库副本执行初始备份可能需要更长时间。 在完成首次完整备份后，会在后台以静默方式自动计划和管理所有后续备份。 在平衡整体系统工作负荷时，SQL 数据库服务会确定所有数据库备份的确切时间。
 
 PITR 备份异地冗余且受 [Azure 存储跨区域复制](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)保护
 
@@ -93,7 +88,7 @@ SQL 数据库提供选项，用于将完整备份的长期保留 (LTR) 配置为
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="how-to-change-backup-retention-period"></a>如何更改备份保留期
-可以使用 REST API 或 PowerShell 更改默认保留期。 支持的值为：7、14、21、28 或 35 天。以下示例演示如何将 PITR 保留期更改为 28 天。 
+可以使用 REST API 或 PowerShell 更改默认保留期。 支持的值为：7、14、21、28 或 35 天。 以下示例演示如何将 PITR 保留期更改为 28 天。 
 
 > [!NOTE]
 > API 将只影响 PITR 保留期。 如果为数据库配置了 LTR，它将不受影响。 请参阅[长期备份保留](sql-database-long-term-retention.md)，详细了解如何更改 LTR 保留期。

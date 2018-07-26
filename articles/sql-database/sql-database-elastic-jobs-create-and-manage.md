@@ -7,19 +7,22 @@ author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 07/16/2018
 ms.author: sstein
-ms.openlocfilehash: 4a25543fd9cbcd0928f06419c6ddb9b5ed2e2488
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b367ddafc659db4dc4b8d658ac9dc007c4671b8c
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645277"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092791"
 ---
 # <a name="create-and-manage-scaled-out-azure-sql-databases-using-elastic-jobs-preview"></a>使用弹性作业创建和管理扩大的 Azure SQL 数据库（预览）
 
 
-**弹性数据库作业**可以通过执行架构更改、凭据管理、引用数据更新、性能数据收集或租户（客户）遥测收集等管理操作，简化多组数据库的管理。 目前可以通过 Azure 门户和 PowerShell cmdlet 使用弹性数据库作业。 但是，它在 Azure 门户中的功能被缩减，仅限针对[弹性池（预览）](sql-database-elastic-pool.md)中的所有数据库执行操作。 若要访问其他功能并针对包含自定义集合或分片集（使用[弹性数据库客户端库](sql-database-elastic-scale-introduction.md)创建）的一组数据库执行脚本，请参阅[使用 PowerShell 创建和管理作业](sql-database-elastic-jobs-powershell.md)。 有关作业的详细信息，请参阅[弹性数据库作业概述](sql-database-elastic-jobs-overview.md)。 
+[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
+
+
+**弹性数据库作业**可以通过执行架构更改、凭据管理、引用数据更新、性能数据收集或租户（客户）遥测收集等管理操作，简化多组数据库的管理。 目前可以通过 Azure 门户和 PowerShell cmdlet 使用弹性数据库作业。 但是，它在 Azure 门户中的功能被缩减，仅限针对[弹性池](sql-database-elastic-pool.md)中的所有数据库执行操作。 若要访问其他功能并针对包含自定义集合或分片集（使用[弹性数据库客户端库](sql-database-elastic-scale-introduction.md)创建）的一组数据库执行脚本，请参阅[使用 PowerShell 创建和管理作业](sql-database-elastic-jobs-powershell.md)。 有关作业的详细信息，请参阅[弹性数据库作业概述](sql-database-elastic-jobs-overview.md)。 
 
 ## <a name="prerequisites"></a>先决条件
 * Azure 订阅。 如需免费试用，请参阅[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。

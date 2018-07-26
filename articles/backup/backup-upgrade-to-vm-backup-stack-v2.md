@@ -1,31 +1,33 @@
 ---
-title: 升级到 Azure VM 备份堆栈的 Azure 资源管理器部署模型
+title: 升级到 Azure VM 备份堆栈 V2
 description: 有关 VM 备份堆栈、资源管理器部署模型的升级过程和常见问题解答
-services: backup, virtual-machines
+services: backup
 author: trinadhk
 manager: vijayts
 tags: azure-resource-manager, virtual-machine-backup
-ms.service: backup, virtual-machines
+ms.service: backup
 ms.topic: conceptual
-ms.date: 03/08/2018
+ms.date: 7/18/2018
 ms.author: trinadhk
-ms.openlocfilehash: e822e0c354fd671ee2802506e0e268d4078b395e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c9dff77f6b9fffc02ec94caa3454500772651195
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606896"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136888"
 ---
-# <a name="upgrade-to-the-azure-resource-manager-deployment-model-for-azure-vm-backup-stack"></a>升级到 Azure VM 备份堆栈的 Azure 资源管理器部署模型
+# <a name="upgrade-to-azure-vm-backup-stack-v2"></a>升级到 Azure VM 备份堆栈 V2
+
 用于升级到虚拟机 (VM) 备份堆栈的资源管理器部署模型提供以下增强功能：
+
 * 可以查看在执行备份作业期间创建的用于恢复的快照，而无需等待数据传输完成。 它缩短了快照在触发还原之前复制到保管库的等待时间。 此外，借助这项增强功能，无需添置额外的存储来备份高级 VM（首次备份除外）。  
 
 * 可在本地保留快照 7 天，缩短了备份和还原时间。
 
 * 最大支持 4 TB 的磁盘。
 
-* 还原时可使用非托管 VM 的原始存储帐户。 即使 VM 的磁盘跨存储帐户进行分布，也具备此能力。 这可以加快各种 VM 配置的还原速度。
-    > [!NOTE] 
+* 还原时可使用非托管 VM 的原始存储帐户。 即使 VM 的磁盘跨存储帐户进行分布，也具备此能力。 这可以加快各种 VM 配置的还原操作。
+    > [!NOTE]
     > 此能力与重写原始 VM 不同。 
     >
 
@@ -41,15 +43,16 @@ ms.locfileid: "34606896"
 默认情况下，快照保留 7 天。 借助此功能，可从这些快照中更快完成还原操作。 这可缩短将数据从保管库复制回客户存储帐户所需的时间。 
 
 ## <a name="considerations-before-upgrade"></a>升级前的注意事项
-* VM 备份堆栈的升级是单向升级。 所有备份都会进入此流。 因为在订阅级别启用，所有 VM 都会进入此流。 所有新功能补充都基于同一个堆栈。 将来的版本将会支持在策略级别控制此功能。
 
-* 将快照存储在本地以提高恢复点的创建速度并加速还原。 因此，可在七天内看到与快照对应的存储成本。
+* VM 备份堆栈的升级是单向升级，所有备份都会进入此流。 由于更改发生在订阅级别，因此所有 VM 都会进入此流。 所有新功能补充都基于同一个堆栈。 目前无法在策略级别控制此堆栈。
 
-* 增量快照作为页 blob 存储。 将对使用非托管磁盘的所有客户收取快照存储在客户本地存储帐户 7 天的费用。 根据当前的定价模型，不对托管磁盘上的客户收费。
+* 快照将存储在本地，以提高恢复点的创建速度并加快还原操作。 因此，可看到七天内创建的快照的相应存储成本。
 
-* 如果从快照恢复点执行高级 VM 还原操作，在还原过程中创建 VM 时，会看到使用了一个临时存储位置。
+* 增量快照作为页 blob 存储。 将对使用非托管磁盘的所有客户收取快照存储在客户本地存储帐户 7 天的费用。 根据当前的定价模型，不会对使用托管磁盘的客户收费。
 
-* 对于高级存储帐户，为即时恢复创建的快照占用 10 TB 的分配空间。
+* 如果从快照恢复点还原高级 VM，则会在创建 VM 时使用临时存储位置。
+
+* 对于高级存储帐户，为即时恢复点创建的快照计入分配空间的 10-TB 限制。
 
 ## <a name="upgrade"></a>升级
 ### <a name="the-azure-portal"></a>Azure 门户
@@ -89,3 +92,39 @@ Get-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNa
 ```
 
 如果输出中显示“Registered”，则表示订阅已升级到 VM 备份堆栈资源管理器部署模型。
+
+## <a name="frequently-asked-questions"></a>常见问题
+
+我们从论坛和客户问题中收集了以下问题及解答。
+
+### <a name="will-upgrading-to-v2-impact-current-backups"></a>升级到 V2 会影响当前备份吗？
+
+升级到 V2 对当前备份没有影响，也无需重新配置环境。 升级后，备份环境将继续正常工作。
+
+### <a name="what-does-it-cost-to-upgrade-to-azure-backup-stack-v2"></a>升级到 Azure 备份堆栈 v2 需要多少费用？
+
+升级到 Azure 备份堆栈 v2 无需任何费用。 快照将存储在本地，以加快恢复点创建和还原操作。 因此，可看到七天内创建的快照的相应存储成本。
+
+### <a name="does-upgrading-to-stack-v2-increase-the-premium-storage-account-snapshot-limit-by-10-tb"></a>升级到堆栈 v2 是否会将高级存储帐户快照限制增加 10 TB？
+
+不是。
+
+### <a name="in-premium-storage-accounts-do-snapshots-taken-for-instant-recovery-point-occupy-the-10-tb-snapshot-limit"></a>在高级存储帐户中，为即时恢复点创建的快照是否会占用 10 TB 快照限制？
+
+是的，对于高级存储帐户，为即时恢复点创建的快照会占用 10 TB 的分配空间。
+
+### <a name="how-does-the-snapshot-work-during-the-seven-day-period"></a>快照在七天内如何运作？ 
+
+每天创建一个新的快照。 一共有七个单独的快照。 该服务在第一天**不会**创建副本，并在接下来六天添加更改。
+
+### <a name="what-happens-if-the-default-resource-group-is-deleted-accidentally"></a>如果意外删除默认资源组，会发生什么情况？
+
+如果删除该资源组，则该区域中所有受保护 VM 的即时恢复点都将丢失。 下一次备份时，系统会重新创建该资源组，并按预期继续备份。 此功能不只适用于即时恢复点。
+
+### <a name="can-i-delete-the-default-resource-group-created-for-instant-recovery-points"></a>我可以删除为即时恢复点创建的默认资源组吗？
+
+Azure 备份服务会创建托管资源组。 目前，你无法更改或修改该资源组。 也不应该锁定该资源组。 本指南不只适用于 V2 堆栈。
+ 
+### <a name="is-a-v2-snapshot-an-incremental-snapshot-or-full-snapshot"></a>v2 快照是增量快照还是完整快照？
+
+增量快照用于非托管磁盘。 对于托管磁盘，则是完整快照。

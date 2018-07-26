@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 03/20/2018
+ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 1d84fa5ca580a1e56ba9ce17dece9ad9680c74c6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a1296565384e60117d883a1f1407362482ba1a3e
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633921"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125007"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>创建和读取 IoT 中心消息
 
@@ -36,7 +36,7 @@ ms.locfileid: "34633921"
 
 下表列出 IoT 中心消息中的系统属性集。
 
-| 属性 | 说明 |
+| 属性 | Description |
 | --- | --- |
 | MessageId |用户可设置的，用于请求-答复模式的消息标识符。 格式：ASCII 7 位字母数字字符 + `{'-', ':',’.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` 的区分大小写字符串（最长为 128 个字符）。 |
 | 序列号 |IoT 中心分配给每条云到设备消息的编号（对每个设备队列是唯一的）。 |
@@ -65,11 +65,11 @@ IoT 中心用于衡量消息大小的方法与协议无关，仅考虑实际有�
 
 有关 IoT 中心消息大小限制的详细信息，请参阅 [IoT 中心配额和限制][lnk-quotas]。
 
-若要了解如何用不同编程语言创建并读取 IoT 中心消息，请参阅[入门][lnk-get-started]教程。
+若要了解如何用不同编程语言创建并读取 IoT 中心消息，请参阅[快速入门][lnk-get-started]。
 
 [lnk-messaging]: iot-hub-devguide-messaging.md
 [lnk-quotas]: iot-hub-devguide-quotas-throttling.md
-[lnk-get-started]: iot-hub-get-started.md
+[lnk-get-started]: quickstart-send-telemetry-node.md
 [lnk-sdks]: iot-hub-devguide-sdks.md
 [lnk-c2d]: iot-hub-devguide-messages-c2d.md
 [lnk-d2c]: iot-hub-devguide-messages-d2c.md

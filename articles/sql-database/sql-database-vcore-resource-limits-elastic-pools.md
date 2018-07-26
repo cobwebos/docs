@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 01f213c7cf5f6be3ef84601a50bb4455422faf22
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 5503ffaf8a429221a0a0730fc999cb7a90f43785
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311181"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092114"
 ---
-# <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools-preview"></a>Azure SQL 数据库基于 vCore 的购买模型针对弹性池的限制（预览版）
+# <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Azure SQL 数据库基于 vCore 的购买模型针对弹性池的限制
 
 本文提供针对使用基于 vCore 的购买模型的 Azure SQL 数据库弹性池和入池数据库的详细资源限制。
 
@@ -136,7 +136,7 @@ ms.locfileid: "36311181"
 
 下表介绍了入池数据库的属性。
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--- |:--- |
 | 每个数据库的最大 vCore 数 |根据池中其他数据库的 vCore 使用率，池中任何数据库可以使用的 vCore 的最大数目。 每个数据库的 vCore 上限并不是数据库的资源保障。 此设置是应用于池中所有数据库的全局设置。 将每个数据库的最大 vCore 数设置得足够高，以处理数据库使用高峰情况。 因为池通常会假定数据库存在热使用模式和冷使用模式，在这些模式中并非所有数据库同时处于高峰使用状态，所以预期会存在某种程度的过量使用情况。|
 | 每个数据库的最小 vCore 数 |池中任何数据库可以保证的 vCore 最小数目。 此设置是应用于池中所有数据库的全局设置。 每个数据库的最小 vCore 可能设为 0，这也是默认值。 该属性值可以设置为介于 0 和每个数据库的平均 vCore 使用量之间的任意值。 池中数据库数目和每个数据库的 vCore 下限的积不能超过每个池的 vCore 数。|

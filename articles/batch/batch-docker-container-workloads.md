@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 06/04/2018
 ms.author: danlep
-ms.openlocfilehash: 8ef9d5a8e5212f6715769eecf4fde92a6d0b9d44
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: a85db0315a2ee8aa9fd34b8c18893f4cb1068528
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060511"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090956"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>在 Azure Batch 上运行容器应用程序
 
@@ -43,6 +43,8 @@ ms.locfileid: "37060511"
 ### <a name="limitations"></a>限制
 
 * 批处理仅对在 Linux 池上运行的容器提供 RDMA 支持。
+
+* 对于 Windows 容器工作负荷，建议为你的池选择多核 VM 大小
 
 ## <a name="supported-virtual-machine-images"></a>受支持的虚拟机映像
 

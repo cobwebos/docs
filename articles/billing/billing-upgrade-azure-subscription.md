@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 08/30/2017
 ms.author: jlian
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86c733f138e9926fb13c2c1cb404cc9b61f4780e
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 089bb6f3fd187a56495dfd353ee89086e6bea120
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32769165"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39124977"
 ---
 # <a name="upgrade-your-free-trial-or-microsoft-imagine-azure-subscription-to-pay-as-you-go"></a>将免费试用版或 Microsoft Imagine Azure 订阅升级到即用即付
 
@@ -36,4 +36,9 @@ ms.locfileid: "32769165"
    
     ![显示如何选择以确认想要升级订阅的屏幕截图](./media/billing-upgrade-azure-subscription/Upgrade.png)
 
- 从免费试用版订阅升级时，创建订阅后，可保留剩余信用额度整整 30 天。 还可以访问免费服务 12 个月。
+ 从免费试用版订阅升级时，创建订阅后，可保留剩余信用额度整整 30 天。 仍可使用 12 个月的免费服务。
+ 
+ 如果想要在升级后[转移订阅](billing-subscription-transfer.md)，则必须等到订阅套餐 ID 更改为 MS-AZR-003P。 出现以下情况时，套餐 ID 会更改
+
+* 使用所有剩余信用额度，或
+* 自开始免费试用 30 天之后

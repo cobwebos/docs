@@ -10,26 +10,26 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6baeba9cc7e631c6dbdf2284db484dc5f95adcce
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 9fb2d2ccabf79a95a108d4ecf39a4957fc9ffff4
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444195"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113668"
 ---
 # <a name="azure-active-directory-b2c-oauth-20-authorization-code-flow"></a>Azure Active Directory B2C：OAuth 2.0 授权代码流
 可使用 OAuth 2.0 授权代码向设备上安装的应用授权，获取访问受保护资源（例如 Web API）的权限。 通过使用 OAuth 2.0 的 Azure Active Directory B2C (Azure AD B2C) 实现，可向移动应用和桌面应用添加注册、登录和其他标识管理任务。 本文与语言无关。 本文介绍在不使用任何开放源代码库的情况下，如何发送和接收 HTTP 消息。
 
 <!-- TODO: Need link to libraries -->
 
-[OAuth 2.0 规范第 4.1 部分](http://tools.ietf.org/html/rfc6749)描述了 OAuth 2.0 授权代码流。 可使用它在大部分应用类型（包括 [Web 应用](active-directory-b2c-apps.md#web-apps)和[本机安装应用](active-directory-b2c-apps.md#mobile-and-native-apps)）中执行身份验证与授权。 可使用 OAuth 2.0 授权代码流安全地获取应用的*访问令牌*，访问令牌可用于访问受到[授权服务器](active-directory-b2c-reference-protocols.md#the-basics)保护的资源。
+[OAuth 2.0 规范第 4.1 部分](http://tools.ietf.org/html/rfc6749)描述了 OAuth 2.0 授权代码流。 可在大多数[应用程序类型](active-directory-b2c-apps.md)中将其用于身份验证和授权，包括 Web 应用和本机安装的应用程序。 可使用 OAuth 2.0 授权代码流安全地获取应用程序的访问令牌，访问令牌可用于访问受到[授权服务器](active-directory-b2c-reference-protocols.md)保护的资源。
 
-本文重点介绍**公共客户端** OAuth 2.0 授权代码流。 公共客户端是那些不能被信任以安全维护机密密码完整性的任何客户端应用程序。 这包括移动应用、桌面应用，以及在设备上运行并需要获取访问令牌的几乎所有应用程序。 
+本文重点介绍**公共客户端** OAuth 2.0 授权代码流。 公共客户端是那些不能被信任以安全维护机密密码完整性的任何客户端应用程序。 这包括移动应用、桌面应用程序，以及在设备上运行并需要获取访问令牌的几乎所有应用程序。 
 
 > [!NOTE]
 > 若要使用 Azure AD B2C 向 Web 应用添加标识管理，请使用 [OpenID Connect](active-directory-b2c-reference-oidc.md)，而不要使用 OAuth 2.0。
 
-Azure AD B2C 扩展了标准 OAuth 2.0 流，使其功能远远超出了简单的身份验证和授权。 它引入了[策略参数](active-directory-b2c-reference-policies.md)。 借助内置策略，可使用 OAuth 2.0 向应用添加用户体验，例如注册、登录和配置文件管理。 本文演示如何使用 OAuth 2.0 和策略在本机应用程序中实现每个体验。 我们还将演示如何获取用于访问 Web API 的访问令牌。
+Azure AD B2C 扩展了标准 OAuth 2.0 流，使其功能远远超出了简单的身份验证和授权。 它引入了[策略参数](active-directory-b2c-reference-policies.md)。 借助内置策略，可使用 OAuth 2.0 向应用程序添加用户体验，例如注册、登录和配置文件管理。 本文演示如何使用 OAuth 2.0 和策略在本机应用程序中实现每个体验。 我们还将演示如何获取用于访问 Web API 的访问令牌。
 
 在本文的示例 HTTP 请求中，我们使用示例 Azure AD B2C 目录 **fabrikamb2c.onmicrosoft.com**。 我们还使用示例应用程序和策略。 可使用这些值自行尝试这些请求，或使用自己的值替换它们。
 了解如何[获取自己的 Azure AD B2C 目录、应用程序和策略](#use-your-own-azure-ad-b2c-directory)。
@@ -73,7 +73,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_edit_profile
 ```
 
-| 参数 | 必需？ | 说明 |
+| 参数 | 必需？ | Description |
 | --- | --- | --- |
 | client_id |必选 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
 | response_type |必选 |响应类型，其中必须包括 `code` 的授权待码流。 |
@@ -96,7 +96,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...        // the auth
 &state=arbitrary_data_you_can_receive_in_the_response                // the value provided in the request
 ```
 
-| 参数 | 说明 |
+| 参数 | Description |
 | --- | --- |
 | 代码 |应用程序请求的授权代码。 应用可使用授权代码请求目标资源的访问令牌。 授权代码的生存期非常短。 通常，它们在约 10 分钟后过期。 |
 | state |请参阅上一部分的表中的完整说明。 如果请求中包含 `state` 参数，响应中应该出现相同的值。 应用需验证请求和响应中的 `state` 值是否相同。 |
@@ -110,7 +110,7 @@ error=access_denied
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| 参数 | 说明 |
+| 参数 | Description |
 | --- | --- |
 | error |可用于分类发生的错误类型的错误代码字符串。 还可使用该字符串对错误作出响应。 |
 | error_description |可帮助用户识别身份验证错误根本原因的特定错误消息。 |
@@ -128,7 +128,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 ```
 
-| 参数 | 必需？ | 说明 |
+| 参数 | 必需？ | Description |
 | --- | --- | --- |
 | p |必选 |用于获取授权代码的策略。 无法在此请求中使用不同的策略。 请注意，将此参数添加到*查询字符串*中，而不是添加到 POST 正文中。 |
 | client_id |必选 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
@@ -149,7 +149,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| 参数 | 说明 |
+| 参数 | Description |
 | --- | --- |
 | not_before |epoch 时间中令牌被视为有效的时间。 |
 | token_type |令牌类型值。 Azure AD 唯一支持的类型是 Bearer。 |
@@ -167,7 +167,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 }
 ```
 
-| 参数 | 说明 |
+| 参数 | Description |
 | --- | --- |
 | error |可用于分类发生的错误类型的错误代码字符串。 还可使用该字符串对错误作出响应。 |
 | error_description |可帮助用户识别身份验证错误根本原因的特定错误消息。 |
@@ -189,10 +189,10 @@ POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
 Host: https://login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
-grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
+grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&client_secret=JqQX2PNo9bpM0uEihUPzyrh&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| 参数 | 必需？ | 说明 |
+| 参数 | 必需？ | Description |
 | --- | --- | --- |
 | p |必选 |用于获取原始刷新令牌的策略。 无法在此请求中使用不同的策略。 请注意，将此参数添加到*查询字符串*中，而不是添加到 POST 正文中。 |
 | client_id |必选 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
@@ -214,7 +214,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| 参数 | 说明 |
+| 参数 | Description |
 | --- | --- |
 | not_before |epoch 时间中令牌被视为有效的时间。 |
 | token_type |令牌类型值。 Azure AD 唯一支持的类型是 Bearer。 |
@@ -232,7 +232,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
 }
 ```
 
-| 参数 | 说明 |
+| 参数 | Description |
 | --- | --- |
 | error |可用于分类发生的错误类型的错误代码字符串。 还可使用该字符串对错误作出响应。 |
 | error_description |可帮助用户识别身份验证错误根本原因的特定错误消息。 |

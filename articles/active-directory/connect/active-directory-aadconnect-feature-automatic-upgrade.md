@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/13/2017
+ms.date: 06/16/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: adfce1195a6a322e0225ee09a45148001d0167c8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1cc58832d5f863f5bbfa6fc20d38b4be81ddad8f
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34592123"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39089955"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect：自动升级
-此功能是随内部版本 1.1.105.0（于 2016 年 2 月发布）一起推出的。
+此功能是随内部版本 [1.1.105.0（于 2016 年 2 月发布）](active-directory-aadconnect-version-history.md#111050)一起推出的。  此功能已在[内部版本 1.1.561](active-directory-aadconnect-version-history.md#115610) 中更新，现在支持以前不支持的其他方案。
 
 ## <a name="overview"></a>概述
 使用**自动升级**功能是确保 Azure AD Connect 安装始终保持最新状态的最简单方法。 系统默认启用此功能，以便进行快速安装和 DirSync 升级。 发布新版本时，安装会自动升级。
@@ -36,7 +36,7 @@ ms.locfileid: "34592123"
 
 可以使用 PowerShell cmdlet `Get-ADSyncAutoUpgrade` 来查看当前的自动升级状态。 状态包括：
 
-| State | 注释 |
+| 省/直辖市/自治区 | 注释 |
 | --- | --- |
 | Enabled |自动升级已启用。 |
 | 已挂起 |只能由系统设置。 系统不再能够接收自动升级。 |
@@ -66,7 +66,7 @@ ms.locfileid: "34592123"
 
 结果代码前面会有包含状态概述的前缀。
 
-| 结果代码前缀 | 说明 |
+| 结果代码前缀 | Description |
 | --- | --- |
 | 成功 |安装已成功升级。 |
 | UpgradeAborted |某种临时状态停止了升级。 升级会重试，预期稍后会成功。 |
@@ -74,7 +74,7 @@ ms.locfileid: "34592123"
 
 下面是最常见的消息列表。 该列表并不完整，但结果消息应会明确说明问题所在。
 
-| 结果消息 | 说明 |
+| 结果消息 | Description |
 | --- | --- |
 | **UpgradeAborted** | |
 | UpgradeAbortedCouldNotSetUpgradeMarker |无法写入注册表。 |

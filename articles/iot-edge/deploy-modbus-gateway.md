@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: kgremban
-ms.openlocfilehash: 9e69faf1b07af0e60cfd21cd6eb9f00e211ab91e
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 4fbcfe4198f2655f77b1a61c86092e3ac727ab31
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031747"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115715"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>通过 IoT Edge 设备网关连接 Modbus TCP 设备
 
@@ -35,7 +35,7 @@ ms.locfileid: "37031747"
 若要测试 Modbus 网关功能，可以使用 Microsoft 提供的示例模块。 若要使用示例模块，请转到[运行解决方案](#run-the-solution)部分，输入以下内容作为“映像 URI”： 
 
 ```URL
-microsoft/azureiotedge-modbus-tcp:1.0-preview
+microsoft/azureiotedge-modbus-tcp:GA-preview-amd64
 ```
 
 如果需要创建自己的模块并根据环境对其自定义，可以使用 Github 上的开源 [Azure IoT Edge Modbus 模块](https://github.com/Azure/iot-edge-modbus)项目。 按照该项目中的指南创建自己的容器映像。 如果创建自己的容器映像，请参阅[开发和部署 C# IoT Edge 模块](tutorial-csharp-module.md)，了解如何将容器映像发布到注册表，以及如何将自定义模块部署到设备。 
@@ -48,7 +48,7 @@ microsoft/azureiotedge-modbus-tcp:1.0-preview
 4. 添加 Modbus 模块：
    1. 单击“添加”，然后选择“IoT Edge 模块”。
    2. 在“名称”字段中，输入“modbus”。
-   3. 在“映像”字段中，输入示例容器的映像 URI：`microsoft/azureiotedge-modbus-tcp:1.0-preview`。
+   3. 在“映像”字段中，输入示例容器的映像 URI：`microsoft/azureiotedge-modbus-tcp:GA-preview-amd64`。
    4. 勾选“启用”框，更新模块孪生的所需属性。
    5. 将以下 JSON 复制到文本框中。 将 **SlaveConnection** 的值更改为 Modbus 设备的 IPv4 地址。
 
@@ -96,7 +96,7 @@ microsoft/azureiotedge-modbus-tcp:1.0-preview
 docker logs -f modbus
 ```
 
-还可使用 [IoT 中心资源管理器工具](https://github.com/azure/iothub-explorer)查看设备正在发送的遥测。 
+也可使用 [IoT 中心资源管理器工具](https://github.com/azure/iothub-explorer)或 [Visual Studio Code 的 Azure IoT Toolkit 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)查看设备正发送的遥测数据。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cb8b1ca3514e27221e95cb2def823c8f89d151e5
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: b578abfa6fc0a10edc5daab40f8a0eea5e6653d9
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "30312437"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115056"
 ---
 # <a name="persist-job-and-task-output"></a>持久性作业和任务输出
 
@@ -84,7 +84,7 @@ ms.locfileid: "30312437"
 > 
 > 
 
-有关使用批处理服务 API 保存任务输出的详细信息，请参阅[使用批处理服务 API 将任务数据保存到 Azure 存储](batch-task-output-files.md)。 另请参阅 GitHub 上的 [PersistOutputs][github_persistoutputs] 示例项目，该示例演示了如何使用适用于 .NET 的批处理客户端库将任务输出保存到持久存储。
+有关使用批处理服务 API 保存任务输出的详细信息，请参阅[使用批处理服务 API 将任务数据保存到 Azure 存储](batch-task-output-files.md)。 另请参阅 GitHub 上的 [PersistOutputs][github_persistoutputs] 示例项目，该示例演示了如何使用适用于 .NET 的 Batch 客户端库将任务输出保存到持久存储。
 
 ### <a name="use-the-batch-file-conventions-library-for-net"></a>使用适用于 .NET 的批处理文件约定库
 
@@ -100,9 +100,9 @@ ms.locfileid: "30312437"
 - 想要执行检查点或初始结果的早期上传。
 - 想要在 Azure 门户中查看任务输出。
 
-有关使用适用于 .NET 的文件约定库保存任务输出的详细信息，请参阅[使用适用于 .NET 的批处理文件约定库将作业和任务数据保存到 Azure 存储](batch-task-output-file-conventions.md)。 另请参阅 GitHub 上的 [PersistOutputs][github_persistoutputs] 示例项目，该示例演示了如何使用适用于 .NET 的文件约定库将任务输出保存到持久存储。
+有关使用适用于 .NET 的文件约定库保存任务输出的详细信息，请参阅[使用适用于 .NET 的 Batch 文件约定库将作业和任务数据保存到 Azure 存储](batch-task-output-file-conventions.md)。 另请参阅 GitHub 上的 [PersistOutputs][github_persistoutputs] 示例项目，该示例演示了如何使用适用于 .NET 的文件约定库将任务输出保存到持久存储。
 
-GitHub 上的 [PersistOutputs][github_persistoutputs] 示例项目演示了如何使用适用于 .NET 的批处理客户端库将任务输出保存到持久存储。
+GitHub 上的 [PersistOutputs][github_persistoutputs] 示例项目演示了如何使用适用于 .NET 的 Batch 客户端库将任务输出保存到持久存储。
 
 ### <a name="implement-the-batch-file-conventions-standard"></a>实现批处理文件约定标准
 
@@ -121,9 +121,10 @@ GitHub 上的 [PersistOutputs][github_persistoutputs] 示例项目演示了如�
 ## <a name="next-steps"></a>后续步骤
 
 - 在[使用批处理服务 API 将任务数据保存到 Azure 存储](batch-task-output-files.md)中了解如何使用批处理服务 API 中的新功能保存任务数据。
-- 在[使用适用于 .NET 的批处理文件约定库将作业和任务数据保存到 Azure 存储](batch-task-output-file-conventions.md)中了解如何使用适用于 .NET 的批处理文件约定库。
-- 请参阅 GitHub 上的 [PersistOutputs][github_persistoutputs] 示例项目，该示例演示了如何使用适用于 .NET 的批处理客户端库和适用于 .NET 的文件约定库将任务输出保存到持久存储。
+- 在[使用适用于 .NET 的 Batch 文件约定库将作业和任务数据保存到 Azure 存储](batch-task-output-file-conventions.md)中，了解如何使用适用于 .NET 的 Batch 文件约定库。
+- 请参阅 GitHub 上的 [PersistOutputs][github_persistoutputs] 示例项目，该示例演示了如何使用适用于 .NET 的 Batch 客户端库和适用于 .NET 的文件约定库将任务输出保存到持久存储。
 
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
 [portal]: https://portal.azure.com
 [storage_explorer]: http://storageexplorer.com/
+[github_persistoutputs]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs 

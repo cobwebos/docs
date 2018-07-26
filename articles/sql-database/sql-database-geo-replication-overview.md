@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 07/18/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 0c27aec90dad6eb3aeb46871d20202870eba886d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b889c77bbbcff31aa84cb0df5d06de487ba91d8e
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647639"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136547"
 ---
 # <a name="overview-failover-groups-and-active-geo-replication"></a>概述：故障转移组和活动异地复制
 使用活动异地复制可在相同或不同数据中心位置（区域）中最多配置四个可读的辅助数据库。 在数据中心发生服务中断或无法连接到主数据库时，可以使用辅助数据库进行查询和故障转移。 故障转移必须由用户通过应用程序手动启动。 故障转移后，新的主数据库具有不同的连接终结点。 
@@ -24,9 +24,9 @@ ms.locfileid: "34647639"
 > 活动异地复制现在可供所有区域的所有服务层中的所有数据库使用。
 >  
 
-Azure SQL 数据库自动故障转移组（预览）是一项 SQL 数据库功能，主要用于自动管理大规模异地复制关系、连接和故障转移。 通过使用故障转移组，客户能够在发生后述情况后自动恢复次要区域中多个相关数据库：灾难性区域故障或其他导致主要区域中 SQL 数据库服务完全或部分丧失可用性的非计划事件。 此外，客户还可以使用可读辅助数据库卸载只读工作负荷。  由于自动故障转移组涉及多个数据库，因此必须在主服务器上进行配置。 主服务器和辅助服务器必须位于同一订阅。 自动故障转移组支持将组中所有的数据库复制到另一个区域中唯一的辅助服务器。 活动异地复制不包括自动故障组，允许最多复制到任何区域中的四个辅助数据库。
+Azure SQL 数据库自动故障转移组是一项 SQL 数据库功能，主要用于自动管理大规模异地复制关系、连接和故障转移。 通过使用故障转移组，客户能够在发生后述情况后自动恢复次要区域中多个相关数据库：灾难性区域故障或其他导致主要区域中 SQL 数据库服务完全或部分丧失可用性的非计划事件。 此外，客户还可以使用可读辅助数据库卸载只读工作负荷。  由于自动故障转移组涉及多个数据库，因此必须在主服务器上进行配置。 主服务器和辅助服务器必须位于同一订阅。 自动故障转移组支持将组中所有的数据库复制到另一个区域中唯一的辅助服务器。 活动异地复制不包括自动故障组，允许最多复制到任何区域中的四个辅助数据库。
 
-如果使用活动异地复制，且主数据库因某种原因而出现故障，或者如果只是需要脱机，则可以启动到任何辅助数据库的故障转移。 当将故障转移激活到辅助数据库之一时，所有其他辅助数据库会自动链接到新的主数据库。 如果使用自动故障转移组（预览）管理数据库恢复，并且任何影响组中一个或多个数据库的故障会导致自动故障转移。 可以配置最能满足应用程序需求的自动故障转移策略，或者可以选择退出并使用手动激活。 此外，自动故障转移组（预览）提供在故障转移期间保持不变的读写和只读侦听器终结点。 无论使用手动故障转移激活还是自动故障转移激活，故障转移都会将组中所有的辅助数据库切换到主数据库。 数据库故障转移完成后，会自动更新 DNS 记录，以便将终结点重定向到新的区域。
+如果使用活动异地复制，且主数据库因某种原因而出现故障，或者如果只是需要脱机，则可以启动到任何辅助数据库的故障转移。 当将故障转移激活到辅助数据库之一时，所有其他辅助数据库会自动链接到新的主数据库。 如果使用自动故障转移组管理数据库恢复，并且任何影响组中一个或多个数据库的故障会导致自动故障转移。 可以配置最能满足应用程序需求的自动故障转移策略，或者可以选择退出并使用手动激活。 此外，自动故障转移组提供在故障转移期间保持不变的读写和只读侦听器终结点。 无论使用手动故障转移激活还是自动故障转移激活，故障转移都会将组中所有的辅助数据库切换到主数据库。 数据库故障转移完成后，会自动更新 DNS 记录，以便将终结点重定向到新的区域。
 
 可以使用活动异地复制管理服务器或弹性池中单个数据库或一组数据库的复制和故障转移。 可使用以下各项完成此操作 
 
@@ -38,7 +38,7 @@ Azure SQL 数据库自动故障转移组（预览）是一项 SQL 数据库功�
 - [REST API：单个数据库](/rest/api/sql/replicationlinks/failover)
 - [REST API：故障转移组](/rest/api/sql/failovergroups/failover)。 
  
-故障转移后，请确保在新的主机上配置服务器和数据库的身份验证要求。 有关详细信息，请参阅[灾难恢复后的 Azure SQL 数据库安全性](sql-database-geo-replication-security-config.md)。 这同时适用于活动异地复制和自动故障转移组（预览）。
+故障转移后，请确保在新的主机上配置服务器和数据库的身份验证要求。 有关详细信息，请参阅[灾难恢复后的 Azure SQL 数据库安全性](sql-database-geo-replication-security-config.md)。 这同时适用于活动异地复制和自动故障转移组。
 
 活动异地复制利用 SQL Server 的 [Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) 技术，使用读提交快照隔离 (RCSI) 以异步方式将主数据库上已提交的事务复制到辅助数据库。 自动故障转移组提供基于活动异地复制的组语义，但使用相同的异步复制机制。 尽管在任意给定时间，辅助数据库可能略微滞后于主数据库，但系统可以保证辅助数据永不包含部分事务。 跨区域冗余使应用程序能够在自然灾害、灾难性人为失误或恶意行为导致整个或部分数据中心永久性数据丢失后得以快速恢复。 [业务连续性概述](sql-database-business-continuity.md)中提供了具体的 RPO 数据。
 
@@ -46,7 +46,7 @@ Azure SQL 数据库自动故障转移组（预览）是一项 SQL 数据库功�
 
 ![异地复制关系](./media/sql-database-active-geo-replication/geo-replication-relationship.png)
 
-因为辅助数据库是可读的，并且可用于卸载只读工作负荷，如报表作业。 如果使用活动异地复制，则可在主数据库所在的区域中创建辅助数据库，但不会增加应用程序针对灾难性故障的复原能力。 如果使用自动故障转移组（预览），则会始终在不同的区域中创建辅助数据库。
+因为辅助数据库是可读的，并且可用于卸载只读工作负荷，如报表作业。 如果使用活动异地复制，则可在主数据库所在的区域中创建辅助数据库，但不会增加应用程序针对灾难性故障的复原能力。 如果使用自动故障转移组，则会始终在不同的区域中创建辅助数据库。
 
 除了灾难恢复外，活动异地复制还可用于以下情况：
 
@@ -73,7 +73,7 @@ Azure SQL 数据库自动故障转移组（预览）是一项 SQL 数据库功�
 * **弹性池数据库的支持**：每个副本可以单独参与弹性池或根本不在弹性池中。 每个副本的池选择是单独的，并且不会依赖任何其他副本的配置（无论是主数据库还是辅助数据库）。 每个弹性池包含在单个区域内，因此相同拓扑中的多个副本永远不会共享弹性池。
 * **辅助数据库的可配置性能级别**：要求主数据库和辅助数据库处于同一服务层。 可使用低于主数据库的性能级别 (DTU) 创建辅助数据库。 不建议将此选项用于具有高数据库写入活动的应用程序，因为复制延迟时间的增长会加大故障转移后大量数据丢失的风险。 此外，在故障转移后，应用程序的性能将受到影响，直到新的主数据库升级到更高的性能级别。 Azure 门户上的日志 IO 百分比图表提供了一种评估维持复制负荷所需的辅助数据库的最小性能级别的好办法。 例如，如果主数据库是 P6 (1000 DTU)，其日志 IO 百分比为 50%，则辅助数据库需要至少为 P4 (500 DTU)。 还可以使用 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 或 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 数据库视图检索日志 IO 数据。  有关 SQL 数据库性能级别的详细信息，请参阅[什么是 SQL 数据库服务层](sql-database-service-tiers.md)。 
 * **用户控制的故障转移和故障回复**：应用程序或用户可随时会辅助数据库显式切换到主角色。 在实际服务中断期间，应使用“计划外”选项，这会立即将辅助数据库升级为主数据库。 当出现故障的主数据库恢复并再次可用时，系统会自动将恢复的主数据库标记为辅助数据库并使其与新的主数据库保持最新状态。 由于复制的异步特性，在未计划的故障转移期间，如果主数据库在将最新的更改复制到辅助数据库之前出现故障，则可能会丢失少量数据。 当具有多个辅助数据库的主数据库进行故障转移时，系统会自动重新配置复制关系，并将剩余辅助数据库链接到新升级的主数据库，无需任何用户的干预。 导致了故障转移的服务中断得到缓解后，可能需要将应用程序返回到主要区域。 为此，应使用“计划内”选项调用故障转移命令。 
-* **保持凭据和防火墙规则同步**：建议将[数据库防火墙规则](sql-database-firewall-configure.md)用于异地复制数据库，以便这些规则可以和数据库一起复制，从而确保所有辅助数据库具有与主数据库相同的防火墙规则。 此方法不再需要客户手动配置和维护承载主数据库和辅助数据库的服务器上的防火墙规则。 同样，将[包含的数据库用户](sql-database-manage-logins.md)用于数据访问可确保主数据库和辅助数据库始终具有相同的用户凭据，以便在故障转移期间，不会因登录名和密码不匹配而产生中断。 通过添加 [Azure Active Directory](../active-directory/active-directory-whatis.md)，客户可以管理主数据库和辅助数据库的用户访问权限，且不再需要同时管理数据库中的凭据。
+* **保持凭据和防火墙规则同步**：建议将[数据库防火墙规则](sql-database-firewall-configure.md)用于异地复制数据库，以便这些规则可以和数据库一起复制，从而确保所有辅助数据库具有与主数据库相同的防火墙规则。 此方法不再需要客户手动配置和维护承载主数据库和辅助数据库的服务器上的防火墙规则。 同样，将[包含的数据库用户](sql-database-manage-logins.md)用于数据访问可确保主数据库和辅助数据库始终具有相同的用户凭据，以便在故障转移期间，不会因登录名和密码不匹配而产生中断。 通过添加 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)，客户可以管理主数据库和辅助数据库的用户访问权限，且不再需要同时管理数据库中的凭据。
 
 ## <a name="auto-failover-group-capabilities"></a>自动故障转移组功能
 
@@ -89,8 +89,9 @@ Azure SQL 数据库自动故障转移组（预览）是一项 SQL 数据库功�
    >
 
 * 故障转移组读写侦听器：指向当前主服务器 URL 的格式为 **&lt;failover-group-name&gt;.database.windows.net** 的 DNS CNAME 记录。 它允许读写 SQL 应用程序在故障转移发生后主服务器发生更改时，以透明方式重新连接到主数据库。 
-* 故障转移组只读侦听器：指向辅助服务器 URL 的格式为 **&lt;failover-group-name&gt;.secondary.database.windows.net** 的 DNS CNAME 记录。 它允许只读 SQL 应用程序以透明方式使用指定的负载均衡规则连接到辅助数据库。 或者，可以指定是否要在辅助服务器不可用时将只读流量自动重定向到主服务器中。
+* 故障转移组只读侦听器：指向辅助服务器 URL 的格式为 **&lt;failover-group-name&gt;.secondary.database.windows.net** 的 DNS CNAME 记录。 它允许只读 SQL 应用程序以透明方式使用指定的负载均衡规则连接到辅助数据库。 
 * 自动故障转移策略：默认使用自动故障转移策略配置故障转移组。 检测到故障时，系统将立即触发故障转移。 如果要从应用程序控制故障转移工作流，可以关闭自动故障转移。 
+* **只读故障转移策略**：默认情况下，禁用只读侦听器的故障转移。 这可确保在辅助数据库脱机时，主数据库的性能不会受到影响。 但是，这也意味辅助数据库恢复前，只读会话将无法连接。 如果无法容许只读会话停机，但能够以主数据库的潜在性能降级为代价将主数据库临时用于只读和读写流量，则可以为只读侦听器启用故障转移。 在这种情况下，如果辅助服务器不可用，则会将只读流量自动重定向到主服务器。  
 * 手动故障转移：可在任何时候手动启动故障转移，而不考虑自动故障转移配置。 如果未配置自动故障转移策略，则需要进行手动故障转移来恢复故障转移组中的数据库。 可通过完整数据同步启动强制或友好的故障转移。 后者可用于将活动服务器重新定位到主要区域。 故障转移完成后，会自动更新 DNS 记录，以确保连接到正确的服务器。
 * 数据丢失宽限期：因为主数据库和辅助数据库是使用异步复制进行同步的，所以故障转移可能会导致数据丢失。 可以自定义自动故障转移策略，以便反映应用程序对数据丢失的容错。 通过配置 **GracePeriodWithDataLossHours**，可以控制系统启动可能导致数据丢失的故障转移之前的等待时间。 
 
@@ -128,13 +129,13 @@ Azure SQL 数据库自动故障转移组（预览）是一项 SQL 数据库功�
 > 
 
 ## <a name="programmatically-managing-failover-groups-and-active-geo-replication"></a>以编程方式管理故障转移组和活动异地复制
-如上所述，也可以使用 Azure PowerShell 和 REST API 以编程方式管理自动故障转移组（预览）和活动异地复制。 下表描述了可用的命令集。
+如上所述，也可以使用 Azure PowerShell 和 REST API 以编程方式管理自动故障转移组和活动异地复制。 下表描述了可用的命令集。
 
 Azure 资源管理器 API 和基于角色的安全性：活动异地复制包括一组用于管理的 Azure 资源管理器 API，其中包括 [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/)（Azure SQL 数据库 REST API）和 [Azure PowerShell cmdlets](https://docs.microsoft.com/powershell/azure/overview)。 这些 API 需要使用资源组，并支持基于角色的安全性 (RBAC)。 有关如何实现访问角色的详细信息，请参阅 [Azure 基于角色的访问控制](../role-based-access-control/overview.md)。
 
 ## <a name="manage-sql-database-failover-using-transact-sql"></a>使用 Transact-SQL 管理 SQL 数据库故障转移
 
-| 命令 | 说明 |
+| 命令 | Description |
 | --- | --- |
 | [ALTER DATABASE（Azure SQL 数据库）](/sql/t-sql/statements/alter-database-azure-sql-database) |使用 ADD SECONDARY ON SERVER 参数为现有数据库创建辅助数据库，并开始数据复制 |
 | [ALTER DATABASE（Azure SQL 数据库）](/sql/t-sql/statements/alter-database-azure-sql-database) |使用 FAILOVER 或 FORCE_FAILOVER_ALLOW_DATA_LOSS 将辅助数据库切换为主数据库，启动故障转移 |
@@ -147,7 +148,7 @@ Azure 资源管理器 API 和基于角色的安全性：活动异地复制包括
 
 ## <a name="manage-sql-database-failover-using-powershell"></a>使用 PowerShell 管理 SQL 数据库故障转移
 
-| Cmdlet | 说明 |
+| Cmdlet | Description |
 | --- | --- |
 | [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) |获取一个或多个数据库。 |
 | [New-AzureRmSqlDatabaseSecondary](/powershell/module/azurerm.sql/new-azurermsqldatabasesecondary) |为现有数据库创建辅助数据库，并开始数据复制。 |
@@ -162,11 +163,11 @@ Azure 资源管理器 API 和基于角色的安全性：活动异地复制包括
 |  | |
 
 > [!IMPORTANT]
-> 有关示例脚本，请参阅[配置单一数据库并使用活动异地复制对其进行故障转移](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)、[配置入池数据库并使用活动异地复制对其进行故障转移](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)和[针对单个数据库配置并故障转移一个故障转移组（预览版）](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md)。
+> 有关示例脚本，请参阅[配置单一数据库并使用活动异地复制对其进行故障转移](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)、[配置入池数据库并使用活动异地复制对其进行故障转移](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)和[针对单个数据库配置并故障转移一个故障转移组](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md)。
 >
 
 ## <a name="manage-sql-database-failover-using-the-rest-api"></a>使用 REST API 管理 SQL 数据库故障转移
-| API | 说明 |
+| API | Description |
 | --- | --- |
 | [创建或更新数据库 (createMode=Restore)](/rest/api/sql/Databases/CreateOrUpdate) |创建、更新或还原主数据库或辅助数据库。 |
 | [获取创建或更新数据库状态](/rest/api/sql/Databases/CreateOrUpdate) |返回创建操作过程中的状态。 |
@@ -188,7 +189,7 @@ Azure 资源管理器 API 和基于角色的安全性：活动异地复制包括
 * 示例脚本请参阅：
    - [配置单一数据库并使用活动异地复制对其进行故障转移](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
    - [配置入池数据库并使用活动异地复制对其进行故障转移](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
-   - [针对单个数据库配置并故障转移一个故障转移组（预览版）](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md)
+   - [针对单个数据库配置并故障转移一个故障转移组](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md)
 * 有关业务连续性概述和应用场景，请参阅[业务连续性概述](sql-database-business-continuity.md)
 * 若要了解 Azure SQL 数据库的自动备份，请参阅 [SQL 数据库自动备份](sql-database-automated-backups.md)。
 * 若要了解如何使用自动备份进行恢复，请参阅[从服务启动的备份中还原数据库](sql-database-recovery-using-backups.md)。

@@ -7,22 +7,19 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 07/17/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: f7125a18aa2496ebe8367443a67502a7a7dbac02
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 24d453dc705eb2d0ee7cb77f2ec247845247d0a8
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969181"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113625"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>管理 Azure SQL 数据库长期备份保留
 
 可以为 Azure SQL 数据库配置[长期备份保留](sql-database-long-term-retention.md)策略 (LTR) 来自动将备份在 Azure blob 存储中保留最多 10 年。 然后，可以通过 Azure 门户或 PowerShell 使用这些备份来恢复数据库。
-
-> [!NOTE]
-> 在 2016 年 10 月首次发行的此功能的预览版中，备份存储在 Azure 服务恢复服务保管库中。 此次更新删除了此依赖关系，但是，为了实现向后兼容性，原始 API 在 2018 年 5 月 31 之前仍受支持。 如果需要与 Azure 服务恢复保管库中的备份进行交互，请参阅[使用 Azure 服务恢复服务保管库的长期备份保留](sql-database-long-term-backup-retention-configure-vault.md)。 
 
 ## <a name="use-the-azure-portal-to-configure-long-term-retention-policies-and-restore-backups"></a>使用 Azure 门户配置长期保留策略并还原备份
 
@@ -32,29 +29,21 @@ ms.locfileid: "38969181"
 
 可以对 SQL 数据库进行配置，使其[保留自动备份](sql-database-long-term-retention.md)的时间长于你的服务层的保留期。 
 
-1. 在 Azure 门户中，选择你的 SQL 服务器，然后单击“长期备份保留”。
+1. 在 Azure 门户中，选择你的 SQL Server，然后单击“管理备份”。 在“配置策略”选项卡上，选择要为其设置或修改长期备份保留策略的数据库。
 
-   ![长期备份保留链接](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
+   ![管理备份链接](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
 
-2. 在“配置策略”选项卡上，选择要为其设置或修改长期备份保留策略的数据库。
-
-   ![选择数据库](./media/sql-database-long-term-retention/ltr-configure-select-database.png)
-
-3. 在“配置策略”窗格中，选择是要保留每周、每月还是每年备份，并指定各自的保留期。 
+2. 在“配置策略”窗格中，选择是要保留每周、每月还是每年备份，并指定各自的保留期。 
 
    ![配置策略](./media/sql-database-long-term-retention/ltr-configure-policies.png)
 
-4. 完成后，单击“应用”。
+3. 完成后，单击“应用”。
 
 ### <a name="view-backups-and-restore-from-a-backup-using-azure-portal"></a>使用 Azure 门户查看备份并从备份进行还原
 
 查看通过 LTR 策略为特定数据库保留的备份，并从这些备份进行还原。 
 
-1. 在 Azure 门户中，选择你的 SQL 服务器，然后单击“长期备份保留”。
-
-   ![长期备份保留链接](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
-
-2. 在“可用备份”选项卡上，选择要查看其可用备份的数据库。
+1. 在 Azure 门户中，选择你的 SQL Server，然后单击“管理备份”。 在“可用备份”选项卡上，选择要查看其可用备份的数据库。
 
    ![选择数据库](./media/sql-database-long-term-retention/ltr-available-backups-select-database.png)
 

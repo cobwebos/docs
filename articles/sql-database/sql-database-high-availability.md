@@ -6,15 +6,15 @@ author: jovanpop-msft
 manager: craigg
 ms.service: sql-database
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/16/2018
 ms.author: jovanpop
 ms.reviewer: carlrab, sashan
-ms.openlocfilehash: a9874681d59d193fc3c3d0fd4271e2a6a0fb0dc6
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 2283b7559bb0dc7e8333949a8e6382d562162123
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060377"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092481"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>高可用性和 Azure SQL 数据库
 
@@ -46,21 +46,18 @@ Azure SQL 数据库的高级层中已启用高级可用性，此功能面向密�
 
 使用标准 [Always On 可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)实现高可用性。 每个数据库是由数据库节点组成的群集，该群集中的一个主数据库可由客户工作负荷访问，还有一些辅助进程包含数据副本。 主节点不断地将更改推送到辅助节点，以确保在主节点出于任何原因崩溃时，可在次要副本上提供数据。 故障转移由 SQL Server 数据库引擎处理 – 一个次要副本成为主节点，并创建新的次要副本来确保群集中有足够的节点。 工作负荷自动重定向到新的主节点。 故障转移时间以毫秒为单位计量，新的主实例可立即开始为请求提供持续服务。
 
-## <a name="zone-redundant-configuration-preview"></a>区域冗余配置（预览版）
+## <a name="zone-redundant-configuration"></a>区域冗余配置
 
-默认情况下，本地存储配置的仲裁集是在相同的数据中心中创建的。 通过引入 [Azure 可用性区域](../availability-zones/az-overview.md)，可以将程序集中的不同副本放到同一区域中的不同可用性区域中。 若要消除单一故障点，还要将控件环跨区域地复制为三个网关环 (GW)。 到特定网关环的路由受 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md) (ATM) 控制。 区域冗余配置不会创建其他数据库冗余，因此在“高级”或“业务关键（预览版）”服务层中使用可用性区域不需要承担任何额外的费用。 通过选择区域冗余数据库，可以让“高级”或“业务关键（预览版）”数据库能应对范围更广的故障，包括灾难性的数据中心服务中断，且不会对应用程序逻辑产生任何更改。 还可以将所有现有“高级”或“业务关键（预览版）”数据库或池转换到区域冗余配置。
+默认情况下，本地存储配置的仲裁集是在相同的数据中心中创建的。 通过引入 [Azure 可用性区域](../availability-zones/az-overview.md)，可以将程序集中的不同副本放到同一区域中的不同可用性区域中。 若要消除单一故障点，还要将控件环跨区域地复制为三个网关环 (GW)。 到特定网关环的路由受 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md) (ATM) 控制。 区域冗余配置不会创建其他数据库冗余，因此在“高级”或“业务关键”服务层中使用可用性区域不需要承担任何额外费用。 通过选择区域冗余数据库，可以让“高级”或“业务关键”数据库能应对范围更广的故障，包括灾难性的数据中心服务中断，且不会对应用程序逻辑产生任何更改。 还可以将所有现有“高级”或“业务关键”数据库或池转换到区域冗余配置。
 
 由于区域冗余仲裁集的副本位于不同数据中心，且互相之间都有一定距离，因此增加的网络延迟可能会延长提交时间，从而影响某些 OLTP 工作负载的性能。 始终可以通过禁用区域冗余设置返回到单个区域配置。 此进程是一种数据操作，并且与常规的服务等级目标 (SLO) 更新类似。 在此进程结束时，该数据库或池将从区域冗余环迁移到单个区域环，反之亦然。
-
-> [!IMPORTANT]
-> 目前，只有高级服务层才支持区域冗余数据库和弹性池。 在公共预览版中，备份和审核记录都存储在 RA-GRS 存储中，因此在发生区域范围的服务中断时可能不会自动可用。 
 
 下图演示了高可用性体系结构的区域冗余版本：
  
 ![高可用性体系结构区域冗余](./media/sql-database-high-availability/high-availability-architecture-zone-redundant.png)
 
 ## <a name="read-scale-out"></a>读取横向扩展
-如上所述，在单区域和区域冗余配置中，“高级”和“业务关键（预览版）”服务层都利用仲裁集和 Always On 技术来实现高可用性。 Always On 的优势之一是副本始终处于事务一致状态。 因为副本具有与主数据库相同的性能级别，因此，应用程序可以利用该额外容量为只读工作负荷提供服务（读取横向扩展），不需要额外付费。 这样，只读查询将与主要的读写工作负荷相隔离，不会影响其性能。 读取横向扩展功能适用于其中包括逻辑上独立的只读工作负荷（例如分析）的应用程序，因此可以利用此额外的容量而不需要连接到主数据库。 
+如上所述，在单区域和区域冗余配置中，“高级”和“业务关键”服务层均利用仲裁集和 Always On 技术实现高可用性。 Always On 的优势之一是副本始终处于事务一致状态。 因为副本具有与主数据库相同的性能级别，因此，应用程序可以利用该额外容量为只读工作负荷提供服务（读取横向扩展），不需要额外付费。 这样，只读查询将与主要的读写工作负荷相隔离，不会影响其性能。 读取横向扩展功能适用于其中包括逻辑上独立的只读工作负荷（例如分析）的应用程序，因此可以利用此额外的容量而不需要连接到主数据库。 
 
 若要将读取扩展功能用于特定的数据库，必须在创建数据库时或者在之后通过更改其配置来显式激活此功能，可以采用以下方式执行此操作：使用 PowerShell 调用 [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) 或 [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) cmdlet，或者通过 Azure 资源管理器 REST API 使用[数据库 - 创建或更新](/rest/api/sql/databases/createorupdate)方法。
 

@@ -2,18 +2,18 @@
 title: 使用 Azure 导入/导出服务从 Azure Blob 导出数据 | Microsoft Docs
 description: 了解如何在 Azure 门户中创建导出作业，以便从 Azure Blob 传输数据。
 author: alkohli
-manager: jeconnoc
+manager: twooley
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 07/17/2018
 ms.author: alkohli
-ms.openlocfilehash: eb41708c7446b3139758678c9247ffbb11da8b40
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: eb714086a0142d9780bd018d77dc880a430f240e
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969259"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113752"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>使用 Azure 导入/导出服务从 Azure Blob 存储导出数据
 本文分步说明如何使用 Azure 导入/导出服务从 Azure Blob 存储安全地导出大量数据。 该服务要求你将空驱动器寄送到 Azure 数据中心。 该服务将数据从存储帐户导出到驱动器，然后将驱动器寄回。
@@ -25,6 +25,13 @@ ms.locfileid: "38969259"
 - 拥有可用于导入/导出服务的有效 Azure 订阅。
 - 拥有至少一个 Azure 存储帐户。 请参阅[导入/导出服务支持的存储帐户和存储类型](storage-import-export-requirements.md)的列表。 有关创建新存储帐户的信息，请参阅[如何创建存储帐户](storage-create-storage-account.md#create-a-storage-account)。
 - 拥有足够数量的[受支持类型](storage-import-export-requirements.md#supported-disks)的磁盘。
+- 具有 FedEx/DHL 帐户。  
+    - 该帐户必须是有余额的有效帐户，且有退货功能。
+    - 生成导出作业的跟踪号。
+    - 每个作业都应有一个单独的跟踪号。 不支持多个作业共享相同跟踪号。 
+    - 如果没有承运商帐户，请转到：
+        - [创建 FedEX 帐户](https://www.fedex.com/en-us/create-account.html)，或 
+        - [创建 DHL 帐户](http://www.dhl-usa.com/en/express/shipping/open_account.html)。
 
 ## <a name="step-1-create-an-export-job"></a>步骤 1：创建导出作业
 
@@ -52,7 +59,7 @@ ms.locfileid: "38969259"
     
 3. 在“作业详细信息”中：
 
-    - 选择要导出的数据所在的存储帐户。 
+    - 选择要导出的数据所在的存储帐户。 使用附近位置的存储帐户。
     - 放置位置根据选定存储帐户所属的区域自动进行填充。 
     - 指定要从存储帐户导出到空驱动器的 blob 数据。 
     - 选择“全部导出”以导出存储帐户中的所有 blob 数据。
@@ -78,11 +85,18 @@ ms.locfileid: "38969259"
     - 从下拉列表中选择承运商。
     - 输入你已在该承运商那里创建的有效承运商帐户编号。 导入作业完成后，Microsoft 使用此帐户寄回驱动器。 
     - 提供完整、有效的联系人姓名、电话号码、电子邮件地址、街道地址、城市、邮政编码、省/自治区/直辖市和国家/地区。
+
+        > [!TIP] 
+        > 请提供组电子邮件，而非为单个用户指定电子邮件地址。 这可确保即使管理员离开也会收到通知。
    
 5. 在“摘要”中：
 
     - 查看作业详细信息。
     - 记下作业名称以及为将磁盘寄送到 Azure 而提供的 Azure 数据中心寄送地址。 
+
+        > [!NOTE] 
+        > 始终将磁盘发送到 Azure 门户中记录的数据中心。 如果磁盘寄送到错误的数据中心，则不会处理该作业。
+
     - 单击“确定”以完成导出作业的创建。
 
 ## <a name="step-2-ship-the-drives"></a>步骤 2：寄送驱动器
@@ -125,7 +139,7 @@ ms.locfileid: "38969259"
 
     下表介绍了这些参数：
     
-    |命令行参数|说明|  
+    |命令行参数|Description|  
     |--------------------------|-----------------|  
     |**/logdir:**|可选。 日志目录。 详细日志文件将写入此目录。 如果未指定，则使用当前目录作为日志目录。|  
     |**/sn:**|必需。 导出作业的存储帐户的名称。|  
@@ -179,7 +193,7 @@ Number of drives needed:        3
 
 下表显示有效 Blob 路径的示例：
    
-   | 选择器 | Blob 路径 | 说明 |
+   | 选择器 | Blob 路径 | Description |
    | --- | --- | --- |
    | 开头为 |/ |导出存储帐户中的所有 Blob |
    | 开头为 |/$root/ |导出根容器中的所有 Blob |

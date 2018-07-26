@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 1/19/2017
+ms.date: 07/15/2018
 ms.author: tamram
-ms.openlocfilehash: 3c313025917bba06675d3b2d844a6740fab89fbc
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 160fe756458e067125b9d696fd0cdb929774446e
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30323145"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072028"
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>在 Azure 存储中断时该怎么办
 Microsoft 一直努力确保所提供的服务始终可用。 但有时候，各种不可控因素会导致一个或多个区域出现计划外服务中断，对我们造成影响。 为了帮助你应对这些偶发事件，我们提供了下述针对 Azure 存储服务的概述性指导。
@@ -65,9 +65,8 @@ Microsoft 一直努力确保所提供的服务始终可用。 但有时候，各
 可以通过一些推荐的方法定期备份存储数据。
 
 * VM 磁盘 – 利用 [Azure 备份服务](https://azure.microsoft.com/services/backup/)备份 Azure虚拟机所用的 VM 磁盘。
-* 块 Blob – 使用 [AzCopy](storage-use-azcopy.md)、[Azure PowerShell](storage-powershell-guide-full.md) 或 [Azure 数据移动库](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)创建每个块 Blob 的[快照](https://msdn.microsoft.com/library/azure/hh488361.aspx)，或者将 Blob 复制到其他区域的其他存储帐户中。
+* 块 Blob - 打开[软删除](../blobs/storage-blob-soft-delete.md)以防止发生对象级删除和覆盖，或者使用 [AzCopy](storage-use-azcopy.md)、[Azure PowerShell](storage-powershell-guide-full.md) 或 [Azure 数据移动库](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)将 Blob 复制到其他区域的其他存储帐户中。
 * 表 – 使用 [AzCopy](storage-use-azcopy.md) 将表数据导出到其他区域的其他存储帐户中。
 * 文件 – 使用 [AzCopy](storage-use-azcopy.md) 或 [Azure PowerShell](storage-powershell-guide-full.md) 将文件复制到其他区域的其他存储帐户。
 
 若要深入了解如何创建充分利用 RA-GRS 功能的应用程序，请参阅[使用 RA-GRS 存储设计高可用性应用程序](../storage-designing-ha-apps-with-ragrs.md)
-

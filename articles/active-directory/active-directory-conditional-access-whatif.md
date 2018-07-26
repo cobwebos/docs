@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 07/17/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 897f1b96f0861fb13ba0e6c2427b621ea6a12a06
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 34f6efaac00f4aa17ea6a53ab51da69b84591e35
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36750076"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113022"
 ---
 # <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的模拟工具是什么？
 
@@ -50,6 +50,10 @@ ms.locfileid: "36750076"
 
 
 完成评估后，此工具将生成一份受影响策略的报表。
+
+
+> [!NOTE]
+> 目前，What If 工具不支持嵌套的组。 如果用户位于组中，并且该组是条件访问策略中使用的另一个组的成员，则 What If 工具无法正确显示该策略对用户的影响。 
 
 
 ## <a name="running-the-tool"></a>运行此工具

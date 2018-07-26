@@ -7,15 +7,15 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.date: 06/20/2018
+ms.date: 07/16/2018
 ms.author: ninarn
 ms.topic: conceptual
-ms.openlocfilehash: 5ef32b231a77906a6840ad3550e81b631ddc0c13
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: a5d5c29b30f746c5507e45ecbee6c5ab9aff56f3
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309648"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091936"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>弹性池有助于管理和缩放多个 Azure SQL 数据库
 
@@ -33,7 +33,7 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
 >
 
-弹性池可让开发人员为由多个数据库共享的池购买资源，以适应单一数据库使用时段不可预测的情况。 可以根据[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)或[基于 vCore 的购买模型（预览版）](sql-database-service-tiers-vcore.md)为池配置资源。 池的资源要求取决于其数据库的聚合使用量。 池可用的资源数量由开发者预算控制。 开发者只需将数据库添加到池，为数据库设置最小和最大资源（最小和最大 DTU 数，或者最小或最大 vCore 数，具体取决于所选的资源模型），然后基于预算设置池的资源。 开发人员可以使用池顺畅地扩大其服务，以渐增的规模从精简的新创公司发展到成熟的企业。
+弹性池可让开发人员为由多个数据库共享的池购买资源，以适应单一数据库使用时段不可预测的情况。 可以根据[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)或[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)为池配置资源。 池的资源要求取决于其数据库的聚合使用量。 池可用的资源数量由开发者预算控制。 开发者只需将数据库添加到池，为数据库设置最小和最大资源（最小和最大 DTU 数，或者最小或最大 vCore 数，具体取决于所选的资源模型），然后基于预算设置池的资源。 开发人员可以使用池顺畅地扩大其服务，以渐增的规模从精简的新创公司发展到成熟的企业。
 
 在池中，单独的数据库都被赋予了在固定参数内自动缩放的灵活性。 高负荷下的数据库可能会消耗更多的资源以满足需求。 低负荷下的数据库消耗较少的资源，没有任何负荷的数据库不会消耗任何资源。 设置整个池（而非单个数据库）的资源简化了管理任务。 此外，必须具有该池的可预测预算。 可将更多资源添加现有池而不会造成数据库关闭，除非需要移动数据库以便提供更多计算资源来预留新 eDTU。 同样，随时可以从现有池中删除不再需要的额外资源。 并且可以向池添加或缩减数据库。 如果可以预测到数据库的资源利用率不足，则将其移出。
 
@@ -102,7 +102,7 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 * 池中所有数据库使用的最大资源（最大 DTU 数或最大 vCore 数，具体取决于所选的资源模型）。
 * 池中所有数据库使用的最大存储字节。
 
-有关每个资源模型提供的服务层，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)或[基于 vCore 的购买模型（预览版）](sql-database-service-tiers-vcore.md)。
+有关每个资源模型提供的服务层，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)或[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
 
 SQL数据库自动评估现有 SQL 数据库服务器中数据库的历史资源使用率，并在 Azure 门户中推荐适当的池配置。 除推荐外，内置体验还估算服务器上自定义组数据库的 eDTU 使用率。 这样便可以执行“假设”分析，其方法为：通过交互方式将数据库添加到池并删除它们以在提交所做的更改之前获取资源使用率分析和调整建议。 相关操作方式，请参阅[监视、管理弹性池并调整其大小](#monitor-an-elastic-pool-and-its-databases)。
 
@@ -113,11 +113,11 @@ SQL数据库自动评估现有 SQL 数据库服务器中数据库的历史资源
    对于基于 DTU 的购买模型：MAX(<数据库的总数目 X 每一数据库的平均 DTU 使用率>、<br>
    < *并发高峰数据库的数目* X *每一数据库的高峰 DTU 使用率* ）
 
-   对于基于 vCore 的购买模型（预览版）：MAX(<数据库的总数目 X 每一数据库的平均 vCore 使用率>、<br>
+   对于基于 vCore 的购买模型：MAX(<数据库的总数目 X 每一数据库的平均 vCore 使用率>、<br>
    <并发高峰数据库的数目** X 每一数据库的高峰 vCore 使用率**)
 
 2. 通过将池内所有的数据库所需的字节数相加来估算池所需要的存储空间。 然后，确定提供此存储量的 eDTU 池的大小。
-3. 对于基于 DTU 的购买模型，请取步骤 1 和步骤 2 中 eDTU 估算值中较大的那个。 对于基于 vCore 的购买模型（预览版），请取步骤 1 中的 vCore 估算值。
+3. 对于基于 DTU 的购买模型，请取步骤 1 和步骤 2 中 eDTU 估算值中较大的那个。 对于基于 vCore 的购买模型，请取步骤 1 中的 vCore 估算值。
 4. 请参阅 [SQL 数据库定价页](https://azure.microsoft.com/pricing/details/sql-database/)，找到大于步骤 3 中估算值的最小池大小。
 5. 将步骤 5 的池价格与单一数据库适当性能级别的价格相比较。
 
@@ -136,7 +136,8 @@ SQL数据库自动评估现有 SQL 数据库服务器中数据库的历史资源
 
 - **异地还原**：当数据库因其所在的区域发生事故而不可用时，异地还原会提供默认的恢复选项。 请参阅[还原 Azure SQL 数据库或故障转移到辅助数据库](sql-database-disaster-recovery.md)
 
-- **活动异地复制**：对于具有异地还原无法提供的更强烈的恢复要求的应用程序，请配置[活动异地复制](sql-database-geo-replication-overview.md)。
+- 
+  **活动异地复制**：对于具有异地还原无法提供的更强烈的恢复要求的应用程序，请配置[活动异地复制](sql-database-geo-replication-overview.md)。
 
 ## <a name="creating-a-new-sql-database-elastic-pool-using-the-azure-portal"></a>使用 Azure 门户创建新的 SQL 数据库弹性池
 

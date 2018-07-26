@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 06/15/2018
+ms.date: 07/16/2018
 ms.author: marsma
-ms.openlocfilehash: 207accc30e10c4e2bed5b713fc59e2f9ad86a876
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: cb7b27b178197cde040e1d106ed5a5ee20905823
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311091"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115789"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的网络配置
 
@@ -27,8 +27,7 @@ ms.locfileid: "36311091"
 
 ## <a name="advanced-networking"></a>高级网络
 
-“高级”网络将 Pod 放在配置的 Azure 虚拟网络 (VNet) 中，可让这些 Pod 自动连接到 VNet 资源，并与 VNet 提供的丰富功能集相集成。
-目前，当使用 [Azure 门户][portal]、Azure CLI 或资源管理器模板部署 AKS 群集时，高级网络才可用。
+“高级”网络将 Pod 放在配置的 Azure 虚拟网络 (VNet) 中，可让这些 Pod 自动连接到 VNet 资源，并与 VNet 提供的丰富功能集相集成。 目前，当使用 [Azure 门户][portal]、Azure CLI 或资源管理器模板部署 AKS 群集时，高级网络才可用。
 
 为高级网络配置的 AKS 群集中的节点使用 [Azure 容器网络接口 (CNI)][cni-networking] Kubernetes 插件。
 
@@ -45,9 +44,6 @@ ms.locfileid: "36311091"
 * 启用了服务终结点的子网中的 Pod 可以安全地连接到 Azure 服务（例如 Azure 存储和 SQL 数据库）。
 * 使用用户定义的路由 (UDR) 将来自 Pod 的流量路由到网络虚拟设备。
 * Pod 可以访问公共 Internet 上的资源。 这也是基本网络的一项功能。
-
-> [!IMPORTANT]
-> 当使用 Azure 门户进行配置时，为高级网络配置的 AKS 群集中的每个节点最多可以托管 **30 个 Pod**。  只能在使用资源管理器模板部署群集时，通过修改 maxPods 属性来更改最大值。 预配用于 Azure CNI 插件的每个 VNet 限制为 4096 个配置的 IP 地址。
 
 ## <a name="advanced-networking-prerequisites"></a>高级网络先决条件
 
@@ -67,19 +63,36 @@ AKS 群集 IP 地址计划包括 VNet、至少一个节点和 Pod 子网以及 K
 
 | 地址范围 / Azure 资源 | 限制和调整大小 |
 | --------- | ------------- |
-| 虚拟网络 | Azure VNet 可以最大为 /8，但可能只有 4096 个配置的 IP 地址。 |
-| 子网 | 必须足够大才能容纳节点和 Pod。 若要计算最小子网大小：（节点数）+（节点数 * 每个节点的 Pod）。 对于 50 个节点群集：(50) + (50 * 30) = 1,550，你的子网大小必须为 /21 或更大。 |
+| 虚拟网络 | Azure VNet 最大可以为 /8，但可能只有 16,000 个配置的 IP 地址。 |
+| 子网 | 大小必须足以容纳群集中可能预配的节点、Pod 以及所有 Kubernetes 和 Azure 资源。 例如，如果部署内部 Azure 负载均衡器，其前端 IP 分配自群集子网（而不是公共 IP）。 <p/>计算最小子网大小：`(number of nodes) + (number of nodes * pods per node)` <p/>50 个节点群集的示例：`(50) + (50 * 30) = 1,550`（/21 或更大） |
 | Kubernetes 服务地址范围 | 此范围不应由此 VNet 上或连接到此 VNet 的任何网络元素使用。 服务地址 CIDR 必须小于 /12。 |
 | Kubernetes DNS 服务 IP 地址 | Kubernetes 服务地址范围内的 IP 地址将由群集服务发现 (kube-dns) 使用。 |
 | Docker 桥地址 | IP 地址（采用 CIDR 表示法）用作节点上的 Docker 桥 IP 地址。 默认地址为 172.17.0.1/16。 |
 
-如前所述，预配用于 Azure CNI 插件的每个 VNet 限制为 4096 个配置的 IP 地址。 为高级网络配置的群集中的每个节点最多可以托管 **30 个 Pod**。
+预配用于 Azure CNI 插件的每个 VNet 限制为 16,000 个配置的 IP 地址。
+
+## <a name="maximum-pods-per-node"></a>每个节点的最大 Pod 数
+
+AKS 群集中每个节点的默认最大 Pod 数因基础网络和高级网络以及群集部署方法而异。
+
+### <a name="default-maximum"></a>默认最大值
+
+* 基础网络：每个节点 110 个 Pod
+* 高级网络：每个节点 30 个 Pod
+
+### <a name="configure-maximum"></a>配置最大值
+
+根据部署方法，可能能够修改 AKS 群集中每个节点的最大 Pod 数。
+
+* **Azure CLI**：使用 [az aks create][az-aks-create] 命令部署群集时，指定 `--max-pods` 参数。
+* **资源管理器模板**：使用资源管理器模板部署群集时，在 [ManagedClusterAgentPoolProfile] 对象中指定 `maxPods` 属性。
+* **Azure 门户**：使用 Azure 门户部署群集时，不能修改每个节点的最大 Pod 数。 在 Azure 门户中部署高级网络群集时，每个节点的 Pod 数限制为 30 个。
 
 ## <a name="deployment-parameters"></a>部署参数
 
 创建 AKS 群集时，可为高级网络配置以下参数：
 
-**虚拟网络**：要将 Kubernetes 群集部署到的 VNet。 若要为群集创建新的 VNet，请选择“新建”，并遵循“创建虚拟网络”部分中的步骤。
+**虚拟网络**：要将 Kubernetes 群集部署到的 VNet。 若要为群集创建新的 VNet，请选择“新建”，并遵循“创建虚拟网络”部分中的步骤。 VNet 限制为 16,000 个配置的 IP 地址。
 
 **子网**：要将群集部署到的 VNet 中的子网。 若要在 VNet 中为群集创建新的子网，请选择“新建”，并遵循“创建子网”部分中的步骤。
 
@@ -125,10 +138,6 @@ az aks create --resource-group myAKSCluster --name myAKSCluster --network-plugin
 
 以下问题和解答适用于“高级”网络配置。
 
-* 是否可以使用 Azure CLI 配置高级网络？
-
-  不是。 目前，仅当使用 Azure 门户或资源管理器模板部署 AKS 群集时，高级网络才可用。
-
 * 是否可以在群集子网中部署 VM？
 
   不是。 不支持在 Kubernetes 群集使用的子网中部署 VM。 可将 VM 部署在同一 VNet 中，但必须部署在不同的子网中。
@@ -139,7 +148,7 @@ az aks create --resource-group myAKSCluster --name myAKSCluster --network-plugin
 
 * 可部署到节点的 Pod 数上限是否可配置？
 
-  默认情况下，每个节点最多可以托管 30 个 Pod。 只能在使用资源管理器模板部署群集时，通过修改 `maxPods` 属性来更改最大值。
+  是的，使用 Azure CLI 或资源管理器模板部署群集时可配置。 请参阅[每个节点的最大 Pod 数](#maximum-pods-per-node)。
 
 * 如何配置创建 AKS 群集期间创建的子网的其他属性？例如服务终结点。
 
@@ -177,3 +186,4 @@ az aks create --resource-group myAKSCluster --name myAKSCluster --network-plugin
 <!-- LINKS - Internal -->
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
 [aks-ssh]: aks-ssh.md
+[ManagedClusterAgentPoolProfile]: /azure/templates/microsoft.containerservice/managedclusters#managedclusteragentpoolprofile-object

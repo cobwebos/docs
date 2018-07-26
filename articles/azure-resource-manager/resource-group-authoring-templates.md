@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: f1ce47874b759748f4a2e2ce1fb438b394443058
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e1964b7f46259e54c65aeb46aa795713922c3504
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36334792"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114606"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>了解 Azure 资源管理器模板的结构和语法
 本文介绍 Azure 资源管理器模板的结构。 演示了模板的不同部分，以及可在相应部分使用的属性。 模板中包含可用于为部署构造值的 JSON 和表达式。 有关创建模板的分步教程，请参阅[创建第一个 Azure 资源管理器模板](resource-manager-create-first-template.md)。
@@ -39,7 +39,7 @@ ms.locfileid: "36334792"
 }
 ```
 
-| 元素名称 | 必选 | 说明 |
+| 元素名称 | 必选 | Description |
 |:--- |:--- |:--- |
 | $schema |是 |描述模板语言版本的 JSON 架构文件所在的位置。 使用上一示例中所示的 URL。 |
 | contentVersion |是 |模板的版本（例如 1.0.0.0）。 可为此元素提供任意值。 使用此值记录模板中的重要更改。 使用模板部署资源时，此值可用于确保使用正确的模板。 |
@@ -214,6 +214,7 @@ ms.locfileid: "36334792"
 定义用户函数时，存在一些限制：
 
 * 该函数不能访问变量。
+* 该函数无法访问模板参数。 也就是说，[参数函数](resource-group-template-functions-deployment.md#parameters)仅限于函数参数。
 * 该函数不能调用其他用户定义的函数。
 * 该函数不能使用[引用函数](resource-group-template-functions-resource.md#reference)。
 * 该函数的参数不能具有默认值。
@@ -312,4 +313,4 @@ ms.locfileid: "36334792"
 * 若要查看许多不同类型的解决方案的完整模型，请参阅 [Azure Quickstart Templates](https://azure.microsoft.com/documentation/templates/)（Azure 快速入门模板）。
 * 有关用户可以使用的来自模板中的函数的详细信息，请参阅 [Azure 资源管理器模板函数](resource-group-template-functions.md)。
 * 要在部署期间合并多个模板，请参阅[将已链接的模板与 Azure 资源管理器配合使用](resource-group-linked-templates.md)。
-* 可能需要使用不同资源组中的资源。 使用跨多个资源组共享的存储帐户或虚拟网络时，此方案很常见。 有关详细信息，请参阅 [resourceId 函数](resource-group-template-functions-resource.md#resourceid)。
+* 有关创建可以跨全球 Azure、Azure 主权云和 Azure Stack 使用的资源管理器模板的建议，请参阅[开发用于实现云一致性的 Azure 资源管理器模板](templates-cloud-consistency.md)。

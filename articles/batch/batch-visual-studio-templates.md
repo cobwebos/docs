@@ -15,19 +15,19 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 98a5af1c0b321b7f9acf2bfd936a16d22088babf
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 5a44c249a957050afb500decd094183c71d6ca5e
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128854"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114090"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>使用 Visual Studio 项目模板快速启动 Batch 解决方案
 
 Batch 的**作业管理器**和**任务处理器 Visual Studio 模板**提供代码，从而帮助以最少的精力在 Batch 上实现并运行计算密集型工作负荷。 本文档介绍这些模板，并提供其用法指导。
 
 > [!IMPORTANT]
-> 本文只介绍适用于这两个模板的信息，假设读者熟悉与其相关的 Batch 服务和重要概念：池、计算节点、作业和任务、作业管理器任务、环境变量和其他相关信息。 可以在 [Azure Batch 基础知识](batch-technical-overview.md)、[面向开发人员的 Batch 功能概述](batch-api-basics.md)和[用于 .NET 的 Azure Batch 库入门](batch-dotnet-get-started.md)中找到更多信息。
+> 本文只介绍适用于这两个模板的信息，假设读者熟悉与其相关的 Batch 服务和重要概念：池、计算节点、作业和任务、作业管理器任务、环境变量和其他相关信息。 可在 [Azure Batch 基础知识](batch-technical-overview.md)和[面向开发人员的 Batch 功能概述](batch-api-basics.md)中找到详细信息。
 > 
 > 
 
@@ -191,7 +191,7 @@ Split() 实现具有以下项的访问权限：
 
 使用作业管理器模板实现的作业管理器任务返回三个可能的退出代码：
 
-| 代码 | 说明 |
+| 代码 | Description |
 | --- | --- |
 | 0 |作业管理器成功完成。 作业拆分器代码已运行完成，并且所有任务都已添加到作业中。 |
 | 1 |作业管理器任务失败，程序的“预期”部分有异常。 异常已转换成 JobManagerException 与诊断信息，如有可能，还提供可解决失败的建议。 |
@@ -369,7 +369,7 @@ Run() 实现具有以下项的访问权限：
 
 使用任务处理器模板实现的任务处理器任务返回三个可能的退出代码：
 
-| 代码 | 说明 |
+| 代码 | Description |
 | --- | --- |
 | [Process.ExitCode][process_exitcode] |任务处理器已运行完成。 请注意，这并不表示调用的程序已成功，只表示任务处理器已成功调用程序并运行任何后处理，而没有异常。 退出代码的含义取决于所调用的程序，一般而言，退出代码 0 表示程序已成功，任何其他退出代码表示程序失败。 |
 | 1 |任务处理器任务失败，程序的“预期”部分有异常。 异常已转换成 `TaskProcessorException` 与诊断信息，如有可能，还提供可解决失败的建议。 |

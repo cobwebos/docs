@@ -14,85 +14,97 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 58e3646588e500c4dd5334966d559aaed333b689
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 9795beca93ab4dbbeb1e0e99a50952ea23ca1568
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37083155"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005479"
 ---
-# <a name="become-a-publisher-in-the-storefronts-on-the-marketplace"></a>成为市场店面的发布者  
-以下步骤帮助你将自己注册为市场店面中的发布者。 根据你与 Microsoft 的当前合作情况以及所选商品类型，下面某些步骤可能不是必需的。  
+# <a name="become-a-cloud-marketplace-publisher"></a>成为云市场发布者
 
-|  | 注册步骤 | 时间 | 详细信息 |  
+本文介绍如何以云市场发布者的身份注册。 根据所选发布选项以及你目前在 Microsoft 合作伙伴网络上的成员身份，下面某些步骤可能不是必需的。 注册以后，即可针对 Azure 市场或 AppSource 创建市场套餐。
+
+
+|  | 注册步骤 | Duration | 详细信息 |  
 |:--- |:--- |:--- |:--- |  
 | 1 | 在 Microsoft 合作伙伴网络中注册 | 15 分钟 | [在 Microsoft 合作伙伴网络中注册](#register-in-microsoft-partner-network) |  
-| 2 | 创建 Microsoft ID | 15 分钟 | [创建 Microsoft ID](#create-a-microsoft-id) |  
-| 3 | 提交市场提名表格 | 1-3 天 | [提交市场提名表格](#submit-the-marketplace-nomination-form) |  
-| 4 | 在 Microsoft 开发人员中心（简称“开发人员中心”）注册 | 5-10 天 | [在开发人员中心注册](#register-in-dev-center) |  
-| 5 |  登录到云合作伙伴门户 | 15 分钟 | [登录到云合作伙伴门户](#sign-into-cloud-partner-portal) |  
+| 2 | 创建 Microsoft 帐户 <ul>（Azure 市场交易套餐的必需步骤，其他的建议步骤）</ul> | 15 分钟 | [创建 Microsoft ID](#create-a-microsoft-id) |  
+| 3 | 提交市场注册表 | 15 分钟 | [提交市场提名表格](#submit-the-marketplace-nomination-form) |  
+| 4 |  登录到云合作伙伴门户 | 1-3 天 | [登录到云合作伙伴门户](#sign-into-cloud-partner-portal) |  
+| 5 | 在 Microsoft 开发人员中心注册（适用于 Azure 市场交易套餐） | 5-10 天 | [在开发人员中心注册](#register-in-dev-center) |  
 
-## <a name="register-in-microsoft-partner-network"></a>在 Microsoft 合作伙伴网络中注册  
+
+## <a name="1-register-in-microsoft-partner-network"></a>1.在 Microsoft 合作伙伴网络中注册  
 | 15 分钟 |  
-加入 Microsoft 合作伙伴网络 (MPN)，成为正式的 Microsoft 合作伙伴并获得 Azure 市场发布者享有的其他权益和支持。 在 MPN 中注册，然后单击 `Enroll`。  
-*   若要在 MPN 中注册，请访问“成员资格”页：[partner.microsoft.com/membership](https://partner.microsoft.com/membership)。  
+加入 Microsoft 云市场的前提是成为 Microsoft 合作伙伴网络 (MPN) 的成员，该合作伙伴网络也提供关键权益、计划和合作伙伴性能跟踪功能。 如果你的组织还不是成员，请加入 Microsoft 合作伙伴网络 (MPN)，成为正式的 Microsoft 合作伙伴并获得市场发布者享有的其他权益和支持。 
+
+*   若要在 Microsoft 合作伙伴网络中注册，请访问[“成员”页](https://partner.microsoft.com/membership)并执行开始注册所需的步骤。  
+
+注册后，请记下组织的 Microsoft 合作伙伴网络 ID。 在步骤 3 提交市场注册表时，将需要此 ID。
+*   了解 [Microsoft 合作伙伴网络](https://partner.microsoft.com/en-us/commercial)的优势
+*   如果组织已有成员资格，则可在注册过程中加入组织。 如果使用[合作伙伴中心](https://partnercenter.microsoft.com/partner/home)，则可在合作伙伴中心帐户中看到此 ID。 如果使用 [Partner Membership Center (PMC)](https://partners.microsoft.com/partnerprogram/PartnerMembershipCenter.aspx)，则可在 Partner Membership Center 帐户中看到此 ID。 
 
 ---  
 
-如果组织已有成员资格，则可以在注册过程中加入组织。 注册后，记下组织的 MPN ID。 在云合作伙伴门户中激活你的发布者个人资料之前，Microsoft 会要求提供 MPN ID。 
-*   有关激活发布者个人资料的详细信息，请访问[在开发人员中心注册](#register-in-dev-center)部分。  
-
----  
-
-## <a name="create-a-microsoft-id"></a>创建 Microsoft ID  
+## <a name="2-create-a-microsoft-account"></a>2.创建 Microsoft 帐户  
 | 15 分钟 |  
-Microsoft ID 用于访问云合作伙伴门户。 电子邮件地址必须注册为 Microsoft ID，并用于云合作伙伴门户和开发人员中心。 所选择的电子邮件地址最好属于企业域且由 IT 团队控制。  
-*   有关在开发人员中心注册的详细信息，请访问[在开发人员中心注册](#register-in-dev-center)部分。  
-*   有关登录到云合作伙伴门户的详细信息，请访问[登录到云合作伙伴门户](#sign-into-cloud-partner-portal)部分。  
-*   若要查看有关创建 Microsoft ID 的准则，请访问[有关创建 Microsoft ID 来管理 Azure 市场帐户的准则](./guidelines.md#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account)部分。  
+Microsoft 帐户（例如 *@outlook.com 或 @live.com*）用于访问多个 Microsoft 设备和服务。 它是 Azure 市场交易套餐所必需的，建议所有云发布者都使用它。 若要详细了解 Microsoft 帐户的优势和使用方式，请[访问此页](https://account.microsoft.com/account/)。 你将使用个人 Microsoft 帐户来访问云合作伙伴门户，这是一个发布平台，用于创建和管理市场套餐。 
+
+[! IMPORTANT] 请注意，不能使用与工作电子邮件关联的 Microsoft 帐户来访问门户。
+
+>[!Note]
+>如果已经有 Microsoft 帐户，请查看[有关创建 Microsoft ID 来管理市场帐户的准则](https://review.docs.microsoft.com/en-us/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account)，以便确定其能否用于市场发布。 
+
+>使用 Azure Active Directory 联合公司帐户的用户在尝试创建或使用现有 Microsoft 帐户之前，应该阅读[此文](https://review.docs.microsoft.com/en-us/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain)。
+
+*   若需创建或管理 Microsoft 帐户的帮助，请访问 [Microsoft 帐户帮助支持页](https://support.microsoft.com/en-us/products/microsoft-account?category=manage-account)。
+
 
 ---  
 
-## <a name="submit-the-marketplace-nomination-form"></a>提交市场提名表格  
-| 1-3 天 |  
-将组织提名为市场店面的发布者。 
-*   若要提交 Azure 市场提名表格，请访问“Azure 市场提名表格”页：[aka.ms/listonazuremarketplace](http://aka.ms/listonazuremarketplace)  
-*   若要提交 AppSource 提名表格，请访问“向我们说明你的应用”页：[aka.ms/listonappsource](http://aka.ms/listonappsource)  
+## <a name="3-submit-the-marketplace-registration-form"></a>3.提交市场注册表  
+| 15 分钟 |  
+若要成为市场发布者，请完成这个简单的注册表。 在此表中提交的信息将用于在云合作伙伴门户中创建发布者帐户，方便你创建、发布和管理市场套餐。
 
-必须在提名表格中包含以下信息。  
-*   有关组织的详细信息  
-*   有关初始应用或产品/服务的详细信息  
-*   有关要提供给客户的支持级别的详细信息  
-
-在你提交表格后，我们会审查并验证你的应用或产品/服务。 如果获得批准，你会收到一封电子邮件，其中包含成为获批合作伙伴所要执行的后续步骤。 该电子邮件还包含一个促销代码，使用该代码可以抵消注册费或创建开发人员中心帐户。 此外，还可以访问云合作伙伴门户或 AppSource。 在 AppSource 中完成第一个应用，或者在云合作伙伴门户中完成第一个产品/服务。 在 AppSource 中创建其他应用，或者在云合作伙伴门户中创建其他产品/服务。  
-*   有关在开发人员中心注册的详细信息，请访问[在开发人员中心注册](#register-in-dev-center)部分。  
+系统会要求你提供以下信息：
+*   组织的详细信息，包括 Microsoft 合作伙伴网络 ID（可以在[合作伙伴中心](https://partnercenter.microsoft.com/partner/home)或 [Partner Membership Center](https://partners.microsoft.com/partnerprogram/PartnerMembershipCenter.aspx) 中查找）
+*   要发布的初始应用或咨询服务套餐的简要说明，包括与套餐最接近的 Microsoft 产品或服务
+*   应用或服务的目标受众 
 
 ---  
+## <a name="4-sign-into-cloud-partner-portal"></a>4.登录到云合作伙伴门户
+| 1-3 天 | 我们的市场上架团队会审核并验证你在步骤 3 提供的市场注册详细信息。 获得批准后，你会收到一封欢迎电子邮件，其中包含帐户凭据以及登录[云合作伙伴门户](https://cloudpartner.azure.com)的指南。
 
-## <a name="register-in-dev-center"></a>在开发人员中心注册  
+请使用[云合作伙伴门户](https://cloudpartner.azure.com)来创建、发布和管理市场套餐。 收到表示批准的欢迎电子邮件以后，即可立即使用 Microsoft 帐户登录[云合作伙伴门户](https://cloudpartner.azure.com)，以便访问其他技术信息，了解如何将内容发布到市场以及如何创建套餐。 
+*   有关如何使用云合作伙伴门户的详细信息，请[访问“学习”部分的“入门”文章](https://cloudpartner.azure.com/#documentation/getting-started-with-the-cloud-partner-portal)。 必须登录云合作伙伴门户才能访问这些详细信息。
+*   如果有疑问，或者希望安排一次介绍如何上架的通话，请参阅此发布者指南中的其他文章，或者在云合作伙伴门户的“问题类型”>“市场上架”下提交支持请求。
+*   如果没有收到欢迎电子邮件，请检查垃圾邮件文件夹中是否有主题行为“欢迎使用 Microsoft 市场！”的电子邮件。 如果垃圾邮件文件夹中没有该电子邮件，请[联系 Microsoft 支持部门](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820)。 在支持页上，请选择“问题类型”>“市场上架”。  我们的市场发布者上架团队将乐于为你提供咨询帮助。 
+
+
+## <a name="5-register-in-dev-center-for-transact-publishing-option-only"></a>5.在开发人员中心注册（仅适用于“交易”发布选项） 
 | 5-10 天 |  
-发布“事务处理”商品类型（例如“虚拟机”、“Azure 应用：解决方案模板”和“Azure 应用：托管应用”）的应用需要一个开发人员中心帐户。 Microsoft 通过此项要求验证公司的法律、税务和银行信息。 注册者必须是有效的组织代表，并且必须提供个人信息，用于验证身份。 必须使用 Microsoft ID 注册。 Microsoft ID 必须与公司共享。 必须在云合作伙伴门户上使用相同的 Microsoft ID。  
-*   有关创建 Microsoft ID 的详细信息，请访问[创建 Microsoft ID](#create-a-microsoft-id) 部分。  
+必须使用[开发人员中心](https://developer.microsoft.com/en-us/store/register)帐户来完成使用“交易”发布选项的套餐：包括配置为通过 Azure 进行销售的虚拟机、Azure 应用和 SaaS 应用。 [开发人员中心](https://developer.microsoft.com/en-us/store/register)帐户详细信息供 Microsoft 用于验证你组织的法律、税务和银行信息，这些信息会在你通过 Azure 市场销售软件并针对软件许可费用开票时用于付款目的。 
 
->[!NOTE]
->如果未完成市场提名表格，则必须支付 99 美元的注册费。 若要免除此费用，请完成市场提名表格，然后会收到包含促销代码的电子邮件。  
+[开发人员中心](https://developer.microsoft.com/en-us/store/register)注册过程可以在你通过云合作伙伴门户创建套餐之前开始，但必须在发布市场套餐之前完成。 考虑到此步骤通常需要 5–10 天的时间，如果打算使用“交易”发布选项，建议尽早开始此过程。 
+
+在[开发人员中心](https://developer.microsoft.com/en-us/store/register)注册的个人必须是有效的组织代表，并且必须提供用于验证身份的个人信息。 使用在步骤 2 中创建的 Microsoft 帐户注册，该帐户是访问云合作伙伴门户时使用的。
+
+*   若要注册一个[开发人员中心](https://developer.microsoft.com/en-us/store/register)帐户，请[在此处启动注册过程](https://developer.microsoft.com/en-us/store/register)。
+*   若要详细了解如何创建 Microsoft 帐户，请访问“创建 Microsoft 帐户”部分。
+ 
+完成[开发人员中心](https://developer.microsoft.com/en-us/store/register)注册以后，请将云合作伙伴配置文件与[开发人员中心](https://developer.microsoft.com/en-us/store/register)帐户关联在一起（在此处查看详细步骤）。 此步骤必须在发布交易套餐之前完成。 
+
+>[!Note]
+>若要免除 99 美元的开发人员中心注册费，请完成市场注册表，然后就会收到包含促销代码的电子邮件。 
 
 >[!Important]
->在尝试创建开发人员中心帐户之前，请确认公司尚未创建开发人员中心帐户。 
->*   有关详细信息，请访问[如何在开发人员中心注册](#how-to-register-in-dev-center)部分。  
+>在创建 Microsoft 开发人员中心帐户之前，请确认组织尚未创建开发人员中心帐户，以免出现重复帐户。 有关详细信息，请访问[如何在开发人员中心注册](https://review.docs.microsoft.com/en-us/azure/marketplace/become-publisher?branch=pr-en-us-44571#how-to-register-in-dev-center)部分。
 
----  
-
-## <a name="sign-into-cloud-partner-portal"></a>登录到云合作伙伴门户
-| 15 分钟 |  
-提名获批准并且已在 MPN 和开发人员中心注册后，将会创建有权访问云合作伙伴门户的市场帐户。 提名批准电子邮件中会发送用于首次登录的凭据。 
-*   若要访问 MPN，请访问“成员资格”页：[partner.microsoft.com/membership](https://partner.microsoft.com/membership)。  
-*   若要访问开发人员中心，请访问“Windows 开发人员中心”页：[dev.windows.com](https://dev.windows.com)。  
-*   若要访问 Microsoft 云合作伙伴门户，请访问“云合作伙伴门户”页：[cloudpartner.azure.com](https://cloudpartner.azure.com)。  
-*   有关使用云合作伙伴门户的详细信息，请访问“了解”部分：[cloudpartner.azure.com/#Learn](https://cloudpartner.azure.com/#Learn)。  
-*   有关云合作伙伴门户的文档，请访问“文档”部分：[cloudpartner.azure.com/#documentation](https://cloudpartner.azure.com/#documentation)。  
 
 ## <a name="next-steps"></a>后续步骤
-*   访问 [Azure 市场和 AppSource 发布者指南](./marketplace-publishers-guide.md)页。  
+* 了解市场店面：AppSource 和 Azure 市场
+*   确定适用于市场的套餐
+
  
 ---  

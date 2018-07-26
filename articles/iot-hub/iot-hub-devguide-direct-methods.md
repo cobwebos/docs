@@ -6,14 +6,14 @@ manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 06/01/2018
+ms.date: 07/17/2018
 ms.author: nberdy
-ms.openlocfilehash: da9672c7a924411136928d8d04e54c2c62a014b9
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 881262816fc8bd634b7f577fd05aa0c8c062e4ca
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736671"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126518"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>了解和调用 IoT 中心的直接方法
 借助 IoT 中心，用户可以从云中对设备调用直接方法。 直接方法表示与设备进行的请求-答复式交互，类似于会立即成功或失败（在用户指定的超时时间后）的 HTTP 调用。 此方法用于即时操作过程不同的情况，即时操作的不同取决于设备能否响应。
@@ -46,7 +46,12 @@ ms.locfileid: "34736671"
 ### <a name="method-invocation"></a>方法调用
 在设备上直接调用方法属于 HTTPS 调用，其中包括：
 
-* URI，特定于设备 (`{iot hub}/twins/{device id}/methods/`)
+* 特定于设备的请求 URI 以及 [API 版本](/rest/api/iothub/service/invokedevicemethod)：
+
+    ```http
+    https://fully-qualified-iothubname.azure-devices.net/twins/{deviceId}/methods?api-version=2018-06-30
+    ```
+
 * POST 方法
 * 标头，包含身份验证、请求 ID、内容类型和内容编码
 * 采用以下格式的透明 JSON 正文：
@@ -63,6 +68,25 @@ ms.locfileid: "34736671"
     ```
 
 超时以秒为单位。 如果未设置超时，则默认为 30 秒。
+
+#### <a name="example"></a>示例
+
+有关使用 `curl` 的精简示例，请参阅下方。 
+
+```bash
+curl -X POST \
+  https://iothubname.azure-devices.net/twins/myfirstdevice/methods?api-version=2018-06-30 \
+  -H 'Authorization: SharedAccessSignature sr=iothubname.azure-devices.net&sig=x&se=x&skn=iothubowner' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "methodName": "reboot",
+    "responseTimeoutInSeconds": 200,
+    "payload": {
+        "input1": "someInput",
+        "input2": "anotherInput"
+    }
+}'
+```
 
 ### <a name="response"></a>响应
 由后端应用接收响应，其中包括：

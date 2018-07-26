@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: mattcon
 author: matthewconners
-ms.date: 05/07/2018
-ms.openlocfilehash: 44093dfde926b92d1617b85d27e362a8e40e5c56
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.date: 07/13/2018
+ms.openlocfilehash: 60eecf134f067d68326fc23ade8ed2a5a7ae7ac4
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888664"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070326"
 ---
 # <a name="build-and-deploy-forecasting-models-with-azure-machine-learning"></a>使用 Azure 机器学习生成和部署预测模型
 
@@ -36,7 +36,7 @@ ms.locfileid: "37888664"
    - Azure 机器学习模型管理帐户
    - 已安装 Azure Machine Learning Workbench 
 
-    如果尚未创建或安装上述三项，请遵循 [Azure 机器学习快速入门和 Workbench 安装](../service/quickstart-installation.md)一文操作。
+ 如果尚未创建或安装上述三项，请遵循 [Azure 机器学习快速入门和 Workbench 安装](../service/quickstart-installation.md)一文操作。
 
 1. 必须安装用于预测的 Azure 机器学习包。 在[此处](https://aka.ms/aml-packages/forecasting)了解如何安装此包。
 
@@ -77,6 +77,7 @@ import pkg_resources
 from datetime import timedelta
 import matplotlib
 matplotlib.use('agg')
+%matplotlib inline
 from matplotlib import pyplot as plt
 
 from sklearn.linear_model import Lasso, ElasticNet
@@ -84,12 +85,12 @@ from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from sklearn.neighbors import KNeighborsRegressor
 
 from ftk import TimeSeriesDataFrame, ForecastDataFrame, AzureMLForecastPipeline
-from ftk.tsutils import last_n_periods_split
+from ftk.ts_utils import last_n_periods_split
 
 from ftk.transforms import TimeSeriesImputer, TimeIndexFeaturizer, DropColumns
 from ftk.transforms.grain_index_featurizer import GrainIndexFeaturizer
-from ftk.models import Arima, SeasonalNaive, Naive, RegressionForecaster, ETS
-from ftk.models.forecasterunion import ForecasterUnion
+from ftk.models import Arima, SeasonalNaive, Naive, RegressionForecaster, ETS, BestOfForecaster
+from ftk.models.forecaster_union import ForecasterUnion
 from ftk.model_selection import TSGridSearchCV, RollingOriginValidator
 
 from azuremltkbase.deployment import AMLSettings
@@ -502,12 +503,11 @@ whole_tsdf.loc[pd.IndexSlice['1990-06':'1990-09', 2, 'dominicks'], ['Quantity']]
 
 
 ```python
-%matplotlib inline
 whole_tsdf.ts_report()
 ```
 
     --------------------------------  Data Overview  ---------------------------------
-    <class 'ftk.dataframets.TimeSeriesDataFrame'>
+    <class 'ftk.time_series_data_frame.TimeSeriesDataFrame'>
     MultiIndex: 28947 entries, (1990-06-20 23:59:59, 2, dominicks) to (1992-10-07 23:59:59, 137, tropicana)
     Data columns (total 17 columns):
     week            28947 non-null int64
@@ -662,12 +662,6 @@ whole_tsdf.ts_report()
 
 
 ![png](./media/how-to-build-deploy-forecast-models/output_15_6.png)
-
-![png](./media/how-to-build-deploy-forecast-models/output_59_0.png)
-![png](./media/how-to-build-deploy-forecast-models/output_61_0.png)
-![png](./media/how-to-build-deploy-forecast-models/output_63_0.png)
-![png](./media/how-to-build-deploy-forecast-models/output_63_1.png)
- 
 
 
 ## <a name="integrate-with-external-data"></a>与外部数据集成
@@ -892,7 +886,7 @@ whole_tsdf.head()
 
 ## <a name="preprocess-data-and-impute-missing-values"></a>预处理数据并插补缺失值
 
-首先，使用 [ftk.tsutils.last_n_periods_split](https://docs.microsoft.com/en-us/python/api/ftk.ts_utils?view=azure-ml-py-latest) 实用工具函数将数据拆分成训练集和测试集。 生成的测试集包含每个时序的最后 40 个观测值。 
+首先，使用 [last_n_periods_split](https://docs.microsoft.com/en-us/python/api/ftk.ts_utils?view=azure-ml-py-latest) 实用工具函数将数据拆分成训练集和测试集。 生成的测试集包含每个时序的最后 40 个观测值。 
 
 
 ```python
@@ -974,7 +968,7 @@ print(ts_regularity[ts_regularity['regular'] == False])
     [213 rows x 2 columns]
     
 
-可以看到，大部分时序（249 个中的 213 个）都是不规则的。 需要执行[插补转换](https://docs.microsoft.com/en-us/python/api/ftk.transforms.ts_imputer?view=azure-ml-py-latest)来填入缺少的销量值。 尽管有许多的插补选项可用，但以下示例代码使用的是线性内插。
+可以看到，大部分时序（249 个中的 213 个）都是不规则的。 需要执行[插补转换](https://docs.microsoft.com/en-us/python/api/ftk.transforms.ts_imputer.timeseriesimputer?view=azure-ml-py-latest)来填入缺少的销量值。 尽管有许多的插补选项可用，但以下示例代码使用的是线性内插。
 
 
 ```python
@@ -1040,7 +1034,7 @@ arima_model = Arima(oj_series_freq, arima_order)
 
 ### <a name="combine-multiple-models"></a>组合多个模型
 
-使用 [ForecasterUnion](https://docs.microsoft.com/en-us/python/api/ftk.models.forecaster_union.forecasterunion?view=azure-ml-py-latest) 估算器可以组合多个估算器，并使用一行代码对其进行拟合/预测。
+使用 [ForecasterUnion](https://docs.microsoft.com/en-us/python/api/ftk.models.forecaster_union?view=azure-ml-py-latest) 估算器可以组合多个估算器，并使用一行代码对其进行拟合/预测。
 
 
 ```python
@@ -1205,10 +1199,10 @@ test_feature_tsdf = pipeline_ml.transform(test_tsdf)
 print(train_feature_tsdf.head())
 ```
 
-    F1 2018-05-04 11:00:54,308 INFO azureml.timeseries - pipeline fit_transform started. 
-    F1 2018-05-04 11:01:02,545 INFO azureml.timeseries - pipeline fit_transform finished. Time elapsed 0:00:08.237301
-    F1 2018-05-04 11:01:02,576 INFO azureml.timeseries - pipeline transforms started. 
-    F1 2018-05-04 11:01:19,048 INFO azureml.timeseries - pipeline transforms finished. Time elapsed 0:00:16.471961
+    F1 2018-06-14 23:10:03,472 INFO azureml.timeseries - pipeline fit_transform started. 
+    F1 2018-06-14 23:10:07,317 INFO azureml.timeseries - pipeline fit_transform finished. Time elapsed 0:00:03.845078
+    F1 2018-06-14 23:10:07,317 INFO azureml.timeseries - pipeline transforms started. 
+    F1 2018-06-14 23:10:16,499 INFO azureml.timeseries - pipeline transforms finished. Time elapsed 0:00:09.182314
                                            feat  price  AGE60  EDUC  ETHNIC  \
     WeekLastDay         store brand                                           
     1990-06-20 23:59:59 2     dominicks    1.00   1.59   0.23  0.25    0.11   
@@ -1370,13 +1364,16 @@ all_errors.sort_values('MedianAPE')
 
 某些机器学习模型能够利用添加的特征以及时序之间的相似性来提高预测准确性。
 
-**交叉验证和参数扫描**    
+### <a name="cross-validation-parameter-and-model-sweeping"></a>交叉验证、参数和模型扫描    
 
-该包针对预测应用程序改编某些传统的机器学习函数。  [RollingOriginValidator](https://docs.microsoft.com/python/api/ftk.model_selection.cross_validation.rollingoriginvalidator) 临时执行交叉验证，并注重预测框架中哪些结果是已知的，哪些结果是未知的。 
+该包针对预测应用程序改编某些传统的机器学习函数。  [RollingOriginValidator](https://docs.microsoft.com/python/api/ftk.model_selection.cross_validation.rollingoriginvalidator?view=azure-ml-py-latest) 临时执行交叉验证，并注重预测框架中哪些结果是已知的，哪些结果是未知的。 
 
 在下图中，每个方块表示一个时间点的数据。 蓝色方块表示训练，橙色方块表示每个周期中的测试。 测试数据必须来自最大训练时间点之后的时间点。 否则，以后的数据将会泄露到训练数据，导致模型评估失效。 
-
 ![png](./media/how-to-build-deploy-forecast-models/cv_figure.PNG)
+
+**参数扫描**  
+[TSGridSearchCV](https://docs.microsoft.com/en-us/python/api/ftk.model_selection.search.tsgridsearchcv?view=azure-ml-py-latest) 类详尽地搜索指定的参数值，并使用 `RollingOriginValidator` 评估参数性能，以便找到最佳参数。
+
 
 ```python
 # Set up the `RollingOriginValidator` to do 2 folds of rolling origin cross-validation
@@ -1395,6 +1392,102 @@ print('Best paramter: {}'.format(randomforest_cv_fitted.best_params_))
 
     Best paramter: {'estimator__n_estimators': 100}
     
+
+**模型扫描**  
+`BestOfForecaster` 类从给定模型列表中选择性能最佳的模型。 与 `TSGridSearchCV` 类似，它也使用 RollingOriginValidator 进行交叉验证和性能评估。  
+下面，我们传递两个模型的列表来演示 `BestOfForecaster` 的用法
+
+
+```python
+best_of_forecaster = BestOfForecaster(forecaster_list=[('naive', naive_model), 
+                                                       ('random_forest', random_forest_model)])
+best_of_forecaster_fitted = best_of_forecaster.fit(train_feature_tsdf,
+                                                   validator=RollingOriginValidator(n_step=20, max_horizon=40))
+best_of_forecaster_prediction = best_of_forecaster_fitted.predict(test_feature_tsdf)
+best_of_forecaster_prediction.head()
+```
+
+
+
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>PointForecast</th>
+      <th>DistributionForecast</th>
+      <th>数量</th>
+    </tr>
+    <tr>
+      <th>WeekLastDay</th>
+      <th>store</th>
+      <th>brand</th>
+      <th>ForecastOriginTime</th>
+      <th>ModelName</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1992-01-08 23:59:59</th>
+      <th>2</th>
+      <th>dominicks</th>
+      <th>1992-01-01 23:59:59</th>
+      <th>random_forest</th>
+      <td>9299.20</td>
+      <td>&lt;scipy.stats._distn_infrastructure.rv_frozen o...</td>
+      <td>11712.00</td>
+    </tr>
+    <tr>
+      <th>1992-01-15 23:59:59</th>
+      <th>2</th>
+      <th>dominicks</th>
+      <th>1992-01-01 23:59:59</th>
+      <th>random_forest</th>
+      <td>10259.20</td>
+      <td>&lt;scipy.stats._distn_infrastructure.rv_frozen o...</td>
+      <td>4032.00</td>
+    </tr>
+    <tr>
+      <th>1992-01-22 23:59:59</th>
+      <th>2</th>
+      <th>dominicks</th>
+      <th>1992-01-01 23:59:59</th>
+      <th>random_forest</th>
+      <td>6828.80</td>
+      <td>&lt;scipy.stats._distn_infrastructure.rv_frozen o...</td>
+      <td>6336.00</td>
+    </tr>
+    <tr>
+      <th>1992-01-29 23:59:59</th>
+      <th>2</th>
+      <th>dominicks</th>
+      <th>1992-01-01 23:59:59</th>
+      <th>random_forest</th>
+      <td>16633.60</td>
+      <td>&lt;scipy.stats._distn_infrastructure.rv_frozen o...</td>
+      <td>13632.00</td>
+    </tr>
+    <tr>
+      <th>1992-02-05 23:59:59</th>
+      <th>2</th>
+      <th>dominicks</th>
+      <th>1992-01-01 23:59:59</th>
+      <th>random_forest</th>
+      <td>12774.40</td>
+      <td>&lt;scipy.stats._distn_infrastructure.rv_frozen o...</td>
+      <td>45120.00</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 **生成最终管道**   
 确定最佳模型后，可以生成最终管道并将其拟合到所有转换器和最佳模型。 
@@ -1416,9 +1509,62 @@ print('Median of APE of final pipeline: {0}'.format(final_median_ape))
     Median of APE of final pipeline: 42.54336821266968
     
 
-## <a name="operationalization-deploy-and-consume"></a>操作化：部署和使用
+## <a name="visualization"></a>可视化
+`ForecastDataFrame` 类提供用于可视化和分析预测结果的绘图函数。 请将常用图表与数据结合使用。 请参阅下面有关绘图函数的示例笔记本，了解所有可用的函数。 
 
-在本部分，我们将管道部署为 Azure 机器学习 Web 服务，并使用它进行训练和评分。 为部署的 Web 服务评分会重新训练模型，并基于新数据生成预测。
+`show_error` 函数绘制由任意列聚合的性能指标。 默认情况下，`show_error` 函数按 `ForecastDataFrame` 的 `grain_colnames` 进行聚合。 识别具有最佳或最差性能的粒度/组通常很有用，尤其是当你有大量时间序列时。 `show_error` 的 `performance_percent` 参数用于指定性能间隔并绘制粒度/组子集的误差。
+
+绘制性能排名后 5%（即 MedianAPE 排名前 5%）的粒度
+
+
+```python
+fig, ax = best_of_forecaster_prediction.show_error(err_name='MedianAPE', err_fun=calc_median_ape, performance_percent=(0.95, 1))
+```
+
+![png](./media/how-to-build-deploy-forecast-models/output_59_0.png)
+
+
+绘制性能排名前 5%（即 MedianAPE 排名后 5%）的粒度
+
+
+```python
+fig, ax = best_of_forecaster_prediction.show_error(err_name='MedianAPE', err_fun=calc_median_ape, performance_percent=(0, 0.05))
+```
+
+
+![png](./media/how-to-build-deploy-forecast-models/output_61_0.png)
+
+
+当你对整体性能有所了解后，你可能想要探索单个粒度，特别是那些表现不佳的粒度。 `plot_forecast_by_grain` 方法可绘制指定粒度的预测值与实际值。 下面，我们来绘制在 `show_error` 绘图中发现的具有最佳性能的粒度和具有最差性能的粒度。
+
+
+```python
+fig_ax = best_of_forecaster_prediction.plot_forecast_by_grain(grains=[(33, 'tropicana'), (128, 'minute.maid')])
+```
+
+
+![png](./media/how-to-build-deploy-forecast-models/output_63_0.png)
+
+
+
+![png](./media/how-to-build-deploy-forecast-models/output_63_1.png)
+
+
+
+## <a name="additional-notebooks"></a>其他笔记本
+若要更深入地了解 AMLPF 的主要功能，请参阅以下笔记本，其中包含每个功能的更多详细信息和示例：  
+[有关 TimeSeriesDataFrame 的笔记本](https://azuremlftkrelease.blob.core.windows.net/samples/feature_notebooks/Introduction_to_TimeSeriesDataFrames.ipynb)  
+[有关数据整理的笔记本](https://azuremlftkrelease.blob.core.windows.net/samples/feature_notebooks/Data_Wrangling_Sample.ipynb)  
+[有关转换器的笔记本](https://azuremlftkrelease.blob.core.windows.net/samples/feature_notebooks/Forecast_Package_Transforms.ipynb)  
+[有关模型的笔记本](https://azuremlftkrelease.blob.core.windows.net/samples/feature_notebooks/AMLPF_models_sample_notebook.ipynb)  
+[有关交叉验证的笔记本](https://azuremlftkrelease.blob.core.windows.net/samples/feature_notebooks/Time_Series_Cross_Validation.ipynb)  
+[有关延隔时间转换器和 OriginTime 的笔记本](https://azuremlftkrelease.blob.core.windows.net/samples/feature_notebooks/Constructing_Lags_and_Explaining_Origin_Times.ipynb)  
+[有关绘图函数的笔记本](https://azuremlftkrelease.blob.core.windows.net/samples/feature_notebooks/Plotting_Functions_in_AMLPF.ipynb)
+
+## <a name="operationalization"></a>实施
+
+在本部分，我们将管道部署为 Azure 机器学习 Web 服务，并使用它进行训练和评分。
+目前仅支持部署未拟合的管道。 为部署的 Web 服务评分会重新训练模型，并基于新数据生成预测。
 
 ### <a name="set-model-deployment-parameters"></a>设置模型部署参数
 
@@ -1485,7 +1631,7 @@ aml_deployment = ForecastWebserviceFactory(deployment_name=deployment_name,
                                            aml_settings=aml_settings, 
                                            pipeline=pipeline_deploy,
                                            deployment_working_directory=deployment_working_directory,
-                                           ftk_wheel_loc='https://azuremlpackages.blob.core.windows.net/forecasting/azuremlftk-0.1.18055.3a1-py3-none-any.whl')
+                                           ftk_wheel_loc='https://azuremlftkrelease.blob.core.windows.net/dailyrelease/azuremlftk-0.1.18165.29a1-py3-none-any.whl')
 ```
 
 ### <a name="create-the-web-service"></a>创建 Web 服务

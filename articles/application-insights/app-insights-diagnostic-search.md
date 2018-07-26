@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/14/2017
+ms.date: 07/18/2018
 ms.author: mbullwin
-ms.openlocfilehash: c6a94fd1cebff4aa657ad5293715550161003d21
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 1a343e238662393995404b8e4c705cf799866855
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294378"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136889"
 ---
 # <a name="using-search-in-application-insights"></a>使用 Application Insights 中的搜索
 搜索是 [Application Insights](app-insights-overview.md) 中的一项功能，可用于查找和浏览单个遥测项，例如页面视图、异常或 Web 请求。 此外，可以查看编写的日志跟踪和事件。
@@ -26,16 +26,14 @@ ms.locfileid: "35294378"
 （若要对数据进行更复杂的查询，请使用 [Analytics](app-insights-analytics-tour.md)。）
 
 ## <a name="where-do-you-see-search"></a>哪里可以看到“搜索”？
+
 ### <a name="in-the-azure-portal"></a>在 Azure 门户中
+
 可以从应用程序的“Application Insights 概览”边栏选项卡显式打开诊断搜索：
 
-![打开诊断搜索](./media/app-insights-diagnostic-search/01-open-Diagnostic.png)
+![打开诊断搜索](./media/app-insights-diagnostic-search/001.png)
 
-单击某些图表和网格项时，也会打开诊断搜索。 在这种情况下，诊断搜索的筛选器预先设置为将焦点放在选定的项类型上。 
-
-例如，在“概览”边栏选项卡上，有一个按响应时间分类的请求的条形图。 单击某个响应范围，即可查看各个处于该响应时间范围的请求的列表：
-
-![单击请求性能](./media/app-insights-diagnostic-search/07-open-from-filters.png)
+![诊断搜索图的屏幕截图](./media/app-insights-diagnostic-search/002.png)
 
 诊断搜索的主体是遥测项列表 - 服务器请求、页面视图、编写的自定义事件，等等。 该列表的上面是摘要图表，显示一段时间内的事件计数。
 
@@ -56,9 +54,14 @@ ms.locfileid: "35294378"
 打开请求或页面视图即可使用“跟踪操作”选项卡。 “操作”是一系列与单个请求或页面视图关联的事件。 例如，依赖项调用、异常、跟踪日志和自定义事件可能是单个操作的一部分。 “跟踪操作”选项卡以图形方式显示这些事件相对于请求或页面视图的计时和持续时间。 
 
 ## <a name="inspect-individual-items"></a>检查单个项
-选择任一遥测项可查看关键字段和相关的项。 如果想要查看完整的字段集，请单击“...”。 
 
-![单击“新建工作项”、编辑字段，并单击“确定”。](./media/app-insights-diagnostic-search/10-detail.png)
+选择任一遥测项可查看关键字段和相关的项。
+
+![单个依赖项请求的屏幕截图](./media/app-insights-diagnostic-search/003.png)
+
+这将启动端到端事务详细信息视图：
+
+![端到端事务详细信息视图的屏幕截图。](./media/app-insights-diagnostic-search/004.png)
 
 ## <a name="filter-event-types"></a>筛选事件类型
 打开“筛选”边栏选项卡，并选择要查看的事件类型。 （如果以后要还原打开边栏选项卡时所用的筛选器，请单击“重置”。）
@@ -91,14 +94,10 @@ ms.locfileid: "35294378"
 
 ![展开属性并选择值](./media/app-insights-diagnostic-search/04-failingReq.png)
 
-
-
-
 ## <a name="find-events-with-the-same-property"></a>查找具有相同属性的事件
 查找具有相同属性值的所有项：
 
 ![右键单击属性](./media/app-insights-diagnostic-search/12-samevalue.png)
-
 
 ## <a name="search-the-data"></a>搜索数据
 
@@ -128,14 +127,10 @@ ms.locfileid: "35294378"
 | `apple OR banana`<br/>`apple banana` |查找包含任一词的事件。 使用“OR”而非“or”。<br/>简格式。 |
 | `apple NOT banana` |查找包含一个词但不包含另一个词的事件。 |
 
-
-
 ## <a name="sampling"></a>采样
 如果应用生成大量遥测（且使用的是 ASP.NET SDK 版本 2.0.0-beta3 或更高版本），自适应采样模块将通过仅发送具有代表性的事件部分来自动减少发送到门户的量。 但是，以组为单位选择或取消选择与同一请求相关的事件，以便可以在相关事件之间浏览。 
 
 [了解采样](app-insights-sampling.md)。
-
-
 
 ## <a name="create-work-item"></a>创建工作项
 可以使用任何遥测项中的详细信息，在 GitHub 或 Visual Studio Team Services 中创建 Bug。 
@@ -147,17 +142,6 @@ ms.locfileid: "35294378"
 ![请填写 Team Services 服务器的 URL 和项目名称，并单击“授权”](./media/app-insights-diagnostic-search/41.png)
 
 （还可以在“工作项”边栏选项卡上配置链接。）
-
-## <a name="save-your-search"></a>保存搜索
-设置所需的所有筛选器后，可以将搜索保存到收藏夹。 如果使用组织帐户，可以选择是否要将此搜索与其他团队成员共享。
-
-![单击“收藏夹”，设置名称，并单击“保存”](./media/app-insights-diagnostic-search/08-favorite-save.png)
-
-若要再次查看该搜索，**请转到概览边栏选项卡**并打开“收藏夹”：
-
-![“收藏夹”磁贴](./media/app-insights-diagnostic-search/09-favorite-get.png)
-
-如果保存时使用了“相对”时间范围，重新打开的边栏选项卡包含最新数据。 如果保存时使用了“绝对”时间范围，则每次看到的数据都是相同的。 （如果在需要保存偏好项时“相对”时间范围不可用，则可单击标头中的“时间范围”，并设置一个不属自定义范围的时间范围。）
 
 ## <a name="send-more-telemetry-to-application-insights"></a>将更多遥测数据发送到 Application Insights
 除了 Application Insights SDK 原本发送的遥测数据以外，可以：

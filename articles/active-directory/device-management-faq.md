@@ -15,16 +15,18 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 864f790db48d3d4542ed56a4c7272a198df5bd56
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 10d6b81915432d9f41c0d4751f98cbf380ff2d13
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901130"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136564"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
 
+**问：我可以注册 Android 或 iOS BYOD 设备吗？**
 
+**答：** 可以，但只有使用 Azure 设备注册服务的混合客户才能注册。 不支持使用 AD FS 中的本地设备注册服务进行注册。
 
 **问：如何注册 macOS 设备？**
 
@@ -98,6 +100,11 @@ USER 设备下面只会列出以下设备：
 **问：我的用户无法从 Azure AD 联接设备中搜索打印机。如何从 Azure AD 联接设备启用打印？**
 
 **答：** 有关为 Azure AD 联接设备部署打印机的信息，请参阅[混合云打印](https://docs.microsoft.com/en-us/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)。 需要安装本地 Windows Server 才能部署混合云打印。 当前，无法使用基于云的打印服务。 
+
+---
+
+**问：如何连接到已加入 Azure AD 的远程设备？**
+**答：** 有关详细信息，请参阅文章 https://docs.microsoft.com/en-us/windows/client-management/connect-to-remote-aadj-pc。
 
 ---
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/09/2018
 ms.author: aljo
-ms.openlocfilehash: fbe3dde48fa1be79356ff1cb9e47c46832d8cdaa
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 5d8f1d2634fd2efd624d1000f2fbc0400af4af11
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212749"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136802"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>使用 Azure 门户在 Azure 中创建 Service Fabric 群集
 > [!div class="op_single_selector"]
@@ -71,9 +71,7 @@ ms.locfileid: "34212749"
 * 加密和解密应用程序配置值
 * 在复制期间跨节点加密数据 
 
-通过 Azure 门户创建群集时，无法配置应用程序证书。 若要在设置群集时配置应用程序证书，必须[使用 Azure 资源管理器创建群集][create-cluster-arm]。 也可以在创建群集后将应用程序证书添加到群集。
-
-</a "create-cluster-portal" ></a>
+[通过 Azure 门户创建群集](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/service-fabric/service-fabric-cluster-creation-via-portal.md)时，无法配置应用程序证书。 若要在设置群集时配置应用程序证书，必须[使用 Azure 资源管理器创建群集][create-cluster-arm]。 也可以在创建群集后将应用程序证书添加到群集。
 
 ## <a name="create-cluster-in-the-azure-portal"></a>在 Azure 门户中创建群集
 
@@ -83,12 +81,12 @@ ms.locfileid: "34212749"
 ![在 Azure 门户中搜索 Service Fabric 群集模板。][SearchforServiceFabricClusterTemplate]
 
 1. 登录到 [Azure 门户][azure-portal]。
-2. 单击“创建资源”以添加新的资源模板。 在“全部”下面的“Marketplace”中搜索 Service Fabric 群集模板。
+2. 单击“创建资源”以添加新的资源模板。 在“全部”下面的“市场”中搜索 Service Fabric 群集模板。
 3. 从列表中选择“**Service Fabric 群集**”。
 4. 导航到“**Service Fabric 群集**”边栏选项卡，并单击“**创建**”。
 5. “创建 Service Fabric 群集”边栏选项卡包含以下四个步骤：
 
-#### <a name="1-basics"></a>1.Basics
+#### <a name="1-basics"></a>1.基础
 ![创建新资源组的屏幕截图。][CreateRG]
 
 在“基本信息”边栏选项卡中，需要提供群集的基本详细信息。
@@ -121,13 +119,13 @@ ms.locfileid: "34212749"
 5. **单个节点群集和三个节点群集** - 这些仅用于测试。 它们不支持任何正在运行的生产工作负荷。
 6. 配置自定义终结点。 可在此字段中输入以逗号分隔的端口列表，可以通过 Azure 负载均衡器针对应用程序向公共 Internet 公开这些端口。 例如，如果计划在群集中部署 Web 应用程序，请在此处输入“80”，允许端口 80 的流量进入群集。 有关终结点的详细信息，请参阅[与应用程序通信][service-fabric-connect-and-communicate-with-services]
 7. 配置群集**诊断**。 默认情况下，已在群集上启用诊断，以帮助排查问题。 要禁用诊断，请将其“**状态**”切换为“**关闭**”。 **不**建议关闭诊断。 如果已创建 Application Insights 项目，则提供该项目密钥，以便向其路由应用程序跟踪。
-8. 选择要将群集设置到的 Fabric 升级模式。 如果希望系统自动选取最新可用版本并尝试将群集升级到最新版本，则选择“**自动**”。 如果想要选择受支持的版本，则将模式设置为“**手动**”。 有关结构升级模式的详细信息，请参阅 [service-fabric-cluster-upgrade 文档][service-fabric-cluster-upgrade]。
+8. 选择要将群集设置到的 Fabric 升级模式。 如果希望系统自动选取最新可用版本并尝试将群集升级到最新版本，则选择“**自动**”。 如果想要选择受支持的版本，则将模式设置为“**手动**”。 有关 Fabric 升级模式的更多详细信息，请参阅 [service-fabric-cluster-upgrade 文档][service-fabric-cluster-upgrade]。
 
 > [!NOTE]
 > 我们仅支持那些运行受支持的 Service Fabric 版本的群集。 通过选择“**手动**”模式，由你负责将群集升级到受支持的版本。 > 
 > 
 
-#### <a name="3-security"></a>3.安全
+#### <a name="3-security"></a>3.“安全”
 ![Azure 门户上安全配置的屏幕截图。][BasicSecurityConfigs]
 
 为轻松设置安全测试群集，我们提供了“基本”选项。 如果已有证书且已上传到 Key Vault（并已启用 Key Vault 进行部署），则使用“自定义”选项
@@ -227,9 +225,7 @@ ms.locfileid: "34212749"
 [service-fabric-connect-and-communicate-with-services]: service-fabric-connect-and-communicate-with-services.md
 [service-fabric-health-introduction]: service-fabric-health-introduction.md
 [service-fabric-reliable-services-backup-restore]: service-fabric-reliable-services-backup-restore.md
-<!--[remote-connect-to-a-vm-scale-set]: service-fabric-cluster-nodetypes.md#remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node -->
-[remote-connect-to-a-vm-scale-set]: service-fabric-cluster-nodetypes.md
-[service-fabric-cluster-upgrade]: service-fabric-cluster-upgrade.md
+<!--[remote-connect-to-a-vm-scale-set]: service-fabric-cluster-nodetypes.md#remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node --> [remote-connect-to-a-vm-scale-set]: service-fabric-cluster-nodetypes.md [service-fabric-cluster-upgrade]: service-fabric-cluster-upgrade.mdd
 
 <!--Image references-->
 [SearchforServiceFabricClusterTemplate]: ./media/service-fabric-cluster-creation-via-portal/SearchforServiceFabricClusterTemplate.png

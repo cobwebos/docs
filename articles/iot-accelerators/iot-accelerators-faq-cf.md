@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: dbdd9c70fc135561eb0e60e5932e446bcfa3759b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6d1002fd5131ca97f7bc1b9d081ae1471191a6cf
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627495"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39075216"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>连接的工厂解决方案加速器的常见问题解答
 
@@ -207,5 +207,5 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 还可以浏览 IoT 解决方案加速器的一些其他特性和功能：
 
 * [预测性维护解决方案加速器概述](iot-accelerators-predictive-overview.md)
-* [连接工厂解决方案加速器概述](iot-accelerators-connected-factory-overview.md)
-* [从头保障 IoT 的安全](securing-iot-ground-up.md)
+* [部署连接的工厂解决方案加速器](quickstart-connected-factory-deploy.md)
+* [从头保障 IoT 的安全](/azure/iot-fundamentals/iot-security-ground-up)

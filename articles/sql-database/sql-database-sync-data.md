@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: data-sync
 ms.topic: conceptual
-ms.date: 07/01/2018
+ms.date: 07/16/2018
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: 56117953c6cd11b952a312e15cd4515895021e10
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 81616522f479175dc58188bd6acc4db4f9007756
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342651"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069364"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>使用 SQL 数据同步跨多个云和本地数据库同步数据
 
@@ -24,6 +24,16 @@ ms.locfileid: "37342651"
 ## <a name="architecture-of-sql-data-sync"></a>SQL 数据同步的体系结构
 
 SQL 数据同步以同步组的概念为依据。 同步组是一组要同步的数据库。
+
+SQL 数据同步使用中心辐射型拓扑来同步数据。 将同步组中的一个数据库定义为中心数据库。 其余数据库均为成员数据库。 仅在中心和各成员之间同步数据。
+-   中心数据库必须是 Azure SQL 数据库。
+-   成员数据库可以是 SQL 数据库、本地 SQL Server 数据库或 Azure 虚拟机上的 SQL Server 实例。
+-   同步数据库包含数据同步的元数据和日志。同步数据库必须是与中心数据库位于同一区域的 Azure SQL 数据库。 同步数据库的创建者和所有者均为客户。
+
+> [!NOTE]
+> 如果使用本地数据库作为成员数据库，则必须[安装并配置本地同步代理](sql-database-get-started-sql-data-sync.md#add-on-prem)。
+
+![在数据库之间同步数据](media/sql-database-sync-data/sync-data-overview.png)
 
 同步组具有以下属性：
 
@@ -35,16 +45,6 @@ SQL 数据同步以同步组的概念为依据。 同步组是一组要同步的
 
 -   “冲突解决策略”是组级别策略，可以是“中心胜出”，也可以是“成员胜出”。
 
-SQL 数据同步使用中心辐射型拓扑来同步数据。 将组中的一个数据库定义为中心数据库。 其余数据库均为成员数据库。 仅在中心和各成员之间同步数据。
--   中心数据库必须是 Azure SQL 数据库。
--   成员数据库可以是 SQL 数据库、本地 SQL Server 数据库或 Azure 虚拟机上的 SQL Server 实例。
--   同步数据库包含数据同步的元数据和日志。同步数据库必须是与中心数据库位于同一区域的 Azure SQL 数据库。 同步数据库的创建者和所有者均为客户。
-
-> [!NOTE]
-> 如果使用本地数据库作为成员数据库，则必须[安装并配置本地同步代理](sql-database-get-started-sql-data-sync.md#add-on-prem)。
-
-![在数据库之间同步数据](media/sql-database-sync-data/sync-data-overview.png)
-
 ## <a name="when-to-use-data-sync"></a>何时使用 SQL 数据同步
 
 如果需要跨多个 Azure SQL 数据库或 SQL Server 数据库更新数据，SQL 数据同步就非常有用。 下面是 SQL 数据同步的主要用例：
@@ -55,7 +55,7 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将组中的一个
 
 -   **全局分布式应用程序：** 许多企业的业务分布在多个区域，甚至是多个国家/地区。 为了最大限度地缩短网络延迟时间，最好将数据存储在靠近的区域中。 借助 SQL 数据同步，可轻松同步世界各地区域中的数据库。
 
-数据同步不是以下场景的最佳解决方案：
+数据同步不是以下场景的首选解决方案：
 
 | 场景 | 一些建议的解决方案 |
 |----------|----------------------------|

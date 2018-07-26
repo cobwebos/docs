@@ -6,14 +6,14 @@ manager: jeconnoc
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 07/17/2018
 ms.author: alkohli
-ms.openlocfilehash: fe9292459134972b44037a58235cdd817030a956
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: eea7e2779a169fa9a64cc7a5695e91999f219277
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968926"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112825"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>使用 Azure 导入/导出服务将数据导入到 Azure Blob 存储
 
@@ -24,12 +24,20 @@ ms.locfileid: "38968926"
 在创建导入作业来将数据传输到 Azure Blob 存储之前，请仔细查看并完成此服务的以下先决条件列表。 必须：
 
 - 拥有可用于导入/导出服务的有效 Azure 订阅。
-- 拥有至少一个包含存储容器的 Azure 存储帐户。 请参阅[导入/导出服务支持的存储帐户和存储类型](storage-import-export-requirements.md)的列表。 有关创建新存储帐户的信息，请参阅[如何创建存储帐户](storage-create-storage-account.md#create-a-storage-account)。 有关存储容器的信息，请转到[创建存储容器](../blobs/storage-quickstart-blobs-portal.md#create-a-container)。
+- 拥有至少一个包含存储容器的 Azure 存储帐户。 请参阅[导入/导出服务支持的存储帐户和存储类型](storage-import-export-requirements.md)的列表。 
+    - 有关创建新存储帐户的信息，请参阅[如何创建存储帐户](storage-create-storage-account.md#create-a-storage-account)。 
+    - 有关存储容器的信息，请转到[创建存储容器](../blobs/storage-quickstart-blobs-portal.md#create-a-container)。
 - 拥有[受支持类型](storage-import-export-requirements.md#supported-disks)的足够数量的磁盘。 
 - 拥有运行[受支持 OS 版本](storage-import-export-requirements.md#supported-operating-systems)的 Windows 系统。 
 - 在 Windows 系统上启用 BitLocker。 请参阅[如何启用 BitLocker](http://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/)。
 - 在 Windows 系统上[下载 WAImportExport 版本 1](https://www.microsoft.com/en-us/download/details.aspx?id=42659)。 解压缩到默认文件夹 `waimportexportv1`。 例如，`C:\WaImportExportV1`。
-
+- 具有 FedEx/DHL 帐户。  
+    - 该帐户必须是有余额的有效帐户，且有退货功能。
+    - 生成导出作业的跟踪号。
+    - 每个作业都应有一个单独的跟踪号。 不支持多个作业共享相同跟踪号。
+    - 如果没有承运商帐户，请转到：
+        - [创建 FedEX 帐户](https://www.fedex.com/en-us/create-account.html)，或 
+        - [创建 DHL 帐户](http://www.dhl-usa.com/en/express/shipping/open_account.html)。
 
 ## <a name="step-1-prepare-the-drives"></a>步骤 1：准备驱动器
 
@@ -56,7 +64,7 @@ ms.locfileid: "38968926"
     
     下表介绍了所使用的参数：
 
-    |选项  |说明  |
+    |选项  |Description  |
     |---------|---------|
     |/j:     |带有 .jrn 扩展名的日志文件的名称。 会为每个驱动器生成一个日志文件。 建议使用磁盘序列号作为日志文件名。         |
     |/id:     |会话 ID。 请为该命令的每个实例使用唯一的会话编号。      |
@@ -107,7 +115,10 @@ ms.locfileid: "38968926"
 
     - 从下拉列表中选择承运商。
     - 输入你已在该承运商那里创建的有效承运商帐户编号。 导入作业完成后，Microsoft 使用此帐户寄回驱动器。 如果还没有帐户编号，请创建一个 [FedEx](http://www.fedex.com/us/oadr/) 或 [DHL](http://www.dhl.com/) 承运商帐户。
-    - 提供完整、有效的联系人姓名、电话号码、电子邮件地址、街道地址、城市、邮政编码、省/自治区/直辖市和国家/地区。
+    - 提供完整、有效的联系人姓名、电话号码、电子邮件地址、街道地址、城市、邮政编码、省/自治区/直辖市和国家/地区。 
+        
+        > [!TIP] 
+        > 请提供组电子邮件，而非为单个用户指定电子邮件地址。 这可确保即使管理员离开也会收到通知。
 
     ![创建导入作业 - 步骤 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
    
@@ -116,7 +127,7 @@ ms.locfileid: "38968926"
     - 在摘要中复查提供的作业信息。 记下作业名称和 Azure 数据中心送货地址，以便将将磁盘寄回 Azure。 稍后将在发货标签中使用此信息。
     - 单击“确定”以创建导入作业。
 
-    ![创建导入作业 - 步骤 4](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
+    ![创建导入作业 - 步骤 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
 ## <a name="step-3-ship-the-drives"></a>步骤 3：寄送驱动器 
 
@@ -127,6 +138,9 @@ ms.locfileid: "38968926"
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
+## <a name="step-5-verify-data-upload-to-azure"></a>步骤 5：验证数据上传到 Azure
+
+跟踪作业直至完成。 作业完成后，验证数据已上传到 Azure。 仅在已确认上传成功后才删除本地数据。
 
 ## <a name="next-steps"></a>后续步骤
 

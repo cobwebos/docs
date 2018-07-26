@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: sujayt
-ms.openlocfilehash: 344ed971dd4a869cfbdc363222d772dcc3191199
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: a41cd658060ef92efb0fc21a98ca616276378c5e
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916034"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113848"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure 到 Azure VM 复制问题故障排除
 
@@ -177,6 +177,13 @@ ms.locfileid: "37916034"
 
 ## <a name="unable-to-see-the-azure-vm-for-selection-in-enable-replication"></a>在“启用复制”选项中看不到 Azure VM
 
+ **原因 1：资源组和源虚拟机位于不同的位置** <br>
+Azure Site Recovery 当前强制要求源区域资源组和虚拟机应位于同一位置。 如果不是这种情况，那么在保护期间将无法找到虚拟机。
+
+**原因 2：资源组不是所选订阅的一部分** <br>
+如果资源组不是给定订阅的一部分，则可能无法在保护期间找到该资源组。 确保资源组属于正在使用的订阅。
+
+ **原因 3：过时配置** <br>
 如果看不到要为其启用复制的虚拟机，可能是因为有过时的 Site Recovery 配置保留在 Azure VM 中。 在以下情况中，过时配置可能会留在 Azure VM 上：
 
 - 使用 Site Recovery 为 Azure VM 启用复制，然后删除 Site Recovery 保管库，而不在 VM 上明确禁用复制。
@@ -185,6 +192,11 @@ ms.locfileid: "37916034"
 ### <a name="fix-the-problem"></a>解决问题
 
 可使用[删除过时 ASR 配置脚本](https://gallery.technet.microsoft.com/Azure-Recovery-ASR-script-3a93f412)，删除 Azure VM 上的过时 Site Recovery 配置。 删除过时配置后，应能够看到该 VM。
+
+## <a name="unable-to-select-virtual-machine-for-protection"></a>无法选择虚拟机进行保护 
+ **原因 1：虚拟机安装的某些扩展处于失败或无响应状态** <br>
+ 转到“虚拟机”>“设置”>“扩展”，并检查是否存在任何失败状态的扩展。 卸载失败的扩展，然后重试保护虚拟机。<br>
+ **原因 2：[VM 的预配状态无效](#vms-provisioning-state-is-not-valid-error-code-150019)**
 
 ## <a name="vms-provisioning-state-is-not-valid-error-code-150019"></a>VM 的预配状态无效（错误代码 150019）
 
@@ -200,6 +212,7 @@ ms.locfileid: "37916034"
 
 - 如果 **provisioningState** 是“失败”，请联系支持人员并提供详细信息，以便进行故障排除。
 - 如果 **provisioningState** 是“正在更新”，可以部署其他扩展。 检查 VM 上是否有任何正在进行的操作，等待这些操作完成，然后重试失败的 Site Recovery 的“启用复制”作业。
+
 
 
 ## <a name="comvolume-shadow-copy-service-error-error-code-151025"></a>COM+/卷影复制服务错误（错误代码 151025）

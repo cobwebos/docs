@@ -13,14 +13,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/16/2018
+ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 59d6b960a40910b8b2fe72f6c3b149608ee8b8ad
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d9b89329e2a9bdb26c9aa1d12bc181c61518dcb8
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798064"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39116157"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Azure 上的 Linux 数据科学虚拟机中的数据科学
 本演练显示如何通过 Linux 数据科研 VM 执行几个常见的数据科学任务。 Linux 数据科研虚拟机 (DSVM) 是 Azure 提供的虚拟机映像，其中预安装了一组常用于执行数据分析和机器学习的工具。 [预配 Linux 数据科研虚拟机](linux-dsvm-intro.md)主题中逐项列出了主要的软件组件。 VM 映像允许在几分钟之内轻松开始执行数据科学任务，而无需逐个安装和配置每个工具。 如有必要，可以轻松扩展 VM，并在不使用时停止 VM。 因此，此资源既具有弹性，又具有成本效益。
@@ -42,7 +42,7 @@ ms.locfileid: "31798064"
 [Spambase](https://archive.ics.uci.edu/ml/datasets/spambase) 数据集是相对较小，仅包含 4601 个示例的一组数据。 在演示数据科学 VM 的一些主要功能时，这是一个很方便的大小，因为它使资源需求保持适中。
 
 > [!NOTE]
-> 本演练是在 D2 v2 大小的 Linux 数据科学虚拟机上进行的。 此大小的 DSVM 能够处理本演练中的过程。
+> 本演练在 D2 v2 大小的 Linux Data Science Virtual Machine（CentOS 版本）上进行。 此大小的 DSVM 能够处理本演练中的过程。
 >
 >
 
@@ -77,12 +77,8 @@ ms.locfileid: "31798064"
 
     git clone https://github.com/Azure/Azure-MachineLearning-DataScience.git
 
-打开终端窗口，使用 R 交互式控制台启动一个新的 R 会话。
+打开终端窗口，使用 R 交互式控制台启动一个新 R 会话，或者使用计算上预安装的 RStudio。
 
-> [!NOTE]
-> 还可以针对以下过程使用 RStudio。 若要安装 RStudio，在终端执行此命令：`./Desktop/DSVM\ tools/installRStudio.sh`
->
->
 
 若要导入数据并设置环境，请运行：
 
@@ -193,6 +189,7 @@ ms.locfileid: "31798064"
 
 加载 **AzureML** 包，并使用 DSVM 上 R 会话中的令牌和工作区 ID 设置变量的值：
 
+    if(!require("AzureML")) install.packages("AzureML")
     require(AzureML)
     wsAuth = "<authorization-token>"
     wsID = "<workspace-id>"
@@ -207,29 +204,28 @@ ms.locfileid: "31798064"
 
 我们需要一个预测函数将这些功能作为输入并返回预测值：
 
-    predictSpam <- function(char_freq_dollar, word_freq_remove, word_freq_hp) {
-        predictDF <- predict(model.rpart, data.frame("char_freq_dollar" = char_freq_dollar,
-        "word_freq_remove" = word_freq_remove, "word_freq_hp" = word_freq_hp))
-        return(colnames(predictDF)[apply(predictDF, 1, which.max)])
+    predictSpam <- function(newdata) {
+      predictDF <- predict(model.rpart, newdata = newdata)
+      return(colnames(predictDF)[apply(predictDF, 1, which.max)])
     }
+
 
 使用 **publishWebService** 函数将 predictSpam 函数发布到 AzureML：
 
-    spamWebService <- publishWebService("predictSpam",
-        "spamWebService",
-        list("char_freq_dollar"="float", "word_freq_remove"="float","word_freq_hp"="float"),
-        list("spam"="int"),
-        wsID, wsAuth)
+    spamWebService <- publishWebService(ws, fun = predictSpam, name="spamWebService", inputSchema = smallTrainSet, data.frame=TRUE)
+
 
 此函数会采用 **predictSpam** 函数创建一个名为 **spamWebService** 并且定义了输入和输出的 web 服务，并返回有关新的终结点的信息。
 
-使用以下命令查看已发布的 web 服务的信息，包括其 API 终结点和访问密钥：
+使用以下命令查看最新发布的 web 服务的详细信息，包括其 API 终结点和访问密钥：
 
-    spamWebService[[2]]
+    s<-tail(services(ws, name = "spamWebService"), 1)
+    ep <- endpoints(ws,s)
+    ep
 
 若要尝试测试集的前 10 行：
 
-    consumeDataframe(spamWebService$endpoints[[1]]$PrimaryKey, spamWebService$endpoints[[1]]$ApiLocation, smallTestSet[1:10, 1:3])
+    consume(ep, smallTestSet[1:10, ])
 
 
 ## <a name="use-other-tools-available"></a>使用其他可用工具
@@ -285,7 +281,7 @@ ms.locfileid: "31798064"
 
 若要显示如何发布 AzureML 终结点，让我们使用三个变量创建一个更简单的模型，与之前发布 R 模型的方法相同。
 
-    X = data.ix[["char_freq_dollar", "word_freq_remove", "word_freq_hp"]]
+    X = data[["char_freq_dollar", "word_freq_remove", "word_freq_hp"]]
     y = data.ix[:, 57]
     clf = svm.SVC()
     clf.fit(X, y)
@@ -419,7 +415,7 @@ Rattle 还可以执行群集分析。 让我们来排除某些功能，以使输
 Rattle 的一个不错的功能是它能够运行多个计算机学习方法，并快速对它们进行评估。 下面是该过程：
 
 * 选择”**所有**“作为”**类型**“。
-* 选择”**执行**“。
+* 选择“执行”。
 * 完成后，可以单击任意单个”**类型**“（如 **SVM**）并查看结果。
 * 还可以使用“评估”选项卡，在验证集上比较模型的性能。例如，”**错误矩阵**“选项显示验证集上每个模型的混淆矩阵、整体错误和平均类错误。
 * 此外还可以绘制 ROC 曲线，执行区分大小写分析，并执行其他类型的模型评估。
@@ -427,7 +423,7 @@ Rattle 的一个不错的功能是它能够运行多个计算机学习方法，�
 成功生成模型后，可选择“日志”选项卡查看会话期间 Rattle 运行的 R 代码。 可选择“导出”按钮来保存它。
 
 > [!NOTE]
-> 当前版本的 Rattle 中存在一个 Bug。 若要修改脚本或稍后使用它来重复步骤，必须在日志文本中的\*导出此日志...\*前面插入 # 字符。
+> 当前版本的 Rattle 中存在一个 Bug。 若要修改脚本或稍后使用它来重复步骤，必须在日志文本中的*导出此日志...*前面插入 # 字符。
 >
 >
 

@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/25/2018
+ms.date: 07/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 899e5dc13dfaf7d7545955e7b4b73939c3275d3f
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: cd2578f2fd8217d513a693ef348a5c26a4b18623
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930301"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126501"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色上运行 runbook
 
@@ -160,9 +160,69 @@ Get-AzureRmAutomationAccount | Select-Object AutomationAccountName
 
 在混合 Runbook 辅助角色中，对作业的处理方式与作业在 Azure 沙盒中运行时略有不同。 一个主要区别是，混合 Runbook 辅助角色中对作业持续时间没有限制。 Azure 沙盒中运行的 Runbook 因[公平份额](automation-runbook-execution.md#fair-share)原则限制为 3 小时。 如果具有长时间运行的 runbook，则你希望确保它在可能发生的重新启动（例如，如果承载着混合辅助角色的计算机重新启动）后能够复原。 如果混合辅助角色宿主计算机重新启动，则任何正在运行的 runbook 将从头重启，或者从 PowerShell 工作流 runbook 的最后一个检查点重启。 如果某个 runbook 作业重启了 3 次以上，则它会挂起。
 
+## <a name="run-only-signed-runbooks"></a>仅运行已签名 Runbook
+
+可以将混合 Runbook 辅助角色配置为仅运行具有某些配置的已签名 Runbook。 以下部分介绍如何设置混合 Runbook 辅助角色以运行已签名 Runbook，以及如何对 Runbook 签名。
+
+> [!NOTE]
+> 将混合 Runbook 辅助角色配置为仅运行已签名 Runbook 后，**未**签名的 Runbook 将无法在该辅助角色上执行。
+
+### <a name="create-signing-certificate"></a>创建签名证书
+
+以下示例创建可用于对 Runbook 签名的自签名证书。 该示例创建证书并将其导出。 该证书稍后将导入到混合 Runbook 辅助角色中。 该示例还返回指纹，稍后将用于引用证书。
+
+```powershell
+# Create a self signed runbook that can be used for code signing
+$SigningCert = New-SelfSignedCertificate -CertStoreLocation cert:\LocalMachine\my `
+                                        -Subject "CN=contoso.com" `
+                                        -KeyAlgorithm RSA `
+                                        -KeyLength 2048 `
+                                        -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider" `
+                                        -KeyExportPolicy Exportable `
+                                        -KeyUsage DigitalSignature `
+                                        -Type CodeSigningCert
+
+
+# Export the certificate so that it can be imported to the hybrid workers
+Export-Certificate -Cert $SigningCert -FilePath .\hybridworkersigningcertificate.cer
+
+# Import the certificate into the trusted root store so the certificate chain can be validated
+Import-Certificate -FilePath .\hybridworkersigningcertificate.cer -CertStoreLocation Cert:\LocalMachine\Root
+
+# Retrieve the thumbprint for later use
+$SigningCert.Thumbprint
+```
+
+### <a name="configure-the-hybrid-runbook-workers"></a>配置混合 Runbook 辅助角色
+
+将创建的证书复制到组中的每个混合 Runbook 辅助角色。 运行以下脚本，以导入证书并将混合辅助角色配置为在 Runbook 上使用签名验证。
+
+```powershell
+# Install the certificate into a location that will be used for validation.
+New-Item -Path Cert:\LocalMachine\AutomationHybridStore
+Import-Certificate -FilePath .\hybridworkersigningcertificate.cer -CertStoreLocation Cert:\LocalMachine\AutomationHybridStore
+
+# Import the certificate into the trusted root store so the certificate chain can be validated
+Import-Certificate -FilePath .\hybridworkersigningcertificate.cer -CertStoreLocation Cert:\LocalMachine\Root
+
+# Configure the hybrid worker to use signature validation on runbooks.
+Set-HybridRunbookWorkerSignatureValidation -Enable $true -TrustedCertStoreLocation "Cert:\LocalMachine\AutomationHybridStore"
+```
+
+### <a name="sign-your-runbooks-using-the-certificate"></a>使用证书对 Runbook 签名
+
+将混合 Runbook 辅助角色配置为仅使用已签名 Runbook。 你必须对要在混合 Runbook 辅助角色上使用的 Runbook 签名。 使用以下示例 PowerShell 对 Runbook 签名。
+
+```powershell
+$SigningCert = ( Get-ChildItem -Path cert:\LocalMachine\My\<CertificateThumbprint>)
+Set-AuthenticodeSignature .\TestRunbook.ps1 -Certificate $SigningCert
+```
+
+对 Runbook 签名后，必须将其导入自动化帐户并与签名块一起发布。 若要了解如何导入 Runbook，请参阅[将 Runbook 从文件导入 Azure 自动化](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-azure-automation)。
+
 ## <a name="troubleshoot"></a>故障排除
 
-如果 Runbook 没有成功完成且作业摘要显示的状态为“已暂停”，请参阅 [Runbook 执行失败](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails)相关故障排除指南。
+如果 Runbook 未成功完成，请查看 [Runbook 执行失败](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails)相关故障排除指南。
 
 ## <a name="next-steps"></a>后续步骤
 

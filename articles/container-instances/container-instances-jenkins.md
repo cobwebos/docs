@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 07/13/2018
 ms.author: marsma
-ms.openlocfilehash: ff94a250ca40aa546ebb07faa96563f49dea974a
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: d8ac5850a61c1dec9daa508236ef56836876c3fe
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887685"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072069"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>使用 Azure 容器实例作为 Jenkins 生成代理
 
@@ -92,31 +92,21 @@ Azure 容器实例 (ACI) 提供按需、可迸发的隔离环境用于运行容�
 
 ## <a name="create-a-build-job"></a>创建生成作业
 
-使用容器映像作为 Jenkins 生成目标时，需要指定包含一个成功生成所需的所有工具的映像。 若要指定映像：
+现在，创建 Jenkins 生成作业来演示 Azure 容器实例中的 Jenkins 生成。
 
-1. 选择“管理 Jenkins” > “配置系统”，并向下滚动到“云”部分。 本示例将 Docker 映像值更新为 **microsoft/java-on-azure-jenkins-slave**。
-
-   完成后，选择“保存”返回到 Jenkins 仪表板。
-
-   ![Jenkins 云配置](./media/container-instances-jenkins/jenkins-aci-image.png)
-
-2. 现在创建 Jenkins 生成作业。 选择“新建项”，为生成项目命名（例如 **aci-java-demo**），选择“自由风格项目”，然后选择“确定”。
+1. 选择“新建项”，为生成项目命名（例如 aci-demo），选择“自由风格项目”，然后选择“确定”。
 
    ![用于指定生成作业名称的框，以及项目类型列表](./media/container-instances-jenkins/jenkins-new-job.png)
 
-3. 在“常规”下，确保已选择“限制可以运行此项目的位置”。 为标签表达式输入 **linux**。 此配置可确保此生成作业在 ACI 云中运行。
+2. 在“常规”下，确保已选择“限制可以运行此项目的位置”。 为标签表达式输入 **linux**。 此配置可确保此生成作业在 ACI 云中运行。
 
    ![包含配置详细信息的“常规”选项卡](./media/container-instances-jenkins/jenkins-job-01.png)
 
-4. 在“源代码管理”下，选择“Git”并输入 **https://github.com/spring-projects/spring-petclinic.git** 作为存储库 URL。 此 GitHub 存储库包含示例应用程序代码。
+3. 在“生成”下，选择“添加生成步骤”并选择“执行 Shell”。 输入 `echo "aci-demo"` 作为命令。
 
-   ![包含源代码信息的“源代码管理”选项卡](./media/container-instances-jenkins/jenkins-job-02.png)
+   ![包含生成步骤选项的“生成”选项卡](./media/container-instances-jenkins/jenkins-job-02.png)
 
-5. 在“生成”下，依次选择“添加生成步骤”、“调用顶级 Maven 目标”。 输入 **package** 作为生成步骤目标。
-
-   ![包含生成步骤选项的“生成”选项卡](./media/container-instances-jenkins/jenkins-job-03.png)
-
-6. 选择“保存”。
+5. 选择“保存”。
 
 ## <a name="run-the-build-job"></a>运行生成作业
 

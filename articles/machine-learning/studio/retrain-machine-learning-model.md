@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: ca7ad5a46c1401a283879f8aba80c781a88fc089
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 46aa2c209f782706357f9a928ddbaa6321abdd77
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835423"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115521"
 ---
 # <a name="retrain-a-machine-learning-model"></a>重新训练机器学习模型
-作为 Azure 机器学习中机器学习模型操作过程的一部分，模型被训练并保存。 使用它来创建预测 Web 服务。 然后可以在网站、仪表板和移动应用中使用 Web 服务。 
+作为 Azure 机器学习中机器学习模型操作过程的一部分，模型被训练并保存。 然后使用它来创建预测 Web 服务。 然后可以在网站、仪表板和移动应用中使用 Web 服务。 
 
 使用机器学习创建的模型通常不是静态的。 当新数据变得可用时，或当 API 使用者拥有其自己的数据时，需要重新训练模型。 
 

@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 07/16/2018
 ms.author: bonova
-ms.openlocfilehash: 1dec40871b8842cb5e41d48c759d1f4fa85d7b66
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 0951281a584d3c534d82ec5760d29f4b80616d2d
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082499"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091987"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>什么是托管实例（预览版）？
 
@@ -64,13 +64,13 @@ Azure SQL 数据库托管实例（预览版）是 Azure SQL 数据库的一项�
 | --- | --- |
 |无需采购和管理硬件 <br>不产生底层基础结构的管理开销 <br>快速预配和服务缩放 <br>自动修补和版本升级 <br>与其他 PaaS 数据服务集成 |99.99% 的运行时间 SLA  <br>内置高可用性 <br>使用自动备份保护数据 <br>客户可配置的备份保留期（公共预览版中固定为 7 天） <br>用户启动的备份 <br>数据库时间点还原功能 |
 |**安全性和符合性** | **管理**|
-|隔离的环境、VNet 集成、单租户服务、专用的计算和存储资源 <br>传输中数据加密 <br>Azure AD 身份验证、单一登录支持 <br>符合 Azure SQL 数据库遵循的相同法规标准 <br>SQL 审核 <br>威胁检测 |用于自动预配和缩放服务的 Azure 资源管理器 API <br>用于手动预配和缩放服务的 Azure 门户功能 <br>数据迁移服务 
+|隔离的环境（VNet 集成、单租户服务、专用的计算和存储资源） <br>透明数据加密<br>Azure AD 身份验证、单一登录支持 <br>符合 Azure SQL 数据库遵循的相同法规标准 <br>SQL 审核 <br>威胁检测 |用于自动预配和缩放服务的 Azure 资源管理器 API <br>用于手动预配和缩放服务的 Azure 门户功能 <br>数据迁移服务 
 
 ![单一登录](./media/sql-database-managed-instance/sso.png) 
 
-## <a name="vcore-based-purchasing-model-preview"></a>基于 vCore 的购买模型（预览版）
+## <a name="vcore-based-purchasing-model"></a>基于 vCore 的购买模型
 
-基于 vCore 的购买模型（预览版）提供了灵活性、控制力和透明性，并且还提供了一种简单明了的方法来将本地工作负荷要求转换到云。 此模型允许根据工作负荷需求来缩放计算、内存和存储资源。 此外，借助[面向 SQL Server 的 Azure 混合使用权益](../virtual-machines/windows/hybrid-use-benefit-licensing.md)，vCore 模型能够节省高达 30% 的费用。
+基于 vCore 的购买模型提供了灵活性、控制力和透明性，并且还提供了一种简单明了的方法来将本地工作负荷要求转换到云。 此模型允许根据工作负荷需求来缩放计算、内存和存储资源。 此外，借助[面向 SQL Server 的 Azure 混合使用权益](../virtual-machines/windows/hybrid-use-benefit-licensing.md)，vCore 模型能够节省高达 30% 的费用。
 
 虚拟核心表示逻辑 CPU，提供不同代的硬件供客户选择。
 - 第 4 代逻辑 CPU 基于 Intel E5-2673 v3 (Haswell) 2.4 GHz 处理器。
@@ -81,13 +81,20 @@ Azure SQL 数据库托管实例（预览版）是 Azure SQL 数据库的一项�
 ||第 4 代|第 5 代|
 |----|------|-----|
 |硬件|Intel E5-2673 v3 (Haswell) 2.4 GHz 处理器、附加的 SSD vCore = 1 PP（物理核心）|Intel E5-2673 v4 (Broadwell) 2.3 GHz 处理器、快速 eNVM SSD、vCore=1 LP（超线程）|
-|性能级别|8、16、24 个 vCore|8、16、24、32、40 个 vCore|
-|内存|每个 vCore 7GB|每个 vCore 5.5GB|
+|性能级别|8、16、24 个 vCore|8、16、24、32、40、64、80 个 vCore|
+|内存|每个 vCore 7 GB|每个 vCore 5.5 GB|
 ||||
 
-## <a name="managed-instance-service-tier"></a>托管实例服务层
+## <a name="managed-instance-service-tiers"></a>托管实例服务层
 
-托管实例最初在单个服务层（“常规用途”）中提供，该层适用于具有典型可用性和一般 IO 延迟要求的应用程序。
+托管实例可在两个服务层中提供：
+- **常规用途**：为具有典型可用性和一般 IO 延迟要求的应用程序设计。
+- **业务关键**：为具有高可用性和低的 IO 延迟要求的应用程序设计。
+ 
+> [!IMPORTANT]
+> 在公共预览版中，不支持在常规用途和业务关键服务层之间切换。 如果想要将数据库迁移到不同服务层中的实例，可以创建新实例，从原始实例对数据库进行时间点还原，然后删除不再需要的原始实例。 
+
+### <a name="general-purpose-service-tier"></a>常规用途服务层
 
 以下列表描述了常规用途服务层的主要特征： 
 
@@ -101,15 +108,15 @@ Azure SQL 数据库托管实例（预览版）是 Azure SQL 数据库的一项�
  
 ![常规用途服务层](./media/sql-database-managed-instance/general-purpose-service-tier.png) 
 
-下面概述了常规用途服务层的主要功能：
+以下列表概述了常规用途服务层的主要特征：
 
-|功能 | 说明|
+|功能 | Description|
 |---|---|
-| vCore 数目* | 8、16、24（第 4 代）<br>8、16、24、32、40（第 5 代）|
+| vCore 数目* | 8、16、24（第 4 代）<br>8、16、24、32、40、64、80（第 5 代）|
 | SQL Server 版本/内部版本 | SQL Server（最新可用版本） |
 | 最小存储大小 | 32 GB |
 | 最大存储大小 | 8 TB |
-| 每个数据库的最大存储 | 8 TB |
+| 每个数据库的最大存储 | 由每个实例的最大存储大小决定 |
 | 预期的存储 IOPS | 每个数据文件 500-7500 IOPS（取决于数据文件）。 请参阅[高级存储](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes) |
 | 每个数据库的数据文件 (ROWS) 数目 | 多个 | 
 | 每个数据库的日志文件 (LOG) 数目 | 1 | 
@@ -125,6 +132,35 @@ Azure SQL 数据库托管实例（预览版）是 Azure SQL 数据库的一项�
 
   \* 虚拟核心表示逻辑 CPU，提供不同代的硬件供客户选择。 第 4 代逻辑 CPU 基于 Intel E5-2673 v3 (Haswell) 2.4 GHz 处理器，第 5 代逻辑 CPU 基于 Intel E5-2673 v4 (Broadwell) 2.3 GHz 处理器。 
 
+### <a name="business-critical-service-tier"></a>“业务关键”服务层
+
+业务关键服务层适用于具有高 IO 要求的应用程序。 它使用多个 Always On 独立副本，提供最高级别的故障恢复能力。 下图演示了此服务层的基础体系结构：
+
+![“业务关键”服务层](./media/sql-database-managed-instance/business-critical-service-tier.png)  
+
+以下列表概述了业务关键服务层的主要特征： 
+-   为具有最严苛性能和 HA 要求的商业应用程序设计 
+-   附带超高速 SSD 存储（第 4 代最多 1 TB，第 5 代最多 4 TB），每个实例支持最多 100 个数据库 
+
+|功能 | Description|
+|---|---|
+| vCore 数目* | 8、16、24（第 4 代）<br>8、16、24、32、40、64、80（第 5 代）|
+| SQL Server 版本/内部版本 | SQL Server（最新可用版本） |
+| 其他功能 | [In-Memory OLTP](sql-database-in-memory.md)<br> 1 个额外的只读副本（[读取扩展](sql-database-read-scale-out.md)）
+| 最小存储大小 | 32 GB |
+| 最大存储大小 | 第 4 代：1 TB（所有 vCore 大小<br> 第 5 代：<ul><li>8、16 个 Vcore 1 TB</li><li>24 个 Vcore 2 TB</li><li>40、60、80 个 Vcore 4 TB</ul>|
+| 每个数据库的最大存储 | 由每个实例的最大存储大小决定 |
+| 每个数据库的数据文件 (ROWS) 数目 | 多个 | 
+| 每个数据库的日志文件 (LOG) 数目 | 1 | 
+| 受管理的自动备份 | 是 |
+| 高可用性 | 基于 [Always On 可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)和 [Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
+| 内置的实例和数据库监视与指标 | 是 |
+| 自动软件修补 | 是 |
+| VNet - Azure 资源管理器部署 | 是 |
+| VNet - 经典部署模型 | 否 |
+| 门户支持 | 是|
+|||
+
 ## <a name="advanced-security-and-compliance"></a>高级安全性和符合性 
 
 ### <a name="managed-instance-security-isolation"></a>托管实例安全隔离 
@@ -135,9 +171,15 @@ Azure SQL 数据库托管实例（预览版）是 Azure SQL 数据库的一项�
 - 仅通过专用 IP 地址公开 SQL 终结点，以便从专用 Azure 或混合网络建立安全连接
 - 具有专用底层基础结构（计算、存储）的单一租户
 
-下图概括描绘了隔离设计： 
+下图概述了应用程序的各种连接选项： 
 
 ![高可用性](./media/sql-database-managed-instance/application-deployment-topologies.png)  
+
+若要详细了解子网级别的 VNet 集成和网络策略实施情况，请参阅[为 Azure SQL 数据库托管实例配置 VNet](sql-database-managed-instance-vnet-configuration.md) 和[将应用程序连接到 Azure SQL 数据库托管实例](sql-database-managed-instance-connect-app.md)。 
+
+> [!IMPORTANT]
+> 只要安全要求允许，就将多个托管实例放在同一子网中，因为这会带来额外的好处。 在同一子网中并置实例，将显著简化网络基础结构维护，还会减少预配时间，因为预配持续时间长与在子网中部署第一个托管实例的成本相关。
+
 
 ### <a name="auditing-for-compliance-and-security"></a>符合性和安全性审核 
 
@@ -148,6 +190,11 @@ Azure SQL 数据库托管实例（预览版）是 Azure SQL 数据库的一项�
 托管实例提供动态数据加密，使用传输层安全性保护数据。
 
 除传输层安全性以外，SQL 数据库托管实例使用 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 在动态、静态和查询处理期间提供敏感数据的保护。 Always Encrypted 是业界首创功能，可针对涉及关键数据被盗的漏洞提供无与伦比的数据安全性。 例如，借助 Always Encrypted，信用卡号即使在查询处理期间也始终加密存储在数据库中，允许经授权员工或需要处理该数据的应用程序在使用时进行解密。 
+
+### <a name="data-encryption-at-rest"></a>静态数据加密 
+[透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) 可以加密 Azure SQL 托管实例数据文件，称为静态数据加密。 TDE 针对数据和日志文件执行实时 I/O 加密和解密。 加密使用数据库加密密钥 (DEK)，它存储在数据库引导记录中，可在恢复时使用。 可使用透明数据加密保护托管实例中的所有数据库。 TDE 是 SQL 经验证的静态加密技术，许多符合性标准都需要它来防止存储介质被盗。 公共预览期间，支持自动密钥管理模型（由 PaaS 平台执行）。 
+
+通过 Azure 数据库迁移服务 (DMS) 或本机还原，支持将加密数据库迁移到 SQL 托管实例。 如果打算使用本机还原迁移加密数据库，则必须将现有 TDE 证书从本地 SQL Server 或 SQL Server VM 迁移到托管实例。 有关迁移选项的详细信息，请参阅[将 SQL Server 实例迁移到 Azure SQL 数据库托管实例](sql-database-managed-instance-migrate.md)。
 
 ### <a name="dynamic-data-masking"></a>动态数据掩码 
 
@@ -226,3 +273,4 @@ Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多�
 - 有关 VNet 配置的详细信息，请参阅[托管实例 VNet 配置](sql-database-managed-instance-vnet-configuration.md)。
 - 有关创建托管实例以及从备份文件还原数据库的教程，请参阅[创建托管实例](sql-database-managed-instance-create-tutorial-portal.md)。
 - 有关使用 Azure 数据库迁移服务 (DMS) 进行迁移的教程，请参阅[使用 DMS 进行托管实例迁移](../dms/tutorial-sql-server-to-managed-instance.md)。
+- 有关定价信息，请参阅 [SQL 数据库托管实例定价](https://azure.microsoft.com/pricing/details/sql-database/managed/)。

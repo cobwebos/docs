@@ -1,6 +1,6 @@
 ---
 title: Azure 中的内置角色 | Microsoft Docs
-description: 介绍 Azure 中基于角色的访问控制 (RBAC) 的内置角色。 列出 actions、notActions、dataActions 和 notDataActions。
+description: 介绍 Azure 中基于角色的访问控制 (RBAC) 的内置角色。 列出 Actions、NotActions、DataActions 和 NotDataActions。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,31 +11,31 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 06/28/2018
+ms.date: 07/17/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: c5624de13d5d31320beb85aff67c61addaffcbea
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 42a11607c46f77840b14973dd5b7faf4b1734fdc
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437920"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136836"
 ---
 # <a name="built-in-roles-in-azure"></a>Azure 中的内置角色
-[基于角色的访问控制 (RBAC)](overview.md) 拥有多个内置角色定义，可将其分配给用户、组和服务主体。 角色分配是控制对 Azure 资源的访问的方式。 如果内置角色不能满足组织的特定需求，可以创建你自己的[自定义角色](custom-roles.md)。
+[基于角色的访问控制 (RBAC)](overview.md) 拥有多个内置角色定义，可将其分配给用户、组和服务主体。 角色分配是控制对 Azure 资源的访问的方式。 如果内置角色不能满足组织的特定需求，则你可以创建自己的[自定义角色](custom-roles.md)。
 
 内置角色始终在不断演变。 若要获取最新的角色定义，请使用 [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) 或 [az role definition list](/cli/azure/role/definition#az-role-definition-list)。
 
 ## <a name="built-in-role-descriptions"></a>内置角色说明
-下表提供内置角色的简短说明。 单击角色名称，查看每个角色的 `actions`、`notActions`、`dataActions` 和 `notDataActions` 列表。
+下表提供内置角色的简短说明。 单击角色名称，查看每个角色的 `Actions`、`NotActions`、`DataActions` 和 `NotDataActions` 列表。
 
 
-| 内置角色 | 说明 |
+| 内置角色 | Description |
 | --- | --- |
 | [所有者](#owner) | 允许管理所有功能，包括对资源的访问权限。 |
 | [参与者](#contributor) | 允许管理所有功能（对资源的访问权限除外）。 |
-| [读者](#reader) | 允许查看所有内容，但不能进行任何更改。 |
+| [读取者](#reader) | 允许查看所有内容，但不能进行任何更改。 |
 | [AcrImageSigner](#acrimagesigner) | ACR 映像签名程序 |
 | [AcrQuarantineReader](#acrquarantinereader) | ACR 隔离数据读取器 |
 | [AcrQuarantineWriter](#acrquarantinewriter) | ACR 隔离数据编写器 |
@@ -78,6 +78,8 @@ ms.locfileid: "37437920"
 | [逻辑应用操作员](#logic-app-operator) | 允许读取、启用和禁用逻辑应用。 |
 | [托管的标识参与者](#managed-identity-contributor) | 创建、读取、更新和删除用户分配的标识 |
 | [托管的标识操作员](#managed-identity-operator) | 读取和分配用户分配的标识 |
+| [管理组参与者](#management-group-contributor) | 管理组参与者角色 |
+| [管理组读取者](#management-group-reader) | 管理组读取者角色 |
 | [监视参与者](#monitoring-contributor) | 可以读取所有监视数据和编辑监视设置。 另请参阅 [Azure Monitor 的角色、权限和安全入门](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles)。 |
 | [监视查阅者](#monitoring-reader) | 可以读取所有监视数据（指标、日志等）。 另请参阅 [Azure Monitor 的角色、权限和安全入门](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles)。 |
 | [网络参与者](#network-contributor) | 允许管理网络，但不允许访问这些网络。 |
@@ -617,7 +619,7 @@ ms.locfileid: "37437920"
 > | Microsoft.ClassicNetwork/virtualNetworks/join/action | 加入虚拟网络。 |
 > | Microsoft.ClassicNetwork/virtualNetworks/read | 获取虚拟网络。 |
 > | Microsoft.ClassicStorage/storageAccounts/disks/read | 返回存储帐户磁盘。 |
-> | Microsoft.ClassicStorage/storageAccounts/images/read | 返回存储帐户映像。 |
+> | Microsoft.ClassicStorage/storageAccounts/images/read | 返回存储帐户映像。 （已弃用。 请使用“Microsoft.ClassicStorage/storageAccounts/vmImages”） |
 > | Microsoft.ClassicStorage/storageAccounts/listKeys/action | 列出存储帐户的访问密钥。 |
 > | Microsoft.ClassicStorage/storageAccounts/read | 返回包含给定帐户的存储帐户。 |
 > | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
@@ -826,6 +828,7 @@ ms.locfileid: "37437920"
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
 > | Microsoft.LabServices/labAccounts/*/read |  |
 > | Microsoft.LabServices/labAccounts/createLab/action | 在实验室帐户中创建实验室。 |
+> | Microsoft.LabServices/labAccounts/sizes/getRegionalAvailability/action | 获取实验室帐户下每个大小类别的区域可用性信息 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Support/* | 创建和管理支持票证 |
 
@@ -947,6 +950,28 @@ ms.locfileid: "37437920"
 > | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
 > | Microsoft.Support/* | 创建和管理支持票证 |
 
+## <a name="management-group-contributor"></a>管理组参与者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 管理组参与者角色 |
+> | **Id** | 5d58bcaf-24a5-4b20-bdb6-eed9f69fbe4c |
+> | **操作** |  |
+> | Microsoft.Management/managementGroups/delete | 删除管理组。 |
+> | Microsoft.Management/managementGroups/read | 列出已通过身份验证的用户的管理组。 |
+> | Microsoft.Management/managementGroups/subscriptions/delete | 从管理组取消关联订阅。 |
+> | Microsoft.Management/managementGroups/subscriptions/write | 将现有订阅与管理组关联。 |
+> | Microsoft.Management/managementGroups/write | 创建或更新管理组。 |
+
+## <a name="management-group-reader"></a>管理组读取者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 管理组读取者角色 |
+> | **Id** | ac63b705-f282-497d-ac71-919bf39d939d |
+> | **操作** |  |
+> | Microsoft.Management/managementGroups/read | 列出已通过身份验证的用户的管理组。 |
+
 ## <a name="monitoring-contributor"></a>监视参与者
 > [!div class="mx-tableFixed"]
 > | | |
@@ -957,18 +982,18 @@ ms.locfileid: "37437920"
 > | */read | 读取除密码外的所有类型的资源。 |
 > | Microsoft.AlertsManagement/alerts/* |  |
 > | Microsoft.AlertsManagement/alertsSummary/* |  |
+> | Microsoft.Insights/actiongroups/* |  |
 > | Microsoft.Insights/AlertRules/* | 读取/写入/删除警报规则。 |
 > | Microsoft.Insights/components/* | 读取/写入/删除 Application Insights 组件。 |
 > | Microsoft.Insights/DiagnosticSettings/* | 读取/写入/删除诊断设置。 |
 > | Microsoft.Insights/eventtypes/* | 列出订阅中的活动日志事件（管理事件）。 此权限适用于对活动日志的编程和门户访问。 |
 > | Microsoft.Insights/LogDefinitions/* | 此权限对于需要通过门户访问活动日志的用户是必需的。 列出活动日志中的日志类别。 |
+> | Microsoft.Insights/metricalerts/* |  |
 > | Microsoft.Insights/MetricDefinitions/* | 读取指标定义（资源的可用指标类型的列表）。 |
 > | Microsoft.Insights/Metrics/* | 读取资源的指标。 |
-> | Microsoft.Insights/Register/Action | 注册 Microsoft.Insights 提供程序 |
-> | Microsoft.Insights/webtests/* | 读取/写入/删除 Application Insights Web 测试。 |
-> | Microsoft.Insights/actiongroups/* |  |
-> | Microsoft.Insights/metricalerts/* |  |
+> | Microsoft.Insights/Register/Action | 注册 Microsoft Insights 提供程序 |
 > | Microsoft.Insights/scheduledqueryrules/* |  |
+> | Microsoft.Insights/webtests/* | 读取/写入/删除 Application Insights Web 测试。 |
 > | Microsoft.OperationalInsights/workspaces/intelligencepacks/* | 读取/写入/删除 Log Analytics 解决方案包。 |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/* | 读取/写入/删除 Log Analytics 保存的搜索。 |
 > | Microsoft.OperationalInsights/workspaces/search/action | 执行搜索查询 |
@@ -976,6 +1001,7 @@ ms.locfileid: "37437920"
 > | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/* | 读取/写入/删除 Log Analytics 存储深入了解配置。 |
 > | Microsoft.Support/* | 创建和管理支持票证 |
 > | Microsoft.WorkloadMonitor/workloads/* |  |
+> | Microsoft.WorkloadMonitor/workloadInsights/* |  |
 
 ## <a name="monitoring-reader"></a>监视查阅者
 > [!div class="mx-tableFixed"]

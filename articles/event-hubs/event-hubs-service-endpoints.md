@@ -1,6 +1,6 @@
 ---
 title: 适用于 Azure 事件中心的虚拟网络服务终结点和规则 | Microsoft Docs
-description: 将 Microsoft.ServiceBus 服务终结点添加到虚拟网络。
+description: 将 Microsoft.EventHub 服务终结点添加到虚拟网络。
 services: event-hubs
 documentationcenter: ''
 author: clemensv
@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: clemensv
-ms.openlocfilehash: a23e5414cd3c60192badfee65b14c49cd5e96f4e
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 3746c4b7d1b53d7522f317fd2e349d31ba77f406
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034340"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136325"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>将虚拟网络服务终结点与 Azure 事件中心配合使用
 
@@ -37,7 +37,7 @@ ms.locfileid: "37034340"
 
 虚拟网络规则是一种防火墙安全功能，用于控制是否允许 Azure 事件中心服务器接受来自特定虚拟网络子网的连接。
 
-将事件中心命名空间绑定到虚拟网络的过程分为两步。 首先需要在虚拟网络子网上创建“虚拟网络服务终结点”，并按照[服务终结点概述][vnet-sep]中的说明为“Microsoft.ServiceBus”启用该终结点。 添加服务终结点后，使用虚拟网络规则将事件中心命名空间绑定到该终结点。
+将事件中心命名空间绑定到虚拟网络的过程分为两步。 首先需要在虚拟网络子网上创建“虚拟网络服务终结点”，并按照[服务终结点概述][vnet-sep]中的说明为“Microsoft.EventHub”启用该终结点。 添加服务终结点后，使用虚拟网络规则将事件中心命名空间绑定到该终结点。
 
 虚拟网络规则是事件中心命名空间与虚拟网络子网的命名关联。 存在此规则时，绑定到子网的所有工作负荷都有权访问事件中心命名空间。 事件中心本身永远不会建立出站连接，不需要获得访问权限，因此永远不会通过启用此规则来授予对子网的访问权限。
 

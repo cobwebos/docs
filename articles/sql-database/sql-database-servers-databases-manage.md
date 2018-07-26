@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 918cfd0257c82e84451e07ef904dbda331f47b95
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 1b431cdd49fb0ad32bfc8c06d731781afa38ac71
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311311"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091880"
 ---
 # <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>在 Azure SQL 数据库中创建和管理逻辑服务器和单一数据库 
 
@@ -35,7 +35,7 @@ ms.locfileid: "36311311"
   ![创建数据库 - 1](./media/sql-database-get-started-portal/create-database-1.png)
 
 > [!IMPORTANT]
-> 有关为数据库选择定价层的信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型（预览版）](sql-database-service-tiers-vcore.md)。
+> 有关为数据库选择定价层的信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
 
 要创建托管实例，请参阅[创建托管实例](sql-database-managed-instance-create-tutorial-portal.md)
 
@@ -48,7 +48,7 @@ ms.locfileid: "36311311"
    ![服务器防火墙规则](./media/sql-database-get-started-portal/server-firewall-rule.png) 
 
 > [!IMPORTANT]
-> 要配置数据库的性能属性，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型（预览版）](sql-database-service-tiers-vcore.md)。
+> 要配置数据库的性能属性，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
 >
 
 > [!TIP]
@@ -62,7 +62,7 @@ ms.locfileid: "36311311"
 > 有关 PowerShell 快速入门，请参阅[使用 PowerShell 创建单一 Azure SQL 数据库](sql-database-get-started-portal.md)。 有关 PowerShell 示例脚本，请参阅[使用 PowerShell 创建单个 Azure SQL 数据库和配置防火墙规则](scripts/sql-database-create-and-configure-database-powershell.md)和[使用 PowerShell 监视和缩放单一 SQL 数据库](scripts/sql-database-monitor-and-scale-database-powershell.md)。
 >
 
-| Cmdlet | 说明 |
+| Cmdlet | Description |
 | --- | --- |
 |[New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase)|创建数据库 |
 |[Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)|获取一个或多个数据库|
@@ -87,7 +87,7 @@ ms.locfileid: "36311311"
 > 有关 Azure CLI 快速入门，请参阅[使用 Azure CLI 创建单一 Azure SQL 数据库](sql-database-get-started-cli.md)。 有关 Azure CLI 示例脚本，请参阅[使用 CLI 创建单个 Azure SQL 数据库和配置防火墙规则](scripts/sql-database-create-and-configure-database-cli.md)和[使用 CLI 监视和缩放单一 SQL 数据库](scripts/sql-database-monitor-and-scale-database-cli.md)。
 >
 
-| Cmdlet | 说明 |
+| Cmdlet | Description |
 | --- | --- |
 |[az sql db create](/cli/azure/sql/db#az_sql_db_create) |创建数据库|
 |[az sql db list](/cli/azure/sql/db#az_sql_db_list)|列出某台服务器中的所有数据库和数据仓库，或者列出弹性池中的所有数据库|
@@ -121,7 +121,7 @@ ms.locfileid: "36311311"
 > 无法使用 Transact-SQL 创建或删除服务器。
 >
 
-| 命令 | 说明 |
+| 命令 | Description |
 | --- | --- |
 |[CREATE DATABASE（Azure SQL 数据库）](/sql/t-sql/statements/create-database-azure-sql-database)|新建数据库。 必须连接到 master 数据库，才能新建数据库。|
 | [ALTER DATABASE（Azure SQL 数据库）](/sql/t-sql/statements/alter-database-azure-sql-database) |修改 Azure SQL 数据库。 |
@@ -145,7 +145,7 @@ ms.locfileid: "36311311"
 
 若要创建并管理 Azure SQL 服务器、数据库和防火墙，请使用以下 REST API 请求。
 
-| 命令 | 说明 |
+| 命令 | Description |
 | --- | --- |
 |[Servers - Create Or Update](/rest/api/sql/servers/createorupdate)|创建或更新新服务器。|
 |[Servers - Delete](/rest/api/sql/servers/delete)|删除 SQL Server。|

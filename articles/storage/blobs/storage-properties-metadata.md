@@ -12,29 +12,29 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2017
+ms.date: 07/16/2018
 ms.author: tamram
-ms.openlocfilehash: a3eb598b2dabd4986c72b8814926eb0944707050
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d2c95139d42f42e43e2fa6e587d5b1b13afdf1e9
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23056052"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112437"
 ---
 # <a name="set-and-retrieve-properties-and-metadata"></a>设置和检索属性与元数据
 
 Azure 存储中的对象支持系统属性和用户定义的元数据，除了该数据以外，它们还包含： 本文介绍如何使用[适用于 .NET 的 Azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)管理系统属性和用户定义元数据。
 
-* **系统属性**：系统属性存在于每个存储资源上。 其中一些属性是可以读取或设置的，而另一些属性是只读的。 事实上，有些系统属性与某些标准 HTTP 标头对应。 Azure 存储客户端库会维护这些内容。
+* **系统属性**：系统属性存在于每个存储资源上。 其中一些属性是可以读取或设置的，而另一些属性是只读的。 事实上，有些系统属性与某些标准 HTTP 标头对应。 Azure 存储客户端库将保留这些属性。
 
-* **用户定义的元数据**：用户定义的元数据是在给定资源上以名称/值对的形式指定的元数据。 可以使用元数据存储存储资源的其他值。 这些其他元数据值仅用于自己的目的，并不会影响资源的行为方式。
+* **用户定义的元数据**：用户定义元数据包含一个或多个你为 Azure 存储资源指定的名称/值对对。 可以使用元数据存储资源的其他值。 元数据值仅用于你自己的目的，不会影响资源的行为方式。
 
-检索资源的属性和元数据值的过程分为两步。 在可以读取这些值之前，你必须通过调用 FetchAttributesAsync 方法显式提取它们。
+检索资源的属性和元数据值的过程分为两步。 必须先通过调用 FetchAttributes 或 FetchAttributesAsync 方法显式提取这些值，然后才能读取。 对资源调用 Exists 或 ExistsAsync 方法是例外情况。 调用以上一种方法时，Azure 存储将在调用 Exists 方法时以隐藏方式调用相应的 FetchAttributes 方法。
 
 > [!IMPORTANT]
-> 除非调用 FetchAttributesAsync 方法之一，否则不会填充存储资源的属性和元数据值。
+> 如果发现尚未填充存储资源的属性或元数据值，请检查代码是否调用了 FetchAttributes 或 FetchAttributesAsync 方法。
 >
-> 如果任何名称/值对包含非 ASCII 字符，将收到 `400 Bad Request`。 元数据名称/值对是有效的 HTTP 标头，因此必须遵循控制 HTTP 标头的所有限制。 因此，对于包含非 ASCII 字符的名称和值，建议使用 URL 编码或 Base64 编码。
+> 元数据名称/值对仅可包含 ASCII 字符。 元数据名称/值对是有效的 HTTP 标头，因此必须遵循控制 HTTP 标头的所有限制。 对于包含非 ASCII 字符的名称和值，建议使用 URL 编码或 Base64 编码。
 >
 
 ## <a name="setting-and-retrieving-properties"></a>设置和检索属性
@@ -67,7 +67,7 @@ Console.WriteLine();
 ```
 
 ## <a name="setting-and-retrieving-metadata"></a>设置和检索元数据
-可以在 Blob 或容器资源上指定元数据作为一个或多个名称/值对。 要设置元数据，请将名称/值对添加到资源上的 **Metadata** 集合，然后调用 **SetMetadata** 方法以将值保存到服务。
+可以在 Blob 或容器资源上指定元数据作为一个或多个名称/值对。 要设置元数据，请将名称/值对添加到资源上的 Metadata 集合，然后调用 SetMetadata 或 SetMetadataAsync 方法以将值保存到服务。
 
 > [!NOTE]
 > 元数据的名称必须符合 C# 标识符命名约定。
@@ -88,7 +88,7 @@ public static async Task AddContainerMetadataAsync(CloudBlobContainer container)
 }
 ```
 
-要检索元数据，请对 blob 或容器调用 **FetchAttributes** 方法以填充 **Metadata** 集合，并读取值，如下面的示例所示。
+要检索元数据，请对 blob 或容器调用 FetchAttributes 或 FetchAttributesAsync 方法以填充 Metadata 集合，然后读取值，如下面的示例所示。
 
 ```csharp
 public static async Task ListContainerMetadataAsync(CloudBlobContainer container)

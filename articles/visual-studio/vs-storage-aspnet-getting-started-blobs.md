@@ -11,12 +11,12 @@ ms.workload: azure
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: ghogen
-ms.openlocfilehash: 55b083ac5384e749098338d2f3b7b24bfe16fe8f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fd13dc94e0199aac04ae86aaf003ea9a70fa50d5
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38696559"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070549"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet"></a>开始使用 Azure Blob 存储和 Visual Studio 连接服务 (ASP.NET)
 
@@ -135,11 +135,11 @@ Blob 容器是由 Blob 和文件夹组成的嵌套式层次结构。 本文档�
 
 1. 在**解决方案资源管理器**中，右键单击“视图”文件夹。
 
-2. 从上下文菜单中，选择“添加” > “新建文件夹”。 将新文件夹命名为 *Blobs*。 
+1. 如果没有 Blob 文件夹，则创建一个。 从上下文菜单中，选择“添加” > “新建文件夹”。 将新文件夹命名为 *Blobs*。 
  
 1. 在**解决方案资源管理器**中，展开“视图”文件夹并右键单击“Blob”。
 
-4. 从上下文菜单中，选择“添加” > “视图”。
+1. 从上下文菜单中，选择“添加” > “视图”。
 
 1. 在“添加视图”对话框中，输入 **CreateBlobContainer** 作为视图名称，并选择“添加”。
 

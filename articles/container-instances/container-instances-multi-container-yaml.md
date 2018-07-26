@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 07/17/2018
 ms.author: marsma
-ms.openlocfilehash: 5dfee15e978d2dba0f50d1dc4b78953698389950
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 1d1885112b8e7f7b1e187073c86d561eb57fd23f
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34851075"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114457"
 ---
 # <a name="deploy-a-multi-container-container-group-with-yaml"></a>使用 YAML 部署多容器容器组
 
@@ -35,7 +35,7 @@ Azure 容器实例支持使用[容器组](container-instances-container-groups.m
 
 首先将以下 YAML 复制到一个名为 **deploy-aci.yaml** 的新文件中。
 
-该 YAML 文件定义了一个容器组，其中包含两个容器、一个公用 IP 地址和两个公开的端口。 该组中的第一个容器运行面向 Internet 的 Web 应用程序。 第二个容器 sidecar 定期通过容器组的本地网络向在第一个容器中运行的 Web 应用程序发出 HTTP 请求。
+此 YAML 文件定义了一个名为“myContainerGroup”的容器组，其中包含两个容器、一个公共 IP 地址和两个公开端口。 该组中的第一个容器运行面向 Internet 的 Web 应用程序。 第二个容器 sidecar 定期通过容器组的本地网络向在第一个容器中运行的 Web 应用程序发出 HTTP 请求。
 
 ```YAML
 apiVersion: 2018-06-01
@@ -83,7 +83,7 @@ az group create --name myResourceGroup --location eastus
 使用 [az container create][az-container-create] 命令部署容器组并传递 YAML 文件作为参数：
 
 ```azurecli-interactive
-az container create --resource-group myResourceGroup --name myContainerGroup -f deploy-aci.yaml
+az container create --resource-group myResourceGroup --file deploy-aci.yaml
 ```
 
 将在几秒钟内收到来自 Azure 的初始响应。
@@ -200,14 +200,15 @@ type: Microsoft.ContainerInstance/containerGroups
 通过发出以下 [az container export][az-container-export] 命令导出之前创建的容器组的配置：
 
 ```azurecli-interactive
-az container export --resource-group rg604 --name myContainerGroup --file deployed-aci.yaml
+az container export --resource-group myResourceGroup --name myContainerGroup --file deployed-aci.yaml
 ```
 
 如果命令成功，则不会显示输出，但可以查看文件的内容来查看结果。 例如，通过 `head` 查看前几行：
 
 ```console
 $ head deployed-aci.yaml
-apiVersion: 2018-02-01-preview
+additional_properties: {}
+apiVersion: '2018-06-01'
 location: eastus
 name: myContainerGroup
 properties:
@@ -216,11 +217,7 @@ properties:
     properties:
       environmentVariables: []
       image: microsoft/aci-helloworld:latest
-      ports:
 ```
-
-> [!NOTE]
-> 从 Azure CLI 版本 2.0.34 开始，有一个[已知问题][cli-issue-6525]：导出的容器组指定了一个较旧的 API 版本 **2018-02-01-preview**（参见前面的 JSON 输出示例）。 如果要使用导出的 YAML 文件重新部署，可以放心地将导出的 YAML 文件中的 `apiVersion` 值更新为 **2018-06-01**。
 
 ## <a name="next-steps"></a>后续步骤
 

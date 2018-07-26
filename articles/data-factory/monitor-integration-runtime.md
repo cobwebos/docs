@@ -4,21 +4,21 @@ description: 了解如何在 Azure 数据工厂中监视不同类型的集成运
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
-manager: ''
+manager: craigg
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/23/2017
+ms.date: 07/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 523d50623257d3944342cb174174e27bd4731248
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 4da9696761747874395ec90cb3b446e3621650ba
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045239"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113251"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中监视集成运行时  
 **集成运行时**是 Azure 数据工厂用于在不同的网络环境之间提供多种数据集成功能的计算基础结构。 数据工厂提供三种类型的集成运行时：
@@ -41,7 +41,7 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 ### <a name="properties"></a>属性
 下表说明该 cmdlet 针对 Azure 集成运行时返回的属性：
 
-| 属性 | 说明 |
+| 属性 | Description |
 -------- | ------------- | 
 | 名称 | Azure 集成运行时的名称。 |  
 | State | Azure 集成运行时的状态。 | 
@@ -68,7 +68,7 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 
 下表提供了**每个节点**的监视属性的说明：
 
-| 属性 | 说明 | 
+| 属性 | Description | 
 | -------- | ----------- | 
 | 名称 | 自承载集成运行时的名称及其关联的节点。 节点是装有自承载集成运行时的本地 Windows 计算机。 |  
 | 状态 | 整个自承载集成运行时和每个节点的状态。 示例：联机/脱机/受限等。有关这些状态的信息，请参阅下一个部分。 | 
@@ -84,7 +84,7 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 ### <a name="status-per-node"></a>状态（每个节点）
 下表提供了自承载集成运行时节点的可能状态：
 
-| 状态 | 说明 |
+| 状态 | Description |
 | ------ | ------------------ | 
 | 联机 | 节点已连接到数据工厂服务。 |
 | 脱机 | 节点处于脱机状态。 |
@@ -97,7 +97,7 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 ### <a name="status-overall-self-hosted-integration-runtime"></a>状态（整个自承载集成运行时）
 下表提供了自承载集成运行时的可能状态： 此状态取决于属于运行时的所有节点的状态。 
 
-| 状态 | 说明 |
+| 状态 | Description |
 | ------ | ----------- | 
 | 需要注册 | 尚未将任何节点注册到此自承载集成运行时。 |
 | 联机 | 所有节点处于联机状态。 |
@@ -149,7 +149,7 @@ Azure-SSIS 集成运行时是完全托管的 Azure 虚拟机（或节点）群�
 
 ### <a name="properties"></a>属性
 
-| 属性/状态 | 说明 |
+| 属性/状态 | Description |
 | --------------- | ----------- |
 | CreateTime | Azure-SSIS 集成运行时的创建时间（UTC 时间）。 |
 | Nodes | Azure-SSIS 集成运行时的已分配/可用节点、特定于节点的状态 (starting/available/recycling/unavailable) 和可采取措施的错误。 |
@@ -171,12 +171,12 @@ Azure-SSIS 集成运行时是完全托管的 Azure 虚拟机（或节点）群�
 | ResourceGroupName | 在其中创建了数据工厂和 Azure-SSIS 集成运行时的 Azure 资源组的名称。 |
 | DataFactoryName | Azure 数据工厂的名称。 |
 | 名称 | Azure-SSIS 集成运行时的名称。 |
-| 说明 | Azure-SSIS 集成运行时的说明。 |
+| Description | Azure-SSIS 集成运行时的说明。 |
 
   
 ### <a name="status-per-node"></a>状态（每个节点）
 
-| 状态 | 说明 |
+| 状态 | Description |
 | ------ | ----------- | 
 | 正在启动 | 正在准备此节点。 |
 | 可用 | 此节点已准备就绪，可在其中部署/执行 SSIS 包。 |
@@ -185,13 +185,31 @@ Azure-SSIS 集成运行时是完全托管的 Azure 虚拟机（或节点）群�
 
 ### <a name="status-overall-azure-ssis-integration-runtime"></a>状态（整个 Azure-SSIS 集成运行时）
 
-| 总体状态 | 说明 | 
+| 总体状态 | Description | 
 | -------------- | ----------- | 
 | Initial | 尚未分配/准备 Azure-SSIS 集成运行时的节点。 | 
 | 正在启动 | 正在分配/准备 Azure-SSIS 集成运行时的节点，计费已开始。 |
 | 已启动 | 已分配/准备 Azure-SSIS 集成运行时的节点，并可以在其中部署/执行 SSIS 包。 |
 | 正在停止  | 正在释放 Azure-SSIS 集成运行时的节点。 |
 | 已停止 | 已释放 Azure-SSIS 集成运行时的节点，计费已停止。 |
+
+### <a name="monitor-the-azure-ssis-integration-runtime-in-the-azure-portal"></a>在 Azure 门户中监视 Azure-SSIS 集成运行时
+
+以下屏幕截图显示了如何选择要监视的 Azure-SSIS IR，并提供显示的信息的示例。
+
+![选择要监视的 Azure-SSIS 集成运行时](media/monitor-integration-runtime/monitor-azure-ssis-ir-image1.png)
+
+![查看有关 Azure-SSIS 集成运行时的信息](media/monitor-integration-runtime/monitor-azure-ssis-ir-image2.png)
+
+### <a name="monitor-the-azure-ssis-integration-runtime-with-powershell"></a>使用 PowerShell 监视 Azure-SSIS 集成运行时
+
+使用类似以下示例的脚本来检查 Azure-SSIS IR 的状态。
+
+```powershell
+Get-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Status
+```
+
+### <a name="more-info-about-the-azure-ssis-integration-runtime"></a>有关 Azure-SSIS 集成运行时的详细信息
 
 请参阅以下文章了解有关 Azure-SSIS 集成运行时的详细信息：
 

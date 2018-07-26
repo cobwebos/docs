@@ -7,16 +7,21 @@ author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 07/16/2018
 ms.author: sstein
-ms.openlocfilehash: 4f12c3353ca4949b3c1c031420ec5a0b8fdb2dbf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8b03d228464978995a7a97e2f245b629b52ed812
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649146"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092794"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>弹性数据库作业入门
+
+
+[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
+
+
 使用 Azure SQL 数据库的弹性数据库作业（预览版），可以跨多个数据库可靠执行 T-SQL 脚本，同时自动重试并提供最终完成保证。 有关弹性数据库作业功能的详细信息，请参阅[弹性作业](sql-database-elastic-jobs-overview.md)。
 
 本文对[弹性数据库工具入门](sql-database-elastic-scale-get-started.md)中的示例进行了扩展。 完成本主题后，将学会如何创建和管理用于管理一组相关数据库的作业。 无需使用弹性缩放工具即可利用弹性作业的优势。
@@ -461,7 +466,7 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
 现在，可以使用 Excel 的数据功能。 使用包含服务器名称、数据库名称和凭据的连接字符串，将 BI 和数据集成工具连接到弹性查询数据库。 请确保支持将 SQL Server 用作工具的数据源。 参考弹性查询数据库和外部表，就如同将要与工具连接的任何其他 SQL Server 数据库和 SQL Server 表。
 
 ### <a name="cost"></a>成本
-使用弹性数据库查询功能不会产生额外的费用。 但是，目前此功能只能在作为终结点的高级和业务关键（预览）数据库和弹性池上使用，但分片可以属于任何服务层。
+使用弹性数据库查询功能不会产生额外的费用。 但是，目前此功能只能在作为终结点的高级和业务关键数据库和弹性池上使用，但分片可以属于任何服务层。
 
 有关价格信息，请参阅 [SQL 数据库定价详细信息](https://azure.microsoft.com/pricing/details/sql-database/)。
 

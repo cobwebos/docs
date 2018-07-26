@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance-reports
-ms.date: 06/29/2018
+ms.date: 07/18/2018
 ms.author: rolyon
-ms.openlocfilehash: 7833c9da2303d119f0cb421f21bea455ab449898
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: b1a11fdb685b8b4e5c513931269c479506d943a0
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856410"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136649"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory 使用条款功能
 组织可以通过 Azure AD 使用条款这种简单的方法向最终用户显示信息。 可以通过这样的呈现方式确保用户看到法律要求或符合性要求的相关免责声明。 本文介绍如何开始使用 Azure AD 使用条款。
@@ -86,7 +86,7 @@ Azure AD 使用条款使用 PDF 格式显示内容。 此 PDF 文件可以是任
 
     ![添加 TOU](media/active-directory-tou/create-tou.png)
 
-## <a name="view-who-has-accepted-and-declined"></a>查看接受的和拒绝的用户
+## <a name="view-report-of-who-has-accepted-and-declined"></a>查看接受用户和拒绝用户的报告
 “使用条款”边栏选项卡会显示接受用户和拒绝用户的计数。 在使用条款有效期内，会存储这些计数以及接受用户/拒绝用户。
 
 1. 在 [https://aka.ms/catou](https://aka.ms/catou) 登录到 Azure 并导航到“使用条款”。
@@ -97,10 +97,10 @@ Azure AD 使用条款使用 PDF 格式显示内容。 此 PDF 文件可以是任
 
     ![审核事件](media/active-directory-tou/accepted-tou.png)
 
-## <a name="view-audit-logs"></a>查看审核日志
+## <a name="view-azure-ad-audit-logs"></a>查看 Azure AD 审核日志
 Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次用户许可都会在存储时间为 30 天的审核日志中触发一个事件。 可以在门户中查看这些日志，或者将其下载为 .csv 文件。
 
-若要开始使用审核日志，请执行以下过程：
+若要开始使用 Azure AD 审核日志，请执行以下过程：
 
 1. 在 [https://aka.ms/catou](https://aka.ms/catou) 登录到 Azure 并导航到“使用条款”。
 
@@ -167,10 +167,19 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 ## <a name="frequently-asked-questions"></a>常见问题
 
 **问：如何查看用户何时/是否接受了使用条款？**</br>
-答：在“使用条款”边栏选项卡中单击“已接受”下的数字。 还可在审核日志中查看或搜索接受活动。 有关详细信息，请参阅[查看接受的和拒绝的用户](#view-who-has-accepted-and-declined)以及[查看审核日志](#view-audit-logs)。
+答：在“使用条款”边栏选项卡中单击“已接受”下的数字。 也可在 Azure AD 审核日志中查看或搜索接受活动。 有关详细信息，请参阅[查看接受用户和拒绝用户的报告](#view-who-has-accepted-and-declined)以及[查看 Azure AD 审核日志](#view-azure-ad-audit-logs)。
+ 
+**问：信息的存储时间为多长？**</br>
+答：使用条款报告中的用户计数以及接受用户/拒绝用户的存储时间为使用条款有效期。 Azure AD 审核日志的存储时间为 30 天。
+
+**问：为什么我在使用条款报告与 Azure AD 审核日志中看到的同意数量不同？**</br>
+答：使用条款报告的存储时间为该使用条款的有效期，而 Azure AD 审核日志的存储时间为 30 天。 此外，使用条款报告仅显示用户当前的同意状态。 例如，如果用户拒绝然后接受，则使用条款报告仅显示该用户的接受。 如果需要查看历史记录，可以使用 Azure AD 审核日志。
 
 **问：更改使用条款的条款后，是否需要用户重新接受该条款？**</br>
 答：是的，管理员可以更改使用条款的条款，这需要用户重新接受新的条款。
+
+**问：如果使用条款 PDF 文档中有超链接，最终用户能否单击这些超链接？**</br>
+答：该 PDF 默认呈现为 JPEG，因此无法单击超链接。 用户可以选择“查看时遇到问题? 请单击此处”**，以本机方式呈现该 PDF（支持超链接）**。
 
 **问：使用条款是否支持多种语言？**</br>
 答：是的。  目前，管理员可以为单个使用条款配置 18 种不同的语言。 
@@ -189,6 +198,7 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
  
 **问：是否可以取消接受以前接受的使用条款？**</br>
 答：可以[查看以前接受的使用条款](#how-users-can-review-their-terms-of-use)，但目前没有办法取消接受。
- 
-**问：信息的存储时间为多长？**</br>
-答：在使用条款有效期内，会存储用户计数以及接受用户/拒绝用户。 审核日志存储 30 天。
+
+## <a name="next-steps"></a>后续步骤
+
+- [Azure Active Directory 中条件访问的最佳做法](active-directory-conditional-access-best-practices.md)

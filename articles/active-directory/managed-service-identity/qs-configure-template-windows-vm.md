@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: d8490dcba35cfeabb3da589f3d079571d5e98d3b
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 7acbef216c182e5de80515258841af59d9529908
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969198"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114873"
 ---
 # <a name="configure-a-vm-managed-service-identity-by-using-a-template"></a>使用模板配置 VM 托管服务标识
 
@@ -59,7 +59,7 @@ ms.locfileid: "38969198"
    > 此示例假定变量（如 `vmName`、`storageAccountName` 和 `nicName`）已在模板中定义。
    >
 
-   ![模板的屏幕截图 - 查找 VM](../media/msi-qs-configure-template-windows-vm/template-file-before.png) 
+   ![模板的屏幕截图 - 查找 VM](../managed-service-identity/media/msi-qs-configure-template-windows-vm/template-file-before.png) 
 
 3. 若要启用系统分配标识，请在与 `"type": "Microsoft.Compute/virtualMachines"` 属性相同的级别添加 `"identity"` 属性。 使用以下语法：
 
@@ -99,7 +99,7 @@ ms.locfileid: "38969198"
 
 5. 完成后，模板应当类似于以下示例：
 
-   ![更新后的模板的屏幕截图](../media/msi-qs-configure-template-windows-vm/template-file-after.png)
+   ![更新后的模板的屏幕截图](../managed-service-identity/media/msi-qs-configure-template-windows-vm/template-file-after.png)
 
 ### <a name="assign-a-role-the-vms-system-assigned-identity"></a>向 VM 的系统分配的标识分配一个角色
 
@@ -174,6 +174,10 @@ ms.locfileid: "38969198"
  ### <a name="assign-a-user-assigned-identity-to-an-azure-vm"></a>向 Azure VM 分配用户分配标识
 
 1. 在 `resources` 元素下添加以下条目，以向 VM 分配用户分配标识。  请务必将 `<USERASSIGNEDIDENTITY>` 替换为你创建的用户分配标识的名称。
+   
+   > [!Important]
+   > 以下示例中显示的 `<USERASSIGNEDIDENTITYNAME>` 值必须存储在变量中。  此外，对于当前支持的实现（在资源管理器模板中将用户分配的标识分配给虚拟机），API 版本必须与以下示例中的版本匹配。
+    
     ```json
     {
         "apiVersion": "2017-12-01",

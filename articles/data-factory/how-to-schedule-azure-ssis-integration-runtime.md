@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 06/01/2018
+ms.date: 07/16/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 3758b04fc9b5ecd5dc69c82a8bd07999a9f1074a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: f83715d2a382db271686210d9df285c255c09216
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050601"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113971"
 ---
 # <a name="how-to-start-and-stop-the-azure-ssis-integration-runtime-on-a-schedule"></a>如何按计划启动和停止 Azure SSIS 集成运行时
 本文介绍如何使用 Azure 自动化和 Azure 数据工厂来计划 Azure SSIS 集成运行时 (IR) 的启动和停止。 运行 Azure SSIS (SQL Server Integration Services) 集成运行时 (IR) 会产生相关的费用。 因此我们通常希望，只有需要在 Azure 中运行 SSIS 包时才运行 IR，在不需要该包时停止 IR。 可以使用数据工厂 UI 或 Azure PowerShell 来[手动启动或停止 Azure SSIS IR](manage-azure-ssis-integration-runtime.md)。
@@ -373,15 +373,40 @@ ms.locfileid: "37050601"
 5. 在左窗格中选择“全部发布”，将解决方案发布到数据工厂。 
 
     ![全部发布](./media/how-to-schedule-azure-ssis-integration-runtime/publish-all.png)
-6. 若要监视触发器运行和管道运行，请使用左侧的“监视”选项卡。 有关详细步骤，请参阅[监视管道](quickstart-create-data-factory-portal.md#monitor-the-pipeline)。
+
+### <a name="monitor-the-pipeline-and-trigger-in-the-azure-portal"></a>监视 Azure 门户中的管道和触发器
+
+1. 若要监视触发器运行和管道运行，请使用左侧的“监视”选项卡。 有关详细步骤，请参阅[监视管道](quickstart-create-data-factory-portal.md#monitor-the-pipeline)。
 
     ![管道运行](./media/how-to-schedule-azure-ssis-integration-runtime/pipeline-runs.png)
-7. 若要查看与管道运行关联的活动运行，请在“操作”列中选择第一个链接（“查看活动运行”）。 可以看到与管道中每个活动关联的三个活动运行（第一个“Web”活动、“存储过程”活动和第二个“Web”活动）。 若要切换回到管道运行视图，请选择顶部的“管道”链接。
+2. 若要查看与管道运行关联的活动运行，请在“操作”列中选择第一个链接（“查看活动运行”）。 可以看到与管道中每个活动关联的三个活动运行（第一个“Web”活动、“存储过程”活动和第二个“Web”活动）。 若要切换回到管道运行视图，请选择顶部的“管道”链接。
 
     ![活动运行](./media/how-to-schedule-azure-ssis-integration-runtime/activity-runs.png)
-8. 还可以通过在顶部“管道运行”旁边的下拉列表中选择“触发器运行”，来查看触发器运行。 
+3. 还可以通过在顶部“管道运行”旁边的下拉列表中选择“触发器运行”，来查看触发器运行。 
 
     ![触发器运行](./media/how-to-schedule-azure-ssis-integration-runtime/trigger-runs.png)
+
+### <a name="monitor-the-pipeline-and-trigger-with-powershell"></a>使用 PowerShell 监视管道和触发器
+
+使用如下示例脚本来监视管道和触发器。
+
+1. 获取管道运行的状态。
+
+  ```powershell
+  Get-AzureRmDataFactoryV2PipelineRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $myPipelineRun
+  ```
+
+2. 获取有关触发器的信息。
+
+  ```powershell
+  Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name  "myTrigger"
+  ```
+
+3. 获取触发器运行的状态。
+
+  ```powershell
+  Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "myTrigger" -TriggerRunStartedAfter "2018-07-15" -TriggerRunStartedBefore "2018-07-16"
+  ```
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下博客文章：

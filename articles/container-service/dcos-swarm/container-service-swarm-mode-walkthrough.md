@@ -6,15 +6,15 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
-ms.openlocfilehash: 46e93953ba8db141b99b14aa78674e85b343adbc
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 4a592a20d009b269f1e8f7079311caa4c33cf613
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903377"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113100"
 ---
 # <a name="deploy-docker-ce-cluster"></a>部署 Docker CE 群集
 
@@ -30,10 +30,10 @@ Azure 容器服务上的 Docker CE 为预览版，不应用于生产工作负荷
 
 使用 [az group create](/cli/azure/group#az_group_create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑组。
 
-以下示例在“ukwest”位置创建名为“myResourceGroup”的资源组。
+以下示例在 westus2 位置创建名为 myResourceGroup 的资源组。
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location ukwest
+az group create --name myResourceGroup --location westus2
 ```
 
 输出：
@@ -41,7 +41,7 @@ az group create --name myResourceGroup --location ukwest
 ```json
 {
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup",
-  "location": "ukwest",
+  "location": "westus2",
   "managedBy": null,
   "name": "myResourceGroup",
   "properties": {
@@ -53,12 +53,12 @@ az group create --name myResourceGroup --location ukwest
 
 ## <a name="create-docker-swarm-cluster"></a>创建 Docker Swarm 群集
 
-使用 [az acs create](/cli/azure/acs#az_acs_create) 命令在 Azure 容器服务中创建 Docker CE 群集。 
+使用 [az acs create](/cli/azure/acs#az_acs_create) 命令在 Azure 容器服务中创建 Docker CE 群集。 有关 Docker CE 区域可用性的信息，请访问 [Docker CE 的 ACS 区域](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md)
 
 以下示例创建名为 mySwarmCluster 的群集，其中包含一个 Linux 主节点和三个 Linux 代理节点。
 
 ```azurecli-interactive
-az acs create --name mySwarmCluster --orchestrator-type swarm --resource-group myResourceGroup --generate-ssh-keys
+az acs create --name mySwarmCluster --orchestrator-type dockerce --resource-group myResourceGroup --generate-ssh-keys
 ```
 
 在某些情况下（如限时试用），Azure 订阅对 Azure 资源的访问受限。 如果由于可用核心有限而导致部署失败，请将 `--agent-count 1` 添加到 [az acs creat](/cli/azure/acs#az_acs_create) 命令中，以减少默认代理计数。 

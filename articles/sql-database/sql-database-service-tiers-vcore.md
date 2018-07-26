@@ -1,20 +1,20 @@
 ---
 title: Azure SQL 数据库服务 - vCore | Microsoft 文档
-description: 使用基于 vCore 的购买模型（预览版），可以单独缩放计算和存储资源，匹配本地性能，以及优化价格。
+description: 使用基于 vCore 的购买模型，可以单独缩放计算和存储资源，匹配本地性能，以及优化价格。
 services: sql-database
 author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 07/23/2018
+ms.date: 07/16/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: dec995d0b9177e4fb88c836c3ea0fef25a3b3ba3
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: d18076486704d5f03acd2253650762c3bd24b0af
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859929"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091486"
 ---
 # <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>选择 vCore 服务层、计算、内存、存储和 IO 资源
 
@@ -30,11 +30,9 @@ ms.locfileid: "37859929"
 |存储|高级远程存储，5 GB – 4 TB|本地 SSD 存储，5 GB – 4 TB|
 |IO 吞吐量（近似）|每个 vCore 提供 500 IOPS，最大 7000 IOPS|每个 vCore 提供 5000 IOPS，最大 200000 IOPS|
 |可用性|1 个副本，无读取缩放组|3 个副本，1 个[读取缩放](sql-database-read-scale-out.md)组，区域冗余高可用性|
-|备份|RA-GRS，7-35 天（默认为 7 天）|RA-GRS，7-35 天（默认为 7 天）*|
+|备份|RA-GRS，7-35 天（默认为 7 天）|RA-GRS，7-35 天（默认为 7 天）|
 |内存中|不适用|支持|
 |||
-
-\* 在预览期，备份保留期不可配置，固定为 7 天。
 
 > [!IMPORTANT]
 > 如果所需的计算容量 vCore 数不超过一个，请使用基于 DTU 的购买模型。
@@ -68,7 +66,7 @@ ms.locfileid: "37859929"
 
 ## <a name="azure-hybrid-use-benefit"></a>Azure 混合使用权益
 
-在基于 vCore 的购买模型（预览版）中，可以使用[面向 SQL Server 的 Azure 混合使用权益](../virtual-machines/windows/hybrid-use-benefit-licensing.md)交换现有许可证，以获得 SQL 数据库的折扣价格。 借助这项 Azure 权益，可以使用附带软件保障的本地 SQL Server 许可证，将 Azure SQL 数据库的成本最多节省 30%。
+在基于 vCore 的购买模型中，可以使用[面向 SQL Server 的 Azure 混合使用权益](../virtual-machines/windows/hybrid-use-benefit-licensing.md)交换现有许可证，以获得 SQL 数据库的折扣价格。 借助这项 Azure 权益，可以使用附带软件保障的本地 SQL Server 许可证，将 Azure SQL 数据库的成本最多节省 30%。
 
 ![定价](./media/sql-database-service-tiers/pricing.png)
 

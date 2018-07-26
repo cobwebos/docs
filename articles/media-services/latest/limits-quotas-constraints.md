@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 06/13/2018
+ms.date: 07/17/2018
 ms.author: juliako
-ms.openlocfilehash: 14779306815681c368a98d698a6688d528a6c747
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: b50ba825f675c84f551f9a1d191aa93eaed9a628
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294023"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070840"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Azure 媒体服务 v3 中的配额和限制
 
@@ -25,6 +25,7 @@ ms.locfileid: "36294023"
 | 资源 | 默认限制 | 
 | --- | --- | 
 | 每个 Azure 媒体服务帐户的资产数 | 1,000,000|
+| 动态清单筛选器|100|
 | 每个作业的 JobInputs | 50（固定）|
 | 每个作业的 JobOutput 数/转换中的 TransformOutput 数 | 20（固定） |
 | 每个 JobInput 的文件数|10（固定）|
@@ -34,13 +35,13 @@ ms.locfileid: "36294023"
 | 列出作业数|对响应进行分页，每页 500 个作业|
 | 每个媒体服务帐户的 LiveEvents |5|
 | 单个订阅中的媒体服务帐户数 | 25（固定） |
-| StreamingPolicies | 1,000,000<sup>(3)</sup> |
 | 每个 LiveEvent 处于运行状态的 LiveOutputs |3|
 | 每个 LiveEvent 处于已停止状态的 LiveOutputs |50|
 | 存储帐户 | 100<sup>(4)</sup>（固定） |
 | 每个媒体服务帐户处于运行状态的流式处理终结点数|2|
+| StreamingPolicies | 100 <sup>(3)</sup> |
 | 每个媒体服务帐户的转换数 | 100（固定）|
-| 一次与一个资产关联的唯一 StreamingLocators | 20<sup>(5)</sup> |
+| 一次与一个资产关联的唯一 StreamingLocators | 100<sup>(5)</sup>（固定） |
 
 <sup>1</sup> 在 Azure Blob 存储中，单个 Blob 目前支持的最大大小为 5 TB。 但是，Azure 媒体服务会根据服务使用的 VM 大小应用其他限制。 如果源文件大于 260 GB，作业可能会失败。 如果你有 4K 内容（超过了 260 GB 的限制），请通过 amshelp@microsoft.com 联系我们，我们会提供可能的缓解措施来支持你的方案。
 

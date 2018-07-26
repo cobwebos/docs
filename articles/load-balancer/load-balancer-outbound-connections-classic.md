@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/09/2018
+ms.date: 07/13/2018
 ms.author: kumud
-ms.openlocfilehash: f6452d8f88b91fe0cbf144ce951b84ba4cec0047
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: bd446923f84d22537b7a49a8ef6124f343141d73
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33939815"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069904"
 ---
 # <a name="outbound-connections-classic"></a>出站连接（经典）
 
@@ -38,7 +38,7 @@ Azure 使用源网络地址转换 (SNAT) 来执行此功能。 当多个专用 I
 
 Azure 提供三种不同的方法来实现出站连接经典部署。  并非所有经典部署都可使用这三种方案：
 
-| 场景 | 方法 | IP 协议 | 说明 | Web 辅助角色 | IaaS | 
+| 场景 | 方法 | IP 协议 | Description | Web 辅助角色 | IaaS | 
 | --- | --- | --- | --- | --- | --- |
 | [1.具有实例级公共 IP 地址的 VM](#ilpip) | SNAT，不使用端口伪装 | TCP、UDP、ICMP、ESP | Azure 使用分配了公共 IP 的虚拟机。 此实例具有所有可用的临时端口。 | 否 | 是 |
 | [2. 公共负载均衡终结点](#publiclbendpoint) | 使用端口伪装 (PAT) 通过 SNAT 连接到公共终结点 | TCP、UDP | Azure 与多个专用终结点共享公共 IP 地址公共终结点。 Azure 使用公共终结点的临时端口进行 PAT。 | 是 | 是 |
@@ -121,6 +121,8 @@ SNAT 端口是根据[了解 SNAT 和 PAT](#snat) 部分中所述预先分配的�
 更改部署大小可能会影响建立的某些流。 如果后端池大小递增并转换为下一层，则在转换为下一个更大的后端池层期间，一半的预先分配 SNAT 端口将被回收。 与回收的 SNAT 端口关联的流会超时，必须重新建立连接。 如果尝试新流，则只要预先分配的端口可用，则该流就能立即成功。
 
 如果部署减小并转换到更低的层，可用的 SNAT 端口数会增多。 在这种情况下，现有的分配 SNAT 端口及其相应的流不会受到影响。
+
+如果重新部署或更改云服务，则基础结构可能会暂时报告后端池最多为实际大小的两倍，Azure 将转而为每个实例预分配比预期更少的 SNAT 端口。  这会暂时增加 SNAT 端口耗尽的可能性。 最终，池大小将转换为实际大小，Azure 将根据上表自动将预分配的 SNAT 端口增加到预期的数量。  此行为是设计使然，不可配置。
 
 SNAT 端口分配特定于 IP 传输协议（TCP 和 UDP 是分别维护的），并在以下条件下释放：
 

@@ -1,26 +1,21 @@
 ---
-title: Azure 订阅限制和配额 | Microsoft Docs
+title: Azure 订阅限制和配额
 description: 提供常见的 Azure 订阅和服务限制、配额和约束的列表。 这包括有关如何增加限制以及最大值的信息。
-services: ''
-documentationcenter: ''
+services: multiple
 author: rothja
 manager: jeffreyg
-editor: ''
 tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 07/13/2018
 ms.author: byvinyal
-ms.openlocfilehash: 1d67266bf599a4dc57fc2e9e0d1c5f9f2562346c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 8b023540f57cb69fc1d2773ef533364f64820359
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38610766"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069533"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间的推移，此列表将得以展开并更新，以便涵盖更多平台。
@@ -52,6 +47,8 @@ ms.locfileid: "38610766"
 * [Application Insights](#application-insights-limits)
 * [自动化](#automation-limits)
 * [Azure Cosmos DB](#azure-cosmos-db-limits)
+* [Azure Database for MySQL](#azure-database-for-mysql)
+* [Azure Database for PostgreSQL](#azure-database-for-postgresql)
 * [Azure 事件网格](#azure-event-grid-limits)
 * [Azure Maps](#azure-maps-limits)
 * [Azure Redis 缓存](#azure-redis-cache-limits)
@@ -69,6 +66,7 @@ ms.locfileid: "38610766"
 * [数据库迁移服务](#database-migration-service-limits)
 * [DNS](#dns-limits)
 * [事件中心](#event-hubs-limits)
+* [Azure 防火墙](#azure-firewall-limits)
 * [IoT 中心](#iot-hub-limits)
 * [IoT 中心设备预配服务](#iot-hub-device-provisioning-service-limits)
 * [Key Vault](#key-vault-limits)
@@ -153,6 +151,9 @@ ms.locfileid: "38610766"
 #### <a name="dns-limits"></a>DNS 限制
 [!INCLUDE [dns-limits](../includes/dns-limits.md)]
 
+#### <a name="azure-firewall-limits"></a>Azure 防火墙限制
+[!INCLUDE [azure-firewall-limits](../includes/firewall-limits.md)]
+
 ### <a name="storage-limits"></a>存储限制
 有关存储帐户限制的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](storage/common/storage-scalability-targets.md)。
 
@@ -215,6 +216,12 @@ ms.locfileid: "38610766"
 
 ### <a name="azure-cosmos-db-limits"></a>Azure Cosmos DB 限制
 Azure Cosmos DB 是全局缩放数据库，可对吞吐量和存储进行缩放，以处理应用程序的任何需求。 如果对 Azure Cosmos DB 提供的规模有任何问题，请发送电子邮件到 askcosmosdb@microsoft.com。
+
+### <a name="azure-database-for-mysql"></a>Azure Database for MySQL
+有关 Azure Database for MySQL 限制，请参阅 [Azure Database for MySQL 中的限制](mysql/concepts-limits.md)。
+
+### <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
+有关 Azure Database for PostgreSQL 限制，请参阅 [Azure Database for PostgreSQL 中的限制](postgresql/concepts-limits.md)。
 
 ### <a name="mobile-engagement-limits"></a>Mobile Engagement 限制
 [!INCLUDE [azure-mobile-engagement-limits](../includes/azure-mobile-engagement-limits.md)]

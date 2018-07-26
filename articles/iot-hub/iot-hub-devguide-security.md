@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/12/2018
+ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 43eb988915fb917923ab968d22b9b7f0ee36c0f5
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 754449dcf759820c8bb99d082c3a5ba2792f02c8
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444389"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126317"
 ---
 # <a name="control-access-to-iot-hub"></a>控制对 IoT 中心的访问
 
@@ -35,7 +35,7 @@ ms.locfileid: "37444389"
 
 可以通过以下方式授予[权限](#iot-hub-permissions)：
 
-* **IoT 中心级别的共享访问策略**。 共享访问策略可以授予任意[权限](#iot-hub-permissions)组合。 可以在 [Azure 门户][lnk-management-portal]中定义策略，或使用 [IoT 中心资源提供程序 REST API][lnk-resource-provider-apis] 以编程方式定义策略。 新建的 IoT 中心有以下默认策略：
+* **IoT 中心级别的共享访问策略**。 共享访问策略可以授予任意[权限](#iot-hub-permissions)组合。 可使用 [IoT 中心资源 REST API][lnk-resource-provider-apis] 或使用 [az iot 中心策略](https://docs.microsoft.com/cli/azure/iot/hub/policy?view=azure-cli-latest) CLI 以编程方式在 [Azure 门户][lnk-management-portal]中定义策略。 新建的 IoT 中心有以下默认策略：
   
   | 共享访问策略 | 权限 |
   | -------------------- | ----------- |
@@ -91,7 +91,9 @@ HTTPS 通过在 Authorization 请求标头中包含有效的令牌来实施身�
 
 用户名（DeviceId 区分大小写）：`iothubname.azure-devices.net/DeviceId`
 
-密码（使用[设备资源管理器][lnk-device-explorer]工具生成 SAS 令牌）：`SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
+密码（可使用[设备资源管理器][lnk-device-explorer]工具或 CLI 扩展命令 [az iot hub generate-sas-token](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token) 生成 SAS 令牌）：
+
+`SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
 > [!NOTE]
 > [Azure IoT SDK][lnk-sdks] 在连接到服务时自动生成令牌。 在某些情况下，Azure IoT SDK 不支持所有的协议或所有身份验证方法。
@@ -130,7 +132,7 @@ IoT 中心还允许设备使用 [X.509 证书][lnk-x509]向 IoT 中心进行身�
 
 以下是预期值：
 
-| 值 | 说明 |
+| 值 | Description |
 | --- | --- |
 | {signature} |HMAC-SHA256 签名字符串的格式为：`{URL-encoded-resourceURI} + "\n" + expiry`。 **重要说明**：密钥是从 base64 解码得出的，用作执行 HMAC-SHA256 计算的密钥。 |
 | {resourceURI} |此令牌可以访问的终结点的 URI 前缀（根据分段）以 IoT 中心的主机名开始（无协议）。 例如： `myHub.azure-devices.net/devices/device1` |
@@ -268,7 +270,7 @@ var token = generateSasToken(endpoint, deviceKey, null, 60);
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> 可使用 .NET [设备资源管理器][lnk-device-explorer]工具或基于 Python 的跨平台 [Azure CLI 2.0 IoT 扩展][lnk-IoT-extension-CLI-2.0] 命令行实用程序生成 SAS 令牌。
+> 可使用 .NET [设备资源管理器][lnk-device-explorer]工具、基于 Python 的跨平台 [Azure CLI 2.0 IoT 扩展][lnk-IoT-extension-CLI-2.0]命令行实用程序或[适用于 Visual Studio Code 的 Azure IoT Toolkit 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)生成 SAS 令牌。
 
 ### <a name="use-a-shared-access-policy"></a>使用共享访问策略
 
@@ -348,11 +350,13 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 设备可以使用 X.509 证书或安全令牌进行身份验证，但不能同时使用这两者。
 
-有关使用证书颁发机构进行身份验证的详细信息，请参阅 [对 X.509 CA 证书的概念性理解](iot-hub-x509ca-concept.md)。
+有关使用证书颁发机构进行身份验证的详细信息，请参阅[使用 X.509 CA 证书进行设备身份验证](iot-hub-x509ca-overview.md)。
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>为设备注册 X.509 证书
 
 [用于 C# 的 Azure IoT 服务 SDK][lnk-service-sdk]（版本 1.0.8+）支持注册使用 X.509 证书进行身份验证的设备。 其他 API（例如设备的导入/导出）也支持 X.509 证书。
+
+此外，还可使用 CLI 扩展命令 [az iot hub device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) 配置设备的 X.509 证书。
 
 ### <a name="c-support"></a>C\# 支持
 

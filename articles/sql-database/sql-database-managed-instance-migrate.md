@@ -9,14 +9,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 07/16/2018
 ms.author: bonova
-ms.openlocfilehash: 1015600343886333655a921f2e0944ebb676f3e6
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: e0de9a1494641fef87d11545b99e5e7275f6b614
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050120"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069257"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>将 SQL Server 实例迁移到 Azure SQL 数据库托管实例
 
@@ -91,7 +91,7 @@ SQL 数据库托管实例是现有 SQL 数据库服务的扩展，提供了第�
 
 还原从本地 SQL Server 或[虚拟机中的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) 创建的、在 [Azure 存储](https://azure.microsoft.com/services/storage/)中保存的本机备份（.bak 文件），是 SQL 数据库托管实例的重要功能之一，可以实现快速轻松的脱机数据库迁移。 
 
-下图从较高层面解释了该过程：
+下图高度概括了该过程：
 
 ![迁移流](./media/sql-database-managed-instance-migration/migration-flow.png)
 
@@ -105,7 +105,8 @@ SQL 数据库托管实例是现有 SQL 数据库服务的扩展，提供了第�
 |从 Azure 存储还原到托管实例|[使用 SAS CREDENTIAL 执行 RESTORE FROM URL](sql-database-managed-instance-restore-from-backup-tutorial.md)|
 
 > [!IMPORTANT]
-> 不支持还原系统数据库。 若要迁移实例级对象（存储在 master 或 msdb 数据库中），我们建议编写 T-SQL 脚本，并在目标实例上运行这些脚本。
+> - 使用本机还原选项将[透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption)保护的数据库迁移到 Azure SQL 托管实例时，需在还原数据库之前迁移本地或 IaaS SQL Server 中的相应证书。 有关详细步骤，请参阅[将 TDE 证书迁移到托管实例](sql-database-managed-instance-migrate-tde-certificate.md)
+> - 不支持还原系统数据库。 若要迁移实例级对象（存储在 master 或 msdb 数据库中），我们建议编写 T-SQL 脚本，并在目标实例上运行这些脚本。
 
 有关如何使用 SAS 凭据将数据库备份还原到托管实例的完整教程，请参阅[从备份还原到托管实例](sql-database-managed-instance-restore-from-backup-tutorial.md)。
 

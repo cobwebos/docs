@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 9f550af869ccfc44ba4d840f54503ad017cdaf95
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: ab3982c85cfb008bde08495f8cb8aa86d066d8c0
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901205"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114848"
 ---
 # <a name="configure-a-vmss-managed-service-identity-by-using-a-template"></a>使用模板配置 VMSS 托管服务标识
 
@@ -55,7 +55,7 @@ ms.locfileid: "37901205"
 
 1. 将模板加载到编辑器中，并在 `resources` 节中找到相关的 `Microsoft.Compute/virtualMachineScaleSets` 资源。 你的屏幕截图可能与下面的略有不同，具体取决于所使用的编辑器，以及编辑后的模板是用于新部署，还是用于现有部署。
    
-   ![模板的屏幕截图 - 查找 VM](../media/msi-qs-configure-template-windows-vmss/msi-arm-template-file-before-vmss.png) 
+   ![模板的屏幕截图 - 查找 VM](../managed-service-identity/media/msi-qs-configure-template-windows-vmss/msi-arm-template-file-before-vmss.png) 
 
 2. 若要启用系统分配标识，请在与 `"type": "Microsoft.Compute/virtualMachineScaleSets"` 属性相同的级别添加 `"identity"` 属性。 使用以下语法：
 
@@ -91,7 +91,7 @@ ms.locfileid: "37901205"
 
 4. 完成后，模板应当类似于以下示例：
 
-   ![更新后的模板的屏幕截图](../media/msi-qs-configure-template-windows-vmss/msi-arm-template-file-after-vmss.png) 
+   ![更新后的模板的屏幕截图](../managed-service-identity/media/msi-qs-configure-template-windows-vmss/msi-arm-template-file-after-vmss.png) 
 
 ### <a name="disable-a-system-assigned-identity-from-an-azure-virtual-machine-scale-set"></a>从 Azure 虚拟机规模集中禁用系统分配标识
 
@@ -113,6 +113,9 @@ ms.locfileid: "37901205"
 
 1. 在 `resources` 元素下添加以下条目，以向 VMSS 分配用户分配标识。  请务必将 `<USERASSIGNEDIDENTITY>` 替换为你创建的用户分配标识的名称。
 
+   > [!Important]
+   > 以下示例中显示的 `<USERASSIGNEDIDENTITYNAME>` 值必须存储在变量中。  此外，对于当前支持的实现（在资源管理器模板中将用户分配的标识分配给虚拟机），API 版本必须与以下示例中的版本匹配。 
+
     ```json
     {
         "name": "[variables('vmssName')]",
@@ -121,7 +124,7 @@ ms.locfileid: "37901205"
         "identity": {
             "type": "userAssigned",
             "identityIds": [
-                "[resourceID('Micrososft.ManagedIdentity/userAssignedIdentities/<USERASSIGNEDIDENTITY>)']"
+                "[resourceID('Micrososft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITY>'))]"
             ]
         }
 

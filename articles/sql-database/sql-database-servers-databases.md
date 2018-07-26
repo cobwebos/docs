@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 505fd88959feb1c84abc53c6435776a5c5b4123c
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: c96282b8163cc48001ee3c6fe89497e2793309f6
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309174"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091790"
 ---
 # <a name="azure-sql-database-logical-servers-and-single-databases-and-their-resources"></a>Azure SQL 数据库逻辑服务器和单一数据库及其资源
 
@@ -82,7 +82,7 @@ Microsoft Azure SQL 数据库支持表格格式数据流 (TDS) 协议客户端 7
   ![创建数据库 - 1](./media/sql-database-get-started-portal/create-database-1.png)
 
 > [!IMPORTANT]
-> 有关为数据库选择定价层的信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型（预览版）](sql-database-service-tiers-vcore.md)。
+> 有关为数据库选择定价层的信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
 
 要创建托管实例，请参阅[创建托管实例](sql-database-managed-instance-create-tutorial-portal.md)
 
@@ -95,7 +95,7 @@ Microsoft Azure SQL 数据库支持表格格式数据流 (TDS) 协议客户端 7
    ![服务器防火墙规则](./media/sql-database-get-started-portal/server-firewall-rule.png) 
 
 > [!IMPORTANT]
-> 要配置数据库的性能属性，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型（预览版）](sql-database-service-tiers-vcore.md)。
+> 要配置数据库的性能属性，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
 >
 
 > [!TIP]
@@ -106,7 +106,7 @@ Microsoft Azure SQL 数据库支持表格格式数据流 (TDS) 协议客户端 7
 
 若要使用 Azure PowerShell 创建并管理 Azure SQL 服务器、数据库和防火墙，请运行以下 PowerShell cmdlet。 如果需要安装或升级 PowerShell，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 若要创建并管理弹性池，请参阅[弹性池](sql-database-elastic-pool.md)。
 
-| Cmdlet | 说明 |
+| Cmdlet | Description |
 | --- | --- |
 |[New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase)|创建数据库 |
 |[Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)|获取一个或多个数据库|
@@ -131,7 +131,7 @@ Microsoft Azure SQL 数据库支持表格格式数据流 (TDS) 协议客户端 7
 
 若要使用 [Azure CLI](/cli/azure) 创建并管理 Azure SQL 服务器、数据库和防火墙，请运行 [Azure CLI SQL 数据库](/cli/azure/sql/db)命令。 使用 [Cloud Shell](/azure/cloud-shell/overview) 在浏览器中运行 CLI，或者在 macOS、Linux 或 Windows 上[安装](/cli/azure/install-azure-cli)它。 若要创建并管理弹性池，请参阅[弹性池](sql-database-elastic-pool.md)。
 
-| Cmdlet | 说明 |
+| Cmdlet | Description |
 | --- | --- |
 |[az sql db create](/cli/azure/sql/db#az_sql_db_create) |创建数据库|
 |[az sql db list](/cli/azure/sql/db#az_sql_db_list)|列出某台服务器中的所有数据库和数据仓库，或者列出弹性池中的所有数据库|
@@ -165,7 +165,7 @@ Microsoft Azure SQL 数据库支持表格格式数据流 (TDS) 协议客户端 7
 > 无法使用 Transact-SQL 创建或删除服务器。
 >
 
-| 命令 | 说明 |
+| 命令 | Description |
 | --- | --- |
 |[CREATE DATABASE（Azure SQL 数据库）](/sql/t-sql/statements/create-database-azure-sql-database)|新建数据库。 必须连接到 master 数据库，才能新建数据库。|
 | [ALTER DATABASE（Azure SQL 数据库）](/sql/t-sql/statements/alter-database-azure-sql-database) |修改 Azure SQL 数据库。 |
@@ -191,7 +191,7 @@ Microsoft Azure SQL 数据库支持表格格式数据流 (TDS) 协议客户端 7
 
 若要创建并管理 Azure SQL 服务器、数据库和防火墙，请使用以下 REST API 请求。
 
-| 命令 | 说明 |
+| 命令 | Description |
 | --- | --- |
 |[Servers - Create Or Update](/rest/api/sql/servers/createorupdate)|创建或更新新服务器。|
 |[Servers - Delete](/rest/api/sql/servers/delete)|删除 SQL Server。|

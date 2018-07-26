@@ -7,21 +7,21 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 2956dfab3b9c1e6e8de54648dae9d2be99788ac2
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 630ef13fbd64fac8c2a2a31e4174552e64aaa789
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309208"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092641"
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>优化 Azure SQL 数据库性能
 
 借助 Azure SQL 数据库提供的[建议](sql-database-advisor.md)，可以提升数据库性能，也可以让 Azure SQL 数据库[自动适应应用程序](sql-database-automatic-tuning.md)并应用更改来提升工作负载性能。
 
 如果没有任何适用的建议，但仍有性能问题，可以使用下列方法来提升性能：
-- 在[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)或[基于 vCore 的购买模型（预览版）](sql-database-service-tiers-vcore.md)中增加服务层，为数据库提供更多资源。
+- 在[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)或[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)中增加服务层，为数据库提供更多资源。
 - 优化应用程序，并应用一些可以提升性能的最佳做法。 
 - 通过更改索引和查询来优化数据库，以便更有效地处理数据。
 
@@ -29,18 +29,20 @@ ms.locfileid: "36309208"
 
 ## <a name="increasing-performance-tier-of-your-database"></a>增加数据库性能层
 
-Azure SQL 数据库提供了两种购买模型：即[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型（预览版）](sql-database-service-tiers-vcore.md)，你可以从中进行选择。 每个服务层可严格隔离 SQL 数据库可以使用的资源，并保证相应服务级别的可预测性能。 在本文中，我们将提供指南，帮助你选择应用程序的服务层。 另外，还会讨论如何优化应用程序以充分利用 Azure SQL 数据库。
+Azure SQL 数据库提供了两种可供选择的购买模型：[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。 每个服务层可严格隔离 SQL 数据库可以使用的资源，并保证相应服务级别的可预测性能。 本文指导用户为其应用程序选择服务层， 另外，还会讨论如何优化应用程序以充分利用 Azure SQL 数据库。
 
 > [!NOTE]
 > 本文侧重于 Azure SQL 数据库中单一数据库的性能指南。 有关弹性池的性能指南，请参阅[弹性池的价格和性能注意事项](sql-database-elastic-pool-guidance.md)。 不过，请注意，也可以将本文中的多项优化建议应用于弹性池中的数据库，获得类似的性能优势。
 > 
 
-* **基本**：基本服务层可以准确预测各个数据库的每小时性能。 在基本数据库中，足够的资源可支持不具有多个并发请求的小型数据库中的良好性能。 需要使用基本服务层的典型用例为：
+* 
+  **基本**：可以通过基本服务层按小时对每个数据库进行准确的性能预测。 在基本数据库中，足够的资源可支持不具有多个并发请求的小型数据库中的良好性能。 需要使用基本服务层的典型用例为：
   * **刚开始使用 Azure SQL 数据库**。 开发中的应用程序通常不需要高性能级别。 基本数据库是用于数据库开发或测试的理想环境，价位较低。
   * **数据库包含单个用户**。 将单个用户与某个数据库进行关联的应用程序通常在并发能力和性能方面不会有很高的要求。 这些应用程序是基本服务层的候选。
-* **标准**：标准服务层改进了性能预测，并能提升包含多个并发请求的数据库（如工作组和 Web 应用程序）的性能。 选择标准服务层数据库时，可以根据每分钟的可预测性能调整数据库应用程序的大小。
+* 
+  **标准**：标准服务层改进了存在多个并发请求的数据库（例如工作组和 Web 应用程序）的性能可预测性并为其提供了良好的性能。 选择标准服务层数据库时，可以根据每分钟的可预测性能调整数据库应用程序的大小。
   * **数据库具有多个并发请求**。 同时为多个用户服务的应用程序通常需要更高的性能级别。 例如，具有低到中等规模 IO 流量要求且支持多个并发查询的工作组或 Web 应用程序是标准服务层的最佳选择。
-* **高级**：高级服务层为每个高级或业务关键（预览）数据库提供每秒的可预测性能。 选择高级服务层时，可以根据该数据库的峰值负载调整数据库应用程序的大小。 该计划消除了在易受延迟影响操作中性能变动可导致小型查询耗时超出预期的情况。 对于需要明确表明最大资源需求、性能变动或查询延迟的应用程序，此模型可大大简化开发和产品验证周期。 大多数高级服务层用例都具有一个或多个下列特征：
+* **高级**：高级服务层为每个高级或业务关键数据库提供每秒的可预测性能。 选择高级服务层时，可以根据该数据库的峰值负载调整数据库应用程序的大小。 该计划消除了在易受延迟影响操作中性能变动可导致小型查询耗时超出预期的情况。 对于需要明确表明最大资源需求、性能变动或查询延迟的应用程序，此模型可大大简化开发和产品验证周期。 大多数高级服务层用例都具有一个或多个下列特征：
   * **高峰值负载**。 需要大量 CPU、内存或输入/输出 (IO) 才能完成其操作的应用程序，需要专用、高性能级别。 例如，已知较长时间使用多个 CPU 内核的数据库操作非常适合高级服务层。
   * **多个并发请求**。 某些数据库应用程序为多个并发请求服务，例如，为具有高流量的网站服务。 基本服务层和标准服务层对每个数据库的并发请求数都有限制。 需要更多连接的应用程序将需要选择合适的预留大小，以处理最大所需的请求数。
   * **低延迟时间**。 某些应用程序需要确保在最短时间内从数据库获得响应。 如果在更大范围的客户操作期间调用了特定存储过程，则有 99% 的时间可能要求在 20 毫秒内从该调用返回。 此类型的应用程序受益于高级服务层，以确保提供所需的计算能力。
@@ -272,7 +274,7 @@ SQL Server 用户经常将许多功能集中在单一数据库内。 例如，�
 
 ## <a name="next-steps"></a>后续步骤
 * 有关基于 DTU 的服务层的详细信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)。
-* 有关基于 vCore 的服务层的详细信息，请参阅[基于 vCore 的购买模型（预览版）](sql-database-service-tiers-vcore.md)。
+* 有关基于 vCore 的服务层的详细信息，请参阅[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
 * 有关弹性池的详细信息，请参阅[什么是 Azure 弹性池？](sql-database-elastic-pool.md)
 * 有关性能和弹性池的信息，请参阅[何时考虑弹性池](sql-database-elastic-pool-guidance.md)
 

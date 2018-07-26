@@ -11,21 +11,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/18/2018
+ms.date: 07/08/2018
 ms.author: juliako
-ms.openlocfilehash: 00a5e6df532e30deec0f6755ec0309c7fc58e0bb
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: d5315c6cc4ade94bc829aa77f795d9688f78b0ec
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37133204"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115154"
 ---
-# <a name="media-services-playready-license-template-overview"></a>媒体服务 PlayReady 许可证模板概述
+# <a name="media-services-playready-license-template-overview"></a>媒体服务 PlayReady 许可证模板概述 
 
-Azure 媒体服务现在提供了用于交付 PlayReady 许可证的服务。 当播放器（例如 Silverlight）尝试播放受 PlayReady 保护的内容时，将向许可证交付服务发送请求以获取许可证。 如果许可证服务批准了该请求，则会颁发该许可证，该许可证将发送到客户端，并用来解密和播放指定的内容。
+通过 Azure 媒体服务，可使用 Microsoft PlayReady 加密内容。 媒体服务还提供用于交付 PlayReady 许可证的服务。 可使用媒体服务 API 来配置 PlayReady 许可证。 当播放器尝试播放受 PlayReady 保护的内容时，将向许可证交付服务发送请求以获取许可证。 如果许可证服务批准了该请求，则会颁发该许可证，该许可证将发送到客户端，并用来解密和播放指定的内容。
 
-媒体服务还提供了可以用来配置 PlayReady 许可证的 API。 许可证包含了当用户尝试播放受保护的内容时要由 PlayReady 数字版权管理 (DRM) 运行时强制实施的权限和限制。
-下面是可以指定的 PlayReady 许可证限制的一些示例：
+PlayReady 许可证包含了当用户尝试播放受保护的内容时要由 PlayReady 数字版权管理 (DRM) 运行时强制实施的权限和限制。 下面是可以指定的 PlayReady 许可证限制的一些示例：
 
 * 该许可证开始生效的日期和时间。
 * 许可证过期时的日期/时间值。 
@@ -38,9 +37,14 @@ Azure 媒体服务现在提供了用于交付 PlayReady 许可证的服务。 �
 > 目前，只能配置 PlayReady 许可证的 PlayRight。 此权限是必需的。 PlayRight 赋予客户端播放内容的权限。 还可以使用 PlayRight 配置特定于播放的限制。 
 > 
 
-若要使用媒体服务配置 PlayReady 许可证，必须配置媒体服务 PlayReady 许可证模板。 该模板在 XML 中定义。
+本主题介绍如何使用媒体服务配置 PlayReady 许可证。
 
-下例演示了配置基本的流式处理许可证的最简单（也是最常见的）模板。 使用此许可证时，客户端可以播放受 PlayReady 保护的内容。
+## <a name="basic-streaming-license-example"></a>基本流式处理许可证示例
+
+下例演示了配置基本的流式处理许可证的最简单（也是最常见的）模板。 使用此许可证时，客户端可以播放受 PlayReady 保护的内容。 
+
+XML 遵循 [PlayReady 许可证模板 XML 架构](#schema)部分中定义的 PlayReady 许可证模板 XML 架构。
+
 
     <?xml version="1.0" encoding="utf-8"?>
     <PlayReadyLicenseResponseTemplate xmlns:i="http://www.w3.org/2001/XMLSchema-instance" 
@@ -53,18 +57,17 @@ Azure 媒体服务现在提供了用于交付 PlayReady 许可证的服务。 �
       </LicenseTemplates>
     </PlayReadyLicenseResponseTemplate>
 
-XML 遵循“PlayReady 许可证模板 XML 架构”部分中定义的 PlayReady 许可证模板 XML 架构。
 
 ## <a id="classes"></a>使用媒体服务 API 配置许可证模板
 
-媒体服务提供了可用于配置 PlayReady 许可证模板的类型。 这些类型映射到 [PlayReady 许可证模板 XML 架构](#schema)中定义的类型。
+媒体服务提供了可用于配置 PlayReady 许可证模板的类型。 
 
-后面的代码片段使用媒体服务 .NET PlayReady 类来配置 PlayReady 许可证模板。 这些类在 [Microsoft.Azure.Management.Media.Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) 命名空间中定义。 此代码片段配置 PlayReady 许可证的 PlayRight。 PlayRight 授权用户播放受许可证中和 PlayRight 本身（用于特定于播放的策略）配置的任何限制所制约的内容。 针对 PlayRight 的策略大部分涉及输出限制，这些限制控制在播放内容时可以使用的输出类型。 它还包括在使用给定输出时必须实施的任何限制。 例如，如果启用了 DigitalVideoOnlyContentRestriction，则 DRM 运行时仅允许以数字输出形式播放视频。 （不允许以模拟视频输出形式来传送内容。）
+后面的代码片段使用媒体服务 .NET 类来配置 PlayReady 许可证模板。 这些类在 [Microsoft.Azure.Management.Media.Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) 命名空间中定义。 此代码片段配置 PlayReady 许可证的 PlayRight。 PlayRight 授权用户播放受许可证中和 PlayRight 本身（用于特定于播放的策略）配置的任何限制所制约的内容。 针对 PlayRight 的策略大部分涉及输出限制，这些限制控制在播放内容时可以使用的输出类型。 它还包括在使用给定输出时必须实施的任何限制。 例如，如果启用了 DigitalVideoOnlyContentRestriction，则 DRM 运行时仅允许以数字输出形式播放视频。 （不允许以模拟视频输出形式来传送内容。）
 
 > [!IMPORTANT]
-> 这些类型的限制可能很有效，但也会影响使用者体验。 如果输出保护施加了太多限制，内容可能会无法在某些客户端上播放。 有关详细信息，请参阅 [PlayReady 符合性规则](https://www.microsoft.com/playready/licensing/compliance/)。
-> 
-> 
+> PlayReady 许可证具有功能强大的限制。 如果输出保护施加了太多限制，内容可能会无法在某些客户端上播放。 有关详细信息，请参阅 [PlayReady 符合性规则](https://www.microsoft.com/playready/licensing/compliance/)。
+
+### <a name="configure-playready-license-template-with-net"></a>使用 .NET 配置 PlayReady 许可证模板
 
 ```csharp
 ContentKeyPolicyPlayReadyLicense objContentKeyPolicyPlayReadyLicense;
@@ -84,8 +87,6 @@ objContentKeyPolicyPlayReadyLicense = new ContentKeyPolicyPlayReadyLicense
     }
 };
 ```
-
-有关 Silverlight 支持的保护级别的示例，请参阅 [Silverlight 支持的输出保护](http://go.microsoft.com/fwlink/?LinkId=617318)。
 
 ## <a id="schema"></a>PlayReady 许可证模板 XML 架构
     <?xml version="1.0" encoding="utf-8"?>
@@ -312,4 +313,4 @@ objContentKeyPolicyPlayReadyLicense = new ContentKeyPolicyPlayReadyLicense
 
 ## <a name="next-steps"></a>后续步骤
 
-[概述](content-protection-overview.md)
+了解如何[使用 DRM 提供保护](protect-with-drm.md)
