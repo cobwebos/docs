@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 07/11/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6544503353f085a9dd9b0fe7207bbf8d4e0bc9d0
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: aaa36d850516ff4d8e40b62c588347468da5c6d2
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435611"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008155"
 ---
 # <a name="manage-access-using-rbac-and-the-azure-portal"></a>使用 RBAC 和 Azure 门户管理访问权限
 
@@ -88,7 +88,9 @@ ms.locfileid: "37435611"
 
    ![Azure Active Directory 用户 Azure 资源](./media/role-assignments-portal/aad-user-azure-resources.png)
 
-   在“Azure 资源”边栏选项卡上，可以看到所选用户的角色分配。 此列表仅包括你有权读取的资源的角色分配。 例如，如果用户在其他订阅中还有角色分配，而该订阅无法读取，则这些角色分配不会显示在列表中。
+   在“Azure 资源”边栏选项卡上，可以看到所选用户和所选订阅的角色分配。 此列表仅包括你有权读取的资源的角色分配。 例如，如果用户还有你无法读取的角色分配，则这些角色分配将不会显示在列表中。
+
+1. 如果有多个订阅，则可以选择“订阅”下拉列表，以查看不同订阅中的角色分配。
 
 ## <a name="grant-access"></a>授予访问权限
 
@@ -161,14 +163,6 @@ ms.locfileid: "37435611"
 1. 在显示的“删除角色分配”消息中，选择“是”。
 
 不能删除继承的角色分配。 如果需要删除继承的角色分配，则必须在创建角色分配的作用域上进行操作。 在“作用域”列的“继承”旁，有一条链接指向分配了此角色的资源。 请转到该处列出的范围以删除角色分配。
-
-## <a name="other-tools-to-manage-access"></a>管理访问权限的其他工具
-
-可以使用 Azure 门户以外的工具中的 Azure RBAC 命令分配角色和管理访问权限。 有关详细信息，请参阅以下链接：
-
-* [Azure PowerShell](role-assignments-powershell.md)
-* [Azure CLI](role-assignments-cli.md)
-* [REST API](role-assignments-rest.md)
 
 ## <a name="next-steps"></a>后续步骤
 

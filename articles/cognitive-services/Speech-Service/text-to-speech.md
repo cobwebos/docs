@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 227fae2f38189a5b8ed5b6eff359e09bedc8e628
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: e3543c2056934372a2795bd50f340432ceec3b6d
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071124"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257940"
 ---
 # <a name="about-the-text-to-speech-api"></a>关于文本转语音 API
 
@@ -35,7 +35,7 @@ ms.locfileid: "39071124"
 
 ## <a name="voice-support"></a>语音支持
 
-Microsoft 文本转语音服务提供超过 45 种语言和区域设置的 75 种以上语音。 若要使用这些标准的“语音字体”，只需在调用服务的 REST API 时使用几个其他参数指定语音名称。 有关支持语音的详细信息，请参阅[支持的语言](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/supported-languages#text-to-speech)。 
+Microsoft 文本转语音服务提供超过 45 种语言和区域设置的 75 种以上语音。 若要使用这些标准的“语音字体”，只需在调用服务的 REST API 时使用几个其他参数指定语音名称。 有关支持语音的详细信息，请参阅[支持的语言](https://docs.microsoft.com/azure/cognitive-services/speech-service/supported-languages#text-to-speech)。 
 
 如果应用程序需要独特语音，你可以从自己的语音示例创建[自定义语音字体](how-to-customize-voice-font.md)。
 

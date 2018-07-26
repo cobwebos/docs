@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 95dbd80e740210c3800a0af10071875a6d6f0939
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 855ea6c34082b859bb5b5b6e69b3e3f2fa54eb4a
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
-ms.locfileid: "27785520"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056457"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>StorSimple 设备的技术规格和符合性
 
@@ -41,9 +41,9 @@ EBOD 机箱使用 580 W PCM，而主机箱使用 764 W PCM。 下表列出了与
 | 最大浪涌电流 |20 A |20 A |
 | 功率因数校正 |>95% 标称输入电压 |>95% 标称输入电压 |
 | 谐波 |符合 EN61000-3-2 |符合 EN61000-3-2 |
-| 输出 |5V 备用电压 @ 2.0 A |5V 备用电压 @ 2.7 A |
-| + 5V @ 42 A |+5V @ 40 A | |
-| +12V @ 38 A |+12V @ 38 A | |
+| 输出 |5V 备用电压 \@ 2.0 A |5V 备用电压 \@ 2.7 A |
+| + 5V \@ 42 A |+5V \@ 40 A | |
+| +12V \@ 38 A |+12V \@ 38 A | |
 | 可热插拔 |是 |是 |
 | 开关和 LED |交流 ON/OFF 开关和四个状态指示器 LED |交流 ON/OFF 开关和六个状态指示器 LED |
 | 机箱散热 |具有可变风扇转速控制的轴向冷却风扇 |具有可变风扇转速控制的轴向冷却风扇 |

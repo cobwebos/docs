@@ -3,35 +3,27 @@ title: Azure 市场 SaaS 应用程序技术发布指南
 description: 将 SaaS 应用程序发布到 Azure 市场的分步指南和发布查检表
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
 documentationcenter: ''
-author: BrentL-Collabera
-manager: ''
-editor: BrentL-Collabera
+author: keithcharlie
+manager: nunoc
+editor: keithcharlie
 ms.assetid: ''
 ms.service: marketplace
 ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 05/09/2018
-ms.author: pabutler
-ms.openlocfilehash: 2ac8119e36843e38e334fb5772ea4ade9962b4f9
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.date: 07/09/2018
+ms.author: keithcharlie
+ms.openlocfilehash: 69f11c77d01f546aecdcb5f0560f6f89483ac204
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809465"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056396"
 ---
-# <a name="saas-applications-technical-publishing-guide"></a>SaaS 应用程序技术发布指南
+# <a name="saas-applications-offer-publishing-guide"></a>SaaS 应用程序产品/服务发布指南
 
-欢迎使用 Azure 市场 SaaS 应用程序技术发布指南。 本指南旨在帮助候选发布者和现有发布者使用 SaaS 应用程序产品将其应用程序和服务列入 Azure 市场。 
-
-本指南分为以下部分，目的是方便你了解如何发布 SaaS 产品/服务：
-* 产品/服务概述
-* 业务要求
-* 技术要求
-* 发布过程
-* 使用 Azure Active Directory 启用试用
-* 为市场认证 Azure AD 集成
+SaaS 应用程序可以使用三种不同的号召性用语在市场上发布：“与我联系”，“立即尝试”和“立即获取”。 本指南介绍这三个选项，包括每个选项的要求。 
 
 ## <a name="offer-overview"></a>产品/服务概述  
 
@@ -42,7 +34,7 @@ SaaS 应用程序在两个 Azure 店面中均提供。下表介绍了当前的�
 | AppSource | 是(与我联系) | 是(PowerBI/Dynamics) |
 | Azure 市场 | 否 | 是(SaaS 应用) |   
 
-**商品**：“商品”发布选项包含“与我联系”产品/服务类型，是在试用级别或交易级别的参与不可行时使用的。 此方法的好处是帮助在市场中发布解决方案的发布者立即开始获取潜在顾客，这些潜在客户可能会产生交易，从而扩大你的业务。  
+**列表**：“列表”发布选项包含“与我联系”产品/服务类型，是在试用级别或交易级别的参与不可行时使用的。 此方法的好处是帮助在市场中发布解决方案的发布者立即开始获取潜在顾客，这些潜在客户可能会产生交易，从而扩大你的业务。  
 **试用/交易**：客户可以选择直接购买，也可以请求试用解决方案。 提供试用体验可以提升客户参与度，让客户在购买前体验解决方案。 借助面向客户的试用体验，发布者能获得更好的店面促销商机，随着参与客户的增多，可获得越来越多的潜在顾客。 试用版必须包含免费支持（至少在试用时间内）。  
 
 | SaaS 应用产品/服务 | 业务要求 | 技术要求 |  
@@ -51,20 +43,29 @@ SaaS 应用程序在两个 Azure 店面中均提供。下表介绍了当前的�
 | **PowerBI/Dynamics** | 是 | 是(Azure AD 集成) |  
 | **SaaS 应用**| 是 | 是(Azure AD 集成) |     
 
-有关市场店面的详细信息以及每个发布选项的说明，请参阅 [市场发布者指南](https://aka.ms/sellerguide)和[发布选项](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide#select-a-publishing-option)。
+## <a name="saas-list"></a>SaaS 列表
 
-## <a name="business-requirements"></a>业务要求
-SaaS 产品/服务业务要求可以与技术要求一并完成。 大多数业务要求和信息是在云合作伙伴门户中生成 SaaS 产品/服务时收集的。 业务要求如下： 
-* 同意参与策略
-* 与 Microsoft 集成 
-* 确定产品/服务的受众
-* 定义并确定要使用的潜在客户管理
-* 设置隐私策略和使用条款
-* 定义支持部门联系人  
+没有试用且没有计费功能的 SaaS 列表的号召性用语是“与我联系”。 
 
-有关详细信息，可参阅主题：[市场发布的先决条件](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide#prerequisites-for-marketplace-publishing)
+无需配置 Azure Active Directory 即可列出 SaaS 应用程序。 
 
-## <a name="technical-requirements"></a>技术要求
+|要求  |详细信息  |
+|---------|---------|
+|你的应用是 SaaS 产品/服务  |   解决方案是 SaaS 产品/服务并提供多租户 SaaS 产品。      |
+
+
+## <a name="saas-trial"></a>SaaS 试用
+
+使用免费试用的、基于软件即服务 (SaaS) 的试用提供解决方案或应用。 免费试用产品/服务可表示为使用受限或者使用时间有限的试用帐户。 
+
+
+|要求  |详细信息  |
+|---------|---------|
+|你的应用是 SaaS 产品/服务  |   解决方案是 SaaS 产品/服务并提供多租户 SaaS 产品。      |
+|你的应用已启用 AAD     |   客户将重定向到你的域，你将直接与客户进行交易       |
+
+
+## <a name="saas-trial-technical-requirements"></a>SaaS 试用版技术要求
 
 SaaS 应用程序的技术要求非常简单。 发布者只需与要发布的 Azure Active Directory (Azure AD) 集成。 Azure AD 与应用程序的集成已有完善的文档，并且 Microsoft 可以提供多个 SDK 和资源来实现此目的。  
 
@@ -96,32 +97,7 @@ SaaS 应用程序的技术要求非常简单。 发布者只需与要发布的 A
 * [面向 IT 专业人士的 Microsoft Azure 内容系列：Azure Active Directory](https://mva.microsoft.com/en-US/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
 
 另外，Azure Active Directory 还提供一个用于查找服务更新的站点   
-* [Azure AD 服务更新](https://azure.microsoft.com/updates/?product=active-directory)
-
-可以使用以下资源获取支持：
-* [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
-* [StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
-
-## <a name="publishing-process"></a>发布过程
-
-SaaS 发布过程包含技术步骤和业务步骤。  在开发和集成 Azure Active Directory 过程中完成的大多数工作可以与履行产品/服务的业务要求所需完成的工作一并完成。 大多数业务要求是云合作伙伴门户中 SaaS 应用产品/服务配置的一部分。  
-下图显示了试用/交易产品/服务的主要发布步骤：  
-
-![SaaS 发布步骤](./media/marketplace-saas-applications-technical-publishing-guide/saaspublishingsteps.png)  
-
-下表介绍了每个主要的发布步骤：  
-
-| 发布步骤 | 说明 |   
-| --- | --- |  
-| **创建 SaaS 应用程序** | 登录到云合作伙伴门户，选择“新建”，然后选择“SaaS 应用”产品/服务。 |  
-| **创建与 Azure AD 的集成** | 按照上一部分介绍的技术要求，将 SaaS 产品/服务与 Azure AD 集成。 |  
-| **设置产品/服务设置**| 输入所有 SaaS 产品/服务的初始信息。 要使用的产品/服务 ID 和产品/服务名称。 |     
-| **设置技术信息** | 输入产品/服务的技术信息。 就 SaaS 应用程序来说，解决方案的 URI 和产品/服务的获取按钮类型（“免费”、“试用”或“与我联系”）是必填的。 |  
-| **体验（可选）** | 这是一种可选的试用类型，主要用于其他类型的市场产品/服务。 它可以用于将试用版部署在发布者的订阅中，供最终客户试用。 |  
-| **设置产品/服务店面资料**| 在此部分，发布者需链接并上传徽标、营销资料、法律文档并配置潜在客户管理系统。 |
-| **设置产品/服务联系人** | 输入适用于 SaaS 产品/服务的工程部门联系人和支持部门联系人的信息。 |  
-| **验证 SaaS 应用 Azure AD 集成** | 在提交 SaaS 应用进行发布之前，必须验证该应用是否已与 Azure AD 集成 |  
-| **发布产品/服务**| 完成产品/服务和技术资产以后，即可发布该产品/服务。 这样就会启动发布过程，对解决方案模板进行测试、验证、认证和审批，这些都是进行发布所必需的。 |
+* [Azure AD 服务更新](https://azure.microsoft.com/updates/?product=active-directory)|
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>使用 Azure Active Directory 启用试用  
 
@@ -154,3 +130,25 @@ Microsoft 通过 Azure AD 对所有 市场用户进行身份验证，当已验�
 * 开发针对客户的“体验版”
 * 使用 SSO 生成多租户示例演示应用
 
+## <a name="saas-subscriptions"></a>SaaS 订阅
+
+使用 SaaS 应用产品/服务类型可让客户以订阅的形式购买基于 SaaS 的技术解决方案。 SaaS 应用必须满足以下要求：
+- 以平稳的每月费率计收服务费用。
+- 提供随时升级或取消服务的方法。
+Microsoft 托管商业事务。 Microsoft 代你向客户计费。 若要以订阅的形式计收 SaaS 应用的费用，必须启用自己的订阅管理服务 API。 订阅管理服务 API 必须直接与 Azure 资源管理器 API 通信。 订阅管理服务 API 必须支持服务预配、升级和取消。
+
+| 要求 | 详细信息 |  
+|:--- |:--- |  
+|计费和计量 | 产品/服务按固定月费定价。 目前不支持基于使用情况的定价和基于使用情况的“校准”功能。 |  
+|取消 | 客户可以随时取消你的产品/服务。 |  
+|事务登陆页 | 托管一个 Azure 联合品牌事务登陆页，用户可以在其中创建并管理其 SaaS 服务帐户。 |   
+| 订阅 API | 公开一个服务，该服务可以通过与 SaaS 订阅交互来创建、更新和删除用户帐户和服务计划。 必须在 24 小时内支持关键 API 更改。 非关键 API 更改将定期发布。 |  
+
+## <a name="next-steps"></a>后续步骤
+如果尚未注册， 
+
+- 请在市场中[注册](https://azuremarketplace.microsoft.com/sell)
+
+如果已注册并正在创建新套餐或正在使用现有套餐，
+
+- [登录到云合作伙伴门户](https://cloudpartner.azure.com)创建或完成套餐

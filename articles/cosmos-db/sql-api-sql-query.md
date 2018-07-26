@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: laviswa
-ms.openlocfilehash: f0fd1b57be07eda13655b5a6c0dcb5b412e8a248
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: ee804ddc9e8fe9901173bb3d9357a273ea28057d
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798315"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056811"
 ---
 # <a name="sql-queries-for-azure-cosmos-db"></a>Azure Cosmos DB 的 SQL 查询
 
@@ -928,7 +928,7 @@ TOP 关键字可用于限制来自查询中的值的数量。 当 TOP 与 ORDER 
 
 下表显示了 SQL API 中受支持的聚合函数的列表。 `SUM` 和 `AVG` 基于数字值执行，而 `COUNT`、`MIN`、`MAX` 则可基于数字、字符串、布尔值和 null 值执行。 
 
-| 使用情况 | 说明 |
+| 使用情况 | Description |
 |-------|-------------|
 | COUNT | 在表达式中返回项的数目。 |
 | SUM   | 在表达式中返回所有值的总和。 |
@@ -1360,7 +1360,7 @@ Cosmos DB 是一个 JSON 数据库，与 JavaScript 运算符及其评估语义�
 不同于 JavaScript，SQL API 不会执行隐式转换。 例如，类似 `SELECT * FROM Person p WHERE p.Age = 21` 的查询与包含值为 21 的 Age 属性的文档相匹配。 任何其他 Age 属性与字符串“21”匹配或包含其他无数可能的变量（“021”、“21.0”、“0021”和“00021”等等）的文档则不匹配。 这与 JavaScript 相反，在 JavaScript 中，字符串会隐式转换为数字（基于运算符 ex: ==）。 此选择对于 SQL API 中的高效索引匹配至关重要。 
 
 ## <a name="parameterized-sql-queries"></a>参数化 SQL 查询
-Cosmos DB 支持通过常用 @ 表示法表示的参数进行查询。 参数化 SQL 为用户输入提供可靠的处理和转义，可防止通过 SQL 注入发生意外的数据泄露。 
+Cosmos DB 支持使用通过常用 \@ 表示法表示的参数进行查询。 参数化 SQL 为用户输入提供可靠的处理和转义，可防止通过 SQL 注入发生意外的数据泄露。 
 
 例如，可以编写一个将姓氏和省/自治区地址作为参数的查询，并基于用户输入针对姓氏和省/自治区地址执行此查询。
 
@@ -1406,7 +1406,7 @@ Cosmos DB 还支持使用许多内置函数进行常见操作，这些函数可�
 每个数学函数均执行一个计算，基于作为参数提供的输出值，并返回数值。 以下是受支持的内置数学函数表。
 
 
-| 使用情况 | 说明 |
+| 使用情况 | Description |
 |----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [[ABS (num_expr)](#bk_abs) | 返回指定数值表达式的绝对（正）值。 |
 | [CEILING (num_expr)](#bk_ceiling) | 返回大于或等于指定数值表达式的最小整数值。 |
@@ -1500,7 +1500,7 @@ Cosmos DB 还支持使用许多内置函数进行常见操作，这些函数可�
 ### <a name="string-functions"></a>字符串函数
 下面的标量函数对字符串输入值执行操作，并返回字符串、数值或布尔值。 以下是内置字符串函数表：
 
-| 使用情况 | 说明 |
+| 使用情况 | Description |
 | --- | --- |
 | [LENGTH (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_length) |返回指定字符串的字符数 |
 | [CONCAT (str_expr, str_expr [, str_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_concat) |返回一个字符串，该字符串是连接两个或多个字符串值的结果。 |
@@ -1570,7 +1570,7 @@ Cosmos DB 还支持使用许多内置函数进行常见操作，这些函数可�
 ### <a name="array-functions"></a>数组函数
 下面的标量函数对数组输入值执行操作，并返回数值、布尔值或数组值。 以下是内置数组函数表：
 
-| 使用情况 | 说明 |
+| 使用情况 | Description |
 | --- | --- |
 | [ARRAY_LENGTH (arr_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_length) |返回指定数组表达式的元素数。 |
 | [ARRAY_CONCAT (arr_expr, arr_expr [, arr_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_concat) |返回一个数组，该数组是连接两个或更多数组值的结果。 |

@@ -8,17 +8,19 @@ ms.service: app-service
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: e795a6c5f76fb8d40c7e6778555de619d00b3a41
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c01fcc7e69cf5af26b127519f183062ccf4923cc
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172738"
 ---
 # <a name="app-service-documentation"></a>应用服务文档
 使用 Azure 应用服务，可以采用所选编程语言构建和托管 Web 应用程序，不需要对基础结构进行管理，也不需要对语言或 Web 框架运行时进行管理。 它提供自动缩放和高可用性，支持 Windows 和 Linux，并允许从 GitHub、Team Services 或任何 Git 存储库进行自动部署。 可以参考我们的快速入门、教程和示例来了解如何使用 Azure 应用服务。
 
 ## <a name="windows-linux-and-docker"></a>Windows、Linux 和 Docker
-[Web 应用](/app-service/app-service-web-overview)是应用服务的主要产品/服务，用于使用 Windows 环境构建和托管 Web 应用程序。 喜欢使用 Linux 环境的开发人员可以选择[适用于 Linux 的应用服务](/app-service/containers/app-service-linux-intro)。 开发人员还可以直接将 Docker 映像部署到适用于 Linux 的应用服务来部署自定义运行时/框架。
+
+  [Web 应用](/app-service/app-service-web-overview)是应用服务的主要产品/服务，用于使用 Windows 环境构建和托管 Web 应用程序。 喜欢使用 Linux 环境的开发人员可以选择[适用于 Linux 的应用服务](/app-service/containers/app-service-linux-intro)。 开发人员还可以直接将 Docker 映像部署到适用于 Linux 的应用服务来部署自定义运行时/框架。
 
 ## <a name="5-minute-quickstarts"></a>5 分钟快速入门
 
@@ -28,7 +30,7 @@ ms.lasthandoff: 04/19/2018
 - [Node.js](/azure/app-service/app-service-web-get-started-nodejs)
 - [PHP](/azure/app-service/app-service-web-get-started-php)
 - [Java](/azure/app-service/app-service-web-get-started-java)
-- [Python](/azure/app-service/app-service-web-get-started-python)
+- [Python](/azure/app-service/containers/quickstart-python)
 - [HTML](/azure/app-service/app-service-web-get-started-html)
 
 ## <a name="step-by-step-tutorials"></a>分步教程
@@ -39,7 +41,7 @@ ms.lasthandoff: 04/19/2018
   - [将 .NET 与 Azure SQL DB 配合使用](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase)
   - [将 Node.js 与 MongoDB 配合使用](/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app)
   - [将 Java 与 MySQL 配合使用](/app-service/app-service-web-tutorial-java-mysql)
-  - [将 Python 与 PostgreSQL 配合使用](/app-service/app-service-web-tutorial-python-postgresql)
+  - [将 Python 与 PostgreSQL 配合使用](/app-service/containers/tutorial-docker-python-postgresql-app)
 - [将现有自定义域映射到应用程序](/azure/app-service/app-service-web-tutorial-custom-domain)
 - [将现有 SSL 证书绑定到应用程序](/azure/app-service/app-service-web-tutorial-custom-SSL)
 

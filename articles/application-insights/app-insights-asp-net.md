@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Application Insights 为 ASP.NET 设置 Web 应用分析 | Microsoft 文档"
-description: "为托管在本地或 Azure 中的 ASP.NET 网站配置性能、可用性和使用情况分析。"
+title: 使用 Azure Application Insights 为 ASP.NET 设置 Web 应用分析 | Microsoft 文档
+description: 为托管在本地或 Azure 中的 ASP.NET 网站配置性能、可用性和用户行为分析工具。
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4fea71509b2dec897a3dafef627e243ae25447ad
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 73bb1e3d06066c422614bc9d6d3431b49be9c6de
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38992098"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>为 ASP.NET 网站设置 Application Insights
 
@@ -32,7 +33,7 @@ ms.lasthandoff: 02/27/2018
     - ASP.NET 和 Web 开发
     - Azure 开发
 
-如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="ide"></a> 步骤 1：添加 Application Insights SDK
 
@@ -142,7 +143,7 @@ Visual Studio 中会显示已记录的事件数。
 
 * **[浏览器和页面加载数据](app-insights-javascript.md)** - 在网页中插入代码片段。
 * **[获取更详细的依赖关系和异常监视](app-insights-monitor-performance-live-website-now.md)** - 在服务器上安装状态监视器。
-* **[为自定义事件编写代码](app-insights-api-custom-events-metrics.md)**可对用户操作进行计数、计时或度量。
+* **[为自定义事件编写代码](app-insights-api-custom-events-metrics.md)** 可对用户操作进行计数、计时或度量。
 * **[获取日志数据](app-insights-asp-net-trace-logs.md)** - 将日志数据与你的遥测相关联。
 
 ### <a name="analysis"></a>分析

@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: carlrab
-ms.openlocfilehash: 628d1bd3c38237db1d49826646bba989e158ed99
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0ae05456d957c6ebabe0faec7da4175618b191ef
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644430"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036762"
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Azure SQL 数据库连接体系结构 
 
@@ -50,6 +50,9 @@ ms.locfileid: "34644430"
 
 ![体系结构概述](./media/sql-database-connectivity-architecture/connectivity-from-outside-azure.png)
 
+> [!IMPORTANT]
+> 在 Azure SQL 数据库中使用服务终结点时，默认情况下策略为**重定向**。 因此，要从 Vnet 内部启用连接，必须允许出站到所有 Azure SQL 数据库 IP 地址，而不仅仅是网关 IP。 这可以借助 NSG（网络安全组）服务标记来完成，如果要只允许出站到网关 IP，请将设置更改为“代理”。
+
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Azure SQL 数据库网关 IP 地址
 
 若要从本地资源连接到 Azure SQL 数据库，需要允许到你的 Azure 区域的 Azure SQL 数据库网关的出站网络流量。 在代理模式下连接时，连接仅通过网关建立，从本地资源进行连接时这是默认设置。
@@ -83,7 +86,7 @@ ms.locfileid: "34644430"
 | 英国南部 2 | 13.87.34.7 | |
 | 英国西部 | 51.141.8.11  | |
 | 美国中西部 | 13.78.145.25 | |
-| 欧洲西部 | 191.237.232.75 | 40.68.37.158 |
+| 西欧 | 191.237.232.75 | 40.68.37.158 |
 | 美国西部 1 | 23.99.34.75 | 104.42.238.205 |
 | 美国西部 2 | 13.66.226.202  | |
 ||||

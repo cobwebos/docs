@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: ddce312d6299a7749f1a40a83f67ce3c26876591
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 4410adfd5788b06163b8da18b96d2f8a9c350ac8
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34713994"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39011425"
 ---
 # <a name="managing-devices-using-the-azure-portal"></a>使用 Azure 门户管理设备
 
@@ -198,6 +198,9 @@ Intune 管理员可以管理标记为“Microsoft Intune”的设备。 管理�
 - 安全管理员
 - 安全读者
 - Intune 服务管理员
+
+> [!NOTE]
+> 加入混合 Azure AD 的 Windows 10 设备没有所有者。 因此，如果按所有者查找设备未找到它，请按设备 ID 搜索。
 
 
 ## <a name="audit-logs"></a>审核日志

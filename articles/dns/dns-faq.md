@@ -3,7 +3,7 @@ title: Azure DNS 常见问题解答 | Microsoft 文档
 description: 有关 Azure DNS 的常见问题
 services: dns
 documentationcenter: na
-author: KumudD
+author: vhorne
 manager: jeconnoc
 editor: ''
 ms.service: dns
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2017
-ms.author: kumud
-ms.openlocfilehash: e0eb39ced1d88d2e0b6128493304f112f9c685fa
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: victorh
+ms.openlocfilehash: 747b2e2499a9bafcf7a7b03bc2ce144828c55c75
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31395224"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172494"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS 常见问题解答
 
@@ -71,25 +71,25 @@ Azure DNS 仅支持托管“静态”DNS 域，其中对某给定的 DNS 记录�
 
 ### <a name="does-azure-dns-support-domain-name-registration"></a>Azure DNS 是否支持域名注册？
 
-不会。 Azure DNS 当前不支持购买域名。 如果想要购买域，则需要使用第三方域名注册机构。 注册机构通常收取小额年费。 然后，域可以托管在 Azure DNS 中以管理 DNS 记录。 有关详细信息，请参阅[向 Azure DNS 委托域](dns-domain-delegation.md)。
+不是。 Azure DNS 当前不支持购买域名。 如果想要购买域，则需要使用第三方域名注册机构。 注册机构通常收取小额年费。 然后，域可以托管在 Azure DNS 中以管理 DNS 记录。 有关详细信息，请参阅[向 Azure DNS 委托域](dns-domain-delegation.md)。
 
 我们正在 Azure 积压工作中跟踪域购买功能。 可以使用反馈站点来[表示你对此功能的支持](https://feedback.azure.com/forums/217313-networking/suggestions/4996615-azure-should-be-its-own-domain-registrar)。
 
 ### <a name="does-azure-dns-support-dnssec"></a>Azure DNS 是否支持 DNSSEC？
 
-不会。 Azure DNS 当前不支持 DNSSEC。
+不是。 Azure DNS 当前不支持 DNSSEC。
 
 我们正在 Azure DNS 积压工作中跟踪 DNSSEC 功能。 可以使用反馈站点来[表示你对此功能的支持](https://feedback.azure.com/forums/217313-networking/suggestions/13284393-azure-dns-needs-dnssec-support)。
 
 ### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Azure DNS 是否支持区域传送 (AXFR/IXFR)？
 
-不会。 Azure DNS 当前不支持区域传送。 可[使用 Azure CLI 将 DNS 区域导入 Azure DNS](dns-import-export.md)。 然后，可通过 [Azure DNS 管理门户](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/powershell/module/azurerm.dns)、[SDK](dns-sdk.md)、[PowerShell cmdlet](dns-operations-recordsets.md) 或 [CLI 工具](dns-operations-recordsets-cli.md)来托管 DNS 记录。
+不是。 Azure DNS 当前不支持区域传送。 可[使用 Azure CLI 将 DNS 区域导入 Azure DNS](dns-import-export.md)。 然后，可通过 [Azure DNS 管理门户](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/powershell/module/azurerm.dns)、[SDK](dns-sdk.md)、[PowerShell cmdlet](dns-operations-recordsets.md) 或 [CLI 工具](dns-operations-recordsets-cli.md)来托管 DNS 记录。
 
 我们正在 Azure DNS 积压工作中跟踪区域传输功能。 可以使用反馈站点来[表示你对此功能的支持](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c)。
 
 ### <a name="does-azure-dns-support-url-redirects"></a>Azure DNS 是否支持 URL 重定向？
 
-不会。 URL 重定向服务实际并非 DNS 服务 - 它们在 HTTP 级别运行，而非 DNS 级别。 某些 DNS 提供商会在整体产品/服务中捆绑销售 URL 重定向服务。 Azure DNS 目前不支持此服务。
+不是。 URL 重定向服务实际并非 DNS 服务 - 它们在 HTTP 级别运行，而非 DNS 级别。 某些 DNS 提供商会在整体产品/服务中捆绑销售 URL 重定向服务。 Azure DNS 目前不支持此服务。
 
 我们正在 Azure DNS 积压工作中跟踪 URL 重定向功能。 可以使用反馈站点来[表示你对此功能的支持](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape)。
 
@@ -173,7 +173,7 @@ Azure DNS 由 Azure 资源管理器管理，且受益于 Azure 资源管理器�
 是的。 专用区域支持在跨 Azure 区域的虚拟网络之间进行 DNS 解析，即使未显式建立虚拟网络对等互连也是如此，但前提是将所有虚拟网络指定为专用区域的解析虚拟网络。 客户可能需要建立虚拟网络的对等互连，才能在不同的区域之间传送 TCP/HTTP 流量。 
 
 ### <a name="is-connectivity-to-the-internet-from-virtual-networks-required-for-private-zones"></a>专用区域是否需要在虚拟网络与 Internet 之间建立连接？
-不会。 专用区域配合虚拟网络工作，可让客户在虚拟网络内部或跨虚拟网络管理虚拟机的域或其他资源。 无需建立 Internet 连接即可进行名称解析。 
+不是。 专用区域配合虚拟网络工作，可让客户在虚拟网络内部或跨虚拟网络管理虚拟机的域或其他资源。 无需建立 Internet 连接即可进行名称解析。 
 
 ### <a name="can-the-same-private-zone-be-used-for-multiple-virtual-networks-for-resolution"></a>是否可将同一专用区域用于解析多个虚拟网络？ 
 是的。 客户最多可将 10 个解析虚拟网络关联到一个专用区域。
@@ -185,7 +185,7 @@ Azure DNS 由 Azure 资源管理器管理，且受益于 Azure 资源管理器�
 是的。 如果删除注册虚拟网络中的虚拟机，我们会自动删除已注册到区域中的 DNS 记录，因为这是一个注册虚拟网络。 
 
 ### <a name="can-an-automatically-registered-virtual-machine-record-in-a-private-zone-from-a-registration-virtual-network-be-deleted-manually"></a>是否可以手动删除专用区域中自动注册的虚拟机记录（通过注册虚拟网络）？ 
-不会。 目前，从注册虚拟网络自动注册到专用区域中的虚拟机 DNS 记录不可见，也不可以由客户编辑。 但是，可以在区域中，使用手动创建的 DNS 记录来替换（覆盖）此类自动注册的 DNS 记录。 请参阅以下问题及其解答。
+不是。 目前，从注册虚拟网络自动注册到专用区域中的虚拟机 DNS 记录不可见，也不可以由客户编辑。 但是，可以在区域中，使用手动创建的 DNS 记录来替换（覆盖）此类自动注册的 DNS 记录。 请参阅以下问题及其解答。
 
 ### <a name="what-happens-when-we-attempt-to-manually-create-a-new-dns-record-into-a-private-zone-that-has-the-same-hostname-as-an-automatically-registered-existing-virtual-machine-in-a-registration-virtual-network"></a>在主机名与注册虚拟网络中（自动注册的）现有虚拟机相同的专用区域中尝试手动创建新的 DNS 记录时，会发发生什么情况？ 
 如果在主机名与注册虚拟网络中（自动注册的）现有虚拟机相同的专用区域中尝试手动创建新的 DNS 记录，我们允许新的 DNS 记录覆盖自动注册的虚拟机记录。 此外，如果随后尝试从区域中删除这条手动创建的 DNS 记录，则删除操作将会成功，并且会再次发生自动注册（在区域中自动重新创建 DNS 记录），前提是虚拟机仍然存在并且其上已附加专用 IP。 
@@ -200,7 +200,7 @@ Azure DNS 由 Azure 资源管理器管理，且受益于 Azure 资源管理器�
 是的。 专用区域功能不能取代使用 Azure 提供的 internal.cloudapp.net 区域进行的默认 DNS 解析，而只能用作补充性的功能或增强功能。 对于这两种情况（不管依赖于 Azure 提供的 internal.cloudapp.net 还是自己的专用区域），我们都建议使用要解析的区域的 FQDN。 
 
 ### <a name="would-the-dns-suffix-on-virtual-machines-within-a-linked-virtual-network-be-changed-to-that-of-the-private-zone"></a>链接的虚拟网络中虚拟机上的 DNS 后缀是否会更改为专用区域的 DNS 后缀？ 
-不会。 目前，链接的虚拟网络中虚拟机上的 DNS 后缀将保留为 Azure 提供的默认后缀（“*.internal.cloudapp.net”）。 但是，可以手动将虚拟机上的此 DNS 后缀更改为专用区域的 DNS 后缀。 
+不是。 目前，链接的虚拟网络中虚拟机上的 DNS 后缀将保留为 Azure 提供的默认后缀（“*.internal.cloudapp.net”）。 但是，可以手动将虚拟机上的此 DNS 后缀更改为专用区域的 DNS 后缀。 
 
 ### <a name="are-there-any-limitations-for-private-zones-during-this-preview"></a>专用区域预览版是否有任何限制？
 是的。 公共预览版存在以下限制：

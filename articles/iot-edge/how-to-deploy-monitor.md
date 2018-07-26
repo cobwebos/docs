@@ -9,12 +9,12 @@ ms.date: 06/07/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: be52a57f10f286bded9a31d84b36a49717b94006
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 0432a1782ab5e3aef471666e2f0a3ca18dead73e
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029751"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001501"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>使用 Azure 门户大规模部署和监视 IoT Edge 模块
 
@@ -26,7 +26,7 @@ ms.locfileid: "37029751"
 
 ## <a name="identify-devices-using-tags"></a>使用标记标识设备
 
-创建部署之前，必须能够指定想要影响的设备。 Azure IoT Edge 标识使用设备孪生中的标记标识设备。 每个设备均可以拥有多个标记，你可以用适合解决方案的任何方式定义它们。 例如，如果管理有智能楼宇的校园，可能要将以下标记添加到设备：
+创建部署之前，必须能够指定想要影响的设备。 Azure IoT Edge 标识使用设备孪生中的标记标识设备。 每个设备均可以拥有多个标记，你可以用适合解决方案的任何方式定义它们。 例如，如果管理有智能楼宇的校园，可将以下标记添加到设备：
 
 ```json
 "tags":{
@@ -51,7 +51,7 @@ ms.locfileid: "37029751"
 
 ### <a name="step-1-name-and-label"></a>步骤 1：名称和标签
 
-1. 为部署命名唯一名称（最多包含 128 个小写字母）。 避免空格和以下无效字符：`& ^ [ ] { } \ | " < > /`。
+1. 为部署提供唯一名称（最多包含 128 个小写字母）。 避免空格和以下无效字符：`& ^ [ ] { } \ | " < > /`。
 1. 添加用于帮助跟踪部署的标签。 标签是描述部署的“名称, 值”对。 例如 `HostPlatform, Linux` 或 `Version, 3.0.1`。
 1. 选择“下一步”，进入到步骤 2。 
 
@@ -105,8 +105,8 @@ ms.locfileid: "37029751"
 
 因为多个部署可能将同一个设备定为目标，所以应为每个部署提供优先级编号。 若有冲突，优先级最高（值越大表示优先级越高）的部署胜出。 如果两个部署的优先级编号相同，则将最新创建的部署定为目标。 
 
-1. 为部署优先级输入一个正整数。 如果在同一台设备上定目标到两个或多个部署，将会应用优先级数值最高的部署。
-1. 输入“目标条件”确定将作为此部署的目标的设备。 条件依据的是设备孪生标记或设备孪生相应属性，应与表达式格式保持一致。 例如 `tags.environment='test'` 或 `properties.desired.devicemodel='4000x'`。 
+1. 为部署优先级输入一个正整数。 如果同一设备上确定的部署目标至少有两个，则会应用优先级数值最高的部署。
+1. 输入“目标条件”确定将作为此部署的目标的设备。 条件基于设备孪生标记或设备孪生所需属性，并且应当与表达式格式匹配。 例如 `tags.environment='test'` 或 `properties.desired.devicemodel='4000x'`。 
 1. 选择“下一步”，进入到最后一步。
 
 ### <a name="step-5-review-template"></a>步骤 5：审阅模板
@@ -170,7 +170,7 @@ ms.locfileid: "37029751"
 
 1. 使用复选框选择想要删除的部署。 
 1. 选择“删除”。
-1. 提示将发出以下通知：此操作将删除此部署并还原为所有设备之前的状态。  这意味着将应用具有较低优先级的部署。  如果没有将其他任何部署定为目标，则不会删除任何模块。 若要从设备中删除所有模块，执行零模块部署，并将它部署到相同设备。 选择“是”继续。 
+1. 提示将发出以下通知：此操作将删除此部署并还原为所有设备之前的状态。  这意味着将应用具有较低优先级的部署。  如果没有将其他任何部署定为目标，则不会删除任何模块。 若要从设备中删除所有模块，请创建零模块部署，并将它部署到相同设备。 选择“是”继续。 
 
 ## <a name="next-steps"></a>后续步骤
 

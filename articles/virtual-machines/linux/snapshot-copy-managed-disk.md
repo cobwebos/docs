@@ -11,13 +11,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: e5882b2ddc708544a7715da13c1f0d18384ce4e3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 224f017decc3f48a23cb3fbf14f9a4e744bfaded
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006999"
 ---
 # <a name="create-a-snapshot"></a>创建快照 
 
@@ -25,16 +26,21 @@ ms.lasthandoff: 04/03/2018
 
 ## <a name="use-azure-cli"></a>使用 Azure CLI 
 
-以下示例需要安装 Azure CLI 2.0 并登录到 Azure 帐户。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
+以下示例要求使用 [Cloud Shell](https://shell.azure.com/bash) 或已安装 Azure CLI 2.0。 若要查找版本，请运行 **az --version**。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。 
 
-以下步骤说明如何使用带有 `--source-disk` 参数的 `az snapshot create` 命令创建快照。 以下示例假设 `myResourceGroup` 资源组中存在名为 `myVM` 的 VM。
+以下步骤说明如何使用带有 **--source-disk** 参数的 **az snapshot create** 命令创建快照。 以下示例假设 *myResourceGroup* 资源组中存在名为 *myVM* 的 VM。
 
-获取磁盘 ID。
-```azure-cli
-osDiskId=$(az vm show -g myResourceGroup -n myVM --query "storageProfile.osDisk.managedDisk.id" -o tsv)
+使用 [az vm show](/cli/azure/vm#az-vm-show) 获取磁盘 ID。
+
+```azurecli-interactive
+osDiskId=$(az vm show \
+   -g myResourceGroup \
+   -n myVM \
+   --query "storageProfile.osDisk.managedDisk.id" \
+   -o tsv)
 ```
 
-创建名为 *osDisk-backup* 的快照。
+使用 [az snapshot create](/cli/azure/snapshot#az-snapshot-create) 创建名为 *osDisk-backup* 的快照。
 
 ```azurecli-interactive
 az snapshot create \
@@ -44,18 +50,25 @@ az snapshot create \
 ```
 
 > [!NOTE]
-> 如果希望将快照存储在具有区域复原能力的存储中，需要在支持[可用性区域](../../availability-zones/az-overview.md)的区域中创建该快照并包括 `--sku Standard_ZRS` 参数。
+> 如果希望将快照存储在具有区域复原能力的存储中，需要在支持[可用性区域](../../availability-zones/az-overview.md)的区域中创建该快照并包括 **--sku Standard_ZRS** 参数。
+
+可以使用 [az snapshot list](/cli/azure/snapshot#az-snapshot-list) 查看快照列表。
+
+```azurecli-interactive
+az snapshot list \
+   -g myResourceGroup \
+   - table
+```
 
 ## <a name="use-azure-portal"></a>使用 Azure 门户 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 首先在左上角单击“创建资源”并搜索“快照”。
+2. 首先在左上角单击“创建资源”并搜索“快照”。 从搜索结果中选择“快照”。
 3. 在“快照”边栏选项卡中，单击“创建”。
 4. 输入快照的“名称”。
-5. 选择现有的[资源组](../../azure-resource-manager/resource-group-overview.md#resource-groups)，或键入新资源组的名称。 
-6. 选择 Azure 数据中心的位置。  
+5. 选择现有的资源组，或键入新资源组的名称。 
 7. 对于**源磁盘**，选择要获取其快照的托管磁盘。
-8. 选择用于存储快照的“帐户类型”。 建议使用 **Standard_LRS**，除非需要将其存储在高性能磁盘上。
+8. 选择用于存储快照的“帐户类型”。 使用 **Standard HDD**，除非需要将其存储在高性能 SSD 上。
 9. 单击“创建”。
 
 

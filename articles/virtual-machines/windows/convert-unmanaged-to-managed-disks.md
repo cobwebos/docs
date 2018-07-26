@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 01/03/2018
+ms.date: 07/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 92168ba5605e119d42ba40ee694cebb3ad116041
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 6e7d4a0ab6d79e1615f921965fb3d77998eaf90c
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29804209"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39000941"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>将 Windows 虚拟机从非托管磁盘转换为托管磁盘
 
@@ -99,6 +99,18 @@ ms.locfileid: "29804209"
 如果转换过程中出现错误，或先前转换中的问题导致 VM 处于“失败”状态，请再次运行 `ConvertTo-AzureRmVMManagedDisk` cmdlet。 通常只需简单的重试即可解决这一问题。
 在转换之前，确保所有 VM 扩展都处于“配置成功”状态，否则转换将失败，并出现错误代码 409。
 
+
+## <a name="convert-using-the-azure-portal"></a>使用 Azure 门户进行转换
+
+还可以使用 Azure 门户将非托管磁盘转换为托管磁盘。
+
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 从门户的 VM 列表中选择 VM。
+3. 在 VM 的边栏选项卡中，从菜单中选择“磁盘”。
+4. 在“磁盘”边栏选项卡的顶部，选择“迁移到托管磁盘”。
+5. 如果 VM 位于可用性集中，则“迁移到托管磁盘”边栏选项卡上会出现“首先需要转换可用性集”的警告。 此警告应该有一个链接，单击该链接即可转换可用性集。 转换可用性集后，或者如果 VM 不在可用性集中，请单击“迁移”以启动将磁盘迁移到托管磁盘的过程。 
+
+VM 将会停止并在完成迁移后重新启动。
 
 ## <a name="next-steps"></a>后续步骤
 

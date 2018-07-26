@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: 29ac86ed5c744d37150b0f1b2db17f60306fe77e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: fd4226254e076957ac8651f9172f1f3f82427a60
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799798"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001824"
 ---
 # <a name="monitor-batch-solutions"></a>监视 Batch 解决方案
 
@@ -43,7 +43,7 @@ Azure 和 Batch 服务提供了一系列服务、工具和 API 来监视 Batch �
 
 在 Batch 应用程序中，可以使用 Batch API 来监视或查询资源（包括作业、任务、节点和池）的状态。 例如：
 
-* [按状态对任务计数](batch-get-task-counts.md)
+* [按状态对任务和计算节点计数](batch-get-resource-counts.md)
 * [创建可高效列出 Batch 资源的查询](batch-efficient-list-queries.md)
 * [创建任务依赖项](batch-task-dependencies.md)
 * 使用[作业管理器任务](/rest/api/batchservice/job/add#jobmanagertask)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 28290718d15a893c5d676c887b9f810449075746
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 780a215b66fec845bc1df639fedda870881b4027
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34665985"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39189505"
 ---
 > [!div class="op_single_selector"]
 > * [Windows 上的 C](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
@@ -22,7 +22,7 @@ ms.locfileid: "34665985"
 > * [Raspberry Pi 上的 Node.js](../articles/iot-accelerators/iot-accelerators-connecting-pi-node.md)
 > * [Raspberry Pi 上的 C](../articles/iot-accelerators/iot-accelerators-connecting-pi-c.md)
 
-本教程实施一个可将以下遥测数据发送到远程监视[解决方案加速器](../articles/iot-accelerators/iot-accelerators-what-are-solution-accelerators.md)的“冷却器”设备：
+本教程实施一个可将以下遥测数据发送到远程监视[解决方案加速器](../articles/iot-accelerators/about-iot-accelerators.md)的“冷却器”设备：
 
 * 温度
 * 压力
@@ -44,7 +44,7 @@ ms.locfileid: "34665985"
 
 ### <a name="deploy-your-remote-monitoring-solution-accelerator"></a>部署远程监视解决方案加速器
 
-本教程中创建的“冷却器”设备会将数据发送到[远程监视](../articles/iot-accelerators/iot-accelerators-remote-monitoring-explore.md)解决方案加速器的实例中。 如果尚未在 Azure 帐户中预配远程监视解决方案加速器，请参阅[部署远程监视解决方案加速器](../articles/iot-accelerators/iot-accelerators-remote-monitoring-deploy.md)
+本教程中创建的“冷却器”设备会将数据发送到[远程监视](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md)解决方案加速器的实例中。 如果尚未在 Azure 帐户中预配远程监视解决方案加速器，请参阅[部署远程监视解决方案加速器](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md)
 
 当远程监视解决方案的部署过程完成后，单击“启动”，以在浏览器中打开解决方案仪表板。
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 04/30/2018
 ms.author: estfan
-ms.openlocfilehash: 6a4e113c6816540e303210c3f1c96d81146cf5db
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: babe21db6acc2f7154857b4eb0a02356e89a8ca7
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300175"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39059229"
 ---
 # <a name="logic-apps-workflow-definitions-with-the-workflow-definition-language-schema"></a>采用工作流定义语言架构的逻辑应用工作流定义
 
@@ -42,7 +42,7 @@ ms.locfileid: "35300175"
 }
 ```
   
-| 元素 | 必选 | 说明 | 
+| 元素 | 必选 | Description | 
 |---------|----------|-------------| 
 | 定义 | 是 | 工作流定义的起始元素 | 
 | $schema | 仅当在外部引用工作流定义时才使用 | 描述工作流定义语言版本的 JSON 架构文件的位置。可在以下位置找到该文件： <p>`https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json`</p> |   
@@ -74,7 +74,7 @@ ms.locfileid: "35300175"
 },
 ```
 
-| 元素 | 必选 | Type | 说明 |  
+| 元素 | 必选 | Type | Description |  
 |---------|----------|------|-------------|  
 | type | 是 | int、float、string、securestring、bool、array、JSON 对象、secureobject <p><p>**注意**：对于所有密码、密钥和机密，请使用 `securestring` 和 `secureobject` 类型，因为 `GET` 操作不会返回这些类型。 | 参数的类型 |
 | defaultValue | 否 | 与 `type` 相同 | 在工作流实例化时未指定值的情况下使用的默认参数值 | 
@@ -104,7 +104,7 @@ ms.locfileid: "35300175"
 } 
 ```
 
-| 元素 | 必选 | Type | 说明 | 
+| 元素 | 必选 | Type | Description | 
 |---------|----------|------|-------------| 
 | <*key-name*> | 是 | String | 输出返回值的密钥名称 |  
 | type | 是 | int、float、string、securestring、bool、array、JSON 对象 | 输出返回值的类型 | 
@@ -125,7 +125,7 @@ ms.locfileid: "35300175"
 "rainbowColorsCount": 7 
 ```
 
-还可以获取在运行时之前不存在的值。 若要表示这些值，可以使用运行时计算的表达式。 表达式是可以包含一个或多个[函数](#functions)、[运算符](#operators)、变量、显式值或常量的序列。 在工作流定义中，可以在 JSON 字符串值中的任何位置使用表达式，并在表达式的前面加上 @ 符号前缀。 计算表示 JSON 值的表达式时，会通过删除 @ 字符来提取表达式主体，并且始终生成另一个 JSON 值。 
+还可以获取在运行时之前不存在的值。 若要表示这些值，可以使用运行时计算的表达式。 表达式是可以包含一个或多个[函数](#functions)、[运算符](#operators)、变量、显式值或常量的序列。 在工作流定义中，可以通过在表达式的前面加上 \@ 符号前缀在 JSON 字符串值中的任何位置使用表达式。 计算表示 JSON 值的表达式时，会通过删除 \@ 字符来提取表达式主体，并且始终生成另一个 JSON 值。 
 
 例如，对于前面定义的 `customerName` 属性，可以通过在表达式中使用 [parameters()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) 函数来获取属性值，并将该值分配给 `accountName` 属性：
 
@@ -134,7 +134,7 @@ ms.locfileid: "35300175"
 "accountName": "@parameters('customerName')"
 ```
 
-字符串内插还允许使用字符串中由 @ 字符和大括号 ({}) 包装的多个表达式。 语法如下：
+字符串内插还允许在字符串中使用由 \@ 字符和大括号 ({}) 包装的多个表达式。 语法如下：
 
 ```json
 @{ "<expression1>", "<expression2>" }
@@ -146,7 +146,7 @@ ms.locfileid: "35300175"
 "customerName": "First name: @{parameters('firstName')} Last name: @{parameters('lastName')}"
 ```
 
-如果某个文本字符串以 @ 字符开头，请加上 @ 字符作为前缀，并加上另一个 @ 字符作为转义符：@@
+如果某个文本字符串以 \@ 字符开头，请加上 \@ 字符作为前缀，并加上另一个 \@ 字符作为转义符：\@\@
 
 这些示例演示如何计算表达式：
 
@@ -154,8 +154,8 @@ ms.locfileid: "35300175"
 |------------|--------| 
 | "Sophia Owen" | 返回这些字符：'Sophia Owen' |
 | "array[1]" | 返回这些字符：'array[1]' |
-| "\@@\" | 以单字符字符串的形式返回这些字符：\'\@\' |   
-| \" \@\" | 以双字符字符串的形式返回这些字符：\' \@\' |
+| "\@\@" | 以单字符字符串的形式返回这些字符：'\@' |   
+| " \@" | 以双字符字符串的形式返回这些字符：' \@' |
 |||
 
 这些示例假设定义了 "myBirthMonth" 等于 "January"，"myAge" 等于数字 42：  
@@ -169,13 +169,13 @@ ms.locfileid: "35300175"
 
 | JSON 表达式 | 结果 |
 |-----------------|--------| 
-| "@parameters('myBirthMonth')" | 返回此字符串："January" |  
-| "@{parameters('myBirthMonth')}" | 返回此字符串："January" |  
-| "@parameters('myAge')" | 返回此数字：42 |  
-| "@{parameters('myAge')}" | 以字符串形式返回此数字："42" |  
-| "My age is @{parameters('myAge')}" | 返回此字符串："My age is 42" |  
-| "@concat('My age is ', string(parameters('myAge')))" | 返回此字符串："My age is 42" |  
-| "My age is @@{parameters('myAge')}" | 返回包含表达式的此字符串："My age is @{parameters('myAge')}` | 
+| "\@parameters('myBirthMonth')" | 返回此字符串："January" |  
+| "\@{parameters('myBirthMonth')}" | 返回此字符串："January" |  
+| "\@parameters('myAge')" | 返回此数字：42 |  
+| "\@{parameters('myAge')}" | 以字符串形式返回此数字："42" |  
+| "My age is \@{parameters('myAge')}" | 返回此字符串："My age is 42" |  
+| "\@concat('My age is ', string(parameters('myAge')))" | 返回此字符串："My age is 42" |  
+| "My age is \@\@{parameters('myAge')}" | 返回包含表达式的此字符串："My age is \@{parameters('myAge')}` | 
 ||| 
 
 在逻辑应用设计器中以可视方式操作时，可以通过表达式生成器创建表达式，例如： 
@@ -241,10 +241,10 @@ ms.locfileid: "35300175"
 
 | 任务 | 表达式中的函数语法 | 
 | ---- | -------------------------------- | 
-| 通过将某个项传递给函数，对该项执行操作。 | "@<*functionName*>(<*item*>)" | 
-| 1.使用嵌套的 `parameters()` 函数获取 *parameterName* 的值。 </br>2.通过将结果传递给 *functionName*，对该值执行操作。 | "@<*functionName*>(parameters('<*parameterName*>'))" | 
-| 1.从嵌套的内部函数 *functionName* 获取结果。 </br>2.将结果传递给外部函数 *functionName2*。 | "@<*functionName2*>(<*functionName*>(<*item*>))" | 
-| 1.从 *functionName* 获取结果。 </br>2.如果结果是包含属性 *propertyName* 的对象，则获取该属性的值。 | "@<*functionName*>(<*item*>).<*propertyName*>" | 
+| 通过将某个项传递给函数，对该项执行操作。 | "\@<*functionName*>(<*item*>)" | 
+| 1.使用嵌套的 `parameters()` 函数获取 *parameterName* 的值。 </br>2.通过将结果传递给 *functionName*，对该值执行操作。 | "\@<*functionName*>(parameters('<*parameterName*>'))" | 
+| 1.从嵌套的内部函数 *functionName* 获取结果。 </br>2.将结果传递给外部函数 *functionName2*。 | "\@<*functionName2*>(<*functionName*>(<*item*>))" | 
+| 1.从 *functionName* 获取结果。 </br>2.如果结果是包含属性 *propertyName* 的对象，则获取该属性的值。 | "\@<*functionName*>(<*item*>).<*propertyName*>" | 
 ||| 
 
 例如，`concat()` 函数可以采用两个或更多个字符串值作为参数。 此函数将这些字符串组合成一个字符串。 可以传入字符串文字（例如 "Sophia" 和 "Owen"），以便获取组合的字符串 "SophiaOwen"：

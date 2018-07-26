@@ -3,19 +3,19 @@ title: LUIS 预构建已弃用的实体参考 - Azure | Microsoft Docs
 titleSuffix: Azure
 description: 本文包含了语言理解 (LUIS) 中已弃用的预构建实体的信息。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 8ff260adf437eb8b390d5cfb708d2a98f989bdcb
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.author: diberry
+ms.openlocfilehash: 8fbd2e7ea0998a6a3dc141b97d64341c8140fa61
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321549"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237054"
 ---
 # <a name="deprecated-entities"></a>已弃用的实体
 以下预构建实体已被弃用，不能添加到新的 LUIS 应用中。
@@ -29,7 +29,7 @@ ms.locfileid: "36321549"
 
 #### <a name="3-geography-subtypes"></a>3 个 Geography 子类型
 
-预构建实体   |   陈述示例   |   JSON
+预构建实体   |   示例陈述   |   JSON
 ------|------|------|
 ```builtin.geography.city```   |  ```seattle```    |```{ "type": "builtin.geography.city", "entity": "seattle" }```|
 ```builtin.geography.city```   |  ```paris```    |```{ "type": "builtin.geography.city", "entity": "paris" }```|

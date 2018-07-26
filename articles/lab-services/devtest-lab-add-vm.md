@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 5f953cd6f33e5d46098566740efbf83a5fd80799
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 9ddf44ef933270c08b42f67387866cd7a3b34719
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38635310"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004073"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>向 Azure 开发测试实验室中的实验室添加 VM
 如果已[创建第一个 VM](devtest-lab-create-first-vm.md)，则很可能从预加载的[市场映像](devtest-lab-configure-marketplace-images.md)执行此操作。 现在，如果要将后续 VM 添加到实验室，还可以选择作为[自定义映像](devtest-lab-create-template.md)或[公式](devtest-lab-manage-formulas.md)的*基本*映像。 本教程会引导完成使用 Azure 门户向开发测试实验室中的实验室添加 VM 的过程。
@@ -40,12 +40,12 @@ ms.locfileid: "38635310"
     ![实验室 VM 窗格](./media/devtest-lab-add-vm/devtestlab-lab-vm-blade.png)
 
 1. 输入在虚拟机上被授予了管理员权限的**用户名**。  
-1. 如果想要使用在[密码存储](https://azure.microsoft.com/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store)中存储的密码，请选择“使用保存的密码”，并指定与密码对应的密钥值。 否则，在标签为“键入值”的文本字段输入一个密码。
+1. 如果想要使用在 [Azure 密钥保管库](devtest-lab-store-secrets-in-key-vault.md)中存储的密码，请选择“使用保存的机密”，并指定与机密（密码）对应的密钥值。 否则，在标签为“键入值”的文本字段输入一个密码。 若要了解如何在密钥保管库中保存机密并在创建实验室资源时使用这些机密，请参阅[在 Azure 密钥保管库中存储机密](devtest-lab-store-secrets-in-key-vault.md)。
 1. **虚拟机磁盘类型**决定了允许将哪种存储磁盘类型用于实验室中的虚拟机。
-1. 选择“虚拟机大小”，并选择指定待创建 VM 的处理器内核、RAM 大小和硬盘驱动器大小的预定义项之一。
-1. 选择“项目”，并从项目列表中选择并配置要添加到基础映像的项目。
+2. 选择“虚拟机大小”，并选择指定待创建 VM 的处理器内核、RAM 大小和硬盘驱动器大小的预定义项之一。
+3. 选择“项目”，并从项目列表中选择并配置要添加到基础映像的项目。
     **注意：** 如果对开发测试实验室或配置项目不熟悉，请参阅[向 VM 中添加现有项目](#add-an-existing-artifact-to-a-vm)部分，并在完成后返回此处。
-1. 选择“高级设置”来配置 VM 的网络选项和到期选项。 
+4. 选择“高级设置”来配置 VM 的网络选项和到期选项。 
 
    若要设置过期选项，请选择“日历”图标，指定一个自动删除 VM 的日期。  默认情况下，VM 永不过期。 
 1. 如果想要查看或复制 Azure 资源管理器模板，请参阅[保存 Azure 资源管理器模板](#save-azure-resource-manager-template)部分，并在完成后返回此处。

@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/19/2018
+ms.date: 07/11/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 9cb7a076ea922b9868bd439d160aec96f044e3b6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 02c068fc70748584583b2c71659b1a1abdc0a46d
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32157469"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035765"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions 中的监视场景 - 天气观察程序示例
 
@@ -65,7 +65,7 @@ ms.locfileid: "32157469"
 * `E3_GetIsClear`：检查某个地点的当前天气状况的活动函数。
 * `E3_SendGoodWeatherAlert`：通过 Twilio 发送短信的活动函数。
 
-以下部分介绍用于 C# 脚本的配置和代码。 文章末尾展示了用于 Visual Studio 开发的代码。
+以下各部分介绍了用于 C# 脚本和 JavaScript 的配置和代码。 文章末尾展示了用于 Visual Studio 开发的代码。
  
 ## <a name="the-weather-monitoring-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>天气监视业务流程（Visual Studio Code 和 Azure 门户示例代码）
 
@@ -75,7 +75,13 @@ ms.locfileid: "32157469"
 
 实现该函数的代码如下：
 
+### <a name="c"></a>C#
+
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
+
+### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
 
 此业务流程协调程序函数执行以下操作：
 
@@ -88,11 +94,13 @@ ms.locfileid: "32157469"
 
 可以通过发送多个 **MonitorRequests** 来同时运行多个业务流程实例。 可以指定要监视的地点，以及要将短信提醒发送到的电话号码。
 
-## <a name="strongly-typed-data-transfer"></a>强类型数据传输
+## <a name="strongly-typed-data-transfer-net-only"></a>强类型数据传输（仅限 .NET）
 
-业务流程协调程序需要多个数据片断，因此，对强类型数据传输使用了[共享的 POCO 对象](functions-reference-csharp.md#reusing-csx-code)：[!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/MonitorRequest.csx)]
+业务流程协调程序需要多个数据片断，因此，在 C# 和 C# 脚本中对强类型数据传输使用了[共享 POCO 对象](functions-reference-csharp.md#reusing-csx-code)：[!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/MonitorRequest.csx)]
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/Location.csx)]
+
+JavaScript 示例使用正则 JSON 对象作为参数。
 
 ## <a name="helper-activity-functions"></a>帮助器活动函数
 
@@ -100,9 +108,15 @@ ms.locfileid: "32157469"
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/function.json)]
 
-实现如下。 与用于数据传输的 POCO 一样，用于处理 API 调用和分析响应 JSON 的逻辑已抽象化为共享类。 可以在 [Visual Studio 示例代码](#run-the-sample)中找到此逻辑。
+实现如下。 与用于数据传输的 POCO 一样，用于处理 API 调用和分析响应 JSON 的逻辑已抽象化为 C# 中的共享类。 可以在 [Visual Studio 示例代码](#run-the-sample)中找到此逻辑。
+
+### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
+
+### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
 
 **E3_SendGoodWeatherAlert** 函数使用 Twilio 绑定来发送短信，告知最终用户目前的天气适合散步。 该函数的 *function.json* 十分简单：
 
@@ -110,7 +124,13 @@ ms.locfileid: "32157469"
 
 下面是发送短信的代码：
 
+### <a name="c"></a>C#
+
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
+
+### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
 
 ## <a name="run-the-sample"></a>运行示例
 
@@ -131,6 +151,9 @@ RetryAfter: 10
 
 {"id": "f6893f25acf64df2ab53a35c09d52635", "statusQueryGetUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "sendEventPostUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/raiseEvent/{eventName}?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "terminatePostUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason={text}&taskHub=SampleHubVS&connection=Storage&code={systemKey}"}
 ```
+
+   > [!NOTE]
+   > 目前，JavaScript 业务流程启动器函数不能返回实例管理 URI。 此功能将在以后的版本中添加。
 
 **E3_Monitor** 实例启动，并查询请求位置的当前天气状况。 如果天气为晴，则调用某个活动函数来发送提醒；否则将设置计时器。 当计时器过期时，业务流程将会恢复。
 

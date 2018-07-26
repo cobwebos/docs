@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/24/2018
 ms.author: tdykstra
-ms.openlocfilehash: 1b22357b201306ec09e586bfa52fbe9a821250da
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 912176df2681f890cf3bbe6f69395ad39c9263fc
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887464"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004891"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions 触发器和绑定概念
 
@@ -32,7 +32,7 @@ ms.locfileid: "37887464"
 
 输入和输出“绑定”提供从代码内连接到数据的声明性方式。 绑定是可选项，一个函数可以有多个输入和输出绑定。 
 
-借助触发器和绑定，可避免对正在使用的服务的详细信息进行硬编码。 函数接收函数参数中的数据（例如，队列消息内容）。 使用函数的返回值发送数据（例如，用于创建队列消息），返回值可能是 `out` 参数或[收集器对象](functions-reference-csharp.md#writing-multiple-output-values)。
+借助触发器和绑定，可避免对正在使用的服务的详细信息进行硬编码。 函数接收函数参数中的数据（例如，队列消息内容）。 使用函数的返回值发送数据（例如，用于创建队列消息）。 在 C# 和 C# 脚本中，发送数据的替代方法是使用 `out` 参数和[收集器对象](functions-reference-csharp.md#writing-multiple-output-values)。
 
 使用 Azure 门户开发函数时，会在 function.json 文件中配置触发器和绑定。 门户提供此配置的 UI，但可通过更换为“高级编辑器”，直接编辑文件。
 
@@ -224,9 +224,11 @@ dotnet add package Microsoft.Azure.WebJobs.ServiceBus --version <target_version>
 * 在 C# 类库，请将输出绑定特性应用到方法返回值。
 * 在其他语言中，请将 *function.json* 中的 `name` 属性设置为 `$return`。
 
-如果需要编写多个项，请使用[收集器对象](functions-reference-csharp.md#writing-multiple-output-values)，而不要使用返回值。 如果有多个输出绑定，请只使用其中一个绑定的返回值。
+如果有多个输出绑定，请只使用其中一个绑定的返回值。
 
-参阅语言特定的示例：
+在 C# 和 C# 脚本中，将数据发送到输出绑定的替代方法是使用 `out` 参数和[收集器对象](functions-reference-csharp.md#writing-multiple-output-values)。
+
+请参阅演示如何使用返回值的特定于语言的示例：
 
 * [C#](#c-example)
 * [C# 脚本 (.csx)](#c-script-example)

@@ -1,30 +1,23 @@
 ---
-title: 查询索引（门户 - Azure 搜索）| Microsoft Docs
-description: 在 Azure 门户的搜索资源管理器中发出搜索查询。
+title: 用于在 Azure 搜索中查询索引的搜索浏览器 | Microsoft Docs
+description: 了解如何使用搜索浏览器在 Azure 搜索中查询索引。
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
-ms.topic: quickstart
-ms.date: 07/10/2017
+ms.topic: conceptual
+ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: a3592bd0c304dfb78374eeba432c0d28203980c9
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 520d9e7b1899c54d922ff6fb77e0901f9609b029
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31790502"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004127"
 ---
-# <a name="query-an-azure-search-index-using-search-explorer-in-the-azure-portal"></a>使用搜索资源管理器在 Azure 门户中查询 Azure 搜索索引
-> [!div class="op_single_selector"]
-> * [概述](search-query-overview.md)
-> * [门户](search-explorer.md)
-> * [.NET](search-query-dotnet.md)
-> * [REST](search-query-rest-api.md)
-> 
-> 
+# <a name="how-to-use-search-explorer-to-query-indexes-in-azure-search"></a>如何使用搜索浏览器在 Azure 搜索中查询索引 
 
-本文介绍如何使用搜索资源管理器在 Azure 门户中查询 Azure 搜索索引。 可以使用搜索资源管理器，向服务中的任何现有索引提交简单或完整的 Lucene 查询字符串。
+本文介绍如何使用搜索浏览器在 Azure 门户中查询现有 Azure 搜索索引。 可以使用搜索浏览器，向服务中的任何现有索引提交简单或完整的 Lucene 查询字符串。
 
 ## <a name="open-the-service-dashboard"></a>打开服务仪表板
 1. 在 [Azure 门户](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)左侧的跳转栏中，单击“所有资源”。
@@ -36,15 +29,15 @@ ms.locfileid: "31790502"
 
    ![](./media/search-explorer/pick-index.png)
 
-## <a name="open-search-explorer"></a>打开搜索资源管理器
+## <a name="open-search-explorer"></a>打开搜索浏览器
 
-单击“搜索资源管理器”磁贴，以滑动方式打开搜索栏和结果窗格。
+单击“搜索浏览器”磁贴，以滑动方式打开搜索栏和结果窗格。
 
    ![](./media/search-explorer/search-explorer-tile.png)
 
 ## <a name="start-searching"></a>开始搜索
 
-使用“搜索资源管理器”时，可以指定用于表述查询的[查询参数](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。
+使用“搜索浏览器”时，可以指定用于表述查询的[查询参数](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。
 
 1. 在“查询字符串”中键入查询，然后按“搜索”。 
 

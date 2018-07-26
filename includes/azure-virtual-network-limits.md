@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/20/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 326da32f91b263bbd09a4c6f521c9ec72094820c
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 9ba9bc993832350f6b6ce1c642e2dc852731b6f0
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37066061"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39029997"
 ---
 <a name="virtual-networking-limits-classic"></a>以下限制仅适用于每个订阅通过经典部署模型托管的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
 
@@ -41,7 +41,7 @@ ms.locfileid: "37066061"
 | --- | --- | --- |
 | 虚拟网络 |50 |1000 |
 | 每个虚拟网络的子网数 |1000 |10000 |
-| 每个虚拟网络的虚拟网络对等互连数 |10 |50 |
+| 每个虚拟网络的虚拟网络对等互连数 |50** |100 |
 | 每个虚拟网络的 DNS 服务器数 |9 |25 |
 | 每个虚拟网络的专用 IP 地址数 |16384** |16384 |
 | 每个网络接口的专用 IP 地址数 |256 |256 |
@@ -55,13 +55,13 @@ ms.locfileid: "37066061"
 | 每个应用程序安全组的 IP 配置数 |1000 |4000 |
 | 可在网络安全组的所有安全规则中指定的应用程序安全组数 |50 |100 |
 | 用户定义路由表数 |100 |200 |
-| 每个路由表的用户定义的路由数 |100 |400 |
+| 每个路由表的用户定义的路由数 |400** |400 |
 | 公共 IP 地址数 - 动态 |（基本）60 |联系支持人员 |
 | 公共 IP 地址数 - 静态 |（基本）20 |联系支持人员 |
 | 公共 IP 地址数 - 静态 |（标准）20 |联系支持人员 |
 | 每个 VPN 网关的点到站点根证书 |20 |20 |
 
-**这些默认限制适用于以前未通过客户支持提高这些上限的订阅
+**这些更新的默认限制适用于以前未通过客户支持提高这些上限的订阅。 如果你过去通过客户支持提高了这些上限，并且希望将其更新为新的默认值，请[免费建立联机客户支持请求](../articles/azure-resource-manager/resource-manager-quota-errors.md)
 
 #### <a name="load-balancer"></a>负载均衡器限制
 以下限制仅适用于每个订阅按区域通过 Azure 资源管理器管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 7740da505f7635944536252d60ec2c2039295975
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 8546b1228c8d8f213cb87692144e8d1d31a949d8
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36323382"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001797"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>如何将 Azure API 管理与 Azure Application Insights 集成
 
@@ -50,6 +50,9 @@ Azure API 管理可以轻松地与 Azure Application Insights 集成（一个可
 6. 你刚刚创建了一个具有检测密钥的 Azure Application Insights 记录器。 该记录器现在应已显示在列表中。  
     ![App Insights 记录器](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
 
+> [!NOTE]
+> 在后台，将在 API 管理实例中创建了一个 [Logger](https://docs.microsoft.com/en-us/rest/api/apimanagement/logger/createorupdate) 实体，其中包含 Application Insights 实例的检测密钥。
+
 ## <a name="enable-application-insights-logging-for-your-api"></a>为 API 启用 Application Insights 日志记录
 
 1. 在 **Azure 门户**中导航到自己的 **Azure API 管理服务实例**。
@@ -64,7 +67,10 @@ Azure API 管理可以轻松地与 Azure Application Insights 集成（一个可
 9. 在“正文的前几个字节”字段中输入 **1024**。
 10. 单击“ **保存**”。
 
-| 设置名称                        | 值类型                        | 说明                                                                                                                                                                                                                                                                                                                                      |
+> [!NOTE]
+> 在后台，将在 API 级别创建一个名为“applicationinsights”的 [Diagnostic](https://docs.microsoft.com/en-us/rest/api/apimanagement/diagnostic/createorupdate) 实体。
+
+| 设置名称                        | 值类型                        | Description                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 启用                              | 布尔值                           | 指定是否要启用此 API 的日志记录。                                                                                                                                                                                                                                                                                                |
 | 目标                         | Azure Application Insights 记录器 | 指定要使用的 Azure Application Insights 记录器                                                                                                                                                                                                                                                                                           |

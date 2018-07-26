@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: kumud
-ms.openlocfilehash: 00a56a2683e95e70bb13acd6b936e766f044e1cd
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 7ee3dbdcd4d8b2627273a871aec94583b6c5dd6a
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32771967"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39058119"
 ---
 # <a name="create-dns-records-for-a-web-app-in-a-custom-domain"></a>在自定义域中为 Web 应用创建 DNS 记录
 
@@ -42,7 +42,7 @@ ms.locfileid: "32771967"
 
 ## <a name="1-create-an-a-record-for-your-custom-domain"></a>1.为自定义域创建 A 记录
 
-A 记录可用于将名称映射到其 IP 地址。 在下面的示例中，我们会将 @ 作为 A 记录分配给 IPv4 地址：
+A 记录可用于将名称映射到其 IP 地址。 在下面的示例中，我们会将 \@ 作为 A 记录分配给 IPv4 地址：
 
 ### <a name="step-1"></a>步骤 1
 
@@ -54,7 +54,7 @@ $rs= New-AzureRMDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" -
 
 ### <a name="step-2"></a>步骤 2
 
-使用分配的 $rs 变量将 IPv4 值添加到以前创建的记录集“@”。 分配的 IPv4 值将是 Web 应用的 IP 地址。
+使用分配的 $rs 变量将 IPv4 值添加到以前创建的记录集“\@”。 分配的 IPv4 值将是 Web 应用的 IP 地址。
 
 若要查找 Web 应用的 IP 地址，请按照[在 Azure 应用服务中配置自定义域名](../app-service/app-service-web-tutorial-custom-domain.md)中的步骤执行操作。
 

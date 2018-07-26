@@ -35,7 +35,7 @@
               href: ../hdinsight-connect-hive-zeppelin.md
               maintainContext: true
             - name: 适用于 Visual Studio 的工具
-              href: ../hdinsight-hadoop-visual-studio-tools-get-started.md
+              href: ../hadoop/apache-hadoop-visual-studio-tools-get-started.md
               maintainContext: true
             - name: 适用于 VSCode 的工具
               href: ../hdinsight-for-vscode.md

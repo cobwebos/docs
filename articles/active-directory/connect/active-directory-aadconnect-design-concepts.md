@@ -16,12 +16,12 @@ ms.workload: Identity
 ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0a648d0733d9d81cc0e586f5fa54dc8d75d2f6f0
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 6d8d911acf3e3eff2cf3340972b9b77a10be0a5f
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801926"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "35631923"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect：设计概念
 本文档旨在说明 Azure AD Connect 实现设计期间必须考虑到的各个方面。 本文档是特定领域的深入探讨，其他文档中也简要描述了这些概念。
@@ -44,7 +44,7 @@ sourceAnchor 属性定义为*在对象生存期内不会变化的属性*。 它�
 
 * 长度少于 60 个字符
   * 系统将 a-z、A-Z 或 0-9 以外的字符编码并计为 3 个字符
-* 不包含特殊字符：&#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > ( ) ' ; : , [ ] " @ _
+* 不包含特殊字符：&#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > ( ) ' ; : , [ ] " \@ _
 * 必须全局唯一
 * 必须是字符串、整数或二进制数
 * 不应基于用户的名称，因为它们会改变
@@ -61,7 +61,7 @@ sourceAnchor 属性区分大小写。 “JohnDoe”与“johndoe”是不同的�
 
 如果要在林和域之间移动用户，必须查找不会更改的属性或者在移动时可随用户移动的属性。 建议的方法是引入合成属性。 可以保存 GUID 等信息的属性也可能适用。 在对象创建期间，将创建新的 GUID 创建并对用户加上戳记。 可以在同步引擎服务器中创建自定义同步规则，根据 **objectGUID** 创建此值，并在 ADDS 中更新选择的属性。 当移动对象时，请务必同时复制此值的内容。
 
-另一个解决方案是选择已知不会更改的现有属性。 常用的属性包括 **employeeID**。 如果打算使用包含字母的属性，请确保属性值的大小写（大写与小写）不会更改。 例如，包含用户姓名的属性就是不应使用的不当属性。 因为在结婚或离婚时，此姓名很可能会更改，所以不适用于此属性。 这也是无法在 Azure AD Connect 安装向导中选择 **userPrincipalName**、**mail** 和 **targetAddress** 等属性的原因之一。 这些属性还包含“@”字符，sourceAnchor 中不允许此字符。
+另一个解决方案是选择已知不会更改的现有属性。 常用的属性包括 **employeeID**。 如果打算使用包含字母的属性，请确保属性值的大小写（大写与小写）不会更改。 例如，包含用户姓名的属性就是不应使用的不当属性。 因为在结婚或离婚时，此姓名很可能会更改，所以不适用于此属性。 这也是无法在 Azure AD Connect 安装向导中选择 **userPrincipalName**、**mail** 和 **targetAddress** 等属性的原因之一。 这些属性还包含“\@”字符，sourceAnchor 中不允许此字符。
 
 ### <a name="changing-the-sourceanchor-attribute"></a>更改 sourceAnchor 属性
 在 Azure AD 中创建对象并同步标识之后，无法更改 sourceAnchor 属性值。
@@ -119,7 +119,7 @@ Azure AD Connect（1.1.524.0 及更高版本）现在可以方便地将 msDS-Con
 
 ![自定义安装 - sourceAnchor 配置](./media/active-directory-aadconnect-design-concepts/consistencyGuid-02.png)
 
-| 设置 | 说明 |
+| 设置 | Description |
 | --- | --- |
 | 让 Azure 为我管理源定位点 | 如果想要 Azure AD 选取属性，请选择此选项。 如果选择此选项，Azure AD Connect 向导会应用[在快速安装时使用的 sourceAnchor 属性选择逻辑](#express-installation)。 与快速安装类似，自定义安装完成后，向导会通知你已选取哪个属性作为“源定位点”属性。 |
 | 特定的属性 | 如果希望指定现有的 AD 属性作为 sourceAnchor 属性，请选择此选项。 |
@@ -180,7 +180,7 @@ Azure AD Connect（1.1.524.0 及更高版本）现在可以方便地将 msDS-Con
 ### <a name="choosing-the-attribute-for-userprincipalname"></a>选择 userPrincipalName 的属性
 选择属性以便提供用于 Azure 的 UPN 值时，应确保
 
-* 属性值符合 UPN 语法 (RFC 822)，其格式应为 username@domain
+* 属性值符合 UPN 语法 (RFC 822)，其格式应为“username\@domain”
 * 这些值的后缀符合 Azure AD 中其中一个已验证的自定义域
 
 在快速设置中，属性的假设选择是 userPrincipalName。 如果 userPrincipalName 属性不包含希望用户用于登录 Azure 的值，则必须选择“自定义安装”。
@@ -188,7 +188,7 @@ Azure AD Connect（1.1.524.0 及更高版本）现在可以方便地将 msDS-Con
 ### <a name="custom-domain-state-and-upn"></a>自定义域状态和 UPN
 必须确保 UPN 后缀包含已验证的域。
 
-John 是 contoso.com 中的用户。 在将用户同步到 Azure AD 目录 contoso.onmicrosoft.com 之后，希望 John 使用本地 UPN john@contoso.com 登录到 Azure。 为此，需要将 contoso.com 添加为 Azure AD 中的自定义域并进行验证，才能开始同步用户。 如果 John 的 UPN 后缀（例如 contoso.com）与 Azure AD 中已验证的域不匹配，Azure AD 会将该 UPN 后缀替换为 contoso.onmicrosoft.com。
+John 是 contoso.com 中的用户。 在将用户同步到 Azure AD 目录 contoso.onmicrosoft.com 之后，希望 John 使用本地 UPN john\@contoso.com 登录到 Azure。 为此，需要将 contoso.com 添加为 Azure AD 中的自定义域并进行验证，才能开始同步用户。 如果 John 的 UPN 后缀（例如 contoso.com）与 Azure AD 中已验证的域不匹配，Azure AD 会将该 UPN 后缀替换为 contoso.onmicrosoft.com。
 
 ### <a name="non-routable-on-premises-domains-and-upn-for-azure-ad"></a>不可路由的本地域与 Azure AD 的 UPN
 有些组织使用不可路由的域（例如 contoso.local）或简单的单标签域（例如 contoso）。 在 Azure AD 中，无法验证不可路由的域。 Azure AD Connect 只能同步到 Azure AD 中已验证的域。 创建 Azure AD 目录时，将创建可路由的域，而该域将成为 Azure AD 的默认域，例如 contoso.onmicrosoft.com。 因此，如果不想要同步到默认的 onmicrosoft.com 域，则必须在此类方案中验证任何其他可路由的域。

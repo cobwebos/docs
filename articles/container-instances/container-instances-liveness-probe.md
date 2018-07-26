@@ -8,22 +8,22 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: juluk
-ms.openlocfilehash: 76ca4db28d99702532ae656a19f0d54b479a13fe
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: e47d203ab21afc6d07f425ae6367fbc536b13f1d
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248911"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39011825"
 ---
 # <a name="configure-liveness-probes"></a>配置运行情况探测
 
-容器化应用程序可能会运行较长时间，从而导致形成可能需要通过重启容器来修复的损坏状态。 Azure 容器实例支持运行情况探测包括各种配置，以便容器能够在关键功能未正常工作时重启。 
+容器化应用程序可能会运行较长时间，从而导致形成可能需要通过重启容器来修复的损坏状态。 Azure 容器实例支持运行情况探测包括各种配置，以便容器能够在关键功能未正常工作时重启。
 
 本文介绍了如何部署包括运行情况探测的容器组，演示了模拟的不正常容器的自动重启。
 
 ## <a name="yaml-deployment"></a>YAML 部署
 
-创建包含下面的代码片段的 `liveness-probe.yaml` 文件。 此文件定义了包含最终变得不正常的 NGNIX 容器的容器组。 
+创建包含下面的代码片段的 `liveness-probe.yaml` 文件。 此文件定义了包含最终变得不正常的 NGNIX 容器的容器组。
 
 ```yaml
 apiVersion: 2018-06-01
@@ -45,7 +45,7 @@ properties:
           memoryInGB: 1.5
       livenessProbe:
         exec:
-            command: 
+            command:
                 - "cat"
                 - "/tmp/healthy"
         periodSeconds: 5
@@ -81,9 +81,9 @@ az container create --resource-group myResourceGroup --name livenesstest -f live
 
 在前 30 秒内，启动命令创建的 `healthy` 文件存在。 当运行情况命令检查 `healthy` 文件是否存在时，状态代码返回零，表示成功，因此不会重启。
 
-在 30 秒后，`cat /tmp/healthy` 将开始失败，导致不正常的和终止事件发生。 
+在 30 秒后，`cat /tmp/healthy` 将开始失败，导致不正常的和终止事件发生。
 
-可以通过 Azure 门户或 Azure CLI 2.0 查看这些事件。
+可以通过 Azure 门户或 Azure CLI 查看这些事件。
 
 ![门户不正常事件][portal-unhealthy]
 

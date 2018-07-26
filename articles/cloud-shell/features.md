@@ -1,5 +1,5 @@
 ---
-title: Azure Cloud Shell 中的 Bash 功能 | Microsoft Docs
+title: Azure Cloud Shell 功能 | Microsoft Docs
 description: Azure Cloud Shell 中的 Bash 功能概述
 services: Azure
 documentationcenter: ''
@@ -12,52 +12,54 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 07/13/2018
 ms.author: juluk
-ms.openlocfilehash: b61dda5b56ca3cc8ef827a06aaedac701ca79f8f
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 09c3ca23aafc8519b9e3ad57d030f066bb153e26
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850196"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056185"
 ---
-# <a name="features--tools-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell 中的 Bash 的功能和工具
+# <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell 的功能和工具
 
 [!INCLUDE [features-introblock](../../includes/cloud-shell-features-introblock.md)]
 
-> [!TIP]
-> 此外还提供了 [PowerShell](features-powershell.md) 中的功能和工具。
-
-Cloud Shell 中的 Bash 在 `Ubuntu 16.04 LTS` 上运行。
+Azure Cloud Shell 在 `Ubuntu 16.04 LTS` 上运行。
 
 ## <a name="features"></a>功能
 
 ### <a name="secure-automatic-authentication"></a>安全自动身份验证
 
-Cloud Shell 中的 Bash 安全并自动地验证帐户对 Azure CLI 2.0 的访问权限。
-
-### <a name="ssh-into-azure-linux-virtual-machines"></a>通过 SSH 连接到 Azure Linux 虚拟机
-
-通过 Azure CLI 2.0 创建 Linux VM 可以创建默认的 SSH 密钥并将其放置在 `$Home` 目录中。 将 SSH 密钥放置在 `$Home` 中可以通过 Cloud Shell 与 Azure Linux VM 直接建立 SSH 连接。 密钥保存在文件共享中的 acc_<user>.img 内，使用文件共享或密钥或者共享其访问权限时，请遵循最佳做法。
+Cloud Shell 安全并自动地验证帐户对 Azure CLI 2.0 和 Azure PowerShell 的访问权限。
 
 ### <a name="home-persistence-across-sessions"></a>$Home 可在不同的会话中持久保存
 
 要在会话之间保存文件，Cloud Shell 会指导完成在首次启动时附加 Azure 文件共享。
 完成后，Cloud Shell 会自动为所有将来的会话附加存储（装载为 `$Home\clouddrive`）。
-此外，在 Cloud Shell 中的 Bash 中，`$Home` 目录以 .img 格式持久保存在 Azure 文件共享中。
-`$Home` 外部的文件和计算机状态不会持久保存在不同的会话中。
+此外，`$Home` 目录以 .img 格式持久保存在 Azure 文件共享中。
+`$Home` 外部的文件和计算机状态不会持久保存在不同的会话中。 存储机密（如 SSH 密钥）时，请使用最佳做法。 [像 Azure Key Vault 这样的服务有设置教程](https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#prerequisites)。
 
-[详细了解如何在 Cloud Shell 中的 Bash 中持久保存文件。](persisting-shell-storage.md)
+[详细了解如何在 Cloud Shell 中持久保存文件。](persisting-shell-storage.md)
 
-### <a name="integration-with-open-source-tooling"></a>与开放源代码工具集成
+### <a name="azure-drive-azure"></a>Azure 驱动器 (Azure:)
 
-Cloud Shell 中的 Bash 预先配置了开放源代码工具（如 Terraform、Ansible 和 Chef InSpec）的身份验证。 请通过示例演练试用该功能。
+PowerShell in Cloud Shell（预览版）启动后，用户会进入 Azure 驱动器 (`Azure:`) 路径下。
+使用 Azure 驱动器可以轻松发现和浏览 Azure 资源（例如计算、网络、存储等），类似于文件系统导航。
+无论位于何种驱动器，都可以继续使用熟悉的 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure) 来管理这些资源。
+直接在 Azure 门户中或者通过 Azure PowerShell cmdlet 对 Azure 资源所做的任何更改会反映在 Azure 驱动器中。  可以运行 `dir -Force` 刷新资源。
+
+![](media/features-powershell/azure-drive.png)
+
+### <a name="deep-integration-with-open-source-tooling"></a>与开源工具深度集成
+
+Cloud Shell 预先配置了开放源代码工具（如 Terraform、Ansible 和 Chef InSpec）的身份验证。 请通过示例演练试用该功能。
 
 ## <a name="tools"></a>工具
 
 |类别   |名称   |
 |---|---|
-|Linux 工具            |bash<br> sh<br> tmux<br> dig<br>               |
+|Linux 工具            |bash<br> zsh<br> sh<br> tmux<br> dig<br>               |
 |Azure 工具            |[Azure CLI 2.0](https://github.com/Azure/azure-cli) 和 [1.0](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) |
 |文本编辑器           |vim<br> nano<br> emacs       |
 |源代码管理         |git                    |
@@ -70,7 +72,7 @@ Cloud Shell 中的 Bash 预先配置了开放源代码工具（如 Terraform、A
 
 |语言   |版本   |
 |---|---|
-|.NET       |2.0.0       |
+|.NET Core  |2.0.0       |
 |Go         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.9.4      |
@@ -79,4 +81,6 @@ Cloud Shell 中的 Bash 预先配置了开放源代码工具（如 Terraform、A
 
 ## <a name="next-steps"></a>后续步骤
 [Cloud Shell 中的 Bash 快速入门](quickstart.md) <br>
-[了解 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/)
+[PowerShell in Cloud Shell（预览版）快速入门](quickstart-powershell.md) <br>
+[了解 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/) <br>
+[了解 Azure PowerShell](https://docs.microsoft.com/powershell/azure/) <br>

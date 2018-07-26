@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 5db1e7b9c97a0c19ef5ec0a41ea675c33c4d46fc
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 2f73a08d14d02b4e4b441b6ac85c6ceb97b9f173
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950910"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004976"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>使用 SSIS 连接器将数据移入或移出 Azure Blob 存储
 [用于 Azure 的 SQL Server Integration Services 功能包](https://msdn.microsoft.com/library/mt146770.aspx)提供了可用于连接到 Azure，在 Azure 和本地数据源之间传输数据以及处理存储在 Azure 中的数据的组件。
@@ -68,7 +68,7 @@ ms.locfileid: "37950910"
 
 以下是任务使用的参数：
 
-| 字段 | 说明 |
+| 字段 | Description |
 | --- | --- |
 | **AzureStorageConnection** |指定现有 Azure 存储连接管理器或新建一个 Azure 存储连接管理器，该管理器引用指向 blob 文件的托管位置的 Azure 存储帐户。 |
 | **BlobContainer** |指定将上传的文件保存为 blob 的 blob 容器名称。 |
@@ -83,7 +83,7 @@ ms.locfileid: "37950910"
 > 
 
 ## <a name="download-data-from-azure-blob-storage"></a>从 Azure Blob 存储下载数据
-要使用 SSIS 将数据从 Azure Blob 存储下载到本地存储，请使用 [Azure Blob 上传任务](https://msdn.microsoft.com/library/mt146779.aspx)的实例。
+要使用 SSIS 将数据从 Azure Blob 存储下载到本地存储，请使用 [Azure Blob 下载任务](https://msdn.microsoft.com/library/mt146779.aspx)的实例。
 
 ## <a name="more-advanced-ssis-azure-scenarios"></a>更高级的 SSIS-Azure 方案
 SSIS 功能包能够通过将任务一起打包来处理更复杂的流。 例如，blob 数据可以直接传输到 HDInsight 群集，可将此群集的输出下载回 blob，再下载到本地存储。 SSIS 可使用附加的 SSIS 连接器在 HDInsight 群集上运行 Hive 和 Pig 作业：

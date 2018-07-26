@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: shants
-ms.openlocfilehash: 12a3c4556de21bb0c0dd6b09458943fb03092532
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 543c30b4d2c960f3c7453369162a62dc4606d06e
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866121"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39068621"
 ---
 # <a name="handling-planned-maintenance-notifications-for-linux-virtual-machines"></a>处理 Linux 虚拟机的计划内维护通知
 
@@ -84,7 +84,7 @@ az vm get-instance-view -g rgName -n vmName
 
 在 MaintenanceRedeployStatus 下返回以下值： 
 
-| 值 | 说明   |
+| 值 | Description   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | 指示此时是否可以在 VM 上启动维护 ||
 | PreMaintenanceWindowStartTime         | 可以在 VM 上启动维护的自助式维护时段的起点 ||
@@ -101,7 +101,7 @@ az vm get-instance-view -g rgName -n vmName
 如果 `IsCustomerInitiatedMaintenanceAllowed` 设置为 true，以下调用会在 VM 上启动维护。
 
 ```azure-cli
-az vm perform-maintenance rgName vmName 
+az vm perform-maintenance -g rgName -n vmName 
 ```
 
 [!INCLUDE [virtual-machines-common-maintenance-notifications](../../../includes/virtual-machines-common-maintenance-notifications.md)]
@@ -160,7 +160,7 @@ azure compute virtual-machine initiate-maintenance --service-name myService --na
 
 **问：使用虚拟机规模集时的体验如何？**
 
-**答：** 虚拟机规模集现在可使用计划内维护。 有关如何启动自助维护的说明，请参阅虚拟机规模集文档中的“操作说明->管理->计划内维护”部分。
+**答：** 虚拟机规模集现在可使用计划内维护。 有关如何启动自助维护的说明，请参阅 [VMSS 的计划内维护](../../virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications.md)文档。
 
 **问：使用云服务（Web/辅助角色）和 Service Fabric 时的体验如何？**
 

@@ -3,19 +3,19 @@ title: LUIS 预构建实体货币参考 - Azure | Microsoft Docs
 titleSuffix: Azure
 description: 本文包含了语言理解 (LUIS) 中的货币预构建实体信息。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 3e20642f6734b0247d23db1a63317eb8b4a96b5e
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.author: diberry
+ms.openlocfilehash: b383e21f870d15818c540b79a9a56c1dd65fa342
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321509"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39236816"
 ---
 # <a name="currency-entity"></a>货币实体
 预构建货币实体检测许多国家/地区中许多面额的货币，无论 LUIS 应用语言区域是怎样的。 此实体已定型，因此不需要将包含货币的陈述示例添加到应用程序意向中。 [许多语言区域](luis-reference-prebuilt-entities.md)都支持货币实体。 

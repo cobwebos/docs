@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 268b9af7835c51d78812b35aff5aaac585961b01
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0414fa16f277c7495cc7fe4bdd7a51fc3a23ad93
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38619182"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988616"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>为开发测试实验室虚拟机创建自定义项目
 
@@ -53,7 +53,7 @@ ms.locfileid: "38619182"
       }
     }
 
-| 元素名称 | 必需？ | 说明 |
+| 元素名称 | 必需？ | Description |
 | --- | --- | --- |
 | $schema |否 |JSON 架构文件的位置。 JSON 架构文件可帮助测试定义文件的有效性。 |
 | title |是 |实验室中显示的项目的名称。 |
@@ -76,7 +76,7 @@ ms.locfileid: "38619182"
         }
       }
 
-| 元素名称 | 必需？ | 说明 |
+| 元素名称 | 必需？ | Description |
 | --- | --- | --- |
 | type |是 |参数值的类型。 请参阅以下允许类型列表。 |
 | displayName |是 |在实验室中显示给用户的参数的名称。 | |
@@ -113,7 +113,7 @@ ms.locfileid: "38619182"
 1. 安装 JSON 编辑器。 需要一个 JSON 编辑器来处理项目定义文件。 建议使用 [Visual Studio Code](https://code.visualstudio.com/)，它适用于 Windows、Linux 和 OS X。
 2. 获取示例 artifactfile.json 定义文件。 查看开发测试实验室团队在我们的 [GitHub 存储库](https://github.com/Azure/azure-devtestlab)中创建的项目。 我们已创建资源丰富的项目库，可帮助你创建自己的项目。 下载项目定义文件并对其进行更改以创建自己的项目。
 3. 利用 IntelliSense。 使用 IntelliSense 查看可用于构建项目定义文件的有效元素。 此外还可以查看元素值的不同选项。 例如，编辑“targetOsType”元素时，IntelliSense 显示 Windows 或 Linux 两种选择。
-4. 将项目存储在 [ 存储库](devtest-lab-add-artifact-repo.md)中。
+4. 将项目存储在[开发测试实验室的公共 Git 存储库](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)或[自己的 Git 存储库](devtest-lab-add-artifact-repo.md)中。
    
    1. 为每个项目创建单独的目录。 目录名称应与项目名称相同。
    2. 将项目定义文件 (artifactfile.json) 存储在创建的目录中。
@@ -122,9 +122,8 @@ ms.locfileid: "38619182"
       下面是项目文件夹的外观示例：
       
       ![项目文件夹示例](./media/devtest-lab-artifact-author/git-repo.png)
-5. 将项目存储库添加到实验室中。 请参阅[添加 Git 存储库以存储项目和模板](devtest-lab-add-artifact-repo.md)。
+5. 如果使用自己的存储库来存储项目，请按照以下文章中的说明将存储库添加到实验室：[为项目和模板添加 Git 存储库](devtest-lab-add-artifact-repo.md)。
 
-[!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="related-articles"></a>相关文章
 * [如何诊断开发测试实验室中的项目失败](devtest-lab-troubleshoot-artifact-failure.md)

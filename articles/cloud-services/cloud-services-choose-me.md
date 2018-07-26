@@ -1,9 +1,9 @@
 ---
-title: Azure 计算选项 - Azure 云服务 | Microsoft Docs
-description: 了解 Azure 计算托管选项及其工作原理：应用服务、Azure 云服务和虚拟机
+title: 什么是 Azure 云服务 | Microsoft Docs
+description: 了解什么是 Azure 云服务。
 services: cloud-services
 documentationcenter: ''
-author: Thraka
+author: jpconnock
 manager: timlt
 ms.assetid: ed7ad348-6018-41bb-a27d-523accd90305
 ms.service: multiple
@@ -12,22 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: adegeo
-ms.openlocfilehash: 2871a8c02db0ffc6d9033724e7c9f4a454afef8e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: jeconnoc
+ms.openlocfilehash: 6af4533a4ab374071b904cc4b03ca239a3e83364
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29120278"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39011655"
 ---
-# <a name="should-i-choose-azure-cloud-services-or-something-else"></a>应该选择 Azure 云服务还是其他服务？
-Azure 云服务是适合选择吗？ Azure 提供了用于运行应用程序的不同托管模型。 每个模型都提供了一组不同的服务。 选择哪个模型取决于你具体打算做什么。
-
-[!INCLUDE [compute-table](../../includes/compute-options-table.md)]
-
-<a name="tellmecs"></a>
-
-## <a name="tell-me-about-azure-cloud-services"></a>告诉我有关 Azure 云服务的信息
+# <a name="overview-of-azure-cloud-services"></a>Azure 云服务的概述
 Azure 云服务是[平台即服务](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 的一个示例。 与 [Azure 应用服务](../app-service/app-service-web-overview.md)一样，此技术设计用于支持可缩放、可靠且运营成本低廉的应用程序。 同样，应用服务托管在虚拟机 (VM) 上，Azure 云服务也是如此。 但是，你对 VM 有更多的控制。 可以在使用 Azure 云服务的 VM 上安装自己的软件，并且可以远程访问它们。
 
 ![Azure 云服务关系图](./media/cloud-services-choose-me/diagram.png)

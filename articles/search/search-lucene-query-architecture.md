@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jlembicz
-ms.openlocfilehash: 4382c3001f6b0a9227407beccb483347bccb387c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 55d361e90dbc5fe48bc118088a6f859d096048ff
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195001"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036864"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Azure 搜索中全文搜索的工作原理
 
@@ -185,7 +185,7 @@ Spacious,||air-condition*+"Ocean view"
 
 ### <a name="exceptions-to-lexical-analysis"></a>词法分析的例外情况 
 
-词法分析仅适用于需要完整字词的查询类型 – 字词查询或短语查询， 而不适用于使用不完整字词的查询类型 – 前缀查询、通配符查询、正则表达式查询，或者模糊查询。 这些查询类型（包括前缀查询，在本示例中包含字词 *air-condition\**）将直接添加到查询树，会绕过分析阶段。 针对这些类型的查询字词执行的唯一转换操作是转换为小写。
+词法分析仅适用于需要完整字词的查询类型 – 字词查询或短语查询， 而不适用于使用不完整字词的查询类型 – 前缀查询、通配符查询、正则表达式查询，或者模糊查询。 这些查询类型（包括前缀查询，在本示例中包含字词 `air-condition*`）将直接添加到查询树，会绕过分析阶段。 针对这些类型的查询字词执行的唯一转换操作是转换为小写。
 
 <a name="stage3"></a>
 

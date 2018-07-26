@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 240f5270d083fa5f4742f3ed2cd61feee2b635ec
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7bbcaa82b1072b8cbdea015195a8da03ceb3a25f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38718951"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056753"
 ---
 # <a name="deploy-a-configuration-server"></a>部署配置服务器
 
@@ -38,9 +38,9 @@ ms.locfileid: "38718951"
 
 | CPU | **内存** | **缓存磁盘大小** | **数据更改率** | **受保护的计算机** |
 | --- | --- | --- | --- | --- |
-| 8 个 vCPU（2 个插槽 * 4 个核心 @ 2.5 GHz） |16 GB |300 GB |500 GB 或更少 |复制少于 100 台计算机。 |
-| 12 个 vCPU（2 个插槽 * 6 个核心 @ 2.5 GHz） |18 GB |600 GB |500 GB 到 1 TB |复制 100-150 台计算机。 |
-| 16 个 vCPU（2 个插槽 * 8 个核心 @ 2.5 GHz） |32 GB |1 TB |1 TB 到 2 TB |复制 150-200 台计算机。 |
+| 8 个 vCPU（2 个插槽 * 4 个核心 \@ 2.5 GHz） |16 GB |300 GB |500 GB 或更少 |复制少于 100 台计算机。 |
+| 12 个 vCPU（2 个插槽 * 6 个核心 \@ 2.5 GHz） |18 GB |600 GB |500 GB 到 1 TB |复制 100-150 台计算机。 |
+| 16 个 vCPU（2 个插槽 * 8 个核心 \@ 2.5 GHz） |32 GB |1 TB |1 TB 到 2 TB |复制 150-200 台计算机。 |
 
 如果要复制多个 VMware VM，请阅读[容量规划注意事项](/site-recovery-plan-capacity-vmware.md)。 为 VMWare 复制运行 [Deployment Planner 工具](site-recovery-deployment-planner.md)。
 

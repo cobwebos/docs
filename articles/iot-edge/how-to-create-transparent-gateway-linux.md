@@ -8,12 +8,12 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 45179f8f1f46be764144bdc22d5bab3548e9401d
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 2b4e2a19b5d5f6491ff3db24489b361040a52280
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346053"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035568"
 ---
 # <a name="create-a-linux-iot-edge-device-that-acts-as-a-transparent-gateway"></a>创建充当透明网关的 Linux IoT Edge 设备
 
@@ -22,7 +22,7 @@ ms.locfileid: "37346053"
 >[!NOTE]
 >当前：
 > * 如果网关与 IoT 中心断开连接，则下游设备无法通过网关进行身份验证。
-> * IoT Edge 设备无法连接到 IoT Edge 网关。
+> * 支持 Edge 的设备无法连接到 IoT Edge 网关。 
 > * 下游设备不能使用文件上传。
 
 创建透明网关的难点在于安全地将网关连接到下游设备。 Azure IoT Edge 支持使用 PKI 基础结构在这些设备之间建立安全的 TLS 连接。 在这种情况下，我们可以将下游设备连接到充当透明网关的 IoT Edge 设备。  若要保持合理的安全性，下游设备应确认 Edge 设备的标识，因为仅想让设备连接到网关，而不是潜在的恶意网关。
@@ -181,7 +181,7 @@ IoT Edge 运行时可以像模块发送的消息一样路由从下游设备发�
    { "routes":{ "sensorToAIInsightsInput1":"FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO BrokeredEndpoint(\"/modules/ai_insights/inputs/input1\")", "AIInsightsToIoTHub":"FROM /messages/modules/ai_insights/outputs/output1 INTO $upstream" } }
    ```
 
-有关消息路由的更多详细信息，请参阅 [模块构成文章][lnk-module-composition]。
+有关消息路详细由的信息，请参阅[模块组合文章][lnk-module-composition]。
 
 ## <a name="next-steps"></a>后续步骤
 [了解开发 IoT Edge 模块的要求和工具][lnk-module-dev]。
@@ -192,6 +192,7 @@ IoT Edge 运行时可以像模块发送的消息一样路由从下游设备发�
 <!-- Links -->
 [lnk-install-linux-x64]: ./how-to-install-iot-edge-linux.md
 [lnk-install-linux-arm]: ./how-to-install-iot-edge-linux-arm.md
+[lnk-module-composition]: ./module-composition.md
 [lnk-devicesdk]: ../iot-hub/iot-hub-devguide-sdks.md
 [lnk-tutorial1-win]: tutorial-simulate-device-windows.md
 [lnk-tutorial1-lin]: tutorial-simulate-device-linux.md

@@ -1,22 +1,22 @@
 ---
 title: 在门户中将数据导入 Azure 搜索 | Microsoft 文档
-description: 在 Azure 门户中使用 Azure 搜索的“导入数据”向导从 NoSQL Azure Cosmos DB、Blob 存储、表存储、SQL 数据库和 Azure VM 上的 SQL Server 搜索 Azure 数据。
+description: 了解如何使用 Azure 门户中的“导入数据”向导从 Cosmos DB、Blob 存储、表存储、SQL 数据库和 Azure VM 上的 SQL Server 抓取 Azure 数据。
 author: HeidiSteen
 manager: cgronlun
-tags: Azure Portal
 services: search
 ms.service: search
-ms.topic: quickstart
-ms.date: 05/01/2017
+ms.topic: conceptual
+ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: ee27b63a5df658ff5d575f0599dadd1cbafd3c18
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: dcdc0501d94191cf2c281a4f880ddab3db023fc0
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795878"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004930"
 ---
-# <a name="import-data-to-azure-search-using-the-portal"></a>使用门户将数据导入到 Azure 搜索中
+# <a name="how-to-import-data-into-azure-search-index-using-the-azure-portal"></a>如何使用 Azure 门户将数据导入 Azure 搜索索引
+
 Azure 门户在“Azure 搜索”仪表板上提供了“导入数据”向导，用于将数据加载到索引中。 
 
   ![命令栏中的“导入数据”][1]
@@ -26,8 +26,6 @@ Azure 门户在“Azure 搜索”仪表板上提供了“导入数据”向导�
 * 连接到同一 Azure 订阅的外部数据源
 * 基于源数据结构生成可修改的索引架构
 * 使用从数据源检索的行集将 JSON 文档加载到索引中
-
-可以使用 Azure Cosmos DB 中的示例数据试用此工作流。 有关说明，请访问 [开始在 Azure 门户中使用 Azure 搜索](search-get-started-portal.md) 。
 
 > [!NOTE]
 > 可从 Azure Cosmos DB 仪表板启动**导入数据**向导，进而简化该数据源的索引。 在左侧导航栏中，转到“集合” > “添加 Azure 搜索”开始操作。
@@ -45,8 +43,10 @@ Azure 门户在“Azure 搜索”仪表板上提供了“导入数据”向导�
 
 ## <a name="connect-to-your-data"></a>连接到数据
 1. 登录到 [Azure 门户](https://portal.azure.com)，并打开服务仪表板。 可以单击跳转栏中的“所有服务”，搜索当前订阅中的现有“搜索服务”。 
-2. 单击命令栏上的“导入数据”  ，滑动打开“导入数据”边栏选项卡。  
-3. 单击“连接到数据”  ，指定索引器使用的数据源定义。 对于订阅内数据源，该向导通常可以检测并读取连接信息，并将整个配置要求降至最低。
+
+1. 单击命令栏上的“导入数据”  ，滑动打开“导入数据”边栏选项卡。
+
+1. 单击“连接到数据”  ，指定索引器使用的数据源定义。 对于订阅内数据源，该向导通常可以检测并读取连接信息，并将整个配置要求降至最低。
 
 |  |  |
 | --- | --- |
@@ -61,35 +61,42 @@ Azure 门户在“Azure 搜索”仪表板上提供了“导入数据”向导�
 通常从数据集推断出初步索引。 添加、编辑或删除字段以完成架构。 此外，还在字段级别设置属性以确定其后续搜索行为。
 
 1. 在“自定义目标索引”中，指定用于唯一标识每个文档的名称和**键**。 该键必须是字符串。 如果字段值包含空格或短划线，请务必在“导入数据”中  设置高级选项，以禁止对这些字符进行验证检查。
-2. 查看和修改剩余字段。 通常已为用户填充字段名称和类型。 在创建索引之前，可以更改数据类型。 在之后进行更改需要重新生成。
-3. 为每个字段设置索引属性：
+
+1. 查看和修改剩余字段。 通常已为用户填充字段名称和类型。 在创建索引之前，可以更改数据类型。 在之后进行更改需要重新生成。
+
+1. 为每个字段设置索引属性：
    
    * “可检索”可在搜索结果中返回该字段。
    * “可筛选”允许在筛选表达式中引用该字段。
    * “可排序”允许在排序中使用该字段。
    * “可查找”为分面导航启用该字段。
    * “可搜索”可启用全文搜索。
-4. 如果要在字段级别指定语言分析器，请单击“分析器”  选项卡。 目前，只能指定语言分析器。 使用自定义分析器或非语言分析器（如关键字、模式等）将需要代码。
+
+1. 如果要在字段级别指定语言分析器，请单击“分析器”  选项卡。 目前，只能指定语言分析器。 使用自定义分析器或非语言分析器（如关键字、模式等）将需要代码。
    
    * 单击“可搜索”  可指定对字段的全文搜索并启用“分析器”下拉列表。
    * 选择所需的分析器。 有关详细信息，请参阅[为多语言文档创建索引](search-language-support.md)。
-5. 单击“建议器”  可对所选字段启用“提前键入查询建议”。
+
+1. 单击“建议器”  可对所选字段启用“提前键入查询建议”。
 
 ## <a name="import-your-data"></a>导入数据
 1. 在“导入数据” 中，提供索引器的名称。 请注意，“导入数据”向导的产品是一个索引器。 稍后，如果想要查看或编辑它，可以从门户中选择它，而不是重新运行该向导。 
-2. 指定计划，该计划基于预配服务的区域时区。
-3. 设置高级选项，以针对如果丢弃了文档，编制索引操作是否可以继续指定阈值。 此外，还可以指定“键”字段是否  可以包含空格和斜杠。  
-4. 单击“确定”创建索引并导入数据。
+
+1. 指定计划，该计划基于预配服务的区域时区。
+
+1. 设置高级选项，以针对如果丢弃了文档，编制索引操作是否可以继续指定阈值。 此外，还可以指定“键”字段是否  可以包含空格和斜杠。  
+
+1. 单击“确定”创建索引并导入数据。
 
 可以在门户中监视索引。 加载文档以后，针对所定义索引的文档计数会增加。 有时候，门户页选取最新更新需要几分钟时间。
 
 加载所有文档以后，即可通过索引进行查询。
 
-## <a name="query-an-index-using-search-explorer"></a>使用搜索资源管理器查询索引
+## <a name="query-an-index-using-search-explorer"></a>使用搜索浏览器查询索引
 
-门户中提供了“搜索资源管理器”用于查询索引，无需编写任何代码。 可以针对任何索引使用[搜索资源管理器](search-explorer.md)。
+门户包括**搜索浏览器**，因此你无需编写任何代码即可查询索引。 可以针对任何索引使用[搜索浏览器](search-explorer.md)。
 
-搜索体验取决于默认设置，例如[简单语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)和默认的 [searchMode 查询参数(https://docs.microsoft.com/rest/api/searchservice/search-documents)。 
+搜索体验取决于默认设置，例如[简单语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)和默认的 [searchMode 查询参数](https://docs.microsoft.com/rest/api/searchservice/search-documents)。 
 
 结果以详细的 JSON 格式返回，方便用户检查整个文档。
 

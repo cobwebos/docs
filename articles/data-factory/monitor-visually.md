@@ -11,19 +11,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/06/2018
+ms.date: 07/12/2018
 ms.author: shlo
-ms.openlocfilehash: e654cc23d6a558469ea238fc5ade82b44562f9a2
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 4b3828e1857d17a128de346449d5cf2041709e50
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050363"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041069"
 ---
 # <a name="visually-monitor-azure-data-factories"></a>以可视化方式监视 Azure 数据工厂
 Azure 数据工厂是基于云的数据集成服务，用于在云中创建数据驱动型工作流，以便协调和自动完成数据移动和数据转换。 使用 Azure 数据工厂，可以创建和计划数据驱动型工作流（称为管道），以便从不同的数据存储引入数据，通过各种计算服务（例如 Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics 和 Azure 机器学习）处理/转换数据，将输出数据发布到数据存储（例如 Azure SQL 数据仓库），供商业智能 (BI) 应用程序使用。
 在此快速入门教程中，你将学习如何在不需要编写任何代码的情况下以可视化方式监视数据工厂 v2 管道。
-如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="monitor-data-factory-v2-pipelines"></a>监视数据工厂 v2 管道
 
@@ -76,6 +76,11 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 
 ## <a name="features"></a>功能
 
+#### <a name="select-a-data-factory-to-monitor"></a>选择要监视的数据工厂
+将鼠标指针悬停在左上角的“数据工厂”图标上。 单击“箭头”图标以查看可以监视的 azure 订阅和数据工厂的列表。
+
+![选择数据工厂](media/monitor-visually/select-datafactory.png)
+
 #### <a name="rich-ordering-and-filtering"></a>丰富的排序和筛选
 
 按运行开始时间以降序/升序排列管道运行，并按以下列筛选管道运行：
@@ -88,7 +93,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 
 ![筛选器](media/monitor-visually/filter.png)
 
-#### <a name="addremove-columns-to-list-view"></a>在列表视图中添加/删除列
+#### <a name="addremove-columns-in-list-view"></a>在列表视图中添加/删除列
 右键单击列表视图标题，并选择希望在列表视图中显示的列
 
 ![列](media/monitor-visually/columns.png)
@@ -96,10 +101,22 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 #### <a name="reorder-column-widths-in-list-view"></a>重新安排列表视图中的列宽
 通过将鼠标指针悬停在列标题上来增大或减小列表视图中的列宽
 
-#### <a name="select-data-factory"></a>选择数据工厂
-将鼠标指针悬停在左上角的“数据工厂”图标上。 单击“箭头”图标以查看可以监视的 azure 订阅和数据工厂的列表。
+#### <a name="user-properties"></a>用户属性
 
-![选择数据工厂](media/monitor-visually/select-datafactory.png)
+可以将任何管道活动属性提升为用户属性，使其成为可以监视的实体。 例如，可以将管道中复制活动的**源**和**目标**属性提升为用户属性。 还可以选择“自动生成”，为复制活动生成**源**和**目标**用户属性。
+
+![创建用户属性](media/monitor-visually/monitor-user-properties-image1.png)
+
+> [!NOTE]
+> 最多只能将 5 个管道活动属性提升为用户属性。
+
+创建用户属性后，便可在监视列表视图中监视它们。 如果复制活动的源是表名，则可以将源表名称作为活动运行列表视图中的列进行监视。
+
+![没有用户属性的活动运行列表](media/monitor-visually/monitor-user-properties-image2.png)
+
+![将用户属性的列添加到活动运行列表](media/monitor-visually/monitor-user-properties-image3.png)
+
+![具有用户属性的列的活动运行列表](media/monitor-visually/monitor-user-properties-image4.png)
 
 #### <a name="guided-tours"></a>引导式演示
 单击左下角的“信息图标”并单击“引导式演示”来获取有关如何监视管道和活动运行的分步说明。

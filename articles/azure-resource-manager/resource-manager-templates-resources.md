@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2018
+ms.date: 07/11/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1619f3bfdf49820ec529947ea02d1602a7b2aa8c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 6723cf8cc18637c157b295361425357e1c47ec2e
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723449"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39007155"
 ---
 # <a name="resources-section-of-azure-resource-manager-templates"></a>Azure 资源管理器模板的资源部分
 
@@ -30,7 +30,7 @@ ms.locfileid: "38723449"
 ```json
 "resources": [
   {
-      "condition": "<boolean-value-whether-to-deploy>",
+      "condition": "<true-to-deploy-this-resource>",
       "apiVersion": "<api-version-of-resource>",
       "type": "<resource-provider-namespace/resource-type-name>",
       "name": "<name-of-the-resource>",
@@ -81,9 +81,9 @@ ms.locfileid: "38723449"
 ]
 ```
 
-| 元素名称 | 必选 | 说明 |
+| 元素名称 | 必选 | Description |
 |:--- |:--- |:--- |
-| 条件 | 否 | 指示是否部署资源的布尔值。 |
+| 条件 | 否 | 布尔值，该值指示在此部署期间是否将预配资源。 为 `true` 时，在部署期间创建资源。 为 `false` 时，此部署将跳过资源。 |
 | apiVersion |是 |用于创建资源的 REST API 版本。 |
 | type |是 |资源的类型。 此值是资源提供程序的命名空间和资源类型（例如 **Microsoft.Storage/storageAccounts**）的组合。 |
 | 名称 |是 |资源的名称。 该名称必须遵循 RFC3986 中定义的 URI 构成部分限制。 此外，向第三方公开资源名称的 Azure 服务会验证名称，以确保它不会尝试窃取另一身份。 |
@@ -100,7 +100,7 @@ ms.locfileid: "38723449"
 
 ## <a name="condition"></a>条件
 
-如果必须在部署期间决定是否创建资源，请使用 `condition` 元素。 此元素的值解析为 true 或 false。 如果值为 true，则部署了该资源。 如果值为 false，则未部署该资源。 例如，若要指定是部署了新存储帐户，还是使用了现有的存储帐户，请使用：
+如果必须在部署期间决定是否创建资源，请使用 `condition` 元素。 此元素的值解析为 true 或 false。 如果值为 true，将创建资源。 如果值为 false，将不会创建资源。 通常，当要创建新资源或使用现有资源时，可以使用此值。 例如，若要指定是部署了新存储帐户，还是使用了现有的存储帐户，请使用：
 
 ```json
 {

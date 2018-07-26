@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 07/12/2018
 ms.author: raynew
-ms.openlocfilehash: fb987c95afc0f77386f4f78c44f3c6825f86ee43
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: fa6fb4ffe1eea98392b2199f379431b0dffc6774
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231933"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006560"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso 迁移：评估本地工作负荷是否适合迁移到 Azure
 
@@ -22,14 +22,19 @@ ms.locfileid: "36231933"
 
 **文章** | **详细信息** | **Status**
 --- | --- | ---
-[第 1 篇：概述](contoso-migration-overview.md) | 简要介绍 Contoso 的迁移策略、文章系列和所使用的示例应用。 | 可用
-[文章 2：部署 Azure 基础结构](contoso-migration-infrastructure.md) | 介绍 Contoso 如何装备其本地和 Azure 基础结构进行迁移。 所有的 Contoso 迁移方案共用同一个基础结构。 | 可用
-文章 3：访问本地资源（本文）  | 展示 Contoso 如何评估 VMware 上运行的本地双层 SmartHotel 应用。 公司使用 [Azure Migrate](migrate-overview.md) 服务评估应用 VM，使用 [Azure 数据库迁移助手](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)评估应用 SQL Server 数据库。 | 可用
-[文章 4：重新托管到 Azure VM 和 SQL 托管实例](contoso-migration-rehost-vm-sql-managed-instance.md) | 演示 Contoso 如何将 SmartHotel 应用迁移到 Azure。 公司使用 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) 迁移应用前端 VM，同时使用 [Azure 数据库迁移](https://docs.microsoft.com/azure/dms/dms-overview)服务将应用数据库迁移到 SQL 托管实例上。 | 可用
-[文章 5：重新托管到 Azure VM](contoso-migration-rehost-vm.md) | 展示 Contoso 如何在仅使用 Site Recovery 的情况下迁移其 SmartHotel 应用 VM。
-[文章 6：重新托管到 Azure VM 和 SQL Server 可用性组](contoso-migration-rehost-vm-sql-ag.md) | 展示 Contoso 如何迁移 SmartHotel 应用。 公司使用 Site Recovery 迁移应用 VM，同时使用数据库迁移服务将应用数据库迁移到 SQL Server 可用性组。 | 可用
-[文章 7：将 Linux 应用重新托管到 Azure VM](contoso-migration-rehost-linux-vm.md) | 展示 Contoso 如何使用 Azure Site Recovery 迁移其 osService Linux 应用。
-[文章 8：将 Linux 应用重新托管到 Azure VM 和 Azure MySQL 服务器](contoso-migration-rehost-linux-vm-mysql.md) | 演示 Contoso 如何使用用于迁移 VM 的 Site Recovery 来迁移 osService Linux 应用，以及如何使用 MySQL Workbench 迁移到 Azure MySQL 服务器实例。 | 可用
+[文章 1：概述](contoso-migration-overview.md) | 简要介绍 Contoso 的迁移策略、文章系列和所使用的示例应用。 | 可用
+[文章 2：部署 Azure 基础结构](contoso-migration-infrastructure.md) | 介绍 Contoso 如何装备其本地和 Azure 基础结构进行迁移。 所有迁移文章共用同一个基础结构。 | 可用
+文章 3：评估要迁移到 Azure 的本地资源  | 展示 Contoso 如何评估 VMware 上运行的本地双层 SmartHotel 应用。 Contoso 使用 [Azure Migrate](migrate-overview.md) 服务评估应用 VM，使用 [数据库迁移助手](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)评估应用 SQL Server 数据库。 | 本文。
+[文章 4：在 Azure VM 和 SQL 托管实例上重新托管应用](contoso-migration-rehost-vm-sql-managed-instance.md) | 演示 Contoso 如何将本地 SmartHotel 应用直接迁移到 Azure。 Contoso 使用 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) 迁移应用前端 VM，使用 [Azure 数据库迁移服务](https://docs.microsoft.com/azure/dms/dms-overview)将应用数据库迁移到 SQL 托管实例。 | 可用
+[文章 5：在 Azure VM 上重新托管应用](contoso-migration-rehost-vm.md) | 演示 Contoso 如何使用 Site Recovery 服务将 SmartHotel 应用 VM 迁移到 Azure VM。 | 可用
+[文章 6：在 Azure VM 和 SQL Server AlwaysOn 可用性组上重新托管应用](contoso-migration-rehost-vm-sql-ag.md) | 展示 Contoso 如何迁移 SmartHotel 应用。 Contoso 使用 Site Recovery 来迁移应用 VM，同时使用数据库迁移服务将应用数据库迁移到受 AlwaysOn 可用性组保护的 SQL Server 群集。 | 可用
+[文章 7：将 Linux 应用重新托管到 Azure VM](contoso-migration-rehost-linux-vm.md) | 展示 Contoso 如何使用 Site Recovery 将 Linux osTicket 应用直接迁移到 Azure VM | 可用
+[文章 8：在 Azure VM 和 Azure MySQL 上重新托管 Linux 应用](contoso-migration-rehost-linux-vm-mysql.md) | 演示 Contoso 如何使用 Site Recovery 将 Linux osTicket 应用迁移到 Azure VM，以及如何使用 MySQL 工作台将应用数据库迁移到 Azure MySQL 服务器实例。 | 可用
+[文章 9：基于 Azure Web 应用和 Azure SQL 数据库重构应用](contoso-migration-refactor-web-app-sql.md) | 演示 Contoso 如何将 SmartHotel 应用迁移到 Azure Web 应用，并将应用数据库迁移到 Azure SQL Server 实例 | 可用
+[文章 10：基于 Azure Web 应用和 Azure MySQL 重构 Linux 应用](contoso-migration-refactor-linux-app-service-mysql.md) | 演示 Contoso 如何将 Linux osTicket 应用迁移到多个站点中的 Azure Web 应用，并与 GitHub 集成以便持续交付。 他们将应用数据库迁移到 Azure MySQL 实例。 | 可用
+[文章 11：基于 VSTS 重构 TFS](contoso-migration-tfs-vsts.md) | 演示 Contoso 如何通过将本地 Team Foundation Server (TFS) 部署迁移到 Azure 中的 Visual Studio Team Services (VSTS) 来迁移该部署。 | 可用
+[文章 12：在 Azure 容器和 Azure SQL 数据库上重塑应用架构](contoso-migration-rearchitect-container-sql.md) | 演示 Contoso 如何将其 SmartHotel 应用迁移并重新架构到 Azure。 他们将应用 Web 层重新架构为 Windows 容器以及 Azure SQL 数据库中的应用数据库。 | 可用
+[文章 13：在 Azure 中重新生成应用](contoso-migration-rebuild.md) | 演示 Contoso 如何使用一系列 Azure 功能和服务（包括应用程序服务、Azure Kubernetes、Azure Functions、认知服务和 Cosmos DB）重新生成其 SmartHotel 应用。 | 可用
 
 
 ## <a name="overview"></a>概述
@@ -98,7 +103,7 @@ Contoso 使用 Microsoft 工具进行评估。 这些工具符合 Contoso 的目
 
 ![迁移评估体系结构](./media/contoso-migration-assessment/migration-assessment-architecture.png)
 
-- Contoso 是表示一家典型企业组织的虚构名称。 
+- Contoso 是表示一家典型企业组织的虚构名称。
 - Contoso 有一个本地数据中心 (contoso-datacenter)，其中包含本地域控制器（CONTOSODC1、CONTOSODC2）。
 - VMware VM 位于运行 6.5 版本的 VMware ESXI 主机上。 主机：contosohost1、contosohost2
 - VMware 环境由 VM 上运行的 vCenter Server 6.5 (venter) 托管。
@@ -161,7 +166,7 @@ Contoso 使用 Microsoft 工具进行评估。 这些工具符合 Contoso 的目
 现在，Contoso 可以运行评估，分析其 SmartHotel 应用的本地 SQL Server。
 
 1. 在数据迁移助手中，单击“新建”，选择“评估”，并为评估提供项目名称“SmartHotel”。
-2. 选择“源服务器类型”作为“Azure 虚拟机上的 SQL Server”。 
+2. 选择“源服务器类型”作为“Azure 虚拟机上的 SQL Server”。
 
     ![选择源](./media/contoso-migration-assessment/dma-assessment-1.png)
 
@@ -181,7 +186,7 @@ Contoso 使用 Microsoft 工具进行评估。 这些工具符合 Contoso 的目
 
 3. 在“添加源”中，添加需要评估的数据库，并单击“下一步”开始评估。
 4. 评估已创建。
-    
+
     ![创建评估](./media/contoso-migration-assessment/dma-assessment-4.png)
 
 5. 在“查看结果”中，可查看评估结果。
@@ -223,7 +228,7 @@ Contoso 需要创建可供 Azure Migrate 用来自动发现待评估 VM 的 VMwa
 
 ### <a name="set-up-a-vmware-account"></a>设置 VMware 帐户
 
- VM 发现需要 vCenter 中的只读帐户，具有以下属性： 
+ VM 发现需要 vCenter 中的只读帐户，具有以下属性：
 
 - 用户类型：至少为只读用户。
 - 权限：数据中心对象 –> 传播到子对象，角色=只读。
@@ -294,14 +299,13 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 2. 运行以下命令，生成 OVA 的哈希：
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 用法示例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. 生成的哈希应与这些设置匹配（版本 1.0.9.7）。
+3. 生成的哈希应与这些设置匹配（版本 1.0.9.12）
 
-    **算法** | **哈希值**
-    --- | ---
-    MD5 | d5b6a03701203ff556fa78694d6d7c35
-    SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
-    SHA256 | e5e997c003e29036f62bf3fdce96acd4a271799211a84b34b35dfd290e9bea9c
-
+**算法** | **哈希值**
+--- | ---
+MD5 | d0363e5d1b377a8eb08843cf034ac28a
+SHA1 | df4a0ada64bfa59c37acf521d15dcabe7f3f716b
+SHA256 | f677b6c255e3d4d529315a31b5947edfe46f45e4eb4dbc8019d68d1d1b337c2e
 
 ### <a name="create-the-collector-appliance"></a>创建收集器设备
 
@@ -346,7 +350,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 
 7. 在“查看收集进度”中，Contoso 可以监视发现过程，并检查从 VM 中收集的元数据是否在范围内。 收集器提供一个近似的发现时间。
 
-    ![正在进行收集](./media/contoso-migration-assessment/collector-collection-process.png) 
+    ![正在进行收集](./media/contoso-migration-assessment/collector-collection-process.png)
 
 
 
@@ -396,8 +400,8 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 2. 在“代理安装选项”中，选择“将代理连接到 Azure Log Analytics” > “下一步”。
 
     ![MMA 安装](./media/contoso-migration-assessment/mma-install.png)
-    
-5. 在“Azure Log Analytics”中，粘贴从门户复制的工作区 ID 和密钥。 
+
+5. 在“Azure Log Analytics”中，粘贴从门户复制的工作区 ID 和密钥。
 
     ![MMA 安装](./media/contoso-migration-assessment/mma-install2.png)
 
@@ -428,7 +432,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
     ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w 6b7fcaff-7efb-4356-ae06-516cacf5e25d -s k7gAMAw5Bk8pFVUTZKmk2lG4eUciswzWfYLDTxGcD8pcyc4oT8c6ZRgsMy3MmsQSHuSOcmBUsCjoRiG2x9A8Mg==
     ```
- 
+
 
 
 #### <a name="install-the-dependency-agent-on-linux-vms"></a>在 Linux VM 上安装 Dependency Agent

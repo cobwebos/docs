@@ -4,18 +4,18 @@ description: 如何将 Azure 多重身份验证服务器与 Active Directory 集
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: get-started-article
-ms.date: 06/16/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: 3f6f1f351a4870e68f2a5d6562c5c4a8f0031bdd
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: michmcla
+ms.openlocfilehash: 818674ba1825a438a5abeb7927bcf0f683506625
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33882974"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159917"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA 服务器与 Active Directory 之间的目录集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "33882974"
 
 ![设置](./media/howto-mfaserver-dir-ad/dirint.png)
 
-| 功能 | 说明 |
+| 功能 | Description |
 | --- | --- |
 | 使用 Active Directory |选择“使用 Active Directory”选项可使用 Active Directory 进行导入和同步。  此设置为默认设置。 <br>注意：要正常完成 Active Directory 集成，请将计算机加入域并使用域帐户登录。 |
 | 包括受信任域 |选中“包括受信任域”可让代理尝试连接到当前域、林中其他域或林信任涉及的域所信任的域。  当不从任何受信任域导入或同步用户时，请取消选中该复选框以提高性能。  默认处于选中状态。 |
@@ -36,7 +36,7 @@ ms.locfileid: "33882974"
 
 下表描述了 LDAP 配置设置。
 
-| 功能 | 说明 |
+| 功能 | Description |
 | --- | --- |
 | 服务器 |输入运行 LDAP 目录的服务器的主机名或 IP 地址。  还可以以分号分隔形式指定备份服务器。 <br>注意：当绑定类型是 SSL 时，需要输入完全限定的主机名。 |
 | 基 DN |输入要从中启动所有目录查询的基目录对象的可分辨名称。  例如，dc=abc,dc=com。 |
@@ -65,7 +65,7 @@ Azure 多重身份验证提供以下三个筛选选项：
 
 ![属性](./media/howto-mfaserver-dir-ad/dirint3.png)
 
-| 功能 | 说明 |
+| 功能 | Description |
 | --- | --- |
 | 唯一标识符 |输入用作容器、安全组和用户记录的唯一标识符的属性的属性名称。  在 Active Directory 中，它通常是 objectGUID。 其他 LDAP 实现可能使用 entryUUID 或类似值。  默认值为 objectGUID。 |
 | 唯一标识符类型 |选择唯一标识符属性的类型。  在 Active Directory 中，objectGUID 属性的类型是 GUID。 其他 LDAP 实现可能使用 ASCII 字节数组或字符串类型。  默认值为 GUID。 <br><br>必须正确设置此类型，因为系统会根据同步项的唯一标识符对其进行引用。 唯一标识符类型用于直接查找目录中的对象。  如果目录实际上将值存储为 ASCII 字符的字节数组，将此类型设置为字符串会使同步无法正常运行。 |
@@ -77,7 +77,7 @@ Azure 多重身份验证提供以下三个筛选选项：
 | 姓氏 |输入用户记录中包含姓氏的属性的属性名称。  默认值为 sn。 |
 | 电子邮件地址 |输入用户记录中包含电子邮件地址的属性的属性名称。  电子邮件地址用于向用户发送欢迎和更新电子邮件。  默认值为 mail。 |
 | 用户组 |输入用户记录中包含用户组的属性的属性名称。  用户组可用于在 Multi-Factor Auth 服务器管理门户的代理和报告中筛选用户。 |
-| 说明 |输入用户记录中包含说明的属性的属性名称。  说明只用于搜索。  默认值为 description。 |
+| Description |输入用户记录中包含说明的属性的属性名称。  说明只用于搜索。  默认值为 description。 |
 | 通话语言 |输入包含某一语言的短名称的属性的属性名称，该语言用于用户的语音呼叫。 |
 | 短信语言 |输入包含某一语言的短名称的属性的属性名称，该语言用于用户的短信。 |
 | 移动应用语言 |输入包含某一语言的短名称的属性的属性名称，该语言用于用户的手机应用短信。 |
@@ -109,7 +109,7 @@ Multi-Factor Auth AdSync 服务使用 Microsoft 提供的 DirSync LDAP 服务器
 
 下表包含有关“同步”选项卡中每项设置的更多信息。
 
-| 功能 | 说明 |
+| 功能 | Description |
 | --- | --- |
 | 启用与 Active Directory 的同步 |如果选中此项，多重身份验证服务器服务将定期轮询 Active Directory 的更改。 <br><br>注意：必须至少先添加一个同步项并且必须执行“立即同步”，然后 Multi-Factor Auth 服务器服务才会开始处理更改。 |
 | 同步间隔 |指定 Multi-Factor Auth 服务器服务在轮询和处理更改之间需要等待的时间间隔。 <br><br> 注意：指定的时间间隔是每个周期开始之间的时间。  如果处理更改的时间超过了此时间间隔，该服务将立即重新轮询。 |

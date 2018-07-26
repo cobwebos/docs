@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: cf24810c0aa414e751e55df163563f013c1a0081
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 9d71efa35713500911c67d1df15612b64c8e97da
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969939"
+ms.locfileid: "38990823"
 ---
 # <a name="trusted-internet-connection-guidance"></a>受信任的 Internet 连接指南
 
@@ -30,7 +30,7 @@ ms.locfileid: "38969939"
 
 今天，所有机构外部连接必须通过 OMB 批准的 TIC 进行路由。 联邦政府机构需要作为 TIC 访问提供程序 (TICAP) 参与 TIC 计划，或通过与称为托管受信任的 Internet 协议服务 (MTIPS) 提供程序的任一主要一级 Internet 服务提供程序签订服务。  TIC 包括机构和 MTIPS 提供程序目前执行的强制性关键功能。 在当前版本的 TIC 中，每个 TICAP 和 MTIPS 上均部署了 EINSTEIN 版本 2 入侵检测和 EINSTEIN 版本 3 加速 (3A) 入侵防御设备，并且该机构与国土安全部 (DHS) 签订了一份协议备忘录，以将 EINSTEIN 功能部署到联邦系统。
 
-作为其保护政府网络的部分职责，DHS 要求代理 Netflow 数据的原始数据馈送关联联邦企业中的事件，并使用专用工具执行分析。 DHS 路由器提供在进入或退出接口时收集 IP 网络流量的功能。 通过分析净流数据，网络管理员可以确定流量的源和目标、服务的类等。净流数据被认为是“非内容性的数据”（例如，标头、源 IP、目标 IP 等），并允许 DHS 知道内容周围的信息（也就是说，谁做了什么，做了多久）。
+作为其保护政府网络的部分职责，DHS 要求代理 Netflow 数据的原始数据馈送关联联邦企业中的事件，并使用专用工具执行分析。 DHS 路由器提供在进入或退出接口时收集 IP 网络流量的功能。 通过分析净流数据，网络管理员可以确定流量的源和目标、服务的类等信息。净流数据被认为是“非内容性的数据”（例如，标头、源 IP、目标 IP 等），并允许 DHS 知道内容周围的信息（也就是说，谁做了什么，做了多久）。
 
 该计划还包括采用本地基础结构的安全策略、指南和框架。 随着政府机构转向云以实现成本节约、运营效率和创新，TIC 的实现要求在某些情况下减缓了网络流量，限制了政府用户访问其基于云的数据的速度和灵活性。
 
@@ -164,7 +164,7 @@ Azure 网络观察程序提供捕获网络流日志的功能，以指示 IP 流�
 4. 通过为客户服务创建服务终结点，客户 VNet 扩展到 PaaS 服务。
 5. 将 PaaS 服务终结点确认为默认拒绝所有，且仅允许从客户 VNet 内的指定子网进行访问。  默认拒绝还包括源自 Internet 的连接。
 6. 需要访问客户 VNet 中资源的任何其他 Azure 服务应为：  
-  a. 直接部署到 VNet 中  
+  a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 直接部署到 VNet 中  
   b. 根据相应 Azure 服务中的指南进行选择。
 
 #### <a name="option-1-dedicated-instance-vnet-injection"></a>选项 1：专用实例“VNet 注入”
@@ -250,4 +250,3 @@ Azure 网络观察程序的流量分析使用流日志数据和其他日志来�
 
 *：截至 2018 年 5 月的 Azure 政府的公共预览版  
 **：截至 2018 年 5 月的 Azure 政府的个人预览版
-

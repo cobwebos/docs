@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: dacoulte
-ms.openlocfilehash: d007869bb8bad1a2f0775a1ab2c1bf5d27c1cb8f
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 1dcbc8e0221689a6ece7e061d4b1a2632986ae84
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866213"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224368"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Desired State Configuration 扩展与 Azure 资源管理器模板
 
@@ -176,7 +176,7 @@ DSC 扩展继承默认扩展属性。
 
 ## <a name="details"></a>详细信息
 
-| 属性名称 | Type | 说明 |
+| 属性名称 | Type | Description |
 | --- | --- | --- |
 | settings.wmfVersion |字符串 |指定应在 VM 上安装的 Windows Management Framework (WMF) 版本。 将此属性设置为 **latest** 可安装最新版本的 WMF。 目前，此属性的可能值只有 **4.0**、**5.0**、**5.0PP** 和 **latest**。 这些可能值将来可能会更新。 默认值为 **latest**。 |
 | settings.configuration.url |字符串 |指定要从中下载 DSC 配置 .zip 文件的 URL 位置。 如果提供的 URL 需要 SAS 令牌才能访问，请将 **protectedSettings.configurationUrlSasToken** 属性设置为 SAS 令牌的值。 如果已定义 **settings.configuration.script** 或 **settings.configuration.function**，则需要此属性。 如果未为这些属性指定任何值，则扩展将调用默认配置脚本设置位置配置管理器 (LCM) 元数据，并应提供参数。 |
@@ -195,7 +195,7 @@ DSC 扩展继承默认扩展属性。
 有关以下值的详细信息，请参阅[本地配置管理器基本设置](/powershell/dsc/metaconfig#basic-settings)。
 使用 DSC 扩展默认配置脚本只能配置下表中列出的 LCM 属性。
 
-| 属性名称 | Type | 说明 |
+| 属性名称 | Type | Description |
 | --- | --- | --- |
 | settings.configurationArguments.RegistrationKey |securestring |必需的属性。 指定节点用于注册到 Azure 自动化服务的密钥作为 PowerShell 凭据对象的密码。 可以使用 **listkeys** 方法针对自动化帐户自动发现此值。 该值应作为受保护设置加以保护。 |
 | settings.configurationArguments.RegistrationUrl |字符串 |必需的属性。 指定节点将尝试注册的自动化终结点的 URL。 可以使用 **reference** 方法针对自动化帐户自动发现此值。 |
@@ -249,7 +249,7 @@ DSC 扩展继承默认扩展属性。
 },
 "protectedSettings": {
     "Items": {
-        "registrationKeyPrivate": "[parameters('registrationKey1']"
+        "registrationKeyPrivate": "[parameters('registrationKey1')]"
     }
 }
 ```

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: arjmands
-ms.openlocfilehash: afc7059f3b066ac5f3c9b49d543bc2b3e52ad6af
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 647f54d8252c594a280f81d661a3de6270bf692b
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631116"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001341"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>如何使用 SDK 中提供的工具来简化预配开发
 IoT 中心设备预配服务简化了预配过程，以安全且可缩放的方式实现零接触实时[自动预配](concepts-auto-provisioning.md)。  需要 X.509 证书形式的安全证明，或受信任的平台模块 (TPM)。  Microsoft 还与[其他安全硬件合作伙伴](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/)携手合作，共同提高安全 IoT 部署的可信度。 对于开发者，了解硬件安全需求可能是一项大挑战。 我们提供了一组 Azure IoT 预配服务 SDK，因此，开发者可使用一个便捷的层来编写与预配服务通信的客户端。 这些 SDK 还提供了常用方案的示例，以及一组可简化开发安全证明的工具。
@@ -34,9 +34,9 @@ git clone https://github.com/Azure/azure-iot-sdk-java.git
 可将 [X.509 证书](https://docs.microsoft.com/azure/iot-dps/concepts-security#x509-certificates)用作一种证明机制，用于缩放生产规模和简化设备预配。  可通过[多种方式](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate)获取 X.509 证书：
 * 对于生产环境，建议从公共根证书颁发机构购买 X.509 CA 证书。
 * 对于测试环境，可通过以下方法生成 X.509 根证书或 X.509 证书链：
-    * OpenSSL：此[操作说明指南](https://docs.microsoft.com/azure/iot-hub/iot-hub-security-x509-create-certificates)演示了使用 [OpenSSL](https://www.openssl.org/) 创建 X.509 证书并对其进行签名的示例 PowerShell 脚本。  此外，还可以使用其他语言的脚本来生成证书：
+    * OpenSSL：可以使用脚本生成证书：
         * [Node.js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools)
-        * [PowerShell](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)
+        * [PowerShell 或 Bash](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)
         
     * 设备标识组合引擎 (DICE) 仿真器：DICE 可基于 TLS 协议和 X.509 客户端证书用于加密设备标识和证明。  [了解](https://www.microsoft.com/research/publication/device-identity-dice-riot-keys-certificates/)有关使用 DICE 的设备标识的详细信息。
 

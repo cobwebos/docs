@@ -4,31 +4,37 @@ description: 了解 Contoso 如何通过将本地 Linux 应用迁移到 Azure VM
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 07/12/2018
 ms.author: raynew
-ms.openlocfilehash: 15a429c033cfd1598dd01b5c8cd2743c397dacdb
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: fbb70bd20b89bb1b711630ba54fe31806292385c
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225511"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39002222"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms-and-azure-mysql"></a>Contoso 迁移：将本地 Linux 应用重新托管到 Azure VM 和 Azure MySQL
 
-本文演示 Contoso 如何通过将其本地双层 Linux 服务支持应用 (osTicket) 迁移到 Azure 和 Azure MySQL 来重新托管该应用。
+本文演示 Contoso 如何通过将本地双层 Linux 服务支持应用 (osTicket) 迁移到 Azure 和 Azure MySQL 来重新托管该应用。
 
-此文件是展示虚构公司 Contoso 如何将其本地资源迁移到 Microsoft Azure 云的一系列文章中的第八篇。 该系列包括背景信息和说明如何设置迁移基础结构及运行不同类型的迁移的方案。 应用场景越来越复杂，我们将逐渐添加其他文章进行讲解。
+本文档是系列文章中的其中一篇，目的是展示虚拟公司 Contoso 如何将其本地资源迁移到 Microsoft Azure 云。 该系列包括背景信息和说明如何设置迁移基础结构及运行不同类型的迁移的方案。 应用场景越来越复杂，我们将逐渐添加其他文章进行讲解。
 
 **文章** | **详细信息** | **Status**
 --- | --- | ---
-[第 1 篇：概述](contoso-migration-overview.md) | 简要介绍 Contoso 的迁移策略、文章系列和所使用的示例应用。 | 可用
+[文章 1：概述](contoso-migration-overview.md) | 简要介绍 Contoso 的迁移策略、文章系列和所使用的示例应用。 | 可用
 [文章 2：部署 Azure 基础结构](contoso-migration-infrastructure.md) | 介绍 Contoso 如何装备其本地和 Azure 基础结构进行迁移。 所有的 Contoso 迁移方案共用同一个基础结构。 | 可用
 [文章 3：访问本地资源](contoso-migration-assessment.md)  | 展示 Contoso 如何评估 VMware 上运行的本地双层 SmartHotel 应用。 公司使用 [Azure Migrate](migrate-overview.md) 服务评估应用 VM，使用 [Azure 数据库迁移助手](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)评估应用 SQL Server 数据库。 | 可用
 [文章 4：重新托管到 Azure VM 和 SQL 托管实例](contoso-migration-rehost-vm-sql-managed-instance.md) | 演示 Contoso 如何将 SmartHotel 应用迁移到 Azure。 他们使用 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) 迁移应用 Web VM，使用 [Azure 数据库迁移](https://docs.microsoft.com/azure/dms/dms-overview)服务将应用数据库迁移到 SQL 托管实例。 | 可用
-[文章 5：重新托管到 Azure VM](contoso-migration-rehost-vm.md) | 展示 Contoso 如何使用 Site Recovery 服务将其 SmartHotel 迁移到 Azure IaaS VM。
+[文章 5：重新托管到 Azure VM](contoso-migration-rehost-vm.md) | 展示 Contoso 如何使用 Site Recovery 服务将其 SmartHotel 迁移到 Azure IaaS VM。 | 可用
 [文章 6：重新托管到 Azure VM 和 SQL Server 可用性组](contoso-migration-rehost-vm-sql-ag.md) | 展示 Contoso 如何迁移 SmartHotel 应用。 公司使用 Site Recovery 迁移应用 VM，同时使用数据库迁移服务将应用数据库迁移到 SQL Server 可用性组。 | 可用
-[文章 7：将 Linux 应用重新托管到 Azure VM](contoso-migration-rehost-linux-vm.md) | 展示 Contoso 如何使用 Azure Site Recovery 将其 osTicket Linux 应用迁移到 Azure IaaS VM。
-文章 8：将 Linux 应用重新托管到 Azure VM 和 Azure MySQL 服务器（本文） | 演示 Contoso 如何迁移 osTicket Linux 应用。 他们使用 Site Recovery 进行 VM 迁移，使用 MySQL Workbench 迁移到 Azure MySQL 服务器实例。 | 可用
+[文章 7：将 Linux 应用重新托管到 Azure VM](contoso-migration-rehost-linux-vm.md) | 展示 Contoso 如何使用 Azure Site Recovery 将其 osTicket Linux 应用迁移到 Azure IaaS VM。 | 可用
+文章 8：将 Linux 应用重新托管到 Azure VM 和 Azure MySQL 服务器 | 演示 Contoso 如何迁移 osTicket Linux 应用。 他们使用 Site Recovery 进行 VM 迁移，使用 MySQL Workbench 迁移到 Azure MySQL 服务器实例。 | 本文。
+[文章 9：基于 Azure Web 应用和 Azure SQL 数据库重构应用](contoso-migration-refactor-web-app-sql.md) | 演示 Contoso 如何将 SmartHotel 应用迁移到 Azure Web 应用，并将应用数据库迁移到 Azure SQL Server 实例 | 可用
+[文章 10：基于 Azure Web 应用和 Azure MySQL 重构 Linux 应用](contoso-migration-refactor-linux-app-service-mysql.md) | 演示 Contoso 如何将 Linux osTicket 应用迁移到多个站点中的 Azure Web 应用，并与 GitHub 集成以便持续交付。 他们将应用数据库迁移到 Azure MySQL 实例。 | 可用
+[文章 11：基于 VSTS 重构 TFS](contoso-migration-tfs-vsts.md) | 演示 Contoso 如何通过将本地 Team Foundation Server (TFS) 部署迁移到 Azure 中的 Visual Studio Team Services (VSTS) 来迁移该部署。 | 可用
+[文章 12：在 Azure 容器和 Azure SQL 数据库上重塑应用架构](contoso-migration-rearchitect-container-sql.md) | 演示 Contoso 如何将其 SmartHotel 应用迁移并重新架构到 Azure。 他们将应用 Web 层重新架构为 Windows 容器以及 Azure SQL 数据库中的应用数据库。 | 可用
+[文章 13：在 Azure 中重新生成应用](contoso-migration-rebuild.md) | 演示 Contoso 如何使用一系列 Azure 功能和服务（包括应用程序服务、Azure Kubernetes、Azure Functions、认知服务和 Cosmos DB）重新生成其 SmartHotel 应用。 | 可用
+
 
 在本文中，Contoso 将双层 Linux Apache MySQL PHP (LAMP) 服务支持应用 (osTicket) 迁移到 Azure。 如果想要使用此开放源代码应用，可从 [GitHub](https://github.com/osTicket/osTicket) 下载。
 
@@ -57,8 +63,8 @@ Contoso 云团队已确定此迁移的目标，以便确定最佳迁移方法：
 在本方案中：
 
 - 应用分层到两个 VM（OSTICKETWEB 和 OSTICKETMYSQL）中。
-- 这两个 VM 位于 VMware ESXi 主机 contosohost1.contoso.com（6.5 版）上。
-- VMware 环境由 VM 上运行的 vCenter Server 6.5 (vcenter.contoso.com) 托管。
+- 这两个 VM 位于 VMware ESXi 主机 **contosohost1.contoso.com**（6.5 版）上。
+- VMware 环境由 VM 上运行的 vCenter Server 6.5 (**vcenter.contoso.com**) 托管。
 - Contoso 有一个本地数据中心 (contoso-datacenter)，其中包含一个本地域控制器 (**contosodc1**)。
 - OSTICKETWEB 上的 Web 层应用将迁移到 Azure IaaS VM。
 - 应用数据库将迁移到 Azure Database for MySQL PaaS 服务。
@@ -106,7 +112,7 @@ Contoso 将按如下方式完成迁移进程：
 
 **要求** | **详细信息**
 --- | ---
-**Azure 订阅** | 在学习本系列前几篇文章期间，你应该已创建了一个订阅。 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。<br/><br/> 如果创建的是免费帐户，则你是自己的订阅的管理员，可以执行所有操作。<br/><br/> 如果你使用现有订阅并且不是管理员，则需要请求管理员为你分配“所有者”或“参与者”权限。<br/><br/> 如需更加细化的权限，请查看[此文](../site-recovery/site-recovery-role-based-linked-access-control.md)。 
+**Azure 订阅** | 在学习本系列前几篇文章期间，应已创建一个订阅。 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。<br/><br/> 如果创建的是免费帐户，则你是自己的订阅的管理员，可以执行所有操作。<br/><br/> 如果你使用现有订阅并且不是管理员，则需要请求管理员为你分配“所有者”或“参与者”权限。<br/><br/> 如需更加细化的权限，请查看[此文](../site-recovery/site-recovery-role-based-linked-access-control.md)。 
 **Azure 基础结构** | Contoso 按照[用于迁移的 Azure 基础结构](contoso-migration-infrastructure.md)中所述设置其 Azure 基础结构。<br/><br/> 详细了解有关 Site Recovery 的具体[网络](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#network)和[存储](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#storage)要求。
 **本地服务器** | 本地 vCenter Server 应运行版本 5.5、6.0 或 6.5<br/><br/> 运行版本 5.5、6.0 或 6.5 的 ESXi 主机<br/><br/> ESXi 主机上运行的一个或多个 VMware VM。
 **本地 VM** | [评审通过 Site Recovery 进行迁移所支持的 Linux VM 需求](https://docs.microsoft.com//azure/site-recovery/vmware-physical-azure-support-matrix#replicated-machines)。<br/><br/> 验证支持的 [Linux 文件和存储系统](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#linux-file-systemsguest-storage)。<br/><br/> VM 必须符合 [Azure 要求](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#azure-vm-requirements)。
@@ -170,7 +176,7 @@ Site Recovery 需要访问 VMware 服务器，才能够：
 - 自动发现 VM。 至少需要一个只读帐户。
 - 安排复制、故障转移和故障回复。 需要一个可以运行诸如创建和删除磁盘、打开 VM 等操作的帐户。
 
-Contoso 如下设置帐户：
+Contoso 按如下所述设置帐户：
 
 1. Contoso 在 vCenter 级别创建一个角色。
 2. 然后，Contoso 向该角色分配所需权限。
@@ -301,8 +307,8 @@ Contoso 执行以下步骤：
 1. 在“准备基础结构” > “复制设置” > “复制策略” >  “创建和关联”中，创建策略“ContosoMigrationPolicy”。
 2. 使用默认设置：
     - **RPO 阈值**：默认为 60 分钟。 此值确定创建恢复点的频率。 如果连续复制超出此限制，将生成警报。
-    - **恢复点保留期**： 默认为 24 小时。 此值指定每个恢复点的保留时长。 可以将复制的虚拟机恢复到窗口中的任何点。
-    - **应用一致性快照频率**： 默认为 1 小时。 此值指定应用程序一致性快照的创建频率。
+    - **恢复点保留期**。 默认为 24 小时。 此值指定每个恢复点的保留时长。 可以将复制的虚拟机恢复到窗口中的任何点。
+    - **应用一致性快照频率**。 默认为 1 小时。 此值指定应用程序一致性快照的创建频率。
  
         ![创建复制策略](./media/contoso-migration-rehost-linux-vm-mysql/replication-policy.png)
 
@@ -338,7 +344,7 @@ Contoso 执行以下步骤：
 
      ![移动服务](./media/contoso-migration-rehost-linux-vm-mysql/linux-mobility.png)
 
-5. 在“复制设置” > “配置复制设置”中，检查已应用正确的复制策略，然后选择“启用复制”。 将自动安装移动服务。
+5. 在“复制设置” > “配置复制设置”中，检查是否已应用正确的复制策略，然后选择“启用复制”。 将自动安装移动服务。
 6.  在“作业”中跟踪复制进度。 在“完成保护”作业运行之后，计算机就可以进行故障转移了。
 
 
@@ -410,7 +416,7 @@ Contoso 运行快速测试故障转移，然后迁移 VM。
 
     ![故障转移](./media/contoso-migration-rehost-linux-vm-mysql/failover2.png)  
 
-5. 检查 VM 后，迁移完成。 这将停止 VM 的复制，并停止对 VM 的 Site Recovery 计费。
+5. 检查 VM 后，迁移完成。 这会停止 VM 的复制，并停止对 VM 的 Site Recovery 计费。
 
     ![故障转移](./media/contoso-migration-rehost-linux-vm-mysql/failover3.png)
 
@@ -433,17 +439,17 @@ Contoso 运行快速测试故障转移，然后迁移 VM。
 
 2. 更新设置，以便 OSTICKETWEB VM 能够与 OSTICKETMYSQL 数据库进行通信。 当前，通过本地 IP 地址 172.16.0.43 对配置进行硬编码。
 
-    更新前
+    **更新之前**
     
     ![更新 IP](./media/contoso-migration-rehost-linux-vm-mysql/update-ip1.png)  
 
-    更新后
+    **更新之后**
     
     ![更新 IP](./media/contoso-migration-rehost-linux-vm-mysql/update-ip2.png) 
     
     ![更新 IP](./media/contoso-migration-rehost-linux-vm-mysql/update-ip3.png) 
 
-3. 通过 systemctl restart apache2 重启该服务。
+3. 使用 **systemctl restart apache2** 重启服务。
 
     ![重新启动](./media/contoso-migration-rehost-linux-vm-mysql/restart.png) 
 
@@ -452,7 +458,7 @@ Contoso 运行快速测试故障转移，然后迁移 VM。
     ![更新 DNS](./media/contoso-migration-rehost-linux-vm-mysql/update-dns.png) 
 
 
-##  <a name="clean-up-after-migration"></a>迁移后清理
+##  <a name="clean-up-after-migration"></a>迁移后的清理
 
 迁移完成后，osTicket 应用层在 Azure VM 上运行。
 
@@ -475,7 +481,7 @@ Contoso 安全团队审查 VM 和数据库，以确定任何安全问题。
 - 考虑使用磁盘加密和 Azure KeyVault 保护 VM 磁盘上的数据。
 - SSL 未配置 VM 和数据库实例之间的通信。 他们将需要进行此操作，以确保数据库流量不被攻击。
 
-[详细了解](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control) VM 的安全实践。
+[详细了解](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control) VM 的安全做法。
 
 ### <a name="backups"></a>备份
 
@@ -486,7 +492,7 @@ Contoso 安全团队审查 VM 和数据库，以确定任何安全问题。
 
 - 部署资源后，Contoso 将根据他们在 [Azure 基础结构](contoso-migration-infrastructure.md#set-up-tagging)部署期间的决定分配 Azure 标记。
 - Contoso Ubuntu 服务器无授权问题。
-- Contoso 将启用由 Microsoft 子公司 Cloudyn 授权的 Azure 成本管理。 它是一个多云成本管理解决方案，可优化 Azure 和其他云资源的使用和管理。  [详细了解](https://docs.microsoft.com/azure/cost-management/overview) Azure 成本管理。
+- Contoso 将启用由 Microsoft 子公司 Cloudyn 授权的 Azure 成本管理。 该服务是一个多云成本管理解决方案，可帮助利用和管理 Azure 与其他云资源。  [详细了解](https://docs.microsoft.com/azure/cost-management/overview) Azure 成本管理。
 
 
 ## <a name="next-steps"></a>后续步骤

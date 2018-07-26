@@ -8,17 +8,17 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: 9521bd47db9676c70993c535f1207b3519123353
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e9d1e348ccdccfc72a8e60d70dda1c939c2393af
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633309"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004765"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参考 - IoT 中心配额和限制
 
 ## <a name="quotas-and-throttling"></a>配额和限制
-每个 Azure 订阅最多可以拥有 10 个 IoT 中心和 1 个免费中心。
+每个 Azure 订阅最多可以有 50 个 IoT 中心和 1 个免费中心。
 
 每个 IoT 中心都在特定层中预配了特定单位数。 有关详细信息，请参阅 [Azure IoT 中心定价][lnk-pricing]。 层和单位数决定了可以发送的消息的每日配额上限。
 
@@ -64,7 +64,7 @@ ms.locfileid: "34633309"
 
 IoT 中心强制实施的其他操作限制：
 
-| Operation | Limit |
+| Operation | 限制 |
 | --------- | ----- |
 | 文件上传 URI | 存储帐户一次可传出 10000 个 SAS URI。 <br/> 一次可传出 10 个 SAS URI/设备。 |
 | 作业<sup>1</sup> | 作业历史记录最多保留 30 天 <br/> 最大并发作业数为 1（适用于免费版和 S1）、5（适用于 S2）、10（适用于 S3）。 |

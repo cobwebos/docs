@@ -3,33 +3,33 @@ title: 使用 Node.js 将 LUIS 数据添加到 Application Insights | Microsoft 
 titleSuffix: Azure
 description: 使用 Node.js 生成与 LUIS 应用程序和 Application Insights 集成的机器人。
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 01/18/2018
-ms.author: v-geberr
-ms.openlocfilehash: 929b6e1cc980d7215f91a616820e257aed26bab7
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: diberry
+ms.openlocfilehash: 5b65747bea7d2496558c5b3b533bb8420eee6254
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366756"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39236833"
 ---
 # <a name="add-luis-results-to-application-insights-from-a-web-app-bot"></a>通过 Web 应用机器人将 LUIS 结果添加到 Application Insights
 本教程将 LUIS 请求和响应信息添加到 [Application Insights](https://azure.microsoft.com/services/application-insights/) 遥测数据存储。 添加该数据后，可使用 Kusto 语言进行查询，或使用 PowerBi 对陈述的意向和实体进行实时分析、聚合和报告。 此分析有助于确定是否应添加或编辑 LUIS 应用的意向和实体。
 
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 * 将 Application Insights 库添加到 Web 应用机器人
 * 捕获 LUIS 查询结果并发送给 Application Insights
-* 在 Application Insights 中查询首要意向、评分和陈述
+* 查询 Application Insights，获取首要意向、分数和表述
 
 ## <a name="prerequisites"></a>先决条件
 
-* **[前一教程](luis-nodejs-tutorial-build-bot-framework-sample.md)** 中的 LUIS Web 应用机器人已启用 Application Insights。 
+* 使用[上一教程](luis-nodejs-tutorial-build-bot-framework-sample.md)中已启用 Application Insights 的 LUIS Web 应用机器人。 
 
 > [!Tip]
 > 如果没有订阅，可以注册一个[免费帐户](https://azure.microsoft.com/free/)。
@@ -107,13 +107,13 @@ ms.locfileid: "35366756"
 ## <a name="view-luis-entries-in-application-insights"></a>在 Application Insights 中查看 LUIS 条目
 打开 Application Insights 以查看 LUIS 条目。 
 
-1. 在门户中，选择“所有资源”，然后按 Web 应用机器人的名称进行筛选。 单击类型为“Application Insights”的资源。 Application Insights 的图标是灯泡。 
+1. 在门户中，选择“所有资源”，然后按 Web 应用机器人的名称进行筛选。 单击“Application Insights”类型的资源。 Application Insights 的图标是灯泡。 
 
     ![搜索 Application Insights](./media/luis-tutorial-appinsights/search-for-app-insights.png)
 
 
 
-2. 资源打开后，单击最右侧面板中的“搜索”图标（放大镜）。 右侧显示一个新面板。 该面板可能需要一秒钟才能显示出来，具体取决于找到的遥测数据量。 搜索 `LUIS-results` 并按 Enter 键。 该列表已缩减为仅限本教程添加的 LUIS 查询结果。
+2. 资源打开后，单击最右侧面板中的“搜索”图标（放大镜）。 右侧将显示一个新面板。 该面板可能需要一秒钟才能显示出来，具体取决于找到的遥测数据量。 搜索 `LUIS-results` 并按 Enter 键。 该列表已缩减为仅限本教程添加的 LUIS 查询结果。
 
     ![筛选依赖项](./media/luis-tutorial-appinsights/app-insights-filter.png)
 
@@ -125,16 +125,16 @@ ms.locfileid: "35366756"
 
 
 > [!Tip]
-> 如果想要保存依赖项列表并稍后查看，请依次单击“...更多”、“保存收藏”。
+> 如果想要保存依赖项列表并稍后回查看，请依次单击“...更多”>“保存收藏”。
 
 ## <a name="query-application-insights-for-intent-score-and-utterance"></a>查询 Application Insights，获取意向、评分和陈述
-Application Insights 支持查询使用 [Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) 语言的数据以及将其导出到 [PowerBI](https://powerbi.microsoft.com)。 
+Application Insights 支持查询使用 [Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) 语言的数据并将其导出到 [Power BI](https://powerbi.microsoft.com)。 
 
 1. 在筛选框上方，单击依赖项列表顶部的“分析”。 
 
     ![“分析”按钮](./media/luis-tutorial-appinsights/analytics-button.png)
 
-2. 顶部将打开一个包含查询窗口的新窗口，下方有一个数据表窗口。 如果之前使用过数据库，则会熟悉这种布局。 该查询包含过去 24 小时内以名称 `LUIS-results` 开头的所有项。 **CustomDimensions** 列以名称/值对的形式显示 LUIS 查询结果。
+2. 此时将打开一个新窗口，窗口顶部为一个查询窗口，查询窗口下方为一个数据表窗口。 如果之前使用过数据库，则会熟悉这种布局。 该查询包含过去 24 小时内以名称 `LUIS-results` 开头的所有项。 **CustomDimensions** 列以名称/值对的形式显示 LUIS 查询结果。
 
     ![运行 Analytics 查询窗口](./media/luis-tutorial-appinsights/analytics-query-window.png)
 
@@ -151,13 +151,13 @@ Application Insights 支持查询使用 [Kusto](https://docs.microsoft.com/azure
     ![Analytics 首要意向](./media/luis-tutorial-appinsights/app-insights-top-intent.png)
 
 
-详细了解 [Kusto 查询语言](https://docs.loganalytics.io/docs/Learn/Getting-Started/Getting-started-with-queries)或[将数据导出到 PowerBi](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi)。 
+详细了解 [Kusto 查询语言](https://docs.loganalytics.io/docs/Learn/Getting-Started/Getting-started-with-queries)或[将数据导出到 Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi)。 
 
 ## <a name="next-steps"></a>后续步骤
 
 你可能还希望向 Application Insights 数据中添加其他信息，包括应用 ID、版本 ID、上次模型更改日期、上次训练日期和上次发布日期。 可从终结点 URL（应用 ID 和版本 ID ）或[创作 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3d) 调用中检索这些值，然后在 Web 应用机器人设置中对值进行设置并从该位置拉取值。  
 
-如果对多个 LUIS 应用使用同一个终结点订阅，则还应包含订阅 ID 和声明此为共享密钥属性。 
+如果对多个 LUIS 应用使用同一个终结点订阅，则还应包含订阅 ID 和一个声明此为共享密钥的属性。 
 
 > [!div class="nextstepaction"]
 > [详细了解示例陈述](luis-how-to-add-example-utterances.md)

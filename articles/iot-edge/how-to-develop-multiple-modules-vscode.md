@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 06/27/2018
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 4e9aac5f19fa75613dee2aba3853a0243d7d966b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 31fe210b87a052438956d813db0d104e0f2cdb6e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048254"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041240"
 ---
 # <a name="develop-an-iot-edge-solution-with-multiple-modules-in-visual-studio-code"></a>在 Visual Studio Code 中使用多个模块开发 IoT Edge 解决方案
 
@@ -74,5 +74,7 @@ ms.locfileid: "37048254"
 
 了解在 Visual Studio Code 中使用 Azure IoT Edge 进行开发的其他方案：
 
-* [在 VS Code 中开发 C# 模块](how-to-develop-csharp-module.md)
-* [在 VS Code 中开发 C# 函数](how-to-develop-csharp-function.md)
+* 在 VS Code 中使用 [C#](how-to-develop-csharp-module.md) 或 [Node.js](how-to-develop-node-module.md) 开发模块。
+* 在 VS Code 中使用 [C#](how-to-develop-csharp-function.md) 开发 Azure Functions。
+
+若要为 IoT Edge 设备开发模块，请参阅[了解并使用 Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md)。

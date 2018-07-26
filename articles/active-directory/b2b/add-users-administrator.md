@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
-ms.date: 05/11/2018
-ms.author: twooley
-author: twooley
+ms.date: 07/10/2018
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 7dddc41d35ae466f7c1392450fbda3c86a72a538
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: f654aaa6d44011a089008558849d37bf6cdfa6f6
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34266978"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39037221"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>在 Azure 门户中添加 Azure Active Directory B2B 协作用户
 
@@ -32,16 +32,16 @@ ms.locfileid: "34266978"
 
 1. 以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 在导航窗格中选择“Azure Active Directory”。
-3. 在“管理”下，选择“用户和组” > “所有用户”。
+3. 在“管理”下，选择“用户”。
 4. 选择“新来宾用户”。
 
    ![显示“新来宾用户”在 UI 中的位置](./media/add-users-administrator/NewGuestUser-Directory.png) 
  
-7. 在“邀请来宾”下，输入外部用户的电子邮件地址。 （可选）包含一条欢迎消息。 例如：
+5. 在“用户名”下，输入外部用户的电子邮件地址。 （可选）包含一条欢迎消息。 例如：
 
    ![显示“新来宾用户”在 UI 中的位置](./media/add-users-administrator/InviteGuest.png) 
 
-8. 选择“邀请”，以自动向来宾用户发送邀请。 在“通知”区域中，找到“已成功邀请用户”消息。 
+6. 选择“邀请”，以自动向来宾用户发送邀请。 
  
 发送邀请后，该用户帐户将以来宾的形式自动添加到目录。
 
@@ -53,18 +53,15 @@ ms.locfileid: "34266978"
 
 1. 以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 在导航窗格中选择“Azure Active Directory”。
-3. 在“管理”下，选择“用户和组” > “所有组”。
+3. 在“管理”下，选择“组”。
 4. 选择一个组（或单击“新建组”创建一个新组）。 最好是输入组说明，指出该组包含 B2B 来宾用户。
-5. 选择“成员” > “添加成员”。 
+5. 选择“成员”。 
 6. 执行下列操作之一：
    - 如果目录中已存在该来宾用户，请搜索 B2B 用户。 选择该用户，单击“选择”将该用户添加到组中。
-   - 如果目录中不存在该来宾用户，请选择“邀请”。
-   ![添加邀请按钮以添加来宾成员](./media/add-users-administrator/GroupInvite.png)
+   - 如果目录中尚未存在来宾用户，请通过在搜索框中键入来宾用户的电子邮件地址，键入可选的个人消息，然后单击“选择”来邀请他们加入该组。 邀请会自动发送到受邀用户。
+     
+     ![添加邀请按钮以添加来宾成员](./media/add-users-administrator/GroupInvite.png)
    
-      在“邀请来宾”下输入电子邮件地址和可选的个人消息，然后选择“邀请”。 单击“选择”将该用户添加到组中。
-
-      邀请会自动发送到受邀用户。 在“通知”区域中，找到“已成功邀请用户”消息。 
-
 还可以结合 Azure AD B2B 协作使用动态组。 有关详细信息，请参阅[动态组和 Azure Active Directory B2B 协作](use-dynamic-groups.md)。
 
 ## <a name="add-guest-users-to-an-application"></a>将来宾用户添加到应用程序
@@ -75,20 +72,25 @@ ms.locfileid: "34266978"
 2. 在导航窗格中选择“Azure Active Directory”。
 3. 在“管理”下，选择“企业应用程序” > “所有应用程序”。
 4. 选择要将来宾用户添加到的应用程序。
-5. 在“管理”下，选择“用户和组”。
+5. 在应用程序的仪表板上，选择“用户总数”以打开“用户和组”窗格。
+
+    ![用于打开“用户和组”窗格的“用户总数”按钮](./media/add-users-administrator/AppUsersAndGroups.png)
+
 6. 选择“添加用户”。
 7. 在“添加分配”下，选择“用户和组”。
 8. 执行下列操作之一：
-   - 如果目录中已存在该来宾用户，请搜索 B2B 用户。 选择该用户，单击“选择”将该用户添加到应用中。
+   - 如果目录中已存在该来宾用户，请搜索 B2B 用户。 选择用户，单击“选择”，然后单击“分配”将该用户添加到应用。
    - 如果目录中不存在该来宾用户，请选择“邀请”。
-   ![添加邀请按钮以添加来宾成员](./media/add-users-administrator/AppInviteUsers.png)
+           
+       ![添加邀请按钮以添加来宾成员](./media/add-users-administrator/AppInviteUsers.png)
    
-      在“邀请来宾”下输入电子邮件地址和可选的个人消息，然后选择“邀请”。 单击“选择”将该用户添加到应用中。
+      在“邀请来宾”下输入电子邮件地址，键入可选的个人消息，然后选择“邀请”。 单击“选择”，然后单击“分配”将该用户添加到应用。 邀请会自动发送给受邀用户。
 
-      邀请会自动发送到受邀用户。 在“通知”区域中，找到“已成功邀请用户”消息。
-
-9. 在“添加分配”下，单击“选择角色”，选择要将选定用户应用到的角色（如果适用），然后选择“确定”。
-10. 单击“分配”。
+9. 来宾用户将出现在应用程序的“用户和组”列表中，其中分配的角色为“默认访问权限”。 如果想要更改该角色，请执行以下操作：
+   - 选择来宾用户，然后选择“编辑”。 
+   - 在“编辑分配”下，单击“选择角色”，然后选择要分配给所选用户的角色。
+   - 单击“选择”。
+   - 单击“分配”。
  
 ## <a name="resend-invitations-to-guest-users"></a>向来宾用户重新发送邀请
 
@@ -96,8 +98,7 @@ ms.locfileid: "34266978"
 
 1. 以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 在导航窗格中选择“Azure Active Directory”。
-3. 在“管理”下，选择“用户和组”。
-4. 选择“所有用户”。
+3. 在“管理”下，选择“用户”。
 5. 选择用户帐户。
 6. 在“管理”下，选择“配置文件”。
 7. 如果该用户尚未接受邀请，则会显示“重新发送邀请”选项。 选择此按钮可以重新发送邀请。

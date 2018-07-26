@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: c3c5a3029916b91b65a5bd0f6efa5c83f5dfcb66
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 70269fc71fcb2ef9158b50d3bb281097abee0740
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38992108"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 了解网页或应用的性能和使用情况。 如果将 [Application Insights](app-insights-overview.md) 添加到页面脚本，可以获取页面加载和 AJAX 调用的时间、浏览器异常和 AJAX 失败的计数和详细信息，以及用户和会话计数。 所有这些信息可按页面、客户端 OS 和浏览器版本、地理位置和其他维度细分。 可以针对失败计数或页面加载缓慢情况设置警报。 并且通过在 JavaScript 代码中插入跟踪调用，可以跟踪网页应用程序的不同功能的使用情况。
@@ -56,7 +57,7 @@ Application Insights 资源是显示有关页面性能和使用情况的数据�
 
 ```HTML
 <!-- 
-To collect end-user usage analytics about your application, 
+To collect user behavior analytics about your application, 
 insert the following script into each page you want to track.
 Place this code immediately before the closing </head> tag,
 and before any other scripts. Your first data will appear 
@@ -126,7 +127,7 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 
 ![在 portal.azure.com 中，打开应用的资源，并单击“设置”、“浏览器”](./media/app-insights-javascript/03.png)
 
-*还没有数据？单击页面顶部的“刷新”。仍然没有数据？请参阅[故障排除](app-insights-troubleshoot-faq.md)。*
+还没有数据？ 单击页面顶部的“刷新”。 仍然没有数据？ 请参阅 [疑难解答](app-insights-troubleshoot-faq.md)。
 
 “浏览器”边栏选项卡是一个[指标资源管理器边栏选项卡](app-insights-metrics-explorer.md)，其中包含预设筛选器和图表选项。 如果需要，可以编辑时间范围、筛选器和图表配置，将结果另存为收藏项目。 单击“还原默认值”可恢复原始边栏选项卡配置。
 
@@ -235,7 +236,7 @@ Ajax 调用包含从网页脚本发出的任何 HTTP/HTTPS 调用。 如果没�
 ## <a name="usage-tracking"></a>使用情况跟踪
 想要了解用户如何使用应用？
 
-* [了解使用情况跟踪](app-insights-web-track-usage.md)
+* [了解用户行为分析工具](app-insights-web-track-usage.md)
 * [了解自定义事件和指标 API。](app-insights-api-custom-events-metrics.md)
 
 ## <a name="video"></a> 视频

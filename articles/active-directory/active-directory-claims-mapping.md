@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: billmath
-ms.openlocfilehash: 04fa23e059ee676ba0e7c48eeea3361b85af5415
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: e6d2d8dfd6f7a40158b098983bd34bbd5d8271f0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261196"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049307"
 ---
 # <a name="claims-mapping-in-azure-active-directory-public-preview"></a>Azure Active Directory 中的声明映射（公共预览版）
 
@@ -281,7 +281,7 @@ Source 元素必须设置为以下值之一：
 ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source 的每个值有效的 ID 值。
 
 #### <a name="table-3-valid-id-values-per-source"></a>表 3：每个 Source 的有效 ID 值
-|Source|ID|说明|
+|Source|ID|Description|
 |-----|-----|-----|
 |用户|surname|姓氏|
 |用户|givenname|名字|
@@ -318,7 +318,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 |用户|othermail|其他邮件|
 |用户|country|国家/地区|
 |用户|city|城市|
-|用户|state|State|
+|用户|state|省/直辖市/自治区|
 |用户|jobtitle|职务|
 |用户|employeeid|员工 ID|
 |用户|facsimiletelephonenumber|传真电话号码|
@@ -354,10 +354,10 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 根据选择的方法，需要一组输入和输出。 这些内容使用 **InputClaims**、**InputParameters** 和**OutputClaims** 元素进行定义。
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>表 4：转换方法以及预期输入和输出
-|TransformationMethod|预期输入|预期输出|说明|
+|TransformationMethod|预期输入|预期输出|Description|
 |-----|-----|-----|-----|
 |Join|string1、string2、separator|outputClaim|联接输入字符串（之间使用分隔符）。 例如：string1：“foo@bar.com”、string2：“sandbox”、separator：“.”会生成 outputClaim：“foo@bar.com.sandbox”|
-|ExtractMailPrefix|mail|outputClaim|提取电子邮件地址的本地部分。 例如：mail：“foo@bar.com”会生成 outputClaim：“foo”。 如果 @ 符号不存在，则原样返回原始输入字符串。|
+|ExtractMailPrefix|mail|outputClaim|提取电子邮件地址的本地部分。 例如：mail：“foo@bar.com”会生成 outputClaim：“foo”。 如果 \@ 符号不存在，则按原样返回原始输入字符串。|
 
 **InputClaims：** 使用 InputClaims 元素可将数据从声明架构条目传递给转换。 它具有两个属性：**ClaimTypeReferenceId** 和 **TransformationClaimType**。
 
@@ -379,7 +379,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 **SAML NameID 和 UPN：** NameID 和 UPN 值所源自的属性以及允许使用的声明转换会受到限制。
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>表 5：允许作为 SAML NameID 数据源的属性
-|Source|ID|说明|
+|Source|ID|Description|
 |-----|-----|-----|
 |用户|mail|电子邮件地址|
 |用户|userprincipalname|用户主体名称|

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 10/18/2017
 ms.author: laviswa
-ms.openlocfilehash: 13337e7979a378382df5e62661b04bac8dffa689
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 4e9bdfab3abf9545218e80bf79d1b9b5df0cf2ff
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798825"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042004"
 ---
 # <a name="azure-cosmos-db-sql-syntax-reference"></a>Azure Cosmos DB SQL 语法参考
 
@@ -244,7 +244,7 @@ JOIN 示例 1，具有 2 个源：
   
     若 `input_alias1 = A,`，表示集 {1, 2}  
   
-    若 `input_alias1 = B,`，表示 {3}  
+    若 `input_alias1 = B,`，表示集 {3}  
   
     若 `input_alias1 = C,`，表示集 {4, 5}  
   
@@ -460,7 +460,7 @@ ORDER BY <sort_specification>
   
 -   `parameter_name`  
   
-     表示指定参数名称的值。 参数名称必须以单个 @ 作为第一个字符。  
+     表示指定参数名称的值。 参数名称必须以单个 \@ 作为第一个字符。  
   
  **备注**  
   
@@ -487,7 +487,7 @@ ORDER BY <sort_specification>
   
  一元运算符：  
   
-|**名称**|运算符|**详细信息**|  
+|**Name**|运算符|**详细信息**|  
 |-|-|-|  
 |算术|+<br /><br /> -|返回数字值。<br /><br /> 位求反。 返回求反后的数字值。|  
 |位|~|一的补数。 返回数字值的补数。|  
@@ -495,7 +495,7 @@ ORDER BY <sort_specification>
   
  二进制运算符：  
   
-|**名称**|运算符|**详细信息**|  
+|**Name**|运算符|**详细信息**|  
 |-|-|-|  
 |算术|+<br /><br /> -<br /><br /> *<br /><br /> /<br /><br /> %|加。<br /><br /> 减。<br /><br /> 乘。<br /><br /> 除。<br /><br /> 取模。|  
 |位|&#124;<br /><br /> &<br /><br /> ^<br /><br /> <<<br /><br /> >><br /><br /> >>>|位或。<br /><br /> 位与。<br /><br /> 位异或。<br /><br /> 左移。<br /><br /> 右移。<br /><br /> 补零右移。|  
@@ -510,7 +510,7 @@ ORDER BY <sort_specification>
   
  对要比较的值进行排序  
   
-|**类型**|值顺序|  
+|类型|值顺序|  
 |-|-|  
 |未定义|不可比较。|  
 |Null|单个值：null|  
@@ -538,7 +538,7 @@ ORDER BY <sort_specification>
   
  受支持的标量数据类型：  
   
-|**类型**|值顺序|  
+|类型|值顺序|  
 |-|-|  
 |未定义|单个值：未定义|  
 |Null|单个值：null|  
@@ -680,7 +680,7 @@ ORDER BY <sort_specification>
 ##  <a name="bk_built_in_functions"></a> 内置函数  
  Azure Cosmos DB 提供多个内置 SQL 函数。 内置函数的类别如下所示。  
   
-|函数|说明|  
+|函数|Description|  
 |--------------|-----------------|  
 |[数学函数](#bk_mathematical_functions)|每个数学函数均执行一个计算，通常基于作为参数提供的输出值，并返回数值。|  
 |[类型检查函数](#bk_type_checking_functions)|类型检查函数使你能够检查 SQL 查询内表达式的类型。|  
@@ -1854,7 +1854,7 @@ SELECT
 |[LOWER](#bk_lower)|[LTRIM](#bk_ltrim)|[REPLACE](#bk_replace)|  
 |[REPLICATE](#bk_replicate)|[REVERSE](#bk_reverse)|[RIGHT](#bk_right)|  
 |[RTRIM](#bk_rtrim)|[STARTSWITH](#bk_startswith)|[SUBSTRING](#bk_substring)|  
-|[UPPER](#bk_upper)|||  
+|[ToString](#bk_tostring)|[UPPER](#bk_upper)|||  
   
 ####  <a name="bk_concat"></a> CONCAT  
  返回一个字符串，该字符串是连接两个或多个字符串值的结果。  
@@ -2367,7 +2367,80 @@ SELECT SUBSTRING("abc", 1, 1)
 ```  
 [{"$1": "b"}]  
 ```  
+####  <a name="bk_tostring"></a> ToString  
+ 返回标量表达式的字符串表示形式。 
   
+ **语法**  
+  
+```  
+ToString(<expr>)
+```  
+  
+ **参数**  
+  
+-   `expr`  
+  
+     为任何有效的标量表达式。  
+  
+ 返回类型  
+  
+ 返回字符串表达式。  
+  
+ **示例**  
+  
+ 以下示例演示 ToString 在不同类型中的行为方式。   
+  
+```  
+SELECT ToString(1.0000), ToString("Hello World"), ToString(NaN), ToString(Infinity),
+ToString(IS_STRING(ToString(undefined))), IS_STRING(ToString(0.1234), ToString(false), ToString(undefined))
+```  
+  
+ 结果集如下。  
+  
+```  
+[{"$1": "1", "$2": "Hello World", "$3": "NaN", "$4": "Infinity", "$5": "false", "$6": true, "$7": "false"}]  
+```  
+ 给定以下输入：
+```  
+{"Products":[{"ProductID":1,"Weight":4,"WeightUnits":"lb"},{"ProductID":2,"Weight":32,"WeightUnits":"kg"},{"ProductID":3,"Weight":400,"WeightUnits":"g"},{"ProductID":4,"Weight":8999,"WeightUnits":"mg"}]}
+```    
+ 以下示例演示 ToString 如何与其他字符串函数（如 CONCAT）一起使用。   
+ 
+```  
+SELECT 
+CONCAT(ToString(p.Weight), p.WeightUnits) 
+FROM p in c.Products 
+```  
+
+ 结果集如下。  
+  
+```  
+[{"$1":"4lb" },
+ {"$1":"32kg"},
+ {"$1":"400g" },
+ {"$1":"8999mg" }]
+
+```  
+给定以下输入。
+```
+{"id":"08259","description":"Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX","nutrients":[{"id":"305","description":"Caffeine","units":"mg"},{"id":"306","description":"Cholesterol, HDL","nutritionValue":30,"units":"mg"},{"id":"307","description":"Sodium, NA","nutritionValue":612,"units":"mg"},{"id":"308","description":"Protein, ABP","nutritionValue":60,"units":"mg"},{"id":"309","description":"Zinc, ZN","nutritionValue":null,"units":"mg"}]}
+```
+ 以下示例演示 ToString 如何与其他字符串函数（如 REPLACE）一起使用。   
+```
+SELECT 
+    n.id AS nutrientID,
+    REPLACE(ToString(n.nutritionValue), "6", "9") AS nutritionVal
+FROM food 
+JOIN n IN food.nutrients
+```
+ 结果集如下。  
+ ```
+[{"nutrientID":"305"},
+{"nutrientID":"306","nutritionVal":"30"},
+{"nutrientID":"307","nutritionVal":"912"},
+{"nutrientID":"308","nutritionVal":"90"},
+{"nutrientID":"309","nutritionVal":"null"}]
+ ```  
 ####  <a name="bk_upper"></a> UPPER  
  返回在将小写字符数据转换为大写后的字符串表达式。  
   

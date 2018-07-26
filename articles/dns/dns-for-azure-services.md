@@ -3,7 +3,7 @@ title: 配合使用 Azure DNS 和其他 Azure 服务 | Microsoft Docs
 description: 了解如何使用 Azure DNS 来解析其他 Azure 服务的名称
 services: dns
 documentationcenter: na
-author: KumudD
+author: vhorne
 manager: jeconnoc
 editor: ''
 tags: azure dns
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 09/21/2016
-ms.author: kumud
-ms.openlocfilehash: 6d052bc82c35aa3f2fdf5b5820e3901bd5c4080d
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.author: victorh
+ms.openlocfilehash: 2f5ff425eadc4572f5e109f503c57969ab310f6b
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2017
-ms.locfileid: "25989837"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171800"
 ---
 # <a name="how-azure-dns-works-with-other-azure-services"></a>Azure DNS 如何与其他 Azure 服务一起工作
 
@@ -32,7 +32,7 @@ Azure DNS 是一种托管的 DNS 管理和名称解析服务。 这样，能够�
 
 下表概述了可用于各种 Azure 服务的受支持的记录类型。 从此表中可以看出，Azure DNS 仅支持面向 Internet 的网络资源的 DNS 记录。 Azure DNS 不能用于内部专用地址的名称解析。
 
-| Azure 服务 | 网络接口 | 说明 |
+| Azure 服务 | 网络接口 | Description |
 | --- | --- | --- |
 | 应用程序网关 |[前端的公共 IP](dns-custom-domain.md#public-ip-address) |可以创建 DNS A 或 CNAME 记录。 |
 | 负载均衡器 |[前端的公共 IP](dns-custom-domain.md#public-ip-address)  |可以创建 DNS A 或 CNAME 记录。 负载均衡器可以拥有一个动态分配的 IPv6 公共 IP 地址。 因此，必须为 IPv6 地址创建 CNAME 记录。 |

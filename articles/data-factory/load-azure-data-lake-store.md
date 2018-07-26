@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 7cdc4f0ef436fbd7ea3bdf1431b08be3b840290f
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: e401508fc5ffc1de666f727ffbb7790005384fc1
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857195"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003790"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>使用 Azure 数据工厂向 Azure Data Lake Storage Gen1 加载数据
 
@@ -35,6 +35,7 @@ Azure 数据工厂在将数据加载到 Azure Data Lake Store 方面提供以下
 
 > [!NOTE]
 > 有关详细信息，请参阅[使用 Azure 数据工厂向/从 Azure Data Lake Store 复制数据](connector-azure-data-lake-store.md)。
+
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅：如果没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
@@ -109,7 +110,7 @@ Azure 数据工厂在将数据加载到 Azure Data Lake Store 方面提供以下
    3. 选择“**下一步**”。
    
    > [!IMPORTANT]
-   > 在此演练中，使用托管服务标识进行 Data Lake Store 身份验证。 请务必按照[这些说明](connector-azure-data-lake-store.md#using-managed-service-identity-authentication)授予服务主体在 Azure Data Lake Store 中的适当权限。
+   > 在此演练中，使用托管服务标识进行 Data Lake Store 身份验证。 请务必按照[这些说明](connector-azure-data-lake-store.md#using-managed-service-identity-authentication)授予 MSI 在 Azure Data Lake Store 中的适当权限。
    
    ![指定 Azure Data Lake Store 帐户](./media/load-data-into-azure-data-lake-store/specify-adls.png)
 9. 在“选择输出文件或文件夹”页上，输入 **copyfroms3** 作为输出文件夹名称，然后选择“下一步”： 

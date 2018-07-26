@@ -3,24 +3,24 @@ title: 使用 C# 将 LUIS 数据添加到 Application Insights | Microsoft Docs
 titleSuffix: Azure
 description: 使用 C# 构建一个集成有 LUIS 应用程序和 Application Insights 的机器人。
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: 52b6ae224b0e8da12eb4903f5100a6e5cc39704d
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.author: diberry
+ms.openlocfilehash: f1efe305f5659bfab50cee13ac30d56531cc6093
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35366959"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237785"
 ---
 # <a name="add-luis-results-to-application-insights-from-a-web-app-bot"></a>通过 Web 应用机器人将 LUIS 结果添加到 Application Insights
 本教程介绍如何将 LUIS 响应信息添加到 [Application Insights](https://azure.microsoft.com/services/application-insights/) 遥测数据存储。 拥有该数据后，可使用 Kusto 语言对其进行查询，或使用 Power BI 对表述的意向和实体进行实时分析、聚合和报告。 此分析有助于确定是否应添加或编辑 LUIS 应用的意向和实体。
 
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 * 将 Application Insights 添加到 Web 应用机器人
@@ -191,7 +191,7 @@ Turn on the hall light
 
 1. 在门户中，选择“所有资源”，然后按 Web 应用机器人的名称进行筛选。 单击“Application Insights”类型的资源。 Application Insights 的图标是灯泡。 
 
-    ![搜索应用见解](./media/luis-tutorial-bot-csharp-appinsights/portal-service-list-app-insights.png)
+    ![搜索 Application Insights](./media/luis-tutorial-bot-csharp-appinsights/portal-service-list-app-insights.png)
 
 2. 资源打开后，单击最右侧面板中的“搜索”图标（放大镜）。 右侧将显示一个新面板。 该面板可能需要一秒钟才能显示，具体取决于找到的遥测数据量。 搜索 `LUIS`。 该列表已缩减为仅限本教程添加的 LUIS 查询结果。
 
@@ -207,7 +207,7 @@ Turn on the hall light
 > [!Tip]
 > 如果想要保存依赖项列表并稍后回查看，请依次单击“...更多”>“保存收藏”。
 
-## <a name="query-application-insights-for-intent-score-and-utterance"></a>查询 Application Insights，获取意向、分数和表述
+## <a name="query-application-insights-for-intent-score-and-utterance"></a>查询 Application Insights，获取意向、评分和陈述
 Application Insights 支持查询使用 [Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) 语言的数据并将其导出到 [Power BI](https://powerbi.microsoft.com)。 
 
 1. 在筛选框上方，单击依赖项列表顶部的“分析”。 
@@ -218,7 +218,7 @@ Application Insights 支持查询使用 [Kusto](https://docs.microsoft.com/azure
 
     ![默认分析报表](./media/luis-tutorial-bot-csharp-appinsights/analytics-query-1.png)
 
-3. 若要拉取首要意向、分数和表述，请在查询窗口的最后一行上方添加以下内容：
+3. 若要拉取首要意向、评分和陈述，请在查询窗口的最后一行上方添加以下内容：
 
     ```SQL
     | extend topIntent = tostring(customDimensions.LUIS_topScoringIntent)
@@ -226,7 +226,7 @@ Application Insights 支持查询使用 [Kusto](https://docs.microsoft.com/azure
     | extend utterance = tostring(customDimensions.LUIS_query)
     ```
 
-4. 运行该查询。 滚动到数据表的最右侧。 此处显示新列“首要意向”、“分数”和“表述”。 单击“首要意向”列进行排序。
+4. 运行该查询。 滚动到数据表的最右侧。 此处显示新列“首要意向”、“评分”和“陈述”。 单击“首要意向”列进行排序。
 
     ![自定义分析报表](./media/luis-tutorial-bot-csharp-appinsights/analytics-query-2.png)
 
@@ -239,9 +239,9 @@ Application Insights 支持查询使用 [Kusto](https://docs.microsoft.com/azure
 
 ## <a name="next-steps"></a>后续步骤
 
-你可能还希望向 Application Insights 数据中添加其他信息，包括应用 ID、版本 ID、模型的上次更改日期、上次培训日期和上次发布日期。 可从终结点 URL（应用 ID 和版本 ID ）或[创作 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3d) 调用中检索这些值，然后在 Web 应用机器人设置中对值进行设置并从该位置拉取值。  
+你可能还希望向 Application Insights 数据中添加其他信息，包括应用 ID、版本 ID、上次模型更改日期、上次训练日期和上次发布日期。 可从终结点 URL（应用 ID 和版本 ID ）或[创作 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3d) 调用中检索这些值，然后在 Web 应用机器人设置中对值进行设置并从该位置拉取值。  
 
 如果对多个 LUIS 应用使用同一个终结点订阅，则还应包含订阅 ID 和一个声明此为共享密钥的属性。 
 
 > [!div class="nextstepaction"]
-> [详细了解示例表述](luis-how-to-add-example-utterances.md)
+> [详细了解示例陈述](luis-how-to-add-example-utterances.md)

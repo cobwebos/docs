@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/19/2018
+ms.date: 07/10/2018
 ms.author: terrylan
-ms.openlocfilehash: 3af8f211c19fde9d2fc79f41fc13009570a9b4de
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 3c56abcec37bb6abcb77ec8cc443b0656bd69932
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285910"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990789"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>在 Azure 安全中心中修正安全配置
 Azure 安全中心每天分析虚拟机 (VM) 和计算机操作系统 (OS)，检查是否存在可能使 VM 和计算机更易受到攻击的配置。 当 OS 配置与建议的安全配置规则不匹配时，安全中心建议解决漏洞，并建议修复这些漏洞所需的配置更改。
@@ -27,11 +27,11 @@ Azure 安全中心每天分析虚拟机 (VM) 和计算机操作系统 (OS)，检
 若要详细了解受监视的具体配置，请参阅[建议的配置规则列表](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)。 若要了解如何自定义安全配置评估，请参阅[在 Azure 安全中心（预览）自定义 OS 安全配置](security-center-customize-os-security-config.md)。
 
 ## <a name="implement-the-recommendation"></a>实现该建议
-安全中心中会显示“修正安全配置”建议。 建议显示在“建议” > “计算”下。
+安全中心中会显示“修正安全配置”建议。 建议显示在“建议” > “计算和应用”下。
 
-此示例介绍“计算”下的“修正安全配置”建议。
-1. 在安全中心的左窗格中，选择“计算”。  
-  “计算”窗口随即打开。
+此示例介绍“计算和应用”下的“修正安全配置”建议。
+1. 在安全中心的左窗格中，选择“计算和应用”。  
+  “计算和应用”窗口随即打开。
 
    ![修正安全配置][1]
 

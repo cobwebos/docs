@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 14e562234152d2f1f2f2d2b57b34cd5724d3dd14
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 51d47b87f898aa65fe4ee76c312240a50d45231d
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753087"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049181"
 ---
 # <a name="create-a-logic-app-action"></a>创建逻辑应用操作
 
@@ -109,7 +109,7 @@ ms.locfileid: "36753087"
 
     ![Microsoft Teams 操作](media/monitoring-action-groups/microsoft-teams-actions.png "Microsoft Teams 操作")
 
-12. 配置 Microsoft Teams 操作。 “逻辑应用设计器”将要求对 Office 365 帐户进行身份验证。 选择要向其发送消息的“团队 Id”和“通道 Id”。
+12. 配置 Microsoft Teams 操作。 “逻辑应用设计器”将要求对 Office 365 帐户进行身份验证。 选择要向其发送消息的“团队 ID”和“通道 ID”。
 
 13. 结合使用静态文本和对动态内容中 \<fields\> 的引用来配置消息。 将以下文本复制并粘贴到“消息”字段：
 
@@ -187,10 +187,10 @@ Azure Service Health 条目包含在活动日志中。 创建警报的过程类�
 -  步骤 9 和 10 相同。
 -  对于步骤 11 到 14，请使用以下过程：
 
-   1. 依次选择“+ 新建步骤”、“添加条件”。 设置以下条件，确保逻辑应用仅在输入数据匹配这些值时执行：
+   1. 依次选择“+ 新建步骤”、“添加条件”。 设置以下条件，以便逻辑应用仅在输入数据与下面的值匹配时执行。  在文本框中输入版本值时，请在其周围加上引号 ("0.1.1") 以确保它被评估为字符串而不是数字类型。  如果返回到该页，系统不会显示引号，但底层代码仍然保持字符串类型。   
        - `schemaId == Microsoft.Insights/activityLogs`
        - `eventSource == ServiceHealth`
-       - `version == 0.1.1`
+       - `version == "0.1.1"`
 
       ![“服务运行状况有效负载条件”](media/monitoring-action-groups/service-health-payload-condition.png "服务运行状况有效负载条件")
 
@@ -275,10 +275,10 @@ Azure Service Health 条目包含在活动日志中。 创建警报的过程类�
 - 步骤 9 和 10 相同。
 - 对于步骤 11 到 14，请使用以下过程：
 
-   1. 依次选择“+ 新建步骤”、“添加条件”。 设置以下条件，确保逻辑应用仅在输入数据匹配这些值时执行：
+   1. 依次选择“+ 新建步骤”、“添加条件”。 设置以下条件，以便逻辑应用仅在输入数据与下面的值匹配时执行。 在文本框中输入版本值时，请在其周围加上引号 ("2.0") 以确保它被评估为字符串而不是数字类型。  如果返回到该页，系统不会显示引号，但底层代码仍然保持字符串类型。 
        - `schemaId == AzureMonitorMetricAlert`
-       - `version == 2.0`
-
+       - `version == "2.0"`
+       
        ![“指标警报有效负载条件”](media/monitoring-action-groups/metric-alert-payload-condition.png "指标警报有效负载条件")
 
    1. 在 **if true** 条件中，添加 **For each** 循环和 Microsoft Teams 操作。 使用 HTML 和动态内容的组合定义消息。

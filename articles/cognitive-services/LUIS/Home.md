@@ -2,19 +2,19 @@
 title: Azure 语言理解 (LUIS) 简介 | Microsoft Docs
 description: 了解如何通过语言理解 (LUIS) 服务在应用程序中运用机器学习。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/22/2017
-ms.author: v-geberr
-ms.openlocfilehash: 1c68c586fb799a540f70804d181aa66b2bda9e97
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.author: diberry
+ms.openlocfilehash: 072176347adacbabc0a92f1c7e437f8233531003
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952532"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225452"
 ---
 # <a name="what-is-language-understanding-luis"></a>什么是语言理解 (LUIS)？
 语言理解 (LUIS) 是一种基于云的服务，可在用户对话的自然语言文本中应用自定义机器学习，从而预测整体含义并提炼出相关的详细信息。 
@@ -91,7 +91,7 @@ LUIS 提供多种方式来标识和分类实体。
 
 |示例用户话语|意向|实体|
 |-----------|-----------|-----------|
-|“预订到西雅图的航班？”|预订航班|西雅图|
+|“预订到西雅图的航班？”|BookFlight|西雅图|
 |“你的店铺何时开门？”|店铺营业时间和位置|开门|
 |“安排下午 1 点与分销部的何石谈话”|安排谈话|下午 1 点，何石|
 

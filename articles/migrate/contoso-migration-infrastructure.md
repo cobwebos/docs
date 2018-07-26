@@ -5,14 +5,14 @@ services: azure-migrate
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 07/12/2018
 ms.author: raynew
-ms.openlocfilehash: bf1406c8e361e0a1433b0e26c477c3c34e987fcf
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 6f535d98ea9e1312e4d5f197d121c8d12c109449
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38562752"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39002273"
 ---
 # <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso - 部署迁移基础结构
 
@@ -21,25 +21,30 @@ ms.locfileid: "38562752"
 - 本文中的示例体系结构特定于 Contoso。
 - 是否需要本文所述的所有元素取决于迁移策略。 例如，如果仅在 Azure 中生成云本机应用，则所需网络结构的复杂程度较低。
 
-我们提供一系列的文章展示虚拟公司 Contoso 如何将其本地资源迁移到 Microsoft Azure 云中，而本文档是该系列的第 2 篇。 该系列介绍了背景信息，同时提供一系列部署场景来描述如何设置迁移基础结构、评估本地资源是否适合迁移和运行不同类型的迁移。 应用场景越来越复杂，我们将逐渐添加其他文章进行讲解。
+我们提供一系列的文章展示虚拟公司 Contoso 如何将其本地资源迁移到 Microsoft Azure 云中，而本文档是该系列的第 2 篇。 该系列提供相关信息和部署方案来说明如何设置迁移基础结构、评估本地资源是否适合迁移和运行不同类型的迁移。 应用场景越来越复杂，我们将逐渐添加其他文章进行讲解。
 
 **文章** | **详细信息** | **Status**
 --- | --- | ---
 [文章 1：概述](contoso-migration-overview.md) | 简要介绍 Contoso 的迁移策略、文章系列和所使用的示例应用。 | 可用
-文章 2：部署 Azure 基础结构（本文） | 介绍 Contoso 如何装备其本地和 Azure 基础结构进行迁移。 所有的 Contoso 迁移方案共用同一个基础结构。 | 可用
-[文章 3：访问本地资源](contoso-migration-assessment.md) | 展示 Contoso 如何评估 VMware 上运行的本地双层 SmartHotel 应用。 公司使用 [Azure Migrate](migrate-overview.md) 服务评估应用 VM，使用 [Azure 数据库迁移助手](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)评估应用 SQL Server 数据库。 | 可用
-[文章 4：重新托管到 Azure VM 和 SQL 托管实例](contoso-migration-rehost-vm-sql-managed-instance.md) | 演示 Contoso 如何将 SmartHotel 应用迁移到 Azure。 公司使用 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) 迁移应用前端 VM，同时使用 [Azure 数据库迁移](https://docs.microsoft.com/azure/dms/dms-overview)服务将应用数据库迁移到 SQL 托管实例上。 | 可用
-[文章 5：重新托管到 Azure VM](contoso-migration-rehost-vm.md) | 展示 Contoso 如何在仅使用 Site Recovery 的情况下迁移其 SmartHotel 应用 VM。
-[文章 6：重新托管到 Azure VM 和 SQL Server 可用性组](contoso-migration-rehost-vm-sql-ag.md) | 展示 Contoso 如何迁移 SmartHotel 应用。 公司使用 Site Recovery 迁移应用 VM，同时使用数据库迁移服务将应用数据库迁移到 SQL Server 可用性组。 | 可用
-[文章 7：将 Linux 应用重新托管到 Azure VM](contoso-migration-rehost-linux-vm.md) | 演示 Contoso 如何将 Linux osTicket 应用迁移到 Azure VM。 | 可用
-[文章 8：将 Linux 应用重新托管到 Azure VM 和 Azure MySQL 服务器](contoso-migration-rehost-linux-vm-mysql.md) | 演示 Contoso 如何使用 Site Recovery 迁移 Linux osTicket 应用，以及如何使用 MySQL 工作台将其迁移（备份并还原）到 Azure MySQL 服务器实例。 | 可用
+文章 2：部署 Azure 基础结构 | 介绍 Contoso 如何装备其本地和 Azure 基础结构进行迁移。 所有迁移文章共用同一个基础结构。 | 本文。
+[文章 3：评估要迁移到 Azure 的本地资源](contoso-migration-assessment.md)  | 展示 Contoso 如何评估 VMware 上运行的本地双层 SmartHotel 应用。 Contoso 使用 [Azure Migrate](migrate-overview.md) 服务评估应用 VM，使用 [数据库迁移助手](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)评估应用 SQL Server 数据库。 | 可用
+[文章 4：在 Azure VM 和 SQL 托管实例上重新托管应用](contoso-migration-rehost-vm-sql-managed-instance.md) | 演示 Contoso 如何将本地 SmartHotel 应用直接迁移到 Azure。 Contoso 使用 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) 迁移应用前端 VM，使用 [Azure 数据库迁移服务](https://docs.microsoft.com/azure/dms/dms-overview)将应用数据库迁移到 SQL 托管实例。 | 可用
+[文章 5：在 Azure VM 上重新托管应用](contoso-migration-rehost-vm.md) | 演示 Contoso 如何使用 Site Recovery 服务将 SmartHotel 应用 VM 迁移到 Azure VM。 | 可用
+[文章 6：在 Azure VM 和 SQL Server AlwaysOn 可用性组上重新托管应用](contoso-migration-rehost-vm-sql-ag.md) | 展示 Contoso 如何迁移 SmartHotel 应用。 Contoso 使用 Site Recovery 来迁移应用 VM，同时使用数据库迁移服务将应用数据库迁移到受 AlwaysOn 可用性组保护的 SQL Server 群集。 | 可用
+[文章 7：将 Linux 应用重新托管到 Azure VM](contoso-migration-rehost-linux-vm.md) | 展示 Contoso 如何使用 Site Recovery 将 Linux osTicket 应用直接迁移到 Azure VM | 可用
+[文章 8：在 Azure VM 和 Azure MySQL 上重新托管 Linux 应用](contoso-migration-rehost-linux-vm-mysql.md) | 演示 Contoso 如何使用 Site Recovery 将 Linux osTicket 应用迁移到 Azure VM，以及如何使用 MySQL 工作台将应用数据库迁移到 Azure MySQL 服务器实例。 | 可用
+[文章 9：基于 Azure Web 应用和 Azure SQL 数据库重构应用](contoso-migration-refactor-web-app-sql.md) | 演示 Contoso 如何将 SmartHotel 应用迁移到 Azure Web 应用，并将应用数据库迁移到 Azure SQL Server 实例 | 可用
+[文章 10：基于 Azure Web 应用和 Azure MySQL 重构 Linux 应用](contoso-migration-refactor-linux-app-service-mysql.md) | 演示 Contoso 如何将 Linux osTicket 应用迁移到多个站点中的 Azure Web 应用，并与 GitHub 集成以便持续交付。 他们将应用数据库迁移到 Azure MySQL 实例。 | 可用
+[文章 11：基于 VSTS 重构 TFS](contoso-migration-tfs-vsts.md) | 演示 Contoso 如何通过将本地 Team Foundation Server (TFS) 部署迁移到 Azure 中的 Visual Studio Team Services (VSTS) 来迁移该部署。 | 可用
+[文章 12：在 Azure 容器和 Azure SQL 数据库上重塑应用架构](contoso-migration-rearchitect-container-sql.md) | 演示 Contoso 如何将其 SmartHotel 应用迁移并重新架构到 Azure。 他们将应用 Web 层重新架构为 Windows 容器以及 Azure SQL 数据库中的应用数据库。 | 可用
+[文章 13：在 Azure 中重新生成应用](contoso-migration-rebuild.md) | 演示 Contoso 如何使用一系列 Azure 功能和服务（包括应用程序服务、Azure Kubernetes、Azure Functions、认知服务和 Cosmos DB）重新生成其 SmartHotel 应用。 | 可用
 
-在本文中，Contoso 设置完成迁移方案所需的所有基础结构元素。 
+在本文中，Contoso 设置完成所有迁移方案所需的所有基础结构元素。 
 
 
 ## <a name="overview"></a>概述
 
-需要先准备基础结构才可迁移到 Azure。  通常需要考虑五个主要方面：
+在迁移到 Azure 之前，Contoso 准备 Azure 基础结构至关重要。  通常需要考虑五个主要方面：
 
 **步骤 1：Azure 订阅**：如何购买 Azure，以及如何与 Azure 平台和服务交互？  
 **步骤 2：混合标识**：如何在迁移后管理和控制对本地和 Azure 资源的访问权限？ 公司如何将标识管理扩展或迁移到云？  
@@ -82,16 +87,16 @@ Contoso 需要确定如何购买 Azure、如何构建订阅，以及如何对服
 Contoso 通过[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 购买 Azure。 这需要对 Azure 做出前期货币承诺，同时可让公司获得众多权益，包括灵活的计费选项和最优价格。
 
 - Contoso 预估其年度 Azure 费用。 签署协议后，全额支付第一年的费用。
-- 在该年结束前，Contoso 需要使用其所有承诺使用量，否则其支付的费用会贬值。
+- 在该年结束前，Contoso 需要使用所有承诺使用量，否则其支付的费用会贬值。
 - 如果出于某种原因超出了承诺使用量并花费了更多费用，Microsoft 将就超出的部分为公司开具发票。
 - 因超出承诺使用量而产生的任何费用按照合同中的相同费率计费。 不会因超出部分而产生任何罚款。
 
 ### <a name="manage-subscriptions"></a>管理订阅
 
-购买 Azure 后，Contoso 需要确定如何管理其订阅。 公司已签订 EA，因此对于可设置的 Azure 订阅数没有限制。
+购买 Azure 后，Contoso 需要确定如何管理 Azure 订阅。 公司已签订 EA，因此对于可设置的 Azure 订阅数没有限制。
 
 - Azure 企业许可登记表定义了 Azure 服务在公司内的形式与用法，以及核心管理结构。
-- 首先，Contoso 确定一个结构（称为企业许可登记表的企业基架）。 公司使用[本文](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-subscription-governance)帮助了解和设计基架。
+- 首先，Contoso 已确定一个结构（称为企业许可登记表的企业基架）。 公司使用[本文](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-subscription-governance)帮助了解和设计基架。
 - 现在，Contoso 已决定使用函数式方法来管理其订阅。
     - 在企业内部，由一个 IT 部门来控制 Azure 预算。 该部门是具有订阅的唯一组。
     - 公司将来可扩展此模型，以便其他公司组可以作为部门加入企业许可登记表。
@@ -148,7 +153,7 @@ Contoso 使用 Azure 订阅中包含的 Azure AD Free 版本。 按以下步骤�
 
 ### <a name="add-the-domain-name"></a>添加域名
 
-要使用标准域名，Contoso 需要将其作为自定义名称添加到 Azure AD。 管理员可通过此选项分配熟悉的用户名。 例如，用户可以使用电子邮件地址 billg@contoso.com 登录，而无需 billg@contosomigration.onmicrosoft.com。 
+若要使用标准域名，Contoso 需要将其作为自定义名称添加到 Azure AD。 管理员可通过此选项分配熟悉的用户名。 例如，用户可以使用电子邮件地址 billg@contoso.com 登录，而无需 billg@contosomigration.onmicrosoft.com。 
 
 为了设置自定义名称，将该名称添加到目录、添加一个 DNS 条目，然后在 Azure AD 中进行验证。
 
@@ -201,7 +206,7 @@ Contoso 创建资源组的步骤如下：
 
 ### <a name="synchronize-ad"></a>同步 AD
 
-Contoso 需要提供通用标识，以便访问本地和云端资源。 为此，Contoso 将本地 Active Directory 与 Azure AD 集成。 使用此模型：
+Contoso 需要提供通用标识，用于访问本地和云端资源。 为此，Contoso 将本地 Active Directory 与 Azure AD 集成。 使用此模型：
 
 - 用户和组织可以利用单个标识来访问本地应用程序和云服务（例如 Office 365），或 Internet 上成千上万的其他站点。
 - 管理员可以利用 AD 中的组实现 Azure 中[基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
@@ -228,13 +233,13 @@ Contoso 需要提供通用标识，以便访问本地和云端资源。 为此�
 
 5. 在“已准备好配置”中，单击“配置完成后开始同步过程”立即开始同步。 然后安装。
 
-
+请注意：
 - Contoso 与 Azure直接连接。 如果本地 AD 在代理后面，请阅读此[文章](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-connectivity)。
 - 第一次同步后，可以在 Azure AD 中看到本地 AD 对象。
 
     ![Azure 中的本地 AD](./media/contoso-migration-infrastructure/on-prem-ad-groups.png) 
 
-- Contoso IT 团队根据其角色出现在每个组中。
+- Contoso IT 团队根据其角色在每个组中表示。
 
     ![Azure 中的本地 AD 成员](./media/contoso-migration-infrastructure/on-prem-ad-group-members.png) 
 
@@ -341,7 +346,7 @@ Contoso 将在每个区域部署中心。 中心是 Azure 中的一个虚拟网�
 
 #### <a name="design-the-hub-network"></a>设计中心网络
 
-在 Contoso 选择的中心辐射型模型中，需要考虑如何路由本地数据中心和 Internet 发出的流量。 下面介绍了 Contoso 决定如何处理美国东部 2 和美国中部中心的路由：
+在 Contoso 选择的中心辐射型模型中，需要考虑如何路由从本地数据中心和 Internet 发出的流量。 下面介绍了 Contoso 决定如何处理美国东部 2 和美国中部中心的路由：
 
 - 他们设计了称为“反向 c”的网络，因为这是数据包从入站到出站网络的途径。
 - 其网络体系结构有两个边界、一个不受信任的前端外围区域和一个受信任的后端区域。
@@ -677,7 +682,7 @@ Contoso 实现锁定的方式如下：
 
 除了提供有关资源和所有者的信息外，标记还可让 Contoso 聚合资源和对资源分组，以及出于退款目的使用该数据。
 
-Contoso 需要可视化其 Azure 资产，使其适用于业务。 例如，角色或部门。 请注意，资源不需要驻留在同一个资源组中就可共享一个标记。 为此，Contoso 创建一个简单的标记分类，以便每个人都使用相同的标记。
+Contoso 需要以对其业务有意义的方式可视化其 Azure 资产。 例如，角色或部门。 请注意，资源不需要驻留在同一个资源组中就可共享一个标记。 为此，Contoso 创建一个简单的标记分类，以便每个人都使用相同的标记。
 
 **标记名称** | **值**
 --- | ---
@@ -700,7 +705,7 @@ ENV | DEV、STG 和 PROD 是可能的值。 分别表示开发、暂存和生产
 
 在云中，安全性非常重要，Azure 提供了多种不同的安全工具和功能。 这些工具和功能可帮助在安全的 Azure 平台上创建安全的解决方案。 阅读[可信云中的置信度](https://azure.microsoft.com/overview/trusted-cloud/)了解有关 Azure 安全性的详细信息。
 
-Contoso 需要考虑几个主要方面
+Contoso 需要考虑几个主要方面：
 
 - **Azure 安全中心**：Azure 安全中心跨混合云工作负荷提供统一的安全管理和高级威胁防护。 有了安全中心，即可对各种工作负荷应用安全策略、减少受到的威胁，以及检测和响应攻击。  [了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-intro)。
 - **网络安全组 (NSG)**：NSG 是一个筛选器（防火墙），包含一系列安全规则，通过应用这些规则，可以允许或拒绝流向连接到 Azure VNet 的资源的网络流量。 [了解详细信息](https://docs.microsoft.com/azure/virtual-network/security-overview)。
@@ -772,7 +777,7 @@ Azure 磁盘加密与 Azure Key Vault 集成，帮助控制和管理 Key Vault �
 
 ## <a name="conclusion"></a>结束语
 
-在本文中，Contoso 设置了其 Azure 基础结构，并为 Azure 订阅、混合标识、灾难恢复、网络、管理和安全性设置或规划了基础结构策略。 
+在本文中，Contoso 为 Azure 订阅、混合标识、灾难恢复、网络、管理和安全性设置了 Azure 基础结构和策略。 
 
 对于本文中 Contoso 完成的步骤，并非需要执行所有这些步骤才可迁移到云。 Contoso 想要规划可用于所有类型的迁移，并且安全、具有恢复能力且可缩放的网络基础结构。 
 

@@ -3,19 +3,19 @@ title: 了解模式如何提高预测的准确性 | Microsoft Docs
 titleSuffix: Azure
 description: 了解设计模式如何提高意向预测得分和找到实体。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
-ms.author: v-geberr
-ms.openlocfilehash: 4a23ebddc29c6c519e68a00ef6cbff107061c341
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.author: diberry
+ms.openlocfilehash: c08419e3fb5b25284121a0eac30c38c8ba7570f1
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888273"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225211"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>模式可提高预测的准确性
 模式旨在多条话语非常类似的情况下提升准确性。 通过提供话语模式，LUIS 可具有极高的预测置信度。 
@@ -95,7 +95,7 @@ How much does {Booktitle} cost and what format is it available in?
 
 请考虑使用模式“[find] email about {subject} [from {person}]”。 在下面的话语中，主题和人员实体一个提取正确，一个提取错误：
 
-|陈述|实体|提取是否正确|
+|话语|实体|提取是否正确|
 |--|--|:--:|
 |email about dogs from Chris|subject=dogs<br>person=Chris|✔|
 |email about the man from La Mancha|subject=the man<br>person=La Mancha|X|
@@ -117,7 +117,7 @@ How much does {Booktitle} cost and what format is it available in?
 即使意向中没有任何实例话语，应用也可通过 LUIS 运行。 这种用法仅在使用模式的情况下使用。 模式要求每个模式至少有一个实体。 对于只有模式的应用，模式不能包含通过机器学习到的实体，因为这些实体要求具有示例话语。 
 
 ## <a name="best-practices"></a>最佳实践
-了解[最佳做法](luis-concept-best-practices.md)。
+了解[最佳实践](luis-concept-best-practices.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

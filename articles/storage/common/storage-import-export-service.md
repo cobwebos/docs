@@ -6,18 +6,20 @@ manager: jeconnoc
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 07/11/2018
 ms.author: alkohli
-ms.openlocfilehash: 83ba437e699eb150e86e6c89e478377394966419
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: ab73420d1bfe0dbddcf2a0e3c3dd34203e4bb2d7
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38232671"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008410"
 ---
 # <a name="what-is-azure-importexport-service"></a>什么是 Azure 导入/导出服务？
 
 使用 Azure 导入/导出服务，可将磁盘驱动器寄送到 Azure 数据中心，从而安全地将大量数据导出到 Azure Blob 存储和 Azure 文件。 此外，还可以使用此服务将数据从 Azure Blob 存储传输到磁盘驱动器，然后再寄送到本地站点。 可将单个或多个磁盘中的数据导入 Azure Blob 存储或 Azure 文件。 
+
+Azure 导入/导出服务要求你提供自己的磁盘。 如果要使用 Microsoft 提供的磁盘传输数据，可以使用 Azure Data Box 磁盘将数据导入 Azure。 Microsoft 通过区域运营商向你的数据中心发运每个订单最多 5 个容量为 40 TB 的加密固态磁盘 (SSD)。 你可以快速配置磁盘，通过 USB 3.0 连接将数据复制到磁盘，然后将磁盘发运回 Azure。 有关详细信息，请转到 [Azure Data Box 磁盘概述](https://docs.microsoft.com/azure/databox/data-box-disk-overview)。
 
 ## <a name="azure-importexport-usecases"></a>Azure 导入/导出用例
 

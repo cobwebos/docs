@@ -3,19 +3,19 @@ title: 语言理解 (LUIS) 区域 | Microsoft Docs
 titleSuffix: Azure
 description: 本文包含 LUIS 网站的 LUIS 区域、Azure 订阅和世界区域的列表。
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/19/2018
-ms.author: v-geberr
-ms.openlocfilehash: d81fbc03689788066fb9275523a5e96647117c58
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.author: diberry
+ms.openlocfilehash: 1f6090bf1ac588585a16f93d2ac091e8950ca45f
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346436"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238924"
 ---
 # <a name="regions-and-keys"></a>区域和密钥
 

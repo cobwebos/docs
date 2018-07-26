@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 07/06/2018
 ms.topic: conceptual
 ms.author: rayne
-ms.openlocfilehash: 905798acd5836c31953714d7984cfb19f16cecab
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: b615ffa3571730ef9607893882f509b2fa490f35
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920791"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056335"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-replication-with-azure-site-recovery"></a>通过 Azure Site Recovery，针对 VMware 复制规划容量和缩放
 
@@ -34,9 +34,9 @@ ms.locfileid: "37920791"
 
 CPU | **内存** | **缓存磁盘大小** | **数据更改率** | **受保护的计算机**
 --- | --- | --- | --- | ---
-8 个 vCPU（2 个插槽 * 4 个核心 @ 2.5 千兆赫 [GHz]） | 16 GB | 300 GB | 500 GB 或更少 | 复制少于 100 台计算机。
-12 个 vCPU（2 个插槽 * 6 个核心 @ 2.5 GHz） | 18 GB | 600 GB | 500 GB 到 1 TB | 复制 100-150 台计算机。
-16 个 vCPU（2 个插槽 * 8 个核心 @ 2.5 GHz） | 32 GB | 1 TB | 1 TB 到 2 TB | 复制 150-200 台计算机。
+8 个 vCPU（2 个插槽 * 4 个核心 \@ 2.5 千兆赫 [GHz]） | 16 GB | 300 GB | 500 GB 或更少 | 复制少于 100 台计算机。
+12 个 vCPU（2 个插槽 * 6 个核心 \@ 2.5 GHz） | 18 GB | 600 GB | 500 GB 到 1 TB | 复制 100-150 台计算机。
+16 个 vCPU（2 个插槽 * 8 个核心 \@ 2.5 GHz） | 32 GB | 1 TB | 1 TB 到 2 TB | 复制 150-200 台计算机。
 部署另一个进程服务器 | | | > 2 TB | 如果要复制 200 多台计算机，或者每日数据更改率超过 2 TB，则需部署额外的进程服务器。
 
 其中：
@@ -60,9 +60,9 @@ CPU | **内存** | **缓存磁盘大小** | **数据更改率** | **受保护的
 
 **配置服务器** | **额外的进程服务器** | **缓存磁盘大小** | **数据更改率** | **受保护的计算机**
 --- | --- | --- | --- | ---
-8 个 vCPU（2 个插槽 * 4 个核心 @ 2.5 GHz），16 GB 内存 | 4 个 vCPU（2 个插槽 * 2 个核心 @ 2.5 GHz），8 GB 内存 | 300 GB | 250 GB 或更少 | 复制 85 台或更少的计算机。
-8 个 vCPU（2 个插槽 * 4 个核心 @ 2.5 GHz），16 GB 内存 | 8 个 vCPU（2 个插槽 * 4 个核心 @ 2.5 GHz），12 GB 内存 | 600 GB | 250 GB 到 1 TB | 复制 85-150 台计算机。
-12 个 vCPU（2 个插槽 * 6 个核心 @ 2.5 GHz），18 GB 内存 | 12 个 vCPU（2 个插槽 * 6 个核心 @ 2.5 GHz），24 GB 内存 | 1 TB | 1 TB 到 2 TB | 复制 150-225 台计算机。
+8 个 vCPU（2 个插槽 * 4 个核心 \@ 2.5 GHz），16 GB 内存 | 4 个 vCPU（2 个插槽 * 2 个核心 \@ 2.5 GHz），8 GB 内存 | 300 GB | 250 GB 或更少 | 复制 85 台或更少的计算机。
+8 个 vCPU（2 个插槽 * 4 个核心 \@ 2.5 GHz），16 GB 内存 | 8 个 vCPU（2 个插槽 * 4 个核心 \@ 2.5 GHz），12 GB 内存 | 600 GB | 250 GB 到 1 TB | 复制 85-150 台计算机。
+12 个 vCPU（2 个插槽 * 6 个核心 \@ 2.5 GHz），18 GB 内存 | 12 个 vCPU（2 个插槽 * 6 个核心 \@ 2.5 GHz），24 GB 内存 | 1 TB | 1 TB 到 2 TB | 复制 150-225 台计算机。
 
 使用哪种方式来扩展服务器取决于是偏好纵向扩展模型还是横向扩展模型。  纵向扩展时，需要部署一些高端配置服务器和进程服务器，而横向扩展时，需要使用更少资源部署更多服务器。 例如，如果需要对 220 台计算机进行保护，可执行以下操作之一：
 

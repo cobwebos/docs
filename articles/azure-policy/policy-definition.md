@@ -8,12 +8,12 @@ ms.date: 05/24/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 2f756d65fa167b3812772088aec7232d08b04b9f
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 7f01464c4b9063f20a83c3626d7f92a5e0524f7a
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937326"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989119"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 策略定义结构
 
@@ -210,9 +210,13 @@ Azure 策略使用的资源策略定义，可使你通过描述何时强制实�
 - `type`
 - `location`
 - `tags`
-- `tags.tagName`
-- `tags[tagName]`
-  - 括号语法支持包含句点的标记名称
+- `tags.<tagName>`
+  - 其中 **\<tagName\>** 是要验证其条件的标记的名称。
+  - 示例：`tags.CostCenter`，其中 **CostCenter** 是标记的名称。
+- `tags[<tagName>]`
+  - 此括号语法支持包含句点的标记名称。
+  - 其中 **\<tagName\>** 是要验证其条件的标记的名称。
+  - 示例：`tags.[Acct.CostCenter]`，其中 **Acct.CostCenter** 是标记的名称。
 - 属性别名 - 有关列表，请参阅[别名](#aliases)。
 
 ### <a name="alternative-accessors"></a>可供选择的取值函数

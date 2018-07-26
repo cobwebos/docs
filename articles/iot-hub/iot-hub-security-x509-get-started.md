@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/10/2017
 ms.author: dkshir
-ms.openlocfilehash: dd5b9f196f911011d9dd606d46f515b88d338531
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d7330623ac5c9322b067951406920f8c0264f69c
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635570"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39012245"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>在 Azure IoT 中心设置 X.509 安全性
 
@@ -33,7 +33,7 @@ IoT 中心基于 X.509 证书的安全性需从 [X.509 证书链](https://en.wik
 可以选择以下方法之一获取证书：
 - 从*根证书颁发机构 (CA)* 购买 X.509 证书。 建议在生产环境中使用此方法。
 或者，
-- 使用 [OpenSSL](https://www.openssl.org/) 等第三方工具创建自己的 X.509 证书。 此方法适用于测试和开发目的。 [如何使用 PowerShell 创建 X.509 证书](iot-hub-security-x509-create-certificates.md)一文中标题为*创建 X.509 证书*和*创建 X.509 证书链*的部分逐步讲解了一个用于通过 OpenSSL 和 PowerShell 创建证书的示例 PowerShell 脚本。 如果希望使用 **Bash** shell（而不是 PowerShell），请参阅[管理 CA 证书示例](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)的相关部分。 本教程的余下部分使用此*操作方法*指南中设置的 OpenSSL 环境来逐步讲解 Azure IoT 中心内的端到端 X.509 安全性。
+- 使用 [OpenSSL](https://www.openssl.org/) 等第三方工具创建自己的 X.509 证书。 此方法适用于测试和开发目的。 有关使用 PowerShell 或 Bash 生成测试 CA 证书的信息，请参阅[管理示例和教程的测试 CA 证书](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)。 本教程的其余部分使用按照[管理示例和教程的测试 CA 证书](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的说明生成的测试 CA 证书。
 
 
 <a id="registercerts"></a>
@@ -59,7 +59,7 @@ IoT 中心基于 X.509 证书的安全性需从 [X.509 证书链](https://en.wik
 
    ![验证证书](./media/iot-hub-security-x509-get-started/verify-cert.png)  
 
-8. 现在，需要使用与 X.509 CA 证书关联的、可生成签名的私钥来为此*验证码*签名。 有一些工具（例如 OpenSSL）可执行此签名过程。 此过程称为[所有权证明](https://tools.ietf.org/html/rfc5280#section-3.1)。 如果在上一部分中使用了示例 PowerShell 脚本，请运行标题为 [X.509 CA 证书的所有权证明](iot-hub-security-x509-create-certificates.md#signverificationcode)的部分中所述的脚本。
+8. 现在，需要使用与 X.509 CA 证书关联的、可生成签名的私钥来为此*验证码*签名。 有一些工具（例如 OpenSSL）可执行此签名过程。 此过程称为[所有权证明](https://tools.ietf.org/html/rfc5280#section-3.1)。 [管理示例和教程的测试 CA 证书](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的步骤 3 会生成验证码。
  
 9. 在门户中将上述步骤 8 生成的签名上传到 IoT 中心。 在 Azure 门户上的“证书详细信息”边栏选项卡中，导航到“验证证书 .pem 或 .cer 文件”，并使用签名旁边的“文件资源管理器”图标选择签名，例如，示例 PowerShell 命令创建的 *VerifyCert4.cer*。
 
@@ -86,9 +86,9 @@ IoT 中心基于 X.509 证书的安全性需从 [X.509 证书链](https://en.wik
 
 ## <a name="authenticate-your-x509-device-with-the-x509-certificates"></a>使用 X.509 证书对 X.509 设备进行身份验证
 
-若要对 X.509 设备进行身份验证，首先需要使用 CA 证书为该设备签名。 叶设备的签名通常在已相应地启用了制造工具的制造车间完成。 随着设备从一家制造商转移到另一家制造商，每家制造商的签名操作都捕获为链中的中间证书。 最终结果是建立了从 CA 证书到设备叶证书的证书链。 如果在前面的部分中一直使用 PowerShell 脚本，则可以运行[用于管理 CA 签名的 X.509 证书的 PowerShell 脚本](iot-hub-security-x509-create-certificates.md)一文中标题为*创建设备的 X.509 叶证书*的部分中所述的脚本来模拟此过程。
+若要对 X.509 设备进行身份验证，首先需要使用 CA 证书为该设备签名。 叶设备的签名通常在已相应地启用了制造工具的制造车间完成。 随着设备从一家制造商转移到另一家制造商，每家制造商的签名操作都捕获为链中的中间证书。 最终结果是建立了从 CA 证书到设备叶证书的证书链。 [管理示例和教程的测试 CA 证书](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的步骤 4 会生成设备证书。
 
-接下来，我们演示如何创建一个 C# 应用程序来模拟针对 IoT 中心注册的 X.509 设备。 我们会将模拟设备提供的温度和湿度值发送到中心。 请注意，本教程只创建设备应用程序。 至于如何创建 IoT 中心服务应用程序用于向此模拟设备发送的事件发送响应，是留给读者的练习。 该 C# 应用程序假设已执行[用于管理 CA 签名的 X.509 证书的 PowerShell 脚本](iot-hub-security-x509-create-certificates.md)一文中所述的 PowerShell 脚本
+接下来，我们演示如何创建一个 C# 应用程序来模拟针对 IoT 中心注册的 X.509 设备。 我们会将模拟设备提供的温度和湿度值发送到中心。 请注意，本教程只创建设备应用程序。 至于如何创建 IoT 中心服务应用程序用于向此模拟设备发送的事件发送响应，是留给读者的练习。 C# 应用程序假定你已按照[管理示例和教程的测试 CA 证书](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的步骤进行操作。
 
 1. 在 Visual Studio 中，使用“控制台应用程序”项目模板创建新的 Visual C# Windows 经典桌面项目。 将项目命名为 **SimulateX509Device**。
    ![在 Visual Studio 中创建 X.509 设备项目](./media/iot-hub-security-x509-get-started/create-device-project.png)
@@ -163,7 +163,7 @@ IoT 中心基于 X.509 证书的安全性需从 [X.509 证书链](https://en.wik
     }
     ```
    此代码通过创建 X.509 设备的连接字符串连接到 IoT 中心。 成功连接后，此代码将温度和湿度事件发送到中心，并等待其响应。 
-7. 由于此应用程序访问 *.pfx* 文件，因此需要以“管理员”模式执行它。 生成 Visual Studio 解决方案。 以**管理员**身份打开新的命令窗口，导航到包含此解决方案的文件夹。 导航到解决方案文件夹中的 *bin/Debug* 路径。 在“管理员”命令窗口中运行应用程序 **SimulateX509Device.exe**。 应会看到，设备已成功连接到中心并在发送事件。 
+7. 由于此应用程序访问 *.pfx* 文件，因此可能需要以“管理员”模式执行它。 生成 Visual Studio 解决方案。 以**管理员**身份打开新的命令窗口，导航到包含此解决方案的文件夹。 导航到解决方案文件夹中的 *bin/Debug* 路径。 在“管理员”命令窗口中运行应用程序 **SimulateX509Device.exe**。 应会看到，设备已成功连接到中心并在发送事件。 
    ![运行设备应用](./media/iot-hub-security-x509-get-started/device-app-success.png)
 
 ## <a name="see-also"></a>另请参阅

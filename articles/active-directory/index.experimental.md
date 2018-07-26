@@ -11,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 04/13/2018
-ms.author: carolz
-ms.openlocfilehash: 134a34f7995e8153f3f28f7ff389ad0254177711
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: mtillman
+ms.openlocfilehash: 218de4388c88161d3277c94fcb859e6ee3dc04e9
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594629"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224776"
 ---
 # <a name="azure-active-directory-documentation"></a>Azure Active Directory 文档
 
@@ -82,7 +82,7 @@ Azure Active Directory (Azure AD) 是多租户、基于云的目录和标识管�
                         <h3>身份验证</h3>
                         <p>
                         <a href="/azure/active-directory/active-directory-passwords-overview">密码</a><br/>
-                        <a href="/azure/active-directory/active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements">多重身份验证</a><br/>
+                        <a href="/azure/active-directory/authentication/concept-mfa-howitworks">多重身份验证</a><br/>
                         <a href="/azure/active-directory/active-directory-azureadjoin-passport">Windows Hello</a><br/>
                         <a href="/azure/active-directory/active-directory-certificate-based-authentication-get-started">基于证书的身份验证</a>
                         </p>
@@ -100,7 +100,7 @@ Azure Active Directory (Azure AD) 是多租户、基于云的目录和标识管�
                         <p>
                         <a href="/azure/active-directory/active-directory-identityprotection">标识保护</a><br/>
                         <a href="/azure/active-directory/active-directory-conditional-access-azure-portal">条件性访问</a><br/>
-                        <a href="/azure/active-directory/active-directory-privileged-identity-management-configure?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json">Privileged Identity Management</a>
+                        <a href="/azure/active-directory/privileged-identity-management/pim-configure">Privileged Identity Management</a>
                         </p>
                     </div>
                 </div>

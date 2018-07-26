@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: ade47c59a8db673869ce8c60a062a2a6a6656ca2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 6d3fe519729bd56dafd11720a3662eb00b916a98
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38688994"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056603"
 ---
 # <a name="set-up-additional-process-servers-for-scalability"></a>设置额外的进程服务器以实现可伸缩性
 
@@ -31,9 +31,9 @@ ms.locfileid: "38688994"
 
 | **额外的进程服务器** | **缓存磁盘大小** | **数据更改率** | **受保护的计算机** |
 | --- | --- | --- | --- |
-|4 个 vCPU（2 个插槽 * 2 个核心 @ 2.5 GHz），8 GB 内存 |300 GB |250 GB 或更少 |复制 85 台或更少的计算机。 |
-|8 个 vCPU（2 个插槽 * 4 个核心 @ 2.5 GHz），12 GB 内存 |600 GB |250 GB 到 1 TB |复制 85-150 台计算机。 |
-|12 个 vCPU（2 个插槽 * 6 个核心 @ 2.5 GHz），24 GB 内存 |1 TB |1 TB 到 2 TB |复制 150-225 台计算机。 |
+|4 个 vCPU（2 个插槽 * 2 个核心 \@ 2.5 GHz），8 GB 内存 |300 GB |250 GB 或更少 |复制 85 台或更少的计算机。 |
+|8 个 vCPU（2 个插槽 * 4 个核心 \@ 2.5 GHz），12 GB 内存 |600 GB |250 GB 到 1 TB |复制 85-150 台计算机。 |
+|12 个 vCPU（2 个插槽 * 6 个核心 \@ 2.5 GHz），24 GB 内存 |1 TB |1 TB 到 2 TB |复制 150-225 台计算机。 |
 
 ### <a name="prerequisites"></a>先决条件
 

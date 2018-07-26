@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: ad70fcc6b9779cb33772a3fce2fb11b4cec804ee
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 5b5212d5e1663fee01ff87642432818071d4f4dd
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062592"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988528"
 ---
 # <a name="install-azure-iot-edge-runtime-on-linux-arm32v7armhf"></a>在 Linux 上安装 Azure IoT Edge 运行时 (ARM32v7/armhf)
 
@@ -27,11 +27,9 @@ Azure IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件
 
 ## <a name="install-the-container-runtime"></a>安装容器运行时
 
-Azure IoT Edge 依赖于 [OCI 兼容的][lnk-oci]容器运行时（例如 Docker）。 如果 Edge 设备上已安装 Docker CE/EE，则可继续使用它结合 Azure IoT Edge 进行开发和测试。 
+Azure IoT Edge 依赖于 [OCI 兼容的][lnk-oci]容器运行时。 对于生产方案，强烈建议使用下面提供的[基于 Moby][lnk-moby] 的引擎。 这是官方唯一支持用于 Azure IoT Edge 的容器引擎。 Docker CE/EE 容器映像与基于 Moby 的运行时兼容。
 
-对于生产方案，强烈建议使用下面提供的[基于 Moby][lnk-moby] 的引擎。 这是官方唯一支持用于 Azure IoT Edge 的容器引擎。 Docker CE/EE 容器映像与 Moby 运行时完全兼容。
-
-以下命令用于安装 moby 引擎和命令行接口 (CLI)。 CLI 对开发非常有用，但对生产部署来说是可选的。
+以下命令用于安装基于 Moby 的引擎和命令行接口 (CLI)。 CLI 对开发非常有用，但对生产部署来说是可选的。
 
 ```cmd/sh
 
@@ -67,17 +65,42 @@ sudo apt-get install -f
 
 ## <a name="configure-the-azure-iot-edge-security-daemon"></a>配置 Azure IoT Edge 安全守护程序
 
-可使用位于 `/etc/iotedge/config.yaml` 的配置文件配置守护程序。可<!--[automatically via Device Provisioning Service][lnk-dps] or-->配置边缘设备或使用[设备连接字符串][lnk-dcs]手动配置。
 
-对于手动配置，请在 **config.yaml** 的 **provisioning** 部分中输入设备连接字符串
+可以使用 `/etc/iotedge/config.yaml` 处的配置文件配置守护程序。 默认情况下，该文件有写保护，你可能需要提升权限才能对其进行编辑。
 
-```yaml
-provisioning:
-  source: "manual"
-  device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+```bash
+sudo nano /etc/iotedge/config.yaml
 ```
 
-*该文件默认不可写，因此可能需要使用 `sudo` 来编辑它。例如 `sudo nano /etc/iotedge/config.yaml`*
+可以使用[设备连接字符串][lnk-dcs]手动配置 edge 设备或[通过设备预配服务自动][lnk-dps]配置。
+
+* 对于手动配置，取消注释**手动**预配模式。 使用 IoT Edge 设备的连接字符串更新 **device_connection_string** 的值。
+
+   ```yaml
+   provisioning:
+     source: "manual"
+     device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+  
+   # provisioning: 
+   #   source: "dps"
+   #   global_endpoint: "https://global.azure-devices-provisioning.net"
+   #   scope_id: "{scope_id}"
+   #   registration_id: "{registration_id}"
+   ```
+
+* 对于自动配置，取消注释 **dps** 预配模式。 使用 IoT 中心 DPS 实例中的值更新 **scope_id** 和 **registration_id** 的值，并使用 TPM 更新 IoT Edge 设备。 
+
+   ```yaml
+   # provisioning:
+   #   source: "manual"
+   #   device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+  
+   provisioning: 
+     source: "dps"
+     global_endpoint: "https://global.azure-devices-provisioning.net"
+     scope_id: "{scope_id}"
+     registration_id: "{registration_id}"
+   ```
 
 在配置中输入预配信息后，重启守护程序：
 
@@ -86,6 +109,8 @@ sudo systemctl restart iotedge
 ```
 
 ## <a name="verify-successful-installation"></a>验证是否成功安装
+
+如果使用了上一部分中的**手动配置**步骤，则应在设备上成功预配并运行 IoT Edge 运行时。 如果使用了**自动配置**步骤，则需要完成一些额外的步骤，以便运行时可以代表你向 IoT 中心注册你的设备。 有关后续步骤，请参阅[在 Linux 虚拟机上创建和预配模拟 TPM Edge 设备](how-to-auto-provision-simulated-device-linux.md#give-iot-edge-access-to-the-tpm)。
 
 使用以下命令检查 IoT Edge 守护程序的状态：
 
@@ -102,16 +127,19 @@ journalctl -u iotedge --no-pager --no-full
 此外，还可使用以下命令列出正在运行的模块：
 
 ```cmd/sh
-iotedge list
+sudo iotedge list
 ```
+>[!NOTE]
+>在像 RaspberryPi 这样的资源受限设备上，强烈建议按照[故障排除指南][lnk-trouble]中的说明将 *OptimizeForPerformance* 环境变量设置为 *false*。
+
 
 ## <a name="next-steps"></a>后续步骤
 
 如果在正确安装 Edge 运行时期间遇到问题，请查看[疑难解答][lnk-trouble]页面。
 
 <!-- Links -->
-[lnk-dcs]: ../iot-hub/quickstart-send-telemetry-dotnet.md#register-a-device
-[lnk-dps]: how-to-simulate-dps-tpm.md
+[lnk-dcs]: how-to-register-device-portal.md
+[lnk-dps]: how-to-auto-provision-simulated-device-linux.md
+[lnk-trouble]: https://docs.microsoft.com/azure/iot-edge/troubleshoot#stability-issues-on-resource-constrained-devices
 [lnk-oci]: https://www.opencontainers.org/
 [lnk-moby]: https://mobyproject.org/
-[lnk-trouble]: troubleshoot.md

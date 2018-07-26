@@ -2,7 +2,7 @@
 title: Durable Functions 中的人机交互和超时 - Azure
 description: 了解如何在 Azure Functions 的 Durable Functions 中处理人机交互和超时。
 services: functions
-author: cgillum
+author: kashimiz
 manager: cfowler
 editor: ''
 tags: ''
@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/19/2018
+ms.date: 07/11/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 071a9ffb8305a30b0fedeaa49c4a95d91fbce6c1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a62baf64e35dfad55f76138e2f1aaef65dd434be
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30168395"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036299"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions 中的人机交互 - 电话验证示例
 
@@ -51,7 +51,7 @@ ms.locfileid: "30168395"
 * E4_SmsPhoneVerification
 * E4_SendSmsChallenge
 
-以下部分介绍用于 C# 脚本的配置和代码。 文章末尾展示了用于 Visual Studio 开发的代码。
+以下各部分介绍了用于 C# 脚本和 JavaScript 的配置和代码。 文章末尾展示了用于 Visual Studio 开发的代码。
  
 ## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>SMS 验证业务流程（Visual Studio Code 和 Azure 门户的示例代码） 
 
@@ -61,7 +61,13 @@ E4_SmsPhoneVerification 函数对业务流程协调程序函数使用标准的 f
 
 实现该函数的代码如下：
 
+### <a name="c"></a>C#
+
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/run.csx)]
+
+### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
 
 启动后，该业务流程协调程序函数执行以下任务：
 
@@ -76,7 +82,7 @@ E4_SmsPhoneVerification 函数对业务流程协调程序函数使用标准的 f
 > 起初可能并不明显，但这个业务流程协调程序函数是完全确定的函数。 这是因为 `CurrentUtcDateTime` 属性用于计算计时器到期时间，且此属性在每次在业务流程协调程序代码中的此时点进行重播均返回相同的值。 必须确保对 `winner` 的每次重复调用均产生相同的 `Task.WhenAny` 结果。
 
 > [!WARNING]
-> 如果不再需要计时器到期，务必使用 [CancellationTokenSource 取消计时器](durable-functions-timers.md)，正如在上面的示例中收到质询响应后一样。
+> 如果不再需要计时器到期，请务必[取消计时器](durable-functions-timers.md)，正如在上面的示例中收到质询响应后一样。
 
 ## <a name="send-the-sms-message"></a>发送短信
 
@@ -86,7 +92,13 @@ E4_SendSmsChallenge 函数使用 Twilio 绑定向最终用户发送包含 4 位�
 
 以下代码可生成 4 位数质询代码和发送短信：
 
+### <a name="c"></a>C#
+
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/run.csx)]
+
+### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/index.js)]
 
 E4_SendSmsChallenge 函数仅被调用一次，即使进程崩溃或进行重播也是如此。 因为不希望最终用户收到多条短信，所以这种设定非常合适。 `challengeCode` 返回值可自动保留，以便业务流程协调程序函数始终了解正确的代码。
 
@@ -109,6 +121,9 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/741c6565
 
 {"id":"741c65651d4c40cea29acdd5bb47baf1","statusQueryGetUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","sendEventPostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","terminatePostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}"}
 ```
+
+   > [!NOTE]
+   > 目前，JavaScript 业务流程启动器函数不能返回实例管理 URI。 此功能将在以后的版本中添加。
 
 业务流程协调程序函数可接收提供的电话号码，并立即向其发送一条短信，其中包含随机生成的 4 位数验证代码 &mdash; 例如，2168。 然后函数等待 90 秒，获取响应。
 

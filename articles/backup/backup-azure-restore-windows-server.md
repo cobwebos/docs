@@ -6,14 +6,14 @@ author: saurabhsensharma
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 1/4/2018
+ms.date: 7/25/2018
 ms.author: saurse
-ms.openlocfilehash: 16f0460dea75b0dc52c3852d9947db0ad15f8fbe
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a1c9df57ddebbb1cf471f705acfbd6651c151d7b
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606318"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247272"
 ---
 # <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-resource-manager-deployment-model"></a>使用 Resource Manager 部署模型将文件还原到 Windows Server 或 Windows 客户端计算机
 
@@ -143,33 +143,6 @@ ms.locfileid: "34606318"
     > [!Important]
     > 如果不单击“卸载”，恢复卷将保持装载 6 个小时（从装载时算起）。 但是，如果正在持续进行文件复制，装载时间延长至最多 24 小时。 装载卷时，不会运行任何备份操作。 计划为在装载卷时运行的任何备份操作会在卸载恢复卷后运行。
     >
-
-## <a name="troubleshooting"></a>故障排除
-如果即使在单击“装载”几分钟后 Azure 备份仍无法成功装载恢复卷，或者无法装载具有一个或多个错误的恢复卷，请按照以下步骤正常恢复。
-
-1.  取消正在进行的安装过程（如果它已运行了几分钟）。
-
-2.  确保使用最新版本的 Azure 备份代理。 若要了解 Azure 备份代理的版本信息，请在 Microsoft Azure 备份控制台的“操作”窗格上单击“关于 Microsoft Azure 恢复服务代理”，并确保“版本”号等于或高于[本文](https://go.microsoft.com/fwlink/?linkid=229525)中提到的版本。 可以在[此处](https://go.microsoft.com/fwLink/?LinkID=288905)下载最新版本
-
-3.  转到“设备管理器” -> “存储控制器”，确保可以找到“Microsoft iSCSI 发起程序”。 如果可以找到它，请直接转到下面的步骤 7。 
-
-4.  如果无法在步骤 3 中找到“Microsoft iSCSI 发起程序”服务，请检查是否可以在“设备管理器” -> “存储控制器”下找到硬件 ID 为“ROOT\ISCSIPRT”的“未知设备”条目。
-
-5.  右键单击“未知设备”并选择“更新驱动程序软件”。
-
-6.  选择“自动搜索更新的驱动程序软件”选项，更新驱动程序。 完成更新后，“未知设备”应更改为“Microsoft iSCSI 发起程序”，如下所示。 
-
-    ![加密](./media/backup-azure-restore-windows-server/UnknowniSCSIDevice.png)
-
-7.  转到“任务管理器” -> “服务(本地)” -> “Microsoft iSCSI 发起程序服务”。 
-
-    ![加密](./media/backup-azure-restore-windows-server/MicrosoftInitiatorServiceRunning.png)
-    
-8.  右键单击服务，单击“停止”，然后再次右键单击服务并单击“启动”，即可重启 Microsoft iSCSI 发起程序服务。
-
-9.  使用即时还原重试恢复。 
-
-如果恢复仍失败，请重启服务器/客户端。 如果无法重启的或重启服务器后恢复仍然失败，请尝试从备用计算机恢复，并通过转到 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)并提交支持请求，与 Azure 支持部门联系。
 
 ## <a name="next-steps"></a>后续步骤
 * 恢复文件和文件夹后，可以[管理备份](backup-azure-manage-windows-server.md)。

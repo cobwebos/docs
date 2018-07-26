@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: renash
-ms.openlocfilehash: ec900182e2fe201ee598518076c6a75a7ac057c2
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: d4f77460ea6b0a31ed40286f33aa4296bafc9087
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839563"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39007281"
 ---
 # <a name="use-azure-files-with-linux"></a>通过 Linux 使用 Azure 文件
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 可以使用 [SMB 内核客户端](https://wiki.samba.org/index.php/LinuxCIFS)在 Linux 分发版中装载 Azure 文件共享。 本文介绍装载 Azure 文件共享的两种方法：使用 `mount` 命令按需装载，以及通过在 `/etc/fstab` 中创建一个条目在启动时装载。
@@ -28,15 +28,28 @@ ms.locfileid: "34839563"
 > 若要将 Azure 文件共享装载到其被托管时所在的 Azure 区域之外（例如本地或其他 Azure 区域），OS 必须支持 SMB 3.0 的加密功能。
 
 ## <a name="prerequisites-for-mounting-an-azure-file-share-with-linux-and-the-cifs-utils-package"></a>使用 Linux 和 cifs-utils 包装载 Azure 文件共享的先决条件
-* **选取可能安装了 cifs-utils 包的 Linux 分发版。**  
-    以下 Linux 分发版可在 Azure 库中使用：
+<a id="smb-client-reqs"></a>
+* **选择 Linux 发行版以满足你的装载需求。**  
+      可以通过 SMB 2.1 和 SMB 3.0 装载 Azure 文件。 对于来自本地或其他 Azure 区域中的客户端的连接，Azure 文件会拒绝 SMB 2.1（或没有加密的 SMB 3.0）。 如果为存储帐户启用“需要安全转移”，则 Azure 文件仅允许使用带加密的 SMB 3.0 进行连接。
+    
+    SMB 3.0 加密支持在 Linux 内核版本 4.11 中引入，已向后移植到常见 Linux 分发版的早期内核版本中。 在本文档发布时，Azure 库中的以下发行版支持表标题中指定的装载选项。 
 
-    * Ubuntu Server 14.04+
-    * RHEL 7+
-    * CentOS 7+
-    * Debian 8+
-    * openSUSE 13.2+
-    * SUSE Linux Enterprise Server 12
+* **具有相应装载功能的最低建议版本（SMB 版本 2.1 与 SMB 版本 3.0）**    
+    
+    |   | SMB 2.1 <br>（装载在同一 Azure 区域内的 VM 上） | SMB 3.0 <br>（从本地和跨区域装载） |
+    | --- | :---: | :---: |
+    | Ubuntu Server | 14.04+ | 16.04+ |
+    | RHEL | 7+ | 7.5+ |
+    | CentOS | 7+ |  7.5+ |
+    | Debian | 8+ |   |
+    | openSUSE | 13.2+ | 42.3+ |
+    | SUSE Linux Enterprise Server | 12 | 12 SP3+ |
+    
+    如果此处未列出你的 Linux 分发版，则你可以使用以下命令查看 Linux 内核版本：    
+
+   ```bash
+   uname -r
+   ```    
 
 * <a id="install-cifs-utils"></a>**cifs-utils 包已安装。**  
     可在所选的 Linux 分发版上使用包管理器安装 cifs-utils 包。 
@@ -60,23 +73,8 @@ ms.locfileid: "34839563"
     sudo zypper install cifs-utils
     ```
 
-    在其他分发版上，请使用相应的包管理器，或[从源编译](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download)。
-
-* <a id="smb-client-reqs"></a>**了解 SMB 客户端要求。**  
-    可以通过 SMB 2.1 和 SMB 3.0 装载 Azure 文件。 对于来自本地或其他 Azure 区域中的客户端的连接，Azure 文件会拒绝 SMB 2.1（或没有加密的 SMB 3.0）。 如果为存储帐户启用“需要安全转移”，则 Azure 文件仅允许使用带加密的 SMB 3.0 进行连接。
+    在其他分发版上，请使用相应的包管理器，或[从源编译](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download)
     
-    SMB 3.0 加密支持在 Linux 内核版本 4.11 中引入，已向后移植到常见 Linux 分发版的早期内核版本中。 在本文档发布时，Azure 库的以下分发版支持此功能：
-
-    - Ubuntu Server 16.04+
-    - openSUSE 42.3+
-    - SUSE Linux Enterprise Server 12 SP3+
-    
-    如果此处未列出你的 Linux 分发版，则你可以使用以下命令查看 Linux 内核版本：
-
-    ```bash
-    uname -r
-    ```
-
 * **确定已装载共享的目录/文件权限**：在以下示例中，权限 `0777` 用于向所有用户授予读取、写入和执行权限。 可以根据需要将这些权限替换为其他 [chmod 权限](https://en.wikipedia.org/wiki/Chmod)。 
 
 * **存储帐户名称**：需提供存储帐户的名称才能装载 Azure 文件共享。
