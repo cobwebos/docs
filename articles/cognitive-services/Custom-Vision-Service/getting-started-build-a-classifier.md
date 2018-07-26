@@ -9,12 +9,12 @@ ms.component: custom-vision
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: anroth
-ms.openlocfilehash: 6dc271c13f53a445c7d1101f5264d890208bd03c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c5183078d2f9d5eb16abef4f5df240f77eea6b8b
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365903"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223363"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>如何使用自定义影像服务生成分类器
 
@@ -83,8 +83,6 @@ ms.locfileid: "35365903"
     自定义影像服务接受 .jpg、.png 和 .bmp 格式的训练图像，每张图像不得超过 6 MB。 （预测图像不得超过 4 MB。）建议图像最短边为 256 像素。 对于最短边不足 256 像素的图像，自定义影像服务会进行扩展。
 
     ![添加图像控件位于左上角，以按钮形式显示在底部中央。](./media/getting-started-build-a-classifier/add-images01.png)
-
-    ![“浏览本地文件”按钮位于底部中央附近。](./media/getting-started-build-a-classifier/add-images02.png)
 
     >[!NOTE] 
     > REST API 可从 URL 加载训练图像。

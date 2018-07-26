@@ -46,6 +46,7 @@
 ## 管理用户
 ### [将新用户添加到 Azure AD](fundamentals/add-users-azure-active-directory.md)
 ### [管理用户个人资料](fundamentals/active-directory-users-profile-azure-portal.md)
+### [重置用户密码](fundamentals/active-directory-users-reset-password-azure-portal.md)
 ### [共享帐户](active-directory-sharing-accounts.md)
 ### [将用户分配到管理员角色](fundamentals/active-directory-users-assign-role-azure-portal.md)
 ### [还原已删除的用户](fundamentals/active-directory-users-restore.md)
@@ -113,26 +114,32 @@
 ### [有风险的用户](active-directory-reporting-security-user-at-risk.md)
 ### [有风险的登录](active-directory-reporting-security-risky-sign-ins.md)
 ### [风险事件](active-directory-reporting-risk-events.md)
+### [使用 Azure Monitor 监视日志](reporting-azure-monitor-diagnostics-overview.md)
 ### [常见问题](active-directory-reporting-faq.md)
+
 ### 任务
 #### [配置命名位置](active-directory-named-locations.md)
 #### [查找活动报表](active-directory-reporting-migration.md)
-#### [使用 Azure Active Directory Power BI 内容包](active-directory-reporting-power-bi-content-pack-how-to.md)
+#### [使用 Azure AD Power BI 内容包](active-directory-reporting-power-bi-content-pack-how-to.md)
 #### [修复已标记为存在风险的用户](active-directory-report-security-user-at-risk-remediation.md)
+#### [将活动日志路由到 Azure 事件中心](reporting-azure-monitor-diagnostics-azure-event-hub.md)
+#### [将活动日志存档到 Azure 存储帐户](reporting-azure-monitor-diagnostics-azure-storage-account.md)
+#### [使用 Azure Monitor 将活动日志与 Splunk 集成](reporting-azure-monitor-diagnostics-splunk-integration.md)
+
 ### 引用
 #### [保留](active-directory-reporting-retention.md)
 #### [延迟](active-directory-reporting-latencies-azure-portal.md)
 #### [审核活动参考](active-directory-reporting-activity-audit-reference.md)
 #### [登录活动错误代码](active-directory-reporting-activity-sign-ins-errors.md)
 #### [多重身份验证](active-directory-reporting-activity-sign-ins-mfa.md)
-
+#### [解释 Azure Monitor 中的审核日志架构](reporting-azure-monitor-diagnostics-audit-log-schema.md)
+#### [解释 Azure Monitor 中的登录日志架构](reporting-azure-monitor-diagnostics-sign-in-log-schema.md)
 
 ### 故障排除
 #### [缺少审核数据](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [在下载项中缺少数据](active-directory-reporting-troubleshoot-missing-data-download.md)
-#### [Azure Active Directory 活动日志内容包错误](active-directory-reporting-troubleshoot-content-pack.md)
-#### [Azure Active Directory 报告 API 中的错误](active-directory-reporting-troubleshoot-graph-api.md)
-
+#### [Azure AD 活动日志内容包错误](active-directory-reporting-troubleshoot-
+#### [Azure AD 报告 API 中的错误](active-directory-reporting-troubleshoot-graph-api.md)
 
 ### [以编程方式访问](active-directory-reporting-api-getting-started-azure-portal.md)
 #### [先决条件](active-directory-reporting-api-prerequisites-azure-portal.md)
@@ -140,13 +147,11 @@
 #### [登录示例](active-directory-reporting-api-sign-in-activity-samples.md)
 #### [使用证书](active-directory-reporting-api-with-certificates.md)
 
-## 管理密码 (active-directory/authentication/concept-sspr-howitworks.md)
+## [管理密码](authentication/concept-sspr-howitworks.md)
 ### 用户文档
 #### [重置或更改密码](user-help/active-directory-passwords-update-your-own-password.md)
-#### [密码最佳做法](active-directory-secure-passwords.md)
 #### [注册自助密码重置](user-help/active-directory-passwords-reset-register.md)
-### IT 管理员：重置密码
-#### [Azure 门户](fundamentals/active-directory-users-reset-password-azure-portal.md)
+
 
 ## 管理设备
 ### [介绍](device-management-introduction.md)

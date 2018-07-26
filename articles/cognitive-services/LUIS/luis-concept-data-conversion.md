@@ -2,19 +2,19 @@
 title: 了解 LUIS 中的数据转换概念 - Azure | Microsoft Docs
 description: 了解如何在语言理解 (LUIS) 得出预测之前更改话语
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 06/27/2018
-ms.author: v-geberr;
-ms.openlocfilehash: 16b0df4b81220885e2c3747470272cee9536e10c
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.author: diberry
+ms.openlocfilehash: 05a02191af171936dd9f5c4bf469b9c84aa144a3
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063555"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223695"
 ---
 # <a name="data-conversion-concepts-in-luis"></a>LUIS 中的数据转换概念
 LUIS 提供了一种在得出预测之前将口述话语转换为文本话语的方式。 

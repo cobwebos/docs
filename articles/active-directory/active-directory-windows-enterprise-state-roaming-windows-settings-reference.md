@@ -4,23 +4,24 @@ description: 将在 Windows 10 中漫游或备份的所有设置的完整列表�
 services: active-directory
 keywords: 企业状态漫游, Windows 云
 documentationcenter: ''
-author: tanning
+author: MarkusVi
 manager: mtillman
 editor: curtand
+ms.component: devices
 ms.assetid: 17cffc3e-2928-4235-91f7-a685bd6bdcbf
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: 741b76935b5a6d9b2a6869ef57caa0ac0dc6351a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9a06ff345d1bf91efd1abff9960a1a6f9a681dce
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32159071"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223661"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 漫游设置参考
 以下为会在 Windows 10 中漫游或备份的所有设置的完整列表。 
@@ -99,7 +100,8 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 | **Microsoft Edge 浏览器**：显示主页按钮 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
 | **Microsoft Edge 浏览器**：阻止弹出窗口 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
 | **Microsoft Edge 浏览器**：询问如何处理每个下载 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge 浏览器**：提出保存密码 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| 
+  **Microsoft Edge 浏览器**：提出保存密码 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
 | **Microsoft Edge 浏览器**：发送 Do Not Track 请求 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
 | **Microsoft Edge 浏览器**：保存窗体项 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
 | **Microsoft Edge 浏览器**：键入时显示搜索和站点建议 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |

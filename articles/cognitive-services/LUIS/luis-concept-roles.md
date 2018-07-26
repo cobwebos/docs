@@ -2,19 +2,19 @@
 title: 了解如何在基于模式的实体中使用角色 - Azure | Microsoft Docs
 description: 了解如何在基于模式的实体中使用角色，为上下文的实体子类型提供名称。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
-ms.author: v-geberr;
-ms.openlocfilehash: ab6100e33fb767528b87c6afde4c5ef275fc7c81
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.author: diberry
+ms.openlocfilehash: d2692cdce9da7428bd7b30c4feaf7347792618f5
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35371056"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222697"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>“模式”中的实体角色是上下文子类型
 角色是仅在[模式](luis-concept-patterns.md)中使用的实体的已命名上下文子类型。

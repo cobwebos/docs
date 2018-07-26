@@ -2,20 +2,20 @@
 title: Microsoft Azure 多重身份验证用户数据收集
 description: Azure 多重身份验证借助哪些信息来对用户进行身份验证？
 services: multi-factor-authentication
+ms.service: active-directory
+ms.component: authentication
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.topic: article
-ms.date: 05/01/2018
-ms.openlocfilehash: 2281a35d1616aa88b0c646fb96cb9f95c3272536
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.reviewer: michmcla
+ms.openlocfilehash: 1b380bc20c9f80710ca62672b99649ce3498a8e8
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264362"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223756"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Microsoft Azure 多重身份验证用户数据收集
 
