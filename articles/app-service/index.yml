@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 2e455d86bbe5f6376fa1c13d07cd6f8978ea1f40
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257460"
 documentType: LandingData
 title: Web 应用文档
 metadata:
@@ -14,12 +20,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/23/2017
   ms.author: carolz
-  ms.openlocfilehash: fd9ef52162933ae054263f42ca7498e24b1d863b
-  ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
-  ms.translationtype: HT
-  ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/20/2018
-  ms.locfileid: "39172647"
 abstract:
   description: 使用 Azure Web 应用可以采用所选编程语言构建和托管 Web 应用程序，而无需管理基础结构。 它提供自动缩放和高可用性，支持 Windows 和 Linux，并允许从 GitHub、Team Services 或任何 Git 存储库进行自动部署。 使用我们的快速入门、教程和示例了解如何使用 Azure Web 应用。
   aside:
@@ -55,6 +55,10 @@ sections:
         src: https://docs.microsoft.com/azure/app-service/media/index/logo_java.svg
       text: Java
       href: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-java
+    - image:
+        src: https://docs.microsoft.com/azure/app-service/media/index/logo_python.svg
+      text: Python（在 Linux 上）
+      href: https://docs.microsoft.com/azure/app-service/containers/quickstart-python
     - image:
         src: https://docs.microsoft.com/azure/app-service/media/index/logo_html5.svg
       text: HTML

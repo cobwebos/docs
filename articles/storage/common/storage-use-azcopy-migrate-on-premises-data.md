@@ -1,4 +1,4 @@
-﻿---
+---
 title: 使用 AzCopy 将本地数据迁移到 Azure 存储 | Microsoft 文档
 description: 使用 AzCopy 将数据迁移或复制到 blob、表和文件内容或从其中迁移或复制出数据。 轻松将本地存储中的数据迁移到 Azure 存储中。
 services: storage
@@ -10,12 +10,12 @@ ms.devlang: azcopy
 ms.topic: tutorial
 ms.date: 12/14/2017
 ms.author: rogarana
-ms.openlocfilehash: 3f9735a1e5a6973ab1c1c3f575cf3aa345a3a5a4
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 4e2d891705cbe4d51ddc6af6fe178257424220ab
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267435"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205317"
 ---
 #  <a name="migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>使用 AzCopy 将本地数据迁移到云存储
 
@@ -23,10 +23,10 @@ AzCopy 是一个命令行工具，借助该工具，可使用简单命令将数�
 
 有两种版本的 AzCopy 可供下载：
 
-* [AzCopy on Linux](storage-use-azcopy-linux.md) 使用 .NET Core Framework 生成。 它面向 Linux 平台，提供 POSIX 样式命令行选项。 
+* [AzCopy on Linux](storage-use-azcopy-linux.md) 使用 .NET 核心 Framework 生成。 它面向 Linux 平台，提供 POSIX 样式命令行选项。 
 * [AzCopy on Windows](storage-use-azcopy.md) 使用 .NET Framework 生成。 它提供 Windows 样式命令行选项。 
  
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建存储帐户。 
@@ -70,7 +70,7 @@ AzCopy 是一个命令行工具，借助该工具，可使用简单命令将数�
         --recursive
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey: key /S
+    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:<key> /S
 ---
 
 将 `<key>` 和 `key` 替换为帐户密钥。 在 Azure 门户中，可通过选择存储帐户中“设置”下的“访问密钥”来检索账户密钥。 选择一个密钥，将其粘贴到 AzCopy 命令中。 如果指定的目标容器不存在，AzCopy 将创建它并将文件上传到其中。 将源路径更新为数据目录，并将目标 URL 中的 myaccount 替换为存储帐户名称。
@@ -91,7 +91,7 @@ AzCopy 是一个命令行工具，借助该工具，可使用简单命令将数�
     --exclude-older
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey: key /S /XO
+    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:<key> /S /XO
 ---
 
 ## <a name="create-a-scheduled-task-or-cron-job"></a>创建计划任务或 cron 作业 
@@ -104,7 +104,7 @@ AzCopy 是一个命令行工具，借助该工具，可使用简单命令将数�
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
     cd C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy
-    AzCopy /Source: C:\myfolder  /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey: key /V /XO /XN >C:\Path\to\logfolder\azcopy%date:~-4,4%%date:~-7,2%%date:~-10,2%%time:~-11,2%%time:~-8,2%%time:~-5,2%.log
+    AzCopy /Source: C:\myfolder  /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:<key> /V /XO /XN >C:\Path\to\logfolder\azcopy%date:~-4,4%%date:~-7,2%%date:~-10,2%%time:~-11,2%%time:~-8,2%%time:~-5,2%.log
 ---
 
 使用详细 `--verbose` (Linux) 或 `/V` (Windows) 选项运行 AzCopy。 输出会重定向到日志文件。 

@@ -2,7 +2,7 @@
 title: 适用于 Azure 的 MongoDB、Angular 和 Node 教程 - 第 5 部分 | Microsoft Docs
 description: 本教程系列介绍如何通过 Angular 和 Node 在 Azure Cosmos DB 上创建 MongoDB 应用（所使用的 API 与用于 MongoDB 的 API 完全相同）；这是本教程系列的第 5 部分
 services: cosmos-db
-author: SnehaGunda
+author: johnpapa
 manager: kfile
 editor: ''
 ms.service: cosmos-db
@@ -10,14 +10,14 @@ ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
-ms.author: sngun
+ms.author: john.papa
 ms.custom: mvc
-ms.openlocfilehash: 2b6e3f66c6fb16adf6a8a1c51af61afb26aad59f
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 8674e5daee003ea0688ea8702362165ebb8ccfcf
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798655"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249200"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-5-use-mongoose-to-connect-to-azure-cosmos-db"></a>通过 Angular 和 Azure Cosmos DB 创建 MongoDB 应用 - 第 5 部分：使用 Mongoose 连接到 Azure Cosmos DB
 
@@ -215,7 +215,7 @@ ms.locfileid: "34798655"
 
     请花点时间查看并演练此处的调用链。 首先看看 `index.js`，此文件用于设置节点服务器。注意，此文件会设置和定义路由。 然后，routes.js 文件会与 hero 服务通信，要求该服务获取 getHeroes 之类的函数，并传递请求和响应。 在这里，hero.service.js 会获取模型并连接到 Mongo，然后在用户调用时执行 getHeroes，并返回响应 200。 然后通过链退出。 
 
-## <a name="run-the-app"></a>运行应用程序
+## <a name="run-the-app"></a>运行应用
 
 1. 现在，请再次运行该应用。 在 Visual Studio Code 中，保存所有更改，单击左侧的“调试”按钮 ![Visual Studio Code 中的“调试”图标](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png)，然后单击“开始调试”按钮 ![Visual Studio Code 中的“开始调试”图标](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png)。
 

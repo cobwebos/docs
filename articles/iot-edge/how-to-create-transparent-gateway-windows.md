@@ -8,12 +8,12 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 96a0443a66bb826496c6af42fe6479c0a53ac964
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 5ffb1b5c9889e2325eab32306b61899b37d22488
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036078"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187462"
 ---
 # <a name="create-a-windows-iot-edge-device-that-acts-as-a-transparent-gateway"></a>创建充当透明网关的 Windows IoT Edge 设备
 
@@ -54,7 +54,7 @@ ms.locfileid: "39036078"
          ```PowerShell
          .\vcpkg install openssl:x64-windows
          ```
-      1. 将 `$VCPKGDIR\vcpkg\packages\openssl_x64-windows\tools\openssl` 添加到 `PATH` 环境变量中，以便可以调用 `openssl.exe` 文件。
+      1. 将 `$VCPKGDIR\installed\x64-windows\tools\openssl` 添加到 `PATH` 环境变量中，以便可以调用 `openssl.exe` 文件。
 
 1. 导航到要在其中工作的目录。 从现在开始，我们将它称为 $WRKDIR。  所有文件都将在此目录中创建。
    
@@ -221,7 +221,7 @@ IoT Edge 运行时可以像模块发送的消息一样路由从下游设备发�
 [lnk-tutorial1-lin]: tutorial-simulate-device-linux.md
 [lnk-edge-as-gateway]: ./iot-edge-as-gateway.md
 [lnk-module-dev]: module-development.md
-[lnk-iothub-getstarted]: ../iot-hub/iot-hub-csharp-csharp-getstarted.md
+[lnk-iothub-getstarted]: ../iot-hub/quickstart-send-telemetry-dotnet.md
 [lnk-iothub-x509]: ../iot-hub/iot-hub-x509ca-overview.md
 [lnk-iothub-secure-deployment]: ../iot-hub/iot-hub-security-deployment.md
 [lnk-iothub-tokens]: ../iot-hub/iot-hub-devguide-security.md#security-tokens

@@ -5,16 +5,16 @@ keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/07/2018
+ms.date: 07/25/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0432a1782ab5e3aef471666e2f0a3ca18dead73e
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 28aa2904f63a9802305d24fec1650f84e38601ab
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001501"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258427"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>使用 Azure 门户大规模部署和监视 IoT Edge 模块
 
@@ -94,7 +94,7 @@ ms.locfileid: "39001501"
 
 ### <a name="step-3-specify-routes-optional"></a>步骤 3：指定路由（可选）
 
-路由定义模块在部署中如何相互通信。 默认情况下，向导提供名为**route**且定义为“FROM /*INTO $upstream****的路由。也就是说，任意模块输出的任何消息都发送到 IoT 中心。  
+路由定义模块在部署中如何相互通信。 向导默认提供名为“route”且定义为 FROM /\* INTO $upstream** 的路由，这表示任何模块输出的任何消息都将发送到 IoT 中心。  
 
 在路由中添加或更新[声明路由](module-composition.md#declare-routes)中的信息，再选择“下一步”继续转到评审部分。
 
@@ -106,7 +106,7 @@ ms.locfileid: "39001501"
 因为多个部署可能将同一个设备定为目标，所以应为每个部署提供优先级编号。 若有冲突，优先级最高（值越大表示优先级越高）的部署胜出。 如果两个部署的优先级编号相同，则将最新创建的部署定为目标。 
 
 1. 为部署优先级输入一个正整数。 如果同一设备上确定的部署目标至少有两个，则会应用优先级数值最高的部署。
-1. 输入“目标条件”确定将作为此部署的目标的设备。 条件基于设备孪生标记或设备孪生所需属性，并且应当与表达式格式匹配。 例如 `tags.environment='test'` 或 `properties.desired.devicemodel='4000x'`。 
+1. 输入“目标条件”确定将作为此部署的目标的设备。 该条件基于设备孪生标记或设备孪生报告的属性，应与表达式格式相匹配。 例如 `tags.environment='test'` 或 `properties.reported.devicemodel='4000x'`。 
 1. 选择“下一步”，进入到最后一步。
 
 ### <a name="step-5-review-template"></a>步骤 5：审阅模板

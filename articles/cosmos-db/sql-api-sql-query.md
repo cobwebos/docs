@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: laviswa
-ms.openlocfilehash: ee804ddc9e8fe9901173bb3d9357a273ea28057d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: f6829d497c85ef1b4e74e26befe42d5d6fa87e36
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056811"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205963"
 ---
 # <a name="sql-queries-for-azure-cosmos-db"></a>Azure Cosmos DB 的 SQL 查询
 
@@ -522,7 +522,7 @@ Undefined </td>
 
 如果筛选器中标量表达式的结果为 Undefined，则相应的文档不会包含在结果中，因为 Undefined 在逻辑上不等于“True”。
 
-### <a name="between-keyword"></a>BETWEEN 关键字
+## <a name="between-keyword"></a>BETWEEN 关键字
 也可以使用 BETWEEN 关键字来对一定范围内的值（如在 ANSI SQL 中）进行快速查询。 可对字符串或数字使用 BETWEEN。
 
 例如，此查询返回在其中第一个子女的年级为 1-5 之间（包括 1 和 5）的所有家庭文档。 
@@ -561,7 +561,7 @@ Undefined </td>
 | False |True |
 | Undefined |Undefined |
 
-### <a name="in-keyword"></a>IN 关键字
+## <a name="in-keyword"></a>IN 关键字
 IN 关键字可用于检查指定的值是否与列表中的任意值匹配。 例如，此查询返回 ID 为“WakefieldFamily”或“AndersenFamily”的所有家庭文档。 
 
     SELECT *
@@ -574,7 +574,7 @@ IN 关键字可用于检查指定的值是否与列表中的任意值匹配。 �
     FROM Families 
     WHERE Families.address.state IN ("NY", "WA", "CA", "PA", "OH", "OR", "MI", "WI", "MN", "FL")
 
-### <a name="ternary--and-coalesce--operators"></a>三元 (?) 和联合 (??) 运算符
+## <a name="ternary--and-coalesce--operators"></a>三元 (?) 和联合 (??) 运算符
 三元和联合运算符可以用于生成条件表达式，类似于常用的编程语言（如 C# 和 JavaScript）。 
 
 当动态构建新的 JSON 属性时，使用三元 (?) 运算符会非常方便。 例如，现在可以写入查询以将类级别（初学者/中级/高级）分类到用户可读的表单中，如下面所示。
@@ -594,7 +594,7 @@ IN 关键字可用于检查指定的值是否与列表中的任意值匹配。 �
     SELECT f.lastName ?? f.surname AS familyName
     FROM Families f
 
-### <a id="EscapingReservedKeywords"></a>带引号的属性访问器
+## <a id="EscapingReservedKeywords"></a>带引号的属性访问器
 也可以使用带引号的属性运算符 `[]` 访问属性。 例如，`SELECT c.grade` 和 `SELECT c["grade"]` 是等效的。 此语法在需要转义包含空格和特殊字符的属性或正好将相同的名称作为 SQL 关键字或保留字共享的属性时很有用。
 
     SELECT f["lastName"]
@@ -682,7 +682,7 @@ SELECT 子句 (**`SELECT <select_list>`**) 是强制性的，用于指定要从�
     }]
 
 
-### <a name="aliasing"></a>别名
+## <a name="aliasing"></a>别名
 现在让我们使用值的显示别名对上面的示例进行扩展。 AS 是用于别名的关键字。 在将第二个值投影为 `NameInfo` 时，它如显示的那样是可选的。 
 
 如果查询包含两个具有相同名称的属性，则必须使用别名以重命名其中一个属性或两个属性，以便可以在投影的结果中消除它们的歧义。
@@ -708,7 +708,7 @@ SELECT 子句 (**`SELECT <select_list>`**) 是强制性的，用于指定要从�
     }]
 
 
-### <a name="scalar-expressions"></a>标量表达式
+## <a name="scalar-expressions"></a>标量表达式
 除了属性引用之外，SELECT 子句还支持标量表达式，如常量、算术表达式和逻辑表达式等。例如，下面是一个简单的“Hello World”查询。
 
 **查询**
@@ -754,7 +754,7 @@ SELECT 子句 (**`SELECT <select_list>`**) 是强制性的，用于指定要从�
     ]
 
 
-### <a name="object-and-array-creation"></a>对象和数组创建
+## <a name="object-and-array-creation"></a>对象和数组创建
 SQL API 的另一个重要功能是数组/对象创建。 请注意，在上一个示例中，我们已创建了一个新的 JSON 对象。 同样，也可以构造数组，如下例所示：
 
 **查询**
@@ -779,7 +779,7 @@ SQL API 的另一个重要功能是数组/对象创建。 请注意，在上一�
       }
     ]
 
-### <a id="ValueKeyword"></a>VALUE 关键字
+## <a id="ValueKeyword"></a>VALUE 关键字
 **VALUE** 关键字提供一种返回 JSON 值的方法。 例如，下面所示的查询返回标量 `"Hello World"`，而不是 `{$1: "Hello World"}`。
 
 **查询**
@@ -830,7 +830,7 @@ SQL API 的另一个重要功能是数组/对象创建。 请注意，在上一�
     ]
 
 
-### <a name="-operator"></a>* 运算符
+## <a name="-operator"></a>* 运算符
 支持使用特殊运算符 (*) 按原样投影文档。 在使用时，它必须仅为投影的字段。 当类似 `SELECT * FROM Families f` 的查询有效时，`SELECT VALUE * FROM Families f ` 和 `SELECT *, f.id FROM Families f ` 无效。
 
 **查询**
@@ -859,7 +859,7 @@ SQL API 的另一个重要功能是数组/对象创建。 请注意，在上一�
         "isRegistered": true
     }]
 
-### <a id="TopKeyword"></a>TOP 运算符
+## <a id="TopKeyword"></a>TOP 运算符
 TOP 关键字可用于限制来自查询中的值的数量。 当 TOP 与 ORDER BY 子句配合使用时，结果集被限制为有序值的前 N 个数；否则，它会返回未定义排序的结果中的前 N 数。 在 SELECT 语句中，最佳做法始终使用带有 TOP 子句的 ORDER BY 子句。 这是可预测指示受 TOP 影响的行的唯一方法。 
 
 **查询**
@@ -889,7 +889,7 @@ TOP 关键字可用于限制来自查询中的值的数量。 当 TOP 与 ORDER 
 
 可将 TOP 与常量值（如以上所示）或使用参数化查询的变量值配合使用。 有关更多详细信息，请参阅下面的参数化查询。
 
-### <a id="Aggregates"></a>聚合函数
+## <a id="Aggregates"></a>聚合函数
 也可在 `SELECT` 子句中执行聚合操作。 聚合函数对一组值进行计算，返回单个值。 例如，以下查询返回集合中系列文档的计数。
 
 **查询**
