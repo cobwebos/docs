@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: d862cd0223609d80c511362edbcc0ed6dd512b1f
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 5cdaba2a280221fa5fa9274ebfa6cafa18e7690c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859141"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39055009"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure 数据工厂中的表达式和函数
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -41,14 +41,14 @@ ms.locfileid: "37859141"
 ```
 
 ## <a name="expressions"></a>表达式  
-表达式可出现在 JSON 字符串值中的任何位置，始终生成另一个 JSON 值。 如果某个 JSON 值为表达式，会通过删除 \@ 符号来提取表达式的正文。 如果需要以 \@\ 开头的文本字符串，则必须使用 @@ 将它转义。 以下示例演示了如何计算表达式。  
+表达式可出现在 JSON 字符串值中的任何位置，始终生成另一个 JSON 值。 如果某个 JSON 值为表达式，会通过删除 \@ 符号来提取表达式的正文。 如果需要以“\@”开头的文本字符串，则必须使用 \@\@ 将它转义。 以下示例演示了如何计算表达式。  
   
 |JSON 值|结果|  
 |----------------|------------|  
 |"parameters"|返回字符“parameters”。|  
 |"parameters[1]"|返回字符“parameters[1]”。|  
-|"\@@"|返回包含\“\@\”的、由 1 个字符构成的字符串。|  
-|" \@"|返回包含 \“ \@ \”的、由 2 个字符构成的字符串。|  
+|"\@\@"|返回包含“\@”的、由 1 个字符构成的字符串。|  
+|" \@"|返回包含“\@”的、由 2 个字符构成的字符串。|  
   
  如果使用称为字符串内插的功能（其中表达式封装在 `@{ ... }` 内），表达式还可以显示在字符串内。 例如： `"name" : "First Name: @{pipeline().parameters.firstName} Last Name: @{pipeline().parameters.lastName}"`  
   
@@ -62,7 +62,7 @@ ms.locfileid: "37859141"
 |"\@{pipeline().parameters.myNumber}"| 返回*字符串*形式的 `42`。|  
 |"Answer is: @{pipeline().parameters.myNumber}"| 返回字符串 `Answer is: 42`。|  
 |"\@concat('Answer is: ', string(pipeline().parameters.myNumber))"| 返回字符串 `Answer is: 42`|  
-|"Answer is: \@@{pipeline().parameters.myNumber}"| 返回字符串 `Answer is: @{pipeline().parameters.myNumber}`。|  
+|"Answer is: \@\@{pipeline().parameters.myNumber}"| 返回字符串 `Answer is: @{pipeline().parameters.myNumber}`。|  
   
 ### <a name="examples"></a>示例
 
@@ -147,7 +147,7 @@ ms.locfileid: "37859141"
 ## <a name="string-functions"></a>字符串函数  
  以下函数只适用于字符串。 还可以针对字符串使用一些集合函数。  
   
-|函数名称|说明|  
+|函数名称|Description|  
 |-------------------|-----------------|  
 |concat|将任意数量的字符串合并在一起。 例如，如果 parameter1 为 `foo,`，以下表达式将返回 `somevalue-foo-somevalue`:  `concat('somevalue-',pipeline().parameters.parameter1,'-somevalue')`<br /><br /> **参数数目**：1 ... *n*<br /><br /> **名称**：字符串 *n*<br /><br /> **说明**：必需。 要合并成单个字符串的字符串。|  
 |substring|返回字符串中的字符子集。 例如，以下表达式：<br /><br /> `substring('somevalue-foo-somevalue',10,3)`<br /><br /> 返回：<br /><br /> `foo`<br /><br /> **参数数目**：1<br /><br /> **名称**：字符串<br /><br /> **说明**：必需。 要从中获取子字符串的字符串。<br /><br /> **参数数目**：2<br /><br /> **名称**：起始索引<br /><br /> **说明**：必需。 参数 1 中子字符串的起始索引。<br /><br /> **参数数目**：3<br /><br /> **名称**：长度<br /><br /> **说明**：必需。 子字符串的长度。|  
@@ -165,7 +165,7 @@ ms.locfileid: "37859141"
 ## <a name="collection-functions"></a>集合函数  
  这些函数针对集合运行，例如数组、字符串，有时是字典。  
   
-|函数名称|说明|  
+|函数名称|Description|  
 |-------------------|-----------------|  
 |contains|如果字典包含键、列表包含值，或字符串包含子字符串，则返回 true。 例如，以下表达式返回 `true:``contains('abacaba','aca')`<br /><br /> **参数数目**：1<br /><br /> **名称**：集合内<br /><br /> **说明**：必需。 要在其中搜索的集合。<br /><br /> **参数数目**：2<br /><br /> **名称**：查找对象<br /><br /> **说明**：必需。 要在**集合内**查找的对象。|  
 |length|返回数组或字符串中的元素数目。 例如，以下表达式返回 `3`:  `length('abc')`<br /><br /> **参数数目**：1<br /><br /> **名称**：集合<br /><br /> **说明**：必需。 要获取长度的集合。|  
@@ -180,7 +180,7 @@ ms.locfileid: "37859141"
 ## <a name="logical-functions"></a>逻辑函数  
  这些函数可在条件中使用，并可用于评估任何类型的逻辑。  
   
-|函数名称|说明|  
+|函数名称|Description|  
 |-------------------|-----------------|  
 |equals|如果两个值相等，则返回 true。 例如，如果 parameter1 为 foo，以下表达式返回 `true`: `equals(pipeline().parameters.parameter1), 'foo')`<br /><br /> **参数数目**：1<br /><br /> **名称**：对象 1<br /><br /> **说明**：必需。 要与**对象 2** 比较的对象。<br /><br /> **参数数目**：2<br /><br /> **名称**：对象 2<br /><br /> **说明**：必需。 要与**对象 1** 比较的对象。|  
 |less|如果第一个参数小于第二个参数，则返回 true。 请注意，值的类型只能是整数、浮点数或字符串。 例如，以下表达式返回 `true`:  `less(10,100)`<br /><br /> **参数数目**：1<br /><br /> **名称**：对象 1<br /><br /> **说明**：必需。 要检查是否小于**对象 2** 的对象。<br /><br /> **参数数目**：2<br /><br /> **名称**：对象 2<br /><br /> **说明**：必需。 要检查是否大于**对象 1** 的对象。|  
@@ -207,7 +207,7 @@ ms.locfileid: "37859141"
   
 -   dictionaries  
   
-|函数名称|说明|  
+|函数名称|Description|  
 |-------------------|-----------------|  
 |int|将参数转换为整数。 例如，以下表达式返回数字而不是字符串形式的 100：`int('100')`<br /><br /> **参数数目**：1<br /><br /> **名称**：值<br /><br /> **说明**：必需。 要转换为整数的值。|  
 |字符串|将参数转换为字符串。 例如，以下表达式返回 `'10'`:  `string(10)`。你还可以将对象转换为字符串，例如，如果 foo 参数是一个具有属性 `bar : baz` 的对象，那么以下表达式将返回 `{"bar" : "baz"}` `string(pipeline().parameters.foo)`<br /><br /> **参数数目**：1<br /><br /> **名称**：值<br /><br /> **说明**：必需。 要转换为字符串的值。|  
@@ -237,7 +237,7 @@ ms.locfileid: "37859141"
 ## <a name="math-functions"></a>数学函数  
  这些函数可用于以下任一数字类型：**整数**和**浮点数**。  
   
-|函数名称|说明|  
+|函数名称|Description|  
 |-------------------|-----------------|  
 |添加|返回两个数字相加的结果。 例如，此函数返回 `20.333`:  `add(10,10.333)`<br /><br /> **参数数目**：1<br /><br /> **名称**：被加数 1<br /><br /> **说明**：必需。 要与**被加数 2** 相加的数字。<br /><br /> **参数数目**：2<br /><br /> **名称**：被加数 2<br /><br /> **说明**：必需。 要与**被加数 1** 相加的数字。|  
 |sub|返回两个数字相减的结果。 例如，此函数返回：`-0.333`:<br /><br /> `sub(10,10.333)`<br /><br /> **参数数目**：1<br /><br /> **名称**：被减数<br /><br /> **说明**：必需。 要从中减除**减数**的数字。<br /><br /> **参数数目**：2<br /><br /> **名称**：减数<br /><br /> **说明**：必需。 要从**被减数**中减除的数字。|  
@@ -251,7 +251,7 @@ ms.locfileid: "37859141"
   
 ## <a name="date-functions"></a>日期函数  
   
-|函数名称|说明|  
+|函数名称|Description|  
 |-------------------|-----------------|  
 |utcnow|返回字符串形式的当前时间戳。 例如 `2015-03-15T13:27:36Z`：<br /><br /> `utcnow()`<br /><br /> **参数数目**：1<br /><br /> **名称**：格式<br /><br /> **说明**：可选 [单个格式说明符](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)或[自定义格式模式](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)，指示如何设置此时间戳值的格式。 如果未提供格式，则使用 ISO 8601 格式 ("o")。|  
 |addseconds|将整数秒数添加到传入的字符串时间戳。 秒数可为正数或负数。 默认情况下，结果是采用 ISO 8601 格式 ("o") 的字符串，除非提供了格式说明符。 例如 `2015-03-15T13:27:00Z`：<br /><br /> `addseconds('2015-03-15T13:27:36Z', -36)`<br /><br /> **参数数目**：1<br /><br /> **名称**：时间戳<br /><br /> **说明**：必需。 包含时间的字符串。<br /><br /> **参数数目**：2<br /><br /> **名称**：秒<br /><br /> **说明**：必需。 要添加的秒数。 可为负数（减去相应的秒数）。<br /><br /> **参数数目**：3<br /><br /> **名称**：格式<br /><br /> **说明**：可选 [单个格式说明符](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)或[自定义格式模式](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)，指示如何设置此时间戳值的格式。 如果未提供格式，则使用 ISO 8601 格式 ("o")。|  

@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: liamca
-ms.openlocfilehash: a3baa17906e3bfede8a7fc5f8a0bfbde9d2a57ce
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 24fa427ad67a953020370a16b4d156c82a0a1cf6
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951016"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036660"
 ---
 # <a name="lucene-query-syntax-examples-for-building-queries-in-azure-search"></a>在 Azure 搜索中生成查询的 Lucene 查询语法示例
 为 Azure 搜索构建查询时，可使用默认的[简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)或备用的 [Azure 搜索中的 Lucene 查询分析器](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)。 Lucene 查询分析程序支持更复杂的查询构造，如字段范围查询、模糊搜索、邻近搜索、字词提升和正则表达式搜索。
@@ -69,7 +69,7 @@ ms.locfileid: "37951016"
 ## <a name="fuzzy-search-example"></a>模糊搜索示例
 模糊搜索在构造相似的术语中查找匹配项。 对于 [Lucene 文档](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)，模糊搜索基于 [Damerau-Levenshtein 距离](https://en.wikipedia.org/wiki/Damerau%e2%80%93Levenshtein_distance)。
 
-若要执行模糊搜索，请在单个字词的末尾追加“~”波形符，后跟指定编辑距离的可选参数（介于 0 到 2 之间的值）。 例如“blue~”或“blue~1”返回 blue、blues 和 glue。
+若要执行模糊搜索，请在单个字词的末尾追加“`~`”波形符，后跟指定编辑距离的可选参数（介于 0 到 2 之间的值）。 例如，`blue~` 或 `blue~1` 会返回 blue、blues 和 glue。
 
 **示例 3** -- 右键单击以下查询段。 此查询搜索带有术语“关联”（拼写错误）的作业：
 

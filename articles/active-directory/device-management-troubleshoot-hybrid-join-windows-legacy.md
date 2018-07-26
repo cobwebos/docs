@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: d41e83c11f33b0bcbe4ea632332f2cd8bb12313f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 3b99a82b59cbba22d30a4325e246c308a2042ad5
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714106"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136301"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>排查已加入混合 Azure Active Directory 的下层设备问题 
 
@@ -56,6 +56,8 @@ ms.locfileid: "34714106"
 - 初始注册/加入设备配置为在登录或锁定/解锁时执行尝试。 可能会有 5 分钟的延迟，由任务计划程序任务触发。 
 
 - 重新安装操作系统或者手动重新注册，可能会在 Azure AD 中创建新的注册，从而导致 Azure 门户中的“用户信息”选项卡下出现多个条目。 
+
+- 对于 Windows 7 SP1 或 Windows Server 2008 R2 SP1，请确保安装 [KB4284842](https://support.microsoft.com/en-us/help/4284842)。 此更新可防止将来因客户更改密码后无法访问受保护密钥而导致身份验证失败。
 
 ## <a name="step-1-retrieve-the-registration-status"></a>步骤 1：检索注册状态 
 

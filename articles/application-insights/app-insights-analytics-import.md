@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 688d620e19a8a6f536d134d9c4d7c837ec06bbdc
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d891cd92e70d3491ee0c7a58f1409823301b299c
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293615"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989745"
 ---
 # <a name="import-data-into-analytics"></a>将数据导入到 Analytics 中
 
@@ -116,15 +116,16 @@ JSON 格式
 ]
 ```
  
-每个列按位置、名称和类型进行标识。 
+每个列按位置、名称和类型进行标识。
 
 * 位置 - 对于带分隔符的文件格式，它是映射的值的位置。 对于 JSON 格式，它是映射的键的 jpath。
 * 名称 - 列的显示名称。
 * 类型 - 列的数据类型。
  
-如果使用示例数据，且文件为带分隔符的格式，则架构定义必须映射所有列，并在末尾添加新列。 
-
-JSON 允许数据的部分映射，因此 JSON 格式的架构定义不必映射在示例数据中找到的每个键。 它还可以映射不属于示例数据一部分的列。 
+> [!NOTE]
+> 如果使用示例数据，且文件为带分隔符的格式，则架构定义必须映射所有列，并在末尾添加新列。
+> 
+> JSON 允许数据的部分映射，因此 JSON 格式的架构定义不必映射在示例数据中找到的每个键。 它还可以映射不属于示例数据一部分的列。 
 
 ## <a name="import-data"></a>导入数据
 

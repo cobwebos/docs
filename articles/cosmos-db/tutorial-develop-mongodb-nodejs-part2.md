@@ -2,7 +2,7 @@
 title: 适用于 Azure 的 MongoDB、Angular 和 Node 教程 - 第 2 部分 | Microsoft Docs
 description: 本教程系列的第 2 部分，介绍如何通过 Angular 和 Node 在 Azure Cosmos DB 上创建 MongoDB 应用，所使用的 API 与用于 MongoDB 的 API 完全相同。
 services: cosmos-db
-author: SnehaGunda
+author: johnpapa
 manager: kfile
 editor: ''
 ms.service: cosmos-db
@@ -10,14 +10,14 @@ ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
-ms.author: sngun
+ms.author: john.papa
 ms.custom: mvc
-ms.openlocfilehash: b35f003c18e19eafd3dfa9988409ceacb44e3bc4
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: e70c00bcfed3785a06c4b2cd5b7e5944bd01b9cc
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798060"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247538"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-2-create-a-nodejs-express-app-with-the-angular-cli"></a>通过 Angular 和 Azure Cosmos DB 创建 MongoDB 应用 - 第 2 部分：通过 Angular CLI 创建 Node.js Express 应用 
 
@@ -118,10 +118,10 @@ ms.locfileid: "34798060"
 
    app.use(bodyParser.json());
    app.use(bodyParser.urlencoded({ extended: false }));
-   app.use(express.static(path.join(root, 'dist')));
+   app.use(express.static(path.join(root, 'dist/angular-cosmosdb')));
    app.use('/api', routes);
    app.get('*', (req, res) => {
-     res.sendFile('dist/index.html', {root});
+     res.sendFile('dist/angular-cosmosdb/index.html', {root});
    });
 
    app.listen(port, () => console.log(`API running on localhost:${port}`));

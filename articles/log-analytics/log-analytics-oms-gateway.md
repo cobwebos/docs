@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: a13057769bad7fcad5f95e49102adac234ebcdb4
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: bbb17d1b47c5409d15a15a7461da981fa5e09f7e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868933"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056828"
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>使用 OMS 网关连接无法访问 Internet 的计算机
 本文档介绍直接连接或 Operations Manager 监视的计算机无法访问 Internet 时，如何使用 OMS 网关，配置与 Azure 自动化和 Log Analytics 的通信。  OMS 网关是使用 HTTP CONNECT 命令，支持 HTTP 隧道的 HTTP 转发代理，它可以收集数据，然后代表这些设备将数据发送到 Azure 自动化和 Log Analytics。  
@@ -89,8 +89,8 @@ OMS 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它不支持�
 
 |网关 |支持的代理近似数量|  
 |--------|----------------------------------|  
-|- CPU：Intel XEON CPU E5-2660 v3 @ 2.6GHz 2 Cores<br> - 内存：4 GB<br> - 网络带宽：1 Gbps| 600|  
-|- CPU：Intel XEON CPU E5-2660 v3 @ 2.6GHz 4 Cores<br> - 内存：8 GB<br> - 网络带宽：1 Gbps| 1000|  
+|- CPU: Intel XEON CPU E5-2660 v3 \@ 2.6GHz 双核<br> - 内存：4 GB<br> - 网络带宽：1 Gbps| 600|  
+|- CPU: Intel XEON CPU E5-2660 v3 \@ 2.6GHz 四核<br> - 内存：8 GB<br> - 网络带宽：1 Gbps| 1000|  
 
 ## <a name="download-the-oms-gateway"></a>下载 OMS 网关
 
@@ -161,7 +161,7 @@ OMS 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它不支持�
 如果这是首次向 Log Analytics 工作区注册 Operations Manager 管理组，为管理组指定代理配置的选项在操作控制台中不可用。  必须成功向服务注册管理组后，此选项才可用。  需使用 Netsh，对运行操作控制台以配置集成的系统，以及管理组中的所有管理服务器进行系统代理配置的更新。  
 
 1. 打开提升的命令指示符。
-   a. 转到“启动”，然后键入“cmd”。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 转到“启动”，然后键入“cmd”。
    b. 右键单击“命令提示符”然后选择“以管理员身份运行”**。
 2. 键入以下命令并按 Enter：
 

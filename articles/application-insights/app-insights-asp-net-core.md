@@ -1,4 +1,4 @@
-﻿---
+---
 title: 适用于 ASP.NET Core 的 Azure Application Insights | Microsoft Docs
 description: 监视 Web 应用程序的可用性、性能和使用情况。
 services: application-insights
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: mbullwin
-ms.openlocfilehash: f9ab9b9af81bf1827c2da646908e204bd051706b
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 6635906b6aae418fa3754f1152fae3e0d8903ffc
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970928"
+ms.locfileid: "38989747"
 ---
 # <a name="application-insights-for-aspnet-core"></a>用于 ASP.NET Core 的 Application Insights
 
@@ -28,7 +28,7 @@ Azure Application Insights 提供 Web 应用程序的监视信息，深度可达
 
 ## <a name="prerequisites"></a>先决条件
 
-- .NET Core 2.0.0 SDK 或更高版本。
+- NET Core 2.0.0 SDK 或更高版本。
 - 装有 ASP.NET 和 Web 开发工作负荷的 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 15.7.3 或更高版本。 
 
 ## <a name="create-an-aspnet-core-project-in-visual-studio"></a>在 Visual Studio 中创建 ASP.NET Core 项目
@@ -188,7 +188,7 @@ namespace DotNetCore
 
 1. 单击 IIS Express 运行应用 ![Visual Studio 中 IIS Express 图标的屏幕截图](./media/app-insights-asp-net-core/004-iis-express.png)
 
-2. 复制浏览器地址栏中的 URL。 它采用以下格式：http://localhost:{random 端口号}
+2. 复制浏览器地址栏中的 URL。 该 URL 的格式为：`http://localhost:{random port number}`
 
    ![浏览器 URL 地址栏的屏幕截图](./media/app-insights-asp-net-core/0013-copy-url.png)
 

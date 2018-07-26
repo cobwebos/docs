@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: apimpm
-ms.openlocfilehash: 3fcd2fc4162cfbf549be979e15745934c2e4c6ff
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: b06a179459a449762555879669d177f811cb9560
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28019273"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090871"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
 
@@ -51,7 +51,7 @@ ms.locfileid: "28019273"
 ### <a name="create-an-azure-active-directory-application"></a>创建 Azure Active Directory 应用程序
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。 
-2. 使用包含你的 API 管理服务实例的订阅，导航到“应用注册”选项卡。
+2. 使用包含 API 管理服务实例的订阅导航到 Azure Active Directory 中的“应用注册”选项卡（Azure Active Directory > 管理/应用注册）。
 
     > [!NOTE]
     > 如果 Azure Active Directory 默认目录对帐户不可见，请联系 Azure 订阅的管理员以向帐户授予所需权限。
@@ -112,11 +112,14 @@ namespace GetTokenResourceManagerRequests
 
     ![终结点][api-management-endpoint]
 2. 将 `{application id}` 替换为通过导航到“设置”页面获得的值。
-3. 将 {redirect uri} 替换为你的 Azure Active Directory 应用程序的“重定向 URI”选项卡上的 URL。
+3. 将 `{redirect uri}` 替换为 Azure Active Directory 应用程序“重定向 URI”选项卡上的值。
 
     指定这些值后，代码示例应返回类似于以下示例的令牌：
 
     ![令牌][api-management-arm-token]
+
+    > [!NOTE]
+    > 该令牌可能在一段时间后过期。 再次执行示例代码以生成新令牌。
 
 ## <a name="calling-the-backup-and-restore-operations"></a>调用备份和还原操作
 
@@ -134,7 +137,7 @@ request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 其中：
 
 * `subscriptionId` - 包含尝试备份的 API 管理服务的订阅的 ID
-* `resourceGroupName` - 采用“Api-Default-{service-region}”形式的字符串，其中 `service-region` 标识托管正在尝试备份的 API 管理服务的 Azure 区域，例如 `North-Central-US`
+* `resourceGroupName` - Azure API 管理服务的资源组名称
 * `serviceName` - 正在创建其备份的 API 管理服务的名称，在创建时指定
 * `api-version` - 替换为 `2014-02-14`
 
@@ -193,8 +196,9 @@ request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 > 要还原到的服务的 **SKU** 必须与正在还原的已备份服务的 SKU **匹配**。
 >
 > 还原操作正在进行时对服务配置（例如 API、策略、开发人员门户外观）所做的**更改****可能会被覆盖**。
->
->
+
+> [!NOTE]
+> 也可分别使用 Powershell *Backup-AzureRmApiManagement* 和 *Restore-AzureRmApiManagement* 命令执行备份和还原操作。
 
 ## <a name="next-steps"></a>后续步骤
 查看以下 Microsoft 博客了解备份/还原过程的两种不同的演练。

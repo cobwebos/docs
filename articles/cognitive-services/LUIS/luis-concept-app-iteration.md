@@ -2,19 +2,19 @@
 title: 了解 LUIS 迭代应用设计 - Azure | Microsoft Docs
 description: 为获得最佳数据提取，LUIS 应用需要设计迭代来训练 LUIS。
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 02/12/2018
-ms.author: v-geberr
-ms.openlocfilehash: e0467e4c41209c937f548edc0c40c05cae588f4c
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.author: diberry
+ms.openlocfilehash: 947350a1d0dcfb0caaca654768c3660fc1b146e1
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888242"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225435"
 ---
 # <a name="authoring-cycle"></a>创作周期
 LUIS 在反复的模型变更、陈述示例、发布以及从终结点查询收集信息等周期中，会取得最佳的学习成效。 

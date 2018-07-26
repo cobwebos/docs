@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2018
+ms.date: 07/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 02421ace226f42da58eb9864fe0ef2e1ca550391
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: a792db670602f736489ee962df5078531e0a8e88
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319276"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050944"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>教程：Azure Active Directory 与本地 SharePoint 的集成
 
@@ -85,7 +85,7 @@ ms.locfileid: "36319276"
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建本地 SharePoint 测试用户](#create-a-sharePoint-on-premises-test-user)** - 在本地 SharePoint 中创建 Britta Simon 的对应用户，并将其关联到用户的 Azure AD 表示形式。
+3. **[向本地 SharePoint 测试用户授予访问权限](#grant-access-to-sharePoint-on-premises-test-user)** - 在本地 SharePoint 中创建 Britta Simon 的对应用户，并将其关联到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
@@ -107,14 +107,11 @@ ms.locfileid: "36319276"
 
     ![本地 SharePoint 域和 URL 单一登录信息](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_url1.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<YourSharePointServerURL>/_trust/default.aspx`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<YourSharePointServerURL>/_trust/default.aspx`
 
-    b. 在“标识符”文本框中，使用以下模式键入 URL：`urn:sharepoint:<YourSharePointServerURL>`
+    b. 在“标识符”文本框中，键入 URL：`urn:sharepoint:federation`
 
-    > [!NOTE]
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系[本地 SharePoint 客户端支持团队](https://support.office.com/)获取这些值。
-
-4. 在“SAML 签名证书”部分单击“元数据 XML”，然后在计算机上以 .cer 扩展名保存元数据文件。 复制下载的元数据文件的完整路径，并将其粘贴到记事本中。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![证书下载链接](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_certificate.png)
 
@@ -153,7 +150,7 @@ ms.locfileid: "36319276"
 
     接下来，遵循以下步骤为应用程序启用受信任的标识提供者：
 
-    a. 在管理中心，导航到“管理 Web 应用程序”并选择要使用 Azure AD 保护的 Web 应用程序。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在管理中心，导航到“管理 Web 应用程序”并选择要使用 Azure AD 保护的 Web 应用程序。
 
     b. 在功能区中单击“身份验证提供程序”，然后选择要使用的区域。
 
@@ -189,7 +186,7 @@ ms.locfileid: "36319276"
 
     ![“用户”对话框](./media\sharepoint-on-premises-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -197,7 +194,9 @@ ms.locfileid: "36319276"
 
     d. 单击“创建”。
 
-### <a name="create-a-sharepoint-on-premises-test-user"></a>创建本地 SharePoint 测试用户
+### <a name="grant-access-to-sharepoint-on-premises-test-user"></a>向本地 SharePoint 测试用户授予访问权限
+
+必须授予登录 Azure AD 并访问 SharePoint 的用户对应用程序的访问权限。使用以下步骤设置访问 Web 应用程序的权限。
 
 1. 在管理中心，单击“应用程序管理”。
 
@@ -213,7 +212,7 @@ ms.locfileid: "36319276"
 
 6. 在“Web 应用程序的策略”对话框中的“选择用户”部分，单击“浏览”图标。
 
-7. 在“查找”文本框中，键入目录中某个用户的登录名，然后单击“搜索”。 </br>示例：*demouser@blueskyabove.onmicrosoft.com*。
+7. 在“查找”文本框中，键入已在 Azure AD 中为其配置 SharePoint 本地应用程序的**用户主体名称(UPN)** 值，然后单击“搜索”。 </br>示例：*brittasimon@contoso.com*。
 
 8. 在列表视图中的 AzureAD 标题下，选择名称属性，单击“添加”，然后单击“确定”关闭对话框。
 
@@ -222,6 +221,29 @@ ms.locfileid: "36319276"
     ![向声明用户授予完全控制权限](./media\sharepoint-on-premises-tutorial/fig12-grantfullcontrol.png)
 
 10. 依次单击“完成”、“确定”。
+
+### <a name="configuring-one-trusted-identity-provider-for-multiple-web-applications"></a>为多个 Web 应用程序配置一个受信任标识提供者
+
+该配置适用于单个 Web 应用程序，但如果你打算对多个 Web 应用程序使用相同的受信任标识提供者，则需要其他配置。 例如，假设我们已扩展了一个 Web 应用程序以使用 URL `https://portal.contoso.local`，现在也想要向 `https://sales.contoso.local` 进行用户身份验证。 为此，我们需要更新标识提供者以采用 WReply 参数并更新 Azure AD 中的应用程序注册以添加回复 URL。
+
+1. 在 Azure 门户中，打开 Azure AD 目录。 单击“应用注册”，然后单击“查看所有应用程序”。 单击之前创建的应用程序 (SharePoint SAML Integration)。
+
+2. 单击“设置”。
+
+3. 在“设置”边栏选项卡中，单击“回复 URL”。 
+
+4. 为附加的 Web 应用程序添加 URL 并将 `/_trust/default.aspx` 追加到 URL 后面（如 `https://sales.contoso.local/_trust/default.aspx`），并单击“保存”。
+
+5. 在 SharePoint Server 上打开 **SharePoint 2016 Management Shell**，并使用先前使用的受信任标识令牌颁发者的名称执行以下命令。
+
+    ```
+    $t = Get-SPTrustedIdentityTokenIssuer "AzureAD"
+    $t.UseWReplyParameter=$true
+    $t.Update()
+    ```
+6. 在管理中心内，转到该 Web 应用程序并启用现有的受信任标识提供者。 记住还将登录页 URL 配置为自定义登录页 `/_trust/`。
+
+7. 在管理中心内，单击该 Web 应用程序并选择“用户策略”。 添加具有相应权限的用户，如本文中前面所示。
 
 ### <a name="fixing-people-picker"></a>固定人员选取器
 
@@ -268,13 +290,13 @@ ms.locfileid: "36319276"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“本地 SharePoint”磁贴时，应会自动登录到本地 SharePoint 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
 * [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
-
+* [使用 Azure AD 进行 SharePoint Server 身份验证](https://docs.microsoft.com/en-us/office365/enterprise/using-azure-ad-for-sharepoint-server-authentication)
 
 <!--Image references-->
 

@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/24/2018
+ms.date: 07/12/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ffd774477881be6b7f46dd38bbc88c8d019223aa
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: e2b8b1f63e4c23c0beeaff6fd246fa2ba8afe106
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36317198"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036745"
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Azure AD 中的可选声明（预览版）
 
@@ -48,35 +48,39 @@ ms.locfileid: "36317198"
 下面列出了默认可对应用程序使用的可选声明集。  若要为应用程序添加自定义可选声明，请参阅下面的[目录扩展](active-directory-optional-claims.md#Configuring-custom-claims-via-directory-extensions)。 
 
 > [!Note]
->其中的大多数声明可包含在 JWT 中，但不可包含在 SAML 令牌中，“令牌类型”列中指明的声明除外。  此外，尽管可选声明目前仅支持 AAD 用户，但 MSA 支持即将推出。  当 MSA 在 v2.0 终结点上提供可选声明支持时，如果某个声明适用于 AAD 或 MSA 用户，“用户类型”列中会予以注明。  
+>其中的大多数声明可包含在 v1.0 和 v2.0 令牌的 JWT 中，但不可包含在 SAML 令牌中，“令牌类型”列中指明的声明除外。  此外，尽管可选声明目前仅支持 AAD 用户，但 MSA 支持即将推出。  当 MSA 在 v2.0 终结点上提供可选声明支持时，如果某个声明适用于 AAD 或 MSA 用户，“用户类型”列中会予以注明。  
 
 **表 2：标准的可选声明集**
 
-| 名称                     | 说明                                                                                                                                                                                     | 令牌类型 | 用户类型 | 说明                                                                                                                                                                                                                                                                                   |
-|--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `auth_time`                | 用户上次进行身份验证的时间。  请参阅 OpenID Connect 规范。                                                                                                                                | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `tenant_region_scope`      | 资源租户的区域                                                                                                                                                                   | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `signin_state`             | 登录状态声明                                                                                                                                                                             | JWT        |           | 6 个标志形式的返回值：<br> "dvc_mngd"：设备受管理<br> "dvc_cmp"：设备合规<br> "dvc_dmjd"：设备已加入域<br> "dvc_mngd_app"：通过 MDM 管理设备<br> "inknownntwk"：设备在已知网络内部。<br> "kmsi"：使用了“使我保持登录状态”。 <br> |
-| `controls`                 | 包含条件访问策略强制实施的会话控制的多值声明。                                                                                                       | JWT        |           | 3 个值：<br> "app_res"：应用需要强制实施更细致的限制。 <br> "ca_enf"：已推迟但仍需要强制实施条件访问。 <br> "no_cookie"：此令牌不足以用于在浏览器中交换 Cookie。 <br>                              |
-| `home_oid`                 | 对于来宾用户，表示该用户在用户主租户中的对象 ID。                                                                                                                           | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `sid`                      | 会话 ID，用于基于会话的用户注销。                                                                                                                                                  | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `platf`                    | 设备平台                                                                                                                                                                                 | JWT        |           | 限制为可以验证设备类型的托管设备。                                                                                                                                                                                                                              |
-| `verified_primary_email`   | 源自用户的 PrimaryAuthoritativeEmail                                                                                                                                               | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `verified_secondary_email` | 源自用户的 SecondaryAuthoritativeEmail                                                                                                                                             | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `enfpolids`                | 强制实施的策略 ID。 针对当前用户评估的策略 ID 列表。                                                                                                         | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `vnet`                     | VNET 说明符信息。                                                                                                                                                                     | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `fwd`                      | IP 地址。  添加请求方客户端（如果位于 VNET 中）的原始 IPv4 地址                                                                                                       | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `ctry`                     | 用户所在的国家/地区                                                                                                                                                                                  | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `tenant_ctry`              | 资源租户所在的国家/地区                                                                                                                                                                       | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `acct`    | 租户中的用户帐户状态。  如果用户是租户的成员，则该值为 `0`。  如果他们是来宾，则该值为 `1`。  | JWT、SAML | | |
-| `upn`                      | UserPrincipalName 声明。  尽管会自动包含此声明，但可以将它指定为可选声明，以附加额外的属性，在来宾用例中修改此声明的行为。 | JWT、SAML  |           | 附加属性： <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash`                                                                                                                                                                 |
+| 名称                        | Description   | 令牌类型 | 用户类型 | 说明  |
+|-----------------------------|----------------|------------|-----------|--------|
+| `auth_time`                | 用户上次进行身份验证的时间。  请参阅 OpenID Connect 规范。| JWT        |           |  |
+| `tenant_region_scope`      | 资源租户的区域 | JWT        |           | |
+| `signin_state`             | 登录状态声明   | JWT        |           | 6 个标志形式的返回值：<br> "dvc_mngd"：设备受管理<br> "dvc_cmp"：设备合规<br> "dvc_dmjd"：设备已加入域<br> "dvc_mngd_app"：通过 MDM 管理设备<br> "inknownntwk"：设备在已知网络内部。<br> "kmsi"：使用了“使我保持登录状态”。 <br> |
+| `controls`                 | 包含条件访问策略强制实施的会话控制的多值声明。  | JWT        |           | 3 个值：<br> "app_res"：应用需要强制实施更细致的限制。 <br> "ca_enf"：已推迟但仍需要强制实施条件访问。 <br> "no_cookie"：此令牌不足以用于在浏览器中交换 Cookie。 <br>  |
+| `home_oid`                 | 对于来宾用户，表示该用户在用户主租户中的对象 ID。| JWT        |           | |
+| `sid`                      | 会话 ID，用于基于会话的用户注销。 | JWT        |           |         |
+| `platf`                    | 设备平台    | JWT        |           | 限制为可以验证设备类型的托管设备。|
+| `verified_primary_email`   | 源自用户的 PrimaryAuthoritativeEmail      | JWT        |           |         |
+| `verified_secondary_email` | 源自用户的 SecondaryAuthoritativeEmail   | JWT        |           |        |
+| `enfpolids`                | 强制实施的策略 ID。 针对当前用户评估的策略 ID 列表。  | JWT |  |  |
+| `vnet`                     | VNET 说明符信息。    | JWT        |           |      |
+| `fwd`                      | IP 地址。| JWT    |   | 添加请求方客户端（如果位于 VNET 中）的原始 IPv4 地址 |
+| `ctry`                     | 用户所在的国家/地区 | JWT |           | Azure AD 返回 `ctry` 可选声明（如果存在）且声明的值是标准的双字母国家/地区代码，例如 FR、JP、SZ 等。 |
+| `tenant_ctry`              | 资源租户所在的国家/地区 | JWT | | |
+| `xms_pdl`          | 首选数据位置   | JWT | | 对于多地区租户，这是显示用户所在地理区域的 3 字母代码。  有关更多详细信息，请参阅[有关首选数据位置的 Azure AD Connect 文档](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-preferreddatalocation)。 <br> 例如：`APC` 表示“亚太”。 |
+| `xms_pl`                   | 用户首选语言  | JWT ||用户的首选语言（如果已设置）。  在来宾访问方案中，源自其主租户。  已格式化 LL-CC（“en-us”）。 |
+| `xms_tpl`                  | 租户首选语言| JWT | | 资源租户的首选语言（如果已设置）。  已格式化 LL（“en”）。 |
+| `ztdid`                    | 零接触部署 ID | JWT | | 用于 [Windows AutoPilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) 的设备标识 |
+| `acct`             | 租户中的用户帐户状态。   | JWT、SAML | | 如果用户是租户的成员，则该值为 `0`。  如果他们是来宾，则该值为 `1`。  |
+| `upn`                      | UserPrincipalName 声明。  | JWT、SAML  |           | 尽管会自动包含此声明，但可以将它指定为可选声明，以附加额外的属性，在来宾用例中修改此声明的行为。  <br> 附加属性： <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash` |
 
 ### <a name="v20-optional-claims"></a>V2.0 可选声明
-这些声明始终包含在 v1.0 令牌中，但除非提出请求，否则会从 v2.0 令牌中删除。  这些声明仅适用于 JWT（ID 令牌和访问令牌）。  
+这些声明始终包含在 v1.0 令牌中，但除非提出请求，否则不会包含在 v2.0 令牌中。  这些声明仅适用于 JWT（ID 令牌和访问令牌）。  
 
 **表 3：仅限 V2.0 的可选声明**
 
-| JWT 声明     | 名称                            | 说明                                                                                                                    | 说明 |
+| JWT 声明     | 名称                            | Description                                                                                                                    | 说明 |
 |---------------|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------|-------|
 | `ipaddr`      | IP 地址                      | 客户端从中登录的 IP 地址。                                                                                      |       |
 | `onprem_sid`  | 本地安全标识符 |                                                                                                                                |       |
@@ -93,9 +97,9 @@ ms.locfileid: "36317198"
 
 **表 4：用于配置标准可选声明的值**
 
-| 属性名称                                     | 附加属性名称                                                                                                             | 说明 |
+| 属性名称                                     | 附加属性名称                                                                                                             | Description |
 |---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|-------------|
-| `upn`                                                 |                                                                                                                                      |             |
+| `upn`                                                 |                                                                                                                                      |  可用于 SAML 和 JWT 响应。            |
 | | `include_externally_authenticated_upn`              | 包含资源租户中存储的来宾 UPN。  例如： `foo_hometenant.com#EXT#@resourcetenant.com`                            |             
 | | `include_externally_authenticated_upn_without_hash` | 同上，不过，井号标记 (`#`) 已替换为下划线 (`_`)，例如 `foo_hometenant.com_EXT_@resourcetenant.com` |             
 
@@ -118,7 +122,7 @@ ms.locfileid: "36317198"
 }
 ```
 
-此 OptionalClaims 对象会导致返回到客户端的 ID 令牌包含另一个 UPN 及其他主租户和资源租户信息。  
+此 OptionalClaims 对象会导致返回到客户端的 ID 令牌包含另一个 UPN 及其他主租户和资源租户信息。  仅当用户是租户中的来宾（使用不同的 IDP 进行身份验证）时，这才会更改令牌中的 `upn` 声明。 
 
 ## <a name="configuring-optional-claims"></a>配置可选声明
 
@@ -131,14 +135,13 @@ ms.locfileid: "36317198"
    {
        "idToken": [
              { 
-                   "name": "upn", 
-                   "essential": false, 
-                   "additionalProperties": [ "include_externally_authenticated_upn"]  
+                   "name": "auth_time", 
+                   "essential": false
               }
         ],
  "accessToken": [ 
              {
-                    "name": "auth_time", 
+                    "name": "ipaddr", 
                     "essential": false
               }
         ],
@@ -162,7 +165,7 @@ ms.locfileid: "36317198"
 
 **表 5：OptionalClaims 类型属性**
 
-| 名称        | Type                       | 说明                                           |
+| 名称        | Type                       | Description                                           |
 |-------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | 集合 (OptionalClaim) | 在 JWT ID 令牌中返回的可选声明。     |
 | `accessToken` | 集合 (OptionalClaim) | 在 JWT 访问令牌中返回的可选声明。 |
@@ -176,7 +179,7 @@ ms.locfileid: "36317198"
 
 **表 6：OptionalClaim 类型属性**
 
-| 名称                 | Type                    | 说明                                                                                                                                                                                                                                                                                                   |
+| 名称                 | Type                    | Description                                                                                                                                                                                                                                                                                                   |
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | 可选声明的名称。                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | 声明的源（目录对象）。 扩展属性提供预定义声明和用户定义的声明。 如果源值为 null，则声明是预定义的可选声明。 如果源值为 user，则 name 属性中的值是来自用户对象的扩展属性。 |

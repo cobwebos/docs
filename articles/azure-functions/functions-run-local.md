@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: glenga
-ms.openlocfilehash: 5c582b080ec6f2cff801758fc4bff4f7d07fd7df
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: c7be9079da6be8d9d7f25b910ab07e905e8ac449
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37083063"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126208"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -62,7 +62,7 @@ npm install -g azure-functions-core-tools
 
 以下步骤使用 npm 在 Windows 上安装 Core Tools。 也可使用 [Chocolatey](https://chocolatey.org/)。 有关详细信息，请参阅 [Core Tools 自述文件](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)。
 
-1. 安装[用于 Windows 的 .NET Core 2.0](https://www.microsoft.com/net/download/windows)。
+1. 安装[用于 Windows 的 .NET Core 2.1](https://www.microsoft.com/net/download/windows)。
 
 2. 安装 [Node.js]，其中包括 npm。 对于 2.x 版工具，仅支持 Node.js 8.5 和更高版本。
 
@@ -76,7 +76,7 @@ npm install -g azure-functions-core-tools
 
 以下步骤使用 Homebrew 在 macOS 上安装 Core Tools。
 
-1. 安装[用于 macOS 的 .NET Core 2.0](https://www.microsoft.com/net/download/macos)。
+1. 安装[用于 macOS 的 .NET Core 2.1](https://www.microsoft.com/net/download/macos)。
 
 2. 安装 [Homebrew](https://brew.sh/)（如果尚未安装）。
 
@@ -91,7 +91,7 @@ npm install -g azure-functions-core-tools
 
 以下步骤使用 [APT](https://wiki.debian.org/Apt) 在 Ubuntu/Debian Linux 发行版上安装 Core Tools。 有关其他 Linux 发行版，请参阅 [Core Tools 自述文件](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux)。
 
-1. 安装[用于 Linux 的 .NET Core 2.0](https://www.microsoft.com/net/download/linux)。
+1. 安装[用于 Linux 的 .NET Core 2.1](https://www.microsoft.com/net/download/linux)。
 
 2. 将 Microsoft 产品密钥注册为受信任的密钥：
 
@@ -137,6 +137,7 @@ func init MyFunctionProj
 Select a worker runtime:
 dotnet
 node
+java
 ```
 
 使用向上/向下箭头键选择语言，然后按 Enter。 JavaScript 项目的输出如以下示例所示：
@@ -151,6 +152,9 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 ```
 
 若要创建不包含本地 Git 存储库的项目，请使用 `--no-source-control [-n]` 选项。
+
+> [!IMPORTANT]
+> 默认情况下，Core Tools 版本 2.x 会为 .NET 运行时创建函数应用项目作为 [C# 类项目](functions-dotnet-class-library.md) (.csproj)。 这些 C# 项目可以与 Visual Studio 2017 或 Visual Studio Code 结合使用，在测试期间以及发布到 Azure 时进行编译。 如果希望创建并使用在版本 1.x 和门户中创建的相同 C# 脚本 (.csx) 文件，则在创建和部署函数时必须包含 `--csx` 参数。
 
 ## <a name="register-extensions"></a>注册扩展
 
@@ -177,19 +181,19 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
     "CORS": "*"
   },
   "ConnectionStrings": {
-    "SQLConnectionString": "Value"
+    "SQLConnectionString": "<sqlclient-connection-string>"
   }
 }
 ```
 
-| 设置      | 说明                            |
+| 设置      | Description                            |
 | ------------ | -------------------------------------- |
 | IsEncrypted | 设置为“true”时，使用本地计算机密钥加密所有值。 与 `func settings` 命令配合使用。 默认值为“false”。 |
 | **值** | 在本地运行时使用的应用程序设置和连接字符串的集合。 这些值对应于 Azure 中你的函数应用中的应用设置，例如 **AzureWebJobsStorage** 和 **AzureWebJobsDashboard**。 许多触发器和绑定都有一个引用连接字符串应用设置的属性，例如 [Blob 存储触发器](functions-bindings-storage-blob.md#trigger---configuration)的 **Connection**。 对于此类属性，你需要一个在 **Values** 数组中定义的应用程序设置。 <br/>对于 HTTP 之外的触发器，**AzureWebJobsStorage** 是一个必需的应用设置。 当在本地安装了 [Azure 存储仿真器](../storage/common/storage-use-emulator.md)时，可以将 **AzureWebJobsStorage** 设置 `UseDevelopmentStorage=true`，核心工具使用此仿真器。 这在开发期间非常有用，但是在部署之前，应当使用实际的存储连接进行测试。 |
 | **主机** | 在本地运行时，本部分中的设置会自定义 Functions 主机进程。 |
 | LocalHttpPort | 设置运行本地 Functions 主机时使用的默认端口（`func host start` 和 `func run`）。 `--port` 命令行选项优先于此值。 |
 | **CORS** | 定义[跨域资源共享 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)可以使用的来源。 以逗号分隔的列表提供来源，其中不含空格。 支持通配符值 (\*)，它允许使用任何来源的请求。 |
-| ConnectionStrings | 不要将此集合用于函数绑定使用的连接字符串。 此集合仅供必须从配置文件的 **ConnectionStrings** 部分获取连接字符串的框架使用，例如[实体框架](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx)。 此对象中的连接字符串添加到提供者类型为 [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx) 的环境中。 此集合中的项不使用其他应用设置发布到 Azure 中。 必须显式将这些值添加到你的函数应用的**应用程序设置**的**连接字符串**部分中。 |
+| ConnectionStrings | 不要将此集合用于函数绑定使用的连接字符串。 此集合仅供通常从配置文件的 **ConnectionStrings** 节获取连接字符串的框架使用，例如[实体框架](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx)。 此对象中的连接字符串添加到提供者类型为 [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx) 的环境中。 此集合中的项不使用其他应用设置发布到 Azure 中。 必须将这些值显式添加到函数应用设置的**连接字符串**集合中。 如果要在函数代码中创建 [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx)，则应将连接字符串值与其他连接一起存储在应用程序设置中。 |
 
 还可以在代码中将函数应用设置值读取为环境变量。 有关详细信息，请参阅以下特定于语言的参考主题的“环境变量”部分：
 
@@ -268,11 +272,12 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 也可以在命令中使用以下参数指定这些选项：
 
-| 参数     | 说明                            |
+| 参数     | Description                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--language -l`**| C#、F# 或 JavaScript 等模板编程语言。 此选项在版本 1.x 中是必需的。 在版本 2.x 中，请不要使用此选项或选择项目的默认语言。 |
-| **`--template -t`** | 模板名称，可以是以下值之一：<br/><ul><li>`Blob trigger`</li><li>`Cosmos DB trigger`</li><li>`Event Grid trigger`</li><li>`HTTP trigger`</li><li>`Queue trigger`</li><li>`SendGrid`</li><li>`Service Bus Queue trigger`</li><li>`Service Bus Topic trigger`</li><li>`Timer trigger`</li></ul> |
+| **`--template -t`** | 使用 `func templates list` 命令查看每种受支持语言的可用模板的完整列表。   |
 | **`--name -n`** | 函数名称。 |
+| **`--csx`** | （版本 2.x）生成版本 1.x 和门户所用的相同 C# 脚本 (.csx) 模板。 |
 
 例如，若要在单个命令中创建 JavaScript HTTP 触发器，请运行：
 
@@ -296,7 +301,7 @@ func host start
 
 `func host start` 支持以下选项：
 
-| 选项     | 说明                            |
+| 选项     | Description                            |
 | ------------ | -------------------------------------- |
 |**`--port -p`** | 要侦听的本地端口。 默认值：7071。 |
 | **`--debug <type>`** | 在调试端口打开的情况下启动主机，以便可以从 [Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started) 或 [Visual Studio 2017](functions-dotnet-class-library.md) 附加到 **func.exe** 进程。 *\<type\>* 选项为 `VSCode` 和 `VS`。  |
@@ -378,7 +383,7 @@ curl --request POST -H "Content-Type:application/json" --data '{"input":"sample 
 
 `func run` 支持以下选项：
 
-| 选项     | 说明                            |
+| 选项     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--content -c`** | 内联内容。 |
 | **`--debug -d`** | 运行函数前，将调试程序附加到主机进程。|
@@ -406,7 +411,7 @@ func azure functionapp publish <FunctionAppName>
 
 可以使用以下选项：
 
-| 选项     | 说明                            |
+| 选项     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  将 local.settings.json 中的设置发布到 Azure，如果该设置已存在，则提示进行覆盖。 如果在使用存储仿真器，则将应用设置更改为[实际的存储连接](#get-your-storage-connection-strings)。 |
 | **`--overwrite-settings -y`** | 必须与 `-i` 一起使用。 如果不同，则使用本地值覆盖 Azure 中的 AppSettings。 默认为提示。|

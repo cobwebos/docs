@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: cbd5a0ea5fbeb7becbfc33bf72af73425630bff6
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: a74eab546eefd765b89aae6f12fcff554d9937c4
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970703"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036932"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>在 Service Fabric 群集中修补 Windows 操作系统
 
@@ -148,7 +148,7 @@ ms.locfileid: "38970703"
 |**Parameter**        |类型                          | **详细信息**|
 |:-|-|-|
 |MaxResultsToCache    |Long                              | 应缓存的 Windows 更新结果的最大数。 <br>在假定以下情况时，默认值为 3000： <br> - 节点数为 20。 <br> - 节点上每月发生的更新次数为 5。 <br> - 每个操作的结果数可为 10。 <br> - 过去三个月的结果应已存储。 |
-|TaskApprovalPolicy   |枚举 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy 指示协调器服务用于跨 Service Fabric 群集节点安装 Windows 更新的策略。<br>                         允许值包括： <br>                                                           <b>NodeWise</b>。 每次在一个节点上安装 Windows 更新。 <br>                                                           <b>UpgradeDomainWise</b>。 每次在一个升级域上安装 Windows 更新。 （在最大程度情况下，属于升级域的所有节点都可进行 Windows 更新。）
+|TaskApprovalPolicy   |枚举 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy 指示协调器服务用于跨 Service Fabric 群集节点安装 Windows 更新的策略。<br>                         允许值包括： <br>                                                           <b>NodeWise</b>。 每次在一个节点上安装 Windows 更新。 <br>                                                           <b>UpgradeDomainWise</b>。 每次在一个升级域上安装 Windows 更新。 （在最大程度情况下，属于升级域的所有节点都可进行 Windows 更新。）<br> 请参阅[常见问题解答](#frequently-asked-questions)部分，了解如何确定最适合你的群集的策略。
 |LogsDiskQuotaInMB   |Long  <br> （默认值：1024）               |可在节点本地持久保存的修补业务流程应用日志的最大大小，以 MB 为单位。
 | WUQuery               | 字符串<br>（默认值："IsInstalled=0"）                | 用于获取 Windows 更新的查询。 有关详细信息，请参阅 [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)。
 | InstallWindowsOSOnlyUpdates | 布尔 <br> （默认值：True）                 | 此标志允许安装 Windows 操作系统更新。            |
@@ -304,19 +304,36 @@ A. 检查针对应用程序发布的运行状况报告是否是根本原因。 �
 
 A. 群集运行不正常时，修补业务流程应用不会安装更新。 请尝试将群集恢复正常状态，消除修补业务流程应用工作流的阻碍。
 
-问： 为何跨群集运行修补需要花费很长时间？
+问： **对于我的群集，应将 TaskApprovalPolicy 设置为“NodeWise”还是“UpgradeDomainWise”？**
 
-A. 修补业务流程应用所需的时长主要取决于以下因素：
+A. “UpgradeDomainWise”通过并行修补属于升级域的所有节点，使整个群集修补速度更快。 这意味着在修补过程中，属于整个升级域的节点将不可用（处于[已禁用](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled)状态）。
 
-- 协调器服务的策略。 
-  - 默认策略 `NodeWise` 指定一次只修补一个节点。 尤其是当存在更大的群集时，我们建议使用 `UpgradeDomainWise` 策略以实现更快的跨群集修补。
-- 可下载并安装的更新数。 
-- 下载和安装更新所需的平均时间，不应超过两个小时。
-- VM 的性能和网络带宽。
+相比之下，“NodeWise”策略一次只修补一个节点，这意味着整个群集修补需要更长时间。 但是，在修补过程中最多只有一个节点不可用（处于[已禁用](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled)状态）。
+
+如果你的群集在修补周期内可以容忍在 N-1 个升级域上运行（其中 N 是群集上升级域的总数），那么你可以将策略设置为“UpgradeDomainWise”，否则将其设置为“NodeWise”。
+
+问： **修补一个节点需要多长时间？**
+
+A. 修补一个节点可能需要几分钟（例如：[Windows Defender 定义更新](https://www.microsoft.com/wdsi/definitions)）到几小时（例如：[Windows 累积更新](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)）。 修补一个节点所需的时间主要取决于 
+ - 更新的大小
+ - 必须在修补窗口中应用的更新数
+ - 安装更新、重新启动节点（如果需要）以及完成重新启动后安装步骤所需的时间。
+ - VM/计算机的性能和网络条件。
+
+问： **修补整个群集需要多长时间？**
+
+A. 修补整个群集所需的时间取决于以下因素：
+
+- 修补一个节点所需的时间。
+- 协调器服务的策略。 - 默认策略 `NodeWise` 导致一次仅修补一个节点，这将慢于 `UpgradeDomainWise`。 例如：如果修补一个节点需要约 1 小时，想要修补 5 个升级域（每个升级域包含 4 个节点）的 20 个节点（相同类型的节点）群集。
+    - 如果策略为 `NodeWise`，则应需要大约 20 个小时来修补整个群集
+    - 如果策略为 `UpgradeDomainWise`，则应需要大约 5 个小时
+- 群集负载 - 每个修补操作都需要将客户工作负载重新分配到群集中的其他可用节点。 正在进行修补的节点将在此期间处于[禁用](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling)状态。 如果群集正在运行接近峰值负载，则禁用过程将需要更长时间。 因此，在这种重压条件下，整个修补过程可能会看起来很慢。
+- 修补期间的群集运行状况故障 - [群集运行状况](https://docs.microsoft.com/azure/service-fabric/service-fabric-health-introduction)中的任何[降级](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet#System_Fabric_Health_HealthState_Error)都会中断修补过程。 这将增加修补整个群集所需的总时间。
 
 问： **为什么某些更新会出现在通过 REST API 获得的 Windows 更新结果中，而不是在计算机的 Windows 更新历史记录下？**
 
-A. 某些产品更新仅会显示在其各自的更新/修补历史记录中。 例如，Windows Defender 更新不会显示在 Windows Server 2016 的 Windows 更新历史记录中。
+A. 某些产品更新仅会显示在其各自的更新/修补历史记录中。 例如，Windows Defender 更新不一定会显示在 Windows Server 2016 的 Windows 更新历史记录中。
 
 问： **修补业务流程应用是否可用来修补开发群集（单节点群集）？**
 

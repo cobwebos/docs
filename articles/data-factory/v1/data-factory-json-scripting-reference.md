@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 191f8973e85186590a2ba840e473f8fff57a9d94
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 6c96cf220e34f1509375e5314e0b54e175575834
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37053042"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114202"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>数据工厂 - JSON 脚本参考
 > [!NOTE]
@@ -84,7 +84,7 @@ ms.locfileid: "37053042"
 
 下表描述了活动 JSON 定义中的属性：
 
-| 标记 | 说明 | 必选 |
+| 标记 | Description | 必选 |
 | --- | --- | --- |
 | 名称 |活动的名称。 指定一个名称，表示活动配置要执行的操作<br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\\”</li></ul> |是 |
 | description |描述活动用途的文本。 |否 |
@@ -99,7 +99,7 @@ ms.locfileid: "37053042"
 ### <a name="policies"></a>策略
 策略会影响活动的运行时行为，尤其在处理表的切片时。 下表提供详细信息。
 
-| 属性 | 允许的值 | 默认值 | 说明 |
+| 属性 | 允许的值 | 默认值 | Description |
 | --- | --- | --- | --- |
 | concurrency |Integer <br/><br/>最大值：10 |1 |活动的并发执行次数。<br/><br/>它决定可在不同切片上发生的并行活动执行次数。 例如，如果活动需要完成大量可用数据，更大的并发值能加快数据处理速度。 |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |确定正在处理的数据切片的顺序。<br/><br/>例如，有两个切片（分别发生在下午 4 点和下午 5 点），且均在等待执行。 如果将 executionPriorityOrder 设置为 NewestFirst，则首先处理下午 5 点的切片。 同理，如果将 executionPriorityORder 设置为 OldestFIrst，则先处理下午 4 点的切片。 |
@@ -335,7 +335,7 @@ structure:
 
 数据集定义中的**策略**部分定义了数据集切片必须满足的标准或条件。
 
-| 策略名称 | 说明 | 适用对象 | 必选 | 默认 |
+| 策略名称 | Description | 适用对象 | 必选 | 默认 |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |验证 **Azure Blob** 中的数据是否满足最小大小要求（以兆字节为单位）。 |Azure Blob |否 |NA |
 | minimumRows |验证 **Azure SQL 数据库**中的数据或 **Azure 表**是否包含最小行数。 |<ul><li>Azure SQL 数据库</li><li>Azure 表</li></ul> |否 |NA |
@@ -355,7 +355,7 @@ structure:
 
 除非 Azure 数据工厂生成数据集，否则应将其标记为**外部**。 此设置通常适用于管道中第一个活动的输入，除非正在使用活动或管道链接。
 
-| 名称 | 说明 | 必选 | 默认值 |
+| 名称 | Description | 必选 | 默认值 |
 | --- | --- | --- | --- |
 | dataDelay |延迟检查给定切片外部数据的可用性的时间。 例如，如果数据应为每小时可用，可使用 dataDelay 推迟检查外部数据是否可用以及相应切片是否就绪。<br/><br/>仅适用于当前时间。  例如，如果现在是下午 1:00 且此值为 10 分钟，则从下午 1:10 开始验证。<br/><br/>此设置不会影响过去的切片 (End Time + dataDelay < Now)，过去的切片不会有任何延迟。<br/><br/>大于 23:59 小时的时间需要使用 `day.hours:minutes:seconds` 格式进行指定。 例如，若要指定 24 小时，请不要使用 24:00:00；请改用 1.00:00:00。 如果使用 24:00:00，则将它视为 24 天 (24.00:00:00)。 对于 1 天又 4 小时，请指定 1:04:00:00。 |否 |0 |
 | retryInterval |失败与下一次重试之间的等待时间。 如果尝试失败，下一次尝试会在 retryInterval 以后。 <br/><br/>如果现在是下午 1:00，我们将开始第一次尝试。 如果完成第一次验证检查的持续时间为 1 分钟，并且操作失败，则下一次重试为 1:00 + 1 分钟（持续时间）+ 1 分钟（重试间隔）= 下午 1:02。 <br/><br/>对于过去的切片，没有任何延迟。 重试会立即发生。 |否 |00:01:00（1 分钟） |
@@ -4381,7 +4381,7 @@ auto-
 ### <a name="relational-source-in-copy-activity"></a>复制活动中的关系源
 如果要从 OData 源复制数据，请将复制活动的**源类型**设置为 **RelationalSource**，并在 **source** 节中指定以下属性：
 
-| 属性 | 说明 | 示例 | 必选 |
+| 属性 | Description | 示例 | 必选 |
 | --- | --- | --- | --- |
 | query |使用自定义查询读取数据。 |"?$select=Name, Description&$top=5" |否 |
 
@@ -4821,14 +4821,14 @@ auto-
 
 | 计算环境 | 活动 |
 | --- | --- |
-| [按需 HDInsight 群集](#on-demand-azure-hdinsight-cluster)或[自己的 HDInsight 群集](#existing-azure-hdinsight-cluster) |[.NET 自定义活动](#net-custom-activity)、[Hive 活动](#hdinsight-hive-activity)、[Pig 活动]\(#hdinsight-pig-activity)、[MapReduce activity](#hdinsight-mapreduce-activity)、[Hadoop 流式处理活动](#hdinsight-streaming-activityd)、[Spark 活动](#hdinsight-spark-activity) |
+| [按需 HDInsight 群集](#on-demand-azure-hdinsight-cluster)或[自己的 HDInsight 群集](#existing-azure-hdinsight-cluster) |[.NET 自定义活动](#net-custom-activity)、[Hive 活动](#hdinsight-hive-activity)、[Pig 活动](#hdinsight-pig-activity)、[MapReduce 活动](#hdinsight-mapreduce-activity)、[Hadoop 流式处理活动](#hdinsight-streaming-activityd)、[Spark 活动](#hdinsight-spark-activity) |
 | [Azure Batch](#azure-batch) |[.NET 自定义活动](#net-custom-activity) |
 | [Azure 机器学习](#azure-machine-learning) | [机器学习批处理执行活动](#machine-learning-batch-execution-activity)、[机器学习更新资源活动](#machine-learning-update-resource-activity) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics) |[Data Lake Analytics U-SQL](#data-lake-analytics-u-sql-activity) |
 | [Azure SQL 数据库](#azure-sql-database-1)、[Azure SQL 数据仓库](#azure-sql-data-warehouse-1)、[SQL Server](#sql-server-1) |[存储过程](#stored-procedure-activity) |
 
 ## <a name="on-demand-azure-hdinsight-cluster"></a>按需 Azure HDInsight 群集
-Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 群集，以处理数据。 群集创建在与该群集相关联的存储帐户（JSON 中的 linkedServiceName 属性）所在的同一区域中。 可以在此链接服务中运行以下转换活动：[.NET 自定义活动](#net-custom-activity)、[Hive 活动](#hdinsight-hive-activity)、[Pig 活动]\(#hdinsight-pig-activity)、[MapReduce activity](#hdinsight-mapreduce-activity)、[Hadoop 流式处理活动](#hdinsight-streaming-activityd)、[Spark 活动](#hdinsight-spark-activity)。 
+Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 群集，以处理数据。 群集创建在与该群集相关联的存储帐户（JSON 中的 linkedServiceName 属性）所在的同一区域中。 可在此链接服务中运行以下转换活动：[.NET 自定义活动](#net-custom-activity)、[Hive 活动](#hdinsight-hive-activity)、[Pig 活动](#hdinsight-pig-activity)、[MapReduce 活动](#hdinsight-mapreduce-activity)、[Hadoop 流式处理活动](#hdinsight-streaming-activityd)、[Spark 活动](#hdinsight-spark-activity)。 
 
 ### <a name="linked-service"></a>链接服务 
 下表提供了按需 HDInsight 链接服务的 Azure JSON 定义中使用的属性的说明。
@@ -4866,7 +4866,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 有关详细信息，请参阅[计算链接服务](data-factory-compute-linked-services.md)一文。 
 
 ## <a name="existing-azure-hdinsight-cluster"></a>现有的 Azure HDInsight 群集
-可以创建 Azure HDInsight 链接服务，以向数据工厂注册自己的 HDInsight 群集。 可以在此链接服务中运行以下数据转换活动：[.NET 自定义活动](#net-custom-activity)、[Hive 活动](#hdinsight-hive-activity)、[Pig 活动]\(#hdinsight-pig-activity)、[MapReduce activity](#hdinsight-mapreduce-activity)、[Hadoop 流式处理活动](#hdinsight-streaming-activityd)、[Spark 活动](#hdinsight-spark-activity)。 
+可以创建 Azure HDInsight 链接服务，以向数据工厂注册自己的 HDInsight 群集。 可在此链接服务中运行以下数据转换活动：[.NET 自定义活动](#net-custom-activity)、[Hive 活动](#hdinsight-hive-activity)、[Pig 活动](#hdinsight-pig-activity)、[MapReduce 活动](#hdinsight-mapreduce-activity)、[Hadoop 流式处理活动](#hdinsight-streaming-activityd)、[Spark 活动](#hdinsight-spark-activity)。 
 
 ### <a name="linked-service"></a>链接服务
 下表提供了 Azure HDInsight 链接服务的 Azure JSON 定义中使用的属性的说明。
@@ -5107,7 +5107,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 
 ## <a name="data-transformation-activities"></a>数据转换活动
 
-活动 | 说明
+活动 | Description
 -------- | -----------
 [HDInsight Hive 活动](#hdinsight-hive-activity) | 数据工厂管道中的 HDInsight Hive 活动会在自己的或基于 Windows/Linux 的按需 HDInsight 群集上执行 Hive 查询。 
 [HDInsight Pig 活动](#hdinsight-pig-activity) | 数据工厂管道中的 HDInsight Pig 活动会在自己或基于 Windows/Linux 的按需 HDInsight 群集上执行 Pig 查询。
@@ -5280,7 +5280,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ## <a name="hdinsight-streaming-activity"></a>HDInsight Streaming 活动
 可以在 Hadoop 流式处理活动 JSON 定义中指定以下属性。 活动的类型属性必须是：**HDInsightStreaming**。 必须先创建 HDInsight 链接服务，然后指定该服务的名称作为 **linkedServiceName** 属性的值。 将活动类型设置为 HDInsightStreaming 时，**typeProperties** 节支持以下属性： 
 
-| 属性 | 说明 | 
+| 属性 | Description | 
 | --- | --- |
 | mapper | 映射器可执行文件的名称。 在示例中，cat.exe 即是映射器可执行文件。| 
 | reducer | 化简器可执行文件的名称。 在示例中，wc.exe 即是减压器可执行文件。 | 

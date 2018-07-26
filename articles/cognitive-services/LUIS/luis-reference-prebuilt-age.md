@@ -3,19 +3,19 @@ title: LUIS 预构建实体存在时间参考 - Azure | Microsoft Docs
 titleSuffix: Azure
 description: 本文包含了语言理解 (LUIS) 中的存在时间预构建实体信息。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 59732469cf0d1e55643f3977958ec34a887130d3
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.author: diberry
+ms.openlocfilehash: f93acb8bece8c66c3ed7197f1c4530011aec3f29
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321709"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237394"
 ---
 # <a name="age-entity"></a>存在时间实体
 预构建存在时间实体同时采用数字和天、周、月以及年捕获存在时间值。 此实体已定型，因此不需要将包含存在时间的陈述示例添加到应用程序意向中。 [许多语言区域](luis-reference-prebuilt-entities.md)都支持存在时间实体。 

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/12/2018
 ms.author: ryanwi,mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 58b7dc532511ae25c7db2bf021a42fecc3dd9bb5
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 601742d82c1bd9a0e691de28ff9c4a09f12b538e
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056672"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186373"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>教程：将 Service Fabric 应用程序部署到 Azure 中的群集
 
@@ -57,7 +57,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="publish-to-a-service-fabric-cluster"></a>发布到 Service Fabric 群集
 
-至此，应用程序已准备就绪，可以直接通过 Visual Studio 将它部署到群集了。 [Service Fabric 群集](/service-fabric/service-fabric-deploy-anywhere.md)是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。
+至此，应用程序已准备就绪，可以直接通过 Visual Studio 将它部署到群集了。 [Service Fabric 群集](https://docs.microsoft.com/en-gb/azure/service-fabric/service-fabric-deploy-anywhere)是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。
 
 对于本教程，使用 Visual Studio 将投票应用程序部署到 Service Fabric 群集时有两个选项可用：
 
@@ -80,7 +80,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 对于你的 Azure 订阅，通过 [PowerShell 脚本](./scripts/service-fabric-powershell-open-port-in-load-balancer.md)使用 Azure 中的某个负载均衡规则或者在 [Azure 门户](https://portal.azure.com)中通过此群集的负载均衡器打开此端口。
 
-### <a name="join-a-party-cluster"></a>加入合作群集
+### <a name="join-a-party-cluster"></a>加入 Party 群集
 
 > [!NOTE]
 > 如果打算将应用程序发布到 Azure 订阅中你自己的群集，请跳转到下一部分中的“使用 Visual Studio 部署应用程序”。

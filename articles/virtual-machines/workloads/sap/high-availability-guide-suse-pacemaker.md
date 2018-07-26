@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/20/2018
+ms.date: 07/13/2018
 ms.author: sedusch
-ms.openlocfilehash: cac2f91a25907be824e3fd3517736d921c3fde64
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 9ce95bcf15d0186c1baea3df407d0fc0c4200f45
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37923425"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115470"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 
@@ -38,6 +38,11 @@ SBD 设备需要一台额外的充当 iSCSI 目标服务器并提供 SBD 设备�
 如果不希望另外投资购买一台虚拟机，也可以使用 Azure 隔离代理。 其缺点在于，如果资源停止失败或者群集节点不再可以彼此通信，则故障转移可能要花费 10 到 15 分钟。
 
 ![SLES 上的 Pacemaker 概述](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
+
+>[!IMPORTANT]
+> 在规划和部署 Linux Pacemaker 群集节点与 SBD 设备时，若要实现整个群集配置的整体可靠性，必须做到：所涉及的 VM 与托管 SBD 设备的 VM 之间的路由不通过任何其他设备（例如 [NVA](https://azure.microsoft.com/solutions/network-appliances/)）。 否则，NVA 的问题和维护事件可能会对整个群集配置的稳定性和可靠性产生负面影响。 为了避免此类障碍，在规划和部署 Linux Pacemaker 群集节点与 SBD 设备时，请勿定义通过 NVA 和类似设备路由群集节点与 SBD 设备之间的流量的 NVA 路由规则或[用户定义路由规则](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)。 
+>
+
 
 ## <a name="sbd-fencing"></a>SBD 隔离
 

@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 07/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 7609cea0d16a52a927f87ee9ab6d4445bfc2eb20
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 68613b8613a2e5a9139b83eb23e66884659efc47
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228918"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114928"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-atlassian-cloud"></a>教程：Azure Active Directory 与 Atlassian Cloud 的集成
 
@@ -39,7 +39,7 @@ ms.locfileid: "36228918"
 若要配置 Azure AD 与 Atlassian Cloud 的集成，需要具有以下项：
 
 - 一个 Azure AD 订阅。
-- 若要对 Atlassian Cloud 产品启用安全断言标记语言 (SAML) 单一登录，需要设置 Identity Manager。 详细了解 [Identity Manager]( https://www.atlassian.com/enterprise/cloud/identity-manager)。
+- 若要对 Atlassian Cloud 产品启用安全断言标记语言 (SAML) 单一登录，需要设置 Atlassian Access。 详细了解 [Atlassian Access]( https://www.atlassian.com/enterprise/cloud/identity-manager)。
 
 > [!NOTE]
 > 不建议使用生产环境测试本教程中的步骤。
@@ -99,22 +99,27 @@ ms.locfileid: "36228918"
 
     ![“单一登录”窗口](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_samlbase.png)
 
-3. 若要在 IDP 发起的模式下配置该应用程序，请在“Atlassian Cloud 域和 URL”下执行以下操作：
+3. 若要在 **IDP 发起的**模式下配置该应用程序，请在“Atlassian Cloud 域和 URL”下执行以下操作：
 
     ![“Atlassian Cloud 域和 URL”单一登录信息](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_url.png)
     
-    a. 在“标识符”框中，键入 **`https://auth.atlassian.com/saml/<unique ID>`**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”框中，使用以下模式键入 URL：`https://auth.atlassian.com/saml/<unique ID>`。
     
-    b. 在“回复 URL”框中，键入 **`https://auth.atlassian.com/login/callback?connection=saml-<unique ID>`**。
+    b. 在“回复 URL”框中，使用以下模式键入 URL：`https://auth.atlassian.com/login/callback?connection=saml-<unique ID>`。
 
-    c. 在“中继状态”框中，使用以下语法键入 URL：**`https://<instancename>.atlassian.net`**。
+    c. 选中“显示高级 URL 设置”。
 
-4. 若要在 SP 发起的模式下配置该应用程序，请选择“显示高级 URL 设置”，然后在“登录 URL”框中，使用以下语法键入 URL：**`https://<instancename>.atlassian.net`**。
+    d. 在“中继状态”框中，使用以下模式键入 URL：`https://<instancename>.atlassian.net`。
+
+    > [!NOTE]
+    > 上面的值不是实际值。 请使用实际标识符和回复 URL 更新这些值。 可以从 Atlassian Cloud SAML 配置屏幕获取这些实际值，具体将在本教程后面部分进行介绍。
+
+4. 若要在 SP 发起的模式下配置该应用程序，请选择“显示高级 URL 设置”，然后在“登录 URL”框中，使用以下模式键入 URL：`https://<instancename>.atlassian.net`。
 
     ![“Atlassian Cloud 域和 URL”单一登录信息](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_url1.png)
 
     > [!NOTE]
-    > 上面的值不是实际值。 请使用实际的标识符、回复 URL 和登录 URL 值更新这些值。 可从 Atlassian Cloud SAML 配置屏幕中获取实际值。 本教程稍后会解释这些值。
+    > 上面的“登录 URL”值不是实际值。 请使用实际的登录 URL 更新此值。 若要获取此值，请与 [Atlassian Cloud 客户端支持团队](https://support.atlassian.com/)联系。
 
 5. 在“SAML 签名证书”下，选择“证书(Base64)”，然后将证书文件保存到计算机。
 
@@ -148,7 +153,7 @@ ms.locfileid: "36228918"
 
     ![配置单一登录](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_12.png)
 
-    a. 在“标识提供者实体 ID”框中，粘贴从 Azure 门户复制的 SAML 实体 ID。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识提供者实体 ID”框中，粘贴从 Azure 门户复制的 SAML 实体 ID。
 
     b. 在“标识提供者 SSO URL”框中，粘贴从 Azure 门户复制的 SAML 单一登录服务 URL。
 
@@ -160,7 +165,7 @@ ms.locfileid: "36228918"
 
     ![配置单一登录](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_13.png)
 
-    a. 在“SAML”窗口中，复制“SP 标识 ID”，然后在 Azure 门户中 Atlassian Cloud 的“域和 URL”下，将此 ID 粘贴到“标识符”框中。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“SAML”窗口中，复制“SP 标识 ID”，然后在 Azure 门户中 Atlassian Cloud 的“域和 URL”下，将此 ID 粘贴到“标识符”框中。
     
     b. 在“SAML”窗口中，复制“SP 断言使用者服务 URL”，然后在 Azure 门户中 Atlassian Cloud 的“域和 URL”下，将此 URL 粘贴到“回复 URL”框中。 “登录 URL”是 Atlassian Cloud 的租户 URL。
 
@@ -255,7 +260,7 @@ ms.locfileid: "36228918"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中选择“Atlassian Cloud”磁贴时，应会自动登录到 Atlassian Cloud 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

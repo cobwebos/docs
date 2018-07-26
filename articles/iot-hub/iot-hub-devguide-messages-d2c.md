@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
+ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 6096d726d7a00a4ddf8047edeebb74ab3f151e51
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: be87b00f27f0d0b25cd77a0634ab1c653a85e5ac
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808251"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126436"
 ---
 # <a name="send-device-to-cloud-messages-to-iot-hub"></a>将设备到云的消息发送到 IoT 中心
 
@@ -71,13 +71,13 @@ IoT 中心使用流式消息传递模式实现设备到云的消息传递。 与
 
 有关可以用来发送设备到云消息的 SDK 的详细信息，请参阅 [Azure IoT SDK][lnk-sdks]。
 
-[入门][lnk-get-started]教程介绍了如何从模拟设备和物理设备中发送设备到云的消息。 有关更多详细信息，请参阅[使用路由处理 IoT 中心设备到云的消息][lnk-d2c-tutorial]教程。
+[快速入门][lnk-get-started] 介绍如何从模拟设备发送设备到云的消息。 有关更多详细信息，请参阅[使用路由处理 IoT 中心设备到云的消息][lnk-d2c-tutorial]教程。
 
 [lnk-devguide-builtin]: iot-hub-devguide-messages-read-builtin.md
 [lnk-devguide-custom]: iot-hub-devguide-messages-read-custom.md
 [lnk-comparison]: iot-hub-compare-event-hubs.md
 [lnk-d2c-guidance]: iot-hub-devguide-d2c-guidance.md
-[lnk-get-started]: iot-hub-get-started.md
+[lnk-get-started]: quickstart-send-telemetry-node.md
 
 [lnk-event-hubs]: http://azure.microsoft.com/documentation/services/event-hubs/
 [lnk-servicebus]: http://azure.microsoft.com/documentation/services/service-bus/

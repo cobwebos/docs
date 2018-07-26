@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9f0d0b9732b2af36a0411329cede01a9b8cc8efc
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 76f2bed22d62895e1c537a807ff729c0ba56fbf6
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920808"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136751"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -34,6 +34,44 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 - 更改计划
 
 本页面每月更新，请不时回来查看。
+
+---
+
+## <a name="july-2018"></a>2018 年 7 月
+
+### <a name="improvements-to-azure-active-directory-email-notifications"></a>对 Azure Active Directory 电子邮件通知的改进
+
+**类型：** 更改计划  
+**服务类别：** 其他  
+**产品功能：** 标识生命周期管理
+ 
+从 **2018 年 7 月底**开始，通过以下服务发送的 Azure Active Directory (Azure AD) 电子邮件将采用更新的设计，并应用对发件人电子邮件地址和发件人显示名称的更改：
+ 
+- Azure AD 访问评审
+- Azure AD Connect Health 
+- Azure AD Identity Protection 
+- Azure AD 特权标识管理
+- 企业应用到期证书通知
+- 企业应用预配服务通知
+ 
+电子邮件通知将从以下电子邮件地址和显示名称发送：
+
+- 电子邮件地址：azure-noreply@microsoft.com
+- 显示名称：Microsoft Azure
+ 
+有关一些新电子邮件设计的示例以及详细信息，请参阅 [Azure AD PIM 中的电子邮件通知](https://go.microsoft.com/fwlink/?linkid=2005832)。
+
+---
+
+### <a name="view-legacy-authentications-through-sign-ins-activity-logs"></a>通过登录活动日志查看旧式身份验证
+
+**类型：** 新功能  
+**服务类别：** 报告  
+**产品功能：** 监视和报告
+ 
+由于在登录活动日志中引入了“客户端应用”字段，客户现在可以查看使用旧式身份验证的用户。 客户将能够在 Azure AD 门户中通过登录 MS Graph API 或登录活动日志访问此信息。在该门户中，你可以使用“客户端应用”控件对旧式身份验证进行筛选。 查看文档可了解更多详细信息。
+
+---
 
 ## <a name="june-2018"></a>2018 年 6 月
 
@@ -242,16 +280,6 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 **产品功能：** SSO
  
 用户现在可以使用适用于 Azure AD 的“我的应用”安全登录扩展通过内部 URL 访问应用程序，即使在公司网络之外也是如此。 这适用于使用 Azure AD 应用程序代理发布的任何应用程序，适用于任何也安装了访问面板浏览器扩展的浏览器。 URL 重定向功能在用户登录此扩展后自动启用。 此扩展可以在 [Edge](https://go.microsoft.com/fwlink/?linkid=845176)、[Chrome](https://go.microsoft.com/fwlink/?linkid=866367) 和 [Firefox](https://go.microsoft.com/fwlink/?linkid=866366) 上下载。
-
----
-
-### <a name="view-legacy-authentications-through-sign-ins-activity-logs"></a>通过登录活动日志查看旧式身份验证
-
-**类型：** 新功能  
-**服务类别：** 报告  
-**产品功能：** 监视和报告
- 
-由于在登录活动日志中引入了“客户端应用”字段，客户现在可以查看使用旧式身份验证的用户。 客户将能够在 Azure AD 门户中通过登录 MS Graph API 或登录活动日志访问此信息。在该门户中，你可以使用“客户端应用”控件对旧式身份验证进行筛选。 查看文档可了解更多详细信息。
 
 ---
  

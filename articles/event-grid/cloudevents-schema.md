@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/22/2018
+ms.date: 07/13/2018
 ms.author: babanisa
-ms.openlocfilehash: a2cccbb4feaa7b6f3f51ac7204af4a3e1efc6349
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4f1f0e95ae74ef41ed91be55f4c964671e8f723b
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625587"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044543"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>将 CloudEvents 架构与事件网格配合使用
 
@@ -58,7 +58,7 @@ CloudEvents 是由包括 Microsoft 在内的多个[协作者](https://github.com
 
 CloudEvents v0.1 提供以下属性：
 
-| CloudEvents        | Type     | 示例 JSON 值             | 说明                                                        | 事件网格映射
+| CloudEvents        | Type     | 示例 JSON 值             | Description                                                        | 事件网格映射
 |--------------------|----------|--------------------------------|--------------------------------------------------------------------|-------------------------
 | eventType          | String   | "com.example.someevent"          | 发生的事件的类型                                   | eventType
 | eventTypeVersion   | String   | "1.0"                            | eventType 的版本（可选）                            | dataVersion
@@ -73,9 +73,9 @@ CloudEvents v0.1 提供以下属性：
 
 有关详细信息，请参阅 [CloudEvents 规范](https://github.com/cloudevents/spec/blob/master/spec.md#context-attributes)。
 
-## <a name="configure-event-grid-for-cloudevents"></a>为 CloudEvents 配置事件网格
+在 CloudEvents 架构和事件网格架构中传递的事件的标头值是相同的，但 `content-type` 除外。 对于 CloudEvents 架构，该标头值为 `"content-type":"application/cloudevents+json; charset=utf-8"`。 对于事件网格架构，该标头值为 `"content-type":"application/json; charset=utf-8"`。
 
-目前，Azure 事件网格为**美国中西部**、**美国中部**和**北欧**的 CloudEvents JSON 格式输入和输出提供预览版支持。
+## <a name="configure-event-grid-for-cloudevents"></a>为 CloudEvents 配置事件网格
 
 可以将事件网格用于 CloudEvents 架构的事件的输入和输出。 可以将 CloudEvents 用于系统事件（例如 Blob 存储事件和 IoT 中心事件）和自定义事件。 它还可以将网络上的这些事件来回转换。
 
@@ -91,7 +91,7 @@ CloudEvents v0.1 提供以下属性：
 
 ### <a name="input-schema"></a>输入架构
 
-若要将某个自定义主题的输入架构设置为 CloudEvents，请在创建主题 `--input-schema cloudeventv01schema` 时，在 Azure CLI 中使用以下参数。 此自定义主题现在会预期传入事件采用 CloudEvents v0.1 格式。
+若要将某个自定义主题的输入架构设置为 CloudEvents，请在创建自定义主题 `--input-schema cloudeventv01schema` 时，在 Azure CLI 中使用以下参数。 此自定义主题现在会预期传入事件采用 CloudEvents v0.1 格式。
 
 若要创建事件网格主题，请使用：
 
@@ -124,7 +124,7 @@ az eventgrid event-subscription create \
   --event-delivery-schema cloudeventv01schema
 ```
 
-CloudEvents 的当前版本不支持对事件进行批处理。 针对 CloudEvent 架构配置的事件订阅会单独接收每个事件。 目前，在以 CloudEvents 架构传递事件时，无法为 Azure Functions 应用使用事件网格触发器。 必须使用 HTTP 触发器。
+CloudEvents 的当前版本不支持对事件进行批处理。 针对 CloudEvent 架构配置的事件订阅会单独接收每个事件。 目前，在以 CloudEvents 架构传递事件时，无法为 Azure Functions 应用使用事件网格触发器。 必须使用 HTTP 触发器。 有关实现在 CloudEvents 架构中接收事件的 HTTP 触发器的示例，请参阅[使用 HTTP 触发器作为事件网格触发器](../azure-functions/functions-bindings-event-grid.md#use-an-http-trigger-as-an-event-grid-trigger)。
 
 ## <a name="next-steps"></a>后续步骤
 

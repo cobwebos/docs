@@ -11,20 +11,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/07/2018
+ms.date: 07/17/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 6479db44681071932ff92ee17ea0aec6518dc74e
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 503d5913efe67bd0de738f68921b9631c63acfa8
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128633"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39116038"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Log Analytics 用户从 OMS 门户转到 Azure 门户的常见问题
 Log Analytics 一开始使用其自己的门户（称为 OMS 门户）来管理其配置并分析收集的数据。  此门户的所有功能已移至 Azure 门户，在其中继续进行开发。
 
 本文解答了用户进行此转换的常见问题。  如果你在 OMS 门户中使用过 Log Analytics，并且想要在 Azure 门户中执行相同的任务，则可在此处查找答案。
+
+## <a name="do-i-need-to-migrate-anything"></a>我是否需要迁移什么内容？
+不是。 Log Analytics 本身并没有产生更改，所以不需要迁移任何内容。 唯一更改的是用于访问 Log Analytics 的接口。 事实上，现在可以使用 Azure 门户来访问在 OMS 门户中所使用的工作区、解决方案、视图和日志搜索内容。
 
 ## <a name="where-do-i-find-log-analytics-in-azure"></a>在 Azure 中的何处查找 Log Analytics？
 通过 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户。  单击“所有服务”，然后在资源列表中键入“Log Analytics”。 选择“Log Analytics”，然后选择工作区。 此时会显示工作区的摘要页。

@@ -8,37 +8,36 @@ ms.topic: include
 ms.date: 6/8/2018
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 21681a1af64754ef569f2ad4ff92f85a598007ac
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 3c5746d0fd2c471f767bac4891178c63e21f0418
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35323776"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39094357"
 ---
-# <a name="write-accelerator"></a>写入加速器
+# <a name="enable-write-accelerator"></a>启用写入加速器
+
 写入加速器是 M 系列虚拟机 (VM) 的磁盘功能，且只能与 Azure 托管磁盘一起在高级存储上使用。 顾名思义，该功能的目的是改善对 Azure 高级存储的写入操作的 I/O 延迟。 写入加速器非常适合需要更新日志文件，并以高性能方式将现代数据库保存到磁盘的情况。
 
 通常公有云中的 M 系列 VM 可提供写入加速器。
 
 ## <a name="planning-for-using-write-accelerator"></a>使用写入加速器进行规划
+
 应该对包含事务日志或 DBMS 重做日志的卷使用写入加速器。 建议不要对 DBMS 数据卷使用写入加速器，因为此功能已针对日志磁盘进行了优化。
 
-只能配合 [Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/)使用写入加速器。 
-
-
-> [!IMPORTANT]
-> 若要针对基于多个 Azure 高级存储磁盘构建的现有卷，或者使用 Windows 磁盘或卷管理器、Windows 存储空间、Windows 横向扩展文件服务器 (SOFS)、Linux LVM 或 MDADM 的条带化卷启用或禁用写入加速器，必须通过单独的步骤，对构成该卷的所有磁盘启用或禁用写入加速器。 **在此类配置中启用或禁用写入加速器之前，请关闭 Azure VM**。 
-
+只能配合 [Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/)使用写入加速器。
 
 > [!IMPORTANT]
+> 对 VM 的操作系统磁盘启用写入加速器会重新启动该 VM。
+>
 > 若要针对不属于基于多个磁盘构建的，且使用 Windows 磁盘或卷管理器、Windows 存储空间、Windows 横向扩展文件服务器 (SOFS)、Linux LVM 或 MDADM 的现有 Azure 磁盘启用写入加速器，需要关闭访问该 Azure 磁盘的工作负荷。 必须关闭使用 Azure 磁盘的数据库应用程序。
+>
+> 若要针对基于多个 Azure 高级存储磁盘构建的现有卷，或者使用 Windows 磁盘或卷管理器、Windows 存储空间、Windows 横向扩展文件服务器 (SOFS)、Linux LVM 或 MDADM 的条带化卷启用或禁用写入加速器，必须通过单独的步骤，对构成该卷的所有磁盘启用或禁用写入加速器。 **在此类配置中启用或禁用写入加速器之前，请关闭 Azure VM**。
 
-> [!IMPORTANT]
-> 对 VM 的操作系统磁盘启用写入加速器会重新启动该 VM。 
-
-对于 SAP 相关的 VM 配置，应该不需要为 OS 磁盘启用写入加速器
+对于 SAP 相关的 VM 配置，应该不需要为 OS 磁盘启用写入加速器。
 
 ### <a name="restrictions-when-using-write-accelerator"></a>使用写入加速器时的限制
+
 对 Azure 磁盘/VHD 使用写入加速器时，需遵循以下限制：
 
 - 必须将高级磁盘缓存设置为“无”或“只读”。 不支持其他所有缓存模式。
@@ -51,26 +50,29 @@ ms.locfileid: "35323776"
 | --- | --- | --- |
 | M128ms、128s | 16 | 8000 |
 | M64ms、M64ls、M64s | 8 | 4000 |
-| M32ms、M32ls、M32ts、M32s | 4 | 2000 | 
-| M16ms、M16s | 2 | 1000 | 
-| M8ms、M8s | 1 | 500 | 
+| M32ms、M32ls、M32ts、M32s | 4 | 2000 |
+| M16ms、M16s | 2 | 1000 |
+| M8ms、M8s | 1 | 500 |
 
 IOPS 限制是针对每个 VM 而不是每个磁盘。 对于每个 VM，所有写入加速器磁盘具有相同的 IOPS 限制。
+
 ## <a name="enabling-write-accelerator-on-a-specific-disk"></a>在特定磁盘上启用写入加速器
+
 以下几个部分介绍如何在 Azure 高级存储 VHD 上启用写入加速器。
 
-
 ### <a name="prerequisites"></a>先决条件
+
 目前，使用写入加速器必须满足以下先决条件：
 
 - 要向其应用 Azure 写入加速器的磁盘需是高级存储上的 [Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/)。
 - 必须使用 M 系列 VM
 
 ## <a name="enabling-azure-write-accelerator-using-azure-powershell"></a>使用 Azure PowerShell 启用 Azure 写入加速器
+
 Azure PowerShell 模块 5.5.0 和更高版本对相关的 cmdlet 做了更改，以便能够针对特定的 Azure 高级存储磁盘启用或禁用写入加速器。
 为了启用或部署写入加速器支持的磁盘，以下 PowerShell 命令已发生更改，并已扩展为接受写入加速器的参数。
 
-已将新的开关参数“WriteAccelerator”添加到以下 cmdlet： 
+已将新的开关参数 **-WriteAccelerator** 添加到以下 cmdlet：
 
 - [Set-AzureRmVMOsDisk](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmosdisk?view=azurermps-6.0.0)
 - [Add-AzureRmVMDataDisk](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Add-AzureRmVMDataDisk?view=azurermps-6.0.0)
@@ -79,13 +81,13 @@ Azure PowerShell 模块 5.5.0 和更高版本对相关的 cmdlet 做了更改，
 
 不指定该参数会将属性设置为 false，并且会部署不受写入加速器支持的磁盘。
 
-已将新的开关参数“OsDiskWriteAccelerator”添加到以下 cmdlet： 
+已将新的开关参数 **-OsDiskWriteAccelerator** 添加到以下 cmdlet：
 
 - [Set-AzureRmVmssStorageProfile](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Set-AzureRmVmssStorageProfile?view=azurermps-6.0.0)
 
-不指定该参数集会将属性设置为 false，并且会提供不利用写入加速器的磁盘。
+默认情况下，不指定该参数会将属性设置为 false，并且会返回不利用写入加速器的磁盘。
 
-已将新的可选布尔参数（不可为 null）“OsDiskWriteAccelerator”添加到以下 cmdlet： 
+已将新的可选布尔参数（不可为 null）**-OsDiskWriteAccelerator** 添加到以下 cmdlet：
 
 - [Update-AzureRmVM](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Update-AzureRmVM?view=azurermps-6.0.0)
 - [Update-AzureRmVmss](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Update-AzureRmVmss?view=azurermps-6.0.0)
@@ -94,25 +96,25 @@ Azure PowerShell 模块 5.5.0 和更高版本对相关的 cmdlet 做了更改，
 
 示例命令如下所示：
 
-```
-
+```PowerShell
 New-AzureRmVMConfig | Set-AzureRmVMOsDisk | Add-AzureRmVMDataDisk -Name "datadisk1" | Add-AzureRmVMDataDisk -Name "logdisk1" -WriteAccelerator | New-AzureRmVM
 
 Get-AzureRmVM | Update-AzureRmVM -OsDiskWriteAccelerator $true
 
 New-AzureRmVmssConfig | Set-AzureRmVmssStorageProfile -OsDiskWriteAccelerator | Add-AzureRmVmssDataDisk -Name "datadisk1" -WriteAccelerator:$false | Add-AzureRmVmssDataDisk -Name "logdisk1" -WriteAccelerator | New-AzureRmVmss
 
-Get-AzureRmVmss | Update-AzureRmVmss -OsDiskWriteAccelerator:$false 
-
+Get-AzureRmVmss | Update-AzureRmVmss -OsDiskWriteAccelerator:$false
 ```
 
 以下部分了演示了两个主要场景的脚本编写方式。
 
-#### <a name="adding-a-new-disk-supported-by-write-accelerator"></a>添加写入加速器支持的新磁盘
+### <a name="adding-a-new-disk-supported-by-write-accelerator-using-powershell"></a>使用 PowerShell 添加写入加速器支持的新磁盘
+
 可以使用此脚本将新磁盘添加到 VM。 使用此脚本创建的磁盘将使用写入加速器。
 
-```
+将 `myVM`、`myWAVMs`、`log001`、磁盘大小和磁盘的 LunID 替换为适用于特定部署的值。
 
+```PowerShell
 # Specify your VM Name
 $vmName="myVM"
 #Specify your Resource Group
@@ -129,16 +131,13 @@ $vm=Get-AzurermVM -ResourceGroupName $rgname -Name $vmname
 Add-AzureRmVMDataDisk -CreateOption empty -DiskSizeInGB $size -Name $vmname-$datadiskname -VM $vm -Caching None -WriteAccelerator:$true -lun $lunid
 #Updates the VM with the disk config - does not require a reboot
 Update-AzureRmVM -ResourceGroupName $rgname -VM $vm
-
-```
-需要根据特定的部署，调整 VM、磁盘、资源组的名称，以及磁盘的大小和 LunID。
-
-
-#### <a name="enabling-azure-write-accelerator-on-an-existing-azure-disk"></a>在现有 Azure 磁盘上启用 Azure 写入加速器
-如果需要在现有磁盘上启用写入加速器，可以使用此脚本来执行该任务：
-
 ```
 
+### <a name="enabling-write-accelerator-on-an-existing-azure-disk-using-powershell"></a>使用 PowerShell 在现有 Azure 磁盘上启用写入加速器
+
+可以使用以下脚本在现有磁盘上启用写入加速器。 将 `myVM`、`myWAVMs` 和 `test-log001` 替换为适用于特定部署的值。 该脚本会将写入加速器添加到 **$newstatus** 值设置为“$true”的现有磁盘。 使用 $false 值会在给定的磁盘上禁用写入加速器。
+
+```PowerShell
 #Specify your VM Name
 $vmName="myVM"
 #Specify your Resource Group
@@ -153,73 +152,50 @@ $vm=Get-AzurermVM -ResourceGroupName $rgname -Name $vmname
 Set-AzureRmVMDataDisk -VM $vm -Name $datadiskname -Caching None -WriteAccelerator:$newstatus
 #Updates the VM with the disk config - does not require a reboot
 Update-AzureRmVM -ResourceGroupName $rgname -VM $vm
-
 ```
-
-需要调整 VM、磁盘和资源组的名称。 上述脚本将写入加速器添加到 $newstatus 值设置为 $true 的现有磁盘。 使用 $false 值会在给定的磁盘上禁用写入加速器。
 
 > [!Note]
 > 执行上述脚本会分离指定的磁盘，针对该磁盘启用写入加速器，然后重新附加该磁盘
 
-### <a name="enabling-azure-write-accelerator-using-the-azure-portal"></a>使用 Azure 门户启用 Azure 写入加速器
+## <a name="enabling-write-accelerator-using-the-azure-portal"></a>使用 Azure 门户启用写入加速器
 
-可以通过指定磁盘缓存设置的门户启用写入加速器： 
+可以通过指定磁盘缓存设置的门户启用写入加速器：
 
 ![Azure 门户中的写入加速器](./media/virtual-machines-common-how-to-enable-write-accelerator/wa_scrnsht.png)
 
-## <a name="enabling-through-azure-cli"></a>通过 Azure CLI 启用
-可以使用 [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) 来启用写入加速器。 
+## <a name="enabling-write-accelerator-using-the-azure-cli"></a>使用 Azure CLI 启用写入加速器
 
-若要在现有磁盘上启用写入加速器，请使用 [az vm update](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-update)；若要将 diskName、VMName 和 ResourceGroup 替换为自己的内容，可使用以下示例：
- 
-```
-az vm update -g group1 -n vm1 -write-accelerator 1=true
-```
-若要在启用写入加速器的情况下附加磁盘，请使用 [az vm disk attach](https://docs.microsoft.com/en-us/cli/azure/vm/disk?view=azure-cli-latest#az-vm-disk-attach)；若要替换为自己的值，可使用以下示例：
-```
-az vm disk attach -g group1 -vm-name vm1 -disk d1 --enable-write-accelerator
-```
-若要禁用写入加速器，请使用 [az vm update](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-update) 将属性设置为 false： 
-```
-az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false
-```
+可以使用 [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) 来启用写入加速器。
 
-### <a name="enabling-through-rest-apis"></a>通过 REST API 启用
-若要通过 Azure REST API 进行部署，需要安装 Azure armclient
+若要在现有磁盘上启用写入加速器，请使用 [az vm update](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-update)；若要将 diskName、VMName 和 ResourceGroup 替换为自己的值，可使用以下示例：`az vm update -g group1 -n vm1 -write-accelerator 1=true`
 
-#### <a name="install-armclient"></a>安装 armclient
+若要附加启用了写入加速器的磁盘，请使用 [az vm disk attach](https://docs.microsoft.com/en-us/cli/azure/vm/disk?view=azure-cli-latest#az-vm-disk-attach)；若要替换为自己的值，可使用以下示例：`az vm disk attach -g group1 -vm-name vm1 -disk d1 --enable-write-accelerator`
+
+若要禁用写入加速器，请使用 [az vm update](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-update) 将属性设置为 false：`az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false`
+
+## <a name="enabling-write-accelerator-using-rest-apis"></a>使用 Rest API 启用写入加速器
+
+若要通过 Azure REST API 进行部署，需要安装 Azure armclient。
+
+### <a name="install-armclient"></a>安装 armclient
 
 若要运行 armclient，需要通过 Chocolatey 安装它。 可以通过 cmd.exe 或 PowerShell 来安装它。 使用提升的权限执行这些命令（“以管理员身份运行”）。
 
-使用 cmd.exe 运行以下命令：
+使用 cmd.exe 运行以下命令：`@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"`
 
-```
-@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
-```
+使用 Power Shell 运行以下命令：`Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))`
 
-如果使用 PowerShell，必须运行：
+现在，可以在 cmd.exe 或 PowerShell 中使用以下命令来安装 armclient：`choco install armclient`
 
-```
-Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-```
+### <a name="getting-your-current-vm-configuration"></a>获取当前的 VM 配置
 
-现在，可以在 cmd.exe 或 PowerShell 中使用以下命令安装 armclient
+若要更改磁盘配置的属性，首先需要获取 JSON 文件中的当前配置。 可以执行以下命令来获取当前配置：`armclient GET /subscriptions/<<subscription-ID<</resourceGroups/<<ResourceGroup>>/providers/Microsoft.Compute/virtualMachines/<<virtualmachinename>>?api-version=2017-12-01 > <<filename.json>>`
 
-```
-choco install armclient
-```
-
-#### <a name="getting-your-current-vm-configuration"></a>获取当前的 VM 配置
-若要更改磁盘配置的属性，首先需要获取 JSON 文件中的当前配置。 可以执行以下命令来获取当前配置：
-
-```
-armclient GET /subscriptions/<<subscription-ID<</resourceGroups/<<ResourceGroup>>/providers/Microsoft.Compute/virtualMachines/<<virtualmachinename>>?api-version=2017-12-01 > <<filename.json>>
-```
 将“<<   >>”中的内容替换为自己的数据，包括 JSON 文件应使用的文件名。
 
 输出可能如下所示：
 
-```
+```JSON
 {
   "properties": {
     "vmId": "2444c93e-f8bb-4a20-af2d-1658d9dbbbcb",
@@ -299,9 +275,9 @@ armclient GET /subscriptions/<<subscription-ID<</resourceGroups/<<ResourceGroup>
 
 ```
 
-下一步是更新 JSON 文件，并在名为“log1”的磁盘上启用写入加速器。 可以通过将此属性添加到 JSON 文件中磁盘缓存条目的后面来完成此步骤。 
+接下来，更新 JSON 文件并在名为“log1”的磁盘上启用写入加速器。 可以通过将此属性添加到 JSON 文件中磁盘缓存条目的后面来完成此步骤。
 
-```
+```JSON
         {
           "lun": 1,
           "name": "log1",
@@ -316,16 +292,11 @@ armclient GET /subscriptions/<<subscription-ID<</resourceGroups/<<ResourceGroup>
         }
 ```
 
-然后使用以下命令更新现有部署：
-
-```
-armclient PUT /subscriptions/<<subscription-ID<</resourceGroups/<<ResourceGroup>>/providers/Microsoft.Compute/virtualMachines/<<virtualmachinename>>?api-version=2017-12-01 @<<filename.json>>
-
-```
+然后使用以下命令更新现有部署：`armclient PUT /subscriptions/<<subscription-ID<</resourceGroups/<<ResourceGroup>>/providers/Microsoft.Compute/virtualMachines/<<virtualmachinename>>?api-version=2017-12-01 @<<filename.json>>`
 
 输出应如下所示。 可以看到，为一个磁盘启用了写入加速器。
 
-```
+```JSON
 {
   "properties": {
     "vmId": "2444c93e-f8bb-4a20-af2d-1658d9dbbbcb",
@@ -403,9 +374,6 @@ armclient PUT /subscriptions/<<subscription-ID<</resourceGroups/<<ResourceGroup>
   "location": "westeurope",
   "id": "/subscriptions/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/resourceGroups/mylittlesap/providers/Microsoft.Compute/virtualMachines/mylittlesapVM",
   "name": "mylittlesapVM"
-
 ```
 
 进行这项更改后，写入加速器应会支持该驱动器。
-
- 

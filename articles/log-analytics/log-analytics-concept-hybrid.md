@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/07/2018
+ms.date: 07/11/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: a13c83fc0d35be1aec87cb5f2d2b19b0bf27f1bf
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 2a21c7867bf0dd2d6ca6ee0bd9025739315c8d0a
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37133266"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003312"
 ---
 # <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>使用 Log Analytics 从环境中的计算机收集数据
 
@@ -50,9 +50,6 @@ Windows 代理正式支持以下版本的 Windows 操作系统：
 * Windows Server 2008 Service Pack 1 (SP1) 或更高版本
 * Windows 7 SP1 及更高版本。
 
-> [!NOTE]
-> Windows 代理仅支持传输层安全性 (TLS) 1.0 和 1.1。  
-
 ## <a name="supported-linux-operating-systems"></a>支持的 Linux 操作系统
 以下 Linux 分发版受官方支持。  不过，Linux 代理在未列出的其他发行版上可能也可以运行。  除非另行说明，列出每个主要版本支持所有的次要版本。  
 
@@ -63,6 +60,9 @@ Windows 代理正式支持以下版本的 Windows 操作系统：
 * Debian GNU/Linux 6、7 和 8 (x86/x64)
 * Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)
 * SUSE Linux Enterprise Server 11 和 12 (x86/x64)
+
+## <a name="tls-12-protocol"></a>TLS 1.2 协议
+为了确保传输到 Log Analytics 的数据的安全性，我们强烈建议你将代理配置为至少使用传输层安全性 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们**不建议使用**。  有关其他信息，请查看[使用 TLS 1.2 安全地发送数据](log-analytics-data-security.md#sending-data-securely-using-tls-12)。 
 
 ## <a name="network-firewall-requirements"></a>网络防火墙要求
 下面的信息列出了实现 Linux 和 Windows 代理与 Log Analytics 通信所必需的代理和防火墙配置信息。  
@@ -86,7 +86,7 @@ Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 OMS �
 > [!NOTE]
 > 如果代理服务器无需进行身份验证，Linux 代理仍要求提供伪用户名/密码。 这可以是任何用户名或密码。
 
-|属性| 说明 |
+|属性| Description |
 |--------|-------------|
 |协议 | https |
 |user | 用于代理身份验证的可选用户名 |
@@ -102,7 +102,7 @@ Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 OMS �
 ## <a name="install-and-configure-agent"></a>安装并配置代理 
 可根据要求使用不同的方法将本地计算机与 Log Analytics 直接连接。 下表详细介绍了每种方法，以便用户确定组织中最适用的方法。
 
-|Source | 方法 | 说明|
+|Source | 方法 | Description|
 |-------|-------------|-------------|
 | Windows 计算机|- [手动安装](log-analytics-agent-windows.md)<br>- [Azure Automation DSC](log-analytics-agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [具有 Azure Stack 的资源管理器模板](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |可从命令行或使用自动化方法（如 Azure Automation DSC、[System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications)）安装 Microsoft Monitoring Agent，或者，如果已在数据中心部署 Microsoft Azure Stack，则可使用 Azure 资源管理器进行安装。| 
 |Linux 计算机| [手动安装](log-analytics-quick-collect-linux-computer.md)|调用 GitHub 上托管的包装器脚本安装 Linux 代理。 | 

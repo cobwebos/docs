@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2018
 ms.author: juliako
-ms.openlocfilehash: 2f0996482c599a664d02e172dcb20cda4e039af5
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 1568ea3431f18b7a7a020d34d803f883904e18b4
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341658"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115224"
 ---
 # <a name="content-protection-overview"></a>内容保护概述
 
@@ -45,8 +45,11 @@ ms.locfileid: "37341658"
   > [!NOTE]
   > 可以使用多个加密类型（AES-128、PlayReady、Widevine、FairPlay）来加密每个资产。 请参阅[流式处理协议和加密类型](#streaming-protocols-and-encryption-types)，以了解有效的组合方式。
   
-  以下文章介绍了使用 AES 加密内容的步骤：[使用 AES 加密进行保护](protect-with-aes128.md)
- 
+  以下文章介绍了使用 AES 和/或 DRM 加密内容的步骤： 
+  
+  * [使用 AES 加密进行保护](protect-with-aes128.md)
+  * [使用 DRM 提供保护](protect-with-drm.md)
+
 2. 使用 AES 或 DRM 客户端的播放器。 基于播放器 SDK 的视频播放器应用（本机或基于浏览器）需要满足以下要求：
   * 播放器 SDK 支持所需的 DRM 客户端
   * 播放器 SDK 支持所需的流式处理协议：平滑流、DASH 和/或 HLS
@@ -54,9 +57,9 @@ ms.locfileid: "37341658"
   
     可以使用 [Azure Media Player API](http://amp.azure.net/libs/amp/latest/docs/) 创建播放器。 通过 [Azure 媒体播放器的 ProtectionInfo API](http://amp.azure.net/libs/amp/latest/docs/) 指定要在不同的 DRM 平台上使用哪种 DRM 技术。
 
-    若要测试 AES 或 CENC (Widevine + PlayReady) 加密内容，可以使用 [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html)。 请务必单击“高级选项”，选中“AES”，并提供令牌。
+    若要测试 AES 或 CENC (Widevine 和/或 PlayReady) 加密内容，可以使用 [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html)。 请务必单击“高级选项”，并选择加密选项。
 
-    若要测试 FairPlay 加密内容，请使用[此测试播放器](http://aka.ms/amtest)。 该播放器支持 Widevine、PlayReady 和 FairPlay DRM，以及 AES-128 明文密钥加密。 需要选择适当的浏览器来测试不同的 DRM：适用于 Widevine 的 Chrome/Opera/Firefox、适用于 PlayReady 的 MS Edge/IE11、适用于 FairPlay 的 Safari on maOS。
+    若要测试 FairPlay 加密内容，请使用[此测试播放器](http://aka.ms/amtest)。 该播放器支持 Widevine、PlayReady 和 FairPlay DRM，以及 AES-128 明文密钥加密。 需要选择适当的浏览器来测试不同的 DRM：适用于 Widevine 的 Chrome/Opera/Firefox、适用于 PlayReady 的 MS Edge/IE11、适用于 FairPlay 的 Safari on macOS。
 
 3. 安全令牌服务 (STS)，颁发 JSON Web 令牌 (JWT) 作为用于访问后端资源的访问令牌。 可以使用 AMS 许可证传送服务作为后端资源。 STS 必须定义以下信息：
 
@@ -90,7 +93,7 @@ ms.locfileid: "37341658"
 
 在媒体服务 v3 中，内容密钥与 StreamingLocator 相关联（参阅[此示例](protect-with-aes128.md)）。 如果使用媒体服务密钥传送服务，应自动生成内容密钥。 如果使用自己的密钥传送服务，或者需要处理高可用性方案（需要在两个数据中心使用相同的内容密钥），则应自行生成内容密钥。
 
-播放器请求流时，媒体服务将通过 AES 明文密钥或 DRM 加密使用指定的密钥来动态加密内容。 为了解密流，播放器将从媒体服务密钥传送服务或者指定的密钥传送服务请求密钥。 为了确定用户是否被授权获取密钥，服务将评估你为密钥指定的授权策略。
+播放器请求流时，媒体服务将通过 AES 明文密钥或 DRM 加密使用指定的密钥来动态加密内容。 为了解密流，播放器将从媒体服务密钥传送服务或者指定的密钥传送服务请求密钥。 为了确定是否已授权用户获取密钥，服务将评估你为密钥指定的内容密钥策略。
 
 ## <a name="aes-128-clear-key-vs-drm"></a>AES-128 明文密钥与DRM
 
@@ -102,7 +105,7 @@ ms.locfileid: "37341658"
 
 若要保护静态资产，应通过存储端加密对资产进行加密。 下表显示了存储端加密在媒体服务 v3 中的工作方式：
 
-|加密选项|说明|媒体服务 v3|
+|加密选项|Description|媒体服务 v3|
 |---|---|---|---|
 |媒体服务存储加密| AES-256 加密，媒体服务管理的密钥|不支持<sup>(1)</sup>|
 |[静态数据的存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|由 Azure 存储提供的服务器端加密，由 Azure 或客户管理的密钥|支持|
@@ -122,22 +125,13 @@ ms.locfileid: "37341658"
 
 配置令牌限制策略时，必须指定主验证密钥、颁发者和受众参数。 主验证密钥包含为令牌签名时使用的密钥。 颁发者是颁发令牌的安全令牌服务。 受众（有时称为范围）描述该令牌的意图，或者令牌授权访问的资源。 媒体服务密钥交付服务会验证令牌中的这些值是否与模板中的值匹配。
 
-## <a name="streaming-urls"></a>流 URL
-
-如果资产是使用多个 DRM 加密的，请在流式处理 URL 中使用加密标记：(format='m3u8-aapl', encryption='xxx')。
-
-请注意以下事项：
-
-* 如果仅向资产应用了一种加密，则无需在 URL 中指定加密类型。
-* 加密类型不区分大小写。
-* 可以指定以下加密类型：
-  * **cenc**：对于 PlayReady 或 Widevine（通用加密）
-  * **cbcs-aapl**：对于 FairPlay（AES CBC 加密）
-  * **cbc**：对于 AES 信封加密
 
 ## <a name="next-steps"></a>后续步骤
 
-[如何使用媒体服务 v3 中的 AES 加密进行保护](protect-with-aes128.md)
+请查看以下文章：
+
+  * [使用 AES 加密进行保护](protect-with-aes128.md)
+  * [使用 DRM 提供保护](protect-with-drm.md)
 
 可以在 [DRM 参考设计和实施](../previous/media-services-cenc-with-multidrm-access-control.md)中找到更多信息
 

@@ -13,15 +13,15 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/03/2018
+ms.date: 07/17/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 98e2f88c85d21cde2ecc7196f93d531a80b14d13
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f1a6a11f827248d098c018390e9ae5557d9c22d1
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448909"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113369"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>快速入门：使用 Azure Active Directory 条件访问检测到会话风险后阻止访问  
 
@@ -32,7 +32,7 @@ ms.locfileid: "37448909"
 ![创建策略](./media/active-directory-conditional-access-app-sign-in-risk/1000.png)
 
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 
 
@@ -62,7 +62,7 @@ ms.locfileid: "37448909"
 
 ## <a name="create-your-conditional-access-policy"></a>创建条件访问策略 
 
-本快速入门中的方案使用 Tor 浏览器中的登录名生成检测到的“从匿名 IP 地址登录”风险事件。 此风险事件的风险级别为中等。   
+本快速入门中的方案使用 Tor 浏览器中的登录名生成检测到的“从匿名 IP 地址登录”风险事件。 此风险事件的风险级别为中等。 若要响应此风险事件，请将登录风险条件设置为中。 在生产环境中，应将登录风险条件设置为高或者中和高。     
 
 此部分介绍如何创建所需的条件访问策略。 在策略中，设置：
 
@@ -70,10 +70,11 @@ ms.locfileid: "37448909"
 |---     | --- |
 | 用户和组 | Alain Charon  |
 | 云应用 | 所有云应用 |
+| 登录风险 | 中型 |
 | 授权 | 阻止访问 |
  
 
-![创建策略](./media/active-directory-conditional-access-app-sign-in-risk/115.png)
+![创建策略](./media/active-directory-conditional-access-app-sign-in-risk/130.png)
 
  
 
@@ -106,7 +107,7 @@ ms.locfileid: "37448909"
 
     ![条件性访问](./media/active-directory-conditional-access-app-sign-in-risk/107.png)
 
-    a. 单击“选择用户和组”，然后选择“用户和组”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“选择用户和组”，然后选择“用户和组”。
 
     b. 单击“选择”。
 
@@ -122,9 +123,29 @@ ms.locfileid: "37448909"
 
     ![条件性访问](./media/active-directory-conditional-access-app-sign-in-risk/109.png)
 
-    a. 单击“所有云应用”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“所有云应用”。
 
     b. 单击“Done”（完成） 。
+
+10. 单击“条件”。 
+
+    ![访问控制](./media/active-directory-conditional-access-app-sign-in-risk/19.png)
+
+11. 在“条件”页面上：
+
+    ![登录风险级别](./media/active-directory-conditional-access-app-sign-in-risk/21.png)
+
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“登录风险”。
+ 
+    b. 对于“配置”，单击“是”。
+
+    c. 对于登录风险级别，选择“中”。
+
+    d. 单击“选择”。
+
+    e. 在“条件”页面上，单击“完成”。
+
+
 
 10. 在“访问控制”部分中，单击“授予”。
 
@@ -134,7 +155,7 @@ ms.locfileid: "37448909"
 
     ![条件性访问](./media/active-directory-conditional-access-app-sign-in-risk/105.png)
 
-    a. 选择“阻止访问”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“阻止访问”。
 
     b. 单击“选择”。
 
@@ -156,7 +177,7 @@ ms.locfileid: "37448909"
 
 **若要评估条件访问策略，请执行以下操作：**
 
-1. 在[条件访问 - 策略](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)页上，单击顶部菜单中的“What If”。  
+1. 在“条件访问 - 策略”页上，单击顶部菜单中的“What If”[](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)。  
  
     ![What If](./media/active-directory-conditional-access-app-sign-in-risk/14.png)
 

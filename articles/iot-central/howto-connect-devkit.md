@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: d7b92359e8875c281fd460f1f5307a7941c11c1f
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 99d69c7e49179a7849e274c830d539833da33786
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261570"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049446"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序
 
@@ -36,7 +36,7 @@ ms.locfileid: "35261570"
 | -------------- | ------ | ------- | ------- | -------------- |
 | 湿度       | %      | 0       | 100     | 0              |
 | temp           | °C     | -40     | 120     | 0              |
-| 压强       | hPa    | 260     | 1260    | 0              |
+| 压力       | hPa    | 260     | 1260    | 0              |
 | magnetometerX  | mgauss | -1000   | 1000    | 0              |
 | magnetometerY  | mgauss | -1000   | 1000    | 0              |
 | magnetometerZ  | mgauss | -1000   | 1000    | 0              |
@@ -82,7 +82,8 @@ ms.locfileid: "35261570"
 | Type            | 显示名称 | 字段名称 | 数据类型 |
 | --------------- | ------------ | ---------- | --------- |
 | 设备属性 | 模具编号   | dieNumber  | 数字    |
-| 文本            | 位置     | location   | 不适用       |
+| 设备属性 | 设备位置   | location  | location    |
+| 文本            | 制造于     | manufacturedIn   | 不适用       |
 
 
 ### <a name="add-a-real-device"></a>添加真实设备
@@ -91,8 +92,8 @@ ms.locfileid: "35261570"
 
 ## <a name="prepare-the-devkit-device"></a>准备 DevKit 设备
 
-> [!TIP]
-> 有关 DevKit 设备故障排除的指导，请参阅 [IoT DevKit 入门](https://microsoft.github.io/azure-iot-developer-kit/docs/get-started/)。
+> [!NOTE]
+> 如果以前使用过该设备且已存储 wifi 凭据，并且想要重新配置该设备以使用其他 WiFi 网络、连接字符串或遥测度量，请在开发板上同时按 **A** 和 **B** 按钮。 如果这不起作用，请按“重置”按钮并重试。
 
 若要准备 DevKit 设备：
 
@@ -127,7 +128,7 @@ ms.locfileid: "35261570"
     - WiFi 网络密码 
     - 设备 LCD 上显示的 PIN 码 
     - 设备的连接字符串。 
-      可以通过 `https://apps.iotcentral.com` -> `Device Explorer` -> `Device` -> `Select or Create a new Real Device` -> `Connect this device`（在右上角）找到该连接字符串 
+      可以通过 \@ `https://apps.iotcentral.com` -> `Device Explorer` -> `Device` -> `Select or Create a new Real Device` -> `Connect this device`（在右上角）找到该连接字符串 
     - 选择所有的可用遥测度量！ 
 
 1. 选择“配置设备”后，会看到以下页：
@@ -136,8 +137,7 @@ ms.locfileid: "35261570"
 
 1. 按设备上的“重置”按钮。
 
-> [!NOTE]
-> 若要将设备重新配置为使用不同的 WiFi 网络、连接字符串或遥测度量，请在开发板上同时按 **A** 和 **B** 按钮。 如果这不起作用，请按“重置”按钮并重试。 
+
 
 ## <a name="view-the-telemetry"></a>查看遥测
 
@@ -153,19 +153,24 @@ ms.locfileid: "35261570"
 
 1. 使用“Device Explorer”导航到所添加的真实 MXChip 设备的“度量”页：
 
-    ![导航到真实设备](media/howto-connect-devkit/realdevice.png)
+    ![导航到真实设备](media/howto-connect-devkit/realdevicenew.png)
 
 1. 在“度量”页上，可以看到来自 MXChip 设备的遥测数据：
 
-    ![查看来自真实设备的遥测数据](media/howto-connect-devkit/realtelemetry.png)
+    ![查看来自真实设备的遥测数据](media/howto-connect-devkit/devicetelemetrynew.png)
 
-1. 在“属性”页上，可以查看设备报告的最后一个模具编号：
+1. 在“属性”页上，可以查看设备报告的上一个模具编号和设备位置：
 
-    ![查看设备属性](media/howto-connect-devkit/deviceproperties.png)
+    ![查看设备属性](media/howto-connect-devkit/devicepropertynew.png)
 
 1. 在“设置”页上，可以更新 MXChip 设备上的设置：
 
-    ![查看设备设置](media/howto-connect-devkit/settings.png)
+    ![查看设备设置](media/howto-connect-devkit/devicesettingsnew.png)
+
+1. 在“仪表板”页上，可以看到位置地图
+
+    ![查看设备仪表板](media/howto-connect-devkit/devicedashboardnew.png)
+
 
 ## <a name="download-the-source-code"></a>下载源代码
 

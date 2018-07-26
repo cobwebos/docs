@@ -11,25 +11,26 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: douglasl
-ms.openlocfilehash: ca5caa8c8d0e64fb3a63a1c49d08b949b0c9cf36
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 4a4ec63d41f013ebfef8a78eddc88a6131a960fc
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903762"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070036"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure 数据工厂支持的计算环境
 本文介绍可用于处理或转换数据的不同计算环境。 同时还详细介绍了配置将这些计算环境链接到 Azure 数据工厂的链接服务时，数据工厂所支持的不同配置（按需和自带）。
 
 下表提供了数据工厂所支持的计算环境以及可以在其上运行的活动的列表。 
 
-| 计算环境                      | 活动                               |
-| ---------------------------------------- | ---------------------------------------- |
+| 计算环境                                          | 活动                                                   |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [按需 HDInsight 群集](#azure-hdinsight-on-demand-linked-service)或[自己的 HDInsight 群集](#azure-hdinsight-linked-service) | [Hive](transform-data-using-hadoop-hive.md)、[Pig](transform-data-using-hadoop-pig.md)、[Spark](transform-data-using-spark.md)、[MapReduce](transform-data-using-hadoop-map-reduce.md)、[Hadoop Streaming](transform-data-using-hadoop-streaming.md) |
-| [Azure Batch](#azure-batch-linked-service) | [自定义](transform-data-using-dotnet-custom-activity.md) |
+| [Azure Batch](#azure-batch-linked-service)                   | [自定义](transform-data-using-dotnet-custom-activity.md)     |
 | [Azure 机器学习](#azure-machine-learning-linked-service) | [机器学习活动：批处理执行和更新资源](transform-data-using-machine-learning.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
 | [Azure SQL](#azure-sql-database-linked-service)、[Azure SQL 数据仓库](#azure-sql-data-warehouse-linked-service)、[SQL Server](#sql-server-linked-service) | [存储过程](transform-data-using-stored-procedure.md) |
+| [Azure Databricks](#azure-databricks-linked-service)         | [Notebook](transform-data-databricks-notebook.md)、[Jar](transform-data-databricks-jar.md)、[Python](transform-data-databricks-python.md) |
 
 >  
 
@@ -48,7 +49,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 * 在按需 HDInsight 群集上运行的作业日志将复制到与 HDInsight 群集相关联的存储帐户。 在链接的服务定义中定义的 clusterUserName、clusterPassword、clusterSshUserName、clusterSshPassword 用于登录到群集，以便在群集的生命周期内进行深入故障排除。 
 * 仅对 HDInsight 群集启动并运行作业的时间进行收费。
 * 不能对 Azure HDInsight 按需链接服务使用脚本操作。 例如，如果需要安装其他依赖项，请考虑使用 Azure 自动化来运行执行以下操作的 PowerShell 脚本：  
-  a. 创建 HDInsight 群集。  
+  a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 创建 HDInsight 群集。  
   b. 运行脚本操作来安装其他依赖项，例如。  
   c. 运行数据工厂管道。  
   d. 删除群集。  

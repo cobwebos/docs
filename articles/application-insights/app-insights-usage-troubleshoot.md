@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights 中使用情况分析的疑难解答
+title: Azure Application Insights 中用户行为分析工具的故障排除
 description: 故障排除指南 - 通过 Application Insights 分析站点和应用使用情况。
 services: application-insights
 documentationcenter: ''
@@ -9,21 +9,22 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
-ms.date: 01/16/2018
-ms.author: mbullwin;daviste
-ms.openlocfilehash: 654b99085c406f13fe95476457234761bf840422
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.topic: conceptual
+ms.date: 07/11/2018
+ms.reviewer: daviste
+ms.author: mbullwin
+ms.openlocfilehash: 725f67af8178c6c851999d18c771ebdd360d6d01
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33867562"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38992099"
 ---
-# <a name="troubleshoot-usage-analytics-in-application-insights"></a>Application Insights 中使用情况分析的疑难解答
-是否对 [Application Insights 中的使用情况分析工具](app-insights-usage-overview.md)[用户、会话、事件](app-insights-usage-segmentation.md)、[漏斗图](usage-funnels.md)、[用户流](app-insights-usage-flows.md)、[保留](app-insights-usage-retention.md)或队列存在疑问？ 请参考下面的解答。
+# <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Application Insights 中用户行为分析工具的故障排除
+是否对 [Application Insights 中的用户行为分析工具](app-insights-usage-overview.md)：[用户、会话、事件](app-insights-usage-segmentation.md)、[漏斗图](usage-funnels.md)、[用户流](app-insights-usage-flows.md)、[保留期](app-insights-usage-retention.md)或队列存在疑问？ 请参考下面的解答。
 
 ## <a name="counting-users"></a>对用户进行计数
-**使用情况分析工具显示我的应用具有一个用户/会话，但我的应用实际具有多个用户/会话。应如何校正这些错误的计数？**
+**用户行为分析工具显示我的应用具有一个用户/会话，但我的应用实际具有多个用户/会话。应如何校正这些错误的计数？**
 
 Application Insights 中的所有遥测事件都具有[匿名用户 ID](application-insights-data-model-context.md) 和[会话 ID](application-insights-data-model-context.md)，作为这些事件的两个标准属性。 默认情况下，所有使用情况分析工具都基于这些 ID 对用户和会话进行计数。 如果未使用应用中每个用户和会话的唯一 ID 填充这些标准属性，则使用情况分析工具中会显示错误的用户和会话计数。
 
@@ -33,12 +34,12 @@ Application Insights 中的所有遥测事件都具有[匿名用户 ID](applicat
 
 如果应用正在发送[已经过身份验证的用户 ID](app-insights-api-custom-events-metrics.md#authenticated-users)，则可以在“用户”工具中基于经过身份验证的用户 ID 进行计数。 在“显示”下拉菜单中，选择“已经过身份验证的用户”。
 
-使用情况分析工具当前不支持基于匿名用户 ID、已经过身份验证的用户 ID 或会话 ID 之外的属性对用户或会话进行计数。
+用户行为分析工具当前不支持基于匿名用户 ID、已经过身份验证的用户 ID 或会话 ID 之外的属性对用户或会话进行计数。
 
 ## <a name="naming-events"></a>命名事件
-**我的应用具有数千个不同的页面视图和自定义事件名称。很难对其进行区分，并且使用情况分析工具经常反应迟钝。应如何解决这些命名问题？**
+**我的应用具有数千个不同的页面视图和自定义事件名称。很难对其进行区分，并且用户行为分析工具经常反应迟钝。应如何解决这些命名问题？**
 
-使用情况分析工具中会频繁使用页面视图和自定义事件名称。 若要从这些工具中获取值，为事件提供合适的名称至关重要。 目标是在具有太少过于宽泛的名称（“单击‘按钮’”）和具有太多过于具体的名称（“单击 http://www.contoso.com/index 上的‘编辑’按钮”）之间取得平衡。
+用户行为分析工具中会频繁使用页面视图和自定义事件名称。 若要从这些工具中获取值，为事件提供合适的名称至关重要。 目标是在具有太少过于宽泛的名称（“单击‘按钮’”）和具有太多过于具体的名称（“单击 http://www.contoso.com/index 上的‘编辑’按钮”）之间取得平衡。
 
 若要对应用发送的页面视图和自定义事件名称进行更改，需要更改应用的源代码并重新部署。 Application Insights 中的所有遥测数据均存储 90 天，且无法删除，因此对事件名称所做的更改需要 90 天才能完全生效。 名称更改后的 90 天中，新旧事件名称都会显示在遥测中，因此请相应调整查询并在团队内进行相应传达。
 
@@ -52,8 +53,8 @@ Application Insights 中的所有遥测事件都具有[匿名用户 ID](applicat
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用情况分析概述](app-insights-usage-overview.md)
+* [用户行为分析工具概述](app-insights-usage-overview.md)
 
 ## <a name="get-help"></a>获取帮助
-* [堆栈溢出](http://stackoverflow.com/questions/tagged/ms-application-insights)
+* [Stack Overflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
 
