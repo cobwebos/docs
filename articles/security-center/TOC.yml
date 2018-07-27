@@ -169,12 +169,14 @@
 - name: 引用
   items:
     - name: REST API
-      href: 'https://msdn.microsoft.com/library/mt704034(Azure.100).aspx'
+      href: 'https://docs.microsoft.com/rest/api/securitycenter/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=security-center'
 - name: 资源
   items:
     - name: 管理用户数据
       href: security-center-privacy.md
-    - name: 常见问题
+    - name: 常见问题解答
       href: security-center-faq.md
     - name: 支持的平台
       href: security-center-os-coverage.md

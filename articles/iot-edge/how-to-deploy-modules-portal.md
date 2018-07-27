@@ -58,7 +58,7 @@ Azure 门户提供部署清单的创建向导，无需你手动构建 JSON 文�
 
 ### <a name="specify-routes"></a>指定路由
 
-向导默认提供名为“route”且定义为 FROM /\* INTO $upstream** 的路由，这表示任何模块输出的任何消息都将发送到 IoT 中心。  
+向导默认提供名为“route”且定义为 **FROM /\* INTO $upstream** 的路由，这表示任何模块输出的任何消息都将发送到 IoT 中心。  
 
 添加路由或使用[声明路由](module-composition.md#declare-routes)中的信息进行更新，然后选择“下一步”转到评审部分。
 

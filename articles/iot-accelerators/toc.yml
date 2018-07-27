@@ -44,6 +44,12 @@
       items:
         - name: 体系结构
           href: iot-accelerators-connected-factory-sample-walkthrough.md
+    - name: 设备模拟
+      items:
+        - name: 设备模型架构
+          href: iot-accelerators-device-simulation-device-schema.md
+        - name: 设备模型行为
+          href: iot-accelerators-device-simulation-device-behavior.md
     - name: 对 azureiotsolutions.com 的权限
       href: iot-accelerators-permissions.md
 - name: 操作指南

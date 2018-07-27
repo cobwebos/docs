@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 2a7957a1fd75a91864b372f9c976d90b245b6d79
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281259"
 documentType: LandingData
 title: Azure 安全中心文档
 metadata:
@@ -11,14 +17,8 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 01/05/18
+  ms.date: 07/26/18
   ms.author: cmcclister
-  ms.openlocfilehash: 2d0c22cc59e0185caa9c298e1c26026e00faf2a5
-  ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
-  ms.translationtype: HT
-  ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/10/2018
-  ms.locfileid: "27741093"
 abstract:
   description: Azure 安全中心跨混合云工作负荷提供统一的安全管理和高级威胁防护。 使用快速入门和教程了解如何开始使用安全中心，如何对各种工作负荷应用安全策略，如何限制你暴露于威胁之下，以及如何检测和响应攻击。
 sections:
@@ -72,5 +72,5 @@ sections:
     style: cards
     className: cardsD
     items:
-    - title: REST
-      html: <p><a href="https://msdn.microsoft.com/library/mt704034(Azure.100).aspx">REST API 参考</a></p>
+    - html: <a href="https://msdn.microsoft.com/library/mt704034(Azure.100).aspx">REST API 参考</a>
+    - html: <a href="https://azure.microsoft.com/updates/?product=security-center">服务更新</a>

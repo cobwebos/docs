@@ -233,7 +233,7 @@
               href: ../common/storage-import-export-tool-repairing-an-import-job-v1.md
             - name: 修复导出作业
               href: ../common/storage-import-export-tool-repairing-an-export-job-v1.md
-        - name: 常见问题
+        - name: 常见问题解答
           href: ../common/storage-import-export-service-faq.md
         - name: REST API
           href: 'https://docs.microsoft.com/rest/api/storageimportexport/jobs'
@@ -368,9 +368,9 @@
     - name: Java
       items:
         - name: Blob、队列、表和文件 (v7)
-          href: 'https://docs.microsoft.com/java/api/storage/client?view=azure-java-stable'
+          href: 'https://docs.microsoft.com/java/api/overview/azure/storage/client?view=azure-java-stable'
         - name: Blob SDK (v10)
-          href: 'https://docs.microsoft.com/java/api/storage/client?view=azure-java-preview'
+          href: 'https://docs.microsoft.com/en-us/java/api/overview/azure/storage/client?view=azure-java-preview'
     - name: Node.js
       href: 'https://docs.microsoft.com/javascript/api/overview/azure/storage'
     - name: Ruby
