@@ -312,9 +312,9 @@
     - name: 工作流定义语言架构
       href: logic-apps-workflow-definition-language.md
       items:
-        - name: 工作流操作和触发器
+        - name: 触发器和操作类型参考
           href: logic-apps-workflow-actions-triggers.md
-        - name: 工作流定义语言功能
+        - name: 函数参考
           href: workflow-definition-language-functions-reference.md
         - name: GA - 架构历史记录
           href: logic-apps-schema-2016-04-01.md

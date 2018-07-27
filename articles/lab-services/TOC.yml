@@ -133,6 +133,8 @@
               href: devtest-lab-manage-formulas.md
         - name: 管理项目
           items:
+            - name: 指定必需的项目
+              href: devtest-lab-mandatory-artifacts.md
             - name: 创建自定义项目
               href: devtest-lab-artifact-author.md
             - name: 对项目故障进行诊断

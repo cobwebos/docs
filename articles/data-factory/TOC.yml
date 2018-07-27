@@ -387,24 +387,26 @@
           href: create-azure-ssis-integration-runtime.md
     - name: 在 Azure 中运行 SSIS 包
       items:
-        - name: 将 Azure-SSIS IR 加入虚拟网络
-          href: join-azure-ssis-integration-runtime-virtual-network.md
-        - name: 为 Azure-SSIS IR 启用 Azure AD 身份验证
-          href: enable-aad-authentication-azure-ssis-ir.md
-        - name: 为 Azure-SSIS IR 配置高性能
-          href: configure-azure-ssis-integration-runtime-performance.md
-        - name: 预配 Azure-SSIS IR 的企业版
-          href: how-to-configure-azure-ssis-ir-enterprise-edition.md
-        - name: 自定义 Azure-SSIS IR 的设置
-          href: how-to-configure-azure-ssis-ir-custom-setup.md
-        - name: 安装 Azure-SSIS IR 的许可组件
-          href: how-to-develop-azure-ssis-ir-licensed-components.md
         - name: 使用“执行 SSIS 包”活动运行 SSIS 包
           href: how-to-invoke-ssis-package-ssis-activity.md
         - name: 使用存储过程活动运行 SSIS 包
           href: how-to-invoke-ssis-package-stored-procedure-activity.md
         - name: 计划 Azure-SSIS 集成运行时
           href: how-to-schedule-azure-ssis-integration-runtime.md
+        - name: 将 Azure-SSIS IR 加入虚拟网络
+          href: join-azure-ssis-integration-runtime-virtual-network.md
+        - name: 为 Azure-SSIS IR 启用 Azure AD 身份验证
+          href: enable-aad-authentication-azure-ssis-ir.md
+        - name: 预配 Azure-SSIS IR 的企业版
+          href: how-to-configure-azure-ssis-ir-enterprise-edition.md
+        - name: 自定义 Azure-SSIS IR 的设置
+          href: how-to-configure-azure-ssis-ir-custom-setup.md
+        - name: 安装 Azure-SSIS IR 的许可组件
+          href: how-to-develop-azure-ssis-ir-licensed-components.md
+        - name: 为 Azure-SSIS IR 配置高性能
+          href: configure-azure-ssis-integration-runtime-performance.md
+        - name: 为 Azure-SSIS IR 配置灾难恢复
+          href: configure-bcdr-azure-ssis-integration-runtime.md
     - name: 创建触发器
       items:
         - name: 创建计划触发器

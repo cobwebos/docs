@@ -33,7 +33,7 @@
       href: backup-rm-template-samples.md
 - name: 概念
   items:
-    - name: 常见问题
+    - name: 常见问题解答
       items:
         - name: 恢复服务保管库常见问题解答
           href: backup-azure-backup-faq.md
@@ -145,6 +145,8 @@
           href: backup-azure-reports-data-model.md
         - name: Azure 备份的 Log Analytics 数据模型
           href: backup-azure-log-analytics-data-model.md
+        - name: 更新 Azure 备份中心报告内容包
+          href: backup-azure-central-reporting-updates.md
     - name: 数据保护管理器
       items:
         - name: 在 Azure 门户中准备 DPM 工作负荷

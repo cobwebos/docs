@@ -4,9 +4,10 @@
   items:
     - name: 什么是事件中心？
       href: event-hubs-about.md
-    - name: 比较消息服务
-      href: ../event-grid/compare-messaging-services.md
-      maintainContext: true
+    - name: 用于 Apache Kafka 的事件中心
+      href: event-hubs-for-kafka-ecosystem-overview.md
+    - name: 事件中心捕获
+      href: event-hubs-capture-overview.md
 - name: 快速入门
   expanded: true
   items:
@@ -16,14 +17,31 @@
       href: event-hubs-quickstart-cli.md
     - name: 处理事件流 - Azure PowerShell
       href: event-hubs-quickstart-powershell.md
+    - name: 流式传输到用于 Apache Kafka 的事件中心
+      href: event-hubs-quickstart-kafka-enabled-event-hubs.md
 - name: 教程
   items:
     - name: 直观显示事件中心数据流的数据异常
       href: event-hubs-tutorial-visualize-anomalies.md
+    - name: 将大数据流式传输到数据仓库
+      href: ../event-grid/event-grid-event-hubs-integration.md
+      maintainContext: true
+    - name: 使用事件中心将数据流式传输到 Azure Databricks
+      href: ../azure-databricks/databricks-stream-from-eventhubs.md
+    - name: 用于 Apache Kafka 的事件中心
+      items:
+        - name: 将 Apache Kafka MirrorMaker 与事件中心配合使用
+          href: event-hubs-kafka-mirror-maker-tutorial.md
+        - name: 将 Apache Flink 与事件中心配合使用
+          href: event-hubs-kafka-flink-tutorial.md
+        - name: 将 Akka Streams 与事件中心配合使用
+          href: event-hubs-kafka-akka-streams-tutorial.md
 - name: 示例
   href: event-hubs-samples.md
 - name: 概念
   items:
+    - name: 事件中心功能
+      href: event-hubs-features.md
     - name: 事件处理器主机概述
       href: event-hubs-event-processor-host.md
     - name: IP 连接筛选器
@@ -35,8 +53,6 @@
     - name: 与事件网格集成
       href: ../event-grid/event-grid-event-hubs-integration.md
       maintainContext: true
-    - name: 事件中心功能
-      href: event-hubs-features.md
     - name: 托管服务标识（预览）
       href: event-hubs-managed-service-identity.md
     - name: 基于角色的访问控制（预览）
@@ -64,20 +80,10 @@
       href: event-hubs-dotnet-framework-getstarted-send.md
     - name: 使用 .NET Framework 接收事件
       href: event-hubs-dotnet-framework-getstarted-receive-eph.md
-    - name: 用于 Kafka 的事件中心
+    - name: 用于 Apache Kafka 的事件中心
       items:
-        - name: 用于 Kafka 生态系统的事件中心概述
-          href: event-hubs-for-kafka-ecosystem-overview.md
-        - name: 创建启用了 Kafka 的事件中心
+        - name: 创建启用了 Apache Kafka 的事件中心
           href: event-hubs-create-kafka-enabled.md
-        - name: 流式传输到用于 Kafka 生态系统的事件中心
-          href: event-hubs-quickstart-kafka-enabled-event-hubs.md
-        - name: 将 Kafka MirrorMaker 与事件中心配合使用的教程
-          href: event-hubs-kafka-mirror-maker-tutorial.md
-        - name: 将 Apache Flink 与事件中心配合使用的教程
-          href: event-hubs-kafka-flink-tutorial.md
-        - name: 将 Akka Streams 与事件中心配合使用的教程
-          href: event-hubs-kafka-akka-streams-tutorial.md
     - name: 可用 API
       href: event-hubs-api-overview.md
       items:
@@ -113,12 +119,8 @@
           href: event-hubs-metrics-azure-monitor.md
         - name: 事件中心管理库
           href: event-hubs-management-libraries.md
-        - name: 捕获
-          items:
-            - name: 事件中心捕获
-              href: event-hubs-capture-overview.md
-            - name: 使用 Python 捕获事件中心数据
-              href: event-hubs-capture-python.md
+        - name: 使用 Python 捕获事件中心数据
+          href: event-hubs-capture-python.md
         - name: 使用事件中心流式传输 Azure 诊断数据
           href: event-hubs-streaming-azure-diags-data.md
         - name: 使用资源管理器模板创建和部署事件中心

@@ -138,7 +138,7 @@
 ### 故障排除
 #### [缺少审核数据](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [在下载项中缺少数据](active-directory-reporting-troubleshoot-missing-data-download.md)
-#### [Azure AD 活动日志内容包错误](active-directory-reporting-troubleshoot-
+#### [Azure AD 活动日志内容包错误](active-directory-reporting-troubleshoot-content-pack.md)
 #### [Azure AD 报告 API 中的错误](active-directory-reporting-troubleshoot-graph-api.md)
 
 ### [以编程方式访问](active-directory-reporting-api-getting-started-azure-portal.md)
@@ -222,11 +222,13 @@
 #### [故障排除](manage-apps/application-proxy-troubleshoot.md)
 
 ### 管理企业应用
+#### [添加应用程序](manage-apps/add-application-portal.md)
+#### [查看租户应用](manage-apps/view-applications-portal.md)
 #### [分配用户](manage-apps/assign-user-or-group-access-portal.md)
 #### [自定义品牌](manage-apps/change-name-or-logo-portal.md)
 #### [禁用用户登录](manage-apps/disable-user-sign-in-portal.md)
 #### [删除用户](manage-apps/remove-user-or-group-access-portal.md)
-#### [查看所有应用](manage-apps/view-applications-portal.md)
+
 #### [管理用户帐户预配](manage-apps/configure-automatic-user-provisioning-portal.md)
 #### [管理适用于企业应用的单一登录](manage-apps/configure-single-sign-on-portal.md)
 #### [SAML 应用的高级证书签名](manage-apps/certificate-signing-options.md)

@@ -16,7 +16,7 @@
 #### [虚拟机](./marketplace-virtual-machines.md)
 #### [Azure 应用：解决方案模板](./marketplace-solution-templates.md)
 #### [Azure 应用：托管应用程序](./marketplace-managed-apps.md)
-#### [SaaS 应用发布指南](./marketplace-saas-applications-technical-publishing-guide.md) 
+#### [SaaS 应用](./marketplace-saas-applications-technical-publishing-guide.md) 
 #### [容器](./marketplace-containers.md)
 #### [咨询服务](./consulting-services.md)  
 #### [AppSource 应用](./appsource-offer-publishing-guide.md)

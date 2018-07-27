@@ -138,9 +138,9 @@
           items:
             - name: 长期备份保留
               href: sql-database-long-term-retention.md
-            - name: 配置长期备份保留 - SQL 存储
+            - name: 使用Azure blob 存储进行配置
               href: sql-database-long-term-backup-retention-configure.md
-            - name: 配置长期备份保留 - Azure 保管库（已弃用）
+            - name: 使用 Azure 保管库进行配置（已弃用）
               href: sql-database-long-term-backup-retention-configure-vault.md
         - name: 故障转移组和异地复制
           items:

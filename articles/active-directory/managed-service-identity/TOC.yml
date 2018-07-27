@@ -6,7 +6,7 @@
       href: overview.md
 - name: 快速入门
   items:
-    - name: 使用 VM MSI 访问 Azure 资源管理器
+    - name: 使用 VM 托管标识访问 Azure 资源管理器
       items:
         - name: Windows VM
           href: tutorial-windows-vm-access-arm.md
@@ -49,11 +49,11 @@
         - name: 使用用户分配的标识访问 Azure 资源管理器
           href: msi-tutorial-linux-vm-access-arm.md
     - name: Azure 服务总线
-      href: /azure/service-bus-messaging/service-bus-managed-service-identity?context=azure/active-directory/context/msi-context
+      href: /azure/service-bus-messaging/service-bus-managed-service-identity?context=azure/active-directory/managed-service-identity/context/msi-context
     - name: Azure 应用服务和 Functions
-      href: /azure/app-service/app-service-managed-service-identity?context=azure/active-directory/context/msi-context
+      href: /azure/app-service/app-service-managed-service-identity?context=azure/active-directory/managed-service-identity/context/msi-context
     - name: Azure 事件中心
-      href: /azure/event-hubs/event-hubs-managed-service-identity?context=azure/active-directory/context/msi-context
+      href: /azure/event-hubs/event-hubs-managed-service-identity?context=azure/active-directory/managed-service-identity/context/msi-context
 - name: 操作指南
   items:
     - name: 为 Azure VM 配置标识
@@ -82,7 +82,7 @@
           href: qs-configure-template-windows-vmss.md
         - name: REST
           href: qs-configure-rest-vmss.md
-    - name: 使用 VM MSI
+    - name: 使用 VM 托管标识
       items:
         - name: 获取访问令牌
           href: how-to-use-vm-token.md

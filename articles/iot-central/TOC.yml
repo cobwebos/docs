@@ -43,6 +43,8 @@
           href: howto-administer.md
         - name: 导出数据
           href: howto-export-data.md
+        - name: 在 Power BI 中直观显示数据
+          href: howto-connect-powerbi.md
     - name: 构建者
       items:
         - name: 设置设备模板
