@@ -14,17 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: mabrigg
-ms.openlocfilehash: 538cf0eb0f9f2351f7a71a1dd24aab05938963c5
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 105991296629e04addab33a0611736b379b11688
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281858"
 ---
 # <a name="manage-azure-policy-using-the-azure-stack-policy-module"></a>使用 Azure Stack 策略模块管理 Azure 策略
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-使用 Azure Stack 策略模块，可为 Azure 订阅配置与 Azure Stack 相同的版本控制和服务可用性。  该模块使用 **New-AzureRMPolicyAssignment** cmdlet 创建 Azure 策略，限制订阅中可用的资源类型和服务。  配置策略之后，可以使用你的 Azure 订阅若要开发针对 Azure 堆栈的应用。
+使用 Azure Stack 策略模块，可为 Azure 订阅配置与 Azure Stack 相同的版本控制和服务可用性。  该模块使用 **New-AzureRMPolicyAssignment** cmdlet 创建 Azure 策略，限制订阅中可用的资源类型和服务。  配置策略后，可以使用 Azure 订阅来开发针对 Azure Stack 的应用。
 
 ## <a name="install-the-module"></a>安装模块
 
@@ -38,9 +39,9 @@ ms.lasthandoff: 05/17/2018
    Import-Module .\Policy\AzureStack.Policy.psm1
    ```
 
-## <a name="apply-policy-to-azure-subscription"></a>将策略应用到的 Azure 订阅
+## <a name="apply-policy-to-azure-subscription"></a>将策略应用于 Azure 订阅
 
-以下命令可用于针对 Azure 订阅中应用默认 Azure 堆栈策略。 在运行此命令之前, 替换*Azure 订阅名称*与 Azure 订阅。
+可以使用以下命令针对 Azure 订阅应用默认 Azure Stack 策略。 运行此命令前，请将“Azure 订阅名称”替换为你的 Azure 订阅名称。
 
 ```PowerShell
 Add-AzureRmAccount
@@ -53,13 +54,14 @@ New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /s
 
 ## <a name="apply-policy-to-a-resource-group"></a>将策略应用于资源组
 
-你可能想要应用中更为具体的策略。 例如，你可能必须运行相同的订阅中的其他资源。 可以将策略应用范围限定为特定资源组，这样就可以使用 Azure 资源测试 Azure Stack 的应用。 在运行以下命令之前, 替换*Azure 订阅名称*替换为你的 Azure 订阅名称。
+你可能想要应用更细化的策略。 例如，你在相同的订阅中可能有其他正在运行的资源。 可以将策略应用范围限定为特定资源组，这样就可以使用 Azure 资源测试 Azure Stack 的应用。 运行以下命令前，请将“Azure 订阅名称”替换为你的 Azure 订阅名称。
 
 ```PowerShell
 Add-AzureRmAccount
 $rgName = 'myRG01'
 $s = Select-AzureRmSubscription -SubscriptionName "<Azure Subscription Name>"
 $policy = New-AzureRmPolicyDefinition -Name AzureStackPolicyDefinition -Policy (Get-AzsPolicy)
+$subscriptionID = $s.Subscription.SubscriptionId
 New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /subscriptions/$subscriptionID/resourceGroups/$rgName
 
 ```

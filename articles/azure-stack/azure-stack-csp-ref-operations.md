@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/08/2018
 ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: 18b34af8dc383cfa86017162ec48782f156156bc
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: efd1c1eafbff8bf56b16131e44cff6b03ce7338a
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39093178"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264804"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>在 Azure Stack 中管理租户注册
 
@@ -35,6 +35,13 @@ ms.locfileid: "39093178"
 
 请注意，只有一个 Azure 订阅可以与租户相关联。 如果尝试将第二个订阅添加到现有租户，则第一个订阅将被覆盖。 
 
+### <a name="use-api-profiles"></a>使用 API 配置文件
+
+这篇文章中的 cmdlet 需要运行 PowerShell 时指定的 API 配置文件。 API 配置文件代表一组 Azure 资源提供程序和其 API 版本。 它们可帮助您使用正确版本的 API，例如与多个 Azure 云交互时使用全局 Azure 和 Azure Stack 时。 通过其发行日期匹配的名称指定配置文件。 使用本文中，你将需要使用**2017年-09-03**配置文件。
+
+有关 Azure Stack 和 API 配置文件的详细信息，请参阅[在 Azure Stack 中的管理 API 版本配置文件](user/azure-stack-version-profiles.md)。 有关启动和运行与通过 PowerShell API 配置文件的说明，请参阅[使用 API 版本配置文件适用于 Azure Stack 中的 PowerShell](user/azure-stack-version-profiles-powershell.md)。
+
+### <a name="parameters"></a>parameters
 
 | 参数                  | 说明 |
 |---                         | --- |
