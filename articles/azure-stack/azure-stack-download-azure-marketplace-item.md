@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/13/2018
+ms.date: 07/27/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 73f8616449141ca91f96e9fcebede74597bc4fe3
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ab8cd950fcbfe61d558dc9d36fbaff9e6baa22c8
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044911"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39326018"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>将市场项从 Azure 下载到 Azure Stack
 
@@ -139,7 +139,7 @@ Azure Stack 部署必须已建立 Internet 连接，并且[已注册到 Azure](a
 
    ![Azure 市场项弹出窗口](media/azure-stack-download-azure-marketplace-item/image05.png)
 
-7. 选择要下载的项，并记下版本。 (可以容纳*Ctrl*键以选择多个映像。)你只需引用*版本*导入下一个过程中的项时。 
+7. 选择要下载的项，并记下版本。 （可以按住 *Ctrl* 键选择多个映像。）在下一过程中导入项时，将要引用该版本。 
    
    也可通过“添加条件”选项来筛选映像的列表。
 
@@ -151,26 +151,7 @@ Azure Stack 部署必须已建立 Internet 连接，并且[已注册到 Azure](a
 ### <a name="import-the-download-and-publish-to-azure-stack-marketplace"></a>导入下载内容并发布到 Azure Stack 市场
 1. 必须在本地将[前面下载的](#use-the-marketplace-syndication-tool-to-download-marketplace-items)虚拟机映像文件或解决方案模板文件提供给 Azure Stack 环境。  
 
-2. 通过使用到 Azure Stack 中导入 VHD 映像**添加 AzsPlatformimage** cmdlet。 当使用此 cmdlet 时，替换*发布服务器*，*产品/服务*，和其他参数值与要导入图像的值。 
-
-   可以获取*发布服务器*，*提供*，并*sku*文本文件下载的 AZPKG 文件中的图像的值。 该文本文件存储在目标位置。
- 
-   以下示例脚本使用了 Windows Server 2016 Datacenter - Server Core 虚拟机的值。 
-
-   ```PowerShell  
-   Add-AzsPlatformimage `
-    -publisher "MicrosoftWindowsServer" `
-    -offer "WindowsServer" `
-    -sku "2016-Datacenter-Server-Core" `
-    -osType Windows `
-    -Version "2016.127.20171215" `
-    -OsDiskLocalPath "C:\AzureStack-Tools-master\Syndication\Windows-Server-2016-DatacenterCore-20171215-en.us-127GB.vhd" `
-   ```
-   **关于解决方案模板：** 某些模板可能包含名为 **fixed3.vhd** 的 3 MB .VHD 小文件。 无需将该文件导入 Azure Stack。 Fixed3.vhd。  某些解决方案模板包含此文件的目的是为了满足 Azure 市场的发布要求。
-
-   请查看模板说明，然后下载并导入其他必需的项，例如，使用解决方案模板所需的 VHD。
-
-3. 使用管理员门户将市场项包（.azpkg 文件）上传到 Azure Stack Blob 存储。 上传该包会使其可供 Azure Stack 使用，以便稍后能够将项发布到 Azure Stack 市场。
+2. 使用管理员门户将市场项包（.azpkg 文件）上传到 Azure Stack Blob 存储。 上传该包会使其可供 Azure Stack 使用，以便稍后能够将项发布到 Azure Stack 市场。
 
    需要有一个包含可公开访问的容器的存储帐户才能完成上传（请参阅此场景的先决条件）   
    1. 在 Azure Stack 管理员门户中，转到“更多服务” > “存储帐户”。  
@@ -186,6 +167,33 @@ Azure Stack 部署必须已建立 Internet 连接，并且[已注册到 Azure](a
 
    5. 上传的文件会显示在容器窗格中。 选择一个文件，然后复制“Blob 属性”窗格的 URL。 在下一步骤中将市场项导入 Azure Stack 时，将要使用此 URL。  在下图中，容器为 *blob-test-storage*，文件为 *Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg*。  文件 URL 为 *https://testblobstorage1.blob.local.azurestack.external/blob-test-storage/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg*。  
       ![Blob 属性](media/azure-stack-download-azure-marketplace-item/blob-storage.png)  
+
+3. 使用 **Add-AzsPlatformimage** cmdlet 将 VHD 映像导入到 Azure Stack。 使用此 cmdlet 时，请将 *publisher*、*offer* 和其他参数值替换为要导入的映像的值。 
+
+   可以从连同 AZPKG 文件一起下载的文本文件中，获取映像的 *publisher*、*offer* 和 *sku* 值。 该文本文件存储在目标位置中。 *版本*值是前一过程中从 Azure 下载项时记下的版本。 
+ 
+   以下示例脚本使用了 Windows Server 2016 Datacenter - Server Core 虚拟机的值。 替换*URI_path*与 blob 存储位置的项的路径。
+
+   ```PowerShell  
+   Add-AzsPlatformimage `
+    -publisher "MicrosoftWindowsServer" `
+    -offer "WindowsServer" `
+    -sku "2016-Datacenter-Server-Core" `
+    -osType Windows `
+    -Version "2016.127.20171215" `
+    -OsUri "URI_path"  
+   ```
+   **关于解决方案模板：** 某些模板可能包含名为 **fixed3.vhd** 的 3 MB .VHD 小文件。 无需将该文件导入 Azure Stack。 Fixed3.vhd。  某些解决方案模板包含此文件的目的是为了满足 Azure 市场的发布要求。
+
+   请查看模板说明，然后下载并导入其他必需的项，例如，使用解决方案模板所需的 VHD。  
+   
+   **有关扩展：** 使用虚拟机映像扩展时，使用以下参数：
+   - *发布者*
+   - 类型
+   - *版本*  
+
+   不使用*产品/服务*扩展。   
+
 
 4.  在 PowerShell 中使用 **Add-AzsGalleryItem** cmdlet 将市场项发布到 Azure Stack。 例如：  
     ```PowerShell  

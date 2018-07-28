@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/08/2018
+ms.date: 07/27/2018
 ms.author: brenduns
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 52d469236d607a145430134c24c4237346dafb4c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 172c32c1f3796ec95336543d7d0ea149e63cfb22
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39331129"
 ---
 # <a name="quota-types-in-azure-stack"></a>Azure Stack 中的配额类型
 
@@ -28,28 +29,27 @@ ms.lasthandoff: 05/07/2018
 [配额](azure-stack-plan-offer-quota-overview.md#plans)定义用户订阅可以预配或使用的资源限制。 例如，配额可能允许用户最多创建五个 VM。 每个资源都可以有自已的配额类型。
 
 ## <a name="compute-quota-types"></a>计算配额类型
-| **类型** | **默认值** | **说明** |
+
+| 类型 | **默认值** | **说明** |
 | --- | --- | --- |
 | 虚拟机的数目上限 | 20 | 订阅可以在此位置创建的虚拟机数目上限。 |
 | 虚拟机核心的数目上限 | 50 | 订阅可以在此位置创建的核心数目上限（例如，A3 VM 有四个核心）。 |
 | 可用性集的数目上限 | 10 | 可以在此位置创建的可用性集数目上限。 |
 | 虚拟机规模集的数目上限 | 20 | 可以在此位置创建的虚拟机规模集数目上限。 |
 
-
-
 ## <a name="storage-quota-types"></a>存储配额类型
-| **项目** | **默认值** | **说明** |
+
+| **Item** | **默认值** | **说明** |
 | --- | --- | --- |
 | 最大容量 (GB) |500 |可供此位置的订阅使用的总存储容量。 |
 | 存储帐户的总数 |20 |订阅可以在此位置创建的存储帐户数目上限。 |
 
 > [!NOTE]  
-> 可能需要最多两个小时，才能存储配额强制执行。 
-> 
-
+> 强制实施存储配额最多可能需要两个小时。
 
 ## <a name="network-quota-types"></a>网络配额类型
-| **项目** | **默认值** | **说明** |
+
+| **Item** | **默认值** | **说明** |
 | --- | --- | --- |
 | 公共 IP 的数目上限 |50 |订阅可以在此位置创建的公共 IP 数目上限。 |
 | 虚拟网络的数目上限 |50 |订阅可以在此位置创建的虚拟网络数目上限。 |
@@ -60,11 +60,13 @@ ms.lasthandoff: 05/07/2018
 | 网络安全组的数目上限 |50 |订阅可以在此位置创建的网络安全组数目上限。 |
 
 ## <a name="view-an-existing-quota"></a>查看现有配额
-1. 单击“更多服务” > “资源提供程序”。
-2. 选择具有要查看的配额的服务。
-3. 单击“配额”，然后选择要查看的配额。
 
-## <a name="next-steps"></a>接下来的步骤
-[详细了解计划、产品/服务和配额。](azure-stack-plan-offer-quota-overview.md)
+1. 在管理门户的默认仪表板中，找到**资源提供程序**磁贴。
+2. 选择与想要查看，如配额的服务**计算**或**存储**。
+3. 选择“配额”，然后选择要查看的配额。
 
-[创建计划时创建配额。](azure-stack-create-plan.md)
+## <a name="next-steps"></a>后续步骤
+
+- 
+  [详细了解计划、套餐和配额。](azure-stack-plan-offer-quota-overview.md)
+- [创建计划时创建配额。](azure-stack-create-plan.md)
