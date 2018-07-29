@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: v-geberr
-ms.openlocfilehash: fea311eb36c0654b45b2354cb283f1699be7257c
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 0668ba050a6918995deb42d8feea5afbbab3b010
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109335"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865805"
 ---
 # <a name="tutorial-1-build-app-with-custom-domain"></a>教程：1. 使用自定义域生成应用
 在本教程中，我们将创建一个应用，用于演示如何使用**意向**，根据用户提交到应用的陈述（文本），来确定该用户的_意向_。 完成本教程后，会在云中运行一个 LUIS 终结点。
@@ -188,7 +188,7 @@ JSON 结果中标识了评分最高的意向。 所有评分介于 1 和 0 之�
 LUIS 已完成此请求。 调用方应用程序（例如聊天机器人）可以提取 topScoringIntent 结果，并查找用于回答问题的信息（未存储在 LUIS 中）或结束对话。 这是机器人或调用方应用程序的编程选项。 LUIS 不执行此类工作。 LUIS 只确定用户的意向是什么。 
 
 ## <a name="clean-up-resources"></a>清理资源
-不再需要 LUIS 应用时，请将其删除。 为此，请在左上侧菜单中选择“我的应用”。 在应用列表中选择应用名称右侧的省略号图标 (...)，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
+不再需要 LUIS 应用时，请将其删除。 为此，请在左上侧菜单中选择“我的应用”。 在应用列表中选择应用名称右侧的省略号 (***...***)，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
 
 ## <a name="next-steps"></a>后续步骤
 

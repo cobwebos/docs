@@ -6,20 +6,20 @@ author: v-geberr
 manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
-ms.topic: article
-ms.date: 06/11/2018
+ms.topic: tutorial
+ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: 20950ced66497fb0dc96365975b37f244f677ce3
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 387f20d2080a67041c90ec1af93e791716839dd9
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266373"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929043"
 ---
-# <a name="use-prebuilt-intents-and-entities-to-handle-common-intents-and-data"></a>使用预生成的意向和实体来处理常见意向和数据
-将预生成的意向和实体添加到人力资源快速入门应用以快速了解意向预测和数据提取。 
+# <a name="tutorial-2-add-prebuilt-intents-and-entities"></a>教程：2。 添加预构建的意向和实体
+将预生成的意向和实体添加到人力资源教程应用，以便快速了解意向预测和数据提取。 
 
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 * 添加预生成意向 
@@ -28,7 +28,7 @@ ms.locfileid: "36266373"
 * 查询 LUIS 并接收预测响应
 
 ## <a name="before-you-begin"></a>开始之前
-如果尚未获得[自定义域](luis-quickstart-intents-only.md)快速入门中所述的人力资源应用，请将 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-intent-only-HumanResources.json) Github 存储库中的 JSON [导入](create-new-app.md#import-new-app)到 [LUIS][LUIS] 网站上的一个新应用中。
+如果尚未获得前一教程中所述的[人力资源](luis-quickstart-intents-only.md)应用，请将 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-intent-only-HumanResources.json) Github 存储库中的 JSON [导入](luis-how-to-start-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。
 
 若要保留原始人力资源应用，请在[设置](luis-how-to-manage-versions.md#clone-a-version)页上克隆版本，并将其命名为 `prebuilts`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 
 
@@ -37,7 +37,7 @@ LUIS 提供几个预生成意向，以便提供常见用户意向。
 
 1. 确保应用在 LUIS 的“生成”部分。 在右上方的菜单栏中选择“生成”可切换到此部分。 
 
-    [![LUIS 应用的屏幕截图，其中已突出显示右上方的导航栏](./media/luis-tutorial-prebuilt-intents-and-entities/first-image.png)](./media/luis-tutorial-prebuilt-intents-and-entities/first-image.png#lightbox)
+    [ ![LUIS 应用的屏幕截图，其中已突出显示右上方导航栏中的“生成”](./media/luis-tutorial-prebuilt-intents-and-entities/first-image.png)](./media/luis-tutorial-prebuilt-intents-and-entities/first-image.png#lightbox)
 
 2. 选择“添加预生成域意向”。 
 
@@ -52,8 +52,9 @@ LUIS 提供几个预生成意向，以便提供常见用户意向。
     * Utilities.Cancel
     * Utilities.Confirm
     * Utilities.Help
-    * Utilities.Stop
     * Utilities.StartOver
+    * Utilities.Stop
+
 
 ## <a name="add-prebuilt-entities"></a>添加预生成的实体
 LUIS 为常见数据提取提供多个预生成的实体。 
@@ -79,9 +80,11 @@ LUIS 为常见数据提取提供多个预生成的实体。
 
     ![已训练状态栏](./media/luis-quickstart-intents-only/trained.png)
 
-2. 在 LUIS 网站的右上方，选择“发布”按钮打开“发布”页。 默认已选择生产槽。 选择生产槽选项旁边的“发布”按钮。 当网站顶部出现确认成功的绿色状态栏时，表示发布已完成。
+2. 在 LUIS 网站的右上方，选择“发布”按钮打开“发布”页。 
 
-    在发布或者测试终结点 URL 之前，无需在 Azure 门户中创建 LUIS 密钥。 每个 LUIS 应用具有一个用于创作的免费初学者密钥。 使用该密钥可以不受限制地进行创作，并获得一些[终结点点击量](luis-boundaries.md#key-limits)。 
+3. 默认已选择生产槽。 选择生产槽选项旁边的“发布”按钮。 当网站顶部出现确认成功的绿色状态栏时，表示发布已完成。
+
+    在发布或者测试终结点 URL 之前，无需在 Azure 门户中创建 LUIS 终结点密钥。 每个 LUIS 应用具有一个用于创作的免费初学者密钥。 使用该密钥可以不受限制地进行创作，并获得一些[终结点点击量](luis-boundaries.md#key-limits)。 
 
 ## <a name="query-endpoint-with-an-utterance"></a>使用陈述查询终结点
 在“发布”页的底部，选择“终结点”链接。 此操作会打开另一个浏览器窗口，其地址栏中包含终结点 URL。 将光标定位到地址中 URL 的末尾，并输入 `I want to cancel on March 3`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 
@@ -163,12 +166,15 @@ LUIS 为常见数据提取提供多个预生成的实体。
     }
     ```
 
+“3 月 3 日”有两个值，因为表述没有指出“3 月 3 日”是过去的还是未来的。 将由 LUIS 调用应用程序自行决定是做一个假设，还是通过提问进行澄清（如果需要）。 
+
 通过轻松快速地添加预生成的意向和实体，客户端应用程序可以添加会话管理和提取常见数据类型。 
+
+## <a name="clean-up-resources"></a>清理资源
+不再需要 LUIS 应用时，请将其删除。 为此，请在左上角的菜单中选择“我的应用”。 在应用列表中选择应用名称右侧的省略号 (***...***)，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
 
 ## <a name="next-steps"></a>后续步骤
 
-[详细了解实体](luis-concept-entity-types.md)。 
+> [!div class="nextstepaction"]
+> [向应用添加正则表达式实体](luis-quickstart-intents-regex-entity.md)
 
-<!--References-->
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
-[LUIS-regions]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#publishing-regions

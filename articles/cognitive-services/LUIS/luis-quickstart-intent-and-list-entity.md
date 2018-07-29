@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: c5408d20a736f262e95ce7014c385b50521967ad
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: da0491aae571f085a8cbe3cd372f905202e9db9b
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127849"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931059"
 ---
 # <a name="tutorial-4-add-list-entity"></a>教程：4. 添加列表实体
 在本教程中，我们将创建一个应用，用于演示如何获取与预定义列表匹配的数据。 
@@ -30,7 +30,7 @@ ms.locfileid: "37127849"
 本文需要一个免费的 [LUIS](luis-reference-regions.md#luis-website) 帐户，以便能够创作 LUIS 应用程序。
 
 ## <a name="before-you-begin"></a>开始之前
-如果尚未获得 [regex 实体](luis-quickstart-intents-regex-entity.md)教程中所述的人力资源应用，请将 JSON [导入](create-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。 要导入的应用位于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-regex-HumanResources.json) Github 存储库中。
+如果尚未获得 [regex 实体](luis-quickstart-intents-regex-entity.md)教程中所述的人力资源应用，请将 JSON [导入](luis-how-to-start-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。 要导入的应用位于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-regex-HumanResources.json) Github 存储库中。
 
 若要保留原始人力资源应用，请在[设置](luis-how-to-manage-versions.md#clone-a-version)页上克隆版本，并将其命名为 `list`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 
 
@@ -296,7 +296,7 @@ LUIS 在训练之前，并不知道意向和实体（模型）发生的变化。
 LUIS 已完成此请求。 调用方应用程序（例如聊天机器人）可以提取 topScoringIntent 结果和实体中的数据，以执行下一步骤。 LUIS 不会针对机器人或调用方应用程序执行编程工作。 LUIS 只确定用户的意向是什么。 
 
 ## <a name="clean-up-resources"></a>清理资源
-不再需要 LUIS 应用时，请将其删除。 在左上方的菜单上选择“Mu 应用”。 在应用列表中选择应用名称右侧的省略号图标 (...)，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
+不再需要 LUIS 应用时，请将其删除。 在左上方的菜单上选择“Mu 应用”。 在应用列表中选择应用名称右侧的省略号 (***...***)，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
 
 ## <a name="next-steps"></a>后续步骤
 

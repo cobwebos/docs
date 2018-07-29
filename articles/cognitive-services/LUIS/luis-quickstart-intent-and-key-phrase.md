@@ -9,14 +9,14 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: v-geberr
-ms.openlocfilehash: f3808620c4527f2971d8eb6d53a09c893b162b59
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: ccefb4c2890d74978f340778cfab7cad979c9802
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37340944"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929540"
 ---
-# <a name="tutorial-7-add-keyphrase-entity"></a>教程：7. 添加 keyPhrase 实体 
+# <a name="tutorial-8-add-keyphrase-entity"></a>教程：8. 添加 keyPhrase 实体 
 在本教程中，我们将使用一个应用，它演示了如何从陈述中提取关键主题。
 
 <!-- green checkmark -->
@@ -30,7 +30,7 @@ ms.locfileid: "37340944"
 在本文中，可以使用免费 [LUIS](luis-reference-regions.md#publishing-regions) 帐户来创作 LUIS 应用程序。
 
 ## <a name="before-you-begin"></a>开始之前
-如果尚未获得[简单实体](luis-quickstart-primary-and-secondary-data.md)教程中所述的人力资源应用，请将 JSON [导入](create-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。 要导入的应用位于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-simple-HumanResources.json) Github 存储库中。
+如果尚未获得[简单实体](luis-quickstart-primary-and-secondary-data.md)教程中所述的人力资源应用，请将 JSON [导入](luis-how-to-start-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。 要导入的应用位于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-simple-HumanResources.json) Github 存储库中。
 
 若要保留原始人力资源应用，请在[设置](luis-how-to-manage-versions.md#clone-a-version)页上克隆版本，并将其命名为 `keyphrase`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 
 
@@ -201,10 +201,9 @@ ms.locfileid: "37340944"
 LUIS 已完成此请求。 调用方应用程序（例如聊天机器人）可以提取 topScoringIntent 结果和陈述中的 keyPhrase 数据，以执行下一步骤。 LUIS 不会针对机器人或调用方应用程序执行编程工作。 LUIS 只确定用户的意向是什么。 
 
 ## <a name="clean-up-resources"></a>清理资源
-不再需要 LUIS 应用时，请将其删除。 在左上侧菜单中选择“我的应用”。 在应用列表中选择应用名称右侧的省略号图标 (...)，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
+不再需要 LUIS 应用时，请将其删除。 在左上侧菜单中选择“我的应用”。 在应用列表中选择应用名称右侧的省略号 (***...***) 按钮，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [将情绪分析添加到应用](luis-quickstart-intent-and-sentiment-analysis.md)
-

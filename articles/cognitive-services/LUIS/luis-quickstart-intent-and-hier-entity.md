@@ -7,14 +7,14 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/22/2018
+ms.date: 07/04/2018
 ms.author: v-geberr
-ms.openlocfilehash: 6ba45de8ef41c8a57ca9c042a304e323a4fac263
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: babfc2f82e17f3745af1d940df89763170a002bd
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37081687"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929580"
 ---
 # <a name="tutorial-5-add-hierarchical-entity"></a>教程：5. 添加分层的实体
 在本教程中，我们将创建一个应用，用于演示如何根据上下文查找相关的数据片段。 
@@ -27,10 +27,10 @@ ms.locfileid: "37081687"
 > * 训练并发布应用
 > * 查询应用的终结点以查看包含分层子级的 LUIS JSON 响应 
 
-本文需要一个免费的 [LUIS][LUIS] 帐户，以便能够创作 LUIS 应用程序。
+本文需要一个免费的 [LUIS](luis-reference-regions.md#luis-website) 帐户，以便创作 LUIS 应用程序。
 
 ## <a name="before-you-begin"></a>开始之前
-如果还没有[列表实体](luis-quickstart-intent-and-list-entity.md)教程中所述的人力资源应用，请将 JSON [导入](create-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。 要导入的应用位于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-list-HumanResources.json) Github 存储库中。
+如果还没有[列表实体](luis-quickstart-intent-and-list-entity.md)教程中所述的人力资源应用，请将 JSON [导入](luis-how-to-start-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。 要导入的应用位于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-list-HumanResources.json) Github 存储库中。
 
 若要保留原始人力资源应用，请在[设置](luis-how-to-manage-versions.md#clone-a-version)页上克隆版本，并将其命名为 `hier`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 
 
@@ -64,12 +64,12 @@ mv Jill Jones from a-2349 to b-1298
     [ ![LUIS 应用的屏幕截图，已在左菜单中突出显示“实体”按钮](./media/luis-quickstart-intent-and-hier-entity/hr-select-entities-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-entities-button.png#lightbox)
 
 
-3. 选择列表中数字实体右侧的三个点 (...)。 选择“删除”。 
+3. 选择列表中数字实体右侧的省略号 (***...***) 按钮。 选择“删除”。 
 
     [ ![实体列表页上 LUIS 应用的屏幕截图，已针对“数字”预生成实体突出显示删除按钮](./media/luis-quickstart-intent-and-hier-entity/hr-delete-number-prebuilt.png)](./media/luis-quickstart-intent-and-hier-entity/hr-delete-number-prebuilt.png#lightbox)
 
 
-## <a name="add-utterances-to-findform-intent"></a>将陈述添加到 FindForm 意向
+## <a name="add-utterances-to-moveemployee-intent"></a>将表述添加到 MoveEmployee 意向
 
 1. 在左侧菜单中选择“意向”。
 
@@ -155,7 +155,7 @@ LUIS 在训练之前，并不知道意向和实体（模型）发生的变化。
 
     [![](media/luis-quickstart-intent-and-hier-entity/publish-select-endpoint.png "“发布”页的屏幕截图，其中已突出显示终结点 URL")](media/luis-quickstart-intent-and-hier-entity/publish-select-endpoint.png#lightbox)
 
-2. 将光标定位到地址栏中 URL 的末尾，并输入 `Please relocation jill-jones@mycompany.com from x-2345 to g-23456`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 此陈述不同于标记的任何陈述，因此，它非常适合用于测试，测试结果应返回包含所提取的分层实体的 `MoveEmployee` 意向。
+2. 将光标定位到地址栏中 URL 的末尾，并输入 `Please relocation jill-jones@mycompany.com from x-2345 to g-23456`。 最后一个查询字符串参数为 `q`，表示陈述**查询**。 此陈述不同于标记的任何陈述，因此，它非常适合用于测试，测试结果应返回包含所提取的分层实体的 `MoveEmployee` 意向。
 
 ```JSON
 {
@@ -268,12 +268,8 @@ LUIS 在训练之前，并不知道意向和实体（模型）发生的变化。
 LUIS 已完成此请求。 调用方应用程序（例如聊天机器人）可以提取 topScoringIntent 结果和实体中的数据，以执行下一步骤。 LUIS 不会针对机器人或调用方应用程序执行编程工作。 LUIS 只确定用户的意向是什么。 
 
 ## <a name="clean-up-resources"></a>清理资源
-不再需要 LUIS 应用时，请将其删除。 为此，请在应用列表中选择应用名称右侧的省略号图标 (...)，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
+不再需要 LUIS 应用时，请将其删除。 为此，请在应用列表中选择应用名称右侧的省略号 (***...***) 按钮，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"] 
-> [了解如何添加列表实体](luis-quickstart-intent-and-list-entity.md) 
-
-<!--References-->
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
-[LUIS-regions]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#publishing-regions
+> [了解如何添加复合实体](luis-tutorial-composite-entity.md) 

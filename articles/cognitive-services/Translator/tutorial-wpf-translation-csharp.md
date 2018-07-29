@@ -1,30 +1,29 @@
 ---
-title: 如何使用 C#、Azure 认知服务编写 Microsoft Translator WPF 应用程序 | Microsoft Docs
-description: 了解如何使用文本翻译服务翻译文本，获取受支持语言的本地化列表及更多内容。
+title: 教程：使用 C# 编写用于文本翻译的 WPF 应用程序 | Microsoft Docs
+titleSuffix: Microsoft Cognitive Services
+description: 在本教程中，你将学习如何通过使用 C# 构建 WPF 应用程序，使用文本翻译 API 来翻译文本，获取受支持语言的本地化列表以及执行更多操作。
 services: cognitive-services
-author: Jann-Skotdal
-manager: chriswendt1
+author: noellelacharite
+manager: nolachar
 ms.service: cognitive-services
 ms.component: translator-text
-ms.devlang: csharp
-ms.topic: article
-ms.date: 10/25/2017
-ms.author: v-jansko
-ms.openlocfilehash: fb58fd087de09561a0ea930748562e595d3dde1c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.topic: tutorial
+ms.date: 07/20/2018
+ms.author: nolachar
+ms.openlocfilehash: 5dc9478516f4e9850543a6ee129fef0f1d3ee4f7
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365801"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214911"
 ---
-# <a name="how-to-write-a-microsoft-translator-wpf-application-in-c"></a>如何在 C# 中编写 Microsoft Translator WPF 应用程序
+# <a name="tutorial-write-a-wpf-application-for-translator-text-using-c35"></a>教程：使用 C# 编写用于文本翻译的 WPF 应用程序
 
-在本教程中，我们将使用 Microsoft 文本翻译 API (V3) 构建交互式文本翻译工具，该 API 是 Azure 中 Microsoft 认知服务的一部分。 将了解如何执行以下操作：
+在本教程中，将使用文本翻译 API (V3) 构建交互式文本翻译工具，该 API 是 Azure 中 Microsoft 认知服务的一部分。 将了解如何执行以下操作：
 
 > [!div class="checklist"]
-> * 请求服务支持的语言短代码列表
-> * 检索与这些语言代码对应的本地化语言名称列表
-> * 获取从一种语言到另一种语言的用户输入文本的翻译版本
+> * 获取服务支持的语言的列表
+> * 对用户输入的文本执行从一种语言到另一种语言的翻译
 
 此应用程序还具有与其他两项 Microsoft 认知服务集成的功能。
 
@@ -37,7 +36,7 @@ ms.locfileid: "35365801"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本教程，需要任意版本的 Visual Studio 2017，包括社区版。
+需要使用 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 才能在 Windows 上运行此代码。 （免费的社区版也可以。）
 
 你还需要该程序中使用的三项 Azure 服务的订阅密钥。 你可以从 Azure 仪表板获取文本翻译服务的密钥。 提供免费定价层，使你每个月能够免费翻译最多 200 万个字符。
 
@@ -46,7 +45,7 @@ ms.locfileid: "35365801"
 本教程的源代码如下所示。 订阅密钥必须作为 `MainWindow.xaml.cs` 中的 `TEXT_TRANSLATION_API_SUBSCRIPTION_KEY` 等变量复制到源代码中。
 
 > [!IMPORTANT]
-> 文本分析服务在多个地区提供。 教程源代码中的 URI 位于 `westus` 区域，该区域是用于免费试用的区域。 如果你在其他地区有订阅，请相应地更新此 URI。
+> 文本分析服务在多个地区提供。 本教程源代码中的 URI 位于 `westus` 区域，该区域是用于免费试用的区域。 如果你在其他地区有订阅，请相应地更新此 URI。
 
 ## <a name="source-code"></a>源代码
 
@@ -56,7 +55,7 @@ ms.locfileid: "35365801"
 
 这是提供应用程序功能的代码隐藏文件。
 
-```cs
+```csharp
 using System;
 using System.Windows;
 using System.Net;
@@ -74,9 +73,9 @@ using Newtonsoft.Json;
 namespace MSTranslatorTextDemo
 {
     /// <summary>
-    /// This WPF application demonstrates the use of the Microsoft Translator Text API to translate a brief text string
-    /// one language to another. The langauges are selected from a drop-down menu. The text of the translation is displayed.
-    /// The source language may optionally be automatically detected.  English text is spell-checked.
+    /// This WPF application demonstrates the use of the Microsoft Translator Text API to translate a brief text string from
+    /// one language to another. The languages are selected from a drop-down menu. The text of the translation is displayed.
+    /// The source language may optionally be automatically detected. English text is spell-checked.
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -97,7 +96,7 @@ namespace MSTranslatorTextDemo
 
         public MainWindow()
         {
-            // at least show an error dialog when we get an unexpected error
+            // at least show an error dialog if there's an unexpected error
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(HandleExceptions);
 
             if (TEXT_TRANSLATION_API_SUBSCRIPTION_KEY.Length != 32
@@ -166,7 +165,7 @@ namespace MSTranslatorTextDemo
 
             HttpWebResponse response = (HttpWebResponse)detectLanguageWebRequest.GetResponse();
 
-            // read and and parse JSON response
+            // read and parse JSON response
             var responseStream = response.GetResponseStream();
             var jsonString = new StreamReader(responseStream, Encoding.GetEncoding("utf-8")).ReadToEnd();
             dynamic jsonResponse = serializer.DeserializeObject(jsonString);
@@ -352,18 +351,18 @@ namespace MSTranslatorTextDemo
         <Label x:Name="toLabel" Content="Translate to:" HorizontalAlignment="Left" Margin="304,58,0,0" VerticalAlignment="Top" FontSize="14"/>
 
         <Button x:Name="TranslateButton" Content="Translate" HorizontalAlignment="Left" Margin="39,206,0,0" VerticalAlignment="Top" Width="114" Height="31" Click="TranslateButton_Click" FontSize="14" TabIndex="4" IsDefault="True"/>
-        <ComboBox x:Name="ToLanguageComboBox" 
-                HorizontalAlignment="Left" 
-                Margin="306,88,0,0" 
-                VerticalAlignment="Top" 
+        <ComboBox x:Name="ToLanguageComboBox"
+                HorizontalAlignment="Left"
+                Margin="306,88,0,0"
+                VerticalAlignment="Top"
                 Width="175" FontSize="14" TabIndex="2">
 
         </ComboBox>
         <Label x:Name="fromLabel" Content="Translate from:" HorizontalAlignment="Left" Margin="40,58,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <ComboBox x:Name="FromLanguageComboBox" 
-            HorizontalAlignment="Left" 
-            Margin="42,88,0,0" 
-            VerticalAlignment="Top" 
+        <ComboBox x:Name="FromLanguageComboBox"
+            HorizontalAlignment="Left"
+            Margin="42,88,0,0"
+            VerticalAlignment="Top"
             Width="175" FontSize="14" TabIndex="1"/>
         <Label x:Name="TranslatedTextLabel" Content="Translation appears here" HorizontalAlignment="Left" Margin="39,255,0,0" VerticalAlignment="Top" Width="620" FontSize="14" Height="85" BorderThickness="0"/>
     </Grid>
@@ -372,7 +371,7 @@ namespace MSTranslatorTextDemo
 
 ## <a name="service-endpoints"></a>服务终结点
 
-Microsoft Translator 服务有许多端点，可提供各种翻译功能。 我们在本教程中使用的功能是：
+Microsoft Translator 服务有许多端点，可提供各种翻译功能。 本教程中使用的功能有：
 
 |||
 |-|-|
@@ -381,7 +380,7 @@ Microsoft Translator 服务有许多端点，可提供各种翻译功能。 我�
 
 ## <a name="the-translation-app"></a>翻译应用
 
-翻译应用程序的用户界面使用 Windows Presentation Foundation (WPF) 构建。 按照以下步骤在 Visual Studio 中创建一个新的 WPF 项目。
+翻译应用程序的用户界面是使用 Windows Presentation Foundation (WPF) 构建的。 按照以下步骤在 Visual Studio 中创建一个新的 WPF 项目。
 
 * 从“文件”菜单上，单击“新建”>“项目”。
 * 在“新建项目”窗口中，打开“已安装”>“模板”>“Visual C#”。 可用项目模板的列表显示在对话框的中心。
@@ -413,19 +412,19 @@ Microsoft Translator 服务有许多端点，可提供各种翻译功能。 我�
 * `TranslateButton` (Button) - 用户单击此按钮（或按 Enter 键）以翻译文本。
 * `TranslatedTextLabel` (Label) - 此处显示用户文本的翻译。
 
-如果你正在对此表单制作你自己的版本，则无需完全照搬我们的说明。 但要确保语言下拉菜单足够宽，以避免切断语言名称。
+如果要创建你自己的版本的此表单，则无需完全照搬此处使用的表单。 但要确保语言下拉菜单足够宽，以避免切断语言名称。
 
 ## <a name="the-mainwindow-class"></a>MainWindow 类
 
 代码隐藏文件 `MainWindow.xaml.cs` 是代码运行的地方，使程序完成它的工作。 两次发生此项工作：
 
-* 程序启动时。 当实例化 `MainWindow` 时，我们使用 Translator 的 `GetLanguagesForTranslate` 和 `GetLanguageNames` API 检索语言列表，并用它们填充下拉菜单。 此任务在每个会话的开头执行一次。
+* 当程序启动并且 `MainWindow` 实例化时，它使用 Translator 和 API 检索语言列表，并使用它们填充下拉菜单。 此任务在每个会话的开头执行一次。
 
-* 当用户单击“翻译”按钮时，我们将检索用户的语言选择和他们输入的文本。 然后我们调用 `Translate` API 来执行翻译。 我们还可以调用其他函数来确定文本的语言并在翻译之前更正其拼写。
+* 当用户单击“翻译”按钮时，将检索用户的语言选择和他们输入的文本，然后将调用 `Translate` API 来执行翻译。 在进行翻译之前，可能还需要调用其他函数来确定文本的语言并更正其拼写。
 
-我们了解一下如何开始使用类：
+看看类的开头：
 
-```cs
+```csharp
 public partial class MainWindow : Window
 {
     // Translator text subscription key from Microsoft Azure dashboard
@@ -445,7 +444,7 @@ public partial class MainWindow : Window
 
     public MainWindow()
     {
-        // at least show an error dialog when we get an unexpected error
+        // at least show an error dialog if there's an unexpected error
         AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(HandleExceptions);
 
         if (TEXT_TRANSLATION_API_SUBSCRIPTION_KEY.Length != 32
@@ -475,13 +474,13 @@ public partial class MainWindow : Window
 |`languageCodes`<br>字符串数组|缓存的语言代码。 Translator 服务使用短代码（例如英语为 `en`）来标识语言。|
 |`languageCodesAndTitles`<br>SortedDictionary|将用户界面中的“友好”名称映射回 API 中使用的短代码。 始终按字母顺序排序，不考虑大小写。|
 
-应用程序执行的第一个代码是 `MainWindow` 构造函数。 首先，我们将方法 `HandleExceptions` 设置为全局错误处理程序。 这样，如果没有处理任何异常，我们至少会收到错误警报。
+应用程序执行的第一个代码是 `MainWindow` 构造函数。 首先，将方法 `HandleExceptions` 设置为全局错误处理程序。 这样，如果没有处理某个异常，我们至少会收到一个错误警报。
 
-接下来，我们检查以确保 API 订阅密钥长度都是 32 个字符。 如果不是，最可能的原因是某人未粘贴在其 API 密钥 (tsk) 中。 在这种情况下，我们会显示错误消息并进行纾困。（通过此测试当然并不表示密钥有效。）
+接下来，进行检查以确保 API 订阅密钥长度都是 32 个字符。 如果不是，最可能的原因是某人未粘贴其 API 密钥。 在这种情况下，会显示错误消息并进行纾困。（通过此测试当然并不表示密钥有效。）
 
-如果至少密钥长度正确，则 `InitializeComponent()` 调用通过定位、加载和实例化主应用程序窗口的 XAML 描述来获取用户界面。
+如果密钥至少长度正确，则 `InitializeComponent()` 调用通过定位、加载和实例化主应用程序窗口的 XAML 描述来获取用户界面。
 
-最后，我们设置了语言下拉菜单。 此任务需要三个单独的方法调用。 以下部分详细介绍这三种方法。
+最后，设置语言下拉菜单。 此任务需要三个单独的方法调用，这在以下各部分中进行了详细介绍。
 
 ## <a name="get-supported-languages"></a>获取支持的语言
 
@@ -489,9 +488,9 @@ Microsoft Translator 服务在进行此类撰写时总共支持 61 种语言，�
 
 调用 `Languages` API 以获取支持的语言列表。
 
-`Languages` API 采用可选的 GET 查询参数 scope。 scope 可以包含以下三个值之一：`translation`、`transliteration` 和 `dictionary`。 我们将使用值 `translation`。
+`Languages` API 采用可选的 GET 查询参数 scope。 scope 可以包含以下三个值之一：`translation`、`transliteration` 和 `dictionary`。 此代码使用值 `translation`。
 
-`Languages` API 还采用可选的 HTTP 标头 `Accept-Language`。 此标头的值确定在其中返回支持的语言名称的语言。 该值应该是格式标准的 BCP 47 语言标记。 我们将使用值 `en` 来获取英语的语言名称。
+`Languages` API 还采用可选的 HTTP 标头 `Accept-Language`。 此标头的值确定在其中返回支持的语言名称的语言。 该值应该是格式标准的 BCP 47 语言标记。 此代码使用值 `en` 以英语获取语言名称。
 
 `Languages` API 返回如下所示的 JSON 响应。
 
@@ -512,11 +511,11 @@ Microsoft Translator 服务在进行此类撰写时总共支持 61 种语言，�
 }
 ```
 
-我们想要提取语言代码（例如，`af`）和语言名称（例如，`Afrikaans`）。 我们使用 NewtonSoft.Json 方法 [JsonConvert.DeserializeObject](https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConvert_DeserializeObject__1.htm) 来执行此操作。
+为了可以提取语言代码（例如 `af`）和语言名称（例如 `Afrikaans`），此代码使用 NewtonSoft.Json 方法 [JsonConvert.DeserializeObject](https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConvert_DeserializeObject__1.htm)。
 
-有了这些背景知识，我们创建以下方法来检索语言代码及其名称。
+利用此背景知识，创建以下方法来检索语言代码及其名称。
 
-```cs
+```csharp
 private void GetLanguagesForTranslate()
 {
     // send request to get supported language codes
@@ -541,15 +540,15 @@ private void GetLanguagesForTranslate()
 }
 ```
 
-`GetLanguagesForTranslate()` 首先创建 HTTP 请求。 `scope=translation` 查询字符串参数指定我们需要支持文本翻译的语言。 我们将文本翻译 API 订阅密钥添加到请求标头中。 我们还添加值为 `en` 的 `Accept-Language` 标头，以表示我们希望以英语返回支持的语言。
+`GetLanguagesForTranslate()` 首先创建 HTTP 请求。 `scope=translation` 查询字符串参数仅请求支持文本翻译的那些语言。 文本翻译 API 订阅密钥添加到请求标头中。 将添加值为 `en` 的 `Accept-Language` 标头，以便以英语返回受支持的语言。
 
-请求完成后，我们解析 JSON 响应并将其转换为字典。 我们将语言代码添加到 `languageCodes` 成员变量中。 然后，我们循环访问包含语言代码和友好语言名称的键/值对，并将它们添加到 `languageCodesAndTitles` 成员变量中。 （表单中的下拉菜单显示友好名称，但需要代码来请求翻译。）
+请求完成后，JSON 响应将分析并转换为字典，然后会将语言代码添加到 `languageCodes` 成员变量。 将循环访问包含语言代码和友好语言名称的键/值对，并将它们添加到 `languageCodesAndTitles` 成员变量中。 （表单中的下拉菜单显示友好名称，但代码是请求翻译时所必需的。）
 
 ## <a name="populate-the-language-menus"></a>填充语言菜单
 
-大部分用户界面都是在 XAML 中定义的，因此除了调用 `InitializeComponent()` 之外，我们不需要执行太多操作即可对其进行设置。 我们需要做的其他唯一一件事情是将友好的语言名称添加到“目标语言”和“源语言”下拉列表中，这在 `PopulateLanguageMenus()` 中完成。
+大部分用户界面都是以 XAML 定义的，因此除了调用 `InitializeComponent()` 之外，我们不需要执行太多操作即可对其进行设置。 你需要做的其他唯一事情是将友好的语言名称添加到“翻译源语言”和“翻译目标语言”下拉列表中，这是在 `PopulateLanguageMenus()` 中执行的。
 
-```cs
+```csharp
 private void PopulateLanguageMenus()
 {
     // Add option to automatically detect the source language
@@ -568,18 +567,18 @@ private void PopulateLanguageMenus()
 }
 ```
 
-填充菜单是一个简单的事情，即迭代 `languageCodesAndTitles` 字典并将每个键（“友好”名称）添加到两个菜单中。 填充菜单后，我们将默认的“目标语言”和“源语言”设置为 “检测”（自动检测语言）和英语。
+填充菜单是一个简单的事情，即迭代 `languageCodesAndTitles` 字典并将每个键（“友好”名称）添加到两个菜单中。 填充菜单后，我们将默认的“目标语言”和“源语言”设置为 “检测”（自动检测语言）和“英语”。
 
 > [!TIP]
 > 如果没有为菜单设置默认选择，则用户可以单击“翻译”而无需选择“目标语言”或“源语言”。 默认设置消除了处理此问题的需要。
 
-现在已初始化 `MainWindow`，可创建用户界面。 在用户单击“翻译”按钮之前，我们无法再次获得控制权限。
+现在，`MainWindow` 已初始化并且用户界面已创建，代码将等待用户单击“翻译”按钮。
 
 ## <a name="perform-translation"></a>执行翻译
 
 当用户单击“翻译”时，WPF 会调用此处显示的 `TranslateButton_Click()` 事件处理程序。
 
-```cs
+```csharp
 private async void TranslateButton_Click(object sender, EventArgs e)
 {
     string textToTranslate = TextToTranslate.Text.Trim();
@@ -652,22 +651,22 @@ private async void TranslateButton_Click(object sender, EventArgs e)
 }
 ```
 
-在这里，我们首先从表单中检索“目标语言”和“源语言”以及用户输入的文本。
+第一个步骤是从表单中检索“目标语言”和“源语言”以及用户输入的文本。
 
-如果源语言设置为“检测”，我们调用 `DetectLanguage()` 来确定文本语言。 文本可能是 Translator API 不支持的语言（可检测到的语言比可翻译的语言多得多），或者文本分析 API 可能无法检测到它。 在这种情况下，系统会显示一条消息，通知用户并返回，而不进行翻译。
+如果源语言设置为“检测”，则调用 `DetectLanguage()` 来确定文本语言。 文本可能是 Translator API 不支持的语言（可检测到的语言比可翻译的语言多得多），或者文本分析 API 可能无法检测到它。 在这种情况下，会显示一条消息，通知用户并返回，而不进行翻译。
 
-如果源语言是英语（无论是指定的还是检测到的），我们使用 `CorrectSpelling()` 进行文本拼写检查并应用任何更正。 更正的文本被填充回输入字段，因此用户知道已进行更正。 （用户可以在要翻译的文本之前添加连字符，以禁止拼写更正。）
+如果源语言是英语（无论是指定的还是检测到的），将使用 `CorrectSpelling()` 进行文本拼写检查并应用任何更正。 更正的文本被填充回输入字段，因此用户知道已进行更正。 （用户可以在要翻译的文本之前添加连字符，以禁止拼写更正。）
 
-如果用户未输入任何文本，或者“目标语言”和“源语言”相同，则无需翻译。 在这种情况下，我们避免提出请求。
+如果用户未输入任何文本，或者“目标语言”和“源语言”相同，则无需翻译并且可以将请求作废。
 
-执行翻译请求的代码看起来应很熟悉。 我们生成 URI、创建请求、发送请求并解析响应。 要显示文本，我们将其存储在 `TranslatedTextLabel` 控件中。
+用来执行翻译请求的代码看起来应该很熟悉：构建 URI、创建请求、发送请求，并分析响应。 若要显示文本，请将其发送到 `TranslatedTextLabel` 控件。
 
-我们将文本传递给 POST 请求正文中序列化 JSON 数组中的 `Translate` API。 JSON 数组可以包含多个要翻译的文本，但在这里我们只包含一个。
+接下来，将文本传递给 POST 请求正文中序列化 JSON 数组中的 `Translate` API。 JSON 数组可以包含多段要翻译的文本，但此处只需要一段。
 
 名为 `X-ClientTraceId` 的 HTTP 标头是可选的。 该值应是一个 GUID。 当事情无法按预期方式执行时，客户端提供的跟踪 ID 可用于跟踪请求。 但是，为了有用处，客户端必须记录 X-ClientTraceID 的值。 客户端跟踪 ID 和请求日期可以帮助 Microsoft 诊断可能发生的问题。
 
 > [!NOTE]
-> 本教程重点介绍 Microsoft Translator 服务，因此我们不会详细介绍 `DetectLanguage()` 和 `CorrectSpelling()` 方法。 文本分析和必应拼写检查服务以 JSON 格式而不是 XML 提供响应，文本分析要求也将请求格式化为 JSON。 这些特征占我们已了解的方法的代码差异的大部分。
+> 本教程重点介绍 Microsoft Translator 服务，因此没有详细介绍 `DetectLanguage()` 和 `CorrectSpelling()` 方法。 文本分析和必应拼写检查服务以 JSON 格式而不是 XML 提供响应，文本分析要求也将请求格式化为 JSON。 这些特征导致了与此处讨论的方法的大部分差异。
 
 ## <a name="next-steps"></a>后续步骤
 

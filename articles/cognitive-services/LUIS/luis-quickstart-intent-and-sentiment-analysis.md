@@ -9,14 +9,14 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: v-geberr
-ms.openlocfilehash: 1a48810287c1639910db8e39af2da61d836b2988
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 8dc6b8d4dd4cbe64841c4b36c498cf9021b4196f
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37340927"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930600"
 ---
-# <a name="tutorial-8--add-sentiment-analysis"></a>教程：8.  添加情绪分析
+# <a name="tutorial-9--add-sentiment-analysis"></a>教程：9。  添加情绪分析
 在本教程中，我们将创建一个应用，用于演示如何从陈述中提取积极、消极和中性的情绪。
 
 <!-- green checkmark -->
@@ -30,7 +30,7 @@ ms.locfileid: "37340927"
 本文需要一个免费的 [LUIS](luis-reference-regions.md#luis-website) 帐户，以便创作 LUIS 应用程序。
 
 ## <a name="before-you-begin"></a>开始之前
-如果还没有 [keyPhrase 实体](luis-quickstart-intent-and-key-phrase.md)教程中所述的人力资源应用，请将 JSON [导入](create-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。 要导入的应用位于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-keyphrase-HumanResources.json) Github 存储库中。
+如果还没有 [keyPhrase 实体](luis-quickstart-intent-and-key-phrase.md)教程中所述的人力资源应用，请将 JSON [导入](luis-how-to-start-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。 要导入的应用位于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-keyphrase-HumanResources.json) Github 存储库中。
 
 若要保留原始人力资源应用，请在[设置](luis-how-to-manage-versions.md#clone-a-version)页上克隆版本，并将其命名为 `sentiment`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 
 
@@ -212,10 +212,10 @@ sentimentAnalysis 是积极的，得分为 0.86。
 LUIS 已完成此请求。 调用方应用程序（例如聊天机器人）可以提取 topScoringIntent 结果和陈述中的情绪数据，以执行下一步骤。 LUIS 不会针对机器人或调用方应用程序执行编程工作。 LUIS 只确定用户的意向是什么。 
 
 ## <a name="clean-up-resources"></a>清理资源
-不再需要 LUIS 应用时，请将其删除。 在左上侧菜单中选择“我的应用”。 在应用列表中选择应用名称右侧的省略号图标 (...)，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
+不再需要 LUIS 应用时，请将其删除。 在左上侧菜单中选择“我的应用”。 在应用列表中选择应用名称右侧的省略号 (***...***)，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"] 
-> [使用 C# 调用 LUIS 终结点 API](luis-get-started-cs-get-intent.md) 
+> [在 HR 应用中审核终结点表述](luis-tutorial-review-endpoint-utterances.md) 
 

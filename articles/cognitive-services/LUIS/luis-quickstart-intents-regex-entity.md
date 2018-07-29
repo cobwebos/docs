@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: 522d24c1c03a338633c340502087300c890d1771
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: f51c296b39fda08d0bcc704fb974e71465385d67
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128439"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929365"
 ---
 # <a name="tutorial-3-add-regular-expression-entity"></a>教程：3. 添加正则表达式实体
 在本教程中，我们将创建一个应用，用于演示如何使用**正则表达式**实体从陈述中提取带有一致格式的数据。
@@ -31,7 +31,7 @@ ms.locfileid: "37128439"
 本文需要一个免费的 [LUIS](luis-reference-regions.md#luis-website) 帐户，以便创作 LUIS 应用程序。
 
 ## <a name="before-you-begin"></a>开始之前
-如果尚未获得[预生成实体](luis-tutorial-prebuilt-intents-entities.md)教程中所述的人力资源应用，请将 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-prebuilts-HumanResources.json) Github 存储库中的 JSON [导入](create-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。
+如果尚未获得[预生成实体](luis-tutorial-prebuilt-intents-entities.md)教程中所述的人力资源应用，请将 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-prebuilts-HumanResources.json) Github 存储库中的 JSON [导入](luis-how-to-start-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。
 
 若要保留原始人力资源应用，请在[设置](luis-how-to-manage-versions.md#clone-a-version)页上克隆版本，并将其命名为 `regex`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 
 
@@ -253,7 +253,7 @@ HRF 代表“人力资源表单”。
 LUIS 已完成此请求。 调用方应用程序（例如聊天机器人）可以提取 topScoringIntent 结果和表单编号，并可以搜索第三方 API。 LUIS 不执行此类工作。 LUIS 只会确定用户的意向，并提取有关该意向的数据。 
 
 ## <a name="clean-up-resources"></a>清理资源
-不再需要 LUIS 应用时，请将其删除。 在左上侧菜单中选择“我的应用”。 在应用列表中选择应用名称右侧的省略号图标 (...)，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
+不再需要 LUIS 应用时，请将其删除。 在左上侧菜单中选择“我的应用”。 在应用列表中选择应用名称右侧的省略号 (***...***)，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
 
 ## <a name="next-steps"></a>后续步骤
 
