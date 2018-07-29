@@ -2,19 +2,19 @@
 title: 教程：创建 LUIS 应用以获取正则表达式匹配的数据 - Azure | Microsoft Docs
 description: 本教程介绍如何使用意向和正则表达式实体创建一个简单的 LUIS 应用，以提取数据。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
-ms.author: v-geberr
-ms.openlocfilehash: f51c296b39fda08d0bcc704fb974e71465385d67
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry
+ms.openlocfilehash: 99f796bf26df755ca938c3023057e2e9de1706a1
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929365"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238329"
 ---
 # <a name="tutorial-3-add-regular-expression-entity"></a>教程：3. 添加正则表达式实体
 在本教程中，我们将创建一个应用，用于演示如何使用**正则表达式**实体从陈述中提取带有一致格式的数据。
@@ -139,7 +139,7 @@ HRF 代表“人力资源表单”。
 
 3. 当网站顶部出现确认成功的绿色状态栏时，表示发布已完成。
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>使用不同的陈述查询终结点
+## <a name="query-the-endpoint-with-a-different-utterance"></a>使用不同的话语查询终结点
 1. 在“发布”页的底部，选择“终结点”链接。 此操作会打开另一个浏览器窗口，其地址栏中包含终结点 URL。 
 
     ![“发布”页的屏幕截图，其中已突出显示终结点 URL](./media/luis-quickstart-intents-regex-entity/publish-select-endpoint.png)

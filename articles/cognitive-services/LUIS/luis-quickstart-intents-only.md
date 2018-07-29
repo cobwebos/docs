@@ -2,19 +2,19 @@
 title: 使用两个意向创建一个简单的应用 - Azure | Microsoft Docs
 description: 本教程介绍如何使用两个意向但不使用任何实体来创建一个简单的 LUIS 应用，以识别用户陈述。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 06/27/2018
-ms.author: v-geberr
-ms.openlocfilehash: 0668ba050a6918995deb42d8feea5afbbab3b010
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.author: diberry
+ms.openlocfilehash: 4be36e9d5b34c46138a657429680689014d0fd3d
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865805"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237768"
 ---
 # <a name="tutorial-1-build-app-with-custom-domain"></a>教程：1. 使用自定义域生成应用
 在本教程中，我们将创建一个应用，用于演示如何使用**意向**，根据用户提交到应用的陈述（文本），来确定该用户的_意向_。 完成本教程后，会在云中运行一个 LUIS 终结点。
@@ -88,7 +88,7 @@ ms.locfileid: "37865805"
 ## <a name="train-and-publish-the-app"></a>训练并发布应用
 1. 在 LUIS 网站的右上方，选择“训练”按钮。 
 
-    ![训练按钮](./media/luis-quickstart-intents-only/train-button.png)
+    ![“训练”按钮](./media/luis-quickstart-intents-only/train-button.png)
 
     当网站顶部出现确认成功的绿色状态栏时，表示训练已完成。
 

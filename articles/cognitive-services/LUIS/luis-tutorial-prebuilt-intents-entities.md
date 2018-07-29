@@ -2,24 +2,24 @@
 title: 添加预生成的意向和实体以提取语言理解中的常见数据 - Azure | Microsoft Docs
 description: 了解如何使用预生成的意向和实体以提取不同类型的实体数据。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
-ms.author: v-geberr
-ms.openlocfilehash: 387f20d2080a67041c90ec1af93e791716839dd9
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry
+ms.openlocfilehash: 3fc2040e66f6fc649448d3241b01678b7bb7f214
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929043"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39239029"
 ---
 # <a name="tutorial-2-add-prebuilt-intents-and-entities"></a>教程：2。 添加预构建的意向和实体
 将预生成的意向和实体添加到人力资源教程应用，以便快速了解意向预测和数据提取。 
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 * 添加预生成意向 

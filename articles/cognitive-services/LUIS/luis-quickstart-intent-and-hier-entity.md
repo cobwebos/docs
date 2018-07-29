@@ -2,19 +2,19 @@
 title: 教程：创建 LUIS 应用以获取位置数据 - Azure | Microsoft Docs
 description: 本教程介绍如何使用意向和分层实体创建一个简单的 LUIS 应用，以提取数据。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
 ms.date: 07/04/2018
-ms.author: v-geberr
-ms.openlocfilehash: babfc2f82e17f3745af1d940df89763170a002bd
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry
+ms.openlocfilehash: fb29e0a22331ce279d3dc8fc5a0044ae794d260b
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929580"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226078"
 ---
 # <a name="tutorial-5-add-hierarchical-entity"></a>教程：5. 添加分层的实体
 在本教程中，我们将创建一个应用，用于演示如何根据上下文查找相关的数据片段。 
@@ -150,12 +150,12 @@ LUIS 在训练之前，并不知道意向和实体（模型）发生的变化。
 
 3. 当网站顶部出现确认成功的绿色状态栏时，表示发布已完成。
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>使用不同的陈述查询终结点
+## <a name="query-the-endpoint-with-a-different-utterance"></a>使用不同的话语查询终结点
 1. 在“发布”页的底部，选择“终结点”链接。 此操作会打开另一个浏览器窗口，其地址栏中包含终结点 URL。 
 
     [![](media/luis-quickstart-intent-and-hier-entity/publish-select-endpoint.png "“发布”页的屏幕截图，其中已突出显示终结点 URL")](media/luis-quickstart-intent-and-hier-entity/publish-select-endpoint.png#lightbox)
 
-2. 将光标定位到地址栏中 URL 的末尾，并输入 `Please relocation jill-jones@mycompany.com from x-2345 to g-23456`。 最后一个查询字符串参数为 `q`，表示陈述**查询**。 此陈述不同于标记的任何陈述，因此，它非常适合用于测试，测试结果应返回包含所提取的分层实体的 `MoveEmployee` 意向。
+2. 将光标定位到地址栏中 URL 的末尾，并输入 `Please relocation jill-jones@mycompany.com from x-2345 to g-23456`。 最后一个查询字符串参数为 `q`，表示陈述**查询**。 此话语不同于标记的任何话语，因此，它非常适合用于测试，测试结果应返回包含所提取的分层实体的 `MoveEmployee` 意向。
 
 ```JSON
 {

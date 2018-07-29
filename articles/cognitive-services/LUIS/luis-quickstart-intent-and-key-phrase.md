@@ -2,19 +2,19 @@
 title: 教程：创建返回关键短语的 LUIS 应用 - Azure | Microsoft Docs
 description: 本教程介绍如何在 LUIS 应用中添加和返回 keyPhrase 实体，以分析有关关键主题的陈述。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
 ms.date: 06/27/2018
-ms.author: v-geberr
-ms.openlocfilehash: ccefb4c2890d74978f340778cfab7cad979c9802
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry
+ms.openlocfilehash: 1cafca2433cd96c0595a6124df82856d0c491a49
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929540"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224256"
 ---
 # <a name="tutorial-8-add-keyphrase-entity"></a>教程：8. 添加 keyPhrase 实体 
 在本教程中，我们将使用一个应用，它演示了如何从陈述中提取关键主题。

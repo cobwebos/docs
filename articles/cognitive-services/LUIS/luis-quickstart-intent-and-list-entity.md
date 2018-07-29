@@ -2,19 +2,19 @@
 title: 教程：创建 LUIS 应用以获取与所列数据完全匹配的文本 - Azure | Microsoft Docs
 description: 本教程介绍如何使用意向和列表实体创建一个简单的 LUIS 应用，以提取本快速入门中的数据。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
-ms.author: v-geberr
-ms.openlocfilehash: da0491aae571f085a8cbe3cd372f905202e9db9b
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry
+ms.openlocfilehash: 4ba2ba5d947a112f780579bf4b31ba38cb26ae03
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931059"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222964"
 ---
 # <a name="tutorial-4-add-list-entity"></a>教程：4. 添加列表实体
 在本教程中，我们将创建一个应用，用于演示如何获取与预定义列表匹配的数据。 
@@ -165,7 +165,7 @@ LUIS 在训练之前，并不知道意向和实体（模型）发生的变化。
 
 3. 当网站顶部出现确认成功的绿色状态栏时，表示发布已完成。
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>使用不同的陈述查询终结点
+## <a name="query-the-endpoint-with-a-different-utterance"></a>使用不同的话语查询终结点
 1. 在“发布”页的底部，选择“终结点”链接。 此操作会打开另一个浏览器窗口，其地址栏中包含终结点 URL。 
 
     [![](media/luis-quickstart-intent-and-list-entity/publish-select-endpoint.png "“发布”页上的终结点 URL 屏幕截图")](media/luis-quickstart-intent-and-list-entity/publish-select-endpoint.png#lightbox)

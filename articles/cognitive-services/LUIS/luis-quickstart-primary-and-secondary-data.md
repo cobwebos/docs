@@ -2,19 +2,19 @@
 title: 教程：创建 LUIS 应用以提取数据 - Azure | Microsoft Docs
 description: 本教程介绍如何使用意向和简单实体创建一个简单的 LUIS 应用，以提取机器学习的数据。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
-ms.author: v-geberr
-ms.openlocfilehash: a4bf63b7a2fbbb26b8c121f5360aea0a5ca8a687
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.author: diberry
+ms.openlocfilehash: aafbf7d1b4a624d42e2caa96f9d3ebdfaee4efe6
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952379"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237999"
 ---
 # <a name="tutorial-7-add-simple-entity-and-phrase-list"></a>教程：7. 添加简单实体和短语列表
 在本教程中，我们将使用**简单**实体创建一个应用，用于演示如何从陈述中提取机器学习的数据。
@@ -39,7 +39,7 @@ ms.locfileid: "37952379"
 ## <a name="purpose-of-the-app"></a>应用的用途
 此应用演示如何从陈述中提取数据。 假设某个聊天机器人包含以下陈述：
 
-|陈述|可提取的工作名称|
+|话语|可提取的工作名称|
 |:--|:--|
 |我想要申请新的会计工作。|会计|
 |请提交我的申请工程职位的简历。|工程|
@@ -93,7 +93,7 @@ ms.locfileid: "37952379"
 
 6. 添加更多的陈述并将工作词汇或短语标记为“工作”实体。 就某项就业服务来说，工作类型通常是跨就业的。 如果所需工作与特定行业相关，则工作词汇应反映这一点。 
 
-    |陈述|工作实体|
+    |话语|工作实体|
     |:--|:--|
     |我要申请研发方面的计划经理职务|计划经理|
     |这是我的帮厨申请。|帮厨|
@@ -119,7 +119,7 @@ ms.locfileid: "37952379"
 
 3. 标记示例陈述中的工作：
 
-    |陈述|工作实体|
+    |话语|工作实体|
     |:--|:--|
     |是否有数据库方面的工作？|数据库|
     |寻找会计方面的新职位|会计|
@@ -149,7 +149,7 @@ LUIS 在训练之前，并不知道意向和实体（模型）发生的变化。
 
 3. 当网站顶部出现确认成功的绿色状态栏时，表示发布已完成。
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>使用不同的陈述查询终结点
+## <a name="query-the-endpoint-with-a-different-utterance"></a>使用不同的话语查询终结点
 在“发布”页的底部，选择“终结点”链接。 
 
 [![](media/luis-quickstart-primary-and-secondary-data/publish-select-endpoint.png "“发布”页的屏幕截图，其中已突出显示终结点")](media/luis-quickstart-primary-and-secondary-data/publish-select-endpoint.png#lightbox)
