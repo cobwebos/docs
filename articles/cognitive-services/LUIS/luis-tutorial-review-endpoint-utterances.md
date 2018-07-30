@@ -2,19 +2,19 @@
 title: 介绍如何在语言理解 (LUIS) 中审核终结点表述的教程 - Azure | Microsoft Docs
 description: 本教程介绍如何在 LUIS 的人力资源 (HR) 领域中审核终结点表述。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
 ms.date: 07/03/2018
-ms.author: v-geberr
-ms.openlocfilehash: cd8374b3804594f96212dbe741f99ba22d33a4e8
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.author: diberry
+ms.openlocfilehash: 1f1e3310e0d02983aaecc3f87ba9c116d65b751b
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970500"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237207"
 ---
 # <a name="tutorial-review-endpoint-utterances"></a>教程：审核终结点表述
 本教程会验证或纠正通过 LUIS HTTP 终结点收到的表述，以便改进应用预测。 
@@ -23,7 +23,7 @@ ms.locfileid: "38970500"
 > [!div class="checklist"]
 > * 了解如何审核终结点表述 
 > * 使用适合人力资源 (HR) 领域的 LUIS 应用 
-> * 查看终结点表述
+> * 查看终结点话语
 > * 训练并发布应用
 > * 查询应用终结点以查看 LUIS JSON 响应
 
@@ -47,7 +47,7 @@ ms.locfileid: "38970500"
 
 可以通过审核终结点表述来验证或纠正表述的已预测意向。 另外，请标记未预测的自定义实体。 
 
-## <a name="review-endpoint-utterances"></a>查看终结点表述
+## <a name="review-endpoint-utterances"></a>查看终结点话语
 
 1. LUIS 的“生成”部分包含你的人力资源应用。 在右上方的菜单栏中选择“生成”可切换到此部分。 
 
@@ -61,7 +61,7 @@ ms.locfileid: "38970500"
     
     [ ![“审核终结点表述”的屏幕截图，突出显示了“实体”视图切换](./media/luis-tutorial-review-endpoint-utterances/select-entities-view.png)](./media/luis-tutorial-review-endpoint-utterances/select-entities-view.png#lightbox)
 
-    |陈述|正确的意向|缺失的实体|
+    |话语|正确的意向|缺失的实体|
     |:--|:--|:--|
     |我要找一份使用自然语言处理的工作|GetJobInfo|工作 -“自然语言处理”|
 
@@ -224,7 +224,7 @@ ms.locfileid: "38970500"
 }
 ```
 
-预测到的正确意向分数较高，检测到的“工作”实体为 `natural language processing`。 
+通过一个高分预测到了正确意向，检测到的“工作”实体为 `natural language processing`。 
 
 ## <a name="can-reviewing-be-replaced-by-adding-more-utterances"></a>是否可以通过添加更多的表述来代替审核？ 
 你可能会想，为何不添加更多的示例表述呢？ 审核终结点表述的目的是什么？ 在实际的 LUIS 应用中，终结点表述来自各个用户，其遣词造句方式与你并不相同。 如果同样的词汇和句式多次使用，则原始预测的百分比会更高。 

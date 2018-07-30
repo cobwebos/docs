@@ -83,6 +83,7 @@
 
 ## 管理联合身份验证服务
 ### [管理和自定义](active-directory-aadconnect-federation-management.md)
+### [使用 Azure AD Connect 管理 AD FS 与 Azure AD 之间的信任关系](active-directory-azure-ad-connect-azure-ad-trust.md)
 ### [将 Azure AD 的多个实例与 AD FS 的单个实例联合](active-directory-aadconnectfed-single-adfs-multitenant-federation.md)
 
 

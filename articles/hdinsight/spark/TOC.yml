@@ -209,6 +209,8 @@
       items:
         - name: 管理群集资源
           href: apache-spark-resource-manager.md
+        - name: 使用扩展历史记录服务器管理 Spark 应用程序
+          href: apache-azure-spark-history-server.md
         - name: 配置 Spark 设置
           href: apache-spark-settings.md
         - name: 优化 Spark 作业
