@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: 1a713d23a385723517ba1fe924f9ec54d81eade5
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 4cf62e609505487961dbfbab3f46c37d54e8f50b
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857884"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259046"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -66,7 +66,7 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 ## <a name="control-activities"></a>控制活动
 支持以下控制流活动：
 
-控制活动 | 说明
+控制活动 | Description
 ---------------- | -----------
 [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md) | Execute Pipeline 活动允许数据工厂管道调用另一个管道。
 [ForEach 活动](control-flow-for-each-activity.md) | ForEach 活动在管道中定义重复的控制流。 此活动用于循环访问集合，并在循环中执行指定的活动。 此活动的循环实现类似于采用编程语言的 Foreach 循环结构。
@@ -95,9 +95,9 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 }
 ```
 
-标记 | 说明 | Type | 必选
+标记 | Description | Type | 必选
 --- | ----------- | ---- | --------
-名称 | 管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：140</li><li>必须以字母、数字或下划线 (_) 开头</li><li>•   不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\”</li></ul> | String | 是
+名称 | 管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：140</li><li>必须以字母、数字或下划线 (_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\”</li></ul> | String | 是
 description | 指定描述管道用途的文本。 | String | 否
 活动 | **activities** 节中可定义有一个或多个活动。 请参阅[活动 JSON](#activity-json) 一节，以了解有关活动 JSON 元素的详细信息。 | Array | 是
 parameters | **参数**部分可在在管道内定义一个或多个参数，使你的管道能够灵活地重复使用。 | 列出 | 否
@@ -128,7 +128,7 @@ parameters | **参数**部分可在在管道内定义一个或多个参数，使
 
 下表描述了活动 JSON 定义中的属性：
 
-标记 | 说明 | 必选
+标记 | Description | 必选
 --- | ----------- | ---------
 名称 | 活动的名称。 指定一个名称，它表示活动要执行的操作。 <br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\” | 是</li></ul>
 description | 描述活动用途的文本 | 是
@@ -168,7 +168,7 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
     }
 }
 ```
-JSON 名称 | 说明 | 允许的值 | 必选
+JSON 名称 | Description | 允许的值 | 必选
 --------- | ----------- | -------------- | --------
 timeout | 指定活动运行的超时。 | Timespan | 不是。 默认超时为 7 天。
 retry | 最大重试次数 | Integer | 不是。 默认值为 0
@@ -192,7 +192,7 @@ secureOutput | 当设置为 true 时，来自活动的输出被视为安全的�
 }
 ```
 
-标记 | 说明 | 必选
+标记 | Description | 必选
 --- | ----------- | --------
 名称 | 活动的名称。 指定一个名称，它表示活动要执行的操作。<br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\” | 是</li><ul>
 description | 描述活动用途的文本 | 是

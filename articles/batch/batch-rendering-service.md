@@ -8,18 +8,18 @@ ms.service: batch
 ms.topic: hero-article
 ms.date: 05/10/2018
 ms.author: danlep
-ms.openlocfilehash: f07b3ce85641f34462c97d16bbed8cf9e2e50652
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: cdec9c29d7f4f2832e175153ec50e400a735211a
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114535"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172266"
 ---
 # <a name="get-started-with-batch-rendering"></a>Batch 渲染入门 
 
 Azure Batch 渲染提供云规模的渲染功能，按使用付费。 Batch 渲染处理作业计划和队列、管理失败和重试，以及针对渲染作业自动缩放。 Batch 渲染支持 [Autodesk Maya](https://www.autodesk.com/products/maya/overview)、[3ds Max](https://www.autodesk.com/products/3ds-max/overview)、[Arnold](https://www.autodesk.com/products/arnold/overview) 和 [V-Ray](https://www.chaosgroup.com/vray/maya) 等渲染应用。 使用用于 Maya 2017 的 Batch 插件，可以直接从桌面轻松启动 Azure 上的渲染作业。
 
-有了 Maya 和 3ds Max，即可使用 [BatchLabs](https://github.com/Azure/BatchLabs) 桌面应用程序或 [Batch 模板 CLI](batch-cli-templates.md) 运行作业。 使用 Azure Batch CLI，可在不编写代码的情况下运行 Batch 作业。 可以改用模板文件来创建 Batch 池、作业和任务。 有关详细信息，请参阅[使用 Azure Batch CLI 模板和文件传输](batch-cli-templates.md)。
+有了 Maya 和 3ds Max，可以使用 [Batch Explorer](https://github.com/Azure/BatchExplorer) 桌面应用程序或 [Batch 模板 CLI](batch-cli-templates.md) 运行作业。 使用 Azure Batch CLI，可在不编写代码的情况下运行 Batch 作业。 可以改用模板文件来创建 Batch 池、作业和任务。 有关详细信息，请参阅[使用 Azure Batch CLI 模板和文件传输](batch-cli-templates.md)。
 
 
 ## <a name="supported-applications"></a>支持的应用程序
@@ -55,7 +55,7 @@ Batch 渲染目前支持以下应用程序：
 - **Azure Batch 帐户**。 有关在 Azure 门户中创建 Batch 帐户的指南，请参阅[使用 Azure 门户创建 Batch 帐户](batch-account-create-portal.md)。
 - **Azure 存储帐户**。 用于渲染作业的资产通常存储在 Azure 存储中。 可以在设置 Batch 帐户时自动创建存储帐户。 也可以使用现有的存储帐户。 有关 Batch 中的存储帐户选项，请参阅 [Batch 功能概述](batch-api-basics.md#azure-storage-account)。
 - **环境变量**。 如果你的解决方案修改了环境变量，请确保在调用上述任何经许可的应用程序时 `AZ_BATCH_ACCOUNT_URL` 和 `AZ_BATCH_SOFTWARE_ENTITLEMENT_TOKEN` 的值保持不变并存在。 否则，可能会遇到软件激活问题。
-- **BatchLabs**（可选）。 [BatchLabs](https://azure.github.io/BatchLabs) 是一个功能丰富的免费独立客户端工具，可帮助创建、调试和监视 Azure Batch 应用程序。 虽然不是使用渲染服务所必需的，但它是一个有用的选项，可以开发和调试 Batch 解决方案。
+- **Batch Explorer**（可选）。 [Batch Explorer](https://azure.github.io/BatchExplorer)（以前称为 BatchLabs）是一个功能丰富的免费独立客户端工具，可帮助创建、调试和监视 Azure Batch 应用程序。 虽然不是使用渲染服务所必需的，但它是一个有用的选项，可以开发和调试 Batch 解决方案。
 
 若要使用用于 Maya 的 Batch 插件，你需要：
 
@@ -76,7 +76,7 @@ Batch 是一项平台服务，用于在计算节点池中运行计算密集型�
 
 Batch 作业是在池中计算节点上运行的任务的集合。 当提交渲染作业时，Batch 会将该作业分解为多个任务，然后分发这些任务以在池中的计算节点上运行。
 
-可以使用 [Azure 门户](https://ms.portal.azure.com/)来监视作业和诊断失败的任务，只需下载应用程序日志以及使用 RDP 或 SSH 以远程方式连接到各个 VM 即可。 也可使用 [BatchLabs 工具](https://azure.github.io/BatchLabs)进行管理、监视和调试。
+可以使用 [Azure 门户](https://ms.portal.azure.com/)来监视作业和诊断失败的任务，只需下载应用程序日志以及使用 RDP 或 SSH 以远程方式连接到各个 VM 即可。 也可以使用 [Batch Explorer 工具](https://azure.github.io/BatchExplorer)进行管理、监视和调试。
 
 有关 Batch 作业的详细信息，请参阅[使用 Batch 开发大规模并行计算解决方案](batch-api-basics.md)中的[作业](batch-api-basics.md#job)部分。
 
@@ -86,9 +86,9 @@ Batch 作业是在池中计算节点上运行的任务的集合。 当提交渲�
 
 ### <a name="pre-configured-vm-images"></a>预配置的 VM 映像
 
-Azure 提供 Windows 和 Linux 映像，每个都预先安装了单一版本的 Maya、3ds Max、Arnold 和 V-Ray，可以马上使用。 创建池时，可以在 [Azure 门户](https://portal.azure.com)、Maya 插件或 [BatchLabs](https://azure.github.io/BatchLabs) 中选择这些映像。
+Azure 提供 Windows 和 Linux 映像，每个都预先安装了单一版本的 Maya、3ds Max、Arnold 和 V-Ray，可以马上使用。 创建池时，可以在 [Azure 门户](https://portal.azure.com)、Maya 插件或 [Batch Explorer](https://azure.github.io/BatchExplorer) 中选择这些映像。
 
-可以在 Azure 门户和 BatchLabs 中安装某个已预装了应用程序的 VM 映像，如下所示：在 Batch 帐户的“池”部分选择“新建”，然后在“添加池”中从“映像类型”下拉列表选择“图形和渲染(Linux/Windows)”：
+可以在 Azure 门户和 Batch Explorer 中安装某个已预装了应用程序的 VM 映像，如下所示：在 Batch 帐户的“池”部分选择“新建”，然后在“添加池”中从“映像类型”下拉列表选择“图形和渲染(Linux/Windows)”：
 
 ![选择 Batch 帐户的映像类型](./media/batch-rendering-service/add-pool.png)
 
@@ -111,17 +111,17 @@ Azure 提供 Windows 和 Linux 映像，每个都预先安装了单一版本的 
 可以通过 Maya 来使用：
 
 - [用于 Maya 的 Batch 插件](https://docs.microsoft.com/azure/batch/batch-rendering-service#use-the-batch-plug-in-for-maya-to-submit-a-render-job)
-- [BatchLabs](https://azure.github.io/BatchLabs) 桌面应用程序
+- [Batch Explorer](https://azure.github.io/BatchExplorer) 桌面应用程序
 - [Batch 模板 CLI](batch-cli-templates.md)
 
 ### <a name="3ds-max"></a>3ds Max
 
 有了 3ds Max，即可使用：
 
-- [BatchLabs](https://azure.github.io/BatchLabs) 桌面应用程序（请参阅 [BatchLabs-data](https://github.com/Azure/BatchLabs-data/tree/master/ncj/3dsmax)，了解如何使用 3ds Max BatchLabs 模板）
+- [Batch Explorer](https://azure.github.io/BatchExplorer) 桌面应用程序（请参阅 [BatchExplorer-data](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/3dsmax)，了解如何使用 3ds Max 模板）
 - [Batch 模板 CLI](batch-cli-templates.md)
 
-有了 3ds Max Batch 实验室模板，即可使用 Batch 渲染来渲染 VRay 和 Arnold 场景。 适用于 VRay 和 Arnold 的模板有两个变体，一个用于标准场景，另一个用于较复杂的场景，需要资产和纹理的 3ds Max 路径文件（.mxp 文件）。 有关 3ds Max Batch 实验室模板的详细信息，请参阅 GitHub 上的 [BatchLabs-data](https://github.com/Azure/BatchLabs-data/tree/master/ncj/3dsmax) 存储库。
+有了 3ds Max Batch 实验室模板，即可使用 Batch 渲染来渲染 VRay 和 Arnold 场景。 适用于 VRay 和 Arnold 的模板有两个变体，一个用于标准场景，另一个用于较复杂的场景，需要资产和纹理的 3ds Max 路径文件（.mxp 文件）。 有关 3ds Max 模板的详细信息，请参阅 GitHub 上的 [BatchExplorer-data](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/3dsmax) 存储库。
 
 另外，可以使用 [Batch Python SDK](/python/api/overview/azure/batch) 将渲染与现有管道集成。
 

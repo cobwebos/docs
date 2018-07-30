@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 上部署和运行设备模拟解决方案 | Microsoft Docs
+title: 尝试使用和运行 Azure 上的设备模拟解决方案 | Microsoft Docs
 description: 本快速入门介绍如何部署设备模拟 Azure IoT 解决方案加速器。 请使用解决方案仪表板来创建模拟。
 author: dominicbetts
 manager: timlt
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/05/2018
 ms.author: dobett
-ms.openlocfilehash: fd4a637ebb05493bf0c0a940c3ff0cb56ad94c54
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 549a1b867ad35c6de42969722ba5a2bd28c8f99a
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005027"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213150"
 ---
 # <a name="quickstart-deploy-and-run-a-cloud-based-device-simulation-solution"></a>快速入门：部署并运行基于云的设备模拟解决方案
 

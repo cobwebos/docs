@@ -1,25 +1,22 @@
 ---
-title: 快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业 | Microsoft Docs
+title: 快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业
 description: 本快速入门介绍如何使用 Azure 门户创建 Azure Databricks 工作区和 Apache Spark 群集，以及如何运行 Spark 作业。
 services: azure-databricks
-documentationcenter: ''
-author: nitinme
+ms.service: azure-databricks
+author: jasonwhowell
+ms.author: jasonh
 manager: cgronlun
 editor: cgronlun
-ms.service: azure-databricks
 ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/23/2018
-ms.author: nitinme
+ms.date: 07/23/2018
 ms.custom: mvc
-ms.openlocfilehash: 19dcdeefe4a65f5c0fab06766a0fa40838df8b08
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a302c0c6c4ecbaff2d11d852caf9e1e1500931b8
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30232426"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225340"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业
 
@@ -41,7 +38,7 @@ ms.locfileid: "30232426"
 
     ![Azure 门户上的 Databricks](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Azure 门户上的 Databricks")
 
-3. 在“Azure Databricks 服务”下，提供所需的值以创建 Databricks 工作区。
+2. 在“Azure Databricks 服务”下，提供所需的值以创建 Databricks 工作区。
 
     ![创建 Azure Databricks 工作区](./media/quickstart-create-databricks-workspace-portal/create-databricks-workspace.png "创建 Azure Databricks 工作区")
 
@@ -63,6 +60,9 @@ ms.locfileid: "30232426"
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>在 Databricks 中创建 Spark 群集
 
+> [!NOTE] 
+> 若要使用免费帐户创建 Azure Databricks 群集，请在创建群集前转到你的配置文件并将订阅更改为**即用即付**。 有关详细信息，请参阅 [Azure 免费帐户](https://azure.microsoft.com/en-us/free/)。  
+
 1. 在 Azure 门户中，转到所创建的 Databricks 工作区，然后单击“启动工作区”。
 
 2. 随后将会重定向到 Azure Databricks 门户。 在该门户中，单击“群集”。
@@ -83,14 +83,34 @@ ms.locfileid: "30232426"
 
 有关创建群集的详细信息，请参阅[在 Azure Databricks 中创建 Spark 群集](https://docs.azuredatabricks.net/user-guide/clusters/create.html)。
 
+
+## <a name="download-a-sample-data-file"></a>上传示例数据文件
+下载示例 JSON 数据文件并将其保存到 Azure blob 存储中。
+
+1. [从 Github](https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) 中将此示例 JSON 数据文件下载到本地计算机上。 单击右键并在本地保存原始文件。 
+
+2. 如果还没有存储帐户，请创建一个。 
+   - 在 Azure 门户中，选择“创建资源”。  选择**存储**类别，然后选择**存储帐户**  
+   - 为存储帐户提供唯一名称。
+   - 选择“帐户类型”：“Blob 存储”
+   - 选择一个**资源组**名称。 使用在其中创建了 Databricks 工作区的同一个资源组。
+   
+   有关详细信息，请参阅[创建 Azure Blob 存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)。 
+
+3. 在 Blob 存储帐户中创建一个存储容器，并将示例 json 文件上传到该容器中。 可以使用 Azure 门户或 [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)来上传文件。
+
+   - 在 Azure 门户中打开存储帐户。
+   - 选择“Blob”。
+   - 选择“+ 容器”来新建空容器。
+   - 为容器提供**名称**，例如 `databricks`。 
+   - 选择“专用(非匿名访问)”访问级别。
+   - 创建容器后，选择容器名称。
+   - 选择“上传”按钮。
+   - 在“文件”页上，选择**文件夹图标**来浏览并选择要上传的示例文件 `small_radio_json.json`。 
+   - 选择“上传”来上传该文件。
+   
+   
 ## <a name="run-a-spark-sql-job"></a>运行 Spark SQL 作业
-
-开始学习本部分之前，必须完成以下先决条件：
-
-* [创建 Azure Blob 存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account) 
-* [从 Github](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) 下载示例 JSON 文件。 
-* 将示例 JSON 文件上传到所创建的 Azure Blob 存储帐户。 可以使用 [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)上传该文件。
-
 执行以下任务在 Databricks 中创建笔记本、将该笔记本配置为从 Azure Blob 存储帐户读取数据，然后针对这些数据运行 Spark SQL 作业。
 
 1. 在左窗格中，单击“工作区”。 在“工作区”下拉列表中，依次单击“创建”、“笔记本”。
@@ -170,7 +190,7 @@ ms.locfileid: "30232426"
     * 将“值”设置为“级别”。
     * 将“聚合”设置为“计数”。
 
-    单击“应用” 。
+    单击“应用”。
 
 9. 输出将显示以下屏幕截图中所示的可视表示形式：
 

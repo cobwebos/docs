@@ -1,6 +1,6 @@
 ---
-title: 使用 Linux VM MSI 访问 Azure Cosmos DB
-description: 本教程展示了使用 Linux VM 上系统分配的托管服务标识 (MSI) 访问 Azure Cosmos DB 的过程。
+title: 使用 Linux VM 托管服务标识访问 Azure Cosmos DB
+description: 本教程展示了使用 Linux VM 上系统分配的托管服务标识访问 Azure Cosmos DB 的过程。
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
 ms.author: daveba
-ms.openlocfilehash: 30962827d0a7fbc70c2ed4c642d9bb8a586124da
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: af148cd8b3eececb258057a8bf6a78216ec0e50a
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904418"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258324"
 ---
-# <a name="tutorial-use-a-linux-vm-msi-to-access-azure-cosmos-db"></a>教程：使用 Linux VM MSI 访问 Azure Cosmos DB 
+# <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-cosmos-db"></a>教程：使用 Linux VM 托管服务标识访问 Azure Cosmos DB 
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 
-本教程展示了如何创建和使用 Linux VM MSI。 学习如何：
+本教程展示了如何创建和使用 Linux VM 托管服务标识。 学习如何：
 
 > [!div class="checklist"]
-> * 创建启用了 MSI 的 Linux VM
+> * 创建启用了托管服务标识的 Linux VM
 > * 创建 Cosmos DB 帐户
 > * 在 Cosmos DB 帐户中创建集合
-> * 向 MSI 授予对 Azure Cosmos DB 实例的访问权限
-> * 检索 Linux VM 的 MSI 的 `principalID`
+> * 向托管服务标识授予对 Azure Cosmos DB 实例的访问权限
+> * 检索 Linux VM 的托管服务标识的 `principalID`
 > * 获取访问令牌，并使用它调用 Azure 资源管理器
 > * 从 Azure 资源管理器中获取访问密钥，以便进行 Cosmos DB 调用
 
@@ -54,9 +54,9 @@ ms.locfileid: "37904418"
 
 ## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>在新的资源组中创建 Linux 虚拟机
 
-对于本教程，将新建一台启用了 MSI 的 Linux VM。
+对于本教程，新建一台启用了托管服务标识的 Linux VM。
 
-若要创建启用 MSI 的 VM，请执行以下操作：
+若要创建启用了托管服务标识的 VM，请执行以下操作：
 
 1. 如果在本地控制台中使用 Azure CLI，首先请使用 [az login](/cli/azure/reference-index#az_login) 登录到 Azure。 使用与要在其下部署 VM 的 Azure 订阅关联的帐户：
 
@@ -70,7 +70,7 @@ ms.locfileid: "37904418"
    az group create --name myResourceGroup --location westus
    ```
 
-3. 运行 [az vm create](/cli/azure/vm/#az_vm_create) 创建 VM。 下面的示例创建名为 myVM 且已启用 MSI 的 VM（应 `--assign-identity` 参数的要求）。 `--admin-username` 和 `--admin-password` 参数指定用于登录虚拟机的管理用户名和密码帐户。 针对自己的环境相应地更新这些值： 
+3. 运行 [az vm create](/cli/azure/vm/#az_vm_create) 创建 VM。 下面的示例创建名为 *myVM* 且具有托管服务标识（应 `--assign-identity` 参数的要求）的 VM。 `--admin-username` 和 `--admin-password` 参数指定用于登录虚拟机的管理用户名和密码帐户。 针对自己的环境相应地更新这些值： 
 
    ```azurecli-interactive 
    az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter --generate-ssh-keys --assign-identity --admin-username azureuser --admin-password myPassword12
@@ -95,14 +95,14 @@ ms.locfileid: "37904418"
 2. 在“概览”选项卡中单击“+/添加集合”按钮，此时“添加集合”面板就会滑出。
 3. 为集合提供数据库 ID、集合 ID，选择存储容量，输入分区键，输入吞吐量值，然后单击“确定”。  就本教程来说，使用“测试”作为数据库 ID 和集合 ID，选择固定的存储容量和最低吞吐量（400 RU/秒）就可以了。  
 
-## <a name="retrieve-the-principalid-of-the-linux-vms-msi"></a>检索 Linux VM 的 MSI 的 `principalID`
+## <a name="retrieve-the-principalid-of-the-linux-vms-managed-service-identity"></a>检索 Linux VM 的托管服务标识的 `principalID`
 
-若要在下一节中从资源管理器获得对 Cosmos DB 帐户访问密钥的访问，需要检索 Linux VM 的 MSI 的 `principalID`。  请务必将 `<SUBSCRIPTION ID>`、`<RESOURCE GROUP>`（VM 所在的资源组）和 `<VM NAME>` 参数值替换为你自己的值。
+若要在下一节中从资源管理器获得对 Cosmos DB 帐户访问密钥的访问，需要检索 Linux VM 的托管服务标识的 `principalID`。  请务必将 `<SUBSCRIPTION ID>`、`<RESOURCE GROUP>`（VM 所在的资源组）和 `<VM NAME>` 参数值替换为你自己的值。
 
 ```azurecli-interactive
 az resource show --id /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAMe> --api-version 2017-12-01
 ```
-响应包括系统分配的 MSI 的详细信息（请记下 principalID，因为下一部分中将使用它）：
+响应包括系统分配的托管服务标识的详细信息（请记下 principalID，因为下一部分中将使用它）：
 
 ```bash  
 {
@@ -114,11 +114,11 @@ az resource show --id /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE 
  }
 
 ```
-## <a name="grant-your-linux-vm-msi-access-to-the-cosmos-db-account-access-keys"></a>向 Linux VM MSI 授予对 Cosmos DB 帐户访问密钥的访问权限
+## <a name="grant-your-linux-vm-managed-service-identity-access-to-the-cosmos-db-account-access-keys"></a>向 Linux VM 托管服务标识授予对 Cosmos DB 帐户访问密钥的访问权限
 
-Cosmos DB 原本不支持 Azure AD 身份验证。 但是，可以使用 MSI 从资源管理器检索 Cosmos DB 访问密钥，然后使用该密钥访问 Cosmos DB。 在此步骤中，向 MSI 授予对 Cosmos DB 帐户密钥的访问权限。
+Cosmos DB 原本不支持 Azure AD 身份验证。 但是，可以使用托管服务标识从资源管理器检索 Cosmos DB 访问密钥，然后使用该密钥访问 Cosmos DB。 在此步骤中，将向托管服务标识授予对 Cosmos DB 帐户密钥的访问权限。
 
-若要向 MSI 标识授予在 Azure 资源管理器中使用 Azure CLI 访问 Cosmos DB 帐户的权限，请更新环境的 `<SUBSCRIPTION ID>`、`<RESOURCE GROUP>` 和 `<COSMOS DB ACCOUNT NAME>` 的值。 将 `<MSI PRINCIPALID>` 替换为在[检索 Linux VM 的 MSI 的 principalID](#retrieve-the-principalID-of-the-linux-VM's-MSI) 中由 `az resource show` 命令返回的 `principalId` 属性。  Cosmos DB 在使用访问密钥时支持两种级别的粒度：对帐户的读/写访问权限，以及对帐户的只读访问权限。  如果需要获取帐户的读/写密钥，请分配 `DocumentDB Account Contributor` 角色；如果需要获取帐户的只读密钥，请分配 `Cosmos DB Account Reader Role` 角色：
+若要向托管服务标识授予在 Azure 资源管理器中使用 Azure CLI 访问 Cosmos DB 帐户的权限，请更新环境的 `<SUBSCRIPTION ID>`、`<RESOURCE GROUP>` 和 `<COSMOS DB ACCOUNT NAME>` 的值。 将 `<MSI PRINCIPALID>` 替换为在[检索 Linux VM 的 MSI 的 principalID](#retrieve-the-principalID-of-the-linux-VM's-MSI) 中由 `az resource show` 命令返回的 `principalId` 属性。  Cosmos DB 在使用访问密钥时支持两种级别的粒度：对帐户的读/写访问权限，以及对帐户的只读访问权限。  如果需要获取帐户的读/写密钥，请分配 `DocumentDB Account Contributor` 角色；如果需要获取帐户的只读密钥，请分配 `Cosmos DB Account Reader Role` 角色：
 
 ```azurecli-interactive
 az role assignment create --assignee <MSI PRINCIPALID> --role '<ROLE NAME>' --scope "/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.DocumentDB/databaseAccounts/<COSMODS DB ACCOUNT NAME>"
@@ -140,7 +140,7 @@ az role assignment create --assignee <MSI PRINCIPALID> --role '<ROLE NAME>' --sc
 }
 ```
 
-## <a name="get-an-access-token-using-the-linux-vms-msi-and-use-it-to-call-azure-resource-manager"></a>使用 Linux VM 的 MSI 获取访问令牌，并使用它调用 Azure 资源管理器
+## <a name="get-an-access-token-using-the-linux-vms-managed-service-identity-and-use-it-to-call-azure-resource-manager"></a>使用 Linux VM 的托管服务标识获取访问令牌并使用它来调用 Azure 资源管理器
 
 至于本教程的剩余部分，请从先前创建的 VM 入手。
 

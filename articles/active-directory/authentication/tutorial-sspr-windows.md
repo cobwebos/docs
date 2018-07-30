@@ -1,37 +1,41 @@
 ---
-title: Windows 10 登录屏幕中的 Azure AD SSPR | Microsoft Docs
-description: 配置 Windows 10 登录屏幕的“Azure AD 密码重置”和“我忘记了自己的 PIN”
+title: Windows 10 登录屏幕中的 Azure AD SSPR
+description: 在本教程中，你将在 Windows 10 登录屏幕上启用密码重置，以减少支持人员呼叫。
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: get-started-article
-ms.date: 04/27/2018
+ms.topic: tutorial
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 2a6fbd9e52e07141ae1d8c630bde6ab23801fb18
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e4e94567cf978631be52a3304b47b68f61ac3fff
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054495"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161157"
 ---
-# <a name="azure-ad-password-reset-from-the-login-screen"></a>登录屏幕中的“Azure AD 密码重置”
+# <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>教程：登录屏幕中的 Azure AD 密码重置
 
-你已经部署了 Azure AD 自助密码重置 (SSPR)，但你的用户仍会在忘记密码时呼叫帮助台。 他们之所以呼叫帮助台，是因为不能通过 Web 浏览器来访问 SSPR。
+在本教程中，你将让用户能够从 Windows 10 登录屏幕重置其密码。 安装新的 Windows 10 April 2018 Update 后，其设备**已加入 Azure AD** 或**已加入混合 Azure AD** 的用户可以在其登录屏幕上使用“重置密码”链接。 单击此链接后，用户就会体验到熟悉的与以前相同的自助密码重置 (SSPR)。
 
-安装新的 Windows 10 April 2018 Update 后，其设备**已加入 Azure AD** 或**已加入混合 Azure AD** 的用户可以在其登录屏幕上看到和使用“重置密码”链接。 单击该链接后，用户就会体验到熟悉的与以前相同的自助密码重置 (SSPR)。
+> [!div class="checklist"]
+> * 使用 Intune 配置“重置密码”链接
+> * （可选）使用 Windows 注册表进行配置
+> * 了解用户将看到什么
 
-若要使用户能够从 Windows 10 登录屏幕重置其 Azure AD 密码，需满足以下要求：
+## <a name="prerequisites"></a>先决条件
 
-* 安装了 Windows 10 April 2018 Update 或使用[已加入 Azure AD](../device-management-azure-portal.md) 或[已加入混合 Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md) 的更新客户端。
+* Windows 10 的 2018 年 4 月更新或更高版本的客户端，并且它们应当：
+   * [已加入 Azure AD](../device-management-azure-portal.md) 或者 
+   * [已加入混合 Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md)
 * 必须启用 Azure AD 自助密码重置。
-* 配置和部署设置，通过下述某个方法启用“重置密码”链接：
-   * [Intune 设备配置文件](tutorial-sspr-windows.md#configure-reset-password-link-using-intune)。 此方法要求在 Intune 中登记设备。
-   * [注册表项](tutorial-sspr-windows.md#configure-reset-password-link-using-the-registry)
 
 ## <a name="configure-reset-password-link-using-intune"></a>使用 Intune 配置“重置密码”链接
+
+使用 Intune 部署配置更改以启用从登录屏幕重置密码功能是最灵活的方法。 Intune 允许将配置更改部署到你定义的特定计算机组。 此方法要求在 Intune 中登记设备。
 
 ### <a name="create-a-device-configuration-policy-in-intune"></a>在 Intune 中创建设备配置策略
 
@@ -79,13 +83,13 @@ ms.locfileid: "39054495"
 
    ![分配][Assignment]
 
-现在已使用 Intune 创建和分配设备配置策略，目的是启用登录屏幕上的“重置密码”链接。
+你现在已使用 Intune 创建并分配了设备配置策略以在登录屏幕上启用“重置密码”链接。
 
 ## <a name="configure-reset-password-link-using-the-registry"></a>使用注册表配置“重置密码”链接
 
 建议只使用此方法来测试设置更改。
 
-1. 使用管理凭据登录到已加入 Azure AD 的设备
+1. 使用管理凭据登录到 Windows PC
 2. 以管理员身份运行 **regedit**
 3. 设置以下注册表项
    * `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AzureADAccount`
@@ -93,10 +97,11 @@ ms.locfileid: "39054495"
 
 ## <a name="what-do-users-see"></a>用户看到什么
 
-配置并分配策略以后，对用户来说有哪些变化？ 用户如何知道可以在登录屏幕重置其密码？
+配置并分配策略以后，对用户来说有哪些变化？ 用户如何知道可以在登录屏幕上重置其密码？
 
 ![LoginScreen][LoginScreen]
 
+现在，用户在尝试登录时，可以看到“重置密码”链接，用于在登录屏幕进行自助密码重置体验。 此功能允许用户重置其密码，不需使用其他设备来访问 Web 浏览器。
 现在，用户在尝试登录时，可以看到“重置密码”链接，用于在登录屏幕进行自助密码重置体验。 此功能允许用户重置其密码，不需使用其他设备来访问 Web 浏览器。
 
 用户可以在[重置工作或学校密码](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in)中发现此功能的使用指南
@@ -111,14 +116,17 @@ ms.locfileid: "39054495"
 
 * 目前不支持从远程桌面进行密码重置。
 
+## <a name="clean-up-resources"></a>清理资源
+
+如果你决定不再使用作为本教程的一部分配置的功能，请删除你创建的 Intune 设备配置文件或注册表项。
+
 ## <a name="next-steps"></a>后续步骤
 
-以下链接提供了有关使用 Azure AD 进行密码重置的其他信息
+在本教程中，你已让用户能够从 Windows 10 登录屏幕重置其密码。 请继续学习下一教程来了解如何将 Azure Identity Protection 集成到自助服务密码重置和多重身份验证体验。
 
-* [如何部署 SSPR？](howto-sspr-deployment.md)
-* [如何从登录屏幕启用 PIN 重置？](https://docs.microsoft.com/intune/device-windows-pin-reset)
-* [有关 MDM 身份验证策略的详细信息](https://docs.microsoft.com/windows/client-management/mdm/policy-csp-authentication)
+> [!div class="nextstepaction"]
+> [在登录时评估风险](tutorial-risk-based-sspr-mfa.md)
 
 [CreateProfile]: ./media/tutorial-sspr-windows/create-profile.png "创建 Intune 设备配置文件，在 Windows 10 登录屏幕上启用“重置密码”链接"
 [Assignment]: ./media/tutorial-sspr-windows/profile-assignment.png "将 Intune 设备配置策略分配给一组 Windows 10 设备"
-[LoginScreen]: ./media/tutorial-sspr-windows/logon-reset-password.png "在 Windows 10 登录屏幕中的“重置密码”链接"
+[LoginScreen]: ./media/tutorial-sspr-windows/logon-reset-password.png "Windows 10 登录屏幕中的“重置密码”链接"

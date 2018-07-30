@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 上部署基于云的 IoT 远程监视解决方案 | Microsoft Docs
+title: 尝试使用 Azure 上基于云的 IoT 远程监视解决方案 | Microsoft Docs
 description: 在本快速入门中，我们将部署远程监视 Azure IoT 解决方案加速器，然后登录并使用解决方案仪表板。
 author: dominicbetts
 manager: timlt
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/12/2018
 ms.author: dobett
-ms.openlocfilehash: 8dd630650498f3698fea3ed03882fe8c5c3d338e
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 50005e38214bf22aa664c2d2b0cc4f86da412818
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004312"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144488"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>快速入门：尝试基于云的远程监视解决方案
 
@@ -50,7 +50,7 @@ ms.locfileid: "39004312"
 
 ## <a name="sign-in-to-the-solution"></a>登录到解决方案
 
-在完成到 Azure 订阅的部署后，可以在解决方案磁贴上看到一个绿色的对号和“就绪”。 现在，你可以登录到你的远程监视解决方案加速器仪表板。
+完成部署到 Azure 订阅后，解决方案磁贴上会出现一个绿色的对号和“就绪”。 现在，你可以登录到你的远程监视解决方案加速器仪表板。
 
 在“预配的解决方案”页上，单击新的远程监视解决方案加速器：
 

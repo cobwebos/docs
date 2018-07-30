@@ -3,7 +3,7 @@ title: Azure 安全中心的自适应应用程序控制 | Microsoft Docs
 description: 本文档介绍如何在 Azure 安全中心使用自适应应用程序控制将在 Azure VM 中运行的应用程序加入允许列表。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 9268b8dd-a327-4e36-918e-0c0b711e99d2
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2018
-ms.author: terrylan
-ms.openlocfilehash: fa2f3c10687a02c5d0be8d7bb0ae88b2b0c38e19
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.date: 07/19/2018
+ms.author: rkarlin
+ms.openlocfilehash: 27e013ad9e94bb025cfad87cc68b244882a207b3
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989959"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161926"
 ---
-# <a name="adaptive-application-controls-in-azure-security-center-preview"></a>Azure 安全中心（预览版）的自适应应用程序控制
+# <a name="adaptive-application-controls-in-azure-security-center"></a>Azure 安全中心的自适应应用程序控制
 了解如何通过本演练在 Azure 安全中心配置应用程序控制。
 
 ## <a name="what-are-adaptive-application-controls-in-security-center"></a>安全中心的自适应应用程序控制是什么？
@@ -35,7 +35,7 @@ ms.locfileid: "38989959"
 - 允许 IT 部门控制用户使用应用来访问敏感数据。
 
 ## <a name="how-to-enable-adaptive-application-controls"></a>如何启用自适应应用程序控制？
-可以通过自适应应用程序控制来定义一组应用程序，允许这些应用程序在配置的资源组上运行。 此功能仅适用于 Windows 计算机（所有版本，不管是经典部署模型还是 Azure 资源管理器部署模型）。 以下步骤可以用来在安全中心配置应用程序允许列表功能：
+可以通过自适应应用程序控制来定义一组应用程序，允许这些应用程序在所配置的组上运行。 此功能仅适用于 Windows 计算机（所有版本，不管是经典部署模型还是 Azure 资源管理器部署模型）。 以下步骤可以用来在安全中心配置应用程序允许列表功能：
 
 1. 打开“安全中心”仪表板。
 2. 在左窗格的“高级云防御”下选择“自适应应用程序控制”。
@@ -87,12 +87,12 @@ ms.locfileid: "38989959"
 
 5. 选择完以后，请选择“创建”。
 
-安全中心始终默认在“审核”模式下启用应用程序控制。 在验证允许列表对工作负荷没有任何负面影响之后，即可更改为“强制”模式。
-
-安全中心需要至少两周的数据才能创建基线并根据 VM 组填充唯一建议。 安全中心标准层的新客户会遇到一种行为，即 VM 组首先显示在“无建议”选项卡下。
-
+6. 安全中心通过利用适用于 Windows 服务器的 AppLocker 内置功能在所选的每台 VM 上应用合适的规则。 此外，默认情况下，安全中心始终在“审核”模式下启用应用程序控制。 在验证允许列表对工作负荷没有任何负面影响之后，可以切换到“强制”模式。 有关详细信息，请参阅 [AppLocker 工作原理](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/how-applocker-works-techref)。
+ 
 > [!NOTE]
-> 安全中心始终会遵循安全方面的最佳做法，尝试为应该加入允许列表的应用程序创建发布者规则，只有在应用程序没有发布者信息（即未签名）的情况下，才会为特定 EXE 的完整路径创建路径规则。
+> - 安全中心需要至少两周的数据才能创建基线并根据 VM 组填充唯一建议。 安全中心标准层的新客户会遇到一种行为，即 VM 组首先显示在“无建议”选项卡下。
+> - 安全中心内的自适应应用程序控制不支持已通过 GPO 或本地安全策略为其启用了 AppLocker 策略的 VM。
+> -  安全中心始终会遵循安全方面的最佳做法，尝试为应该加入允许列表的应用程序创建发布者规则，只有在应用程序没有发布者信息（即未签名）的情况下，才会为特定 EXE 的完整路径创建路径规则。
 >   
 
 ### <a name="editing-and-monitoring-a-group-configured-with-application-control"></a>编辑和监视配置了应用程序控制的组

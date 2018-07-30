@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/17/2018
+ms.date: 07/10/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: 3ceed8b88b9c81954c967d3d7ddd964c532867ab
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 4b45d917118d5be1252c3bb232e4b24e68d7857f
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34301601"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188176"
 ---
 # <a name="tutorial-assign-access-to-cost-management-data"></a>教程：分配对成本管理数据的访问权限
 
@@ -28,6 +28,8 @@ ms.locfileid: "34301601"
 > [!div class="checklist"]
 > * 创建拥有管理员访问权限的用户
 > * 创建拥有用户访问权限的用户
+> * 删除用户
+> * 删除或导出个人数据
 > * 创建和管理实体
 
 
@@ -42,7 +44,7 @@ ms.locfileid: "34301601"
 
 虽然你已经拥有管理员访问权限，但是组织中的同事可能也需要拥有管理员访问权限。 在 Cloudyn 门户中，单击右上方的齿轮符号，然后选择“用户管理”。 单击“添加新用户”以添加新用户。
 
-输入有关用户的必需信息。 登录 ID 必须是有效的电子邮件地址。 选择允许进行用户管理的权限，以便用户可以创建和修改其他用户。 收件人列表管理允许用户编辑收件人列表。 当你选择“通过电子邮件通知用户”时，一个包含登录信息的链接会从 Cloudyn 通过电子邮件发送给用户。 用户在首次登录时设置密码。
+输入有关用户的必需信息。 **登录 ID** 必须是有效的电子邮件地址。 选择允许进行用户管理的权限，以便用户可以创建和修改其他用户。 收件人列表管理允许用户编辑收件人列表。 当你选择“通过电子邮件通知用户”时，一个包含登录信息的链接会从 Cloudyn 通过电子邮件发送给用户。 用户在首次登录时设置密码。
 
 在“用户拥有管理员访问权限”下，组织的根实体处于选择状态。 保留选择根，然后保存用户信息。 选择根实体使用户不仅对树中的根实体，而且对位于其下的所有实体都拥有管理员权限。  
   ![添加拥有管理员访问权限的新用户](.\media\tutorial-user-access\new-admin-access.png)
@@ -57,6 +59,24 @@ ms.locfileid: "34301601"
 ![添加拥有用户访问权限的新用户](.\media\tutorial-user-access\new-user-access.png)
 
 若要观看有关如何添加用户的教程视频，请参阅[将用户添加到 Azure 成本管理](https://youtu.be/Nzn7GLahx30)。
+
+## <a name="delete-a-user"></a>删除用户
+
+删除用户时，该用户对其具有访问权限的任何实体都将保持不变。 删除用户时将删除已保存的“个人”报表。 用户创建的已保存的“公共”报表不会删除。
+
+无法以用户身份删除自己。
+
+> [!WARNING]
+> 用户在删除后无法还原。
+
+1.  在 Cloudyn 门户中，单击右上方的齿轮符号，然后选择“用户管理”。
+2.  在用户列表中，选择要删除的用户，然后单击“删除用户”（垃圾桶符号）。
+3.  在“删除用户”框中，单击“是”，然后单击“确定”。
+
+
+## <a name="delete-or-export-personal-data"></a>删除或导出个人数据
+
+如果希望从 Cloudyn 中删除或导出个人数据，需要创建支持票证。 在创建支持票证后，它将像普通请求（数据主体请求）一样执行。 然后，Microsoft 将采取提示操作来删除该帐户并删除任何客户或个人数据。 若要了解如何请求删除或导出数据，请参阅 [Cloudyn 数据的数据主体请求](https://www.cloudyn.com/cloudyn-gdpr-requests)。
 
 ## <a name="create-and-manage-entities"></a>创建和管理实体
 
@@ -105,6 +125,8 @@ ms.locfileid: "34301601"
 > [!div class="checklist"]
 > * 创建拥有管理员访问权限的用户
 > * 创建拥有用户访问权限的用户
+> * 删除用户
+> * 删除或导出个人数据
 > * 创建和管理实体
 
 

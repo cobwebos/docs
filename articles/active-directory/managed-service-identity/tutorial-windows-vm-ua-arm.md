@@ -1,6 +1,6 @@
 ---
-title: 使用 Windows VM 用户分配的 MSI 访问 Azure 资源管理器
-description: 本教程介绍了使用 Windows VM 上用户分配的托管服务标识 (MSI) 访问 Azure 资源管理器的过程。
+title: 使用 Windows VM 用户分配的托管服务标识访问 Azure 资源管理器
+description: 本教程介绍了使用 Windows VM 上用户分配的托管服务标识访问 Azure 资源管理器的过程。
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
 ms.author: daveba
-ms.openlocfilehash: 67bb45f7bd27a142b978bedb48925cc41e8d1287
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 9cc7683b260a9afbe4aee006a22af9c4834c4eb1
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904367"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248381"
 ---
-# <a name="tutorial-use-a-user-assigned-managed-service-identity-msi-on-a-windows-vm-to-access-azure-resource-manager"></a>教程：使用 Windows VM 上用户分配的托管服务标识 (MSI) 访问 Azure 资源管理器
+# <a name="tutorial-use-a-user-assigned-managed-service-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>教程：使用 Windows VM 上用户分配的托管服务标识访问 Azure 资源管理器
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
@@ -111,9 +111,9 @@ $vm = Get-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM
 Update-AzureRmVM -ResourceGroupName TestRG -VM $vm -IdentityType "UserAssigned" -IdentityID "/subscriptions/<SUBSCRIPTIONID>/resourcegroups/myResourceGroupVM/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"
 ```
 
-## <a name="grant-your-user-assigned-msi-access-to-a-resource-group-in-azure-resource-manager"></a>向用户分配的 MSI 授予对 Azure 资源管理器中资源组的访问权限 
+## <a name="grant-your-user-assigned-managed-service-identity-access-to-a-resource-group-in-azure-resource-manager"></a>向用户分配的托管服务标识授予对 Azure 资源管理器中资源组的访问权限 
 
-托管服务标识 (MSI) 提供标识，你的代码可使用这些标识来请求访问令牌，以向支持 Azure AD 身份验证的资源 API 进行身份验证。 在本教程中，你的代码将访问 Azure 资源管理器 API。 
+托管服务标识提供了标识，你的代码可使用这些标识来请求访问令牌，以向支持 Azure AD 身份验证的资源 API 进行身份验证。 在本教程中，你的代码将访问 Azure 资源管理器 API。 
 
 需先向标识授予对 Azure 资源管理器中资源的访问权限，代码才能访问 API。 在此情况下，即为包含 VM 的资源组。 根据环境适当地更新 `<SUBSCRIPTION ID>` 的值。
 
@@ -148,7 +148,7 @@ CanDelegate: False
 
 4. 现在，已经创建了与虚拟机的远程桌面连接，请在远程会话中打开 PowerShell。
 
-5. 使用 PowerShell 的 `Invoke-WebRequest` 向本地 MSI 终结点发出请求，以获取 Azure 资源管理器的访问令牌。
+5. 使用 PowerShell 的 `Invoke-WebRequest` 向本地托管服务标识终结点发出请求，以获取 Azure 资源管理器的访问令牌。
 
     ```azurepowershell
     $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&client_id=73444643-8088-4d70-9532-c3a0fdc190fz&resource=https://management.azure.com' -Method GET -Headers @{Metadata="true"}

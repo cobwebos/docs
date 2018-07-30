@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 上部署基于云的 IoT 预测性维护解决方案 | Microsoft Docs
+title: 尝试使用 Azure 上基于云的 IoT 预测性维护解决方案 | Microsoft Docs
 description: 在本快速入门中，我们将部署预测性维护 Azure IoT 解决方案加速器，然后登录并使用解决方案仪表板。
 author: dominicbetts
 manager: timlt
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/12/2018
 ms.author: dobett
-ms.openlocfilehash: 65c10f393efbeaa111e2b413a0568da053c04567
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 10ff6565ed8997a5cb87394aa0d743a0d94b67e0
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001121"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144306"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>快速入门：尝试基于云的解决方案，以便在连接的设备上运行预测性维护分析
 
@@ -40,7 +40,7 @@ Fabrikam 飞机的引擎由各种传感器进行检测，这些传感器监视�
 
 在“创建预测性维护解决方案”页上，为预测性维护解决方案加速器输入唯一的“解决方案名称”。 对于本快速入门，我们将使用 **MyPredictiveMaintenance**。
 
-选择要用于部署解决方案加速器的**订阅**和**区域**。 通常，我们会选择离自己最近的区域。 对于本快速入门，我们将使用 **Visual Studio Enterprise** 和**美国东部**。 只有订阅中的[全局管理员或用户](iot-accelerators-permissions.md)才能完成部署。
+选择要用于部署解决方案加速器的**订阅**和**区域**。 通常，我们会选择离自己最近的区域。 本快速入门使用“Visual Studio Enterprise”和“美国东部”。 只有订阅中的[全局管理员或用户](iot-accelerators-permissions.md)才能完成部署。
 
 单击“创建解决方案”开始部署。 此过程至少需要五分钟才能完成运行：
 
@@ -48,7 +48,7 @@ Fabrikam 飞机的引擎由各种传感器进行检测，这些传感器监视�
 
 ## <a name="sign-in-to-the-solution"></a>登录到解决方案
 
-在完成到 Azure 订阅的部署后，可以在解决方案磁贴上看到一个绿色的对号和“就绪”。 现在，你可以登录到你的预测性维护解决方案加速器仪表板。
+完成部署到 Azure 订阅后，解决方案磁贴上会出现一个绿色的对号和“就绪”。 现在，你可以登录到你的预测性维护解决方案加速器仪表板。
 
 在“预配的解决方案”页上，单击新的预测性维护解决方案加速器。 可以在显示的面板中查看有关解决方案加速器的信息。 选择“解决方案仪表板”，查看预测性维护解决方案加速器：
 

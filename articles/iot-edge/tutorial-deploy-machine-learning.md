@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 47db87bf734674bd424fecd0f0f22bff9e2df5d5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 62ca816f7bdc183727eb22806ba9e733c8b97c44
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38299248"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173499"
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>将 Azure 机器学习作为 IoT Edge 模块进行部署 - 预览版
 
-可以使用 IoT Edge 模块部署代码，以直接将业务逻辑实现到 IoT Edge 设备。 本教程逐步演示如何部署 Azure 机器学习模块，以便根据模拟的机器温度数据预测设备故障时间。 
+可以使用 IoT Edge 模块部署代码，以直接将业务逻辑实现到 IoT Edge 设备。 本教程逐步演示如何部署 Azure 机器学习模块，以便根据模拟的机器温度数据预测设备故障时间。 有关 IoT Edge 上的 Azure ML 的详细信息，请参阅 [Azure 机器学习文档](../machine-learning/desktop-workbench/use-azure-iot-edge-ai-toolkit.md)。
 
 本教程中创建的 Azure 机器学习模块将读取设备生成的环境数据，并将消息标记为异常或正常。
 
@@ -41,16 +41,16 @@ Azure 机器学习模块不支持 ARM 处理器。
 
 在开发计算机上具备以下先决条件： 
 * 一个 Azure 机器学习帐户。 按照[创建 Azure 机器学习帐户和安装 Azure Machine Learning Workbench](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts) 中的说明进行操作。 对于本教程，不需要安装 Workbench 应用程序。 
-* 计算机上的“Azure ML 模块管理”。 若要设置环境并创建帐户，请按照[模型管理设置](../machine-learning/desktop-workbench/deployment-setup-configuration.md)中的说明进行操作。
+* 计算机上的“Azure ML 模型管理”。 若要设置环境并创建帐户，请按照[模型管理设置](../machine-learning/desktop-workbench/deployment-setup-configuration.md)中的说明进行操作。 在设置部署期间，建议尽可能选择本地步骤而非群集。
 
 ### <a name="disable-process-identification"></a>禁用进程标识
 
 >[!NOTE]
 >
 > Azure 机器学习预览版不支持 IoT Edge 中默认启用的进程标识安全功能。 
-> 以下是禁用它的步骤。 不过，这不适合在生产中使用。
+> 以下是禁用它的步骤。 不过，这不适合在生产中使用。 这些步骤只是在 Linux 上是必需的，因为在执行 Windows Edge 运行时设置步骤时你已完成了这些步骤。
 
-若要禁用进程标识，需在 IoT Edge 守护程序配置的 **connect** 节中为 **workload_uri** 和 **management_uri** 提供 IP 地址和端口。
+若要在 IoT Edge 设备上禁用进程标识，需在 IoT Edge 守护程序配置的 **connect** 部分中为 **workload_uri** 和 **management_uri** 提供 IP 地址和端口。
 
 先获取 IP 地址。 在命令行中输入 `ifconfig`，复制 **docker0** 接口的 IP 地址。
 
@@ -131,7 +131,7 @@ az ml service create realtime --model-file model.pkl -f iot_score.py -n machinel
 
 1. 添加你创建的机器学习模块。
 
-    1. 单击“添加”，然后选择“Azure 机器学习模块”。
+    1. 单击“添加”，然后选择“IoT Edge 模块”。
     1. 在“名称”字段中，输入 `machinelearningmodule`。
     1. 在“映像”字段中，输入映像地址；例如 `<registry_name>.azurecr.io/machinelearningmodule:1`。
     1. 选择“保存”。

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 93fe8dc3f8ff991cd6c48923d9e2073e4e93f1ad
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: d0ec146d276f72abf4cbbe3da4d11c0d5539df6d
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040841"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144187"
 ---
 # <a name="what-is-azure-maps"></a>什么是 Azure Maps？
 Azure Maps 是以全新地图数据支撑的一系列地理空间服务，可让你在 Web 和移动应用程序中提供准确的地理上下文。 它包含用于在定位服务中呈现地图以及搜索兴趣点、兴趣点路线、交通状况、时区和 IP 的 REST API。 可以结合熟悉的工具使用这些 API，快速开发和缩放将位置信息集成到 Azure 解决方案中的解决方案。 除 REST API 以外，Azure Maps 还提供一个基于 Web 的 JavaScript 控件，实现简单、灵活且可移植的跨媒体开发。 
@@ -92,6 +92,7 @@ Azure Maps 包含以下六个可在 Azure 应用程序中提供地理上下文�
 
 “定位 IP”是一个预览版服务，用于检索给定 IP 地址的双字母国家/地区代码。 此服务可帮助你根据特殊的地缘政治约束定制应用程序，以及通过基于地理位置更改应用程序内容来增强用户体验。 
 
+有关适用于位置服务 IP 的 REST API 的信息，请访问 [Azure Maps 地理位置 API](https://docs.microsoft.com/rest/api/maps/geolocation) 页面。
 
 ## <a name="programming-model"></a>编程模型
 

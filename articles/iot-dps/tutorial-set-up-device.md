@@ -9,70 +9,82 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 1e4e93c276fe62caae17c85bf9ac92282dfdfb88
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d589c0ece2b36970a31884aa72ee7ab87941a656
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631262"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39146427"
 ---
 # <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中心设备预配服务设置设备以进行预配
 
-前面的教程介绍了设置 Azure IoT 中心设备预配服务以将设备自动预配到 IoT 中心的方法。 本教程介绍如何在制造过程中设置设备，使之能够通过 IoT 中心进行自动预配。 设备在首先启动并连接到预配服务之后，即可根据其[证明机制](concepts-device.md#attestation-mechanism)进行预配。 本教程讨论以下过程：
+前面的教程介绍了设置 Azure IoT 中心设备预配服务以将设备自动预配到 IoT 中心的方法。 本教程介绍如何在制造过程中设置设备，使之能够通过 IoT 中心进行自动预配。 设备在首先启动并连接到预配服务之后，即可根据其[证明机制](concepts-device.md#attestation-mechanism)进行预配。 本教程涵盖以下任务：
 
 > [!div class="checklist"]
 > * 生成特定于平台的设备预配服务客户端 SDK
 > * 提取安全项目
 > * 创建设备注册软件
 
-## <a name="prerequisites"></a>先决条件
-
-继续之前，请按照以前的 [1 - 设置云资源](./tutorial-set-up-cloud.md)教程中的说明创建设备预配服务实例和 IoT 中心。
+本教程假设你已根据以前的[设置云资源](tutorial-set-up-cloud.md)教程中的说明创建了设备预配服务实例和 IoT 中心。
 
 本教程使用[用于 C 存储库的 Azure IoT SDK 和库](https://github.com/Azure/azure-iot-sdk-c)，该存储库包含用于 C 的设备预配服务客户端 SDK。此 SDK 目前为运行在 Windows 或 Ubuntu 实现上的设备提供 TPM 和 X.509 支持。 本教程以 Windows 开发客户端的使用为基础，而使用该客户端的前提是基本熟悉 Visual Studio 2017 的使用。 
 
 如果不熟悉自动预配过程，请务必在继续操作之前查看[自动预配概念](concepts-auto-provisioning.md)。 
 
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="prerequisites"></a>先决条件
+
+* 已启用[“使用 C++ 的桌面开发”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)工作负荷的 Visual Studio 2015 或 [Visual Studio 2017](https://www.visualstudio.com/vs/)。
+* 已安装最新版本的 [Git](https://git-scm.com/download/)。
+
+
+
 ## <a name="build-a-platform-specific-version-of-the-sdk"></a>生成特定于平台的 SDK 版本
 
 设备预配服务客户端 SDK 有助于实现设备注册软件。 但在使用它之前，需根据开发客户端平台和证明机制生成一个 SDK 版本。 在本教程中，请针对支持的证明类型生成一个使用 Visual Studio 2017（基于 Windows 开发平台）的 SDK：
 
-1. 安装所需的工具并克隆 GitHub 存储库，后者包含用于 C 的预配服务客户端 SDK：
+1. 下载最新版本的 [CMake 生成系统](https://cmake.org/download/)。 在同一站点中，查找所选二进制分发版本的加密哈希。 使用相应的加密哈希值验证下载的二进制文件。 以下示例使用了 Windows PowerShell 来验证 x64 MSI 分发版本 3.11.4 的加密哈希：
 
-   a. 确保已在计算机上安装 Visual Studio 2015 或 [Visual Studio 2017](https://www.visualstudio.com/vs/)。 必须启用[“使用 C++ 进行桌面开发”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)工作负荷才能进行 Visual Studio 安装。
+    ```PowerShell
+    PS C:\Users\wesmc\Downloads> $hash = get-filehash .\cmake-3.11.4-win64-x64.msi
+    PS C:\Users\wesmc\Downloads> $hash.Hash -eq "56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869"
+    True
+    ```
 
-   b. 下载并安装 [CMake 生成系统](https://cmake.org/download/)。 在进行 CMake 安装**之前**，必须在计算机上安装包含“使用 C++ 进行桌面开发”工作负荷的 Visual Studio。
+    在进行 `CMake` 安装**之前**，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负荷）。 满足先决条件并验证下载内容后，安装 CMake 生成系统。
 
-   c. 确保在计算机上安装 `git` 并将其添加到可供命令窗口访问的环境变量。 请参阅[软件自由保护组织提供的 Git 客户端工具](https://git-scm.com/download/)，了解最新的 `git` 工具，其中包括 **Git Bash**，这是一个可以与本地 Git 存储库交互的命令行 Bash shell。 
-
-   d. 打开 Git Bash，克隆“用于 C 的 Azure IoT SDK 和库”存储库。 克隆命令可能需要数分钟才能运行完毕，因为它还下载多个依赖性的子模块：
+2. 打开命令提示符或 Git Bash shell。 执行以下命令克隆 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库：
     
-   ```cmd/sh
-   git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
-   ```
+    ```cmd/sh
+    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+    ```
+    此存储库的大小目前大约为 220 MB。 应该预料到此操作需要几分钟才能完成。
 
-   e. 在新创建的存储库子目录中创建新的 `cmake` 子目录：
 
-   ```cmd/sh
-   mkdir azure-iot-sdk-c/cmake
-   ``` 
+3. 在 git 存储库的根目录中创建 `cmake` 子目录，并导航到该文件夹。 
 
-2. 从 Git Bash 命令提示符处转到 azure-iot-sdk-c 存储库的 `cmake` 子目录：
+    ```cmd/sh
+    cd azure-iot-sdk-c
+    mkdir cmake
+    cd cmake
+    ```
 
-   ```cmd/sh
-   cd azure-iot-sdk-c/cmake
-   ```
+4. 基于你将使用的认证机制构建适用于你的开发平台的 SDK。 使用下列命令之一（另请注意，每个命令有两个尾随的句点字符）。 在完成后，CMake 会使用特定于设备的内容生成 `/cmake` 子目录：
+ 
+    - 对于使用 TPM 模拟器进行证明的设备：
 
-3. 使用下述某个命令，针对开发平台和支持的证明机制之一生成 SDK（另请注意下面这两个尾随的句点符号）。 在完成后，CMake 会使用特定于设备的内容生成 `/cmake` 子目录：
-    - 对于使用物理 TPM/HSM 或模拟 X.509 证书进行证明的设备：
+        ```cmd/sh
+        cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON ..
+        ```
+
+    - 对于任何其他设备（物理 TPM/HSM/X.509 或模拟的 X.509 证书）：
+
         ```cmd/sh
         cmake -Duse_prov_client:BOOL=ON ..
         ```
 
-    - 对于使用 TPM 模拟器进行证明的设备：
-        ```cmd/sh
-        cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON ..
-        ```
 
 现在可以使用 SDK 生成设备注册代码了。 
  
@@ -82,26 +94,33 @@ ms.locfileid: "34631262"
 
 下一步是提取设备所用的证明机制的安全项目。 
 
-### <a name="physical-device"></a>物理设备 
+### <a name="physical-devices"></a>物理设备 
 
-如果生成了可以通过物理 TPM/HSM 来使用证明的 SDK：
+收集安全项目的过程如下所述，具体取决于你构建 SDK 的目的是对物理 TPM/HSM 进行认证还是使用 X.509 证书进行认证：
 
 - 对于 TPM 设备，需要通过 TPM 芯片制造商确定与其关联的“认可密钥”。 通过对认可密钥进行哈希处理，可为 TPM 设备派生唯一的“注册 ID”。  
 
-- 对于 X.509 设备，需要获取为设备颁发的证书 - 单个设备注册的最终实体证书和设备组注册的根证书。 
+- 对于 X.509 设备，你需要获取为设备颁发的证书。 预配服务公开了两种类型的注册条目，它们使用 X.509 认证机制控制对设备的访问。 所需的证书取决于你将使用的注册类型。
 
-### <a name="simulated-device"></a>模拟设备
+    1. 个人注册：针对特定的单个设备的注册。 此类型的注册条目需要[最终实体、“叶”、证书](concepts-security.md#end-entity-leaf-certificate)。
+    2. 注册组：此类型的注册条目需要中间或根证书。 有关详细信息，请参阅[使用 X.509 证书控制设备对预配服务的访问](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)。
 
-如果生成了可以通过模拟 TPM 或 X.509 证书来使用证明的 SDK：
+### <a name="simulated-devices"></a>模拟设备
+
+收集安全项目的过程如下所述，具体取决于你构建 SDK 的目的是使用 TPM 还是使用 X.509 证书对模拟设备进行认证：
 
 - 对于模拟 TPM 设备：
-   1. 在单独的/新的命令提示符处，导航到 `azure-iot-sdk-c` 子目录，然后运行 TPM 模拟器。 该模拟器通过套接字在端口 2321 和 2322 上进行侦听。 请勿关闭此命令窗口；以下快速入门自始至终都需让该模拟器保持运行状态。 
+
+   1. 打开一个 Windows 命令提示符，导航到 `azure-iot-sdk-c` 子目录，然后运行 TPM 模拟器。 该模拟器通过套接字在端口 2321 和 2322 上进行侦听。 请勿关闭此命令窗口；以下快速入门自始至终都需让该模拟器保持运行状态。 
 
       从 `azure-iot-sdk-c` 子目录运行以下命令，以启动模拟器：
 
       ```cmd/sh
       .\provisioning_client\deps\utpm\tools\tpm_simulator\Simulator.exe
       ```
+
+      > [!NOTE]
+      > 如果使用 Git Bash 命令 提示符执行此步骤，则需要将反斜杠更改为正斜杠，例如：`./provisioning_client/deps/utpm/tools/tpm_simulator/Simulator.exe`。
 
    2. 使用 Visual Studio 打开在 *cmake* 文件夹中创建的名为 `azure_iot_sdks.sln` 的解决方案，然后在“生成”菜单上使用“生成解决方案”命令来生成它。
 
@@ -110,11 +129,12 @@ ms.locfileid: "34631262"
    4. 使用“调试”菜单上的任一“启动”命令来运行此解决方案。 输出窗口会显示 TPM 模拟器的“注册 ID”和“认可密钥”，这是进行设备登记和注册所需的。 复制这些值，供以后使用。 可以关闭此窗口（包含注册 ID 和认可密钥），但让在步骤 1 中启动的 TPM 模拟器窗口保持运行状态。
 
 - 对于模拟 X.509 设备：
+
   1. 使用 Visual Studio 打开在 *cmake* 文件夹中创建的名为 `azure_iot_sdks.sln` 的解决方案，然后在“生成”菜单上使用“生成解决方案”命令来生成它。
 
   2. 在 Visual Studio 的“解决方案资源管理器”窗格中，导航到 **Provision\_Tools** 文件夹。 右键单击“dice\_device\_enrollment”项目，然后选择“设置为启动项目”。 
   
-  3. 使用“调试”菜单上的任一“启动”命令来运行此解决方案。 在输出窗口中，当系统提示时输入 **i** 完成单个注册。 输出窗口会显示在本地为模拟设备生成的 X.509 证书。 将输出（从 *-----BEGIN CERTIFICATE-----* 开始，到第一个 *-----END CERTIFICATE-----* 结束）复制到剪贴板，确保将这两行也包括进去。 请注意，只需要输出窗口中的第一个证书。
+  3. 使用“调试”菜单上的任一“启动”命令来运行此解决方案。 在输出窗口中，当系统提示时输入 **i** 完成单个注册。 输出窗口会显示在本地为模拟设备生成的 X.509 证书。 将输出（从 *-----BEGIN CERTIFICATE-----* 开始，到第一个 *-----END CERTIFICATE-----* 结束）复制到剪贴板，确保将这两行也包括进去。 只需要使用输出窗口中的第一个证书。
  
   4. 创建名为 **_X509testcert.pem_** 的文件，在所选文本编辑器中将其打开，然后将剪贴板内容复制到该文件中。 保存此文件，因为稍后需要用它来进行设备注册。 注册软件在运行时使用自动预配期间使用的证书。    
 

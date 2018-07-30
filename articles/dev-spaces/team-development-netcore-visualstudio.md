@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
 manager: douge
-ms.openlocfilehash: 93c9f42df1136f242a5a04dc3056e0b1595cfb02
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: facf2de40c555ccd79fe73543a85f0b5cc150450
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37933436"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247477"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>使用 Azure Dev Spaces 进行团队开发
 
@@ -127,7 +127,7 @@ ms.locfileid: "37933436"
 
     ![](media/get-started-netcore-visualstudio/Settings.png)
 
-6. 在“添加空间”对话框中键入空间的名称，单击“确定”。 可以使用自己的名字来为新空间命名（例如“scott”），使同事能够识别你所在的空间。
+6. 在“添加空间”对话框中，将父空间设置为“默认”，并为新空间输入一个名称。 可以使用自己的名字来为新空间命名（例如“scott”），使同事能够识别你所在的空间。 单击“确定”。
 
     ![](media/get-started-netcore-visualstudio/AddSpace.png)
 

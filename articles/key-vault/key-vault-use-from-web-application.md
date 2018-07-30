@@ -2,24 +2,25 @@
 title: 有关从 Web 应用程序使用 Azure Key Vault 的教程 | Microsoft Docs
 description: 本教程有助于读者了解如何从 Web 应用程序使用 Azure Key Vault。
 services: key-vault
-author: adhurwit
+author: barclayn
 manager: mbaldwin
 tags: azure-resource-manager
 ms.assetid: 9b7d065e-1979-4397-8298-eeba3aec4792
 ms.service: key-vault
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/29/2018
-ms.author: adhurwit
-ms.openlocfilehash: 5cd764395e91a82973318da7284b28d7a43d35ea
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.date: 07/20/2018
+ms.author: barclayn
+ms.openlocfilehash: ff59e39e54433aa673b093e2ee1fbe8c74010e54
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37115052"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171317"
 ---
 # <a name="tutorial-use-azure-key-vault-from-a-web-application"></a>教程：从 Web 应用程序使用 Azure Key Vault
-本教程有助于读者了解如何从 Azure 中的 Web 应用程序使用 Azure Key Vault。 其中介绍了访问用于 Web 应用程序的 Azure Key Vault 中的机密的过程。 然后，本教程将基于该过程生成一个证书，并使用它来取代客户端机密。 本教程面向 Web 开发人员，他们已了解有关在 Azure 上创建 Web 应用程序的基础知识。 
+
+本教程有助于读者了解如何从 Azure 中的 Web 应用程序使用 Azure Key Vault。 其中介绍了访问用于 Web 应用程序的 Azure Key Vault 中的机密的过程。 然后，本教程将基于该过程生成一个证书，并使用它来取代客户端机密。 本教程面向 Web 开发人员，他们已了解有关在 Azure 上创建 Web 应用程序的基础知识。
 
 本教程介绍如何执行以下操作： 
 
@@ -27,7 +28,7 @@ ms.locfileid: "37115052"
 > * 将应用程序设置添加到 web.config 文件
 > * 添加用于获取访问令牌的方法
 > * 在应用程序启动时检索令牌
-> * 使用证书进行身份验证 
+> * 使用证书进行身份验证
 
 如果没有 Azure 订阅，请在开始之前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -41,7 +42,7 @@ ms.locfileid: "37115052"
 
 完成 [Azure Key Vault 入门](key-vault-get-started.md)中的步骤，以获取机密 URI、客户端 ID 和客户端机密，并注册应用程序。 该 Web 应用程序将访问保管库，并需要在 Azure Active Directory 中注册。 它还需要有权访问 Key Vault。 如果它没有此访问权限，请返回入门教程中的“注册应用程序”，并重复列出的步骤。 有关创建 Azure Web 应用的详细信息，请参阅 [Web 应用概述](../app-service/app-service-web-overview.md)。
 
-此示例依赖于手动预配 Azure Active Directory 标识。 目前，预览版中有一项称为[托管服务标识 (MSI)](https://docs.microsoft.com/azure/active-directory/msi-overview) 的新功能，它可以自动预配 Azure AD 标识。 有关详细信息，请参阅 [GitHub](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) 中的示例，以及相关的 [MSI 和应用服务与函数教程](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity)。 
+此示例依赖于手动预配 Azure Active Directory 标识。 但是应当改用[托管服务标识 (MSI)](https://docs.microsoft.com/azure/active-directory/msi-overview)。 MSI 可以自动预配 Azure AD 标识。 有关详细信息，请参阅 [GitHub](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) 中的示例，以及相关的 [MSI 和应用服务与函数教程](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity)。 还可以查看特定于密钥保管库的 [MSI 教程](tutorial-web-application-keyvault.md)
 
 
 ## <a id="packages"></a>添加 NuGet 包

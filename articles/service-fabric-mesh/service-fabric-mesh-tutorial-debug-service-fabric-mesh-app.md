@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/17/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: e39e5861c0606c43a869fe02a7de2dc9b6f489ea
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: ad6812f25ee33bf723ed86d4ec32ca6898d01774
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125647"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186732"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-web-application"></a>教程：调试 Service Fabric 网格 Web 应用程序
 
@@ -75,8 +75,8 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 **调试提示**
 
 * 如果收到“未运行任何 Service Fabric 本地群集”错误，请确保服务本地群集管理器 (SLCM) 正在运行，然后右键单击任务栏中的 SLCM 图标，并单击“启动本地群集”。 启动本地群集后，返回 Visual Studio 并按 **F5**。
-* 如果启动应用时收到 **404** 错误，可能表示 **service.yaml** 中的环境变量不正确。 请确保根据[设置环境变量](#set-environment-variables)中的说明正确设置 `AppName`、`ApiHostPort` 和 `ServiceName`。
-* 如果 **service.yaml** 中出现生成错误，请确保使用空格而不是制表符来缩进代码行。
+* 如果启动应用时收到 **404** 错误，可能表示 **service.yaml** 中的环境变量不正确。 请确保根据[创建环境变量](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore#create-environment-variables)中的说明正确设置 `ApiHostPort` 和 `ServiceName`。
+* 如果 **service.yaml** 中出现生成错误，请确保使用空格而不是制表符来缩进代码行。 此外，目前必须使用英语区域设置来构建应用。
 
 ### <a name="debug-in-visual-studio"></a>在 Visual Studio 中进行调试
 

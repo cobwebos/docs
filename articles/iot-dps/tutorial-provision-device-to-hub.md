@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 453159e51473b76d8a95b98237796ac490f8ed6a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c4355d6bebe00650a6fb4e2f2a6e400be30722b2
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34630130"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145122"
 ---
 # <a name="provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中心设备预配服务将设备预配到 IoT 中心
 
@@ -49,7 +49,7 @@ ms.locfileid: "34630130"
 
 可通过两种方法向设备预配服务注册设备：
 
-- **注册组** 表示共享特定证明机制的一组设备。 对于共享所需初始配置的大量设备，或者全部转到同一租户的设备，建议使用注册组。
+- **注册组** 表示共享特定证明机制的一组设备。 对于共享所需初始配置的大量设备，或者全部转到同一租户的设备，建议使用注册组。 有关注册组的标识认证的详细信息，请参阅[安全性](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)。
 
     [![在门户中为 X.509 证明添加组注册](./media/tutorial-provision-device-to-hub/group-enrollment.png)](./media/tutorial-provision-device-to-hub/group-enrollment.png#lightbox)
 
@@ -67,26 +67,29 @@ ms.locfileid: "34630130"
 
 注册后，预配服务会等待设备启动并随后与其连接。 设备首次启动时，客户端 SDK 库将与芯片交互以提取设备中的安全项目，并验证是否已向设备预配服务注册。 
 
-## <a name="start-the-device"></a>启动设备
+## <a name="start-the-iot-device"></a>启动 IoT 设备
 
-现在，以下设置已可用于设备注册：
+IoT 设备可以是真实设备，也可以是模拟设备。 因为 IoT 设备现在已向设备预配服务实例进行了注册，设备现在可以启动，并且可以调用预配服务，以便该服务使用认证机制来识别此设备。 在预配服务识别设备后，设备将被分配给一个 IoT 中心。 
 
-1. 设备或一组设备将向设备预配服务进行注册，并且 
-2. 设置在配置证明机制后，已经准备就绪，可以使用设备预配服务客户端 SDK 通过应用程序进行访问了。
+针对 C、Java、C#、Node.js 和 Python 提供了模拟设备示例（使用 TPM 和 X.509 认证）。 例如，使用 TPM 和 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 的模拟设备将遵循[模拟设备的首次引导顺序](quick-create-simulated-device.md#simulate-first-boot-sequence-for-the-device)部分中介绍的流程。 使用 X.509 证书认证的相同设备将参考此[引导顺序](quick-create-simulated-device-x509.md#simulate-first-boot-sequence-for-the-device)部分。
 
-启动设备可使客户端应用程序开始向设备预配服务进行注册。  
+有关适用于真实设备的示例，请参阅 [MXChip IoT DevKit 操作指南](how-to-connect-mxchip-iot-devkit.md)。
+
+启动该设备可以让设备的客户端应用程序开始注册到设备预配服务。  
 
 ## <a name="verify-the-device-is-registered"></a>验证设备已注册
 
-设备启动后，应进行以下操作。 有关详细信息，请参阅 TPM 模拟器示例应用程序 [dps_client_sample](https://github.com/Azure/azure-iot-device-auth/blob/master/dps_client/samples/dps_client_sample/dps_client_sample.c)。 
+设备启动后，应进行以下操作：
 
 1. 设备会向设备预配服务发送注册请求。
 2. 对于 TPM 设备，设备预配服务将回复注册质询，设备需对此进行答复。 
 3. 注册成功后，设备预配服务会向设备发送 IoT 中心 URI、设备 ID 和加密密钥。 
 4. 设备上的 IoT 中心客户端应用程序随后会连接到你的中心。 
-5. 成功连接到中心后，设备应出现在 IoT 中心的“Device Explorer”中。 
+5. 成功连接到中心后，设备应当会出现在 IoT 中心的 **IoT 设备**资源管理器中。 
 
     ![成功连接到门户中的中心](./media/tutorial-provision-device-to-hub/hub-connect-success.png)
+
+有关详细信息，请参阅 TPM 模拟器示例应用程序 [dps_client_sample](https://github.com/Azure/azure-iot-device-auth/blob/master/dps_client/samples/dps_client_sample/dps_client_sample.c)。 
 
 ## <a name="next-steps"></a>后续步骤
 本教程介绍了如何：

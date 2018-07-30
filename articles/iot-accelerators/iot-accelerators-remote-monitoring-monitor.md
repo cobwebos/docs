@@ -1,26 +1,26 @@
 ---
-title: 从 Azure 解决方案监视 IoT 设备 | Microsoft Docs
+title: 教程：通过 Azure 解决方案监视 IoT 设备 | Microsoft Docs
 description: 本教程介绍如何使用远程监视解决方案加速器监视 IoT 设备。
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 06/08/2018
+ms.date: 07/19/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 5f42ed0fa5362959e5619f2d550ca1ae3711ed65
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: d31ea1fe579e5ac7a846c1c0d03012d70be9884d
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097455"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159342"
 ---
 # <a name="tutorial-monitor-your-iot-devices"></a>教程：监视 IoT 设备
 
 本教程介绍如何使用远程监视解决方案加速器来监视连接的 IoT 设备。 我们将使用解决方案仪表板来查看遥测数据、设备信息、警报和 KPI。
 
-为了介绍这些监视功能，本教程使用了两个模拟卡车设备。 这些卡车由一家称作 Contoso 的组织进行管理，并已连接到远程监视解决方案加速器。 Contoso 操作员需要监视现场卡车的位置和行为。
+本教程使用两台模拟的卡车设备，它们发送位置、速度和货物温度遥测数据。 这些卡车由一家称作 Contoso 的组织进行管理，并已连接到远程监视解决方案加速器。 Contoso 操作员需要监视其中一辆卡车 (truck-02) 在现场的位置和行为。
 
 本教程介绍以下操作：
 
@@ -31,11 +31,9 @@ ms.locfileid: "37097455"
 > * 查看设备发出的警报
 > * 查看系统 KPI
 
-## <a name="prerequisites"></a>先决条件
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-若要遵循本教程，需在 Azure 订阅中部署远程监视解决方案加速器的实例。
-
-如果尚未部署远程监视解决方案加速器，应完成[部署基于云的远程监视解决方案](quickstart-remote-monitoring-deploy.md)教程。
+[!INCLUDE [iot-iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
 ## <a name="choose-the-devices-to-display"></a>选择要显示的设备
 
@@ -43,31 +41,27 @@ ms.locfileid: "37097455"
 
 [![在仪表板上筛选卡车](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-expanded.png#lightbox)
 
-应用某个筛选器时，只有与筛选条件匹配的设备才会显示在“仪表板”页上的地图中：
+应用某个筛选器时，只有与筛选条件匹配的设备才会显示在“仪表板”页上的地图上和遥测数据面板中。 你可以看到有两辆卡车连接到了解决方案加速器，包括 truck-02：
 
 [![地图上只显示卡车](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-expanded.png#lightbox)
 
-筛选器还确定可在“遥测”图表中看到的设备：
-
-[![卡车遥测数据显示在仪表板上](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetry-expanded.png#lightbox)
-
-若要创建、编辑和删除筛选器，请选择“管理设备组”。
+若要创建、编辑和删除筛选器，请单击“管理设备组”。
 
 ## <a name="view-real-time-telemetry"></a>查看实时遥测数据
 
-解决方案加速器会在“仪表板”页上的图表中绘制实时遥测数据。 遥测图表的顶部显示当前筛选器选择的设备的可用遥测类型：
+解决方案加速器会在“仪表板”页上的图表中绘制实时遥测数据。 遥测数据图表的顶部显示当前筛选器选择的设备（包括 truck-02）的可用遥测类型。 默认情况下，图表显示卡车的纬度和卡车 02 似乎是固定的：
 
 [![卡车遥测类型](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-expanded.png#lightbox)
 
-若要查看温度遥测数据，请单击“温度”：
+若要查看卡车的温度遥测数据，请单击“温度”。 可以查看 truck-02 的温度在过去一小时内是如何变化的。
 
 [![卡车温度遥测绘图](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-expanded.png#lightbox)
 
-## <a name="use-the-map"></a>使用地图
+## <a name="view-the-map"></a>查看地图
 
-地图显示当前筛选器选择的模拟卡车的相关信息。 可以缩放和平移地图，以更多或更少的细节显示位置。 地图上的设备图标颜色指示该设备是否有任何未处理的**警报**或**警告**。 地图左侧显示**警报**和**警告**的汇总数目。
+地图显示当前筛选器选择的模拟卡车的相关信息。 可以缩放和平移地图，以更多或更少的细节显示位置。 地图上设备图标的颜色指示该设备是否有任何未处理的**警报**（深蓝色）或**警告**（红色）。 地图左侧显示**警报**和**警告**的汇总数目。
 
-若要查看设备详细信息，请通过平移和缩放地图找到该设备，并在地图上选择该设备。 然后单击设备标签打开“设备详细信息”面板。 设备详细信息包括：
+若要查看 truck-02 的详细信息，请通过平移和缩放地图找到该设备，并在地图上选择该卡车。 然后单击设备标签打开“设备详细信息”面板。 设备详细信息包括：
 
 * 最近的遥测值
 * 设备支持的方法
@@ -77,13 +71,11 @@ ms.locfileid: "37097455"
 
 ## <a name="view-alerts"></a>查看警报
 
-“警报”面板显示有关设备最近发出的警报的详细信息：
+“警报”面板显示来自设备的最新警报的详细信息。 来自 truck-02 的警报指示温度超过正常货物温度：
 
 [![在仪表板上查看设备警报](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-expanded.png#lightbox)
 
-可以使用筛选器来调整最近警报的时间跨度。 默认情况下，该面板显示过去一个小时的警报：
-
-[![按时间筛选警报](./media/iot-accelerators-remote-monitoring-monitor/dashboardalarmsfilter-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardalarmsfilter-expanded.png#lightbox)
+可以使用筛选器来调整最近警报的时间跨度。 默认情况下，该面板显示过去一个小时的警报。
 
 ## <a name="view-the-system-kpis"></a>查看系统 KPI
 
@@ -97,19 +89,11 @@ ms.locfileid: "37097455"
 * 按设备类型显示的警报比例。
 * 严重警报的百分比。
 
+对于 truck-02，所有警报都是关于超过正常货物温度的警告。
+
 设置警报时间跨度和控制要显示的设备的相同筛选器确定了 KPI 的聚合方式。 默认情况下，该面板显示过去一小时聚合的 KPI。
 
-## <a name="clean-up-resources"></a>清理资源
-
-如果你打算继续学习下一篇教程，请将远程监视解决方案加速器保持为部署状态。 如果不再使用解决方案加速器，可在设置面板中停止模拟设备，以减少运行解决方案加速器所产生的费用：
-
-[![暂停遥测](./media/iot-accelerators-remote-monitoring-monitor/togglesimulation-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/togglesimulation-expanded.png#lightbox)
-
-准备好学习下一篇教程时，可以重启模拟设备。
-
-如果不再需要该解决方案加速器，请从[预配的解决方案](https://www.azureiotsolutions.com/Accelerators#dashboard)页中将其删除：
-
-![删除解决方案](media/iot-accelerators-remote-monitoring-monitor/deletesolution.png)
+[!INCLUDE [iot-iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

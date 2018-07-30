@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 8c92b45cd3949e56515286c963b035e3c449835b
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 192992917432a64c2f9f81761e22bf7d9205703a
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37967316"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205555"
 ---
 # <a name="create-a-cicd-pipeline-for-your-existing-code-with-the-azure-devops-project"></a>使用 Azure DevOps 项目为现有的代码创建 CI/CD 管道
 
@@ -141,8 +141,8 @@ Azure DevOps 项目已自动在 VSTS 帐户中配置完整的 VSTS CI/CD 管道�
 
 1. 输入警报的**名称**。
 
-1. 选择“源更改日期”对应的下拉列表。  选择“应用服务资源”。
-
+1. 选择“源更改日期”对应的下拉列表。  选择你的应用服务资源。
+<!-- Could you please confirm if this should be "Source Alter on" instead of "Source Alert on"? -->
 1. 默认警报针对**服务器响应时间大于 1 秒**的情况。  若要检查各种警报指标，请选择“指标”下拉列表。  可以轻松地配置各种警报，以便改进应用的监视功能。
 
 1. 选择“通过电子邮件所有者、参与者和读者进行通知”所对应的复选框。  也可以在警报触发时，通过执行 Azure 逻辑应用来执行其他操作。

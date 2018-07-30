@@ -9,12 +9,12 @@ ms.date: 07/11/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: f56bcf0c844545e8883175da2bd3f22afdcd19ea
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: cf899e236b7fa21a90a0784e1e2b4fce0feae055
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089521"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213429"
 ---
 # <a name="set-up-the-service-fabric-mesh-cli"></a>设置 Service Fabric 网格 CLI
 Service Fabric 网格 CLI 是在 Service Fabric 网格中部署和管理资源所必需的。 

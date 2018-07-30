@@ -1,6 +1,6 @@
 ---
-title: 使用 Linux VM MSI 访问 Azure 资源管理器
-description: 本教程逐步介绍了如何使用 Linux VM 托管服务标识 (MSI) 访问 Azure 资源管理器。
+title: 使用 Linux VM 托管服务标识访问 Azure 资源管理器
+description: 本教程逐步介绍了如何使用 Linux VM 托管服务标识访问 Azure 资源管理器。
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 60a15c69f1ec748e366697640707804565245cea
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 643d4814dd30926a9a4294494e768cadc60ee428
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001579"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247973"
 ---
-# <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-resource-manager"></a>使用 Linux VM 托管服务标识 (MSI) 访问 Azure 资源管理器
+# <a name="use-a-linux-vm-managed-service-identity-to-access-azure-resource-manager"></a>使用 Linux VM 托管服务标识访问 Azure 资源管理器
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-本教程介绍了如何为 Linux 虚拟机启用托管服务标识 (MSI)，再使用此标识访问 Azure 资源管理器 API。 托管服务标识由 Azure 自动管理，可用于通过支持 Azure AD 身份验证的服务的身份验证，这样就无需在代码中插入凭据了。 学习如何：
+本教程介绍了如何为 Linux 虚拟机启用托管服务标识，再使用此标识访问 Azure 资源管理器 API。 托管服务标识由 Azure 自动管理，可用于通过支持 Azure AD 身份验证的服务的身份验证，这样就无需在代码中插入凭据了。 学习如何：
 
 > [!div class="checklist"]
-> * 在 Linux 虚拟机上启用 MSI 
+> * 在 Linux 虚拟机上启用托管服务标识 
 > * 授予 VM 对 Azure 资源管理器中资源组的访问权限 
 > * 使用 VM 标识获取访问令牌，并使用它调用 Azure 资源管理器 
 
@@ -44,7 +44,7 @@ ms.locfileid: "39001579"
 
 ## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>在新的资源组中创建 Linux 虚拟机
 
-本教程将新建一个 Linux VM。 另外，还可以在现有 VM 上启用 MSI。
+本教程将新建一个 Linux VM。 还可以在现有 Azure VM 上启用托管服务标识。
 
 1. 单击 Azure 门户左上角的“创建资源”按钮。
 2. 选择“计算”，然后选择“Ubuntu Server 16.04 LTS”。
@@ -56,20 +56,20 @@ ms.locfileid: "39001579"
 5. 若要在新资源组中创建虚拟机，请选择“资源组”中的“新建”。 完成后，单击“确定”。
 6. 选择 VM 大小。 若要查看更多大小，请选择“全部查看”或更改“支持的磁盘类型”筛选器。 在设置边栏选项卡中保留默认值，然后单击“确定”。
 
-## <a name="enable-msi-on-your-vm"></a>在 VM 上启用 MSI
+## <a name="enable-managed-service-identity-on-your-vm"></a>在 VM 上启用托管服务标识
 
-通过虚拟机 MSI，可以从 Azure AD 获取访问令牌，而无需在代码中插入凭据。 在 VM 上启用托管服务标识会执行两项操作：向 Azure Active Directory 注册 VM 以创建其托管标识，以及在 VM 上配置标识。
+可以通过虚拟机托管服务标识从 Azure AD 中获取访问令牌，无需在代码中插入凭据。 在 VM 上启用托管服务标识会执行两项操作：向 Azure Active Directory 注册 VM 以创建其托管标识，以及在 VM 上配置标识。
 
-1. 选择要在其上启用 MSI 的虚拟机。
-2. 在左侧导航栏中，单击“配置”。
-3. 此时，将会看到托管服务标识。 若要注册并启用 MSI，请选择“是”，若要禁用，请选择“否”。
+1. 对于“虚拟机”，请选择要在其上启用托管标识的虚拟机。
+2. 单击左侧导航栏中的“配置”。
+3. 此时，将会看到托管服务标识。 若要注册并启用托管服务标识，请选择“是”，若要禁用，请选择“否”。
 4. 务必单击“保存”，以保存配置。
 
     ![Alt 图像文本](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="grant-your-vm-access-to-a-resource-group-in-azure-resource-manager"></a>授予 VM 对 Azure 资源管理器中资源组的访问权限 
 
-使用 MSI，代码可以获取访问令牌，通过支持 Azure AD 身份验证的资源的身份验证。 Azure 资源管理器 API 支持 Azure AD 身份验证。 首先，需要授予此 VM 标识对 Azure 资源管理器中资源（在此示例中，为包含 VM 的资源组）的访问权限。  
+使用托管服务标识，代码可以获取访问令牌，对支持 Azure AD 身份验证的资源进行身份验证。 Azure 资源管理器 API 支持 Azure AD 身份验证。 首先，需要授予此 VM 标识对 Azure 资源管理器中资源（在此示例中，为包含 VM 的资源组）的访问权限。  
 
 1. 转到“资源组”选项卡。
 2. 选择之前创建的特定资源组。
@@ -87,7 +87,7 @@ ms.locfileid: "39001579"
 
 1. 在门户中，转到 Linux VM，并单击“概述”中的“连接”。  
 2. 使用所选的 SSH 客户端连接到 VM。 
-3. 在终端窗口中，使用 CURL 向本地 MSI 终结点发出请求，以获取访问 Azure 资源管理器所需的访问令牌。  
+3. 在终端窗口中，使用 CURL 向本地托管服务标识终结点发出请求，以获取 Azure 资源管理器的访问令牌。  
  
     下面是用于获取访问令牌的 CURL 请求。  
     

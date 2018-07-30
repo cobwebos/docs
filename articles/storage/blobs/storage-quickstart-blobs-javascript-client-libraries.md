@@ -10,12 +10,12 @@ ms.service: storage
 ms.author: cshoe
 ms.date: 04/06/2018
 ms.topic: quickstart
-ms.openlocfilehash: 3d01788050779ea5d6e67b345f048775f8e98e9e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8bde281eab22fc720e2e2420f22ff4eb0a610b93
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31419086"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216577"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -33,7 +33,7 @@ ms.locfileid: "31419086"
 
 下表描述了每项 CORS 设置，并对用于定义规则的值进行了说明。
 
-|设置  |值  | 说明 |
+|设置  |值  | Description |
 |---------|---------|---------|
 | 允许的域 | * | 接受一个逗号分隔的列表，其中的域设置为可以接受的域。 将值设置为 `*` 意味着所有域都可以访问存储帐户。 |
 | 允许的谓词     | delete、get、head、merge、post、options 和 put | 列出允许对存储帐户执行操作的 HTTP 谓词。 对于本快速入门，请选择所有可用的选项。 |
@@ -49,11 +49,11 @@ ms.locfileid: "31419086"
 [!INCLUDE [Open the Azure cloud shell](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-shared-access-signature"></a>创建共享访问签名
-在浏览器中运行的代码可以使用共享访问签名 (SAS) 对发往 Blob 存储的请求进行身份验证。 使用 SAS 时，客户端可以在没有帐户访问密钥或连接字符串的情况下进行身份验证。 有关 SAS 的详细信息，请参阅[使用共享访问签名 (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md)。
+在浏览器中运行的代码可以使用共享访问签名 (SAS) 对发往 Blob 存储的请求进行授权。 使用 SAS 时，客户端可以在没有帐户访问密钥或连接字符串的情况下授权访问存储资源。 有关 SAS 的详细信息，请参阅[使用共享访问签名 (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md)。
 
 可以通过 Azure Cloud Shell 或 Azure 存储资源管理器使用 Azure CLI 创建 SAS。 下表对使用 CLI 生成 SAS 时需要提供值的参数进行了说明。
 
-| 参数      |说明  | 占位符 |
+| 参数      |Description  | 占位符 |
 |----------------|-------------|-------------|
 | *expiry*       | 访问令牌的过期日期，采用 YYYY-MM-DD 格式。 若要在本快速入门中使用，请输入明天的日期。 | *FUTURE_DATE* |
 | *account-name* | 存储帐户名称。 请使用在此前的步骤中搁置的名称。 | *YOUR_STORAGE_ACCOUNT_NAME* |
@@ -62,7 +62,7 @@ ms.locfileid: "31419086"
 以下脚本使用了 Azure CLI 来创建可以传递给 JavaScript Blob 服务的 SAS。
 
 > [!NOTE]
-> 为了获得最佳结果，请在将命令粘贴到 Azure Cloud Shell 中之前删除参数之间的额外空格。
+> 为了获得最佳结果，请在将命令粘贴到 Azure Cloud Shell 中之前删除参数之间的多余空格。
 
 ```bash
 az storage account generate-sas
@@ -75,7 +75,7 @@ az storage account generate-sas
 ```
 你可能会觉得每个参数之后的一系列值有点费解。 这些参数值取自相应权限的第一个字母。 下表解释了这些值的来源： 
 
-| 参数        | 值   | 说明  |
+| 参数        | 值   | Description  |
 |------------------|---------|---------|
 | *permissions*    | racwdl  | 此 SAS 允许 *read*（读取）、*append*（追加）、*create*（创建）、*write*（编写）、*delete*（删除）和 *list*（列出）功能。 |
 | *resource-types* | sco     | 受 SAS 影响的资源为 *service*（服务）、*container*（容器）和 *object*（对象）。 |

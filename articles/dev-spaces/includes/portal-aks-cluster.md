@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 05736495d0d4a0c3a5072d29ad27801b6d4a7241
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 2f894549951a0ef23a95acaab48ab20ce6646443
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37967608"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39189369"
 ---
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>创建为 Azure Dev Spaces 启用的 Kubernetes 群集
 
@@ -32,7 +32,11 @@ ms.locfileid: "37967608"
 
    ![Kubernetes 配置设置](../media/common/Kubernetes-Create-Cluster-2.PNG)
 
-   完成时选择“下一步: 网络”。
+   在完成时选择“下一步: 身份验证”。
+
+1. 为基于角色的访问控制 (RBAC) 选择所需设置。 Azure Dev Spaces 支持启用或禁用了 RBAC 的群集。
+
+    ![RBAC 设置](../media/common/k8s-RBAC.PNG)
 
 1. 请确保启用 Http 应用程序路由。
 
@@ -40,9 +44,5 @@ ms.locfileid: "37967608"
 
     > [!IMPORTANT]
     > 创建 AKS 群集时必须确保启用 Http 应用程序路由。 以后无法更改此设置。
-
-1. 为基于角色的访问控制 (RBAC) 选择所需设置。 Azure Dev Spaces 支持启用或禁用了 RBAC 的群集。
-
-    ![RBAC 设置](../media/common/k8s-RBAC.PNG)
 
 1. 完成时依次选择“评审 + 创建”、“创建”。

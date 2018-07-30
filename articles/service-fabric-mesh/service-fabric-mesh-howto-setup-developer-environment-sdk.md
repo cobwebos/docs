@@ -5,16 +5,16 @@ services: service-fabric-mesh
 keywords: ''
 author: tylermsft
 ms.author: twhitney
-ms.date: 07/11/2018
+ms.date: 07/20/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 96549696013a2dd94741090a0a017b57a3b1e19e
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 589bef1894a3bee1e6974a0ea2516200fae2891f
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125155"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185537"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-applications"></a>设置 Windows 开发环境以生成 Service Fabric 应用程序
 
@@ -29,52 +29,32 @@ ms.locfileid: "39125155"
 * Windows 10（企业版、专业版或教育版）
 * Windows Server 2016
 
-## <a name="enable-hyper-v"></a>启用 Hyper-V
-
-必须启用 Hyper-V 才能创建 Service Fabric 应用。 
-
-### <a name="windows-10"></a>Windows 10
-
-以管理员身份打开 PowerShell 并运行以下命令：
-
-```powershell
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
-```
-
-重启计算机。 有关如何启用 Hyper-V 的详细信息，请参阅[在 Windows 10 上安装 Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)。
-
-### <a name="windows-server-2016"></a>Windows Server 2016
-
-以管理员身份打开 PowerShell 并运行以下命令：
-
-```powershell
-Install-WindowsFeature -Name Hyper-V -IncludeManagementTools
-```
-
-重启计算机。 有关如何启用 Hyper-V 的详细信息，请参阅[在 Windows Server 2016 上安装 Hyper-V 角色](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)。
-
 ## <a name="visual-studio"></a>Visual Studio
 
 需有 Visual Studio 2017 才能部署 Service Fabric 应用。 [安装版本 15.6.0][download-visual-studio] 或更高版本，并启用以下工作负荷：
 
 - ASP.NET 和 Web 开发
 - Azure 开发
+ 
+## <a name="windows-10---install-docker"></a>Windows 10 - 安装 Docker
 
-## <a name="docker"></a>Docker
+下载并安装最新版本的 [Docker Community Edition for Windows][download-docker] 来支持 Service Fabric 网格使用的容器化 Service Fabric 应用。
 
-安装 Docker，用于支持 Service Fabric 网格使用的容器化 Service Fabric 应用。
+在安装过程中出现提示时，请选择“使用 Windows 容器而不是 Linux 容器”。 如果你的计算机上未启用 Hyper-V，则 Docker 安装将请求启用它。 如果出现提示，单击“确定”以执行此操作。
 
-### <a name="windows-10"></a>Windows 10
+## <a name="windows-server-2016---install-hyper-v-and-docker"></a>Windows Server 2016 - 安装 Hyper-V 和 Docker
 
-下载并安装最新版本的 [Docker Community Edition for Windows][download-docker]。 
+**安装 Hyper-V**
 
-在安装过程中出现提示时，请选择“使用 Windows 容器而不是 Linux 容器”。 需要注销然后重新登录。 重新登录后，如果以前未启用 Hyper-V，系统可能会提示你启用 Hyper-V。 必须启用 Hyper-V，然后重启计算机。
+首先，以管理员身份打开 PowerShell 并运行以下命令来安装 HYPER-V 并重启计算机。 有关详细信息，请参阅 [Docker Enterprise Edition for Windows Server][download-docker-server]。
 
-重启计算机后，Docker 会提示你启用“容器”功能。请启用该功能，然后重启计算机。
+```powershell
+Install-WindowsFeature -Name Hyper-V -IncludeManagementTools
+```
 
-### <a name="windows-server-2016"></a>Windows Server 2016
+**安装 Docker**
 
-使用以下 PowerShell 命令安装 Docker。 有关详细信息，请参阅 [Docker Enterprise Edition for Windows Server][download-docker-server]。
+以管理员身份打开 PowerShell 并运行以下命令来安装 Docker：
 
 ```powershell
 Install-Module DockerMsftProvider -Force
@@ -86,12 +66,14 @@ Install-WindowsFeature Containers
 
 ## <a name="sdk-and-tools"></a>SDK 和工具
 
-按依赖顺序安装 Service Fabric 网格运行时、SDK 和工具。
+按以下顺序安装 Service Fabric 网格运行时、SDK 和工具。
 
 1. 使用 Web 平台安装程序安装 [Service Fabric 网格 SDK][download-sdkmesh]。 这也会安装 Microsoft Azure Service Fabric SDK 和运行时。
 2. 从 Visual Studio 市场安装 [Visual Studio Service Fabric 工具（预览版）扩展][download-tools]。
 
 ## <a name="build-a-cluster"></a>生成群集
+
+如果使用的是 Visual Studio，则可以跳过本部分，因为如果你还没有创建本地群集，Visual Studio 将创建它。
 
 为了在创建和运行 Service Fabric 应用时获得最佳调试性能，我们建议创建单节点本地开发群集。 每当部署或调试 Service Fabric 网格项目时，都必须运行此群集。
 
@@ -100,7 +82,7 @@ Install-WindowsFeature Containers
 安装运行时、SDK 和 Visual Studio 工具后，创建开发群集。
 
 1. 关闭 PowerShell 窗口。
-2. 以管理员身份打开权限提升的新 PowerShell 窗口。 需要执行此步骤来加载已安装的 Service Fabric 模块。
+2. 以管理员身份打开权限提升的新 PowerShell 窗口。 需要执行此步骤来加载最近安装的 Service Fabric 模块。
 3. 运行以下 PowerShell 命令创建开发群集：
 
     ```powershell

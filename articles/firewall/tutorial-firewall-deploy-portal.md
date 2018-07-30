@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 7/11/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 7a127f53985f39913c83958be1f1730c64b33a76
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 8db3f0ffbd65f3601bc05054e53a1e8e17384866
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001944"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145309"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>教程：使用 Azure 门户部署和配置 Azure 防火墙
 
@@ -235,7 +235,7 @@ Azure 防火墙文章中的示例假设已启用了Azure 防火墙公共预览�
 6. 在“规则”下，为“名称”键入 **AllowDNS**。
 8. 对于“协议”，请选择“TCP”。
 9. 对于“源地址”，请键入 **10.0.2.0/24**。
-10. 对于“目标地址”，请键入 **209.244.0.3, 209.244.0.4**
+10. 对于“目标地址”，请键入 **209.244.0.3,209.244.0.4**
 11. 对于“目标端口”，请键入 **53**。
 12. 单击 **“添加”**。
 

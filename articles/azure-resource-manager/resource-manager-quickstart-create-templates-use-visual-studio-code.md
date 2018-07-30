@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 07/17/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: a66d845fcf7507613cda475bbc96225f8a7cc7eb
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: bb0e3ee685d5a52a9f372e99d97f3608f67c17c0
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126836"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185391"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板
 
@@ -144,7 +144,7 @@ ms.locfileid: "39126836"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程已介绍如何使用 Visual Studio Code 创建模板，以及如何使用 Azure 门户 Cloud Shell 部署模板。 本快速入门中使用的模板仅包含一个 Azure 资源。  在下一篇教程中，我们将开发包含多个资源的模板。  某些资源具有依赖的资源。
+本教程已介绍如何使用 Visual Studio Code 创建模板，以及如何使用 Azure 门户 Cloud Shell 部署模板。 在下一教程中，你将详细了解如何开发模板，以及如何使用模板引用。
 
 > [!div class="nextstepaction"]
-> [使用 Visual Studio 创建模板](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
+> [创建加密的存储帐户](./resource-manager-tutorial-create-encrypted-storage-accounts.md)

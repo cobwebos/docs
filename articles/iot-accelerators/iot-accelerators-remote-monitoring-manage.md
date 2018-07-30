@@ -1,20 +1,20 @@
 ---
-title: 在基于 Azure 的远程监视解决方案中管理设备 | Microsoft Docs
+title: 教程：在基于 Azure 的远程监视解决方案中管理设备 | Microsoft Docs
 description: 本教程介绍如何管理与远程监视解决方案加速器连接的设备。
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 06/12/2018
+ms.date: 07/19/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 63baf6397b2542311525bac740c50b5eacbd35cf
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: cd8e8c1fe1b77113968b7af635f45f9e0e077b7c
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097421"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159191"
 ---
 # <a name="tutorial-configure-and-manage-devices-connected-to-your-monitoring-solution"></a>教程：配置和管理连接到监视解决方案的设备
 
@@ -33,11 +33,9 @@ Contoso 购置了新的机器以扩建其某处生产场地。 在等待交付�
 > * 重新配置设备。
 > * 组织设备。
 
-## <a name="prerequisites"></a>先决条件
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-若要遵循本教程，需在 Azure 订阅中部署远程监视解决方案加速器的实例。
-
-如果尚未部署远程监视解决方案加速器，应完成[部署基于云的远程监视解决方案](quickstart-remote-monitoring-deploy.md)教程。
+[!INCLUDE [iot-iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
 ## <a name="add-a-simulated-device"></a>添加模拟设备
 
@@ -51,23 +49,21 @@ Contoso 购置了新的机器以扩建其某处生产场地。 在等待交付�
 
 ## <a name="test-the-simulated-device"></a>测试模拟设备
 
-若要测试模拟设备是否发送遥测数据和报告属性值，请在“设备”页上的设备列表中选择该模拟设备。 有关设备的实时信息显示在“设备详细信息”面板中：
+若要测试模拟引擎设备是否发送遥测数据并报告属性值，请在“设备”页上的设备列表中选择该模拟设备。 有关引擎的实时信息显示在“设备详细信息”面板中：
 
 [![查看新的模拟引擎设备](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-expanded.png#lightbox)
 
-在“设备详细信息”中，验证新设备是否发送遥测数据。 若要查看设备发出的不同振动遥测数据流，请单击“振动”：
+在“设备详细信息”中，验证新设备是否发送遥测数据。 若要查看设备发出的振动遥测数据流，请单击“振动”：
 
 [![选择要查看的遥测数据流](./media/iot-accelerators-remote-monitoring-manage/devicesvibration-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesvibration-expanded.png#lightbox)
 
 “设备详细信息”面板显示有关设备的其他信息，例如标记值、设备支持的方法，以及设备报告的属性。
 
-若要查看详细诊断信息，请向下滚动到“诊断”视图：
-
-[![查看设备诊断](./media/iot-accelerators-remote-monitoring-manage/devicediagnostics-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicediagnostics-expanded.png#lightbox)
+若要查看详细的诊断，请在“设备详细信息”面板中向下滚动以查看“诊断”部分。
 
 ## <a name="act-on-a-device"></a>操作设备
 
-若要测试模拟引擎设备是否正确响应解决方案加速器发起的操作，请运行 **FirmwareUpdate** 方法。 若要通过运行某个方法来操作某个设备，请在设备列表中选择该设备，然后单击“作业”。 如果想要操作多个设备，可以选择多个设备。 在“作业”面板中，选择“运行方法”。 “引擎”设备模型指定三个方法：**FirmwareUpdate**、**FillTank** 和 **EmptyTank**。
+若要测试模拟引擎设备是否正确响应从仪表板发起的操作，请运行 **FirmwareUpdate** 方法。 若要通过运行某个方法来操作某个设备，请在设备列表中选择该设备，然后单击“作业”。 如果想要操作多个设备，可以选择多个设备。 在“作业”面板中，选择“运行方法”。 “引擎”设备模型指定三个方法：**FirmwareUpdate**、**FillTank** 和 **EmptyTank**。
 
 [![引擎方法](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-expanded.png#lightbox)
 
@@ -103,7 +99,7 @@ Contoso 购置了新的机器以扩建其某处生产场地。 在等待交付�
 
 ## <a name="organize-your-devices"></a>组织设备
 
-为了方便操作员组织和管理设备，需要使用相应的团队名称对设备进行标记。 Contoso 设立了两个不同的团队来从事现场服务活动：
+为了方便操作员组织和管理设备，需要使用团队名称对设备进行标记。 Contoso 设立了两个不同的团队来从事现场服务活动：
 
 * 智能车辆团队管理卡车和原型制作设备。
 * 智能建筑团队管理冷却器、升降机和引擎。
@@ -114,19 +110,15 @@ Contoso 购置了新的机器以扩建其某处生产场地。 在等待交付�
 
 ### <a name="add-tags"></a>添加标记
 
-选择所有“卡车”和“原型制作”设备。 然后单击“作业”：
+选择所有“卡车”和“原型制作”设备。 然后单击“作业”。
 
-[![选择原型制作和卡车设备](./media/iot-accelerators-remote-monitoring-manage/devicesmultiselect-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmultiselect-expanded.png#lightbox)
-
-选择“标记”，将作业名称设置为 **AddConnectedVehicleTag**，添加名为 **FieldService**、值为 **ConnectedVehicle** 的文本标记。 然后单击“应用”：
+在“作业”面板中，选择“标记”，将作业名称设置为 **AddConnectedVehicleTag**，添加名为 **FieldService** 且值为 **ConnectedVehicle** 的文本标记。 然后单击“应用”：
 
 [![将标记添加到原型制作和卡车设备](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag-expanded.png#lightbox)
 
-在设备页上，选择所有“冷却器”、“升降机”和“引擎”设备。 然后单击“作业”：
+在设备页上，选择所有“冷却器”、“升降机”和“引擎”设备。 然后单击“作业”。
 
-[![选择冷却器、升降机和引擎设备](./media/iot-accelerators-remote-monitoring-manage/devicesmultiselect2-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmultiselect2-expanded.png#lightbox)
-
-选择“标记”，将作业名称设置为 **AddSmartBuildingTag**，添加名为 **FieldService**、值为 **SmartBuilding** 的文本标记。 然后单击“应用”：
+在“作业”面板中，选择“标记”，将作业名称设置为 **AddSmartBuildingTag**，添加名为 **FieldService** 且值为 **SmartBuilding** 的文本标记。 然后单击“应用”：
 
 [![将标记添加到冷却器、升降机和引擎设备](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag2-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag2-expanded.png#lightbox)
 
@@ -148,17 +140,7 @@ Contoso 购置了新的机器以扩建其某处生产场地。 在等待交付�
 
 [![创建连接的车辆筛选器](./media/iot-accelerators-remote-monitoring-manage/filterinaction-inline.png)](./media/iot-accelerators-remote-monitoring-manage/filterinaction-expanded.png#lightbox)
 
-## <a name="clean-up-resources"></a>清理资源
-
-如果你打算继续学习下一篇教程，请将远程监视解决方案加速器保持为部署状态。 如果不再使用解决方案加速器，可在设置面板中停止模拟设备，以减少运行解决方案加速器所产生的费用：
-
-[![暂停遥测](./media/iot-accelerators-remote-monitoring-manage/togglesimulation-inline.png)](./media/iot-accelerators-remote-monitoring-manage/togglesimulation-expanded.png#lightbox)
-
-准备好学习下一篇教程时，可以重启模拟设备。
-
-如果不再需要该解决方案加速器，请从[预配的解决方案](https://www.azureiotsolutions.com/Accelerators#dashboard)页中将其删除：
-
-![删除解决方案](media/iot-accelerators-remote-monitoring-manage/deletesolution.png)
+[!INCLUDE [iot-iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

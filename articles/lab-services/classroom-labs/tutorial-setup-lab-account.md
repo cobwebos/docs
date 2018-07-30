@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 600be7518bc526d3f147bb16377677854b676f63
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: d4bfd684792e5ec13b2a4a020fa21249f1888657
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823123"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226337"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>教程：使用 Azure 实验室服务设置实验室帐户
 在 Azure 实验室服务中，实验室帐户充当管理组织实验室的中心帐户。 在你的实验室帐户中，授予他人创建实验室的权限，并设置适用于实验室帐户下所有实验室的策略。 在本教程中，了解如何以实验室管理员身份创建实验室帐户。 
@@ -29,8 +29,9 @@ ms.locfileid: "34823123"
 > [!div class="checklist"]
 > * 创建实验室帐户
 > * 将用户添加为“实验室创建者”角色
+> * 指定可供实验室所有者使用的市场映像
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="create-a-lab-account"></a>创建实验室帐户
 以下步骤演示了如何使用 Azure 门户通过 Azure 实验室服务创建实验室。 
@@ -56,7 +57,9 @@ ms.locfileid: "34823123"
     ![“实验室帐户”页面](../media/tutorial-setup-lab-account/lab-account-page.png)
 
 ## <a name="add-a-user-to-the-lab-creator-role"></a>将用户添加为“实验室创建者”角色
-为教师提供为课程创建实验室的权限，并将他们添加为实验室创建者角色：
+若要在实验室帐户中设置课堂实验室，用户必须是实验室帐户中“实验室创建者”角色的成员。 用来创建实验室帐户的帐户会自动添加到此角色。 如果打算使用同一用户帐户创建课堂实验室，可以跳过此步骤。 若要使用其他用户帐户创建教室实验室，请执行以下步骤： 
+
+为教师提供为课程创建实验室的权限，并将他们添加为**实验室创建者**角色：
 
 1. 在“实验室帐户”页上，选择“访问控制(IAM)”，然后单击工具栏中的“+ 添加”。 
 
@@ -65,6 +68,22 @@ ms.locfileid: "34823123"
 
     ![将用户添加为“实验室创建者”角色](../media/tutorial-setup-lab-account/add-user-to-lab-creator-role.png)
 
+## <a name="specify-marketplace-images-available-to-lab-owners"></a>指定可供实验室所有者使用的市场映像
+在本部分中，指定实验室所有者可用来创建课堂实验室的市场映像。 
+
+1. 在左侧的菜单上选择“市场映像”。 默认情况下，可以看到映像的完整列表（包括启用的和禁用的）。 可以通过从顶部的下拉列表中选择“仅启用的/仅禁用的”选项对列表进行筛选来仅查看启用的/禁用的映像。 
+
+    ![“市场映像”页面](../media/tutorial-setup-lab-account/marketplace-images-page.png)
+2. 若要**禁用**已启用的市场映像，请执行下列操作之一： 
+    1. 选择最后一列中的 **...（省略号）** 并选择“禁用映像”。 
+
+        ![禁用一个映像](../media/tutorial-setup-lab-account/disable-one-image.png) 
+    2. 通过选择列表中映像名称前面的复选框从列表中选择一个或多个映像，然后选择“禁用所选映像”。 
+
+        ![禁用多个映像](../media/tutorial-setup-lab-account/disable-multiple-images.png) 
+1. 类似地，若要**启用**已禁用的市场映像，请执行下列操作之一： 
+    1. 选择最后一列中的 **...（省略号）** 并选择“启用映像”。 
+    2. 通过选择列表中映像名称前面的复选框从列表中选择一个或多个映像，然后选择“启用所选映像”。 
 
 ## <a name="next-steps"></a>后续步骤
 在本教程中，已创建实验室帐户。 要了解如何专业地创建教室实验室，请继续下一教程：

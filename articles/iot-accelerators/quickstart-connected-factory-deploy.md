@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 上部署解决方案以管理工业 IoT 设备 | Microsoft Docs
+title: 尝试使用 Azure 上的解决方案管理工业 IoT 设备 | Microsoft Docs
 description: 在本快速入门中，我们将部署联网工厂 Azure IoT 解决方案加速器，然后登录并使用解决方案仪表板。
 author: dominicbetts
 manager: timlt
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/12/2018
 ms.author: dobett
-ms.openlocfilehash: ce4d32c80040ec658070a3fa3132e34931a6755a
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 649ce7bcd2d2e4ceb2fc397643f4dd0d3ef89c1e
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072620"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144507"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>快速入门：尝试使用基于云的解决方案来管理工业 IoT 设备
 

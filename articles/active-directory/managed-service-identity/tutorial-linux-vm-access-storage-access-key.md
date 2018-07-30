@@ -1,6 +1,6 @@
 ---
-title: 使用 Linux VM MSI 访问 Azure 存储
-description: 本教程将指导你完成使用 Linux VM 托管服务标识 (MSI) 访问 Azure 存储的过程。
+title: 使用 Linux VM 托管服务标识访问 Azure 存储
+description: 本教程将指导你完成使用 Linux VM 托管服务标识访问 Azure 存储的过程。
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: eee0787518a17826d6256cb9b7dad8f4547f5663
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: aa0736452d7dc06c5a1a6c2710024a5fdc626af1
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048838"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258705"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>教程：使用 Linux VM 托管服务标识通过访问密钥访问 Azure 存储
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-本教程演示了如何为 Linux 虚拟机启用托管服务标识 (MSI)，然后使用该标识检索存储帐户访问密钥。 可以像平常在执行存储操作时一样使用存储访问密钥，例如使用存储 SDK 时。 本教程使用 Azure CLI 上传和下载 blob。 将了解如何执行以下操作：
+本教程演示了如何为 Linux 虚拟机启用托管服务标识，然后使用该标识检索存储帐户访问密钥。 可以像平常在执行存储操作时一样使用存储访问密钥，例如使用存储 SDK 时。 本教程使用 Azure CLI 上传和下载 blob。 将了解如何执行以下操作：
 
 > [!div class="checklist"]
-> * 在 Linux 虚拟机上启用 MSI 
+> * 在 Linux 虚拟机上启用托管服务标识 
 > * 授予 VM 对资源管理器中存储帐户访问密钥的访问权限 
 > * 使用 VM 的标识获取一个访问令牌，并使用它从资源管理器检索存储访问密钥  
 
@@ -44,7 +44,7 @@ ms.locfileid: "39048838"
 
 ## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>在新的资源组中创建 Linux 虚拟机
 
-本教程将新建一个 Linux VM。 另外，还可以在现有 VM 上启用 MSI。
+本教程将新建一个 Linux VM。 还可以在现有 Azure VM 上启用托管服务标识。
 
 1. 单击 Azure 门户左上角的“+/创建新服务”按钮。
 2. 选择“计算”，然后选择“Ubuntu Server 16.04 LTS”。
@@ -56,20 +56,20 @@ ms.locfileid: "39048838"
 5. 若要在新资源组中创建虚拟机，请选择“资源组”中的“新建”。 完成后，单击“确定”。
 6. 选择 VM 大小。 若要查看更多大小，请选择“全部查看”或更改“支持的磁盘类型”筛选器。 在设置边栏选项卡中保留默认值，然后单击“确定”。
 
-## <a name="enable-msi-on-your-vm"></a>在 VM 上启用 MSI
+## <a name="enable-managed-service-identity-on-your-vm"></a>在 VM 上启用托管服务标识
 
-通过虚拟机 MSI，可以从 Azure AD 获取访问令牌，而无需在代码中插入凭据。 在 VM 上启用托管服务标识会执行两项操作：向 Azure Active Directory 注册 VM 以创建其托管标识，以及在 VM 上配置标识。  
+可以通过虚拟机托管服务标识从 Azure AD 中获取访问令牌，无需在代码中插入凭据。 在 VM 上启用托管服务标识会执行两项操作：向 Azure Active Directory 注册 VM 以创建其托管标识，以及在 VM 上配置标识。  
 
 1. 导航到新虚拟机的资源组，并选择已在上一步中创建的虚拟机。
 2. 在左侧的 VM“设置”下，单击“配置”。
-3. 若要注册并启用 MSI，请选择“是”，若要禁用，请选择“否”。
+3. 若要注册并启用托管服务标识，请选择“是”，若要禁用，请选择“否”。
 4. 务必单击“保存”，以保存配置。
 
     ![Alt 图像文本](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="create-a-storage-account"></a>创建存储帐户 
 
-如果还没有存储帐户，现在将创建存储帐户。  也可以跳过此步骤，并授予 VM 对现有存储帐户密钥的 MSI 访问权限。 
+如果还没有存储帐户，现在将创建存储帐户。  也可以跳过此步骤，并授予 VM 托管服务标识对现有存储帐户密钥的访问权限。 
 
 1. 单击 Azure 门户左上角的“+/创建新服务”按钮。
 2. 依次单击“存储”、“存储帐户”，并将显示新的“创建存储帐户”面板。
@@ -91,9 +91,9 @@ ms.locfileid: "39048838"
 
     ![创建存储容器](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
-## <a name="grant-your-vms-msi-access-to-use-storage-account-access-keys"></a>授予 VM 的 MSI 访问权限以使用存储帐户访问密钥
+## <a name="grant-your-vms-managed-service-identity-access-to-use-storage-account-access-keys"></a>授权 VM 托管服务标识使用存储帐户访问密钥
 
-Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用 MSI 从资源管理器检索存储帐户访问密钥，并使用这些密钥访问存储。  在此步骤中，将授予 VM 对存储帐户密钥的 MSI 访问权限。   
+Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用托管服务标识从资源管理器检索存储帐户访问密钥，并使用这些密钥访问存储。  在此步骤中，将向 VM 托管服务标识授予对存储帐户密钥的访问权限。   
 
 1. 导航回新创建的存储帐户。
 2. 单击左侧面板中的“访问控制(IAM)”链接。  

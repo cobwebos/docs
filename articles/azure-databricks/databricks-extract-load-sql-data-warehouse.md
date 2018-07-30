@@ -1,30 +1,28 @@
 ---
-title: 教程：使用 Azure Databricks 执行 ETL 操作 | Microsoft Docs
+title: 教程：使用 Azure Databricks 执行 ETL 操作
 description: 了解如何将数据从 Data Lake Store 提取到 Azure Databricks 中，对数据进行转换，然后将数据加载到 Azure SQL 数据仓库中。
 services: azure-databricks
-documentationcenter: ''
 author: nitinme
+ms.author: nitinme
 manager: cgronlun
 editor: cgronlun
 ms.service: azure-databricks
 ms.custom: mvc
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 03/23/2018
-ms.author: nitinme
-ms.openlocfilehash: c3aa87f2c74175d1b61a8db6a9c7a0318a408658
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.date: 07/23/2018
+ms.openlocfilehash: 7f0354413932aef8a27b09ebac542ad1b8f375e1
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223824"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>教程：使用 Azure Databricks 提取、转换和加载数据
 
-本教程使用 Azure Databricks 执行 ETL（提取、转换和加载数据）操作。 可以将数据从 Azure Data Lake Store 提取到 Azure Databricks 中，在 Azure Databricks 中对数据运行转换操作，然后将转换的数据加载到 Azure SQL 数据仓库中。 
+本教程使用 Azure Databricks 执行 ETL（提取、转换和加载数据）操作。 将数据从 Azure Data Lake Store 提取到 Azure Databricks 中，在 Azure Databricks 中对数据运行转换操作，然后将转换的数据加载到 Azure SQL 数据仓库中。 
 
-本教程中的步骤使用 Azure Databricks 的 SQL 数据仓库连接器将数据传输到 Azure Databricks。 此连接器反过来将 Azure Blob 存储用作在 Azure Databricks 群集和 Azure SQL 数据仓库之间传输的数据的临时存储。
+本教程中的步骤使用 Azure Databricks 的 SQL 数据仓库连接器将数据传输到 Azure Databricks。 而此连接器又使用 Azure Blob 存储来临时存储在 Azure Databricks 群集和 Azure SQL 数据仓库之间传输的数据。
 
 下图演示了应用程序流：
 
@@ -48,8 +46,8 @@ ms.lasthandoff: 03/28/2018
 
 在开始学习本教程之前，请确保满足以下要求：
 - 创建 Azure SQL 数据仓库、创建服务器级防火墙规则并以服务器管理员身份连接到服务器。按[快速入门：创建 Azure SQL 数据仓库](../sql-data-warehouse/create-data-warehouse-portal.md)中的说明操作
-- 创建适用于 Azure SQL 数据仓库的数据库主密钥。 按[创建数据库主密钥](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key)中的说明操作。
-- 创建 Azure Blob 存储帐户及其中的容器。 另外，请检索用于访问该存储帐户的访问密钥。 按[快速入门：创建 Azure Blob 存储帐户](../storage/blobs/storage-quickstart-blobs-portal.md)中的说明操作。
+- 为 Azure SQL 数据仓库创建数据库主密钥。 按[创建数据库主密钥](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key)中的说明操作。
+- 创建 Azure Blob 存储帐户并在其中创建容器。 另外，请检索用于访问该存储帐户的访问密钥。 按[快速入门：创建 Azure Blob 存储帐户](../storage/blobs/storage-quickstart-blobs-portal.md)中的说明操作。
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -59,7 +57,7 @@ ms.lasthandoff: 03/28/2018
 
 在本部分，使用 Azure 门户创建 Azure Databricks 工作区。 
 
-1. 在 Azure 门户中，选择“创建资源” > “数据 + 分析” > “Azure Databricks”。 
+1. 在 Azure 门户中，选择“创建资源” > “数据 + 分析” > “Azure Databricks”。
 
     ![Azure 门户上的 Databricks](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png "Azure 门户上的 Databricks")
 
@@ -105,7 +103,7 @@ ms.lasthandoff: 03/28/2018
 
 ## <a name="create-an-azure-data-lake-store-account"></a>创建 Azure Data Lake Store 帐户
 
-在此部分，请创建 Azure Data Lake Store 帐户并将 Azure Active Directory 服务主体与之相关联。 在本教程的后面部分，请使用 Azure Databricks 中的该服务主体访问 Azure Data Lake Store。 
+在此部分，请创建 Azure Data Lake Store 帐户并将 Azure Active Directory 服务主体与之相关联。 本教程的后面部分将在 Azure Databricks 中使用该服务主体访问 Azure Data Lake Store。 
 
 1. 在 [Azure 门户](https://portal.azure.com)中选择“创建资源” > “存储” > “Data Lake Store”。
 3. 在“新建 Data Lake Store”边栏选项卡中，提供以下屏幕截图中所示的值：
@@ -143,14 +141,14 @@ ms.lasthandoff: 03/28/2018
 
    ![命名应用程序](./media/databricks-extract-load-sql-data-warehouse/create-app.png)
 
-若要从 Azure Databricks 访问 Data Lake Store 帐户，必须为所创建的 Azure Active Directory 服务主体提供以下值：
+若要从 Azure Databricks 访问 Data Lake Store 帐户，必须提供所创建的 Azure Active Directory 服务主体的以下值：
 - 应用程序 ID
 - 身份验证密钥
 - 租户 ID
 
 在以下部分，请检索此前创建的 Azure Active Directory 服务主体的这些值。
 
-### <a name="get-application-id-and-authentication-key-for-the-service-principal"></a>获取适用于服务主体的应用程序 ID 和身份验证密钥
+### <a name="get-application-id-and-authentication-key-for-the-service-principal"></a>获取服务主体的应用程序 ID 和身份验证密钥
 
 以编程方式登录时，需要使用应用程序的 ID 和身份验证密钥。 若要获取这些值，请使用以下步骤：
 
@@ -194,22 +192,6 @@ ms.lasthandoff: 03/28/2018
 
    ![租户 ID](./media/databricks-extract-load-sql-data-warehouse/copy-directory-id.png) 
 
-### <a name="associate-service-principal-with-azure-data-lake-store"></a>将服务主体与 Azure Data Lake Store 相关联
-
-在此部分，请将 Azure Data Lake Store 帐户与已创建的 Azure Active Directory 服务主体相关联。 这样可确保从 Azure Databricks 访问 Data Lake Store 帐户。
-
-1. 在 [Azure 门户](https://portal.azure.com)中选择所创建的 Data Lake Store 帐户。
-
-2. 在左窗格中，选择“访问控制” > “添加”。
-
-    ![添加 Data Lake Store 访问权限](./media/databricks-extract-load-sql-data-warehouse/add-adls-access.png "添加 Data Lake Store 访问权限")
-
-3. 在“添加权限”中，选择需要分配给服务主体的角色。 对于本教程，请选择“所有者”。 至于“分配访问权限至”，请选择“Azure AD 用户、组或应用程序”。 至于“选择”，请输入所创建的服务主体的名称，以便筛选出可供选择的服务主体。
-
-    ![选择服务主体](./media/databricks-extract-load-sql-data-warehouse/select-service-principal.png "选择服务主体")
-
-    选择此前创建的服务主体，然后选择“保存”。 此服务主体现在与 Azure Data Lake Store 帐户相关联。
-
 ## <a name="upload-data-to-data-lake-store"></a>将数据上传到 Data Lake Store
 
 在此部分，请将示例数据文件上传到 Data Lake Store。 稍后需在 Azure Databricks 中使用此文件来运行一些转换操作。 本教程所使用的示例数据 (**small_radio_json.json**) 在此 [Github 存储库](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json)中提供。
@@ -229,6 +211,53 @@ ms.lasthandoff: 03/28/2018
     ![上传选项](./media/databricks-extract-load-sql-data-warehouse/upload-data.png "上传选项")
 
 5. 在本教程中，你已经将数据文件上传到 Data Lake Store 的根目录。 因此，该文件现在位于 `adl://<YOUR_DATA_LAKE_STORE_ACCOUNT_NAME>.azuredatalakestore.net/small_radio_json.json`。
+
+## <a name="associate-service-principal-with-azure-data-lake-store"></a>将服务主体与 Azure Data Lake Store 相关联
+
+在本部分中，将 Azure Data Lake Store 帐户中的数据与已创建的 Azure Active Directory 服务主体相关联。 这样可确保能够从 Azure Databricks 访问 Data Lake Store 帐户。 对于本文中的场景，你将读取 Data Lake Store 中的数据来填充 SQL 数据仓库中的表。 根据 [Data Lake Store 中的访问控制概述](../data-lake-store/data-lake-store-access-control.md#common-scenarios-related-to-permissions)，要想对 Data Lake Store 中的某个文件具有读取访问权限，必须：
+
+- 对文件夹结构中直至该文件的所有文件夹具有**执行**权限。
+- 对该文件本身具有**读取**权限。
+
+可以执行以下步骤来授予这些权限。
+
+1. 在 [Azure 门户](https://portal.azure.com)中，选择你创建的 Data Lake Store 帐户，然后选择“数据资源管理器”。
+
+    ![启动数据资源管理器](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-data-explorer.png "启动数据资源管理器")
+
+2. 在此场景中，因为示例数据文件位于文件夹结构的根目录中，因此只需要在文件夹根目录处分配**执行**权限。 若要执行此操作，请从数据资源管理器的根节点选择“访问权限”。
+
+    ![为文件夹添加 ACL](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-1.png "为文件夹添加 ACL")
+
+3. 在“访问权限”下，选择“添加”。
+
+    ![为文件夹添加 ACL](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-2.png "为文件夹添加 ACL")
+
+4. 在“分配权限”下，单击“选择用户或组”并搜索你之前创建的 Azure Active Directory 服务主体。
+
+    ![添加 Data Lake Store 访问权限](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-3.png "添加 Data Lake Store 访问权限")
+
+    选择要分配的 AAD 服务主体并单击“选择”。
+
+5. 在“分配权限”下，单击“选择权限” > “执行”。 依次在“选择权限”下和“分配权限”下保留其他默认值并选择“确定”。
+
+    ![添加 Data Lake Store 访问权限](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-4.png "添加 Data Lake Store 访问权限")
+
+6. 返回到数据资源管理器，现在单击要分配读取权限的文件。 在“文件预览”下，选择“访问权限”。
+
+    ![添加 Data Lake Store 访问权限](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-file-1.png "添加 Data Lake Store 访问权限")
+
+7. 在“访问权限”下，选择“添加”。 在“分配权限”下，单击“选择用户或组”并搜索你之前创建的 Azure Active Directory 服务主体。
+
+    ![添加 Data Lake Store 访问权限](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-3.png "添加 Data Lake Store 访问权限")
+
+    选择要分配的 AAD 服务主体并单击“选择”。
+
+8. 在“分配权限”下，单击“选择权限” > “读取”。 依次在“选择权限”下和“分配权限”下选择“确定”。
+
+    ![添加 Data Lake Store 访问权限](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-file-2.png "添加 Data Lake Store 访问权限")
+
+    现在，服务主体具有足够的权限来从 Azure Data Lake Store 读取示例数据文件。
 
 ## <a name="extract-data-from-data-lake-store"></a>从 Data Lake Store 提取数据
 
@@ -283,6 +312,7 @@ ms.lasthandoff: 03/28/2018
 1. 一开始仅从已创建的数据帧检索 *firstName*、*lastName*、*gender*、*location* 和 *level* 列。
 
         val specificColumnsDf = df.select("firstname", "lastname", "gender", "location", "level")
+        specificColumnsDf.show()
 
     所获得的输出如以下代码片段所示：
 
@@ -313,7 +343,7 @@ ms.lasthandoff: 03/28/2018
 
 2.  可以进一步转换该数据，将 **level** 列重命名为 **subscription_type**。
 
-        val renamedColumnsDF = specificColumnsDf.withColumnRenamed("level", "subscription_type")
+        val renamedColumnsDf = specificColumnsDf.withColumnRenamed("level", "subscription_type")
         renamedColumnsDF.show()
 
     所获得的输出如以下代码片段所示。
@@ -347,7 +377,7 @@ ms.lasthandoff: 03/28/2018
 
 在此部分，请将转换的数据上传到 Azure SQL 数据仓库中。 可以使用适用于 Azure Databricks 的 Azure SQL 数据仓库连接器直接上传数据帧，在 SQL 数据仓库中作为表来存储。
 
-如前所述，SQL 数据仓库连接器使用 Azure Blob 存储作为临时存储，以便将数据从 Azure Databricks 上传到 Azure SQL 数据仓库。 因此，一开始请提供连接到存储帐户所需的配置。 必须已经按照本文先决条件部分的要求创建帐户。
+如前所述，SQL 数据仓库连接器使用 Azure Blob 存储作为临时存储位置，以便将数据从 Azure Databricks 上传到 Azure SQL 数据仓库。 因此，一开始请提供连接到存储帐户所需的配置。 必须已经按照本文先决条件部分的要求创建帐户。
 
 1. 提供从 Azure Databricks 访问 Azure 存储帐户所需的配置。
 
@@ -357,7 +387,7 @@ ms.lasthandoff: 03/28/2018
 
 2. 指定一个在 Azure Databricks 和 Azure SQL 数据仓库之间移动数据时需要使用的临时文件夹。
 
-        val tempDir = "wasbs://" + blobContainer + "@" + blobStorage +"/tempDirs"
+        val tempDir = "wasbs://" + blobContainer + "\@" + blobStorage +"/tempDirs"
 
 3. 运行以下代码片段，以便在配置中存储 Azure Blob 存储访问密钥。 这样可确保不需将访问密钥以纯文本形式存储在 Notebook 中。
 
@@ -376,13 +406,13 @@ ms.lasthandoff: 03/28/2018
         val sqlDwUrl = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass + ";$dwJdbcExtraOptions"
         val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
 
-5. 运行以下代码片段来加载转换的数据帧 **renamedColumnsDF**，在 SQL 数据仓库中作为表来存储。 此代码片段在 SQL 数据库中创建名为 **SampleTable** 的表。
+5. 运行以下代码片段来加载转换的数据帧 **renamedColumnsDf**，在 SQL 数据仓库中作为表来存储。 此代码片段在 SQL 数据库中创建名为 **SampleTable** 的表。 请注意，Azure SQL 数据仓库需要一个主密钥。  可以通过在 SQL Server Management Studio 中执行“CREATE MASTER KEY”命令来创建主密钥。
 
         spark.conf.set(
           "spark.sql.parquet.writeLegacyFormat",
           "true")
         
-        renamedColumnsDF.write
+        renamedColumnsDf.write
             .format("com.databricks.spark.sqldw")
             .option("url", sqlDwUrlSmall) 
             .option("dbtable", "SampleTable")
@@ -395,7 +425,7 @@ ms.lasthandoff: 03/28/2018
 
     ![验证示例表](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table.png "验证示例表")
 
-7. 运行一个 select 查询，验证表的内容。 该表的数据应该与 **renamedColumnsDF** 数据帧相同。
+7. 运行一个 select 查询，验证表的内容。 该表的数据应该与 **renamedColumnsDf** 数据帧相同。
 
     ![验证示例表内容](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table-content.png "验证示例表内容")
 
