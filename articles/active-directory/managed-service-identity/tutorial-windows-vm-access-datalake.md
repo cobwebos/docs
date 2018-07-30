@@ -1,6 +1,6 @@
 ---
-title: 如何使用 Windows VM 托管服务标识 (MSI) 访问 Azure Data Lake Store
-description: 本教程介绍如何使用 Windows VM 托管服务标识 (MSI) 访问 Azure Data Lake Store。
+title: 如何使用 Windows VM 托管服务标识访问 Azure Data Lake Store
+description: 本教程介绍如何使用 Windows VM 托管服务标识访问 Azure Data Lake Store。
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: a7935aa245239ed32527d2c22fd41845c6da2ae1
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f5d4a5e26ecf4bde286a5163bf5ec7da492e474d
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007961"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247907"
 ---
-# <a name="tutorial-use-a-windows-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>教程：使用 Windows VM 托管服务标识 (MSI) 访问 Azure Data Lake Store
+# <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-data-lake-store"></a>教程：使用 Windows VM 托管服务标识访问 Azure Data Lake Store
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-本教程介绍如何使用 Windows 虚拟机 (VM) 的托管服务标识 (MSI) 访问 Azure Data Lake Store。 托管服务标识由 Azure 自动管理，可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中插入凭据了。 学习如何：
+本教程介绍如何使用 Windows 虚拟机 (VM) 的托管服务标识访问 Azure Data Lake Store。 托管服务标识由 Azure 自动管理，可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中插入凭据了。 学习如何：
 
 > [!div class="checklist"]
-> * 在 Windows VM 上启用 MSI 
+> * 在 Windows VM 上启用托管服务标识 
 > * 授予 VM 对 Azure Data Lake Store 的访问权限
 > * 使用 VM 标识获取访问令牌，并使用它访问 Azure Data Lake Store
 
@@ -44,7 +44,7 @@ ms.locfileid: "39007961"
 
 ## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>在新的资源组中创建 Windows 虚拟机
 
-本教程将新建 Windows VM。  另外，还可以在现有 VM 上启用 MSI。
+本教程将新建 Windows VM。  还可以在现有 Azure VM 上启用托管服务标识。
 
 1. 单击 Azure 门户左上角的“创建资源”按钮。
 2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”。 
@@ -55,17 +55,17 @@ ms.locfileid: "39007961"
 
    ![Alt 图像文本](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
-## <a name="enable-msi-on-your-vm"></a>在 VM 上启用 MSI 
+## <a name="enable-managed-service-identity-on-your-vm"></a>在 VM 上启用托管服务标识 
 
-通过 VM MSI，可以从 Azure AD 获取访问令牌，而无需在代码中插入凭据。 启用 MSI 会告诉 Azure 为 VM 创建托管标识。 事实上，启用 MSI 会执行两项操作：向 Azure Active Directory 注册 VM 以创建其托管标识，和在 VM 上配置该标识。
+可以通过虚拟机托管标识从 Azure AD 中获取访问令牌，无需在代码中插入凭据。 启用托管服务标识会告诉 Azure 为 VM 创建托管标识。 在表面下，在 VM 上启用托管服务标识会执行两项操作：向 Azure Active Directory 注册 VM 以创建其托管标识，以及在 VM 上配置标识。
 
-1. 选择要在其上启用 MSI 的虚拟机。  
-2. 在左侧导航栏中，单击“配置”。 
-3. 此时，将会看到托管服务标识。 若要注册并启用 MSI，请选择“是”，若要禁用，请选择“否”。 
+1. 对于“虚拟机”，请选择要在其上启用托管标识的虚拟机。  
+2. 单击左侧导航栏中的“配置”。 
+3. 此时，将会看到托管服务标识。 若要注册并启用托管服务标识，请选择“是”，若要禁用，请选择“否”。 
 4. 务必单击“保存”，以保存配置。  
    ![Alt 图像文本](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
-5. 若要查看并确认在此 VM 上安装了哪些扩展，请单击“扩展”。 如果 MSI 已启用，列表中会显示现“ManagedIdentityExtensionforWindows”。
+5. 若要查看并确认在此 VM 上安装了哪些扩展，请单击“扩展”。 如果托管服务标识已启用，则列表中会显示 **ManagedIdentityExtensionforWindows**。
 
    ![Alt 图像文本](media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
 
@@ -73,7 +73,7 @@ ms.locfileid: "39007961"
 
 现在可以授予 VM 对 Azure Data Lake Store 中的文件和文件夹的访问权限。  对于此步骤，可以使用现有 Data Lake Store，也可以重新创建。  若要使用 Azure 门户新建 Data Lake Store，请按照此 [Azure Data Lake Store 快速入门](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)执行操作。 [Azure Data Lake Store 文档](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview)中还提供了有关使用 Azure CLI 和 Azure PowerShell 执行这些操作的快速入门。
 
-在 Data Lake Store 中新建文件夹，并为 VM MSI 授予读取、写入和执行该文件夹中的文件的权限：
+在 Data Lake Store 中新建文件夹，并向 VM 托管服务标识授予读取、写入和执行该文件夹中的文件的权限：
 
 1. 在 Azure 门户中，单击左侧导航栏中的“Data Lake Store”。
 2. 单击要用于本教程的 Data Lake Store。
@@ -87,21 +87,21 @@ ms.locfileid: "39007961"
 10. 与步骤 5 类似，单击“添加”，在“选择”字段中输入 VM 的名称，选中此名称，然后单击“选择”。
 11. 与步骤 6 类似，单击“选择权限”，选择“读取”、“写入”和“执行”，并以“访问权限条目和默认访问权限条目”的形式添加到“此文件夹”。  单击“确定” 。  权限应已成功添加。
 
-VM MSI 现在可以对所创建文件夹中的文件执行所有操作。  若要详细了解管理 Data Lake Store 的访问权限，请在 [Data Lake Store 中的访问控制](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control)阅读相应文章。
+VM 托管服务标识现在可以对所创建文件夹中的文件执行所有操作。  若要详细了解管理 Data Lake Store 的访问权限，请在 [Data Lake Store 中的访问控制](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control)阅读相应文章。
 
-## <a name="get-an-access-token-using-the-vm-msi-and-use-it-to-call-the-azure-data-lake-store-filesystem"></a>使用 VM MSI 获取访问令牌，并使用它调用 Azure Data Lake Store 文件系统
+## <a name="get-an-access-token-using-the-vm-managed-service-identity-and-use-it-to-call-the-azure-data-lake-store-filesystem"></a>使用 VM 托管服务标识获取访问令牌，并使用它调用 Azure Data Lake Store 文件系统
 
-Azure Data Lake Store 原生支持 Azure AD 身份验证，因此可以直接接受使用 MSI 获取的访问令牌。  若要对 Data Lake Store 文件系统进行身份验证，请将 Azure AD 颁发的访问令牌发送到 Data Lake Store 文件系统终结点，并且身份验证标头的格式应为“Bearer <ACCESS_TOKEN_VALUE>”。  若要详细了解 Data Lake Store 对 Azure AD 身份验证的支持情况，请阅读[使用 Azure Active Directory 进行 Data Lake Store 身份验证](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory)
+Azure Data Lake Store 原本就支持 Azure AD 身份验证，因此可以直接接受使用托管服务标识获取的访问令牌。  若要对 Data Lake Store 文件系统进行身份验证，请将 Azure AD 颁发的访问令牌发送到 Data Lake Store 文件系统终结点，并且身份验证标头的格式应为“Bearer <ACCESS_TOKEN_VALUE>”。  若要详细了解 Data Lake Store 对 Azure AD 身份验证的支持情况，请阅读[使用 Azure Active Directory 进行 Data Lake Store 身份验证](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory)
 
 > [!NOTE]
 > Data Lake Store 文件系统客户端 SDK 目前不支持托管服务标识。  添加对 SDK 的支持后，本教程将随之更新。
 
-在本教程中，将通过使用 PowerShell 发出 REST 请求来对 Data Lake Store 文件系统 REST API 进行身份验证。 若要使用 VM MSI 进行身份验证，需要从 VM 发出此请求。
+在本教程中，将通过使用 PowerShell 发出 REST 请求来对 Data Lake Store 文件系统 REST API 进行身份验证。 若要使用 VM 托管服务标识进行身份验证，需要从 VM 发出此请求。
 
 1. 在门户中，导航到“虚拟机”，转到 Windows VM，然后在“概述”中，单击“连接”。
 2. 输入创建 Windows VM 时添加的用户名和密码。 
 3. 现在，已经创建了与虚拟机的远程桌面连接，请在远程会话中打开 PowerShell。 
-4. 使用 PowerShell 的 `Invoke-WebRequest` 向本地 MSI 终结点发出请求，获取 Azure Data Lake Store 的访问令牌。  Data Lake Store 的资源标识符是“https://datalake.azure.net/”。  Data Lake 对资源标识符执行完全匹配，因此尾部反斜杠非常重要。
+4. 使用 PowerShell 的 `Invoke-WebRequest` 向本地托管服务标识终结点发出请求，以获取 Azure Data Lake Store 的访问令牌。  Data Lake Store 的资源标识符是“https://datalake.azure.net/”。  Data Lake 对资源标识符执行完全匹配，因此尾部反斜杠非常重要。
 
    ```powershell
    $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -Method GET -Headers @{Metadata="true"}
@@ -207,7 +207,7 @@ Azure Data Lake Store 原生支持 Azure AD 身份验证，因此可以直接接
 
 使用其他 Data Lake Store 文件系统 API 可以执行追加文件、下载文件以及其他操作。
 
-祝贺你！  你已成功使用 VM MSI 对 Data Lake Store 进行身份验证。
+祝贺你！  你已成功使用 VM 托管服务标识向 Data Lake Store 证明了身份。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 04/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4dbb8b7abf6da77115d0e1d12621ec20ec60d174
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: dcb142b8b648f3f02855cb211789a4dee62183c0
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035194"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145574"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 的服务主体
 
@@ -80,8 +80,8 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --service-pri
 使用 AKS 和 Azure AD 服务主体时，请牢记以下注意事项。
 
 * Kubernetes 的服务主体是群集配置的一部分。 但是，请勿使用标识来部署群集。
-* 每个服务主体都与一个 Azure AD 应用程序相关联。 Kubernetes 群集的服务主体可以与任何有效的 Azure AD 应用程序名称（例如 `https://www.contoso.org/example` ）相关联。 应用程序的 URL 不一定是实际的终结点。
-* 指定服务主体的“客户端 ID”时，可以使用 `appId` 的值（如本文所示）或相应的服务主体 `name`（例如， `https://www.contoso.org/example` ）。
+* 每个服务主体都与一个 Azure AD 应用程序相关联。 Kubernetes 群集的服务主体可以与任何有效的 Azure AD 应用程序名称（例如 `https://www.contoso.org/example`）相关联。 应用程序的 URL 不一定是实际的终结点。
+* 指定服务主体**客户端 ID** 时，请使用 `appId` 的值。
 * 在 Kubernetes 群集的主 VM 和节点 VM 中，服务主体凭据存储在 `/etc/kubernetes/azure.json` 文件中。
 * 使用 `az aks create` 命令自动生成服务主体时，会将服务主体凭据写入用于运行命令的计算机上的 `~/.azure/aksServicePrincipal.json` 文件中。
 * 删除由 `az aks create` 创建的 AKS 群集时，不会删除自动创建的服务主体。 若要删除服务主体，请首先使用 [az ad app list][az-ad-app-list] 获取服务主体的 ID。 以下示例查询名为 *myAKSCluster* 的群集，然后使用 [az ad app delete][az-ad-app-delete] 删除应用 ID。 将以下名称替换为你自己的值：

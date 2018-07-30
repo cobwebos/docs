@@ -1,6 +1,6 @@
 ---
 title: 使用 Linux VM 的托管服务标识访问 Azure Data Lake Store
-description: 本教程介绍如何使用 Linux VM 的托管服务标识 (MSI) 访问 Azure Data Lake Store。
+description: 本教程介绍如何使用 Linux VM 的托管服务标识访问 Azure Data Lake Store。
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: ce38dabbe9aa69f7c54bb49888ad83e01a7c9522
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 6854b0a6c72b44bcd3f778e0c46cb109b34ce826
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004874"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258824"
 ---
 # <a name="tutorial-use-managed-service-identity-for-a-linux-vm-to-access-azure-data-lake-store"></a>教程：使用 Linux VM 的托管服务标识访问 Azure Data Lake Store
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-本教程介绍如何使用 Linux 虚拟机 (VM) 的托管服务标识访问 Azure Data Lake Store。 Azure 通过 MSI 自动管理创建的标识。 可以使用 MSI 在支持 Azure Active Directory (Azure AD) 身份验证的服务中进行身份验证，而无需在代码中插入凭据。 
+本教程介绍如何使用 Linux 虚拟机 (VM) 的托管服务标识访问 Azure Data Lake Store。 Azure 会自动管理通过托管服务标识创建的标识。 可以使用托管服务标识在支持 Azure Active Directory (Azure AD) 身份验证的服务中进行身份验证，而无需在代码中插入凭据。 
 
 本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
-> * 在 Linux VM 上启用 MSI。 
+> * 在 Linux VM 上启用托管服务标识。 
 > * 授予 VM 对 Azure Data Lake Store 的访问权限。
 > * 使用 VM 标识获取访问令牌，并使用它访问 Azure Data Lake Store。
 
@@ -58,13 +58,13 @@ ms.locfileid: "39004874"
 5. 若要选择要在其中创建虚拟机的新资源组，请选择“资源组” > “新建”。 完成后，选择“确定”。
 6. 选择 VM 大小。 若要查看更多的大小，请选择“全部查看”或更改“支持的磁盘类型”筛选器。 在设置窗格中保留默认值，然后选择“确定”。
 
-## <a name="enable-msi-on-your-vm"></a>在 VM 上启用 MSI
+## <a name="enable-managed-service-identity-on-your-vm"></a>在 VM 上启用托管服务标识
 
-通过 VM MSI，可以从 Azure AD 获取访问令牌，而无需在代码中插入凭据。 在 VM 上启用托管服务标识会执行两项操作：向 Azure Active Directory 注册 VM 以创建其托管标识，以及在 VM 上配置标识。
+可以通过虚拟机托管标识从 Azure AD 中获取访问令牌，无需在代码中插入凭据。 在 VM 上启用托管服务标识会执行两项操作：向 Azure Active Directory 注册 VM 以创建其托管标识，以及在 VM 上配置标识。
 
-1. 对于“虚拟机”，请选择要在其上启用 MSI 的虚拟机。
+1. 对于“虚拟机”，请选择要在其上启用托管服务标识的虚拟机。
 2. 在左窗格中，选择“配置”。
-3. 此时会显示“托管服务标识”。 若要注册并启用 MSI，请选择“是”。 若要禁用 MSI，请选择“否”。
+3. 此时会显示“托管服务标识”。 若要注册并启用托管服务标识，请选择“是”。 若要禁用 MSI，请选择“否”。
    ![“注册到 Azure Active Directory”选项](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 4. 选择“保存”。
 
@@ -72,7 +72,7 @@ ms.locfileid: "39004874"
 
 现在可以授予 VM 对 Azure Data Lake Store 中的文件和文件夹的访问权限。 对于此步骤，可以使用现有的 Data Lake Store 实例，或创建新的实例。 若要使用 Azure 门户创建 Data Lake Store 实例，请遵循 [Azure Data Lake Store 快速入门](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)。 [Azure Data Lake Store 文档](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview)中还提供了有关使用 Azure CLI 和 Azure PowerShell 执行这些操作的快速入门。
 
-在 Data Lake Store 中新建文件夹，并为 MSI 授予读取、写入和执行该文件夹中的文件的权限：
+在 Data Lake Store 中新建文件夹，并向托管服务标识授予读取、写入和执行该文件夹中的文件的权限：
 
 1. 在 Azure 门户的左窗格中，选择“Data Lake Store”。
 2. 选择要使用的 Data Lake Store 实例。
@@ -90,7 +90,7 @@ MSI 现在可以对所创建文件夹中的文件执行所有操作。 若要详
 
 ## <a name="get-an-access-token-and-call-the-data-lake-store-file-system"></a>获取访问令牌并调用 Data Lake Store 文件系统
 
-Azure Data Lake Store 原生支持 Azure AD 身份验证，因此可以直接接受通过 MSI 获取的访问令牌。 若要在 Data Lake Store 文件系统中进行身份验证，请将 Azure AD 颁发的访问令牌发送到 Data Lake Store 文件系统终结点。 授权标头的访问令牌采用“Bearer \<ACCESS_TOKEN_VALUE\>”格式。  若要详细了解 Data Lake Store 对 Azure AD 身份验证的支持情况，请参阅[使用 Azure Active Directory 在 Data Lake Store 中进行身份验证](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory)。
+Azure Data Lake Store 原本就支持 Azure AD 身份验证，因此可以直接接受使用托管服务标识获取的访问令牌。 若要在 Data Lake Store 文件系统中进行身份验证，请将 Azure AD 颁发的访问令牌发送到 Data Lake Store 文件系统终结点。 授权标头的访问令牌采用“Bearer \<ACCESS_TOKEN_VALUE\>”格式。  若要详细了解 Data Lake Store 对 Azure AD 身份验证的支持情况，请参阅[使用 Azure Active Directory 在 Data Lake Store 中进行身份验证](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory)。
 
 本教程通过使用 cURL 发出 REST 请求，对 Data Lake Store 文件系统的 REST API 进行身份验证。
 
@@ -101,7 +101,7 @@ Azure Data Lake Store 原生支持 Azure AD 身份验证，因此可以直接接
 
 1. 在门户中，浏览到自己的 Linux VM。 在“概述”中，选择“连接”。  
 2. 使用所选的 SSH 客户端连接到该 VM。 
-3. 在终端窗口中，使用 cURL 向本地 MSI 终结点发出请求，获取访问 Data Lake Store 系统所需的访问令牌。 Data Lake Store 的资源标识符是“https://datalake.azure.net/”。  请务必在资源标识符中包含尾部反斜杠。
+3. 在终端窗口中，使用 cURL 向本地托管服务标识终结点发出请求，获取访问 Data Lake Store 系统所需的访问令牌。 Data Lake Store 的资源标识符是“https://datalake.azure.net/”。  请务必在资源标识符中包含尾部反斜杠。
     
    ```bash
    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -H Metadata:true   
@@ -180,7 +180,7 @@ Azure Data Lake Store 原生支持 Azure AD 身份验证，因此可以直接接
 
 使用 Data Lake Store 文件系统的其他 API 可以在文件中追加内容、下载文件以及执行其他操作。
 
-祝贺你！ 现已成功使用 Linux VM 的 MSI 在 Data Lake Store 文件系统中完成身份验证。
+祝贺你！ 现已成功使用 Linux VM 的托管服务标识在 Data Lake Store 文件系统中完成身份验证。
 
 ## <a name="next-steps"></a>后续步骤
 

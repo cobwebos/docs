@@ -1,34 +1,30 @@
 ---
-title: 从与 HDFS 兼容的 Azure 存储查询数据 - Azure HDInsight | Microsoft Docs
+title: 从与 HDFS 兼容的 Azure 存储查询数据 - Azure HDInsight
 description: 了解如何从 Azure 存储和 Azure Data Lake Store 查询数据，以存储分析结果。
-keywords: blob 存储,hdfs,结构化数据,非结构化数据,data lake store,Hadoop 输入,Hadoop 输出, hadoop 存储, hdfs 输入,hdfs 输出,hdfs 存储,wasb azure
 services: hdinsight,storage
-documentationcenter: ''
 tags: azure-portal
 author: mumian
+ms.author: jgao
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 1d2e65f2-16de-449e-915f-3ffbc230f815
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/14/2018
-ms.author: jgao
-ms.openlocfilehash: 3430e71a45eb92af9881f4f13d414cddd8b6076a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 13787620ca889beea74c96b8fa922287b88442f4
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201041"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237717"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>将 Azure 存储与 Azure HDInsight 群集配合使用
 
 要分析 HDInsight 群集中的数据，可以将数据存储在 Azure 存储和/或 Azure Data Lake Store 中。 这两个存储选项都允许安全地删除用于计算的 HDInsight 群集，而不会丢失用户数据。
 
-Hadoop 支持默认文件系统的概念。 默认文件系统意指默认方案和授权。 它还可用于解析相对路径。 在 HDInsight 群集创建过程中，可以指定 Azure 存储中的 Blob 容器作为默认文件系统，或者借助 HDInsight 3.5，可以选择 Azure 存储或 Azure Data Lake Store 作为默认文件系统（有少数例外）。 有关将 Data Lake Store 同时用作默认存储和链接存储的可支持性，请参阅 [HDInsight 群集的可用性](./hdinsight-hadoop-use-data-lake-store.md#availabilities-for-hdinsight-clusters)。
+Hadoop 支持默认文件系统的概念。 默认文件系统意指默认方案和授权。 它还可用于解析相对路径。 在 HDInsight 群集创建过程中，可以指定 Azure 存储中的 Blob 容器作为默认文件系统，或者借助 HDInsight 3.5，可以选择 Azure 存储或 Azure Data Lake Store 作为默认文件系统（有少数例外）。 有关对将 Data Lake Store 同时用作默认存储和链接存储的支持能力，请参阅 [HDInsight 群集的可用性](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters)。
 
 本文介绍如何配合使用 Azure 存储和 HDInsight 群集。 若要了解 Data Lake Store 与 HDInsight 群集如何配合工作，请参阅[如何配合使用 Azure Data Lake Store 和 Azure HDInsight 群集](hdinsight-hadoop-use-data-lake-store.md)。 若要深入了解如何创建 HDInsight 群集，请参阅[在 HDInsight 中创建 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
@@ -46,7 +42,7 @@ Azure 存储是一种稳健、通用的存储解决方案，它与 HDInsight 无
 
 建议不要使用默认 blob 容器来存储业务数据。 良好的做法是每次使用之后删除默认 blob 容器以降低存储成本。 请注意，默认容器包含应用程序日志和系统日志。 请确保在删除该容器之前检索日志。
 
-不支持多个群集共享一个 blob 容器。
+不支持将单个 blob 容器共享为多个群集的默认文件系统。
 
 ## <a name="hdinsight-storage-architecture"></a>HDInsight 存储体系结构
 下图提供了使用 Azure 存储时的 HDInsight 存储体系结构的抽象视图：

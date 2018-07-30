@@ -14,12 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/28/2018
 ms.author: daveba
-ms.openlocfilehash: d25d868d8f3542d74de8edf8d7d5d26037409911
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e58ba598df06feddc7b48072dfefd409f31e2445
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006924"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237863"
 ---
 #  <a name="what-is-managed-service-identity-for-azure-resources"></a>什么是 Azure 资源的托管服务标识？
 
@@ -59,7 +59,7 @@ Azure Active Directory Free 随附托管服务标识，这是 Azure 订阅的默
 6. 调用了 Azure AD，使用在步骤3 中配置的客户端 ID 和证书请求在步骤 5 中指定的访问令牌。 Azure AD 返回 JSON Web 令牌 (JWT) 访问令牌。
 7. 代码在调用支持 Azure AD 身份验证的服务时发送访问令牌。
 
-下面的示例使用相同的关系图展示了用户分配的内容如何与 Azure 虚拟机协同工作。
+下面的示例使用同一关系图展示了用户分配的托管标识如何与 Azure 虚拟机协同工作。
 
 1. Azure 资源管理器收到请求，要求创建用户分配的标识。
 2. Azure 资源管理器在 Azure AD 中创建一个服务主体，用于表示用户分配的标识。 服务主体是在此订阅信任的 Azure AD 租户中进行创建。
