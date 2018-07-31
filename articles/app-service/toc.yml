@@ -67,7 +67,7 @@
       href: azure-web-sites-web-hosting-plans-in-depth-overview.md
     - name: OS 功能
       href: web-sites-available-operating-system-functionality.md
-    - name: “安全”
+    - name: 安全
       href: app-service-security.md
       items:
         - name: 身份验证和授权
@@ -247,7 +247,7 @@
     - name: Cookbook
       items:
         - name: 参考体系结构
-          href: /azure/architecture/reference-architectures/app-service-web-app/
+          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/#web-applications'
         - name: 部署脚本
           href: 'https://azure.microsoft.com/documentation/scripts/'
     - name: 故障排除

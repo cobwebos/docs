@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/04/2018
+ms.date: 07/30/2018
 ms.author: brenduns
 ms.reviewer: misainat
-ms.openlocfilehash: d86f0e96f64a56644b3161725f7f6a430568a72f
-ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
+ms.openlocfilehash: 2f732dfdfe9bf4aff2753114c3041f8f646421c2
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39242693"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344726"
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Azure Stack 开发工具包发行说明
 这些发行说明提供 Azure Stack 开发工具包的改进、修复和已知问题的相关信息。 如果不确定所运行的版本，可以[使用门户检查版本](.\.\azure-stack-updates.md#determine-the-current-version)。
@@ -47,6 +47,8 @@ This build includes the following improvements and fixes for Azure Stack.
 ### <a name="known-issues"></a>已知问题
  
 #### <a name="portal"></a>门户
+- <!-- TBD - IS ASDK --> 不能将驱动程序更新应用与此版本的 Azure Stack 使用 OEM 扩展包。  没有针对此问题的解决方法。
+ 
 - <!-- TBD - IS ASDK --> 不要使用新的管理订阅类型：“计量订阅”和“消耗订阅”。 这些新订阅类型是在版本 1804 中引入的，目前尚不可用。 请继续使用“默认提供程序”订阅类型。  
 
 - <!-- 2403291 - IS ASDK --> 可能无法使用管理员和用户门户底部的水平滚动条。 如果无法访问水平滚动条，请使用痕迹导航到门户中的上一边栏选项卡，只需从门户左上角的痕迹列表中选择要查看的边栏选项卡的名称即可。
@@ -168,6 +170,8 @@ This build includes the following improvements and fixes for Azure Stack.
 ### <a name="known-issues"></a>已知问题
  
 #### <a name="portal"></a>门户
+- <!-- TBD - IS ASDK --> 不能将驱动程序更新应用与此版本的 Azure Stack 使用 OEM 扩展包。  没有针对此问题的解决方法。
+ 
 - <!-- TBD - IS ASDK --> 在管理员门户中[从下拉列表提交新的支持请求](.\.\azure-stack-manage-portals.md#quick-access-to-help-and-support)的功能不可用。 请改用以下链接：     
     - 对于 Azure Stack 开发工具包，请使用 https://aka.ms/azurestackforum。    
 

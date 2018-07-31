@@ -91,6 +91,8 @@
       href: functions-best-practices.md
     - name: Functions 代理
       href: functions-proxies.md
+    - name: IP 地址
+      href: ip-addresses.md
     - name: 本地函数
       href: functions-runtime-overview.md
     - name: Durable Functions
