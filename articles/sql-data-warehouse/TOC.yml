@@ -59,7 +59,7 @@
           href: service-maintenance.md
         - name: 常见问题解答
           href: sql-data-warehouse-overview-faq.md
-    - name: “安全”
+    - name: 安全
       items:
         - name: 概述
           href: sql-data-warehouse-overview-manage-security.md
@@ -111,8 +111,12 @@
           href: memory-and-concurrency-limits.md
         - name: 列存储压缩
           href: sql-data-warehouse-memory-optimizations-for-columnstore-compression.md
-    - name: 监视
-      href: sql-data-warehouse-manage-monitor.md
+    - name: 可管理性和监视
+      items:
+        - name: 监视
+          href: sql-data-warehouse-manage-monitor.md
+        - name: 建议
+          href: sql-data-warehouse-concept-recommendations.md
     - name: 开发数据仓库
       items:
         - name: 概述
@@ -195,7 +199,7 @@
           href: sql-data-warehouse-restore-database-powershell.md
         - name: REST API
           href: sql-data-warehouse-restore-database-rest-api.md
-    - name: “安全”
+    - name: 安全
       items:
         - name: 配置 Azure AD 身份验证
           href: ../sql-database/sql-database-aad-authentication-configure.md?toc=/azure/sql-data-warehouse/toc.json

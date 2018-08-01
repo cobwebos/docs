@@ -116,6 +116,8 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 集成运行时
       href: concepts-integration-runtime.md
+    - name: 命名规则
+      href: naming-rules.md
 - name: 操作指南
   items:
     - name: 作者
@@ -351,7 +353,7 @@
           href: control-flow-expression-language-functions.md
         - name: 系统变量
           href: control-flow-system-variables.md
-    - name: “安全”
+    - name: 安全
       items:
         - name: 数据移动安全注意事项
           href: data-movement-security-considerations.md

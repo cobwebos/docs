@@ -11,6 +11,7 @@
 ##### [创建 Microsoft 帐户](./guidelines.md)
 ##### [在开发人员中心注册](./register-dev-center.md) 
 ##### [Azure Marketplace 的计费选项](./billing-options-azure-marketplace.md)  
+##### [Azure 合作伙伴客户使用情况归因](./azure-partner-customer-usage-attribution.md)
 
 ### 发布指南（按产品/服务类型） 
 #### [虚拟机](./marketplace-virtual-machines.md)

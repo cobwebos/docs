@@ -24,6 +24,9 @@
         - name: 托管服务标识
           tocHref: /azure/active-directory/managed-service-identity/
           topicHref: /azure/active-directory/managed-service-identity/
+        - name: 用户帮助
+          tocHref: /azure/active-directory/user-help/
+          topicHref: /azure/active-directory/user-help/
         - name: B2C
           tocHref: /azure/active-directory-b2c/
           topicHref: /azure/active-directory-b2c/
@@ -439,7 +442,7 @@
       tocHref: /azure/azure-policy/
       topicHref: /azure/azure-policy/
       items:
-        - name: Azure 策略概述
+        - name: Azure Policy 概述
           tocHref: /azure/azure-policy/azure-policy-introduction/
           topicHref: /azureazure-policy/azure-policy-introduction/
         - name: 分配策略 - 门户
@@ -451,13 +454,13 @@
         - name: 分配策略 - Azure CLI
           tocHref: /azure/azure-policy/assign-policy-definition-cli/
           topicHref: /azureazure-policy/assign-policy-definition-cli/
-        - name: 创建和管理 Azure 策略
+        - name: 创建和管理 Azure Policy
           tocHref: /azure/azure-policy/create-manage-polic/
           topicHref: /azureazure-policy/create-manage-polic/
         - name: 策略模板
           tocHref: /azure/azure-policy/json-samples/
           topicHref: /azureazure-policy/json-samples/
-        - name: Azure 策略定义结构
+        - name: Azure Policy 定义结构
           tocHref: /azure/azure-policy/policy-definition/
           topicHref: /azureazure-policy/policy-definition/
     - name: PostgreSQL
@@ -490,7 +493,7 @@
     - name: 搜索
       tocHref: /azure/search/
       topicHref: /azure/search/
-    - name: “安全”
+    - name: 安全
       tocHref: /azure/security/
       topicHref: /azure/security/
     - name: 安全中心

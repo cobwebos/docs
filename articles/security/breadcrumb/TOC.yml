@@ -2,13 +2,13 @@
   tocHref: /azure/
   topicHref: /azure/index
   items:
-    - name: “安全”
+    - name: 安全
       tocHref: /azure/
       topicHref: /azure/security/index
 - name: Azure
   tocHref: /architecture/
   topicHref: /azure/index
   items:
-    - name: “安全”
-      tocHref: /architecture/azure/
+    - name: 安全
+      tocHref: /architecture/reference-architecture/
       topicHref: /azure/security/index

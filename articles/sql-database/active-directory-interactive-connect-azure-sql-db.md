@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/06/2018
 ms.author: MirekS
 ms.reviewer: GeneMi
-ms.openlocfilehash: cbbaa789295a0e8fe602d7d90055f6d3af6bfc01
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 3d6eb70b3ce9072dc2c51220af89549022b5dacf
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "34643750"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238262"
 ---
 # <a name="use-activedirectoryinteractive-mode-to-connect-to-azure-sql-database"></a>使用 ActiveDirectoryInteractive 模式连接到 Azure SQL 数据库
 
@@ -122,13 +122,13 @@ C# 程序依赖于命名空间“Microsoft.IdentityModel.Clients.ActiveDirectory
 
 C# 示例依赖的一个命名空间是“System.Data.SqlClient”。 需要特别注意的是枚举“SqlAuthenticationMethod”。 此枚举有以下值：
 
-- **SqlAuthenticationMethod.ActiveDirectory*：&nbsp;将此值与 Azure AD 用户名一起使用，实现多重身份验证 MFA。
+- **SqlAuthenticationMethod.ActiveDirectory\*Interactive**\*：&nbsp;将此值与 Azure AD 用户名一起使用，实现多重身份验证 MFA。
     - 此值是本文的重点。 它通过显示用户密码的对话框，接着显示 MFA 验证的对话框（如果 MFA 应用于此用户）来生成交互式体验。
     - 此值自 .NET Framework 版本 4.7.2 起提供。
 
-- **SqlAuthenticationMethod.ActiveDirectory*Integrated***：&nbsp;对联合帐户使用此值。 对于联合帐户，Windows 域已知用户名。 此方法不支持 MFA。
+- **SqlAuthenticationMethod.ActiveDirectory\*Integrated**\*：&nbsp;对联合帐户使用此值。 对于联合帐户，Windows 域已知用户名。 此方法不支持 MFA。
 
-- **SqlAuthenticationMethod.ActiveDirectory*Password***：&nbsp;使用此值进行需要 Azure AD 用户和用户密码的身份验证。 Azure SQL 数据库执行身份验证。 此方法不支持 MFA。
+- **SqlAuthenticationMethod.ActiveDirectory\*Password**\*：&nbsp;使用此值进行需要 Azure AD 用户和用户密码的身份验证。 Azure SQL 数据库执行身份验证。 此方法不支持 MFA。
 
 
 

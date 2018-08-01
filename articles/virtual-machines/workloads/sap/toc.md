@@ -15,7 +15,7 @@
 # Azure 虚拟机上的 SAP HANA
 ## [单实例 SAP HANA 安装](hana-get-started.md)
 ## [S/4 HANA 或 BW/4 HANA SAP CAL 部署指南](cal-s4h.md)
-## [Azure 上的 SAP HANA 操作指南](hana-vm-operations.md)
+## [Azure 上的 SAP HANA 基础结构配置和操作](hana-vm-operations.md)
 ## Azure 虚拟机中的 SAP HANA 可用性
 ### [Azure 上的 SAP HANA 可用性概述](sap-hana-availability-overview.md)
 ### [一个 Azure 区域内的 Azure 上的 SAP HANA 可用性](sap-hana-availability-one-region.md)
