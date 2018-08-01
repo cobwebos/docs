@@ -83,7 +83,7 @@
           href: search-capacity-planning.md
         - name: 多租户的设计模式
           href: search-modeling-multitenant-saas-applications.md
-    - name: “安全”
+    - name: 安全
       items:
         - name: 安全概述
           href: search-security-overview.md
@@ -175,16 +175,20 @@
               href: search-indexer-field-mappings.md
     - name: 搜索数据
       items:
-        - name: 基本查询构造
+        - name: 查询基础知识
           href: search-query-overview.md
         - name: 搜索浏览器（门户）
           href: search-explorer.md
-        - name: 简化的查询语法
-          href: 'https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search'
-        - name: Lucene 查询语法
-          href: 'https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search'
-        - name: Lucene 查询示例
+        - name: 简单语法的示例
+          href: search-query-simple-examples.md
+        - name: 完整语法的示例
           href: search-query-lucene-examples.md
+        - name: 查询参考
+          items:
+            - name: 简化的查询语法
+              href: 'https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search'
+            - name: Lucene 查询语法
+              href: 'https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search'
         - name: 分页结果
           href: search-pagination-page-layout.md
         - name: 相关性优化

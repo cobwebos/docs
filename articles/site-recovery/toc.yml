@@ -51,7 +51,7 @@
           href: tutorial-prepare-azure.md
         - name: 将本地计算机迁移到 Azure
           href: migrate-tutorial-on-premises-azure.md
-        - name: 将 Windows Server 2008、2008 R2 服务器迁移到 Azure
+        - name: 将 Windows Server 2008 服务器迁移到 Azure
           href: migrate-tutorial-windows-server-2008.md
         - name: 将 AWS 实例迁移到 Azure
           href: migrate-tutorial-aws-azure.md

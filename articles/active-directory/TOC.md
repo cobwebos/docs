@@ -131,7 +131,6 @@
 #### [延迟](active-directory-reporting-latencies-azure-portal.md)
 #### [审核活动参考](active-directory-reporting-activity-audit-reference.md)
 #### [登录活动错误代码](active-directory-reporting-activity-sign-ins-errors.md)
-#### [多重身份验证](active-directory-reporting-activity-sign-ins-mfa.md)
 #### [解释 Azure Monitor 中的审核日志架构](reporting-azure-monitor-diagnostics-audit-log-schema.md)
 #### [解释 Azure Monitor 中的登录日志架构](reporting-azure-monitor-diagnostics-sign-in-log-schema.md)
 
@@ -159,9 +158,16 @@
 ### [计划 Azure AD 加入](active-directory-azureadjoin-deployment-aadjoindirect.md)
 ### [常见问题](device-management-faq.md)
 ### 任务
+#### [如何计划混合 Azure Active Directory 加入实现](devices/hybrid-azuread-join-plan.md)
+#### [为托管域配置混合 Azure Active Directory 加入](devices/hybrid-azuread-join-managed-domains.md)
+#### [为联盟域配置混合 Azure Active Directory 加入](devices/hybrid-azuread-join-federated-domains.md)
+#### [如何控制设备的混合 Azure AD 加入](devices/hybrid-azuread-join-control.md)
+
+
+
 #### [设置已注册到 Azure AD 的 Windows 10 设备](user-help/device-management-azuread-registered-devices-windows10-setup.md)
 #### [设置已加入 Azure AD 的设备](user-help/device-management-azuread-joined-devices-setup.md)
-#### [设置已加入混合 Azure AD 的设备](device-management-hybrid-azuread-joined-devices-setup.md)
+#### [设置已加入混合 Azure AD 的设备](devices/hybrid-azuread-join-manual-steps.md)
 #### [本地部署](active-directory-device-registration-on-premises-setup.md)
 #### [Windows 10 首次运行体验中的 Azure AD 加入](device-management-azuread-joined-devices-frx.md)
 ### 故障排除

@@ -106,7 +106,7 @@
           href: iot-hub-mqtt-support.md
         - name: 术语表
           href: iot-hub-devguide-glossary.md
-    - name: “安全”
+    - name: 安全
       items:
         - name: 安全基础知识
           href: /azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-hub/rc/rc
@@ -214,6 +214,8 @@
           items:
             - name: 使用 Azure 门户
               href: iot-hub-create-through-portal.md
+            - name: 使用用于 VS Code 的 Azure IoT 工具包
+              href: iot-hub-create-use-iot-toolkit.md
             - name: 使用 Azure PowerShell
               href: iot-hub-create-using-powershell.md
             - name: 使用 Azure CLI

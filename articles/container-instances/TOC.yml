@@ -51,6 +51,8 @@
           href: container-instances-liveness-probe.md
     - name: 管理
       items:
+        - name: 更新正在运行的容器
+          href: container-instances-update.md
         - name: 执行命令 (exec)
           href: container-instances-exec.md
         - name: 监视 CPU 和内存使用情况
