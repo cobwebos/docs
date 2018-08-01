@@ -6,13 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/30/2018
+ms.date: 07/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 04bcc3018346e9cf162d26b0a23147c88e902e1e
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 3303050311a30473bb973ac4f49bbeb707c16a33
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173803"
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Azure 事件网格用于订阅的事件架构
 
@@ -24,7 +25,7 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 
 Azure 订阅从 Azure 资源管理器发出管理事件，例如，在创建 VM 或删除存储帐户时。
 
-| 事件类型 | 说明 |
+| 事件类型 | Description |
 | ---------- | ----------- |
 | Microsoft.Resources.ResourceWriteSuccess | 当资源创建或更新操作成功时引发。 |
 | Microsoft.Resources.ResourceWriteFailure | 当资源创建或更新操作失败时引发。 |
@@ -38,54 +39,126 @@ Azure 订阅从 Azure 资源管理器发出管理事件，例如，在创建 VM 
 以下示例显示了资源创建事件的架构： 
 
 ```json
-[
-  {
-    "topic":"/subscriptions/{subscription-id}",
-    "subject":"/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/eventSubscriptions/LogicAppdd584bdf-8347-49c9-b9a9-d1f980783501",
-    "eventType":"Microsoft.Resources.ResourceWriteSuccess",
-    "eventTime":"2017-08-16T03:54:38.2696833Z",
-    "id":"25b3b0d0-d79b-44d5-9963-440d4e6a9bba",
-    "data": {
-        "authorization":"{azure_resource_manager_authorizations}",
-        "claims":"{azure_resource_manager_claims}",
-        "correlationId":"54ef1e39-6a82-44b3-abc1-bdeb6ce4d3c6",
-        "httpRequest":"{request-operation}",
-        "resourceProvider":"Microsoft.EventGrid",
-        "resourceUri":"/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/eventSubscriptions/LogicAppdd584bdf-8347-49c9-b9a9-d1f980783501",
-        "operationName":"Microsoft.EventGrid/eventSubscriptions/write",
-        "status":"Succeeded",
-        "subscriptionId":"{subscription-id}",
-        "tenantId":"72f988bf-86f1-41af-91ab-2d7cd011db47"
-        },
-      "dataVersion": "",
-      "metadataVersion": "1"
-  }
-]
+[{
+  "subject": "/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+  "eventType": "Microsoft.Resources.ResourceWriteSuccess",
+  "eventTime": "2018-07-19T18:38:04.6117357Z",
+  "id": "4db48cba-50a2-455a-93b4-de41a3b5b7f6",
+  "data": {
+    "authorization": {
+      "scope": "/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+      "action": "Microsoft.Storage/storageAccounts/write",
+      "evidence": {
+        "role": "Subscription Admin"
+      }
+    },
+    "claims": {
+      "aud": "{audience-claim}",
+      "iss": "{issuer-claim}",
+      "iat": "{issued-at-claim}",
+      "nbf": "{not-before-claim}",
+      "exp": "{expiration-claim}",
+      "_claim_names": "{\"groups\":\"src1\"}",
+      "_claim_sources": "{\"src1\":{\"endpoint\":\"{URI}\"}}",
+      "http://schemas.microsoft.com/claims/authnclassreference": "1",
+      "aio": "{token}",
+      "http://schemas.microsoft.com/claims/authnmethodsreferences": "rsa,mfa",
+      "appid": "{ID}",
+      "appidacr": "2",
+      "http://schemas.microsoft.com/2012/01/devicecontext/claims/identifier": "{ID}",
+      "e_exp": "{expiration}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "{last-name}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "{first-name}",
+      "ipaddr": "{IP-address}",
+      "name": "{full-name}",
+      "http://schemas.microsoft.com/identity/claims/objectidentifier": "{ID}",
+      "onprem_sid": "{ID}",
+      "puid": "{ID}",
+      "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "{ID}",
+      "http://schemas.microsoft.com/identity/claims/tenantid": "{ID}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": "{user-name}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "{user-name}",
+      "uti": "{ID}",
+      "ver": "1.0"
+    },
+    "correlationId": "{ID}",
+    "resourceProvider": "Microsoft.Storage",
+    "resourceUri": "/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+    "operationName": "Microsoft.Storage/storageAccounts/write",
+    "status": "Succeeded",
+    "subscriptionId": "{subscription-id}",
+    "tenantId": "{tenant-id}"
+  },
+  "dataVersion": "2",
+  "metadataVersion": "1",
+  "topic": "/subscriptions/{subscription-id}"
+}]
 ```
 
 资源删除事件的架构与此类似：
 
 ```json
 [{
-  "topic":"/subscriptions/{subscription-id}",
-  "subject": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/eventSubscriptions/LogicApp0ecd6c02-2296-4d7c-9865-01532dc99c93",
+  "subject": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
   "eventType": "Microsoft.Resources.ResourceDeleteSuccess",
-  "eventTime": "2017-11-07T21:24:19.6959483Z",
-  "id": "7995ecce-39d4-4851-b9d7-a7ef87a06bf5",
+  "eventTime": "2018-07-19T19:24:12.763881Z",
+  "id": "19a69642-1aad-4a96-a5ab-8d05494513ce",
   "data": {
-    "authorization": "{azure_resource_manager_authorizations}",
-    "claims": "{azure_resource_manager_claims}",
-    "correlationId": "7995ecce-39d4-4851-b9d7-a7ef87a06bf5",
-    "httpRequest": "{request-operation}",
-    "resourceProvider": "Microsoft.EventGrid",
-    "resourceUri": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/eventSubscriptions/LogicAppdd584bdf-8347-49c9-b9a9-d1f980783501",
-    "operationName": "Microsoft.EventGrid/eventSubscriptions/delete",
+    "authorization": {
+      "scope": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+      "action": "Microsoft.Storage/storageAccounts/delete",
+      "evidence": {
+        "role": "Subscription Admin"
+      }
+    },
+    "claims": {
+      "aud": "{audience-claim}",
+      "iss": "{issuer-claim}",
+      "iat": "{issued-at-claim}",
+      "nbf": "{not-before-claim}",
+      "exp": "{expiration-claim}",
+      "_claim_names": "{\"groups\":\"src1\"}",
+      "_claim_sources": "{\"src1\":{\"endpoint\":\"{URI}\"}}",
+      "http://schemas.microsoft.com/claims/authnclassreference": "1",
+      "aio": "{token}",
+      "http://schemas.microsoft.com/claims/authnmethodsreferences": "rsa,mfa",
+      "appid": "{ID}",
+      "appidacr": "2",
+      "http://schemas.microsoft.com/2012/01/devicecontext/claims/identifier": "{ID}",
+      "e_exp": "262800",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "{last-name}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "{first-name}",
+      "ipaddr": "{IP-address}",
+      "name": "{full-name}",
+      "http://schemas.microsoft.com/identity/claims/objectidentifier": "{ID}",
+      "onprem_sid": "{ID}",
+      "puid": "{ID}",
+      "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "{ID}",
+      "http://schemas.microsoft.com/identity/claims/tenantid": "{ID}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": "{user-name}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "{user-name}",
+      "uti": "{ID}",
+      "ver": "1.0"
+    },
+    "correlationId": "{ID}",
+    "httpRequest": {
+      "clientRequestId": "{ID}",
+      "clientIpAddress": "{IP-address}",
+      "method": "DELETE",
+      "url": "https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}?api-version=2018-02-01"
+    },
+    "resourceProvider": "Microsoft.Storage",
+    "resourceUri": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+    "operationName": "Microsoft.Storage/storageAccounts/delete",
     "status": "Succeeded",
     "subscriptionId": "{subscription-id}",
-    "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+    "tenantId": "{tenant-id}"
   },
-  "dataVersion": "",
-  "metadataVersion": "1"
+  "dataVersion": "2",
+  "metadataVersion": "1",
+  "topic": "/subscriptions/{subscription-id}"
 }]
 ```
 
@@ -93,7 +166,7 @@ Azure 订阅从 Azure 资源管理器发出管理事件，例如，在创建 VM 
 
 事件具有以下顶级数据：
 
-| 属性 | Type | 说明 |
+| 属性 | Type | Description |
 | -------- | ---- | ----------- |
 | 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | 字符串 | 事件主题的发布者定义路径。 |
@@ -106,12 +179,12 @@ Azure 订阅从 Azure 资源管理器发出管理事件，例如，在创建 VM 
 
 数据对象具有以下属性：
 
-| 属性 | Type | 说明 |
+| 属性 | Type | Description |
 | -------- | ---- | ----------- |
-| authorization | 字符串 | 操作请求的授权。 |
-| 声明 | 字符串 | 声明的属性。 |
+| authorization | 对象 | 操作请求的授权。 |
+| 声明 | 对象 | 声明的属性。 有关详细信息，请参阅 [JWT 规范](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)。 |
 | correlationId | 字符串 | 用于故障排除的操作 ID。 |
-| httpRequest | 字符串 | 操作的详细信息。 |
+| httpRequest | 对象 | 操作的详细信息。 |
 | resourceProvider | 字符串 | 执行该操作的资源提供程序。 |
 | resourceUri | 字符串 | 操作中资源的 URI。 |
 | operationName | 字符串 | 执行的操作。 |

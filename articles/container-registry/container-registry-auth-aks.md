@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: marsma
-ms.openlocfilehash: ca05e5091d5c96a1a0c2373404e8a6dff5802ffb
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: b56f2a8b2ae8cf04b8c27ab657be3f4d77ee7402
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968397"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205385"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
 
@@ -59,10 +59,10 @@ SERVICE_PRINCIPAL_NAME=acr-service-principal
 ACR_LOGIN_SERVER=$(az acr show --name $ACR_NAME --query loginServer --output tsv)
 ACR_REGISTRY_ID=$(az acr show --name $ACR_NAME --query id --output tsv)
 
-# Create a contributor role assignment with a scope of the ACR resource.
+# Create a 'Reader' role assignment with a scope of the ACR resource.
 SP_PASSWD=$(az ad sp create-for-rbac --name $SERVICE_PRINCIPAL_NAME --role Reader --scopes $ACR_REGISTRY_ID --query password --output tsv)
 
-# Get the service principle client id.
+# Get the service principal client id.
 CLIENT_ID=$(az ad sp show --id http://$SERVICE_PRINCIPAL_NAME --query appId --output tsv)
 
 # Output used when creating Kubernetes secret.

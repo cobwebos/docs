@@ -3,7 +3,7 @@ title: Azure 安全中心常见问题 (FAQ) | Microsoft Docs
 description: 此 FAQ 解答有关 Azure 安全中心的问题。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: be2ab6d5-72a8-411f-878e-98dac21bc5cb
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/14/2018
-ms.author: terrylan
-ms.openlocfilehash: d5a9f2ba68574ba8cb99b01ce426ec77a5eecd3d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.date: 07/19/2018
+ms.author: rkarlin
+ms.openlocfilehash: 320c7c483e865c85948d32ee2b5b70a92181920f
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34363955"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160063"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure 安全中心常见问题 (FAQ)
 此 FAQ 解答有关 Azure 安全中心的问题。Azure 安全中心可帮助预防、检测和响应威胁，同时增加 Microsoft Azure 资源的可见性和安全方面的可控性。
@@ -63,11 +63,14 @@ Azure 安全中心使用[基于角色的访问控制 (RBAC)](../role-based-acces
 可在安全中心策略中对 Azure 订阅启用数据收集。 启用数据收集。 [登录到 Azure 门户](https://portal.azure.com)，依次选择“浏览”、“安全中心”和“策略”。 选择希望启用自动设置的订阅。 选择订阅时，“安全策略 - 数据收集”将打开。 在“自动设置”下，选择“打开”。
 
 ### <a name="what-happens-when-data-collection-is-enabled"></a>启用数据收集之后会发生什么？
-启动自动设置后，安全中心可在所有受支持的 Azure VM 以及任何新建的 Azure VM 中预配 Microsoft Monitoring Agent。 强烈建议进行自动预配，但也可以手动代理安装。 [了解如何安装 Microsoft Monitoring Agent 扩展](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)。
+启动自动设置后，安全中心可在所有受支持的 Azure VM 以及任何新建的 Azure VM 中预配 Microsoft Monitoring Agent。 强烈建议进行自动预配，但也可以手动代理安装。 [了解如何安装 Microsoft Monitoring Agent 扩展](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)。 
 
 该代理可启用进程创建事件 4688 和事件 4688 内的 *CommandLine* 字段。 VM 上创建的新进程由事件日志记录，并由安全中心检测服务监视。 若要了解针对每个新进程记录的详细信息，请参阅 [4688 中的说明字段](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields)。 该代理还收集 VM 上创建的 4688 事件，并将这些事件存储在搜索中。
 
 当安全中心检测到 VM 上的可疑活动时，如果已提供[安全联系信息](security-center-provide-security-contact-details.md)，将通过电子邮件通知客户。 警报也会显示在安全中心的安全警报仪表板中。
+
+> [!NOTE]
+> - 若要为[自适应应用程序控件](security-center-adaptive-application.md)启用数据收集，安全中心会在审核模式下配置本地 AppLocker 策略以允许所有应用程序。 这将导致 AppLocker 生成事件，然后由安全中心收集和利用这些事件。 请务必注意，不会在已配置 AppLocker 策略的任何计算机上配置此策略。 
 
 ### <a name="does-the-monitoring-agent-impact-the-performance-of-my-servers"></a>Monitoring Agent 会影响服务器性能吗？
 代理使用系统资源的名义帐户，对性能的影响极小。 有关性能影响和代理及扩展的详细信息，请参阅[规划和操作指南](security-center-planning-and-operations-guide.md#data-collection-and-storage)。
@@ -145,4 +148,4 @@ Azure 安全中心可识别出通过 Azure 扩展安装的反恶意软件。 例
 通常情况下，安全中心每小时扫描一次新数据。 上面的延迟值是没有最近扫描或扫描失败的最坏场景。
 
 ### <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>为什么会显示消息称“VM 代理缺失”？
-VM 代理必须安装在 VM 上才能启用数据收集。 对于从 Azure Marketplace 部署的 VM，会默认安装 VM 代理。 有关如何在其他 VM 上安装 VM 代理的详细信息，请参阅博客文章 [VM 代理和扩展](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)。
+VM 代理必须安装在 VM 上才能启用数据收集。 对于从 Azure 市场部署的 VM，默认安装 VM 代理。 有关如何在其他 VM 上安装 VM 代理的详细信息，请参阅博客文章 [VM 代理和扩展](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)。

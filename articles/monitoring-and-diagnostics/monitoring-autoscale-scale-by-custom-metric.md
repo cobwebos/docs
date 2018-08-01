@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 739ef5423f7b1769fa793f0cac5306efa634b781
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 97836c4160349b8095ba2095176783ae17b46e82
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35262967"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216193"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>在 Azure 中根据自定义指标自动缩放入门
 本文介绍如何在 Azure 门户中根据自定义指标缩放资源。
@@ -41,7 +41,7 @@ Azure Monitor 自动缩放仅适用于虚拟机规模集 (VMSS)、云服务、�
 
 祝贺。 现在已成功创建缩放设置，以基于自定义指标自动缩放 Web 应用。
 
-> 注意：若要开始使用 VMSS 或云服务角色，相同的步骤也适用。
+> 注意：若要开始使用 VMSS 或云服务角色，也可以运用相同的步骤。
 
 <!--Reference-->
 [1]: https://docs.microsoft.com/azure/application-insights/app-insights-asp-net

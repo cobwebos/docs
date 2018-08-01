@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 05/07/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 93532f4b0b2d527a4d5c79e2ee1b2810394b2f11
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: ce8630f5718a849f460b372d9e15b03902ac2117
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442077"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159673"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory 报告 API 入门
 
@@ -49,7 +49,7 @@ Azure Active Directory 向你提供了各种[报告](active-directory-reporting-
 
 ## <a name="apis-with-graph-explorer"></a>Graph 浏览器的 API
 
-可以使用 [MSGraph 浏览器](https://developer.microsoft.com/en-us/graph/graph-explorer)来验证登录和审核 API 数据。 确保使用 Graph 浏览器 UI 中的两个登录按钮登录帐户，并为租户设置 **Tasks.ReadWrite** 和 **Directory.ReadAll** 权限，如下所示。   
+可以使用 [MSGraph 浏览器](https://developer.microsoft.com/en-us/graph/graph-explorer)来验证登录和审核 API 数据。 确保使用 Graph 浏览器 UI 中的两个登录按钮登录帐户，并为租户设置 **AuditLog.Read.All** 和 **Directory.Read.All** 权限，如下所示。   
 
 ![Graph 浏览器](./media/active-directory-reporting-api-getting-started-azure-portal/graph-explorer.png)
 

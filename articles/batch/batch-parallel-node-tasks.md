@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5106bbbb073908af7e7e8f045fa6fb60e8a306f4
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c52c9fc6b47b03b3ca6db96decb8b4777577d00e
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30316906"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39174238"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>以并发方式运行任务以最大程度地利用 Batch 计算节点 
 
@@ -56,15 +56,15 @@ ms.locfileid: "30316906"
 此功能十分重要，如需示例，请参阅上面示例中 [Standard\_D14](../cloud-services/cloud-services-sizes-specs.md) 节点的池，该池配置后的 [CloudPool.MaxTasksPerComputeNode][maxtasks_net] 值为 16。 如果对 [CloudPool.TaskSchedulingPolicy][task_schedule] 进行配置时，将 [ComputeNodeFillType][fill_type] 设置为 Pack，则会充分使用每个节点的所有 16 个核心，并可通过[自动缩放池](batch-automatic-scaling.md)将不使用的节点（没有分配任何任务的节点）从池中删除。 这可以最大程度地减少资源使用量并节省资金。
 
 ## <a name="batch-net-example"></a>Batch .NET 示例
-此 [Batch .NET][api_net] API 代码片段演示了一个请求，该请求要求创建一个包含四个大型节点的池，每个节点最多四个任务。 它指定了一个任务计划策略，要求先用任务填充一个节点，然后再将任务分配给池中的其他节点。 有关如何使用 Batch .NET API 添加池的详细信息，请参阅 [BatchClient.PoolOperations.CreatePool][poolcreate_net]。
+此 [Batch .NET][api_net] API 代码片段演示了一个请求，该请求要求创建一个包含四个节点的池，每个节点最多四个任务。 它指定了一个任务计划策略，要求先用任务填充一个节点，然后再将任务分配给池中的其他节点。 有关如何使用 Batch .NET API 添加池的详细信息，请参阅 [BatchClient.PoolOperations.CreatePool][poolcreate_net]。
 
 ```csharp
 CloudPool pool =
     batchClient.PoolOperations.CreatePool(
         poolId: "mypool",
         targetDedicatedComputeNodes: 4
-        virtualMachineSize: "large",
-        cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "4"));
+        virtualMachineSize: "standard_d1_v2",
+        cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));
 
 pool.MaxTasksPerComputeNode = 4;
 pool.TaskSchedulingPolicy = new TaskSchedulingPolicy(ComputeNodeFillType.Pack);
@@ -125,13 +125,13 @@ Duration: 00:08:48.2423500
 >
 
 ## <a name="next-steps"></a>后续步骤
-### <a name="batchlabs-heat-map"></a>BatchLabs 热度地图
-[BatchLabs][batch_labs] 是一个功能丰富的免费独立客户端工具，可帮助创建、调试和监视 Azure Batch 应用程序。 BatchLabs 包含*热度地图*，可提供任务执行的可视化效果。 执行 [ParallelTasks][parallel_tasks_sample] 示例应用程序时，可以使用“热度地图”功能轻松可视化每个节点上并行任务的执行。
+### <a name="batch-explorer-heat-map"></a>Batch 资源管理器热度地图
+[Batch Explorer][batch_labs] 是一个功能丰富的免费独立客户端工具，可帮助创建、调试和监视 Azure Batch 应用程序。 Batch Explorer 包含“热度地图”功能，可提供任务执行的可视化效果。 执行 [ParallelTasks][parallel_tasks_sample] 示例应用程序时，可以使用“热度地图”功能轻松可视化每个节点上并行任务的执行。
 
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_rest]: http://msdn.microsoft.com/library/azure/dn820158.aspx
-[batch_labs]: https://azure.github.io/BatchLabs/
+[batch_labs]: https://azure.github.io/BatchExplorer/
 [cloudpool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
 [enable_autoscaling]: https://msdn.microsoft.com/library/azure/dn820173.aspx
 [fill_type]: https://msdn.microsoft.com/library/microsoft.azure.batch.common.computenodefilltype.aspx

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/05/2016
 ms.author: mlearned
-ms.openlocfilehash: 7fb3de72e28b19f9ca30968b267bf985ae384275
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 2764d8a17d50f1589d413c2343badfded6adb66e
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164833"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216336"
 ---
 # <a name="tutorial-devops-with-the-azure-portal"></a>教程：使用 Azure 门户中的 DevOps
 Azure 平台提供各式各样的灵活 DevOps（开发运营）工作流。 在本教程中，将了解如何利用 Azure 门户功能来开发、测试、部署、监控和管理正在运行的应用程序，以及对其进行故障排除。 本教程着重于以下内容：

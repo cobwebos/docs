@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: glenga
-ms.openlocfilehash: bc280e9b4ade8a4fb8107ec2dcc1c33f538472e1
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 318a39e244f0fca3a1b2d8531dd9197a15400e02
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38602969"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205351"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>使用 Visual Studio 开发 Azure Functions  
 
@@ -132,7 +132,7 @@ Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webh
         }
     }
     ````
-    已向提供给入口点方法的每个绑定参数提供了特定于绑定的属性。 该属性采用绑定信息作为参数。 在上例中，第一个参数具应用了 QueueTrigger 属性，表示触发了队列的函数。 队列名称和连接字符串设置名称作为参数传递到“QueueTrigger”属性。
+    已向提供给入口点方法的每个绑定参数提供了特定于绑定的属性。 该属性采用绑定信息作为参数。 在上例中，第一个参数具应用了 QueueTrigger 属性，表示触发了队列的函数。 队列名称和连接字符串设置名称作为参数传递到“QueueTrigger”属性。 有关详细信息，请参阅 [Azure Functions 的 Azure 队列存储绑定](functions-bindings-storage-queue.md#trigger---c-example)。
     
 可以使用上述过程向函数应用项目添加更多的函数。 项目中的每个函数可以有不同的触发器，但每个函数的触发器必须刚好一个。 有关详细信息，请参阅 [Azure Functions 触发器和绑定概念](functions-triggers-bindings.md)。
 

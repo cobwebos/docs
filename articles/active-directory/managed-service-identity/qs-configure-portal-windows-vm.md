@@ -1,6 +1,6 @@
 ---
-title: 如何使用 Azure 门户在 Azure VM 上配置 MSI
-description: 逐步介绍了如何使用 Azure 门户在 Azure VM 上配置托管服务标识 (MSI)。
+title: 如何在 Azure VM 上使用 Azure 门户配置托管服务标识
+description: 逐步介绍了如何使用 Azure 门户在 Azure VM 上配置托管服务标识。
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: daveba
-ms.openlocfilehash: 27ecb00bddb41ae45e790a54702c058ff3f1d24b
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 6ba090065b18a44cc1f01a62eefb5dcf52bcf356
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035935"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213259"
 ---
-# <a name="configure-a-vm-managed-service-identity-msi-using-the-azure-portal"></a>使用 Azure 门户配置 VM 托管服务标识 (MSI)
+# <a name="configure-a-vm-managed-service-identity-using-the-azure-portal"></a>使用 Azure 门户配置 VM 托管服务标识
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -36,6 +36,8 @@ ms.locfileid: "39035935"
 
 - 如果不熟悉托管服务标识，请查阅[概述部分](overview.md)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
+- 若要执行本文中的管理操作，帐户需要分配以下角色：
+    - [虚拟机参与者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)，可从 Azure VM 启用和删除系统分配的标识。
 
 ## <a name="managed-service-identity-during-creation-of-an-azure-vm"></a>创建 Azure VM 过程中的托管服务标识
 
@@ -50,14 +52,14 @@ ms.locfileid: "39035935"
 
 若要在初始预配时没有系统分配标识的 VM 上启用系统分配标识：
 
-1. 使用已与包含 VM 的 Azure 订阅关联的帐户登录 [Azure 门户](https://portal.azure.com)。 此外，请确保该帐户属于可授予对 VM 的写权限的角色，如“虚拟机参与者”。
+1. 使用已与包含 VM 的 Azure 订阅关联的帐户登录 [Azure 门户](https://portal.azure.com)。
 
 2. 导航到所需的虚拟机，然后选择“配置”页。
 
 3. 通过选择“是”在 VM 上启用系统分配标识，然后在“托管服务标识”下单击“保存”。 此操作可能需要 60 秒或更长时间才能完成：
 
-    > [!NOTE]
-    > 不支持通过 Azure 门户向 VM 添加用户分配标识。
+   > [!NOTE]
+   > 不支持通过 Azure 门户向 VM 添加用户分配标识。
 
    ![“配置”页屏幕截图](../managed-service-identity/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
 
@@ -65,7 +67,7 @@ ms.locfileid: "39035935"
 
 如果虚拟机不再需要系统分配标识，请执行以下操作：
 
-1. 使用已与包含 VM 的 Azure 订阅关联的帐户登录 [Azure 门户](https://portal.azure.com)。 此外，请确保该帐户属于可授予对 VM 的写权限的角色，如“虚拟机参与者”。
+1. 使用已与包含 VM 的 Azure 订阅关联的帐户登录 [Azure 门户](https://portal.azure.com)。 
 
 2. 导航到所需的虚拟机，然后选择“配置”页。
 
@@ -82,5 +84,5 @@ ms.locfileid: "39035935"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 使用 Azure 门户，授予 Azure VM 的 MSI [对另一个 Azure 资源的访问权限](howto-assign-access-portal.md)。
+- 使用 Azure 门户，授予 Azure VM 的托管服务标识[对另一个 Azure 资源的访问权限](howto-assign-access-portal.md)。
 

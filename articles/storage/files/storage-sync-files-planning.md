@@ -1,5 +1,5 @@
 ---
-title: 规划 Azure 文件同步（预览版）部署 | Microsoft Docs
+title: 规划 Azure 文件同步部署 | Microsoft Docs
 description: 了解规划 Azure 文件部署时应考虑的问题。
 services: storage
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2017
+ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: 1927ab29e82836c60b2ba36c3eec0acf49778082
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 79f3787713d7615d8f5c42d1747dfa5ed96780cd
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335833"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214877"
 ---
-# <a name="planning-for-an-azure-file-sync-preview-deployment"></a>规划 Azure 文件同步（预览版）部署
-使用 Azure 文件同步（预览版），既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
+# <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
+使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
 
 本指南介绍有关 Azure 文件同步部署的重要注意事项。 我们建议另外阅读[规划 Azure 文件部署](storage-files-planning.md)。 
 
@@ -149,7 +149,7 @@ Windows Server 故障转移群集受 Azure 文件同步支持，用于“一般�
 不支持在安装了 Azure 文件同步代理的服务器上使用 sysprep，那样做会导致意外结果。 应该在部署服务器映像并完成 sysprep 迷你安装后再安装代理和注册服务器。
 
 ### <a name="windows-search"></a>Windows 搜索
-如果在服务器终结点上启用了云分层功能，则已分层的文件将被跳过，并且不会被 Windows 搜索进行索引。 非分层文件会适当进行索引。
+如果在服务器终结点上启用了云分层功能，则已分层的文件将被跳过，并且不会由 Windows 搜索进行索引。 非分层文件会适当进行索引。
 
 ### <a name="antivirus-solutions"></a>防病毒解决方案
 由于防病毒通过扫描文件中的已知恶意代码进行工作，因此防病毒产品可能导致重新调用分层文件。 由于分层文件设置有“脱机”属性，因此建议咨询软件供应商，了解如何配置解决方案以跳过读取脱机文件。 
@@ -180,13 +180,13 @@ Azure 文件同步现不支持：
 
 - NTFS 加密文件系统 (EFS)
 
-一般情况下，Azure 文件同步应该支持与文件系统下的加密解决方案（如 BitLocker）以及在文件格式中实现的解决方案（如 BitLocker）进行互操作。 不与文件系统上的解决方案（如 NTFS EFS）进行特殊的互操作。
+一般情况下，Azure 文件同步应该支持与文件系统下的加密解决方案（如 BitLocker）以及在文件格式中实现的解决方案（如 Azure 信息保护）进行互操作。 不与文件系统上的解决方案（如 NTFS EFS）进行特殊的互操作。
 
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>其他分层存储管理 (HSM) 解决方案
 其他 HSM 解决方案均无法使用 Azure 文件同步。
 
 ## <a name="region-availability"></a>上市区域
-Azure 文件同步仅在以下区域提供预览版：
+Azure 文件同步仅在以下区域中可用：
 
 | 区域 | 数据中心位置 |
 |--------|---------------------|
@@ -205,7 +205,29 @@ Azure 文件同步仅在以下区域提供预览版：
 | 西欧 | 荷兰 |
 | 美国西部 | California |
 
-在预览版中，仅支持与存储同步服务所在区域中的 Azure 文件共享进行同步。
+Azure 文件同步仅支持与存储同步服务所在区域中的 Azure 文件共享进行同步。
+
+### <a name="azure-disaster-recovery"></a>Azure 灾难恢复
+为了防止 Azure 区域丢失，Azure 文件同步集成了[异地冗余存储冗余](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS) 选项。 GRS 存储的工作原理是在主要区域中的存储（你通常与之交互）和配对次要区域中的存储之间使用异步块复制。 发生导致 Azure 区域暂时或永久脱机的灾难时，Microsoft 会将存储故障转移到配对区域。 
+
+为了支持异地冗余存储和 Azure 文件同步之间的故障转移集成，所有 Azure 文件同步区域都与一个与存储使用的次要区域匹配的次要区域配对。 这些配对如下所示：
+
+| 主要区域      | 配对区域      |
+|---------------------|--------------------|
+| 澳大利亚东部      | 澳大利亚东南部 |
+| 澳大利亚东南部 | 澳大利亚东部     |
+| 加拿大中部      | 加拿大东部        |
+| 加拿大东部         | 加拿大中部     |
+| 美国中部          | 美国东部 2          |
+| 东亚           | 东南亚     |
+| 美国东部             | 美国西部            |
+| 美国东部 2           | 美国中部         |
+| 北欧        | 西欧        |
+| 东南亚      | 东亚          |
+| 英国南部            | 英国西部            |
+| 英国西部             | 英国南部           |
+| 西欧         | 北欧       |
+| 美国西部             | 美国东部            |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Azure 文件同步代理更新策略
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

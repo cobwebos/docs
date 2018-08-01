@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: efd8a8290525c27cddaa713a1b24b6afc187bb09
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 2cc030bf9724e98c1ef0a43134c5066c81b38b6b
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37922685"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213082"
 ---
 # <a name="about-migration"></a>关于迁移
 
@@ -39,7 +39,7 @@ ms.locfileid: "37922685"
 --- | ---
 **从本地迁移到 Azure** | 可以将本地 VMware VM、Hyper-V VM 和物理服务器迁移到 Azure。 为此，完成的步骤几乎与完整灾难恢复的步骤一样。 只是不会将计算机从 Azure 故障回复到本地站点。
 **在 Azure 区域之间进行迁移** | 可以将 Azure VM 从一个 Azure 区域迁移到另一个 Azure 区域。 迁移完成后，现在可以在迁移到的次要区域中为 Azure VM 配置灾难恢复。
-**将 AWS 迁移到 Azure** | 可将 AWS 实例迁移到 Azure VM。 Site Recovery 将 AWS 实例视为物理服务器以实现迁移目的。 
+**将 AWS 迁移到 Azure** | 可将 AWS 实例迁移到 Azure VM。 Site Recovery 将 AWS 实例视为用于迁移目的的物理服务器。 
 
 ## <a name="next-steps"></a>后续步骤
 

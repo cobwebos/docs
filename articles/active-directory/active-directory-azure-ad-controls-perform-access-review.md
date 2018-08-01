@@ -11,15 +11,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance-reports
-ms.date: 09/19/2017
+ms.date: 07/16/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 52d832de10de93c5bd4b91df821f96845b3b21be
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 2e0a522f6125a9e34a37c50f547e725072ec65b4
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446633"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39204997"
 ---
 # <a name="review-access-with-azure-ad-access-reviews"></a>使用 Azure AD 访问评审来评审访问权限
 
@@ -27,7 +27,11 @@ Azure Active Directory (Azure AD) 使用称为“访问评审”的功能，简�
 
 ## <a name="open-an-access-review"></a>开始访问评审
 
-要查看未完成的访问评审，请单击电子邮件中的链接。 如果没有收到电子邮件，可以通过执行以下操作找到访问评审：
+若要查看未完成的访问评审，请单击电子邮件中的“评审访问权限”链接。 从 2018 年 8 月开始，Azure AD 角色的电子邮件通知具有更新的设计。 下面显示了邀请用户成为审阅者时发送的示例电子邮件。 
+
+![评审访问权限电子邮件](./media/active-directory-azure-ad-controls-perform-access-review/new-ar-email.png)
+
+如果没有收到电子邮件，可以通过执行以下操作找到访问评审：
 
 1. 登录 [Azure AD 访问面板](https://myapps.microsoft.com)。
 
@@ -39,7 +43,7 @@ Azure Active Directory (Azure AD) 使用称为“访问评审”的功能，简�
 
 从列表中选择访问评审时，将看到需要评审的用户的名称。 如果该请求是要评审你自己的访问权限，则可能只看到一个名称（即你自己）。
 
-对于列表中的每一行，你都可以决定是批准还是拒绝该用户的访问权限。 选择该行，选择是要批准或还是要拒绝。 （如果不认识该用户，也可以参照此方法。）
+对于列表中的每一行，你都可以决定是批准还是拒绝该用户的访问权限。 选择该行，选择是要批准或还是要拒绝。 （如果不认识该用户，也可以指明该项。）
 
 评审者可能要求你提供批准继续访问的理由或组成员资格。
 

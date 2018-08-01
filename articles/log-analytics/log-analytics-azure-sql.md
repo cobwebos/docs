@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: f57a47677f752a644975a25fa746d78bced5d766
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 440e16416b8567178c61c3d6ce2155e0e331521c
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37133254"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216319"
 ---
 # <a name="monitor-azure-sql-databases-using-azure-sql-analytics-preview"></a>使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
 
@@ -41,7 +41,7 @@ Azure SQL Analytics 是一种云监视解决方案，用于跨多个弹性池和
 
 Azure SQL Analytics 是一种云监视解决方案，它支持流式传输 Azure SQL 数据库和弹性池的诊断遥测数据。 由于该解决方案不使用代理连接到 Log Analytics 服务，因此它不支持与 Windows、Linux 或 SCOM 资源的连接，请参阅下面的兼容性表。
 
-| 连接的源 | 支持 | 说明 |
+| 连接的源 | 支持 | Description |
 | --- | --- | --- |
 | **[Azure 诊断](log-analytics-azure-storage.md)** | **是** | Azure 指标和日志数据由 Azure 直接发送到 Log Analytics。 |
 | [Azure 存储帐户](log-analytics-azure-storage.md) | 否 | Log Analytics 不会从存储帐户中读取数据。 |
@@ -100,7 +100,7 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 
 每个透视都提供了有关订阅、服务器、弹性池和数据库级别的概述。 此外，每个透视在右侧都显示了特定于透视的报表。 从列表选择订阅、服务器、池或数据库会继续向下钻取。
 
-| 透视 | 说明 |
+| 透视 | Description |
 | --- | --- |
 | 资源（按类型） | 对监视的所有资源进行计数的透视。 向下钻取会提供 DTU 和 GB 指标的摘要。 |
 | 洞察力 | 提供对智能见解的分层向下钻取。 详细了解智能见解。 |

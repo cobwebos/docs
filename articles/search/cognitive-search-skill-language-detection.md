@@ -10,18 +10,18 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 338d89b47ea451efcf8300d4ac016a6946a95259
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 443ac895085053b7c4c876c3deecaa1943c9f506
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786836"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171052"
 ---
 #   <a name="language-detection-cognitive-skill"></a>语言检测认知技能
 
 对于多达 120 种语言，语言检测技能会检测输入文本的语言，并报告在请求上提交的每个文档的单一语言代码。 语言代码配有表示分析长度的得分。
 
-当需要提供文本的语言作为其他技能的输入（例如，[情绪分析技能](cognitive-search-skill-sentiment.md)或[文本拆分技能](cognitive-search-skill-textsplit.md)时，此功能尤其有用。
+当需要提供文本的语言作为其他技能（例如，[情绪分析技能](cognitive-search-skill-sentiment.md)或[文本拆分技能](cognitive-search-skill-textsplit.md)）的输入时，此功能尤其有用。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.LanguageDetectionSkill
@@ -33,13 +33,13 @@ Microsoft.Skills.Text.LanguageDetectionSkill
 
 参数区分大小写。
 
-| 输入     | 说明 |
+| 输入     | Description |
 |--------------------|-------------|
 | text | 要分析的文本。|
 
 ## <a name="skill-outputs"></a>技能输出
 
-| 输出名称    | 说明 |
+| 输出名称    | Description |
 |--------------------|-------------|
 | languageCode | 标识语言的 ISO 6391 语言代码。 例如，“en”。 |
 | languageName | 语言的名称。 例如，“英语”。 |
@@ -130,5 +130,5 @@ Microsoft.Skills.Text.LanguageDetectionSkill
 
 ## <a name="see-also"></a>另请参阅
 
-+ [预定义的技能](cognitive-search-predefined-skills.md)
-+ [如何定义技能集](cognitive-search-defining-skillset.md)
++ [预定义技能](cognitive-search-predefined-skills.md)
++ [如何定义技能组合](cognitive-search-defining-skillset.md)

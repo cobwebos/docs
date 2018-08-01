@@ -10,25 +10,22 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: protection
-ms.date: 03/04/2018
+ms.date: 07/23/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: bbc87f529cb70b6f4b21984199ed87427b4e3108
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 6553fdba463144c6eda1e35c0967e92a3c44aff6
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38506407"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225570"
 ---
-# <a name="different-administrative-role-in-azure-active-directory-pim"></a>Azure Active Directory PIM 中的不同管理角色
+# <a name="directory-roles-you-can-manage-using-azure-ad-pim"></a>可以使用 Azure AD PIM 管理目录角色
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
 
 可以将组织中的用户分配到 Azure AD 中的不同管理角色。 这些角色分配控制用户可以针对 Azure AD、Office 365 和其他 Microsoft Online Services 与连接的应用程序执行哪些任务，例如添加或删除用户或更改服务设置。  
 
-> [!IMPORTANT]
-> Microsoft 推荐使用 Azure 门户的 [Azure AD 管理中心](https://aad.portal.azure.com)管理 Azure AD。
-
-全局管理员可以使用 PowerShell cmdlet（例如 `Add-MsolRoleMember` 和 `Remove-MsolRoleMember`）或者根据[在 Azure Active Directory 中分配管理员角色](../users-groups-roles/directory-assign-admin-roles.md)中所述，通过门户更新要将哪些用户“永久”分配到 Azure AD 中的角色。
+全局管理员根据[在 Azure Active Directory 中分配管理员角色](../users-groups-roles/directory-assign-admin-roles.md)中所述，通过门户更新要将哪些用户“永久”分配到 Azure AD 中的角色，或使用 [PowerShell 命令](/powershell/module/azuread#directory_roles)更新。
 
 Azure AD Privileged Identity Management (PIM) 可以管理针对 Azure AD 中具有特权的用户的策略。 PIM 将用户分配到 Azure AD 中的一个或多个角色，可以分配某位用户永久充当该角色，或者使其符合该角色的资格。 将用户永久分配到某个角色或者激活合格角色分配时，他们可以使用分配到角色的权限来管理 Azure Active Directory、Office 365 和其他应用程序。
 
@@ -66,7 +63,7 @@ Azure AD Privileged Identity Management (PIM) 可以管理针对 Azure AD 中具
 ## <a name="roles-not-managed-in-pim"></a>不在 PIM 中管理的角色
 Exchange Online 或 SharePoint Online 中的角色（前面所述的角色除外）并不会出现在 Azure AD 中，因此也不会显示在 PIM 中。 有关在这些 Office 365 服务中更改精细角色分配的详细信息，请参阅 [Permissions in Office 365](https://support.office.com/article/Permissions-in-Office-365-da585eea-f576-4f55-a1e0-87090b6aaa9d)（Office 365 中的权限）。
 
-Azure 订阅和资源组也不会出现在 Azure AD 中。 若要管理 Azure 订阅，请参阅 [如何添加或更改 Azure 管理员角色](../../billing/billing-add-change-azure-subscription-administrator.md)；有关 Azure RBAC 的详细信息，请参阅 [Azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)。
+Azure 订阅和资源组也不会出现在 Azure AD 中。 若要管理 Azure 订阅，请参阅[如何添加或更改 Azure 管理员角色](../../billing/billing-add-change-azure-subscription-administrator.md)；有关 Azure RBAC 的详细信息，请参阅 [Azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)。
 
 <!--**The above links might be replaced by ones that are from within this documentation repository **-->
 

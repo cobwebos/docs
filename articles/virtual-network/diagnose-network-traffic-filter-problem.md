@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: jdial
-ms.openlocfilehash: 1c33a75363eec2b4e338ba64e3d1ad877d8b1610
-ms.sourcegitcommit: 15bfce02b334b67aedd634fa864efb4849fc5ee2
+ms.openlocfilehash: 82a7449bf75cd31f8da5bb93618c4e6977ed312b
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "34757221"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144928"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>诊断虚拟机网络流量筛选器问题
 
@@ -40,36 +40,38 @@ ms.locfileid: "34757221"
 2. 在 Azure 门户顶部的搜索框中输入 VM 的名称。 当 VM 名称显示在搜索结果中时，请选择它。
 3. 如下图所示，在“设置”下选择“网络”：
 
-    ![查看安全规则](./media/diagnose-network-traffic-filter-problem/view-security-rules.png)
+   ![查看安全规则](./media/diagnose-network-traffic-filter-problem/view-security-rules.png)
 
-    上图中列出的规则适用于名为 **myVMVMNic** 的网络接口。 可以看到两个不同网络安全组中网络接口的“入站端口规则”：- **mySubnetNSG**：已关联到网络接口所在的子网。
-        - **myVMNSG**：已关联到 VM 中名为的 **myVMVMNic** 的网络接口。
+   上图中列出的规则适用于名为 **myVMVMNic** 的网络接口。 可以看到两个不同网络安全组中网络接口的“入站端口规则”：
+   
+   - **mySubnetNSG**：已关联到网络接口所在的子网。
+   - **myVMNSG**：已关联到 VM 中名为 **myVMVMNic** 的网络接口。
 
-    如[场景](#scenario)中所述，名为 **DenyAllInBound** 的规则阻止端口 80 从 Internet 与 VM 进行入站通信。 规则中为“源”列出了 *0.0.0.0/0*，其中包括 Internet。 其他更高优先级（较小的数字）的规则都不允许端口 80 入站通信。 若要允许通过端口 80 从 Internet 与 VM 进行入站通信，请参阅[解决问题](#resolve-a-problem)。 若要详细了解安全规则以及 Azure 如何应用这些规则，请参阅[网络安全组](security-overview.md)。
+   如[场景](#scenario)中所述，名为 **DenyAllInBound** 的规则阻止端口 80 从 Internet 与 VM 进行入站通信。 规则中为“源”列出了 *0.0.0.0/0*，其中包括 Internet。 其他更高优先级（较小的数字）的规则都不允许端口 80 入站通信。 若要允许通过端口 80 从 Internet 与 VM 进行入站通信，请参阅[解决问题](#resolve-a-problem)。 若要详细了解安全规则以及 Azure 如何应用这些规则，请参阅[网络安全组](security-overview.md)。
 
-    在图片底部，还可以看到“出站端口规则”。 其下面是网络接口的出站端口规则。 尽管图片中仅显示了每个 NSG 的四个入站规则，但 NSG 包含的规则可能远远超过四个。 在图片中“源”和“目标”下面可以看到“VirtualNetwork”，在“源”下面可以看到“AzureLoadBalancer”。 **VirtualNetwork** 和 **AzureLoadBalancer** 是[服务标记](security-overview.md#service-tags)。 服务标记表示一组 IP 地址前缀，帮助最大程度地降低安全规则创建过程的复杂性。
+   在图片底部，还可以看到“出站端口规则”。 其下面是网络接口的出站端口规则。 尽管图片中仅显示了每个 NSG 的四个入站规则，但 NSG 包含的规则可能远远超过四个。 在图片中“源”和“目标”下面可以看到“VirtualNetwork”，在“源”下面可以看到“AzureLoadBalancer”。 **VirtualNetwork** 和 **AzureLoadBalancer** 是[服务标记](security-overview.md#service-tags)。 服务标记表示一组 IP 地址前缀，帮助最大程度地降低安全规则创建过程的复杂性。
 
 4. 确保 VM 处于运行状态，然后如上图所示选择“有效安全规则”，以查看下图所示的有效安全规则：
 
-    ![查看有效的安全规则](./media/diagnose-network-traffic-filter-problem/view-effective-security-rules.png)
+   ![查看有效的安全规则](./media/diagnose-network-traffic-filter-problem/view-effective-security-rules.png)
 
-    列出的规则与步骤 3 中相同，不过，与网络接口和子网关联的 NSG 有不同的选项卡。 图片中只显示了前 50 个规则。 若要下载包含所有规则的 .csv 文件，请选择“下载”。
+   列出的规则与步骤 3 中相同，不过，与网络接口和子网关联的 NSG 有不同的选项卡。 图片中只显示了前 50 个规则。 若要下载包含所有规则的 .csv 文件，请选择“下载”。
 
-    若要查看每个服务标记表示的前缀，请选择一个规则，例如名为 **AllowAzureLoadBalancerInbound** 的规则。 下图显示 **AzureLoadBalancer** 服务标记的前缀：
+   若要查看每个服务标记表示的前缀，请选择一个规则，例如名为 **AllowAzureLoadBalancerInbound** 的规则。 下图显示 **AzureLoadBalancer** 服务标记的前缀：
 
-    ![查看有效的安全规则](./media/diagnose-network-traffic-filter-problem/address-prefixes.png)
+   ![查看有效的安全规则](./media/diagnose-network-traffic-filter-problem/address-prefixes.png)
 
-    尽管 **AzureLoadBalancer** 服务标记仅表示一个前缀，但其他服务标记表示多个前缀。
+   尽管 **AzureLoadBalancer** 服务标记仅表示一个前缀，但其他服务标记表示多个前缀。
 
-4. 前面的步骤显示了名为 **myVMVMNic** 的网络接口的安全规则，但前面某些图片中也显示了名为 **myVMVMNic2** 的网络接口。 本示例中的 VM 上附加了两个网络接口。 每个网络接口的有效安全规则可能不同。
+5. 前面的步骤显示了名为 **myVMVMNic** 的网络接口的安全规则，但前面某些图片中也显示了名为 **myVMVMNic2** 的网络接口。 本示例中的 VM 上附加了两个网络接口。 每个网络接口的有效安全规则可能不同。
 
-    若要查看 **myVMVMNic2** 网络接口的规则，请选择它。 如下图所示，关联到网络接口子网的规则与 **myVMVMNic** 网络接口相同，因为这两个网络接口位于同一子网中。 将 NSG 关联到某个子网时，其规则将应用到该子网中的所有网络接口。
+   若要查看 **myVMVMNic2** 网络接口的规则，请选择它。 如下图所示，关联到网络接口子网的规则与 **myVMVMNic** 网络接口相同，因为这两个网络接口位于同一子网中。 将 NSG 关联到某个子网时，其规则将应用到该子网中的所有网络接口。
 
-    ![查看安全规则](./media/diagnose-network-traffic-filter-problem/view-security-rules2.png)
+   ![查看安全规则](./media/diagnose-network-traffic-filter-problem/view-security-rules2.png)
 
-    与 **myVMVMNic** 网络接口不同，**myVMVMNic2** 网络接口没有关联的网络安全组。 每个网络接口和子网可以有零个或一个关联的 NSG。 关联到每个网络接口或子网的 NSG 可以相同或不同。 可将同一网络安全组关联到选定的任意数量的网络接口和子网。
+   与 **myVMVMNic** 网络接口不同，**myVMVMNic2** 网络接口没有关联的网络安全组。 每个网络接口和子网可以有零个或一个关联的 NSG。 关联到每个网络接口或子网的 NSG 可以相同或不同。 可将同一网络安全组关联到选定的任意数量的网络接口和子网。
 
-尽管前面是通过 VM 查看有效安全规则，但也可以通过以下方式查看有效安全规则：
+尽管前面是通过 VM 查看有效安全规则，但也可以通过以下各项查看有效安全规则：
 - **单个网络接口**：了解如何[查看网络接口](virtual-network-network-interface.md#view-network-interface-settings)。
 - **单个 NSG**：了解如何[查看 NSG](manage-network-security-group.md#view-details-of-a-network-security-group)。
 

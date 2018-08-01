@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/22/2018
+ms.date: 07/18/2018
 ms.author: terrylan
-ms.openlocfilehash: 05504f94d72f39762672d0e79669dd50d8e6435e
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 800ec83b3599dba716e7a4a015b9b8c1745a0975
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441478"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144561"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>在 Azure 安全中心内实现租户级公开范围
 本文介绍了如何执行一些操作来最大限度地利用 Azure 安全中心提供的优势，从而帮助读者入门。 执行这些操作，可以在所有与 Azure Active Directory 租户相关联的 Azure 订阅中实现公开范围，并能以聚合方式跨多个订阅应用安全策略，从而大规模、有效地管理组织的安全状态。
@@ -85,8 +85,20 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 
 5. 执行需要在提升的访问权限下完成的任务。 完成后，将开关设置回“否”。
 
+### <a name="open-or-refresh-security-center"></a>打开或刷新安全中心
+获得提升的访问权限后，立即打开或刷新 Azure 安全中心，验证能否查看 Azure AD 租户下的所有订阅。 
+
+1. 登录到 [Azure 门户](https://portal.azure.com)。 
+2. 请确保在订阅选择器中选择了要在安全中心内查看的所有订阅。
+    ![订阅选择器屏幕截图](./media/security-center-management-groups/subscription-selector.png)
+1. 在 Azure 主菜单下，依次选择“所有服务”和“安全中心”。
+2. 在“概述”中，没有订阅覆盖率图表。 
+    ![订阅覆盖率图表屏幕截图](./media/security-center-management-groups/security-center-subscription-coverage.png)
+3. 单击“覆盖率”，查看所覆盖的订阅列表。 
+    ![订阅覆盖率列表屏幕截图](./media/security-center-management-groups/security-center-coverage.png)
+
 ### <a name="assign-rbac-roles-to-users"></a>向用户分配 RBAC 角色
-拥有提升的访问权限后，租户管理员便可以在根管理组一级向相关用户分配 RBAC 角色。 建议分配的角色是[读者](../role-based-access-control/built-in-roles.md#reader)。 必须有此角色，才能授予租户级公开范围。 分配的角色会自动传播到根管理组下的所有管理组和订阅。 若要详细了解 RBAC 角色，请参阅[可用角色](../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles)。
+拥有提升的访问权限后，租户管理员便可以在根管理组一级向相关用户分配 RBAC 角色。 建议分配的角色是[读者](../role-based-access-control/built-in-roles.md#reader)。 必须有此角色，才能授予租户级公开范围。 分配的角色会自动传播到根管理组下的所有管理组和订阅。 若要详细了解 RBAC 角色，请参阅[可用角色](../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles)。 
 
 1. 安装 [Azure PowerShell](/powershell/azure/install-azurerm-ps)。
 2. 运行以下命令： 
@@ -141,15 +153,7 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 
 4. 单击“保存”，保存设置。
 
-### <a name="open-or-refresh-security-center"></a>打开或刷新安全中心
-分配 RBAC 角色后，立即打开或刷新 Azure 安全中心，验证能否查看 Azure AD 租户下的所有订阅。 
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
-2. 在 Azure 主菜单下，依次选择“所有服务”和“安全中心”。
-3. 在“概述”中，没有订阅覆盖率图表。 
-    ![订阅覆盖率图表屏幕截图](./media/security-center-management-groups/security-center-subscription-coverage.png)
-4. 单击“覆盖率”，查看所覆盖的订阅列表。 
-    ![订阅覆盖率列表屏幕截图](./media/security-center-management-groups/security-center-coverage.png)
 
 ## <a name="adding-subscriptions-to-a-management-groups"></a>向管理组添加订阅
 可以向创建的管理组添加订阅。 这些步骤不是实现租户级公开范围以及全局策略和访问管理的必需步骤。

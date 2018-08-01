@@ -8,31 +8,35 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: a6435f74141429cbe4f9a169fd2f234161d486c4
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 9d2a20ce681ea7e7c4ff2f9b492653e9d9a57b2b
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918734"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248160"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>从 Azure 资源收集和使用日志数据
 
-## <a name="what-are-azure-resource-diagnostic-logs"></a>什么是 Azure 资源诊断日志
+## <a name="what-are-azure-monitor-diagnostic-logs"></a>什么是 Azure Monitor 诊断日志
 
-**Azure 资源级诊断日志**是资源发出的日志，记录与该资源的操作相关的各种频繁生成的数据。 这些日志的内容因资源类型而异。 例如，网络安全组规则计数器和 Key Vault 审核是两种类别的资源日志。
+**Azure Monitor 诊断日志**是 Azure 服务发出的日志，提供与该服务的操作相关的各种频繁生成的数据。 Azure Monitor 提供两种类型的诊断日志：
+* **租户日志** - 这些日志来自 Azure 订阅之外存在的租户级服务，例如 Azure Active Directory 日志。
+* **资源日志** - 这些日志来自在 Azure 订阅中部署资源的 Azure 服务，例如网络安全组或存储帐户。
 
-资源级诊断日志与[活动日志](monitoring-overview-activity-logs.md)不同。 通过活动日志，可以深入了解使用资源管理器在订阅中的资源上执行的操作，例如创建虚拟机或删除逻辑应用。 活动日志是一个订阅级别的日志。 通过资源级诊断日志深入了解在资源本身内执行的操作，例如，从 Key Vault 获取机密。
+    ![资源诊断日志与其他类型的日志 ](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_vs_other_logs_v5.png)
 
-资源级诊断日志来宾 OS 级诊断日志也不相同。 来宾 OS 级诊断日志是由在虚拟机内部或其他受支持的资源类型中运行的代理收集的日志。 资源级诊断日志不需要代理并从 Azure 平台本身捕获特定于资源的数据，而来宾 OS 级诊断日志从操作系统和在虚拟机上运行的应用程序捕获数据。
+这些日志的内容因 Azure 服务和资源类型而异。 例如，网络安全组规则计数器和 Key Vault 审核是两种类型的诊断日志。
 
-并非所有资源都支持此处所述的资源诊断日志新类型。 本文的某个部分列出了哪些资源类型支持新的资源级诊断日志。
+这些日志与[活动日志](monitoring-overview-activity-logs.md)不同。 通过活动日志，可以深入了解使用资源管理器在订阅中的资源上执行的操作，例如创建虚拟机或删除逻辑应用。 活动日志是一个订阅级别的日志。 通过资源级诊断日志深入了解在资源本身内执行的操作，例如，从 Key Vault 获取机密。
 
-![资源诊断日志与其他类型的日志 ](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_vs_other_logs_v5.png)
+这些日志也与来宾 OS 级诊断日志不同。 来宾 OS 级诊断日志是由在虚拟机内部或其他受支持的资源类型中运行的代理收集的日志。 资源级诊断日志不需要代理并从 Azure 平台本身捕获特定于资源的数据，而来宾 OS 级诊断日志从操作系统和在虚拟机上运行的应用程序捕获数据。
 
-## <a name="what-you-can-do-with-resource-level-diagnostic-logs"></a>可以对资源级诊断日志执行的操作
-可以对资源诊断日志执行的部分操作如下：
+并非所有服务都支持此处所述的诊断日志。 [本文包含一个列出哪些服务支持诊断日志的部分](./monitoring-diagnostic-logs-schema.md)。
 
-![资源诊断日志的逻辑位置](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_Actions.png)
+## <a name="what-you-can-do-with-diagnostic-logs"></a>可以对诊断日志执行的操作
+可以对诊断日志执行的部分操作如下：
+
+![诊断日志的逻辑位置](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_Actions.png)
 
 * 将诊断日志保存到[**存储帐户**](monitoring-archive-diagnostic-logs.md)进行审核或手动检查。 可以使用**资源诊断设置**指定保留时间（天）。
 * [将诊断日志流式传输到**事件中心**](monitoring-stream-diagnostic-logs-to-event-hubs.md)，方便第三方服务或自定义分析解决方案（例如 PowerBI）引入。
@@ -48,18 +52,18 @@ ms.locfileid: "37918734"
 >
 > 
 
-## <a name="resource-diagnostic-settings"></a>资源诊断设置
+## <a name="diagnostic-settings"></a>诊断设置
 
-非计算资源的资源诊断日志是使用资源诊断设置配置的。 资源控制的**资源诊断设置**：
+使用资源诊断设置配置资源诊断日志。 使用租户诊断设置配置租户诊断日志。 用于服务控制的**诊断设置**：
 
-* 将资源诊断日志和指标发送到的位置（存储帐户、事件中心和/或 Log Analytics）。
+* 将诊断日志和指标发送到的位置（存储帐户、事件中心和/或 Log Analytics）。
 * 发送哪些日志类别，是否也会发送指标数据。
 * 应该将每个日志类别在存储帐户中保留多长时间
     - 保留期为零天表示日志将永久保留。 如果不需永久保留，则可将该值设置为 1 到 2147483647 之间的任意天数。
     - 如果设置了保留策略，但禁止将日志存储在存储帐户中（例如，如果仅选择了“事件中心”或“Log Analytics”选项），则保留策略无效。
     - 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。 删除过程从 UTC 晚上 12 点开始，但请注意，可能需要最多 24 小时才能将日志从存储帐户中删除。
 
-这些设置可以通过诊断设置（适用于 Azure 门户中的资源）、Azure PowerShell 和 CLI 命令或 [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931943.aspx) 轻松进行配置。
+这些设置可以通过门户中的诊断设置、Azure PowerShell 和 CLI 命令或 [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) 轻松进行配置。
 
 > [!NOTE]
 > 当前不支持通过诊断设置发送多维指标。 多维指标将按平展后的单维指标导出，并跨维值聚合。
@@ -68,17 +72,14 @@ ms.locfileid: "37918734"
 >
 >
 
-> [!WARNING]
-> 来自计算资源（例如，VM 或 Service Fabric）来宾 OS 层的诊断日志和指标使用[单独的输出配置和选择机制](../azure-diagnostics.md)。
+## <a name="how-to-enable-collection-of-diagnostic-logs"></a>如何启用诊断日志的收集
 
-## <a name="how-to-enable-collection-of-resource-diagnostic-logs"></a>如何启用资源诊断日志集合
-
-可以在门户中通过该资源的页面[在资源管理器模板里创建资源的过程中](./monitoring-enable-diagnostic-logs-using-template.md)或在创建资源以后启用资源诊断日志的收集。 也可使用 Azure PowerShell 或 CLI 命令（或者使用 Azure Monitor REST API）在任何时间点启用集合。
+可以[在资源管理器模板中创建资源的过程中](./monitoring-enable-diagnostic-logs-using-template.md)或在创建资源后通过门户中该资源的页面启用诊断日志的收集。 也可使用 Azure PowerShell 或 CLI 命令（或者使用 Azure Monitor REST API）在任何时间点启用集合。
 
 > [!TIP]
 > 这些说明可能不能直接应用到每个资源。 请参阅此页底部的架构链接，了解适用于特定资源类型的特殊步骤。
 
-### <a name="enable-collection-of-resource-diagnostic-logs-in-the-portal"></a>在门户中启用资源诊断日志的集合
+### <a name="enable-collection-of-diagnostic-logs-in-the-portal"></a>在门户中启用诊断日志的收集
 
 可以在创建资源后，在 Azure 门户中通过转到特定的资源或导航到 Azure Monitor 来启用资源诊断日志的收集。 通过 Azure Monitor 启用日志收集：
 
@@ -103,6 +104,10 @@ ms.locfileid: "37918734"
 4. 单击“ **保存**”。
 
 几分钟后，新设置会显示在此资源的设置列表中，只要生成新的事件数据，就会立即将诊断日志发送到指定的目标。
+
+租户诊断设置只能在租户服务的门户边栏选项卡中配置 - 这些设置不会显示在“Azure Monitor 诊断设置”边栏选项卡中。 例如，通过单击“审核日志”边栏选项卡中的“数据导出设置”来配置 Azure Active Directory 审核日志。
+
+![AAD 诊断设置](./media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-aad.png)
 
 ### <a name="enable-collection-of-resource-diagnostic-logs-via-powershell"></a>通过 PowerShell 启用资源诊断日志的集合
 
@@ -137,6 +142,8 @@ Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resour
 ```
 
 可以组合这些参数以启用多个输出选项。
+
+目前无法使用 Azure PowerShell 配置租户诊断设置。
 
 ### <a name="enable-collection-of-resource-diagnostic-logs-via-azure-cli-20"></a>通过 Azure CLI 2.0 启用资源诊断日志收集
 
@@ -198,9 +205,13 @@ az monitor diagnostic-settings create --name <diagnostic name> \
 
 使用任一命令时，都可以通过向作为 `--logs` 参数传递的 JSON 数组添加字典来向诊断日志添加其他类别。 可以组合使用 `--storage-account`、`--event-hub` 和 `--workspace` 参数来启用多个输出选项。
 
+目前无法使用 CLI 配置租户诊断设置。
+
 ### <a name="enable-collection-of-resource-diagnostic-logs-via-rest-api"></a>通过 REST API 启用资源诊断日志的集合
 
-若要使用 Azure Monitor REST API 更改诊断设置，请参阅[此文档](https://msdn.microsoft.com/library/azure/dn931931.aspx)。
+若要使用 Azure Monitor REST API 更改诊断设置，请参阅[此文档](https://docs.microsoft.com/rest/api/monitor/)。
+
+目前无法使用 Azure Monitor REST API 配置租户诊断设置。
 
 ## <a name="manage-resource-diagnostic-settings-in-the-portal"></a>在门户中管理资源诊断设置
 
@@ -216,7 +227,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
 
 添加诊断设置会打开“诊断设置”视图，可在其中启用、禁用或修改选定资源的诊断设置。
 
-## <a name="supported-services-categories-and-schemas-for-resource-diagnostic-logs"></a>资源诊断日志支持的服务、类别和架构
+## <a name="supported-services-categories-and-schemas-for-diagnostic-logs"></a>诊断日志支持的服务、类别和架构
 
 [参阅此文](monitoring-diagnostic-logs-schema.md)获取受支持服务的完整列表，以及这些服务使用的日志类别和架构。
 

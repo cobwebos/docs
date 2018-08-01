@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
-ms.openlocfilehash: 24b20766997a9a41956f575f6cab8ee5ef0d9e25
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: c0c3e6fab27ff16f0cc75fde3587d280278be882
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034367"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215282"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>在 Azure Active Directory 中编写属性映射的表达式
 将预配配置到 SaaS 应用程序时，表达式映射是可指定的属性映射类型之一。 为此，必须编写一个类似于脚本的表达式，允许将用户的数据转换为 SaaS 应用程序更可接受的格式。
@@ -31,7 +31,7 @@ ms.locfileid: "37034367"
 * 函数之间可以相互嵌套。 例如： <br> *FunctionOne(FunctionTwo(<<argument1>>))*
 * 可以将三种不同类型的参数传递给函数：
   
-  1. 属性必须括在方括号中。 例如：[attributeName]
+  1. 属性，必须括在方括号中。 例如：[attributeName]
   2. 字符串常量必须括在双引号内。 例如："美国"
   3. 其他函数。 例如：FunctionOne(<<argument1>>, FunctionTwo(<<argument2>>))
 * 对于字符串常量，如果字符串中需要反斜杠 ( \ ) 或引号 ( " )，则必须使用反斜杠 ( \ ) 符号进行转义。 例如："公司名称: \"Contoso\""

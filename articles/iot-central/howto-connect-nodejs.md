@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 42ede975f2cfde2d9c0a61d15ba1af412a88c556
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 55ce85702804d99d806220d7f0a4ea0820975f4f
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628532"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39206031"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>将泛型客户端应用程序连接到 Azure IoT Central 应用程序 (Node.js)
 
@@ -24,7 +24,9 @@ ms.locfileid: "34628532"
 若要完成本文中的步骤，需要以下各项：
 
 1. Azure IoT Central 应用程序。 有关详细信息，请参阅[创建 Azure IoT Central 应用程序](howto-create-application.md)。
-1. 安装了 [Node.js](https://nodejs.org/) 4.0.0 或更高版本的开发计算机。 若要检查版本，可以在命令行中运行 `node --version`。 Node.js 适用于各种不同的操作系统。
+1. 安装了 [Node.js](https://nodejs.org/) 4.0.0 或更高版本的开发计算机。 若要检查版本，可以在命令行中运行 `node --version`。 Node.js 适用于各种操作系统。
+
+## <a name="create-a-device-template"></a>创建设备模板
 
 在 Azure IoT Central 应用程序中，需要一个定义了以下度量和设备属性的设备模板：
 
@@ -36,7 +38,7 @@ ms.locfileid: "34628532"
 | ------------ | ----------- | ----- | --- | --- | -------------- |
 | 温度  | 温度 | F     | 60  | 110 | 0              |
 | 湿度     | 湿度    | %     | 0   | 100 | 0              |
-| 压力     | 压强    | kPa   | 80  | 110 | 0              |
+| 压力     | 压力    | kPa   | 80  | 110 | 0              |
 
 > [!NOTE]
   遥测度量的数据类型为 double。
@@ -89,11 +91,11 @@ ms.locfileid: "34628532"
 
 将表中所示字段名称准确输入设备模板中。 如果字段名称不匹配，则设备无法接收设置值。
 
-### <a name="add-a-real-device"></a>添加真实设备
+## <a name="add-a-real-device"></a>添加真实设备
 
 在 Azure IoT Central 应用程序中，从创建的设备模板添加真实设备，并记下设备连接字符串。 有关详细信息，请参阅[向 Azure IoT Central 应用程序添加真实设备](tutorial-add-device.md)
 
-## <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
+### <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
 
 以下步骤演示如何创建一个客户端应用程序，以便实现已添加到应用程序的真实设备。
 

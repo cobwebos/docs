@@ -1,24 +1,22 @@
 ---
-title: 使用 Spark 来读写 HBase 数据 - Azure HDInsight | Microsoft Docs
+title: 使用 Spark 读取和写入 HBase 数据 - Azure HDInsight
 description: 使用 Spark HBase 连接器将 Spark 群集中的数据读写到 HBase 群集。
 services: hdinsight
-documentationcenter: ''
 author: maxluk
+ms.author: maxluk
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.date: 01/11/2018
-ms.author: maxluk
-ms.openlocfilehash: 7cfc7f586e8a92c29736a7c4cff0b12796be430a
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.topic: conceptual
+ms.date: 07/18/2018
+ms.openlocfilehash: 5123a95852fae58adf0b4a4684b012d3b9c71e3b
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34161169"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144765"
 ---
 # <a name="use-spark-to-read-and-write-hbase-data"></a>使用 Spark 读取和写入 HBase 数据
 
@@ -130,7 +128,7 @@ ms.locfileid: "34161169"
 1. 使用 SSH 连接到 Spark 集群的头节点。
 2. 启动 spark shell，指定 Spark HBase 连接器包：
 
-        spark-shell --packages com.hortonworks:shc-core:1.1.0-2.1-s_2.11 --repositories http://repo.hortonworks.com/coroups/public/
+        spark-shell --packages com.hortonworks:shc-core:1.1.0-2.1-s_2.11 --repositories http://repo.hortonworks.com/content/groups/public/
 
 3. 保持此 Spark Shell 实例处于打开状态，并继续执行下一步操作。
 

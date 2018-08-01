@@ -10,18 +10,18 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 4/11/2018
 ms.author: rangv
-ms.openlocfilehash: 2efea8054320323df0e0eb603a20a5773d03cad8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0138b44141bb64671ed2feb522c4b7fa14cab696
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38676615"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213310"
 ---
 # <a name="connect-intel-edison-to-azure-iot-hub-c"></a>将 Intel Edison 连接到 Azure IoT 中心 (C)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-在本教程中，从学习如何使用 Intel Edison 的基础知识开始。 然后将学习如何使用 [Azure IoT 中心](iot-hub-what-is-iot-hub.md)将设备无缝连接到云。
+在本教程中，从学习如何使用 Intel Edison 的基础知识开始。 然后将学习如何使用 [Azure IoT 中心](about-iot-hub.md)将设备无缝连接到云。
 
 还没有工具包？ 从[此处](https://azure.microsoft.com/develop/iot/starter-kits)开始
 

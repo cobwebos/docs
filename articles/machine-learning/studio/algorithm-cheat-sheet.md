@@ -1,5 +1,5 @@
 ---
-title: 机器学习算法备忘单 | Microsoft Docs
+title: 机器学习算法备忘单 - Azure | Microsoft Docs
 description: 可打印的机器学习算法备忘单可帮助在 Azure 机器学习工作室中为预测模型选择正确的算法。
 keywords: 算法备忘单，备忘单，机器学习算法
 services: machine-learning
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: a448d6931330f7b2f0730add65473097bb2b5a57
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: b080a739aa73e3c8ef95c7db9a6358d942e94bba
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833557"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238380"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-microsoft-azure-machine-learning-studio"></a>Microsoft Azure 机器学习工作室机器学习算法备忘单
 **Microsoft Azure 机器学习算法备忘单**可帮助为预测分析模型选择正确的算法。

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 35b8536b944df39d0d47bf3529698fc94e51110e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 460c7d24b2810de41e20ea803ded2ea988613f10
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633938"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223790"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>在多个设备上计划作业
 
@@ -84,7 +84,7 @@ queryCondition = "deviceId IN ['MyDevice1']
     }
 
 ## <a name="querying-for-progress-on-jobs"></a>查询作业的进度
-以下代码片段显示了用于[查询作业][lnk-query]的 HTTPS 1.1 请求详细信息：
+以下代码片段显示了用于查询作业的 HTTPS 1.1 请求详细信息：
 
     GET /jobs/v2/query?api-version=2016-11-14[&jobType=<jobType>][&jobStatus=<jobStatus>][&pageSize=<pageSize>][&continuationToken=<continuationToken>]
 
@@ -95,15 +95,17 @@ queryCondition = "deviceId IN ['MyDevice1']
 
 从响应提供 continuationToken。  
 
+可以使用[设备孪生、作业和消息路由的 IoT 中心查询语言][lnk-query]在每台设备上查询作业执行状态。
+
 ## <a name="jobs-properties"></a>作业属性
 以下列表显示了属性和相应说明，在查询作业或作业结果时可使用这些属性。
 
-| 属性 | 说明 |
+| 属性 | Description |
 | --- | --- |
 | **jobId** |应用程序提供的作业 ID。 |
 | **startTime** |应用程序提供的作业开始时间(ISO-8601)。 |
 | **endTime** |IoT 中心提供的作业完成时的日期(ISO-8601)。 只有在作业达到“完成”状态后才有效。 |
-| **类型** |作业的类型： |
+| type |作业的类型： |
 | | **scheduledUpdateTwin**：用于更新一组所需属性或标记的作业。 |
 | | **scheduledDeviceMethod**：用于对一组设备孪生调用设备方法的作业。 |
 | **状态** |作业的当前状态。 可能的状态值： |
@@ -143,7 +145,7 @@ IoT 中心开发人员指南中的其他参考主题包括：
 [lnk-query]: iot-hub-devguide-query-language.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
 [lnk-jobs-tutorial]: iot-hub-node-node-schedule-jobs.md
-[lnk-c2d-methods]: iot-hub-node-node-direct-methods.md
+[lnk-c2d-methods]: quickstart-control-device-node.md
 [lnk-dev-methods]: iot-hub-devguide-direct-methods.md
 [lnk-get-started-twin]: iot-hub-node-node-twin-getstarted.md
 [lnk-twin-devguide]: iot-hub-devguide-device-twins.md

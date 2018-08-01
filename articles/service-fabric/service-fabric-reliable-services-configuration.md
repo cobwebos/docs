@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: c320f27dd53f0545ff5074d2d4f5a7bdd445fd89
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: f2af7c65d42cbbec28fd511be18c72a6cd3c3d0c
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866172"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249013"
 ---
 # <a name="configure-stateful-reliable-services"></a>配置有状态 Reliable Services
 有两组配置设置可供 Reliable Services 使用。 一组适用于群集中的所有 Reliable Services，而另一组特定于特定的 Reliable Services。
@@ -124,6 +124,7 @@ ReplicatorConfig
 | SharedLogId |GUID |"" |指定要用于标识与此副本一起使用的共享日志文件的唯一 GUID。 通常情况下，服务不应使用此设置。 但是如果指定了 SharedLogId，则也必须指定 SharedLogPath。 |
 | SharedLogPath |完全限定的路径名 |"" |指定会在其中创建此副本共享日志文件的完全限定路径。 通常情况下，服务不应使用此设置。 但是如果指定了 SharedLogPath，则也必须指定 SharedLogId。 |
 | SlowApiMonitoringDuration |秒 |300 |设置托管 API 调用的监视间隔。 示例：用户提供的备份回调函数。 此间隔时间过去后，将向运行状况管理器发送一个警告运行状况报告。 |
+| LogTruncationIntervalSeconds |秒 |0 |在每个副本上启动日志截断的可配置间隔。 它用于确保还基于时间而不仅仅是根据日志大小来截断日志。 此设置还会强制清除可靠字典中的已删除条目。 因此，它可用于确保及时清除已删除的项目。 |
 
 ### <a name="sample-configuration-via-code"></a>通过代码进行配置的示例
 ```csharp

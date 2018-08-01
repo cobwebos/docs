@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/18/2017
+ms.date: 07/24/2018
 ms.author: juliako
-ms.openlocfilehash: 5ef1ca201bc564949ee65f81970d0b040679d6b8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 220ff194ab5f8fa49ba7603ecd91122459d4dc1e
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38671419"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249217"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒体服务发行说明
 这些 Azure 媒体服务发行说明汇总了与以前版本相比的变更之处和已知的问题。
@@ -32,7 +32,7 @@ ms.locfileid: "38671419"
 ## <a name="a-idissuescurrently-known-issues"></a><a id="issues"/>当前已知的问题
 ### <a name="a-idgeneralissuesmedia-services-general-issues"></a><a id="general_issues"/>媒体服务一般问题
 
-| 问题 | 说明 |
+| 问题 | Description |
 | --- | --- |
 | REST API 中未提供几种常见的 HTTP 标头。 |如果使用 REST API 来开发媒体服务应用程序，将发现一些常见的 HTTP 标头字段（包括 CLIENT-REQUEST-ID、REQUEST-ID 和 RETURN-CLIENT-REQUEST-ID）不受支持。 未来的更新将增加这些标头。 |
 | 不允许使用百分号编码。 |构建流内容的 URL 时，媒体服务会使用 IAssetFile.Name 属性的值（如 http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters）。 出于这个原因，不允许使用百分号编码。 Name 属性的值不能含有任何以下[百分号编码保留字符](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!* '();:@&=+$,/?%#[]"。 此外，文件扩展名中只能含有一个“.”。 |
@@ -45,6 +45,10 @@ ms.locfileid: "38671419"
 
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>REST API 版本历史记录
 有关媒体服务 REST API 版本历史记录的信息，请参阅 [Azure 媒体服务 REST API 参考]。
+
+## <a name="july-2018"></a>2018 年 7 月
+
+使用最新的服务版本，当作业失败时，服务返回的错误消息会有一些细微的格式更改，这些更改与如何分解为两行或更多行相关。
 
 ## <a name="may-2018"></a>2018 年 5 月 
 

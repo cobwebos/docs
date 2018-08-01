@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/07/2018
+ms.date: 07/18/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: a0146c0bf2b5a10f27cb59e32978aa6dff8f5982
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 266404a69c691cfbbfabc49e4d78deb11db74b52
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916320"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249149"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>存档 Azure 诊断日志
 
@@ -33,7 +33,7 @@ ms.locfileid: "37916320"
 
 ## <a name="diagnostic-settings"></a>诊断设置
 
-若要使用下述任意方法存档诊断日志，可针对特定资源设置“诊断设置”。 资源的诊断设置定义发送到目标的日志和指标数据类别（存储帐户、事件中心命名空间或 Log Analytics）。 此外，它还定义存储在存储帐户中的每个日志类别和指标数据的事件保留策略（需保留的天数）。 如果将保留策略设置为零，则会无限期（即永久）存储该日志类别的事件。 如果不需要无限期存储，可将保留策略设置为 1 到 2147483647 之间的任意天数。 [单击此处详细了解诊断设置](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)。 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。 删除过程从 UTC 晚上 12 点开始，但请注意，可能需要最多 24 小时才能将日志从存储帐户中删除。 
+若要使用下述任意方法存档诊断日志，可针对特定资源设置“诊断设置”。 资源的诊断设置定义发送到目标的日志和指标数据类别（存储帐户、事件中心命名空间或 Log Analytics）。 此外，它还定义存储在存储帐户中的每个日志类别和指标数据的事件保留策略（需保留的天数）。 如果将保留策略设置为零，则会无限期（即永久）存储该日志类别的事件。 如果不需要无限期存储，可将保留策略设置为 1 到 2147483647 之间的任意天数。 [单击此处详细了解诊断设置](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)。 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。 删除过程从 UTC 晚上 12 点开始，但请注意，可能需要最多 24 小时才能将日志从存储帐户中删除。 
 
 > [!NOTE]
 > 当前不支持通过诊断设置发送多维指标。 多维指标将按平展后的单维指标导出，并跨维值聚合。
@@ -72,7 +72,7 @@ ms.locfileid: "37916320"
 Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg -StorageAccountId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Categories networksecuritygroupevent,networksecuritygrouprulecounter -Enabled $true -RetentionEnabled $true -RetentionInDays 90
 ```
 
-| 属性 | 必选 | 说明 |
+| 属性 | 必选 | Description |
 | --- | --- | --- |
 | ResourceId |是 |要设置诊断设置的资源的资源 ID。 |
 | StorageAccountId |否 |应该将诊断日志保存到其中的存储帐户的资源 ID。 |
@@ -148,7 +148,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/s1id1234
 }
 ```
 
-| 元素名称 | 说明 |
+| 元素名称 | Description |
 | --- | --- |
 | time |处理与事件对应的请求的 Azure 服务生成事件时的时间戳。 |
 | resourceId |受影响资源的资源 ID。 |
@@ -163,4 +163,5 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/s1id1234
 
 * [下载 blob 进行分析](../storage/storage-dotnet-how-to-use-blobs.md)
 * [将诊断日志流式传输到事件中心命名空间](monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [使用 Azure Monitor 存档 Azure Active Directory 日志](../active-directory/reporting-azure-monitor-diagnostics-azure-storage-account.md)
 * [详细了解诊断日志](monitoring-overview-of-diagnostic-logs.md)

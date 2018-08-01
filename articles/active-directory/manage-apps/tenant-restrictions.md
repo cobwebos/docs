@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/15/2018
 ms.author: barbkess
 ms.reviewer: richagi
-ms.openlocfilehash: abf7d571097aefd47c90cbd0ce4aab941c4e24c4
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: b89ab77b1cd97fd501a754dbf41d1aa74ef118d9
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126654"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144986"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租户限制管理对 SaaS 云应用程序的访问
 
@@ -97,7 +97,7 @@ ms.locfileid: "39126654"
 
 尽管租户限制的配置是在企业代理基础结构中完成的，但管理员也可以直接在 Azure 门户中访问租户限制报告。 要查看报告，请转到 Azure Active Directory 的“概述”页，并查看“其他功能”。
 
-Restricted-Access-Context 租户的管理员可以使用此报告来查看由于租户限制策略的原因而被阻止的所有登录，包括使用的标识和目标目录 ID。
+Restricted-Access-Context 租户的管理员可以使用此报告来查看由于租户限制策略的原因而被阻止的登录，包括使用的标识和目标目录 ID。 如果设置限制的租户是登录的用户租户或资源租户，则会包含登录。
 
 ![使用 Azure 门户查看受限制的登录尝试](./media/tenant-restrictions/portal-report.png)
 

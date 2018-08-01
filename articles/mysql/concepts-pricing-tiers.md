@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 07/11/2018
-ms.openlocfilehash: 547839234e15455f3e268bad4d92972ea1f47e4c
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 70891e4c1425badb43dac66ada9c0b3a43b8fb0d
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971931"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173667"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL 定价层
 
@@ -94,6 +94,8 @@ ms.locfileid: "38971931"
 当可用存储量低于 5 GB 或 5% 的预配存储（以较低者为准）时，服务器会标记为只读。 例如，如果已预配 100 GB 的存储，而实际使用量超过 95 GB，则服务器会标记为只读。 或者，如果已预配 5 GB 的存储，则当可用存储少于 250 MB 时，服务器会标记为只读。  
 
 当服务试图将服务器标记为只读时，会阻止所有新的写入事务请求，现有的活动事务将继续执行。 当服务器设置为只读时，所有后续写入操作和事务提交均会失败。 读取查询将继续不间断工作。 增加预配的存储后，服务器将准备好再次接受写入事务。
+
+我们建议你设置警报，以便在服务器存储接近阈值时通知你，从而可以避免进入只读状态。 有关详细信息，请参阅有关[如何设置警报](howto-alert-on-metric.md)的文档。
 
 ## <a name="backup"></a>备份
 

@@ -4,14 +4,14 @@ description: 概述 Azure Migrate 服务中的评估计算。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/05/2018
+ms.date: 07/25/2018
 ms.author: raynew
-ms.openlocfilehash: 6d5a0b959b25c0ee294b22b3f4066d006806b524
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 7900a02ba9112b910589d04850a4cd5d52e044d2
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920917"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249183"
 ---
 # <a name="assessment-calculations"></a>评估计算
 
@@ -40,7 +40,7 @@ Azure Migrate 检查本地 VM 的以下属性来确认 VM 是否可在 Azure 上
 --- | --- | ---
 **启动类型** | Azure 支持启动类型为 BIOS（而非 UEFI）的 VM。 | 如果启动类型为 UEFI，则状态为 Auzre 有条件的就绪。
 **核心数** | 计算机中的内核数必须等于或小于 Azure VM 支持的最大内核数量 (32)。<br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的内核数以进行比较。 如果在评估设置中指定了舒适因子，则将已利用的内核数乘以此舒适因子。<br/><br/> 如果没有任何性能历史记录，Azure Migrate 将使用已分配的内核数，而不应用舒适因子。 | 如果内核数大于 32，则为未就绪。
-内存 | 计算机内存大小必须等于或小于 Azure VM 允许的最大内存 (448 GB)。 <br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的内存以进行比较。 如果指定了舒适因子，则将已利用的内存乘以此舒适因子。<br/><br/> 如果没有任何历史记录，将使用已分配的内存，而不应用舒适因子。<br/><br/> | 如果内存大小大于 448 GB，则为未就绪。
+内存 | 计算机内存大小必须等于或小于 Azure VM 允许的最大内存（Azure M 系列 Standard_M128m&nbsp;<sup>2</sup> 上为 3892 GB）。 [了解详细信息](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-memory.md#m-series)。<br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的内存以进行比较。 如果指定了舒适因子，则将已利用的内存乘以此舒适因子。<br/><br/> 如果没有任何历史记录，将使用已分配的内存，而不应用舒适因子。<br/><br/> | 如果内存大小大于 448 GB，则为未就绪。
 **存储磁盘** | 分配的磁盘大小必须为 4 TB (4096 GB) 或更小。<br/><br/> 连接到计算机的磁盘（包括操作系统磁盘）数必须为 65 个或更少。 | 如果有任何磁盘的大小大于 4 TB，或计算机附加了超过 65 个磁盘，则为未就绪。
 **网络** | 连接到计算机的 NIC 数必须为 32 个或更少。 | 如果计算机有超过 32 个 NIC，则为未就绪
 
@@ -58,7 +58,8 @@ Windows Server 2016 和所有 SP | Azure 提供完全支持。 | Azure 已就绪
 Windows Server 2012 R2 和所有 SP | Azure 提供完全支持。 | Azure 已就绪
 Windows Server 2012 和所有 SP | Azure 提供完全支持。 | Azure 已就绪
 Windows Server 2008 R2 和所有 SP | Azure 提供完全支持。| Azure 已就绪
-Windows Server 2003-2008 | 这些操作系统的支持日期已结束，需要[自定义支持协议 (CSA)](https://aka.ms/WSosstatement) 以获取 Azure 支持。 | Azure 有条件的就绪，请考虑在迁移到 Azure 前升级 OS。
+Windows Server 2008（32 位和 64 位） | Azure 提供完全支持。 | Azure 已就绪
+Windows Server 2003、2003 R2 | 这些操作系统的支持日期已结束，需要[自定义支持协议 (CSA)](https://aka.ms/WSosstatement) 以获取 Azure 支持。 | Azure 有条件的就绪，请考虑在迁移到 Azure 前升级 OS。
 Windows 2000、98、95、NT、3.1、MS-DOS | 这些操作系统的支持日期已结束，计算机可以在 Azure 中启动，但 Azure 不提供 OS 支持。 | Azure 有条件的就绪，建议在迁移到 Azure 前升级 OS。
 Windows Client 7、8 和 10 | Azure 仅支持 Visual Studio 订阅。 | Azure 有条件的就绪
 Windows Vista、XP Professional | 这些操作系统的支持日期已结束，计算机可以在 Azure 中启动，但 Azure 不提供 OS 支持。 | Azure 有条件的就绪，建议在迁移到 Azure 前升级 OS。
@@ -106,10 +107,9 @@ vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 
 如果大小调整条件为“按本地大小调整”，Azure Migrate 不会考虑 VM 和磁盘的性能历史记录，并将基于本地分配的大小分配 Azure 中的 VM SKU。 同样对于磁盘的大小调整，它将查找在评估属性中指定的存储类型（标准/高级），并相应地建议磁盘类型。 默认存储类型为高级磁盘。
 
 ### <a name="confidence-rating"></a>置信度分级
+在 Azure Migrate 中进行的每个基于性能的评估都会与置信度分级相关联。置信度分级分为 1 星到 5 星（1 星表示置信度最低，5 星表示置信度最高）。 为评估分配置信度时，会考虑到进行评估计算时所需数据点的可用性。 对评估的置信度分级可以用来评估 Azure Migrate 提供的大小建议的可靠性。 置信度分级不适用于本地评估。
 
-在 Azure Migrate 中进行的每次评估都会与置信度分级相关联。置信度分为 1 星到 5 星，1 星表示置信度最低，5 星表示置信度最高。 为评估分配置信度时，会考虑到进行评估计算时所需数据点的可用性。 对评估的置信度分级可以用来评估 Azure Migrate 提供的大小建议的可靠性。
-
-评估的置信度分级对于大小调整条件为“基于性能的大小调整”的评估更为有用。 对于基于性能的大小调整，Azure Migrate 需要 VM 的 CPU 和内存的利用率数据。 此外，对于每个附加到 VM 的磁盘，它需要磁盘 IOPS 和吞吐量数据。 同样，对于每个附加到 VM 的网络适配器，Azure Migrate 需要网络流入/流出量才能执行基于性能的大小调整。 如果上述利用率数据在 vCenter Server 中均不可用，则 Azure Migrate 提供的大小建议可能不可靠。 根据可用数据点的百分比，提供评估的置信度分级，如下所示：
+对于基于性能的大小调整，Azure Migrate 需要 VM 的 CPU 和内存的利用率数据。 此外，对于每个附加到 VM 的磁盘，它需要磁盘 IOPS 和吞吐量数据。 同样，对于每个附加到 VM 的网络适配器，Azure Migrate 需要网络流入/流出量才能执行基于性能的大小调整。 如果上述利用率数据在 vCenter Server 中均不可用，则 Azure Migrate 提供的大小建议可能不可靠。 根据可用数据点的百分比，提供评估的置信度分级，如下所示：
 
    **数据点的可用性** | **置信度分级**
    --- | ---

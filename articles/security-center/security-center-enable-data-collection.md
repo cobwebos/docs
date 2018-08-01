@@ -3,7 +3,7 @@ title: Azure 安全中心中的数据收集 | Microsoft Docs
 description: " 了解如何启用 Azure 安全中心中的数据收集。 "
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
@@ -12,24 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/14/2018
-ms.author: terrylan
-ms.openlocfilehash: 847127c96f23bbeb3cf3a5d1c9768af6e0cc0dc4
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 07/19/2018
+ms.author: rkarlin
+ms.openlocfilehash: d70eb1a329b2d1ba560aecbbb4132d2a8e2b7df1
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38619103"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160118"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 安全中心中的数据收集
-安全中心从 Azure 虚拟机 (VM) 和非 Azure 计算机收集数据以监视安全漏洞和威胁。 数据是使用 Microsoft Monitoring Agent 收集的，它从计算机中读取各种安全相关的配置和事件日志，然后将数据复制到工作区以进行分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址、已登录用户、租户 ID。 Microsoft Monitoring Agent 还将故障转储文件复制到工作区。
+安全中心从 Azure 虚拟机 (VM) 和非 Azure 计算机收集数据以监视安全漏洞和威胁。 数据是使用 Microsoft Monitoring Agent 收集的，它从计算机中读取各种安全相关的配置和事件日志，然后将数据复制到工作区以进行分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址、已登录用户、AppLocker 事件以及租户 ID。 Microsoft Monitoring Agent 还将故障转储文件复制到工作区。
 
 ## <a name="enable-automatic-provisioning-of-microsoft-monitoring-agent"></a>启用 Microsoft Monitoring Agent 的自动设置     
 默认情况下自动设置处于关闭状态。 启动自动设置后，安全中心可在所有受支持的 Azure VM 以及任何新建的 Azure VM 中预配 Microsoft Monitoring Agent。 强烈建议进行自动预配，但也可以手动代理安装。 [了解如何安装 Microsoft Monitoring Agent 扩展](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)。
 
 > [!NOTE]
-> 禁用自动设置会限制对资源的安全监视。 若要了解详细信息，请参阅本文中的[禁用自动设置](security-center-enable-data-collection.md#disable-automatic-provisioning)。 即使禁用了自动设置，也仍可以启用 VM 磁盘快照和项目收集。
->
+> - 禁用自动设置会限制对资源的安全监视。 若要了解详细信息，请参阅本文中的[禁用自动设置](security-center-enable-data-collection.md#disable-automatic-provisioning)。 即使禁用了自动设置，也仍可以启用 VM 磁盘快照和项目收集。
+> - 若要为[自适应应用程序控件](security-center-adaptive-application.md)启用数据收集，安全中心会在审核模式下配置本地 AppLocker 策略以允许所有应用程序。 这将导致 AppLocker 生成事件，然后由安全中心收集和利用这些事件。 请务必注意，不会在已配置 AppLocker 策略的任何计算机上配置此策略。 
 >
 
 启用 Microsoft Monitoring Agent 自动设置的步骤：
@@ -123,8 +123,8 @@ ms.locfileid: "38619103"
 | | 6273,6278,6416,6423,6424,8001,8002,8003,8004,8005,8006,8007,8222,26401,30004 |
 
 > [!NOTE]
-> 如果使用组策略对象 (GPO)，建议启用审核策略过程创建事件 4688 以及事件 4688 内的 CommandLine 字段。 有关过程创建事件 4688 的详细信息，请参阅安全中心的[常见问题解答](security-center-faq.md#what-happens-when-data-collection-is-enabled)。 有关这些审核策略的详细信息，请参阅[审核策略建议](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations)。
->
+> - 如果使用组策略对象 (GPO)，建议启用审核策略过程创建事件 4688 以及事件 4688 内的 CommandLine 字段。 有关过程创建事件 4688 的详细信息，请参阅安全中心的[常见问题解答](security-center-faq.md#what-happens-when-data-collection-is-enabled)。 有关这些审核策略的详细信息，请参阅[审核策略建议](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations)。
+> -  若要为[自适应应用程序控件](security-center-adaptive-application.md)启用数据收集，安全中心会在审核模式下配置本地 AppLocker 策略以允许所有应用程序。 这将导致 AppLocker 生成事件，然后由安全中心收集和利用这些事件。 请务必注意，不会在已配置 AppLocker 策略的任何计算机上配置此策略。 
 >
 
 选择筛选策略的具体步骤：

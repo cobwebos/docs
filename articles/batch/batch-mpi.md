@@ -11,15 +11,15 @@ ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
-ms.date: 5/22/2017
+ms.date: 06/12/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0fb5ea21c6403369cbcb60df58c0f70a57a61d4e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a443dd7ed4f95b3e283603fa8938a08c2c177827
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30160750"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39174298"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>在 Batch 中使用多实例任务来运行消息传递接口 (MPI) 应用程序
 
@@ -62,8 +62,8 @@ CloudPool myCloudPool =
     myBatchClient.PoolOperations.CreatePool(
         poolId: "MultiInstanceSamplePool",
         targetDedicatedComputeNodes: 3
-        virtualMachineSize: "small",
-        cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "4"));
+        virtualMachineSize: "standard_d1_v2",
+        cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));
 
 // Multi-instance tasks require inter-node communication, and those nodes
 // must run only one task at a time.
@@ -73,10 +73,7 @@ myCloudPool.MaxTasksPerComputeNode = 1;
 
 > [!NOTE]
 > 如果尝试在已禁用节点间通信，或 *maxTasksPerNode* 值大于 1 的池中运行多实例任务，则永远不排定任务 -- 它无限期停留在“活动”状态。 
->
-> 多实例任务只能在 2015 年 12 月 14 日之后创建的池中的节点上执行。
->
->
+
 
 ### <a name="use-a-starttask-to-install-mpi"></a>使用 StartTask 安装 MPI
 若要通过多实例任务运行 MPI 应用程序，首先需在池中的计算节点上安装 MPI 实现（例如 MS-MPI 或 Intel MPI）。 这是使用 [StartTask][net_starttask] 的好时机，每当节点加入池或重新启动时，它就会执行。 此代码片段创建一个 StartTask，将 MS-MPI 安装程序包指定为[资源文件][net_resourcefile]。 资源文件下载到节点之后，将执行启动任务的命令行。 在本示例中，命令行执行 MS-MPI 的无人参与安装。
@@ -284,12 +281,12 @@ GitHub 上的 [MultiInstanceTasks][github_mpi] 代码示例演示了如何通过
 
 ### <a name="execution"></a>执行
 1. 从 GitHub 下载 [azure-batch-samples][github_samples_zip]。
-2. 在 Visual Studio 2015 或更新版本中，打开 MultiInstanceTasks **解决方案**。 `MultiInstanceTasks.sln` 解决方案文件位于：
+2. 在 Visual Studio 2017 中打开 MultiInstanceTasks **解决方案**。 `MultiInstanceTasks.sln` 解决方案文件位于：
 
     `azure-batch-samples\CSharp\ArticleProjects\MultiInstanceTasks\`
 3. 将批处理和存储帐户凭据输入 **Microsoft.Azure.Batch.Samples.Common** 项目中的 `AccountSettings.settings`。
 4. **生成并运行** MultiInstanceTasks 解决方案，在批处理池中的计算节点上执行 MPI 示例应用程序。
-5. 可选：通过 [Azure 门户][portal]或 [BatchLabs][batch_labs] 检查示例池、作业和任务（“MultiInstanceSamplePool”、“MultiInstanceSampleJob”、“MultiInstanceSampleTask”），再删除这些资源。
+5. 可选：通过 [Azure 门户][portal]或 [Batch Explorer][batch_labs] 检查示例池、作业和任务（“MultiInstanceSamplePool”、“MultiInstanceSampleJob”、“MultiInstanceSampleTask”），再删除这些资源。
 
 > [!TIP]
 > 如果没有 Visual Studio，可下载免费版 [Visual Studio Community][visual_studio]。
@@ -339,7 +336,7 @@ Sample complete, hit ENTER to exit...
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_rest]: http://msdn.microsoft.com/library/azure/dn820158.aspx
-[batch_labs]: https://azure.github.io/BatchLabs/
+[batch_labs]: https://azure.github.io/BatchExplorer/
 [blog_mpi_linux]: https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/
 [cmd_start]: https://technet.microsoft.com/library/cc770297.aspx
 [coord_cmd_example]: https://github.com/Azure/azure-batch-samples/blob/master/Python/Batch/article_samples/mpi/data/linux/openfoam/coordination-cmd

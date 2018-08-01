@@ -7,14 +7,14 @@ ms.author: raagyema
 manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
-ms.date: 06/01/2018
-ms.openlocfilehash: 586df8d72dc05104bbf589eabcf3bd2245c268c8
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.topic: conceptual
+ms.date: 07/19/2018
+ms.openlocfilehash: 94d196ceecc0b63b9f0b0fe94f71363dc2086c30
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737242"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213644"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>使用转储和还原迁移 PostgreSQL 数据库
 可以使用 [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) 将 PostgreSQL 数据库提取到转储文件，并使用 [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) 从 pg_dump 创建的存档文件中还原 PostgreSQL 数据库。
@@ -37,7 +37,7 @@ pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb > testdb.
 ```
 
 > [!IMPORTANT]
-> 将备份文件复制到 Azure blob/存储区，并在其中执行还原，这应该比在 Internet 上执行恢复要快得多。
+> 将备份文件复制到 Azure blob/存储，并在其中执行还原，这应该比通过 Internet 执行还原要快得多。
 > 
 
 ## <a name="restore-the-data-into-the-target-azure-database-for-postrgesql-using-pgrestore"></a>使用 pg_restore 将数据还原到目标 Azure Database for PostrgeSQL
@@ -46,6 +46,12 @@ pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb > testdb.
 pg_restore -v --no-owner –-host=<server name> --port=<port> --username=<user@servername> --dbname=<target database name> <database>.dump
 ```
 包括 --no-owner 参数会导致还原过程中创建的所有对象由使用 --username 指定的用户拥有。 有关详细信息，请参阅有关 [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html) 的正式 PostgreSQL 文档。
+
+> [!NOTE]
+> 如果 PostgreSQL 服务器需要 SSL 连接（默认情况下在 Azure Database for PostgreSQL 服务器中启用），请设置环境变量 `PGSSLMODE=require`，以便 pg_restore 工具使用 SSL 连接。 如果不使用 SSL，错误可能会显示为 `FATAL:  SSL connection is required. Please specify SSL options and retry.`
+>
+> 在 Windows 命令行中，在运行 pg_restore 命令之前运行命令 `SET PGSSLMODE=require`。 在 Linux 或 Bash 中，在运行 pg_restore 命令之前运行命令 `export PGSSLMODE=require`。
+>
 
 在此示例中，将数据从转储文件 **testdb.dump** 还原到目标服务器 **mydemoserver.postgres.database.azure.com** 上的数据库 **mypgsqldb**。 
 ```bash

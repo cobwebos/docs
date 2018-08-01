@@ -1,25 +1,18 @@
 ---
-title: Azure DNS 专用区域的方案 | Microsoft Docs
+title: Azure DNS 专用区域方案
 description: 使用 Azure DNS 专用区域的常见方案的概述。
 services: dns
-documentationcenter: na
-author: KumudD
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
+author: vhorne
 ms.service: dns
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 03/15/2018
-ms.author: kumud
-ms.openlocfilehash: de543913d4f8264fa8e5b3bca0c510c99c479cae
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: victorh
+ms.openlocfilehash: d84da36ad6b1ef3e2a507a0944aac583861d5ccb
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32771865"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39162161"
 ---
 # <a name="azure-dns-private-zones-scenarios"></a>Azure DNS 专用区域方案
 Azure DNS 专用区域在虚拟网络内或虚拟网络之间提供名称解析功能。 在本文中，我们将查看可以使用此功能实现的一些常见方案。 
@@ -37,9 +30,9 @@ Azure DNS 专用区域在虚拟网络内或虚拟网络之间提供名称解析�
 
 此方案是更常见的案例，其中，你需要将一个专用区域与多个虚拟网络进行关联。 此方案适合中心辐射模型之类的体系结构，其中有一个位于中央的中心虚拟网络，多个其他辐射虚拟网络都连接到中心虚拟网络。 中央的中心虚拟网络可以作为“注册”虚拟网络链接到专用区域，辐射虚拟网络可以作为“解析”虚拟网络进行链接。 
 
-下图显示了此方案的一个简单版本，其中只有两个虚拟网络 - A 和 B。A 被指定为“注册”虚拟网络，B 被指定为“解析”虚拟网络。 目的是使两个虚拟网络共享公用区域 contoso.com。当创建了该区域并将“解析”和“注册”虚拟网络链接到该区域后，Azure 将自动为虚拟网络 A 中的 VM（VNETA-VM1 和 VNETA-VM2）注册 DNS 记录。你还可以手动为“解析”虚拟网络 B 中的 VM 将 DNS 记录添加到该区域中。使用此设置时，对于正向和反向 DNS 查询，你将会看到以下行为：
+下图显示了此方案的一个简单版本，其中只有两个虚拟网络 - A 和 B。A 被指定为“注册”虚拟网络，B 被指定为“解析”虚拟网络。 目的是使两个虚拟网络共享公用区域 contoso.com。 当创建了该区域并将“解析”和“注册”虚拟网络链接到该区域后，Azure 将自动为虚拟网络 A 中的 VM（VNETA-VM1 和 VNETA-VM2）注册 DNS 记录。你还可以手动为“解析”虚拟网络 B 中的 VM 将 DNS 记录添加到该区域中。使用此设置时，对于正向和反向 DNS 查询，你将会看到以下行为：
 * 从“解析”虚拟网络 B 中的 VNETB-VM1 发出的针对 VNETA-VM1.contoso.com 的 DNS 查询将收到包含 VNETA-VM1 的专用 IP 的 DNS 响应。
-* 从“解析”虚拟网络 B 中的 VNETB-VM2 发出的针对 10.1.0.1 的反向 DNS (PTR) 查询将收到包含 FQDN VNETB-VM1.contoso.com 的 DNS 响应。原因是反向 DNS 查询的范围是同一虚拟网络。 
+* 从“解析”虚拟网络 B 中的 VNETB-VM2 发出的针对 10.1.0.1 的反向 DNS (PTR) 查询将收到包含 FQDN VNETB-VM1.contoso.com 的 DNS 响应。 原因是反向 DNS 查询的范围是同一虚拟网络。 
 * 从“解析”虚拟网络 B 中的 VNETB-VM3 发出的针对 10.0.0.1 的反向 DNS (PTR) 查询将收到 NXDOMAIN。 原因是反向 DNS 查询的范围仅限于同一虚拟网络。 
 
 

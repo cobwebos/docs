@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/07/2018
+ms.date: 07/20/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 0742e1e96e03840f138dde2bca7b2bcda1e49dfe
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 255056390cdbdbee49eba47f8168618929b386c8
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298403"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187251"
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Azure 成本管理常见问题解答
 
@@ -62,7 +62,7 @@ ms.locfileid: "35298403"
 1.  在 Cloudyn 门户中，单击右上方的“设置”，然后“云帐户”。
 2.  在“Microsoft Azure 帐户”选项卡上，找到包含**未激活**订阅的帐户。
 3.  在未激活帐户的右侧，单击“编辑”铅笔图标。
-4.  系统会自动检测租户 ID 和费率 ID。 单击“资源组名称” 的 Azure 数据工厂。
+4.  系统会自动检测租户 ID 和费率 ID。 单击“下一步”。
 5.  随后将重定向到 Azure 门户。 登录到门户并授权 Cloudyn 收集器访问你的 Azure 数据。
 6.  接下来，将会重定向到 Cloudyn 帐户管理页，订阅中的帐户状态已更新为“活动”。 该订阅显示了一个绿色的勾选标记符号。
 7.  如果有一个或多个订阅未显示绿色勾选标记符号，则表示你无权为订阅创建读取器应用 (CloudynCollector)。 具有更高订阅权限的用户需要重复步骤 3 和 4。  
@@ -139,6 +139,14 @@ Cloudyn 提供以下数据刷新时间线：
 
 如果将数据从 Azure 发送到 Cloudyn 时出现延迟，数据仍会记录在 Azure 中。 恢复连接后，数据会传输到 Cloudyn。
 
+## <a name="cost-fluctuations-in-cloudyn-cost-reports"></a>Cloudyn 成本报告中的成本波动
+
+只要云服务提供商发送更新的计费文件，成本报告就会显示成本波动。 在通常的每日或每月报告计划之外从云服务提供商收到新文件时，会发生波动的成本。 Cloudyn 重新计算不会导致成本变化。 
+
+在整个月中，云服务提供商发送的所有计费文件都是你每日费用的估算值。 有时数据会经常更新 - 有时每天会多次更新。 AWS 的更新比 Azure 更频繁。 当前一个月的计费计算完成并收到最终计费文件时，成本总计应保持稳定。 通常是在每月的 10 号前。
+
+当你从云服务提供商处收到成本调整时，会发生变化。 接收信用额度是一个例子。 相关月份结束后的几个月可能会发生变化。 只要云服务提供商重新计算，就会显示更改。 Cloudyn 会更新其历史数据以确保重新计算所有调整。 它还会验证成本是否在报告中准确显示。
+
 ## <a name="how-can-a-direct-csp-configure-cloudyn-access-for-indirect-csp-customers-or-partners"></a>直接 CSP 如何为间接 CSP 客户或合作伙伴配置 Cloudyn 访问权限？
 
 有关说明，请参阅[在 Cloudyn 中配置间接 CSP 访问权限](quick-register-csp.md#configure-indirect-csp-access-in-cloudyn)。
@@ -149,7 +157,7 @@ Cloudyn 提供以下数据刷新时间线：
 
 ## <a name="is-cost-managementcloudyn-agent-based"></a>是否基于成本管理/Cloudyn 代理？
 
-不会。 不使用代理。 VM 的 Azure 虚拟机指标数据是通过 Microsoft Insights API 进行收集。 若要收集 Azure VM 中的指标数据，需要为 VM 启用诊断设置。
+不是。 不使用代理。 VM 的 Azure 虚拟机指标数据是通过 Microsoft Insights API 进行收集。 若要收集 Azure VM 中的指标数据，需要为 VM 启用诊断设置。
 
 ## <a name="do-cloudyn-reports-show-more-than-one-ad-tenant-per-report"></a>Cloudyn 报表是否每报表显示多个 AD 租户？
 

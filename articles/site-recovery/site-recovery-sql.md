@@ -2,24 +2,16 @@
 title: 使用 SQL Server 和 Azure Site Recovery 复制应用程序 | Microsoft Docs
 description: 本文介绍了如何使用针对 SQL Server 的 Azure Site Recovery 灾难功能来复制 SQL Server。
 services: site-recovery
-documentationcenter: ''
-author: prateek9us
-manager: gauravd
-editor: ''
-ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 07/06/2018
-ms.author: pratshar
-ms.openlocfilehash: c877f4bbc0ed14e859ff39f1d719a9cd0b787118
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.topic: conceptual
+ms.date: 07/22/2018
+ms.author: raynew
+ms.openlocfilehash: fecf7366417a8a592578a425d8b028249c2681d7
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920825"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216353"
 ---
 # <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>使用 SQL Server 灾难恢复和 Azure Site Recovery 来保护 SQL Server
 
@@ -78,7 +70,7 @@ Site Recovery 可与表中汇总的本机 SQL Server BCDR 技术集成，以提�
 
 | **版本** | **版本** | **部署** | **本地到本地** | **本地到 Azure** |
 | --- | --- | --- | --- | --- |
-| SQL Server 2014 或 2012 |Enterprise |故障转移群集实例 |Always On 可用性组 |Always On 可用性组 |
+| SQL Server 2016、2014 或 2012 |Enterprise |故障转移群集实例 |Always On 可用性组 |Always On 可用性组 |
 || Enterprise |用于实现高可用性的 Always On 可用性组 |Always On 可用性组 |Always On 可用性组 | |
 || 标准 |故障转移群集实例 (FCI) |使用本地镜像进行 Site Recovery 复制 |使用本地镜像进行 Site Recovery 复制 | |
 || Enterprise 或 Standard |独立 |站点恢复复制 |站点恢复复制 | |

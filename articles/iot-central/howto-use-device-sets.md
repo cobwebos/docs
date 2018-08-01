@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: ef1fa64a276926a35dbf98646317bfe29200bb22
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: d0b802842d60d68bab36e87913a84c5e40b8e431
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261672"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39206065"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中使用设备集
 
@@ -112,13 +112,13 @@ ms.locfileid: "35261672"
     ![保存仪表板地图](media/howto-use-device-sets/LocationMaps3.png)
 
 
-5. 此时，当操作者查看设备集仪表板时，她可以看到你已配置的所有图块（包括位置地图），所有设备位置一目了然！
+5. 此时，当操作者查看设备集仪表板时，她可以看到你已配置的所有图块（包括位置地图），所有设备位置一目了然！ 
 
     ![仪表板地图操作者视图](media/howto-use-device-sets/LocationMaps4.png)
 
     可以根据需要重设地图大小。
 
-
+    单击地图中的图钉将显示设备信息、名称和位置。 可以单击弹出项，以转到设备属性页。  
 
 
 ## <a name="configure-the-list-for-your-device-set"></a>配置设备集的列表

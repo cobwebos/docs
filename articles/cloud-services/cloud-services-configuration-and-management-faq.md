@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 6cdfb40ce02cc5f80e3347b921e2b2c75ae3d8ea
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 5b8c7e8880f7e467b1b5a305cc7381e6499571f5
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37437131"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238615"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务配置和管理问题：常见问题解答 (FAQ)
 
@@ -41,6 +41,7 @@ ms.locfileid: "37437131"
 
 - [Azure 门户中即将推出的可帮助管理和监视应用程序的云服务功能是什么？](#what-are-the-upcoming-cloud-service-capabilities-in-the-azure-portal-which-can-help-manage-and-monitor-applications)
 - [IIS 为何停止写入日志目录？](#why-does-iis-stop-writing-to-the-log-directory)
+- [如何为云服务启用 WAD 日志记录？](#how-do-i-enable-wad-logging-for-cloud-services)
 
 **网络配置**
 
@@ -138,6 +139,15 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 有关详细信息，请参阅以下文档：
 * [在 Azure 存储中存储和查看诊断数据](cloud-services-dotnet-diagnostics-storage.md)
 * [IIS 日志停止写入云服务](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
+
+### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>如何为云服务启用 WAD 日志记录？
+可以通过以下选项启用 Windows Azure 诊断 (WAD) 日志记录：
+1. [从 Visual Studio 启用](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
+2. [通过 .Net 代码启用](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
+3. [通过 Powershell 启用](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell)
+
+若要获取云服务的当前 WAD 设置，可以使用 [Get-AzureServiceDiagnosticsExtensions](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell#get-current-diagnostics-extension-configuration) ps cmd，也可以通过门户从“云服务 - > 扩展”边栏选项卡查看它。
+
 
 ## <a name="network-configuration"></a>网络配置
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2016
 ms.author: stefsch
-ms.openlocfilehash: 21f747239e565aba79a84c8e946a71e306b64968
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bc85139dfa3589baf6505fac2269f8755dcaddc8
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22986782"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213242"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>应用服务环境的异地分布式缩放
 ## <a name="overview"></a>概述
@@ -55,7 +55,7 @@ ms.locfileid: "22986782"
 * **webfrontend2.fe2ase.p.azurewebsites.net：** 部署在第二个应用服务环境中的示例应用实例。
 * **webfrontend3.fe3ase.p.azurewebsites.net：** 部署在第三个应用服务环境中的示例应用实例。
 
-要注册多个 Azure 应用服务终结点（全部在**相同**的 Azure 区域中运行），最简单的方法是使用 Powershell [Azure Resource Manager 流量管理器支持][ARMTrafficManager]。  
+要注册多个 Azure 应用服务终结点（全部在**相同**的 Azure 区域中运行），最简单的方法是使用 Powershell [Azure 资源管理器流量管理器支持][ARMTrafficManager]。  
 
 第一个步骤是创建 Azure 流量管理器配置文件。  以下代码演示如何为示例应用创建配置文件：
 
@@ -113,7 +113,7 @@ ms.locfileid: "22986782"
 ![DNS 查找][DNSLookup] 
 
 ## <a name="additional-links-and-information"></a>其他链接和信息
-有关 Powershell [Azure Resource Manager 流量管理器支持][ARMTrafficManager]的文档。  
+有关 Powershell [Azure 资源管理器流量管理器支持][ARMTrafficManager]的文档。  
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 3204329dc7c9efe2b0ba0ae05d17bc93d51620b4
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 709afe03570ca4cf81718fb071778439444d6bf6
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37923465"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171977"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>用于 Hyper-V 到 Azure 的复制的支持矩阵
 
@@ -48,7 +48,12 @@ VM 配置 | 复制到 Azure 的 VM 必须满足[Azure 要求](#failed-over-azure
 来宾操作系统 | Azure 支持的任何来宾操作系统。<br/><br/> 不支持 Windows Server 2016 Nano Server。
 
 
+## <a name="vmdisk-management"></a>VM/磁盘管理
 
+**Action** | **详细信息**
+--- | ---
+调整复制的 Hyper-V VM 上的磁盘大小 | 不支持。 禁用复制，进行更改，然后为 VM 重新启用复制。
+在复制的 Hyper-V VM 上添加磁盘 | 不支持。 禁用复制，进行更改，然后为 VM 重新启用复制。
 
 ## <a name="hyper-v-network-configuration"></a>Hyper-V 网络配置
 

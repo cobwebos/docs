@@ -9,19 +9,20 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2018
-ms.openlocfilehash: c96e9825cddd0b60e67cd4752fab8f440ceaae76
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 482f0403cfd4bbd6587ba7e3e936cdac7f82b54a
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39227723"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>了解和调整流式处理单元
 
-Azure 流分析将运行作业的性能“权重”聚合到流式处理单位 (SU) 中。 SU 表示执行作业所消耗的计算资源。 在已经对 CPU、内存以及读取和写入速率进行测量的情况下，可以使用 SU 来描述相对的事件处理能力。 此容量使你能够专注于查询逻辑，并且无需管理及时运行流分析作业所需的硬件。
+流单元 (SU) 表示分配用于执行作业的计算资源。 SU 的数量越多，为作业分配的 CPU 和 内存资源就越多。 此容量使你能够专注于查询逻辑，并且无需管理及时运行流分析作业所需的硬件。
 
-为了实现低延迟流式处理，Azure 流分析作业将执行内存中的所有处理。 内存不足时，流式处理作业会失败。 因此，对于生产作业，请务必监视流式处理作业的资源使用情况，并确保分配有足够的资源来保持作业的全天候运行。
+为了实现低延迟流式处理，Azure 流分析作业将在内存中执行所有处理。 内存不足时，流式处理作业会失败。 因此，对于生产作业，请务必监视流式处理作业的资源使用情况，并确保分配有足够的资源来保持作业的全天候运行。
 
-指标是一个范围从 0% 到 100% 的百分数。 对于占用最小内存的流式处理作业，SU 利用率指标通常介于 10% 到 20%。 最好保持低于 80% 的指标，以应对偶发的峰值。 Microsoft 建议针对 SU 利用率指标达到 80% 设置警报，以防止资源耗尽。 有关详细信息，请参阅[教程：为 Azure 流分析作业设置警报](stream-analytics-set-up-alerts.md)。
+SU % 利用率指标（范围从 0% 到 100%）描述了工作负载的内存使用情况。 对于占用空间最小的流式处理作业，此指标通常介于 10% 到 20% 之间。 如果 SU% 利用率较低且输入事件被积压，则工作负载可能需要更多计算资源，这需要你增加 SU 的数量。 最好保持低于 80% 的 SU 指标，以应对偶发的峰值。 Microsoft 建议针对 SU 利用率指标达到 80% 设置警报，以防止资源耗尽。 有关详细信息，请参阅[教程：为 Azure 流分析作业设置警报](stream-analytics-set-up-alerts.md)。
 
 ## <a name="configure-stream-analytics-streaming-units-sus"></a>配置流分析流式处理单元 (SU)
 1. 登录到 [Azure 门户](http://portal.azure.com/)
@@ -45,7 +46,7 @@ Azure 流分析将运行作业的性能“权重”聚合到流式处理单位 (
 
 为特定作业选择所需的 SU 数量时，需要根据输入的分区配置以及在作业内定义的查询来决定。 可以使用“缩放”页设置正确的 SU 数量。 分配的 SU 数最好超过所需的数量。 流分析处理引擎会针对延迟和吞吐量进行优化，不过，代价是需要分配额外的内存。
 
-通常情况下，最佳做法是一开始为不使用 PARTITION BY 的查询分配 6 个 SU。 然后，在传递了具有代表性的数据量并检查了 SU 利用率指标后，使用修改 SU 数量的试用和错误方法来确定最佳数量。
+通常情况下，最佳做法是一开始为不使用 PARTITION BY 的查询分配 6 个 SU。 然后，在传递了具有代表性的数据量并检查了 SU 利用率指标后，使用修改 SU 数量的试用和错误方法来确定最佳数量。 流分析作业所能使用的最大流单元数取决于为作业定义的查询中的步骤数，以及每一步中的分区数。 可在[此处](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job)了解更多有关限制的信息。
 
 有关选择适当数量 SU 的详细信息，请参阅此页：[缩放 Azure 流分析作业以增加吞吐量](stream-analytics-scale-jobs.md)
 

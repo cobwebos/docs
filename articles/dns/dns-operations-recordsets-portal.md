@@ -3,7 +3,7 @@ title: 使用 Azure DNS 管理 DNS 记录集和记录 | Microsoft Docs
 description: Azure DNS 在托管域时具有管理 DNS 记录集和记录的功能。
 services: dns
 documentationcenter: na
-author: KumudD
+author: vhorne
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
-ms.author: kumud
-ms.openlocfilehash: da7d2118a0fb6bc5004856d994a01a932094ca45
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: victorh
+ms.openlocfilehash: b95ec9b4b5077b236c5f3a7183820552b7ccac49
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32772324"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39174308"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>使用 Azure 门户管理 DNS 记录和记录集
 
@@ -107,7 +107,7 @@ Azure 门户可用于从记录集中删除记录。 请注意，从记录集中�
 
 ### <a name="modify-soa-records"></a>修改 SOA 记录
 
-不能在区域顶点（名称 =“@”）从自动创建的 SOA 记录集中添加或删除记录。 但是，可以修改 SOA 记录和记录集 TTL 中的任何参数（“Host”除外）。
+不能在区域顶点（名称 =“\@”）从自动创建的 SOA 记录集中添加或删除记录。 但是，可以修改 SOA 记录和记录集 TTL 中的任何参数（“Host”除外）。
 
 ### <a name="modify-ns-records-at-the-zone-apex"></a>修改区域顶点处的 NS 记录
 
@@ -119,7 +119,7 @@ Azure 门户可用于从记录集中删除记录。 请注意，从记录集中�
 
 ### <a name="delete-soa-or-ns-record-sets"></a>删除 SOA 或 NS 记录集
 
-不能在创建区域时自动创建的区域顶点处（名称 =“@”）删除 SOA 和 NS 记录集。 删除该区域时，会自动删除这些记录集。
+不能在区域顶点处（名称 =“\@”）删除创建区域时自动创建的 SOA 和 NS 记录集。 删除该区域时，会自动删除这些记录集。
 
 ## <a name="next-steps"></a>后续步骤
 

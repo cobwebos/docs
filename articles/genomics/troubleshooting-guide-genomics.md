@@ -11,13 +11,13 @@ ms.author: grhuynh
 ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: article
-ms.date: 04/13/2018
-ms.openlocfilehash: d3991bdbcd9c3dcd08572dc92cc75aaebb02b133
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.date: 07/18/2018
+ms.openlocfilehash: 9bd1690003fd37b6c2edd0f0421cf8d0e74f8cb5
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "34627358"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144170"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
 本概述文章介绍解决使用 Microsoft 基因组服务时的常见问题的策略。 有关常规常见问题解答，请参阅[常见问题](frequently-asked-questions-genomics.md)。 
@@ -65,7 +65,7 @@ Fastq 文件的区别应仅在于示例标识符中是尾随 /1 还是尾随 /2�
 
 
 ### <a name="error-uploading-bam-file-output-blob-already-exists-and-the-overwrite-option-was-set-to-false"></a>上传 .bam 文件时出错。 已存在输出 blob 且覆盖选项设置为 False。
-如果看到以下错误消息 `Error uploading .bam file. Output blob already exists and the overwrite option was set to False`，则表示输出文件夹中已包含具有相同名称的输出文件。  请删除现有输出文件或在配置文件中启用覆盖选项。 然后重新提交工作流。
+如果看到以下错误消息 `Error uploading .bam file. Output blob already exists and the overwrite option was set to False`，则表示输出文件夹中已包含同名的输出文件。  请删除现有输出文件或在配置文件中启用覆盖选项。 然后重新提交工作流。
 
 ### <a name="when-to-contact-microsoft-genomics-support"></a>何时与 Microsoft 基因组学支持人员联系
 如果看到以下错误消息，则表示发生了内部错误。 

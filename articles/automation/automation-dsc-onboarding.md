@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: dsc
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
 ms.topic: conceptual
+ms.date: 07/20/2018
 manager: carmonm
-ms.openlocfilehash: 4493f9da0de12fbdfffdf0f4da0dd581ac3b589f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 907bb9b998012a5b907c041b3eba061036289cc1
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195550"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186979"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Onboarding machines for management by Azure Automation DSC（登记由 Azure 自动化 DSC 管理的计算机）
 
@@ -24,9 +24,8 @@ ms.locfileid: "34195550"
 
 Azure 自动化 DSC 可用于管理各种不同的计算机：
 
-* Azure 虚拟机（经典）
-* Azure 虚拟机
-* Amazon Web Services (AWS) 虚拟机
+* Azure 虚拟机（在经典和 Azure 资源管理器部署模型中部署）
+* Amazon Web Services (AWS) EC2 实例 
 * 位于本地或 Azure 以外的云中的物理/虚拟 Windows 计算机/AWS
 * 位于本地、Azure 或 Azure 以外的云中的物理/虚拟 Linux 计算机
 

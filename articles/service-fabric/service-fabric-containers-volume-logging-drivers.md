@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/10/2018
 ms.author: subramar
-ms.openlocfilehash: a5b75a7069375f503cbe25554eb7c04cba868413
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 9bd370e8070816d62b22c1e3d5ad4b6cdd2da30a
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969599"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144945"
 ---
 # <a name="service-fabric-azure-files-volume-driver-preview"></a>Service Fabric Azure 文件卷驱动程序（预览版）
 Azure 文件卷插件是一个 [Docker 卷插件](https://docs.docker.com/engine/extend/plugins_volume/)，可为 Docker 容器提供基于 [Azure 文件](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)的卷。 该 Docker 卷插件可在打包为 Service Fabric 应用程序后部署到 Service Fabric 群集。 该插件用于为部署到群集的其他 Service Fabric 容器应用程序提供基于 Azure 文件的卷。
@@ -36,6 +36,33 @@ Azure 文件卷插件是一个 [Docker 卷插件](https://docs.docker.com/engine
 * 按照 [Azure 文件文档](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)中的说明，为要用作卷的 Service Fabric 容器应用程序创建文件共享。
 
 * 需要[具有 Service Fabric 模块的 Powershell](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started) 或安装 [SFCTL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)。
+
+* 如果使用的是 hyperv 容器，则需要在 ARM 模板（Azure 群集）或 ClusterConfig.json（独立群集）的 ClusterManifest（本地群集）或 fabricSettings 节中添加以下代码片段。 你将需要卷名和卷在群集上侦听的端口。 
+
+在 ClusterManifest 中，需要在“Hosting”节中添加以下内容。 在此示例中，卷名为 **sfazurefile**，它在群集上侦听的端口为 **19300**。  
+
+``` xml 
+<Section Name="Hosting">
+  <Parameter Name="VolumePluginPorts" Value="sfazurefile:19300" />
+</Section>
+```
+
+在 ARM 模板（适用于 Azure 部署）或 ClusterConfig.json（适用于独立部署）的 fabricSettings 节中，需要添加以下代码片段。 
+
+```json
+"fabricSettings": [
+  {
+    "name": "Hosting",
+    "parameters": [
+      {
+          "name": "VolumePluginPorts",
+          "value": "sfazurefile:19300"
+      }
+    ]
+  }
+]
+```
+
 
 ## <a name="deploy-the-service-fabric-azure-files-application"></a>部署 Service Fabric Azure 文件应用程序
 

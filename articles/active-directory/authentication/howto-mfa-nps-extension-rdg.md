@@ -4,18 +4,18 @@ description: 使用 Microsoft Azure 的网络策略服务器扩展将远程桌�
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 08/15/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: 74e56480c5bbf86ee6cbc059431d7d5a328dfcec
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.reviewer: michmcla
+ms.openlocfilehash: e22fedda4861e68f2318aff89bc3fe5a15cb6ede
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049059"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160097"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>使用网络策略服务器 (NPS) 扩展和 Azure AD 集成远程桌面网关基础结构
 
@@ -293,7 +293,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
  ![网络策略](./media/howto-mfa-nps-extension-rdg/image24.png)
 
 ## <a name="verify-configuration"></a>验证配置
-要验证配置，需要使用合适的 RDP 客户端登录远程桌面网关。 确保使用连接授权策略允许的帐户，并为 Azure MFA 启用了此帐户。 
+若要验证配置，需要使用合适的 RDP 客户端登录远程桌面网关。 确保使用连接授权策略允许的帐户，并为 Azure MFA 启用了此帐户。 
 
 如下图所示，你可以使用“远程桌面 Web 访问”页面。
 

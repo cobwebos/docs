@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ad7c412ee92db53dd797e38df2fc6db0a762fe78
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 88869fbeef0475f2c674e0f154a3624545182363
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916160"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213225"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory 无缝单一登录
 
@@ -55,7 +55,7 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
 - 如果应用程序 (例如 https://myapps.microsoft.com/contoso.com) 在其 Azure AD 登录请求中转发 `domain_hint` (OpenID Connect) 或 `whr` (SAML) 参数（标识租户），或 `login_hint` 参数（标识用户），用户将会自动登录，而无需输入用户名或密码。
 - 如果应用程序 (例如 https://contoso.sharepoint.com) 向 Azure AD 的租用终结点（即 https://login.microsoftonline.com/contoso.com/<..> 或 https://login.microsoftonline.com/<tenant_ID>/<..>）而不是 Azure AD 的普通终结点（即 https://login.microsoftonline.com/common/<...>）发送登录请求，用户可获得无提示登录体验。
 - 支持注销。 这可以让用户选择另一个 Azure AD 帐户进行登录，而不是自动使用无缝 SSO 自动登录。
-- 支持使用非交互式流的 Office 365 客户端（16.0.8730.xxxx 和更高版本）。
+- 使用非交互式流支持版本为 16.0.8730.xxxx 及更高版本的 Office 365 Win32 客户端（Outlook、Word、Excel 等）。 对于 OneDrive，必须激活 [OneDrive 无提示配置功能](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894)才能获得无提示登录体验。
 - 可通过 Azure AD Connect 启用它。
 - 这是一项免费功能，不需要拥有任何付费版本的 Azure AD 即可使用此功能。
 - 在能够进行 Kerberos 身份验证的平台和浏览器上，支持[新式身份验证](https://aka.ms/modernauthga)的基于 Web 浏览器的客户端和 Office 客户端支持此功能：

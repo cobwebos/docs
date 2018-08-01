@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0511c2bf7eed15f997f8444c945afb18179bbc63
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 582513e7e556859e70c1af9c4f6179e1d60e0139
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193996"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216685"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Azure 自动化中的子 Runbook
 
@@ -46,7 +46,7 @@ ms.locfileid: "34193996"
 
 ### <a name="example"></a>示例
 
-下面的示例将调用一个测试子 Runbook，该 Runbook 接受三个参数：一个复杂对象、一个整数和一个布尔值。 该子 Runbook 的输出将分配到某个变量。  在本示例中，子 Runbook 属于 PowerShell 工作流 Runbook
+下面的示例将调用一个测试子 Runbook，该 Runbook 接受三个参数：一个复杂对象、一个整数和一个布尔值。 该子 Runbook 的输出将分配到某个变量。  在本示例中，子 Runbook 是 PowerShell 工作流 Runbook。
 
 ```azurepowershell-interactive
 $vm = Get-AzureRmVM –ResourceGroupName "LabRG" –Name "MyVM"
@@ -62,7 +62,7 @@ $output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 
 ## <a name="starting-a-child-runbook-using-cmdlet"></a>使用 cmdlet 启动子 Runbook
 
-可以根据[使用 Windows PowerShell 启动 Runbook](automation-starting-a-runbook.md#starting-a-runbook-with-windows-powershell) 中所述，使用 [Start-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603661.aspx) cmdlet 来启动 Runbook。 使用此 cmdlet 的模式有两种。  在第一个模式中，cmdlet 会在子 Runbook 的子作业创建时立即返回作业 ID。  在第二个模式（通过指定 **-wait** 参数启用）中，cmdlet 会等待子作业完成，并且会返回子 Runbook 的输出。
+可以根据[使用 Windows PowerShell 启动 Runbook](automation-starting-a-runbook.md#starting-a-runbook-with-windows-powershell) 中所述，使用 [Start-AzureRmAutomationRunbook](/powershell/module/AzureRM.Automation/Start-AzureRmAutomationRunbook) cmdlet 来启动 Runbook。 使用此 cmdlet 的模式有两种。  在第一个模式中，cmdlet 会在子 Runbook 的子作业创建时立即返回作业 ID。  在第二个模式（通过指定 **-wait** 参数启用）中，cmdlet 会等待子作业完成，并且会返回子 Runbook 的输出。
 
 使用 cmdlet 启动的子 Runbook 的作业会在父 Runbook 的某个独立作业中运行。 这会导致比调用内联 Runbook 更多的作业，并使这些作业更难以跟踪。不过，父级可以异步启动多个子 Runbook，而无需等待每个子 Runbook 完成。 对于调用内嵌子 Runbook 的同一种并行执行，父 Runbook 需要使用[并行关键字](automation-powershell-workflow.md#parallel-processing)。
 
@@ -74,9 +74,18 @@ $output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 
 ### <a name="example"></a>示例
 
-以下示例将启动一个包含参数的子 Runbook，然后使用 Start-AzureRmAutomationRunbook -wait 参数等待其完成。 完成后，将从子 Runbook 收集其输出。
+以下示例将启动一个包含参数的子 Runbook，然后使用 Start-AzureRmAutomationRunbook -wait 参数等待其完成。 完成后，将从子 Runbook 收集其输出。 若要使用 `Start-AzureRmAutomationRunbook`，必须向 Azure 订阅进行身份验证。
 
 ```azurepowershell-interactive
+# Connect to Azure with RunAs account
+$conn = Get-AutomationConnection -Name "AzureRunAsConnection"
+
+$null = Add-AzureRmAccount `
+  -ServicePrincipal `
+  -TenantId $conn.TenantId `
+  -ApplicationId $conn.ApplicationId `
+  -CertificateThumbprint $conn.CertificateThumbprint
+
 $params = @{"VMName"="MyVM";"RepeatCount"=2;"Restart"=$true}
 $joboutput = Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-ChildRunbook" -ResourceGroupName "LabRG" –Parameters $params –wait
 ```

@@ -4,18 +4,18 @@ description: 有关 Azure AD 自助密码重置的常见问题解答
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: c006e448b8da1acaf51c8339cbcd0b6170f29874
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 92f9732adadc4eb580d89f8a43cf76177450aeb7
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054805"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160736"
 ---
 # <a name="password-management-frequently-asked-questions"></a>密码管理常见问题
 
@@ -115,7 +115,7 @@ ms.locfileid: "39054805"
   >
 * **问：如何告知用户可在何处重置密码？**
 
-  > **答：** 请尝试 [SSPR 部署](howto-sspr-deployment.md#email-based-rollout)一文中的一些建议。
+  > **答：** 请尝试 [SSPR 部署](howto-sspr-deployment.md#sample-communication)一文中的一些建议。
   >
   >
 * **问：能否在移动设备上使用此页面？**
@@ -170,7 +170,7 @@ ms.locfileid: "39054805"
   >
 * **问：我配置了策略，要求用户使用安全问题进行重置，但 Azure 管理员似乎进行了不同的配置。**
 
-  > **答：** 这是预期的行为。 Microsoft 为任意 Azure 管理员角色强制实施默认强双门密码重置策略。 这会阻止管理员使用安全问题。 有关此策略的详细信息，请参阅 [Azure Active Directory 中的密码策略和限制](concept-sspr-policy.md#administrator-password-policy-differences)一文。
+  > **答：** 这是预期的行为。 Microsoft 为任意 Azure 管理员角色强制实施默认强双门密码重置策略。 这会阻止管理员使用安全问题。 有关此策略的详细信息，请参阅 [Azure Active Directory 中的密码策略和限制](concept-sspr-policy.md)一文。
   >
   >
 * **问：如果用户注册的重置问题超出了所需的最大问题数量，如何在重置期间选择安全问题？**
@@ -274,7 +274,7 @@ ms.locfileid: "39054805"
   >
 * **问：密码写回是否安全？如何确保我不会受到黑客攻击？**
 
-  > **答：** 是的。密码写回具有很高的安全性。 若要阅读有关密码写回服务实施的四个安全层的详细信息，请查看[密码写回概述](howto-sspr-writeback.md)一文中的[密码写回安全模型](howto-sspr-writeback.md#password-writeback-security-model)部分。
+  > **答：** 是的。密码写回具有很高的安全性。 若要阅读有关密码写回服务实施的多个安全层的详细信息，请查看[密码写回概述](howto-sspr-writeback.md)一文中的[密码写回安全性](concept-sspr-writeback.md#password-writeback-security)部分。
   >
   >
 

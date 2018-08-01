@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 07/20/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: abe439cc91a003137c116f57c0cc8bbb61430114
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5d62eb4d5f43625b336ade68532cf734ef0cde6a
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593446"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214687"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步实现密码哈希同步
 本文提供将用户密码从本地 Active Directory 实例同步到基于云的 Azure Active Directory (Azure AD) 实例时所需的信息。
@@ -68,7 +68,7 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 同步密码对当前登录的用户没有任何影响。
 当前的云服务会话不会立即受到已同步密码更改的影响，而是在登录云服务时才受到影响。 但是，当云服务要求再次身份验证时，就需要提供新的密码。
 
-无论用户是否已登录到其公司网络，都必须第二次输入其公司凭据，以便向 Azure AD 进行身份验证。 但是，如果用户在登录时选中了“使我保持登录状态(KMSI)”复选框，则可以最大限度地避开这些模式。 这样选择可设置会话 Cookie 以在短时间内绕过身份验证。 Azure AD 管理员可以启用或禁用 KMSI 行为。
+无论用户是否已登录到其公司网络，都必须第二次输入其公司凭据，以便向 Azure AD 进行身份验证。 但是，如果用户在登录时选中了“使我保持登录状态(KMSI)”复选框，则可以最大限度地避开这些模式。 这样选择可设置会话 Cookie 以在 180 天内绕过身份验证。 Azure AD 管理员可以启用或禁用 KMSI 行为。 此外，可以通过启用[无缝 SSO](active-directory-aadconnect-sso.md) 来减少密码提示，该无缝 SSO 可使连接到企业网络的企业设备上的用户自动登录。
 
 > [!NOTE]
 > 只有 Active Directory 的对象类型用户才支持密码同步。 不支持 iNetOrgPerson 对象类型。
@@ -99,10 +99,6 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 
 用户身份验证针对 Azure AD（而不是针对组织自己的 Active Directory 实例）进行。 如果组织对以任何形式离开本地的数据有任何顾虑，请考虑到这样一个事实：存储在 Azure AD 中的 SHA256 密码数据（原始 MD4 哈希的哈希）比 Active Directory 中存储的数据要安全得多。 而且，由于此 SHA256 哈希无法解密，因此无法将其带回到组织的 Active Directory 环境，并且在“传递哈希”攻击中显示为有效的用户密码。
 
-
-
-
-
 ### <a name="password-policy-considerations"></a>密码策略注意事项
 有两种类型的密码策略受启用密码哈希同步的影响：
 
@@ -121,7 +117,7 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 可以继续使用在本地环境中过期的同步密码来登录云服务。 下次在本地环境中更改密码时，云密码会更新。
 
 #### <a name="account-expiration"></a>帐户过期
-如果组织在用户帐户管理中使用了 accountExpires 属性，请注意，此属性不会同步到 Azure AD。 因此，环境中为密码哈希同步配置的过期 Active Directory 帐户仍会在 Azure AD 中处于活动状态。 我们建议，如果帐户已过期，工作流操作应触发一个 PowerShell 脚本以禁用用户的 Azure AD 帐户。 相反，在启用帐户后，Azure AD 实例应该开启。
+如果组织在用户帐户管理中使用了 accountExpires 属性，请注意，此属性不会同步到 Azure AD。 因此，环境中为密码哈希同步配置的过期 Active Directory 帐户仍会在 Azure AD 中处于活动状态。 我们建议，如果帐户已过期，工作流操作应触发一个 PowerShell 脚本以禁用用户的 Azure AD 帐户（使用 [Set-AzureADUser](https://docs.microsoft.com/powershell/module/azuread/set-azureaduser?view=azureadps-2.0) cmdlet）。 相反，在启用帐户后，Azure AD 实例应该开启。
 
 ### <a name="overwrite-synchronized-passwords"></a>覆盖已同步的密码
 管理员可以使用 Windows PowerShell 手动重置密码。
@@ -134,21 +130,14 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 
 ### <a name="additional-advantages"></a>其他优点
 
-- 通常情况下，密码哈希同步比联合身份验证服务易于实现。 它不需要任何其他服务器，并且不依赖于高度可用的联合身份验证服务来对用户进行身份验证。 
+- 通常情况下，密码哈希同步比联合身份验证服务易于实现。 它不需要任何其他服务器，并且不依赖于高度可用的联合身份验证服务来对用户进行身份验证。
 - 除了联合身份验证，还可以启用密码哈希同步。 如果联合身份验证服务发生了中断，它可以用作回退。
 
-
-
-
-
-
-
-
-
-
-
-
 ## <a name="enable-password-hash-synchronization"></a>启用密码哈希同步
+
+>[!IMPORTANT]
+>如果要从 AD FS（或其他联合技术）迁移到密码哈希同步，我们强烈建议你按照[此处](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Password%20Hash%20Synchronization.docx)发布的详细部署指南进行操作。
+
 使用“快速设置”选项安装 Azure AD Connect 时，会自动启用密码哈希同步。 有关详细信息，请参阅[通过快速设置开始使用 Azure AD Connect](active-directory-aadconnect-get-started-express.md)。
 
 如果在安装 Azure AD Connect 时使用了自定义设置，则可在用户登录页上使用密码哈希同步。 有关详细信息，请参阅 [Azure AD Connect 的自定义安装](active-directory-aadconnect-get-started-custom.md)。

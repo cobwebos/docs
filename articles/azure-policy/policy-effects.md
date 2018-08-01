@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: a3267d8f2f088c93a8f69f949dc928437a80f455
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 17ad631e2441e4b8d6314557c17be143fd2f3de0
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856940"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248720"
 ---
 # <a name="understanding-policy-effects"></a>了解策略效果
 
@@ -26,7 +26,7 @@ Azure 策略中的每个策略定义都具有单一效果，在策略规则的 i
 - 审核
 - AuditIfNotExists
 - 拒绝
-- DeployIfNotExists
+- DeployIfNotExists（仅适用于**内置**策略）
 
 ## <a name="order-of-evaluation"></a>评估顺序
 
@@ -213,6 +213,9 @@ AuditIfNotExists 效果的“details”属性具有定义要匹配的相关资�
 ## <a name="deployifnotexists"></a>DeployIfNotExists
 
 与 AuditIfNotExists 类似，DeployIfNotExists 在条件满足时执行模板部署。
+
+> [!WARNING]
+> DeployIfNotExists 仅适用于**内置**策略。
 
 ### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists 评估
 

@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 07/06/2018
+ms.date: 07/19/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: dc316df754ea0b8630abe341dc5ce6b0adffa685
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: e8d30ae6cde7c787f1aa950506e0eb74bac0c12d
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920029"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238802"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>常见问题 - VMware 到 Azure 的复制
 
@@ -72,7 +72,7 @@ Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将�
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>为何不能通过 VPN 复制？
 
-复制到 Azure 时，复制流量会进入 Azure 存储帐户的公共终结点，因此，只能使用 ExpressRoute（公共对等互连）通过公共 Internet 进行复制，而不能使用 VPN。 
+复制到 Azure 时，复制流量会到达 Azure 存储帐户的公共终结点，因此，只能使用 ExpressRoute（公共对等互连）通过公共 Internet 进行复制，而不能使用 VPN。 
 
 
 
@@ -95,8 +95,12 @@ Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将�
 ### <a name="can-i-replicate-vms-with-dynamic-disks"></a>是否可以复制包含动态磁盘的 VM？
 可以复制动态磁盘。 操作系统磁盘必须为基本磁盘。
 
-### <a name="can-i-add-a-new-vm-to-an-existing-replication-group"></a>是否可将新 VM 添加到现有的复制组？
-是的。
+### <a name="if-i-use-replication-groups-for-multi-vm-consistency-can-i-add-a-new-vm-to-an-existing-replication-group"></a>如果我使用复制组实现多 VM 一致性，是否可以将新 VM 添加到现有复制组？
+是的，可以在为新 VM 启用复制时将这些 VM 添加到现有复制组。 启动复制后，无法将 VM 添加到现有复制组，也无法为现有 VM 创建复制组。
+
+### <a name="can-i-modify-vms-that-are-replicating-by-adding-or-resizing-disks"></a>是否可以通过添加磁盘或调整磁盘大小来修改正在复制的 VM？
+
+对于从 VMware 复制到 Azure，可以修改磁盘大小。 如果要添加新磁盘，则需要为 VM 添加磁盘并重新启用保护。
 
 ## <a name="configuration-server"></a>配置服务器
 

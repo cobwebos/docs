@@ -14,12 +14,12 @@ ms.date: 06/13/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 658ec5bb2aa7c15fb1d38da5249ff9b13973cf41
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 9e065b04083cce958bc42f2efade0038bf137f8a
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867991"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145105"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>用于配置组设置的 Azure Active Directory cmdlet
 本文包含有关使用 Azure Active Directory (Azure AD) PowerShell cmdlet 创建和更新组的说明。 此内容仅适用于 Office 365 组（有时称为统一组）。 
@@ -96,7 +96,8 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
 |  <ul><li>EnableGroupCreation<li>类型：布尔值<li>默认值：True |指明是否允许非管理员用户在目录中创建 Office 365 组的标志。 此设置不需要 Azure Active Directory Premium P1 许可证。|
 |  <ul><li>GroupCreationAllowedGroupId<li>类型：字符串<li>默认值：“” |安全组的 GUID，允许该组的成员创建 Office 365 组，即使 EnableGroupCreation == false。 |
 |  <ul><li>UsageGuidelinesUrl<li>类型：字符串<li>默认值：“” |组使用准则链接。 |
-|  <ul><li>ClassificationDescriptions<li>类型：字符串<li>默认值：“” | 以逗号分隔的分类说明列表。 |
+|  <ul><li>ClassificationDescriptions<li>类型：字符串<li>默认值：“” | 以逗号分隔的分类说明列表。 ClassificationDescriptions 的值仅以此格式有效：
+  $setting[“ClassificationDescriptions”] ="Classification:Description,Classification:Description"，其中 Classification 与 ClassificationList 中的字符串匹配。|
 |  <ul><li>DefaultClassification<li>类型：字符串<li>默认值：“” | 如果未指定，则为要用作组的默认分类的分类。|
 |  <ul><li>PrefixSuffixNamingRequirement<li>类型：字符串<li>默认值：“” | 最大长度为 64 个字符的字符串，用于定义为 Office 365 组配置的命名约定。 有关详细信息，请参阅[对 Office 365 组强制实施命名策略](groups-naming-policy.md)。 |
 | <ul><li>CustomBlockedWordsList<li>类型：字符串<li>默认值：“” | 逗号分隔字符串，用于列出不允许用户在组名称或别名中使用的短语。 有关详细信息，请参阅[对 Office 365 组强制实施命名策略](groups-naming-policy.md)。 |

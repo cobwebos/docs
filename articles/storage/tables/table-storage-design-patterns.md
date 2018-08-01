@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/23/2018
 ms.author: sngun
-ms.openlocfilehash: 0d098b7befe5426db4aff503e9633623b1249dbf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: db621cdd6d38cb2f235c45c9bfcb76677ed6ba17
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659269"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39227761"
 ---
 # <a name="table-design-patterns"></a>表设计模式
 本文介绍适用于表服务解决方案的一些模式。 此外，还将了解如何实际解决其他表存储设计文章中提出的一些问题和权衡。 下图总结了不同模式之间的关系：  
@@ -142,7 +142,7 @@ ms.locfileid: "34659269"
 ### <a name="context-and-problem"></a>上下文和问题
 EGT 在多个共享同一分区键的实体之间启用原子事务。 由于性能和伸缩性原因，你可能会决定在不同分区或不同存储系统中存储具有一致性要求的实体：在这种情况下，不能使用 EGT 来维护一致性。 例如，可能需要保持以下对象之间的最终一致性：  
 
-* 存储在同一个表的两个不同分区中的实体、存储在不同表中的实体、存储在不同存储帐户中的实体。  
+* 存储在同一个表的两个不同分区中的实体、存储在不同表中的实体，或存储在不同存储帐户中的实体。  
 * 存储在表服务中的实体和存储在 Blob 服务中的 blob。  
 * 表服务中存储的实体和文件系统中的文件。  
 * 实体存储在表服务中还使用 Azure 搜索服务编制了索引。  
@@ -538,7 +538,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 但是，此架构的问题是若要检索特定时间跨度的所有日志消息，必须搜索表中的每个分区。
 
 ### <a name="solution"></a>解决方案
-前一部分重点介绍了尝试使用表服务来存储日志条目的问题，并建议了两个并不令人满意的设计。 一种解决方案会导致热分区并具有在写入日志消息时性能不佳的风险；另一种解决方案由于需要扫描表中的每个分区才能检索特定时间跨度的日志消息而导致查询性能不佳。 对于此类方案，Blob 存储提供了更好的解决方案，这就是 Azure 存储分析存储它收集的日志数据的方式。  
+前一部分重点介绍了尝试使用表服务来存储日志条目的问题，并建议了两个并不令人满意的设计。 一种解决方案会导致热分区并具有在写入日志消息时性能不佳的风险；另一种解决方案由于需要扫描表中的每个分区才能检索特定时间跨度的日志消息而导致查询性能不佳。 对于此类方案，Blob 存储提供了更好的解决方案，这就是 Azure Storage Analytics 存储它收集的日志数据的方式。  
 
 本部分通过概述 Storage Analytics 如何在 blob 存储中存储日志数据说明了此方法如何存储通常按范围查询的数据。  
 
@@ -737,7 +737,7 @@ foreach (var e in entities)
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>Email</th>
+<th>电子邮件</th>
 </tr>
 <tr>
 <td></td>
@@ -757,7 +757,7 @@ foreach (var e in entities)
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>Email</th>
+<th>电子邮件</th>
 </tr>
 <tr>
 <td></td>
@@ -794,7 +794,7 @@ foreach (var e in entities)
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>Email</th>
+<th>电子邮件</th>
 </tr>
 <tr>
 <td></td>
@@ -830,7 +830,7 @@ foreach (var e in entities)
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>Email</th>
+<th>电子邮件</th>
 </tr>
 <tr>
 <td>Employee</td>
@@ -852,7 +852,7 @@ foreach (var e in entities)
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>Email</th>
+<th>电子邮件</th>
 </tr>
 <tr>
 <td>Employee</td>
@@ -893,7 +893,7 @@ foreach (var e in entities)
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>Email</th>
+<th>电子邮件</th>
 </tr>
 <tr>
 <td>Employee</td>
@@ -1022,7 +1022,7 @@ employeeTable.Execute(TableOperation.Merge(department));
 ```
 
 ## <a name="controlling-access-with-shared-access-signatures"></a>使用共享访问签名控制访问权限
-可以使用共享访问签名 (SAS) 令牌允许客户端应用程序直接修改（和查询）表实体，而无需直接使用表服务进行身份验证。 通常情况下，在应用程序中使用 SAS 主要有以下三大优点：  
+可以使用共享访问签名 (SAS) 令牌允许客户端应用程序修改（和查询）表实体，而无需在代码中包含存储帐户密钥。 通常情况下，在应用程序中使用 SAS 主要有以下三大优点：  
 
 * 无需将存储帐户密钥分发到不安全的平台（如移动设备），即可允许该设备访问和修改表服务中的实体。  
 * 可以卸下 Web 角色和辅助角色在管理传递到客户端设备（如最终用户计算机和移动设备）的实体时执行的一些工作负荷。  

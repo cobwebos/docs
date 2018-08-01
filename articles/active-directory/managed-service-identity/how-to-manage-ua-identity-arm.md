@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: a7ddcb834b135d2177355a0523c7e99bcc599e99
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 42d5b55e0bddf2d027810bfdf146de9bfee8a0fb
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931508"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188125"
 ---
 # <a name="create-list-and-delete-a-user-assigned-identity-using-azure-resource-manager"></a>使用 Azure 资源管理器创建、列出和删除用户分配的标识
 
@@ -37,8 +37,8 @@ ms.locfileid: "37931508"
 
 - 如果不熟悉托管服务标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配标识与用户分配标识之间的差异](overview.md#how-does-it-work)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
-
-无论是在本地登录到 Azure 还是通过 Azure 门户登录，请使用与包含 VM 的 Azure 订阅关联的帐户。 还需要确保该帐户属于可授予对 VM 的写权限的角色（例如，“虚拟机参与者”角色）。
+- 若要执行本文中的操作，帐户需要分配以下角色：
+    - [托管标识参与者](/azure/role-based-access-control/built-in-roles#managed-identity-contributor)角色，可以创建、读取（列出）、更新和删除用户分配的标识。
 
 ## <a name="template-creation-and-editing"></a>模板创建和编辑
 

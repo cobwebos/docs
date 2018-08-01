@@ -3,23 +3,18 @@ title: Azure 健康分析蓝图
 description: 部署 HIPAA/HITRUST 健康分析蓝图指南
 services: security
 documentationcenter: na
-author: jomolesk
-manager: mbaldwin
-editor: tomsh
+author: RajeevRangappa
 ms.assetid: 26566e0a-0a54-49f4-a91d-48e20b7cef71
 ms.service: security
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/27/2018
-ms.author: jomolesk
-ms.openlocfilehash: f58466bb4cc90823d8e75e0371b400ee674e8b5d
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.date: 07/23/2018
+ms.author: rarangap
+ms.openlocfilehash: b20da0f31f197ed23aa73b185d127a6d5f2dbd8a
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37113225"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214935"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure 安全性和符合性蓝图 - HIPAA/HITRUST 健康数据和 AI
 
@@ -32,7 +27,7 @@ Azure 安全性和符合性蓝图 - HIPAA/HITRUST 健康数据和 AI 蓝图提�
 
 ![](images/components.png)
 
-根据设计，此解决方案可以使用一个示例数据集并以安全的方式对其进行存储。该数据集已采用快速医疗保健互操作性资源 (FHIR) 进行格式化，而此格式是一种世界性的标准，用于通过电子方式交换医疗保健信息。 然后，客户就可以通过 Azure 机器学习来利用强大的商业智能工具和分析，审核根据示例数据做出的预测。 Azure 机器学习可以促进特定类型的试验，例如，本蓝图包括的示例数据集、脚本和工具可以用来预测病人的住院时间。 
+根据设计，此解决方案可以使用一个示例数据集并以安全的方式对其进行存储。该数据集已采用快速医疗保健互操作性资源 (FHIR) 进行格式化，而此格式是一种世界性的标准，用于通过电子方式交换医疗保健信息。 然后，客户就可以通过 Azure 机器学习工作室来利用强大的商业智能工具和分析，审核根据示例数据做出的预测。 Azure 机器学习工作室可以促进特定类型的试验，例如，本蓝图包括的示例数据集、脚本和工具可以用来预测病人的住院时间。 
 
 本蓝图旨在充当一个模块化的基础，方便客户按照特定的要求进行调整，开发新的 Azure 机器学习试验来解决临床和操作用例方案的问题。 根据设计，它在部署后是安全且合规的；但是，客户有责任正确配置角色并实施修改。 注意以下事项：
 
@@ -67,7 +62,7 @@ Azure 安全性和符合性蓝图 - HIPAA/HITRUST 健康数据和 AI 蓝图提�
 
 基础体系结构由以下组件构成：
 
--   **[威胁模型](https://aka.ms/healththreatmodel)**：以 tm7 格式提供的综合性威胁模型适用于 [Microsoft Threat Modeling Tool](https://www.microsoft.com/en-us/download/details.aspx?id=49168)，可以显示解决方案的组件、组件之间的数据流，以及信任边界。 此模型有助于客户了解在开发机器学习组件或其他修改项时系统基础结构中存在的潜在风险点。
+-   **[威胁模型](https://aka.ms/healththreatmodel)**：以 tm7 格式提供的综合性威胁模型适用于 [Microsoft Threat Modeling Tool](https://www.microsoft.com/en-us/download/details.aspx?id=49168)，可以显示解决方案的组件、组件之间的数据流，以及信任边界。 此模型有助于客户了解在开发机器学习工作室组件或其他修改项时系统基础结构中存在的潜在风险点。
 
 -   **[客户实现矩阵](https://aka.ms/healthcrmblueprint)**：一种 Microsoft Excel 工作簿，其中列出了相关的 HITRUST 要求，并说明了 Microsoft 和客户的相互责任。
 
@@ -108,7 +103,7 @@ Azure 安全性和符合性蓝图 - HIPAA/HITRUST 健康数据和 AI 蓝图提�
  ### <a name="data-scientist"></a>数据科学家
 
 
-数据科学家操作 Azure 机器学习服务。 他们可以导入、导出和管理数据，并且可以运行报表。 数据科学家有权访问病人数据，但没有管理员权限。
+数据科学家操作 Azure 机器学习工作室。 他们可以导入、导出和管理数据，并且可以运行报表。 数据科学家有权访问病人数据，但没有管理员权限。
 
 -   内置角色分配：[存储帐户参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)
 
@@ -149,12 +144,12 @@ CMIO 有效地解决了医疗保健机构中医疗保健专业人员不懂信息
 ## <a name="example-use-case"></a>示例用例
 
 
-本蓝图随附的示例用例演示了如何使用蓝图对云中的健康数据启用机器学习和分析操作。 Contosoclinic 是美国的一家小医院。 医院网络管理员希望使用 Azure 机器学习，在病人入院时更好地预测其住院时间，以便提高操作性工作负荷效率，改进所能提供的护理的质量。
+本蓝图随附的示例用例演示了如何使用蓝图对云中的健康数据启用机器学习和分析操作。 Contosoclinic 是美国的一家小医院。 医院网络管理员希望使用 Azure 机器学习工作室，在病人入院时更好地预测其住院时间，以便提高操作性工作负荷效率，改进所能提供的护理的质量。
 
 ### <a name="predicting-length-of-stay"></a>预测住院时间
 
 
-示例用例方案使用 Azure 机器学习将病人入住时获取的详细医疗信息与根据过往病人的情况聚合的历史数据进行比较，从而预测新入院病人的住院时间。
+示例用例方案使用 Azure 机器学习工作室将病人入住时获取的详细医疗信息与根据过往病人的情况聚合的历史数据进行比较，从而预测新入院病人的住院时间。
 蓝图包括大量的匿名医疗记录，用于演示解决方案的定型和预测功能。 在生产部署中，客户会使用自己的记录给解决方案定型，以便进行更准确的预测，使预测结果能够反映客户的环境、设施和病人的具体详细情况。
 
 ### <a name="users-and-roles"></a>用户和角色
@@ -357,8 +352,8 @@ Han 是获得认证的审核员，拥有 ISO、SOC 和 HiTrust 方面的审核�
 ### <a name="machine-learning"></a>机器学习
 
 
--   已为机器学习 Web 服务[启用日志记录](/azure/machine-learning/studio/web-services-logging)。
-- 使用 [Machine Learning](/azure/machine-learning/desktop-workbench/experimentation-service-configuration) Workbench 要求开发各种试验，以便向解决方案集提供预测功能。 [集成 Workbench](/azure/machine-learning/desktop-workbench/using-git-ml-project) 有助于简化试验的管理。
+-   已为机器学习工作室 Web 服务[启用日志记录](/azure/machine-learning/studio/web-services-logging)。
+- 使用[机器学习工作室](/azure/machine-learning/desktop-workbench/experimentation-service-configuration) Workbench 需要开发各种试验，以便向解决方案集提供预测功能。 [集成 Workbench](/azure/machine-learning/desktop-workbench/using-git-ml-project) 有助于简化试验的管理。
 
 ## <a name="security"></a>安全性
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: ellacroi
-ms.openlocfilehash: 49da9f58ff99c5d844c41a575deaf2f4cc84d426
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 71b6fa765ff8223cf3b128cae1c672984e370738
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888460"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213378"
 ---
 # <a name="preferred-solutions-in-azure-marketplace-and-appsource"></a>Azure 市场和 AppSource 中推荐的解决方案
 

@@ -11,17 +11,17 @@ ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 05/31/2018
+ms.date: 07/19/2018
 ms.author: renash
-ms.openlocfilehash: d11ddb0bc15798187ccea22fe1a80a9c86162dcd
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 89c1bb0404e1fbff9241fe42404123288fffea71
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866464"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160223"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>有关 Azure 文件的常见问题解答 (FAQ)
-[Azure 文件](storage-files-introduction.md)在云端提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)进行访问。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步（预览版）在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
+[Azure 文件](storage-files-introduction.md)在云端提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)进行访问。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
 
 本文回答了关于 Azure 文件特性和功能（包括 Azure 文件同步与 Azure 文件的使用）的常见问题。 如果本文未能涵盖你的问题，欢迎通过以下渠道联系我们（以升序排列）：
 
@@ -90,8 +90,8 @@ ms.locfileid: "37866464"
 ## <a name="azure-file-sync"></a>Azure 文件同步
 
 * <a id="afs-region-availability"></a>
-**Azure 文件同步（预览版）支持哪些区域？**  
-    目前，Azure 文件同步在以下区域中可用：澳大利亚东部、澳大利亚东南部、加拿大中部、加拿大东部、美国中部、亚洲东部、美国东部、美国东部 2、北欧、东南亚、英国南部、英国西部、西欧和美国西部。 在我们努力全面推出的过程中，我们将增加对更多地区的支持。 有关详细信息，请参阅[地区可用性](storage-sync-files-planning.md#region-availability)。
+**Azure 文件同步支持哪些区域？**  
+    可以在 Azure 文件同步规划指南的[区域可用性](storage-sync-files-planning.md#region-availability)部分中找到可用区域列表。 我们将继续添加对其他区域的支持，包括非公共区域。
 
 * <a id="cross-domain-sync"></a>
 **是否可以在同一个同步组中同时包含已加入域的服务器和未加入域的服务器？**  
@@ -371,4 +371,4 @@ ms.locfileid: "37866464"
 ## <a name="see-also"></a>另请参阅
 * [在 Windows 中排查 Azure 文件问题](storage-troubleshoot-windows-file-connection-problems.md)
 * [在 Linux 中排查 Azure 文件问题](storage-troubleshoot-linux-file-connection-problems.md)
-* [对 Azure 文件同步（预览版）进行故障排除](storage-sync-files-troubleshoot.md)
+* [对 Azure 文件同步进行故障排除](storage-sync-files-troubleshoot.md)

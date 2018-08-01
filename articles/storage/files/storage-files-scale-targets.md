@@ -11,17 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage
-ms.date: 12/04/2017
+ms.date: 7/19/2018
 ms.author: wgries
-ms.openlocfilehash: beb3e5caf8c8dce9b2ea06bbd0a2ea5a4e05a714
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 8937b0cfc620114c602278a3f8989ba1f3f60685
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738068"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173718"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 文件可伸缩性和性能目标
-[Azure 文件](storage-files-introduction.md)在云中提供完全托管的文件共享，这些共享项可通过行业标准 SMB 协议进行访问。 本文讨论了 Azure 文件和 Azure 文件同步（预览版）的可伸缩性和性能目标。
+
+  [Azure 文件](storage-files-introduction.md)在云中提供完全托管的文件共享，这些共享项可通过行业标准 SMB 协议进行访问。 本文讨论了 Azure 文件和 Azure 文件同步的可伸缩性和性能目标。
 
 此处列出的可伸缩性和性能目标是高端目标，但可能会受部署中的其他变量影响。 例如，除了受限于托管着 Azure 文件服务的服务器之外，针对文件的吞吐量还可能会受限于可变的网络带宽。 强烈建议你对使用模式进行测试，以确定 Azure 文件的可伸缩性和性能是否满足你的要求。 随着时间的推移，我们也一直在努力提高这些限制。 如果希望我们提高某些限制，请尽管通过下面的评论或者通过 [Azure 文件 UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) 向我们提供反馈。
 
@@ -73,11 +74,11 @@ Azure 文件共享的父资源是 Azure 存储帐户。 存储帐户表示 Azure
 |-|--|
 | 同步的对象数| 125,000 个对象（~1% 的改动） | 
 | 数据集大小| 50 GiB |
-| 平均文件大小 | ~500 KiB（最大的文件：100 GiB） |
+| 平均文件大小 | ~500 KiB |
 | 上传吞吐量 | 每秒 20 个对象 |
 | 完整下载吞吐量* | 每秒 30 个对象 |
  
-如果启用了云分层，则性能可能更好，因为只会下载一部分文件数据。 只有当已缓存文件的数据在任何终结点上发生更改时，Azure 文件同步才会下载这些数据。 对于任何已分层的或新创建的文件，代理不会下载文件数据，而仅会将命名空间同步到所有服务器终结点。 代理还支持在用户访问已分层文件时下载这些文件的一部分。 
+*如果启用了云分层，则性能可能更好，因为只会下载一部分文件数据。 只有当已缓存文件的数据在任何终结点上发生更改时，Azure 文件同步才会下载这些数据。 对于任何已分层的或新创建的文件，代理不会下载文件数据，而仅会将命名空间同步到所有服务器终结点。 代理还支持在用户访问已分层文件时下载这些文件的一部分。 
  
 > [!Note]  
 > 上述数字不代表你会实现的性能。 实际性能将取决于本部分开头列出的多个因素。

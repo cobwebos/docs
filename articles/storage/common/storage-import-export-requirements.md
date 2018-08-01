@@ -6,14 +6,14 @@ manager: jeconnoc
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 06/06/2018
+ms.date: 07/19/2018
 ms.author: alkohli
-ms.openlocfilehash: 4c6e22f50f4550cb4a6e25960bcc13a4d92e9819
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 68e31f6b88a772ad67e3c58e11925f46f1cc37e9
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825061"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188667"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure 导入/导出系统要求
 
@@ -56,7 +56,7 @@ Azure 导入/导出服务支持以下 Azure 存储帐户。
 
 ## <a name="supported-hardware"></a>支持的硬件 
 
-对于 Azure 导入/导出服务，你需要使用支持的磁盘和支持的 SATA 连接器复制数据。
+对于 Azure 导入/导出服务，需要使用支持的磁盘复制数据。
 
 ### <a name="supported-disks"></a>支持的磁盘
 
@@ -73,18 +73,9 @@ Azure 导入/导出服务支持以下 Azure 存储帐户。
 - 最多 10 个 HDD/SSD。
 - 任意大小的 HDD/SSD 的组合。
 
-大量驱动器可以分布在多个作业上，并且可创建的作业数没有限制。 
+大量驱动器可以分布在多个作业上，并且可创建的作业数没有限制。 对于导入作业，仅处理驱动器上的第一个数据卷。 该数据卷必须使用 NTFS 进行格式化。
 
-对于导入作业，仅处理驱动器上的第一个数据卷。 该数据卷必须使用 NTFS 进行格式化。
-
-### <a name="supported-external-usb-adaptors"></a>支持的外部 USB 适配器
-
-当使用 WAImportExport 工具准备硬盘驱动器并复制数据时，可以使用以下（即用）外部 USB 适配器： 
-- Anker 68UPSATAA-02BU
-- Anker 68UPSHHDS-BU
-- Startech SATADOCK22UE
-- Orico 6628SUS3-C-BK（6628 系列）
-- Thermaltake BlacX 热插拔 SATA 外部硬盘驱动器扩展坞（USB 2.0 和 eSATA）
+当使用 WAImportExport 工具准备硬盘驱动器并复制数据时，可以使用外部 USB 适配器。 大多数现成的 USB 3.0 或更高版本的适配器应可以工作。 
 
 
 ## <a name="next-steps"></a>后续步骤

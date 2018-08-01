@@ -1,6 +1,6 @@
 ---
-title: 使用 Windows VM MSI 通过 SAS 凭据访问 Azure 存储
-description: 本教程演示了如何使用 Windows VM 托管服务标识 (MSI) 通过 SAS 凭据（而非存储帐户访问密钥）访问 Azure 存储。
+title: 使用 Windows VM 托管标识通过 SAS 凭据访问 Azure 存储
+description: 本教程演示了如何使用 Windows VM 托管服务标识通过 SAS 凭据（而非存储帐户访问密钥）访问 Azure 存储。
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 89bbf0bff107cd297f69c0bf5a4017959ea238cd
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 983cecdcdb95dca398f728dbdbe5feac69075d6a
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39043969"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248364"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>教程：使用 Windows VM 托管服务标识通过 SAS 凭据访问 Azure 存储
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-本教程演示了如何为 Windows 虚拟机启用托管服务标识 (MSI)，然后使用 MSI 来获取存储共享访问签名 (SAS) 凭据。 具体而言，是[服务 SAS 凭据](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures)。 
+本教程介绍如何为 Windows 虚拟机启用托管服务标识，然后使用托管服务标识来获取存储共享访问签名 (SAS) 凭据。 具体而言，是[服务 SAS 凭据](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures)。 
 
 服务 SAS 提供了在不公开帐户访问密钥的情况下授权特定的服务（在我们的示例中为 blob 服务）在有限时间内访问存储帐户中对象的权限。 可以像平常在执行存储操作时一样使用 SAS 凭据，例如使用存储 SDK 时。 对于本教程，我们将演示使用 Azure 存储 PowerShell 上传和下载 blob。 将了解如何执行以下操作：
 
 
 > [!div class="checklist"]
-> * 在 Windows 虚拟机上启用 MSI 
+> * 在 Windows 虚拟机上启用托管服务标识 
 > * 向 VM 授予对资源管理器中的存储帐户 SAS 的访问权限 
 > * 使用 VM 的标识获取一个访问令牌，并使用它从资源管理器检索 SAS 
 
@@ -47,7 +47,7 @@ ms.locfileid: "39043969"
 
 ## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>在新的资源组中创建 Windows 虚拟机
 
-本教程将新建 Windows VM。 另外，还可以在现有 VM 上启用 MSI。
+本教程将新建 Windows VM。 还可以在现有 Azure VM 上启用托管服务标识。
 
 1.  单击 Azure 门户左上角的“+/创建新服务”按钮。
 2.  选择“计算”，然后选择“Windows Server 2016 Datacenter”。 
@@ -58,20 +58,20 @@ ms.locfileid: "39043969"
 
     ![Alt 图像文本](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
-## <a name="enable-msi-on-your-vm"></a>在 VM 上启用 MSI
+## <a name="enable-managed-service-identity-on-your-vm"></a>在 VM 上启用托管服务标识
 
-通过虚拟机 MSI，可以从 Azure AD 获取访问令牌，而无需在代码中插入凭据。 事实上，启用 MSI 会执行两项操作：向 Azure Active Directory 注册 VM 以创建其托管标识，和在 VM 上配置该标识。
+可以通过虚拟机托管服务标识从 Azure AD 中获取访问令牌，无需在代码中插入凭据。 在内部，启用托管服务标识会执行两项操作：向 Azure Active Directory 注册 VM 以创建其托管标识，以及在 VM 上配置标识。
 
 1. 导航到新虚拟机的资源组，并选择已在上一步中创建的虚拟机。
 2. 在左侧面板上，在 VM“设置”下，单击“配置”。
-3. 若要注册并启用 MSI，请选择“是”，若要禁用，请选择“否”。
+3. 若要注册并启用托管服务标识，请选择“是”，若要禁用，请选择“否”。
 4. 务必单击“保存”，以保存配置。
 
     ![Alt 图像文本](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="create-a-storage-account"></a>创建存储帐户 
 
-如果还没有存储帐户，现在将创建存储帐户。 也可以跳过此步骤，并向 VM MSI 授予对现有存储帐户的 SAS 凭据的访问权限。 
+如果还没有存储帐户，现在将创建存储帐户。 也可以跳过此步骤，并授予 VM 托管服务标识对现有存储帐户的 SAS 凭据的访问权限。 
 
 1. 单击 Azure 门户左上角的“+/创建新服务”按钮。
 2. 依次单击“存储”、“存储帐户”，并将显示新的“创建存储帐户”面板。
@@ -93,9 +93,9 @@ ms.locfileid: "39043969"
 
     ![创建存储容器](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
-## <a name="grant-your-vms-msi-access-to-use-a-storage-sas"></a>向 VM 的 MSI 授予访问权限以使用存储 SAS 
+## <a name="grant-your-vms-managed-service-identity-access-to-use-a-storage-sas"></a>授权 VM 的托管服务标识使用存储 SAS 的访问权限 
 
-Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用 MSI 从资源管理器检索存储 SAS，然后使用 SAS 来访问存储。  在此步骤中，将向 VM MSI 授予对存储帐户 SAS 的访问权限。   
+Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用托管服务标识从资源管理器检索存储 SAS，然后使用 SAS 来访问存储。  在此步骤中，将向 VM 托管服务标识授予对存储帐户 SAS 的访问权限。   
 
 1. 导航回新创建的存储帐户。   
 2. 单击左侧面板中的“访问控制(IAM)”链接。  
@@ -116,7 +116,7 @@ Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用 MSI 
 1. 在 Azure 门户中，导航到“虚拟机”，转到 Windows 虚拟机，然后在“概述”页中单击顶部的“连接”。
 2. 输入创建 Windows VM 时添加的用户名和密码。 
 3. 现在，已经创建了与虚拟机的远程桌面连接，请在远程会话中打开 PowerShell。 
-4. 使用 Powershell 的 Invoke-WebRequest，向本地 MSI 终结点发出请求以获取 Azure 资源管理器的访问令牌。
+4. 使用 Powershell 的 Invoke-WebRequest，向本地托管服务标识终结点发出请求以获取 Azure 资源管理器的访问令牌。
 
     ```powershell
        $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Method GET -Headers @{Metadata="true"}

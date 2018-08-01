@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 0c6643e167f43c2524a4d00a209c5a5db22076a8
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: cca015c1af9a10d2214ab972aff339b781e4fd44
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865308"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214527"
 ---
 # <a name="analyze-twitter-data-using-hive-and-hadoop-on-hdinsight"></a>使用 HDInsight 中的 Hive 和 Hadoop 分析 Twitter 数据
 
@@ -45,7 +45,7 @@ Twitter 允许通过 REST API 检索每个推文的数据作为 JavaScript 对�
    | 字段 | 值 |
    |:--- |:--- |
    | 名称 |MyHDInsightApp |
-   | 说明 |MyHDInsightApp |
+   | Description |MyHDInsightApp |
    | 网站 |http://www.myhdinsightapp.com |
 
 4. 选中“是，我同意”，并单击“创建 Twitter 应用程序”。

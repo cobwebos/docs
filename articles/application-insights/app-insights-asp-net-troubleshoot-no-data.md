@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/14/2017
+ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: ddc9941792b0c5d8fbf29bfdc698b16a999a3858
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 1a46564c324edb1999a2e1b1d482817685df2893
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971034"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205980"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>排查无数据问题 - 用于 .NET 的 Application Insights
 ## <a name="some-of-my-telemetry-is-missing"></a>缺少一些遥测数据
@@ -175,8 +175,11 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 
 可以禁用该功能，但不建议这样做。 采样旨在正确传输相关遥测数据，以便进行诊断。 
 
+## <a name="client-ip-address-is-0000"></a>客户端 IP 地址为 0.0.0.0 
+在 2018 年 2 月，我们[宣布](https://blogs.msdn.microsoft.com/applicationinsights-status/2018/02/01/all-octets-of-ip-address-will-be-set-to-zero/)我们删除了客户端 IP 地址的日志记录。 这不会影响地理位置。
+
 ## <a name="wrong-geographical-data-in-user-telemetry"></a>用户遥测数据包含错误的地理数据
-城市、区域和国家/地区维度派生自 IP 地址，因此不一定始终都是准确的。
+城市、区域和国家/地区维度派生自 IP 地址，因此不一定始终都是准确的。 首先针对位置处理这些 IP 地址，然后将其更改为 0.0.0.0 以进行存储。
 
 ## <a name="exception-method-not-found-on-running-in-azure-cloud-services"></a>在 Azure 云服务中运行时发生“找不到方法”异常
 生成的项目是否面向 .NET 4.6？ Azure 云服务角色不能现成地支持 4.6。 请先[在每个角色上安装 4.6](../cloud-services/cloud-services-dotnet-install-dotnet.md)，再运行应用。

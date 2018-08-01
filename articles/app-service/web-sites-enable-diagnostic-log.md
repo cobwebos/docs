@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 15c580a026495d11ffdeb161d4bf0793850040f5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0eefb8ecb7c9641b3e025054f54e2b7cf97b94bd
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32158760"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205997"
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>在 Azure 应用服务中启用 Web 应用的诊断日志记录
 ## <a name="overview"></a>概述
@@ -82,7 +82,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务 Web 应用](http:/
 尽管所有三个存储位置都可为记录事件提供相同的基本信息，但与记录到“文件系统”相比，“表存储”和“Blob 存储”记录包含额外信息，如实例 ID、线程 ID 以及更详细的时间戳（刻度格式）。
 
 > [!NOTE]
-> 只能使用存储客户端访问或由直接使用这些存储系统的应用程序访问存储在“表存储”或“Blob 存储”中的信息。 例如，Visual Studio 2013 包含的存储资源管理器可用于浏览表或 Blob 存储，而 HDInsight 可以访问存储在 Blob 存储中的数据。 还可编写通过使用 [Azure SDK](/downloads/#) 之一访问 Azure 存储的应用程序。
+> 只能使用存储客户端访问或由直接使用这些存储系统的应用程序访问存储在“表存储”或“Blob 存储”中的信息。 例如，Visual Studio 2013 包含的存储资源管理器可用于浏览表或 Blob 存储，而 HDInsight 可以访问存储在 Blob 存储中的数据。 还可编写通过使用 [Azure SDK](https://azure.microsoft.com/en-us/downloads/) 之一访问 Azure 存储的应用程序。
 >
 > [!NOTE]
 > 也可从 Azure PowerShell 使用 **Set-AzureWebsite** cmdlet 启用诊断。 如果尚未安装 Azure PowerShell，或尚未将其配置为使用 Azure 订阅，请参阅[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0)。

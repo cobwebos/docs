@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/24/2017
 ms.author: adigan
-ms.openlocfilehash: 9cf3c9d5df11e19045cd47a41d7ab9ac93bdf700
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ce7b255359c076ddae642ed44f056e444b655e25
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605417"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216404"
 ---
 # <a name="back-up-a-vmware-server-to-azure"></a>将 VMware 服务器备份到 Azure
 
@@ -88,7 +88,7 @@ Azure 备份服务器可以备份或帮助保护 VMware vCenter 服务器版本 
 
     ![证书目标文件夹](./media/backup-azure-backup-server-vmware/certificate-store-selected.png)
 
-    “受信任的根证书颁发机构”文件夹确认为证书存储。 单击“资源组名称” 的 Azure 数据工厂。
+    “受信任的根证书颁发机构”文件夹确认为证书存储。 单击“下一步”。
 
     ![证书存储文件夹](./media/backup-azure-backup-server-vmware/certificate-import-wizard2.png)
 
@@ -151,8 +151,8 @@ Azure 备份服务器使用用户名和密码对 vCenter 服务器进行身份�
 
   单击“确定”后，“角色”面板的列表中将显示新角色。
 
-|vCenter 6.0 的特权| vCenter 5.5 的特权|
-|--------------------------|---------------------------|
+|vCenter 6.0 和 6.5 的特权| vCenter 5.5 的特权|
+|----------------------------------|---------------------------|
 |Datastore.AllocateSpace   | Datastore.AllocateSpace|
 |Global.ManageCustomFields | Global.ManageCustomerFields|
 |Global.SetCustomFields    |   |

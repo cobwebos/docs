@@ -10,20 +10,25 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 07/23/2018
 ms.author: douglasl
-ms.openlocfilehash: ecd5f242d2dcb5662376541ac0a9e75ce533b59f
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 53ea7425f0497eca7c95ddefeaa09aa40259672b
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005826"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216253"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>如何运行管道的触发器来响应事件
 
 本文介绍了可以在数据工厂管道中创建的基于事件的触发器。
 
 事件驱动的体系结构 (EDA) 是一种常见数据集成模式，其中涉及到事件的生成、检测、消耗和响应。 数据集成方案通常要求数据工厂客户基于事件触发管道。 数据工厂现在已与 [Azure 事件网格](https://azure.microsoft.com/services/event-grid/)集成，后者可以根据事件触发管道。
+
+有关此功能的 10 分钟介绍和演示，请观看以下视频：
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Event-based-data-integration-with-Azure-Data-Factory/player]
+
 
 > [!NOTE]
 > 本文中所介绍的集成依赖于 [Azure 事件网格](https://azure.microsoft.com/services/event-grid/)。 请确保订阅已注册事件网格资源提供程序。 有关详细信息，请参阅[资源提供程序和类型](../azure-resource-manager/resource-manager-supported-services.md#portal)。

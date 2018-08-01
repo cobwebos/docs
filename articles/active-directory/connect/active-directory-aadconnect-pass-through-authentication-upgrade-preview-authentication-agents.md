@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/14/2018
+ms.date: 07/23/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: e955973008f1ba3900deb691426d0409440ad08a
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: be76965e99a20c1f7164187255e26f6463926c2f
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917721"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214721"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Azure Active Directory 直通身份验证：升级预览身份验证代理
 
@@ -51,7 +51,7 @@ ms.locfileid: "37917721"
 
 1. 在本地服务器上转到“控制面板”->“程序”->“程序和功能”。
 2. 如果“Microsoft Azure AD Connect 身份验证代理”存在对应的条目，则不需要在此服务器上执行任何操作。
-3. 如果“Microsoft Azure AD 应用程序代理连接器”存在 1.5.132.0 或更低版本的条目，则需要在此服务器上手动升级。
+3. 如果“Microsoft Azure AD 应用程序代理连接器”存在对应的条目，则需要在此服务器上手动升级。
 
 ![身份验证代理预览版](./media/active-directory-aadconnect-pass-through-authentication/pta6.png)
 
@@ -60,7 +60,7 @@ ms.locfileid: "37917721"
 在升级之前，请确保已准备好以下各项：
 
 1. **创建仅限云的全局管理员帐户**：如果没有仅限云的全局管理员帐户（在直通身份验证代理无法正常工作的紧急情况下使用），请不要升级。 了解如何[添加仅限云的全局管理员帐户](../active-directory-users-create-azure-portal.md)。 此步骤至关重要，可确保你不被锁定在租户外部。
-2.  **确保高可用性**：遵照这些[说明](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)安装另一个独立的身份验证代理，以便为登录请求提供高可用性（如果以前未这样做）。
+2.  **确保高可用性**：遵照这些[说明](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability)安装另一个独立的身份验证代理，以便为登录请求提供高可用性（如果以前未这样做）。
 
 ## <a name="upgrading-the-authentication-agent-on-your-azure-ad-connect-server"></a>在 Azure AD Connect 服务器上升级身份验证代理
 

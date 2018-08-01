@@ -5,28 +5,29 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 7/06/2018
+ms.date: 7/18/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: f4bf77f07bd8f6b8172798ec3faf8c0bdaf3d3f5
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: c1189e1b120f0bd1b3169618bebdb929d1cee18e
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921223"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248778"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Azure 诊断日志支持的服务、架构和类别
 
-[Azure 资源诊断日志](monitoring-overview-of-diagnostic-logs.md)是 Azure 资源发出的日志，用于描述该资源的操作。 通过 Azure Monitor 提供的所有诊断日志共享公共顶级架构，且每个服务都能灵活地为其事件发出唯一属性。
+[Azure Monitor 诊断日志](monitoring-overview-of-diagnostic-logs.md)是 Azure 服务发出的日志，用于描述这些服务或资源的操作。 通过 Azure Monitor 提供的所有诊断日志共享公共顶级架构，且每个服务都能灵活地为其事件发出唯一属性。
 
 资源类型（为 `resourceId` 属性时可用）和 `category` 的组合唯一标识架构。 本文介绍了诊断日志的顶级架构以及每个服务的架构链接。
 
 ## <a name="top-level-diagnostic-logs-schema"></a>顶级诊断日志架构
 
-| 名称 | 必需/可选 | 说明 |
+| 名称 | 必需/可选 | Description |
 |---|---|---|
 | time | 必选 | 事件时间戳 (UTC)。 |
-| resourceId | 必选 | 发出事件的资源的资源 ID。 |
+| resourceId | 必选 | 发出事件的资源的资源 ID。 对于租户服务，其形式为 /tenants/tenant-id/providers/provider-name。 |
+| tenantId | 对于租户日志是必需的 | 此事件关联到的 Active Directory 租户的租户 ID。 此属性仅用于租户级日志，它不会出现在资源级日志中。 |
 | operationName | 必选 | 此事件表示的操作的名称。 如果该事件表示 RBAC 操作，则这是 RBAC 操作名称 （例如 Microsoft.Storage/storageAccounts/blobServices/blobs/Read）。 通常以资源管理器操作的形式建模，即使它们不是实际记录的资源管理器操作 (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
 | operationVersion | 可选 | 如果使用 API 执行 operationName，则 api-version 与该操作关联（例如 http://myservice.windowsazure.net/object?api-version=2016-06-01)。 如果没有与此操作相对应的 API，则该版本表示该操作的版本，以防与操作相关联的属性在将来发生更改。 |
 | category | 必选 | 事件的日志类别。 类别是可以在特定资源上启用或禁用日志的粒度。 在事件的属性 blob 内显示的属性在特定日志类别和资源类型中相同。 典型的日志类别是“Audit”、“Operational”、“Execution”和“Request”。 |
@@ -46,6 +47,7 @@ ms.locfileid: "37921223"
 
 | 服务 | 架构和文档 |
 | --- | --- |
+| Azure Active Directory | [概述](../active-directory/reporting-azure-monitor-diagnostics-overview.md)、[审核日志架构](../active-directory/reporting-azure-monitor-diagnostics-audit-log-schema.md)和[登录架构](../active-directory/reporting-azure-monitor-diagnostics-sign-in-log-schema.md) |
 | Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
 | API 管理 | [API 管理诊断日志](../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
 | 应用程序网关 |[应用程序网关的诊断日志记录](../application-gateway/application-gateway-diagnostics.md) |

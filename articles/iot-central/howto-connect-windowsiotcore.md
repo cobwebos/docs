@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c36a9798718c37fba889323830b76cf8201785cf
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 39eb6f137750f7f741c88dcdf9a55f34d24eaa59
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261893"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205742"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>将 Windows IoT Core 设备连接到 Azure IoT Central 应用程序
 
@@ -24,33 +24,19 @@ ms.locfileid: "35261893"
 若要完成本文中的步骤，需要以下各项：
 
 1. 基于“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建 Azure IoT Central 应用程序](howto-create-application.md)。
-2. 运行 Windows 10 IoT Core 操作系统的设备。 就本演练来说，我们将使用 Raspberry Pi
-
-从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 **Windows IoT Core** 设备模板：
-
-### <a name="telemetry-measurements"></a>遥测度量
-
-| 字段名称     | 单位  | 最小值 | 最大值 | 小数位数 |
-| -------------- | ------ | ------- | ------- | -------------- |
-| 湿度       | %      | 0       | 100     | 0              |
-| temp           | °C     | -40     | 120     | 0              |
-| 压强       | hPa    | 260     | 1260    | 0              |
-
-### <a name="settings"></a>设置
-
-数字设置
-
-| 显示名称 | 字段名称 | 单位 | 小数位数 | 最小值 | 最大值 | Initial |
-| ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
-| 风扇速度    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
+2. 运行 Windows 10 IoT Core 操作系统的设备。 就本演练来说，我们将使用 Raspberry Pi。
 
 
-### <a name="properties"></a>属性
+## <a name="sample-devkits-application"></a>**示例 Devkits** 应用程序
 
-| Type            | 显示名称 | 字段名称 | 数据类型 |
-| --------------- | ------------ | ---------- | --------- |
-| 设备属性 | 模具编号   | dieNumber  | 数字    |
-| 文本            | 位置     | location   | 不适用       |
+从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 **Windows IoT Core** 设备模板： 
+
+- 包含设备的度量值的遥测数据：**湿度**、**温度**和**压力**。 
+- 显示**风扇速度**的设置。
+- 包含设备属性**模具编号**和**位置**云属性的属性。
+
+
+有关设备模板配置的完整详细信息，请参阅 [Windows IoT Core 设备模板详细信息](howto-connect-windowsiotcore.md#windows-iot-core-device-template-details)
 
 ## <a name="add-a-real-device"></a>添加真实设备
 
@@ -106,3 +92,31 @@ ms.locfileid: "35261893"
 
 > [!NOTE]
 > 如果开发环境中未安装 **git**，可以从 [https://git-scm.com/download](https://git-scm.com/download) 下载。
+
+## <a name="windows-iot-core-device-template-details"></a>Windows IoT Core 设备模板详细信息
+
+从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 **Windows IoT Core** 设备模板：
+
+### <a name="telemetry-measurements"></a>遥测度量
+
+| 字段名称     | 单位  | 最小值 | 最大值 | 小数位数 |
+| -------------- | ------ | ------- | ------- | -------------- |
+| 湿度       | %      | 0       | 100     | 0              |
+| temp           | °C     | -40     | 120     | 0              |
+| 压力       | hPa    | 260     | 1260    | 0              |
+
+### <a name="settings"></a>设置
+
+数字设置
+
+| 显示名称 | 字段名称 | 单位 | 小数位数 | 最小值 | 最大值 | Initial |
+| ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
+| 风扇速度    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
+
+
+### <a name="properties"></a>属性
+
+| Type            | 显示名称 | 字段名称 | 数据类型 |
+| --------------- | ------------ | ---------- | --------- |
+| 设备属性 | 模具编号   | dieNumber  | 数字    |
+| 文本            | 位置     | location   | 不适用       |

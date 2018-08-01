@@ -1,31 +1,31 @@
 ---
-title: 自助密码重置策略 - Azure Active Directory
-description: Azure AD 自助密码重置策略选项
+title: Azure AD 自助密码重置策略
+description: 配置 Azure AD 自助密码重置策略选项
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: a851b3842e44dbb81ef80bacde645ebafdb48d86
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 8396db3a45c2b6f2c88a9fd6bbf0b8e5a7df4efb
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054754"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39162042"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory 中的密码策略和限制
 
 本文介绍与 Azure Active Directory (Azure AD) 租户中存储的用户帐户关联的密码策略和复杂性要求。
 
-## <a name="administrator-password-policy-differences"></a>管理员密码策略差异
+## <a name="administrator-reset-policy-differences"></a>管理员重置策略差异
 
-Microsoft 为任意 Azure 管理员角色强制实施默认强*双门*密码重置策略。 
+**Microsoft 对任何 Azure 管理员角色强制实施强大的默认双门密码重置策略**此策略可能与你为用户定义的策略不同，并且无法更改。 你应始终以未被分配任何 Azure 管理员角色的用户身份测试密码重置功能。
 
-使用双门策略，管理员将无法使用安全问题。
+使用双门策略，**管理员将无法使用安全问题**。
 
  双门策略需要两条身份验证数据，如电子邮件地址*和*电话号码。 双门策略在以下情况下适用：
 
@@ -49,7 +49,7 @@ Microsoft 为任意 Azure 管理员角色强制实施默认强*双门*密码重�
   * 应用程序代理服务器管理员
   * CRM 服务管理员
   * Power BI 服务管理员
-  
+
 * 如果在试用订阅中已过 30 天
 
   或
@@ -61,18 +61,18 @@ Microsoft 为任意 Azure 管理员角色强制实施默认强*双门*密码重�
 * Azure AD Connect 正在从本地目录同步标识
 
 ### <a name="exceptions"></a>例外
+
 单门策略需要一条身份验证数据，如电子邮件地址*或*电话号码。 单门策略在以下情况下适用：
 
 * 它在试用订阅的前 30 天中
 
   或
 
-* 虚域不存在 (*.onmicrosoft.com) 
+* 虚域不存在 (*.onmicrosoft.com)
 
-  and 
+  and
 
   Azure AD Connect 未同步标识
-
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>适用于所有用户帐户的 UserPrincipalName 策略
 
@@ -109,13 +109,13 @@ Microsoft 云服务的全局管理员可使用用于 Windows PowerShell 的 Micr
 > [!NOTE]
 > 只能将未通过目录同步进行同步的用户帐户的密码配置为永不过期。 有关目录同步的详细信息，请参阅[将 AD 与 Azure AD 连接](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect)。
 >
->
 
 ## <a name="set-or-check-the-password-policies-by-using-powershell"></a>使用 PowerShell 设置或检查密码策略
 
 若要开始，需要[下载并安装 Azure AD PowerShell 模块](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0)。 安装后，可以按照以下步骤配置每个字段。
 
-### <a name="how-to-check-the-expiration-policy-for-a-password"></a>如何检查密码过期策略
+### <a name="check-the-expiration-policy-for-a-password"></a>检查密码过期策略
+
 1. 使用公司管理员凭据连接到 Windows PowerShell。
 2. 执行以下命令之一：
 

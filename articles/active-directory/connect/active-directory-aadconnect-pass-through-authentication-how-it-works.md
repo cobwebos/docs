@@ -12,20 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2018
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4a98b971367c9f83826e85bdc24bbcfe48483f57
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 674952982ac4342caaf31c05f3d644c1e74b649d
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916259"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215890"
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory 直通身份验证：技术深入研究
 本文简要介绍了 Azure Active Directory (Azure AD) 直通身份验证的工作原理。 有关深入的技术和安全信息，请参阅[深入了解安全性](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md)一文。
 
 ## <a name="how-does-azure-active-directory-pass-through-authentication-work"></a>Azure Active Directory 直通身份验证的工作原理是什么？
+
+>[!NOTE]
+>作为使直通身份验证正常工作的先决条件，需要使用 Azure AD Connect 从本地 Active Directory 将用户预配到 Azure AD。 直通身份验证不适用于仅限云的用户。
 
 当用户尝试登录到由 Azure AD 保护的应用程序时，如果已在租户中启用直通身份验证，会发生以下情况：
 
@@ -49,6 +52,7 @@ ms.locfileid: "37916259"
 ## <a name="next-steps"></a>后续步骤
 - [当前限制](active-directory-aadconnect-pass-through-authentication-current-limitations.md)：了解支持和不支持的方案。
 - [快速入门](active-directory-aadconnect-pass-through-authentication-quick-start.md)：快速了解 Azure AD 直通身份验证。
+- [从 AD FS 迁移到直通身份验证](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) - 从 AD FS（或其他联合技术）迁移到直通身份验证的详细指南。
 - [智能锁定](../authentication/howto-password-smart-lockout.md)：在租户中配置智能锁定功能以保护用户帐户。
 - [常见问题](active-directory-aadconnect-pass-through-authentication-faq.md)：查找常见问题的解答。
 - [故障诊断](active-directory-aadconnect-troubleshoot-pass-through-authentication.md)：了解如何解决直通身份验证功能的常见问题。

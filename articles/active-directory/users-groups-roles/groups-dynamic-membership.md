@@ -10,19 +10,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 07/05/2018
+ms.date: 07/24/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: a48dcff6eedc2aa6e8bb6cd5b0668af72259493b
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: e49da237584a48c01e72552abae01da2514da3c1
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37869080"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248883"
 ---
-# <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>在 Azure Active Directory 中为动态组成员身份创建基于属性的规则
-在 Azure Active Directory (Azure AD) 中，可以创建自定义规则以启用基于属性的复杂动态组成员资格。 本文详细介绍了用于为用户或设备创建动态成员身份规则的属性和语法。 可以为安全组或 Office 365 组中的动态成员身份设置规则。
+# <a name="create-dynamic-groups-with-attribute-based-membership-in-azure-active-directory"></a>在 Azure Active Directory 中使用基于属性的成员身份创建动态组
+
+在 Azure Active Directory (Azure AD) 中，可以创建基于属性的复杂规则以启用组的动态成员身份。 本文详细介绍了用于为用户或设备创建动态成员身份规则的属性和语法。 可以为安全组或 Office 365 组中的动态成员身份设置规则。
 
 当用户或设备的任何属性发生更改时，系统会评估目录中的所有动态组规则，以查看该更改是否会触发任何组添加或删除。 如果用户或设备满足组的规则，它们将添加为该组的成员。 如果用户或设备不再满足该规则，则会将其删除。
 
@@ -34,6 +35,7 @@ ms.locfileid: "37869080"
 > 目前不能基于所有者用户的属性创建设备组。 设备成员身份规则只能引用目录中设备对象的直接属性。
 
 ## <a name="to-create-an-advanced-rule"></a>创建高级规则
+
 1. 使用全局管理员或用户帐户管理员的帐户登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
 2. 选择“用户和组”。
 3. 选择“所有组”，然后选择“新组”。
@@ -58,6 +60,7 @@ ms.locfileid: "37869080"
 
 
 “成员资格处理”状态会显示以下几种状态消息：
+
 * **正在评估**：已收到组更改，正在评估更新。
 * **正在处理**：正在进行更新。
 * **更新完成**：处理已完成，且已完成所有适用更新。
@@ -65,6 +68,7 @@ ms.locfileid: "37869080"
 * **更新已暂停**：管理员暂停了动态成员资格规则更新。 MembershipRuleProcessingState 设置为“已暂停”。
 
 “上次更新的成员资格”状态会显示以下几种状态消息：
+
 * &lt;**日期和时间**&gt;：上次更新成员资格的时间。
 * **正在进行**：目前正在进行更新。
 * **未知**：无法检索上次更新时间。 这可能是由于该组是新创建的组。
@@ -74,6 +78,7 @@ ms.locfileid: "37869080"
 ![正在处理错误消息](./media/groups-dynamic-membership/processing-error.png)
 
 ## <a name="constructing-the-body-of-an-advanced-rule"></a>构造高级规则的正文
+
 可以为动态组成员身份创建的高级规则，本质上是一种由三部分组成并生成 true 或 false 结果的二进制表达式。 这三部分如下：
 
 * 左侧参数
@@ -96,6 +101,7 @@ ms.locfileid: "37869080"
 > 应该使用 ` 字符来转义包含引号 " 的字符串，例如，user.department -eq \`"Sales"。
 
 ## <a name="supported-expression-rule-operators"></a>支持的表达式规则运算符
+
 下表列出所有要在高级规则正文中使用的支持表达式规则运算符及其语法：
 
 | 运算符 | 语法 |
@@ -114,6 +120,7 @@ ms.locfileid: "37869080"
 ## <a name="operator-precedence"></a>运算符优先顺序
 
 所有运算符在下面按优先级从低到高列出。 同一行上的运算符都采用相同的优先级：
+
 ````
 -any -all
 -or
@@ -121,15 +128,20 @@ ms.locfileid: "37869080"
 -not
 -eq -ne -startsWith -notStartsWith -contains -notContains -match –notMatch -in -notIn
 ````
+
 所有运算符可以带或不带连字符前缀。 仅当优先级不满足你的要求时，才需要括号。
 例如：
+
 ```
    user.department –eq "Marketing" –and user.country –eq "US"
 ```
+
 等效于：
+
 ```
    (user.department –eq "Marketing") –and (user.country –eq "US")
 ```
+
 ## <a name="using-the--in-and--notin-operators"></a>使用 -In 和 -notIn 运算符
 
 若要将用户属性的值与大量其他值进行比较，可使用 -In 或 -notIn 运算符。 下面是使用 -In 运算符的示例：
@@ -140,6 +152,7 @@ ms.locfileid: "37869080"
 
 
 ## <a name="query-error-remediation"></a>查询错误更正
+
 下表列出了常见错误以及更正方法
 
 | 查询分析错误 | 错误用法 | 更正的用法 |
@@ -149,9 +162,11 @@ ms.locfileid: "37869080"
 | 错误: 查询编译错误。 |1. (user.department -eq "Sales") (user.department -eq "Marketing")<br/><br/>2. (user.userPrincipalName -match "*@domain.ext") |1.缺少运算符。 使用 -and 或 -or 这两个联接谓词<br/><br/>(user.department -eq "Sales") -or (user.department -eq "Marketing")<br/><br/>2. 与 -match 一起使用的正则表达式出错<br/><br/>(user.userPrincipalName -match ".*@domain.ext")，或者：(user.userPrincipalName -match "\@domain.ext$")|
 
 ## <a name="supported-properties"></a>支持的属性
+
 下面是可以在高级规则中使用的所有用户属性：
 
 ### <a name="properties-of-type-boolean"></a>布尔值类型的属性
+
 允许的操作
 
 * -eq
@@ -163,6 +178,7 @@ ms.locfileid: "37869080"
 | dirSyncEnabled |true false |user.dirSyncEnabled -eq true |
 
 ### <a name="properties-of-type-string"></a>字符串类型的属性
+
 允许的操作
 
 * -eq
@@ -206,6 +222,7 @@ ms.locfileid: "37869080"
 | userType |member guest null |(user.userType -eq "Member") |
 
 ### <a name="properties-of-type-string-collection"></a>字符串集合类型的属性
+
 允许的操作
 
 * -contains
@@ -217,6 +234,7 @@ ms.locfileid: "37869080"
 | proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses -contains "SMTP: alias@domain") |
 
 ## <a name="multi-value-properties"></a>多值属性
+
 允许的操作
 
 * -any（当集合中至少有一项符合条件时满足条件）
@@ -225,6 +243,7 @@ ms.locfileid: "37869080"
 | 属性 | 值 | 使用情况 |
 | --- | --- | --- |
 | assignedPlans |集合中的每个对象均公开以下字符串属性：capabilityStatus、service、servicePlanId |user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled") |
+| proxyAddresses| SMTP: alias@domain smtp: alias@domain | (user.proxyAddresses -any (\_ -contains "contoso")) |
 
 多值属性是同一类型的对象的集合。 可以使用 -any 和 -all 运算符将条件分别应用到集合中的一项或所有项。 例如：
 
@@ -234,14 +253,24 @@ assignedPlans 是多值属性，该项列出了分配给用户的所有服务计
 user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-（Guid 标识符标识 Exchange Online (Plan 2) 服务计划。）
+（GUID 标识符标识 Exchange Online（计划 2）服务计划。）
 
 > [!NOTE]
 > 如果想要找到已启用 Office 365（或其他 Microsoft 联机服务）功能的所有用户（例如，通过一组特定策略定位他们），则此表达式很有用。
 
-以下表达式将选择加入任何与 Intune 服务（由服务名称“SCO”标识）关联的服务计划的所有用户：
+以下表达式选择加入任何与 Intune 服务（由服务名称“SCO”标识）关联的服务计划的所有用户：
 ```
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
+```
+
+### <a name="using-the-underscore--syntax"></a>使用下划线 (\_) 语法
+
+下划线 (\_) 语法匹配特定值在其中一个多值字符串集合属性中的出现，以便将用户或设备添加到动态组。 它与 -any 或 -all 运算符一起使用。
+
+下面是在规则中使用下划线 (\_) 基于 user.proxyAddress 添加成员的示例（对于 user.otherMails，它的工作方式相同）。 此规则将任何使用包含“contoso”的代理地址的用户添加到该组。
+
+```
+(user.proxyAddresses -any (_ -contains "contoso"))
 ```
 
 ## <a name="use-of-null-values"></a>Null 值的用法
@@ -256,14 +285,17 @@ user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabi
 
 扩展属性从本地 Window Server AD 同步，并采用“ExtensionAttributeX”格式，其中 X 等于 1 - 15。
 下面是使用扩展属性的规则示例：
+
 ```
 (user.extensionAttribute15 -eq "Marketing")
 ```
-自定义属性从本地 Windows Server AD 或从连接的 SaaS 应用程序同步，采用“user.extension_[GUID]\__[Attribute]”格式，其中，[GUID] 是在 AAD 中创建该属性的应用程序在 AAD 中的唯一标识符，[Attribute] 是创建的属性的名称。
-下面是使用自定义属性的规则示例：
+
+自定义属性从本地 Windows Server AD 或从连接的 SaaS 应用程序同步，采用“user.extension_[GUID]\__[Attribute]”格式，其中，[GUID] 是在 Azure AD 中创建该属性的应用程序在 AAD 中的唯一标识符，[Attribute] 是创建的属性的名称。 下面是使用自定义属性的规则示例：
+
 ```
 user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber  
 ```
+
 可以通过使用图形资源管理器查询用户的属性，以及通过搜索属性名称来查找自定义属性名称。
 
 ## <a name="direct-reports-rule"></a>“直接下属”规则

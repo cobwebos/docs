@@ -4,18 +4,18 @@ description: 本文介绍如何开始将 Azure 多重身份验证与 Windows Ser
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: get-started-article
-ms.date: 08/25/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: 4ed4db6fa2c712c0fd858815d89dd0094dd5cfbd
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: michmcla
+ms.openlocfilehash: 663ed2f42f59093252506fc5bb5fe2581d4dd200
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33868222"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160206"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>将 Azure 多重身份验证服务器配置为与 Windows Server 中的 AD FS 配合使用
 
@@ -47,8 +47,8 @@ ms.locfileid: "33868222"
    
    <center>![云](./media/howto-mfaserver-adfs-2012/server.png)</center>
 
-5. 如果显示“Active Directory”窗口，则表示两点。 计算机已加入域，但保护 AD FS 适配器与多重身份验证服务之间通信的 Active Directory 配置并未完成。 单击“下一步”自动完成此配置，或者选中“跳过自动 Active Directory 配置并手动配置设置”复选框。 单击“资源组名称” 的 Azure 数据工厂。
-6. 如果显示“本地组”窗口，则表示两点。 计算机尚未加入域，且保护 AD FS 适配器与多重身份验证服务之间通信的本地组配置未完成。 单击“下一步”自动完成此配置，或者选中“跳过自动本地组配置并手动配置设置”复选框。 单击“资源组名称” 的 Azure 数据工厂。
+5. 如果显示“Active Directory”窗口，则表示两点。 计算机已加入域，但保护 AD FS 适配器与多重身份验证服务之间通信的 Active Directory 配置并未完成。 单击“下一步”自动完成此配置，或者选中“跳过自动 Active Directory 配置并手动配置设置”复选框。 单击“下一步”。
+6. 如果显示“本地组”窗口，则表示两点。 计算机尚未加入域，且保护 AD FS 适配器与多重身份验证服务之间通信的本地组配置未完成。 单击“下一步”自动完成此配置，或者选中“跳过自动本地组配置并手动配置设置”复选框。 单击“下一步”。
 7. 在安装向导中单击“下一步”。 Azure 多重身份验证服务器将创建 PhoneFactor Admins 组，并将 AD FS 服务帐户添加到 PhoneFactor Admins 组。
    <center>![云](./media/howto-mfaserver-adfs-2012/adapter.png)</center>
 8. 在“启动安装程序”页中单击“下一步”。
@@ -143,7 +143,7 @@ ms.locfileid: "33868222"
 7. 选择“身份验证方法引用”作为传入声明类型。
 8. 选择“传递所有声明值”。
     ![添加转换声明规则向导](./media/howto-mfaserver-adfs-2012/configurewizard.png)
-9. 单击“完成” 。 关闭 AD FS 管理控制台。
+9. 单击“完成”。 关闭 AD FS 管理控制台。
 
 ## <a name="troubleshooting-logs"></a>故障排除日志
 

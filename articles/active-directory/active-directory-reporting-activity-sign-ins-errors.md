@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 05/31/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: bbd826b636bebca90eacba43ca879a725cddf7d2
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: aab03c92bee0d3b69062cdcb179eebbb5c0fc8f8
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971068"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160240"
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的登录活动报告错误代码
 
@@ -57,8 +57,9 @@ ms.locfileid: "38971068"
 ## <a name="error-codes"></a>错误代码
 
 
-|错误|说明|
+|错误|Description|
 |---|---|
+|16000|这是内部实现详细信息，而不是错误条件。 可以放心地忽略此引用。|
 |20001|联合标识提供者出现问题。 请联系 IDP 解决此问题。|
 |20012|联合标识提供者出现问题。 请联系 IDP 解决此问题。|
 |20033|联合标识提供者出现问题。 请联系 IDP 解决此问题。|
@@ -174,6 +175,7 @@ ms.locfileid: "38971068"
 |81001|用户的 Kerberos 票证太大。 如果用户处于过多的组中，从而使得 Kerberos 票证包含过多的组成员身份，则可能会出现此问题。 减少用户的组成员身份，然后重试。|
 |81005|身份验证包不受支持|
 |81007|没有为租户启用无缝 SSO|
+|81012|这不是错误条件。 它指示尝试登录到 Azure AD 的用户不同于已登录到设备的用户。 可以放心地忽略日志中的此代码。|
 |90010|出于各种原因，不支持该请求。 例如，该请求是使用不受支持的请求方法（仅支持 POST 方法）发出的，或者不支持请求的令牌签名算法。 请与应用程序开发人员联系。|
 |90014| 协议消息的必填字段缺失，请与应用程序所有者联系。 如果你是应用程序所有者，请确保具有登录请求所需的所有参数。 |
 |90072| 该帐户需要先作为外部用户添加到租户中。 注销并使用其他 Azure AD 帐户重新登录。|

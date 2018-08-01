@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: ellacroi
-ms.openlocfilehash: 7da3ae1ca0fc59b0d606a22e9c00b8e7b58674ba
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2814e5f8641e9287b94eb23b719601c75afe9c9f
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335085"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214826"
 ---
 # <a name="what-is-appsource"></a>AppSource 简介
 借助 AppSource，Microsoft 合作伙伴可使客户通过支持 Microsoft 的在线店面发现其技术和服务。 AppSource 发布者可以推动 AppSource 上的业务用户查找、试用以及获取业务线 SaaS 应用程序和实现服务，以帮助推动业务成果，减少创造价值所需的时间： 
@@ -38,8 +38,10 @@ ms.locfileid: "36335085"
 *   **Dynamics 365 for Customer Engagement**：客户关系管理 (CRM) 解决方案，包括 Sales、Customer Service、Field Service 和 Project Service Automation 应用程序。
 *   **Dynamics NAV 托管服务**：Microsoft Dynamics NAV 是面向中型组织的企业资源规划 (ERP) 软件套件。 该服务提供面向制造业、配送、政府、零售和其他行业的专用功能。
 *   **Power BI**：业务分析可视化解决方案。
-*   **咨询服务**：Microsoft 合作伙伴提供的服务，用于帮助客户了解、试用和实现专用技术解决方案。
-*   **Cortana Intelligence**：Cortana Intelligence Suite 是 Azure 提供的一套独立但完全集成的数据和分析平台工具。
+*   
+  **咨询服务**：Microsoft 合作伙伴提供的服务，用于帮助客户了解、试用和实现专用技术解决方案。
+*   
+  **Cortana Intelligence**：Cortana Intelligence Suite 是 Azure 提供的一套独立但完全集成的数据和分析平台工具。
 *   **Office 365**：云中的现代工作区。 可免费与 Microsoft Word、PowerPoint、Excel 和 OneNote 进行协作。
 
 ### <a name="office-365"></a>Office 365
@@ -56,7 +58,8 @@ Office 中的应用程序现在可用于 AppSource！ 查看[发布过程和指�
 
 ### <a name="consulting-offers"></a>咨询服务
 如果要提供服务来帮助客户推动数字化转型或实现解决方案或应用程序，则可以在 AppSource 中将此服务作为咨询服务提供。 
-[查看指导并了解如何提交报价](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf "AppSource - Partner Listing Guidelines")。
+
+  [查看指导并了解如何提交报价](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf "AppSource - Partner Listing Guidelines")。
 
 ### <a name="cortana-intelligence"></a>Cortana Intelligence
 [Cortana Intelligence AppSource 发布指南](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide "Cortana Intelligence AppSource - Publishing guide")

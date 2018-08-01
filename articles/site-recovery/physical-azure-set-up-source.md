@@ -2,19 +2,17 @@
 title: 设置源环境（物理服务器到 Azure）| Microsoft Docs
 description: 本文介绍如何设置本地环境，以便开始将运行 Windows 或 Linux 的物理服务器复制到 Azure。
 services: site-recovery
-documentationcenter: ''
-author: AnoopVasudavan
-manager: gauravd
+author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
-ms.author: anoopkv
-ms.openlocfilehash: 00b09db97e597521de5c73eeefab77b0dfa1304d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 07/21/2018
+ms.author: raynew
+ms.openlocfilehash: 0cbba45ce49667293d8f16bf370424acd70ff78b
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38671016"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213475"
 ---
 # <a name="set-up-the-source-environment-physical-server-to-azure"></a>设置源环境（物理服务器到 Azure）
 
@@ -23,8 +21,9 @@ ms.locfileid: "38671016"
 ## <a name="prerequisites"></a>先决条件
 
 本文假设已具有：
-1. [Azure 门户](http://portal.azure.com "Azure 门户")中的恢复服务保管库。
-3. 安装配置服务器的物理计算机。
+- [Azure 门户](http://portal.azure.com "Azure 门户")中的恢复服务保管库。
+- 安装配置服务器的物理计算机。
+- 如果已在要安装配置服务器的计算机上禁用了 TLS 1.0，请确保该计算机上已启用 TLS 1.2 并已安装 .NET Framework 4.6 或更高版本（已禁用强加密）。 [了解详细信息](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1)。
 
 ### <a name="configuration-server-minimum-requirements"></a>配置服务器的最低要求
 下表列出了配置服务器的最低硬件、软件和网络要求。
@@ -63,7 +62,7 @@ ms.locfileid: "38671016"
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> 可通过命令行安装配置服务器。 有关详细信息，请参阅[使用命令行工具安装配置服务器](http://aka.ms/installconfigsrv)。
+> 可通过命令行安装配置服务器。 [了解详细信息](physical-manage-configuration-server.md#install-from-the-command-line)。
 
 
 ## <a name="common-issues"></a>常见问题

@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 83d5b89422a0181c06dbfe3b2bd8975ef7214b9d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f6d49ffa59ed53c0a1966a4132fd5fe1689a13ce
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193251"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247343"
 ---
 # <a name="azure-automation-dsc-overview"></a>Azure 自动化 DSC 概述
 
@@ -27,7 +27,7 @@ Azure Automation DSC 是一种 Azure 服务，允许编写、管理和编译 Pow
 
 ### <a name="built-in-pull-server"></a>内置拉取服务器
 
-Azure 自动化提供了 [DSC 拉取服务器](https://msdn.microsoft.com/powershell/dsc/pullserver)，这样目标节点可自动接收配置，符合所需状态，并报告回其符合性。
+Azure 自动化提供了类似于 [Windows 功能 DSC 服务](/powershell/dsc/pullserver)的 DSC 拉取服务器，这样目标节点可自动接收配置，符合所需状态，并报告回其符合性。
 Azure 自动化中的内置拉取服务器消除了设置和维护你自己的拉取服务器的需要。
 Azure 自动化的目标可以是云中或本地的虚拟机，或物理 Windows 或 Linux 计算机。
 

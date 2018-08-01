@@ -4,18 +4,18 @@ description: Azure AD 自助密码重置的数据要求，以及如何满足这�
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: ea6bf503eeba9e904c492a858139490b523a10cc
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 5d8fe6282d956d7f399aff9f7aa250c5061dc887
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044169"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159560"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>在无需最终用户注册的情况下部署密码重置
 
@@ -47,20 +47,19 @@ ms.locfileid: "39044169"
 
 ![联系人][Contact]
 
-如果“电话”字段已填充且在 SSPR 策略中启用了“移动电话”，则用户将在密码重置注册页和密码重置工作流中看到该号码。 
+如果“电话”字段已填充且在 SSPR 策略中启用了“移动电话”，则用户将在密码重置注册页和密码重置工作流中看到该号码。
 
 “备用电话”字段不用于密码重置。
 
 如果“电子邮件”字段已填充且在 SSPR 策略中启用了“电子邮件”，则用户将在密码重置注册页和密码重置工作流中看到该电子邮件。
 
-如果“备用电子邮件”字段已填充且在 SSPR 策略中启用了“电子邮件”，则用户将**不**会在密码重置注册页上看到该电子邮件，但会将在密码重置工作流中看到该电子邮件。 
-
+如果“备用电子邮件”字段已填充且在 SSPR 策略中启用了“电子邮件”，则用户将**不**会在密码重置注册页上看到该电子邮件，但会将在密码重置工作流中看到该电子邮件。
 
 ## <a name="security-questions-and-answers"></a>安全问题和答案
 
-安全问题和答案安全地存储在 Azure AD 租户中，用户仅可通过 [SSPR 注册门户](https://aka.ms/ssprsetup)进行访问。 管理员无法查看或修改其他用户问题和答案的内容。
+安全问题和答案安全地存储在 Azure AD 租户中，用户仅可通过 [SSPR 注册门户](https://aka.ms/ssprsetup)进行访问。 管理员无法查看、设置或修改其他用户问题和答案的内容。
 
-### <a name="what-happens-when-a-user-registers"></a>当用户注册时会发生什么情况？
+## <a name="what-happens-when-a-user-registers"></a>当用户注册时会发生什么情况？
 
 当用户注册时，注册页面设置以下字段：
 

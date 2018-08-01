@@ -1,5 +1,5 @@
 ---
-title: 管理已向 Azure 文件同步（预览版）注册的服务器 | Microsoft Docs
+title: 管理已向 Azure 文件同步注册的服务器 | Microsoft Docs
 description: 了解如何向 Azure 文件同步存储同步服务注册和注销 Windows Server。
 services: storage
 documentationcenter: ''
@@ -12,19 +12,19 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: 7385e8b84668facf8bf44f569a611e7dcdba9a1e
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: fde4f7eeb07dff1e44edcabec390ae2921ecf832
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738286"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160920"
 ---
-# <a name="manage-registered-servers-with-azure-file-sync-preview"></a>管理已向 Azure 文件同步（预览版）注册的服务器
-借助 Azure 文件同步（预览版），既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来实现这一点。 你可以使用 Windows Server 上的任意可用协议在本地访问数据（包括 SMB、NFS 和 FTPS），并且可以在世界各地获取所需的缓存数。
+# <a name="manage-registered-servers-with-azure-file-sync"></a>管理已向 Azure 文件同步注册的服务器
+借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来实现这一点。 你可以使用 Windows Server 上的任意可用协议在本地访问数据（包括 SMB、NFS 和 FTPS），并且可以在世界各地获取所需的缓存数。
 
-下面的文章说明如何向存储同步服务注册服务器并进行管理。 若要了解如何部署端到端的 Azure 文件同步，请参阅[如何部署 Azure 文件同步（预览版）](storage-sync-files-deployment-guide.md)。
+下面的文章说明如何向存储同步服务注册服务器并进行管理。 若要了解如何部署端到端的 Azure 文件同步，请参阅[如何部署 Azure 文件同步](storage-sync-files-deployment-guide.md)。
 
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>向存储同步服务注册/注销服务器
 向 Azure 文件同步注册服务器可在 Windows Server 和 Azure 之间建立信任关系。 这种关系随后可用于创建服务器上的服务器终结点，该终结点表示应与 Azure 文件共享（也称为云终结点）同步的特定文件夹。 
@@ -33,7 +33,7 @@ ms.locfileid: "34738286"
 若要向存储同步服务注册服务器，首先必须确保服务器满足以下先决条件：
 
 * 服务器必须运行支持的 Windows Server 版本。 有关详细信息，请参阅[支持的 Windows Server 版本](storage-sync-files-planning.md#supported-versions-of-windows-server)。
-* 确保已部署存储同步服务。 有关如何部署存储同步服务的详细信息，请参阅[如何部署 Azure 文件同步（预览版）](storage-sync-files-deployment-guide.md)。
+* 确保已部署存储同步服务。 有关如何部署存储同步服务的详细信息，请参阅[如何部署 Azure 文件同步](storage-sync-files-deployment-guide.md)。
 * 确保服务器已连接到 Internet，并且 Azure 可以访问。
 * 使用服务器管理器 UI 禁用适用于管理员的 IE 增强的安全配置。
     
@@ -194,6 +194,6 @@ Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -I
 如果 Azure 文件同步在 Windows Server 虚拟主机上运行的虚拟机中进行托管，可以使用存储 QoS（存储服务质量）来调整存储 IO 消耗量。 存储 QoS 策略可以设置为最大值（或限制，如上述的 StorageSyncNetwork 限制）或设置为最小值（或预留）。 如果设置为最小值而非最大值，则允许 Azure 文件同步在没有其他工作负载使用的情况下突发使用可用的存储宽带。 有关详细信息，请参阅[存储服务质量](https://docs.microsoft.com/windows-server/storage/storage-qos/storage-qos-overview)。
 
 ## <a name="see-also"></a>另请参阅
-- [规划 Azure 文件同步（预览版）部署](storage-sync-files-planning.md)
-- [部署 Azure 文件同步（预览版）](storage-sync-files-deployment-guide.md) 
-- [对 Azure 文件同步（预览版）进行故障排除](storage-sync-files-troubleshoot.md)
+- [规划 Azure 文件同步部署](storage-sync-files-planning.md)
+- [部署 Azure 文件同步](storage-sync-files-deployment-guide.md) 
+- [对 Azure 文件同步进行故障排除](storage-sync-files-troubleshoot.md)

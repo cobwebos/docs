@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: bhanupr
-ms.openlocfilehash: d6cd0dd8b326f5340e5014bba4babc6dd945744d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8845a049ebcda59bc0e6fd26618c33f51565e0ca
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225483"
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>将 HDInsight 群集升级到更新版本
 要利用最新的 HDInsight 功能，我们建议将 HDInsight 群集升级到最新版本。 遵循以下准则升级 HDInsight 群集版本。
 
 > [!NOTE]
-> HDInsight 群集版本 3.2 和 3.3 接近停用日期。 有关支持的 HDInsight 版本的信息，请参阅 [HDInsight 组件版本](hdinsight-component-versioning.md#supported-hdinsight-versions)。
+> 有关支持的 HDInsight 版本的信息，请参阅 [HDInsight 组件版本](hdinsight-component-versioning.md#supported-hdinsight-versions)。
 >
 >
 

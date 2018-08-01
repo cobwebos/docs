@@ -6,15 +6,15 @@ author: seanmck
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 07/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 39c43c079ea4d10686bd656ba2d451ff42aac9f6
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 550b53cf40133c8a67306c61cbfa7dae21be4648
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700224"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39163524"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>排查 Azure 容器实例中的常见问题
 
@@ -22,8 +22,7 @@ ms.locfileid: "34700224"
 
 ## <a name="naming-conventions"></a>命名约定
 
-定义容器规格时，某些参数需要遵循命名限制。 下表包含容器组属性的特定要求。
-有关 Azure 命名约定的详细信息，请参阅 Azure 体系结构中心中的[命名约定](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions)。
+定义容器规格时，某些参数需要遵循命名限制。 下表包含容器组属性的特定要求。 有关 Azure 命名约定的详细信息，请参阅 Azure 体系结构中心中的[命名约定][azure-name-restrictions]。
 
 | 范围 | Length | 大小写 | 有效的字符 | 建议的模式 | 示例 |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -31,16 +30,35 @@ ms.locfileid: "34700224"
 | 容器名称 | 1-64 |不区分大小写 |第一个或最后一个字符不能为字母数字和连字符 |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | 容器端口 | 介于 1 和 65535 之间 |Integer |一个介于 1 和 65535 之间的整数 |`<port-number>` |`443` |
 | DNS 名称标签 | 5-63 |不区分大小写 |第一个或最后一个字符不能为字母数字和连字符 |`<name>` |`frontend-site1` |
-| 环境变量 | 1-63 |不区分大小写 |第一个或最后一个字符不能为字母数字和“_”字符 |`<name>` |`MY_VARIABLE` |
+| 环境变量 | 1-63 |不区分大小写 |第一个或最后一个字符不能为字母数字和下划线 (_) |`<name>` |`MY_VARIABLE` |
 | 卷名 | 5-63 |不区分大小写 |第一个或最后一个字符不能为小写字母、数字和连字符。 不能包含两个连续的连字符。 |`<name>` |`batch-output-volume` |
 
-## <a name="image-version-not-supported"></a>不支持映像版本
+## <a name="os-version-of-image-not-supported"></a>不受支持的映像的操作系统版本
 
-如果指定了 Azure 容器实例不支持的映像，则将返回 `ImageVersionNotSupported` 错误。 错误的值为 `The version of image '{0}' is not supported.`，当前适用于 Windows 1709 映像。 若要缓解此问题，请使用 LTS Windows 映像。 对 Windows 1709 映像的支持正在研发中。
+如果指定了 Azure 容器实例不支持的映像，则将返回 `OsVersionNotSupported` 错误。 该错误类似于以下内容，其中 `{0}` 是你尝试部署的映像的名称：
+
+```json
+{
+  "error": {
+    "code": "OsVersionNotSupported",
+    "message": "The OS version of image '{0}' is not supported."
+  }
+}
+```
+
+在部署基于半年频道 (SAC) 版本的 Windows 映像时，通常会遇到此错误。 例如，Windows 版本 1709 和 1803 是 SAC 版本，在部署时会生成此错误。
+
+Azure 容器实例支持仅基于长期服务频道 (LTSC) 版本的 Windows 映像。 若要缓解此问题，部署 Windows 容器时，请始终部署基于 LTSC 的映像。
+
+有关 Windows 的 LTSC 和 SAC 版本的详细信息，请参阅 [Windows Server 半年频道概述][windows-sac-overview]。
 
 ## <a name="unable-to-pull-image"></a>无法请求映像
 
-如果 Azure 容器实例最初无法请求印象，在最终失败前，它还会重试一段时间。 如果无法请求映像，[az container show][az-container-show] 的输出会显示如下事件：
+如果 Azure 容器实例最初无法请求映像，则会重试一段时间。 如果映像请求操作继续失败，ACI 最终会使部署失败，可能会显示 `Failed to pull image` 错误。
+
+若要解决此问题，请删除容器实例，然后重试部署。 请确保映像存在于注册表中，并且你已正确键入映像名称。
+
+如果无法请求映像，[az container show][az-container-show] 的输出会显示如下事件：
 
 ```bash
 "events": [
@@ -71,13 +89,11 @@ ms.locfileid: "34700224"
 ],
 ```
 
-要解决此问题，请删除容器并重试部署，请务必键入正确的映像名称。
-
 ## <a name="container-continually-exits-and-restarts"></a>容器不断退出并重启
 
 如果容器运行直至完成并自动重启，可能需要将[重启策略](container-instances-restart-policy.md)设置为“失败时”或“从不”。 如果指定了“失败时”，但仍不断重启，则可能容器中执行的应用程序或脚本存在问题。
 
-容器实例 API 包括 `restartCount` 属性。 若要检查容器的重启次数，可在 Azure CLI 2.0 中使用 [az container show][az-container-show] 命令。 在以下示例输出中（为简洁起见已将其截断），可以在输出末尾看到 `restartCount` 属性。
+容器实例 API 包括 `restartCount` 属性。 若要检查容器的重启次数，可在 Azure CLI 中使用 [az container show][az-container-show] 命令。 在以下示例输出中（为简洁起见已将其截断），可以在输出末尾看到 `restartCount` 属性。
 
 ```json
 ...
@@ -131,7 +147,7 @@ Windows 映像具有[其他注意事项](#cached-windows-images)。
 
 ### <a name="image-size"></a>映像大小
 
-如果容器启动时间过长，但最终成功启动，请先查看容器映像大小。 Azure 容器实例按需请求容器映像，因此启动时间与映像大小直接相关。
+如果容器启动时间过长，但最终成功启动，请先查看容器映像大小。 由于 Azure 容器实例按需请求容器映像，因此显示的启动时间与映像大小直接相关。
 
 可在 Docker CLI 中使用 `docker images` 命令查看容器映像大小：
 
@@ -173,10 +189,16 @@ Windows 容器在初始创建后可能最多 5 秒内没有入站或出站连接
 * 部署到其他 Azure 区域
 * 稍后部署
 
+## <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>无法连接到基础 Docker API 或运行特权容器
+
+Azure 容器实例不公开对托管容器组的底层基础结构的直接访问。 这包括访问运行在容器主机上的 Docker API 和运行特权容器。 如果需要 Docker 交互，请查看 [REST 参考文档](https://aka.ms/aci/rest)以了解 ACI API 支持的内容。 如果缺少某些内容，请在 [ACI 反馈论坛](https://aka.ms/aci/feedback)上提交请求。
+
 ## <a name="next-steps"></a>后续步骤
 了解如何[检索容器日志和事件](container-instances-get-logs.md)来帮助调试你的容器。
 
 <!-- LINKS - External -->
+[azure-name-restrictions]: https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions
+[windows-sac-overview]: https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview
 [docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 [docker-hub-windows-core]: https://hub.docker.com/r/microsoft/windowsservercore/
 [docker-hub-windows-nano]: https://hub.docker.com/r/microsoft/nanoserver/

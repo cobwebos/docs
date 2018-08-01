@@ -15,21 +15,22 @@ ms.component: compliance-reports
 ms.date: 05/10/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 8d627abfe7b686eeeb5a65c4515e184f4ce62f4e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d069d0e74c1bc10baa4d14cdb91c137203495ae2
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335051"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247402"
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Azure Active Directory 报告常见问题
 
 本文包括了对 Azure Active Directory (Azure AD) 报告常见问题的解答。 有关详细信息，请参阅 [Azure Active Directory 报告](active-directory-reporting-azure-portal.md)。 
 
+## <a name="getting-started"></a>入门 
+
 **问：我在使用 https://graph.windows.net/&lt;tenant-name&gt;/reports/ 终结点 API，以编程方式将 Azure AD 审核和集成的应用程序使用情况报告拉取到我们的报告系统中。我应当切换到什么？**
 
 **答：** 请查看 [API 参考文档](https://developer.microsoft.com/graph/)，了解如何使用新的 API 访问[活动报告](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal)。 此终结点有两个报告（审核和登录），它们提供了你在旧的 API 终结点中获取的所有数据。 此新的终结点还有一个登录报告，其中包含可用来获取应用使用情况、设备使用情况和用户登录信息的 Azure AD Premium 许可证。
-
 
 --- 
 
@@ -38,6 +39,34 @@ ms.locfileid: "36335051"
 **答：** 可以使用 [Identity Protection 风险事件 API](active-directory-identityprotection-graph-getting-started.md) 通过 Microsoft Graph 访问安全检测。 此新格式在如何查询数据方面提供了更大的灵活性，可以使用高级筛选、字段选择和其他手段；并且此新格式将风险事件标准化为一种类型，以便更轻松地集成到 SIEM 和其他数据收集工具中。 因为数据采用的格式不同，所以无法用新查询替代旧查询。 不过，[新 API 使用的是 Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent)，后者是 O365 或 Azure AD 之类的 API 的 Microsoft 标准。 因此，需要做的工作可以扩展当前 MS Graph 投资或者帮助开始向此新的标准平台进行转换。
 
 --- 
+
+**问：如何获得高级许可证？**
+
+**答：** 请参阅 [Azure Active Directory Premium 入门](fundamentals/active-directory-get-started-premium.md)获取此问题的解答。
+
+---
+
+**问：获得高级许可证后多久能看见活动数据？**
+
+**答：** 如果已有作为免费许可证的活动数据，则可以看到相同的数据。 如果没有任何数据，则将需要一天或两天。
+
+---
+
+**问：获得 Azure AD Premium 许可证后是否能查看上个月的数据？**
+
+答：如果最近刚切换到高级版本（包括试用版），则最初最多能看到 7 天的数据。 随着数据累积，将最多可看到 30 天的数据。
+
+---
+
+**问：若要查看到 Azure 门户的活动登录或通过 API 获取数据，是否需要是全局管理员？**
+
+**答：** 否。 必须是**安全读者**、**安全管理员**或**全局管理员**才能在 Azure 门户中或通过 API 获取报告数据。
+
+---
+
+
+## <a name="activity-logs"></a>活动日志
+
 
 **问：Azure 门户中活动日志（审核和登录）的数据保留是什么？** 
 
@@ -51,11 +80,6 @@ ms.locfileid: "36335051"
 
 ---
 
-**问：若要查看到 Azure 门户的活动登录或通过 API 获取数据，是否需要是全局管理员？**
-
-**答：** 否。 必须是**安全读者**、**安全管理员**或**全局管理员**才能在 Azure 门户中或通过 API 获取报告数据。
-
----
 
 **问：是否可以通过 Azure 门户获取 Office 365 活动日志信息？**
 
@@ -82,23 +106,7 @@ ms.locfileid: "36335051"
 
 ---
 
-**问：如何获得高级许可证？**
-
-**答：** 请参阅 [Azure Active Directory Premium 入门](fundamentals/active-directory-get-started-premium.md)获取此问题的解答。
-
----
-
-**问：获得高级许可证后多久能看见活动数据？**
-
-**答：** 如果已有作为免费许可证的活动数据，则可以看到相同的数据。 如果没有任何数据，则将需要一天或两天。
-
----
-
-**问：获得 Azure AD Premium 许可证后是否能查看上个月的数据？**
-
-答：如果最近刚切换到高级版本（包括试用版），则最初最多能看到 7 天的数据。 随着数据累积，将最多可看到 30 天的数据。
-
----
+## <a name="risky-sign-ins"></a>有风险的登录
 
 **问：标识保护存在风险事件，但未在所有登录中看到对应登录。** 这是正常情况吗？
 
@@ -129,3 +137,35 @@ ms.locfileid: "36335051"
 **答：** 为了让你深入了解环境中所有具有风险的登录，对于执行了 Azure AD Identity Protection 订阅者专用的检测登录，“登录时检测到其他风险”将充当其占位符。
 
 ---
+
+## <a name="conditional-access"></a>条件性访问
+
+**问：此功能有什么新内容？**
+
+**答：** 客户现在可以通过所有登录报告对条件访问策略进行故障排除。 客户可以查看条件访问状态，并深入了解应用于登录的策略的详细信息以及每个策略的结果。
+
+**问：如何开始使用？**
+
+**答：** 若要开始使用：
+    * 导航到 [Azure门户](https://portal.azure.com)中的登录报告。 
+    * 单击要进行故障排除的登录。
+    * 导航到“条件访问”选项卡。在这里，可以查看影响登录的所有策略以及每个策略的结果。 
+    
+**问：条件访问状态的所有可能值是什么？**
+
+**答：** 条件访问状态可以具有以下值：
+    * **未应用**：这表示在范围内没有针对用户和应用程序的 CA 策略。 
+    * **成功**：这表示在范围内存在针对用户和应用程序的 CA 策略，并且已成功满足 CA 策略。 
+    * **失败**：这表示在范围内存在针对用户和应用程序的 CA 策略，但不满足 CA 策略。 
+    
+**问：条件访问策略结果的所有可能值是什么？**
+
+**答：** 条件访问策略可以具有以下结果：
+    * **成功**：成功满足策略。
+    * **失败**：不满足策略。
+    * **未应用**：这可能是因为不符合策略条件。
+    * **未启用**：这是由于策略处于禁用状态。 
+    
+**问：所有登录报告中的策略名称与 CA 中的策略名称不匹配，为什么？**
+
+**答：** 所有登录报告中的策略名称均基于登录时的 CA 策略名称。 如果你后来（即登录后）更新了策略名称，则这可能与 CA 中的策略名称不一致。

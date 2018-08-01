@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/08/2017
+ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 531ca6d781ae62aacd85dce600e3ea8b46ccf360
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: eeb23b52d5910c3da39d29d3a9c47f598ed5fc5a
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32777071"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188677"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器疑难解答指南
 
@@ -60,17 +60,35 @@ Microsoft Azure 存储资源管理器是一款独立应用，可用于在 Window
 
 ## <a name="sign-in-issues"></a>登录问题
 
-如果无法登录，请尝试以下故障排除方法：
+### <a name="reauthentication-loop-or-upn-change"></a>重新验证循环或 UPN 更改
+如果你处于重新验证循环中，或者已更改其中一个帐户的 UPN，请尝试以下操作：
+1. 删除所有帐户，然后关闭存储资源管理器
+2. 从计算机中删除 .IdentityService 文件夹。 在 Windows 中，该文件夹位于 `C:\users\<username>\AppData\Local`。 对于 Mac 和 Linux，可以在用户目录的根目录中找到该文件夹。
+3. 如果使用的是 Mac 或 Linux，则还需要从 OS 的密钥存储中删除 Microsoft.Developer.IdentityService 条目。 在 Mac 上，密钥存储是“Gnome Keychain”应用程序。 对于 Linux，该应用程序通常称为“Keyring”，但名称可能会有所不同，具体取决于分发版。
 
-* 如果你在 macOS 上且“正在等待身份验证...”对话框上从不出现登录窗口，则尝试执行[这些步骤](#Resetting-the-Mac-Keychain)
+## <a name="mac-keychain-errors"></a>Mac 密钥链错误
+有时，macOS 密钥链可能会进入导致存储资源管理器的身份验证库出现问题的状态。 要将密钥链摆脱此状态，请尝试执行以下步骤：
+1. 关闭存储资源管理器。
+2. 打开密钥链（**cmd+space**、键入密钥链、按 Enter）。
+3. 选择“登录”密钥链。
+4. 单击挂锁图标以锁定密钥链（挂锁在完成后将对锁定位置进行动画处理，这可能需要几秒钟的时间，具体要取决于你打开的应用）。
+
+    ![图像](./media/storage-explorer-troubleshooting/unlockingkeychain.png)
+
+5. 启动存储资源管理器。
+6. 应出现一个弹出窗口，其中显示“服务中心想要访问密钥链”。 如果是这样，请输入 Mac 管理员帐户密码，然后单击“始终允许”（如果“始终允许”不可用，则单击“允许”）。
+7. 请尝试登录。
+
+### <a name="general-sign-in-troubleshooting-steps"></a>常规登录故障排除步骤
+* 如果你在 macOS 上且“正在等待身份验证...”对话框上从不出现登录窗口，则尝试执行[这些步骤](#Mac-Keychain-Errors)
 * 重启存储资源管理器
 * 如果身份验证窗口为空，请等待至少一分钟，然后关闭身份验证对话框。
-* 确保为计算机和存储资源管理器正确配置了代理和证书设置
-* 如果在 Windows 中操作，有权访问同一台计算机上的 Visual Studio 2017 并且可以登录，请尝试登录到 Visual Studio 2017
+* 确保为计算机和存储资源管理器正确配置了代理和证书设置。
+* 如果在 Windows 中操作，有权访问同一台计算机上的 Visual Studio 2017 并且可以登录，请尝试登录到 Visual Studio 2017。 成功登录 Visual Studio 2017 后，应该可以打开存储资源管理器并在帐户面板中查看帐户。 
 
 如果这些方法均不起作用，请[在 GitHub 上提出问题](https://github.com/Microsoft/AzureStorageExplorer/issues)。
 
-## <a name="unable-to-retrieve-subscriptions"></a>无法检索订阅
+### <a name="missing-subscriptions-and-broken-tenants"></a>缺少订阅和中断的租户
 
 如果成功登录后无法检索订阅，请尝试以下故障排除方法：
 
@@ -78,7 +96,7 @@ Microsoft Azure 存储资源管理器是一款独立应用，可用于在 Window
 * 请确保使用正确的 Azure 环境登录（Azure、Azure 中国、Azure 德国、Azure 美国政府或自定义环境）。
 * 如果使用代理，请确保已正确配置存储资源管理器代理。
 * 尝试移除并重新添加帐户。
-* 在存储资源管理器加载订阅时观察开发人员工具控制台（“帮助”>“切换开发人员工具”）。 查看错误消息（红色文本），或者包含文本“无法加载租户的订阅”的任何消息。 如果看到任何有问题的消息，请[在 GitHub 上提出问题](https://github.com/Microsoft/AzureStorageExplorer/issues)。
+* 如果有“更多信息”链接，请查看针对失败的租户报告的错误消息。 如果不确定如何处理看到的错误消息，请随时[在 GitHub 上提出问题](https://github.com/Microsoft/AzureStorageExplorer/issues)。
 
 ## <a name="cannot-remove-attached-account-or-storage-resource"></a>无法删除附加的帐户或存储资源
 
@@ -155,19 +173,6 @@ Microsoft Azure 存储资源管理器是一款独立应用，可用于在 Window
 * Up-to-date GCC
 
 可能还需要安装其他包，具体取决于你的发行版。 存储资源管理器[发行说明](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409)包含用于某些发行版的特定步骤。
-
-## <a name="resetting-the-mac-keychain"></a>重置 Mac 密钥链
-有时，macOS 密钥链可能会进入导致存储资源管理器的身份验证库出现问题的状态。 要将密钥链摆脱此状态，请尝试执行以下步骤：
-1. 关闭存储资源管理器。
-2. 打开密钥链（**cmd+space**、键入密钥链、按 Enter）。
-3. 选择“登录”密钥链。
-4. 单击挂锁图标以锁定密钥链（挂锁在完成后将对锁定位置进行动画处理，这可能需要几秒钟的时间，具体要取决于你打开的应用）。
-
-    ![图像](./media/storage-explorer-troubleshooting/unlockingkeychain.png)
-
-5. 启动存储资源管理器。
-6. 弹出窗口显示的内容应类似于：“服务中心需要访问密钥链”，请输入你的 Mac 管理员帐户密码，然后单击“始终允许”（如果“始终允许”不可用，则单击“允许”）。
-7. 请尝试登录。
 
 ## <a name="next-steps"></a>后续步骤
 

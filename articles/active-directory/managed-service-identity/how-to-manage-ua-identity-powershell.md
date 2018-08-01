@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: ca0493d43abb5d1e79ffb28e45b427eef0432b9e
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: def5788b83116ce0843f1fdd86933830cabc9ee2
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904099"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187989"
 ---
 # <a name="create-list-or-delete-a-user-assigned-identity-using-azure-powershell"></a>使用 Azure PowerShell 创建、列出或删除用户分配的标识
 
@@ -35,6 +35,9 @@ ms.locfileid: "37904099"
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
 - 安装[最新版本的 Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM)（如果尚未安装）。
 - 如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 5.7.0 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 以创建与 Azure 的连接。
+- 若要执行本文中的管理操作，帐户需要分配以下角色：
+    - [托管标识参与者](/azure/role-based-access-control/built-in-roles#managed-identity-contributor)角色，可以创建、读取（列出）、更新和删除用户分配的标识。
+    - [托管标识操作员](/azure/role-based-access-control/built-in-roles#managed-identity-operator)角色，可以读取（列出）用户分配的标识的属性。
 
 ## <a name="create-a-user-assigned-identity"></a>创建用户分配的标识
 
@@ -47,7 +50,7 @@ New-AzureRmUserAssignedIdentity -ResourceGroupName <RESOURCEGROUP> -Name <USER A
 ```
 ## <a name="list-user-assigned-identities"></a>列出用户分配标识
 
-若要列出用户分配标识，请使用 [Get AzureRmUserAssigned](/powershell/module/azurerm.managedserviceidentity/get-azurermuserassignedidentity) 命令。  `-ResourceGroupName` 参数指定从中已创建用户分配标识的资源组。  将 `<RESOURCE GROUP>` 替换为自己的值：
+若要列出用户分配标识，请使用 [Get AzureRmUserAssigned](/powershell/module/azurerm.managedserviceidentity/get-azurermuserassignedidentity) 命令。  `-ResourceGroupName` 参数指定从中已创建用户分配标识的资源组。 将 `<RESOURCE GROUP>` 替换为自己的值：
 
 ```azurepowershell-interactive
 Get-AzureRmUserAssignedIdentity -ResourceGroupName <RESOURCE GROUP>
@@ -58,7 +61,7 @@ Get-AzureRmUserAssignedIdentity -ResourceGroupName <RESOURCE GROUP>
 
 ## <a name="delete-a-user-assigned-identity"></a>删除用户分配标识
 
-若要删除用户分配标识，请使用 [Remove-AzureRmUserAssignedIdentity](/powershell/module/azurerm.managedserviceidentity/remove-azurermuserassignedidentity) 命令。  `-ResourceGroupName` 参数指定从中已创建用户分配标识的资源组，`-Name` 参数指定其名称。  将 `<RESOURCE GROUP>` 和 `<USER ASSIGNED IDENTITY NAME>` 参数值替换为自己的值：
+若要删除用户分配标识，请使用 [Remove-AzureRmUserAssignedIdentity](/powershell/module/azurerm.managedserviceidentity/remove-azurermuserassignedidentity) 命令。  `-ResourceGroupName` 参数指定从中已创建用户分配标识的资源组，`-Name` 参数指定其名称。 将 `<RESOURCE GROUP>` 和 `<USER ASSIGNED IDENTITY NAME>` 参数值替换为自己的值：
 
  ```azurecli-interactive
 Remove-AzurRmUserAssignedIdentity -ResourceGroupName <RESOURCE GROUP> -Name <USER ASSIGNED IDENTITY NAME>

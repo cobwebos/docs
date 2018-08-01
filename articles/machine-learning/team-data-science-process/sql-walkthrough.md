@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: deguhath
-ms.openlocfilehash: 89fb805ac64be358ed4f52865d2e89ab16fe2b17
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: dae8549cb951a463688869454e2f4c71103c1363
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005792"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226387"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>团队数据科学过程实务：使用 SQL Server
 在本教程中，将逐步指导完成使用 SQL Server 和可公开取得的数据集 [NYC 出租车行程](http://www.andresmh.com/nyctaxitrips/)，构建和部署机器学习模型的过程。 该程序遵循标准数据科学工作流，包括：引入和浏览数据，设计功能以促进学习，并构建和部署模型。
@@ -623,7 +623,7 @@ Azure 机器学习将尝试根据训练实验的组件创建评分实验。 特�
 概括来说，在本分步介绍的教程中，已创建了 Azure 数据科学环境，从数据采集到 Azure 机器学习 Web 服务的模型训练和部署等多项工作中，都会使用大型公共数据集。
 
 ### <a name="license-information"></a>许可证信息
-此示例演练和及其附带脚本和 IPython notebook 是在 MIT 许可证下由 Microsoft 共享。 如需详细信息，请查看 GitHub 上的示例代码目录中的 LICENSE.txt 文件。
+此示例演练和及其附带脚本和 IPython notebook 是在 MIT 许可证下由 Microsoft 共享。 如需更多详细信息，请查看 GitHub 上示例代码目录中的 LICENSE.txt 文件。
 
 ### <a name="references"></a>参考
 •    [Andrés Monroy NYC 出租车行程下载页](http://www.andresmh.com/nyctaxitrips/)  

@@ -11,29 +11,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/19/2018
+ms.date: 07/23/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 186bcf26639f5cff2dcbf1e805913ac7edab7df4
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: d1a0e46fe348bbc60a4d02a4727a9bb27cb26742
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437359"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223290"
 ---
-# <a name="troubleshooting-rbac-in-azure"></a>对 Azure 中的 RBAC 进行故障排除
+# <a name="troubleshoot-rbac-in-azure"></a>对 Azure 中的 RBAC 进行故障排除
 
-本文解答有关基于角色的访问控制 (RBAC) 的常见问题，以便你了解在 Azure 门户中使用角色时可能出现的情况，并可解决访问权限问题。 以下三种角色涵盖所有资源类型：
+本文解答有关基于角色的访问控制 (RBAC) 的常见问题，以便你了解在 Azure 门户中使用角色时可能出现的情况，并可解决访问权限问题。
 
-* 所有者  
-* 参与者  
-* 读取器  
+## <a name="web-app-features-that-require-write-access"></a>需要写访问权限的 Web 应用功能
 
-所有者和参与者对管理体验具有完全访问权限，但是参与者无法向其他用户或组授予访问权限。 具有读者角色事情会变得更加有趣，因此，我们将着重介绍读者角色。 有关如何授予访问权限的信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](role-assignments-portal.md)。
-
-## <a name="app-service"></a>应用服务
-### <a name="write-access-capabilities"></a>写访问功能
 如果为用户授予单个 Web 应用的只读访问权限，某些功能可能会被禁用，这可能不是你所期望的。 以下管理功能需要对 Web 应用具有**写**访问权限（参与者或所有者），并且在任何只读方案中不可用。
 
 * 命令（例如启动、停止等。）
@@ -49,7 +43,8 @@ ms.locfileid: "37437359"
 
 如果无法访问以上任何磁贴，则需要让管理员提供对 Web 应用的“参与者”访问权限。
 
-### <a name="dealing-with-related-resources"></a>处理相关资源
+## <a name="web-app-resources-that-require-write-access"></a>需要写访问权限的 Web 应用资源
+
 由于存在几个相互作用的不同资源，Web 应用程序是复杂的。 下面是包含几个网站的典型资源组：
 
 ![Web 应用程序资源组](./media/troubleshooting/website-resource-model.png)
@@ -70,15 +65,9 @@ ms.locfileid: "37437359"
 * Application Insights 组件  
 * Web 测试  
 
-## <a name="azure-functions"></a>Azure Functions
-[Azure Functions](../azure-functions/functions-overview.md) 的某些功能需要写入权限。 例如，如果给用户分配读者角色，他们将无法查看函数应用中的函数。 门户将显示 (无访问权限)。
+## <a name="virtual-machine-features-that-require-write-access"></a>需要写访问权限的虚拟机功能
 
-![函数应用无访问权限](./media/troubleshooting/functionapps-noaccess.png)
-
-读者可单击“平台功能”选项卡，然后单击“所有设置”查看与函数应用（类似于 Web 应用）相关的一些设置，但无法修改任何这些设置。
-
-## <a name="virtual-machine"></a>虚拟机
-与 Web 应用程序很类似，虚拟机边栏选项卡上的某些功能需要对虚拟机或资源组中的其他资源具有写访问权限。
+与 Web 应用类似，虚拟机边栏选项卡上的某些功能需要对虚拟机或资源组中的其他资源具有写访问权限。
 
 虚拟机与域名、虚拟网络、存储帐户和警报规则相关。
 
@@ -96,6 +85,18 @@ ms.locfileid: "37437359"
 * 警报规则  
 
 如果无法访问以上任何磁贴，则需要让管理员提供对资源组的“参与者”访问权限。
+
+## <a name="azure-functions-and-write-access"></a>Azure Functions 和写访问权限
+
+[Azure Functions](../azure-functions/functions-overview.md) 的某些功能需要写入权限。 例如，如果给用户分配读者角色，他们将无法查看函数应用中的函数。 门户将显示 (无访问权限)。
+
+![函数应用无访问权限](./media/troubleshooting/functionapps-noaccess.png)
+
+读者可单击“平台功能”选项卡，然后单击“所有设置”查看与函数应用（类似于 Web 应用）相关的一些设置，但无法修改任何这些设置。
+
+## <a name="rbac-changes-are-not-being-detected"></a>未检测到 RBAC 更改
+
+Azure 资源管理器有时会缓存配置和数据以提高性能。 创建或删除角色分配时，更改最多可能需要 30 分钟才能生效。 如果使用的是 Azure 门户、Azure PowerShell 或 Azure CLI，则可以通过注销和登录来强制刷新角色分配更改。 如果使用 REST API 调用进行角色分配更改，则可以通过刷新访问令牌来强制刷新。
 
 ## <a name="next-steps"></a>后续步骤
 * [使用 RBAC 和 Azure 门户管理访问权限](role-assignments-portal.md)

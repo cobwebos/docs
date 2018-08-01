@@ -7,18 +7,18 @@ ms.author: euang
 manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 93da07006280b38c9e6539773e6ac22e50e48b57
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 2173ff15906940b8628aba3615f31e3f7137e3e2
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831806"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216697"
 ---
 # <a name="sample-of-destination-connections-python"></a>目标连接示例 (Python) 
 阅读本附录前，请先阅读 [Python 扩展性概述](data-prep-python-extensibility-overview.md)。

@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 07/21/2018
-ms.openlocfilehash: 3637ee63c94ea54145d99b9d5632f0a77c95d2f4
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 7494f139f824d3794fced3a0eb4f8d676f3961f5
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970255"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173701"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL 定价层
 
@@ -97,6 +97,8 @@ ms.locfileid: "38970255"
 服务器设置为只读时，所有现有会话都将断开连接，且未提交的事务会回退。 任何后续写入操作和事务提交均会失败。 所有后续读取查询将不间断工作。  
 
 可增加服务器预配存储量，也可在读写模式下启动新会话并删除数据以回收空闲存储。 运行 `SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE;` 将当前会话设置为读写模式。 为避免数据损坏，请勿在服务器仍处于只读状态时执行任何写入操作。
+
+我们建议你设置警报，以便在服务器存储接近阈值时通知你，从而可以避免进入只读状态。 有关详细信息，请参阅有关[如何设置警报](howto-alert-on-metric.md)的文档。
 
 ## <a name="backup"></a>备份
 

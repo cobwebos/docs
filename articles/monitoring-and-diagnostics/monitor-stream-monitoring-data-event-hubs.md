@@ -5,19 +5,21 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 7/06/2018
+ms.date: 7/24/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 5e8d8947643494e06faaabb5335c52df5908303e
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 0376fc3eb3ad0b98f1d98ecd35683b08e08090da
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902983"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248090"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>将 Azure 监视数据流式传输到事件中心以便外部工具使用
 
 Azure Monitor 提供了获取 Azure 环境中所有监视数据访问权限的单一管道，让你能够轻松设置合作伙伴 SIEM 和监视工具以使用该数据。 本文将演练如何将 Azure 环境中的不同数据层设置为发送到单个事件中心命名空间或事件中心，以便由外部工具收集。
+
+> [!VIDEO https://www.youtube.com/embed/SPHxCgbcvSw]
 
 ## <a name="what-data-can-i-send-into-an-event-hub"></a>可将哪些数据发送到事件中心？ 
 
@@ -27,8 +29,9 @@ Azure Monitor 提供了获取 Azure 环境中所有监视数据访问权限的�
   - 用 [Application Insights SDK](../application-insights/app-insights-overview.md) 等 SDK 检测代码。
   - 运行侦听应用程序运行于的计算机上的新应用程序日志的监视代理，如 [Windows Azure 诊断代理](./azure-diagnostics.md)或 [Linux Azure 诊断代理](../virtual-machines/linux/diagnostic-extension.md)。
 - **来宾 OS 监视数据：** 有关应用程序运行于的操作系统的数据。 来宾 OS 监视数据的示例有 Linux syslog 或 Windows 系统日志。 若要收集此类型的数据，需安装代理，如[ Windows Azure 诊断代理](./azure-diagnostics.md)或 [Linux Azure 诊断代理](../virtual-machines/linux/diagnostic-extension.md)。
-- **Azure 资源监视数据：** 有关 Azure 资源操作的数据。 对于某些 Azure 资源类型（如虚拟机），该 Azure 服务中会监视来宾 OS 和应用程序。 对于其他 Azure 资源（如网络安全组），资源监视数据是可用数据的最高层（因为没有 来宾 OS 或应用程序在这些资源中运行）。 可以使用[资源诊断设置](./monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)收集这些数据。
-- **Azure 平台监视数据：** 有关 Azure 订阅或租户操作和管理的数据，以及有关 Azure 本身运行状况和操作的数据。 [活动日志](./monitoring-overview-activity-logs.md)，包括服务运行状况数据，Active Directory 审核是平台监视数据的示例。 也可使用诊断设置收集这些数据。
+- **Azure 资源监视数据：** 有关 Azure 资源操作的数据。 对于某些 Azure 资源类型（如虚拟机），该 Azure 服务中会监视来宾 OS 和应用程序。 对于其他 Azure 资源（如网络安全组），资源监视数据是可用数据的最高层（因为没有 来宾 OS 或应用程序在这些资源中运行）。 可以使用[资源诊断设置](./monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)收集这些数据。
+- **Azure 订阅监视数据：** 有关 Azure 订阅操作和管理的数据，以及有关 Azure 本身运行状况和操作的数据。 [活动日志](./monitoring-overview-activity-logs.md)包含大多数订阅监视数据，例如服务运行状况事件和 Azure 资源管理器审核。 可以使用日志配置文件收集此数据。
+- **Azure 租户监视数据：** 有关租户级 Azure 服务（如 Azure Active Directory）操作的数据。 Azure Active Directory 审核和登录是租户监视数据的示例。 可以使用租户诊断设置收集此数据。
 
 可将任何层的数据发送到事件中心，以便将其拉取到合作伙伴工具。 以下各节描述了如何将每层数据配置为流式传输到事件中心。 这些步骤假定你拥有处于要监视的层的资产。
 
@@ -45,11 +48,17 @@ Azure Monitor 提供了获取 Azure 环境中所有监视数据访问权限的�
 
 另请参阅 [Azure 事件中心常见问题解答](../event-hubs/event-hubs-faq.md)。
 
-## <a name="how-do-i-set-up-azure-platform-monitoring-data-to-be-streamed-to-an-event-hub"></a>如何将 Azure 平台监视数据设置为流式传输到事件中心？
+## <a name="how-do-i-set-up-azure-tenant-monitoring-data-to-be-streamed-to-an-event-hub"></a>如何将 Azure 租户监视数据设置为流式传输到事件中心？
 
-Azure 平台监视数据来自两个主要源：
-1. [Azure 活动日志](./monitoring-overview-activity-logs.md)，其中包含来自资源管理器的创建、更新和删除操作；[Azure 服务运行状况](../service-health/service-health-overview.md)中可能影响订阅中资源的更改；[资源运行状况](../service-health/resource-health-overview.md)状态转换；以及若干其他类型的订阅级别事件。 [本文详细介绍了 Azure 活动日志中显示的所有事件类别](./monitoring-activity-log-schema.md)。
-2. [Azure Active Directory 报告](../active-directory/active-directory-reporting-azure-portal.md)，其中包含特定租户中的登录活动历史记录和更改审核日志。 尚不可将 Azure Active Directory 数据流式传输到事件中心。
+Azure 租户监视数据目前仅适用于 Azure Active Directory。 可以使用 [Azure Active Directory 报告](../active-directory/active-directory-reporting-azure-portal.md)中的数据，其中包含特定租户中的登录活动历史记录和更改审核跟踪。
+
+### <a name="stream-azure-active-directory-data-into-an-event-hub"></a>将 Azure Active Directory 数据流式传输到事件中心
+
+若要将 Azure Active Directory 日志中的数据发送到事件中心命名空间，请在 AAD 租户上设置租户诊断设置。 请[按照此指南](../active-directory/reporting-azure-monitor-diagnostics-azure-event-hub.md)设置租户诊断设置。
+
+## <a name="how-do-i-set-up-azure-subscription-monitoring-data-to-be-streamed-to-an-event-hub"></a>如何将 Azure 订阅监视数据设置为流式传输到事件中心？
+
+Azure 订阅监视数据可以在 [Azure 活动日志](./monitoring-overview-activity-logs.md)中找到。 此日志包含来自资源管理器的创建、更新和删除操作；[Azure 服务运行状况](../service-health/service-health-overview.md)中可能影响订阅中资源的更改；[资源运行状况](../service-health/resource-health-overview.md)状态转换；以及若干其他类型的订阅级别事件。 [本文详细介绍了 Azure 活动日志中显示的所有事件类别](./monitoring-activity-log-schema.md)。
 
 ### <a name="stream-azure-activity-log-data-into-an-event-hub"></a>将 Azure 活动日志数据流式传输到事件中心
 

@@ -11,12 +11,12 @@ ms.workload: azure
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 78ef7d98d9e11ba9b2c52bfc88d6ecb050cafa84
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: dd1d6ca6d43a7c1054b822336d23b4b6be392788
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31793294"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39212970"
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Azure 存储入门（Azure WebJob 项目）
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]

@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 06/30/2018
-ms.openlocfilehash: dc1f8581df5dc7c5728094577298ba078cc2c527
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 52dfac826de86f67b3143cce49c35088547c4b39
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37343164"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171766"
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 中的限制
 下列各部分介绍数据库服务中的容量和功能限制。
@@ -55,8 +55,9 @@ Azure 系统需要使用五个连接来监视 Azure Database for PostgreSQL 服�
 ### <a name="vnet-service-endpoints"></a>VNet 服务终结点
 - 只有常规用途和内存优化服务器才支持 VNet 服务终结点。
 
-### <a name="point-in-time-restore-pitr"></a>时间点还原 (PITR)
-- 使用 PITR 功能时，将使用与新服务器所基于的服务器相同的配置创建新服务器。
+### <a name="restoring-a-server"></a>还原服务器
+- 使用 PITR 功能时，将使用与新服务器所基于的服务器相同的定价层配置创建新服务器。
+- 还原期间创建的新服务器没有原始服务器上存在的防火墙规则。 需要为此新服务器单独设置防火墙规则。
 - 不支持还原已删除的服务器。
 
 ## <a name="next-steps"></a>后续步骤

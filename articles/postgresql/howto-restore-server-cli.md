@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 4e745a5de8000e0f26491c9f4f236f7f8a735ae9
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: de0d6ee32380367bfba4a27958c9c1e739b5dba3
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38635062"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173420"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-cli"></a>如何使用 Azure CLI 在 Azure Database for PostgreSQL 中备份和还原服务器
 
@@ -71,7 +71,7 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 ```
 
 `az postgres server restore` 命令需要以下参数：
-| 设置 | 建议的值 | 说明  |
+| 设置 | 建议的值 | Description  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  源服务器所在的资源组。  |
 | 名称 | mydemoserver-restored | 通过还原命令创建的新服务器的名称。 |
@@ -83,6 +83,8 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 还原的服务器的位置值和定价层值与原始服务器保持相同。 
 
 还原过程完成后，找到新服务器，验证数据是否已按预期还原。
+
+还原期间创建的新服务器没有原始服务器上存在的防火墙规则。 需要为此新服务器单独设置防火墙规则。
 
 ## <a name="geo-restore"></a>异地还原
 如果为服务器配置了异地冗余备份，则可以从该现有服务器的备份创建新服务器。 可以在 Azure Database for PostgreSQL 可用的任何区域中创建此新服务器。  
@@ -108,7 +110,7 @@ az postgres server georestore --resource-group newresourcegroup --name mydemoser
 ```
 
 `az postgres server georestore` 命令需要以下参数：
-| 设置 | 建议的值 | 说明  |
+| 设置 | 建议的值 | Description  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | 新服务器将属于的资源组的名称。|
 |名称 | mydemoserver-georestored | 新服务器的名称。 |
@@ -121,6 +123,8 @@ az postgres server georestore --resource-group newresourcegroup --name mydemoser
 >通过异地还原创建新服务器时，它将继承与源服务器相同的存储大小和定价层。 在创建过程中无法更改这些值。 创建新服务器后，可以纵向扩展其存储大小。
 
 还原过程完成后，找到新服务器，验证数据是否已按预期还原。
+
+还原期间创建的新服务器没有原始服务器上存在的防火墙规则。 需要为此新服务器单独设置防火墙规则。
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解服务的[备份](concepts-backup.md)。

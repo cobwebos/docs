@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 6039ea482b0968d48fc21ff3dfec82a2ff0db43d
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: ff2968f8e2fa9a705817b020f2daa6582d78029c
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715320"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225296"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>管理 Azure 实验室服务中的实验室帐户 
 在 Azure 实验室服务中，实验室帐户是托管实验室（如教室实验室）的容器。 管理员可以设置一个具有 Azure 实验室服务的实验室帐户，并为能够在帐户中创建实验室的实验室所有者提供访问权限。 本文介绍如何创建实验室帐户、查看所有实验室帐户，或者删除实验室帐户。
@@ -45,7 +45,7 @@ ms.locfileid: "34715320"
     ![“实验室帐户”页面](../media/how-to-manage-lab-accounts/lab-account-page.png)
 
 ## <a name="add-a-user-to-the-lab-creator-role"></a>将用户添加为“实验室创建者”角色
-为教师提供为课程创建实验室的权限，并将他们添加为实验室创建者角色：
+若要在实验室帐户中设置课堂实验室，用户必须是实验室帐户中“实验室创建者”角色的成员。 用来创建实验室帐户的帐户会自动添加到此角色。 如果打算使用同一用户帐户创建课堂实验室，可以跳过此步骤。 若要使用其他用户帐户创建教室实验室，请执行以下步骤： 
 
 1. 在“实验室帐户”页上，选择“访问控制(IAM)”，然后单击工具栏中的“+ 添加”。 
 
@@ -54,6 +54,22 @@ ms.locfileid: "34715320"
 
     ![将用户添加为“实验室创建者”角色](../media/tutorial-setup-lab-account/add-user-to-lab-creator-role.png)
 
+## <a name="specify-marketplace-images-available-to-lab-owners"></a>指定可供实验室所有者使用的市场映像
+在本部分中，指定实验室所有者可用来创建课堂实验室的市场映像。 
+
+1. 在左侧的菜单上选择“市场映像”。 默认情况下，可以看到映像的完整列表（包括已启用的和已禁用的）。 可以通过从顶部的下拉列表中选择“仅启用的/仅禁用的”选项对列表进行筛选来仅查看启用的/禁用的映像。 
+
+    ![“市场映像”页](../media/tutorial-setup-lab-account/marketplace-images-page.png)
+2. 若要**禁用**已启用的市场映像，请执行下列操作之一： 
+    1. 选择最后一列中的“...”（省略号）并选择“禁用映像”。 
+
+        ![禁用一个映像](../media/tutorial-setup-lab-account/disable-one-image.png) 
+    2. 通过选中列表中映像名称前面的复选框从列表中选择一个或多个映像，然后选择“禁用所选映像”。 
+
+        ![禁用多个映像](../media/tutorial-setup-lab-account/disable-multiple-images.png) 
+1. 类似地，若要**启用**市场映像，请执行下列操作之一： 
+    1. 选择最后一列中的“...”（省略号）并选择“启用映像”。 
+    2. 通过选中列表中映像名称前面的复选框从列表中选择一个或多个映像，然后选择“启用所选映像”。 
 
 ## <a name="view-lab-accounts"></a>查看实验室帐户
 1. 登录到 [Azure 门户](https://portal.azure.com)。

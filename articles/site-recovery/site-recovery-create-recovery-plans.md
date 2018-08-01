@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 853b9c2f50967d7a203e5627bdd2fc6f14e0e4f6
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 145b23aa7b8e48a0301676595c8d59a64bebdd0b
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920995"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226662"
 ---
 # <a name="create-and-customize-recovery-plans"></a>创建和自定义恢复计划
 
@@ -76,7 +76,7 @@ ms.locfileid: "37920995"
 2. 在“插入操作”中，选择“脚本”或“手动操作”。
 3. 如果要添加手动操作，请执行以下操作。a. 为操作键入一个名称，然后键入操作说明。 运行故障转移的人员将会看到这些说明。
     b. 指定是否要为所有类型的故障转移（测试、故障转移、计划内故障转移（如果相关））添加手动操作。 然后单击“确定”。
-4. 如果要添加脚本，请执行以下操作：a. 如果要添加 VMM 脚本，请选择“**故障转移到 VMM 脚本**”，并在“**脚本路径**”中键入共享的相对路径。 例如，如果共享位于 \\<VMMServerName>\MSSCVMMLibrary\RPScripts，请指定以下路径：\RPScripts\RPScript.PS1。
+4. 如果要添加脚本，请执行以下操作：a. 如果要添加 VMM 脚本，请选择“故障转移到 VMM 脚本”，并在“脚本路径”中键入共享的相对路径。 例如，如果共享位于 \\<VMMServerName>\MSSCVMMLibrary\RPScripts，请指定以下路径：\RPScripts\RPScript.PS1。
     b. 如果要添加 Azure 自动化 Runbook，请指定该 Runbook 所在的 **Azure 自动化帐户**，并选择相应的 **Azure Runbook 脚本**。
 5. 运行恢复计划的测试故障转移，以确保脚本按预期运行。
 

@@ -7,14 +7,14 @@ author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 07/19/2018
 ms.author: manayar
-ms.openlocfilehash: e8094c582af6ea03f5ffcc4f61914488891cb556
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 3a2ad35a5382394a6886ed14dcc4f659762f2833
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920883"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172232"
 ---
 # <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>使用 Azure Site Recovery 保护 Active Directory 和 DNS
 
@@ -31,13 +31,10 @@ ms.locfileid: "37920883"
 
 ## <a name="replicate-the-domain-controller"></a>复制域控制器
 
-至少需要在一台托管域控制器或 DNS 的 VM 上设置 [Site Recovery 复制](#enable-protection-using-site-recovery)。 如果环境中有[多个域控制器](#environment-with-multiple-domain-controllers)，还必须在目标站点上设置[附加的域控制器](#protect-active-directory-with-active-directory-replication)。 附加的域控制器可以在 Azure 中，也可位于辅助本地数据中心。
-
-### <a name="single-domain-controller"></a>单个域控制器
-如果应用程序数目较少并且只有一个域控制器，则可能希望对整个站点进行故障转移。 在这种情况下，我们建议使用 Site Recovery 将域控制器复制到目标站点（无论域控制器位于 Azure 还是辅助本地数据中心）。 也可以将复制的同一个域控制器或 DNS 虚拟机用于[测试故障转移](#test-failover-considerations)。
-
-### <a name="multiple-domain-controllers"></a>多个域控制器
-如果应用程序数量较多，而环境中不止一个域控制器，或者计划一次性故障转移多个应用程序，除了使用 Site Recovery 复制域控制器虚拟机以外，我们建议在目标站点（Azure 或辅助本地数据中心）上设置[附加的域控制器](#protect-active-directory-with-active-directory-replication)。 对于[测试故障转移](#test-failover-considerations)，可使用由 Site Recovery 复制的域控制器。 对于故障转移，可以在目标站点上使用附加的域控制器。
+- 至少需要在一台托管域控制器或 DNS 的 VM 上设置 [Site Recovery 复制](#enable-protection-using-site-recovery)。
+- 如果环境中有[多个域控制器](#environment-with-multiple-domain-controllers)，还必须在目标站点上设置[附加的域控制器](#protect-active-directory-with-active-directory-replication)。 附加的域控制器可以在 Azure 中，也可位于辅助本地数据中心。
+- 如果应用程序数目较少并且只有一个域控制器，则可能希望对整个站点进行故障转移。 在这种情况下，我们建议使用 Site Recovery 将域控制器复制到目标站点（无论域控制器位于 Azure 还是辅助本地数据中心）。 也可以将复制的同一个域控制器或 DNS 虚拟机用于[测试故障转移](#test-failover-considerations)。
+- - 如果应用程序数量较多，而环境中不止一个域控制器，或者计划一次性故障转移多个应用程序，除了使用 Site Recovery 复制域控制器虚拟机以外，我们建议在目标站点（Azure 或辅助本地数据中心）上设置[附加的域控制器](#protect-active-directory-with-active-directory-replication)。 对于[测试故障转移](#test-failover-considerations)，可使用由 Site Recovery 复制的域控制器。 对于故障转移，可以在目标站点上使用附加的域控制器。
 
 ## <a name="enable-protection-with-site-recovery"></a>使用 Site Recovery 启用保护
 
@@ -186,9 +183,11 @@ ms.locfileid: "37920883"
     有关详细信息，请参阅[禁用需要全局编录服务器才能验证用户登录的要求](http://support.microsoft.com/kb/241789)。
 
 ### <a name="dns-and-domain-controller-on-different-machines"></a>不同计算机上的 DNS 和域控制器
-如果 DNS 与域控制器不在同一个虚拟机上，则必须创建一个可以进行测试故障转移的 DNS 虚拟机。 如果 DNS 与域控制器不在同一个虚拟机上，则可以跳过本节。
 
-可以使用全新的 DNS 服务器并创建所有需要的区域。 例如，如果 Active Directory 域是 contoso.com，则可以使用名称 contoso.com 创建 DNS 区域。 必须在 DNS 中更新与 Active Directory 对应的条目，如下所示：
+如果要在同一 VM 上运行域控制器和 DN，则可以跳过此过程。
+
+
+如果 DNS 与域控制器不在同一个 VM 上，则需创建一个可以进行测试性故障转移的 DNS VM。 可以使用全新的 DNS 服务器并创建所有需要的区域。 例如，如果 Active Directory 域是 contoso.com，则可以使用名称 contoso.com 创建 DNS 区域。 必须在 DNS 中更新与 Active Directory 对应的条目，如下所示：
 
 1. 确保在恢复计划中的任何其他虚拟机启动之前，以下设置已准备就绪：
    * 区域必须以林根名称命名。

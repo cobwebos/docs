@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: d36ecb18811901fb781e151c06badc0697c2d769
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 390935d80e903631287b1a4b9f1075e547298d99
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658927"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39250139"
 ---
 # <a name="getting-compliance-data"></a>获取符合性数据
 
@@ -224,14 +224,13 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 有关查询策略事件的详细信息，请参阅[策略事件](/rest/api/policy-insights/policyevents)参考文章。
 
-### <a name="azure-powershell-preview"></a>Azure PowerShell（预览版）
+### <a name="azure-powershell"></a>Azure PowerShell
 
-适用于策略的 Azure PowerShell 模块尚未发布最终版，目前以[预览版](https://www.powershellgallery.com/packages/AzureRM.PolicyInsights)的形式在 PowerShell 库中提供。
-如果使用的 PowerShellGet 的最低版本为 1.6.0（需要安装该版本才能支持预发布项），可以使用 `Install-Module` 下载预览版（请确保已安装最新的 [Azure PowerShell](/powershell/azure/install-azurerm-ps)）：
+适用于策略的 Azure PowerShell 模块在 PowerShell 库中以 [AzureRM.PolicyInsights](https://www.powershellgallery.com/packages/AzureRM.PolicyInsights) 的形式提供。 使用 PowerShellGet，可以使用 `Install-Module -Name AzureRM.PolicyInsights` 安装模块（请确保已安装了最新版 [Azure PowerShell](/powershell/azure/install-azurerm-ps)）：
 
 ```powershell
-# Download preview from PowerShell Gallery via PowerShellGet
-Install-Module -Name AzureRM.PolicyInsights -AllowPrerelease
+# Install from PowerShell Gallery via PowerShellGet
+Install-Module -Name AzureRM.PolicyInsights
 
 # Import the downloaded module
 Import-Module AzureRM.PolicyInsights
@@ -240,7 +239,7 @@ Import-Module AzureRM.PolicyInsights
 Connect-AzureRmAccount
 ```
 
-预览版模块包含三个 cmdlet：
+该模块包含三个 cmdlet：
 
 - `Get-AzureRmPolicyStateSummary`
 - `Get-AzureRmPolicyState`
@@ -354,4 +353,4 @@ Trent Baker
 
 - 查看[策略定义结构](policy-definition.md)。
 - 查看[了解策略效果](policy-effects.md)。
-- 参阅[使用 Azure 管理组来组织资源](../azure-resource-manager/management-groups-overview.md)了解什么是管理组。
+- 参阅[使用 Azure 管理组来组织资源](../azure-resource-manager/management-groups-overview.md)，了解什么是管理组

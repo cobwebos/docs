@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 488a4c4b7daf5c07ca5f6b6bb72464279658d372
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: f3734304bdcc4b3f0944ebf568094595eea01a4e
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
-ms.locfileid: "26344816"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214894"
 ---
 # <a name="api-management-caching-policies"></a>API 管理缓存策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](http://go.microsoft.com/fwlink/?LinkID=398186)。  
@@ -104,7 +104,7 @@ ms.locfileid: "26344816"
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必选|  
+|名称|Description|必选|  
 |----------|-----------------|--------------|  
 |cache-lookup|根元素。|是|  
 |vary-by-header|开始按指定标头（例如 Accept、Accept-Charset、Accept-Encoding、Accept-Language、Authorization、Expect、From、Host、If-Match）的值缓存响应。|否|  
@@ -112,11 +112,11 @@ ms.locfileid: "26344816"
   
 ### <a name="attributes"></a>属性  
   
-|Name|说明|必选|默认|  
+|名称|Description|必选|默认|  
 |----------|-----------------|--------------|-------------|  
 |allow-private-response-caching|设置为 `true` 即可缓存包含 Authorization 标头的请求。|否|false|  
 |downstream-caching-type|此属性必须设置为以下值之一。<br /><br /> -   none - 不允许下游缓存。<br />-   private - 允许下游专用缓存。<br />-   public - 允许专用和共享下游缓存。|否|无|  
-|must-revalidate|启用下游缓存时，此属性会启用或关闭网关响应中的 `must-revalidate` 缓存控制指令。|否|true|  
+|must-revalidate|启用下游缓存时，此属性会启用或关闭网关响应中的 `must-revalidate` 缓存控制指令。|否|是|  
 |vary-by-developer|设置为 `true` 即可按开发人员密钥缓存响应。|是||  
 |vary-by-developer-groups|设置为 `true` 即可按用户角色缓存响应。|是||  
   
@@ -182,18 +182,18 @@ ms.locfileid: "26344816"
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必选|  
+|名称|Description|必选|  
 |----------|-----------------|--------------|  
 |cache-store|根元素。|是|  
   
 ### <a name="attributes"></a>属性  
   
-|Name|说明|必选|默认|  
+|名称|Description|必选|默认|  
 |----------|-----------------|--------------|-------------|  
 |duration|缓存条目的生存时间，以秒为单位指定。|是|不适用|  
   
 ### <a name="usage"></a>使用情况  
- 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+ 此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略段：** 出站    
 -   **策略范围：** API、操作、产品  
@@ -224,13 +224,13 @@ ms.locfileid: "26344816"
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必选|  
+|名称|Description|必选|  
 |----------|-----------------|--------------|  
 |cache-lookup-value|根元素。|是|  
   
 ### <a name="attributes"></a>属性  
   
-|Name|说明|必选|默认|  
+|名称|Description|必选|默认|  
 |----------|-----------------|--------------|-------------|  
 |default-value|在缓存密钥查找未命中的情况下，会分配给变量的值。 如果未指定此属性，则会分 `null`。|否|`null`|  
 |key|要在查找中使用的缓存密钥值。|是|不适用|  
@@ -266,17 +266,17 @@ ms.locfileid: "26344816"
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必选|  
+|名称|Description|必选|  
 |----------|-----------------|--------------|  
 |cache-store-value|根元素。|是|  
   
 ### <a name="attributes"></a>属性  
   
-|Name|说明|必选|默认|  
+|名称|Description|必选|默认|  
 |----------|-----------------|--------------|-------------|  
 |duration|会根据提供的期间值（以秒为单位指定）将值缓存一段时间。|是|不适用|  
 |key|缓存密钥，会在其下存储值。|是|不适用|  
-|value|要缓存的值。|是|不适用|  
+|值|要缓存的值。|是|不适用|  
   
 ### <a name="usage"></a>使用情况  
  此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
@@ -305,13 +305,13 @@ ms.locfileid: "26344816"
   
 #### <a name="elements"></a>元素  
   
-|Name|说明|必选|  
+|名称|Description|必选|  
 |----------|-----------------|--------------|  
 |cache-remove-value|根元素。|是|  
   
 #### <a name="attributes"></a>属性  
   
-|Name|说明|必选|默认|  
+|名称|Description|必选|默认|  
 |----------|-----------------|--------------|-------------|  
 |key|以前所缓存的值（将从缓存中删除）的密钥。|是|不适用|  
   

@@ -10,15 +10,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance-reports
-ms.date: 09/19/2017
+ms.date: 07/16/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 0ac43637adc91c22aaab78f04732a613c74706d9
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f583e962023603dbd7428c32bde52b9040246814
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446094"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205113"
 ---
 # <a name="review-your-access"></a>评审访问权限
 
@@ -26,7 +26,11 @@ Azure Active Directory (Azure AD) 使用称为“访问评审”的功能，简�
 
 ## <a name="open-an-access-review"></a>开始访问评审
 
-要查看未完成的访问评审，请单击电子邮件中的链接。 如果没有收到电子邮件，可以通过执行以下操作找到访问评审：
+若要查看未完成的访问评审，请单击电子邮件中的“评审访问权限”链接。 从 2018 年 8 月开始，Azure AD 角色的电子邮件通知具有更新的设计。 下面显示了邀请用户成为审阅者时发送的示例电子邮件。
+
+![评审访问权限电子邮件](./media/active-directory-azure-ad-controls-how-to-review-your-access/new-ar-email.png)
+
+如果没有收到电子邮件，可以通过执行以下操作找到访问评审：
 
 1. 登录 [Azure AD 访问面板](https://myapps.microsoft.com)。
 
