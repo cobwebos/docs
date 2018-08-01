@@ -1,21 +1,21 @@
 ---
-title: 自助密码重置自定义 - Azure Active Directory
+title: 自定义 Azure AD 自助密码重置
 description: 用于 Azure AD 自助服务密码重置的自定义选项
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 23a2897142f5cba90513e8b79e4cd461f1dd25b7
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 69f6ed7814feacbd5adf60325aae123d388ffb61
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054584"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222782"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>为自助密码重置自定义 Azure AD 功能
 
@@ -24,8 +24,9 @@ ms.locfileid: "39054584"
 ## <a name="customize-the-contact-your-administrator-link"></a>自定义“联系管理员”链接
 
 即使未启用 SSPR，用户在密码重置门户中也仍可找到“联系管理员”链接。 如果用户选择该链接，它将执行以下任务之一：
-   * 向管理员发送一封电子邮件，请求他们帮助更改用户的密码。 
-   * 将用户指引到指定的 URL 以获取帮助。 
+
+   * 向管理员发送一封电子邮件，请求他们帮助更改用户的密码。
+   * 将用户指引到指定的 URL 以获取帮助。
 
 建议将此联系人设置为用户已用来提问支持问题的电子邮件地址或网站等内容。
 
@@ -45,9 +46,7 @@ ms.locfileid: "39054584"
 
 如果组织不希望向管理员通知密码重置请求，可启用以下配置：
 
-* 为所有最终用户启用自助密码重置。 可在“密码重置” > “属性”下面找到此选项。
-  
-  如果不希望用户重置其自己的密码，可以将访问权限限制为某个空组。 我们不建议使用此选项。
+* 为所有最终用户启用自助密码重置。 可在“密码重置” > “属性”下面找到此选项。 如果不希望用户重置其自己的密码，可以将访问权限限制为某个空组。 我们不建议使用此选项。
 * 自定义帮助台链接，以提供可让用户获得帮助的 Web URL 或 mailto: 地址。 可在“密码重置” > “自定义” > “自定义支持人员电子邮件或 URL”下面找到此选项。
 
 ## <a name="customize-the-ad-fs-sign-in-page-for-sspr"></a>为 SSPR 自定义 AD FS 登录页
@@ -56,7 +55,7 @@ Active Directory 联合身份验证服务 (AD FS) 管理员可以使用[添加�
 
 若要将链接添加到 AD FS 登录页，请在 AD FS 服务器上使用以下命令。 用户可以使用此页输入 SSPR 工作流。
 
-``` Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href=’https://passwordreset.microsoftonline.com’>Can’t access your account?</A></p>" ```
+``` Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwordreset.microsoftonline.com' target='_blank'>Can’t access your account?</A></p>" ```
 
 ## <a name="customize-the-sign-in-page-and-access-panel-look-and-feel"></a>自定义登录页和访问面板的外观
 

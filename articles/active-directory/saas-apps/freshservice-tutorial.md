@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/16/2017
+ms.date: 07/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 28a334cc43f8c14d2bf639b715e891cc6bb8c1cd
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: cccbe2052336012b9ac98b3e28dc6481cbf9aefb
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214444"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144526"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshservice"></a>教程：Azure Active Directory 与 Freshservice 集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "36214444"
 
     ![配置单一登录](./media/freshservice-tutorial/tutorial_freshservice_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<democompany>.freshservice.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<democompany>.freshservice.com`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<democompany>.freshservice.com`
 
@@ -121,7 +121,7 @@ ms.locfileid: "36214444"
  
 4. 在“SAML 签名证书”部分中，复制证书的指纹值。
 
-    ![配置单一登录](./media/freshservice-tutorial/tutorial_freshservice_certificate.png) 
+    ![配置单一登录](./media/freshservice-tutorial/tutorial_freshservice_certificate.png)
 
 5. 单击“保存”按钮。
 
@@ -153,13 +153,9 @@ ms.locfileid: "36214444"
 
     d. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
 
-    e. 在“安全证书指纹”文本框中，粘贴从 Azure 门户中复制的证书的“THUMBPRINT”值。
+    e. 在“安全证书指纹”文本框中，粘贴从 Azure 门户复制的证书的“THUMBPRINT”值。
 
     f. 单击“保存”
-   
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。

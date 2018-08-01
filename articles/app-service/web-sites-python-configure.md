@@ -4,7 +4,7 @@ description: 本教程介绍在 Azure 应用服务 Web 应用中创作和配置�
 services: app-service
 documentationcenter: python
 tags: python
-author: huguesv
+author: cephalin
 manager: erikre
 editor: ''
 ms.assetid: fd00dc91-9935-4331-b955-4bd71e66d518
@@ -15,12 +15,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/26/2016
 ms.author: huvalo
-ms.openlocfilehash: 32d9cd6c42387b67881877a1165dfcbcaef405ba
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f1859660d2370093ab582c417233b25d363ce952
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598634"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39227763"
 ---
 # <a name="configuring-python-with-azure-app-service-web-apps"></a>使用 Azure 应用服务 Web 应用配置 Python
 本教程介绍在 [Azure 应用服务 Web 应用](http://go.microsoft.com/fwlink/?LinkId=529714)中创作和配置符合基本 Web 服务器网关接口 (WSGI) 的 Python 应用程序的选项。
@@ -30,9 +30,11 @@ ms.locfileid: "34598634"
 ## <a name="bottle-django-or-flask"></a>Bottle、Django 还是 Flask？
 Azure 市场包含用于 Bottle、Django 和 Flask 框架的模板。 如果正在开发 Azure 应用服务中的第一个 Web 应用，可以通过 Azure 门户快速创建一个：
 
-* [使用 Bottle 创建 Web 应用](https://portal.azure.com/#create/PTVS.Bottle)
-* [使用 Django 创建 Web 应用](https://portal.azure.com/#create/PTVS.Django)
+* [使用 Linux 上 Bottle 创建 Web 应用](https://portal.azure.com/#create/PTVS.BottleLinux)
+* [使用 Linux 上 Django 创建 Web 应用](https://portal.azure.com/#create/PTVS.DjangoLinux)
 * [使用 Linux 上 Flask 创建 Web 应用](https://portal.azure.com/#create/PTVS.FlaskLinux)
+
+也可以[自己探索 Azure 市场](https://portal.azure.com/#create/hub)。
 
 ## <a name="web-app-creation-on-azure-portal"></a>在 Azure 门户上创建 Web 应用
 本教程假设已有 Azure 订阅和 Azure 门户访问权限。
@@ -350,8 +352,11 @@ Python 3.4 的示例 `web.config`：
 ## <a name="troubleshooting---virtual-environment"></a>故障排除 - 虚拟环境
 [!INCLUDE [web-sites-python-troubleshooting-virtual-environment](../../includes/web-sites-python-troubleshooting-virtual-environment.md)]
 
+## <a name="troubleshooting---startup-errors"></a>故障排除 - 启动错误
+[!INCLUDE [web-sites-python-troubleshooting-wsgi-error-log](../../includes/web-sites-python-troubleshooting-wsgi-error-log.md)]
+
 ## <a name="next-steps"></a>后续步骤
-有关详细信息，请参阅 [Python 开发人员中心](/develop/python/)。
+有关详细信息，请参阅 [Python 开发人员中心](/python/azure/)。
 
 > [!NOTE]
 > 如果要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](https://azure.microsoft.com/try/app-service/)，可以在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。

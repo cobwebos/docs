@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2018
+ms.date: 07/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 64b94baeaede9b05e953b69324648c63d97cea8e
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: a453e2d16edecda9753c2940a745b260a3a2b893
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39045432"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160257"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>教程：Azure Active Directory 与 Salesforce 集成
 
@@ -60,14 +60,14 @@ ms.locfileid: "39045432"
 
 若要从库中添加 Salesforce，请执行以下步骤：
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
     ![“Azure Active Directory”按钮][1]
 
 2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
-    
+
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
@@ -103,26 +103,26 @@ ms.locfileid: "39045432"
     ![配置单一登录链接][4]
 
 2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
+
     ![“单一登录”对话框](./media/salesforce-tutorial/tutorial_salesforce_samlbase.png)
 
 3. 在“Salesforce 域和 URL”部分中，执行以下步骤：
 
     ![Salesforce 域和 URL 单一登录信息](./media/salesforce-tutorial/tutorial_salesforce_url.png)
-    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入值：
-    
+
+    a. 在“登录 URL”文本框中，使用以下模式键入值：
+
     企业帐户：`https://<subdomain>.my.salesforce.com`
 
     开发人员帐户：`https://<subdomain>-dev-ed.my.salesforce.com`
-    
+
     b. 在“标识符”文本框中，使用以下模式键入值：
-    
+
     企业帐户：`https://<subdomain>.my.salesforce.com`
 
     开发人员帐户：`https://<subdomain>-dev-ed.my.salesforce.com`
-    
-    > [!NOTE] 
+
+    > [!NOTE]
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Salesforce 客户端支持团队](https://help.salesforce.com/support)获取这些值。
 
 4. 在“SAML 签名证书”部分中单击“证书”，然后在计算机上保存证书文件。
@@ -165,19 +165,19 @@ ms.locfileid: "39045432"
 
     ![配置单一登录](./media/salesforce-tutorial/sf-saml-config.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，为此配置键入友好名称。 提供“名称”值时会自动填充“API 名称”文本框。
+    a. 在“名称”字段中，为此配置键入友好名称。 提供“名称”值时会自动填充“API 名称”文本框。
 
     b. 将从 Azure 门户复制的“SAML 实体 ID”的值粘贴到“颁发者”字段中。
 
     c. 在“实体 ID”文本框中，使用以下模式输入 Salesforce 域名：
-      
+
       * 企业帐户：`https://<subdomain>.my.salesforce.com`
       * 开发人员帐户：`https://<subdomain>-dev-ed.my.salesforce.com`
-      
+
     d. 要上传“标识提供者证书”，请单击“选择文件”来浏览并选择已从 Azure 门户下载的证书文件。
 
     e. 作为 SAML 标识类型，选择以下选项之一：
-    
+
       * 如果用户的 Salesforce 用户名传递到 SAML 断言中，则选择“断言包含用户的 Salesforce 用户名”
 
       * 如果将来自用户对象的联合 ID 传递到 SAML 断言中，则选择“断言包含来自用户对象的联合 ID”
@@ -189,7 +189,7 @@ ms.locfileid: "39045432"
     g. 对于“服务提供程序发起的请求绑定”，请选择“HTTP 重定向”。
 
     h. 在“标识提供者登录 URL”文本框中，粘贴从 Azure 门户复制的“单一登录服务 URL”的值。
-    
+
     i. 最后，单击“保存”以应用 SAML 单一登录设置。
 
 14. 在 Salesforce 的左侧导航窗格中，单击“公司设置”展开相关部分，然后单击“我的域”。
@@ -200,7 +200,7 @@ ms.locfileid: "39045432"
 
     ![配置单一登录](./media/salesforce-tutorial/sf-edit-auth-config.png)
 
-16. 在“身份验证配置”部分，将“登录页”选为 SAML SSO 配置的“身份验证服务”，然后单击“保存”。
+16. 在“身份验证配置”部分中，选中“AzureSSO”作为 SAML SSO 配置的“身份验证服务”，然后单击“保存”。
 
     ![配置单一登录](./media/salesforce-tutorial/sf-auth-config.png)
 
@@ -231,7 +231,7 @@ ms.locfileid: "39045432"
 
     ![“用户”对话框](./media/salesforce-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 

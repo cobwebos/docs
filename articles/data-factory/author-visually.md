@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/01/2018
 ms.author: shlo
-ms.openlocfilehash: a7efe75507fad8e0391f9ad433ba416ed771063b
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 655a6ab2960047cde50bec2953015283ca8577f0
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265282"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214844"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure 数据工厂中的视觉对象创作
 Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部署资源为你的数据工厂而无需编写任何代码。 通过此无代码的界面，可将活动拖放到管道画布上、执行测试运行、以迭代方式进行调试，以及部署和监视管道运行。 可通过两种方法使用 UX 执行视觉对象创作：
@@ -59,7 +59,7 @@ Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部�
 
 窗格将显示以下 VSTS 代码存储库设置：
 
-| 设置 | 说明 | 值 |
+| 设置 | Description | 值 |
 |:--- |:--- |:--- |
 | **存储库类型** | VSTS 代码存储库的类型。<br/>**注意**：当前不支持 GitHub。 | Visual Studio Team Services Git |
 | **Azure Active Directory** | Azure AD 租户的名称。 | <your tenant name> |
@@ -88,7 +88,7 @@ Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部�
 ### <a name="use-version-control"></a>使用版本控制
 版本控制（也称为_源代码管理_）系统允许开发人员协作处理代码并跟踪对基本代码所做的更改。 源代码管理是用于多开发人员项目的重要工具。
 
-与数据工厂关联后的每个 VSTS Git 存储库都有一个协作分支。 （默认协作分支为 `master`）。 用户还可以通过单击“+ 新建分支”创建功能分支，并在功能分支中进行开发工作。
+与数据工厂关联的每个 VSTS Git 存储库都有一个协作分支。 （默认协作分支为 `master`）。 用户还可以通过单击“+ 新建分支”创建功能分支，并在功能分支中进行开发工作。
 
 ![通过同步或发布更改代码](media/author-visually/sync-publish.png)
 

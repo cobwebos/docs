@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: c20ad02f962fbee22bb16653c5eab351d9f3de17
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3ea4ebbd95237b50054fb0e344f260120d597ab5
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598719"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225228"
 ---
 # <a name="use-databricks-cli-from-azure-cloud-shell"></a>从 Azure Cloud Shell 中使用 Databricks CLI
 
@@ -36,13 +36,13 @@ ms.locfileid: "34598719"
  
 2. 在右上角单击 **Cloud Shell** 图标。
 
-   ![启动 Cloud Shell](./media/databricks-cli-from-azure-cloud-shell/launch-azure-cloud-shell.png "从 Excel 启动 ODBC")
+   ![启动 Cloud Shell](./media/databricks-cli-from-azure-cloud-shell/launch-azure-cloud-shell.png "启动 Azure Cloud Shell")
 
 3. 请确保已选择 **Bash** 作为 Cloud Shell 环境。 可以从下拉列表选项中进行选择，如以下屏幕截图中所示。
 
-   ![启动 Cloud Shell](./media/databricks-cli-from-azure-cloud-shell/select-bash-for-shell.png "从 Excel 启动 ODBC") 
+   ![选择 Bash 作为 Cloud Shell 环境](./media/databricks-cli-from-azure-cloud-shell/select-bash-for-shell.png "选择 Bash") 
 
-4. 创建可在其中安装 Databtricks CLI 的虚拟环境。 在下面的代码片段中，将创建一个名为 `databrickscli` 的虚拟环境。
+4. 创建可在其中安装 Databricks CLI 的虚拟环境。 在下面的代码片段中，将创建一个名为 `databrickscli` 的虚拟环境。
 
        virtualenv -p /usr/bin/python2.7 databrickscli
 
@@ -60,11 +60,9 @@ ms.locfileid: "34598719"
 
     你会收到以下提示：
 
-    * 系统会提示输入 Databricks 主机。 按格式 `https://eastus2.azuredatabricks.net` 输入值。 在这里，**美国东部 2** 是你在其中创建 Azure Databricks 工作区的 Azure 区域。
+    * 首先，系统会提示输入 Databricks 主机。 按格式 `https://eastus2.azuredatabricks.net` 输入值。 在这里，**美国东部 2** 是你在其中创建 Azure Databricks 工作区的 Azure 区域。
 
-    * 系统会提示输入用户名。 输入 **token**。
-
-    * 最后，系统会提示输入密码。 输入前面创建的令牌。
+    * 接下来，系统会提示输入令牌。 输入前面创建的令牌。
 
 完成这些步骤后，便可以开始从 Azure Cloud Shell 中使用 Databricks CLI 了。
 

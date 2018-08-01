@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/25/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 19fb5d3cb793b6e1e8e715c41edf8cde5746278b
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 2a447931ea850c4ccbe618270de5fbbc9b9eaea7
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257916"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39366590"
 ---
 # <a name="azure-stack-registration"></a>Azure Stack 注册
 可将 Azure Stack 开发工具包 (ASDK) 安装注册到 Azure，以便从 Azure 下载市场项，并设置向 Microsoft 报告商务数据的功能。 需要注册才能支持完整的 Azure Stack 功能，包括市场联合。 之所以建议注册，是因为这样可以测试重要的 Azure Stack 功能，例如市场联合和使用情况报告。 注册 Azure Stack 之后，使用情况将报告给 Azure 商业组件。 用于注册的订阅下会显示此信息。 但是，ASDK 用户无需付费，不管他们报告的用量是多少。
@@ -45,9 +45,7 @@ $ExecutionContext.SessionState.LanguageMode
 
 1. 以管理员身份打开 PowerShell 控制台。  
 
-2. 运行以下 PowerShell 命令，将 ASDK 安装注册到 Azure。 你将需要登录到你的 Azure 订阅和本地 ASDK 安装。 如果还没有 Azure 订阅，你可以[创建免费的 Azure 帐户此处](https://azure.microsoft.com/free/?b=17.06)。 注册 Azure Stack 不会对 Azure 订阅收取任何费用。
-
-    如果正在注册脚本的 Azure Stack 的多个实例上使用相同的 Azure 订阅 ID，设置注册的唯一名称，在运行时**Set-azsregistration** cmdlet。 **RegistrationName**参数具有默认值为**AzureStackRegistration**。 但是，如果在多个实例的 Azure Stack 上使用相同的名称，该脚本将失败。
+2. 运行以下 PowerShell 命令，将 ASDK 安装注册到 Azure。 你将需要登录到你的 Azure 订阅和本地 ASDK 安装。 如果还没有 Azure 订阅，你可以[创建免费的 Azure 帐户此处](https://azure.microsoft.com/free/?b=17.06)。 注册 Azure Stack 不会对 Azure 订阅收取任何费用。  
 
   ```PowerShell  
   # Add the Azure cloud subscription environment name. Supported environment names are AzureCloud or, if using a China Azure Subscription, AzureChinaCloud.
@@ -62,12 +60,10 @@ $ExecutionContext.SessionState.LanguageMode
   #Register Azure Stack
   $AzureContext = Get-AzureRmContext
   $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the credentials to access the privileged endpoint."
-  $RegistrationName = "<unique-registration-name>"
   Set-AzsRegistration `
       -PrivilegedEndpointCredential $CloudAdminCred `
       -PrivilegedEndpoint AzS-ERCS01 `
       -BillingModel Development
-      -RegistrationName $RegistrationName
   ```
 3. 完成脚本后，应会看到此消息：**环境现在已注册和激活使用提供的参数。**
 

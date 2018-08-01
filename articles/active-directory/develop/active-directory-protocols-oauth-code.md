@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a01c5bc2ca6310ee87f2ead1ea590987c854e733
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fab9ddefc022cb5643f98cf7fea4ca74d4f7101b
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595319"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39227725"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>使用 OAuth 2.0 代码授权流来授权访问 Azure Active Directory Web 应用程序
 Azure Active Directory (Azure AD) 使用 OAuth 2.0，使你能够授权访问 Azure AD 租户中的 Web 应用程序和 Web API。 本指南与语言无关，介绍在不使用我们的[开放源代码库](active-directory-authentication-libraries.md)的情况下，如何发送和接收 HTTP 消息。
@@ -44,19 +44,19 @@ Azure Active Directory (Azure AD) 使用 OAuth 2.0，使你能够授权访问 Az
 https://login.microsoftonline.com/{tenant}/oauth2/authorize?
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=code
-&redirect_uri=http%3A%2F%2Flocalhost%3A%12345
+&redirect_uri=http%3A%2F%2Flocalhost%3A12345
 &response_mode=query
 &resource=https%3A%2F%2Fservice.contoso.com%2F
 &state=12345
 ```
 
-| 参数 |  | 说明 |
+| 参数 |  | Description |
 | --- | --- | --- |
 | tenant |必填 |请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 独立于租户的令牌的允许值为租户标识符，例如 `8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` 或 `common` |
 | client_id |必填 |将应用注册到 Azure AD 时，分配给应用的应用程序 ID。 可以在 Azure 门户中找到该值。 单击服务边栏中的“Azure Active Directory”，单击“应用注册”，然后选择应用程序。 |
 | response_type |必填 |必须包括授权代码流的 `code`。 |
 | redirect_uri |建议 |应用程序的 redirect_uri，应用程序可在此发送及接收身份验证响应。 其必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 对于本机和移动应用，应使用默认值 `urn:ietf:wg:oauth:2.0:oob`。 |
-| response_mode |建议 |指定将生成的令牌送回到应用程序所应该使用的方法。 可以是 `query` 或 `form_post`。 `query` 在重定向 URI 上提供代码作为查询字符串参数，而 `form_post` 对重定向 URI 执行包含代码的 POST。 |
+| response_mode |建议 |指定将生成的令牌送回到应用程序所应该使用的方法。 可以是 `query`、`fragment` 或 `form_post`。 `query` 在重定向 URI 上提供代码作为查询字符串参数。 如果要使用隐式流请求 ID 令牌，则不能使用 [OpenID 规范](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)中指定的 `query`。如果只是请求代码，则可以使用 `query`、`fragment` 或 `form_post`。 `form_post` 对重定向 URI 执行包含代码的 POST。 |
 | state |建议 |同时随令牌响应返回的请求中所包含的值。 随机生成的唯一值通常用于[防止跨站点请求伪造攻击](http://tools.ietf.org/html/rfc6749#section-10.12)。 该状态也用于在身份验证请求出现之前，于应用程序中编码用户的状态信息，例如之前所在的网页或视图。 |
 | resource | 建议 |目标 Web API 的应用 ID URI（受保护的资源）。 要查找应用 ID URI，请在 Azure 门户中，依次单击“Azure Active Directory”和“应用程序注册”，打开应用程序的“设置”页面，然后单击“属性”。 也可能是外部资源，如 `https://graph.microsoft.com`。 这在授权或令牌请求中是必需的。 要确保减少身份验证提示，请将其置于授权请求中以确保获得用户许可。 |
 | 作用域 | **ignored** | 对于 v1 Azure AD 应用，必须在 Azure 门户中的应用程序“设置”、“所需权限”下静态配置作用域。 |
@@ -81,7 +81,7 @@ GET  HTTP/1.1 302 Found
 Location: http://localhost:12345/?code= AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrqqf_ZT_p5uEAEJJ_nZ3UmphWygRNy2C3jJ239gV_DBnZ2syeg95Ki-374WHUP-i3yIhv5i-7KU2CEoPXwURQp6IVYMw-DjAOzn7C3JCu5wpngXmbZKtJdWmiBzHpcO2aICJPu1KvJrDLDP20chJBXzVYJtkfjviLNNW7l7Y3ydcHDsBRKZc3GuMQanmcghXPyoDg41g8XbwPudVh7uCmUponBQpIhbuffFP_tbV8SNzsPoFz9CLpBCZagJVXeqWoYMPe2dSsPiLO9Alf_YIe5zpi-zY4C3aLw5g9at35eZTfNd0gBRpR5ojkMIcZZ6IgAA&session_state=7B29111D-C220-4263-99AB-6F6E135D75EF&state=D79E5777-702E-4260-9A62-37F75FF22CCE
 ```
 
-| 参数 | 说明 |
+| 参数 | Description |
 | --- | --- |
 | admin_consent |如果管理员同意许可请求提示的内容，则该值为 True。 |
 | 代码 |应用程序请求的授权代码。 应用程序可以使用该授权代码请求目标资源的访问令牌。 |
@@ -97,7 +97,7 @@ error=access_denied
 &error_description=the+user+canceled+the+authentication
 ```
 
-| 参数 | 说明 |
+| 参数 | Description |
 | --- | --- |
 | error |[OAuth 2.0 授权框架](http://tools.ietf.org/html/rfc6749)第 5.2 部分中定义的错误代码值。 下表描述了 Azure AD 返回的错误代码。 |
 | error_description |错误的更详细说明。 此消息不是最终用户友好的。 |
@@ -106,7 +106,7 @@ error=access_denied
 #### <a name="error-codes-for-authorization-endpoint-errors"></a>授权终结点错误的错误代码
 下表描述了可在错误响应的 `error` 参数中返回的各个错误代码。
 
-| 错误代码 | 说明 | 客户端操作 |
+| 错误代码 | Description | 客户端操作 |
 | --- | --- | --- |
 | invalid_request |协议错误，例如，缺少必需的参数。 |修复并重新提交请求。 这通常是在初始测试期间捕获的开发错误。 |
 | unauthorized_client |不允许客户端应用程序请求授权代码。 |客户端应用程序未注册到 Azure AD 中或者未添加到用户的 Azure AD 租户时，通常会出现这种情况。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。 |
@@ -135,7 +135,7 @@ grant_type=authorization_code
 //NOTE: client_secret only required for web apps
 ```
 
-| 参数 |  | 说明 |
+| 参数 |  | Description |
 | --- | --- | --- |
 | tenant |必填 |请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 独立于租户的令牌的允许值为租户标识符，例如 `8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` 或 `common` |
 | client_id |必填 |将应用注册到 Azure AD 时，分配给应用的应用程序 ID。 可以在 Azure 门户中找到该值。 应用程序 ID 显示在应用注册的设置中。 |
@@ -169,7 +169,7 @@ grant_type=authorization_code
 
 ```
 
-| 参数 | 说明 |
+| 参数 | Description |
 | --- | --- |
 | access_token |作为签名 JSON Web 令牌 (JWT) 的请求访问令牌。 应用可以使用此令牌来验证受保护的资源，例如 Web API。 |
 | token_type |指示令牌类型值。 Azure AD 唯一支持的类型是 Bearer。 有关持有者令牌的详细信息，请参阅 [OAuth2.0 授权框架：持有者令牌用法 (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt) |
@@ -209,7 +209,7 @@ grant_type=authorization_code
 
 `id_token` 参数包含以下声明类型：
 
-| 声明类型 | 说明 |
+| 声明类型 | Description |
 | --- | --- |
 | aud |令牌的受众。 如果向客户端应用程序颁发令牌，则受众是客户端的 `client_id`。 |
 | exp |过期日期。 令牌的过期时间。 对于要生效的令牌，当前日期/时间必须小于或等于 `exp` 值。 该时间表示为自 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) UTC 至令牌有效期到期的秒数。|
@@ -243,7 +243,7 @@ grant_type=authorization_code
   "correlation_id": "a8125194-2dc8-4078-90ba-7b6592a7f231"
 }
 ```
-| 参数 | 说明 |
+| 参数 | Description |
 | --- | --- |
 | error |用于分类发生的错误类型与响应错误的错误码字符串。 |
 | error_description |帮助开发人员识别身份验证错误根本原因的特定错误消息。 |
@@ -255,7 +255,7 @@ grant_type=authorization_code
 #### <a name="http-status-codes"></a>HTTP 状态代码
 下表列出了令牌颁发终结点返回的 HTTP 状态代码。 在某些情况下，错误代码足以描述响应，但在发生错误的情况下，则需要分析随附的 JSON 文档并检查其错误代码。
 
-| HTTP 代码 | 说明 |
+| HTTP 代码 | Description |
 | --- | --- |
 | 400 |默认的 HTTP 代码。 在大多数情况下使用，原因通常是请求格式不当。 修复并重新提交请求。 |
 | 401 |身份验证失败。 例如，请求缺少 client_secret 参数。 |
@@ -263,7 +263,7 @@ grant_type=authorization_code
 | 500 |服务出现内部错误。 重试请求。 |
 
 #### <a name="error-codes-for-token-endpoint-errors"></a>令牌终结点错误的错误代码
-| 错误代码 | 说明 | 客户端操作 |
+| 错误代码 | Description | 客户端操作 |
 | --- | --- | --- |
 | invalid_request |协议错误，例如，缺少必需的参数。 |修复并重新提交请求。 |
 | invalid_grant |授权代码无效或已过期。 |请尝试对 `/authorize` 终结点发出新请求 |
@@ -295,7 +295,7 @@ WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/co
 ```
 
 #### <a name="error-parameters"></a>错误参数
-| 参数 | 说明 |
+| 参数 | Description |
 | --- | --- |
 | authorization_uri |授权服务器的 URI（物理终结点）。 此值还用作查找键，从一个发现终结点中获取有关服务器的详细信息。 <p><p> 客户端必须验证授权服务器是否受信任。 Azure AD 对资源进行保护时，只需验证 URL 是否以 Azure AD 支持的 https://login.microsoftonline.com 或其他主机名开头即可。 特定于租户的资源应始终返回特定于租户的授权 URI。 |
 | error |[OAuth 2.0 授权框架](http://tools.ietf.org/html/rfc6749)第 5.2 部分中定义的错误代码值。 |
@@ -305,7 +305,7 @@ WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/co
 #### <a name="bearer-scheme-error-codes"></a>持有者方案错误代码
 RFC 6750 规范为在响应中使用 WWW-Authenticate 标头和持有者方案的资源定义了以下错误。
 
-| HTTP 状态代码 | 错误代码 | 说明 | 客户端操作 |
+| HTTP 状态代码 | 错误代码 | Description | 客户端操作 |
 | --- | --- | --- | --- |
 | 400 |invalid_request |请求格式不正确。 例如，请求可能缺少某个参数或者使用了同一参数两次。 |修复错误并重试请求。 这种类型的错误应该只在开发过程中发生，并且应该在初始测试中检测到。 |
 | 401 |invalid_token |访问令牌缺失、无效或被吊销。 error_description 参数的值提供了更多详细信息。 |从授权服务器请求新令牌。 如果新令牌失败，则表示发生了意外的错误。 向用户发送一条错误消息，并在随机延迟后重试。 |
@@ -348,7 +348,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
   "refresh_token": "AwABAAAAv YNqmf9SoAylD1PycGCB90xzZeEDg6oBzOIPfYsbDWNf621pKo2Q3GGTHYlmNfwoc-OlrxK69hkha2CF12azM_NYhgO668yfcUl4VBbiSHZyd1NVZG5QTIOcbObu3qnLutbpadZGAxqjIbMkQ2bQS09fTrjMBtDE3D6kSMIodpCecoANon9b0LATkpitimVCrl PM1KaPlrEqdFSBzjqfTGAMxZGUTdM0t4B4rTfgV29ghDOHRc2B-C_hHeJaJICqjZ3mY2b_YNqmf9SoAylD1PycGCB90xzZeEDg6oBzOIPfYsbDWNf621pKo2Q3GGTHYlmNfwoc-OlrxK69hkha2CF12azM_NYhgO668yfmVCrl-NyfN3oyG4ZCWu18M9-vEou4Sq-1oMDzExgAf61noxzkNiaTecM-Ve5cq6wHqYQjfV9DOz4lbceuYCAA"
 }
 ```
-| 参数 | 说明 |
+| 参数 | Description |
 | --- | --- |
 | token_type |令牌类型。 唯一支持的值为 **bearer**。 |
 | expires_in |令牌的剩余生存期，以秒为单位。 典型值为 3600（1 小时）。 |
@@ -374,7 +374,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 }
 ```
 
-| 参数 | 说明 |
+| 参数 | Description |
 | --- | --- |
 | error |用于分类发生的错误类型与响应错误的错误码字符串。 |
 | error_description |帮助开发人员识别身份验证错误根本原因的特定错误消息。 |

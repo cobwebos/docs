@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: powershell
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/16/2018
+ms.date: 07/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5f7c569eabcf6e4b743f1b6616161787764e8f84
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7cda2a406c6c49e9252bfd5840e8f943e5b7043f
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723489"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205793"
 ---
 # <a name="manage-resources-with-azure-powershell"></a>使用 Azure PowerShell 管理资源
 
@@ -72,13 +72,9 @@ New-AzureRmRoleAssignment -ObjectId $adgroup.ObjectId `
 
 通常情况下，请对**网络参与者**和**存储帐户参与者**重复执行此过程，确保分配用户来管理已部署的资源。 在本文中，可以跳过这些步骤。
 
-## <a name="azure-policies"></a>Azure 策略
+## <a name="azure-policy"></a>Azure 策略
 
-[!INCLUDE [Resource Manager governance policy](../../includes/resource-manager-governance-policy.md)]
-
-### <a name="apply-policies"></a>应用策略
-
-订阅已经有多个策略定义。 若要查看可用的策略定义，请使用：
+[Azure Policy](../azure-policy/azure-policy-introduction.md) 可帮助确保订阅中的所有资源符合企业标准。 订阅已经有多个策略定义。 若要查看可用的策略定义，请使用：
 
 ```azurepowershell-interactive
 (Get-AzureRmPolicyDefinition).Properties | Format-Table displayName, policyType

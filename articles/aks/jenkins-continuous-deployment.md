@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 84baf01ce6eeed8dc569d7a856189aefba788126
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 246943b7e3df955394a6a79f9b3130633fe4ec50
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096469"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186607"
 ---
 # <a name="continuous-deployment-with-jenkins-and-azure-kubernetes-service"></a>使用 Jenkins 和 Azure Kubernetes 服务进行持续部署
 
@@ -149,6 +149,9 @@ azure-vote-front   10.0.34.242   13.90.150.118   80:30676/TCP   2m
 
 运行以下命令下载并运行该脚本。 以下 URL 还可用于查看脚本的内容。
 
+> [!WARNING]
+> 此示例脚本用于演示目的，以快速预配在 Azure VM 上运行的 Jenkins 环境。 它使用 Azure 自定义脚本扩展来配置 VM，然后显示所需的凭据。 *~/.kube/config* 将复制到 Jenkins VM。
+
 ```console
 curl https://raw.githubusercontent.com/Azure-Samples/azure-voting-app-redis/master/jenkins-tutorial/deploy-jenkins-vm.sh > azure-jenkins.sh
 sh azure-jenkins.sh
@@ -263,12 +266,11 @@ kubectl set image deployment/azure-vote-front azure-vote-front=$WEB_IMAGE_NAME -
 接下来，将应用程序存储库挂接到 Jenkins 生成服务器，以便在提交任何内容时，都会触发新的生成。
 
 1. 浏览到分叉的 GitHub 存储库。
-2. 选择“设置”，然后在左侧选择“集成和服务”。
-3. 选择“添加服务”，在筛选框中输入 `Jenkins (GitHub plugin)`，然后选择插件。
-4. 对于 Jenkins 挂钩 URL，请输入 `http://<publicIp:8080>/github-webhook/`，其中，`publicIp` 是 Jenkins 服务器的 IP 地址。 请务必包含尾部的 /。
-5. 选择“添加服务”。
+2. 选择“设置”，然后在左侧选择“Webhook”。
+3. 选择“添加 Webhook”。 对于“有效负载 URL”，请输入 `http://<publicIp:8080>/github-webhook/`，其中 `publicIp` 是 Jenkins 服务器的 IP 地址。 请务必包含尾部的 /。 保留内容类型的其他默认值，并触发“推送”事件。
+4. 选择“添加 Webhook”。
 
-![GitHub Webhook](media/aks-jenkins/webhook.png)
+    ![GitHub Webhook](media/aks-jenkins/webhook.png)
 
 ## <a name="test-cicd-process-end-to-end"></a>测试 CI/CD 端到端过程
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: fc0bb56e85c2a9cf7a458b0f6d97887d392ee65f
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 6cba4e1fd9c9fe5fdaa7ff4513218a606a4eace9
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114310"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215224"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Service Fabric 运行状况监视简介
 Azure Service Fabric 引入了一个运行状况模型，该模型提供丰富、灵活且可扩展的运行状况评估和报告。 使用该模型可对群集及其中运行的服务的状态进行近乎实时的监视。 可以轻松获取运行状况信息，并在潜在问题级联和造成大规模停机之前予以更正。 在典型的模型中，服务基于其本地视图发送报告，并聚合信息，以提供整体的群集级别视图。
@@ -186,8 +186,8 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
 
 * 如果所有子项的状态都为“正常”，子项已聚合运行状况状态则为“正常”。
 * 如果子项具有“正常”状态和“警告”状态，子项已聚合运行状况状态则为“警告”。
-* 如果具有“错误”状态的子项不遵从不正常子项的最大允许百分比，已聚合运行状况状态则为“错误”。
-* 如果具有“错误”状态的子项遵从不正常子项的最大允许百分比，已聚合运行状况状态则为“警告”。
+* 如果具有“错误”状态的子项不遵从不正常子项的最大允许百分比，已聚合父级运行状况状态则为“错误”。
+* 如果具有“错误”状态的子项遵从不正常子项的最大允许百分比，已聚合父级运行状况状态则为“警告”。
 
 ## <a name="health-reporting"></a>运行状况报告
 系统组件、系统结构应用程序和内部/外部监视器可以针对 Service Fabric 实体进行报告。 报告器基于它们正在监视的条件对监视实体的运行状况进行*本地*判断。 它们无需查看任何全局状态或聚合数据。 所需的行为是使用简单的报告器而不是复杂的有机体，因为后者需要分析许多内容才能推断所要发送的信息。

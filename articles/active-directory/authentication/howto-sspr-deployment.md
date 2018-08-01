@@ -4,18 +4,18 @@ description: 提示：如何成功推出 Azure AD 自助密码重置
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: get-started-article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/17/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 3e14c51d644a29985e759da7c8a29927680d3891
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 2371ad00728a47af9e96e8e711aa07cc5170266c
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048945"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39158856"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>如何成功推出自助密码重置
 
@@ -23,35 +23,32 @@ ms.locfileid: "39048945"
 
 > [!VIDEO https://www.youtube.com/embed/OZn5btP6ZXw]
 
-1. [在目录中启用密码重置](quickstart-sspr.md)。
-2. [配置进行密码写回所需的本地 Active Directory 权限](howto-sspr-writeback.md#active-directory-permissions)。
-3. [配置密码写回](howto-sspr-writeback.md#configure-password-writeback)，将密码从 Azure AD 写回到本地目录。
-4. [分配并验证所需许可证](concept-sspr-licensing.md)。
-5. 确定是否要逐渐推出。 若要逐渐推出 SSPR，可以只允许一组用户进行访问，以便使用特定的组对项目进行试验。 若要推出到特定的组，请将“启用自助密码重置”开关设置为“选定”，然后选择允许其使用密码重置的安全组。  此处支持安全组嵌套。
-6. 填充用户注册所需的[身份验证数据](howto-sspr-authenticationdata.md)，例如办公室电话、移动电话以及备用电子邮件地址。
-7. [自定义 Azure AD 登录体验，在其中包括公司品牌](concept-sspr-customization.md)。
-8. 指导用户使用 SSPR。 向用户发送说明，指导其注册并重置密码。
-9. 确定何时需强制执行注册。 可以选择随时强制执行注册。 也可以要求用户在特定时间过后重新确认其身份验证信息。
-10. 使用报告功能。 一段时间过后，即可使用 [Azure AD 提供的报告功能](howto-sspr-reporting.md)查看用户的注册和使用情况。
-11. 启用密码重置。 准备就绪后，为所有用户启用密码重置，方法是将“启用自助密码重置”开关设置为“所有”。 
+1. 使用组织的一小部分完成试点推广。
+   * 有关如何试点的信息，请参阅[教程：完成 Azure AD 自助密码重置试点推广](tutorial-sspr-pilot.md)。
+1. 培训支持人员。
+   * 他们将如何帮助你的用户？
+   * 你是否会强制用户使用 SSPR 而不允许支持人员协助用户？
+   * 你是否向他们提供了用于注册和重置的 URL？
+      * 注册：https://aka.ms/ssprsetup
+      * 重置：https://aka.ms/sspr
+1. 培训用户。
+   * 本文档的以下部分将介绍示例通信、密码门户、如何强制注册和填充身份验证数据。
+   * Azure Active Directory 产品组创建了[分步部署计划](https://aka.ms/SSPRDeploymentPlan)，组织可以将该计划与在此站点上找到的文档一起使用，针对自助服务密码重置部署生成业务案例和计划。
+1. 为整个组织启用自助密码重置。
+   * 准备就绪后，为所有用户启用密码重置，方法是将“启用自助密码重置”开关设置为“所有”。
 
-   > [!NOTE]
-   > 将此选项从“选定组”更改为“所有人”不会导致现有的身份验证数据失效，这些数据是用户以测试组成员身份注册的。 只要用户经过了配置并注册了有效的身份验证数据，就可以继续使用该用户。
+## <a name="sample-communication"></a>示例通信
 
-12. [允许 Windows 10 用户在登录屏幕上重置其密码](tutorial-sspr-windows.md)。
-
-   > [!IMPORTANT]
-   > 请使用用户而不是管理员来测试 SSPR，因为 Microsoft 对 Azure 管理员帐户强制实施强身份验证要求。 有关管理员密码策略的详细信息，请参阅[密码策略](concept-sspr-policy.md#administrator-password-policy-differences)文章。
-
-## <a name="email-based-rollout"></a>基于电子邮件的启用
-
-许多客户发现，若要让用户使用 SSPR，最简单的方法是开展电子邮件促销活动，为用户提供易用的说明。 [我们撰写了三封简单的电子邮件，可以在推出此功能时将其用作模板](https://www.microsoft.com/download/details.aspx?id=56768)：
+许多客户发现，若要让用户使用 SSPR，最简单的方法是开展电子邮件促销活动，为用户提供易用的说明。 [我们创建了简单的电子邮件和其他宣传材料，你可以将其用作模板以帮助你进行推广](https://www.microsoft.com/download/details.aspx?id=56768)：
 
 * **即将推出**：一种电子邮件模板，在推出之前的数周或数天使用，目的是让用户了解他们需要做哪些准备。
 * **现已推出**：一种”电子邮件模板，在项目启动当天使用，目的是促使用户注册并确认其身份验证数据。 如果现在就注册，用户可以在需要 SSPR 时使用它。
 * **注册提醒**：一种电子邮件模板，在部署后的数天或数周使用，目的是提醒用户注册并确认其身份验证数据。
+* **SSPR 海报**：你可以自定义的海报并在推出之前和之后的几天和几周内将其显示在你组织周围。
+* **SSPR 桌面帐篷**：可以放在午餐室、会议室或办公桌上的桌卡，以鼓励用户完成注册。
+* **SSPR 贴纸**：可以自定义并打印的贴纸模板，用于放置笔记本电脑、显示器、键盘或手机，以记住如何访问 SSPR。
 
-![电子邮件][Email]
+![SSPR 电子邮件示例][Email]
 
 ## <a name="create-your-own-password-portal"></a>创建自己的密码门户
 
@@ -64,10 +61,6 @@ ms.locfileid: "39048945"
 
 可以在发出的任何电子邮件通信或传单中包括带品牌标记的易记 URL，供用户在需要使用相应服务时访问。 我们为你创建了一个[示例密码重置页](https://github.com/ajamess/password-reset-page)，你可以根据组织需要使用它并进行自定义。
 
-## <a name="step-by-step-deployment-plan"></a>分步部署计划
-
-Azure Active Directory 产品组创建了[分步部署计划](https://aka.ms/SSPRDeploymentPlan)，组织可以将该计划与在此站点上找到的文档一起使用，针对自助服务密码重置部署生成业务案例和计划。
-
 ## <a name="use-enforced-registration"></a>使用强制注册
 
 如果想要用户注册密码重置，可要求他们在通过 Azure AD 登录时注册。 可以在“注册”选项卡上启用“要求用户在登录时注册”选项，这样即可从目录的“密码重置”窗格启用此选项。
@@ -78,11 +71,11 @@ Azure Active Directory 产品组创建了[分步部署计划](https://aka.ms/SSP
 
 ## <a name="populate-authentication-data"></a>填充身份验证数据
 
-应该[为用户填充身份验证数据](howto-sspr-authenticationdata.md)。 这样用户不注册密码重置也可使用 SSPR。 只要用户提供的身份验证数据符合你定义的密码重置策略，他们便能重置其密码。
+你应该考虑[为用户预填充一些身份验证数据](howto-sspr-authenticationdata.md)。 这样用户不注册密码重置也可使用 SSPR。 只要用户提供的身份验证数据符合你定义的密码重置策略，他们便能重置其密码。
 
 ## <a name="disable-self-service-password-reset"></a>禁用自助密码重置
 
-禁用自助密码重置很容易。 打开 Azure AD 租户，转到“密码重置” > “属性”，然后在“启用自助密码重置”下选择“无”。
+如果你的组织决定禁用自助密码重置，则这是一个简单过程。 打开 Azure AD 租户，转到“密码重置” > “属性”，然后在“启用自助密码重置”下选择“无”。 用户将仍保持其
 
 ## <a name="next-steps"></a>后续步骤
 

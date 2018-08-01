@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 5/17/2018
+ms.date: 7/13/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: e226aadbe499d5905b1814bec5d042f67d898c18
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 57b610b40edff56207617e212d0eb6e591ad50d4
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294843"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224290"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>部署 Azure Blockchain Workbench
 
@@ -136,7 +136,7 @@ API 应用程序需要从用户请求目录访问权限。 为 API 应用程序�
 
     |设置  | 值  |
     |---------|---------|
-    | 说明 | `Service` |
+    | Description | `Service` |
     | Expires | 选择过期期限 |
 
 4. 选择“保存”。 
@@ -185,7 +185,7 @@ API 应用程序需要从用户请求目录访问权限。 为 API 应用程序�
 
     ![创建 Azure Blockchain Workbench](media/blockchain-workbench-deploy/blockchain-workbench-settings-basic.png)
 
-    | 设置 | 说明  |
+    | 设置 | Description  |
     |---------|--------------|
     | 资源前缀 | 部署的短唯一标识符。 此值用作资源命名的基础。 |
     | VM 用户名 | 该用户名用作所有虚拟机 (VM) 的管理员。 |
@@ -204,7 +204,7 @@ API 应用程序需要从用户请求目录访问权限。 为 API 应用程序�
 
     ![Azure AD 设置](media/blockchain-workbench-deploy/blockchain-workbench-settings-aad.png)
 
-    | 设置 | 说明  |
+    | 设置 | Description  |
     |---------|--------------|
     | 域名 | 使用在[获取租户域名](#get-tenant-domain-name)先决条件部分中收集的 Azure AD 租户。 |
     | 应用程序 ID | 使用在[获取应用程序 ID](#get-application-id) 先决条件部分中收集的、区块链客户端应用注册中的应用程序 ID。 |
@@ -213,23 +213,43 @@ API 应用程序需要从用户请求目录访问权限。 为 API 应用程序�
 
 8.  单击“确定”完成“Azure AD 参数”配置部分。
 
-9.  完成“网络大小和性能”设置。
+9.  在“网络设置和性能”中，选择是要创建新的区块链网络还是使用现有的权威证明区块链网络。
 
-    ![网络和性能设置](media/blockchain-workbench-deploy/blockchain-workbench-settings-network.png)
+    对于**新建**：
 
-    | 设置 | 说明  |
+    “新建”选项在单个成员的订阅中创建一组 Ethereum 权威证明 (PoA) 节点。 
+
+    ![网络设置和性能](media/blockchain-workbench-deploy/blockchain-workbench-settings-network-new.png)
+
+    | 设置 | Description  |
     |---------|--------------|
     | 区块链节点数 | 选择要在网络中部署的 Ethereum PoA 验证程序节点数。 |
     | 存储性能 | 为区块链网络选择首选的 VM 存储性能。 |
     | 虚拟机大小 | 为区块链网络选择首选的 VM 大小。 |
 
-10. 选择“确定”，完成网络大小和性能部分。
+    对于**使用现有**：
+
+    “使用现有”选项允许你指定 Ethereum 权威证明 (PoA) 区块链网络。 终结点具有以下要求。
+
+    * 终结点必须是 Ethereum 权威证明 (PoA) 区块链网络。
+    * 终结点必须可通过网络公开访问。
+    * PoA 区块链网络应配置为将天然气价格设置为零（注意：Blockchain Workbench 帐户不会获得资助。 如果需要资金，交易会失败）。
+
+    ![网络设置和性能](media/blockchain-workbench-deploy/blockchain-workbench-settings-network-existing.png)
+
+    | 设置 | Description  |
+    |---------|--------------|
+    | Ethereum RPC 终结点 | 提供现有 PoA 区块链网络的 RPC 终结点。 终结点以 http:// 开头，以端口号结尾。 例如： `http://contoso-chain.onmicrosoft.com:8545` |
+    | 存储性能 | 为区块链网络选择首选的 VM 存储性能。 |
+    | 虚拟机大小 | 为区块链网络选择首选的 VM 大小。 |
+
+10. 选择“确定”完成网络设置和性能。
 
 11. 完成“Azure Monitor”设置。
 
     ![Azure Monitor](media/blockchain-workbench-deploy/blockchain-workbench-settings-oms.png)
 
-    | 设置 | 说明  |
+    | 设置 | Description  |
     |---------|--------------|
     | 监视 | 选择是否要允许 Azure Monitor 监视区块链网络 |
     | 连接到现有的 Log Analytics 实例 | 选择是要使用现有的 Log Analytics 实例，还是创建新实例。 如果使用现有的实例，请输入工作区 ID 和主密钥。 |
