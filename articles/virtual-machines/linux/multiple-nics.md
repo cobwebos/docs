@@ -3,7 +3,7 @@ title: 在 Azure 中创建具有多个 NIC 的 Linux VM | Microsoft Docs
 description: 了解如何使用 Azure CLI 2.0 或 Resource Manager 模板创建具有多个 NIC 的 Linux VM。
 services: virtual-machines-linux
 documentationcenter: ''
-author: cynthn
+author: iainfoulds
 manager: jeconnoc
 editor: ''
 ms.assetid: 5d2d04d0-fc62-45fa-88b1-61808a2bc691
@@ -12,19 +12,19 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/26/2017
-ms.author: cynthn
-ms.openlocfilehash: 257b80c30823be41893be8659845d4fcbc922da3
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.date: 06/07/2018
+ms.author: iainfou
+ms.openlocfilehash: aae71dafd3685e44975049c4287c083abc2330bc
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932266"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144850"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>如何在 Azure 中创建具有多个网络接口卡的 Linux 虚拟机
 可以在 Azure 中创建附有多个虚拟网络接口 (NIC) 的虚拟机 (VM)。 一种常见方案是为前端和后端连接使用不同子网，或为监视或备份解决方案使用一个专用网络。 本文详细介绍如何创建具有多个 NIC 的 VM，以及如何在现有 VM 中添加或删除 NIC。 不同的 [VM 大小](sizes.md)支持不同数目的 NIC，因此请相应地调整 VM 的大小。
 
-本文详述了如何使用 Azure CLI 2.0 创建具有多个 NIC 的 VM。 
+本文详述了如何使用 Azure CLI 2.0 创建具有多个 NIC 的 VM。 还可以使用 [Azure CLI 1.0](multiple-nics-nodejs.md) 执行这些步骤。
 
 
 ## <a name="create-supporting-resources"></a>创建支持资源
@@ -44,9 +44,9 @@ az group create --name myResourceGroup --location eastus
 az network vnet create \
     --resource-group myResourceGroup \
     --name myVnet \
-    --address-prefix 192.168.0.0/16 \
+    --address-prefix 10.0.0.0/16 \
     --subnet-name mySubnetFrontEnd \
-    --subnet-prefix 192.168.1.0/24
+    --subnet-prefix 10.0.1.0/24
 ```
 
 使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) 为后端通信流创建子网。 以下示例创建名为 mySubnetBackEnd 的子网：
@@ -56,7 +56,7 @@ az network vnet subnet create \
     --resource-group myResourceGroup \
     --vnet-name myVnet \
     --name mySubnetBackEnd \
-    --address-prefix 192.168.2.0/24
+    --address-prefix 10.0.2.0/24
 ```
 
 使用 [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) 创建网络安全组。 以下示例创建名为“myNetworkSecurityGroup”的网络安全组：
@@ -86,7 +86,7 @@ az network nic create \
 ```
 
 ## <a name="create-a-vm-and-attach-the-nics"></a>创建 VM 并附加 NIC
-创建 VM 时，指定使用 `--nics` 创建的 NIC。 还需要谨慎选择 VM 的大小。 可添加到 VM 的 NIC 数目有限制。 详细了解 [Linux VM 大小](sizes.md)。 
+创建 VM 时，指定使用 `--nics` 创建的 NIC。 还需要谨慎选择 VM 的大小。 可添加到 VM 的 NIC 数目有限制。 详细了解 [Linux VM 大小](sizes.md)。
 
 使用 [az vm create](/cli/azure/vm#az_vm_create) 创建 VM。 以下示例创建一个名为 *myVM* 的 VM：
 
@@ -187,75 +187,68 @@ Azure 资源管理器模板使用声明性 JSON 文件来定义环境。 可以�
 通过完成[为多个 NIC 配置来宾 OS](#configure-guest-os-for- multiple-nics) 中的步骤，将路由表添加到来宾 OS。
 
 ## <a name="configure-guest-os-for-multiple-nics"></a>为多个 NIC 配置来宾 OS
-将多个 NIC 添加到一个 Linux VM 时，需要创建路由规则。 这些规则允许此 VM 发送和接收属于特定 NIC 的流量。 否则，所定义的默认路由无法正确处理属于 eth1 等的流量。
 
-若要纠正此路由问题，请首先向 /etc/iproute2/rt_tables 添加两个路由表，如下所示：
+前面的步骤创建了虚拟网络和子网，附加了 NIC，然后创建了 VM。 尚未创建公共 IP 地址，以及允许 SSH 流量的网络安全组规则。 若要为多个 NIC 配置来宾 OS，需要允许远程连接并在 VM 本地运行命令。
 
-```bash
-echo "200 eth0-rt" >> /etc/iproute2/rt_tables
-echo "201 eth1-rt" >> /etc/iproute2/rt_tables
+若要允许 SSH 流量，请使用 [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) 创建网络安全组规则，如下所示：
+
+```azurecli
+az network nsg rule create \
+    --resource-group myResourceGroup \
+    --nsg-name myNetworkSecurityGroup \
+    --name allow_ssh \
+    --priority 101 \
+    --destination-port-ranges 22
 ```
 
-要使更改长久有效并在网络堆栈激活期间应用，请编辑 /etc/sysconfig/network-scripts/ifcfg-eth0 和 /etc/sysconfig/network-scripts/ifcfg-eth1。 将行“NM_CONTROLLED=yes”更改为“NM_CONTROLLED=no”。 如不执行此步骤，则不会自动应用其他规则/路由。
- 
-然后扩展路由表。 假设已进行了如下设置：
+使用 [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) 创建公共 IP 地址，并使用 [az network nic ip-config update](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update) 将其分配到第一个 NIC：
 
-*路由*
+```azurecli
+az network public-ip-address create --resource-group myResourceGroup --name myPublicIP
 
-```bash
-default via 10.0.1.1 dev eth0 proto static metric 100
-10.0.1.0/24 dev eth0 proto kernel scope link src 10.0.1.4 metric 100
-10.0.1.0/24 dev eth1 proto kernel scope link src 10.0.1.5 metric 101
-168.63.129.16 via 10.0.1.1 dev eth0 proto dhcp metric 100
-169.254.169.254 via 10.0.1.1 dev eth0 proto dhcp metric 100
+az network nic ip-config update \
+    --resource-group myResourceGroup \
+    --nic-name myNic1 \
+    --name ipconfig1 \
+    --public-ip-addres myPublicIP
 ```
 
-*接口*
+若要查看 VM 的公共 IP 地址，请使用 [az vm show](/cli/azure/vm#az-vm-show)，如下所示：
 
-```bash
-lo: inet 127.0.0.1/8 scope host lo
-eth0: inet 10.0.1.4/24 brd 10.0.1.255 scope global eth0    
-eth1: inet 10.0.1.5/24 brd 10.0.1.255 scope global eth1
+```azurecli
+az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-然后，创建以下文件，并对每个文件添加相应的规则和路由：
-
-- /etc/sysconfig/network-scripts/rule-eth0
-
-    ```bash
-    from 10.0.1.4/32 table eth0-rt
-    to 10.0.1.4/32 table eth0-rt
-    ```
-
-- /etc/sysconfig/network-scripts/route-eth0
-
-    ```bash
-    10.0.1.0/24 dev eth0 table eth0-rt
-    default via 10.0.1.1 dev eth0 table eth0-rt
-    ```
-
-- /etc/sysconfig/network-scripts/rule-eth1
-
-    ```bash
-    from 10.0.1.5/32 table eth1-rt
-    to 10.0.1.5/32 table eth1-rt
-    ```
-
-- /etc/sysconfig/network-scripts/route-eth1
-
-    ```bash
-    10.0.1.0/24 dev eth1 table eth1-rt
-    default via 10.0.1.1 dev eth1 table eth1-rt
-    ```
-
-若要应用更改，请重启网络服务，如下所示：
+现在，通过 SSH 连接到 VM 的公共 IP 地址。 上一步骤中提供的默认用户名为 *azureuser*。 请提供自己的用户名和公共 IP 地址：
 
 ```bash
-systemctl restart network
+ssh azureuser@137.117.58.232
 ```
 
-路由规则现已准备就绪，可根据需要连接到任一接口。
+若要向/从辅助网络接口发送数据，必须手动将永久性路由添加到每个辅助网络接口的操作系统。 在本文中，*eth1* 是辅助接口。 有关将永久性路由添加到操作系统的说明根据分发版的不同而异。 请参阅分发版的文档来获取说明。
 
+将路由添加到操作系统时，网络接口所在的每个子网的网关地址为 *.1*。 例如，如果为网络接口分配了地址 *10.0.2.4*，则为路由指定的网关就是 *10.0.2.1*。 如果希望接口的所有流量通过指定的网关，可为路由目标定义特定的网络，或指定目标 *0.0.0.0*。 每个子网的网关由虚拟网络管理。
+
+添加辅助接口的路由后，使用 `route -n` 验证该路由是否包含在路由表中。 以下示例输出适用于其中的两个网络接口已添加到本文所述 VM 的路由表：
+
+```bash
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         10.0.1.1        0.0.0.0         UG    0      0        0 eth0
+0.0.0.0         10.0.2.1        0.0.0.0         UG    0      0        0 eth1
+10.0.1.0        0.0.0.0         255.255.255.0   U     0      0        0 eth0
+10.0.2.0        0.0.0.0         255.255.255.0   U     0      0        0 eth1
+168.63.129.16   10.0.1.1        255.255.255.255 UGH   0      0        0 eth0
+169.254.169.254 10.0.1.1        255.255.255.255 UGH   0      0        0 eth0
+```
+
+重新启动后请再次检查路由表，以确认每次重新启动后，添加的路由是否能够保留。 若要测试连接，可输入以下示例所示的命令，其中，*eth1* 是辅助网络接口的名称：
+
+```bash
+ping bing.com -c 4 -I eth1
+```
 
 ## <a name="next-steps"></a>后续步骤
-尝试创建具有多个 NIC 的 VM 时，请查看 [Lnux VM 大小](sizes.md)。 注意每个 VM 大小支持的 NIC 数目上限。 
+尝试创建具有多个 NIC 的 VM 时，请查看 [Lnux VM 大小](sizes.md)。 注意每个 VM 大小支持的 NIC 数目上限。
+
+若要进一步保护 VM，请使用适时 VM 访问。 此功能会视需要打开针对 SSH 流量的网络安全组规则，并根据定义的时间段保持打开。 有关详细信息，请参阅[使用恰时功能管理虚拟机访问](../../security-center/security-center-just-in-time.md)。

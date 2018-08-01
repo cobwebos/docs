@@ -1,25 +1,30 @@
 ---
-title: 自助密码重置工作原理 - Azure Active Directory
-description: Azure AD 自助密码重置深入探讨
+title: Azure Active Directory 自助密码重置深入探讨
+description: 自助密码重置的工作原理
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 04a446f43bd39ef7bfca590af67289813eab4032
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: efc62243370ff2cc5214a4ae235139bdb5965486
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048873"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248213"
 ---
-# <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Azure AD 中的自助密码重置深入探讨
+# <a name="how-it-works-azure-ad-self-service-password-reset"></a>工作原理：Azure AD 自助密码重置
 
 自助密码重置 (SSPR) 的工作原理 该选项在界面中意味着什么？ 请继续阅读，详细了解 Azure Active Directory (Azure AD) SSPR。
+
+|     |
+| --- |
+| 将移动应用通知和移动应用代码用作 Azure AD 自助密码重置方法是 Azure Active Directory 的公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
+|     |
 
 ## <a name="how-does-the-password-reset-portal-work"></a>密码重置门户的工作原理
 
@@ -35,15 +40,16 @@ ms.locfileid: "39048873"
 
 1. 用户选择“无法访问帐户”链接或直接转到 [https://aka.ms/sspr](https://passwordreset.microsoftonline.com)。
    * 根据浏览器的区域设置以相应的语言呈现体验内容。 密码重置体验已本地化为 Office 365 支持的相同语言。
+   * 若要以不同的本地化语言查看密码重置门户，请将“?mkt=”追加到密码重置 URL 的末尾，后接本地化为西班牙语的示例 [https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us)。
 2. 用户输入用户 ID 并传递验证码。
 3. Azure AD 通过执行以下检查来验证用户是否能够使用此功能：
    * 检查用户是否启用了此功能并分配有 Azure AD 许可证。
      * 如果用户未启用此功能或未分配有许可证，则要求用户联系其管理员重置其密码。
-   * 检查用户是否具有针对其帐户定义且符合管理员策略的正确质询数据。
-     * 如果策略仅要求一个质询，则确保用户具有针对由管理员策略启用的至少一个质询定义的适当数据。
-       * 如果未配置用户质询，则建议用户联系其管理员重置其密码。
-     * 如果策略要求两次质询，则确保用户具有针对由管理员策略启用的至少两个质询定义的适当数据。
-       * 如果未配置用户质询，则建议用户联系其管理员重置其密码。
+   * 检查用户是否具有针对其帐户定义且符合管理员策略的正确身份验证方法。
+     * 如果策略仅要求一种方法，则确保用户具有针对由管理员策略启用的至少一种身份验证方法定义的适当数据。
+       * 如果未配置身份验证方法，则建议用户联系其管理员重置其密码。
+     * 如果策略仅要求两种方法，则确保用户具有针对由管理员策略启用的至少两种身份验证方法定义的适当数据。
+       * 如果未配置身份验证方法，则建议用户联系其管理员重置其密码。
    * 检查是否在本地管理用户密码（联合、直通身份验证或密码哈希同步）。
      * 如果已部署写回且在本地管理用户密码，则允许用户继续进行身份验证并重置其密码。
      * 如果未部署写回且在本地管理用户密码，则要求用户联系其管理员重置其密码。
@@ -51,31 +57,20 @@ ms.locfileid: "39048873"
 
 ## <a name="authentication-methods"></a>身份验证方法
 
-如果已启用 SSPR，则必须选择以下至少一个选项作为身份验证方法。 有时，这些选项也称为“门限”。 我们强烈建议至少选择两个身份验证方法，以便为用户提供更大的灵活性。
+如果已启用 SSPR，则必须选择以下至少一个选项作为身份验证方法。 有时，这些选项也称为“门限”。 我们强烈建议**选择两种或更多种身份验证方法**，以便在用户无法使用所需的方法时，能够更灵活地选择其他方法。
 
+* 移动应用通知（预览版）
+* 移动应用代码（预览版）
 * 电子邮件
 * 移动电话
 * 办公电话
 * 安全提问
 
+仅当用户在管理员已启用的身份验证方法中输入了数据时，他们才能重置其密码。
+
 ![身份验证][Authentication]
 
-### <a name="what-fields-are-used-in-the-directory-for-the-authentication-data"></a>在用于身份验证数据的目录中使用哪些字段？
-
-* **办公电话**：对应于办公电话。
-    * 用户无法自行设置此字段。 必须由管理员定义此字段。
-* **移动电话**：对应于身份验证电话（不公开）或移动电话（公开）。
-    * 服务首先查找身份验证电话，如果身份验证电话不存在，则回退到移动电话。
-* **备用电子邮件地址**：对应于身份验证电子邮件（不公开）或备用电子邮件。
-    * 服务首先查找身份验证电子邮件，然后回退到备用电子邮件。
-
-默认情况下，只有“办公电话”和“移动电话”两个云属性才会从用于身份验证数据的本地目录同步到云目录。
-
-仅当用户在管理员已启用并要求使用的身份验证方法中输入了数据时，他们才能重置其密码。
-
-如果用户不希望在目录中公开其移动电话号码，但仍想使用该号码来重置密码，则管理员不应在目录中填充该号码。 用户应通过[密码重置注册门户](https://aka.ms/ssprsetup)填充其“身份验证电话”属性。 管理员可在用户的配置文件中看到此信息，但此信息不会发布到其他位置。
-
-### <a name="the-number-of-authentication-methods-required"></a>所需身份验证方法的数量
+### <a name="number-of-authentication-methods-required"></a>所需身份验证方法的数量
 
 此选项确定用户在执行重置或解锁密码过程时必须完成的可用身份验证方法或门限数下限。 可将其设置为 1 或 2。
 
@@ -83,7 +78,17 @@ ms.locfileid: "39048873"
 
 如果没有为用户注册最少数目的所需方法，他们将看到一个错误页面，让他们请求管理员重置其密码。
 
-#### <a name="change-authentication-methods"></a>更改身份验证方法
+#### <a name="mobile-app-and-sspr-preview"></a>移动应用和 SSPR（预览版）
+
+使用移动应用（例如 Microsoft Authenticator 应用）作为密码重置方法时，用户应注意以下问题。 对于自助密码重置，如果只需使用一种方法来执行重置，则验证码是提供给用户的唯一选项。 如果需要两种方法，则用户可以使用通知或验证码进行重置，此外还能使用其他任何已启用的方法。
+
+| 重置所需的方法数 | 一种 | 两种 |
+| :---: | :---: | :---: |
+| 可用的移动应用功能 | 代码 | 代码或通知 |
+
+用户在注册自助密码重置时，无法选择注册其移动应用。 用户可以在 aka.ms/mfasetup 中，或者在安全信息注册预览版 (aka.ms/setupsecurityinfo) 中注册其移动应用。 
+
+### <a name="change-authentication-methods"></a>更改身份验证方法
 
 如果最初的策略仅注册了一种身份验证方法用于重置或解锁，将其更改为两种方法会发生什么情况？
 
@@ -95,81 +100,16 @@ ms.locfileid: "39048873"
 
 如果更改了用户可用的身份验证方法类型，则可能会在无意间阻止用户使用 SSPR（如果不具有可用的最小数据量）。
 
-示例： 
+示例：
 1. 原始策略配置为需要两种身份验证方法。 该策略使用办公电话和安全提问。 
 2. 管理员将策略更改为不再使用安全提问，而是允许使用移动电话和备用电子邮件。
-3. 未填写移动电话、备用电子邮件字段的用户无法重置密码。
-
-### <a name="how-secure-are-my-security-questions"></a>如何保护安全提问？
-
-如果使用安全提问，我们建议结合另一种方法使用这些提问。 因为某些人可能知道其他用户的问题的答案，因此这种方法可能比其他方法更不安全。
-
-> [!NOTE] 
-> 安全问题以专用、安全的方式存储在目录的用户对象上，并且只能由用户在注册期间回答。 管理员无法读取或修改用户的问题或答案。
->
-
-### <a name="security-question-localization"></a>安全问题本地化
-
-下面的所有预定义问题都已根据用户的浏览器区域设置本地化为 Office 365 的完整语言集：
-
-* 在哪个城市遇到了第一任配偶/伴侣？
-* 父母在哪个城市相识？
-* 与你年龄最近的兄弟姐妹居住在哪个城市？
-* 父亲在哪个城市出生？
-* 第一份工作是在哪个城市？
-* 母亲在哪个城市出生？
-* 2000 年元旦你在哪个城市？
-* 中学时你最喜欢的老师姓什么？
-* 填报了志愿，但未能入学的大学名称是什么？
-* 举办第一次婚宴的地名是什么？
-* 父亲的中间名是什么？
-* 最喜欢的食品是什么？
-* 外婆的姓氏和名字是什么？
-* 母亲的中间名是什么？
-* 最年长的兄弟姐妹的生日年份和月份是什么？ （例如 1985 年 11 月）
-* 最年长的兄弟姐妹的中间名是什么？
-* 爷爷的姓氏和名字是什么？
-* 最年幼的兄弟姐妹的中间名是什么？
-* 六年级时你就读哪所学校？
-* 童年时最好的朋友的名字和姓氏是什么？
-* 第一位伴侣的名字和姓氏是什么？
-* 最喜欢的小学老师姓什么？
-* 第一辆汽车或摩托车是哪个品牌和型号？
-* 就读的第一所学校的校名是什么？
-* 在哪家医院出生？
-* 童年时第一个家庭地址的街道名称是什么？
-* 童年时崇拜的人是谁？
-* 最喜欢哪种填充动物玩具？
-* 第一个宠物叫什么？
-* 童年时的绰号是什么？
-* 在中学最喜欢的运动是什么？
-* 第一份工作是什么？
-* 童年时的电话号码最后四位数是什么？
-* 年少时，希望长大后当什么？
-* 遇到过的最有名的人是谁？
-
-### <a name="custom-security-questions"></a>自定义安全问题
-
-自定义安全问题尚未根据不同的区域设置本地化。 所有自定义问题的显示语言是在管理用户界面中输入这些问题时所用的语言，即使用户浏览器的区域设置与此不同。 如果需要本地化的问题，应使用预定义的问题。
-
-自定义安全问题的最大长度为 200 个字符。
-
-要查看密码重置门户和不同本地化语言中的问题，请将“?mkt=<Locale>”附加到密码重置 URL 的末尾，后跟本地化为西班牙语的示例 [https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us)。
-
-### <a name="security-question-requirements"></a>安全问题要求
-
-* 答案包含的字符数下限为 3 个字符。
-* 答案包含的字符数上限为 40 个字符。
-* 用户不能多次回答同一问题。
-* 用户不能为多个问题提供相同的答案。
-* 可以使用任何字符集来定义问题和答案（包括 Unicode 字符）。
-* 所定义问题的数量必须大于或等于注册所需问题数量。
+3. 未填写移动电话或备用电子邮件字段的用户无法重置密码。
 
 ## <a name="registration"></a>注册
 
 ### <a name="require-users-to-register-when-they-sign-in"></a>要求用户在登录时注册
 
-若要启用此选项，已启用密码重置的用户必须在使用 Azure AD 登录到应用程序时完成密码重置注册。 其中包括：
+启用此选项需要用户在使用 Azure AD 登录到任何应用程序时完成密码重置注册。 这包括以下应用程序：
 
 * Office 365
 * Azure 门户
@@ -177,7 +117,7 @@ ms.locfileid: "39048873"
 * 联合应用程序
 * 使用 Azure AD 的自定义应用程序
 
-如果已禁用要求注册，用户仍可手动注册其联系信息。 他们可以访问 [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)，或选择访问面板中“配置文件”选项卡下的“注册密码重置”链接。
+如果禁用了注册要求，用户可以手动注册。 他们可以访问 [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)，或选择访问面板中“配置文件”选项卡下的“注册密码重置”链接。
 
 > [!NOTE]
 > 用户可以通过选择“取消”或关闭窗口来隐藏密码重置注册门户。 但是，在完成注册之前，每当他们登录时，系统都会提示他们注册。
@@ -194,7 +134,7 @@ ms.locfileid: "39048873"
 
 ### <a name="notify-users-on-password-resets"></a>重置密码时通知用户
 
-如果此选项设置为“是”，则重置其密码的用户将收到一封电子邮件，告知其密码已更改。 该电子邮件通过 SSPR 门户发送到 Azure AD 中登记的主要和备用电子邮件地址。 不会向其他任何人告知已发生此重置事件。
+如果此选项设置为“是”，则重置其密码的用户将收到一封电子邮件，告知其密码已更改。 该电子邮件通过 SSPR 门户发送到 Azure AD 中登记的主要和备用电子邮件地址。 不会向其他任何人告知已发生重置事件。
 
 ### <a name="notify-all-admins-when-other-admins-reset-their-passwords"></a>当其他管理员重置其密码时通知所有管理员
 
@@ -204,7 +144,7 @@ ms.locfileid: "39048873"
 
 ## <a name="on-premises-integration"></a>本地集成
 
-如果已安装、配置并启用 Azure AD Connect，可以使用以下附加选项进行本地集成。 如果这些选项灰显，则表示写回配置不正确。 有关详细信息，请参阅[配置密码写回](howto-sspr-writeback.md#configure-password-writeback)。
+如果已安装、配置并启用 Azure AD Connect，可以使用以下附加选项进行本地集成。 如果这些选项灰显，则表示写回配置不正确。 有关详细信息，请参阅[配置密码写回](howto-sspr-writeback.md)。
 
 ![写回][Writeback]
 
@@ -214,7 +154,7 @@ ms.locfileid: "39048873"
 * Azure AD 处于联机状态并连接到本地写回客户端。 但是，似乎 Azure AD Connect 的已安装版本已经过期了。 请考虑[更新 Azure AD Connect](./../connect/active-directory-aadconnect-upgrade-previous-version.md)，确保拥有最新连接功能和重要 bug 修复。
 * 很遗憾，因为 Azure AD Connect 的已安装版本已过期，因此无法查看本地写回客户端状态。 [更新 Azure AD Connect](./../connect/active-directory-aadconnect-upgrade-previous-version.md) 可查看连接状态。
 * 很遗憾，现在似乎无法连接到本地写回客户端。 [对 Azure AD Connect 进行故障排除](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity)以还原连接。
-* 很遗憾，因为密码写回未正确配置，无法连接到本地写回客户端。 [配置密码写回](howto-sspr-writeback.md#configure-password-writeback)以还原连接。
+* 很遗憾，因为密码写回未正确配置，无法连接到本地写回客户端。 [配置密码写回](howto-sspr-writeback.md)以还原连接。
 * 很遗憾，现在似乎无法连接到本地写回客户端。 这可能是因我们终端的临时问题导致。 如果问题仍然存在，[对 Azure AD Connect 进行故障排除](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity)以还原连接。
 
 ### <a name="write-back-passwords-to-your-on-premises-directory"></a>将密码写回到本地目录
@@ -231,7 +171,8 @@ ms.locfileid: "39048873"
 * 如果设置为“是”，将为用户提供重置其密码和解锁帐户的选项，或者在无需重置密码的情况下解锁其帐户的选项。
 * 如果设置为“否”，用户只能同时执行密码重置和帐户解锁的操作。
 
-## <a name="how-does-password-reset-work-for-b2b-users"></a>B2B 用户如何使用密码重置？
+## <a name="password-reset-for-b2b-users"></a>B2B 用户的密码重置
+
 所有企业到企业 (B2B) 配置完全支持密码重置和更改。 以下三种情况支持 B2B 用户密码重置：
 
    * **已有 Azure AD 租户的合作伙伴组织中的用户**：如果与你合作的组织已有 Azure AD 租户，我们将遵守该租户中已启用的任何密码重置策略。 要使密码重置正常工作，合作伙伴组织只需确保启用 Azure AD SSPR。 这不会给 Office 365 客户造成额外的费用，可以遵循[密码管理入门](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords)指南中的步骤启用 SSPR。
