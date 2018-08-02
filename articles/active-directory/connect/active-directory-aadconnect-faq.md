@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 545766aa6c39fe678113297e584422872a6ded87
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 1897f2c5d532c030b2711a35eabeefd889f560c8
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008138"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264989"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常见问题解答
 
@@ -54,7 +54,7 @@ ms.locfileid: "39008138"
 3. 针对现有的[远程 SQL 数据库](active-directory-aadconnect-existing-database.md)安装 Azure AD Connect。
    本文演示了如何改用本地 SQL 数据库。 如果改用远程 SQL 数据库，则在此过程的步骤 5 中，还必须输入用于运行 Windows 同步服务的现有服务帐户。 下面描述了此同步引擎服务帐户：
    
-      **使用现有的服务帐户**：默认情况下，Azure AD Connect 将虚拟服务帐户用于为要使用的同步服务。 如果使用远程 SQL Server 实例或使用需要身份验证的代理，请使用托管服务帐户，或者使用域中的服务帐户并知道密码。 在这些情况下，请输入要使用的帐户。 确保运行安装的用户是 SQL 中的系统管理员，以便可以创建服务帐户的登录凭据。 有关详细信息，请参阅 [Azure AD Connect 帐户和权限](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account)。 
+      **使用现有的服务帐户**：默认情况下，Azure AD Connect 将虚拟服务帐户用于为要使用的同步服务。 如果使用远程 SQL Server 实例或使用需要身份验证的代理，请使用托管服务帐户，或者使用域中的服务帐户并知道密码。 在这些情况下，请输入要使用的帐户。 确保运行安装的用户是 SQL 中的系统管理员，以便可以创建服务帐户的登录凭据。 有关详细信息，请参阅 [Azure AD Connect 帐户和权限](active-directory-aadconnect-accounts-permissions.md#adsync-service-account)。 
    
       现在，在使用最新版本的情况下，可以由 SQL 管理员在带外进行数据库预配，然后由具有数据库所有者权限的 Azure AD Connect 管理员完成安装。 有关详细信息，请参阅[使用 SQL 委派的管理员权限安装 Azure AD Connect](active-directory-aadconnect-sql-delegation.md)。
 

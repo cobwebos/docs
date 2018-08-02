@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: 03d785898398cb0bcd7b43e8d7feab705bce4b34
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a9f4a4ed4a8771f32a4d66aed2457a43abb92a63
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598464"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39295186"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API 导入限制和已知问题
 ## <a name="about-this-list"></a>关于此列表
 导入 API 时，可能会遇到一些限制或识别问题，需要对其进行纠正才能成功导入。 本文记录了这些限制或问题，并按照 API 的导入格式对其进行了组织。
 
 ## <a name="open-api"> </a>OpenAPI/Swagger
-如果在导入 OpenAPI 文档时遇到错误，请确保已通过使用 Azure 门户中的设计器（设计 - 前端 - OpenAPI 规范编辑器）或使用第三方工具（例如 <a href="http://www.swagger.io">Swagger 编辑器</a>）对其进行了验证。
+如果在导入 OpenAPI 文档时遇到错误，请确保已通过使用 Azure 门户中的设计器（设计 - 前端 - OpenAPI 规范编辑器）或使用第三方工具（例如 <a href="http://editor.swagger.io">Swagger 编辑器</a>）对其进行了验证。
 
 * 仅支持 JSON 格式的 OpenAPI。
 * 路径和查询所需的参数必须具有唯一名称。 （在 OpenAPI 中，参数名称只需要在一个位置内是惟一的，例如路径、查询、标头。  但是，在 API 管理中，我们允许操作通过路径和查询参数进行区分（OpenAPI 不支持此方法）。 因此，我们要求参数名称在整个 URL 模板中是唯一的。）
@@ -36,7 +36,7 @@ ms.locfileid: "34598464"
 * 自定义扩展在导入时将被忽略，并且不会为导出保存或保留。
 
 > [!IMPORTANT]
-> 如需与 OpenAPI 导入相关的重要信息和提示，请参阅此[文档](https://blogs.msdn.microsoft.com/apimanagement/2018/03/28/important-changes-to-openapi-import-and-export/)。
+> 如需与 OpenAPI 导入相关的重要信息和提示，请参阅此[文档](https://blogs.msdn.microsoft.com/apimanagement/2018/04/11/important-changes-to-openapi-import-and-export/)。
 
 ## <a name="wsdl"></a>WSDL
 WSDL 文件用于生成 SOAP 直通 API，或用作 SOAP 到 REST API 的后端。

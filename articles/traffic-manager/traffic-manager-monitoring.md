@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2017
 ms.author: kumud
-ms.openlocfilehash: 6d07bd333e4d1663e37a840975cde2d9c73cec9c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0124c70916d1c9a6f6b818a68f13d7a189a1b70f
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211712"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398829"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>流量管理器终结点监视
 
@@ -156,7 +156,7 @@ Azure 流量管理器包括内置的终结点监视和终结点自动故障转�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解[流量管理器工作原理](traffic-manager-how-traffic-manager-works.md)
+了解[流量管理器工作原理](traffic-manager-how-it-works.md)
 
 详细了解流量管理器支持的[流量路由方法](traffic-manager-routing-methods.md)
 

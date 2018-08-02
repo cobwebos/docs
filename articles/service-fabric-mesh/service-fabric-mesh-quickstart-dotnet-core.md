@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/17/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ad8920ac01ce62eb676b495dcde2aae6b076cbe2
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: d14420a363cfea23c86f63533a4ea89c5f2fd06f
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125497"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412910"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>快速入门：创建 Web 应用并将其部署到 Azure Service Fabric 网格
 
@@ -81,19 +81,6 @@ Visual Studio 创建 Service Fabric 网格应用程序项目和 ASP.NET Core 项
 ![Visual Studio - Service Fabric 网格 - 新建资源组对话框](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
 
 返回“发布 Service Fabric 应用程序”对话框，在“Azure 容器注册表”下选择“\<创建新容器注册表...>”。 在“创建容器注册表”对话框中，为“容器注册表名称”使用唯一的名称。 指定“位置”（本教程使用“美国东部”）。 在下拉列表中选择在上一步骤创建的“资源组”，例如 sfmeshTutorial1RG。 将“SKU”设置为“基本”，然后单击“创建”返回发布对话框。
-
-如果有错误指出尚未为订阅注册资源提供程序，现在可以注册。 首先，查看该资源提供程序是否适用于你的订阅：
-
-```Powershell
-Connect-AzureRmAccount
-Get-AzureRmResourceProvider -ListAvailable
-```
-
-如果容器注册表提供程序 (`Microsoft.ContainerRegistry`) 可用，请从 Powershell 注册：
-
-```Powershell
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ContainerRegistry
-```
 
 ![Visual Studio - Service Fabric 网格 - 新建资源组对话框](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-container-registry-dialog.png)
 

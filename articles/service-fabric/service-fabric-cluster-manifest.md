@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: e0fed608ac9dd02a6fe5563eefc30edb63d224b1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 37859a117c88238089a681e3814c2a52f62bfce4
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205359"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412577"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>独立 Windows 群集的配置设置
 本文介绍如何使用 ClusterConfig.json 文件配置独立的 Azure Service Fabric 群集。 需要使用该文件指定有关群集节点、安全配置以及有关容错域和升级域的网络拓扑信息。
@@ -47,9 +47,6 @@ ms.locfileid: "34205359"
 可为 Service Fabric 群集指定任何友好名称，只需将该名称分配到 name 变量即可。 clusterConfigurationVersion 是群集的版本号。 每次升级 Service Fabric 群集时，都应该递增该编号。 请将 apiVersion 保留为默认值。
 
 ## <a name="nodes-on-the-cluster"></a>群集上的节点
-
-    <a id="clusternodes"></a>
-
 可以使用 nodes 节配置 Service Fabric 群集上的节点，如以下代码片段中所示：
 
     "nodes": [{
@@ -88,8 +85,6 @@ ClusterConfig.json 中的属性部分用于配置群集，如下所示：
 ### <a name="reliability"></a>可靠性
 reliabilityLevel 的概念定义可在群集的主节点上运行的 Service Fabric 系统服务副本或实例数。 它会确定这些服务以及群集的可靠性。 在群集创建和升级过程中，由系统计算该值。
 
-    <a id="reliability"></a>
-
 ### <a name="diagnostics"></a>诊断
 在 diagnosticsStore 节中可以配置参数，以便能够诊断和排查节点或群集故障，如以下代码片段中所示： 
 
@@ -124,9 +119,6 @@ metadata 用于描述群集诊断，可以根据具体的情况进行设置。 �
 metadata 用于描述安全群集，可根据具体的情况进行设置。 ClusterCredentialType 和 ServerCredentialType 确定群集与节点将要实现的安全类型。 可将这两项设置为 *X509* 来实现基于证书的安全性，或者设置为 *Windows* 来实现基于 Azure Active Directory 的安全性。 security 节的余下设置基于安全类型。 若要了解如何填充 security 节的余下设置，请参阅[独立群集中基于证书的安全性](service-fabric-windows-cluster-x509-security.md)，或[独立群集中的 Windows 安全性](service-fabric-windows-cluster-windows-security.md)。
 
 ### <a name="node-types"></a>节点类型
-
-    <a id="nodetypes"></a>
-
 nodeTypes 节描述群集中的节点类型。 一个群集必须指定至少一个节点类型，如以下代码片段所示： 
 
     "nodeTypes": [{

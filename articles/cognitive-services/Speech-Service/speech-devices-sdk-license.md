@@ -1,21 +1,20 @@
 ---
-title: 语音设备 SDK 许可协议 | Microsoft Docs
+title: 语音设备 SDK 许可协议
 description: 语音设备 SDK 许可协议。
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.technology: speech
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: a601c0307045ef3db8666c705e5b24fb365f532d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5d9fd0669302dbfbd4f1c3082643d6c03abc7019
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366315"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281955"
 ---
 # <a name="speech-devices-sdk-license-agreement"></a>语音设备 SDK 许可协议
 
@@ -55,7 +54,7 @@ f)  你必须仅将此软件与 Microsoft Azure 认知服务、语音服务结�
 
 **4\. 预发行版软件。** 此软件是预发行版本。 它可能无法正常工作。 它可能与商业发行版本不同。
 
-**5\. 反馈。** 如果你向 Microsoft 提供有关此软件的反馈，即表示你免费向 Microsoft 提供以任何方式出于任何目的使用、共享和商业化你的反馈的权利。 你不会提供受许可证约束的反馈，许可证要求 Microsoft 将其软件或文档的许可发放给第三方，因为 Microsoft 会在其中包含你的反馈。 此类权利在本协议中继续有效。
+**5\. 反馈。** 如果你向 Microsoft 提供有关此软件的反馈，即表示你免费向 Microsoft 提供以任何方式出于任何目的使用、共享和商业化你的反馈的权利。 您不会提供受许可证约束的反馈，许可证要求 Microsoft 将其软件或文档的许可发放给第三方，因为 Microsoft 会在其中包含您的反馈。 此类权利在本协议中继续有效。
 
 **6\. 时间段。** 本协议自你接受之日起生效，并随时可以由你或 Microsoft 终止。 
 

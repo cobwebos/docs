@@ -1,21 +1,20 @@
 ---
-title: 获取语音设备 SDK | Microsoft Docs
+title: 获取语音设备 SDK
 description: 了解如何获取语音设备 SDK 的访问权限。
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.technology: speech
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 4706ea623dccd2dbb4164bd9cccf22cff121884a
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: f70b41cd7e3a7a6eddf32ae6ad024fa9ac040f29
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "35367000"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281776"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>获取认知服务语音设备 SDK
 

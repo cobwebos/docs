@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 951e59333ab1a1e982386c5c71f79b86f5e62440
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 589df59e02a18629d5f405ff1ce8870333f2228e
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194190"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397707"
 ---
 # <a name="runbook-settings"></a>Runbook 设置
 Azure 自动化中的每个 Runbook 都提供了多个设置用于帮助标识自身，以及更改它的日志记录行为。 下面会描述其中的每个设置，然后再介绍修改设置的过程。
@@ -39,7 +39,7 @@ Azure 自动化中的每个 Runbook 都提供了多个设置用于帮助标识�
 3. 单击 Runbook 的名称，转到 Runbook 的“设置”边栏选项卡。 可在此处指定或修改标记、Runbook 描述，配置日志记录和跟踪设置，以及访问有助于解决问题的支持工具。     
 
 ### <a name="changing-runbook-settings-with-windows-powershell"></a>使用 Windows PowerShell 更改 Runbook 设置
-可以使用 [Set-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603786.aspx) cmdlet 更改 Runbook 的设置。 如果想要指定多个标记，可以向 Tags 参数提供一个数组，或者一个包含逗号分隔值的字符串。 可以使用 [Get-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603728.aspx) 获取当前标记。
+可以使用 [Set-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/set-azurermautomationrunbook) cmdlet 更改 Runbook 的设置。 如果想要指定多个标记，可以向 Tags 参数提供一个数组，或者一个包含逗号分隔值的字符串。 可以使用 [Get-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/get-azurermautomationrunbook) 获取当前标记。
 
 以下示例命令演示了如何设置 Runbook 的属性。 此示例向现有标记添加了三个标记，并指定应该记录详细记录。
 

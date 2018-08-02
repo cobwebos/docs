@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: v-wimarc
-ms.openlocfilehash: 2db929d91e589c58f5d2934fcd82a084de2f52b6
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 689f189b45e8b911b6c7e62790712ce29d89f2a9
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31592395"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263268"
 ---
 # <a name="developer-guide-for-azure-china-21vianet"></a>Azure 中国世纪互联开发人员指南
-Microsoft 提供所需的工具来帮助开发人员创建云应用程序并将其部署到全球 Microsoft Azure 服务（“全球服务”）和世纪互联运营的 Microsoft Azure（Azure 中国世纪互联）。 大多数当前可用的技术内容（例如 [Azure 文档中心](https://azure.microsoft.com/documentation/)）都假设应用程序是针对全球 Azure 开发的，因此，必须了解哪些[服务和功能](/azure/china/china-get-started-service-availability)可在 Microsoft Azure 中国世纪互联中使用。
+Microsoft 提供所需的工具来帮助开发人员创建云应用程序并将其部署到全球 Microsoft Azure 服务（“全球服务”）和世纪互联运营的 Microsoft Azure（Azure 中国世纪互联）。 大多数当前可用的技术内容（例如 [Azure 文档中心](https://azure.microsoft.com/documentation/)）都假设应用程序是针对全球 Azure 开发的，因此，必须了解哪些[服务和功能](https://www.azure.cn/home/features/products-by-region)可在 Microsoft Azure 中国世纪互联中使用。
 
 在提到适用于全球 Azure 服务的公用内容时，请务必修改相关的步骤，或自定义任何指定全球 Azure 服务设置的示例代码。 例如，自定义 [Azure 服务终结点](#Check-endpoints-in-Azure)。
 

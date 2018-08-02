@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 8eb42a60045304416ec6aa1099a84b1e264c692d
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: bbfbf351b8976f4140b6dd98a9a54ba982c3d865
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33206272"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399391"
 ---
 # <a name="disaster-recovery-and-geo-distribution"></a>灾难恢复和异地分发
 
@@ -50,7 +50,7 @@ ms.locfileid: "33206272"
 - 此方案考虑到了计算基础结构的中断，但存储帐户仍旧是函数应用的单一故障点。 如果出现存储中断，应用程序会遭遇停机。
 - 如果函数应用已故障转移，则延迟会增大，因为它会跨区域访问其存储帐户。
 - 由于网络出口流量方面的原因，从其他区域（不是函数应用所在的区域）访问存储服务会产生更高的成本。
-- 此方案依赖于流量管理器。 考虑到[流量管理器的工作原理](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works)，使用 Durable Function 的客户端应用程序可能在一段时间之后才需要再次从流量管理器查询函数应用地址。 
+- 此方案依赖于流量管理器。 考虑到[流量管理器的工作原理](../traffic-manager/traffic-manager-how-it-works.md)，使用 Durable Function 的客户端应用程序可能在一段时间之后才需要再次从流量管理器查询函数应用地址。 
 
 
 ## <a name="scenario-2---load-balanced-compute-with-regional-storage"></a>方案 2 - 使用区域存储进行负载均衡的计算

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: ffa689e9556e57560138d9629c616bd3a284f9b6
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0050613f4a92380f48a93cdf1f82ed91dc34f6a4
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222301"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343512"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-learning"></a>教程：Azure Active Directory 与 LinkedIn Learning 的集成
 
@@ -214,7 +214,7 @@ ms.locfileid: "36222301"
 
 ### <a name="creating-a-linkedin-learning-test-user"></a>创建 LinkedIn Learning 测试用户
 
-LinkedIn Learning 应用程序支持实时用户设置，且进行身份验证后，会在应用程序中自动创建用户。 在 LinkedIn Learning 门户的管理设置页上，将“自动分配许可证”开关切换为活动状态实时预配，此操作还会将许可证分配给用户。 LinkedIn Learning 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](linkedinlearning-provisioning-tutorial.md)。
+LinkedIn Learning 应用程序支持实时用户设置，且进行身份验证后，会在应用程序中自动创建用户。 在 LinkedIn Learning 门户的管理设置页上，将“自动分配许可证”开关切换为活动状态实时预配，此操作还会将许可证分配给用户。
 
    ![创建 Azure AD 测试用户](./media/linkedinlearning-tutorial/LinkedinUserprovswitch.png)
 
@@ -258,7 +258,6 @@ LinkedIn Learning 应用程序支持实时用户设置，且进行身份验证�
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
 * [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
-* [配置用户预配](linkedinlearning-provisioning-tutorial.md)
 
 <!--Image references-->
 

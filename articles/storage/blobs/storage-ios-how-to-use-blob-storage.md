@@ -2,20 +2,19 @@
 title: 如何通过 iOS 使用对象 (Blob) 存储 - Azure | Microsoft Docs
 description: 使用 Azure Blob 存储（对象存储）将非结构化数据存储在云中。
 services: storage
-documentationcenter: ios
 author: michaelhauss
-manager: jeconnoc
 ms.service: storage
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: michaelhauss
-ms.openlocfilehash: a15ba7409b4c5f75729b1b40cd2f333c44ae0368
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.component: blobs
+ms.openlocfilehash: 35cfa36aba8042bcc753c1005c8fd8dbcdb70e79
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38718907"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397666"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>如何通过 iOS 使用 Blob 存储
 

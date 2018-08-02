@@ -3,7 +3,7 @@ title: Azure Functions 的 Azure 事件中心绑定
 description: 了解如何在 Azure Functions 中使用 Azure 事件中心绑定。
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -15,13 +15,13 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
-ms.author: tdykstra
-ms.openlocfilehash: 51f64f6f74875c6afac350dc9cc235573b89c524
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.author: glenga
+ms.openlocfilehash: cd5c3316fd41bbd10d4469a6551ae7bd76a881c8
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989582"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345432"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Functions 的 Azure 事件中心绑定
 
@@ -301,8 +301,11 @@ JavaScript 代码如下所示：
 module.exports = function (context, eventHubMessages) {
     context.log(`JavaScript eventhub trigger function called for message array ${eventHubMessages}`);
     
-    eventHubMessages.forEach(message => {
+    eventHubMessages.forEach((message, index) => {
         context.log(`Processed message ${message}`);
+        context.log(`EnqueuedTimeUtc = ${context.bindingData.enqueuedTimeUtcArray[index]}`);
+        context.log(`SequenceNumber = ${context.bindingData.sequenceNumberArray[index]}`);
+        context.log(`Offset = ${context.bindingData.offsetArray[index]}`);
     });
 
     context.done();

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
 ms.author: jeedes
-ms.openlocfilehash: a8478436bfae20ee729ce41bcb134bd3a77fb26e
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: c8ec2b8e312b9bedbd19cb203c0a59177c7fd6a5
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39053465"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39265006"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>教程：Azure Active Directory 与 G Suite 集成
 
@@ -133,7 +133,7 @@ ms.locfileid: "39053465"
 
     ![G Suite 域和 URL 单一登录信息](./media/google-apps-tutorial/tutorial_googleapps_urlgmail.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL： 
     | |
@@ -150,7 +150,7 @@ ms.locfileid: "39053465"
 
     ![G Suite 域和 URL 单一登录信息](./media/google-apps-tutorial/tutorial_googleapps_url1.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com `
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com `
 
     b. 在“标识符”文本框中，使用以下模式键入 URL： 
     | |
@@ -189,7 +189,7 @@ ms.locfileid: "39053465"
    
     ![配置 SSO][12]
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“使用第三方标识提供者设置 SSO”。
+    a. 选择“使用第三方标识提供者设置 SSO”。
 
     b. 在 G Suite 中的“登录页 URL”字段中，粘贴从 Azure 门户复制的“单一登录服务 URL”的值。
 
@@ -231,7 +231,7 @@ ms.locfileid: "39053465"
 
     ![“用户”对话框](./media/google-apps-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 

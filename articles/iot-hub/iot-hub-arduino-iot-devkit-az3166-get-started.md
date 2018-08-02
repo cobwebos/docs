@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: cf9ee5339c53eb4f9c74f6b5f251a7963555d676
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 34088440bf723fc65f4ff5c49f62182f405fa35a
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928743"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344539"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub-in-the-cloud"></a>将 IoT DevKit AZ3166 连接到云中的 Azure IoT 中心
 
@@ -297,12 +297,4 @@ DevKit 将重新启动并开始运行代码。
 
 现已成功将 MXChip IoT DevKit 连接到 IoT 中心，并将捕获的传感器数据发送到了 IoT 中心。
 
-若要继续了解 Azure IoT 中心入门知识并浏览其他 IoT 方案，请参阅：
-
-- [使用 iothub-explorer 管理云设备消息传送](https://docs.microsoft.com/azure/iot-hub/iot-hub-explorer-cloud-device-messaging)
-- [将 IoT 中心消息保存到 Azure 数据存储](https://docs.microsoft.com//azure/iot-hub/iot-hub-store-data-in-azure-table-storage)
-- [使用 Power BI 可视化 Azure IoT 中心的实时传感器数据](https://docs.microsoft.com//azure/iot-hub/iot-hub-live-data-visualization-in-power-bi)
-- [使用 Web 应用可视化 Azure IoT 中心的实时传感器数据](https://docs.microsoft.com//azure/iot-hub/iot-hub-live-data-visualization-in-web-apps)
-- [在 Azure 机器学习中使用 IoT 中心的传感器数据进行天气预报](https://docs.microsoft.com/azure/iot-hub/iot-hub-weather-forecast-machine-learning)
-- [使用 iothub-explorer 进行设备管理](https://docs.microsoft.com/azure/iot-hub/iot-hub-device-management-iothub-explorer)
-- [使用逻辑应用执行远程监视和发送通知](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps)
+[!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

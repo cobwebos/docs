@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/19/2018
+ms.date: 07/31/2018
 ms.author: rkarlin
-ms.openlocfilehash: 27e013ad9e94bb025cfad87cc68b244882a207b3
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 6dd971ff8cd51435978ab80db006f6494dff8a94
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161926"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389321"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Azure 安全中心的自适应应用程序控制
 了解如何通过本演练在 Azure 安全中心配置应用程序控制。
@@ -87,8 +87,7 @@ ms.locfileid: "39161926"
 
 5. 选择完以后，请选择“创建”。
 
-6. 安全中心通过利用适用于 Windows 服务器的 AppLocker 内置功能在所选的每台 VM 上应用合适的规则。 此外，默认情况下，安全中心始终在“审核”模式下启用应用程序控制。 在验证允许列表对工作负荷没有任何负面影响之后，可以切换到“强制”模式。 有关详细信息，请参阅 [AppLocker 工作原理](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/how-applocker-works-techref)。
- 
+
 > [!NOTE]
 > - 安全中心需要至少两周的数据才能创建基线并根据 VM 组填充唯一建议。 安全中心标准层的新客户会遇到一种行为，即 VM 组首先显示在“无建议”选项卡下。
 > - 安全中心内的自适应应用程序控制不支持已通过 GPO 或本地安全策略为其启用了 AppLocker 策略的 VM。

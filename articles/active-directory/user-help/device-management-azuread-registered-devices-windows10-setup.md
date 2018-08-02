@@ -2,26 +2,22 @@
 title: 设置已注册 Azure Active Directory 的设备 | Microsoft Docs
 description: 了解如何设置已注册 Azure Active Directory 的设备。
 services: active-directory
-documentationcenter: ''
-author: MarkusVi
+author: eross-msft
 manager: mtillman
-editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
-ms.component: devices
+ms.component: user-help
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/15/2018
-ms.author: markvi
+ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: 7ce632c76a86fb00101db6664e9e79615484f9a1
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 0c38c0160cea51940ac5b04ee64095c6a6f25b5d
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39058109"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414668"
 ---
 # <a name="set-up-azure-active-directory-registered-windows-10-devices"></a>设置已注册 Azure Active Directory 的 Windows 10 设备
 
@@ -32,7 +28,7 @@ ms.locfileid: "39058109"
 
 ## <a name="before-you-begin"></a>开始之前
 
-若要注册 Windows 10 设备，必须配置设备注册服务以允许注册设备。 此外，还必须使已注册的设备数少于已配置的最大设备数。 有关详细信息，请参阅[配置设备设置](../device-management-azure-portal.md#configure-device-settings)。
+若要注册 Windows 10 设备，必须配置设备注册服务以允许注册设备。 此外，还必须使已注册的设备数少于已配置的最大设备数。 有关详细信息，请参阅[配置设备设置](../devices/device-management-azure-portal.md#configure-device-settings)。
 
 ## <a name="what-you-should-know"></a>要点
 

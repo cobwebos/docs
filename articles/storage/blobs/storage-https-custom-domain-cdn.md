@@ -2,24 +2,18 @@
 title: 使用 Azure CDN 通过 HTTPS 访问包含自定义域的 Blob
 description: 了解如何将 Azure CDN 与 Blob 存储进行集成以通过 HTTPS 访问包含自定义域的 Blob
 services: storage
-documentationcenter: ''
 author: michaelhauss
-manager: vamshik
-editor: tysonn
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: mihauss
-ms.openlocfilehash: b3b1b5064e51b68bb64cb8c4dbec6075705795d6
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.component: blobs
+ms.openlocfilehash: 7c4acc7d0832442b94735619ea3a01cb319da993
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025128"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398244"
 ---
 # <a name="using-the-azure-cdn-to-access-blobs-with-custom-domains-over-https"></a>使用 Azure CDN 通过 HTTPS 访问包含自定义域的 Blob
 Azure 内容分发网络 (CDN) 现在支持针对自定义域名使用 HTTPS。 可以利用此功能通过 HTTPS 访问使用自定义域的存储 Blob。 为此，首先需要在 blob 或 Web 终结点上启用 Azure CDN，并将 CDN 映射到自定义域名。 执行这些步骤后，借助一键式启用、完善的证书管理，为自定义域启用 HTTPS 的流程得以简化，并且所有这些都包含在常规 CDN 定价中，不会额外增加成本。

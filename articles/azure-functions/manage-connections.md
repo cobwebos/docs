@@ -3,7 +3,7 @@ title: 如何管理 Azure Functions 中的连接
 description: 了解如何通过使用静态连接客户端来避免 Azure Functions 中的性能问题。
 services: functions
 documentationcenter: ''
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 ms.service: functions
@@ -11,13 +11,13 @@ ms.workload: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2018
-ms.author: tdykstra
-ms.openlocfilehash: 9e5c56dc3679e9ffbd67d906ca7d971439319ee5
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.author: glenga
+ms.openlocfilehash: 86727355d36e16f5b3c7edef8ce666fb27805a80
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125370"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346294"
 ---
 # <a name="how-to-manage-connections-in-azure-functions"></a>如何管理 Azure Functions 中的连接
 
@@ -94,7 +94,7 @@ public static async Task Run(string input)
 ) 连接不同，ADO.NET 默认实现连接池。 但是，由于连接仍可能耗尽，因此应优化数据库连接。 有关详细信息，请参阅 [SQL Server 连接池 (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)。
 
 > [!TIP]
-> 某些数据框架（例如[实体框架](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx)）通常从配置文件的 ConnectionStrings 部分获取连接字符串。 在这种情况下，必须将 SQL 数据库连接字符串显式添加到函数应用设置的连接字符串集合以及本地项目中的 [local.settings.json 文件](functions-run-local.md#local-settings-file)中。 如果要在函数代码中创建 [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx)，应将连接字符串值与其他连接一起存储在应用程序设置中。
+> 某些数据框架（例如[实体框架](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx)）通常从配置文件的 ConnectionStrings 部分获取连接字符串。 在这种情况下，必须将 SQL 数据库连接字符串显式添加到函数应用设置的连接字符串集合以及本地项目中的 [local.settings.json 文件](functions-run-local.md#local-settings-file)中。 如果要在函数代码中创建 [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx)，则应将连接字符串值与其他连接一起存储在应用程序设置中。
 
 ## <a name="next-steps"></a>后续步骤
 

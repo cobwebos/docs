@@ -45,6 +45,8 @@
       href: traffic-manager-metrics-alerts.md
     - name: 使用 Azure DNS 和流量管理器进行灾难恢复
       href: ../networking/disaster-recovery-dns-traffic-manager.md
+    - name: 流量管理器的工作方式
+      href: traffic-manager-how-it-works.md
     - name: 常见问题
       href: traffic-manager-FAQs.md
 - name: 如何

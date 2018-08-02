@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 0f7f389df96f38bea3634bf712af3f9bf4bdde09
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 9ea843df4cf437b97f7fe1d62636a51f8201376e
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33893943"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414566"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>创建具有加速网络的 Linux 虚拟机
 
@@ -41,7 +41,7 @@ ms.locfileid: "33893943"
 * **降低了 CPU 利用率：** 绕过主机中的虚拟交换机可以减少用于处理网络流量的 CPU 资源。
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
-Azure 库现成支持以下分发版本： 
+从 Azure 库即可支持以下分发： 
 * **Ubuntu 16.04** 
 * **SLES 12 SP3** 
 * **RHEL 7.4**
@@ -53,7 +53,7 @@ Azure 库现成支持以下分发版本：
 ## <a name="limitations-and-constraints"></a>限制和约束
 
 ### <a name="supported-vm-instances"></a>支持的 VM 实例
-大多数常规用途实例以及具有 2 个或更多 vCPU 的计算优化实例都支持加速网络。  这些受到支持的系列包括 D/DSv2 和 F/Fs
+大多数常规用途实例以及具有 2 个或更多 vCPU 的计算优化实例都支持加速网络。  这些受支持的系列包括 D/DSv2 和 F/Fs
 
 在支持超线程的实例上，具有 4 个或更多 vCPU 的 VM 实例支持加速网络。 受到支持的系列包括 D/DSv3、E/ESv3、Fsv2 和 Ms/Mms。
 
@@ -65,7 +65,7 @@ Azure 库现成支持以下分发版本：
 ### <a name="network-interface-creation"></a>网络接口创建 
 只能为新 NIC 启用加速网络。 不能为现有 NIC 启用。
 ### <a name="enabling-accelerated-networking-on-a-running-vm"></a>在正在运行的 VM 上启用加速网络
-未启用加速网络的受支持 VM 大小只能在停止和解除分配时才能启用该功能。  
+未启用加速网络的受支持 VM 大小只有在停止和解除分配时才能启用该功能。  
 ### <a name="deployment-through-azure-resource-manager"></a>通过 Azure 资源管理器部署
 虚拟机（经典）无法部署加速网络。
 
@@ -238,7 +238,7 @@ az vm deallocate \
 
 ```azurecli
 az network nic update \
-    --name myVM -n myNic \
+    --name myNic \
     --resource-group myResourceGroup \
     --accelerated-networking true
 ```

@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 59ae7e83bc2b76cb679b0baf1f5739f28ec7046c
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: d868a59dd5d00dea410cbe8c373263e13903d3ba
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248274"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413138"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的条件是什么？ 
 
@@ -152,7 +152,7 @@ ms.locfileid: "39248274"
 
 - 阻止从 Web 应用程序访问，但允许从移动和桌面应用程序访问。
 
-可将此条件应用到 Web SSO 和新式身份验证协议。 还可将其应用到使用 Microsoft Exchange ActiveSync 的邮件应用程序。 示例包括大多数智能手机上的本机邮件应用。 目前，需要通过 Azure AD 联合身份验证服务来保护使用旧式协议的客户端应用。
+可将此条件应用到 Web SSO 和新式身份验证协议。 还可将其应用到使用 Microsoft Exchange ActiveSync 的邮件应用程序。 示例包括大多数智能手机上的本机邮件应用。 
 
 仅当 Microsoft Office 365 Exchange Online 是所选的唯一云应用时，才能选择此客户端应用条件。
 

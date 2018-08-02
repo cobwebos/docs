@@ -48,7 +48,6 @@ Azure CLI 2.0 将返回一个表示容器服务新配置的 JSON 字符串，其
 
 * 根据在群集中部署的 orchestrator，可以单独缩放群集上运行的容器的实例数。 例如，在 DC/OS 群集中，可使用 [Marathon UI](../articles/container-service/dcos-swarm/container-service-mesos-marathon-ui.md) 更改容器应用程序的实例数。
 
-* 目前，不支持自动缩放容器服务群集中的代理节点。
 
 ## <a name="next-steps"></a>后续步骤
 * 请参阅[更多示例](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md)，了解如何将 Azure CLI 2.0 命令用于 Azure 容器服务。

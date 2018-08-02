@@ -11,15 +11,15 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: c6f6b0685c83d9305c62f121aec562d2afedae21
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: ecdd76a8a6974a819cd0bedffd095299435dcc88
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "36335708"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365307"
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>如何填写自定义开发应用程序的特定字段
 
@@ -38,7 +38,7 @@ ms.locfileid: "36335708"
 ## <a name="fields-in-the-application-registration-form"></a>应用程序注册表单中的字段
 
 
-| 字段            | 说明                                                                              |
+| 字段            | Description                                                                              |
 |------------------|------------------------------------------------------------------------------------------|
 | 名称             | 应用程序的名称。 它应至少具有四个字符。                |
 | 应用程序类型 | **Web 应用/Web API**：表示 Web 应用程序和/或 Web API 的应用程序 
@@ -47,7 +47,7 @@ ms.locfileid: "36335708"
 
 填写上述字段后，会在 Azure 门户中注册应用程序，并重定向到应用程序页面。 应用程序窗格上的“设置”按钮将打开“设置”页，该页面包含多个用于自定义应用程序的字段。 下表介绍了“设置”页中的所有字段。 请注意，将只能看到这些字段的一个子集，具体取决于创建的是 Web 应用程序还是本机应用程序。
 
-| 字段           | 说明                                                                                                                                                                                                                                                                                                     |
+| 字段           | Description                                                                                                                                                                                                                                                                                                     |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 应用程序 ID  | 注册应用程序时，Azure AD 会为应用程序分配一个应用程序 ID。 应用程序 ID 可用于在对 Azure AD 的身份验证请求中唯一标识应用程序，以及访问图形 API 等资源。                                                          |
 | 应用 ID URI      | 这应是唯一的 URI，通常形式为：**https://&lt;tenant\_name&gt;/&lt;application\_name&gt;。** 这在权限授予流程中作为指定应对其颁发令牌的资源的唯一标识符使用。 也将成为已颁发访问令牌中的“aud”声明。 |

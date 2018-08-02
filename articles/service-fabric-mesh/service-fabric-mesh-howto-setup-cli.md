@@ -5,16 +5,16 @@ services: service-fabric-mesh
 keywords: ''
 author: tylermsft
 ms.author: twhitney
-ms.date: 07/11/2018
+ms.date: 07/26/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: cf899e236b7fa21a90a0784e1e2b4fce0feae055
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 567f2afdea44f439779212c61fb3a129f4f979be
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213429"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281566"
 ---
 # <a name="set-up-the-service-fabric-mesh-cli"></a>设置 Service Fabric 网格 CLI
 Service Fabric 网格 CLI 是在 Service Fabric 网格中部署和管理资源所必需的。 
@@ -34,7 +34,7 @@ az extension remove --name mesh
 使用以下命令安装 Azure Service Fabric 网格 CLI 扩展模块。 
 
 ```azurecli-interactive
-az extension add --source https://sfmeshcli.blob.core.windows.net/cli/mesh-0.8.1-py2.py3-none-any.whl
+az extension add --source https://meshcli.blob.core.windows.net/cli/mesh-0.9.1-py2.py3-none-any.whl
 ```
 
 还可以设置你的 [Windows 开发环境](service-fabric-mesh-howto-setup-developer-environment-sdk.md)。

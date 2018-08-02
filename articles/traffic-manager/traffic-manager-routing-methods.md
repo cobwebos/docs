@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2017
 ms.author: kumud
-ms.openlocfilehash: c9bd9b4913e38ed5c1f7f4ec8ee7e3210fa3be8f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 03f1cc3a34fa8a472dcab9654b65cc97b8473993
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30245356"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398611"
 ---
 # <a name="traffic-manager-routing-methods"></a>流量管理器路由方法
 
@@ -83,7 +83,7 @@ Resource Manager Azure 门户支持加权流量路由的配置。  也可以使�
 
 流量管理器在 Internet 延迟表中查找传入 DNS 请求的源 IP 地址。 流量管理器在处理该 IP 地址范围的请求时保持最低延迟的 Azure 数据中心内选择一个可用终结点，并在 DNS 响应中返回该终结点。
 
-如[流量管理器工作原理](traffic-manager-overview.md#how-traffic-manager-works)中所述，流量管理器不会直接从客户端接收 DNS 查询。 DNS 查询来自客户端配置使用的递归 DNS 服务。 因此，用于确定“最靠近”终结点的 IP 地址不是客户端的 IP 地址，而是递归 DNS 服务的 IP 地址。 在实践中，此 IP 地址是客户端的适当代理。
+如[流量管理器工作原理](traffic-manager-how-it-works.md)中所述，流量管理器不会直接从客户端接收 DNS 查询。 DNS 查询来自客户端配置使用的递归 DNS 服务。 因此，用于确定“最靠近”终结点的 IP 地址不是客户端的 IP 地址，而是递归 DNS 服务的 IP 地址。 在实践中，此 IP 地址是客户端的适当代理。
 
 
 流量管理器定期更新 Internet 延迟表，反映全球 Internet 的变化以及新的 Azure 区域。 但是，由于 Internet 上的负载会实时变化，应用程序性能也会随之变化。 “性能”流量路由不会监视给定服务终结点上的负载。 但是，如果某个终结点变得不可用，则流量管理器不会在 DNS 查询响应中包括该终结点。
@@ -122,7 +122,7 @@ Resource Manager Azure 门户支持加权流量路由的配置。  也可以使�
 - 如果终结点显示“已禁用”状态，则它不会包含在区域匹配过程中。 当终结点处于“已禁用”状态时，此行为也适用于嵌套终结点类型。
 - 如果查询来自该配置文件中没有映射的地理区域，流量管理器将返回 NODATA 响应。 因此，强烈建议客户将地理路由用于一个终结点，最好是嵌套类型的终结点，其子配置文件中至少有两个终结点且分配了“世界”区域。 这还可以确保处理任何不会映射到区域的 IP 地址。
 
-如[流量管理器工作原理](traffic-manager-how-traffic-manager-works.md)中所述，流量管理器不会直接从客户端接收 DNS 查询。 DNS 查询来自客户端配置使用的递归 DNS 服务。 因此，用于确定区域的 IP 地址不是客户端的 IP 地址，而是递归 DNS 服务的 IP 地址。 在实践中，此 IP 地址是客户端的适当代理。
+如[流量管理器工作原理](traffic-manager-how-it-works.md)中所述，流量管理器不会直接从客户端接收 DNS 查询。 DNS 查询来自客户端配置使用的递归 DNS 服务。 因此，用于确定区域的 IP 地址不是客户端的 IP 地址，而是递归 DNS 服务的 IP 地址。 在实践中，此 IP 地址是客户端的适当代理。
 
 
 ## <a name="next-steps"></a>后续步骤

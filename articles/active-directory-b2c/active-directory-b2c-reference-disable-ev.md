@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 2/06/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c1bebe46832226e822d9eeb002cb555b72a1d7fa
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: e008fb87b57b92f8f7e914e6b4344b52d42f9ef8
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441601"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263923"
 ---
 # <a name="azure-active-directory-b2c-disable-email-verification-during-consumer-sign-up"></a>Azure Active Directory B2C：在使用者注册期间禁用电子邮件验证
 启用后，Azure Active Directory (Azure AD) B2C 让使用者能够通过提供电子邮件地址和创建本地帐户来注册应用程序。 Azure AD B2C 通过要求使用者在注册过程中验证电子邮件地址来确保电子邮件地址有效。 它还阻止恶意的自动化过程生成应用程序的假帐户。
@@ -26,13 +26,14 @@ ms.locfileid: "37441601"
 
 1. [请按照以下步骤导航到 Azure 门户上的 B2C 功能边栏选项卡](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
 2. 单击“注册策略”或“注册或登录策略”，具体取决于对注册进行的配置。
-3. 单击策略（例如，“B2C_1_SiUp”）将其打开。 单击边栏选项卡顶部的“编辑”。
-4. 单击“页面 UI 自定义”。
-5. 单击“本地帐户注册页”。
-6. 单击“注册属性”部分下“名称”列中的“电子邮件地址”。
-7. 将“要求验证”选项切换到“否”。
-8. 单击底部的“确定”，直到到达“编辑策略”边栏选项卡。
-9. 单击边栏选项卡顶部的“保存”。 大功告成！
+3. 单击策略（例如，“B2C_1_SiUp”）将其打开。 
+4. 单击边栏选项卡顶部的“编辑”。
+5. 单击“页面 UI 自定义”。
+6. 单击“本地帐户注册页”。
+7. 单击“注册属性”部分下“名称”列中的“电子邮件地址”。
+8. 将“要求验证”选项切换到“否”。
+9. 单击底部的“确定”，直到到达“编辑策略”边栏选项卡。
+10. 单击边栏选项卡顶部的“保存”。 大功告成！
 
 > [!NOTE]
 > 在注册过程中禁用电子邮件验证可能会导致垃圾邮件。 如果禁用了默认的电子邮件验证，我们建议添加自己的验证系统。

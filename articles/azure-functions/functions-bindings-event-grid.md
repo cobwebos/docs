@@ -3,7 +3,7 @@ title: Azure Functions 的事件网格触发器
 description: 了解如何处理 Azure Functions 中的事件网格事件。
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -14,13 +14,13 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/08/2018
-ms.author: tdykstra
-ms.openlocfilehash: 6678109414eaa71ced369e87e1cd15544fee5ee5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: glenga
+ms.openlocfilehash: 5f629ea791a839e1eca25e7487ea395638d136ab
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723429"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344624"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions 的事件网格触发器
 
@@ -201,7 +201,7 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, Trac
 
 下表解释了在 function.json 文件中设置的绑定配置属性。 无法在 `EventGridTrigger` 特性中设置任何构造函数参数或属性。
 
-|function.json 属性 |说明|
+|function.json 属性 |Description|
 |---------|---------|----------------------|
 | type | 必需 - 必须设置为 `eventGridTrigger`。 |
 | direction | 必需 - 必须设置为 `in`。 |

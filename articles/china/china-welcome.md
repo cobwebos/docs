@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/29/2017
+ms.date: 07/31/2018
 ms.author: v-wimarc
-ms.openlocfilehash: fb683fb140af58ac4d3099db886b9eead91df494
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 2199bb72ce1b3bbb98eb86a480a6484685a39646
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
-ms.locfileid: "23635187"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397883"
 ---
 # <a name="welcome-to-azure-china-21vianet"></a>欢迎访问 Azure 中国世纪互联
 世纪互联运营的 Microsoft Azure（Azure 中国世纪互联）是位于中国大陆的云服务的物理独立实例，其运营和交易由上海蓝云网络科技有限公司（即“世纪互联”，北京世纪互联宽带数据中心有限公司的全资子公司）展开。 
@@ -28,7 +28,7 @@ ms.locfileid: "23635187"
 
 作为在中国成立的、符合政府法规的第一家国外公有云服务提供商，[Azure 中国世纪互联](/azure/china/china-overview-operations)提供一流的安全性（请参阅[信任中心](https://www.trustcenter.cn/compliance/)），在其体系结构上构建的所有系统和应用程序均符合中国法规要求。 Azure 包含基础结构即服务 (IaaS)、平台即服务 (PaaS) 和软件即服务 (SaaS) 的核心组件。 这些组件包括网络、存储、数据管理、标识管理和其他许多服务。
 
-Azure 中国世纪互联支持全球 Azure 所提供的大多数优异[服务](/azure/china/china-get-started-service-availability)，例如异地同步数据复制和自动缩放。 即使已在使用全球 Azure 服务，但若要在中国运营，也可能需要[重新托管](/azure/china/china-how-to-rehost)或者[重构](/azure/china/china-how-to-refactor)部分或所有应用程序或服务。 
+Azure 中国世纪互联支持全球 Azure 所提供的大多数优异[服务](https://www.azure.cn/home/features/products-by-region)，例如异地同步数据复制和自动缩放。 即使已在使用全球 Azure 服务，但若要在中国运营，也可能需要[重新托管](/azure/china/china-how-to-rehost)或者[重构](/azure/china/china-how-to-refactor)部分或所有应用程序或服务。 
 
 本文档包括以下主题：
 - 寻求在具有独特 Internet 环境和政策的中国开办服务的组织所要知道的[监管注意事项](/azure/china/china-overview-policies)
@@ -37,10 +37,10 @@ Azure 中国世纪互联支持全球 Azure 所提供的大多数优异[服务](/
 - 提供 Azure 解决方案产品的[合作伙伴](/azure/china/china-resources-partners)
 
 ## <a name="operations"></a>操作
-根据中国的[电信法规](http://www.miit.gov.cn/n11293472/n11293877/n11301753/n11496139/11537485.html)，（中文版），云服务（IaaS 和 PaaS）的提供商必须获得增值电信业务的许可。 在当地注册的公司中，只有不到 50% 的外资公司符合这些许可条件。 为了遵守此法规，中国的 Azure 服务由世纪互联根据 Microsoft 许可的技术运营。 
+根据中国的[电信法规](http://www.miit.gov.cn/n1146295/n1146557/n1146619/c4860613/content.html)，（中文版），云服务（IaaS 和 PaaS）的提供商必须获得增值电信业务的许可。 在当地注册的公司中，只有不到 50% 的外资公司符合这些许可条件。 为了遵守此法规，中国的 Azure 服务由世纪互联根据 Microsoft 许可的技术运营。 
 
 ## <a name="next-steps"></a>后续步骤
-- [Microsoft Azure 中国世纪互联的服务和功能](/azure/china/china-get-started-service-availability)
+- [Microsoft Azure 中国世纪互联的服务和功能](https://www.azure.cn/home/features/products-by-region)
 - [Azure 全球连接中心](http://aka.ms/azcc)
 - [Azure 案例研究](https://www.azure.cn/partnerancasestudy/case-studies/)（中文版）
 - [GitHub 中的全局连接工具包](https://github.com/Azure/AzureGlobalConnectionToolkit)

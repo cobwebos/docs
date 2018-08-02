@@ -3,17 +3,17 @@ title: 为 Azure 存储帐户配置自定义域名 | Microsoft Docs
 description: 在 Azure 门户中，可以将自己的规范名称 (CNAME) 映射到 Azure 存储帐户中的 blob 或 Web 终结点。
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: tamram
-ms.openlocfilehash: 2f4267c25dfd31e6f1d5ae3a832be06b5ef6c828
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.component: blobs
+ms.openlocfilehash: 5fd823e9105157f8292d5a9554850b0f4338a392
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37017914"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398846"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>为 Azure 存储帐户配置自定义域名
 

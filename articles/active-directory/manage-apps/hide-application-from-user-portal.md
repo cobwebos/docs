@@ -11,17 +11,17 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/04/2018
 ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.openlocfilehash: b60384663d79294531225612a767663e0d71723f
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 55f80396df4cbfe7d0a16a6a5066b68aadc0bdd3
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35302028"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39368915"
 ---
 # <a name="hide-an-application-from-users-experience-in-azure-active-directory"></a>使应用程序不出现在用户在 Azure Active Directory 中的体验中
 
@@ -63,7 +63,7 @@ ms.locfileid: "35302028"
 ![企业应用](./media/hide-application-from-user-portal/apps4.png)
 
 ## <a name="next-steps"></a>后续步骤
-* [查看所有组](../active-directory-groups-view-azure-portal.md)
+* [查看所有组](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [向企业应用分配用户或组](assign-user-or-group-access-portal.md)
 * [删除企业应用的用户或组分配](remove-user-or-group-access-portal.md)
 * [更改企业应用的名称或徽标](change-name-or-logo-portal.md)

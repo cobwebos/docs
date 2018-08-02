@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: kumud
-ms.openlocfilehash: 792712e3e529d77ff20a7603b5fbf028ca60f8c8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 115511d15bc2366e49f6b3d1b89b513ea0ee5e90
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23112685"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398022"
 ---
 # <a name="traffic-manager-endpoints"></a>流量管理器终结点
-使用 Microsoft Azure 流量管理器可以控制如何将网络流量分布到在不同数据中心运行的应用程序部署。 需要在流量管理器中将每个应用程序部署配置为一个“终结点”。 当流量管理器收到 DNS 请求时，将选择要在 DNS 响应中返回的可用终结点。 流量管理器根据当前终结点状态和流量路由方法做出这种选择。 相关详细信息，请参阅[流量管理器工作原理](traffic-manager-how-traffic-manager-works.md)。
+使用 Microsoft Azure 流量管理器可以控制如何将网络流量分布到在不同数据中心运行的应用程序部署。 需要在流量管理器中将每个应用程序部署配置为一个“终结点”。 当流量管理器收到 DNS 请求时，将选择要在 DNS 响应中返回的可用终结点。 流量管理器根据当前终结点状态和流量路由方法做出这种选择。 相关详细信息，请参阅[流量管理器工作原理](traffic-manager-how-it-works.md)。
 
 流量管理器支持三种类型的终结点：
 * **Azure 终结点**用于在 Azure 中托管的服务。
@@ -41,7 +41,7 @@ Azure 终结点用于流量管理器中基于 Azure 的服务。 支持以下 Az
 * Web 应用
 * PublicIPAddress 资源（可直接或通过 Azure 负载均衡器连接到 VM）。 必须为 publicIpAddress 分配一个 DNS 名称，才能在流量管理器配置文件中使用它。
 
-PublicIPAddress 资源属于 Azure Resource Manager 资源。 经典部署模型中没有这些资源。 因此，这些资源仅在流量管理器的 Azure Resource Manager 体验中受支持。 其他终结点类型通过 Resource Manager 和经典部署模型受到支持。
+PublicIPAddress 资源属于 Azure 资源管理器资源。 经典部署模型中没有这些资源。 因此，这些资源仅在流量管理器的 Azure 资源管理器体验中受支持。 其他终结点类型通过 Resource Manager 和经典部署模型受到支持。
 
 使用 Azure 终结点时，流量管理器可检测“经典”IaaS VM、云服务或 Web 应用的停止和启动时间。 此状态反映在终结点状态中。 有关详细信息，请参阅[流量管理器终结点监视](traffic-manager-monitoring.md#endpoint-and-profile-status)。 当基础服务停止时，流量管理器不会执行终结点运行状况检查，或者将流量定向到终结点。 已停止的实例不会发生流量管理器计费事件。 重新启动服务后，计费会恢复，终结点可以接收流量。 此项检测不适用于 PublicIpAddress 终结点。
 
@@ -74,7 +74,7 @@ PublicIPAddress 资源属于 Azure Resource Manager 资源。 经典部署模型
 可以通过流量管理器门户、PowerShell、CLI 或 REST API 来启用和禁用终结点，Resource Manager 和经典部署模型都支持这些操作。
 
 > [!NOTE]
-> 禁用某个 Azure 终结点对其在 Azure 中的部署状态没有任何影响。 Azure 服务（例如 VM 或 Web 应用）将保持运行并可接收流量，即使已在流量管理器中禁用。 流量可直接定向到该服务实例，而无需通过流量管理器配置文件 DNS 名称。 相关详细信息，请参阅[流量管理器工作原理](traffic-manager-how-traffic-manager-works.md)。
+> 禁用某个 Azure 终结点对其在 Azure 中的部署状态没有任何影响。 Azure 服务（例如 VM 或 Web 应用）将保持运行并可接收流量，即使已在流量管理器中禁用。 流量可直接定向到该服务实例，而无需通过流量管理器配置文件 DNS 名称。 相关详细信息，请参阅[流量管理器工作原理](traffic-manager-how-it-works.md)。
 
 目前，每个终结点接收流量的资格取决于以下因素：
 
@@ -92,6 +92,6 @@ PublicIPAddress 资源属于 Azure Resource Manager 资源。 经典部署模型
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解[流量管理器工作原理](traffic-manager-how-traffic-manager-works.md)。
+* 了解[流量管理器工作原理](traffic-manager-how-it-works.md)。
 * 了解流量管理器[终结点监视和自动故障转移](traffic-manager-monitoring.md)。
 * 了解流量管理器[流量路由方法](traffic-manager-routing-methods.md)。

@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2018
+ms.date: 07/30/2018
 ms.author: terrylan
-ms.openlocfilehash: cda204f5b54aef239cc0795b62c6fa484a27ebb5
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: b882f9740a9b29cddb2cbe0359056cf66c293717
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
-ms.locfileid: "29529408"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39363748"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>教程：使用 Azure 安装中心来保护资源
 安全中心使用访问控制和应用程序控制来阻止恶意活动，限制威胁所造成的危害。 可以通过恰时虚拟机 (VM) 访问拒绝对 VM 的永久性访问，减少自己遭受攻击的可能性。 仅在需要的情况下，才提供对 VM 的受控且经过审核的访问权限。 自适应应用程序控制可以对哪些应用程序能够在 VM 上运行进行控制，从而强化 VM 对抗恶意软件的能力。 安全中心使用机器学习来分析在 VM 中运行的进程，帮助你运用此智能来应用允许列表规则。
@@ -38,8 +38,6 @@ ms.locfileid: "29529408"
 
 ## <a name="manage-vm-access"></a>管理 VM 访问权限
 恰时 VM 访问可以用来锁定发往 Azure VM 的入站流量，降低遭受攻击的可能性，同时在需要时还允许轻松连接到 VM。
-
-恰时 VM 访问为预览版。
 
 管理端口不需要始终处于打开状态。 它们只需要在特定的时间打开，例如在你连接到 VM 来执行管理或维护任务时。 当启用了恰时功能时，安全中心会使用网络安全组 (NSG) 规则，这些规则将限制对管理端口的访问以使其不会成为攻击者的目标。
 
@@ -75,7 +73,7 @@ ms.locfileid: "29529408"
 ## <a name="harden-vms-against-malware"></a>强化 VM 对抗恶意软件的能力
 可以通过自适应应用程序控制来定义一组应用程序，允许这些应用程序在配置的资源组上运行。这样有很多好处，其中之一就是有助于强化 VM 对抗恶意软件的能力。 安全中心使用机器学习来分析在 VM 中运行的进程，帮助你运用此智能来应用允许列表规则。
 
-自适应应用程序控制为预览版。 此功能仅适用于 Windows 计算机。
+此功能仅适用于 Windows 计算机。
 
 1. 返回到安全中心主菜单。 在“高级云防御”下选择“自适应应用程序控制”。
 

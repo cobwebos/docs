@@ -3,7 +3,7 @@ title: 适用于 Functions 2.x（预览版）的 Azure Cosmos DB 绑定
 description: 了解如何在 Azure Functions 中使用 Azure Cosmos DB 触发器和绑定。
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -14,13 +14,13 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
-ms.author: tdykstra
-ms.openlocfilehash: e3a4af27a2e662b9d857f3293814fd06f6b0e284
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.author: glenga
+ms.openlocfilehash: e77ccdc5b4bc03ba233aae49eda8465704e5405e
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39055077"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344369"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x-preview"></a>适用于 Azure Functions 2.x（预览版）的 Azure Cosmos DB 绑定
 

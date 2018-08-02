@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
-ms.author: danis
-ms.openlocfilehash: e7926fa488ad38784a3db96035055a80f841aed8
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.author: ejarvi
+ms.openlocfilehash: 36e8875e91e2f04dbb60bab3211f07b2053e78f5
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448775"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414766"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>适用于 Linux 的 Azure 磁盘加密 (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
@@ -30,16 +30,15 @@ Azure 磁盘加密利用 Linux 中的 dm-crypt 子系统在[选择 Azure Linux �
 ## <a name="prerequisites"></a>先决条件
 
 有关先决条件的完整列表，请参阅 [Azure 磁盘加密先决条件](
-../../security/azure-security-disk-encryption.md#prerequisites)。
+../../security/azure-security-disk-encryption-prerequisites.md)。
 
 ### <a name="operating-system"></a>操作系统
 
-目前，选择的发行版和版本支持 Azure 磁盘加密。  有关受支持的 Linux 发行版列表，请参阅 [Azure 磁盘加密常见问题解答](../../security/azure-security-disk-encryption-faq.md#what-linux-distributions-does-azure-disk-encryption-support)。
+目前，选择的发行版和版本支持 Azure 磁盘加密。  有关受支持的 Linux 发行版列表，请参阅 [Azure 磁盘加密常见问题解答](../../security/azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport)。
 
 ### <a name="internet-connectivity"></a>Internet 连接
 
-适用于 Linux 的 Azure 磁盘加密需要 Internet 连接才能访问 Active Directory、Key Vault、存储和包管理终结点。  有关详细信息，请参阅 [Azure 磁盘加密先决条件](
-../../security/azure-security-disk-encryption.md#prerequisites)。
+适用于 Linux 的 Azure 磁盘加密需要 Internet 连接才能访问 Active Directory、Key Vault、存储和包管理终结点。  有关详细信息，请参阅 [Azure 磁盘加密先决条件](../../security/azure-security-disk-encryption-prerequisites.md)。
 
 ## <a name="extension-schema"></a>扩展架构
 

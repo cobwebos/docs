@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: jdial
-ms.openlocfilehash: 82a7449bf75cd31f8da5bb93618c4e6977ed312b
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 67b2babcd19268a61794d123f5aa9780af16976b
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144928"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364006"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>诊断虚拟机网络流量筛选器问题
 
@@ -152,7 +152,7 @@ az vm show \
 
 ## <a name="interpret-command-output"></a>解释命令输出
 
-无论使用 [PowerShell](#diangose-using-powershell) 还是 [Azure CLI](#diagnose-using-azure-cli) 诊断问题，都会收到包含以下信息的输出：
+无论使用 [PowerShell](#diagnose-using-powershell) 还是 [Azure CLI](#diagnose-using-azure-cli) 诊断问题，都会收到包含以下信息的输出：
 
 - **NetworkSecurityGroup**：网络安全组的 ID。
 - **Association**：网络安全组是关联到 *NetworkInterface* 还是 *Subnet*。 如果 NSG 关联到两者，则返回的输出将包含每个 NSG 的 **NetworkSecurityGroup**、**Association** 和 **EffectiveSecurityRules**。 如果在关联或取消关联 NSG 之后紧接着运行此命令来查看有效安全规则，则可能需要等待几秒钟时间，更改才会反映在命令输出中。

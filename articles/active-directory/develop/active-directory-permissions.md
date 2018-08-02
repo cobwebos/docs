@@ -12,17 +12,17 @@ ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.date: 06/25/2018
 ms.author: celested
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 3b0fbbe466f51a6216716d274f238497a8a79294
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: bd345f5ce2db6d35ed1c921466d7761e69bf85f0
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441628"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398652"
 ---
 # <a name="permissions-in-azure-active-directory"></a>Azure Active Directory 中的权限
 
@@ -55,7 +55,7 @@ Azure AD 中的权限提供多个属性用于帮助用户、管理员或应用�
 > (Get-AzureADServicePrincipal -filter "DisplayName eq 'Microsoft Graph'").AppRoles
 > ```
 
-| 属性名称 | 说明 | 示例 | 
+| 属性名称 | Description | 示例 | 
 | --- | --- | --- |
 | `ID` | 这是唯一标识此权限的 GUID 值。 | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca | 
 | `IsEnabled` | 指示此权限是否可供使用。 | 是 | 

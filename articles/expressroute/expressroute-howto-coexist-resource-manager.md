@@ -14,13 +14,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
-ms.author: charwen,cherylmc
-ms.openlocfilehash: cdeda7d72461f35c138f12ca9b2758cdba44d5f6
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.author: charwen,cherylmc,rambala
+ms.openlocfilehash: 80d2f65f516d7f1190f276fa9f2c62206bd31e67
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259249"
+ms.locfileid: "39262866"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections"></a>设置 ExpressRoute 和站点到站点并存连接
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ ms.locfileid: "39259249"
 * 可以将站点到站点 VPN 配置为 ExpressRoute 的安全故障转移路径。 
 * 另外，还可以使用站点到站点 VPN 连接到未通过 ExpressRoute 连接的站点。 
 
-本文中介绍了这两种方案的配置步骤。 本文适用于 Resource Manager 部署模型并使用 PowerShell。 此配置在 Azure 门户中不可用。
+本文中介绍了这两种方案的配置步骤。 本文适用于 Resource Manager 部署模型并使用 PowerShell。 
 
 >[!NOTE]
 >如果想要通过 ExpressRoute 线路创建站点到站点 VPN，请参阅[此文](site-to-site-vpn-over-microsoft-peering.md)。

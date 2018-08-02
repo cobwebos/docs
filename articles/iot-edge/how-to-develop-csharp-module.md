@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 06/27/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 92e476d38e6e56edca19afe78bed2705feadd0bb
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: a895f21bc061763b1d5d45b2bedb44fc932190dc
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040902"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345204"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>使用 Visual Studio Code 开发和调试 Azure IoT Edge 的 C# 模块
 
@@ -24,7 +24,7 @@ ms.locfileid: "39040902"
 本文假设使用运行 Windows 或 Linux 的计算机或虚拟机作为开发计算机。 IoT Edge 设备可以是另一台物理设备。 或者，可以在开发计算机上模拟 IoT Edge 设备。
 
 > [!NOTE]
-> 本调试文章演示了如何在模块容器中附加进程并使用 VS Code 对它进行调试。 只能调试 linux-amd64 容器中的 C# 函数。 如果你不熟悉 Visual Studio Code 的调试功能，请阅读有关[调试](https://code.visualstudio.com/Docs/editor/debugging)的信息。 
+> 本调试文章演示如何在模块容器中附加进程并使用 VS Code 对它进行调试。 只能调试 Linux amd64 容器中的 C# 模块。 如果你不熟悉 Visual Studio Code 的调试功能，请阅读有关[调试](https://code.visualstudio.com/Docs/editor/debugging)的信息。 
 
 因为本文使用 Visual Studio Code 作为主要开发工具，所以请安装 VS Code。 然后添加必要的扩展：
 * [Visual Studio Code](https://code.visualstudio.com/) 

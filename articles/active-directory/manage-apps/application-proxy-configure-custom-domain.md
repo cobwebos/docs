@@ -10,17 +10,17 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: cb4620babd3a1ba5087ae9ebd2870c1ef404bb58
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 090df19861e00a99f0bb63bf20eb2f26dc6761fd
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156477"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39368475"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理中的自定义域
 
@@ -38,7 +38,7 @@ ms.locfileid: "34156477"
 ### <a name="prerequisites"></a>先决条件
 
 配置自定义域之前，请确保根据以下要求做好准备： 
-- 一个[已添加到 Azure Active Directory 的经验证的域](../add-custom-domain.md)。
+- 一个[已添加到 Azure Active Directory 的经验证的域](../fundamentals/add-custom-domain.md)。
 - 一个用于域的、采用 PFX 文件格式的自定义证书。 
 - 一个[通过应用程序代理发布](application-proxy-publish-azure-portal.md)的本地应用。
 
@@ -72,7 +72,7 @@ ms.locfileid: "34156477"
 只要通配符与所需的外部 URL 匹配，就可使用通配符证书。 
 
 ### <a name="changing-the-domain"></a>更改域
-所有已验证的域显示在应用程序的“外部 URL”下拉列表中。 若要更改域，只需更新应用程序的该字段。 如果所需的域不在列表中，请[将它添加为已验证的域](../add-custom-domain.md)。 如果选择一个尚无关联证书的域，请遵循步骤 5 - 7 添加证书。 然后，请务必更新从新的外部 URL 重定向的 DNS 记录。 
+所有已验证的域显示在应用程序的“外部 URL”下拉列表中。 若要更改域，只需更新应用程序的该字段。 如果所需的域不在列表中，请[将它添加为已验证的域](../fundamentals/add-custom-domain.md)。 如果选择一个尚无关联证书的域，请遵循步骤 5 - 7 添加证书。 然后，请务必更新从新的外部 URL 重定向的 DNS 记录。 
 
 ### <a name="certificate-management"></a>证书管理
 可对多个应用程序使用相同的证书，但这些应用程序共享一台外部主机时除外。 
@@ -84,6 +84,6 @@ ms.locfileid: "34156477"
 ## <a name="next-steps"></a>后续步骤
 * 使用 Azure AD 身份验证对已发布应用[启用单一登录](application-proxy-configure-single-sign-on-with-kcd.md)。
 * 对已发布应用[启用条件访问](application-proxy-integrate-with-sharepoint-server.md)。
-* [将自定义域名添加到 Azure AD](../add-custom-domain.md)
+* [将自定义域名添加到 Azure AD](../fundamentals/add-custom-domain.md)
 
 

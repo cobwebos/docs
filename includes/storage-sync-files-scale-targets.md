@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/18/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: 9f94a4c6434265d780b39143b7e4b062badd5fbf
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: a9aa4680d91a4ab95933ae636c4467217fd162b2
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145938"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39278007"
 ---
 | 资源 | 目标 | 硬限制 |
 |----------|--------------|------------|
@@ -25,7 +25,7 @@ ms.locfileid: "39145938"
 | 每个服务器的服务器终结点数 | 33 到 99 个服务器终结点 | 是，但因配置而异 |
 | 终结点大小 | 4 TiB | 否 |
 | 每个同步组的文件系统对象数（目录和文件） | 2500 万个对象 | 否 |
-| 目录中的最大文件系统对象（目录和文件）数 | 200,000 个对象 | 否 |
+| 目录中的最大文件系统对象（目录和文件）数 | 200,000 个对象 | 是 |
 | 最大对象（目录和文件）名称长度 | 255 个字符 | 是 |
 | 文件大小 | 100 GiB | 否 |
 | 要进行分层的文件的最小文件大小 | 64 KiB | 是 |

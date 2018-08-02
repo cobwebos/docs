@@ -2,26 +2,22 @@
 title: 设置已加入 Azure Active Directory 的设备 | Microsoft Docs
 description: 了解如何设置已加入 Azure Active Directory 的设备。
 services: active-directory
-documentationcenter: ''
-author: MarkusVi
+author: eross-msft
 manager: mtillman
-editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
-ms.component: devices
+ms.component: user-help
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/15/2018
-ms.author: markvi
+ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: f2d285735b92c3acd67dc741f344b836e791be04
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 83eea565cc775a0569015c04d79d627d6ba120e6
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39058459"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39411703"
 ---
 # <a name="set-up-azure-active-directory-joined-devices"></a>设置已加入 Azure Active Directory 的设备
 
@@ -32,7 +28,7 @@ ms.locfileid: "39058459"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要加入 Windows 10 设备，必须配置设备注册服务以允许注册设备。 除具有在 Azure AD 租户中加入设备的权限外，注册设备的数量必须少于所配置的最大数。 有关详细信息，请参阅[配置设备设置](../device-management-azure-portal.md#configure-device-settings)。
+若要加入 Windows 10 设备，必须配置设备注册服务以允许注册设备。 除具有在 Azure AD 租户中加入设备的权限外，注册设备的数量必须少于所配置的最大数。 有关详细信息，请参阅[配置设备设置](../devices/device-management-azure-portal.md#configure-device-settings)。
 
 
 
@@ -120,16 +116,14 @@ ms.locfileid: "39058459"
 
 ![连续](./media/device-management-azuread-joined-devices-setup/15.png)
 
-有关详细信息，请参阅[查找设备](../device-management-azure-portal.md#locate-devices)。
+有关详细信息，请参阅[查找设备](../devices/device-management-azure-portal.md#locate-devices)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
 有关详细信息，请参阅： 
 
-- [Azure Active Directory 中的设备管理简介](../device-management-introduction.md)
-- [使用 Azure 门户管理设备](../device-management-azure-portal.md)
-- 
-
+- [Azure Active Directory 中的设备管理简介](../devices/overview.md)
+- [使用 Azure 门户管理设备](../devices/device-management-azure-portal.md)
 
 

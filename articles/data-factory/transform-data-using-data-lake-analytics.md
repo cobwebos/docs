@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/29/2018
+ms.date: 08/01/2018
 ms.author: abnarain
-ms.openlocfilehash: b82353418931c872f8ec90f381b27bbb5d5781e9
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: d406c7f7714e011126be67ad3f65938db62e7bbe
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046949"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412842"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>通过在 Azure Data Lake Analytics 上运行 U-SQL 脚本来转换数据 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -40,8 +40,8 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 | type                 | 类型属性应设置为 **AzureDataLakeAnalytics**。 | 是                                      |
 | **accountName**          | Azure Data Lake Analytics 帐户名。  | 是                                      |
 | **dataLakeAnalyticsUri** | Azure Data Lake Analytics URI。           | 否                                       |
-| **subscriptionId**       | Azure 订阅 ID                    | 否（如果未指定，则使用数据工厂的订阅）。 |
-| **resourceGroupName**    | Azure 资源组名称                | 否（如果未指定，则使用数据工厂的资源组）。 |
+| **subscriptionId**       | Azure 订阅 ID                    | 否                                       |
+| **resourceGroupName**    | Azure 资源组名称                | 否                                       |
 
 ### <a name="service-principal-authentication"></a>服务主体身份验证
 Azure Data Lake Analytics 链接服务需要进行服务主体身份验证，才能连接到 Azure Data Lake Analytics 服务。 若要使用服务主体身份验证，请在 Azure Active Directory (Azure AD) 中注册一个应用程序实体并授予其访问 Data Lake Analytics 和它使用的 Data Lake Store 的权限。 有关详细步骤，请参阅[服务到服务身份验证](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)。 记下下面的值，这些值用于定义链接服务：

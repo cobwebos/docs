@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 06/27/2018
+ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: 4be36e9d5b34c46138a657429680689014d0fd3d
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 578fdb5593e75e3584e81d73d7643162f7af5cbc
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237768"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358132"
 ---
 # <a name="tutorial-1-build-app-with-custom-domain"></a>教程：1. 使用自定义域生成应用
 在本教程中，我们将创建一个应用，用于演示如何使用**意向**，根据用户提交到应用的陈述（文本），来确定该用户的_意向_。 完成本教程后，会在云中运行一个 LUIS 终结点。
@@ -32,7 +32,7 @@ ms.locfileid: "39237768"
 > * 将示例陈述添加到 ApplyForJob 意向 
 > * 再次训练、发布并查询终结点 
 
-本文需要一个免费的 [LUIS](luis-reference-regions.md#luis-website) 帐户，以便创作 LUIS 应用程序。
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="purpose-of-the-app"></a>应用的用途
 此应用具有多个意向。 第一个意向 **`GetJobInformation`** 识别用户何时需要公司内部提供的作业的信息。 第二个意向 **`None`** 识别其他每种类型的陈述。 本快速入门稍后会添加第三个意向 `ApplyForJob`。 
@@ -49,8 +49,6 @@ ms.locfileid: "39237768"
     ![LUIS 新应用](./media/luis-quickstart-intents-only/create-app.png)
 
 4. 过程完成后，应用会显示具有 **None** 意向的“意向”页。 
-
-    [![](media/luis-quickstart-intents-only/intents-list.png "“意向列表”页的屏幕截图")](media/luis-quickstart-intents-only/intents-list.png#lightbox)
 
 ## <a name="create-getjobinformation-intention"></a>创建 GetJobInformation 意向
 1. 选择“创建新意向”。 输入新意向名称 `GetJobInformation`。 每当某个用户想要获取有关贵公司的空缺职位的信息时，就会预测此意向。
@@ -90,16 +88,16 @@ ms.locfileid: "39237768"
 
     ![“训练”按钮](./media/luis-quickstart-intents-only/train-button.png)
 
-    当网站顶部出现确认成功的绿色状态栏时，表示训练已完成。
+2. 当网站顶部出现确认成功的绿色状态栏时，表示训练已完成。
 
     ![已训练状态栏](./media/luis-quickstart-intents-only/trained.png)
 
-2. 在 LUIS 网站的右上方，选择“发布”按钮打开“发布”页。 默认已选择生产槽。 选择生产槽选项旁边的“发布”按钮。 当网站顶部出现确认成功的绿色状态栏时，表示发布已完成。
+## <a name="publish-app-to-endpoint"></a>将应用发布到终结点
 
-    在发布或者测试终结点 URL 之前，无需在 Azure 门户中创建 LUIS 终结点密钥。 每个 LUIS 应用具有一个用于创作的免费初学者密钥。 使用该密钥可以不受限制地进行创作，并获得一些[终结点点击量](luis-boundaries.md#key-limits)。 
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
 
 ## <a name="query-endpoint-for-getjobinformation-intent"></a>查询 GetJobInformation 意向的终结点
-1. 在“发布”页的底部，选择“终结点”链接。 此操作会打开另一个浏览器窗口，其地址栏中包含终结点 URL。 
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. 将光标定位到地址中 URL 的末尾，并输入 `I'm looking for a job with Natual Language Processing`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 此陈述不同于步骤 4 中的任何示例陈述，因此，它非常适合用于测试，测试结果应返回 `GetJobInformation` 意向（评分最高的意向）。 
 
@@ -152,7 +150,10 @@ ms.locfileid: "39237768"
     再次[训练并发布](#train-and-publish-the-app)。 
 
 ## <a name="query-endpoint-for-applyforjob-intent"></a>查询 ApplyForJob 意向的终结点
-在“发布”页的底部，选择“终结点”链接。 在新浏览器窗口中，在 URL 的末尾输入 `Can I submit my resume for job 235986`。 
+
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+
+2. 在新浏览器窗口中，在 URL 的末尾输入 `Can I submit my resume for job 235986`。 
 
     ```
     {

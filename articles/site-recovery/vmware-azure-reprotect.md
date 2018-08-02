@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 04cb658da6a22643e21104f5673a3f211f48b7fc
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 1b410b2832d856f80d640aab2096fef270156c81
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916473"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346673"
 ---
 # <a name="reprotect-machines-from-azure-to-an-on-premises-site"></a>在本地站点中重新保护 Azure 上的计算机
 
@@ -63,7 +63,7 @@ ms.locfileid: "37916473"
 主目标服务器接收故障回复数据。 默认情况下，主目标服务器在本地配置服务器上运行。 但是，可能需要创建单独的故障回复用主目标服务器，具体取决于故障回复流量。 下面介绍如何创建主目标服务器：
 
 * [创建 Linux 主目标服务器](vmware-azure-install-linux-master-target.md)以便故障回复 Linux VM。 这是必填字段。
-* （可选）创建单独的主目标服务器用于 Windows VM 故障回复。 为此，请再次运行统一安装程序，并选择创建主目标服务器。 [了解详细信息](physical-azure-set-up-source.md#run-azure-site-recovery-unified-setup)。
+* （可选）创建单独的主目标服务器用于 Windows VM 故障回复。 为此，请再次运行统一安装程序，并选择创建主目标服务器。 [了解详细信息](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers)。
 
 创建主目标服务器后，请执行以下任务：
 

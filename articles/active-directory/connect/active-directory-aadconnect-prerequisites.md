@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/09/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 23d2c858fc51e35948bf83c6b5824b35020cb2e9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 22751d7ab38717fefdebe107e7a7d6fc10dda4c4
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593361"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39326184"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect 的先决条件
 本主题介绍 Azure AD Connect 的先决条件和硬件要求。
@@ -43,7 +43,6 @@ ms.locfileid: "34593361"
 * AD 架构版本与林功能级别必须是 Windows Server 2003 或更高版本。 只要符合架构和林级别的要求，域控制器就能运行任何版本。
 * 若打算使用**密码写回**功能，必须在 Windows Server 2008（包含最新的 SP）或更高版本上安装域控制器。 如果 DC 位于 2008（低于 R2）上，则还必须应用[修补程序 KB2386717](http://support.microsoft.com/kb/2386717)。
 * Azure AD 使用的域控制器必须可写。 **不支持**使用 RODC（只读域控制器），并且 Azure AD Connect 不会遵循任何写重定向。
-* **不支持**使用具有 SLD（单标签域）的本地林/域。
 * **不支持**使用具有“点”（名称包含句点“.”）NetBios 名称的本地林/域。
 * 建议[启用 Active Directory 回收站](active-directory-aadconnectsync-recycle-bin.md)。
 
@@ -94,7 +93,7 @@ ms.locfileid: "34593361"
     </system.net>
 ```
 
-* 如果代理服务器要求身份验证，则[服务帐户](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account)必须位于域中，且必须使用自定义的设置安装路径来指定[自定义服务帐户](active-directory-aadconnect-get-started-custom.md#install-required-components)。 还需要对 machine.config 进行不同的更改。在 machine.config 中进行此更改之后，安装向导和同步引擎将响应来自代理服务器的身份验证请求。 在所有安装向导页中（“配置”页除外）都使用已登录用户的凭据。 在安装向导结束时的“配置”页上，上下文将切换到创建的[服务帐户](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account)。 machine.config 节应如下所示。
+* 如果代理服务器要求身份验证，则[服务帐户](active-directory-aadconnect-accounts-permissions.md#adsync-service-account)必须位于域中，且必须使用自定义的设置安装路径来指定[自定义服务帐户](active-directory-aadconnect-get-started-custom.md#install-required-components)。 还需要对 machine.config 进行不同的更改。在 machine.config 中进行此更改之后，安装向导和同步引擎将响应来自代理服务器的身份验证请求。 在所有安装向导页中（“配置”页除外）都使用已登录用户的凭据。 在安装向导结束时的“配置”页上，上下文将切换到创建的[服务帐户](active-directory-aadconnect-accounts-permissions.md#adsync-service-account)。 machine.config 节应如下所示。
 
 ```
     <system.net>
@@ -122,7 +121,7 @@ Azure AD Connect 依赖于 Microsoft PowerShell 和 .NET Framework 4.5.1。 服�
 
 * Windows Server 2012R2
   * 已默认安装 Microsoft PowerShell。 不需要执行任何操作。
-  * .NET Framework 4.5.1 和更高版本将通过 Windows 更新提供。 请确保已在控制面板中安装 Windows Server 的最新更新。
+  * .NET Framework 4.5.1 和更高版本通过 Windows 更新提供。 请确保已在控制面板中安装 Windows Server 的最新更新。
 * Windows Server 2008R2 和 Windows Server 2012
   * 可从 [Microsoft 下载中心](http://www.microsoft.com/downloads)获取的 **Windows Management Framework 4.0** 中获得最新的 Microsoft PowerShell 版本。
   * .NET Framework 4.5.1 和更高版本可从 [Microsoft 下载中心](http://www.microsoft.com/downloads)获取。

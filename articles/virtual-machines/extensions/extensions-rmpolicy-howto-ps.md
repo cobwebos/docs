@@ -1,9 +1,9 @@
 ---
-title: 使用 Azure 策略限制 VM 扩展安装 | Microsoft Docs
-description: 使用 Azure 策略限制扩展部署。
+title: 使用 Azure Policy 限制 VM 扩展安装 | Microsoft Docs
+description: 使用 Azure Policy 限制扩展部署。
 services: virtual-machines-linux
 documentationcenter: ''
-author: danielsollondon
+author: zroiy
 manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-linux
@@ -12,17 +12,17 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
-ms.author: danis;cynthn
-ms.openlocfilehash: da5b0db997ba1aa0e998f6fe2645e955b490951d
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.author: roiyz;cynthn
+ms.openlocfilehash: b63bfba4c1d84480724c4b03891f068145109626
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "33944779"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39411720"
 ---
-# <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>使用 Azure 策略限制 Windows VM 上的扩展安装
+# <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>使用 Azure Policy 限制 Windows VM 上的扩展安装
 
-如果想要阻止在 Windows VM 上使用或安装某些扩展，可以使用 PowerShell 创建 Azure 策略以限制资源组中的 VM 扩展。 
+如果想要阻止在 Windows VM 上使用或安装某些扩展，可以使用 PowerShell 创建 Azure Policy 以限制资源组中的 VM 扩展。 
 
 本教程在 Cloud Shell 中使用 Azure PowerShell，后者已不断更新到最新版本。 如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 3.6 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 
 
@@ -164,4 +164,4 @@ Remove-AzureRmPolicyDefinition -Name not-allowed-vmextension-windows
 ```
     
 ## <a name="next-steps"></a>后续步骤
-有关详细信息，请参阅 [Azure 策略](../../azure-policy/azure-policy-introduction.md)。
+有关详细信息，请参阅 [Azure Policy](../../azure-policy/azure-policy-introduction.md)。

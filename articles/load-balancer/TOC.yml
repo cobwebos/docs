@@ -40,7 +40,7 @@
   items:
     - name: 什么是负载均衡器标准版？
       href: load-balancer-standard-overview.md
-    - name: 负载均衡器探测
+    - name: 运行状况探测
       href: load-balancer-custom-probe-overview.md
     - name: 高可用性端口
       href: load-balancer-ha-ports-overview.md

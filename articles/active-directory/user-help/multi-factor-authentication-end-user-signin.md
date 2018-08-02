@@ -2,26 +2,23 @@
 title: 使用双重验证的 Azure MFA 登录 | Microsoft 文档
 description: 本页将提供有关在何处查看 Azure MFA 支持的各种登录方法的指导。
 keywords: 用户身份验证, 登录体验, 使用手机登录, 使用办公电话登录
-services: multi-factor-authentication
-documentationcenter: ''
+services: active-directory
 author: eross-msft
 manager: mtillman
 ms.assetid: b310b762-471b-4b26-887a-a321c9e81d46
-ms.service: multi-factor-authentication
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: user-help
 ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: lizross
 ms.reviewer: librown
-ms.custom: end-user
-ms.openlocfilehash: 2bba40d48b855b2cfa5c607e63a49e2bb79b6b23
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e7886d3c8aa1ef9ee1e392030aabf0d187568e24
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39057619"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343060"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>使用 Azure 多重身份验证时的登录体验
 > [!NOTE]

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: c0413678aad16105f732ef23fb60c61fddcdad45
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 361905b4c1e0c9e596cb7cf1cd5a730268d81bd0
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365706"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413403"
 ---
 # <a name="azure-operational-security-overview"></a>Azure 操作安全性概述
 [Azure 操作安全性](https://docs.microsoft.com/azure/security/azure-operational-security)是指用户可用于在 Microsoft Azure 中保护其数据、应用程序和其他资产的服务、控件和功能。 它是一个结合了从各种 Microsoft 独有功能获取的知识的框架。 这些功能包括 Microsoft 安全开发生命周期 (SDL)、Microsoft 安全响应中心计划以及对网络安全威胁态势的深入感知。
@@ -52,12 +52,11 @@ Azure 备份提供多个组件，可将其下载并部署到适当计算机、�
 
 -   启用标识和访问管理 (IAM) 作为云服务。
 -   提供中心访问管理、单一登录 (SSO) 及报告功能。
--   支持 Azure Marketplace 中[数千款应用程序](https://azure.microsoft.com/marketplace/active-directory/)（包括 Salesforce、Google Apps、Box 和 Concur）的集成访问管理。
+-   支持 Azure 市场中[数千款应用程序](https://azure.microsoft.com/marketplace/active-directory/)（包括 Salesforce、Google Apps、Box 和 Concur）的集成访问管理。
 
 Azure AD 中还包括了整套[标识管理功能](https://docs.microsoft.com/azure/security/security-identity-management-overview#security-monitoring-alerts-and-machine-learning-based-reports)，其中包括：
 
 - [多重身份验证](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication)
-- [设备注册]( https://docs.microsoft.com/azure/active-directory/active-directory-device-registration-overview)
 - [自助服务密码管理](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)
 - [自助组管理](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-update-your-own-password)
 - [特权帐户管理](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)

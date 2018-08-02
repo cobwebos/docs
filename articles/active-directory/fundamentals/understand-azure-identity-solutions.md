@@ -14,12 +14,12 @@ ms.component: fundamentals
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: b052613161b4fee9a01def966fb02cbf8a7a483c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 118f8258673c8a19d5f06e5fc62ff56d0fb44ea1
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056930"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398358"
 ---
 # <a name="understand-azure-identity-solutions"></a>了解 Azure 标识解决方案
 Microsoft Azure Active Directory (Azure AD) 是一个标识和访问管理云解决方案，提供目录服务、标识监管和应用程序访问管理。 Azure AD 可以在 [Azure AD 应用程序库](https://azure.microsoft.com/marketplace/active-directory/all/)中数千个预先集成的商用和自定义应用上快速[实现单一登录 (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso)。 你也许已经在使用其中的许多应用，例如 Office 365、Salesforce.com、Box、ServiceNow 和 Workday。
@@ -103,7 +103,7 @@ Microsoft Azure 允许以多种方式管理用户的标识，不管这些标识�
 |我的组织在本地 Windows Server Active Directory 方面做了大量投资，但我们想要将标识扩展到云中。| 使用最广泛的 Azure 标识解决方案是[混合标识](https://docs.microsoft.com/azure/active-directory/active-directory-hybrid-identity-design-considerations-overview)。 如果已投资购置本地 AD DS，可以使用 Azure AD Connect 将标识轻松扩展到云中。|
 |我的业务立足于云，我们未投资购置任何本地标识解决方案。| 对于只在云中开展业务，对本地解决方案未做任何投资的企业而言，[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) 是最佳选择。|
 |我需要使用精简的 Azure VM 配置和控制方案来满足应用开发和测试的本地标识要求。|如果需要使用 AD DS 进行精简的 Azure VM 配置控制，或者想要开发传统的目录感知本地应用程序或将其迁移到云中，[Azure AD 域服务](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview)是个不错的选择。|  
-|我需要在 Azure 中支持少量的虚拟机，但公司仍在本地 Active Directory (AD DS) 方面做了大量投资。|需要支持少量的虚拟机并在本地 AD DS 方面做了大笔投资时，可以通过 [DIY AD DS](https://msdn.microsoft.com/library/azure/jj156090.aspx) 来使用 Azure VM。 |
+|我需要在 Azure 中支持少量的虚拟机，但公司仍在本地 Active Directory (AD DS) 方面做了大量投资。|需要支持少量的虚拟机并在本地 AD DS 方面做了大笔投资时，可以通过 [DIY AD DS](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison#do-it-yourself-diy-ad-deployment-options) 来使用 Azure VM。 |
 
 ## <a name="where-can-i-learn-more"></a>可以从何处了解详细信息？
 我们提供了大量的有用在线资源，以帮助你了解 Azure AD 的方方面面。 下面是一些可帮助你快速入门的佳作：
@@ -126,5 +126,3 @@ Microsoft Azure 允许以多种方式管理用户的标识，不管这些标识�
 [详细了解 Azure 混合标识解决方案](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution)
 
 [详细了解 Azure 概念证明环境](https://aka.ms/aad-poc)
-
-[在生产环境中部署 Azure AD](https://aka.ms/aad-onboard)

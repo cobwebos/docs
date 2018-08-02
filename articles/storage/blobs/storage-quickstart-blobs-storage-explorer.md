@@ -3,23 +3,23 @@ title: Azure 快速入门 - 使用 Azure 存储资源管理器在对象存储中
 description: 本快速入门将在对象 (Blob) 存储中使用 Azure 存储资源管理器。 然后，使用该存储资源管理器将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。
 services: storage
 author: tamram
-manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: tamram
-ms.openlocfilehash: 176d2fffa9f9e3c43a4e5c922aed58cebdbe2b1d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 83698abd3006671c5edce37e3cada26d07d25b8f
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399630"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-azure-storage-explorer"></a>快速入门：使用 Azure 存储资源管理器上传、下载和列出 Blob
 
 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)是一个多平台用户界面，用于管理存储帐户的内容。 本指南详细介绍如何使用 Azure 存储资源管理器在本地磁盘和 Azure Blob 存储之间转移文件。
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 本快速入门要求安装 Azure 存储资源管理器。 如需安装该管理器，请访问 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)，下载 Windows、Macintosh 或 Linux 版的管理器。
 

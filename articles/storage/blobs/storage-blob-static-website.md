@@ -3,17 +3,17 @@ title: Azure 存储中的静态网站托管（预览版）| Microsoft Docs
 description: Azure 存储现提供静态网站托管（预览版），这是方便托管新式 Web 应用程序的经济高效、可缩放解决方案。
 services: storage
 author: MichaelHauss
-manager: vamshik
 ms.service: storage
 ms.topic: article
 ms.date: 06/26/18
 ms.author: mihauss
-ms.openlocfilehash: df1661b5fe7a2c0e37deef5259d6b5842ed6ee5e
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: blobs
+ms.openlocfilehash: e53b573a27f0b1462ccf1170bbde2f8af01d0d3a
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131603"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397469"
 ---
 # <a name="static-website-hosting-in-azure-storage-preview"></a>Azure 存储中的静态网站托管（预览版）
 Azure 存储现提供静态网站托管（预览版），可便于用户在 Azure 上部署经济高效、可缩放的新式 Web 应用程序。 在静态网站上，网页包含静态内容和 JavaScript 或其他客户端代码。 相比之下，动态网站依赖服务器端代码，可以使用 [Azure Web 应用程序](/app-service/app-service-web-overview.md)托管动态网站。
@@ -49,7 +49,7 @@ Web 服务终结点始终允许匿名读取访问，返回格式化 HTML 页面�
 
 最后，转到 Web 终结点来测试网站。
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 **静态网站是否适用于所有存储帐户类型？**  
 否，静态网站托管仅适用于 GPv2 标准存储帐户。
 

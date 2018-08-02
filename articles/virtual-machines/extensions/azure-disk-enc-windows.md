@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
-ms.author: danis
-ms.openlocfilehash: f9b8c64aadf813ab1157820fc4051d48989e48c4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.author: ejarvi
+ms.openlocfilehash: 11ec26729b2239279dddc8cd62f6b658a4f7ed20
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448758"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413784"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>适用于 Windows 的 Azure 磁盘加密 (Microsoft.Azure.Security.AzureDiskEncryption)
 
@@ -30,16 +30,16 @@ Azure 磁盘加密利用 Bitlocker 在运行 Windows 的 Azure 虚拟机上提�
 ## <a name="prerequisites"></a>先决条件
 
 有关先决条件的完整列表，请参阅 [Azure 磁盘加密先决条件](
-../../security/azure-security-disk-encryption.md#prerequisites)。
+../../security/azure-security-disk-encryption-prerequisites.md)。
 
 ### <a name="operating-system"></a>操作系统
 
-有关当前 Windows 版本的列表，请参阅 [Azure 磁盘加密先决条件](../../security/azure-security-disk-encryption.md#prerequisites)。
+有关当前 Windows 版本的列表，请参阅 [Azure 磁盘加密先决条件](../../security/azure-security-disk-encryption-prerequisites.md)。
 
 ### <a name="internet-connectivity"></a>Internet 连接
 
 Azure 磁盘加密需要 Internet 连接才能访问 Active Directory、Key Vault、存储和包管理终结点。  有关网络安全设置的详细信息，请参阅 [Azure 磁盘加密先决条件](
-../../security/azure-security-disk-encryption.md#prerequisites)。
+../../security/azure-security-disk-encryption-prerequisites.md)。
 
 ## <a name="extension-schema"></a>扩展架构
 

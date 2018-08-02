@@ -8,18 +8,18 @@ manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/15/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 1a8db218309eb48650443f1c9d57fe1ecdf04a6a
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: bf53829a2d2578132f9a3595c0bac5e8eb588916
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34058167"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39366765"
 ---
 # <a name="managing-applications-with-azure-active-directory"></a>使用 Azure Active Directory 管理应用程序
 除了实际工作流或内容以外，企业对所有应用程序还会提出两个基本要求：
@@ -40,7 +40,7 @@ ms.locfileid: "34058167"
 
 * 标识管理员必须单独在所有应用程序中逐个创建和更新用户帐户，这是一个繁琐而耗时的活动。
 * 用户必须记住多个凭据，才能访问他们需要使用的应用程序。 因此，用户往往会写下其密码或使用其他密码管理解决方案。 这些替代方法带来了其他数据安全风险。
-* 繁琐而耗时的活动会减少用户和管理员在可增加业务收益的业务活动上花费的时间。
+* 繁琐而耗时的活动会减少用户和管理员在可增加业务净收益的业务活动上花费的时间。
 
 那么，哪些因素通常会阻止企业采用集成的 IAM 解决方案呢？
 
@@ -102,7 +102,7 @@ SSO 过程分为两个步骤：
 ## <a name="on-premises-applications"></a>本地应用程序
 使用内置的应用程序代理，可以将本地应用程序发布给用户，使现代云应用程序中提供一致性的访问体验，同时受益于 Azure AD 监控、报告和安全功能。
 
-## <a name="reporting-and-monitoring"></a>报告和监控
+## <a name="reporting-and-monitoring"></a>报告和监视
 Azure AD 提供预先集成的报告和监控功能，使你能够知道谁有权访问应用程序，以及他们使用应用程序的实际时间。
 
 ## <a name="related-capabilities"></a>相关功能
