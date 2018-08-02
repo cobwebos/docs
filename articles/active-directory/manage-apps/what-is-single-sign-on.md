@@ -9,17 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.component: users-groups-roles
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: b7ea8a755f1f23c76bb0f7d8120970bb7795e95b
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 4ad1416f79b8cf9c03904da5f9efc1d1aae475d9
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091827"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364024"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Azure Active Directory 的应用程序访问与单一登录是什么？
 单一登录是指只需使用单个用户帐户登录一次，就能访问展开业务所需的全部应用程序和资源。 登录之后，用户可以访问全部所需的应用程序，而无需再次进行身份验证（例如键入密码）。

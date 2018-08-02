@@ -7,14 +7,14 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 11/09/2017
+ms.date: 07/30/2018
 ms.author: ashmaka
-ms.openlocfilehash: 765f9c4600f762efdd7d57681529751e99c13894
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 54646a7d4962c5dfe255d28bdb91d272062530dd
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31797169"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364268"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>多租户 SaaS 应用程序与 Azure 搜索的设计模式
 多租户应用程序可以为无法看到或共享任何其他租户数据的任意数量的租户，提供相同服务和功能。 本文档讨论的租户隔离策略适用于使用 Azure 搜索生成的多租户应用程序。
@@ -43,9 +43,7 @@ Azure 搜索中有一些不同的[定价层](https://azure.microsoft.com/pricing
 | 每个服务的副本数上限 |3 |12 |12 |12 |12 |
 | 每个服务的分区数上限 |1 |12 |12 |12 |3 |
 | 每个服务的搜索单位数上限（副本*分区） |3 |36 |36 |36 |36（最多 3 个分区） |
-| 每个服务的文档数上限 |1 百万 |1.8 亿 |7.2 亿 |14 亿 |6 亿 |
 | 每个服务的存储上限 |2 GB |300 GB |1.2 TB |2.4 TB |600 GB |
-| 每个分区的文档数上限 |1 百万 |1500 万 |6000 万 |1.2 亿 |2 亿 |
 | 每个分区的存储上限 |2 GB |25 GB |100 GB |200 GB |200 GB |
 | 每个服务的索引数上限 |5 |50 |200 |200 |3000（最多 1000 个索引/分区） |
 
@@ -71,7 +69,8 @@ Azure 搜索提供几个可用于隔离租户数据和工作负载的边界。
 对于多租户方案，应用程序开发人员使用一个或多个搜索服务，并在各服务和/或各索引中划分其租户。 Azure 搜索具有一些适用于对多租户方案建模的常见模式：
 
 1. *每租户索引：* 每个租户都在搜索服务中有自己的索引，可与其他租户共享。
-2. *每租户服务：* 每个租户都有自己专用的 Azure 搜索服务，从而提供最高级别的数据和工作负载分隔。
+2. 
+  *每租户服务：* 每个租户都有自己专用的 Azure 搜索服务，从而提供最高级别的数据和工作负载分隔。
 3. *二者混合：* 为较大、活跃度较高的租户分配专用服务，而为较小的租户分配共享服务中的各个索引。
 
 ## <a name="1-index-per-tenant"></a>1.每租户索引

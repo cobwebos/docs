@@ -3,24 +3,24 @@ title: 适用于 IE 的 Azure 访问面板扩展故障排除 | Microsoft 文档
 description: 如何使用组策略为我的应用门户部署 Internet Explorer 加载项。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barbkess
 manager: mtillman
-editor: ''
-ms.assetid: f56b3230-26fd-42ec-9e3d-2c12daf15479
 ms.service: active-directory
+ms.component: app-mgmt
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/31/2017
-ms.author: markvi
+ms.date: 07/30/2018
+ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4f1538cf598da8b5b9aa19def2d5f86ceaca0a0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 682973e6781a1de2c8d9628e39347650a3852b81
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364771"
 ---
 # <a name="troubleshooting-the-access-panel-extension-for-internet-explorer"></a>Internet Explorer 访问面板扩展故障排除
 本文将帮助用户解决以下问题：

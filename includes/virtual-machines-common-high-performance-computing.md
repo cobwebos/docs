@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 496c32e70ad58f64b31c1f6fcf913884fcd4abc1
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 5a6c5498b4607719199363b5f6d93d3b42ccec0d
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37348229"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37967750"
 ---
 组织具有大规模计算需求。 这些大型计算工作负荷包括工程设计和分析、财务风险计算、图像渲染、复杂建模、Monte Carlo 仿真等。 
 
@@ -59,7 +59,7 @@ ms.locfileid: "37348229"
 * [适用于 Windows 和 Linux 的 Azure 数据科学 VM](../articles/machine-learning/machine-learning-data-science-virtual-machine-overview.md)
 * [D3View](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/xfinityinc.d3view-v5?tab=Overview)
 * [UberCloud](https://azure.microsoft.com/search/marketplace/?q=ubercloud)
-* [Intel Cloud Edition for Lustre](https://azuremarketplace.microsoft.com/marketplace/apps/intel.lustre-cloud-edition-eval?tab=Overview)
+* [Intel Cloud Edition for Lustre](https://azuremarketplace.microsoft.com/marketplace/apps/intel.intel-cloud-edition-gs)
 
 
  

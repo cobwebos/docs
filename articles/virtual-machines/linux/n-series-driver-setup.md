@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/19/2018
+ms.date: 07/30/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c8f043fdcaa7554d73be6ac3928a37630baab845
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 3d85bc79ddd08cb051b2e4d978a931f460020c10
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38630415"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364494"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>在运行 Linux 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序
 
@@ -225,7 +225,7 @@ sudo reboot
 8. 将下列内容添加到 `/etc/nvidia/gridd.conf`：
  
   ```
-  IgnoreSP=TRUE
+  IgnoreSP=FALSE
   ```
 9. 重新启动 VM，并继续验证安装。
 
@@ -289,7 +289,7 @@ sudo reboot
 8. 将下列内容添加到 `/etc/nvidia/gridd.conf`：
  
   ```
-  IgnoreSP=TRUE
+  IgnoreSP=FALSE
   ```
 9. 重新启动 VM，并继续验证安装。
 
