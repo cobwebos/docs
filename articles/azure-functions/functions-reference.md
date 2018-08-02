@@ -3,7 +3,7 @@ title: Azure Functions 开发指南 | Microsoft 文档
 description: 了解在 Azure 中开发函数时需要掌握的 Azure Functions 概念和技术，包括各种编程语言和绑定。
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -15,13 +15,13 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/12/2017
-ms.author: tdykstra
-ms.openlocfilehash: 461557b415ec816860acb5308e7aeba34468f4ae
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: glenga
+ms.openlocfilehash: 5214a59b6a1aa27c80759c5af3d91ad4711de660
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29121740"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343971"
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions 开发人员指南
 在 Azure Functions 中，特定函数共享一些核心技术概念和组件，不受所用语言或绑定限制。 跳转学习某个特定语言或绑定的详细信息之前，请务必通读此通用概述。

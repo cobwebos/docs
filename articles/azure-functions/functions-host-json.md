@@ -2,7 +2,7 @@
 title: Azure Functions 的 host.json 参考
 description: Azure Functions host.json 文件的参考文档。
 services: functions
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
-ms.author: tdykstra
-ms.openlocfilehash: d89170f796355b734facc5e08ad1815a2b865d49
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.author: glenga
+ms.openlocfilehash: 9043add91022c2829c305425dba9c8f11b224fcf
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342086"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345508"
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>Azure Functions 的 host.json 参考
 
@@ -116,7 +116,7 @@ ms.locfileid: "37342086"
 }
 ```
 
-|属性 |默认  | 说明 |
+|属性 |默认  | Description |
 |---------|---------|---------| 
 |batchSize|1000|要聚合的最大请求数。| 
 |flushTimeout|00:00:30|要聚合的最大时间段。| 
@@ -138,7 +138,7 @@ ms.locfileid: "37342086"
 }
 ```
 
-|属性  |默认 | 说明 |
+|属性  |默认 | Description |
 |---------|---------|---------| 
 |isEnabled|是|启用或禁用采样。| 
 |maxTelemetryItemsPerSecond|5|开始采样所要达到的阈值。| 
@@ -170,7 +170,7 @@ ms.locfileid: "37342086"
 
 任务中心名称必须以字母开头且只能包含字母和数字。 如果未指定，则函数应用的默认任务中心名称是 **DurableFunctionsHub**。 有关详细信息，请参阅[任务中心](durable-functions-task-hubs.md)。
 
-|属性  |默认 | 说明 |
+|属性  |默认 | Description |
 |---------|---------|---------|
 |HubName|DurableFunctionsHub|可以使用备用[任务中心](durable-functions-task-hubs.md)名称将多个 Durable Functions 应用程序彼此隔离，即使这些应用程序使用同一存储后端。|
 |ControlQueueBatchSize|32|要从控制队列中一次性拉取的消息数。|
@@ -231,7 +231,7 @@ ms.locfileid: "37342086"
 }
 ```
 
-|属性  |默认 | 说明 |
+|属性  |默认 | Description |
 |---------|---------|---------| 
 |已启用|是|是否已启用该功能。 | 
 |healthCheckInterval|10 秒|定期后台运行状况检查之间的时间间隔。 | 
@@ -277,7 +277,7 @@ ms.locfileid: "37342086"
 }
 ```
 
-|属性  |默认 | 说明 |
+|属性  |默认 | Description |
 |---------|---------|---------| 
 |categoryFilter|不适用|指定按类别进行筛选| 
 |defaultLevel|信息|对于 `categoryLevels` 数组中未指定的任何类别，会将此级别和更高级别的日志发送到 Application Insights。| 
@@ -311,7 +311,7 @@ ms.locfileid: "37342086"
 }
 ```
 
-|属性  |默认 | 说明 |
+|属性  |默认 | Description |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|占用函数级锁的时间段。 锁自动续订。| 
 |listenerLockPeriod|00:01:00|占用侦听器锁的时间段。| 
@@ -332,7 +332,7 @@ ms.locfileid: "37342086"
 }
 ```
 
-|属性  |默认 | 说明 |
+|属性  |默认 | Description |
 |---------|---------|---------| 
 |consoleLevel|info|控制台日志记录的跟踪级别。 选项包括：`off`、`error`、`warning`、`info` 和 `verbose`。|
 |fileLoggingMode|debugOnly|文件日志记录的跟踪级别。 选项包括 `never`、`always` 和 `debugOnly`。| 

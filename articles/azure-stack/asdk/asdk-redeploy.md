@@ -1,6 +1,6 @@
 ---
 title: 重新部署 Azure Stack 开发工具包 (ASDK) | Microsoft Docs
-description: 在本文中，你将了解如何重新安装 ASDK。
+description: 本文介绍如何重新安装 ASDK。
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -13,24 +13,24 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.custom: ''
-ms.date: 06/07/2018
+ms.date: 08/01/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 91b8a936215e906e6e5b7e6a4fcd0dc88bef6009
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: d166916ca54f3b8c26a418ff83093e53dcdbe515
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850314"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413720"
 ---
 # <a name="redeploy-the-asdk"></a>重新部署 ASDK
-在本文中，你将了解如何重新部署 Azure 堆栈开发工具包 (ASDK) 在非生产环境中。 由于不支持 ASDK 升级，因此若要改用较新的版本，需彻底地进行重新部署。 也可随时根据需要从头开始重新部署 ASDK。
+本文介绍如何在非生产环境中重新部署 Azure Stack 开发工具包 (ASDK)。 由于不支持 ASDK 升级，因此若要改用较新的版本，需彻底地进行重新部署。 也可随时根据需要从头开始重新部署 ASDK。
 
 > [!IMPORTANT]
 > 不支持将 ASDK 升级到新的版本。 每次需要对较新版的 Azure Stack 进行评估时，需在开发工具包主机上重新部署 ASDK。
 
 ## <a name="remove-azure-registration"></a>删除 Azure 注册 
-如果以前已将 ASDK 安装注册到 Azure，则应在重新部署 ASDK 之前删除注册资源。 重新部署 ASDK 时，请重新注册 ASDK，以便启用商城联合功能。 如果以前未将 ASDK 注册到 Azure 订阅，则可跳过此部分。
+如果以前已将 ASDK 安装注册到 Azure，则应在重新部署 ASDK 之前删除注册资源。 重新注册 ASDK，以便重新部署 ASDK 时启用在 marketplace 中的项的可用性。 如果以前未将 ASDK 注册到 Azure 订阅，则可跳过此部分。
 
 若要删除注册资源，请使用 **Remove-AzsRegistration** cmdlet 注销 Azure Stack。 然后，使用 **Remove-AzureRMRsourceGroup** cmdlet 从 Azure 订阅中删除 Azure Stack 资源组：
 
@@ -94,8 +94,8 @@ ms.locfileid: "34850314"
 3. 重复首次[使用 PowerShell 部署 ASDK](asdk-deploy-powershell.md) 时执行过的步骤。
 
 
-## <a name="next-steps"></a>接下来的步骤
-[ASDK 安装后配置任务](asdk-post-deploy.md)
+## <a name="next-steps"></a>后续步骤
+[安装 ASDK 后的配置任务](asdk-post-deploy.md)
 
 
 

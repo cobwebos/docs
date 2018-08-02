@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/28/2018
+ms.date: 08/01/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: a6da27740efd613b8a81ffa85092d6b00b3e47d8
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: bf69c71a8b361e4a147263bc60324573c710818f
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34257482"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412690"
 ---
 # <a name="identity-architecture-for-azure-stack"></a>Azure Stack 的标识体系结构
 在选择要与 Azure Stack 配合使用的标识提供者之前，请了解 Azure Active Directory (Azure AD) 的选项与 Active Directory 联合身份验证服务 (AD FS) 的选项之间的重要区别。 
@@ -34,14 +34,14 @@ ms.locfileid: "34257482"
 |------------------------------|----------|-------|
 |连接到 Internet     |是       |可选|
 |对多租户的支持     |是       |否      |
-|Marketplace 联合       |是       |可以。 需要使用[脱机 Marketplace 联合](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario)工具。|
+|产品/服务在 Marketplace 中的项 |是       |是的。 需要使用[脱机市场联合](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario)工具。|
 |对 Active Directory 身份验证库 (ADAL) 的支持 |是 |是|
 |支持 Azure CLI、Visual Studio 和 PowerShell 等工具  |是 |是|
 |通过 Azure 门户创建服务主体     |是 |否|
 |使用证书创建服务主体      |是 |是|
 |使用机密（密钥）创建服务主体    |是 |否|
 |应用程序可以使用 Graph 服务           |是 |否|
-|应用程序可以将标识提供程序用于登录 |是 |可以。 要求应用程序与本地 AD FS 实例联合。 |
+|应用程序可以将标识提供程序用于登录 |是 |是的。 要求应用程序与本地 AD FS 实例联合。 |
 
 ## <a name="topologies"></a>拓扑
 以下部分介绍可用的各种标识拓扑。

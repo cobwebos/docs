@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/30/2018
+ms.date: 08/01/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 2c62f8ab0e5f8974fbed51848772dee69f60b063
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 0190298cbf6352feeb71e365f5815e174c9e30cc
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344243"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413507"
 ---
 # <a name="azure-stack-1804-update"></a>Azure Stack 1804 更新
 
@@ -80,7 +80,10 @@ Azure Stack 1804 更新内部版本号为 **20180513.1**。
 ## <a name="before-you-begin"></a>开始之前    
 
 ### <a name="prerequisites"></a>必备组件
-- 在应用 Azure Stack 1804 更新之前安装 Azure Stack [1803 更新](azure-stack-update-1803.md)。    
+- 在应用 Azure Stack 1804 更新之前安装 Azure Stack [1803 更新](azure-stack-update-1803.md)。  
+  
+- 安装最新可用[更新或修补程序版本 1803年](azure-stack-update-1803.md#post-update-steps)。 
+
 
 ### <a name="known-issues-with-the-update-process"></a>更新过程的已知问题   
 - 1804 更新的安装期间，可能会看到警报标题*错误-FaultType UserAccounts.New 模板缺少。*  可以放心地忽略这些警报。 更新到 1804 后，这些警报将自动关闭。   

@@ -14,12 +14,12 @@ ms.date: 05/21/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
 <!-- dev: viananth -->
-ms.openlocfilehash: d17ba9ed4548a986d6846d934aee197609ec80ca
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 23b5b5d79f0f905d7c4a173247232ede2cad2877
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "34806830"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412441"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Python 配合使用
 
@@ -122,7 +122,7 @@ Python SDK 支持 API 版本配置文件将不同的云平台（例如 Azure Sta
 
 6.  设置以下变量并将这些环境变量导出到当前 shell 中。 
 
-    ````bash
+    ```bash
     export AZURE_TENANT_ID={your tenant id}
     export AZURE_CLIENT_ID={your client id}
     export AZURE_CLIENT_SECRET={your client secret}
@@ -130,32 +130,29 @@ Python SDK 支持 API 版本配置文件将不同的云平台（例如 Azure Sta
     export ARM_ENDPOINT={your AzureStack Resource Manager Endpoint}
     ```
 
-7.  In order to run this sample, Ubuntu 16.04-LTS and WindowsServer 2012-R2-Datacenter images must be present in Azure Stack market place. These can be either [downloaded from Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) or [added to Platform Image Repository](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image).
+7.  为了运行此示例，必须在 Azure Stack 市场中存在 Ubuntu 16.04-LTS 和 windows Server 2012 R2 Datacenter 映像。 可以[从 Azure 下载](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item)这些映像或者将其[添加到平台映像存储库](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image)。
 
-8. Run the sample.
+8. 运行示例。
 
     ```
     python unmanaged-disks\example.py
     ```
 
-## Notes
+## <a name="notes"></a>说明
 
-You may be tempted to try to retrieve a VM's OS disk by using
-`virtual_machine.storage_profile.os_disk`.
-In some cases, this may do what you want,
-but be aware that it gives you an `OSDisk` object.
-In order to update the OS Disk's size, as `example.py` does,
-you need not an `OSDisk` object but a `Disk` object.
-`example.py` gets the `Disk` object with the following:
+你可能会尝试使用 `virtual_machine.storage_profile.os_disk` 检索 VM 的 OS 磁盘。
+在某些情况下，这可能能够实现你的目的，但请注意，它提供的是 `OSDisk` 对象。
+若要像 `example.py` 那样更新 OS 磁盘的大小，需要的是 `OSDisk` 对象而不是 `Disk` 对象。
+`example.py` 使用以下信息获取 `Disk` 对象：
 
 ```python
 os_disk_name = virtual_machine.storage_profile.os_disk.name
 os_disk = compute_client.disks.get(GROUP_NAME, os_disk_name)
 ```
 
-## Next steps
+## <a name="next-steps"></a>后续步骤
 
-- [Azure Python Development Center](https://azure.microsoft.com/develop/python/)
-- [Azure Virtual Machines documentation](https://azure.microsoft.com/services/virtual-machines/)
-- [Learning Path for Virtual Machines](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)
-- If you don't have a Microsoft Azure subscription, you can get a FREE trial account [here](http://go.microsoft.com/fwlink/?LinkId=330212).
+- [Azure Python 开发中心](https://azure.microsoft.com/develop/python/)
+- [Azure 虚拟机文档](https://azure.microsoft.com/services/virtual-machines/)
+- [虚拟机的学习路径](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)
+- 如果你没有 Microsoft Azure 订阅，可以获取免费试用帐户[此处](http://go.microsoft.com/fwlink/?LinkId=330212)。

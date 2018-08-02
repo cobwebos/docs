@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 08/01/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 142ea08f026ad8d4b736fd62384eceb927cac359
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: abc96497c95397a6fab72672f1525462301c5cf9
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344226"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414627"
 ---
 # <a name="azure-stack-1805-update"></a>Azure Stack 1805 更新
 
@@ -72,7 +72,8 @@ Azure Stack 1805 更新内部版本号为 **1.1805.1.47**。
 ## <a name="before-you-begin"></a>开始之前    
 
 ### <a name="prerequisites"></a>必备组件
-- 在应用 Azure Stack 1805 更新之前安装 Azure Stack [1804 更新](azure-stack-update-1804.md)。    
+- 在应用 Azure Stack 1805 更新之前安装 Azure Stack [1804 更新](azure-stack-update-1804.md)。  
+- 安装最新可用[更新或修补程序版本 1804年](azure-stack-update-1804.md#post-update-steps)。   
 - 开始安装更新 1805 之前，请先运行 [Test-AzureStack](azure-stack-diagnostic-test.md) 来验证 Azure Stack 的状态，并解决出现的所有操作问题。 另外，请查看活动警报，并解决所有需要采取措施的警报。 
 
 ### <a name="known-issues-with-the-update-process"></a>更新过程的已知问题   

@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 07/27/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: ab8cd950fcbfe61d558dc9d36fbaff9e6baa22c8
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 418b2f6b156853c1a2820271808bdba922d41a87
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39326018"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412893"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>将市场项从 Azure 下载到 Azure Stack
 
@@ -31,8 +31,7 @@ ms.locfileid: "39326018"
 Azure 市场有两种连接场景： 
 
 - **联网场景** - 需将 Azure Stack 环境连接到 Internet。 使用 Azure Stack 门户查找和下载项。 
-- 
-  **离线场景或部分联网场景** - 需要使用市场联合工具访问 Internet，以下载市场项。 然后，将下载内容传输到离线 Azure Stack 安装中。 此场景使用 PowerShell。
+- **断开连接或部分连接方案**-，需要访问 Internet 使用 marketplace 联合工具下载 marketplace 项。 然后，将下载内容传输到离线 Azure Stack 安装中。 此场景使用 PowerShell。
 
 有关可下载的市场项的列表，请参阅 [Azure Stack 的 Azure 市场项](azure-stack-marketplace-azure-items.md)。
 

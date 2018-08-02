@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
 ms.author: diberry
-ms.openlocfilehash: 3fc2040e66f6fc649448d3241b01678b7bb7f214
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 0ec6f002b35b1224118b62accda1f69e7be22fb8
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239029"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358516"
 ---
 # <a name="tutorial-2-add-prebuilt-intents-and-entities"></a>教程：2。 添加预构建的意向和实体
 将预生成的意向和实体添加到人力资源教程应用，以便快速了解意向预测和数据提取。 
@@ -27,6 +27,8 @@ ms.locfileid: "39239029"
 * 训练并发布
 * 查询 LUIS 并接收预测响应
 
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
 ## <a name="before-you-begin"></a>开始之前
 如果尚未获得前一教程中所述的[人力资源](luis-quickstart-intents-only.md)应用，请将 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-intent-only-HumanResources.json) Github 存储库中的 JSON [导入](luis-how-to-start-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。
 
@@ -36,8 +38,6 @@ ms.locfileid: "39239029"
 LUIS 提供几个预生成意向，以便提供常见用户意向。  
 
 1. 确保应用在 LUIS 的“生成”部分。 在右上方的菜单栏中选择“生成”可切换到此部分。 
-
-    [ ![LUIS 应用的屏幕截图，其中已突出显示右上方导航栏中的“生成”](./media/luis-tutorial-prebuilt-intents-and-entities/first-image.png)](./media/luis-tutorial-prebuilt-intents-and-entities/first-image.png#lightbox)
 
 2. 选择“添加预生成域意向”。 
 
@@ -72,24 +72,20 @@ LUIS 为常见数据提取提供多个预生成的实体。
     ![在“预生成的实体”对话框中选择的数字的屏幕截图](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
 
 ## <a name="train-and-publish-the-app"></a>训练并发布应用
-1. 在 LUIS 网站的右上方，选择“训练”按钮。 
 
-    ![“训练”按钮](./media/luis-quickstart-intents-only/train-button.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-    当网站顶部出现确认成功的绿色状态栏时，表示训练已完成。
+## <a name="publish-app-to-endpoint"></a>将应用发布到终结点
 
-    ![已训练状态栏](./media/luis-quickstart-intents-only/trained.png)
-
-2. 在 LUIS 网站的右上方，选择“发布”按钮打开“发布”页。 
-
-3. 默认已选择生产槽。 选择生产槽选项旁边的“发布”按钮。 当网站顶部出现确认成功的绿色状态栏时，表示发布已完成。
-
-    在发布或者测试终结点 URL 之前，无需在 Azure 门户中创建 LUIS 终结点密钥。 每个 LUIS 应用具有一个用于创作的免费初学者密钥。 使用该密钥可以不受限制地进行创作，并获得一些[终结点点击量](luis-boundaries.md#key-limits)。 
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-endpoint-with-an-utterance"></a>使用陈述查询终结点
-在“发布”页的底部，选择“终结点”链接。 此操作会打开另一个浏览器窗口，其地址栏中包含终结点 URL。 将光标定位到地址中 URL 的末尾，并输入 `I want to cancel on March 3`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 
 
-结果预测了 Utilities.Cancel 意向并提取了 3 月 3 日的日期和数字 3。 
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+
+2. 将光标定位到地址中 URL 的末尾，并输入 `I want to cancel on March 3`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 
+
+    结果预测了 Utilities.Cancel 意向并提取了 3 月 3 日的日期和数字 3。 
 
     ```
     {
@@ -166,12 +162,13 @@ LUIS 为常见数据提取提供多个预生成的实体。
     }
     ```
 
-“3 月 3 日”有两个值，因为表述没有指出“3 月 3 日”是过去的还是未来的。 将由 LUIS 调用应用程序自行决定是做一个假设，还是通过提问进行澄清（如果需要）。 
+    “3 月 3 日”有两个值，因为表述没有指出“3 月 3 日”是过去的还是未来的。 将由 LUIS 调用应用程序自行决定是做一个假设，还是通过提问进行澄清（如果需要）。 
 
-通过轻松快速地添加预生成的意向和实体，客户端应用程序可以添加会话管理和提取常见数据类型。 
+    通过轻松快速地添加预生成的意向和实体，客户端应用程序可以添加会话管理和提取常见数据类型。 
 
 ## <a name="clean-up-resources"></a>清理资源
-不再需要 LUIS 应用时，请将其删除。 为此，请在左上角的菜单中选择“我的应用”。 在应用列表中选择应用名称右侧的省略号 (***...***)，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

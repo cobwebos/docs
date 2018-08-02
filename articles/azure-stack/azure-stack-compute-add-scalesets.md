@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: brenduns
 ms.reviewer: kivenkat
-ms.openlocfilehash: ddde2e6bad8a373df405ac05e78a5dbccd0257fc
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 4e77e187d969af7ea2a12754b18d4a218daceed6
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "34800634"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39411900"
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>在 Azure Stack 中提供虚拟机规模集
 
@@ -33,8 +33,8 @@ Azure Stack 上的虚拟机规模集与 Azure 上的虚拟机规模集类似。 
 
 ## <a name="prerequisites"></a>必备组件
 
-- **市场联合**  
-    将 Azure Stack 注册到 Azure 公有云可以启用市场联合。 请遵照[将 Azure Stack 注册到 Azure](azure-stack-registration.md) 中的说明操作。
+- **在 Marketplace**  
+    将 Azure Stack 注册到全球 Azure，以便在 Marketplace 中的项的可用性。 请遵照[将 Azure Stack 注册到 Azure](azure-stack-registration.md) 中的说明操作。
 - **操作系统映像**  
     如果尚未将操作系统映像添加到 Azure Stack 市场，请参阅[从 Azure 添加 Azure Stack 市场项](asdk/asdk-marketplace-item.md)。
 

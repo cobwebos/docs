@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 07/16/2018
+ms.date: 08/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 706afa7cb79b7b5c2afcd729f36ff150b87dd6df
-ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
+ms.openlocfilehash: c22831ae781239f2474720ee9cd1b58f6e14fe41
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39242931"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412859"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack 数据中心集成 - 标识
 可以使用 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识提供者来部署 Azure Stack。 必须在部署 Azure Stack 之前做出选择。 使用 AD FS 的部署也称为在断开连接模式下部署 Azure Stack。
@@ -26,7 +26,7 @@ ms.locfileid: "39242931"
 |---------|---------|---------|
 |计费|必须是“容量”<br> 仅限企业协议 (EA)|“容量”或“即用即付”<br>“EA”或“云解决方案提供商”(CSP)|
 |标识|必须是“AD FS”|“Azure AD”或“AD FS”|
-|市场联合|支持<br>BYOL 许可|支持<br>BYOL 许可|
+|市场 |支持<br>BYOL 许可|支持<br>BYOL 许可|
 |注册|建议选项，需要使用可移动媒体<br> 和独立的连接设备。|自动|
 |修补和更新|必需选项，需要使用可移动媒体<br> 和独立的连接设备。|可以直接从 Internet<br> 将更新包下载到 Azure Stack。|
 

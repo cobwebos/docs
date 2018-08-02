@@ -3,7 +3,7 @@ title: 在 SQL Server 上使用 Azure 高级存储 | Microsoft Docs
 description: 本文使用通过经典部署模型创建的资源并介绍如何对 Azure 虚拟机上运行的 SQL Server 使用 Azure 高级存储。
 services: virtual-machines-windows
 documentationcenter: ''
-author: danielsollondon
+author: zroiy
 manager: craigg
 editor: monicar
 tags: azure-service-management
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: jroth
-ms.openlocfilehash: 3d3fdd8865a293c5e2f0df6a97910ac8e2a07d4c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 252e4f9fe5ed6b4ff9997fc41c691636e6d002b3
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29400607"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413532"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>将 Azure 高级存储用于虚拟机上的 SQL Server
 ## <a name="overview"></a>概述
