@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/06/2018
+ms.date: 07/31/2018
 ms.author: douglasl
-ms.openlocfilehash: 4a4ec63d41f013ebfef8a78eddc88a6131a960fc
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 127438e1e65400daac75cec525197a5cfc8cd46a
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070036"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390205"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure 数据工厂支持的计算环境
 本文介绍可用于处理或转换数据的不同计算环境。 同时还详细介绍了配置将这些计算环境链接到 Azure 数据工厂的链接服务时，数据工厂所支持的不同配置（按需和自带）。
@@ -49,7 +49,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 * 在按需 HDInsight 群集上运行的作业日志将复制到与 HDInsight 群集相关联的存储帐户。 在链接的服务定义中定义的 clusterUserName、clusterPassword、clusterSshUserName、clusterSshPassword 用于登录到群集，以便在群集的生命周期内进行深入故障排除。 
 * 仅对 HDInsight 群集启动并运行作业的时间进行收费。
 * 不能对 Azure HDInsight 按需链接服务使用脚本操作。 例如，如果需要安装其他依赖项，请考虑使用 Azure 自动化来运行执行以下操作的 PowerShell 脚本：  
-  a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 创建 HDInsight 群集。  
+  a. 创建 HDInsight 群集。  
   b. 运行脚本操作来安装其他依赖项，例如。  
   c. 运行数据工厂管道。  
   d. 删除群集。  
@@ -429,8 +429,8 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | type                 | 类型属性应设置为 **AzureDataLakeAnalytics**。 | 是                                      |
 | accountName          | Azure Data Lake Analytics 帐户名。  | 是                                      |
 | dataLakeAnalyticsUri | Azure Data Lake Analytics URI。           | 否                                       |
-| subscriptionId       | Azure 订阅 ID                    | 否（如果未指定，则使用数据工厂的订阅）。 |
-| resourceGroupName    | Azure 资源组名称                | 否（如果未指定，则使用数据工厂的资源组）。 |
+| subscriptionId       | Azure 订阅 ID                    | 否                                       |
+| resourceGroupName    | Azure 资源组名称                | 否                                       |
 | servicePrincipalId   | 指定应用程序的客户端 ID。     | 是                                      |
 | servicePrincipalKey  | 指定应用程序的密钥。           | 是                                      |
 | tenant               | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 是                                      |
@@ -488,7 +488,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | 名称                 | 链接服务的名称               | 是   |
 | type                 | 类型属性应设置为 **AzureDatabricks**。 | 是                                      |
-| 域               | 根据 Databricks 工作区的区域相应地指定 Azure 区域。 示例：https://eastus.azuredatabricks.net | 是                                 |
+| 域               | 根据 Databricks 工作区的区域相应地指定 Azure 区域。 示例： https://eastus.azuredatabricks.net | 是                                 |
 | accessToken          | 数据工厂通过 Azure Databricks 进行身份验证时，必须使用访问令牌。 需从 Databricks 工作区生成访问令牌。 [此处](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token)提供了查找访问令牌的更多详细步骤  | 是                                       |
 | existingClusterId    | 现有群集的群集 ID，用于在其上运行所有作业。 该群集应该是已创建的交互式群集。 如果群集停止响应，则可能需要手动重启该群集。 Databricks 建议在新群集上运行作业，以提高可靠性。 可以通过 Databricks 工作区 ->“群集”->“交互式群集名称”->“配置”->“标记”找到交互式群集的群集 ID。 [更多详细信息](https://docs.databricks.com/user-guide/clusters/tags.html) | 否 
 | newClusterVersion    | 群集的 Spark 版本。 它会在 Databricks 中创建作业群集。 | 否  |
@@ -505,15 +505,6 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 ## <a name="sql-server-linked-service"></a>SQL Server 链接服务
 创建 SQL Server 链接服务，并将其与[存储的过程活动](transform-data-using-stored-procedure.md)配合使用，以从数据工厂管道调用存储的过程。 请参阅 [SQL Server 连接器](connector-sql-server.md#linked-service-properties)一文，以了解此链接服务的详细信息。
-
-## <a name="azure-data-factory---naming-rules"></a>Azure 数据工厂 - 命名规则
-下表提供了数据工厂项目的命名规则。
-
-| 名称                             | 名称唯一性                          | 验证检查                        |
-| :------------------------------- | :--------------------------------------- | :--------------------------------------- |
-| 数据工厂                     | 在 Microsoft Azure 内唯一。 名称不区分大小写，即 `MyDF` 和 `mydf` 指的是同一个数据工厂。 | <ul><li>一个数据工厂绑定到一个 Azure 订阅。</li><li>对象名称必须以字母或数字开头，并且只能包含字母、数字和短划线 (-) 字符。</li><li>每个短划线 (-) 字符的前后必须紧接字母或数字。 容器名称中不允许使用连续短划线。</li><li>名称长度为 3-63 个字符。</li></ul> |
-| 链接服务/表/管道 | 在数据工厂中唯一。 名称不区分大小写。 | <ul><li>表名称的最大字符数：260。</li><li>对象名称必须以字母、数字或下划线 (_) 开头。</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“ * ”、“%”、“&”、“:”、“\\”</li></ul> |
-| 资源组                   | 在 Microsoft Azure 内唯一。 名称不区分大小写。 | <ul><li>最大字符数：1000。</li><li>名称可包含字母、数字和以下字符：“-”、“_”、“,”和“.”</li></ul> |
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂支持的数据转换活动的列表，请参阅[转换数据](transform-data.md)。

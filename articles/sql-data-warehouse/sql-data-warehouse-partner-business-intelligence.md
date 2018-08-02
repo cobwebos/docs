@@ -23,8 +23,7 @@ ms.locfileid: "37131814"
 ## <a name="our-business-intelligence-partners"></a>我们的商业智能合作伙伴
 | 合作伙伴 | 说明 | 链接 | 视频 |
 | --- | --- | --- | --- |
-| ![Birst][1] |**Birst**<br>Birst 是云 BI 与分析领域的全球领导者。 企业可以在每个重要业务用户的范围内创建受信任的数据源。 然后，整个组织的业务用户可以使用世界级的 BI 工具来报告和分析信息。 |
-  [市场][birst_marketplace]<br>[网站][birst_website]<br>[Twitter][birst_twitter]<br>[YouTube][birst_youtube] | |
+| ![Birst][1] |**Birst**<br>Birst 是云 BI 与分析领域的全球领导者。 企业可以在每个重要业务用户的范围内创建受信任的数据源。 然后，整个组织的业务用户可以使用世界级的 BI 工具来报告和分析信息。 |[市场][birst_marketplace]<br>[网站][birst_website]<br>[Twitter][birst_twitter]<br>[YouTube][birst_youtube] | |
 | ![ClearStory Data][2] |**ClearStory Data**<br>ClearStory Data 能够快速分析 SQL 数据仓库中存储的不同数据。 ClearStory 的基于 Spark 的集成式平台和分析应用程序可以加速数据访问并协调不同的数据集。 它们可让业务用户进行快速协作探索，以及独自获得见解。 |[网站][clearstory_website]<br>[数据表][clearstory_datasheet]<br>[Twitter][clearstory_twitter]<br>[YouTube][clearstory_youtube] | |
 | ![Dell Statistica][3] |**Dell Statistica**<br>Dell Statistica 是一个高级分析平台，可让组织预测未来、优化进程、降低成本、增加收益。  它可简化大数据分析，精简实施和部署，从文本中提取可行的见解，以及促成业务。 |[市场][dell_statistica_marketplace]<br>[网站][dell_statistica_website]<br>[数据表][dell_statistica_datasheet]<br>[Twitter][dell_statistica_twitter]<br>[YouTube][dell_statistica_youtube] |[![Statistica 视频](./media/sql-data-warehouse-partner-business-intelligence/dell_statistica_video.jpg)](https://www.youtube.com/watch?v=0b8sPW2UHrU) |
 | ![Dundas][4] |**Dundas BI**<br>Dundas Data Visualization 是商业智能与数据可视化软件的全球领先提供商。  Dundas 仪表板、报告和可视化数据分析可以完美集成到业务应用程序，能够制定更好的决策，更快地发现见解。 |[市场][dundas_bi_marketplace]<br>[网站][dundas_bi_website]<br>[数据表][dundas_bi_datasheet]<br>[Twitter][dundas_bi_twitter]<br>[YouTube][dundas_bi_youtube] |[![dundas 视频](./media/sql-data-warehouse-partner-business-intelligence/dundas_bi_video.jpg)](https://www.youtube.com/watch?v=TEbc3_e7o60) |

@@ -11,17 +11,17 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 101b6531601458c33b8cede72f3a63f586df08bb
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: a152ce2b9d59587aa3d4a05aecccbe12f03d3f37
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224820"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364227"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>使用跨域标识管理系统 (SCIM) 将用户和组从 Azure Active Directory 自动预配到应用程序
 
@@ -70,7 +70,7 @@ Azure AD 可配置为自动将已分配的用户和组预配到实现[跨域标�
   ![][2]
   *图 3：在 Azure 门户中配置预配*
     
-6. 在“租户 URL”字段中，输入应用程序的 SCIM 终结点的 URL。 示例：https://api.contoso.com/scim/v2/
+6. 在“租户 URL”字段中，输入应用程序的 SCIM 终结点的 URL。 示例： https://api.contoso.com/scim/v2/
 7. 如果 SCIM 终结点需要来自非 Azure AD 颁发者的 OAuth 持有者令牌，可将所需的 OAuth 持有者令牌复制到可选的“密钥令牌”字段。 如果此字段留空，则 Azure AD 会在每个请求中包含从 Azure AD 颁发的 OAuth 持有者令牌。 将 Azure AD 用作标识提供程序的应用可以验证 Azure AD 颁发的此令牌。
 8. 单击“测试连接”按钮，使 Azure Active Directory 尝试连接到 SCIM 终结点。 如果尝试失败，则显示错误信息。  
 9. 如果尝试连接应用程序成功，请单击“保存”来保存管理员凭据。
