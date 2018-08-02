@@ -6,17 +6,18 @@ author: barbkess
 manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
+ms.topic: conceptual
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: d3548e7640fa8ab59f7b11c66cf1d9492f23cf99
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: feb90f599a07275584cc300b371e8159d47e2ced
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044362"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364336"
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>将 AD FS 本地应用迁移到 Azure 
 
@@ -97,7 +98,7 @@ AD FS 和 Azure AD 的工作原理类似，因此配置信任、登录和注销 
 |应用配置元素|Description|在 AD FS 配置中的位置|在 Azure AD 配置中的相应位置|SAML 令牌元素|
 |-----|-----|-----|-----|-----|
 |应用登录 URL|此应用程序的登录页的 URL。 这是用户进入后在 SP 启动的 SAML 流中登录到应用的位置。|不适用|在 Azure AD 中，登录 URL 在 Azure 门户中配置，具体说来是在应用程序的“单一登录属性”中作为登录 URL 配置。</br></br>（可能需要选择“显示高级 URL 设置”才能看到登录 URL。）|不适用|
-|应用回复 URL|从标识提供者 (IdP) 的角度来看应用的 URL。 这是在用户于 IdP 处登录以后，发送用户和令牌的位置。</br></br> 这有时称为“SAML 断言使用方终结点”。|在应用的 AD FS 信赖方信任中查找它。 右键单击信赖方，选择“属性”，然后选择“终结点”选项卡。|在 Azure AD 中，回复 URL 在 Azure 门户中配置，具体说来是在应用程序的“单一登录属性”中作为回复 URL 配置。</br></br>（可能需要选择“显示高级 URL 设置”才能看到回复 URL。）|映射到 SAML 令牌中的 **Destination** 元素。</br></br> 示例值：https://contoso.my.salesforce.com|
+|应用回复 URL|从标识提供者 (IdP) 的角度来看应用的 URL。 这是在用户于 IdP 处登录以后，发送用户和令牌的位置。</br></br> 这有时称为“SAML 断言使用方终结点”。|在应用的 AD FS 信赖方信任中查找它。 右键单击信赖方，选择“属性”，然后选择“终结点”选项卡。|在 Azure AD 中，回复 URL 在 Azure 门户中配置，具体说来是在应用程序的“单一登录属性”中作为回复 URL 配置。</br></br>（可能需要选择“显示高级 URL 设置”才能看到回复 URL。）|映射到 SAML 令牌中的 **Destination** 元素。</br></br> 示例值： https://contoso.my.salesforce.com|
 |应用注销 URL|一个 URL，当用户从应用注销时会向其发送“注销清理”请求，以便注销 IdP 已将用户登录到其中的所有其他应用。|在“AD FS 管理”中的“信赖方信任”下查找它。 右键单击信赖方，选择“属性”，然后选择“终结点”选项卡。|不适用。 Azure AD 不支持“单一注销”（即注销所有应用）。 它只将用户从 Azure AD 注销。|不适用|
 |应用标识符|从 IdP 的角度来看应用的标识符。 通常使用登录 URL 值作为标识符（但也不一定）。</br></br> 应用有时将其称为“实体 ID”。|在 AD FS 中，此项为信赖方 ID。 右键单击信赖方信任，选择“属性”，然后选择“标识符”选项卡。|在 Azure AD 中，标识符是在 Azure 门户中配置的，具体说来是在应用程序的“单一登录属性”中作为标识符在“域和 URL”下配置的。 （可能需要选择“显示高级 URL 设置”复选框。）|对应于 SAML 令牌中的 **Audience** 元素。|
 |应用联合元数据|应用的联合元数据的位置。 IdP 用它来自动更新特定的配置设置，例如终结点或加密证书。|在应用的 AD FS 信赖方信任中查找应用的联合元数据 URL。 右键单击信任，选择“属性”，然后选择“监视”选项卡。|不适用。 Azure AD 不支持直接使用应用程序联合元数据。|不适用|

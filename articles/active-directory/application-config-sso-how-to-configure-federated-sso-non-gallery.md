@@ -11,15 +11,15 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 916261de1f53c7b859378e83e423dea44b58af9b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: badbec991230ca13a85088a79fb6e67eb2d71e68
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331936"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39367209"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>如何配置非库应用程序的联合单一登录
 
@@ -138,7 +138,7 @@ ms.locfileid: "36331936"
 
 8.  转到“SAML 签名证书”部分，并单击“下载”列值。 根据应用程序对于配置单一登录的要求，将看到下载元数据 XML 或下载证书选项。
 
-Azure AD 还提供用于获取元数据的 URL。 按照以下模式获取特定于应用程序的元数据 URL：https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>。
+Azure AD 还提供用于获取元数据的 URL。 按照以下模式获取特定于应用程序的元数据 URL： https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>。
 
 ## <a name="assign-users-to-the-application"></a>将用户分配到应用程序
 
