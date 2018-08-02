@@ -1,27 +1,23 @@
 ---
-title: 在 Azure HDInsight 中配合使用 Data Lake Store 和 Hadoop | Microsoft Docs
+title: 在 Azure HDInsight 中配合使用 Data Lake Store 和 Hadoop
 description: 了解如何从 Azure Data Lake Store 查询数据并存储分析结果。
-keywords: Blob 存储, hdfs, 结构化数据, 非结构化数据, Data Lake Store
 services: hdinsight,storage
-documentationcenter: ''
 tags: azure-portal
-author: mumian
+author: jasonwhowell
+ms.author: jasonh
 manager: jhubbard
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: get-started-article
-ms.date: 05/14/2018
-ms.author: jgao
-ms.openlocfilehash: 362a9ae9cb1a1ebc30193b76929f0a683414e5fd
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.topic: conceptual
+ms.date: 07/23/2018
+ms.openlocfilehash: 48b98e170601f80e8cd1348ccc9afa3b5fc0c4e1
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435291"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258025"
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>配合使用 Data Lake Store 和 HDInsight 群集
 
@@ -32,9 +28,9 @@ ms.locfileid: "37435291"
 > [!NOTE]
 > 因为始终需要通过安全通道访问 Data Lake Store，因此没有 `adls` 文件系统方案名称。 始终使用 `adl`。
 > 
-> 
 
-## <a name="availabilities-for-hdinsight-clusters"></a>HDInsight 群集的可用性
+
+## <a name="availability-for-hdinsight-clusters"></a>HDInsight 群集的可用性
 
 Hadoop 支持默认文件系统的概念。 默认文件系统意指默认方案和授权。 它还可用于解析相对路径。 在 HDInsight 群集创建过程中，可指定 Azure 存储中的 Blob 容器作为默认文件系统，或者可借助 HDInsight 3.5 和更新版本，选择 Azure 存储或 Azure Data Lake Store 作为默认文件系统，但有一些例外。 
 
@@ -135,6 +131,60 @@ HDInsight 群集可通过以下两种方式使用 Data Lake Store：
 * [使用 PowerShell（Data Lake Store 作为其他存储）](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [使用 Azure 模板](../data-lake-store/data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 
+## <a name="refresh-the-hdinsight-certificate-for-data-lake-store-access"></a>刷新用于访问 Data Lake Store 的 HDInsight 证书
+
+以下 PowerShell 代码示例读取本地证书文件，并使用新证书更新 HDInsight 群集以访问 Azure Data Lake Store。 提供自己的 HDInsight 群集名称、资源组名称、订阅 ID、应用 ID、该证书的本地路径。 出现提示时键入密码。
+
+```powershell-interactive
+$clusterName = '<clustername>'
+$resourceGroupName = '<resourcegroupname>'
+$subscriptionId = '01234567-8a6c-43bc-83d3-6b318c6c7305'
+$appId = '01234567-e100-4118-8ba6-c25834f4e938'
+$generateSelfSignedCert = $false
+$addNewCertKeyCredential = $true
+$certFilePath = 'C:\localfolder\adls.pfx'
+$certPassword = Read-Host "Enter Certificate Password"
+
+if($generateSelfSignedCert)
+{
+    Write-Host "Generating new SelfSigned certificate"
+    
+    $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=hdinsightAdlsCert" -KeySpec KeyExchange
+    $certBytes = $cert.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Pkcs12, $certPassword);
+    $certString = [System.Convert]::ToBase64String($certBytes)
+}
+else
+{
+
+    Write-Host "Reading the cert file from path $certFilePath"
+
+    $cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2($certFilePath, $certPassword)
+    $certString = [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes($certFilePath))
+}
+
+Login-AzureRmAccount
+
+if($addNewCertKeyCredential)
+{
+    Write-Host "Creating new KeyCredential for the app"
+    $keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData())
+    New-AzureRmADAppCredential -ApplicationId $appId -CertValue $keyValue -EndDate $cert.NotAfter -StartDate $cert.NotBefore
+    Write-Host "Waiting for 30 seconds for the permissions to get propagated"
+    Start-Sleep -s 30
+}
+
+Select-AzureRmSubscription -SubscriptionId $subscriptionId
+Write-Host "Updating the certificate on HDInsight cluster..."
+
+Invoke-AzureRmResourceAction `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType 'Microsoft.HDInsight/clusters' `
+    -ResourceName $clusterName `
+    -ApiVersion '2015-03-01-preview' `
+    -Action 'updateclusteridentitycertificate' `
+    -Parameters @{ ApplicationId = $appId; Certificate = $certString; CertificatePassword = $certPassword.ToString() } `
+    -Force
+```
 
 ## <a name="next-steps"></a>后续步骤
 本文介绍如何将 HDFS 兼容的 Azure Data Lake Store 与 HDInsight 配合使用。 这样可以生成可缩放的长期存档数据采集解决方案，并使用 HDInsight 来解锁所存储结构化和非结构化数据内的信息。

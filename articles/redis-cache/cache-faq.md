@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: 6c308205c5adb05f4c7e1668c67adea414020ea2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c0d88f0eaacaadbb508519f2e6804b9b311408c2
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38232955"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259324"
 ---
 # <a name="azure-redis-cache-faq"></a>Azure Redis 缓存常见问题
 了解常见问题的答案，以及有关 Azure Redis 缓存的模式和最佳实践。
@@ -191,7 +191,7 @@ Azure Redis 缓存基于流行的开放源代码 [Redis 缓存](http://redis.io)
 ### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>StackExchange.Redis 配置选项有什么作用？
 StackExchange.Redis 有很多选项。 本部分介绍一些常用设置。 有关 StackExchange.Redis 选项的详细详细，请参阅 [StackExchange.Redis configuration](https://stackexchange.github.io/StackExchange.Redis/Configuration)（StackExchange.Redis 配置）。
 
-| 配置选项 | 说明 | 建议 |
+| 配置选项 | Description | 建议 |
 | --- | --- | --- |
 | AbortOnConnectFail |如果设置为 true，则发生网络故障后不会重新建立连接。 |设置为 false，让 StackExchange.Redis 自动重新连接。 |
 | ConnectRetry |初始连接期间重试连接的次数。 |请参阅下面的注释寻求指导。 |
@@ -365,7 +365,7 @@ Redis 服务器本身不支持 SSL，但 Azure Redis 缓存可提供此支持。
 ### <a name="important-details-about-threadpool-growth"></a>有关线程池增长的重要详细信息
 CLR 线程池具有两种类型的线程 —“辅助角色”和“I/O 完成端口”（又称为 IOCP）线程。
 
-* 对于诸如处理 `Task.Run(…)` 或 `ThreadPool.QueueUserWorkItem(…)` 方法这类事务，使用辅助角色线程。 需要在后台线程上进行工作时，CLR 中的各种组件也会使用这些线程。
+* 对于诸如处理 `Task.Run(…)` 或 `ThreadPool.QueueUserWorkItem(…)` 方法这类事务，请使用辅助角色线程。 需要在后台线程上进行工作时，CLR 中的各种组件也会使用这些线程。
 * 进行异步 IO（例如从网络进行读取）时，使用 IOCP 线程。
 
 线程池按需提供新的辅助角色线程或 I/O 完成线程（没有任何限制），直到它达到每种线程类型的“最小值”设置。 默认情况下，最小线程数设置为系统上的处理器数。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 99d69c7e49179a7849e274c830d539833da33786
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ea9ff8f93ede3b9ec5e7eed83c6049b0c23de7e8
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049446"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205453"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序
 
@@ -26,76 +26,38 @@ ms.locfileid: "39049446"
 1. 基于“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建 Azure IoT Central 应用程序](howto-create-application.md)。
 1. DevKit 设备。 若要购买 DevKit 设备，请访问 [MXChip IoT DevKit](http://mxchip.com/az3166)。
 
-基于“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 **MXChip** 设备模板：
 
-### <a name="measurements"></a>度量
+## <a name="sample-devkits-application"></a>**示例 Devkits** 应用程序
 
-#### <a name="telemetry"></a>遥测 
+基于“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 **MXChip** 设备模板： 
 
-| 字段名称     | 单位  | 最小值 | 最大值 | 小数位数 |
-| -------------- | ------ | ------- | ------- | -------------- |
-| 湿度       | %      | 0       | 100     | 0              |
-| temp           | °C     | -40     | 120     | 0              |
-| 压力       | hPa    | 260     | 1260    | 0              |
-| magnetometerX  | mgauss | -1000   | 1000    | 0              |
-| magnetometerY  | mgauss | -1000   | 1000    | 0              |
-| magnetometerZ  | mgauss | -1000   | 1000    | 0              |
-| accelerometerX | mg     | -2000   | 2000    | 0              |
-| accelerometerY | mg     | -2000   | 2000    | 0              |
-| accelerometerZ | mg     | -2000   | 2000    | 0              |
-| gyroscopeX     | mdps   | -2000   | 2000    | 0              |
-| gyroscopeY     | mdps   | -2000   | 2000    | 0              |
-| gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
-
-#### <a name="states"></a>States 
-
-| 名称          | 显示名称   | 正常 | 小心 | 危险 | 
-| ------------- | -------------- | ------ | ------- | ------ | 
-| DeviceState   | 设备状态   | 绿色  | 橙色  | 红色    | 
-
-#### <a name="events"></a>活动 
-
-| 名称             | 显示名称      | 
-| ---------------- | ----------------- | 
-| ButtonBPressed   | 按钮 B 已按下  | 
+- 包含设备**湿度**、**温度**、**压力**、**磁力计**（沿 X、Y、Z 轴度量）、**加速计**（沿 X、Y、Z 轴度量）和**陀螺仪**（沿 X、Y、Z 轴度量）度量值的遥测数据。
+- 包含**设备状态**的示例度量值的状态。
+- “按钮 B 已按下”事件的事件度量值。 
+- 显示**电压**、**电流**、**风扇速度**和 **IR** 切换的设置。
+- 包含设备属性“模板号”和“设备位置”（也是“制造于”云属性中的位置属性）的属性。 
 
 
-
-### <a name="settings"></a>设置
-
-数字设置
-
-| 显示名称 | 字段名称 | 单位 | 小数位数 | 最小值 | 最大值 | Initial |
-| ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
-| 电压      | setVoltage | 伏 | 0              | 0       | 240     | 0       |
-| Current      | setCurrent | 安培  | 0              | 0       | 100     | 0       |
-| 风扇速度    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
-
-切换设置
-
-| 显示名称 | 字段名称 | 打开文本 | 关闭文本 | Initial |
-| ------------ | ---------- | ------- | -------- | ------- |
-| IR           | activateIR | 亮起      | 熄灭      | 关闭     |
-
-### <a name="properties"></a>属性
-
-| Type            | 显示名称 | 字段名称 | 数据类型 |
-| --------------- | ------------ | ---------- | --------- |
-| 设备属性 | 模具编号   | dieNumber  | 数字    |
-| 设备属性 | 设备位置   | location  | location    |
-| 文本            | 制造于     | manufacturedIn   | 不适用       |
+有关该配置的完整详细信息，请参阅 [MXChip 设备模板详细信息](howto-connect-devkit.md#mxchip-device-template-details)
 
 
-### <a name="add-a-real-device"></a>添加真实设备
+## <a name="add-a-real-device"></a>添加真实设备
 
 在 Azure IoT Central 应用程序中，从 **MXChip** 设备模板添加真实设备，并记下设备连接字符串。 有关详细信息，请参阅[将真实设备添加到 Azure IoT Central 应用程序](tutorial-add-device.md)。
 
-## <a name="prepare-the-devkit-device"></a>准备 DevKit 设备
+### <a name="prepare-the-devkit-device"></a>准备 DevKit 设备
 
 > [!NOTE]
 > 如果以前使用过该设备且已存储 wifi 凭据，并且想要重新配置该设备以使用其他 WiFi 网络、连接字符串或遥测度量，请在开发板上同时按 **A** 和 **B** 按钮。 如果这不起作用，请按“重置”按钮并重试。
 
-若要准备 DevKit 设备：
+#### <a name="before-you-start-configuring-the-device"></a>在开始配置设备之前：
+1. 在 IoT Central **示例 Devkits** 中，转到 `Device Explorer`-> `select MXChip Template` -> `Click on +New and choose **Real** Device` -> `Connect this device`（在右上角） 
+2. 复制主连接字符串
+3. 确保保存该连接字符串，因为在准备 DevKit 设备时，将临时断开与 Internet 的连接。 
+
+
+#### <a name="to-prepare-the-devkit-device"></a>若要准备 DevKit 设备：
+
 
 1. 从 GitHub 上的[发布](https://github.com/Azure/iot-central-firmware/releases)页下载 MXChip 的最新预建 Azure IoT Central 固件。 “发布”页上的下载文件名类似于 `AZ3166-IoT-Central-X.X.X.bin`。
 
@@ -113,7 +75,7 @@ ms.locfileid: "39049446"
     ```
 
     > [!NOTE]
-    > 如果该屏幕显示其他内容，请按设备上的“重置”按钮。 
+    > 如果屏幕显示任何其他内容，请同时按设备上的 **A** 和 **B** 按钮重新启动设备。 
 
 1. 现在，设备处于接入点 (AP) 模式。 可以从计算机或移动设备连接到此 WiFi 接入点。
 
@@ -125,10 +87,9 @@ ms.locfileid: "39049446"
 
     在该网页中： 
     - 添加 WiFi 网络的名称 
-    - WiFi 网络密码 
+    - WiFi 网络密码
     - 设备 LCD 上显示的 PIN 码 
-    - 设备的连接字符串。 
-      可以通过 \@ `https://apps.iotcentral.com` -> `Device Explorer` -> `Device` -> `Select or Create a new Real Device` -> `Connect this device`（在右上角）找到该连接字符串 
+    - 设备的连接字符串（应该已经按照相关步骤保存此字符串），可以在 `https://apps.iotcentral.com`->`Device Explorer`->`Device`->`Select or Create a new Real Device`->`Connect this device`（右上角）找到连接字符串
     - 选择所有的可用遥测度量！ 
 
 1. 选择“配置设备”后，会看到以下页：
@@ -206,6 +167,66 @@ git clone https://github.com/Azure/iot-central-firmware
 **iotHubClient.cpp** 源文件中的代码使用 [Microsoft Azure IoT SDK 和 C 库](https://github.com/Azure/azure-iot-sdk-c)中的函数来与 IoT 中心交互。
 
 有关如何修改、生成示例代码并将其上传到设备的信息，请参阅 `AZ3166` 文件夹中的 **readme.md** 文件。
+
+## <a name="mxchip-device-template-details"></a>MXChip 设备模板详细信息 
+
+基于“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 MXChip 设备模板：
+
+### <a name="measurements"></a>度量
+
+#### <a name="telemetry"></a>遥测 
+
+| 字段名称     | 单位  | 最小值 | 最大值 | 小数位数 |
+| -------------- | ------ | ------- | ------- | -------------- |
+| 湿度       | %      | 0       | 100     | 0              |
+| temp           | °C     | -40     | 120     | 0              |
+| 压力       | hPa    | 260     | 1260    | 0              |
+| magnetometerX  | mgauss | -1000   | 1000    | 0              |
+| magnetometerY  | mgauss | -1000   | 1000    | 0              |
+| magnetometerZ  | mgauss | -1000   | 1000    | 0              |
+| accelerometerX | mg     | -2000   | 2000    | 0              |
+| accelerometerY | mg     | -2000   | 2000    | 0              |
+| accelerometerZ | mg     | -2000   | 2000    | 0              |
+| gyroscopeX     | mdps   | -2000   | 2000    | 0              |
+| gyroscopeY     | mdps   | -2000   | 2000    | 0              |
+| gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
+
+
+#### <a name="states"></a>States 
+| 名称          | 显示名称   | 正常 | 小心 | 危险 | 
+| ------------- | -------------- | ------ | ------- | ------ | 
+| DeviceState   | 设备状态   | 绿色  | 橙色  | 红色    | 
+
+#### <a name="events"></a>活动 
+| 名称             | 显示名称      | 
+| ---------------- | ----------------- | 
+| ButtonBPressed   | 按钮 B 已按下  | 
+
+### <a name="settings"></a>设置
+
+数字设置
+
+| 显示名称 | 字段名称 | 单位 | 小数位数 | 最小值 | 最大值 | Initial |
+| ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
+| 电压      | setVoltage | 伏 | 0              | 0       | 240     | 0       |
+| Current      | setCurrent | 安培  | 0              | 0       | 100     | 0       |
+| 风扇速度    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
+
+切换设置
+
+| 显示名称 | 字段名称 | 打开文本 | 关闭文本 | Initial |
+| ------------ | ---------- | ------- | -------- | ------- |
+| IR           | activateIR | 亮起      | 熄灭      | 关闭     |
+
+### <a name="properties"></a>属性
+
+| Type            | 显示名称 | 字段名称 | 数据类型 |
+| --------------- | ------------ | ---------- | --------- |
+| 设备属性 | 模具编号   | dieNumber  | 数字    |
+| 设备属性 | 设备位置   | location  | location    |
+| 文本            | 制造于     | manufacturedIn   | 不适用       |
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

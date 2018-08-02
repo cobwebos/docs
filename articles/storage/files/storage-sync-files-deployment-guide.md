@@ -1,5 +1,5 @@
 ---
-title: 部署 Azure 文件同步（预览版）| Microsoft Docs
+title: 部署 Azure 文件同步 | Microsoft Docs
 description: 了解如何从头到尾部署 Azure 文件同步。
 services: storage
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2017
+ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: 808bc3908790c8d6dedf1d9f00a4c70b42c7c490
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: d3ff80391214dbc5d29f04c4a1972b46e68d73d4
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867063"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215139"
 ---
-# <a name="deploy-azure-file-sync-preview"></a>部署 Azure 文件同步（预览版）
-使用 Azure 文件同步（预览版），即可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
+# <a name="deploy-azure-file-sync"></a>部署 Azure 文件同步
+使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
 
 强烈建议先阅读[规划 Azure 文件部署](storage-files-planning.md)和[规划 Azure 文件同步部署](storage-sync-files-planning.md)，再按照本文中的步骤进行操作。
 
@@ -135,7 +135,7 @@ Azure 文件同步的部署过程首先会将一个“存储同步服务”资�
 > 存储同步服务已从其部署到的订阅和资源组继承访问权限。 我们建议仔细检查谁有权访问该服务。 具有写访问权限的实体可以开始从已注册到此存储同步服务的服务器同步新的文件集，使数据流向这些实体可以访问的 Azure 存储。
 
 # <a name="portaltabportal"></a>[门户](#tab/portal)
-要部署存储同步服务，请转到 [Azure 门户](https://portal.azure.com/)，单击“新建”，然后搜索 Azure 文件同步。在搜索结果中，选择“Azure 文件同步(预览版)”，然后选择“创建”打开“部署存储同步”选项卡。
+要部署存储同步服务，请转到 [Azure 门户](https://portal.azure.com/)，单击“新建”，然后搜索 Azure 文件同步。在搜索结果中，选择“Azure 文件同步”，然后选择“创建”，打开“部署存储同步”选项卡。
 
 在打开的窗格中，输入以下信息：
 

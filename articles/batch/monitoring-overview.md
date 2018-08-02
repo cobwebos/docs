@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: fd4226254e076957ac8651f9172f1f3f82427a60
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 5a321ef7dca86993a913a283fe7b9b076c127d94
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001824"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171249"
 ---
 # <a name="monitor-batch-solutions"></a>监视 Batch 解决方案
 
@@ -63,7 +63,7 @@ Azure 和 Batch 服务提供了一系列服务、工具和 API 来监视 Batch �
   > 使用 Application Insights 可能会产生额外的成本。 请参阅[定价选项](https://azure.microsoft.com/pricing/details/application-insights/)。 
   >
 
-* [BatchLabs](https://github.com/Azure/BatchLabs) 是一个功能丰富的免费独立客户端工具，可帮助创建、调试和监视 Azure Batch 应用程序。 下载适用于 Mac、Linux 或 Windows 的[安装包](https://azure.github.io/BatchLabs/)。 （可选）对 Batch 解决方案进行配置以[显示 Application Insights 数据](https://github.com/Azure/batch-insights)，例如 BatchLabs 中的 VM 性能计数器。
+* [Batch Explorer](https://github.com/Azure/BatchExplorer) 是一个功能丰富的免费独立客户端工具，可帮助创建、调试和监视 Azure Batch 应用程序。 下载适用于 Mac、Linux 或 Windows 的[安装包](https://azure.github.io/BatchExplorer/)。 （可选）对 Batch 解决方案进行配置以[显示 Application Insights 数据](https://github.com/Azure/batch-insights)，例如 Batch Explorer 中的 VM 性能计数器。
 
 
 ## <a name="next-steps"></a>后续步骤

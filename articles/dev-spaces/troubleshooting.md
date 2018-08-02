@@ -11,24 +11,47 @@ ms.topic: article
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
 manager: douge
-ms.openlocfilehash: 4dee39b56cf0f6494f6e79c70b85bbf711d33d65
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b2ef450a429b26843cf770a6243c6f4de932de43
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044588"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247311"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
 
 本指南介绍使用 Azure Dev Spaces 时可能会碰到的常见问题。
 
+## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>错误“无法创建 Azure Dev Spaces 控制器”
+
+控制器创建出现问题时，可能会看到此错误。 如果这是一个暂时性错误，删除并重新创建该控制器将修复此错误。
+
+### <a name="try"></a>请尝试：
+
+若要删除控制器，请使用 Azure Dev Spaces CLI。 不能在 Visual Studio 或 Cloud Shell 中执行此操作。 若要安装 AZDS CLI，请先安装 Azure CLI，然后运行此命令：
+
+```cmd
+az aks use-dev-spaces -g <resource group name> -n <cluster name>
+```
+
+然后运行此命令以删除控制器：
+
+```cmd
+azds remove -g <resource group name> -n <cluster name>
+```
+
+可以从 CLI 或 Visual Studio 重新创建该控制器。 按照教程中的说明操作，就像第一次开始操作一样。
+
+
 ## <a name="error-service-cannot-be-started"></a>错误“无法启动服务”。
 
 当服务代码无法启动时，你可能会看到此错误。 原因通常在用户代码中。 若要获取更多诊断信息，请对命令和设置进行以下更改：
 
+### <a name="try"></a>请尝试：
+
 在命令行上：
 
-1. 使用 _azds.exe_ 时，请使用 --verbose 命令行选项，并使用 --output 命令行选项指定输出格式。
+使用 _azds.exe_ 时，请使用 --verbose 命令行选项，并使用 --output 命令行选项指定输出格式。
  
     ```cmd
     azds up --verbose --output json

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 07/25/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 34b83c54e31ed73af3f776a6add8f218dda35cf7
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: e549293bf09781363e74c85ae689869d35de3092
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918914"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258280"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory 直通身份验证：当前限制
 
@@ -29,36 +29,32 @@ ms.locfileid: "37918914"
 
 ## <a name="supported-scenarios"></a>支持的方案
 
-完全支持以下方案：
+支持以下方案：
 
-- 用户登录到所有基于 Web 浏览器的应用程序。
-- 用户登录到支持[新式身份验证](https://aka.ms/modernauthga)的 Office 应用程序：_带有_新式身份验证的 Office 2016 和 Office 2013。
-- 用户使用旧版协议（例如 Exchange ActiveSync、SMTP、POP 和 IMAP）登录 Outlook 客户端。
-- 用户登录到支持新式身份验证的 Skype for Business，包括联机和混合拓扑。 在[此处](https://technet.microsoft.com/library/mt803262.aspx)详细了解受支持的拓扑。
-- 适用于 Windows 10 设备的 Azure AD 域加入。
+- 用户登录到基于 Web 浏览器的应用程序。
+- 用户使用旧版协议（例如 Exchange ActiveSync、EAS、SMTP、POP 和 IMAP）登录 Outlook 客户端。
+- 用户登录到旧版 Office 客户端应用程序和支持[新式身份验证](https://aka.ms/modernauthga)的 Office 应用程序：Office 2010、2013 和 2016 版。
+- 用户登录到旧版协议的应用程序，例如 PowerShell 1.0 版本等。
+- 适用于 Windows 10 设备的 Azure AD 联接。
 - 进行多重身份验证的应用密码。
 
 ## <a name="unsupported-scenarios"></a>不支持的方案
 
 _不_支持以下方案：
 
-- 用户登录到旧版 Office 客户端应用程序（不包括 Outlook，请参阅上面的**支持的方案**）：不带新式身份验证的 Office 2010 和 Office 2013。 我们建议组织在可能的情况下改用新式身份验证。 新式身份验证允许直通身份验证支持。 此外，它还通过使用[条件访问](../active-directory-conditional-access-azure-portal.md)功能（如 Azure 多重身份验证）来帮助保护你的用户帐户的安全。
-- 仅在 Office 2010 上可以访问 Exchange 混合环境中的日历共享功能和闲/忙信息。
-- 用户登录到_不带_新式身份验证的 Skype for Business 客户端应用程序。
-- 用户登录到 PowerShell 版本 1.0。 建议使用 PowerShell 版本 2.0。
 - 检测[凭据泄露](../active-directory-reporting-risk-events.md#leaked-credentials)的用户。
 - Azure AD 域服务需要在租户上启用密码哈希同步。 因此，_仅_使用传递身份验证的租户不适用于需要 Azure AD 域服务的方案。
 - 直通身份验证未与 [Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md) 集成。
-- 使用 iOS 设置助手的 Apple 设备注册计划 (Apple DEP) 不支持新式身份验证。 此计划将无法使用传递身份验证将 Apple DEP 设备注册到托管域的 Intune。 请考虑使用[公司门户应用](https://blogs.technet.microsoft.com/intunesupport/2018/02/08/support-for-multi-token-dep-and-authentication-with-company-portal/)作为替代方法。
 
 >[!IMPORTANT]
->_仅_作为不支持方案的变通方法，可在 Azure AD Connect 向导中的[可选功能](active-directory-aadconnect-get-started-custom.md#optional-features)页上启用“密码哈希同步”。 当用户登录“不支持方案”部分中列出的应用程序时，直通身份验证代理不会处理这些具体登录请求，因此这些请求不会记录在[直通身份验证日志](active-directory-aadconnect-troubleshoot-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs)中。
+>仅作为不支持方案的变通方法（除 Azure AD Connect Health 集成），可在 Azure AD Connect 向导中的[可选功能](active-directory-aadconnect-get-started-custom.md#optional-features)页上启用“密码哈希同步”。 当用户登录“不支持方案”部分中列出的应用程序时，直通身份验证代理不会处理这些具体登录请求，因此这些请求不会记录在[直通身份验证日志](active-directory-aadconnect-troubleshoot-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs)中。
 
 >[!NOTE]
-此外，启用“密码哈希同步”还可以选择在本地基础结构被破坏的情况下故障转移身份验证。 这种从直通身份验证到 Active Directory 密码哈希同步的故障转移不是自动进行的。 需要使用 Azure AD Connect 手动切换登录方法。 如果运行 Azure AD Connect 的服务器出现故障，则需要 Microsoft 支持部门的帮助以关闭传递身份验证。
+此外，启用“密码哈希同步”还可以选择在本地基础结构被破坏的情况下故障转移身份验证。 这种从传递身份验证到密码哈希同步的故障转移不是自动进行的。 需要使用 Azure AD Connect 手动切换登录方法。 如果运行 Azure AD Connect 的服务器出现故障，则需要 Microsoft 支持部门的帮助以关闭传递身份验证。
 
 ## <a name="next-steps"></a>后续步骤
 - [快速入门](active-directory-aadconnect-pass-through-authentication-quick-start.md)：快速了解 Azure AD 直通身份验证。
+- [从 AD FS 迁移到传递身份验证](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) - 从 AD FS（或其他联合技术）迁移到传递身份验证的详细指南。
 - [智能锁定](../authentication/howto-password-smart-lockout.md)：了解如何在租户中配置智能锁定功能以保护用户帐户。
 - [技术深入了解](active-directory-aadconnect-pass-through-authentication-how-it-works.md)：了解直通身份验证功能的工作原理。
 - [常见问题解答](active-directory-aadconnect-pass-through-authentication-faq.md)：查找有关直通身份验证功能的常见问题的解答。

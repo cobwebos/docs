@@ -319,6 +319,8 @@
       items:
         - name: 调试 Spark 作业
           href: apache-spark-job-debugging.md
+        - name: 通过作业图调试 Spark 作业
+          href: apache-azure-spark-history-server.md
         - name: 使用 IntelliJ 调试 Spark 作业
           href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
         - name: 排查 HDInsight 群集速度慢或故障问题

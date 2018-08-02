@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 9795beca93ab4dbbeb1e0e99a50952ea23ca1568
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: fb3f307642dc6f4607a626e0b320949306129759
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005479"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172307"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>成为云市场发布者
 
@@ -28,18 +28,18 @@ ms.locfileid: "39005479"
 
 |  | 注册步骤 | Duration | 详细信息 |  
 |:--- |:--- |:--- |:--- |  
-| 1 | 在 Microsoft 合作伙伴网络中注册 | 15 分钟 | [在 Microsoft 合作伙伴网络中注册](#register-in-microsoft-partner-network) |  
-| 2 | 创建 Microsoft 帐户 <ul>（Azure 市场交易套餐的必需步骤，其他的建议步骤）</ul> | 15 分钟 | [创建 Microsoft ID](#create-a-microsoft-id) |  
-| 3 | 提交市场注册表 | 15 分钟 | [提交市场提名表格](#submit-the-marketplace-nomination-form) |  
-| 4 |  登录到云合作伙伴门户 | 1-3 天 | [登录到云合作伙伴门户](#sign-into-cloud-partner-portal) |  
-| 5 | 在 Microsoft 开发人员中心注册（适用于 Azure 市场交易套餐） | 5-10 天 | [在开发人员中心注册](#register-in-dev-center) |  
+| 1 | 在 Microsoft 合作伙伴网络中注册 | 15 分钟 | [在 Microsoft 合作伙伴网络中注册](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#1-register-in-microsoft-partner-network) |  
+| 2 | 创建 Microsoft 帐户 <ul>（Azure 市场交易套餐的必需步骤，其他的建议步骤）</ul> | 15 分钟 | [创建 Microsoft ID](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#2-create-a-microsoft-account) |  
+| 3 | 提交市场注册表 | 15 分钟 | [提交市场提名表格](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#3-submit-the-marketplace-registration-form) |  
+| 4 |  登录到云合作伙伴门户 | 1-3 天 | [登录到云合作伙伴门户](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#4-sign-into-cloud-partner-portal) |  
+| 5 | 在 Microsoft 开发人员中心注册（适用于 Azure 市场交易套餐） | 5-10 天 | [在开发人员中心注册](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#5-register-in-dev-center-for-transact-publishing-option-only) |  
 
 
 ## <a name="1-register-in-microsoft-partner-network"></a>1.在 Microsoft 合作伙伴网络中注册  
 | 15 分钟 |  
 加入 Microsoft 云市场的前提是成为 Microsoft 合作伙伴网络 (MPN) 的成员，该合作伙伴网络也提供关键权益、计划和合作伙伴性能跟踪功能。 如果你的组织还不是成员，请加入 Microsoft 合作伙伴网络 (MPN)，成为正式的 Microsoft 合作伙伴并获得市场发布者享有的其他权益和支持。 
 
-*   若要在 Microsoft 合作伙伴网络中注册，请访问[“成员”页](https://partner.microsoft.com/membership)并执行开始注册所需的步骤。  
+*   若要在 Microsoft 合作伙伴网络中注册，请访问[“成员资格”页](https://partner.microsoft.com/membership)并按步骤开始注册。  
 
 注册后，请记下组织的 Microsoft 合作伙伴网络 ID。 在步骤 3 提交市场注册表时，将需要此 ID。
 *   了解 [Microsoft 合作伙伴网络](https://partner.microsoft.com/en-us/commercial)的优势
@@ -65,7 +65,7 @@ Microsoft 帐户（例如 *@outlook.com 或 @live.com*）用于访问多个 Micr
 
 ## <a name="3-submit-the-marketplace-registration-form"></a>3.提交市场注册表  
 | 15 分钟 |  
-若要成为市场发布者，请完成这个简单的注册表。 在此表中提交的信息将用于在云合作伙伴门户中创建发布者帐户，方便你创建、发布和管理市场套餐。
+若要成为市场发布者，请完成这个简单的[注册表](https://azuremarketplace.microsoft.com/en-us/sell/signup)。 在此表中提交的信息将用于在云合作伙伴门户中创建发布者帐户，方便你创建、发布和管理市场套餐。
 
 系统会要求你提供以下信息：
 *   组织的详细信息，包括 Microsoft 合作伙伴网络 ID（可以在[合作伙伴中心](https://partnercenter.microsoft.com/partner/home)或 [Partner Membership Center](https://partners.microsoft.com/partnerprogram/PartnerMembershipCenter.aspx) 中查找）
@@ -99,7 +99,7 @@ Microsoft 帐户（例如 *@outlook.com 或 @live.com*）用于访问多个 Micr
 >若要免除 99 美元的开发人员中心注册费，请完成市场注册表，然后就会收到包含促销代码的电子邮件。 
 
 >[!Important]
->在创建 Microsoft 开发人员中心帐户之前，请确认组织尚未创建开发人员中心帐户，以免出现重复帐户。 有关详细信息，请访问[如何在开发人员中心注册](https://review.docs.microsoft.com/en-us/azure/marketplace/become-publisher?branch=pr-en-us-44571#how-to-register-in-dev-center)部分。
+>在创建 Microsoft 开发人员中心帐户之前，请确认组织尚未创建开发人员中心帐户，以免出现重复帐户。 有关详细信息，请访问[在开发人员中心注册](https://docs.microsoft.com/en-us/azure/marketplace/register-dev-center)部分。
 
 
 ## <a name="next-steps"></a>后续步骤

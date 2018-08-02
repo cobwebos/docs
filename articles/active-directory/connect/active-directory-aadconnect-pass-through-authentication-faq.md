@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2018
+ms.date: 07/23/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6d5cd79a6336b2e5c4b3c5c6f5765d92cd602552
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 8b5f62daf2b43453aadb0373171bc98f96494688
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048962"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215061"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory 传递身份验证：常见问题
 
@@ -28,7 +28,7 @@ ms.locfileid: "39048962"
 
 ## <a name="which-of-the-methods-to-sign-in-to-azure-ad-pass-through-authentication-password-hash-synchronization-and-active-directory-federation-services-ad-fs-should-i-choose"></a>我应选择哪种 Azure AD 登录方法（直通身份验证、密码哈希同步和 Active Directory 联合身份验证服务 (AD FS)）？
 
-这取决于本地环境和组织需求。 请阅读 [Azure AD Connect 用户登录选项](active-directory-aadconnect-user-signin.md)文章来对比各种 Azure AD 登录方法。
+请查看[本指南](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)，对比各种 Azure AD 登录方法并了解如何为组织选择正确的登录方法。
 
 ## <a name="is-pass-through-authentication-a-free-feature"></a>传递身份验证是免费功能吗？
 
@@ -48,7 +48,7 @@ ms.locfileid: "39048962"
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>密码哈希同步是否可以充当直通身份验证的回退？
 
-不是。 直通身份验证不自动故障转移到密码哈希同步。 它仅可充当[传递身份验证尚不支持的方案](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios)的回滚。 为避免用户登录失败，应配置传递身份验证以实现[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)。
+不是。 直通身份验证不自动故障转移到密码哈希同步。 它仅可充当[传递身份验证尚不支持的方案](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios)的回滚。 为避免用户登录失败，应配置传递身份验证以实现[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability)。
 
 ## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>能否在传递身份验证代理所在的同一台服务器上安装 [Azure AD 应用程序代理](../manage-apps/application-proxy.md)连接器？
 
@@ -82,7 +82,7 @@ ms.locfileid: "39048962"
 
 ## <a name="can-i-install-two-or-more-pass-through-authentication-agents-on-the-same-server"></a>能否在同一台服务器上安装两个或更多传递身份验证代理？
 
-否。在一台服务器上只能安装一个传递身份验证代理。 若要配置直通身份验证实现高可用性，请遵循 [Azure Active Directory 直通身份验证：快速入门](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)中的说明。
+否。在一台服务器上只能安装一个传递身份验证代理。 若要配置直通身份验证实现高可用性，请遵循 [Azure Active Directory 直通身份验证：快速入门](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability)中的说明。
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>如何删除直通身份验证代理？
 
@@ -92,12 +92,7 @@ ms.locfileid: "39048962"
 
 ## <a name="i-already-use-ad-fs-to-sign-in-to-azure-ad-how-do-i-switch-it-to-pass-through-authentication"></a>我已使用 AD FS 登录到 Azure AD。 如何将它切换为传递身份验证？
 
-若已使用 Azure AD Connect 向导配置 AD FS 作为登录方法，请将用户登录所使用的方法更改为直通身份验证。 此更改将在租户中启用直通身份验证，并将所有联合域转换为托管域。 直通身份验证将处理所有登录到租户的后续请求。 目前，在 Azure AD Connect 中无法同时使用不同域中的 AD FS 和传递身份验证。
-
-若已将 AD FS 配置为在 Azure AD Connect 向导外部登录的方法，请将用户登录方法更改为直通身份验证。 可以从“请勿配置”选项中进行此更改。 此更改将在租户中启用直通身份验证，但所有联合域将继续使用 AD FS 进行登录。 使用 PowerShell 将其中的一些或全部联合域手动转换为托管域。 进行更改后，只有直通身份验证处理登录到托管域的所有请求。
-
->[!IMPORTANT]
->直通身份验证不会处理仅限云的 Azure AD 用户的登录。
+如果要从 AD FS（或其他联合技术）迁移到传递身份验证，强烈建议按照[此处](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx)发布的详细部署指南进行操作。
 
 ## <a name="can-i-use-pass-through-authentication-in-a-multi-forest-active-directory-environment"></a>是否能在多林 Active Directory 环境中使用直通身份验证？
 
@@ -105,7 +100,7 @@ ms.locfileid: "39048962"
 
 ## <a name="how-many-pass-through-authentication-agents-do-i-need-to-install"></a>需要安装多少个直通身份验证代理？
 
-安装多个直通身份验证代理能保证[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)。 但它不提供身份验证代理之间的确定性负载均衡。
+安装多个直通身份验证代理能保证[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability)。 但它不提供身份验证代理之间的确定性负载均衡。
 
 请考虑希望在租户上看到的登录请求的峰值和平均负载。 作为基准，单一身份验证代理可在标准的 4 核 CPU、16 GB RAM 服务器上每秒处理 300 到 400 个身份验证。
 
@@ -133,6 +128,7 @@ ms.locfileid: "39048962"
 ## <a name="next-steps"></a>后续步骤
 - [当前限制](active-directory-aadconnect-pass-through-authentication-current-limitations.md)：了解支持和不支持的方案。
 - [快速入门](active-directory-aadconnect-pass-through-authentication-quick-start.md)：快速了解 Azure AD 直通身份验证。
+- [从 AD FS 迁移到传递身份验证](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) - 从 AD FS（或其他联合技术）迁移到传递身份验证的详细指南。
 - [智能锁定](../authentication/howto-password-smart-lockout.md)：了解如何在租户中配置智能锁定功能以保护用户帐户。
 - [技术深入了解](active-directory-aadconnect-pass-through-authentication-how-it-works.md)：了解直通身份验证功能的工作原理。
 - [故障诊断](active-directory-aadconnect-troubleshoot-pass-through-authentication.md)：了解如何解决直通身份验证功能的常见问题。

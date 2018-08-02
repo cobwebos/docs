@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/13/2018
+ms.date: 07/20/2018
 ms.author: kumud
-ms.openlocfilehash: dd92fca89e3bdb123be46a52708feec1c939f7cc
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 8d354e3f409a51bdbb03ad340c951c39cc6137e1
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112716"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186436"
 ---
 # <a name="understand-load-balancer-probes"></a>了解负载均衡器探测
 
@@ -28,7 +28,7 @@ Azure 负载均衡器使用运行状况探测来确定应接收新流的后端�
 
 运行状况探测用于控制是否向运行正常的后端实例建立新流。 运行状况探测失败时，负载均衡器停止向各个不正常的实例发送新流。  运行状况探测失败后，已建立的 TCP 连接会继续执行。  现有 UDP 流将从不正常的实例移动到后端池中另一个正常的实例。
 
-如果后端池的所有探测均失败，基本负载均衡器将终止所有通往后端池的现有 TCP 流，而标准负载均衡器允许已建立的 TCP 流继续；不会向后端池发送新流。  后端池的所有探测均失败时，基本和标准负载均衡器的所有现有 UDP 流都将终止。
+如果后端池的所有探测均失败，基本负载均衡器将终止所有通往后端池的现有 TCP 流，而标准负载均衡器允许已建立的 TCP 流继续；不会向后端池发送新流。  后端池的所有探测均失败时，基本和标准负载均衡器的所有现有 UDP 流都将终止。  UDP 是无连接的，并且系统不会跟踪 UDP 的流状态。  只要哈希处理生成相同的结果，数据报流就会保留在特定的实例上。  更改后端池中的运行状况探测可能会将新的数据报移动到后端池中的其他实例。
 
 云服务角色（辅助角色和 Web 角色）使用来宾代理探测监视。 在负载均衡器后将云服务与 IaaS VM 一起使用时，必须配置 TCP 或 HTTP 自定义运行状况探测。
 

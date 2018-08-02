@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 07/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 4da9696761747874395ec90cb3b446e3621650ba
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 9c45b428a6d2060243f1eba9a284c7eb1b1b21c0
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113251"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259096"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中监视集成运行时  
 **集成运行时**是 Azure 数据工厂用于在不同的网络环境之间提供多种数据集成功能的计算基础结构。 数据工厂提供三种类型的集成运行时：
@@ -76,10 +76,18 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 | 可用内存 | 自承载集成运行时节点上的可用内存。 此值为近实时快照。 | 
 | CPU 使用率 | 自承载集成运行时节点的 CPU 利用率。 此值为近实时快照。 |
 | 网络（进/出） | 自承载集成运行时节点的网络利用率。 此值为近实时快照。 | 
-| 并发作业数（运行中/上限） | 每个节点上运行的作业或任务数。 此值为近实时快照。 上限表示每个节点的最大并发作业数。 此值根据计算机大小定义而来。 在 CPU/内存/网络未充分利用，但活动即将超时的高级方案中，可提高上限来增强并发作业执行。此功能也适用于单节点自承载集成运行时。 |
+| 并发作业数（运行中/上限） | **正在运行**。 每个节点上运行的作业或任务数。 此值为近实时快照。 <br/><br/>**上限**。 上限表示每个节点的最大并发作业数。 此值根据计算机大小定义而来。 在 CPU、内存或网络未充分利用但活动即将超时的高级方案中，可提高上限来增强并发作业执行。 此功能也适用于单节点自承载集成运行时。 |
 | 角色 | 多节点自承载集成运行时中有两种角色 – 调度程序和辅助角色。 所有节点均为辅助角色，表示它们可用于执行作业。 只有一个调度程序节点，用于从云服务中拉取任务/作业，并将其调度到不同的辅助角色节点。 调度程序节点也是一个辅助角色节点。 |
 
-属性的某些设置更适用于自承载集成运行时中包含两个或两个以上节点的情况（扩展方案）。 
+属性的某些设置更适用于自承载集成运行时中包含两个或两个以上节点的情况（即，在横向扩展方案中）。
+
+#### <a name="concurrent-jobs-limit"></a>并发作业限制
+
+并发作业限制的默认值是根据计算机大小设置的。 用于计算此值的因素取决于计算机的 RAM 量和 CPU 内核数。 因此，内核越多，内存越多，并发作业的默认限制就越高。
+
+可以通过增加节点数进行横向扩展。 增加节点数时，并发作业限制为所有可用节点的并发作业限制值的总和。  例如，如果一个节点允许运行最多 12 个并发作业，那么再添加三个类似节点将允许运行最多 48 个并发作业（即 4 x 12）。 建议仅在以下情况下提高并发作业限制：在每个节点上使用默认值时，资源使用率较低。
+
+可以在 Azure 门户中覆盖计算得出的默认值。 选择“创建者”>“连接”>“集成运行时”>“编辑”>“节点”>“修改每个节点的并发作业值”。 也可以使用 PowerShell [update-azurermdatafactoryv2integrationruntimenode](https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactoryv2/update-azurermdatafactoryv2integrationruntimenode?view=azurermps-6.4.0#examples) 命令。
   
 ### <a name="status-per-node"></a>状态（每个节点）
 下表提供了自承载集成运行时节点的可能状态：

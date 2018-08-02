@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 5b5212d5e1663fee01ff87642432818071d4f4dd
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: e814785af7041ba762f7c383a0cfdc434fce9dce
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988528"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213866"
 ---
 # <a name="install-azure-iot-edge-runtime-on-linux-arm32v7armhf"></a>在 Linux 上安装 Azure IoT Edge 运行时 (ARM32v7/armhf)
 
@@ -101,6 +101,10 @@ sudo nano /etc/iotedge/config.yaml
      scope_id: "{scope_id}"
      registration_id: "{registration_id}"
    ```
+
+保存并关闭该文件。 
+
+   `CTRL + X`、`Y`、`Enter`
 
 在配置中输入预配信息后，重启守护程序：
 

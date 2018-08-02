@@ -19,4 +19,4 @@
     ```
     perl Unregister-ASRComponent.pl -IPAddress <IP_of_Process_Server> -Component PS
     ```
-4. 这会从系统中清除进程服务器的详细信息。
+4. 成功删除进程服务器时会发出此消息：**成功注销了 server-name> (server-IP-address)**。

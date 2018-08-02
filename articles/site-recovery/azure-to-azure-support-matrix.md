@@ -7,14 +7,14 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2018
+ms.date: 07/19/2018
 ms.author: sujayt
-ms.openlocfilehash: 3825183fa7e8ca15a86935b5b96ff8d25d7bef14
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: c2892d51c6eb5e71c0b1af400b78e993742fede0
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070847"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173044"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>用于在 Azure 区域之间进行复制的支持矩阵
 
@@ -27,34 +27,21 @@ ms.locfileid: "39070847"
 **用户界面** |  **支持/不支持**
 --- | ---
 **Azure 门户** | 支持
-**经典门户** | 不支持
 **PowerShell** | [使用 PowerShell 进行 Azure 到 Azure 的复制](azure-to-azure-powershell.md)
 **REST API** | 目前不支持
 **CLI** | 目前不支持
 
 
-## <a name="resource-move-support"></a>资源移动支持
+## <a name="resource-support"></a>资源支持
 
-**资源移动类型** | **支持/不支持** | **备注**  
+**资源移动类型** | **详细信息** 
 --- | --- | ---
-**跨资源组移动保管库** | 不支持 |不能跨资源组移动恢复服务保管库。
-**跨资源组移动计算、存储和网络** | 不支持 |如果在启用复制后移动虚拟机（或其相关组件，如存储和网络），则需为虚拟机禁用复制后重新启用复制。
+**跨资源组移动保管库** | 不支持<br/><br/> 不能跨资源组移动恢复服务保管库。
+**跨资源组移动计算/存储/网络资源** | 不支持。<br/><br/> 如果在复制后移动 VM 或相关组件（如存储/网络），则需要为 VM 禁用并重新启用复制。
+**将 Azure VM 从一个订阅复制到另一个订阅以进行灾难恢复** | 不支持。
+**跨订阅迁移 VM** | 不支持。
+**在同一区域内迁移 VM** | 不支持。
 
-
-
-## <a name="support-for-deployment-models"></a>部署模型支持
-
-**部署模型** | **支持/不支持** | **备注**  
---- | --- | ---
-**经典** | 支持 | 只能在复制经典虚拟机后将其恢复为经典虚拟机。 不能将其恢复为 Resource Manager 虚拟机。 如果直接向 Azure 区域部署不带虚拟网络的经典 VM，将不受支持。
-**资源管理器** | 支持 |
-
->[!NOTE]
->
-> 1. 不支持将 Azure 虚拟机从一个订阅复制到另一个订阅的灾难恢复方案。
-> 2. 不支持在多个订阅之间迁移 Azure 虚拟机。
-> 3. 不支持在同一区域内迁移 Azure 虚拟机。
-> 4. 不支持将 Azure 虚拟机从经典部署模型迁移到资源管理器部署模型。
 
 ## <a name="support-for-replicated-machine-os-versions"></a>已复制的计算机操作系统版本支持
 
@@ -138,13 +125,20 @@ SUSE Linux Enterprise Server 12（SP1、SP2、SP3） | 9.17 | SP1 3.12.49-11-def
 欧洲 | 英国西部、英国南部、北欧、西欧、法国中部、法国南部
 亚洲 | 印度南部、印度中部、东南亚、东亚、日本东部、日本西部、韩国中部、韩国南部
 澳大利亚   | 澳大利亚东部、澳大利亚东南部
-Azure Government     | 美国弗吉尼亚州政府、美国爱荷华州政府、美国亚利桑那州政府、美国德克萨斯州政府、美国国防部东部、美国国防部中部
+Azure Government     | US Gov 弗吉尼亚州、US Gov 爱荷华州、US Gov 亚利桑那州、US Gov 德克萨斯州、US DOD 东部、US DOD 中部
 德国 | 德国中部、德国东北部
 中国 | 中国东部、中国北部
 
 >[!NOTE]
 >
 > 对于巴西南部区域，只能复制和故障转移到以下区域之一，然后进行故障回复：美国中南部、美国中西部、美国东部、美国东部 2、美国西部、美国西部 2 和美国中北部。
+
+## <a name="support-for-vmdisk-management"></a>VM/磁盘管理支持
+
+**Action** | **详细信息**
+-- | ---
+调整复制的 VM 上的磁盘大小 | 支持
+将磁盘添加到复制的 VM | 不支持。 需要为 VM 禁用复制，添加磁盘，然后再次启用复制。
 
 
 ## <a name="support-for-compute-configuration"></a>计算配置支持

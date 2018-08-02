@@ -13,23 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: f8cf5a46e1d1e3242fd46900b56f7d8cf15d3fc5
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 48056d6e2988dd674351aca83526032175c355b6
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082516"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214385"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>管理 Azure 实验室服务中的教室实验室 
 本文介绍如何创建和配置教室实验室、如何查看所有教室实验室，或者如何删除教室实验室。
 
 ## <a name="prerequisites"></a>先决条件
-若要在实验室帐户中设置课堂实验室，你必须是实验室帐户中“实验室创建者”角色的成员。 实验室所有者可以根据[将用户添加为“实验室创建者”角色](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role)一文中的步骤将用户添加为“实验室创建者”角色。
+若要在实验室帐户中设置课堂实验室，你必须是实验室帐户中“实验室创建者”角色的成员。 用来创建实验室帐户的帐户会自动添加到此角色。 实验室所有者可以根据[将用户添加为“实验室创建者”角色](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role)一文中的步骤将其他用户添加为“实验室创建者”角色。
 
 ## <a name="create-a-classroom-lab"></a>创建课堂实验室
 
 1. 导航到 [Azure 实验室服务网站](https://labs.azure.com)。
-2. 在“新建实验室”窗口中，执行以下操作：： 
+2. 选择“登录”并输入凭据。 Azure 实验室服务支持组织帐户和 Microsoft 帐户。
+3. 在“新建实验室”窗口中，执行以下操作：： 
     1. 指定课堂实验室的“名称”。 
     2. 选择计划在课堂中使用的虚拟机的“大小”。
     3. 选择用于创建虚拟机的**映像**。

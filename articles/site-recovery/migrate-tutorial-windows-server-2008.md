@@ -11,14 +11,14 @@ ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 07/11/2018
+ms.date: 07/23/2018
 ms.author: bsiva
-ms.openlocfilehash: 0d3f28f0a9f1e9862fabb6ce5e96597f1534abd8
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 552a0d131f630db7b3a73293d330377ee350d2a9
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39011395"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214612"
 ---
 # <a name="migrate-servers-running-windows-server-2008-2008-r2-to-azure"></a>将运行 Windows Server 2008 或 2008 R2 的服务器迁移到 Azure
 
@@ -110,15 +110,47 @@ ms.locfileid: "39011395"
 ## <a name="prepare-your-on-premises-environment-for-migration"></a>准备适合迁移的本地环境
 
 - 从 [https://aka.ms/asr-w2k8-migration-setup](https://aka.ms/asr-w2k8-migration-setup) 下载配置服务器安装程序（统一安装程序）
-- 使用在上一步下载的安装程序文件[安装](physical-azure-disaster-recovery.md#set-up-the-source-environment)源环境。
+- 按照如下所述的步骤，使用在上一步中下载的安装程序文件安装源环境。
 
 > [!IMPORTANT]
-> 确保使用在上面的第一步下载的安装程序文件来安装并注册配置服务器。 请勿从 Azure 门户下载此安装程序文件。 [https://aka.ms/asr-w2k8-migration-setup](https://aka.ms/asr-w2k8-migration-setup) 中提供的安装程序文件是唯一支持 Windows Server 2008 迁移的版本。
+> - 确保使用在上面的第一步下载的安装程序文件来安装并注册配置服务器。 请勿从 Azure 门户下载此安装程序文件。 [https://aka.ms/asr-w2k8-migration-setup](https://aka.ms/asr-w2k8-migration-setup) 中提供的安装程序文件是唯一支持 Windows Server 2008 迁移的版本。
 >
-> 不能使用现有的配置服务器来迁移运行 Windows Server 2008 的计算机。 需使用上面提供的链接来安装新的配置服务器。
+> - 不能使用现有的配置服务器来迁移运行 Windows Server 2008 的计算机。 需使用上面提供的链接来安装新的配置服务器。
+>
+> - 按照下面提供的步骤安装配置服务器。 请勿尝试通过直接运行统一安装程序来执行基于 GUI 的安装过程。 这样做会导致安装尝试失败并显示一个错误，指出没有 Internet 连接。
+
+ 
+1) 从门户下载保管库凭据文件：在 Azure 门户中，选择在上一步中创建的恢复服务保管库。 从保管库页面的菜单中选择“Site Recovery 基础结构” > “配置服务器”。 然后单击“+服务器”。 从打开的页面的下拉表单中选择“物理配置服务器”。 单击步骤 4 中的下载按钮以下载保管库凭据文件。
 
  ![下载保管库注册密钥](media/migrate-tutorial-windows-server-2008/download-vault-credentials.png) 
- 
+
+2) 将上一步中下载的保管库凭据文件和先前下载的统一安装程序文件复制到配置服务器计算机（将在其上安装配置服务器软件的 Windows Server 2012 R2 或 Windows Server 2016 计算机）的桌面。
+
+3) 确保配置服务器具有 Internet 连接，并且正确配置了计算机上的系统时钟和时区设置。 下载 [MySQL 5.7](https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi) 安装程序并将其放在 *C:\Temp\ASRSetup* 中（如果该目录不存在，则创建该目录。） 
+
+4) 使用以下行创建 MySQL 凭据文件，并将其放入桌面上的 **C:\Users\Administrator\MySQLCreds.txt** 中。 将下面的“Password~1”替换为合适的强密码：
+
+```
+[MySQLCredentials]
+MySQLRootPassword = "Password~1"
+MySQLUserPassword = "Password~1"
+```
+
+5) 运行以下命令，将下载的统一安装程序文件的内容提取到桌面：
+
+```
+cd C:\Users\Administrator\Desktop
+
+MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Users\Administrator\Desktop\9.18
+```
+  
+6) 执行以下命令，使用提取的内容安装配置服务器软件：
+
+```
+cd C:\Users\Administrator\Desktop\9.18.1
+
+UnifiedSetup.exe /AcceptThirdpartyEULA /ServerMode CS /InstallLocation "C:\Program Files (x86)\Microsoft Azure Site Recovery" /MySQLCredsFilePath "C:\Users\Administrator\Desktop\MySQLCreds.txt" /VaultCredsFilePath <vault credentials file path> /EnvType VMWare /SkipSpaceCheck
+```
 
 ## <a name="set-up-the-target-environment"></a>设置目标环境
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: edafc2e0c11f4395540081e4b09614f2beb70696
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: f1616f7a20fdd55b98b3bfb37973a783997e2eb0
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115919"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145234"
 ---
 # <a name="grow-your-business-on-marketplace"></a>在市场中扩展业务 
 在 AppSource 或 Azure 市场中发布产品/服务后，可将列表用作与 Microsoft 联合开展市场推广 (GTM) 活动的启动平台。 例如，把流量引向自己的市场产品/服务及培养市场潜在顾客就是加速业务增长的好方法。 在本文中，我们将分享许多帮助在市场中扩展业务的市场营销最佳做法。
@@ -215,7 +215,7 @@ MPN 提供了以下主题的指导。
 | 做好 IP 联合销售准备 | 你可能有资格参加 IP 联合销售就绪计划，这让你能够与 Microsoft 销售人员和其他合作伙伴直接协作，共同发展目标客户及完成客户策划。 Microsoft 销售人员可以在销售人员解决方案目录中看到你的解决方案。 Microsoft 销售人员会竭诚与你协作，开创双赢局面。<br /> 有关联合销售就绪情况的详细信息（包括资格要求），请访问[促进业务发展](https://partner.microsoft.com/reach-customers/promote-your-business)。 |
 
 
-# <a name="azure-partner-revenue-attribution"></a>Azure 合作伙伴收入属性
+## <a name="azure-partner-customer-usage-attribution"></a>Azure 合作伙伴客户使用情况属性
 
 作为 Azure 软件合作伙伴，你的解决方案要么需要使用 Azure 组件，要么直接部署在 Azure 基础结构上。  目前，当合作伙伴解决方案由客户部署并使用客户预配的 Azure 资源时，合作伙伴不仅难以掌握这些部署的状态，而且难以了解其对 Azure 增长的影响，因而无法与 Microsoft 销售团队和 Microsoft 合作伙伴计划额度保持一致。   
 
@@ -291,8 +291,6 @@ client = azure.mgmt.servicebus.ServiceBusManagementClient(**parameters)
 
 >必须为每个客户端执行此操作，没有全局静态配置（可以选择通过客户端工厂来确保每个客户端都执行此操作）。 
 >[其他参考信息](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79)
-
-## <a name="registering-a-guid"></a>注册 GUID： 
 
 如何使用 Azure PowerShell 或 Azure CLI 标记部署：如果通过 Azure PowerShell 部署资源，则可以使用以下方法附加 GUID：
 
@@ -398,11 +396,14 @@ GUID（全局唯一标识符）是由 32 位十六进制数字组成的唯一参
 
 如需获取帮助，请执行以下步骤：
  1. 访问位于 [go.microsoft.com/fwlink/?linkid=844975](https://go.microsoft.com/fwlink/?linkid=844975) 的支持页面
- 2. 对于有关使用情况关联的问题 — 选择问题类型“市场入门”和类别“其他”，然后单击“启动请求”。
-
-对于有关访问 Azure 市场云合作伙伴门户的问题 — 选择问题类型“市场入门”和类别“访问问题”，然后单击“启动请求”。
+ 2. 对于有关使用情况关联的问题 — 选择问题类型“市场入门”和类别“其他”，然后单击“启动请求”。 
+>[!Note]
+>对于有关访问 Azure 市场云合作伙伴门户的问题 — 选择问题类型“市场入门”和类别“访问问题”，然后单击“启动请求”。
  3. 填写下一页中的必填字段，然后单击“继续”。
  4. 填写下一页中的自定义文本字段。  
+ 
+
+
  
 >[!Important] 
 >在事件标题中填写“ISV 使用情况跟踪”，然后在大型自定义文本字段中详细说明你的问题。  填写表格的其余部分，然后单击“提交”。

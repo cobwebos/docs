@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: alkohli
-ms.openlocfilehash: ab73420d1bfe0dbddcf2a0e3c3dd34203e4bb2d7
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: c435e21d85ae0ab35bc2fa99f7006e841eaecec0
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008410"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248768"
 ---
 # <a name="what-is-azure-importexport-service"></a>什么是 Azure 导入/导出服务？
 
@@ -71,13 +71,18 @@ Azure“导入/导出”服务通过创建作业，将数据传输到 Azure Blob
 1. 确定要导入的数据、所需的驱动器数以及 Azure 存储中数据的目标 blob 位置。
 2. 使用 WAImportExport 工具将数据复制到磁盘驱动器。 使用 BitLocker 加密磁盘。
 3. 在 Azure 门户中目标存储帐户下创建导入作业。 上传驱动器日志文件。
-2. 请提供回寄地址以及快递商帐户号码，以便我们将驱动器寄回给你。
-3. 将磁盘驱动器寄送到在创建作业时获得的寄送地址。
-4. 在导入作业详细信息中更新快递跟踪号码，并提交导入作业。
-5. Azure 数据中心在收到驱动器后会对其进行处理。
-6. 该中心会使用快递商帐户将驱动器寄送到在导入作业中提供的回寄地址。
-  
-    ![图 1：导入作业流](./media/storage-import-export-service/importjob.png)
+4. 请提供回寄地址以及快递商帐户号码，以便我们将驱动器寄回给你。
+5. 将磁盘驱动器寄送到在创建作业时获得的寄送地址。
+6. 在导入作业详细信息中更新快递跟踪号码，并提交导入作业。
+7. Azure 数据中心在收到驱动器后会对其进行处理。
+8. 该中心会使用快递商帐户将驱动器寄送到在导入作业中提供的回寄地址。
+
+> [!NOTE]
+> 对于本地（在数据中心所在国家/地区内）装运，请共享国内承运人帐户 
+>
+> 对于国外（在数据中心所在国家/地区外）装运，请共享国际承运人帐户
+
+ ![图 1：导入作业流](./media/storage-import-export-service/importjob.png)
 
 有关数据导入分步说明，请转到：
 
@@ -101,8 +106,13 @@ Azure“导入/导出”服务通过创建作业，将数据传输到 Azure Blob
 8. Azure 数据中心在收到驱动器后会对其进行处理。
 9. 驱动器使用 BitLocker 加密；密钥通过 Azure 门户提供。  
 10. 该中心会使用快递商帐户将驱动器寄送到在导入作业中提供的回寄地址。
+
+> [!NOTE]
+> 对于本地（在数据中心所在国家/地区内）装运，请共享国内承运人帐户 
+>
+> 对于国外（在数据中心所在国家/地区外）装运，请共享国际承运人帐户
   
-    ![图 2：导出作业流](./media/storage-import-export-service/exportjob.png)
+ ![图 2：导出作业流](./media/storage-import-export-service/exportjob.png)
 
 有关数据导出的分步说明，请转到[从 Azure Blob 导出数据](storage-import-export-data-from-blobs.md)。
 
@@ -115,7 +125,7 @@ Azure 导入/导出服务支持将数据复制到所有 Azure 存储帐户，以
 
 |国家/地区  |国家/地区  |国家/地区  |国家/地区  |
 |---------|---------|---------|---------|
-|美国东部    | 北欧        | 印度中部        |美国政府爱荷华州         |
+|美国东部    | 北欧        | 印度中部        |US Gov 爱荷华州         |
 |美国西部     |西欧         | 印度南部        | 美国 DoD 东部        |
 |美国东部 2    | 东亚        |  印度西部        | 美国 DoD 中部        |
 |美国西部 2     | 东南亚        | 加拿大中部        | 中国东部         |

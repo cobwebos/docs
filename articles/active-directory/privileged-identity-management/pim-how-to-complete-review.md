@@ -13,24 +13,24 @@ ms.component: protection
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 386be8737fcddacab9fdd7ec19ae00188342d917
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e8aacc95f73294420042549681aff5494dc63cce
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38506317"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257804"
 ---
 # <a name="how-to-complete-an-access-review-in-azure-ad-privileged-identity-management"></a>如何在 Azure AD Privileged Identity Management 中结束访问审阅
-[开始安全审阅](pim-how-to-start-security-review.md)后，特权角色管理员可以审阅特权访问。 Azure AD Privileged Identity Management (PIM) 会自动发送一封提示用户审阅其访问的电子邮件。 如果用户未收到电子邮件，可以向他们发送[如何执行安全审阅](pim-how-to-perform-security-review.md)中的说明。
+[访问评审开始](pim-how-to-start-security-review.md)后，特权角色管理员可以评审特权访问。 Azure AD Privileged Identity Management (PIM) 会自动发送一封提示用户审阅其访问的电子邮件。 如果用户未收到电子邮件，可以向他们发送[如何执行访问评审](pim-how-to-perform-security-review.md)的相关说明。
 
-安全审阅期限结束，或者所有用户已完成其自审阅后，按照本文中的步骤管理审阅并查看结果。
+访问评审期限结束，或者所有用户已完成其自评审后，请按照本文中的步骤管理评审并查看结果。
 
-## <a name="manage-security-reviews"></a>管理安全审阅
+## <a name="manage-access-reviews"></a>管理访问评审
 1. 转到 [Azure 门户](https://portal.azure.com/)，并在仪表板上选择“Azure AD Privileged Identity Management”应用程序。
 2. 选择仪表板的“访问审阅”部分。
 3. 选择要管理的访问审阅。
 
-在访问审阅的详细信息边栏选项卡上，有大量用于管理该审阅的选项。
+在访问评审的详细信息边栏选项卡上，有大量用于管理该评审的选项。
 
 ![PIM 访问审阅按钮 - 屏幕截图](./media/pim-how-to-complete-review/PIM_review_buttons.png)
 
@@ -44,7 +44,7 @@ ms.locfileid: "38506317"
 结束访问审阅后，“应用”按钮将实现审阅结果，因为结束日期已到或已手动停止它。 如果在审阅中拒绝了用户的访问，在此步骤中将删除其角色分配。  
 
 ### <a name="export"></a>导出
-如果要手动应用安全审阅的结果，可以导出该审阅。 “导出”按钮将开始下载 CSV 文件。 可以在 Excel 或可打开 CSV 文件的其他程序中管理结果。
+如果要手动应用访问评审的结果，可以导出该评审。 “导出”按钮将开始下载 CSV 文件。 可以在 Excel 或可打开 CSV 文件的其他程序中管理结果。
 
 ### <a name="delete"></a>删除
 如果不想要进一步了解审阅，请将其删除。 “删除”按钮可从 PIM 应用程序中删除审阅。

@@ -8,12 +8,12 @@ ms.date: 04/16/2018
 ms.topic: article
 ms.prod: microsoft-iot-central
 manager: timlt
-ms.openlocfilehash: 083410c6407ce7aa83c3829f884890561b0b44b8
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 42516e4dd6a85e0d07d4a8e70e958b2ec6e84aad
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008206"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225194"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-an-action-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中创建遥测规则并设置操作
 
@@ -60,7 +60,9 @@ Azure IoT Central 使用[遥测度量](howto-set-up-template.md)来捕获设备�
 
 ### <a name="add-an-action"></a>添加操作
 
-本部分演示如何将操作添加到规则。 这将演示如何添加电子邮件操作，但你还可以向规则中[添加 Microsoft Flow 操作](howto-add-microsoft-flow.md)，以便在触发规则时启动 Microsoft Flow 中的工作流。
+本示例演示如何将操作添加到规则。 这演示了如何添加电子邮件操作，但也可以添加其他操作：
+-  [Microsoft Flow 操作](howto-add-microsoft-flow.md)，在触发规则时启动 Microsoft Flow 中的工作流
+- [Webhook 操作](howto-create-webhooks.md)，在触发规则时通知其他服务
 
 > [!NOTE]
 > 目前，只有 1 个操作可以关联到单个规则。

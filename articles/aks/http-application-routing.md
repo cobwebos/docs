@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: 4484031b20e625f81ba8b3869110e90df189323e
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 9c26a85a50bf4e7272b229bac8a8b9aa8c1ae364
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116967"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238516"
 ---
 # <a name="http-application-routing"></a>HTTP 应用程序路由
 
@@ -60,12 +60,12 @@ HTTP 应用程序路由加载项可以在部署 AKS 群集时通过 Azure 门户
 
 只能在具有如下注释的入口资源上触发 HTTP 应用程序路由解决方案：
 
-```
+```yaml
 annotations:
   kubernetes.io/ingress.class: addon-http-application-routing
 ```
 
-创建名为 **samples-http-application-routing.yaml** 的文件，并将其复制到以下 YAML 中。 在第 43 行，将 `<CLUSTER_SPECIFIC_DNS_ZONE>` 更新为在本文最后一步中收集的 DNS 区域名称。
+创建名为 **samples-http-application-routing.yaml** 的文件，并将其复制到以下 YAML 中。 在第 43 行，将 `<CLUSTER_SPECIFIC_DNS_ZONE>` 更新为在本文上一步中收集的 DNS 区域名称。
 
 
 ```yaml
@@ -119,7 +119,7 @@ spec:
 
 使用 [kubectl apply][kubectl-apply] 命令创建资源。
 
-```
+```bash
 $ kubectl apply -f samples-http-application-routing.yaml
 
 deployment "party-clippy" created
@@ -129,7 +129,7 @@ ingress "party-clippy" created
 
 使用 cURL 或浏览器导航到在 samples-http-application-routing.yaml 文件的 host 节中指定的主机名。 可能需要等待长达 1 分钟的时间才能通过 Internet 访问应用程序。
 
-```
+```bash
 $ curl party-clippy.471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io
 
  _________________________________
@@ -150,6 +150,14 @@ $ curl party-clippy.471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io
 
 ```
 
+## <a name="remove-http-routing"></a>删除 HTTP 路由
+
+可以使用 Azure CLI 删除 HTTP 路由解决方案。 为此，请运行以下命令，并替换 AKS 群集和资源组名称。
+
+```azurecli
+az aks disable-addons --addons http_application_routing --name myAKSCluster --resource-group myAKSCluster --no-wait
+```
+
 ## <a name="troubleshoot"></a>故障排除
 
 请使用 [kubectl logs][kubectl-logs] 命令查看 External-DNS 应用程序的应用程序日志。 这些日志应确认已成功创建 A 和 TXT DNS 记录。
@@ -167,7 +175,7 @@ time="2018-04-26T20:36:21Z" level=info msg="Updating TXT record named 'party-cli
 
 使用 [kubectl logs][kubectl-logs] 命令查看 Nginx 入口控制器的应用程序日志。 这些日志应确认入口资源的 `CREATE` 操作和控制器的重新加载操作。 所有 HTTP 活动都会记录到日志中。
 
-```
+```bash
 $ kubectl logs -f deploy/addon-http-application-routing-nginx-ingress-controller -n kube-system
 
 -------------------------------------------------------------------------------
@@ -208,7 +216,7 @@ I0426 21:51:58.042932       9 controller.go:179] ingress backend successfully re
 
 删除在本文中创建的相关 Kubernetes 对象。
 
-```
+```bash
 $ kubectl delete -f samples-http-application-routing.yaml
 
 deployment "party-clippy" deleted

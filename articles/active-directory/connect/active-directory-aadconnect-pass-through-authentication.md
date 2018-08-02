@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2d88bf5d20beb9de9bf4a0cdcb43548d0d582779
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: dfee42f813989da2333720ac92313344343d57a7
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917272"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214023"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>使用 Azure Active Directory 传递身份验证的用户登录
 
@@ -30,7 +30,7 @@ ms.locfileid: "37917272"
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-此功能是 [Azure AD 密码哈希同步](active-directory-aadconnectsync-implement-password-hash-synchronization.md)的一种替代方法，可为组织提供同样的云身份验证权益。 但是，某些组织中的安全和符合性策略不允许这些组织发送用户密码，即使是以经过哈希处理的窗体在其内部边界之外进行发送也是如此。 传递身份验证是这类组织的理想解决方案。
+此功能是 [Azure AD 密码哈希同步](active-directory-aadconnectsync-implement-password-hash-synchronization.md)的一种替代方法，可为组织提供同样的云身份验证权益。 但如果某些组织希望强制执行其本地 Active Directory 安全和密码策略，则可以选择性地使用传递身份验证。 请查看[本指南](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)，对比各种 Azure AD 登录方法并了解如何为组织选择正确的登录方法。
 
 ![Azure AD 直通身份验证](./media/active-directory-aadconnect-pass-through-authentication/pta1.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "37917272"
 - *安全*
   - 本地密码永远不会以任何形式存储在云中。
   - 代理只从网络内部建立出站连接。 因此，无需在外围网络（也称为 DMZ）中安装代理。
-  - 可通过无缝配合使用 [Azure AD 条件性访问策略](../active-directory-conditional-access-azure-portal.md)（包括多重身份验证 (MFA)），也可通过[筛选密码搜索攻击](../authentication/howto-password-smart-lockout.md)来保护用户帐户。
+  - 可通过与 [Azure AD 条件访问策略](../active-directory-conditional-access-azure-portal.md)（包括多重身份验证 (MFA)、[阻止旧式身份验证](../active-directory-conditional-access-conditions.md)）无缝协作，也可通过[筛选暴力破解密码攻击](../authentication/howto-password-smart-lockout.md)来保护用户帐户。
 - 高可用性
   - 可在多台本地服务器上安装其他代理，提供登录请求的高可用性。
 
@@ -68,12 +68,13 @@ ms.locfileid: "37917272"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [快速入门](active-directory-aadconnect-pass-through-authentication-quick-start.md) - 快速了解 Azure AD 直通身份验证。
-- [**智能锁定**](../authentication/howto-password-smart-lockout.md) - 在租户中配置智能锁定功能以保护用户帐户。
+- [快速入门](active-directory-aadconnect-pass-through-authentication-quick-start.md) - 快速了解并运行 Azure AD 传递身份验证。
+- [从 AD FS 迁移到传递身份验证](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) - 从 AD FS（或其他联合技术）迁移到传递身份验证的详细指南。
+- [智能锁定](../authentication/howto-password-smart-lockout.md) - 在租户中配置智能锁定功能以保护用户帐户。
 - [当前限制](active-directory-aadconnect-pass-through-authentication-current-limitations.md) - 了解支持和不支持的方案。
 - [深入技术探究](active-directory-aadconnect-pass-through-authentication-how-it-works.md) - 了解此功能如何运作。
-- [**常见问题**](active-directory-aadconnect-pass-through-authentication-faq.md) - 常见问题解答。
+- [常见问题](active-directory-aadconnect-pass-through-authentication-faq.md) - 常见问题解答。
 - [故障排除](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) - 了解如何解决使用此功能时遇到的常见问题。
-- [**深入了解安全性**](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md) - 有关该功能的其他深入技术信息。
-- [**Azure AD 无缝 SSO**](active-directory-aadconnect-sso.md) - 深入了解此补充功能。
+- [深入了解安全性](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md) - 有关该功能的其他深入技术信息。
+- [Azure AD 无缝 SSO](active-directory-aadconnect-sso.md) - 深入了解此补充功能。
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。

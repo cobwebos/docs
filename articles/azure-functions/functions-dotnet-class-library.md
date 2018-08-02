@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: 2308419ba79f6b482df6f68e865aafd0152ae090
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 542e3563a31a181db8eb7c97a90b61e1a503f2cb
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001882"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39162195"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference（Azure Functions C# 开发人员参考）
 
@@ -262,6 +262,8 @@ public static class AsyncExample
     }
 }
 ```
+
+不能在异步函数中使用 `out` 参数。 对于输出绑定，请改用[函数返回值](#binding-to-method-return-value)或[收集器对象](#writing-multiple-output-values)。
 
 ## <a name="cancellation-tokens"></a>取消令牌
 

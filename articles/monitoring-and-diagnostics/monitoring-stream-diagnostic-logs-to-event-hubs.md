@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: c59b9982f5ba5a4fa52ab36df5ebb6995b2d45b0
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 5b4a15204a934bf55810fcdccd48a7a15a48c5ed
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085083"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258178"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>将 Azure 诊断日志流式传输到事件中心
 可将 **[Azure 诊断日志](monitoring-overview-of-diagnostic-logs.md)** 近实时地流式传输到任何应用程序，方法是使用门户中的内置“导出到事件中心”选项，或者通过 Azure PowerShell Cmdlet 或 Azure CLI 2.0 在诊断设置中启用事件中心授权规则 ID。
@@ -22,16 +22,16 @@ ms.locfileid: "37085083"
 可以通过下述几种方式将流式传输功能用于诊断日志：
 
 * **将日志流式传输到第三方日志记录和遥测系统** - 可以将所有诊断日志流式传输到单个事件中心，以便将日志数据通过管道传送到第三方 SIEM 或日志分析工具。
-* **通过将“热路径”数据流式传输到 PowerBI 查看服务运行状况** – 可以通过事件中心、流分析和 PowerBI 在 Azure 服务中轻松地将诊断数据转化成近实时分析结果。 [此文档文章很好地概述了如何设置事件中心、如何使用流分析处理数据，以及如何使用 PowerBI 作为输出](../stream-analytics/stream-analytics-power-bi-dashboard.md)。 下面是有关如何设置诊断日志的一些提示：
+* **通过将“热路径”数据流式传输到 Power BI 查看服务运行状况** – 可以通过事件中心、流分析和 Power BI 在 Azure 服务中轻松将诊断数据转化成准实时分析结果。 [本文档很好地概述了如何设置事件中心、如何使用流分析处理数据，以及如何将 Power BI 用作输出](../stream-analytics/stream-analytics-power-bi-dashboard.md)。 下面是有关如何设置诊断日志的一些提示：
 
   * 在门户中选中相关选项或通过 PowerShell 启用相关选项以后，即可自动创建针对某类诊断日志的事件中心，因此需在命名空间中选择名称以 **insights-** 开头的事件中心。
-  * 以下 SQL 代码是一个流分析查询示例，可用于将所有日志数据解析成 PowerBI 表：
+  * 以下 SQL 代码是一个流分析查询示例，可用于将所有日志数据解析成 Power BI 表：
 
     ```sql
     SELECT
     records.ArrayValue.[Properties you want to track]
     INTO
-    [OutputSourceName – the PowerBI source]
+    [OutputSourceName – the Power BI source]
     FROM
     [InputSourceName] AS e
     CROSS APPLY GetArrayElements(e.records) AS records
@@ -46,7 +46,7 @@ ms.locfileid: "37085083"
 > [!WARNING]
 > 从计算资源（例如，VM 或 Service Fabric）启用诊断日志并对其进行流式传输[需要另一组步骤](../event-hubs/event-hubs-streaming-azure-diags-data.md)。
 
-只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，事件中心命名空间就不必与资源发出日志位于同一订阅中。
+只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限并且这两个订阅都是属于同一个 AAD 租户，事件中心命名空间就不必与资源发出日志位于同一订阅中。
 
 > [!NOTE]
 > 当前不支持通过诊断设置发送多维指标。 多维指标将按平展后的单维指标导出，并跨维值聚合。
@@ -177,7 +177,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
 }
 ```
 
-| 元素名称 | 说明 |
+| 元素名称 | Description |
 | --- | --- |
 | records |此有效负载中所有日志事件的数组。 |
 | time |发生事件的时间。 |
@@ -195,5 +195,6 @@ az monitor diagnostic-settings create --name <diagnostic name> \
 
 ## <a name="next-steps"></a>后续步骤
 
+* [使用 Azure Monitor 流式传输 Azure Active Directory 日志](../active-directory/reporting-azure-monitor-diagnostics-azure-event-hub.md)
 * [详细了解 Azure 诊断日志](monitoring-overview-of-diagnostic-logs.md)
 * [事件中心入门](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)

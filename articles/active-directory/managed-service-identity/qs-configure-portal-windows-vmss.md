@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 门户在 Azure 虚拟机规模集上配置 MSI
-description: 分步说明如何使用 Azure 门户在 Azure VMSS 上配置托管服务标识 (MSI)。
+title: 使用 Azure 门户在 Azure 虚拟机规模集上配置托管服务标识
+description: 分步说明如何使用 Azure 门户在 Azure VMSS 上配置托管服务标识。
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 8779600f2c85a8bb309f7b2a8874608170de8877
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 93c532cf2864db28b580303ecefec8b6dbed65f6
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035235"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257753"
 ---
-# <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-the-azure-portal"></a>使用 Azure 门户配置虚拟机规模集托管服务标识 (MSI)
+# <a name="configure-a-virtual-machine-scale-set-managed-service-identity-using-the-azure-portal"></a>使用 Azure 门户配置虚拟机规模集托管服务标识
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -34,9 +34,10 @@ ms.locfileid: "39035235"
 
 ## <a name="prerequisites"></a>先决条件
 
-
 - 如果不熟悉托管服务标识，请查阅[概述部分](overview.md)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
+- 若要执行本文中的管理操作，帐户需要分配以下角色：
+    - [虚拟机参与者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)，可从虚拟机规模集启用和删除系统分配的托管标识。
 
 ## <a name="managed-service-identity-during-creation-of-an-azure-virtual-machine-scale-set"></a>创建 Azure 虚拟机规模集过程中的托管服务标识
 
@@ -44,7 +45,7 @@ ms.locfileid: "39035235"
 
 - [在 Azure 门户中创建虚拟机规模集](../../virtual-machine-scale-sets/quick-create-portal.md)  
 
-然后，转到下一部分，详细了解如何在虚拟机规模集上启用 MSI。
+然后，转到下一部分，详细了解如何在虚拟机规模集上启用托管服务标识。
 
 ## <a name="enable-managed-service-identity-on-an-existing-azure-vmms"></a>在现有 Azure VMSS 上启用托管服务标识
 
@@ -60,7 +61,7 @@ ms.locfileid: "39035235"
 
 ## <a name="remove-managed-service-identity-from-an-azure-virtual-machine-scale-set"></a>从 Azure 虚拟机规模集移除托管服务标识
 
-如果虚拟机规模集不再需要 MSI，请执行以下操作：
+如果虚拟机规模集不再需要托管服务标识，请执行以下操作：
 
 1. 使用与包含虚拟机规模集的 Azure 订阅关联的帐户登录 [Azure 门户](https://portal.azure.com)。 此外，请确保该帐户属于可授予对虚拟机规模集的写权限的角色。
 
@@ -76,6 +77,6 @@ ms.locfileid: "39035235"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 使用 Azure 门户，授予 Azure 虚拟机规模集的 MSI [对另一个 Azure 资源的访问权限](howto-assign-access-portal.md)。
+- 使用 Azure 门户，授予 Azure 虚拟机规模集托管服务标识[对另一个 Azure 资源的访问权限](howto-assign-access-portal.md)。
 
 使用以下评论部分提供反馈，帮助我们改进内容。

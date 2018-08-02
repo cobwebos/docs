@@ -1,21 +1,21 @@
 ---
-title: 如何使用 Azure Monitor 警报和操作组触发复杂操作
+title: 如何使用 Azure Monitor 警报触发复杂操作
 description: 了解如何创建逻辑应用操作处理 Azure Monitor 警报。
 author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/30/2018
+ms.date: 07/18/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 51d47b87f898aa65fe4ee76c312240a50d45231d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 034e708b79bbdf15d7fa628f388402998f49c0d9
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049181"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161500"
 ---
-# <a name="create-a-logic-app-action"></a>创建逻辑应用操作
+# <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>如何使用 Azure Monitor 警报触发复杂操作
 
 本文介绍如何设置和触发逻辑应用，在警报触发时在 Microsoft Teams 中创建对话。
 
@@ -290,6 +290,9 @@ Azure Service Health 条目包含在活动日志中。 创建警报的过程类�
        ![“指标警报 false 条件下的发布操作”](media/monitoring-action-groups/metric-alert-false-condition-post-action.png "指标警报 false 条件下的发布操作")
 
 - 步骤 15 相同。 遵照说明保存逻辑应用并更新操作组。
+
+## <a name="calling-other-applications-besides-microsoft-teams"></a>调用除 Microsoft Teams 外的其他应用程序
+逻辑应用具有大量不同的连接器，可在广泛的应用程序和数据库中触发操作。 Slack、SQL Server、Oracle、Salesforce 只是一些示例。 有关连接器的详细信息，请参阅[逻辑应用连接器](../connectors/apis-list.md)。  
 
 ## <a name="next-steps"></a>后续步骤
 * 参阅 [Azure 活动日志警报概述](monitoring-overview-alerts.md)，了解如何接收警报。  

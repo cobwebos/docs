@@ -9,14 +9,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 07/24/2018
 ms.author: bonova
-ms.openlocfilehash: e0de9a1494641fef87d11545b99e5e7275f6b614
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: a9a02f9007c174024028305746682f9ac07dab22
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069257"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247204"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>将 SQL Server 实例迁移到 Azure SQL 数据库托管实例
 
@@ -24,7 +24,7 @@ ms.locfileid: "39069257"
 
 SQL 数据库托管实例是现有 SQL 数据库服务的扩展，提供了第三个部署选项以及单个数据库和弹性池。  使用托管实例可将数据库即时转移到完全托管的 PaaS，而无需重新设计应用程序。 SQL 数据库托管实例与本地 SQL Server 编程模型高度兼容，对大多数 SQL Server 功能提供现成的支持，并提供随附的工具和服务。
 
-从较高层面看，应用程序迁移过程如下图所示：
+概括而言，应用程序迁移过程如下所示：
 
 ![迁移过程](./media/sql-database-managed-instance-migration/migration-process.png)
 

@@ -1,6 +1,6 @@
 ---
 title: 在 BizTalk 服务中创建和还原备份 | Microsoft Docs
-description: BizTalk 服务包括备份和还原。 了解如何创建和还原备份，并确定备份内容。 MABS, WABS
+description: BizTalk 服务包括备份和还原。 了解如何创建和还原备份，并确定备份内容。 MABS，WABS
 services: biztalk-services
 documentationcenter: ''
 author: MandiOhlinger
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 45365092f5bcd1a8d309c10404a7437c494a8967
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 90cf2d0ddbba47a856bf1299a101c5185873b5d8
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "24102335"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214406"
 ---
 # <a name="biztalk-services-backup-and-restore"></a>BizTalk 服务：备份和还原
 
@@ -107,7 +107,7 @@ BizTalk 服务始终在“挂起”状态中还原。 在此状态下，可在�
 <td>BizTalk 服务设置</td> 
 <td>
 <ul>
-<li>缩放单位计数</li>
+<li>缩放单元计数</li>
 <li>版本</li>
 <li>产品版本</li>
 <li>区域/数据中心</li>

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: 42b9f574d09429d95fbf79da02c137e1079ac369
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 984fd61eeedf988e5378fd9e1e1d386b09505939
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006941"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161681"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# 脚本 (.csx) 开发人员参考
 
@@ -247,6 +247,8 @@ public async static Task ProcessQueueMessageAsync(
     await blobInput.CopyToAsync(blobOutput, 4096);
 }
 ```
+
+不能使用异步函数中的 `out` 参数。 对于输出绑定，请改用[函数返回值](#binding-to-method-return-value)或[收集器对象](#writing-multiple-output-values)。
 
 ## <a name="cancellation-tokens"></a>取消令牌
 

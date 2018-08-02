@@ -9,12 +9,12 @@ ms.custom: reference
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: b7c1d4f1b8ca0f8899ebff8178a481c7dd1d5779
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ee06039242afe5b5e92cf2fecc4c3fa9bff0b78b
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648881"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214363"
 ---
 # <a name="daxkocsi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services-and-performance"></a>Daxko/CSI 使用 Azure 来加速其开发周期和增强其客户服务与性能
 ![Daxko/CSI 徽标](./media/sql-database-implementation-daxko/csidaxkologo25.png)
@@ -84,7 +84,7 @@ Azure SQL 数据库不仅为 SpectrumNG 客户带来了好处，让他们享有�
 ## <a name="more-information"></a>详细信息
 * 有关 Azure 弹性池的详细信息，请参阅[弹性池](sql-database-elastic-pool.md)。
 * 有关数据库工具和弹性缩放的详细信息，请参阅[弹性数据库工具和弹性缩放](sql-database-elastic-scale-get-started.md)。
-* 有关迁移 SQL Server 数据库的详细信息，请参阅[将 Azure SQL 数据库迁移到 Azure](sql-database-cloud-migrate.md)。
+* 有关迁移 SQL Server 数据库的详细信息，请参阅[将 SQL Server 数据库迁移到 Azure](sql-database-cloud-migrate.md)。
 * 若要深入了解活动异地复制，请参阅[活动异地复制](sql-database-geo-replication-overview.md)。
 * 有关 Azure 服务总线的详细信息，请参阅 [Azure 服务总线](https://azure.microsoft.com/services/service-bus/)。
 * 有关自动缩放的详细信息，请参阅[缩放云服务](../cloud-services/cloud-services-how-to-scale-portal.md)。

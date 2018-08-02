@@ -139,7 +139,7 @@
       items:
         - name: 设计策略
           href: luis-concept-enterprise.md
-    - name: “安全”
+    - name: 安全
       items:
         - name: 应用访问
           href: luis-concept-security.md
@@ -219,7 +219,7 @@
           href: luis-how-to-manage-keys.md
         - name: 管理版本
           href: luis-how-to-manage-versions.md
-        - name: 与其他作者协作
+        - name: 管理作者和协作者
           href: luis-how-to-collaborate.md
         - name: 管理创作密钥
           href: luis-how-to-account-settings.md

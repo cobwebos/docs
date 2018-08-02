@@ -4,18 +4,18 @@ description: 报告 Azure AD 自助密码重置事件
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: e2c4c59e52f277358027f5d228fdf43822822992
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 2560296c088491b7ae0cd414f88ae337c1383c9a
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044522"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258790"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>用于 Azure AD 密码管理的报告选项
 
@@ -54,6 +54,10 @@ ms.locfileid: "39044522"
 6. 要筛选此视图以便仅查看密码重置的相关事件，请选择窗格顶部的“筛选”按钮。
 7. 在“筛选”菜单中选择“类别”下拉列表，然后将其更改为“自助密码管理”类别类型。
 8. （可选）通过选择所需的特定“活动”进一步筛选该列表。
+
+### <a name="converged-registration-preview"></a>聚合注册（预览版）
+
+如果使用聚合注册的公共预览版，可在“身份验证方法”类别下找到有关审核日志的用户活动信息。
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Azure 门户中报表列的说明
 

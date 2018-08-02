@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ea7fb5951cd0b2925aa3dd5ae14b452292ba582c
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: ad4567ffb927694872d5b86dd38833466f944ca8
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917986"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215078"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory 直通身份验证安全性深入研究
 
@@ -37,14 +37,14 @@ ms.locfileid: "37917986"
 此功能的安全性主要有以下方面：
 - 它构建于安全的多租户体系结构上，此体系结构隔离租户之间的登录请求。
 - 本地密码永远不会以任何形式存储在云中。
-- 本地身份验证代理侦听和响应密码验证请求，它仅从网络内部建立出站连接。 无需在外围网络 (DMZ) 中安装这些身份验证代理。
+- 本地身份验证代理侦听和响应密码验证请求，它仅从网络内部建立出站连接。 无需在外围网络 (DMZ) 中安装这些身份验证代理。 最佳做法是将运行身份验证代理的所有服务器视为第 0 层系统（请参阅[参考](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)）。
 - 从身份验证代理到 Azure AD 的出站通信仅使用标准端口（80 和 443）。 不需打开防火墙上的入站端口。 
   - 端口 443 用于所有经过身份验证的出站通信。
   - 端口 80 仅用于下载证书吊销列表 (CRL)，以确保未吊销此功能所用的任何证书。
   - 如需网络安全的完整列表，请参阅 [Azure Active Directory 直通身份验证：快速入门](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-1-check-the-prerequisites)。
 - 用户在登录期间提供的密码将在云中加密，再由本地身份验证代理接受，通过 Active Directory 进行验证。
 - 通过相互进行身份验证保护 Azure AD 和本地身份验证代理之间的 HTTPS 通道。
-- 此功能与条件访问策略（包括 Azure 多重身份验证）、标识保护和智能锁定等 Azure AD 云保护功能无缝集成。
+- 可通过与 [Azure AD 条件访问策略](../active-directory-conditional-access-azure-portal.md)（包括多重身份验证 (MFA)、[阻止旧式身份验证](../active-directory-conditional-access-conditions.md)）无缝协作，也可通过[筛选暴力破解密码攻击](../authentication/howto-password-smart-lockout.md)来保护用户帐户。
 
 ## <a name="components-involved"></a>涉及的组件
 
@@ -156,7 +156,7 @@ ms.locfileid: "37917986"
 
 若要向 Azure AD 续订身份验证代理的信任关系，请执行以下操作：
 
-1. 身份验证代理将定期 ping Azure AD（数小时一次），检查是否应续订其证书。 
+1. 身份验证代理将定期 ping Azure AD（数小时一次），检查是否应续订其证书。 在证书到期前 30 天续订。
     - 此检查通过经相互身份验证的 HTTPS 通道执行，使用注册期间颁发的证书。
 2. 如果服务指示应当续订，身份验证代理会生成一个新的密钥对：一个公钥和一个私钥。
     - 这些密钥通过标准 RSA 2048 位加密生成。
@@ -209,6 +209,7 @@ Azure AD 以已签名 Windows Installer 程序包 (MSI) 的形式，托管该软
 ## <a name="next-steps"></a>后续步骤
 - [当前限制](active-directory-aadconnect-pass-through-authentication-current-limitations.md)：了解支持和不支持的方案。
 - [快速入门](active-directory-aadconnect-pass-through-authentication-quick-start.md)：快速了解 Azure AD 直通身份验证。
+- [从 AD FS 迁移到传递身份验证](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) - 从 AD FS（或其他联合技术）迁移到传递身份验证的详细指南。
 - [智能锁定](../authentication/howto-password-smart-lockout.md)：在租户中配置智能锁定功能以保护用户帐户。
 - [工作原理](active-directory-aadconnect-pass-through-authentication-how-it-works.md)：了解 Azure AD 直通身份验证的基本工作原理。
 - [常见问题解答](active-directory-aadconnect-pass-through-authentication-faq.md)：查找常见问题的解答。

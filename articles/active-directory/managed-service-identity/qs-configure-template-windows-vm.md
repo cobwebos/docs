@@ -1,6 +1,6 @@
 ---
-title: 如何使用模板在 Azure VM 上配置 MSI
-description: 分步介绍了如何使用 Azure 资源管理器模板在 Azure VM 上配置托管服务标识 (MSI)。
+title: 如何使用模板在 Azure VM 上配置托管服务标识
+description: 分步说明如何使用 Azure 资源管理器模板在 Azure VM 上配置托管服务标识。
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 7acbef216c182e5de80515258841af59d9529908
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 15a743f524c58e56247ec46fee27611b33595bad
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114873"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258688"
 ---
 # <a name="configure-a-vm-managed-service-identity-by-using-a-template"></a>使用模板配置 VM 托管服务标识
 
@@ -33,6 +33,10 @@ ms.locfileid: "39114873"
 
 - 如果不熟悉托管服务标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配标识与用户分配标识之间的差异](overview.md#how-does-it-work)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
+- 若要执行本文中的管理操作，帐户需要分配以下角色：
+    - [虚拟机参与者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)，可创建 VM，并从 Azure VM 启用和删除系统和/或用户分配的托管标识。
+    - [托管标识参与者](/azure/role-based-access-control/built-in-roles#managed-identity-contributor)角色，可创建用户分配标识。
+    - [托管标识操作员](/azure/role-based-access-control/built-in-roles#managed-identity-operator)角色，可在 VM 中分配和删除用户分配标识。
 
 ## <a name="azure-resource-manager-templates"></a>Azure 资源管理器模板
 
@@ -51,7 +55,7 @@ ms.locfileid: "39114873"
 
 ### <a name="enable-system-assigned-identity-during-creation-of-an-azure-vm-or-on-an-existing-vm"></a>在创建 Azure VM 的过程中或在现有 VM 上启用系统分配标识
 
-1. 无论是在本地登录到 Azure 还是通过 Azure 门户登录，请使用与包含 VM 的 Azure 订阅关联的帐户。 还需要确保该帐户属于可授予对 VM 的写权限的角色（例如，“虚拟机参与者”角色）。
+1. 无论是在本地登录到 Azure 还是通过 Azure 门户登录，请使用与包含 VM 的 Azure 订阅关联的帐户。
 
 2. 在编辑器中加载模板后，在 `resources` 部分中找到相关的 `Microsoft.Compute/virtualMachines` 资源。 你的屏幕截图可能与下面的略有不同，具体取决于所使用的编辑器，以及编辑后的模板是用于新部署，还是用于现有部署。
 
@@ -69,7 +73,7 @@ ms.locfileid: "39114873"
    },
    ```
 
-4. （可选）将 VM MSI 扩展添加为 `resources` 元素。 此步骤是可选的，因为你也可以使用 Azure 实例元数据服务 (IMDS) 标识终结点来检索令牌。  使用以下语法：
+4. （可选）添加 VM 托管服务标识扩展作为 `resources` 元素。 此步骤是可选的，因为你也可以使用 Azure 实例元数据服务 (IMDS) 标识终结点来检索令牌。  使用以下语法：
 
    >[!NOTE] 
    > 下面的示例假定正在部署的是 Windows VM 扩展 (`ManagedIdentityExtensionForWindows`)。 对于 Linux，还可以改用 `ManagedIdentityExtensionForLinux` 来配置 `"name"` 和 `"type"` 元素。
@@ -105,7 +109,7 @@ ms.locfileid: "39114873"
 
 在 VM 上启用系统分配的标识后，建议向其授予一个角色，例如对创建它的资源组的“读者”访问权限。
 
-1. 无论是在本地登录到 Azure 还是通过 Azure 门户登录，请使用与包含 VM 的 Azure 订阅关联的帐户。 还需要确保该帐户属于可授予对 VM 的写权限的角色（例如，“虚拟机参与者”角色）。
+1. 无论是在本地登录到 Azure 还是通过 Azure 门户登录，请使用与包含 VM 的 Azure 订阅关联的帐户。
  
 2. 将模板加载到[编辑器](#azure-resource-manager-templates)并添加以下信息，向 VM 授予对创建它的资源组的“读者”访问权限。  模板结构可能会有所不同，具体取决于所选的编辑器和部署模型。
    
@@ -149,9 +153,9 @@ ms.locfileid: "39114873"
 
 如果 VM 不再需要托管服务标识，请执行以下操作：
 
-1. 无论是在本地登录到 Azure 还是通过 Azure 门户登录，请使用与包含 VM 的 Azure 订阅关联的帐户。 还需要确保该帐户属于可授予对 VM 的写权限的角色（例如，“虚拟机参与者”角色）。
+1. 无论是在本地登录到 Azure 还是通过 Azure 门户登录，请使用与包含 VM 的 Azure 订阅关联的帐户。
 
-2. 将模板加载到[编辑器](#azure-resource-manager-templates)，并在 `resources` 部分找到相关的 `Microsoft.Compute/virtualMachines` 资源。 如果 VM 仅让系统分配标识，则可以将标识类型更改为 `None` 来禁用它。  如果 VM 有系统和用户分配的标识，请从标识类型删除 `SystemAssigned` 并保留 `UserAssigned` 和用户分配的标识的 `identityIds` 数组。  以下示例演示如何从没有用户分配的标识的 VM 删除系统分配的标识：
+2. 将模板加载到[编辑器](#azure-resource-manager-templates)，并在 `resources` 部分找到相关的 `Microsoft.Compute/virtualMachines` 资源。 如果 VM 只有系统分配标识，则可以将标识类型更改为 `None` 来禁用它。  如果 VM 有系统和用户分配的标识，请从标识类型删除 `SystemAssigned` 并保留 `UserAssigned` 和用户分配的标识的 `identityIds` 数组。  以下示例演示如何从没有用户分配的标识的 VM 删除系统分配的标识：
    
    ```JSON
     {
@@ -218,8 +222,30 @@ ms.locfileid: "39114873"
 
       ![用户分配标识的屏幕截图](./media/qs-configure-template-windows-vm/qs-configure-template-windows-vm-ua-final.PNG)
 
+### <a name="remove-user-assigned-identity-from-an-azure-vm"></a>从 Azure VM 中删除用户分配标识
+
+如果 VM 不再需要托管服务标识，请执行以下操作：
+
+1. 无论是在本地登录到 Azure 还是通过 Azure 门户登录，请使用与包含 VM 的 Azure 订阅关联的帐户。
+
+2. 将模板加载到[编辑器](#azure-resource-manager-templates)，并在 `resources` 部分找到相关的 `Microsoft.Compute/virtualMachines` 资源。 如果 VM 只有用户分配标识，则可以将标识类型更改为 `None` 来禁用它。  如果 VM 同时具有系统分配标识和用户分配标识，并且你希望保留系统分配标识，请从标识类型中删除 `UserAssigned` 以及用户分配标识的 `identityIds` 数组。
+    
+   若要从 VM 中删除单个用户分配标识，请将其从 `identityIds` 数组中删除。
+   
+   以下示例演示如何从没有系统分配标识的 VM 中删除所有用户分配标识：
+   
+   ```JSON
+    {
+      "apiVersion": "2017-12-01",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('vmName')]",
+      "location": "[resourceGroup().location]",
+      "identity": { 
+          "type": "None"
+    }
+   ```
 
 ## <a name="related-content"></a>相关内容
 
-- 若要更广泛地了解 MSI，请阅读[托管服务标识概述](overview.md)。
+- 若要更广泛地了解托管服务标识，请阅读[托管服务标识概述](overview.md)。
 

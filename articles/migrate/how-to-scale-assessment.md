@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: d7814b976529bf7032edd54e4afd574ce766e5dd
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 4bcb6734c33d70e4045860a2c0f0acfedfa06eff
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919856"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215173"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>发现和评估大型 VMware 环境
 
@@ -36,7 +36,7 @@ Azure Migrate 需要访问 VMware 服务器才能自动发现用于评估的 VM�
 
 如果要在租户环境中进行部署，以下是对此进行设置的一种方法：
 
-1.  每个租户创建一个用户和使用 [RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)，分配对属于特定租户的所有 VM 的只读权限。 然后，使用这些凭据进行发现。 RBAC 确保相应的 vCenter 用户将仅具有特定于租户的 VM 的访问权限。
+1.  每个租户创建一个用户并使用 [RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)，分配对属于特定租户的所有 VM 的只读权限。 然后，使用这些凭据进行发现。 RBAC 确保相应的 vCenter 用户将仅具有特定于租户的 VM 的访问权限。
 2. 将为不同的租户用户设置 RBAC，如以下示例中所述的 User#1 和 User#2：
 
     - 在“用户名称”和“密码”中，指定收集器用来在其中发现 VM 的只读帐户凭据

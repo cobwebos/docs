@@ -71,6 +71,8 @@
           href: create-ssl-portal.md
         - name: 使用 Azure PowerShell 的 SSL 终止
           href: tutorial-ssl-powershell.md
+        - name: 使用 Azure PowerShell 进行端到端 SSL 终止
+          href: application-gateway-end-to-end-ssl-powershell.md
         - name: 续订证书
           href: renew-certificates.md
         - name: 配置 SSL 策略
@@ -171,5 +173,5 @@
       href: 'https://azure.microsoft.com/regions/services/'
     - name: 堆栈溢出
       href: 'http://stackoverflow.com/questions/tagged/azure-application-gateway'
-    - name: 常见问题
+    - name: 常见问题解答
       href: application-gateway-faq.md

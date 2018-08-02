@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.service: active-directory
 ms.component: msi
 manager: mtillman
-ms.openlocfilehash: 462ec359b8c29488a913d036a14b21b28ba27cdc
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f63832723a2c33b88d0e5fc9c6a38a0cad63fa38
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005208"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259171"
 ---
 # <a name="services-that-support-managed-service-identity"></a>支持托管服务标识的服务 
 
-托管服务标识为 Azure 服务提供了 Azure Active Directory 中的自动托管标识。 使用托管标识，可对支持 Azure AD 身份验证的任何服务进行身份验证，而无需在代码中插入凭据。 我们正在跨 Azure 将 MSI 与 Azure AD 身份验证相集成。 请经常再回来看看，确定这部分内容是否有更新。
+托管服务标识为 Azure 服务提供了 Azure Active Directory 中的自动托管标识。 使用托管标识，可对支持 Azure AD 身份验证的任何服务进行身份验证，而无需在代码中插入凭据。 我们正在跨 Azure 将托管服务标识与 Azure AD 身份验证相集成。 请经常再回来看看，确定这部分内容是否有更新。
 
 ## <a name="azure-services-that-support-managed-service-identity"></a>支持托管服务标识的 Azure 服务
 

@@ -9,15 +9,15 @@ ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 06/28/2018
+ms.date: 07/25/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4df60668f6b9aa0afb2203fa59788c47e2ffaefb
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 563958458979d0a0a28046ce35d21bd58be631ce
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110883"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259290"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>排除 Azure Active Directory 无缝单一登录故障
 
@@ -28,12 +28,12 @@ ms.locfileid: "37110883"
 - 在一些情况下，启用无缝 SSO 最多可能需要 30 分钟。
 - 如果对租户禁用并重新启用无缝 SSO，则用户在其缓存的 Kerberos 票证（通常 10 小时有效）过期前，将不会获得单一登录体验。
 - 不支持 Microsoft Edge 浏览器。
-- 如果无缝 SSO 成功，用户将没有机会选择“使我保持登录状态”。 由于此行为，SharePoint 和 OneDrive 映射方案将无法正常工作。
-- 16.0.8730.xxxx 版以下的 Office 客户端不支持使用无缝 SSO 进行非交互式登录。 在这些客户端中，用户必须输入自己的用户名，但无需输入密码即可登录。
+- 如果无缝 SSO 成功，用户将没有机会选择“使我保持登录状态”。 由于此行为，[SharePoint 和 OneDrive 映射方案](https://support.microsoft.com/help/2616712/how-to-configure-and-to-troubleshoot-mapped-network-drives-that-connec)无法正常工作。
+- 使用非交互式流支持版本为 16.0.8730.xxxx 及更高版本的 Office 365 Win32 客户端（Outlook、Word、Excel 等）。 不支持其他版本；在这些版本中，用户需输入用户名而不是密码登录。 对于 OneDrive，必须激活 [OneDrive 无提示配置功能](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894)才能获得无提示登录体验。
 - 无缝 SSO 在 Firefox 的隐私浏览模式下不起作用。
 - 开启增强保护模式时，无缝 SSO 在 Internet Explorer 中不起作用。
 - 无缝 SSO 在 iOS 和 Android 的移动浏览器上不起作用。
-- 如果某个用户属于 Active Directory 中过多的组，则该用户的 Kerberos 票证可能会太大而无法处理，这会导致无缝 SSO 失败。 Azure AD HTTPS 请求可以具有最大大小为 16 KB 的标头；Kerberos 票证需要远小于该数字，才能容纳其他 Azure AD 项目（比如 cookie）。 我们的建议是减少用户的组成员身份，然后重试。
+- 如果某个用户属于 Active Directory 中过多的组，则该用户的 Kerberos 票证可能会太大而无法处理，这会导致无缝 SSO 失败。 Azure AD HTTPS 请求可以具有最大大小为 50 KB 的标头；Kerberos 票证需要远小于该限制，才能容纳其他 Azure AD 项目（通常 2 - 5 KB），比如 cookie。 我们的建议是减少用户的组成员身份，然后重试。
 - 如果你要同步 30 个或更多的 Active Directory 林，则不能通过 Azure AD Connect 启用无缝 SSO。 作为一种解决方法，可以在租户中[手动启用](#manual-reset-of-azure-ad-seamless-sso)该功能。
 - 将 Azure AD 服务 URL (https://autologon.microsoftazuread-sso.com) 添加到“受信任的站点”区域，而非会阻止用户登录的“本地 Intranet”区域。
 - 禁止在 Active Directory 设置中使用 Kerberos 的 RC4_HMAC_MD5 加密类型，因为这将中断无缝 SSO。 在“组策略管理编辑器”工具中，确保“计算机配置”->“Windows 设置”->“安全设置”->“本地策略”->“安全选项”->“网络安全：配置 Kerberos 允许的加密类型”下的 RC4_HMAC_MD5 的策略值的状态为“已启用”。
@@ -81,7 +81,7 @@ ms.locfileid: "37110883"
 - 确保用户的帐户来自已设置了无缝 SSO 的 Active Directory 林。
 - 确保已在企业网络中连接该设备。
 - 确保设备的时间与 Active Directory 和各域控制器的时间同步，并且彼此偏差不超过 5 分钟。
-- 确保 `AZUREADSSOACCT` 计算机帐户在要启用无缝 SSO 的每个 AD 林中存在并已启用。 
+- 确保 `AZUREADSSOACCT` 计算机帐户在要启用无缝 SSO 的每个 AD 林中存在并已启用。 如果计算机帐户已被删除或丢失，可使用 [PowerShell cmdlets](#manual-reset-of-the-feature) 重新创建。
 - 使用命令提示符中的 `klist` 命令列出设备上的现有 Kerberos 票证。 确保存在针对 `AZUREADSSOACCT` 计算机帐户颁发的票证。 通常情况下，用户的 Kerberos 票证的有效期为 10 小时。 你可能在 Active Directory 中有不同的设置。
 - 如果对租户禁用并重新启用无缝 SSO，则用户在其缓存的 Kerberos 票证过期前，将不会获得单一登录体验。
 - 使用 `klist purge` 命令从设备中清除现有的 Kerberos 票证，然后重试。
@@ -119,12 +119,20 @@ ms.locfileid: "37110883"
 ### <a name="step-3-disable-seamless-sso-for-each-active-directory-forest-where-youve-set-up-the-feature"></a>步骤 3：禁用在其中设置了该功能的每个 Active Directory 林的无缝 SSO
 
 1. 调用 `$creds = Get-Credential`。 出现提示时，输入目标 Active Directory 林的域管理员凭据。
+
+>[!NOTE]
+>我们使用以用户主体名称 (UPN) (johndoe@contoso.com) 格式或域限定的 SAM 帐户名（contoso\johndoe 或 contoso.com\johndoe）格式提供的域管理员用户名查找目标 AD 林。 如果你使用域限定的 SAM 帐户名，则我们使用用户名的域部分[使用 DNS 查找域管理员的域控制器](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx)。 如果你使用的是 UPN，则我们在查找合适的域控制器前会[将它转换为域限定的 SAM 帐户名](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa)。
+
 2. 调用 `Disable-AzureADSSOForest -OnPremCredentials $creds`。 此命令将从本地域控制器删除此特定 Active Directory 林的 `AZUREADSSOACCT` 计算机帐户。
 3. 为在其中设置了该功能的每个 Active Directory 林重复上述步骤。
 
 ### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>步骤 4：为每个 Active Directory 林启用无缝 SSO
 
 1. 调用 `Enable-AzureADSSOForest`。 出现提示时，输入目标 Active Directory 林的域管理员凭据。
+
+>[!NOTE]
+>我们使用以用户主体名称 (UPN) (johndoe@contoso.com) 格式或域限定的 SAM 帐户名（contoso\johndoe 或 contoso.com\johndoe）格式提供的域管理员用户名查找目标 AD 林。 如果你使用域限定的 SAM 帐户名，则我们使用用户名的域部分[使用 DNS 查找域管理员的域控制器](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx)。 如果你使用的是 UPN，则我们在查找合适的域控制器前会[将它转换为域限定的 SAM 帐户名](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa)。
+
 2. 为你要在其中设置该功能的每个 Active Directory 林重复上述步骤。
 
 ### <a name="step-5-enable-the-feature-on-your-tenant"></a>步骤 5。 在租户上启用此功能

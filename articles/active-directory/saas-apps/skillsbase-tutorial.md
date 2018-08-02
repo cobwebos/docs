@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 07/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 84aac0017496c50f0006fd6e184537e4c14f10c7
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e11ba8ca9c4ad17b2ade909bb474ad2d1fcf4410
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39057609"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205368"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>教程：Azure Active Directory 与 Skills Base 集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "39057609"
     在“登录 URL”文本框中，使用以下模式键入 URL： `https://app.skills-base.com/o/<customer-unique-key>`
 
     > [!NOTE] 
-    > 登录 URL 值不是实际值。 请使用实际登录 URL 更新此值。 若要获取此值，请与 [Skills Base 客户端支持团队](mailto:support@skills-base.com)联系。
+    > 可以从 Skills Base 应用程序获取登录 URL。 请以管理员身份登录并转至“管理员”->“设置”->“实例详细信息”->“快捷方式链接”。 复制登录 URL 并将其粘贴到上面的文本框中。
 
 4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
@@ -134,14 +134,13 @@ ms.locfileid: "39057609"
 
     ![单人](./media/skillsbase-tutorial/tutorial_skillsbase_save.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“状态”选项旁边的“更新 IdP 元数据”按钮，并将从 Azure 门户下载的元数据 XML 的内容粘贴到指定的文本框中。
+    a. 单击“状态”选项旁边的“更新 IdP 元数据”按钮，并将从 Azure 门户下载的元数据 XML 的内容粘贴到指定的文本框中。
 
     > [!Note]
     > 还可以通过上面屏幕截图中突出显示的“元数据验证器”工具验证 idp 元数据。
 
     b. 单击“ **保存**”。
     
-
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
@@ -166,7 +165,7 @@ ms.locfileid: "39057609"
 
     ![“用户”对话框](./media/skillsbase-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -179,7 +178,7 @@ ms.locfileid: "39057609"
 本部分的目的是在 Skills Base 中创建名为 Britta Simon 的用户。 Skills Base 支持在默认情况下启用的实时预配。 此部分不存在任何操作项。 尝试访问 Skills Base 期间，如果该用户尚不存在，则将创建一个新用户。
 
 >[!Note]
->如果需要手动创建用户，请联系 [Skills Base 客户端支持团队](mailto:support@skills-base.com)。
+>如果需要手动创建用户，请按照[此处](http://wiki.skills-base.net/index.php?title=Adding_people_and_enabling_them_to_log_in)的说明进行操作。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
