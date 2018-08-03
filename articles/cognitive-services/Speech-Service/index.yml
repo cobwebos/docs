@@ -1,9 +1,15 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 0db6620c7433486babebe95090f3682582f1c212
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422155"
 documentType: LandingData
-title: 语音服务文档（预览版）
+title: 语音服务和 SDK 文档（预览版）
 metadata:
   title: 语音服务文档 - 教程、快速入门和 API 参考 - 认知服务 | Microsoft Docs
-  meta.description: The Speech Service provides developers an easy way to add powerful speech-enabled features to their applications, such as voice command control and dialog, natural speech conversation, speech transcription and dictation, and speech translation.
+  meta.description: "The Speech Service provides developers an easy way to add powerful speech-enabled features to their applications. \nExamples include&#58; voice command control & dialog, natural speech conversation, speech transcription & dictation, and speech translation.\n"
   services: cognitive-services
   author: noellelacharite
   manager: nolachar
@@ -15,19 +21,16 @@ metadata:
   ms.topic: landing-page
   ms.date: 07/16/2018
   ms.author: nolachar
-  ms.openlocfilehash: 2b82b50972c2c61c9dda5d1b1862c0c4cc8a9052
-  ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
-  ms.translationtype: HT
-  ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/17/2018
-  ms.locfileid: "39070104"
 abstract:
-  description: 使用 Microsoft 语音服务，开发人员可以轻松地向其应用程序添加支持语音的强大功能，包括使用 <a href="rest-apis">REST API</a> 或者 <a href="speech-sdk">C#、C++ 或 Java SDK</a> 进行的语音命令控制、听录、听写和翻译。<p>语音服务可以用来自定义<a href="how-to-customize-speech-models">语音转文本</a>模型，使之适应专用词汇、杂音环境和不同的说话方式。 也可使用自定义的<a href="https://cris.ai/Home/customvoice">文本转语音</a>和<a href="https://www.microsoft.com/translator/customization.aspx">语音翻译</a>。<p>有关更多详细信息，请参阅<a href="overview">什么是语音服务？</a>
+  description: >
+    通过我们的语音 SDK，<a href="overview">语音服务</a>可帮助开发人员向其应用中添加启用了语音的功能。<br/>
+
+    功能包括：<i>语音转文本</i>（语音识别/SR）、<i>意向</i>、<i>翻译</i>和<i>文本转语音</i> (TTS)。
 sections:
-- title: 10 分钟快速入门
+- title: 5 分钟 SDK 下载和快速入门
   items:
   - type: paragraph
-    text: 了解如何安装语音 SDK 及其入门方式：
+    text: 通过单击下面的所需箭头链接了解如何下载、安装和 <img src="media/index/link.jpg" height="15" width="15"></img> 使用。
   - type: table
     style: dataMatrix
     columns:
@@ -40,13 +43,13 @@ sections:
     - image:
         src: media/index/logo_netcore.svg
     - image:
-        src: media/index/logo_java.svg
+        src: media/index/logo_java.jpg
     - image:
         src: media/index/logo_rest_sr.svg
     - image:
         src: media/index/logo_rest_tts.svg
     rows:
-    - title: Windows
+    - title: Windows (x86/x64)
       values:
       - href: quickstart-csharp-uwp
       - href: quickstart-csharp-windows
@@ -55,14 +58,14 @@ sections:
       - href: 
       - href: 
       - href: 
-    - title: Linux
+    - title: Linux (x86/x64)
       values:
       - href: 
       - href: 
       - href: quickstart-cpp-linux
       - href: 
       - href: 
-    - title: Android SDK
+    - title: Android (ARM32/ARM64)
       values:
       - href: 
       - href: 
@@ -71,7 +74,7 @@ sections:
       - href: quickstart-java-android
       - href: 
       - href: 
-    - title: 设备 SDK
+    - title: 设备 SDK (ARM64)
       values:
       - href: 
       - href: 
@@ -89,17 +92,40 @@ sections:
       - href: 
       - href: rest-apis
       - href: rest-apis
-- title: 示例和参考
+- title: 语音 SDK 示例和参考
   items:
   - type: list
     style: cards
     className: cardsD
     items:
     - title: 示例
-      html: <ul><li><a href="speech-to-text-sample.md">语音识别</a></li><li><a href="intent.md">意向识别</a></li><li><a href="translation.md">翻译</a></li></ul>
+      html: >
+        &nbsp;&#8226; <a href="speech-to-text-sample.md">语音转文本 (SR)</a><br/>
+
+        &nbsp;&#8226; <a href="intent.md">意向识别</a><br/>
+
+        &nbsp;&#8226; <a href="translation.md">翻译</a>
     - title: API 参考
-      html: <ul><li><a href="https://aka.ms/csspeech/csharpref">C# API（包括 UWP 和 .NET Standard）</a></li><li><a href="https://aka.ms/csspeech/cppref">C + + API</a></li><li><a href="https://aka.ms/csspeech/javaref">Java API</a>，用于语音 SDK<br>和语音设备 SDK</li></ul>
-- title: 语音设备 SDK
+      html: >
+        &nbsp;&#8226;<a href="https://aka.ms/csspeech/csharpref">C# API（UWP 和 .NET）</a><br/>
+
+        &nbsp;&#8226; <a href="https://aka.ms/csspeech/cppref">C++ API</a><br/>
+
+        &nbsp;&#8226; <a href="https://aka.ms/csspeech/javaref">Java API</a>
+  - type: paragraph
+    text: 将上面的示例和 API 与订阅密钥配合使用（请参阅<a href="get-started.md">免费试用语音服务</a>）。
+- title: 使用自己的数据自定义语音
   items:
   - type: paragraph
-    text: 随着统一的语音服务的推出，Microsoft 及其合作伙伴现在提供一个针对开发支持语音的设备进行了优化的集成硬件/软件平台：<a href='https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk'>语音设备 SDK</a>。 此 SDK 适合为所有类型的应用程序开发环境设备，可以用来定义品牌所特有的自定义唤醒词<I></I>。 硬件通过多声道音频源提供高级音频处理（包括噪声抑制、远场语音和波束赋形），以提高语音识别的准确性。
+    text: >
+      我们的语音服务还可以用来自定义模型，使之适应专用词汇、杂音环境和不同的说话方式。<br/>
+
+      &nbsp;&#8226; <a href="how-to-customize-speech-models">自定义语音转文本</a><br/>
+
+      &nbsp;&#8226; <a href="https://www.microsoft.com/translator/customization.aspx">自定义语音翻译</a><br/>
+
+      &nbsp;&#8226; <a href="https://cris.ai/Home/customvoice">自定义文本转语音</a>
+- title: 支持语音的 HW 参考设计
+  items:
+  - type: paragraph
+    text: 对于那些希望构建支持语音的新设备 HW 的人员，请参阅<a href='https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk'>语音设备 SDK</a> 中的参考设备。

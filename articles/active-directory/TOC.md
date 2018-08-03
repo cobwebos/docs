@@ -102,11 +102,13 @@
 ### [查看所有组](fundamentals/active-directory-groups-view-azure-portal.md)
 ### [添加对 SaaS 应用的组访问权限](users-groups-roles/groups-saasapps.md)
 ### [还原已删除的 Office 365 组](fundamentals/active-directory-groups-restore-azure-portal.md)
-### [管理组设置](fundamentals/active-directory-groups-settings-azure-portal.md) 
-### 创建高级规则
-#### [Azure 门户](users-groups-roles/groups-dynamic-membership.md)
+### [管理组设置](fundamentals/active-directory-groups-settings-azure-portal.md)
 ### [设置自助服务组](users-groups-roles/groups-self-service-management.md)
-### [故障排除](users-groups-roles/groups-troubleshooting.md)
+### 动态组
+#### [创建动态组](users-groups-roles/groups-create-rule.md)
+#### [规则语法和属性](users-groups-roles/groups-dynamic-membership.md)
+#### [更改组成员身份类型](users-groups-roles/groups-change-type.md)
+#### [故障排除](users-groups-roles/groups-troubleshooting.md)
 
 ## [管理报表](active-directory-reporting-azure-portal.md)
 ### [登录活动](active-directory-reporting-activity-sign-ins.md)

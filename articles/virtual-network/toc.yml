@@ -31,7 +31,7 @@
       href: powershell-samples.md
     - name: 资源管理器模板
       href: template-samples.md
-    - name: Azure 策略模板
+    - name: Azure Policy 模板
       href: policy-samples.md
 - name: 概念
   items:
@@ -211,6 +211,8 @@
           href: virtual-network-troubleshoot-connectivity-problem-between-vms.md
         - name: 为 SMTP 标题检查配置 PTR
           href: create-ptr-for-smtp-service.md
+        - name: 虚拟设备的故障排除清单
+          href: virtual-network-troubleshoot-nva.md
     - name: 经典
       items:
         - name: 创建和管理虚拟网络

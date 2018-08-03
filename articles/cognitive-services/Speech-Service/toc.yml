@@ -1,13 +1,13 @@
 # displayName: additional text for filtering down the ToC in meaningful way.
-- name: 语音服务 API 文档
+- name: 语音服务和 SDK 文档
   href: index.yml
 - name: 概述
   items:
     - name: 语音方案
       href: speech-scenarios.md
-    - name: 什么是语音服务？
-      href: overview.md
       expanded: true
+    - name: 语音服务
+      href: overview.md
     - name: 语音 SDK
       href: speech-sdk.md
       displayName: 'C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows, NuGet, Maven, download, install, sample'

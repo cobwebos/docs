@@ -36,6 +36,9 @@
 #### [任务 1：获取安全 LDAP 的证书](active-directory-ds-admin-guide-configure-secure-ldap.md)
 #### [任务 2：导出安全 LDAP 证书](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)
 #### [任务 3：使用 Azure 门户为托管域启用安全 LDAP](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
+#### [任务 4：配置 DNS 以便从 Internet 访问托管域](active-directory-ds-ldaps-configure-dns.md)
+#### [任务 5：绑定到托管域和锁定安全 LDAP 访问](active-directory-ds-ldaps-bind-lockdown.md)
+#### [排查安全 LDAP 问题](active-directory-ds-ldaps-troubleshoot.md)
 
 ### [在托管域上创建 OU](active-directory-ds-admin-guide-create-ou.md)
 ### [在托管域上创建组托管服务帐户](active-directory-ds-create-gmsa.md)

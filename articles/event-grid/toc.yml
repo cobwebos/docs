@@ -47,8 +47,34 @@
   items:
     - name: Azure CLI
       href: cli-samples.md
+      items:
+        - name: 创建自定义主题
+          href: scripts/event-grid-cli-create-custom-topic.md
+        - name: 订阅 Azure 订阅
+          href: scripts/event-grid-cli-azure-subscription.md
+        - name: 订阅 Blob 存储
+          href: scripts/event-grid-cli-blob.md
+        - name: 订阅自定义主题
+          href: scripts/event-grid-cli-subscribe-custom-topic.md
+        - name: 订阅资源组
+          href: scripts/event-grid-cli-resource-group.md
+        - name: 订阅和筛选资源组事件
+          href: scripts/event-grid-cli-resource-group-filter.md
     - name: Azure PowerShell
       href: powershell-samples.md
+      items:
+        - name: 创建自定义主题
+          href: scripts/event-grid-powershell-create-custom-topic.md
+        - name: 订阅 Azure 订阅
+          href: scripts/event-grid-powershell-azure-subscription.md
+        - name: 订阅 Blob 存储
+          href: scripts/event-grid-powershell-blob.md
+        - name: 订阅自定义主题
+          href: scripts/event-grid-powershell-subscribe-custom-topic.md
+        - name: 订阅资源组
+          href: scripts/event-grid-powershell-resource-group.md
+        - name: 订阅和筛选资源组事件
+          href: scripts/event-grid-powershell-resource-group-filter.md
     - name: 资源管理器模板
       href: template-samples.md
     - name: 代码示例
@@ -71,7 +97,7 @@
       href: post-to-custom-topic.md
     - name: 在 HTTP 终结点接收事件
       href: receive-events.md
-    - name: 管理事件传送
+    - name: 死信与重试
       href: manage-event-delivery.md
     - name: 监视事件传送
       href: monitor-event-delivery.md

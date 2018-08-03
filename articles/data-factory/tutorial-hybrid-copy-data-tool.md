@@ -164,7 +164,7 @@ ms.locfileid: "37053348"
 
    ![SQL Server 选择](./media/tutorial-hybrid-copy-data-tool/select-source-data-store.png)
 
-5. 在“新建链接服务(SQL Server)”下，在“名称”中输入 **SqlServerLinkedService**。 在“通过集成运行时连接”下选择“+新建”。 必须创建自承载的 Integration Runtime，将其下载到计算机，然后将其注册到数据工厂。 自承载的 Integration Runtime 时可在本地环境与云之间复制数据。
+5. 在“新建链接服务(SQL Server)”下，在“名称”\*\*中输入 **SqlServerLinkedService**。 在“通过集成运行时连接”下选择“+新建”。 必须创建自承载的 Integration Runtime，将其下载到计算机，然后将其注册到数据工厂。 自承载的 Integration Runtime 时可在本地环境与云之间复制数据。
 
    ![创建自承载的 Integration Runtime](./media/tutorial-hybrid-copy-data-tool/create-integration-runtime-link.png)
 
@@ -222,7 +222,7 @@ ms.locfileid: "37053348"
 
 16. 在“新建链接服务(Azure Blob 存储)”对话框中，执行以下步骤： 
 
-     a. 在“名称”下输入 **AzureStorageLinkedService**。
+     a. 在“名称”\*\*下输入 **AzureStorageLinkedService**。
 
      b. 在“通过集成运行时连接”下，选择 **TutorialIntegrationRuntime**
 
