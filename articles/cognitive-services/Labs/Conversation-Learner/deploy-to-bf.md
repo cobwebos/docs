@@ -10,22 +10,22 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 77cc998227d996a6e52b1b5629204da5dc735ede
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: bb977df92cf0ada1e50a929a9ea714313a70165a
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366254"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171470"
 ---
 # <a name="how-to-deploy-a-conversation-learner-bot"></a>如何部署对话学习器机器人
 
 本文介绍如何在本地或 Azure 中部署对话学习器机器人。
 
-## <a name="prerequisite-determine-the-application-id"></a>先决条件：确定应用程序 ID 
+## <a name="prerequisite-determine-the-model-id"></a>先决条件：确定模型 ID 
 
-若要在对话学习器 UI 之外运行机器人，则必须设置机器人要使用的对话学习器应用程序 ID，即对话学习器云中机器学习模型的 ID。  （与此不同的是，通过对话学习器 UI 运行机器人时，由 UI 选择应用程序 ID。）  
+若要在对话学习器 UI 之外运行机器人，则必须设置机器人要使用的对话学习器模型 ID，即对话学习器云中机器学习模型的 ID。  （与此不同的是，通过对话学习器 UI 运行机器人时，由 UI 选择模型 ID。）  
 
-以下是获取应用程序 ID 的方法：
+以下是获取模型 ID 的方法：
 
 1. 启动机器人和对话学习器 UI。  有关完整说明，请参阅快速入门指南；概括而言：
 
@@ -47,11 +47,11 @@ ms.locfileid: "35366254"
 
 2. 打开浏览器，转到 http://localhost:5050 
 
-3. 单击要为之获取 ID 的对话学习器应用程序
+3. 单击要为之获取 ID 的对话学习器模型
 
 4. 单击左侧导航栏中的“设置”。
 
-5. “应用 ID”GUID 显示在页面顶部附近。
+5. “模型 ID”GUID 显示在页面顶部附近。
 
 ## <a name="option-1-deploying-a-conversation-learner-bot-to-run-locally"></a>选项1：部署要在本地运行的对话学习器机器人
 
@@ -62,7 +62,7 @@ ms.locfileid: "35366254"
 在本地运行机器人时，将应用程序 ID 添加到机器人的 `.env` 文件中：
 
     ```
-    CONVERSATION_LEARNER_APP_ID=<YOUR_APP_ID>
+    CONVERSATION_LEARNER_MODEL_ID=<YOUR_MODEL_ID>
     ```
 
 然后启动机器人：
@@ -94,7 +94,7 @@ ms.locfileid: "35366254"
 
 采用与发布其他机器人类似的方式发布对话学习器机器人。 在较高级别，将代码上传到托管网站，设置相应配置值，然后使用各种渠道注册机器人。 本视频详细介绍了如何使用 Azure 机器人服务发布机器人。
 
-部署机器人并开始运行后，即可使用 Azure 机器人渠道注册将机器人连接到不同渠道，如 Facebook、Teams、Skype 等。 有关该过程，请参阅文档：https://docs.microsoft.com/en-us/bot-framework/bot-service-quickstart-registration
+部署机器人并开始运行后，即可使用 Azure 机器人渠道注册将机器人连接到不同渠道，如 Facebook、Teams、Skype 等。 有关该过程，请参阅文档： https://docs.microsoft.com/en-us/bot-framework/bot-service-quickstart-registration
 
 以下是将对话学习器机器人部署到 Azure 的分步说明。  这些说明假定可从基于云的源（如 VSTS、GitHub、BitBucket 或 OneDrive）获得机器人源，并配置机器人以实现持续部署。
 
@@ -116,8 +116,8 @@ ms.locfileid: "35366254"
         环境变量 | 值
         --- | --- 
         CONVERSATION_LEARNER_SERVICE_URI | "https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/"
-        CONVERSATION_LEARNER_APP_ID      | 应用程序 ID GUID，通过应用“设置”下的对话学习器 UI 获取
-        LUIS_AUTHORING_KEY               | 此应用的 LUIS 创作密钥
+        CONVERSATION_LEARNER_MODEL_ID      | 应用程序 ID GUID，通过模型“设置”下的对话学习器 UI 获取
+        LUIS_AUTHORING_KEY               | 此模型的 LUIS 创作密钥
     
     4. 单击页面顶部附近的“保存”
     5. 打开左侧的“生成”导航项

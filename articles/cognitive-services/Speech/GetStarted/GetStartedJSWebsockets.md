@@ -9,12 +9,12 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: zhouwang
-ms.openlocfilehash: 56c41fd7f6a00d80bc6bccd61894654e057e926e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 04332c453d22122e65a758a65b09e17300e07f02
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365663"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39040532"
 ---
 # <a name="get-started-with-the-speech-recognition-api-in-javascript"></a>开始使用 JavaScript 中的语音识别 API
 
@@ -24,7 +24,7 @@ ms.locfileid: "35365663"
 
 ### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>订阅语音识别 API，并获得免费试用的订阅密钥
 
-语音 API 是认知服务的一部分。 可以从[认知服务订阅](https://azure.microsoft.com/try/cognitive-services/)页面获取免费试用的订阅密钥。 选择语音 API 后，选择“获取 API 密钥”以获取密钥。 它将返回主密钥和辅助密钥。 两个密钥都绑定到相同的配额，因此可以使用任一密钥。
+语音 API 是认知服务的一部分。 可以从[认知服务订阅](https://azure.microsoft.com/try/cognitive-services/)页面获取免费试用的订阅密钥。 选择语音 API 后，选择“获取 API 密钥”以获取密钥。 它将返回主密钥和辅助密钥。 两个密钥都绑定到相同的配额，因此你可以使用任一密钥。
 
 > [!IMPORTANT]
 > 获取订阅密钥。 必须拥有[订阅密钥](https://azure.microsoft.com/try/cognitive-services/)才能使用语音客户端库。
@@ -48,7 +48,7 @@ ms.locfileid: "35365663"
 git clone https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript
 ```
 
-编译 TypeScript 源并将其捆绑/browserfy 到单个 JavaScript 文件（需要在计算机上安装 [npm](https://www.npmjs.com/)）。 更改为克隆存储库的根目录，并运行命令：
+编译 TypeScript 源并将其捆绑到单个 JavaScript 文件（需要在计算机上安装 [npm](https://www.npmjs.com/)）。 更改为克隆存储库的根目录，并运行命令：
 
 ```
 cd SpeechToText-WebSockets-Javascript && npm run bundle

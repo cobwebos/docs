@@ -1,21 +1,20 @@
 ---
-title: 什么是语音服务（预览）？ | Microsoft Docs
+title: 什么是语音服务（预览）？
 description: 语音服务属于 Microsoft 认知服务，其中合并了多个以前单独提供的 Azure 语音服务：必应语音（包括语音识别和文本转语音）、自定义语音和语音翻译。
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: adfc854fc24b9e285c405f3038a21ec84cd2f4c2
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: fc6ef4ccbe6e392b991bd375afcc63a54f58db02
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989329"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285453"
 ---
 # <a name="what-is-the-speech-service-preview"></a>什么是语音服务（预览）？
 
@@ -28,7 +27,7 @@ ms.locfileid: "38989329"
 
 |函数|Description|
 |-|-|
-|语音转文本|将连续的人类语音转换为可用作应用程序输入的文本。 可与[语言理解服务](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) 集成，用于从语句派生用户意向。|
+|语音转文本|将连续的人类语音转换为可用作应用程序输入的文本。 可与[语言理解服务](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) 集成，用于从陈述派生用户意向。|
 |文本到语音转换|将文本转换为发音自然的合成语音音频文件。|
 |语音&nbsp;翻译|支持将语音翻译成其他语言，输出为文本或语音。|
 
@@ -48,7 +47,7 @@ ms.locfileid: "38989329"
 语音转文本已针对交互式对话和听写场景经过单独优化。 以下是语音转文本 API 的常见用例。 
 
 * 识别简短语句（例如一条命令），不提供中间结果
-* 听录以前录制的一段较长语句，如语音信箱消息
+* 听录以前录制的一段较长陈述，如语音信箱消息
 * 实时听录流式处理语音以进行听写，提供部分结果
 * 根据所说的自然语言请求确定用户希望执行的操作
 

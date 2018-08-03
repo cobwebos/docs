@@ -1,21 +1,20 @@
 ---
-title: 语音 SDK 参考 | Microsoft Docs
+title: 语音 SDK 参考
 description: 适用于语音 SDK 的参考资料。
 services: cognitive-services
 titleSuffix: Microsoft Cognitive Services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 9ee7cc2db7ad6e2914d3916ad1aa578a9746e287
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 8b66156f147e9806ad648c95d65aee6912f29494
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072225"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282786"
 ---
 # <a name="speech-sdk-reference"></a>语音 SDK 参考
 
