@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 5a90f298e80ec4ca1b17e2d3aa4079aebcd38a83
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 06350decd9d9f15db7226b6f2c3580feb49a59d1
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366674"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069568"
 ---
 # <a name="supported-languages-for-speech-service"></a>语音服务支持的语言
 
@@ -25,13 +25,18 @@ ms.locfileid: "35366674"
 
 Microsoft 语音识别 API 支持以下语言。 
 
-| 代码 | 语言 | 代码 | 语言 |
-|-----|-----|-----|-----|
-| ar-EG | 阿拉伯语(埃及)，现代标准 | it-IT | 意大利语(意大利) |
-| de-DE | 德语(德国) | ja-JP | 日语(日本) |
-| en-US | 英语(美国) | pt-BR | 葡萄牙语(巴西) |
-| es-ES | 西班牙语(西班牙) | ru-RU | 俄语(俄罗斯) |
-| fr-FR | 法语(法国) | zh-CN | 中文(普通话，简体) |
+  代码 | 语言 | 声学适应 | 语言适应 | 发音适应
+ ------|----------|---------------------|---------------------|-------------------------
+ ar-EG | 阿拉伯语(埃及)，现代标准 | 否 | 是 | 否
+ it-IT | 意大利语(意大利) | 否 | 是 | 否 
+ de-DE | 德语(德国) | 否 | 是 | 是
+ ja-JP | 日语(日本) | 否 | 是 | 否
+ en-US | 英语(美国) | 是 | 是 | 是
+ pt-BR | 葡萄牙语(巴西) | 否 | 是 | 否
+ es-ES | 西班牙语(西班牙) | 否 | 是 | 否
+ ru-RU | 俄语(俄罗斯) | 否 | 是 | 否
+ fr-FR | 法语(法国) | 否 | 是 | 否
+ zh-CN | 中文(普通话，简体) | 否 | 是 | 否
 
 ## <a name="text-to-speech"></a>文本到语音转换
 
@@ -218,4 +223,4 @@ zh-TW | 中文(中国台湾)|女 | “Microsoft 服务器语音的文本转语�
 ## <a name="next-steps"></a>后续步骤
 
 * [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)
-* [了解如何在 C# 中识别语音](quickstart-csharp-windows.md)
+* [了解如何在 C# 中识别语音](quickstart-csharp-dotnet-windows.md)

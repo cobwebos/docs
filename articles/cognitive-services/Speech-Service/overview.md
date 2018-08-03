@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: e7c09eee1634c52e78a523a7cc65641ea99f23e6
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: adfc854fc24b9e285c405f3038a21ec84cd2f4c2
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35366970"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989329"
 ---
 # <a name="what-is-the-speech-service-preview"></a>什么是语音服务（预览）？
 
@@ -26,9 +26,9 @@ ms.locfileid: "35366970"
 
 借助一个订阅，开发人员即可利用一体化语音服务轻松为应用程序增加强大的语音支持功能。 应用现可支持语音命令、听录、听写、语音合成和翻译。
 
-|函数|说明|
+|函数|Description|
 |-|-|
-|语音转文本|将连续的人类语音转换为可用作应用程序输入的文本。 可与[语言理解服务](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) 集成，用于从陈述派生用户意向。|
+|语音转文本|将连续的人类语音转换为可用作应用程序输入的文本。 可与[语言理解服务](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) 集成，用于从语句派生用户意向。|
 |文本到语音转换|将文本转换为发音自然的合成语音音频文件。|
 |语音&nbsp;翻译|支持将语音翻译成其他语言，输出为文本或语音。|
 
@@ -36,7 +36,7 @@ ms.locfileid: "35366970"
 
 可通过两种方式使用语音服务。 [SDK](speech-sdk.md) 可提取网络协议的详细信息。 [REST API](rest-apis.md) 适用于任何编程语言，但不提供 SDK 提供的所有功能。
 
-|<br>方法|语音<br>转文本|文本转<br>语音|语音<br>翻译|<br>说明|
+|<br>方法|语音<br>转文本|文本转<br>语音|语音<br>翻译|<br>Description|
 |-|-|-|-|-|
 |[SDK](speech-sdk.md)|是|否|是|特定编程语言的库，可简化开发。|
 |[REST](rest-apis.md)|是|是|否|一个基于 HTTP 的简单 API，可用于轻松将语音添加到应用程序。|
@@ -47,8 +47,8 @@ ms.locfileid: "35366970"
 
 语音转文本已针对交互式对话和听写场景经过单独优化。 以下是语音转文本 API 的常见用例。 
 
-* 识别简要陈述，例如命令，但不提供中间结果
-* 听录以前录制的一段较长陈述，如语音信箱消息
+* 识别简短语句（例如一条命令），不提供中间结果
+* 听录以前录制的一段较长语句，如语音信箱消息
 * 实时听录流式处理语音以进行听写，提供部分结果
 * 根据所说的自然语言请求确定用户希望执行的操作
 
@@ -60,7 +60,7 @@ ms.locfileid: "35366970"
 
 [文本转语音](text-to-speech.md) (TTS)（或语音合成）API 可将纯文本转换为发音自然的语音，将音频文件发送到应用程序。 我们为多种支持语言提供了多种语音（不同性别或口音）。
 
-该 API 支持语音合成标记语言 (SSML) 标记，因此，可为令人烦恼的字词指定确切的语音发音。 SSML 还可以直接在文本中指示语音特征（包括强调、速度、音量、性别和音高）。
+该 API 支持[语音合成标记语言 (SSML)](speech-synthesis-markup.md) 标记，因此可为难读的字词指定确切的语音发音。 SSML 还可以直接在文本中指示语音特征（包括强调、速度、音量、性别和音高）。
 
 以下是文本转语音 API 的常见用例。
 
@@ -68,7 +68,7 @@ ms.locfileid: "35366970"
 * 用于车内应用程序（如导航）的语音提示
 * 与语音转文本 API 协作的对话用户界面
 
-文本转语音 API 支持自定义语音模型，适用于需要不受支持的方言或只需要适用于应用程序的唯一声音的情况。
+如果你需要不受支持的方言或者只需要应用程序的唯一语音，请使用文本转语音 API，它支持[自定义语音模型](how-to-customize-voice-font.md)。
 
 ## <a name="speech-translation"></a>语音翻译
 
@@ -84,6 +84,8 @@ ms.locfileid: "35366970"
 随着一体化语音服务的推出，Microsoft 及其合作伙伴为开发语音支持设备提供了优化的集成硬件/软件平台：[语音设备 SDK](speech-devices-sdk.md)。 此 SDK 适用于面向所有类型的应用程序开发智能语音设备。
 
 语音设备 SDK 支持使用自定义唤醒字词构建自己的环境设备，这样，触发音频捕获的提示词将为品牌特有。 它还通过多声道音频源提供高级音频处理（包括噪声抑制、远场语音和波束赋形），以提供语音识别的准确性。
+
+SDK 基于使用端口 443 的 Web 套接字。
 
 ## <a name="next-steps"></a>后续步骤
 

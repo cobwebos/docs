@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: anwestg
-ms.openlocfilehash: ce57e153dcab6a386150ebefe1ecb4a018514247
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 53766099f283f802482fe8e84144502d386b1d69
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130364"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440145"
 ---
 # <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>如何跨容错域在 Azure Stack 上重新分配 Azure 应用服务
 
 *适用于：Azure Stack 集成系统*
 
-利用 1802年更新中，Azure 堆栈现在支持工作负荷的分布跨容错域上，一种功能，以实现高可用性至关重要。
+1802 更新推出后，Azure Stack 现在支持跨容错域分配工作负荷，这对于高可用性而言是一项很重要的功能。
 
 >[!IMPORTANT]
->若要利用的容错域支持，必须到 1802年更新你的 Azure 堆栈集成系统。 本文档仅适用于 1802年更新前完成的应用程序服务资源提供程序部署。 如果你部署 Azure 堆栈上的 App Service，1802年更新已应用于 Azure 堆栈后，资源提供程序已分布在容错域。
+>必须将 Azure Stack 集成系统更新为 1802 才能利用容错域支持。 本文档仅适用于在 1802 更新之前已完成的应用服务资源提供程序部署。 如果在将 1802 更新应用到 Azure Stack 之后才部署 Azure Stack 上的应用服务，则资源提供程序已跨容错域分配。
 
 ## <a name="rebalance-an-app-service-resource-provider-across-fault-domains"></a>跨容错域重新均衡应用服务资源提供程序
 
-若要重新分发应用程序服务资源提供程序部署缩放集，必须为每个缩放集这篇文章中执行步骤。 默认情况下，scaleset 名称是：
+若要为应用服务资源提供程序重新分配部署的规模集，必须针对每个规模集执行本文中的步骤。 默认情况下，规模集名称为：
 
 * ManagementServersScaleSet
 * FrontEndsScaleSet
@@ -43,17 +43,17 @@ ms.locfileid: "37130364"
 * LargeWorkerTierScaleSet
 
 >[!NOTE]
-> 如果您没有在某些辅助层缩放集部署的实例，你不需要重新平衡这些缩放集。 以后在缩放规模集时，规模集将会正确均衡。
+> 如果某些辅助角色层规模集中未部署任何实例，则无需重新均衡这些规模集。 以后在缩放规模集时，规模集将会正确均衡。
 
-向外缩放集扩展，请执行以下步骤：
+若要扩大规模集，请执行以下步骤：
 
-1. 登录到 Azure 的堆栈管理员门户。
-2. 选择“更多服务”。
-3. 在计算、 下选择**虚拟机规模集**。 部署为应用服务部署一部分的现有规模集将连同实例计数信息一起列出。 以下屏幕截图显示缩放集的一个示例。
+1. 登录到 Azure Stack 管理员门户。
+1. 选择“更多服务”。
+1. 在“计算”下选择“虚拟机规模集”。 部署为应用服务部署一部分的现有规模集将连同实例计数信息一起列出。 以下屏幕截图显示了规模集的示例。
 
       ![列在虚拟机规模集 UX 中的 Azure 应用服务规模集][1]
 
-4. 横向扩展每个组。 例如，如果你有三个现有实例规模集中你必须向外扩展到 6 以便跨容错域部署的三个新实例。 下面的 PowerShell 示例出演示来向外缩放集扩展。
+1. 扩大每个集。 例如，如果规模集中有 3 个现有实例，则必须扩大为 6 个，以便跨容错域部署 3 个新实例。 以下 PowerShell 示例演示如何扩大规模集。
 
    ```powershell
    Add-AzureRmAccount -EnvironmentName AzureStackAdmin 
@@ -67,15 +67,15 @@ ms.locfileid: "37130364"
    ```
 
    >[!NOTE]
-   >此步骤可能需要几个小时才能完成，具体取决于角色的类型和实例数。
+   >根据角色类型和实例数目，此步骤可能需要几小时才能完成。
 
-5. 在**应用程序服务管理角色**，监视新的角色实例的状态。 若要检查角色实例的状态，在列表中选择的角色类型
+1. 在“应用服务管理角色”中监视新角色实例的状态。 若要检查角色实例的状态，请在列表中选择角色类型
 
     ![Azure Stack 上的 Azure 应用服务角色][2]
 
-6. 新的角色实例的状态时**准备**，回到**虚拟机规模集**和**删除**旧的角色实例。
+1. 当新角色实例的状态为“就绪”后，请回到“虚拟机规模集”，然后**删除**旧角色实例。
 
-7. 针对**每个**虚拟机规模集重复上述步骤。
+1. 针对**每个**虚拟机规模集重复上述步骤。
 
 ## <a name="next-steps"></a>后续步骤
 

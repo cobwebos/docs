@@ -9,17 +9,17 @@ ms.component: emotion-api
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: anroth
-ms.openlocfilehash: 2578b0212f9b4a6483402074d7c9eff73e51ca6b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: fb9cc2335582c4ec75ec45635e519346d65d7e08
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365734"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072086"
 ---
 # <a name="emotion-api-javascript-quick-start"></a>情感 API JavaScript 快速入门
 
 > [!IMPORTANT]
-> 视频 API 预览将于 2017 年 10 月 30 日结束。 请试用新的[视频索引器 API 预览](https://azure.microsoft.com/services/cognitive-services/video-indexer/)，通过检测口语、人脸、字符和情感，轻松从视频提取见解，增强内容发现体验，例如搜索结果。 [了解详细信息](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview)。
+> 视频 API 预览将于 2017 年 10 月 30 日结束。 请试用全新的[视频索引器 API（预览版）](https://azure.microsoft.com/services/cognitive-services/video-indexer/)。它可以检测口语、人脸、字符和情感，不仅便于从视频中轻松提取见解，还能增强内容发现体验（如搜索结果）。 [了解详细信息](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview)。
 
 本文提供了信息和代码示例，以帮助用户用 JavaScript 识别图像中一人或多人的情感，从而快速开始使用[情感 API 识别方法](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa)。
 
@@ -36,7 +36,7 @@ ms.locfileid: "35365734"
 
 ![API 订阅密钥](../Images/keys.png)
 
-并将请求正文更改为要使用的图像位置。 要运行示例，将文件拖放到浏览器中。
+将请求正文更改为要使用的图像的位置。 要运行示例，将文件拖放到浏览器中。
 
 ```html
 <!DOCTYPE html>

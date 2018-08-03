@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 01/04/2018
 ms.author: sajagtap
-ms.openlocfilehash: 238d086e87b0e52f0887af5c4db58e8f72796b49
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 7320286e186d7e6ba4041d3ed52f19e573b4d7e3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365831"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049875"
 ---
 # <a name="moderate-text-using-net"></a>使用 .NET 审查文本
 
@@ -28,8 +28,8 @@ ms.locfileid: "35365831"
 
 ## <a name="sign-up-for-content-moderator-services"></a>注册内容审查器服务
 
-需要有订阅密钥才能通过 REST API 或 SDK 使用内容审查器服务。
-请参阅[快速入门](quick-start.md)了解如何获取密钥。
+必须有订阅密钥，才能通过 REST API 或 SDK 使用内容审查器服务。
+请参阅[快速入门](quick-start.md)，了解如何获取密钥。
 
 ## <a name="create-your-visual-studio-project"></a>创建 Visual Studio 项目
 
@@ -39,7 +39,7 @@ ms.locfileid: "35365831"
 
 1. 选择此项目作为解决方案的单启动项目。
 
-1. 向在[内容审查器客户端帮助程序快速入门](content-moderator-helper-quickstart-dotnet.md)中创建的“ModeratorHelper”项目添加一个引用。
+1. 添加对在[内容审查器客户端帮助程序快速入门](content-moderator-helper-quickstart-dotnet.md)中创建的“ModeratorHelper”项目程序集的引用。
 
 ### <a name="install-required-packages"></a>安装所需程序包
 
@@ -63,7 +63,7 @@ ms.locfileid: "35365831"
     using System.Threading;
 
 
-### <a name="initialize-application-specific-settings"></a>初始化特定于应用程序的设置
+### <a name="initialize-application-specific-settings"></a>初始化应用专用设置
 
 向 Program.cs 中的 **Program** 类添加以下静态字段。
 
@@ -117,11 +117,11 @@ ms.locfileid: "35365831"
     }
 
 > [!NOTE]
-> 内容审查器服务密钥有一个每秒请求数 (RPS) 速率限制，如果超过该限制，SDK 会引发错误代码为 429 的异常。
+> 内容审查器服务密钥有每秒请求数 (RPS) 速率限制。如果超出此限制，SDK 就会抛出异常（错误代码为 429）。
 >
-> 免费层密钥有一个 RPS 速率限制。
+> 使用免费层密钥时，请求速率限制为每秒请求一次。
 
-## <a name="run-the-program-and-review-the-output"></a>运行程序并检查输出
+## <a name="run-the-program-and-review-the-output"></a>运行程序并查看输出
 
 该程序的示例输出（写入日志文件）如下：
 
@@ -211,4 +211,4 @@ ms.locfileid: "35365831"
 
 ## <a name="next-steps"></a>后续步骤
 
-为适用于 .NET 的此内容审查器快速入门以及其他内容审查器快速入门[下载 Visual Studio 解决方案](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)，并开始集成。
+下载本教程以及其他 .NET 内容审查器快速入门的 [Visual Studio 解决方案](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)，并开始集成。

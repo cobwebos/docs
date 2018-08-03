@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 06/25/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 1b59409e43a23dd63a6697a44a20df079a751516
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: e5dd41b34c41c442034e0a7ccb74c8d5b6583753
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866852"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39436703"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-20-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Azure CLI 2.0 配合使用
 
-可以按照这篇文章，若要将 Azure 命令行接口 (CLI) 设置为从 Linux、 Mac 和 Windows 客户端平台管理 Azure Stack 开发工具包资源中的步骤。
+可以按照本文中的步骤设置 Azure 命令行接口 (CLI)，以从 Linux、Mac 和 Windows 客户端平台管理 Azure Stack 开发工具包资源。
 
 ## <a name="install-cli"></a>安装 CLI
 
@@ -38,7 +38,7 @@ az --version
 
 1. 从 [Azure Stack 运营商](..\azure-stack-cli-admin.md#export-the-azure-stack-ca-root-certificate)获取 Azure Stack CA 根证书，并信任该证书。 若要信任 Azure Stack CA 根书，请将它附加到现有的 Python 证书。
 
-2. 在计算机上找到证书位置。 该位置根据 Python 的安装位置而异。 需要安装 [pip](https://pip.pypa.io) 和 [certifi](https://pypi.org/project/certifi/) 模块。 可在 bash 提示符下使用以下 Python 命令：
+1. 在计算机上找到证书位置。 该位置根据 Python 的安装位置而异。 需要安装 [pip](https://pip.pypa.io) 和 [certifi](https://pypi.org/project/certifi/) 模块。 可在 bash 提示符下使用以下 Python 命令：
 
   ```bash  
     python -c "import certifi; print(certifi.where())"
@@ -56,13 +56,13 @@ sudo cat /var/lib/waagent/Certificates.pem >> ~/<yourpath>/cacert.pem
 
 ### <a name="set-the-path-for-a-development-machine-outside-the-cloud"></a>设置开发计算机在云外部的路径
 
-如果从计算机运行 CLI**外部**Azure Stack 环境：  
+如果从 Azure Stack 环境**外部**的某台计算机运行 CLI：  
 
 1. 必须[与 Azure Stack 建立 VPN 连接](azure-stack-connect-azure-stack.md)。
 
-2. 复制从 Azure Stack 运营商获取的 PEM 证书，并记下文件的位置 (PATH_TO_PEM_FILE)。
+1. 复制从 Azure Stack 运营商获取的 PEM 证书，并记下文件的位置 (PATH_TO_PEM_FILE)。
 
-3. 根据开发工作站的 OS 运行以下命令。
+1. 根据开发工作站的 OS 运行以下命令。
 
 #### <a name="linux"></a>Linux
 
@@ -140,7 +140,7 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
         --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
       ```
 
-2. 使用以下命令设置活动环境。
+1. 使用以下命令设置活动环境。
 
    a. 对于云管理环境，请使用：
 
@@ -156,14 +156,14 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
         -n AzureStackUser
       ```
 
-3. 将环境配置更新为使用 Azure Stack 特定的 API 版本配置文件。 若要更新配置，请运行以下命令：
+1. 将环境配置更新为使用 Azure Stack 特定的 API 版本配置文件。 若要更新配置，请运行以下命令：
 
    ```azurecli
    az cloud update \
      --profile 2017-03-09-profile
    ```
 
-4. 使用 `az login` 命令登录到 Azure Stack 环境。 可以用户身份或以[服务主体](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects)的形式登录到 Azure Stack 环境。 
+1. 使用 `az login` 命令登录到 Azure Stack 环境。 可以用户身份或以[服务主体](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects)的形式登录到 Azure Stack 环境。 
 
    * 以用户身份登录：可以直接在 `az login` 命令中指定用户名和密码，或使用浏览器进行身份验证。 如果帐户已启用多重身份验证，则必须采用后一种方法。
 

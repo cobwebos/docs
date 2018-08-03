@@ -9,12 +9,12 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 09/20/2017
 ms.author: ashmaka
-ms.openlocfilehash: d9c61a83450844461f621ff16354881a029f7ad6
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 94847adf761652a25fd3e2d594c7169776fefc89
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266288"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125119"
 ---
 # <a name="quickstart-for-text-analytics-api-with-c"></a>适用于文本分析 API 的 C# 快速入门 
 <a name="HOLTop"></a>
@@ -48,7 +48,7 @@ ms.locfileid: "36266288"
 ## <a name="call-the-text-analytics-api-using-the-sdk"></a>使用 SDK 调用文本分析 API
 1. 将 Program.cs 替换为下面提供的代码。 此程序通过 3 个部分（语言提取、关键短语提取和情绪分析）演示了文本分析 API 的功能。
 1. 将 `Ocp-Apim-Subscription-Key` 标头值替换为对订阅有效的访问密钥。
-1. 将 `client.AzureRegion` 中的位置（当前为 `AzureRegions.Westus`）替换为进行注册的区域。
+1. 将 `client.BaseUri` 中的位置替换为注册的终结点。 可在 Azure 门户资源上找到该终结点。 终结点通常如下所示：“https://[region].api.cognitive.microsoft.com/text/analytics/v2.0”。
 1. 运行该程序。
 
 ```csharp
@@ -81,8 +81,8 @@ namespace ConsoleApp1
         {
 
             // Create a client.
-            ITextAnalyticsAPI client = new TextAnalyticsAPI(new ApiKeyServiceClientCredentials());
-            client.AzureRegion = AzureRegions.Westus;
+            ITextAnalyticsClient client = new TextAnalyticsClient(new ApiKeyServiceClientCredentials());
+            client.BaseUri = new Uri("https://westus.api.cognitive.microsoft.com/text/analytics/v2.0");
 
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 

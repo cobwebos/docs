@@ -1,45 +1,46 @@
 ---
-title: 适用于 C++ 和 Linux 的语音 SDK 快速入门 | Microsoft Docs
+title: 快速入门：使用认知服务语音 SDK 在 Linux 上的 C++ 中识别语音 | Microsoft Docs
 titleSuffix: Microsoft Cognitive Services
-description: 获取信息和代码示例，帮助你快速开始使用认知服务中适用于 Linux 和 C++ 的语音 SDK。
+description: 了解如何使用认知服务语音 SDK 在 Linux 上的 C++ 中识别语音
 services: cognitive-services
 author: wolfma61
 manager: onano
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: cee70ba585f93dda3249fc5b39f25fb613b57a45
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: b5f5cdbe202b406c724a9f4f5787e566b432a66c
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753574"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39116140"
 ---
-# <a name="quickstart-for-c-and-linux"></a>适用于 C + + 和 Linux 的快速入门
+# <a name="quickstart-recognize-speech-in-c-on-linux-using-the-speech-sdk"></a>快速入门：使用语音 SDK 在 Linux 上的 C++ 中识别语音
 
-认知服务语音 SDK 的当前版本是 `0.4.0`。
-
-适用于 Linux 的认知服务语音 SDK 可用于构建 64 位和 32 位应用程序。 所需的文件可以作为 tar 文件从 https://aka.ms/csspeech/linuxbinary 下载。
-
-> [!NOTE]
-> 如果要寻找适用于 C++ 和 Windows 的快速入门，请前往[此处](quickstart-cpp-windows.md)。
-> 如果要寻找适用于 C# 和 Windows 的快速入门，请前往[此处](quickstart-csharp-windows.md)。
-
-[!include[Get a Subscription Key](includes/get-subscription-key.md)]
-
-> [!NOTE]
-> 这些说明假设你在个人电脑（x86 或 x64）上运行 Ubuntu 16.04。
-> 在不同的 Ubuntu 版本或不同的 Linux 发行版上，你需要调整所需的步骤。
+本文介绍如何使用认知服务语音 SDK 在 Linux (Ubuntu 16.04) 上创建 C++ 控制台应用程序，进而将语音转为文本。
 
 ## <a name="prerequisites"></a>先决条件
 
-[!include[Ubuntu Prerequisites](includes/ubuntu1604-prerequisites.md)]
+* 语音服务的订阅密钥。 请参阅[免费试用语音服务](get-started.md)。
+* 配有工作麦克风的 Ubuntu 16.04 电脑。
+* 要安装生成和运行此示例所需的包，请运行以下命令：
 
-## <a name="getting-the-binary-package"></a>获取二进制程序包
+  ```sh
+  sudo apt-get update
+  sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2 wget
+  ```
 
-[!include[License Notice](includes/license-notice.md)]
+## <a name="get-the-speech-sdk"></a>获取语音 SDK
+
+[!include[License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
+
+认知服务语音 SDK 的当前版本是 `0.5.0`。
+
+适用于 Linux 的认知服务语音 SDK 可用于构建 64 位和 32 位应用程序。
+所需的文件可以作为 tar 文件从 https://aka.ms/csspeech/linuxbinary 下载。
+下载并安装 SDK，如下所示：
 
 1. 选择要放置语音 SDK 二进制文件和头文件的目录（绝对路径）。
    例如，选择主目录下的路径 `speechsdk`：
@@ -69,66 +70,66 @@ ms.locfileid: "36753574"
 
    它应当会显示第三方通知和许可证文件，以及用于存放头文件的 `include` 目录和用于存放二进制文件的 `lib` 目录。
 
-   [!include[Linux Binary Archive Content](includes/linuxbinary-content.md)]
+   [!include[Linux Binary Archive Content](../../../includes/cognitive-services-speech-service-linuxbinary-content.md)]
 
-## <a name="sample-code"></a>代码示例
+## <a name="add-the-sample-code"></a>添加示例代码
 
-以下代码识别来自麦克风的英语语音。
-请将其放置在一个名为 `quickstart-linux.cpp` 的文件中：
+1. 将以下代码添加到名为 `helloworld.cpp` 的文件中：
 
-[!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/Linux/quickstart-linux/quickstart-linux.cpp#code)]
+  [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp-linux/helloworld.cpp#code)]
 
-将代码中的订阅密钥替换为你获得的密钥。
+1. 将字符串 `YourSubscriptionKey` 替换为你的订阅密钥。
+
+1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](regions.md)（例如，免费试用版订阅的 `westus`）。
 
 ## <a name="building"></a>生成
 
 > [!NOTE]
 > 确保将下面的生成命令复制并粘贴为“单个行”。
 
-* 运行以下命令在 x64 计算机上生成应用程序：
+* 在 x64 计算机上，运行下列命令以生成应用程序：
 
   ```sh
-  g++ quickstart-linux.cpp -o quickstart-linux -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x64" -l:libssl.so.1.0.0 -l:libcurl.so.4 -l:libasound.so.2
+  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x64" -l:libssl.so.1.0.0 -l:libcurl.so.4 -l:libasound.so.2
   ```
 
-* 运行以下命令在 x86 计算机上生成应用程序：
+* 在 x86 计算机上，运行下列命令以生成应用程序：
 
   ```sh
-  g++ quickstart-linux.cpp -o quickstart-linux -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libssl.so.1.0.0 -l:libcurl.so.4 -l:libasound.so.2
+  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libssl.so.1.0.0 -l:libcurl.so.4 -l:libasound.so.2
   ```
 
-## <a name="running"></a>正在运行
+## <a name="run-the-sample"></a>运行示例
 
-若要运行应用程序，需要将加载程序的库路径配置为指向语音 SDK 库。
+1. 将加载程序的库路径配置为指向语音 SDK 库。
 
-* 在 x64 计算机上，运行：
+   * 在 x64 计算机上，请运行：
 
-  ```sh
-  export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/x64"
-  ```
+     ```sh
+     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/x64"
+     ```
 
-* 在 x86 计算机上，运行：
+   * 在 x86 计算机上，请运行：
 
-  ```sh
-  export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/x86"
-  ```
+     ```sh
+     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/x86"
+     ```
 
-如下运行应用程序：
+1. 如下运行应用程序：
 
-```sh
-./quickstart-linux
-```
+   ```sh
+   ./helloworld
+   ```
 
-如果一切正常，应当会看到与以下内容类似的输出：
+1. 此时会看到与下面类似的输出：
 
-```text
-Say something...
-We recognized: What's the weather
-```
+   ```text
+   Say something...
+   We recognized: What's the weather
+   ```
 
-## <a name="downloading-the-sample"></a>下载示例
-
-有关最新的示例集，请参阅[认知服务语音 SDK 示例 GitHub 存储库](https://aka.ms/csspeech/samples)。
+[!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+在 `quickstart/cpp-linux` 文件夹中查找此示例。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: diberry
-ms.openlocfilehash: 684507b58e5ac766e9b42d3aa53cb0867a131a93
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: fe5e35c2dcb08cdff9d92142558cf8d7ec81c36c
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222666"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399565"
 ---
 # <a name="collaborating"></a>协作
 
@@ -25,7 +25,7 @@ LUIS 帐户与一个 [Microsoft Live](https://login.live.com/) 帐户相关联�
 
 一个 LUIS 帐户可能有很多 LUIS 应用。
 
-请参阅 [Azure Active Directory 租户用户](luis-how-to-account-settings.md#azure-active-directory-tenant-user)，了解有关 Active Directory 用户帐户的详细信息。 
+请参阅 [Azure Active Directory 租户用户](luis-how-to-collaborate.md#azure-active-directory-tenant-user)，了解有关 Active Directory 用户帐户的详细信息。 
 
 ## <a name="luis-app-owner"></a>LUIS 应用所有者
 创建应用的帐户是所有者。 每个应用都有一个所有者。 应用[“设置”](luis-how-to-collaborate.md)上列出了所有者。 使用此帐户可删除应用。 此外，若终结点配额达到每月限额的 75%，则还会向此帐户发送电子邮件。 

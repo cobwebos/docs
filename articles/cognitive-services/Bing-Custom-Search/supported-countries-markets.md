@@ -1,6 +1,6 @@
 ---
 title: Azure 上的必应自定义搜索 API 支持的国家/地区和语言 | Microsoft Docs
-description: 找出必应自定义搜索 API 支持哪些国家/地区和语言。
+description: 查找必应自定义搜索 API 支持的国家/地区和语言。
 services: cognitive-services
 author: mikedodaro
 manager: ronakshah
@@ -9,20 +9,20 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: v-gedod
-ms.openlocfilehash: 7ff309f9b789662c4ebd791dffaa2bc2e440763e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 7009991ddd0bc8fd9fc68eaab57585b752db1fc1
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365897"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006489"
 ---
-# <a name="bing-custom-search-countries-and-languages"></a>必应自定义搜索国家/地区和语言
+# <a name="bing-custom-search-countriesregions-and-languages"></a>提供必应自定义搜索的国家/地区和语言
 
-必应自定义搜索 API 支持超过 36 个国家/地区，多个国家/地区具有多种语言。 
+必应自定义搜索 API 支持超过 36 个国家/地区，其中很多具有多种语言。 
 
 尽管是可选的，但请求应该指定 [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#mkt) 查询参数，它确定你希望结果源自其中的市场。 对于可选查询参数列表，请参阅[查询参数](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters)
 
-你可以使用 `cc` 查询参数指定国家/地区。 如果要指定国家/地区，还必须使用 `Accept-Language` 标头指定一个或多个语言代码。 支持的语言随国家/地区而变化；会为每个国家/地区提供“市场”表中的语言。
+可以使用 `cc` 查询参数指定国家/地区。 如果指定了国家/地区，还必须使用 `Accept-Language` 标头指定一个或多个语言代码。 支持的语言因国家/地区而异；“市场”表中提供了每个国家/地区适用的语言。
 
 `Accept-Language` 标头和 `setLang` 查询参数相互排斥，不可同时指定两者。 有关详细信息，请参阅 [Accept-language](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#acceptlanguage)。
 

@@ -1,6 +1,6 @@
 ---
 title: Azure 上的必应新闻搜索 API 支持的国家/地区和语言 | Microsoft Docs
-description: 找出必应图像搜索 API 支持哪些国家/地区和语言。
+description: 查找必应图像搜索 API 支持的国家/地区和语言。
 services: cognitive-services
 author: MikeDodaro
 manager: rosh
@@ -9,18 +9,18 @@ ms.component: bing-news-search
 ms.topic: article
 ms.date: 12/20/2017
 ms.author: v-gedod
-ms.openlocfilehash: 80326d66e509b64efd5d386fe793bc9942b29ae3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1cdacc82b680407814ff2d88e8ed43deacfb17d0
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365567"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001654"
 ---
-# <a name="bing-news-search-countries-and-languages"></a>必应新闻搜索国家/地区和语言
+# <a name="bing-news-search-countriesregions-and-languages"></a>提供必应新闻搜索的国家/地区和语言
 
-必应新闻搜索 API 支持许多个国家/地区，其中很多都不止一种语言。 使用查询指定国家/地区主要用于根据对该国家/地区的兴趣来优化搜索结果。 此外，结果可能包含指向必应的链接，这些链接可能会根据指定的国家/地区或语言本地化必应用户体验。
+必应新闻搜索 API 支持许多个国家/地区，其中很多具有多种语言。 使用查询指定国家/地区主要用于根据对该国家/地区的兴趣来优化搜索结果。 此外，结果可能包含指向必应的链接，这些链接可能会根据指定的国家/地区或语言本地化必应用户体验。
 
-可以使用 `cc` 查询参数指定国家/地区。 如果指定了国家/地区，还必须使用 `Accept-Language` HTTP 标头指定一个或多个语言代码。 支持的语言因国家/地区而异；“市场”表中提供了适用于每个国家/地区的语言。
+可以使用 `cc` 查询参数指定国家/地区。 如果指定了国家/地区，还必须使用 `Accept-Language` HTTP 标头指定一个或多个语言代码。 支持的语言因国家/地区而异；“市场”表中提供了每个国家/地区适用的语言。
 
 或者，可以使用 `mkt` 查询参数和市场表中的代码指定市场。 指定市场的同时指定国家/地区和首选语言。 在这种情况下，`setLang` 查询参数可能设置为一个语言代码，通常这与 `mkt` 所指定的语言相同，除非用户希望以另一种语言查看必应。
 

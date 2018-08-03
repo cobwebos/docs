@@ -7,36 +7,39 @@ manager: wolmfa61
 ms.service: cognitive-services
 ms.technology: speech
 ms.topic: article
-ms.date: 06/27/2018
+ms.date: 06/28/2018
 ms.author: mahilleb
-ms.openlocfilehash: a201cc043f673e2285ea48950804d97b96f881ed
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 11360d163fdba057d373d091d46903cde7789a8b
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054877"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071413"
 ---
-# <a name="regions-and-endpoints-of-the-speech-service"></a>语音服务的区域和终结点
+# <a name="regions-of-the-speech-service"></a>语音服务区域
 
-> [!NOTE]
-> [语音 SDK](speech-sdk.md) 中的区域名称与下面所列的终结点域的第一部分匹配。
-> 例如，使用 `westus` 在语音 SDK 中指定美国西部区域。
+语音服务可在不同区域使用。
+创建订阅时，可根据需要选择一个可用的区域。
 
-## <a name="speech-to-text"></a>语音转文本
+使用订阅时，必须考虑所选的区域。
 
-[!include[](includes/endpoints-speech-to-text.md)]
+## <a name="rest-api"></a>REST API
 
-## <a name="text-to-speech"></a>文本到语音转换
+使用 REST API，选择适当的区域特定的终结点。
+有关详细信息，请参阅 [REST API](rest-apis.md)。
 
-[!include[](includes/endpoints-text-to-speech.md)]
+## <a name="speech-sdk"></a>语音 SDK
 
-## <a name="authentication"></a>身份验证
+在[语音 SDK](speech-sdk.md) 中，区域指定为字符串（例如，在 C# 语音 SDK 中用作 [SpeechFactory.FromSubscription](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechfactory.fromsubscription) 的参数）。
 
-[!include[](includes/endpoints-token-service.md)]
+下表列出了“语音识别”和“翻译”的可用区域：
 
-有关获取和刷新授权令牌的详细信息，请参阅[此处](rest-apis.md#authentication)。
+区域| 语音 SDK 中区域参数的值
+-|-
+美国西部| `westus`
+东亚| `eastasia`
+北欧| `northeurope`
 
-## <a name="language-understanding-speech-sdk-only"></a>语言理解（仅语音 SDK）
-
-[此处](/azure/cognitive-services/luis/luis-reference-regions)列出语言理解服务的区域。
-在语音 SDK 中，按终结点域名的第一部分（例如 `westus`）指定这些区域。
+要了解哪些区域可通过语音 SDK 进行意向识别，请参阅[语言理解服务区域页](/azure/cognitive-services/luis/luis-reference-regions)。
+对于列出的每个发布区域，相应的语音 SDK 区域参数肯定是将终结点域名的第一部分。
+例如，使用 `westus` 指定美国西部发布区域。

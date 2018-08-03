@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: diberry
-ms.openlocfilehash: ace4aa48d3bfce5f88bce8947ab568f0990d67fa
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: b0b5852a223a77e33a288bb8061c1ce374018ec1
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226605"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282273"
 ---
 # <a name="entities-in-luis"></a>LUIS 中的实体
 
@@ -70,7 +70,7 @@ LUIS 提供多种类型的实体；预生成的实体、自定义机器学习实
 | **简单** <br/>[机器学习](#machine-learned) | ✔ | **定义**<br>简单实体是描述单个概念的泛型实体，通过机器学习的上下文习得。 上下文包括选词、字词位置和话语长度。<br/><br/>该实体非常适用于格式不一致但含义相同的字词或短语。 <br/><br/>[快速入门](luis-quickstart-primary-and-secondary-data.md)<br/>[实体响应示例](luis-concept-data-extraction.md#simple-entity-data)|  
 | **列表** <br/>[完全匹配](#exact-match)|| **定义**<br>列表实体表示系统中一组固定、封闭的相关单词及其同义词。 <br><br>每个列表实体可能具有一种或多种形式。 最适用于同一概念的一组表示方式的已知变体。<br/><br/>LUIS 不会为列表实体发现更多值。 使用“建议”功能根据当前列表查看有关新词的建议。<br/><br>如果存在多个具有相同值的列表实体，则终结点查询中会返回其中每个实体。 <br/><br/>[快速入门](luis-quickstart-intent-and-list-entity.md)<br>[实体响应示例](luis-concept-data-extraction.md#list-entity-data)| 
 | **Pattern.any** <br/>[混合](#mixed) | ✔|**定义**<br>Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中使用，用于标记实体的起始和结束位置。  <br><br>**示例**<br>例如，对于一个基于标题的书籍话语搜索，pattern.any 会提取完整的标题。 一个使用 pattern.any 的模板话语是 `Who wrote {BookTitle}[?]`。<br/><br/>[教程](luis-tutorial-pattern.md)<br>[实体响应示例](luis-concept-data-extraction.md#composite-entity-data)|  
-| **复合** <br/>[机器学习](#machine-learned) | ✔|**定义**<br>复合实体由其他实体组成，例如预生成的实体、简单实体、正则表达式实体、列表实体和分层实体。 各种单独的实体构成整个实体。 复合实体中不允许使用列表实体。 <br><br>**示例**<br>名为 PlaneTicketOrder 的复合实体可能具有预构建的 `number` 和 `ToLocation` 子实体。 <br/><br/>[教程](luis-tutorial-composite-entity.md)<br>[实体响应示例](luis-concept-data-extraction.md#composite-entity-data)|  
+| **复合** <br/>[机器学习](#machine-learned) | ✔|**定义**<br>复合实体由其他实体组成，例如预生成的实体、简单实体、正则表达式实体、列表实体和分层实体。 各种单独的实体构成整个实体。 <br><br>**示例**<br>名为 PlaneTicketOrder 的复合实体可能具有预构建的 `number` 和 `ToLocation` 子实体。 <br/><br/>[教程](luis-tutorial-composite-entity.md)<br>[实体响应示例](luis-concept-data-extraction.md#composite-entity-data)|  
 | **分层** <br/>[机器学习](#machine-learned) |✔ | **定义**<br>分层实体是根据上下文习得的一类简单实体。<br><br>**示例**<br>如果分层实体 `Location` 具有子实体 `ToLocation` 和 `FromLocation`，则可基于话语中的上下文来确定每个子实体。 在话语 `Book 2 tickets from Seattle to New York` 中，`ToLocation` 和 `FromLocation` 因周围单词不同而在上下文中有所不同。 <br/><br/>**不使用该实体的情况**<br>如果要查找子实体文本精确匹配的实体，且不考虑上下文，则应使用列表实体。 如果要查找是否与其他实体类型存在父子关系，则应使用复合实体。<br/><br/>[快速入门](luis-quickstart-intent-and-hier-entity.md)<br>[实体响应示例](luis-concept-data-extraction.md#hierarchical-entity-data)|
 
 <a name="prebuilt"></a>

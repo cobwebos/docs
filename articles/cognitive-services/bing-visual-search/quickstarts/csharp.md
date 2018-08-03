@@ -10,12 +10,12 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: dd7531004759cdaeb59f4706dc2650d0db3c0cdb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 930a89e3b1996c44f12bd3773565eda40e93ca9c
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366643"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070920"
 ---
 # <a name="your-first-bing-visual-search-query-in-c"></a>你的第一个采用 C# 的必应视觉搜索查询
 
@@ -387,8 +387,9 @@ namespace VisualSearchUpload
 ## <a name="next-steps"></a>后续步骤
 
 [使用见解标记获取有关图像的见解](../use-insights-token.md)  
+[必应视觉搜索图像上传教程](../tutorial-visual-search-image-upload.md)
 [必应视觉搜索单页应用教程](../tutorial-bing-visual-search-single-page-app.md)
 [必应视觉搜索概述](../overview.md)  
-[试试看](https://aka.ms/bingvisualsearchtryforfree)  
+[试用](https://aka.ms/bingvisualsearchtryforfree)  
 [获取免费试用版访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
 [必应视觉搜索 API 参考](https://aka.ms/bingvisualsearchreferencedoc)

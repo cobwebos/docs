@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: diberry
-ms.openlocfilehash: 13b769a0b5a940e0f3dd5f2e0cc3567d9879ee0d
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: fe0ee7d575e69c883ad7f980477e86fbd004778e
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223773"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397237"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>创作和终结点用户访问权限
 所有者和协作者具有创作访问权限。 对于专用应用，所有者和协作者具有终结点访问权限。 对于公共应用，任何具有 LUIS 帐户和公共应用 ID 的人员均具有终结点访问权限。 
@@ -62,7 +62,7 @@ ms.locfileid: "39223773"
 ## <a name="microsoft-user-accounts"></a>Microsoft 用户帐户
 创建者和协作者可以在“发布”页上向 LUIS 添加密钥。 用以在 Azure 门户中创建 LUIS 密钥的 Microsoft 用户帐户需为应用所有者或应用协作者。 
 
-请参阅 [Azure Active Directory 租户用户](luis-how-to-account-settings.md#azure-active-directory-tenant-user)，了解有关 Active Directory 用户帐户的详细信息。 
+请参阅 [Azure Active Directory 租户用户](luis-how-to-collaborate.md#azure-active-directory-tenant-user)，了解有关 Active Directory 用户帐户的详细信息。 
 
 <!--
 ### Individual consent

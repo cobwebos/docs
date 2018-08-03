@@ -1,106 +1,96 @@
 ---
-title: 适用于 C++ 和 Windows 的语音 SDK 快速入门 | Microsoft Docs
+title: 快速入门：使用认知服务语音 SDK 在 Windows 桌面上的 C++ 中识别语音 | Microsoft Docs
 titleSuffix: Microsoft Cognitive Services
-description: 获取信息和代码示例，帮助你快速开始使用认知服务中适用于 Windows 和 C++ 的语音 SDK。
+description: 了解如何使用认知服务语音 SDK 在 Windows 桌面上的 C++ 中识别语音
 services: cognitive-services
 author: wolfma61
 manager: onano
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 0bcdc3c4357cb8985fad16c607957bffad4a2b8c
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 4a8c5f7053c1976233bf9de6a0c142885b73c8aa
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049224"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071192"
 ---
-# <a name="quickstart-for-c-and-windows"></a>适用于 C + + 和 Windows 的快速入门
+# <a name="quickstart-recognize-speech-in-c-on-windows-desktop-using-the-speech-sdk"></a>快速入门：使用语音 SDK 在 Windows 桌面上的 C++ 中识别语音
 
-认知服务语音 SDK 的当前版本是 `0.4.0`。
+介绍了如何为 Windows 桌面创建使用语音 SDK 且基于 C++ 的控制台应用程序。
+该应用程序基于 [Microsoft 认知服务语音 SDK NuGet 包](https://aka.ms/csspeech/nuget)和 Microsoft Visual Studio 2017。
 
-介绍了如何为 Windows 桌面创建使用语音 SDK 且基于 C++-的控制台应用程序。
-该应用程序基于 [Microsoft 认知服务 SDK NuGet 包](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech)和 Microsoft Visual Studio 2017。
+## <a name="prerequisites"></a>先决条件
 
-> [!NOTE]
-> 如果要寻找适用于 C# 和 Linux 的快速入门，请前往[此处](quickstart-cpp-linux.md)。<br>
-> 如果要寻找适用于 C# 和 Windows 的快速入门，请前往[此处](quickstart-csharp-windows.md)。
+* 语音服务的订阅密钥。 请参阅[免费试用语音服务](get-started.md)。
+* 配有工作麦克风的 Windows 电脑。
+* [Microsoft Visual Studio 2017](https://www.visualstudio.com/)、Community Edition 或更高版本。
+* Visual Studio 中的“使用 C++ 的桌面开发”工作负载，以及 Visual Studio 中的“NuGet包管理器”组件。
+  可分别在“工作负载”和“个别组件”选项卡下的“工具”\>“获取工具和功能”中同时启用它们：
 
-> [!NOTE]
-> 本快速入门需要使用个人电脑和正常工作的麦克风。<br>
-> 有关识别给定音频输入文件中的语音的示例，请参阅[示例](speech-to-text-sample.md#speech-recognition-from-a-file)。
+  ![启用“使用 C++ 的桌面开发”工作负载](media/sdk/vs-enable-cpp-workload.png)
 
-> [!NOTE]
-> 确保你的 Visual Studio 安装包括**使用 C++ 的桌面开发**工作负载。
-> 如果不确定，请使用以下步骤进行检查和修复：在 Visual Studio 2017 中，选择“工具”\>“获取工具和功能”，然后选择“是”来确认用户帐户控制提示。
-> 在“工作负载”选项卡上，如果**使用 C++ 的桌面开发**没有设置它旁边的复选框，请设置该复选框，然后单击“修改”来保存更改。
+  ![在 Visual Studio 中启用 NuGet 包管理器 ](media/sdk/vs-enable-nuget-package-manager.png)
 
-[!include[Get a Subscription Key](includes/get-subscription-key.md)]
+## <a name="create-a-visual-studio-project"></a>创建 Visual Studio 项目
 
-## <a name="creating-an-empty-console-application-project"></a>创建一个空的控制台应用程序项目
+在 Visual Studio 2017 中，新建一个 Visual C++ Windows 桌面 Windows 控制台应用程序。 在“新建项目”对话框的左窗格中，展开“已安装”\>“Visual C++”\>“Windows 桌面”，然后选择“Windows控制台应用程序”。 在项目名称处，输入 helloworld。
 
-在 Visual Studio 2017 中，创建一个新的名为“CppHelloSpeech”的 Visual C++ Windows 桌面 Windows 控制台应用程序：
-
-![创建 Visual C++ Windows 桌面 Windows 控制台应用程序](media/sdk/speechsdk-05-vs-cpp-new-console-app.png)
+![创建 Visual C++ Windows 桌面 Windows 控制台应用程序](media/sdk/qs-cpp-windows-01-new-console-app.png)
 
 如果是在 64 位 Windows 安装上运行，可以选择将生成平台切换到 `x64`：
 
-![将生成平台切换到 x64](media/sdk/speechsdk-07-vs-cpp-switch-to-x64.png)
+![将生成平台切换到 x64](media/sdk/qs-cpp-windows-02-switch-to-x64.png)
 
 ## <a name="install-and-reference-the-speech-sdk-nuget-package"></a>安装并引用语音 SDK NuGet 包
 
-> [!NOTE]
-> 确保为你的 Visual Studio 2017 安装启用 NuGet 包管理器。
-> 在 Visual Studio 2017 中，选择“工具”\>“获取工具和功能”，然后选择“是”来确认用户帐户控制提示。 然后，选择“单个组件”选项卡，在“代码工具”下查找“NuGet 包管理器”。
-> 如果未设置其左侧的复选框，请确保设置该复选框并单击“修改”以保存更改。
->
-> ![在 Visual Studio 中启用 NuGet 包管理器 ](media/sdk/speechsdk-05-vs-enable-nuget-package-manager.png)
-
 在解决方案资源管理器中，右键单击该解决方案，并单击“为解决方案管理 NuGet 包”。
 
-![右键单击“为解决方案管理 NuGet 包”](media/sdk/speechsdk-09-vs-cpp-manage-nuget-packages.png)
+![右键单击“为解决方案管理 NuGet 包”](media/sdk/qs-cpp-windows-03-manage-nuget-packages.png)
 
 在右上角的“包源”字段中，选择“Nuget.org”。
-从“浏览”选项卡中，搜索“Microsoft.CognitiveServices.Speech”包，选择该包，选中右侧的“项目”和“CppHelloSpeech”框，然后选择“安装”以将其安装到 CppHelloSpeech 项目中。
+从“浏览”选项卡中，搜索“Microsoft.CognitiveServices.Speech”包，将其选中，再勾选右侧的“项目”和“helloworld”框，然后选择“安装”，将其安装到 helloworld 项目中。
 
-![安装 Microsoft.CognitiveServices.Speech NuGet 包](media/sdk/speechsdk-11-vs-cpp-manage-nuget-install.png)
+> [!NOTE]
+> 认知服务语音 SDK 的当前版本是 `0.5.0`。
+
+![安装 Microsoft.CognitiveServices.Speech NuGet 包](media/sdk/qs-cpp-windows-04-nuget-install-0.5.0.png)
 
 在弹出的许可证屏幕中，接受许可证：
 
-![接受许可证](media/sdk/speechsdk-12-vs-cpp-manage-nuget-license.png)
+![接受许可证](media/sdk/qs-cpp-windows-05-nuget-license.png)
 
 ## <a name="add-the-sample-code"></a>添加示例代码
 
-将默认的起始代码替换为以下代码：
+1. 将默认的起始代码替换为以下代码：
 
-[!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/Windows/quickstart-cpp/CppHelloSpeech.cpp#code)]
+   [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp-windows/helloworld/helloworld.cpp#code)]
 
-> [!IMPORTANT]
-> 将订阅密钥替换为你获取的密钥。 <br>
-> 将区域替换为[语音服务 REST API](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis) 中的区域，例如，替换为“westus”。
+1. 将字符串 `YourSubscriptionKey` 替换为你的订阅密钥。
 
-![添加订阅密钥](media/sdk/sub-key-recognize-speech-cpp.png)
+1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](regions.md)（例如，免费试用版订阅的 `westus`）。
+
+1. 保存对项目的更改。
 
 ## <a name="build-and-run-the-sample"></a>生成并运行示例
 
-现在，编译代码时应该不会提示错误：
+1. 构建应用程序。 从菜单栏中，选择“构建” > “构建解决方案”。 现在，编译代码时应该不会提示错误：
 
-![成功的生成](media/sdk/speechsdk-16-vs-cpp-build.png)
+   ![成功的生成](media/sdk/qs-cpp-windows-06-build.png)
 
-在调试器下通过“启动”按钮或使用 F5 键盘快捷键来启动项目：
+1. 启动应用程序。 在菜单栏中，选择“调试” > “开始调试”，或按 F5。
 
-![启动应用进行调试](media/sdk/speechsdk-17-vs-cpp-f5.png)
+   ![启动应用进行调试](media/sdk/qs-cpp-windows-07-start-debugging.png)
 
-应该会弹出一个控制台窗口，提示你说一些内容（用英语）。
-识别结果将显示在屏幕上。
+1. 将弹出控制台窗口，提示你说出任意内容（英语）。
+   识别结果将显示在屏幕上。
 
-![成功识别后的控制台输出](media/sdk/speechsdk-18-vs-cpp-console-output-release.png)
+   ![成功识别后的控制台输出](media/sdk/qs-cpp-windows-08-console-output-release.png)
 
-## <a name="downloading-the-sample"></a>下载示例
-
-有关最新的示例集，请参阅[认知服务语音 SDK 示例 GitHub 存储库](https://aka.ms/csspeech/samples)。
+[!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+在 `quickstart/cpp-windows` 文件夹中查找此示例。
 
 ## <a name="next-steps"></a>后续步骤
 

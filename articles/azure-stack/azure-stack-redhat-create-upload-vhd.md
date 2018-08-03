@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: jeffgo
-ms.openlocfilehash: 82a8da5897d811f80dd18cc199cb31f810a5a438
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 5af8380accc23a62baf04b842430e692fdff3692
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399781"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39443546"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure-stack"></a>为 Azure Stack 准备基于 Red Hat 的虚拟机
 
@@ -47,16 +47,16 @@ ms.locfileid: "39399781"
 
 1. 在 Hyper-V 管理器中，选择虚拟机。
 
-2. 单击“连接”打开该虚拟机的控制台窗口。
+1. 单击“连接”打开该虚拟机的控制台窗口。
 
-3. 创建或编辑 `/etc/sysconfig/network` 文件并添加以下文本：
+1. 创建或编辑 `/etc/sysconfig/network` 文件并添加以下文本：
 
     ```sh
     NETWORKING=yes
     HOSTNAME=localhost.localdomain
     ```
 
-4. 创建或编辑`/etc/sysconfig/network-scripts/ifcfg-eth0`文件，并根据需要添加以下文本：
+1. 创建或编辑`/etc/sysconfig/network-scripts/ifcfg-eth0`文件，并根据需要添加以下文本：
 
     ```sh
     DEVICE=eth0
@@ -69,19 +69,19 @@ ms.locfileid: "39399781"
     NM_CONTROLLED=no
     ```
 
-5. 请确保网络服务启动在启动时，通过运行以下命令：
+1. 请确保网络服务启动在启动时，通过运行以下命令：
 
     ```sh
     # sudo systemctl enable network
     ```
 
-6. 注册 Red Hat 订阅，以通过运行以下命令来启用来自 RHEL 存储库中的包的安装：
+1. 注册 Red Hat 订阅，以通过运行以下命令来启用来自 RHEL 存储库中的包的安装：
 
     ```sh
     # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
     ```
 
-7. 在 grub 配置中修改内核引导行，以使其包含 Azure 的其他内核参数。 若要执行此修改，请打开`/etc/default/grub`在文本编辑器中，并修改`GRUB_CMDLINE_LINUX`参数。 例如：
+1. 在 grub 配置中修改内核引导行，以使其包含 Azure 的其他内核参数。 若要执行此修改，请打开`/etc/default/grub`在文本编辑器中，并修改`GRUB_CMDLINE_LINUX`参数。 例如：
 
     ```sh
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
@@ -95,32 +95,32 @@ ms.locfileid: "39399781"
     rhgb quiet crashkernel=auto
     ```
 
-8. 完成 `/etc/default/grub` 编辑后，运行以下命令以重新生成 grub 配置：
+1. 完成 `/etc/default/grub` 编辑后，运行以下命令以重新生成 grub 配置：
 
     ```sh
     # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
     ```
 
-9. 请确保 SSH 服务器已安装且已配置为在引导时启动（默认采用此配置）。 修改 `/etc/ssh/sshd_config` 以包含以下行：
+1. 请确保 SSH 服务器已安装且已配置为在引导时启动（默认采用此配置）。 修改 `/etc/ssh/sshd_config` 以包含以下行：
 
     ```sh
     ClientAliveInterval 180
     ```
 
-10. WALinuxAgent 包 `WALinuxAgent-<version>` 已推送到 Red Hat extras 存储库。 通过运行以下命令启用 extras 存储库：
+1. WALinuxAgent 包 `WALinuxAgent-<version>` 已推送到 Red Hat extras 存储库。 通过运行以下命令启用 extras 存储库：
 
     ```sh
     # subscription-manager repos --enable=rhel-7-server-extras-rpms
     ```
 
-11. 通过运行以下命令来安装 Azure Linux 代理：
+1. 通过运行以下命令来安装 Azure Linux 代理：
 
     ```sh
     # sudo yum install WALinuxAgent
     # sudo systemctl enable waagent.service
     ```
 
-12. 不要在操作系统磁盘上创建交换空间。
+1. 不要在操作系统磁盘上创建交换空间。
 
     Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 本地资源磁盘是临时磁盘，并取消预配虚拟机后可能会清空。 在上一步中安装 Azure Linux 代理后，相应地在 `/etc/waagent.conf` 中修改以下参数：
 
@@ -132,15 +132,15 @@ ms.locfileid: "39399781"
     ResourceDisk.SwapSizeMB=2048    # NOTE: set this to whatever you need it to be.
     ```
 
-13. 如果想要取消注册订阅，运行以下命令：
+1. 如果想要取消注册订阅，运行以下命令：
 
     ```sh
     # sudo subscription-manager unregister
     ```
 
-14. 如果您将使用企业证书颁发机构部署的系统，RHEL 虚拟机将不信任 Azure Stack 根证书。 您需要将它放入受信任的根存储区。 请参阅[添加受信任根证书服务器](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html)。
+1. 如果您将使用企业证书颁发机构部署的系统，RHEL 虚拟机将不信任 Azure Stack 根证书。 您需要将它放入受信任的根存储区。 请参阅[添加受信任根证书服务器](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html)。
 
-15. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
+1. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
 
     ```sh
     # sudo waagent -force -deprovision
@@ -148,15 +148,15 @@ ms.locfileid: "39399781"
     # logout
     ```
 
-16. 在 Hyper-V 管理器中单击“操作” > “关闭”。
+1. 在 Hyper-V 管理器中单击“操作” > “关闭”。
 
-17. 将 VHD 转换为固定大小的 VHD 使用 Hyper-v 管理器"编辑磁盘"功能或 CONVERT-VHD PowerShell 命令。 Linux VHD 现已准备好上传到 Azure。
+1. 将 VHD 转换为固定大小的 VHD 使用 Hyper-v 管理器"编辑磁盘"功能或 CONVERT-VHD PowerShell 命令。 Linux VHD 现已准备好上传到 Azure。
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-kvm"></a>从 KVM 准备基于 Red Hat 的虚拟机
 
 1. 从 Red Hat 网站上下载 RHEL 7 的 KVM 映像。 此过程以 RHEL 7 为例。
 
-2. 设置 root 密码。
+1. 设置 root 密码。
 
     生成加密密码，并复制命令的输出：
 
@@ -177,16 +177,16 @@ ms.locfileid: "39399781"
 
    将 root 用户的第二个字段从“!!”更改 为加密密码。
 
-3. 在 KVM 中通过 qcow2 映像创建虚拟机。 将磁盘类型设置为 **qcow2**，将虚拟网络接口设备型号设置为 **virtio**。 然后，启动该虚拟机，并以 root 身份登录。
+1. 在 KVM 中通过 qcow2 映像创建虚拟机。 将磁盘类型设置为 **qcow2**，将虚拟网络接口设备型号设置为 **virtio**。 然后，启动该虚拟机，并以 root 身份登录。
 
-4. 创建或编辑 `/etc/sysconfig/network` 文件并添加以下文本：
+1. 创建或编辑 `/etc/sysconfig/network` 文件并添加以下文本：
 
     ```sh
     NETWORKING=yes
     HOSTNAME=localhost.localdomain
     ```
 
-5. 创建或编辑 `/etc/sysconfig/network-scripts/ifcfg-eth0` 文件并添加以下文本：
+1. 创建或编辑 `/etc/sysconfig/network-scripts/ifcfg-eth0` 文件并添加以下文本：
 
     ```sh
     DEVICE=eth0
@@ -199,19 +199,19 @@ ms.locfileid: "39399781"
     NM_CONTROLLED=no
     ```
 
-6. 请确保网络服务启动在启动时，通过运行以下命令：
+1. 请确保网络服务启动在启动时，通过运行以下命令：
 
     ```sh
     # sudo systemctl enable network
     ```
 
-7. 注册 Red Hat 订阅，以通过运行以下命令来启用来自 RHEL 存储库中的包的安装：
+1. 注册 Red Hat 订阅，以通过运行以下命令来启用来自 RHEL 存储库中的包的安装：
 
     ```sh
     # subscription-manager register --auto-attach --username=XXX --password=XXX
     ```
 
-8. 在 grub 配置中修改内核引导行，以使其包含 Azure 的其他内核参数。 若要执行此配置，请打开`/etc/default/grub`在文本编辑器中，并修改`GRUB_CMDLINE_LINUX`参数。 例如：
+1. 在 grub 配置中修改内核引导行，以使其包含 Azure 的其他内核参数。 若要执行此配置，请打开`/etc/default/grub`在文本编辑器中，并修改`GRUB_CMDLINE_LINUX`参数。 例如：
 
     ```sh
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
@@ -225,13 +225,13 @@ ms.locfileid: "39399781"
     rhgb quiet crashkernel=auto
     ```
 
-9. 完成 `/etc/default/grub` 编辑后，运行以下命令以重新生成 grub 配置：
+1. 完成 `/etc/default/grub` 编辑后，运行以下命令以重新生成 grub 配置：
 
     ```sh
     # grub2-mkconfig -o /boot/grub2/grub.cfg
     ```
 
-10. 将 Hyper-V 模块添加到 initramfs 中。
+1. 将 Hyper-V 模块添加到 initramfs 中。
 
     编辑 `/etc/dracut.conf` 并添加以下内容：
 
@@ -245,13 +245,13 @@ ms.locfileid: "39399781"
     # dracut -f -v
     ```
 
-11. 卸载 cloud-init：
+1. 卸载 cloud-init：
 
     ```sh
     # yum remove cloud-init
     ```
 
-12. 确保已安装 SSH 服务器且已将其配置为在引导时启动。
+1. 确保已安装 SSH 服务器且已将其配置为在引导时启动。
 
     ```sh
     # systemctl enable sshd
@@ -264,13 +264,13 @@ ms.locfileid: "39399781"
     ClientAliveInterval 180
     ```
 
-13. WALinuxAgent 包 `WALinuxAgent-<version>` 已推送到 Red Hat extras 存储库。 通过运行以下命令启用 extras 存储库：
+1. WALinuxAgent 包 `WALinuxAgent-<version>` 已推送到 Red Hat extras 存储库。 通过运行以下命令启用 extras 存储库：
 
     ```sh
     # subscription-manager repos --enable=rhel-7-server-extras-rpms
     ```
 
-14. 通过运行以下命令来安装 Azure Linux 代理：
+1. 通过运行以下命令来安装 Azure Linux 代理：
 
     ```sh
     # yum install WALinuxAgent
@@ -282,7 +282,7 @@ ms.locfileid: "39399781"
     # systemctl enable waagent.service
     ```
 
-15. 不要在操作系统磁盘上创建交换空间。
+1. 不要在操作系统磁盘上创建交换空间。
 
     Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 本地资源磁盘是临时磁盘，并取消预配虚拟机后可能会清空。 在上一步中安装 Azure Linux 代理后，相应地在 `/etc/waagent.conf` 中修改以下参数：
 
@@ -294,15 +294,15 @@ ms.locfileid: "39399781"
     ResourceDisk.SwapSizeMB=2048    # NOTE: set this to whatever you need it to be.
     ```
 
-16. 通过运行以下命令取消注册订阅（如有必要）：
+1. 通过运行以下命令取消注册订阅（如有必要）：
 
     ```sh
     # subscription-manager unregister
     ```
 
-17. 如果您将使用企业证书颁发机构部署的系统，RHEL 虚拟机将不信任 Azure Stack 根证书。 您需要将它放入受信任的根存储区。 请参阅[添加受信任根证书服务器](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html)。
+1. 如果您将使用企业证书颁发机构部署的系统，RHEL 虚拟机将不信任 Azure Stack 根证书。 您需要将它放入受信任的根存储区。 请参阅[添加受信任根证书服务器](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html)。
 
-18. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
+1. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
 
     ```sh
     # sudo waagent -force -deprovision
@@ -310,9 +310,9 @@ ms.locfileid: "39399781"
     # logout
     ```
 
-19. 关闭 KVM 中的虚拟机。
+1. 关闭 KVM 中的虚拟机。
 
-20. 将 qcow2 映像转换为 VHD 格式。
+1. 将 qcow2 映像转换为 VHD 格式。
 
     > [!NOTE]
     > qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考：https://bugs.launchpad.net/qemu/+bug/1490611。
@@ -362,7 +362,7 @@ ms.locfileid: "39399781"
     HOSTNAME=localhost.localdomain
     ```
 
-2. 创建或编辑 `/etc/sysconfig/network-scripts/ifcfg-eth0` 文件并添加以下文本：
+1. 创建或编辑 `/etc/sysconfig/network-scripts/ifcfg-eth0` 文件并添加以下文本：
 
     ```sh
     DEVICE=eth0
@@ -375,19 +375,19 @@ ms.locfileid: "39399781"
     NM_CONTROLLED=no
     ```
 
-3. 通过运行以下命令，确保网络服务会在引导时启动：
+1. 通过运行以下命令，确保网络服务会在引导时启动：
 
     ```sh
     # sudo chkconfig network on
     ```
 
-4. 注册 Red Hat 订阅，以通过运行以下命令来启用来自 RHEL 存储库中的包的安装：
+1. 注册 Red Hat 订阅，以通过运行以下命令来启用来自 RHEL 存储库中的包的安装：
 
     ```sh
     # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
     ```
 
-5. 在 grub 配置中修改内核引导行，以使其包含 Azure 的其他内核参数。 若要执行此修改，请打开`/etc/default/grub`在文本编辑器中，并修改`GRUB_CMDLINE_LINUX`参数。 例如：
+1. 在 grub 配置中修改内核引导行，以使其包含 Azure 的其他内核参数。 若要执行此修改，请打开`/etc/default/grub`在文本编辑器中，并修改`GRUB_CMDLINE_LINUX`参数。 例如：
 
     ```sh
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
@@ -401,13 +401,13 @@ ms.locfileid: "39399781"
 
     图形引导和无人参与引导不适用于云环境，在该环境中我们想要将所有日志都发送到串行端口。 如果需要，可以保留配置的 `crashkernel` 选项。 请注意，此参数可以将虚拟机中的可用内存量减少 128 MB 或更多，遇到较小的虚拟机大小时，此配置可能会有问题。
 
-6. 完成 `/etc/default/grub` 编辑后，运行以下命令以重新生成 grub 配置：
+1. 完成 `/etc/default/grub` 编辑后，运行以下命令以重新生成 grub 配置：
 
     ```sh
     # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
     ```
 
-7. 将 Hyper-V 模块添加到 initramfs 中。
+1. 将 Hyper-V 模块添加到 initramfs 中。
 
     编辑 `/etc/dracut.conf`，添加内容：
 
@@ -421,26 +421,26 @@ ms.locfileid: "39399781"
     # dracut -f -v
     ```
 
-8. 请确保已安装 SSH 服务器且已将其配置为在引导时启动。 此设置通常是默认设置。 修改 `/etc/ssh/sshd_config` 以包含以下行：
+1. 请确保已安装 SSH 服务器且已将其配置为在引导时启动。 此设置通常是默认设置。 修改 `/etc/ssh/sshd_config` 以包含以下行：
 
     ```sh
     ClientAliveInterval 180
     ```
 
-9. WALinuxAgent 包 `WALinuxAgent-<version>` 已推送到 Red Hat extras 存储库。 通过运行以下命令启用 extras 存储库：
+1. WALinuxAgent 包 `WALinuxAgent-<version>` 已推送到 Red Hat extras 存储库。 通过运行以下命令启用 extras 存储库：
 
     ```sh
     # subscription-manager repos --enable=rhel-7-server-extras-rpms
     ```
 
-10. 通过运行以下命令来安装 Azure Linux 代理：
+1. 通过运行以下命令来安装 Azure Linux 代理：
 
     ```sh
     # sudo yum install WALinuxAgent
     # sudo systemctl enable waagent.service
     ```
 
-11. 不要在操作系统磁盘上创建交换空间。
+1. 不要在操作系统磁盘上创建交换空间。
 
     Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，并可能在取消预配虚拟机时被清空。 在上一步中安装 Azure Linux 代理后，相应地在 `/etc/waagent.conf` 中修改以下参数：
 
@@ -452,15 +452,15 @@ ms.locfileid: "39399781"
     ResourceDisk.SwapSizeMB=2048    # NOTE: set this to whatever you need it to be.
     ```
 
-12. 如果想要取消注册订阅，运行以下命令：
+1. 如果想要取消注册订阅，运行以下命令：
 
     ```sh
     # sudo subscription-manager unregister
     ```
 
-13. 如果您将使用企业证书颁发机构部署的系统，RHEL 虚拟机将不信任 Azure Stack 根证书。 您需要将它放入受信任的根存储区。 请参阅[添加受信任根证书服务器](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html)。
+1. 如果您将使用企业证书颁发机构部署的系统，RHEL 虚拟机将不信任 Azure Stack 根证书。 您需要将它放入受信任的根存储区。 请参阅[添加受信任根证书服务器](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html)。
 
-14. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
+1. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
 
     ```sh
     # sudo waagent -force -deprovision
@@ -468,7 +468,7 @@ ms.locfileid: "39399781"
     # logout
     ```
 
-15. 关闭虚拟机，将 VMDK 文件转换为 VHD 格式。
+1. 关闭虚拟机，将 VMDK 文件转换为 VHD 格式。
 
     > [!NOTE]
     > qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： <https://bugs.launchpad.net/qemu/+bug/1490611.>
@@ -626,11 +626,11 @@ ms.locfileid: "39399781"
     %end
     ```
 
-2. 将 kickstart 文件放在安装系统可以访问的位置。
+1. 将 kickstart 文件放在安装系统可以访问的位置。
 
-3. 在 Hyper-V 管理器中，创建新的虚拟机。 在“连接虚拟硬盘”页上，选择“稍后附加虚拟硬盘”，并完成新建虚拟机向导。
+1. 在 Hyper-V 管理器中，创建新的虚拟机。 在“连接虚拟硬盘”页上，选择“稍后附加虚拟硬盘”，并完成新建虚拟机向导。
 
-4. 打开虚拟机设置：
+1. 打开虚拟机设置：
 
     a. 将新的虚拟硬盘附加到虚拟机。 请务必选择“VHD 格式”和“固定大小”。
 
@@ -638,11 +638,11 @@ ms.locfileid: "39399781"
 
     c. 将 BIOS 设置为从 CD 启动。
 
-5. 启动虚拟机。 当安装指南出现时，请按 **Tab** 键来配置启动选项。
+1. 启动虚拟机。 当安装指南出现时，请按 **Tab** 键来配置启动选项。
 
-6. 在启动选项的末尾输入 `inst.ks=<the location of the kickstart file>` ，并按 **Enter**键。
+1. 在启动选项的末尾输入 `inst.ks=<the location of the kickstart file>` ，并按 **Enter**键。
 
-7. 等待安装完成。 完成后，虚拟机将自动关闭。 Linux VHD 现已准备好上传到 Azure。
+1. 等待安装完成。 完成后，虚拟机将自动关闭。 Linux VHD 现已准备好上传到 Azure。
 
 ## <a name="known-issues"></a>已知问题
 

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 07/08/2018
 ms.author: diberry
-ms.openlocfilehash: 963a7f8c196702ea899ddfe31e6187a15eb5f683
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 73e90e5ae86db2c2c4625762b285f8c86f0e241b
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223202"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398039"
 ---
 # <a name="manage-account-and-authoring-key"></a>管理帐户和创作密钥
 LUIS 帐户信息的两个关键部分是用户帐户和创作密钥。 登录信息在 [account.microsoft.com](https://account.microsoft.com) 上进行管理。 创作密钥在 [LUIS](luis-reference-regions.md) 网站的“设置”页面上进行管理。 
@@ -36,25 +36,6 @@ LUIS 帐户信息的两个关键部分是用户帐户和创作密钥。 登录�
 
 ## <a name="delete-account"></a>删除帐户
 要了解删除帐户时一并删除了哪些数据，请参阅[数据存储和删除](luis-concept-data-storage.md#accounts)。 
-
-## <a name="azure-active-directory-tenant-user"></a>Azure Active Directory 租户用户
-LUIS 使用标准的 Azure Active Directory (Azure AD) 许可流程。 
-
-租户管理员直接处理需要访问权限才能在 Azure AD 中使用 LUIS 的用户。 
-
-用户首先要登录 LUIS，此时看到需要管理员批准的弹出对话框。 继续操作之前，用户需联系租户管理员。 
-
-然后，租户管理员登录 LUIS，并看到一个“同意流”弹出对话框。 管理员需在此对话框中向用户授予权限。 管理员接受权限后，用户才能够继续使用 LUIS。
-
-如果租户管理员不登录 LUIS，还可访问 LUIS 的[同意](https://account.activedirectory.windowsazure.com/r#/applications)部分。 
-
-![应用网站授予的 Azure Active Directory 权限](./media/luis-how-to-account-settings/tenant-permissions.png)
-
-如果租户管理员只希望某些用户使用 LUIS，请参阅此[标识博客](https://blogs.technet.microsoft.com/tfg/2017/10/15/english-tips-to-manage-azure-ad-users-consent-to-applications-using-azure-ad-graph-api/)。
-
-### <a name="user-accounts-with-multiple-emails-for-collaborators"></a>具有多个协作者电子邮件的用户帐户
-如果将协作者添加到 LUIS 应用，则要指定协作者将 LUIS 用作协作者所需的确切电子邮件地址。 虽然 Azure Active Directory (Azure AD) 允许单名用户交替使用多个电子邮件帐户，但 LUIS 要求用户使用协作者列表中指定的电子邮件地址登录。 
-
 
 ## <a name="next-steps"></a>后续步骤
 

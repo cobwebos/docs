@@ -9,12 +9,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: a25c2b7ea7fdfcc6bcaa10baff3a5ae14ae9753b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 311d0cb7f208c0f720b8611510fb65efc65c12bc
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37044809"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112867"
 ---
 # <a name="speech-service-rest-apis"></a>语音服务 REST API
 
@@ -24,16 +24,16 @@ ms.locfileid: "37044809"
 
 在语音转文本 API 中，只有所用的终结点与旧版语音服务语音识别 API 不同。 新的终结点如下表所示。 使用与订阅区域匹配的终结点。
 
-[!include[](includes/endpoints-speech-to-text.md)]
+[!include[](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
 除此以外，语音转文本 API 与旧版语音 API 的 [REST API](https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedrest) 非常类似。
 
-语音转文本 REST API 仅支持简短话语。 请求最多可包含 10 秒的音频，总共持续 14 秒。 REST API 只返回最终结果，不返回部分或中间结果。
+语音转文本 REST API 仅支持简短语句。 请求最多可包含 10 秒的音频，总共持续 14 秒。 REST API 只返回最终结果，不返回部分或中间结果。
 
 > [!NOTE]
 > 如果已自定义声学/语言模型或发音，请改用自定义终结点。
 
-## <a name="text-to-speech"></a>文本转语音
+## <a name="text-to-speech"></a>文本到语音转换
 
 新的文本转语音 API 支持 24-KHz 的音频输出。 `X-Microsoft-OutputFormat` 标头现可包含以下值。
 
@@ -55,7 +55,7 @@ en-US  | 美式英语 | 男   | “Microsoft 服务器语音的文本转语音�
 
 下面是统一语音服务文本转语音 API 的 REST 终结点。 请使用与订阅区域匹配的终结点。
 
-[!include[](includes/endpoints-text-to-speech.md)]
+[!include[](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
 在参考介绍旧版语音 API 的 [REST API 文档](https://docs.microsoft.com/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput)时，请牢记这些差异。
 
@@ -63,7 +63,7 @@ en-US  | 美式英语 | 男   | “Microsoft 服务器语音的文本转语音�
 
 需具备访问令牌才能请求语音服务的 REST API。 可通过向区域语音服务 `issueToken` 终结点提供订阅密钥获取令牌，如下表所示。 请使用与订阅区域匹配的终结点。
 
-[!include[](includes/endpoints-token-service.md)]
+[!include[](../../../includes/cognitive-services-speech-service-endpoints-token-service.md)]
 
 每个访问令牌的有效期为 10 分钟。 可随时获取新令牌，包括在每个语音 REST API 请求之前获取（如果需要）。 但是，为了最大限度地减少流量和延迟，建议同一个令牌使用 9 分钟。
 
@@ -265,5 +265,7 @@ Connection: Keep-Alive
 
 ## <a name="next-steps"></a>后续步骤
 
-* [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)
-* [了解如何自定义语音模型](how-to-customize-speech-models.md)
+- [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)
+- [自定义声学模型](how-to-customize-acoustic-models.md)
+- [自定义语言模型](how-to-customize-language-model.md)
+

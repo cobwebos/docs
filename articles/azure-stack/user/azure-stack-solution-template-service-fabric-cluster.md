@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 05/08/2018
 ms.author: mattbriggs
 ms.reviewer: shnatara
-ms.openlocfilehash: acf850bdc56e55d13b13a40ef343f2f20c4a77ca
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 9feb2e538d3578fe259aa3fbc693a1e953f2f894
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969106"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440345"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>在 Azure Stack 中部署 Service Fabric 群集
 
@@ -39,9 +39,9 @@ ms.locfileid: "38969106"
     > [!NOTE]  
     > 可以使用自签名的证书取代 X.509 服务器证书进行测试。 自签名的证书不需要与群集的 FQDN 匹配。
 
-2.  **管理客户端证书**这是客户端用于在 Service Fabric 群集中进行身份验证的证书，可以是自签名的证书。 请参阅创建此客户端证书所要满足的[要求](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)。
+1.  **管理客户端证书**这是客户端用于在 Service Fabric 群集中进行身份验证的证书，可以是自签名的证书。 请参阅创建此客户端证书所要满足的[要求](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)。
 
-3.  
+1.  
   **必须在 Azure Stack 市场中提供以下各项：**
      - **Windows Server 2016** – 模板使用 Windows Server 2016 映像来创建群集。  
      - **客户脚本扩展** - Microsoft 提供的虚拟机扩展。  
@@ -125,15 +125,15 @@ ms.locfileid: "38969106"
 
    ![选择“Service Fabric 群集”](./media/azure-stack-solution-template-service-fabric-cluster/image2.png)
 
-2. 填写每个页（例如“基本信息”）中的部署窗体。 如果不确定要指定哪个值，请使用默认值。 选择“确定”转到下一页：
+1. 填写每个页（例如“基本信息”）中的部署窗体。 如果不确定要指定哪个值，请使用默认值。 选择“确定”转到下一页：
 
    ![基础](media/azure-stack-solution-template-service-fabric-cluster/image3.png)
 
-3. 在“网络设置”页上，可以指定要对应用程序打开的特定端口：
+1. 在“网络设置”页上，可以指定要对应用程序打开的特定端口：
 
    ![网络设置](media/azure-stack-solution-template-service-fabric-cluster/image4.png)
 
-4. 在“安全性”页上，添加在[创建 Azure KeyVault](#add-a-secret-to-key-vault) 中获取的值并上传机密。
+1. 在“安全性”页上，添加在[创建 Azure KeyVault](#add-a-secret-to-key-vault) 中获取的值并上传机密。
 
    对于“管理客户端证书指纹”，请输入管理客户端证书的指纹。 （请参阅[先决条件](#prerequisites)。）
    
@@ -144,9 +144,9 @@ ms.locfileid: "38969106"
 
    ![脚本输出](media/azure-stack-solution-template-service-fabric-cluster/image5.png)
 
-   ![“安全”](media/azure-stack-solution-template-service-fabric-cluster/image6.png)
+   ![安全](media/azure-stack-solution-template-service-fabric-cluster/image6.png)
 
-5. 完成向导，然后选择“创建”以部署 Service Fabric 群集。
+1. 完成向导，然后选择“创建”以部署 Service Fabric 群集。
 
 
 
@@ -170,7 +170,7 @@ ms.locfileid: "38969106"
 
     d. 在“证书存储”页上选择“个人”，然后完成向导。  
        ![证书存储](media/azure-stack-solution-template-service-fabric-cluster/image9.png)  
-2. 若要查找 Service Fabric 群集的 FQDN：  
+1. 若要查找 Service Fabric 群集的 FQDN：  
 
     a. 转到与 Service Fabric 群集关联的资源组，并找到“公共 IP 地址”资源。 选择与“公共 IP 地址”关联的对象，打开“公共 IP 地址”边栏选项卡。  
 
@@ -180,12 +180,12 @@ ms.locfileid: "38969106"
 
       ![DNS 名称](media/azure-stack-solution-template-service-fabric-cluster/image11.png)  
 
-3. 若要查找 Service Fabric Explorer 的 URL 和客户端连接终结点，请查看模板部署的结果。
+1. 若要查找 Service Fabric Explorer 的 URL 和客户端连接终结点，请查看模板部署的结果。
 
-4. 在浏览器中转到 https://*FQDN*:19080。 将 *FQDN* 替换为在步骤 2 中获取的 Service Fabric 群集 FQDN。   
+1. 在浏览器中转到 https://*FQDN*:19080。 将 *FQDN* 替换为在步骤 2 中获取的 Service Fabric 群集 FQDN。   
    如果使用了自签名的证书，屏幕上会显示一条警告，指出连接不安全。 若要继续访问网站，请依次选择“更多信息”、“继续访问网页”。 
 
-5. 若要在站点中进行身份验证，必须选择要使用的证书。 选择“更多选项”，选择适当的证书，然后单击“确定”连接到 Service Fabric Explorer。 
+1. 若要在站点中进行身份验证，必须选择要使用的证书。 选择“更多选项”，选择适当的证书，然后单击“确定”连接到 Service Fabric Explorer。 
 
    ![身份验证](media/azure-stack-solution-template-service-fabric-cluster/image14.png)
 
@@ -195,7 +195,7 @@ ms.locfileid: "38969106"
 
 1. 安装*Microsoft Azure Service Fabric SDK*从[准备开发环境上 Windows](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started#install-the-sdk-and-tools) Azure Service Fabric 文档中。  
 
-2. 安装完成后，配置系统环境变量，确保可从 PowerShell 访问 Service Fabric cmdlet。  
+1. 安装完成后，配置系统环境变量，确保可从 PowerShell 访问 Service Fabric cmdlet。  
     
     a. 转到“控制面板” > “系统和安全” > “系统”并选择“高级系统设置”。  
     
@@ -207,7 +207,7 @@ ms.locfileid: "38969106"
 
       ![环境变量列表](media/azure-stack-solution-template-service-fabric-cluster/image16.png)
 
-3. 更改环境变量的顺序后，重启 PowerShell，然后运行以下 PowerShell 脚本获取 Service Fabric 群集的访问权限：
+1. 更改环境变量的顺序后，重启 PowerShell，然后运行以下 PowerShell 脚本获取 Service Fabric 群集的访问权限：
 
    ````PowerShell  
     Connect-ServiceFabricCluster -ConnectionEndpoint "\[Service Fabric

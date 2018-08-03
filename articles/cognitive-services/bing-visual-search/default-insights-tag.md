@@ -10,16 +10,16 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: scottwhi
-ms.openlocfilehash: c0bf51ab86e2ba99aeb859ea415e1afd355a86f2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a0ced7076c566c819f9e3f7abc5e2fa3930fa0b3
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366309"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004295"
 ---
 # <a name="default-insights-tag"></a>默认见解标记
 
-默认见解标记是将 `displayName` 字段设置为空字符串的标记。 以下示例显示了可能的默认见解（操作）列表。
+默认见解标记是将 `displayName` 字段设置为空字符串的标记。 以下示例显示了可能的默认见解（操作）列表。 响应包含的操作列表由图像而定。 对于每个操作，属性列表可能因图像而异，因此在尝试使用该属性之前请检查其是否存在。
 
 ```json
 {
@@ -344,6 +344,9 @@ ProductVisualSearch 见解提供了与原始图像中显示的产品在视觉上
                 "shoppingSourcesCount" : 1,
                 "recipeSourcesCount" : 0,
                 "aggregateOffer" : {
+                  "name":"4-Piece Kitchen Package with...",
+                  "priceCurrency":"USD",
+                  "lowPrice":2756,
                   "offers" : [
                     {
                       "name" : "4-Piece Kitchen Package with...",
@@ -360,7 +363,8 @@ ProductVisualSearch 见解提供了与原始图像中显示的产品在视觉上
                       "availability" : "InStock",
                       "lastUpdated" : "2018-02-20T00:00:00.0000000"
                     }
-                  ]
+                  ],
+                  "offerCount":1
                 },
                 "pagesIncludingCount" : 4,
                 "availableSizesCount" : 2

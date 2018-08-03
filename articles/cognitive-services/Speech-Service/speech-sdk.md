@@ -8,28 +8,22 @@ manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 07/17/2018
 ms.author: v-jerkin
-ms.openlocfilehash: b9b7b8af5ce3d75788fd2c4f5e0309b5ca561a8f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ed523493f456e65f7aa5d3ad33914e3e52cd7044
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366816"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113382"
 ---
 # <a name="about-the-cognitive-services-speech-sdk"></a>关于认知服务语音 SDK
 
 使用认知服务语音软件开发工具包 (SDK)，应用程序可以直接访问语音服务的功能，这使得软件开发工作更为容易。 当前，该 SDK 提供了对**语音到文本**、**语音翻译**和**意向识别**功能的访问。
 
-下表列出了当前支持的编程语言和操作系统。
+[!include[Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
-|支持的操作系统|编程语言|
-|-|-|
-|Windows|C/C++、C#|
-|Linux|C/C++|
-|设备|Java\*|
-
-\* *Java SDK 是[语音设备 SDK](speech-devices-sdk.md) 的一部分。*
+[!include[License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
 ## <a name="get-the-windows-sdk"></a>获取 Windows SDK
 
@@ -49,9 +43,9 @@ sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2
 
 然后，[下载 SDK](https://aka.ms/csspeech/linuxbinary) 并将文件解压缩到你选择的一个目录中。 下表显示了 SDK 文件夹结构。
 
-|路径|说明|
+|路径|Description|
 |-|-|
-|`license.md`|许可证|
+|`license.md`|许可|
 |`third-party-notices.md`|第三方声明|
 |`include`|用于 C 和 C++ 的头文件|
 |`lib/x64`|用于与应用程序链接的本机 x64 库|
@@ -61,9 +55,25 @@ sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2
 
 ## <a name="get-the-java-sdk"></a>获取 Java SDK
 
-Java SDK 是[语音设备 SDK](speech-devices-sdk.md) 的一部分。
+将 Java SDK for Android 打包为 [AAR（Android 库）](https://developer.android.com/studio/projects/android-library)，其内附必要的库以及使用它所需的 Android 权限。
+它作为包 `com.microsoft.cognitiveservices.speech:client-sdk:0.5.0` 托管在 `https://csspeechstorage.blob.core.windows.net/maven/` 的 Maven 存储库中。
+如果使用 Android Studio 项目中的包，需进行以下更改：
+
+* 在项目级 `build.gradle` 文件中，向 `repository` 部分添加以下内容：
+
+  ```text
+  maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
+  ```
+
+* 在模块级 `build.gradle` 文件中，向 `dependencies` 部分添加以下内容：
+
+  ```text
+  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:0.5.0'
+  ```
+
+Java SDK 也是[语音设备 SDK](speech-devices-sdk.md) 的一部分。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)
-* [了解如何在 C# 中识别语音](quickstart-csharp-windows.md)
+* [了解如何在 C# 中识别语音](quickstart-csharp-dotnet-windows.md)

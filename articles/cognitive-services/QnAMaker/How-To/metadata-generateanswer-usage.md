@@ -9,12 +9,12 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: pchoudh
-ms.openlocfilehash: 94e3632884d7033971ff1c45b455afb9a09ee798
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 82e3ee460309f293c9bd7eadebe139f85e241f71
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "35366938"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113345"
 ---
 # <a name="using-metadata-and-the-generateanswer-api"></a>配合使用元数据与 GenerateAnswer API
 
@@ -57,7 +57,7 @@ ms.locfileid: "35366938"
     - **QnAMaker endpoint**（字符串）：部署在 Azure 订阅中的终结点的主机名。
 - **请求标头**
     - **Content-Type**（字符串）：发送到 API 的正文媒体类型。
-    - **Authorization**（字符串）：终结点密钥。
+    - **授权**（字符串）：终结点密钥 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。
 - **请求正文**
     - **question**（字符串）：要针对知识库查询的用户问题。
     - **top**（可选，整数）：要包含在输出中的排序结果数。 默认值为 1。
@@ -82,6 +82,7 @@ ms.locfileid: "35366938"
     - **answers** - 用户查询的答案列表，按分数排名的递减顺序排列。
         - **score**：排名分数，介于 0 到 100 之间。
         - **questions**：用户提供的问题。
+        - **answer**：问题的答案。
         - **source**：从中提取答案或将其存储在知识库中的源名称。
         - **metadata**：与答案关联的元数据。
             - name：元数据名称。 （字符串，最大长度：100，必填）

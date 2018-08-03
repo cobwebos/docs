@@ -10,12 +10,12 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 8160302faa373d69b65afe6b68a8efb44442850d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 41e0855b126ca6e54d0a487a88fe59a0be6f72f6
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366645"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071989"
 ---
 # <a name="your-first-bing-visual-search-query-in-java"></a>你的第一个采用 Java 的必应视觉搜索查询
 
@@ -147,6 +147,7 @@ public class UploadImage2 {
 ## <a name="next-steps"></a>后续步骤
 
 [使用见解标记获取有关图像的见解](../use-insights-token.md)  
+[必应视觉搜索图像上传教程](../tutorial-visual-search-image-upload.md)
 [必应视觉搜索单页应用教程](../tutorial-bing-visual-search-single-page-app.md)  
 [必应视觉搜索概述](../overview.md)  
 [试试看](https://aka.ms/bingvisualsearchtryforfree)  

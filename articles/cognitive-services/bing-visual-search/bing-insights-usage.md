@@ -10,12 +10,12 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: scottwhi
-ms.openlocfilehash: 102bd0e916491738d74956c209829008d779bcbf
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 927a02b400c7a7b250b315ad5668feb198fd590a
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366310"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005683"
 ---
 # <a name="examples-of-bing-insights-usage"></a>必应见解用法示例
 
@@ -61,7 +61,7 @@ ms.locfileid: "35366310"
 
 ## <a name="entity-insight-example"></a>Entity 见解示例
 
-以下介绍了必应如何显示图像中实体（人物、位置或事物）的相关信息。 如果用户单击实体链接，将针对实体转到 Bing.com/images 搜索结果页面。
+以下介绍了必应如何显示图像中实体（人物、位置或事物）的相关信息。 如果用户单击实体链接，将针对实体转到 Bing.com 搜索结果页面。
 
 ![图像中显示的实体](./media/entity.PNG)
 

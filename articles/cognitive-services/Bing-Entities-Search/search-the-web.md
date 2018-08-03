@@ -10,12 +10,12 @@ ms.component: bing-entity-search
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: scottwhi
-ms.openlocfilehash: f1b87c07d5b56307fd6b3fc68999598aeab6eb82
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 275430bc6ee8f935978243e61f68713974648189
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366566"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008104"
 ---
 # <a name="what-is-bing-entity-search"></a>什么是必应实体搜索？
 
@@ -45,6 +45,8 @@ ms.locfileid: "35366566"
 ## <a name="the-response"></a>响应
 
 响应包含 [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#searchresponse) 对象。 如果必应找到相关的实体或场所，则此对象会包含 `entities` 和/或 `places` 字段。 否则，响应对象不包含任一字段。
+> [!NOTE]
+> 实体响应支持多个市场，但 Places 响应仅支持美国业务位置。 
 
 `entities` 字段是一个 [EntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entityanswer) 对象，该对象包含 [Entity](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity) 对象的列表（参见 `value` 字段）。 此列表可能包含单个主实体和/或多个消除歧义实体。 
 
@@ -189,6 +191,8 @@ ms.locfileid: "35366566"
     "Restaurant"]
 }, ...
 ```
+> [!NOTE]
+> 实体响应支持多个市场，但 Places 响应仅支持美国业务位置。 
 
 本地感知型实体查询（例如“我附近的餐馆”）需要用户的位置才能提供准确结果。 请求应始终使用 X-Search-Location 和 X-MSEdge-ClientIP 标头来指定用户的位置。 如果必应认为查询可以利用用户的位置，它会将 [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#querycontext) 的 `askUserForLocation` 字段设置为 **true**。 
 
@@ -237,9 +241,9 @@ ms.locfileid: "35366566"
 
 必应实体 API 响应包含第三方拥有的信息。 你有责任确保使用适当，例如通过遵守用户体验可能依据的任何 Creative Commons 许可证。
 
-如果答案或结果包含 `contractualRules`、`attributions` 或 `provider` 字段，则必须对数据归类。 如果答案不包含这些字段中的任意一个，则不需要归类。 如果答案包含 `contractualRules`字段以及 `attributions` 和/或 `provider` 字段，则必须使用协定规则对数据归类。
+如果答案或结果包含 `contractualRules`、`attributions` 或 `provider` 字段，则必须对数据归类。 如果答案不包含这些字段中的任意一个，则无需进行归属。 如果答案包括 `contractualRules` 字段以及 `attributions` 和/或 `provider` 字段，则必须使用合同规则对数据进行归属。
 
-以下示例显示包括 MediaAttribution 协定规则的实体和包括 `provider` 字段的图像。 MediaAttribution 规则将图像识别为规则的目标，因此请忽略图像的 `provider` 字段，改用 MediaAttribution 规则来提供属性。  
+以下示例显示了包括 MediaAttribution 合同规则的实体和包括 `provider` 字段的图像。 MediaAttribution 规则将图像识别为规则的目标，因此将忽略图像的 `provider` 字段，改用 MediaAttribution 规则提供属性。  
 
 ```json
 "value": [{
@@ -268,7 +272,7 @@ ms.locfileid: "35366566"
 }]
 ```
 
-如果协定规则包含 `targetPropertyName` 字段，则该规则仅适用于目标字段。 否则，该规则适用于包含 `contractualRules` 字段的父对象。
+如果合同规则包括 `targetPropertyName` 字段，则该规则仅适用于目标字段。 否则，该规则适用于包含 `contractualRules` 字段的父对象。
 
 在以下示例中，`LinkAttribution` 规则包含 `targetPropertyName` 字段，因此该规则适用于 `description` 字段。 对于适用于特定字段的规则，必须紧随提供商网站的超链接所在的目标数据包含一行。 例如，若要对说明归类，请紧随提供商网站上的数据的超链接所在的说明文本包括一行，在此示例中，就是创建 contoso.com 的链接。
 
@@ -293,25 +297,25 @@ ms.locfileid: "35366566"
 
 如果协定规则的列表包含 [LicenseAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#licenseattribution) 规则，则必须在紧随许可证应用到的内容的行中显示声明。 `LicenseAttribution` 规则使用 `targetPropertyName` 字段识别许可证适用的属性。
 
-下面显示了包含 `LicenseAttribution` 规则的一个示例。
+以下内容显示了包括 `LicenseAttribution` 规则的示例。
 
 ![许可证属性](./media/cognitive-services-bing-entities-api/licenseattribution.png)
 
-显示的许可证声明必须包含一个网站超链接，该网站包含许可证的信息。 通常会将许可证名称作为超链接。 例如，如果声明是“文本需 CC-BY-SA 许可证”，且 CC-BY-SA 是许可证名称，则让 CC-BY-SA 成为超链接。
+你显示的许可证通知必须包括指向包含许可证相关信息的网站的超链接。 通常会将许可证名称作为超链接。 例如，如果声明是“文本需 CC-BY-SA 许可证”，且 CC-BY-SA 是许可证名称，则让 CC-BY-SA 成为超链接。
 
 ### <a name="link-and-text-attribution"></a>链接和文本属性
 
-[LinkAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#linkattribution) 和 [TextAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#textattribution) 规则通常用于识别数据提供程序。 `targetPropertyName` 字段标识规则应用到的字段。
+[LinkAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#linkattribution) 和 [TextAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#textattribution) 规则通常用于识别数据提供程序。 `targetPropertyName` 字段识别该规则适用的字段。
 
-若要对提供商归类，请紧随属性所应用到的内容（例如，目标字段）包括一行。 该行应明确标记，指示提供商是数据的来源。 例如，“数据来自: contoso.com”。 对于 `LinkAttribution` 规则，必须创建指向提供商网址的超链接。
+要归属提供程序，则包括紧跟属性适用内容的一行（例如，目标字段）。 该行应明确标记，指示提供商是数据的来源。 例如，“数据来自: contoso.com”。 对于 `LinkAttribution` 规则，必须创建指向提供商网址的超链接。
 
-下面显示了包含 `LinkAttribution` 和 `TextAttribution` 规则的一个示例。
+以下内容显示了包括 `LinkAttribution` 和 `TextAttribution` 规则的示例。
 
 ![链接文本属性](./media/cognitive-services-bing-entities-api/linktextattribution.png)
 
 ### <a name="media-attribution"></a>媒体属性
 
-如果实体包括图像而该图像会显示，则必须提供指向提供商网站的点击链接。 如果实体包括 [MediaAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#mediaattribution) 规则，请使用规则的 URL 创建点击链接。 否则，请使用包括在图像的 `provider` 字段中的 URL 创建点击链接。
+如果实体包括图像而该图像会显示，则必须提供指向提供商网站的点击链接。 如果实体包括 [MediaAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#mediaattribution) 规则，则使用规则的 URL 创建点击链接。 否则，请使用包括在图像的 `provider` 字段中的 URL 创建点击链接。
 
 下面显示的一个示例包含图像的 `provider` 字段和协定规则。 由于此示例包含协定规则，请忽略图像的 `provider` 字段并应用 `MediaAttribution` 规则。
 
