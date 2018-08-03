@@ -3,19 +3,19 @@ title: LUIS 预构建实体参考 - Azure | Microsoft Docs
 titleSuffix: Azure
 description: 本文包含了语言理解 (LUIS) 中包括的预构建实体的列表。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 7ce50e4c0be605e1700a2c18533cb087384f524c
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.date: 07/11/2018
+ms.author: diberry
+ms.openlocfilehash: 731ac279b4b0c162809d8e0638b9337924859b3d
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36316878"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238823"
 ---
 # <a name="entities-per-culture"></a>每个语言区域的实体
 
@@ -23,11 +23,12 @@ ms.locfileid: "36316878"
 
 预构建实体   |   英语(美国)<br>```En-us```   |   法语(法国)<br>```fr-FR```   |   意大利语(意大利)<br>```it-IT```   |   西班牙语(西班牙)<br>```es-ES```   |   中文<br>```zh-CN```   |   德语<br>```de-DE```   |   葡萄牙语(巴西)<br>```pt-BR```   |   日语(日本)<br>```ja-JP```   |   韩语(韩国)<br>```ko-kr```   | 法语(加拿大)<br>```fr-CA```   |   西班牙语(墨西哥)<br>```es-MX```   |   荷兰语(荷兰)<br>```nl-NL```   |
 ------|:------:|------|------|------|------|------|------|------|------|------|------|------|
-[存在时长](luis-reference-prebuilt-age.md)：<br>年<br>月<br>周<br>日   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |   -   |   -   |   -   |   -   |
+[存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |   -   |   -   |   -   |   -   |
 [货币](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |   -   |   -   |   -   |   -   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>日期<br>日期范围<br>时间<br>时间范围   |    ✔   |   ✔   |   -   |   ✔   |    ✔   |   -   |   ✔   |   -   |   -   |   -   |   -   |   -   |
-[维度](luis-reference-prebuilt-dimension.md)：<br>体积<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |   -   |   -   |   -   |   -   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>日期<br>daterange<br>time<br>时间范围   |    ✔   |   ✔   |   -   |   ✔   |    ✔   |   -   |   ✔   |   -   |   -   |   -   |   -   |   -   |
+[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |   -   |   -   |   -   |   -   |
 [电子邮件](luis-reference-prebuilt-email.md)   |    ✔   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |
+[keyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   |   ✔   |   ✔   |   ✔   |   -   |   ✔   |   ✔   |   ✔   |   ✔   |   ✔   |   ✔   |   ✔   |
 [数字](luis-reference-prebuilt-number.md)   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |   -   |   -   |   -   |   -   |
 [序号](luis-reference-prebuilt-ordinal.md)   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |   -   |   -   |   -   |   -   |
 [百分比](luis-reference-prebuilt-percentage.md)   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |   -   |   -   |   -   |   -   |
@@ -37,16 +38,19 @@ ms.locfileid: "36316878"
 
 请参阅有关[已废弃的预构建实体](luis-reference-prebuilt-deprecated.md)的说明。
 
-## <a name="examples-of-prebuilt-entities-in-en-us-culture"></a>en-us 语言区域中的预构建实体的示例
-下表列出了预构建实体以及示例数据和返回值。
+KeyPhrase 不适用于葡萄牙语（巴西）的所有子区域 - ```pt-BR```。
 
-预构建实体   |   陈述示例   |   JSON
+<!--
+## Examples of prebuilt entities in en-us culture
+The following table lists prebuilt entities with example data and the return values.
+
+Prebuilt entity   |   Example utterance   |   JSON
 ------|------|------|
  ```builtin.age```   |   ```100 year old```   |```{ "type": "builtin.age", "entity": "100 year old" }```|  
  ```builtin.age```   |   ```19 years old```   |```{ "type": "builtin.age", "entity": "19 years old" }```|
  ```builtin.currency```     |   ```1000.00 US dollars```   |```{ "type": "builtin.currency", "entity": "1000.00 us dollars" }```
  ```builtin.currency```     |   ```$ 67.5 B```   |```{ "type": "builtin.currency", "entity": "$ 67.5" }```|
- ```builtin.datetimeV2``` | 请参阅 [builtin.datetimeV2](luis-reference-prebuilt-datetimev2.md) | 请参阅 [builtin.datetimeV2](luis-reference-prebuilt-datetimev2.md) |
+ ```builtin.datetimeV2``` | See [builtin.datetimeV2](luis-reference-prebuilt-datetimev2.md) | See [builtin.datetimeV2](luis-reference-prebuilt-datetimev2.md) |
  ```builtin.dimension```     |   ```2 miles```   |```{ "type": "builtin.dimension", "entity": "2 miles" }```|
  ```builtin.dimension```     |  ```650 square kilometers```   |```{ "type": "builtin.dimension", "entity": "650 square kilometers" }```|
  ```builtin.email```     |  ```patti.owens@microsoft.com```   |```{ "type": "builtin.email", "entity": "patti.owens@microsoft.com" }```|
@@ -59,7 +63,7 @@ ms.locfileid: "36316878"
  ```builtin.temperature```     |   ```10 degrees celsius```   | ```{ "type": "builtin.temperature", "entity": "10 degrees celcius" }```|   
  ```builtin.temperature```     |   ```78 F```   |```{ "type": "builtin.temperature", "entity": "78 f" }```|
  ```builtin.url```     |   ```http://www.luis.ai is a great cognitive service```   |```{ "type": "builtin.url", "entity": "http://www.luis.ai" }```|
-
+-->
 
 ## <a name="contribute-to-prebuilt-entity-cultures"></a>为预构建实体语言区域做贡献
 预构建实体是在 Recognizers-Text 开发源代码项目中开发的。 请为该项目[贡献自己的力量](https://github.com/Microsoft/Recognizers-Text)。 该项目包括每个语言区域的货币的示例。 

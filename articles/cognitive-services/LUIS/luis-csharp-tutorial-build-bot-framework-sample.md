@@ -2,19 +2,19 @@
 title: 在 Azure 中使用 Bot Builder SDK for C# 将 LUIS 与机器人集成 | Microsoft Docs
 description: 使用 Bot Framework 生成与 LUIS 应用程序集成的机器人。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/06/2018
-ms.author: v-geberr
-ms.openlocfilehash: 273fca51d83f25e2657b51b68179e46f4295f92b
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.author: diberry
+ms.openlocfilehash: ca893dadfed04c90a4d89087299bf1cc2bf55eb9
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36263874"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225952"
 ---
 # <a name="web-app-bot-using-the-luis-template-for-c"></a>使用适用于 C# 的 LUIS 模板的 Web 应用机器人
 
@@ -47,7 +47,7 @@ ms.locfileid: "36263874"
     * 将“应用名称”设置为机器人名称。 将机器人部署到云（例如，mynotesbot.azurewebsites.net）时，该名称用作子域。 <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
     * 选择“订阅”、“[资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)”、“应用服务计划”和“[位置](https://azure.microsoft.com/regions/)”。
     * 对于“机器人模板”字段，选择“语言理解(C#)”模板。
-    * 选择“LUIS 应用位置”。 这是创建应用的创作[区域][LUIS]。
+    * 选择“LUIS 应用位置”。 这是创建应用的创作[区域](luis-reference-regions.md)。
     * 勾选法律声明的确认复选框。 法律声明条款在该复选框下方。
 
     ![Bot 服务](./media/luis-tutorial-cscharp-web-bot/bot-service-setting-callout-template.png)
@@ -72,7 +72,7 @@ ms.locfileid: "36263874"
 
 ## <a name="connect-your-luis-app-to-the-bot"></a>将 LUIS 应用连接到机器人
 
-打开“应用程序设置”并编辑“LuisAppId”字段，以包含 LUIS 应用的应用程序 ID。 如果在美国西部以外的区域创建了 HomeAutomation LUIS 应用，则还需要更改 LuisAPIHostName。 LuisAPIKey 当前设为创作密钥。 在流量超出免费层配额时，将其更改为订阅密钥。 
+打开“应用程序设置”并编辑“LuisAppId”字段，以包含 LUIS 应用的应用程序 ID。 如果在美国西部以外的区域创建了 HomeAutomation LUIS 应用，则还需要更改 LuisAPIHostName。 LuisAPIKey 当前设为创作密钥。 在流量超出免费层配额时，将其更改为终结点密钥。 
 
   ![更新 Azure 中的 LUIS 应用 ID](./media/luis-tutorial-cscharp-web-bot/bot-service-app-settings.png)
 
@@ -80,7 +80,7 @@ ms.locfileid: "36263874"
 > 如果没有[家庭自动化应用](luis-get-started-create-app.md)的 LUIS 应用 ID，请使用登录 Azure 所用的同一帐户登录到 [LUIS](luis-reference-regions.md) 网站。 
 > 1. 单击“我的应用”。 
 > 2. 查找之前创建的 LUIS 应用，该应用包含 HomeAutomation 域中的意向和实体。
-> 3. 在 LUIS 应用的“设置”页上，查找并复制应用 ID。 请确保该应用[已训练](interactive-test.md)且[已发布](PublishApp.md)。 
+> 3. 在 LUIS 应用的“设置”页上，查找并复制应用 ID。 请确保该应用[已训练](luis-interactive-test.md)且[已发布](luis-how-to-publish-app.md)。 
 
     > [!WARNING]
     > If you delete your app ID or LUIS key, the bot will stop working.
@@ -145,13 +145,13 @@ ms.locfileid: "36263874"
    ![通过网上聊天测试 HomeAutomation 机器人](./media/luis-tutorial-cscharp-web-bot/bot-service-chat-results.png)
 
 > [!TIP]
-> 无需对机器人代码进行任何修改即可重新训练 LUIS 应用。 请参阅[添加示例陈述](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances)和[训练和测试 LUIS 应用](https://docs.microsoft.com/azure/cognitive-services/LUIS/interactive-test)。 
+> 无需对机器人代码进行任何修改即可重新训练 LUIS 应用。 请参阅[添加示例陈述](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances)和[训练和测试 LUIS 应用](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-interactive-test)。 
 
 ## <a name="download-the-bot-to-debug"></a>下载机器人以进行调试
 如果机器人不能正常运行，请将此项目下载至本地计算机并继续[调试](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-an-azure-app-service-web-app-c-bot)。 
 
 ## <a name="learn-more-about-bot-framework"></a>深入了解 Bot Framework
-深入了解 [Bot Framework](https://dev.botframework.com/) 及 [3.x](https://github.com/Microsoft/BotBuilder) 和 [4.x](https://github.com/Microsoft/botbuilder-dotnet) SDK。
+深入了解 [Bot Framework](https://dev.botframework.com/) 以及 [3.x](https://github.com/Microsoft/BotBuilder) 和 [4.x](https://github.com/Microsoft/botbuilder-dotnet) SDK。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -170,7 +170,6 @@ ms.locfileid: "36263874"
 [BFPortal]: https://dev.botframework.com/
 [RegisterInstructions]: https://docs.microsoft.com/bot-framework/portal-register-bot
 [BotFramework]: https://docs.microsoft.com/bot-framework/
-[AssignedEndpointDoc]: https://docs.microsoft.com/azure/cognitive-services/LUIS/manage-keys
 [VisualStudio]: https://www.visualstudio.com/
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
+
 <!-- tested on Win10 -->

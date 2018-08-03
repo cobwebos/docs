@@ -10,22 +10,22 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 6c358b5a40b1d8e91c2e1af5eb493b13604cf82e
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 84b577cd00d333717a7a5ad1f66182605429f9f1
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045052"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213327"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>使用语音服务中的“文本转语音”功能
 
 通过简单的 HTTP 请求即可获取语音服务的“文本转语音”功能。 通过 POST 方法将要口述的文本发布到相应的终结点，然后服务即会返回包含合成语音的音频文件 (`.wav`)。 之后，应用程序可根据需要使用此音频。
 
-文本转语音的 POST 请求的正文可为纯文本（ASCII 或 UTF8），也可为 [SSML](speech-synthesis-markup.md) 文档。 使用默认语音说出纯文本请求。 多数情况下建议使用 SSML 正文。 HTTP 请求必须包含授权令牌。 
+文本转语音的 POST 请求的正文可为纯文本（ASCII 或 UTF8），也可为 [SSML](speech-synthesis-markup.md) 文档。 使用默认语音说出纯文本请求。 多数情况下建议使用 SSML 正文。 HTTP 请求必须包含[授权](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#authentication)令牌。 
 
 区域性的“文本转语音”终结点显示如下。 请使用适合你的订阅的终结点。
 
-[!include[](includes/endpoints-text-to-speech.md)]
+[!include[](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
 ## <a name="specify-a-voice"></a>指定语音
 
@@ -84,10 +84,10 @@ Response audio payload
 
 如果发生错误，则使用以下状态代码。 错误的响应正文还包含问题说明。
 
-|代码|说明|问题|
+|代码|Description|问题|
 |-|-|-|
 400 |错误的请求 |必需参数缺失、为空或为 null。 或者，传递给必需参数或可选参数的值无效。 常见问题是标头太长。
-401|未授权 |未授权请求。 请检查确保订阅密钥或令牌有效。
+401|未授权 |请求未经授权。 请检查确保订阅密钥或令牌有效。
 413|请求实体太大|SSML 输入超过了 1024 个字符。
 |502|错误的网关    | 网络或服务器端问题。 也可能表示标头无效。
 
@@ -96,4 +96,6 @@ Response audio payload
 ## <a name="next-steps"></a>后续步骤
 
 - [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)
-- [在 C# 中识别语音](quickstart-csharp-windows.md)
+- [在 C++ 中识别语音](quickstart-cpp-windows.md)
+- [在 C# 中识别语音](quickstart-csharp-dotnet-windows.md)
+- [在 Java 中识别语音](quickstart-java-android.md)

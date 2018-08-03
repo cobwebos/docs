@@ -2,25 +2,25 @@
 title: 了解 LUIS 应用程序访问权限 - Azure | Microsoft Docs
 description: 了解如何访问 LUIS 创作。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: 44380e12e6d095e8d40675af0b6b2fddc5e4c4e9
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.author: diberry
+ms.openlocfilehash: 13b769a0b5a940e0f3dd5f2e0cc3567d9879ee0d
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264261"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223773"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>创作和终结点用户访问权限
 所有者和协作者具有创作访问权限。 对于专用应用，所有者和协作者具有终结点访问权限。 对于公共应用，任何具有 LUIS 帐户和公共应用 ID 的人员均具有终结点访问权限。 
 
 ## <a name="access-to-authoring"></a>访问创作
-从 [LUIS][LUIS] 网站或[创作 API](https://aka.ms/luis-authoring-apis) 访问应用的权限由应用的所有者控制。 
+从 [LUIS](luis-reference-regions.md#luis-website) 网站或[创作 API](https://aka.ms/luis-authoring-apis) 访问应用的权限由应用的所有者控制。 
 
 所有者和所有协作者具有创作应用的权限。 
 
@@ -33,7 +33,7 @@ ms.locfileid: "36264261"
 |公开应用|如果应用公开，任何拥有创作或终结点密钥的人员都可以查询应用。|
 |修改模型|
 |发布|
-|查看用于[主动学习](label-suggested-utterances.md)的终结点陈述|
+|查看用于[主动学习](luis-how-to-review-endoint-utt.md)的终结点陈述|
 |训练|
 
 ## <a name="access-to-endpoint"></a>访问终结点
@@ -50,7 +50,7 @@ ms.locfileid: "36264261"
 |--|--|--|
 |所有者的创作密钥| 最多 1000 个终结点命中数|
 |协作者的创作密钥| 最多 1000 个终结点命中数|
-|从[发布](publishapp.md)页添加的终结点密钥|所有者和协作者可以添加终结点密钥|
+|从[发布](luis-how-to-publish-app.md)页添加的终结点密钥|所有者和协作者可以添加终结点密钥|
 
 其他创作或终结点密钥没有访问权限。
 
@@ -61,6 +61,8 @@ ms.locfileid: "36264261"
 
 ## <a name="microsoft-user-accounts"></a>Microsoft 用户帐户
 创建者和协作者可以在“发布”页上向 LUIS 添加密钥。 用以在 Azure 门户中创建 LUIS 密钥的 Microsoft 用户帐户需为应用所有者或应用协作者。 
+
+请参阅 [Azure Active Directory 租户用户](luis-how-to-account-settings.md#azure-active-directory-tenant-user)，了解有关 Active Directory 用户帐户的详细信息。 
 
 <!--
 ### Individual consent
@@ -78,5 +80,3 @@ LUIS 成功通过了 ISO 27001:2013 和 ISO 27018:2014 审核，审核报表中�
 ## <a name="next-steps"></a>后续步骤
 
 请参阅[最佳做法](luis-concept-best-practices.md)，了解如何使用意向和实体进行最佳预测。
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

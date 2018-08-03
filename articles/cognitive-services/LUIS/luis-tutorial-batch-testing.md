@@ -3,386 +3,233 @@ title: 使用批处理测试来改进 LUIS 预测 | Microsoft Docs
 titleSuffix: Azure
 description: 负载批处理测试、查看结果、并通过更改提高 LUIS 预测。
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/19/2018
-ms.author: v-geberr
-ms.openlocfilehash: 5788f17f2724a0354a1db506971c2343c1800f01
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.date: 07/16/2018
+ms.author: diberry
+ms.openlocfilehash: 0e1f5d29917ba381d4767faffb65847cd2ff210f
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266390"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237802"
 ---
-# <a name="use-batch-testing-to-find-prediction-accuracy-issues"></a>使用批处理测试发现预测准确性问题
+# <a name="improve-app-with-batch-test"></a>使用批处理测试改进应用
 
 本教程演示如何使用批处理测试发现陈述预测问题。  
 
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 
+<!-- green checkmark -->
 > [!div class="checklist"]
 * 创建批处理测试文件 
 * 运行批处理测试
 * 查看测试结果
-* 修复意向错误
+* 修复错误 
 * 重新测试批处理
 
-## <a name="prerequisites"></a>先决条件
+本文需要一个免费的 [LUIS](luis-reference-regions.md#luis-website) 帐户，以便创作 LUIS 应用程序。
 
-> [!div class="checklist"]
-> * 本文还需要一个 [LUIS][LUIS] 帐户，以便创作 LUIS 应用程序。
+## <a name="before-you-begin"></a>开始之前
+如果尚未获得[查看终结点话语](luis-tutorial-review-endpoint-utterances.md)教程中所述的人力资源应用，请将 JSON [导入](luis-how-to-start-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。 要导入的应用位于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-review-HumanResources.json) Github 存储库中。
 
-> [!Tip]
-> 如果没有订阅，可以注册一个[免费帐户](https://azure.microsoft.com/free/)。
+若要保留原始人力资源应用，请在[设置](luis-how-to-manage-versions.md#clone-a-version)页上克隆版本，并将其命名为 `batchtest`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 
 
-## <a name="create-new-app"></a>创建新应用
-本文将使用预生成的域 HomeAutomation。 预生成的域具有用于控制 HomeAutomation 设备（例如灯）的意向、实体和陈述。 创建应用、添加域、训练并发布。
+将应用定型。
 
-1. 在 [LUIS] 网站，通过在“MyApps”页上选择“新建应用”来创建新应用。 
+## <a name="purpose-of-batch-testing"></a>批处理测试的目的
+批测试允许使用一组已知的已标记话语和实体来验证活动的定型模型的状态。 在 JSON 格式的批处理文件中，添加话语并设置要在话语中预测的所需实体标签。 
 
-    ![创建新应用](./media/luis-tutorial-batch-testing/create-app-1.png)
+<!--The recommended test strategy for LUIS uses three separate sets of data: example utterances provided to the model, batch test utterances, and endpoint utterances. --> 使用本教程以外的应用时，请确保不使用已经添加到意向的示例话语。 若要验证针对示例话语的批处理测试话语，请[导出](luis-how-to-start-new-app.md#export-app)应用。 比较应用示例话语和批处理测试话语。 
 
-2. 在对话框中输入名称 `Batchtest-HomeAutomation`。
+批处理测试的要求：
 
-    ![输入应用名称](./media/luis-tutorial-batch-testing/create-app-2.png)
+* 每个测试的最大话语量为 1000 个。 
+* 没有重复项。 
+* 允许的实体类型：仅简单、层次（仅父级）和复合的机器学习实体。 批处理测试仅适用于机器学习意向和实体。
 
-3. 在左下角选择“预生成的域”。 
+## <a name="create-a-batch-file-with-utterances"></a>使用话语创建批处理文件
+1. 在文本编辑器（如 [VSCode](https://code.visualstudio.com/)）中创建 `HumanResources-jobs-batch.json`。 
 
-    ![选择“预生成的域”](./media/luis-tutorial-batch-testing/prebuilt-domain-1.png)
+2. 在 JSON 格式的批处理文件中，使用想要在测试中预测的意向添加话语。 
 
-4. 为 HomeAutomation 选择“添加域”。
-
-    ![添加 HomeAutomation 域](./media/luis-tutorial-batch-testing/prebuilt-domain-2.png)
-
-5. 在右上方导航栏中选择“训练”。
-
-    ![选择“训练”按钮](./media/luis-tutorial-batch-testing/train-button.png)
-
-## <a name="batch-test-criteria"></a>批处理测试条件
-批处理测试一次最多可以测试 1000 个陈述。 批处理不应具有重复项。 [导出](create-new-app.md#export-app)应用以查看当前陈述列表。  
-
-LUIS 测试策略使用三个单独的数据集：模型陈述、批处理测试陈述和终结点陈述。 在本教程中，请确保没有使用来自模型陈述（添加到意向）或终结点陈述的陈述。 
-
-请勿在批处理测试中使用应用中已有的任何陈述：
-
-```
-'breezeway on please',
-'change temperature to seventy two degrees',
-'coffee bar on please',
-'decrease temperature for me please',
-'dim kitchen lights to 25 .',
-'fish pond off please',
-'fish pond on please',
-'illuminate please',
-'living room lamp on please',
-'living room lamps off please',
-'lock the doors for me please',
-'lower your volume',
-'make camera 1 off please',
-'make some coffee',
-'play dvd',
-'set lights bright',
-'set lights concentrate',
-'set lights out bedroom',
-'shut down my work computer',
-'silence the phone',
-'snap switch fan fifty percent',
-'start master bedroom light .',
-'theater on please',
-'turn dimmer off',
-'turn off ac please',
-'turn off foyer lights',
-'turn off living room light',
-'turn off staircase',
-'turn off venice lamp',
-'turn on bathroom heater',
-'turn on external speaker',
-'turn on my bedroom lights .',
-'turn on the furnace room lights',
-'turn on the internet in my bedroom please',
-'turn on thermostat please',
-'turn the fan to high',
-'turn thermostat on 70 .' 
-```
-
-## <a name="create-a-batch-to-test-intent-prediction-accuracy"></a>创建批处理以测试意向预测准确性
-1. 在文本编辑器（如 [VSCode](https://code.visualstudio.com/)）中创建 `homeauto-batch-1.json`。 
-
-2. 使用想要在测试中预测的意向添加陈述。 在本教程中，出于简化目的，请采用 `HomeAutomation.TurnOn` 和 `HomeAutomation.TurnOff` 中的陈述，并在陈述中切换 `on` 和 `off` 文本。 对于 `None` 意向，添加一些不属于[域](luis-glossary.md#domain)（主题）区域的陈述。 
-
-    若要了解批处理测试结果与批处理 JSON 如何关联，只需添加六个意向。
-
-    ```JSON
-    [
-        {
-          "text": "lobby on please",
-          "intent": "HomeAutomation.TurnOn",
-          "entities": []
-        },
-        {
-          "text": "change temperature to seventy one degrees",
-          "intent": "HomeAutomation.TurnOn",
-          "entities": []
-        },
-        {
-          "text": "where is my pizza",
-          "intent": "None",
-          "entities": []
-        },
-        {
-          "text": "help",
-          "intent": "None",
-          "entities": []
-        },
-        {
-          "text": "breezeway off please",
-          "intent": "HomeAutomation.TurnOff",
-          "entities": []
-        },
-        {
-          "text": "coffee bar off please",
-          "intent": "HomeAutomation.TurnOff",
-          "entities": []
-        }
-    ]
-    ```
+   [!code-json[Add the intents to the batch test file](~/samples-luis/documentation-samples/tutorial-batch-testing/HumanResources-jobs-batch.json "Add the intents to the batch test file")]
 
 ## <a name="run-the-batch"></a>运行批处理
+
 1. 选择顶部导航栏的“测试”。 
 
-    ![选择导航栏的“测试”](./media/luis-tutorial-batch-testing/test-1.png)
+    [![LUIS 应用的屏幕截图，其中已突出显示右上方导航栏中的“测试”](./media/luis-tutorial-batch-testing/hr-first-image.png)](./media/luis-tutorial-batch-testing/hr-first-image.png#lightbox)
 
 2. 选择右侧面板中的“批处理测试面板”。 
 
-    ![选择“批处理测试面板”](./media/luis-tutorial-batch-testing/test-2.png)
+    [![LUIS 应用的屏幕截图，其中已突出显示“批处理测试面板”](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png)](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png#lightbox)
 
 3. 选择“导入数据集”。
 
-    ![选择“导入数据集”](./media/luis-tutorial-batch-testing/test-3.png)
+    [![LUIS 应用的屏幕截图，其中已突出显示“导入数据集”](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png)](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png#lightbox)
 
-4. 选择 `homeauto-batch-1.json` 文件的文件系统位置。
+4. 选择 `HumanResources-jobs-batch.json` 文件的文件系统位置。
 
-5. 为数据集 `set 1` 命名。
+5. 命名数据集 `intents only`，然后选择“完成”。
 
-    ![选择文件](./media/luis-tutorial-batch-testing/test-4.png)
+    ![选择文件](./media/luis-tutorial-batch-testing/hr-import-new-dataset-ddl.png)
 
 6. 选择“运行”按钮。 请等待测试完成。
 
-    ![选择“运行”](./media/luis-tutorial-batch-testing/test-5.png)
+    [![LUIS 应用的屏幕截图，其中已突出显示“运行”](./media/luis-tutorial-batch-testing/hr-run-button.png)](./media/luis-tutorial-batch-testing/hr-run-button.png#lightbox)
 
 7. 选择“查看结果”。
 
-    ![查看结果](./media/luis-tutorial-batch-testing/test-6.png)
-
 8. 查看图和图例中的结果。
 
-    ![批处理结果](./media/luis-tutorial-batch-testing/batch-result-1.png)
+    [![LUIS 应用的批处理测试结果的屏幕截图](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png)](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png#lightbox)
 
 ## <a name="review-batch-results"></a>查看批处理结果
-批处理结果分为两个部分。 上面部分包含图和图例。 选择图的区域名称时，下面部分将显示陈述。
+批处理图表将结果显示在四个象限中。 在图表右侧是一个筛选器。 默认情况下，筛选器设置为列表中的第一个意向。 筛选器包含所有意向，并且仅包含简单、分层（仅父级）和复合实体。 选择[图表的一个部分](luis-concept-batch-test.md#batch-test-results)或图表中的一个点时，关联的话语显示在图表下方。 
 
-所有错误都用红色指示。 图分为四个部分，其中两个部分以红色显示。 这些是要关注的部分。 
+鼠标悬停在图表上时，鼠标滚轮可以放大或缩小图表中的显示。 当图表上有许多点紧密地聚集在一起时，这是非常有用的。 
 
-右上角部分表示测试错误预测了意向或实体的存在。 左下角部分表示测试错误预测了意向或实体的缺失。
+图表分为四个象限，其中两个部分以红色显示。 这些是要关注的部分。 
 
-### <a name="homeautomationturnoff-test-results"></a>HomeAutomation.TurnOff 测试结果
-在图例中，选择 `HomeAutomation.TurnOff` 意向。 在图例中，名称左侧有一个绿色的成功图标。 此意向没有错误。 
+### <a name="getjobinformation-test-results"></a>GetJobInformation 测试结果
+显示在筛选器中的 GetJobInformation 测试结果显示四种预测中有 2 种是成功的。 选择右上象限上方的名称“误报”，查看图表下方的话语。 
 
-![批处理结果](./media/luis-tutorial-batch-testing/batch-result-1.png)
+![LUIS 批处理测试话语](./media/luis-tutorial-batch-testing/hr-applyforjobs-false-positive-results.png)
 
-### <a name="homeautomationturnon-and-none-intents-have-errors"></a>HomeAutomation.TurnOn 和 None 意向有错误
-另外两个意向都有错误，这意味着测试预测不匹配批处理文件预期。 选择图例中的 `None` 意向可查看第一个错误。 
+为什么两个话语被预测为 ApplyForJob，而不是正确的意向 GetJobInformation？ 两个意向在字词的选择和排列方式方面密切相关。 在复合实体中包装此外，ApplyForJob 的示例几乎是 GetJobInformation 的三倍。 示例话语的这种不平衡对 ApplyForJob 意向有利。 
 
-![None 意向](./media/luis-tutorial-batch-testing/none-intent-failures.png)
+请注意，这两个意向都有相同的错误计数。 一个意向中的错误预测也会影响另一个意向。 由于错误地预测了一个意向的话语，也错误地未预测另一个意向，因此二者都有错误。 
 
-红色部分中的图表上显示故障：“误报”和“漏报”。 选择图表中的“漏报”部分名称可查看图表下方的故障陈述。 
+![LUIS 批处理测试筛选器错误](./media/luis-tutorial-batch-testing/hr-intent-error-count.png)
 
-![漏报故障](./media/luis-tutorial-batch-testing/none-intent-false-negative.png)
-
-故障陈述，`help` 预期为 `None` 意向，但测试预测为 `HomeAutomation.TurnOn` 意向。  
-
-有两个故障，一个在 HomeAutomation.TurnOn 中，一个在 None 中。 这两个故障都是由陈述 `help` 引起的，因为它没有达到 None 中的预期要求，而且是 HomeAutomation.TurnOn 意向的意外匹配项。 
-
-若要确定 `None` 陈述发生故障的原因，请查看当前 `None` 中的陈述。 
-
-## <a name="review-none-intents-utterances"></a>查看 None 意向的陈述
-
-1. 选择顶部导航栏上的“测试”按钮，关闭“测试”面板。 
-
-2. 在顶部导航面板中，选择“生成”。 
-
-3. 从意向列表中选择 None 意向。
-
-4. 选择 Control+E，查看陈述的令牌视图 
-    
-    |None 意向的陈述|预测分数|
-    |--|--|
-    |“请降低温度”|0.44|
-    |“将厨房灯光调暗至 25。”|0.43|
-    |“降低音量”|0.46|
-    |“请打开卧室的 Internet”|0.28|
-
-## <a name="fix-none-intents-utterances"></a>修复 None 意向的陈述
-    
-`None` 中的任何意向都应该在应用域之外。 这些陈述均相对于 HomeAutomation，所以它们处于错误的意向中。 
-
-LUIS 给出的陈述预测分数小于 50% (<.50)。 如果查看另外两个意向中的陈述，会看到更高的预测分数。 如果 LUIS 的示例陈述分数低，则表明陈述使 LUIS 混淆了当前意向和其他意向。 
-
-若要修复应用，当前处于 `None` 意向中的陈述需要移动到正确的意向，`None` 意向需要新的适当意向。 
-
-`None` 意向中的三个陈述是为了降低自动化设备设置。 它们使用诸如 `dim`、`lower` 或 `decrease` 的单词。 第四个陈述要求在 Internet 上打开。 由于所有四个陈述都是关于打开或更改设备的功率程度，所以应将它们移动到 `HomeAutomation.TurnOn` 意向。 
-
-这是其中一个解决方案。 还可以创建新的 `ChangeSetting` 意向并将包含“dim”、“lower”和“decrease” 的陈述移动到新意向。 
+对应于“误报”部分中顶点的话语为 `Can I apply for any database jobs with this resume?` 和 `Can I apply for any database jobs with this resume?`。 对于第一个话语，单词 `resume` 仅在 ApplyForJob 中使用过。 对于第二个话语，单词 `apply` 仅在 ApplyForJob 意向中使用过。
 
 ## <a name="fix-the-app-based-on-batch-results"></a>基于批处理结果修复应用
-将四个陈述移动到 `HomeAutomation.TurnOn` 意向。 
+本部分的目标是通过修复应用，正确预测 GetJobInformation 的所有话语。 
 
-1. 选择陈述列表上方的复选框，选中所有陈述。 
+一个看似快速的解决方法是将这些批处理文件话语添加到正确的意向。 但这不是你想要做的。 你想让 LUIS 正确地预测这些话语，而无需将其添加为示例。 
 
-2. 在“重新分配意向”下拉列表中，选择 `HomeAutomation.TurnOn`。 
+可能还想知道如何从 ApplyForJob 中删除话语，直到话语数量与 GetJobInformation 中相同。 这可能会修复测试结果，但会阻碍 LUIS 下一次准确地预测该意向。 
 
-    ![移动陈述](./media/luis-tutorial-batch-testing/move-utterances.png)
+第一个解决方法是向 GetJobInformation 添加更多话语。 第二个解决方法是减少针对 ApplyForJob 意向的单词（如 `resume` 和 `apply`）的权重。 
 
-    重新分配四个陈述后，`None` 意向的陈述列表为空。
+### <a name="add-more-utterances-to-getjobinformation"></a>向 GetJobInformation 添加更多话语
+1. 选择顶部导航面板中的“测试”按钮，关闭批处理测试面板。 
 
-3. 为 None 意向添加四个新意向：
+    [![LUIS 的屏幕截图，其中已突出显示“测试”按钮](./media/luis-tutorial-batch-testing/hr-close-test-panel.png)](./media/luis-tutorial-batch-testing/hr-close-test-panel.png#lightbox)
 
-    ```
-    "fish"
-    "dogs"
-    "beer"
-    "pizza"
-    ```
+2. 从意向列表中选择“GetJobInformation”。 
 
-    这些陈述肯定在 HomeAutomation 域的外部。 输入每个陈述时，监视其分数。 分数可能较低，甚至非常低（分数在红框中显示）。 训练应用后，在步骤 8 中分数将高得多。 
+    [![LUIS 的屏幕截图，其中已突出显示“测试”按钮](./media/luis-tutorial-batch-testing/hr-select-intent-to-fix-1.png)](./media/luis-tutorial-batch-testing/hr-select-intent-to-fix-1.png#lightbox)
 
-7. 在陈述中选择蓝色标签，然后选择“删除标签”，删除任何标签。
+3. 添加更多长度、字词选择和排列方式不同的话语，确保包含术语 `resume`、`c.v.` 和 `apply`：
 
-8. 在右上方导航栏中选择“训练”。 每个陈述的分数要高得多。 现在 `None` 意向的所有分数应该超过 80。 
+    |GetJobInformation 意向的示例话语|
+    |--|
+    |仓库中新的存货管理员工作是否要求通过简历申请？|
+    |目前哪里有屋顶工作？|
+    |我听说有一份医疗编码工作需要简历。|
+    |我想找份工作帮助大学生编写简历。 |
+    |这是我的简历，我正在使用计算机在社区大学找一份新的工作。|
+    |有哪些儿童和家庭护理方面的职位可供选择？|
+    |报社是否需要实习生？|
+    |我的简历 显示了我擅长分析采购、预算和亏损。 是否有此类工作？|
+    |现在是否有钻地工作？|
+    |我当了 8 年 EMS 司机。 是否有新工作？|
+    |有新的食物处理工作需要申请吗？|
+    |有多少新的庭院工作岗位？|
+    |是否有新的劳资关系和谈判 HR 职位？|
+    |我有图书馆和档案管理硕士学位。 是否有任何新职位？|
+    |今天城市中有照顾 13 岁儿童的保姆工作吗？|
+
+    不要在话语中标记“工作”实体。 本教程的本部分仅侧重于意向预测。
+
+4. 通过选择右上角导航中的“定型”来定型应用。
 
 ## <a name="verify-the-fix-worked"></a>验证解决方法是否起作用
-为了验证批处理测试中的陈述是否被正确地预测为 None 意向，请再次运行批处理测试。
+为了验证批处理测试中的话语是否被正确地预测，请再次运行批处理测试。
+
+1. 选择顶部导航栏的“测试”。 如果批处理结果仍处于打开状态，请选择“返回到列表”。  
+
+2. 选择批处理名称右侧的省略号 (...) 按钮，然后选择“运行数据集”。 请等待批处理测试完成。 请注意，“查看结果”按钮现在为绿色。 这意味着整个批处理已成功运行。
+
+3. 选择“查看结果”。 所有意向的名称左侧都应有绿色图标。 
+
+    ![LUIS 的屏幕截图，其中已突出显示“批处理结果”按钮](./media/luis-tutorial-batch-testing/hr-batch-test-intents-no-errors.png)
+
+## <a name="create-batch-file-with-entities"></a>使用实体创建批处理文件 
+若要验证批处理测试中的实体，需要在批处理 JSON 文件中标记实体。 仅使用机器学习实体：简单、分层（仅父级）和复合实体。 不要添加非机器学习实体，因为它们总是通过正则表达式或显式文本匹配找到的。
+
+总字（[令牌](luis-glossary.md#token)）计数的实体的变化会影响预测质量。 请确保提供给具有标记话语的意向的定型数据包括各种长度的实体。 
+
+首次编写和测试批处理文件时，最好从知道有用的一些话语和实体以及认为可能错误预测的一些话语和实体开始。 这有助于快速专注于问题区域。 使用未预测的几个不同的“工作”名称测试 GetJobInformation 和 ApplyForJob 意向之后，开发了此批处理测试文件，用于查看“工作”实体的某些值是否存在预测问题。 
+
+测试话语中提供的“工作”实体的值通常是一个或两个词，其中有几个示例有更多词。 如果自己的人力资源应用通常有多个词的工作名称，该应用中带有“工作”实体标记的示例话语将无法正常工作。
+
+1. 在文本编辑器（如 [VSCode](https://code.visualstudio.com/)）中创建 `HumanResources-entities-batch.json`。 或从 LUIS-Samples Github 存储库中下载[此文件](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorial-batch-testing/HumanResources-entities-batch.json)。
+
+
+2. 在 JSON 格式的批处理文件中，添加一个对象数组，其中包含具有想要在测试中预测的意向的话语以及话语中任何实体的位置。 由于实体是基于令牌的，因此请确保启动和停止字符上的每个实体。 不要以空格开始或结束话语。 这会导致批处理文件导入过程中出现错误。  
+
+   [!code-json[Add the intents and entities to the batch test file](~/samples-luis/documentation-samples/tutorial-batch-testing/HumanResources-entities-batch.json "Add the intents and entities to the batch test file")]
+
+<!--TBD: when will the patterns fix be in for batch testing? -->
+## <a name="run-the-batch-with-entities"></a>使用实体运行批处理
 
 1. 选择顶部导航栏的“测试”。 
 
 2. 选择右侧面板中的“批处理测试面板”。 
 
-3. 选择批处理名称右侧的三个点 (...)，然后选择“运行数据集”。 请等待批处理测试完成。
+3. 选择“导入数据集”。
 
-    ![运行数据集](./media/luis-tutorial-batch-testing/run-dataset.png)
+4. 选择 `HumanResources-entities-batch.json` 文件的文件系统位置。
 
-4. 选择“查看结果”。 所有意向的名称左侧都应有绿色图标。 将右侧的筛选器设置为 `HomeAutomation.Turnoff` 意向，选择最接近图表中部的右上角面板中的绿色点。 陈述的名称出现在图表下方的表格中。 `breezeway off please` 的分数非常低。 可选的活动是向意向添加更多陈述，以增加此分数。 
+5. 命名数据集 `entities`，然后选择“完成”。
 
-    ![运行数据集](./media/luis-tutorial-batch-testing/turnoff-low-score.png)
+6. 选择“运行”按钮。 请等待测试完成。
 
-<!--
-    The Entities section of the legend may have errors. That is the next thing to fix.
+    [![LUIS 应用的屏幕截图，其中已突出显示“运行”](./media/luis-tutorial-batch-testing/hr-run-button.png)](./media/luis-tutorial-batch-testing/hr-run-button.png#lightbox)
 
-## Create a batch to test entity detection
-1. Create `homeauto-batch-2.json` in a text editor such as [VSCode](https://code.visualstudio.com/). 
+7. 选择“查看结果”。
 
-2. Utterances have entities identified with `startPos` and `endPost`. These two elements identify the entity before [tokenization](luis-glossary.md#token), which happens in some [cultures](luis-supported-languages.md#tokenization) in LUIS. If you plan to batch test in a tokenized culture, learn how to [extract](luis-concept-data-extraction.md#tokenized-entity-returned) the non-tokenized entities.
+## <a name="review-entity-batch-results"></a>查看实体批处理结果
+图表打开，所有意向都已正确预测。 在右侧筛选器中向下滚动，查找错误的实体预测。 
 
-    Copy the following JSON into the file:
+1. 在筛选器中选择“工作”实体。
 
-    ```JSON
-    [
-        {
-          "text": "lobby on please",
-          "intent": "HomeAutomation.TurnOn",
-          "entities": [
-            {
-              "entity": "HomeAutomation.Room",
-              "startPos": 0,
-              "endPos": 4
-            }
-          ]
-        },
-        {
-          "text": "change temperature to seventy one degrees",
-          "intent": "HomeAutomation.TurnOn",
-          "entities": [
-            {
-              "entity": "HomeAutomation.Operation",
-              "startPos": 7,
-              "endPos": 17
-            }
-          ]
-        },
-        {
-          "text": "where is my pizza",
-          "intent": "None",
-          "entities": []
-        },
-        {
-          "text": "help",
-          "intent": "None",
-          "entities": []
-        },
-        {
-          "text": "breezeway off please",
-          "intent": "HomeAutomation.TurnOff",
-          "entities": [
-            {
-              "entity": "HomeAutomation.Room",
-              "startPos": 0,
-              "endPos": 9
-            }
-          ]
-        },
-        {
-          "text": "coffee bar off please",
-          "intent": "HomeAutomation.TurnOff",
-          "entities": [
-            {
-              "entity": "HomeAutomation.Device",
-              "startPos": 0,
-              "endPos": 10
-            }
-          ]
-        }
-      ]
-    ```
+    ![筛选器中的错误实体预测](./media/luis-tutorial-batch-testing/hr-entities-filter-errors.png)
 
-3. Import the batch file, following the [same instructions](#run-the-batch) as the first import, and name the dataset `set 2`. Run the test.
+    图表更改以显示实体预测。 
 
-## Possible entity errors
-Since the intents in the right-side filter of the test panel still pass the test, this section focuses on correct entity identification. 
+2. 选择图表左下象限的“漏报”。 然后使用组合键 control + E 切换到令牌视图。 
 
-Entity testing is diferrent than intents. An utterance will have only one top scoring intent, but it may have several entities. An utterance's entity may be correctly identified, may be incorrectly identified as an entity other than the one in the batch test, may overlap with other entities, or not identified at all. 
+    [![实体预测的令牌视图](./media/luis-tutorial-batch-testing/token-view-entities.png)](./media/luis-tutorial-batch-testing/token-view-entities.png#lightbox)
+    
+    查看图表下方的话语会发现，当“工作”名称包括 `SQL` 时，会出现一致性错误。 查看示例话语和“工作”短语列表，SQL 仅使用一次，并且仅作为较大工作名称的一部分，`sql/oracle database administrator`。
 
-## Review entity errors
-1. Select `HomeAutomation.Device` in the filter panel. The chart changes to show a single false positive and several true negatives. 
+## <a name="fix-the-app-based-on-entity-batch-results"></a>基于实体批处理结果修复应用
+修复应用需要 LUIS 正确地确定 SQL 作业的变体。 对于该修补程序有多个选项。 
 
-2. Select the False positive section name. The utterance for this chart point is displayed below the chart. The labeled intent and the predicted intent are the same, which is consistent with the test -- the intent prediction is correct. 
+* 显式添加更多示例话语，使用 SQL 并将这些词标记为“工作”实体。 
+* 将更多 SQL 作业显式添加到短语列表
 
-    The issue is that the HomeAutomation.Device was detected but the batch expected HomeAutomation.Room for the utterance "coffee bar off please". `Coffee bar` could be a room or a device, depending on the environment and context. As the model designer, you can either enforce the selection as `HomeAutomation.Room` or change the batch file to use `HomeAutomation.Device`. 
+这些任务会保留以供执行。
 
-    If you want to reinforce that coffee bar is a room, you nee to add an utterances to LUIS that help LUIS decide a coffee bar is a room. 
+在正确预测实体之前添加[模式](luis-concept-patterns.md)不会解决该问题。 这是因为在检测到模式中的所有实体之前，该模式将不会匹配。 
 
-    The most direct route is to add the utterance to the intent but that to add the utterance for every entity detection error is not the machine-learned solution. Another fix would be to add an utterance with `coffee bar`.
+## <a name="what-has-this-tutorial-accomplished"></a>本教程实现了哪些目的？
+通过查找批处理中的错误并更正模型，增加了应用预测准确性。 
 
-## Add utterance to help extract entity
-1. Select the **Test** button on the top navigation to close the batch test panel.
+## <a name="clean-up-resources"></a>清理资源
+不再需要 LUIS 应用时，请将其删除。 在左上侧菜单中选择“我的应用”。 在应用列表中选择应用名称右侧的省略号 (...)，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
 
-2. On the `HomeAutomation.TurnOn` intent, add the utterance, `turn coffee bar on please`. The uttterance should have all three entities detected after you select enter. 
 
-3. Select **Train** on the top navigation panel. Wait until training completes successfully.
-
-3. Select **Test** on the top navigation panel to open the Batch testing pane again. 
-
-4. If the list of datasets is not visible, select **Back to list**. Select the three dots (...) at the end of `Set 2` and select `Run Dataset`. Wait for the test to complete.
-
-5. Select **See results** to review the test results.
-
-6. 
--->
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [详细了解示例陈述](luis-how-to-add-example-utterances.md)
+> [了解模式](luis-tutorial-pattern.md)
 
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

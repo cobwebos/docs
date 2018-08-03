@@ -2,19 +2,19 @@
 title: 了解 Azure 中 LUIS 应用中的实体类型 | Microsoft Docs
 description: 在语言理解智能服务 (LUIS) 应用中添加实体（应用程序域中的关键数据）。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/22/2018
-ms.author: v-geberr
-ms.openlocfilehash: ccb7269109309355e2af95f6fb2aa060c1998b22
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.date: 06/28/2018
+ms.author: diberry
+ms.openlocfilehash: ace4aa48d3bfce5f88bce8947ab568f0990d67fa
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286012"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226605"
 ---
 # <a name="entities-in-luis"></a>LUIS 中的实体
 
@@ -63,21 +63,21 @@ Is the current rating for the Seattle review fair?
 ## <a name="types-of-entities"></a>实体类型
 LUIS 提供多种类型的实体；预生成的实体、自定义机器学习实体和列表实体。
 
-| 名称 | 可标记 | 说明 |
+| 名称 | 可标记 | Description |
 | -- |--|--|
-| **预生成** <br/>[自定义](#prebuilt)| |  **定义**<br>用于表示常见概念的内置类型。 <br><br>**列表**<br/>关键短语编号、序数、温度、维度、资金、年龄、百分比、电子邮件、URL、电话号码和关键短语。 <br><br>预生成的实体名称已保留。 <br><br>添加到应用程序的所有预生成的实体会返回到[终结点](luis-glossary.md#endpoint)查询中。 有关详细信息，请参阅[预生成的实体](./Pre-builtEntities.md)。 <br/><br/>[实体响应示例](luis-concept-data-extraction.md#prebuilt-entity-data)|
+| **预生成** <br/>[自定义](#prebuilt)| |  **定义**<br>用于表示常见概念的内置类型。 <br><br>**列表**<br/>关键短语编号、序数、温度、维度、资金、年龄、百分比、电子邮件、URL、电话号码和关键短语。 <br><br>预生成的实体名称已保留。 <br><br>添加到应用程序的所有预生成的实体会返回到[终结点](luis-glossary.md#endpoint)查询中。 有关详细信息，请参阅[预生成的实体](./luis-prebuilt-entities.md)。 <br/><br/>[实体响应示例](luis-concept-data-extraction.md#prebuilt-entity-data)|
 |<!-- added week of 3/21/08 --> **正则表达式**<br/>[RegEx](#regex)||**定义**<br>格式化的原始话语文本的自定义正则表达式。 不区分大小写，并忽略区域性变体。  <br><br>此实体非常适用于格式一致的词和短语（并且其任何变体也是一致的）。<br><br>完成拼写检查更改后，会应用正则表达式匹配。 <br><br>如果正则表达式过于复杂，例如使用了许多括号，则不能将表达式添加到模型。 <br><br>**示例**<br>`kb[0-9]{6,}` 与 kb123456 匹配。<br/><br/>[快速入门](luis-quickstart-intents-regex-entity.md)<br>[实体响应示例](luis-concept-data-extraction.md)|
 | **简单** <br/>[机器学习](#machine-learned) | ✔ | **定义**<br>简单实体是描述单个概念的泛型实体，通过机器学习的上下文习得。 上下文包括选词、字词位置和话语长度。<br/><br/>该实体非常适用于格式不一致但含义相同的字词或短语。 <br/><br/>[快速入门](luis-quickstart-primary-and-secondary-data.md)<br/>[实体响应示例](luis-concept-data-extraction.md#simple-entity-data)|  
-| **列表** <br/>[完全匹配](#exact-match)|| **定义**<br>列表实体表示系统中一组固定、封闭的相关单词及其同义词。 <br><br>每个列表实体可能具有一种或多种形式。 最适用于同一概念的一组表示方式的已知变体。<br/><br/>LUIS 不会为列表实体发现更多值。 使用...查看[语义字典](luis-glossary.md#semantic-dictionary)，根据当前列表查找有关新词的建议。<br/><br>如果存在多个具有相同值的列表实体，则终结点查询中会返回其中每个实体。 <br/><br/>[快速入门](luis-quickstart-intent-and-list-entity.md)<br>[实体响应示例](luis-concept-data-extraction.md#list-entity-data)| 
+| **列表** <br/>[完全匹配](#exact-match)|| **定义**<br>列表实体表示系统中一组固定、封闭的相关单词及其同义词。 <br><br>每个列表实体可能具有一种或多种形式。 最适用于同一概念的一组表示方式的已知变体。<br/><br/>LUIS 不会为列表实体发现更多值。 使用“建议”功能根据当前列表查看有关新词的建议。<br/><br>如果存在多个具有相同值的列表实体，则终结点查询中会返回其中每个实体。 <br/><br/>[快速入门](luis-quickstart-intent-and-list-entity.md)<br>[实体响应示例](luis-concept-data-extraction.md#list-entity-data)| 
 | **Pattern.any** <br/>[混合](#mixed) | ✔|**定义**<br>Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中使用，用于标记实体的起始和结束位置。  <br><br>**示例**<br>例如，对于一个基于标题的书籍话语搜索，pattern.any 会提取完整的标题。 一个使用 pattern.any 的模板话语是 `Who wrote {BookTitle}[?]`。<br/><br/>[教程](luis-tutorial-pattern.md)<br>[实体响应示例](luis-concept-data-extraction.md#composite-entity-data)|  
-| **复合** <br/>[机器学习](#machine-learned) | ✔|**定义**<br>复合实体由其他实体组成，例如预生成的实体和简单实体。 各种单独的实体构成整个实体。 复合实体中不允许使用列表实体。 <br><br>**示例**<br>名为 PlaneTicketOrder 的复合实体可能具有预构建的 `number` 和 `ToLocation` 子实体。 <br/><br/>[教程](luis-tutorial-composite-entity.md)<br>[实体响应示例](luis-concept-data-extraction.md#composite-entity-data)|  
-| **分层** <br/>[机器学习](#machine-learned) |✔ | **定义**<br>分层实体是根据上下文习得的一类实体。<br><br>**示例**<br>如果分层实体 `Location` 具有子实体 `ToLocation` 和 `FromLocation`，则可基于话语中的上下文来确定每个子实体。 在话语 `Book 2 tickets from Seattle to New York` 中，`ToLocation` 和 `FromLocation` 因周围单词不同而在上下文中有所不同。 <br/><br/>**不使用该实体的情况**<br>如果要查找子实体文本精确匹配的实体，且不考虑上下文，则应使用列表实体。 如果要查找是否与其他实体类型存在父子关系，则应使用复合实体。<br/><br/>[快速入门](luis-quickstart-intent-and-hier-entity.md)<br>[实体响应示例](luis-concept-data-extraction.md#hierarchical-entity-data)|
+| **复合** <br/>[机器学习](#machine-learned) | ✔|**定义**<br>复合实体由其他实体组成，例如预生成的实体、简单实体、正则表达式实体、列表实体和分层实体。 各种单独的实体构成整个实体。 复合实体中不允许使用列表实体。 <br><br>**示例**<br>名为 PlaneTicketOrder 的复合实体可能具有预构建的 `number` 和 `ToLocation` 子实体。 <br/><br/>[教程](luis-tutorial-composite-entity.md)<br>[实体响应示例](luis-concept-data-extraction.md#composite-entity-data)|  
+| **分层** <br/>[机器学习](#machine-learned) |✔ | **定义**<br>分层实体是根据上下文习得的一类简单实体。<br><br>**示例**<br>如果分层实体 `Location` 具有子实体 `ToLocation` 和 `FromLocation`，则可基于话语中的上下文来确定每个子实体。 在话语 `Book 2 tickets from Seattle to New York` 中，`ToLocation` 和 `FromLocation` 因周围单词不同而在上下文中有所不同。 <br/><br/>**不使用该实体的情况**<br>如果要查找子实体文本精确匹配的实体，且不考虑上下文，则应使用列表实体。 如果要查找是否与其他实体类型存在父子关系，则应使用复合实体。<br/><br/>[快速入门](luis-quickstart-intent-and-hier-entity.md)<br>[实体响应示例](luis-concept-data-extraction.md#hierarchical-entity-data)|
 
 <a name="prebuilt"></a>
 预生成的实体是由 LUIS 提供的自定义实体。 其中一些实体是在开源[识别器 - 文本](https://github.com/Microsoft/Recognizers-Text)项目中定义的。 /Specs 目录中有许多适用于支持的区域性的[示例](https://github.com/Microsoft/Recognizers-Text/tree/master/Specs)。 如果你的特定区域性或实体当前不受支持，请通过为项目做贡献来获得支持。 
 
 <a name="machine-learned"></a>
-“机器学习”实体最适合通过[终结点查询](luis-concept-test.md#endpoint-testing)和[查看终结点话语](label-suggested-utterances.md)进行测试。 
+“机器学习”实体最适合通过[终结点查询](luis-concept-test.md#endpoint-testing)和[查看终结点话语](luis-how-to-review-endoint-utt.md)进行测试。 
 
 <a name="regex"></a>
 “正则表达式”实体由用户提供的正则表达式定义，用作实体定义的一部分。 
@@ -90,6 +90,9 @@ LUIS 提供多种类型的实体；预生成的实体、自定义机器学习实
 
 ## <a name="entity-limits"></a>实体限制
 查看[限制](luis-boundaries.md#model-boundaries)，了解可添加到模型中的每种类型的实体的数量。
+
+## <a name="entity-roles"></a>实体角色
+实体[角色](luis-concept-roles.md)仅在模式中使用。 
 
 ## <a name="composite-vs-hierarchical-entities"></a>复合实体与分层实体
 复合实体和分层实体都具有父子关系，并且都是机器学习的实体。 通过机器学习，LUIS 能够基于不同上下文（字词排列方式）来理解实体。 复合实体更为灵活，因为它们允许使用不同的实体类型作为子实体。 分层实体的子实体只能是简单实体。 
@@ -194,7 +197,7 @@ LUIS 提供多种类型的实体；预生成的实体、自定义机器学习实
 
 LUIS 还提供非机器学习的列表实体类型，可允许 LUIS 应用指定固定的值列表。 请参阅 [LUIS 边界](luis-boundaries.md)参考内容，查看列表实体类型的限制。 
 
-如果已考虑使用分层、复合和列表实体，但所需超过了限制，请与支持部门联系。 为此，请收集有关系统的详细信息，转到 [LUIS][LUIS] 网站，然后选择“支持”。 如果所持 Azure 订阅包含支持服务，请与 [Azure 技术支持](https://azure.microsoft.com/support/options/)联系。 
+如果已考虑使用分层、复合和列表实体，但所需超过了限制，请与支持部门联系。 为此，请收集有关系统的详细信息，转到 [LUIS](luis-reference-regions.md#luis-website) 网站，然后选择“支持”。 如果所持 Azure 订阅包含支持服务，请与 [Azure 技术支持](https://azure.microsoft.com/support/options/)联系。 
 
 ## <a name="best-practices"></a>最佳实践
 
@@ -213,5 +216,3 @@ LUIS 还提供非机器学习的列表实体类型，可允许 LUIS 应用指定
 了解关于优良[话语](luis-concept-utterance.md)的概念。 
 
 请参阅[添加实体](luis-how-to-add-entities.md)，了解如何将实体添加到 LUIS 应用的详细信息。
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

@@ -9,12 +9,12 @@ ms.technology: qna-maker
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jaswel
-ms.openlocfilehash: add5322dde89f3e3f44fddc1e3c63eb2f91013a8
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: c0d02a0f586857f6dd303fc98407da71b2addb9b
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301740"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37869113"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-python"></a>将 Microsoft QnA Maker API 与 Python 配合使用快速入门 
 <a name="HOLTop"></a>
@@ -146,7 +146,7 @@ while False == done:
 
 **创建知识库响应**
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+采用 JSON 返回了成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -286,7 +286,7 @@ while False == done:
 
 **更新知识库响应**
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+采用 JSON 返回了成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -375,7 +375,7 @@ print (pretty_print(result))
 
 **发布知识库响应**
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+采用 JSON 返回了成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -463,7 +463,7 @@ print (pretty_print(result))
 
 **替换知识库响应**
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+采用 JSON 返回了成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -527,7 +527,7 @@ print (pretty_print(result))
 
 **下载知识库响应**
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+采用 JSON 返回了成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -564,7 +564,7 @@ print (pretty_print(result))
 
 <a name="GetAnswers"></a>
 
-## <a name="get-answers-to-a-question-using-a-knowledge-base"></a>使用知识库获取问题的答案。
+## <a name="get-answers-to-a-question-using-a-knowledge-base"></a>使用知识库获取问题的答案
 
 以下代码通过 **Generate answers** 方法，使用指定知识库来获取问题的答案。
 
@@ -628,7 +628,7 @@ print (pretty_print(result))
 
 **获取答案响应**
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+采用 JSON 返回了成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -701,7 +701,7 @@ print (pretty_print(result))
 
 **获取知识库详细信息响应**
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+采用 JSON 返回了成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -771,7 +771,7 @@ print (pretty_print(result))
 
 **获取用户响应的知识库**
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+采用 JSON 返回了成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -866,7 +866,7 @@ print (pretty_print(result))
 
 **删除知识库响应**
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+采用 JSON 返回了成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -924,7 +924,7 @@ print (pretty_print(result))
 
 **获取终结点密钥响应**
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+采用 JSON 返回了成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -992,7 +992,7 @@ print (pretty_print(result))
 
 **刷新终结点密钥响应**
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+采用 JSON 返回了成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -1051,7 +1051,7 @@ print (pretty_print(result))
 
 **获取字变更响应**
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+采用 JSON 返回了成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -1135,7 +1135,7 @@ print (pretty_print(result))
 
 **替换字变更响应**
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+采用 JSON 返回了成功的响应，如以下示例所示： 
 
 ```json
 {

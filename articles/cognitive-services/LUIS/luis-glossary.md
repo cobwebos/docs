@@ -2,19 +2,19 @@
 title: 语言理解 (LUIS) API 服务术语表 | Microsoft Docs
 description: 术语表解释使用 LUIS API 服务时可能遇到的术语。
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: 7cfcc5b907b28a877bea57ea869e17f01aae00cb
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.author: diberry
+ms.openlocfilehash: f6606a3a09698f236f9ebe2c21ec784ca84bb149
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265381"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225500"
 ---
 # <a name="glossary"></a>术语表
 
@@ -72,7 +72,7 @@ ms.locfileid: "36265381"
 
 ## <a name="endpoint"></a>终结点
 
-[LUIS 终结点](https://aka.ms/luis-endpoint-apis) URL 是在创作并发布 [LUIS 应用](#luis-app)后提交 LUIS 查询的地方。 终结点 URL 包含所发布的应用的区域和应用 ID。 可在应用的[发布](publishapp.md)页面、资源和密钥表中找到终结点，或者可以从[获取应用信息](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) API 获取终结点 URL。
+[LUIS 终结点](https://aka.ms/luis-endpoint-apis) URL 是在创作并发布 [LUIS 应用](#luis-app)后提交 LUIS 查询的地方。 终结点 URL 包含所发布的应用的区域和应用 ID。 可在应用的[发布](luis-how-to-publish-app.md)页面、资源和密钥表中找到终结点，或者可以从[获取应用信息](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) API 获取终结点 URL。
 
 以下是一个终结点示例：
 
@@ -82,7 +82,7 @@ ms.locfileid: "36265381"
 |--|--|
 |region| [发布的区域](luis-reference-regions.md#publishing-regions) |
 |appID | LUIS 应用 ID |
-|subscriptionID | 在 Azure 门户中创建的 LUIS 订阅密钥 |
+|subscriptionID | 在 Azure 门户中创建的 LUIS 终结点（订阅）密钥 |
 |q | 话语 |
 |timezoneOffset| 分钟数|
 
@@ -92,15 +92,15 @@ ms.locfileid: "36265381"
 
 ## <a name="f-measure"></a>F 度量值
 
-在[批处理测试][batch-testing]中，它是有关测试准确度的一个度量值。
+在[批处理测试](luis-interactive-test.md#batch-testing)中，它是有关测试准确度的一个度量值。
 
 ## <a name="false-negative"></a>误报 (TN)
 
-在[批处理测试][batch-testing]中，数据点表示某些话语，其中，应用程序错误地预测了目标意向/实体的缺失。
+在[批处理测试](luis-interactive-test.md#batch-testing)中，数据点表示某些话语，其中，应用错误地预测了目标意向/实体的缺失。
 
 ## <a name="false-positive"></a>误报 (TP)
 
-在[批处理测试][batch-testing]中，数据点表示某些话语，其中，应用程序错误地预测了目标意向/实体的存在。
+在[批处理测试](luis-interactive-test.md#batch-testing)中，数据点表示某些话语，其中，应用错误地预测了目标意向/实体的存在。
 
 ## <a name="features"></a>特征
 
@@ -135,10 +135,10 @@ LUIS 应用是经过训练的、用于自然语言处理（包括[意向](#inten
 
 ## <a name="prebuilt-entity"></a>预生成的实体
 
-[预生成的实体](pre-builtentities.md)是 LUIS 为常用信息类型提供的实体（例如数字、URL 和电子邮件）。 选择将预生成的实体添加到自己的应用程序。 
+[预生成的实体](luis-prebuilt-entities.md)是 LUIS 为常用信息类型提供的实体（例如数字、URL 和电子邮件）。 选择将预生成的实体添加到自己的应用程序。 
 
 ## <a name="precision"></a>精度
-在[批处理测试][batch-testing]中，精度（也称为正预测值）是所检索的话语中相关话语的分数。
+在[批处理测试](luis-interactive-test.md#batch-testing)中，精度（也称为正预测值）是所检索的话语中相关话语的分数。
 
 ## <a name="programmatic-key"></a>编程密钥
 
@@ -153,7 +153,7 @@ LUIS 应用是经过训练的、用于自然语言处理（包括[意向](#inten
 LUIS 配额是 [Azure 订阅层](https://aka.ms/luis-price-tier)的限制。 可同时通过每秒请求数（HTTP 状态 429）和每月请求总数（HTTP 状态 403）来限制 LUIS 配额。 
 
 ## <a name="recall"></a>召回率
-在[批处理测试][batch-testing]中，召回率（也称为敏感度）是 LUIS 进行通用化的能力。 
+在[批处理测试](luis-interactive-test.md#batch-testing)中，召回率（也称为敏感度）是 LUIS 进行通用化的能力。 
 
 ## <a name="semantic-dictionary"></a>语义字典
 可通过列表实体页以及短语列表页获取语义字典。 语义字典基于当前作用域提供字词建议。
@@ -163,11 +163,11 @@ LUIS 配额是 [Azure 订阅层](https://aka.ms/luis-price-tier)的限制。 可
 
 ## <a name="speech-priming"></a>语音启动
 
-语音启动允许使用 LUIS 模型预先准备语音服务。 请参阅[启用语音启动](publishapp.md#enable-speech-priming)。
+语音启动允许使用 LUIS 模型预先准备语音服务。 请参阅[启用语音启动](luis-how-to-publish-app.md#enable-speech-priming)。
 
 ## <a name="spelling-correction"></a>拼写更正
 
-在“发布”页上，启用[必应拼写检查器](publishapp.md#enable-bing-spell-checker)，在进行预测前更正话语中拼写错误的字词。 
+在“发布”页上，启用[必应拼写检查器](luis-how-to-publish-app.md#enable-bing-spell-checker)，在进行预测前更正话语中拼写错误的字词。 
 
 ## <a name="starter-key"></a>初学者密钥
 
@@ -175,11 +175,11 @@ LUIS 配额是 [Azure 订阅层](https://aka.ms/luis-price-tier)的限制。 可
 
 ## <a name="subscription-key"></a>订阅密钥
 
-订阅密钥是与 [Azure 中创建的](luis-how-to-azure-subscription.md) LUIS 服务关联的密钥。 此密钥不是[创作密钥](#programmatic-key)。 如果有订阅密钥，则应为所有终结点请求使用该密钥，而非创作密钥。 可在 [LUIS](luis-reference-regions.md) 网站中的[“发布应用”页](publishapp.md)底部的终结点 URL 内看到当前的订阅密钥。 它是“subscription-key”名称/值对的值。 
+订阅密钥是与 [Azure 中创建](luis-how-to-azure-subscription.md)的 LUIS 服务关联的“终结点”密钥。 此密钥不是[创作密钥](#programmatic-key)。 如果有终结点密钥，则应为所有终结点请求使用该密钥，而非创作密钥。 可在 [LUIS](luis-reference-regions.md) 网站中的[“发布应用”页](luis-how-to-publish-app.md)底部的终结点 URL 内看到当前的终结点密钥。 它是“subscription-key”名称/值对的值。 
 
 ## <a name="test"></a>测试
 
-[测试](interactive-test.md#test-your-app) LUIS 应用就是将一个话语传递至 LUIS 并查看 JSON 结果。
+[测试](luis-interactive-test.md#test-your-app) LUIS 应用就是将一个话语传递至 LUIS 并查看 JSON 结果。
 
 ## <a name="timezoneoffset"></a>时区偏移
 
@@ -196,11 +196,11 @@ LUIS 配额是 [Azure 订阅层](https://aka.ms/luis-price-tier)的限制。 可
 
 ## <a name="true-negative"></a>实报 (TN)
 
-在[批处理测试][batch-testing]中，数据点表示某些话语，其中，应用程序正确地预测了目标意向/实体的缺失。
+在[批处理测试](luis-interactive-test.md#batch-testing)中，数据点表示某些话语，其中，应用正确地预测了目标意向/实体的缺失。
 
 ## <a name="true-positive"></a>实报 (TP)
 
-在[批处理测试][batch-testing]中，数据点表示某些话语，其中，应用程序正确地预测了目标意向/实体的存在。
+在[批处理测试](luis-interactive-test.md#batch-testing)中，数据点表示某些话语，其中，应用正确地预测了目标意向/实体的存在。
 
 ## <a name="utterance"></a>话语
 
@@ -209,5 +209,3 @@ LUIS 配额是 [Azure 订阅层](https://aka.ms/luis-price-tier)的限制。 可
 ## <a name="version"></a>版本
 
 LUIS [版本](luis-how-to-manage-versions.md)是与 LUIS 应用 ID 和所发布的终结点关联的特定数据模型。 每个 LUIS 应用至少有一个版本。
-
-[batch-testing]: https://docs.microsoft.com/azure/cognitive-services/luis/interactive-test#batch-testing

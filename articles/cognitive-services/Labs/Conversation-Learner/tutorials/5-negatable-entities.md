@@ -1,7 +1,7 @@
 ---
-title: 如何通过对话学习器应用程序使用可否定实体 - Microsoft 认知服务 | Microsoft Docs
+title: 如何通过对话学习器模型使用可否定实体 - Microsoft 认知服务 | Microsoft Docs
 titleSuffix: Azure
-description: 了解如何通过对话学习器应用程序使用可否定实体。
+description: 了解如何通过对话学习器模型使用可否定实体。
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,16 +10,20 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 3d65376c9c43ee1407468f3e8bf3e058048bd556
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2fd00d53755e44e3a3d86782c40aa6a53ff4d378
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366289"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171395"
 ---
-# <a name="how-to-use-negatable-entities-with-a-conversation-learner-application"></a>如何通过对话学习器应用程序使用可否定实体
+# <a name="how-to-use-negatable-entities-with-a-conversation-learner-model"></a>如何通过对话学习器模型使用可否定实体
 
 本教程演示实体的”negatable”属性。
+
+## <a name="video"></a>视频
+
+[![教程 5 预览](http://aka.ms/cl-tutorial-05-preview)](http://aka.ms/blis-tutorial-05)
 
 ## <a name="requirements"></a>要求
 本教程要求运行常规教程机器人
@@ -35,11 +39,11 @@ ms.locfileid: "35366289"
 - LUIS 了解两个实体模型：一个用于肯定实例，另一个用于否定实例
 - 实体的否定实例的作用是从实体变量中清除该值（如果存在）
 
-## <a name="steps"></a>步骤
+## <a name="steps"></a>Steps
 
-### <a name="create-the-application"></a>创建应用程序
+### <a name="create-the-model"></a>创建模型
 
-1. 在 Web UI 中，单击“新建应用”
+1. 在 Web UI 中，单击“新建模型”
 2. 在“名称”中输入“NegatableEntity”。 然后单击“创建”。
 
 ### <a name="create-an-entity"></a>创建实体
@@ -47,7 +51,7 @@ ms.locfileid: "35366289"
 1. 依次单击“实体”和“新建实体”。
 2. 在“实体名称”中，输入名称。
 3. 选中“可否定”。
-    - 这表示用户将能够为该实体提供值，或者说某些内容不是该实体的值。 在后一种情况下，这将导致删除实体的匹配值。
+    - 该属性表示用户将能够为该实体提供值，或者说某些内容不是该实体的值。 在后一种情况下，这将导致删除实体的匹配值。
 3. 单击“创建”。
 
 ![](../media/tutorial5_entities.PNG)
@@ -69,24 +73,24 @@ ms.locfileid: "35366289"
 
 ![](../media/tutorial5_actions.PNG)
 
-### <a name="train-the-bot"></a>训练机器人
+### <a name="train-the-bot"></a>定型机器人
 
-1. 依次单击“训练对话”和“新建训练对话”。
+1. 依次单击“定型”对话框和“新建定型”对话框。
 2. 键入“hello”。
 3. 单击“对操作打分”，然后选择“I don't know your name”
-    - 请注意，将获得 100% 分数，因为它是唯一有效的操作。
+    - 因为它是唯一的有效操作，所以分数为 100%。
 2. 输入“my name is david”
 3. 选择“david”，并选择标签“+name”
-    - 请注意，将有“name”的两个实例：“+name”和“-name”。  加号表示我们将提供该值。 减号表示我们要告诉系统某些内容不是该值。
-5. 单击“对操作打分”
-    - 请注意名称值现在已在机器人的内存中。
+    - 此时有“name”的两个实例：“+name”和“-name”。  (+) 加号添加或覆盖该值。 (-) 减号移除该值。
+5. 单击“对操作评分”
+    - 名称值现已在机器人的内存中。
     - “I know your name. It is $name”是唯一可用的响应。 
 6. 选择“I know your name. It is $name”。
 
 让我们尝试清除可否定实体：
 
 7. 输入“my name is not david”。
-    - 请注意，根据前面的模式，“not”被选为名称。 这是不正确的。
+    - 请注意，根据前面的模式，“not”被选为名称。 此标签不正确。
 2. 依次单击“not”和红色的 x。 
 3. 单击“david”。
     - 现在这是一个否定实体，传达这不是 name 实体的值。

@@ -9,12 +9,12 @@ ms.component: linguistic-analysis
 ms.topic: article
 ms.date: 03/21/2016
 ms.author: davl
-ms.openlocfilehash: 4681098a0e56640e95463272be44f7432be26839
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 78e539f365728ad540308e9cfb07af44bf6d8fe7
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365481"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084036"
 ---
 # <a name="sentence-separation-and-tokenization"></a>句子拆分和词汇切分
 
@@ -68,4 +68,4 @@ ms.locfileid: "35365481"
 ## <a name="specification"></a>规格
 
 对于句子和词汇的组成成分，请务必确保所作决定一致。
-本文以[宾州树库](https://www.cis.upenn.edu/~treebank/)中的规范为准（如需了解其他一些详情，请访问 [https://www.cis.upenn.edu/~treebank/tokenization.html]）。
+我们依赖于 [Penn Treebank](https://catalog.ldc.upenn.edu/ldc99t42) 的规范（一些其他详细信息可以在 ftp://ftp.cis.upenn.edu/pub/treebank/public_html/tokenization.html 上找到）。

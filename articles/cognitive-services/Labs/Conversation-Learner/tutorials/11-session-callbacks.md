@@ -1,7 +1,7 @@
 ---
-title: 如何通过对话学习器应用程序使用会话回调 - Microsoft 认知服务 | Microsoft Docs
+title: 如何通过对话学习器模型使用会话回调 - Microsoft 认知服务 | Microsoft Docs
 titleSuffix: Azure
-description: 了解如何通过对话学习器应用程序使用会话回调。
+description: 了解如何通过对话学习器模型使用会话回调。
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,19 +10,23 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: f8970620c1f0f87ccae13d031092a048144ffb19
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0f51b232470e4e4da3f25d40d025dd3b09dd1204
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366273"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171909"
 ---
-# <a name="how-to-use-session-callbacks-with-a-conversation-learner-application"></a>如何通过对话学习器应用程序使用会话回调
+# <a name="how-to-use-session-callbacks-with-a-conversation-learner-model"></a>如何通过对话学习器模型使用会话回调
 
 本教程演示 onSessionStart 和 onSessionEnd 回调。
 
+## <a name="video"></a>视频
+
+[![教程 11 预览](http://aka.ms/cl-tutorial-11-preview)](http://aka.ms/blis-tutorial-11)
+
 ## <a name="requirements"></a>要求
-本教程要求运行“tutorialSessionCallbacks.ts”机器人。
+本教程要求运行 `tutorialSessionCallbacks` 机器人。
 
     npm run tutorial-session-callbacks
 
@@ -35,19 +39,19 @@ ms.locfileid: "35366273"
 
 ### <a name="open-the-demo"></a>打开演示
 
-在“应用”列表中，单击“Tutorial-11-SessionCallbacks”。 
+在“模型”列表中，单击“Tutorial-11-SessionCallbacks”。 
 
 ### <a name="entities"></a>实体
 
-我们已在应用程序中定义了四个实体。
+模型中定义了四个实体。
 
 ![](../media/tutorial11_entities.PNG)
 
-需要注意的一点是，BotName 是一个编程实体。  这将由机器人在会话开始时设置。
+需要注意的一点是，BotName 是一个编程实体。  会话开始时机器人将设置该实体。
 
 ### <a name="actions"></a>操作
 
-我们已创建了四个操作。 
+模型中定义了四个操作。
 
 ![](../media/tutorial11_actions.PNG)
 
@@ -70,7 +74,7 @@ ms.locfileid: "35366273"
 这两个方法是可选的。
 
 - OnSessionStartCallback：此方法设置 BotName 实体。
-- OnSessionEndCallback：可以指定要清除的内容。 这会清除除用户名和用户电话之外的所有实体。
+- OnSessionEndCallback：可以指定要保留的内容。 这会清除除用户名和用户电话之外的所有实体。
 
 ### <a name="try-the-bot"></a>试用机器人
 

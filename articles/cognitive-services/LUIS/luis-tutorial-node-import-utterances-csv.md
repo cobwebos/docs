@@ -3,28 +3,28 @@ title: 使用 Node.js 以编程方式生成 LUIS 应用 | Microsoft Docs
 titleSuffix: Azure
 description: 了解如何使用 LUIS Authoring API 以编程方式从 CSV 格式的预先存在数据生成 LUIS 应用。
 services: cognitive-services
-author: DeniseMak
-manager: rstand
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
-ms.author: v-geberr
-ms.openlocfilehash: 09c9d4da835b7b30fd132770f9d13b33fa80a3f5
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.author: diberry
+ms.openlocfilehash: 42b9800c94171ecbd2dadf30bb2ce2f342063552
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268308"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238499"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>使用 Node.js 以编程方式生成 LUIS 应用
 
-LUIS 提供与 [LUIS][LUIS] 网站功能相同的编程 API。 如果有预先存在的数据，这样可以节省时间，而且以编程方式创建 LUIS 应用比手动输入信息快。 
+LUIS 提供与 [LUIS](luis-reference-regions.md) 网站功能相同的编程 API。 如果有预先存在的数据，这样可以节省时间，而且以编程方式创建 LUIS 应用比手动输入信息快。 
 
 ## <a name="prerequisites"></a>先决条件
 
-* 登录 [LUIS][LUIS] 网站，并在“帐户设置”中找到[创作密钥](luis-concept-keys.md#authoring-key)。 使用此密钥调用 Authoring API。
-* 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* 登录 [LUIS](luis-reference-regions.md) 网站，并在“帐户设置”中找到[创作密钥](luis-concept-keys.md#authoring-key)。 使用此密钥调用 Authoring API。
+* 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 本教程从用户请求的一家虚拟公司的 CSV 格式日志文件开始。 可从[此处](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/IoT.csv)下载。
 * 使用 NPM 安装最新的 Node.js。 从[此处](https://nodejs.org/en/download/)下载它。
 * **[建议]** 用于 IntelliSense 和调试的 Visual Studio Code 可从[此处](https://code.visualstudio.com/)免费下载。
@@ -111,7 +111,7 @@ LUIS 应用中定义了实体和意向后，可以添加陈述。 下面的代�
 ````
 
 ### <a name="change-configuration-settings"></a>更改配置设置
-若要使用此应用程序，需要将 index.js 文件中的值更改为自己的订阅密钥，并提供希望应用拥有的名称。 还可以设置应用的区域性或更改版本号。
+若要使用此应用程序，需要将 index.js 文件中的值更改为自己的终结点密钥，并提供希望应用拥有的名称。 还可以设置应用的区域性或更改版本号。
 
 打开 index.js 文件，并在文件顶部更改这些值。
 
@@ -163,7 +163,7 @@ upload done
 
 
 ## <a name="open-the-luis-app"></a>打开 LUIS 应用
-该脚本完成后，可以登录 [LUIS][LUIS]，查看“我的应用”下创建的 LUIS 应用。 应该能够看到在 TurnOn、TurnOff 和 None 意向下添加的陈述。
+该脚本完成后，可以登录 [LUIS](luis-reference-regions.md)，查看“我的应用”下创建的 LUIS 应用。 应该能够看到在 TurnOn、TurnOff 和 None 意向下添加的陈述。
 
 ![TurnOn 意向](./media/luis-tutorial-node-import-utterances-csv/imported-utterances-661.png)
 
@@ -171,7 +171,7 @@ upload done
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [测试和训练 LUIS 网站中的应用](interactive-test.md)
+> [测试和训练 LUIS 网站中的应用](luis-interactive-test.md)
 
 ## <a name="additional-resources"></a>其他资源
 
@@ -179,7 +179,4 @@ upload done
 - [创建应用](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36)
 - [添加意向](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0c)
 - [添加实体](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0e) 
-- [添加陈述](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) 
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
-
+- [添加陈述](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09)

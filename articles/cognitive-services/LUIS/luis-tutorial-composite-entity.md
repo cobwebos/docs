@@ -1,124 +1,115 @@
 ---
-title: 创建复合实体提取复杂数据 - Azure | Microsoft Docs
+title: 教程：创建复合实体提取复杂数据 - Azure | Microsoft Docs
 description: 了解如何在 LUIS 应用中创建复合实体来提取不同类型的实体数据。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: article
-ms.date: 03/28/2018
-ms.author: v-geberr
-ms.openlocfilehash: cb581ee60dea2b0810332933455a03a8b68e16ea
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.date: 07/09/2018
+ms.author: diberry
+ms.openlocfilehash: d14041e895bdf70544f7e956c76f91992a2df991
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264379"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238091"
 ---
-# <a name="use-composite-entity-to-extract-complex-data"></a>使用复合实体提取复杂数据
-此简单应用具备两个[意向](luis-concept-intent.md)和几个实体。 其目的是预定航班，例如“1 张周五从西雅图到开罗的机票”，并以一段数据返回此次预定的所有详细信息。 
+# <a name="tutorial-6-add-composite-entity"></a>教程：6. 添加复合实体 
+在本教程中，添加复合实体以将提取的数据捆绑到包含的实体中。
 
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 
+<!-- green checkmark -->
 > [!div class="checklist"]
-* 添加预生成实体 datetimeV2 和数量
-* 创建一个复合实体
-* 对 LUIS 进行查询并接收复合实体数据
+> * 了解复合实体 
+> * 添加复合实体提取数据
+> * 训练并发布应用
+> * 查询应用终结点以查看 LUIS JSON 响应
 
 ## <a name="before-you-begin"></a>开始之前
-* [分层快速入门](luis-tutorial-composite-entity.md)中的 LUIS 应用。 
+如果尚未获得[分层实体](luis-quickstart-intent-and-hier-entity.md)教程中所述的人力资源应用，请将 JSON [导入](luis-how-to-start-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的新应用中。 要导入的应用位于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-hier-HumanResources.json) Github 存储库中。
 
-> [!Tip]
-> 如果尚无订阅，可注册[免费帐户](https://azure.microsoft.com/free/)。
+若要保留原始人力资源应用，请在[设置](luis-how-to-manage-versions.md#clone-a-version)页上克隆版本，并将其命名为 `composite`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。  
 
 ## <a name="composite-entity-is-a-logical-grouping"></a>复合实体一种逻辑分组 
-实体的用途是查找话语中的文本部分并将其分类。 [复合](luis-concept-entity-types.md)实体由从上下文了解的其他实体类型组成。 对于用于预定航班的此旅行应用，有几个部分的信息，例如日期、地点和座位数。 
+复合实体的目的是将相关实体分组为父类别实体。 在创建复合实体之前，这些现有信息都是单独的实体。 它类似于分层实体，但可以包含更多类型的实体。 
 
-在创建复合实体之前，这些现有信息都是单独的实体。 如果可按逻辑对单独的实体分组，且这种逻辑分组可帮助聊天机器人或其他使用 LUIS 的应用程序，请创建一个复合实体。 
+ 如果可按逻辑对单独的实体分组，且这种逻辑分组可帮助客户端应用程序，请创建一个复合实体。 
 
-用户提供的简单示例话语包括：
+在此应用中，员工姓名在“员工”列表实体中定义，包括姓名、电子邮件地址、公司电话分机号、移动电话号码和美国联邦纳税人标识号的同义词。 
 
-```
-Book a flight to London for next Monday
-2 tickets from Dallas to Dublin this weekend
-Reserve a seat from New York to Paris on the first of April
-```
+“MoveEmployee”意向具有示例话语，用于请求员工从一个建筑物和办公室移动到另一个建筑物和办公室。 建筑物名称用字母表示：“A”、“B”等，而办公室用数字表示：“1234”、“13245”。 
+
+“MoveEmployee”意向中的示例话语包括：
+
+|示例陈述|
+|--|
+|将 John W . Smith 调动到 a-2345|
+|明天将 x12345 换到 h-1234|
  
-复合实体匹配座位数、出发地点、目的地和日期。 
+调动请求应至少包括员工（使用任何同义词），以及最终的建筑物和办公室位置。 请求还可以包括原始的办公室以及应该执行调动的日期。 
 
-## <a name="what-luis-does"></a>LUIS 的作用
-在[终结点](https://aka.ms/luis-endpoint-apis)中识别、[提取](luis-concept-data-extraction.md#list-entity-data)并以 JSON 格式返回话语的意向和实体后，LUIS 即告完成。 调用方应用程序或聊天机器人按照设计的任何方式提取该 JSON 响应并履行请求。 
+从终结点提取的数据应包含此信息，并在 `RequestEmployeeMove` 复合实体中返回。 
 
-## <a name="add-prebuilt-entities-number-and-datetimev2"></a>添加预生成实体数量和 datetimeV2
-1. 从 [LUIS][LUIS] 网站上的应用列表中选择 `MyTravelApp` 应用。
+## <a name="create-composite-entity"></a>创建复合实体
+1. LUIS 的“生成”部分包含你的人力资源应用。 在右上方的菜单栏中选择“生成”可切换到此部分。 
 
-2. 应用打开时，选择左侧的“实体”导航链接。
+    [ ![LUIS 应用的屏幕截图，其中已突出显示右上方导航栏中的“生成”](./media/luis-tutorial-composite-entity/hr-first-image.png)](./media/luis-tutorial-composite-entity/hr-first-image.png#lightbox)
 
-    ![选择实体按钮](./media/luis-tutorial-composite-entity/intents-page-select-entities.png)    
+2. 在“意向”页上，选择“MoveEmployee”意向。 
 
-3. 选择“管理预生成实体”。
+    [![](media/luis-tutorial-composite-entity/hr-intents-moveemployee.png "LUIS 的屏幕截图，其中已突出显示“MoveEmployee”意向")](media/luis-tutorial-composite-entity/hr-intents-moveemployee.png#lightbox)
 
-    ![选择实体按钮](./media/luis-tutorial-composite-entity/manage-prebuilt-entities-button.png)
+3. 选择工具栏上的放大镜图标以筛选话语列表。 
 
-4. 在弹出框中选择“数量”和“datetimeV2”。
+    [![](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png "“MoveEmployee”意向上的 LUIS 屏幕截图，其中已突出显示放大镜按钮")](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png#lightbox)
 
-    ![选择实体按钮](./media/luis-tutorial-composite-entity/prebuilt-entity-ddl.png)
+4. 在筛选器文本框中输入 `tomorrow` 以查找话语 `shift x12345 to h-1234 tomorrow`。
 
-5. 为了提取新的实体，请选择顶部导航栏中的“训练”。
+    [![](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png "“MoveEmployee”意向上的 LUIS 屏幕截图，其中已突出显示键入了“tomorrow”的筛选器")](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png#lightbox)
 
-    ![选择训练按钮](./media/luis-tutorial-composite-entity/train.png)
+    另一种方法是通过 datetimeV2 筛选实体，通过选择“实体筛选器”，然后从列表中选择“datetimeV2”。 
 
-## <a name="use-existing-intent-to-create-composite-entity"></a>使用现有意向创建复合实体
-1. 从左侧导航栏中选择“意向”。 
+5. 选择第一个实体 `Employee`，然后在弹出菜单列表中选择“在复合实体中包装”。 
 
-    ![选择“意向”页面](./media/luis-tutorial-composite-entity/intents-from-entities-page.png)
+    [![](media/luis-tutorial-composite-entity/hr-create-entity-1.png "“MoveEmployee”意向上的 LUIS 屏幕截图，其中已突出显示选择复合中的第一个实体")](media/luis-tutorial-composite-entity/hr-create-entity-1.png#lightbox)
 
-2. 在“意向”列表中选择 `BookFlight`。  
 
-    ![从列表中选择 BookFlight 意向](./media/luis-tutorial-composite-entity/intent-page-with-prebuilt-entities-labeled.png)
+6. 然后立即选择最后一个实体，话语中的 `datetimeV2`。 在所选字词下面绘制的绿色条指示复合实体。 在弹出菜单中，输入复合名称 `RequestEmployeeMove` 然后在弹出菜单上选择“新建复合”。 
 
-    话语上标记了数量和 datetimeV2 预生成实体。
+    [![](media/luis-tutorial-composite-entity/hr-create-entity-2.png "“MoveEmployee”意向上的 LUIS 屏幕截图，其中已突出显示选择复合中的最后一个实体和创建实体")](media/luis-tutorial-composite-entity/hr-create-entity-2.png#lightbox)
 
-3. 至于话语 `book 2 flights from seattle to cairo next monday`，请选择蓝色的 `number` 实体，然后从列表选择“包装进复合实体”。 字词下方的绿线随着游标向右移动，指示复合实体的内容。 然后移至右侧，选择最后一个预生成实体 `datetimeV2`，然后在弹出窗口的文本框中输入 `FlightReservation`，并选择“新建复合实体”。 
+7. 在“想要创建哪种类型的实体?”中，列表中包含几乎所有所需字段。 仅缺失原始位置。 选择“添加子实体”，从现有实体列表中选择“位置::原始”，然后选择“完成”。 
 
-    ![在意向页面上创建复合实体](./media/luis-tutorial-composite-entity/create-new-composite.png)
+  ![“MoveEmployee”意向上的 LUIS 屏幕截图，在弹出窗口中添加其他实体](media/luis-tutorial-composite-entity/hr-create-entity-ddl.png)
 
-4. 随即会弹出一个对话框，用于验证复合实体的组成部分。 选择“完成”。
+8. 选择工具栏上的放大镜以删除筛选器。 
 
-    ![在意向页面上创建复合实体](./media/luis-tutorial-composite-entity/validate-composite-entity.png)
+## <a name="label-example-utterances-with-composite-entity"></a>使用复合实体标记示例话语
+1. 在每个示例话语中，选择应在复合中的最左侧实体。 然后选择“在复合实体中包装”.
 
-## <a name="wrap-the-entities-in-the-composite-entity"></a>将实体包装进复合实体
-创建复合实体后，请在复合实体中标记剩余话语。 若要将短语包装为复合实体，需选择最左边的字词并从显示的列表中选择“包装进复合实体”，然后选择最右边的字词并选择已命名的复合实体 `FlightReservation`。 此选择操作快速、流畅，细分为以下骤：
+    [![](media/luis-tutorial-composite-entity/hr-label-entity-1.png "“MoveEmployee”意向上的 LUIS 屏幕截图，其中已突出显示选择复合中的第一个实体")](media/luis-tutorial-composite-entity/hr-label-entity-1.png#lightbox)
 
-1. 在话语 `schedule 4 seats from paris to london for april 1` 中选择“4”作为数量预生成实体。
+2. 选择复合实体中的最后一个单词，然后从弹出菜单中选择“RequestEmployeeMove”。 
 
-    ![选择最左边的字词](./media/luis-tutorial-composite-entity/wrap-composite-step-1.png)
+    [![](media/luis-tutorial-composite-entity/hr-label-entity-2.png "“MoveEmployee”意向上的 LUIS 屏幕截图，其中已突出显示选择复合中的最后一个实体")](media/luis-tutorial-composite-entity/hr-label-entity-2.png#lightbox)
 
-2. 从显示的列表中选择“包装进复合实体”。
+3. 验证意向中的所有话语都已使用复合实体进行标记。 
 
-    ![从列表中选择包装](./media/luis-tutorial-composite-entity/wrap-composite-step-2.png)
-
-3. 选择最右边的字词。 该短语下方显示了一条绿线，指示复合实体的内容。
-
-    ![选择最右边的字词](./media/luis-tutorial-composite-entity/wrap-composite-step-3.png)
-
-4. 从显示的列表中选择复合名称 `FlightReservation`。
-
-    ![选择已命名的复合实体](./media/luis-tutorial-composite-entity/wrap-composite-step-4.png)
-
-    对于最后一个话语，请将 `London` 和 `tomorrow` 包装进复合实体，使用相同的说明。 
+    [![](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png "“MoveEmployee”意向上的 LUIS 屏幕截图，其中已标记所有话语")](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png#lightbox)
 
 ## <a name="train-the-luis-app"></a>训练 LUIS 应用
-LUIS 在训练之前，并不知道意向和实体（模型）发生的变化。 
+在应用经过定型之前，LUIS 不了解新的复合实体。 
 
 1. 在 LUIS 网站的右上方，选择“训练”按钮。
 
-    ![训练应用](./media/luis-tutorial-composite-entity/train-button.png)
+    ![训练应用](./media/luis-tutorial-composite-entity/hr-train-button.png)
 
 2. 当网站顶部出现确认成功的绿色状态栏时，表示训练已完成。
 
-    ![训练成功](./media/luis-tutorial-composite-entity/trained.png)
+    ![训练成功](./media/luis-tutorial-composite-entity/hr-trained.png)
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>发布应用以获取终结点 URL
 若要获取聊天机器人或其他应用程序中的 LUIS 预测，需要发布应用。 
@@ -127,127 +118,202 @@ LUIS 在训练之前，并不知道意向和实体（模型）发生的变化。
 
 2. 选择“生产”槽和“发布”按钮。
 
-    ![发布应用](./media/luis-tutorial-composite-entity/publish-to-production.png)
+    ![发布应用](./media/luis-tutorial-composite-entity/hr-publish-to-production.png)
 
 3. 当网站顶部出现确认成功的绿色状态栏时，表示发布已完成。
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>使用不同的话语查询终结点
+## <a name="query-the-endpoint"></a>查询终结点 
 1. 在“发布”页的底部，选择“终结点”链接。 此操作会打开另一个浏览器窗口，其地址栏中包含终结点 URL。 
 
-    ![选择终结点 URL](./media/luis-tutorial-composite-entity/publish-select-endpoint.png)
+    ![选择终结点 URL](./media/luis-tutorial-composite-entity/hr-publish-select-endpoint.png)
 
-2. 将光标定位到地址中 URL 的末尾，并输入 `reserve 3 seats from London to Cairo on Sunday`。 最后一个查询字符串参数为 `q`，表示话语查询。 此话语不同于标记的任何话语，因此，它非常适合用于测试，测试结果应返回包含所提取的分层实体的 `BookFlight` 意向。
+2. 将光标定位到地址中 URL 的末尾，并输入 `Move Jill Jones from a-1234 to z-2345 on March 3 2 p.m.`。 最后一个查询字符串参数为 `q`，表示话语查询。 
 
-```
+    由于此测试是为了验证是否正确提取复合，因此测试可以包括现有的示例话语或新话语。 一个有效的测试是在复合实体中包含所有子实体。
+
+```JSON
 {
-  "query": "reserve 3 seats from London to Cairo on Sunday",
+  "query": "Move Jill Jones from a-1234 to z-2345 on March 3  2 p.m",
   "topScoringIntent": {
-    "intent": "BookFlight",
-    "score": 0.999999046
+    "intent": "MoveEmployee",
+    "score": 0.9959525
   },
   "intents": [
     {
-      "intent": "BookFlight",
-      "score": 0.999999046
+      "intent": "MoveEmployee",
+      "score": 0.9959525
+    },
+    {
+      "intent": "GetJobInformation",
+      "score": 0.009858314
+    },
+    {
+      "intent": "ApplyForJob",
+      "score": 0.00728598563
+    },
+    {
+      "intent": "FindForm",
+      "score": 0.0058053555
+    },
+    {
+      "intent": "Utilities.StartOver",
+      "score": 0.005371796
+    },
+    {
+      "intent": "Utilities.Help",
+      "score": 0.00266987388
     },
     {
       "intent": "None",
-      "score": 0.227036044
+      "score": 0.00123299169
+    },
+    {
+      "intent": "Utilities.Cancel",
+      "score": 0.00116407464
+    },
+    {
+      "intent": "Utilities.Confirm",
+      "score": 0.00102653319
+    },
+    {
+      "intent": "Utilities.Stop",
+      "score": 0.0006628214
     }
   ],
   "entities": [
     {
-      "entity": "sunday",
-      "type": "builtin.datetimeV2.date",
-      "startIndex": 40,
-      "endIndex": 45,
+      "entity": "march 3 2 p.m",
+      "type": "builtin.datetimeV2.datetime",
+      "startIndex": 41,
+      "endIndex": 54,
       "resolution": {
         "values": [
           {
-            "timex": "XXXX-WXX-7",
-            "type": "date",
-            "value": "2018-03-25"
+            "timex": "XXXX-03-03T14",
+            "type": "datetime",
+            "value": "2018-03-03 14:00:00"
           },
           {
-            "timex": "XXXX-WXX-7",
-            "type": "date",
-            "value": "2018-04-01"
+            "timex": "XXXX-03-03T14",
+            "type": "datetime",
+            "value": "2019-03-03 14:00:00"
           }
         ]
       }
     },
     {
-      "entity": "3 seats from london to cairo on sunday",
-      "type": "flightreservation",
-      "startIndex": 8,
-      "endIndex": 45,
-      "score": 0.6892485
+      "entity": "jill jones",
+      "type": "Employee",
+      "startIndex": 5,
+      "endIndex": 14,
+      "resolution": {
+        "values": [
+          "Employee-45612"
+        ]
+      }
     },
     {
-      "entity": "cairo",
-      "type": "Location::Destination",
+      "entity": "z - 2345",
+      "type": "Locations::Destination",
       "startIndex": 31,
-      "endIndex": 35,
-      "score": 0.557570755
+      "endIndex": 36,
+      "score": 0.9690751
     },
     {
-      "entity": "london",
-      "type": "Location::Origin",
+      "entity": "a - 1234",
+      "type": "Locations::Origin",
       "startIndex": 21,
       "endIndex": 26,
-      "score": 0.8933808
+      "score": 0.9713137
+    },
+    {
+      "entity": "-1234",
+      "type": "builtin.number",
+      "startIndex": 22,
+      "endIndex": 26,
+      "resolution": {
+        "value": "-1234"
+      }
+    },
+    {
+      "entity": "-2345",
+      "type": "builtin.number",
+      "startIndex": 32,
+      "endIndex": 36,
+      "resolution": {
+        "value": "-2345"
+      }
     },
     {
       "entity": "3",
       "type": "builtin.number",
-      "startIndex": 8,
-      "endIndex": 8,
+      "startIndex": 47,
+      "endIndex": 47,
       "resolution": {
         "value": "3"
       }
+    },
+    {
+      "entity": "2",
+      "type": "builtin.number",
+      "startIndex": 50,
+      "endIndex": 50,
+      "resolution": {
+        "value": "2"
+      }
+    },
+    {
+      "entity": "jill jones from a - 1234 to z - 2345 on march 3 2 p . m",
+      "type": "requestemployeemove",
+      "startIndex": 5,
+      "endIndex": 54,
+      "score": 0.4027723
     }
   ],
   "compositeEntities": [
     {
-      "parentType": "flightreservation",
-      "value": "3 seats from london to cairo on sunday",
+      "parentType": "requestemployeemove",
+      "value": "jill jones from a - 1234 to z - 2345 on march 3 2 p . m",
       "children": [
         {
-          "type": "builtin.datetimeV2.date",
-          "value": "sunday"
+          "type": "builtin.datetimeV2.datetime",
+          "value": "march 3 2 p.m"
         },
         {
-          "type": "Location::Destination",
-          "value": "cairo"
+          "type": "Locations::Destination",
+          "value": "z - 2345"
         },
         {
-          "type": "builtin.number",
-          "value": "3"
+          "type": "Employee",
+          "value": "jill jones"
         },
         {
-          "type": "Location::Origin",
-          "value": "london"
+          "type": "Locations::Origin",
+          "value": "a - 1234"
         }
       ]
     }
-  ]
+  ],
+  "sentimentAnalysis": {
+    "label": "neutral",
+    "score": 0.5
+  }
 }
 ```
 
-此话语返回一个包含 flightreservation 对象的复合实体数组，且带有已提取的数据。  
+此话语返回复合实体数组。 每个实体都有类型和值。 若要查找每个子实体的更高精度，请使用复合数组项中的类型和值的组合来查找实体数组中的相应项。  
 
 ## <a name="what-has-this-luis-app-accomplished"></a>此 LUIS 应用实现了哪些目的？
-此应用只包含两个意向和一个复合实体，识别了自然语言查询意向，并返回了提取的数据。 
+此应用识别了自然语言查询意向，并将提取的数据作为命名组返回。 
 
-现在，聊天机器人已获得足够的信息，可以确定主要操作 `BookFlight` 以及在话语中找到的预留信息。 
+现在，聊天机器人已获得足够的信息，可以确定主要操作和话语中的相关详细信息。 
 
 ## <a name="where-is-this-luis-data-used"></a>在何处使用此 LUIS 数据？ 
 LUIS 已完成此请求。 调用方应用程序（例如聊天机器人）可以提取 topScoringIntent 结果和实体中的数据，以执行下一步骤。 LUIS 不会针对机器人或调用方应用程序执行编程工作。 LUIS 只确定用户的意向是什么。 
 
+## <a name="clean-up-resources"></a>清理资源
+不再需要 LUIS 应用时，请将其删除。 在左上侧菜单中选择“我的应用”。 在应用列表中选择应用名称右侧的省略号 (...) 按钮，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
+
 ## <a name="next-steps"></a>后续步骤
-
-[详细了解实体](luis-concept-entity-types.md)。 
-
-<!--References-->
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
-[LUIS-regions]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#publishing-regions
+> [!div class="nextstepaction"] 
+> [了解如何使用短语列表添加简单实体](luis-quickstart-primary-and-secondary-data.md)  

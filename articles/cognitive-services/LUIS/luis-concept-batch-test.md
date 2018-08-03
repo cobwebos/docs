@@ -2,19 +2,19 @@
 title: 批处理测试 LUIS 应用 - Azure | Microsoft Docs
 description: 使用批处理测试持续优化应用程序并改进其语言理解能力。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/14/2018
-ms.author: v-geberr
-ms.openlocfilehash: 3803df32d6431b8413e8df0837ed62b2e4344cdc
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 07/06/2018
+ms.author: diberry
+ms.openlocfilehash: bba3f2ff942fbe5dffc9b694990964e4e3078dbe
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366050"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222647"
 ---
 # <a name="batch-testing-in-luis"></a>LUIS 中的批处理测试
 
@@ -34,14 +34,99 @@ ms.locfileid: "35366050"
 
 *重复项被视为完全字符串匹配，不匹配的项将先进行标记。 
 
+## <a name="entities-allowed-in-batch-tests"></a>允许在批处理测试中使用的实体
+实体包括简单、分层父级和复合。 即使批处理文件中没有相应的实体，这些类型的所有实体也会出现在批处理测试实体筛选器中。
+
+
 <a name="json-file-with-no-duplicates"></a>
 <a name="example-batch-file"></a>
 ## <a name="batch-file-format"></a>批处理文件格式
 批处理文件包含表达。 每个表达都必须具有任何你预测可被检测到的[机器学习实体](luis-concept-entity-types.md#types-of-entities)随附的预期意向预测。 
 
-示例批处理文件如下：
+以下是具有正确语法的批处理文件的示例：
 
-   [!code-json[Valid batch test](~/samples-luis/documentation-samples/batch-testing/travel-agent-1.json)]
+```JSON
+[
+  {
+    "text": "Are there any janitorial jobs currently open?",
+    "intent": "GetJobInformation",
+    "entities": 
+    [
+        {
+            "entity": "Job",
+            "startPos": 14,
+            "endPos": 23
+        }
+    ]
+  },
+  {
+    "text": "I would like a fullstack typescript programming with azure job",
+    "intent": "GetJobInformation",
+    "entities": 
+    [
+        {
+            "entity": "Job",
+            "startPos": 15,
+            "endPos": 46
+        }
+    ]
+  },
+  {
+    "text": "Is there a database position open in Los Colinas?",
+    "intent": "GetJobInformation",
+    "entities": 
+    [
+        {
+            "entity": "Job",
+            "startPos": 11,
+            "endPos": 18
+        }
+    ]
+  },
+  {
+    "text": "Please find database jobs open today in Seattle",
+    "intent": "GetJobInformation",
+    "entities": 
+    [
+        {
+            "entity": "Job",
+            "startPos": 12,
+            "endPos": 19
+        }
+    ]
+  }
+]
+```
+
+## <a name="batch-syntax-template"></a>批处理语法模板
+
+使用以下模板启动批处理文件：
+
+```JSON
+[
+  {
+    "text": "example utterance goes here",
+    "intent": "intent name goes here",
+    "entities": 
+    [
+        {
+            "entity": "entity name 1 goes here",
+            "startPos": 14,
+            "endPos": 23
+        },
+        {
+            "entity": "entity name 2 goes here",
+            "startPos": 14,
+            "endPos": 23
+        }
+    ]
+  }
+]
+```
+
+批处理文件使用 startPos 和 endPos 属性来记录实体的开始和结束。 值从零开始，不得以空格开始或结束。 
+
+这与使用 startIndex 和 endIndex 属性的查询日志不同。 
 
 
 ## <a name="common-errors-importing-a-batch"></a>导入批处理文件的常见错误
@@ -49,6 +134,7 @@ ms.locfileid: "35366050"
 
 > * 超过 1,000 个表达
 > * 不具有实体属性的表达 JSON 对象
+> * 在多个实体中标记的字词
 
 ## <a name="batch-test-state"></a>批处理测试状态
 LUIS 跟踪每个数据集的最后一次测试的状态。 这包括大小（批处理中的表达数）、上次运行日期和最后结果（成功预测的表达数）。

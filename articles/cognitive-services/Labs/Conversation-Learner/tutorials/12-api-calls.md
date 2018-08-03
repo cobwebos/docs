@@ -1,7 +1,7 @@
 ---
-title: 如何通过对话学习器应用程序使用 API 调用 - Microsoft 认知服务 | Microsoft Docs
+title: 如何通过对话学习器模型使用 API 调用 - Microsoft 认知服务 | Microsoft Docs
 titleSuffix: Azure
-description: 了解如何通过对话学习器应用程序使用 API 调用。
+description: 了解如何通过对话学习器模型使用 API 调用。
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,16 +10,20 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: ec752cbadfac7a47e08ed7b0ffe8bb475969fac5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1d4013d736d8cfcb75874bc0c86d20b86ab4dd62
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366279"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215833"
 ---
-# <a name="how-to-add-api-calls-to-a-conversation-learner-application"></a>如何将 API 调用添加到对话学习器应用程序
+# <a name="how-to-add-api-calls-to-a-conversation-learner-model"></a>如何将 API 调用添加到对话学习器模型
 
-本教程演示如何将 API 调用添加到应用程序。 API 调用是在机器人中定义和编写的函数，是对话学习器可以调用的函数。
+本教程演示如何将 API 调用添加到模型。 API 调用是在机器人中定义和编写的函数，是对话学习器可以调用的函数。
+
+## <a name="video"></a>视频
+
+[![教程 12 预览](http://aka.ms/cl-tutorial-12-preview)](http://aka.ms/blis-tutorial-12)
 
 ## <a name="requirements"></a>要求
 本教程要求运行“tutorialAPICalls.ts”机器人。
@@ -34,11 +38,11 @@ ms.locfileid: "35366279"
 
 ### <a name="open-the-demo"></a>打开演示
 
-在 Web UI 的“应用”列表中，单击“Tutorial-12-APICalls”。 
+在 Web UI 的“模型”列表中，单击“Tutorial-12-APICalls”。 
 
 ### <a name="entities"></a>实体
 
-我们已在应用程序中定义了一个名为 number 的实体。
+我们已在模型中定义了一个名为 number 的实体。
 
 ![](../media/tutorial12_entities.PNG)
 
@@ -81,7 +85,7 @@ API 调用的代码在此文件中定义：C:\<installedpath\>\src\demos\tutoria
 4. 输入“8”。 然后单击“对操作打分”。
 4. 选择“Multiply $number 12”。 请注意乘法的结果。
 5. 选择“清除实体”。
-    - 请注意，已清除数字实体的值。
+    - 已清除 `number` 实体的值。
 3. 单击以选择“What number to do you want to multiply by 12?”
 4. 单击“完成测试”。
 

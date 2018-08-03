@@ -1,7 +1,7 @@
 ---
-title: 演示对话学习器应用程序，密码重置 - Microsoft 认知服务 | Microsoft Docs
+title: 演示对话学习器模型，密码重置 - Microsoft 认知服务 | Microsoft Docs
 titleSuffix: Azure
-description: 了解如何创建演示对话学习器应用程序。
+description: 了解如何创建演示对话学习器模型。
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,17 +10,21 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 24d61787a79ee1a1a9737c417aa966cc8fd75930
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f633dd375d690a1c3e66a2a6e02ae69665dbe960
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366265"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170627"
 ---
 # <a name="demo-password-reset"></a>演示：密码重置
 此演示展示了一个简单的技术支持机器人，它可以帮助进行密码重置。 
 
 它展示了对话学习器如何学习重要的对话框流、多轮序列，包括域外类。 此演示未使用任何代码或实体。
+
+## <a name="video"></a>视频
+
+[![演示密码预览](http://aka.ms/cl-demo-password-preview)](http://aka.ms/blis-demo-password)
 
 ## <a name="requirements"></a>要求
 本教程要求密码重置机器人正在运行
@@ -29,7 +33,7 @@ ms.locfileid: "35366265"
 
 ### <a name="open-the-demo"></a>打开演示
 
-在 Web UI 的“应用”列表中，单击“教程演示密码重置”。 
+在 Web UI 的“模型”列表中，单击“教程演示密码重置”。 
 
 ### <a name="actions"></a>操作
 

@@ -2,19 +2,19 @@
 title: 了解 LUIS 中的数据更改概念 - Azure | Microsoft Docs
 description: 了解如何在语言理解 (LUIS) 得出预测之前更改数据
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/26/2018
-ms.author: v-geberr
-ms.openlocfilehash: 4fb1a5542bb56bd853984e66198ebfbd189451f8
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.author: diberry
+ms.openlocfilehash: d8421114bb5a7416ad2523fe9b0353f03f672619
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266859"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223977"
 ---
 # <a name="data-alterations"></a>数据更改
 LUIS 提供在预测之前或预测期间操作陈述的方法。 
@@ -22,7 +22,7 @@ LUIS 提供在预测之前或预测期间操作陈述的方法。
 ## <a name="correct-spelling-errors-in-utterance"></a>更正陈述中的拼写错误
 LUIS 使用[必应拼写检查 API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) 来更正陈述中的拼写错误。 LUIS 需要与该服务关联的密钥。 创建密钥，然后将密钥添加为[终结点](https://aka.ms/luis-endpoint-apis)的 querystring 参数。 
 
-还可以通过[输入密钥](interactive-test.md#view-bing-spell-check-corrections-in-test-panel)更正“测试”面板中的拼写错误。 该密钥以浏览器中“测试”面板的会话变量形式保存。 在每个要更正拼写的浏览器会话中，将该密钥添加到“测试”面板。 
+还可以通过[输入密钥](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel)更正“测试”面板中的拼写错误。 该密钥以浏览器中“测试”面板的会话变量形式保存。 在每个要更正拼写的浏览器会话中，将该密钥添加到“测试”面板。 
 
 测试面板和终结点中的密钥使用情况将计入[密钥用量](https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/)配额。 LUIS 实施必应拼写检查文本长度限制。 
 
@@ -31,7 +31,7 @@ LUIS 使用[必应拼写检查 API V7](https://azure.microsoft.com/services/cogn
 |Param|值|
 |--|--|
 |`spellCheck`|布尔值|
-|`bing-spell-check-subscription-key`|[必应拼写检查 API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) 订阅密钥|
+|`bing-spell-check-subscription-key`|[必应拼写检查 API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) 终结点密钥|
 
 [必应拼写检查 API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) 检测到错误时，将一并从终结点返回原始陈述、已更正陈述和预测。
 
@@ -89,5 +89,3 @@ int timezoneOffset = (int)((cstDatetime - utcDatetime).TotalMinutes);
 
 > [!div class="nextstepaction"]
 > [通过本教程更正拼写错误](luis-tutorial-bing-spellcheck.md)
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

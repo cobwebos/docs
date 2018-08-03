@@ -9,12 +9,12 @@ ms.technology: project-url-preview
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: adc2f83f703e740e40d9ba4fd3ed08ba429e5d97
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 46c011d62b6ae51f5f7d292345e6ece0e27a8541
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366327"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865869"
 ---
 # <a name="project-url-preview-v7-reference"></a>项目 URL 预览 v7 参考
 

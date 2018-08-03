@@ -9,12 +9,12 @@ ms.component: translator-speech
 ms.topic: article
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 447164bd8d786fbfc46dff878b77f11a286bcfb8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b06ee0c37d52f81db1a3bad6907690619002ef7c
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365667"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205497"
 ---
 # <a name="quickstart-for-microsoft-translator-speech-api-with-java"></a>将 Microsoft 语音翻译 API 与 Java 配合使用的快速入门 
 <a name="HOLTop"></a>
@@ -25,9 +25,18 @@ ms.locfileid: "35365667"
 
 需要使用 [JDK 7 或 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 来编译和运行此代码。 可使用喜欢的 Java IDE（如果有）操作，但文本编辑器足以满足要求。
 
-将需要 [javax.websocket-api-1.1.jar](http://central.maven.org/maven2/javax/websocket/javax.websocket-api/1.1/) 和 [tyrus-standalone-client-1.9.jar](http://repo1.maven.org/maven2/org/glassfish/tyrus/bundles/tyrus-standalone-client/1.9/) 文件。
+需要以下文件。
+- [javax.websocket-api-1.1.jar（或更高版本）](https://mvnrepository.com/artifact/javax.websocket/javax.websocket-api)
+- [jetty-http-9.4.11.v20180605.jar（或更高版本）](https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-http)
+- [jetty-io-9.4.11.v20180605.jar（或更高版本）](https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-io)
+- [jetty-util-9.4.11.v20180605.jar（或更高版本）](https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-util)
+- [websocket-api-9.4.11.v20180605.jar（或更高版本）](https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/websocket-api)
+- [websocket-client-9.4.11.v20180605.jar（或更高版本）](https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/websocket-client)
+- [websocket-common-9.4.11.v20180605.jar（或更高版本）](https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/websocket-common)
+- [javax-websocket-client-impl-9.4.11.v20180605.jar（或更高版本）](https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/javax-websocket-client-impl)
+- [jetty-client-9.4.11.v20180605.jar（或更高版本）](https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-client)
 
-将需要一个名为“speak.wav”的 .wav 文件，该文件与从以下代码编译的可执行文件位于同一文件夹中。 此 .wav 文件应采用标准 PCM、16 位、16 kHz 单声道格式。 可从[文本翻译朗读 API](http://docs.microsofttranslator.com/text-translate.html#!/default/get_Speak) 获取此类 .wav 文件。
+将需要一个名为“speak.wav”的 .wav 文件，该文件与从以下代码编译的可执行文件位于同一文件夹中。 此 .wav 文件应采用标准 PCM、16 位、16 kHz 单声道格式。 可使用[文本转语音 API](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech) 获取此类 .wav 文件。
 
 必须创建一个具有 Microsoft 语音翻译 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 需要一个来自 [Azure 仪表板](https://portal.azure.com/#create/Microsoft.CognitiveServices)的付费订阅密钥。
 
@@ -37,7 +46,7 @@ ms.locfileid: "35365667"
 
 1. 在喜欢使用的 IDE 中新建一个 Java 项目。
 2. 添加下方提供的代码。
-3. 将 `key` 值替换为对订阅有效的访问密钥。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 Config.java：
@@ -78,6 +87,14 @@ import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.WebSocketContainer;
+
+import org.eclipse.jetty.client.*;
+import org.eclipse.jetty.http.*;
+import org.eclipse.jetty.io.*;
+import org.eclipse.jetty.util.*;
+import org.eclipse.jetty.websocket.api.*;
+import org.eclipse.jetty.websocket.client.io.*;
+import org.eclipse.jetty.websocket.common.scopes.*;
 
 /* Useful reference links:
     https://docs.oracle.com/javaee/7/api/javax/websocket/Session.html
@@ -162,9 +179,10 @@ See:
             OutputStream stream = this.session.getBasicRemote().getSendStream();
             stream.write (message);
 /* Make sure the audio file is followed by silence.
- * This lets the service know that the audio input is finished. */
+ * This lets the service know that the audio file is finished.
+ * At 32 bytes per millisecond, this is 10 seconds of silence. */
             System.out.println ("Sending silence.");
-            byte silence[] = new byte[3200000];
+            byte silence[] = new byte[320000];
             stream.write (silence);
             stream.flush();
         } catch (Exception e) {
@@ -176,6 +194,8 @@ See:
         try {
             System.out.println("Connecting.");
             WebSocketContainer container = ContainerProvider.getWebSocketContainer();
+/* The response message might exceed the default max message size of 65536. */
+            container.setDefaultMaxBinaryMessageBufferSize(131072);
 /* Some code samples show container.connectToServer as returning a Session, but this seems to be false. */
             container.connectToServer(this, new URI(uri));
         } catch (Exception e) {
@@ -198,17 +218,33 @@ Speak.java：
 
 ```java
 /*
-Download javax.websocket-api-1.1.jar from:
+Download javax.websocket-api-1.1.jar (or newer) from:
     http://central.maven.org/maven2/javax/websocket/javax.websocket-api/1.1/
-Download tyrus-standalone-client-1.9.jar from:
-    http://repo1.maven.org/maven2/org/glassfish/tyrus/bundles/tyrus-standalone-client/1.9/
+Download jetty-http-9.4.11.v20180605.jar (or newer) from:
+    https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-http
+Download jetty-io-9.4.11.v20180605.jar (or newer) from:
+    https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-io
+Download jetty-util-9.4.11.v20180605.jar (or newer) from:
+    https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-util
+Download websocket-api-9.4.11.v20180605.jar (or newer) from:
+    https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/websocket-api
+Download websocket-client-9.4.11.v20180605.jar (or newer) from:
+    https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/websocket-client
+Download websocket-common-9.4.11.v20180605.jar (or newer) from:
+    https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/websocket-common
+Download javax-websocket-client-impl-9.4.11.v20180605.jar (or newer) from:
+    https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/javax-websocket-client-impl
+Download jetty-client-9.4.11.v20180605.jar (or newer) from:
+    https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-client
 
 Compile and run with:
     javac Config.java -cp .;javax.websocket-api-1.1.jar
-    javac Client.java -cp .;javax.websocket-api-1.1.jar;tyrus-standalone-client-1.9.jar
-    javac Speak.java
-    java -cp .;javax.websocket-api-1.1.jar;tyrus-standalone-client-1.9.jar Speak
+    javac Client.java -cp .;javax.websocket-api-1.1.jar;javax-websocket-client-impl-9.4.11.v20180605.jar;websocket-common-9.4.11.v20180605.jar;jetty-util-9.4.11.v20180605.jar;jetty-io-9.4.11.v20180605.jar;websocket-api-9.4.11.v20180605.jar;websocket-client-9.4.11.v20180605.jar;jetty-client-9.4.11.v20180605.jar;jetty-http-9.4.11.v20180605.jar
+    javac Speak.java -cp .;javax.websocket-api-1.1.jar;javax-websocket-client-impl-9.4.11.v20180605.jar;websocket-common-9.4.11.v20180605.jar;jetty-util-9.4.11.v20180605.jar;jetty-io-9.4.11.v20180605.jar;websocket-api-9.4.11.v20180605.jar;websocket-client-9.4.11.v20180605.jar;jetty-client-9.4.11.v20180605.jar;jetty-http-9.4.11.v20180605.jar
+    java -cp .;javax.websocket-api-1.1.jar;javax-websocket-client-impl-9.4.11.v20180605.jar;websocket-common-9.4.11.v20180605.jar;jetty-util-9.4.11.v20180605.jar;jetty-io-9.4.11.v20180605.jar;websocket-api-9.4.11.v20180605.jar;websocket-client-9.4.11.v20180605.jar;jetty-client-9.4.11.v20180605.jar;jetty-http-9.4.11.v20180605.jar Speak
 */
+
+import java.lang.Thread;
 
 public class Speak {
     public static void main(String[] args) {
@@ -216,7 +252,8 @@ public class Speak {
             Client client = new Client ();
             client.Connect ();
             // Wait for the reply.
-            System.out.println ("Press any key to exit the application at any time.");
+            Thread.sleep (5000);
+            System.out.println ("Press Enter to exit the application at any time.");
             System.in.read();
         }
         catch (Exception e) {

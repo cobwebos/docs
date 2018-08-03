@@ -1,20 +1,20 @@
 ---
 title: Azure 常见问题解答中的语言理解 (LUIS) | Microsoft Docs
 description: 获取有关语言理解 (LUIS) 的常见问题的解答
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: fd63ffd312e3ac17a6376eb3c9bef8f1978e3935
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: diberry
+ms.openlocfilehash: 8e0d834b94ff902eb0c1e0ada2fb32d374cee12b
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333609"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39239111"
 ---
 # <a name="language-understanding-faq"></a>语言理解常见问题解答
 
@@ -53,21 +53,25 @@ ms.locfileid: "36333609"
 ### <a name="should-variations-of-an-example-utterance-include-punctuation"></a>示例表述的变体是否应包括标点？ 
 请将不同的变体作为示例表述添加到意向，或者使用[忽略标点的语法](luis-concept-patterns.md#pattern-syntax)添加示例表述的模式。 
 
+### <a name="does-luis-currently-support-cortana"></a>LUIS 目前是否支持 Cortana？
+
+Cortana 预构建应用已于 2017 年弃用。 它们不再受支持。 
+
 ## <a name="luis-endpoint"></a>LUIS 终结点
 
 ### <a name="why-does-luis-add-spaces-to-the-query-around-or-in-the-middle-of-words"></a>为什么 LUIS 向查询添加空格时，会将其添加到单词的周围或中间？
 LUIS 根据[区域性](luis-supported-languages.md#tokenization)将表述[标记化](luis-glossary.md#token)。 原始值和标记化值均可用于[数据提取](luis-concept-data-extraction.md#tokenized-entity-returned)。
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>如何创建并分配 LUIS 终结点密钥？
-根据[服务](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)级别在 Azure 中[创建终结点密钥](luis-how-to-azure-subscription.md#create-luis-endpoint-key)。 在**[发布](publishapp.md)** 页中[分配密钥](Manage-keys.md#assign-endpoint-key)。 此操作没有相应的 API。 然后，必须更改针对此终结点的 HTTP 请求才能[使用新终结点密钥](luis-concept-keys.md#use-endpoint-key-in-query)。
+根据[服务](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)级别在 Azure 中[创建终结点密钥](luis-how-to-azure-subscription.md#create-luis-endpoint-key)。 在**[发布](luis-how-to-publish-app.md)** 页中[分配密钥](luis-how-to-manage-keys.md#assign-endpoint-key)。 此操作没有相应的 API。 然后，必须更改针对此终结点的 HTTP 请求才能[使用新终结点密钥](luis-concept-keys.md#use-endpoint-key-in-query)。
 
 ### <a name="how-do-i-interpret-luis-scores"></a>如何解释 LUIS 分数？ 
 系统应该使用最高得分意向，不管其值如何。 例如，分数低于 0.5（不到 50%）不一定意味着 LUIS 的置信度低。 提供更多训练数据可以提高最可能意向的分数。
 
 ### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>为何在应用的“仪表板”中看不到终结点命中数？
-应用的“仪表板”中的终结点总命中数会定期更新，但 Azure 门户中与 LUIS 订阅密钥相关联的指标的更新频率更高。 
+应用的“仪表板”中的终结点总命中数会定期更新，但 Azure 门户中与 LUIS 终结点密钥相关联的指标的更新频率更高。 
 
-如果在“仪表板”中看不到更新的终结点命中数，请登录到 Azure 门户，找到与 LUIS 订阅密钥相关联的资源，然后打开“指标”以选择“总调用数”指标。 如果将订阅密钥用于多个 LUIS 应用，则 Azure 门户中的指标会显示使用该密钥的所有 LUIS 应用进行的调用的聚合数。
+如果在“仪表板”中看不到更新的终结点命中数，请登录到 Azure 门户，找到与 LUIS 终结点密钥相关联的资源，然后打开“指标”以选择“总调用数”指标。 如果将终结点密钥用于多个 LUIS 应用，则 Azure 门户中的指标会显示使用该密钥的所有 LUIS 应用进行的调用的聚合数。
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>我的 LUIS 应用昨天还可以正常使用，但今天却出现 403 错误。 我没有更改应用。 如何解决问题？ 
 根据下一常见问题解答中的[说明](#how-do-i-create-and-assign-a-luis-endpoint-key)创建一个 LUIS 终结点密钥，然后将其分配给应用。 然后，必须更改针对此终结点的 HTTP 请求才能[使用新终结点密钥](luis-concept-keys.md#use-endpoint-key-in-query)。
@@ -115,8 +119,9 @@ LUIS 根据[区域性](luis-supported-languages.md#tokenization)将表述[标记
 
 ![Azure 门户中的租户 ID](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 
-### <a name="why-are-there-more-subscription-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>为何应用的发布页上的订阅密钥数超出分配给应用的数目？ 
-每个 LUIS 应用都有创作/初学者密钥。 在 GA 期间创建的 LUIS 订阅密钥会显示在发布页上，不管你是否向应用添加了它们。 这样做是为了方便 GA 迁移。 新的 LUIS 订阅密钥不显示在发布页上。 
+<a name="why-are-there-more-subscription-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>
+### <a name="why-are-there-more-endpoint-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>为何应用的发布页上的终结点密钥数超出分配给应用的数目？ 
+每个 LUIS 应用都有创作/初学者密钥。 在 GA 期间创建的 LUIS 终结点密钥会显示在发布页上，不管是否向应用添加了它们。 这样做是为了方便 GA 迁移。 新的 LUIS 终结点密钥不显示在发布页上。 
 
 ## <a name="app-management"></a>应用管理
 
@@ -153,7 +158,7 @@ LUIS 根据[区域性](luis-supported-languages.md#tokenization)将表述[标记
 ## <a name="app-notification"></a>应用通知
 
 ### <a name="why-did-i-get-an-email-saying-im-almost-out-of-quota"></a>为什么我收到一封电子邮件，说我的配额几乎已用光？
-创作/初学者密钥每个月只允许 1000 个终结点查询。 请创建一个 LUIS 订阅密钥（免费或付费），在进行终结点查询时使用该密钥。 如果通过机器人或另一客户端应用程序进行终结点查询，则需在其中更改 LUIS 终结点密钥。 
+创作/初学者密钥每个月只允许 1000 个终结点查询。 请创建一个 LUIS 终结点密钥（免费或付费），在进行终结点查询时使用该密钥。 如果通过机器人或另一客户端应用程序进行终结点查询，则需在其中更改 LUIS 终结点密钥。 
 
 ## <a name="integrating-luis"></a>集成 LUIS
 
@@ -167,7 +172,7 @@ LUIS 根据[区域性](luis-supported-languages.md#tokenization)将表述[标记
 
 ## <a name="luis-service"></a>LUIS 服务 
 
-### <a name="is-luis-available-on-premise-or-in-private-cloud"></a>是否可以在本地或私有云中使用 LUIS？
+### <a name="is-luis-available-on-premises-or-in-private-cloud"></a>是否可以在本地或私有云中使用 LUIS？
 不是。 
 
 ## <a name="changes-to-the-docs"></a>对 Docs 所做的更改
@@ -182,7 +187,7 @@ LUIS 根据[区域性](luis-supported-languages.md#tokenization)将表述[标记
 |使用 [Node.js](luis-tutorial-node-import-utterances-csv.md) 以编程方式生成 LUIS 应用|
 |使用[复合实体](luis-tutorial-composite-entity.md)提取分组的数据|
 |使用 Node.js 添加[列表实体](luis-tutorial-list-entity.md)以增强实体检测|
-|使用[短语列表](luis-tutorial-interchangeable-phrase-list.md)、[模式](luis-tutorial-pattern.md)和[批量测试](luis-tutorial-batch-testing.md)提高预测准确性|
+|使用[短语列表](luis-quickstart-primary-and-secondary-data.md)、[模式](luis-tutorial-pattern.md)和[批量测试](luis-tutorial-batch-testing.md)提高预测准确性|
 |使用必应拼写检查 API v7 [更正拼写](luis-tutorial-batch-testing.md)
 
 ### <a name="at-the-build-2018-conference-i-heard-about-a-language-understanding-feature-or-demo-but-i-dont-remember-what-it-was-called"></a>在 Build 2018 大会上，我了解到一项语言理解功能或演示，但我不记得它的名称了，它叫什么呢？ 
@@ -193,7 +198,7 @@ LUIS 根据[区域性](luis-supported-languages.md#tokenization)将表述[标记
 |--|--|
 |增强功能|[正则表达式](luis-concept-data-extraction.md##regular-expression-entity-data)实体和[关键短语](luis-concept-data-extraction.md#key-phrase-extraction-entity-data)实体
 |模式|模式[概念](luis-concept-patterns.md)、[教程](luis-tutorial-pattern.md)、[操作方法](luis-how-to-model-intent-pattern.md)<br>[Patterns.Any](luis-concept-entity-types.md) 实体概念，包括用作例外的[显式列表](luis-concept-patterns.md#explicit-lists)<br>[角色](luis-concept-roles.md)概念|
-|集成|[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)集成（集成了[情绪分析](publishapp.md#enable-sentiment-analysis)）<br>[语音](https://docs.microsoft.com/azure/cognitive-services/speech)集成（集成了[语音启动](publishapp.md#enable-speech-priming)和[语音 SDK](https://aka.ms/SpeechSDK)）|
+|集成|[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)集成（集成了[情绪分析](luis-how-to-publish-app.md#enable-sentiment-analysis)）<br>[语音](https://docs.microsoft.com/azure/cognitive-services/speech)集成（集成了[语音启动](luis-how-to-publish-app.md#enable-speech-priming)和[语音 SDK](https://aka.ms/SpeechSDK)）|
 |Dispatch 工具|Dispatch 命令行[工具](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps)是 [BotBuilder-tools](https://github.com/Microsoft/botbuilder-tools) 的一部分，可以将多个 LUIS 应用和 QnA Maker 应用组合成单个 LUIS 应用，以便增强机器人中的意向识别功能
 
 此外还包括其他创作 [API 路由](https://github.com/Microsoft/LUIS-Samples/blob/master/authoring-routes.md)。 
@@ -212,5 +217,3 @@ LUIS 根据[区域性](luis-supported-languages.md#tokenization)将表述[标记
 若要了解有关 LUIS 的详细信息，请参阅以下资源：
 * [标记了 LUIS 的 Stack Overflow 问题](https://stackoverflow.com/questions/tagged/luis)
 * [MSDN 语言理解智能服务 (LUIS) 论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=LUIS) 
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

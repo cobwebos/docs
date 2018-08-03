@@ -3,19 +3,19 @@ title: 将必应拼写检查 API v7 添加到 LUIS 查询 | Microsoft Docs
 titleSuffix: Azure
 description: 通过将必应拼写检查 API V7 添加到 LUIS 终结点查询来更正表述中拼写错误的字词。
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 02/27/2018
-ms.author: v-geberr
-ms.openlocfilehash: 340fb34c234a12f93fcfc3182ac3fd44fce324fe
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.author: diberry
+ms.openlocfilehash: 87882052ed7faf0a7d2a665d51afb20db7ee839c
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35366958"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39239145"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>使用必应拼写检查更正拼写错误的字词
 
@@ -26,8 +26,9 @@ ms.locfileid: "35366958"
 
 ![创建免费密钥](./media/luis-tutorial-bing-spellcheck/free-key.png)
 
-## <a name="create-subscription-key"></a>创建订阅密钥
-如果免费密钥已过期，请创建订阅密钥。
+<a name"create-subscription-key"></a>
+## <a name="create-endpoint-key"></a>创建终结点密钥
+如果免费密钥已过期，请创建一个终结点密钥。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。 
 
@@ -56,7 +57,7 @@ ms.locfileid: "35366958"
 10. 复制第一个密钥。 您只需要两个密钥中的一个即可。 
 
 ## <a name="using-the-key-in-luis-test-panel"></a>在 LUIS 测试面板中使用该密钥
-LUIS 中有两个位置需使用该密钥。 第一个位置是[测试面板](train-test.md#view-bing-spell-check-corrections-in-test-panel)。 该密钥不会保存到 LUIS 中，它实际上是会话变量。 每次希望测试面板将必应拼写检查 API v7 服务应用于表述时，都需要设置该密钥。 请参阅测试面板中的[说明](train-test.md#view-bing-spell-check-corrections-in-test-panel)来设置密钥。
+LUIS 中有两个位置需使用该密钥。 第一个位置是[测试面板](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel)。 该密钥不会保存到 LUIS 中，它实际上是会话变量。 每次希望测试面板将必应拼写检查 API v7 服务应用于表述时，都需要设置该密钥。 请参阅测试面板中的[说明](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel)来设置密钥。
 
 ## <a name="adding-the-key-to-the-endpoint-url"></a>将密钥添加到终结点 URL
 终结点查询需要在要应用拼写更正的每个查询的查询字符串参数中传递的密钥。 可使用调用 LUIS 的聊天机器人或直接调用 LUIS 终结点 API。 无论如何调用终结点，每个调用都必须包含拼写更正所需的信息，以确保正常工作。
@@ -90,7 +91,7 @@ https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appID}?subscription
 如果不想使用必应拼写检查 API v7 服务，可以对包含拼写错误的表述添加标记，以便 LUIS 可以识别正确拼写和错误拼写。 使用此选项比使用拼写检查器需要更多标记操作。
 
 ## <a name="publishing-page"></a>发布页面
-[发布](publishapp.md)页面包含一个“启用必应拼写检查器”复选框。 这便于创建密钥和了解终结点 URL 的更改。 为更正每个表述中的拼写，则仍必须使用正确的终结点参数。 
+[发布](luis-how-to-publish-app.md)页面包含一个“启用必应拼写检查器”复选框。 这便于创建密钥和了解终结点 URL 的更改。 为更正每个表述中的拼写，则仍必须使用正确的终结点参数。 
 
 > [!div class="nextstepaction"]
 > [详细了解示例表述](luis-how-to-add-example-utterances.md)

@@ -3,19 +3,19 @@ title: LUIS 预生成实体 datetimeV2 参考 - Azure | Microsoft Docs
 titleSuffix: Azure
 description: 本文包含语言理解 (LUIS) 中的 datetimeV2 预生成实体信息。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 261f6f27c39c280efdcd070888d735374a473c85
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.author: diberry
+ms.openlocfilehash: 13f62e98a33aac51eae86d5ce1b802d4701ef3f6
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321569"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39236765"
 ---
 # <a name="datetimev2-entity"></a>DatetimeV2 实体
 
@@ -219,7 +219,7 @@ ms.locfileid: "36321569"
 
 ## <a name="deprecated-prebuilt-datetime"></a>已弃用的预生成日期时间
 
-`datetime` 预生成实体已弃用，已由 [`datetimeV2`](#builtindatetimev2) 取代。 
+`datetime` 预生成实体已弃用，已由 datetimeV2 取代。 
 
 若要在 LUIS 应用中将 `datetime` 替换为 `datetimeV2`，请完成以下步骤：
 

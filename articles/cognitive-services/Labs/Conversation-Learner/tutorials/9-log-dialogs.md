@@ -1,7 +1,7 @@
 ---
-title: 如何在对话学习器应用程序中记录对话 - Microsoft 认知服务 | Microsoft Docs
+title: 如何在对话学习器模型中记录对话 - Microsoft 认知服务 | Microsoft Docs
 titleSuffix: Azure
-description: 了解如何在对话学习器应用程序中记录对话。
+description: 了解如何在对话学习器模型中记录对话。
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,16 +10,20 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 477545c48aeca05d56fdae28ac65a8f381a482fe
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6ceeb9683a979256a8a52347fc74ab758fd1d348
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366305"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171429"
 ---
-# <a name="how-to-log-dialogs-in-a-conversation-learner-application"></a>如何在对话学习器应用程序中记录对话
+# <a name="how-to-log-dialogs-in-a-conversation-learner-model"></a>如何在对话学习器模型中记录对话
 
 此教程介绍如何在对话学习器界面内执行最终用户测试；如何记录对话；如何更正已记录的对话以改善模型。
+
+## <a name="video"></a>视频
+
+[![教程 9 预览](http://aka.ms/cl-tutorial-09-preview)](http://aka.ms/blis-tutorial-09)
 
 ## <a name="requirements"></a>要求
 本教程要求运行常规教程机器人
@@ -29,11 +33,11 @@ ms.locfileid: "35366305"
 ## <a name="details"></a>详细信息
 可以使用记录的对话来评审并校正与最终用户执行的对话。  尤其是，可以修复实体标签和操作选择来改善定型模型和整体系统的性能。 
 
-## <a name="steps"></a>步骤
+## <a name="steps"></a>Steps
 
-### <a name="create-the-application"></a>创建应用程序
+### <a name="create-the-model"></a>创建模型
 
-1. 在 Web UI 中，单击“新建应用”
+1. 在 Web UI 中，单击“新建模型”
 2. 在“名称”中，输入“LogDialogs”。 然后单击“创建”。
 
 ### <a name="create-an-entity"></a>创建实体
@@ -46,7 +50,7 @@ ms.locfileid: "35366305"
 
 1. 依次单击“操作”和“新建操作”
 2. 在“响应”中，键入“Which city?”。
-3. 在“取消实体资格”中，输入“$city”。
+3. 在“取消资格实体”中，输入“$city”。
 3. 单击创建
 
 然后，创建第二个操作：
@@ -117,7 +121,7 @@ ms.locfileid: "35366305"
 
 1. 单击“记录对话”下的“hello”。
     - 这将打开对话。
-3. 注意，对“hello”做出的响应是“which city”。 但是，我们想做出一些更改以使其更具有意义。 较好的答复是“hello, I'm the weather bot”等。 但没有操作来实现这一点，所以我们必须创建一个操作。
+3. 对“hello”做出的响应是“which city”。 但是，我们想做出一些更改以使其更具有意义。 较好的答复是“hello, I'm the weather bot”等。 但没有操作来实现这一点，所以我们必须创建一个操作。
 4. 单击“操作”。
     - 在“响应”中，键入“I'm the weather bot. I can help with forecasts.”
 6. 取消选中“等待响应”复选框，使其成为非等待操作。

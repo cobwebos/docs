@@ -9,12 +9,12 @@ ms.technology: qna-maker
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 36d8e5a1d9f86da94fbdbe4ff01e93ba32ce6af6
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: d8df77d43441331bdda38814e4bddfb29d1576c1
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301455"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868392"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-java"></a>使用 Java 的 Microsoft QnA Maker API 快速入门 
 <a name="HOLTop"></a>
@@ -38,9 +38,9 @@ ms.locfileid: "36301455"
 
 ## <a name="prerequisites"></a>先决条件
 
-将需要 [JDK 7 或 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 来编译并运行此代码。 如果你有喜欢的 Java IDE，可以使用它，但文本编辑器足以满足要求。
+需要使用 [JDK 7 或 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 来编译和运行此代码。 如果你有喜欢的 Java IDE，可以使用它，但文本编辑器足以满足要求。
 
-必须创建一个具有 Microsoft QnA Maker API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 将需要来自 [Azure 仪表板](https://portal.azure.com/#create/Microsoft.CognitiveServices)的付费订阅密钥。
+必须创建一个具有 Microsoft QnA Maker API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 需要一个来自 [Azure 仪表板](https://portal.azure.com/#create/Microsoft.CognitiveServices)的付费订阅密钥。
 
 <a name="Create"></a>
 
@@ -49,7 +49,7 @@ ms.locfileid: "36301455"
 以下代码使用 [Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) 方法创建新的知识库。
 
 1. 在最喜爱的 IDE 中新建 Java 项目。
-2. 添加以下提供的代码。
+2. 添加下方提供的代码。
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
@@ -299,7 +299,7 @@ public class CreateKB {
 以下代码使用 [Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) 方法更新现有知识库。
 
 1. 在最喜爱的 IDE 中新建 Java 项目。
-2. 添加以下提供的代码。
+2. 添加下方提供的代码。
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
@@ -609,7 +609,7 @@ Press any key to continue.
 以下代码使用 [Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) 方法发布现有知识库。
 
 1. 在最喜爱的 IDE 中新建 Java 项目。
-2. 添加以下提供的代码。
+2. 添加下方提供的代码。
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
@@ -738,7 +738,7 @@ public class PublishKB {
 以下代码使用 [Replace](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish) 方法来替换指定知识库的内容。
 
 1. 在最喜爱的 IDE 中新建 Java 项目。
-2. 添加以下提供的代码。
+2. 添加下方提供的代码。
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
@@ -908,7 +908,7 @@ public class ReplaceKB {
 以下代码使用 [Download knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download) 方法来下载指定知识库的内容。
 
 1. 在最喜爱的 IDE 中新建 Java 项目。
-2. 添加以下提供的代码。
+2. 添加下方提供的代码。
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
@@ -1053,9 +1053,9 @@ public class GetQnA {
 
 1. 在最喜爱的 IDE 中新建 Java 项目。
 1. 添加以下提供的代码。
-1. 将 `host` 值替换为 QnA Maker 订阅的网站名称。 有关更多信息，请参阅[创建 QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。
-1. 使用订阅的有效终结点密钥替换 `endpoint_key` 值。 请注意，该密钥与订阅密钥不同。 可以使用 [Get endpoint keys](#GetKeys) 方法获取终结点密钥。
-1. 将 `kb` 值替换为你想要查询答案的知识库的 ID。 请注意，此知识库必须已经使用 [Publish](#Publish) 方法发布。
+1. 将 `host` 值替换为 QnA Maker 订阅的网站名称。 有关详细信息，请参阅[创建 QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。
+1. 将 `endpoint_key` 值替换为你的订阅的有效终结点密钥。 请注意，该密钥不同于订阅密钥。 可以使用 [Get endpoint keys](#GetKeys) 方法获取终结点密钥。
+1. 将 `kb` 值替换为要从中查询答案的知识库的 ID。 请注意，此知识库必须已经使用 [Publish](#Publish) 方法发布。
 1. 运行该程序。
 
 ```java
@@ -1195,7 +1195,7 @@ public class GetAnswers {
 以下代码使用 [Get knowledge base details](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) 方法获取有关指定知识库的信息。
 
 1. 在最喜爱的 IDE 中新建 Java 项目。
-2. 添加以下提供的代码。
+2. 添加下方提供的代码。
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
@@ -1322,7 +1322,7 @@ public class GetKB {
 以下代码使用 [Get knowledge bases for user](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser) 方法获取有关指定用户的所有知识库的信息。
 
 1. 在最喜爱的 IDE 中新建 Java 项目。
-2. 添加以下提供的代码。
+2. 添加下方提供的代码。
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
@@ -1462,7 +1462,7 @@ Press any key to continue.
 以下代码使用 [Delete knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete) 方法来删除指定知识库。
 
 1. 在最喜爱的 IDE 中新建 Java 项目。
-2. 添加以下提供的代码。
+2. 添加下方提供的代码。
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
@@ -1583,7 +1583,7 @@ public class DeleteKB {
 以下代码使用 [Get endpoint keys](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys) 方法获取当前终结点密钥。
 
 1. 在最喜爱的 IDE 中新建 Java 项目。
-2. 添加以下提供的代码。
+2. 添加下方提供的代码。
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
@@ -1696,7 +1696,7 @@ public class GetEndpointKeys {
 以下代码使用 [Refresh endpoint keys](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_refreshendpointkeys) 方法重新生成当前终结点密钥。
 
 1. 在最喜爱的 IDE 中新建 Java 项目。
-2. 添加以下提供的代码。
+2. 添加下方提供的代码。
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
@@ -1860,7 +1860,7 @@ public class RefreshKeys {
 以下代码使用 [Download alterations](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc) 方法获取当前字变更。
 
 1. 在最喜爱的 IDE 中新建 Java 项目。
-2. 添加以下提供的代码。
+2. 添加下方提供的代码。
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
@@ -1979,7 +1979,7 @@ public class GetAlterations {
 以下代码使用 [Replace alterations](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) 方法替换当前字变更。
 
 1. 在最喜爱的 IDE 中新建 Java 项目。
-2. 添加以下提供的代码。
+2. 添加下方提供的代码。
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 

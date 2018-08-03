@@ -2,19 +2,19 @@
 title: 适用于 LUIS 应用的应用程序仪表板 | Microsoft Docs
 description: 了解应用程序仪表板，它是一种可视化报表工具，可让你一目了然地监视应用。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/01/2018
-ms.author: v-geberr
-ms.openlocfilehash: 4e117aa734c551f76c3602f81e3e2ebc6aa9f337
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: diberry
+ms.openlocfilehash: 518227d9f4165a08fafefa357de255d97c710f61
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35366860"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224494"
 ---
 # <a name="application-dashboard"></a>应用程序仪表板
 应用仪表板可让你一目了然地监视应用。 通过单击“我的应用”页中的应用程序名称打开应用，然后选择顶部面板中的“仪表板”，仪表板将随即显示。 
@@ -69,7 +69,7 @@ At the top of the **Dashboard** page, a contextual notification bar constantly d
 2. 从列表中选择一个时间段，然后单击返回箭头 ![返回箭头](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) 以显示图表。
 
 ### <a name="key-usage"></a>密钥使用情况
-应用程序的订阅密钥使用的命中次数。 有关订阅密钥的详细信息，请参阅 [LUIS 中的密钥](luis-concept-keys.md)。 
+应用程序的终结点密钥使用的命中次数。 有关终结点密钥的详细信息，请参阅 [LUIS 中的密钥](luis-concept-keys.md)。 
   
 ## <a name="intent-breakdown"></a>意向细分
 “意向细分”显示基于已标记表述数或终结点命中数的意向细分。 此摘要图显示应用中每个意向的相对重要性。 将鼠标指针悬停在某个扇形上时，可看到意向名称和此意向占已标记表述数/终结点命中数总数的百分比。 

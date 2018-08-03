@@ -9,12 +9,12 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 48fc234e15ce3b9172d766f6fae11b51a017ce70
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5d9391cc486dc868a1a291ccc7095291cddd3e4c
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35366844"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858453"
 ---
 # <a name="call-bing-custom-search-endpoint-nodejs"></a>调用必应自定义搜索终结点 (Node.js)
 
@@ -27,19 +27,23 @@ ms.locfileid: "35366844"
 
 - 安装 [Node.js](https://www.nodejs.org/)。
 
--  具有必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)足以满足此快速入门的要求。 需要激活免费试用版时提供的访问密钥，或使用 Azure 仪表板中的付费订阅密钥。
+-  具有必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)足以满足此快速入门的要求。 你需要使用激活免费试用版时提供的访问密钥，也可以使用 Azure 仪表板中的付费订阅密钥。
 
 ## <a name="run-the-code"></a>运行代码
 
 要调用必应自定义搜索终结点，请执行以下步骤：
 
 1. 为代码创建文件夹。
+
 2. 从命令提示符或终端导航至刚刚创建的文件夹。
+
 3. 安装 request 节点模块：
     <pre>
     npm install request
     </pre>
+    
 4. 创建 BingCustomSearch.js 文件并向其中复制以下代码。
+
 5. 用密钥和配置 ID（见步骤 1）替换“YOUR-SUBSCRIPTION-KEY”和“YOUR-CUSTOM-CONFIG-ID”。
 
     ``` javascript

@@ -2,19 +2,19 @@
 title: 了解 LUIS 中的数据提取概念 - Azure | Microsoft Docs
 description: 了解可以从语言理解智能服务 (LUIS) 中提取什么类型的数据
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr;
-ms.openlocfilehash: 28fde09fa9291fbcd64ce4542a008f48dd0018d1
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.author: diberry
+ms.openlocfilehash: f57e7cb85e6d183a59b358e347d70d4d185868a7
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265246"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225676"
 ---
 # <a name="data-extraction"></a>数据提取
 使用 LUIS 可以从用户的自然语言陈述中获取信息。 信息以一种程序、应用程序或机器人能够使用其来采取操作的方式进行提取。
@@ -26,9 +26,9 @@ LUIS 从已发布的[终结点](luis-glossary.md#endpoint)提供数据。 HTTPS 
 
 `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&q=book 2 tickets to paris`
 
-在编辑 LUIS 应用时，可在该 LUIS 应用的“设置”页面上找到 `appID`，也可在 URL 部分找到此 ID（在 `/apps/` 之后）。 `subscription-key` 是用于查询应用的终结点密钥。 虽然可以在学习 LUIS 时使用免费的创作/初学者密钥，但是将订阅密钥更改为支持[所需 LUIS 用法](luis-boundaries.md#key-limits)的密钥非常重要。 `timezoneOffset` 的单位是分钟。
+在编辑 LUIS 应用时，可在该 LUIS 应用的“设置”页面上找到 `appID`，也可在 URL 部分找到此 ID（在 `/apps/` 之后）。 `subscription-key` 是用于查询应用的终结点密钥。 虽然可以在学习 LUIS 时使用免费的创作/初学者密钥，但是将终结点密钥更改为支持[所需 LUIS 用法](luis-boundaries.md#key-limits)的密钥非常重要。 `timezoneOffset` 的单位是分钟。
 
-HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模型确定的所有意向和实体信息。 可在 [LUIS][LUIS] 网站的“发布”页面上找到终结点 URL。 
+HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模型确定的所有意向和实体信息。 可在 [LUIS](luis-reference-regions.md) 网站的“发布”页面上找到终结点 URL。 
 
 ## <a name="data-from-intents"></a>意向中的数据
 主数据是评分最高的意向名称。 使用 `MyStore` [快速入门](luis-quickstart-intents-only.md)，则终结点响应为：
@@ -192,7 +192,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 ]
 ```
 
-|数据对象|父级|子级|值|
+|数据对象|父级|子|值|
 |--|--|--|--|--|
 |分层实体|位置|ToLocation|"paris"|
 
@@ -201,7 +201,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 `book 2 tickets to paris`
 
-注意数字 `2` 和 ToLocation `paris` 之间有单词，这些单词不属于任何实体。 [LUIS][LUIS] 网站中的已标记陈述中使用的绿色下划线指示复合实体。
+注意数字 `2` 和 ToLocation `paris` 之间有单词，这些单词不属于任何实体。 [LUIS](luis-reference-regions.md) 网站中的已标记话语中使用的绿色下划线指示复合实体。
 
 ![复合实体](./media/luis-concept-data-extraction/composite-entity.png)
 
@@ -426,13 +426,13 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 从陈述提取名称非常困难，因为名称几乎可以是字母和单词的任何组合。 根据要提取的名称类型，有若干选项。 这些不是规则，而更像是指南。 
 
 ### <a name="names-of-people"></a>人的姓名
-人的姓名可能会带有些许格式，具体取决于语言和区域性。 使用分层实体将姓氏和名字作为子级，或者使用简单实体将姓氏和名字作为角色。 请确保给出的示例在陈述的不同部分、在不同长度的陈述中以及在所有意向（包括“None”意向）的陈述中使用姓氏和名字。 定期[查看](label-suggested-utterances.md)终结点陈述以标记未能正确预测的任何名称。 
+人的姓名可能会带有些许格式，具体取决于语言和区域性。 使用分层实体将姓氏和名字作为子级，或者使用简单实体将姓氏和名字作为角色。 请确保给出的示例在陈述的不同部分、在不同长度的陈述中以及在所有意向（包括“None”意向）的陈述中使用姓氏和名字。 定期[查看](luis-how-to-review-endoint-utt.md)终结点陈述以标记未能正确预测的任何名称。 
 
 ### <a name="names-of-places"></a>地名
-地名是固定且已知的，例如市、县、州、省和国家/地区。 如果应用采用已知的地名集合，请考虑使用列表实体。 如果需要找到所有地名，请创建一个简单实体，并提供各种示例。 添加地名短语列表，以使地名在应用中更易认出。 定期[查看](label-suggested-utterances.md)终结点陈述以标记未能正确预测的任何名称。 
+地名是固定且已知的，例如市、县、州、省和国家/地区。 如果应用采用已知的地名集合，请考虑使用列表实体。 如果需要找到所有地名，请创建一个简单实体，并提供各种示例。 添加地名短语列表，以使地名在应用中更易认出。 定期[查看](luis-how-to-review-endoint-utt.md)终结点陈述以标记未能正确预测的任何名称。 
 
 ### <a name="new-and-emerging-names"></a>新出现的名称
-一些应用需要能够找到新出现的名称，例如产品或公司。 这种类型的数据提取是最难的。 首先从简单实体开始，添加一个短语列表。 定期[查看](label-suggested-utterances.md)终结点陈述以标记未能正确预测的任何名称。 
+一些应用需要能够找到新出现的名称，例如产品或公司。 这种类型的数据提取是最难的。 首先从简单实体开始，添加一个短语列表。 定期[查看](luis-how-to-review-endoint-utt.md)终结点陈述以标记未能正确预测的任何名称。 
 
 ## <a name="pattern-roles-data"></a>模式角色数据
 角色是实体间的上下文差别。 
@@ -710,5 +710,3 @@ LUIS 终结点可以发现不同实体中的相同数据：
 ## <a name="next-steps"></a>后续步骤
 
 请参阅[添加实体](luis-how-to-add-entities.md)，详细了解如何将实体添加到 LUIS 应用。
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

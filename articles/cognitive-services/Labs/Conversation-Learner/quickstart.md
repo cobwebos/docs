@@ -1,7 +1,7 @@
 ---
-title: 如何使用 Node.js 创建对话学习器应用程序 - Microsoft 认知服务 | Microsoft Docs
+title: 如何使用 Node.js 创建对话学习器模型 - Microsoft 认知服务 | Microsoft Docs
 titleSuffix: Azure
-description: 了解如何使用 Node.js 创建对话学习器应用程序。
+description: 了解如何使用 Node.js 创建对话学习器模型。
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,16 +10,16 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: a3a51aa86a30b060c8dc4113da69462904d7df54
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 68ff9c5402c3fa409999e9933a6c1f7bf6d5a089
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366629"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172324"
 ---
-# <a name="create-a-conversation-learner-application-using-nodejs"></a>使用 Node.js 创建对话学习器应用程序
+# <a name="create-a-conversation-learner-model-using-nodejs"></a>使用 Node.js 创建对话学习器模型
 
-对话学习器降低了生成机器人所存在的复杂性。 使用对话学习器可以建立允许手工编写的代码和机器学习的混合开发工作流，以减少编写机器人所需的代码量。 仍可编写应用程序某些固定部分的代码，例如，检查用户是否已登录，或者发出 API 请求来检查商店库存。 但是，可以从领域专家或开发人员提供的示例对话中学习状态和操作选择的其他变化。
+对话学习器降低了生成机器人所存在的复杂性。 使用对话学习器可以建立允许手工编写的代码和机器学习的混合开发工作流，以减少编写机器人所需的代码量。 仍可编写模型某些固定部分的代码，例如，检查用户是否已登录，或者发出 API 请求来检查商店库存。 但是，可以从领域专家或开发人员提供的示例对话中学习状态和操作选择的其他变化。
 
 ## <a name="invitation-required"></a>需要邀请
 
@@ -96,7 +96,7 @@ ms.locfileid: "35366629"
 
 上述指令启动了泛型空机器人。  若要改为运行教程或演示机器人：
 
-1. 如果已打开对话学习器 Web UI，请返回到 http://localhost:5050/home 处的应用列表。
+1. 如果已打开对话学习器 Web UI，请返回到 http://localhost:5050/home 处的模型列表。
     
 2. 如果另一个机器人（例如 `npm start` 或 `npm run demo-pizza`）正在运行，请将其停止。  不需要停止 UI 进程或关闭 Web 浏览器。
 
@@ -123,7 +123,7 @@ ms.locfileid: "35366629"
 
 ## <a name="create-a-bot-which-includes-back-end-code"></a>创建包含后端代码的机器人
 
-1. 如果已打开对话学习器 Web UI，请返回到 http://localhost:5050/home 处的应用列表。
+1. 如果已打开对话学习器 Web UI，请返回到 http://localhost:5050/home 处的模型列表。
     
 2. 如果某个机器人（例如 `npm run demo-pizza`）正在运行，请将其停止。  不需要停止 UI 进程或关闭 Web 浏览器。
 
@@ -138,7 +138,7 @@ ms.locfileid: "35366629"
 
 5. 在 Chrome 中通过加载 http://localhost:5050/home 切换到对话学习器 Web UI（如果尚未这样做）。 
 
-6. 在 UI 中创建新的对话学习器应用程序，并开始训练。
+6. 在 UI 中创建新的对话学习器模型，并开始训练。
 
 7. 若要在 `cl-bot-01/src/app.ts` 中进行代码更改，请重复上述步骤，从步骤 2 开始。
 

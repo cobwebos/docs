@@ -3,19 +3,19 @@ title: 结合使用语音 C# SDK 和 LUIS - Azure | Microsoft Docs
 titleSuffix: Azure
 description: 使用语音 C# SDK 示例对麦克风讲话，然后获取所返回的 LUIS 意向和实体预测。
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 06/26/2018
-ms.author: v-geberr;
-ms.openlocfilehash: b681598f953d217ca636fb5c0adc3de4ddbebd60
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.author: diberry;
+ms.openlocfilehash: 286efcd97c0c9ab95a8241215bc36799c486a8b6
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031781"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247709"
 ---
 # <a name="integrate-speech-service"></a>语音服务集成
 借助[语音服务](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/)，可使用单个请求接收音频并返回 LUIS 预测 JSON 对象。
@@ -28,7 +28,7 @@ ms.locfileid: "37031781"
 在 Azure 门户中，[创建](luis-how-to-azure-subscription.md#create-luis-endpoint-key)语言理解 (LUIS) 密钥。 
 
 ## <a name="import-human-resources-luis-app"></a>导入人力资源 LUIS 应用
-意向和本文中的话语来自人力资源 LUIS 应用（可在 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples) Github 存储库中获取）。 下载 [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/HumanResources.json) 文件，以 *.json 扩展名保存该文件，并将其[导入](create-new-app.md#import-new-app)到 LUIS。 
+意向和本文中的话语来自人力资源 LUIS 应用（可在 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples) Github 存储库中获取）。 下载 [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/HumanResources.json) 文件，以 *.json 扩展名保存该文件，并将其[导入](luis-how-to-start-new-app.md#import-new-app)到 LUIS。 
 
 此应用具有与人力资源域相关的意向、实体和话语。 话语示例包括：
 
@@ -84,7 +84,7 @@ Do I have any paid time off?
 
 [![](./media/luis-tutorial-speech-to-intent/intents.png "Visual Studio 2017 显示 LUIS_samples.cs 意向的屏幕截图")](./media/luis-tutorial-speech-to-intent/intents.png#lightbox)
 
-构建并运行应用。 
+构建并运行应用程序。 
 
 ## <a name="test-code-with-utterance"></a>使用意向测试代码
 选择 1，并对着麦克风说“贾勇的经理是谁”。
@@ -120,7 +120,7 @@ Recognition done. Your Choice:
 语音 SDK 返回整个 LUIS 响应。 
 
 ## <a name="clean-up-resources"></a>清理资源
-不再需要时，请删除 LUIS 人力资源应用。 为此，请在应用列表中选择应用名称右侧的省略号图标 (...)，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
+不再需要时，请删除 LUIS 人力资源应用。 为此，请在应用列表中选择应用名称右侧的省略号 (...) 按钮，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
 
 请记住在使用完示例代码后删除“LUIS 示例”目录。
 

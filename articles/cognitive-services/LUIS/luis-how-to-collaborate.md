@@ -2,19 +2,19 @@
 title: 与 Azure 中的 LUIS 应用上的其他参与者进行协作 | Microsoft Docs
 description: 了解如何与语言理解 (LUIS) 应用程序上的其他参与者协作。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/05/2018
-ms.author: v-geberr
-ms.openlocfilehash: c0451f7621a3c18dbf365f3a03934924c030092f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: diberry
+ms.openlocfilehash: 9ea0269439b3d00bf36186cf2fd5c73311526bec
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366436"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225595"
 ---
 # <a name="collaborate-with-others-on-language-understanding-luis-apps"></a>与语言理解 (LUIS) 应用程序上的其他人进行协作  
 
@@ -31,6 +31,8 @@ ms.locfileid: "35366436"
 
 * 协作者可以在你使用 LUIS 应用的同时登录和编辑你的 LUIS 应用。 <!--If a collaborator edits the LUIS app, you see a notification at the top of the browser.-->
 * 协作者无法添加其他协作者。
+
+请参阅 [Azure Active Directory 租户用户](luis-how-to-account-settings.md#azure-active-directory-tenant-user)，了解有关 Active Directory 用户帐户的详细信息。 
 
 ## <a name="set-application-as-public"></a>将应用程序设置为公共
 有关详细信息，请参阅[公共应用终结点访问](luis-concept-security.md#public-app-endpoint-access)。

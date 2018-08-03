@@ -1,7 +1,7 @@
 ---
-title: 如何创建“Hello World”对话学习器应用程序 - Microsoft 认知服务 | Microsoft Docs
+title: 如何创建“Hello World”对话学习器模型 - Microsoft 认知服务 | Microsoft Docs
 titleSuffix: Azure
-description: 了解如何创建“Hello World”对话学习器应用程序。
+description: 了解如何创建“Hello World”对话学习器模型。
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,16 +10,21 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 30026285ac6dda45d2f5e3718aae741b928cf242
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 70b8f25bd699cbdb069892d65bf766ef3953f59d
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366300"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170865"
 ---
-# <a name="how-to-create-a-hello-world-application-with-conversation-learner"></a>如何使用对话学习器创建“Hello World”应用程序
+# <a name="how-to-create-a-hello-world-model-with-conversation-learner"></a>如何使用对话学习器创建“Hello World”模型
 
 本教程介绍如何开始使用对话学习器，包括创建操作、交互式教学以及更正最终用户的已记录对话。
+
+## <a name="video"></a>视频
+
+[![教程 1 预览](http://aka.ms/cl-tutorial-01-preview)](http://aka.ms/blis-tutorial-01)
+
 
 ## <a name="requirements"></a>要求
 如果你尚未这样做，请首先确保所有设置步骤都已完成，包括使用 LUIS 创作密钥创建 `.env` 文件。  有关详细信息，请参阅[快速入门](https://github.com/Microsoft/ConversationLearner-Samples)。
@@ -28,18 +33,18 @@ ms.locfileid: "35366300"
 
     npm run tutorial-general
 
-## <a name="steps"></a>步骤
+## <a name="steps"></a>Steps
 
 从 Web UI 的主页开始。
 
-### <a name="create-the-app"></a>创建应用程序
-1. 单击“新建应用”
+### <a name="create-the-model"></a>创建模型
+1. 单击“新建模型”
 2. 在“名称”字段中，输入“Hello World”
 3. 单击创建
 
 ### <a name="create-an-action"></a>创建操作
 
-1. 单击“Hello World”应用以启动它
+1. 单击“Hello World”模型以启动它
 2. 依次单击“操作”和“新建操作”
     - 操作可以是对话学习器返回给用户、API 调用或卡的文本消息。
 3. 在“响应”中，键入“Hello World!”

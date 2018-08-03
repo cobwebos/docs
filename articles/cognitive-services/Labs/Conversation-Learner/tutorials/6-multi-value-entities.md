@@ -1,7 +1,7 @@
 ---
-title: 如何通过对话学习器应用程序使用多值实体 - Microsoft 认知服务 | Microsoft Docs
+title: 如何通过对话学习器模型使用多值实体 - Microsoft 认知服务 | Microsoft Docs
 titleSuffix: Azure
-description: 了解如何通过对话学习器应用程序使用多值实体。
+description: 了解如何通过对话学习器模型使用多值实体。
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,15 +10,19 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 865b50747b2c9574b5f88d4902bea9e4c8e0e032
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6193a515f0d8136e0d420b7554cf26fee8f50953
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366270"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173095"
 ---
-# <a name="how-to-use-multi-value-entities-with-a-conversation-learner-application"></a>如何通过对话学习器应用程序使用多值实体
+# <a name="how-to-use-multi-value-entities-with-a-conversation-learner-model"></a>如何通过对话学习器模型使用多值实体
 本教程介绍实体的“多值”属性。
+
+## <a name="video"></a>视频
+
+[![教程 6 预览](http://aka.ms/cl-tutorial-06-preview)](http://aka.ms/blis-tutorial-06)
 
 ##<a name="requirements"></a>要求
 本教程要求运行常规教程机器人
@@ -30,11 +34,11 @@ ms.locfileid: "35366270"
 
 具体而言，如果实体标记为“多值”，则该实体的每个识别实例将追加到机器人内存的列表中（而不是覆盖单个实体值）。
 
-## <a name="steps"></a>步骤
+## <a name="steps"></a>Steps
 
-### <a name="create-the-application"></a>创建应用程序
+### <a name="create-the-model"></a>创建模型
 
-1. 在 Web UI 中，单击“新建应用”
+1. 在 Web UI 中，单击“新建模型”
 2. 在“名称”中，输入 MultiValueEntities。 然后单击“创建”。
 
 ### <a name="create-an-entity"></a>创建实体
@@ -62,7 +66,7 @@ ms.locfileid: "35366270"
 3. 在响应中，键入“下面是你的浇汁: $Toppings”。
 4. 单击创建
 
-现在有两个操作。
+现在已有两个操作。
 
 ![](../media/tutorial6_actions.PNG)
 
@@ -76,7 +80,7 @@ ms.locfileid: "35366270"
 3. 单击“蘑菇”，然后选择“浇汁”。
 4. 单击“奶酪”，然后选择“浇汁”。
 5. 单击“对操作评分”
-    - 请注意，“浇汁”实体中现在存在两个值。 
+    - Toppings 实体中现存在两个值。 
 6. 选择“下面是你的浇汁: $Toppings”。
 
 我们可以向其中添加更多内容：
@@ -84,7 +88,7 @@ ms.locfileid: "35366270"
 7. 输入“添加辣椒”。
     - 单击实体检测下的“辣椒”，然后选择“浇汁”。
 3. 单击“对操作打分”。
-    - 请注意，辣椒现在显示为浇汁中的其他值。
+    - “pepper”现在显示为配料中的其他值。
 6. 选择“下面是你的浇汁: $Toppings”。
 
 让我们删除一个浇汁并添加另一个浇汁：
@@ -93,7 +97,7 @@ ms.locfileid: "35366270"
 1. 单击“辣椒”并单击红色 x 以将其删除。
 2. 单击“辣椒”，然后选择“-浇汁”。
 3. 单击“对操作打分”。
-    - 请注意，已删除“辣椒”且已添加“香肠”。
+    - 已删除“pepper”并添加了“sausage”。
 6. 选择“下面是你的浇汁: $Toppings”。
 
 现在让我们尝试删除所有内容：
@@ -101,7 +105,7 @@ ms.locfileid: "35366270"
 6. 输入“删除蘑菇、删除奶酪并删除香肠”。
 7. 单击这三个浇汁的每一个，然后选择“-浇汁”。
 7. 单击“对操作打分”。
-    - 请注意，将清除所有浇汁。
+    - 清除所有配料。
 2. 选择“你需要哪些浇汁?”
 3. 单击“完成教学”
 

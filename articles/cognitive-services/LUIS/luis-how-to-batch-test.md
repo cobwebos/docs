@@ -2,19 +2,19 @@
 title: 批处理测试 LUIS 应用 - Azure | Microsoft Docs
 description: 使用语言理解 (LUIS) 批处理测试来查找意向和实体不正确的陈述。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/14/2018
-ms.author: v-geberr
-ms.openlocfilehash: 822fb1e2d5b13941527d242e8501b423bd6b81cb
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.author: diberry
+ms.openlocfilehash: 2c648cdd82f89a9646fa0b311a7f1f68dd4bc4a9
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265507"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223575"
 ---
 # <a name="batch-testing"></a>批处理测试
  批处理测试是对当前已训练的模型进行的全面测试，以衡量其 LUIS 性能。 
@@ -26,7 +26,7 @@ ms.locfileid: "36265507"
 
     ![批处理测试链接](./media/luis-how-to-batch-test/batch-testing-link.png)
 
-2. 选择“导入数据集”。 此时会显示“导入新数据集”对话框。 选择“选择文件”并找到 [JSON](luis-concept-batch-test.md#batch-file-format) 文件，该文件包含的待测试陈述数量不超过 1000。
+2. 选择“导入数据集”。 此时会显示“导入新数据集”对话框。 选择“选择文件”并找到具有正确 [JSON 格式](luis-concept-batch-test.md#batch-file-format)的 JSON 文件，该文件包含的待测试话语数量不超过 1,000。
 
     ![导入数据集文件](./media/luis-how-to-batch-test/batchtest-importset.png)
 
@@ -37,7 +37,7 @@ ms.locfileid: "36265507"
 4. 选择“完成”。 数据集文件随即完成添加。
 
 ## <a name="run-rename-export-or-delete-dataset"></a>运行、重命名、导出或删除数据集
-若要运行、重命名、导出或删除数据集，请点击数据集行末尾的三个点图标 (...)。
+若要运行、重命名、导出或删除数据集，请点击数据集行末尾的省略号 (...) 按钮。
 
 ![数据集操作](./media/luis-how-to-batch-test/batch-testing-options.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "36265507"
 
 此数据集可以下载，与之前上传用于批处理测试的文件相同。
 
-|State|含义|
+|省/直辖市/自治区|含义|
 |--|--|
 |![测试成功绿色圆圈图标](./media/luis-how-to-batch-test/batch-test-result-green.png)|所有陈述都成功完成。|
 |![测试未通过红色 x 图标](./media/luis-how-to-batch-test/batch-test-result-red.png)|至少一个陈述意向与预测不匹配。|
@@ -87,13 +87,6 @@ The filtering panel on the right side of the screen displays a list of all inten
  
 ![可视化的批处理测试结果](./media/luis-how-to-batch-test/filter-by-entity.png) 
 
-<!--
-## Investigate false sections
-Data points on the **[False Positive][false-positive]** and **[False Negative][false-negative]** sections indicate errors, which should be investigated. If all data points are on the **[True Positive][true-positive]** and **[True Negative][true-negative]** sections, then your application's performance is perfect on this dataset.
-
-
-The graph indicates [F-measure][f-measure], [recall][recall], and [precision][precision].  
--->
 ## <a name="view-single-point-utterance-data"></a>查看单点陈述数据
 在图表中，将鼠标悬停在某个数据点上可查看其预测结果的确定性分数。 选择数据点可在页面底部的陈述列表中检索出相应的陈述。 
 
@@ -117,16 +110,7 @@ The graph indicates [F-measure][f-measure], [recall][recall], and [precision][pr
 
 如果测试表明 LUIS 应用未正确识别意向和实体，则可以通过标记更多陈述或添加功能来提高 LUIS 应用的性能。 
 
-* [使用 LUIS 标记建议的陈述](Label-Suggested-Utterances.md) 
+* [使用 LUIS 标记建议的陈述](luis-how-to-review-endoint-utt.md) 
 * [使用相关功能来改进 LUIS 应用的性能](luis-how-to-add-features.md) 
 * [通过本教程了解批处理测试](luis-tutorial-batch-testing.md)
 * [了解批处理测试概念](luis-concept-batch-test.md)。
-
-[true-positive]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#true-positive
-[true-negative]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#true-negative
-[false-positive]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#false-positive
-[false-negative]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#false-negative
-[f-measure]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#f-measure
-[recall]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#recall
-[precision]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#precision
-

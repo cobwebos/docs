@@ -1,7 +1,7 @@
 ---
-title: 如何通过对话学习器应用程序使用实体 - Microsoft 认知服务 | Microsoft Docs
+title: 如何通过对话学习器模型使用实体 - Microsoft 认知服务 | Microsoft Docs
 titleSuffix: Azure
-description: 了解如何通过对话学习器应用程序使用实体。
+description: 了解如何通过对话学习器模型使用实体。
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,16 +10,20 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 85df31c2e2ff3ca81698921a1f17f415daefb6c5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f851d43d69999a848dea01c9457a379adb63353b
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366268"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172375"
 ---
 # <a name="introduction-to-entities"></a>实体简介
 
 本教程介绍实体，并说明如何在操作中使用“取消资格实体”和“必需实体”字段。
+
+## <a name="video"></a>视频
+
+[![教程 3 预览](http://aka.ms/cl-tutorial-03-preview)](http://aka.ms/blis-tutorial-03)
 
 ## <a name="requirements"></a>要求
 
@@ -35,11 +39,11 @@ ms.locfileid: "35366268"
 
 其他教程涵盖了实体的其他方面，例如预构建实体、多值和可否定实体、编程实体以及操纵代码中的实体。
 
-## <a name="steps"></a>步骤
+## <a name="steps"></a>Steps
 
-### <a name="create-the-application"></a>创建应用程序
+### <a name="create-the-model"></a>创建模型
 
-1. 在 Web UI 中，单击“新建应用”
+1. 在 Web UI 中，单击“新建模型”
 2. 在“名称”中输入“IntroToEntities”。 然后单击“创建”。
 
 ### <a name="create-entity"></a>创建实体
@@ -48,7 +52,8 @@ ms.locfileid: "35366268"
 2. 在“实体名称”中，输入“city”。
 3. 单击创建
 
-请注意，实体类型是“自定义”- 这意味着可以训练实体。  此外，还有预构建实体，这意味着其行为无法调整 - 这些内容在另一个教程中介绍。
+> [!NOTE]
+> 实体类型是“自定义”- 这意味着可以对实体进行定型。  此外，还有预构建实体，这意味着其行为无法调整 - 这些内容在另一个教程中介绍。
 
 ### <a name="create-two-actions"></a>创建两个操作
 
@@ -58,28 +63,28 @@ ms.locfileid: "35366268"
     - 这意味着，如果在机器人的内存中定义了此实体，则该操作将不可用。
 2. 依次单击“操作”和“新建操作”以创建第二个操作。
 3. 在“响应”中，键入“The weather in the $city is probably sunny”。
-4. 在“必需实体”中，请注意城市实体自被引用以来已自动添加。
+4. 在“必需实体”中，city 实体自被引用以来已自动添加。
 5. 点击“保存”(Save)
 
-现在有两个操作。
+现在已有两个操作。
 
 ![](../media/tutorial3_actions.PNG)
 
-### <a name="train-the-bot"></a>训练机器人
+### <a name="train-the-bot"></a>定型机器人
 
-1. 依次单击“训练对话”和“新建训练对话”。
+1. 依次单击“定型”对话框和“新建定型”对话框。
 2. 键入“hello”。
 3. 单击“对操作打分”，然后选择“I don't know what city you want?”
-    - 请注意，无法选择需要城市实体的响应，因为城市实体未在机器人的内存中定义。
+    - 无法选择需要 city 实体的响应，因为 city 实体未在机器人的内存中定义。
 2. 选择“I don't know what city you want”。
 4. 输入“seattle”。 突出显示西雅图，然后单击城市。
-5. 单击“对操作打分”
-    - 请注意城市值现在已在机器人的内存中。
+5. 单击“对操作评分”
+    - 城市值现已在机器人的内存中。
     - “Weather in $city is probably sunny”现在可以作为响应。 
 6. 选择“Weather in $city is probably sunny”。
 
 假设用户输入“repeat that”。 
-1. 键入该句话并按 Enter。 请注意，城市实体及其值已在内存中且可用。
+1. 键入该句话并按 Enter。 City 实体及其值已在内存中且可用。
 2. 选择“Weather in $city is probably sunny”。
 
 ![](../media/tutorial3_entities.PNG)

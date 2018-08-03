@@ -1,7 +1,7 @@
 ---
-title: 如何通过对话学习器应用程序使用分支和撤消操作 - Microsoft 认知服务 | Microsoft Docs
+title: 如何通过对话学习器模型使用分支和撤消操作 - Microsoft 认知服务 | Microsoft Docs
 titleSuffix: Azure
-description: 了解如何通过对话学习器应用程序使用分支和撤消操作。
+description: 了解如何通过对话学习器模型使用分支和撤消操作。
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,15 +10,16 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 724a9e47267e0bd7417130efe54c609ac7a465fb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 05140693026e21a73b756ed0ea7bc9936bef067e
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366278"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173292"
 ---
 # <a name="how-to-use-branching-and-undo-operations"></a>如何使用分支和撤消操作
 在本教程中，我们将介绍撤消和分支操作。
+
 
 ## <a name="details"></a>详细信息
 - 撤消：允许开发人员“撤消”用户输入或操作选择。 在后台，“撤消”实际上创建了一个新的对话，并重新播放到上一步。  这意味着将再次在对话中调用实体检测回调和 API 调用。
@@ -33,7 +34,7 @@ ms.locfileid: "35366278"
 
 ### <a name="open-the-demo"></a>打开演示
 
-在 Web UI 的“应用”列表中，单击“TutorialDemo Pizza Order”。 
+在 Web UI 的“模型”列表中，单击“TutorialDemo Pizza Order”。 
 
 有关披萨订购演示的详细信息，请参阅披萨订购教程。
 
@@ -55,7 +56,7 @@ ms.locfileid: "35366278"
 7. 输入“remove mushrooms and add peppers”。
     - 选择“mushrooms”并取消选中 Toppings 实体。 我们正在创建一个将撤消的操作。
 2. 单击“撤消步骤”。
-    - 请注意，最后一项已删除，我们又回到了“Would you like anything else?”  （请参见下面的屏幕截图）
+    - 最后一项已删除，我们又回到了“Would you like anything else?”  （请参见下面的屏幕截图）
 2. 输入“remove mushrooms and add peppers”。
 8. 单击以选择“you have $Toppings on your pizza”
     - 请确保正确选择这两个实体。
@@ -73,7 +74,7 @@ ms.locfileid: "35366278"
 1. 单击“训练对话”，然后单击“新建订单”打开现有对话。 
 2. 单击对话框中的最后一个“no”（请参见下面的屏幕截图）。
 3. 单击“分支”。
-    - 请注意，“no”将被删除，直到该点的整个对话将复制到新的对话中。 
+    - “no”将被删除，直到该点的整个对话将复制到新的对话中。 
     - 这可以避免重新输入前面的轮次，从该点探索新的“分支”。
 1. 输入“yes”。
 2. 单击“对操作打分”。

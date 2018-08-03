@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 639fea64fc8eeb2c1f6e6240c4eb26efc68febbd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 41fe350fd712f6c521a9020af9a540e554abe94b
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366257"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170593"
 ---
 # <a name="how-to-teach-with-conversation-learner"></a>如何训练对话学习器 
 
@@ -56,9 +56,10 @@ ms.locfileid: "35366257"
 当前批次之前的批次中出现的实体 | 4 | 
 当前批次之前的用户话语 | 5 | 
 
-请注意，操作选择确实会采用系统操作的内容（文本、卡内容或 API 名称或行为），但仅采用系统操作的标识。  因此，更改操作的内容不会改变操作选择模型的行为。
-
-此外，请注意不会使用实体的内容/值，只会考虑实体存在与否。
+> [!NOTE]
+> 操作选择确实不会采用系统操作的内容（文本、卡内容或 API 名称或行为），但仅采用系统操作的标识。  因此，更改操作的内容不会改变操作选择模型的行为。
+>
+> 此外，不会使用实体的内容/值，只会考虑实体存在与否。
 
 如果操作选择的行为与预期不一致，可采取以下修正措施：
 

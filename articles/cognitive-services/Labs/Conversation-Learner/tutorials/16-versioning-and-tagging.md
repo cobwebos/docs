@@ -1,7 +1,7 @@
 ---
-title: 如何通过对话学习器应用程序使用版本控制和标记 - Microsoft 认知服务 | Microsoft Docs
+title: 如何通过对话学习器模型使用版本控制和标记 - Microsoft 认知服务 | Microsoft Docs
 titleSuffix: Azure
-description: 了解如何通过对话学习器应用程序使用版本控制和标记。
+description: 了解如何通过对话学习器模型使用版本控制和标记。
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,16 +10,16 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: ea013db078ff33f8597b0e15a8fc951e8ae320e8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c7f23d989cbfa0ece9e404a0fe0feb68cf5fddb2
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366281"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170539"
 ---
 # <a name="how-to-use-versioning-and-tagging"></a>如何使用版本控制和标记
 
-本教程说明了如何标记对话学习器应用程序的版本，并设置哪个版本是“活动的”。  
+本教程说明了如何标记对话学习器模型的版本，并设置哪个版本是“活动的”。  
 
 ## <a name="requirements"></a>要求
 本教程需要使用机器人模拟器（而非记录对话 Web UI）来创建记录对话。  
@@ -32,25 +32,25 @@ ms.locfileid: "35366281"
 
 编辑时，你始终在编辑名为“master”的标记 - 你可以从 master 创建标记版本（实质上是创建 master 的快照），但你无法编辑标记版本。
 
-## <a name="steps"></a>步骤
+## <a name="steps"></a>Steps
 
 ### <a name="install-the-bot-framework-emulator"></a>安装 Bot Framework Emulator
 
 - 转到[https://github.com/Microsoft/BotFramework-Emulator](https://github.com/Microsoft/BotFramework-Emulator)。
 - 下载并安装模拟器。
 
-### <a name="create-an-app"></a>创建应用
+### <a name="create-an-model"></a>创建模型
 
-1. 单击“新建应用”
+1. 单击“新建模型”
 2. 在“名称”字段中，输入“Tutorial-16-Versioning”
 3. 单击创建 
 4. 单击“设置”
-5. 复制应用程序 ID
+5. 复制模型 ID
 
 ### <a name="configure-the-emulator"></a>配置模拟器
 
 - 在对话学习器根文件夹中，打开 .env 文件。
-- 将应用程序 ID 粘贴为 CONVERSATION_LEARNER_APP_ID 的值
+- 将模型 ID 粘贴为 CONVERSATION_LEARNER_MODEL_ID 的值
 - 通过退出命令提示符并重新运行以下命令重启对话学习器服务：
  
     npm run tutorial-general 
@@ -73,13 +73,13 @@ ms.locfileid: "35366281"
     - 称之为“version 1”
 4. 将“version 1”设置为“活动”。  
     - 将活动标记设置到“version 1”的效果是使用此机器人的通道将使用“version 1”标记。
-    - 带标记的应用程序版本不受编辑（更改操作、实体，添加训练对话）的影响。  
-    - 对应用程序的编辑（更改操作、实体，添加训练对话）始终在“master”标记上进行。  换句话说，“master”是唯一可更改的标记；其他标记是固定快照。
+    - 带标记的模型版本不受编辑（更改操作、实体，添加定型对话）的影响。  
+    - 对模型的编辑（更改操作、实体，添加定型对话）始终在“master”标记上进行。  换句话说，“master”是唯一可更改的标记；其他标记是固定快照。
     - 对话学习器 UI 中的记录对话始终使用 master（而不是活动标记）。
 
 ![](../media/tutorial16_v1_create.PNG)
 
-请注意，该版本已在设置中创建：
+该版本已在设置中创建：
 
 ![](../media/tutorial16_settings.PNG)
 
@@ -99,17 +99,18 @@ ms.locfileid: "35366281"
 ### <a name="switch-to-the-bot-emulator"></a>切换到机器人模拟器
 
 1. 在机器人 UI 中，输入“goodbye”。
-2. 请注意，机器人会以“hi there (version 1)”来进行响应。
+2. 机器人会以“hi there (version 1)”来进行响应。
     - 这表明版本 1 是“活动的”。 
 
 ![](../media/tutorial16_bf_response.PNG)
 
 ### <a name="switch-to-the-web-ui"></a>切换到 Web UI
 
-1. 单击“记录对话”（如果没有看到任何对话，请刷新应用）。
+1. 单击“记录对话”（如果没有看到任何对话，请单击“刷新”按钮）。
 2. 单击“hi there (version 2)”
 
-请注意，我们可以从所有当前可用的操作中选择进行更正。 这些编辑将对 master 进行。
+> [!NOTE]
+> 我们可以通过从所有当前可用的操作中进行选择来做出更正。 这些编辑将对 master 进行。
 
 现在已了解版本控制的工作原理，以及如何使用 Bot Framework Emulator 与机器人进行交互。
 

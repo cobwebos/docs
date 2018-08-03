@@ -2,19 +2,19 @@
 title: 了解 LUIS 返回的预测分数 - Azure | Microsoft Docs
 description: 了解预测分数在 LUIS 中的含义
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: 31c101a23892df8599b8cdc0f67647fefb969490
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.author: diberry
+ms.openlocfilehash: cee7243531857f07dec2e968352ffb54aef16bf1
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265982"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224580"
 ---
 # <a name="prediction-score"></a>预测分数
 预测分数表示 LUIS 对预测结果的置信度。 
@@ -28,7 +28,7 @@ ms.locfileid: "36265982"
 |0.01|低置信度|
 |0|明确匹配失败|
 
-如果某个话语的得分为低置信度，LUIS 会在 [LUIS][LUIS] 网页“意向”页面上突出显示该话语，并以红色边框标记识别到的意向。 
+如果某个话语的得分为低置信度，LUIS 会在 [LUIS](luis-reference-regions.md) 网页“意向”页面上突出显示该话语，并以红色边框标记识别到的意向。 
 
 ![分数差异](./media/luis-concept-score/score-discrepancy.png)
 
@@ -58,8 +58,9 @@ ms.locfileid: "36265982"
 
 如果聊天机器人需要一个特定的 LUIS 分数来指示意向的置信度，则请改用最高两个意向之间的分差。 这样可更灵活地应对训练过程中的变化。 
 
+## <a name="punctuation"></a>标点
+标点是 LUIS 中单独的标记。 在末尾包含句号的话语与不是两个单独话语并可能得到两种不同预测的话语。 请确保模型在[示例话语](luis-concept-utterance.md)（有标点和没有标点）或在更容易使用特殊语法忽略标点的 [patterns}(luis-concept-patterns.md) 中处理标点：`I am applying for the {Job} position[.]`
+
 ## <a name="next-steps"></a>后续步骤
 
 请参阅[添加实体](luis-how-to-add-entities.md)，详细了解如何将实体添加到 LUIS 应用。
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

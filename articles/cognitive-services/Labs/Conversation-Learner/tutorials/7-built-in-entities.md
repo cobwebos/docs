@@ -1,7 +1,7 @@
 ---
-title: 如何向对话学习器应用程序中添加预构建实体 - Microsoft 认知服务 | Microsoft Docs
+title: 如何向对话学习器模型中添加预构建实体 - Microsoft 认知服务 | Microsoft Docs
 titleSuffix: Azure
-description: 了解如何向对话学习器应用程序中添加预构建实体。
+description: 了解如何向对话学习器模型添加预构建实体。
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,18 +10,22 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: f014464419bfac39a9e57e679fcd28a737e9ebdb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 84d73add5586aaaf130253a8122a4152e39bcbe9
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366630"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171361"
 ---
 # <a name="how-to-add-pre-built-entities"></a>如何添加预构建实体
-本教程展示了如何向对话学习器应用程序中添加预构建实体。
+本教程展示了如何向对话学习器模型添加预构建实体。
+
+## <a name="video"></a>视频
+
+[![教程 7 预览](http://aka.ms/cl-tutorial-07-preview)](http://aka.ms/blis-tutorial-07)
 
 ## <a name="requirements"></a>要求
-本教程要求通用教程机器人正在运行
+本教程要求运行常规教程机器人
 
     npm run tutorial-general
 
@@ -29,11 +33,11 @@ ms.locfileid: "35366630"
 
 预构建实体可以识别常见类型的实体，例如数字、日期、货币金额和其他实体。  与自定义实体不同，它们可以立即工作，不需要进行任何训练。  与自定义实体不同，它们的行为无法更改。  默认情况下，预构建实体是多值的，也就是说，机器人的内存将累计该实体的每个已识别实例。
 
-## <a name="steps"></a>步骤
+## <a name="steps"></a>Steps
 
-### <a name="create-the-application"></a>创建应用程序
+### <a name="create-the-model"></a>创建模型
 
-1. 在 Web UI 中，单击“新建应用”
+1. 在 Web UI 中，单击“新建模型”
 2. 在“名称”中输入 BuiltInEntities。 然后单击“创建”。
 
 ### <a name="create-an-entity"></a>创建实体
@@ -64,9 +68,9 @@ ms.locfileid: "35366630"
 
 现在已有两个操作。
 
-### <a name="train-the-bot"></a>训练机器人
+### <a name="train-the-bot"></a>定型机器人
 
-1. 依次单击“训练对话”和“新建训练对话”。
+1. 依次单击“定型”对话框和“新建定型”对话框。
 2. 键入“hello”。
 3. 单击“对操作打分”，然后选择“What's the date?”
 2. 输入“today”。 

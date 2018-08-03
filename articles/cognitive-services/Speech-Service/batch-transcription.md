@@ -9,12 +9,12 @@ ms.technology: Speech to Text
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: 01bbf4ca19b0fb702aa76d5149fb0e38389fe455
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 9dd7479ae95f74123d9b762e42ec95e8dbf25818
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054817"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346432"
 ---
 # <a name="batch-transcription"></a>批量听录
 
@@ -40,7 +40,7 @@ wav |  立体声  |
 
 对于立体声音频流，批量听录将在听录期间分离左右通道。 根据单个通道创建两个带有结果的 JSON 文件。 开发人员可利用每个话语的时间戳创建有序的最终脚本。 下面的 JSON 示例显示了通道的输出。
 
-    ```
+```json
        {
         "recordingsUrl": "https://mystorage.blob.core.windows.net/cris-e2e-datasets/TranscriptionsDataset/small_sentence.wav?st=2018-04-19T15:56:00Z&se=2040-04-21T15:56:00Z&sp=rl&sv=2017-04-17&sr=b&sig=DtvXbMYquDWQ2OkhAenGuyZI%2BYgaa3cyvdQoHKIBGdQ%3D",
         "resultsUrls": {
@@ -53,10 +53,10 @@ wav |  立体声  |
         "status": "Succeeded",
         "locale": "en-US"
     },
-    ```
+```
 
 > [!NOTE]
-> 批量听录 API 使用 REST 服务来请求听录内容、听录状态和相关结果。 它基于 .NET，且没有任何外部依赖项。 下一部分介绍其使用方法。
+> 批量听录 API 使用 REST 服务来请求听录内容、听录状态和相关结果。 API 可以用于任何语言。 下一部分介绍其使用方法。
 
 ## <a name="authorization-token"></a>授权令牌
 
@@ -77,7 +77,24 @@ wav |  立体声  |
 
 ## <a name="sample-code"></a>代码示例
 
-API 的使用方式非常简单。 下方示例代码需要使用订阅密钥和 API 密钥进行自定义。
+API 的使用方式非常简单。 下面的示例代码需要使用订阅密钥和 API 密钥进行自定义，从而允许开发者获取持有者令牌，如下面的代码片段所示：
+
+```cs
+    public static async Task<CrisClient> CreateApiV1ClientAsync(string username, string key, string hostName, int port)
+        {
+            var client = new HttpClient();
+            client.Timeout = TimeSpan.FromMinutes(25);
+            client.BaseAddress = new UriBuilder(Uri.UriSchemeHttps, hostName, port).Uri;
+
+            var tokenProviderPath = "/oauth/ctoken";
+            var clientToken = await CreateClientTokenAsync(client, hostName, port, tokenProviderPath, username, key).ConfigureAwait(false);
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", clientToken.AccessToken);
+
+            return new CrisClient(client);
+        }
+```
+
+获取令牌后，开发者必须指定 SAS Uri 指向需要听录的音频文件。 其余代码只是循环访问状态并显示结果。
 
 ```cs
    static async Task TranscribeAsync()
@@ -93,7 +110,7 @@ API 的使用方式非常简单。 下方示例代码需要使用订阅密钥和
             var newLocation = 
                 await client.PostTranscriptionAsync(
                     "<selected locale i.e. en-us>", // Locale 
-                    "<your subscripition key>", // Subscription Key
+                    "<your subscription key>", // Subscription Key
                     new Uri("<SAS URI to your file>")).ConfigureAwait(false);
 
             var transcription = await client.GetTranscriptionAsync(newLocation).ConfigureAwait(false);
@@ -139,7 +156,7 @@ API 的使用方式非常简单。 下方示例代码需要使用订阅密钥和
 > 上方代码片段中提到的订阅密钥是你在 Azure 门户上创建的语音（预览）资源的密钥。 从自定义语音服务资源获取的密钥将无效。
 
 
-请注意用于发布音频和接收听录状态的异步设置。 所创建的客户端是 NET Http 客户端。 `PostTranscriptions` 方法用于发送音频文件详细信息，`GetTranscriptions` 方法用于接收结果。 `PostTranscriptions` 返回句柄，`GetTranscriptions` 方法使用此句柄创建句柄以获取听录状态。
+请注意用于发布音频和接收听录状态的异步设置。 创建的客户端是 NET HTTP 客户端。 `PostTranscriptions` 方法用于发送音频文件详细信息，`GetTranscriptions` 方法用于接收结果。 `PostTranscriptions` 返回句柄，`GetTranscriptions` 方法使用此句柄创建句柄以获取听录状态。
 
 当前示例代码未指定任何自定义模型。 该服务将使用基线模型来听录文件。 如果用户希望指定模型，则可使用同一方法为声学和语言模型传递 modelID。 
 

@@ -9,12 +9,12 @@ ms.technology: qna-maker
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jaswel
-ms.openlocfilehash: fcb44a4c737f85941b33c278cfbae3f128df8207
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: d68ff91d74a6c43c6d492aa07e916a842b50e96f
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301285"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867583"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-go"></a>将 Microsoft QnA Maker API 与 Go 配合使用快速入门 
 <a name="HOLTop"></a>
@@ -189,7 +189,7 @@ func main() {
 
 **创建知识库响应**
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+采用 JSON 返回了成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -372,7 +372,7 @@ func main() {
 
 **更新知识库响应**
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+采用 JSON 返回了成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -484,7 +484,7 @@ func main() {
 
 **发布知识库响应**
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+采用 JSON 返回了成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -592,7 +592,7 @@ func main() {
 
 **替换知识库响应**
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+采用 JSON 返回了成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -676,7 +676,7 @@ func main() {
 
 **下载知识库响应**
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+采用 JSON 返回了成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -790,7 +790,7 @@ func main() {
 
 **获取答案响应**
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+采用 JSON 返回了成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -882,7 +882,7 @@ func main() {
 
 **获取知识库详细信息响应**
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+采用 JSON 返回了成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -971,7 +971,7 @@ func main() {
 
 **获取用户响应的知识库**
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+采用 JSON 返回了成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -1085,7 +1085,7 @@ func main() {
 
 **删除知识库响应**
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+采用 JSON 返回了成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -1162,7 +1162,7 @@ func main() {
 
 **获取终结点密钥响应**
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+采用 JSON 返回了成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -1248,7 +1248,7 @@ func main() {
 
 **刷新终结点密钥响应**
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+采用 JSON 返回了成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -1326,7 +1326,7 @@ func main() {
 
 **获取字变更响应**
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+采用 JSON 返回了成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -1430,7 +1430,7 @@ func main() {
 
 **替换字变更响应**
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+采用 JSON 返回了成功的响应，如以下示例所示： 
 
 ```json
 {

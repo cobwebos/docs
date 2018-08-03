@@ -2,19 +2,19 @@
 title: 在 LUIS 应用程序中添加意向 | Microsoft Docs
 description: 使用语言理解 (LUIS) 添加意向，帮助了解用户请求并做出合理回应。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr
+ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 6e013e994a3bcb60c3104aa10cd7bad1535706f1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0ebf15ea49467674ab3c56aa7983131593cf5c9a
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35366855"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225880"
 ---
 # <a name="manage-intents"></a>管理意向 
 向 LUIS 应用添加[意向](luis-concept-intent.md)，识别具有相同意向的问题或命令组。 
@@ -75,9 +75,9 @@ ms.locfileid: "35366855"
 
 ## <a name="edit-an-utterance-on-intent-page"></a>在意向页编辑表述
 
-要编辑表述，请选择该表述所在行最右侧的三点 (...) 图标，然后选择“编辑”。 修改文本，然后在键盘上按 Enter。
+要编辑话语，请选择该话语所在行最右侧的省略号 (...) 按钮，然后选择“编辑”。 修改文本，然后在键盘上按 Enter。
 
-![意向详细信息页的屏幕截图，其中突出显示了三点图标](./media/luis-how-to-add-intents/edit-utterance.png) 
+![意向详细信息页的屏幕截图，其中突出显示了省略号按钮](./media/luis-how-to-add-intents/edit-utterance.png) 
 
 ## <a name="reassign-utterances-on-intent-page"></a>在意向页上重新分配表述
 通过将表述重新分配给其他意向，可更改一个或多个表述的意向。 
@@ -92,7 +92,7 @@ ms.locfileid: "35366855"
 
 ## <a name="delete-utterances-on-intent-page"></a>删除意向页上的表述
 
-要删除表述，请选择该表述所在行最右侧的三点 (...) 图标，然后选择“删除”。 该表述随即从列表和 LUIS 应用中删除。
+要删除话语，请选择该话语所在行最右侧的省略号 (...) 按钮，然后选择“删除”。 该表述随即从列表和 LUIS 应用中删除。
 
 ![意向详细信息页的屏幕截图，其中突出显示了“删除”选项](./media/luis-how-to-add-intents/delete-utterance-ddl.png)
 
@@ -139,7 +139,7 @@ ms.locfileid: "35366855"
 ![BookFlight 意向的屏幕截图，其中突出显示了“标记视图”](./media/luis-how-to-add-intents/toggle-tokens-view.png)
 
 ## <a name="train-your-app-after-changing-model-with-intents"></a>在对模型进行意向更改后对应用进行培训
-添加、编辑或删除意向后，请针对更改来[培训](luis-how-to-train.md)和[发布](PublishApp.md)应用以影响终结点查询。 
+添加、编辑或删除意向后，请针对更改来[培训](luis-how-to-train.md)和[发布](luis-how-to-publish-app.md)应用以影响终结点查询。 
 
 ## <a name="next-steps"></a>后续步骤
 

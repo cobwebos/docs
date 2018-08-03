@@ -3,19 +3,19 @@ title: 语言理解 (LUIS) 边界 | Microsoft Docs
 titleSuffix: Azure
 description: 本文包含 LUIS 的已知限制。
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: 7f46e55e11c4eb68b515a743b0f51392ffc1269e
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.author: diberry
+ms.openlocfilehash: ea4f31094e27f1abbe57c212f262845fd16dd984
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266798"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225272"
 ---
 # <a name="luis-boundaries"></a>LUIS 边界
 LUIS 具有多个边界区域。 第一个是[模型边界](#model-boundaries)，它可控制 LUIS 中的意向、实体和功能。 第二个是基于密钥类型的[配额限制](#key-limits)。 边界的第三个区域是用于控制 LUIS 网站的[键盘组合](#keyboard-controls)。 第四个是 LUIS 创作网站和 LUIS [终结点](luis-glossary.md#endpoint) API 之间的[世界区域映射](luis-reference-regions.md)。 
@@ -23,7 +23,7 @@ LUIS 具有多个边界区域。 第一个是[模型边界](#model-boundaries)�
 
 ## <a name="model-boundaries"></a>模型边界
 
-|区域|Limit|
+|区域|限制|
 |--|:--|--|
 | [应用名称][luis-get-started-create-app] | *默认最大字符长度 |
 | [批处理测试][batch-testing]| 10 个数据集，每个数据集 1000 条话语|
@@ -35,7 +35,7 @@ LUIS 具有多个边界区域。 第一个是[模型边界](#model-boundaries)�
 | [模式](luis-concept-patterns.md)|每个应用程序 500 个模式。<br>模式的最大长度为 400 个字符。<br>每个模式 3 个 Pattern.any 实体<br>模式中最多 2 个嵌套可选文本|
 | [Pattern.any](./luis-concept-entity-types.md)|每个应用程序 100 个，每个模式 3 个 pattern.any 实体 |
 | [短语列表][phrase-list]|10 个短语列表，每个列表 5,000 项|
-| [预生成实体](./Pre-builtEntities.md) | 无限制|
+| [预生成实体](./luis-prebuilt-entities.md) | 无限制|
 | [正则表达式实体](./luis-concept-entity-types.md)|20 个实体<br>每个正则表达式实体模式 最多 500 个字符|
 | [角色](luis-concept-roles.md)|每个应用程序 300 个角色。 每个实体 10 个角色|
 | **[简单](./luis-concept-entity-types.md)| 100 个实体|
@@ -59,19 +59,19 @@ LUIS 具有多个边界区域。 第一个是[模型边界](#model-boundaries)�
 |`\`|反斜杠|
 
 ## <a name="key-limits"></a>密钥限制
-创作密钥对于创作和终结点有不同的限制。 LUIS 服务订阅密钥仅对终结点查询有效。
+创作密钥对于创作和终结点有不同的限制。 LUIS 服务终结点密钥仅对终结点查询有效。
 
 |密钥|创作|终结点|目的|
 |--|--|--|--|
 |创作/初学者|1 百万/月，5/秒|1 千/月，5/秒|创作 LUIS 应用|
 |[订阅][pricing] - F0 - 免费层 |无效|1 万/月，5/秒|查询 LUIS 终结点|
 |[订阅][pricing] - S0 - 基本层|无效|50/秒|查询 LUIS 终结点|
-|[情绪分析集成](publishapp.md#enable-sentiment-analysis)|无效|免费|添加情绪信息，包括关键短语数据提取 |
+|[情绪分析集成](luis-how-to-publish-app.md#enable-sentiment-analysis)|无效|免费|添加情绪信息，包括关键短语数据提取 |
 |语音集成|无效|5.50 美元/1 千终结点请求|将口语话语转为文本话语并返回 LUIS 结果|
 
 ## <a name="keyboard-controls"></a>键盘控件
 
-|键盘输入 | 说明 | 
+|键盘输入 | Description | 
 |--|--|
 |Control+E|切换话语列表中的令牌和实体|
 

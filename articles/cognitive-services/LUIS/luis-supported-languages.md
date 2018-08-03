@@ -2,19 +2,19 @@
 title: 在 Azure 中使用 LUIS 应用支持本地化 | Microsoft Docs
 description: 了解 LUIS 支持的语言。
 services: cognitive-services
-author: cahann
-manager: hsalama
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/04/2017
-ms.author: cahann
-ms.openlocfilehash: 1eabc01ee07f8791680738a156471e3efe2c44ff
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.author: diberry
+ms.openlocfilehash: d2c479445aabe05013470724c623978402abeb9d
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35366956"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248411"
 ---
 # <a name="culture-specific-understanding-in-luis-apps"></a>LUIS 应用中特定于区域性的理解
 
@@ -33,13 +33,13 @@ LUIS 理解以下语言：
 | 加拿大法语 |`fr-CA` |-|   -   |-|✔|
 | *[中文](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
 | 荷兰语 |`nl-NL` |-|  -   |-|✔|
-| 法语（法国） |`fr-FR` |-| ✔ |✔ |✔|
+| 法语(法国) |`fr-FR` |-| ✔ |✔ |✔|
 | 德语 |`de-DE` |-| ✔ |✔ |✔|
 | 意大利语 |`it-IT` |-| ✔ |✔|✔|
 | *[日语](#japanese-support-notes) |`ja-JP` |-| ✔ |✔|仅关键短语|
 | 韩语 |`ko-KR` |-|   -   |-|仅关键短语|
 | 葡萄牙语(巴西) |`pt-BR` |-| ✔ |✔ |并非所有亚区域性|
-| 西班牙语（西班牙） |`es-ES` |-| ✔ |✔|✔|
+| 西班牙语(西班牙) |`es-ES` |-| ✔ |✔|✔|
 | 西班牙语(墨西哥)|`es-MX` |-|  -   |✔|✔|
 
 
@@ -59,7 +59,7 @@ LUIS 理解以下语言：
      - です 与 だ 不同。 
 
 ### <a name="text-analytics-support-notes"></a>**文本分析支持说明
-仅葡萄牙语支持亚区域性：`pt-PT` 和 `pt-BR`。 主区域性级别支持所有其他区域性。 详细了解文本分析[支持的语言](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)。 
+文本分析包含 keyPhrase 预生成的实体和情绪分析。 仅葡萄牙语支持亚区域性：`pt-PT` 和 `pt-BR`。 主区域性级别支持所有其他区域性。 详细了解文本分析[支持的语言](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)。 
 
 ### <a name="speech-api-supported-languages"></a>语音 API 支持的语言
 请参阅语音[支持的语言](https://docs.microsoft.com/azure/cognitive-services/Speech/api-reference-rest/supportedlanguages##interactive-and-dictation-mode)，了解语音听写模式语言。

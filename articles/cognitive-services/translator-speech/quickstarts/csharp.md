@@ -9,12 +9,12 @@ ms.component: translator-speech
 ms.topic: article
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 6489a0be72cedffdfa4f7021f889b2d39c1c358f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 4f12d74aedbcadc311cd9c5ccd12dc1ad3501dbf
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365666"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205096"
 ---
 # <a name="quickstart-for-microsoft-translator-speech-api-with-c"></a>将 Microsoft 语音翻译 API 与 C# 配合使用的快速入门 
 <a name="HOLTop"></a>
@@ -25,7 +25,7 @@ ms.locfileid: "35365666"
 
 需要使用 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 才能在 Windows 上运行此代码。 （免费的社区版也可以。）
 
-将需要一个名为“speak.wav”的 .wav 文件，该文件与从以下代码编译的可执行文件位于同一文件夹中。 此 .wav 文件应采用标准 PCM、16 位、16 kHz 单声道格式。 可从[文本翻译朗读 API](http://docs.microsofttranslator.com/text-translate.html#!/default/get_Speak) 获取此类 .wav 文件。
+将需要一个名为“speak.wav”的 .wav 文件，该文件与从以下代码编译的可执行文件位于同一文件夹中。 此 .wav 文件应采用标准 PCM、16 位、16 kHz 单声道格式。 可使用[文本转语音 API](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech) 获取此类 .wav 文件。
 
 必须创建一个具有 Microsoft 语音翻译 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 需要一个来自 [Azure 仪表板](https://portal.azure.com/#create/Microsoft.CognitiveServices)的付费订阅密钥。
 
@@ -35,7 +35,7 @@ ms.locfileid: "35365666"
 
 1. 在喜欢使用的 IDE 中新建一个 C# 项目。
 2. 添加下方提供的代码。
-3. 将 `key` 值替换为对订阅有效的访问密钥。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```csharp

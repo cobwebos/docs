@@ -3,19 +3,19 @@ title: 在 LUIS 应用中添加模式模板 | Microsoft Docs
 titleSuffix: Azure
 description: 了解如何在语言理解 (LUIS) 应用程序中添加模式模板，提高预测准确性。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
-ms.author: v-geberr;
-ms.openlocfilehash: 68c0ea1fd3f2e60e0adec631f33c8bd09a3d9960
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.author: diberry;
+ms.openlocfilehash: bf1931355fd873eaeac6c313b70717dfa99814c6
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35371065"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222590"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>如何添加模式以提高预测准确性
 在 LUIS 应用接收到终结点表述后，请使用模式的[概念](luis-concept-patterns.md)提高表述（按字词顺序和字词选择呈现模式）的预测准确性。 模式使用[实体](luis-concept-entity-types.md)及其角色并通过特定模式语法提取数据。 
@@ -57,7 +57,7 @@ ms.locfileid: "35371065"
 <!-- TBD: should I be able to click on the magnifying glass again to close the search box? It doesn't reset the list. -->
 
 ## <a name="edit-a-pattern"></a>编辑模式
-1. 要编辑模式，请选择该模式所在行最右侧的三点 (...) 图标，然后选择“编辑”。 
+1. 要编辑模式，请选择该模式所在行最右侧的省略号 (...) 按钮，然后选择“编辑”。 
 
     ![模式行中“编辑”菜单项的屏幕截图](./media/luis-how-to-model-intent-pattern/patterns-three-dots.png) 
 
@@ -79,7 +79,7 @@ ms.locfileid: "35371065"
 
 ## <a name="delete-a-single-pattern"></a>删除一个模式
 
-1. 要删除模式，请选择该模式所在行最右侧的三点 (...) 图标，然后选择“删除”。 
+1. 要删除模式，请选择该模式所在行最右侧的省略号 (...) 按钮，然后选择“删除”。 
 
     ![删除表述的屏幕截图](./media/luis-how-to-model-intent-pattern/patterns-three-dots-ddl.png)
 
@@ -123,7 +123,7 @@ ms.locfileid: "35371065"
 ## <a name="add-pattern-from-existing-utterance-on-intent-or-entity-page"></a>在意向或实体页上通过现有表述添加模式
 可在“意向”或“实体”页上通过现有表述创建模式。 任何意向或实体页上的所有表述都在列表中显示，可在列表的右侧列中访问表述级选项，例如“编辑”、“删除”和“添加为模式”。
 
-1. 在所选的表述行上，选择表述右侧的三个点 (...)，然后选择“添加为模式”。
+1. 在所选的话语行上，选择话语右侧的省略号 (...) 按钮，然后选择“添加为模式”。
 
     [![](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png "表述表的屏幕截图，其中突出显示了选项菜单中的“添加为模式”")](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png)
 
@@ -132,7 +132,7 @@ ms.locfileid: "35371065"
     ![按实体筛选出的模式的屏幕截图](./media/luis-how-to-model-intent-pattern/confirm-patterns-modal.png)
 
 ## <a name="train-your-app-after-changing-model-with-patterns"></a>在对模型进行模式更改后对应用进行培训
-添加、编辑、删除或重新分配模式后，请针对更改来[培训](luis-how-to-train.md)和[发布](PublishApp.md)应用以影响终结点查询。 
+添加、编辑、删除或重新分配模式后，请针对更改来[培训](luis-how-to-train.md)和[发布](luis-how-to-publish-app.md)应用以影响终结点查询。 
 
 ## <a name="next-steps"></a>后续步骤
 

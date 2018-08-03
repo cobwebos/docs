@@ -2,19 +2,19 @@
 title: 在 Azure 中使用 Bot Builder SDK for Node.js 将 LUIS 与机器人进行集成 | Microsoft Docs
 description: 使用 Bot Framework 生成与 LUIS 应用程序集成的机器人。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/06/2018
-ms.author: v-geberr
-ms.openlocfilehash: 5d9b78977457f818b964adb16ebb5e9e5872aa2c
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.author: diberry
+ms.openlocfilehash: 6d6937105b11d94138b51660dc9f3c5e682e19bc
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264967"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224069"
 ---
 # <a name="integrate-luis-with-a-bot-using-the-bot-builder-sdk-for-nodejs"></a>使用 Bot Builder SDK for Node.js 将 LUIS 与机器人进行集成
 
@@ -83,7 +83,7 @@ ms.locfileid: "36264967"
 ## <a name="test-in-web-chat"></a>通过网上聊天执行测试
 注册机器人后，选择“通过网上聊天执行测试”，打开“网上聊天”窗格。 在网上聊天中键入“你好”。
 
-  ![在网上聊天中测试机器人](./media/luis-tutorial-node-bot/bot-service-web-chat.png)
+  ![通过网上聊天测试机器人](./media/luis-tutorial-node-bot/bot-service-web-chat.png)
 
 机器人响应说：“你已经进行了问候。 你说了：你好。” 这可确认机器人已接收消息，并将其传递到其创建的默认 LUIS 应用。 此默认 LUIS 应用检测到了问候语意向。 在下一步中，需要将机器人连接到之前创建的 LUIS 应用，而不是默认 LUIS 应用。
 
@@ -235,7 +235,7 @@ bot.dialog('TurnOff',
    ![在网上聊天中测试 HomeAutomation 机器人](./media/luis-tutorial-node-bot/bot-service-chat-results.png)
 
 > [!TIP]
-> 如果发现机器人并未能始终识别正确意向或实体，请提供更多示例陈述对其进行训练，从而提高 LUIS 应用的性能。 无需对机器人代码进行任何修改即可重新训练 LUIS 应用。 请参阅[添加示例陈述](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances)和[训练和测试 LUIS 应用](https://docs.microsoft.com/azure/cognitive-services/LUIS/interactive-test)。
+> 如果发现机器人并未能始终识别正确意向或实体，请提供更多示例陈述对其进行训练，从而提高 LUIS 应用的性能。 无需对机器人代码进行任何修改即可重新训练 LUIS 应用。 请参阅[添加示例陈述](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances)和[训练和测试 LUIS 应用](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-interactive-test)。
 
 ## <a name="learn-more-about-bot-framework"></a>深入了解 Bot Framework
 深入了解 [Bot Framework](https://dev.botframework.com/) 以及 [3.x](https://github.com/Microsoft/BotBuilder) 和 [4.x](https://github.com/Microsoft/botbuilder-js) SDK。

@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 56e2140b83bf1c5722a459c14f31b2b4b0ba6b15
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c0ad9f71665e503fe794c68200b90a8474750823
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366250"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173619"
 ---
 # <a name="default-values-and-boundaries"></a>默认值和边界
 
@@ -35,14 +35,14 @@ ms.locfileid: "35366250"
 创作 API，每秒的最大 HTTP 调用数 | 25
 会话 API，每月的最大 HTTP 调用数 | 500K
 会话 API，每秒的最大 HTTP 调用数 | 10
-每个应用程序的最大自定义（非编程）实体数 | 请参阅 [LUIS 边界文档](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-boundaries)；事实上，实际数量可能会略小
-每个应用程序的最大预建实体数 | 请参阅 [LUIS 边界文档](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-boundaries)
-每个应用程序的最大实体数（总计） | 100
-每个应用程序的最大操作数 | 32
-每个应用程序的最大定型对话数 | 1000
+每个模型的最大自定义（非编程）实体数 | 请参阅 [LUIS 边界文档](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-boundaries)；事实上，实际数量可能会略小
+每个模型的最大预构建实体数 | 请参阅 [LUIS 边界文档](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-boundaries)
+每个模型的最大实体数（总计） | 100
+每个模型的最大操作数 | 32
+每个模型的最大定型对话数 | 1000
 每个定型对话的最大用户数 | 100
-每个应用程序的最大记录对话数 | 没有预设的限制，但记录对话在被丢弃之前仅保留一段固定期限。  此外，对话学习器 UI 一次将显示 100 个记录对话。 
-每个用户的最大应用程序数 | 没有预设的限制
+每个模型的最大记录对话数 | 没有预设的限制，但记录对话在被丢弃之前仅保留一段固定期限。  此外，对话学习器 UI 一次将显示 100 个记录对话。 
+每个用户的最大模型数 | 没有预设的限制
 最大顺序非等待操作数 | 5 (*)
 
 (*) 在 5 个顺序非等待操作后，将屏蔽所有非等待操作，并且对话学习器将在可用的等待操作之间进行选择。

@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 08/05/2017
 ms.author: sajagtap
-ms.openlocfilehash: e9faf595e65ba4475a743e4cb45919fd30fbd6e8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 214695ed3e23d1f501d6d4691104b3f8a91f6efc
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365460"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866502"
 ---
 # <a name="create-reviews-from-the-api-console"></a>从 API 控制台中创建审查
 
