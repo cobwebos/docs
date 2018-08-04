@@ -1,10 +1,10 @@
 - name: 概述
-  href: active-directory-developers-guide.md
+  href: azure-ad-developers-guide.md
   items:
     - name: 为什么选择 Azure AD
       href: 'https://azure.microsoft.com/develop/identity/signin/'
     - name: 身份验证基础知识
-      href: active-directory-authentication-scenarios.md
+      href: authentication-scenarios.md
     - name: 应用类型
       href: 'active-directory-authentication-scenarios.md#application-types-and-scenarios'
 - name: 入门
@@ -14,13 +14,13 @@
         - name: 概述
           href: 'active-directory-authentication-scenarios.md#native-application-to-web-api'
         - name: iOS
-          href: active-directory-devquickstarts-ios.md
+          href: quickstart-v1-ios.md
         - name: Android
-          href: active-directory-devquickstarts-android.md
+          href: quickstart-v1-android.md
         - name: .NET（Windows 桌面）
-          href: active-directory-devquickstarts-dotnet.md
+          href: quickstart-v1-dotnet.md
         - name: .NET (Xamarin)
-          href: active-directory-devquickstarts-xamarin.md
+          href: quickstart-v1-xamarin.md
         - name: OAuth 2.0
           href: active-directory-protocols-oauth-code.md
     - name: Web 应用
@@ -28,7 +28,7 @@
         - name: 概述
           href: 'active-directory-authentication-scenarios.md#web-browser-to-web-application'
         - name: ASP.NET
-          href: GuidedSetups/active-directory-aspnetwebapp-v1.md
+          href: quickstart-v1-aspnet-webapp.md
         - name: ASP.NET Core
           href: 'https://azure.microsoft.com/resources/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore'
         - name: Java
@@ -36,7 +36,7 @@
         - name: Python
           href: 'https://github.com/Azure-Samples/active-directory-python-webapp-graphapi'
         - name: NodeJS
-          href: active-directory-devquickstarts-openidconnect-nodejs.md
+          href: quickstart-v1-openid-connect-code.md
         - name: OpenID Connect
           href: active-directory-protocols-openid-connect-code.md
     - name: 单页应用
@@ -66,7 +66,7 @@
 - name: 指南
   items:
     - name: 应用程序注册
-      href: active-directory-integrating-applications.md
+      href: quickstart-v1-integrate-apps-with-azure-ad.md
     - name: 多租户应用
       href: active-directory-devhowto-multi-tenant-overview.md
     - name: 条件性访问
@@ -95,7 +95,7 @@
         - name: 单一注销 SAML 协议
           href: active-directory-single-sign-out-protocol-reference.md
     - name: 创建租户
-      href: active-directory-howto-tenant.md
+      href: quickstart-create-new-tenant.md
     - name: 服务条款和隐私声明
       href: active-directory-app-terms-service-privacy-statement.md
     - name: 品牌准则
@@ -199,17 +199,17 @@
         - name: 移动应用和桌面应用
           items:
             - name: iOS
-              href: guidedsetups/active-directory-ios.md
+              href: tutorial-v2-ios.md
             - name: Android
-              href: guidedsetups/active-directory-android.md
+              href: tutorial-v2-android.md
             - name: Windows 桌面 .NET
-              href: guidedsetups/active-directory-windesktop.md
+              href: tutorial-v2-windows-desktop.md
             - name: 通用 Windows 平台
-              href: guidedsetups/active-directory-uwp-v2.md
+              href: tutorial-v2-windows-uwp.md
         - name: Web 应用
           items:
             - name: ASP.NET
-              href: guidedsetups/active-directory-aspnetwebapp.md
+              href: tutorial-v2-asp-webapp.md
             - name: ASP.NET Core
               href: 'https://azure.microsoft.com/resources/samples/active-directory-aspnetcore-webapp-openidconnect-v2'
             - name: NodeJS
@@ -225,7 +225,7 @@
         - name: 单页应用
           items:
             - name: JavaScript
-              href: guidedsetups/active-directory-javascriptspa.md
+              href: tutorial-v2-javascript-spa.md
         - name: 服务到服务
           items:
             - name: ASP.NET
@@ -233,7 +233,7 @@
     - name: 指南
       items:
         - name: 注册应用程序
-          href: active-directory-v2-app-registration.md
+          href: quickstart-v2-register-an-app.md
         - name: 应用注册参考
           href: active-directory-v2-registration-portal.md
     - name: 引用
