@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 5ca70b085b5ac9db4d108966fa695f042c20489d
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 76a7b2f8339798d9580ef989e8931a6776129885
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920505"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346619"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>创建、更改或删除网络安全组
 
@@ -104,7 +104,7 @@ ms.locfileid: "37920505"
 **命令**
 
 - Azure CLI: [az network nsg delete](/cli/azure/network/nsg#az-network-nsg-delete)
-- PowerShell: [Remove-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/remove-azurermnetworksecuritygroupp) 
+- PowerShell: [Remove-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/remove-azurermnetworksecuritygroup) 
 
 ## <a name="work-with-security-rules"></a>使用安全规则
 
@@ -129,7 +129,7 @@ ms.locfileid: "37920505"
     |操作     | 选择“允许”或“拒绝”。        |         |
     |Priority     | 输入一个介于 100-4096 之间的值，该值对于网络安全组内的所有安全规则都是唯一的。 |规则按优先顺序处理。 编号越低，优先级越高。 建议创建规则时在优先级数字之间留出空隙，例如 100, 200, 300。 留出空隙后，未来在需要使规则高于或低于现有规则时，可更轻松添加规则。         |
     |名称     | 网络安全组内规则的唯一名称。        |  名称最多可包含 80 个字符。 它必须以字母或数字开头，以字母、数字或下划线结尾，且仅可包含字母、数字、下划线、句点或连字符。       |
-    |说明     | 可选说明。        |         |
+    |Description     | 可选说明。        |         |
 
 **命令**
 
@@ -171,7 +171,7 @@ ms.locfileid: "37920505"
 **命令**
 
 - Azure CLI: [az network nsg rule update](/cli/azure/network/nsg/rule#az-network-nsg-rule-update)
-- PowerShell: [Set-AzureRmSecurityRuleConfig](/powershell/module/azurerm.network/set-azurermnetworksecurityruleconfig)
+- PowerShell：[Set-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/set-azurermnetworksecurityruleconfig)
 
 ### <a name="delete-a-security-rule"></a>删除安全规则
 
@@ -181,7 +181,7 @@ ms.locfileid: "37920505"
 **命令**
 
 - Azure CLI: [az network nsg rule delete](/cli/azure/network/nsg/rule#az-network-nsg-rule-delete)
-- PowerShell: [Remove-AzureRmSecurityRuleConfig](/powershell/module/azurerm.network/remove-azurermnetworksecurityruleconfig)
+- PowerShell：[Remove-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/remove-azurermnetworksecurityruleconfig)
 
 ## <a name="work-with-application-security-groups"></a>使用应用程序安全组
 
@@ -284,4 +284,4 @@ ms.locfileid: "37920505"
 ## <a name="next-steps"></a>后续步骤
 
 - 使用 [PowerShell](powershell-samples.md) 或 [Azure CLI](cli-samples.md) 示例脚本或使用 Azure [资源管理器模板](template-samples.md)创建网络或应用程序安全组
-- 为虚拟网络创建并应用 [Azure 策略](policy-samples.md)
+- 为虚拟网络创建并应用 [Azure Policy](policy-samples.md)

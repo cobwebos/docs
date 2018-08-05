@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 9c8eda1c4a65465a93b9c3f9caf23a6663073f26
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 06fe9f1fd65f70e41d528a513e44e61edb4a7e4f
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39307902"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的应用程序性能常见问题解答
 
@@ -157,7 +158,7 @@ ms.lasthandoff: 05/14/2018
 
 有关详细信息，请参阅[在应用服务中配置 Web 应用](web-sites-configure.md)。
 
-## <a name="why-does-my-request-time-out-after-240-seconds"></a>为何我的请求在 240 秒后超时？
+## <a name="why-does-my-request-time-out-after-230-seconds"></a>为何我的请求在 230 秒后超时？
 
 Azure 负载均衡器的默认空闲超时设置为四分钟。 这通常是针对 Web 请求的合理响应时间限制。 如果你的 Web 应用需要后台处理，则建议使用 Azure Web 作业。 Azure Web 应用可以调用 Web 作业，并在后台处理完成时收到通知。 可以在多种 Web 作业使用方法（包括队列和触发器）中进行选择。
 

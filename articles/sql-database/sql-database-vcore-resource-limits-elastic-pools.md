@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 5503ffaf8a429221a0a0730fc999cb7a90f43785
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 5a7e00e84e5165296bcad83c515fc2af315954be
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092114"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414436"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Azure SQL 数据库基于 vCore 的购买模型针对弹性池的限制
 
@@ -22,6 +22,8 @@ ms.locfileid: "39092114"
 
 有关基于 DTU 的购买模型限制，请参阅 [SQL 数据库基于 DTU 的资源限制 - 弹性池](sql-database-dtu-resource-limits-elastic-pools.md)。
 
+> [!IMPORTANT]
+> 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)。
 
 ## <a name="elastic-pool-storage-sizes-and-performance-levels"></a>弹性池：存储大小和性能级别
 

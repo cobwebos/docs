@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: adb78f04c0fd5ba175bb31c9a81ad58b3b03fb42
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 46e4956aa145aa082de86191ede4adaf9a43fca9
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447313"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39309020"
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C：令牌参考
 
@@ -70,9 +70,9 @@ CQhoFA
 
 请注意，ID 令牌中的声明不按任何特定顺序返回。 此外，新的声明可以在任何时候引入 ID 令牌。 引入新的声明时，不得中断应用。 下面是预期在 Azure AD B2C 颁发的 ID 及访问令牌中存在的声明。 任何其他声明由策略确定。 练习时，请尝试将示例 ID 令牌中的声明粘贴到 [jwt.ms](https://jwt.ms) 中进行检查。 可以在 [OpenID Connect 规范](http://openid.net/specs/openid-connect-core-1_0.html)中找到进一步的详细信息。
 
-| 名称 | 声明 | 示例值 | 说明 |
+| 名称 | 声明 | 示例值 | Description |
 | --- | --- | --- | --- |
-| 目标受众 |`aud` |`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` |受众声明标识令牌的目标接收方。 对于 Azure AD B2C，受众是在应用注册门户中分配给应用的应用程序 ID。 应用应该验证此值并拒绝不匹配的令牌。 |
+| 目标受众 |`aud` |`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` |受众声明标识令牌的目标接收方。 对于 Azure AD B2C，受众是在应用注册门户中分配给应用的应用程序 ID。 应用应该验证此值并拒绝不匹配的令牌。 受众是资源的同义词。 |
 | 颁发者 |`iss` |`https://login.microsoftonline.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` |此声明标识构造并返回令牌的安全令牌服务 (STS)。 它还标识在其中进行用户身份验证的 Azure AD 目录。 应用应该验证颁发者声明，以确保令牌来自 Azure Active Directory v2.0 终结点。 |
 | 颁发时间 |`iat` |`1438535543` |此声明表示颁发令牌的时间，以新纪元时间表示。 |
 | 过期时间 |`exp` |`1438539443` |此过期时间声明表示令牌失效的时间，以纪元时间表示。 应用应该使用此声明来验证令牌生存期的有效性。 |
@@ -148,7 +148,7 @@ https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/key
 ## <a name="token-lifetimes"></a>令牌生存期
 提供以下令牌生存期，以拓展知识。 它们在开发和调试应用时有所帮助。 请注意：编写应用时，不应期望任何这些生存期维持不变。 它们可以并且会改变。 可以阅读有关在 Azure AD B2C 中[自定义令牌生存期](active-directory-b2c-token-session-sso.md)的详细信息。
 
-| 令牌 | 生存期 | 说明 |
+| 令牌 | 生存期 | Description |
 | --- | --- | --- |
 | ID 令牌 |一小时 |ID 令牌的有效期通常为 1 小时。 Web 应用可使用此生存期维护其与用户的会话（推荐）。 也可以选择不同的会话生存期。 如果应用需要获取新的 ID 令牌，只需要对 Azure AD 发出新的登录请求即可。 如果用户与 Azure AD 具有有效的浏览器会话，则可能不会要求该用户再次输入凭据。 |
 | 刷新令牌 |最长 14 天 |单个刷新令牌的有效期最长为 14 天。 但是，刷新令牌可能随时会因为很多原因失效。 应用应继续尝试使用刷新令牌，直到该请求失败，或直到应用使用新的刷新令牌替换该刷新令牌。 如果自用户上次输入凭据已过 90 天，刷新令牌也可能失效。 |

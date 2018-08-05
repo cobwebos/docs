@@ -1,21 +1,20 @@
 ---
-title: AudioInputStream 概念 | Microsoft Docs
+title: AudioInputStream 概念
 description: AudioInputStream API 的功能概述。
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: fmegen
-manager: wolfma61
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: fmegen
-ms.openlocfilehash: 0eafa7e88df5d00a67646ca7f82ca027602a40b3
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: b3e12fbc616c8d67b557102c6094467e119a23f1
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071440"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281899"
 ---
 # <a name="about-the-audio-input-stream-api"></a>关于音频输入流 API
 

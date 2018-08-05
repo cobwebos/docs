@@ -1,21 +1,20 @@
 ---
-title: 认知服务语音 SDK 故障排除 | Microsoft Docs
+title: 认知服务语音 SDK 故障排除
 description: 认知服务语音 SDK 故障排除
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: wolfma61
-manager: onano
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 16eaebcf9494ab57521068a9418ccf2ac7f5a8fe
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ff8aba562cfd2d6d54c708ee7fdc4c6ca7185f29
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366450"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284116"
 ---
 # <a name="troubleshooting-speech-services-sdk"></a>语音服务 SDK 故障排除
 

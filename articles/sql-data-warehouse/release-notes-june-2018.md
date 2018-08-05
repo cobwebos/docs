@@ -7,15 +7,15 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 06/25/2018
+ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 4b097568abdad5e84605856d0246b0407d881758
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 1db503ea40a9f07720aa9c130cd3bcc22f87f2af
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723629"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39324813"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>Azure SQL 数据仓库中的新增功能 2018 年 6 月
 Azure SQL 数据仓库持续得到改进。 本文介绍了 2018 年 6 月发行的版本中所引入的新功能和所做的更改。 
@@ -107,3 +107,25 @@ start_time                | end_time                | command
 ------------------------------------------------------------------------------------------------------------------------------
 2018-06-06 19:06:26.173    2018-06-06 19:06:26.173    CREATE STATISTICS _WA_Sys_00000001_63D998CC ON dbo.LineItem(l_orderkey);
 ```
+
+## <a name="next-steps"></a>后续步骤
+对 SQL 数据仓库有了初步的认识后，请了解如何快速[创建 SQL 数据仓库][create a SQL Data Warehouse]。 如果不熟悉 Azure，在遇到新术语时，可以参考 [Azure 术语表][Azure glossary]。 或者，查看一下以下一些其他 SQL 数据仓库资源。  
+
+* [客户成功案例]
+* [博客]
+* [功能请求]
+* [视频]
+* [客户顾问团队博客]
+* [堆栈溢出论坛]
+* [Twitter]
+
+
+[博客]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
+[客户顾问团队博客]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
+[客户成功案例]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
+[功能请求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
+[堆栈溢出论坛]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Twitter]: https://twitter.com/hashtag/SQLDW
+[视频]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
+[create a SQL Data Warehouse]: ./create-data-warehouse-portal.md
+[Azure glossary]: ../azure-glossary-cloud-terminology.md

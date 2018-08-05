@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/29/2018
+ms.date: 07/30/2018
 ms.author: diberry
-ms.openlocfilehash: 99f796bf26df755ca938c3023057e2e9de1706a1
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 9da2454afa130c4c2ccab458099a90d78354b3e2
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238329"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358258"
 ---
 # <a name="tutorial-3-add-regular-expression-entity"></a>教程：3. 添加正则表达式实体
 在本教程中，我们将创建一个应用，用于演示如何使用**正则表达式**实体从陈述中提取带有一致格式的数据。
@@ -28,7 +28,7 @@ ms.locfileid: "39238329"
 > * 训练并发布应用
 > * 查询应用终结点以查看 LUIS JSON 响应
 
-本文需要一个免费的 [LUIS](luis-reference-regions.md#luis-website) 帐户，以便创作 LUIS 应用程序。
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>开始之前
 如果尚未获得[预生成实体](luis-tutorial-prebuilt-intents-entities.md)教程中所述的人力资源应用，请将 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-prebuilts-HumanResources.json) Github 存储库中的 JSON [导入](luis-how-to-start-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。
@@ -67,11 +67,7 @@ HRF 代表“人力资源表单”。
 
 1. LUIS 的“生成”部分包含你的人力资源应用。 在右上方的菜单栏中选择“生成”可切换到此部分。 
 
-    [![LUIS 应用的屏幕截图，其中已突出显示右上方的导航栏](./media/luis-quickstart-intents-regex-entity/first-image.png)](./media/luis-quickstart-intents-regex-entity/first-image.png#lightbox)
-
 2. 选择“创建新意向”。 
-
-    [![“意向”页的屏幕截图，其中已突出显示“创建新意向”按钮](./media/luis-quickstart-intents-regex-entity/create-new-intent-button.png)](./media/luis-quickstart-intents-regex-entity/create-new-intent-button.png#lightbox)
 
 3. 在弹出对话框中输入 `FindForm`，然后选择“完成”。 
 
@@ -96,14 +92,12 @@ HRF 代表“人力资源表单”。
 
     应用程序包含从前一教程添加的预生成数字实体，因此，已标记每个表单编号。 此信息可能对客户端应用程序而言已足够，但不会使用数字类型来标记编号。 使用适当的名称创建新实体可以在从 LUIS 返回实体后，让客户端应用程序适当地处理该实体。
 
-## <a name="create-a-hrf-number-regular-expression-entity"></a>创建 HRF 编号正则表达式实体 
+## <a name="create-an-hrf-number-regular-expression-entity"></a>创建 HRF 编号正则表达式实体 
 遵循以下步骤创建一个正则表达式实体，让 LUIS 知道 HRF 编号格式是什么：
 
 1. 在左侧面板中选择“实体”。
 
 2. 在“实体”页上选择“创建新实体”按钮。 
-
-    [![“实体”页的屏幕截图，其中已突出显示“创建新实体”按钮](./media/luis-quickstart-intents-regex-entity/create-new-entity-1.png)](./media/luis-quickstart-intents-regex-entity/create-new-entity-1.png#lightbox)
 
 3. 在弹出对话框中，输入新实体名称 `HRF-number`，选择“正则表达式”作为实体类型，输入 `hrf-[0-9]{6}` 作为正则表达式，然后选择“完成”。
 
@@ -127,22 +121,12 @@ HRF 代表“人力资源表单”。
     ![成功通知栏的图像](./media/luis-quickstart-intents-regex-entity/trained.png)
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>发布应用以获取终结点 URL
-若要获取聊天机器人或其他应用程序中的 LUIS 预测，需要发布应用。 
 
-1. 在 LUIS 网站的右上方，选择“发布”按钮。 
-
-    ![FindKnowledgeBase 的屏幕截图，其中已突出显示顶部导航栏中的“发布”按钮](./media/luis-quickstart-intents-regex-entity/publish-button.png)
-
-2. 选择“生产”槽和“发布”按钮。
-
-    ![“发布”页的屏幕截图，其中已突出显示“发布到生产槽”按钮](./media/luis-quickstart-intents-regex-entity/publish-to-production.png)
-
-3. 当网站顶部出现确认成功的绿色状态栏时，表示发布已完成。
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-a-different-utterance"></a>使用不同的话语查询终结点
-1. 在“发布”页的底部，选择“终结点”链接。 此操作会打开另一个浏览器窗口，其地址栏中包含终结点 URL。 
 
-    ![“发布”页的屏幕截图，其中已突出显示终结点 URL](./media/luis-quickstart-intents-regex-entity/publish-select-endpoint.png)
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. 将光标定位到地址中 URL 的末尾，并输入 `When were HRF-123456 and hrf-234567 published in the last year?`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 此陈述不同于标记的任何陈述，因此，它非常适合用于测试，测试结果应返回包含两个表单编号（`HRF-123456` 和 `hrf-234567`）的 `FindForm` 意向。
 

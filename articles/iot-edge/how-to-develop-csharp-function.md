@@ -8,22 +8,22 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3176a3a4acc6e9ca486d409d861f2ed0e63473ec
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: bf2d1af66cc3ecc35dafe3bcd43bf10399d71641
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056498"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346709"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-azure-functions-for-azure-iot-edge"></a>使用 Visual Studio Code 开发和调试 Azure IoT Edge 的 Azure 函数
 
 本文介绍如何使用 [Visual Studio Code (VS Code)](https://code.visualstudio.com/) 调试 Azure IoT Edge 上的 Azure 函数。
 
 ## <a name="prerequisites"></a>先决条件
-本文假设使用运行 Windows 或 Linux 的计算机或虚拟机作为开发计算机。 IoT Edge 设备可以是另一个物理设备。 或者，可以在开发计算机上模拟 IoT Edge 设备。
+本文假设使用运行 Windows 或 Linux 的计算机或虚拟机作为开发计算机。 IoT Edge 设备可以是另一台物理设备。 或者，可以在开发计算机上模拟 IoT Edge 设备。
 
 > [!NOTE]
-> 本调试文章演示如何在模块容器中附加进程并使用 VS Code 对它进行调试。 只能调试 Linux amd64 容器中的 C# 模块。 如果你不熟悉 Visual Studio Code 的调试功能，请阅读有关[调试](https://code.visualstudio.com/Docs/editor/debugging)的信息。 
+> 本调试文章演示了如何在模块容器中附加进程并使用 VS Code 对它进行调试。 只能调试 linux-amd64 容器中的 C# 函数。 如果你不熟悉 Visual Studio Code 的调试功能，请阅读有关[调试](https://code.visualstudio.com/Docs/editor/debugging)的信息。 
 
 本文使用 Visual Studio Code 作为主要开发工具。 安装 VS Code。 然后添加必要的扩展： 
 
@@ -48,7 +48,7 @@ ms.locfileid: "39056498"
 
 1. 在 Visual Studio Code 中，选择“视图” > “集成终端”。
 3. 选择“视图” > “命令面板”。
-4. 在命令面板中，输入并运行“Azure IoT Edge: New IoT Edge Solution”命令。 
+4. 在命令面板中，输入并运行“Azure IoT Edge: 新建 IoT Edge 解决方案”命令。 
 
    ![运行新的 IoT Edge 解决方案](./media/how-to-develop-csharp-module/new-solution.png)
 
@@ -56,22 +56,22 @@ ms.locfileid: "39056498"
 6. 输入解决方案的名称。 
 7. 选择“Azure Functions - C#”作为解决方案中第一个模块的模板。
 8. 输入模块的名称。 选择一个在容器注册表中唯一的名称。 
-9. 为模块提供映像存储库。 VS Code 使用 **localhost:5000** 自动填充模块名称。 将其替换为自己的注册表信息。 如果使用本地 Docker 注册表进行测试，则可以使用 **localhost**。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器如下所示：\<registry name\>.azurecr.io。
+9. 为模块提供映像存储库。 VS Code 使用 **localhost:5000** 自动填充模块名称。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，则可以使用 **localhost**。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器如下所示：\<registry name\>.azurecr.io。
 
 VS Code 采用所提供的信息，创建一个包含 Azure Functions 项目的 IoT Edge 解决方案，然后在新窗口中加载它。
 
-该解决方案中有四个项目： 
+该解决方案中有四个项： 
 
 * 一个 **.vscode** 文件夹，包含调试配置。
 * 一个 **modules** 文件夹，包含每个模块的子文件夹。 现在，只有一个模块。 但是可以通过命令面板使用“Azure IoT Edge: Add IoT Edge Module”命令添加更多模块。
 * 一个 **.env** 文件，列出环境变量。 如果 Azure 容器注册表是你的注册表，则其中将包含 Azure 容器注册表用户名和密码。 
 
    >[!NOTE]
-   >仅当为模块提供映像存储库时，才会创建环境文件。 如果接受 localhost 默认值在本地进行测试和调试，则不需要声明环境变量。 
+   >仅当为模块提供了映像存储库时，才会创建环境文件。 如果接受 localhost 默认值在本地进行测试和调试，则不需要声明环境变量。 
 
-* 一个 **deployment.template.json** 文件，列出新模块以及模拟可用于测试的数据的示例 **tempSensor** 模块。 有关部署清单如何工作的更多信息，请参阅[了解如何使用部署清单部署模块和建立路由](module-composition.md)。
+* 一个 **deployment.template.json** 文件，列出新模块以及模拟可用于测试的数据的示例 **tempSensor** 模块。 有关部署清单如何工作的详细信息，请参阅[了解如何使用部署清单部署模块和建立路由](module-composition.md)。
 
-## <a name="devlop-your-module"></a>开发模块
+## <a name="develop-your-module"></a>开发模块
 
 解决方案附带的默认 Azure 函数代码位于**模块** > **\<你的模块名称\>** > **EdgeHubTrigger-Csharp** > **run.csx**。 设置模块和 deployment.template.json 文件，以便可以生成解决方案，将其推送到容器注册表，然后将其部署到设备以开始测试而无需触及任何代码。 该模块构建为只需从源（在此示例中，为模拟数据的 tempSensor 模块）获取输入并通过管道将其传送到 IoT Hub。 
 

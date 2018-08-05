@@ -1,20 +1,19 @@
 ---
-title: Azure 认知服务语音服务 | Microsoft Docs
+title: Azure 认知服务语音服务
 description: 了解如何使用语音服务认知服务自定义发音。
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: panosper
-ms.openlocfilehash: f926bf8686a279c93d8f1ed03e8a0ecf3f4a9632
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: c7c06fc2f33baa7357fd5f945414daf2bc6e4858
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347265"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284932"
 ---
 # <a name="enable-custom-pronunciation"></a>启用自定义发音
 借助自定义发音，用户可以定义语音形式和字词或术语显示。 它适用于处理自定义术语，如产品名称或首字母缩略词。 只需使用发音文件（简单的 .txt 文件）即可。

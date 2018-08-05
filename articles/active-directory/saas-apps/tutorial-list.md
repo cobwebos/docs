@@ -16,12 +16,12 @@ ms.date: 07/09/2018
 ms.author: markvi
 ms.custom: it-pro
 ms.reviewer: jeedes
-ms.openlocfilehash: f1d85b031abda73c6ca41d6d2551db9d9cd36f1f
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: ac338283bfe123e70697b0301fdccca886653c42
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092148"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285293"
 ---
 # <a name="saas-application-integration-with-azure-active-directory"></a>SaaS 应用程序与 Azure Active Directory 集成
 
@@ -264,7 +264,7 @@ ms.locfileid: "39092148"
 | ![徽标](./media/tutorial-list/active-directory-saas-imagineerwebVision-tutorial.png)| [Imagineer WebVision](imagineerwebVision-tutorial.md)|
 | ![徽标](./media/tutorial-list/active-directory-saas-impacriskmanager-tutorial.png)| [IMPAC Risk Manager](impacriskmanager-tutorial.md)|
 | ![徽标](./media/tutorial-list/active-directory-saas-infogix-tutorial.png)| [Infogix Data3Sixty Govern](infogix-tutorial.md)|
-| ![徽标](./media/tutorial-list/active-directory-saas-inforretailinformationmanagement-tutorial.png)| [Infor Retail â Information Management](inforretailinformationmanagement-tutorial.md)|
+| ![徽标](./media/tutorial-list/active-directory-saas-inforretailinformationmanagement-tutorial.png)| [Infor Retail â 信息管理](inforretailinformationmanagement-tutorial.md)|
 | ![徽标](./media/tutorial-list/active-directory-saas-inkling-tutorial.png)| [Inkling](inkling-tutorial.md)|
 | ![徽标](./media/tutorial-list/active-directory-saas-innotas-tutorial.png)| [Innotas](innotas-tutorial.md)|
 | ![徽标](./media/tutorial-list/active-directory-saas-innovationhub-tutorial.png)| [Innovation Hub](innovationhub-tutorial.md)|
@@ -330,7 +330,7 @@ ms.locfileid: "39092148"
 | ![徽标](./media/tutorial-list/active-directory-saas-lifesize-cloud-tutorial.png)| [Lifesize Cloud](lifesize-cloud-tutorial.md)|
 | ![徽标](./media/tutorial-list/active-directory-saas-worksmobile-tutorial.png)| [LINE WORKS](worksmobile-tutorial.md)|
 | ![徽标](./media/tutorial-list/active-directory-saas-linkedinelevate-tutorial.png)| [LinkedIn Elevate](linkedinelevate-tutorial.md)|[LinkedIn Elevate - 用户预配](linkedinelevate-provisioning-tutorial.md)|
-| ![徽标](./media/tutorial-list/active-directory-saas-linkedinlearning-tutorial.png)| [LinkedIn Learning](linkedinlearning-tutorial.md)|[LinkedIn Learning - 用户预配](linkedinlearning-provisioning-tutorial.md)|
+| ![徽标](./media/tutorial-list/active-directory-saas-linkedinlearning-tutorial.png)| [LinkedIn Learning](linkedinlearning-tutorial.md)|
 | ![徽标](./media/tutorial-list/active-directory-saas-linkedinsalesnavigator-tutorial.png)| [LinkedIn Sales Navigator](linkedinsalesnavigator-tutorial.md)|  [LinkedIn Sales Navigator - 用户预配](linkedinsalesnavigator-provisioning-tutorial.md)| 
 | ![徽标](./media/tutorial-list/active-directory-saas-liquidfiles-tutorial.png)| [LiquidFiles](liquidfiles-tutorial.md)|
 | ![徽标](./media/tutorial-list/active-directory-saas-litmos-tutorial.png)| [Litmos](litmos-tutorial.md)|

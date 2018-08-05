@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: ac9070e328ef867a0b0e8d7d81f5147a50357928
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 603a6e2f3ce744d792ad9c9be20622c65a37dda3
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126402"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414600"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>适用于单一数据库的 Azure SQL 数据库基于 vCore 的购买模型限制
 
@@ -22,9 +22,13 @@ ms.locfileid: "39126402"
 
 有关基于 DTU 的购买模型的限制，请参阅 [SQL 数据库基于 DTU 的资源限制](sql-database-dtu-resource-limits.md)。
 
+> [!IMPORTANT]
+> 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)。
+
+
 ## <a name="single-database-storage-sizes-and-performance-levels"></a>单一数据库：存储大小和性能级别
 
-对于单一数据库，下表显示了可用于每个服务层和性能级别的单一数据库的资源。 可通过 [Azure 门户](sql-database-servers-databases-manage.md#azure-portal-manage-logical-servers-and-databases)、[Transact-SQL](sql-database-servers-databases-manage.md#transact-sql-manage-logical-servers-and-databases)、[PowerShell](sql-database-servers-databases-manage.md#powershell-manage-logical-servers-and-databases)、[Azure CLI](sql-database-servers-databases-manage.md#azure-cli-manage-logical-servers-and-databases) 或 [REST API](sql-database-servers-databases-manage.md#rest-api-manage-logical-servers-and-databases) 为单一数据库设置服务层、性能级别和存储量。
+对于单一数据库，下表显示了可用于每个服务层和性能级别的单一数据库的资源。 可通过 [Azure 门户](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases)、[Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-logical-servers-and-databases)、[PowerShell](sql-database-single-databases-manage.md#powershell-manage-logical-servers-and-databases)、[Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-logical-servers-and-databases) 或 [REST API](sql-database-single-databases-manage.md#rest-api-manage-logical-servers-and-databases) 为单一数据库设置服务层、性能级别和存储量。
 
 ### <a name="general-purpose-service-tier"></a>常规用途服务层
 

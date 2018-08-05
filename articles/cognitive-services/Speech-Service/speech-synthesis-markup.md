@@ -1,21 +1,20 @@
 ---
-title: 语音合成标记语言 | Microsoft Docs
+title: 语音合成标记语言
 description: 使用语音合成标记语言来控制文本到语音翻译中的发音和韵律。
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 4074ba91f5029d6c132982d1d81a4888a5e42721
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: ed085bcd92c4ef550ee596a3aefea3af9bfef104
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071209"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283936"
 ---
 # <a name="speech-synthesis-markup-language"></a>语音合成标记语言
 

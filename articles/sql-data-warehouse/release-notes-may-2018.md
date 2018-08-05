@@ -7,15 +7,15 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 05/28/2018
+ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: ddcb985c370baf224d451aa6c1ec9b796e0140de
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 01b571beba012ae0a1fa27d03f5e0e5454f62aa5
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38561398"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39324949"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-may-2018"></a>Azure SQL 数据仓库中的新增功能 2018 年 5 月 
 Azure SQL 数据仓库持续得到改进。 本文介绍 2018 年 5 月发行的版本中所引入的新功能和所做的更改。 
@@ -127,3 +127,25 @@ The ORDER BY clause is invalid in views, CREATE TABLE AS SELECT, INSERT SELECT, 
 
 ## <a name="set-parseonly-on-query-status-behavior-change"></a>SET PARSEONLY ON 查询状态（行为变更）
 用户可以使用 `SET PARSEONLY ON` 语法来让 SQL 数据仓库引擎检查每个 T-SQL 语句的语法并返回任何错误消息，而无需编译或执行该语句。 以前，在 [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) 系统视图中，这些语句的状态保留在 `Running` 状态中。 `sys.dm_pdw_exec_requests` 视图现在返回 `Complete` 形式的状态。
+
+## <a name="next-steps"></a>后续步骤
+对 SQL 数据仓库有了初步的认识后，请了解如何快速[创建 SQL 数据仓库][create a SQL Data Warehouse]。 如果不熟悉 Azure，在遇到新术语时，可以参考 [Azure 术语表][Azure glossary]。 或者，查看一下以下一些其他 SQL 数据仓库资源。  
+
+* [客户成功案例]
+* [博客]
+* [功能请求]
+* [视频]
+* [客户顾问团队博客]
+* [堆栈溢出论坛]
+* [Twitter]
+
+
+[博客]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
+[客户顾问团队博客]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
+[客户成功案例]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
+[功能请求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
+[堆栈溢出论坛]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Twitter]: https://twitter.com/hashtag/SQLDW
+[视频]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
+[create a SQL Data Warehouse]: ./create-data-warehouse-portal.md
+[Azure glossary]: ../azure-glossary-cloud-terminology.md
