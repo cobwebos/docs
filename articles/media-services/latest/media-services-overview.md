@@ -16,12 +16,12 @@ ms.workload: media
 ms.date: 07/14/2018
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: ad3b8755615332249ac00f43a2d0cc5fa13a7233
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 6c3fb7391c25628ba12526a04c022215bdbd9d40
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113277"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325925"
 ---
 # <a name="what-is-azure-media-services-v3"></a>什么是 Azure 媒体服务 v3？
 
@@ -117,21 +117,22 @@ private static async Task<ContentKeyPolicy> GetOrCreateContentKeyPolicyAsync(
 
 ## <a name="how-can-i-get-started-with-v3"></a>如何开始使用 v3？
 
-作为开发者，可以利用媒体服务 [REST API](https://go.microsoft.com/fwlink/p/?linkid=873030) 或客户端库，与 REST API 交互，轻松创建、管理和维护自定义媒体工作流。 可在[此处](https://github.com/Azure-Samples/media-services-v3-rest-postman)找到 REST Postman 示例。 也可使用[基于 Azure 资源管理器的 REST API](https://github.com/Azure-Samples/media-services-v3-arm-templates)。
+作为开发者，可以利用媒体服务 [REST API](https://go.microsoft.com/fwlink/p/?linkid=873030) 或客户端库，与 REST API 交互，轻松创建、管理和维护自定义媒体工作流。  
+
+媒体服务提供 [Swagger 文件](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media)，此类文件可用于为首选语言/技术生成 SDK。  
 
 Microsoft 生成并支持以下客户端库： 
 
-|客户端库|示例|
-|---|---|
-|[Azure CLI SDK](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)|[Azure CLI 示例](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services)|
-|[.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/1.0.0)|[.NET 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials)|
-|[.NET Core SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/1.0.0)（选择“.NET CLI”选项卡）|[.NET Core 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials)|
-|[Java SDK](https://docs.microsoft.com/java/api/mediaservices/management?view=azure-java-stable)||
-|[Node.js SDK](https://docs.microsoft.com/javascript/api/azure-arm-mediaservices/index?view=azure-node-latest)|[Node.js 示例](https://github.com/Azure-Samples/media-services-v3-node-tutorials)|
-|[Python SDK](https://pypi.org/project/azure-mgmt-media/1.0.0rc1/)||
-|[Go SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/mediaservices/mgmt/2018-03-30-preview/media)||
-
-媒体服务提供 [Swagger 文件](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media)，此类文件可用于为首选语言/技术生成 SDK。  
+|API 参考|SDK/工具|示例|
+|---|---|---|---|
+|[REST 参考](https://aka.ms/ams-v3-rest-ref)|[REST SDK](https://aka.ms/ams-v3-rest-sdk)|[REST Postman 示例](https://github.com/Azure-Samples/media-services-v3-rest-postman)<br/>[基于 Azure 资源管理器的 REST API](https://github.com/Azure-Samples/media-services-v3-arm-templates)|
+|[Azure CLI 参考](https://aka.ms/ams-v3-cli-ref)|[Azure CLI](https://aka.ms/ams-v3-cli)|[Azure CLI 示例](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services)||
+|[.NET 参考](https://aka.ms/ams-v3-dotnet-ref)|[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials)||
+||[.NET Core SDK](https://aka.ms/ams-v3-dotnet-sdk)（选择“.NET CLI”选项卡）|[.NET Core 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials)||
+|[Java 参考](https://aka.ms/ams-v3-java-ref)|[Java SDK](https://aka.ms/ams-v3-java-sdk)||
+|[Node.js 参考](https://aka.ms/ams-v3-nodejs-ref)|[Node.js SDK](https://aka.ms/ams-v3-nodejs-sdk)|[Node.js 示例](https://github.com/Azure-Samples/media-services-v3-node-tutorials)||
+|[Python 参考](https://aka.ms/ams-v3-python-ref)|[Python SDK](https://aka.ms/ams-v3-python-sdk)||
+|[Go 参考](https://aka.ms/ams-v3-go-ref)|[Go SDK](https://aka.ms/ams-v3-go-sdk)||
 
 ## <a name="next-steps"></a>后续步骤
 

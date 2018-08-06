@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/17/2018
+ms.date: 07/17/2018
 ms.author: spelluru
-ms.openlocfilehash: d4bfd684792e5ec13b2a4a020fa21249f1888657
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: b60c1e84eb5b62bfce0eb2ba96129deeee2fc3c3
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226337"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345302"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>教程：使用 Azure 实验室服务设置实验室帐户
 在 Azure 实验室服务中，实验室帐户充当管理组织实验室的中心帐户。 在你的实验室帐户中，授予他人创建实验室的权限，并设置适用于实验室帐户下所有实验室的策略。 在本教程中，了解如何以实验室管理员身份创建实验室帐户。 
@@ -69,21 +69,27 @@ ms.locfileid: "39226337"
     ![将用户添加为“实验室创建者”角色](../media/tutorial-setup-lab-account/add-user-to-lab-creator-role.png)
 
 ## <a name="specify-marketplace-images-available-to-lab-owners"></a>指定可供实验室所有者使用的市场映像
-在本部分中，指定实验室所有者可用来创建课堂实验室的市场映像。 
+作为实验室帐户所有者，你可以指定可供实验室创建者用来在实验室帐户中创建实验室的市场映像。 
 
 1. 在左侧的菜单上选择“市场映像”。 默认情况下，可以看到映像的完整列表（包括启用的和禁用的）。 可以通过从顶部的下拉列表中选择“仅启用的/仅禁用的”选项对列表进行筛选来仅查看启用的/禁用的映像。 
+    
+    ![“市场映像”页](../media/tutorial-setup-lab-account/marketplace-images-page.png)
 
-    ![“市场映像”页面](../media/tutorial-setup-lab-account/marketplace-images-page.png)
+    列表中显示的市场映像只是满足以下条件的映像：
+        
+    - 创建单个 VM。
+    - 使用 Azure 资源管理器预配 VM
+    - 不需要购买额外的许可计划
 2. 若要**禁用**已启用的市场映像，请执行下列操作之一： 
-    1. 选择最后一列中的 **...（省略号）** 并选择“禁用映像”。 
+    1. 选择最后一列中的“...”（省略号）并选择“禁用映像”。 
 
         ![禁用一个映像](../media/tutorial-setup-lab-account/disable-one-image.png) 
-    2. 通过选择列表中映像名称前面的复选框从列表中选择一个或多个映像，然后选择“禁用所选映像”。 
+    2. 通过选中列表中映像名称前面的复选框从列表中选择一个或多个映像，然后选择“禁用所选映像”。 
 
         ![禁用多个映像](../media/tutorial-setup-lab-account/disable-multiple-images.png) 
-1. 类似地，若要**启用**已禁用的市场映像，请执行下列操作之一： 
-    1. 选择最后一列中的 **...（省略号）** 并选择“启用映像”。 
-    2. 通过选择列表中映像名称前面的复选框从列表中选择一个或多个映像，然后选择“启用所选映像”。 
+1. 类似地，若要**启用**市场映像，请执行下列操作之一： 
+    1. 选择最后一列中的“...”（省略号）并选择“启用映像”。 
+    2. 通过选中列表中映像名称前面的复选框从列表中选择一个或多个映像，然后选择“启用所选映像”。 
 
 ## <a name="next-steps"></a>后续步骤
 在本教程中，已创建实验室帐户。 要了解如何专业地创建教室实验室，请继续下一教程：

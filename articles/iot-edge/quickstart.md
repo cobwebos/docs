@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 19fd671514da0dbfb1704c37d4347e870763d41b
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 1437c3552a7af5d5474cf3bdaabe95d5415af603
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091807"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414205"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>快速入门：将第一个 IoT Edge 模块从 Azure 门户部署到 Windows 设备 - 预览
 
@@ -36,18 +36,6 @@ ms.locfileid: "39091807"
 
 如果没有可用的 Azure 订阅，可以在开始前创建一个[免费帐户][lnk-account]。
 
-## <a name="prerequisites"></a>先决条件
-
-本快速入门可以将 Windows 计算机或虚拟机变成 IoT Edge 设备。 如果正在虚拟机中运行 Windows，则启用[嵌套虚拟化][lnk-nested]并分配至少 2GB 内存。 
-
-在用于 IoT Edge 设备的计算机上做好以下先决条件准备：
-
-1. 确保使用的是支持的 Windows 版本：
-   * Windows 10 或更高版本
-   * Windows Server 2016 或更高版本
-2. 安装[用于 Windows 的 Docker][lnk-docker] 并确保其正在运行。
-3. 将 Docker 配置为使用 [Linux 容器](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)
-
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 请使用 Azure CLI 完成本快速入门中的多个步骤。Azure IoT 有一个可以启用其他功能的扩展。 
@@ -58,24 +46,40 @@ ms.locfileid: "39091807"
    az extension add --name azure-cli-iot-ext
    ```
 
-## <a name="create-an-iot-hub"></a>创建 IoT 中心
+## <a name="prerequisites"></a>先决条件
 
-在 Azure 门户中创建 IoT 中心，启动快速入门。
-![创建 IoT 中心][3]
+云资源： 
 
-免费级的 IoT 中心适用于此快速入门。 如果曾经用过 IoT 中心并且已创建免费的中心，则可使用该 IoT 中心。 每个订阅仅能有一个免费 IoT 中心。 
-
-1. 在 Azure Cloud Shell 中创建一个资源组。 以下代码在 **West US** 区域中创建名为 **IoTEdgeResources** 的资源组。 将快速入门和教程的所有资源置于一个组中可以对其集中管理。 
+* 一个资源组，用于管理在本快速入门中使用的所有资源。 
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus
    ```
 
-1. 在新的资源组中创建 IoT 中心。 以下代码在资源组“IoTEdgeResources”中创建免费的“F1”中心。 将 *{hub_name}* 替换为 IoT 中心的唯一名称。
+充当 IoT Edge 设备的 Windows 计算机或虚拟机： 
+
+* 使用支持的 Windows 版本：
+   * Windows 10 或更高版本
+   * Windows Server 2016 或更高版本
+* 如果是虚拟机，则启用[嵌套虚拟化][lnk-nested]并分配至少 2GB 内存。 
+* 安装[用于 Windows 的 Docker][lnk-docker] 并确保其正在运行。
+* 将 Docker 配置为使用 [Linux 容器](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)
+
+## <a name="create-an-iot-hub"></a>创建 IoT 中心
+
+通过 Azure CLI 创建 IoT 中心，启动快速入门。 
+
+![创建 IoT 中心][3]
+
+免费级的 IoT 中心适用于此快速入门。 如果曾经用过 IoT 中心并且已创建免费的中心，则可使用该 IoT 中心。 每个订阅仅能有一个免费 IoT 中心。 
+
+以下代码在资源组“IoTEdgeResources”中创建免费的“F1”中心。 将 *{hub_name}* 替换为 IoT 中心的唯一名称。
 
    ```azurecli-interactive
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 
    ```
+
+   如果由于订阅中已经有一个免费的中心而出现错误，请将 SKU 更改为 **S1**。 
 
 ## <a name="register-an-iot-edge-device"></a>注册 IoT Edge 设备
 
@@ -206,7 +210,13 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 �
      workload_uri: "http://<GATEWAY_ADDRESS>:15581"
    ```
 
-8. 找到“Moby Container Runtime 设置”节，验证是否已将 **network** 的值设置为 `nat`。
+8. 找到“Moby Container Runtime 设置”节，验证是否已将 **network** 的值取消注释并设置为 **azure-iot-edge**
+
+   ```yaml
+   moby_runtime:
+     docker_uri: "npipe://./pipe/docker_engine"
+     network: "azure-iot-edge"
+   ```
 
 9. 保存此配置文件。 
 
@@ -237,7 +247,8 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 �
     -FilterHashtable @{ProviderName= "iotedged";
       LogName = "application"; StartTime = [datetime]::Today} |
     select TimeCreated, Message |
-    sort-object @{Expression="TimeCreated";Descending=$false}
+    sort-object @{Expression="TimeCreated";Descending=$false} |
+    format-table -autosize -wrap
    ```
 
 3. 查看在 IoT Edge 设备上运行的所有模块。 由于此服务是第一次运行，因此只会看到 **edgeAgent** 模块在运行。 edgeAgent 模块会默认运行，用于安装并启动部署到设备的任何其他模块。 

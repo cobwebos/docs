@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5e0da540b2784ef13986c6089d31f22df992ee59
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: dfcb764d75b7328d1234d47d82afdae8d6a0deef
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005809"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413008"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>快速入门：将第一个 IoT Edge 模块部署到 Linux x64 设备
 
@@ -43,18 +43,18 @@ Azure IoT Edge 将云带来的价值转移至物联网设备。 本快速入门�
    ```azurecli-interactive
    az extension add --name azure-cli-iot-ext
    ```
-
+   
 ## <a name="prerequisites"></a>先决条件
 
-本快速入门使用 Linux 计算机作为 IoT Edge 设备。 如果没有用于测试的计算机，可使用 Azure CLI 创建一个。 
+云资源： 
 
-创建新的资源组。 可以将此资源组用于在本快速入门中创建的其他 Azure 资源，以便简化管理。  
+* 一个资源组，用于管理在本快速入门中使用的所有资源。 
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus
    ```
 
-创建虚拟机。 不需要很大的虚拟机来测试 IoT Edge。 **B1ms** 之类的大小已足够。
+* 充当 IoT Edge 设备的 Linux 虚拟机。 
 
    ```azurecli-interactive
    az vm create --resource-group IoTEdgeResources --name EdgeVM --image Canonical:UbuntuServer:16.04-LTS:latest --admin-username azureuser --generate-ssh-keys --size Standard_B1ms
@@ -62,18 +62,13 @@ Azure IoT Edge 将云带来的价值转移至物联网设备。 本快速入门�
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
-在 Azure 门户中创建 IoT 中心，启动快速入门。
+通过 Azure CLI 创建 IoT 中心，启动快速入门。 
+
 ![创建 IoT 中心][3]
 
 免费级的 IoT 中心适用于此快速入门。 如果曾经用过 IoT 中心并且已创建免费的中心，则可使用该 IoT 中心。 每个订阅仅能有一个免费 IoT 中心。 
 
-1. 在 Azure Cloud Shell 中创建一个资源组（如果尚未按先决条件创建一个）。 将快速入门和教程的所有资源置于一个组中可以对其集中管理。 
-
-   ```azurecli-interactive
-   az group create --name IoTEdgeResources --location westus
-   ```
-
-1. 在新的资源组中创建 IoT 中心。 以下代码在资源组“IoTEdgeResources”中创建免费的“F1”中心。 将 *{hub_name}* 替换为 IoT 中心的唯一名称。
+以下代码在资源组“IoTEdgeResources”中创建免费的“F1”中心。 将 *{hub_name}* 替换为 IoT 中心的唯一名称。
 
    ```azurecli-interactive
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 

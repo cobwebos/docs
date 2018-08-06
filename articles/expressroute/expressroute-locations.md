@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/23/2018
+ms.date: 07/26/2018
 ms.author: jaredro
-ms.openlocfilehash: e3338e76f54516e384e5cfc3046b83f2e49476d9
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 0cb2c594b75e005732403a5d9753e2eab1f39eb4
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215299"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285429"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -146,9 +146,9 @@ ms.locfileid: "39215299"
 | **服务提供商** | **Microsoft Azure** | **Office 365** | **位置** |
 | --- | --- | --- | --- |
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |支持 |支持 |芝加哥、华盛顿特区 |
-| **[CenturyLink Cloud Connect](http://www.centurylink.com/cloudconnect)** |支持 |支持 |Phoenix |
+| **[CenturyLink Cloud Connect](http://www.centurylink.com/cloudconnect)** |支持 |支持 |凤凰城、纽约 |
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** |支持 |支持 |芝加哥、达拉斯、纽约、西雅图、硅谷、华盛顿特区 |
-| **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |支持 |支持 |芝加哥、纽约+、硅谷、华盛顿特区 |
+| **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |支持 |支持 |芝加哥、硅谷、华盛顿特区 |
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |支持 | 支持 | 芝加哥、达拉斯、圣安东尼奥 |
 | **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** |支持 |支持 |芝加哥、达拉斯、纽约、华盛顿特区 |
 

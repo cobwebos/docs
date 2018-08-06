@@ -13,20 +13,20 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/12/2018
+ms.date: 07/30/2018
 ms.author: alkohli
-ms.openlocfilehash: f63eadc9a6ab834e02d62be9a209b504d76d3c8e
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 1ae6d3dbd01d2623fef511ed0663270ac605f257
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090769"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39362654"
 ---
 # <a name="troubleshoot-issues-in-azure-data-box-disk-preview"></a>排查 Azure Data Box 磁盘（预览版）中的问题
 
 本文适用于运行预览版的 Microsoft Azure Data Box。 本文介绍了可对 Data Box 和 Data Box 磁盘执行的一些复杂工作流与管理任务。 
 
-可以使用 Data Box 服务 UI（称为门户 UI）和设备的本地 Web UI 来管理 Data Box。 只能通过 Azure 门户管理 Data Box 磁盘。 本文重点介绍可以使用 Azure 门户执行的任务。 使用 Azure 门户可以管理订单、管理设备，以及跟踪订单在从头到尾的处理过程中的状态。
+可以通过 Azure 门户管理 Data Box 磁盘。 本文重点介绍可以使用 Azure 门户执行的任务。 使用 Azure 门户可以管理订单、管理设备，以及跟踪订单在从头到尾的处理过程中的状态。
 
 本文包括以下教程：
 

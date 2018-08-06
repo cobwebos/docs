@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 02ce774f30cd03b7520f482196629bf4b7ec9ae5
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: c6ae2aa46ae17c4ef995211b02112e1c05e2ec2f
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318562"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344471"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>应用服务环境简介 #
  
@@ -28,8 +28,8 @@ ms.locfileid: "36318562"
 Azure 应用服务环境是一项 Azure 应用服务功能，可提供完全隔离和专用的环境，以便高度安全地运行应用服务应用。 此功能可以托管：
 
 * Windows Web 应用
-* Linux Web 应用（预览版）
-* Docker 容器（预览版）
+* Linux Web 应用 
+* Docker 容器
 * 移动应用
 * 函数
 

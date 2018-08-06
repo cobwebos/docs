@@ -1,6 +1,6 @@
 ---
 title: 教程 - 将 ASA 作业部署到 Azure IoT Edge 设备 | Microsoft Docs
-description: 将 Azure 流分析作为模块部署到 IoT Edge 设备
+description: 在本教程中，请将 Azure 流分析作为模块部署到 IoT Edge 设备
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 0790f504c978b4302812cffc9b655e817c156da3
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f2ef53ee53eb2e95d84fc11f3190f62d0e3c2455
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38540166"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413869"
 ---
-# <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>教程：将 Azure 流分析作为 IoT Edge 模块进行部署 - 预览版
+# <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module-preview"></a>教程：将 Azure 流分析作为 IoT Edge 模块（预览版）进行部署
 
 许多 IoT 解决方案使用分析服务来了解从 IoT 设备到达云的数据。 使用 Azure IoT Edge 时，可以获取 [Azure 流分析][azure-stream]逻辑，将其转到设备中。 在边缘处理遥测流可以减少上传数据量，缩短对可操作见解进行响应的时间。
 
@@ -26,7 +26,7 @@ Azure 流分析提供一种丰富结构化的查询语法，可用于在云和 I
 
 本教程中的流分析模块在一个滚动的 30 秒时段内计算平均温度。 当平均温度达到 70 时，模块会发送一个警报，以便设备采取操作。 在这种情况下，该操作是重置模拟温度传感器。 在生产环境中，当温度达到危险级别时，可以使用此功能关闭机器或采取预防措施。 
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 在 Edge 上创建 Azure 流分析作业用于处理数据。
@@ -36,10 +36,19 @@ Azure 流分析提供一种丰富结构化的查询语法，可用于在云和 I
 >[!NOTE]
 >IoT Edge 的 Azure 流分析模块为[公开预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>先决条件
 
-* IoT 中心
-* 在 [Windows][lnk-quickstart-win] 或 [Linux][lnk-quickstart-lin] 快速入门中创建并配置的 IoT Edge 设备。 
+Azure IoT Edge 设备：
+
+* 可以按照适用于 [Linux](quickstart-linux.md) 或 [Windows 设备](quickstart.md)的快速入门中的步骤，将开发计算机或虚拟机用作 Edge 设备。
+* Azure 机器学习模块不支持 ARM 处理器。
+
+云资源：
+
+* Azure 中的标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。 
+
 
 ## <a name="create-an-azure-stream-analytics-job"></a>创建 Azure 流分析作业
 

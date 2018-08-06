@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/03/2018
+ms.date: 07/31/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: na
-ms.openlocfilehash: 6b25712d660c26f2e7206b361c443b8f97aad361
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 31e9e6b173a578b09f656850271ed5a8f0f2baa8
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867607"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39391325"
 ---
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>查看或分析使用 Log Analytics 日志搜索收集的数据
 
@@ -43,7 +43,7 @@ ms.locfileid: "37867607"
 首先打开日志搜索门户。   
 
 1. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“监视器”。 开始键入时，会根据输入筛选该列表。 选择“监视器”。
-2. 在监视器导航菜单中，选择“Log Analytics”，然后选择一个工作区
+2. 在监视器导航菜单上，选择“Log Analytics”，然后选择一个工作区。
 
 ## <a name="create-a-simple-search"></a>创建简单的搜索
 用于检索某些要使用的数据的最快方法是使用一个简单查询，它可返回表中的所有记录。  如果将任何 Windows 或 Linux 客户端连接到自己的工作区，将具有 Event（事件）(Windows) 或 Syslog (Linux) 表中的数据。

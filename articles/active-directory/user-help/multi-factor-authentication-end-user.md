@@ -1,26 +1,23 @@
 ---
-title: 双重验证入门 - Azure AD | Microsoft Docs
+title: 双重验证入门 - Azure Active Directory | Microsoft Docs
 description: 本 Azure 多重身份验证页面会帮助最终用户开始使用 Azure 多重身份验证。
-services: multi-factor-authentication
-documentationcenter: ''
+services: active-directory
 author: eross-msft
 manager: mtillman
 ms.assetid: e02cc045-2ac0-41ff-b07f-e9255e320383
-ms.service: multi-factor-authentication
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: user-help
 ms.topic: overview
 ms.date: 06/15/2017
 ms.author: lizross
 ms.reviewer: richagi
-ms.custom: end-user
-ms.openlocfilehash: 87bab39827bdd8e16869cf60ecebf8790330590f
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: f084433efa2476a75714da6eaef674911006bb76
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056981"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344760"
 ---
 # <a name="what-does-azure-multi-factor-authentication-mean-for-me"></a>Azure 多重身份验证对我而言有什么用途？
 假设 IT 部门的某位同事或者你的老板向你发送了一封电子邮件，指出他们已对你的帐户添加了附加的安全验证。  那么，这是什么意思呢？

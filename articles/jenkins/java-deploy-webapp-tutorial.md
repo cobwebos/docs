@@ -1,22 +1,19 @@
 ---
-title: 使用 Jenkins 将 Web 应用部署到 Azure | Microsoft Docs
+title: 使用 Jenkins 将 Web 应用部署到 Azure
 description: 使用 Jenkins 和 Docker 设置 Java Web 应用从 GitHub 到 Azure 应用服务的持续集成。
-author: rloutlaw
-manager: douge
-ms.service: jenkins
-ms.search.scope: ''
-ms.devlang: java
-ms.topic: article
-ms.workload: web
-ms.date: 08/02/2017
-ms.author: routlaw
-ms.custom: Jenkins, devcenter
-ms.openlocfilehash: b2606acba341d4cfbc16314048e134fa30ff8606
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.topic: tutorial
+ms.author: tarcher
+author: tomarcher
+manager: jpconnock
+ms.service: devops
+ms.custom: jenkins
+ms.date: 07/31/2018
+ms.openlocfilehash: e880d84c3ae0fd23c11bb9b30733544bd5f28872
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29852993"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389936"
 ---
 # <a name="set-up-continuous-integration-and-deployment-to-azure-app-service-with-jenkins"></a>使用 Jenkins 设置 Azure 应用服务的持续集成和部署
 
@@ -75,7 +72,7 @@ ms.locfileid: "29852993"
 1. 在 Jenkins Web 控制台中，选择“新建项”，将其命名为“MyJavaApp”，选择“自由风格项目”，然后选择“确定”。   
     ![新的 Jenkins 自由风格项目](media/jenkins-java-quickstart/jenkins_freestyle.png)
 2. 在“常规”部分下面，选择“GitHub”项目并输入分叉的存储库的 URL，例如 https://github.com/raisa/gs-spring-boot-docker
-3. 在“源代码管理”部分下面，选择“Git”并输入分叉的存储库 `.git` 的 URL，例如 https://github.com/raisa/gs-spring-boot-docker.git
+3. 在“源代码管理”部分下面，选择“Git”并输入分叉的存储库 `.git` URL，例如 https://github.com/raisa/gs-spring-boot-docker.git
 4. 在“生成触发器”部分下面，选择“用于 GITscm 轮询的 GitHub 挂钩触发器”。
 5. 在“生成”部分下面，选择“添加生成步骤”，并选择“调用顶级 Maven 目标”。 在“目标”字段中输入 `package`。
 6. 选择“保存”。 可以通过从项目页选择“立即生成”测试作业。
@@ -167,7 +164,7 @@ ms.locfileid: "29852993"
 ## <a name="deploy-the-app-from-github"></a>使用 GitHub 部署应用
 
 1. 从 Jenkins 项目中，选择“立即生成”，将示例应用部署到 Azure。
-2. 生成完成后，应用将显示在 Azure 的发布 URL（如 http://myjavaapp.azurewebsites.net）上。   
+2. 生成完成后，应用会显示在 Azure 的发布 URL（如 http://myjavaapp.azurewebsites.net）上。   
    ![查看 Azure 上已部署的应用](media/jenkins-java-quickstart/hello_docker_world_unedited.png)
 
 ## <a name="push-changes-and-redeploy"></a>推送更改并重新部署
@@ -180,9 +177,12 @@ ms.locfileid: "29852993"
     ```
 3. Jenkins 中会开始新的生成，由存储库的 `master` 分支上的新提交触发。 完成后，请在 Azure 上重新加载应用。     
       ![查看 Azure 上已部署的应用](media/jenkins-java-quickstart/hello_docker_world.png)
-  
+
+## <a name="troubleshooting-the-jenkins-plugin"></a>排查 Jenkins 插件问题
+
+如果 Jenkins 插件出现任何 bug，请在 [Jenkins JIRA](https://issues.jenkins-ci.org/) 中提出特定组件的问题。
+
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure VM 作为生成代理](/azure/jenkins/jenkins-azure-vm-agents)
-- [使用 Azure CLI 管理作业和管道中的资源](/azure/jenkins/execute-cli-jenkins-pipeline)
- 
+> [!div class="nextstepaction"]
+> [使用 Azure VM 作为生成代理](/azure/jenkins/jenkins-azure-vm-agents)

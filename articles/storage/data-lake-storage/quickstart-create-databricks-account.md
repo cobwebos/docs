@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.custom: mvc
-ms.openlocfilehash: 6e3515cba449826389fbff35765de9631728de5d
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: d341b0590dce65228958572365bb2773f8f13129
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063419"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39324300"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业
 
@@ -35,9 +35,10 @@ ms.locfileid: "37063419"
 
 ## <a name="set-aside-storage-account-configuration"></a>保留存储帐户配置
 
-在本教程中，你需要能够访问存储帐户名称和访问密钥。 在 Azure 门户中，选择“所有服务”，并基于“存储”进行筛选。 选择“存储帐户”并找到你为本教程创建的帐户。
-
-从“概述”中，将存储帐户的名称复制到文本编辑器中。 接下来，选择“访问密钥”并将“key1”的值复制到文本编辑器中，因为上述两个值都是后续命令所必需的。
+> [!IMPORTANT]
+> 在本教程中，你需要能够访问存储帐户名称和访问密钥。 在 Azure 门户中，选择“所有服务”，并基于“存储”进行筛选。 选择“存储帐户”并找到你为本教程创建的帐户。
+>
+> 从“概览”中，将存储帐户的**名称**复制到文本编辑器。 接下来，选择“访问密钥”并将“key1”的值复制到文本编辑器，因为上述两个值都是后续命令所需的。
 
 ## <a name="create-an-azure-databricks-workspace"></a>创建 Azure Databricks 工作区
 
@@ -105,7 +106,7 @@ ms.locfileid: "37063419"
 
     选择**创建**。
 
-4. 将下面的代码输入到第一个单元格中，并将占位符值替换为你的帐户名称、密钥以及文件系统的名称。
+4. 在以下代码中，请将 **ACCOUNT_NAME** 和 **ACCOUNT_KEY** 文本替换为在本教程开头保存的值。 另请将 **FILE_SYSTEM_NAME** 文本替换为需要提供给文件系统的名称。 然后将代码输入到第一个单元格中。
 
     ```scala
     spark.conf.set("fs.azure.account.key.<ACCOUNT_NAME>.dfs.core.windows.net", "<ACCOUNT_KEY>") 
@@ -122,17 +123,17 @@ ms.locfileid: "37063419"
 
 开始学习本部分之前，必须完成以下先决条件：
 
-* [从 Github](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) 下载 **small_radio_json.json**。
-* 使用 **AzCopy 版本 10** 将示例 JSON 文件上传到你创建的 Azure Blob 存储帐户和文件系统：
+将以下代码输入到 Notebook 单元格中：
 
-    ```bash
-    set ACCOUNT_NAME=<ACCOUNT_NAME>
-    set ACCOUNT_KEY=<ACCOUNT_KEY>
-    azcopy cp "<LOCAL_FILE_PATH>\small_radio_json.json" https://<ACCOUNT_NAME>.dfs.core.windows.net/<CONTAINER_NAME> --recursive 
-    ```
+    %sh wget -P /tmp https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json
 
-> [!NOTE]
-> AzCopy 版本 10 仅可供预览版客户使用。
+在单元格中按 `Shift` + `Enter`，以便运行代码。
+
+现在，请在此单元格下面的新单元格中输入以下代码（将 **FILE_SYSTEM** 和 **ACCOUNT_NAME** 替换为此前使用的值）：
+
+    dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfs://<FILE_SYSTEM>@<ACCOUNT_NAME>.dfs.core.windows.net/")
+
+在单元格中按 `Shift` + `Enter`，以便运行代码。
 
 ## <a name="run-a-spark-sql-job"></a>运行 Spark SQL 作业
 

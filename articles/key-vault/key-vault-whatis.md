@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/23/2018
+ms.date: 07/26/2018
 ms.author: barclayn
-ms.openlocfilehash: b34b05ae86aed199d80a86c8e1a073cb54b5e75f
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: cd9dd4d400177e511f23c2677b77198a50420a35
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226707"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282990"
 ---
 # <a name="what-is-azure-key-vault"></a>什么是 Azure 密钥保管库？
 
@@ -37,6 +37,8 @@ Azure Key Vault 是一个用于安全地存储和访问机密的工具。 机密
 - **[Azure Active Directory](../active-directory/active-directory-whatis.md)** 是用于给定租户的 Azure AD 服务。 每个目录有一个或多个域。 每个目录可以有多个订阅与之关联，但只有一个租户。 
 - **Azure 租户 ID** - 这是用于在 Azure 订阅中标识 Azure Active Directory 的唯一方法。 
 - **托管服务标识** - 虽然 Azure Key Vault 可用于安全存储凭据以及其他密钥和机密，但代码需要向密钥保管库证明身份才能检索它们。 托管服务标识 (MSI) 为 Azure 服务提供了 Azure Active Directory (Azure AD) 中的自动托管标识，更巧妙地解决了这个问题。 可以使用此标识向支持 Azure AD 身份验证的密钥保管库或任何服务证明身份，而无需在代码中放入任何凭据。 若要阅读有关 MSI 的详细信息，请参阅[此处](../active-directory/managed-service-identity/overview.md)
+
+    ![MSI 图形](./media/key-vault-whatis/msi.png)
 
 ## <a name="key-vault-roles"></a>密钥保管库角色
 

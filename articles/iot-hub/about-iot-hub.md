@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-hub
 services: iot-hub
 manager: briz
-ms.openlocfilehash: 0e54c48eb63c5b70626e72f83de6d3676710d4c4
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: f4254cd90d8cf3b9f4cd206b729a3d44784b377a
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860150"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343621"
 ---
 # <a name="what-is-azure-iot-hub"></a>Azure IoT 中心是什么？
 
@@ -26,18 +26,24 @@ IoT 中心的功能有助于生成可缩放且功能完整的 IoT 解决方案�
 
 ## <a name="scale-your-solution"></a>缩放解决方案
 
-IoT 中心可扩展为数百万个同时连接的设备，以及每秒数百万个事件以支持 IoT 工作负载。 IoT 中心提供多种服务级别，最大限度地满足你的缩放需求。 [了解详细信息](https://azure.microsoft.com/pricing/details/iot-hub/)。
+IoT 中心可扩展为数百万个同时连接的设备，以及每秒数百万个事件以支持 IoT 工作负载。 IoT 中心提供多种服务级别，最大限度地满足你的缩放需求。 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/iot-hub/)。
 
 ## <a name="secure-your-communications"></a>保护通信
 
 IoT 中心为发送数据的设备提供保护信道。
 
 * 通过对每个设备进行身份验证，可以安全地将每个设备连接到 IoT 中心，并且安全地管理这些设备。
+
 * 可以完全控制设备访问，并可以根据每个设备的级别控制连接。
+
 * [IoT 中心设备预配服务](https://docs.microsoft.com/azure/iot-dps/)在设备首次启动时，自动将设备提供给正确的 IoT 中心。
+
 * 多种身份验证类型支持各种设备功能：
+
   * 基于 SAS 令牌的身份验证可快速启动 IoT 解决方案。
+
   * 单个 X.509 证书身份验证，用于安全、以标准为基础的身份验证。
+
   * X.509 CA 身份验证，用于简单、以标准为基础的注册。
 
 ## <a name="route-device-data"></a>路由设备数据
@@ -45,7 +51,9 @@ IoT 中心为发送数据的设备提供保护信道。
 内置的消息路由功能可以灵活地设置基于规则的自动消息扇出：
 
 * 使用消息路由控制中心发送设备遥测的位置。
+
 * 无需支付额外费用，即可将消息路由到多个终结点。
+
 * 无代码路由规则替代了自定义消息调度程序代码。
 
 ## <a name="integrate-with-other-services"></a>与其他服务集成
@@ -65,7 +73,9 @@ IoT 中心为发送数据的设备提供保护信道。
 可以通过内置功能的数组，管理连接到 IoT 中心的设备。
 
 * 存储、同步和查询设备元数据和所有设备的状态信息。
+
 * 根据每个设备或设备的共同功能设置设备状态。
+
 * 通过信息路由集成自动响应报告设备的状态更改。
 
 ## <a name="make-your-solution-highly-available"></a>使解决方案具有高可用性
@@ -95,6 +105,7 @@ IoT 中心和设备 SDK 支持用于连接设备的以下协议：
 如果解决方案无法使用其中一种支持的协议，则可以将 IoT 中心扩展到支持自定义协议：
 
 * 使用 [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/)，创建现场网关，执行边缘的协议转换。
+
 * 自定义 [Azure IoT 协议网关](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)，在云中执行协议转换。
 
 ## <a name="quotas-and-limits"></a>配额和限制
@@ -102,6 +113,7 @@ IoT 中心和设备 SDK 支持用于连接设备的以下协议：
 每个 Azure 订阅都有默认的配额限制以防止服务滥用，并且这些限制可能会影响 IoT 解决方案的作用域。 每个订阅的当前限制是每个订阅 10 个 IoT 中心。 可以通过联系支持人员，请求增加配额。 有关配额限制的更多详细信息，请参阅：
 
 * [Azure 订阅服务限制](../azure-subscription-service-limits.md)
+
 * [IoT Hub throttling and you](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)（IoT 中心限制和你）
 
 ## <a name="next-steps"></a>后续步骤

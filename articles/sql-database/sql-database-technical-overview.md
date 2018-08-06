@@ -7,18 +7,27 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.topic: overview
-ms.date: 07/16/2018
+ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 8e5518e0a2be98cc080a76cdf0697d6812ab22f8
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: f7a314b3de112ad1fa7a5a356c2325846e9371b1
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092097"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413376"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>什么是 Azure SQL 数据库服务？ 
 
-SQL 数据库是 Microsoft Azure 中通用的关系数据库托管服务，支持关系数据、JSON、空间和 XML 等结构。 SQL 数据库提供可能包含[单个 SQL 数据库](sql-database-servers-databases.md)和[弹性池](sql-database-elastic-pool.md)的逻辑服务器，以及包含系统和用户数据库的[托管实例](sql-database-managed-instance.md)（公共预览版）。 SQL 数据库在以下两个不同的购买模型下提供动态可缩放性能：[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)和[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)。 SQL 数据库还提供[列存储索引](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)（用于极端分析和报告）和[内存中 OLTP](sql-database-in-memory.md)（用于极端事务处理）等选项。 Microsoft 可无缝处理 SQL 代码库的所有修补和更新，并避开底层基础结构的所有管理。 
+SQL 数据库是 Microsoft Azure 中通用的关系数据库托管服务，支持关系数据、JSON、空间和 XML 等结构。 SQL 数据库在以下两个不同的购买模型下提供动态可缩放性能：[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)和[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)。 SQL 数据库还提供[列存储索引](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)（用于极端分析和报告）和[内存中 OLTP](sql-database-in-memory.md)（用于极端事务处理）等选项。 Microsoft 可无缝处理 SQL 代码库的所有修补和更新，并避开底层基础结构的所有管理。 
+
+Azure SQL 数据库提供下述适用于 Azure SQL 数据库的部署选项：
+- 充当拥有自己的资源集（通过逻辑服务器进行托管）的单一数据库 
+- 在[弹性池](sql-database-elastic-pool.md)中充当拥有共享资源集（通过逻辑服务器进行托管）的入池数据库
+- 充当称为[托管实例](sql-database-managed-instance.md)（公共预览版）的数据库集合的一部分，该集合包含系统和用户数据库并共享一个资源集。
+
+下图显示了这些部署选项：
+
+![部署选项](./media/sql-database-technical-overview/deployment-options.png) 
 
 SQL 数据库与 [Microsoft SQL Server 数据库引擎](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation)共享其代码库。 利用 Microsoft 的云优先策略，首先将 SQL Server 的最新功能发布到 SQL 数据库，然后再发布到 SQL Server 本身。 此方法可为你提供 SQL Server 的最新功能，这些新功能已经过数百万个数据库的测试且无任何修补或升级开销。 有关公布的新功能信息，请参阅：
 

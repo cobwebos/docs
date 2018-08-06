@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: e4e94567cf978631be52a3304b47b68f61ac3fff
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: eefb07136215d79b7c351dd4498bfeb79b6833de
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161157"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413719"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>教程：登录屏幕中的 Azure AD 密码重置
 
@@ -112,9 +112,11 @@ ms.locfileid: "39161157"
 
 * 转到用于测试的 VM，单击“视图”，然后取消选中“增强会话”。
 
-使用远程桌面测试此功能时，“重置密码”链接不显示
+使用远程桌面测试此功能时，“重置密码”链接不显示。
 
 * 目前不支持从远程桌面进行密码重置。
+
+如果通过注册表项或组策略禁用了 Windows 锁屏，则“重置密码”功能不可用。
 
 ## <a name="clean-up-resources"></a>清理资源
 

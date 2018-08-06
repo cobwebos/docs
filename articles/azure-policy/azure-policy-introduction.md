@@ -1,32 +1,32 @@
 ---
-title: Azure 策略概述
-description: Azure 策略是 Azure 中的一项服务，用于创建、分配和管理 Azure 环境中的策略定义。
+title: Azure Policy 概述
+description: Azure Policy 是 Azure 中的一项服务，用于创建、分配和管理 Azure 环境中的策略定义。
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/24/2018
+ms.date: 07/31/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 51fd0c625ad7e600d54999ddd86e5e49a7c4f14d
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: e00af59c39219cf6efd14a1c6b2d831fc8addf5a
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249856"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364422"
 ---
-# <a name="what-is-azure-policy"></a>什么是 Azure 策略？
+# <a name="what-is-azure-policy"></a>什么是 Azure Policy？
 
 IT 治理可确保组织能够通过有效且高效地使用 IT 来实现其目标。 它通过区分业务目标和 IT 项目来实现这一点。
 
 你的公司是否正遇到了大量似乎难以解决的 IT 问题？
-良好的 IT 治理涉及在战略级别上规划各项举措和设置优先级，以便管理和预防问题。 这是 Azure 策略传入的位置。
+良好的 IT 治理涉及在战略级别上规划各项举措和设置优先级，以便管理和预防问题。 这是 Azure Policy 传入的位置。
 
 Azure Policy 是 Azure 中的一项服务，可用于创建、分配和管理策略。 这些策略将在整个资源中强制实施不同的规则和效果，以便这些资源符合公司标准和服务级别协议。 为此，Azure Policy 会对资源进行评估，找出那些与所创建的策略不符的资源。 例如，可以设置一项策略，仅允许环境中有特定 SKU 大小的虚拟机。 实施此策略以后，会在创建和更新资源时对其进行评估，并会针对现有资源对其进行评估。 本文档后面会更详细地讲述如何使用 Azure Policy 创建和实施策略。
 
 > [!IMPORTANT]
-> 现在，无论定价层如何，为所有分配都提供了 Azure 策略的符合性评估。 如果分配未显示符合性数据，请确保已向 Microsoft.PolicyInsights 资源提供程序注册订阅。
+> 现在，无论定价层如何，为所有分配都提供了 Azure Policy 的符合性评估。 如果分配未显示符合性数据，请确保已向 Microsoft.PolicyInsights 资源提供程序注册订阅。
 
 ## <a name="how-is-it-different-from-rbac"></a>策略与 RBAC 有什么不同？
 
@@ -46,7 +46,7 @@ Azure Policy 的权限在两个不同的资源提供程序中以操作形式体�
 
 若要在 Azure Policy 中创建并实施策略，请先创建策略定义。 每种策略定义在其特定的条件下将被强制执行。 并且，在满足条件时将出现随附效果。
 
-在 Azure 策略中，我们将提供一些默认可供使用的内置策略。 例如：
+在 Azure Policy 中，我们将提供一些默认可供使用的内置策略。 例如：
 
 - 需要 SQL Server 12.0：此策略定义具有条件/规则，以确保所有 SQL Server 均使用版本 12.0。 其效果是拒绝所有不符合这些条件的服务器。
 - 允许的存储帐户 SKU：此策略定义具有一组条件/规则，可确定正在部署的存储帐户是否在 SKU 大小集内。 其效果是拒绝所有不符合定义的 SKU 大小集的存储帐户。
@@ -126,11 +126,11 @@ Azure Policy 的每个对象类型都有一个最大计数。 “作用域”条
 | 范围 | 策略定义 | 250 |
 | 范围 | 计划定义 | 100 |
 | 租户 | 计划定义 | 1000 |
-| 范围 | 策略分配 | 100 |
+| 范围 | 策略/计划分配数 | 100 |
 | 策略定义 | parameters | 20 |
 | 计划定义 | 策略 | 100 |
 | 计划定义 | parameters | 100 |
-| 策略分配 | 排除项 (notScopes) | 100 |
+| 策略/计划分配数 | 排除项 (notScopes) | 100 |
 | 策略规则 | 嵌套式条件语句 | 512 |
 
 ## <a name="recommendations-for-managing-policies"></a>管理策略的建议

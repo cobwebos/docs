@@ -9,16 +9,16 @@ ms.date: 06/27/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 2293390684a8dcdf5f32bbae8f04fe7317d389e2
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: c94479ca523f0097c8fbf94729f3a255ffc0c2bf
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258938"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413215"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>教程：开发 C# IoT Edge 模块并将其部署到模拟设备
 
-可以使用 Azure IoT Edge 模块部署代码，直接将业务逻辑实现到 IoT Edge 设备。 本教程详细介绍如何创建并部署用于筛选传感器数据的 IoT Edge 模块。 将使用的模拟 IoT Edge 设备是在 [Windows][lnk-tutorial1-win] 或 [Linux][lnk-tutorial1-lin] 快速入门的“在模拟设备上部署 Azure IoT Edge”中创建的。 本教程介绍如何执行以下操作：    
+可以使用 Azure IoT Edge 模块部署代码，直接将业务逻辑实现到 IoT Edge 设备。 本教程详细介绍如何创建并部署用于筛选传感器数据的 IoT Edge 模块。 将使用的模拟 IoT Edge 设备是在 [Windows][lnk-tutorial1-win] 或 [Linux][lnk-tutorial1-lin] 快速入门的“在模拟设备上部署 Azure IoT Edge”中创建的。 本教程介绍如何执行下列操作：    
 
 > [!div class="checklist"]
 > * 使用 Visual Studio Code 创建基于 .NET Core 2.0 SDK 的 IoT Edge 模块
@@ -29,18 +29,26 @@ ms.locfileid: "39258938"
 
 在本教程中创建的 IoT Edge 模块可以筛选由设备生成的温度数据。 它只在温度高于指定阈值的情况下，向上游发送消息。 在边缘进行的此类分析适用于减少传递到云中和存储在云中的数据量。 
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
 ## <a name="prerequisites"></a>先决条件
 
-* 已通过 [Linux](quickstart-linux.md) 或 [Windows 设备](quickstart.md)快速入门创建 Azure IoT Edge 设备。
-* IoT Edge 设备的主键连接字符串。  
+Azure IoT Edge 设备：
+
+* 可以按照适用于 [Linux](quickstart-linux.md) 或 [Windows 设备](quickstart.md)的快速入门中的步骤，将开发计算机或虚拟机用作 Edge 设备。
+
+云资源：
+
+* Azure 中的标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。 
+
+开发资源：
+
 * [Visual Studio Code](https://code.visualstudio.com/)。 
 * [适用于 Visual Studio Code 的 C# 扩展（由 OmniSharp 提供支持）](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。
 * 适用于 Visual Studio Code 的 [Azure IoT Edge 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)。 
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
-* 开发计算机上的 [Docker CE](https://docs.docker.com/install/)。 
+* [Docker CE](https://docs.docker.com/install/)
 
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
@@ -104,16 +112,6 @@ ms.locfileid: "39258938"
        public int humidity {get; set;}         
     }
     ```
-
-8. **Init** 方法声明模块要使用的通信协议。 将 MQTT 设置替换为 AMPQ 设置。 
-
-   ```csharp
-   // MqttTransportSettings mqttSetting = new MqttTransportSettings(TransportType.Mqtt_Tcp_Only);
-   // ITransportSettings[] settings = { mqttSetting };
-
-   AmqpTransportSettings amqpSetting = new AmqpTransportSettings(TransportType.Amqp_Tcp_Only);
-   ITransportSettings[] settings = {amqpSetting};
-   ```
 
 8. 在 Init 方法中，此代码创建并配置 ModuleClient 对象。 该对象允许模块连接到本地 Azure IoT Edge 运行时，发送并接收消息。 在 **Init** 方法中使用的连接字符串由 IoT Edge 运行时提供给模块。 创建 **ModuleClient** 后，代码将从模块孪生的所需属性中读取 **temperatureThreshold** 值。 代码注册一个回调，以通过 **input1** 终结点从 IoT Edge 中心接收消息。 将 **SetInputMessageHandlerAsync** 方法替换为新方法，并添加 **SetDesiredPropertyUpdateCallbackAsync** 方法用于更新所需属性。 若要进行此更改，请使用以下代码替换 Init 方法的最后一行 ：
 

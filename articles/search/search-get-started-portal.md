@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: 124963359d0b2d4050156958de195e47b9331c92
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 0eb6701a7ea08c2dd63bd8b5d7d7c805e6eb1376
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007978"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365079"
 ---
 # <a name="tutorial-use-built-in-tools-for-azure-search-indexing-and-queries"></a>教程：使用内置工具在 Azure 搜索中进行索引编制和查询
 
@@ -135,7 +135,7 @@ ms.locfileid: "39007978"
 
 + **search** 参数用于输入关键字来执行全文搜索，在本例中，将返回华盛顿州金县的结果列表，其中包含文档中任何可搜索字段内的 *Seattle*。 
 
-+ **搜索浏览器**以 JSON 格式返回结果，如果文档采用密集结构，这种结果将很冗长且难以阅读。 这是有意而为的；整个文档的可见性是一个重要因素，尤其是在测试期间。 为了改善用户体验，需要编写代码用于[处理搜索结果](search-pagination-page-layout.md)，以提供重要元素。
++ **搜索浏览器**以 JSON 格式返回结果，如果文档采用密集结构，这种结果将很冗长且难以阅读。 这是有意而为的；整个文档的可见性对于开发来说很重要，尤其是在测试期间。 为了改善用户体验，需要编写代码用于[处理搜索结果](search-pagination-page-layout.md)，以提供重要元素。
 
 + 文档由标记为在索引中“可检索”的所有字段构成。 若要在门户中查看索引属性，请在“索引”磁贴中单击“realestate-us-sample”。
 

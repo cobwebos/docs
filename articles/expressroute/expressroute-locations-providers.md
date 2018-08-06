@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/23/2018
+ms.date: 07/26/2018
 ms.author: jaredro
-ms.openlocfilehash: 1a6a9eff6af6b2b87eaa543dea78bc77b623dc23
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: e5cb701295854c6908af04b5de5aec2ca5bd978c
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216118"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285153"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -61,7 +61,7 @@ ms.locfileid: "39216118"
 
 | **地缘政治区域** | **Azure 区域** | **ExpressRoute 位置** |
 | --- | --- | --- |
-| **美国政府云** |US Gov 爱荷华州、US Gov 弗吉尼亚州、US DoD 中部、US DoD 东部  |芝加哥、达拉斯、纽约、凤凰城、圣安东尼奥、西雅图、硅谷、华盛顿特区 |
+| **美国政府云** |US Gov 亚利桑那州、US Gov 爱荷华州、US Gov 德克萨斯州、US Gov 弗吉尼亚州、US DoD 中部、US DoD 东部  |芝加哥、达拉斯、纽约、凤凰城、圣安东尼奥、西雅图、硅谷、华盛顿特区 |
 | **中国** |中国北部、中国东部 |北京、上海 |
 | **德国** |德国中部、德国东部 |柏林、法兰克福 |
 
@@ -121,7 +121,7 @@ ms.locfileid: "39216118"
 | --- | --- |
 | **芝加哥** |AT&T NetBond、Equinix、Level 3 Communications、Verizon |
 | **达拉斯** |Equinix、Megaport、Verizon |
-| **纽约** |Equinix、Level 3 Communications+、Verizon |
+| **纽约** |Equinix、CenturyLink Cloud Connect、Verizon |
 | **Phoenix** | CenturyLink Cloud Connect |
 | **圣安东尼奥** | Megaport |
 | **硅谷** | Equinix、Level 3 Communications |

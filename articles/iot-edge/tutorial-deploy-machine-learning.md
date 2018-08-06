@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure IoT Edge 部署 Azure 机器学习 | Microsoft 文档
-description: 将 Azure 机器学习作为一个模块部署到 Edge 设备
+description: 在本教程中，请将 Azure 机器学习作为一个模块部署到边缘设备
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 62ca816f7bdc183727eb22806ba9e733c8b97c44
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: a1b34fe75f76d5f615ab33069f3012f22dc7ef2e
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173499"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413067"
 ---
-# <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>将 Azure 机器学习作为 IoT Edge 模块进行部署 - 预览版
+# <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>教程：将 Azure 机器学习作为 IoT Edge 模块（预览版）进行部署
 
 可以使用 IoT Edge 模块部署代码，以直接将业务逻辑实现到 IoT Edge 设备。 本教程逐步演示如何部署 Azure 机器学习模块，以便根据模拟的机器温度数据预测设备故障时间。 有关 IoT Edge 上的 Azure ML 的详细信息，请参阅 [Azure 机器学习文档](../machine-learning/desktop-workbench/use-azure-iot-edge-ai-toolkit.md)。
 
@@ -33,15 +33,23 @@ ms.locfileid: "39173499"
 >[!NOTE]
 >Azure IoT Edge 上的 Azure 机器学习模块为公开预览版。 
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+
 ## <a name="prerequisites"></a>先决条件
 
-若要测试在本教程中生成的机器学习模块，需要一个 IoT Edge 设备。 可以使用在 [Linux](quickstart-linux.md) 或 [Windows 设备](quickstart.md)的快速入门中配置的设备。 
+Azure IoT Edge 设备：
 
-Azure 机器学习模块不支持 ARM 处理器。
+* 可以按照适用于 [Linux](quickstart-linux.md) 或 [Windows 设备](quickstart.md)的快速入门中的步骤，将开发计算机或虚拟机用作 Edge 设备。
+* Azure 机器学习模块不支持 ARM 处理器。
 
-在开发计算机上具备以下先决条件： 
+云资源：
+
+* Azure 中的标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。 
+
+开发资源：
 * 一个 Azure 机器学习帐户。 按照[创建 Azure 机器学习帐户和安装 Azure Machine Learning Workbench](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts) 中的说明进行操作。 对于本教程，不需要安装 Workbench 应用程序。 
-* 计算机上的“Azure ML 模型管理”。 若要设置环境并创建帐户，请按照[模型管理设置](../machine-learning/desktop-workbench/deployment-setup-configuration.md)中的说明进行操作。 在设置部署期间，建议尽可能选择本地步骤而非群集。
+* Azure ML 的模型管理。 若要设置环境并创建帐户，请按照[模型管理设置](../machine-learning/desktop-workbench/deployment-setup-configuration.md)中的说明进行操作。 在设置部署期间，建议尽可能选择本地步骤而非群集。
 
 ### <a name="disable-process-identification"></a>禁用进程标识
 
@@ -108,7 +116,7 @@ az ml service create realtime --model-file model.pkl -f iot_score.py -n machinel
 4. 复制“登录服务器”、“用户名”和“密码”的值。  你需要使用这些值来从 Edge 设备访问注册表。
 5. 选择“存储库”
 6. 选择“machinelearningmodule”
-7. 你现在已获得了容器的完整映像路径。 请记下此映像路径供下一部分使用。 它应当类似于以下内容：**<registry_name>.azureacr.io/machinelearningmodule:1**
+7. 你现在已获得了容器的完整映像路径。 请记下此映像路径供下一部分使用。 它应当类似于以下内容：**<registry_name>.azurecr.io/machinelearningmodule:1**
 
 ## <a name="deploy-to-your-device"></a>部署到设备
 

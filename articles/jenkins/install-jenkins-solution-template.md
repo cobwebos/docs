@@ -1,21 +1,19 @@
 ---
 title: 在 Azure 上创建 Jenkins 服务器
 description: 通过 Jenkins 解决方案模板在 Azure Linux 虚拟机上安装 Jenkins，然后生成示例 Java 应用程序。
-author: tomarcher
-manager: rloutlaw
-ms.service: multiple
-ms.workload: web
-ms.devlang: na
-ms.topic: article
-ms.date: 03/12/2018
+ms.topic: quickstart
 ms.author: tarcher
-ms.custom: Jenkins
-ms.openlocfilehash: c9f86ab2536d3c598bb8c7084524395b41f18db0
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+author: tomarcher
+manager: jpconnock
+ms.service: devops
+ms.custom: jenkins
+ms.date: 07/31/2018
+ms.openlocfilehash: af1082d9b7b350f1845d6c8e22108b9238a40f28
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38635452"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390422"
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>通过 Azure 门户在 Azure Linux VM 上创建 Jenkins 服务器
 
@@ -88,6 +86,10 @@ Jenkins 服务器现在已就绪，可以生成代码了。
 ![浏览到要从生成中获取 JAR 文件的工作区](./media/install-jenkins-solution-template/jenkins-access-workspace.png) 
 
 导航到 `complete/build/libs`，确保能够验证生成是否成功的 `gs-spring-boot-0.1.0.jar` 位于其中。 Jenkins 服务器现已就绪，可以在 Azure 中生成你自己的项目了。
+
+## <a name="troubleshooting-the-jenkins-solution-template"></a>排查 Jenkins 解决方案模板问题
+
+如果 Jenkins 解决方案模板出现 Bug，请在 [Jenkins GitHub 存储库](https://github.com/azure/jenkins/issues)中提交问题。
 
 ## <a name="next-steps"></a>后续步骤
 

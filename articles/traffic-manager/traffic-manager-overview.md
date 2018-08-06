@@ -1,123 +1,67 @@
 ---
-title: 什么是流量管理器 | Microsoft 文档
-description: 本文将有助于你了解什么是流量管理器，以及流量管理器是否是适合应用程序的流量路由选择
+title: Azure 流量管理器 | Microsoft Docs
+description: 本文概述了 Azure 流量管理器。 了解它是否是针对应用程序进行用户流量负载均衡的正确选择。
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: timlt
+manager: jeconnoc
 editor: ''
-ms.assetid: 75d5ff9a-f4b9-4b05-af32-700e7bdfea5a
 ms.service: traffic-manager
+customer intent: As an IT admin, I want to learn about Traffic Manager and what I can use it for.
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/15/2017
+ms.date: 07/25/2018
 ms.author: kumud
-ms.openlocfilehash: 50d7f14d0d4234ee98d8a46e903b5f916cb02fab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 236137b87351e3c3a95c1103f7464256f41b9159
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23111825"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397205"
 ---
-# <a name="overview-of-traffic-manager"></a>流量管理器概述
+# <a name="what-is-traffic-manager"></a>什么是流量管理器？
+Azure 流量管理器是一种基于 DNS 的流量负载均衡器，可以在全球 Azure 区域内以最佳方式向服务分发流量，同时提供高可用性和响应性。
 
-使用 Microsoft Azure 流量管理器，可以控制用户流量在不同数据中心内的服务终结点上的分布。 流量管理器支持的服务终结点包括 Azure VM、Web 应用和云服务。 也可将流量管理器用于外部的非 Azure 终结点。
+流量管理器根据流量路由方法和终结点的运行状况，使用 DNS 将客户端请求定向到最合适的服务终结点。 终结点可以是托管在 Azure 内部或外部的任何面向 Internet 的服务。 流量管理器提供多种[流量路由方法](traffic-manager-routing-methods.md)和[终结点监视选项](traffic-manager-monitoring.md)来满足不同的应用程序需求和自动故障转移模型。 流量管理器能够灵活应对故障，包括整个 Azure 区域的故障。
 
-流量管理器根据流量路由方法和终结点的运行状况，使用域名系统 (DNS) 将客户端请求定向到最合适的终结点。 流量管理器提供多种[流量路由方法](traffic-manager-routing-methods.md)和[终结点监视选项](traffic-manager-monitoring.md)来满足不同的应用程序需求和自动故障转移模型。 流量管理器能够灵活应对故障，包括整个 Azure 区域的故障。
+>[!NOTE]
+> Azure 为方案提供了一套完全托管的负载均衡解决方案。 若要寻求传输层安全性 (TLS) 协议终止（“SSL 卸载”）或每个 HTTP/HTTPS 请求的应用层处理，请查看[应用程序网关](../application-gateway/application-gateway-introduction.md)。 若要寻求区域均衡，请查看[负载均衡器](../load-balancer/load-balancer-overview.md)。 端到端场景可从结合所需的解决方案中受益。
 
-## <a name="traffic-manager-benefits"></a>流量管理器优点
+流量管理器附带了以下功能：
 
-流量管理器可帮助你：
+## <a name="increase-application-availability"></a>提高应用程序可用性
 
-* **提高关键应用程序的可用性**
+流量管理器可以监视终结点，在终结点发生故障时提供自动故障转移，实现关键应用程序的高可用性。
+    
+## <a name="improve-application-performance"></a>改善应用程序性能
 
-    流量管理器可以监视终结点，在终结点发生故障时提供自动故障转移，实现应用程序的高可用性。
+在 Azure 中，可以运行位于世界各地的数据中心内的云服务或网站。 流量管理器通过将流量定向到客户端网络延迟最低的终结点，改进应用程序的响应能力。
 
-* **改进高性能应用程序的响应能力**
+## <a name="perform-service-maintenance-without-downtime"></a>在不停机的情况下执行服务维护
 
-    在 Azure 中，可以运行位于世界各地的数据中心内的云服务或网站。 流量管理器通过将流量定向到客户端网络延迟最低的终结点，改进应用程序的响应能力。
+无需停机即可在应用程序上执行计划内的维护操作。 在维护过程中，流量管理器会将流量定向到备用的终结点。
 
-* **在不停机的情况下执行服务维护**
+## <a name="combine-hybrid-applications"></a>组合混合应用程序
 
-    无需停机即可在应用程序上执行计划内的维护操作。 在维护过程中，流量管理器会将流量定向到备用的终结点。
+流量管理器支持外部非 Azure 终结点，因此可以用于混合云部署和本地部署，包括“[云爆发](https://azure.microsoft.com/overview/what-is-cloud-bursting/)”、“云迁移”和“云故障转移”方案。
 
-* **合并本地应用程序和基于云的应用程序**
+## <a name="distribute-traffic-for-complex-deployments"></a>分发复杂部署的流量
 
-    流量管理器支持外部非 Azure 终结点，因此可以用于混合云部署和本地部署，包括“云爆发”、“云迁移”和“云故障转移”方案。
-
-* **分发大型复杂部署的流量**
-
-    使用[嵌套式流量管理器配置文件](traffic-manager-nested-profiles.md)可以合并流量路由方法，创建复杂、灵活的规则来满足更大、更复杂部署的需求。
-
-## <a name="how-traffic-manager-works"></a>流量管理器的工作方式
-
-使用 Azure 流量管理器可以控制流量在应用程序终结点之间的分布。 终结点可以是托管在 Azure 内部或外部的任何面向 Internet 的服务。
-
-流量管理器具有两大优势：
-
-1. 根据某个[流量路由方法](traffic-manager-routing-methods.md)对流量进行分布
-2. [连续监视终结点运行状况](traffic-manager-monitoring.md)，在终结点发生故障时自动进行故障转移
-
-当客户端尝试连接到某个服务时，必须先将该服务的 DNS 名称解析成 IP 地址。 然后，客户端就可以连接到该 IP 地址以访问相关服务。
-
-**需要了解的最重要一点是，流量管理器在 DNS 级别工作。**  流量管理器根据流量路由方法的规则，使用 DNS 将客户端导向到特定的服务终结点。 客户端**直接**连接到选定的终结点。 流量管理器不是代理或网关。 流量管理器看不到流量在客户端与服务之间传递。
-
-### <a name="traffic-manager-example"></a>流量管理器示例
-
-Contoso Corp 开发了一个新的合作伙伴门户。 此门户的 URL 是 https://partners.contoso.com/login.aspx。 该应用程序托管在三个 Azure 区域中。 为了改善可用性并在全球最大程度地提高性能，他们使用流量管理器将客户端流量分布到最靠近的可用终结点。
-
-为了实现此配置，他们完成以下步骤：
-
-1. 部署服务的三个实例。 这些部署的 DNS 名称为“contoso-us.cloudapp.net”、“contoso-eu.cloudapp.net”和“contoso-asia.cloudapp.net”。
-2. 创建一个名为“contoso.trafficmanager.net”的流量管理器配置文件，并将它配置为对三个终结点使用“性能”流量路由方法。
-* 使用 DNS CNAME 记录将虚构域名“partners.contoso.com”配置为指向“contoso.trafficmanager.net”。
-
-![流量管理器 DNS 配置][1]
-
-> [!NOTE]
-> 通过 Azure 流量管理器来使用虚构域时，必须使用 CNAME 将虚构域名指向流量管理器域名。 DNS 标准不允许在域的“顶点”（或根）位置创建 CNAME。 因此，无法为“contoso.com”（有时称为“裸”域）创建 CNAME。 只能为“contoso.com”下的域（例如“www.contoso.com”）创建 CNAME。 为了克服此限制，我们建议通过简单的 HTTP 重定向将针对“contoso.com”的请求定向到某个备用名称（例如“www.contoso.com”）。
-
-### <a name="how-clients-connect-using-traffic-manager"></a>客户端如何使用流量管理器进行连接
-
-沿用前面的示例，当客户端请求页面 https://partners.contoso.com/login.aspx 时，会执行以下步骤来解析 DNS 名称并建立连接：
-
-![使用流量管理器建立连接][2]
-
-1. 客户端向已配置的递归 DNS 服务发送 DNS 查询，以解析名称“partners.contoso.com”。 递归 DNS 服务有时称为“本地 DNS”服务，并不直接托管 DNS 域。 客户端将联系各种权威 DNS 服务的工作负荷转移到 Internet，以便解析 DNS 名称。
-2. 为了解析 DNS 名称，递归 DNS 服务将查找“contoso.com”域的名称服务器。 然后，它会联系这些名称服务器以请求“partners.contoso.com”DNS 记录。 contoso.com DNS 服务器返回指向 contoso.trafficmanager.net 的 CNAME 记录。
-3. 接下来，递归 DNS 服务查找“trafficmanager.net”域的名称服务器，这些服务器由 Azure 流量管理器服务提供。 然后，将针对“contoso.trafficmanager.net”DNS 记录发出的请求发送到这些 DNS 服务器。
-4. 流量管理器名称服务器接收该请求。 终结点的选择依据为：
-
-    - 每个终结点的已配置状态（不返回已禁用的终结点）
-    - 每个终结点的当前运行状况，可通过流量管理器运行状况检查来确定。 有关详细信息，请参阅[流量管理器终结点监视](traffic-manager-monitoring.md)。
-    - 所选的流量路由方法。 有关详细信息，请参阅[流量管理器路由方法](traffic-manager-routing-methods.md)。
-
-5. 选择的终结点以另一个 DNS CNAME 记录的形式返回。 在本例中，假设返回的是 contoso-us.cloudapp.net。
-6. 接下来，递归 DNS 服务将查找“cloudapp.net”域的名称服务器。 它会联系这些名称服务器以请求“contoso-us.cloudapp.net”DNS 记录。 返回的 DNS“A”记录包含位于美国的服务终结点的 IP 地址。
-7. 递归 DNS 服务将结果合并，向客户端返回单个 DNS 响应。
-8. 客户端接收 DNS 结果，并连接到给定的 IP 地址。 客户端直接连接到应用程序服务终结点，而不是通过流量管理器连接。 由于这是一个 HTTPS 终结点，客户端将执行必要的 SSL/TLS 握手，然后针对“/login.aspx”页面发出 HTTP GET 请求。
-
-递归 DNS 服务缓存它所收到的 DNS 响应。 客户端设备上的 DNS 解析程序也会缓存结果。 通过缓存可以加快后续 DNS 查询的响应速度，因为使用的是缓存中的数据，不需要查询其他名称服务器。 缓存的持续时间取决于每个 DNS 记录的“生存时间”(TTL) 属性。 该属性值越小，缓存过期时间就越短，因此访问流量管理器名称服务器所需的往返次数就越多。 如果指定较大的值，则意味着从故障终结点定向流量需要更长的时间。 使用流量管理器，可以将流量管理器 DNS 响应中使用的 TTL 配置为最短 0 秒，最长 2,147,483,647 秒（符合[ RFC-1035 ](https://www.ietf.org/rfc/rfc1035.txt)的最大范围），从而可选择使应用程序的需求实现最佳平衡的值。
+使用[嵌套式流量管理器配置文件](traffic-manager-nested-profiles.md)可以合并流量路由方法，创建复杂、灵活且可缩放的规则来满足更大、更复杂部署的需求。
 
 ## <a name="pricing"></a>定价
 
 有关定价信息，请参阅[流量管理器定价](https://azure.microsoft.com/pricing/details/traffic-manager/)。
 
-## <a name="faq"></a>常见问题
-
-有关流量管理器的常见问题解答，请参阅[流量管理器常见问题解答](traffic-manager-FAQs.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解流量管理器[终结点监视和自动故障转移](traffic-manager-monitoring.md)。
+- 了解如何[创建流量管理器配置文件](traffic-manager-create-profile.md)。
+- 了解[流量管理器工作原理](traffic-manager-how-it-works.md)。
+- 查看流量管理器[常见问题解答](traffic-manager-FAQs.md)。
 
-详细了解流量管理器[流量路由方法](traffic-manager-routing-methods.md)。
 
-了解 Azure 的一些其他关键[网络功能](../networking/networking-overview.md)。
 
-<!--Image references-->
-[1]: ./media/traffic-manager-how-traffic-manager-works/dns-configuration.png
-[2]: ./media/traffic-manager-how-traffic-manager-works/flow.png
 

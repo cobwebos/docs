@@ -1,25 +1,24 @@
 ---
 title: 教程 - 使用 Team Services 通过 Jenkins 实现到 Azure VM 的 CI/CD | Microsoft Docs
 description: 本教程介绍如何从 Visual Studio Team Services 或 Microsoft Team Foundation Server 中的 Release Management，通过使用 Jenkins 将 Node.js 应用设置为持续集成 (CI) 和持续部署 (CD) 到 Azure VM
-author: ahomer
-manager: douge
-editor: tysonn
+author: tomarcher
+manager: jpconnock
 tags: azure-resource-manager
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: devops
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/19/2017
-ms.author: ahomer
-ms.custom: mvc
-ms.openlocfilehash: 6b74ab4d97df7e1e6b9bec8e3bcb150c99bd5b5c
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.date: 07/31/2018
+ms.author: tarcher
+ms.custom: jenkins
+ms.openlocfilehash: d3a4a81f60f4e70c2c7576c3176e2b4d6de08d04
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903445"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390589"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-visual-studio-team-services"></a>教程：使用 Jenkins 和 Visual Studio Team Services 将应用部署到 Azure 中的 Linux 虚拟机
 
@@ -169,6 +168,10 @@ ms.locfileid: "37903445"
 6. 转到源 Git 存储库，使用某些已更改的文本来修改文件 app/views/index.jade 中 h1 标题的内容。
 7. 提交更改。
 8. 数分钟后，你将看到 Team Services 或 Team Foundation Server 的“发布”页上创建了一个新发布。 打开此发布可以看到部署正在进行。 祝贺你！
+
+## <a name="troubleshooting-the-jenkins-plugin"></a>排查 Jenkins 插件问题
+
+如果 Jenkins 插件出现任何 bug，请在 [Jenkins JIRA](https://issues.jenkins-ci.org/) 中提出特定组件的问题。
 
 ## <a name="next-steps"></a>后续步骤
 

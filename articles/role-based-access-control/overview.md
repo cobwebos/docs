@@ -11,21 +11,21 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/02/2018
+ms.date: 07/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4dcfb71e0adb05922603715e4dbcbdb243305927
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: a2e0bf35f73a355197f821f7cce12294f7b35576
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37438188"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344743"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>什么是基于角色的访问控制 (RBAC)？
 
 对于任何使用云的组织而言，云资源的访问权限管理都是一项重要功能。 基于角色的访问控制 (RBAC) 可帮助你管理谁有权访问 Azure 资源、他们可以对这些资源执行哪些操作以及他们有权访问哪些区域。
 
-RBAC 是在 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)基础上构建的授权系统，针对 Azure 中的资源提供精细的访问权限管理。 使用 RBAC，可以在团队中实现职责分离，仅向用户授予执行作业所需的访问权限。 无需向每个人授予 Azure 订阅或资源的无限制权限，可以仅允许在特定的范围执行某些操作。
+RBAC 是在 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)基础上构建的授权系统，针对 Azure 中的资源提供精细的访问权限管理。
 
 ## <a name="what-can-i-do-with-rbac"></a>RBAC 的作用是什么？
 
@@ -35,6 +35,14 @@ RBAC 是在 [Azure 资源管理器](../azure-resource-manager/resource-group-ove
 - 允许 DBA 组管理订阅中的 SQL 数据库
 - 允许某个用户管理资源组中的所有资源，例如虚拟机、网站和子网
 - 允许某个应用程序访问资源组中的所有资源
+
+## <a name="best-practice-for-using-rbac"></a>使用 RBAC 的最佳做法
+
+使用 RBAC，可以在团队中实现职责分离，仅向用户授予执行作业所需的访问权限。 无需向每个人授予 Azure 订阅或资源的无限制权限，可以仅允许在特定的范围执行某些操作。
+
+规划访问控制策略时，最佳做法是授予用户完成工作所需的最低权限。 下图显示了与 RBAC 使用有关的建议模式。
+
+![RBAC 和最小特权](./media/overview/rbac-least-privilege.png)
 
 ## <a name="how-rbac-works"></a>RBAC 的工作原理
 

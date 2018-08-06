@@ -9,14 +9,14 @@ services: iot-accelerators
 ms.date: 07/19/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: acff6586f35f1c86cba8d519586d72247255ccd7
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 3138f0ebb6316e69c873a37d479ddc0279a361ef
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159377"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285065"
 ---
-# <a name="troubleshoot-and-fix-device-issues"></a>进行故障排除并修复设备问题
+# <a name="tutorial-troubleshoot-and-fix-device-issues"></a>教程：排查并修复设备问题
 
 在本教程中，我们将使用远程监视解决方案加速器来识别和解决联网 IoT 设备的问题。 我们将使用解决方案加速器仪表板中的警报来识别问题，然后运行远程作业来解决这些问题。
 
@@ -30,7 +30,7 @@ Contoso 正在现场测试某个新的**原型**设备。 在测试期间，Cont
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-[!INCLUDE [iot-iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
+[!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
 ## <a name="investigate-an-alert"></a>调查警报
 
@@ -80,7 +80,7 @@ Contoso 正在现场测试某个新的**原型**设备。 在测试期间，Cont
 
 [![查看温度下降情况](./media/iot-accelerators-remote-monitoring-maintain/jobresult-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/jobresult-expanded.png#lightbox)
 
-[!INCLUDE [iot-iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
+[!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

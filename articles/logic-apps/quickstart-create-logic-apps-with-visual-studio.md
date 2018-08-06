@@ -6,17 +6,17 @@ ms.service: logic-apps
 author: ecfan
 ms.author: estfan
 manager: jeconnoc
-ms.date: 03/15/2018
+ms.date: 07/31/2018
 ms.topic: quickstart
 ms.custom: mvc
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: a35c46bd67a157416844c4054b75f993304298b4
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 92f4fb57e3bd1f3ee61625256d661980d6a11275
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300746"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39367124"
 ---
 # <a name="quickstart-create-and-automate-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>快速入门：使用 Azure 逻辑应用创建并自动执行任务、流程和工作流 - Visual Studio
 
@@ -39,7 +39,8 @@ ms.locfileid: "35300746"
   * <a href="https://www.visualstudio.com/downloads" target="_blank">Visual Studio 2017 或 Visual Studio 2015 - Community Edition 或更高版本</a>。 
   本快速入门使用免费的 Visual Studio Community 2017。
 
-  * <a href="https://azure.microsoft.com/downloads/" target="_blank">Azure SDK（2.9.1 或更高版本）</a>和 <a href="https://github.com/Azure/azure-powershell#installation" target="_blank">Azure PowerShell</a>
+  * <a href="https://azure.microsoft.com/downloads/" target="_blank">用于 .NET 的 Microsoft Azure SDK（2.9.1 或更高版本）</a>和 <a href="https://github.com/Azure/azure-powershell#installation" target="_blank">Azure PowerShell</a>。 
+  详细了解<a href="https://docs.microsoft.com/dotnet/azure/dotnet-tools?view=azure-dotnet">用于 .NET 的 Azure SDK</a>。
 
   * <a href="https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio-18551" target="_blank">适用于 Visual Studio 2017 的 Azure 逻辑应用工具</a>或 <a href="https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio" target="_blank">Visual Studio 2015 版</a>
   
@@ -91,7 +92,7 @@ ms.locfileid: "35300746"
 
    Visual Studio 需要你提供 Azure 订阅和资源组才能创建和部署与逻辑应用和连接相关联的资源。 
 
-   | 设置 | 示例值 | 说明 | 
+   | 设置 | 示例值 | Description | 
    | ------- | ------------- | ----------- | 
    | 用户配置文件列表 | Contoso <br> jamalhartnett@contoso.com | 默认为曾经用来登录的帐户 | 
    | **订阅** | 即用即付 <br> (jamalhartnett@contoso.com) | Azure 订阅的名称以及关联的帐户 |
@@ -107,7 +108,7 @@ ms.locfileid: "35300746"
 
 接下来请添加一个[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)，该触发器在出现新的 RSS 源项时触发。 每个逻辑应用都必须从触发器开始，该触发器在特定条件得到满足的情况下触发。 每当触发器触发时，逻辑应用引擎就会创建一个逻辑应用实例来运行工作流。
 
-1. 在逻辑应用设计器的搜索框中输入“rss”。 选择触发器“RSS - 发布源项时”
+1. 在逻辑应用设计器的搜索框中输入“rss”。 选择触发器“发布源项时”
 
    ![通过添加触发器和操作来生成逻辑应用](./media/quickstart-create-logic-apps-with-visual-studio/add-trigger-logic-app.png)
 
@@ -129,7 +130,7 @@ ms.locfileid: "35300746"
 
 在运行逻辑应用之前，请将该应用从 Visual Studio 部署到 Azure，只需执行数个步骤即可。
 
-1. 在解决方案资源管理器的项目快捷菜单中，选择“部署” > “新建...”。如果出现系统提示，请使用 Azure 帐户登录。
+1. 在解决方案资源管理器的项目快捷菜单中，选择“部署” > “新建”。 如果出现系统提示，请使用 Azure 帐户登录。
 
    ![创建逻辑应用部署](./media/quickstart-create-logic-apps-with-visual-studio/create-logic-app-deployment.png)
 
@@ -166,9 +167,10 @@ ms.locfileid: "35300746"
 
 1. 使用创建逻辑应用时所使用的帐户登录到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>。 
 
-2. 在 Azure 主菜单上选择“资源组”。 选择逻辑应用的资源组。
+2. 在 Azure 主菜单上选择“资源组”。
+选择逻辑应用的资源组，然后选择“概览”。
 
-3. 选择“删除资源组”。 输入资源组名称作为确认，然后选择“删除”。
+3. 在“概述”页面上，选择“删除资源组”。 输入资源组名称作为确认，然后选择“删除”。
 
    ![“资源组”>“概览”>“删除资源组”](./media/quickstart-create-logic-apps-with-visual-studio/delete-resource-group.png)
 

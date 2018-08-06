@@ -1,22 +1,19 @@
 ---
 title: 使用 Azure VM 代理缩放 Jenkins 部署。
 description: 使用安装了 Jenkins Azure VM 代理插件的 Azure 虚拟机将额外的容量添加到 Jenkins 管道。
-services: multiple
-documentationcenter: ''
-author: rloutlaw
-manager: justhe
-ms.service: multiple
-ms.workload: multiple
-ms.topic: article
-ms.date: 8/25/2017
-ms.author: mlearned
-ms.custom: Jenkins
-ms.openlocfilehash: 4d45ed14be499ed927f1433e134a029066146eea
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.topic: tutorial
+ms.author: tarcher
+author: tomarcher
+manager: jpconnock
+ms.service: devops
+ms.custom: jenkins
+ms.date: 07/31/2018
+ms.openlocfilehash: 7f3facbc1bca51061d49ca99778c60d58c525144
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29392634"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39391268"
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>使用 Azure VM 代理缩放 Jenkins 部署以满足需求
 
@@ -72,7 +69,7 @@ ms.locfileid: "29392634"
         "tenant": "CCCCCCCC-CCCC-CCCC-CCCCCCCCCCC"
     }
     ```
-    d.单击“下一步”。 将服务主体的凭据输入到“添加凭据”对话框。 如果不知道 Azure 订阅 ID，则可以从 CLI 中查询：
+    d. 将服务主体的凭据输入到“添加凭据”对话框。 如果不知道 Azure 订阅 ID，则可以从 CLI 中查询：
      
      ```azurecli-interactive
      az account list
@@ -142,6 +139,10 @@ ms.locfileid: "29392634"
 3. 生成完成后，转到“控制台输出”。 可看到该生成在 Azure 代理上远程执行。
 
 ![控制台输出](./media/jenkins-azure-vm-agents/console-output.png)
+
+## <a name="troubleshooting-the-jenkins-plugin"></a>排查 Jenkins 插件问题
+
+如果 Jenkins 插件出现任何 bug，请在 [Jenkins JIRA](https://issues.jenkins-ci.org/) 中提出特定组件的问题。
 
 ## <a name="next-steps"></a>后续步骤
 
