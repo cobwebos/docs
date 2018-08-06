@@ -11,19 +11,25 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/05/2018
+ms.date: 07/27/2018
 ms.author: shlo
-ms.openlocfilehash: 02f84047d0e1d3e73fac991250da814176f3995d
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: c42d6235af8a5ab27fbd550b63c301fd9c6f15b1
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049918"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325027"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>创建按翻转窗口运行管道的触发器
 本文提供了创建、启动和监视翻转窗口触发器的步骤。 有关触发器和支持的类型的一般信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md)。
 
 翻转窗口触发器是一类可以在保留状态的同时按周期性的时间间隔（从指定的开始时间算起）触发的触发器。 翻转窗口是一系列固定大小、非重叠且连续的时间间隔。 翻转窗口触发器与管道存在一对一关系，一个这样的触发器只能引用一个管道。
+
+## <a name="data-factory-ui"></a>数据工厂 UI
+
+若要在 Azure 门户中创建翻转窗口触发器，请选择“触发器”>“翻转窗口”>“下一步”，然后配置定义翻转窗口的属性。
+
+![在 Azure 门户中创建翻转窗口触发器](media/how-to-create-tumbling-window-trigger/create-tumbling-window-trigger.png)
 
 ## <a name="tumbling-window-trigger-type-properties"></a>翻转窗口触发器类型属性
 翻转窗口具有以下触发器类型属性：
@@ -70,7 +76,7 @@ ms.locfileid: "37049918"
 
 下表概述了与翻转窗口触发器中的循环和计划相关的主要 JSON 元素：
 
-| JSON 元素 | 说明 | Type | 允许的值 | 必选 |
+| JSON 元素 | Description | Type | 允许的值 | 必选 |
 |:--- |:--- |:--- |:--- |:--- |
 | type | 触发器的类型。 类型为固定值“TumblingWindowTrigger”。 | String | "TumblingWindowTrigger" | 是 |
 | **runtimeState** | 触发器运行时的当前状态。<br/>**注意**：此元素是 \<readOnly>。 | String | “Started”、“Stopped”、“Disabled” | 是 |

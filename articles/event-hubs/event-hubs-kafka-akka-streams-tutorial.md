@@ -1,5 +1,5 @@
 ---
-title: 将 Akka Streams 与用于 Kafka 生态系统的 Azure 事件中心配合使用 | Microsoft Docs
+title: 将 Akka Streams 与适用于 Apache Kafka 的 Azure 事件中心配合使用 | Microsoft Docs
 description: 将 Akka Streams 连接到已启用 Kafka 的事件中心
 services: event-hubs
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 06/06/2018
 ms.author: bahariri
-ms.openlocfilehash: 9db27340a2210ea0be0564b15241952477e592ba
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: f6671e05c53b8be2e06eb969adc8a4d5736aff37
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35302326"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284428"
 ---
-# <a name="using-akka-streams-with-event-hubs-for-kafka-ecosystem"></a>将 Akka Streams 与用于 Kafka 生态系统的事件中心配合使用
+# <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>将 Akka Streams 与适用于 Apache Kafka 的事件中心配合使用
 
 使用 Apache Kafka 的主要优势之一是它可连接的框架的生态系统。 已启用 Kafka 的事件中心将 Kafka 的灵活性与 Azure 生态系统的可伸缩性、一致性和支持结合在一起。
 
-本教程演示如何在不更改协议客户端或运行自己的群集的情况下，将 Akka Streams 连接到已启用 Kafka 的事件中心。 用于 Kafka 生态系统的 Azure 事件中心支持 [Apache Kafka 版本 1.0](https://kafka.apache.org/10/documentation.html)。
+本教程演示如何在不更改协议客户端或运行自己的群集的情况下，将 Akka Streams 连接到已启用 Kafka 的事件中心。 适用于 Kafka 的 Azure 事件中心支持 [Apache Kafka 版本 1.0](https://kafka.apache.org/10/documentation.html)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -134,6 +134,6 @@ mvn exec:java -Dexec.mainClass="AkkaTestConsumer"
 ## <a name="next-steps"></a>后续步骤
 
 * [了解事件中心](event-hubs-what-is-event-hubs.md)
-* [了解用于 Kafka 生态系统的事件中心](event-hubs-for-kafka-ecosystem-overview.md)
+* [了解适用于 Kafka 的事件中心](event-hubs-for-kafka-ecosystem-overview.md)
 * 使用 [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) [将事件从本地 Kafka 流式传输到云端已启用 Kafka 的事件中心。](event-hubs-kafka-mirror-maker-tutorial.md)
 * 了解如何使用[本机 Kafka 应用程序](event-hubs-quickstart-kafka-enabled-event-hubs.md)或 [Apache Flink](event-hubs-kafka-flink-tutorial.md) 流式传输到已启用 Kafka 的事件中心

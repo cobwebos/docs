@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7a1b6aa9afd26116253482a2e1a9c6a25bdf3c55
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 57d017e2320e5cfea15f1716bc3b6518606e2ea4
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441567"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282233"
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>使用门户创建可访问资源的 Azure Active Directory 应用程序和服务主体
 
-当代码需要访问或修改资源时，必须设置 Azure Active Directory (AD) 应用程序。 将所需的权限分配给 AD 应用程序。 这种方法优于在自己的凭据下运行应用，因为可以将自己未拥有的权限分配给应用标识。 通常情况下，这些权限仅限于应用需执行的操作。
+当代码需要访问或修改资源时，必须设置 Azure Active Directory (AD) 应用程序。 可以将所需的权限分配给 AD 应用程序。 这种方法优于在自己的凭据下运行应用，因为可以将自己未拥有的权限分配给应用标识。 通常情况下，这些权限仅限于应用需执行的操作。
 
 本文介绍了如何通过门户执行这些步骤。 重点介绍单租户应用程序，其中应用程序只应在一个组织内运行。 通常会将单租户应用程序作为在组织中运行的业务线应用程序使用。
 
@@ -156,7 +156,7 @@ ms.locfileid: "37441567"
 
    ![选择添加](./media/resource-group-create-service-principal-portal/select-add.png)
 
-1. 选择要分配到应用程序的角色。 下图显示“读者”角色。
+1. 选择要分配到应用程序的角色。 为了允许应用程序执行诸如**重新启动**、**启动**和**停止**实例之类的操作，必须选择**参与者**角色。 下图显示“读者”角色。
 
    ![选择角色](./media/resource-group-create-service-principal-portal/select-role.png)
 

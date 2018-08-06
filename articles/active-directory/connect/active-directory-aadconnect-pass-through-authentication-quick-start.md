@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 280d62f127c333ff195e921de380721170fd6a96
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 1b5640b790b07050336a990a06b66e5f89fcf768
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214976"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308603"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory 直通身份验证：快速入门
 
@@ -45,7 +45,7 @@ ms.locfileid: "39214976"
 ### <a name="in-your-on-premises-environment"></a>在本地环境中
 
 1. 标识运行 Windows Server 2012 R2 或更高版本的服务器，以在其上运行 Azure AD Connect。 将该服务器添加到与需要验证其密码的用户同一 Active Directory 林中。
-2. 在上一步中标识的服务器上安装[最新版 Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)。 如果已在运行 Azure AD Connect，请确保其版本为 1.1.644.0 或更高版本。
+2. 在上一步中标识的服务器上安装[最新版 Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)。 如果已在运行 Azure AD Connect，请确保其版本为 1.1.750.0 或更高版本。
 
     >[!NOTE]
     >Azure AD Connect 版本 1.1.557.0、1.1.558.0、1.1.561.0 和 1.1.614.0 具有密码哈希同步相关问题。 如果不打算将密码哈希同步与直通身份验证结合使用，请参阅 [Azure AD Connect 发行说明](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470)了解详细信息。
@@ -73,7 +73,7 @@ ms.locfileid: "39214976"
 启用通过 [Azure AD Connect](active-directory-aadconnect.md) 进行直通身份验证。
 
 >[!IMPORTANT]
->可在 Azure AD Connect 主服务器或暂存服务器上启用直通身份验证。 建议从主服务器启用。
+>可在 Azure AD Connect 主服务器或暂存服务器上启用直通身份验证。 强烈建议从主服务器启用。 如果将来要设置 Azure AD Connect 暂存服务器，**必须**继续选择直通身份验证作为登录选项；选择另一个选项将在租户上**禁用**直通身份验证并覆盖主服务器中的设置。
 
 若是首次安装 Azure AD Connect，请选择[自定义安装路径](active-directory-aadconnect-get-started-custom.md)。 在“用户登录”页面，选择“直通身份验证”作为“登录方法”。 成功完成上述步骤后，将在 Azure AD Connect 所在的同一服务器上安装直通身份验证代理。 此外，还会在租户中启用直通身份验证功能。
 

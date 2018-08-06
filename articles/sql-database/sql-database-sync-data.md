@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: 81616522f479175dc58188bd6acc4db4f9007756
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 042db9bcadb470b2dc5e0095072e4ca06747ec5d
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069364"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283618"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>使用 SQL 数据同步跨多个云和本地数据库同步数据
 
@@ -117,7 +117,9 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 
 -   表不能包含非主键标识列。
 
--   主键不能有 datetime 数据类型。
+-   主键不能具有以下数据类型：sql_variant、binary、varbinary、image、xml。 
+
+-   使用以下数据类型作为主键时请小心谨慎，因为支持的精度仅到秒：time、datetime、datetime2、datetimeoffset。
 
 -   对象（数据库、表和列）的名称不能包含可打印字符句点 (.)、左方括号 ([) 或右方括号 (])。
 
@@ -131,7 +133,7 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 
 -   XMLSchemaCollection（支持 XML）
 
--   Cursor、Timestamp、Hierarchyid
+-   Cursor、RowVersion、Timestamp、Hierarchyid
 
 #### <a name="unsupported-column-types"></a>不支持的列类型
 

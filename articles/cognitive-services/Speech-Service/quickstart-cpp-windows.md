@@ -1,25 +1,26 @@
 ---
-title: 快速入门：使用认知服务语音 SDK 在 Windows 桌面上的 C++ 中识别语音 | Microsoft Docs
+title: 快速入门：使用认知服务语音 SDK 在 Windows 桌面上的 C++ 中识别语音
 titleSuffix: Microsoft Cognitive Services
 description: 了解如何使用认知服务语音 SDK 在 Windows 桌面上的 C++ 中识别语音
 services: cognitive-services
 author: wolfma61
-manager: onano
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 4a8c5f7053c1976233bf9de6a0c142885b73c8aa
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 7c93f9f450cc2d244a0d716401171cde02abf70b
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071192"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39324565"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-windows-desktop-using-the-speech-sdk"></a>快速入门：使用语音 SDK 在 Windows 桌面上的 C++ 中识别语音
 
-介绍了如何为 Windows 桌面创建使用语音 SDK 且基于 C++ 的控制台应用程序。
+[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
+
+介绍了如何为 Windows 桌面创建使用语音 SDK 且基于 C++-的控制台应用程序。
 该应用程序基于 [Microsoft 认知服务语音 SDK NuGet 包](https://aka.ms/csspeech/nuget)和 Microsoft Visual Studio 2017。
 
 ## <a name="prerequisites"></a>先决条件
@@ -94,4 +95,4 @@ ms.locfileid: "39071192"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 访问[示例页](samples.md)来查看更多示例。
+* [获取我们的示例](speech-sdk.md#get-the-samples)

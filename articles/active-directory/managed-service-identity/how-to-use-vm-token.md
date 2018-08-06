@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: e564f48b4b90cfcaa72ed51d5f210a71a4980360
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: ee4702733e775051cbbcace109bd1a7ffdf50e9c
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902939"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325449"
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-token-acquisition"></a>如何使用 Azure VM 托管服务标识 (MSI) 获取令牌 
 
@@ -49,6 +49,7 @@ ms.locfileid: "37902939"
 |  |  |
 | -------------- | -------------------- |
 | [使用 HTTP 获取令牌](#get-a-token-using-http) | MSI 令牌终结点的协议详细信息 |
+| [使用用于 .NET 的 Microsoft.Azure.Services.AppAuthentication 库获取令牌](#get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net) | 从 .NET 客户端使用 Microsoft.Azure.Services.AppAuthentication 库的示例
 | [使用 C# 获取令牌](#get-a-token-using-c) | 从 C# 客户端使用 MSI REST 终结点的示例 |
 | [使用 Go 获取令牌](#get-a-token-using-go) | 从 Go 客户端使用 MSI REST 终结点的示例 |
 | [使用 Azure PowerShell 获取令牌](#get-a-token-using-azure-powershell) | 从 PowerShell 客户端使用 MSI REST 终结点的示例 |
@@ -67,13 +68,15 @@ ms.locfileid: "37902939"
 GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
 ```
 
-| 元素 | 说明 |
+| 元素 | Description |
 | ------- | ----------- |
 | `GET` | HTTP 谓词，指示想要从终结点检索数据。 在本例中，该数据为 OAuth 访问令牌。 | 
 | `http://169.254.169.254/metadata/identity/oauth2/token` | 实例元数据服务的 MSI 终结点。 |
 | `api-version`  | 查询字符串参数，指示 IMDS 终结点的 API 版本。 请使用 API `2018-02-01` 或更高版本。 |
 | `resource` | 一个查询字符串参数，表示目标资源的应用 ID URI。 它也会显示在所颁发令牌的 `aud`（受众）声明中。 本示例请求一个用于访问 Azure 资源管理器的、应用 ID URI 为 https://management.azure.com/ 的令牌。 |
-| `Metadata` | 一个 HTTP 请求标头字段，MSI 需要使用该元素来缓解服务器端请求伪造 (SSRF) 攻击。 必须将此值设置为“true”（全小写）。
+| `Metadata` | 一个 HTTP 请求标头字段，MSI 需要使用该元素来缓解服务器端请求伪造 (SSRF) 攻击。 必须将此值设置为“true”（全小写）。 |
+| `object_id` | （可选）一个查询字符串参数，指示要将此令牌用于的托管标识的 object_id。 如果 VM 有用户分配的多个托管标识，则为必需的。|
+| `client_id` | （可选）一个查询字符串参数，指示要将此令牌用于的托管标识的 client_id。 如果 VM 有用户分配的多个托管标识，则为必需的。|
 
 使用托管服务标识 (MSI) VM 扩展终结点（即将弃用）的示例请求：
 
@@ -82,12 +85,14 @@ GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.
 Metadata: true
 ```
 
-| 元素 | 说明 |
+| 元素 | Description |
 | ------- | ----------- |
 | `GET` | HTTP 谓词，指示想要从终结点检索数据。 在本例中，该数据为 OAuth 访问令牌。 | 
 | `http://localhost:50342/oauth2/token` | MSI 终结点，其中，50342 是可配置的默认端口。 |
 | `resource` | 一个查询字符串参数，表示目标资源的应用 ID URI。 它也会显示在所颁发令牌的 `aud`（受众）声明中。 本示例请求一个用于访问 Azure 资源管理器的、应用 ID URI 为 https://management.azure.com/ 的令牌。 |
-| `Metadata` | 一个 HTTP 请求标头字段，MSI 需要使用该元素来缓解服务器端请求伪造 (SSRF) 攻击。 必须将此值设置为“true”（全小写）。
+| `Metadata` | 一个 HTTP 请求标头字段，MSI 需要使用该元素来缓解服务器端请求伪造 (SSRF) 攻击。 必须将此值设置为“true”（全小写）。|
+| `object_id` | （可选）一个查询字符串参数，指示要将此令牌用于的托管标识的 object_id。 如果 VM 有用户分配的多个托管标识，则为必需的。|
+| `client_id` | （可选）一个查询字符串参数，指示要将此令牌用于的托管标识的 client_id。 如果 VM 有用户分配的多个托管标识，则为必需的。|
 
 
 示例响应：
@@ -106,7 +111,7 @@ Content-Type: application/json
 }
 ```
 
-| 元素 | 说明 |
+| 元素 | Description |
 | ------- | ----------- |
 | `access_token` | 请求的访问令牌。 调用受保护 REST API 时，该令牌将作为“持有者”令牌嵌入在 `Authorization` 请求标头字段中，使 API 能够对调用方进行身份验证。 | 
 | `refresh_token` | MSI 不使用它。 |
@@ -115,6 +120,26 @@ Content-Type: application/json
 | `not_before` | 访问令牌生效且可被接受的时间范围。 该日期表示为自“1970-01-01T0:0:0Z UTC”开始的秒数（对应于令牌的 `nbf` 声明）。 |
 | `resource` | 请求访问令牌时所针对的资源，与请求的 `resource` 查询字符串参数匹配。 |
 | `token_type` | 令牌的类型，这是一个“持有者”访问令牌，意味着资源可向此令牌的持有者授予访问权限。 |
+
+## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>使用用于 .NET 的 Microsoft.Azure.Services.AppAuthentication 库获取令牌
+
+对于.NET 应用程序和函数，使用托管服务身份最简单的方法是通过 Microsoft.Azure.Services.AppAuthentication 包。 此库还允许通过 Visual Studio、[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 或 Active Directory 集成身份验证使用用户帐户，在开发计算机上对代码进行本地测试。 有关此库的本地开发选项的详细信息，请参阅 [Microsoft.Azure.Services.AppAuthentication 参考]。 本部分演示如何开始在代码中使用此库。
+
+1. 向应用程序添加对 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) 和 [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet 包的引用。
+
+2.  将以下代码添加到应用程序：
+
+    ```csharp
+    using Microsoft.Azure.Services.AppAuthentication;
+    using Microsoft.Azure.KeyVault;
+    // ...
+    var azureServiceTokenProvider = new AzureServiceTokenProvider();
+    string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https://management.azure.com/");
+    // OR
+    var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
+    ```
+    
+若要了解有关 Microsoft.Azure.Services.AppAuthentication 及其公开的操作的详细信息，请参阅 [Microsoft.Azure.Services.AppAuthentication 参考](/azure/key-vault/service-to-service-authentication)以及[将应用服务和 KeyVault 与 MSI.NET 配合使用示例](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)。
 
 ## <a name="get-a-token-using-c"></a>使用 C# 获取令牌
 
@@ -291,7 +316,7 @@ echo The MSI access token is $access_token
 
 如果发生错误，相应的 HTTP 响应正文将包含 JSON 和错误详细信息：
 
-| 元素 | 说明 |
+| 元素 | Description |
 | ------- | ----------- |
 | error   | 错误标识符。 |
 | error_description | 错误的详细说明。 **错误说明随时可能更改。请不要编写会根据错误说明中的值生成分支片段的代码。**|

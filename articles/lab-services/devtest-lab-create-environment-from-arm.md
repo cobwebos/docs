@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 07/05/2018
 ms.author: spelluru
-ms.openlocfilehash: f73b6f594403ce51fcff4d757990afb3ce4a82bc
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 5ae7a0d3aa0606fd02bfbaa0dcebdfaed5d11eb7
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004840"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283083"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建多 VM 环境和 PaaS 资源
 
-使用 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)可以轻松地[在实验室中创建和添加 VM](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-add-vm)。 这种方法非常适合用于一次创建一个 VM。 但是，如果环境包含多个 VM，则必须分别创建每个 VM。 对于多层 Web 应用或 SharePoint 场等情况，需要使用某种机制以单个步骤创建多个 VM。 现在，可以使用 Azure 资源管理器模板定义 Azure 解决方案的基础结构和配置，以一致的状态重复部署多个 VM。 此功能提供以下优势：
+使用 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)可以轻松地[一次一个向实验室中添加 VM](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-add-vm)。 但是，如果环境包含多个 VM，则必须分别创建每个 VM。 对于多层 Web 应用或 SharePoint 场等情况，需要使用某种机制以单个步骤创建多个 VM。 现在，可以使用 Azure 资源管理器模板定义 Azure 解决方案的基础结构和配置，以一致的状态重复部署多个 VM。 此功能提供以下优势：
 
 - Azure 资源管理器模板是从源代码管理存储库（GitHub 或 Team Services Git）直接加载的。
 - 配置后，用户可以在 Azure 门户中通过选择 Azure 资源管理器模板来创建环境，就像对其他类型的 [VM 库](./devtest-lab-comparing-vm-base-image-types.md)所做的一样。
@@ -43,6 +43,8 @@ ms.locfileid: "39004840"
 
 在基础结构即代码和配置即代码方面，最佳做法之一是在源代码管理中管理环境模板。 Azure 开发测试实验室遵循这种做法，它直接从 GitHub 或 VSTS Git 存储库加载所有 Azure 资源管理器模板。 因此，从测试环境到生产环境，Resource Manager 模板可用于整个发布周期。
 
+查看[公共 GitHub 存储库](https://github.com/Azure/azure-devtestlab/tree/master/Environments)中由开发测试实验室团队创建的模板。 在此公共存储库中，可以查看他人共享的模板，可以直接使用或自定义它们来满足你的需求。 创建模板后，将其存储在此存储库中以将其与他人共享。 还可以使用可以用来在云中设置环境的模板设置你自己的 Git 存储库。 
+
 在存储库中整理 Azure 资源管理器模板时需遵循几条规则：
 
 - 必须将主模板文件命名为 `azuredeploy.json`。 
@@ -50,18 +52,18 @@ ms.locfileid: "39004840"
     ![关键的 Azure 资源管理器模板文件](./media/devtest-lab-create-environment-from-arm/master-template.png)
 
 - 如果想要使用参数文件中定义的参数值，必须将参数文件命名为 `azuredeploy.parameters.json`。
-- 可以使用参数 `_artifactsLocation` 和 `_artifactsLocationSasToken` 来构造 parametersLink URI 的值，以允许开发测试实验室自动管理嵌套的模板。 请参阅 [How Azure DevTest Labs makes nested Resource Manager template deployments easier for testing environments](https://blogs.msdn.microsoft.com/devtestlab/2017/05/23/how-azure-devtest-labs-makes-nested-arm-template-deployments-easier-for-testing-environments/)（Azure 开发测试实验室如何使在测试环境中部署嵌套的资源管理器模板部署更轻松），了解详细信息。
+- 可以使用参数 `_artifactsLocation` 和 `_artifactsLocationSasToken` 来构造 parametersLink URI 的值，以允许开发测试实验室自动管理嵌套的模板。 有关详细信息，请参阅 [How Azure DevTest Labs makes nested Resource Manager template deployments easier for testing environments](https://blogs.msdn.microsoft.com/devtestlab/2017/05/23/how-azure-devtest-labs-makes-nested-arm-template-deployments-easier-for-testing-environments/)（Azure 开发测试实验室如何使在测试环境中部署嵌套的资源管理器模板部署更轻松）。
 - 可以定义元数据来指定模板显示名称和说明。 此元数据必须在名为 `metadata.json` 的文件中。 以下示例元数据文件演示如何指定显示名称和说明： 
 
-```json
-{
+    ```json
+    {
  
-"itemDisplayName": "<your template name>",
+        "itemDisplayName": "<your template name>",
  
-"description": "<description of the template>"
+        "description": "<description of the template>"
  
-}
-```
+    }
+    ```
 
 以下步骤指导完成使用 Azure 门户将存储库添加到实验室的整个过程。 
 
@@ -150,7 +152,7 @@ ms.locfileid: "39004840"
 
 - 在部署资源管理器模板时，大多数策略不进行评估。
 
-   例如，你可能具有指定了用户只能创建五个 VM 的实验室策略。 但是，如果用户部署将创建数十个 VM 的资源管理器模板，这是允许的。 不评估的策略包括：
+   例如，你可能具有指定了用户只能创建五个 VM 的实验室策略。 但是，用户可以部署创建数十个 VM 的资源管理器模板。 不评估的策略包括：
 
    - 每个用户的 VM 数
    - 每个实验室用户的高级 VM 数

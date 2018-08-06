@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: jgao
-ms.openlocfilehash: 1ddf8cd38b4d62dc206a9f27e0620f8c7b232ec3
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 2593a9e782298bbd6e40bde611a430844febbce3
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31519376"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398482"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>调试 Azure HDInsight 中运行的 Apache Spark 作业
 
@@ -107,6 +107,7 @@ ms.locfileid: "31519376"
 
 ## <a name="see-also"></a>另请参阅
 *  [管理 Azure HDInsight 中 Apache Spark 群集的资源](apache-spark-resource-manager.md)
+*  [使用扩展的 Spark History Server调试 Spark 作业](apache-azure-spark-history-server.md)
 
 ### <a name="for-data-analysts"></a>适用于数据分析师
 

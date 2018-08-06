@@ -2,24 +2,19 @@
 title: 在 Azure Blob 存储中创建和使用共享访问签名 (SAS) | Microsoft Docs
 description: 本教程演示如何创建共享访问签名以用于 Blob 存储，以及如何从客户端应用程序使用这些签名。
 services: storage
-documentationcenter: ''
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: 491e0b3c-76d4-4149-9a80-bbbd683b1f3e
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: article
+ms.devlang: dotnet
 ms.date: 05/15/2017
 ms.author: tamram
-ms.openlocfilehash: 9dde12acde748c48b56f9f96ee772fca49954358
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: blobs
+ms.openlocfilehash: 6546553fa3537ac63d956dc5febfd77efe9fd34d
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23056792"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39400120"
 ---
 # <a name="shared-access-signatures-part-2-create-and-use-a-sas-with-blob-storage"></a>共享访问签名，第 2 部分：创建 SAS 并将 SAS 用于 Blob 存储
 
@@ -43,7 +38,7 @@ ms.locfileid: "23056792"
 在 Visual Studio 中，创建一个新的 Windows 控制台应用程序并将其命名为 **GenerateSharedAccessSignatures**。 使用以下方法之一添加对 [Microsoft.WindowsAzure.ConfigurationManager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager) 和 [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage/) 的引用：
 
 * 在 Visual Studio 中使用 [NuGet 包管理器](https://docs.nuget.org/consume/installing-nuget)。 选择“项目” > “管理 NuGet 包”，在线搜索每个包（Microsoft.WindowsAzure.ConfigurationManager 和 WindowsAzure.Storage）并安装它们。
-* 另外，还可以在安装的 Azure SDK 中找到这些程序集，然后添加对它们的引用：
+* 另外，还可以在安装的 Azure SDK 中找到这些程序集，并添加对它们的引用：
   * Microsoft.WindowsAzure.Configuration.dll
   * Microsoft.WindowsAzure.Storage.dll
 
@@ -72,7 +67,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
 ### <a name="generate-a-shared-access-signature-uri-for-a-container"></a>为容器生成共享访问签名 URI
 开始时，我们将添加一个方法以便在新容器上生成共享访问签名。 在这个例子中，该签名不与某一存储访问策略相关联，因此，它在 URI 上携带信息，指示其到期时间以及将授予的权限。
 
-首先，向 **Main()** 方法中添加代码，以便验证对存储帐户的访问并创建新容器：
+首先，向 **Main()** 方法中添加代码，以便授权访问存储帐户并创建新容器：
 
 ```csharp
 static void Main(string[] args)

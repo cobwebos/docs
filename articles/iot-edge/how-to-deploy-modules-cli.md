@@ -4,17 +4,17 @@ description: 通过适用于 Azure CLI 2.0 的 IoT 扩展将模块部署到 IoT 
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/08/2018
+ms.date: 07/27/2018
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 98a4be02188f7e0462979792a6061d535a64a18d
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 29c11139a2c773db2d26bf44984ad4dc72f2d870
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37095965"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39324599"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli-20"></a>使用 Azure CLI 2.0 部署 Azure IoT Edge 模块
 
@@ -35,13 +35,13 @@ ms.locfileid: "37095965"
 
 部署清单是一个 JSON 文档，其中描述了要部署的模块、数据在模块间的流动方式以及模块孪生的所需属性。 若要详细了解部署清单的工作原理及创建方式，请参阅[了解如何使用、配置和重用 IoT Edge 模块](module-composition.md)。
 
-若要使用 Azure CLI 2.0 来部署模块，请将部署清单在本地另存为 .txt 文件。 在下一部分通过运行命令将配置应用到设备时，会用到这个文件路径。 
+若要使用 Azure CLI 2.0 来部署模块，请将部署清单在本地另存为 .json 文件。 在下一部分通过运行命令将配置应用到设备时，会用到这个文件路径。 
 
 下面是一个基本的部署清单示例，其中有一个模块：
 
    ```json
    {
-     "moduleContent": {
+     "modulesContent": {
        "$edgeAgent": {
          "properties.desired": {
            "schemaVersion": "1.0",
@@ -50,13 +50,8 @@ ms.locfileid: "37095965"
              "settings": {
                "minDockerVersion": "v1.25",
                "loggingOptions": "",
-               "registryCredentials": {
-                 "registryName": {
-                   "username": "",
-                   "password": "",
-                   "address": ""
-                 }
-               }
+               "registryCredentials": {}
+             }
            },
            "systemModules": {
              "edgeAgent": {
@@ -112,6 +107,8 @@ ms.locfileid: "37095965"
 
 应用使用模块信息配置的部署清单即可将模块部署至设备。 
 
+将目录更改到保存有部署清单的文件夹。 如果使用了 VS Code IoT Edge 模板之一，请使用解决方案目录的 **config** 文件夹中的 `deployment.json` 文件。 不要使用 `deployment.template.json` 文件。 
+
 使用以下命令将配置应用于 IoT Edge 设备：
 
    ```cli
@@ -119,6 +116,8 @@ ms.locfileid: "37095965"
    ```
 
 device id 参数区分大小写。 content 参数指向你保存的部署清单文件。 
+
+   ![设置模块](./media/how-to-deploy-cli/set-modules.png)
 
 ## <a name="view-modules-on-your-device"></a>查看设备上的模块
 

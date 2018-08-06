@@ -7,31 +7,31 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 06/28/2018
+ms.date: 07/26/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 82ad6239923f78641bfa80027ed62242b45b95eb
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: df3220936673e508e0fa01a283270e1b4ca4753c
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096251"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283429"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>SQL 数据仓库容量限制
 Azure SQL 数据仓库的各个组件允许的最大值。
 
 ## <a name="workload-management"></a>工作负荷管理
-| 类别 | 说明 | 最大值 |
+| 类别 | Description | 最大值 |
 |:--- |:--- |:--- |
 | [数据仓库单位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |单个 SQL 数据仓库的最大 DWU | 第 1 代：DW6000<br></br>第 2 代：DW30000c |
 | [数据仓库单位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |每个服务器的默认 DTU |54,000<br></br>默认情况下，每个 SQL Server（例如 myserver.database.windows.net）的 DTU 配额为 54,000，最多可以允许 DW6000c。 此配额仅仅只是安全限制。 可以通过[创建支持票证](sql-data-warehouse-get-started-create-support-ticket.md)并选择“配额”作为请求类型来增加配额。  要计算 DTU 需求，请将所需的 DWU 总数乘以 7.5 或将所需的 cDWU 总数乘以 9.0。 例如：<br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW6000c x 9.0 = 54,000 DTU。<br></br>可以在门户中的 SQL Server 选项中查看当前 DTU 消耗量。 已暂停和未暂停的数据库都计入 DTU 配额。 |
 | 数据库连接 |并发打开的会话 |1024<br/><br/>1024 个活动会话每一个都能同时向 SQL 数据仓库数据库提交请求。 请注意，可并发执行的查询数量是有限制的。 当超出并发限制时，请求将进入内部队列等待处理。 |
 | 数据库连接 |预处理语句的最大内存 |20 MB |
-| [工作负荷管理](resource-classes-for-workload-management.md) |并发查询数上限 |32<br/><br/> 默认情况下，SQL 数据仓库可以执行最多 32 个并发查询并将剩余查询排列起来。<br/><br/>当用户被分配到较高资源类或者 SQL 数据仓库具有较低的[数据仓库单位](memory-and-concurrency-limits.md)设置时，可减少并发查询的数量。 某些查询（如 DMV 查询）始终可以运行。 |
+| [工作负荷管理](resource-classes-for-workload-management.md) |并发查询数上限 |128<br/><br/> SQL 数据仓库可以执行最多 128 个并发查询并将剩余查询排列起来。<br/><br/>当用户被分配到较高资源类或者 SQL 数据仓库具有较低的[数据仓库单位](memory-and-concurrency-limits.md)设置时，可减少并发查询的数量。 某些查询（例如 DMV 查询）始终允许运行，并且不会影响并发查询限制。 有关并发查询执行的更多详细信息，请参阅[并发最大值](memory-and-concurrency-limits.md#concurrency-maximums)一文。 |
 | [tempdb](sql-data-warehouse-tables-temporary.md) |最大 GB |每 DW100 399 GB。 因此，在 DWU1000 的情况下，tempdb 的大小为 3.99 TB。 |
 
 ## <a name="database-objects"></a>数据库对象
-| 类别 | 说明 | 最大值 |
+| 类别 | Description | 最大值 |
 |:--- |:--- |:--- |
 | 数据库 |最大大小 | 第 1 代：磁盘压缩后为 240TB。 此空间与 tempdb 或日志空间无关，因此，此空间专用于永久表。  聚集列存储压缩率估计为 5 倍。  此压缩率允许数据库在所有表都为聚集列存储（默认表类型）的情况下增长到大约 1 PB。 <br/><br/> 第 2 代：240TB 用于行存储，无限存储空间用于列存储表 |
 | 表 |最大大小 |磁盘上压缩后 60 TB |
@@ -52,12 +52,12 @@ Azure SQL 数据仓库的各个组件允许的最大值。
 | 查看 |每个视图的列数 |1,024 |
 
 ## <a name="loads"></a>加载
-| 类别 | 说明 | 最大值 |
+| 类别 | Description | 最大值 |
 |:--- |:--- |:--- |
 | Polybase 加载 |每行 MB 数 |1<br/><br/>Polybase 仅加载到小于 1 MB 的行，并且无法加载到 VARCHAR(MAX)、NVARCHAR(MAX) 或 VARBINARY(MAX)。<br/><br/> |
 
 ## <a name="queries"></a>查询
-| 类别 | 说明 | 最大值 |
+| 类别 | Description | 最大值 |
 |:--- |:--- |:--- |
 | 查询 |用户表的排队查询数。 |1000 |
 | 查询 |系统视图的并发查询数。 |100 |

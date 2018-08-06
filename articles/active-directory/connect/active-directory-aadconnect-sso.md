@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 88869fbeef0475f2c674e0f154a3624545182363
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 41e75fcfd0b88d5c37bb8dd6fcc16b1767b34dba
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213225"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285351"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory 无缝单一登录
 
@@ -30,12 +30,12 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-无缝 SSO 可与[密码哈希同步](active-directory-aadconnectsync-implement-password-hash-synchronization.md)或[传递身份验证](active-directory-aadconnect-pass-through-authentication.md)登录方法结合使用。
+无缝 SSO 可与[密码哈希同步](active-directory-aadconnectsync-implement-password-hash-synchronization.md)或[传递身份验证](active-directory-aadconnect-pass-through-authentication.md)登录方法结合使用。 无缝 SSO _不_适用于 Active Directory 联合身份验证服务 (ADFS)。
 
 ![无缝单一登录](./media/active-directory-aadconnect-sso/sso1.png)
 
 >[!IMPORTANT]
->无缝 SSO _不_适用于 Active Directory 联合身份验证服务 (ADFS)。
+>无缝 SSO 需要用户的设备**加入域**，但不需要设备[加入 Azure AD](../active-directory-azureadjoin-overview.md)。
 
 ## <a name="key-benefits"></a>主要优点
 
@@ -76,7 +76,9 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
 ## <a name="next-steps"></a>后续步骤
 
 - [快速入门](active-directory-aadconnect-sso-quick-start.md) - 启动并运行 Azure AD 无缝 SSO。
+- [**部署计划**](https://aka.ms/AuthenticationDeploymentPlan) - 分步部署计划。
 - [深入技术探究](active-directory-aadconnect-sso-how-it-works.md) - 了解此功能如何运作。
 - [**常见问题**](active-directory-aadconnect-sso-faq.md) - 常见问题解答。
 - [故障排除](active-directory-aadconnect-troubleshoot-sso.md) - 了解如何解决使用此功能时遇到的常见问题。
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
+

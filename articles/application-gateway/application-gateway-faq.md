@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 6/20/2018
 ms.author: victorh
-ms.openlocfilehash: 989ecf209dc5093b5e4c73f01f9e382fc1ad21e8
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: b8b5b1da902a854dacea7e3019e3fa1116f04212
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295522"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399135"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>应用程序网关常见问题
 
@@ -92,6 +92,8 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 **问：应用程序网关是否支持 x-forwarded-for 标头？**
 
 支持。应用程序网关会将 x-forwarded-for、x-forwarded-proto 和 x-forwarded-port 标头插入转发到后端的请求中。 x-forwarded-for 标头的格式是逗号分隔的“IP:端口”列表。 x-forwarded-proto 的有效值为 http 或 https。 x-forwarded-port 指定请求抵达应用程序网关时所在的端口。
+
+应用程序网关还会插入 X-Original-Host 标头，其中包含随请求到达的原始主机标头。 此标头在 Azure 网站集成之类的场景中比较有用，在这类场景中，传入的主机标头在流量路由到后端之前会修改。
 
 **问：部署应用程序网关需要多长时间？更新时我的应用程序网关是否仍正常工作？**
 

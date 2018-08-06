@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2d49164748079346f24aeeebe216b2668a4e3aed
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 9c59db56ad78818d9b6165d27fd2e64f0bfd902c
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258481"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283217"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory 无缝单一登录：常见问题
 
@@ -94,10 +94,8 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 
 1. 调用 `$creds = Get-Credential`。 出现提示时，输入目标 AD 林的域管理员凭据。
 
->[!NOTE]
->我们使用以用户主体名称 (UPN) (johndoe@contoso.com) 格式或域限定的 SAM 帐户名（contoso\johndoe 或 contoso.com\johndoe）格式提供的域管理员用户名查找目标 AD 林。 如果你使用域限定的 SAM 帐户名，则我们使用用户名的域部分[使用 DNS 查找域管理员的域控制器](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx)。 如果你使用的是 UPN，则我们在查找合适的域控制器前会[将它转换为域限定的 SAM 帐户名](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa)。
-
-使用 UPN，我们将转换 
+    >[!NOTE]
+    >我们使用以用户主体名称 (UPN) (johndoe@contoso.com) 格式或域限定的 SAM 帐户名（contoso\johndoe 或 contoso.com\johndoe）格式提供的域管理员用户名查找目标 AD 林。 如果你使用域限定的 SAM 帐户名，则我们使用用户名的域部分[使用 DNS 查找域管理员的域控制器](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx)。 如果你使用的是 UPN，则我们在查找合适的域控制器前会[将它转换为域限定的 SAM 帐户名](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa)。
 
 2. 调用 `Update-AzureADSSOForest -OnPremCredentials $creds`。 此命令会在此特定 AD 林中更新 `AZUREADSSOACC` 计算机帐户的 Kerberos 解密密钥，并在 Azure AD 中对其进行更新。
 3. 针对已设置了此功能的每个 AD 林重复上述步骤。
@@ -107,17 +105,36 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 
 ## <a name="how-can-i-disable-seamless-sso"></a>如何禁用无缝 SSO？
 
-可使用 Azure AD Connect 禁用无缝 SSO。
+### <a name="step-1-disable-the-feature-on-your-tenant"></a>步骤 1. 在租户上禁用此功能
 
-运行 Azure AD Connect，选择“更改用户登录页”，并单击“下一步”。 然后取消选中“启用单一登录”选项。 在向导中继续操作。 完成向导后，租户即禁用了无缝 SSO。
+#### <a name="option-a-disable-using-azure-ad-connect"></a>选项 A：使用 Azure AD Connect 进行禁用
 
-但是，屏幕上会显示以下消息：
+1. 运行 Azure AD Connect，选择“更改用户登录页”，并单击“下一步”。
+2. 取消选中“启用单一登录”选项。 在向导中继续操作。
+
+完成向导后，将在租户上禁用无缝 SSO。 但是，屏幕上将显示以下消息：
 
 “单一登录现已禁用，但可执行其他手动步骤以完成清理。 了解详细信息”
 
-若要完成此过程，请在运行 Azure AD Connect 的本地服务器上按以下手动步骤操作：
+若要完成清理过程，请在运行 Azure AD Connect 的本地服务器上执行步骤 2 和 3。
 
-### <a name="step-1-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>步骤 1。 获取已在其中启用了无缝 SSO 的 AD 林列表
+#### <a name="option-b-disable-using-powershell"></a>选项 B：使用 PowerShell 进行禁用
+
+在运行 Azure AD Connect 的本地服务器上运行以下步骤：
+
+1. 首先，下载并安装 [Microsoft Online Services 登录助手](http://go.microsoft.com/fwlink/?LinkID=286152)。
+2. 然后下载并安装[用于 Windows PowerShell 的 64 位 Azure Active Directory 模块](http://go.microsoft.com/fwlink/p/?linkid=236297)。
+3. 导航到 `%programfiles%\Microsoft Azure Active Directory Connect` 文件夹。
+4. 使用以下命令导入无缝 SSO PowerShell 模块：`Import-Module .\AzureADSSO.psd1`。
+5. 以管理员身份运行 PowerShell。 在 PowerShell 中，调用 `New-AzureADSSOAuthenticationContext`。 此命令可提供一个弹出窗口，用以输入租户的全局管理员凭据。
+6. 调用 `Enable-AzureADSSO -Enable $false`。
+
+>[!IMPORTANT]
+>使用 PowerShell 禁用无缝 SSO 不会更改 Azure AD Connect 中的状态。 无缝 SSO 在“更改用户登录”页面中将显示为已启用。
+
+### <a name="step-2-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>步骤 2. 获取已在其中启用了无缝 SSO 的 AD 林列表
+
+如果已使用 Azure AD Connect 禁用了无缝 SSO，请执行下面的步骤 1 到 5。 但是，如果是使用 PowerShell 禁用了无缝 SSO，请跳转到下面的步骤 6。
 
 1. 首先，下载并安装 [Microsoft Online Services 登录助手](http://go.microsoft.com/fwlink/?LinkID=286152)。
 2. 然后下载并安装[用于 Windows PowerShell 的 64 位 Azure Active Directory 模块](http://go.microsoft.com/fwlink/p/?linkid=236297)。
@@ -126,7 +143,7 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 5. 以管理员身份运行 PowerShell。 在 PowerShell 中，调用 `New-AzureADSSOAuthenticationContext`。 此命令可提供一个弹出窗口，用以输入租户的全局管理员凭据。
 6. 调用 `Get-AzureADSSOStatus`。 此命令可提供已在其中启用了此功能的 AD 林列表（请查看“域”列表）。
 
-### <a name="step-2-manually-delete-the-azureadssoacct-computer-account-from-each-ad-forest-that-you-see-listed"></a>步骤 2. 从列表中你所看到的每个 AD 林中手动删除 `AZUREADSSOACCT` 计算机帐户。
+### <a name="step-3-manually-delete-the-azureadssoacct-computer-account-from-each-ad-forest-that-you-see-listed"></a>步骤 3. 从列表中你所看到的每个 AD 林中手动删除 `AZUREADSSOACCT` 计算机帐户。
 
 ## <a name="next-steps"></a>后续步骤
 

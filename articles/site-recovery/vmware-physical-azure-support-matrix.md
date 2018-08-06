@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: raynew
-ms.openlocfilehash: 516cb69042e923a46168c7655dc3e3010d9557e6
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 96fc44ad7f69b4de0ec5ea3967fe5495086ba53a
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173786"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413597"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware 和物理服务器到 Azure 的复制支持矩阵
 
@@ -62,7 +62,7 @@ Site Recovery 支持复制在支持的计算机上运行的任何工作负荷。
 --- | ---
 计算机设置 | 复制到 Azure 的计算机必须满足 [Azure 要求](#azure-vm-requirements)。
 Windows 操作系统 | 64 位 Windows Server 2016（服务器核心，带桌面体验的服务器）、Windows Server 2012 R2、Windows Server 2012、带 SP1（或更高版本）的 Windows Server 2008 R2。 </br></br>  [至少带 SP2 的 Windows Server 2008 - 32 位和 64 位](migrate-tutorial-windows-server-2008.md)（仅适用于迁移）。 </br></br> 不支持 Windows 2016 Nano Server。
-Linux 操作系统 | Red Hat Enterprise Linux：5.2 到 5.11、6.1 到 6.9、7.0 到 7.5 <br/><br/>CentOS：5.2 到 5.11、6.1 到 6.9、7.0 到 7.5 <br/><br/>Ubuntu 14.04 LTS 服务器[（受支持的内核版本）](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS 服务器[（受支持的内核版本）](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[（受支持的内核版本）](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1、SP2、SP3 [（受支持的内核版本）](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3、SUSE Linux Enterprise Server 11 SP4 * </br></br>Oracle Enterprise Linux 6.4、6.5（运行 Red Hat 兼容内核），或 Unbreakable Enterprise Kernel Release 3 (UEK3) <br/><br/></br>不支持将复制计算机从 SUSE Linux Enterprise Server 11 SP3 升级到 SP4。* 若要升级，请禁用复制并在升级后重新启用它。
+Linux 操作系统 | Red Hat Enterprise Linux：5.2 到 5.11<b>\*\*</b>、6.1 到 6.9<b>\*\*</b>、7.0 到 7.5 <br/><br/>CentOS：5.2 到 5.11<b>\*\*</b>、6.1 到 6.9<b>\*\*</b>、7.0 到 7.5 <br/><br/>Ubuntu 14.04 LTS 服务器[（受支持的内核版本）](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS 服务器[（受支持的内核版本）](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[（受支持的内核版本）](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1、SP2、SP3 [（受支持的内核版本）](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b>、SUSE Linux Enterprise Server 11 SP4 * </br></br>Oracle Enterprise Linux 6.4、6.5（运行 Red Hat 兼容内核），或 Unbreakable Enterprise Kernel Release 3 (UEK3) <br/><br/></br>不支持将复制计算机从 SUSE Linux Enterprise Server 11 SP3 升级到 SP4。* 若要升级，请禁用复制并在升级后重新启用它。</br></br><b>\*\*</b> *请参阅 [Azure 中对 Linux 虚拟机的支持](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)来了解 Azure 中对 Linux 和开放源代码技术的支持。Azure Site Recovery 允许在 Azure 中故障转移和运行 Linux 服务器，但是，Linux 供应商可能会将该支持限制为寿命尚未终止的发行版版本。*
 
 
 >[!NOTE]

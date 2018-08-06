@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 0afe5ba21fe17d8aec4d72c30086c6840f9e3c8e
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: d248f8bc5708dfe8554f513d4f96a6c1bee7605e
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161564"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412406"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>部署基于云的 Azure 多重身份验证
 
@@ -40,7 +40,7 @@ Azure 多重身份验证 (Azure MFA) 入门是一个直截了当的过程。
 
 ## <a name="choose-authentication-methods"></a>选择身份验证方法
 
-根据组织的要求至少为用户启用一种身份验证方法。 我们发现，如果为用户启用了身份验证，则 Microsoft Authenticator 应用可提供最佳用户体验。 如需了解哪些方法可用及其设置方法，请参阅 [有哪些身份验证方法](concept-authentication-methods.md) 一文。
+根据组织的要求至少为用户启用一种身份验证方法。 我们发现，如果为用户启用了身份验证，则 Microsoft Authenticator 应用可提供最佳用户体验。 如需了解哪些方法可用及其设置方法，请参阅[有哪些身份验证方法](concept-authentication-methods.md)一文。
 
 ## <a name="get-users-to-enroll"></a>让用户注册
 

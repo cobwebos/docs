@@ -7,16 +7,16 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.date: 06/20/2018
+ms.date: 08/01/2018
 ms.author: ninarn
 ms.topic: conceptual
 ms.reviewer: carlrab
-ms.openlocfilehash: 3cdc82d71c05298aa5822b87c22edcc5d8e73385
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 96ea965ac383ae449afffa62c5e9950c6fd4e4da
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311351"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39411927"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>在 Azure SQL 数据库中创建和管理弹性池
 
@@ -37,13 +37,13 @@ ms.locfileid: "36311351"
 
 ## <a name="powershell-manage-elastic-pools-and-pooled-databases"></a>PowerShell：管理弹性池和入池数据库 
 
-若要使用 Azure PowerShell 创建并管理 SQL 数据库弹性池和入池数据库，请使用以下 PowerShell cmdlet。 如果需要安装或升级 PowerShell，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 若要创建和管理数据库、服务器和防火墙规则，请参阅[使用 PowerShell 创建和管理 Azure SQL 数据库服务器和数据库](sql-database-servers-databases.md#manage-azure-sql-servers-databases-and-firewalls-using-powershell)。
+若要使用 Azure PowerShell 创建并管理 SQL 数据库弹性池和入池数据库，请使用以下 PowerShell cmdlet。 如果需要安装或升级 PowerShell，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 若要创建和管理弹性池的逻辑服务器，请参阅[创建和管理逻辑服务器](sql-database-logical-servers.md)。 若要创建和管理防火墙规则，请参阅[使用 PowerShell 创建和管理防火墙规则](sql-database-firewall-configure.md#manage-firewall-rules-using-azure-powershell)。
 
 > [!TIP]
 > 有关 PowerShell 示例脚本，请参阅[使用 PowerShell 创建弹性池、在池之间移动数据库以及将数据库移出池](scripts/sql-database-move-database-between-pools-powershell.md)和[使用 PowerShell 监视和缩放 Azure SQL 数据库中的 SQL 弹性池](scripts/sql-database-monitor-and-scale-pool-powershell.md)。
 >
 
-| Cmdlet | 说明 |
+| Cmdlet | Description |
 | --- | --- |
 |[New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool)|在逻辑 SQL 服务器上创建弹性数据库池。|
 |[Get-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/get-azurermsqlelasticpool)|获取逻辑 SQL 服务器上的弹性池及其属性值。|
@@ -68,7 +68,7 @@ ms.locfileid: "36311351"
 > 有关 Azure CLI 示例脚本，请参阅[使用 CLI 移动 SQL 弹性池中的 Azure SQL 数据库](scripts/sql-database-move-database-between-pools-cli.md)和[使用 Azure CLI 缩放 Azure SQL 数据库中的 SQL 弹性池](scripts/sql-database-scale-pool-cli.md)。
 >
 
-| Cmdlet | 说明 |
+| Cmdlet | Description |
 | --- | --- |
 |[az sql elastic-pool create](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_create)|创建弹性池。|
 |[az sql elastic-pool list](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_list)|返回服务器中弹性池的列表。|
@@ -79,13 +79,13 @@ ms.locfileid: "36311351"
 
 ## <a name="transact-sql-manage-pooled-databases"></a>Transact-SQL：管理入池数据库
 
-若要使用 Transact-SQL 在现有弹性池内创建和移动数据库或者返回有关 SQL 数据库弹性池的信息，请使用以下 T-SQL 命令。 可以使用 Azure 门户、[SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio)、[Visual Studio Code](https://code.visualstudio.com/docs) 或可以连接到 Azure SQL 数据库服务器并传递 Transact-SQL 命令的其他任何程序，发出这些命令。 若要创建和管理数据库、服务器和防火墙规则，请参阅[使用 Transact-SQL 创建和管理 Azure SQL 数据库服务器和数据库](sql-database-servers-databases.md#manage-azure-sql-servers-databases-and-firewalls-using-transact-sql)。
+若要使用 Transact-SQL 在现有弹性池内创建和移动数据库或者返回有关 SQL 数据库弹性池的信息，请使用以下 T-SQL 命令。 可以使用 Azure 门户、[SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio)、[Visual Studio Code](https://code.visualstudio.com/docs) 或可以连接到 Azure SQL 数据库服务器并传递 Transact-SQL 命令的其他任何程序，发出这些命令。 若要使用 T-SQL 创建和管理防火墙规则，请参阅[使用 Transact-SQL 管理防火墙规则](sql-database-firewall-configure.md#manage-firewall-rules-using-transact-sql)。
 
 > [!IMPORTANT]
 > 无法使用 Transact-SQL 创建、更新或删除 Azure SQL 数据库弹性池。 可以在弹性池中添加或删除数据库，并且可以使用 DMV 返回有关现有弹性池的信息。
 >
 
-| 命令 | 说明 |
+| 命令 | Description |
 | --- | --- |
 |[CREATE DATABASE（Azure SQL 数据库）](/sql/t-sql/statements/create-database-azure-sql-database)|在现有池中创建新数据库或将其创建为单一数据库。 必须连接到 master 数据库，才能新建数据库。|
 | [ALTER DATABASE（Azure SQL 数据库）](/sql/t-sql/statements/alter-database-azure-sql-database) |将数据库移入、移出弹性池或在其之间移动。|
@@ -97,7 +97,7 @@ ms.locfileid: "36311351"
 
 若要创建和管理 SQL 数据库弹性池和入池数据库，请使用这些 REST API 请求。
 
-| 命令 | 说明 |
+| 命令 | Description |
 | --- | --- |
 |[弹性池 - 创建或更新](/rest/api/sql/elasticpools/createorupdate)|创建新弹性池或更新现有的弹性池。|
 |[弹性池 - 删除](/rest/api/sql/elasticpools/delete)|删除弹性池。|

@@ -7,14 +7,14 @@ manager: vijayts
 tags: azure-resource-manager, virtual-machine-backup
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/18/2018
+ms.date: 8/1/2018
 ms.author: trinadhk
-ms.openlocfilehash: 787c4b0f6e8d5ed76260582bfa3d6c49574bd102
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 1021900620272cc5476d8972daf9d7e0a161797a
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205334"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397995"
 ---
 # <a name="upgrade-to-azure-vm-backup-stack-v2"></a>升级到 Azure VM 备份堆栈 V2
 
@@ -107,7 +107,7 @@ Get-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNa
 
 ### <a name="does-upgrading-to-stack-v2-increase-the-premium-storage-account-snapshot-limit-by-10-tb"></a>升级到堆栈 v2 是否会将高级存储帐户快照限制增加 10 TB？
 
-对于非托管磁盘，作为 v2 堆栈的一部分创建的快照将计入高级存储帐户的 10 TB 快照限制。 
+否，每个存储帐户的总快照限制仍保留为 10 TB。 
 
 ### <a name="in-premium-storage-accounts-do-snapshots-taken-for-instant-recovery-point-occupy-the-10-tb-snapshot-limit"></a>在高级存储帐户中，为即时恢复点创建的快照是否会占用 10 TB 快照限制？
 

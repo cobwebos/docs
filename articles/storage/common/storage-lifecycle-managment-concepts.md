@@ -9,12 +9,12 @@ ms.workload: storage
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
-ms.openlocfilehash: 9721935f005bbd9a5dc261fe801ecc14744b004f
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: ec314925635d34baa7b3edeeb397805964b6353d
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752786"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413121"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>管理 Azure Blob 存储生命周期（预览）
 
@@ -70,7 +70,7 @@ az feature register –-namespace Microsoft.Storage –-name DLM
 
 ## <a name="add-or-remove-policies"></a>添加或删除策略 
 
-可以通过 Azure 门户、[PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview)、REST API 或客户端工具使用以下语言来添加、编辑或删除策略：[.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview)、[Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/)、[Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0)、[Ruby]( https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2)。 
+可以通过 Azure 门户、[PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview)、[REST API](https://docs.microsoft.com/en-us/rest/api/storagerp/storageaccounts/createorupdatemanagementpolicies) 或客户端工具使用以下语言来添加、编辑或删除策略：[.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview)、[Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/)、[Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0)、[Ruby]( https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2)。 
 
 ### <a name="azure-portal"></a>Azure 门户
 
@@ -133,7 +133,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
 
 ## <a name="rules"></a>规则
 
-每个规则定义包括筛选器集和操作集。 以下示例规则修改前缀为 `foo` 的基本块 Blob 的层。 在策略中，这些规则定义为：
+每个规则定义包括筛选器集和操作集。 以下示例规则修改前缀为 `container1/foo` 的基本块 Blob 的层。 在策略中，这些规则定义为：
 
 - 在上次修改后的 30 天后，将 Blob 分层到冷存储
 - 在上次修改后的 90 天后，将 Blob 分层到存档存储
@@ -150,7 +150,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
       "definition": {
         "filters": {
           "blobTypes": [ "blockBlob" ],
-          "prefixMatch": [ "foo" ]
+          "prefixMatch": [ "container1/foo" ]
         },
         "actions": {
           "baseBlob": {
@@ -178,7 +178,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
 | 筛选器名称 | 筛选器类型 | 说明 | 是否必需 |
 |-------------|-------------|-------|-------------|
 | blobTypes   | 预定义枚举值的数组。 | 在预览版中，仅支持 `blockBlob`。 | 是 |
-| prefixMatch | 要匹配的前缀字符串数组。 | 如果未定义，此规则将应用到帐户中的所有 Blob。 | 否 |
+| prefixMatch | 要匹配的前缀字符串数组。 前缀字符串必须以容器名称开头。 例如，如果“https://myaccount.blob.core.windows.net/mycontainer/mydir/...”下的所有 blob 都应当与某个规则匹配，则前缀为“mycontainer/mydir”。 | 如果未定义，此规则将应用到帐户中的所有 Blob。 | 否 |
 
 ### <a name="rule-actions"></a>规则操作
 
@@ -197,7 +197,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
 
 在预览版中，操作执行条件基于陈旧程度。 基本 Blob 使用上次修改时间来跟踪陈旧程度，Blob 快照使用快照创建时间来跟踪陈旧程度。
 
-| 操作执行条件 | 条件值 | 说明 |
+| 操作执行条件 | 条件值 | Description |
 |----------------------------|-----------------|-------------|
 | daysAfterModificationGreaterThan | 指示陈旧程度（天）的整数值 | 基本 Blob 操作的有效条件 |
 | daysAfterCreationGreaterThan     | 指示陈旧程度（天）的整数值 | Blob 快照操作的有效条件 | 
@@ -207,7 +207,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
 
 ### <a name="move-aging-data-to-a-cooler-tier"></a>将陈旧的数据移到冷层
 
-以下示例演示如何转移前缀为 `foo` 或 `bar` 的块 Blob。 该策略将 30 天以上未修改的 Blob 转移到冷存储，并将 90 天未修改的 Blob 转移到存档层：
+以下示例演示如何转移前缀为 `container1/foo` 或 `container2/bar` 的块 Blob。 该策略将 30 天以上未修改的 Blob 转移到冷存储，并将 90 天未修改的 Blob 转移到存档层：
 
 ```json
 {
@@ -220,7 +220,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
         {
           "filters": {
             "blobTypes": [ "blockBlob" ],
-            "prefixMatch": [ "foo", "bar" ]
+            "prefixMatch": [ "container1/foo", "container2/bar" ]
           },
           "actions": {
             "baseBlob": {
@@ -236,7 +236,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
 
 ### <a name="archive-data-at-ingest"></a>引入时存档数据 
 
-某些数据在云中保持空闲状态，并且在存储后很少（如果有）被访问。 此类数据最适合在引入后立即存档。 以下生命周期策略配置为在引入时存档数据。 此示例将存储帐户中前缀为 `archive` 的块 Blob 立即转移到存档层。 立即转移是通过在上次修改后的 0 天内处理 Blob 实现的：
+某些数据在云中保持空闲状态，并且在存储后很少（如果有）被访问。 此类数据最适合在引入后立即存档。 以下生命周期策略配置为在引入时存档数据。 此示例将容器 `archivecontainer` 中的存储帐户中的块 Blob 立即转移到存档层。 立即转移是通过在上次修改后的 0 天内处理 Blob 实现的：
 
 ```json
 {
@@ -249,7 +249,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
         {
           "filters": {
             "blobTypes": [ "blockBlob" ],
-            "prefixMatch": [ "archive" ]
+            "prefixMatch": [ "archivecontainer" ]
           },
           "actions": {
             "baseBlob": { 
@@ -292,7 +292,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
 
 ### <a name="delete-old-snapshots"></a>删除旧快照
 
-对于在整个生存期内频繁修改和访问的数据，通常会使用快照来跟踪数据的旧版本。 可以创建一个策略，用于根据快照的陈旧程度删除旧快照。 可通过评估快照创建时间来确定快照的陈旧程度。 此策略规则删除自创建快照后达到或超过 90 天的、前缀为 `activeData` 的块 Blob 快照。
+对于在整个生存期内频繁修改和访问的数据，通常会使用快照来跟踪数据的旧版本。 可以创建一个策略，用于根据快照的陈旧程度删除旧快照。 可通过评估快照创建时间来确定快照的陈旧程度。 此策略规则删除容器 `activedata` 中自创建快照后达到或超过 90 天的块 Blob 快照。
 
 ```json
 {
@@ -305,7 +305,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
         {
           "filters": {
             "blobTypes": [ "blockBlob" ],
-            "prefixMatch": [ "activeData" ]
+            "prefixMatch": [ "activedata" ]
           },
           "actions": {            
             "snapshot": {

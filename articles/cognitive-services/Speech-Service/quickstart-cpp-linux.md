@@ -1,23 +1,24 @@
 ---
-title: 快速入门：使用认知服务语音 SDK 在 Linux 上的 C++ 中识别语音 | Microsoft Docs
+title: 快速入门：使用认知服务语音 SDK 在 Linux 上的 C++ 中识别语音
 titleSuffix: Microsoft Cognitive Services
 description: 了解如何使用认知服务语音 SDK 在 Linux 上的 C++ 中识别语音
 services: cognitive-services
 author: wolfma61
-manager: onano
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: b5f5cdbe202b406c724a9f4f5787e566b432a66c
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 8f794f1d29b5fde9acd43fa4a018ccb39a8ccd25
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116140"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39324772"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-using-the-speech-sdk"></a>快速入门：使用语音 SDK 在 Linux 上的 C++ 中识别语音
+
+[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 本文介绍如何使用认知服务语音 SDK 在 Linux (Ubuntu 16.04) 上创建 C++ 控制台应用程序，进而将语音转为文本。
 
@@ -133,4 +134,4 @@ ms.locfileid: "39116140"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 访问[示例页](samples.md)来查看更多示例。
+* [获取我们的示例](speech-sdk.md#get-the-samples)

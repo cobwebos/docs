@@ -7,14 +7,14 @@ manager: carmonm
 keywords: 备份和灾难恢复;备份服务
 ms.service: backup
 ms.topic: conceptual
-ms.date: 5/9/2018
+ms.date: 8/1/2018
 ms.author: markgal
-ms.openlocfilehash: ac3c90fef602c5f840fff9ccd03efc360ca16200
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 33a3a1c0fd375f6ed88e13f910c46e71f216b892
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605818"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412945"
 ---
 # <a name="questions-about-the-azure-backup-service"></a>有关 Azure 备份服务的问题
 本文回答有关 Azure 备份组件的常见问题。 某些答案提供内含全面信息的文章的链接。 单击“评论”（右侧）即可提问有关 Azure 备份的问题。 评论显示在本文末尾。 需要使用 Livefyre 帐户发表评论。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
@@ -33,8 +33,11 @@ ms.locfileid: "34605818"
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-one-servers-data-from-another-server-when-restoring-databr"></a>如果本组织有一个保管库，如何在还原数据时会一个服务器的数据与另一个服务器隔离？<br/>
 注册到同一个保管库的所有服务器都能够恢复由 *使用同一密码*的其他服务器备份的数据。 如果想要隔离服务器中的备份数据与组织中的其他服务器，请使用这些服务器的指定通行短语。 例如，人力资源服务器可能使用一个加密通行短语，会计结算服务器使用另一个通行短语，而存储服务器使用第三个通行短语。
 
-### <a name="can-i-migrate-my-backup-data-or-vault-between-subscriptions-br"></a>是否可以在订阅之间“迁移”我的备份数据或保管库？ <br/>
-不会。 保管库是在订阅级别创建的，在创建后无法重新分配到另一订阅。
+### <a name="can-i-migrate-my-vault-between-subscriptions-br"></a>是否可以在订阅之间迁移我的保管库？ <br/>
+不可以。 保管库是在订阅级别创建的，无法重新分配到另一订阅。
+
+### <a name="can-i-migrate-backup-data-to-another-vault-br"></a>是否可以将备份数据迁移到另一个保管库？ <br/>
+不可以。 保管库中存储的备份数据无法移动到不同的保管库。
 
 ### <a name="recovery-services-vaults-are-resource-manager-based-are-backup-vaults-still-supported-br"></a>恢复服务保管库基于 Resource Manager。 是否仍支持备份保管库？ <br/>
 备份保管库已转换为恢复服务保管库。 如果你未将备份保管库转换为恢复服务保管库，则系统已为你将备份保管库转换为恢复服务保管库。 
@@ -60,7 +63,7 @@ ms.locfileid: "34605818"
 是的。
 
 ### <a name="can-i-register-my-dpm-server-to-multiple-vaults-br"></a>是否可以向多个保管库注册 DPM 服务器？ <br/>
-不会。 一个 DPM 或 MABS 服务器只能注册到一个保管库。
+不是。 一个 DPM 或 MABS 服务器只能注册到一个保管库。
 
 ### <a name="which-version-of-system-center-data-protection-manager-is-supported"></a>支持哪个版本的 System Center Data Protection Manager？
 
@@ -74,11 +77,11 @@ ms.locfileid: "34605818"
 
 ### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>可以使用 DPM 来备份 Azure Stack 中的应用吗？
 
-不会。 虽然你可以使用 Azure 备份来保护 Azure Stack，但 Azure 备份当前不支持使用 DPM 来备份 Azure Stack 中的应用。
+不是。 虽然你可以使用 Azure 备份来保护 Azure Stack，但 Azure 备份当前不支持使用 DPM 来备份 Azure Stack 中的应用。
 
 ## <a name="how-azure-backup-works"></a>Azure 备份工作原理
 ### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted-br"></a>如果在备份作业开始后取消，是否会删除已传输的备份数据？ <br/>
-不会。 在备份作业取消之前传输到保管库中的所有数据将保留在保管库中。 Azure 备份使用检查点机制，在备份过程中偶尔要对备份数据添加检查点。 由于备份数据中有检查点，下次备份过程可以验证文件的完整性。 下一次备份作业将是以前备份的数据的增量。 增量备份仅传输新增或更改的数据，这相当于更好地利用带宽。
+不是。 在备份作业取消之前传输到保管库中的所有数据将保留在保管库中。 Azure 备份使用检查点机制，在备份过程中偶尔要对备份数据添加检查点。 由于备份数据中有检查点，下次备份过程可以验证文件的完整性。 下一次备份作业将是以前备份的数据的增量。 增量备份仅传输新增或更改的数据，这相当于更好地利用带宽。
 
 如果取消了 Azure VM 的备份作业，则已传输的数据会被忽略。 下次备份作业将传输上次成功的备份作业之后的增量数据。
 
@@ -147,7 +150,7 @@ Azure 备份支持以下列表中的操作系统使用 Azure 备份服务器和 
 是的，Azure 备份保留结构允许根据自己的要求十分灵活地定义保留策略。
 
 ### <a name="can-i-schedule-a-backup-at-6pm-and-specify-retention-policies-at-a-different-timebr"></a>我是否可以计划下午 6 点的备份，同时指定不同时间的保留策略？<br/>
-不会。 只能在备份时间点应用保留策略。 在下图中，保留策略是针对上午 12 点和下午 6 点生成的备份指定的。 <br/>
+不是。 只能在备份时间点应用保留策略。 在下图中，保留策略是针对上午 12 点和下午 6 点生成的备份指定的。 <br/>
 
 ![计划备份和保留期](./media/backup-azure-backup-faq/Schedule.png)
 <br/>
@@ -165,7 +168,7 @@ Azure 备份支持以下列表中的操作系统使用 Azure 备份服务器和 
 从 Azure 备份执行恢复的次数没有限制。
 
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure-br"></a>还原数据时，Azure 的出口流量是否需要付费？ <br/>
-不会。 恢复是免费的，不收取传出流量费。
+不是。 恢复是免费的，不收取传出流量费。
 
 ### <a name="what-happens-when-i-change-my-backup-policy"></a>如果更改备份策略，会发生什么情况？
 应用新策略时，将遵循新策略的计划和保留期。 如果延长保留期，则会对现有的恢复点进行标记，按新策略要求保留它们。 如果缩短保留期，则会将其标记为在下一清理作业中删除，随后会将其删除。

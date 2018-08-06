@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: efc62243370ff2cc5214a4ae235139bdb5965486
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 8c0810c4a1b92f14e510d005eaf1b6945a058dd7
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248213"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413097"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>工作原理：Azure AD 自助密码重置
 
@@ -50,6 +50,7 @@ ms.locfileid: "39248213"
        * 如果未配置身份验证方法，则建议用户联系其管理员重置其密码。
      * 如果策略仅要求两种方法，则确保用户具有针对由管理员策略启用的至少两种身份验证方法定义的适当数据。
        * 如果未配置身份验证方法，则建议用户联系其管理员重置其密码。
+     * 如果为用户分配了 Azure 管理员角色，则会强制实施强双门密码策略。 可以在[管理员重置策略差异](concept-sspr-policy.md#administrator-reset-policy-differences)部分中找到有关此策略的详细信息。
    * 检查是否在本地管理用户密码（联合、直通身份验证或密码哈希同步）。
      * 如果已部署写回且在本地管理用户密码，则允许用户继续进行身份验证并重置其密码。
      * 如果未部署写回且在本地管理用户密码，则要求用户联系其管理员重置其密码。
@@ -68,6 +69,9 @@ ms.locfileid: "39248213"
 
 仅当用户在管理员已启用的身份验证方法中输入了数据时，他们才能重置其密码。
 
+> [!WARNING]
+> 要使用[管理员重置策略差异](concept-sspr-policy.md#administrator-reset-policy-differences)中定义的方法，将需要具有分配了帐户的 Azure 管理员角色。
+
 ![身份验证][Authentication]
 
 ### <a name="number-of-authentication-methods-required"></a>所需身份验证方法的数量
@@ -80,13 +84,16 @@ ms.locfileid: "39248213"
 
 #### <a name="mobile-app-and-sspr-preview"></a>移动应用和 SSPR（预览版）
 
-使用移动应用（例如 Microsoft Authenticator 应用）作为密码重置方法时，用户应注意以下问题。 对于自助密码重置，如果只需使用一种方法来执行重置，则验证码是提供给用户的唯一选项。 如果需要两种方法，则用户可以使用通知或验证码进行重置，此外还能使用其他任何已启用的方法。
+使用移动应用（例如 Microsoft Authenticator 应用）作为密码重置方法时，应注意以下问题：
+
+* 当管理员要求使用一种方法来重置密码时，验证码是唯一可用的选项。
+* 当管理员要求使用两种方法来重置密码时，用户可以使用通知或验证码进行重置，此外还能使用其他任何已启用的方法。
 
 | 重置所需的方法数 | 一种 | 两种 |
 | :---: | :---: | :---: |
 | 可用的移动应用功能 | 代码 | 代码或通知 |
 
-用户在注册自助密码重置时，无法选择注册其移动应用。 用户可以在 aka.ms/mfasetup 中，或者在安全信息注册预览版 (aka.ms/setupsecurityinfo) 中注册其移动应用。 
+用户通过 [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) 注册自助密码重置时，无法选择注册其移动应用。 用户可以在 [https://aka.ms/mfasetup](https://aka.ms/mfasetup) 中，或者在新的安全信息注册预览版 ([https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)) 中注册其移动应用。
 
 ### <a name="change-authentication-methods"></a>更改身份验证方法
 

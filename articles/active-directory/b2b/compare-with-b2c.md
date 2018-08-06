@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.component: B2B
 ms.topic: article
 ms.date: 03/15/2017
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 19e8e9d22938fa8a18299d67aa77824aaae3f6da
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: b59dba541394c105370cfd3af0768a8477ddb4e6
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34266965"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39347627"
 ---
 # <a name="compare-b2b-collaboration-and-b2c-in-azure-active-directory"></a>在 Azure Active Directory 中比较 B2B 协作和 B2C
 
@@ -29,7 +29,7 @@ B2B 协作功能 |     Azure AD B2C 独立产品/服务
 合作伙伴用户所在的目录：来自外部组织的合作伙伴用户在员工所在的目录中进行托管（特别备注的除外）。 可采用与员工相同的方式进行管理，还可将其添加到相同组等  | 客户用户实体所在的目录：位于应用程序目录中。 与组织的员工和合作伙伴目录（若有）分开管理。
 支持单一登录 (SSO) 到所有 Azure AD 连接的应用。 例如，可允许访问 Office 365 或本地应用以及其他 SaaS 应用（例如 Salesforce 或 Workday）。  |  支持在 Azure AD B2C 租户中单一登录到客户自有应用。 不可单一登录到 Office 365 或其他 Microsoft 和非 Microsoft SaaS 应用。
 合作伙伴生命周期：由主办/邀请组织管理。  | 客户生命周期：自助服务或由应用程序管理。
-安全策略和符合性：由主办/邀请组织管理。  | 安全策略和符合性：由应用程序管理。
+安全策略和符合性：由主办/邀请组织管理（例如，通过[条件访问策略](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)）。  | 安全策略和符合性：由应用程序管理。
 品牌：使用主办/邀请组织的品牌。  |    品牌：由应用程序管理。 通常是带品牌的产品，组织退居幕后。
 详细信息：[博客文章](https://blogs.technet.microsoft.com/enterprisemobility/2017/02/01/azure-ad-b2b-new-updates-make-cross-business-collab-easy/)、[文档](what-is-b2b.md)  | 详细信息：[产品页](https://azure.microsoft.com/services/active-directory-b2c/)、[文档](https://docs.microsoft.com/azure/active-directory-b2c/)
 

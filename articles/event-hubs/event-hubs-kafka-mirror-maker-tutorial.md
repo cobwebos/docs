@@ -1,5 +1,5 @@
 ---
-title: 将 Kafka MirrorMaker 与用于 Kafka 生态系统的 Azure 事件中心配合使用 | Microsoft Docs
+title: 将 Apache Kafka MirrorMaker 与适用于 Kafka 生态系统的 Azure 事件中心配合使用 | Microsoft Docs
 description: 在事件中心使用 Kafka MirrorMaker 镜像 Kafka 群集。
 services: event-hubs
 documentationcenter: .net
@@ -10,29 +10,39 @@ ms.topic: mirror-maker
 ms.custom: mvc
 ms.date: 05/07/2018
 ms.author: bahariri
-ms.openlocfilehash: 0693fc2fff5735fb2b3c0a9b8f1d3d256746f40d
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: eee090e7d539e0dd21f078039b8448cee5440340
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298315"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412189"
 ---
-# <a name="using-kafka-mirrormaker-with-event-hubs-for-kafka-ecosystems"></a>将 Kafka MirrorMaker 与用于 Kafka 生态系统的事件中心配合使用
+# <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>将 Kafka MirrorMaker 与适用于 Apache Kafka 的事件中心配合使用
+
+本教程展示了如何使用 Kafka MirrorMaker 在已启用 Kafka 的事件中心镜像 Kafka 中转站。
+
+   ![事件中心的 Kafka MirrorMaker](./media/event-hubs-kafka-mirror-maker-tutorial/evnent-hubs-mirror-maker1.png)
 
 > [!NOTE]
 > [GitHub](https://github.com/Azure/azure-event-hubs) 上提供了此示例
 
+
+本教程介绍如何执行下列操作：
+> [!div class="checklist"]
+> * 创建事件中心命名空间
+> * 克隆示例项目
+> * 设置 Kafka 群集
+> * 配置 Kafka MirrorMaker
+> * 运行 Kafka MirrorMaker
+
+## <a name="introduction"></a>介绍
 新式云缩放应用的一个主要考虑因素是能够在不中断服务的情况下更新、改进和更改基础结构。 本教程介绍已启用 Kafka 的事件中心和 Kafka MirrorMaker 如何通过在事件中心服务中“镜像”Kafka 输入流将现有 Kafka 管道集成到 Azure 中。 
 
 通过 Azure 事件中心 Kafka 终结点，用户可以使用 Kafka 协议（即 Kafka 客户端）连接到 Azure 事件中心。 通过对 Kafka 应用程序进行少量更改，可以连接到 Azure 事件中心并利用 Azure 生态系统的好处。 已启用 Kafka 的事件中心当前支持 Kafka 版本 1.0 及更高版本。
 
-此示例演示如何使用 Kafka MirrorMaker 在已启用 Kafka 的事件中心镜像 Kafka 中转站。
-
-   ![事件中心的 Kafka MirrorMaker](./media/event-hubs-kafka-mirror-maker-tutorial/evnent-hubs-mirror-maker1.png)
-
 ## <a name="prerequisites"></a>先决条件
 
-要完成本教程，请确保具有：
+若要完成本教程，请确保做好以下准备：
 
 * Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 * [Java 开发工具包 (JDK) 1.7+](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
@@ -60,13 +70,11 @@ cd azure-event-hubs/samples/kafka/mirror-maker
 
 使用 [Kafka 快速入门指南](https://kafka.apache.org/quickstart)设置具有所需设置的群集（或使用现有 Kafka 群集）。
 
-## <a name="kafka-mirrormaker"></a>Kafka MirrorMaker
+## <a name="configure-kafka-mirrormaker"></a>配置 Kafka MirrorMaker
 
 Kafka MirrorMaker 支持流“镜像”。 鉴于源和目标 Kafka 群集，MirrorMaker 可以确保发送到源群集的任何消息会由源和目标群集接收。 此示例演示如何使用已启用目标 Kafka 的事件中心镜像源 Kafka 群集。 此方案可用于从现有 Kafka 管道将数据发送到事件中心，而不会中断数据流。 
 
 有关 Kafka MirrorMaker 的更多详细信息，请参阅 [Kafka 镜像/MirrorMaker 指南](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330)。
-
-### <a name="configuration"></a>配置
 
 若要配置 Kafka MirrorMaker，为其提供一个 Kafka 群集作为其使用者/源和一个已启用 Kafka 的事件中心作为其生成者/目标。
 
@@ -99,7 +107,7 @@ security.protocol=SASL_SSL
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
 
-### <a name="run-mirrormaker"></a>运行 MirrorMaker
+## <a name="run-kafka-mirrormaker"></a>运行 Kafka MirrorMaker
 
 使用新更新的配置文件从 Kafka 根目录中运行 Kafka MirrorMaker 脚本。 请务必将配置文件复制到 Kafka 根目录，或在下面的命令中更新其路径。
 
@@ -113,7 +121,15 @@ bin/kafka-mirror-maker.sh --consumer.config source-kafka.config --num.streams 1 
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解事件中心](event-hubs-what-is-event-hubs.md)
-* [了解用于 Kafka 生态系统的事件中心](event-hubs-for-kafka-ecosystem-overview.md)
-* 了解有关 [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) 的详细信息，以将事件从本地 Kafka 流式传输到云端已启用 Kafka 的事件中心。
-* 了解如何使用[本机 Kafka 应用程序](event-hubs-quickstart-kafka-enabled-event-hubs.md)、[Apache Flink](event-hubs-kafka-flink-tutorial.md) 或 [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md) 流式传输到已启用 Kafka 的事件中心。
+本教程介绍如何执行下列操作：
+> [!div class="checklist"]
+> * 创建事件中心命名空间
+> * 克隆示例项目
+> * 设置 Kafka 群集
+> * 配置 Kafka MirrorMaker
+> * 运行 Kafka MirrorMaker
+
+请继续学习下一篇文章，以详细了解适用于Apache Kafka 的事件中心：
+
+> [!div class="nextstepaction"]
+> [将 Apache Flink 与适用于 Kafka 的 Azure 事件中心配合使用](event-hubs-kafka-flink-tutorial.md)

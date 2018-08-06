@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: d0d72694fe2d88e257a8684dc37a250bc0ad7f3f
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 7acf18c4624373dff8994a1996e9082770b90270
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970983"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283681"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法 
 
@@ -106,9 +106,9 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
     在除了部署直通身份验证之外还部署密码哈希同步有另一个好处。 它将在主要身份验证方法不再可用时充当备份身份验证方法。
 
-* **注意事项**。 你可能会使用密码哈希同步作为直通身份验证的备份身份验证方法，并且代理无法验证用户的凭据。 这样，故障转移到密码哈希同步就无法自动发生。 请使用 Azure AD Connect 手动切换登录方法。 
+* **注意事项**。 当代理由于明显的本地故障而无法验证用户的凭据时，可以使用密码哈希同步作为直通身份验证的备份身份验证方法。 故障转移到密码哈希同步不会自动发生，并且必须使用 Azure AD Connect 手动切换登录方法。 
 
-    直通身份验证仅支持使用新式验证和特定 Exchange Online 协议的云应用。 一些协议为 ActiveSync、POP3 和 IMAP4。 例如，Microsoft Office 2013 和更高版本支持新式验证，但较早版本并非如此。 有关 Office 应用支持的详细信息，请参阅 [Updated Office 365 modern authentication](https://blogs.office.com/en-us/2015/11/19/updated-office-365-modern-authentication-public-preview/)（更新的 Office 365 新式验证）。 有关直通身份验证的其他注意事项（包括备用 ID 支持），请参阅[常见问题](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq)。
+    有关直通身份验证的其他注意事项（包括备用 ID 支持），请参阅[常见问题](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq)。
 
 请参阅[实现传递身份验证](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication)了解部署步骤。
 

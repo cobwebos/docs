@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: raynew
-ms.openlocfilehash: 2be5ddd51140563efc44b1c1a4c84502bf491020
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: e2fbe766391759f2bbe4a95e75897b2bc9523c0c
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215316"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399067"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso 迁移：评估本地工作负荷是否适合迁移到 Azure
 
@@ -67,7 +67,7 @@ osTicket<br/><br/> （Contoso 服务台应用） | 通过 MySQL PHP (LAMP) 在 L
 Contoso 的 IT 领导团队与公司的业务合作伙伴密切协作，以了解本次迁移要实现的业务目标：
 
 - **应对业务增长**：Contoso 正在发展壮大。 因此，公司的本地系统和基础结构面临的压力也越来越大。
-- **增加效率**：Contoso 需要摒弃不必要的流程，简化开发人员和用户流程。 业务要求 IT 部门反应迅速，不浪费时间金钱，让公司可以更快满足客户需求。
+- **增加效率**：Contoso 需要摒弃不必要的流程，简化开发人员和用户流程。 业务要求 IT 反应迅速，不浪费时间或金钱，让公司可以更快满足客户需求。
 - **提高灵活性**：Contoso IT 需要对业务需求更加敏感。 它必须能够抢在市场变化之前作出反应，这样才能让公司在全球经济中取得成功。 同时它不能阻碍发展，成为业务的绊脚石。
 - **扩展**：随着公司业务成功发展，Contoso IT 部门必须提供能够同步成长的系统。
 
@@ -123,8 +123,10 @@ Contoso 使用 Microsoft 工具进行迁移评估。 这些工具符合公司的
 - 至少两个本地 VMware VM，一个 VM 运行一个 SQL Server 数据库。
 - 在每个 VM 上安装 Azure Migrate 代理的权限。
 - 这些 VM 应该有直接的 Internet 连接。  
-        - 可以仅限对[所需 URL](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites) 进行 Internet 访问。  
-        - 如果 VM 未连接 Internet，则必须在其上安装 Azure Log Analytics [OMS 网关](../log-analytics/log-analytics-oms-gateway.md)。
+        
+- 可以仅限对[所需 URL](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites) 进行 Internet 访问。  
+
+- 如果 VM 未连接 Internet，则必须在其上安装 Azure Log Analytics [OMS 网关](../log-analytics/log-analytics-oms-gateway.md)。
 - 运行 SQL Server 实例的 VM 的 FQDN（用于数据库评估）。
 - 在 SQL Server VM 上运行的 Windows 防火墙应该允许在 TCP 端口 1433（默认）上进行外部连接。 此设置允许数据迁移助手进行连接。
 

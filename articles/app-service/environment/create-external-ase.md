@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 34248d75c190aa4636c39f087d399d946b589d58
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: dc5b5cbe9b1f000d8ddf9d38cfe13f5275e698f2
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39347632"
 ---
 # <a name="create-an-external-app-service-environment"></a>创建外部应用服务环境 #
 
@@ -32,7 +33,7 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 
 创建 ASE 后，不能更改以下项：
 
-- Location
+- 位置
 - 订阅
 - 资源组
 - 使用的 VNet
@@ -40,7 +41,7 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 - 子网大小
 
 > [!NOTE]
-> 选择 VNet 和指定子网时，请确保大小足够容纳未来增长。 建议大小是地址长度为 128 位的 `/25`。
+> 选择 VNet 和指定子网时，请确保大小足够容纳未来的增长和扩展需求。 建议使用包含 256 个地址的大小 `/24`。
 >
 
 ## <a name="three-ways-to-create-an-ase"></a>创建 ASE 的 3 种方法 ##
@@ -67,10 +68,7 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 
 3. 选择或创建资源组。 使用资源组，可以单位形式管理相关的 Azure 资源。 为应用建立基于角色的访问控制 (RBAC) 规则时，资源组也可发挥作用。 有关详细信息，请参阅 [Azure 资源管理器概述][ARMOverview]。
 
-4. 选择 OS。 
-
-    * 在 ASE 中托管 Linux 应用是一项新的预览功能，因此建议不要将 Linux 应用添加到当前正在运行生产工作负荷的 ASE 中。 
-    * 将 Linux 应用添加到 ASE 中意味着 ASE 也将处于预览模式。 
+4. 选择操作系统（Windows、Linux 或 Docker）。 
 
 5. 选择应用服务计划，然后选择“新建”。 Linux Web 应用和 Windows Web 应用不能位于同一应用服务计划中，但可以位于同一应用服务环境中。 
 
@@ -78,13 +76,7 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 
 6. 在“位置”下拉列表中，选择要创建 ASE 的区域。 如果选择现有 ASE，则不会新建 ASE。 应用服务计划将在所选 ASE 中进行创建。 
 
-    > [!NOTE]
-    > 基于 ASE 的 Linux 目前仅在 6 个区域中启用：**美国西部、美国东部、西欧、北欧、澳大利亚东部、东南亚**。 由于基于 ASE 的 Linux 为预览功能，因此请勿选择在此预览版之前创建的 ASE。
-    >
-
 7. 选择“定价层”，然后选择其中一个“独立”定价 SKU。 如果选择独立 SKU 卡和非 ASE 的位置，则会在该位置新建一个 ASE。 若要开始创建 ASE 的过程，请选择“选择”。 独立 SKU 仅能与 ASE 结合使用。 此外，仅可在独立 ASE 中使用任何其他定价 SKU。 
-
-    * 对于基于 ASE 的 Linux 预览版，将会对单独的 SKU 应用 50% 的折扣（ASE 本身为固定价，没有折扣）。
 
     ![定价层选择][3]
 
@@ -120,13 +112,7 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 
 5. 在“位置”下拉列表中，选择要创建 ASE 的区域。 如果选择现有 ASE，则不会新建 ASE。 应用服务计划将在所选 ASE 中进行创建。 
 
-    > [!NOTE]
-    > 基于 ASE 的 Linux 目前仅在 6 个区域中启用：**美国西部、美国东部、西欧、北欧、澳大利亚东部、东南亚**。 由于基于 ASE 的 Linux 为预览功能，因此请勿选择在此预览版之前创建的 ASE。
-    >
-
 6. 选择“定价层”，然后选择其中一个“独立”定价 SKU。 如果选择独立 SKU 卡和非 ASE 的位置，则会在该位置新建一个 ASE。 若要开始创建 ASE 的过程，请选择“选择”。 独立 SKU 仅能与 ASE 结合使用。 此外，仅可在独立 ASE 中使用任何其他定价 SKU。 
-
-    * 对于基于 ASE 的 Linux 预览版，将会对单独的 SKU 应用 50% 的折扣（ASE 本身为固定价，没有折扣）。
 
     ![定价层选择][3]
 
@@ -156,7 +142,7 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 
 如果创建独立的 ASE，则其中不含任何内容。 空的 ASE 存在基础结构，每月仍会产生费用。 按照这些步骤通过 ILB 创建 ASE，或在其自身的资源组中创建 ASE。 创建 ASE 后，可使用常规过程在其中创建应用。 选择新 ASE 作为位置。
 
-1. 在 Azure Marketplace 中搜索“应用服务环境”，或者选择“创建资源” > “Web 移动” > “应用服务环境”。 
+1. 在 Azure 市场中搜索“应用服务环境”，或者选择“创建资源” > “Web 移动” > “应用服务环境”。 
 
 2. 输入 ASE 的名称。 此名称用于在 ASE 中创建的应用。 如果该名称为 mynewdemoase，则子域名为 .mynewdemoase.p.azurewebsites.net。 如果创建名为 mytestapp 的应用，则可在 mytestapp.mynewdemoase.p.azurewebsites.net 中访问它。 不能在名称中使用空格。 如果使用大写字符，则域名为该名称的全小写形式。 如果使用 ILB，则不在子域中使用 ASE 名称，但会在 ASE 创建过程中显式声明该名称。
 
@@ -170,7 +156,7 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 
 5. 选择 VNet 和位置。 可选择创建新的 VNet，也可选择现有 VNet： 
 
-    * 如果选择新的 VNet，则可指定名称和位置。 如果需要在此 ASE 上托管 Linux 应用，当前仅支持以下 6 个区域：美国西部、美国东部、西欧、北欧、澳大利亚东部、东南亚。 
+    * 如果选择新的 VNet，则可指定名称和位置。 
     
     * 新 VNet 的地址范围为 192.168.250.0/23，并拥有名为“默认”的子网。 子网定义为 192.168.250.0/24。 仅可选择一个资源管理器 VNet。 “VIP 类型”选择决定 ASE 能否从 Internet（外部）直接访问或是否使用 ILB。 若要深入了解这些选项，请参阅[在应用服务环境中创建和使用内部负载均衡器][MakeILBASE]。 
 
@@ -182,7 +168,7 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 
 ## <a name="app-service-environment-v1"></a>应用服务环境 v1 ##
 
-仍可创建初版应用服务环境 (ASEv1) 的实例。 若要开始该过程，请在 Marketplace 内搜索“应用服务环境 v1”。 采用与创建独立 ASE 相同的方式创建 ASE。 完成后，ASEv1 就有两个前端和两个辅助角色。 ASEv1 创建后，必须管理前端和辅助角色。 它们不会在创建应用服务计划时自动添加。 前端充当 HTTP/HTTPS 终结点，并将流量发送给辅助角色。 辅助角色是托管应用的角色。 可在创建 ASE 后，调整前端和辅助角色的数量。 
+仍可创建初版应用服务环境 (ASEv1) 的实例。 若要开始该过程，请在市场内搜索“应用服务环境 v1”。 采用与创建独立 ASE 相同的方式创建 ASE。 完成后，ASEv1 就有两个前端和两个辅助角色。 ASEv1 创建后，必须管理前端和辅助角色。 它们不会在创建应用服务计划时自动添加。 前端充当 HTTP/HTTPS 终结点，并将流量发送给辅助角色。 辅助角色是托管应用的角色。 可在创建 ASE 后，调整前端和辅助角色的数量。 
 
 若要深入了解 ASEv1，请参阅[应用服务环境 v1 简介][ASEv1Intro]。 若要深入了解如何缩放、管理和监视 ASEv1，请参阅[如何配置应用服务环境][ConfigureASEv1]。
 
@@ -195,7 +181,7 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 [6]: ./media/how_to_create_an_external_app_service_environment/createexternalase-network.png
 [7]: ./media/how_to_create_an_external_app_service_environment/createexternalase-createwafc.png
 [8]: ./media/how_to_create_an_external_app_service_environment/createexternalase-aspcreatewafc.png
-[8]: ./media/how_to_create_an_external_app_service_environment/createexternalase-configurecontainer.png
+[9]: ./media/how_to_create_an_external_app_service_environment/createexternalase-configurecontainer.png
 
 
 

@@ -10,13 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 04/05/2018
-ms.openlocfilehash: d70d39f027df1fba7934c4b752b1dd2100f2e8b9
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 08/02/2018
+ms.openlocfilehash: 9b182b0efad16f74c21b04712143b70071943c1e
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30905368"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412546"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-db-using-azure-powershell"></a>使用 Azure PowerShell 从本地 SQL Server 迁移到 Azure SQL DB
 在本文中，请使用 Microsoft Azure PowerShell 将还原为 SQL Server 2016 或更高版本的本地实例的 **Adventureworks2012** 数据库迁移到 Azure SQL 数据库。 可以使用 Microsoft Azure PowerShell 中的 `AzureRM.DataMigration` 模块，将数据库从本地 SQL Server 实例迁移到 Azure SQL 数据库。
@@ -41,7 +41,7 @@ ms.locfileid: "30905368"
 - 使用 [Install-Module PowerShell cmdlet](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1) 从 PowerShell 库下载并安装 AzureRM.DataMigration 模块
 - 用于连接到源 SQL Server 实例的凭据必须具有 [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) 权限。
 - 用于连接到目标 Azure SQL DB 实例的凭据必须具有目标 Azure SQL 数据库的 CONTROL DATABASE 权限。
-- 如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+- 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="log-in-to-your-microsoft-azure-subscription"></a>登录到 Microsoft Azure 订阅
 根据[使用 Azure PowerShell 登录](https://docs.microsoft.com/powershell/azure/authenticate-azureps?view=azurermps-4.4.1)一文中的说明，使用 PowerShell 登录到 Azure 订阅。

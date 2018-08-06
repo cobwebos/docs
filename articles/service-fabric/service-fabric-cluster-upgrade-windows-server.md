@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 20526c1ddd55671f815dc39b3e03c4f9b2f91788
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9c2534644a0627bac9765621691cbba6ffccfe35
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208645"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39391305"
 ---
 # <a name="upgrade-your-standalone-azure-service-fabric-cluster-on-windows-server"></a>升级 Windows Server 上的独立 Azure Service Fabric 群集 
 > [!div class="op_single_selector"]
@@ -83,7 +83,7 @@ ms.locfileid: "34208645"
     应会看到类似于下面的输出：
 
     ![获取 Service Fabric 版本][getfabversions]
-3. 使用 [Start-ServiceFabricClusterUpgrade](https://msdn.microsoft.com/library/mt125872.aspx) Windows PowerShell 命令，开始将群集升级到可用的版本。
+3. 使用 [Start-ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterupgrade) Windows PowerShell 命令，开始将群集升级到可用的版本。
 
     ```Powershell
 
@@ -101,9 +101,9 @@ ms.locfileid: "34208645"
     Get-ServiceFabricClusterUpgrade
     ```
 
-    如果不符合现行的群集运行状况策略，则回滚升级。 若要为 Start-ServiceFabricClusterUpgrade 命令指定自定义运行状况策略，请参阅 [Start-ServiceFabricClusterUpgrade](https://msdn.microsoft.com/library/mt125872.aspx) 的文档。
+    如果不符合现行的群集运行状况策略，则回滚升级。 若要为 Start-ServiceFabricClusterUpgrade 命令指定自定义运行状况策略，请参阅 [Start-ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterupgrade) 的文档。
 
-解决造成回滚的问题后，请遵循前面所述的相同步骤再次启动升级。
+    解决造成回滚的问题后，请遵循前面所述的相同步骤再次启动升级。
 
 ### <a name="upgrade-clusters-that-have-no-connectivity-to-download-the-latest-code-and-configuration"></a>升级*未建立网络连接*，无法下载最新代码和配置的群集
 如果群集节点未与 [Microsoft 下载中心](http://download.microsoft.com)建立 Internet 连接，请使用以下步骤将群集升级到支持的版本。
@@ -121,7 +121,7 @@ ms.locfileid: "34208645"
 
         "fabricClusterAutoupgradeEnabled": false,
 
-有关用法详细信息，请参阅 [Start-ServiceFabricClusterConfigurationUpgrade PowerShell 命令](https://msdn.microsoft.com/library/mt788302.aspx)。 在启动配置升级之前，请务必在 JSON 中更新“clusterConfigurationVersion”。
+有关用法详细信息，请参阅 [Start-ServiceFabricClusterConfigurationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade) PowerShell 命令。 在启动配置升级之前，请务必在 JSON 中更新“clusterConfigurationVersion”。
 
 ```powershell
 
@@ -131,7 +131,7 @@ ms.locfileid: "34208645"
 
 #### <a name="cluster-upgrade-workflow"></a>群集升级工作流
 
-1. 从群集中的一个节点运行 Get-ServiceFabricClusterUpgrade 并记下 TargetCodeVersion。
+1. 从群集中的一个节点运行 [Get-ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterupgrade) 并记下 *TargetCodeVersion*。
 
 2. 从连接到 Internet 的计算机运行以下命令，以列出与当前版本兼容的所有升级版本，并从关联的下载链接下载相应的程序包：
 
@@ -182,9 +182,9 @@ ms.locfileid: "34208645"
     Get-ServiceFabricClusterUpgrade
     ```
 
-    如果不符合现行的群集运行状况策略，则回滚升级。 若要为 Start-ServiceFabricClusterUpgrade 命令指定自定义运行状况策略，请参阅 [Start-ServiceFabricClusterUpgrade](https://msdn.microsoft.com/library/mt125872.aspx) 的文档。
+    如果不符合现行的群集运行状况策略，则回滚升级。 若要为 Start-ServiceFabricClusterUpgrade 命令指定自定义运行状况策略，请参阅 [Start-ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterupgrade) 的文档。
 
-解决造成回滚的问题后，请遵循前面所述的相同步骤再次启动升级。
+    解决造成回滚的问题后，请遵循前面所述的相同步骤再次启动升级。
 
 
 ## <a name="upgrade-the-cluster-configuration"></a>升级群集配置
@@ -205,7 +205,7 @@ ms.locfileid: "34208645"
 
 部分配置不能升级（如终结点、群集名称、节点 IP 等）。将会针对旧配置测试新的群集配置 JSON ，并在出现问题时在 PowerShell 窗口中引发错误。
 
-若要升级群集配置，请运行 Start-ServiceFabricClusterConfigurationUpgrade。 配置升级由升级域处理。
+若要升级群集配置，请运行 [Start-ServiceFabricClusterConfigurationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade)。 配置升级由升级域处理。
 
 ```powershell
 

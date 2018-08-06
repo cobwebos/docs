@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 06/22/2018
 ms.author: srrengar
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 79e5622dd73e53854204675b435e99d187a3ab26
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 9f857c23b5500bc7790a0ff7fcf81eaec51f37c9
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39075251"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358244"
 ---
 # <a name="monitoring-and-diagnostics"></a>监视和诊断
 Azure Service Fabric 网格是一个完全托管的服务，由此开发者可部署微服务应用程序，而无需管理虚拟机、存储或网络。 Service Fabric 网格的监控和诊断分为三大类型诊断数据：
@@ -40,7 +40,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --app-name <nameOfApp> 
 ```
 
 > [!NOTE]
-> 可使用“az mesh servicereplica”命令获取副本名称。 副本名称是从 0 开始递增的数字。*
+> 可使用“az mesh service-replica”命令获取副本名称。 副本名称是从 0 开始递增的数字。*
 
 以下是在投票应用程序的 VotingWeb.Code 容器中查看日志的示例：
 

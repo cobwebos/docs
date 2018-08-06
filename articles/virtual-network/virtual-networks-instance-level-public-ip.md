@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/10/2016
+ms.date: 07/24/2018
 ms.author: genli
-ms.openlocfilehash: a10bf96f06c3917913c479d81e8772cb86cfe36e
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 8a6256ab9c511342b536919c69faed30d40a256d
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005260"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282584"
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>实例层级公共 IP（经典）概述
 实例层级公共 IP (ILPIP) 是可直接分配至 VM 或云服务角色实例（而非 VM 或角色实例所在的云服务）的公共 IP 地址。 ILPIP 不会取代分配给云服务的虚拟 IP (VIP)。 而是可以用来直接连接到 VM 或角色实例的其他 IP 地址。
@@ -144,6 +144,16 @@ Get-AzureVM -ServiceName FTPService -Name FTPInstance | Set-AzurePublicIP -Publi
     </ServiceConfiguration>
     ```
 3. 通过完成[如何配置云服务](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg)文章中的步骤，上传云服务的 .cscfg 文件。
+
+### <a name="how-to-retrieve-ilpip-information-for-a-cloud-service"></a>如何检索云服务的 ILPIP 信息
+若要查看每个角色实例的 ILPIP 信息，请运行以下 PowerShell 命令，并观察 *PublicIPAddress* 和 *PublicIPName* 的值：
+
+```powershell
+$roles = Get-AzureRole -ServiceName PaaSFTPService -Slot Production -RoleName WorkerRole1 -InstanceDetails
+
+$roles[0].PublicIPAddress
+$roles[1].PublicIPAddress
+```
 
 ## <a name="next-steps"></a>后续步骤
 * 了解 [IP 寻址](virtual-network-ip-addresses-overview-classic.md)在经典部署模型中的工作原理。

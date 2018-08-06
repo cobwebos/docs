@@ -1,21 +1,20 @@
 ---
-title: 免费试用语音服务 | Microsoft Docs
+title: 免费试用语音服务
 description: 了解可以如何免费试用语音服务。
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 3feef04694336d9173b419285a96fcaef543e18f
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: ff9a258d42f25ded82545909cdeade119548148e
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "35366988"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325201"
 ---
 # <a name="try-the-speech-service-for-free"></a>免费试用语音服务
 
@@ -130,10 +129,8 @@ ms.locfileid: "35366988"
 
 ## <a name="next-steps"></a>后续步骤
 
-下载 SDK 和一些示例代码来体验语音服务。
+完成我们的 10 分钟快速入门之一，或查看我们的 SDK 示例。
 
 > [!div class="nextstepaction"]
-> [语音 SDK](speech-sdk.md)
-
-> [!div class="nextstepaction"]
-> [代码示例](samples.md)
+> [快速入门：在 C# 中识别语音](quickstart-csharp-dotnet-windows.md)
+> [语音 SDK 示例](speech-sdk.md#get-the-samples)

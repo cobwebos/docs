@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: c7a5031fab10f44809f9533e43c3596d46dc77e3
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: c0c2e1748518b794916f1950c288ed1f4df628aa
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346019"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39309055"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录 
 Azure SQL 数据库可发出指标和诊断日志，以便更轻松地进行监视。 可配置 SQL 数据库，将资源使用情况、辅助角色和会话以及连接性存储到以下 Azure 资源之一：
@@ -267,9 +267,11 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |弹性池|eDTU 百分比、已用 eDTU、eDTU 限制、CPU 百分比、物理数据读取百分比、日志写入百分比、会话百分比、辅助角色百分比、存储、存储百分比、存储限制、XTP存储百分比 |
 |||
 
+### <a name="logs"></a>日志
+
 ### <a name="query-store-runtime-statistics"></a>查询数据存储运行时统计信息
 
-|属性|说明|
+|属性|Description|
 |---|---|
 |TenantId|租户 ID。|
 |SourceSystem|始终是：Azure|
@@ -320,7 +322,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="query-store-wait-statistics"></a>查询存储等待统计信息
 
-|属性|说明|
+|属性|Description|
 |---|---|
 |TenantId|租户 ID。|
 |SourceSystem|始终是：Azure|
@@ -358,7 +360,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="errors-dataset"></a>错误数据集
 
-|属性|说明|
+|属性|Description|
 |---|---|
 |TenantId|租户 ID。|
 |SourceSystem|始终是：Azure|
@@ -387,7 +389,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="database-wait-statistics-dataset"></a>数据库等待统计数据集
 
-|属性|说明|
+|属性|Description|
 |---|---|
 |TenantId|租户 ID。|
 |SourceSystem|始终是：Azure|
@@ -416,7 +418,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="time-outs-dataset"></a>超时数据集
 
-|属性|说明|
+|属性|Description|
 |---|---|
 |TenantId|租户 ID。|
 |SourceSystem|始终是：Azure|
@@ -439,7 +441,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="blockings-dataset"></a>阻塞数据集
 
-|属性|说明|
+|属性|Description|
 |---|---|
 |TenantId|租户 ID。|
 |SourceSystem|始终是：Azure|
@@ -460,6 +462,57 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |resource_owner_type_s|锁所有者。|
 |blocked_process_filtered_s|阻止的进程报告 XML。|
 |duration_d|锁定持续时间（以毫秒为单位）。|
+
+### <a name="deadlocks-dataset"></a>死锁数据集
+
+|属性|Description|
+|---|---|
+|TenantId|租户 ID。|
+|SourceSystem|始终是：Azure|
+|TimeGenerated [UTC] |记录日志时的时间戳。|
+|Type|始终是：AzureDiagnostics|
+|ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL|
+|类别|类别的名称。 始终是：Deadlocks|
+|OperationName|操作的名称。 始终是：DeadlockEvent|
+|资源|资源的名称。|
+|ResourceType|资源类型的名称。 始终是：SERVERS/DATABASES|
+|SubscriptionId|数据库所属的订阅 GUID。|
+|resourceGroup|数据库所属的资源组的名称。|
+|LogicalServerName_s|数据库所属的服务器的名称。|
+|ElasticPoolName_s|数据库所属的弹性池的名称（如果存在）。|
+|DatabaseName_s|数据库的名称。 |
+|ResourceId|资源 URI。|
+|deadlock_xml_s|死锁报告 XML。|
+
+### <a name="automatic-tuning-dataset"></a>自动优化数据集
+
+|属性|Description|
+|---|---|
+|TenantId|租户 ID。|
+|SourceSystem|始终是：Azure|
+|TimeGenerated [UTC]|记录日志时的时间戳。|
+|Type|始终是：AzureDiagnostics|
+|ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL|
+|类别|类别的名称。 始终是：AutomaticTuning|
+|资源|资源的名称。|
+|ResourceType|资源类型的名称。 始终是：SERVERS/DATABASES|
+|SubscriptionId|数据库所属的订阅 GUID。|
+|resourceGroup|数据库所属的资源组的名称。|
+|LogicalServerName_s|数据库所属的服务器的名称。|
+|LogicalDatabaseName_s|数据库的名称。|
+|ElasticPoolName_s|数据库所属的弹性池的名称（如果存在）。|
+|DatabaseName_s|数据库的名称。|
+|ResourceId|资源 URI。|
+|RecommendationHash_s|自动优化建议的唯一哈希值。|
+|OptionName_s|自动优化操作。|
+|Schema_s|数据库架构。|
+|Table_s|受影响的表。|
+|IndexName_s|索引名称。|
+|IndexColumns_s|列名称。|
+|IncludedColumns_s|包括的列。|
+|EstimatedImpact_s|自动优化建议 JSON 的估计影响。|
+|Event_s|自动优化事件的类型。|
+|Timestamp_t|上次更新时间戳。|
 
 ### <a name="intelligent-insights-dataset"></a>智能见解数据集
 详细了解 [Intelligent Insights 日志格式](sql-database-intelligent-insights-use-diagnostics-log.md)。

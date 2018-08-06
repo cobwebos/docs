@@ -3,7 +3,7 @@ title: Azure Functions 的计时器触发器
 description: 了解如何在 Azure Functions 中使用计时器触发器。
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -15,14 +15,14 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/27/2017
-ms.author: tdykstra
+ms.author: glenga
 ms.custom: ''
-ms.openlocfilehash: a4895c0c58d1cdb0430b7418ba24dd85157ecdd3
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 8459c08866fb71e755663aaddd32015af8b0d1df
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308153"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345236"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions 的计时器触发器 
 
@@ -205,13 +205,13 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWr
 
 ## <a name="cron-expressions"></a>CRON 表达式 
 
-Azure Functions 计时器触发器的 CRON 表达式包含以下六个字段： 
+Azure Functions 使用 [NCronTab](https://github.com/atifaziz/NCrontab) 库来解释 CRON 表达式。 CRON 表达式包含六个字段：
 
 `{second} {minute} {hour} {day} {month} {day-of-week}`
 
 每个字段可以具有下列类型之一的值：
 
-|Type  |示例  |何时触发  |
+|类型  |示例  |何时触发  |
 |---------|---------|---------|
 |一个具体值 |<nobr>"0 5 * * * *"</nobr>|在 hh:05:00，其中 hh 表示每小时（每小时一次）|
 |所有值 (`*`)|<nobr>"0 * 5 * * *"</nobr>|在每天的 5:mm:00，其中 mm 表示该小时的每分钟（一天 60 次）|
@@ -219,7 +219,12 @@ Azure Functions 计时器触发器的 CRON 表达式包含以下六个字段：
 |一组值（`,` 运算符）|<nobr>"5,8,10 * * * * *"</nobr>|在 hh:mm:05、hh:mm:08 和 hh:mm:10，其中 hh:mm 表示每小时的每分钟（每分钟 3 次）|
 |一个间隔值（`/` 运算符）|<nobr>"0 */5 * * * *"</nobr>|在 hh:05:00、hh:10:00、hh:15:00，依此类推，直到 hh:55:00，其中 hh 表示每小时（每小时 12 次）|
 
-若要指定月份或星期，可以使用三字母缩写而不是数字值。 例如，使用 Jan 表示一月份，或使用 Sun 表示周日。
+若要指定月份或天，可以使用数字值、名称或名称的缩写：
+
+* 对于天，数字值为 0 到 6，其中 0 表示星期日。
+* 名称采用英语。 例如：`Monday`、`January`。
+* 名称不区分大小写。
+* 名称可缩写。 三字母是建议的缩写长度。  例如：`Mon`、`Jan`。 
 
 ### <a name="cron-examples"></a>CRON 示例
 
@@ -227,13 +232,13 @@ Azure Functions 计时器触发器的 CRON 表达式包含以下六个字段：
 
 |示例|何时触发  |
 |---------|---------|
-|"0 */5 * * * *"|每五分钟一次|
-|"0 0 * * * *"|每小时一次（在每小时的开头）|
-|"0 0 */2 * * *"|每两小时一次|
-|"0 0 9-17 * * *"|从上午 9 点到下午 5 点每小时一次|
-|"0 30 9 * * *"|每天上午 9:30|
-|"0 30 9 * * 1-5"|每个工作日的上午 9:30|
-
+|`"0 */5 * * * *"`|每五分钟一次|
+|`"0 0 * * * *"`|每小时一次（在每小时的开头）|
+|`"0 0 */2 * * *"`|每两小时一次|
+|`"0 0 9-17 * * *"`|从上午 9 点到下午 5 点每小时一次|
+|`"0 30 9 * * *"`|每天上午 9:30|
+|`"0 30 9 * * 1-5"`|每个工作日的上午 9:30|
+|`"0 30 9 * Jan Mon"`|在一月份每星期一的上午 9:30|
 >[!NOTE]   
 >你可以在线找到 CRON 表达式示例，但它们中的许多都省略了 `{second}` 字段。 如果从这些字段之一复制，请添加缺少的 `{second}` 字段。 通常，你希望该字段的值为零，而不是星号。
 
@@ -246,13 +251,13 @@ CRON 表达式使用的默认时区为协调世界时 (UTC)。 若要让 CRON �
 例如，东部标准时间是 UTC-05:00。 若要让计时器触发器每天在美国东部时间上午 10:00 触发，可使用表示 UTC 时区的以下 CRON 表达式：
 
 ```json
-"schedule": "0 0 15 * * *",
+"schedule": "0 0 15 * * *"
 ``` 
 
 或者为你的函数应用创建一个名为 `WEBSITE_TIME_ZONE` 的应用设置并将值设置为 **Eastern Standard Time**。  然后使用以下 CRON 表达式： 
 
 ```json
-"schedule": "0 0 10 * * *",
+"schedule": "0 0 10 * * *"
 ``` 
 
 ## <a name="timespan"></a>TimeSpan

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: msfussell
-ms.openlocfilehash: 4d248724597a411f7253be1ccca0be6b85db95af
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 3c8eac98414fa43213136940fb4c91694a78a2c1
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237173"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397520"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric 中的 DNS 服务
 DNS 服务是可选的系统服务，可以在群集中启用，用于发现使用 DNS 协议的其他服务。 
@@ -159,7 +159,7 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
     -ServiceDnsName service1.application1
 ```
 
-## <a name="making-dns-queries-on-a-stateful-service-partition"></a>针对有状态服务分区发出 DNS 查询
+## <a name="preview-making-dns-queries-on-a-stateful-service-partition"></a>[预览版] 针对有状态服务分区发出 DNS 查询
 从 Service Fabric 版本 6.3 开始，Service Fabric DNS 服务支持针对服务分区的查询。
 
 对于 DNS 查询中使用的分区，适用以下命名限制：
@@ -249,6 +249,8 @@ public class ValuesController : Controller
 }
 ```
 
+## <a name="known-issues"></a>已知问题
+* 对于 Service Fabric 版本 6.3 及更高版本，对于 DNS 名称中包含连字符的服务名称，DNS 查找存在问题。 有关此问题的详细信息，请跟踪以下 [GitHub 问题](https://github.com/Azure/service-fabric-issues/issues/1197)。 此问题的修补程序将在接下来的 6.3 更新中提供。 
 
 ## <a name="next-steps"></a>后续步骤
 通过[连接服务并与服务进行通信](service-fabric-connect-and-communicate-with-services.md)，了解有关群集内服务通信的详细信息

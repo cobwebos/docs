@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/01/2018
 ms.author: ninarn
-ms.openlocfilehash: 62b5f7470491027dbf5a1c60ee478268e969d1a8
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 1da4e8d94007653a43f187322c1d0e4077e337fa
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113488"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398931"
 ---
 # <a name="troubleshoot-diagnose-and-prevent-sql-connection-errors-and-transient-errors-for-sql-database"></a>排查、诊断和防止 SQL 数据库中的 SQL 连接错误和暂时性错误
 本文介绍如何防止、排查、诊断和减少客户端应用程序在与 Azure SQL 数据库交互时发生的连接错误和暂时性错误。 了解如何配置重试逻辑、生成连接字符串以及调整其他连接设置。
@@ -181,17 +181,21 @@ ms.locfileid: "39113488"
 
 <a id="d-connection-ado-net-4-5" name="d-connection-ado-net-4-5"></a>
 
-### <a name="connection-adonet-461"></a>连接：ADO.NET 4.6.1
-如果程序使用 **System.Data.SqlClient.SqlConnection** 等 ADO.NET 类来连接到 SQL 数据库，我们建议使用 .NET Framework 4.6.1 或更高版本。
+### <a name="connection-adonet-462-or-later"></a>连接：ADO.NET 4.6.2 或更高版本
+如果程序使用 **System.Data.SqlClient.SqlConnection** 等 ADO.NET 类来连接到 SQL 数据库，我们建议使用 .NET Framework 4.6.2 或更高版本。
 
-ADO.NET 4.6.1：
+从 ADO.NET 4.6.2 开始：
+
+- 将立即为 Azure SQL 数据库重试连接打开尝试，从而改进启用了云的应用的性能。
+
+从 ADO.NET 4.6.1 开始：
 
 * 对于 SQL 数据库，使用 **SqlConnection.Open** 方法打开连接可以获得更高的可靠性。 此 **Open** 方法现在结合了应对暂时性故障的最佳效果重试机制，用于处理连接超时期间发生的特定错误。
 * 支持连接池，其中包括有效验证提供给程序的连接对象是否正常运行的功能。
 
 若要从连接池使用连接对象，我们建议，如果程序未立即使用连接，应暂时关闭连接。 重新打开连接的开销并不高，但要创建新连接。
 
-如果使用 ADO.NET 4.0 或更低版本，我们建议升级到最新的 ADO.NET。 从 2015 年 11 月开始，可以[下载 ADO.NET 4.6.1](http://blogs.msdn.com/b/dotnet/archive/2015/11/30/net-framework-4-6-1-is-now-available.aspx)。
+如果使用 ADO.NET 4.0 或更低版本，我们建议升级到最新的 ADO.NET。 从 2018 年 8 月开始，可以[下载 ADO.NET 4.6.2](https://blogs.msdn.microsoft.com/dotnet/2018/04/30/announcing-the-net-framework-4-7-2/)。
 
 <a id="e-diagnostics-test-utilities-connect" name="e-diagnostics-test-utilities-connect"></a>
 

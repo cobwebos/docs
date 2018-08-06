@@ -1,27 +1,26 @@
 ---
-title: 通过语音服务使用“文本转语音”功能 | Microsoft Docs
+title: 通过语音服务使用“文本转语音”功能
 description: 了解如何使用语音服务中的“文本转语音”功能。
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 84b577cd00d333717a7a5ad1f66182605429f9f1
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 21157af9ad6361234ffa9b927da64baab505f624
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213327"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281508"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>使用语音服务中的“文本转语音”功能
 
 通过简单的 HTTP 请求即可获取语音服务的“文本转语音”功能。 通过 POST 方法将要口述的文本发布到相应的终结点，然后服务即会返回包含合成语音的音频文件 (`.wav`)。 之后，应用程序可根据需要使用此音频。
 
-文本转语音的 POST 请求的正文可为纯文本（ASCII 或 UTF8），也可为 [SSML](speech-synthesis-markup.md) 文档。 使用默认语音说出纯文本请求。 多数情况下建议使用 SSML 正文。 HTTP 请求必须包含[授权](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#authentication)令牌。 
+文本转语音的 POST 请求的正文可为纯文本（ASCII 或 UTF8），也可为 [SSML](speech-synthesis-markup.md) 文档。 使用默认语音说出纯文本请求。 多数情况下建议使用 SSML 正文。 HTTP 请求必须包含[授权](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#authentication)令牌。 
 
 区域性的“文本转语音”终结点显示如下。 请使用适合你的订阅的终结点。
 

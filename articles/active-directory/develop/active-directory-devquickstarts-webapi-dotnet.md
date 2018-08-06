@@ -17,12 +17,12 @@ ms.date: 01/23/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: e2537ab677527555fab9801b3dc5143f749a8b57
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 4c5f0bc7f6f23ce16a3e1d6c7ecac1692ca43d9b
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318752"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398226"
 ---
 # <a name="azure-ad-net-web-api-getting-started"></a>Azure AD .NET Web API 入门
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -48,9 +48,10 @@ ms.locfileid: "36318752"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在顶部栏上，单击帐户。 在“目录”列表中，选择要在其中注册应用程序的 Azure AD 租户。
+2. 通过以下方式选择 Azure AD 租户：在页面右上角单击你的帐户，单击“切换目录”导航，然后选择合适的租户。
+ * 如果你的帐户下只有一个 Azure AD 租户，或者已选择了合适的 Azure AD 租户，请跳过此步骤。
 
-3. 在左窗格中，单击“更多服务”，然后选择“Azure Active Directory”。
+3. 在左侧的导航窗格中，单击“Azure Active Directory”。
 
 4. 单击“应用注册”，并选择“添加”。
 

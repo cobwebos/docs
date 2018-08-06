@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
-ms.date: 07/20/2018
+ms.date: 07/30/2018
 ms.author: diberry
-ms.openlocfilehash: 9ad1d9e1543c3d9a74025fb23bd1767478b53b4b
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 355c1edd4fa7433e68a9c0e903f4f782203326fe
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238448"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365872"
 ---
 # <a name="tutorial-improve-app-with-patterns"></a>教程：使用模式来改进应用
 
@@ -23,32 +23,34 @@ ms.locfileid: "39238448"
 
 > [!div class="checklist"]
 * 如何识别模式是否对应用有帮助
-* 如何创建模式 
+* 如何创建模式
 * 如何验证模式预测改进
 
-本文需要一个免费的 [LUIS](luis-reference-regions.md) 帐户，以便创作 LUIS 应用程序。
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>开始之前
+
 如果尚未获得 [批处理测试](luis-tutorial-batch-testing.md)教程中所述的人力资源应用，请将 JSON [导入](luis-how-to-start-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。 要导入的应用位于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-batchtest-HumanResources.json) GitHub 存储库中。
 
 若要保留原始人力资源应用，请在[设置](luis-how-to-manage-versions.md#clone-a-version)页上克隆版本，并将其命名为 `patterns`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 
 
-## <a name="patterns-teach-luis-common-utterances-with-fewer-examples"></a>模式通过较少实例对 LUIS 进行常见陈述的训练
+## <a name="patterns-teach-luis-common-utterances-with-fewer-examples"></a>模式通过较少实例对 LUIS 进行常见话语的训练
+
 由于人力资源域的性质，可通过几种常见方式询问组织中的员工关系。 例如：
 
-```
-Who does Jill Jones report to?
-Who reports to Jill Jones? 
-```
+|话语|
+|--|
+|Jill Jones 向谁报告？|
+|谁向 Jill Jones 报告？|
 
-在未提供许多陈述示例的情况下，这些陈述过于相近而无法确定每个陈述的上下文唯一性。 通过为意向添加模式，LUIS 可了解意向的常见陈述模式，而无需提供许多陈述示例。 
+在未提供许多话语示例的情况下，这些话语过于相近而无法确定每个话语的上下文唯一性。 通过为意向添加模式，LUIS 可了解意向的常见话语模式，而无需提供许多话语示例。 
 
-此意向的示例模板陈述包括：
+此意向的示例模板话语包括：
 
-```
-Who does {Employee} report to?
-Who reports to {Employee}? 
-```
+|示例模板话语|
+|--|
+|{Employee} 向谁报告？|
+|谁向 {Employee} 报告？|
 
 该模式通过模板话语示例提供，该示例包括用于标识实体和可忽略文本的语法。 模式是正则表达式匹配和机器学习的组合。  模板话语示例和意向话语使 LUIS 能够更好地理解哪些话语符合意向。
 
@@ -59,9 +61,10 @@ Who reports to {Employee}?
 请记住，员工是在[列表实体教程](luis-quickstart-intent-and-list-entity.md)中创建的。
 
 ## <a name="create-new-intents-and-their-utterances"></a>创建新意向及其话语
+
 添加两个新的意向：`OrgChart-Manager` 和 `OrgChart-Reports`。 LUIS 向客户端应用返回预测后，意向名称可以用作客户端应用中的函数名称，并且“员工”实体可以用作该函数的参数。
 
-```
+```Javascript
 OrgChart-Manager(employee){
     ///
 }
@@ -75,9 +78,9 @@ OrgChart-Manager(employee){
 
     ![创建新消息弹出窗口](media/luis-tutorial-pattern/hr-create-new-intent-popup.png)
 
-4. 将示例陈述添加到意向。
+4. 将示例话语添加到意向。
 
-    |示例陈述|
+    |示例话语|
     |--|
     |John W. Smith 是谁的下属？|
     |John W. Smith 向谁报告？|
@@ -85,7 +88,7 @@ OrgChart-Manager(employee){
     |Jill Jones 直接向谁报告？|
     |Jill Jones 主管是谁？|
 
-    [![](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png "LUIS 的屏幕截图，将新的话语添加到意向")](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png#lightbox)
+    [![LUIS 向意向中添加新话语屏幕截图](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png "LUIS 向意向中添加新话语屏幕截图")](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png#lightbox)
 
     如果 keyPhrase 实体在意向的话语中而不是员工实体中标记，请不要担心。 两者都已在“测试”窗格和终结点中正确预测。 
 
@@ -95,9 +98,9 @@ OrgChart-Manager(employee){
 
 7. 在弹出对话框中输入 `OrgChart-Reports`，然后选择“完成”。
 
-8. 将示例陈述添加到意向。
+8. 将示例话语添加到意向。
 
-    |示例陈述|
+    |示例话语|
     |--|
     |John W. Smith 的下属是谁？|
     |谁向 John W. Smith 报告？|
@@ -106,37 +109,22 @@ OrgChart-Manager(employee){
     |Jill Jones 监督谁？|
 
 ## <a name="caution-about-example-utterance-quantity"></a>有关示例话语数量的警告
+
 这些意向中的示例话语数量不足以正确定型 LUIS。 在实际应用中，每个意向应至少有 15 个话语，具有不同的单词选择和话语长度。 这几个话语是专门为突出显示模式而选择的。 
 
 ## <a name="train-the-luis-app"></a>训练 LUIS 应用
-新意向和话语需要定型。 
 
-1. 在 LUIS 网站的右上方，选择“训练”按钮。
-
-    ![训练按钮的图像](./media/luis-tutorial-pattern/hr-train-button.png)
-
-2. 当网站顶部出现确认成功的绿色状态栏时，表示训练已完成。
-
-    ![成功通知栏的图像](./media/luis-tutorial-pattern/hr-trained-inline.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>发布应用以获取终结点 URL
-若要获取聊天机器人或其他应用程序中的 LUIS 预测，需要发布应用。 
 
-1. 在 LUIS 网站的右上方，选择“发布”按钮。 
-
-2. 选择“生产”槽和“发布”按钮。
-
-    [![“发布”页的屏幕截图，其中已突出显示“发布到生产槽”按钮](./media/luis-tutorial-pattern/hr-publish-to-production.png)](./media/luis-tutorial-pattern/hr-publish-to-production.png#lightbox)
-
-3. 当网站顶部出现确认成功的绿色状态栏时，表示发布已完成。
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-a-different-utterance"></a>使用不同的话语查询终结点
-1. 在“发布”页的底部，选择“终结点”链接。 此操作会打开另一个浏览器窗口，其地址栏中包含终结点 URL。 
 
-    [![“发布”页的屏幕截图，其中已突出显示终结点 URL](./media/luis-tutorial-pattern/hr-publish-select-endpoint.png)](./media/luis-tutorial-pattern/hr-publish-select-endpoint.png#lightbox)
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-
-2. 将光标定位到地址中 URL 的末尾，并输入 `Who is the boss of Jill Jones?`。 最后一个查询字符串参数为 `q`，表示陈述**查询**。 
+2. 将光标定位到地址中 URL 的末尾，并输入 `Who is the boss of Jill Jones?`。 最后一个查询字符串参数为 `q`，表示话语**查询**。 
 
     ```JSON
     {
@@ -225,7 +213,9 @@ OrgChart-Manager(employee){
 
 使用模式使正确意向的分数在百分比上显着提高，并且距离下一个最高分数更远。 
 
-## <a name="add-the-template-utterances"></a>添加模板陈述
+使此第二个浏览器窗口保持打开。 本教程稍后将使用该窗口。 
+
+## <a name="add-the-template-utterances"></a>添加模板话语
 
 1. 选择顶部菜单中的“生成”。
 
@@ -242,8 +232,8 @@ OrgChart-Manager(employee){
     |{Employee} 的主管是谁[?]|
     |{Employee} 的老板是谁[?]|
 
-    `{Employee}` 语法可标记模板陈述中的实体位置以及它是哪个实体。 
-    
+    `{Employee}` 语法可标记模板话语中的实体位置以及它是哪个实体。 
+
     具有角色的实体使用包含角色名称的语法，并在[单独的角色教程](luis-tutorial-pattern-roles.md)中介绍。 
 
     可选的语法 `[]` 标记可选的单词或标点。 LUIS 匹配话语，忽略括号内的可选文本。
@@ -251,8 +241,6 @@ OrgChart-Manager(employee){
     如果键入模板话语，LUIS 会帮助你在输入左大括号 `{` 时填充实体。
 
     [![为意向输入模板话语的屏幕截图](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png)](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png#lightbox)
-
-
 
 4. 选择“OrgChart-Reports”意向，然后一次输入一个以下模板话语，在输入每个模板话语后选择 Enter：
 
@@ -269,9 +257,9 @@ OrgChart-Manager(employee){
 
 1. 再次定型并发布应用。
 
-2. 在“发布”页的底部，选择“终结点”链接。 此操作会打开另一个浏览器窗口，其地址栏中包含终结点 URL。 
+2. 将浏览器选项卡切换回终结点 URL 选项卡。
 
-3. 将光标定位到地址中 URL 的末尾，并输入 `Who is the boss of Jill Jones?` 作为话语。 最后一个查询字符串参数为 `q`，表示陈述**查询**。 
+3. 将光标定位到地址中 URL 的末尾，并输入 `Who is the boss of Jill Jones?` 作为话语。 最后一个查询字符串参数为 `q`，表示话语**查询**。 
 
     ```JSON
     {
@@ -357,10 +345,86 @@ OrgChart-Manager(employee){
     }
     ```
 
-意向预测现在明显更高。 
+意向预测现在明显更高。
+
+## <a name="working-with-optional-text-and-prebuilt-entities"></a>使用可选文本和预构建的实体
+
+本教程中前面的模式模板话语包含几个可选文本示例，例如字母 s 的所有格 `'s` 的使用以及问号 `?` 的使用。 假设终结点话语表明，经理和人力资源代表在查找历史数据以及计划在将来某个日期在公司内进行的员工移动。
+
+示例话语如下：
+
+|意向|包含可选文本和预构建的实体的示例话语|
+|:--|:--|
+|OrgChart-Manager|`Who was Jill Jones manager on March 3?`|
+|OrgChart-Manager|`Who is Jill Jones manager now?`|
+|OrgChart-Manager|`Who will be Jill Jones manager in a month?`|
+|OrgChart-Manager|`Who will be Jill Jones manager on March 3?`|
+
+这些示例每个都使用 LUIS 需要正确预测的动词时态 `was`、`is`、`will be` 以及日期 `March 3`、`now` 和 `in a month`。 注意，除了 `in` 和 `on` 之外，最后两个示例使用了几乎相同的文本。
+
+示例模板话语如下：
+|意向|包含可选文本和预构建的实体的示例话语|
+|:--|:--|
+|OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?`]|
+|OrgChart-Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
+|OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
+|OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
+
+可选语法方括号 `[]` 的使用使此可选文本易于添加到模板话语中，并且可以嵌套到另一个级别 `[[]]` 并包括实体或文本。
+
+**问：为何不能将最后两句示例话语合并为单个模板话语？** 模式模板不支持 OR 语法。 为了同时捕获 `in` 版本和 `on` 版本，每句话语都必须作为单独的模板话语。
+
+**问：为何所有 `w` 字母（每句模板话语中的第一个字母）都是小写？它们不应当任选使用大写或小写吗？** 由客户端应用程序提交到查询终结点的话语将转换为小写。 模板话语可以为大写或小写，终结点话语也可以任意使用大写或小写。 比较始终在转换为小写后进行。
+
+**问：如果 March 3 被同时预测为数字 `3` 和日期 `March 3`，预构建的数字为何不是模板话语的一部分？** 模板话语从上下文来看使用的是日期，无论是逐字表示为 `March 3` 还是抽象为 `in a month`. 日期可以包含数字，但数字不一定会被视为日期。 请始终使用能够最好地表示你要在预测 JSON 结果中返回的类型的实体。  
+
+**问：如果使用了措辞不当的话语（例如 `Who will {Employee}['s] manager be on March 3?`），将会怎样？** 像这种在语法上不同的动词时态（其中 `will` 和 `be` 是独立的）需要作为一句新的模板话语。 现有模板话语将不会匹配它。 虽然话语的意向未更改，但是话语中的单词位置已更改。 此更改会影响 LUIS 中的预测。
+
+**请记住：将首先查找实体，然后再匹配模式。**
+
+## <a name="edit-the-existing-pattern-template-utterance"></a>编辑现有模式模板话语
+
+1. 在 LUIS 网站上，在顶部的菜单中选择“生成”，然后在左侧菜单中选择“模式”。 
+
+2. 找到现有模板话语 `Who is {Employee}['s] manager[?]`，并选择右侧的省略号 (***...***)。 
+
+3. 从弹出菜单中选择“编辑”。 
+
+4. 将模板话语更改为：`who is {Employee}['s] manager [[on]{datetimeV2}?]]`
+
+## <a name="add-new-pattern-template-utterances"></a>添加新的模式模板话语
+
+1. 仍然停留在“生成”的“模式”部分中，添加几个新的模式模板话语。 从“意向”下拉菜单中选择“OrgChart-Manager”，然后输入下面的每条模板话语：
+
+    |意向|包含可选文本和预构建的实体的示例话语|
+    |--|--|
+    |OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?]`|
+    |OrgChart-Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
+    |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
+    |OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
+
+2. 将应用定型。
+
+3. 选择面板顶部的“测试”以打开测试面板。 
+
+4. 输入多条测试话语来验证模式是否匹配以及意向得分是否很高。 
+
+    输入第一条话语后，选择结果下的“检查”，以便可以看到所有预测结果。
+
+    |话语|
+    |--|
+    |Who will be Jill Jones manager|
+    |who will be jill jones's manager|
+    |Who will be Jill Jones's manager?|
+    |who will be Jill jones manager on March 3|
+    |Who will be Jill Jones manager next Month|
+    |Who will be Jill Jones manager in a month?|
+
+所有这些话语都在内部找到了实体，因此它们将匹配相同的模式，并且具有很高的预测得分。
 
 ## <a name="clean-up-resources"></a>清理资源
-不再需要 LUIS 应用时，请将其删除。 为此，在应用列表中选择应用名称右侧的省略号 (...)，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

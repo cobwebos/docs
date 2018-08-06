@@ -1,21 +1,20 @@
 ---
-title: 关于文本转语音 | Microsoft Docs
+title: 关于文本转语音
 description: 文本转语音的功能概述。
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: e3543c2056934372a2795bd50f340432ceec3b6d
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: d111a9f852b849df15dbd056a7210fac82cee190
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257940"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39324249"
 ---
 # <a name="about-the-text-to-speech-api"></a>关于文本转语音 API
 
@@ -42,4 +41,4 @@ Microsoft 文本转语音服务提供超过 45 种语言和区域设置的 75 �
 ## <a name="next-steps"></a>后续步骤
 
 * [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)
-* [了解如何在 C# 中识别语音](quickstart-csharp-dotnet-windows.md)
+* [参阅如何通过 REST API 合成语音](how-to-text-to-speech.md)

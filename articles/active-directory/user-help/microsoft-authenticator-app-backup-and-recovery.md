@@ -1,25 +1,22 @@
 ---
-title: 使用 Microsoft Authenticator 应用进行备份和恢复 - Azure AD | Microsoft Docs
+title: 使用 Microsoft Authenticator 应用进行备份和恢复 - Azure Active Directory | Microsoft Docs
 description: 了解如何使用 Microsoft Authenticator 应用备份和恢复帐户凭据。
-services: multi-factor-authentication
-documentationcenter: ''
+services: active-directory
 author: eross-msft
 manager: mtillman
-ms.service: multi-factor-authentication
+ms.component: user-help
+ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: lizross
 ms.reviewer: olhaun
-ms.custom: end-user
-ms.openlocfilehash: a9c950ecafd2eb5f3aed1bee3707f57be6ec3b62
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 29226f0645a772ffe02e378c9b4df0a87909731a
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39058549"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358114"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 应用备份和恢复帐户凭据
 
@@ -51,12 +48,12 @@ Microsoft Authenticator 应用可将帐户凭据和相关的应用设置（例�
 ## <a name="recover-your-account-credentials-on-your-new-device"></a>在新设备上恢复帐户凭据
 可以使用备份信息时设置的同一个 Microsoft 恢复帐户，从 iCloud 帐户恢复帐户凭据。
 
-**恢复信息**
+### <a name="to-recover-your-information"></a>恢复信息
 1.  在 iOS 设备上打开 Microsoft Authenticator 应用，并选择屏幕底部的“开始恢复”。
 
     ![Microsoft Authenticator 应用，其中显示了“开始恢复”的位置](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-begin-recovery.png)
 
-2.  使用备份期间所用的同一个个人 Microsoft 帐户登录到恢复帐户。
+2.  使用备份期间所用的同一个人 Microsoft 帐户登录到恢复帐户。
 
     帐户凭据将恢复到新设备。
 
@@ -67,7 +64,7 @@ Microsoft Authenticator 应用可将帐户凭据和相关的应用设置（例�
 
 对于个人 Microsoft 帐户，可以通过输入密码以及备用电子邮件或电话号码来证明身份。 对于工作或学校帐户，必须扫描帐户提供商提供的 QR 码。
 
-**为个人帐户提供附加验证**
+### <a name="to-provide-additional-verification-for-personal-accounts"></a>为个人帐户提供附加验证
 1.  在 Microsoft Authenticator 应用的“帐户”屏幕中，选择想要恢复的帐户旁边的下拉箭头。
 
     ![Microsoft Authenticator 应用，其中显示了可用帐户及其关联的下拉箭头](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-arrow.png)
@@ -76,7 +73,7 @@ Microsoft Authenticator 应用可将帐户凭据和相关的应用设置（例�
 
     ![Microsoft Authenticator 应用，允许输入登录信息](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-sign-in.png)
 
-**为工作或学校帐户提供附加验证**
+### <a name="to-provide-additional-verification-for-work-or-school-accounts"></a>为工作或学校帐户提供附加验证
 1.  在 Microsoft Authenticator 应用的“帐户”屏幕中，选择想要恢复的帐户旁边的下拉箭头。
 
     ![Microsoft Authenticator 应用，其中显示了可用帐户及其关联的下拉箭头](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-additonal-accts.png)
@@ -86,7 +83,7 @@ Microsoft Authenticator 应用可将帐户凭据和相关的应用设置（例�
     ![Microsoft Authenticator 应用，允许扫描 QR 码](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-scan-qr-code.png)
 
     >[!NOTE]
-    >有关如何获取 QR 代码的详细信息，请参阅 [Microsoft Authenticator 应用入门](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/end-user/microsoft-authenticator-app-how-to)一文。
+    >有关如何获取 QR 代码的详细信息，请参阅 [Microsoft Authenticator 应用入门一文中的“如何添加帐户”部分](https://docs.microsoft.com/azure/active-directory/user-help/microsoft-authenticator-app-how-to#add-accounts-to-the-app)。
 
 ## <a name="troubleshooting-backup-and-recovery-problems"></a>排查备份和恢复问题
 有几个可能的原因会导致无法备份：

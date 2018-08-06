@@ -2,18 +2,18 @@
 title: include 文件
 description: include 文件
 services: virtual-machines
-author: rogara
+author: roygara
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 399479de0ce9bab29d0338b1155f8b0c1bab542c
-ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
+ms.openlocfilehash: b011dd5993e63fe9bce36ec8b8c1b4739dbf704b
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2018
-ms.locfileid: "35414580"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39037662"
 ---
 # <a name="azure-managed-disks-overview"></a>Azure 托管磁盘概述
 

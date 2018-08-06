@@ -14,18 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: seguler
-ms.openlocfilehash: 3ed449912df1e16b5c8f1dfa3c83b81eaf635227
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: f45630a99d9045d0909e11d4ccc1517782d39779
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034355"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284429"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>使用 AzCopy on Linux 传输数据
 
 AzCopy 是一个命令行实用程序，专用于使用旨在实现最佳性能的简单命令将数据复制到 Microsoft Azure Blob 和文件存储以及从这些位置复制数据。 可在文件系统和存储帐户之间或在存储帐户之间复制数据。  
 
-有两种版本的 AzCopy 可供下载。 AzCopy on Linux 面向 Linux 平台，它提供 POSIX 样式的命令行选项。 [AzCopy on Windows](../storage-use-azcopy.md) 提供 Windows 样式的命令行选项。 本文涉及到 AzCopy on Linux。 
+有两种版本的 AzCopy 可供下载。 AzCopy on Linux 面向 Linux 平台，它提供 POSIX 样式的命令行选项。 
+  [AzCopy on Windows](../storage-use-azcopy.md) 提供 Windows 样式的命令行选项。 本文涉及到 AzCopy on Linux。 
 
 > [!NOTE]  
 > 从 AzCopy 7.2 版本开始，.NET Core 依赖项随 AzCopy 包打包在一起。 如果使用的是 7.2 版或更高版本，则安装 .NET Core 不再是先决条件。
@@ -348,6 +349,9 @@ azcopy \
     --include "ab" \
     --set-content-type
 ```
+
+### <a name="customizing-the-mime-content-type-mapping"></a>自定义 MIME 内容类型映射
+AzCopy 使用一个配置文件，其中包含文件扩展名到内容类型的映射。 可以自定义此映射，并根据需要添加新对。 此映射位于 ```/usr/lib/azcopy/AzCopyConfig.json```
 
 ## <a name="blob-copy"></a>Blob：复制
 ### <a name="copy-single-blob-within-storage-account"></a>在存储帐户内复制单个 blob

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: 1c3ea5b041cf2a961ef57bc168ae86b83412e044
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9f37a7665521b69634329078258b00cb9f53c407
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212817"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358712"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>想要了解 Service Fabric 吗？
 Azure Service Fabric 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。  不过，Service Fabric 的外围应用领域广泛，有很多东西需要学习。  本文简要说明了 Service Fabric，并介绍了核心概念、编程模型、应用程序生命周期、测试、群集和运行状况监视。 请参阅[概述](service-fabric-overview.md)和[什么是微服务？](service-fabric-overview-microservices.md)，概览相关信息，并了解如何使用 Service Fabric 创建微服务。 本文包含的内容列表虽不完整，但确实提供了 Service Fabric 每个应用领域的概述和入门文章链接。 
@@ -55,7 +55,7 @@ Azure Service Fabric 是一种分布式系统平台，适用于打包、部署�
 
 创建命名应用程序后，可以通过指定服务类型（使用其名称/版本），在群集中创建应用程序服务类型（命名服务）之一的实例。 需为每个服务类型实例分配一个 URI 名称，该名称归并到实例的命名应用程序的 URI 之下。 例如，如果在命名应用程序“MyNamedApp”中创建命名服务“MyDatabase”，则 URI 将类似于：*fabric:/MyNamedApp/MyDatabase*。 在一个命名应用程序中可以创建一个或多个命名服务。 每个命名服务可以有自身的分区方案和实例/副本计数。 
 
-有两种服务类型：无状态服务和有状态服务。 无状态服务可将持久状态存储在 Azure 存储、Azure SQL 数据库或 Azure Cosmos DB 等外部存储服务中。 当服务根本没有永久性存储时，请使用无状态服务。 有状态服务使用 Service Fabric 通过其 Reliable Collections 或 Reliable Actors 编程模型管理服务状态。 
+有两种服务类型：无状态服务和有状态服务。 无状态服务不在服务中存储状态。 无状态服务根本没有持久性存储，或者将持久性状态存储在外部存储服务中，例如，存储在 Azure 存储、Azure SQL 数据库或 Azure Cosmos DB 中。 有状态服务将状态存储在服务内，并使用 Reliable Collections 或 Reliable Actors 编程模型来管理状态。 
 
 创建命名服务时，需要指定一个分区方案。 包含大量状态的服务将跨分区拆分数据。 每个分区负责服务完整状态的一部分（分布在群集的节点上）。  
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 32feac32af01e518ad6cede43cc4b4f00c097d3b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e07ed8f131697d6340b899ef76c988aed215556b
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041273"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283405"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>教程：Azure Active Directory 与 SmarterU 集成
 
@@ -126,23 +126,25 @@ ms.locfileid: "39041273"
 
 7. 在顶部工具栏中，单击“帐户设置”。
    
-    ![帐户设置](./media/smarteru-tutorial/IC777326.png "帐户设置")
+    ![帐户设置](./media/smarteru-tutorial/accountsettings.png)
 
 8. 在帐户配置页面上，执行以下步骤：
    
-    ![外部授权](./media/smarteru-tutorial/IC777327.png "外部授权") 
+    ![外部授权](./media/smarteru-tutorial/externalauthorizationconfiguration.png) 
  
-      a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“启用外部授权”。
+      a. 选择“启用外部授权”。
   
       b. 在“主登录控制”部分中，选择“SmarterU”选项卡。
   
       c. 在“用户默认登录”部分中，选择“SmarterU”选项卡。
   
-      d. 选择“启用 Okta”。
+      d. 选择“启用 SAML”。
   
-      e. 复制下载的元数据文件的内容，然后将其粘贴到“Okta 元数据 ”文本框中。
+      e. 复制下载的元数据文件的内容，然后将其粘贴到“IdP 元数据”文本框中。
+      
+      f. 选择一个**标识符属性/声明**。
   
-      f. 单击“ **保存**”。
+      g. 单击“ **保存**”。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -171,7 +173,7 @@ ms.locfileid: "39041273"
  
     ![创建 Azure AD 测试用户](./media/smarteru-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -193,9 +195,9 @@ ms.locfileid: "39041273"
 
 3. 在“用户”部分中，执行以下步骤：
    
-    ![新建用户](./media/smarteru-tutorial/IC777329.png "New User")  
+    ![新建用户](./media/smarteru-tutorial/adduser.png)  
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“+用户”。
+    a. 单击“+用户”。
     
     b. 在以下文本框中键入 Azure AD 用户帐户的相关属性值：**主电子邮件**、**员工 ID**、**密码**、**验证密码**、**名字**、**姓氏**。
     

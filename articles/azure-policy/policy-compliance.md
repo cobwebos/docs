@@ -1,24 +1,24 @@
 ---
-title: 在 Azure 策略中获取符合性数据
-description: Azure 策略的评估和效果确定了符合性。 了解如何获取符合性详细信息。
+title: 在 Azure Policy 中获取符合性数据
+description: Azure Policy 的评估和效果确定了符合性。 了解如何获取符合性详细信息。
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/24/2018
+ms.date: 07/29/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 390935d80e903631287b1a4b9f1075e547298d99
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: f2283125aff705aae87b6260b48deee01aa12f0d
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39250139"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343546"
 ---
 # <a name="getting-compliance-data"></a>获取符合性数据
 
-Azure 策略的最大优势之一在于它针对订阅或订阅[管理组](../azure-resource-manager/management-groups-overview.md)中的资源提供的见解和控制度。 可通过许多不同的方式运用这种控制，例如，防止在错误的位置创建资源、强制实施常见且一致的标记用法，或者审核相应配置和设置的现有资源。 在所有情况下，数据都由策略生成，使你能够了解环境的符合性状态。
+Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../azure-resource-manager/management-groups-overview.md)中的资源提供的见解和控制度。 可通过许多不同的方式运用这种控制，例如，防止在错误的位置创建资源、强制实施常见且一致的标记用法，或者审核相应配置和设置的现有资源。 在所有情况下，数据都由策略生成，使你能够了解环境的符合性状态。
 
 可通过多种方式访问策略和计划分配生成的符合性信息：
 
@@ -35,7 +35,7 @@ Azure 策略的最大优势之一在于它针对订阅或订阅[管理组](../az
 
 - 最近已将策略或计划分配到某个范围。 发生这种情况时，需要大约花费 30 分钟将分配应用到定义的范围。 应用分配后，将会针对新分配的策略或计划，对该范围内的资源执行评估周期，同时，会根据策略或计划使用的效果，将资源标记为合规或不合规。 针对大范围的资源评估的大型策略或计划可能需要花费一段时间，因此，在评估周期何时完成方面，无法预先定义预期目标。 完成评估后，更新的符合性结果会在门户和 SDK 中提供。
 - 更新了已分配到某个范围的策略或计划。 此场景的评估周期和计时与新的范围分配相同。
-- 资源将通过资源管理器、REST、Azure CLI 或 Azure PowerShell 部署到包含分配的范围。 在此场景中，效果事件（追加、审核、拒绝、部署）和符合性状态将在大约 15 分钟后出现在门户与 SDK 中。
+- 资源将通过资源管理器、REST、Azure CLI 或 Azure PowerShell 部署到包含分配的范围。 在此场景中，个体资源的效果事件（追加、审核、拒绝、部署）和符合性状态将在大约 15 分钟后出现在门户与 SDK 中。 此事件不会导致对其他资源进行评估。
 - 标准符合性评估周期。 分配每隔 24 小时自动重新评估一次。 针对大范围的资源评估的大型策略或计划可能需要花费一段时间，因此，在评估周期何时完成方面，无法预先定义预期目标。 完成评估后，更新的符合性结果会在门户和 SDK 中提供。
 
 ## <a name="how-compliance-works"></a>符合性的工作原理
@@ -51,8 +51,6 @@ Azure 策略的最大优势之一在于它针对订阅或订阅[管理组](../az
 
 \*Append、DeployIfNotExist 和 AuditIfNotExist 效果要求 IF 语句为 TRUE。
 这些效果还要求存在条件为 FALSE 才能将资源判定为不合规。 如果为 TRUE，则 IF 条件会触发相关资源存在条件的计算。
-
-为了更好地理解如何将资源标记为不合规，让我们使用前面创建的策略分配示例。
 
 例如，假设有一个资源组 ContsoRG，其中包含一些向公共网络公开的存储帐户（以红色突出显示）。
 

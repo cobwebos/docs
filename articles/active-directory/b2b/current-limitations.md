@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.component: B2B
 ms.topic: article
 ms.date: 05/23/2017
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 562076e9529ffeac4cb0f99c1ffd4d4866d0bd1a
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 34713f4bf43f047bdee8d87f2e4410d13ba3492d
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34266962"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39400090"
 ---
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Azure Active Directory B2B 协作的限制
 Azure Active Directory (Azure AD) B2B 协作当前具有本文中描述的限制。
@@ -26,10 +26,13 @@ Azure Active Directory (Azure AD) B2B 协作当前具有本文中描述的限制
 ## <a name="instant-on"></a>即时启用
 通过 B2B 协作流，我们将用户添加到目录，并在邀请兑换、应用分配等期间动态更新用户。 更新和写入通常发生在一个目录实例中，并且必须复制到所有实例中。 更新所有实例后完成复制。 有时，如果在一个实例中编写或更新对象，但是检索该对象的调用针对的是另一个实例，就会出现复制延迟。 如果发生这种情况，刷新或重试可有所帮助。 如果正在使用 API 编写应用，则请重试后退操作，这是解决该问题的一个很好的防御措施。
 
+## <a name="azure-ad-directories"></a>Azure AD 目录
+Azure AD B2B 受制于 Azure AD 服务目录限制。 有关用户可以创建的目录数以及用户或来宾用户可以属于的目录数的详细信息，请参阅 [Azure AD 服务限制](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions)。
+
 ## <a name="next-steps"></a>后续步骤
 
 请参阅以下有关 Azure AD B2B 协作的文章：
 
 - [什么是 Azure AD B2B 协作？](what-is-b2b.md)
-- [委派 B2bB 协作邀请](delegate-invitations.md)
+- [委托 B2B 协作邀请](delegate-invitations.md)
 

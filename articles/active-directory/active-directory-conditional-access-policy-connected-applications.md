@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/14/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: f215136c5d07eca098d68d882d22f6c9dd14b0b9
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 5d67abe003afc6f5aec420f4668efa5df7d8dbc4
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214670"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414461"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>操作指南：通过条件访问要求使用受管理设备进行云应用访问
 
@@ -60,11 +60,11 @@ ms.locfileid: "39214670"
 
 若要向 Azure AD 注册设备，你有三种选择：
 
-- **[Azure AD 注册设备](device-management-introduction.md#azure-ad-registered-devices)**：向 Azure AD 注册个人设备
+- **[Azure AD 注册设备](devices/overview.md#azure-ad-registered-devices)**：向 Azure AD 注册个人设备
 
-- **[加入 Azure AD 的设备](device-management-introduction.md#azure-ad-joined-devices)** - 向 Azure AD 注册未加入本地 AD 的组织 Windows 10 设备。 
+- **[加入 Azure AD 的设备](devices/overview.md#azure-ad-joined-devices)** - 向 Azure AD 注册未加入本地 AD 的组织 Windows 10 设备。 
 
-- **[加入混合 Azure AD 的设备](device-management-introduction.md#hybrid-azure-ad-joined-devices)**：向 Azure AD 注册已加入本地 AD 的 Windows 10 设备。
+- **[加入混合 Azure AD 的设备](devices/overview.md#hybrid-azure-ad-joined-devices)** - 向 Azure AD 注册已加入本地 AD 的 Windows 10 或受支持的低级别设备。
 
 若要成为受管理设备，注册设备必须是**加入混合 Azure AD 的设备**或者是**已标记为合规的设备**。  
 
@@ -77,7 +77,7 @@ ms.locfileid: "39214670"
 
 ![基于设备的条件](./media/active-directory-conditional-access-policy-connected-applications/10.png)
 
-此设置仅适用于已加入本地 AD 的 Windows 10 设备。 你只能使用混合 Azure AD 加入功能向 Azure AD 注册这些设备，这是一种注册 Windows 10 设备的[自动化过程](device-management-hybrid-azuread-joined-devices-setup.md)。 
+此设置仅适用于已加入本地 AD 的 Windows 10 或低级别设备（例如 Windows 7 或 Windows 8）。 你只能使用混合 Azure AD 加入功能向 Azure AD 注册这些设备，这是一种注册 Windows 10 设备的[自动化过程](device-management-hybrid-azuread-joined-devices-setup.md)。 
 
 ![基于设备的条件](./media/active-directory-conditional-access-policy-connected-applications/45.png)
 

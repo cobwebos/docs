@@ -4,15 +4,15 @@ description: 概述了收集器设备及其配置方法。
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/10/2018
+ms.date: 07/27/2018
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: 8cc5863489c58a0603d8aa464911031a22dba8f3
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: c99d0f74dbb8cc28cabebae60fe10645f4bdb3b6
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951033"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308453"
 ---
 # <a name="collector-appliance"></a>收集器设备
 
@@ -188,7 +188,7 @@ Azure Migrate 收集器服务应该正在计算机上运行。 此服务在计�
 
 无需再次下载 OVA，即可将收集器升级到最新版本。
 
-1. 下载最新[升级包](https://aka.ms/migrate/col/upgrade_9_11)（版本 1.0.9.11）。
+1. 下载最新[升级包](https://aka.ms/migrate/col/upgrade_9_13)（版本 1.0.9.13）。
 2. 若要确保下载的修补程序安全，请打开管理员命令窗口并运行以下命令生成 ZIP 文件的哈希。 生成的哈希应与针对特定版本提到的哈希匹配：
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
@@ -199,6 +199,16 @@ Azure Migrate 收集器服务应该正在计算机上运行。 此服务在计�
 5. 右键单击 Setup.ps1 并选择“使用 PowerShell 运行”，然后按照屏幕上的说明来安装更新。
 
 ### <a name="list-of-updates"></a>更新列表
+
+#### <a name="upgrade-to-version-10913"></a>升级到版本 1.0.9.13
+
+升级[包 1.0.9.13](https://aka.ms/migrate/col/upgrade_9_13) 的哈希值
+
+**算法** | **哈希值**
+--- | ---
+MD5 | 739f588fe7fb95ce2a9b6b4d0bf9917e
+SHA1 | 9b3365acad038eb1c62ca2b2de1467cb8eed37f6
+SHA256 | 7a49fb8286595f39a29085534f29a623ec2edb12a3d76f90c9654b2f69eef87e
 
 #### <a name="upgrade-to-version-10911"></a>升级到版本 1.0.9.11
 

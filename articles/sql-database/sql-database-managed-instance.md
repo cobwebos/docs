@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 08/01/2018
 ms.author: bonova
-ms.openlocfilehash: 0951281a584d3c534d82ec5760d29f4b80616d2d
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: ff571035c9360730546732205f34d75ace38fbff
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091987"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414310"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>什么是托管实例（预览版）？
 
@@ -140,15 +140,16 @@ Azure SQL 数据库托管实例（预览版）是 Azure SQL 数据库的一项�
 
 以下列表概述了业务关键服务层的主要特征： 
 -   为具有最严苛性能和 HA 要求的商业应用程序设计 
--   附带超高速 SSD 存储（第 4 代最多 1 TB，第 5 代最多 4 TB），每个实例支持最多 100 个数据库 
+-   附带超高速 SSD 存储（第 4 代最多 1 TB，第 5 代最多 4 TB）
+-   每个实例最多支持 100 个数据库 
 
 |功能 | Description|
 |---|---|
-| vCore 数目* | 8、16、24（第 4 代）<br>8、16、24、32、40、64、80（第 5 代）|
+| vCore 数目* | 8、16、24、32（第 4 代）<br>8、16、24、32、40、64、80（第 5 代）|
 | SQL Server 版本/内部版本 | SQL Server（最新可用版本） |
 | 其他功能 | [In-Memory OLTP](sql-database-in-memory.md)<br> 1 个额外的只读副本（[读取扩展](sql-database-read-scale-out.md)）
 | 最小存储大小 | 32 GB |
-| 最大存储大小 | 第 4 代：1 TB（所有 vCore 大小<br> 第 5 代：<ul><li>8、16 个 Vcore 1 TB</li><li>24 个 Vcore 2 TB</li><li>40、60、80 个 Vcore 4 TB</ul>|
+| 最大存储大小 | 第 4 代：1 TB（所有 vCore 大小<br> 第 5 代：<ul><li>8、16 个 Vcore 1 TB</li><li>24 个 Vcore 2 TB</li><li>32、40、64、80 个 Vcore 4 TB</ul>|
 | 每个数据库的最大存储 | 由每个实例的最大存储大小决定 |
 | 每个数据库的数据文件 (ROWS) 数目 | 多个 | 
 | 每个数据库的日志文件 (LOG) 数目 | 1 | 

@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: 99cd7fe6f9f46ff4d6dbbf6a6e024b3b32679724
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 5f022f366c0247fade4cc39925e116a09b3d08de
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444254"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399084"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>为 Azure Cosmos DB 容器和数据库设置和获取吞吐量
 
@@ -24,7 +24,7 @@ ms.locfileid: "37444254"
 
 **为一组容器或一个数据库预配吞吐量：** 为一个数据库预配吞吐量可在属于该数据库的所有容器间共享吞吐量。 在 Azure Cosmos DB 数据库中，可以让一组容器共享吞吐量，也可以让容器使用专用的吞吐量。 在一组容器中分配 RU/秒时，会将属于该组的容器视为“无限制”容器，必须指定一个分区键。
 
-Azure Cosmos DB 会根据预配的吞吐量分配物理分区，以便托管容器并拆分/重新均衡分区中不断增长的数据。 容器和数据库级吞吐量预配是单独的产品，在这两者之间切换需要将数据从源迁移到目标。 这意味着你需要创建新数据库或新集合，然后使用[批量执行程序库](bulk-executor-overview.md)或 [Azure 数据工厂](../data-factory/connector-azure-cosmos-db.md)迁移数据。 下图说明了不同级别的预配吞吐量：
+Azure Cosmos DB 会根据预配的吞吐量分配物理分区，以便托管容器并拆分/重新均衡分区中不断增长的数据。 容器级和数据库级吞吐量预配是不同的产品，在这两者之间切换需要将数据从源迁移到目标。 这意味着你需要创建新数据库或新集合，然后使用[批量执行程序库](bulk-executor-overview.md)或 [Azure 数据工厂](../data-factory/connector-azure-cosmos-db.md)迁移数据。 下图说明了不同级别的预配吞吐量：
 
 ![预配一个容器和一组容器的请求单位数](./media/request-units/provisioning_set_containers.png)
 
@@ -153,7 +153,7 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 3000 });
 ```
 
-### <a name="set-throughput-at-the-for-a-set-of-containers-or-at-the-database-level"></a>为一组容器设置吞吐量，或者在数据库级别设置吞吐量
+### <a name="set-throughput-for-a-set-of-containers-at-the-database-level"></a>在数据库级别为一组容器设置吞吐量
 
 以下代码片段使用 SQL API 的 .NET SDK 为一组容器预配每秒 100,000 个请求单位的吞吐量：
 
@@ -226,7 +226,16 @@ offer.getContent().put("offerThroughput", newThroughput);
 client.replaceOffer(offer);
 ```
 
-## <a id="GetLastRequestStatistics"></a>通过 MongoDB API 的 GetLastRequestStatistics 命令获取吞吐量
+## <a name="get-throughput-by-using-mongodb-api-portal-metrics"></a>使用 MongoDB API 门户指标获取吞吐量
+
+准确估算 MongoDB API 数据库请求单位费用的最简单方法是使用 [Azure 门户](https://portal.azure.com)指标。 使用“请求数”和“请求费用”图表，可以估算每个操作消耗的请求单位数，以及每个操作相对于其他操作消耗的请求单位数。
+
+![MongoDB API 门户指标][1]
+
+### <a id="RequestRateTooLargeAPIforMongoDB"></a>超过 MongoDB API 中保留的吞吐量限制
+如果应用程序超出针对某个容器或一组容器预配的吞吐量，则会对该应用程序进行速率限制，直到使用速率降至低于预配的吞吐量速率。 进行速率限制时，后端会结束请求并返回 `16500` 错误代码 -`Too Many Requests`。 默认情况下，在返回`Too Many Requests`错误代码之前，MongoDB API 会自动重试最多 10 次。 如果收到大量的`Too Many Requests`错误代码，可能需要考虑在应用程序的错误处理例程中添加重试逻辑，或者[提高容器的预配吞吐量](set-throughput.md)。
+
+## <a id="GetLastRequestStatistics"></a>通过 MongoDB API 的 GetLastRequestStatistics 命令获取请求费用
 
 MongoDB API 支持使用自定义命令 *getLastRequestStatistics* 来检索给定操作的请求费用。
 
@@ -254,14 +263,19 @@ MongoDB API 支持使用自定义命令 *getLastRequestStatistics* 来检索给�
 > 
 > 
 
-## <a name="get-throughput-by-using-mongodb-api-portal-metrics"></a>使用 MongoDB API 门户指标获取吞吐量
+## <a id="RequestchargeGraphAPI"></a>获取 Gremlin API 帐户的请求费用 
 
-准确估算 MongoDB API 数据库请求单位费用的最简单方法是使用 [Azure 门户](https://portal.azure.com)指标。 使用“请求数”和“请求费用”图表，可以估算每个操作消耗的请求单位数，以及每个操作相对于其他操作消耗的请求单位数。
+下面是一个示例，展示了如何使用 Gremlin.Net library 获取 Gremlin API 帐户的请求费用。 
 
-![MongoDB API 门户指标][1]
+```csharp
 
-### <a id="RequestRateTooLargeAPIforMongoDB"></a>超过 MongoDB API 中保留的吞吐量限制
-如果应用程序超出针对某个容器或一组容器预配的吞吐量，则会对该应用程序进行速率限制，直到使用速率降至低于预配的吞吐量速率。 进行速率限制时，后端会结束请求并返回 `16500` 错误代码 -`Too Many Requests`。 默认情况下，在返回`Too Many Requests`错误代码之前，MongoDB API 会自动重试最多 10 次。 如果收到大量的`Too Many Requests`错误代码，可能需要考虑在应用程序的错误处理例程中添加重试逻辑，或者[提高容器的预配吞吐量](set-throughput.md)。
+var response = await gremlinClient.SubmitAsync<int>(requestMsg, bindings);
+                var resultSet = response.AsResultSet();
+                var statusAttributes= resultSet.StatusAttributes;
+```
+
+除了以上方法之外，还可以使用“x-ms-total-request-charge”标头进行请求单位计算。
+
 
 ## <a name="throughput-faq"></a>吞吐量常见问题
 

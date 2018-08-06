@@ -2,20 +2,17 @@
 title: 如何将 Azure Blob 存储装载为 Linux 上的文件系统 | Microsoft Docs
 description: 使用 FUSE 在 Linux 上装载 Azure Blob 存储容器
 services: storage
-documentationcenter: linux
 author: seguler
-manager: jahogg
 ms.service: storage
-ms.devlang: bash
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: seguler
-ms.openlocfilehash: 1098eef15b559c30ef436d8e13bbe02bddb78649
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 9964aa4d263e0b75eb59b4e1434a9b3f0aac6ea1
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072086"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39400180"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>如何使用 Blobfuse 将 Blob 存储装载为文件系统
 
@@ -79,7 +76,7 @@ sudo chown <youruser> /mnt/ramdisk/blobfusetmp
 ```
 
 ### <a name="use-an-ssd-for-temporary-path"></a>将 SSD 用于临时路径
-在 Azure 中，可以使用 VM 上提供的临时磁盘 (SSD)，为 Blobfuse 提供低延迟缓冲区。 此临时磁盘在 Ubuntu 发行版中装载在“/mnt”上，而在 RedHat 和 CentOS 发行版中则装载在“/mnt/resource/”上。
+在 Azure 中，可以使用 VM 上提供的临时磁盘 (SSD)，为 Blobfuse 提供低延迟缓冲区。 此临时磁盘在 Ubuntu 发行版中装载在“/mnt”上，而在 Red Hat 和 CentOS 发行版中则装载在“/mnt/resource/”上。
 
 请确保用户可以访问临时路径：
 ```bash

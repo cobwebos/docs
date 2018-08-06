@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: alkohli
-ms.openlocfilehash: 68e31f6b88a772ad67e3c58e11925f46f1cc37e9
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: a86d5c1513594f5bc0df03b8ca7671a1f9541b4d
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188667"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308048"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure 导入/导出系统要求
 
@@ -30,13 +30,12 @@ ms.locfileid: "39188667"
 |Windows Server     |Windows Server 2008 R2 <br> Windows Server 2012、Windows Server 2012 R2         |
 
 
-
 ## <a name="supported-storage-accounts"></a>支持的存储帐户
 
-Azure 导入/导出服务支持以下 Azure 存储帐户。
-- 经典
+Azure 导入/导出服务支持以下 [Azure 存储帐户](storage-account-options.md)。
+- 常规用途 v1 存储帐户（经典部署或 Azure 资源管理器部署）
 - Blob 存储帐户
-- 常规用途 v1 存储帐户。 
+- 常规用途 v2 存储帐户
 
 每个作业只能用于将数据传输到一个存储帐户或者从一个存储帐户传输数据。 换言之，一个导入/导出作业不能跨多个存储帐户。 有关创建新存储帐户的信息，请参阅[如何创建存储帐户](storage-create-storage-account.md#create-a-storage-account)。
 
@@ -48,10 +47,10 @@ Azure 导入/导出服务支持以下 Azure 存储帐户。
 下面列出的存储类型都受 Azure 导入/导出服务支持。
 
 
-|作业  |存储  |支持  |不支持  |
+|作业  |存储服务 |支持  |不支持  |
 |---------|---------|---------|---------|
-|导入     |  Azure Blob 存储。 <br>块 Blob、页 Blob 受支持。 <br> Azure 文件受支持。       |         |
-|导出     |   Azure Blob 存储。 <br>块 Blob、页 Blob 和追加 Blob 受支持。       | Azure 文件不受支持。        |
+|导入     |  Azure Blob 存储 <br><br> Azure 文件存储       | 支持块 Blob 和页 Blob <br><br> 支持文件          |
+|导出     |   Azure Blob 存储       | 支持块 Blob、页 Blob 和追加 Blob         | 不支持 Azure 文件
 
 
 ## <a name="supported-hardware"></a>支持的硬件 

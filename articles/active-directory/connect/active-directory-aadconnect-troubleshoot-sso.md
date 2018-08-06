@@ -9,15 +9,15 @@ ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 563958458979d0a0a28046ce35d21bd58be631ce
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 65757abe13c45ce1a929c4648637f98360659030
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259290"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284864"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>排除 Azure Active Directory 无缝单一登录故障
 
@@ -76,7 +76,7 @@ ms.locfileid: "39259290"
 - 确保在 Azure AD Connect 中已启用无缝 SSO 功能。 如果无法启用该功能（例如，由于端口被阻止），请确保事先满足所有[先决条件](active-directory-aadconnect-sso-quick-start.md#step-1-check-the-prerequisites)。
 - 如果同时对租户启用了 [Azure AD Join](../active-directory-azureadjoin-overview.md)和无缝 SSO，请确保 Azure AD Join 没有问题。 如果设备同时注册了 Azure AD 并加入了域，则 Azure AD Join 的 SSO 将优先于无缝 SSO。 使用 Azure AD Join 的 SSO，用户将看到显示“已连接到 Windows”的登录磁贴。
 - 确保 Azure AD URL (https://autologon.microsoftazuread-sso.com) 是用户 Intranet 区域设置中的一部分。
-- 确保企业设备已加入 Active Directory 域。
+- 确保企业设备已加入 Active Directory 域。 设备不需要[加入 Azure AD](../active-directory-azureadjoin-overview.md)，无缝 SSO 便可工作。
 - 确保用户已通过 Active Directory 域帐户登录到设备。
 - 确保用户的帐户来自已设置了无缝 SSO 的 Active Directory 林。
 - 确保已在企业网络中连接该设备。
@@ -120,8 +120,8 @@ ms.locfileid: "39259290"
 
 1. 调用 `$creds = Get-Credential`。 出现提示时，输入目标 Active Directory 林的域管理员凭据。
 
->[!NOTE]
->我们使用以用户主体名称 (UPN) (johndoe@contoso.com) 格式或域限定的 SAM 帐户名（contoso\johndoe 或 contoso.com\johndoe）格式提供的域管理员用户名查找目标 AD 林。 如果你使用域限定的 SAM 帐户名，则我们使用用户名的域部分[使用 DNS 查找域管理员的域控制器](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx)。 如果你使用的是 UPN，则我们在查找合适的域控制器前会[将它转换为域限定的 SAM 帐户名](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa)。
+    >[!NOTE]
+    >我们使用以用户主体名称 (UPN) (johndoe@contoso.com) 格式或域限定的 SAM 帐户名（contoso\johndoe 或 contoso.com\johndoe）格式提供的域管理员用户名查找目标 AD 林。 如果你使用域限定的 SAM 帐户名，则我们使用用户名的域部分[使用 DNS 查找域管理员的域控制器](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx)。 如果你使用的是 UPN，则我们在查找合适的域控制器前会[将它转换为域限定的 SAM 帐户名](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa)。
 
 2. 调用 `Disable-AzureADSSOForest -OnPremCredentials $creds`。 此命令将从本地域控制器删除此特定 Active Directory 林的 `AZUREADSSOACCT` 计算机帐户。
 3. 为在其中设置了该功能的每个 Active Directory 林重复上述步骤。
@@ -129,12 +129,10 @@ ms.locfileid: "39259290"
 ### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>步骤 4：为每个 Active Directory 林启用无缝 SSO
 
 1. 调用 `Enable-AzureADSSOForest`。 出现提示时，输入目标 Active Directory 林的域管理员凭据。
-
->[!NOTE]
->我们使用以用户主体名称 (UPN) (johndoe@contoso.com) 格式或域限定的 SAM 帐户名（contoso\johndoe 或 contoso.com\johndoe）格式提供的域管理员用户名查找目标 AD 林。 如果你使用域限定的 SAM 帐户名，则我们使用用户名的域部分[使用 DNS 查找域管理员的域控制器](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx)。 如果你使用的是 UPN，则我们在查找合适的域控制器前会[将它转换为域限定的 SAM 帐户名](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa)。
-
+   >[!NOTE]
+   >我们使用以用户主体名称 (UPN) (johndoe@contoso.com) 格式或域限定的 SAM 帐户名（contoso\johndoe 或 contoso.com\johndoe）格式提供的域管理员用户名查找目标 AD 林。 如果你使用域限定的 SAM 帐户名，则我们使用用户名的域部分[使用 DNS 查找域管理员的域控制器](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx)。 如果你使用的是 UPN，则我们在查找合适的域控制器前会[将它转换为域限定的 SAM 帐户名](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa)。
 2. 为你要在其中设置该功能的每个 Active Directory 林重复上述步骤。
 
 ### <a name="step-5-enable-the-feature-on-your-tenant"></a>步骤 5。 在租户上启用此功能
 
-调用 `Enable-AzureADSSO` 并在 `Enable:` 提示符处键入“true”，以在租户中启用此功能。
+若要在租户上启用此功能，请调用 `Enable-AzureADSSO -Enable $true`。

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 9633a7df1cb72f3e9e5ee79be0c332565e7e8f2a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: c952d64229102f99dde393bc9a6efda45fc1c717
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054096"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358845"
 ---
 # <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>HDInsight 上的 ML Services 和开放源代码 R 功能简介
 
@@ -65,7 +65,7 @@ HDInsight 中的 ML Services 具有下述优势：
 
 HDInsight 上的 ML Services 包含以下功能。
 
-| 功能类别 | 说明 |
+| 功能类别 | Description |
 |------------------|-------------|
 | 支持 R | 适用于以 R 编写的解决方案的 [R 包](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference)，R 开源分发版和用于执行脚本的运行时基础结构。 |
 | 支持 Python | 适用于以 Python 编写的解决方案的 [Python 模块](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference)，Python 开源分发版和用于执行脚本的运行时基础结构。
@@ -106,7 +106,7 @@ HDInsight 群集的 HDFS 文件系统的默认存储可以与 Azure 存储帐户
 
 ### <a name="score-on-premises"></a>本地评分
 
-要在创建模型之后进行本地评分，可以在 R 中序列化模型，将其下载，将其反序列化，然后使用它进行新数据评分。 可以使用前面[在 HDInsight 中评分](#scoring-in-hdinsight)所述的方法，或使用 [DeployR](https://deployr.revolutionanalytics.com/) 进行新数据评分。
+要在创建模型之后进行本地评分，可以在 R 中序列化模型，将其下载，将其反序列化，然后使用它进行新数据评分。 可以使用前面[在 HDInsight 中评分](#scoring-in-hdinsight)所述的方法，或使用 [Web 服务](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)对新数据进行评分。
 
 ## <a name="maintain-the-cluster"></a>维护群集
 

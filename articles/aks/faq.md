@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/20/2018
+ms.date: 07/27/2018
 ms.author: iainfou
-ms.openlocfilehash: ea22b33233f85da117de54829e5a16bd7dcab36a
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: b64c770bca84fba8cbed98e420abf649897f7a17
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205242"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345848"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -29,7 +29,7 @@ Azure 可将安全修补程序在夜间自动应用于群集。 但是，你有�
 
 - 通过 Azure 门户或 Azure CLI 手动执行。
 - 通过升级 AKS 群集。 群集将自动升级 [cordon 和 drain 节点](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/)，然后使用最新的 Ubuntu 映像对其进行备份。 通过在 `az aks upgrade` 中指定当前群集版本，可更新节点上的 OS 映像，而不会更改 Kubernetes 版本。
-- 使用 [Kured](https://github.com/weaveworks/kured)，一种适用于 Kubernetes 的开放源代码重启守护程序。 Kured 作为 [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) 运行并监视每个节点，用于确定指示需要重启的文件是否存在。 然后在群集中编排重启，方法是通过遵循前面介绍的相同 cordon 和 drain 过程。
+- 使用 [Kured](https://github.com/weaveworks/kured)，一种适用于 Kubernetes 的开放源代码重启守护程序。 Kured 作为 [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) 运行并监视每个节点，用于确定指示需要重启的文件是否存在。 然后，它采用与前面介绍的 cordon 和 drain 过程相同的过程在群集内管理 OS 重启。
 
 ## <a name="does-aks-support-node-autoscaling"></a>AKS 是否支持节点自动缩放？
 
@@ -39,7 +39,7 @@ Azure 可将安全修补程序在夜间自动应用于群集。 但是，你有�
 
 支持，可以在[从 Azure CLI 或 Azure 资源管理器模板部署 AKS 群集](https://docs.microsoft.com/en-us/azure/aks/aad-integration)时启用 RBAC。 此功能很快就会出现在 Azure 门户中。
 
-## <a name="what-kubernetes-admission-controllers-does-aks-support-can-this-be-configured"></a>AKS 支持哪些 Kubernetes 许可控制器？ 是否可以配置？
+## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>AKS 支持哪些 Kubernetes 许可控制器？ 是否可以添加或删除许可控制器？
 
 AKS 支持以下[许可控制器][admission-controllers]：
 
@@ -66,7 +66,7 @@ AKS 支持以下[许可控制器][admission-controllers]：
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>不是，它没有与 Azure Key Vault 集成。
 
-目前，AKS 未与 Azure Key Vault 本机集成。 但是，有社区解决方案，如[来自 Hexadite 的 acs-keyvault-agent][hexadite]。
+目前，AKS 未与 Azure Key Vault 本机集成。 但是，[KeyVault Flex Volume 项目](https://github.com/Azure/kubernetes-keyvault-flexvol)实现了从 Kubernetes pod 到 KeyVault 机密的直接集成。
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>是否可以在 AKS 上运行 Windows Server 容器？
 
@@ -80,7 +80,7 @@ AKS 支持以下[许可控制器][admission-controllers]：
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>AKS 是否提供服务级别协议？
 
-在服务级别协议 (SLA) 中，提供商同意因未达到发布的服务级别向客户偿还服务费用。 由于 AKS 本身是免费的，没有费用需要偿还，因此也就没有正式的 SLA。 不过，我们会设法将 Kubernetes API 服务器的可用性维持在不小于 99.5% 的水平上。
+在服务级别协议 (SLA) 中，提供商同意因未达到发布的服务级别向客户偿还服务费用。 由于 AKS 本身是免费的，没有费用需要偿还，因此也就没有正式的 SLA。 不过，AKS 会设法将 Kubernetes API 服务器的可用性维持在不小于 99.5% 的水平上。
 
 <!-- LINKS - internal -->
 

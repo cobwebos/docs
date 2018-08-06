@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: raynew
-ms.openlocfilehash: 2415812a62fc000ddb18318ac52b764c1b5de51b
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 0cfb583f9d16039249aaffe18f71039e91dc3705
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008427"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39359200"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Contoso 迁移：在 Azure VM 和 SQL Server AlwaysOn 可用性组上重新托管本地应用
 
@@ -33,13 +33,13 @@ ms.locfileid: "39008427"
 [文章 8：在 Azure VM 和 Azure MySQL 服务器上重新托管 Linux 应用](contoso-migration-rehost-linux-vm-mysql.md) | 演示 Contoso 如何使用 Site Recovery 将 Linux osTicket 应用迁移到 Azure VM，以及如何使用 MySQL 工作台将应用数据库迁移到 Azure MySQL 服务器实例。 | 可用
 [文章 9：基于 Azure Web 应用和 Azure SQL 数据库重构应用](contoso-migration-refactor-web-app-sql.md) | 演示 Contoso 如何将 SmartHotel 应用迁移到 Azure Web 应用，并将应用数据库迁移到 Azure SQL Server 实例 | 可用
 [文章 10：基于 Azure Web 应用和 Azure MySQL 重构 Linux 应用](contoso-migration-refactor-linux-app-service-mysql.md) | 演示 Contoso 如何将 Linux osTicket 应用迁移到多个站点中的 Azure Web 应用，并与 GitHub 集成以便持续交付。 他们将应用数据库迁移到 Azure MySQL 实例。 | 可用
-[文章 11：基于 VSTS 重构 TFS](contoso-migration-tfs-vsts.md) | 演示 Contoso 如何通过将本地 Team Foundation Server (TFS) 部署迁移到 Azure 中的 Visual Studio Team Services (VSTS) 来迁移该部署。 | 可用
-[文章 12：在 Azure 容器和 Azure SQL 数据库上重塑应用架构](contoso-migration-rearchitect-container-sql.md) | 演示 Contoso 如何将其 SmartHotel 应用迁移并重新架构到 Azure。 他们将应用 Web 层重新架构为 Windows 容器以及 Azure SQL 数据库中的应用数据库。 | 可用
+[文章 11：基于 VSTS 重构 TFS](contoso-migration-tfs-vsts.md) | 展示 Contoso 如何通过将本地 Team Foundation Server (TFS) 部署迁移到 Azure 中的 Visual Studio Team Services (VSTS) 来迁移该部署。 | 可用
+[文章 12：基于 Azure 容器和 Azure SQL 数据库重构应用](contoso-migration-rearchitect-container-sql.md) | 展示 Contoso 如何将其 SmartHotel 应用迁移并重新架构到 Azure。 他们将应用 Web 层重新架构为 Windows 容器，将应用数据库重新架构到 Azure SQL 数据库中。 | 可用
 [文章 13：在 Azure 中重新生成应用](contoso-migration-rebuild.md) | 演示 Contoso 如何使用一系列 Azure 功能和服务（包括应用程序服务、Azure Kubernetes、Azure Functions、认知服务和 Cosmos DB）重新生成 SmartHotel 应用。 | 可用
 
 
 
-在本文中，Contoso 将迁移 VMware VM 上运行的双层 Windows. NET SmartHotel 应用迁移到 Azure。 此应用作为开源应用提供，可在 [github](https://github.com/Microsoft/SmartHotel360) 上下载。
+在本文中，Contoso 将在 VMware VM 上运行的两层 Windows .NET SmartHotel 应用迁移到 Azure。 此应用作为开源应用提供，可在 [github](https://github.com/Microsoft/SmartHotel360) 上下载。
 
 ## <a name="business-drivers"></a>业务驱动因素
 
@@ -457,7 +457,7 @@ Contoso 执行以下步骤：
 
 ### <a name="create-a-replication-policy"></a>创建复制策略
 
-Contoso 现可创建复制策略。
+现在，Contoso 可以创建一个复制策略。
 
 1. 在“准备基础结构” > “复制设置” > “复制策略” >  “创建和关联”中，创建策略“ContosoMigrationPolicy”。
 2. 使用默认设置：
@@ -655,7 +655,7 @@ Contoso 运行快速测试故障转移，然后迁移 VM。
 
 Azure 显示已迁移的资源后，Contoso 需要积极行动、全面保护新的基础结构。
 
-### <a name="security"></a>“安全”
+### <a name="security"></a>安全
 
 Contoso 安全团队会审查 Azure VMs WEBVM、SQLAOG1 和 SQLAOG2，确定是否存在任何安全问题。 
 

@@ -1,21 +1,20 @@
 ---
-title: 如何录制语音示例用于创建自定义语音 | Microsoft Docs
+title: 如何录制语音示例用于创建自定义语音
 titleSuffix: Microsoft Cognitive Services
 description: 编写可靠的脚本、聘请优秀的配音员并采用专业录制，制作一条产品级的自定义语音。
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 07/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 1afab3b7c128abdf97c3a16fc493935bab5cfd4c
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 80b65b8bc2e2947575004269f45922e2306dd32e
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072259"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284160"
 ---
 # <a name="how-to-record-voice-samples-for-a-custom-voice"></a>如何录制自定义语音的语音示例
 
@@ -37,7 +36,7 @@ ms.locfileid: "39072259"
 配音员        |其语音将构成自定义语音的基础。
 录音工程师  |监督录音的技术方面并操作录音设备。
 导演            |撰写脚本并指导配音员的表演。
-编辑              |完成音频文件并润色上传到自定义语音门户。
+编辑器              |完成音频文件并润色上传到自定义语音门户。
 
 一个人可能会担任多个角色。 本指南假设由你主要担任导演角色并聘请配音员和录音工程师。 如果想自己制作录音，需了解一些有关录音工程师角色的信息。
 
@@ -104,7 +103,7 @@ ms.locfileid: "39072259"
 
 幸运的是，可完全避免这些问题。 有很多文本源无需许可或权限即可使用。
 
-|文本源|说明|
+|文本源|Description|
 |-|-|
 |[CMU Arctic corpus](http://festvox.org/cmu_arctic/)|约 1100 个句子，选自专用于语音合成项目的无版权作品。 首先使用这类句子是很可取的。|
 |作品不再<br>受版权保护|通常是 1923 年之前出版的作品。 在英语方面，[Project Gutenberg](https://www.gutenberg.org/)（古腾堡计划）提供了数以万计的此类作品。 你可能想要关注较新的作品，因为语言将更接近现代英语。|

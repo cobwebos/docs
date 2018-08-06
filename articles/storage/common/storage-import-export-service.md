@@ -8,18 +8,20 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: alkohli
-ms.openlocfilehash: c435e21d85ae0ab35bc2fa99f7006e841eaecec0
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: e9fc74e6cd145cbba5b620b9db6db9635a0c4c77
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248768"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364519"
 ---
 # <a name="what-is-azure-importexport-service"></a>什么是 Azure 导入/导出服务？
 
-使用 Azure 导入/导出服务，可将磁盘驱动器寄送到 Azure 数据中心，从而安全地将大量数据导出到 Azure Blob 存储和 Azure 文件。 此外，还可以使用此服务将数据从 Azure Blob 存储传输到磁盘驱动器，然后再寄送到本地站点。 可将单个或多个磁盘中的数据导入 Azure Blob 存储或 Azure 文件。 
+使用 Azure 导入/导出服务，可将磁盘驱动器寄送到 Azure 数据中心，从而安全地将大量数据导出到 Azure Blob 存储和 Azure 文件。 此外，还可以使用此服务将数据从 Azure Blob 存储传输到磁盘驱动器，然后再寄送到本地站点。 可将单个或多个磁盘驱动器中的数据导入到 Azure Blob 存储或 Azure 文件。 
 
-Azure 导入/导出服务要求你提供自己的磁盘。 如果要使用 Microsoft 提供的磁盘传输数据，可以使用 Azure Data Box 磁盘将数据导入 Azure。 Microsoft 通过区域运营商向你的数据中心发运每个订单最多 5 个容量为 40 TB 的加密固态磁盘 (SSD)。 你可以快速配置磁盘，通过 USB 3.0 连接将数据复制到磁盘，然后将磁盘发运回 Azure。 有关详细信息，请转到 [Azure Data Box 磁盘概述](https://docs.microsoft.com/azure/databox/data-box-disk-overview)。
+提供你自己的磁盘驱动器，然后使用 Azure 导入/导出服务传输数据。 也可以使用由 Microsoft 提供的磁盘驱动器。 
+
+如果要使用由 Microsoft 提供的磁盘驱动器来传输数据，可以使用 [Azure Data Box 磁盘](../../databox/data-box-disk-overview.md)将数据导入 Azure。 Microsoft 通过区域运营商向你的数据中心发运每个订单最多 5 个加密固态磁盘驱动器 (SSD)，总容量为 40 TB。 你可以快速配置磁盘驱动器，通过 USB 3.0 连接将数据复制到磁盘驱动器，然后将磁盘驱动器发运回 Azure。 有关详细信息，请转到 [Azure Data Box 磁盘概述](../../databox/data-box-disk-overview.md)。
 
 ## <a name="azure-importexport-usecases"></a>Azure 导入/导出用例
 
@@ -34,23 +36,23 @@ Azure 导入/导出服务要求你提供自己的磁盘。 如果要使用 Micro
 
 “导入/导出”服务使用以下组件：
 
-- “导入/导出”服务：该服务在 Azure 门户中提供，可帮助用户创建和跟踪导入和导出作业。  
+- **导入/导出服务**：该服务在 Azure 门户中提供，可帮助用户创建和跟踪数据导入（上传）和导出（下载）作业。  
 
 - WAImportExport 工具：这是命令行工具，可执行以下任务： 
-    - 准备要寄送的驱动器，以便进行导入。
+    - 准备要寄送的磁盘驱动器，以便进行导入。
     - 在将数据导入到驱动器的过程中提供辅助。
     - 通过 BitLocker 加密驱动器上的数据。
     - 生成导入创建过程中使用的驱动器日志文件。
     - 帮助确定导出作业所需的驱动器数。
+    
+> [!NOTE]
+> WAImportExport 工具有两个版本：版本 1 和 2。 建议：
+> - 使用版本 1 将数据导入/导出到 Azure Blob 存储。 
+> - 使用版本 2 将数据导入到 Azure 文件。
+>
+> WAImportExport 工具仅兼容 64 位 Windows 操作系统。 有关支持的特定 OS 版本，请转到 [Azure 导入/导出要求](storage-import-export-requirements.md#supported-operating-systems)。
 
-    该工具有两个版本：版本 1 和 2。 建议：
-
-    - 使用版本 1 将数据导入/导出到 Azure Blob 存储。 
-    - 使用版本 2 将数据导入到 Azure 文件。
-
-    WAImportExport 工具仅兼容 64 位 Windows 操作系统。 有关支持的特定 OS 版本，请转到 [Azure 导入/导出要求](storage-import-export-requirements.md#supported-operating-systems)。
-
-- 磁盘：可以将固态硬盘 (SSD) 或硬盘驱动器 (HDD) 发送到 Azure 数据中心。 创建导入作业时，需要发送包含数据的磁盘驱动器。 创建导出作业时，需要将空驱动器发送到 Azure 数据中心。 有关特定磁盘类型的信息，请转到[支持的磁盘类型](storage-import-export-requirements.md#supported-hardware)。
+- **磁盘驱动器**：可以将固态驱动器 (SSD) 或硬盘驱动器 (HDD) 发送到 Azure 数据中心。 创建导入作业时，需要发送包含数据的磁盘驱动器。 创建导出作业时，需要将空驱动器发送到 Azure 数据中心。 有关特定磁盘类型的信息，请转到[支持的磁盘类型](storage-import-export-requirements.md#supported-hardware)。
 
 ## <a name="how-does-importexport-work"></a>“导入/导出”的工作原理是什么？
 
@@ -58,18 +60,12 @@ Azure“导入/导出”服务通过创建作业，将数据传输到 Azure Blob
 
 作业可以为导入或导出作业。 导入作业可将数据导入到 Azure Blob 或 Azure 文件，导出作业可从 Azure Blob 导出数据。 对于导入作业，需要寄送包含数据的驱动器。 创建导出作业时，需要将空驱动器寄送到 Azure 数据中心。 每种情况下，每个作业最多可以寄送 10 个磁盘驱动器。
 
-> [!IMPORTANT]
-> 不支持将数据导出到 Azure 文件。
-
-此部分介绍导入和导出作业中涉及的高级别步骤。 
-
-
 ### <a name="inside-an-import-job"></a>关于导入作业
 
 概括而言，导入作业包括以下步骤：
 
 1. 确定要导入的数据、所需的驱动器数以及 Azure 存储中数据的目标 blob 位置。
-2. 使用 WAImportExport 工具将数据复制到磁盘驱动器。 使用 BitLocker 加密磁盘。
+2. 使用 WAImportExport 工具将数据复制到磁盘驱动器。 使用 BitLocker 加密磁盘驱动器。
 3. 在 Azure 门户中目标存储帐户下创建导入作业。 上传驱动器日志文件。
 4. 请提供回寄地址以及快递商帐户号码，以便我们将驱动器寄回给你。
 5. 将磁盘驱动器寄送到在创建作业时获得的寄送地址。

@@ -1,25 +1,24 @@
 ---
-title: 语音训练听录指南 | Microsoft Docs
+title: 语音训练听录指南
 description: 了解如何准备文本以自定义语音服务的声学和语言模型以及语音字体。
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: PanosPeriorellis
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 07/01/2018
 ms.author: panosper
-ms.openlocfilehash: 6043d01e26d9f28f90e45c2cc194863b3a9cd017
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: a219db14d659348ef3ed4de1dffa640a948f1954
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072276"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283328"
 ---
 # <a name="transcription-guidelines-for-using-speech-service"></a>使用语音服务的听录指南
 
-若要自定义“语音转文本”或“文本转语音”，则必须提供文本和语音。 文本中的每一行对应一个语句。 文本应尽可能与语音一致。 文本称为一个脚本，必须按特定格式进行创建。
+若要自定义“语音转文本”或“文本转语音”，则必须提供文本和语音。 文本中的每一行对应一个陈述。 文本应尽可能与语音一致。 文本称为一个脚本，必须按特定格式进行创建。
 
 语音服务使输入规范化，从而让文本保持一致。 
 

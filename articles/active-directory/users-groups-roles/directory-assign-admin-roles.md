@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 07/25/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 34b56c7435e2995f806828dce34f3d6bf425ca75
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 5d6254efbb6051bf4fcd01abd4fbf858b0211319
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448789"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399934"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>在 Azure Active Directory 中分配管理员角色
 
@@ -48,8 +48,6 @@ ms.locfileid: "37448789"
   > [!NOTE]
   > 若要在 Azure 中部署 Exchange ActiveSync 条件访问策略，用户还必须是全局管理员。
   
-* **[Dynamics 365 服务管理员/CRM 服务管理员](#crm-service-administrator)**：具有此角色的用户在 Microsoft CRM Online（如果存在此服务）中拥有全局权限，并可以管理支持票证和监视服务运行状况。 有关详细信息，请参阅[使用服务管理员角色管理租户](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant)。
-
 * **[设备管理员](#device-administrators)**：具有此角色的用户将成为已加入 Azure Active Directory 的所有 Windows 10 设备上的本地计算机管理员。 他们无权管理 Azure Active Directory 中的设备对象。
 
 * **[目录读取者](#directory-readers)**：这是一个遗留的角色，分配给不支持[许可框架](../develop/active-directory-integrating-applications.md)的应用程序。 不应将它分配给任何用户。
@@ -57,6 +55,8 @@ ms.locfileid: "37448789"
 * **[目录同步帐户](#directory-synchronization-accounts)**：请勿使用。 此角色自动分配给 Azure AD Connect 服务，不可用于其他任何用途。
 
 * **[目录写入者](#directory-writers)**：这是一个遗留的角色，分配给不支持[许可框架](../develop/active-directory-integrating-applications.md)的应用程序。 不应将它分配给任何用户。
+
+* **[Dynamics 365 服务管理员/CRM 服务管理员](#dynamics-365-service-administrator)**：具有此角色的用户在 Microsoft Dynamics 365 Online（如果存在此服务）中拥有全局权限，并可以管理支持票证和监视服务运行状况。 有关详细信息，请参阅[使用服务管理员角色管理租户](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant)。
 
 * **[Exchange 服务管理员](#exchange-service-administrator)**：具有此角色的用户在 Microsoft Exchange Online（如果存在此服务）中拥有全局权限。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)（关于 Office 365 管理员角色）。
 
@@ -267,11 +267,6 @@ ms.locfileid: "37448789"
 可以管理 Azure AD 和使用 Azure AD 标识的 Microsoft 服务的所有方面。 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“公司管理员”。 它是 [Azure 门户](https://portal.azure.com)中的“全局管理员”。
 
   > [!NOTE]
-  > 此角色从[用户角色](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)继承其他权限。
-  >
-  >
-
-  > [!NOTE]
   > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
@@ -357,27 +352,6 @@ ms.locfileid: "37448789"
 | microsoft.aad.directory/ConditionalAccessPolicy/Update | 更新 Azure Active Directory 中 ConditionalAccessPolicys 的标准属性。 |
 | microsoft.aad.directory/ConditionalAccessPolicy/Update/Owners | 更新 Azure Active Directory 中的 ConditionalAccessPolicys.Owners 属性。 |
 
-### <a name="crm-service-administrator"></a>CRM 服务管理员
-可以管理 Dynamics 365 产品的所有方面。
-
-  > [!NOTE]
-  > 此角色从[用户角色](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)继承其他权限。
-  >
-  >
-
-  > [!NOTE]
-  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
-  >
-  >
-
-| **操作** | **说明** |
-| --- | --- |
-| microsoft.aad.directory/Organization/Read/TrustedCAsForPasswordlessAuth | 读取 Azure Active Directory 中的 Organizations.TrustedCAsForPasswordlessAuth 属性。 |
-| microsoft.aad.accessservice/AllEntities/AllActions | 创建和删除所有资源，然后读取和更新 Azure 访问控制中的标准属性。 |
-| microsoft.aad.servicehealth/AllEntities/AllActions | 读取和配置 Office 365 服务运行状况。 |
-| microsoft.aad.supporttickets/AllEntities/AllActions | 创建和管理 Office 365 支持票证。 |
-| microsoft.crm/AllEntities/AllActions | 管理 Dynamics 365 的各个方面。 |
-
 ### <a name="device-administrators"></a>设备管理员
 此角色的成员将添加到已加入 Azure AD 的设备上的本地管理员组。
 
@@ -389,13 +363,8 @@ ms.locfileid: "37448789"
 | **操作** | **说明** |
 | --- | --- |
 
-### <a name="directory-reader"></a>目录读取者
-可以读取基本目录信息。 授予应用程序访问权限
-
-  > [!NOTE]
-  > 此角色从[用户角色](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)继承其他权限。
-  >
-  >
+### <a name="directory-readers"></a>目录读者
+可以读取基本目录信息。 用于授予对应用程序的访问权限。
 
 | **操作** | **说明** |
 | --- | --- |
@@ -449,11 +418,6 @@ ms.locfileid: "37448789"
 ### <a name="directory-synchronization-accounts"></a>目录同步帐户
 仅供 Azure AD Connect 服务使用。
 
-  > [!NOTE]
-  > 此角色从[用户角色](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)继承其他权限。
-  >
-  >
-
 | **操作** | **说明** |
 | --- | --- |
 | microsoft.aad.directory/Policy/Create | 在 Azure Active Directory 中创建策略。 |
@@ -483,11 +447,6 @@ ms.locfileid: "37448789"
 ### <a name="directory-writer"></a>目录写入者
 可以读取和写入基本目录信息。 授予应用程序访问权限
 
-  > [!NOTE]
-  > 此角色从[用户角色](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)继承其他权限。
-  >
-  >
-
 | **操作** | **说明** |
 | --- | --- |
 | microsoft.aad.directory/DirectorySetting/Create | 在 Azure Active Directory 中创建 DirectorySettings。 |
@@ -507,6 +466,27 @@ ms.locfileid: "37448789"
 | microsoft.aad.directory/User/Update | 更新 Azure Active Directory 中用户的标准属性。 |
 | microsoft.aad.directory/User/Update/AppRoleAssignments | 更新 Azure Active Directory 中的 Users.AppRoleAssignments 属性。 |
 | microsoft.aad.directory/User/Update/Manager | 更新 Azure Active Directory 中的 Users.Manager 属性。 |
+
+### <a name="dynamics-365-service-administrator"></a>Dynamics 365 服务管理员
+可以管理 Dynamics 365 产品的所有方面。
+
+  > [!NOTE]
+  > 此角色从[用户角色](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)继承其他权限。
+  >
+  >
+
+  > [!NOTE]
+  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
+  >
+  >
+
+| **操作** | **说明** |
+| --- | --- |
+| microsoft.aad.directory/Organization/Read/TrustedCAsForPasswordlessAuth | 读取 Azure Active Directory 中的 Organizations.TrustedCAsForPasswordlessAuth 属性。 |
+| microsoft.aad.accessservice/AllEntities/AllActions | 创建和删除所有资源，然后读取和更新 Azure 访问控制中的标准属性。 |
+| microsoft.aad.servicehealth/AllEntities/AllActions | 读取和配置 Office 365 服务运行状况。 |
+| microsoft.aad.supporttickets/AllEntities/AllActions | 创建和管理 Office 365 支持票证。 |
+| microsoft.crm/AllEntities/AllActions | 管理 Dynamics 365 的各个方面。 |
 
 ### <a name="exchange-service-administrator"></a>Exchange 服务管理员
 可以管理 Exchange 产品的所有方面。
@@ -783,6 +763,25 @@ ms.locfileid: "37448789"
 | microsoft.aad.directory/DirectoryRole/Update | 更新 Azure Active Directory 中 DirectoryRoles 的标准属性。 |
 | microsoft.aad.privilegedrolemanagement/AllEntities/AllActions | 管理特权角色管理服务的各个方面。 |
 
+### <a name="reports-reader"></a>报告读者
+可以读取登录和审核报告。
+
+  > [!NOTE]
+  > 此角色从“目录读取者”角色继承其他权限。
+  >
+  >
+
+  > [!NOTE]
+  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
+  >
+  >
+
+| **操作** | **说明** |
+| --- | --- |
+| microsoft.aad.reports/AllEntities/Read | 读取 Azure AD 报告。 |
+| microsoft.aad.servicehealth/AllEntities/AllActions | 读取和配置 Office 365 服务运行状况。 |
+| microsoft.office365.usagereports/AllEntities/Read | 阅读 Office 365 使用情况报告。 |
+
 ### <a name="security-administrator"></a>安全管理员
 可以读取安全信息和报告
 
@@ -810,25 +809,6 @@ ms.locfileid: "37448789"
 | microsoft.aad.privilegedrolemanagement/AllEntities/Read | 读取 Privileged Identity Management 各个方面。 |
 | microsoft.protectioncenter/AllEntities/Read | 读取 Office 365 防护中心的各个方面。 |
 | microsoft.protectioncenter/AllEntities/Update | 管理 Office 365 防护中心。 |
-
-### <a name="reports-reader"></a>报告读者
-可以读取登录和审核报告。
-
-  > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
-
-  > [!NOTE]
-  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
-  >
-  >
-
-| **操作** | **说明** |
-| --- | --- |
-| microsoft.aad.reports/AllEntities/Read | 读取 Azure AD 报告。 |
-| microsoft.aad.servicehealth/AllEntities/AllActions | 读取和配置 Office 365 服务运行状况。 |
-| microsoft.office365.usagereports/AllEntities/Read | 阅读 Office 365 使用情况报告。 |
 
 ### <a name="security-reader"></a>安全读取者
 可以读取 Azure AD 和 Office 365 中的安全信息和报表。

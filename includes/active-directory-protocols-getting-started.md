@@ -13,18 +13,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/18/2018
 ms.author: priyamo
-ms.openlocfilehash: 72fb594265e69eb1dc16cb29ad4df6acb3a87720
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: cb31bb91c80e4d5dd032b009b40d8e3fc435e0c8
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34663621"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39359453"
 ---
 ## <a name="register-your-application-with-your-ad-tenant"></a>将应用程序注册到 AD 租户
 首先，需要将应用程序注册到 Azure Active Directory (Azure AD) 租户。 这会为应用程序分配一个应用程序 ID，并且使该应用程序可以接收令牌。
 
 * 登录到 [Azure 门户](https://portal.azure.com)。
-* 通过在页面右上角单击帐户选择 Azure AD 租户。
+* 通过以下方式选择 Azure AD 租户：在页面右上角单击你的帐户，单击“切换目录”导航，然后选择合适的租户。 
+  * 如果你的帐户下只有一个 Azure AD 租户，或者已选择了合适的 Azure AD 租户，请跳过此步骤。
 * 在左侧的导航窗格中，单击“Azure Active Directory”。
 * 依次单击“应用注册”和“新建应用程序注册”。
 * 根据提示创建新的应用程序。 本教程简要介绍了 Web 应用程序和本机应用程序的操作步骤，如果想要查看 Web 应用程序或本机应用程序的具体示例，请参阅[快速入门](../articles/active-directory/develop/active-directory-developers-guide.md)。

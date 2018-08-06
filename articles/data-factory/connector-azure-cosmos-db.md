@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/15/2018
+ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 92b45c1038fd099926360dc80802ababf0e8ee93
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 6c0921a466864bf2b07711cfcd1eac397c5ced83
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37052760"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325347"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Cosmos DB 复制数据
 
@@ -162,9 +162,11 @@ Azure Cosmos DB 链接的服务支持以下属性：
 
 要将数据复制到 Azure Cosmos DB 数据，请将复制活动中的接收器类型设置为“DocumentDbCollectionSink”。 复制活动**源**部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
-| type | 复制活动接收器的 type 属性必须设置为：**DocumentDbCollectionSink** |是 |
+| 类型 | 复制活动接收器的 type 属性必须设置为：**DocumentDbCollectionSink** |是 |
+| writeBehavior |描述如何将数据写入到 Cosmos DB。 允许的值为：`insert` 和 `upsert`。<br/>**upsert** 的行为是，如果已存在具有相同 ID 的文档，则替换该文档；否则将插入该文档。 请注意，如果未在原始文档中或通过列映射指定文档 ID，则 ADF 将自动为文档生成一个 ID，这意味着你需要确保文档具有“ID”以便 upsert 按预期方式工作。 |否，默认值为 insert |
+| writeBatchSize | 数据工厂使用 [Cosmos DB 批量执行器](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)将数据写入到 Cosmos DB 中。 “writeBatchSize”控制每次提供给库的文档的大小。 可以尝试增大 writeBatchSize 来提高性能。 |否 |
 | nestingSeparator |源列名称中的特殊字符，指示需要嵌套的文档。 <br/><br/>例如，当nestedSeparator 是点时，输出数据集结构中的 `Name.First` 在 Cosmos DB 文档中生成以下 JSON 结构：`"Name": {"First": "[value maps to this column from source]"}`。 |否（默认值为点 `.`） |
 
 **示例：**
@@ -191,7 +193,8 @@ Azure Cosmos DB 链接的服务支持以下属性：
                 "type": "<source type>"
             },
             "sink": {
-                "type": "DocumentDbCollectionSink"
+                "type": "DocumentDbCollectionSink",
+                "writeBehavior": "upsert"
             }
         }
     }

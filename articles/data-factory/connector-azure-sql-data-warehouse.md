@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/28/2018
+ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 42ffdbf117b3f522e27e6e46628231ddb8221018
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 70615726ed313884a977ae1b338d3c484fc32a1a
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051621"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39326167"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure SQL 数据仓库或从 Azure SQL 数据仓库复制数据 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -99,7 +99,7 @@ Azure SQL 数据仓库链接服务支持以下属性：
 
 若要使用基于服务主体的 Azure AD 应用程序令牌身份验证，请执行以下步骤：
 
-1. 从 Azure 门户**[创建 Azure Active Directory 应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)**。 记下应用程序名称，以及定义链接服务的以下值：
+1. 从 Azure 门户**[创建 Azure Active Directory 应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)**。 记下应用程序名称，以及以下定义链接服务的值：
 
     - 应用程序 ID
     - 应用程序密钥
@@ -158,7 +158,7 @@ Azure SQL 数据仓库链接服务支持以下属性：
 
 若要使用基于 MSI 的 Azure AD 应用程序令牌身份验证，请执行以下步骤：
 
-1. **在 Azure AD 中创建组。** 使工厂 MSI 成为该组的成员。
+1. 在 Azure AD 中创建组。 使工厂 MSI 成为该组的成员。
 
     a. 从 Azure 门户中找到数据工厂服务标识。 转到数据工厂的“属性”。 复制服务标识 ID。
 
@@ -253,7 +253,7 @@ Azure SQL 数据仓库链接服务支持以下属性：
 ### <a name="points-to-note"></a>需要注意的要点：
 
 - 如果为 **SqlSource** 指定 **sqlReaderQuery**，则复制活动针对 Azure SQL 数据仓库源运行此查询以获取数据。 也可以可指定存储过程。 如果存储过程使用参数，则指定 **sqlReaderStoredProcedureName** 和 **storedProcedureParameters**。
-- 如果不指定 **sqlReaderQuery** 或 **sqlReaderStoredProcedureName**，则数据集 JSON 的 **structure** 节中定义的列用于构建查询。 `select column1, column2 from mytable` 针对 Azure SQL 数据仓库运行。 如果数据集定义没有 **structure**，则将从表中选择所有列。
+- 如果不指定 **sqlReaderQuery** 或 **sqlReaderStoredProcedureName**，则数据集 JSON 的 **structure** 节中定义的列用于构建查询。 `select column1, column2 from mytable` 针对 Azure SQL 数据仓库运行。 如果数据集定义没有“结构”，则从表中选择所有列。
 - 使用 sqlReaderStoredProcedureName 时，仍需指定数据集 JSON 中虚拟的 tableName属性。
 
 #### <a name="sql-query-example"></a>SQL 查询示例
@@ -356,7 +356,7 @@ GO
 | rejectType | 指定 **rejectValue** 选项是文本值还是百分比。<br/><br/>允许的值为 **Value**（默认值）和 **Percentage**。 | 否 |
 | rejectSampleValue | 确定在 PolyBase 重新计算被拒绝行的百分比之前要检索的行数。<br/><br/>允许的值为 1、2 等。 | 如果 **rejectType** 是 **percentage**，则为“是” |
 | useTypeDefault | 指定 PolyBase 从文本文件检索数据时如何处理分隔文本文件中的缺失值。<br/><br/>有关此属性的详细信息，请参阅[创建外部文件格式 (Transact SQL)](https://msdn.microsoft.com/library/dn935026.aspx) 中的参数部分。<br/><br/>允许的值为 **True** 和 **False**（默认值）。 | 否 |
-| writeBatchSize | 缓冲区大小达到 **writeBatchSize** 时会数据插入 SQL 表。 仅在未使用 PolyBase 时适用。<br/><br/>允许的值为 **integer**（行数）。 | 不是。 默认值为 10000。 |
+| writeBatchSize | 缓冲区大小达到 writeBatchSize 时会将数据插入到 SQL 表。 仅在未使用 PolyBase 时适用。<br/><br/>允许的值为 **integer**（行数）。 | 不是。 默认值为 10000。 |
 | writeBatchTimeout | 超时前等待批量插入操作完成的时间。仅在未使用 PolyBase 时适用。<br/><br/>允许的值为 **timespan**。 示例：“00:30:00”（30 分钟）。 | 否 |
 | preCopyScript | 每次运行时，将数据写入到 Azure SQL 数据仓库之前，指定复制活动要运行的 SQL 查询。 使用此属性清理预加载的数据。 | 否 | (#repeatability-during-copy)。 | 查询语句。 | 否 |
 
@@ -401,9 +401,9 @@ SQL 数据仓库 PolyBase 直接支持 Azure Blob 和 Azure Data Lake Store。 �
 2. **输入数据集**类型为 **AzureBlob** 或 **AzureDataLakeStoreFile**。 `type` 属性下的格式类型为 **OrcFormat**、**ParquetFormat** 或 **TextFormat**，其配置如下：
 
    1. `rowDelimiter` 必须是 **\n**。
-   2. `nullValue` 设置为**空字符串** ("")，或者 `treatEmptyAsNull` 设置为“true”。
+   2. `nullValue` 设置为**空字符串**（""）或保留为默认值，`treatEmptyAsNull` 未设置为 false。
    3. `encodingName` 设置为 **utf-8**（默认值）。
-   4. `escapeChar`、`quoteChar`、`firstRowAsHeader` 和 `skipLineCount` 未指定。
+   4. `escapeChar`、`quoteChar` 和 `skipLineCount` 未指定。 PolyBase 支持跳过可以在 ADF 中配置为 `firstRowAsHeader` 的标头行。
    5. `compression` 可为**无压缩**、**GZip** 或 **Deflate**。
 
     ```json
@@ -414,7 +414,8 @@ SQL 数据仓库 PolyBase 直接支持 Azure Blob 和 Azure Data Lake Store。 �
            "columnDelimiter": "<any delimiter>",
            "rowDelimiter": "\n",
            "nullValue": "",
-           "encodingName": "utf-8"
+           "encodingName": "utf-8",
+           "firstRowAsHeader": <any>
        },
        "compression": {
            "type": "GZip",
@@ -422,9 +423,6 @@ SQL 数据仓库 PolyBase 直接支持 Azure Blob 和 Azure Data Lake Store。 �
        }
     },
     ```
-
-3. 管道中复制活动的 **BlobSource** 或 **AzureDataLakeStore** 下没有 `skipHeaderLineCount` 设置。
-4. 管道中复制活动的 **SqlDWSink** 下没有 `sliceIdentifierColumnName` 设置。 PolyBase 保证所有数据都已更新或在单次运行中没有任何更新。 若要实现**可重复性**，请使用 `sqlWriterCleanupScript`。
 
 ```json
 "activities":[

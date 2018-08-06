@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 525416506a22f386de574ca02b2e919ac47b8737
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 51facd32fd7dbffe39fd959b0c8e9321d04657e0
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311131"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412373"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>在 Azure SQL 数据库中缩放单一数据库资源
 
@@ -26,6 +26,9 @@ ms.locfileid: "36311131"
 - 可通过 [Azure 门户](https://portal.azure.com)、[Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples)、[PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase)、[Azure CLI](/cli/azure/sql/db#az_sql_db_update) 或 [REST API](/rest/api/sql/databases/update) 为单一数据库增加或减少大小上限，以预配存储。
 - SQL 数据库会自动为日志文件额外分配 30% 的存储，并为 TempDB 的每个 vCore 分配 32GB，但不会超过 384GB。 TempDB 位于所有服务层中的附加 SSD 上。
 - 单一数据库的存储价格等于数据存储与日志存储量之和乘以服务层的存储单价。 vCore 价格已包括 TempDB 费用。 有关额外存储价格的详细信息，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。
+
+> [!IMPORTANT]
+> 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)。
 
 ## <a name="vcore-based-purchasing-model-change-compute-resources"></a>基于 vCore 的购买模型：更改计算资源
 
@@ -47,12 +50,15 @@ ms.locfileid: "36311131"
 ## <a name="dtu-based-purchasing-model-change-storage-size"></a>基于 DTU 的购买模型：更改存储大小
 
 - 单一数据库的 DTU 价格附送了一定容量的存储，无需额外费用。 超出附送的量后，可花费额外的费用预配额外的存储，但不能超过存储上限，不超过 1 TB 时，以 250 GB 为增量进行预配，超出 1 TB 时，以 256 GB 为增量进行预配。 有关附送存储量和大小上限，请参阅[单一数据库：存储大小和性能级别](#single-database-storage-sizes-and-performance-levels)。
-- 可通过 [Azure portal](sql-database-servers-databases-manage.md#azure-portal-manage-logical-servers-and-databases)、[Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples)、[PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase)、[Azure CLI](/cli/azure/sql/db#az_sql_db_update) 或 [REST API](/rest/api/sql/databases/update) 为单一数据库增加大小上限，以预配额外存储。
+- 可通过 Azure 门户、[Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples)、[PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase)、[Azure CLI](/cli/azure/sql/db#az_sql_db_update) 或 [REST API](/rest/api/sql/databases/update) 为单一数据库增加大小上限，以预配额外存储。
 - 单一数据库的额外存储价格等于额外存储量乘以服务层的额外存储单价。 有关额外存储价格的详细信息，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。
+
+> [!IMPORTANT]
+> 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)。
 
 ## <a name="dtu-based-purchasing-model-change-compute-resources-dtus"></a>基于 DTU 的购买模型：更改计算资源 (DTU)
 
-首先选择服务层、性能级别和存储量，然后使用 [Azure portal](sql-database-servers-databases-manage.md#azure-portal-manage-logical-servers-and-databases)、[Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples)、 [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase)、[Azure CLI](/cli/azure/sql/db#az_sql_db_update) 或 [REST API](/rest/api/sql/databases/update)，根据实际体验动态扩展或缩减单一数据库。 
+首先选择服务层、性能级别和存储量，然后使用 Azure 门户、[Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples)、[PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase)、[Azure CLI](/cli/azure/sql/db#az_sql_db_update) 或 [REST API](/rest/api/sql/databases/update)，根据实际体验动态扩展或缩减单一数据库。 
 
 下面视频演示了如何动态更改性能层以增加单一数据库的可用 DTU。
 
@@ -71,7 +77,7 @@ ms.locfileid: "36311131"
 * 从高级降级至标准层时，如果同时满足 (1) 目标性能级别支持该数据库的最大大小，(2) 最大大小超出目标性能级别附送的存储量，那么将产生额外存储费用。 例如，如果将最大大小为 500 GB 的 P1 数据库缩小至 S3，那么将产生额外的存储费用，因为 S3 支持的最大大小为 500 GB，而它的附送存储量仅为 250 GB。 因此，额外存储量为 500 GB – 250 GB = 250 GB。 有关额外存储定价的信息，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。 如果实际使用的空间量小于附送的存储量，只要将数据库最大大小减少到附送的量，就能避免此项额外费用。 
 * 在启用了[异地复制](sql-database-geo-replication-portal.md)的情况下升级数据库时，请先将辅助数据库升级到所需的性能层，然后再升级主数据库（为获得最佳性能的常规指南）。 在升级到另一版本时，必须首先升级辅助数据库。
 * 在启用了[异地复制](sql-database-geo-replication-portal.md)的情况下降级数据库时，请先将主数据库降级到所需的性能层，然后再降级辅助数据库（为获得最佳性能的常规指南）。 在降级到另一版本时，必须首先降级主数据库。
-* 各服务层提供的还原服务各不相同。 如果要降级到基本层，则备份保留期也将减少 - 请参阅 [Azure SQL 数据库备份](sql-database-automated-backups.md)。
+* 各服务层的还原服务不同。 如果要降级到基本层，则备份保留期也将减少 - 请参阅 [Azure SQL 数据库备份](sql-database-automated-backups.md)。
 * 所做的更改完成之前不会应用数据库的新属性。
 
 ## <a name="dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb"></a>基于 DTU 的购买模型：当最大大小超过 1 TB 时，P11 和 P15 的限制

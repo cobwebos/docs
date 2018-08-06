@@ -1,5 +1,5 @@
 ---
-title: 创建启用了 Kafka 的 Azure 事件中心 | Microsoft 文档
+title: 创建启用了 Apache Kafka 的 Azure 事件中心 | Microsoft Docs
 description: 使用 Azure 门户创建启用了 Kafka 的 Azure 事件中心命名空间
 services: event-hubs
 documentationcenter: .net
@@ -10,18 +10,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: shvija
-ms.openlocfilehash: 7a05a89fdf99efb6470ee9c8695f349cf22b8ebb
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 79b6b879bd2332c044ce871e2c9a938c6b9c900c
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442121"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285067"
 ---
-# <a name="create-kafka-enabled-event-hubs"></a>创建启用了 Kafka 的事件中心
+# <a name="create-apache-kafka-enabled-event-hubs"></a>创建启用了 Apache Kafka 的事件中心
 
 Azure 事件中心是大数据流平台即服务 (PaaS)，它每秒引入数百万个事件，可为实时分析和可视化效果提供低延迟和高吞吐量的性能。
 
-用于 Kafka 生态系统的 Azure 事件中心提供了一个终结点。 此终结点允许事件中心命名空间以本机方式了解 [Apache Kafka](https://kafka.apache.org/intro) 消息协议和 API。 使用此功能，可以像与 Kafka 主题通信那样与事件中心通信，而无需更改协议客户端或运行自己的群集。 用于 Kafka 生态系统的事件中心支持 [Apache Kafka 版本 1.0](https://kafka.apache.org/10/documentation.html) 及更高版本。
+Azure 事件中心提供了一个 Kafka 终结点。 此终结点允许事件中心命名空间以本机方式了解 [Apache Kafka](https://kafka.apache.org/intro) 消息协议和 API。 使用此功能，可以像与 Kafka 主题通信那样与事件中心通信，而无需更改协议客户端或运行自己的群集。 事件中心支持 [Apache Kafka 版本 1.0](https://kafka.apache.org/10/documentation.html) 及更高版本。
 
 本文介绍如何创建事件中心命名空间，以及如何获取将 Kafka 应用程序连接到启用 Kafka 的事件中心所需的连接字符串。
 
@@ -58,7 +58,7 @@ Azure 事件中心是大数据流平台即服务 (PaaS)，它每秒引入数百�
 若要了解有关事件中心的详细信息，请访问以下链接：
 
 * [从 Kafka 应用程序流式传输到事件中心](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-* [了解用于 Kafka 生态系统的事件中心](event-hubs-for-kafka-ecosystem-overview.md)
+* [了解适用于 Kafka 的事件中心](event-hubs-for-kafka-ecosystem-overview.md)
 * [了解事件中心](event-hubs-what-is-event-hubs.md)
 
 

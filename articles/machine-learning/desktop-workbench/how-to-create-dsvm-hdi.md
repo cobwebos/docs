@@ -7,16 +7,16 @@ ms.author: haining
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: 40711c424d3d552253deba85110b0c4447f4ec62
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 18cf885cd71822c2c24791f3c6f55835c3204d35
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831012"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39295173"
 ---
 # <a name="create-dsvm-and-hdi-spark-cluster-as-compute-targets"></a>创建 DSVM 和 HDI Spark 群集作为计算目标
 
@@ -150,7 +150,7 @@ $ az vm start -g <resource group name> -n <vm name>
 ```
 
 ## <a name="expand-the-dsvm-os-disk"></a>扩展 DSVM OS 磁盘
-Ubuntu DSVM 附带了 50GB OS 磁盘和 100GB 数据磁盘。 Docker 将其映像存储在数据磁盘上，因为该处有更多空间可用。 如果将该磁盘用作 Azure ML 的计算目标，Docker 引擎会将 Docker 映像拉取到其中，并在其顶层生成 conda 层，因此会用尽该磁盘。 可能需要将 OS 磁盘扩展到更大的大小（例如 200 GB），以免在执行的中途出现“磁盘已满”错误。 请参考[如何使用 Azure CLI 扩展 Linux VM 上的虚拟硬盘](../../virtual-machines/linux/expand-disks.md)了解如何通过 azure-cli 轻松执行此操作。 
+Ubuntu DSVM 附带了 50GB OS 磁盘和 100GB 数据磁盘。 Docker 将其映像存储在数据磁盘上，因为该处有更多空间可用。 如果将该磁盘用作 Azure ML 的计算目标，Docker 引擎会将 Docker 映像拉取到其中，并在其顶层生成 conda 层，因此会用尽该磁盘。 可能需要将磁盘扩展到更大的大小（例如 200 GB），以免在执行的中途出现“磁盘已满”错误。 请参考[如何使用 Azure CLI 扩展 Linux VM 上的虚拟硬盘](../../virtual-machines/linux/expand-disks.md)了解如何通过 azure-cli 轻松执行此操作。 
 
 ## <a name="create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal"></a>在 Azure 门户中为 Azure HDInsight 群集创建 Apache Spark
 

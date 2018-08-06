@@ -1,21 +1,20 @@
 ---
-title: 关于语音翻译 | Microsoft Docs
+title: 关于语音翻译
 description: 语音翻译功能概述
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: a569c968d444c36ceb3bce4779d2eca39c21f9bc
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 7d653a17212c727d65820382e22196d62af086e9
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069188"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39324402"
 ---
 # <a name="about-the-speech-translation-api"></a>关于语音翻译 API
 
@@ -43,4 +42,4 @@ ms.locfileid: "39069188"
 ## <a name="next-steps"></a>后续步骤
 
 * [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)
-* [了解如何在 C# 中识别语音](quickstart-csharp-dotnet-windows.md)
+* [参阅如何在 C# 中转换语音](how-to-translate-speech-csharp.md)

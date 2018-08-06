@@ -1,21 +1,20 @@
 ---
-title: 关于语音转文本 | Microsoft Docs
+title: 关于语音转文本
 description: 语音转文本 API 功能概述。
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 2ed00377db80849a8355ccc895db12d006bea642
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: ba6710c8b5b8de1c63fa6778ea3853ab52365254
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069921"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325330"
 ---
 # <a name="about-the-speech-to-text-api"></a>关于语音转文本 API
 
@@ -41,8 +40,8 @@ ms.locfileid: "39069921"
 
 | 使用案例 | REST | SDK |
 |-----|-----|-----|----|
-| 转录简短的语句，如命令（长度 < 15 秒）；没有中期结果 | 是 | 是 |
-| 转录较长的语句（> 15 秒） | 否 | 是 |
+| 转录简短的陈述，如命令（长度 < 15 秒）；没有中期结果 | 是 | 是 |
+| 转录较长的陈述（> 15 秒） | 否 | 是 |
 | 使用可选的中间结果转录流式处理音频 | 否 | 是 |
 | 通过 LUIS 了解说话者意向 | 否\* | 是 |
 
@@ -51,4 +50,5 @@ ms.locfileid: "39069921"
 ## <a name="next-steps"></a>后续步骤
 
 * [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)
-* [了解如何在 C# 中识别语音](quickstart-csharp-dotnet-windows.md)
+* [快速入门：在 C# 中识别语音](quickstart-csharp-dotnet-windows.md)
+* [参阅如何在 C# 中从语音中识别意向](how-to-recognize-intents-from-speech-csharp.md)

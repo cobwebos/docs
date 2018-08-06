@@ -5,6 +5,7 @@ documentationcenter: ''
 author: deguhath
 manager: cgronlun
 editor: cgronlun
+services: machine-learning
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: team-data-science-process
@@ -14,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: deguhath
-ms.openlocfilehash: aaa965c507faba344ca717a76b3fb3a0a01fa0ee
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 1ebd640191ffbb1b3ea70ca07081522b370e4e2d
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838562"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308181"
 ---
 # <a name="team-data-science-process-project-planning"></a>Team Data Science Process 项目规划
 
@@ -55,9 +56,13 @@ Team Data Science Process (TDSP) 提供用于构建数据科学项目开发的�
 
 请自行承担使用这些模板的风险。 [常规的免责声明](https://www.gnu.org/licenses/gpl-3.0.en.html)适用于这些模板。
 
+## <a name="repository-template"></a>存储库模板
+
+可以使用此[项目模板存储库](https://github.com/Azure/Azure-TDSP-ProjectTemplate)来支持高效的项目执行和协作。 此存储库提供了标准化的目录结构和文档模板，可以将它们用于你自己的 TDSP 项目。
+
 ## <a name="next-steps"></a>后续步骤
 
 [数据科学项目的敏捷开发](agile-development.md) 此文档介绍如何使用 Team Data Science Process 在项目团队中以系统化的协作型版本控制方式执行数据科学项目。
 
-我们还提供了相应的演练，用于演示**具体方案**的操作过程的所有步骤。 在[示例演练](walkthroughs.md)主题中，列出了相关步骤并链接了缩略图说明。 这些演练演示如何将云、本地工具和服务合并到工作流或管道中，以创建智能应用程序。 
+我们还提供了相应的演练，用于演示**具体方案**的操作过程的所有步骤。 [示例演练](walkthroughs.md)一文列出了相关步骤并以缩略图说明的形式提供了链接。 这些演练演示如何将云、本地工具和服务合并到工作流或管道中，以创建智能应用程序。 
 

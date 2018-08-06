@@ -1,19 +1,18 @@
 ---
-title: 什么是自定义语音？ - Azure 认知服务 | Microsoft Docs
+title: 什么是自定义语音？ - Azure 认知服务
 description: 本文概述了 Microsoft 文本转语音这一语音自定义功能，说明如何通过该功能创建可识别的特色语音。
 services: cognitive-services
 author: noellelacharite
-manager: nolach
 ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: 7c4abb6832a030c2cb3cc2088dc5d0f1350a6ab8
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 84493ae83515c0458bf5b9e9cf44603300a8b4f7
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258841"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284881"
 ---
 # <a name="creating-custom-voice-fonts"></a>创建自定义语音字体
 

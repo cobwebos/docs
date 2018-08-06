@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 07/25/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 5d4062ff2c21deeb56eb4ae6e8386452608f85fa
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: fa6048800aad04b45b72c4da61ad9e8b94541502
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158798"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308470"
 ---
 # <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>预览版：为 Windows Server Active Directory 实施 Azure AD 密码保护
 
@@ -37,6 +37,7 @@ Azure AD 密码保护是由 Azure Active Directory (Azure AD) 提供支持的一
 ## <a name="requirements"></a>要求
 
 * 安装了 Azure AD 密码保护组件的所有计算机（包括域控制器）都必须运行 Windows Server 2012 或更高版本。
+* 安装了 Azure AD 密码保护组件的所有计算机（包括域控制器）都必须安装 Universal C 运行时。 这最好通过使用 Windows 更新完全修补计算机来完成。 否则，可以安装合适的特定于 OS 的更新包 - 请参阅[适用于 Windows 中的 Universal C 运行时的更新](https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows)。
 * 在每个域中的至少一台域控制器和托管 Azure AD 密码保护代理服务的至少一台服务器之间必须存在网络连接。
 * 运行 DC 代理服务软件的任何 Active Directory 域都必须使用 DFSR 进行 sysvol 复制。
 * 拥有用来向 Azure AD 注册 Azure AD 密码保护代理服务的全局管理员帐户。
@@ -48,7 +49,7 @@ Azure AD 密码保护是由 Azure Active Directory (Azure AD) 提供支持的一
 
 自定义的禁止密码列表需要 Azure AD Basic 许可证。
 
-Windows Server Active Directory 的 Azure AD 密码保护需要 Azure AD Premium 许可证。 
+Windows Server Active Directory 的 Azure AD 密码保护需要 Azure AD Premium 许可证。
 
 可以在 [Azure Active Directory 定价站点](https://azure.microsoft.com/pricing/details/active-directory/)上找到包括成本在内的其他许可信息。
 
@@ -61,7 +62,7 @@ Windows Server Active Directory 的 Azure AD 密码保护需要 Azure AD Premium
 * 域控制器不需要 Internet 连接。 运行 Azure AD 密码保护代理服务的计算机是唯一需要 Internet 连接的计算机。
 * 域控制器上未打开任何网络端口。
 * 无需进行任何 Active Directory 架构更改。
-   * 该软件使用现有的 Active Directory 容器和 serviceConnectionPoint 架构对象。
+* 该软件使用现有的 Active Directory 容器和 serviceConnectionPoint 架构对象。
 * 没有最小 Active Directory 域或林功能级别 (DFL\FFL) 要求。
 * 该软件不在它保护的 Active Directory 域中创建任何帐户，也不需要其中的任何帐户。
 * 支持增量部署，采取的权衡方法是仅在安装了域控制器代理的地方实施密码策略。

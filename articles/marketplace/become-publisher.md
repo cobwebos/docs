@@ -3,8 +3,8 @@ title: 成为市场店面的发布者 | Azure
 description: 本文介绍如何成为市场中的发布者。
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
-author: jm-aditi-ms
-manager: pabutler
+author: ellacroi
+manager: nunoc
 editor: ''
 ms.assetid: ''
 ms.service: marketplace
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: fb3f307642dc6f4607a626e0b320949306129759
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 4d37aba665fd9b6de89f683ce2785a14b1b6f60b
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172307"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412009"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>成为云市场发布者
 
@@ -103,8 +103,8 @@ Microsoft 帐户（例如 *@outlook.com 或 @live.com*）用于访问多个 Micr
 
 
 ## <a name="next-steps"></a>后续步骤
-* 了解市场店面：AppSource 和 Azure 市场
-*   确定适用于市场的套餐
+* 了解市场店面：[比较 AppSource 和 Azure 市场](https://docs.microsoft.com/en-us/azure/marketplace/comparing-appsource-azure-marketplace)
+*   [确定解决方案的列表类型](https://docs.microsoft.com/en-us/azure/marketplace/determine-your-listing-type)
 
  
 ---  

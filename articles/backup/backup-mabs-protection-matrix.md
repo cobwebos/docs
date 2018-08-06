@@ -5,16 +5,16 @@ services: backup
 author: markgalioto
 ms.service: backup
 keywords: ''
-ms.date: 11/28/2017
+ms.date: 7/14/2018
 ms.topic: conceptual
 ms.author: markgal
 manager: carmonm
-ms.openlocfilehash: 2edf6b4076dfafd775e723d44ed4d93b7493828b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4167e8214674527039fd838f81c3489840e6ef68
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607236"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284906"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Azure 备份服务器保护矩阵
 
@@ -80,8 +80,8 @@ ms.locfileid: "34607236"
 |Hyper-V 主机 - Hyper-V 主机服务器、群集或 VM 上的 DPM 保护代理|Windows Server 2012 - 数据中心和标准版|物理服务器<br /><br />本地 Hyper-V 虚拟机|Y|Y|保护：Hyper-V 计算机、群集共享卷 (CSV)<br /><br />恢复：文件和文件夹、卷、虚拟硬盘驱动器的虚拟机项目级恢复|
 |Hyper-V 主机 - Hyper-V 主机服务器、群集或 VM 上的 DPM 保护代理|Windows Server 2008 R2 SP1 - 数据中心和标准版|物理服务器<br /><br />本地 Hyper-V 虚拟机|Y|Y|保护：Hyper-V 计算机、群集共享卷 (CSV)<br /><br />恢复：文件和文件夹、卷、虚拟硬盘驱动器的虚拟机项目级恢复|
 |Hyper-V 主机 - Hyper-V 主机服务器、群集或 VM 上的 DPM 保护代理|Windows Server 2008 SP2|物理服务器<br /><br />本地 Hyper-V 虚拟机|N|N|保护：Hyper-V 计算机、群集共享卷 (CSV)<br /><br />恢复：文件和文件夹、卷、虚拟硬盘驱动器的虚拟机项目级恢复|
-|VMware VM|VMware 服务器 5.5、6.0 或 6.5 |本地 Hyper-V 虚拟机|Y|Y（具有 UR1）|群集共享卷 (CSV)、NFS 和 SAN 存储中的 VMware VM<br /> 仅适用于 Windows 的项目级恢复文件和文件夹<br /> 不支持 VMware vApp|
-|Linux|以 Hyper-V 或 VMware 来宾身份运行的 Linux|本地 Hyper-V 虚拟机|Y|Y|Hyper-V 必须在 Windows Server 2012 R2 或 Windows Server 2016 上运行。 保护：整个虚拟机<br /><br />恢复：整个虚拟机 <br/><br/> 有关支持的 Linux 分发版和版本的完整列表，请参阅 [Azure 认可的分发中的 Linux](../virtual-machines/linux/endorsed-distros.md) 一文。|
+|VMware VM|VMware 服务器 5.5、6.0 或 6.5 |物理服务器、 <br/>本地 Hyper-V VM、 <br/> VMWare 中的 Windows VM|Y|Y（具有 UR1）|群集共享卷 (CSV)、NFS 和 SAN 存储中的 VMware VM<br /> 仅适用于 Windows 的项目级恢复文件和文件夹<br /> 不支持 VMware vApp|
+|Linux|以 Hyper-V 或 VMware 来宾身份运行的 Linux|物理服务器、 <br/>本地 Hyper-V VM、 <br/> VMWare 中的 Windows VM|Y|Y|Hyper-V 必须在 Windows Server 2012 R2 或 Windows Server 2016 上运行。 保护：整个虚拟机<br /><br />恢复：整个虚拟机 <br/><br/> 有关支持的 Linux 分发版和版本的完整列表，请参阅 [Azure 认可的分发中的 Linux](../virtual-machines/linux/endorsed-distros.md) 一文。|
 
 ## <a name="cluster-support"></a>群集支持
 Azure 备份服务器可保护以下群集应用程序中的数据：

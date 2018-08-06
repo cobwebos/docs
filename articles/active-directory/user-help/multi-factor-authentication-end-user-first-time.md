@@ -1,27 +1,24 @@
 ---
-title: 设置双重验证 - Azure AD | Microsoft Docs
+title: 设置双重验证 - Azure Active Directory | Microsoft Docs
 description: 如果公司已配置 Azure 多重身份验证，系统会提示注册双重验证。 了解设置方法。
-services: multi-factor-authentication
+services: active-directory
 keywords: 如何使用 azure 目录, 云中的 active directory, active directory 教程
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
 ms.reviewer: richagi
 ms.assetid: 46f83a6a-dbdd-4375-8dc4-e7ea77c16357
-ms.service: multi-factor-authentication
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: user-help
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: lizross
-ms.custom: end-user
-ms.openlocfilehash: 1d0c60dedcb5eefb4ab9167b40c06c3616790719
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: d4ebecd11f4ca3d12a55cf25db31e31d7f528db8
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39058519"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343723"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>为帐户设置双重验证
 双重验证是额外的安全保障步骤，通过加大他人攻破的难度，帮助保护帐户安全。 如果正在阅读本文，可能已收到公司或学校管理员发送的有关多重身份验证的电子邮件。 或者，可能已尝试登录，但收到要求设置其他安全验证的消息。 如果是这种情况，**除非完成自动注册过程，否则无法登录**。

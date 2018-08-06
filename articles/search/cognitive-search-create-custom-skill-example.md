@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: luisca
-ms.openlocfilehash: dd9bb4cb2622651c2d1979166ad838b3b337d583
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: b428e6e7738c8a9052c3fcfe2ad5284bfd5293d6
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37343130"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39307987"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>示例：使用文本翻译 API 创建自定义技能
 
@@ -244,6 +244,13 @@ POST https://localhost:7071/api/Translate
 
 1. 在 [Azure 门户](https://portal.azure.com)中，导航到资源组，然后查找发布的翻译函数。 在“管理”部分下，应可看到主机密钥。 对默认主机密钥选择“复制”图标。  
 
+## <a name="update-ssl-settings"></a>更新 SSL 设置
+
+2018 年 6 月 30 日之后创建的所有 Azure 函数都已禁用了 TLS 1.0，它当前与自定义技能不兼容。
+
+1. 在 [Azure 门户](https://portal.azure.com)中，导航到资源组，然后查找发布的翻译函数。 在“平台功能”部分下，应当会看到 SSL。
+
+1. 选择 SSL 后，应当将**最低 TLS 版本**更改为 1.0。 尚不支持将 TLS 1.2 函数用作自定义技能。
 
 ## <a name="test-the-function-in-azure"></a>在 Azure 中测试函数
 

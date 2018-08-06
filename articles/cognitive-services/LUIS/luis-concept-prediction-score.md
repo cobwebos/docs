@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: cee7243531857f07dec2e968352ffb54aef16bf1
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 7412459fca179e7a13d6933f27c2c9ac2d770f33
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224580"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358097"
 ---
 # <a name="prediction-score"></a>预测分数
 预测分数表示 LUIS 对预测结果的置信度。 
@@ -36,6 +36,8 @@ ms.locfileid: "39224580"
 每个话语预测都会返回一个评分最高的意向。 这是预测分数的数值比较。 最高两个分数的差距可能很小。 LUIS 不会指明这种分差，只会返回分数。  
 
 如果担心高分之间过于接近，则应返回所有意向的分数。 可将话语添加到两个意向，指示它们在字词选择和顺序上的不同，或者可使用 LUIS 调用应用程序（例如聊天机器人），以编程方式选择如何处理分数最高的两个意向。 
+
+分数太靠近的两个意向可能会由于不确定的训练而反转。 最高分可能会变为第二高分，第二高分可能会变为最高分。 为了防止此情况，请向该话语的前两个高分意图添加示例话语，并在示例话语中包含单词选择和用于区分两个意图的上下文。 这两个意图应该具有相同数量的示例话语。 防止由于训练而造成反转的一个间隔经验法则是，让分数有 15% 的差值。
 
 ## <a name="return-prediction-score-for-all-intents"></a>返回所有意向的预测分数
 测试或终结点结果可以包括所有意向。 此配置是使用 `verbose=true` 查询字符串名称/值对在[终结点](https://aka.ms/v1-endpoint-api-docs)上设置的。 

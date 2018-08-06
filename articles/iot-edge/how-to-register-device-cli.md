@@ -4,17 +4,17 @@ description: 使用适用于 Azure CLI 2.0 的 IoT 扩展注册新 IoT Edge 设�
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 05/30/2018
+ms.date: 07/27/2018
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a6935dfe5b32364e402017cd3005ab17969ce1ce
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 451f4df31cd1c520b14227829923f72fe80c38c3
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034344"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325490"
 ---
 # <a name="register-a-new-azure-iot-edge-device-with-azure-cli-20"></a>使用 Azure CLI 2.0 注册新 Azure IoT Edge 设备
 
@@ -63,7 +63,7 @@ ms.locfileid: "37034344"
    az iot hub device-identity show-connection-string --device-id [device id] --hub-name [hub name] 
    ```
 
-device id 参数区分大小写。 
+device id 参数区分大小写。 不要复制连接字符串两端的引号。 
 
 ## <a name="next-steps"></a>后续步骤
 

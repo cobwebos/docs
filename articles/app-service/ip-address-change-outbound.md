@@ -10,12 +10,12 @@ ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: tdykstra
-ms.openlocfilehash: 3d2c75ba2f7f5c276f495ec3589481b8131b58e1
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: a68085ee571654bc1bff2ea23303a02bfb2a9b0d
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37343129"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343478"
 ---
 # <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>如何为出站 IP 地址更改做准备
 
@@ -37,7 +37,9 @@ ms.locfileid: "37343129"
 
 2.  在左侧导航菜单中选择“应用服务”。
 
-3.  从列表中选择“应用服务”应用。
+3.  从列表中选择自己的应用服务应用。
+
+4.  如果应用是一个函数应用，请参阅[函数应用出站 IP 地址](../azure-functions/ip-addresses.md#function-app-outbound-ip-addresses)。
 
 4.  在“设置”标题下，单击左侧导航栏中的“属性”，找到标有“出站 IP 地址”的部分。
 
@@ -45,4 +47,4 @@ ms.locfileid: "37343129"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何准备由 Azure 发起的 IP 地址更改。 有关 Azure 应用服务中的 IP 地址的详细信息，请参阅 [Azure 应用服务中的入站和出站 IP 地址](app-service-ip-addresses.md)。
+本文介绍了如何对 Azure 发起的 IP 地址更改做好准备。 有关 Azure 应用服务中的 IP 地址的详细信息，请参阅 [Azure 应用服务中的入站和出站 IP 地址](app-service-ip-addresses.md)。

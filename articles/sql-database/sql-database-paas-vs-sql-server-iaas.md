@@ -8,23 +8,36 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: afc48a36b8c26bde4d86ff6277bb2c511d14bace
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: a6d6a7639d3db0cc7d194ca9fae126ad9a2cc3ba
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091858"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413648"
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>选择云 SQL Server 选项：Azure SQL (PaaS) 数据库或 Azure VM 上的 SQL Server (IaaS)
 
 在 Azure 中，可让 SQL Server 工作负荷在托管的基础结构 (IaaS) 或托管的服务 ([PaaS](https://azure.microsoft.com/overview/what-is-paas/)) 中运行：
 
-* [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)：基于 SQL Server 企业版的 SQL 数据库引擎，已针对新型应用程序开发进行优化。 Azure SQL 数据库以托管服务的形式提供两个 SQL 版本：逻辑服务器和 [Azure SQL 数据库托管实例（预览版）](sql-database-managed-instance.md)。 Azure SQL 数据库通过这两个版本提供了 SQL Server 所不能提供的其他功能，例如内置智能和管理。 使用第一个版本可以创建包含[单一数据库](sql-database-servers-databases.md)的逻辑服务器，并将服务器分组到[弹性池](sql-database-elastic-pool.md)，以共享资源和降低成本。 包含单一数据库和入池数据库的 Azure SQL 数据库逻辑服务器提供 SQL Server 具有的大多数面向数据库的功能。 借助 Azure SQL 数据库托管实例，Azure SQL 数据库可为数据库提供共享资源，以及其他面向实例的功能。 Azure SQL 数据库托管实例支持数据库迁移，只要求对数据库进行极少量的更改，甚至根本不需要更改。
-* [Azure 虚拟机上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)：在 Azure 上运行的云中 Windows Server 或 Linux 虚拟机 (VM) 上安装并托管的 SQL Server，也称为基础结构即服务 (IaaS)。 Azure 虚拟机上的 SQL Server 非常适合用于迁移本地 SQL Server 数据库和应用程序，无需进行任何数据库更改。 所有当前 SQL Server 版本都可安装在 IaaS 虚拟机中。 与 SQL 数据库之间的最重要差别在于，SQL Server VM 允许完全控制数据库引擎。 可以选择维护/修补何时开始、将恢复模式更改为简单模式或批量记录模式，以更快地加载更少的日志、根据需要暂停或启动引擎，并可以完全自定义 SQL Server 数据库引擎。 控制度的提高也意味着在管理虚拟机方面需要承担更大的责任。
+- [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)：基于 SQL Server 企业版的 SQL 数据库引擎，已针对新型应用程序开发进行优化。 Azure SQL 数据库提供了多个部署选项：
+  - 可以将单个数据库部署到[逻辑服务器](sql-database-logical-servers.md)。
+  - 可以部署到[逻辑服务器](sql-database-logical-servers.md)上的[弹性池](sql-database-elastic-pool.md)以共享资源并降低成本。 
 
-了解每个选项如何配合 Microsoft 数据平台一起运行，并在匹配适合业务要求的选项时获得帮助。 无论是以节省成本为优先考虑，还是将精简管理视为第一要素，本文都会帮助你确定哪种方法能够满足你最重视的业务要求。
+      > [!NOTE]
+      > 包含单一数据库和入池数据库的 Azure SQL 数据库提供 SQL Server 具有的大多数面向数据库的功能。
+
+      下图显示了这些部署选项：
+
+      ![部署选项](./media/sql-database-technical-overview/deployment-options.png) 
+  - 可以部署到 [Azure SQL 数据库托管实例（预览版）](sql-database-managed-instance.md)。 
+
+      > [!NOTE]
+      > Azure SQL 数据库通过这两个版本提供了 SQL Server 所不能提供的其他功能，例如内置智能和管理。 使用第一个版本时，借助 Azure SQL 数据库托管实例，Azure SQL 数据库可为数据库提供共享资源，以及其他面向实例的功能。 Azure SQL 数据库托管实例支持数据库迁移，只要求对数据库进行极少量的更改，甚至根本不需要更改。
+- [Azure 虚拟机上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)：在 Azure 上运行的云中 Windows Server 或 Linux 虚拟机 (VM) 上安装并托管的 SQL Server，也称为基础结构即服务 (IaaS)。 Azure 虚拟机上的 SQL Server 非常适合用于迁移本地 SQL Server 数据库和应用程序，无需进行任何数据库更改。 所有当前 SQL Server 版本都可安装在 IaaS 虚拟机中。 与 SQL 数据库之间的最重要差别在于，SQL Server VM 允许完全控制数据库引擎。 可以选择维护/修补何时开始、将恢复模式更改为简单模式或批量记录模式，以更快地加载更少的日志、根据需要暂停或启动引擎，并可以完全自定义 SQL Server 数据库引擎。 控制度的提高也意味着在管理虚拟机方面需要承担更大的责任。
+
+了解每个部署选项如何配合 Microsoft 数据平台一起运行，并在匹配适合业务要求的选项时获得帮助。 无论是以节省成本为优先考虑，还是将精简管理视为第一要素，本文都会帮助你确定哪种方法能够满足你最重视的业务要求。
 
 ## <a name="microsofts-sql-data-platform"></a>Microsoft 的 SQL 数据平台
 
@@ -45,7 +58,7 @@ ms.locfileid: "39091858"
 
 ## <a name="a-closer-look-at-azure-sql-database-and-sql-server-on-azure-vms"></a>Azure SQL 数据库和 Azure VM 中的 SQL Server 详述
 
-**Azure SQL 数据库**是托管在 Azure 云中的关系数据库即服务 (DBaaS)，属于*平台即服务 (PaaS)* 行业类别。 [SQL 数据库](sql-database-technical-overview.md) 构建在 Microsoft 所拥有、托管及维护的标准化硬件和软件基础之上。 使用 SQL 数据库，可以使用需要在 SQL Server 中进行广泛配置的内置特性和功能。 使用 SQL 数据库时，可以即用即付，并使用纵向扩展或横向扩展选项获得更强大的功能且不会中断服务。 Azure SQL 数据库支持[单一数据库](sql-database-servers-databases.md)和用于共享资源的[弹性池](sql-database-elastic-pool.md)，是在云中开发新应用程序的理想环境。 使用 [Azure SQL 数据库托管实例](sql-database-managed-instance.md)时，可以自带许可证。 此外，此选项提供 Azure SQL 数据库的所有 PaaS 优势，但同时也添加了以前只在 SQL VM 中提供的功能。 这包括本机虚拟网络 (VNet)，以及与本地 SQL Server 的接近 100% 的兼容性。 [托管实例](sql-database-managed-instance.md)非常适合用于将本地数据库迁移到 Azure，这只需进行极少量的更改。 
+**Azure SQL 数据库**是托管在 Azure 云中的关系数据库即服务 (DBaaS)，属于*平台即服务 (PaaS)* 行业类别。 [SQL 数据库](sql-database-technical-overview.md) 构建在 Microsoft 所拥有、托管及维护的标准化硬件和软件基础之上。 使用 SQL 数据库，可以使用需要在 SQL Server 中进行广泛配置的内置特性和功能。 使用 SQL 数据库时，可以即用即付，并使用纵向扩展或横向扩展选项获得更强大的功能且不会中断服务。 Azure SQL 数据库是用于在云中开发新应用程序的理想环境。 使用 [Azure SQL 数据库托管实例](sql-database-managed-instance.md)时，可以自带许可证。 此外，此选项提供 Azure SQL 数据库的所有 PaaS 优势，但同时也添加了以前只在 SQL VM 中提供的功能。 这包括本机虚拟网络 (VNet)，以及与本地 SQL Server 的接近 100% 的兼容性。 [托管实例](sql-database-managed-instance.md)非常适合用于将本地数据库迁移到 Azure，这只需进行极少量的更改。 
 
 **Azure 虚拟机 (VM) 上的 SQL Server** 属于“基础结构即服务 (IaaS)”行业类别，可让你在云中的虚拟机上运行 SQL Server。 [SQL Server 虚拟机](../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)也在 Microsoft 所拥有、托管及维护的标准化硬件上运行。 使用 VM 上的 SQL Server 时，既可使用 SQL Server 映像中已包含的 SQL Server 许可证即付即用，也可方便地使用现有的许可证。 还可以根据需要停止或恢复 VM。
 

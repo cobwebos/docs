@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2018
+ms.date: 07/27/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: be76965e99a20c1f7164187255e26f6463926c2f
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: f3460d22354a944a14c814c372cacf6839dc7bb7
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214721"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325422"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Azure Active Directory 直通身份验证：升级预览身份验证代理
 
@@ -68,7 +68,7 @@ ms.locfileid: "39214721"
 
 1. **升级 Azure AD Connect**：遵循[此文](./active-directory-aadconnect-upgrade-previous-version.md)升级到最新版本的 Azure AD Connect。
 2. **卸载身份验证代理预览版**：下载[此 PowerShell 脚本](https://aka.ms/rmpreviewagent)，并在服务器上以管理员身份运行该脚本。
-3. **下载最新版身份验证代理（版本 1.5.193.0 或更高版本）**：使用租户的全局管理员凭据登录到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。 选择“Azure Active Directory”->“Azure AD Connect”->“直通身份验证”->“下载代理”。 接受[服务条款](https://aka.ms/authagenteula)并下载最新版本的身份验证代理。 也可以从[此处](https://aka.ms/getauthagent)下载身份验证代理。
+3. **下载最新版身份验证代理（版本 1.5.389.0 或更高版本）**：使用租户的全局管理员凭据登录到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。 选择“Azure Active Directory”->“Azure AD Connect”->“直通身份验证”->“下载代理”。 接受[服务条款](https://aka.ms/authagenteula)并下载最新版本的身份验证代理。 也可以从[此处](https://aka.ms/getauthagent)下载身份验证代理。
 4. **安装最新版本的身份验证代理**：运行步骤 3 中下载的可执行文件。 出现提示时，提供租户的全局管理员凭据。
 5. **验证是否已安装最新版本**：如前所述转到“控制面板”->“程序”->“程序和功能”，检查“Microsoft Azure AD Connect 身份验证代理”是否存在对应的条目。
 
@@ -80,7 +80,7 @@ ms.locfileid: "39214721"
 遵循以下步骤升级其他服务器（未安装 Azure AD Connect）上的身份验证代理：
 
 1. **卸载身份验证代理预览版**：下载[此 PowerShell 脚本](https://aka.ms/rmpreviewagent)，并在服务器上以管理员身份运行该脚本。
-2. **下载最新版身份验证代理（版本 1.5.193.0 或更高版本）**：使用租户的全局管理员凭据登录到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。 选择“Azure Active Directory”->“Azure AD Connect”->“直通身份验证”->“下载代理”。 接受服务条款并下载最新版本。
+2. **下载最新版身份验证代理（版本 1.5.389.0 或更高版本）**：使用租户的全局管理员凭据登录到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。 选择“Azure Active Directory”->“Azure AD Connect”->“直通身份验证”->“下载代理”。 接受服务条款并下载最新版本。
 3. **安装最新版本的身份验证代理**：运行步骤 2 中下载的可执行文件。 出现提示时，提供租户的全局管理员凭据。
 4. **验证是否已安装最新版本**：如前所述转到“控制面板”->“程序”->“程序和功能”，检查是否存在名为“Microsoft Azure AD Connect 身份验证代理”的条目。
 

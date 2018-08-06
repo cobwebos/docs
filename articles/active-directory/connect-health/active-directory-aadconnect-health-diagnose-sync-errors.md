@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: zhiweiw
-ms.openlocfilehash: 4a6e0924492c26c9bad4ed0af207ad9764c3cc5c
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 3659572f46ae82d39a6c53246db2b6a536be32c8
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831891"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282934"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>诊断并修正重复的属性同步错误
 
@@ -127,8 +127,14 @@ ms.locfileid: "34831891"
 
 执行上述步骤之后，用户可以访问原始资源，这是对现有对象的链接。 列表视图中的“诊断状态”值会更新为“等待同步”。下一次同步后，将会解决同步错误。Connect Health 将不再在列表视图中显示已解决的同步错误。
 
+## <a name="failures-and-error-messages"></a>故障和错误消息
+**在 Azure Active Directory 中软删除了具有冲突属性的用户。请确保在重试之前硬删除该用户。**  
+应当清除 Azure AD 中具有冲突属性的用户，然后才能应用修复。 在重试修复之前，请查看[如何在 Azure AD 中永久删除用户](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-restore)。 在处于软删除状态 30 天后，用户也将自动永久删除。 
 
-## <a name="faq"></a>常见问题
+**不支持更新租户中基于云的用户的源定位点。**  
+Azure AD 中基于云的用户不应当具有源定位点。 在这种情况下不支持更新源定位点。 需要从本地手动进行修复。 
+
+## <a name="faq"></a>常见问题解答
 **问：** 如果“应用修复”操作执行失败，会发生什么情况？  
 **答：** 如果执行失败，原因可能是 Azure AD Connect 遇到导出错误。 请刷新门户页，并在完成下一次同步后重试。默认同步周期为 30 分钟。 
 

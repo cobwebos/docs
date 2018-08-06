@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: elioda
-ms.openlocfilehash: f335ffae153893a39312326738ee4188c3756ff4
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 19a129ec4646f13f1bd095dffd423f3b90bb32a7
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185469"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345454"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 协议与 IoT 中心通信
 
@@ -79,7 +79,14 @@ IoT 中心允许设备通过以下方式与 IoT 中心设备终结点通信：
 
   有关如何生成 SAS 令牌的详细信息，请参阅[使用 IoT 中心安全令牌][lnk-sas-tokens]的设备部分。
 
-  测试时，也可以使用e [Device Explorer][lnk-device-explorer] 工具或 [Visual Studio Code 的跨平台 Azure IoT 工具包扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)快速生成可以复制并粘贴到自己的代码中的 SAS 令牌：
+  测试时，也可以使用 [Visual Studio Code 的跨平台 Azure IoT 工具包扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)或 [Device Explorer][lnk-device-explorer] 工具快速生成可以复制并粘贴到自己的代码中的 SAS 令牌：
+
+对于 Azure IoT 工具包：
+
+  1. 展开 Visual Studio Code 左下角的“AZURE IOT 中心设备”选项卡。
+  2. 右键单击设备，然后选择“为设备生成 SAS 令牌”。
+  3. 设置“到期时间”，然后按 Enter。
+  4. 将创建 SAS 令牌并将其复制到剪贴板。
 
 对于 Device Explorer：
 
@@ -95,13 +102,6 @@ IoT 中心允许设备通过以下方式与 IoT 中心设备终结点通信：
      此令牌中要用作“密码”字段以便使用 MQTT 进行连接的部分是：
 
      `SharedAccessSignature sr={your hub name}.azure-devices.net%2Fdevices%2FMyDevice01%2Fapi-version%3D2016-11-14&sig=vSgHBMUG.....Ntg%3d&se=1456481802`
-     
-对于 Azure IoT 工具包：
-
-  1. 展开 Visual Studio Code 左下角的“AZURE IOT 中心设备”选项卡。
-  2. 右键单击设备，然后选择“为设备生成 SAS 令牌”。
-  3. 设置“到期时间”，然后按 Enter。
-  4. 将创建 SAS 令牌并将其复制到剪贴板。
 
 对于 MQTT 连接和断开连接数据包，IoT 中心会在**操作监视**通道上发出事件。 此事件包含的其他信息有助于排查连接问题。
 

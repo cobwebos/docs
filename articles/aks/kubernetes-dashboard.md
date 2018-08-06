@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/09/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 65525114f46002c5b9300f6bbabcee06cc27ef3a
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: af48af596e86e0eb09fe45deabe13beedef57cd2
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091132"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39307919"
 ---
 # <a name="access-the-kubernetes-dashboard-with-azure-kubernetes-service-aks"></a>访问 Azure Kubernetes 服务 (AKS) 中的 Kubernetes 仪表板
 
@@ -38,12 +38,14 @@ az aks browse --resource-group myResourceGroup --name myAKSCluster
 
 ### <a name="for-rbac-enabled-clusters"></a>对于启用了 RBAC 的群集
 
-如果 AKS 群集使用 RBAC，则必须先创建 *ClusterRoleBinding*，然后才能正确访问仪表板。 若要创建绑定，请使用 [kubectl create clusterrolebinding][kubectl-create-clusterrolebinding] 命令，如以下示例所示。 
+如果 AKS 群集使用 RBAC，则必须先创建 *ClusterRoleBinding*，然后才能正确访问仪表板。 默认情况下，Kubernetes 仪表板是使用最小读取访问权限部署的，并且显示 RBAC 访问错误。 Kubernetes 仪表板当前不支持使用用户提供的凭据来确定访问权限级别，而是使用授予给服务帐户的角色。 群集管理员可以选择向 *kubernetes-dashboard* 服务帐户授予更多访问权限，但这可能会导致需要进行权限提升。 还可以集成 Azure Active Directory 身份验证来提供更精细的访问权限级别。
+
+若要创建绑定，请使用 [kubectl create clusterrolebinding][kubectl-create-clusterrolebinding] 命令，如以下示例所示。 
 
 > [!WARNING]
 > 此示例绑定不应用任何其他身份验证组件，因此可能会导致不安全的使用。 Kubernetes 仪表板将对有权访问该 URL 的任何人开放。 请勿公开 Kubernetes 仪表板。
 >
-> 可以使用持有者令牌或用户名/密码等机制来控制可以访问仪表板的人员以及他们拥有的权限。 这样可以更安全地使用仪表板。 有关使用不同身份验证方法的详细信息，请参阅有关[访问控制][dashboard-authentication]的 Kubernetes 仪表板 wiki。
+> 有关使用不同身份验证方法的详细信息，请参阅有关[访问控制][dashboard-authentication]的 Kubernetes 仪表板 wiki。
 
 ```console
 kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard

@@ -13,16 +13,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 07/23/2018
 ms.author: bsiva
-ms.openlocfilehash: 552a0d131f630db7b3a73293d330377ee350d2a9
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 6e5946f3f9dcf1c7d941054c844adcf683b485ab
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214612"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308637"
 ---
-# <a name="migrate-servers-running-windows-server-2008-2008-r2-to-azure"></a>将运行 Windows Server 2008 或 2008 R2 的服务器迁移到 Azure
+# <a name="migrate-servers-running-windows-server-2008-to-azure"></a>将运行 Windows Server 2008 的服务器迁移到 Azure
 
-本教程介绍如何使用 Azure Site Recovery 将运行 Windows Server 2008 或 2008 R2 的本地服务器迁移到 Azure。 本教程介绍如何执行以下操作：
+本教程介绍如何使用 Azure Site Recovery 将运行 Windows Server 2008 或 2008 R2 的本地服务器迁移到 Azure。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 准备适合迁移的本地环境

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: ff2968f8e2fa9a705817b020f2daa6582d78029c
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: fd43c62f1a291a59d5d373437a49b263d6af4cb3
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225296"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345882"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>管理 Azure 实验室服务中的实验室帐户 
 在 Azure 实验室服务中，实验室帐户是托管实验室（如教室实验室）的容器。 管理员可以设置一个具有 Azure 实验室服务的实验室帐户，并为能够在帐户中创建实验室的实验室所有者提供访问权限。 本文介绍如何创建实验室帐户、查看所有实验室帐户，或者删除实验室帐户。
@@ -55,11 +55,17 @@ ms.locfileid: "39225296"
     ![将用户添加为“实验室创建者”角色](../media/tutorial-setup-lab-account/add-user-to-lab-creator-role.png)
 
 ## <a name="specify-marketplace-images-available-to-lab-owners"></a>指定可供实验室所有者使用的市场映像
-在本部分中，指定实验室所有者可用来创建课堂实验室的市场映像。 
+作为实验室帐户所有者，你可以指定实验室创建者可以用来在实验室帐户中创建实验室的市场映像。 
 
-1. 在左侧的菜单上选择“市场映像”。 默认情况下，可以看到映像的完整列表（包括已启用的和已禁用的）。 可以通过从顶部的下拉列表中选择“仅启用的/仅禁用的”选项对列表进行筛选来仅查看启用的/禁用的映像。 
-
+1. 在左侧的菜单上选择“市场映像”。 默认情况下，可以看到映像的完整列表（包括启用的和禁用的）。 可以通过从顶部的下拉列表中选择“仅启用的/仅禁用的”选项对列表进行筛选来仅查看启用的/禁用的映像。 
+    
     ![“市场映像”页](../media/tutorial-setup-lab-account/marketplace-images-page.png)
+
+    列表中显示的市场映像只是满足以下条件的映像：
+        
+    - 创建单个 VM。
+    - 使用 Azure 资源管理器预配 VM
+    - 不需要购买额外的许可计划
 2. 若要**禁用**已启用的市场映像，请执行下列操作之一： 
     1. 选择最后一列中的“...”（省略号）并选择“禁用映像”。 
 

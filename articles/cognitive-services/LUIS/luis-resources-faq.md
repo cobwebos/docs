@@ -7,14 +7,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: 8e0d834b94ff902eb0c1e0ada2fb32d374cee12b
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 93ced2d0c79d80a631ad90aa3f5d2dc9f8c79c7e
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239111"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390188"
 ---
 # <a name="language-understanding-faq"></a>语言理解常见问题解答
 
@@ -147,6 +147,12 @@ LUIS 根据[区域性](luis-supported-languages.md#tokenization)将表述[标记
 * 可以从 LUIS 在“查看终结点表述”页中建议的用户表述列表中删除表述。 从此列表中删除表述可以防止系统再将其作为建议提出来，但不会将其从日志中删除。
 * 如果删除某个帐户，则会删除所有应用及其示例表述和日志。 数据可以保留在服务器上 60 天，然后就会被永久删除。
 
+### <a name="does-microsoft-access-my-luis-app-data-for-its-own-purposes-for-example-to-enhance-luis-or-microsoft-in-general"></a>Microsoft 是否会访问我的 LUIS 应用数据来供其自己使用？例如，用来增强 LUIS 或一般 Microsoft 产品的功能？ 
+
+不会。 LUIS 不会使用 LUIS 应用的数据模型来增强作为平台的 LUIS，Microsoft 也不会以任何方式使用该数据模型。 每个应用的数据都是独立的并且仅由用户和协作者拥有。 
+
+详细了解[用户隐私](luis-reference-gdpr.md)、[附加安全符合性](luis-concept-security.md#security-compliance)和[数据存储](luis-concept-data-storage.md)。
+
 ## <a name="language-and-translation-support"></a>语言和翻译支持 
 
 ### <a name="i-have-an-app-in-one-language-and-want-to-create-a-parallel-app-in-another-language-what-is-the-easiest-way-to-do-so"></a>我已经有了某种语言的应用，希望创建一个采用另一种语言的并行应用， 最简单的方法是什么？
@@ -175,20 +181,6 @@ LUIS 根据[区域性](luis-supported-languages.md#tokenization)将表述[标记
 ### <a name="is-luis-available-on-premises-or-in-private-cloud"></a>是否可以在本地或私有云中使用 LUIS？
 不是。 
 
-## <a name="changes-to-the-docs"></a>对 Docs 所做的更改
-
-### <a name="where-did-the-tutorials-go"></a>教程放在哪里？ 
-以前在“教程”部分的文章现在放在文档的“操作方法”部分。 
-
-|教程|
-|--|
-|使用 [C#](luis-csharp-tutorial-build-bot-framework-sample.md) 和 [Node.js](luis-nodejs-tutorial-build-bot-framework-sample.md) 将 LUIS 与机器人集成|
-|使用 [C#](luis-tutorial-bot-csharp-appinsights.md) 和 [Node.js](luis-tutorial-function-appinsights.md) 向机器人添加 Application Insights|
-|使用 [Node.js](luis-tutorial-node-import-utterances-csv.md) 以编程方式生成 LUIS 应用|
-|使用[复合实体](luis-tutorial-composite-entity.md)提取分组的数据|
-|使用 Node.js 添加[列表实体](luis-tutorial-list-entity.md)以增强实体检测|
-|使用[短语列表](luis-quickstart-primary-and-secondary-data.md)、[模式](luis-tutorial-pattern.md)和[批量测试](luis-tutorial-batch-testing.md)提高预测准确性|
-|使用必应拼写检查 API v7 [更正拼写](luis-tutorial-batch-testing.md)
 
 ### <a name="at-the-build-2018-conference-i-heard-about-a-language-understanding-feature-or-demo-but-i-dont-remember-what-it-was-called"></a>在 Build 2018 大会上，我了解到一项语言理解功能或演示，但我不记得它的名称了，它叫什么呢？ 
 
@@ -198,7 +190,7 @@ LUIS 根据[区域性](luis-supported-languages.md#tokenization)将表述[标记
 |--|--|
 |增强功能|[正则表达式](luis-concept-data-extraction.md##regular-expression-entity-data)实体和[关键短语](luis-concept-data-extraction.md#key-phrase-extraction-entity-data)实体
 |模式|模式[概念](luis-concept-patterns.md)、[教程](luis-tutorial-pattern.md)、[操作方法](luis-how-to-model-intent-pattern.md)<br>[Patterns.Any](luis-concept-entity-types.md) 实体概念，包括用作例外的[显式列表](luis-concept-patterns.md#explicit-lists)<br>[角色](luis-concept-roles.md)概念|
-|集成|[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)集成（集成了[情绪分析](luis-how-to-publish-app.md#enable-sentiment-analysis)）<br>[语音](https://docs.microsoft.com/azure/cognitive-services/speech)集成（集成了[语音启动](luis-how-to-publish-app.md#enable-speech-priming)和[语音 SDK](https://aka.ms/SpeechSDK)）|
+|集成|[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)集成（集成了[情绪分析](luis-how-to-publish-app.md#enable-sentiment-analysis)）<br>[语音](https://docs.microsoft.com/azure/cognitive-services/speech)集成（集成了语音启动和[语音 SDK](https://aka.ms/SpeechSDK)）|
 |Dispatch 工具|Dispatch 命令行[工具](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps)是 [BotBuilder-tools](https://github.com/Microsoft/botbuilder-tools) 的一部分，可以将多个 LUIS 应用和 QnA Maker 应用组合成单个 LUIS 应用，以便增强机器人中的意向识别功能
 
 此外还包括其他创作 [API 路由](https://github.com/Microsoft/LUIS-Samples/blob/master/authoring-routes.md)。 

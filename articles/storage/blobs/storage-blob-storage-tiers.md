@@ -2,23 +2,18 @@
 title: 适用于 Blob 的 Azure 热、冷、存档存储 | Microsoft Docs
 description: 适用于 Azure 存储帐户的热、冷、存档存储。
 services: storage
-documentationcenter: ''
 author: kuhussai
-manager: jwillis
-editor: ''
-ms.assetid: eb33ed4f-1b17-4fd6-82e2-8d5372800eef
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 12/11/2017
 ms.author: kuhussai
-ms.openlocfilehash: 21b09d9c428f9c29e0048faa32ce5349a127be89
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.component: blobs
+ms.openlocfilehash: 5d12b9f04dc1cc5017ab4c9ff1bde9b84ac24cfe
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39400100"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob 存储：热、冷、存档存储层
 
@@ -133,7 +128,7 @@ Blob 存储和 GPv2 帐户在帐户级别公开“访问层”属性，方便你
 
 5. 单击边栏选项卡顶部的“保存”。
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 **如果要对数据分层，是应该使用 Blob 存储帐户还是 GPv2 帐户？**
 
@@ -151,7 +146,7 @@ GPv1 和 GPv2 帐户的定价结构不同，客户在决定使用 GPv2 帐户之
 
 **能否将默认帐户访问层设置为存档层？**
 
-不会。 只能将默认帐户访问层设置为热存储层或冷存储层。 只能在对象级别设置存档层。
+不是。 只能将默认帐户访问层设置为热存储层或冷存储层。 只能在对象级别设置存档层。
 
 **在哪些区域提供热、冷、存档存储层？**
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2017
+ms.date: 08/01/2018
 ms.author: sethm
-ms.openlocfilehash: 7b9901ee3478cb193c808b65d2dbbcf8b596a3c1
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 30df312e349bd6f6ebd1f38141075382be2522a2
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
-ms.locfileid: "29874646"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397978"
 ---
 # <a name="managed-service-identity-preview"></a>托管服务标识（预览）
 
@@ -61,9 +61,9 @@ Azure 平台借助 MSI 来管理此运行时标识。 对于标识本身和需�
  
 Web 应用程序的托管服务标识现在已具有对服务总线命名空间和对之前创建的队列的访问权限。 
 
-### <a name="run-the-app"></a>运行应用程序
+### <a name="run-the-app"></a>运行应用
 
-现在，修改所创建的 ASP.NET 应用程序的默认页面。 还可以使用[此 GitHub 存储库](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ManagedServiceIdentity)中的 Web 应用程序代码。
+现在，修改你创建的 ASP.NET 应用程序的默认页面。 可以使用[此 GitHub 存储库](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet)中的 Web 应用程序代码。  
 
 Default.aspx 页是登陆页面。 可以在 Default.aspx.cs 文件中找到代码。 结果是一个最小的 Web 应用程序，其中包含几个输入字段以及用来连接到服务总线以发送或接收消息的 **send** 和 **receive** 按钮。
 
@@ -74,8 +74,12 @@ Default.aspx 页是登陆页面。 可以在 Default.aspx.cs 文件中找到代�
 ![](./media/service-bus-managed-service-identity/msi3.png)
  
 若要发送或接收消息，请输入所创建的命名空间和实体的名称，然后单击 **send** 或 **receive**。
- 
-请注意，托管服务标识仅在 Azure 环境中工作，并且仅在配置它时所在的应用服务部署中工作。 另请注意，目前，托管服务标识不能与应用服务部署槽位一起工作。
+
+
+> [!NOTE]
+> - 托管服务标识仅在 Azure 环境内在应用服务、Azure VM 和规模集上工作。 对于 .NET 应用程序，Microsoft.Azure.Services.AppAuthentication 库（由服务总线 NuGet 包使用）提供此协议的摘要并支持本地开发体验。 此库还允许通过 Visual Studio、Azure CLI 2.0 或 Active Directory 集成身份验证使用用户帐户，在开发计算机上对代码进行本地测试。 有关此库的本地开发选项的详细信息，请参阅[使用 .NET 向 Azure Key Vault 进行服务到服务身份验证](../key-vault/service-to-service-authentication.md)。  
+> 
+> - 目前，托管服务标识不能与应用服务部署槽位一起工作。
 
 ## <a name="next-steps"></a>后续步骤
 

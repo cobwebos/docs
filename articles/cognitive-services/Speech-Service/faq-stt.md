@@ -1,24 +1,23 @@
 ---
-title: 有关 Azure 中语音转文本服务的常见问题 | Microsoft Docs
+title: 有关 Azure 中语音转文本服务的常见问题
 description: 以下是有关语音转文本的最常见问题的解答。
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 543e8d6fb68a351dfe75c962debaf15eeb080a3f
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: e5ba01c25646578da22f054659051be3515e9e4b
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223881"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281824"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>语音转文本常见问题解答
 
-如果未在本常见问题解答中找到答案，请尝试在 [StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) 和 [UserVoice](https://cognitive.uservoice.com/) 的自定义语音服务社区中提问
+如果在本常见问题解答中找不到你的问题的解答，请检查[此处](support.md)的其他支持选项。
 
 ## <a name="general"></a>常规
 
