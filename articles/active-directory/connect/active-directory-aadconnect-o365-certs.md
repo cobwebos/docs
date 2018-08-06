@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/20/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e8f6b30bb7cbe82159e86fa48721afce3f9477d8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4de24608ba9db174f343bf0d78029913e4b7868f
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34591491"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325677"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>续订 Office 365 和 Azure Active Directory 的联合身份验证证书
 ## <a name="overview"></a>概述
@@ -69,13 +69,19 @@ Azure AD 将尝试监视联合元数据，并按照此元数据的指示更新�
 >如果使用的是 AD FS 2.0，请先运行 Add-Pssnapin Microsoft.Adfs.Powershell。
 
 ### <a name="step-2-confirm-that-ad-fs-and-azure-ad-are-in-sync"></a>步骤 2：确认 AD FS 和 Azure AD 已同步
-在 AD FS 服务器上打开 Azure AD PowerShell 提示符，并连接到 Azure AD。
+在 AD FS 服务器上，打开 MSOnline PowerShell 提示符，并连接到 Azure AD。
 
 > [!NOTE]
-> 可在[此处](https://technet.microsoft.com/library/jj151815.aspx)下载 Azure AD PowerShell。
->
+> MSOL-Cmdlet 是 MSOnline PowerShell 模块的一部分。
+> 可以直接从 PowerShell 库下载 MSOnline PowerShell 模块。
+> 
 >
 
+    Install-Module MSOnline
+
+使用 MSOnline PowerShell-Module 连接到 Azure AD。
+
+    Import-Module MSOnline
     Connect-MsolService
 
 检查 AD FS 和 Azure AD 信任属性中针对指定域配置的证书。

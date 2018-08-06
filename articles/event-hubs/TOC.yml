@@ -4,7 +4,7 @@
   items:
     - name: 什么是事件中心？
       href: event-hubs-about.md
-    - name: 用于 Apache Kafka 的事件中心
+    - name: 用于 Apache Kafka 的事件中心（预览版）
       href: event-hubs-for-kafka-ecosystem-overview.md
     - name: 事件中心捕获
       href: event-hubs-capture-overview.md

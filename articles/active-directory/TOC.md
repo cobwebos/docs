@@ -156,22 +156,27 @@
 
 ## 管理设备
 ### [概述](devices/overview.md)
-### [使用 Azure 门户](devices/device-management-azure-portal.md)
-### [计划 Azure AD 加入](devices/azureadjoin-plan.md)
-### [常见问题](devices/faq.md)
-### 任务
-#### [如何计划混合 Azure Active Directory 加入实现](devices/hybrid-azuread-join-plan.md)
-#### [为托管域配置混合 Azure Active Directory 加入](devices/hybrid-azuread-join-managed-domains.md)
-#### [为联盟域配置混合 Azure Active Directory 加入](devices/hybrid-azuread-join-federated-domains.md)
-#### [如何控制设备的混合 Azure AD 加入](devices/hybrid-azuread-join-control.md)
+
+### 快速入门
 #### [设置已注册到 Azure AD 的 Windows 10 设备](user-help/device-management-azuread-registered-devices-windows10-setup.md)
 #### [设置已加入 Azure AD 的设备](user-help/device-management-azuread-joined-devices-setup.md)
-#### [设置已加入混合 Azure AD 的设备](devices/hybrid-azuread-join-manual-steps.md)
-#### [本地部署](active-directory-device-registration-on-premises-setup.md)
-#### [Windows 10 首次运行体验中的 Azure AD 加入](devices/azuread-joined-devices-frx.md)
-### 故障排除
-#### [加入混合 Azure AD 的 Windows 10 和 Windows Server 2016 设备](devices/troubleshoot-hybrid-join-windows-current.md)
-#### [加入混合 Azure AD 的旧式 Windows 设备](devices/troubleshoot-hybrid-join-windows-legacy.md)
+
+### 教程
+#### [为托管域配置混合 Azure AD 加入](devices/hybrid-azuread-join-managed-domains.md)
+#### [为联盟域配置混合 Azure AD 加入](devices/hybrid-azuread-join-federated-domains.md)
+#### [手动配置混合 Azure AD 加入](devices/hybrid-azuread-join-manual-steps.md)
+#### [在 Windows 10 首次运行体验期间配置 Azure AD 加入](devices/azuread-joined-devices-frx.md)
+
+### 操作方法指南
+#### [计划 Azure AD 加入](devices/azureadjoin-plan.md)
+#### [计划混合 Azure AD 加入实现](devices/hybrid-azuread-join-plan.md)
+#### [控制设备的混合 Azure AD 加入](devices/hybrid-azuread-join-control.md)
+#### [排查加入混合 Azure AD 的 Windows 当前设备问题](devices/troubleshoot-hybrid-join-windows-current.md)
+#### [排查加入混合 Azure AD 的旧式 Windows 设备问题](devices/troubleshoot-hybrid-join-windows-legacy.md)
+
+### 概念
+### [使用 Azure 门户管理设备](devices/device-management-azure-portal.md)
+### [常见问题](devices/faq.md)
 
 ## 管理应用
 ### [概述](manage-apps/what-is-application-management.md)
@@ -472,6 +477,7 @@
 ## [Azure AD Privileged Identity Management](./privileged-identity-management/pim-configure.md)
 
 # 资源
+## [Azure AD 部署计划](./fundamentals/active-directory-deployment-plans.md)
 ## [Azure 反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory)
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)

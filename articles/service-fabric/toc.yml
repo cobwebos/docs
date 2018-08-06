@@ -187,6 +187,8 @@
               href: service-fabric-dnsservice.md
             - name: 反向代理
               href: service-fabric-reverseproxy.md
+            - name: 设置和配置反向代理
+              href: service-fabric-reverseproxy-setup.md
             - name: 配置反向代理以进行安全通信
               href: service-fabric-reverseproxy-configure-secure-communication.md
             - name: 反向代理诊断

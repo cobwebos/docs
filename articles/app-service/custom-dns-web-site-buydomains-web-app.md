@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
-ms.openlocfilehash: 16a6d8e34bdec6e597c5f04faf421d387a877bff
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 48e0e68794e83739835d97aa8a2b26516c660357
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714878"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345185"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>为 Azure Web 应用购买自定义域名
 
@@ -68,7 +68,7 @@ ms.locfileid: "34714878"
 
 选择任何非免费层（**D1**、**B1**、**B2**、**B3**，或“生产”类别中的任何层）。 有关其他选项，请单击“查看其他选项”。
 
-单击“应用” 。
+单击“应用”。
 
 ![检查定价层](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 
@@ -77,6 +77,9 @@ ms.locfileid: "34714878"
 ![缩放操作确认](./media/app-service-web-tutorial-custom-domain/scale-notification.png)
 
 ## <a name="buy-the-domain"></a>购买域
+
+### <a name="pricing-information"></a>定价信息
+有关 Azure 应用服务域的定价信息，请访问[应用服务定价页](https://azure.microsoft.com/pricing/details/app-service/windows/)并向下滚动到应用服务域。
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 打开 [Azure 门户](https://portal.azure.com/)，然后使用 Azure 帐户登录。
@@ -112,7 +115,7 @@ ms.locfileid: "34714878"
 
 接下来，选择域的所需选项。 参阅下表中的说明：
 
-| 设置 | 建议的值 | 说明 |
+| 设置 | 建议的值 | Description |
 |-|-|-|
 |隐私保护 | 启用 | 选择“隐私保护”，已在采购价免费包含。 某些顶级域由不支持隐私保护的注册机构托管，并在“隐私保护”页上列出。 |
 | 分配默认主机名 | **www** 和 **@** | 根据需要选择主机名绑定。 完成域购买操作后，即可通过选定的主机名访问自己的 Web 应用。 如果 Web 应用在 [Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)的后面，则不会显示用于分配根域 (@) 的选项，因为流量管理器不支持 A 记录。 完成域购买过程后，可以更改主机名分配。 |

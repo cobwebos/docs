@@ -1,23 +1,24 @@
 ---
-title: 快速入门：使用认知服务语音 SDK 在 Android 上的 Java 中识别语音 | Microsoft Docs
+title: 快速入门：使用认知服务语音 SDK 在 Android 上的 Java 中识别语音
 titleSuffix: Microsoft Cognitive Services
 description: 了解如何使用认知服务语音 SDK 在 Android 上的 Java 中识别语音
 services: cognitive-services
 author: fmegen
-manager: wolfma
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: fmegen
-ms.openlocfilehash: fb52bc3fa398cbe5ba4cbea7c1908ee1fece876e
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: ad1bf15f198529487dbed92d8f8639704b0c5fc7
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114696"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325119"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-using-the-speech-sdk"></a>快速入门：使用语音 SDK 在 Android 上的 Java 中识别语音
+
+[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 本文介绍如何使用认知服务语音 SDK 将语音转为文本，进而创建适用于 Android 的 Java 应用程序。
 该应用程序基于Microsoft 认知服务语音 SDK Maven 包（版本 0.5.0）和 Android Studio 3.1。
@@ -158,4 +159,4 @@ Android 快速入门到此屏幕截图时结束。 可从示例存储库下载�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 访问[示例页](samples.md)来查看更多示例。
+* [获取我们的示例](speech-sdk.md#get-the-samples)

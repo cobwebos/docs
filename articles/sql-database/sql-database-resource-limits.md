@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 07/02/2018
+ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 62b0639f134a134739b09593a0b21b47d06699dc
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 6f6fa1ebc086530f138d32ee5a9c799b5bfbbdeb
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39236918"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412104"
 ---
 # <a name="overview-azure-sql-database-resource-limits"></a>Azure SQL 数据库资源限制概述 
 
@@ -28,10 +28,12 @@ ms.locfileid: "39236918"
 | 任意区域中每个订阅的服务器默认数量 | 20 |
 | 任意区域中每个订阅的服务器数上限 | 200 |
 | 每个服务器的 DTU/eDTU 配额 | 54,000 |
+| 每个服务器的 vCore 配额 | 540 |
+| 每个服务器的最大池数 | 受限于 DTU 或 vCore 数 |
 |||
 
 > [!NOTE]
-> 若要获得超过默认数量的 DTU/eDTU 配额或服务器，可以在 Azure 门户中为订阅提交问题类型为“配额”的新支持请求。 每个服务器的 DTU/eDTU 配额和数据库限制约束了每个服务器的弹性池数。 
+> 若要获得超过默认数量的 DTU/eDTU 配额、vCore 配额或服务器，可以在 Azure 门户中为订阅提交问题类型为“配额”的新支持请求。 每个服务器的 DTU/eDTU 配额和数据库限制约束了每个服务器的弹性池数。 
 
 > [!IMPORTANT]
 > 随着数据库的数量接近每个服务器的限制，可能出现以下情况：
@@ -56,6 +58,7 @@ ms.locfileid: "39236918"
 
 - 提高数据库或弹性池的大小上限，或添加更多存储资源。 请参阅[缩放单一数据库资源](sql-database-single-database-scale.md)和[缩放弹性池资源](sql-database-elastic-pool-scale.md)。
 - 如果数据库在弹性池内，那么可选择将数据库移出弹性池，从而避免与其他数据库共享存储空间。
+- 收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)
 
 ### <a name="sessions-and-workers-requests"></a>会话和辅助角色（请求） 
 

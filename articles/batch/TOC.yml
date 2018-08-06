@@ -91,8 +91,6 @@
           href: batch-task-dependencies.md
         - name: 用于运行任务的用户帐户
           href: batch-user-accounts.md
-        - name: 在不使用代码的情况下运行 Batch 作业
-          href: batch-cli-templates.md
     - name: 持久性作业和任务输出
       href: batch-task-output.md
       items:
@@ -123,10 +121,13 @@
           href: batch-efficient-list-queries.md
     - name: 使用脚本工具
       items:
-        - name: 使用 PowerShell cmdlet
+        - name: 使用 Azure PowerShell
           href: batch-powershell-cmdlets-get-started.md
         - name: 使用 Azure CLI
           href: batch-cli-get-started.md
+          items:
+            - name: 使用 Batch CLI 模板
+              href: batch-cli-templates.md
     - name: 使用 Batch Node.js SDK
       href: batch-nodejs-get-started.md
 - name: 引用

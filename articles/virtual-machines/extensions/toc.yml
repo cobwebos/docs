@@ -38,7 +38,9 @@
           href: custom-script-windows.md
         - name: Azure 服务管理（经典）
           href: custom-script-classic.md
-    - name: 诊断
+    - name: 适用于 Windows 的 IaaS 反恶意软件
+      href: iaas-antimalware-windows.md
+    - name: VM 快照
       items:
         - name: Linux
           href: vmsnapshot-linux.md

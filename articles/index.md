@@ -6,12 +6,12 @@ description: 了解如何使用 Microsoft Azure 云服务构建和管理功能�
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 7db35731a7a95a1ba327445a2044050c28fafb4c
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 323b0118d4635b141b2a0f3fb2692d082929c201
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224198"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495469"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -114,7 +114,8 @@ ms.locfileid: "39224198"
                                                     <li><a class="barLink" href="/azure/backup/">Azure 备份</a></li>
                                                     <li><a class="barLink" href="/azure/site-recovery/">Azure Site Recovery</a></li>
                                                     <li><a class="barLink" href="/azure/migrate/">Azure Migrate</a></li>
-                                                    <li><a class="barLink" href="/azure/azure-policy/">Azure 策略</a></li>
+                                                    <li>
+  <a class="barLink" href="/azure/azure-policy/">Azure Policy</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -1047,6 +1048,12 @@ Azure DevOps Project </a>
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="/azure/databox/">
+                                                <img src="media/index/Service-icon.png" alt="" />
+                                                <p>Data Box</p>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows">
                                                 <img src="media/index/storage.svg" alt="" />
                                                 <p>存储资源管理器</p>
@@ -1439,7 +1446,7 @@ Azure DevOps Project </a>
                                             </a>
                                         </li>
                                     </ul>
-                                    <h3>“安全”</h3>
+                                    <h3>安全</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/security/">
@@ -1648,7 +1655,7 @@ Azure DevOps Project </a>
                                         <li>
                                             <a href="/azure/azure-policy/">
                                                 <img src="media/index/governance.svg" alt="" />
-                                                <p>Azure 策略</p>
+                                                <p>Azure Policy</p>
                                             </a>
                                         </li>
                                         <li>
@@ -2237,7 +2244,7 @@ Azure DevOps Project </a>
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Lake Storage Gen2</h3>
-                                                    <p>可大规模缩放的安全的 Data Lake Storage</p>
+                                                    <p>与 Blob 存储集成的、高度可缩放的安全 Data Lake 存储</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -5082,7 +5089,7 @@ Azure DevOps Project </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure 策略</h3>
+                                                    <h3>Azure Policy</h3>
                                                     <p>为 Azure 资源大规模实施公司管理和标准</p>
                                                 </div>
                                             </div>

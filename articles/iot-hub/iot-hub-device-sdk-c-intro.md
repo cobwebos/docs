@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: 78cd8b2d6afe98e34c33ed3c841c8023d9dab764
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4f8ad67fafa20fd9adce62e8beb619999203ef62
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635264"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346655"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>适用于 C 的 Azure IoT 设备 SDK
 
@@ -69,10 +69,11 @@ SDK 已在许多平台上进行了测试（有关详细信息，请参阅 [Azure
 
 有几个开源工具可帮助管理 IoT 中心。
 
-* 一个是称为[设备资源管理器](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)的 Windows 应用程序。
-* 跨平台 Python CLI 工具调用[适用于 Azure CLI 2.0 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)。
+* 一个称为 [Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) 的 Windows 应用程序。
+* 一个称为 [Azure IoT 工具包](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)的跨平台 Visual Studio Code 扩展。
+* 一个称为[适用于 Azure CLI 2.0 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)的跨平台 Python CLI 工具。
 
-本教程使用图形*设备资源管理器*工具。 如果偏好 CLI 工具，也可以使用适用于 Azure CLI 2.0 的 IoT 扩展工具。
+本教程使用图形*设备资源管理器*工具。 如果在 VS Code 中进行开发，可以使用*适用于 VS Code 的 Azure IoT 工具包扩展*。 如果偏好 CLI 工具，也可以使用适用于 Azure CLI 2.0 的 IoT 扩展工具。
 
 设备资源管理器工具使用 Azure IoT 服务库在 IoT 中心执行各种功能（包括添加设备）。 若使用设备资源管理器工具添加设备，会获得设备的连接字符串。 需要此连接字符串才能运行示例应用程序。
 
@@ -84,7 +85,7 @@ SDK 已在许多平台上进行了测试（有关详细信息，请参阅 [Azure
 
   ![](media/iot-hub-device-sdk-c-intro/03-DeviceExplorer.PNG)
 
-在第一个字段中输入 **IoT 中心连接字符串**，然后单击“**更新**”。 此步骤配置该工具，以便与 IoT 中心通信。
+在第一个字段中输入 **IoT 中心连接字符串**，然后单击“**更新**”。 此步骤配置该工具，以便与 IoT 中心通信。 可以在“IoT 中心服务” > “设置” > “共享访问策略” > “iothubowner”下找到**连接字符串**。
 
 配置 IoT 中心连接字符串后，请单击“管理”选项卡：
 
@@ -102,7 +103,7 @@ SDK 已在许多平台上进行了测试（有关详细信息，请参阅 [Azure
 
 如果选择“复制所选设备的连接字符串”，会将设备连接字符串复制到剪贴板。 请保留设备连接字符串的副本。 在运行后续部分中所述的示例应用程序时，将要用到它。
 
-完成上述步骤后，可以开始运行一些代码。 两个示例的主源文件顶部都有一个常量，可让你输入连接字符串。 例如，**iothub\_client\_sample\_mqtt** 应用程序中的相应行如下所示。
+完成上述步骤后，可以开始运行一些代码。 大多数示例的主源文件顶部都有一个常量，可让你输入连接字符串。 例如，**iothub\_client\_sample\_mqtt** 应用程序中的相应行如下所示。
 
 ```c
 static const char* connectionString = "[device connection string]";

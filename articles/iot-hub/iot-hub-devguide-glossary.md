@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 1dae926a3a368e518877b210fb1caf487688750c
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 1a5df1081edeb8b8e7520064a71534f70a9a9d33
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187360"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344294"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT 中心术语词汇表
 本文列出了一些在 IoT 中心文章中使用的常用术语。
@@ -39,6 +39,9 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 
 ## <a name="azure-iot-service-sdks"></a>Azure IoT 服务 SDK
 提供了多种语言的_服务 SDK_，方便用户创建与 IoT 中心交互的[后端应用](#back-end-app)。 IoT 中心教程介绍了如何使用这些服务 SDK。 可以在此 GitHub [存储库](https://github.com/Azure/azure-iot-sdks)中找到有关服务 SDK 的源代码和进一步信息。
+
+## <a name="azure-iot-toolkit"></a>Azure IoT 工具包
+[Azure IoT 工具包](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)是一个跨平台的开放源代码 Visual Studio Code 扩展，可帮助你在 VS Code 中管理 Azure IoT 中心和设备。 使用 Azure IoT 工具包，IoT 开发人员可以轻松在 VS Code 中开发 IoT 项目。
 
 ## <a name="azure-portal"></a>Azure 门户
 [Microsoft Azure 门户](https://portal.azure.com)是一个中心位置，可在其中预配和管理 Azure 资源。 该门户使用_边栏选项卡_组织其内容。

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 04/13/2018
 ms.author: mtillman
-ms.openlocfilehash: 452c8104f4f5abd5730126fbe2a5755564d37d16
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 5f193425912ad9c15d9f6b0b7681178fab54b83e
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226061"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39504611"
 ---
 # <a name="azure-active-directory-documentation"></a>Azure Active Directory 文档
 
@@ -31,10 +31,11 @@ Azure Active Directory (Azure AD) 是多租户、基于云的目录和标识管�
                     <div class="cardText">
                         <h3>基本</h3>
                         <p>
-                        <a href="/azure/active-directory/active-directory-whatis">什么是 Azure AD？</a><br/>
-                        <a href="/azure/active-directory/understand-azure-identity-solutions">标识解决方案</a><br/>
-                        <a href="/azure/active-directory/get-started-azure-ad">入门</a><br/>
-                        <a href="/azure/active-directory/whats-new">新增功能</a>
+                        <a href="/azure/active-directory/fundamentals/active-directory-whatis">什么是 Azure AD？</a><br/>
+                        <a href="/azure/active-directory/fundamentals/understand-azure-identity-solutions">标识解决方案</a><br/>
+                        <a href="/azure/active-directory/fundamentals/get-started-azure-ad">入门</a><br/>
+                        <a href="/azure/active-directory/fundamentals/whats-new">新增功能</a><br/>
+                        <a href="/azure/active-directory/fundamentals/active-directory-deployment-plans">Azure AD 部署计划</a>
                         </p>
                     </div>
                 </div>

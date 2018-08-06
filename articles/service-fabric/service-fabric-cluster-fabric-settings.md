@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/19/2018
+ms.date: 07/25/2018
 ms.author: aljo
-ms.openlocfilehash: 1f7cad982e4a78aaad92e563eb4a1fc33b533478
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 5628315423db1f0064d0e6b77f061d8e674757aa
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238941"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39309147"
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>自定义 Service Fabric 群集设置和结构升级策略
 本文档说明如何为 Service Fabric 群集自定义各种结构设置和结构升级策略。 可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板完成自定义。
@@ -59,11 +59,11 @@ ms.locfileid: "39238941"
 ## <a name="applicationgatewayhttp"></a>ApplicationGateway/Http
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
-|ApplicationCertificateValidationPolicy|string，默认值为“None”|静态| 不会验证服务器证书；请求成功。 请参阅配置 ServiceCertificateThumbprints，获取反向代理可以信任的远程证书的指纹列表（以逗号分隔）。 请参阅配置 ServiceCommonNameAndIssuer，获取反向代理可以信任的远程证书的使用者名称和证书颁发者指纹。 |
+|ApplicationCertificateValidationPolicy|string，默认值为“None”|静态| 不会验证服务器证书；请求成功。 请参阅配置 ServiceCertificateThumbprints，获取反向代理可以信任的远程证书的指纹列表（以逗号分隔）。 请参阅配置 ServiceCommonNameAndIssuer，获取反向代理可以信任的远程证书的使用者名称和证书颁发者指纹。 若要了解详细信息，请参阅[反向代理安全连接](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services)。 |
 |BodyChunkSize |Uint，默认值为 16384 |动态| 提供用于读取正文的区块大小（以字节为单位）。 |
 |CrlCheckingFlag|uint，默认值为 0x40000000 |动态| 应用程序/服务证书链验证的标记；例如 CRL 检查 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY 设置为 0 会禁用 CRL 检查，支持值的完整列表由 CertGetCertificateChain 的 dwFlags 记录：http://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
 |DefaultHttpRequestTimeout |以秒为单位的时间。 默认值为 120 |动态|指定以秒为单位的时间范围。  提供用于 http 应用网关中正在处理的 http 请求的默认请求超时时间。 |
-|ForwardClientCertificate|bool，默认值为 FALSE|动态|如果设置为 false，反向代理不会请求客户端证书。如果设置为 true，反向代理将在 SSL 握手期间请求客户端证书，并将 base64 编码的 PEM 格式字符串转发到名为 X-Client-Certificate 的标头中的服务。检查证书数据后，服务可能无法处理请求，并返回相应的状态代码。 如果此参数为 true 并且客户端不提供证书，反向代理将转发空标头，并让服务处理该情况。 反向代理将充当透明层。|
+|ForwardClientCertificate|bool，默认值为 FALSE|动态|如果设置为 false，反向代理不会请求客户端证书。如果设置为 true，反向代理将在 SSL 握手期间请求客户端证书，并将 base64 编码的 PEM 格式字符串转发到名为 X-Client-Certificate 的标头中的服务。检查证书数据后，服务可能无法处理请求，并返回相应的状态代码。 如果此参数为 true 并且客户端不提供证书，反向代理将转发空标头，并让服务处理该情况。 反向代理将充当透明层。 若要了解详细信息，请参阅[设置客户端证书身份验证](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy)。 |
 |GatewayAuthCredentialType |string，默认值为“None” |静态| 指示在 http 应用网关终结点处使用的安全凭据的类型，有效值为 "None/X509。 |
 |GatewayX509CertificateFindType |string，默认值为“FindByThumbprint” |动态| 指示如何在由 GatewayX509CertificateStoreName 支持的值（FindByThumbprint、FindBySubjectName）指定的存储中搜索证书。 |
 |GatewayX509CertificateFindValue | string，默认值为“” |动态| 用于查找 http 应用网关证书的搜索筛选器值。 此证书在 https 终结点上配置，并且如果服务需要，还可用于验证应用的标识。 首先查找 FindValue；如果其不存在，再查找 FindValueSecondary。 |
@@ -75,13 +75,13 @@ ms.locfileid: "39238941"
 |NumberOfParallelOperations | Uint，默认值为 5000 |静态|要发布到 http 服务器队列的读取数。 此配置控制 HttpGateway 可以满足的并发请求数。 |
 |RemoveServiceResponseHeaders|string，默认值为“Date; Server”|静态|从服务响应中删除的响应标头列表（以分号/逗号分隔），这些标头将子啊转发到客户端之前删除。 如果此值设置为空字符串，则会按原样传递服务返回的所有标头。 例如  不会覆盖日期和服务器 |
 |ResolveServiceBackoffInterval |以秒为单位的时间，默认值为 5 |动态|指定以秒为单位的时间范围。  提供重试失败的解析服务操作之前的默认回退时间间隔。 |
-|SecureOnlyMode|bool，默认值为 FALSE|动态| SecureOnlyMode：true：反向代理只会转发到发布安全终结点的服务。 false：反向代理可以将请求转发到安全/不安全的终结点。  |
-|ServiceCertificateThumbprints|string，默认值为“”|动态|反向代理可以信任的远程证书的指纹的逗号分隔列表。  |
+|SecureOnlyMode|bool，默认值为 FALSE|动态| SecureOnlyMode：true：反向代理只会转发到发布安全终结点的服务。 false：反向代理可以将请求转发到安全/不安全的终结点。 若要了解详细信息，请参阅[反向代理终结点选择逻辑](service-fabric-reverseproxy-configure-secure-communication.md#endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints)。  |
+|ServiceCertificateThumbprints|string，默认值为“”|动态|反向代理可以信任的远程证书的指纹的逗号分隔列表。 若要了解详细信息，请参阅[反向代理安全连接](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services)。 |
 
 ## <a name="applicationgatewayhttpservicecommonnameandissuer"></a>ApplicationGateway/Http/ServiceCommonNameAndIssuer
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap，默认值为 None|动态| 反向代理可以信任的远程证书的使用者名称和颁发者指纹。|
+|PropertyGroup|X509NameMap，默认值为 None|动态| 反向代理可以信任的远程证书的使用者名称和颁发者指纹。 若要了解详细信息，请参阅[反向代理安全连接](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services)。 |
 
 ## <a name="backuprestoreservice"></a>BackupRestoreService
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
@@ -586,7 +586,7 @@ ms.locfileid: "39238941"
 |RunAsAccountType|string，默认值为“” |动态|指示 RunAs 帐户类型。 需用于任何 RunAs 部分，有效值为“LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem”。 |
 |RunAsPassword|string，默认值为“” |动态|指示 RunAs 帐户密码。 仅需用于“DomainUser”帐户类型。 |
 
-## <a name="security"></a>“安全”
+## <a name="security"></a>安全
 | **Parameter** | **允许的值** |**升级策略**| **指导或简短说明** |
 | --- | --- | --- | --- |
 |AADClientApplication|string，默认值为“”|静态|表示 Fabric 客户端的本机客户端应用程序名称或 ID |
@@ -624,7 +624,7 @@ ms.locfileid: "39238941"
 ## <a name="securityadminclientx509names"></a>Security/AdminClientX509Names
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap，默认值为 None|动态| |
+|PropertyGroup|X509NameMap，默认值为 None|动态|这是“名称”和“值”对的列表。 每个“名称”是为管理员客户端操作授权的 X509 证书 的使用者公用名或 DnsName。 对于给定的“名称”，“值”是用于颁发者固定的证书指纹的逗号分隔列表，如果不为空，则管理员客户端证书的直接颁发者必须在列表中。 |
 
 ## <a name="securityclientaccess"></a>Security/ClientAccess
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
@@ -730,7 +730,7 @@ ms.locfileid: "39238941"
 ## <a name="securityclientx509names"></a>Security/ClientX509Names
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap，默认值为 None|动态| |
+|PropertyGroup|X509NameMap，默认值为 None|动态|这是“名称”和“值”对的列表。 每个“名称”是为客户端操作授权的 X509 证书 的使用者公用名或 DnsName。 对于给定的“名称”，“值”是用于颁发者固定的证书指纹的逗号分隔列表，如果不为空，则客户端证书的直接颁发者必须在列表中。|
 
 ## <a name="securityclustercertificateissuerstores"></a>Security/ClusterCertificateIssuerStores
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
@@ -740,7 +740,7 @@ ms.locfileid: "39238941"
 ## <a name="securityclusterx509names"></a>Security/ClusterX509Names
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap，默认值为 None|动态| |
+|PropertyGroup|X509NameMap，默认值为 None|动态|这是“名称”和“值”对的列表。 每个“名称”是为群集操作授权的 X509 证书 的使用者公用名或 DnsName。 对于给定的“名称”，“值”是用于颁发者固定的证书指纹的逗号分隔列表，如果不为空，则群集证书的直接颁发者必须在列表中。|
 
 ## <a name="securityservercertificateissuerstores"></a>Security/ServerCertificateIssuerStores
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
@@ -750,7 +750,7 @@ ms.locfileid: "39238941"
 ## <a name="securityserverx509names"></a>Security/ServerX509Names
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap，默认值为 None|动态| |
+|PropertyGroup|X509NameMap，默认值为 None|动态|这是“名称”和“值”对的列表。 每个“名称”是为服务器操作授权的 X509 证书 的使用者公用名或 DnsName。 对于给定的“名称”，“值”是用于颁发者固定的证书指纹的逗号分隔列表，如果不为空，则服务器证书的直接颁发者必须在列表中。|
 
 ## <a name="setup"></a>设置
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |

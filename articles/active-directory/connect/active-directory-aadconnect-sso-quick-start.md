@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2017
+ms.date: 07/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f8639cbb5c7ba86b4786f3d0b913d64bad59ad66
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 24bda501f88d4f96fb558eeb6b21e437edd6d862
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917510"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325381"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory 无缝单一登录：快速入门
 
@@ -41,9 +41,15 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
     >[!NOTE]
     >Azure AD Connect 版本 1.1.557.0、1.1.558.0、1.1.561.0 和 1.1.614.0 具有密码哈希同步相关问题。 如果不打算将密码哈希同步与直通身份验证结合使用，请阅读 [Azure AD Connect 发行说明](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470)了解详细信息。
 
+* **使用受支持的 Azure AD Connect 拓扑**：请确保使用 Azure AD Connect 支持的拓扑之一，如[此处](active-directory-aadconnect-topologies.md)所述。
+
 * 设置域管理员凭据：你需要为每个 Active Directory 林提供域管理员凭据：
     * 通过 Azure AD Connect 同步到 Azure AD。
     * 包含你想要为其启用无缝 SSO 的用户。
+    
+* **启用新式身份验证**：需要在租户上启用[新式身份验证](https://aka.ms/modernauthga)，此功能才有效。
+
+* **使用最新版本的 Office 365 客户端**：若要获取 Office 365 客户端的无提示登录体验，你的用户需要使用 16.0.8730.xxxx 或更高版本。
 
 ## <a name="step-2-enable-the-feature"></a>步骤 2：启用功能
 
@@ -75,23 +81,32 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 
 ![Azure 门户：Azure AD Connect 窗格](./media/active-directory-aadconnect-sso/sso10.png)
 
+>[!IMPORTANT]
+> 无缝 SSO 在每个 AD 林的本地 Active Directory (AD) 中创建一个名为 `AZUREADSSOACC` 的计算机帐户（表示 Azure AD）。 该功能需要使用此计算机帐户才能工作。 将 `AZUREADSSOACC` 计算机帐户移动到在其中存储其他计算机帐户的组织单位 (OU)，确保以相同的方式对该帐户进行管理，并确保它不会被删除。
+
 ## <a name="step-3-roll-out-the-feature"></a>步骤 3：扩展此功能
 
-若要向用户推广该功能，需要使用 Active Directory 中的组策略将以下 Azure AD URL 添加到用户的 Intranet 区域设置：
+可使用以下说明向用户逐步推出无缝 SSO。 首先，使用 Active Directory 中的组策略将以下 Azure AD URL 添加到所有或所选用户的 Intranet 区域设置：
 
 - https://autologon.microsoftazuread-sso.com
-
 
 此外，还需要通过“组策略”启用称为“允许通过脚本更新状态栏”的 Intranet 区域策略设置。 
 
 >[!NOTE]
-> 以下说明仅适用于 Windows 上的 Internet Explorer 和 Google Chrome（如果它与 Internet Explorer 共享一组相同的受信任站点 URL）。 请阅读下一节的说明，了解如何在 Mac 上设置 Mozilla Firefox 和 Google Chrome。
+> 以下说明仅适用于 Windows 上的 Internet Explorer 和 Google Chrome（如果它与 Internet Explorer 共享一组相同的受信任站点 URL）。 请阅读下一节，了解在 macOS 上设置 Mozilla Firefox 和 Google Chrome 的说明。
 
 ### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>为什么需要修改用户的 Intranet 区域设置？
 
 默认情况下，浏览器将自动从特定 URL 计算正确的区域（Internet 或 Intranet）。 例如，“http://contoso/”映射到 Intranet 区域，而“http://intranet.contoso.com/”映射到 Internet 区域（因为此 URL 包含句点）。 浏览器不会将 Kerberos 票证发送到云终结点（例如 Azure AD URL），除非将此 URL 显式添加到浏览器的 Intranet 区域。
 
-### <a name="detailed-steps"></a>详细步骤
+有两种方法来修改用户的 Intranet 区域设置：
+
+| 选项 | 管理员注意事项 | 用户体验 |
+| --- | --- | --- |
+| 组策略 | 管理员锁定 Intranet 区域设置的编辑 | 用户无法修改自己的设置 |
+| 组策略首选项 |  管理员允许编辑 Intranet 区域设置 | 用户可以修改自己的设置 |
+
+### <a name="group-policy-option---detailed-steps"></a>“组策略”选项 - 详细步骤
 
 1. 打开“组策略管理编辑器”工具。
 2. 编辑适用于部分或全部用户的组策略。 此示例使用**默认域策略**。
@@ -123,6 +138,32 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 
     ![单一登录](./media/active-directory-aadconnect-sso/sso12.png)
 
+### <a name="group-policy-preference-option---detailed-steps"></a>“组策略首选项”选项 - 详细步骤
+
+1. 打开“组策略管理编辑器”工具。
+2. 编辑适用于部分或全部用户的组策略。 此示例使用**默认域策略**。
+3. 浏览到“用户配置” > “首选项” > “Windows 设置” > “注册” > “新建” > “注册项”。
+
+    ![单一登录](./media/active-directory-aadconnect-sso/sso15.png)
+
+4. 在相应字段中输入以下值，然后单击“确定”。
+   - **密钥路径**：Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-sso.com\autologon
+   - **值名称**：https。
+   - **值类型**：REG_DWORD。
+   - **值数据**：00000001。
+ 
+    ![单一登录](./media/active-directory-aadconnect-sso/sso16.png)
+ 
+    ![单一登录](./media/active-directory-aadconnect-sso/sso17.png)
+
+6. 浏览到“用户配置” > “管理模板” > “Windows 组件” > “Internet Explorer” > “Internet 控制面板” > “安全页” > “Intranet 区域”。 然后选择“允许通过脚本更新状态栏”。
+
+    ![单一登录](./media/active-directory-aadconnect-sso/sso11.png)
+
+7. 启用策略设置，然后选择“确定”。
+
+    ![单一登录](./media/active-directory-aadconnect-sso/sso12.png)
+
 ### <a name="browser-considerations"></a>浏览器注意事项
 
 #### <a name="mozilla-firefox-all-platforms"></a>Mozilla Firefox（所有平台）
@@ -134,15 +175,15 @@ Mozilla Firefox 不会自动使用 Kerberos 身份验证。 每个用户必须�
 4. 在字段中输入 https://autologon.microsoftazuread-sso.com。
 5. 选择“确定”，然后重新打开浏览器。
 
-#### <a name="safari-mac-os"></a>Safari（Mac 操作系统）
+#### <a name="safari-macos"></a>Safari (macOS)
 
-确保运行 Mac OS 的计算机已加入 AD。 有关加入 AD 的说明，请参阅[将 OS X 与 Active Directory 集成的最佳做法](http://www.isaca.org/Groups/Professional-English/identity-management/GroupDocuments/Integrating-OS-X-with-Active-Directory.pdf)。
+确保运行 macOS 的计算机已加入 AD。 有关加入 AD 的说明，请参阅[将 OS X 与 Active Directory 集成的最佳做法](http://www.isaca.org/Groups/Professional-English/identity-management/GroupDocuments/Integrating-OS-X-with-Active-Directory.pdf)。
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome（所有平台）
 
 如果已替代环境中的 [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) 或 [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) 策略设置，请确保也向其添加 Azure AD 的 URL ( https://autologon.microsoftazuread-sso.com) )。
 
-#### <a name="google-chrome-mac-os-only"></a>Google Chrome（仅限 Mac 操作系统）
+#### <a name="google-chrome-macos-only"></a>Google Chrome（仅限 macOS）
 
 对于 Mac OS 和其他非 Windows 平台上的 Google Chrome，请参阅 [Chromium 项目策略列表](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist)，了解有关如何针对集成身份验证将 Azure AD URL 列入允许列表的信息。
 
@@ -156,7 +197,7 @@ Mozilla Firefox 不会自动使用 Kerberos 身份验证。 每个用户必须�
 
 要测试特定用户的功能，请确保符合以下所有条件：
   - 用户登录到某个企业设备。
-  - 该设备已加入 Active Directory 域。
+  - 该设备已加入 Active Directory 域。 设备不需要[加入 Azure AD](../active-directory-azureadjoin-overview.md)。
   - 该设备已通过远程访问连接（例如 VPN 连接）与企业有线或无线网络中的域控制器 (DC) 建立了直接连接。
   - 你可以通过组策略[将此功能扩展到用户](##step-3-roll-out-the-feature)。
 
@@ -169,7 +210,12 @@ Mozilla Firefox 不会自动使用 Kerberos 身份验证。 每个用户必须�
 
 ## <a name="step-5-roll-over-keys"></a>步骤 5：滚动更新密钥
 
-在步骤 2 中，Azure AD Connect 在已启用无缝 SSO 的所有 Active Directory 林中创建计算机帐户（表示 Azure AD）。 若要了解详细信息，请参阅 [Azure Active Directory 无缝单一登录：深入技术探究](active-directory-aadconnect-sso-how-it-works.md)。 为了提高安全性，我们建议定期滚动更新这些计算机帐户的 Kerberos 解密密钥。 有关如何滚动更新密钥的说明，请参阅 [Azure Active Directory 无缝单一登录：常见问题](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account)。
+在步骤 2 中，Azure AD Connect 在已启用无缝 SSO 的所有 Active Directory 林中创建计算机帐户（表示 Azure AD）。 若要了解详细信息，请参阅 [Azure Active Directory 无缝单一登录：深入技术探究](active-directory-aadconnect-sso-how-it-works.md)。
+
+>[!IMPORTANT]
+>如果泄露，可以使用计算机帐户上的 Kerberos 解密密钥为 AD 林中的任意用户生成 Kerberos 票证。 然后，恶意执行组件可以为遭到入侵的用户模拟 Azure AD 登录。 强烈建议定期滚动更新这些 Kerberos 解密密钥，至少每 30 天一次。
+
+有关如何滚动更新密钥的说明，请参阅 [Azure Active Directory 无缝单一登录：常见问题](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account)。 我们正在努力引入自动化滚动更新密钥的功能。
 
 >[!IMPORTANT]
 >启用该功能后无需_立即_执行此步骤。 至少每隔 30 天滚动更新一次 Kerberos 解密密钥。
