@@ -285,7 +285,7 @@ AzCopy 安装在什么位置？
 
     - **SAS 令牌**：使用 SAS 令牌访问终结点中的数据。 有关详细信息，请参阅[使用共享访问签名](storage-dotnet-shared-access-signature-part-1.md)。
 
-**如何结合使用我的存储帐户和 HTTPS 自定义域？例如，如何使“https://mystorageaccountname.blob.core.windows.net/images/image.gif”显示为“https://www.contoso.com/images/image.gif”？**
+**如何结合使用我的存储帐户和 HTTPS 自定义域？例如，如何使 “https://mystorageaccountname.blob.core.windows.net/images/image.gif” 显示为 “https://www.contoso.com/images/image.gif”？**
 
 使用自定义域的存储帐户当前不支持 SSL。
 但你可以使用非 HTTPS 自定义域。 有关详细信息，请参阅[为 Blob 存储终结点配置自定义域名](../blobs/storage-custom-domain-name.md)。
