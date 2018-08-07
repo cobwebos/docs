@@ -7,7 +7,7 @@
 - name: 快速入门
   items:
     - name: 创建流量管理器配置文件
-      href: traffic-manager-create-profile.md
+      href: quickstart-create-traffic-manager-profile.md
 - name: 教程
   items:
     - name: 根据终结点的地理位置路由流量
