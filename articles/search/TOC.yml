@@ -47,8 +47,6 @@
   items:
     - name: Azure 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?service=search'
-    - name: GitHub 示例
-      href: 'https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search'
 - name: 概念
   items:
     - name: 认知搜索（预览版）
@@ -73,6 +71,8 @@
           href: cognitive-search-create-custom-skill-example.md
         - name: 故障排除提示
           href: cognitive-search-concept-troubleshooting.md
+        - name: 文档链接
+          href: cognitive-search-resources-documentation.md
     - name: 规划
       items:
         - name: 选择层
@@ -175,7 +175,7 @@
               href: search-indexer-field-mappings.md
     - name: 搜索数据
       items:
-        - name: 查询基础知识
+        - name: 基本
           href: search-query-overview.md
         - name: 搜索浏览器（门户）
           href: search-explorer.md
@@ -215,6 +215,10 @@
           href: search-traffic-analytics.md
 - name: 引用
   items:
+    - name: Azure CLI
+      href: 'https://docs.microsoft.com/cli/azure/search?view=azure-cli-latest'
+    - name: Azure PowerShell
+      href: 'https://www.powershellgallery.com/packages/AzureRM.search/0.1.0-preview'
     - name: .NET
       href: /dotnet/api/?term=microsoft.azure.search
     - name: .NET（管理）
@@ -250,35 +254,27 @@
           href: cognitive-search-skill-shaper.md
 - name: 资源
   items:
-    - name: FAQ - 常见问题解答
+    - name: Azure 社区支持
+      href: 'https://azure.microsoft.com/support/community/?product=search'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?tag=azure-search'
+    - name: 演示站点
+      items:
+        - name: 财务文件演示
+          href: 'http://wolterskluwereap.azurewebsites.net/'
+        - name: JFK 文件演示
+          href: 'http://aka.ms/jfkfiles'
+        - name: 作业列表应用
+          href: 'http://aka.ms/azjobsdemo'
+        - name: 搜索分析器演示
+          href: 'http://alice.unearth.ai/'
+        - name: 搜索用例
+          href: 'https://searchsamples.azurewebsites.net/'
+    - name: 常见问题解答
       href: search-faq-frequently-asked-questions.md
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/search/'
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=search'
-    - name: 认知搜索文档
-      href: cognitive-search-resources-documentation.md
-    - name: 课件和教程
-      items:
-        - name: 视频和教程
-          href: search-video-demo-tutorial-list.md
-        - name: 虚拟大学
-          href: 'https://mva.microsoft.com/training-courses/using-windows-azure-search-10540?l=ADkxnd97_9304984382'
-    - name: 演示站点
-      items:
-        - name: 搜索分析器演示
-          href: 'http://alice.unearth.ai/'
-        - name: 实时演示应用
-          href: 'https://searchsamples.azurewebsites.net/'
-        - name: 作业列表应用
-          href: 'http://aka.ms/azjobsdemo'
-    - name: 合作伙伴和社区
-      items:
-        - name: Azure 搜索 MSDN 论坛
-          href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=AzureSearch'
-        - name: 堆栈溢出
-          href: 'http://stackoverflow.com/questions/tagged/azure-search'
-        - name: 博客：为关系数据建模
-          href: 'http://blogs.technet.com/b/onsearch/archive/2015/09/08/modeling-the-adventureworks-inventory-database-for-azure-search.aspx'
-        - name: 博客：多层分面
-          href: 'http://blogs.technet.com/b/onsearch/archive/2015/09/09/multi-level-taxonomy-facets-in-azure-search.aspx'
+    - name: 视频
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=search'

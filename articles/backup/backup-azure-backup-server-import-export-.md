@@ -98,7 +98,7 @@ Azure 备份的脱机种子设定与 [Azure 导入/导出服务](../storage/comm
 ### <a name="prepare-sata-drives-and-ship-to-azure"></a>准备 SATA 驱动器并寄送到 Azure
 *AzureOfflineBackupDiskPrep*实用程序用于准备送到最近的 Azure 数据中心的 SATA 驱动器。 在以下路径的恢复服务代理安装目录中可获得此实用工具：
 
-   *\Microsoft* *Azure* *Recovery* *Services* *Agent\Utils\*
+   *\Microsoft* *Azure* *Recovery* *Services* \*Agent\Utils\*
 
 1. 转到该目录，将“AzureOfflineBackupDiskPrep”目录复制到 SATA 驱动器准备连接的副本计算机上。 确保满足以下与副本计算机相关的要求：
 

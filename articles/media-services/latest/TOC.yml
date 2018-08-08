@@ -39,6 +39,8 @@
       items:
         - name: 概述
           href: content-protection-overview.md
+        - name: 带有访问控制的多 DRM 系统
+          href: design-multi-drm-system-with-access-control.md
     - name: 编码
       items:
         - name: 概述

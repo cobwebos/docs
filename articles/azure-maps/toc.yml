@@ -40,6 +40,8 @@
       items:
         - name: 管理帐户和密钥
           href: how-to-manage-account-keys.md
+        - name: 查看使用情况指标
+          href: how-to-view-api-usage.md
     - name: 从 REST API 获取地图数据
       items:
         - name: 搜索地址

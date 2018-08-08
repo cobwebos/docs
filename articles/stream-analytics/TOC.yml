@@ -46,8 +46,8 @@
       href: stream-analytics-compatibility-level.md
     - name: 通用查询模式
       href: stream-analytics-stream-analytics-query-patterns.md
-    - name: 使用 JSON 和 AVRO 中的复杂数据类型
-      href: 'https://msdn.microsoft.com/azure/stream-analytics/reference/complex-data-types-stream-analytics'
+    - name: 分析 JSON 和 AVRO 数据
+      href: stream-analytics-parsing-json.md
     - name: 事件排序注意事项
       href: stream-analytics-out-of-order-and-late-events.md
     - name: 检查点和重播

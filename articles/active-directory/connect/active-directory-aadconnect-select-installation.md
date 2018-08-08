@@ -43,7 +43,7 @@ Azure AD Connect 为全新安装提供两种安装类型：快速安装和自定
 
 仍可使用“快速”选项的场合：
 
-- 如果不想要同步所有 OU，仍可使用“快速”选项。请在最后一页上取消选择“启动同步过程...”。 然后再次运行安装向导，更改[配置选项](active-directory-aadconnectsync-installation-wizard.md#customize-synchronization-options)中的 OU 并启用计划同步。
+- 如果不想要同步所有 OU，仍可使用“快速”选项。请在最后一页上取消选择“启动同步过程...”\*。 然后再次运行安装向导，更改[配置选项](active-directory-aadconnectsync-installation-wizard.md#customize-synchronization-options)中的 OU 并启用计划同步。
 - 想要启用 Azure AD Premium 中的某个功能，例如密码写回。 首先请完成整个快速安装过程，以完成初始安装。 然后再次运行安装向导并更改[配置选项](active-directory-aadconnectsync-installation-wizard.md#customize-synchronization-options)。
 
 ## <a name="custom"></a>“自定义”

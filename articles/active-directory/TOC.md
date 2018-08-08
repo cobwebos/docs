@@ -171,12 +171,13 @@
 #### [计划 Azure AD 加入](devices/azureadjoin-plan.md)
 #### [计划混合 Azure AD 加入实现](devices/hybrid-azuread-join-plan.md)
 #### [控制设备的混合 Azure AD 加入](devices/hybrid-azuread-join-control.md)
+#### [将本地管理员分配到加入 Azure AD 的设备](devices/assign-local-admin.md)
 #### [排查加入混合 Azure AD 的 Windows 当前设备问题](devices/troubleshoot-hybrid-join-windows-current.md)
 #### [排查加入混合 Azure AD 的旧式 Windows 设备问题](devices/troubleshoot-hybrid-join-windows-legacy.md)
 
 ### 概念
-### [使用 Azure 门户管理设备](devices/device-management-azure-portal.md)
-### [常见问题](devices/faq.md)
+#### [使用 Azure 门户管理设备](devices/device-management-azure-portal.md)
+#### [常见问题](devices/faq.md)
 
 ## 管理应用
 ### [概述](manage-apps/what-is-application-management.md)
@@ -403,30 +404,30 @@
 ### [条件性访问](active-directory-conditional-access-azure-portal.md)
 #### [入门](active-directory-conditional-access-azure-portal-get-started.md)
 #### 快速入门
-##### [根据云应用 MFA 进行配置](active-directory-conditional-access-app-based-mfa.md)
-##### [需要接受使用条款](active-directory-conditional-access-tou.md)
-##### [检测到会话风险时阻止访问](active-directory-conditional-access-app-sign-in-risk.md)
+##### [根据云应用 MFA 进行配置](conditional-access/app-based-mfa.md)
+##### [需要接受使用条款](conditional-access/require-tou.md)
+##### [检测到会话风险时阻止访问](conditional-access/app-sign-in-risk.md)
 #### 教程
-##### [迁移经典 MFA 策略](active-directory-conditional-access-migration-mfa.md)
+##### [迁移经典 MFA 策略](conditional-access/policy-migration-mfa.md)
 #### 概念
-##### [基线保护](active-directory-conditional-access-baseline-protection.md)
-##### [条件](active-directory-conditional-access-conditions.md)
-##### [位置条件](active-directory-conditional-access-locations.md)
-##### [控制](active-directory-conditional-access-controls.md)
-##### [假设分析工具](active-directory-conditional-access-whatif.md)
+##### [基线保护](conditional-access/baseline-protection.md)
+##### [条件](conditional-access/conditions.md)
+##### [位置条件](conditional-access/location-condition.md)
+##### [控制](conditional-access/controls.md)
+##### [假设分析工具](conditional-access/what-if-tool.md)
 ##### [了解 Office 365 服务的设备策略](active-directory-conditional-access-device-policies.md)
 #### 操作指南
-##### [最佳实践](active-directory-conditional-access-best-practices.md)
+##### [最佳实践](conditional-access/best-practices.md)
 ##### [针对来自不受信任网络的访问尝试配置条件访问策略](active-directory-conditional-access-untrusted-networks.md)
 ##### [设置基于设备的条件访问](active-directory-conditional-access-policy-connected-applications.md)
 ##### [设置基于应用的条件访问](active-directory-conditional-access-mam.md)
 ##### [为用户和应用提供使用条款](active-directory-tou.md)
-##### [迁移经典策略](active-directory-conditional-access-migration.md)
+##### [迁移经典策略](conditional-access/policy-migration.md)
 ##### [设置 VPN 连接](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/always-on-vpn-deploy)
 ##### [设置 SharePoint 和 Exchange Online](active-directory-conditional-access-no-modern-authentication.md)
 ##### [补救方法](active-directory-conditional-access-device-remediation.md)
 #### [技术参考](active-directory-conditional-access-technical-reference.md)
-#### [常见问题](active-directory-conditional-faqs.md)
+#### [常见问题](conditional-access/faqs.md)
 
 ### 基于证书的身份验证
 #### [Android](active-directory-certificate-based-authentication-android.md)
