@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Identity
-ms.date: 07/12/2017
+ms.date: 07/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1a6fe4fc7fd5f47bfd4bc4d9168f76c31c78b47b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 20c43669b9da24cea4b0b552a86ec7d5a77dc5a7
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34592470"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264505"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect：从旧版升级到最新版本
 本主题介绍可将 Azure Active Directory (Azure AD) Connect 安装升级到最新版本的不同方法。 建议使用最新版本的 Azure AD Connect。 进行重大配置更改时，也可以使用[交叉迁移](#swing-migration)部分所述的步骤。
@@ -29,7 +29,7 @@ ms.locfileid: "34592470"
 
 可以采用几种不同的策略来升级 Azure AD Connect。
 
-| 方法 | 说明 |
+| 方法 | Description |
 | --- | --- |
 | [自动升级](active-directory-aadconnect-feature-automatic-upgrade.md) |对于使用快速安装的客户，这是最容易的方法。 |
 | [就地升级](#in-place-upgrade) |如果只有一台服务器，可在该服务器上就地升级安装。 |
@@ -130,6 +130,38 @@ ms.locfileid: "34592470"
    > 请务必尽早执行必需的同步步骤。 可使用 Synchronization Service Manager 手动执行这些步骤，或使用 Set-ADSyncSchedulerConnectorOverride cmdlet 重新添加替代。
 
 若要在任意连接器上添加完全导入和完全同步替代，请运行以下 cmdlet：`Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
+
+## <a name="troubleshooting"></a>故障排除
+以下部分包含故障排除内容以及在遇到 Azure AD Connect 升级问题时可以使用的信息。
+
+### <a name="azure-active-directory-connector-missing-error-during-azure-ad-connect-upgrade"></a>Azure AD Connect 升级期间，发生 Azure Active Directory 连接器丢失错误
+
+如果从以前的版本升级 Azure AD Connect，可能在升级前期发生以下错误 
+
+![错误](./media/active-directory-aadconnect-upgrade-previous-version/error1.png)
+
+此错误发生的原因是当前 Azure AD Connect 配置中不存在标识符为 b891884f-051e-4a83-95af-2544101c9083 的 Azure Active Directory 连接器。 若要验证此情况，打开 PowerShell 窗口并运行 cmdlet `Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083`
+
+```
+PS C:\> Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083
+Get-ADSyncConnector : Operation failed because the specified MA could not be found.
+At line:1 char:1
++ Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ReadError: (Microsoft.Ident...ConnectorCmdlet:GetADSyncConnectorCmdlet) [Get-ADSyncConne
+   ctor], ConnectorNotFoundException
+    + FullyQualifiedErrorId : Operation failed because the specified MA could not be found.,Microsoft.IdentityManageme
+   nt.PowerShell.Cmdlet.GetADSyncConnectorCmdlet
+
+```
+
+PowerShell cmdlet 将报告错误“找不到指定的 MA”。
+
+此错误发生的原因是当前 Azure AD Connect 配置不支持升级。 
+
+若要安装较新版本的 Azure AD Connect：关闭 Azure AD Connect 向导，卸载现有的 Azure AD Connect 并执行较新版本的 Azure AD Connect 的全新安装。
+
+
 
 ## <a name="next-steps"></a>后续步骤
 了解有关[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。

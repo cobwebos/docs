@@ -3,16 +3,17 @@ title: Azure 页 Blob 的独特功能 | Microsoft Docs
 description: 概述了 Azure 页 Blob 及其优势，包括用例和示例脚本。
 services: storage
 author: anasouma
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: wielriac
-ms.openlocfilehash: 79590e1987ee29ca06f9fb103f548518b2c1c57e
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.component: blobs
+ms.openlocfilehash: a215771b0126e9048b7d9da4ed1d6073c8e960a4
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39266770"
 ---
 # <a name="unique-features-of-azure-page-blobs"></a>Azure 页 Blob 的独特功能
 
@@ -41,7 +42,7 @@ Azure 页 Blob 的重要功能包括 REST 接口、基础存储持久性，以�
 ![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure1.png)
 
 #### <a name="creating-an-empty-page-blob-of-a-specified-size"></a>创建指定大小的空页 Blob
-为了创建页 Blob，让我们先创建一个 **CloudBlobClient** 对象，其中包含用于访问存储帐户（图 1 中的 *pbaccount*）的 Blob 存储的基 URI；另外创建 **StorageCredentialsAccountAndKey** 对象，如以下示例所示。 然后，该示例展示了如何创建对 **CloudBlobContainer** 对象的引用，然后创建容器 (*testvhds*)（如果它尚未存在）。 然后，使用 **CloudBlobContainer** 对象，通过指定要访问的页 Blob 名称 (os4.vhd)，来创建对 **CloudPageBlob** 对象的引用。 若要创建页 Blob，请调用 [CloudPageBlob.Create](/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.create?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_Create_System_Int64_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) 并传入要创建的 blob 的最大大小。 *blobSize* 必须是 512 字节的倍数。
+为了创建页 Blob，让我们先创建一个 **CloudBlobClient** 对象，其中包含用于访问存储帐户（图 1 中的 *pbaccount*）的 Blob 存储的基 URI；另外创建 **StorageCredentialsAccountAndKey** 对象，如以下示例所示。 然后，该示例展示了如何先创建对 CloudBlobContainer 对象的引用，再创建容器 (testvhds)（如果它尚未存在）。 然后，使用 **CloudBlobContainer** 对象，通过指定要访问的页 Blob 名称 (os4.vhd)，来创建对 **CloudPageBlob** 对象的引用。 若要创建页 Blob，请调用 [CloudPageBlob.Create](/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.create?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_Create_System_Int64_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) 并传入要创建的 blob 的最大大小。 *blobSize* 必须是 512 字节的倍数。
 
 ```csharp
 using Microsoft.WindowsAzure.StorageClient;
@@ -121,7 +122,7 @@ foreach (PageRange range in pageRanges)
 除了丰富的 REST API 以外，页 Blob 还提供共享访问、持久性和增强的安全性。 后续的篇幅将更详细地介绍这些优势。 
 
 ### <a name="concurrent-access"></a>并发访问
-页 Blob REST API 及其租赁机制可让应用程序从多个客户端访问页 Blob。 例如，假设你需要构建一个要与多个用户共享存储对象的分布式云服务。 该服务可能是向多个用户提供大型图像集合的 Web 应用程序。 实现此目的的方法之一是使用包含附加磁盘的 VM。 此方法的弊端包括：(i) 存在只能将一个磁盘附加到一个 VM 的约束，因此限制了可伸缩性和灵活性，并增大了风险。 如果该 VM 或其上运行的服务出现问题，则由于租赁机制，只能在租约过期或中断之后，才能访问图像；(ii) 使用 IaaS VM 会产生额外的成本。 
+页 Blob REST API 及其租赁机制可让应用程序从多个客户端访问页 Blob。 例如，假设你需要构建一个要与多名用户共享存储对象的分布式云服务。 该服务可能是向多个用户提供大型图像集合的 Web 应用程序。 实现此目的的方法之一是使用包含附加磁盘的 VM。 此方法的弊端包括：(i) 存在只能将一个磁盘附加到一个 VM 的约束，因此限制了可伸缩性和灵活性，并增大了风险。 如果该 VM 或其上运行的服务出现问题，则由于租赁机制，只能在租约过期或中断之后，才能访问图像；(ii) 使用 IaaS VM 会产生额外的成本。 
 
 一种替代做法是直接通过 Azure 存储 REST API 使用页 Blob。 使用此方法不会产生高昂的 IaaS VM 使用成本；可直接从多个客户端访问页 Blob，因此获得完全的灵活性；不需要附加/分离磁盘，因此简化了经典部署模型；可消除 VM 出现问题的风险。 此外，在随机读/写操作方面，此方法提供的性能级别与使用磁盘时相同
 

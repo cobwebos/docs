@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 7/24/2018
+ms.date: 7/31/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 0376fc3eb3ad0b98f1d98ecd35683b08e08090da
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: a43b70d2ce7a8205903fb877ea056dea88ac8bb5
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248090"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389603"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>将 Azure 监视数据流式传输到事件中心以便外部工具使用
 
@@ -76,7 +76,7 @@ Azure 资源将发出两种类型的监视数据：
 使用资源诊断设置将两种类型的数据发送到事件中心。 [按照本指南](./monitoring-stream-diagnostic-logs-to-event-hubs.md)在特定资源上设置资源诊断设置。 在要从其收集日志的每个资源上设置资源诊断设置。
 
 > [!TIP]
-> 可使用 Azure 策略，[在策略规则中使用 DeployIfNotExists 效果](../azure-policy/policy-definition.md#policy-rule)，确保特定范围内的每个资源始终设置了诊断设置。 DeployIfNotExists 现仅支持内置策略。
+> 可使用 Azure Policy，[在策略规则中使用 DeployIfNotExists 效果](../azure-policy/policy-definition.md#policy-rule)，确保特定范围内的每个资源始终设置了诊断设置。 DeployIfNotExists 现仅支持内置策略。
 
 ## <a name="how-do-i-set-up-guest-os-monitoring-data-to-be-streamed-to-an-event-hub"></a>如何将来宾 OS 监视数据设置为流式传输到事件中心？
 
@@ -113,6 +113,7 @@ Azure 资源将发出两种类型的监视数据：
     1. [适用于 Splunk 的 Azure Monitor 加载项](https://splunkbase.splunk.com/app/3534/)可在 Splunkbase 中找到，它是一个开源项目。 [文档见此处](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)。
     2. 如果无法在 Splunk 实例中安装加载项（例如， 如果使用代理或在 Splunk Cloud 上运行），可以使用[此函数（由事件中心中的新消息触发）](https://github.com/Microsoft/AzureFunctionforSplunkVS)将这些事件转发到 Splunk HTTP 事件收集器。
 * **SumoLogic** - 将 SumoLogic 设置为使用来自事件中心的数据的说明[见此处](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)
+* Syslog 服务器 - 如果要将 Azure Monitor 数据直接流式传输到 syslog 服务器，可查看[此 GitHub 存储库](https://github.com/miguelangelopereira/azuremonitor2syslog/)。
 
 ## <a name="next-steps"></a>后续步骤
 * [将活动日志存档到存储帐户](monitoring-archive-activity-log.md)

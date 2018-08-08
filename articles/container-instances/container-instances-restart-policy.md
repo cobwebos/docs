@@ -1,21 +1,21 @@
 ---
-title: 在 Azure 容器实例中运行容器化任务
+title: 使用重启策略在 Azure 容器实例中运行容器化任务
 description: 了解如何使用 Azure 容器实例来执行一直要运行到完成的任务，例如生成、测试渲染作业或制作其映像。
 services: container-instances
 author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/16/2017
+ms.date: 07/26/2018
 ms.author: marsma
-ms.openlocfilehash: 3bbe3e891423b6ad62a1d1093daef304206f3d76
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: dd411ff38411c71cce2a8a63cc453c34e665a385
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32167123"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39262729"
 ---
-# <a name="run-a-containerized-task-in-azure-container-instances"></a>在 Azure 容器实例中运行容器化任务
+# <a name="run-containerized-tasks-with-restart-policies"></a>使用重启策略运行容器化任务
 
 在 Azure 容器实例中部署容器的简便性和速度，使该服务成了可用于执行一次性任务（例如，在容器实例中生成、测试渲染作业并制作其映像）的引人注目的平台。
 
@@ -27,7 +27,7 @@ ms.locfileid: "32167123"
 
 在 Azure 容器实例中创建容器时，可以指定三个重启策略设置中的一个。
 
-| 重启策略   | 说明 |
+| 重启策略   | Description |
 | ---------------- | :---------- |
 | `Always` | 始终重启容器组中的容器。 如果在创建容器时未指定重启策略，则会应用此**默认**设置。 |
 | `Never` | 永远不重启容器组中的容器。 容器最多运行一次。 |

@@ -14,22 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 06/25/2018
 ms.author: fryu
-ms.openlocfilehash: 6c313b6015a8a6dcc4ca5befb5fef70b047d0410
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 232af6ec08152d18db86a7b6373da0d281a74a91
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866519"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39262511"
 ---
 # <a name="enable-secure-tls-for-azure-storage-client"></a>为 Azure 存储客户端启用安全 TLS
 
-如果你在使用 Azure 存储时需要根据最新符合性和安全性要求审核你的服务，系统会将 SSL 1.0、2.0、3.0 和 TLS 1.0 识别为不合规的通信协议。
-
-我们已发现 SSL 1.0、2.0 和 3.0 易受攻击。 RFC 已将其禁止。 使用不安全的分组加密（DES CBC 和 RC2 CBC）和流加密 (RC4) 时，TLS 1.0 会变得不安全。 PCI 委员会还建议迁移到更高的 TLS 版本。 有关详细信息，可以参阅[传输层安全性 (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)。
+传输层安全性 (TLS) 和安全套接字层 (SSL) 是提供计算机网络通信安全的加密协议。 我们已发现 SSL 1.0、2.0 和 3.0 易受攻击。 RFC 已将其禁止。 使用不安全的分组加密（DES CBC 和 RC2 CBC）和流加密 (RC4) 时，TLS 1.0 会变得不安全。 PCI 委员会还建议迁移到更高的 TLS 版本。 有关详细信息，可以参阅[传输层安全性 (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)。
 
 Azure 存储自 2015 年以来已停止使用 SSL 3.0，并在公共 HTTPs 终结点上使用 TLS 1.2，但为了向后兼容性仍支持 TLS 1.0 和 TLS 1.1。
 
-为了确保以安全且合规的方式连接到 Azure 存储，需要在发送请求以操作 Azure 存储服务之前在客户端中启用 TLS 1.2。
+为了确保以安全且符合规定的方式连接到 Azure 存储，需要在发送请求以操作 Azure 存储服务之前在客户端中启用 TLS 1.2 或更高版本。
 
 ## <a name="enable-tls-12-in-net-client"></a>在 .NET 客户端中启用 TLS 1.2
 
@@ -86,4 +84,5 @@ Fiddler 可以用于验证是否实际使用了 TLS 1.2。 打开 Fiddler 以开
 ## <a name="see-also"></a>另请参阅
 
 * [传输层安全性 (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)
+* [TLS 上的 PCI 符合性](https://blog.pcisecuritystandards.org/migrating-from-ssl-and-early-tls)
 * [在 Java 客户端中启用 TLS](https://www.java.com/en/configure_crypto.html)

@@ -3,27 +3,26 @@ title: Azure 磁盘加密常见问题解答 | Microsoft Docs
 description: 本文提供有关适用于 Windows 和 Linux IaaS VM 的 Microsoft Azure 磁盘加密的常见问题解答。
 services: security
 documentationcenter: na
-author: DevTiw
-manager: avibm
-editor: barclayn
+author: mestew
+manager: MBaldwin
 ms.assetid: 7188da52-5540-421d-bf45-d124dee74979
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/27/2018
-ms.author: barclayn
-ms.openlocfilehash: aa2278e7d32147d75b8ca0241a39a9fed6df41c8
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.date: 07/30/2018
+ms.author: mstewart
+ms.openlocfilehash: 98b8883a5ab0096102ab7daf90b5b2791a6f7e41
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266876"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389569"
 ---
 # <a name="azure-disk-encryption-faq"></a>Azure 磁盘加密 FAQ
 
-本文提供有关适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密的常见问题解答 (FAQ)。 有关此服务的详细信息，请参阅[适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)。
+本文提供有关适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密的常见问题解答 (FAQ)。 有关此服务的详细信息，请参阅[适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密](azure-security-disk-encryption-overview.md)。
 
 ## <a name="where-is-azure-disk-encryption-in-general-availability-ga"></a>哪里有正式发布版 (GA) 的 Azure 磁盘加密？
 
@@ -31,17 +30,18 @@ ms.locfileid: "36266876"
 
 ## <a name="what-user-experiences-are-available-with-azure-disk-encryption"></a>Azure 磁盘加密提供哪些用户体验？
 
-Azure 磁盘加密正式版支持 Azure 资源管理器模板、Azure PowerShell 和 Azure CLI。 以此提供了很多的灵活性。 可以通过三个不同的选项为 IaaS VM 启用磁盘加密。 有关 Azure 磁盘加密中提供的用户体验详细信息和分步指南，请参阅 [Azure 磁盘加密部署方案和体验](azure-security-disk-encryption.md#disk-encryption-deployment-scenarios-and-user-experiences)。
+Azure 磁盘加密正式版支持 Azure 资源管理器模板、Azure PowerShell 和 Azure CLI。 多种用户体验提供了灵活性。 可以通过三个不同的选项为 IaaS VM 启用磁盘加密。 有关 Azure 磁盘加密中提供的用户体验详细信息和分步指南，请参阅[启用适用于 Windows 的 Azure 磁盘加密](azure-security-disk-encryption-windows.md)和[启用适用于 Linux 的 Azure 磁盘加密](azure-security-disk-encryption-linux.md)。
 
 ## <a name="how-much-does-azure-disk-encryption-cost"></a>Azure 磁盘加密如何收费？
 
 使用 Azure 磁盘加密来加密 VM 磁盘是免费的，但使用与 Azure Key Vault 相关联的内容则会产生费用。 有关 Azure Key Vault 成本的详细信息，请参阅 [Key Vault 定价](https://azure.microsoft.com/pricing/details/key-vault/)页面。
 
+
 ## <a name="which-virtual-machine-tiers-does-azure-disk-encryption-support"></a>Azure 磁盘加密支持哪些虚拟机层？
 
 Azure 磁盘加密可在标准层 VM 上使用，包括 [A、D、DS、G、GS 和 F](https://azure.microsoft.com/pricing/details/virtual-machines/) 系列 IaaS VM。 还可用于使用高级存储的 VM。 它不适用于基本层 VM。
 
-## <a name="what-linux-distributions-does-azure-disk-encryption-support"></a>Azure 磁盘加密支持哪些 Linux 分发版？
+## <a name="bkmk_LinuxOSSupport"></a>Azure 磁盘加密支持哪些 Linux 分发版？
 
 在以下 Linux 服务器分发和版本上支持 Azure 磁盘加密：
 
@@ -71,11 +71,12 @@ Azure 磁盘加密可在标准层 VM 上使用，包括 [A、D、DS、G、GS 和
 | SLES | Priority:11-SP4 | 数据磁盘 |
 | SLES | 11 SP4 | 数据磁盘 |
 
-*__RHEL 支持将 ADE 用于数据磁盘。当前的 ADE 实现适用于 OS 磁盘，但当前并非联合支持。Microsoft 和 Red Hat 都在努力实现联合支持解决方案。在此期间，可以在[此处](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)参考用于 Linux OS 磁盘加密的 ADE 白皮书。__
+
+*__RHEL 支持将 ADE 用于数据磁盘。当前的 ADE 实现适用于 OS 磁盘，但当前并非联合支持。Microsoft 和 Red Hat 都在努力实现联合支持解决方案。在此期间，可以参阅文章[适用于 Linux 的 Azure 磁盘加密](azure-security-disk-encryption-linux.md)。__
 
 ## <a name="how-can-i-start-using-azure-disk-encryption"></a>如何开始使用 Azure 磁盘加密？
 
-若要开始使用，请参阅[适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)白皮书。
+若要开始，请参阅 [Azure 磁盘加密概述](azure-security-disk-encryption-overview.md)。
 
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>是否可以使用 Azure 磁盘加密来加密引导卷和数据卷？
 
@@ -83,19 +84,19 @@ Azure 磁盘加密可在标准层 VM 上使用，包括 [A、D、DS、G、GS 和
 
 ## <a name="does-azure-disk-encryption-allow-you-to-bring-your-own-key-byok-capability"></a>Azure 磁盘加密是否支持自带秘钥 (BYOK) 的功能？
 
-是的，可以提供自己的密钥加密密钥。 这些密钥在 Azure Key Vault（Azure 磁盘加密的密钥存储）中受保护。 有关密钥加密密钥支持方案的详细信息，请参阅 [Azure 磁盘加密部署方案和体验](azure-security-disk-encryption.md#disk-encryption-deployment-scenarios-and-user-experiences)。
+是的，可以提供自己的密钥加密密钥。 这些密钥在 Azure Key Vault（Azure 磁盘加密的密钥存储）中受保护。 有关密钥加密密钥支持方案的详细信息，请参阅 [Azure 磁盘加密先决条件](azure-security-disk-encryption-prerequisites.md)。
 
 ## <a name="can-i-use-an-azure-created-key-encryption-key"></a>是否可以使用 Azure 创建的密钥加密密钥？
 
-是的，可以使用 Azure Key Vault 来生成密钥加密密钥供 Azure 磁盘加密使用。 这些密钥在 Azure Key Vault（Azure 磁盘加密的密钥存储）中受保护。 有关密钥加密密钥支持方案的详细信息，请参阅 [Azure 磁盘加密部署方案和体验](azure-security-disk-encryption.md#disk-encryption-deployment-scenarios-and-user-experiences)。
+是的，可以使用 Azure Key Vault 来生成密钥加密密钥供 Azure 磁盘加密使用。 这些密钥在 Azure Key Vault（Azure 磁盘加密的密钥存储）中受保护。 有关密钥加密密钥的详细信息，请参阅 [Azure 磁盘加密先决条件](azure-security-disk-encryption-prerequisites.md)。
 
 ## <a name="can-i-use-an-on-premises-key-management-service-or-hsm-to-safeguard-the-encryption-keys"></a>是否可以使用本地密钥管理服务或 HSM 来保护加密密钥？
 
-无法使用本地密钥管理服务或 HSM 来配合 Azure 磁盘加密保护加密密钥。 只能使用 Azure Key Vault 服务来保护加密密钥。 有关密钥加密密钥支持方案的详细信息，请参阅 [Azure 磁盘加密部署方案和体验](azure-security-disk-encryption.md#disk-encryption-deployment-scenarios-and-user-experiences)。
+无法使用本地密钥管理服务或 HSM 来配合 Azure 磁盘加密保护加密密钥。 只能使用 Azure Key Vault 服务来保护加密密钥。 有关密钥加密密钥支持方案的详细信息，请参阅 [Azure 磁盘加密先决条件](azure-security-disk-encryption-prerequisites.md)。
 
 ## <a name="what-are-the-prerequisites-to-configure-azure-disk-encryption"></a>配置 Azure 磁盘加密的先决条件是什么？
 
-必须要有一个 PowerShell 脚本。 通过此脚本，可以创建 Azure Active Directory 应用程序、创建新的 Key Vault 或设置现有 Key Vault 进行磁盘加密访问，以启用加密并保护机密和密钥。 有关密钥加密密钥支持方案的详细信息，请参阅 [Azure 磁盘加密先决条件和部署方案与体验](azure-security-disk-encryption.md#prerequisites)。
+Azure 磁盘加密具有先决条件。 请参阅 [Azure 磁盘加密先决条件](azure-security-disk-encryption-prerequisites.md)一文，创建 Azure Active Directory 应用程序、创建新的 Key Vault 或设置现有 Key Vault 进行磁盘加密访问，以启用加密并保护机密和密钥。 有关密钥加密密钥支持方案的详细信息，请参阅 [Azure 磁盘加密概述](azure-security-disk-encryption-overview.md)。
 
 ## <a name="where-can-i-get-more-information-on-how-to-use-powershell-for-configuring-azure-disk-encryption"></a>在哪里可以获得有关如何使用 PowerShell 配置 Azure 磁盘加密的详细信息？
 
@@ -124,7 +125,7 @@ Azure 磁盘加密可在标准层 VM 上使用，包括 [A、D、DS、G、GS 和
 * 加密（可能需要多个小时或甚至几天时间，具体取决于 VM 的特征和任何附加数据磁盘的大小）
 * 根据需要自定义软件，并将其添加到映像。
 
-如果此工作流不可用，可在平台存储帐户层使用[存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) (SSE)，作为通过 dm-crypt 实现完整磁盘加密的一个替代方法。
+如果此工作流不可用，可在平台存储帐户层使用[存储服务加密](../storage/common/storage-service-encryption.md) (SSE)，作为通过 dm-crypt 实现完整磁盘加密的一个替代方法。
 
 ## <a name="what-is-the-disk-bek-volume-or-mntazurebekdisk"></a>磁盘“Bek 卷”或“/mnt/azure_bek_disk”是什么？
 

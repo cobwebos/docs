@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/29/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 8f3d57f8f1f3631421618e31e943606a16e6bf5b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a07f1622f2d41d105c79fa5354d97aa079567e62
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34670013"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37935777"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>支持的操作系统和驱动程序
 
@@ -37,5 +37,5 @@ Microsoft 为用作虚拟工作站或用于虚拟应用程序的 NV 系列 VM，
 
 | OS | 驱动程序 |
 | -------- |------------- |
-| Windows Server 2016<br/><br/>Windows 10 | [GRID 6.1 (391.58)](https://go.microsoft.com/fwlink/?linkid=836843) (.exe) |
-| Windows Server 2012 R2 | [GRID 6.1 (391.58)](https://go.microsoft.com/fwlink/?linkid=836844) (.exe)  |
+| Windows Server 2016<br/><br/>Windows 10 | [GRID 6.2 (391.81)](https://go.microsoft.com/fwlink/?linkid=836843) (.exe) |
+| Windows Server 2012 R2 | [GRID 6.2 (391.81)](https://go.microsoft.com/fwlink/?linkid=836844) (.exe)  |

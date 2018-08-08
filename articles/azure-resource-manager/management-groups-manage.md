@@ -10,24 +10,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/09/2018
+ms.date: 07/31/2018
 ms.author: rithorn
-ms.openlocfilehash: 730f79ce0a70da92dbb6332ad824b17e6c2327ff
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fab26fec44b671a9f779b114c1521bc8142d9427
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38488372"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389392"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>使用管理组管理资源
 
-管理组是一些容器，可以帮助跨多个订阅管理访问权限、策略和符合性。 可以更改、删除和管理这些容器来构建可与 [Azure 策略](../azure-policy/azure-policy-introduction.md)和 [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 配合使用的层次结构。 有关管理组的详细信息，请参阅[使用 Azure 管理组来组织资源](management-groups-overview.md)。
+管理组是一些容器，可以帮助跨多个订阅管理访问权限、策略和符合性。 可以更改、删除和管理这些容器来构建可与 [Azure Policy](../azure-policy/azure-policy-introduction.md) 和 [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 配合使用的层次结构。 有关管理组的详细信息，请参阅[使用 Azure 管理组整理资源](management-groups-overview.md)。
 
-管理组功能目前以公共预览版提供。 若要开始使用管理组，请登录到 [Azure 门户](https://portal.azure.com)，也可以使用 [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview)、[Azure CLI](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az_extension_list_available) 或 [REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview/2018-01-01-preview) 来管理管理组。
+要更改管理组，必须在管理组中拥有“所有者”或“参与者”角色。 要查看自己拥有哪些权限，请选择管理组，然后选择“IAM”。 有关 RBAC 角色的详细信息，请参阅[使用 RBAC 管理访问权限和权限](../role-based-access-control/overview.md)。
 
-若要对管理组进行更改，必须在管理组中拥有“所有者”或“参与者”角色。 若要查看自己拥有哪些权限，请选择管理组，然后选择“IAM”。 有关 RBAC 角色的详细信息，请参阅[使用 RBAC 管理访问权限和权限](../role-based-access-control/overview.md)。
-
-[!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="change-the-name-of-a-management-group"></a>更改管理组的名称
 
@@ -80,6 +78,7 @@ az account management-group update --name Contoso --display-name "Contoso Group"
 3. 选择要删除的管理组。
 4. 选择“删除”。
     - 如果该图标已禁用，将鼠标指针悬停在该图标上可显示原因。
+
     ![删除组](media/management-groups/delete.png)
 5. 此时会打开一个窗口，让你确认是否要删除该管理组。
 

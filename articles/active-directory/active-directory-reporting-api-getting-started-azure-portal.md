@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 05/07/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ce8630f5718a849f460b372d9e15b03902ac2117
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 89562e6a2bfb977585cec1925a5f306c69c3d1e8
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159673"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390664"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory 报告 API 入门
 
@@ -43,8 +43,6 @@ Azure Active Directory 向你提供了各种[报告](active-directory-reporting-
 3. 授予权限
 4. 收集配置设置
 
-
- 
 有关详细说明，请参阅[访问 Azure Active Directory 报告 API 的先决条件](active-directory-reporting-api-prerequisites-azure-portal.md)。
 
 ## <a name="apis-with-graph-explorer"></a>Graph 浏览器的 API
@@ -55,11 +53,11 @@ Azure Active Directory 向你提供了各种[报告](active-directory-reporting-
 
 ![修改权限 UI](./media/active-directory-reporting-api-getting-started-azure-portal/modify-permissions.png)
 
-## <a name="recommendation"></a>建议 
+## <a name="use-certificates-to-access-the-azure-ad-reporting-api"></a>使用证书访问 Azure AD 报告 API 
 
-如果你打算检索报告数据而无需用户干预，应考虑使用具有证书的 Azure AD Reporting API。
+如果打算检索报告数据而不用用户干预，应考虑使用具有证书的 Azure AD 报告 API。
 
-有关详细说明，请参阅[使用具有证书的 Azure AD Reporting API 获取数据](active-directory-reporting-api-with-certificates.md)。
+有关详细说明，请参阅[使用具有证书的 Azure AD 报告 API 获取数据](active-directory-reporting-api-with-certificates.md)。
 
 
 ## <a name="explore"></a>探究
@@ -67,17 +65,13 @@ Azure Active Directory 向你提供了各种[报告](active-directory-reporting-
 获得报告 API 的第一印象：
    
    - [使用审核 API 的示例](active-directory-reporting-api-audit-samples.md) 
- 
    - [使用登录活动报告 API 的示例](active-directory-reporting-api-sign-in-activity-samples.md)
 
 
-## <a name="customize"></a>自定义  
+## <a name="next-steps"></a>后续步骤
 
-创建自己的解决方案： 
-   
-   - [使用审核 API 参考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-
-   - [使用登录活动报告 API 参考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
-
+ * [审核 API 参考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
+ * [登录活动报告 API 参考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+ * [排查 Azure AD 报告 API 中的错误](active-directory-reporting-troubleshoot-graph-api.md)
 
 

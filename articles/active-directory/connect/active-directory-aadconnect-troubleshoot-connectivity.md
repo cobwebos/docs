@@ -1,4 +1,4 @@
-﻿---
+---
 title: Azure AD Connect：排查连接问题 | Microsoft Docs
 description: 介绍如何使用 Azure AD Connect 排查连接问题。
 services: active-directory
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d30006fae8a0d495909b9a53cf0bffb5cc824433
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 793a65347552782c4a3482b29d10e4c94ef85663
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38295390"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263225"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>使用 Azure AD Connect 排查连接问题
 本文说明 Azure AD Connect 与 Azure AD 之间的连接的工作方式，以及如何排查连接问题。 这些问题很有可能出现在包含代理服务器的环境中。
@@ -42,7 +42,7 @@ Azure AD Connect 使用现代身份验证（使用 ADAL 库）来进行身份验
 
 针对这些 URL，下表列出了连接到 Azure AD 时最起码需要的配置。 此列表未包含任何可选功能，例如密码写回或 Azure AD Connect Health。 本文中描述这些功能是为了帮助排查初始配置问题。
 
-| 代码 | 端口 | 说明 |
+| 代码 | 端口 | Description |
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |用于下载 CRL 列表。 |
 | \*.verisign.com |HTTP/80 |用于下载 CRL 列表。 |
@@ -52,7 +52,7 @@ Azure AD Connect 使用现代身份验证（使用 ADAL 库）来进行身份验
 | \*.microsoftonline.com |HTTPS/443 |用于配置 Azure AD 目录并导入/导出数据。 |
 
 ## <a name="errors-in-the-wizard"></a>向导中的错误
-安装向导使用两种不同的安全上下文。 在“连接到 Azure AD”页上，使用的是当前登录的用户。 在“配置”页上，改为[运行同步引擎服务的帐户](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account)。 如果出现问题，该问题很有可能已显示在向导中的“连接到 Azure AD”页上，因为代理配置是全局性的。
+安装向导使用两种不同的安全上下文。 在“连接到 Azure AD”页上，使用的是当前登录的用户。 在“配置”页上，改为[运行同步引擎服务的帐户](active-directory-aadconnect-accounts-permissions.md#adsync-service-account)。 如果出现问题，该问题很有可能已显示在向导中的“连接到 Azure AD”页上，因为代理配置是全局性的。
 
 以下问题是在安装向导中遇到的最常见错误。
 
@@ -68,7 +68,7 @@ Azure AD Connect 使用现代身份验证（使用 ADAL 库）来进行身份验
 ![使用 Microsoft 帐户](./media/active-directory-aadconnect-troubleshoot-connectivity/unknownerror.png)
 
 ### <a name="the-mfa-endpoint-cannot-be-reached"></a>无法访问 MFA 终结点
-如果无法访问终结点 **https://secure.aadcdn.microsoftonline-p.com** ，并且全局系统管理员启用了 MFA，则会出现此错误。  
+如果无法访问终结点 **https://secure.aadcdn.microsoftonline-p.com**，并且全局系统管理员启用了 MFA，则会出现此错误。  
 ![nomachineconfig](./media/active-directory-aadconnect-troubleshoot-connectivity/nomicrosoftonlinep.png)
 
 * 如果看到此错误，请检查是否已将 **secure.aadcdn.microsoftonline-p.com** 终结点添加到代理。
@@ -161,28 +161,28 @@ Azure AD Connect 向 Azure AD 发送导出请求时，在生成响应之前，Az
 ### <a name="user-password-expired"></a>用户密码已过期
 凭据已过期。 请更改密码。
 
-### <a name="authorizationfailure"></a>AuthorizationFailure
-未知问题。
+### <a name="authorization-failure"></a>授权失败
+未能授权用户在 Azure AD 中执行操作。
 
 ### <a name="authentication-cancelled"></a>身份验证已取消
 多重身份验证 (MFA) 质询已取消。
 
-### <a name="connecttomsonline"></a>ConnectToMSOnline
+### <a name="connect-to-ms-online-failed"></a>未能连接到 MS Online
 身份验证成功，但 Azure AD PowerShell 出现身份验证问题。
 
-### <a name="azurerolemissing"></a>AzureRoleMissing
-身份验证成功。 不是全局管理员。
+### <a name="azure-ad-global-admin-role-needed"></a>需要 Azure AD 全局管理员角色
+用户已成功完成身份验证。 但用户未分配有全局管理员角色。 此处介绍[如何将全局管理员角色分配给](../users-groups-roles/directory-assign-admin-roles.md)用户。 
 
-### <a name="privilegedidentitymanagement"></a>PrivilegedIdentityManagement
+### <a name="privileged-identity-management-enabled"></a>Privileged Identity Management 已启用
 身份验证成功。 已启用 Privileged Identity Management，但你目前不是全局管理员。 有关详细信息，请参阅 [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md)。
 
-### <a name="companyinfounavailable"></a>CompanyInfoUnavailable
+### <a name="company-information-unavailable"></a>公司信息不可用
 身份验证成功。 无法从 Azure AD 检索公司信息。
 
-### <a name="retrievedomains"></a>RetrieveDomains
+### <a name="domain-information-unavailable"></a>域信息不可用
 身份验证成功。 无法从 Azure AD 检索域信息。
 
-### <a name="unexpected-exception"></a>意外的异常
+### <a name="unspecified-authentication-failure"></a>身份验证失败，出现未知错误
 在安装向导中显示为“意外错误”。 如果尝试使用 **Microsoft 帐户**而不是**学校或组织**帐户，可能会发生这种错误。
 
 ## <a name="troubleshooting-steps-for-previous-releases"></a>旧版疑难解答步骤

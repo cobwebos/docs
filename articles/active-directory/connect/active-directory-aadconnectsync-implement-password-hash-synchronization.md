@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/20/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5d62eb4d5f43625b336ade68532cf734ef0cde6a
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: af9a2e47a5e91d9b32a787f8f40ba06b5a1596e7
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214687"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39265040"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步实现密码哈希同步
 本文提供将用户密码从本地 Active Directory 实例同步到基于云的 Azure Active Directory (Azure AD) 实例时所需的信息。
@@ -40,7 +40,7 @@ ms.locfileid: "39214687"
 
 此外，如果决定[使用 Active Directory 联合身份验证服务 (AD FS) 进行联合身份验证](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Configuring-AD-FS-for-user-sign-in-with-Azure-AD-Connect)，则可以选择性地设置密码哈希同步，作为在 AD FS 基础结构发生故障时的备用身份验证方式。
 
-密码哈希同步是由 Azure AD Connect 同步实现的目录同步功能的扩展。若要在环境中使用密码哈希同步，需要：
+密码哈希同步是由 Azure AD Connect 同步实现的目录同步功能的扩展。要在环境中使用密码哈希同步，需执行以下操作：
 
 * 安装 Azure AD Connect。  
 * 配置本地 Azure Active Directory 实例与 Azure Active Directory 实例之间的目录同步。
@@ -173,3 +173,4 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 ## <a name="next-steps"></a>后续步骤
 * [Azure AD Connect 同步：自定义同步选项](active-directory-aadconnectsync-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
+* [获取有关从 ADFS 迁移到密码哈希同步的分步部署计划](https://aka.ms/authenticationDeploymentPlan)

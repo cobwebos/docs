@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: raynew
-ms.openlocfilehash: 7900a02ba9112b910589d04850a4cd5d52e044d2
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 7ffcf5e3c7e6f0cb3d344b7d148b6024e8469eff
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249183"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263003"
 ---
 # <a name="assessment-calculations"></a>评估计算
 
@@ -38,11 +38,11 @@ Azure Migrate 检查本地 VM 的以下属性来确认 VM 是否可在 Azure 上
 
 **属性** | **详细信息** | **Azure 迁移就绪性状态**
 --- | --- | ---
-**启动类型** | Azure 支持启动类型为 BIOS（而非 UEFI）的 VM。 | 如果启动类型为 UEFI，则状态为 Auzre 有条件的就绪。
-**核心数** | 计算机中的内核数必须等于或小于 Azure VM 支持的最大内核数量 (32)。<br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的内核数以进行比较。 如果在评估设置中指定了舒适因子，则将已利用的内核数乘以此舒适因子。<br/><br/> 如果没有任何性能历史记录，Azure Migrate 将使用已分配的内核数，而不应用舒适因子。 | 如果内核数大于 32，则为未就绪。
-内存 | 计算机内存大小必须等于或小于 Azure VM 允许的最大内存（Azure M 系列 Standard_M128m&nbsp;<sup>2</sup> 上为 3892 GB）。 [了解详细信息](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-memory.md#m-series)。<br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的内存以进行比较。 如果指定了舒适因子，则将已利用的内存乘以此舒适因子。<br/><br/> 如果没有任何历史记录，将使用已分配的内存，而不应用舒适因子。<br/><br/> | 如果内存大小大于 448 GB，则为未就绪。
-**存储磁盘** | 分配的磁盘大小必须为 4 TB (4096 GB) 或更小。<br/><br/> 连接到计算机的磁盘（包括操作系统磁盘）数必须为 65 个或更少。 | 如果有任何磁盘的大小大于 4 TB，或计算机附加了超过 65 个磁盘，则为未就绪。
-**网络** | 连接到计算机的 NIC 数必须为 32 个或更少。 | 如果计算机有超过 32 个 NIC，则为未就绪
+**启动类型** | Azure 支持启动类型为 BIOS（而非 UEFI）的 VM。 | 如果启动类型为 UEFI，则状态为有条件的就绪。
+**核心数** | 计算机中的内核数必须等于或小于 Azure VM 支持的最大内核数量 (32)。<br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的内核数以进行比较。 如果在评估设置中指定了舒适因子，则将已利用的内核数乘以此舒适因子。<br/><br/> 如果没有任何性能历史记录，Azure Migrate 将使用已分配的内核数，而不应用舒适因子。 | 如果小于或等于限制，则状态为就绪。
+内存 | 计算机内存大小必须等于或小于 Azure VM 允许的最大内存（Azure M 系列 Standard_M128m&nbsp;<sup>2</sup> 上为 3892 GB）。 [了解详细信息](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-memory.md#m-series)。<br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的内存以进行比较。 如果指定了舒适因子，则将已利用的内存乘以此舒适因子。<br/><br/> 如果没有任何历史记录，将使用已分配的内存，而不应用舒适因子。<br/><br/> | 如果在限制范围内，则状态为就绪。
+**存储磁盘** | 分配的磁盘大小必须为 4 TB (4096 GB) 或更小。<br/><br/> 连接到计算机的磁盘（包括操作系统磁盘）数必须为 65 个或更少。 | 如果在限制范围内，则状态为就绪。
+**网络** | 连接到计算机的 NIC 数必须为 32 个或更少。 | 如果在限制范围内，则状态为就绪。
 
 ### <a name="guest-operating-system"></a>来宾操作系统
 除了 VM 属性，Azure Migrate 还会查看本地 VM 的来宾 OS 以确认该 VM 是否可在 Azure 上运行。

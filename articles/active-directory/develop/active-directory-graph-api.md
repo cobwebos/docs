@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 04/02/2018
 ms.author: mtillman
 ms.custom: aaddev
-ms.openlocfilehash: 4b4f698042f6688e3db484f7d96ccfb06c5cdd4f
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: eb7e77af86628be7f92de1caf3137ae829511d0a
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34158007"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263021"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory 图形 API
 > [!IMPORTANT]
@@ -59,8 +59,8 @@ Azure AD 图形 API 提供以下功能：
 ## <a name="scenarios"></a>方案
 Azure AD 图形 API 可实现许多应用程序方案。 以下方案最常见：
 
-* **业务线（单租户）应用程序**：在此方案中，一个企业开发人员为一个拥有 Office 365 订阅的组织工作。 该开发人员要构建一个 Web 应用程序，该应用程序可与 Azure AD 交互以执行为用户分配许可证等任务。 此任务需要访问 Azure AD 图形 API，因此该开发人员在 Azure AD 中注册了单租户应用程序，并为 Azure AD 图形 API 配置读取和写入权限。 然后，该应用程序被配置为使用自己的凭据或当前登录用户的凭据来获取调用 Azure AD 图形 API 所需的令牌。
-* **“软件即服务”应用程序（多租户）：** 在此方案中，独立软件供应商 (ISV) 要开发一个为使用 Azure AD 的其他组织提供用户管理功能的托管多租户 Web 应用程序。 这些功能需要访问目录对象，因此该应用程序需要调用 Azure AD 图形 API。 开发人员在 Azure AD 中注册该应用程序，将它配置为需要对 Azure AD 图形 API 的读取和写入权限，然后启用了外部访问，这样其他组织便可以同意在其目录中使用该应用程序。 当其他组织中的用户首次向该应用程序进行身份验证时，他们会看到一个同意对话框，该对话框包含应用程序请求的权限。 然后，授予许可将为该应用程序提供对用户目录中的 Azure AD 图形 API 的请求权限。 有关同意框架的详细信息，请参阅[同意框架概述](active-directory-integrating-applications.md)。
+* **业务线（单租户）应用程序**：在此方案中，一个企业开发人员为一个拥有 Office 365 订阅的组织工作。 开发人员将构建与 Azure AD 交互的 Web 应用程序，用于执行将许可证分配给用户等任务。 此任务需要访问 Azure AD 图形 API，因此开发人员在 Azure AD 中注册单租户应用程序，并为 Azure AD 图形 API 配置读取和写入权限。 然后，将应用程序配置为使用其自己的凭据或当前登录用户的凭据来获取调用 Azure AD 图形 API 所需的令牌。
+* **服务型软件应用程序（多租户）**：在此方案中，独立软件供应商 (ISV) 将开发一个托管多租户 Web 应用程序，该应用程序为使用 Azure AD 的其他组织提供用户管理功能。 这些功能需要访问目录对象，因此该应用程序需要调用 Azure AD 图形 API。 开发人员在 Azure AD 中注册该应用程序，将它配置为需要对 Azure AD 图形 API 的读取和写入权限，然后启用了外部访问，这样其他组织便可以同意在其目录中使用该应用程序。 当其他组织中的用户首次向该应用程序进行身份验证时，他们会看到一个同意对话框，该对话框包含应用程序请求的权限。 然后，授予许可将为该应用程序提供对用户目录中的 Azure AD 图形 API 的请求权限。 有关同意框架的详细信息，请参阅[同意框架概述](active-directory-integrating-applications.md)。
 
 ## <a name="see-also"></a>另请参阅
 [Azure AD 图形 API 快速入门指南](active-directory-graph-api-quickstart.md)

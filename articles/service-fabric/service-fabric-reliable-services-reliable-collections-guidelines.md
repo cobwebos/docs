@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 12/10/2017
 ms.author: mcoskun
-ms.openlocfilehash: 7a61fa9df5b5232c11f4a546ec5f050461c88e88
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 72091d592475e41f254ef7c3882e3d3fee0c491b
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211134"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389525"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Azure Service Fabric 中 Reliable Collections 的相关指导原则和建议
 本章节提供有关使用可靠状态管理器和 Reliable Collections 的指导原则。 目的是帮助用户避免常见的问题。
@@ -49,6 +49,7 @@ ms.locfileid: "34211134"
 * 针对辅助副本的读取操作可能会读取未提交仲裁的版本。
   这意味着从单个辅助副本读取的数据版本可能被错误处理。
   从主副本读取的数据始终是可靠的，绝不会被错误处理。
+* 应用程序在可靠集合中保留的数据的安全性/隐私性是用户决定，并受到存储管理的保护；即 操作系统磁盘加密可用于保护静态数据。  
 
 ### <a name="next-steps"></a>后续步骤
 * [使用 Reliable Collections](service-fabric-work-with-reliable-collections.md)

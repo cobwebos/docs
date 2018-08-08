@@ -16,12 +16,12 @@ ms.date: 07/12/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: e2b8b1f63e4c23c0beeaff6fd246fa2ba8afe106
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 6e0b00117c35cd5222c69e72819afb37f9ec14dd
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036745"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39265058"
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Azure AD 中的可选声明（预览版）
 
@@ -41,8 +41,8 @@ ms.locfileid: "39036745"
 
 | 帐户类型 | V1.0 终结点                      | V2.0 终结点  |
 |--------------|------------------------------------|----------------|
-| MSA          | 不适用 - 改用 RPS 票证 | 即将提供支持 |
-| AAD          | 支持                          | 支持      |
+| Microsoft 个人帐户  | 不适用 - 改用 RPS 票证 | 即将提供支持 |
+| Azure AD 帐户          | 支持                          | 支持      |
 
 ## <a name="standard-optional-claims-set"></a>标准的可选声明集
 下面列出了默认可对应用程序使用的可选声明集。  若要为应用程序添加自定义可选声明，请参阅下面的[目录扩展](active-directory-optional-claims.md#Configuring-custom-claims-via-directory-extensions)。 

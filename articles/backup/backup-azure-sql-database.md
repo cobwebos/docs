@@ -13,15 +13,15 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/19/2018
+ms.date: 7/30/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: 3d19b42e339e9776d0fdbbf7cfcfba07d69549ad
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 430490859e6d8a58a54eea267e0c3f16991f74c8
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249074"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364370"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>将 SQL Server 数据库备份到 Azure
 
@@ -258,7 +258,7 @@ Azure 备份会发现 SQL Server 实例上的所有数据库。 可根据备份�
 
     ![选择 VM 和数据库](./media/backup-azure-sql-database/registration-errors.png)
 
-## <a name="configure-backup-for-sql-server-databases"></a>配置 SQL Server 数据库的备份 
+## <a name="configure-backup-for-sql-server-databases"></a>配置 SQL Server 数据库的备份
 
 Azure 备份提供管理服务用于保护 SQL Server 数据库和管理备份作业。 管理和监视功能取决于恢复服务保管库。 
 
@@ -317,6 +317,9 @@ Azure 备份提供管理服务用于保护 SQL Server 数据库和管理备份�
 
 8. 在“选择备份策略”下拉列表中选择备份策略，然后选择“确定”。 有关如何创建备份策略的信息，请参阅[定义备份策略](backup-azure-sql-database.md#define-a-backup-policy)。
 
+   > [!NOTE]
+   > 在预览期间无法编辑备份策略。 如果需要列表以外的不同策略，则必须创建该策略。 若要详细了解如何新建备份策略，请参阅[定义备份策略](backup-azure-sql-database.md#define-a-backup-policy)部分。
+
     ![从列表中选择备份策略](./media/backup-azure-sql-database/select-backup-policy-steptwo.png)
 
     在“备份策略”菜单的“选择备份策略”下拉列表框中，可以： 
@@ -341,25 +344,32 @@ Azure 备份提供管理服务用于保护 SQL Server 数据库和管理备份�
 
 备份策略定义由备份创建时间和这些备份的保留时间长度构成的矩阵。 使用 Azure 备份来计划三种类型的 SQL 数据库备份：
 
-* 完整备份：完整数据库备份将备份整个数据库。 完整备份包含特定数据库或者文件组或文件集中的所有数据，以及用于恢复数据的足够日志。 每天最多可以触发一次完整备份。 可以选择每天或每周创建完整备份。 
+* 完整备份：完整数据库备份将备份整个数据库。 完整备份包含特定数据库或者文件组或文件集中的所有数据，以及足以用于恢复数据的日志。 每天最多可以触发一次完整备份。 可以选择每天或每周创建完整备份。 
 * 差异备份：差异备份基于最新的、以前的完整数据备份。 差异备份只捕获自完整备份以来发生更改的数据。 每天最多可以触发一次差异备份。 不能在同一天配置完整备份和差异备份。
 * 事务日志备份：日志备份可以实现时间点还原，精度可达到特定的秒。 最多可以配置为每隔 15 分钟创建事务日志备份。
 
-策略在恢复服务保管库级别创建。 多个保管库可以使用相同的备份策略，但必须向每个保管库应用该备份策略。 创建备份策略时，每日完整备份是默认设置。 可以添加差异备份，但仅在将完整备份配置为每周发生时，才能这样做。 以下过程说明如何为 Azure 虚拟机中的 SQL Server 实例创建备份策略。
+策略在恢复服务保管库级别创建。 多个保管库可以使用相同的备份策略，但必须向每个保管库应用该备份策略。 创建备份策略时，每日完整备份是默认设置。 可以添加差异备份，但仅在将完整备份配置为每周发生时，才能这样做。 以下过程说明如何为 Azure 虚拟机中的 SQL Server 实例创建备份策略。 
 
+> [!NOTE]
+> 在预览版中无法编辑备份策略。 必须新建一个包含所需详细信息的策略。  
+ 
 创建备份策略：
 
-1. 在“备份策略”菜单的“选择备份策略”下拉列表框中，选择“新建”。
+1. 在保护 SQL 数据库的恢复服务保管库中，单击“备份策略”，然后单击“添加”。 
 
-   ![创建新备份策略](./media/backup-azure-sql-database/create-new-backup-policy.png)
+   ![打开“新建备份策略”对话框](./media/backup-azure-sql-database/new-policy-workflow.png)
 
-    “备份策略”菜单显示新 SQL Server 备份策略所需的字段。
+   随即显示“添加”菜单。
 
-   ![新备份策略字段](./media/backup-azure-sql-database/blank-new-policy.png)
+2. 在“添加”菜单中单击“Azure VM 中的 SQL Server”。
 
-2. 在“策略名称”框中输入名称。
+   ![为新的备份策略选择策略类型](./media/backup-azure-sql-database/policy-type-details.png)
 
-3. 完整备份是必需的。 接受完整备份的默认值，或选择“完整备份”编辑策略。
+   选择“Azure VM 中的 SQL Server”定义策略类型，并打开“备份策略”菜单。 “备份策略”菜单显示新 SQL Server 备份策略所需的字段。
+
+3. 在“策略名称”处输入新策略的名称。
+
+4. 完整备份是强制执行的；不能关闭“完整备份”选项。 单击“完整备份”可查看并编辑策略。 即使不需要更改备份策略，也应查看策略的详细信息。
 
     ![新备份策略字段](./media/backup-azure-sql-database/full-backup-policy.png)
 
@@ -371,13 +381,13 @@ Azure 备份提供管理服务用于保护 SQL Server 数据库和管理备份�
 
    ![每周间隔设置](./media/backup-azure-sql-database/weekly-interval.png)
 
-4. 默认情况下，所有“保留范围”选项已选中：每日、每周、每月和每年。 取消选中任何不需要的保留范围限制。 并设置要使用的间隔。 在“完整备份策略”菜单中，选择“确定”接受设置。
+5. 默认情况下，所有“保留范围”选项已选中：每日、每周、每月和每年。 取消选中任何不需要的保留范围限制。 并设置要使用的间隔。 在“完整备份策略”菜单中，选择“确定”接受设置。
 
    ![保留范围间隔设置](./media/backup-azure-sql-database/retention-range-interval.png)
 
     恢复点已根据其保留范围标记为保留。 例如，如果选择每日完整备份，则每天只触发一次完整备份。 根据每周保留范围和每周保留设置，将会标记并保留特定日期的备份。 每月和每年保留范围的行为类似。
 
-5. 若要添加差异备份策略，请选择“差异备份”。 此时会打开“差异备份策略”菜单。 
+6. 若要添加差异备份策略，请选择“差异备份”。 此时会打开“差异备份策略”菜单。 
 
    ![打开“差异备份策略”菜单](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
 
@@ -391,30 +401,32 @@ Azure 备份提供管理服务用于保护 SQL Server 数据库和管理备份�
 
     选择“确定”保存策略，并返回“备份策略”主菜单。
 
-6. 若要添加事务日志备份策略，请选择“日志备份”。 此时会打开“日志备份”菜单。
+7. 若要添加事务日志备份策略，请选择“日志备份”。 此时会打开“日志备份”菜单。
 
     在“日志备份”菜单中选择“启用”，并设置频率和保留控件。 日志备份最多可以每隔 15 分钟发生一次，最多可以保留 35 天。 选择“确定”保存策略，并返回“备份策略”主菜单。
 
    ![编辑日志备份策略](./media/backup-azure-sql-database/log-backup-policy-editor.png)
 
-7. 在“备份策略”菜单中，选择是否启用“SQL 备份压缩”。 默认已禁用压缩。
+8. 在“备份策略”菜单中，选择是否启用“SQL 备份压缩”。 默认已禁用压缩。
 
     Azure 备份在后端使用 SQL 本机备份压缩。
 
-8. 完成备份策略的编辑后，选择“确定”。 
+9. 完成备份策略的编辑后，选择“确定”。 
 
    ![接受新备份策略](./media/backup-azure-sql-database/backup-policy-click-ok.png)
 
 ## <a name="restore-a-sql-database"></a>还原 SQL 数据库
-
 Azure 备份提供使用事务日志备份将单个数据库还原到特定的日期或时间的功能（精度可达到秒）。 Azure 备份根据还原时间自动确定还原数据所需的相应完整、差异和日志链备份。
 
 也可以选择特定的完整备份或差异备份来还原到特定的恢复点而不是特定的时间。
- > [!Note]
- > 在触发还原“master”数据库的操作之前，请使用启动选项 `-m AzureWorkloadBackup` 在单用户模式下启动 SQL Server 实例。 `-m` 的参数是客户端的名称。 仅允许此客户端打开连接。 对于所有系统数据库（模型数据库、master 数据库、msdb 数据库），请在触发还原操作之前停止 SQL 代理服务。 关闭任何可能尝试窃取到其中任何数据库的连接的应用程序。
->
 
-还原数据库：
+### <a name="pre-requisite-before-triggering-a-restore"></a>触发还原之前的先决条件
+
+1. 可将数据库还原到同一 Azure 区域中的 SQL Server 实例。 目标服务器必须注册到与源服务器相同的恢复服务保管库。  
+2. 若要将 TDE 加密的数据库还原至另一个 SQL Server，请先按[此处](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server?view=sql-server-2017)所述的步骤将证书还原至目标服务器。
+3. 在触发还原“master”数据库的操作之前，请使用启动选项 `-m AzureWorkloadBackup` 在单用户模式下启动 SQL Server 实例。 `-m` 的参数是客户端的名称。 仅允许此客户端打开连接。 对于所有系统数据库（模型数据库、master 数据库、msdb 数据库），请在触发还原操作之前停止 SQL 代理服务。 关闭任何可能尝试窃取到其中任何数据库的连接的应用程序。
+
+### <a name="steps-to-restore-a-database"></a>还原数据库的步骤：
 
 1. 打开已注册到 SQL 虚拟机的恢复服务保管库。
 

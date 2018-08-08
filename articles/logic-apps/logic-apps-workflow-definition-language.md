@@ -1,29 +1,25 @@
 ---
-title: 工作流定义语言架构 - Azure 逻辑应用 | Microsoft Docs
+title: 工作流定义语言的架构引用 - Azure 逻辑应用 | Microsoft Docs
 description: 使用工作流定义语言编写 Azure 逻辑应用的自定义工作流定义
 services: logic-apps
-author: ecfan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: 26c94308-aa0d-4730-97b6-de848bffff91
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
 ms.topic: reference
 ms.date: 04/30/2018
-ms.author: estfan
-ms.openlocfilehash: babe21db6acc2f7154857b4eb0a02356e89a8ca7
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 0ac191f1191357ecc7292d51b298567f7f4e4786
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059229"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39391218"
 ---
-# <a name="logic-apps-workflow-definitions-with-the-workflow-definition-language-schema"></a>采用工作流定义语言架构的逻辑应用工作流定义
+# <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Azure 逻辑应用中工作流定义语言的架构引用
 
-使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)创建逻辑应用工作流时，工作流的基础定义将描述针对逻辑应用运行的实际逻辑。 此描述遵循工作流定义语言架构定义并验证的、使用 [JavaScript 对象表示法 (JSON)](https://www.json.org/) 格式的结构。 
+使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)创建逻辑应用工作流时，工作流的基础定义将描述针对逻辑应用运行的实际逻辑。 此描述遵循工作流定义语言架构定义和验证的、使用 [JavaScript 对象表示法 (JSON)](https://www.json.org/) 的结构。 
   
 ## <a name="workflow-definition-structure"></a>工作流定义结构
 
@@ -111,7 +107,7 @@ ms.locfileid: "39059229"
 | 值 | 是 | 与 `type` 相同 | 输出返回值 |  
 ||||| 
 
-若要从工作流运行中获取输出，请在 Azure 门户中查看逻辑应用的运行历史记录和详细信息，或使用[工作流 REST API](https://docs.microsoft.com/rest/api/logic/workflows)。 也可以将输出传递给 PowerBI 等外部系统，以便可以创建仪表板。 
+若要从工作流运行中获取输出，请在 Azure 门户中查看逻辑应用的运行历史记录和详细信息，或使用[工作流 REST API](https://docs.microsoft.com/rest/api/logic/workflows)。 也可将输出传递给 Power BI 等外部系统，以便可创建仪表板。 
 
 <a name="expressions"></a>
 
@@ -226,7 +222,7 @@ ms.locfileid: "39059229"
 下面是可以使用函数执行的几个示例任务： 
 
 | 任务 | 函数语法 | 结果 | 
-| ---- | --------------- | -------------- | 
+| ---- | --------------- | ------ | 
 | 返回小写格式的字符串。 | toLower('<*text*>') <p>例如：toLower('Hello') | "hello" | 
 | 返回全局唯一标识符 (GUID)。 | guid() |"c2ecc88d-88c8-4096-912c-d6f2e2b138ce" | 
 |||| 

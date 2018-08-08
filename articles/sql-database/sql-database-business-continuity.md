@@ -9,15 +9,15 @@ ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
 ms.workload: On Demand
-ms.date: 07/16/2018
+ms.date: 07/25/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: dfea1587cddbf7440771ca7007928f7e4054f61a
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 46ab4a177cc7d86e5d967ff8e219dae96f82a0dc
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092284"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263140"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>使用 Azure SQL 数据库确保业务连续性的相关概述
 
@@ -33,7 +33,7 @@ SQL 数据库提供若干业务连续性功能，包括自动备份和可选的�
 | --- | --- | --- | --- |--- |--- |
 | 从备份执行时间点还原 |7 天内的任何还原点 |35 天内的任何还原点 |35 天内的任何还原点 |所配置的时间段（最长为 35 天）内的任何还原点|所配置的时间段（最长为 35 天）内的任何还原点|
 | 从异地复制的备份执行异地还原 |ERT < 12 小时，RPO < 1 小时 |ERT < 12 小时，RPO < 1 小时 |ERT < 12 小时，RPO < 1 小时 |ERT < 12 小时，RPO < 1 小时|ERT < 12 小时，RPO < 1 小时|
-| 从 Azure 备份保管库还原 |ERT < 12 小时，RPO < 1 周 |ERT < 12 小时，RPO < 1 周 |ERT < 12 小时，RPO < 1 周 |ERT < 12 小时，RPO < 1 周|ERT < 12 小时，RPO < 1 周|
+| 从 SQL 长期保留还原 |ERT < 12 小时，RPO < 1 周 |ERT < 12 小时，RPO < 1 周 |ERT < 12 小时，RPO < 1 周 |ERT < 12 小时，RPO < 1 周|ERT < 12 小时，RPO < 1 周|
 | 活动异地复制 |ERT < 30 秒，RPO < 5 秒 |ERT < 30 秒，RPO < 5 秒 |ERT < 30 秒，RPO < 5 秒 |ERT < 30 秒，RPO < 5 秒|ERT < 30 秒，RPO < 5 秒|
 
 ### <a name="use-point-in-time-restore-to-recover-a-database"></a>使用时间点还原恢复数据库
@@ -102,7 +102,7 @@ SQL 数据库每周自动执行完整数据库备份，每小时自动执行差�
 
 ### <a name="restore-backups-from-long-term-retention"></a>从长期保留存储中还原备份
 
-如果数据丢失发生在自动备份的当前保留期之外且数据库已配置长期保留，则可从 LTR 存储中的完整备份还原到新数据库。 此时，可以将原始数据库替换为还原的数据库，或从还原的数据库将所需数据复制到原始数据库。 如果需要在升级主要应用程序前检索旧版数据库，满足审核员或法律指令的要求，则可以使用 Azure 备份保管库中保存的完整备份创建数据库。  有关详细信息，请参阅[长期保留](sql-database-long-term-retention.md)。
+如果数据丢失发生在自动备份的当前保留期之外，且数据库已配置为使用 Azure Blob 存储进行长期保留，可从 Azure Blob 存储中的完整备份还原到新的数据库。 此时，可以将原始数据库替换为还原的数据库，或从还原的数据库将所需数据复制到原始数据库。 如果需要在主要应用程序升级之前检索旧版数据库，在审核员或法律指令的要求下，可使用 Azure Blob 存储中保存的完整备份创建数据库。  有关详细信息，请参阅[长期保留](sql-database-long-term-retention.md)。
 
 ## <a name="recover-a-database-to-another-region-from-an-azure-regional-data-center-outage"></a>Azure 区域数据中心中断时会数据库恢复到另一个区域
 <!-- Explain this scenario -->

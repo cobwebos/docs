@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/27/2018
-ms.openlocfilehash: 698dbbba55ed32a5cef8034059ee8e36edd16ae5
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 9fa71c221b276e2173694e2c1e86673e52677e63
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347613"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389817"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>将数据作为流分析的输入进行流式传输
 
@@ -44,7 +44,7 @@ Azure 事件中心提供高度可缩放的发布-订阅事件引入器。 事件
 ### <a name="stream-data-from-event-hubs"></a>从事件中心对数据进行流式传输
 下表介绍了 Azure 门户的“新输入”页中用于从事件中心流式传输数据输入的每个属性：
 
-| 属性 | 说明 |
+| 属性 | Description |
 | --- | --- |
 | **输入别名** |在作业查询中用于引用此输入的友好名称。 |
 | **订阅** | 选择事件中心资源所在的订阅。 | 
@@ -58,7 +58,7 @@ Azure 事件中心提供高度可缩放的发布-订阅事件引入器。 事件
 
 如果数据来自事件中心流输入，则可以在流分析查询中访问以下元数据字段：
 
-| 属性 | 说明 |
+| 属性 | Description |
 | --- | --- |
 | **EventProcessedUtcTime** |流分析处理事件的日期和时间。 |
 | **EventEnqueuedUtcTime** |事件中心收到事件的日期和时间。 |
@@ -89,7 +89,7 @@ Azure Iot 中心是已针对 IoT 进行优化，具有高度伸缩性的发布-�
 ### <a name="configure-an-iot-hub-as-a-data-stream-input"></a>将 IoT 中心配置为数据流输入
 下表介绍了将 IoT 中心配置为流输入时，Azure 门户的“新输入”页中的每个属性。
 
-| 属性 | 说明 |
+| 属性 | Description |
 | --- | --- |
 | **输入别名** | 在作业查询中用于引用此输入的友好名称。|
 | **订阅** | 选择 IoT 中心资源所在的订阅。 | 
@@ -105,7 +105,7 @@ Azure Iot 中心是已针对 IoT 进行优化，具有高度伸缩性的发布-�
 
 如果使用的流数据来自 IoT 中心，则可以在流分析查询中访问以下元数据字段：
 
-| 属性 | 说明 |
+| 属性 | Description |
 | --- | --- |
 | **EventProcessedUtcTime** | 处理事件的日期和时间。 |
 | **EventEnqueuedUtcTime** | IoT 中心收到事件的日期和时间。 |
@@ -123,7 +123,7 @@ Azure Iot 中心是已针对 IoT 进行优化，具有高度伸缩性的发布-�
 
 通过流分析来使用 Blob 存储输入时，日志处理是一种常用方案。 在此方案中，首先从某个系统捕获遥测数据文件，然后根据需要对这些数据进行分析和处理以提取有意义的数据。
 
-流分析中 Blob 存储事件的默认时间戳是上次修改 Blob 的时间戳，即 `BlobLastModifiedUtcTime`。 若要在事件负载中使用时间戳以流方式处理数据，则必须使用 [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) 关键字。
+流分析中 Blob 存储事件的默认时间戳是上次修改 Blob 的时间戳，即 `BlobLastModifiedUtcTime`。 若要在事件负载中使用时间戳以流方式处理数据，则必须使用 [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) 关键字。 如果 blob 文件可用，流分析作业将每秒从 Azure Blob 存储输入中拉取数据。 如果 blob 文件不可用，则存在指数回退，且最长时间延迟为 90 秒。
 
 CSV 格式的输入需要标头行来定义数据集的字段，并且所有标头行字段必须是唯一的。
 
@@ -137,7 +137,7 @@ CSV 格式的输入需要标头行来定义数据集的字段，并且所有标�
 
 下表介绍了将 Blob 存储配置为流输入时，Azure 门户的“新输入”页中的每个属性。
 
-| 属性 | 说明 |
+| 属性 | Description |
 | --- | --- |
 | **输入别名** | 在作业查询中用于引用此输入的友好名称。 |
 | **订阅** | 选择 IoT 中心资源所在的订阅。 | 
@@ -153,7 +153,7 @@ CSV 格式的输入需要标头行来定义数据集的字段，并且所有标�
 
 如果数据来自 Blob 存储源，则可以在流分析查询中访问以下元数据字段：
 
-| 属性 | 说明 |
+| 属性 | Description |
 | --- | --- |
 | **BlobName** |提供事件的输入 blob 的名称。 |
 | **EventProcessedUtcTime** |流分析处理事件的日期和时间。 |

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/16/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1cc58832d5f863f5bbfa6fc20d38b4be81ddad8f
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: cfb09718c545d55b31250070fed0c8adff9d3fed
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089955"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263940"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect：自动升级
 此功能是随内部版本 [1.1.105.0（于 2016 年 2 月发布）](active-directory-aadconnect-version-history.md#111050)一起推出的。  此功能已在[内部版本 1.1.561](active-directory-aadconnect-version-history.md#115610) 中更新，现在支持以前不支持的其他方案。
@@ -95,8 +95,8 @@ ms.locfileid: "39089955"
 | UpgradeNotSupportedInvalidPersistedState |安装不是快速设置或 DirSync 升级。 |
 | UpgradeNotSupportedMetaverseSizeExceeeded |Metaverse 中的对象超过 100,000 个。 |
 | UpgradeNotSupportedMultiForestSetup |正在连接到多个林。 快速安装只会连接到一个林。 |
-| UpgradeNotSupportedNonLocalDbInstall |使用的不是 SQL Server Express LocalDB 数据库。 |
-| UpgradeNotSupportedNonMsolAccount |[AD 连接器帐户](active-directory-aadconnect-accounts-permissions.md#active-directory-account)不再是默认的 MSOL_ 帐户。 |
+| UpgradeNotSupportedNonLocalDbInstall |使用的不是 SQL Server Express LocalDB 数据库。 |d
+| UpgradeNotSupportedNonMsolAccount |[AD DS 连接器帐户](active-directory-aadconnect-accounts-permissions.md#ad-ds-connector-account)不再是默认的 MSOL_ 帐户。 |
 | UpgradeNotSupportedNotConfiguredSignInMethod | 在设置 AAD Connect 期间，请在选择登录方法时选择“不配置”。 | 
 | UpgradeNotSupportedPtaSignInMethod | 已选择“直通身份验证”作为登录方法。 |
 | UpgradeNotSupportedStagingModeEnabled |服务器已设置为[过渡模式](active-directory-aadconnectsync-operations.md#staging-mode)。 |

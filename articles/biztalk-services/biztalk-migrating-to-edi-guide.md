@@ -1,27 +1,23 @@
 ---
-title: 将 BizTalk Server EDI 解决方案迁移到 BizTalk 服务技术指南 | Microsoft Docs
-description: 将 EDI 迁移到 MABS；Microsoft Azure BizTalk 服务
+title: 将 BizTalk 服务器 EDI 解决方案迁移到 BizTalk 服务 | Microsoft Docs
+description: 了解如何将 Microsoft BizTalk 服务器 EDI 解决方案迁移到 Microsoft Azure BizTalk 服务 (MABS)
 services: biztalk-services
-documentationcenter: na
-author: MandiOhlinger
-manager: anneta
-editor: ''
-ms.assetid: 61c179fa-3f37-495b-8016-dee7474fd3a6
 ms.service: biztalk-services
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: jonfancey
+ms.author: jonfan
+manager: jeconnoc
 ms.topic: article
-ms.date: 11/07/2016
-ms.author: mandia
-ms.openlocfilehash: aaa7028bb37ac4c2c313efce2afebc1dc5e814d2
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.date: 07/31/2018
+ms.reviewer: jonfan, LADocs
+ms.suite: integration
+ms.openlocfilehash: 4ce65f1b5dd22da031ebf6730b5efad2d04f91a0
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860072"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365581"
 ---
-# <a name="migrating-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>将 BizTalk Server EDI 解决方案迁移到 BizTalk 服务：技术指南
+# <a name="migrate-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>将 BizTalk 服务器 EDI 解决方案迁移到 BizTalk 服务：技术指南
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
@@ -32,9 +28,9 @@ ms.locfileid: "37860072"
 编写使用：Microsoft Azure BizTalk 服务 – 2014 年 2 月版本。
 
 ## <a name="introduction"></a>介绍
-电子数据交换 (EDI) 是企业以电子方式交换数据的最普遍的方式之一，也称为企业对企业或 B2B 交易。 自 BizTalk Server 初版起，数十年来 BizTalk Server 始终拥有 EDI 支持。 借助 BizTalk 服务，Microsoft 继续在 Microsoft Azure Platform 上支持 EDI 解决方案。 大部分 B2B 事务都在组织外部，因此更容易在云平台上实现。 Microsoft Azure 通过 BizTalk 服务提供此功能。
+电子数据交换 (EDI) 是企业以电子方式交换数据的最普遍的方式之一，也称为企业对企业或 B2B 交易。 自 BizTalk 服务器初版起，数十年来 BizTalk 服务器始终拥有 EDI 支持。 借助 BizTalk 服务，Microsoft 继续在 Microsoft Azure Platform 上支持 EDI 解决方案。 大部分 B2B 事务都在组织外部，因此更容易在云平台上实现。 Microsoft Azure 通过 BizTalk 服务提供此功能。
 
-虽然部分客户将 BizTalk 服务视为新 EDI 解决方案的“新领域”平台，但许多客户拥有当前的 BizTalk Server EDI 解决方案，他们可能希望将其迁移到 Azure。 由于 BizTalk 服务 EDI 是基于与 BizTalk Server EDI 架构（贸易合作伙伴、实体、协议）相同的关键实体构建的，因此可将 BizTalk Server EDI 项目迁移到 BizTalk 服务。
+虽然部分客户将 BizTalk 服务视为新 EDI 解决方案的“新领域”平台，但许多客户拥有当前的 BizTalk 服务器 EDI 解决方案，他们可能希望将其迁移到 Azure。 由于 BizTalk 服务 EDI 是基于与 BizTalk Server EDI 架构（贸易合作伙伴、实体、协议）相同的关键实体构建的，因此可将 BizTalk Server EDI 项目迁移到 BizTalk 服务。
 
 本文档讨论了将 BizTalk Server EDI 项目迁移到 BizTalk 服务所涉及的一些差异。 本文档假定了一种 BizTalk Server EDI 处理和贸易合作伙伴协议的应用知识。 有关 BizTalk Server EDI 的详细信息，请参阅[使用 BizTalk Server 进行贸易合作伙伴管理](https://msdn.microsoft.com/library/bb259970.aspx)。
 
@@ -76,7 +72,7 @@ BizTalk 服务提供了一种易于使用的配置体验，可在不配置任何
 
 可在贸易合作伙伴协议收到消息之前，或在协议处理消息并将其路由到服务总线终结点后，使用自定义代码和/或服务总线消息队列及主题插入发布/订阅流。
 
-有关消息流模式，请参阅本主题中的**方案/消息流**。
+若要了解消息流模式，请参阅本文中的“方案/消息流”。
 
 ## <a name="agreements"></a>协议
 如果熟悉用于 EDI 处理的 BizTalk Server 2010 交易合作伙伴协议，就会发现 BizTalk 服务贸易合作伙伴协议与之很相似。 大部分协议设置均相同且使用相同术语。 在某些情况下，与 BizTalk Server 中的相同设置相比，协议设置要简单得多。 Microsoft Azure BizTalk 服务支持 X12、EDIFACT 和 AS2 传输。
@@ -118,10 +114,7 @@ BizTalk Server EDI 处理具有“后备协议”概念。  到目前为止，Bi
 ### <a name="routing-to-multiple-destinations"></a>路由到多个目标
 BizTalk 服务桥在当前状态下不支持使用发布订阅模型将邮件路由到多个目标。 相反，可将消息从 BizTalk 服务桥路由到服务总线主题，该主题中随后可包含多个订阅以接收多个终结点处的消息。
 
-## <a name="conclusion"></a>结束语
-Microsoft Azure BizTalk 服务会定期进行里程碑更新，增添更多功能。 每次更新时，我们都期望支持增强型功能，使用 BizTalk 服务和其他 Azure 技术创建端到端解决方案。
-
 ## <a name="see-also"></a>另请参阅
-[开发用于 Azure 的企业应用程序](https://msdn.microsoft.com/library/azure/hh674490.aspx)
+[Azure 中的 LOB 解决方案](https://azure.microsoft.com/solutions/lob-applications)
 
 [EDImessageflow]: ./media/biztalk-migrating-to-edi-guide/IC719455.png

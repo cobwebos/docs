@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/31/2018
+ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e808d4bf116dcab344308c3dd2aa06c72e0318ba
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 6ca32d51a52cf636b1c41667e20872cfe49fa7e2
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049511"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390147"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发布历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -36,6 +36,45 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 所需的权限 | 有关应用更新时所需的权限，请参阅[帐户和权限](./active-directory-aadconnect-accounts-permissions.md#upgrade)。
 
 下载| [下载 Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771)。
+
+## <a name="118800"></a>1.1.880.0
+
+### <a name="release-status"></a>版本状态
+
+2018/7/20：已发布，用于自动升级。 即将推出供下载的版本。
+
+### <a name="new-features-and-improvements"></a>新增功能和改进
+
+- Azure AD Connect 中的 Ping Federate 集成现已公开发布。 [深入了解如何将 Azure AD 与 Ping Federate 联合](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#federation-with-pingfederate)
+- Azure AD Connect 现在每次更新时都可在 AD FS 中创建 Azure AD 信任的备份，并将其存储在单独的文件中以便轻松还原（如果需要）。 [详细了解 Azure AD Connect 中的新增功能和 Azure AD 信任管理](https://aka.ms/fedtrustinaadconnect)。
+- 新的故障排除工具有助于解决更改主要电子邮件地址和隐藏全局地址列表中的帐户的问题
+- 已更新 Azure AD Connect，以包括最新版 SQL Server 2012 本机客户端
+- 如果在“更改用户登录”任务中将用户登录切换为“密码哈希同步”或“直通身份验证”，将默认启用“无缝单一登录”复选框。
+- 添加了对 Windows Server Essentials 2019 的支持
+- Azure AD Connect Health 代理已更新到最新版 3.1.7.0
+- 升级过程中，如果安装程序检测到对默认同步规则的更改，覆盖经修改的规则之前系统将对管理员进行警告。 这将允许用户采取纠正措施并稍后继续操作。 旧行为：如果存在任何经修改的现成规则，则手动升级将覆盖这些规则，而不会向用户发出任何警告，并且在不通知用户的情况下禁用同步计划程序。 新行为：覆盖经修改的现成同步规则之前，系统将警告用户。 用户可以选择停止升级过程，并在采取纠正措施后继续操作。
+- 更好地处理 FIPS 符合性问题，提供针对符合 FIPS 的环境中的 MD5 哈希生成的错误消息和有关此问题解决办法的文档链接。
+- UI 改进以改进向导中的联合任务，这些任务现位于单独的联合子组中。 
+- 现在，所有附加联合任务集中在单个子菜单下，易于使用。
+- 包含新的 AD 权限函数的新改进的 ADSyncConfig Posh 模块 (AdSyncConfig.psm1) 从旧的 ADSyncPrep.psm1 移出（可能很快弃用）
+
+### <a name="fixed-issues"></a>修复的问题 
+
+- 修复了以下 bug：在升级到 .Net 4.7.2 之后，AAD Connect 服务器显示 CPU 使用率高
+- 修复了以下 bug：针对自动解决的 SQL 死锁问题间歇性生成错误消息
+- 修复了同步规则编辑器和 Sync Service Manager 的多个辅助功能问题  
+- 修复了以下 bug：Azure AD Connect 无法获取注册表设置信息
+- 修复了以下 bug：用户在向导中前进/后退时会出现问题
+- 修复了以下 bug：由于向导中多线程处理不正确而导致错误
+- 当“组同步筛选”页在解析安全组时遇到 LDAP 错误，Azure AD Connect 现在会返回全保真度异常。  引用异常的根本原因仍未知，并且将被其他 bug 解决。
+-  修复了以下 bug：未正确设置 STK 和 NGC 键（WHfB 的用户/设备对象的 msDS-KeyCredentialLink 属性）的权限。     
+- 修复了以下 bug：错误调用“Set-ADSyncRestrictedPermissions”
+-  添加对 AADConnect 安装向导中组写回权限授予的支持
+- 如果将登录方法从“密码哈希同步”更改为“AD FS”，不会禁用“密码哈希同步”。
+- 添加了对 AD FS 配置中的 IPv6 地址的验证
+- 更新了通知消息，用于通知已存在一个现有配置。
+- 设备写回未能检测到不受信任林中的容器。 已经对此进行更新，以提供更好的错误消息和相应文档链接
+- 取消选中 OU 后，该 OU 对应的同步/写回出现一般同步错误。 已经对此进行更改，以创建更易于理解的错误消息。
 
 ## <a name="118190"></a>1.1.819.0
 

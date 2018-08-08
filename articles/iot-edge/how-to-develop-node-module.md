@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 06/26/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 8032fd2a0150597c55178648511c80233e63a911
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: a5ab49beed79a8ea3a7ded0848c09acad27a5fb1
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054720"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390531"
 ---
 # <a name="develop-and-debug-nodejs-modules-with-azure-iot-edge-for-visual-studio-code"></a>使用 Visual Studio Code 开发和调试用于 Azure IoT Edge 的 Node.js 模块
 
@@ -70,7 +70,7 @@ VS Code 采用你提供的信息，创建一个 IoT Edge 解决方案，然后�
 * 一个 **.env** 文件，列出环境变量。 如果将 ACR 作为注册表，那么，注册表中会有 ACR 用户名和密码。 
 
    >[!NOTE]
-   >仅当为模块提供映像存储库时，才会创建环境文件。 如果接受 localhost 默认值在本地进行测试和调试，则不需要声明环境变量。 
+   >仅当为模块提供了映像存储库时，才会创建环境文件。 如果接受 localhost 默认值在本地进行测试和调试，则不需要声明环境变量。 
 
 * 一个 **deployment.template.json** 文件，列出新模块以及模拟可用于测试的数据的示例 **tempSensor** 模块。 若要详细了解部署清单的工作原理，请参阅[了解如何使用、配置和重用 IoT Edge 模块](module-composition.md)。
 
@@ -84,7 +84,8 @@ VS Code 采用你提供的信息，创建一个 IoT Edge 解决方案，然后�
 
 每个模块文件夹中都有适用于不同容器类型的多个 Docker 文件。 可以使用任何以扩展名 **.debug** 结尾的文件来生成用于测试的模块。 目前，C# 模块仅支持在 linux-amd64 容器中进行调试。
 
-1. 在 VS Code 中，导航到 `deployment.template.json` 文件。 将 **deployment.template.json** 中的 Node.js 模块 createOptions 替换为以下内容并保存此文件： 
+1. 在 VS Code 中，导航到 `deployment.template.json` 文件。 通过在末尾添加 .debug 来更新模块映像 URL。
+2. 将 **deployment.template.json** 中的 Node.js 模块 createOptions 替换为以下内容并保存此文件： 
     ```json
     "createOptions": "{\"ExposedPorts\":{\"9229/tcp\":{}},\"HostConfig\":{\"PortBindings\":{\"9229/tcp\":[{\"HostPort\":\"9229\"}]}}}"
     ```
@@ -116,4 +117,4 @@ VS Code 将调试配置信息保存在 `launch.json` 文件中，该文件位于
 
 生成模块后，了解如何[从 Visual Studio Code 部署 Azure IoT Edge 模块](how-to-deploy-modules-vscode.md)
 
-若要为 IoT Edge 设备开发模块，请参阅[了解并使用 Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md)。
+若要开发用于 IoT Edge 设备的模块，请参阅[了解并使用 Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md)。
