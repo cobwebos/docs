@@ -1,480 +1,495 @@
+### YamlMime:OriginYaml
+ms.openlocfilehash: a3d1862f3604c53af106bf90040d2380421a004d
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595852"
 metadata: {}
 items:
-  - name: Azure Cosmos DB 文档
-    href: index.yml
-  - name: 概述
+- name: Azure Cosmos DB 文档
+  href: index.yml
+- name: 概述
+  items:
+  - name: 关于 Azure Cosmos DB
+    href: introduction.md
+- name: 快速入门
+  expanded: true
+  items:
+  - name: SQL
     items:
-      - name: 关于 Azure Cosmos DB
-        href: introduction.md
-  - name: 快速入门
-    expanded: true
+    - name: .NET
+      href: create-sql-api-dotnet.md
+    - name: Java
+      href: create-sql-api-java.md
+    - name: Node.js
+      href: create-sql-api-nodejs.md
+    - name: Node.js - V2 预览版
+      href: create-sql-api-nodejs-preview.md
+    - name: Python
+      href: create-sql-api-python.md
+    - name: Xamarin
+      href: create-sql-api-xamarin-dotnet.md
+  - name: MongoDB
     items:
+    - name: Node.js
+      href: create-mongodb-nodejs.md
+    - name: .NET
+      href: create-mongodb-dotnet.md
+    - name: Java
+      href: create-mongodb-java.md
+    - name: Golang
+      href: create-mongodb-golang.md
+    - name: Python
+      href: create-mongodb-flask.md
+    - name: Xamarin
+      href: create-mongodb-xamarin.md
+  - name: 图形
+    items:
+    - name: .NET
+      href: create-graph-dotnet.md
+    - name: Gremlin 控制台
+      href: create-graph-gremlin-console.md
+    - name: Java
+      href: create-graph-java.md
+    - name: Node.js
+      href: create-graph-nodejs.md
+    - name: Python
+      href: create-graph-python.md
+    - name: PHP
+      href: create-graph-php.md
+  - name: 表
+    items:
+    - name: .NET
+      href: create-table-dotnet.md
+    - name: Java
+      href: create-table-java.md
+    - name: Node.js
+      href: create-table-nodejs.md
+    - name: Python
+      href: create-table-python.md
+  - name: Cassandra
+    items:
+    - name: Node.js
+      href: create-cassandra-nodejs.md
+    - name: Java
+      href: create-cassandra-java.md
+    - name: .NET
+      href: create-cassandra-dotnet.md
+    - name: Python
+      href: create-cassandra-python.md
+- name: 概念
+  items:
+  - name: 全球分布
+    href: distribute-data-globally.md
+  - name: 多主
+    href: multi-region-writers.md
+  - name: 分区
+    href: partition-data.md
+  - name: Throughput
+    href: request-units.md
+  - name: 一致性
+    href: consistency-levels.md
+  - name: 唯一键
+    href: unique-keys.md
+  - name: 无服务器的数据库
+    href: serverless-computing-database.md
+  - name: 安全
+    href: database-security.md
+    items:
+    - name: 静态加密
+      href: database-encryption-at-rest.md
+    - name: 确保对数据的访问安全
+      href: secure-access-to-data.md
+  - name: 用例
+    href: use-cases.md
+    items:
+    - name: 社交媒体应用
+      href: social-media-apps.md
+- name: 多模型
+  expanded: true
+  items:
+  - name: SQL API 文档
+    items:
+    - name: 概述
+      items:
+      - name: 关于 SQL API
+        href: sql-api-introduction.md
+    - name: 教程
+      items:
+      - name: 1 - 创建
+        items:
+        - name: 编写第一个应用
+          items:
+          - name: .NET
+            href: sql-api-get-started.md
+          - name: .NET Core
+            href: sql-api-dotnetcore-get-started.md
+          - name: Java
+            href: sql-api-java-get-started.md
+          - name: 异步 Java
+            href: sql-api-async-java-get-started.md
+          - name: Node.js
+            href: sql-api-nodejs-get-started.md
+          - name: Node.js - V2 预览版
+            href: sql-api-nodejs-get-started-preview.md
+        - name: 构建 Web 应用
+          items:
+          - name: .NET
+            href: sql-api-dotnet-application.md
+          - name: Xamarin
+            href: mobile-apps-with-xamarin.md
+          - name: Node.js
+            href: sql-api-nodejs-application.md
+          - name: Node.js - V2 预览版
+            href: sql-api-nodejs-application-preview.md
+          - name: Java
+            href: sql-api-java-application.md
+          - name: Python Flask
+            href: sql-api-python-application.md
+      - name: 2 - 导入
+        href: import-data.md
+      - name: 3 - 查询
+        href: tutorial-query-sql-api.md
+      - name: 4 - 全局分布
+        href: tutorial-global-distribution-sql-api.md
+      - name: 5 - 本地开发
+        items:
+        - name: 使用模拟器
+          href: local-emulator.md
+        - name: 导出证书
+          href: local-emulator-export-ssl-certificates.md
+    - name: 示例
+      items:
+      - name: Azure CLI
+        href: cli-samples.md
+      - name: PowerShell
+        href: powershell-samples.md
+      - name: .NET 示例
+        href: sql-api-dotnet-samples.md
+      - name: Node.js 示例
+        href: sql-api-nodejs-samples.md
+      - name: Node.js 示例 - V2 预览版
+        href: sql-api-nodejs-samples-preview.md
+      - name: Python 示例
+        href: sql-api-python-samples.md
+      - name: Java 示例
+        href: sql-api-java-samples.md
+      - name: 异步 Java 示例
+        href: sql-api-async-java-samples.md
+    - name: 概念
+      items:
+      - name: 资源
+        href: sql-api-resources.md
+      - name: 模型文档数据
+        href: modeling-data.md
+    - name: 操作方法指南
+      items:
+      - name: BulkExecutor - .NET
+        href: bulk-executor-dot-net.md
+      - name: BulkExecutor - Java
+        href: bulk-executor-java.md
+      - name: 查询
+        items:
+        - name: 执行 SQL 查询
+          href: sql-api-sql-query.md
+        - name: 调整查询性能
+          href: sql-api-sql-query-metrics.md
+      - name: 索引
+        href: indexing-policies.md
+      - name: SQL 数据分区
+        href: sql-api-partition-data.md
+      - name: 更改源
+        href: change-feed.md
+      - name: 数据类型
+        items:
+        - name: 日期时间
+          href: working-with-dates.md
+        - name: 地理空间
+          href: geospatial.md
+      - name: 调整性能
+        items:
+        - name: 性能测试
+          href: performance-testing.md
+        - name: 异步 Java 性能提示
+          href: performance-tips-async-java.md
+        - name: .NET 性能提示
+          href: performance-tips.md
+        - name: Java 性能提示
+          href: performance-tips-java.md
+      - name: 与其他 Azure 服务集成
+        items:
+        - name: 通过 HDInsight 实现 lambda 体系结构
+          href: lambda-architecture.md
+        - name: 连接到 Spark
+          href: spark-connector.md
+        - name: 通过 HDInsight 上的 Kafka 和 Spark 进行流式处理
+          href: https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json
+        - name: 使用 Azure 应用服务部署网站
+          href: create-website.md
+        - name: 使用逻辑应用进行应用程序日志记录
+          href: https://docs.microsoft.com/azure/logic-apps/logic-apps-scenario-error-and-exception-handling?toc=/azure/cosmos-db/toc.json
+        - name: 绑定到 Azure Functions
+          href: https://docs.microsoft.com/azure/azure-functions/functions-bindings-cosmosdb?toc=/azure/cosmos-db/toc.json
+        - name: 与 Azure 搜索集成
+          href: https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json
+        - name: 使用 Azure 数据工厂移动数据
+          href: https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db?toc=/azure/cosmos-db/toc.json
+        - name: 使用 Azure 流分析分析实时数据
+          href: ../stream-analytics/stream-analytics-define-outputs.md#azure-cosmos-db
+        - name: 使用逻辑应用获取更改的 HL7 FHIR 记录
+          href: change-feed-hl7-fhir-logic-apps.md
+        - name: 实时处理传感器数据
+          href: https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md
+        - name: 使用 Power BI 直观显示数据
+          href: powerbi-visualize.md
+        - name: 将 ODBC 驱动程序用于数据可视化
+          href: odbc-driver.md
+        - name: 将 Spring Boot Starter 与 SQL API 配合使用
+          href: https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json
+    - name: 引用
+      items:
+      - name: 异步 Java
+        href: sql-api-sdk-async-java.md
+      - name: Java
+        href: sql-api-sdk-java.md
+      - name: .NET
+        href: sql-api-sdk-dotnet.md
+      - name: .NET 更改源
+        href: sql-api-sdk-dotnet-changefeed.md
+      - name: .NET Core
+        href: sql-api-sdk-dotnet-core.md
+      - name: Node.js
+        href: sql-api-sdk-node.md
+      - name: Python
+        href: sql-api-sdk-python.md
+      - name: BulkExecutor - .NET
+        href: sql-api-sdk-bulk-executor-dot-net.md
+      - name: BulkExecutor - Java
+        href: sql-api-sdk-bulk-executor-java.md
+      - name: REST
+        href: /rest/api/cosmos-db/
+      - name: REST 资源提供程序
+        href: /rest/api/cosmos-db-resource-provider/
       - name: SQL
-        items:
-          - name: .NET
-            href: create-sql-api-dotnet.md
-          - name: Java
-            href: create-sql-api-java.md
-          - name: Node.js
-            href: create-sql-api-nodejs.md
-          - name: Python
-            href: create-sql-api-python.md
-          - name: Xamarin
-            href: create-sql-api-xamarin-dotnet.md
-      - name: MongoDB
-        items:
-          - name: Node.js
-            href: create-mongodb-nodejs.md
-          - name: .NET
-            href: create-mongodb-dotnet.md
-          - name: Java
-            href: create-mongodb-java.md
-          - name: Golang
-            href: create-mongodb-golang.md
-          - name: Python
-            href: create-mongodb-flask.md
-          - name: Xamarin
-            href: create-mongodb-xamarin.md
-      - name: 图形
-        items:
-          - name: .NET
-            href: create-graph-dotnet.md
-          - name: Gremlin 控制台
-            href: create-graph-gremlin-console.md
-          - name: Java
-            href: create-graph-java.md
-          - name: Node.js
-            href: create-graph-nodejs.md
-          - name: Python
-            href: create-graph-python.md
-          - name: PHP
-            href: create-graph-php.md
-      - name: 表
-        items:
-          - name: .NET
-            href: create-table-dotnet.md
-          - name: Java
-            href: create-table-java.md
-          - name: Node.js
-            href: create-table-nodejs.md
-          - name: Python
-            href: create-table-python.md
-      - name: Cassandra
-        items:
-          - name: Node.js
-            href: create-cassandra-nodejs.md
-          - name: Java
-            href: create-cassandra-java.md
-          - name: .NET
-            href: create-cassandra-dotnet.md
-          - name: Python
-            href: create-cassandra-python.md
-  - name: 概念
+        href: sql-api-sql-query-reference.md
+    - name: 资源
+      items:
+      - name: Visual Studio Code 扩展
+        href: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb
+      - name: SQL 演练
+        href: https://aka.ms/cosmos-db-playground
+  - name: MongoDB API 文档
     items:
-      - name: 全球分布
-        href: distribute-data-globally.md
-      - name: 多主
-        href: multi-region-writers.md
-      - name: 分区
-        href: partition-data.md
-      - name: Throughput
-        href: request-units.md
-      - name: 一致性
-        href: consistency-levels.md
-      - name: 唯一键
-        href: unique-keys.md
-      - name: 无服务器的数据库
-        href: serverless-computing-database.md
-      - name: “安全”
-        href: database-security.md
+    - name: 概述
+      items:
+      - name: 关于 MongoDB API
+        href: mongodb-introduction.md
+      - name: MongoDB 支持
+        href: mongodb-feature-support.md
+    - name: 教程
+      items:
+      - name: 1 - 创建
         items:
-          - name: 静态加密
-            href: database-encryption-at-rest.md
-          - name: 确保对数据的访问安全
-            href: secure-access-to-data.md
-      - name: 用例
-        href: use-cases.md
+        - name: Node.js
+          href: mongodb-samples.md
+        - name: Node.js 和 Angular
+          items:
+          - name: 第 1 部分 - 简介
+            href: tutorial-develop-mongodb-nodejs.md
+          - name: 第 2 部分 - 创建 Node 应用
+            href: tutorial-develop-mongodb-nodejs-part2.md
+          - name: 第 3 部分 - 添加 Angular UI
+            href: tutorial-develop-mongodb-nodejs-part3.md
+          - name: 第 4 部分 - 创建 Cosmos DB
+            href: tutorial-develop-mongodb-nodejs-part4.md
+          - name: 第 5 部分 - 连接到 Cosmos DB
+            href: tutorial-develop-mongodb-nodejs-part5.md
+          - name: 第 6 部分 - 写入到应用
+            href: tutorial-develop-mongodb-nodejs-part6.md
+        - name: Node.js 和 React
+          href: tutorial-develop-mongodb-react.md
+      - name: 2 - 导入
+        href: mongodb-migrate.md
+      - name: 3 - 查询
+        href: tutorial-query-mongodb.md
+      - name: 4 - 全局分布
+        href: tutorial-global-distribution-mongodb.md
+      - name: 5 - 本地开发
         items:
-          - name: 社交媒体应用
-            href: social-media-apps.md
-  - name: 多模型
-    expanded: true
+        - name: 使用模拟器
+          href: local-emulator.md
+        - name: 导出证书
+          href: local-emulator-export-ssl-certificates.md
+    - name: 操作方法指南
+      items:
+      - name: 连接到 MongoDB 帐户
+        href: connect-mongodb-account.md
+      - name: 使用 Studio 3T
+        href: mongodb-mongochef.md
+      - name: 使用 Robomongo
+        href: mongodb-robomongo.md
+      - name: 使用 Mongoose
+        href: mongodb-mongoose.md
+      - name: 使用读取首选项
+        href: mongodb-readpreference.md
+      - name: 索引
+        href: mongodb-indexing.md
+      - name: 使用 Power BI 直观显示数据
+        href: powerbi-visualize.md
+    - name: 资源
+      items:
+      - name: Visual Studio Code 扩展
+        href: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb
+  - name: 图形 API 文档
     items:
-      - name: SQL API 文档
-        items:
-          - name: 概述
-            items:
-              - name: 关于 SQL API
-                href: sql-api-introduction.md
-          - name: 教程
-            items:
-              - name: 1 - 创建
-                items:
-                  - name: 编写第一个应用
-                    items:
-                      - name: .NET
-                        href: sql-api-get-started.md
-                      - name: .NET Core
-                        href: sql-api-dotnetcore-get-started.md
-                      - name: Java
-                        href: sql-api-java-get-started.md
-                      - name: 异步 Java
-                        href: sql-api-async-java-get-started.md
-                      - name: Node.js
-                        href: sql-api-nodejs-get-started.md
-                  - name: 构建 Web 应用
-                    items:
-                      - name: .NET
-                        href: sql-api-dotnet-application.md
-                      - name: Xamarin
-                        href: mobile-apps-with-xamarin.md
-                      - name: Node.js
-                        href: sql-api-nodejs-application.md
-                      - name: Java
-                        href: sql-api-java-application.md
-                      - name: Python Flask
-                        href: sql-api-python-application.md
-              - name: 2 - 导入
-                href: import-data.md
-              - name: 3 - 查询
-                href: tutorial-query-sql-api.md
-              - name: 4 - 全局分布
-                href: tutorial-global-distribution-sql-api.md
-              - name: 5 - 本地开发
-                items:
-                  - name: 使用模拟器
-                    href: local-emulator.md
-                  - name: 导出证书
-                    href: local-emulator-export-ssl-certificates.md
-          - name: 示例
-            items:
-              - name: Azure CLI
-                href: cli-samples.md
-              - name: PowerShell
-                href: powershell-samples.md
-              - name: .NET 示例
-                href: sql-api-dotnet-samples.md
-              - name: Node.js 示例
-                href: sql-api-nodejs-samples.md
-              - name: Python 示例
-                href: sql-api-python-samples.md
-              - name: Java 示例
-                href: sql-api-java-samples.md
-              - name: 异步 Java 示例
-                href: sql-api-async-java-samples.md
-          - name: 概念
-            items:
-              - name: 资源
-                href: sql-api-resources.md
-              - name: 模型文档数据
-                href: modeling-data.md
-          - name: 操作方法指南
-            items:
-              - name: BulkExecutor - .NET
-                href: bulk-executor-dot-net.md
-              - name: BulkExecutor - Java
-                href: bulk-executor-java.md
-              - name: 查询
-                items:
-                  - name: 执行 SQL 查询
-                    href: sql-api-sql-query.md
-                  - name: 调整查询性能
-                    href: sql-api-sql-query-metrics.md
-              - name: 索引
-                href: indexing-policies.md
-              - name: SQL 数据分区
-                href: sql-api-partition-data.md
-              - name: 更改源
-                href: change-feed.md
-              - name: 数据类型
-                items:
-                  - name: 日期时间
-                    href: working-with-dates.md
-                  - name: 地理空间
-                    href: geospatial.md
-              - name: 调整性能
-                items:
-                  - name: 性能测试
-                    href: performance-testing.md
-                  - name: 异步 Java 性能提示
-                    href: performance-tips-async-java.md
-                  - name: .NET 性能提示
-                    href: performance-tips.md
-                  - name: Java 性能提示
-                    href: performance-tips-java.md
-              - name: 与其他 Azure 服务集成
-                items:
-                  - name: 通过 HDInsight 实现 lambda 体系结构
-                    href: lambda-architecture.md
-                  - name: 连接到 Spark
-                    href: spark-connector.md
-                  - name: 通过 HDInsight 上的 Kafka 和 Spark 进行流式处理
-                    href: 'https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json'
-                  - name: 使用 Azure 应用服务部署网站
-                    href: create-website.md
-                  - name: 使用逻辑应用进行应用程序日志记录
-                    href: 'https://docs.microsoft.com/azure/logic-apps/logic-apps-scenario-error-and-exception-handling?toc=/azure/cosmos-db/toc.json'
-                  - name: 绑定到 Azure Functions
-                    href: 'https://docs.microsoft.com/azure/azure-functions/functions-bindings-cosmosdb?toc=/azure/cosmos-db/toc.json'
-                  - name: 与 Azure 搜索集成
-                    href: 'https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json'
-                  - name: 使用 Azure 数据工厂移动数据
-                    href: 'https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db?toc=/azure/cosmos-db/toc.json'
-                  - name: 使用 Azure 流分析分析实时数据
-                    href: '../stream-analytics/stream-analytics-define-outputs.md#azure-cosmos-db'
-                  - name: 使用逻辑应用获取更改的 HL7 FHIR 记录
-                    href: change-feed-hl7-fhir-logic-apps.md
-                  - name: 实时处理传感器数据
-                    href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
-                  - name: 使用 Power BI 直观显示数据
-                    href: powerbi-visualize.md
-                  - name: 将 ODBC 驱动程序用于数据可视化
-                    href: odbc-driver.md
-                  - name: 将 Spring Boot Starter 与 SQL API 配合使用
-                    href: 'https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json'
-          - name: 引用
-            items:
-              - name: 异步 Java
-                href: sql-api-sdk-async-java.md
-              - name: Java
-                href: sql-api-sdk-java.md
-              - name: .NET
-                href: sql-api-sdk-dotnet.md
-              - name: .NET 更改源
-                href: sql-api-sdk-dotnet-changefeed.md
-              - name: .NET Core
-                href: sql-api-sdk-dotnet-core.md
-              - name: Node.js
-                href: sql-api-sdk-node.md
-              - name: Python
-                href: sql-api-sdk-python.md
-              - name: BulkExecutor - .NET
-                href: sql-api-sdk-bulk-executor-dot-net.md
-              - name: BulkExecutor - Java
-                href: sql-api-sdk-bulk-executor-java.md
-              - name: REST
-                href: /rest/api/cosmos-db/
-              - name: REST 资源提供程序
-                href: /rest/api/cosmos-db-resource-provider/
-              - name: SQL
-                href: sql-api-sql-query-reference.md
-          - name: 资源
-            items:
-              - name: Visual Studio Code 扩展
-                href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
-              - name: SQL 演练
-                href: 'https://aka.ms/cosmos-db-playground'
-      - name: MongoDB API 文档
-        items:
-          - name: 概述
-            items:
-              - name: 关于 MongoDB API
-                href: mongodb-introduction.md
-              - name: MongoDB 支持
-                href: mongodb-feature-support.md
-          - name: 教程
-            items:
-              - name: 1 - 创建
-                items:
-                  - name: Node.js
-                    href: mongodb-samples.md
-                  - name: Node.js 和 Angular
-                    items:
-                      - name: 第 1 部分 - 简介
-                        href: tutorial-develop-mongodb-nodejs.md
-                      - name: 第 2 部分 - 创建 Node 应用
-                        href: tutorial-develop-mongodb-nodejs-part2.md
-                      - name: 第 3 部分 - 添加 Angular UI
-                        href: tutorial-develop-mongodb-nodejs-part3.md
-                      - name: 第 4 部分 - 创建 Cosmos DB
-                        href: tutorial-develop-mongodb-nodejs-part4.md
-                      - name: 第 5 部分 - 连接到 Cosmos DB
-                        href: tutorial-develop-mongodb-nodejs-part5.md
-                      - name: 第 6 部分 - 写入到应用
-                        href: tutorial-develop-mongodb-nodejs-part6.md
-                  - name: Node.js 和 React
-                    href: tutorial-develop-mongodb-react.md
-              - name: 2 - 导入
-                href: mongodb-migrate.md
-              - name: 3 - 查询
-                href: tutorial-query-mongodb.md
-              - name: 4 - 全局分布
-                href: tutorial-global-distribution-mongodb.md
-              - name: 5 - 本地开发
-                items:
-                  - name: 使用模拟器
-                    href: local-emulator.md
-                  - name: 导出证书
-                    href: local-emulator-export-ssl-certificates.md
-          - name: 操作方法指南
-            items:
-              - name: 连接到 MongoDB 帐户
-                href: connect-mongodb-account.md
-              - name: 使用 Studio 3T
-                href: mongodb-mongochef.md
-              - name: 使用 Robomongo
-                href: mongodb-robomongo.md
-              - name: 使用 Mongoose
-                href: mongodb-mongoose.md
-              - name: 使用读取首选项
-                href: mongodb-readpreference.md
-              - name: 索引
-                href: mongodb-indexing.md
-              - name: 使用 Power BI 直观显示数据
-                href: powerbi-visualize.md
-          - name: 资源
-            items:
-              - name: Visual Studio Code 扩展
-                href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
-      - name: 图形 API 文档
-        items:
-          - name: 概述
-            items:
-              - name: 关于图形 API
-                href: graph-introduction.md
-              - name: Gremlin 支持
-                href: gremlin-support.md
-          - name: 教程
-            items:
-              - name: 1 - 查询
-                href: tutorial-query-graph.md
-          - name: 操作方法指南
-            items:
-              - name: Graph 分区
-                href: graph-partitioning.md
-          - name: 资源
-            items:
-              - name: Visual Studio Code 扩展
-                href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
-      - name: 表 API 文档
-        items:
-          - name: 概述
-            items:
-              - name: 关于表 API
-                href: table-introduction.md
-              - name: 表开发
-                href: table-support.md
-          - name: 教程
-            items:
-              - name: 1 - 创建
-                href: tutorial-develop-table-dotnet.md
-              - name: 2 - 导入
-                href: table-import.md
-              - name: 3 - 查询
-                href: tutorial-query-table.md
-              - name: 4 - 全局分布
-                href: tutorial-global-distribution-table.md
-          - name: 示例
-            items:
-              - name: .NET
-                href: table-storage-how-to-use-dotnet.md
-              - name: 'F#'
-                href: 'https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage'
-              - name: Java
-                href: table-storage-how-to-use-java.md
-              - name: Node.js
-                href: table-storage-how-to-use-nodejs.md
-              - name: C++
-                href: table-storage-how-to-use-c-plus.md
-              - name: PHP
-                href: table-storage-how-to-use-php.md
-              - name: Python
-                href: table-storage-how-to-use-python.md
-              - name: Ruby
-                href: table-storage-how-to-use-ruby.md
-          - name: 引用
-            items:
-              - name: .NET
-                href: table-sdk-dotnet.md
-              - name: Java
-                href: table-sdk-java.md
-              - name: Node.js
-                href: table-sdk-nodejs.md
-              - name: Python
-                href: table-sdk-python.md
-          - name: 资源
-            items:
-              - name: 表存储概述
-                href: table-storage-overview.md
-              - name: 表存储设计指南
-                href: table-storage-design-guide.md
-              - name: 表存储 REST API
-                href: /rest/api/storageservices/Table-Service-Concepts
-      - name: Cassandra API 文档
-        items:
-          - name: 概述
-            items:
-              - name: 关于 Cassandra API
-                href: cassandra-introduction.md
-          - name: 教程
-            items:
-              - name: 1 - 创建
-                href: tutorial-develop-cassandra-java.md
-              - name: 2 - 导入
-                href: cassandra-import-data.md
-  - name: 操作方法指南
+    - name: 概述
+      items:
+      - name: 关于图形 API
+        href: graph-introduction.md
+      - name: Gremlin 支持
+        href: gremlin-support.md
+    - name: 教程
+      items:
+      - name: 1 - 查询
+        href: tutorial-query-graph.md
+    - name: 操作方法指南
+      items:
+      - name: Graph 分区
+        href: graph-partitioning.md
+    - name: 资源
+      items:
+      - name: Visual Studio Code 扩展
+        href: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb
+  - name: 表 API 文档
     items:
-      - name: 管理
-        items:
-          - name: 使用 PowerShell 管理
-            href: manage-account-with-powershell.md
-          - name: 使用存储资源管理器进行管理
-            href: storage-explorer.md
-          - name: 使用数据资源管理器进行管理
-            href: data-explorer.md
-          - name: 管理密钥和一致性级别
-            href: manage-account.md
-          - name: Throughput
-            href: set-throughput.md
-          - name: 使数据自动过期
-            href: time-to-live.md
-          - name: 诊断日志记录
-            href: logging.md
-      - name: 保护数据
-        items:
-          - name: 防火墙支持
-            href: firewall-support.md
-          - name: 设置虚拟网络服务终结点
-            href: vnet-service-endpoint.md
-      - name: 监视
-        items:
-          - name: 使用指标进行监视
-            href: use-metrics.md
-          - name: 监视 SLA
-            href: monitor-accounts.md
-      - name: 备份和还原
-        items:
-          - name: 联机备份和还原
-            href: online-backup-and-restore.md
-          - name: 区域性故障转移
-            href: regional-failover.md
-      - name: 自动化
-        items:
-          - name: 存储过程、触发器和 UDF
-            href: programming.md
-          - name: 多主设置
-            href: multi-master-workaround.md
-      - name: 批量执行程序库
-        href: bulk-executor-overview.md
-      - name: 以经济高效的方式读取和写入
-        href: key-value-store-cost.md
-  - name: 资源
+    - name: 概述
+      items:
+      - name: 关于表 API
+        href: table-introduction.md
+      - name: 表开发
+        href: table-support.md
+    - name: 教程
+      items:
+      - name: 1 - 创建
+        href: tutorial-develop-table-dotnet.md
+      - name: 2 - 导入
+        href: table-import.md
+      - name: 3 - 查询
+        href: tutorial-query-table.md
+      - name: 4 - 全局分布
+        href: tutorial-global-distribution-table.md
+    - name: 示例
+      items:
+      - name: .NET
+        href: table-storage-how-to-use-dotnet.md
+      - name: F#
+        href: https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
+      - name: Java
+        href: table-storage-how-to-use-java.md
+      - name: Node.js
+        href: table-storage-how-to-use-nodejs.md
+      - name: C++
+        href: table-storage-how-to-use-c-plus.md
+      - name: PHP
+        href: table-storage-how-to-use-php.md
+      - name: Python
+        href: table-storage-how-to-use-python.md
+      - name: Ruby
+        href: table-storage-how-to-use-ruby.md
+    - name: 引用
+      items:
+      - name: .NET
+        href: table-sdk-dotnet.md
+      - name: Java
+        href: table-sdk-java.md
+      - name: Node.js
+        href: table-sdk-nodejs.md
+      - name: Python
+        href: table-sdk-python.md
+    - name: 资源
+      items:
+      - name: 表存储概述
+        href: table-storage-overview.md
+      - name: 表存储设计指南
+        href: table-storage-design-guide.md
+      - name: 表存储 REST API
+        href: /rest/api/storageservices/Table-Service-Concepts
+  - name: Cassandra API 文档
     items:
-      - name: 查询备忘单
-        href: query-cheat-sheet.md
-      - name: 20 天的提示
-        href: 20-days-of-tips.md
-      - name: 视频
-        href: 'https://azure.microsoft.com/resources/videos/index/?services=cosmos-db'
-      - name: Azure 路线图
-        href: 'https://azure.microsoft.com/roadmap/'
-      - name: 免费试用 Azure Cosmos DB
-        href: 'https://azure.microsoft.com/try/cosmosdb/'
-      - name: 定价
-        href: 'https://azure.microsoft.com/pricing/details/cosmos-db/'
-      - name: 常见问题解答
-        href: faq.md
-      - name: 借助棒球解释数据一致性
-        href: 'http://research.microsoft.com/apps/pubs/default.aspx?id=206913'
-      - name: 白皮书
-        href: whitepapers.md
+    - name: 概述
+      items:
+      - name: 关于 Cassandra API
+        href: cassandra-introduction.md
+    - name: 教程
+      items:
+      - name: 1 - 创建
+        href: tutorial-develop-cassandra-java.md
+      - name: 2 - 导入
+        href: cassandra-import-data.md
+- name: 操作方法指南
+  items:
+  - name: 管理
+    items:
+    - name: 使用 PowerShell 管理
+      href: manage-account-with-powershell.md
+    - name: 使用存储资源管理器进行管理
+      href: storage-explorer.md
+    - name: 使用数据资源管理器进行管理
+      href: data-explorer.md
+    - name: 管理密钥和一致性级别
+      href: manage-account.md
+    - name: Throughput
+      href: set-throughput.md
+    - name: 使数据自动过期
+      href: time-to-live.md
+    - name: 诊断日志记录
+      href: logging.md
+  - name: 保护数据
+    items:
+    - name: 防火墙支持
+      href: firewall-support.md
+    - name: 设置虚拟网络服务终结点
+      href: vnet-service-endpoint.md
+  - name: 监视
+    items:
+    - name: 使用指标进行监视
+      href: use-metrics.md
+    - name: 监视 SLA
+      href: monitor-accounts.md
+  - name: 备份和还原
+    items:
+    - name: 联机备份和还原
+      href: online-backup-and-restore.md
+    - name: 区域性故障转移
+      href: regional-failover.md
+  - name: 自动化
+    items:
+    - name: 存储过程、触发器和 UDF
+      href: programming.md
+    - name: 多主设置
+      href: multi-master-workaround.md
+  - name: 批量执行程序库
+    href: bulk-executor-overview.md
+  - name: 以经济高效的方式读取和写入
+    href: key-value-store-cost.md
+- name: 资源
+  items:
+  - name: 查询备忘单
+    href: query-cheat-sheet.md
+  - name: 20 天的提示
+    href: 20-days-of-tips.md
+  - name: 视频
+    href: https://azure.microsoft.com/resources/videos/index/?services=cosmos-db
+  - name: Azure 路线图
+    href: https://azure.microsoft.com/roadmap/
+  - name: 免费试用 Azure Cosmos DB
+    href: https://azure.microsoft.com/try/cosmosdb/
+  - name: 定价
+    href: https://azure.microsoft.com/pricing/details/cosmos-db/
+  - name: 常见问题解答
+    href: faq.md
+  - name: 借助棒球解释数据一致性
+    href: http://research.microsoft.com/apps/pubs/default.aspx?id=206913
+  - name: 白皮书
+    href: whitepapers.md

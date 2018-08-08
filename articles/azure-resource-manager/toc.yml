@@ -16,7 +16,6 @@
     - name: 创建模板 - Visual Studio
       href: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
 - name: 教程
-  expanded: true
   items:
     - name: 创建加密的存储帐户
       href: resource-manager-tutorial-create-encrypted-storage-accounts.md
@@ -52,10 +51,12 @@
               href: resource-manager-templates-outputs.md
         - name: 链接的模板和嵌套的模板
           href: resource-group-linked-templates.md
-        - name: 定义资源之间的依赖关系
+        - name: 资源依赖关系
           href: resource-group-define-dependencies.md
         - name: 创建多个实例
           href: resource-group-create-multiple.md
+        - name: 在模板中创建资源组
+          href: create-resource-group-in-template.md
         - name: 更新资源
           href: /azure/architecture/building-blocks/extending-templates/update-resource
     - name: 部署

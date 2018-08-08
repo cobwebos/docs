@@ -401,10 +401,10 @@
 ### [检索访问评审结果](active-directory-azure-ad-controls-retrieve-access-review.md)
 
 ## 保护标识
-### [条件性访问](active-directory-conditional-access-azure-portal.md)
-#### [入门](active-directory-conditional-access-azure-portal-get-started.md)
+### 条件性访问
+#### [概述](conditional-access/overview.md)
 #### 快速入门
-##### [根据云应用 MFA 进行配置](conditional-access/app-based-mfa.md)
+##### [需要对特定应用执行 MFA](conditional-access/app-based-mfa.md)
 ##### [需要接受使用条款](conditional-access/require-tou.md)
 ##### [检测到会话风险时阻止访问](conditional-access/app-sign-in-risk.md)
 #### 教程
@@ -418,15 +418,16 @@
 ##### [了解 Office 365 服务的设备策略](active-directory-conditional-access-device-policies.md)
 #### 操作指南
 ##### [最佳实践](conditional-access/best-practices.md)
-##### [针对来自不受信任网络的访问尝试配置条件访问策略](active-directory-conditional-access-untrusted-networks.md)
-##### [设置基于设备的条件访问](active-directory-conditional-access-policy-connected-applications.md)
-##### [设置基于应用的条件访问](active-directory-conditional-access-mam.md)
-##### [为用户和应用提供使用条款](active-directory-tou.md)
+##### [需要对来自不受信任网络的访问尝试执行 MFA](conditional-access/untrusted-networks.md)
+##### [需要托管设备](conditional-access/require-managed-devices.md)
+##### [需要已批准的客户端应用](conditional-access/app-based-conditional-access.md)
+##### [需要用户和应用的使用条款](active-directory-tou.md)
 ##### [迁移经典策略](conditional-access/policy-migration.md)
 ##### [设置 VPN 连接](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/always-on-vpn-deploy)
 ##### [设置 SharePoint 和 Exchange Online](active-directory-conditional-access-no-modern-authentication.md)
 ##### [补救方法](active-directory-conditional-access-device-remediation.md)
-#### [技术参考](active-directory-conditional-access-technical-reference.md)
+#### [参考](conditional-access/technical-reference.md)
+##### [技术参考](conditional-access/technical-reference.md)
 #### [常见问题](conditional-access/faqs.md)
 
 ### 基于证书的身份验证

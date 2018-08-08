@@ -176,6 +176,8 @@
               href: howto-mfa-nps-extension-errors.md
     - name: 故障排除
       items:
+        - name: 禁用聚合注册
+          href: howto-registration-mfa-sspr-converged-troubleshoot.md
         - name: 对 SSPR 进行故障排除
           href: active-directory-passwords-troubleshoot.md
         - name: SSPR 常见问题解答

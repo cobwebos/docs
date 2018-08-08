@@ -553,8 +553,8 @@
                   href: service-fabric-cluster-scale-up-down.md
                 - name: 以编程方式横向扩展
                   href: service-fabric-cluster-programmatic-scaling.md
-                - name: 缩放或升级主节点类型 VM
-                  href: service-fabric-cluster-upgrade-primary-nodetype-vm.md
+                - name: 虚拟机规模集节点类型横向扩展
+                  href: virtual-machine-scale-set-scale-node-type-scale-out.md
             - name: 升级
               href: service-fabric-cluster-upgrade.md
             - name: 设置访问控制
