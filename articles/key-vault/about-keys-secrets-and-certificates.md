@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: alleonar
-ms.openlocfilehash: 77675b3c0b2ed9fcdb923c92638384d215bddc40
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 8597b2d995b68e9ccff9b856b2ef6bd325cd2439
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972394"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39359183"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>关于密钥、机密和证书
 用户通过 Azure Key Vault 可以在 Microsoft Azure 环境中存储和使用加密密钥。 Key Vault 支持多种密钥类型和算法，可以对高价值的密钥使用硬件安全模块 (HSM)。 此外，用户还可以使用 Key Vault 安全地存储机密。 机密是有限大小的八位组对象，无任何特定语义。 Key Vault 还支持基于密钥和机密并且添加了自动续订功能的证书。
@@ -117,15 +117,36 @@ Azure Key Vault 中的对象可以使用当前标识符或特定于版本的标�
 
 Azure Key Vault 中的加密密钥表示为 JSON Web 密钥 [JWK] 对象。 此外，扩展了基本 JWK/JWA 规范，使 Azure Key Vault HSM 实现对应唯一的密钥类型。例如，使用 HSM 供应商 (Thales) 的特定打包将密钥导入 Azure Key Vault，以实现密钥的安全传输，这些密钥只能在 Azure Key Vault HSM 中使用。  
 
-Azure Key Vault 的初始版本仅支持 RSA 密钥；未来版本可能会支持其他密钥类型，例如对称和椭圆曲线。  
-
--   **RSA**：2048 位 RSA 密钥。 这是一种“软”密钥，在软件中由 Key Vault 处理，但在存储时使用 HSM 中的系统密钥进行静态加密。 客户端可以导入现有 RSA 密钥，也可以请求 Azure Key Vault 生成该密钥。  
--   **RSA HSM**：在 HSM 中处理的 RSA 密钥。 RSA-HSM 密钥在一个 Azure Key Vault HSM 安全体系中受到保护（按地理位置设置安全体系，以保持隔离）。 客户端可以采用软性形式或通过从兼容 HSM 设备导出的方式来导入 RSA 密钥，也可以请求 Azure Key Vault 生成该密钥。 此密钥类型可以将 T 属性添加到获得的 JWK 以携带 HSM 密钥材料。  
+- **“软”密钥**：由 Key Vault 在软件中处理，但使用 HSM 中的系统密钥进行静态加密的一种密钥。 客户端可以导入现有 RSA 或 EC 密钥，也可以请求 Azure Key Vault 生成该密钥。
+- **“硬”密钥**：在 HSM（硬件安全模块）中处理的密钥。 这些密钥在一个 Azure Key Vault HSM 安全体系中受到保护（按地理位置设置安全体系，以保持隔离）。 客户端可以采用软性形式或通过从兼容 HSM 设备导出的方式来导入 RSA 或 EC 密钥，也可以请求 Azure Key Vault 生成该密钥。 此密钥类型可以将 T 属性添加到获得的 JWK 以携带 HSM 密钥材料。
 
      有关地理边界的详细信息，请参阅 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/privacy/)  
 
+Azure Key Vault 仅支持 RSA 和椭圆曲线密钥；将来的版本可能会支持其他密钥类型，例如对称密钥。
+
+-   **EC**：“软”椭圆曲线密钥。
+-   **EC-HSM**：“硬”椭圆曲线密钥。
+-   **RSA**：“软”RSA 密钥。
+-   **RSA-HSM**：“硬”RSA 密钥。
+
+Azure Key Vault 支持大小为 2048、3072 和 4096 的 RSA 密钥，以及 P-256、P-384，P-521 和 P-256K 类型的椭圆曲线密钥。
+
+### <a name="BKMK_Cryptographic"></a> 加密保护
+
+Azure Key Vault 使用的加密模块（HSM 或软件）经过 FIPS 验证。 因此不必执行任何特殊操作便可在 FIPS 模式下运行。 如果创建或导入受 HSM 保护的密钥，可确保这些密钥在验证为 FIPS 140-2 第 2 级或更高级别的 HSM 中处理。 如果创建或导入受软件包保护的密钥，这些密钥会在验证为 FIPS 140-2 第 1 级或更高级别的加密模块中处理。 有关详细信息，请参阅[密钥和密钥类型](about-keys-secrets-and-certificates.md#BKMK_KeyTypes)。
+
+###  <a name="BKMK_ECAlgorithms"></a>EC 算法
+ Azure Key Vault 中的 EC 和 EC-HSM 密钥支持以下算法标识符。 
+
+#### <a name="signverify"></a>SIGN/VERIFY
+
+-   **ES256** - 使用曲线 P-256 创建的 SHA-256 摘要和密钥的 ECDSA。 [RFC7518] 中描述了此算法。
+-   **ES256K** - 使用曲线 P-256K 创建的 SHA-256 摘要和密钥的 ECDSA。 此算法正在等待标准化。
+-   **ES384** - 使用曲线 P-384 创建的 SHA-384 摘要和密钥的 ECDSA。 [RFC7518] 中描述了此算法。
+-   **ES512** - 使用曲线 P-521 创建的 SHA-512 摘要和密钥的 ECDSA。 [RFC7518] 中描述了此算法。
+
 ###  <a name="BKMK_RSAAlgorithms"></a> RSA 算法  
- Azure Key Vault 中的 RSA 密钥支持以下算法标识符。  
+ Azure Key Vault 中的 RSA 和 RSA-HSM 密钥支持以下算法标识符。  
 
 #### <a name="wrapkeyunwrapkey-encryptdecrypt"></a>包装密钥/解包密钥、加密/解密
 
@@ -138,25 +159,6 @@ Azure Key Vault 的初始版本仅支持 RSA 密钥；未来版本可能会支�
 -   **RS384** - RSASSA-PKCS-v1_5 使用 SHA-384。 必须使用 SHA-384 计算应用程序提供的摘要值，并且该值的长度必须为 48 字节。  
 -   **RS512** - RSASSA-PKCS-v1_5 使用 SHA-512。 必须使用 SHA-512 计算应用程序提供的摘要值，并且该值的长度必须为 64 字节。  
 -   **RSNULL** - 请参阅一种用于实现某种 TLS 方案的特殊用例 [RFC2437]。  
-
-###  <a name="BKMK_RSA-HSMAlgorithms"></a> RSA-HSM 算法  
-Azure Key Vault 中的 RSA-HSM 密钥支持以下算法标识符。  
-
-### <a name="BKMK_Cryptographic"></a> 加密保护
-
-Azure Key Vault 使用的加密模块（HSM 或软件）经过 FIPS 验证。 因此不必执行任何特殊操作便可在 FIPS 模式下运行。 如果创建或导入受 HSM 保护的密钥，可确保这些密钥在验证为 FIPS 140-2 第 2 级或更高级别的 HSM 中处理。 如果创建或导入受软件包保护的密钥，这些密钥会在验证为 FIPS 140-2 第 1 级或更高级别的加密模块中处理。 有关详细信息，请参阅[密钥和密钥类型](about-keys-secrets-and-certificates.md#BKMK_KeyTypes)。
-
-#### <a name="wrapunwrap-encryptdecrypt"></a>WRAP/UNWRAP、ENCRYPT/DECRYPT
-
--   **RSA1_5** - RSAES-PKCS1-V1_5 [RFC3447] 密钥加密。  
--   **RSA-OAEP** - RSAES 使用最优非对称加密填充 (OAEP) [RFC3447] 以及 A.2.1. 节中 RFC 3447 指定的默认参数。 这些默认参数使用 SHA-1 哈希函数和 SHA-1 附带的 MGF1 掩码生成函数。  
-
- #### <a name="signverify"></a>SIGN/VERIFY  
-
--   **RS256** - RSASSA-PKCS-v1_5 使用 SHA-256。 必须使用 SHA-256 计算应用程序提供的摘要值，并且该值的长度必须为 32 字节。  
--   **RS384** - RSASSA-PKCS-v1_5 使用 SHA-384。 必须使用 SHA-384 计算应用程序提供的摘要值，并且该值的长度必须为 48 字节。  
--   **RS512** - RSASSA-PKCS-v1_5 使用 SHA-512。 必须使用 SHA-512 计算应用程序提供的摘要值，并且该值的长度必须为 64 字节。  
--   RSNULL：请参阅一种用于实现某种 TLS 方案的特殊用例 [RFC2437]。  
 
 ###  <a name="BKMK_KeyOperations"></a> 密钥操作
 

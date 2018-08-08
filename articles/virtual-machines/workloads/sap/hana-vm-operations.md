@@ -1,5 +1,5 @@
 ---
-title: Azure 上的 SAP HANA 操作 | Microsoft Docs
+title: Azure 上的 SAP HANA 基础结构配置和操作 | Microsoft Docs
 description: Azure 虚拟机上部署的 SAP HANA 系统的操作指南。
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/24/2018
+ms.date: 07/27/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2480ad464f2fc716cf68672387a189aeb92f5737
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 59db39e4d8cc68f8c7b63b347980044f06b4522a
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918826"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344403"
 ---
-# <a name="sap-hana-on-azure-operations-guide"></a>Azure 上的 SAP HANA 操作指南
-本文档提供有关操作 Azure 本机虚拟机 (VM) 上部署的 SAP HANA 系统的指导。 本文档并不旨在取代标准 SAP 文档，后者包括以下内容：
+# <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure 上的 SAP HANA 基础结构配置和操作
+本文档提供有关配置 Azure 基础结构以及操作 Azure 本机虚拟机 (VM) 上部署的 SAP HANA 系统的指导。 本文档还包含有关 M128s VM SKU 的 SAP HANA 横向扩展的配置信息。 本文档并不旨在取代标准 SAP 文档，后者包括以下内容：
 
 - [SAP 管理指南](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/330e5550b09d4f0f8b6cceb14a64cd22.html)
 - [SAP 安装指南](https://service.sap.com/instguides)
@@ -57,7 +57,7 @@ ms.locfileid: "37918826"
 [IAAS 的 SAP 文档](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html)中列出了可用于生产方案的 Azure VM 类型。 对于非生产方案，可使用更广泛的本机 Azure VM 类型。
 
 >[!NOTE]
-> 对于非生产方案，请使用 [SAP 说明 #1928533](https://launchpad.support.sap.com/#/notes/1928533) 中列出的 VM 类型。 若要将 Azure VM 用于生产场景，请在 SAP 发布的[已认证 IaaS 平台列表](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html)中查看已通过 SAP HANA 认证的 VM。
+> 对于非生产方案，请使用 [SAP 说明 #1928533](https://launchpad.support.sap.com/#/notes/1928533) 中列出的 VM 类型。 若要将 Azure VM 用于生产场景，请在 SAP 发布的[已认证 IaaS 平台列表](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)中查看已通过 SAP HANA 认证的 VM。
 
 通过使用以下方法在 Azure 中部署 VM：
 
@@ -79,16 +79,16 @@ Azure 针对 Azure 标准和高级存储上的 VHD 提供两种部署方法。 �
 
 ### <a name="configuring-the-storage-for-azure-virtual-machines"></a>配置 Azure 虚拟机的存储
 
-购买本地使用的 SAP HANA 设备后，永远不需要考虑 I/O 子系统及其功能，因为设备供应商会确保 SAP HANA 满足最低存储要求。 由于 Azure 基础结构由你自己构建，因此也应该注意其中的一些要求，以便了解后续部分中建议的配置要求。 配置用于运行 SAP HANA 的虚拟机时，也应该这样做。 为了满足某些要求，需要做到以下几点：
+自从购买本地用的 SAP HANA 设备以来，我们从未考虑过 I/O 子系统及其功能， 因为设备供应商会确保满足 SAP HANA 的最低存储要求。 在自行构建 Azure 基础结构时，我们也应该注意其中的一些要求。 此外，应了解后续部分中建议的配置要求。 配置用于运行 SAP HANA 的虚拟机时，也应该这样做。 为了满足某些要求，需要做到以下几点：
 
-- 在最小大小为 1MB I/O、速率为 250MB/秒 的 /hana/log 上启用读/写卷
-- 为 16MB 和 64MB I/O 大小的 /hana/data 启用至少 400MB/秒的读取活动
-- 为 16MB 和 64MB I/O 大小的 /hana/data 启用至少 250MB/秒的写入活动
+- 在最小大小为 1MB I/O、速率为 250MB/秒的 **/hana/log** 上启用读/写卷
+- 为 16MB 和 64MB I/O 大小的 **/hana/data** 启用至少 400MB/秒的读取活动
+- 为 16MB 和 64MB I/O 大小的 **/hana/data** 启用至少 250MB/秒的写入活动
 
-如果低存储延迟对于 DBMS 系统至关重要（即使对于 SAP HANA 等系统也是如此），请将数据保留在内存中。 存储中的关键路径通常围绕 DBMS 系统的事务日志写入。 同时，在故障恢复之后写入保存点或加载内存中数据的操作可能也很关键。 因此，必须对 /hana/data 和 /hana/log 卷使用 Azure 高级磁盘。 为了达到 SAP 所需的最低 /hana/log 和 /hana/data 吞吐量，需要使用 MDADM 或 LVM 基于多个 Azure 高级存储磁盘构建 RAID 0，并将 RAID 卷用作 /hana/data 和 /hana/log 卷。 对于 RAID 0 的条带大小，建议使用：
+如果低存储延迟对于 DBMS 系统至关重要（即使对于 SAP HANA 等 DBMS 系统也是如此），请将数据保留在内存中。 存储中的关键路径通常围绕 DBMS 系统的事务日志写入。 同时，在故障恢复之后写入保存点或加载内存中数据的操作可能也很关键。 因此，必须对 **/hana/data** 和 **/hana/log** 卷使用 Azure 高级磁盘。 为了达到 SAP 所需的最低 **/hana/log** 和 **/hana/data** 吞吐量，需要使用 MDADM 或 LVM 基于多个 Azure 高级存储磁盘构建 RAID 0。 将 RAID 卷用作 **/hana/data** 和 **/hana/log** 卷。 对于 RAID 0 的条带大小，建议使用：
 
-- /hana/data：64K 或 128K
-- /hana/log：32K
+- **/hana/data**：64KB 或 128KB
+- **/hana/log**：32KB
 
 > [!NOTE]
 > 不需要使用 RAID 卷配置任何冗余级别，因为 Azure 高级和标准存储保留 VHD 的三个映像。 使用 RAID 卷的原因仅仅是为了配置可提供足够 I/O 吞吐量的卷。
@@ -97,7 +97,7 @@ Azure 针对 Azure 标准和高级存储上的 VHD 提供两种部署方法。 �
 
 以下缓存建议假设列出的 SAP HANA 的 I/O 特征如下所示：
 
-- 几乎没有任何针对 HANA 数据文件的读取工作负荷。 HANA 实例重启后或 Azure VM 在数据加载到 HANA 时重启后出现的大型 I/O 例外。 执行 HANA 数据库备份后，也可能出现大量针对数据文件的读取 I/O。 因此，大多数情况下读取缓存没有意义，因为在大多数情况下，需要完全读取所有数据文件卷。
+- 几乎没有任何针对 HANA 数据文件的读取工作负荷。 重启 HANA 实例后或者在将数据载入 HANA 时出现的大型 I/O 例外。 执行 HANA 数据库备份后，也可能出现大量针对数据文件的读取 I/O。 因此，大多数情况下读取缓存没有意义，因为在大多数情况下，需要完全读取所有数据文件卷。
 - HANA 写入点和 HANA 故障恢复会产生大量针对数据文件的写入。 写入保存点是异步进行的，不阻止任何用户事务。 在故障恢复期间写入数据对性能要严格要求，以便系统再次快速响应。 但是，故障恢复更确切地说应该是异常情况
 - 几乎不会从 HANA 重做文件进行任何读取。 执行事务日志备份、故障恢复或在 HANA 实例重启阶段出现的大型 I/O 例外。  
 - 针对 SAP HANA 重做日志文件的主要负载是写入负载。 根据工作负载的性质，I/O 可以小至 4 KB，也可达到 1 MB 或更大。 针对 SAP HANA 重做文件的写入延迟对性能要很高要求。
@@ -105,9 +105,9 @@ Azure 针对 Azure 标准和高级存储上的 VHD 提供两种部署方法。 �
 
 对于这些观察到的 SAP HANA 的 I/O 模式，使用 Azure 高级存储的不同卷的缓存应设置为如下形式：
 
-- /hana/data - 无缓存
-- /hana/log - 无缓存 - M 系列例外（详见本文稍后部分）
-- /hana/shared - 服务缓存
+- **/hana/data** - 无缓存
+- **/hana/log** - 无缓存 - M 系列例外（详见本文稍后部分）
+- **/hana/shared** - 读取缓存
 
 
 在确定 VM 大小或决定 VM 时，还要考虑总体 VM I/O 吞吐量。 [内存优化虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)一文中记录了总体 VM 存储吞吐量。
@@ -119,7 +119,7 @@ Azure 针对 Azure 标准和高级存储上的 VHD 提供两种部署方法。 �
 > 对于生产场景，请在 [IAAS 的 SAP 文档](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html)中查看特定的 VM 类型是否受 SAP HANA 的支持。
 
 
-| VM SKU | RAM | 每个  VM I/O<br /> Throughput | /hana/data and /hana/log<br /> 使用 LVM 或 MDADM 进行条带化 | /hana/shared | /root 卷 | /usr/sap | hana/backup |
+| VM SKU | RAM | 最大 VM I/O<br /> Throughput | /hana/data and /hana/log<br /> 使用 LVM 或 MDADM 进行条带化 | /hana/shared | /root 卷 | /usr/sap | hana/backup |
 | --- | --- | --- | --- | --- | --- | --- | -- |
 | DS14v2 | 128 GiB | 768 MB/秒 | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S15 |
 | E16v3 | 128 GiB | 384 MB/秒 | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S15 |
@@ -135,8 +135,8 @@ Azure 针对 Azure 标准和高级存储上的 VHD 提供两种部署方法。 �
 | M128ms | 3800 GiB | 2000 MB/秒 | 5 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 2 x S50 |
 
 
-根据 [SAP TDI 存储白皮书](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)，对于采用 3 x P20 配置的较小 VM 类型，建议的磁盘空间大于建议的卷空间。 但是，表中显示的选项旨在为 SAP HANA 提供足够的磁盘吞吐量。 如果需要改用 /hana/backup 卷（该卷的大小适合保留相当于两倍内存卷的备份），请任意调整配置。   
-检查建议的不同卷的存储吞吐量是否满足所要运行的工作负荷。 如果工作负荷要求对 /hana/data 和 /hana/log 使用更高规格的卷，则需要增加 Azure 高级存储 VHD。 对于包含的 VHD 数目比所列数目更多的卷，调整其大小会在 Azure 虚拟机类型的限制范围内增大 IOPS 和 I/O 吞吐量。 
+根据 [SAP TDI 存储白皮书](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)，对于采用 3 x P20 配置的较小 VM 类型，建议的磁盘空间大于建议的卷空间。 但是，表中显示的选项旨在为 SAP HANA 提供足够的磁盘吞吐量。 如果需要改用 **/hana/backup** 卷（该卷的大小适合保留相当于两倍内存卷的备份），请任意调整配置。   
+检查建议的不同卷的存储吞吐量是否满足所要运行的工作负荷。 如果工作负荷要求对 **/hana/data** 和 **/hana/log** 使用更高规格的卷，则需要增加 Azure 高级存储 VHD。 对于包含的 VHD 数目比所列数目更多的卷，调整其大小会在 Azure 虚拟机类型的限制范围内增大 IOPS 和 I/O 吞吐量。 
 
 > [!NOTE]
 > 上述配置并不会受益于 [Azure 虚拟机单一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_6/)，因为此配置混合使用了 Azure 高级存储和 Azure 标准存储。 但是，这种选择可以优化成本。
@@ -148,7 +148,7 @@ Azure 针对 Azure 标准和高级存储上的 VHD 提供两种部署方法。 �
 > [!NOTE]
 > 对于生产场景，请在 [IAAS 的 SAP 文档](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html)中查看特定的 VM 类型是否受 SAP HANA 的支持。
 
-| VM SKU | RAM | 每个  VM I/O<br /> Throughput | /hana/data and /hana/log<br /> 使用 LVM 或 MDADM 进行条带化 | /hana/shared | /root 卷 | /usr/sap | hana/backup |
+| VM SKU | RAM | 最大 VM I/O<br /> Throughput | /hana/data and /hana/log<br /> 使用 LVM 或 MDADM 进行条带化 | /hana/shared | /root 卷 | /usr/sap | hana/backup |
 | --- | --- | --- | --- | --- | --- | --- | -- |
 | DS14v2 | 128 GiB | 768 MB/秒 | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P15 |
 | E16v3 | 128 GiB | 384 MB/秒 | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P15 |
@@ -164,23 +164,22 @@ Azure 针对 Azure 标准和高级存储上的 VHD 提供两种部署方法。 �
 | M128ms | 3800 GiB | 2000 MB/秒 | 5 x P30 | 1 x P30 | 1 x P6 | 1 x P6 | 2 x P50 |
 
 
-根据 [SAP TDI 存储白皮书](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)，对于采用 3 x P20 配置的较小 VM 类型，建议的磁盘空间大于建议的卷空间。 但是，表中显示的选项旨在为 SAP HANA 提供足够的磁盘吞吐量。 如果需要改用 /hana/backup 卷（该卷的大小适合保留相当于两倍内存卷的备份），请任意调整配置。  
-检查建议的不同卷的存储吞吐量是否满足所要运行的工作负荷。 如果工作负荷要求对 /hana/data 和 /hana/log 使用更高规格的卷，则需要增加 Azure 高级存储 VHD。 对于包含的 VHD 数目比所列数目更多的卷，调整其大小会在 Azure 虚拟机类型的限制范围内增大 IOPS 和 I/O 吞吐量。 
-
+根据 [SAP TDI 存储白皮书](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)，对于采用 3 x P20 配置的较小 VM 类型，建议的磁盘空间大于建议的卷空间。 但是，表中显示的选项旨在为 SAP HANA 提供足够的磁盘吞吐量。 如果需要改用 **/hana/backup** 卷（该卷的大小适合保留相当于两倍内存卷的备份），请任意调整配置。  
+检查建议的不同卷的存储吞吐量是否满足所要运行的工作负荷。 如果工作负荷要求对 **/hana/data** 和 **/hana/log** 使用更高规格的卷，则需要增加 Azure 高级存储 VHD。 对于包含的 VHD 数目比所列数目更多的卷，调整其大小会在 Azure 虚拟机类型的限制范围内增大 IOPS 和 I/O 吞吐量。 
 
 
 #### <a name="storage-solution-with-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>对 Azure M 系列虚拟机使用包含 Azure 写入加速器的存储解决方案
-Azure 写入加速器是专门针对 M 系列 VM 推出的一项功能。 顾名思义，该功能的目的是改善针对 Azure 高级存储执行的写入操作的 I/O 延迟。 在 SAP HANA 中，预期只能对 /hana/log 卷使用写入加速器。 因此，到目前为止所述的配置都需要更改。 主要更改是在 /hana/data 与 /hana/log 之间做出划分，以便仅针对 /hana/log 卷使用 Azure 写入加速器。 
+Azure 写入加速器是专门针对 M 系列 VM 推出的一项功能。 顾名思义，该功能的目的是改善针对 Azure 高级存储执行的写入操作的 I/O 延迟。 在 SAP HANA 中，预期只能对 **/hana/log** 卷使用写入加速器。 因此，到目前为止所述的配置都需要更改。 主要更改是在 **/hana/data** 与 **/hana/log** 之间做出划分，以便仅针对 **/hana/log** 卷使用 Azure 写入加速器。 
 
 > [!IMPORTANT]
-> Azure M 系列虚拟机的 SAP HANA 认证要求中规定，Azure 写入加速器只能用于 /hana/log 卷。 因此，在 Azure M 系列虚拟机上的生产场景 SAP HANA 部署中，应该配置 /hana/log 卷使用的 Azure 写入加速器。  
+> Azure M 系列虚拟机的 SAP HANA 认证要求中规定，Azure 写入加速器只能用于 **/hana/log** 卷。 因此，在 Azure M 系列虚拟机上的生产场景 SAP HANA 部署中，应该配置 **/hana/log** 卷使用的 Azure 写入加速器。  
 
 > [!NOTE]
 > 对于生产场景，请在 [IAAS 的 SAP 文档](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html)中查看特定的 VM 类型是否受 SAP HANA 的支持。
 
 建议的配置如下：
 
-| VM SKU | RAM | 每个  VM I/O<br /> Throughput | /hana/data | /hana/log | /hana/shared | /root 卷 | /usr/sap | hana/backup |
+| VM SKU | RAM | 最大 VM I/O<br /> Throughput | /hana/data | /hana/log | /hana/shared | /root 卷 | /usr/sap | hana/backup |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
 | M32ts | 192 GiB | 500 MB/秒 | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P20 |
 | M32ls | 256 GiB | 500 MB/秒 | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P20 |
@@ -190,9 +189,9 @@ Azure 写入加速器是专门针对 M 系列 VM 推出的一项功能。 顾名
 | M128s | 2000 GiB | 2000 MB/秒 |3 x P30 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 | 2 x P40 |
 | M128ms | 3800 GiB | 2000 MB/秒 | 5 x P30 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 | 2 x P50 |
 
-检查建议的不同卷的存储吞吐量是否满足所要运行的工作负荷。 如果工作负荷要求对 /hana/data 和 /hana/log 使用更高规格的卷，则需要增加 Azure 高级存储 VHD。 对于包含的 VHD 数目比所列数目更多的卷，调整其大小会在 Azure 虚拟机类型的限制范围内增大 IOPS 和 I/O 吞吐量。
+检查建议的不同卷的存储吞吐量是否满足所要运行的工作负荷。 如果工作负荷要求对 **/hana/data** 和 **/hana/log** 使用更高规格的卷，则需要增加 Azure 高级存储 VHD。 对于包含的 VHD 数目比所列数目更多的卷，调整其大小会在 Azure 虚拟机类型的限制范围内增大 IOPS 和 I/O 吞吐量。
 
-只能配合 [Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/)使用 Azure 写入加速器。 因此，至少需要将构成 /hana/log 卷的 Azure 高级存储磁盘部署为托管磁盘。
+只能配合 [Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/)使用 Azure 写入加速器。 因此，至少需要将构成 **/hana/log** 卷的 Azure 高级存储磁盘部署为托管磁盘。
 
 Azure 写入加速器在每个 VM 中支持的 Azure 高级存储 VHD 数目有限制。 当前限制为：
 
@@ -205,29 +204,153 @@ Azure 写入加速器在每个 VM 中支持的 Azure 高级存储 VHD 数目有�
 此文中还介绍了 Azure 写入加速器的详细信息和限制。
 
 
+
 ### <a name="set-up-azure-virtual-networks"></a>设置 Azure 虚拟网络
-当通过 VPN 或 ExpressRoute 与 Azure 建立站点到站点连接时，必须至少有一个 [Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)已通过虚拟网关连接到 VPN 或 ExpressRoute 线路。 虚拟网关驻留在 Azure 虚拟网络中的子网内。 要安装 SAP HANA，需要在虚拟网络中另外创建两个子网。 一个子网托管 VM 以运行 SAP HANA 实例。 另一子网运行 Jumpbox 或管理 VM，以托管 SAP HANA Studio 或其他管理软件。
+当通过 VPN 或 ExpressRoute 与 Azure 建立站点到站点连接时，必须至少有一个 Azure 虚拟网络已通过虚拟网关连接到 VPN 或 ExpressRoute 线路。 在简单部署中，也可以将虚拟网关部署在托管 SAP HANA 实例的 Azure 虚拟网络 (VNet) 的子网中。 若要安装 SAP HANA，需要在 Azure 虚拟网络中另外创建两个子网。 一个子网托管 VM 以运行 SAP HANA 实例。 另一子网运行 Jumpbox 或管理 VM，以托管 SAP HANA Studio、其他管理软件或应用程序软件。
 
 安装 VM 以运行 SAP HANA 时，VM 需要：
 
 - 已安装两个虚拟 NIC：其中一个 NIC 连接到管理子网，另一个从本地或其他网络连接到 Azure VM 中的 SAP HANA 实例。
 - 为两个虚拟 NIC 部署静态专用 IP 地址。
 
+但是，对于持久性部署，需要在 Azure 中创建虚拟数据中心网络体系结构。 此体系结构建议在独立的 Azure VNet 中隔离连接到本地的 Azure VNet 网关。 此独立 VNet 应托管发往本地或 Internet 的所有流量。 使用此方法可以部署软件用于审核和记录进入此独立中心 VNet 中 Azure 虚拟数据中心的流量。 因此，有一个 VNet 托管传入和传出 Azure 部署的流量相关的所有软件和配置。
+
+文章 [Azure 虚拟数据中心：网络透视](https://docs.microsoft.com/azure/networking/networking-virtual-datacenter)和 [Azure 虚拟数据中心和企业控制平面](https://docs.microsoft.com/azure/architecture/vdc/)提供了有关虚拟数据中心方法和相关Azure VNet 设计的详细信息。
+
+
+>[!NOTE]
+>使用 [Azure VNet 对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)在中心 VNet 与分支 VNet 之间传送的流量会产生额外的[成本](https://azure.microsoft.com/pricing/details/virtual-network/)。 鉴于这些成本，可能需要考虑在运行严格的中心和分支网络设计，以及在运行多个连接到“分支”的 [Azure ExpressRoute 网关](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways)以绕过 VNet 对等互连之间做出取舍。 但是，Azure ExpressRoute 网关也会造成额外的[成本](https://azure.microsoft.com/pricing/details/vpn-gateway/)。 此外，用于网络流量日志记录、审核和监视的第三方软件也会产生额外的成本。 根据在一端通过 VNet 对等互连进行数据交换产生的成本，以及附加 Azure ExpressRoute 网关和附加软件许可证产生的成本，可以决定使用子网作为隔离单元而不使用 VNet，在一个 VNet 中进行微型分段。
+
+
 有关分配 IP 地址的不同方法的概述，请参阅 [Azure 中的 IP 地址类型和分配方法](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)。 
 
 对于运行 SAP HANA 的 VM，应该使用分配的静态 IP 地址。 原因是 HANA 的某些配置属性引用 IP 地址。
 
-[Azure 网络安全组 (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) 用于定向路由到 SAP HANA 实例或 Jumpbox 的流量。 NSG 与 SAP HANA 子网和管理子网关联。
+[Azure 网络安全组 (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) 用于定向路由到 SAP HANA 实例或 Jumpbox 的流量。 NSG 与最终的[应用程序安全组](https://docs.microsoft.com/azure/virtual-network/security-overview#application-security-groups)关联到 SAP HANA 子网和管理子网。
 
-下图概述了 SAP HANA 的大致部署架构：
+下图显示了遵循中心和分支 VNet 体系结构的 SAP HANA 的大致部署架构概况：
 
 ![SAP HANA 的大致部署架构](media/hana-vm-operations/hana-simple-networking.PNG)
 
-
-要在不建立站点到站点连接的情况下在 Azure 中部署 SAP HANA，请通过公共 IP 地址访问 SAP HANA 实例。 必须将 IP 地址分配给运行 Jumpbox VM 的 Azure VM。 在此基本方案中，部署依赖于 Azure 内置的 DNS 服务来解析主机名。 对于使用面向公众的 IP 地址的更复杂部署，Azure 内置的 DNS 服务尤为重要。 使用 Azure NSG 来限制可通过具有面向公众的 IP 地址的资产连接到 Azure 子网的开放端口或 IP 地址范围。 下图显示了在不建立站点到站点连接的情况下部署 SAP HANA 的大致架构：
+若要在不建立站点到站点连接的情况下在 Azure 中部署 SAP HANA，仍需在公共 Internet 中屏蔽 SAP HANA 实例，并将其隐藏在转发代理的后面。 在此基本方案中，部署依赖于 Azure 内置的 DNS 服务来解析主机名。 对于使用面向公众的 IP 地址的更复杂部署，Azure 内置的 DNS 服务尤为重要。 使用 Azure NSG 和 [Azure NVA](https://azure.microsoft.com/solutions/network-appliances/) 来控制与监视从 Internet 到 Azure 中 Azure VNet 体系结构的路由。 下图显示了在不建立站点到站点连接的情况下用于在中心和分支 VNet 体系结构中部署 SAP HANA 的大致架构：
   
 ![未建立站点到站点连接的大致 SAP HANA 部署架构](media/hana-vm-operations/hana-simple-networking2.PNG)
  
+
+可以在[部署高可用性网络虚拟设备](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha)一文中找到有关如何在没有中心和分支 VNet 体系结构的情况下，使用 Azure NVA 控制和监视来自 Internet 的访问的说明。
+
+
+## <a name="configuring-azure-infrastructure-for-sap-hana-scale-out"></a>为 SAP HANA 横向扩展配置 Azure 基础结构
+Microsoft 提供一个已通过 SAP HANA 横向扩展配置认证的 M 系列 VM SKU。 VM 类型 M128s 经认证最多可横向扩展到 16 个节点。 有关 Azure VM 上的 SAP HANA 横向扩展认证的更改，请查看[认证的 IaaS 平台列表](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)。
+
+用于在 Azure VM 中部署横向扩展配置的最低 OS 版本为：
+
+- SUSE Linux 12 SP3
+- Red hat Linux 7.4
+
+16 节点横向缩放认证
+
+- 一个节点是主节点
+- 最多 15 个节点是工作节点
+
+>[!NOTE]
+>在 Azure VM 横向扩展部署中无法使用备用节点
+>
+
+无法配置备用节点的原因有两个：
+
+- Azure 目前没有本机 NFS 服务。 因此需要借助第三方功能配置 NFS 共享。
+- 使用 Azure 上部署的解决方案，没有任何第三方 NFS 配置能够满足 SAP HANA 的存储延迟条件。
+
+因此，无法共享 **/hana/data** 和 **/hana/log** 卷。 无法共享单个节点的这些卷会阻止在横向扩展配置中使用 SAP HANA 备用节点。
+
+因此，横向扩展配置中单个节点的基本设计如下所示：
+
+![单个节点的横向扩展基本设计](media/hana-vm-operations/scale-out-basics.PNG)
+
+SAP HANA 横向扩展的 VM 节点基本配置如下所示：
+
+- 对于 **/hana/shared**，基于 SUSE Linux 12 SP3 构建高可用性 NFS 群集。 此群集托管横向扩展配置以及 SAP NetWeaver 或 BW/4HANA 中心服务的 **/hana/shared** NFS 共享。 [SUSE Linux Enterprise Server 中 Azure VM 上的 NFS 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)一文阐述了如何构建此类配置
+- 其他所有磁盘卷**不会**在不同的节点之间共享，并且**不是**基于 NFS。 此文档进一步提供了有关包含非共享 **/hana/data** 和 **/hana/log** 的横向扩展 HANA 安装的安装配置与步骤。
+
+>[!NOTE]
+>图中显示的高可用性 NFS 群集目前仅受 SUSE Linux 的支持。 以后会通告对基于 Red Hat 的高可用性 NFS 解决方案的支持。
+
+调整节点卷大小的过程与纵向扩展相同，但 **/hana/shared** 除外。 对于 M128s VM SKU，建议的大小和类型如下：
+
+| VM SKU | RAM | 最大 VM I/O<br /> Throughput | /hana/data | /hana/log | /root 卷 | /usr/sap | hana/backup |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| M128s | 2000 GiB | 2000 MB/秒 |3 x P30 | 2 x P20 | 1 x P6 | 1 x P6 | 2 x P40 |
+
+
+检查建议的不同卷的存储吞吐量是否满足所要运行的工作负荷。 如果工作负荷要求对 **/hana/data** 和 **/hana/log** 使用更高规格的卷，则需要增加 Azure 高级存储 VHD。 对于包含的 VHD 数目比所列数目更多的卷，调整其大小会在 Azure 虚拟机类型的限制范围内增大 IOPS 和 I/O 吞吐量。 另外，将 Azure 写入加速器应用到构成 **/hana/log** 卷的磁盘。
+ 
+文档 [SAP HANA TDI 存储要求](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)中指定了一个公式，该公式将横向扩展的 **/hana/shared** 卷的大小定义为每 4 个工作节点中单个工作节点的内存大小。
+
+假设我们使用内存大约为 2 TB 且通过 SAP HANA 横向扩展认证的 M128s Azure VM，SAP 建议概括如下：
+
+- 1 个主节点和最多 4 个工作节点，**/hana/shared** 卷的大小需是 2 TB。 
+- 1 个主节点和 5 到 8 个工作节点，**/hana/shared** 的大小应是 4 TB。 
+- 1 个主节点和 9 到 12 个工作节点，**/hana/shared** 的大小需是 6 TB。 
+- 1 个主节点和 12 到 15 个工作节点，需要提供 8 TB 大小的 **/hana/shared** 卷。
+
+横向扩展 SAP HANA VM 的单节点配置示意图中显示的另一项重要设计是 VNet，最好采用子网配置。 SAP 强烈建议将面向客户端/应用程序的流量与 HANA 节点之间的通信进行隔离。 如图所示，可以通过将两个不同的 vNIC 附加到 VM 来实现此目的。 这两个 vNIC 位于不同的子网中，并使用两个不同的 IP 地址。 然后，使用 NSG 或用户定义的路由通过路由规则控制流量流。
+
+具体而言，在 Azure 中，没有任何方法可以在特定的 vNIC 上强制实施服务质量和配额。 因此，通过面向客户端/应用程序的流量与节点内部通信的隔离，没有任何机会使一个流量流优先于另一个流量流。 隔离保持为一种安全度量，用于屏蔽横向扩展配置的节点内部通信。  
+
+>[!IMPORTANT]
+>SAP 强烈建议根据本文档中所述，对客户端/应用程序端和节点内部流量进行网络流量隔离。 因此，强烈建议部署最后一幅示意图中所示的体系结构。
+>
+
+从网络角度看，最低要求的网络体系结构如下所示：
+
+![单个节点的横向扩展基本设计](media/hana-vm-operations/scale-out-networking-overview.PNG)
+
+目前支持的限制是在一个主节点的基础上额外添加 15 个工作节点。
+
+从存储角度看，存储体系结构如下所示：
+
+
+![单个节点的横向扩展基本设计](media/hana-vm-operations/scale-out-storage-overview.PNG)
+
+**/hana/shared** 卷位于高可用性 NFS 共享配置中。 其他所有驱动器“本地”装载到各个 VM。 
+
+### <a name="highly-available-nfs-share"></a>高可用性 NFS 共享
+高可用性 NFS 群集目前仅适用于 SUSE Linux。 文档 [SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)介绍了设置方法。 如果不与 Azure VNet 外部的、运行 SAP HANA 实例的其他任何 HANA 配置共享 NFS 群集，请将群集安装在同一 VNet 中。 请将群集安装在其自身的子网中，并确保不是所有任意流量都可以访问该子网， 而是将发往该子网的流量限制为向 **/hana/shared** 卷执行流量的 VM 的 IP 地址。
+
+对于应该路由 **/hana/shared** 流量的 HANA 横向扩展 VM 的 vNIC，建议为：
+
+- 由于发往 **/hana/shared** 的流量大小适中，因此请在最低配置中通过分配到客户端网络的 vNIC 路由流量
+- 最后，对于发往 **/hana/shared** 的流量，请在部署 SAP HANA 横向扩展配置的 VNet 中部署第三个子网，并分配该子网中托管的第三个 vNIC。 针对发往 NFS 共享的流量使用第三个 vNIC 和关联的 IP 地址。 然后，可以应用单独的访问和路由规则。
+
+>[!IMPORTANT]
+>无论在何种情况下，都不可以通过 [NVA](https://azure.microsoft.com/solutions/network-appliances/) 或类似虚拟设备来路由以横向扩展部署的 SAP HANA 所在 VM 与高可用性 NFS 之间的网络流量。 而 Azure NSG 并不属于此类设备。 检查路由规则，以确保从运行 SAP HANA 的 VM 访问高可用性 NFS 共享时，绕过 NVA 或类似虚拟设备。
+> 
+
+如果想要在 SAP HANA 配置之间共享高可用性 NFS 群集，请将所有这些 HANA 配置移到同一 VNet 中。 
+ 
+
+### <a name="installing-sap-hana-scale-out-n-azure"></a>在 Azure 中安装 SAP HANA 横向扩展
+安装横向扩展 SAP 配置时，需要执行以下大致步骤：
+
+- 部署新的或改编现有的 Azure VNet 基础结构
+- 使用 Azure 托管的高级存储卷部署新 VM
+- 部署新的或改编现有的高可用性 NFS 群集
+- 改编网络路由，确保不会通过 [NVA](https://azure.microsoft.com/solutions/network-appliances/) 路由 VM 之间的节点内部通信。 对于 VM 与高可用性 NFS 群集之间的流量采用相同的方式。
+- 安装 SAP HANA 主节点。
+- 编辑 SAP HANA 主节点的配置参数
+- 继续安装 SAP HANA 工作节点
+
+#### <a name="installation-of-sap-hana-in-scale-out-configuration"></a>安装采用横向扩展配置的 SAP HANA
+部署 Azure VM 基础结构并完成其他所有准备工作后，需要通过以下步骤安装 SAP HANA 横向扩展配置：
+
+- 根据 SAP 文档安装 SAP HANA 主节点
+- **安装完成后，需要更改 global.ini 文件，并将参数“basepath_shared = no”添加到 global.ini**。 此参数使 SAP HANA 能够以横向扩展配置运行，且无需在节点之间使用“共享”的 **/hana/data** 和 **/hana/log** 卷。 [SAP 说明 #2080991](https://launchpad.support.sap.com/#/notes/2080991) 中提供了详细信息。
+- 更改 global.ini 参数后，重启 SAP HANA 实例
+- 添加其他工作节点。 另请参阅 <https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US/0d9fe701e2214e98ad4f8721f6558c34.html>。 在安装期间和之后，使用 local hdblcm 等命令为 SAP HANA 节点内部通信指定内部网络。 有关更详细的文档，请参阅 [SAP 说明 #2183363](https://launchpad.support.sap.com/#/notes/2183363)。 
+
+完成此设置例程后，安装的横向扩展配置将使用非共享磁盘来运行 **/hana/data** 和 **/hana/log**。 **/hana/shared** 卷将放置在高可用性 NFS 共享上。
+  
 
 
 ## <a name="operations-for-deploying-sap-hana-on-azure-vms"></a>在 Azure VM 上部署 SAP HANA 的操作

@@ -3,7 +3,7 @@ title: 监视 Azure Kubernetes 服务 (AKS) 运行状况（预览版）| Microso
 description: 本文介绍如何便捷地查看 AKS 容器的性能以快速了解托管 Kubernetes 环境的利用率。
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/18/2018
+ms.date: 07/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 806487ec731a1b7fe02ccdfe6b285f5b2e119787
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: f84452af9c2c731d69d5805961266c46351a7687
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249091"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39366090"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>监视 Azure Kubernetes 服务 (AKS) 容器运行状况（预览版）
 
@@ -39,7 +39,7 @@ ms.locfileid: "39249091"
 
 - 新的或现有的 AKS 群集。
 - 适用于 Linux 版本 microsoft/oms:ciprod04202018 或更高版本的容器化 OMS 代理。 版本号以 *mmddyyyy* 格式的日期表示。 代理在容器运行状况载入期间自动安装。 
-- Log Analytics 工作区。 可在启用新 AKS 群集的监视时创建，也可通过 [Azure 资源管理器](../log-analytics/log-analytics-template-workspace-configuration.md)、[PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json) 或在 [Azure 门户](../log-analytics/log-analytics-quick-create-workspace.md)中创建。
+- Log Analytics 工作区。 可以在对新 AKS 群集启用监视时创建该工作区，或者让载入体验在 AKS 群集订阅的默认资源组中创建默认的工作区。 如果选择自行创建工作区，可以通过 [Azure 资源管理器](../log-analytics/log-analytics-template-workspace-configuration.md)、[PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json) 或在 [Azure 门户](../log-analytics/log-analytics-quick-create-workspace.md)来创建。
 - 拥有 Log Analytics 参与者角色，以便启用容器监视。 有关如何控制对 Log Analytics 工作区的访问的详细信息，请参阅[管理工作区](../log-analytics/log-analytics-manage-access.md)。
 
 ## <a name="components"></a>组件 
@@ -47,14 +47,20 @@ ms.locfileid: "39249091"
 监视性能的能力依赖于适用于 Linux 的容器化 OMS 代理，该代理从群集的所有节点收集性能和事件数据。 启用容器监视后，自动部署代理并注册到指定的 Log Analytics 工作区。 
 
 >[!NOTE] 
->如果已部署 AKS 群集，可使用提供的 Azure 资源管理器模板启用监视，如后文所示。 不能使用 `kubectl` 升级、删除、重新部署或部署代理。 
+>如果已部署 AKS 群集，可使用 Azure CLI 或提供的 Azure 资源管理器模板启用监视，如后文所示。 不能使用 `kubectl` 升级、删除、重新部署或部署代理。 
 >
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 登录到 [Azure 门户](https://portal.azure.com)。 
 
 ## <a name="enable-container-health-monitoring-for-a-new-cluster"></a>为每个新群集启用容器运行状况监视
-部署期间，可在 Azure 门户中启用对新 AKS 群集的监视。 按照快速入门文章[部署 Azure Kubernetes 服务 (AKS) 群集](../aks/kubernetes-walkthrough-portal.md)中的步骤操作。 在“监视”页面中，对于“启用监视”选项，选择“是”，然后选择一个现有的或创建一个新的 Log Analytics 工作区。 
+部署期间，可以使用 Azure 门户或 Azure CLI 对新 AKS 群集启用监视。 如果想要通过门户启用，请遵循快速入门文章[部署 Azure Kubernetes 服务 (AKS) 群集](../aks/kubernetes-walkthrough-portal.md)中的步骤。 在“监视”页面中，对于“启用监视”选项，选择“是”，然后选择一个现有的或创建一个新的 Log Analytics 工作区。 
+
+若要使用 Azure CLI 对新建的 AKS 群集启用监视，请遵循快速入门文章的[创建 AKS 群集](../aks/kubernetes-walkthrough.md#create-aks-cluster)部分中所述的步骤。  
+
+>[!NOTE]
+>如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 2.0.27 版或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
+>
 
 启用监视并成功完成所有配置任务后，可通过两种方法监视群集性能：
 
@@ -66,7 +72,20 @@ ms.locfileid: "39249091"
 启用监视后，可能需要约 15 分钟才能查看群集的运营数据。 
 
 ## <a name="enable-container-health-monitoring-for-existing-managed-clusters"></a>为现有托管群集启用容器运行状况监视
-若要启用对已部署 AKS 群集的监视，可通过 Azure 门户完成，或者借助 PowerShell cmdlet `New-AzureRmResourceGroupDeployment` 或 Azure CLI 使用提供的 Azure 资源管理器模板完成。 
+可以使用 Azure CLI、通过 Azure 门户，或者在提供的 Azure 资源管理器模板中使用 PowerShell cmdlet `New-AzureRmResourceGroupDeployment` ，对已部署的 AKS 群集启用监视。 
+
+### <a name="enable-monitoring-using-azure-cli"></a>使用 Azure CLI 启用监视
+以下步骤使用 Azure CLI 对 AKS 群集启用监视。 在此示例中，不需要预先创建或指定现有的工作区。 如果区域中尚不存在默认的工作区，此命令可以简化在 AKS 群集订阅的默认资源组中创建默认工作区的过程。  创建的默认工作区类似于 *DefaultWorkspace-<GUID>-<Region>* 格式。  
+
+```azurecli
+az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG  
+```
+
+输出如下所示：
+
+```azurecli
+provisioningState       : Succeeded
+```
 
 ### <a name="enable-monitoring-in-the-azure-portal"></a>在 Azure 门户中启用监视
 若要在 Azure 门户中启用对 AKS 容器的监视，请执行以下操作：
@@ -297,6 +316,26 @@ User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
 ```  
+
+## <a name="view-configuration-with-cli"></a>使用 CLI 查看配置
+使用 `aks show` 命令获取详细信息，例如，解决方案是否已启用、Log Analytics 工作区 resourceID 是什么，以及有关群集的摘要详细信息。  
+
+```azurecli
+az aks show -g <resoourceGroupofAKSCluster> -n <nameofAksCluster>
+```
+
+片刻之后，该命令将会完成，并返回有关解决方案的 JSON 格式信息。  命令结果应显示监视加载项配置文件，并类似于以下示例输出：
+
+```
+"addonProfiles": {
+    "omsagent": {
+      "config": {
+        "logAnalyticsWorkspaceResourceID": "/subscriptions/<WorkspaceSubscription>/resourceGroups/<DefaultWorkspaceRG>/providers/Microsoft.OperationalInsights/workspaces/<defaultWorkspaceName>"
+      },
+      "enabled": true
+    }
+  }
+```
 
 ## <a name="view-performance-utilization"></a>查看性能使用率
 打开容器运行状况时，页面立即按整个群集显示性能使用率。 分四个视角查看有关 AKS 群集的信息：

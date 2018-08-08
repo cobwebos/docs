@@ -9,6 +9,7 @@
   items:
     - name: 创建 Jenkins 服务器
       href: /azure/jenkins/install-jenkins-solution-template
+      maintainContext: true
 - name: 教程
   items:
     - name: CI/CD 到应用服务

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/05/2018
+ms.date: 08/01/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 29ab649f8fe06ae598ff138ff98eb2611ec38e1f
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 37cabadb18bf065de64b7ae24c4ed19994e60625
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128871"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413631"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>将 Operations Manager 连接到 Log Analytics
 若要保持 System Center Operations Manager 中的现有投资并将扩展功能用于 Log Analytics，可将 Operations Manager 与 Log Analytics 工作区集成。  这样既可以利用 Log Analytics，又可以继续使用 Operations Manager 执行以下操作：
@@ -39,12 +39,21 @@ ms.locfileid: "37128871"
 
 如果 IT 安全策略不允许网络上的计算机连接到 Internet，可将管理服务器配置为连接到 OMS 网关，以根据启用的解决方案接收配置信息并发送收集的数据。  有关如何将 Operations Manager 管理组配置为通过 OMS 网关与 Log Analytics 服务通信的详细信息和步骤，请参阅[使用 OMS 网关将计算机连接到 OMS](log-analytics-oms-gateway.md)。  
 
-## <a name="system-requirements"></a>系统要求
-开始之前，请查看以下详细信息来验证是否满足先决条件。
+## <a name="prerequisites"></a>先决条件 
+在开始之前，请查看以下要求。
 
-* Log Analytics 仅支持 System Center Operations Manager 1801、Operations Manager 2016、Operations Manager 2012 SP1 UR6 及更高版本，以及 Operations Manager 2012 R2 UR2 及更高版本。  Operations Manager 2012 SP1 UR7 和 Operations Manager 2012 R2 UR3 中添加了代理服务器支持。
-* 所有 Operations Manager 代理必须满足最低支持要求。 确保代理达到最低更新，否则 Windows 代理流量会失败，Operations Manager 事件日志可能会出现许多错误。
-* Log Analytics 工作区。  有关进一步的详细信息，请参阅 [Log Analytics入门](log-analytics-get-started.md)。
+* Log Analytics 仅支持 System Center Operations Manager 1807、System Center Operations Manager 1801、Operations Manager 2016、Operations Manager 2012 SP1 UR6 或更高版本，以及 Operations Manager 2012 R2 UR2 或更高版本。  Operations Manager 2012 SP1 UR7 和 Operations Manager 2012 R2 UR3 中添加了代理服务器支持。
+* 所有 Operations Manager 代理必须满足最低支持要求。 确保代理中安装了最起码的更新，否则 Windows 代理通信可能失败，并在 Operations Manager 事件日志中生成错误。
+* Log Analytics 工作区。  有关详细信息，请查看[将环境中的计算机连接到 Log Analytics](log-analytics-concept-hybrid.md)。
+* 使用 [Log Analytics 参与者角色](log-analytics-manage-access.md#manage-accounts-and-users)成员帐户在 Azure 中进行身份验证。  
+
+>[!NOTE]
+>最近对 Azure API 所做的最新会阻止客户在其管理组与 Log Analytics 之间成功配置首次集成。 对于已将其管理组与该服务进行集成的客户，除非需要重新配置现有连接，否则他们不受影响。  
+>为每个 Operations Manager 版本发布了新的管理包：  
+>* 对于 System Center Operations Manager 1801，请从[此处](https://www.microsoft.com/download/details.aspx?id=57173)下载管理包  
+>* 对于 System Center 2016 - Operations Manager，请从[此处](https://www.microsoft.com/download/details.aspx?id=57172)下载管理包  
+>* 对于 System Center Operations Manager 2012 R2，请从[此处](https://www.microsoft.com/en-us/download/details.aspx?id=57171)下载管理包  
+
 
 ### <a name="network"></a>网络
 下面的信息列出了 Operations Manager 代理、管理服务器和操作控制台与 Log Analytics 通信时必需的代理和防火墙配置信息。  来自每个组件的流量将从网络传出到 Log Analytics 服务。     
@@ -76,7 +85,7 @@ ms.locfileid: "37128871"
 ## <a name="connecting-operations-manager-to-log-analytics"></a>将 Operations Manager 连接到 Log Analytics
 执行以下一系列步骤，将 Operations Manager 管理组配置为连接到你的一个 Log Analytics 工作区。
 
-如果这是首次向 Log Analytics 工作区注册 Operations Manager 管理组，且管理服务器需通过代理或 OMS 网关服务器与服务通信，则为管理组指定代理配置的选项在操作控制台中不可用。  必须成功向服务注册管理组后，此选项才可用。  需使用 Netsh，对运行操作控制台以配置集成的系统，以及管理组中的所有管理服务器进行系统代理配置的更新。  
+首次向 Log Analytics 工作区注册 Operations Manager 管理组期间，为管理组指定代理配置的选项在操作控制台中不可用。  必须成功向服务注册管理组后，此选项才可用。  若要解决此问题，需使用 Netsh，对运行操作控制台以配置集成的系统，以及管理组中的所有管理服务器进行系统代理配置的更新。  
 
 1. 打开提升的命令指示符。
    a. 转到“启动”，然后键入“cmd”。
@@ -91,7 +100,7 @@ ms.locfileid: "37128871"
 2. 展开 Operations Management Suite 节点，并单击“**连接**”。
 3. 单击“**向 Operations Management Suite 注册**”链接。
 4. 在“**Operations Management Suite 载入向导: 身份验证**”页面上，输入电子邮件地址或电话号码以及与 OMS 订阅关联的管理员帐户的密码，并单击“**登录**”。
-5. 成功进行身份验证后，在“Operations Management Suite 载入向导: 选择工作区”页面上，系统会提示选择 Log Analytics 工作区。  如果有多个工作区，从下拉列表中选择想要在 Operations Manager 管理组中注册的工作区，并单击“**下一步**”。
+5. 成功进行身份验证后，在“Operations Management Suite 载入向导: 选择工作区”页面上，系统会提示选择 Azure 租户、订阅和 Log Analytics 工作区。  如果有多个工作区，从下拉列表中选择想要在 Operations Manager 管理组中注册的工作区，并单击“**下一步**”。
    
    > [!NOTE]
    > Operations Manager 一次仅支持一个 Log Analytics 工作区。 连接以及通过上一个工作区注册到 Log Analytics 的计算机将从 Log Analytics 中删除。
@@ -111,7 +120,7 @@ ms.locfileid: "37128871"
 可以在 Operations 控制台“**管理**”工作区中的 Operations Management Suite 下，查看配置为从“受管理计算机”节点收集数据的计算机和组。  在此处，可根据需要添加或移除计算机和组。
 
 ### <a name="configure-proxy-settings-in-the-operations-console"></a>在操作控制台中配置代理设置
-如果内部代理服务器位于管理组和 Log Analtyics 服务之间，请执行以下步骤。  这些设置可通过管理组集中进行管理并分发到代理托管系统，这些代理托管系统包含在收集 Log Analytics 数据的范围之中。  当某些解决方案绕过管理服务器并将数据直接发送到服务时，这很有用。
+如果内部代理服务器位于管理组和 Log Analytics 服务之间，请执行以下步骤。  这些设置可通过管理组集中进行管理并分发到代理托管系统，这些代理托管系统包含在收集 Log Analytics 数据的范围之中。  当某些解决方案绕过管理服务器并将数据直接发送到服务时，这很有用。
 
 1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
 2. 展开 Operations Management Suite，并单击“**连接**”。
@@ -143,10 +152,10 @@ ms.locfileid: "37128871"
 
 可以重写这两个规则：通过禁用规则防止自动下载，或者修改管理服务器与 OMS 同步确定新管理包是否可用且是否应下载的频率。  请按照“[如何重写规则或监视器](https://technet.microsoft.com/library/hh212869.aspx)”的步骤，通过以秒为单位的值修改“**频率**”参数来更改同步计划，或修改“**已启用**”参数禁用规则。  锁定 Operations Manager 管理组类所有对象的替代项。
 
-如果想要继续按照现有更改控制过程控制生产管理组中的管理包版本，可以禁用规则并在允许更新的特定时间段内将其启用。 如果环境中有开发或 QA 管理组，并且该组已连接到 Internet，则通过 Log Analytics 工作区配置该管理组，使之支持此方案。  这样，在将 Log Analytics 管理包发布到生产管理组之前，就可以查看和评估其迭代版本。
+若要继续按照现有更改控制过程控制生产管理组中的管理包版本，可以禁用规则并在允许更新的特定时间段内将其启用。 如果环境中有开发或 QA 管理组，并且该组已连接到 Internet，则通过 Log Analytics 工作区配置该管理组，使之支持此方案。  这样，在将 Log Analytics 管理包发布到生产管理组之前，就可以查看和评估其迭代版本。
 
 ## <a name="switch-an-operations-manager-group-to-a-new-log-analytics-workspace"></a>将 Operations Manager 组切换到新的 Log Analytics 工作区
-1. 通过 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户。
+1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 2. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”，然后创建一个工作区。  
 3. 使用属于 Operations Manager 管理员角色成员的帐户打开 Operations Manager 控制台，并选择“**管理**”工作区。
 4. 展开 Operations Management Suite，并选择“**连接**”。
@@ -193,7 +202,7 @@ ms.locfileid: "37128871"
 4. 若要删除与其他 System Center Advisor 管理包具有依赖关系的剩余管理包，请使用之前从 TechNet 脚本中心下载的脚本  *RecursiveRemove.ps1*。  
  
     > [!NOTE]
-    > 请勿删除 Microsoft System Center Advisor 或 Microsoft System Center Advisor Internal 管理包。  
+    > 使用 PowerShell 删除顾问管理包的步骤不会自动删除 Microsoft System Center Advisor 或 Microsoft System Center Advisor Internal 管理包。  不要尝试将其删除。  
     >  
 
 5. 使用属于 Operations Manager 管理员角色成员的帐户打开 Operations Manager Operations 控制台。
@@ -201,6 +210,7 @@ ms.locfileid: "37128871"
    
    * Microsoft System Center Advisor
    * Microsoft System Center Advisor Internal
+
 7. 在 OMS 门户中，单击“设置”磁贴。
 8. 选择“**相连的源**”。
 9. 在 System Center Operations Manager 部分下的表中，应该可看到想要从工作区移除的管理组的名称。  在“**最后的数据**”列下，单击“**移除**”。  

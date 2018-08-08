@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 0bdd798f9bc8fdaef54abd721a986c607c6323a5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a43febf1e78f80451b6aeed19e095b2c313d3216
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628549"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284847"
 ---
 # <a name="how-to-administer-your-application"></a>如何管理应用程序
 
@@ -55,6 +55,25 @@ ms.locfileid: "34628549"
 ## <a name="change-the-application-image"></a>更改应用程序图像
 
 有关在 Azure IoT Central 应用程序中使用图像的详细信息，请参阅[准备图像并将其上传到 Azure IoT Central 应用程序](howto-prepare-images.md)。
+
+## <a name="copy-an-application"></a>复制应用程序
+
+可以创建任一应用程序的副本，但其中不会包括任何设备实例、设备数据历史记录和用户数据。 副本是收费的应用程序。 不能通过复制另一应用程序来创建试用版应用程序。
+
+若要复制应用程序，请导航到“应用程序设置”页并单击“复制”按钮。
+
+![“应用程序设置”页](media\howto-administer\appCopy1.png)
+
+单击“复制”按钮会打开一个对话框，可在其中选择要通过复制应用程序创建的新应用程序的名称、URL、AAD 目录、订阅和 Azure 区域。 选择其中每个字段的值，然后单击“复制”按钮确认你要继续操作。 可在有关[如何创建应用程序](howto-create-application.md)的文章中详细了解要输入哪些值。
+
+![“应用程序设置”页](media\howto-administer\appCopy2.png)
+
+应用复制操作成功后，可以单击“应用程序设置”页上显示的链接，导航到通过复制应用程序创建的新应用程序。
+
+![“应用程序设置”页](media\howto-administer\appCopy3.png)
+
+> [!Note]
+> 复制某个应用程序会复制规则或操作的定义。 但是，由于有权访问原始应用的用户不会复制到已复制的应用，因此，必须手动将这些用户添加到需要指定用户的操作（例如电子邮件）。
 
 ## <a name="delete-an-application"></a>删除应用程序
 

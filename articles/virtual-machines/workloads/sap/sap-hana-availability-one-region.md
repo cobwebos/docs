@@ -13,30 +13,30 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/05/2018
+ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 47dba73a6c22d11953485a69435000d3d2fe6f55
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4f2defd60ec6b835ec856c9253a92f1d6817e861
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32192792"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325997"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>一个 Azure 区域内的 SAP HANA 可用性
 本文介绍一个 Azure 区域内的多种可用性场景。 Azure 已在许多区域上市，这些区域分散在世界各地。 有关 Azure 区域的列表，请查阅 [Azure 区域](https://azure.microsoft.com/regions/)。 Microsoft 将 SAP HANA 部署在一个 Azure 区域内的 VM 上，可以提供包含一个 HANA 实例的单一 VM 部署。 为了提高可用性，可将包含两个 HANA 实例的两个 VM 部署在一个 [Azure 可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)中，并使用 HANA 系统复制来实现可用性。 
 
-Azure 目前提供 [Azure 可用性区域（预览版）](https://docs.microsoft.com/azure/availability-zones/az-overview)。 本文不会详细介绍这些可用性区域。 但是，其中包含了有关使用可用性集与可用性区域的一般性讨论。
+Azure 目前提供 [Azure 可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview)。 本文不会详细介绍可用性区域。 但是，其中包含了有关使用可用性集与可用性区域的一般性讨论。
 
-Azure 中的可用性集与可用性区域有什么区别？ 提供可用性区域的 Azure 区域具有多个数据中心。 这些数据中心独立提供电源、冷却和网络设备。 在单个 Azure 区域中提供不同区域的原因是为了能够跨越提供的两个或三个可用性区域部署应用程序。 假设电源或网络问题只会影响一个可用性区域基础结构，在使用可用性区域的情况下，Azure 区域中的应用程序部署仍可完全正常运行。 这可能会减少一些容量。 例如，一个区域中的某些 VM 可能会丢失，但另外两个区域中的 VM 仍可保持正常运行。 
+提供可用性区域的 Azure 区域具有多个数据中心。 这些数据中心独立提供电源、冷却和网络设备。 在单个 Azure 区域中提供不同区域的原因是为了能够跨越提供的两个或三个可用性区域部署应用程序。 在跨区域部署的情况下，如果电源和网络问题只会影响一个可用性区域基础结构，则 Azure 区域中的应用程序部署仍可正常运行。 这可能会减少一些容量。 例如，一个区域中的某些 VM 可能会丢失，但另外两个区域中的 VM 仍可保持正常运行。 
  
 Azure 可用性集是一种逻辑分组功能，可帮助确保在将可用性集中的 VM 资源部署到 Azure 数据中心后，这些资源相互故障隔离。 Azure 确保可用性集中部署的 VM 能够跨多个物理服务器、计算机架、存储单元和网络交换机运行。 在某些 Azure 文档中，此配置被阐述为将 VM 放置在不同的[更新域和容错域](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)中。 这些位置通常是在 Azure 数据中心内。 假设电源或网络问题会影响部署的数据中心，则一个 Azure 区域中的所有容量都会受到影响。
 
-代表 Azure 可用性区域的数据中心的位置既要考虑到不同区域中部署的服务之间的网络延迟是否可让大多数应用程序接受，也要考虑到数据中心之间的特定距离。 在理想情况下，自然灾害不会影响到此区域中所有可用性区域的电源、网络和基础结构。 但是，在出现非常严重的自然灾害时，可用性区域不一定总能在一个区域中提供可用性。 想像一下，2017 年 8 月 20 日玛丽亚飓风袭击了波多黎各岛。 这场飓风使方圆 90 英里的岛屿几乎完全陷入一片黑暗。
+代表 Azure 可用性区域的数据中心的位置既要考虑到不同区域中部署的服务之间的网络延迟是否可接受，也要考虑到数据中心之间的距离。 在理想情况下，自然灾害不会影响到此区域中所有可用性区域的电源、网络和基础结构。 但是，在出现非常严重的自然灾害时，可用性区域不一定总能在一个区域中提供可用性。 想像一下，2017 年 8 月 20 日玛丽亚飓风袭击了波多黎各岛。 这场飓风使方圆 90 英里的岛屿几乎完全陷入一片黑暗。
 
 ## <a name="single-vm-scenario"></a>单一 VM 场景
 
-在单一 VM 场景中，我们将为 SAP HANA 实例创建一个 Azure VM。 使用 Azure 高级存储来托管操作系统磁盘和所有数据磁盘。 99.9% 的 Azure 正常运行时间 SLA 和其他 Azure 组件提供的 SLA 足以向客户履行可用性 SLA。 在此场景中，无需对运行 DBMS 层的 VM 使用 Azure 可用性集。 此场景依赖于两种不同的功能：
+在单一 VM 场景中，我们将为 SAP HANA 实例创建一个 Azure VM。 使用 Azure 高级存储来托管操作系统磁盘和所有数据磁盘。 99.9% 的 Azure 正常运行时间 SLA 和其他 Azure 组件提供的 SLA 足以向客户履行可用性 SLA。 在此方案中，无需对运行 DBMS 层的 VM 使用 Azure 可用性集。 此场景依赖于两种不同的功能：
 
 - Azure VM 自动重启（也称为 Azure 服务修复）
 - SAP HANA 自动重启
@@ -48,19 +48,26 @@ Azure VM 自动重启（服务修复）是 Azure 中的一项功能，它在两�
 
 运行状况检查功能将会监视 Azure 服务器主机上托管的每个 VM 的运行状况。 如果 VM 的状态不正常，则检查 VM 运行状况的 Azure 主机代理可以执行 VM 重新启动。 结构控制器会通过检查指示主机硬件问题的许多不同参数，来检查主机的运行状况。 此外，它还会通过网络检查主机的可访问性。 主机出现问题迹象可能会导致以下事件：
 
-- 如果出现主机状态不正常的迹象，则重新启动主机，并重启该主机上运行的 VM。
-- 如果重新启动后主机的状态仍不正常，则重新启动主机，并重启最初托管在正常主机上的 VM。 在这种情况下，该主机将被标记为不正常。 在清除问题或更换主机之前，不会将它进一步用于部署。
-- 如果不正常的主机在重新启动过程中出现问题，则立即在正常的主机上重启 VM。 
+- 如果出现主机状态不正常的迹象，则会触发主机重新启动，以及该主机上运行的 VM 重启。
+- 如果成功重新启动后主机处于不正常状态，则将最初节点（现在不正常）上的 VM 重新部署到正常的主机服务器。 在这种情况下，原始主机将标记为不正常。 在清除问题或更换主机之前，不会将它进一步用于部署。
+- 如果不正常的主机在重新启动过程中出现问题，则在正常的主机上触发 VM 立即重启。 
 
 借助 Azure 提供的主机和 VM 监视功能，遇到主机问题的 Azure VM 可在正常的 Azure 主机上自动重启。 
 
+>[!IMPORTANT]
+>Azure 服务修复不会重启其来宾 OS 处于内核崩溃状态的 Linux VM。 常用 Linux 版本的默认设置不会自动重启其 Linux 内核处于崩溃状态的 VM 或服务器。 默认设置预期出现内核崩溃状态的 OS 能够附加内核调试程序进行分析。 Azure 遵守该行为，它不会自动重启其来宾 OS 处于这种状态的 VM。 Azure 假设这种情况极其少见。 可以覆盖默认行为，以启用 VM 重启。 若要更改默认行为，请在 /etc/sysctl.conf 中启用参数“kernel.panic”。 为此参数设置的时间以秒为单位。 常用的建议值是等待 20-30 秒，然后通过此参数触发重新启动。 另请参阅 <https://gitlab.com/procps-ng/procps/blob/master/sysctl.conf>。
+
 此场景中依赖的第二项功能是，重新启动 VM 后，在重启后的 VM 中运行的 HANA 服务会自动启动。 可以通过不同 HANA 服务的监视器服务设置 [HANA 服务自动重启](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html)。
 
-在 SAP HANA 配置中添加一个冷故障转移节点可以改进这种单一 VM 场景。 在 SAP HANA 文档中，这种设置称为[主机自动故障转移](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/ae60cab98173431c97e8724856641207.html)。 在服务器硬件受限并且需要将单个服务器节点专门用作一组生产主机的主机自动故障转移节点的本地部署场合中，此配置可能很有效。 但在 Azure 中，如果 Azure 的底层基础结构需要提供正常的目标服务器才能成功重启 VM，则并不适合部署 SAP HANA 主机自动故障转移。 因此，我们并未提供参考体系结构用于预见 HANA 主机自动故障转移的备用节点。 这同样适用于 SAP HANA 横向扩展配置。
+在 SAP HANA 配置中添加一个冷故障转移节点可以改进这种单一 VM 场景。 在 SAP HANA 文档中，这种设置称为[主机自动故障转移](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/ae60cab98173431c97e8724856641207.html)。 在服务器硬件受限并且需要将单个服务器节点专门用作一组生产主机的主机自动故障转移节点的本地部署场合中，此配置可能很有效。 但在 Azure 中，如果 Azure 的底层基础结构需要提供正常的目标服务器才能成功重启 VM，则并不适合部署 SAP HANA 主机自动故障转移。 由于 Azure 服务修复的推出，我们并未提供参考体系结构用于预见 HANA 主机自动故障转移的备用节点。 
+
+### <a name="special-case-of-sap-hana-scale-out-configurations-in-azure"></a>Azure 中 SAP HANA 横向扩展配置的特殊情况
+SAP HANA 横向扩展配置的高可用性依赖于 Azure VM 的服务修复，以及 VM 再次启动并运行时 SAP HANA 实例的重启。 今后我们会推出基于 HANA 系统复制的高可用性体系结构。 
+
 
 ## <a name="availability-scenarios-for-two-different-vms"></a>两个不同 VM 的可用性场景
 
-如果在一个 Azure 可用性集中使用两个 Azure VM，则可以提高这两个 VM 的正常运行时间，前提是将这些 VM 放置在一个 Azure 区域中的 Azure 可用性集 内。 Azure 中的基本设置如下所示：
+如果在一个 Azure 可用性集中使用两个 Azure VM，则可以提高这两个 VM 的正常运行时间，前提是将这些 VM 放置在一个 Azure 区域中的 Azure 可用性集 内。 Azure 中的基本设置如下：
 
 ![包含所有层的两个 VM 的示意图](./media/sap-hana-availability-one-region/two_vm_all_shell.PNG)
 
@@ -70,7 +77,7 @@ Azure VM 自动重启（服务修复）是 Azure 中的一项功能，它在两�
 
 最基本的设置之一是使用备份。 具体而言，可将事务日志备份从一个 VM 传送到另一个 Azure VM。 可以选择 Azure 存储类型。 在此设置中，你需要负责编写脚本，以便将计划的备份从第一个 VM 复制到第二个 VM。 如果需要使用第二个 VM 实例，则必须将完整、增量/差异和事务日志备份还原到所需的时间点。 
 
-体系结构如下所示：
+体系结构如下：
 
 ![采用存储复制的两个 VM 的示意图](./media/sap-hana-availability-one-region/two_vm_storage_replication.PNG) 
 
@@ -80,14 +87,16 @@ Azure VM 自动重启（服务修复）是 Azure 中的一项功能，它在两�
 
 ### <a name="sap-hana-system-replication-without-automatic-failover"></a>在不使用自动故障转移的情况下执行 SAP HANA 系统复制
 
-本部分所述的场景使用 SAP HANA 系统复制。 有关 SAP 文档，请参阅[系统复制](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)。 单个 Azure 区域中的两个 Azure VM 采用不同的配置，因此，RTO 存在一定的差异。 一般而言，不采用自动故障转移的场景可能不是很适合一个 Azure 区域中的 VM。 这是原因，对于 Azure 基础结构中的大多数故障，Azure 服务修复功能会在另一台主机上重启主 VM。 只是在一些不太常见的情况下，这种配置才对故障场景有所帮助。 在客户想要提高效率的情况下，这种配置也比较有利。
+本部分所述的场景使用 SAP HANA 系统复制。 有关 SAP 文档，请参阅[系统复制](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)。 不采用自动故障转移的方案对于一个 Azure 区域中的配置并不常见。 不采用自动故障转移的配置虽然可以避免 Pacemaker 设置，但会强制要求手动监视和故障转移。 由于手动操作也很费时费力，因此大多数客户都依赖于 Azure 服务修复。 只是在一些不太常见的情况下，这种配置才对故障场景有所帮助。 在客户想要提高效率的情况下，这种配置也比较有利。
 
 #### <a name="sap-hana-system-replication-without-auto-failover-and-without-data-preload"></a>在不使用自动故障转移和数据预先加载的情况下执行 SAP HANA 系统复制
 
 在此场景中，使用 SAP HANA 系统复制来同步移动数据，以实现 0 RPO。 另一方面，由于 RTO 足够长，因此，无需将数据故障转移或预先加载到 HANA 实例缓存。 在这种情况下，可通过执行以下操作，进一步在配置中实现更高的经济效益：
 
-- 在第二个 VM 中运行另一个 SAP HANA 实例。 第二个 VM 中的 SAP HANA 实例充分利用虚拟机的内存。 通常，在故障转移到第二个 VM 后，便可以看到这种效果。 可以关闭第二个 VM，以便将复制的数据载入第二个 VM 中目标 HANA 实例的缓存。
-- 对第二个 VM 使用较小的 VM。 如果发生故障转移，在手动故障转移之前，需要执行一个附加的步骤。 此步骤将 VM 大小调整为源 VM 的大小。 场景如下所示：
+- 在第二个 VM 中运行另一个 SAP HANA 实例。 第二个 VM 中的 SAP HANA 实例充分利用虚拟机的内存。 如果故障转移到第二个 VM，则需要关闭正在运行的、包含第二个 VM 中完全加载的数据的 SAP HANA 实例，以便将复制的数据载入第二个 VM 中目标 HANA 实例的缓存。
+- 对第二个 VM 使用较小的 VM。 如果发生故障转移，在手动故障转移之前，需要执行一个附加的步骤。 此步骤将 VM 大小调整为源 VM 的大小。 
+ 
+方案如下所示：
 
 ![采用存储复制的两个 VM 的示意图](./media/sap-hana-availability-one-region/two_vm_HSR_sync_nopreload.PNG)
 
@@ -104,11 +113,11 @@ Azure VM 自动重启（服务修复）是 Azure 中的一项功能，它在两�
 
 从 SAP HANA 的角度看，使用的复制模式是同步的，并且配置了自动故障转移。 在第二个 VM 中，SAP HANA 实例充当热备用节点。 备用节点从主 SAP HANA 实例接收同步的更改记录流。 应用程序在 HANA 主节点上提交事务后，HANA 主节点会一直等待确认提交到应用程序，直到 SAP HANA 辅助节点确认收到提交记录。 SAP HANA 提供两种同步复制模式。 有关这两种同步复制模式的详细信息和差异说明，请参阅 SAP 文章 [SAP HANA 系统复制的复制模式](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/c039a1a5b8824ecfa754b55e0caffc01.html)。
 
-总体配置如下所示：
+总体配置如下：
 
 ![采用存储复制和故障转移的两个 VM 的示意图](./media/sap-hana-availability-one-region/two_vm_HSR_sync_auto_pre_preload.PNG)
 
-选择此解决方案的可能原因是它可以实现 RPO = 0 和极低的 RTO。 配置 SAP HANA 客户端连接，使 SAP HANA 客户端能够使用虚拟 IP 地址连接到 HANA 系统复制配置。 这样，在故障转移到辅助节点时，无需重新配置应用程序。 在此场景中，主 VM 和辅助 VM 的 Azure VM SKU 必须相同。
+选择此解决方案的可能原因是它可以实现 RPO = 0 和较低的 RTO。 配置 SAP HANA 客户端连接，使 SAP HANA 客户端能够使用虚拟 IP 地址连接到 HANA 系统复制配置。 故障转移到辅助节点时，此类配置可以消除重新配置应用程序的需要。 在此场景中，主 VM 和辅助 VM 的 Azure VM SKU 必须相同。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/10/2017
 ms.author: kavyako
-ms.openlocfilehash: 237a72fd282b29d3032675ccf3fb350f8db59ef7
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0558a5647267dda26890ba3a6dc1af326fae94f6
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209165"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308157"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>使用反向代理连接到安全服务
 
@@ -33,128 +33,128 @@ ms.locfileid: "34209165"
 反向代理使用证书向服务标识自身，群集[资源类型部分](../azure-resource-manager/resource-group-authoring-templates.md)的 reverseProxyCertificate 属性中指定该证书。 服务可以通过实现逻辑验证反向代理提供的证书。 服务可以将接受的客户端证书详细信息指定为配置包中的配置设置。 此信息可在运行时读取，并可用于验证反向代理提供的证书。 若要添加配置设置，请参阅[管理应用程序参数](service-fabric-manage-multiple-environment-app-configuration.md)。 
 
 ### <a name="reverse-proxy-verifying-the-services-identity-via-the-certificate-presented-by-the-service"></a>反向代理通过服务提供的证书验证服务标识：
-若要对服务提供的证书执行服务器证书验证，反向代理支持以下选项之一：无、ServiceCommonNameAndIssuer 和 ServiceCertificateThumbprints。
-若要选择三个选项的其中一个，请在 [fabricSettings](service-fabric-cluster-fabric-settings.md) 下 ApplicationGateway/Http 元素的参数部分中指定 ApplicationCertificateValidationPolicy。
+反向代理支持使用以下策略来对服务提供的证书执行服务器证书验证：None、ServiceCommonNameAndIssuer 和 ServiceCertificateThumbprints。
+若要选择反向代理使用的策略，请在 [fabricSettings](service-fabric-cluster-fabric-settings.md) 中的 **ApplicationGateway/Http** 节下指定 **ApplicationCertificateValidationPolicy**。
 
-```json
-{
-"fabricSettings": [
-          ...
-          {
-            "name": "ApplicationGateway/Http",
-            "parameters": [
-              {
-                "name": "ApplicationCertificateValidationPolicy",
-                "value": "None"
-              }
-            ]
-          }
-        ],
-        ...
-}
-```
-
-请参阅下一部分了解每个选项的其他配置的详细信息。
+下一部分介绍了其中每个选项的配置详细信息。
 
 ### <a name="service-certificate-validation-options"></a>服务证书验证选项 
 
 - 无：反向代理跳过对代理服务证书的验证，并建立安全连接。 此选项为默认行为。
-在 ApplicationGateway/Http 元素的参数部分中，将 ApplicationCertificateValidationPolicy 的值指定为“无”。
+在 [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) 节中，指定值为 **None** 的 **ApplicationCertificateValidationPolicy**。
 
-- ServiceCommonNameAndIssuer：反向代理根据证书公用名称和即时颁发者指纹，验证服务提供的证书：在 ApplicationGateway/Http 元素的参数部分中，将 ApplicationCertificateValidationPolicy 的值指定为 ServiceCommonNameAndIssuer。
+   ```json
+   {
+   "fabricSettings": [
+             ...
+             {
+               "name": "ApplicationGateway/Http",
+               "parameters": [
+                 {
+                   "name": "ApplicationCertificateValidationPolicy",
+                   "value": "None"
+                 }
+               ]
+             }
+           ],
+           ...
+   }
+   ```
 
-```json
-{
-"fabricSettings": [
-          ...
-          {
-            "name": "ApplicationGateway/Http",
-            "parameters": [
-              {
-                "name": "ApplicationCertificateValidationPolicy",
-                "value": "ServiceCommonNameAndIssuer"
-              }
-            ]
-          }
-        ],
-        ...
-}
-```
+- **ServiceCommonNameAndIssuer**：反向代理根据证书公用名称和直接颁发者的指纹，验证服务提供的证书：在 [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) 节中指定值为 **ServiceCommonNameAndIssuer** 的 **ApplicationCertificateValidationPolicy**。
 
-若要指定服务公用名称和颁发者指纹，请在 fabricSettings 下添加 ApplicationGateway/Http/ServiceCommonNameAndIssuer 元素，如下所示。 参数数组元素中可以添加多个证书公用名称和颁发者指纹对。 
+   ```json
+   {
+   "fabricSettings": [
+             ...
+             {
+               "name": "ApplicationGateway/Http",
+               "parameters": [
+                 {
+                   "name": "ApplicationCertificateValidationPolicy",
+                   "value": "ServiceCommonNameAndIssuer"
+                 }
+               ]
+             }
+           ],
+           ...
+   }
+   ```
 
-如果连接终结点反向代理后提供的证书的公用名称和颁发者指纹与此处指定的任何值匹配，则建立 SSL 通道。 如果与证书详细信息不匹配，则反向代理拒绝客户端请求，并显示 502（网关错误）状态代码。 并且 HTTP 状态行还会显示“无效 SSL 证书”短语。 
+   若要指定服务公用名称和颁发者指纹，请在 **fabricSettings** 下添加 [**ApplicationGateway/Http/ServiceCommonNameAndIssuer**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttpservicecommonnameandissuer) 节，如下所示。 可在 **parameters** 数组中添加多个证书公用名称和颁发者指纹对。 
 
-```json
-{
-"fabricSettings": [
-          ...
-          {
-             "name": "ApplicationGateway/Http/ServiceCommonNameAndIssuer",
-            "parameters": [
-              {
-                "name": "WinFabric-Test-Certificate-CN1",
-                "value": "b3 44 9b 01 8d 0f 68 39 a2 c5 d6 2b 5b 6c 6a c8 22 b4 22 11"
-              },
-              {
-                "name": "WinFabric-Test-Certificate-CN2",
-                "value": "b3 44 9b 01 8d 0f 68 39 a2 c5 d6 2b 5b 6c 6a c8 22 11 33 44"
-              }
-            ]
-          }
-        ],
-        ...
-}
-```
+   如果连接终结点反向代理后提供的证书的公用名称和颁发者指纹与此处指定的任何值匹配，则建立 SSL 通道。 
+   如果与证书详细信息不匹配，则反向代理拒绝客户端请求，并显示 502（网关错误）状态代码。 并且 HTTP 状态行还会显示“无效 SSL 证书”短语。 
 
+   ```json
+   {
+   "fabricSettings": [
+             ...
+             {
+               "name": "ApplicationGateway/Http/ServiceCommonNameAndIssuer",
+               "parameters": [
+                 {
+                   "name": "WinFabric-Test-Certificate-CN1",
+                   "value": "b3 44 9b 01 8d 0f 68 39 a2 c5 d6 2b 5b 6c 6a c8 22 b4 22 11"
+                 },
+                 {
+                   "name": "WinFabric-Test-Certificate-CN2",
+                   "value": "b3 44 9b 01 8d 0f 68 39 a2 c5 d6 2b 5b 6c 6a c8 22 11 33 44"
+                 }
+               ]
+             }
+           ],
+           ...
+   }
+   ```
 
-- ServiceCertificateThumbprints：反向代理根据指纹验证代理服务证书。 使用自签名证书配置服务时可以选择此方法：在 ApplicationGateway/Http 元素的参数部分中，将 ApplicationCertificateValidationPolicy 的值指定为 ServiceCertificateThumbprints。
+- ServiceCertificateThumbprints：反向代理根据指纹验证代理服务证书。 使用自签名证书配置服务后，可以选择此方法：在 [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) 节中，指定值为 **ServiceCertificateThumbprints** 的 **ApplicationCertificateValidationPolicy**。
 
-```json
-{
-"fabricSettings": [
-          ...
-          {
-            "name": "ApplicationGateway/Http",
-            "parameters": [
-              {
-                "name": "ApplicationCertificateValidationPolicy",
-                "value": "ServiceCertificateThumbprints"
-              }
-            ]
-          }
-        ],
-        ...
-}
-```
+   ```json
+   {
+   "fabricSettings": [
+             ...
+             {
+               "name": "ApplicationGateway/Http",
+               "parameters": [
+                 {
+                   "name": "ApplicationCertificateValidationPolicy",
+                   "value": "ServiceCertificateThumbprints"
+                 }
+               ]
+             }
+           ],
+           ...
+   }
+   ```
 
-并在 ApplicationGateway/Http 元素下的参数部分中，使用 ServiceCertificateThumbprints 项指定指纹。 可将多个指纹指定为值字段中的逗号分隔列表，如下所示：
+   另外，在 **ApplicationGateway/Http** 节中，指定包含 **ServiceCertificateThumbprints** 条目的指纹。 可将多个指纹指定为值字段中的逗号分隔列表，如下所示：
 
-```json
-{
-"fabricSettings": [
-          ...
-          {
-            "name": "ApplicationGateway/Http",
-            "parameters": [
-                ...
-              {
-                "name": "ServiceCertificateThumbprints",
-                "value": "78 12 20 5a 39 d2 23 76 da a0 37 f0 5a ed e3 60 1a 7e 64 bf,78 12 20 5a 39 d2 23 76 da a0 37 f0 5a ed e3 60 1a 7e 64 b9"
-              }
-            ]
-          }
-        ],
-        ...
-}
-```
+   ```json
+   {
+   "fabricSettings": [
+             ...
+             {
+               "name": "ApplicationGateway/Http",
+               "parameters": [
+                   ...
+                 {
+                   "name": "ServiceCertificateThumbprints",
+                   "value": "78 12 20 5a 39 d2 23 76 da a0 37 f0 5a ed e3 60 1a 7e 64 bf,78 12 20 5a 39 d2 23 76 da a0 37 f0 5a ed e3 60 1a 7e 64 b9"
+                 }
+               ]
+             }
+           ],
+           ...
+   }
+   ```
 
-如果此配置项中列出了服务器证书的指纹，则反向代理的 SSL 连接成功。 否则将终止连接，拒绝客户端请求，并显示 502（网关错误）。 并且 HTTP 状态行还会显示“无效 SSL 证书”短语。
+   如果此配置项中列出了服务器证书的指纹，则反向代理的 SSL 连接成功。 否则将终止连接，拒绝客户端请求，并显示 502（网关错误）。 并且 HTTP 状态行还会显示“无效 SSL 证书”短语。
 
 ## <a name="endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints"></a>服务同时公开安全和不安全终结点时的终结点选择逻辑
-Service Fabric 支持为一个服务配置多个终结点。 请参阅[在服务清单中指定资源](service-fabric-service-manifest-resources.md)。
+Service Fabric 支持为一个服务配置多个终结点。 有关详细信息，请参阅[在服务清单中指定资源](service-fabric-service-manifest-resources.md)。
 
-反向代理根据 ListenerName 查询参数选择其中一个终结点来转发请求。 如果未指定该参数，则选择终结点列表中的任意一个终结点。 在本示例中可以是 HTTP 或 HTTPS 终结点。 有时可能希望/需要在“仅安全模式”下运行反向代理，即 不希望安全反向代理将请求转发给不安全终结点。 在 ApplicationGateway/Http 元素的参数部分中，将 SecureOnlyMode 配置项的值指定为 true 可以实现这一目的。   
+反向代理根据[服务 URI](./service-fabric-reverseproxy.md#uri-format-for-addressing-services-by-using-the-reverse-proxy) 中的 **ListenerName** 查询参数选择某个终结点来转发请求。 如果未指定 **ListenerName** 参数，则反向代理可以选取终结点列表中的任一终结点。 根据为服务配置的终结点，所选终结点可以是 HTTP 或 HTTPS 终结点。 在某些情况下，或者根据某些要求，你希望反向代理在“仅限安全模式”下运行；也就是说，你不希望安全反向代理将请求转发到不安全的终结点。 若要将反向代理设置为仅限安全模式，请在 [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) 节中指定值为 **true** 的 **SecureOnlyMode** 配置条目。   
 
 ```json
 {
@@ -175,19 +175,20 @@ Service Fabric 支持为一个服务配置多个终结点。 请参阅[在服务
 }
 ```
 
-> 
-> 在 SecureOnlyMode 下运行时，如果客户端已指定对应于 HTTP（不安全）终结点的 ListenerName，则反向代理拒绝请求，并显示 404 (Not Found) HTTP 状态代码。
+> [!NOTE]
+> 在 **SecureOnlyMode** 下运行时，如果客户端已指定对应于 HTTP（不安全）终结点的 **ListenerName**，则反向代理拒绝请求，并显示 404 (Not Found) HTTP 状态代码。
 
 ## <a name="setting-up-client-certificate-authentication-through-the-reverse-proxy"></a>通过反向代理设置客户端证书身份验证
-反向代理和所有客户端证书数据丢失时，SSL 将终止。 若要让服务执行客户端证书身份验证，请在 ApplicationGateway/Http 元素的参数部分中设置 ForwardClientCertificate 设置。
+反向代理和所有客户端证书数据丢失时，SSL 将终止。 若要让服务执行客户端证书身份验证，请在 [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) 节中指定 **ForwardClientCertificate** 设置。
 
-1. 如果将 ForwardClientCertificate 设置为 false，其 SSL 与客户端握手期间，反向代理不会请求客户端证书。
+1. 如果将 **ForwardClientCertificate** 设置为 **false**，在反向代理与客户端执行 SSL 握手期间，反向代理不会请求客户端证书。
 此选项为默认行为。
 
-2. 如果将 ForwardClientCertificate 设置为 true，其 SSL 与客户端握手期间，反向代理将请求客户端证书。
+2. 如果将 **ForwardClientCertificate** 设置为 **true**，在反向代理与客户端执行 SSL 握手期间，反向代理会请求客户端的证书。
 然后会转发名为 X-Client-Certificate 的自定义 HTTP 标头中的客户端证书数据。 标头值是客户端证书的 base64 编码 PEM 格式字符串。 检查证书数据后，服务可以接受/拒绝请求，并显示相应状态代码。
 如果客户端不提供证书，反向代理将转发空标头，并让服务处理该情况。
 
+> [!NOTE]
 > 反向代理只是一个转发程序。 它不会对客户端证书执行验证。
 
 

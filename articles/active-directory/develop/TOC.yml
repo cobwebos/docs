@@ -103,9 +103,9 @@
     - name: 移动 SSO 和桌面 SSO
       items:
         - name: 在 Android 上启用 SSO
-          href: howto-v1-enable-sso-on-android.md
+          href: howto-v1-enable-sso-android.md
         - name: 在 iOS 上启用 SSO
-          href: howto-v1-enable-sso-on-ios.md
+          href: howto-v1-enable-sso-ios.md
     - name: Azure AD B2B
       href: ../active-directory-b2b-what-is-azure-ad-b2b.md
     - name: 使用 SCIM 进行用户预配
@@ -116,9 +116,9 @@
         - name: AAD Graph 入门
           href: active-directory-graph-api-quickstart.md
     - name: AppSource 认证
-      href: active-directory-devhowto-appsource-certified.md
+      href: howto-get-appsource-certified.md
     - name: Azure AD 应用库
-      href: active-directory-app-gallery-listing.md
+      href: howto-app-gallery-listing.md
     - name: Office 365 卖家仪表板
       href: 'https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard'
     - name: 使用 Visual Studio
@@ -150,7 +150,7 @@
     - name: 按方案分类的代码示例
       href: sample-v1-code.md
     - name: 术语表
-      href: active-directory-dev-glossary.md
+      href: developer-glossary.md
     - name: 身份验证协议
       href: active-directory-authentication-protocols.md
       items:
@@ -178,7 +178,7 @@
         - name: 应用和 Azure AD
           href: active-directory-how-applications-are-added.md
     - name: 应用程序清单
-      href: active-directory-application-manifest.md
+      href: reference-app-manifest.md
     - name: 令牌生存期
       href: ../active-directory-configurable-token-lifetimes.md
     - name: 服务限制
@@ -189,7 +189,7 @@
       href: active-directory-appmodel-v2-overview.md
       items:
         - name: 应用类型
-          href: active-directory-v2-flows.md
+          href: v2-app-types.md
         - name: 限制
           href: active-directory-v2-limitations.md
         - name: v1-v2 比较
@@ -239,7 +239,7 @@
     - name: 引用
       items:
         - name: 身份验证库
-          href: active-directory-v2-libraries.md
+          href: reference-v2-libraries.md
         - name: 按方案分类的 v2.0 代码示例
           href: sample-v2-code.md
         - name: v2.0 身份验证协议
@@ -266,7 +266,7 @@
 - name: 资源
   items:
     - name: 获取帮助
-      href: active-directory-develop-help-support.md
+      href: developer-support-help-options.md
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: 定价计算器

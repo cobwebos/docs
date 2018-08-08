@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance-reports
-ms.date: 07/18/2018
+ms.date: 07/31/2018
 ms.author: rolyon
-ms.openlocfilehash: b1a11fdb685b8b4e5c513931269c479506d943a0
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 970e748d7174a9b443fc96f52ac94e082a6c9d44
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136649"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398948"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory 使用条款功能
 组织可以通过 Azure AD 使用条款这种简单的方法向最终用户显示信息。 可以通过这样的呈现方式确保用户看到法律要求或符合性要求的相关免责声明。 本文介绍如何开始使用 Azure AD 使用条款。
@@ -138,6 +138,42 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 
 1. 可以在其中查看已接受的使用条款。 
 
+## <a name="edit-terms-of-use-details"></a>编辑使用条款详细信息
+可以编辑使用条款的某些详细信息，但不能修改现有文档。 以下过程介绍如何编辑详细信息。
+
+1. 在 [https://aka.ms/catou](https://aka.ms/catou) 登录到 Azure 并导航到“使用条款”。
+
+1. 选择要编辑的使用条款。
+
+1. 单击“编辑条款”。
+
+1. 在“编辑使用条款”窗格中，更改名称、显示名称，或要求用户展开值。
+
+    ![添加 TOU](media/active-directory-tou/edit-tou.png)
+
+1. 单击“保存”以保存更改。
+
+    保存更改后，用户必须重新接受新条款。
+
+## <a name="add-a-terms-of-use-language"></a>添加使用条款语言
+以下过程介绍如何添加使用条款语言。
+
+1. 在 [https://aka.ms/catou](https://aka.ms/catou) 登录到 Azure 并导航到“使用条款”。
+
+1. 选择要编辑的使用条款。
+
+1. 在详细信息窗格中，单击“语言”选项卡。
+
+    ![添加 TOU](media/active-directory-tou/languages-tou.png)
+
+1. 单击“添加语言”。
+
+1. 在“添加使用条款语言”窗格中，上传已本地化的 PDF 并选择语言。
+
+    ![添加 TOU](media/active-directory-tou/language-add-tou.png)
+
+1. 单击“添加”以添加该语言。
+
 ## <a name="delete-terms-of-use"></a>删除使用条款
 可以通过以下过程删除旧的使用条款。
 
@@ -175,8 +211,11 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 **问：为什么我在使用条款报告与 Azure AD 审核日志中看到的同意数量不同？**</br>
 答：使用条款报告的存储时间为该使用条款的有效期，而 Azure AD 审核日志的存储时间为 30 天。 此外，使用条款报告仅显示用户当前的同意状态。 例如，如果用户拒绝然后接受，则使用条款报告仅显示该用户的接受。 如果需要查看历史记录，可以使用 Azure AD 审核日志。
 
-**问：更改使用条款的条款后，是否需要用户重新接受该条款？**</br>
-答：是的，管理员可以更改使用条款的条款，这需要用户重新接受新的条款。
+**问：如果我编辑了使用条款的详细信息，用户是否必须重新接受？**</br>
+答：是的。如果管理员编辑了使用条款的详细信息，则用户必须重新接受新条款。
+
+**问：是否可以更新现有的使用条款文档？**</br>
+答：目前无法更新现有的使用条款文档。 若要更改使用条款文档，必须创建新的使用条款实例。
 
 **问：如果使用条款 PDF 文档中有超链接，最终用户能否单击这些超链接？**</br>
 答：该 PDF 默认呈现为 JPEG，因此无法单击超链接。 用户可以选择“查看时遇到问题? 请单击此处”**，以本机方式呈现该 PDF（支持超链接）**。

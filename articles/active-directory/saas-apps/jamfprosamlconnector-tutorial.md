@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2018
+ms.date: 07/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 794039ee1a5b1cf3b382e0f0769383b1e033e982
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b003f29db699d89f0d3cec76ee3562ffad08b40f
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39046929"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346328"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jamf-pro"></a>教程：Azure Active Directory 与 Jamf Pro 集成
 
@@ -108,7 +108,7 @@ ms.locfileid: "39046929"
 
     ![Jamf Pro 域和 URL 单一登录信息](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL： `https://<subdomain>.jamfcloud.com/saml/metadata`
+    a. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL： `https://<subdomain>.jamfcloud.com/saml/metadata`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<subdomain>.jamfcloud.com/saml/SSO`
 
@@ -139,11 +139,25 @@ ms.locfileid: "39046929"
 
     ![Jamf Pro 配置](./media/jamfprosamlconnector-tutorial/configure2.png)
 
-10. 向下滚动到“单一登录”部分下的“标识提供者”，并执行以下步骤：
+10. 在“单一登录”页上，执行以下步骤：
+
+    ![Jamf Pro 单一登录](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_single.png)
+
+    a. 选择“Jamf Pro Server”以启用单一登录访问。
+
+    b. 如果选择“允许所有用户绕过”，则用户不会重定向到用于身份验证的标识提供者登录页，但可以直接登录到 Jamf Pro。 当用户尝试通过标识提供者访问 Jamf Pro 时，会发生 IdP 发起的 SSO 身份验证和授权。
+
+    c. 为“用户映射: SAML”选择“NameID”选项。 默认情况下，此设置指定为“NameID”，但可以定义自定义的属性。
+
+    d. 为“用户映射: JAMF PRO”选择“电子邮件”。 Jamf Pro 按以下方式映射 IdP 发送的 SAML 属性：按用户和按组。 当用户尝试访问 Jamf Pro 时，Jamf Pro 默认会从标识提供者获取有关该用户的信息，并且其与 Jamf Pro 用户帐户相匹配。 如果传入的用户帐户在 Jamf Pro 中不存在，则会发生组名称匹配。
+
+    e. 在“组属性名称”文本框中粘贴值 `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups`。
+ 
+11. 在同一页上，一直向下滚动到“单一登录”部分下的“标识提供者”，并执行以下步骤：
 
     ![Jamf Pro 配置](./media/jamfprosamlconnector-tutorial/configure3.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 从“标识提供者”下拉菜单中选择选项“其他”。
+    a. 从“标识提供者”下拉菜单中选择选项“其他”。
 
     b. 在“其他提供程序”文本框中输入“Azure AD”。
 
@@ -152,7 +166,7 @@ ms.locfileid: "39046929"
     d. 复制“实体 ID”值并将其粘贴到 Azure 门户上“Jamf Pro 域和 URL”部分的“标识符(实体 ID)”文本框中。
 
     >[!NOTE]
-    > 此处的 `aadsso` 是用于引用的子域部分。 使用此值完成 Azure 门户上的“Jamf Pro 域和 URL”部分中的登录 URL 和答复 URL。
+    > 此处已模糊化的值是子域部分。使用此值填写 Azure 门户上的“Jamf Pro 域和 URL”部分中的“登录 URL”和“回复 URL”。
 
     e. 单击“ **保存**”。
 
@@ -180,7 +194,7 @@ ms.locfileid: "39046929"
 
     ![“用户”对话框](./media/jamfprosamlconnector-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -216,7 +230,7 @@ ms.locfileid: "39046929"
 
     ![添加员工](./media/jamfprosamlconnector-tutorial/user4.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“用户名”文本框中键入“BrittaSimon”的全名。
+    a. 在“用户名”文本框中键入“BrittaSimon”的全名。
 
     b. 根据你的组织为“访问级别”、“特权设置”和“访问状态”选择合适的选项。
     

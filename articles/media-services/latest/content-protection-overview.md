@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/25/2018
+ms.date: 07/30/2018
 ms.author: juliako
-ms.openlocfilehash: 1568ea3431f18b7a7a020d34d803f883904e18b4
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 600068113fec0549f3993ac57c1daa93577c6be6
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115224"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399747"
 ---
 # <a name="content-protection-overview"></a>内容保护概述
 
@@ -30,7 +30,7 @@ ms.locfileid: "39115224"
 
 &#42; *动态加密支持 AES-128“明文密钥”、CBCS 和 CENC。有关详细信息，请参阅[此处](#streaming-protocols-and-encryption-types)的支持矩阵。*
 
-本文介绍与了解使用媒体服务进行内容保护相关的概念和术语。 本文还提供指向讨论如何保护内容的文章的链接。 
+本文介绍与了解使用媒体服务进行内容保护相关的概念和术语。 本文还包含[常见问题解答](#faq)部分，并提供有关如何保护内容的文章的链接。 
 
 ## <a name="main-components-of-the-content-protection-system"></a>内容保护系统的主要组件
 
@@ -125,6 +125,65 @@ ms.locfileid: "39115224"
 
 配置令牌限制策略时，必须指定主验证密钥、颁发者和受众参数。 主验证密钥包含为令牌签名时使用的密钥。 颁发者是颁发令牌的安全令牌服务。 受众（有时称为范围）描述该令牌的意图，或者令牌授权访问的资源。 媒体服务密钥交付服务会验证令牌中的这些值是否与模板中的值匹配。
 
+## <a name="a-idfaqfrequently-asked-questions"></a><a id="faq"/>常见问题解答
+
+### <a name="question"></a>问题
+
+如何使用 Azure 媒体服务 (AMS) v3 实施多 DRM（PlayReady、Widevine 和 FairPlay）系统，如何使用 AMS 许可证/密钥传送服务？
+
+### <a name="answer"></a>Answer
+
+有关端到端的方案，请参阅[以下代码示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs)。 
+
+该示例演示如何：
+
+1. 创建和配置 ContentKeyPolicies。
+
+  该示例包含用于配置 [PlayReady](playready-license-template-overview.md)、[Widevine](widevine-license-template-overview.md) 和 [FairPlay](fairplay-license-overview.md) 许可证的函数。
+
+    ```
+    ContentKeyPolicyPlayReadyConfiguration playReadyConfig = ConfigurePlayReadyLicenseTemplate();
+    ContentKeyPolicyWidevineConfiguration widevineConfig = ConfigureWidevineLicenseTempate();
+    ContentKeyPolicyFairPlayConfiguration fairPlayConfig = ConfigureFairPlayPolicyOptions();
+    ```
+
+2. 创建配置为流式传输加密资产的 StreamingLocator。 
+
+  此示例将 **StreamingPolicyName** 设置为支持信封和 cenc 加密，并在 StreamingLocator 中设置两个内容密钥的 **PredefinedStreamingPolicy.SecureStreaming**。 
+
+  如果还想要使用 FairPlay 进行加密，请将 **StreamingPolicyName** 设置为 **PredefinedStreamingPolicy.SecureStreamingWithFairPlay**。
+
+3. 创建测试令牌。
+
+  **GetTokenAsync** 方法演示如何创建测试令牌。
+  
+4. 生成流 URL。
+
+  **GetDASHStreamingUrlAsync** 方法演示如何生成流 URL。 在本例中，URL 流式传输 **DASH** 内容。
+
+### <a name="question"></a>问题
+
+在使用 JWT 令牌请求许可证或密钥之前，如何以及在何处获取 JWT 令牌？
+
+### <a name="answer"></a>Answer
+
+1. 在生产环境中，需要获取安全令牌服务 (STS)（Web 服务），以便根据 HTTPS 请求颁发 JWT 令牌。 对于测试，可以使用 [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) 定义的 **GetTokenAsync** 方法中所示的代码。
+2. 对用户进行身份验证后，播放器需要向 STS 发出请求以获取此类令牌，并将其分配为令牌的值。 可以使用 [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/)。
+
+* 有关使用对称和非对称密钥运行 STS 的示例，请参阅 [http://aka.ms/jwt](http://aka.ms/jwt)。 
+* 有关使用此类 JWT 令牌的、基于 Azure Media Player 的播放器示例，请参阅 [http://aka.ms/amtest](http://aka.ms/amtest)（展开“player_settings”链接可查看令牌输入）。
+
+### <a name="question"></a>问题
+
+如何授权使用 AES 加密流式传输视频的请求？
+
+### <a name="answer"></a>Answer
+
+正确的方法是利用 STS（安全令牌服务）：
+
+在 STS 中，根据用户配置文件添加不同的声明（例如“高级用户”、“基本用户”、“免费试用版用户”）。 在 JWT 中添加不同的声明后，用户可以查看不同的内容。 当然，对于不同的内容/资产，ContentKeyPolicyRestriction 包含相应的 RequiredClaims。
+
+使用 Azure 媒体服务 API 来配置许可证/传送密钥以及加密资产（如[此示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)中所示）。
 
 ## <a name="next-steps"></a>后续步骤
 

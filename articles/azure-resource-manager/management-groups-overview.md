@@ -10,31 +10,31 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/09/2018
+ms.date: 7/31/2018
 ms.author: rithorn
-ms.openlocfilehash: c8152a6c12c776806d9a17c5e434d825d6c91165
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 146ded37dbf517528af23574cd5b9325f4b5f9d0
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38466637"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358763"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>使用 Azure 管理组来组织资源
 
 如果你的组织有多个订阅，则可能需要一种方法来高效地管理这些订阅的访问权限、策略和符合性。 Azure 管理组提供订阅上的作用域级别。 可将订阅组织到名为“管理组”的容器中，并将管理条件应用到管理组。 管理组中的所有订阅都将自动继承应用于管理组的条件。 不管使用什么类型的订阅，管理组都能提供大规模的企业级管理。
-
-管理组功能目前以公共预览版提供。 若要开始使用管理组，请登录 [Azure 门户](https://portal.azure.com)，在“所有服务”部分搜索“管理组”。
 
 例如，可将策略应用到限制创建虚拟机 (VM) 的区域的管理组。 此策略将应用到该管理组下面的所有管理组、订阅和资源，只允许在该区域中创建 VM。
 
 ## <a name="hierarchy-of-management-groups-and-subscriptions"></a>管理组和订阅的层次结构
 
 可以生成管理组和订阅的灵活层次结构，以便将资源组织成用于统一策略和访问管理的层次结构。
-下图显示的示例层次结构由按部门组织的管理组和订阅构成。
+下图显示了使用管理组创建用于调控的层次结构的示例。
 
 ![树](media/management-groups/MG_overview.png)
 
-创建按部门分组的层次结构后，可以分配由该管理组下的部门继承的 [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 角色。 使用管理组时，只需分配角色一次，因此可以减少工作负荷，并减少出错的风险。
+按此示例所示创建层次结构可对“基础结构团队管理组”应用策略（例如，将 VM 位置限制为美国西部区域），以启用内部符合性与安全策略。 此策略将继承到该管理组下的两个 EA 订阅，并应用到这些订阅下的所有 VM。 由于此策略从管理组继承到订阅，因此，资源或订阅所有者无法更改此安全策略，以改善调控能力。
+
+使用管理组的另一个场景是向用户提供对多个订阅的访问权限。  通过移动该管理组下的多个订阅，可在该管理组中创建一个 RBAC 分配，该分配将这种访问权限继承到所有订阅。  无需基于多个订阅编写 RBAC 分配的脚本，管理组中的一个分配就能让用户访问所需的一切内容。
 
 ### <a name="important-facts-about-management-groups"></a>关于管理组的重要事实
 
@@ -44,19 +44,6 @@ ms.locfileid: "38466637"
 - 每个管理组和订阅只能支持一个父级。
 - 每个管理组可以包含多个子级。
 - 所有订阅和管理组都包含在每个目录中的单个层次结构内。 有关预览版期间的异常，请参阅[关于根管理组的重要事实](#important-facts-about-the-root-management-group)。
-
-### <a name="preview-subscription-visibility-limitation"></a>预览版订阅可见性限制
-
-目前预览版中存在限制，无法查看你对其具有继承的访问权限的订阅。 已继承对订阅的访问权限，但 Azure 资源管理器尚无法按照已继承权限的情况来执行操作。  
-
-使用 REST API 获取有关订阅的信息可以返回有关确实具有访问权限的详细信息，但在 Azure 门户和 Azure Powershell 中不会显示相应订阅。
-
-正在设法解决此问题，将在管理组“正式发行”之前解决。  
-
-### <a name="cloud-solution-provider-csp-limitation-during-preview"></a>预览版期间的云解决方案提供商 (CSP) 限制
-
-当前对于云解决方案提供商 (CSP) 合作伙伴存在限制，他们无法在其客户的目录中创建或管理其客户的管理组。  
-正在设法解决此问题，将在管理组“正式发行”之前解决。
 
 ## <a name="root-management-group-for-each-directory"></a>每个目录的根管理组
 
@@ -76,7 +63,7 @@ ms.locfileid: "38466637"
   - 未对任何人授予对根管理组的默认访问权限。 只有目录全局管理员可将自身提升为拥有访问权限的角色。  拥有访问权限后，目录管理员可向要管理的其他用户分配任何 RBAC 角色。  
 
 >[!NOTE]
->如果你的目录在 2018 年 6 月 25 日之前开始使用管理组服务，则你的目录可能未在层次结构中包含所有订阅。 管理组团队正在以追溯方式更新在 2018 年 7 月之前开始在公共预览中使用管理组的每个目录。 目录中的所有订阅都将成为根管理组下的子级。  
+>如果你的目录在 2018 年 6 月 25 日之前开始使用管理组服务，则你的目录可能未在层次结构中包含所有订阅。 管理组团队正在以追溯方式更新在 2018 年 7 月/8 月之前开始在公共预览中使用管理组的每个目录。 目录中的所有订阅都将成为根管理组下的子级。  
 >
 >如果你有关于此追溯过程的问题，请联系：managementgroups@microsoft.com  
   
@@ -97,9 +84,13 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (RBAC)](../role-b
 |:-------------------------- |:------:|:------:|:----:|:------:|:-------------:| :------------:|:-----:|
 |所有者                       | X      | X      | X    | X      | X             |               | X     |
 |参与者                 | X      | X      | X    | X      |               |               | X     |
+|MG 参与者*             | X      | X      | X    | X      |               |               | X     |
 |读取器                      |        |        |      |        |               |               | X     |
+|MG 读取者*                  |        |        |      |        |               |               | X     |
 |资源策略参与者 |        |        |      |        |               | X             |       |
 |用户访问管理员   |        |        |      |        | X             |               |       |
+
+*：MG 参与者和 MG 读取者只允许用户在管理组范围执行这些操作。  
 
 ### <a name="custom-rbac-role-definition-and-assignment"></a>自定义 RBAC 角色定义和分配
 

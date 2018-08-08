@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 07/25/2018
 ms.author: cephalin
-ms.openlocfilehash: 4c157ed905b7dc48c886b26987c164ef9a47f3c3
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 04996e772c2989be89ce551bfa45c57154de7b2d
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714555"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39307783"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>为 Azure 应用服务配置 PremiumV2 层
 
@@ -28,21 +28,19 @@ ms.locfileid: "34714555"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要将 Web 应用纵向扩展到 **PremiumV2**，需要在 Azure 应用服务中有一个在低于 **PremiumV2** 的定价层中运行的 Web 应用。
+若要将 Web 应用纵向扩展到 **PremiumV2**，需要在 Azure 应用服务中提供一个 Web 应用，该 Web 应用在低于 **PremiumV2** 的定价层中运行，并且必须在支持 PremiumV2 的应用服务部署中运行。
 
 <a name="availability"></a>
 
 ## <a name="premiumv2-availability"></a>PremiumV2 可用性
 
-PremiumV2 层当前仅可供 _Windows_ 上的应用服务使用。 目前尚不支持 Linux 容器。
+**PremiumV2** 层适用于 _Windows_ 和 _Linux_ 上的应用服务。
 
-PremiumV2 已在大多数 Azure 区域中可用，并且在不断扩展。 若要查看它在你所在的区域是否可用，请在 [Azure Cloud Shell](../cloud-shell/overview.md) 中运行以下 Azure CLI 命令：
+**PremiumV2** 已在大多数 Azure 区域中推出。 若要查看它在你所在的区域是否可用，请在 [Azure Cloud Shell](../cloud-shell/overview.md) 中运行以下 Azure CLI 命令：
 
 ```azurecli-interactive
 az appservice list-locations --sku P1V2
 ```
-
-如果在创建应用或创建应用服务计划期间收到错误，则 **PremiumV2** 很可能不可用于你选择的区域。
 
 <a name="create"></a>
 
@@ -57,11 +55,11 @@ az appservice list-locations --sku P1V2
 ![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
-> 如果没有看到 **P1V2**、**P2V2** 和 **P3V2** 作为选项列出，则 **PremiumV2** 在所选区域中不可用，或者所配置的 Linux 应用服务计划不支持 **PremiumV2**。
+> 如果未看到 **P1V2**、**P2V2** 和 **P3V2** 作为选项列出，或者这些选项灰显，则 **PremiumV2** 可能在包含应用服务计划的基础应用服务部署中不可用。 有关更多详细信息，请参阅[从不受支持的资源组和区域组合纵向扩展](#unsupported)。
 
 ## <a name="scale-up-an-existing-app-to-premiumv2-tier"></a>将现有应用纵向扩展到 PremiumV2 层
 
-在将现有应用扩展到 **PremiumV2** 层之前，请确保 **PremiumV2** 在你的区域中可用。 有关信息，请参阅 [PremiumV2 可用性](#availability)。 如果它在你的区域中不可用，请参阅[从不受支持的区域纵向扩展](#unsupported)。
+在将现有应用扩展到 **PremiumV2** 层之前，请确保 **PremiumV2** 可用。 有关信息，请参阅 [PremiumV2 可用性](#availability)。 如果 PremiumV2 不可用，请参阅[从不受支持的资源组和区域组合纵向扩展](#unsupported)。
 
 根据托管环境，纵向扩展可能需要执行额外的步骤。 
 
@@ -81,32 +79,20 @@ az appservice list-locations --sku P1V2
 
 ### <a name="if-you-get-an-error"></a>如果遇到错误
 
-某些应用服务计划无法纵向扩展到 PremiumV2 层。 如果纵向扩展操作遇到错误，则需要为应用使用新的应用服务计划。
-
-在与现有应用服务应用相同的区域和资源组中创建一个 _Windows_ 应用服务计划。 根据[在 PremiumV2 层中创建应用](#create)中的步骤将其设置到 **PremiumV2** 层。 如果需要，请使用与现有应用服务计划相同的横向扩展配置（实例数、自动缩放，等等）。
-
-再次打开你的应用服务应用页面。 在应用服务的左侧导航栏中，选择“更改应用服务计划”。
-
-![](media/app-service-configure-premium-tier/change-plan.png)
-
-选择所创建的应用服务计划。
-
-![](media/app-service-configure-premium-tier/select-plan.png)
-
-在更改操作完成后，应用在 **PremiumV2** 层中运行。
+如果基础应用服务部署不支持 PremiumV2，某些应用服务计划无法纵向扩展到 PremiumV2 层。  有关更多详细信息，请参阅[从不受支持的资源组和区域组合纵向扩展](#unsupported)。
 
 <a name="unsupported"></a>
 
-## <a name="scale-up-from-an-unsupported-region"></a>从不受支持的区域纵向扩展
+## <a name="scale-up-from-an-unsupported-resource-group-and-region-combination"></a>从不受支持的资源组和区域组合纵向扩展
 
-如果应用在尚不可使用 **PremiumV2** 的区域中运行，则可以将应用移动到其他区域来利用 **PremiumV2**。 可以使用两个选项：
+如果应用在不支持 **PremiumV2** 的应用服务部署中运行，或者在目前不支持 **PremiumV2** 的区域中运行，则需要重新部署应用才能利用 **PremiumV2**。  可以使用两个选项：
 
-- 在新的 **PremiumV2** 计划中创建应用，然后重新部署应用程序代码。 根据[在 PremiumV2 层中创建应用](#create)中的步骤将其设置到 **PremiumV2** 层。 如果需要，请使用与现有应用服务计划相同的横向扩展配置（实例数、自动缩放，等等）。
-- 如果应用已在现有的**高级**层中运行，则可以克隆应用连同所有应用设置、连接字符串和部署配置。
+- 创建**新**资源组，然后在**新**资源组中创建**新** Web 应用和应用服务计划，并在创建过程中选择所需的 Azure 区域。  创建新应用服务计划时，**必须**选择 **PremiumV2** 计划。  这可以确保资源组、应用服务计划和 Azure 区域的组合可让你在支持 **PremiumV2** 的应用服务部署中创建应用服务计划。  然后，将应用程序代码重新部署到新建的应用和应用服务计划。 以后可以根据需要，将应用服务计划从 **PremiumV2** 纵向缩减以节省成本，同时仍可使用 **PremiumV2** 成功纵向扩展。
+- 如果应用已在现有的**高级**层中运行，则可将应用以及所有应用设置、连接字符串和部署配置克隆到使用 **PremiumV2** 的新应用服务计划。
 
     ![](media/app-service-configure-premium-tier/clone-app.png)
 
-    在“克隆应用”页中，可以在所需的区域中创建应用服务计划，并指定要克隆的设置。
+    在“克隆应用”页中，可以在所需的区域中创建使用 **PremiumV2** 的应用服务计划，并指定要克隆的应用设置和配置。
 
 ## <a name="automate-with-scripts"></a>使用脚本自动化
 

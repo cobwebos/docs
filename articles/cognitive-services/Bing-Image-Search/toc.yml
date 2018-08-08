@@ -47,8 +47,6 @@
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Image+Search'
 - name: 操作指南
   items:
-    - name: 使用和显示结果
-      href: UseAndDisplayRequirements.md
     - name: 获取图像见解
       href: image-insights.md
     - name: 获取 .gif 图像
@@ -69,7 +67,7 @@
       href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference'
 - name: 资源
   items:
-    - name: 常见问题
+    - name: 常见问题解答
       href: bing-image-search-resource-faq.md
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/image/'
@@ -91,5 +89,7 @@
       href: image-search-endpoint.md
     - name: 支持的国家/地区和市场
       href: supported-countries-markets.md
+    - name: 使用和显示要求
+      href: UseAndDisplayRequirements.md
     - name: 适用于必应图像搜索 API 的分析
       href: bing-image-stats.md

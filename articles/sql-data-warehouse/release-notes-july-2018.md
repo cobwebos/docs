@@ -7,19 +7,33 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 07/23/2018
+ms.date: 07/27/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 5f4d39c6aa1a5c2c30e84fbf26535fe3ee7799a6
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: b410722ff444c19572f61996c4a4d059ae831f5f
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216683"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39326075"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-july-2018"></a>Azure SQL 数据仓库中的新增功能 2018 年 7 月
 Azure SQL 数据仓库持续得到改进。 本文介绍了 2018 年 7 月发行的版本中所引入的新功能和所做的更改。
 
+## <a name="lightning-fast-query-performance"></a>飞快的查询性能
+随着可改进无序操作性能的即时数据访问的推出，[Azure SQL 数据仓库](https://aka.ms/sqldw)制定了新的性能基准。 即时数据访问使用直接的 SQL Server 到 SQL Server 本机数据操作来降低数据移动操作的开销。 为实现数据移动而与 SQL Server 引擎直接集成，意味着 SQL 数据仓库的速度**比 Amazon Redshift 快 67%**，因为它使用派生自公认行业标准 [TPC Benchmark™ H (TPC-H)](http://www.tpc.org/tpch/) 的工作负荷。
+
+![Azure SQL 数据仓库比 Amazon Redshift 更快、更便宜](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/eb3b908a-464d-4847-b384-9f296083a737.png)
+<sub>资料来源：[Gigaom Research Analyst Report: Data Warehouse in the Cloud Benchmark](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>（Gigaom 调查分析师报告：符合云基准的数据仓库）
+
+除运行时性能以外，[Gigaom 调查](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)报告还在评估特定工作负荷的美元成本时测量了性价比。 处理 30TB 的工作负荷时，SQL 数据仓库的成本比 Redshift **至少降低了 23%**。 SQL 数据仓库能够弹性缩放计算资源，并且还能暂停和恢复工作负荷；只有服务处于使用中状态时，客户才需付费，因此进一步降低了成本。
+![Azure SQL 数据仓库比 Amazon Redshift 更快、更便宜](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/cb76447e-621e-414b-861e-732ffee5345a.png)
+<sub>资料来源：[Gigaom Research Analyst Report: Data Warehouse in the Cloud Benchmark](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>（Gigaom 调查分析师报告：符合云基准的数据仓库）
+
+###<a name="query-concurrency"></a>查询并发性
+SQL 数据仓库还确保可跨组织访问数据。 Microsoft 增强了该服务以支持 128 个并发查询，使更多的用户可以查询同一个数据库，而不会受到其他请求的阻止。 相比之下，Amazon Redshift 将最大并发查询数限制为 50 个，因此限制了组织内部的数据访问。
+
+SQL 数据仓库在不提高价格的情况下提供这些查询性能和查询并发性改善，其独特的体系结构建立在分离式存储和计算资源的基础之上。
 
 ## <a name="finer-granularity-for-cross-region-and-server-restores"></a>实现跨区域和服务器还原的更精细粒度
 现在可以使用任何还原点跨区域和服务器进行还原，而不是选择每 24 小时执行一次的异地冗余备份。 用户定义或自动还原点支持跨区域和服务器还原，从而实现以更精细的粒度进行其他数据保护。 由于有更多还原点可用，你可以确保在跨区域还原时，数据仓库在逻辑上是一致的。
@@ -59,3 +73,72 @@ parameter_ordinal | name | suggested_system_type_id | suggested_system_type_name
 --------------------------------------------------------------------------------
 1                 | @id  | 56                       | int
 ```
+## <a name="sprefreshsqlmodule"></a>SP_REFRESHSQLMODULE
+如果基础对象的更改导致基础元数据过时，[sp_refreshsqlmodule](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-refreshsqlmodule-transact-sql) 存储过程会更新数据库对象的元数据。 如果某个视图的基表发生更改，并且尚未重新创建该视图，则可能会发生此情况。 这样就免除了删除再重新创建依赖对象的步骤。
+
+以下示例显示了一个由于基础表发生更改而过时的视图。 可以看到，第一列发生更改后，数据正确（1 到 Mollie），但列名无效，并且第二列不存在。 
+```sql
+CREATE TABLE base_table (Id INT);
+GO
+
+INSERT INTO base_table (Id) VALUES (1);
+GO
+
+CREATE VIEW base_view AS SELECT * FROM base_table;
+GO
+
+SELECT * FROM base_view;
+GO
+
+-- Id
+-- ----
+-- 1
+
+DROP TABLE base_table;
+GO
+
+CREATE TABLE base_table (fname VARCHAR(10), lname VARCHAR(10));
+GO
+
+INSERT INTO base_table (fname, lname) VALUES ('Mollie', 'Gallegos');
+GO
+
+SELECT * FROM base_view;
+GO
+
+-- Id
+-- ----------
+-- Mollie
+
+EXEC sp_refreshsqlmodule @Name = 'base_view';
+GO
+
+SELECT * FROM base_view;
+GO
+
+-- fname     | lname
+-- ---------- ----------
+-- Mollie    | Gallegos
+```
+
+## <a name="next-steps"></a>后续步骤
+对 SQL 数据仓库有了初步的认识后，请了解如何快速[创建 SQL 数据仓库][create a SQL Data Warehouse]。 如果不熟悉 Azure，在遇到新术语时，可以参考 [Azure 术语表][Azure glossary]。 或者，查看一下以下一些其他 SQL 数据仓库资源。  
+
+* [客户成功案例]
+* [博客]
+* [功能请求]
+* [视频]
+* [客户顾问团队博客]
+* [堆栈溢出论坛]
+* [Twitter]
+
+
+[博客]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
+[客户顾问团队博客]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
+[客户成功案例]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
+[功能请求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
+[堆栈溢出论坛]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Twitter]: https://twitter.com/hashtag/SQLDW
+[视频]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
+[create a SQL Data Warehouse]: ./create-data-warehouse-portal.md
+[Azure glossary]: ../azure-glossary-cloud-terminology.md
