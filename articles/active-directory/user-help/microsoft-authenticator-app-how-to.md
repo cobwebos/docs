@@ -1,110 +1,118 @@
 ---
-title: Microsoft Authenticator 应用手机版 - Azure AD | Microsoft Docs
-description: 了解如何升级到最新版本的 Azure Authenticator。
-services: multi-factor-authentication
-documentationcenter: ''
+title: Microsoft Authenticator 应用入门 - Azure Active Directory | Microsoft Docs
+description: 了解如何升级到最新版本的 Microsoft Authenticator。
+services: active-directory
 author: eross-msft
 manager: mtillman
 ms.assetid: 3065a1ee-f253-41f0-a68d-2bd84af5ffba
-ms.service: multi-factor-authentication
+ms.service: active-directoary
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: user-help
 ms.topic: conceptual
-ms.date: 10/17/2017
+ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.custom: H1Hack27Feb2017, end-user
-ms.openlocfilehash: 8241dcaaf5623a22f4fc485f021766276472fb51
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 8afd743f6010822709bf3d49f7a3bbcd51b19edf
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39058149"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346481"
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Microsoft 验证器应用入门
-Microsoft Authenticator 应用在工作或学校帐户（例如，bsimon@contoso.com）或 Microsoft 帐户（例如，bsimon@outlook.com）中提供了附加安全级别。
 
-该应用以下面两种方式之一工作：
+Microsoft Authenticator 应用可以帮助阻止未经授权的人员访问帐户；此外，它还能为工作或学校帐户（例如 alain@contoso.com）或个人 Microsoft 帐户（例如 alain@outlook.com）提供附加的安全层，以此阻止欺诈性的交易。 可以将它用作第二种验证方法，或者在使用手机登录时，用它来取代密码。 有关如何设置和使用无密码手机登录的详细信息，请参阅[使用手机（而不是密码）登录](microsoft-authenticator-app-phone-signin-faq.md)。
 
-* **通知**。 该应用通过将通知推送到智能手机或平板电脑，可帮助防止对帐户进行未经授权的访问，以及停止欺诈性交易。 只需查看通知，选择“验证”即可（如果合法）。 否则，可以选择“拒绝”。
-* **验证码**。 该应用可用作生成 OAuth 验证码所需的软件令牌。 输入用户名和密码后，在登录屏幕中输入该应用提供的代码。 验证码提供了第二种形式的身份验证。
+将该应用用于双重验证时，它采用以下两种工作方式之一：
 
-Microsoft 验证器应用将替换 Azure 验证器应用。 可以继续使用 Azure Authenticator 应用，不过，如果决定移到新的 Microsoft Authenticator 应用，本文内容可提供帮助。  
+- **通知。** 该应用会向设备发送一条通知。 请确保通知正确，然后选择“验证”。 如果无法识别该通知，请选择“拒绝”。
+
+- **验证码。** 键入用户名和密码后，可以打开应用，并将“帐户”屏幕上提供的验证码复制到登录屏幕。 验证码充当第二种形式的身份验证。
 
 ## <a name="opt-in-for-two-step-verification"></a>针对双重验证选择加入
 
-Microsoft Authenticator 应用不能单独发挥作用。 需要将每个帐户配置为在通过用户名和密码登录后提示进行二次验证方法。
+组织决定是否对工作或学校帐户使用双重验证。 管理员会告知需要设置和使用哪些验证方法。 有关详细信息，请参阅 [Azure 多重身份验证对我而言有什么用途](multi-factor-authentication-end-user.md)。
 
-对于工作或学校帐户，通常不需要自己选择此功能。 而是，安全管理员会代表你选择加入，然后通知你为帐户注册验证方法。 如果是这种情况，请在 [Azure 多重身份验证对我意味着什么](multi-factor-authentication-end-user.md)中了解详细信息。
+对于个人 Microsoft 帐户，可以自行设置双重验证。 有关更多详细信息和说明，请参阅[关于双重验证](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification)。
 
-对于个人帐户，需要自己设置双重验证。 如果有 Microsoft 帐户，[关于双重验证](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification)中提供了那些步骤。
-
-还可以将 Microsoft Authenticator 与非 Microsoft 帐户一起使用。 它们可能不将此功能称为双重验证，但你应该能在安全性或登录设置下找到此功能。
+还可以对非 Microsoft 帐户使用 Microsoft Authenticator 应用。 这些帐户可能不是将此功能称为双重验证，但你应该能在安全设置或登录设置中找到此功能。 有关如何设置这些非 Microsoft 帐户的详细信息，请参阅 [Microsoft 客户支持视频](https://www.youtube.com/playlist?list=PLyhj1WZ29G65QdD9NxTOAm8HwOS-OBUrX)。
 
 ## <a name="install-the-app"></a>安装应用
-Microsoft Authenticator 应用适用于 [Android](https://go.microsoft.com/fwlink/?linkid=866594)、[iOS](https://go.microsoft.com/fwlink/?linkid=866594) 和 [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)。
+
+Microsoft Authenticator 应用适用于 [Android](https://go.microsoft.com/fwlink/?linkid=866594)、[iOS](https://go.microsoft.com/fwlink/?linkid=866594) 和 [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)。 为了获得最佳体验，应确保应用能够根据请求收到通知。 
 
 ## <a name="add-accounts-to-the-app"></a>将帐户添加到应用
-对于要添加到 Microsoft Authenticator 应用的每个帐户，请使用以下过程之一：
 
-### <a name="add-a-personal-microsoft-account-to-the-app"></a>将个人 Microsoft 帐户添加到应用
+可将工作或学校帐户或者个人帐户添加到 Microsoft Authenticator 应用。 
+
+### <a name="add-a-personal-microsoft-account"></a>添加个人 Microsoft 帐户
 
 对于个人 Microsoft 帐户（用于登录到 Outlook.com、Xbox、Skype 等的帐户），只需在 Microsoft Authenticator 应用中登录到帐户。
 
-### <a name="add-a-work-or-school-account-to-the-app-using-the-qr-code-scanner"></a>使用 QR 码扫描仪将工作或学校帐户添加到应用
-1. 转到安全验证设置屏幕。  有关如何访问此屏幕的信息，请参阅[更改安全设置](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page)。
-2. 选中“验证器应用”旁边的复选框，并选择“配置”。
+### <a name="add-a-work-or-school-account"></a>添加工作或学校帐户
 
-    ![安全验证设置屏幕上的“配置”按钮](./media/microsoft-authenticator-app-how-to/azureauthe.png)
+1. 如果可能，请在另一台电脑或设备上转到[其他安全性验证](http://aka.ms/mfasetup)屏幕。 有关如何转到此屏幕的信息，请参阅[更改安全设置](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page)，或者与管理员联系。
 
-    这会显示一个有 QR 码的屏幕。
+    >[!Note]
+    >如果管理员已启用安全信息预览版体验，则你可以遵照[设置安全信息以使用 Authenticator 应用](security-info-setup-auth-app.md)部分中的说明。
 
-    ![提供 QR 码的屏幕](./media/microsoft-authenticator-app-how-to/barcode2.png)
-3. 打开 Microsoft Authenticator 应用。 在“帐户”屏幕上，选择 **+**，并指定要添加工作帐户或学校帐户。
-4. 使用相机扫描二维码，并选择“完成”关闭二维码屏幕。
+2. 选中“Authenticator 应用”旁边的复选框，然后选择“配置”。
 
-    如果相机不能正常工作，可以[手动输入 QR 码和 URL](#add-an-account-to-the-app-manually)。
+    ![安全验证设置屏幕上的“配置”按钮](./media/microsoft-authenticator-app-how-to/auth-app-configure.png)
 
-5. 当该应用显示帐户名称和其下的六位代码时，已完成。
+    此时会出现“配置移动应用”屏幕，其中显示了要在 Authenticator 应用中扫描的 QR 码。
 
-    ![帐户屏幕](./media/microsoft-authenticator-app-how-to/accounts.png)
+    ![提供 QR 码的屏幕](./media/microsoft-authenticator-app-how-to/auth-app-barcode.png)
+
+3. 打开 Microsoft Authenticator 应用。 在“帐户”屏幕上，依次选择“添加帐户”、“工作或学校帐户”。
+
+4. 使用设备的相机扫描 QR 码，然后选择“完成”关闭 QR 码屏幕。
+
+    >[!Note]
+    >如果相机不能正常工作，可以[手动输入 QR 码和 URL](#add-an-account-to-the-app-manually)。
+
+    应用的“帐户”屏幕将显示你的帐户名，以及六位数的验证码。 为了提高安全性，验证码每隔 30 秒更改一次，以防止使用同一代码两次。  
+
+    ![帐户屏幕](./media/microsoft-authenticator-app-how-to/auth-app-accounts.png)
 
 ### <a name="add-an-account-to-the-app-manually"></a>手动将帐户添加到应用
-1. 转到安全验证设置屏幕。  有关如何访问此屏幕的信息，请参阅[更改安全设置](multi-factor-authentication-end-user-manage-settings.md)。
-2. 选择“配置”。
 
-    ![安全验证设置屏幕上的“配置”按钮](./media/microsoft-authenticator-app-how-to/azureauthe.png)
+1. 转到“其他安全性验证”屏幕。 有关如何访问此屏幕的信息，请参阅[更改安全设置](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page)。
 
-    这会显示一个有 QR 码的屏幕。  记下该代码和 URL。
+2. 选中“Authenticator 应用”旁边的复选框，然后选择“配置”。
 
-    ![提供 QR 码和 URL 的屏幕](./media/microsoft-authenticator-app-how-to/barcode2.png)
-3. 打开 Microsoft Authenticator 应用。 在“帐户”屏幕上，选择 **+**，并指定要添加工作帐户或学校帐户。
+    此时会显示“配置移动应用”屏幕。
 
-4. 在扫描仪中，选择“手动输入代码”。
+3. 复制“配置移动应用”屏幕中的代码和 URL 信息，以便可以手动将其键入到 QR 扫描程序中。
 
-    ![用于扫描 QR 码的屏幕](./media/microsoft-authenticator-app-how-to/scan2.png)
-5. 在应用的相应框中输入该代码和 URL，并选择“完成”。
+4. 打开 Microsoft Authenticator 应用。 在“帐户”屏幕上，依次选择“添加帐户”、“工作或学校帐户”。
 
-    ![用于输入代码和 URL 的屏幕](./media/microsoft-authenticator-app-how-to/manual.png)
+5. 在 QR 扫描程序屏幕中，选择“手动输入代码”。
 
-6. 当该应用显示帐户名称和其下的六位代码时，已完成。
+    ![用于扫描 QR 码的屏幕](./media/microsoft-authenticator-app-how-to/auth-app-manual-code.png)
+   
+6. 将包含 QR 码的屏幕中的代码和 URL 键入到“添加帐户”屏幕，然后选择“完成”。
 
-    ![帐户屏幕](./media/microsoft-authenticator-app-how-to/accounts.png)
+    ![用于输入代码和 URL 的屏幕](./media/microsoft-authenticator-app-how-to/auth-app-code-url.png)
 
-### <a name="add-an-account-to-the-app-using-your-devices-fingerprint-or-facial-recognition-capabilities"></a>使用设备的指纹或面部识别功能将帐户添加到应用
-组织可能要求使用 PIN 完成验证质询。 Microsoft Authenticator 应用可以使用设备的指纹或面部识别功能，而不能使用 PIN。 若要在应用中首次验证时对此进行设置，则会看到一个用于使用 Touch ID（适用于 iOS）或指纹识别的选项。 
+    应用的“帐户”屏幕将显示你的帐户名，以及六位数的验证码。 为了提高安全性，验证码每隔 30 秒更改一次，以防止使用同一代码两次。
 
-若要为 Microsoft Authenticator 设置 Touch ID，需要使用 PIN 完成标准验证质询。 Microsoft Authenticator 将自动为支持 Touch ID 的设备设置该项。 
+### <a name="using-your-devices-fingerprint-or-facial-recognition-capabilities"></a>使用设备的指纹或面部识别功能
 
-![验证 Touch ID 设置](./media/microsoft-authenticator-app-how-to/touchid1.png)
-
-随后，需要验证登录时，请选择收到的推送通知，并扫描指纹而不是输入 PIN。
-
-![推送通知](./media/microsoft-authenticator-app-how-to/touchid2.png)
+组织可能要求使用 PIN 来完成身份验证。 可将 Microsoft Authenticator 应用设置为使用设备的指纹或面部识别功能，而不是使用 PIN。 可以在首次使用 Authenticator 应用验证帐户时完成此设置：选择使用设备生物识别功能而不是 PIN 作为身份验证方法的选项即可。
 
 ## <a name="use-the-app-when-you-sign-in"></a>在登录时使用应用
 
-将帐户添加到应用后，可能会提示执行测试验证来确保所有事项都已正确配置。 之后，大功告成！ 在下次登录之前，不需要执行任何其他操作。
+将帐户添加到应用后，可以使用该应用登录到帐户。
 
-如果选择在应用中使用验证码，则会在主页上看到它们。 它们每 30 秒更改一次，以便你在需要验证码时始终有新的验证码可用。 但是，在登录且系统提示输入验证码之前，不需要对它们执行任何操作。  
+如果选择在应用中使用验证码，则会在“帐户”页上看到验证码。 这些代码每隔 30 秒更改一次，以便在需要验证码时始终有新的验证码可用。 但是，在登录且系统提示输入验证码之前，不需要对它们执行任何操作。
+
+## <a name="next-steps"></a>后续步骤
+
+- 如果对该应用存在其他一般性的问题，请参阅 [Microsoft Authenticator 常见问题解答](microsoft-authenticator-app-faq.md)
+
+- 如果在手机登录的用法方面有任何疑问，请参阅[使用手机（而不是密码）登录](microsoft-authenticator-app-phone-signin-faq.md)
+
+- 如需有关双重验证的详细信息，请参阅[为帐户设置双重验证](multi-factor-authentication-end-user-first-time.md)
+
+- 如需有关安全信息的详细信息，请参阅[管理安全信息](security-info-manage-settings.md)
