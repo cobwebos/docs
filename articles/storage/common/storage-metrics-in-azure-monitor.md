@@ -2,24 +2,18 @@
 title: Azure Monitor 中的 Azure 存储指标 | Microsoft Docs
 description: 了解 Azure Monitor 提供的新指标。
 services: storage
-documentationcenter: na
 author: fhryo-msft
-manager: cbrooks
-editor: fhryo-msft
-ms.assetid: ''
 ms.service: storage
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage
 ms.date: 09/05/2017
 ms.author: fryu
-ms.openlocfilehash: f67fdbde243a7087496a075581e3f1d0040ade58
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.component: common
+ms.openlocfilehash: 880632a39332f7d9ad24b0f7aa2301660eb2f9b8
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263600"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528567"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 存储指标
 

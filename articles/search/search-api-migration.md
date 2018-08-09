@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: brjohnst
-ms.openlocfilehash: 3848f317fd6d760961756f132edf9cbcb5f431ee
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2efe7769f68988f3c0d52c8806b78c1b96d8c639
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32181964"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620223"
 ---
 # <a name="upgrading-to-the-latest-azure-search-service-rest-api-version"></a>升级到最新的 Azure 搜索服务 REST API 版本
 如果使用的是早期版本的 [Azure 搜索服务 REST API](https://docs.microsoft.com/rest/api/searchservice/)，本文有助于升级应用程序，以便使用正式发布的最新 API 版本：2017-11-11。
@@ -29,9 +29,9 @@ REST API 的版本 2017-11-11 包含某些针对早期版本进行的更改。 �
 ## <a name="whats-new-in-version-2017-11-11"></a>版本 2017-11-11 中的新增功能
 版本 2017-11-11 是 Azure 搜索服务 REST API 正式发布的最新版本。 此 API 版本中的新功能包括：
 
-* [同义词](search-synonyms.md)。 新的同义词功能允许定义等效术语并扩大查询范围。
+* [同义词](search-synonyms.md) 新的同义词功能允许定义等效术语并扩大查询范围。
 * [支持有效索引 textblob](https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage#IndexingPlainText)。 Azure Blob 索引器的全新 `text` 分析模式显著改进了索引性能。
-* [服务统计 API](https://aka.ms/azure-search-stats)。 通过此新 API 查看 Azure 搜索中当前的资源使用情况和限制。
+* [服务统计 API](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics)。 通过此新 API 查看 Azure 搜索中当前的资源使用情况和限制。
 
 <a name="UpgradeSteps"></a>
 

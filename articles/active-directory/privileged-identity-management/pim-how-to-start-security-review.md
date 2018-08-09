@@ -9,16 +9,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: protection
+ms.component: pim
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 3ead2fe01c932c76a83e989d8908de4c9bfa541b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0c6c1d48d0a78781528b08b3c1d1e9438bf865ee
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38506417"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617347"
 ---
 # <a name="how-to-start-an-access-review-in-azure-ad-privileged-identity-management"></a>如何在 Azure AD Privileged Identity Management 中开始访问审阅
 当用户有不再需要的特权访问时，角色分配将变为“过时”。 为了降低与这些过时角色分配相关联的风险，特权角色管理员或全局管理员应定期创建访问评审来让管理员审阅用户的已分配角色。 本文档包含在 Azure AD Privileged Identity Management (PIM) 中开始访问审阅的相关步骤。

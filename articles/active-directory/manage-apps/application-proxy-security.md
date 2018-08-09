@@ -15,12 +15,12 @@ ms.date: 09/08/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 2621c4e3ef3425f5a44d78ed5ceb529110c18f4c
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 985ea1f16cff010041d61d808280cb47f2b77aa9
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365116"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618353"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理远程访问应用时的安全注意事项
 
@@ -46,7 +46,7 @@ Azure AD 应用程序代理依赖于使用 Azure AD 安全令牌服务 (STS) 执
 
 在与网络建立连接之前应用更丰富的策略控制。
 
-使用[条件性访问](../active-directory-conditional-access-azure-portal-get-started.md)可以针对允许哪些流量访问后端应用程序来定义限制。 可以基于位置、身份验证强度和用户风险配置文件，创建限制登录的策略。
+使用[条件性访问](../conditional-access/overview.md)可以针对允许哪些流量访问后端应用程序来定义限制。 可以基于位置、身份验证强度和用户风险配置文件，创建限制登录的策略。
 
 还可以使用条件性访问配置多重身份验证策略，为用户身份验证再添一层安全保障。 
 

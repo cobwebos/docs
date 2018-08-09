@@ -15,12 +15,12 @@ ms.date: 10/11/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: e7976cf0574952fdafbdc8b40db47af3a5420fd5
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: aae73816b883fe782eff27c56174c71f14c253c4
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39368815"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577180"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>使用应用程序代理和 PingAccess 通过基于标头的身份验证进行单一登录
 
@@ -140,7 +140,7 @@ PingAccess for Azure Active Directory 是一种 PingAccess 产品/服务，能�
 
 ### <a name="optional---update-graphapi-to-send-custom-fields"></a>可选 - 更新 GraphAPI 以发送自定义字段
 
-有关 Azure AD 用于身份验证发送的安全令牌列表，请参阅 [Azure AD 令牌引用](./../develop/active-directory-token-and-claims.md)。 如果需要用于发送其他令牌的自定义声明，请使用 Graph 浏览器或 Azure 门户中的应用程序清单，将应用字段“acceptMappedClaims”设置为“True”。    
+有关 Azure AD 用于身份验证发送的安全令牌列表，请参阅 [Azure AD 令牌引用](../develop/v1-id-and-access-tokens.md)。 如果需要用于发送其他令牌的自定义声明，请使用 Graph 浏览器或 Azure 门户中的应用程序清单，将应用字段“acceptMappedClaims”设置为“True”。    
 
 本示例中使用的是 Graph 浏览器：
 

@@ -1,24 +1,24 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: b5ef9d9c464ff9968e6a3ad8a9771271aa492abe
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39629270"
 documentType: LandingData
 title: Azure Time Series Insights 文档
 metadata:
   title: Azure Time Series Insights 文档 - 教程和 API 参考 | Microsoft Docs
   description: 了解如何使用完全托管的事件处理在云中运行 IoT 分析。 实时分析来自应用程序、传感器、设备等的数据。
   services: time-series-insights
-  author: bryanla
-  manager: timlt
+  author: anshan
+  manager: cshankar
   ms.service: time-series-insights
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 05/16/2018
-  ms.author: bryanla
-  ms.openlocfilehash: 5ea126c2095e6bada8752f4b4187f504bbd67a46
-  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-  ms.translationtype: HT
-  ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/01/2018
-  ms.locfileid: "34651016"
+  ms.author: anshan
 abstract:
   description: 了解如何设置时序见解环境，以及如何浏览和分析 IoT 解决方案或所连接对象的时序数据。 文档介绍了先决条件、操作方法、API 参考和其他文档，可帮助你在几分钟内入门。
   aside:

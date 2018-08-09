@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: article
-ms.date: 07/30/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: 9c84afc231ff4b086e76f50702870e30da7add6e
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 5f11409ff49830be97d9a13a0ab7f033d9cc1041
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364896"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494459"
 ---
 # <a name="tutorial-6-add-composite-entity"></a>教程：6. 添加复合实体 
 在本教程中，添加复合实体以将提取的数据捆绑到包含的实体中。
@@ -99,7 +99,6 @@ ms.locfileid: "39364896"
     [![](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png "“MoveEmployee”意向上的 LUIS 屏幕截图，其中已标记所有话语")](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png#lightbox)
 
 ## <a name="train-the-luis-app"></a>训练 LUIS 应用
-在应用经过定型之前，LUIS 不了解新的复合实体。 
 
 [!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 

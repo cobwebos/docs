@@ -1,19 +1,19 @@
 ---
 title: Azure IoT 中心内的 X.509 安全性教程 | Microsoft Docs
 description: 在模拟环境中开始体验 Azure IoT 中心内的基于 X.509 的安全性。
-author: dsk-2015
+author: dominicbetts
 manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/10/2017
-ms.author: dkshir
-ms.openlocfilehash: 61aefe70b7091f666dbb40bec6a4f25437f489d3
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.author: dobett
+ms.openlocfilehash: 66ef9092dbd68633ffce35c89b983bc397812288
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186928"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39616820"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>在 Azure IoT 中心设置 X.509 安全性
 

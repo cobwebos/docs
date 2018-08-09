@@ -13,16 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.author: douglasl
-ms.openlocfilehash: fa19ff6e6293e1d5d082ee40d55b456500fcb1ad
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 17a8e6f6d6d374c6f8620ecb525727e6fee8c4b9
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39075084"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39501871"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>通过运行 Azure Databricks 中的 Python 活动转换数据
 
 [数据工厂管道](concepts-pipelines-activities.md)中的 Azure Databricks Python 活动在 Azure Databricks 群集中运行 Python 文件。 本文基于[数据转换活动](transform-data.md)一文，它概述了数据转换和受支持的转换活动。 Azure Databricks 是一个用于运行 Apache Spark 的托管平台。
+
+有关此功能的十一分钟介绍和演示，请观看以下视频：
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Execute-Jars-and-Python-scripts-on-Azure-Databricks-using-Data-Factory/player]
 
 ## <a name="databricks-python-activity-definition"></a>Databricks Python 活动定义
 

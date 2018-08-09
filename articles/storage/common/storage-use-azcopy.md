@@ -2,24 +2,18 @@
 title: 使用 AzCopy on Windows 将数据复制或移动到 Azure 存储 | Microsoft Docs
 description: 使用 AzCopy on Windows 实用程序将数据移动或复制到 blob、表和文件内容或从 blob、表和文件内容移动或复制数据。 从本地文件将数据复制到 Azure 存储，或者在存储帐户中或存储帐户之间复制数据。 轻松地将数据迁移到 Azure 存储。
 services: storage
-documentationcenter: ''
 author: seguler
-manager: jahogg
-editor: tysonn
-ms.assetid: aa155738-7c69-4a83-94f8-b97af4461274
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: seguler
-ms.openlocfilehash: 430979cf197138a9e239eba74e50e9f97d96cbf6
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.component: common
+ms.openlocfilehash: aaae191baaa7b712c77d93303ded777afe97c249
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757598"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39529279"
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>使用 AzCopy on Windows 传输数据
 AzCopy 是一个命令行实用程序，专用于使用旨在实现最佳性能的简单命令将数据复制到 Microsoft Azure Blob、文件和表存储以及从这些位置复制数据。 可在文件系统和存储帐户之间或在存储帐户之间复制数据。  
@@ -29,7 +23,7 @@ AzCopy 是一个命令行实用程序，专用于使用旨在实现最佳性能�
 ## <a name="download-and-install-azcopy-on-windows"></a>下载并安装 AzCopy on Windows
 
 ### <a name="latest-preview-version-v800"></a>最新预览版本 (v8.0.0)
-下载 [AzCopy on Windows 的最新预览版](http://aka.ms/downloadazcopypr)。 此预览版本提供了显着的性能改进，并在安装中打包了 .NET Core。
+下载 [AzCopy on Windows 的最新预览版](https://aka.ms/downloadazcopypr)。 此预览版本提供了显着的性能改进，并在安装中打包了 .NET Core。
 
 #### <a name="azcopy-on-windows-80-preview-release-notes"></a>AzCopy on Windows 8.0 预览版发行说明
 - 最新版本不再支持表服务。 如果使用表导出功能，请下载稳定版本。
@@ -37,7 +31,7 @@ AzCopy 是一个命令行实用程序，专用于使用旨在实现最佳性能�
 - 上传和下载方案都有显著的性能改进
 
 ### <a name="latest-stable-version-v710"></a>最新稳定版本 (v7.1.0)
-下载 [AzCopy on Windows 的最新稳定版本](http://aka.ms/downloadazcopy)。
+下载 [AzCopy on Windows 的最新稳定版本](https://aka.ms/downloadazcopy)。
 
 ### <a name="post-installation-step"></a>安装后步骤
 

@@ -15,15 +15,15 @@ ms.topic: conceptual
 ms.date: 11/21/2016
 ms.author: richrund
 ms.component: na
-ms.openlocfilehash: 375ae9a82af4a1f8a86b529b597ed479388e66dc
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 6dcf3a5b26dc3c7e69721b2abb8a7d58767866d6
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129330"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579045"
 ---
 # <a name="manage-log-analytics-using-powershell"></a>使用 PowerShell 管理 Log Analytics
-可使用 [Log Analytics PowerShell cmdlet](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) 从命令行或作为脚本的一部分在 Log Analytics 中执行各种函数。  可使用 PowerShell 执行的任务示例包括：
+可使用 [Log Analytics PowerShell cmdlet](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) 从命令行或作为脚本的一部分在 Log Analytics 中执行各种函数。  可使用 PowerShell 执行的任务示例包括：
 
 * 创建工作区
 * 添加或删除解决方案
@@ -37,7 +37,7 @@ ms.locfileid: "37129330"
 * 将日志分析代理添加到 Azure 虚拟机
 * 将日志分析配置为索引使用 Azure 诊断收集的数据
 
-本文提供两个代码示例，用于演示一些可从 PowerShell 执行的函数。  有关其他函数，可以参阅 [Log Analytics PowerShell cmdlet 参考](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx)。
+本文提供两个代码示例，用于演示一些可从 PowerShell 执行的函数。  有关其他函数，可以参阅 [Log Analytics PowerShell cmdlet 参考](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/)。
 
 > [!NOTE]
 > Log Analytics 之前称为 Operational Insights，这就是在 cmdlet 中使用此名称的原因。
@@ -266,5 +266,5 @@ Remove-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $workspace.Re
 
 
 ## <a name="next-steps"></a>后续步骤
-* 有关使用 Log Analytics 的 PowerShell 配置的其他信息，请[查看 Log Analytics PowerShell cmdlet](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx)。
+* 有关使用 Log Analytics 的 PowerShell 配置的其他信息，请[查看 Log Analytics PowerShell cmdlet](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/)。
 

@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 01/14/2018
 ms.author: kgremban
 ms.custom: seohack1
-ms.openlocfilehash: 10517f5684774c47ccc96c773287476c2614613f
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e3b22c0c602e8f3d47fbfc179fb8d0fb985d55d6
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35292501"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619315"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>为 Azure Active Directory 开发业务线应用
 本指南提供开发用于 Azure Active Directory (AD) 的业务线 (LoB) 应用程序的概述，目标受众为 Active Directory/Office 365 全局管理员。
 
 ## <a name="overview"></a>概述
-构建集成 Azure AD 的应用程序可让组织的用户使用 Office 365 单一登录。 在 Azure AD 中拥有应用程序可让用户控制应用程序的身份验证策略。 若要详细了解条件访问以及如何使用多重身份验证 (MFA) 保护应用，请参阅 [Configuring access rules](active-directory-conditional-access-azure-portal-get-started.md)（配置访问规则）。
+构建集成 Azure AD 的应用程序可让组织的用户使用 Office 365 单一登录。 在 Azure AD 中拥有应用程序可让用户控制应用程序的身份验证策略。 若要详细了解条件访问以及如何使用多重身份验证 (MFA) 保护应用，请参阅 [Configuring access rules](conditional-access/app-based-mfa.md)（配置访问规则）。
 
 注册应用程序以使用 Azure Active Directory。 注册应用程序意味着开发人员可以使用 Azure AD 对用户进行身份验证并请求访问用户资源（如电子邮件、日历和文档）。
 
@@ -58,7 +58,7 @@ ms.locfileid: "35292501"
 * 抑制默认的用户同意体验
 
 ## <a name="configure-access-rules"></a>配置访问规则
-在 SaaS 应用中配置基于应用程序的访问规则。 例如，这可能要求 MFA，或只允许受信任网络上的用户访问。 [配置访问规则](active-directory-conditional-access-azure-portal-get-started.md)文档中提供了相关详细信息。
+在 SaaS 应用中配置基于应用程序的访问规则。 例如，这可能要求 MFA，或只允许受信任网络上的用户访问。 [配置访问规则](conditional-access/app-based-mfa.md)文档中提供了相关详细信息。
 
 ## <a name="configure-the-app-to-require-user-assignment-and-assign-users"></a>将应用程序配置为要求用户分配，并分配用户
 默认情况下，用户无需分配即可访问应用程序。 不过，如果应用程序公开角色或者希望应用程序出现在用户的访问面板上，则你应该要求用户分配。
@@ -75,10 +75,9 @@ ms.locfileid: "35292501"
 
 对于信任的应用程序，可以代表组织来同意应用程序，以简化用户体验。
 
-有关 Azure 中的用户同意和同意体验的详细信息，请参阅 [Integrating Applications with Azure Active Directory](active-directory-integrating-applications.md)（将应用程序与 Azure Active Directory 集成）。
+有关 Azure 中的用户同意和同意体验的详细信息，请参阅 [Integrating Applications with Azure Active Directory](develop/quickstart-v1-integrate-apps-with-azure-ad.md)（将应用程序与 Azure Active Directory 集成）。
 
 ## <a name="related-articles"></a>相关文章
 * [使用 Azure AD 应用程序代理启用对本地应用程序的安全远程访问](manage-apps/application-proxy.md)
-* [适用于 SaaS 应用的 Azure 条件性访问预览版](active-directory-conditional-access-azure-portal-get-started.md)
 * [使用 Azure AD 管理对应用的访问](manage-apps/what-is-access-management.md)
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)

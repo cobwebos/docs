@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/25/2018
 ms.author: mahender
-ms.openlocfilehash: 8305a447ac75cf4c72a332910c9c4c90c1d8eac6
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 2e392a3a50cda3daacb5bc358baaea2627eeafc0
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061431"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578824"
 ---
 # <a name="how-to-use-azure-managed-service-identity-in-app-service-and-azure-functions"></a>如何在应用服务和 Azure Functions 中使用 Azure 托管服务标识
 
@@ -56,7 +56,7 @@ ms.locfileid: "37061431"
 
 以下步骤将指导你完成使用 CLI 创建 Web 应用并为其分配标识的操作：
 
-1. 如果在本地控制台中使用 Azure CLI，首先请使用 [az login](/cli/azure/reference-index#az_login) 登录到 Azure。 使用与要在其下部署应用程序的 Azure 订阅关联的帐户：
+1. 如果在本地控制台中使用 Azure CLI，首先请使用 [az login](/cli/azure/reference-index#az-login) 登录到 Azure。 使用与要在其下部署应用程序的 Azure 订阅关联的帐户：
 
     ```azurecli-interactive
     az login
@@ -184,7 +184,7 @@ var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServi
 “MSI_ENDPOINT”是一本地 URL，应用可向其请求令牌。 若要获取资源的令牌，请对此终结点发起 HTTP GET 请求，并包括以下参数：
 
 > [!div class="mx-tdBreakAll"]
-> |参数名称|In|说明|
+> |参数名称|In|Description|
 > |-----|-----|-----|
 > |resource|查询|应获取其令牌的资源的 AAD 资源 URI。|
 > |api-version|查询|要使用的令牌 API 版本。 目前唯一支持的版本是 "2017-09-01"。|
@@ -194,7 +194,7 @@ var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServi
 成功的 200 OK 响应包括具有以下属性的 JSON 正文：
 
 > [!div class="mx-tdBreakAll"]
-> |属性名称|说明|
+> |属性名称|Description|
 > |-------------|----------|
 > |access_token|请求的访问令牌。 调用 Web 服务可以使用此令牌向接收 Web 服务进行身份验证。|
 > |expires_on|访问令牌的过期时间。 该日期表示为自 1970-01-01T0:0:0Z UTC 至过期时间的秒数。 此值用于确定缓存令牌的生存期。|
@@ -202,7 +202,7 @@ var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServi
 > |token_type|指示令牌类型值。 Azure AD 唯一支持的类型是 Bearer。 有关持有者令牌的详细信息，请参阅 [OAuth 2.0 授权框架：持有者令牌用法 (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt)。|
 
 
-此响应与 [AAD 服务到服务访问令牌请求的响应](../active-directory/develop/active-directory-protocols-oauth-service-to-service.md#service-to-service-access-token-response)相同。
+此响应与 [AAD 服务到服务访问令牌请求的响应](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response)相同。
 
 > [!NOTE] 
 > 进程第一次启动时会设置环境变量，因此为应用程序启用托管服务标识后，可能需要重启应用程序或重新部署其代码，然后才能在代码中使用 `MSI_ENDPOINT` 和 `MSI_SECRET`。

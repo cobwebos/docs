@@ -2,19 +2,20 @@
 title: 应用性能建议 - Azure SQL 数据库 | Microsoft Docs
 description: 可以使用 Azure 门户查找可优化 Azure SQL 数据库性能的性能建议。
 services: sql-database
-author: stevestein
+author: danimir
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.author: sstein
-ms.openlocfilehash: d52838aa65ade8e2dfac75089ee82b4b1bae5257
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: v-daljep
+ms.reviewer: carlrab
+ms.openlocfilehash: 7df4033a378ce3b37a99ed0335200e7f71696594
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644189"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528640"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>查找并应用性能建议
 
@@ -36,7 +37,7 @@ ms.locfileid: "34644189"
 
 按其对性能的潜在影响将建议分为以下几个类别：
 
-| 影响 | 说明 |
+| 影响 | Description |
 |:--- |:--- |
 | 高 |高影响建议应提供最重要的性能影响。 |
 | 中型 |中等影响建议应提高性能，但提升程度不大。 |
@@ -121,7 +122,7 @@ Azure SQL 数据库允许通过以下三个选项之一完全控制建议的启�
 ## <a name="monitoring-operations"></a>监视操作
 可能不会立刻应用建议。 该门户提供了有关建议状态的详细信息。 以下是索引可能处于的状态：
 
-| 状态 | 说明 |
+| 状态 | Description |
 |:--- |:--- |
 | 挂起 |已经接收应用建议命令并计划执行。 |
 | 执行 |正在应用建议。 |

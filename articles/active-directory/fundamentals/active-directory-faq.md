@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/14/2017
 ms.author: lizross
-ms.openlocfilehash: e304242718478cae2670372a06abe07f926fbed2
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 787178b2c1582729249fcf549356fa7445f5ecbe
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054737"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494958"
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory 常见问题
 Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决方案，涉及到标识、访问管理和安全的方方面面。
@@ -135,7 +135,7 @@ Azure AD 提供另一组管理员角色来管理与目录和标识相关的功�
 
 
 - - -
-## <a name="security"></a>“安全”
+## <a name="security"></a>安全
 **问：帐户在经过特定次数的失败尝试后被锁定还是使用了更复杂的策略？**
 
 我们使用更复杂的策略来锁定帐户。  这基于请求的 IP 和输入的密码。 锁定的持续时间也会根据存在攻击的可能性而延长。  
@@ -186,7 +186,7 @@ Azure AD 提供另一组管理员角色来管理与目录和标识相关的功�
 
 有关详细信息，请参阅：
 
-* [Azure AD 的身份验证方案](../develop/active-directory-authentication-scenarios.md)
+* [Azure AD 的身份验证方案](../develop/authentication-scenarios.md)
 * [Active Directory 身份验证协议](https://msdn.microsoft.com/library/azure/dn151124.aspx)
 * [Azure Active Directory 中单一登录的工作原理是什么？](../manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work)
 

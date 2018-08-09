@@ -3,18 +3,17 @@ title: Azure Data Lake Storage Gen2 预览版分层命名空间
 description: 说明 Azure Data Lake Storage Gen2 预览版分层命名空间的概念
 services: storage
 author: jamesbak
-manager: twooley
 ms.service: storage
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 9b41ca1eedcf69b23557c079e018d69de9fb907c
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 44eec21f4687d2df64c59d41cdb02c6ef2268f82
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114361"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528691"
 ---
 # <a name="azure-data-lake-storage-gen2-preview-hierarchical-namespace"></a>Azure Data Lake Storage Gen2 预览版分层命名空间
 

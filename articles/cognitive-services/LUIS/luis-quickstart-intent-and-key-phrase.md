@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/27/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: 53f8f9ea5b3fea20202dd5aaa001a789d66f5a11
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: d5b92681b9677db085b3c271c37490154d781d84
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282732"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494304"
 ---
 # <a name="tutorial-8-add-keyphrase-entity"></a>教程：8. 添加 keyPhrase 实体 
 在本教程中，我们将使用一个应用，它演示了如何从陈述中提取关键主题。
@@ -71,15 +71,8 @@ ms.locfileid: "39282732"
     [ ![Utilities.Confirm 意向的屏幕截图，其中在陈述中标记出了 keyPhrase](./media/luis-quickstart-intent-and-key-phrase/hr-keyphrase-labeled.png)](./media/luis-quickstart-intent-and-key-phrase/hr-keyphrase-labeled.png#lightbox)
 
 ## <a name="train-the-luis-app"></a>训练 LUIS 应用
-需要对应用的新 `keyphrase` 版本进行训练。  
 
-1. 在 LUIS 网站的右上方，选择“训练”按钮。
-
-    ![训练应用](./media/luis-quickstart-intent-and-key-phrase/train-button.png)
-
-2. 当网站顶部出现确认成功的绿色状态栏时，表示训练已完成。
-
-    ![训练成功](./media/luis-quickstart-intent-and-key-phrase/trained.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-app-to-endpoint"></a>将应用发布到终结点
 
@@ -190,7 +183,8 @@ ms.locfileid: "39282732"
 LUIS 已完成此请求。 调用方应用程序（例如聊天机器人）可以提取 topScoringIntent 结果和陈述中的 keyPhrase 数据，以执行下一步骤。 LUIS 不会针对机器人或调用方应用程序执行编程工作。 LUIS 只确定用户的意向是什么。 
 
 ## <a name="clean-up-resources"></a>清理资源
-不再需要 LUIS 应用时，请将其删除。 在左上侧菜单中选择“我的应用”。 在应用列表中选择应用名称右侧的省略号 (***...***) 按钮，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

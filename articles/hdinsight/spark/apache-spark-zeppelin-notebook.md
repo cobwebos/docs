@@ -1,24 +1,20 @@
 ---
-title: 在 Azure HDInsight 上的 Apache Spark 群集中使用 Zeppelin 笔记本 | Microsoft Docs
+title: 在 Azure HDInsight 上的 Apache Spark 群集中使用 Zeppelin 笔记本
 description: 逐步说明如何在 Azure HDInsight 上的 Apache Spark 群集中使用 Zeppelin 笔记本。
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-ms.assetid: df489d70-7788-4efa-a089-e5e5006421e2
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.author: nitinme
-ms.openlocfilehash: b2f47dce058af7a39366c06d0b33117a66ed116a
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: dfb2711dd7c61494a2fe097856fa344c740cf891
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31521987"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618246"
 ---
 # <a name="use-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>在 Azure HDInsight 上的 Apache Spark 群集中使用 Zeppelin 笔记本
 
@@ -42,15 +38,15 @@ HDInsight Spark 群集包括可用于运行 Spark 作业的 Zeppelin 笔记本�
    > `https://CLUSTERNAME.azurehdinsight.net/zeppelin`
    > 
    > 
-2. 创建新的笔记本。 在标题窗格中单击“笔记本”，并单击“创建新笔记”。
+1. 创建新的笔记本。 在标题窗格中单击“笔记本”，并单击“创建新笔记”。
    
     ![创建新的 Zeppelin 笔记本](./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png "创建新的 Zeppelin 笔记本")
    
     为笔记本输入名称，并单击“创建笔记”。
-3. 此外，请确保笔记本标题显示“已连接”状态。 右上角的绿点则表示“已连接”状态。
+1. 此外，请确保笔记本标题显示“已连接”状态。 右上角的绿点则表示“已连接”状态。
    
     ![Zeppelin 笔记本状态](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-connected.png "Zeppelin 笔记本状态")
-4. 将示例数据载入临时表。 在 HDInsight 中创建 Spark 群集时，系统会将示例数据文件 **hvac.csv** 复制到 **\HdiSamples\SensorSampleData\hvac** 下的关联存储帐户。
+1. 将示例数据载入临时表。 在 HDInsight 中创建 Spark 群集时，系统会将示例数据文件 **hvac.csv** 复制到 **\HdiSamples\SensorSampleData\hvac** 下的关联存储帐户。
    
     将以下代码段粘贴到新笔记本中默认创建的空白段落处。
    
@@ -81,7 +77,7 @@ HDInsight Spark 群集包括可用于运行 Spark 作业的 Zeppelin 笔记本�
     ![基于原始数据创建临时表](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-load-data.png "基于原始数据创建临时表")
    
     也可以为每个段落提供标题。 在右下角单击“设置”图标，并单击“显示标题”。
-5. 现在可以针对 **hvac** 表运行 Spark SQL 语句。 将以下查询粘贴到新段落中。 该查询将检索建筑物 ID，以及在给定日期当天每栋建筑物的目标温度与实际温度之间的差异。 按 **Shift + Enter**。
+1. 现在可以针对 **hvac** 表运行 Spark SQL 语句。 将以下查询粘贴到新段落中。 该查询将检索建筑物 ID，以及在给定日期当天每栋建筑物的目标温度与实际温度之间的差异。 按 **Shift + Enter**。
    
         %sql
         select buildingID, (targettemp - actualtemp) as temp_diff, date from hvac where date = "6/1/13" 
@@ -93,7 +89,7 @@ HDInsight Spark 群集包括可用于运行 Spark 作业的 Zeppelin 笔记本�
     ![使用笔记本运行 Spark SQL 语句](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "使用笔记本运行 Spark SQL 语句")
    
      单击显示选项（以矩形突出显示）以针对相同输出切换不同的表示形式。 单击“设置”以选择构成输出中的键和值的项。 以上屏幕截图使用 **buildingID** 作为键，使用 **temp_diff** 平均值作为值。
-6. 还可以在查询中使用变量来运行 Spark SQL 语句。 下一个代码段演示如何在查询中使用可能要用于查询的值定义 **Temp** 变量。 首次运行查询时，下拉列表中会自动填充你指定的变量值。
+1. 还可以在查询中使用变量来运行 Spark SQL 语句。 下一个代码段演示如何在查询中使用可能要用于查询的值定义 **Temp** 变量。 首次运行查询时，下拉列表中会自动填充你指定的变量值。
    
         %sql
         select buildingID, date, targettemp, (targettemp - actualtemp) as temp_diff from hvac where targettemp > "${Temp = 65,65|75|85}" 
@@ -103,10 +99,10 @@ HDInsight Spark 群集包括可用于运行 Spark 作业的 Zeppelin 笔记本�
     ![使用笔记本运行 Spark SQL 语句](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png "使用笔记本运行 Spark SQL 语句")
    
     对于后续查询，可以从下拉列表中选择新的值，并再次运行查询。 单击“设置”以选择构成输出中的键和值的项。 以上屏幕截图使用 **buildingID** 作为键，使用 **temp_diff** 平均值作为值，使用 **targettemp** 作为组。
-7. 重新启动 Livy 解释程序以退出应用程序。 要执行此操作，请通过单击右上角已登录的用户名，打开解释程序设置，并单击“解释程序”。
+1. 重新启动 Livy 解释程序以退出应用程序。 要执行此操作，请通过单击右上角已登录的用户名，打开解释程序设置，并单击“解释程序”。
    
     ![启动解释程序](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Hive 输出")
-8. 滚动到 Livy 解释程序设置，并单击“重新启动”。
+1. 滚动到 Livy 解释程序设置，并单击“重新启动”。
    
     ![重启 Livy 解释程序](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "重启 Zeppelin 解释程序")
 
@@ -118,15 +114,15 @@ HDInsight Spark 群集包括可用于运行 Spark 作业的 Zeppelin 笔记本�
 1. 打开解释程序设置。 在右上角单击已登录的用户名，并单击“解释程序”。
    
     ![启动解释程序](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Hive 输出")
-2. 滚动到 Livy 解释程序设置，并单击“编辑”。
+1. 滚动到 Livy 解释程序设置，并单击“编辑”。
    
     ![更改解释程序设置](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png "更改解释程序设置")
-3. 添加名为 **livy.spark.jars.packages** 的新键并将其值设置为 `group:id:version` 格式。 因此，如果要使用 [spark csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) 包，必须将密钥的值设置为 `com.databricks:spark-csv_2.10:1.4.0`。
+1. 添加名为 **livy.spark.jars.packages** 的新键并将其值设置为 `group:id:version` 格式。 因此，如果要使用 [spark csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) 包，必须将密钥的值设置为 `com.databricks:spark-csv_2.10:1.4.0`。
    
     ![更改解释程序设置](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png "更改解释程序设置")
    
     单击“保存”，并重新启动 Livy 解释程序。
-4. **提示**：若要了解如何访问上面输入的键的值，请查看以下内容。
+1. **提示**：若要了解如何访问上面输入的键的值，请查看以下内容。
    
     a. 在 Maven 存储库中找出该包。 在本教程中，使用了 [spark-csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar)。
    
@@ -153,10 +149,10 @@ Zeppelin 笔记本的保存位置为群集头节点。 因此，如果删除该�
 1. 在 Zeppelin 笔记本中，重新启动 Livy 解释程序。 要执行此操作，请通过单击右上角已登录的用户名，打开解释程序设置，并单击“解释程序”。
    
     ![启动解释程序](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Hive 输出")
-2. 滚动到 Livy 解释程序设置，并单击“重新启动”。
+1. 滚动到 Livy 解释程序设置，并单击“重新启动”。
    
     ![重启 Livy 解释程序](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "重启 Zeppelin 解释程序")
-3. 从现有的 Zeppelin 笔记本运行代码单元格。 这会在 HDInsight 群集中创建新的 Livy 会话。
+1. 从现有的 Zeppelin 笔记本运行代码单元格。 这会在 HDInsight 群集中创建新的 Livy 会话。
 
 ## <a name="seealso"></a>另请参阅
 * [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)

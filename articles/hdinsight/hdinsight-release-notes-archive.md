@@ -1,24 +1,20 @@
 ---
-title: Azure HDInsight 发行说明存档 | Microsoft Docs
+title: Azure HDInsight 发行说明存档
 description: Azure HDInsight 的发行说明和版本存档。
 services: hdinsight
-documentationcenter: ''
-editor: cgronlun
-manager: jhubbard
-author: nitinme
-tags: azure-portal
+editor: jasonwhowell
+author: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2018
-ms.author: nitinme
-ms.openlocfilehash: d1bb9ed33b8f580afd837cafb9cc2a2e37d1cee4
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.author: jasonh
+ms.openlocfilehash: 34536316fef5f30df4ef1e3c89ddaaafed188c5d
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37438256"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600078"
 ---
 # <a name="archived-release-notes-for-azure-hdinsight"></a>Azure HDInsight 发行说明存档
 
@@ -44,7 +40,7 @@ ms.locfileid: "37438256"
 
 ## <a name="notes-for-08012017-release-of-hdinsight"></a>HDInsight 08/01/2017 版发行说明
 
-| 标题 | 说明 | 受影响的区域  | 群集类型  | 
+| 标题 | Description | 受影响的区域  | 群集类型  | 
 | --- | --- | --- | --- | --- |
 | 发布 HDInsight 上的 Microsoft R Server 9.1 |HDInsight 现在支持在 HDInsight 上设置 R Server 9.1 群集。 有关 Microsoft R Server 9.1 版本的详细信息，请参阅[此博客](https://blogs.technet.microsoft.com/dataplatforminsider/2017/04/19/introducing-microsoft-r-server-9-1-release/)。 |服务 |R Server |
 | HDInsight 3.6 现在包含较新版本的 Hadoop 堆栈|<ul><li>有关更新版本的详细列表，请参阅 [HDInsight 中可用的 Hadoop 组件版本](hdinsight-component-versioning.md#hadoop-components-available-with-different-hdinsight-versions)。</li><li>有关在 Hadoop 堆栈最新版本中修复的 bug 的列表，请参阅 [Apache 修补程序信息](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/patch_parent.html)。</li><li>有关 HDP 2.6.1（现已在 HDInsight 3.6 中可提供） 之间的重大更改的列表，请参阅 [https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html)。</li><li>有关 HDP 2.6.1 中的已知问题的列表，请参阅[已知问题](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/known_issues.html)。</li></ul> |服务 |全部 |不适用 |

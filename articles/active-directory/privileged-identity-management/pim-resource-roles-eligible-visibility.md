@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: protection
+ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8089591708676073bcef84ad13b3690b39bdc653
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 336453c1ef6ef8d0295d00f31afc6a5e7e42e8b6
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448197"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621542"
 ---
 # <a name="eligible-assignments-and-resource-visibility-with-privileged-identity-management"></a>使用 Privileged Identity Management 实现合格分配和资源可见性
 

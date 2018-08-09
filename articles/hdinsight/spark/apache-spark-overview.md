@@ -1,25 +1,20 @@
 ---
-title: Azure HDInsight 中的 Apache Spark 是什么 | Microsoft Docs
+title: Azure HDInsight 中的 Apache Spark 是什么
 description: 本文介绍了 HDInsight 中的 Spark，以及可以在 HDInsight 中使用 Spark 群集的不同方案。
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 82334b9e-4629-4005-8147-19f875c8774e
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
-ms.devlang: na
 ms.topic: overview
 ms.date: 05/07/2018
-ms.author: jgao
-ms.openlocfilehash: a18777694677ab4958c88b5610844726f80868cb
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.author: jasonh
+ms.openlocfilehash: 319940210f77055e2ee7cad7b72d08bfbc63d2fd
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053994"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617627"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Spark 是什么
 
@@ -36,7 +31,7 @@ Spark 提供了用于内存中群集计算的基元。 Spark 作业可以将数�
 
 HDInsight 中的 Spark 群集提供完全托管的 Spark 服务。 下面列出了在 HDInsight 中创建 Spark 群集的优势。
 
-| 功能 | 说明 |
+| 功能 | Description |
 | --- | --- |
 | 轻松创建 |可以使用 Azure 门户、Azure PowerShell 或 HDInsight .NET SDK，在几分钟之内于 HDInsight 中创建新的 Spark 群集。 请参阅 [HDInsight 中的 Spark 群集入门](apache-spark-jupyter-spark-sql.md) |
 | 易于使用 |HDInsight 中的 Spark 群集包括 Jupyter 和 Zeppelin Notebook。 可以使用这些笔记本执行交互式数据处理和可视化。|

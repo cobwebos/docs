@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 094958911435b899773ef4ee11176f538a4c8fe0
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 6c2f20f74ce90f2876ff4040d34a2ede94c92fb1
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399118"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577317"
 ---
 # <a name="grow-your-business-in-the-marketplace"></a>在市场中发展业务 
 在 AppSource 或 Azure 市场中发布产品/服务后，可将列表用作与 Microsoft 联合开展市场推广 (GTM) 活动的启动平台。 例如，把流量引向自己的市场产品/服务及培养市场潜在顾客就是加速业务增长的好方法。 
@@ -33,7 +33,7 @@ ms.locfileid: "39399118"
 ### <a name="storefront-offer-details"></a>店面产品/服务详细信息
 | 店面设置 | 最佳做法 |
 |:--- |:--- |  
-| 产品名称 | 提供强有力的标题：<br>应用名称应传达客户可收获的核心价值。 在应用标题中包含搜索关键字可帮助应用在搜索引擎结果中获得更高排名。<br><br>遵循咨询服务列表的固定标题格式：<br>[产品/服务名称]：[持续时间] [产品/服务类型]（例如，“Contoso：2 周实施”）<br><br>遵循品牌指南：<br>参考 Microsoft 商标以及 Microsoft 软件、产品和服务的名称时，请遵守 [Microsoft 商标和品牌指南](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx)及其他相关的产品特定指南。 |
+| 产品名称 | 提供强有力的标题：<br>应用名称应传达客户可收获的核心价值。 在应用标题中包含搜索关键字可帮助应用在搜索引擎结果中获得更高排名。<br><br>遵循咨询服务列表的固定标题格式：<br>[产品/服务名称]：[持续时间] [产品/服务类型]（例如，“Contoso：2 周实施”）<br><br>遵循品牌指南：<br>参考 Microsoft 商标以及 Microsoft 软件、产品和服务的名称时，请遵守 [Microsoft 商标和品牌指南](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)及其他相关的产品特定指南。 |
 | 产品/服务描述 | 提供明确的产品/服务说明：<br>在前几句描述中清晰描述产品/服务的价值主张。 请牢记，前几句话可能在搜索引擎结果中显示。 不要依赖于特性和功能来销售产品。 而应该强调提供的价值。 尽可能多使用行业特定用语或基于优势的措辞。<br><br>核心价值主张应包含以下信息：<ul><li>该产品的说明</li><li>受益于该产品的用户类型</li><li>该产品可满足的客户需求或解决的难题</li></ul> |
 
 ### <a name="storefront-listing-details"></a>店面列表详细信息

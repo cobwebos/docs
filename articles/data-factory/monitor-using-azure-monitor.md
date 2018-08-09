@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: 1d1b21897975717db7b733e33b7700bc76e3e065
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 25bb455ea46fdc96e32e34d434dd844779b0b650
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046541"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495292"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>使用 Azure Monitor 发警报和监视数据工厂
 云应用程序很复杂，包含很多移动部件。 监视可以为用户提供数据，确保应用程序始终处于健康运行状态。 监视还有助于避免潜在问题，或者解决过去的问题。 此外，还可以利用监视数据深入了解应用程序的情况。 了解这些情况有助于改进应用程序的性能或可维护性，或者实现本来需要手动干预的操作的自动化。
@@ -62,7 +62,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 * 将 `{api-version}` 替换为 `2016-09-01`。
 * 将 `{resource-id}` 替换为要编辑其诊断设置的资源的资源 ID。 有关详细信息，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-portal.md)。
 * 将 `Content-Type` 标头设置为 `application/json`。
-* 将授权标头设置为从 Azure Active Directory 获取的 JSON Web 令牌。 有关详细信息，请参阅[对请求进行身份验证](../active-directory/develop/active-directory-authentication-scenarios.md)。
+* 将授权标头设置为从 Azure Active Directory 获取的 JSON Web 令牌。 有关详细信息，请参阅[对请求进行身份验证](../active-directory/develop/authentication-scenarios.md)。
 
 **正文**
 ```json
@@ -104,7 +104,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| 属性 | Type | 说明 |
+| 属性 | Type | Description |
 | --- | --- | --- |
 | storageAccountId |String | 要将诊断日志发送到的存储帐户的资源 ID |
 | serviceBusRuleId |String | 要在其中创建事件中心，以便流式传输诊断日志的服务总线命名空间的服务总线规则 ID。 规则 ID 的格式为：“{服务总线资源 ID}/authorizationrules/{密钥名称}”。|
@@ -274,7 +274,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| 属性 | Type | 说明 | 示例 |
+| 属性 | Type | Description | 示例 |
 | --- | --- | --- | --- |
 | 级别 |String | 诊断日志的级别。 活动运行日志始终为级别 4。 | `4`  |
 | correlationId |String | 用于跟踪特定端到端请求的唯一 ID | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -321,7 +321,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| 属性 | Type | 说明 | 示例 |
+| 属性 | Type | Description | 示例 |
 | --- | --- | --- | --- |
 | 级别 |String | 诊断日志的级别。 活动运行日志为级别 4。 | `4`  |
 | correlationId |String | 用于跟踪特定端到端请求的唯一 ID | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -366,7 +366,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 ```
 
-| 属性 | Type | 说明 | 示例 |
+| 属性 | Type | Description | 示例 |
 | --- | --- | --- | --- |
 | 级别 |String | 诊断日志的级别。 对于活动运行日志，请设置为级别 4。 | `4`  |
 | correlationId |String | 用于跟踪特定端到端请求的唯一 ID | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |

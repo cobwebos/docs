@@ -14,12 +14,12 @@ ms.date: 07/16/2018
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: 4ad1416f79b8cf9c03904da5f9efc1d1aae475d9
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 1a7ecbe42857e522785d5919d46b783feae4caeb
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364024"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494119"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Azure Active Directory 的应用程序访问与单一登录是什么？
 单一登录是指只需使用单个用户帐户登录一次，就能访问展开业务所需的全部应用程序和资源。 登录之后，用户可以访问全部所需的应用程序，而无需再次进行身份验证（例如键入密码）。
@@ -112,7 +112,7 @@ Azure AD 允许对支持 SAML 2.0、WS 联合身份验证或 OpenID Connect 协�
 * **添加所使用的未列出应用** - 使用 Azure 门户内应用库中的自定义类别连接组织所使用的未列出应用程序。 可以添加支持 SAML 2.0 的任何应用程序作为联合应用，或者添加具有 HTML 登录页的任何应用程序作为密码 SSO 应用。 有关详细信息，请参阅[添加自己的应用程序](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)一文。
 * **添加正在开发的自有应用** - 如果自己开发了应用程序，请遵照 Azure AD 开发人员文档中的指导原则使用 Azure AD 图形 API 来实施联合单一登录或预配。 有关详细信息，请参阅以下资源：
   
-  * [Azure AD 的身份验证方案](../active-directory-authentication-scenarios.md)
+  * [Azure AD 的身份验证方案](../develop/authentication-scenarios.md)
   * [https://github.com/AzureADSamples/WebApp-MultiTenant-OpenIdConnect-DotNet](https://github.com/AzureADSamples/WebApp-MultiTenant-OpenIdConnect-DotNet)
   * [https://github.com/AzureADSamples/WebApp-WebAPI-MultiTenant-OpenIdConnect-DotNet](https://github.com/AzureADSamples/WebApp-WebAPI-MultiTenant-OpenIdConnect-DotNet)
   * [https://github.com/AzureADSamples/NativeClient-WebAPI-MultiTenant-WindowsStore](https://github.com/AzureADSamples/NativeClient-WebAPI-MultiTenant-WindowsStore)

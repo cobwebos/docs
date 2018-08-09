@@ -11,12 +11,12 @@ ms.workload: Active
 ms.date: 07/25/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 1ddc663e6a7dc2d09a140b148c5297299d30d016
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 8798d0f17918ecce473afe8dc21b3f60bf0fa4b1
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39262841"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620124"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>了解 SQL 数据库自动备份
 
@@ -26,7 +26,7 @@ SQL 数据库会自动创建数据库备份，并使用 Azure 读取访问异地
 
 ## <a name="what-is-a-sql-database-backup"></a>什么是 SQL 数据库备份？
 
-SQL 数据库使用 SQL Server 技术创建[完整](https://msdn.microsoft.com/library/ms186289.aspx)、[差异](http://msdn.microsoft.com/library/ms175526.aspx)和[事务日志](https://msdn.microsoft.com/library/ms191429.aspx)备份，以便用于时间点还原 (PITR)。 一般每隔 5 - 10 分钟创建一次事务日志备份，每隔 12 小时创建一次差异备份，具体频率取决于性能级别和数据库活动量。 借助事务日志备份以及完整备份和差异备份，可将数据库还原到托管数据库的服务器上的特定时间点。 还原数据库时，服务会确定需要还原哪些完整、差异备份和事务日志备份。
+SQL 数据库使用 SQL Server 技术创建[完整](https://msdn.microsoft.com/library/ms186289.aspx)、[差异](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server)和[事务日志](https://msdn.microsoft.com/library/ms191429.aspx)备份，以便用于时间点还原 (PITR)。 一般每隔 5 - 10 分钟创建一次事务日志备份，每隔 12 小时创建一次差异备份，具体频率取决于性能级别和数据库活动量。 借助事务日志备份以及完整备份和差异备份，可将数据库还原到托管数据库的服务器上的特定时间点。 还原数据库时，服务会确定需要还原哪些完整、差异备份和事务日志备份。
 
 
 可使用这些备份执行以下任务：

@@ -2,24 +2,19 @@
 title: 使用 Java 的 Azure 存储示例 | Microsoft 文档
 description: 查看、下载和运行 Azure 存储的示例代码和应用程序 使用 Java 存储客户端库发现 Blob、队列、表和文件的入门示例。
 services: storage
-documentationcenter: na
 author: seguler
-manager: jahogg
-editor: tysonn
-ms.assetid: ''
 ms.service: storage
 ms.devlang: java
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage
 ms.date: 01/12/2017
 ms.author: seguler
-ms.openlocfilehash: fd27e1ac9a773e7b0f5245aa74acdb0521cd098c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: bdc25a7aeff88d058eaf3fddf6cec023edff3b9e
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23107805"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39529207"
 ---
 # <a name="azure-storage-samples-using-java"></a>使用 Java 的 Azure 存储示例
 
@@ -27,7 +22,7 @@ ms.locfileid: "23107805"
 
 下表概述了示例存储库和每个示例中涉及的场景。 单击链接可查看 GitHub 中相应的示例代码。
 
-<table style="font-size:90%"><thead><tr><th style="font-size:110%">终结点</th><th style="font-size:110%">方案</th><th style="font-size:110%">代码示例</th></tr></thead><tbody> 
+<table style="font-size:90%"><thead><tr><th style="font-size:110%">终结点</th><th style="font-size:110%">场景</th><th style="font-size:110%">代码示例</th></tr></thead><tbody> 
 <tr> 
 <td rowspan="16"><b>Blob</b></td>
 <td>追加 Blob</td> 
@@ -206,14 +201,14 @@ ms.locfileid: "23107805"
 
 如果要查找有关如何安装和开始使用 Azure 存储客户端库的说明，请查看以下指南。
 
-* [Java 中 Azure Blob 服务入门](../blobs/storage-java-how-to-use-blob-storage.md)
-* [Java 中 Azure 队列服务入门](../storage-java-how-to-use-queue-storage.md)
+* [Java 中 Azure Blob 服务入门](../blobs/storage-quickstart-blobs-java.md)
+* [Java 中 Azure 队列服务入门](../queues/storage-java-how-to-use-queue-storage.md)
 * [Java 中 Azure 表服务入门](../../cosmos-db/table-storage-how-to-use-java.md)
-* [Java 中 Azure 文件服务入门](../storage-java-how-to-use-file-storage.md)
+* [Java 中 Azure 文件服务入门](../files/storage-java-how-to-use-file-storage.md)
 
 ## <a name="next-steps"></a>后续步骤
 
 了解有关其他语言的示例的信息：
 
-* .NET：[使用 .NET 的 Azure 存储示例](../storage-samples-dotnet.md)
-* 所有其他语言：[Azure 存储示例](../storage-samples.md)
+* .NET：[使用 .NET 的 Azure 存储示例](storage-samples-dotnet.md)
+* 所有其他语言：[Azure 存储示例](storage-samples.md)

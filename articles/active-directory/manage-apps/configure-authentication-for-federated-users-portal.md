@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: barbkess
-ms.openlocfilehash: b8d0a8026c140545a5029d2772fdcbc5090e7b00
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: f24be44b00f9c4e789e8d4797f6a0516dcfe940f
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363573"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494051"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>使用主领域发现策略为应用程序配置 Azure Active Directory 登录行为
 
@@ -261,6 +261,6 @@ Remove-AzureADApplicationPolicy -ObjectId <ObjectId of the Service Principal>  -
 Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
 ```
 ## <a name="next-steps"></a>后续步骤
-- 有关 Azure AD 中的身份验证工作原理的详细信息，请参阅 [Azure AD 的身份验证方案](../develop/active-directory-authentication-scenarios.md)。
+- 有关 Azure AD 中的身份验证工作原理的详细信息，请参阅 [Azure AD 的身份验证方案](../develop/authentication-scenarios.md)。
 - 有关用户单一登录的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录](configure-single-sign-on-portal.md)。
-- 请访问 [Active Directory 开发人员指南](../develop/active-directory-developers-guide.md)，了解与所有开发人员相关内容的概述。
+- 请访问 [Active Directory 开发人员指南](../develop/azure-ad-developers-guide.md)，了解与所有开发人员相关内容的概述。

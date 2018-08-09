@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 0db357194aa4bd4d01b1d445cb407d983214b32b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 843b92c20b2ec930ce67659802a4287328a08650
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054114"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618863"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>使用 Azure 门户和 PowerShell 监视和管理 Azure 数据工厂管道
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "37054114"
 > * [使用“监视和管理”应用](data-factory-monitor-manage-app.md)
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1。 如果使用当前版本的数据工厂服务，请参阅[监视和管理数据工厂管道](../monitor-visually.md)。
+> 本文适用于数据工厂版本 1。 如果使用数据工厂服务的当前版本，请参阅[监视和管理数据工厂管道](../monitor-visually.md)。
 
 本文介绍如何使用 Azure 门户和 PowerShell 监视、管理和调试管道。
 
@@ -88,7 +88,7 @@ ms.locfileid: "37054114"
 
 <table>
 <tr>
-    <th align="left">省/直辖市/自治区</th><th align="left">子状态</th><th align="left">说明</th>
+    <th align="left">省/直辖市/自治区</th><th align="left">子状态</th><th align="left">Description</th>
 </tr>
 <tr>
     <td rowspan="8">等待</td><td>ScheduleTime</td><td>未到运行切片的时间。</td>
@@ -289,7 +289,7 @@ Azure 数据工厂提供了通过 Azure 门户和 Azure PowerShell 调试和排�
 ![修复错误并验证](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
 
 ### <a name="use-azure-powershell"></a>使用 Azure PowerShell
-通过使用 **Set-AzureRmDataFactorySliceStatus** cmdlet，可以重新运行失败命令。 有关该 cmdlet 的语法和其他详细信息，请参阅 [Set-AzureRmDataFactorySliceStatus](https://msdn.microsoft.com/library/mt603522.aspx) 主题。
+通过使用 **Set-AzureRmDataFactorySliceStatus** cmdlet，可以重新运行失败命令。 有关该 cmdlet 的语法和其他详细信息，请参阅 [Set-AzureRmDataFactorySliceStatus](https://docs.microsoft.com/powershell/module/azurerm.datafactories/set-azurermdatafactoryslicestatus) 主题。
 
 **示例：**
 

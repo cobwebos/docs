@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 05/08/2018
 ms.author: stevelas
 ms.custom: mvc
-ms.openlocfilehash: 883da7d1487922f5cd986a67d7a7bded78ea3759
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 394297e87ef03541725aad0689f11bca17c05ed9
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38634363"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576294"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Azure 中的专用 Docker 容器注册表简介
 
@@ -39,7 +39,7 @@ Azure 容器注册表是基于开源 Docker 注册表 2.0 的托管 [Docker 注�
 
 * **注册表** - 在 Azure 订阅中创建一个或多个容器注册表。 注册表以三种 SKU 形式提供：[基本、标准和高级](container-registry-skus.md)，每一种都支持 webhook 集成、通过 Azure Active Directory 进行的注册表身份验证，以及删除功能。 在与部署相同的 Azure 位置创建注册表，充分利用容器映像的本地闭合网络存储。 将高级注册表的[异地复制](container-registry-geo-replication.md)功能用于高级复制和容器映像分发方案。 完全限定的注册表名称采用以下格式：`myregistry.azurecr.io`。
 
-  可以使用使用 Azure Active Directory 支持的 [服务主体](../active-directory/active-directory-application-objects.md)或提供的管理员帐户来[控制访问](container-registry-authentication.md)容器注册表。 运行标准 `docker login` 命令可对注册表进行身份验证。
+  可以使用使用 Azure Active Directory 支持的 [服务主体](../active-directory/develop/app-objects-and-service-principals.md)或提供的管理员帐户来[控制访问](container-registry-authentication.md)容器注册表。 运行标准 `docker login` 命令可对注册表进行身份验证。
 
 * **存储库** - 一个注册表包含一个或多个存储库（容器映像组）。 Azure 容器注册表支持多级存储库命名空间。 使用多级命名空间可将特定应用相关的映像集合分组，或者将特定开发或运营团队的应用集合分组。 例如：
 

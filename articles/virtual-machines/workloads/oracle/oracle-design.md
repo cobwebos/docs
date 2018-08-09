@@ -3,7 +3,7 @@ title: 在 Azure 上设计和实现 Oracle 数据库 | Microsoft 文档
 description: 在 Azure 环境中设计和实现 Oracle 数据库。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: v-shiuma
+author: romitgirdhar
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 6/22/2017
-ms.author: rclaus
-ms.openlocfilehash: 2661c386ea747fc75b67df9a67c7e62ac8c4fea4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 08/02/2018
+ms.author: rogirdh
+ms.openlocfilehash: d4c0bbdfb1afcef33727ba4b5b432c5de79168d4
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658132"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495214"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中设计和实现 Oracle 数据库
 
@@ -146,7 +146,9 @@ SQL> @?/rdbms/admin/awrrpt.sql
 
 ### <a name="disk-types-and-configurations"></a>磁盘类型和配置
 
-- 默认 OS 磁盘：这些磁盘类型提供永久性数据和缓存。 它们针对启动时的 OS 访问进行了优化，不适用于事务性或数据仓库（分析）工作负荷。
+- 
+  *
+  *默认 OS 磁盘：这些磁盘类型提供永久性数据和缓存。 它们针对启动时的 OS 访问进行了优化，不适用于事务性或数据仓库（分析）工作负荷。
 
 - 非托管磁盘：使用这些磁盘类型，可管理存储虚拟硬盘 (VHD) 文件（这些文件与虚拟机磁盘相对应）的存储帐户。 VHD 文件作为页 Blob 存储在 Azure 存储帐户中。
 
@@ -211,7 +213,7 @@ SQL> @?/rdbms/admin/awrrpt.sql
 保存数据磁盘设置后，将无法更改主机缓存设置，除非在 OS 级别卸载驱动器，然后在进行更改后重新装载它。
 
 
-## <a name="security"></a>“安全”
+## <a name="security"></a>安全
 
 设置并配置 Azure 环境后，下一步是保护网络的安全。 以下是一些建议：
 

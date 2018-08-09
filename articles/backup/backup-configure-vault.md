@@ -7,14 +7,14 @@ manager: carmonm
 keywords: 备份保管库; 备份 Windows 服务器; 备份 windows;
 ms.service: backup
 ms.topic: conceptual
-ms.date: 1/5/2018
+ms.date: 8/5/2018
 ms.author: markgal
-ms.openlocfilehash: 583149ed892f82af8687d698cabe1a876aaaa523
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fd988e2209d8a6547ec30edb4ee62fc8ff2c803d
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606250"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619949"
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>通过 Resource Manager 部署模型将 Windows Server 或客户端备份到 Azure
 本文介绍如何通过 Resource Manager 部署模型使用 Azure 备份将 Windows Server（或 Windows 客户端）文件和文件夹备份到 Azure。

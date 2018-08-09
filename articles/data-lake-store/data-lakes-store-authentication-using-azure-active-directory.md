@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: bee65fbdc65807ac33ae425ed9d87dbf0c246d9d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7db48b03a6f34655917c82702c12dbc9bc4c987a
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625281"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494171"
 ---
 # <a name="authentication-with-data-lake-store-using-azure-active-directory"></a>使用 Azure Active Directory 进行 Data Lake Store 身份验证
 
@@ -45,7 +45,7 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
 <i>* 单击 <b>✔\*</b> 符号。它是一个链接。</i><br>
 <i>** MFA 代表多重身份验证</i>
 
-有关如何使用 Azure Active Directory 进行身份验证的详细信息，请参阅 [Authentication Scenarios for Azure Active Directory](../active-directory/develop/active-directory-authentication-scenarios.md)（Azure Active Directory 的身份验证方案）。
+有关如何使用 Azure Active Directory 进行身份验证的详细信息，请参阅 [Authentication Scenarios for Azure Active Directory](../active-directory/develop/authentication-scenarios.md)（Azure Active Directory 的身份验证方案）。
 
 ## <a name="next-steps"></a>后续步骤
 

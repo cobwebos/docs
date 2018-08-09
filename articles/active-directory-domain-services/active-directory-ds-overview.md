@@ -12,15 +12,15 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: maheshu
-ms.openlocfilehash: 9c22ed1cca49e3e8789c3da5b7bd59d9aeb3ce42
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4467c193b5ff70a304b4ec5f632276ca14551b08
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218449"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39501985"
 ---
 # <a name="azure-active-directory-ad-domain-services"></a>Azure Active Directory (AD) 域服务
 ## <a name="overview"></a>概述

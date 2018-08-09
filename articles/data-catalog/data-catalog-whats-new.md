@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 18673186e80b4d1784fa5b42e622d90dd4c889d4
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 3d2c0d21d0cf4cc0654c8f7ee2debee4f0320461
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859997"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577056"
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>Azure 数据目录中的新增功能
 我们会定期发布“Azure 数据目录”的更新。 但是，并非每个版本都包括面向用户的新功能，因为某些版本聚焦于后端的服务功能。 本页重点介绍 Azure 数据目录服务新增的面向用户的功能。
@@ -27,7 +27,7 @@ ms.locfileid: "37859997"
 截至 2017 年 11 月，已添加到 Azure 数据目录的功能如下：
 
 * 支持直接链接到数据目录门户中的特定业务术语表术语。 用户可以从业务术语表复制链接，然后将其嵌入到文档、电子邮件、报表或其他位置，以便直接链接到术语表术语定义。
-* 支持 Azure Active Directory 服务主体。 数据目录管理员可以使用服务主体授权客户端应用程序访问目录，并可以授予这些应用程序特定权限就像他们可以向用户和安全组授予权限一样。 有关其他信息，请参阅 [Azure Active Directory 中的应用程序对象和服务主体对象](../active-directory/develop/active-directory-application-objects.md)。
+* 支持 Azure Active Directory 服务主体。 数据目录管理员可以使用服务主体授权客户端应用程序访问目录，并可以授予这些应用程序特定权限就像他们可以向用户和安全组授予权限一样。 有关其他信息，请参阅 [Azure Active Directory 中的应用程序对象和服务主体对象](../active-directory/develop/app-objects-and-service-principals.md)。
 * 支持在使用数据目录数据源注册工具连接到 Azure SQL 数据库和 Azure SQL 数据仓库数据源时进行 Azure Active Directory 身份验证。 有关其他信息，请参阅[将 Azure Active Directory 身份验证用于 SQL 数据库或 SQL 数据仓库身份验证](../sql-database/sql-database-aad-authentication.md)。
 
 

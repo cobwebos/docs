@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d729a45b28ad02a652c265974d46fe1aaf752198
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 24cccd4745d611196046168f0125e7ef2a184e15
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33768271"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576485"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>使用 Docker CLI 将第一个映像推送到专用 Docker 容器注册表
 
@@ -24,18 +24,18 @@ Azure 容器注册表存储和管理专用 [Docker](http://hub.docker.com) 容�
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 容器注册表** - 在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI 2.0](container-registry-get-started-azure-cli.md)。
+* **Azure 容器注册表** - 在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
 * **Docker CLI** - 要将本地计算机设置为 Docker 主机并访问 Docker CLI 命令，请安装 [Docker](https://docs.docker.com/engine/installation/)。
 
 ## <a name="log-in-to-a-registry"></a>登录到注册表
 
-可[通过多种方式验证](container-registry-authentication.md)专用容器注册表。 在命令行中操作时，建议的方法是使用 Azure CLI 命令 [az acr login](/cli/azure/acr?view=azure-cli-latest#az_acr_login)。 例如，若要登录到名为 *myregistry* 的注册表：
+可[通过多种方式验证](container-registry-authentication.md)专用容器注册表。 在命令行中操作时，建议的方法是使用 Azure CLI 命令 [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login)。 例如，若要登录到名为 *myregistry* 的注册表：
 
 ```azurecli
 az acr login --name myregistry
 ```
 
-也可以使用 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 登录。 以下示例传递了 Azure Active Directory [服务主体](../active-directory/active-directory-application-objects.md)的 ID 和密码。 例如，你可能在自动化方案中向注册表[分配了服务主体](container-registry-authentication.md#service-principal)。
+也可以使用 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 登录。 以下示例传递了 Azure Active Directory [服务主体](../active-directory/develop/app-objects-and-service-principals.md)的 ID 和密码。 例如，你可能在自动化方案中向注册表[分配了服务主体](container-registry-authentication.md#service-principal)。
 
 ```Bash
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -116,7 +116,7 @@ docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
-若要从 Azure 容器注册表中删除映像，可以使用 Azure CLI 命令[az acr repository delete](/cli/azure/acr/repository#az_acr_repository_delete)。 例如，以下命令删除标记引用的清单、所有关联的层数据，以及引用清单的其他所有标记。
+若要从 Azure 容器注册表中删除映像，可以使用 Azure CLI 命令[az acr repository delete](/cli/azure/acr/repository#az-acr-repository-delete)。 例如，以下命令删除标记引用的清单、所有关联的层数据，以及引用清单的其他所有标记。
 
 ```azurecli
 az acr repository delete --name myregistry --repository samples/nginx --tag latest --manifest

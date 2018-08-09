@@ -2,20 +2,20 @@
 title: 如何为 SSL IP 地址更改做好准备 - Azure
 description: 如果 SSL IP 地址将要更改，请了解如何在更改后继续运行应用。
 services: app-service\web
-author: tdykstra
+author: cephalin
 manager: cfowler
 editor: ''
 ms.service: app-service-web
 ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
-ms.author: tdykstra
-ms.openlocfilehash: 47626ae4298327d4166705e8797e525331e8a3d1
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.author: cephalin
+ms.openlocfilehash: e8558b4c3c7dafca8d4fff7e2aae0597a66c031d
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37343132"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576536"
 ---
 # <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>如何为 SSL IP 地址更改做好准备
 

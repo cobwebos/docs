@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7f1c2b028521983081ba5f276789af9701b568b7
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: da7d3898e1385119c8241efc89c68a6a60c29994
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972462"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619084"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机规划和实施指南
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -1018,7 +1018,7 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 * 在 Windows 上使用sysprep  或者在 Linux 上使用 waagent -deprovision 将 VM 通用化 - 请参阅 [Sysprep Technical Reference](https://technet.microsoft.com/library/cc766049.aspx)（Sysprep 技术参考）（适用于 Windows）或 [如何捕获 Linux 虚拟机以用作 Resource Manager 模板][capture-image-linux-step-2-create-vm-image]（适用于 Linux）
 * 使用 Powershell 或 Azure CLI 上传 VHD
 * （可选）使用 Powershell、Azure CLI 或 Azure 门户从 VHD 创建托管磁盘映像
-* 使用引用映像 VHD 的 JSON 模板（如[此示例 JSON 模板](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sap-2-tier-user-image/azuredeploy.json)中所示）或使用托管磁盘映像（如[此示例 JSON 模板](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-from-user-image/azuredeploy.json)中所示）部署 VM。
+* 使用引用映像 VHD 的 JSON 模板（如[此示例 JSON 模板](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sap-2-tier-user-image/azuredeploy.json)中所示）或使用托管磁盘映像（如[此示例 JSON 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json)中所示）部署 VM。
 
 #### <a name="downloading-vhds-or-managed-disks-to-on-premises"></a>将 VHD 或托管磁盘下载到本地
 Azure 基础结构即服务不仅能够上传 VHD 和 SAP 系统， 而且你还可以在其中将 SAP 系统从 Azure 移回到本地。
@@ -1157,8 +1157,8 @@ az vm disk attach --disk <new disk name or managed disk id> --resource-group <re
 
 PS cmdlet 逻辑的基本流程如下所示：
 
-* 使用 New-AzureStorageContext 创建源存储帐户的存储帐户上下文 - 请参阅 <https://msdn.microsoft.com/library/dn806380.aspx>
-* 使用 New-AzureStorageContext 创建目标存储帐户的存储帐户上下文 - 请参阅 <https://msdn.microsoft.com/library/dn806380.aspx>
+* 使用 New-AzureStorageContext 创建源存储帐户的存储帐户上下文 - 请参阅 <https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext>
+* 使用 New-AzureStorageContext 创建目标存储帐户的存储帐户上下文 - 请参阅 <https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext>
 * 开始复制
 
 ```powershell

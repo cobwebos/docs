@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 07/26/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: 578fdb5593e75e3584e81d73d7643162f7af5cbc
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: de295a93d395cee4c4dfbea4f2e7f7338036feb8
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358132"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494367"
 ---
 # <a name="tutorial-1-build-app-with-custom-domain"></a>教程：1. 使用自定义域生成应用
 在本教程中，我们将创建一个应用，用于演示如何使用**意向**，根据用户提交到应用的陈述（文本），来确定该用户的_意向_。 完成本教程后，会在云中运行一个 LUIS 终结点。
@@ -84,19 +84,15 @@ ms.locfileid: "39358132"
     在 LUIS 调用方应用程序（例如聊天机器人）中，如果 LUIS 返回陈述的 **None** 意向，机器人可以询问用户是否要结束对话。 如果用户不想要结束对话，聊天机器人还能提供有关继续对话的更多指示。 
 
 ## <a name="train-and-publish-the-app"></a>训练并发布应用
-1. 在 LUIS 网站的右上方，选择“训练”按钮。 
 
-    ![“训练”按钮](./media/luis-quickstart-intents-only/train-button.png)
-
-2. 当网站顶部出现确认成功的绿色状态栏时，表示训练已完成。
-
-    ![已训练状态栏](./media/luis-quickstart-intents-only/trained.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-app-to-endpoint"></a>将应用发布到终结点
 
 [!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
 
 ## <a name="query-endpoint-for-getjobinformation-intent"></a>查询 GetJobInformation 意向的终结点
+
 1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. 将光标定位到地址中 URL 的末尾，并输入 `I'm looking for a job with Natual Language Processing`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 此陈述不同于步骤 4 中的任何示例陈述，因此，它非常适合用于测试，测试结果应返回 `GetJobInformation` 意向（评分最高的意向）。 
@@ -189,7 +185,8 @@ JSON 结果中标识了评分最高的意向。 所有评分介于 1 和 0 之�
 LUIS 已完成此请求。 调用方应用程序（例如聊天机器人）可以提取 topScoringIntent 结果，并查找用于回答问题的信息（未存储在 LUIS 中）或结束对话。 这是机器人或调用方应用程序的编程选项。 LUIS 不执行此类工作。 LUIS 只确定用户的意向是什么。 
 
 ## <a name="clean-up-resources"></a>清理资源
-不再需要 LUIS 应用时，请将其删除。 为此，请在左上侧菜单中选择“我的应用”。 在应用列表中选择应用名称右侧的省略号 (***...***)，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

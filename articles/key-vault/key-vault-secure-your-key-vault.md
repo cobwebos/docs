@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: ambapat
-ms.openlocfilehash: a3493c9e9ef6a5bafd832510f42f33cc3f07f088
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 8bc2355c5df73d2469cab63bfbf783624228b341
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070373"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576961"
 ---
 # <a name="secure-your-key-vault"></a>保护密钥保管库
 Azure 密钥保管库是一种云服务，用于保护云应用程序的加密密钥和机密（例如证书、连接字符串、密码）。 因为此数据是敏感数据和业务关键数据，会希望保护对密钥保管库的访问，以便只有得到授权的应用程序和用户可以访问密钥保管库。 本文章提供对密钥保管库访问模型的概述，介绍身份验证和授权，并举例描述如何保护对云应用程序的密钥保管库的访问。
@@ -47,7 +47,7 @@ Azure 密钥保管库是一种云服务，用于保护云应用程序的加密�
 * **用户+应用访问** - 这通常适用于代表已登录用户访问密钥保管库的应用程序。 此类访问的示例有 Azure PowerShell、Azure 门户。 有两种方法向用户授予访问权限：一种方法是向用户授予访问权限，以便他们可以从任何应用程序访问密钥保管库，另一种方法是授予用户仅当使用特定的应用程序时访问密钥保管库的权限（称之为复合标识）。 
 * **仅限应用访问** - 适用于运行守护程序服务、后台作业等的应用程序。向应用程序的标识授予访问密钥保管库的权限。
 
-在这两种类型的应用程序中，应用程序均通过 Azure Active Directory 使用任一[支持的身份验证方法](../active-directory/active-directory-authentication-scenarios.md)进行身份验证，并获取令牌。 所使用的身份验证方法取决于应用程序类型。 然后，应用程序会使用此令牌，并将 REST API 请求发送到密钥保管库。 如果是管理平面访问，则将通过 Azure 资源管理器终结点路由请求。 如果访问的是数据平面，则应用程序直接与密钥保管库终结点交流。 请参阅[整个身份验证流](../active-directory/active-directory-protocols-oauth-code.md)上的更多详细信息。 
+在这两种类型的应用程序中，应用程序均通过 Azure Active Directory 使用任一[支持的身份验证方法](../active-directory/develop/authentication-scenarios.md)进行身份验证，并获取令牌。 所使用的身份验证方法取决于应用程序类型。 然后，应用程序会使用此令牌，并将 REST API 请求发送到密钥保管库。 如果是管理平面访问，则将通过 Azure 资源管理器终结点路由请求。 如果访问的是数据平面，则应用程序直接与密钥保管库终结点交流。 请参阅[整个身份验证流](../active-directory/develop/v1-protocols-oauth-code.md)上的更多详细信息。 
 
 应用程序为其请求令牌的资源名称是不同的，具体取决于应用程序是访问管理平面还是数据平面。 因此资源名称要么是管理平面终结点，要么便是数据平面终结点（这会在后面部分的表中进行介绍），具体取决于 Azure 环境。
 
@@ -223,7 +223,7 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzureR
 * [Role-Based Access Control for Microsoft Azure from Ignite](https://channel9.msdn.com/events/Ignite/2015/BRK2707)（Ignite 中提供的适用于 Microsoft Azure 的基于角色的访问控制）
   
   这是第 9 频道中提供的 2015 MS Ignite 会议视频链接。 此次研讨会讨论了 Azure 中的访问管理和报告功能，并探索使用 Azure Active Directory 安全访问 Azure 订阅的最佳实践。
-* [使用 OAuth 2.0 和 Azure Active Directory 来授权访问 Web 应用程序](../active-directory/active-directory-protocols-oauth-code.md)
+* [使用 OAuth 2.0 和 Azure Active Directory 来授权访问 Web 应用程序](../active-directory/develop/v1-protocols-oauth-code.md)
   
   本文介绍了使用 Azure Active Directory 进行身份验证的完整 OAuth 2.0 流。
 * [密钥保管库管理 REST API](https://msdn.microsoft.com/library/azure/mt620024.aspx)
@@ -238,7 +238,7 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzureR
 * [Secret access control](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_SecretAccessControl)（机密访问控制）
   
   密钥访问控制参考文档的链接。
-* 使用 PowerShell [设置](https://msdn.microsoft.com/library/mt603625.aspx)和[删除](https://msdn.microsoft.com/library/mt619427.aspx)密钥保管库访问策略
+* 使用 PowerShell [设置](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Set-AzureRmKeyVaultAccessPolicy)和[删除](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Remove-AzureRmKeyVaultAccessPolicy)密钥保管库访问策略
   
   用于管理密钥保管库访问策略 PowerShell cmdlet 参考文档的链接。
 

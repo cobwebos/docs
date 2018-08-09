@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 5c6a4ac68694c74f9a7ed99a2d7b4939b84dc33f
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 9d398d810a2d43b3754fd8950376c605d4654f38
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054873"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621525"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>有关 Azure Active Directory 中应用程序管理的文章索引
 本页提供了一份完整列表，列出编写的 Azure Active Directory (Azure AD) 中各种应用程序相关功能的所有文章。
@@ -41,7 +41,7 @@ ms.locfileid: "39054873"
 
 | 功能区 |  |
 |:---:| --- |
-| 联合单一登录 |[排查基于 SAML 的单一登录问题](active-directory-saml-debugging.md) |
+| 联合单一登录 |[排查基于 SAML 的单一登录问题](develop/howto-v1-debug-saml-sso-issues.md) |
 | 基于密码的单一登录 |[Internet Explorer 访问面板扩展故障排除](active-directory-saas-ie-troubleshooting.md) |
 | 应用程序代理 |[应用代理故障排除指南](manage-apps/application-proxy-troubleshoot.md) |
 | 本地 AD 与 Azure AD 之间的单一登录 |[排查密码哈希同步问题](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md#troubleshoot-password-hash-synchronization)<br /><br />[排查密码写回问题](authentication/active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
@@ -54,10 +54,10 @@ ms.locfileid: "39054873"
 | 文章指南 |  |
 |:---:| --- |
 | 联合身份验证和其他登录类型简介 |[使用 Azure AD 进行单一登录](manage-apps/what-is-single-sign-on.md) |
-| 通过已简化的单一登录配置步骤与 Azure AD 预先集成的数千个 SaaS 应用程序 |[Azure AD 应用程序库入门](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[支持联合身份验证的预先集成应用完整列表](saas-apps/tutorial-list.md)<br /><br />[如何将应用程序添加到 Azure AD 应用库](active-directory-app-gallery-listing.md) |
+| 通过已简化的单一登录配置步骤与 Azure AD 预先集成的数千个 SaaS 应用程序 |[Azure AD 应用程序库入门](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[支持联合身份验证的预先集成应用完整列表](saas-apps/tutorial-list.md)<br /><br />[如何将应用程序添加到 Azure AD 应用库](develop/howto-app-gallery-listing.md) |
 | 超过 150 个应用教程，讲解如何为 [Salesforce](saas-apps/salesforce-tutorial.md)、[ServiceNow](saas-apps/servicenow-tutorial.md)、[Google Apps](saas-apps/google-apps-tutorial.md)、[Workday](saas-apps/workday-tutorial.md) 等应用配置单一登录 |[有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](saas-apps/tutorial-list.md) |
 | 如何手动设置和自定义单一登录配置 |[如何为不在 Azure Active Directory 应用程序库中的应用配置联合单一登录](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[如何为预先集成的应用自定义 SAML 令牌中颁发的声明](active-directory-saml-claims-customization.md) |
-| 使用 SAML 协议的联合应用的故障排除指南 |[排查基于 SAML 的单一登录问题](active-directory-saml-debugging.md) |
+| 使用 SAML 协议的联合应用的故障排除指南 |[排查基于 SAML 的单一登录问题](develop/howto-v1-debug-saml-sso-issues.md) |
 | 如何设置应用的证书过期日期，以及如何续订证书 |[在 Azure Active Directory 中管理用于联合单一登录的证书](manage-apps/manage-certificates-for-federated-single-sign-on.md) |
 
 联合单一登录适用于所有版本的 Azure AD，每个用户最多十个应用。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) 支持无限数目的应用程序。 如果组织拥有 [Azure AD 基本版](https://azure.microsoft.com/pricing/details/active-directory/)或 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)，则可以[使用组来分配对联合应用程序的访问权限](#managing-access-to-applications)。
@@ -109,7 +109,7 @@ Azure AD Connect 适用于[所有版本的 Azure Active Directory](https://azure
 | 文章指南 |  |
 |:---:| --- |
 | 跨 Azure AD、Office365 和 Intune 提供的条件性访问功能简介 |[使用条件性访问管理风险](active-directory-conditional-access-azure-portal.md) |
-| 如何为以下类型的资源启用条件性访问 |[SaaS 应用的条件性访问](active-directory-conditional-access-azure-portal-get-started.md)<br /><br />[Office 365 服务的条件性访问](active-directory-conditional-access-device-policies.md)<br /><br />[本地应用程序的条件性访问](active-directory-conditional-access-azure-portal.md)<br /><br />[通过 Azure AD 应用代理发布的本地应用程序的条件性访问](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
+| 如何为以下类型的资源启用条件性访问 |[SaaS 应用的条件性访问](conditional-access/app-based-conditional-access.md)<br /><br />[Office 365 服务的条件性访问](active-directory-conditional-access-device-policies.md)<br /><br />[本地应用程序的条件性访问](active-directory-conditional-access-azure-portal.md)<br /><br />[通过 Azure AD 应用代理发布的本地应用程序的条件性访问](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
 | 如何向 Azure Active Directory 注册设备以启用基于设备的条件性访问策略 |[Azure Active Directory 设备注册概述](active-directory-conditional-access-device-registration-overview.md)<br /><br />[如何为加入域的 Windows 设备启用自动设备注册](active-directory-conditional-access-automatic-device-registration.md)<br />— [Windows 8.1 设备的步骤](active-directory-conditional-access-automatic-device-registration-setup.md)<br />— [Windows 7 设备的步骤](active-directory-conditional-access-automatic-device-registration-setup.md) |
 
 | 如何使用 Microsoft Authenticator 应用进行双重验证 |[Microsoft Authenticator](user-help/microsoft-authenticator-app-how-to.md) |
@@ -143,8 +143,8 @@ Cloud Discovery 根据 Microsoft Cloud App Security 的云应用目录分析你�
 
 | 文章指南 |  |
 |:---:| --- |
-| 有关 IT 专业人员和应用程序开发人员集成应用程序与 Azure AD 的指南 |[针对 Azure AD 开发应用程序的 IT 专业人员指南](active-directory-applications-guiding-developers-for-lob-applications.md)<br /><br />[Azure Active Directory 的开发人员指南](active-directory-developers-guide.md) |
-| 应用程序供应商如何将其应用添加到 Azure AD 应用库 |[列出 Azure Active Directory 应用程序库中的应用程序](active-directory-app-gallery-listing.md) |
+| 有关 IT 专业人员和应用程序开发人员集成应用程序与 Azure AD 的指南 |[针对 Azure AD 开发应用程序的 IT 专业人员指南](active-directory-applications-guiding-developers-for-lob-applications.md)<br /><br />[Azure Active Directory 的开发人员指南](develop/azure-ad-developers-guide.md) |
+| 应用程序供应商如何将其应用添加到 Azure AD 应用库 |[列出 Azure Active Directory 应用程序库中的应用程序](develop/howto-app-gallery-listing.md) |
 | 如何使用 Azure Active Directory 管理对开发的应用程序的访问 |[如何为已开发的应用程序启用用户分配](active-directory-applications-guiding-developers-requiring-user-assignment.md)<br /><br />[将用户分配到应用](active-directory-applications-guiding-developers-assigning-users.md)<br /><br />[将组分配到应用](active-directory-applications-guiding-developers-assigning-groups.md) |
 
 如果正在开发面向消费者的应用程序，可能对使用 [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) 感兴趣，这可以让你不必开发自己的标识系统即可管理用户。 [了解详细信息](../active-directory-b2c/active-directory-b2c-overview.md)。

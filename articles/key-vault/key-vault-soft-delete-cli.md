@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/04/2017
 ms.author: alleonar
-ms.openlocfilehash: a9b80cae69c4e5852341385b98fcccc86d7959e9
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: b25d3d7bd5348d4e4ae5dc33362a9d0a2504236e
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27927968"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578596"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>如何将 Key Vault 软删除与 CLI 配合使用
 
@@ -33,7 +33,7 @@ Azure Key Vault 的软删除功能可以恢复已删除的保管库和保管库�
 
 Key Vault 操作通过基于角色的访问控制 (RBAC) 权限单独管理，如下所示：
 
-| Operation | 说明 | 用户权限 |
+| Operation | Description | 用户权限 |
 |:--|:--|:--|
 |列出|列出已删除的密钥保管库。|Microsoft.KeyVault/deletedVaults/read|
 |恢复|还原已删除的密钥保管库。|Microsoft.KeyVault/vaults/write|
@@ -104,7 +104,7 @@ az keyvault list-deleted
 若要恢复密钥保管库，需要指定密钥保管库名称、资源组和位置。 请注意已删除的密钥保管库的位置和资源组，以便用于密钥保管库恢复过程。
 
 ```azurecli
-az keyvault recover --location westus --name ContosoVault
+az keyvault recover --location westus --resource-group ContosoRG --name ContosoVault
 ```
 
 恢复密钥保管库后，将得到具有密钥保管库原始资源 ID 的新资源。 如果密钥保管库所在的资源组已被删除，则必须先创建同名的新资源组，然后才能恢复密钥保管库。

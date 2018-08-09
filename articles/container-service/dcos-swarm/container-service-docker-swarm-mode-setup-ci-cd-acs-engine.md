@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: diegomrtnzg
 ms.custom: mvc
-ms.openlocfilehash: 01126f3eef988eb1787bafea92e7384aad1a703c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6c41156383791fb7d72ac02dae919a25a0d15c84
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32179565"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621056"
 ---
 # <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-visual-studio-team-services"></a>用于通过 Visual Studio Team Services 在使用 ACS 引擎和 Docker Swarm 模式的 Azure 容器服务中部署多容器应用程序的完整 CI/CD 管道
 
@@ -51,11 +51,11 @@ ms.locfileid: "32179565"
 - [使用 ACS 引擎在 Azure 容器服务中创建 Swarm 模式群集](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acsengine-swarmmode)
 - [连接 Azure 容器服务中的 Swarm 群集](../container-service-connect.md)
 - [创建 Azure 容器注册表](../../container-registry/container-registry-get-started-portal.md)
-- [创建 Visual Studio Team Services 帐户和团队项目](https://www.visualstudio.com/en-us/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)
+- [创建 Visual Studio Team Services 帐户和团队项目](https://docs.microsoft.com/vsts/organizations/accounts/create-organization-msa-or-work-student)
 - [将 GitHub 存储库分叉到 GitHub 帐户](https://github.com/jcorioland/MyShop/tree/docker-linux)
 
 >[!NOTE]
-> Azure 容器服务中的 Docker Swarm Orchestrator 使用旧的独立 Swarm。 目前，集成的 [Swarm 模式](https://docs.docker.com/engine/swarm/)（位于 Docker 1.12 及更高版本中）在 Azure 容器服务中不是受支持的 Orchestrator。 因此，我们将使用 [ACS 引擎](https://github.com/Azure/acs-engine/blob/master/docs/swarmmode.md)（社区提供的[快速入门模板](https://azure.microsoft.com/resources/templates/101-acsengine-swarmmode/)）或[Azure Marketplace](https://azuremarketplace.microsoft.com) 中的 Docker 解决方案。
+> Azure 容器服务中的 Docker Swarm Orchestrator 使用旧的独立 Swarm。 目前，集成的 [Swarm 模式](https://docs.docker.com/engine/swarm/)（位于 Docker 1.12 及更高版本中）在 Azure 容器服务中不是受支持的 Orchestrator。 因此，我们将使用 [ACS 引擎](https://github.com/Azure/acs-engine/blob/master/docs/swarmmode.md)（社区提供的[快速入门模板](https://azure.microsoft.com/resources/templates/101-acsengine-swarmmode/)）或 [Azure 市场](https://azuremarketplace.microsoft.com)中的 Docker 解决方案。
 >
 
 ## <a name="step-1-configure-your-visual-studio-team-services-account"></a>步骤 1：配置 Visual Studio Team Services 帐户 

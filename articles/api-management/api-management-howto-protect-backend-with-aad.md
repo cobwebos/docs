@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2018
 ms.author: apimpm
-ms.openlocfilehash: f5662a4082487137dfd642cc3264a90f8ab19054
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 06350d30999cb056babbd001f98a6c3a5fdbac6c
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576988"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>结合 Azure Active Directory 和 API 管理使用 OAuth 2.0 保护 API
 
@@ -192,10 +193,10 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="build-an-application-to-call-the-api"></a>生成应用程序来调用 API
 
-在本指南中，我们使用了 API 管理中的开发者控制台作为示例客户端应用程序来调用由 OAuth 2.0 保护的 `Echo API`。 若要详细了解如何生成应用程序并实现 OAuth 2.0，请参阅 [Azure Active Directory 代码示例](../active-directory/develop/active-directory-code-samples.md)。
+在本指南中，我们使用了 API 管理中的开发者控制台作为示例客户端应用程序来调用由 OAuth 2.0 保护的 `Echo API`。 若要详细了解如何生成应用程序并实现 OAuth 2.0，请参阅 [Azure Active Directory 代码示例](../active-directory/develop/sample-v1-code.md)。
 
 ## <a name="next-steps"></a>后续步骤
-* 详细了解 [Azure Active Directory 和 OAuth2.0](../active-directory/develop/active-directory-authentication-scenarios.md)。
+* 详细了解 [Azure Active Directory 和 OAuth2.0](../active-directory/develop/authentication-scenarios.md)。
 * 观看有关 API 管理的更多[视频](https://azure.microsoft.com/documentation/videos/index/?services=api-management)。
 * 有关保护后端服务的其他方法，请参阅[使用证书进行相互身份验证](api-management-howto-mutual-certificates.md)。
 

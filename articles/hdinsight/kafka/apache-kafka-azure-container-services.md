@@ -1,25 +1,20 @@
 ---
-title: 将 Azure Kubernetes 服务与 Kafka on HDInsight 配合使用 | Microsoft Docs
+title: 将 Azure Kubernetes 服务与 Kafka on HDInsight 配合使用
 description: 了解如何使用 Azure Kubernetes 服务 (AKS) 托管的容器映像中的 Kafka on HDInsight。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 05/07/2018
-ms.author: larryfr
-ms.openlocfilehash: f54039a0e702aa3c789363969120e000760f6ef5
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 339213654341b76cf4245240989cd59c7c041b0f
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33885955"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621239"
 ---
 # <a name="use-azure-kubernetes-service-with-kafka-on-hdinsight"></a>将 Azure Kubernetes 服务与 Kafka on HDInsight 配合使用
 

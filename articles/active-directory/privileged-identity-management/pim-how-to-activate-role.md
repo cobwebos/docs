@@ -9,16 +9,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: protection
+ms.component: pim
 ms.date: 02/14/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 0ad95cab1ae8072004a528e449cf828b32500be8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 33c41becb8ed741b7db5e3f89d193ca2ae7b6390
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38506487"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617126"
 ---
 # <a name="how-to-activate-or-deactivate-roles-in-azure-ad-privileged-identity-management"></a>如何在 Azure AD Privileged Identity Management 中激活或停用角色
 Azure Active Directory (AD) Privileged Identity Management 简化了企业管理以特权身份访问 Azure AD 中的资源和其他 Microsoft 联机服务（如 Office 365 或 Microsoft Intune）的方式。  

@@ -1,26 +1,21 @@
 ---
-title: Azure HDInsight 中 Spark 群集上的 Jupyter 笔记本的内核 | Microsoft Docs
+title: Azure HDInsight 中 Spark 群集上的 Jupyter 笔记本的内核
 description: 了解 Azure HDInsight 上的 Spark 群集所提供的 Jupyter 笔记本的 PySpark、PySpark3 和 Spark 内核。
 keywords: spark 中的 jupyter 笔记本,jupyter spark
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 0719e503-ee6d-41ac-b37e-3d77db8b121b
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.author: nitinme
-ms.openlocfilehash: 58a0bf27109af3131bd102fd43e9367d267525f3
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: jasonh
+ms.openlocfilehash: 76ad70c35fc790d06b12812151346fef485e48e6
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31521528"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619495"
 ---
 # <a name="kernels-for-jupyter-notebook-on-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight 中 Spark 群集上的 Jupyter 笔记本的内核 
 
@@ -79,7 +74,7 @@ HDInsight Spark 群集提供可在 Spark 上的 Jupyter 笔记本中用于测试
    
     下表列出可通过内核提供的不同 magic。
 
-   | Magic | 示例 | 说明 |
+   | Magic | 示例 | Description |
    | --- | --- | --- |
    | help |`%%help` |生成所有可用 magic 的表，其中包含示例和说明 |
    | info |`%%info` |输出当前 Livy 终结点的会话信息 |
@@ -99,7 +94,7 @@ HDInsight Spark 群集提供可在 Spark 上的 Jupyter 笔记本中用于测试
 ## <a name="parameters-supported-with-the-sql-magic"></a>%%sql magic 支持的参数
 `%%sql` magic 支持不同的参数，可以使用这些参数控制运行查询时收到的输出类型。 下表列出了输出。
 
-| 参数 | 示例 | 说明 |
+| 参数 | 示例 | Description |
 | --- | --- | --- |
 | -o |`-o <VARIABLE NAME>` |使用此参数将查询结果以 [Pandas](http://pandas.pydata.org/) 数据帧的形式保存在 %%local Python 上下文中。 数据帧变量的名称是指定的变量名称。 |
 | -q |`-q` |使用此参数可关闭单元可视化。 如果不想自动将单元内容可视化，而只想将它作为数据帧捕获，可以使用 `-q -o <VARIABLE>`。 如果想要关闭可视化而不捕获结果（例如，运行诸如 `CREATE TABLE` 语句的 SQL 查询），请使用不带 `-o` 参数的 `-q`。 |

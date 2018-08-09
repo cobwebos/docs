@@ -2,18 +2,18 @@
 title: 使用 Azure 导入/导出将数据传入/传出 Azure 存储 | Microsoft Docs
 description: 了解如何在 Azure 门户中创建导入和导出作业，以便将数据传入/传出到 Azure 存储。
 author: alkohli
-manager: jeconnoc
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: alkohli
-ms.openlocfilehash: e9fc74e6cd145cbba5b620b9db6db9635a0c4c77
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.component: common
+ms.openlocfilehash: 480d67917abf3a8aaca64aa9aae30be5acf55e11
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364519"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528550"
 ---
 # <a name="what-is-azure-importexport-service"></a>什么是 Azure 导入/导出服务？
 

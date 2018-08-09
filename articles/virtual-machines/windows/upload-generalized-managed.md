@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 9ebe1f67c7c662af6d9e1888580149834a007200
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8fd88a0e3c5b387ce3ea586f6f23b3643a03e58d
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657465"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618161"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>上传通用化 VHD 并使用它在 Azure 中创建新的 VM
 
@@ -70,7 +70,7 @@ Get-AzureRmStorageAccount | Format-Table
 
 ## <a name="upload-the-vhd-to-your-storage-account"></a>将 VHD 上传到存储帐户
 
-使用 [Add-AzureRmVhd](https://msdn.microsoft.com/library/mt603554.aspx) cmdlet 将 VHD 上传到存储帐户中的容器。 本示例将文件 myVHD.vhd 从 "C:\Users\Public\Documents\Virtual hard disks\" 上传到“myResourceGroup”资源组中名为“mystorageaccount”的存储帐户。 该文件将放入名为 *mycontainer* 的容器，新文件名为 *myUploadedVHD.vhd*。
+使用 [Add-AzureRmVhd](https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd) cmdlet 将 VHD 上传到存储帐户中的容器。 本示例将文件 myVHD.vhd 从 "C:\Users\Public\Documents\Virtual hard disks\" 上传到“myResourceGroup”资源组中名为“mystorageaccount”的存储帐户。 该文件将放入名为 *mycontainer* 的容器，新文件名为 *myUploadedVHD.vhd*。
 
 ```powershell
 $rgName = "myResourceGroup"

@@ -9,12 +9,12 @@ ms.date: 03/05/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ae5644a62b794dc8d6ace52f21a452fa70027d39
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: f57db00894dab80f96f45111331d47a173520ced
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029554"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39575992"
 ---
 # <a name="install-the-iot-edge-runtime-on-windows-iot-core---preview"></a>在 Windows IoT Core 上安装 IoT Edge 运行时 - 预览
 
@@ -52,7 +52,7 @@ ms.locfileid: "37029554"
 现在已具有一个运行 IoT Edge 运行时的设备，下面了解如何[大规模部署和监视 IoT Edge 模块][lnk-deploy]。
 
 <!--Links-->
-[lnk-install-windows-on-windows]: how-to-install-iot-edge-windows-with-windows.md#download-the-edge-daemon-package-and-install
+[lnk-install-windows-on-windows]: how-to-install-iot-edge-windows-with-windows.md
 [lnk-powershell]: https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell
 [lnk-deploy]: how-to-deploy-monitor.md
 [lnk-docker-install]: https://docs.docker.com/engine/installation/linux/docker-ce/binaries#install-server-and-client-binaries-on-windows

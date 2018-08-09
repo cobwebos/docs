@@ -2,24 +2,19 @@
 title: 使用 Java 针对 Azure 文件进行开发 | Microsoft Docs
 description: 了解如何开发使用 Azure 文件来存储文件数据的 Java 应用程序和服务。
 services: storage
-documentationcenter: java
 author: wmgries
-manager: aungoo
-editor: tamram
-ms.assetid: 3bfbfa7f-d378-4fb4-8df3-e0b6fcea5b27
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: a9585bc77a73cbd84fb2efa201a5745c62f3360a
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.component: files
+ms.openlocfilehash: aa63a31f7f84502a29aad6b38f454ea1080127e0
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738194"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528961"
 ---
 # <a name="develop-for-azure-files-with-java"></a>使用 Java 针对 Azure 文件进行开发
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -35,7 +30,7 @@ ms.locfileid: "34738194"
 * 上传、下载和删除文件
 
 > [!Note]  
-> 由于 Azure 文件可以通过 SMB 进行访问，因此可以编写应用程序，通过标准的 Java I/O 类来访问 Azure 文件共享。 本文介绍如何编写使用 Azure 存储 Java SDK 的应用程序，该 SDK 使用 [Azure 文件 REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) 与 Azure 文件通信。
+> 由于 Azure 文件可以通过 SMB 进行访问，因此可以编写应用程序，通过标准的 Java I/O 类来访问 Azure 文件共享。 本文介绍如何编写使用 Azure 存储 Java SDK 的应用程序，该 SDK 使用 [Azure 文件 REST API](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api) 与 Azure 文件通信。
 
 ## <a name="create-a-java-application"></a>创建 Java 应用程序
 若要生成示例，需要 Java 开发工具包 (JDK) 和[用于 Java 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-java)。 此外，应该已经创建了一个 Azure 存储帐户。
@@ -237,5 +232,5 @@ if ( file.deleteIfExists() ) {
 * [Azure 存储客户端 SDK 参考](http://dl.windowsazure.com/storage/javadoc/)
 * [Azure 存储空间服务 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
-* [使用 AzCopy 命令行实用程序传输数据](../common/storage-use-azcopy.md)
+* [使用 AzCopy 命令行实用工具传输数据](../common/storage-use-azcopy.md)
 * [排查 Azure 文件问题 - Windows](storage-troubleshoot-windows-file-connection-problems.md)

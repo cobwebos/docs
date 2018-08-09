@@ -3,7 +3,7 @@ title: Azure WebJobs SDK 入门
 description: 用于事件驱动的后台处理的 WebJobs SDK 简介。 了解如何访问 Azure 服务和第三方服务中的数据。
 services: app-service\web, storage
 documentationcenter: .net
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 ms.service: app-service-web
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
-ms.author: tdykstra
-ms.openlocfilehash: 68377ffd53d5f2b99ddc08386529a40dda12e1b2
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.author: glenga
+ms.openlocfilehash: 72f7090c285e629149519920ac82f0fe962abc48
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901545"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577299"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>用于事件驱动的后台处理的 Azure WebJobs SDK 入门
 
@@ -63,9 +63,9 @@ public static void Run(
 
 1. 在 Visual Studio 中，选择“文件”>“新建项目”。
 
-2. 选择“Windows 经典桌面”>“控制台应用(.NET Framework)”。
+1. 选择“Windows 经典桌面”>“控制台应用(.NET Framework)”。
 
-3. 将项目命名为 *WebJobsSDKSample*，然后选择“确定”。
+1. 将项目命名为 *WebJobsSDKSample*，然后选择“确定”。
 
    ![“新建项目”对话框](./media/webjobs-sdk-get-started/new-project.png)
 
@@ -121,13 +121,13 @@ public static void Run(
    Install-Package Microsoft.Extensions.Logging.Console -version 2.0.1
    ``` 
 
-2. 在 *Program.cs* 中，添加 `using` 语句：
+1. 在 *Program.cs* 中，添加 `using` 语句：
 
    ```cs
    using Microsoft.Extensions.Logging;
    ```
 
-3. 在 `Main` 方法中添加代码，以便在创建 `JobHost` 之前更新 `JobHostConfiguration`：
+1. 在 `Main` 方法中添加代码，以便在创建 `JobHost` 之前更新 `JobHostConfiguration`：
  
    ```
    config.DashboardConnectionString = "";
@@ -190,9 +190,9 @@ public static void Run(
 
    ![“创建存储帐户”菜单](./media/webjobs-sdk-get-started/create-storage-account-menu.png)
 
-2. 在“创建存储帐户”对话框中，输入存储帐户的唯一名称。
+1. 在“创建存储帐户”对话框中，输入存储帐户的唯一名称。
 
-3. 选择在其中创建了应用服务应用的同一**区域**或者靠近的区域。
+1. 选择在其中创建了应用服务应用的同一**区域**或者靠近的区域。
 
 1. 选择**创建**。
 
@@ -202,7 +202,7 @@ public static void Run(
 
    ![“连接字符串”右侧的省略号](./media/webjobs-sdk-get-started/conn-string-ellipsis.png)
 
-2. 复制连接字符串并将此值保存在某处，以方便再次复制。
+1. 复制连接字符串并将此值保存在某处，以方便再次复制。
 
    ![复制连接字符串](./media/webjobs-sdk-get-started/copy-key.png)
 
@@ -218,7 +218,7 @@ WebJobs SDK 在“应用设置”集合中查找存储连接字符串。 在本�
    </connectionStrings>
    ```
 
-2. 将 *{storage connection string}* 替换为先前复制的连接字符串。
+1. 将 *{storage connection string}* 替换为先前复制的连接字符串。
 
    稍后在 Azure 中配置应用服务应用时，会再次使用该连接字符串。
 
@@ -243,27 +243,27 @@ WebJobs SDK 在“应用设置”集合中查找存储连接字符串。 在本�
 
    可能会看到有关 `ServicePointManager` 设置的警告消息。 针对此项目执行测试时，可以忽略该警告。 有关该警告的详细信息，请参阅[如何使用 WebJobs SDK](webjobs-sdk-how-to.md#jobhost-servicepointmanager-settings)。
 
-2. 关闭控制台窗口。
+1. 关闭控制台窗口。
 
 1. 在“服务器资源管理器”中，展开新存储帐户所在的节点，然后右键单击“队列”。 
 
-2. 选择“创建队列”。 
+1. 选择“创建队列”。 
 
-3. 输入 *queue* 作为队列名称，然后选择“确定”。
+1. 输入 *queue* 作为队列名称，然后选择“确定”。
 
    ![创建队列](./media/webjobs-sdk-get-started/create-queue.png)
 
-4. 右键单击新队列所在的节点，然后选择“查看队列”。
+1. 右键单击新队列所在的节点，然后选择“查看队列”。
 
-5. 选择“添加消息”图标。
+1. 选择“添加消息”图标。
 
    ![创建队列](./media/webjobs-sdk-get-started/create-queue-message.png)
 
-6. 在“添加消息”对话框中，输入 *Hello World!* 作为**消息正文**，然后选择“确定”。
+1. 在“添加消息”对话框中，输入 *Hello World!* 作为**消息正文**，然后选择“确定”。
 
    ![创建队列](./media/webjobs-sdk-get-started/hello-world-text.png)
 
-7. 再次运行该项目。
+1. 再次运行该项目。
 
    由于在 `ProcessQueueMessage` 函数中使用了 `QueueTrigger` 特性，因此 WeJobs SDK 运行时会在启动时侦听队列消息。 它会在名为 *queue* 的队列中查找新队列消息，并调用函数。
 
@@ -288,7 +288,7 @@ WebJobs SDK 在“应用设置”集合中查找存储连接字符串。 在本�
    Executed 'Functions.ProcessQueueMessage' (Succeeded, Id=ebcb275d-0d7c-4293-a1af-93e0804b9e49)
    ```
 
-8. 关闭控制台窗口。
+1. 关闭控制台窗口。
 
 ## <a name="add-application-insights-logging"></a>添加 Application Insights 日志记录
 
@@ -304,9 +304,9 @@ WebJobs SDK 在“应用设置”集合中查找存储连接字符串。 在本�
 
 1. 如果没有可用的应用服务应用，请[创建一个](app-service-web-get-started-dotnet-framework.md)。
 
-2. 如果没有可用的 Application Insights 资源，请[创建一个](../application-insights/app-insights-create-new-resource.md)。 将“应用程序类型”设置为“常规”，并跳过“复制检测密钥”后面的部分。
+1. 如果没有可用的 Application Insights 资源，请[创建一个](../application-insights/app-insights-create-new-resource.md)。 将“应用程序类型”设置为“常规”，并跳过“复制检测密钥”后面的部分。
 
-3. 如果已有可用的 Application Insights 资源，请[复制检测密钥](../application-insights/app-insights-create-new-resource.md#copy-the-instrumentation-key)。
+1. 如果已有可用的 Application Insights 资源，请[复制检测密钥](../application-insights/app-insights-create-new-resource.md#copy-the-instrumentation-key)。
 
 ### <a name="configure-app-settings"></a>配置应用设置 
 
@@ -314,23 +314,23 @@ WebJobs SDK 在“应用设置”集合中查找存储连接字符串。 在本�
 
 1. 展开应用服务应用所在的资源组，然后右键单击应用服务应用。
 
-3. 选择“查看设置”。
+1. 选择“查看设置”。
 
-4. 在“连接字符串”框中添加以下条目。
+1. 在“连接字符串”框中添加以下条目。
 
    |名称  |连接字符串  |数据库类型|
    |---------|---------|------|
    |AzureWebJobsStorage | {前面复制的存储连接字符串}|“自定义”|
    
-6. 如果“应用程序设置”框中没有 Application Insights 检测密钥，请添加前面复制的检测密钥。 （根据应用服务应用的创建方式，该框中可能已包含检测密钥。）
+1. 如果“应用程序设置”框中没有 Application Insights 检测密钥，请添加前面复制的检测密钥。 （根据应用服务应用的创建方式，该框中可能已包含检测密钥。）
 
    |名称  |值  |
    |---------|---------|
    |APPINSIGHTS_INSTRUMENTATIONKEY | {instrumentation key} |
 
-2. 将 *{instrumentation key}* 替换为所用 Application Insights 资源中的检测密钥。
+1. 将 *{instrumentation key}* 替换为所用 Application Insights 资源中的检测密钥。
 
-2. 选择“保存”。
+1. 选择“保存”。
 
 1. 将以下 XML 添加到 *App.config* 文件中紧靠在连接字符串集合的后面。
 
@@ -340,11 +340,11 @@ WebJobs SDK 在“应用设置”集合中查找存储连接字符串。 在本�
    </appSettings>
    ```
 
-2. 将 *{instrumentation key}* 替换为所用 Application Insights 资源中的检测密钥。
+1. 将 *{instrumentation key}* 替换为所用 Application Insights 资源中的检测密钥。
 
    将此数据添加到 *App.config* 文件可以在本地运行项目时测试 Application Insights 连接。 
 
-3. 保存所做更改。
+1. 保存所做更改。
 
 ### <a name="add-application-insights-logging-provider"></a>添加 Application Insights 日志记录提供程序
 
@@ -364,13 +364,13 @@ WebJobs SDK 在“应用设置”集合中查找存储连接字符串。 在本�
    Install-Package System.Configuration.ConfigurationManager -version 4.4.1
    ``` 
 
-2. 打开 *Program.cs* 并为配置管理器添加 `using` 语句：
+1. 打开 *Program.cs* 并为配置管理器添加 `using` 语句：
 
    ```csharp
    using System.Configuration;
    ```
 
-2. 将 `Main`方法中的代码替换为以下代码：
+1. 将 `Main`方法中的代码替换为以下代码：
 
    ```csharp
    using (var loggerFactory = new LoggerFactory())
@@ -406,7 +406,7 @@ WebJobs SDK 在“应用设置”集合中查找存储连接字符串。 在本�
 
 1. 打开 [Azure 门户](https://portal.azure.com/)并转到 Application Insights 资源。
 
-2. 选择“搜索”。
+1. 选择“搜索”。
 
    ![选择“搜索”](./media/webjobs-sdk-get-started/select-search.png)
 
@@ -414,7 +414,7 @@ WebJobs SDK 在“应用设置”集合中查找存储连接字符串。 在本�
 
    ![Application Insights 中的日志](./media/webjobs-sdk-get-started/logs-in-ai.png)
 
-3. 关闭控制台窗口。
+1. 关闭控制台窗口。
 
 ## <a name="deploy-as-a-webjob"></a>部署 WebJob
 
@@ -444,7 +444,7 @@ WebJobs SDK 在“应用设置”集合中查找存储连接字符串。 在本�
 
 1. 像[前面](#trigger-the-function)所做的那样，使用“服务器资源管理器”创建队列消息，不过这次要输入 *Hello Azure!*。
 
-7. 刷新 Visual Studio 中的“队列”页，会发现新消息已消失，因为 Azure 应用服务中运行的函数处理了该消息。
+1. 刷新 Visual Studio 中的“队列”页，会发现新消息已消失，因为 Azure 应用服务中运行的函数处理了该消息。
 
    > [!TIP]
    > 若要在 Azure 中进行测试，请使用[开发模式](webjobs-sdk-how-to.md#jobhost-development-settings)来确保立即调用队列触发函数，并避免[队列轮询指数退让](../azure-functions/functions-bindings-storage-queue.md#trigger---polling-algorithm)导致的延迟。
@@ -453,7 +453,7 @@ WebJobs SDK 在“应用设置”集合中查找存储连接字符串。 在本�
 
 1. 打开 [Azure 门户](https://portal.azure.com/)并转到 Application Insights 资源。
 
-2. 选择“搜索”。
+1. 选择“搜索”。
 
 1. 如果未看到“Hello Azure!” 消息，请定期选择“刷新”几分钟。
 
@@ -477,19 +477,19 @@ WebJobs SDK 在“应用设置”集合中查找存储连接字符串。 在本�
 
    在此代码中，`queueTrigger` 是[绑定表达式](../azure-functions/functions-triggers-bindings.md#binding-expressions-and-patterns)，意味着它将在运行时解析为不同的值。  在运行时，它会包含队列消息的内容。
 
-2. 添加 `using`：
+1. 添加 `using`：
 
    ```cs
    using System.IO;
    ```
 
-3. 在存储帐户中创建 Blob 容器。
+1. 在存储帐户中创建 Blob 容器。
 
    a. 在“服务器资源管理器”中，展开你的存储帐户所在的节点，右键单击“Blob”，并选择“创建 Blob 容器”。
 
    b. 在“创建 Blob 容器”对话框中，输入 *container* 作为容器名称，然后单击“确定”。
 
-4. 将 *Program.cs* 文件上传到 Blob 容器。 （此处使用的文件用作示例；可以上传任何文本文件，并使用该文件的名称创建队列消息。）
+1. 将 *Program.cs* 文件上传到 Blob 容器。 （此处使用的文件用作示例；可以上传任何文本文件，并使用该文件的名称创建队列消息。）
 
    a. 在“服务器资源管理器”中，双击刚刚创建的容器所在的节点。
 
@@ -499,11 +499,11 @@ WebJobs SDK 在“应用设置”集合中查找存储连接字符串。 在本�
 
    c. 找到并选择“Program.cs”，然后选择“确定”。
 
-5. 在前面创建的队列中创建队列消息，并使用 *Program.cs* 作为消息的文本。
+1. 在前面创建的队列中创建队列消息，并使用 *Program.cs* 作为消息的文本。
 
    ![队列消息 Program.cs](./media/webjobs-sdk-get-started/queue-msg-program-cs.png)
 
-6. 运行该项目。
+1. 运行该项目。
 
    该队列消息会触发函数，而该函数又会读取 Blob 并记录其长度。 控制台输出如下所示：
 
@@ -535,9 +535,9 @@ WebJobs SDK 在“应用设置”集合中查找存储连接字符串。 在本�
    }
    ```
 
-5. 创建另一个队列消息，并使用 *Program.cs* 作为消息的文本。
+1. 创建另一个队列消息，并使用 *Program.cs* 作为消息的文本。
 
-6. 运行该项目。
+1. 运行该项目。
 
    该队列消息会触发函数，而该函数又会读取 Blob、记录其长度并创建新 Blob。 控制台输出相同，但在转到 Blob 容器窗口并选择“刷新”时，会看到名为 *copy-Program.cs* 的新 Blob。
 

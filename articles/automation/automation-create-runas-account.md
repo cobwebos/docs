@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a29379492f4ffd662244c3e42de321f47be13d9f
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 2b0f2b864c5c29e9804239d06afdf23708e52828
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436963"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579606"
 ---
 # <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>使用运行方式帐户更新自动化帐户身份验证 
 在以下情况下，可以通过 Azure 门户或使用 PowerShell 更新现有自动化帐户：
@@ -289,5 +289,5 @@ ms.locfileid: "37436963"
 若要将服务主体添加到资源组，请在 Azure 门户中选择资源组，然后选择“访问控制(标识和访问管理)”。 选择“添加”，这将打开“添加权限”页。 对于“角色”，选择“参与者”。 在“选择”文本框中，键入运行方式帐户的服务主体名称，并从列表中选择它。 单击“保存”以保存更改。 对要向其授予 Azure 自动化运行方式服务主体访问权限的资源组执行此操作。
 
 ## <a name="next-steps"></a>后续步骤
-* 有关服务主体的详细信息，请参阅 [Application Objects and Service Principal Objects](../active-directory/active-directory-application-objects.md)（应用程序对象和服务主体对象）。
+* 有关服务主体的详细信息，请参阅 [Application Objects and Service Principal Objects](../active-directory/develop/app-objects-and-service-principals.md)（应用程序对象和服务主体对象）。
 * 有关证书和 Azure 服务的详细信息，请参阅 [Azure 云服务证书概述](../cloud-services/cloud-services-certs-create.md)。

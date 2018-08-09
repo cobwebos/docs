@@ -1,23 +1,20 @@
 ---
-title: 教程：在 Azure HDInsight 中的 Apache Spark 群集上加载数据并运行查询 | Microsoft Docs
+title: '教程：在 Azure HDInsight 中的 Apache Spark 群集上加载数据并运行查询 '
 description: 了解如何在 Azure HDInsight 中的 Spark 群集上加载数据并运行交互式查询。
 services: azure-hdinsight
-author: mumian
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
-ms.devlang: na
 ms.topic: tutorial
-ms.author: jgao
+ms.author: jasonh
 ms.date: 05/17/2018
-ms.openlocfilehash: eeb0f8134d21d42c8401f58828160d613e8ef92b
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: e83c7a4ed5987108a74153897abe4839dd24418c
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302043"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619424"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中的 Apache Spark 群集上加载数据并运行查询
 

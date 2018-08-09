@@ -11,20 +11,19 @@ ms.devlang: java
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/15/2018
+ms.date: 07/28/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: df3c64938cfc5835fd9eb2f0bbed0135b611347f
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: a1ce9aa87d8f70d3d55daa3a8f46c6a7f706f78e
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341515"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620726"
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>通过 Java 和 Maven 创建你的第一个函数（预览版）
 
-> [!NOTE] 
-> 用于 Azure Functions 的 Java 当前为预览版。
+[!INCLUDE [functions-java-preview-note](../../includes/functions-java-preview-note.md)]
 
 本快速入门可指导通过 Maven 创建[无服务器](https://azure.microsoft.com/overview/serverless-computing/)函数项目，在本地对其进行测试，并将其部署到 Azure Functions。 完成后，可在 Azure 中运行 HTTP 触发的函数应用。
 

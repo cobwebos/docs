@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 04/12/2018
 ms.author: jroth
-ms.openlocfilehash: 6c7f2eb3e126bbcefefe47fa42231527004b2ac5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2d38e5d7902e0db2342bce19ae2022a9433bfcfe
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31423093"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617728"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure 虚拟机上的 SQL Server 是什么？ (Windows)
 
@@ -89,7 +89,7 @@ Azure 虚拟机提供的虚拟机大小取决于工作负荷需求。 SQL VM 还
 对于每种支持的操作系统和版本的组合，Azure 只保留一个虚拟机映像。 这意味着，随着时间的推移，映像会进行刷新，旧映像会被删除。 有关详细信息，请参阅 [SQL Server VM 常见问题解答](virtual-machines-windows-sql-server-iaas-faq.md#images)的“映像”部分。
 
 ## <a name="customer-experience-improvement-program-ceip"></a>客户体验改善计划 (CEIP)
-客户体验改善计划 (CEIP) 默认情况下已启用。 这样会定期将报告发送至 Microsoft，帮助改进 SQL Server。 CEIP 不需要执行管理任务，除非用户想要在预配后将其禁用。 可以通过远程桌面连接到 VM，以自定义或禁用 CEIP。 然后运行“SQL Server 错误和使用情况报告”实用工具。 请按照说明禁用报告功能。 有关数据收集的详细信息，请参阅 [SQL Server 隐私声明](https://www.microsoft.com/EN-US/privacystatement/SQLServer/Default.aspx)。
+客户体验改善计划 (CEIP) 默认情况下已启用。 这样会定期将报告发送至 Microsoft，帮助改进 SQL Server。 CEIP 不需要执行管理任务，除非用户想要在预配后将其禁用。 可以通过远程桌面连接到 VM，以自定义或禁用 CEIP。 然后运行“SQL Server 错误和使用情况报告”实用工具。 请按照说明禁用报告功能。 有关数据收集的详细信息，请参阅 [SQL Server 隐私声明](https://docs.microsoft.com/sql/getting-started/microsoft-sql-server-privacy-statement)。
 
 ## <a name="related-products-and-services"></a>相关产品和服务
 ### <a name="windows-virtual-machines"></a>Windows 虚拟机

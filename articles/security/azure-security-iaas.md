@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/14/2018
 ms.author: barclayn
-ms.openlocfilehash: 37620e70377e3f1fbeeeb73aaa294c5f54cf5b3d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7c28459aa04c67db8abda54d9f14eb417bd8ed60
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723769"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618591"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure 中 IaaS 工作负荷的安全性最佳实践
 
@@ -188,7 +188,7 @@ Microsoft 会在通过 FIPS 140-2 第 2 级验证的 HSM（硬件和固件）中
 
 对于与生产环境分开托管的环境，可以使用反恶意软件扩展来帮助保护虚拟机和云服务。 该扩展与 [Azure 安全中心](../security-center/security-center-intro.md)集成。
 
-[Microsoft 反恶意软件](azure-security-antimalware.md)包括实时保护、计划扫描、恶意软件修正、签名更新、引擎更新、示例报告、排除事件收集和 [PowerShell 支持](https://msdn.microsoft.com/library/dn771715.aspx)等功能。
+[Microsoft 反恶意软件](azure-security-antimalware.md)包括实时保护、计划扫描、恶意软件修正、签名更新、引擎更新、示例报告、排除事件收集和 [PowerShell 支持](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureserviceantimalwareextension)等功能。
 
 ![Azure 反恶意软件](./media/azure-security-iaas/azantimalware.png)
 

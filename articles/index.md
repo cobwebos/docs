@@ -6,12 +6,12 @@ description: 了解如何使用 Microsoft Azure 云服务构建和管理功能�
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 323b0118d4635b141b2a0f3fb2692d082929c201
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 79b7301f2a9ef56956e6968f322b420a7622b172
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495469"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627417"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -1479,7 +1479,7 @@ Azure DevOps Project </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/information-protection/">
+                                            <a href="/azure/information-protection/">
                                                 <img src="https://docs.microsoft.com/media/common/i_information-protection.svg" alt="" />
                                                 <p>Azure 信息保护</p>
                                             </a>
@@ -1530,7 +1530,7 @@ Azure DevOps Project </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/information-protection/">
+                                            <a href="/azure/information-protection/">
                                                 <img src="https://docs.microsoft.com/media/common/i_information-protection.svg" alt="" />
                                                 <p>Azure 信息保护</p>
                                             </a>
@@ -4185,7 +4185,7 @@ Azure DevOps Project </a>
                                 </a>
                             </li>
                             <li>
-                                <a href="/information-protection/">
+                                <a href="/azure/information-protection/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -4361,7 +4361,7 @@ Azure DevOps Project </a>
                                 </a>
                             </li>
                             <li>
-                                <a href="/information-protection/">
+                                <a href="/azure/information-protection/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">

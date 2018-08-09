@@ -17,12 +17,12 @@ ms.date: 09/07/2017
 ms.author: barbkess
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: d5921b9b74bfa7e32cc8dc2f9fdc5f93d4027abb
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: e86c7e82203e2ecd571d5ce5e450999704218e33
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366495"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579157"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Azure Active Directory 中库应用的 SAML 令牌中的高级证书签名选项
 Azure Active Directory (Azure AD) 目前支持 Azure Active Directory 应用库中的数千个预先集成应用程序。 此数字包括使用 SAML 2.0 协议支持单一登录的 500 多个应用程序。 当用户通过 Azure AD 使用 SAML 对应用程序进行身份验证时，Azure AD 会将令牌发送到应用程序（通过 HTTP POST）。 然后，应用程序验证并使用该令牌将用户登录，而不是提示输入用户名和密码。 这些 SAML 令牌已使用 Azure AD 中生成的唯一证书根据特定的标准算法签名。
@@ -62,6 +62,6 @@ Azure AD 支持使用两种签名算法来为 SAML 响应签名：
 ## <a name="next-steps"></a>后续步骤
 * [有关 Azure Active Directory 中应用程序管理的文章索引](../active-directory-apps-index.md)
 * [针对不在 Azure Active Directory 应用库中的应用程序配置单一登录](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)
-* [排查基于 SAML 的单一登录的问题](../develop/active-directory-saml-debugging.md)
+* [排查基于 SAML 的单一登录的问题](../develop/howto-v1-debug-saml-sso-issues.md)
 
 

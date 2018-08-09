@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev
-ms.openlocfilehash: b8303ccf6fc96e8d0708c9e414fdf511e0cf2fdf
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 60b51f28f5836fcc0f1f2da2d17971ea4f24eaca
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31785153"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495183"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>我的 WebAPI 项目（Visual Studio Azure Active Directory 连接服务）发生了什么情况
 
@@ -129,5 +129,5 @@ ms.locfileid: "31785153"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Active Directory 的身份验证方案](active-directory-authentication-scenarios.md)
-- [向 ASP.NET Web 应用添加 Microsoft 登录功能](guidedsetups/active-directory-aspnetwebapp-v1.md)
+- [Azure Active Directory 的身份验证方案](authentication-scenarios.md)
+- [向 ASP.NET Web 应用添加 Microsoft 登录功能](quickstart-v1-aspnet-webapp.md)

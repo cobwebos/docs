@@ -14,12 +14,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 07/06/2018
 ms.author: ruturajd@microsoft.com
-ms.openlocfilehash: e9a1dfc6aa26246db5322a8f4491ab2a5bccfcf5
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 55160f3c43d8cbfc5f8b3e6aaf26bcb911387c52
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917687"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578759"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>将 Azure 自动化 Runbook 添加到恢复计划
 本文将介绍 Azure Site Recovery 如何与 Azure 自动化集成，以便扩展恢复计划。 恢复计划可以安排恢复受 Site Recovery 保护的 VM。 恢复计划支持复制到辅助云和复制到 Azure。 恢复计划还有助于实现恢复的一致准确性、可重复性和自动化。 如果从 VM 故障转移到 Azure，与 Azure 自动化集成可以扩展恢复计划。 可用于执行 Runbook，从而提供功能强大的自动化任务。
@@ -196,7 +196,7 @@ workflow AddPublicIPAndNSG {
 
 假设情况为，需要使用一个脚本在特定 VM 上启用公共 IP。 在另一种情况下，需要在不同的 VM 上（而不是在所有 VM 上）应用其他 NSG。 可以创建可对任何恢复计划重用的脚本。 每个恢复计划包含的 VM 数量不定。 例如，SharePoint 恢复有两个前端。 基本业务线 (LOB) 应用程序只有一个前端。 无法为每个恢复计划单独创建变量。
 
-在下面的示例中，我们采用一种新方法，在 Azure 自动化帐户资产中创建[复杂变量](https://msdn.microsoft.com/library/dn913767.aspx?f=255&MSPPError=-2147217396)。 为此，可以指定多个值。 必须使用 Azure PowerShell 完成以下步骤：
+在下面的示例中，我们采用一种新方法，在 Azure 自动化帐户资产中创建[复杂变量](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureautomationvariable)。 为此，可以指定多个值。 必须使用 Azure PowerShell 完成以下步骤：
 
 1. 在 PowerShell 中，登录 Azure 订阅：
 

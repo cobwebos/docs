@@ -3,16 +3,17 @@ title: 确定何时使用 Azure Blob、Azure 文件或 Azure 磁盘
 description: 了解可通过哪些不同的方式在 Azure 中存储和访问数据，以帮助确定要使用哪种技术。
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 03/28/2018
 ms.author: tamram
-ms.openlocfilehash: ded0884ff83cc214d78f65fed8cefa646f11d952
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.component: common
+ms.openlocfilehash: 3f2609ea57ea5a5a0cce2544a1031c55199d137b
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39529104"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>确定何时使用 Azure Blob、Azure 文件或 Azure 磁盘
 
@@ -22,7 +23,7 @@ Microsoft Azure 在 Azure 存储中提供多种功能用于在云中存储和访
 
 下表比较了文件、Blob 和磁盘，并显示每种技术适合的示例情景。
 
-| 功能 | 说明 | 使用时机 |
+| 功能 | Description | 使用时机 |
 |--------------|-------------|-------------|
 | **Azure 文件** | 提供 SMB 接口、客户端库，以及一个用于从任意位置访问所存储的文件的 [REST 接口](/rest/api/storageservices/file-service-rest-api)。 | 可让你将某个已使用本机文件系统 API 在自身与在 Azure 中运行的其他应用程序之间共享数据的应用程序“即时转移”到云中。<br/><br/>可让你存储需要从许多虚拟机访问的开发和调试工具。 |
 | **Azure Blob** | 提供客户端库，以及一个可用于在块 Blob 中批量存储和访问非结构化数据的 [REST 接口](/rest/api/storageservices/blob-service-rest-api)。 | 使应用程序能够支持流式处理和随机访问方案。<br/><br/>可让你从任意位置访问应用程序数据。 |
@@ -41,8 +42,8 @@ Microsoft Azure 在 Azure 存储中提供多种功能用于在云中存储和访
 |终结点|`http://myaccount.blob.core.windows.net/mycontainer/myblob`|`\\myaccount.file.core.windows.net\myshare\myfile.txt`<br /><br /> `http://myaccount.file.core.windows.net/myshare/myfile.txt`|  
 |目录|平面命名空间|真正目录对象|  
 |名称区分大小写|区分大小写|不区分大小写，但保留大小写|  
-|容量|最多 500 TiB 容器|5 TiB 文件共享|  
-|吞吐量|每个块 Blob 高达 60 MiB/秒|每个共享高达 60 MiB/秒|  
+|Capacity|最多 500 TiB 容器|5 TiB 文件共享|  
+|Throughput|每个块 Blob 高达 60 MiB/秒|每个共享高达 60 MiB/秒|  
 |对象大小|每个块 blob 最多大约 4.75 TiB|每个文件最多为 1 TiB|  
 |计费容量|基于写入的字节数|基于文件大小|  
 |客户端库|多语言|多语言|  
@@ -57,7 +58,7 @@ Azure 文件是对 Azure 磁盘的补充。 一个磁盘每次只能附加到一
 |-|-|-|  
 |**属性**|**Azure 磁盘**|**Azure 文件**|  
 |范围|专供单个虚拟机使用|可在多个虚拟机之间进行共享访问|  
-|快照和复制|是|否|  
+|快照和复制|是|是|  
 |配置|启动虚拟机时进行连接|启动虚拟机后进行连接|  
 |身份验证|内置|使用 net use 进行设置|  
 |清理|自动|手动|  

@@ -2,24 +2,18 @@
 title: 使用 C++ 针对 Azure 文件进行开发 | Microsoft Docs
 description: 了解如何开发使用 Azure 文件来存储文件数据的 C++ 应用程序和服务。
 services: storage
-documentationcenter: .net
 author: renashahmsft
-manager: aungoo
-editor: tamram
-ms.assetid: a1e8c99e-47a6-43a9-9541-c9262eb00b38
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: renashahmsft
-ms.openlocfilehash: e0b5974780813eb4f3d67c42781db4d95829814d
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.component: files
+ms.openlocfilehash: 4543784c1de85cf86f3dfa912a33641541e0373a
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737565"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39529251"
 ---
 # <a name="develop-for-azure-files-with-c"></a>使用 C++ 针对 Azure 文件进行开发
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -37,7 +31,7 @@ ms.locfileid: "34737565"
 * 若一个文件使用在共享中定义的共享访问策略，则为该文件创建一个共享访问签名（SAS 密钥）。
 
 > [!Note]  
-> 由于 Azure 文件可以通过 SMB 进行访问，因此可以编写简单的应用程序，通过标准的 C++ I/O 类和函数来访问 Azure 文件共享。 本文将介绍如何编写使用 Azure 存储 C++ SDK 的应用程序，该 SDK 使用 [文件 REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) 与 Azure 文件通信。
+> 由于 Azure 文件可以通过 SMB 进行访问，因此可以编写简单的应用程序，通过标准的 C++ I/O 类和函数来访问 Azure 文件共享。 本文将介绍如何编写使用 Azure 存储 C++ SDK 的应用程序，该 SDK 使用 [文件 REST API](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api) 与 Azure 文件通信。
 
 ## <a name="create-a-c-application"></a>创建 C++ 应用程序
 若要生成示例，需要安装用于 C++ 的 Azure 存储客户端库 2.4.0。 此外，应该已经创建了一个 Azure 存储帐户。

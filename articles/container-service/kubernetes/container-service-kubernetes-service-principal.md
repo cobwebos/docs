@@ -9,21 +9,21 @@ ms.topic: get-started-article
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 84215daac950f602c815e1ffc5ae6dd5269d9bdf
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: efedb7cde06ed03ec330027a18b00bcc897919cf
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32167106"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576913"
 ---
 # <a name="set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>在容器服务中为 Kubernetes 群集设置 Azure AD 服务主体
 
 [!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
-在 Azure 容器服务中，Kubernetes 群集需要 [Azure Active Directory 服务主体](../../active-directory/develop/active-directory-application-objects.md)才能与 Azure API 交互。 需要服务主体才能动态管理相关资源，例如[用户定义路由](../../virtual-network/virtual-networks-udr-overview.md)和[第 4 层 Azure 负载均衡器](../../load-balancer/load-balancer-overview.md)。
+在 Azure 容器服务中，Kubernetes 群集需要 [Azure Active Directory 服务主体](../../active-directory/develop/app-objects-and-service-principals.md)才能与 Azure API 交互。 需要服务主体才能动态管理相关资源，例如[用户定义路由](../../virtual-network/virtual-networks-udr-overview.md)和[第 4 层 Azure 负载均衡器](../../load-balancer/load-balancer-overview.md)。
 
 
-本文介绍用于为 Kubernetes 群集设置服务主体的不同选项。 例如，如果已安装并设置 [Azure CLI 2.0](/cli/azure/install-az-cli2)，则可运行 [`az acs create`](/cli/azure/acs#az_acs_create) 命令，以便同时创建 Kubernetes 群集和服务主体。
+本文介绍用于为 Kubernetes 群集设置服务主体的不同选项。 例如，如果已安装并设置 [Azure CLI 2.0](/cli/azure/install-az-cli2)，则可运行 [`az acs create`](/cli/azure/acs#az-acs-create) 命令，以便同时创建 Kubernetes 群集和服务主体。
 
 
 ## <a name="requirements-for-the-service-principal"></a>服务主体的的要求
@@ -96,7 +96,7 @@ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<subscrip
 
 ## <a name="option-2-generate-a-service-principal-when-creating-the-cluster-with-az-acs-create"></a>选项 2：在通过 `az acs create` 创建群集时生成服务主体
 
-如果通过运行 [`az acs create`](/cli/azure/acs#az_acs_create) 命令来创建 Kubernetes 群集，则可选择自动生成服务主体。
+如果通过运行 [`az acs create`](/cli/azure/acs#az-acs-create) 命令来创建 Kubernetes 群集，则可选择自动生成服务主体。
 
 与其他 Kubernetes 群集创建选项一样，可以在运行 `az acs create` 时指定现有服务主体的参数。 不过，在省略这些参数的情况下，Azure CLI 会自动创建一个适用于容器服务的服务主体。 该操作以透明方式在部署过程中进行。
 
@@ -132,7 +132,7 @@ az acs create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-
 
 除非在创建服务主体时使用 `--years` 参数指定了自定义时效期，否则凭据的有效期为自创建之时起 1 年。 凭据过期后，群集节点可能进入“NotReady”状态。
 
-若要查看服务主体的过期日期，请使用 `--debug` 参数执行 [az ad app show](/cli/azure/ad/app#az_ad_app_show) 命令，然后在输出底部附近查找 `passwordCredentials` 的 `endDate` 值：
+若要查看服务主体的过期日期，请使用 `--debug` 参数执行 [az ad app show](/cli/azure/ad/app#az-ad-app-show) 命令，然后在输出底部附近查找 `passwordCredentials` 的 `endDate` 值：
 
 ```azurecli
 az ad app show --id <appId> --debug
@@ -146,7 +146,7 @@ az ad app show --id <appId> --debug
 ...
 ```
 
-如果服务主体凭据已过期，请使用 [az ad sp reset-credentials](/cli/azure/ad/sp#az_ad_sp_reset_credentials) 命令更新凭据：
+如果服务主体凭据已过期，请使用 [az ad sp reset-credentials](/cli/azure/ad/sp#az-ad-sp-reset-credentials) 命令更新凭据：
 
 ```azurecli
 az ad sp reset-credentials --name <appId>

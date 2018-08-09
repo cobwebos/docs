@@ -2,21 +2,19 @@
 title: 快速入门：使用 Azure PowerShell 在 HDInsight 中创建 Spark 群集
 description: 本快速入门演示如何使用 Azure PowerShell 在 Azure HDInsight 中创建 Apache Spark 群集，以及如何运行简单的 Spark SQL 查询。
 services: azure-hdinsight
-author: mumian
-manager: cgronlun
-editor: cgronlun
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/07/2018
-ms.author: jgao
+ms.author: jasonh
 ms.custom: mvc
-ms.openlocfilehash: c9f923268e8ca137ceaf88a0c8daa44fdee75095
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 9ad282bcceeb297e41ed59f5ff2870bb408c053e
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097506"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620913"
 ---
 # <a name="quickstart-create-a-spark-cluster-in-hdinsight-using-powershell"></a>快速入门：使用 PowerShell 在 HDInsight 中创建 Spark 群集
 了解如何在 Azure HDInsight 中创建 Apache Spark 群集，以及如何对 Hive 表运行 Spark SQL 查询。 通过 Apache Spark 可以使用内存处理进行快速数据分析和群集计算。 有关 Spark on HDInsight 的信息，请参阅[概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)。

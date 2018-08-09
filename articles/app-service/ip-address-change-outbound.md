@@ -2,20 +2,20 @@
 title: 如何为出站 IP 地址更改做准备 - Azure
 description: 如果出站 IP 地址将要更改，请了解如何在更改后继续运行应用。
 services: app-service\web
-author: tdykstra
+author: cephalin
 manager: cfowler
 editor: ''
 ms.service: app-service-web
 ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
-ms.author: tdykstra
-ms.openlocfilehash: a68085ee571654bc1bff2ea23303a02bfb2a9b0d
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.author: cephalin
+ms.openlocfilehash: 5e17638e030ae2827b0de7dc82ecf75062504112
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343478"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39575924"
 ---
 # <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>如何为出站 IP 地址更改做准备
 

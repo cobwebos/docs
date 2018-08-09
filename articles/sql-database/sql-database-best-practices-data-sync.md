@@ -8,12 +8,12 @@ ms.service: sql-database
 author: allenwux
 ms.author: xiwu
 manager: craigg
-ms.openlocfilehash: c8b8455dac9aa1a9f7747cada4ce85644162e331
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 2b23f9f2edbec468ecbd1395bd138e1be801c6e5
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445154"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620794"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>SQL 数据同步最佳做法 
 
@@ -219,7 +219,6 @@ SQL 数据同步自动预配的限制如下：
 -   演示如何配置 SQL 数据同步的完整 PowerShell 示例：  
     -   [使用 PowerShell 在多个 Azure SQL 数据库之间进行同步](scripts/sql-database-sync-data-between-sql-databases.md)  
     -   [使用 PowerShell 在 Azure SQL 数据库和 SQL Server 本地数据库之间进行同步](scripts/sql-database-sync-data-between-azure-onprem.md)  
--   [下载 SQL 数据同步 REST API 文档](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)  
 
 有关 SQL 数据库的详细信息，请参阅：
 

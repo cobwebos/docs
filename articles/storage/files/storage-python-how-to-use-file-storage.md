@@ -2,24 +2,19 @@
 title: 使用 Python 针对 Azure 文件进行开发 | Microsoft Docs
 description: 了解如何开发使用 Azure 文件存储文件数据的 Python 应用程序和服务。
 services: storage
-documentationcenter: python
 author: wmgries
-manager: aungoo
-editor: tamram
-ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: tamram
-ms.openlocfilehash: 1102fd516b5497b4c482986b64fa7c96e9ccc54a
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.component: files
+ms.openlocfilehash: 7e5c85890585230961f52803b081c636c950c518
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738255"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39529188"
 ---
 # <a name="develop-for-azure-files-with-python"></a>使用 Python 针对 Azure 文件进行开发
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -34,7 +29,7 @@ ms.locfileid: "34738255"
 * 上传、下载和删除文件
 
 > [!Note]  
-> 由于 Azure 文件可通过 SMB 进行访问，因此可编写简单的应用程序，通过标准 Python I/O 类和函数访问 Azure 文件共享。 本文将介绍如何编写使用 Azure 存储 Python SDK 的应用程序，该 SDK 使用 [Azure 文件 REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) 与 Azure 文件通信。
+> 由于 Azure 文件可通过 SMB 进行访问，因此可编写简单的应用程序，通过标准 Python I/O 类和函数访问 Azure 文件共享。 本文将介绍如何编写使用 Azure 存储 Python SDK 的应用程序，该 SDK 使用 [Azure 文件 REST API](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api) 与 Azure 文件通信。
 
 ## <a name="download-and-install-azure-storage-sdk-for-python"></a>下载和安装适用于 Python 的 Azure 存储 SDK
 

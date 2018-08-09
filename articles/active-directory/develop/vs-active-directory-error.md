@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev
-ms.openlocfilehash: 8cd15c59bbe536dba9adb6f44c07844eaf030b55
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: f4fc7d11516d2ebf5e091d519333b3cf1fd09c47
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31784881"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495149"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>使用 Azure Active Directory 连接服务诊断错误
 
@@ -94,4 +94,4 @@ ms.locfileid: "31784881"
 
 若要更改身份验证类型，请删除不兼容的身份验证类型，并尝试重新添加连接服务。
 
-有关详细信息，请参阅 [Azure AD 的身份验证方案](active-directory-authentication-scenarios.md)。
+有关详细信息，请参阅 [Azure AD 的身份验证方案](authentication-scenarios.md)。

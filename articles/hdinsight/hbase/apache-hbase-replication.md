@@ -1,23 +1,20 @@
 ---
-title: 在 Azure 虚拟网络中设置 HBase 群集复制 | Microsoft Docs
+title: 在 Azure 虚拟网络中设置 HBase 群集复制
 description: 了解如何设置从一个 HDInsight 版本到另一个版本的 HBase 复制，以实现负载均衡、高可用性、在不造成停机的情况下进行迁移和更新，以及灾难恢复。
 services: hdinsight,virtual-network
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
-ms.author: jgao
-ms.openlocfilehash: f0367b67f141ca65ce2374722016d0fbea6c97d1
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.author: jasonh
+ms.openlocfilehash: 535b5dcc62020119cda3db36bfdbd707badfe549
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951103"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600299"
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>在 Azure 虚拟网络中设置 HBase 群集复制
 
@@ -305,7 +302,7 @@ sudo service bind9 status
 
 必需参数：
 
-|名称|说明|
+|名称|Description|
 |----|-----------|
 |-s、--src-cluster | 指定源 HBase 群集的 DNS 名称。 例如：-s hbsrccluster、--src-cluster=hbsrccluster |
 |-d、--dst-cluster | 指定目标（副本）HBase 群集的 DNS 名称。 例如：-s dsthbcluster、--src-cluster=dsthbcluster |
@@ -314,7 +311,7 @@ sudo service bind9 status
 
 可选参数：
 
-|名称|说明|
+|名称|Description|
 |----|-----------|
 |-su、--src-ambari-user | 指定源 HBase 群集的 Ambari 管理员用户名。 默认值为 **admin**。 |
 |-du、--dst-ambari-user | 指定目标 HBase 群集的 Ambari 管理员用户名。 默认值为 **admin**。 |

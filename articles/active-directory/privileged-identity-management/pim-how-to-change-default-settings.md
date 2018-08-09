@@ -9,16 +9,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: protection
+ms.component: pim
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 13e00ac57bfc867ad13ae3d7958fca37eaf5beee
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4ca74c001ba379b287c0c9799d90336eb187b2c2
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723249"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619594"
 ---
 # <a name="how-to-manage-role-activation-settings-in-azure-ad-privileged-identity-management"></a>如何在 Azure AD Privileged Identity Management 中管理角色激活设置
 特权角色管理员可以自定义其组织中的 Azure AD Privileged Identity Management (PIM)，包括更改激活合格角色分配的用户的体验。

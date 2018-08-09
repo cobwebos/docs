@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 07/19/2018
 ms.author: bsiva
-ms.openlocfilehash: 747189c7cab2c76c6695bdb8e13f77532adc46d4
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 96f4ecb433277c747ddb1d1dc977bd609f93d5ff
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216067"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578579"
 ---
 # <a name="monitor-and-troubleshoot-site-recovery"></a>监视和排查 Site Recovery 问题
 
@@ -88,7 +88,7 @@ Healthy | 复制正常进行。 未检测到任何错误或警告症状。
 - 包含叠加错误图标的红线表示存在一个或多个影响连接的错误症状。
 -  将鼠标指针悬停在错误图标上会显示错误和受影响实体的数目。 单击图标会显示受影响实体的筛选列表。
 
-    ![Site Recovery 基础结构视图（保管库）]Re(./media/site-recovery-monitor-and-troubleshoot/site-recovery-vault-infra-view.png)
+    ![Site Recovery 基础结构视图（保管库）](./media/site-recovery-monitor-and-troubleshoot/site-recovery-vault-infra-view.png)
 
 ## <a name="tips-for-monitoring-the-infrastructure"></a>有关监视基础结构的提示
 

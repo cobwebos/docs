@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c8fcebae21d73db75e19bd1091faa8f389f0ba40
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 30ca8fe89105584b1062c5a068e107bdfde154fc
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32165499"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579514"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>使用私有 Docker 容器注册表进行身份验证
 
@@ -26,7 +26,7 @@ Azure 容器注册表不支持未经身份验证的 Docker 操作或匿名访问
 
 ## <a name="individual-login-with-azure-ad"></a>使用 Azure AD 进行单次登录
 
-直接使用注册表时（例如向开发工作站拉取映像和从中推送映像），可通过在 [Azure CLI](/cli/azure/install-azure-cli) 中使用 [az acr login](/cli/azure/acr?view=azure-cli-latest#az_acr_login) 命令进行身份验证：
+直接使用注册表时（例如向开发工作站拉取映像和从中推送映像），可通过在 [Azure CLI](/cli/azure/install-azure-cli) 中使用 [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) 命令进行身份验证：
 
 ```azurecli
 az acr login --name <acrName>
@@ -36,7 +36,7 @@ az acr login --name <acrName>
 
 ## <a name="service-principal"></a>服务主体
 
-可以为注册表分配[服务主体](../active-directory/develop/active-directory-application-objects.md)，并且应用程序或服务可以将其用于无外设身份验证。 服务主体允许通过[基于角色的访问](../role-based-access-control/role-assignments-portal.md)来访问注册表，并且可以为注册表分配多个服务主体。 如果拥有多个服务主体，则可为不同应用程序定义不同的访问权限。
+可以为注册表分配[服务主体](../active-directory/develop/app-objects-and-service-principals.md)，并且应用程序或服务可以将其用于无外设身份验证。 服务主体允许通过[基于角色的访问](../role-based-access-control/role-assignments-portal.md)来访问注册表，并且可以为注册表分配多个服务主体。 如果拥有多个服务主体，则可为不同应用程序定义不同的访问权限。
 
 可用的角色如下：
 
@@ -51,7 +51,7 @@ az acr login --name <acrName>
   * *参与者*：生成容器映像并将它们推送到注册表的持续集成和部署解决方案（如 Visual Studio Team Services (VSTS) 或 Jenkins）。
 
 > [!TIP]
-> 可通过运行 [az ad sp reset-credentials](/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_reset_credentials) 命令重新生成服务主体的密码。
+> 可通过运行 [az ad sp reset-credentials](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-reset-credentials) 命令重新生成服务主体的密码。
 >
 
 还可以直接使用服务主体登录。 向 `docker login` 命令提供服务主体的应用 ID 和密码：
@@ -82,7 +82,7 @@ docker login myregistry.azurecr.io -u myAdminName -p myPassword1
 
 同样，为增强安全性，Docker 建议使用 `--password-stdin` 参数而不是在命令行上提供密码。 还可以仅指定用户名，而不指定 `-p`，并在出现提示时输入密码。
 
-若要启用现有注册表的管理员用户，可以在 Azure CLI 中使用 [az acr update](/cli/azure/acr?view=azure-cli-latest#az_acr_update) 命令的 `--admin-enabled` 参数：
+若要启用现有注册表的管理员用户，可以在 Azure CLI 中使用 [az acr update](/cli/azure/acr?view=azure-cli-latest#az-acr-update) 命令的 `--admin-enabled` 参数：
 
 ```azurecli
 az acr update -n <acrName> --admin-enabled true

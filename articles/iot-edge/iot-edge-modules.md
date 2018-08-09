@@ -8,12 +8,12 @@ ms.date: 02/15/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9c196ec92fc7997617fa464d676dc93ca9fe84f0
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 261c26290a4a7c4b8bb22ada7f97470a6efa7a91
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029080"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576315"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>了解 Azure IoT Edge 模块
 
@@ -51,13 +51,13 @@ IoT Edge 模块映像包含能够充分利用 IoT Edge 运行时的管理、安�
 模块孪生是存储模块信息和配置属性的 JSON 文档。 此概念与 IoT 中心的[设备孪生][lnk-device-twin]概念类似。 模块孪生的结构与设备孪生完全相同。 用于与这两种类型的孪生进行交互的 API 也是相同的。 两者之间唯一的区别是用来实例化客户端 SDK 的标识。 
 
 ```csharp
-// Create a DeviceClient object. This DeviceClient will act on behalf of a 
+// Create a ModuleClient object. This ModuleClient will act on behalf of a 
 // module since it is created with a module’s connection string instead 
 // of a device connection string. 
-DeviceClient client = new DeviceClient.CreateFromConnectionString(moduleConnectionString, settings); 
+ModuleClient client = new ModuleClient.CreateFromEnvironmentAsync(settings); 
 await client.OpenAsync(); 
  
-// Get the model twin 
+// Get the module twin 
 Twin twin = await client.GetTwinAsync(); 
 ```
 

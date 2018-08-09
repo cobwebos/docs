@@ -2,26 +2,20 @@
 title: 如何在 Azure 门户中创建、管理或删除存储帐户 | Microsoft 文档
 description: 在 Azure 门户中创建新的存储帐户、管理帐户访问密钥或删除存储帐户。 了解标准和高级存储帐户。
 services: storage
-documentationcenter: ''
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: 87c37da0-6cc6-4d88-a330-ef2896a1531d
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: get-started-article
 f1_keywords:
 - sql13.swb.windowsazurestorage.connect.f1
 ms.date: 10/11/2017
 ms.author: tamram
-ms.openlocfilehash: ce561c61d25946a508df3e92c461f1c8e889a07e
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.component: common
+ms.openlocfilehash: 980053adc89cc121f3218233d521c8db4f075eb7
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32776693"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523642"
 ---
 # <a name="about-azure-storage-accounts"></a>关于 Azure 存储帐户
 
@@ -48,17 +42,17 @@ Azure 存储帐户提供唯一的命名空间来存储和访问 Azure 存储数�
 
 例如，如果存储帐户名为 *mystorageaccount*，则存储帐户的默认终结点为：
 
-* Blob 服务：http://*mystorageaccount*.blob.core.windows.net
-* 表服务：http://*mystorageaccount*.table.core.windows.net
-* 队列服务：http://*mystorageaccount*.queue.core.windows.net
-* 文件服务：http://*mystorageaccount*.file.core.windows.net
+* Blob 服务： http://*mystorageaccount*.blob.core.windows.net
+* 表服务： http://*mystorageaccount*.table.core.windows.net
+* 队列服务： http://*mystorageaccount*.queue.core.windows.net
+* 文件服务： http://*mystorageaccount*.file.core.windows.net
 
 > [!NOTE]
 > Blob 存储帐户仅公开 Blob 服务终结点。
 > 
 > 
 
-用于访问存储帐户中某个对象的 URL 是通过将存储帐户中对象的位置附加到终结点而构建的。 例如，Blob 地址可能具有以下格式：http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*。
+用于访问存储帐户中某个对象的 URL 是通过将存储帐户中对象的位置附加到终结点而构建的。 例如，Blob 地址可能具有以下格式： http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*。
 
 此外还可以配置用于存储帐户的自定义域名称。 有关详细信息，请参阅[为 Blob 存储终结点配置自定义域名称](../blobs/storage-custom-domain-name.md)。 也可使用 PowerShell 来配置它。 有关详细信息，请参阅 [Set-AzureRmStorageAccount](/powershell/module/azurerm.storage/set-azurermstorageaccount) cmdlet。  
 

@@ -17,12 +17,12 @@ ms.workload: database
 ms.date: 04/01/2018
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: 51624e162d4c3304e51ab69923f54213f317e42b
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 76a36d7266a6432c7406ccb9b8fc4467a03e9271
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37024654"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617092"
 ---
 # <a name="use-powershell-to-sync-between-a-sql-database-and-a-sql-server-on-premises-database"></a>使用 PowerShell 在 SQL 数据库和 SQL Server 本地数据库之间进行同步
 
@@ -401,8 +401,6 @@ Remove-AzureRmResourceGroup -ResourceGroupName $SyncDatabaseResourceGroupName
 
 -   演示如何配置 SQL 数据同步的完整 PowerShell 示例：
     -   [使用 PowerShell 在多个 Azure SQL 数据库之间进行同步](sql-database-sync-data-between-sql-databases.md)
-
--   [下载 SQL 数据同步 REST API 文档](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
 
 有关 SQL 数据库的详细信息，请参阅：
 

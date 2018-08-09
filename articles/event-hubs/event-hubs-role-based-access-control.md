@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: sethm
-ms.openlocfilehash: 9c38f74cd4499fad1feaadb6c1bbc99da791ebd6
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 76c929f482659bb81e0cabb7fb6bffa5331082bf
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888361"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502130"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Active Directory 基于角色的访问控制（预览版）
 
@@ -57,7 +57,7 @@ Microsoft Azure 基于 Azure Active Directory (Azure AD) 针对资源和应用�
 
 由于示例应用程序是一个控制台应用程序，因此必须注册一个本机应用程序并将 **Microsoft.EventHub** 的 API 权限添加到“必需的权限”集。 本机应用程序在 Azure AD 中还需要有一个充当标识符的 redirect-URI，该 URI 不需要是网络目的地。 对于此示例请使用 `http://eventhubs.microsoft.com`，因为示例代码已使用了该 URI。
 
-[此教程](../active-directory/develop/active-directory-integrating-applications.md)中介绍了详细的注册步骤。 请按照那些步骤注册一个**本机**应用，然后按照更新说明将 **Microsoft.EventHub** API 添加到必需的权限。 执行那些步骤时，请记下 **TenantId** 和 **ApplicationId**，因为到时要使用这些值来运行应用程序。
+[此教程](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)中介绍了详细的注册步骤。 请按照那些步骤注册一个**本机**应用，然后按照更新说明将 **Microsoft.EventHub** API 添加到必需的权限。 执行那些步骤时，请记下 **TenantId** 和 **ApplicationId**，因为到时要使用这些值来运行应用程序。
 
 ### <a name="run-the-app"></a>运行应用
 

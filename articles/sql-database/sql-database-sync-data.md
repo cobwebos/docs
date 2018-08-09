@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: 042db9bcadb470b2dc5e0095072e4ca06747ec5d
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 6bfe2288e239738addb9c97706c5fc1c9b0e72b8
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283618"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617324"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>使用 SQL 数据同步跨多个云和本地数据库同步数据
 
@@ -232,7 +232,3 @@ SQL 数据同步是否按预期执行？ 若要监视活动和排查问题，请
 -   [SQL 数据库概述](sql-database-technical-overview.md)
 
 -   [数据库生命周期管理](https://msdn.microsoft.com/library/jj907294.aspx)
-
-### <a name="developer-reference"></a>开发人员参考
-
--   [下载 SQL 数据同步 REST API 文档](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)

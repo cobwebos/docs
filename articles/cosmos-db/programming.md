@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 2b6c4b3598013baaf3277cb7810edc009df27ce2
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 6374fcf1477d56b9803b63476f3fef38fc12def1
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238414"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618890"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure Cosmos DB 服务器端编程：存储过程、数据库触发器和 UDF
 
@@ -394,7 +394,7 @@ client.replaceDocumentAsync(docToReplace.self,
 后触发器，跟预触发器一样，与文档上的操作相关联且不接受任何输入参数。 它们在操作完成**之后**运行，且具有对发送到客户端的响应消息的访问权限。   
 
 下面的示例显示正在运作的后触发器：
-```
+```javascript
 var updateMetadataTrigger = {
     id: "updateMetadata",
     serverScript: function updateMetadata() {
@@ -434,7 +434,7 @@ var updateMetadataTrigger = {
 
 ```
 可以按照下面示例中所示方法注册触发器。
-```
+```javascript
 // register post-trigger
 client.createTriggerAsync('dbs/testdb/colls/testColl', updateMetadataTrigger)
     .then(function(createdTrigger) { 
@@ -676,7 +676,7 @@ function insertDocumentAndUpdateMetadata(doc) {
 ## <a name="runtime-support"></a>运行时支持
 Azure Cosmos DB [JavaScript 服务器端 API](http://azure.github.io/azure-documentdb-js-server/) 为大多数由 [ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 规范的主流 JavaScript 语言功能提供支持。
 
-### <a name="security"></a>“安全”
+### <a name="security"></a>安全
 JavaScript 存储过程和触发器经过沙盒处理，以使一个脚本的效果不会在未经过数据库级别的快照事务隔离的情况下泄漏到其他脚本。 运行时环境是共用的，但是在每次运行后都会清理上下文。 因此可以保证它们安全避免互相之间的任何意外副作用。
 
 ### <a name="pre-compilation"></a>预编译
@@ -844,4 +844,3 @@ foreach (Book book in client.CreateDocumentQuery(UriFactory.CreateDocumentCollec
 * [Secure and Portable Database Extensibility](http://dl.acm.org/citation.cfm?id=276339)（安全和可移植的数据库扩展性） 
 * [面向服务的数据库体系结构](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
 * [Hosting the .NET Runtime in Microsoft SQL server](http://dl.acm.org/citation.cfm?id=1007669)（在 Microsoft SQL Server 中托管 .NET 运行时）
-

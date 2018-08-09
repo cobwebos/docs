@@ -9,12 +9,12 @@ author: allenwux
 ms.author: xiwu
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: 9b64a5e913748cda7927877c50a964ede587ae30
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 3bad71834d11b640bbc3577bf67c10357fad36dc
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025129"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618304"
 ---
 # <a name="monitor-sql-data-sync-with-log-analytics"></a>使用 Log Analytics 监视 SQL 数据同步 
 
@@ -201,8 +201,6 @@ Azure 自动化：Azure 自动化帐户可能会产生成本，具体要取决�
 -   演示如何配置 SQL 数据同步的完整 PowerShell 示例：
     -   [使用 PowerShell 在多个 Azure SQL 数据库之间进行同步](scripts/sql-database-sync-data-between-sql-databases.md)
     -   [使用 PowerShell 在 Azure SQL 数据库和 SQL Server 本地数据库之间进行同步](scripts/sql-database-sync-data-between-azure-onprem.md)
-
--   [下载 SQL 数据同步 REST API 文档](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
 
 有关 SQL 数据库的详细信息，请参阅：
 

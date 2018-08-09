@@ -1,25 +1,20 @@
 ---
-title: 将 Apache Kafka on HDInsight 与 Azure IoT 中心配合使用 | Microsoft Docs
+title: 将 Apache Kafka on HDInsight 与 Azure IoT 中心配合使用
 description: 了解如何将 Apache Kafka on HDInsight 与 Azure IoT 中心配合使用。 Kafka Connect Azure IoT 中心项目为 Kafka 提供源和接收器连接器。 源连接器可从 IoT 中心读取数据，接收器连接器将数据写入 IoT 中心。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 05/15/2018
-ms.author: larryfr
-ms.openlocfilehash: 33fdb5b099efc40fec94a860b21cda75ced44fe9
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: c540e110a12e981aee992348445cd1032ba0ba77
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34267055"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618322"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>将 Apache Kafka on HDInsight 与 Azure IoT 中心配合使用
 

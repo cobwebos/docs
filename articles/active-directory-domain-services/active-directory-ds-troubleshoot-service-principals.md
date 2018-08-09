@@ -12,15 +12,15 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: 716be5b7f35ad1d163e99e92ec65dc906743803c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 5bc1212cc6e894cd82a60abb42f92893c0bb2d43
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219190"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579538"
 ---
 # <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>排查托管域中无效的服务主体配置
 
@@ -30,7 +30,7 @@ ms.locfileid: "36219190"
 
 **警报消息：** 已从 Azure AD 目录中删除 Azure AD 域服务正常运行所需的服务主体。* 此配置影响 Microsoft 监视、管理、修补和同步托管域的功能。
 
-[服务主体](../active-directory/develop/active-directory-application-objects.md)是指 Microsoft 用于管理、更新和维护托管域的应用程序。 如果删除服务主体，将中断 Microsoft 为域提供服务的功能。
+[服务主体](../active-directory/develop/app-objects-and-service-principals.md)是指 Microsoft 用于管理、更新和维护托管域的应用程序。 如果删除服务主体，将中断 Microsoft 为域提供服务的功能。
 
 
 ## <a name="check-for-missing-service-principals"></a>检查是否缺少服务主体
