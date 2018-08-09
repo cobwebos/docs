@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/25/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: 1fa27cf04e136033c51b951271a3d329a910a720
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: baa449bb9e78a5c6437b0a9528e5d1f10dfa519f
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223613"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39520446"
 ---
 # <a name="tutorial-9--add-sentiment-analysis"></a>教程：9。  添加情绪分析
 在本教程中，我们将创建一个应用，用于演示如何从陈述中提取积极、消极和中性的情绪。
@@ -27,7 +27,7 @@ ms.locfileid: "39223613"
 > * 训练并发布应用
 > * 查询应用终结点以查看 LUIS JSON 响应 
 
-本文需要一个免费的 [LUIS](luis-reference-regions.md#luis-website) 帐户，以便创作 LUIS 应用程序。
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>开始之前
 如果还没有 [keyPhrase 实体](luis-quickstart-intent-and-key-phrase.md)教程中所述的人力资源应用，请将 JSON [导入](luis-how-to-start-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。 要导入的应用位于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-keyphrase-HumanResources.json) Github 存储库中。
@@ -79,15 +79,8 @@ ms.locfileid: "39223613"
     [ ![在 EmployeeFeedback 意向中包含了示例陈述的 LUIS 应用的屏幕截图](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
 
 ## <a name="train-the-luis-app"></a>训练 LUIS 应用
-LUIS 在得到训练之前不会知道新意向及其示例陈述。 
 
-1. 在 LUIS 网站的右上方，选择“训练”按钮。
-
-    ![突出显示的“训练”按钮屏幕截图](./media/luis-quickstart-intent-and-sentiment-analysis/train-button.png)
-
-2. 当网站顶部出现确认成功的绿色状态栏时，表示训练已完成。
-
-    ![训练成功通知栏的屏幕截图 ](./media/luis-quickstart-intent-and-sentiment-analysis/hr-trained-inline.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="configure-app-to-include-sentiment-analysis"></a>将应用配置为包含情绪分析
 在“发布”页上配置情绪分析。 
@@ -96,17 +89,15 @@ LUIS 在得到训练之前不会知道新意向及其示例陈述。
 
     ![“意向”页的屏幕截图，其中已展开“发布”按钮 ](./media/luis-quickstart-intent-and-sentiment-analysis/hr-publish-button-in-top-nav-highlighted.png)
 
-2. 选择“启用情绪分析”。 选择“生产”槽和“发布”按钮。
+2. 选择“启用情绪分析”。 
 
-    [![](media/luis-quickstart-intent-and-sentiment-analysis/hr-publish-to-production-expanded.png "“发布”页的屏幕截图，其中已突出显示“发布到生产槽”按钮")](media/luis-quickstart-intent-and-sentiment-analysis/hr-publish-to-production-expanded.png#lightbox)
+## <a name="publish-app-to-endpoint"></a>将应用发布到终结点
 
-4. 当网站顶部出现确认成功的绿色状态栏时，表示发布已完成。
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-an-utterance"></a>使用陈述查询终结点
 
-1. 在“发布”页的底部，选择“终结点”链接。 此操作会打开另一个浏览器窗口，其地址栏中包含终结点 URL。 
-
-    ![“发布”页的屏幕截图，其中已突出显示终结点 URL](media/luis-quickstart-intent-and-sentiment-analysis/hr-endpoint-url-inline.png)
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. 将光标定位到地址中 URL 的末尾，并输入 `Jill Jones work with the media team on the public portal was amazing`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 此陈述不同于标记的任何陈述，因此，它非常适合用于测试，测试结果应返回包含所提取的情绪分析的 `EmployeeFeedback` 意向。
 
@@ -212,7 +203,8 @@ sentimentAnalysis 是积极的，得分为 0.86。
 LUIS 已完成此请求。 调用方应用程序（例如聊天机器人）可以提取 topScoringIntent 结果和陈述中的情绪数据，以执行下一步骤。 LUIS 不会针对机器人或调用方应用程序执行编程工作。 LUIS 只确定用户的意向是什么。 
 
 ## <a name="clean-up-resources"></a>清理资源
-不再需要 LUIS 应用时，请将其删除。 在左上侧菜单中选择“我的应用”。 在应用列表中选择应用名称右侧的省略号 (***...***)，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -16,12 +16,12 @@ ms.date: 07/12/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6e0b00117c35cd5222c69e72819afb37f9ec14dd
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: d924c1fc9697bff77f12f7f0bf33a1654d1e7d6e
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39265058"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597967"
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Azure AD 中的可选声明（预览版）
 
@@ -33,7 +33,7 @@ ms.locfileid: "39265058"
 > [!Note]
 > 此功能目前以公共预览版提供。 应准备好还原或删除所做的任何更改。 在公共预览版推出期间，可在任何 Azure AD 订阅中使用此功能。 但是，在正式版推出后，某些功能可能需要使用 Azure AD Premium 订阅。
 
-有关标准声明的列表及其在令牌中的使用方式，请参阅 [Azure AD 颁发的令牌基础知识](active-directory-token-and-claims.md)。 
+有关标准声明的列表及其在令牌中的使用方式，请参阅 [Azure AD 颁发的令牌基础知识](v1-id-and-access-tokens.md)。 
 
 [v2.0 Azure AD 终结点](active-directory-appmodel-v2-overview.md)的目标之一是缩小令牌大小，以确保客户端获得最佳性能。  因此，以前包含在访问令牌和 ID 令牌中的多个声明不再在 v2.0 令牌中提供，必须根据应用程序专门请求这些声明。  
 
@@ -126,7 +126,7 @@ ms.locfileid: "39265058"
 
 ## <a name="configuring-optional-claims"></a>配置可选声明
 
-可以通过修改应用程序清单来配置应用程序的可选声明 （请参阅下面的示例）。 有关详细信息，请参阅[了解 Azure AD 应用程序清单](active-directory-application-manifest.md)一文。
+可以通过修改应用程序清单来配置应用程序的可选声明 （请参阅下面的示例）。 有关详细信息，请参阅[了解 Azure AD 应用程序清单](reference-app-manifest.md)一文。
 
 **示例架构：**
 
@@ -247,4 +247,4 @@ ms.locfileid: "39265058"
 
 
 ## <a name="related-content"></a>相关内容
-* 详细了解 Azure AD 提供的[标准声明](active-directory-token-and-claims.md)。 
+* 详细了解 Azure AD 提供的[标准声明](v1-id-and-access-tokens.md)。 

@@ -2,24 +2,18 @@
 title: 预览 Azure 导入/导出的导出作业的驱动器使用情况 - v1 | Microsoft Docs
 description: 了解如何预览针对 Azure 导入/导出服务中的导出作业选择的 blob 列表。
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 7707d744-7ec7-4de8-ac9b-93a18608dc9a
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.openlocfilehash: 6ec74ae0b0931f3fed99a43f4f7e58f9d425b138
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: 21c0fd9b258100e769172332713769024fb12969
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23059292"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39520565"
 ---
 # <a name="previewing-drive-usage-for-an-export-job"></a>预览导出作业的驱动器使用情况
 在创建导出作业之前，需要选择一组要导出的 blob。 Microsoft Azure 导入/导出服务允许使用一系列 blob 路径或 blob 前缀来表示选定的 blob。  
@@ -30,7 +24,7 @@ ms.locfileid: "23059292"
 
 使用导入/导出工具的 `PreviewExport` 命令时，可使用以下参数。
 
-|命令行参数|说明|  
+|命令行参数|Description|  
 |--------------------------|-----------------|  
 |**/logdir:**<LogDirectory\>|可选。 日志目录。 详细日志文件将写入此目录。 如果未指定任何日志目录，将使用当前目录作为日志目录。|  
 |**/sn:**<StorageAccountName\>|必需。 导出作业的存储帐户的名称。|  

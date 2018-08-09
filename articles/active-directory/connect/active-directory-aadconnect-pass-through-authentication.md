@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: dfee42f813989da2333720ac92313344343d57a7
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 12c825143f48b5558ea9b1d49ed8cea59d84f6af
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214023"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522775"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>使用 Azure Active Directory 传递身份验证的用户登录
 
@@ -49,7 +49,7 @@ ms.locfileid: "39214023"
 - *安全*
   - 本地密码永远不会以任何形式存储在云中。
   - 代理只从网络内部建立出站连接。 因此，无需在外围网络（也称为 DMZ）中安装代理。
-  - 可通过与 [Azure AD 条件访问策略](../active-directory-conditional-access-azure-portal.md)（包括多重身份验证 (MFA)、[阻止旧式身份验证](../active-directory-conditional-access-conditions.md)）无缝协作，也可通过[筛选暴力破解密码攻击](../authentication/howto-password-smart-lockout.md)来保护用户帐户。
+  - 可通过与 [Azure AD 条件访问策略](../active-directory-conditional-access-azure-portal.md)（包括多重身份验证 (MFA)、[阻止旧式身份验证](../conditional-access/conditions.md)）无缝协作，也可通过[筛选暴力破解密码攻击](../authentication/howto-password-smart-lockout.md)来保护用户帐户。
 - 高可用性
   - 可在多台本地服务器上安装其他代理，提供登录请求的高可用性。
 

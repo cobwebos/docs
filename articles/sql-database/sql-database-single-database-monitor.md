@@ -3,19 +3,20 @@ title: 在 Azure SQL 数据库中监视数据库性能 | Microsoft Docs
 description: 了解使用 Azure 工具和动态管理视图监视数据库时可用的选项。
 keywords: 数据库监视,云数据库性能
 services: sql-database
-author: CarlRabeler
+author: danimir
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.author: carlrab
-ms.openlocfilehash: dc04a9334b63656719a7633a8dd7154ed6cd6993
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.author: v-daljep
+ms.reviewer: carlrab
+ms.openlocfilehash: 081c6210181815be079404b10e7aa4b0df8327ec
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092573"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39520970"
 ---
 # <a name="monitoring-database-performance-in-azure-sql-database"></a>在 Azure SQL 数据库中监视数据库性能
 若要监视 Azure 中的 SQL 数据库的性能，首先需要监视所选数据库性能级别相关的资源利用率。 监控功能可帮助确定数据库是否超出容量，或者因资源超限而遇到问题，并确定是否有必要调整[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)或[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)中数据库的性能级别和服务层。 可以使用 [Azure 门户](https://portal.azure.com)中的图形工具或使用 SQL [动态管理视图](https://msdn.microsoft.com/library/ms188754.aspx)来监视数据库。

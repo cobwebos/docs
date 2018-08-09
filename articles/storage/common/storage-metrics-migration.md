@@ -2,28 +2,22 @@
 title: Azure 存储指标迁移 | Microsoft Docs
 description: 了解如何将旧指标迁移到 Azure Monitor 托管的新指标。
 services: storage
-documentationcenter: na
 author: fhryo-msft
-manager: cbrooks
-editor: fhryo-msft
-ms.assetid: ''
 ms.service: storage
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage
 ms.date: 03/30/2018
 ms.author: fryu
-ms.openlocfilehash: 9586d0c2b61fe97106378ec684c28be9143b5194
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.component: common
+ms.openlocfilehash: fc11e29b03df617c4b5bb6f4fbb43cd478001d42
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969378"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521415"
 ---
 # <a name="azure-storage-metrics-migration"></a>Azure 存储指标迁移
 
-按照 Azure 中统一监视体验的策略，Azure 存储会将指标集成到 Azure Monitor 平台。 将来，旧指标服务将会终止，并基于 Azure 策略进行提前通知。 如果使用旧存储指标，则需要在服务终止日期前进行迁移，以便保留指标信息。
+按照 Azure 中统一监视体验的策略，Azure 存储会将指标集成到 Azure Monitor 平台。 将来，旧指标服务将会终止，并基于 Azure Policy 进行提前通知。 如果使用旧存储指标，则需要在服务终止日期前进行迁移，以便保留指标信息。
 
 本文演示如何从旧指标迁移到新指标。
 

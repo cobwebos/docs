@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 67b8e35f0ddafd0a39bf29757927f4ace6230547
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 7ca0e8eb2d496bdcd8eff7dbee2af2e549f123dd
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048911"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626849"
 ---
 # <a name="data-management-gateway"></a>数据管理网关
 > [!NOTE]
@@ -53,7 +53,7 @@ ms.locfileid: "37048911"
 
 此处是使用数据网关进行复制的高级数据流和步骤摘要：![使用网关的数据流](./media/data-factory-data-management-gateway/data-flow-using-gateway.png)
 
-1. 数据开发人员使用 [Azure 门户](https://portal.azure.com) 或 [PowerShell Cmdlet](https://msdn.microsoft.com/library/dn820234.aspx) 为 Azure 数据工厂创建网关。
+1. 数据开发人员使用 [Azure 门户](https://portal.azure.com) 或 [PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/azurerm.datafactories/) 为 Azure 数据工厂创建网关。
 2. 通过指定网关，数据开发人员可以为本地数据存储创建链接服务。 作为链接服务设置的一部分，数据开发人员使用设置凭据应用程序来指定身份验证的类型和凭据。  设置凭据应用程序对话框与数据存储进行通信，以测试连接和网关，从而保存凭据。
 3. 将凭据保存在云中之前，网关通过与网关关联的证书（由数据开发人员提供）来加密凭据。
 4. 数据工厂服务经过使用共享 Azure 服务总线队列的控制通道，与网关进行通信，以计划和管理作业。 需要启动复制活动作业时，数据工厂对请求和凭据信息进行排序。 轮询队列后，网关启动作业。
@@ -140,7 +140,7 @@ ms.locfileid: "37048911"
 
 在企业防火墙级别，需配置以下域和出站端口：
 
-| 域名 | 端口 | 说明 |
+| 域名 | 端口 | Description |
 | --- | --- | --- |
 | *.servicebus.windows.net |443, 80 |用于与数据移动服务后端进行通信 |
 | *.core.windows.net |443 |用于使用 Azure Blob 的暂存复制（如果已配置）|
@@ -247,7 +247,7 @@ ms.locfileid: "37048911"
 
     msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
 
-如果选择不打开网关计算机上的端口 8050，则使用机制（而不是使用“设置凭据”应用程序）来配置数据存储凭据。 例如，可以使用 [New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) PowerShell cmdlet。 请参阅[设置凭据和安全](#set-credentials-and-securityy)部分，了解如何设置数据存储凭据。
+如果选择不打开网关计算机上的端口 8050，则使用机制（而不是使用“设置凭据”应用程序）来配置数据存储凭据。 例如，可以使用 [New-AzureRmDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) PowerShell cmdlet。 请参阅[设置凭据和安全](#set-credentials-and-securityy)部分，了解如何设置数据存储凭据。
 
 ## <a name="update"></a>更新
 默认情况下，如果有较新版本的网关可用，会自动更新数据管理网关。 完成所有计划的任务之后，网关才会更新。 更新操作完成之前，网关不处理任何其他任务。 如果更新失败，网关回退到旧版本。
@@ -360,7 +360,7 @@ ms.locfileid: "37048911"
 
 下表介绍“网关节点”列表中的列：  
 
-监视属性 | 说明
+监视属性 | Description
 :------------------ | :---------- 
 名称 | 逻辑网关和与网关关联的节点的名称。 节点是已在其上安装网关的本地 Windows 计算机。 有关在单个逻辑网关中采用多个节点（最多 4 个）的信息，请参阅[数据管理网关 - 高可用性和可伸缩性](data-factory-data-management-gateway-high-availability-scalability.md)。    
 状态 | 逻辑网关和网关节点的状态。 示例：联机/脱机/受限等。有关这些状态的信息，请参阅[网关状态](#gateway-status)部分。 
@@ -470,7 +470,7 @@ CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
 
 使用“设置凭据”应用程序时，门户使用网关计算机上“网关配置管理器”的“证书”选项卡上指定的证书来加密凭据。
 
-如果正在寻找基于 API 的方法来加密凭据，可以使用 [New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) PowerShell cmdlet 来加密凭据。 此 cmdlet 使用的证书是配置网关加密凭据所用的证书。 将加密凭据添加到 JSON 中 **connectionString** 的 **EncryptedCredential** 元素中。 通过 [New-AzureRmDataFactoryLinkedService](https://msdn.microsoft.com/library/mt603647.aspx) cmdlet 或在数据工厂编辑器中使用 JSON。
+如果正在寻找基于 API 的方法来加密凭据，可以使用 [New-AzureRmDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) PowerShell cmdlet 来加密凭据。 此 cmdlet 使用的证书是配置网关加密凭据所用的证书。 将加密凭据添加到 JSON 中 **connectionString** 的 **EncryptedCredential** 元素中。 将 JSON 用于 [New-AzureRmDataFactoryLinkedService](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactorylinkedservice) cmdlet 或在数据工厂编辑器。
 
 ```JSON
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",

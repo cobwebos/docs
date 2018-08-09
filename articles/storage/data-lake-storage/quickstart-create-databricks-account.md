@@ -2,24 +2,19 @@
 title: 快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业 | Microsoft Docs
 description: 本快速入门介绍如何使用 Azure 门户创建 Azure Databricks 工作区和 Apache Spark 群集，以及如何运行 Spark 作业。
 services: storage
-documentationcenter: ''
 author: jamesbak
 ms.author: jamesbak
-manager: jahogg
 ms.component: data-lake-storage-gen2
 ms.service: storage
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.custom: mvc
-ms.openlocfilehash: d341b0590dce65228958572365bb2773f8f13129
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: ded79456934738cd4e3eda584031d14b414c98a6
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39324300"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522741"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业
 

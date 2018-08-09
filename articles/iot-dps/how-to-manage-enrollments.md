@@ -1,19 +1,19 @@
 ---
 title: 通过 Azure 门户管理设备注册 | Microsoft Docs
 description: 如何在 Azure 门户中管理 DPS 服务的设备注册
-author: dsk-2015
-ms.author: dkshir
+author: wesmc7777
+ms.author: wesmc
 ms.date: 04/05/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: b13f74e0c3df5090d1b1b2e0c48e3dc612821250
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5282ee0858c1226b2b743f42203e7b4af9eac6e6
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628430"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524119"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>如何通过 Azure 门户管理设备注册
 
@@ -29,8 +29,8 @@ ms.locfileid: "34628430"
     执行以下步骤可在门户中为一组设备创建注册组。
 
     1. 登录 Azure 门户，单击左侧菜单中的“所有资源”。  
-    2. 从资源列表中单击要向其注册设备的设备预配服务。  
-    3. 在预配服务中：  
+    1. 从资源列表中单击要向其注册设备的设备预配服务。  
+    1. 在预配服务中：  
        a. 单击“管理注册”，然后选择“注册组”选项卡。  
        b. 单击顶部的“添加”按钮。  
        c. 当“添加注册组”面板出现时，输入注册列表项的信息。  **组名**是必需的。 另外，对于“证书类型”，请选择“CA 证书”或“中间证书”，并为设备组上传根**主证书**。  
@@ -44,8 +44,8 @@ ms.locfileid: "34628430"
     可通过以下步骤在门户中创建单独注册。
 
     1. 登录 Azure 门户，单击左侧菜单中的“所有资源”。
-    2. 从资源列表中单击要向其注册设备的设备预配服务。
-    3. 在预配服务中：  
+    1. 从资源列表中单击要向其注册设备的设备预配服务。
+    1. 在预配服务中：  
        a. 单击“管理注册”，然后选择“个人注册”选项卡。  
        b. 单击顶部的“添加”按钮。   
        c. 当“添加注册”面板出现时，输入注册列表项的信息。 首先为设备选择证明**机制**（X.509 或 TPM）。 X.509 证明要求为设备上传叶**主证书**。 TPM 要求为设备输入**证明密钥**和**注册 ID**。  
@@ -57,9 +57,9 @@ ms.locfileid: "34628430"
 可通过以下步骤在门户中更新现有注册条目。
 
 1. 在 Azure 门户中打开设备预配服务，然后单击“管理注册”。 
-2. 导航到要修改的注册条目。 单击该条目会打开设备注册的摘要信息。 
-3. 在此页上，可以修改安全类型和凭据以外的项，例如设备应链接到的 IoT 中心和设备 ID。 还可以修改初始的设备孪生状态。 
-4. 完成后，单击“保存”更新设备注册。 
+1. 导航到要修改的注册条目。 单击该条目会打开设备注册的摘要信息。 
+1. 在此页上，可以修改安全类型和凭据以外的项，例如设备应链接到的 IoT 中心和设备 ID。 还可以修改初始的设备孪生状态。 
+1. 完成后，单击“保存”更新设备注册。 
 
     ![在门户中更新注册](./media/how-to-manage-enrollments/update-enrollment.png)
 
@@ -67,9 +67,9 @@ ms.locfileid: "34628430"
 如果不需要将设备预配到任何 IoT 中心，可以通过以下步骤删除门户中的相关注册条目。
 
 1. 在 Azure 门户中打开设备预配服务，然后单击“管理注册”。 
-2. 导航到要删除的注册条目并选中。 
-3. 单击顶部的“删除”按钮，然后在出现确认提示时选择“是”。 
-5. 完成操作后，会看到条目已从设备注册列表中删除。 
+1. 导航到要删除的注册条目并选中。 
+1. 单击顶部的“删除”按钮，然后在出现确认提示时选择“是”。 
+1. 完成操作后，会看到条目已从设备注册列表中删除。 
  
     ![在门户中删除注册](./media/how-to-manage-enrollments/remove-enrollment.png)
 

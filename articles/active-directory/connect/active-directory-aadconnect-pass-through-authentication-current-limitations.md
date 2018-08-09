@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/25/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e549293bf09781363e74c85ae689869d35de3092
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: a112e2f201109b71b7bab1c2b344ec4fcf2a851c
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258280"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627638"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory 直通身份验证：当前限制
 
@@ -42,7 +42,7 @@ ms.locfileid: "39258280"
 
 _不_支持以下方案：
 
-- 检测[凭据泄露](../active-directory-reporting-risk-events.md#leaked-credentials)的用户。
+- 检测[凭据泄露](../reports-monitoring/concept-risk-events.md#leaked-credentials)的用户。
 - Azure AD 域服务需要在租户上启用密码哈希同步。 因此，_仅_使用传递身份验证的租户不适用于需要 Azure AD 域服务的方案。
 - 直通身份验证未与 [Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md) 集成。
 

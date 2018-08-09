@@ -2,19 +2,20 @@
 title: Azure SQL 数据库的查询性能见解 | Microsoft 文档
 description: 查询性能监视可以识别 Azure SQL 数据库中 CPU 消耗最大的查询。
 services: sql-database
-author: stevestein
+author: danimir
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.author: sstein
-ms.openlocfilehash: f608beb0834b1c838b082e92340ebf9b650d8b3f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: v-daljep
+ms.reviewer: carlrab
+ms.openlocfilehash: 5069b4e69c53ed93e9018cef2517f6125b838d12
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648728"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524159"
 ---
 # <a name="azure-sql-database-query-performance-insight"></a>Azure SQL 数据库查询性能见解
 管理和优化关系数据库性能是一项颇具挑战性的操作，需要投入大量的专业知识和时间。 查询性能见解通过提供以下内容减少数据库性能故障排除消耗的时间：

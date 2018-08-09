@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 4a811c5354a9ff2aaa48a300d9b2655f91fdab23
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 205938bbf615face0768028717a333c13c1fafa1
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901086"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590307"
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-sign-in"></a>如何使用 Azure VM 托管服务标识 (MSI) 登录 
 
@@ -38,7 +38,7 @@ ms.locfileid: "37901086"
 
 ## <a name="overview"></a>概述
 
-MSI 提供一个[服务主体对象](../develop/active-directory-dev-glossary.md#service-principal-object)，该服务主体对象是在 VM 上[启用 MSI 时创建](overview.md#how-does-it-work)的。 可向此服务主体授予对 Azure 资源的访问权限；脚本/命令行客户端可将此服务主体用作标识进行登录和资源访问。 传统上，若要使用自身的标识访问受保护资源，脚本客户端需要：  
+MSI 提供一个[服务主体对象](../develop/developer-glossary.md#service-principal-object)，该服务主体对象是在 VM 上[启用 MSI 时创建](overview.md#how-does-it-work)的。 可向此服务主体授予对 Azure 资源的访问权限；脚本/命令行客户端可将此服务主体用作标识进行登录和资源访问。 传统上，若要使用自身的标识访问受保护资源，脚本客户端需要：  
 
    - 注册到 Azure AD，并同意将 Azure AD 用作机密/Web 客户端应用程序
    - 使用应用的凭据（可能会嵌入在脚本中）以自身的服务主体登录

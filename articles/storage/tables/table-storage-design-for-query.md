@@ -2,23 +2,18 @@
 title: 针对查询设计 Azure 存储表 | Microsoft Docs
 description: 针对 Azure 表存储中的查询设计表。
 services: storage
-documentationcenter: na
 author: MarkMcGeeAtAquent
-manager: kfile
-ms.assetid: 8e228b0c-2998-4462-8101-9f16517393ca
 ms.service: storage
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
 ms.date: 04/23/2018
 ms.author: sngun
-ms.openlocfilehash: b8d2033b0b29caddf165f4b582c7d0578109480c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: tables
+ms.openlocfilehash: 8b4ae066edc1c62c25762b5c6feebce1ecfff5a2
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659261"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521534"
 ---
 # <a name="design-for-querying"></a>针对查询的设计
 表服务解决方案可能需要进行大量读取操作和/或大量写入操作。 本文重点介绍在将表服务设计为支持高效读取操作时需要牢记的事项。 通常，支持高效读取操作的设计对于写入操作来说也是高效的。 但是，在进行支持写入操作的设计时，还需牢记一些额外注意事项，具体请参阅文章[针对数据修改的设计](table-storage-design-for-modification.md)。

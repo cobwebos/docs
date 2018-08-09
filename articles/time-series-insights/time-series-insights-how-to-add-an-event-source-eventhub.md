@@ -4,18 +4,18 @@ description: 本文介绍如何将已连接至事件中心的事件源添加到�
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: edett
-manager: jhubbard
+ms.author: anshan
+manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/21/2017
-ms.openlocfilehash: 8b1fe447cb673b9bc1f4fe4e73f7412a21f701a5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ce4bf1ab74e4203f0deb7b2984ffa6a66d5efd4a
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36330855"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627104"
 ---
 # <a name="how-to-add-an-event-hub-event-source-to-time-series-insights-environment"></a>如何向时序见解环境添加事件中心事件源
 
@@ -68,7 +68,7 @@ ms.locfileid: "36330855"
 
    ![订阅和事件中心详细信息](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)
 
-   | 属性 | 说明 |
+   | 属性 | Description |
    | --- | --- |
    | 订阅 ID | 选择其中创建有此事件中心的订阅。
    | 服务总线命名空间 | 选择包含事件中心的服务总线命名空间。
@@ -82,7 +82,7 @@ ms.locfileid: "36330855"
 
 9. 如果选择了“手动提供事件中心设置”选项，下表说明了每个所需的属性：
 
-   | 属性 | 说明 |
+   | 属性 | Description |
    | --- | --- |
    | 订阅 ID | 其中创建有此事件中心的订阅。
    | 资源组 | 在其中创建此事件中心的资源组。
@@ -98,7 +98,7 @@ ms.locfileid: "36330855"
 
 11. 选择“创建”以添加新的事件源。
    
-   ![单击创建](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png)
+   ![单击“法律条款” ](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png)
 
    创建事件源以后，时序见解就会自动将数据流式传输到你的环境中。
 

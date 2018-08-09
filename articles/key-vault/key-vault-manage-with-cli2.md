@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: barclayn
-ms.openlocfilehash: 8c2501b5e89e81709de074c0b0c93b317ecebd7b
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 47a78b71f51e4fe975341b8e9425f47fd8c4d31c
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36316588"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503530"
 ---
 # <a name="manage-key-vault-using-cli-20"></a>使用 CLI 2.0 管理 Key Vault
 
@@ -186,7 +186,7 @@ az keyvault certificate list --vault-name 'ContosoKeyVault'
 
 应用程序必须向 Azure Active Directory 提供这两个值才能获取令牌。 如何将应用程序配置为获取令牌取决于应用程序。 对于 [Key Vault 示例应用程序](https://www.microsoft.com/download/details.aspx?id=45343)，应用程序所有者会在 app.config 文件中设置这些值。
 
-有关将应用程序注册到 Azure Active Directory 的详细步骤，请参阅文章[将应用程序与 Azure Active Directory 集成](../active-directory/develop/active-directory-integrating-applications.md)、[使用门户创建可访问资源的 Azure Active Directory 应用程序和服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)以及[使用 Azure CLI 2.0 创建 Azure 服务主体](/cli/azure/create-an-azure-service-principal-azure-cli)。
+有关将应用程序注册到 Azure Active Directory 的详细步骤，请参阅文章[将应用程序与 Azure Active Directory 集成](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)、[使用门户创建可访问资源的 Azure Active Directory 应用程序和服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)以及[使用 Azure CLI 2.0 创建 Azure 服务主体](/cli/azure/create-an-azure-service-principal-azure-cli)。
 
 在 Azure Active Directory 中注册应用程序：
 

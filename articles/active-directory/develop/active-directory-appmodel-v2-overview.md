@@ -17,12 +17,12 @@ ms.date: 05/01/2017
 ms.author: celested
 ms.reviewer: hirsin, jmprieur, elisol, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 1c91c1ed8358f58ab7a4d9a697ec2d7933c4f137
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 8cf592ddd2c4a68e15856d968b77813604713b78
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36316732"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592034"
 ---
 # <a name="sign-in-microsoft-account-and-azure-active-directory-users-in-a-single-application"></a>在单个应用程序中将 Microsoft 帐户和 Azure Active Directory 用户登录
 在过去，想要支持个人 Microsoft 帐户和 Azure Active Directory 中的工作帐户的应用程序开发人员必须集成两个单独的系统。 Azure Active Directory (Azure AD) v2.0 终结点推出了新的身份验证 API 版本，可简化此过程。 使用 Azure AD v2.0 终结点可通过一次集成从这两种类型的帐户登录。 使用 Azure AD v2.0 终结点的应用程序还可以通过其中一种帐户从 [Microsoft 图形 API](https://graph.microsoft.io) 使用 REST API。
@@ -36,7 +36,7 @@ ms.locfileid: "36316732"
 ## <a name="learn-more-about-the-azure-ad-v20-endpoint"></a>详细了解 Azure AD v2.0 终结点
 了解 Azure AD v2.0 终结点的作用：
 
-* 探索[可以使用 Azure AD v2.0 终结点生成的应用程序类型](active-directory-v2-flows.md)。
+* 探索[可以使用 Azure AD v2.0 终结点生成的应用程序类型](v2-app-types.md)。
 * 了解 Azure AD v2.0 终结点的[限制、局限性和约束](active-directory-v2-limitations.md)。
 * 观看此视频了解 Azure AD v2.0 终结点的概述：
 
@@ -46,12 +46,12 @@ ms.locfileid: "36316732"
 浏览有关 Azure AD v2.0 终结点平台的详细信息：
 
 * [Azure AD v2.0 协议参考](active-directory-v2-protocols.md)
-* [Azure AD v2.0 令牌参考](active-directory-v2-tokens.md)
-* [Azure AD v2.0 身份验证库参考](active-directory-v2-libraries.md)
-* [Azure AD v2.0 终结点中的范围和许可](active-directory-v2-scopes.md)
+* [Azure AD v2.0 令牌参考](v2-id-and-access-tokens.md)
+* [Azure AD v2.0 身份验证库参考](reference-v2-libraries.md)
+* [Azure AD v2.0 终结点中的范围和许可](v2-permissions-and-consent.md)
 * [Microsoft 图形 API](https://graph.microsoft.io)
 
 > [!NOTE]
-> 如果只需从 Azure Active Directory 登录到工作和学校帐户，请从 [Azure AD 开发人员指南](active-directory-developers-guide.md)入手。 Azure AD v2.0 终结点供明确需要登录到 Microsoft 个人帐户的开发人员使用。
+> 如果只需从 Azure Active Directory 登录到工作和学校帐户，请从 [Azure AD 开发人员指南](azure-ad-developers-guide.md)入手。 Azure AD v2.0 终结点供明确需要登录到 Microsoft 个人帐户的开发人员使用。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

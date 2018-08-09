@@ -14,12 +14,12 @@ ms.component: users-groups-roles
 ms.date: 06/02/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ecb0919b68516fdb886ea745d963349ff29f83b4
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 15b52920774a878cd386ced5966d507768a8af70
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867318"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627383"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>在 Azure Active Directory 中使用组管理许可的方案、限制和已知问题
 
@@ -146,13 +146,13 @@ ms.locfileid: "37867318"
 
 ## <a name="use-audit-logs-to-monitor-group-based-licensing-activity"></a>使用审核日志来监视基于组的许可活动
 
-可以使用 [Azure AD 审核日志](./../active-directory-reporting-activity-audit-logs.md#audit-logs)查看与基于组的许可相关的所有活动，其中包括：
+可以使用 [Azure AD 审核日志](../reports-monitoring/concept-audit-logs.md#audit-logs)查看与基于组的许可相关的所有活动，其中包括：
 - 更改组许可证的人员
 - 系统开始处理组许可证更改的时间以及完成时间
 - 基于组合许可证分配，对用户进行了哪些许可证更改。
 
 >[!NOTE]
-> 在门户的 Azure Active Directory 部分中大多数边栏选项卡上可以使用审计日志。 根据你访问筛选器的位置，可能会预应用筛选器，以仅显示与边栏选项卡的上下文相关的活动。 如果未看到所期望的结果，请检查[筛选选项](./../active-directory-reporting-activity-audit-logs.md#filtering-audit-logs)，或访问[“Azure Active Directory”>“活动”>“审核日志”](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Audit)下未经筛选的审核日志。
+> 在门户的 Azure Active Directory 部分中大多数边栏选项卡上可以使用审计日志。 根据你访问筛选器的位置，可能会预应用筛选器，以仅显示与边栏选项卡的上下文相关的活动。 如果未看到所期望的结果，请检查[筛选选项](../reports-monitoring/concept-audit-logs.md#filtering-audit-logs)，或访问[“Azure Active Directory”>“活动”>“审核日志”](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Audit)下未经筛选的审核日志。
 
 ### <a name="find-out-who-modified-a-group-license"></a>确定组许可证的修改者
 

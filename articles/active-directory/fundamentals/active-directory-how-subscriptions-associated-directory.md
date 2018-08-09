@@ -14,12 +14,12 @@ ms.date: 12/12/2017
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: bcae3f51e2245928c8110d06f3514177d57ac883
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 6b0933e9aa732cb9a01a454764fb0425465ec078
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448757"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503305"
 ---
 # <a name="how-to-associate-or-add-an-azure-subscription-to-azure-active-directory"></a>如何将 Azure 订阅关联或添加到 Azure Active Directory
 
@@ -59,7 +59,7 @@ ms.locfileid: "37448757"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解如何创建免费的全新 Azure AD 目录，请参阅[如何获取 Azure Active Directory 租户](../develop/active-directory-howto-tenant.md)
+* 若要详细了解如何创建免费的全新 Azure AD 目录，请参阅[如何获取 Azure Active Directory 租户](../develop/quickstart-create-new-tenant.md)
 * 若要详细了解如何转让 Azure 订阅的账单所有权，请参阅[将 Azure 订阅所有权转让给其他帐户](../../billing/billing-subscription-transfer.md)
 * 若要了解有关如何在 Microsoft Azure 中控制资源访问的详细信息，请参阅 [了解 Azure 中的资源访问权限](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * 有关如何在 Azure AD 中分配角色的详细信息，请参阅 [在 Azure Active Directory 中分配管理员角色](../users-groups-roles/directory-assign-admin-roles.md)

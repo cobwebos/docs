@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 911e65719bff0a86e3280482296bbb320fd30377
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: fb52949bf5616c8639caa1f3fab860597648ec89
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801824"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39504584"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>确定混合标识生命周期采用策略
 蝻进在本任务中，将定义混合标识解决方案的标识管理策略，以满足在[确定混合标识管理任务](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)中定义的业务需求。
@@ -73,7 +73,7 @@ Azure AD 中基于组的许可证管理允许管理员将用户分配到安全�
 
 ## <a name="integration-with-other-3rd-party-providers"></a>与其他第三方提供程序集成
 
-Azure Active Directory 为数千种 SaaS 应用程序和本地 Web 应用程序提供单一登录和增强的应用程序访问安全性。 有关详细信息，请参阅[将应用程序与 Azure Active Directory 集成](../active-directory/develop/active-directory-integrating-applications.md)
+Azure Active Directory 为数千种 SaaS 应用程序和本地 Web 应用程序提供单一登录和增强的应用程序访问安全性。 有关详细信息，请参阅[将应用程序与 Azure Active Directory 集成](develop/quickstart-v1-integrate-apps-with-azure-ad.md)
 
 ## <a name="define-synchronization-management"></a>定义同步管理
 将本地目录与 Azure AD 集成可提供通用标识用于访问云和本地资源，从而提高用户的生产率。 通过这种集成，用户和组织可以享受到以下好处：

@@ -12,15 +12,15 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/01/2017
 ms.author: maheshu
-ms.openlocfilehash: 07f63eb9ed316f7798bd890bb6125617c6a1e886
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: de5f3582a931cbf21d5504afd1fd385066874f45
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929631"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39504227"
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Azure AD 域服务的网络注意事项
 ## <a name="how-to-select-an-azure-virtual-network"></a>如何选择 Azure 虚拟网络

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 045b433fdea2cfb97f3002fbe692ea8e4988fbb4
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 4883791a32a65746a72afb63755ecf608dc840d9
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34726408"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503819"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>创建虚拟网络对等互连 - 不同部署模型和不同订阅
 
@@ -36,7 +36,7 @@ ms.locfileid: "34726408"
 
 不能在通过经典部署模型部署的两个虚拟网络之间创建对等互连。 本教程使用同一区域中的虚拟网络。 本教程将在同一区域中的虚拟网络之间建立对等互连。 还可以将不同[受支持的区域](virtual-network-manage-peering.md#cross-region)中的虚拟网络对等互连。 建议在对等互连虚拟网络之前让自己熟悉[对等互连的要求和约束](virtual-network-manage-peering.md#requirements-and-constraints)。
 
-在位于不同订阅的虚拟网络间创建虚拟网络对等互连时，两个订阅均必须与同一 Azure Active Directory 租户相关联。 如果还没有 Azure Active Directory 租户，可快速[创建一个](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant)。 可以使用 Azure [VPN 网关](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)连接不同订阅和不同 Azure Active Directory 租户中的虚拟网络。
+在位于不同订阅的虚拟网络间创建虚拟网络对等互连时，两个订阅均必须与同一 Azure Active Directory 租户相关联。 如果还没有 Azure Active Directory 租户，可快速[创建一个](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant)。 可以使用 Azure [VPN 网关](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)连接不同订阅和不同 Azure Active Directory 租户中的虚拟网络。
 
 可使用 [Azure 门户](#portal)、Azure [命令行接口](#cli) (CLI) 或 Azure [PowerShell](#powershell) 创建虚拟网络对等互连。 单击以前的任何工具链接直接转到使用所选工具创建虚拟网络对等互连的步骤。
 

@@ -12,15 +12,15 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: d76371935fddbfe94c6dc45e27971487e7fa4277
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 581e2b361cf7133df369e7c8c3062c19fbe77d5c
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333575"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39504873"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-a-managed-domain"></a>将 CentOS Linux 虚拟机加入托管域
 本文介绍了如何将 Azure 中的 CentOS Linux 虚拟机加入 Azure AD 域服务托管域。

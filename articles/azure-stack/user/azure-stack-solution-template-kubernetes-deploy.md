@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: edcea5f0a4b95725bf766632731f461334e829a9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1fb7716ff1b5ce661dff55c3a8dac90a062fad53
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420132"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630776"
 ---
 # <a name="deploy-a-kubernetes-cluster-to-azure-stack"></a>将 Kubernetes 群集部署到 Azure Stack
 
@@ -27,6 +27,7 @@ ms.locfileid: "39420132"
 
 > [!Note]  
 > Azure Stack 上的 Azure 容器服务 (ACS) Kubernetes 目前为个人预览版。 Azure Stack 操作员需请求 Kubernetes 市场项的访问权限，该项是根据本文中的说明进行操作所必需的。
+<!-- Should "Azure Container Services" be replaced globally with Azure Kubernetes Services? It seems the Azure container page is now redirectin to Azure Kubernetes https://azure.microsoft.com/en-us/services/container-service -->
 
 下面的文章着眼于使用 Azure 资源管理器解决方案模板通过单个协调的操作为 Kubernetes 部署和预配资源。 需收集有关 Azure Stack 安装的必需信息，生成模板，然后再部署到云。
 

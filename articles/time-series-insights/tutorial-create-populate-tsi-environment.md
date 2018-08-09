@@ -6,13 +6,14 @@ author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 06/04/2018
-ms.author: bryanla
-ms.openlocfilehash: b57e688b5f830c8c7d34315a68be94e4e4c99466
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.author: anshan
+manager: cshankar
+ms.openlocfilehash: 7faec1608845d218a738c70f147f79248a549dde
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295841"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626766"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>教程：创建 Azure 时序见解环境
 
@@ -51,7 +52,7 @@ ms.locfileid: "36295841"
 
 4. 在“时序见解环境”页上，填写必需的参数：
    
-   参数|说明
+   参数|Description
    ---|---
    **环境名称** | 选择 TSI 环境的唯一名称。 该名称将由 TSI 资源管理器和查询 API 使用。
    **订阅** | 订阅是 Azure 资源的容器。 选择要在其中创建 TSI 环境的订阅。
@@ -78,7 +79,7 @@ ms.locfileid: "36295841"
 
 2. 在“创建设备模拟解决方案”页上输入所需的参数：
 
-   参数|说明
+   参数|Description
    ---|---
    **解决方案名称** | 用于创建新资源组的唯一值。 将会创建列出的 Azure 资源并将其分配到资源组。
    **订阅** | 指定用于创建 TSI 环境（参阅上一部分）的同一订阅。
@@ -138,7 +139,7 @@ IoT 中心提供多个终结点用于与其他执行组件共享功能。 将数
 
 3. 在“新建事件源”页上输入所需的参数： 
 
-   参数|说明
+   参数|Description
    ---|---
    **事件源名称** | 必须输入用于命名事件源的唯一值。
    **源** | 选择“IoT 中心”。
@@ -170,7 +171,7 @@ IoT 中心提供多个终结点用于与其他执行组件共享功能。 将数
 
 3. 加载“模拟设置”页后，输入所需的参数： 
 
-   参数|说明
+   参数|Description
    ---|---
    **目标 IoT 中心** | 选择“使用预配的 IoT 中心”。
    **设备型号** | 选择“冷却器”。

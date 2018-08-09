@@ -2,29 +2,24 @@
 title: Azure 存储迁移常见问题解答 | Microsoft 文档
 description: 有关迁移 Azure 存储的常见问题解答
 services: storage
-documentationcenter: na
 author: genlin
-manager: timlt
-editor: tysonn
 ms.service: storage
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 12172c53e8e5077f9690a2459bf5ccf3c3a05507
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.component: common
+ms.openlocfilehash: ecc5948c84f7659e950c360c3b19d1985b0ab81c
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34071384"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521483"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>有关 Azure 存储迁移的常见问题
 
 本文回答了有关 Azure 存储迁移的常见问题。 
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 如何创建一个脚本来将文件从一个容器复制到另一个容器？
 
@@ -42,7 +37,7 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 
 **在相同区域内同一个存储帐户上的两个文件共享之间复制数据是否有任何费用？**
 
-不会。 此过程不会产生任何费用。
+不是。 此过程不会产生任何费用。
 
 **如何实现将整个存储帐户备份到其他存储帐户？**
 
@@ -196,7 +191,7 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 
 **将存储帐户的复制从异地冗余存储更改到本地冗余存储是否有先决条件？**
 
-不会。 
+不是。 
 
 如何访问 Azure 文件冗余存储？
 

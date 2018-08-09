@@ -4,18 +4,18 @@ description: 本文介绍如何将已连接至 IoT 中心的事件源添加到�
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: edett
-manager: jhubbard
+ms.author: anshan
+manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/21/2017
-ms.openlocfilehash: 1cc8518e84bd9fe7a1f03a2f5d6ccdbac8fb78e3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b6beecbf64cee925f62ac4c82919926fcb79940a
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36330588"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627366"
 ---
 # <a name="how-to-add-an-iot-hub-event-source-to-time-series-insights-environment"></a>如何向 Azure 时序见解环境添加 IoT 中心事件源
 本文介绍如何使用 Azure 门户将从 IoT 中心读取数据的事件源添加到时序见解环境。
@@ -66,7 +66,7 @@ ms.locfileid: "36330588"
 
    ![订阅和事件中心详细信息](media/time-series-insights-how-to-add-an-event-source-iothub/3-new-event-source.png)
 
-   | 属性 | 说明 |
+   | 属性 | Description |
    | --- | --- |
    | 订阅 ID | 选择其中创建此 IoT 中心的订阅。
    | IoT 中心名称 | 选择 IoT 中心的名称。
@@ -78,7 +78,7 @@ ms.locfileid: "36330588"
 
 9. 如果选择了“手动提供 IoT 中心设置”选项，下表说明了每个所需的属性：
 
-   | 属性 | 说明 |
+   | 属性 | Description |
    | --- | --- |
    | 订阅 ID | 在其中创建此 IoT 中心的订阅。
    | 资源组 | 在其中创建此 IoT 中心的资源组名称。
@@ -93,7 +93,7 @@ ms.locfileid: "36330588"
 
 11. 选择“创建”以添加新的事件源。
 
-   ![单击创建](media/time-series-insights-how-to-add-an-event-source-iothub/4-create-button.png)
+   ![单击“法律条款” ](media/time-series-insights-how-to-add-an-event-source-iothub/4-create-button.png)
 
    创建事件源以后，时序见解就会自动将数据流式传输到你的环境中。
 

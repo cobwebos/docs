@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/12/2018
 ms.author: ryanwi,mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 601742d82c1bd9a0e691de28ff9c4a09f12b538e
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 81cd4d247ba6153fd205ead36f29a52b420bb427
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186373"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502822"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>教程：将 Service Fabric 应用程序部署到 Azure 中的群集
 
@@ -65,7 +65,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 * 发布到订阅中的现有群集。  可以通过 [Azure 门户](https://portal.azure.com)、[PowerShel](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)、[Azure CLI](./scripts/cli-create-cluster.md) 脚本或 [Azure 资源管理器模板](service-fabric-tutorial-create-vnet-and-windows-cluster.md)创建 Service Fabric 群集。
 
 > [!NOTE]
-> 许多服务使用反向代理来互相通信。 通过 Visual Studio 创建的群集以及合作群集默认启用反向代理。  如果使用现有的群集，则必须[在群集中启用反向代理](service-fabric-reverseproxy.md#setup-and-configuration)。
+> 许多服务使用反向代理来互相通信。 通过 Visual Studio 创建的群集以及合作群集默认启用反向代理。  如果使用现有的群集，则必须[在群集中启用反向代理](service-fabric-reverseproxy-setup.md#)。
 
 
 ### <a name="find-the-votingweb-service-endpoint-for-your-azure-subscription"></a>查找你的 Azure 订阅的 VotingWeb 服务终结点

@@ -3,19 +3,18 @@ title: 学习使用 Azure Databricks 执行提取、加载和转换操作
 description: 学习将数据从 Azure Data Lake Storage Gen2 预览版提取到 Azure Databricks 中，对数据进行转换，然后将数据加载到 Azure SQL 数据仓库中。
 services: azure-databricks
 author: jamesbak
-manager: jahogg
 ms.component: data-lake-storage-gen2
 ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 10aad06d4ac8d76dc023648e8d6c0366bff859e6
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: dcc0cb6d761fde5af16dbc86c674e2fc00dad58a
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344688"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522282"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>教程：使用 Azure Databricks 提取、转换和加载数据
 
@@ -37,14 +36,14 @@ ms.locfileid: "37344688"
 > * 在 Azure Databricks 中转换数据
 > * 将数据加载到 Azure SQL 数据仓库
 
-如果没有 Azure 订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
 
 完成本教程：
 
 * 创建 Azure SQL 数据仓库、创建服务器级防火墙规则并以服务器管理员身份连接到服务器。按[快速入门：创建 Azure SQL 数据仓库](../../sql-data-warehouse/create-data-warehouse-portal.md)中的说明操作
-* 创建适用于 Azure SQL 数据仓库的数据库主密钥。 按[创建数据库主密钥](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key)中的说明操作。
+* 为 Azure SQL 数据仓库创建数据库主密钥。 按[创建数据库主密钥](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key)中的说明操作。
 * [创建 Azure Data Lake Storage Gen2 帐户](quickstart-create-account.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
@@ -338,7 +337,7 @@ ms.locfileid: "37344688"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了以下操作：
+本教程介绍了如何：
 
 > [!div class="checklist"]
 > * 创建 Azure Databricks 工作区

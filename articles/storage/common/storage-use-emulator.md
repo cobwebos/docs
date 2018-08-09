@@ -3,17 +3,17 @@ title: 使用 Azure 存储模拟器进行开发和测试 | Microsoft Docs
 description: Azure 存储模拟器为开发和测试 Azure 存储应用程序提供了免费的本地开发环境。 了解如何对请求进行授权、如何从应用程序连接到模拟器以及如何使用命令行工具。
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: tamram
-ms.openlocfilehash: c6500cd1ddd31d789b8cd5d72d6e4614db3f88db
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.component: common
+ms.openlocfilehash: 4f4c5870bb1bdd804aa4b2da8c46c0698b897798
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36291932"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526175"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>使用 Azure 存储模拟器进行开发和测试
 
@@ -165,7 +165,7 @@ https://storageaccount.blob.core.windows.net/sascontainer?sv=2012-02-12&se=2015-
 ### <a name="options"></a>选项
 若要查看选项列表，请在命令提示符下键入 `/help`。
 
-| 选项 | 说明 | 命令 | 参数 |
+| 选项 | Description | 命令 | 参数 |
 | --- | --- | --- | --- |
 | **启动** |启动存储模拟器。 |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*：在当前进程中启动模拟器而不是创建一个新的进程。 |
 | **Stop** |停止存储模拟器。 |`AzureStorageEmulator.exe stop` | |

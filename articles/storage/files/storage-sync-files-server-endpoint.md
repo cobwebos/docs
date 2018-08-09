@@ -2,24 +2,18 @@
 title: 添加/删除 Azure 文件同步服务器终结点 | Microsoft Docs
 description: 了解规划 Azure 文件部署时应考虑的问题。
 services: storage
-documentationcenter: ''
 author: wmgries
-manager: aungoo
-editor: tamram
-ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: c8da3f501d03a05ef5490197d4fd38ada01a4997
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.component: files
+ms.openlocfilehash: 00ce83a7ec52e24ce858c720e834b8396c2f808c
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158431"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523959"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>添加/删除 Azure 文件同步服务器终结点
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来实现这一点。 你可以使用 Windows Server 上的任意可用协议在本地访问数据（包括 SMB、NFS 和 FTPS），并且可以在世界各地获取所需的缓存数。

@@ -2,24 +2,19 @@
 title: 使用 Microsoft Azure 存储数据移动库传输数据 | Microsoft 文档
 description: 使用数据移动库将数据移动或复制到 Blob、表和文件内容，或者从中移动或复制数据。 从本地文件将数据复制到 Azure 存储，或者在存储帐户中或存储帐户之间复制数据。 轻松地将数据迁移到 Azure 存储。
 services: storage
-documentationcenter: ''
 author: seguler
-manager: jahogg
-editor: tysonn
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/27/2017
 ms.author: seguler
-ms.openlocfilehash: eb96f3697d5369ba96a1b0c491e3eacf09e7aac4
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.component: common
+ms.openlocfilehash: ee24a055c6a3c53b9753728e13a7687e722c1c91
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
-ms.locfileid: "27564733"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526209"
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>使用 Microsoft Azure 存储数据移动库传输数据
 
@@ -39,7 +34,7 @@ Microsoft Azure 存储数据移动库是一个高性能的跨平台开源库，�
 
 **准备工作：**
 
-* [Contact.java](https://code.visualstudio.com/)
+* [Visual Studio Code](https://code.visualstudio.com/)
 * 一个 [Azure 存储帐户](storage-create-storage-account.md#create-a-storage-account)
 
 > [!NOTE]

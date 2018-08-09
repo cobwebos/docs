@@ -5,13 +5,14 @@ author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 06/14/2018
-ms.author: bryanla
-ms.openlocfilehash: 4442a724cf3e37d5e7271d9c29f99138ab1faa5f
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.author: anshan
+manager: cshankar
+ms.openlocfilehash: 312e15f976a6782e3f39cfcc5ce0721ac6357a16
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295824"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626749"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>教程：创建 Azure 时序见解单页 Web 应用
 
@@ -42,15 +43,15 @@ ms.locfileid: "36295824"
 在生成应用程序之前，需将其注册到 Azure AD。 注册为应用程序提供标识配置，让其可以使用 OAuth 支持进行单一登录。 OAuth 要求 SPA 使用“隐式”授权，后者可以在应用程序清单中进行更新。 应用程序清单是以 JSON 格式表示应用程序的标识配置。 
 
 1. 使用 Azure 订阅帐户登录到 [Azure 门户](https://portal.azure.com)。  
-2. 在左窗格中依次选择“Azure Active Directory”资源、“应用注册”、“+ 新建应用程序注册”：  
+1. 在左窗格中依次选择“Azure Active Directory”资源、“应用注册”、“+ 新建应用程序注册”：  
    
    ![Azure 门户 Azure AD 应用程序注册](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration.png)
 
-3. 在“创建”页中，填写必需的参数：
+1. 在“创建”页中，填写必需的参数：
    
-   参数|说明
+   参数|Description
    ---|---
-   **名称** | 提供一个有意义的注册名称。  
+   **Name** | 提供一个有意义的注册名称。  
    **应用程序类型** | 由于生成的是 SPA Web 应用程序，因此请将其保留为“Web 应用/API”。
    **登录 URL** | 输入应用程序的主页/登录页的 URL。 由于应用程序会在以后托管在 Azure 应用服务中，因此必须使用“https://azurewebsites.net”域中的 URL。 在本示例中，名称基于注册名称。
 
@@ -58,27 +59,27 @@ ms.locfileid: "36295824"
 
    ![Azure 门户 Azure AD 应用程序注册 - 创建](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-create.png)
 
-4. 资源应用程序会提供可供其他应用程序使用的 REST API，并且还会注册到 Azure AD。 API 通过公开“作用域”提供对客户端应用程序的精细/安全的访问。 由于应用程序会调用“Azure 时序见解”API，因此需指定 API 和作用域，以便在运行时为其请求/授予权限。 依次选择“设置”、“所需权限”、“+ 添加”：
+1. 资源应用程序会提供可供其他应用程序使用的 REST API，并且还会注册到 Azure AD。 API 通过公开“作用域”提供对客户端应用程序的精细/安全的访问。 由于应用程序会调用“Azure 时序见解”API，因此需指定 API 和作用域，以便在运行时为其请求/授予权限。 依次选择“设置”、“所需权限”、“+ 添加”：
 
    ![Azure 门户 Azure AD 添加权限](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms.png)
 
-5. 在“添加 API 访问权限”页中单击“1 选择 API”，以便指定 TSI API。 在“选择 API”页的搜索字段中输入“azure 时”。 然后在结果列表中选择“Azure 时序见解”API，再单击“选择”： 
+1. 在“添加 API 访问权限”页中单击“1 选择 API”，以便指定 TSI API。 在“选择 API”页的搜索字段中输入“azure 时”。 然后在结果列表中选择“Azure 时序见解”API，再单击“选择”： 
 
    ![Azure 门户 Azure AD 添加权限 - API](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms-api.png)
 
-6. 现在请在 API 上指定作用域。 回到“添加 API 访问权限”页，单击“2 选择权限”。 在“启用访问权限”页上，选择“访问 Azure 时序见解服务”作用域。 单击“选择”，返回到“添加 API 访问权限”页，在其中单击“完成”：
+1. 现在请在 API 上指定作用域。 回到“添加 API 访问权限”页，单击“2 选择权限”。 在“启用访问权限”页上，选择“访问 Azure 时序见解服务”作用域。 单击“选择”，返回到“添加 API 访问权限”页，在其中单击“完成”：
 
    ![Azure 门户 Azure AD 添加权限 - 作用域](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms-api-scopes.png)
 
-7. 返回到“所需权限”页后，会发现“Azure 时序见解”API 现在已列出。 此外还需为所有用户预许可应用程序访问 API 和作用域的权限。 单击顶部的“授予权限”按钮，然后选择“是”：
+1. 返回到“所需权限”页后，会发现“Azure 时序见解”API 现在已列出。 此外还需为所有用户预许可应用程序访问 API 和作用域的权限。 单击顶部的“授予权限”按钮，然后选择“是”：
 
    ![Azure 门户 Azure AD 所需权限 - 许可](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-required-permissions-consent.png)
 
-8. 如前所述，还需要更新应用程序清单。 单击痕迹导航中的应用程序名称，返回到“已注册应用”页。 选择“清单”，将 `oauth2AllowImplicitFlow` 属性更改为 `true`，然后单击“保存”：
+1. 如前所述，还需要更新应用程序清单。 单击痕迹导航中的应用程序名称，返回到“已注册应用”页。 选择“清单”，将 `oauth2AllowImplicitFlow` 属性更改为 `true`，然后单击“保存”：
 
    ![Azure 门户 Azure AD 更新清单](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-update-manifest.png)
 
-9. 最后，单击痕迹导航再次返回到“已注册应用”页，复制应用程序的**主页** URL 和“应用程序 ID”属性。 将在后面的一个步骤中使用这些属性：
+1. 最后，单击痕迹导航再次返回到“已注册应用”页，复制应用程序的**主页** URL 和“应用程序 ID”属性。 将在后面的一个步骤中使用这些属性：
 
    ![Azure 门户 Azure AD 属性](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-application.png)
 
@@ -92,15 +93,15 @@ ms.locfileid: "36295824"
    - **index.html** HTML 和 JavaScript 适合页面 https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html
    - **sampleStyles.css：** CSS 样式表：https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css
     
-2. 启动 Visual Studio 并登录到其中，以便创建适合 Web 应用程序的项目。 在“文件”菜单上，选择“打开”>“网站”选项。 在“打开网站”对话框中，选择存储了 HTML 和 CSS 文件的工作目录，然后单击“打开”：
+1. 启动 Visual Studio 并登录到其中，以便创建适合 Web 应用程序的项目。 在“文件”菜单上，选择“打开”>“网站”选项。 在“打开网站”对话框中，选择存储了 HTML 和 CSS 文件的工作目录，然后单击“打开”：
 
    ![VS - 文件打开网站](media/tutorial-create-tsi-sample-spa/vs-file-open-web-site.png)
 
-3. 在 Visual Studio 的“视图”菜单中打开“解决方案资源管理器”。 此时会看到新的解决方案，其中包含一个网站项目（地球图标），该项目包含 HTML 和 CSS 文件：
+1. 在 Visual Studio 的“视图”菜单中打开“解决方案资源管理器”。 此时会看到新的解决方案，其中包含一个网站项目（地球图标），该项目包含 HTML 和 CSS 文件：
 
    ![VS - 解决方案资源管理器新建解决方案](media/tutorial-create-tsi-sample-spa/vs-solution-explorer.png)
 
-4. 发布应用程序之前，需在 **index.html** 中更新 JavaScript 代码的多个部分： 
+1. 发布应用程序之前，需在 **index.html** 中更新 JavaScript 代码的多个部分： 
 
    a. 首先，在 `<head>` 元素中更改 JavaScript 和样式表文件引用的路径。 打开 Visual Studio 解决方案中的 **index.html** 文件，找到以下 JavaScript 代码行。 取消注释“PROD RESOURCE LINKS”下的三行，注释掉“DEV RESOURCE LINKS”下的三行：
    
@@ -133,7 +134,7 @@ ms.locfileid: "36295824"
 
    c. 编辑完以后，保存 **index.html**。
 
-5. 现在请将 Web 应用程序作为 Azure 应用服务发布到 Azure 订阅中：  
+1. 现在请将 Web 应用程序作为 Azure 应用服务发布到 Azure 订阅中：  
 
    > [!NOTE]
    > 以下对话框中的多个字段填充的是 Azure 订阅中的数据。 因此，在继续操作之前，可能需要等待数秒钟，确保每个对话框加载完毕。  
@@ -152,7 +153,7 @@ ms.locfileid: "36295824"
 
    d. 给“创建应用服务”对话框几秒钟时间来加载所有字段，然后修改以下字段：
    
-      字段 | 说明
+      字段 | Description
       ---|---
       **应用名称** | 更改为在[将应用程序注册到 Azure AD](#register-the-application-with-azure-ad) 的步骤 3 中使用的 Azure AD 应用程序注册名称。 
       **资源组** | 使用“新建...”按钮，通过更改来匹配“应用名称”字段。
@@ -174,7 +175,7 @@ ms.locfileid: "36295824"
 
 ## <a name="troubleshooting"></a>故障排除  
 
-错误代码/条件 | 说明
+错误代码/条件 | Description
 ---------------------| -----------
 AADSTS50011：未为应用程序注册回复地址。 | Azure AD 注册缺少“回复 URL”属性。 转到 Azure AD 应用程序注册的“设置” / “回复 URL”页。 验证在[将应用程序注册到 Azure AD](#register-the-application-with-azure-ad) 的步骤 3 中指定的**登录** URL 是否存在。 
 AADSTS50011：在请求中指定的回复 URL 与为应用程序“<Application ID GUID>”配置的回复 URL 不匹配。 | 在[生成并发布 Web 应用程序](#build-and-publish-the-web-application)的步骤 4.b 中指定的 `postLogoutRedirectUri` 必须与 Azure AD 应用程序注册中“设置” / “回复 URL”属性下指定的值匹配。 另外，请确保将“目标 URL”更改为使用 `https`，详见 [生成并发布 Web 应用程序](#build-and-publish-the-web-application)的步骤 5.e 中的说明。
@@ -187,7 +188,7 @@ Web 应用程序会加载，但登录页是未设置样式的纯文本页面，�
 在 Azure 门户的左侧菜单中：
 
 1. 单击“资源组”图标，然后选择针对 TSI 环境创建的资源组。 在页面顶部单击“删除资源组”，输入资源组的名称，然后单击“删除”。 
-2. 单击“资源组”图标，然后选择设备模拟解决方案加速器创建的资源组。 在页面顶部单击“删除资源组”，输入资源组的名称，然后单击“删除”。 
+1. 单击“资源组”图标，然后选择设备模拟解决方案加速器创建的资源组。 在页面顶部单击“删除资源组”，输入资源组的名称，然后单击“删除”。 
 
 ## <a name="next-steps"></a>后续步骤
 

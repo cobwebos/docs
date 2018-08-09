@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6cd6b139699b38a06a8e3f9fce5eb6e24fe24654
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 99f877a0002e9a631bcfdabdbea51fcf2ca1a2c1
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214169"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626586"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>对 Azure Active Directory 直通身份验证进行故障排除
 
@@ -53,7 +53,7 @@ ms.locfileid: "39214169"
 
 ### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Azure Active Directory 管理中心登录失败原因（需要 Premium 许可证）
 
-如果你的租户有关联的 Azure AD Premium 许可证，还可在 [Azure Active Directory 管理员中心](https://aad.portal.azure.com/)查看[登录活动报告](../active-directory-reporting-activity-sign-ins.md)。
+如果你的租户有关联的 Azure AD Premium 许可证，还可在 [Azure Active Directory 管理员中心](https://aad.portal.azure.com/)查看[登录活动报告](../reports-monitoring/concept-sign-ins.md)。
 
 ![Azure Active Directory 管理中心 - 登录报表](./media/active-directory-aadconnect-pass-through-authentication/pta4.png)
 

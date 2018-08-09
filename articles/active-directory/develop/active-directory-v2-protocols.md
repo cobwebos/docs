@@ -17,15 +17,15 @@ ms.date: 04/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7c6031bb135c48a8d58f61c3c96bf18e817809ba
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 645ce394c09f5cdd9f45b085e8d86cdc07ee9158
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156215"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591326"
 ---
 # <a name="v20-protocols---oauth-20--openid-connect"></a>v2.0 协议 - OAuth 2.0 和 OpenID Connect
-v2.0 终结点可以使用 Azure AD，通过行业标准协议（OpenID Connect 与 OAuth 2.0）提供标识即服务。 尽管此服务与标准兼容，但这些协议的两个实现之间仍然存在微妙的差异。 如果选择通过直接发送和处理 HTTP 请求，或使用第三方开放源代码库来编写代码，而不是使用我们的其中一个[开放源代码库](active-directory-v2-libraries.md)，则可以参考此处提供的有用信息。
+v2.0 终结点可以使用 Azure AD，通过行业标准协议（OpenID Connect 与 OAuth 2.0）提供标识即服务。 尽管此服务与标准兼容，但这些协议的两个实现之间仍然存在微妙的差异。 如果选择通过直接发送和处理 HTTP 请求，或使用第三方开放源代码库来编写代码，而不是使用我们的其中一个[开放源代码库](reference-v2-libraries.md)，则可以参考此处提供的有用信息。
 
 > [!NOTE]
 > v2.0 终结点并不支持所有 Azure Active Directory 方案和功能。 若要确定是否应使用 v2.0 终结点，请阅读 [v2.0 限制](active-directory-v2-limitations.md)。
@@ -49,7 +49,7 @@ v2.0 终结点可以使用 Azure AD，通过行业标准协议（OpenID Connect 
 * 用于将响应定向回应用的**重定向 URI** 或**包标识符**
 * 其他一些特定于方案的值。
 
-请了解如何 [注册应用](active-directory-v2-app-registration.md)获取详细信息。
+请了解如何 [注册应用](quickstart-v2-register-an-app.md)获取详细信息。
 
 ## <a name="endpoints"></a>终结点
 注册后，应用将通过向 v2.0 终结点发送请求来与 Azure AD 通信：
@@ -61,7 +61,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 
 其中 `{tenant}` 可以接受以下四个不同值之一：
 
-| 值 | 说明 |
+| 值 | Description |
 | --- | --- |
 | `common` |允许用户使用个人的 Microsoft 帐户和工作/学校帐户从 Azure Active Directory 登录应用程序。 |
 | `organizations` |仅允许用户使用工作/学校帐户从 Azure Active Directory 登录应用程序。 |
@@ -73,13 +73,13 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 ## <a name="tokens"></a>令牌
 OAuth 2.0 和 OpenID Connect 的 v2.0 实现广泛使用了持有者令牌，包括表示为 JWT 的持有者令牌。 持有者令牌是一种轻型安全令牌，它授予对受保护资源的“持有者”访问权限。 从这个意义上来说，“持有者”是可以提供令牌的任何一方。 虽然某一方必须首先通过 Azure AD 的身份验证才能收到持有者令牌，但如果不采取必要的步骤在传输过程和存储中对令牌进行保护，令牌可能会被意外的某一方拦截并使用。 虽然某些安全令牌具有内置机制来防止未经授权方使用它们，但是持有者令牌没有这一机制，因此必须在安全的通道（例如传输层安全 (HTTPS)）中进行传输。 如果持有者令牌以明文传输，则恶意方可以利用中间人攻击来获得令牌并使用它来对受保护资源进行未经授权的访问。 当存储或缓存持有者令牌供以后使用时，也应遵循同样的安全原则。 请始终确保应用以安全的方式传输和存储持有者令牌。 有关持有者令牌的更多安全注意事项，请参阅 [RFC 6750 第 5 部分](http://tools.ietf.org/html/rfc6750)。
 
-有关 v2.0 终结点中使用的不同类型令牌的更多详细信息，请参阅 [v2.0 终结点令牌参考](active-directory-v2-tokens.md)。
+有关 v2.0 终结点中使用的不同类型令牌的更多详细信息，请参阅 [v2.0 终结点令牌参考](v2-id-and-access-tokens.md)。
 
 ## <a name="protocols"></a>协议
-如果已准备好查看部分示例请求，请从下列教程之一开始。 每个教程对应于特定的身份验证方案。 如果在确定适当的流时需要帮助，请查看[可使用 v2.0 构建的应用类型](active-directory-v2-flows.md)。
+如果已准备好查看部分示例请求，请从下列教程之一开始。 每个教程对应于特定的身份验证方案。 如果在确定适当的流时需要帮助，请查看[可使用 v2.0 构建的应用类型](v2-app-types.md)。
 
-* [使用 OAuth 2.0 构建移动和本机应用程序](active-directory-v2-protocols-oauth-code.md)
-* [使用 OpenID Connect 构建 Web 应用](active-directory-v2-protocols-oidc.md)
-* [使用 OAuth 2.0 隐式流构建单页应用](active-directory-v2-protocols-implicit.md)
-* [使用 OAuth 2.0 客户端凭据流构建守护程序或服务器端进程](active-directory-v2-protocols-oauth-client-creds.md)
-* [使用 OAuth 2.0 代理流在 Web API 中获取令牌](active-directory-v2-protocols-oauth-on-behalf-of.md)
+* [使用 OAuth 2.0 构建移动和本机应用程序](v2-oauth2-auth-code-flow.md)
+* [使用 OpenID Connect 构建 Web 应用](v2-protocols-oidc.md)
+* [使用 OAuth 2.0 隐式流构建单页应用](v2-oauth2-implicit-grant-flow.md)
+* [使用 OAuth 2.0 客户端凭据流构建守护程序或服务器端进程](v2-oauth2-client-creds-grant-flow.md)
+* [使用 OAuth 2.0 代理流在 Web API 中获取令牌](v2-oauth2-on-behalf-of-flow.md)

@@ -1,20 +1,20 @@
 ---
 title: 使用 Azure 资源管理器模板设置设备预配 | Microsoft Docs
 description: Azure 快速入门 - 使用模板设置 Azure IoT 中心设备预配服务
-author: bryanla
-ms.author: bryanla
+author: wesmc7777
+ms.author: wesmc
 ms.date: 06/18/2018
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6bd1073012a68149d194e21e745604a43dfe92c0
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e3aa2cf93e529fcc430162ac90be06a75690fb21
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219690"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523438"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板设置 IoT 中心设备预配服务
 
@@ -23,7 +23,7 @@ ms.locfileid: "36219690"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 本快速入门要求在本地运行 Azure CLI。 必须安装 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级 CLI，请参阅[安装 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 
@@ -301,7 +301,7 @@ ms.locfileid: "36219690"
 
 请使用以下 Azure CLI 命令来部署模板和验证部署。
 
-1. 若要部署模板，请运行下述[用于启动部署的命令](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az_group_deployment_create)：
+1. 若要部署模板，请运行下述[用于启动部署的命令](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)：
     
     ```azurecli
      az group deployment create -g {your resource group name} --template-file template.json --parameters @parameters.json
@@ -312,7 +312,7 @@ ms.locfileid: "36219690"
    ![预配输出](./media/quick-setup-auto-provision-rm/output.png) 
 
 
-2. 若要验证部署，请运行下述[用于列出资源的命令](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az_resource_list)，然后在输出中查找新预配服务和 IoT 中心：
+2. 若要验证部署，请运行下述[用于列出资源的命令](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-list)，然后在输出中查找新预配服务和 IoT 中心：
 
     ```azurecli
      az resource list -g {your resource group name}

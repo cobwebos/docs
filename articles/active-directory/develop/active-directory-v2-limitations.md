@@ -17,21 +17,21 @@ ms.date: 07/12/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 4fbde5306efb2de5cfe3ffd0a49b9e24a7b67e8c
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: edf0b52e5889fe8fa875de65fcaa8c2a22df1a7f
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003952"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590743"
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>我是否应使用 v2.0 终结点？
 
-构建与 Azure Active Directory (Azure AD) 集成的应用程序时，需确定 v2.0 终结点和身份验证协议是否满足需求。 Azure AD 的原始终结点仍完全受到支持，并且在某些方面比 v2.0 的功能更丰富。 但是，v2.0 终结点为开发人员[带来了极大的好处](active-directory-v2-compare.md)。
+构建与 Azure Active Directory (Azure AD) 集成的应用程序时，需确定 v2.0 终结点和身份验证协议是否满足需求。 Azure AD 的原始终结点仍完全受到支持，并且在某些方面比 v2.0 的功能更丰富。 但是，v2.0 终结点为开发人员[带来了极大的好处](azure-ad-endpoint-comparison.md)。
 
 下面是目前为开发人员提供的几点建议：
 
 * 如果必须在应用程序中支持个人 Microsoft 帐户，请使用 v2.0 终结点。 但在执行操作前，请确保了解本文讨论的限制。
-* 如果应用程序只需支持 Microsoft 工作和学校帐户，则不要使用 v2.0 终结点。 请改为参阅 [Azure AD 开发人员指南](active-directory-developers-guide.md)。
+* 如果应用程序只需支持 Microsoft 工作和学校帐户，则不要使用 v2.0 终结点。 请改为参阅 [Azure AD 开发人员指南](azure-ad-developers-guide.md)。
 
 v2.0 终结点将演变为消除此处列出的限制，因此你只需要使用 v2.0 终结点。 在此期间，使用本文来确定 v2.0 终结点是否适合你。 我们将持续更新本文，以反映 v2.0 终结点当前的状态。 可返回查看，重新评估对 v2.0 功能的要求。
 
@@ -39,11 +39,11 @@ v2.0 终结点将演变为消除此处列出的限制，因此你只需要使用
 
 ## <a name="restrictions-on-app-types"></a>应用类型限制
 
-v2.0 终结点目前不支持以下应用类型。 有关支持的应用类型的说明，请参阅 [Azure Active Directory v2.0 终结点的应用类型](active-directory-v2-flows.md)。
+v2.0 终结点目前不支持以下应用类型。 有关支持的应用类型的说明，请参阅 [Azure Active Directory v2.0 终结点的应用类型](v2-app-types.md)。
 
 ### <a name="standalone-web-apis"></a>独立 Web API
 
-可以使用 v2.0 终结点[生成 OAuth 2.0 保护的 Web API](active-directory-v2-flows.md#web-apis)。 但是，该 Web API 只能从应用程序 ID 相同的应用程序接收令牌。 不能从应用程序 ID 不同的客户端访问 Web API。 该客户端无法请求或获取对 Web API 的权限。
+可以使用 v2.0 终结点[生成 OAuth 2.0 保护的 Web API](v2-app-types.md#web-apis)。 但是，该 Web API 只能从应用程序 ID 相同的应用程序接收令牌。 不能从应用程序 ID 不同的客户端访问 Web API。 该客户端无法请求或获取对 Web API 的权限。
 
 若要了解如何构建从应用程序 ID 相同的客户端接受令牌的 Web API，请参阅[入门](active-directory-appmodel-v2-overview.md#getting-started)部分中的 v2.0 终结点 Web API 示例。
 
@@ -91,16 +91,16 @@ v2.0 终结点目前不支持以下应用类型。 有关支持的应用类型�
 
 另请注意，只能为特定应用程序设置 20 个答复 URL。
 
-若要了解如何在应用程序注册门户中注册应用，请参阅[如何使用 v2.0 终结点注册应用](active-directory-v2-app-registration.md)。
+若要了解如何在应用程序注册门户中注册应用，请参阅[如何使用 v2.0 终结点注册应用](quickstart-v2-register-an-app.md)。
 
 ## <a name="restrictions-on-libraries-and-sdks"></a>库和 SDK 限制
 
 当前，对 v2.0 终结点的库支持有所限制。 如果想要在生产应用程序中使用 v2.0 终结点，可使用以下选项：
 
 * 如果要构建 Web 应用程序，可以放心使用 Microsoft 正式版服务器端中间件来执行登录和令牌验证。 其中包括适用于 ASP.NET 的 OWIN Open ID Connect 中间件和 Node.js Passport 插件。 有关使用 Microsoft 中间件的代码示例，请参阅[入门](active-directory-appmodel-v2-overview.md#getting-started)部分。
-* 若要构建桌面或移动应用程序，可以使用一个预览版 Microsoft 身份验证库 (MSAL)。 这些库当前是支持生产的预览版，因此可在生产应用程序中放心使用。 有关预览版和可用库的术语的详细信息，请阅读[身份验证库参考](active-directory-v2-libraries.md)中的内容。
+* 若要构建桌面或移动应用程序，可以使用一个预览版 Microsoft 身份验证库 (MSAL)。 这些库当前是支持生产的预览版，因此可在生产应用程序中放心使用。 有关预览版和可用库的术语的详细信息，请阅读[身份验证库参考](reference-v2-libraries.md)中的内容。
 * 对于 Microsoft 库不支持的平台，可以通过直接在应用程序代码中发送和接收协议消息来与 v2.0 终结点进行集成。 v2.0 OpenID Connect 和 OAuth 协议[有明确的说明文档](active-directory-v2-protocols.md)，可帮助执行此类集成。
-* 最后，可以使用开源 Open ID Connect 和 OAuth 库来与 v2.0 终结点集成。 v2.0 协议应与许多开源协议库兼容，不需要进行重大更改。 这些类型的库的可用性根据语言和平台而有所差异。 [Open ID Connect](http://openid.net/connect/) 和 [OAuth 2.0](http://oauth.net/2/) 网站将维护一份热门实现列表。 有关详细信息和经过 v2.0 终结点检验的开放源代码客户端库和示例列表，请参阅 [Azure Active Directory v2.0 身份验证库](active-directory-v2-libraries.md)。
+* 最后，可以使用开源 Open ID Connect 和 OAuth 库来与 v2.0 终结点集成。 v2.0 协议应与许多开源协议库兼容，不需要进行重大更改。 这些类型的库的可用性根据语言和平台而有所差异。 [Open ID Connect](http://openid.net/connect/) 和 [OAuth 2.0](http://oauth.net/2/) 网站将维护一份热门实现列表。 有关详细信息和经过 v2.0 终结点检验的开放源代码客户端库和示例列表，请参阅 [Azure Active Directory v2.0 身份验证库](reference-v2-libraries.md)。
 
 ## <a name="restrictions-on-protocols"></a>协议限制
 

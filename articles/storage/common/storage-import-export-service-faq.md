@@ -2,18 +2,18 @@
 title: Azure 导入/导出服务常见问题解答 | Microsoft Docs
 description: 阅读有关 Azure 导入导出服务的常见问题解答。
 author: alkohli
-manager: jeconnoc
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: alkohli
-ms.openlocfilehash: d324025a50346415de8232af4adc487a5d907331
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.component: common
+ms.openlocfilehash: 6a2d067625e96aefdcb0197e1abb13b0c41fbe7f
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031390"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521432"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure 导入/导出服务：常见问题解答 
 下面是你在使用 Azure 导入/导出服务将数据传输到 Azure 存储时可能会提出的问题及其解答。 问题和解答分为以下几个类别：

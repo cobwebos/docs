@@ -16,12 +16,12 @@ ms.workload: big-compute
 ms.date: 04/24/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7f2d0b261a991dc02b670488c14392697ea984ec
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 65f8eb0752a181eda312515e557bb733c091e2e5
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30316947"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505373"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>通过用于 .NET 的 Batch Management 客户端库管理 Batch 帐户和配额
 
@@ -176,10 +176,10 @@ Batch 管理 .NET 库是 Azure 资源提供程序客户端，与 [Azure 资源�
 要成功运行示例应用程序，必须首先在 Azure 门户中将其注册到 Azure AD 租户，并向 Azure 资源管理器 API 授予权限。 按照[使用 Azure AD 对 Batch 管理应用程序进行验证](batch-aad-auth-management.md)中提供的步骤操作。
 
 
-[aad_about]: ../active-directory/active-directory-whatis.md "什么是 Azure Active Directory？"
+[aad_about]:../active-directory/fundamentals/active-directory-whatis.md "什么是 Azure Active Directory？"
 [aad_adal]: ../active-directory/active-directory-authentication-libraries.md
-[aad_auth_scenarios]: ../active-directory/active-directory-authentication-scenarios.md "Azure AD 的身份验证方案"
-[aad_integrate]: ../active-directory/active-directory-integrating-applications.md "将应用程序与 Azure Active Directory 集成"
+[aad_auth_scenarios]:../active-directory/develop/authentication-scenarios.md "Azure AD 的身份验证方案"
+[aad_integrate]:../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md "将应用程序与 Azure Active Directory 集成"
 [acct_mgmt_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/AccountManagement
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_mgmt_net]: https://msdn.microsoft.com/library/azure/mt463120.aspx

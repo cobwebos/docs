@@ -2,23 +2,18 @@
 title: Azure 存储表设计模式 | Microsoft Docs
 description: 使用适用于 Azure 表服务解决方案的模式。
 services: storage
-documentationcenter: na
 author: MarkMcGeeAtAquent
-manager: kfile
-ms.assetid: 8e228b0c-2998-4462-8101-9f16517393ca
 ms.service: storage
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
 ms.date: 04/23/2018
 ms.author: sngun
-ms.openlocfilehash: db621cdd6d38cb2f235c45c9bfcb76677ed6ba17
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.component: tables
+ms.openlocfilehash: b06f5a66566c250eef608ddccc551aaebe24ef74
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39227761"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522792"
 ---
 # <a name="table-design-patterns"></a>表设计模式
 本文介绍适用于表服务解决方案的一些模式。 此外，还将了解如何实际解决其他表存储设计文章中提出的一些问题和权衡。 下图总结了不同模式之间的关系：  

@@ -2,24 +2,18 @@
 title: 将 Azure CLI 1.0 用于 Azure 存储 | Microsoft Docs
 description: 了解如何将 Azure 命令行接口 (Azure CLI) 1.0 用于 Azure 存储，以便创建和管理存储帐户并处理 Azure blob 和文件。 Azure CLI 是一个跨平台工具
 services: storage
-documentationcenter: na
 author: seguler
-manager: jahogg
-editor: tysonn
-ms.assetid: b502232a-e8f6-4d6c-befd-3476592e0e35
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
-ms.openlocfilehash: 1e2c2dc45f2cb91ca225bf183ddde5fa2d1123c4
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.component: common
+ms.openlocfilehash: f406f12b3313670e8e2d89296f7c24478bb58c6c
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36936983"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521500"
 ---
 # <a name="using-the-azure-cli-10-with-azure-storage"></a>将 Azure CLI 1.0 用于 Azure 存储
 
@@ -41,7 +35,7 @@ Azure CLI 提供了一组开源且跨平台的命令，这些命令可以用于 
 ## <a name="get-started-with-azure-storage-and-the-azure-cli-in-5-minutes"></a>在 5 分钟内开始使用 Azure 存储和 Azure CLI
 本指南使用 Ubuntu 作为示例，但其他 OS 平台的操作应与此类似。
 
-**Azure 新用户：** 获取一个 Microsoft Azure 订阅以及与该订阅关联的 Microsoft 帐户。 有关 Azure 购买选项的信息，请参阅[免费试用](https://azure.microsoft.com/pricing/free-trial/)、[购买选项](https://azure.microsoft.com/pricing/purchase-options/)和[成员优惠](https://azure.microsoft.com/pricing/member-offers/)（适用于 MSDN、Microsoft 合作伙伴网络和 BizSpark 以及其他 Microsoft 计划的成员）。
+**Azure 新用户：** 获取一个 Microsoft Azure 订阅以及与该订阅关联的 Microsoft 帐户。 有关 Azure 购买选项的信息，请参阅[免费试用](https://azure.microsoft.com/pricing/free-trial/)、[购买选项](https://azure.microsoft.com/pricing/purchase-options/)和[会员套餐](https://azure.microsoft.com/pricing/member-offers/)（适用于 MSDN、Microsoft 合作伙伴网络和 BizSpark 以及其他 Microsoft 计划的成员）。
 
 请参阅[在 Azure Active Directory (Azure AD) 中分配管理员角色](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)，以了解有关 Azure 订阅的更多信息。
 

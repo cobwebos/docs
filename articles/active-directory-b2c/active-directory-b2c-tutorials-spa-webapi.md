@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 5b99f60c1bd81b77a5fc2be5575f65fc63eb0c11
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: a2fbdebfc800c33a99b19b366209aeabb03fe115
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34711087"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590827"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-app-using-azure-active-directory-b2c"></a>教程：从单页应用使用 Azure Active Directory B2C 授予对 ASP.NET Core Web API 的访问权限
 
@@ -40,7 +40,7 @@ ms.locfileid: "34711087"
 
 ## <a name="register-web-api"></a>注册 Web API
 
-Web API 资源需要先在租户中注册，然后才能接受并响应通过 Azure Active Directory 提供[访问令牌](../active-directory/develop/active-directory-dev-glossary.md#access-token)的[客户端应用程序](../active-directory/develop/active-directory-dev-glossary.md#client-application)所提出的[受保护资源请求](../active-directory/develop/active-directory-dev-glossary.md#resource-server)。 注册时，会在租户中构建[应用程序和服务主体对象](../active-directory/develop/active-directory-dev-glossary.md#application-object)。 
+Web API 资源需要先在租户中注册，然后才能接受并响应通过 Azure Active Directory 提供[访问令牌](../active-directory/develop/developer-glossary.md#access-token)的[客户端应用程序](../active-directory/develop/developer-glossary.md#client-application)所提出的[受保护资源请求](../active-directory/develop/developer-glossary.md#resource-server)。 注册时，会在租户中构建[应用程序和服务主体对象](../active-directory/develop/developer-glossary.md#application-object)。 
 
 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
 
@@ -60,7 +60,7 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过 Az
     | 包括 Web 应用/Web API | 是 | 对于 Web API，请选择“是”。 |
     | 允许隐式流 | 是 | 选择“是”，因为 API 使用 [OpenID Connect 登录](active-directory-b2c-reference-oidc.md)。 |
     | 回复 URL | `http://localhost:44332` | 回复 URL 属于终结点，允许 Azure AD B2C 在其中返回 API 请求的任何令牌。 在本教程中，示例 Web API 在本地 (localhost) 运行，并在端口 5000 上进行侦听。 |
-    | 应用 ID URI | HelloCoreAPI | 此 URI 可唯一标识租户中的 API。 这样即可每个租户注册多个 API。 [作用域](../active-directory/develop/active-directory-dev-glossary.md#scopes)控制对受保护 API 资源的访问，是按 App ID URI 来定义的。 |
+    | 应用 ID URI | HelloCoreAPI | 此 URI 可唯一标识租户中的 API。 这样即可每个租户注册多个 API。 [作用域](../active-directory/develop/developer-glossary.md#scopes)控制对受保护 API 资源的访问，是按 App ID URI 来定义的。 |
     | 本机客户端 | 否 | 由于这是 Web API，不是本机客户端，因此请选择“否”。 |
     
 3. 单击“创建”以注册 API。
@@ -75,7 +75,7 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过 Az
 
 ## <a name="define-and-configure-scopes"></a>定义并配置作用域
 
-可以通过[作用域](../active-directory/develop/active-directory-dev-glossary.md#scopes)控制对受保护资源的访问。 Web API 使用作用域实施基于作用域的访问控制。 例如，可以让某些用户拥有读取和写入访问权限，让另一些用户拥有只读权限。 在本教程中，你将定义对 Web API 的读取权限。
+可以通过[作用域](../active-directory/develop/developer-glossary.md#scopes)控制对受保护资源的访问。 Web API 使用作用域实施基于作用域的访问控制。 例如，可以让某些用户拥有读取和写入访问权限，让另一些用户拥有只读权限。 在本教程中，你将定义对 Web API 的读取权限。
 
 ### <a name="define-scopes-for-the-web-api"></a>定义 Web API 的作用域
 
@@ -87,7 +87,7 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过 Az
 
 ![在 Web API 中定义的作用域](media/active-directory-b2c-tutorials-spa-webapi/scopes-web-api.png)
 
-| 设置      | 建议的值  | 说明                                        |
+| 设置      | 建议的值  | Description                                        |
 | ------------ | ------- | -------------------------------------------------- |
 | **范围** | demo.read | 对 demo API 的读取访问权限 |
 
@@ -111,7 +111,7 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过 Az
 
 5. 单击“确定”。
 
-这将注册“我的示例单页应用”，以便调用受保护的 **Hello Core API**。 用户通过 Azure AD B2C 进行[身份验证](../active-directory/develop/active-directory-dev-glossary.md#authentication)，以便使用 WPF 桌面应用。 桌面应用从 Azure AD B2C 获取[授权](../active-directory/develop/active-directory-dev-glossary.md#authorization-grant)，以便访问受保护的 Web API。
+这将注册“我的示例单页应用”，以便调用受保护的 **Hello Core API**。 用户通过 Azure AD B2C 进行[身份验证](../active-directory/develop/developer-glossary.md#authentication)，以便使用 WPF 桌面应用。 桌面应用从 Azure AD B2C 获取[授权](../active-directory/develop/developer-glossary.md#authorization-grant)，以便访问受保护的 Web API。
 
 ## <a name="update-code"></a>更新代码
 

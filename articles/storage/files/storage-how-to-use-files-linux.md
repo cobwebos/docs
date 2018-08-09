@@ -2,24 +2,18 @@
 title: 通过 Linux 使用 Azure 文件 | Microsoft Docs
 description: 了解如何在 Linux 上通过 SMB 装载 Azure 文件共享。
 services: storage
-documentationcenter: na
 author: RenaShahMSFT
-manager: aungoo
-editor: tamram
-ms.assetid: 6edc37ce-698f-4d50-8fc1-591ad456175d
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: renash
-ms.openlocfilehash: eda06fbb63352dd71cb0183ebdf683dc2f3a4a4c
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.component: files
+ms.openlocfilehash: 89343f3e4ec91dd32b24cdea6632cecd855cc6f8
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413835"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523217"
 ---
 # <a name="use-azure-files-with-linux"></a>通过 Linux 使用 Azure 文件
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 可以使用 [SMB 内核客户端](https://wiki.samba.org/index.php/LinuxCIFS)在 Linux 分发版中装载 Azure 文件共享。 本文介绍装载 Azure 文件共享的两种方法：使用 `mount` 命令按需装载，以及通过在 `/etc/fstab` 中创建一个条目在启动时装载。

@@ -2,23 +2,19 @@
 title: 使用诊断和消息分析器对 Azure 存储进行故障排除 | Microsoft Docs
 description: 本教程演示如何使用 Azure 存储分析、AzCopy 和 Microsoft Message Analyzer 进行点对点故障排除
 services: storage
-documentationcenter: dotnet
 author: tamram
-manager: timlt
-ms.assetid: 643372a3-1c07-4e88-b4ef-042512a43086
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
-ms.openlocfilehash: 324370ae18627a1985e6a40aec11ee2fa871e93b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.component: common
+ms.openlocfilehash: 7a011bf55f70f3fca9e105613f7e359a2b6071c1
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30323298"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526130"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>使用 Azure 存储指标和日志记录、AzCopy 及 Message Analyzer 进行端到端故障排除
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -263,7 +259,7 @@ Message Analyzer 的存储空间资产包括 Azure 存储视图布局，这是�
 除了使用 Azure 存储视图布局以外，还可以定义并保存自己的视图布局。 可以选择其他所需字段来分组数据，并将分组保存为自定义布局的一部分。
 
 ### <a name="apply-color-rules-to-the-analysis-grid"></a>将颜色规则应用到分析网格
-存储空间资产还包括颜色规则，用于以直观方式在分析网格中标识不同类型的错误。 预定义的颜色规则将应用到 HTTP 错误，因此它们仅对服务器日志和网络跟踪显示。
+存储资产还包括颜色规则，用于以直观方式在分析网格中标识不同类型的错误。 预定义的颜色规则将应用到 HTTP 错误，因此它们仅对服务器日志和网络跟踪显示。
 
 若要应用颜色规则，请从工具栏功能区中选择“颜色规则”。 将在菜单中看到 Azure 存储颜色规则。 对于本教程，请选择“客户端错误(介于 400 和 499 之间的状态代码)”，如下图中所示。
 
@@ -367,5 +363,5 @@ Message Analyzer 将查找并选择搜索条件匹配客户端请求 ID 的第�
 * [监视、诊断和排查 Microsoft Azure 存储问题](storage-monitoring-diagnosing-troubleshooting.md)
 * [存储分析](http://msdn.microsoft.com/library/azure/hh343270.aspx)
 * [在 Azure 门户中监视存储帐户](storage-monitor-storage-account.md)
-* [使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)
+* [使用 AzCopy 命令行实用工具传输数据](storage-use-azcopy.md)
 * [Microsoft Message Analyzer Operating Guide](http://technet.microsoft.com/library/jj649776.aspx)（Microsoft Message Analyzer 操作指南）

@@ -2,19 +2,20 @@
 title: 监视和提高性能 - Azure SQL 数据库 | Microsoft Docs
 description: Azure SQL 数据库提供的性能工具有助于发现可以提高当前查询性能的方面。
 services: sql-database
-author: stevestein
+author: danimir
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.author: sstein
-ms.openlocfilehash: 7d1fa8d05de11ed68bedbc91fbe22aa64b25372e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: v-daljep
+ms.reviewer: carlrab
+ms.openlocfilehash: 8a458af27bd517be7c3ce0b5ad30c6d575d494c0
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650377"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522435"
 ---
 # <a name="monitor-and-improve-performance"></a>监视和提高性能
 Azure SQL 数据库确定数据库中的潜在问题，并通过提供智能优化操作和建议来建议可以提高工作负荷性能的操作。

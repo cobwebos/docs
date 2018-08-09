@@ -1,20 +1,20 @@
 ---
 title: 使用 Azure IoT 中心设备预配服务预配设备 | Microsoft Docs
 description: 使用 Azure IoT 中心设备预配服务将设备预配到单个 IoT 中心
-author: dsk-2015
-ms.author: dkshir
+author: wesmc7777
+ms.author: wesmc
 ms.date: 04/12/2018
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: c4355d6bebe00650a6fb4e2f2a6e400be30722b2
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 1b9d6342d30c5f5e9ef80213664447c48a62494c
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145122"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521894"
 ---
 # <a name="provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中心设备预配服务将设备预配到 IoT 中心
 

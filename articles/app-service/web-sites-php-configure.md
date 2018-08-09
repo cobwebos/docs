@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: d7b832659272f01b6e939150fa89626620d5eab7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6e7de0a7b580c0028982895487117ab98d0cd612
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32153552"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503445"
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>在 Azure 应用服务 Web 应用中配置 PHP
 
@@ -102,7 +102,7 @@ PHP 7.0 和 PHP 7.2 也可用，但它们在默认情况下不启用。 若要�
 
 1. 向 Web 应用添加一个键为 `PHP_INI_SCAN_DIR` 且值为 `d:\home\site\ini` 的应用设置
 1. 使用 Kudu 控制器 (http://&lt;site-name&gt;.scm.azurewebsite.net) 在 `d:\home\site\ini` 目录中创建一个 `settings.ini` 文件。
-1. 使用会在 php.ini 文件中使用的语法，将配置设置添加到 `settings.ini` 文件。 例如，如果希望将 `curl.cainfo` 设置指向 `*.crt` 文件并将“wincache.maxfilesize”设置为 512K，则 `settings.ini` 文件应包含以下文本：
+1. 使用会在 `php.ini` 文件中使用的语法，将配置设置添加到 `settings.ini` 文件。 例如，如果希望将 `curl.cainfo` 设置指向 `*.crt` 文件并将“wincache.maxfilesize”设置为 512K，则 `settings.ini` 文件应包含以下文本：
 
         ; Example Settings
         curl.cainfo="%ProgramFiles(x86)%\Git\bin\curl-ca-bundle.crt"
@@ -119,7 +119,7 @@ PHP 7.0 和 PHP 7.2 也可用，但它们在默认情况下不启用。 若要�
 1. 将 `.dll` 扩展文件置于 `ext` 目录中（例如 `php_xdebug.dll`）。 确保扩展与默认版本的 PHP兼容，并且是 VC9 版本且与非线程安全 (nts) 兼容。
 1. 向 Web 应用添加一个键为 `PHP_INI_SCAN_DIR` 且值为 `d:\home\site\ini` 的应用设置
 1. 在 `d:\home\site\ini` 中创建名为 `extensions.ini` 的 `ini` 文件。
-1. 使用会在 php.ini 文件中使用的语法，将配置设置添加到 `extensions.ini` 文件。 例如，如果想要启用 MongoDB 和 XDebug 扩展，则 `extensions.ini` 文件应包含以下文本：
+1. 使用会在 `php.ini` 文件中使用的语法，将配置设置添加到 `extensions.ini` 文件。 例如，如果想要启用 MongoDB 和 XDebug 扩展，则 `extensions.ini` 文件应包含以下文本：
 
         ; Enable Extensions
         extension=d:\home\site\ext\php_mongo.dll

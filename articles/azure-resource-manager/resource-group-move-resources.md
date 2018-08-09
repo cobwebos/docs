@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 4f73b6d735997b663ca6769aaceaf363b6d3eda7
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 69614fe84941ea2003d39de165c692b812d10785
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346478"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503574"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -38,7 +38,7 @@ ms.locfileid: "37346478"
 
 移动资源之前需执行的一些重要步骤。 验证这些条件可以避免错误。
 
-1. 源订阅与目标订阅必须在同一个 [Azure Active Directory 租户](../active-directory/active-directory-howto-tenant.md)中。 若要检查这两个订阅是否具有相同的租户 ID，请使用 Azure PowerShell 或 Azure CLI。
+1. 源订阅与目标订阅必须在同一个 [Azure Active Directory 租户](../active-directory/develop/quickstart-create-new-tenant.md)中。 若要检查这两个订阅是否具有相同的租户 ID，请使用 Azure PowerShell 或 Azure CLI。
 
   对于 Azure PowerShell，请使用：
 
@@ -199,7 +199,7 @@ ms.locfileid: "37346478"
 * 公共 IP - 请参阅[公共 IP 限制](#pip-limitations)
 * 恢复服务保管库 - 此外，也不可以移动与恢复服务保管库关联的计算、网络和存储资源，请参阅[恢复服务限制](#recovery-services-limitations)。
 * Azure 上的 SAP HANA
-* “安全”
+* 安全
 * Site Recovery
 * StorSimple 设备管理器
 * 虚拟网络（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
@@ -412,7 +412,7 @@ Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId $webapp.Res
 
 ## <a name="use-azure-cli"></a>使用 Azure CLI
 
-若要将现有资源移动到另一个资源组或订阅，请使用 [az resource move](/cli/azure/resource?view=azure-cli-latest#az_resource_move) 命令。 提供要移动的资源的资源 ID。 下面的示例演示了如何将多个资源移动到新的资源组。 在 `--ids` 参数中，提供要移动的资源 ID 的空格分隔列表。
+若要将现有资源移动到另一个资源组或订阅，请使用 [az resource move](/cli/azure/resource?view=azure-cli-latest#az-resource-move) 命令。 提供要移动的资源的资源 ID。 下面的示例演示了如何将多个资源移动到新的资源组。 在 `--ids` 参数中，提供要移动的资源 ID 的空格分隔列表。
 
 ```azurecli
 webapp=$(az resource show -g OldRG -n ExampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)

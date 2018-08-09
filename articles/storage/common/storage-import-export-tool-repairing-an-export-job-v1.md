@@ -2,24 +2,18 @@
 title: 修复 Azure 导入/导出服务的导出作业 - v1 | Microsoft Docs
 description: 了解如何使用 Azure 导入/导出服务修复已创建和运行的导出作业。
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 728e2a42-04ce-4be8-9375-e9e2bc6827a5
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 57ab58fa1fd8371d0b6f019f94bb162bcc1e0e43
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: ef5a5f81c5eb3994f62469139c6e835bd802eaa9
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23059672"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522717"
 ---
 # <a name="repairing-an-export-job"></a>修复导出作业
 在完成导出作业后，可以在本地运行 Microsoft Azure 导入/导出工具来执行以下操作：  
@@ -36,7 +30,7 @@ ms.locfileid: "23059672"
 
 可以使用 **RepairExport** 指定以下参数：  
   
-|参数|说明|  
+|参数|Description|  
 |---------------|-----------------|  
 |**/r:<RepairFile\>**|必需。 修复文件的路径。该文件用于跟踪修复进度，以及恢复已中断的修复。 每个驱动器都必须有且仅有一个修复文件。 在开始对某个给定驱动器进行修复时，会传入尚不存在的某个修复文件的路径。 若要恢复已中断的修复，应该传入现有修复文件的名称。 始终必须指定与目标驱动器对应的修复文件。|  
 |**/logdir:<LogDirectory\>**|可选。 日志目录。 详细日志文件将写入此目录。 如果未指定任何日志目录，将使用当前目录作为日志目录。|  

@@ -10,16 +10,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: protection
+ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: f963e63aa92e15205f20ecb3e502065b8dd2c58c
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f88c4a2f7e6eb569c9c0de33ab86e8b484a923e3
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443063"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622875"
 ---
 # <a name="perform-access-reviews-in-azure-resources-by-using-privileged-identity-management"></a>使用 Privileged Identity Management 执行 Azure 资源的访问评审
 当用户有不再需要的特权访问时，角色分配将变为“过时”。 为了降低与这些过时角色分配相关联的风险，特权角色管理员应定期审阅角色。 本文档包含在 Privileged Identity Management (PIM) 中为 Azure 资源启动访问评审的相关步骤。

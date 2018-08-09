@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f739917b201d5255716d22930d7c4bd9e6602f37
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 62a55672a4326df585fc84699dfd72424be362dc
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224511"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627485"
 ---
 # <a name="configure-named-locations-in-azure-active-directory"></a>在 Azure Active Directory 中配置命名位置
 
 通过命名位置，可在组织中标记受信任的 IP 地址范围。 Azure Active Directory 在以下情况中使用命名位置：
 
-- 检测[风险事件](active-directory-reporting-risk-events.md)，减少报告的误报数量。  
+- 检测[风险事件](reports-monitoring/concept-risk-events.md)，减少报告的误报数量。  
 
-- [基于位置的条件性访问](active-directory-conditional-access-locations.md)。
+- [基于位置的条件性访问](conditional-access/location-condition.md)。
 
 
 本文介绍如何在环境中配置命名位置。
@@ -97,8 +97,8 @@ ms.locfileid: "39224511"
 
 - [Azure Active Directory 中的条件访问](active-directory-conditional-access-azure-portal.md)。
 
-- [Azure Active Directory 条件访问中的位置条件](active-directory-conditional-access-locations.md)
+- [Azure Active Directory 条件访问中的位置条件](conditional-access/location-condition.md)
 
-- [Azure Active Directory 风险事件](active-directory-reporting-risk-events.md)。
+- [Azure Active Directory 风险事件](reports-monitoring/concept-risk-events.md)。
 
-- [Azure Active Directory 门户中的“有风险的登录”报告](active-directory-reporting-security-risky-sign-ins.md)。  
+- [Azure Active Directory 门户中的“有风险的登录”报告](reports-monitoring/concept-risky-sign-ins.md)。  

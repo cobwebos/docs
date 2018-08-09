@@ -12,15 +12,15 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: maheshu
-ms.openlocfilehash: 7e7786ac36485a792e9c77b10925f01790f95ab1
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f791993a95534f66097e3e7e22141bf34e311f21
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218191"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39504543"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>解决现有 Azure AD 域服务托管域的不匹配目录错误
 你有一个现有 Azure AD 域服务托管域。 导航到 Azure 门户并查看托管域时，会看到以下错误消息：

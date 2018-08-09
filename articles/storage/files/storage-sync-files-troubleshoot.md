@@ -2,26 +2,21 @@
 title: 对 Azure 文件同步进行故障排除 | Microsoft Docs
 description: 对 Azure 文件同步的常见问题进行故障排除
 services: storage
-documentationcenter: ''
 author: jeffpatt24
-manager: aungoo
-ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: jeffpatt
-ms.openlocfilehash: ad82cde2dc6048c5a87766b21bd38ed3fbc6bd39
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.component: files
+ms.openlocfilehash: 1475e1955a282581c66235c13d4dbe7153735a35
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173275"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526736"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
-使用 Azure 文件同步，可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
+使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
 
 本文旨在帮助排查和解决在 Azure 文件同步部署中可能遇到的问题。 此外，还介绍了在需要对问题进行更深入调查的情况下，如何从系统收集重要日志。 如果本文未能涵盖你的问题，欢迎通过以下渠道联系我们（以升序排列）：
 
@@ -328,7 +323,7 @@ PerItemErrorCount: 1006.
 
 1. 导航到存储同步服务中的同步组。
 2. 选择同步组中的云终结点。
-3. 注意打开的窗格中的 Azure 文件共享名称。
+3. 记下打开的窗格中的 Azure 文件共享名称。
 4. 选择链接的存储帐户。 如果此链接不起作用，则表示引用的存储帐户已删除。
 
     ![显示云终结点详细信息窗格（包含存储帐户的链接）的屏幕截图。](media/storage-sync-files-troubleshoot/file-share-inaccessible-1.png)

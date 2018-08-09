@@ -3,18 +3,18 @@ title: 通过 .NET 开始使用 Azure 队列存储 | Microsoft Docs
 description: Azure 队列用于在应用程序组件之间进行可靠的异步消息传送。 应用程序组件可以利用云消息传送进行独立缩放。
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 06/13/2018
 ms.author: tamram
-ms.openlocfilehash: 685f333fd0659db54c9d6bf4b061cf4c9aec7cda
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.component: queues
+ms.openlocfilehash: 25efad05fd0c7dd613d7dfbd5704255f9761d174
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38722739"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523074"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>通过 .NET 开始使用 Azure 队列存储
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]

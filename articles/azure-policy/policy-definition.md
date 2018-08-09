@@ -1,25 +1,25 @@
 ---
-title: Azure 策略定义结构
-description: 介绍 Azure 策略如何使用资源策略定义，通过描述何时强制实施策略和要实现的效果为组织中的资源建立约定。
+title: Azure Policy 定义结构
+description: 介绍 Azure Policy 如何使用资源策略定义，通过描述何时强制实施策略和要实现的效果为组织中的资源建立约定。
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/24/2018
+ms.date: 08/03/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 7f01464c4b9063f20a83c3626d7f92a5e0524f7a
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: ced8ebad0122973595cdede4497cd200e3090043
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989119"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524101"
 ---
-# <a name="azure-policy-definition-structure"></a>Azure 策略定义结构
+# <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
-Azure 策略使用的资源策略定义，可使你通过描述何时强制实施策略和要实现的效果为组织中的资源建立约定。 通过定义约定，可以控制成本并更轻松地管理资源。 例如，可指定仅允许特定类型的虚拟机。 或者，可要求所有资源都拥有特定标记。 策略由所有子资源继承。 因此，如果将策略应用到资源组，则会将其应用到该资源组中的所有资源。
+Azure Policy 使用的资源策略定义，可使你通过描述何时强制实施策略和要实现的效果为组织中的资源建立约定。 通过定义约定，可以控制成本并更轻松地管理资源。 例如，可指定仅允许特定类型的虚拟机。 或者，可要求所有资源都拥有特定标记。 策略由所有子资源继承。 因此，如果将策略应用到资源组，则会将其应用到该资源组中的所有资源。
 
-可以在此处找到 Azure 策略使用的架构：[https://schema.management.azure.com/schemas/2016-12-01/policyDefinition.json](https://schema.management.azure.com/schemas/2016-12-01/policyDefinition.json)
+可以在此处找到 Azure Policy 使用的架构：[https://schema.management.azure.com/schemas/2016-12-01/policyDefinition.json](https://schema.management.azure.com/schemas/2016-12-01/policyDefinition.json)
 
 使用 JSON 创建策略定义。 策略定义包含以下项的元素：
 
@@ -64,7 +64,7 @@ Azure 策略使用的资源策略定义，可使你通过描述何时强制实�
 }
 ```
 
-所有 Azure 策略示例均位于[策略示例](json-samples.md)内。
+所有 Azure Policy 示例均位于[策略示例](json-samples.md)内。
 
 ## <a name="mode"></a>Mode
 
@@ -219,19 +219,6 @@ Azure 策略使用的资源策略定义，可使你通过描述何时强制实�
   - 示例：`tags.[Acct.CostCenter]`，其中 **Acct.CostCenter** 是标记的名称。
 - 属性别名 - 有关列表，请参阅[别名](#aliases)。
 
-### <a name="alternative-accessors"></a>可供选择的取值函数
-
-“Field”是策略规则中使用的主要取值函数。 它会直接检查被评估的资源。 而策略支持另一个取值函数“source”。
-
-```json
-"source": "action",
-"equals": "Microsoft.Compute/virtualMachines/write"
-```
-
-“source”只支持一个值，就是“action”。 “action”返回被评估请求的授权操作。 [活动日志](../monitoring-and-diagnostics/monitoring-activity-log-schema.md)中的授权部分公开了授权操作。
-
-当策略在后台评估现有资源时，它将“action”设为对此资源类型的 `/write` 授权操作。
-
 ### <a name="effect"></a>效果
 
 策略支持以下类型的效果：
@@ -263,7 +250,7 @@ Azure 策略使用的资源策略定义，可使你通过描述何时强制实�
 
 可以使用属性别名来访问资源类型的特定属性。 通过别名，可限制允许用于特定资源属性的值和条件。 每个别名会映射到给定资源类型不同 API 版本的路径。 在策略评估期间，策略引擎会获取该 API 版本的属性路径。
 
-别名列表始终不断增长。 要发现 Azure 策略当前支持哪些别名，请使用以下方法之一：
+别名列表始终不断增长。 要发现 Azure Policy 当前支持哪些别名，请使用以下方法之一：
 
 - Azure PowerShell
 
@@ -275,33 +262,44 @@ Azure 策略使用的资源策略定义，可使你通过描述何时强制实�
   $profileClient = New-Object -TypeName Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient -ArgumentList ($azProfile)
   $token = $profileClient.AcquireAccessToken($azContext.Subscription.TenantId)
   $authHeader = @{
-      'Content-Type'='application/json'
-      'Authorization'='Bearer ' + $token.AccessToken
+    'Authorization'='Bearer ' + $token.AccessToken
+  }
+
+  # Create a splatting variable for Invoke-RestMethod
+  $invokeRest = @{
+    Uri = 'https://management.azure.com/providers/?api-version=2017-08-01&$expand=resourceTypes/aliases'
+    Method = 'Get'
+    ContentType = 'application/json'
+    Headers = $authHeader
   }
 
   # Invoke the REST API
-  $response = Invoke-RestMethod -Uri 'https://management.azure.com/providers/?api-version=2017-08-01&$expand=resourceTypes/aliases' -Method Get -Headers $authHeader
+  $response = Invoke-RestMethod @invokeRest
 
-  # Create an Array List to hold discovered aliases
-  $aliases = New-Object System.Collections.ArrayList
+  # Create an List to hold discovered aliases
+  $aliases = [System.Collections.Generic.List[pscustomobject]]::new()
 
-  foreach ($ns in $response.value) {
-      foreach ($rT in $ns.resourceTypes) {
-          if ($rT.aliases) {
-              foreach ($obj in $rT.aliases) {
+  foreach ($ns in $response.value)
+  {
+      foreach ($rT in $ns.resourceTypes)
+      {
+          if ($rT.aliases)
+          {
+              foreach ($obj in $rT.aliases)
+              {
                   $alias = [PSCustomObject]@{
-                      Namespace       = $ns.namespace
-                      resourceType    = $rT.resourceType
-                      alias           = $obj.name
+                      Namespace    = $ns.namespace
+                      resourceType = $rT.resourceType
+                      alias        = $obj.name
                   }
-                  $aliases.Add($alias) | Out-Null
+                  $aliases.Add($alias)
               }
           }
       }
   }
 
-  # Output the list, sort, and format. You can customize with Where-Object to limit as desired.
-  $aliases | Sort-Object -Property Namespace, resourceType, alias | Format-Table
+  # Output the list and sort it by Namespace, resourceType and alias. You can customize with Where-Object to limit as desired.
+  $aliases | Sort-Object -Property Namespace, resourceType, alias
   ```
 
 - Azure CLI
@@ -309,7 +307,10 @@ Azure 策略使用的资源策略定义，可使你通过描述何时强制实�
   ```azurecli-interactive
   # Login first with az login if not using Cloud Shell
 
-  # Get Azure Policy aliases for a specific Namespace
+  # List namespaces
+  az provider list --query [*].namespace
+
+  # Get Azure Policy aliases for a specific Namespace (such as Azure Automation -- Microsoft.Automation)
   az provider show --namespace Microsoft.Automation --expand "resourceTypes/aliases" --query "resourceTypes[].aliases[].name"
   ```
 
@@ -399,4 +400,4 @@ Azure 策略使用的资源策略定义，可使你通过描述何时强制实�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关更多示例，请参阅 [Azure 策略示例](json-samples.md)。
+- 在 [Azure Policy 示例](json-samples.md)中查看更多示例。

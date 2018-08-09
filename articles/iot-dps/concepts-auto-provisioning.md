@@ -1,19 +1,19 @@
 ---
 title: IoT 中心设备预配服务 - 自动预配的概念
 description: 本文提供使用 IoT 设备预配服务、IoT 中心和客户端 SDK 自动预配设备所要经历的阶段的概念性概述。
-author: BryanLa
-ms.author: bryanla
+author: wesmc7777
+ms.author: wesmc
 ms.date: 06/01/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: a5ac8b6116eebb400c12d50de010b93bded268ff
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 9a45f8269e0ca2bc4188016af0ace06831c762b6
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736400"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521272"
 ---
 # <a name="auto-provisioning-concepts"></a>自动预配的概念
 
@@ -47,7 +47,7 @@ ms.locfileid: "34736400"
 
 左侧目录中提供了快速入门系列教程，旨在帮助通过实践解释自动预配。 为了促进/简化学习过程，我们将使用软件来模拟用于登记和注册的物理设备。 某些快速入门要求完成多个角色的操作，包括不存在的角色的操作（因为快速入门中所述的设备是模拟性的）。
 
-| 角色 | Operation | 说明 | 
+| 角色 | Operation | Description | 
 |------| --------- | ------------| 
 | 制造商 | 为标识和注册 URL 编码 | 根据所用的认证机制，制造商需负责为设备标识信息和设备预配服务注册 URL 编码。<br><br>**快速入门**：由于设备是模拟的，因此不存在制造商角色。 有关如何获取这些信息以便在编写示例注册应用程序代码时使用的详细信息，请参阅“开发人员角色”。 |  
 | | 提供设备标识 | 作为设备标识信息的发起者，制造商需负责通信向操作员（或指定的代理）传递这些信息，或者通过 API 将其直接登记到设备预配服务。<br><br>**快速入门**：由于设备是模拟的，因此不存在制造商角色。 有关如何获取在设备预配服务实例中登记模拟设备时所用的设备标识的详细信息，请参阅“操作员角色”。 | 

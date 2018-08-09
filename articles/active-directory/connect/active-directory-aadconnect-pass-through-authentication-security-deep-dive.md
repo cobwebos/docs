@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ad4567ffb927694872d5b86dd38833466f944ca8
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: f220e0b6dd5abb596128ba84af89d0e725f66117
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215078"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521959"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory 直通身份验证安全性深入研究
 
@@ -44,7 +44,7 @@ ms.locfileid: "39215078"
   - 如需网络安全的完整列表，请参阅 [Azure Active Directory 直通身份验证：快速入门](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-1-check-the-prerequisites)。
 - 用户在登录期间提供的密码将在云中加密，再由本地身份验证代理接受，通过 Active Directory 进行验证。
 - 通过相互进行身份验证保护 Azure AD 和本地身份验证代理之间的 HTTPS 通道。
-- 可通过与 [Azure AD 条件访问策略](../active-directory-conditional-access-azure-portal.md)（包括多重身份验证 (MFA)、[阻止旧式身份验证](../active-directory-conditional-access-conditions.md)）无缝协作，也可通过[筛选暴力破解密码攻击](../authentication/howto-password-smart-lockout.md)来保护用户帐户。
+- 可通过与 [Azure AD 条件访问策略](../active-directory-conditional-access-azure-portal.md)（包括多重身份验证 (MFA)、[阻止旧式身份验证](../conditional-access/conditions.md)）无缝协作，也可通过[筛选暴力破解密码攻击](../authentication/howto-password-smart-lockout.md)来保护用户帐户。
 
 ## <a name="components-involved"></a>涉及的组件
 

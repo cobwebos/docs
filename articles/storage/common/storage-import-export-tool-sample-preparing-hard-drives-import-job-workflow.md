@@ -2,24 +2,18 @@
 title: 为 Azure 导入/导出服务的导入作业准备硬盘驱动器的示例工作流 | Microsoft Docs
 description: 请参阅为 Azure 导入/导出服务中的导入作业准备驱动器的完整过程演练。
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: muralikk
-ms.openlocfilehash: 60139ff36b66432620591ceaf201e046ad30217f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: b21c378d58590e33c7b6aeffe627ce5602074fa2
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23059532"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524614"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>为导入作业准备硬盘驱动器的示例工作流
 
@@ -29,7 +23,7 @@ ms.locfileid: "23059532"
 
 本示例将以下数据导入到名为 `mystorageaccount` 的 Azure 存储帐户：
 
-|位置|说明|数据大小|
+|位置|Description|数据大小|
 |--------------|-----------------|-----|
 |H:\Video\ |视频集合|12 TB|
 |H:\Photo\ |照片集合|30 GB|
@@ -40,7 +34,7 @@ ms.locfileid: "23059532"
 
 导入作业将这些数据导入到存储帐户中的以下目标：
 
-|源|目标虚拟目录或 Blob|
+|Source|目标虚拟目录或 Blob|
 |------------|-------------------------------------------|
 |H:\Video\ |video/|
 |H:\Photo\ |photo/|

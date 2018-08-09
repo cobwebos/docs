@@ -4,26 +4,25 @@ description: 本文介绍如何使用 Azure 资源管理器以编程方式管理
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: edett
-manager: jhubbard
-ms.reviewer: anshan
+ms.author: anshan
+manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 561483b801773b39ed2ff61efa1496eba472530d
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 3ca9af8c2c504f75322e00fdaaeac9a3e727a820
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293347"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627121"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建时序见解资源
 
 本文介绍如何使用 Azure 资源管理器模板、PowerShell 和时序见解资源提供程序创建并部署时序见解资源。
 
 时序见解支持以下资源：
-   | 资源 | 说明 |
+   | 资源 | Description |
    | --- | --- |
    | 环境 | 时序见解环境是从事件中转站读取的、经存储的并可供查询使用的事件的逻辑分组。 有关详细信息，请参阅[规划 Azure 时序见解环境](time-series-insights-environment-planning.md) |
    | 事件源 | 事件源是与事件中转站建立的连接，时序见解从该中转站读取和引入事件至环境。 目前支持的事件源是 IoT 中心和事件中心。 |
@@ -88,7 +87,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
 
 #### <a name="required-parameters"></a>必需的参数
 
-   | 参数 | 说明 |
+   | 参数 | Description |
    | --- | --- |
    | eventHubNamespaceName | 源事件中心的命名空间。 |
    | eventHubName | 源事件中心的名称。 |
@@ -98,7 +97,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
 
 #### <a name="optional-parameters"></a>可选参数
 
-   | 参数 | 说明 |
+   | 参数 | Description |
    | --- | --- |
    | existingEventHubResourceId | 要通过事件源连接到时序见解环境的现有事件中心的可选资源 ID。 **注意：** 部署模板的用户必须有权对事件中心执行 listkeys 操作。 如果未传递任何值，则模板会创建新的事件中心。 |
    | environmentDisplayName | 要在工具或用户界面中显示的可选友好名称，而不是环境名称。 |
@@ -196,7 +195,7 @@ Test-AzureRmResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <p
 
 ### <a name="create-the-deployment"></a>创建部署
 
-若要创建新部署，请运行 `New-AzureRmResourceGroupDeployment` cmdlet，并在出现提示时提供必需的参数。 参数包括部署的名称、资源组的名称，以及模板文件的路径或 URL。 如果未指定 **Mode** 参数，将使用 **Incremental** 的默认值。 有关详细信息，请参阅[增量部署和完整部署](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments)。
+若要创建新部署，请运行 `New-AzureRmResourceGroupDeployment` cmdlet，并在出现提示时提供必需的参数。 参数包括部署的名称、资源组的名称，以及模板文件的路径或 URL。 如果未指定 **Mode** 参数，将使用 **Incremental** 的默认值。 有关详细信息，请参阅[增量部署和完整部署](../azure-resource-manager/deployment-modes.md)。
 
 以下命令提示在 PowerShell 窗口中输入五个必需的参数：
 
@@ -216,7 +215,7 @@ New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyD
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
 ```
 
-要运行[完整](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments)部署，请将 **Mode** 参数设置为 **Complete**：
+要运行[完整](../azure-resource-manager/deployment-modes.md)部署，请将 **Mode** 参数设置为 **Complete**：
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json

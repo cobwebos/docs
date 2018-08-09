@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: brjohnst
-ms.openlocfilehash: e8a492a0786281bdc1d7c2123a7188c32a124e13
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 19913f9c30992e833e5435af7066611d4662ba56
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32194118"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525631"
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>如何使用 .NET 应用程序中的 Azure 搜索
 文本介绍了如何使用 [Azure 搜索 .NET SDK](https://aka.ms/search-sdk)。 可以使用 .NET SDK，在应用程序中使用 Azure 搜索实现丰富的搜索体验。
@@ -26,8 +26,8 @@ SDK 包括一些客户端库。借助它，不仅可以管理索引、数据源�
 
 SDK 中的其他 NuGet 程序包有：
  
-  - `Microsoft.Azure.Search.Data`：如果你使用 Azure 搜索开发 .NET 应用程序，则可使用此程序包，并且只需查询或更新索引中的文档。 如果还需要创建或更新索引、同义词映射或其他服务级资源，请改用 `Microsoft.Azure.Search` 程序包。
-  - `Microsoft.Azure.Search.Service`：如果在 .NET 中开发自动化以管理 Azure 搜索索引、同义词映射、索引器、数据源或其他服务级资源，请使用此程序包。 如果只需要查询或更新索引中的文档，请改用 `Microsoft.Azure.Search.Data` 程序包。 如果需要 Azure 搜索的所有功能，请改用 `Microsoft.Azure.Search` 程序包。
+  - `Microsoft.Azure.Search.Data`：如果你使用 Azure 搜索开发 .NET 应用程序，则可使用此程序包，并且只需查询或更新索引中的文档。 如果还需要创建或更新索引、同义词映射或其他服务级资源，请改用 `Microsoft.Azure.Search` 包。
+  - `Microsoft.Azure.Search.Service`：如果在 .NET 中开发自动化以管理 Azure 搜索索引、同义词映射、索引器、数据源或其他服务级资源，请使用此包。 如果只需要查询或更新索引中的文档，请改用 `Microsoft.Azure.Search.Data` 包。 如果需要 Azure 搜索的所有功能，请改用 `Microsoft.Azure.Search` 包。
   - `Microsoft.Azure.Search.Common`：Azure 搜索 .NET 库需要的常见类型。 无需直接在应用程序中使用此程序包，它仅作为依赖使用。
 
 各种客户端库定义 `Index`、`Field` 和 `Document` 等类，以及 `SearchServiceClient` 和 `SearchIndexClient` 类中的 `Indexes.Create` 和 `Documents.Search` 等操作。 这些类已组织成以下命名空间：
@@ -588,6 +588,5 @@ WriteDocuments(results);
 
 ## <a name="next-steps"></a>后续步骤
 * 浏览 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) 和 [REST API](https://docs.microsoft.com/rest/api/searchservice/) 的参考资料。
-* 通过[视频和其他示例以及教程](search-video-demo-tutorial-list.md)加深了解。
 * 查看[命名约定](https://docs.microsoft.com/rest/api/searchservice/Naming-rules)，了解命名各种对象的规则。
 * 查看 Azure 搜索中[受支持的数据类型](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)。

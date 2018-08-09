@@ -2,23 +2,20 @@
 title: 教程：在 HDInsight 上使用 Hive 执行提取、转换、加载 (ETL) 操作 - Azure
 description: 了解如何从原始 CSV 数据集提取数据，在 HDInsight 上使用 Hive 将其转换，然后使用 Sqoop 将已转换的数据加载到 Azure SQL 数据库。
 services: storage
-documentationcenter: ''
 author: jamesbak
-manager: jahogg
 tags: azure-portal
 ms.component: data-lake-storage-gen2
 ms.service: storage
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: jamesbak
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
-ms.openlocfilehash: 4f71a4e0570695abbe580ffc16b3361d5cd71ac1
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 376ac623c37183cdfbd6e27c54b0c726928237e2
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136480"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525998"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>教程：在 Azure HDInsight 上使用 Apache Hive 提取、转换和加载数据
 

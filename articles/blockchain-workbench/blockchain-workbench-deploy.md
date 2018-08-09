@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 57b610b40edff56207617e212d0eb6e591ad50d4
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 1a0bc85063a80854ff6b970b0a57a991acfb3750
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224290"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39593955"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>部署 Azure Blockchain Workbench
 
@@ -51,7 +51,7 @@ Blockchain Workbench 的成本是基础 Azure 服务成本的总和。 Azure 服
 Blockchain Workbench 部署要求注册 Azure AD 应用程序。 需要使用 Azure Active Directory (Azure AD) 来注册应用。 可以使用现有租户，也可以创建新租户。 如果使用现有的 Azure AD 租户，需要拥有足够的权限才能在 Azure AD 租户中注册应用程序和授予图形 API 权限。 如果在现有的 Azure AD 租户中没有足够的权限，请创建一个新租户。 
 
 > [!IMPORTANT]
-> Workbench 不必部署在你用来注册 Azure AD 应用程序的同一租户中。 Workbench 必须部署在你有足够的权限来部署资源的租户中。 有关 Azure AD 租户的详细信息，请参阅[如何获取 Active Directory 租户](../active-directory/develop/active-directory-howto-tenant.md)和[将应用程序与 Azure Active Directory 集成](../active-directory/develop/active-directory-integrating-applications.md)。
+> Workbench 不必部署在你用来注册 Azure AD 应用程序的同一租户中。 Workbench 必须部署在你有足够的权限来部署资源的租户中。 有关 Azure AD 租户的详细信息，请参阅[如何获取 Active Directory 租户](../active-directory/develop/quickstart-create-new-tenant.md)和[将应用程序与 Azure Active Directory 集成](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在右上角选择自己的帐户，然后切换到所需的 Azure AD 租户。 该租户应是部署 Workbench 的订阅的订阅管理员租户，并且你有足够的权限在其中注册应用程序。
@@ -73,7 +73,7 @@ Blockchain Workbench 部署要求注册 Azure AD 应用程序。 需要使用 Az
 
 ### <a name="modify-application-manifest"></a>修改应用程序清单
 
-接下来，需将应用程序清单修改为使用 Azure AD 中的应用程序角色，以指定 Blockchain Workbench 管理员。  有关应用程序清单的详细信息，请参阅 [Azure Active Directory 应用程序清单](../active-directory/develop/active-directory-application-manifest.md)。
+接下来，需将应用程序清单修改为使用 Azure AD 中的应用程序角色，以指定 Blockchain Workbench 管理员。  有关应用程序清单的详细信息，请参阅 [Azure Active Directory 应用程序清单](../active-directory/develop/reference-app-manifest.md)。
 
 1. 针对已注册的应用程序，在其详细信息窗格中选择“清单”。
 2. 生成 GUID。 可以运行 PowerShell 命令 [guid] :: NewGuid () 或 New-GUID cmdlet 来生成 GUID。 还可以使用 GUID 生成器网站。

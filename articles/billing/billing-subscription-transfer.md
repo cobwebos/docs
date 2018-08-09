@@ -14,19 +14,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/11/2018
+ms.date: 06/15/2018
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 110e2f611ba8bfc42fe17de6aa4487683db4a414
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 44e4bedd747c5a0010058efee595402448f6a30b
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34069860"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39507148"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>将 Azure 订阅所有权转让给其他帐户
 
-将你的订阅转让给帐户中心内的另一个用户可更改帐户管理员并移交订阅账单所有权。 要将订阅更改为其他产品/服务，请参阅[将 Azure 订阅切换到其他产品/服务](billing-how-to-switch-azure-offer.md)。
+将你的订阅转让给帐户中心内的另一个用户可更改帐户管理员并移交订阅账单所有权。 要将订阅更改为其他套餐，请参阅 [将 Azure 订阅切换到其他套餐](billing-how-to-switch-azure-offer.md)。
 
 > [!IMPORTANT]
 > 
@@ -42,9 +42,9 @@ ms.locfileid: "34069860"
 
 1. 选择要转让的订阅。
 
-1. 使用[支持的产品/服务列表](#supported)，检查产品/服务和产品/服务 ID，验证订阅是否符合自助服务转让资格。
+1. 使用[支持的套餐列表](#supported)，检查套餐和套餐 ID，验证订阅是否符合自助服务转让资格。
 
-   ![在帐户中心验证订阅的产品/服务 ID](./media/billing-subscription-transfer/image0.png)
+   ![在帐户中心验证订阅的套餐 ID](./media/billing-subscription-transfer/image0.png)
 1. 单击“转让订阅”。
 
    ![Azure 帐户订阅选项卡](./media/billing-subscription-transfer/image1.png)
@@ -116,11 +116,11 @@ ms.locfileid: "34069860"
 
 ### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>所有内容都会转让吗？ 包括资源组、VM、磁盘和其他正在运行的服务吗？
 
-所有资源（如 VM、磁盘和网站）都会转让给新的所有者。 但是，不会在不同目录之间传递所设置的任何[管理员角色](billing-add-change-azure-subscription-administrator.md)和[基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 策略。 此外，[应用注册](../active-directory//develop/active-directory-integrating-applications.md)和其他特定于租户的服务不会一同转让。
+所有资源（如 VM、磁盘和网站）都会转让给新的所有者。 但是，不会在不同目录之间传递所设置的任何[管理员角色](billing-add-change-azure-subscription-administrator.md)和[基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 策略。 此外，[应用注册](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)和其他特定于租户的服务不会一同转让。
 
 ### <a id="no-button"></a> 为什么我没有看到“转让订阅”按钮？
 
-很抱歉，你的产品/服务或国家/地区不支持自助服务订阅转让。 若要转移订阅，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+很抱歉，你的套餐或国家/地区不支持自助服务订阅转让。 若要转移订阅，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 ### <a name="does-a-subscription-transfer-result-in-any-service-downtime"></a>订阅转让会造成任何服务停机吗？
 
@@ -135,7 +135,7 @@ Azure 订阅在帐户管理员所属的目录中创建。 更改目录时，将�
 如果将订阅转让给另一个租户，与前一租户关联的用户将失去订阅的访问权限。 即使用户不再是服务管理员或共同管理员，他们仍可以通过其他安全机制来访问订阅，包括：
 
 * 用于向用户授予订阅资源管理权限的管理证书。 有关详细信息，请参阅[创建并上传 Azure 的管理证书](../cloud-services/cloud-services-certs-create.md)。
-* 存储空间等服务的访问密钥。 有关详细信息，请参阅[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)。
+* 存储空间等服务的访问密钥。 有关详细信息，请参阅[有关 Azure 存储帐户](../storage/common/storage-create-storage-account.md)。
 * Azure 虚拟机等服务的远程访问凭据。
 
 如果接收方需要限制对其资源的访问，他们应考虑更新与服务关联的任何机密。 可通过以下步骤更新大多数资源：
@@ -155,7 +155,7 @@ Azure 订阅在帐户管理员所属的目录中创建。 更改目录时，将�
 
 ### <a name="can-the-offer-be-changed-during-a-transfer"></a>转让期间可以更改优惠吗？
 
-优惠肯定会保持不变。 要更改产品/服务，请参阅[将 Azure 订阅切换到其他产品/服务](billing-how-to-switch-azure-offer.md)。
+优惠肯定会保持不变。 要更改套餐，请参阅[将 Azure 订阅切换到其他套餐](billing-how-to-switch-azure-offer.md)。
 
 ### <a name="can-i-transfer-a-subscription-to-a-user-account-in-another-country"></a>可以将订阅转让给另一国家/地区的用户帐户吗？
 

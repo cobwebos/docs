@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 65757abe13c45ce1a929c4648637f98360659030
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: def1bbd52e05666f380ab9d5a9295366798d5ae0
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284864"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626917"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>排除 Azure Active Directory 无缝单一登录故障
 
@@ -50,7 +50,7 @@ ms.locfileid: "39284864"
 
 ## <a name="sign-in-failure-reasons-in-the-azure-active-directory-admin-center-needs-a-premium-license"></a>Azure Active Directory 管理中心登录失败原因（需要 Premium 许可证）
 
-如果你的租户有与之关联的 Azure AD Premium 许可证，还可在 [Azure Active Directory 管理员中心](https://aad.portal.azure.com/)查看[登录活动报告](../active-directory-reporting-activity-sign-ins.md)。
+如果你的租户有与之关联的 Azure AD Premium 许可证，还可在 [Azure Active Directory 管理员中心](https://aad.portal.azure.com/)查看[登录活动报告](../reports-monitoring/concept-sign-ins.md)。
 
 ![Azure Active Directory 管理中心：登录报告](./media/active-directory-aadconnect-sso/sso9.png)
 

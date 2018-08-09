@@ -12,15 +12,15 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: maheshu
-ms.openlocfilehash: 5dd3cde69c6aa36c3d9cb3060dc6deb59ff74a5a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a64401792fd034fde98fe1330340b1ffaa7dfcc1
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214961"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505406"
 ---
 # <a name="azure-ad-domain-services"></a>Azure AD 域服务
 ## <a name="features"></a>功能
@@ -39,6 +39,7 @@ ms.locfileid: "36214961"
 * **管理 DNS：**“AAD DC 管理员”组的成员可以使用熟悉的 DNS 管理工具（例如“DNS 管理 MMC”管理单元）来管理托管域的 DNS。
 * **创建自定义的组织单位 (OU)：**“AAD DC 管理员”组的成员可以在托管域中创建自定义 OU。 这些用户已被授予自定义 OU 的完全管理权限，可以在这些自定义 OU 中添加或删除服务帐户、计算机、组等。
 * 可在任何 Azure 全球区域中使用：请参阅[按区域列出的 Azure 服务](https://azure.microsoft.com/regions/#services/)页，了解已推出 Azure AD 域服务的 Azure 区域。
-* **高可用性：** Azure AD 域服务可为域提供高可用性。 此功能可以保证增大服务运行时间，提高弹性应对故障的能力。 内置的运行状况监视功能可以在发生故障时自动补救，因为它可以启动新的实例来取代有故障的实例，持续为域提供服务。
+* 
+  **高可用性：** Azure AD 域服务可为域提供高可用性。 此功能可以保证增大服务运行时间，提高弹性应对故障的能力。 内置的运行状况监视功能可以在发生故障时自动补救，因为它可以启动新的实例来取代有故障的实例，持续为域提供服务。
 * AD 帐户锁定保护：如果在 2 分钟内使用了五个无效密码，用户帐户将被锁定 30 分钟。 帐户将在 30 分钟后自动解锁。
 * **使用熟悉的管理工具：** 可以使用 Active Directory 管理中心或 PowerShell 的 Active Directory 等熟悉的 Windows Server Active Directory 管理工具来管理托管域。

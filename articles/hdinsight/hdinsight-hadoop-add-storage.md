@@ -1,24 +1,20 @@
 ---
-title: 将其他 Azure 存储帐户添加到 HDInsight | Microsoft Docs
+title: 将其他 Azure 存储帐户添加到 HDInsight
 description: 了解如何将其他 Azure 存储帐户添加到现有 HDInsight 群集。
 services: hdinsight
-documentationCenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.author: larryfr
+ms.author: jasonh
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 1404b37725362a71ccb4a0a84dff0c7c4ca591e2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d8d9a71d3c30628ca27420f6b87b0dfb2bc5e571
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32170095"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592850"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>将其他存储帐户添加到 HDInsight
 

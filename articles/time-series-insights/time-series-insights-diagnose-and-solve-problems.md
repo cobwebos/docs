@@ -4,18 +4,18 @@ description: 本文介绍如何诊断、排查和解决可能在 Azure 时序见
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: venkatja
-manager: jhubbard
+ms.author: anshan
+manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 04/09/2018
-ms.openlocfilehash: dbd32d57206b611a37b5349e5971d2efe272ee1a
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: b05b824d8d35351030ca466566f14e4249d4b99d
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36292865"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626614"
 ---
 # <a name="diagnose-and-solve-problems-in-your-time-series-insights-environment"></a>在时序见解环境中诊断并解决问题
 

@@ -2,24 +2,18 @@
 title: 修复 Azure 导入/导出服务的导入作业 - v1 | Microsoft Docs
 description: 了解如何修复使用 Azure 导入/导出服务创建和运行的导入作业。
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 38cc16bd-ad55-4625-9a85-e1726c35fd1b
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: c837713fd9e7d03287ae5a3644fd6bb47714c9d4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: e2eb580df0a90e07e79c7f080ba31e5418fc5956
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23059862"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523778"
 ---
 # <a name="repairing-an-import-job"></a>修复导入作业
 Microsoft Azure 导入/导出服务可能无法将某些文件或某个文件的部分内容复制到 Windows Azure Blob 服务。 失败的部分原因包括：  

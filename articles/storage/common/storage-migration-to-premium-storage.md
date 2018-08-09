@@ -1,25 +1,19 @@
 ---
 title: 将 VM 迁移到 Azure 高级存储 | Microsoft Docs
-description: 将现有的 VM 迁移到 Azure 高级存储。 高级存储为 Azure 虚拟机上运行的 I/O 密集型工作负荷提供高性能、低延迟的磁盘支持。
+description: 将现有的 VM 迁移到 Azure 高级存储。 高级存储为 Azure 虚拟机上运行的 I/O 密集型工作负载提供高性能、低延迟的磁盘支持。
 services: storage
-documentationcenter: na
 author: yuemlu
-manager: tadb
-editor: tysonn
-ms.assetid: 272250b3-fd4e-41d2-8e34-fd8cc341ec87
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
-ms.openlocfilehash: 36ff73d36c752fb342dcfff2360b4f6f7013740e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: common
+ms.openlocfilehash: c6256fc209a4ffa5308dc3b24794f8295c57f4ef
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "27993908"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521772"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>迁移到 Azure 高级存储（非托管磁盘）
 
@@ -116,7 +110,7 @@ Azure VM 支持附加多个高级存储磁盘，这样应用程序的存储上�
 
 VM 需要完全关闭，以便迁移干净状态。 在迁移完成之前会存在停机时间。
 
-#### <a name="step-1-prepare-vhds-for-migration"></a>步骤 1. 准备 VHD 以便进行迁移
+#### <a name="step-1-prepare-vhds-for-migration"></a>步骤 1。 准备 VHD 以便进行迁移
 如果要将现有 Azure VM 迁移至高级存储，则 VHD 可以是：
 
 * 通用操作系统映像
@@ -221,7 +215,7 @@ C:\PS> Start-AzureStorageBlobCopy -srcUri $sourceBlobUri -SrcContext $sourceCont
 ### <a name="scenario2"></a>情景 2：“要从其他平台将 VM 迁移到 Azure 高级存储。”
 如果要将 VHD 从非 Azure 云存储迁移到 Azure，必须首先将 VHD 导出到本地目录中。 准备好存储 VHD 的本地目录的完整源路径，并使用 AzCopy 将其上传至 Azure 存储。
 
-#### <a name="step-1-export-vhd-to-a-local-directory"></a>步骤 1. 将 VHD 导出到本地目录
+#### <a name="step-1-export-vhd-to-a-local-directory"></a>步骤 1。 将 VHD 导出到本地目录
 ##### <a name="copy-a-vhd-from-aws"></a>从 AWS 复制 VHD
 1. 如果要使用 AWS，请将 EC2 实例导出到 Amazon S3 存储桶中的 VHD。 按照 Amazon 文档导出 Amazon EC2 实例中所述的步骤安装 Amazon EC2 命令行接口 (CLI) 工具，并运行 create-instance-export-task 命令将 EC2 实例导出到 VHD 文件。 运行 **create-instance-export-task** 命令时，请务必对 DISK&#95;IMAGE&#95;FORMAT 变量使用 **VHD**。 导出的 VHD 文件将保存在该过程中指定的 Amazon S3 存储桶中。
 

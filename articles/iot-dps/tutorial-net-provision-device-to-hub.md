@@ -1,8 +1,8 @@
 ---
 title: 使用 Azure IoT 中心设备预配服务预配设备 (.NET) | Microsoft Docs
 description: 使用 Azure IoT 中心设备预配服务将设备预配到单个 IoT 中心 (.NET)
-author: bryanla
-ms.author: bryanla
+author: wesmc7777
+ms.author: wesmc
 ms.date: 09/05/2017
 ms.topic: tutorial
 ms.service: iot-dps
@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: e31c06268245946bd80e1328f4d7176f1e9a660f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1d82ccdf85b34416dc630b9fcad969d87cc53ff1
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629875"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39520660"
 ---
 # <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>使用 Azure IoT 中心设备预配服务客户端将设备登记到 IoT 中心 (.NET)
 
@@ -64,13 +64,13 @@ ms.locfileid: "34629875"
 
 1. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices.provisioning.service**。 选择该项，单击“安装”以安装 **Microsoft.Azure.Devices.Provisioning.Service** 包，并接受使用条款。 此过程会下载、安装 [Azure IoT 设备预配服务 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet 包及其依赖项并添加对它的引用。
 
-1. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
+1. 在 Program.cs 文件顶部添加以下 `using` 语句：
    
     ```csharp
     using Microsoft.Azure.Devices.Provisioning.Service;
     ```
 
-1. 将以下字段添加到 **Program** 类。 将占位符值替换为上一部分所述的 DPS 连接字符串。
+1. 将以下字段添加到 Program 类。 将占位符值替换为上一部分所述的 DPS 连接字符串。
    
     ```csharp
     static readonly string ServiceConnectionString = "{DPS connection string}";
@@ -147,13 +147,13 @@ ms.locfileid: "34629875"
 
 1. 在 Visual Studio 的解决方案资源管理器中，打开前面创建的“DeviceProvisioning”项目。 
 
-1. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
+1. 在 Program.cs 文件顶部添加以下 `using` 语句：
     
     ```csharp
     using System.Security.Cryptography.X509Certificates;
     ```
 
-1. 将以下字段添加到 **Program** 类。 将占位符值替换为 X509 证书位置。
+1. 将以下字段添加到 Program 类。 将占位符值替换为 X509 证书位置。
    
     ```csharp
     private const string X509RootCertPathVar = "{X509 Certificate Location}";

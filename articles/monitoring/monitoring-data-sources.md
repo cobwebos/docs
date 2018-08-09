@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: bwren
-ms.openlocfilehash: 262099bbe45e483efd269445aa8042b30668ebe3
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 48cbfac78b41b47419799584837e094d45757628
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036517"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627451"
 ---
 # <a name="sources-of-monitoring-data-in-azure"></a>Azure 中的监视数据源
 本文介绍用于监视 Azure 资源及其上运行的应用程序的运行状况和性能的数据。  使用[收集 Azure 中的监视数据](monitoring-data-collection.md)中介绍的工具收集和分析该数据
@@ -42,7 +42,7 @@ Azure 中的监视数据来自多个源，这些源可以整理成层，最高�
 
 
 ### <a name="azure-active-directory-audit-logs"></a>Azure Active Directory 审核日志
-[Azure Active Directory 报告](../active-directory/active-directory-reporting-azure-portal.md)包含特定租户中的登录活动历史记录和更改审核日志。 目前不能将 Azure Active Directory 审核数据与其他监视数据组合在一起，因为该审核数据只能通过 Azure Active Directory 和 [Azure Active Directory 报告 API](../active-directory/active-directory-reporting-api-getting-started-azure-portal.md) 进行访问。
+[Azure Active Directory 报告](../active-directory/reports-monitoring/overview-reports.md)包含特定租户中的登录活动历史记录和更改审核日志。 目前不能将 Azure Active Directory 审核数据与其他监视数据组合在一起，因为该审核数据只能通过 Azure Active Directory 和 [Azure Active Directory 报告 API](../active-directory/reports-monitoring/concept-reporting-api.md) 进行访问。
 
 
 ## <a name="azure-services"></a>Azure 服务

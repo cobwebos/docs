@@ -8,12 +8,12 @@ ms.date: 06/05/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: aa371ef2ebad01fba379675e8438f56dca9ce356
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 36750a4d907da1d4fa029aca0ecc503db7e82d81
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096959"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526086"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>了解 Azure IoT Edge 运行时及其体系结构
 
@@ -65,7 +65,7 @@ Edge 中心促进模块间通信。 使用 Edge 中心作为消息中转站可�
 为了将数据发送到 Edge 中心，模块会调用 SendEventAsync 方法。 第一个参数指定要发送消息的输出。 下面的伪代码发送 output1 上的消息：
 
    ```csharp
-   DeviceClient client = new DeviceClient.CreateFromConnectionString(moduleConnectionString, settings); 
+   ModuleClient client = new ModuleClient.CreateFromEnvironmentAsync(transportSettings); 
    await client.OpenAsync(); 
    await client.SendEventAsync(“output1”, message); 
    ```
@@ -112,7 +112,7 @@ IoT Edge 代理会将运行时响应发送到 IoT 中心。 下面是可能的�
   * 406 - edge 设备脱机或不发送状态报告。
   * 500 - edge 运行时中出错。
 
-### <a name="security"></a>“安全”
+### <a name="security"></a>安全
 
 IoT Edge 代理在 IoT Edge 设备的安全性中起着关键作用。 例如，它会执行某些操作，如在启动之前验证模块的映像。 正式发布时将添加这些功能。 
 

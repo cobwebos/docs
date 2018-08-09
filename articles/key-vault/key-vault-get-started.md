@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: 58a283f1ce5bd2fd78c4fa2038c3998aea1598c9
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 2d959eb9c4f55624d0d0915dd5dea4c62ba1f8e5
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070345"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505707"
 ---
 # <a name="get-started-with-azure-key-vault"></a>Azure 密钥保管库入门
 本文有助于使用 PowerShell 完成 Azure Key Vault 入门，并详细介绍如何完成以下活动：
@@ -206,7 +206,7 @@ $secret.Id
 现在，可以在应用程序中使用该密钥保管库以及密钥或机密。 必须授权应用程序使用这些信息。  
 
 ## <a id="register"></a>将应用程序注册到 Azure Active Directory
-此步骤通常由开发人员在独立的计算机上完成。 它不是特定于 Azure Key Vault 的。 如需将应用程序注册到 Azure Active Directory 的详细步骤，则应参阅[将应用程序与 Azure Active Directory 集成](../active-directory/develop/active-directory-integrating-applications.md)一文或[使用门户创建可访问资源的 Azure Active Directory 应用程序和服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)一文
+此步骤通常由开发人员在独立的计算机上完成。 它不是特定于 Azure Key Vault 的。 如需将应用程序注册到 Azure Active Directory 的详细步骤，则应参阅[将应用程序与 Azure Active Directory 集成](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)一文或[使用门户创建可访问资源的 Azure Active Directory 应用程序和服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)一文
 
 > [!IMPORTANT]
 > 要完成本教程，帐户、保管库以及会在本步骤中注册的应用程序全都必须位于相同的 Azure 目录中。

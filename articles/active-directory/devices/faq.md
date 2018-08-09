@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: e6d223b386aea3ca41931c600d16c16b53765f26
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: fd2505d6262948e193531d91222cdec319f33100
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39415680"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597147"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
 
@@ -37,7 +37,7 @@ ms.locfileid: "39415680"
 
 **备注：**
 
-- 条件访问策略中的用户必须有 [macOS 支持的 Office 版本](../active-directory-conditional-access-technical-reference.md#client-apps-condition)，才能访问资源。 
+- 条件访问策略中的用户必须有 [macOS 支持的 Office 版本](../conditional-access/technical-reference.md#client-apps-condition)，才能访问资源。 
 
 - 首次尝试访问期间，用户会看到有关使用公司门户注册设备的提示。
 
@@ -146,7 +146,7 @@ USER 设备下面只会列出以下设备：
 
 **问：我在 Azure 门户中的“用户信息”下看到了设备记录，设备状态为已在设备上注册。我的设置是否正确，可以使用条件访问？**
 
-**答：** deviceID 所反映的设备加入状态必须与 Azure AD 上的状态相符，并且必须符合条件性访问的任何评估条件。 有关详细信息，请参阅[通过条件访问要求使用受管理设备进行云应用访问](../active-directory-conditional-access-policy-connected-applications.md)。
+**答：** deviceID 所反映的设备加入状态必须与 Azure AD 上的状态相符，并且必须符合条件性访问的任何评估条件。 有关详细信息，请参阅[通过条件访问要求使用受管理设备进行云应用访问](../conditional-access/require-managed-devices.md)。
 
 ---
 

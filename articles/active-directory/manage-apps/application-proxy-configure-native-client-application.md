@@ -15,12 +15,12 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 589cf1d297a335c36725917dd7012d877d1dcaeb
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 85a7b133655a3b1e4ca60c28e695e3057b293fdc
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363071"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39504509"
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>如何使本机客户端应用与代理应用程序交互
 
@@ -30,7 +30,7 @@ ms.locfileid: "39363071"
 
 ![最终用户、Azure Active Directory 和已发布应用程序之间的关系](./media/application-proxy-configure-native-client-application/richclientflow.png)
 
-使用 Azure AD 身份验证库（负责处理身份验证并支持许多客户端环境）来发布本机应用程序。 应用程序代理适合[本机应用程序到 Web API 方案](../develop/active-directory-authentication-scenarios.md#native-application-to-web-api)。 
+使用 Azure AD 身份验证库（负责处理身份验证并支持许多客户端环境）来发布本机应用程序。 应用程序代理适合[本机应用程序到 Web API 方案](../develop/authentication-scenarios.md#native-application-to-web-api)。 
 
 本文引导读者完成使用应用程序代理和 Azure AD 身份验证库发布本机应用程序的四个步骤。 
 
@@ -48,7 +48,7 @@ ms.locfileid: "39363071"
    ![创建新的应用注册](./media/application-proxy-configure-native-client-application/create.png)
 5. 选择**创建**。
 
-有关创建新应用注册的更多详细信息，请参阅[将应用程序与 Azure Active Directory 集成](./../develop/active-directory-integrating-applications.md)。
+有关创建新应用注册的更多详细信息，请参阅[将应用程序与 Azure Active Directory 集成](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)。
 
 
 ## <a name="step-3-grant-access-to-other-applications"></a>步骤 3：向其他应用程序授予访问权限
@@ -96,6 +96,6 @@ HttpResponseMessage response = await httpClient.GetAsync("< Proxy App API Url >"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关本机应用程序流的详细信息，请参阅[本机应用程序到 Web API](../develop/active-directory-authentication-scenarios.md#native-application-to-web-api)
+有关本机应用程序流的详细信息，请参阅[本机应用程序到 Web API](../develop/authentication-scenarios.md#native-application-to-web-api)
 
 了解如何设置[应用程序代理的单一登录](application-proxy-single-sign-on.md)

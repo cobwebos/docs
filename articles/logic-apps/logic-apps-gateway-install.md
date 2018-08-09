@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/20/2018
 ms.reviewer: yshoukry, LADocs
 ms.suite: integration
-ms.openlocfilehash: 09e3879ed91a0e9c6d27940cae53f3e3f0397d7b
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 616e3d81d577fd30e65117ec15c65250d3b3e27e
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145200"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503642"
 ---
 # <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>为 Azure 逻辑应用安装本地数据网关
 
@@ -84,7 +84,7 @@ ms.locfileid: "39145200"
   > [!TIP]
   > 如果已注册 Office 365 产品/服务但未提供实际的工作电子邮件，可能会收到以下示例所示的登录地址：`username@domain.onmicrosoft.com` 
   >
-  > 若要使用包含 [Visual Studio 标准订阅](https://visualstudio.microsoft.com/vs/pricing/)的 Microsoft 帐户，请先使用 Microsoft 帐户[在 Azure Active Directory 中创建一个目录（租户）](../active-directory/develop/active-directory-howto-tenant.md)或使用默认目录。 
+  > 若要使用包含 [Visual Studio 标准订阅](https://visualstudio.microsoft.com/vs/pricing/)的 Microsoft 帐户，请先使用 Microsoft 帐户[在 Azure Active Directory 中创建一个目录（租户）](../active-directory/develop/quickstart-create-new-tenant.md)或使用默认目录。 
   > 将具有密码的用户添加到该目录，然后向该用户提供对订阅的访问权限。 
   > 然后在网关安装期间可以使用此用户名和密码登录。
 

@@ -5,17 +5,17 @@ ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
 ms.author: anshan
-manager: jhubbard
+manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: ef5c194aa462a83cd982adab0a818f0aa095ffa0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 909d8a921e46f0f935bb8a059714b1c0170ddee4
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654430"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627655"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>在 Azure 门户中创建新的时序见解环境
 本文介绍如何使用 Azure 门户创建新的时序见解环境。
@@ -39,7 +39,7 @@ ms.locfileid: "34654430"
    
    ![创建时序见解资源组](media/time-series-insights-get-started/2-create-tsi.png)
    
-   设置|建议的值|说明
+   设置|建议的值|Description
    ---|---|---
    环境名称 | 唯一的名称 | 此名称在[时序资源管理器](https://insights.timeseries.azure.com)中代表环境
    订阅 | 订阅 | 如果有多个订阅，最好是选择包含事件源的订阅。 时序见解可以自动检测存在于同一订阅中的 Azure IoT 中心和事件中心资源。

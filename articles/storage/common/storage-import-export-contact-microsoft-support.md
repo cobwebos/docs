@@ -2,23 +2,18 @@
 title: 针对 Azure 导入/导出作业创建支持票证或案例 | Microsoft Docs
 description: 了解如何针对导入/导出作业相关的问题记录支持请求。
 services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storage
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/29/2018
 ms.author: alkohli;
-ms.openlocfilehash: b82adae5854aa836701e299a0aabd2b61e73ca99
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.component: common
+ms.openlocfilehash: 321f59b1fd7b408d13856d7345d5d00608e3d250
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521075"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>针对导入/导出作业开具支持票证
 
@@ -33,7 +28,7 @@ ms.lasthandoff: 04/03/2018
 
 1. 转到导入/导出作业。 导航到“支持 + 故障排除”部分并单击“新建支持请求”。
      
-    ![Basics](./media/storage-import-export-contact-microsoft-support/import-export-support1.png)
+    ![基础](./media/storage-import-export-contact-microsoft-support/import-export-support1.png)
    
 2. 在“新建支持请求”中选择“基本信息”。 在“基本信息”中执行以下步骤：
     
@@ -45,7 +40,7 @@ ms.lasthandoff: 04/03/2018
         - 如果选择了“Blob”，请选择“资源”、“容器名称”（可选）和“支持计划”。
             ![选择 Blob](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
         - 如果选择了“文件”，请选择“资源”、“文件共享名称”（可选）和“支持计划”。![选择文件](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
-    4. 单击“资源组名称” 的 Azure 数据工厂。
+    4. 单击“下一步”。
 
 3. 在“新建支持请求”中，选择“步骤 2: 问题”。 在“问题”中执行以下步骤：
     
@@ -56,7 +51,7 @@ ms.lasthandoff: 04/03/2018
     5. 提供问题的开始日期和时间。
     6. 在“文件上传”中单击文件夹图标，浏览要上传的其他任何文件。
     7. 选中“共享诊断信息”。
-    8. 单击“资源组名称” 的 Azure 数据工厂。
+    8. 单击“下一步”。
 
        ![问题](./media/storage-import-export-contact-microsoft-support/import-export-support5.png)
 

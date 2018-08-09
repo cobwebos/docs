@@ -2,24 +2,18 @@
 title: 检索 Azure 导入/导出作业的状态信息 | Microsoft Docs
 description: 了解如何获取 Microsoft Azure 导入/导出服务作业的状态信息。
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 22d7e5f0-94da-49b4-a1ac-dd4c14a423c2
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: muralikk
-ms.openlocfilehash: 13169716c47cf9389c8f2651393ac744441bdd6f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: 76b2f73442261da4c791aaae8532d7a0dbbb6d95
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23059902"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39520600"
 ---
 # <a name="retrieving-state-information-for-an-importexport-job"></a>检索导入/导出作业的状态信息
 可以调用[获取作业](/rest/api/storageimportexport/jobs#Jobs_Get)操作来检索有关导入和导出作业的信息。 返回的信息包括：
@@ -41,7 +35,7 @@ ms.locfileid: "23059902"
 
 下表描述了作业可能经历的每种状态。
 
-|作业状态|说明|
+|作业状态|Description|
 |---------------|-----------------|
 |`Creating`|调用“放置作业”操作后，将创建一个作业，其状态设置为 `Creating`。 当作业处于 `Creating` 状态时，导入/导出服务会假设驱动器尚未寄送到数据中心。 作业可保持 `Creating` 状态最多两周，之后服务会自动将其删除。<br /><br /> 如果在作业处于 `Creating` 状态时调用“更新作业属性”操作，该作业将保持 `Creating` 状态，超时间隔将重置为两周。|
 |`Shipping`|寄送包裹后，应调用“更新作业属性”操作，将作业状态更新为 `Shipping`。 仅在为作业设置 `DeliveryPackage`（邮政承运人和跟踪号）与 `ReturnAddress` 属性后，才能设置寄送状态。<br /><br /> 作业将保持 Shipping 状态最多两周。 如果两周已过但未收到驱动器，系统会通知导入/导出服务操作员。|
@@ -70,7 +64,7 @@ ms.locfileid: "23059902"
 
 下表描述了驱动器可能经历的每种状态。
 
-|驱动器状态|说明|
+|驱动器状态|Description|
 |-----------------|-----------------|
 |`Specified`|对于导入作业，在通过“放置作业”操作创建该作业时，驱动器的初始状态为 `Specified`。 对于导出作业，由于在创建该作业时未指定驱动器，因此驱动器的初始状态为 `Received`。|
 |`Received`|导入/导出服务操作员为导入作业处理从货运公司收到的驱动器后，驱动器将转换为 `Received` 状态。 对于导出作业，初始驱动器状态为 `Received`。|

@@ -3,17 +3,17 @@ title: Azure 存储中的数据复制 | Microsoft Docs
 description: 复制 Microsoft Azure 存储帐户中的数据以实现持久性和高可用性。 复制选项包括本地冗余存储 (LRS)、区域冗余存储 (ZRS)、异地冗余存储 (GRS) 和读取访问异地冗余存储 (RA-GRS)。
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 01/21/2018
 ms.author: tamram
-ms.openlocfilehash: 6c2c6979d56eb19ff2ba4fb647c7c51e52e51ac6
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.component: common
+ms.openlocfilehash: 18dfdce827a76d924494e66ceb0d03e2bb3a3ffe
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34076208"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523754"
 ---
 # <a name="azure-storage-replication"></a>Azure 存储复制
 

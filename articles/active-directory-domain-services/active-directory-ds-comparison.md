@@ -12,15 +12,15 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: maheshu
-ms.openlocfilehash: 550354ceab3026cfd724cd77c3266b22682e4431
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: acb125ef807193e79e45bca7e217efe3ffb31698
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212565"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505944"
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>如何确定 Azure AD 域服务是否适合具体的用例
 凭借 Azure AD 域服务，可以在 Azure 基础结构服务中部署工作负荷，而无需担心如何维护 Azure 中的标识基础结构。 此托管服务不同于自行部署和管理的典型 Windows Server Active Directory 部署。 此服务易于部署，并提供自动化的运行状况监视和修正。 我们正在持续改进该服务，以求添加对常见部署方案的支持。

@@ -3,17 +3,17 @@ title: 在 Azure 存储中使用共享访问签名 (SAS) | Microsoft Docs
 description: 了解使用共享访问签名 (SAS) 委派对 Azure 存储资源（包括 Blob、队列、表和文件）的访问权限。
 services: storage
 author: craigshoemaker
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cshoe
-ms.openlocfilehash: ad313c11fb88ec7992220d43c25ca75bf65acc56
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.component: common
+ms.openlocfilehash: 315c5a88d16206414b6b81a83963cbb1f8b4424a
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025156"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524748"
 ---
 # <a name="using-shared-access-signatures-sas"></a>使用共享访问签名 (SAS)
 
@@ -108,7 +108,7 @@ SAS 令牌是在客户端侧生成的字符串（请参阅 [SAS 示例](#sas-exa
 https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D
 ```
 
-| 名称 | SAS 部分 | 说明 |
+| 名称 | SAS 部分 | Description |
 | --- | --- | --- |
 | Blob URI |`https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt` |Blob 的地址。 请注意，强烈建议使用 HTTPS。 |
 | 存储服务版本 |`sv=2015-04-05` |对于存储服务版本 2012-02-12 和更高版本，此参数指示要使用的版本。 |
@@ -128,7 +128,7 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&s
 https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2015-04-05&ss=bf&srt=s&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=F%6GRVAZ5Cdj2Pw4tgU7IlSTkWgn7bUkkAg8P6HESXwmf%4B
 ```
 
-| 名称 | SAS 部分 | 说明 |
+| 名称 | SAS 部分 | Description |
 | --- | --- | --- |
 | 资源 URI |`https://myaccount.blob.core.windows.net/?restype=service&comp=properties` |Blob 服务终结点，包含用于获取服务属性（使用 GET 调用时）或设置服务属性（使用 SET 调用时）的参数。 |
 | 服务 |`ss=bf` |该 SAS 适用于 Blob 和文件服务 |

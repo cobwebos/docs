@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 04/11/2018
 ms.author: sethm
-ms.openlocfilehash: c8d84de608ccf3d9a9293c20c07c10a00b73da68
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 64942d80a2b8477c395abf185a332f31709598c6
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31598279"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627087"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建服务总线资源
 
@@ -207,7 +207,7 @@ Test-AzureRmResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <p
 
 ### <a name="create-the-deployment"></a>创建部署
 
-若要创建新部署，请运行 `New-AzureRmResourceGroupDeployment` cmdlet，并在出现提示时提供必需的参数。 参数包括部署的名称、资源组的名称，以及模板文件的路径或 URL。 如果未指定 **Mode** 参数，将使用 **Incremental** 的默认值。 有关详细信息，请参阅[增量部署和完整部署](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments)。
+若要创建新部署，请运行 `New-AzureRmResourceGroupDeployment` cmdlet，并在出现提示时提供必需的参数。 参数包括部署的名称、资源组的名称，以及模板文件的路径或 URL。 如果未指定 **Mode** 参数，将使用 **Incremental** 的默认值。 有关详细信息，请参阅[增量部署和完整部署](../azure-resource-manager/deployment-modes.md)。
 
 以下命令会提示在 PowerShell 窗口中输入三个参数：
 
@@ -227,7 +227,7 @@ New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyD
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
 ```
 
-要运行[完整](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments)部署，请将 **Mode** 参数设置为 **Complete**：
+要运行[完整](../azure-resource-manager/deployment-modes.md)部署，请将 **Mode** 参数设置为 **Complete**：
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json

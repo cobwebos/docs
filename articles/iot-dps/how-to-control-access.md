@@ -1,19 +1,19 @@
 ---
 title: IoT 设备预配服务中的安全性终结点 | Microsoft Docs
 description: 概念 - 如何控制后端应用中 IoT 设备预配服务的访问权限。 包括安全令牌的相关信息。
-author: dsk-2015
+author: wesmc7777
 manager: timlt
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 09/28/2017
-ms.author: dkshir
-ms.openlocfilehash: e33f6b61f757c9d7f6a773141ad0deea363be2b7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: wesmc
+ms.openlocfilehash: b4776ef3589d994fff692e450d252c491c20f7b2
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629382"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522860"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>控制对 Azure IoT 中心设备预配服务的访问
 
@@ -71,7 +71,7 @@ HTTP 是唯一受支持的协议，它通过在“Authorization”请求标头�
 
 以下是预期值：
 
-| 值 | 说明 |
+| 值 | Description |
 | --- | --- |
 | {signature} |HMAC-SHA256 签名字符串的格式为：`{URL-encoded-resourceURI} + "\n" + expiry`。 **重要说明**：密钥是从 base64 解码得出的，用作执行 HMAC-SHA256 计算的密钥。|
 | {expiry} |从纪元 1970 年 1 月 1日 00:00:00 UTC 时间至今秒数的 UTF8 字符串。 |
