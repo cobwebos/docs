@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 927c8f6d0fefbc592999487217c41aeecc96b0d9
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 925537b3dff852921aad1e74d009e09fc90c394a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950975"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39445070"
 ---
 # <a name="build-a-ruby-and-postgres-web-app-in-azure-app-service-on-linux"></a>在基于 Linux 的 Azure 应用服务中生成 Ruby 和 Postgres Web 应用
 
@@ -25,7 +25,7 @@ ms.locfileid: "37950975"
 
 ![Azure 应用服务中运行的 Ruby on Rails 应用](./media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 在 Azure 中创建 PostgreSQL 数据库
@@ -123,7 +123,7 @@ rails server
 
 ### <a name="create-a-postgres-server"></a>创建一个 Postgres 服务器
 
-使用 [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az_postgres_server_create) 命令创建 PostgreSQL 服务器。
+使用 [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create) 命令创建 PostgreSQL 服务器。
 
 在 Cloud Shell 中运行以下命令，使用唯一的服务器名称来替换 *\<postgres_server_name>* 占位符。 服务器名称在 Azure 中的所有服务器中必须是唯一的。 
 
@@ -155,7 +155,7 @@ az postgres server create --location "West Europe" --resource-group myResourceGr
 
 ### <a name="configure-server-firewall"></a>配置服务器防火墙
 
-在 Cloud Shell 中，使用 [`az postgres server firewall-rule create`](/cli/azure/postgres/server/firewall-rule?view=azure-cli-latest#az_postgres_server_firewall_rule_create) 命令创建 Postgres 服务器的防火墙规则，以便建立客户端连接。 若同时将起始 IP 和结束 IP 设置为 0.0.0.0，防火墙将仅对其他 Azure 资源开启。 使用唯一的服务器名称来替换 *\<postgres_server_name>* 占位符。
+在 Cloud Shell 中，使用 [`az postgres server firewall-rule create`](/cli/azure/postgres/server/firewall-rule?view=azure-cli-latest#az-postgres-server-firewall-rule-create) 命令创建 Postgres 服务器的防火墙规则，以便建立客户端连接。 若同时将起始 IP 和结束 IP 设置为 0.0.0.0，防火墙将仅对其他 Azure 资源开启。 使用唯一的服务器名称来替换 *\<postgres_server_name>* 占位符。
 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myResourceGroup --server <postgres_server_name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
@@ -300,7 +300,7 @@ git commit -m "database.yml updates"
 
 ### <a name="configure-database-settings"></a>配置数据库设置
 
-在应用服务的 Cloud Shell 中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) 命令将环境变量设置为应用设置。
+在应用服务的 Cloud Shell 中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令将环境变量设置为应用设置。
 
 以下 Cloud Shell 命令配置应用设置 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME` 和 `DB_PASSWORD`。 替换占位符 _&lt;appname>_ 和 _&lt;postgres_server_name>_。
 

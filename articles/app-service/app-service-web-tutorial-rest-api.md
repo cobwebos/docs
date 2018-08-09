@@ -15,18 +15,18 @@ ms.topic: tutorial
 ms.date: 02/28/2018
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 4b5e432a9c553f5221f138b19a180f92420e6058
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: b468240d1a9aaf0511358433a8beee7e6442e145
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38317743"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39445015"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>教程：在 Azure 应用服务中托管启用了 CORS 的 RESTful API
 
 [Azure 应用服务](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。 另外，应用服务还为 RESTful API 提供对[跨域资源共享 (CORS)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) 的内置支持。 本教程介绍如何将 ASP.NET Core API 应用部署到提供 CORS 支持的应用服务。 请使用命令行工具来配置应用，使用 Git 来部署应用。 
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 使用 Azure CLI 创建应用服务资源
@@ -168,7 +168,7 @@ dotnet run
 
 ### <a name="enable-cors"></a>启用 CORS 
 
-在 Cloud Shell 中，使用 [`az resource update`](/cli/azure/resource#az_resource_update) 命令对客户端的 URL 启用 CORS。 替换 _&lt;appname>_ 占位符。
+在 Cloud Shell 中，使用 [`az resource update`](/cli/azure/resource#az-resource-update) 命令对客户端的 URL 启用 CORS。 替换 _&lt;appname>_ 占位符。
 
 ```azurecli-interactive
 az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.cors.allowedOrigins="['http://localhost:5000']" --api-version 2015-06-01

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/21/2018
 ms.author: markgal
-ms.openlocfilehash: 06898877a4f13182230c6d5fb12544f90525d84d
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 40a83b93443ebe1482f89a114505a1ba27b93bd2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36960162"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39445737"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>准备环境以备份 Resource Manager 部署的虚拟机
 
@@ -69,29 +69,29 @@ ms.locfileid: "36960162"
 若要创建恢复服务保管库，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在“中心”菜单中选择“浏览”，并键入“恢复服务”。 开始键入时，会根据输入筛选资源列表。 选择“恢复服务保管库”。
+1. 在“中心”菜单中选择“浏览”，并键入“恢复服务”。 开始键入时，会根据输入筛选资源列表。 选择“恢复服务保管库”。
 
     ![在框中键入内容，并在结果中选择“恢复服务保管库”](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
 
     此时会显示恢复服务保管库列表。
-3. 在“恢复服务保管库”菜单中，选择“添加”。
+1. 在“恢复服务保管库”菜单中，选择“添加”。
 
     ![创建恢复服务保管库步骤 2](./media/backup-azure-arm-vms-prepare/rs-vault-menu.png)
 
     此时会打开“恢复服务保管库”窗格。 此窗格中会提示输入“名称”、“订阅”、“资源组”和“位置”的信息。
 
     ![“恢复服务保管库”窗格](./media/backup-azure-arm-vms-prepare/rs-vault-attributes.png)
-4. 对于“名称”，请输入一个友好名称以标识保管库 。 名称对于 Azure 订阅需要是唯一的。 键入包含 2 到 50 个字符的名称。 名称必须以字母开头，只能包含字母、数字和连字符。
-5. 选择“订阅”查看可用订阅列表。 如果不确定要使用哪个订阅，请使用默认的（或建议的）订阅。 仅当工作或学校帐户与多个 Azure 订阅关联时，才会显示多个选项。
-6. 选择“资源组”查看可用资源组列表，或选择“新建”创建新的资源组。 有关资源组的完整信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md)。
-7. 选择“位置”，为保管库选择地理区域。 *必须* 与要保护的虚拟机位于同一区域中。
+1. 对于“名称”，请输入一个友好名称以标识保管库 。 名称对于 Azure 订阅需要是唯一的。 键入包含 2 到 50 个字符的名称。 名称必须以字母开头，只能包含字母、数字和连字符。
+1. 选择“订阅”查看可用订阅列表。 如果不确定要使用哪个订阅，请使用默认的（或建议的）订阅。 仅当工作或学校帐户与多个 Azure 订阅关联时，才会显示多个选项。
+1. 选择“资源组”查看可用资源组列表，或选择“新建”创建新的资源组。 有关资源组的完整信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md)。
+1. 选择“位置”，为保管库选择地理区域。 *必须* 与要保护的虚拟机位于同一区域中。
 
    > [!IMPORTANT]
    > 如果不确定 VM 的所在位置，请关闭保管库创建对话框，并转到门户中的虚拟机列表。 如果在多个区域中具有虚拟机，则需要在每个区域中创建恢复服务保管库。 请先在第一个位置创建保管库，然后转到下一个位置。 无需指定存储帐户即可存储备份数据。 恢复服务保管库和 Azure 备份服务会自动处理这种情况。
    >
    >
 
-8. 选择**创建**。 创建恢复服务保管库可能需要一段时间。 可以在门户的右上区域中监视状态通知。 创建保管库后，它会显示在“恢复服务保管库”的列表中。 如果未看到创建的保管库，请选择“刷新”。
+1. 选择**创建**。 创建恢复服务保管库可能需要一段时间。 可以在门户的右上区域中监视状态通知。 创建保管库后，它会显示在“恢复服务保管库”的列表中。 如果未看到创建的保管库，请选择“刷新”。
 
     ![备份保管库列表](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
 
@@ -107,13 +107,13 @@ ms.locfileid: "36960162"
 
    ![从备份保管库列表中选择保管库](./media/backup-azure-arm-vms-prepare/new-vault-settings-blade.png)
 
-2. 在“设置”窗格中，使用垂直滚动条向下滚动到“管理”部分，并选择“备份基础结构”。 在“常规”部分中，选择“备份配置”。 在“备份配置”窗格中，选择保管库的存储复制选项。 默认情况下，保管库具有异地冗余存储。
+1. 在“设置”窗格中，使用垂直滚动条向下滚动到“管理”部分，并选择“备份基础结构”。 在“常规”部分中，选择“备份配置”。 在“备份配置”窗格中，选择保管库的存储复制选项。 默认情况下，保管库具有异地冗余存储。
 
    ![备份保管库列表](./media/backup-azure-arm-vms-prepare/full-blade.png)
 
    如果使用 Azure 作为主要备份存储终结点，请继续使用异地冗余存储。 如果使用 Azure 作为非主要备份存储终结点，请选择本地冗余存储。 请参阅 [Azure 存储复制概述](../storage/common/storage-redundancy.md)详细了解存储选项。
 
-3. 如果更改了存储复制类型，请选择“保存”。
+1. 如果更改了存储复制类型，请选择“保存”。
     
 选择保管库的存储选项后，可以开始将 VM 与保管库相关联。 若要开始关联，请发现及注册 Azure 虚拟机。
 
@@ -135,20 +135,20 @@ ms.locfileid: "36960162"
       此时会打开所选保管库的“设置”窗格和保管库仪表板。
 
       ![“设置”窗格和保管库仪表板](./media/backup-azure-arm-vms-prepare/new-vault-settings-blade.png)
-2. 在保管库仪表板菜单中，选择“备份”。
+1. 在保管库仪表板菜单中，选择“备份”。
 
    ![“备份”按钮](./media/backup-azure-arm-vms-prepare/backup-button.png)
 
    此时会打开“备份”和“备份目标”窗格。
 
-3. 在“备份目标”窗格中，将“工作负荷的运行位置”设置为“Azure”，并将“要备份的项”设置为“虚拟机”。 然后选择“确定”。
+1. 在“备份目标”窗格中，将“工作负荷的运行位置”设置为“Azure”，并将“要备份的项”设置为“虚拟机”。 然后选择“确定”。
 
    ![“备份”和“备份目标”窗格](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
 
    此步骤向保管库注册 VM 扩展。 随后将会关闭“备份目标”窗格，并打开“备份策略”窗格。
 
    ![“备份”和“备份策略”窗格](./media/backup-azure-arm-vms-prepare/select-backup-goal-2.png)
-4. 在“备份策略”窗格中，选择要应用到保管库的备份策略。
+1. 在“备份策略”窗格中，选择要应用到保管库的备份策略。
 
    ![选择备份策略](./media/backup-azure-arm-vms-prepare/setting-rs-backup-policy-new.png)
 
@@ -156,13 +156,13 @@ ms.locfileid: "36960162"
     选择“确定”，将备份策略与保管库相关联。
 
    随后将会关闭“备份策略”窗格，并打开“选择虚拟机”窗格。
-5. 在“选择虚拟机”窗格中，选择要与指定的策略关联的虚拟机，并选择“确定”。
+1. 在“选择虚拟机”窗格中，选择要与指定的策略关联的虚拟机，并选择“确定”。
 
    ![“选择虚拟机”窗格](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
    所选虚拟机已验证。 如果未看到所需的虚拟机，请检查这些虚拟机是否位于恢复服务保管库所在的同一个 Azure 区域。 如果仍看不到虚拟机，请检查它们是否尚未受其他保管库保护。 保管库仪表板将显示恢复服务保管库所在的区域。
 
-6. 定义保管库的所有设置后，请在“备份”窗格中选择“启用备份”。 此步骤将策略部署到保管库和 VM。 此步骤不会创建虚拟机的初始恢复点。
+1. 定义保管库的所有设置后，请在“备份”窗格中选择“启用备份”。 此步骤将策略部署到保管库和 VM。 此步骤不会创建虚拟机的初始恢复点。
 
    ![“启用备份”按钮](./media/backup-azure-arm-vms-prepare/vm-validated-click-enable.png)
 
@@ -241,15 +241,15 @@ ms.locfileid: "36960162"
 此过程将设置本地系统帐户的代理服务器配置。
 
 1. 下载 [PsExec](https://technet.microsoft.com/sysinternals/bb897553)。
-2. 在权限提升的提示符下运行以下命令，打开 Internet Explorer：
+1. 在权限提升的提示符下运行以下命令，打开 Internet Explorer：
 
     ```
     psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe"
     ```
 
-3. 在 Internet Explorer 中，转到“工具” > “Internet 选项” > “连接” > “局域网设置”。
-4. 验证系统帐户的代理设置。 设置代理 IP 和端口。
-5. 关闭 Internet Explorer。
+1. 在 Internet Explorer 中，转到“工具” > “Internet 选项” > “连接” > “局域网设置”。
+1. 验证系统帐户的代理设置。 设置代理 IP 和端口。
+1. 关闭 Internet Explorer。
 
 以下脚本设置计算机范围的代理配置，可将该配置用于任何传出的 HTTP 或 HTTPS 流量。 如果已在当前用户帐户（非本地系统帐户）中设置代理服务器，请使用此脚本将设置应用到 SYSTEMACCOUNT。
 
@@ -283,10 +283,10 @@ HttpProxy.Port=<proxy port>
 
 #### <a name="step-2-allow-incoming-connections-on-the-proxy-server"></a>步骤 2：在代理服务器上允许传入连接
 1. 在代理服务器上打开 Windows 防火墙。 访问防火墙的最简单方法是搜索“高级安全 Windows 防火墙”。
-2. 在“高级安全 Windows 防火墙”对话框中，右键单击“入站规则”并选择“新建规则”。
-3. 在“新建入站规则向导”中的“规则类型”页上，选择“自定义”选项，然后选择“下一步”。
-4. 在“程序”页上，依次选择“所有程序”、“下一步”。
-5. 在“协议和端口”页上输入以下信息，选择“下一步”：
+1. 在“高级安全 Windows 防火墙”对话框中，右键单击“入站规则”并选择“新建规则”。
+1. 在“新建入站规则向导”中的“规则类型”页上，选择“自定义”选项，然后选择“下一步”。
+1. 在“程序”页上，依次选择“所有程序”、“下一步”。
+1. 在“协议和端口”页上输入以下信息，选择“下一步”：
    * 对于“协议类型”，请选择“TCP”。
    * 对于“本地端口”，请选择“特定端口”。 在随后显示的框中，指定已配置的代理端口号。
    * 对于“远程端口”，请选择“所有端口”。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: jeedes
-ms.openlocfilehash: de41838b95b524780ca9df56ff036a200fd5f73a
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 24a82bbaf47153791da2f21a0b68c2f81c0670e7
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39043697"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446350"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>教程：Azure Active Directory 与 ArcGIS Online 集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "39043697"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 ArcGIS Online
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-arcgis-online-from-the-gallery"></a>从库中添加 ArcGIS Online
 若要配置 ArcGIS Online 与 Azure AD 的集成，需要将库中的 ArcGIS Online 添加到托管的 SaaS 应用列表。
@@ -64,15 +64,15 @@ ms.locfileid: "39043697"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中，键入“ArcGIS Online”，从结果面板中选择“ArcGIS Online”，再单击“添加”按钮，添加此应用程序。
+1. 在搜索框中，键入“ArcGIS Online”，从结果面板中选择“ArcGIS Online”，再单击“添加”按钮，添加此应用程序。
 
     ![结果列表中的 ArcGIS Online](./media/arcgis-tutorial/tutorial_arcgisonline_addfromgallery.png)
 
@@ -87,10 +87,10 @@ ms.locfileid: "39043697"
 若要配置和测试 ArcGIS Online 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 ArcGIS Online 测试用户](#create-a-arcgis-online-test-user)** - 在 ArcGIS Online 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 ArcGIS Online 测试用户](#create-a-arcgis-online-test-user)** - 在 ArcGIS Online 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -102,15 +102,15 @@ ms.locfileid: "39043697"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![“单一登录”对话框](./media/arcgis-tutorial/tutorial_arcgisonline_samlbase.png)
 
-3. 在“ArcGIS Online 域和 URL”部分中，执行以下步骤：
+1. 在“ArcGIS Online 域和 URL”部分中，执行以下步骤：
 
     ![ArcGIS Online 域和 URL 单一登录信息](./media/arcgis-tutorial/tutorial_arcgisonline_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.maps.arcgis.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.maps.arcgis.com`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`<companyname>.maps.arcgis.com`
 
@@ -119,33 +119,33 @@ ms.locfileid: "39043697"
  
 
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
+1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![证书下载链接](./media/arcgis-tutorial/tutorial_arcgisonline_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/arcgis-tutorial/tutorial_general_400.png)
 
-6. 在其他 Web 浏览器窗口中，以管理员身份登录 ArcGIS 公司站点。
+1. 在其他 Web 浏览器窗口中，以管理员身份登录 ArcGIS 公司站点。
 
-7. 单击“编辑设置”。
+1. 单击“编辑设置”。
 
     ![编辑设置](./media/arcgis-tutorial/ic784742.png "编辑设置")
 
-8. 单击“安全”。
+1. 单击“安全”。
 
     ![安全](./media/arcgis-tutorial/ic784743.png "安全")
 
-9. 在“企业登录”下，单击“设置标识提供者”。
+1. 在“企业登录”下，单击“设置标识提供者”。
 
     ![企业登录名](./media/arcgis-tutorial/ic784744.png "企业登录名")
 
-10. 在“设置标识提供者”配置页上，执行以下步骤：
+1. 在“设置标识提供者”配置页上，执行以下步骤：
    
     ![设置标识提供者](./media/arcgis-tutorial/ic784745.png "设置标识提供者")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入组织的名称。
+    a. 在“名称”文本框中，键入组织的名称。
 
     b. 对于“企业标识提供者提供元数据所使用的方法”，请选择“文件”。
 
@@ -169,19 +169,19 @@ ms.locfileid: "39043697"
 
     ![“Azure Active Directory”按钮](./media/arcgis-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/arcgis-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/arcgis-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/arcgis-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -198,22 +198,22 @@ ms.locfileid: "39043697"
 
 1. 登录“ArcGIS”租户。
 
-2. 单击“邀请成员”。
+1. 单击“邀请成员”。
    
     ![邀请成员](./media/arcgis-tutorial/ic784747.png "邀请成员")
 
-3. 选择“自动添加成员且无需发送电子邮件”，然后单击“下一步”。
+1. 选择“自动添加成员且无需发送电子邮件”，然后单击“下一步”。
    
     ![自动添加成员](./media/arcgis-tutorial/ic784748.png "自动添加成员")
 
-4. 在“成员”对话框页上，执行以下步骤：
+1. 在“成员”对话框页上，执行以下步骤：
    
      ![添加和查看](./media/arcgis-tutorial/ic784749.png "添加和查看")
     
-     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 输入想要预配的有效 AAD 帐户的“电子邮件”、“名字”和“姓氏”。
+     a. 输入想要预配的有效 AAD 帐户的“电子邮件”、“名字”和“姓氏”。
   
      b. 单击“添加和查看”。
-5. 查看输入的数据，然后单击“添加成员”。
+1. 查看输入的数据，然后单击“添加成员”。
    
     ![添加成员](./media/arcgis-tutorial/ic784750.png "添加成员")
         
@@ -232,23 +232,23 @@ ms.locfileid: "39043697"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“ArcGIS Online”。
+1. 在应用程序列表中，选择“ArcGIS Online”。
 
     ![应用程序列表中的“ArcGIS Online”链接](./media/arcgis-tutorial/tutorial_arcgisonline_app.png)  
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

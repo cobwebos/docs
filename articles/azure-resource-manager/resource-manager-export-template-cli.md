@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1d73142931a5cfa84cb24df7a85c799a0f508385
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d4a1a687700badc550d37bf74f6a7e1680388897
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440309"
 ---
 # <a name="export-azure-resource-manager-templates-with-azure-cli"></a>使用 Azure CLI 导出 Azure 资源管理器模板
 
@@ -44,7 +45,7 @@ az group deployment create \
 
 ## <a name="save-template-from-deployment-history"></a>从部署历史记录保存模板
 
-可以使用 [az group deployment export](/cli/azure/group/deployment#az_group_deployment_export) 命令从部署历史记录中检索模板。 以下示例保存以前部署的模板：
+可以使用 [az group deployment export](/cli/azure/group/deployment#az-group-deployment-export) 命令从部署历史记录中检索模板。 以下示例保存以前部署的模板：
 
 ```azurecli
 az group deployment export --name NewStorage --resource-group ExampleGroup
@@ -55,7 +56,7 @@ az group deployment export --name NewStorage --resource-group ExampleGroup
 
 ## <a name="export-resource-group-as-template"></a>将资源组导出为模板
 
-可以使用 [az group export](/cli/azure/group#az_group_export) 命令检索表示资源组当前状态的模板，而不是从部署历史记录中检索模板。 如果对资源组进行了许多更改，并且现有模板未表示所有更改，则可以使用此命令。 它用作资源组的快照，可用来重新部署到同一资源组。 若要将导出的模板用于其他解决方案，必须大幅修改它。
+可以使用 [az group export](/cli/azure/group#az-group-export) 命令检索表示资源组当前状态的模板，而不是从部署历史记录中检索模板。 如果对资源组进行了许多更改，并且现有模板未表示所有更改，则可以使用此命令。 它用作资源组的快照，可用来重新部署到同一资源组。 若要将导出的模板用于其他解决方案，必须大幅修改它。
 
 ```azurecli
 az group export --name ExampleGroup

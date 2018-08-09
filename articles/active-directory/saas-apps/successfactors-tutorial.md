@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 8401462ed4bf5ef2ac1ff10cf3f6750cbed7b4e5
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 870a753a8f10255a602616ab54234b295f4d6e13
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39050795"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39431477"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-successfactors"></a>教程：Azure Active Directory 与 SuccessFactors 集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "39050795"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库添加 SuccessFactors
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-successfactors-from-the-gallery"></a>从库添加 SuccessFactors
 要配置 SuccessFactors 与 Azure AD 的集成，需要从库中将 SuccessFactors 添加到托管 SaaS 应用列表。
@@ -64,15 +64,15 @@ ms.locfileid: "39050795"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中键入“SuccessFactors”，在结果面板中选择“SuccessFactors”，然后单击“添加”按钮添加该应用程序。
+1. 在搜索框中键入“SuccessFactors”，在结果面板中选择“SuccessFactors”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 SuccessFactors](./media/successfactors-tutorial/tutorial_successfactors_addfromgallery.png)
 
@@ -87,10 +87,10 @@ ms.locfileid: "39050795"
 若要配置和测试 SuccessFactors 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 SuccessFactors 测试用户](#create-a-successfactors-test-user)** - 在 SuccessFactors 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 SuccessFactors 测试用户](#create-a-successfactors-test-user)** - 在 SuccessFactors 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -102,15 +102,15 @@ ms.locfileid: "39050795"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![“单一登录”对话框](./media/successfactors-tutorial/tutorial_successfactors_samlbase.png)
 
-3. 在“SuccessFactors 域和 URL”部分中，执行以下步骤：
+1. 在“SuccessFactors 域和 URL”部分中，执行以下步骤：
 
     ![SuccessFactors 域和 URL 单一登录信息](./media/successfactors-tutorial/tutorial_successfactors_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：
     | |
     |--|
     | `https://<companyname>.successfactors.com/<companyname>`|
@@ -148,34 +148,34 @@ ms.locfileid: "39050795"
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [SuccessFactors 客户端支持团队](https://www.successfactors.com/en_us/support.html)获取这些值。 
 
-4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/successfactors-tutorial/tutorial_successfactors_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/successfactors-tutorial/tutorial_general_400.png)
     
-6. 在“SuccessFactors 配置”部分中，单击“配置 SuccessFactors”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+1. 在“SuccessFactors 配置”部分中，单击“配置 SuccessFactors”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
 
     ![配置单一登录](./media/successfactors-tutorial/tutorial_successfactors_configure.png) 
 
-7. 在另一个 Web 浏览器窗口中，以管理员身份登录 **SuccessFactors 管理门户**。
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录 **SuccessFactors 管理门户**。
     
-8. 请访问“应用程序安全性”并从本机转到“单一登录功能”。 
+1. 请访问“应用程序安全性”并从本机转到“单一登录功能”。 
 
-9. 将任何值放在“重置令牌”中，然后单击“保存令牌”以启用 SAML SSO。
+1. 将任何值放在“重置令牌”中，然后单击“保存令牌”以启用 SAML SSO。
    
     ![在应用端配置单一登录][11]
 
     > [!NOTE] 
     > 此值将用作打开/关闭开关。 如果保存了任何值，则 SAML SSO 为打开。 如果保存为空值，则 SAML SSO 为关闭。
 
-10. 从本机转到以下屏幕快照并执行以下操作：
+1. 从本机转到以下屏幕快照并执行以下操作：
    
     ![在应用端配置单一登录][12]
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“SAML v2 SSO”单选按钮
+    a. 选择“SAML v2 SSO”单选按钮
    
     b. 设置“SAML 声明方名称”（例如，SAML 颁发者+公司名称）。
    
@@ -196,11 +196,11 @@ ms.locfileid: "39050795"
     > [!NOTE] 
     > 证书内容必须具有开始证书和结束证书标记。
 
-11. 导航到 SAML V2，并执行以下步骤：
+1. 导航到 SAML V2，并执行以下步骤：
    
     ![在应用端配置单一登录][13]
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“支持 SP 启动的全局注销”，选择“是”。
+    a. 对于“支持 SP 启动的全局注销”，选择“是”。
    
     b. 在“全局注销服务URL (LogoutRequest 目标)”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
    
@@ -212,11 +212,11 @@ ms.locfileid: "39050795"
    
     f. 在“以公司范围颁发者身份发送请求”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
-12. 如果希望登录用户名不区分大小写，请执行这些步骤。
+1. 如果希望登录用户名不区分大小写，请执行这些步骤。
    
     ![配置单一登录][29]
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 请访问“公司设置”（靠近底部）。
+    a. 请访问“公司设置”（靠近底部）。
    
     b. 选中“启用不区分大小写的用户名”旁边的复选框。
    
@@ -240,19 +240,19 @@ ms.locfileid: "39050795"
 
     ![“Azure Active Directory”按钮](./media/successfactors-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/successfactors-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/successfactors-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/successfactors-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -279,23 +279,23 @@ ms.locfileid: "39050795"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“SuccessFactors”。
+1. 在应用程序列表中，选择“SuccessFactors”。
 
     ![应用程序列表中的 SuccessFactors 链接](./media/successfactors-tutorial/tutorial_successfactors_app.png)  
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

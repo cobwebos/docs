@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 05/07/2018
 ms.author: areddish
 ms.openlocfilehash: e3def864267a590c86a2dd6663561d8488081ad6
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
+ms.lasthandoff: 08/06/2018
 ms.locfileid: "36301074"
 ---
 # <a name="use-custom-vision-api-to-build-an-object-detection-project-in-c35"></a>采用 C# 使用自定义视觉 API 构建对象检测项目 
@@ -31,7 +31,7 @@ ms.locfileid: "36301074"
 
 ## <a name="get-the-training-and-prediction-keys"></a>获取定型和预测密钥
 
-若要获取此示例中使用的密钥，请访问[自定义视觉网页](https://customvision.ai)并选择右上角的__齿轮图标__。 在“帐户”部分中，复制“定型密钥”和“预测密钥”字段中的值。
+若要获取此示例中使用的密钥，请访问[自定义影像网页](https://customvision.ai)并选择右上角齿轮图标。 在“帐户”部分中，复制“定型密钥”和“预测密钥”字段中的值。
 
 ![密钥 UI 的图像](./media/csharp-tutorial/training-prediction-keys.png)
 

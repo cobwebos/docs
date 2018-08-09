@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: b1895fb1910c5f30cbcff1c16ca66057d31a580b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 93824c8f0e7667fcb58fd6b8292cddfa2b4a482a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656476"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441453"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>在 Azure 上为 SAP ERP 6.0 部署 SAP IDES EHP7 SP3
 本文介绍如何通过 SAP Cloud Appliance Library (SAP CAL) 3.0 在 Azure 上部署与 SQL Server 和 Windows 操作系统一起运行的 SAP IDES 系统。 屏幕截图将逐步显示此过程。 若要部署另一种解决方案，请按照相同的步骤操作。
@@ -49,7 +49,7 @@ ms.locfileid: "34656476"
     > [!NOTE]
     后续步骤演示如何创建 Resource Manager 部署的 SAP CAL 帐户。 如果已有链接到经典部署模型的 SAP CAL 帐户，则需要按照这些步骤创建新的 SAP CAL 帐户。 需要在 Resource Manager 模型中部署新的 SAP CAL 帐户。
 
-2. 若要创建新的 SAP CAL 帐户，“帐户”页显示 Azure 的两个选项： 
+1. 若要创建新的 SAP CAL 帐户，“帐户”页显示 Azure 的两个选项： 
 
     a. Microsoft Azure（经典）是经典部署模型，已不再是首选项。
 
@@ -61,27 +61,27 @@ ms.locfileid: "34656476"
 
     ![SAP CAL 帐户](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic3c.PNG)
 
-3. 输入可在 Azure 门户中找到的 Azure 订阅 ID。 
+1. 输入可在 Azure 门户中找到的 Azure 订阅 ID。 
 
     ![SAP CAL 订阅 ID](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic3c.PNG)
 
-4. 若要授权将 SAP CAL 部署到定义的 Azure 订阅，请单击“授权”。 浏览器选项卡中将显示以下页面：
+1. 若要授权将 SAP CAL 部署到定义的 Azure 订阅，请单击“授权”。 浏览器选项卡中将显示以下页面：
 
     ![Internet Explorer 云服务登录](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic4c.PNG)
 
-5. 如果列出多个用户，则选择链接到所选择的 Azure 订阅共同管理者的 Microsoft 帐户。 浏览器选项卡中将显示以下页面：
+1. 如果列出多个用户，则选择链接到所选择的 Azure 订阅共同管理者的 Microsoft 帐户。 浏览器选项卡中将显示以下页面：
 
     ![Internet Explorer 云服务确认](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic5a.PNG)
 
-6. 单击“接受”。 如果授权成功，则将再次显示 SAP CAL 帐户定义。 稍后，用户将收到一条消息，确认授权过程成功。
+1. 单击“接受”。 如果授权成功，则将再次显示 SAP CAL 帐户定义。 稍后，用户将收到一条消息，确认授权过程成功。
 
-7. 若要将新创建的 SAP CAL 帐户分配到你的用户，请在右侧的文本框中输入你的用户 ID 并单击“添加”。 
+1. 若要将新创建的 SAP CAL 帐户分配到你的用户，请在右侧的文本框中输入你的用户 ID 并单击“添加”。 
 
     ![帐户到用户的关联](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic8a.PNG)
 
-8. 若要将你的帐户与你用于登录到 SAP CAL 的用户相关联，请单击“评审”。 
+1. 若要将你的帐户与你用于登录到 SAP CAL 的用户相关联，请单击“评审”。 
 
-9. 若要创建用户和新建的 SAP CAL 帐户之间的关联，请单击“创建”。
+1. 若要创建用户和新建的 SAP CAL 帐户之间的关联，请单击“创建”。
 
     ![用户到帐户的关联](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic9b.PNG)
 
@@ -96,7 +96,7 @@ ms.locfileid: "34656476"
 ### <a name="deploy-a-solution"></a>部署解决方案
 1. 设置 SAP CAL 帐户后，选择“Windows 和 SQL Server 上的 SAP IDES 解决方案”解决方案。 单击“创建实例”，并确认使用情况以及条款和条件。 
 
-2. 在“基本模式：创建实例”页上，需要：
+1. 在“基本模式：创建实例”页上，需要：
 
     a. 输入实例“名称”。
 
@@ -106,19 +106,19 @@ ms.locfileid: "34656476"
 
     ![SAP CAL 基本模式：创建实例](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
-3. 单击“创建”。 一段时间后，根据解决方案的大小和复杂性（SAP CAL 提供估算值），状态将显示为“活动”并可供使用： 
+1. 单击“创建”。 一段时间后，根据解决方案的大小和复杂性（SAP CAL 提供估算值），状态将显示为“活动”并可供使用： 
 
     ![SAP CAL 实例](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic12a.png)
 
-4. 若要查找由 SAP CAL 创建的资源组及其所有对象，请转到 Azure 门户。 可以找到以 SAP CAL 中提供的相同实例名称开头的虚拟机。
+1. 若要查找由 SAP CAL 创建的资源组及其所有对象，请转到 Azure 门户。 可以找到以 SAP CAL 中提供的相同实例名称开头的虚拟机。
 
     ![资源组对象](./media/cal-ides-erp6-ehp7-sp3-sql/ides_resource_group.PNG)
 
-5. 在 SAP CAL 门户中，转到已部署的实例，然后单击“连接”。 将出现以下弹出窗口： 
+1. 在 SAP CAL 门户中，转到已部署的实例，然后单击“连接”。 将出现以下弹出窗口： 
 
     ![连接到实例](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic14a.PNG)
 
-6. 在能够使用其中一个方法连接到已部署的系统之前，请单击“入门指南”。 此文档将为用户的每个连接方法命名。 用户密码设置为部署过程开始时定义的主密码。 文档中列出了可用于登录到已部署系统的其他更多功能用户和其密码。
+1. 在能够使用其中一个方法连接到已部署的系统之前，请单击“入门指南”。 此文档将为用户的每个连接方法命名。 用户密码设置为部署过程开始时定义的主密码。 文档中列出了可用于登录到已部署系统的其他更多功能用户和其密码。
 
     ![SAP 欢迎文档](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic15.jpg)
 

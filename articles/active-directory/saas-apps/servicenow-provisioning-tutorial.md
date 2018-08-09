@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: d76a8996f7ccc6a7b6df2f8e1fe52568dbd725db
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8d05e314cb31aaba96e7db79e0e4dd287e6d2184
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210792"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426898"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>教程：使用 Azure Active Directory 为 ServiceNow 配置自动用户预配
 
@@ -68,15 +68,15 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”部分。
 
-2. 如果已为 ServiceNow 配置单一登录，请使用搜索字段搜索 ServiceNow 实例。 否则，请选择“添加”并在应用程序库中搜索“ServiceNow”。 从搜索结果中选择 ServiceNow，并将其添加到应用程序列表。
+1. 如果已为 ServiceNow 配置单一登录，请使用搜索字段搜索 ServiceNow 实例。 否则，请选择“添加”并在应用程序库中搜索“ServiceNow”。 从搜索结果中选择 ServiceNow，并将其添加到应用程序列表。
 
-3. 选择 ServiceNow 实例，然后选择“预配”选项卡。
+1. 选择 ServiceNow 实例，然后选择“预配”选项卡。
 
-4. 将预配模式设置为“自动”。 
+1. 将预配模式设置为“自动”。 
 
     ![预配](./media/servicenow-provisioning-tutorial/provisioning.png)
 
-5. 在“管理员凭据”部分中，执行以下步骤：
+1. 在“管理员凭据”部分中，执行以下步骤：
    
     a. 在“ServiceNow 实例名称”文本框中，键入 ServiceNow 实例名称。
 
@@ -84,19 +84,19 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
     c. 在“ServiceNow 管理员密码”文本框中，键入管理员的密码。
 
-6. 在 Azure 门户中，单击“测试连接”以确保 Azure AD 可以连接到 ServiceNow 应用。 如果连接失败，请确保 ServiceNow 帐户具有团队管理员权限，并重试“管理员凭据”步骤。
+1. 在 Azure 门户中，单击“测试连接”以确保 Azure AD 可以连接到 ServiceNow 应用。 如果连接失败，请确保 ServiceNow 帐户具有团队管理员权限，并重试“管理员凭据”步骤。
 
-7. 在“通知电子邮件”字段中输入应接收预配错误通知的人员或组的电子邮件地址，并选中复选框。
+1. 在“通知电子邮件”字段中输入应接收预配错误通知的人员或组的电子邮件地址，并选中复选框。
 
-8. 单击“保存”。
+1. 单击“保存”。
 
-9. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 ServiceNow”。
+1. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 ServiceNow”。
 
-10. 在“属性映射”部分中，查看从 Azure AD 同步到 ServiceNow 的用户属性。 选为“匹配”属性的特性用于匹配 ServiceNow 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
+1. 在“属性映射”部分中，查看从 Azure AD 同步到 ServiceNow 的用户属性。 选为“匹配”属性的特性用于匹配 ServiceNow 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
-11. 若要为 ServiceNow 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
+1. 若要为 ServiceNow 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
 
-12. 单击“保存”。
+1. 单击“保存”。
 
 此操作会对“用户和组”部分中分配到 ServiceNow 的任何用户和/或组启动初始同步。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 ServiceNow 应用执行的所有操作。
 

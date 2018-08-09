@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/10/2018
 ms.author: douglasl
-ms.openlocfilehash: e62953ddfcc3f6d08430c477efbd7efc23064e19
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 52b1ec9a1f69273723129050820bb3b4efd7f36d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085401"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441334"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Spark 活动转换云中的数据
 本教程使用 Azure 门户创建 Azure 数据工厂管道。 该管道使用 Spark 活动和按需 Azure HDInsight 链接服务转换数据。 
@@ -63,17 +63,17 @@ ms.locfileid: "37085401"
     if __name__ == "__main__":
         main()
     ```
-2. 将 *&lt;storageAccountName&gt;* 替换为 Azure 存储帐户的名称。 然后保存文件。 
-3. 在 Azure Blob 存储中，创建名为 **adftutorial** 的容器（如果尚不存在）。 
-4. 创建名为 **spark** 的文件夹。
-5. 在 **spark** 文件夹中创建名为 **script** 的子文件夹。 
-6. 将 **WordCount_Spark.py** 文件上传到 **script** 子文件夹。 
+1. 将 *&lt;storageAccountName&gt;* 替换为 Azure 存储帐户的名称。 然后保存文件。 
+1. 在 Azure Blob 存储中，创建名为 **adftutorial** 的容器（如果尚不存在）。 
+1. 创建名为 **spark** 的文件夹。
+1. 在 **spark** 文件夹中创建名为 **script** 的子文件夹。 
+1. 将 **WordCount_Spark.py** 文件上传到 **script** 子文件夹。 
 
 
 ### <a name="upload-the-input-file"></a>上传输入文件
 1. 创建包含一些文本的名为 **minecraftstory.txt** 的文件。 Spark 程序会统计此文本中的单词数量。 
-2. 在 **spark** 文件夹中创建名为 **inputfiles** 的子文件夹。 
-3. 将 **minecraftstory.txt** 文件上传到 **inputfiles** 子文件夹。 
+1. 在 **spark** 文件夹中创建名为 **inputfiles** 的子文件夹。 
+1. 将 **minecraftstory.txt** 文件上传到 **inputfiles** 子文件夹。 
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
@@ -81,30 +81,30 @@ ms.locfileid: "37085401"
 1. 在左侧菜单中选择“新建”，然后依次选择“数据 + 分析”、“数据工厂”。 
    
    ![在“新建”窗格中选择“数据工厂”](./media/tutorial-transform-data-spark-portal/new-azure-data-factory-menu.png)
-2. 在“新建数据工厂”窗格的“名称”下输入 **ADFTutorialDataFactory**。 
+1. 在“新建数据工厂”窗格的“名称”下输入 **ADFTutorialDataFactory**。 
       
    ![“新建数据工厂”窗格](./media/tutorial-transform-data-spark-portal/new-azure-data-factory.png)
  
    Azure 数据工厂的名称必须 *全局唯一*。 如果看到以下错误，请更改数据工厂的名称。 （例如，使用 **&lt;yourname&gt;ADFTutorialDataFactory**）。 有关数据工厂项目的命名规则，请参阅[数据工厂 - 命名规则](naming-rules.md)一文。
   
    ![名称不可用时出错](./media/tutorial-transform-data-spark-portal/name-not-available-error.png)
-3. 对于“订阅”，请选择要在其中创建数据工厂的 Azure 订阅。 
-4. 对于“资源组”，请执行以下步骤之一：
+1. 对于“订阅”，请选择要在其中创建数据工厂的 Azure 订阅。 
+1. 对于“资源组”，请执行以下步骤之一：
      
    - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
    - 选择“新建”，并输入资源组的名称。   
          
    本快速入门中的一些步骤假定对资源组使用 **ADFTutorialResourceGroup** 名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
-5. 对于“版本”，选择“V2”。
-6. 对于“位置”，请选择数据工厂所在的位置。 
+1. 对于“版本”，选择“V2”。
+1. 对于“位置”，请选择数据工厂所在的位置。 
 
    要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（例如 Azure 存储和 Azure SQL 数据库）和计算资源（例如 HDInsight）可以位于其他区域。
-7. 选择“固定到仪表板”。     
-8. 选择“创建”。
-9. 仪表板上会显示状态为“正在部署数据工厂”的以下磁贴： 
+1. 选择“固定到仪表板”。     
+1. 选择“创建”。
+1. 仪表板上会显示状态为“正在部署数据工厂”的以下磁贴： 
 
    ![“正在部署数据工厂”磁贴](media//tutorial-transform-data-spark-portal/deploying-data-factory.png)
-10. 创建完成后，会显示“数据工厂”页。 选择“创作和监视”磁贴，在单独的选项卡中启动数据工厂 UI 应用程序。
+1. 创建完成后，会显示“数据工厂”页。 选择“创作和监视”磁贴，在单独的选项卡中启动数据工厂 UI 应用程序。
 
     ![数据工厂的主页，其中包含“创作和监视”磁贴](./media/tutorial-transform-data-spark-portal/data-factory-home-page.png)
 
@@ -120,13 +120,13 @@ ms.locfileid: "37085401"
 
    ![“入门”页](./media/tutorial-transform-data-spark-portal/get-started-page.png)
 
-2. 选择窗口底部的“连接”，然后选择“+ 新建”。 
+1. 选择窗口底部的“连接”，然后选择“+ 新建”。 
 
    ![用于创建新连接的按钮](./media/tutorial-transform-data-spark-portal/new-connection.png)
-3. 在“新建链接服务”窗口中，选择“数据存储” > “Azure Blob 存储”，然后选择“继续”。 
+1. 在“新建链接服务”窗口中，选择“数据存储” > “Azure Blob 存储”，然后选择“继续”。 
 
    ![选择“Azure Blob 存储”磁贴](./media/tutorial-transform-data-spark-portal/select-azure-storage.png)
-4. 至于“存储帐户名称”，请从列表中选择名称，然后选择“保存”。 
+1. 至于“存储帐户名称”，请从列表中选择名称，然后选择“保存”。 
 
    ![指定存储帐户名称的框](./media/tutorial-transform-data-spark-portal/new-azure-storage-linked-service.png)
 
@@ -134,10 +134,10 @@ ms.locfileid: "37085401"
 ### <a name="create-an-on-demand-hdinsight-linked-service"></a>创建按需 HDInsight 链接服务
 
 1. 再次选择“+ 新建”按钮，创建另一个链接服务。 
-2. 在“新建链接服务”窗口中，选择“计算” > “Azure HDInsight”，然后选择“继续”。 
+1. 在“新建链接服务”窗口中，选择“计算” > “Azure HDInsight”，然后选择“继续”。 
 
    ![选择“Azure HDInsight”磁贴](./media/tutorial-transform-data-spark-portal/select-azure-hdinsight.png)
-2. 在“新建链接服务”窗口中完成以下步骤： 
+1. 在“新建链接服务”窗口中完成以下步骤： 
 
    a. 至于“名称”，请输入 **AzureHDInsightLinkedService**。
    
@@ -173,17 +173,17 @@ ms.locfileid: "37085401"
 1. 选择“+ (加)”按钮，然后在菜单上选择“管道”。
 
    ![用于创建新管道的按钮](./media/tutorial-transform-data-spark-portal/new-pipeline-menu.png)
-2. 在“活动”工具箱中，展开“HDInsight”。 将“Spark”活动从“活动”工具箱拖到管道设计器图面。 
+1. 在“活动”工具箱中，展开“HDInsight”。 将“Spark”活动从“活动”工具箱拖到管道设计器图面。 
 
    ![拖动 Spark 活动](./media/tutorial-transform-data-spark-portal/drag-drop-spark-activity.png)
-3. 在底部“Spark”活动窗口的属性中完成以下步骤： 
+1. 在底部“Spark”活动窗口的属性中完成以下步骤： 
 
    a. 切换到“HDI 群集”选项卡。
    
    b. 选择 **AzureHDInsightLinkedService**（在上一过程中创建）。 
         
    ![指定 HDInsight 链接服务](./media/tutorial-transform-data-spark-portal/select-hdinsight-linked-service.png)
-4. 切换到“脚本/Jar”选项卡，然后完成以下步骤： 
+1. 切换到“脚本/Jar”选项卡，然后完成以下步骤： 
 
    a. 至于“作业链接服务”，请选择“AzureStorage1”。
    
@@ -193,10 +193,10 @@ ms.locfileid: "37085401"
    
    c. 浏览到“adftutorial/spark/script”文件夹，选择“WordCount_Spark.py”，然后选择“完成”。      
 
-5. 若要验证管道，请选择工具栏中的“验证”按钮。 选择 **>>**（右键头）按钮，关闭验证窗口。 
+1. 若要验证管道，请选择工具栏中的“验证”按钮。 选择 **>>**（右键头）按钮，关闭验证窗口。 
     
    ![“验证”按钮](./media/tutorial-transform-data-spark-portal/validate-button.png)
-6. 选择“全部发布”。 数据工厂 UI 会将实体（链接服务和管道）发布到 Azure 数据工厂服务。 
+1. 选择“全部发布”。 数据工厂 UI 会将实体（链接服务和管道）发布到 Azure 数据工厂服务。 
     
    ![“全部发布”按钮](./media/tutorial-transform-data-spark-portal/publish-button.png)
 
@@ -210,11 +210,11 @@ ms.locfileid: "37085401"
 
 1. 切换到“监视”选项卡。确认可以看到一个管道运行。 创建 Spark 群集大约需要 20 分钟。 
    
-2. 定期选择“刷新”以检查管道运行的状态。 
+1. 定期选择“刷新”以检查管道运行的状态。 
 
    ![用于监视管道运行的选项卡，其中包含“刷新”按钮](./media/tutorial-transform-data-spark-portal/monitor-tab.png)
 
-3. 若要查看与管道运行相关联的活动运行，请选择“操作”列中的“查看活动运行”。
+1. 若要查看与管道运行相关联的活动运行，请选择“操作”列中的“查看活动运行”。
 
    ![管道运行状态](./media/tutorial-transform-data-spark-portal/pipeline-run-succeeded.png) 
 

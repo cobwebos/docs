@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2018
 ms.author: rithorn
-ms.openlocfilehash: fab26fec44b671a9f779b114c1521bc8142d9427
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 04d5f5dc340d6be47a26baf05aa3d2f2ea7458ae
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389392"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39428812"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>使用管理组管理资源
 
 管理组是一些容器，可以帮助跨多个订阅管理访问权限、策略和符合性。 可以更改、删除和管理这些容器来构建可与 [Azure Policy](../azure-policy/azure-policy-introduction.md) 和 [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 配合使用的层次结构。 有关管理组的详细信息，请参阅[使用 Azure 管理组整理资源](management-groups-overview.md)。
 
-要更改管理组，必须在管理组中拥有“所有者”或“参与者”角色。 要查看自己拥有哪些权限，请选择管理组，然后选择“IAM”。 有关 RBAC 角色的详细信息，请参阅[使用 RBAC 管理访问权限和权限](../role-based-access-control/overview.md)。
+若要对管理组进行更改，必须在管理组中拥有“所有者”或“参与者”角色。 若要查看自己拥有哪些权限，请选择管理组，然后选择“IAM”。 有关 RBAC 角色的详细信息，请参阅[使用 RBAC 管理访问权限和权限](../role-based-access-control/overview.md)。
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
@@ -254,4 +254,4 @@ az account management-group update --name Contoso --parent "Contoso Tenant"
 - [创建管理组来组织 Azure 资源](management-groups-create.md)
 - [安装 Azure PowerShell 模块](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview)
 - [查看 REST API 规范](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview)
-- [安装 Azure CLI 扩展](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az_extension_list_available)
+- [安装 Azure CLI 扩展](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-list-available)

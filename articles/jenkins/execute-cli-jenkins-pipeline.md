@@ -15,12 +15,12 @@ ms.workload: web
 ms.date: 6/7/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 2b568bd22858a42178e2821e0e97a3b4ebdfccd5
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 1796e9f76e39334c8bbdd03463a0f91e9b47cb17
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28926924"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421298"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>使用 Jenkins 和 Azure CLI 部署到 Azure 应用服务
 若要将 Java Web 应用部署到 Azure，可以通过 [Jenkins 管道](https://jenkins.io/doc/book/pipeline/)使用 Azure CLI。 本教程介绍如何在 Azure VM 上创建 CI/CD 管道，包括如何：
@@ -63,7 +63,7 @@ sudo apt-get install -y maven
 
 ## <a name="create-an-azure-app-service-for-deploying-the-java-web-app"></a>创建 Azure 应用服务以部署 Java Web 应用
 
-使用 [az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create) CLI 命令通过“免费”定价层创建 Azure 应用服务计划。 appservice 计划定义用于托管应用的物理资源。 分配到 appservice 计划的所有应用程序共享这些资源，因此在托管多个应用时可以节省成本。 
+使用 [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) CLI 命令通过“免费”定价层创建 Azure 应用服务计划。 appservice 计划定义用于托管应用的物理资源。 分配到 appservice 计划的所有应用程序共享这些资源，因此在托管多个应用时可以节省成本。 
 
 ```azurecli-interactive
 az appservice plan create \
@@ -92,7 +92,7 @@ az appservice plan create \
 
 ### <a name="create-an-azure-web-app"></a>创建 Azure Web 应用
 
- 使用 [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) CLI 命令，在 `myAppServicePlan` 应用服务计划中创建 Web 应用定义。 Web 应用定义提供了一个用于访问应用程序的 URL，并配置了多个将代码部署到 Azure 的选项。 
+ 使用 [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) CLI 命令，在 `myAppServicePlan` 应用服务计划中创建 Web 应用定义。 Web 应用定义提供了一个用于访问应用程序的 URL，并配置了多个将代码部署到 Azure 的选项。 
 
 ```azurecli-interactive
 az webapp create \
@@ -122,7 +122,7 @@ az webapp create \
 
 ### <a name="configure-java"></a>配置 Java 
 
-使用 [az appservice web config update](/cli/azure/appservice/web/config#az_appservice_web_config_update) 命令，设置应用所需的 Java 运行时配置。
+使用 [az appservice web config update](/cli/azure/appservice/web/config#az-appservice-web-config-update) 命令，设置应用所需的 Java 运行时配置。
 
 以下命令配置的 Web 应用可在最新的 Java 8 JDK 和 [Apache Tomcat](http://tomcat.apache.org/) 8.0 上运行。
 

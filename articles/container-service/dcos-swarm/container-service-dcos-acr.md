@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: 90d449de19022b3b427e3d89d5beb18bbd36c6b4
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 15bd452ad2b80334c3f6168e6dee89bdd7c5efc4
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38597981"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424399"
 ---
 # <a name="use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>将 ACR 与 DC/OS 群集配合使用，部署应用程序
 
@@ -34,7 +34,7 @@ ms.locfileid: "38597981"
 
 ## <a name="deploy-azure-container-registry"></a>部署 Azure 容器注册表
 
-必要时，请使用 [az acr create](/cli/azure/acr#az_acr_create) 命令创建 Azure 容器注册表。 
+必要时，请使用 [az acr create](/cli/azure/acr#az-acr-create) 命令创建 Azure 容器注册表。 
 
 以下示例将创建具有随机生成名称的注册表。 然后还使用 `--admin-enabled` 参数为该注册表配置了管理员帐户。
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 11edcfe1075d2afc6c62db5e125d2d150e8c7bfc
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b0aaa27164c84a06c6fad92d5036a00ca5a319f8
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227850"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421723"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>教程：Azure Active Directory 与 Tableau Online 集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "36227850"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Tableau Online
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-tableau-online-from-the-gallery"></a>从库中添加 Tableau Online
 要配置 Tableau Online 与 Azure AD 的集成，需要从库中将 Tableau Online 添加到托管 SaaS 应用列表。
@@ -63,19 +63,19 @@ ms.locfileid: "36227850"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入“Tableau Online”。
+1. 在搜索框中，键入“Tableau Online”。
 
     ![创建 Azure AD 测试用户](./media/tableauonline-tutorial/tutorial_tableauonline_search.png)
 
-5. 在结果面板中，选择“Tableau Online”，然后单击“添加”按钮添加该应用程序。
+1. 在结果面板中，选择“Tableau Online”，然后单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/tableauonline-tutorial/tutorial_tableauonline_addfromgallery.png)
 
@@ -89,10 +89,10 @@ ms.locfileid: "36227850"
 若要配置和测试 Tableau Online 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Tableau Online 测试用户](#creating-a-tableau-online-test-user)** - 在 Tableau Online 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 Tableau Online 测试用户](#creating-a-tableau-online-test-user)** - 在 Tableau Online 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -104,11 +104,11 @@ ms.locfileid: "36227850"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![配置单一登录](./media/tableauonline-tutorial/tutorial_tableauonline_samlbase.png)
 
-3. 在“Tableau Online 域和 URL”部分中，执行以下步骤：
+1. 在“Tableau Online 域和 URL”部分中，执行以下步骤：
 
     ![配置单一登录](./media/tableauonline-tutorial/tutorial_tableauonline_url.png)
     
@@ -116,27 +116,27 @@ ms.locfileid: "36227850"
 
     b. 在“标识符”文本框中，键入 URL：`https://sso.online.tableau.com/public/sp/metadata?alias=<entityid> `
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
+1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/tableauonline-tutorial/tutorial_tableauonline_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录](./media/tableauonline-tutorial/tutorial_general_400.png)
 
-6. 在另一个浏览器窗口中，登录 Tableau Online 应用程序。 转到“设置”，然后到“身份验证”。
+1. 在另一个浏览器窗口中，登录 Tableau Online 应用程序。 转到“设置”，然后到“身份验证”。
    
     ![配置单一登录](./media/tableauonline-tutorial/tutorial_tableauonline_09.png)
     
-7. 若要启用 SAML，请在“身份验证类型”部分下， 选中“使用 SAML 单一登录”复选框。
+1. 若要启用 SAML，请在“身份验证类型”部分下， 选中“使用 SAML 单一登录”复选框。
    
     ![配置单一登录](./media/tableauonline-tutorial/tutorial_tableauonline_12.png)
 
-8. 向下滚动到“将元数据文件导入 Tableau Online”部分。  单击“浏览”并导入已从 Azure AD 下载的元数据文件。 然后，单击“应用”。
+1. 向下滚动到“将元数据文件导入 Tableau Online”部分。  单击“浏览”并导入已从 Azure AD 下载的元数据文件。 然后，单击“应用”。
    
    ![配置单一登录](./media/tableauonline-tutorial/tutorial_tableauonline_13.png)
 
-9. 在“匹配断言”部分中，为**电子邮件地址**、**名字**和**姓氏**插入相应的标识提供者断言名称。 若要从 Azure AD 中获取此信息，请执行以下操作： 
+1. 在“匹配断言”部分中，为**电子邮件地址**、**名字**和**姓氏**插入相应的标识提供者断言名称。 若要从 Azure AD 中获取此信息，请执行以下操作： 
   
     a. 在 Azure 门户中，转到“Tableau Online”应用程序集成页。
     
@@ -174,15 +174,15 @@ ms.locfileid: "36227850"
 
     ![创建 Azure AD 测试用户](./media/tableauonline-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
     ![创建 Azure AD 测试用户](./media/tableauonline-tutorial/create_aaduser_02.png) 
 
-3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
  
     ![创建 Azure AD 测试用户](./media/tableauonline-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/tableauonline-tutorial/create_aaduser_04.png) 
 
@@ -201,10 +201,10 @@ ms.locfileid: "36227850"
 1. 在“Tableau Online”上，单击“设置”，然后单击“身份验证”部分。 向下滚动到“选择用户”部分。 依次单击“添加用户”、“输入电子邮件地址”。
    
     ![创建 Azure AD 测试用户](./media/tableauonline-tutorial/tutorial_tableauonline_15.png)
-2. 选择“添加要进行单一登录(SSO)身份验证的用户”。 在“输入电子邮件地址”文本框中添加 britta.simon@contoso.com
+1. 选择“添加要进行单一登录(SSO)身份验证的用户”。 在“输入电子邮件地址”文本框中添加 britta.simon@contoso.com
    
     ![创建 Azure AD 测试用户](./media/tableauonline-tutorial/tutorial_tableauonline_11.png)
-3. 单击“创建”。
+1. 单击“创建”。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -218,23 +218,23 @@ ms.locfileid: "36227850"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Tableau Online”。
+1. 在应用程序列表中，选择“Tableau Online”。
 
     ![配置单一登录](./media/tableauonline-tutorial/tutorial_tableauonline_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 

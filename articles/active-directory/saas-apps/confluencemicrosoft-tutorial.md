@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 97b6507cb8c5a66b8b6ccbfccd2c838b4b3fb53a
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 68d8ba6b08811b96df8b8b2daa074166301ffcd0
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39053295"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421982"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>教程：Azure Active Directory 与 Confluence SAML SSO by Microsoft 集成
 
@@ -69,7 +69,7 @@ ms.locfileid: "39053295"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Confluence SAML SSO by Microsoft
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-confluence-saml-sso-by-microsoft-from-the-gallery"></a>从库中添加 Confluence SAML SSO by Microsoft
 若要配置 Confluence SAML SSO by Microsoft 与 Azure AD 的集成，需要从库中将 Confluence SAML SSO by Microsoft 添加到托管 SaaS 应用列表。
@@ -80,19 +80,19 @@ ms.locfileid: "39053295"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入“Confluence SAML SSO by Microsoft”。
+1. 在搜索框中，键入“Confluence SAML SSO by Microsoft”。
 
     ![创建 Azure AD 测试用户](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_search.png)
 
-5. 在结果面板中，选择“Confluence SAML SSO by Microsoft”，然后单击“添加”按钮添加该应用程序。
+1. 在结果面板中，选择“Confluence SAML SSO by Microsoft”，然后单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_addfromgallery.png)
 
@@ -104,10 +104,10 @@ ms.locfileid: "39053295"
 若要配置和测试 Confluence SAML SSO by Microsoft 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. [创建 Confluence SAML SSO by Microsoft 测试用户](#creating-a-confluence-saml-sso-by-microsoft-test-user) - 在 Confluence SAML SSO by Microsoft 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. [创建 Confluence SAML SSO by Microsoft 测试用户](#creating-a-confluence-saml-sso-by-microsoft-test-user) - 在 Confluence SAML SSO by Microsoft 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -119,15 +119,15 @@ ms.locfileid: "39053295"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
 
     ![配置单一登录](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_samlbase.png)
 
-3. 在“Confluence SAML SSO by Microsoft 域和 URL”部分，执行以下步骤：
+1. 在“Confluence SAML SSO by Microsoft 域和 URL”部分，执行以下步骤：
 
     ![配置单一登录](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<domain:port>/plugins/servlet/saml/auth`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<domain:port>/plugins/servlet/saml/auth`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<domain:port>/`
 
@@ -136,36 +136,36 @@ ms.locfileid: "39053295"
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 端口可选，以防止其为命名 URL。 在配置 Confluence 插件的过程中，将接收这些值，这将在教程的后面部分进行说明。
 
-4. 在“SAML 签名证书”部分上，单击”复制”按钮来复制**应用联合元数据 URL**，并将其粘贴到记事本。
+1. 在“SAML 签名证书”部分上，单击”复制”按钮来复制**应用联合元数据 URL**，并将其粘贴到记事本。
     
     ![配置单一登录](./media/confluencemicrosoft-tutorial/tutorial_metadataurl.png)
      
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录](./media/confluencemicrosoft-tutorial/tutorial_general_400.png)
 
-6. 在另一个 Web 浏览器窗口中，以管理员身份登录 Confluence 实例。
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录 Confluence 实例。
 
-7. 将鼠标悬停在小齿轮上，并单击“外接程序”。
+1. 将鼠标悬停在小齿轮上，并单击“外接程序”。
     
     ![配置单一登录](./media/confluencemicrosoft-tutorial/addon1.png)
 
-8. 从 [Microsoft 下载中心](https://www.microsoft.com/en-us/download/details.aspx?id=56503)下载插件。 使用“上传加载项”菜单手动上传由 Microsoft 提供的插件。 [Microsoft 服务协议](https://www.microsoft.com/en-us/servicesagreement/)涵盖了插件下载。 
+1. 从 [Microsoft 下载中心](https://www.microsoft.com/en-us/download/details.aspx?id=56503)下载插件。 使用“上传加载项”菜单手动上传由 Microsoft 提供的插件。 [Microsoft 服务协议](https://www.microsoft.com/en-us/servicesagreement/)涵盖了插件下载。 
     
     ![配置单一登录](./media/confluencemicrosoft-tutorial/addon12.png)
 
-9. 插件安装后，它会显示在“管理加载项”部分的“用户已安装”加载项部分。 单击“配置”配置新的插件。
+1. 插件安装后，它会显示在“管理加载项”部分的“用户已安装”加载项部分。 单击“配置”配置新的插件。
     
     ![配置单一登录](./media/confluencemicrosoft-tutorial/addon13.png)
 
-10. 在配置页上执行下列步骤：
+1. 在配置页上执行下列步骤：
 
     ![配置单一登录](./media/confluencemicrosoft-tutorial/addon52.png)
 
     > [!TIP]
     > 请确保一个应用仅映射一个证书，以免在解析元数据时出错。 如果有多个证书，则管理员会在解析元数据时收到错误。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“元数据 URL”文本框中，粘贴从 Azure 门户复制的**应用联合元数据 URL**值，然后单击“解析”按钮。 它将读取 IdP 元数据 URL，并填充所有字段信息。
+    a. 在“元数据 URL”文本框中，粘贴从 Azure 门户复制的**应用联合元数据 URL**值，然后单击“解析”按钮。 它将读取 IdP 元数据 URL，并填充所有字段信息。
 
     b. 复制“标识符、回复 URL 和登录 URL”值，并将其分别粘贴到 Azure 门户中“Confluence SAML SSO by Microsoft 域和 URL”部分的“标识符、回复 URL 和登录 URL”文本框内。
 
@@ -200,19 +200,19 @@ ms.locfileid: "39053295"
 
     ![创建 Azure AD 测试用户](./media/confluencemicrosoft-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
     ![创建 Azure AD 测试用户](./media/confluencemicrosoft-tutorial/create_aaduser_02.png) 
 
-3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
  
     ![创建 Azure AD 测试用户](./media/confluencemicrosoft-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/confluencemicrosoft-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -228,15 +228,15 @@ ms.locfileid: "39053295"
 
 1. 以管理员身份登录到 Confluence 本地服务器。
 
-2. 将鼠标悬停在小齿轮上，并单击“用户管理”。
+1. 将鼠标悬停在小齿轮上，并单击“用户管理”。
 
     ![添加员工](./media/confluencemicrosoft-tutorial/user1.png) 
 
-3. 在“用户”部分，单击“添加用户”选项卡。在“添加用户”对话框页上，执行以下步骤：
+1. 在“用户”部分，单击“添加用户”选项卡。在“添加用户”对话框页上，执行以下步骤：
 
     ![添加员工](./media/confluencemicrosoft-tutorial/user2.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“用户名”文本框中，键入用户（例如 Britta Simon）的电子邮件地址。
+    a. 在“用户名”文本框中，键入用户（例如 Britta Simon）的电子邮件地址。
 
     b. 在“全名”文本框中，键入用户（例如 Britta Simon）的全名。
 
@@ -260,23 +260,23 @@ ms.locfileid: "39053295"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Confluence SAML SSO by Microsoft”。
+1. 在应用程序列表中，选择“Confluence SAML SSO by Microsoft”。
 
     ![配置单一登录](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 

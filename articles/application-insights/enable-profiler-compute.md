@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.reviewer: ramach
 ms.author: mbullwin
-ms.openlocfilehash: 9eb99ecea8efbbce322e61ac281cd534a112728b
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 2da281f52a85992c6fade360c94fbf473c38dc20
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950659"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424018"
 ---
 # <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-azure-cloud-services"></a>为 Azure VM、Service Fabric 和 Azure 云服务启用 Application Insights Profiler
 
@@ -44,11 +44,11 @@ ms.locfileid: "37950659"
 
 1. [新建一个 Application Insights 资源](https://docs.microsoft.com/azure/application-insights/app-insights-create-new-resource)或选择一个现有 Application Insights 资源。 
 
-2. 转到 Application Insights 资源并复制检测密钥。
+1. 转到 Application Insights 资源并复制检测密钥。
 
    ![检测密钥的位置](./media/enable-profiler-compute/CopyAIKey.png)
 
-3. 若要完成为 Profiler 设置 Application Insights 实例，请完成 [ 启用 Profiler 中所述的过程。 不需要链接 Web 应用，因为步骤特定于应用程序服务资源。 确保在“配置 Profiler”窗格中启用了 Profiler。
+1. 若要完成为 Profiler 设置 Application Insights 实例，请完成 [ 启用 Profiler 中所述的过程。 不需要链接 Web 应用，因为步骤特定于应用程序服务资源。 确保在“配置 Profiler”窗格中启用了 Profiler。
 
 
 ## <a name="set-up-the-application-source-code"></a>设置应用程序源代码
@@ -74,7 +74,7 @@ ms.locfileid: "37950659"
         ```
       有关此全局检测密钥配置的详细信息，请参阅 [Use Service Fabric with Application Insights](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/blob/dev/appinsights/ApplicationInsights.md)（结合使用 Service Fabric 和 Application Insights）。  
 
-  2. 对于想要检测的任何代码片段，请在其两侧添加 `StartOperation<RequestTelemetry>` USING 语句，如以下示例所示：
+  1. 对于想要检测的任何代码片段，请在其两侧添加 `StartOperation<RequestTelemetry>` USING 语句，如以下示例所示：
 
         ```csharp
         using Microsoft.ApplicationInsights;
@@ -143,7 +143,7 @@ ms.locfileid: "37950659"
 若要设置环境，请执行以下操作：
 1. 若要确保使用的是 [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 或更高版本，只需确认部署的 OS 是 `Windows Server 2012 R2` 或更高版本。
 
-2. 在部署模板文件中搜索 [Azure 诊断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)扩展，然后添加下面的 `SinksConfig` 节作为 `WadCfg` 的子元素。 使用自己的 Application Insights 检测密钥替换 `ApplicationInsightsProfiler` 属性值：  
+1. 在部署模板文件中搜索 [Azure 诊断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)扩展，然后添加下面的 `SinksConfig` 节作为 `WadCfg` 的子元素。 使用自己的 Application Insights 检测密钥替换 `ApplicationInsightsProfiler` 属性值：  
 
       ```json
       "SinksConfig": {
@@ -165,13 +165,13 @@ ms.locfileid: "37950659"
 
 1. 若要确保使用的是 [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 或更高版本，只需确认 ServiceConfiguration.\*.cscfg 文件的 `osFamily` 值至少为“5”。
 
-2. 找到应用程序角色的 [Azure 诊断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) diagnostics.wadcfgx 文件，如下所示：  
+1. 找到应用程序角色的 [Azure 诊断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) diagnostics.wadcfgx 文件，如下所示：  
 
    ![诊断配置文件的位置](./media/enable-profiler-compute/cloudservice-solutionexplorer.png)  
 
    如果找不到该文件，若要了解如何在 Azure 云服务项目中启用诊断扩展，请参阅[为 Azure 云服务和虚拟机设置诊断](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#enable-diagnostics-in-cloud-service-projects-before-deploying-them)。
 
-3. 添加以下 `SinksConfig` 部分作为 `WadCfg` 的子元素：  
+1. 添加以下 `SinksConfig` 部分作为 `WadCfg` 的子元素：  
 
       ```xml
       <WadCfg>
@@ -212,7 +212,7 @@ ms.locfileid: "37950659"
     Set-AzureRmVMDiagnosticsExtension -ResourceGroupName "MyRG" -VMName "MyVM" -DiagnosticsConfigurationPath $ConfigFilePath
     ```
 
-2. 如果目标应用程序通过 [IIS](https://www.microsoft.com/web/downloads/platform.aspx) 运行，请通过执行以下操作启用 `IIS Http Tracing` Windows 功能：  
+1. 如果目标应用程序通过 [IIS](https://www.microsoft.com/web/downloads/platform.aspx) 运行，请通过执行以下操作启用 `IIS Http Tracing` Windows 功能：  
 
    a. 建立到环境的远程访问，然后使用[添加 Windows 功能]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/)窗口，或以管理员身份在 PowerShell 中运行以下命令：  
 

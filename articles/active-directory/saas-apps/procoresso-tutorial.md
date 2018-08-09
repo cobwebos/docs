@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: jeedes
-ms.openlocfilehash: bd84224f4c3a8a498a296ff50190713111895472
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 871fde799f064f52b11b75e190b9b7c8a73a843d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39051609"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39445194"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>教程：Azure Active Directory 与 Procore SSO 的集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "39051609"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库添加 Procore SSO
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-procore-sso-from-the-gallery"></a>从库添加 Procore SSO
 要配置 Procore SSO 与 Azure AD 的集成，需要从库中将 Procore SSO 添加到托管 SaaS 应用列表。
@@ -63,19 +63,19 @@ ms.locfileid: "39051609"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 单击对话框顶部的“添加”按钮。
+1. 单击对话框顶部的“添加”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入“Procore SSO”。
+1. 在搜索框中，键入“Procore SSO”。
 
     ![创建 Azure AD 测试用户](./media/procoresso-tutorial/tutorial_procoresso_search.png)
 
-5. 在结果窗格中，选择“Procore SSO”，并单击“添加”按钮添加该应用程序。
+1. 在结果窗格中，选择“Procore SSO”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/procoresso-tutorial/tutorial_procoresso_addfromgallery.png)
 
@@ -89,10 +89,10 @@ ms.locfileid: "39051609"
 若要配置和测试 Procore SSO 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Procore SSO 测试用户](#creating-a-procore-sso-test-user)** - 在 Procore SSO 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 Procore SSO 测试用户](#creating-a-procore-sso-test-user)** - 在 Procore SSO 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -104,45 +104,45 @@ ms.locfileid: "39051609"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![配置单一登录](./media/procoresso-tutorial/tutorial_procoresso_samlbase.png)
 
-3. 在“Procore SSO 域和 URL”部分中，用户不必执行任何步骤，因为该应用已经与 Azure 预先集成。
+1. 在“Procore SSO 域和 URL”部分中，用户不必执行任何步骤，因为该应用已经与 Azure 预先集成。
 
     ![配置单一登录](./media/procoresso-tutorial/tutorial_procoresso_url.png)
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存 XML 文件。
+1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存 XML 文件。
 
     ![配置单一登录](./media/procoresso-tutorial/tutorial_procoresso_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录](./media/procoresso-tutorial/tutorial_general_400.png)
 
-6. 在“Procore SSO 配置”部分，单击“配置 Procore SSO”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 实体 ID 和 SAML 单一登录服务 URL”。
+1. 在“Procore SSO 配置”部分，单击“配置 Procore SSO”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 实体 ID 和 SAML 单一登录服务 URL”。
 
     ![配置单一登录](./media/procoresso-tutorial/tutorial_procoresso_configure.png) 
 
-7. 若要在 **Procore SSO**端配置单一登录，请以管理员身份登录 procore 公司站点。
+1. 若要在 **Procore SSO**端配置单一登录，请以管理员身份登录 procore 公司站点。
 
-8. 在工具箱下拉菜单中，单击“管理员”以打开 SSO 设置页。
+1. 在工具箱下拉菜单中，单击“管理员”以打开 SSO 设置页。
 
     ![配置单一登录](./media/procoresso-tutorial/procore_tool_admin.png)
 
-9. 按如下所述在框中粘贴值-
+1. 按如下所述在框中粘贴值-
 
     ![配置单一登录](./media/procoresso-tutorial/procore_setting_admin.png)  
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“单一登录颁发者 URL”中，粘贴从 Azure 门户复制的 SAML 实体 ID。
+    a. 在“单一登录颁发者 URL”中，粘贴从 Azure 门户复制的 SAML 实体 ID。
 
     b. 在“SAML 单一登录目标 URL”中，粘贴从 Azure 门户复制的 SAML 单一登录服务 URL。
 
     c. 现在打开上面从 Azure 门户下载的**元数据 XML**，并复制名为 **X509Certificate** 的标记中的证书。 将复制的值粘贴到“单一登录 x509 证书”框中。
 
-10. 单击“保存更改”。
+1. 单击“保存更改”。
 
-11. 进行这些设置之后，需要将用于登录到 Procore 的**域名**（例如 **contoso.com**）发送给 [Procore 支持团队](https://support.procore.com/)，他们会为该域激活联合 SSO。
+1. 进行这些设置之后，需要将用于登录到 Procore 的**域名**（例如 **contoso.com**）发送给 [Procore 支持团队](https://support.procore.com/)，他们会为该域激活联合 SSO。
 
 <!--### Next steps
 
@@ -168,19 +168,19 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
 
     ![创建 Azure AD 测试用户](./media/procoresso-tutorial/create_aaduser_01.png) 
 
-2. 转到“用户和组”，单击“所有用户”显示用户列表。
+1. 转到“用户和组”，单击“所有用户”显示用户列表。
     
     ![创建 Azure AD 测试用户](./media/procoresso-tutorial/create_aaduser_02.png) 
 
-3. 在对话框顶部单击“添加”，打开“用户”对话框。
+1. 在对话框顶部单击“添加”，打开“用户”对话框。
  
     ![创建 Azure AD 测试用户](./media/procoresso-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/procoresso-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -194,15 +194,15 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
 
 1. 以管理员身份登录到 procore 公司站点。  
 
-2. 从工具箱下拉菜单中，单击“目录”以打开公司目录页。
+1. 从工具箱下拉菜单中，单击“目录”以打开公司目录页。
 
     ![配置单一登录](./media/procoresso-tutorial/Procore_sso_directory.png)
 
-3. 单击 **“添加人员”** 选项以打开窗体，然后执行以下选项 -
+1. 单击 **“添加人员”** 选项以打开窗体，然后执行以下选项 -
 
     ![配置单一登录](./media/procoresso-tutorial/Procore_user_add.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名字”文本框中，输入用户的名字（如 **Britta**）。
+    a. 在“名字”文本框中，输入用户的名字（如 **Britta**）。
 
     b. 在“姓氏”文本框中，输入用户的姓氏（如 **Simon**）。
 
@@ -212,11 +212,11 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
 
     e. 单击“创建”。
 
-4. 检查并更新新添加的联系人的详细信息。
+1. 检查并更新新添加的联系人的详细信息。
 
     ![配置单一登录](./media/procoresso-tutorial/Procore_user_check.png)
 
-5. 单击“保存和发送邀请”（如果需要通过邮件进行邀请）或“保存”（直接保存）以完成用户注册。
+1. 单击“保存和发送邀请”（如果需要通过邮件进行邀请）或“保存”（直接保存）以完成用户注册。
     
     ![配置单一登录](./media/procoresso-tutorial/Procore_user_save.png)  
 
@@ -232,23 +232,23 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Procore SSO”。
+1. 在应用程序列表中，选择“Procore SSO”。
 
     ![配置单一登录](./media/procoresso-tutorial/tutorial_procoresso_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 

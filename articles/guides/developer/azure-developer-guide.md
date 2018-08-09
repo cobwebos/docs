@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: f4dfc376e49ac26f0c054282994a29d9a7d2b54b
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 2c6db85763b448133d53b22c0600b27b533b2041
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442165"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424222"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 开发人员入门指南
 
@@ -163,7 +163,7 @@ Azure 提供了多种方式以便在应用程序中使用容器。
 
     >何时使用：当想要提供 SSO 体验、使用基于图形的数据，或者对基于域的用户进行身份验证时使用。
 
-    >开始使用：若要了解详细信息，请参阅 [Azure Active Directory 开发人员指南](../../active-directory/develop/active-directory-developers-guide.md)。
+    >开始使用：若要了解详细信息，请参阅 [Azure Active Directory 开发人员指南](../../active-directory/develop/azure-ad-developers-guide.md)。
 
 -   应用服务身份验证：当选择应用服务来托管应用时，还将获得对 Azure AD 以及社交标识提供程序（包括 Facebook、Google、Microsoft 和 Twitter）的内置身份验证支持。
 

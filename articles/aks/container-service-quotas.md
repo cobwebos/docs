@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: overview
-ms.date: 06/13/2018
+ms.date: 08/01/2018
 ms.author: iainfou
-ms.openlocfilehash: 1610ea93eed03fe6efe28e63a7151409e1946f5b
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 266e2c1f986ba78c9aac40887bc9a7dee1cbff82
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988708"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39420341"
 ---
 # <a name="quotas-and-region-availability-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的配额和区域可用性
 
@@ -39,6 +39,7 @@ Azure Kubernetes 服务 (AKS) 在以下区域提供预览版：
 - 美国东部 2
 - 日本东部
 - 北欧
+- 东南亚
 - 英国南部
 - 西欧
 - 美国西部

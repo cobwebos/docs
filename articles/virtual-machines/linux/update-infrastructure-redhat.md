@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: borisb
-ms.openlocfilehash: b69cc226ca5b4f48747b033e0da5e7f991be112e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 570b820e21df6db70b9cadf33d5a120132be62ed
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30915458"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426745"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>用于 Azure 中按需 Red Hat Enterprise Linux VM 的 Red Hat 更新基础结构
  [Red Hat 更新基础结构](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) 允许云提供程序（如 Azure）镜像 Red Hat 托管的存储库内容，创建包含 Azure 特定内容的自定义存储库，并将其提供给最终用户 VM 使用。
@@ -76,9 +76,9 @@ ms.locfileid: "30915458"
 
     b. 如果它指向 `mirrorlist.*cds[1-4].cloudapp.net` 模式的位置，则需要更新配置。 你使用的是旧 VM 快照，需要将其更新为指向新的 Azure RHUI。
 
-2. Azure 托管的 RHUI 仅限 [Azure 数据中心 IP 范围] (https://www.microsoft.com/download/details.aspx?id=41653) 内的 VM 进行访问。
+1. Azure 托管的 RHUI 仅限 [Azure 数据中心 IP 范围] (https://www.microsoft.com/download/details.aspx?id=41653) 内的 VM 进行访问。
  
-3. 如果使用新配置并已确认 VM 从 Azure IP 范围建立了连接，但仍无法连接到 Azure RHUI，请向 Microsoft 或 Red Hat 提出支持案例。
+1. 如果使用新配置并已确认 VM 从 Azure IP 范围建立了连接，但仍无法连接到 Azure RHUI，请向 Microsoft 或 Red Hat 提出支持案例。
 
 ### <a name="manual-update-procedure-to-use-the-azure-rhui-servers"></a>执行手动更新过程以使用 Azure RHUI 服务器
 此过程仅供参考。 RHEL PAYG 映像已包含用于连接 Azure RHUI 的正确配置。 要手动更新配置以使用 Azure RHUI 服务器，请完成以下步骤：
@@ -89,13 +89,13 @@ ms.locfileid: "30915458"
    curl -o RPM-GPG-KEY-microsoft-azure-release https://download.microsoft.com/download/9/D/9/9d945f05-541d-494f-9977-289b3ce8e774/microsoft-sign-public.asc 
    ```
 
-2. 验证下载密钥的有效性。
+1. 验证下载密钥的有效性。
 
    ```bash
    gpg --list-packets --verbose < RPM-GPG-KEY-microsoft-azure-release
    ```
 
-3. 检查输出，然后验证 `keyid` 和 `user ID packet`。
+1. 检查输出，然后验证 `keyid` 和 `user ID packet`。
 
    ```bash
    Version: GnuPG v1.4.7 (GNU/Linux)
@@ -119,14 +119,14 @@ ms.locfileid: "30915458"
            data: [2047 bits]
    ```
 
-4. 安装公钥。
+1. 安装公钥。
 
    ```bash
    sudo install -o root -g root -m 644 RPM-GPG-KEY-microsoft-azure-release /etc/pki/rpm-gpg
    sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-microsoft-azure-release
    ```
 
-5. 下载、验证和安装客户端 RPM 包管理器 (RPM)。
+1. 下载、验证和安装客户端 RPM 包管理器 (RPM)。
     
     >[!NOTE]
     >包版本已发生更改。 如果手动连接到 Azure RHUI，可通过从库预配最新的映像，找到每个 RHEL 系列的最新版客户端包。
@@ -165,7 +165,7 @@ ms.locfileid: "30915458"
     sudo rpm -U azureclient.rpm
     ```
 
-6. 完成后，验证是否可以从 VM 访问 Azure RHUI。
+1. 完成后，验证是否可以从 VM 访问 Azure RHUI。
 
 ## <a name="next-steps"></a>后续步骤
-要通过 Azure Marketplace PAYG 映像创建 Red Hat Enterprise Linux VM 并利用 Azure 托管的 RHUI，请转到 [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/redhat/)。 
+要通过 Azure 市场 PAYG 映像创建 Red Hat Enterprise Linux VM 并利用 Azure 托管的 RHUI，请转到 [Azure 市场](https://azure.microsoft.com/marketplace/partners/redhat/)。 

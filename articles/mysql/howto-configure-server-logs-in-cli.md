@@ -10,12 +10,12 @@ ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 85c7840c0e919e77e807e6114c4d0c65601ff334
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 57b72ded77484dc1c8ca4c62811b62e171365db4
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265820"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423451"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>使用 Azure CLI 配置和访问服务器日志
 可以使用 Azure CLI（Azure 的命令行实用工具）下载 Azure Database for MySQL 服务器日志。
@@ -41,14 +41,14 @@ az mysql server configuration list --resource-group myresourcegroup --server myd
 ```
 
 ## <a name="list-logs-for-azure-database-for-mysql-server"></a>列出 Azure Database for MySQL 服务器的日志
-若要列出服务器的可用日志文件，请运行 [az mysql server-logs list](/cli/azure/mysql/server-logs#az_mysql_server_logs_list) 命令。
+若要列出服务器的可用日志文件，请运行 [az mysql server-logs list](/cli/azure/mysql/server-logs#az-mysql-server-logs-list) 命令。
 
 可以列出资源组“myresourcegroup”下的服务器“mydemoserver.mysql.database.azure.com”的日志文件。 然后在日志文件列表中找到名为“log\_files\_list.txt”的文本文件。
 ```azurecli-interactive
 az mysql server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```
 ## <a name="download-logs-from-the-server"></a>从服务器下载日志
-使用 [az mysql server-logs download](/cli/azure/mysql/server-logs#az_mysql_server_logs_download) 命令可下载服务器的单独日志文件。 
+使用 [az mysql server-logs download](/cli/azure/mysql/server-logs#az-mysql-server-logs-download) 命令可下载服务器的单独日志文件。 
 
 使用下列示例，可以将资源组“myresourcegroup”下服务器 mydemoserver.mysql.database.azure.com 的特定日志文件下载到本地环境。
 ```azurecli-interactive

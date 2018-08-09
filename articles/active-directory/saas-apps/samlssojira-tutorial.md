@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 05a91e66d046bb7869179175c3a7d0b13b1942e4
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 6ae8256f3485d49d42efeb2927a6838252a1aeee
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042184"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39442901"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>教程：Azure Active Directory 与 SAML SSO for Jira by resolution GmbH 集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "39042184"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库添加 SAML SSO for Jira by resolution GmbH
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-saml-sso-for-jira-by-resolution-gmbh-from-the-gallery"></a>从库添加 SAML SSO for Jira by resolution GmbH
 要配置 SAML SSO for Jira by resolution GmbH 的集成（集成到 Azure AD 中），需从库中将 SAML SSO for Jira by resolution GmbH 添加到托管 SaaS 应用的列表中。
@@ -63,19 +63,19 @@ ms.locfileid: "39042184"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入“SAML SSO for Jira by resolution GmbH”。
+1. 在搜索框中，键入“SAML SSO for Jira by resolution GmbH”。
 
     ![创建 Azure AD 测试用户](./media/samlssojira-tutorial/tutorial_samlssojira_search.png)
 
-5. 在结果窗格中，选择“SAML SSO for Jira by resolution GmbH”，并单击“添加”按钮添加该应用程序。
+1. 在结果窗格中，选择“SAML SSO for Jira by resolution GmbH”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/samlssojira-tutorial/tutorial_samlssojira_addfromgallery.png)
 
@@ -89,10 +89,10 @@ ms.locfileid: "39042184"
 若要配置并测试 SAML SSO for Jira by resolution GmbH 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 SAML SSO for Jira by resolution GmbH 测试用户](#creating-a-saml-sso-for-jira-by-resolution-gmbh-test-user)** - 在 SAML SSO for Jira by resolution GmbH 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 SAML SSO for Jira by resolution GmbH 测试用户](#creating-a-saml-sso-for-jira-by-resolution-gmbh-test-user)** - 在 SAML SSO for Jira by resolution GmbH 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -104,19 +104,19 @@ ms.locfileid: "39042184"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![配置单一登录](./media/samlssojira-tutorial/tutorial_samlssojira_samlbase.png)
 
-3. 在“SAML SSO for Jira by resolution GmbH 域和 URL”部分中，如果要在“IDP 启动的模式”下配置应用程序，请执行以下步骤：
+1. 在“SAML SSO for Jira by resolution GmbH 域和 URL”部分中，如果要在“IDP 启动的模式”下配置应用程序，请执行以下步骤：
 
     ![配置单一登录](./media/samlssojira-tutorial/tutorial_samlssojira_url_1.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/samlsso`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/samlsso`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/samlsso`
 
-4. 选中“显示高级 URL 设置”。 如果要在“SP”发起的模式下配置应用程序：
+1. 选中“显示高级 URL 设置”。 如果要在“SP”发起的模式下配置应用程序：
 
     ![配置单一登录](./media/samlssojira-tutorial/tutorial_samlssojira_url_2.png)
 
@@ -125,51 +125,51 @@ ms.locfileid: "39042184"
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 若要获取这些值，请联系 [SAML SSO for Jira by resolution GmbH 客户支持团队](https://www.resolution.de/go/support)。 
 
-5. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
+1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/samlssojira-tutorial/tutorial_samlssojira_certificate.png) 
 
-6. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录](./media/samlssojira-tutorial/tutorial_general_400.png)
     
-7. 在另一个 Web 浏览器窗口中，以管理员身份登录到 **SAML SSO for Jira by resolution GmbH 管理门户**。
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 **SAML SSO for Jira by resolution GmbH 管理门户**。
 
-8. 将鼠标悬停在小齿轮上，并单击“外接程序”。
+1. 将鼠标悬停在小齿轮上，并单击“外接程序”。
     
     ![配置单一登录](./media/samlssojira-tutorial/addon1.png)
 
-9. 系统会你将重定向到“管理员访问权限”页。 输入密码，并单击“确认”按钮。
+1. 系统会你将重定向到“管理员访问权限”页。 输入密码，并单击“确认”按钮。
 
     ![配置单一登录](./media/samlssojira-tutorial/addon2.png)
 
-10. 在“外接程序”选项卡部分，单击“查找新外接程序”。 搜索“SAML Single Sign On (SSO) for JIRA”，并单击“安装”按钮安装新的 SAML 插件。
+1. 在“外接程序”选项卡部分，单击“查找新外接程序”。 搜索“SAML Single Sign On (SSO) for JIRA”，并单击“安装”按钮安装新的 SAML 插件。
 
     ![配置单一登录](./media/samlssojira-tutorial/addon7.png)
 
-11. 插件安装随即开始。 单击“**关闭**”。
+1. 插件安装随即开始。 单击“**关闭**”。
 
     ![配置单一登录](./media/samlssojira-tutorial/addon8.png)
 
     ![配置单一登录](./media/samlssojira-tutorial/addon9.png)
 
-12. 单击“管理”。
+1.  单击“管理”。
 
     ![配置单一登录](./media/samlssojira-tutorial/addon10.png)
     
-13. 单击“配置”配置新的插件。
+1. 单击“配置”配置新的插件。
 
     ![配置单一登录](./media/samlssojira-tutorial/addon11.png)
 
-14. 在“SAML 单一登录插件配置”页上单击“添加新 IdP”按钮，配置标识提供者的设置。
+1. 在“SAML 单一登录插件配置”页上单击“添加新 IdP”按钮，配置标识提供者的设置。
 
     ![配置单一登录](./media/samlssojira-tutorial/addon4.png)
 
-15. 在“选择 SAML 标识提供者”页上，执行以下步骤：
+1. 在“选择 SAML 标识提供者”页上，执行以下步骤：
 
     ![配置单一登录](./media/samlssojira-tutorial/addon5a.png)
  
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 设置“Azure AD”作为 IdP 类型。
+    a. 设置“Azure AD”作为 IdP 类型。
     
     b. 添加标识提供者（例如 Azure AD）的“名称”。
     
@@ -177,15 +177,15 @@ ms.locfileid: "39042184"
     
     d. 单击“下一步”。
     
-16. 在“标识提供者配置”页上，单击“下一步”按钮。
+1. 在“标识提供者配置”页上，单击“下一步”按钮。
 
     ![配置单一登录](./media/samlssojira-tutorial/addon5b.png)
 
-17. 在“导入 SAML IdP 元数据”页上，执行以下步骤：
+1. 在“导入 SAML IdP 元数据”页上，执行以下步骤：
 
     ![配置单一登录](./media/samlssojira-tutorial/addon5c.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“加载文件”按钮，然后选择在步骤 5 中下载的元数据 XML 文件。
+    a. 单击“加载文件”按钮，然后选择在步骤 5 中下载的元数据 XML 文件。
 
     b. 单击“导入”按钮。
     
@@ -193,19 +193,19 @@ ms.locfileid: "39042184"
     
     d. 单击“下一步”按钮。
     
-18. 在“用户 ID 属性和转换”页上，单击“下一步”按钮。
+1. 在“用户 ID 属性和转换”页上，单击“下一步”按钮。
 
     ![配置单一登录](./media/samlssojira-tutorial/addon5d.png)
     
-19. 在“用户创建和更新”页上，单击“保存并下一步”保存设置。   
+1. 在“用户创建和更新”页上，单击“保存并下一步”保存设置。    
     
     ![配置单一登录](./media/samlssojira-tutorial/addon6a.png)
     
-20. 在“测试设置”页上，单击“跳过测试并手动配置”暂时跳过用户测试。 此测试将在下一部分中执行，并需要在 Azure 门户中进行某些设置。 
+1. 在“测试设置”页上，单击“跳过测试并手动配置”暂时跳过用户测试。 此测试将在下一部分中执行，并需要在 Azure 门户中进行某些设置。 
     
     ![配置单一登录](./media/samlssojira-tutorial/addon6b.png)
     
-21. 在出现的显示“跳过测试意味着...”对话框中，单击“确定”。
+1. 在出现的显示“跳过测试意味着...”对话框中，单击“确定”。
     
     ![配置单一登录](./media/samlssojira-tutorial/addon6c.png)
 
@@ -224,19 +224,19 @@ ms.locfileid: "39042184"
 
     ![创建 Azure AD 测试用户](./media/samlssojira-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
     ![创建 Azure AD 测试用户](./media/samlssojira-tutorial/create_aaduser_02.png) 
 
-3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
  
     ![创建 Azure AD 测试用户](./media/samlssojira-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/samlssojira-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -253,23 +253,23 @@ ms.locfileid: "39042184"
 
 1. 以管理员身份登录到 SAML SSO for Jira by resolution GmbH 公司站点。
 
-2. 将鼠标悬停在小齿轮上，并单击“用户管理”。
+1. 将鼠标悬停在小齿轮上，并单击“用户管理”。
 
     ![添加员工](./media/samlssojira-tutorial/user1.png) 
 
-3. 重定向到“管理员访问权限”页后，输入密码，并单击“确认”按钮。
+1. 重定向到“管理员访问权限”页后，输入密码，并单击“确认”按钮。
 
     ![添加员工](./media/samlssojira-tutorial/user2.png) 
 
-4. 在“用户管理”选项卡部分，单击“创建用户”。
+1. 在“用户管理”选项卡部分，单击“创建用户”。
 
     ![添加员工](./media/samlssojira-tutorial/user3.png) 
 
-5. 在“新建用户”对话框页中，执行以下步骤：
+1. 在“新建用户”对话框页中，执行以下步骤：
 
     ![添加员工](./media/samlssojira-tutorial/user4.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“电子邮件地址”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
+    a. 在“电子邮件地址”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
     b. 在“全名”文本框中，键入用户（例如 Britta Simon）的全名。
 
@@ -291,23 +291,23 @@ ms.locfileid: "39042184"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“SAML SSO for Jira by resolution GmbH”。
+1. 在应用程序列表中，选择“SAML SSO for Jira by resolution GmbH”。
 
     ![配置单一登录](./media/samlssojira-tutorial/tutorial_samlssojira_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 

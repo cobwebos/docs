@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2017
 ms.author: jeedes
-ms.openlocfilehash: c44eef96bc40e2ccfac9e5dceb106ed2e809dea2
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 03950d983f6ed119ae6cf7a7391418804bb20c76
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39055893"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446258"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho"></a>教程：Azure Active Directory 与 Zoho 的集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "39055893"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Zoho
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-zoho-from-the-gallery"></a>从库中添加 Zoho
 若要配置 Zoho 与 Azure AD 的集成，需要从库中将 Zoho 添加到托管 SaaS 应用列表。
@@ -64,15 +64,15 @@ ms.locfileid: "39055893"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中，键入“Zoho”，在结果面板中选择“Zoho”，然后单击“添加”按钮添加该应用程序。
+1. 在搜索框中，键入“Zoho”，在结果面板中选择“Zoho”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 Zoho](./media/zoho-mail-tutorial/tutorial_zoho_addfromgallery.png)
 
@@ -87,10 +87,10 @@ ms.locfileid: "39055893"
 若要配置和测试 Zoho 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Zoho 测试用户](#create-a-zoho-test-user)** - 在 Zoho 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 Zoho 测试用户](#create-a-zoho-test-user)** - 在 Zoho 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -102,46 +102,46 @@ ms.locfileid: "39055893"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![“单一登录”对话框](./media/zoho-mail-tutorial/tutorial_zoho_samlbase.png)
 
-3. 在“Zoho 域和 URL”部分中，执行以下步骤：
+1. 在“Zoho 域和 URL”部分中，执行以下步骤：
 
     ![Zoho 域和 URL 单一登录信息](./media/zoho-mail-tutorial/tutorial_zoho_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<company name>.zohomail.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<company name>.zohomail.com`
 
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新此值。 请联系 [Zoho 客户端支持团队](https://www.zoho.com/mail/contact.html)来获取此值。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/zoho-mail-tutorial/tutorial_zoho_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/zoho-mail-tutorial/tutorial_general_400.png)
 
-6. 在“Zoho 配置”部分中，单击“配置 Zoho”以打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“更改密码 URL”和“SAML 单一登录服务 URL”。
+1. 在“Zoho 配置”部分中，单击“配置 Zoho”以打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“更改密码 URL”和“SAML 单一登录服务 URL”。
 
     ![Zoho 配置](./media/zoho-mail-tutorial/tutorial_zoho_configure.png) 
 
-7. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Zoho Mail 公司站点。
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Zoho Mail 公司站点。
 
-8. 转到“控制面板”。
+1. 转到“控制面板”。
    
     ![控制面板](./media/zoho-mail-tutorial/ic789607.png "控制面板")
 
-9. 单击“SAML 身份验证”选项卡。
+1. 单击“SAML 身份验证”选项卡。
    
     ![SAML 身份验证](./media/zoho-mail-tutorial/ic789608.png "SAML 身份验证")
 
-10. 在“SAML 身份验证详细信息”部分，执行以下步骤：
+1. 在“SAML 身份验证详细信息”部分，执行以下步骤：
    
     ![SAML 身份验证详细信息](./media/zoho-mail-tutorial/ic789609.png "SAML 身份验证详细信息")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”。
+    a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”。
    
     b. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”。
    
@@ -168,19 +168,19 @@ ms.locfileid: "39055893"
 
     ![“Azure Active Directory”按钮](./media/zoho-mail-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/zoho-mail-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/zoho-mail-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/zoho-mail-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -199,17 +199,17 @@ ms.locfileid: "39055893"
 
 1. 以管理员身份登录到 **Zoho Mail** 公司站点。
 
-2. 转到“控制面板”\>“邮件和文档”。
+1. 转到“控制面板”\>“邮件和文档”。
 
-3. 转到“用户详细信息\>添加用户”。
+1. 转到“用户详细信息\>添加用户”。
    
     ![添加用户](./media/zoho-mail-tutorial/ic789611.png "添加用户")
 
-4. 在“添加用户”对话框中，执行以下步骤：
+1. 在“添加用户”对话框中，执行以下步骤：
    
     ![添加用户](./media/zoho-mail-tutorial/ic789612.png "添加用户")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名字”文本框中，键入用户的名字（如“Britta”）。
+    a. 在“名字”文本框中，键入用户的名字（如“Britta”）。
 
     b. 在“姓氏”文本框中，键入用户的姓氏（如“Simon”）。
 
@@ -234,23 +234,23 @@ ms.locfileid: "39055893"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Zoho”。
+1. 在应用程序列表中，选择“Zoho”。
 
     ![应用程序列表中的 Zoho 链接](./media/zoho-mail-tutorial/tutorial_zoho_app.png)  
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

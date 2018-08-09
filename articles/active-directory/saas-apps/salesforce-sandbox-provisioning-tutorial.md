@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 7a6dbfbf071c0c760cb096d200cd39bfca3dfa2e
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d6ec5e0c2c3a83335dfcb7e3bcc048dd66494e94
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227898"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39447795"
 ---
 # <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>教程：为 Salesforce Sandbox 配置自动用户预配
 
@@ -27,7 +27,7 @@ ms.locfileid: "36227898"
 
 ## <a name="prerequisites"></a>先决条件
 
-在本教程中概述的方案假定您已具有以下各项：
+在本教程中概述的方案假定已有以下各项：
 
 *   Azure Active Directory 租户。
 *   Salesforce Sandbox for Work 或 Salesforce Sandbox for Education 的有效租户。 免费试用帐户可用于任一服务。
@@ -61,49 +61,49 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”部分。
 
-2. 如果已为 Salesforce Sandbox 配置单一登录，请使用搜索字段搜索 Salesforce Sandbox 实例。 否则，请选择“添加”并在应用程序库中搜索“Salesforce Sandbox”。 从搜索结果中选择 Salesforce Sandbox，并将其添加到应用程序列表。
+1. 如果已为 Salesforce Sandbox 配置单一登录，请使用搜索字段搜索 Salesforce Sandbox 实例。 否则，请选择“添加”并在应用程序库中搜索“Salesforce Sandbox”。 从搜索结果中选择 Salesforce Sandbox，并将其添加到应用程序列表。
 
-3. 选择 Salesforce Sandbox 实例，然后选择“预配”选项卡。
+1. 选择 Salesforce Sandbox 实例，然后选择“预配”选项卡。
 
-4. 将“预配模式”设置为“自动”。
+1. 将“预配模式”设置为“自动”。
 
     ![预配](./media/salesforce-sandbox-provisioning-tutorial/provisioning.png)
 
-5. 在“管理员凭据”部分中，提供以下配置设置：
+1. 在“管理员凭据”部分中，提供以下配置设置：
    
     a. 在“管理员用户名”文本框中，键入在 Salesforce.com 中已分配“系统管理员”配置文件的 Salesforce Sandbox 帐户名称。
    
     b. 在“管理员密码”文本框中，键入此帐户的密码。
 
-6. 若要获取 Salesforce Sandbox 安全令牌，请打开新选项卡并登录到同一个 Salesforce Sandbox 管理员帐户。 在页面右上角单击你的名字，然后单击“设置”。
+1. 若要获取 Salesforce Sandbox 安全令牌，请打开新选项卡并登录到同一个 Salesforce Sandbox 管理员帐户。 在页面右上角单击你的名字，然后单击“设置”。
 
      ![启用自动用户设置](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "Enable automatic user provisioning")
 
-7. 在左侧导航窗格中，单击“我的个人信息”展开相关部分，然后单击“重置我的安全令牌”。
+1. 在左侧导航窗格中，单击“我的个人信息”展开相关部分，然后单击“重置我的安全令牌”。
   
     ![启用自动用户设置](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "Enable automatic user provisioning")
 
-8. 在“重置安全令牌”页上，单击“重置安全令牌”按钮。
+1. 在“重置安全令牌”页上，单击“重置安全令牌”按钮。
 
     ![启用自动用户设置](./media/salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "Enable automatic user provisioning")
 
-9. 查看与此管理员帐户关联的电子邮件收件箱。 查找来自 Salesforce Sandbox.com 的包含新安全令牌的电子邮件。
+1. 查看与此管理员帐户关联的电子邮件收件箱。 查找来自 Salesforce Sandbox.com 的包含新安全令牌的电子邮件。
 
-10. 复制令牌，转到 Azure AD 窗口，然后将令牌粘贴到“机密令牌”字段中。
+1. 复制令牌，转到 Azure AD 窗口，然后将令牌粘贴到“机密令牌”字段中。
 
-11. 在 Azure 门户中，单击“测试连接”以确保 Azure AD 可以连接到 Salesforce Sandbox 应用。
+1. 在 Azure 门户中，单击“测试连接”以确保 Azure AD 可以连接到 Salesforce Sandbox 应用。
 
-12. 在“通知电子邮件”字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中复选框。
+1. 在“通知电子邮件”字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中复选框。
 
-13. 单击“保存”。  
+1. 单击“保存”。  
     
-14.  在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Salesforce Sandbox”。
+1.  在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Salesforce Sandbox”。
 
-15. 在“属性映射”部分中，查看将从 Azure AD 同步到 Salesforce Sandbox 的用户属性。 选为“匹配”属性的属性将用于匹配 Salesforce Sandbox 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
+1. 在“属性映射”部分中，查看将从 Azure AD 同步到 Salesforce Sandbox 的用户属性。 选为“匹配”属性的属性将用于匹配 Salesforce Sandbox 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
-16. 若要为 Salesforce Sandbox 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
+1. 若要为 Salesforce Sandbox 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
 
-17. 单击“保存”。
+1. 单击“保存”。
 
 这会开始将“用户和组”部分中分配的任何用户和/或组初始同步到 Salesforce Sandbox。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 Salesforce Sandbox 应用执行的所有操作。
 

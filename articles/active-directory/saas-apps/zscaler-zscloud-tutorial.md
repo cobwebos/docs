@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.openlocfilehash: ea6008092f8fbfde8963da50d5273d36a4a30fe3
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: a23d68e0b48a01cf98a5d1cc136a6af46895b0ee
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39050004"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440637"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>教程：Azure Active Directory 与 Zscaler ZSCloud 的集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "39050004"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库添加 Zscaler ZSCloud
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-zscaler-zscloud-from-the-gallery"></a>从库添加 Zscaler ZSCloud
 若要配置 Zscaler ZSCloud 与 Azure AD 的集成，需要从库中将 Zscaler ZSCloud 添加到托管 SaaS 应用列表。
@@ -63,19 +63,19 @@ ms.locfileid: "39050004"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入 **Zscaler ZSCloud**。
+1. 在搜索框中，键入 **Zscaler ZSCloud**。
 
     ![创建 Azure AD 测试用户](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_search.png)
 
-5. 在结果窗格中选择“Zscaler ZSCloud”，然后单击“添加”按钮添加该应用程序。
+1. 在结果窗格中选择“Zscaler ZSCloud”，然后单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_addfromgallery.png)
 
@@ -89,11 +89,11 @@ ms.locfileid: "39050004"
 若要配置和测试 Zscaler ZSCloud 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. [配置代理设置](#configuring-proxy-settings) - 以在 Internet Explorer 中配置代理设置
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Zscaler ZSCloud 测试用户](#creating-a-zscaler-zscloud-test-user)** - 在 Zscaler ZSCloud 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. [配置代理设置](#configuring-proxy-settings) - 以在 Internet Explorer 中配置代理设置
+1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 Zscaler ZSCloud 测试用户](#creating-a-zscaler-zscloud-test-user)** - 在 Zscaler ZSCloud 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -105,11 +105,11 @@ ms.locfileid: "39050004"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![配置单一登录](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_samlbase.png)
 
-3. 在“Zscaler ZSCloud 域和 URL”部分中执行以下步骤：
+1. 在“Zscaler ZSCloud 域和 URL”部分中执行以下步骤：
 
     ![配置单一登录](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_url.png)
 
@@ -118,41 +118,41 @@ ms.locfileid: "39050004"
     > [!NOTE] 
     > 必须使用实际登录 URL 更新此值。 若要获取此值，请与 [Zscaler ZSCloud 客户端支持团队](https://help.zscaler.com/zia)联系。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录](./media/zscaler-zscloud-tutorial/tutorial_general_400.png)
 
-6. 在“Zscaler ZSCloud 配置”部分中，单击“配置 Zscaler ZSCloud”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
+1. 在“Zscaler ZSCloud 配置”部分中，单击“配置 Zscaler ZSCloud”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
 
     ![配置单一登录](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_configure.png) 
 
-7. 在其他 Web 浏览器窗口中，以管理员身份登录到 ZScaler ZSCloud 公司站点。
+1. 在其他 Web 浏览器窗口中，以管理员身份登录到 ZScaler ZSCloud 公司站点。
 
-8. 在顶部菜单中，单击“管理”。
+1. 在顶部菜单中，单击“管理”。
    
     ![管理](./media/zscaler-zscloud-tutorial/ic800206.png "Administration")
 
-9. 在“管理管理员和角色”下，单击“管理用户和身份验证”。   
+1. 在“管理管理员和角色”下，单击“管理用户和身份验证”。   
             
     ![管理用户和身份验证](./media/zscaler-zscloud-tutorial/ic800207.png "管理用户和身份验证")
 
-10. 在“选择组织的身份验证选项”部分中，执行以下步骤：   
+1. 在“选择组织的身份验证选项”部分中，执行以下步骤：   
                 
     ![身份验证](./media/zscaler-zscloud-tutorial/ic800208.png "身份验证")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“使用 SAML 单一登录进行身份验证”。
+    a. 选择“使用 SAML 单一登录进行身份验证”。
 
     b. 单击“配置 SAML 单一登录参数”。
 
-11. 在“配置 SAML 单一登录参数”对话框页上，执行以下步骤，然后单击“完成”
+1. 在“配置 SAML 单一登录参数”对话框页上，执行以下步骤，然后单击“完成”
 
     ![单一登录](./media/zscaler-zscloud-tutorial/ic800209.png "单一登录")
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将“SAML 单一登录服务 URL”值粘贴到“发送给用户进行身份验证的 SAML 门户 URL”文本框中。
+    a. 将“SAML 单一登录服务 URL”值粘贴到“发送给用户进行身份验证的 SAML 门户 URL”文本框中。
     
     b. 在“属性包含登录名”文本框中，键入 **NameID** 。
     
@@ -160,11 +160,11 @@ ms.locfileid: "39050004"
     
     d. 选择“启用 SAML 自动预配”。
 
-12. 在“配置用户身份验证”对话框页上，执行以下步骤：
+1. 在“配置用户身份验证”对话框页上，执行以下步骤：
 
     ![管理](./media/zscaler-zscloud-tutorial/ic800210.png "Administration")
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“ **保存**”。
+    a. 单击“ **保存**”。
 
     b. 单击“立即激活”。
 
@@ -173,21 +173,21 @@ ms.locfileid: "39050004"
 
 1. 启动 **Internet Explorer**。
 
-2. 从“工具”菜单中选择“Internet 选项”，打开“Internet 选项”对话框。   
+1. 从“工具”菜单中选择“Internet 选项”，打开“Internet 选项”对话框。   
     
      ![Internet 选项](./media/zscaler-zscloud-tutorial/ic769492.png "Internet 选项")
 
-3. 单击“连接”选项卡。   
+1. 单击“连接”选项卡。   
   
      ![连接](./media/zscaler-zscloud-tutorial/ic769493.png "连接")
 
-4. 单击“LAN 设置”，打开“LAN 设置”对话框。
+1. 单击“LAN 设置”，打开“LAN 设置”对话框。
 
-5. 在“代理服务器”部分中，执行以下步骤：   
+1. 在“代理服务器”部分中，执行以下步骤：   
    
     ![代理服务器](./media/zscaler-zscloud-tutorial/ic769494.png "代理服务器")
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“为 LAN 使用代理服务器”。
+    a. 选择“为 LAN 使用代理服务器”。
 
     b. 在“地址”文本框中，键入 **gateway.zscalerone.net**。
 
@@ -197,7 +197,7 @@ ms.locfileid: "39050004"
 
     e. 单击“确定”，关闭“局域网(LAN)设置”对话框。
 
-6. 单击“确定”，关闭“Internet 选项”对话框。
+1. 单击“确定”，关闭“Internet 选项”对话框。
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
@@ -210,19 +210,19 @@ ms.locfileid: "39050004"
 
     ![创建 Azure AD 测试用户](./media/zscaler-zscloud-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
     ![创建 Azure AD 测试用户](./media/zscaler-zscloud-tutorial/create_aaduser_02.png) 
 
-3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
  
     ![创建 Azure AD 测试用户](./media/zscaler-zscloud-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/zscaler-zscloud-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -239,23 +239,23 @@ ms.locfileid: "39050004"
 
 1. 登录到 **Zscaler** 租户。
 
-2. 单击“管理”。   
+1. 单击“管理”。   
    
     ![管理](./media/zscaler-zscloud-tutorial/ic781035.png "Administration")
 
-3. 单击“用户管理”。   
+1. 单击“用户管理”。   
         
      ![添加](./media/zscaler-zscloud-tutorial/ic781037.png "Add")
 
-4. 在“用户”选项卡上，单击“添加”。
+1. 在“用户”选项卡上，单击“添加”。
       
     ![添加](./media/zscaler-zscloud-tutorial/ic781037.png "Add")
 
-5. 在“添加用户”部分中，执行以下步骤：
+1. 在“添加用户”部分中，执行以下步骤：
         
     ![添加用户](./media/zscaler-zscloud-tutorial/ic781038.png "添加用户")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 键入“UserID”、“用户显示名称”、“密码”和“确认密码”，并选择想要预配的有效 AAD 帐户的“组”和“部门”。
+    a. 键入“UserID”、“用户显示名称”、“密码”和“确认密码”，并选择想要预配的有效 AAD 帐户的“组”和“部门”。
 
     b. 单击“ **保存**”。
 
@@ -274,23 +274,23 @@ ms.locfileid: "39050004"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Zscaler ZSCloud”。
+1. 在应用程序列表中，选择“Zscaler ZSCloud”。
 
     ![配置单一登录](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 

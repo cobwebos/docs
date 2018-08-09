@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: jeedes
-ms.openlocfilehash: e4d86fc2e29c4d93567bedd045d57cd8d4e22cf5
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e902f5969611dd3b1074e899003abe5067857c04
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39052428"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446129"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-knowledgeowl"></a>教程：Azure Active Directory 与 KnowledgeOwl 集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "39052428"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库添加 KnowledgeOwl
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-knowledgeowl-from-the-gallery"></a>从库添加 KnowledgeOwl
 要配置 KnowledgeOwl 与 Azure AD 的集成，需要从库中将 KnowledgeOwl 添加到托管 SaaS 应用列表。
@@ -64,15 +64,15 @@ ms.locfileid: "39052428"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中，键入“KnowledgeOwl”，在结果面板中选择“KnowledgeOwl”，然后单击“添加”按钮添加该应用程序。
+1. 在搜索框中，键入“KnowledgeOwl”，在结果面板中选择“KnowledgeOwl”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 KnowledgeOwl](./media/knowledgeowl-tutorial/tutorial_knowledgeowl_addfromgallery.png)
 
@@ -85,10 +85,10 @@ ms.locfileid: "39052428"
 若要配置并测试 KnowledgeOwl 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 KnowledgeOwl 测试用户](#create-a-knowledgeowl-test-user)** - 在 KnowledgeOwl 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 KnowledgeOwl 测试用户](#create-a-knowledgeowl-test-user)** - 在 KnowledgeOwl 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -100,15 +100,15 @@ ms.locfileid: "39052428"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![“单一登录”对话框](./media/knowledgeowl-tutorial/tutorial_knowledgeowl_samlbase.png)
 
-3. 在“KnowledgeOwl 域和 URL”部分中，如果要在“IDP”发起的模式下配置应用程序，请执行以下步骤：
+1. 在“KnowledgeOwl 域和 URL”部分中，如果要在“IDP”发起的模式下配置应用程序，请执行以下步骤：
 
     ![KnowledgeOwl 域和 URL 单一登录信息](./media/knowledgeowl-tutorial/tutorial_knowledgeowl_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
+    a. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
     |||
     |-|-|
     | `https://app.knowledgeowl.com/sp`|
@@ -126,7 +126,7 @@ ms.locfileid: "39052428"
     | `https://privatedomain.com/home/saml-login`|
     |||
 
-4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
+1. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
 
     ![KnowledgeOwl 域和 URL 单一登录信息](./media/knowledgeowl-tutorial/tutorial_knowledgeowl_url1.png)
 
@@ -144,17 +144,17 @@ ms.locfileid: "39052428"
     > [!NOTE]
     > 这些不是实际值。 将需要从实际的标识符、答复 URL 和登录 URL 更新这些值（本教程稍后会介绍）。
 
-5. KnowledgeOwl 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。
+1. KnowledgeOwl 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。
 
     ![配置单一登录](./media/knowledgeowl-tutorial/attribute.png)
 
-6. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，再执行以下步骤：
+1. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，再执行以下步骤：
     
     | 属性名称 | 属性值 | 命名空间|
     | ------------------- | -------------------- | -----|
     | ssoid | user.mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
+    a. 单击“添加属性”，打开“添加属性”对话框。
     
     ![配置单一登录](./media/knowledgeowl-tutorial/tutorial_attribute_04.png)
 
@@ -168,29 +168,29 @@ ms.locfileid: "39052428"
     
     e. 单击“确定” 。
 
-7. 在“SAML 签名证书”部分中，单击“证书(原始)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(原始)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/knowledgeowl-tutorial/tutorial_knowledgeowl_certificate.png) 
 
-8. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/knowledgeowl-tutorial/tutorial_general_400.png)
     
-9. 在“KnowledgeOwl 配置”部分，单击“配置 KnowledgeOwl”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+1. 在“KnowledgeOwl 配置”部分，单击“配置 KnowledgeOwl”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
 
     ![KnowledgeOwl 配置](./media/knowledgeowl-tutorial/tutorial_knowledgeowl_configure.png)
 
-10. 在另一个 Web 浏览器窗口中，以管理员身份登录到 KnowledgeOwl 公司站点。
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 KnowledgeOwl 公司站点。
 
-11. 单击“设置”，然后选择“安全性”。
+1. 单击“设置”，然后选择“安全性”。
 
     ![KnowledgeOwl 配置](./media/knowledgeowl-tutorial/configure1.png)
 
-12. 向下滚动至“SAML SSO 集成”并执行以下步骤：
+1. 向下滚动至“SAML SSO 集成”并执行以下步骤：
     
     ![KnowledgeOwl 配置](./media/knowledgeowl-tutorial/configure2.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“启用 SAML SSO”。
+    a. 选择“启用 SAML SSO”。
 
     b. 复制“SP 实体 ID”值并将其粘贴到 Azure 门户上“KnowledgeOwl 域和 URL”部分的“标识符(实体 ID)”中。
 
@@ -230,19 +230,19 @@ ms.locfileid: "39052428"
 
     ![“Azure Active Directory”按钮](./media/knowledgeowl-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/knowledgeowl-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/knowledgeowl-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/knowledgeowl-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -268,23 +268,23 @@ ms.locfileid: "39052428"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“KnowledgeOwl”。
+1. 在应用程序列表中，选择“KnowledgeOwl”。
 
     ![应用程序列表中的 KnowledgeOwl 链接](./media/knowledgeowl-tutorial/tutorial_knowledgeowl_app.png)  
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: adamab
-ms.openlocfilehash: dafada5cecbc6345da46bc3a32fc3b91eb72313a
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 8ac3bb2c95420eb4a608f003f3d937e3a47c272b
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295505"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39448224"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>以编程方式创建 Azure 仪表板
 
@@ -120,7 +120,7 @@ Azure 提供协调多资源部署的功能。 创建用于表达要部署的资�
 
 __可在本文档末尾查看完整的工作模板。__
 
-设置模板后，便可使用 [REST API](https://docs.microsoft.com/rest/api/resources/deployments)、[PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)、[Azure CLI](https://docs.microsoft.com/cli/azure/group/deployment#az_group_deployment_create) 或[门户的模板部署页](https://portal.azure.com/#create/Microsoft.Template)部署该模板。
+设置模板后，便可使用 [REST API](https://docs.microsoft.com/rest/api/resources/deployments)、[PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)、[Azure CLI](https://docs.microsoft.com/cli/azure/group/deployment#az-group-deployment-create) 或[门户的模板部署页](https://portal.azure.com/#create/Microsoft.Template)部署该模板。
 
 以下是示例仪表板 JSON 的两个版本。 第一个版本是从门户导出的、已绑定到资源的模板。 第二个是可以编程方式绑定到任何 VM 并使用 Azure 资源管理器进行部署的模板版本。
 

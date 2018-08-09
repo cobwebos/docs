@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
 ms.component: alerts
-ms.openlocfilehash: 1cd82f7ffa9360dbc35f9c9d790df34355d9dd1a
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 6e1a72c428425c73ff0446fc0d41b1b18333c3e3
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035707"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423882"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>创建有关服务通知的活动日志警报
 ## <a name="overview"></a>概述
@@ -43,40 +43,40 @@ ms.locfileid: "39035707"
 
     ![“服务运行状况”服务](./media/monitoring-activity-log-alerts-on-service-notifications/home-servicehealth.png)
 
-2. 在“警报”部分中，选择“运行状况警报”。
+1. 在“警报”部分中，选择“运行状况警报”。
 
     ![“运行状况警报”选项卡](./media/monitoring-activity-log-alerts-on-service-notifications/alerts-blades-sh.png)
 
-3. 选择“创建服务运行状况警报”，并填写字段。
+1. 选择“创建服务运行状况警报”，并填写字段。
 
     ![“创建服务运行状况警报”命令](./media/monitoring-activity-log-alerts-on-service-notifications/service-health-alert.png)
 
-4. 选择要针对其发出警报的**订阅**、**服务**和**区域**。
+1. 选择要针对其发出警报的**订阅**、**服务**和**区域**。
 
     ![“添加活动日志警报”对话框](./media/monitoring-activity-log-alerts-on-service-notifications/activity-log-alert-new-ux.png)
 
 > [!NOTE]
 > 此订阅用于保存活动日志警报。 警报资源部署到此订阅，并在其中监视活动日志事件。
 
-5. 选择要针对其发出警报的**事件类型**：*服务问题*、*计划内维护*和*运行状况公告* 
+1. 选择要针对其发出警报的**事件类型**：*服务问题*、*计划内维护*和*运行状况公告* 
 
-6. 通过输入**警报规则名称**和**说明**定义警报详细信息。
+1. 通过输入**警报规则名称**和**说明**定义警报详细信息。
 
-7. 选择要将警报保存到的**资源组**。
+1. 选择要将警报保存到的**资源组**。
 
-8. 通过选择“新建操作组”创建一个新操作组。 在“操作组名称”框中输入名称，然后在“短名称”框中输入名称。 在触发此警报时，将引用已发送通知中的短名称。
+1. 通过选择“新建操作组”创建一个新操作组。 在“操作组名称”框中输入名称，然后在“短名称”框中输入名称。 在触发此警报时，将引用已发送通知中的短名称。
 
     ![创建新的操作组](./media/monitoring-activity-log-alerts-on-service-notifications/action-group-creation.png)
 
-9. 通过提供接收方来定义接收方的列表：
+1. 通过提供接收方来定义接收方的列表：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 名称：输入接收方的名称、别名或标识符。
+    a. 名称：输入接收方的名称、别名或标识符。
 
     b. **操作类型**：选择短信、电子邮件、Webhook、Azure 应用等。
 
     c. **详细信息**：根据所选操作类型，输入电话号码、电子邮件地址、Webhook URI 等。
 
-10. 选择“确定”以创建操作组，然后选择“创建警报规则”以完成警报。
+1. 选择“确定”以创建操作组，然后选择“创建警报规则”以完成警报。
 
 在几分钟内，警报将处于活动状态，并根据创建期间指定的条件开始触发。
 
@@ -91,9 +91,9 @@ ms.locfileid: "39035707"
 
 1. 执行上一节中的步骤 1 至 7 来创建服务运行状况通知。 
 
-2. 在“定义操作组”下，单击“选择操作组”按钮。 选择适当的操作组。
+1. 在“定义操作组”下，单击“选择操作组”按钮。 选择适当的操作组。
 
-3. 选择“添加”以添加操作组，然后选择“创建警报规则”以完成警报。
+1. 选择“添加”以添加操作组，然后选择“创建警报规则”以完成警报。
 
 在几分钟内，警报将处于活动状态，并根据创建期间指定的条件开始触发。
 

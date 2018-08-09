@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/04/2017
 ms.author: markgal
-ms.openlocfilehash: 52ca7cf4a04ace2a43f15433c05a2db26bde3602
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 872bfc0027fd5b69bb42f391c036f7116789f529
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605587"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39431141"
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>使用 Azure 门户还原虚拟机
 可以通过按定义的间隔创建数据快照来保护数据。 这些快照称为恢复点，存储在恢复服务保管库中。 当需要修复或重新生成虚拟机 (VM) 时，可以从保存的任何恢复点还原 VM。 还原恢复点时，可以：
@@ -39,34 +39,34 @@ ms.locfileid: "34605587"
 ## <a name="select-a-restore-point-for-restore"></a>选择用于还原的还原点
 1. 登录到 [Azure 门户](http://portal.azure.com/)。
 
-2. 在 Azure 菜单中，选择“浏览”。 在服务列表中，键入“恢复服务”。 服务列表会根据键入的内容调整。 出现“**恢复服务保管库**”时，请选择它。
+1. 在 Azure 菜单中，选择“浏览”。 在服务列表中，键入“恢复服务”。 服务列表会根据键入的内容调整。 出现“**恢复服务保管库**”时，请选择它。
 
     ![恢复服务保管库](./media/backup-azure-arm-restore-vms/open-recovery-services-vault.png)
 
     随后会显示订阅中保管库的列表。
 
     ![恢复服务保管库列表](./media/backup-azure-arm-restore-vms/list-of-rs-vaults.png)
-3. 从列表中选择与要还原的 VM 关联的保管库。 选择该保管库时，其仪表板会打开。
+1. 从列表中选择与要还原的 VM 关联的保管库。 选择该保管库时，其仪表板会打开。
 
     ![选定的恢复服务保管库](./media/backup-azure-arm-restore-vms/select-vault-open-vault-blade.png)
-4. 在保管库仪表板上的“备份项”磁贴中，选择“Azure 虚拟机”。
+1. 在保管库仪表板上的“备份项”磁贴中，选择“Azure 虚拟机”。
 
     ![保管库仪表板](./media/backup-azure-arm-restore-vms/vault-dashboard.png)
 
     “备份项”边栏选项卡随即打开并显示 Azure VM 列表。
 
     ![保管库中的 VM 列表](./media/backup-azure-arm-restore-vms/list-of-vms-in-vault.png)
-5. 从列表中选择一个 VM 以打开仪表板。 VM 仪表板随即打开包含“还原点”磁贴的“监视”区域。
+1. 从列表中选择一个 VM 以打开仪表板。 VM 仪表板随即打开包含“还原点”磁贴的“监视”区域。
 
     ![还原点](./media/backup-azure-arm-restore-vms/vm-blade.png)
-6. 在 VM 仪表板菜单中，选择“还原”。
+1. 在 VM 仪表板菜单中，选择“还原”。
 
     ![“还原”按钮](./media/backup-azure-arm-restore-vms/vm-blade-menu-restore.png)
 
     “还原”边栏选项卡随即打开。
 
     ![“还原”边栏选项卡](./media/backup-azure-arm-restore-vms/restore-blade.png)
-7. 在“还原”边栏选项卡中，选择“还原点”。 “选择还原点”边栏选项卡随即打开。
+1. 在“还原”边栏选项卡中，选择“还原点”。 “选择还原点”边栏选项卡随即打开。
 
     ![选择还原点](./media/backup-azure-arm-restore-vms/recovery-point-selector.png)
 
@@ -79,13 +79,13 @@ ms.locfileid: "34605587"
      * 文件系统一致还原点
      * 所有还原点
 
-8. 选择一个还原点并选择“确定”。
+1. 选择一个还原点并选择“确定”。
 
     ![还原点选项](./media/backup-azure-arm-restore-vms/select-recovery-point.png)
 
     “还原”边栏选项卡会显示已设置还原点。
 
-9. 如果尚未执行此操作，请转到“还原”边栏选项卡。 确保[已选择还原点](#select-a-restore-point-for-restore)，并选择“还原配置”。 “还原配置”边栏选项卡随即打开。
+1. 如果尚未执行此操作，请转到“还原”边栏选项卡。 确保[已选择还原点](#select-a-restore-point-for-restore)，并选择“还原配置”。 “还原配置”边栏选项卡随即打开。
 
 ## <a name="choose-a-vm-restore-configuration"></a>选择 VM 还原配置
 选择还原点后，请选择 VM 还原配置。 若要配置已还原 VM，可使用 Azure 门户或 PowerShell。
@@ -93,7 +93,7 @@ ms.locfileid: "34605587"
 1. 如果尚未执行此操作，请转到“还原”边栏选项卡。 确保[已选择还原点](#select-a-restore-point-for-restore)，并选择“还原配置”。 “还原配置”边栏选项卡随即打开。
 
     ![还原配置向导](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard-recovery-type.png)
-2. 在“还原配置”边栏选项卡上，有两个选择：
+1. 在“还原配置”边栏选项卡上，有两个选择：
 
    * 创建虚拟机
 
@@ -127,7 +127,7 @@ ms.locfileid: "34605587"
     >
     >
 
-2. 在“还原配置”边栏选项卡中，选择“确定”完成还原配置。 在“还原”边栏选项卡中，选择“还原”以触发还原操作。
+1. 在“还原配置”边栏选项卡中，选择“确定”完成还原配置。 在“还原”边栏选项卡中，选择“还原”以触发还原操作。
 
 ## <a name="restore-backed-up-disks"></a>还原备份磁盘
 若要自定义从“还原配置”边栏选项卡显示的磁盘之外的备份磁盘创建的 VM，请选择“还原磁盘”作为“还原类型”的值。 如果选择此选项，需要提供备份中磁盘要复制到的存储帐户。 选择存储帐户时，请选择与恢复服务保管库共享相同位置的帐户。 不支持区域冗余的存储帐户。 如果没有与恢复服务保管库位于相同位置的存储帐户，必须创建一个存储帐户，然后再开始还原操作。 存储帐户的复制类型显示在括号中。
@@ -156,9 +156,9 @@ ms.locfileid: "34605587"
     随后会显示订阅中保管库的列表。
 
     ![恢复服务保管库列表](./media/backup-azure-arm-restore-vms/list-of-rs-vaults.png)
-2. 从列表中选择与已还原的 VM 关联的保管库。 选择该保管库时，其仪表板会打开。
+1. 从列表中选择与已还原的 VM 关联的保管库。 选择该保管库时，其仪表板会打开。
 
-3. 在“备份作业”磁贴上的保管库仪表板中，选择“Azure 虚拟机”以显示与保管库关联的作业。
+1. 在“备份作业”磁贴上的保管库仪表板中，选择“Azure 虚拟机”以显示与保管库关联的作业。
 
     ![保管库仪表板](./media/backup-azure-arm-restore-vms/vault-dashboard-jobs.png)
 
@@ -178,15 +178,15 @@ ms.locfileid: "34605587"
 
 1. 转到对应于还原作业的作业详细信息。
 
-2. 在“还原作业详细信息”屏幕上，选择“部署模板”启动模板部署。 
+1. 在“还原作业详细信息”屏幕上，选择“部署模板”启动模板部署。 
 
      ![深入到还原作业](./media/backup-azure-arm-restore-vms/restore-job-drill-down.png)
    
-3. 在自定义部署的“部署模板”边栏选项卡上，请在部署之前，使用模板部署来[编辑并部署模板](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)，或者通过[创作模板](../azure-resource-manager/resource-group-authoring-templates.md)来追加其他自定义项。 
+1. 在自定义部署的“部署模板”边栏选项卡上，请在部署之前，使用模板部署来[编辑并部署模板](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)，或者通过[创作模板](../azure-resource-manager/resource-group-authoring-templates.md)来追加其他自定义项。 
 
    ![加载模板部署](./media/backup-azure-arm-restore-vms/loading-template.png)
    
-4. 输入所需的值后，接受“条款和条件”，并选择“购买”。
+1. 输入所需的值后，接受“条款和条件”，并选择“购买”。
 
    ![提交模板部署](./media/backup-azure-arm-restore-vms/submitting-template.png)
 
@@ -233,7 +233,7 @@ ms.locfileid: "34605587"
 
 1. 使用 [PowerShell](backup-azure-vms-automation.md#restore-an-azure-vm) 从恢复服务保管库还原磁盘。
 
-2. 使用 PowerShell cmdlet 创建负载均衡器/多个 NIC/多个保留 IP 所需的 VM 配置。 使用该配置来创建采用所需配置的 VM：
+1. 使用 PowerShell cmdlet 创建负载均衡器/多个 NIC/多个保留 IP 所需的 VM 配置。 使用该配置来创建采用所需配置的 VM：
 
    a. 使用[内部负载均衡器](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)在云服务中创建 VM。
 

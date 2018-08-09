@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 02/15/2018
 ms.author: chwolf
-ms.openlocfilehash: 5d0ab8cf9e87fc13b78b00dbe77ec6f9fb38c4b9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 72a9cc905adda5146cf943d8f0ed2789c3088422
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32189385"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39447384"
 ---
 # <a name="azure-service-bus-to-azure-event-grid-integration-examples"></a>Azure 服务总线到 Azure 事件网格集成示例
 
@@ -46,13 +46,13 @@ ms.locfileid: "32189385"
 
 1. 克隆 [GitHub azure-service-bus 存储库](https://github.com/Azure/azure-service-bus/)。
 
-2. 在 Visual Studio 中转到 *\samples\DotNet\Microsoft.ServiceBus.Messaging\ServiceBusEventGridIntegration* 文件夹，然后打开 *SBEventGridIntegration.sln* 文件。
+1. 在 Visual Studio 中转到 *\samples\DotNet\Microsoft.ServiceBus.Messaging\ServiceBusEventGridIntegration* 文件夹，然后打开 *SBEventGridIntegration.sln* 文件。
 
-3. 转到 **MessageSender** 项目，然后选择 **Program.cs**。
+1. 转到 **MessageSender** 项目，然后选择 **Program.cs**。
 
    ![8][]
 
-4. 填充主题名称和连接字符串，然后执行以下控制台应用程序代码：
+1. 填充主题名称和连接字符串，然后执行以下控制台应用程序代码：
 
     ```CSharp
     const string ServiceBusConnectionString = "YOUR CONNECTION STRING";
@@ -65,7 +65,7 @@ ms.locfileid: "32189385"
 
 1. 在 Azure 门户中创建新的 Azure Functions 应用程序。 若要了解 Azure Functions 的基础知识，请参阅 [Azure Functions 文档](https://docs.microsoft.com/azure/azure-functions/)。
 
-2. 在新创建的函数中，选择加号 (+) 即可添加 HTTP 触发器函数：
+1. 在新创建的函数中，选择加号 (+) 即可添加 HTTP 触发器函数：
 
     ![2][]
     
@@ -73,9 +73,9 @@ ms.locfileid: "32189385"
 
     ![3][]
 
-3. 依次选择“Webhook + API”按钮、“CSharp”、“创建此函数”。
+1. 依次选择“Webhook + API”按钮、“CSharp”、“创建此函数”。
  
-4. 将以下代码粘贴到函数中：
+1. 将以下代码粘贴到函数中：
 
     ```CSharp
     #r "Newtonsoft.Json"
@@ -121,7 +121,7 @@ ms.locfileid: "32189385"
     }
     ```
 
-5. 选择“保存并运行”。
+1. 选择“保存并运行”。
 
 ## <a name="connect-the-function-and-namespace-via-event-grid"></a>通过事件网格连接函数和命名空间
 
@@ -133,16 +133,16 @@ ms.locfileid: "32189385"
 
     ![20][]
 
-2. 选择“事件订阅”。  
+1. 选择“事件订阅”。  
     此时会打开“事件订阅”窗口。 下图显示了一个窗体，用于订阅 Azure 函数或 Webhook 而不需应用筛选器。
 
     ![21][]
 
-3. 完成如图所示的窗体，然后记住在“后缀筛选器”框中输入相关筛选器。
+1. 完成如图所示的窗体，然后记住在“后缀筛选器”框中输入相关筛选器。
 
-4. 选择**创建**。
+1. 选择**创建**。
 
-5. 如“先决条件”部分所述，向服务总线主题发送一条消息，然后通过 Azure Functions 的“监视”功能验证事件是否正在流动。
+1. 如“先决条件”部分所述，向服务总线主题发送一条消息，然后通过 Azure Functions 的“监视”功能验证事件是否正在流动。
 
 下一步是将函数和服务总线命名空间绑定在一起。 就此示例来说，请使用 Azure 门户。 若要了解如何使用 PowerShell 或 Azure CLI 来执行此步骤，请参阅 [Azure 服务总线到 Azure 事件网格集成概述](service-bus-to-event-grid-integration-concept.md)。
 
@@ -160,26 +160,26 @@ ms.locfileid: "32189385"
 
     ![10][]
 
-2. 在以下代码中输入连接字符串：
+1. 在以下代码中输入连接字符串：
 
     ```Csharp
     const string ServiceBusConnectionString = "YOUR CONNECTION STRING";
     ```
 
-3. 在 Azure 门户中下载 Azure 函数的发布配置文件，该函数是在“设置测试函数”部分创建的。
+1. 在 Azure 门户中下载 Azure 函数的发布配置文件，该函数是在“设置测试函数”部分创建的。
 
     ![11][]
 
-4. 在 Visual Studio 中右键单击“SBEventGridIntegration”，然后选择“发布”。 
+1. 在 Visual Studio 中右键单击“SBEventGridIntegration”，然后选择“发布”。 
 
-5. 在以前下载的发布配置文件所对应的“发布”窗格中，选择“导入配置文件”，然后选择“发布”。
+1. 在以前下载的发布配置文件所对应的“发布”窗格中，选择“导入配置文件”，然后选择“发布”。
 
     ![12][]
 
-6. 发布新的 Azure 函数以后，请创建新的 Azure 事件网格订阅，使之指向新的 Azure 函数。  
+1. 发布新的 Azure 函数以后，请创建新的 Azure 事件网格订阅，使之指向新的 Azure 函数。  
     在“结尾为”框中，确保应用正确的筛选器，该筛选器应该是服务总线订阅名称。
 
-7. 向以前创建的 Azure 服务总线主题发送一条消息，然后在 Azure 门户中监视 Azure Functions 日志，确保事件正在流动且消息正在进行接收。
+1. 向以前创建的 Azure 服务总线主题发送一条消息，然后在 Azure 门户中监视 Azure Functions 日志，确保事件正在流动且消息正在进行接收。
 
     ![12-1][]
 
@@ -195,22 +195,22 @@ ms.locfileid: "32189385"
 
     ![14][]
 
-2. 若要添加信息，请执行以下操作：
+1. 若要添加信息，请执行以下操作：
 
     a. 在“资源名称”框中，输入自己的命名空间名称。 
 
     b. 在“高级选项”下的“后缀筛选器”框中，输入订阅的筛选器。
 
-3. 添加服务总线“接收”操作，以便从主题订阅接收消息。  
+1. 添加服务总线“接收”操作，以便从主题订阅接收消息。  
     下图显示了最终操作：
 
     ![15][]
 
-4. 添加一个完整事件，如下图所示：
+1. 添加一个完整事件，如下图所示：
 
     ![16][]
 
-5. 保存逻辑应用并向服务总线主题发送消息，如“先决条件”部分所述。  
+1. 保存逻辑应用并向服务总线主题发送消息，如“先决条件”部分所述。  
     观察逻辑应用的执行情况。 若要查看执行的更多数据，请选择“概览”，然后查看“运行历史记录”下的数据。
 
     ![17][]

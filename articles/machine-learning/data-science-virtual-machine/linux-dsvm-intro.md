@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 1a201974749acbbb9607e42e67d1935f437f9ca1
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: db1d449e5c9f66446f00b637c5550dc9144920ff
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31421778"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446759"
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>在 Azure 上预配 Linux CentOS 数据科学虚拟机
 
@@ -47,14 +47,14 @@ Linux 数据科学虚拟机是基于 CentOS 的 Azure 虚拟机，附带一组�
 执行数据科学涉及对一系列任务的迭代：
 
 1. 查找、加载和预处理数据
-2. 构建和测试模型
-3. 部署模型以在智能应用程序中使用
+1. 构建和测试模型
+1. 部署模型以在智能应用程序中使用
 
 数据科学家使用各种工具完成这些任务。 找到软件的适当版本，并下载、编译和安装这些版本，这一过程可能耗时较长。
 
 Linux 数据科学虚拟机可大大减轻这种负担。 使用它快速开始分析项目。 它支持处理各种语言版本的任务，包括 R、Python、SQL、Java 和 C++。 Eclipse 提供 IDE，可开发易于使用的代码并对其进行测试。 使用 VM 中包含的 Azure SDK，可在适用于 Microsoft 云平台的 Linux 上使用各种服务来生成应用程序。 此外，还可以访问其他预安装语言，如 Ruby、Perl、PHP 和 node.js。
 
-此数据科学 VM 映像不产生软件费用。 只需根据使用该 VM 映像预配的虚拟机大小，支付相应的 Azure 硬件使用费。 有关费用计算的更多详细信息，请访问 [Azure Marketplace 上的 VM 列表页](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/)。
+此数据科学 VM 映像不产生软件费用。 只需根据使用该 VM 映像预配的虚拟机大小，支付相应的 Azure 硬件使用费。 有关费用计算的更多详细信息，请访问 [Azure 市场上的 VM 商品信息页](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/)。
 
 ## <a name="other-versions-of-the-data-science-virtual-machine"></a>其他版本的数据科学虚拟机
 [Ubuntu](dsvm-ubuntu-intro.md) 映像同样可用，它包含多种与 CentOS 映像相同的工具以及加深度学习框架。 [Windows](provision-vm.md) 映像同样可用。
@@ -69,8 +69,8 @@ Linux 数据科学虚拟机可大大减轻这种负担。 使用它快速开始�
 以下是创建 Linux 数据科学虚拟机实例的步骤：
 
 1. 导航到 [Azure 门户](https://portal.azure.com/#create/microsoft-ads.linux-data-science-vmlinuxdsvm)上的虚拟机列表。
-2. 单击底部的“创建”打开向导。![configure-data-science-vm](./media/linux-dsvm-intro/configure-linux-data-science-virtual-machine.png)
-3. 以下部分提供用于创建 Microsoft 数据科学虚拟机的向导中每个步骤的输入（在上一图片的右侧枚举）。 以下是配置每个步骤所需的输入：
+1. 单击底部的“创建”打开向导。![configure-data-science-vm](./media/linux-dsvm-intro/configure-linux-data-science-virtual-machine.png)
+1. 以下部分提供用于创建 Microsoft 数据科学虚拟机的向导中每个步骤的输入（在上一图片的右侧枚举）。 以下是配置每个步骤所需的输入：
    
    a. **基本信息**：
    
@@ -113,7 +113,7 @@ Linux 数据科学虚拟机可大大减轻这种负担。 使用它快速开始�
 Linux VM 已通过 X2Go 服务器进行预配并且可接受客户端连接。 若要连接到 Linux VM 图形桌面，请在客户端上执行以下操作：
 
 1. 从 [X2Go ](http://wiki.x2go.org/doku.php/doc:installation:x2goclient) 为客户端平台下载并安装 X2Go 客户端。    
-2. 运行 X2Go 客户端，并选择“新建会话”。 这会打开具有多个选项卡的配置窗口。 输入下列配置参数:
+1. 运行 X2Go 客户端，并选择“新建会话”。 这会打开具有多个选项卡的配置窗口。 输入下列配置参数:
    * **会话选项卡**：
      * **主机**：主机名或 Linux 数据科学 VM 的 IP 地址。
      * **登录名**：Linux VM 上的用户名。
@@ -356,16 +356,16 @@ Rattle (**R** **A**nalytical **T**ool **T**o **L**earn **E**asily) 使用基于 
 > 
 
 1. 单击“执行” 。
-2. 这会弹出一个对话框，询问是否要使用示例气象数据集。 单击“是”加载示例。
-3. 单击“模型”选项卡。
-4. 单击“执行”生成决策树。
-5. 单击“绘制”显示决策树。
-6. 单击“林”单选按钮，并单击“执行”生成随机林。
-7. 单击“评估”选项卡。
-8. 单击“风险”单选按钮，并单击“执行”，以显示两个风险（累积）性能绘图。
-9. 单击“日志”选项卡，显示上述操作生成的 R 代码。
+1. 这会弹出一个对话框，询问是否要使用示例气象数据集。 单击“是”加载示例。
+1. 单击“模型”选项卡。
+1. 单击“执行”生成决策树。
+1. 单击“绘制”显示决策树。
+1. 单击“林”单选按钮，并单击“执行”生成随机林。
+1. 单击“评估”选项卡。
+1. 单击“风险”单选按钮，并单击“执行”，以显示两个风险（累积）性能绘图。
+1. 单击“日志”选项卡，显示上述操作生成的 R 代码。
    （由于当前版本 Rattle 中的 bug，需在日志文本中的“导出此日志...”前插入 *#* 字符。）
-10. 单击“导出”按钮，将名为 *weather_script.R* 的 R 脚本文件保存到主文件夹。
+1. 单击“导出”按钮，将名为 *weather_script.R* 的 R 脚本文件保存到主文件夹。
 
 可以退出 Rattle 和 R。现在，可以修改生成的 R 脚本或者直接使用，可使其随时运行以重复在 Rattle UI 中完成的所有操作。 特别是对于 R 的初学者而言，这是一种简单方法，可用于在图形界面中快速进行分析和机器学习，同时在 R 中自动生成可修改和/或用于学习的代码。
 

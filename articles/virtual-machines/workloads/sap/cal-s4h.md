@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: 10c5116afa46817a42834e0350937fde7ae0b927
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a99fb959ae1ac1434bedffd782a7c4e0a302d361
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657336"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39431397"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>在 Azure 上部署 SAP S/4HANA 或 BW/4HANA
 本文介绍如何通过 SAP Cloud Appliance Library (SAP CAL) 3.0 在 Azure 上部署 S/4HANA。 若要部署其他基于 SAP HANA 的解决方案（如 BW/4HANA），请按照相同的步骤执行。
@@ -52,7 +52,7 @@ ms.locfileid: "34657336"
     > [!NOTE]
     后续步骤演示如何创建 Resource Manager 部署的 SAP CAL 帐户。 如果已有链接到经典部署模型的 SAP CAL 帐户，则需要按照这些步骤创建新的 SAP CAL 帐户。 需要在 Resource Manager 模型中部署新的 SAP CAL 帐户。
 
-2. 创建一个新的 SAP CAL 帐户。 “帐户”页显示 Azure 的三个选项： 
+1. 创建一个新的 SAP CAL 帐户。 “帐户”页显示 Azure 的三个选项： 
 
     a. Microsoft Azure（经典）是经典部署模型，已不再是首选项。
 
@@ -64,27 +64,27 @@ ms.locfileid: "34657336"
 
     ![SAP CAL 帐户详细信息](./media/cal-s4h/s4h-pic-2a.png)
 
-3. 输入可在 Azure 门户中找到的 Azure 订阅 ID。
+1. 输入可在 Azure 门户中找到的 Azure 订阅 ID。
 
    ![SAP CAL 帐户](./media/cal-s4h/s4h-pic3c.png)
 
-4. 若要授权将 SAP CAL 部署到定义的 Azure 订阅，请单击“授权”。 浏览器选项卡中将显示以下页面：
+1. 若要授权将 SAP CAL 部署到定义的 Azure 订阅，请单击“授权”。 浏览器选项卡中将显示以下页面：
 
    ![Internet Explorer 云服务登录](./media/cal-s4h/s4h-pic4c.png)
 
-5. 如果列出多个用户，则选择链接到所选择的 Azure 订阅共同管理者的 Microsoft 帐户。 浏览器选项卡中将显示以下页面：
+1. 如果列出多个用户，则选择链接到所选择的 Azure 订阅共同管理者的 Microsoft 帐户。 浏览器选项卡中将显示以下页面：
 
    ![Internet Explorer 云服务确认](./media/cal-s4h/s4h-pic5a.png)
 
-6. 单击“接受”。 如果授权成功，则将再次显示 SAP CAL 帐户定义。 稍后，用户将收到一条消息，确认授权过程成功。
+1. 单击“接受”。 如果授权成功，则将再次显示 SAP CAL 帐户定义。 稍后，用户将收到一条消息，确认授权过程成功。
 
-7. 若要将新创建的 SAP CAL 帐户分配到你的用户，请在右侧的文本框中输入你的用户 ID 并单击“添加”。
+1. 若要将新创建的 SAP CAL 帐户分配到你的用户，请在右侧的文本框中输入你的用户 ID 并单击“添加”。
 
    ![帐户到用户的关联](./media/cal-s4h/s4h-pic8a.png)
 
-8. 若要将你的帐户与你用于登录到 SAP CAL 的用户相关联，请单击“评审”。 
+1. 若要将你的帐户与你用于登录到 SAP CAL 的用户相关联，请单击“评审”。 
  
-9. 若要创建用户和新建的 SAP CAL 帐户之间的关联，请单击“创建”。
+1. 若要创建用户和新建的 SAP CAL 帐户之间的关联，请单击“创建”。
 
    ![用户到 SAP CAL 帐户的关联](./media/cal-s4h/s4h-pic9b.png)
 
@@ -122,29 +122,29 @@ ms.locfileid: "34657336"
 
    ![SAP CAL 基本模式：创建实例](./media/cal-s4h/s4h-pic10a.png)
 
-2. 单击“创建”，然后在出现的消息框中单击“确定”。
+1. 单击“创建”，然后在出现的消息框中单击“确定”。
 
    ![SAP CAL 支持的 VM 大小](./media/cal-s4h/s4h-pic10b.png)
 
-3. 在“私钥”对话框中，单击“存储”将私钥存储在 SAP CAL 中。 若要使用私钥密码保护，请单击“下载”。 
+1. 在“私钥”对话框中，单击“存储”将私钥存储在 SAP CAL 中。 若要使用私钥密码保护，请单击“下载”。 
 
    ![SAP CAL 私钥](./media/cal-s4h/s4h-pic10c.png)
 
-4. 阅读 SAP CAL“警告”消息，并单击“确定”。
+1. 阅读 SAP CAL“警告”消息，并单击“确定”。
 
    ![SAP CAL 警告](./media/cal-s4h/s4h-pic10d.png)
 
     现在正在进行部署。 一段时间后，根据解决方案的大小和复杂性（SAP CAL 提供的估算值），状态将显示为活动并可供使用。
 
-5. 若要查找一个资源组中使用其他相关资源收集的虚拟机，请转到 Azure 门户： 
+1. 若要查找一个资源组中使用其他相关资源收集的虚拟机，请转到 Azure 门户： 
 
    ![新门户中部署的 SAP CAL 对象](./media/cal-s4h/sapcaldeplyment_portalview.png)
 
-6. 在 SAP CAL 门户上，状态将显示为“活动”。 若要连接到解决方案，请单击“连接”。 在此解决方案内部署需连接到不同组件的不同选项。
+1. 在 SAP CAL 门户上，状态将显示为“活动”。 若要连接到解决方案，请单击“连接”。 在此解决方案内部署需连接到不同组件的不同选项。
 
    ![SAP CAL 实例](./media/cal-s4h/active_solution.png)
 
-7. 在能够使用其中一个方法连接到已部署的系统之前，请单击“入门指南”。 
+1. 在能够使用其中一个方法连接到已部署的系统之前，请单击“入门指南”。 
 
    ![连接到实例](./media/cal-s4h/connect_to_solution.png)
 

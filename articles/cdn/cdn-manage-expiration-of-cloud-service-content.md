@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: mazha
-ms.openlocfilehash: ec5470587454a35bc7606a3518d61bd3491d653b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: fc74d7fdd082cf497b7cabf30d96509ebe8b6b68
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33765535"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426011"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>在 Azure CDN 中管理 Web 内容的到期时间
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ ms.locfileid: "33765535"
 
 1. 在 Azure 门户中，选择一个 CDN 配置文件，然后选择 Web 服务器的终结点。
 
-2. 在左窗格中的“设置”下，选择“缓存规则”。
+1. 在左窗格中的“设置”下，选择“缓存规则”。
 
    ![CDN 缓存规则按钮](./media/cdn-manage-expiration-of-cloud-service-content/cdn-caching-rules-btn.png)
 
@@ -60,13 +60,13 @@ ms.locfileid: "33765535"
 
 1. 在“全局缓存规则”下，将“查询字符串缓存行为”设置为“忽略查询字符串”，将“缓存行为”设置为“覆盖”。
       
-2. 对于“缓存过期持续时间”，在“秒”框中输入 3600，或者在“小时”框中输入 1。 
+1. 对于“缓存过期持续时间”，在“秒”框中输入 3600，或者在“小时”框中输入 1。 
 
    ![CDN 全局缓存规则示例](./media/cdn-manage-expiration-of-cloud-service-content/cdn-global-caching-rules-example.png)
 
    此全局缓存规则设置为期一小时的缓存持续时间，并会影响发送到终结点的所有请求。 它会替代由终结点指定的源服务器发送的所有 `Cache-Control` 或 `Expires` HTTP 标头。   
 
-3. 选择“保存”。
+1. 选择“保存”。
 
 **使用自定义缓存规则设置 Web 服务器文件的 Cache-Control 标头：**
 
@@ -80,7 +80,7 @@ ms.locfileid: "33765535"
 
     第一个自定义缓存规则为终结点指定的源服务器上的 `/webfolder1` 文件夹中的所有文件设置为期四小时的缓存持续时间。 第二个规则仅替代 `file1.txt` 文件的第一个规则，并且为它设置为期两小时的缓存持续时间。
 
-2. 选择“保存”。
+1. 选择“保存”。
 
 
 ## <a name="setting-cache-control-headers-by-using-configuration-files"></a>使用配置文件设置 Cache-Control 标头
@@ -113,10 +113,10 @@ ms.locfileid: "33765535"
 
 若要以编程方式在 ASP.NET 中缓存应用程序内容，请执行以下步骤：
    1. 验证是否已通过将 `HttpCacheability` 设置为 `Public` 将内容标记为可缓存。 
-   2. 调用以下 `HttpCachePolicy` 方法之一设置缓存验证器：
+   1. 调用以下 `HttpCachePolicy` 方法之一设置缓存验证器：
       - 调用 `SetLastModified` 以设置 `Last-Modified` 标头的时间戳值。
       - 调用 `SetETag` 以设置 `ETag` 标头的值。
-   3. （可选）调用 `SetExpires` 以设置 `Expires` 标头的值，从而指定缓存到期时间。 否则，将应用本文前面所述的默认缓存试探程序。
+   1. （可选）调用 `SetExpires` 以设置 `Expires` 标头的值，从而指定缓存到期时间。 否则，将应用本文前面所述的默认缓存试探程序。
 
 例如，要将内容缓存 1 小时，可添加以下 C# 代码：  
 

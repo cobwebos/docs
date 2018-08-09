@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2018
 ms.author: jeedes
-ms.openlocfilehash: b003f29db699d89f0d3cec76ee3562ffad08b40f
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 94b8b935728110cd5dd07b2066e8320274e3b082
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346328"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39428411"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jamf-pro"></a>教程：Azure Active Directory 与 Jamf Pro 集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "39346328"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库添加 Jamf Pro
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-jamf-pro-from-the-gallery"></a>从库添加 Jamf Pro
 要配置 Jamf Pro 与 Azure AD 的集成，需要从库中将 Jamf Pro 添加到托管 SaaS 应用列表。
@@ -64,15 +64,15 @@ ms.locfileid: "39346328"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中，键入“Jamf Pro”，在结果面板中选择“Jamf Pro”，然后单击“添加”按钮添加该应用程序。
+1. 在搜索框中，键入“Jamf Pro”，在结果面板中选择“Jamf Pro”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 Jamf Pro](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_addfromgallery.png)
 
@@ -85,10 +85,10 @@ ms.locfileid: "39346328"
 若要配置和测试 Jamf Pro 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Jamf Pro 测试用户](#create-a-jamf-pro-test-user)** - 在 Jamf Pro 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 身份。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 Jamf Pro 测试用户](#create-a-jamf-pro-test-user)** - 在 Jamf Pro 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 身份。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -100,11 +100,11 @@ ms.locfileid: "39346328"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![“单一登录”对话框](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_samlbase.png)
 
-3. 在“Jamf Pro 域和 URL”部分，如果要在 IDP 发起的模式下配置应用程序，请执行以下步骤：
+1. 在“Jamf Pro 域和 URL”部分，如果要在 IDP 发起的模式下配置应用程序，请执行以下步骤：
 
     ![Jamf Pro 域和 URL 单一登录信息](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_url.png)
 
@@ -112,7 +112,7 @@ ms.locfileid: "39346328"
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<subdomain>.jamfcloud.com/saml/SSO`
 
-4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
+1. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
 
     ![Jamf Pro 域和 URL 单一登录信息](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_url1.png)
 
@@ -121,25 +121,25 @@ ms.locfileid: "39346328"
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 将从 Jamf Pro 门户中的“单一登录”部分获取实际的标识符值（本教程稍后会介绍）。 可以从标识符值提取实际的子域值，并在登录 URL 和答复 URL 中使用该子域信息。
 
-5. 在“SAML 签名证书”部分中，单击”复制”按钮来复制“应用联合元数据 URL”，并将其粘贴到记事本。
+1. 在“SAML 签名证书”部分中，单击”复制”按钮来复制“应用联合元数据 URL”，并将其粘贴到记事本。
 
     ![证书下载链接](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_certificate.png) 
 
-6. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/jamfprosamlconnector-tutorial/tutorial_general_400.png)
     
-7. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Jamf Pro 公司站点。
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Jamf Pro 公司站点。
 
-8. 单击页面右上角的“设置”图标。
+1. 单击页面右上角的“设置”图标。
 
     ![Jamf Pro 配置](./media/jamfprosamlconnector-tutorial/configure1.png)
 
-9. 单击“单一登录”。
+1. 单击“单一登录”。
 
     ![Jamf Pro 配置](./media/jamfprosamlconnector-tutorial/configure2.png)
 
-10. 在“单一登录”页上，执行以下步骤：
+1. 在“单一登录”页上，执行以下步骤：
 
     ![Jamf Pro 单一登录](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_single.png)
 
@@ -153,7 +153,7 @@ ms.locfileid: "39346328"
 
     e. 在“组属性名称”文本框中粘贴值 `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups`。
  
-11. 在同一页上，一直向下滚动到“单一登录”部分下的“标识提供者”，并执行以下步骤：
+1. 在同一页上，一直向下滚动到“单一登录”部分下的“标识提供者”，并执行以下步骤：
 
     ![Jamf Pro 配置](./media/jamfprosamlconnector-tutorial/configure3.png)
 
@@ -182,15 +182,15 @@ ms.locfileid: "39346328"
 
     ![“Azure Active Directory”按钮](./media/jamfprosamlconnector-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/jamfprosamlconnector-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/jamfprosamlconnector-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/jamfprosamlconnector-tutorial/create_aaduser_04.png)
 
@@ -210,23 +210,23 @@ ms.locfileid: "39346328"
 
 1. 以管理员身份登录到 Jamf Pro 公司站点。
 
-2. 单击页面右上角的“设置”图标。
+1. 单击页面右上角的“设置”图标。
 
     ![添加员工](./media/jamfprosamlconnector-tutorial/configure1.png)
 
-3. 单击“Jamf Pro 用户帐户和组”。
+1. 单击“Jamf Pro 用户帐户和组”。
 
     ![添加员工](./media/jamfprosamlconnector-tutorial/user1.png)
 
-4. 单击“新建” 。
+1. 单击“新建” 。
 
     ![添加员工](./media/jamfprosamlconnector-tutorial/user2.png)
 
-5. 选择“创建标准帐户”。
+1. 选择“创建标准帐户”。
 
     ![添加员工](./media/jamfprosamlconnector-tutorial/user3.png)
 
-6. 在“新建帐户”对话框执行以下步骤：
+1. 在“新建帐户”对话框执行以下步骤：
 
     ![添加员工](./media/jamfprosamlconnector-tutorial/user4.png)
 
@@ -256,23 +256,23 @@ ms.locfileid: "39346328"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Jamf Pro”。
+1. 在应用程序列表中，选择“Jamf Pro”。
 
     ![应用程序列表中的 Jamf Pro 链接](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_app.png)  
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

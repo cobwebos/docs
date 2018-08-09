@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 74a89fcaf88ed97d64f343abcc8827e0dafe1654
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: bebc8d674d7448ea0ce6a1f11b7ae80335df9cdc
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211173"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39431692"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-spark"></a>教程：Azure Active Directory 与 Cisco Spark 的集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "36211173"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Cisco Spark
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-cisco-spark-from-the-gallery"></a>从库中添加 Cisco Spark
 要配置 Cisco Spark 与 Azure AD 的集成，需要从库中将 Cisco Spark 添加到托管 SaaS 应用列表。
@@ -63,19 +63,19 @@ ms.locfileid: "36211173"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入“Cisco Spark”。
+1. 在搜索框中，键入“Cisco Spark”。
 
     ![创建 Azure AD 测试用户](./media/cisco-spark-tutorial/tutorial_ciscospark_search.png)
 
-5. 在结果面板中，选择“Cisco Spark”，然后单击“添加”按钮添加该应用程序。
+1. 在结果面板中，选择“Cisco Spark”，然后单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/cisco-spark-tutorial/tutorial_ciscospark_addfromgallery.png)
 
@@ -89,10 +89,10 @@ ms.locfileid: "36211173"
 若要配置并测试 Cisco Spark 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. [创建 Cisco Spark 测试用户](#creating-a-cisco-spark-test-user) - 在 Cisco Spark 中创建 Britta Simon 的对应用户，该用户与 Azure AD 中表示 Britta Simon 的用户相关联。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. [创建 Cisco Spark 测试用户](#creating-a-cisco-spark-test-user) - 在 Cisco Spark 中创建 Britta Simon 的对应用户，该用户与 Azure AD 中表示 Britta Simon 的用户相关联。
+1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -104,11 +104,11 @@ ms.locfileid: "36211173"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![配置单一登录](./media/cisco-spark-tutorial/tutorial_ciscospark_samlbase.png)
 
-3. 在“Cisco Spark 域和 URL”部分中，执行以下步骤：
+1. 在“Cisco Spark 域和 URL”部分中，执行以下步骤：
 
     ![配置单一登录](./media/cisco-spark-tutorial/tutorial_ciscospark_url.png)
 
@@ -119,15 +119,15 @@ ms.locfileid: "36211173"
     > [!NOTE] 
     > 此值不是真实值。 使用实际标识符更新此值。 请联系 [Cisco Spark 客户端支持团队](https://support.ciscospark.com/)获取此值。 
  
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
+1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/cisco-spark-tutorial/tutorial_ciscospark_certificate.png) 
 
-5. Cisco Spark 应用程序需要 SAML 断言包含特定属性。 请为此应用程序配置以下属性。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示一个示例。
+1. Cisco Spark 应用程序需要 SAML 断言包含特定属性。 请为此应用程序配置以下属性。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示一个示例。
     
     ![配置单一登录](./media/cisco-spark-tutorial/tutorial_ciscospark_07.png) 
 
-6. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
+1. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
     
     | 属性名称  | 属性值 |
     | --------------- | -------------------- |    
@@ -145,25 +145,25 @@ ms.locfileid: "36211173"
     
     d. 单击“确定” 。
 
-7. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录](./media/cisco-spark-tutorial/tutorial_general_400.png)
 
-8. 使用完整管理员凭据登录到 [Cisco Cloud Collaboration Management](https://admin.ciscospark.com/)。
+1. 使用完整管理员凭据登录到 [Cisco Cloud Collaboration Management](https://admin.ciscospark.com/)。
 
-9. 选择“设置”，在“身份验证”部分下单击“修改”。
+1. 选择“设置”，在“身份验证”部分下单击“修改”。
    
     ![配置单一登录](./media/cisco-spark-tutorial/tutorial_cisco_spark_10.png)
     
-10. 选择“集成第三方标识提供者。(高级)”，然后转到下一个屏幕。
+1. 选择“集成第三方标识提供者。(高级)”，然后转到下一个屏幕。
 
-11. 在“导入 Idp 元数据”页上，将 Azure AD 元数据文件拖放到页面上，或者使用文件浏览器选项找到并上传 Azure AD 元数据文件。 然后，选择“元数据中需要由证书颁发机构签名的证书(更安全)”并单击“下一步”。 
+1. 在“导入 Idp 元数据”页上，将 Azure AD 元数据文件拖放到页面上，或者使用文件浏览器选项找到并上传 Azure AD 元数据文件。 然后，选择“元数据中需要由证书颁发机构签名的证书(更安全)”并单击“下一步”。 
     
     ![配置单一登录](./media/cisco-spark-tutorial/tutorial_cisco_spark_11.png)
 
-12. 选择“测试 SSO 连接”，当新的浏览器标签页打开时，通过登录使用 Azure AD 进行身份验证。
+1. 选择“测试 SSO 连接”，当新的浏览器标签页打开时，通过登录使用 Azure AD 进行身份验证。
 
-13. 返回到 **Cisco Cloud Collaboration Management** 浏览器标签页。如果测试成功，则选择“此测试成功。启用单一登录”，并单击“下一步”。
+1. 返回到 **Cisco Cloud Collaboration Management** 浏览器标签页。如果测试成功，则选择“此测试成功。启用单一登录”，并单击“下一步”。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -180,15 +180,15 @@ ms.locfileid: "36211173"
 
     ![创建 Azure AD 测试用户](./media/cisco-spark-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
     ![创建 Azure AD 测试用户](./media/cisco-spark-tutorial/create_aaduser_02.png) 
 
-3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
  
     ![创建 Azure AD 测试用户](./media/cisco-spark-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/cisco-spark-tutorial/create_aaduser_04.png) 
 
@@ -206,13 +206,13 @@ ms.locfileid: "36211173"
 
 1. 使用完整管理员凭据转到 [Cisco Cloud Collaboration Management](https://admin.ciscospark.com/)。
 
-2. 单击“用户”，然后单击“管理用户”。
+1. 单击“用户”，然后单击“管理用户”。
    
     ![配置单一登录](./media/cisco-spark-tutorial/tutorial_cisco_spark_12.png) 
 
-3. 在“管理用户”窗口中，选择“手动添加或修改用户”，并单击“下一步”。
+1. 在“管理用户”窗口中，选择“手动添加或修改用户”，并单击“下一步”。
 
-4. 选择“姓名和电子邮件地址”。 然后，如下所述填写文本框：
+1. 选择“姓名和电子邮件地址”。 然后，如下所述填写文本框：
    
     ![配置单一登录](./media/cisco-spark-tutorial/tutorial_cisco_spark_13.png) 
     
@@ -222,9 +222,9 @@ ms.locfileid: "36211173"
     
     c. 在“电子邮件地址”文本框中，键入 **britta.simon@contoso.com**。
 
-5. 单击加号以添加 Britta Simon。 然后单击“下一步”。
+1. 单击加号以添加 Britta Simon。 然后单击“下一步”。
 
-6. 在“为用户添加服务”窗口中，单击“保存”，并单击“完成”。
+1. 在“为用户添加服务”窗口中，单击“保存”，并单击“完成”。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -238,23 +238,23 @@ ms.locfileid: "36211173"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Cisco Spark”。
+1. 在应用程序列表中，选择“Cisco Spark”。
 
     ![配置单一登录](./media/cisco-spark-tutorial/tutorial_ciscospark_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 

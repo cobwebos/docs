@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/3/2017
 ms.author: jeedes
-ms.openlocfilehash: a62a6b334fd58ce360d932cdc4a8f04f36e3232d
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 1449dc365d318baff3084385b78b60533ac2c71a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36302023"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440885"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>教程：Azure Active Directory 与 ServiceChannel 的集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "36302023"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 ServiceChannel
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-servicechannel-from-the-gallery"></a>从库中添加 ServiceChannel
 要配置 ServiceChannel 与 Azure AD 的集成，需要从库中将 ServiceChannel 添加到托管 SaaS 应用列表。
@@ -63,19 +63,19 @@ ms.locfileid: "36302023"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 单击对话框顶部的“添加”按钮。
+1. 单击对话框顶部的“添加”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入“ServiceChannel”。
+1. 在搜索框中，键入“ServiceChannel”。
 
     ![创建 Azure AD 测试用户](./media/servicechannel-tutorial/tutorial-servicechannel_000.png)
 
-5. 在结果窗格中，选择“ServiceChannel”，并单击“添加”按钮添加该应用程序。
+1. 在结果窗格中，选择“ServiceChannel”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/servicechannel-tutorial/tutorial-servicechannel_2.png)
 
@@ -89,10 +89,10 @@ ms.locfileid: "36302023"
 若要配置和测试 ServiceChannel 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 ServiceChannel 测试用户](#creating-a-servicechannel-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 ServiceChannel 测试用户](#creating-a-servicechannel-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -104,22 +104,22 @@ ms.locfileid: "36302023"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的登录”作为“模式”以启用单一登录。
  
     ![配置单一登录](./media/servicechannel-tutorial/tutorial-servicechannel_01.png)
 
-3. 在“ServiceChannel 域和 URL”部分中，执行以下步骤：
+1. 在“ServiceChannel 域和 URL”部分中，执行以下步骤：
 
     ![配置单一登录](./media/servicechannel-tutorial/tutorial-servicechannel_urls.png)
 
     a. 在“标识符”文本框中，键入 `http://adfs.<domain>.com/adfs/service/trust` 值
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<customer domain>.servicechannel.com/saml/acs`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<customer domain>.servicechannel.com/saml/acs`
 
     > [!NOTE] 
     > 请注意，这些不是实际值。 必须使用实际标识符和回复 URL 更新这些值。 此处我们建议在“标识符”中使用字符串的唯一值。 请联系 [ServiceChannel 支持团队](https://servicechannel.zendesk.com/hc/en-us)来获取这些值。
 
-4. ServiceChannel 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示一个示例。 **NameIdentifier（用户标识符）** 是唯一的强制性声明，默认值为 **user.userprincipalname**，但 ServiceChannel 希望将其映射为 **user.mail**。 如果打算启用“即时”用户预配，则应当添加以下声明，如下所示。 **Role** 声明需要映射到包含该用户的角色的 **user.assignedroles**。  
+1. ServiceChannel 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示一个示例。 **NameIdentifier（用户标识符）** 是唯一的强制性声明，默认值为 **user.userprincipalname**，但 ServiceChannel 希望将其映射为 **user.mail**。 如果打算启用“即时”用户预配，则应当添加以下声明，如下所示。 **Role** 声明需要映射到包含该用户的角色的 **user.assignedroles**。  
 
     有关声明的详细指导，可以参考[此处的](https://servicechannel.zendesk.com/hc/en-us/articles/217514326-Azure-AD-Configuration-Example) ServiceChannel 指南。
     
@@ -128,7 +128,7 @@ ms.locfileid: "36302023"
     > [!NOTE] 
     > 请参阅[使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)，了解如何在 Azure AD 中配置**角色**。
 
-5. 在“用户属性”部分，单击“查看和编辑所有其他用户属性”并设置属性。
+1. 在“用户属性”部分，单击“查看和编辑所有其他用户属性”并设置属性。
 
     | 属性名称 | 属性值 |
     | --- | --- |    
@@ -146,17 +146,17 @@ ms.locfileid: "36302023"
     
     d. 单击“确定”
     
-6. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/servicechannel-tutorial/tutorial-servicechannel_05.png) 
 
-7. 单击“ **保存**”。
+1. 单击“ **保存**”。
 
     ![配置单一登录](./media/servicechannel-tutorial/tutorial_general_400.png)
 
-8. 在“ServiceChannel 配置”部分中，单击“配置 ServiceChannel”以打开“配置登录”窗口。 请记下“快速参考”部分中的 **SAML 实体 ID**。
+1. 在“ServiceChannel 配置”部分中，单击“配置 ServiceChannel”以打开“配置登录”窗口。 请记下“快速参考”部分中的 **SAML 实体 ID**。
 
-9. 要在 **ServiceChannel** 端配置单一登录，需要将下载的**证书 (Base64)** 和 **SAML 实体 ID** 发送给 [ServiceChannel 支持团队](https://servicechannel.zendesk.com/hc/en-us)。 他们会进行此设置，以便同时在两端正确设置 SAML SSO 连接。
+1. 要在 **ServiceChannel** 端配置单一登录，需要将下载的**证书 (Base64)** 和 **SAML 实体 ID** 发送给 [ServiceChannel 支持团队](https://servicechannel.zendesk.com/hc/en-us)。 他们会进行此设置，以便同时在两端正确设置 SAML SSO 连接。
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在 Azure 管理门户中创建名为 Britta Simon 的测试用户。
@@ -169,15 +169,15 @@ ms.locfileid: "36302023"
 
     ![创建 Azure AD 测试用户](./media/servicechannel-tutorial/create_aaduser_01.png) 
 
-2. 转到“用户和组”，单击“所有用户”显示用户列表。
+1. 转到“用户和组”，单击“所有用户”显示用户列表。
     
     ![创建 Azure AD 测试用户](./media/servicechannel-tutorial/create_aaduser_02.png) 
 
-3. 在对话框顶部单击“添加”，打开“用户”对话框。
+1. 在对话框顶部单击“添加”，打开“用户”对话框。
  
     ![创建 Azure AD 测试用户](./media/servicechannel-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/servicechannel-tutorial/create_aaduser_04.png) 
 
@@ -205,23 +205,23 @@ ms.locfileid: "36302023"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“ServiceChannel”。
+1. 在应用程序列表中，选择“ServiceChannel”。
 
     ![配置单一登录](./media/servicechannel-tutorial/tutorial-servicechannel_app01.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 

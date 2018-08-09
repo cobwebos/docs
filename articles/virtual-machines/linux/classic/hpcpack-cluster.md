@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/12/2016
 ms.author: danlep
-ms.openlocfilehash: 57ad5d5d2e7e068f47d51408527f1f7553917279
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2d4091d8ad6a778405ee6bb916c399e0b144f21d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30841687"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441521"
 ---
 # <a name="get-started-with-linux-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Azure 的 HPC Pack 群集中的 Linux 计算节点入门
 在 Azure 中设置 [Windows HPC Pack](https://technet.microsoft.com/library/cc514029.aspx) 群集，该群集包含运行 Windows Server 的头节点和运行受支持 Linux 分发版的多个计算节点。 了解可用于在群集的 Linux 节点与 Windows 头节点之间移动数据的选项。 了解如何将 Linux HPC 作业提交到群集。
@@ -34,17 +34,18 @@ ms.locfileid: "30841687"
 有关在 Azure 中运行 Linux HPC 工作负荷的其他选项，请参阅 [Technical resources for batch and high-performance computing](../../../batch/big-compute-resources.md)（适用于批处理和高性能计算的技术资源）。
 
 ## <a name="deploy-an-hpc-pack-cluster-with-linux-compute-nodes"></a>使用 Linux 计算节点部署 HPC Pack 群集
-本文介绍用于在 Azure 中部署包含 Linux 计算节点的 HPC Pack 群集的两个选项。 这两种方法使用包含 HPC Pack 的 Windows Server 的 Marketplace 映像创建头节点。 
+本文介绍用于在 Azure 中部署包含 Linux 计算节点的 HPC Pack 群集的两个选项。 这两种方法使用包含 HPC Pack 的 Windows Server 的市场映像创建头节点。 
 
-* **Azure 资源管理器模板** - 使用 Azure Marketplace 中的模板或社区中的快速入门模板，自动在资源管理器部署模型中创建群集。 例如，Azure Marketplace 中的 [HPC Pack cluster for Linux workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)（适用于 Linux 工作负荷的 HPC Pack 群集）模板可为 Linux HPC 工作负荷创建完整的 HPC Pack 群集基础结构。
-* **PowerShell 脚本** - 使用 [Microsoft HPC Pack IaaS 部署脚本](../../windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) (**New-HpcIaaSCluster.ps1**) 在经典部署模型中自动执行完整的群集部署。 此 Azure PowerShell 脚本使用 Azure Marketplace 中的 HPC Pack VM 映像进行快速部署，并提供一组全面的配置参数用于部署 Linux 计算节点。
+* 
+  **Azure 资源管理器模板** - 使用 Azure 市场中的模板或社区中的快速入门模板，自动在资源管理器部署模型中创建群集。 例如，Azure 市场中的 [HPC Pack cluster for Linux workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)（适用于 Linux 工作负荷的 HPC Pack 群集）模板可为 Linux HPC 工作负荷创建完整的 HPC Pack 群集基础结构。
+* **PowerShell 脚本** - 使用 [Microsoft HPC Pack IaaS 部署脚本](../../windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) (**New-HpcIaaSCluster.ps1**) 在经典部署模型中自动执行完整的群集部署。 此 Azure PowerShell 脚本使用 Azure 市场中的 HPC Pack VM 映像进行快速部署，并提供一组全面的配置参数用于部署 Linux 计算节点。
 
 有关 Azure 中 HPC Pack 群集部署选项的详细信息，请参阅 [Options to create and manage a high-peformance computing (HPC) cluster in Azure with Microsoft HPC Pack](../hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（使用 Microsoft HPC Pack 在 Azure 中创建和管理高性能计算 (HPC) 群集时可用的选项）。
 
 ### <a name="prerequisites"></a>先决条件
 * **Azure 订阅** - 可以使用 Azure 全球或 Azure 中国服务中的订阅。 如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 * **核心配额** - 可能需要增加内核配额，尤其是在选择部署具有多核 VM 大小的多个群集节点时。 若要增加配额，可免费建立联机客户支持请求。
-* **Linux 分发版** - 当前 HPC Pack 对计算节点支持以下 Linux 分发版。 你可以使用这些分发版的 Marketplace 版本，或提供自己的版本。
+* **Linux 分发版** - 当前 HPC Pack 对计算节点支持以下 Linux 分发版。 你可以使用这些分发版的市场版本，或提供自己的版本。
   
   * **基于 CentOS 的分发版**：6.5、6.6、6.7、7.0、7.1、7.2、6.5 HPC、7.1 HPC
   * **Red Hat Enterprise Linux**：6.7、6.8、7.2
@@ -52,7 +53,7 @@ ms.locfileid: "30841687"
   * **Ubuntu Server**：14.04 LTS、16.04 LTS
     
     > [!TIP]
-    > 若要使用具有某个支持 RDMA 的 VM 大小的 Azure RDMA 网络，请从 Azure Marketplace 中指定 SUSE Linux Enterprise Server 12 HPC 或基于 CentOS 的 HPC 映像。 有关详细信息，请参阅[高性能计算 VM 大小](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+    > 若要使用具有某个支持 RDMA 的 VM 大小的 Azure RDMA 网络，请从 Azure 市场中指定 SUSE Linux Enterprise Server 12 HPC 或基于 CentOS 的 HPC 映像。 有关详细信息，请参阅[高性能计算 VM 大小](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
     > 
     > 
 
@@ -63,25 +64,25 @@ ms.locfileid: "30841687"
 * **HPC Pack IaaS 部署脚本** - 从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=44949)下载并解压缩最新版本的脚本。 可以通过运行 `.\New-HPCIaaSCluster.ps1 –Version` 检查脚本的版本。 本文基于版本 4.4.1 或更高版本的脚本。
 
 ### <a name="deployment-option-1-use-a-resource-manager-template"></a>部署选项 1。 使用 Resource Manager 模板
-1. 转到 Azure Marketplace 中的[适用于 Linux 工作负荷的 HPC Pack 群集](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)模板，并单击“部署”。
-2. 在 Azure 门户中复查信息，并单击“创建”。
+1. 转到 Azure 市场中的[适用于 Linux 工作负荷的 HPC Pack 群集](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)模板，然后单击“部署”。
+1. 在 Azure 门户中复查信息，并单击“创建”。
    
     ![在门户中创建][portal]
-3. 在“基本信息”边栏选项卡中输入群集的名称，这也是头节点 VM 的名称。 可以选择现有的资源组，或者在可用的位置中为部署创建一个组。 该位置会影响某些 VM 大小和其他 Azure 服务的可用性（请参阅 [Products available by region](https://azure.microsoft.com/regions/services/)（按区域提供的产品））。
-4. 如果是首次部署，通常可以在“头节点设置”边栏选项卡中接受默认设置。 
+1. 在“基本信息”边栏选项卡中输入群集的名称，这也是头节点 VM 的名称。 可以选择现有的资源组，或者在可用的位置中为部署创建一个组。 该位置会影响某些 VM 大小和其他 Azure 服务的可用性（请参阅 [Products available by region](https://azure.microsoft.com/regions/services/)（按区域提供的产品））。
+1. 如果是首次部署，通常可以在“头节点设置”边栏选项卡中接受默认设置。 
    
    > [!NOTE]
    > “配置后脚本 URL”是可选设置，用于指定在运行头节点 VM 后，要在其上运行的公开可用 Windows PowerShell 脚本。 
    > 
    > 
-5. 在“计算节点设置”边栏选项卡中，选择节点的命名模式、节点数目与大小，以及要部署的 Linux 分发。
-6. 在“基础结构设置”边栏选项卡中，输入虚拟网络名称和 Active Directory 域名、域和 VM 管理员凭据，以及存储帐户的命名模式。
+1. 在“计算节点设置”边栏选项卡中，选择节点的命名模式、节点数目与大小，以及要部署的 Linux 分发。
+1. 在“基础结构设置”边栏选项卡中，输入虚拟网络名称和 Active Directory 域名、域和 VM 管理员凭据，以及存储帐户的命名模式。
    
    > [!NOTE]
    > HPC Pack 使用 Active Directory 域来对群集用户进行身份验证。 
    > 
    > 
-7. 运行验证测试并查看使用条款后，单击“购买”。
+1. 运行验证测试并查看使用条款后，单击“购买”。
 
 ### <a name="deployment-option-2-use-the-iaas-deployment-script"></a>部署选项 2。 使用 IaaS 部署脚本
 下面是使用 HPC Pack IaaS 部署脚本部署群集需要满足其他先决条件：
@@ -135,12 +136,12 @@ HPC Pack IaaS 部署脚本使用 XML 配置文件作为输入来描述 HPC 群�
 **运行 HPC Pack IaaS 部署脚本**
 
 1. 在客户端计算机上以管理员身份打开 Windows PowerShell。
-2. 将目录切换到脚本的安装文件夹（在本示例中为 E:\IaaSClusterScript）。
+1. 将目录切换到脚本的安装文件夹（在本示例中为 E:\IaaSClusterScript）。
    
     ```powershell
     cd E:\IaaSClusterScript
     ```
-3. 运行以下命令以部署 HPC Pack 群集。 本示例假定配置文件位于 E:\HPCDemoConfig.xml
+1. 运行以下命令以部署 HPC Pack 群集。 本示例假定配置文件位于 E:\HPCDemoConfig.xml
    
     ```powershell
     .\New-HpcIaaSCluster.ps1 –ConfigFile E:\HPCDemoConfig.xml –AdminUserName MyAdminName
@@ -223,7 +224,7 @@ clusrun /nodegroup:LinuxNodes mount -t cifs //allvhdsje.file.core.windows.net/rd
     ![文件共享权限][fileshareperms]
    
     ![文件共享][filesharing]
-2. 打开 Windows PowerShell 窗口并运行以下命令：
+1. 打开 Windows PowerShell 窗口并运行以下命令：
    
     ```powershell
     clusrun /nodegroup:LinuxNodes mkdir -p /openfoam
@@ -252,7 +253,7 @@ NFS 服务使你能够在运行 Windows Server 2012 操作系统的计算机之�
     ![NFS NTFS 权限][nfsperm]
    
     ![NFS 管理属性][nfsmanage]
-2. 打开 Windows PowerShell 窗口并运行以下命令：
+1. 打开 Windows PowerShell 窗口并运行以下命令：
    
     ```powershell
     clusrun /nodegroup:LinuxNodes mkdir -p /nfsshare

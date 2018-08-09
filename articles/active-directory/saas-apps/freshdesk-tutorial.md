@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.openlocfilehash: 064f122deb6e53a33048d3159941a8b4dc5d0a9a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d0fbed347805a581fb66e0218290993817277214
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228884"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39428326"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>教程：Azure Active Directory 与 FreshDesk 集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "36228884"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 FreshDesk
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-freshdesk-from-the-gallery"></a>从库中添加 FreshDesk
 要配置 FreshDesk 与 Azure AD 的集成，需要从库中将 FreshDesk 添加到托管 SaaS 应用列表。
@@ -64,19 +64,19 @@ ms.locfileid: "36228884"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 单击对话框顶部的“添加”按钮。
+1. 单击对话框顶部的“添加”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入“FreshDesk”。
+1. 在搜索框中，键入“FreshDesk”。
 
     ![创建 Azure AD 测试用户](./media/freshdesk-tutorial/tutorial_freshdesk_search.png)
 
-5. 在结果面板中，选择“FreshDesk”，并单击“添加”按钮添加该应用程序。
+1. 在结果面板中，选择“FreshDesk”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/freshdesk-tutorial/tutorial_freshdesk_addfromgallery.png)
 
@@ -90,10 +90,10 @@ ms.locfileid: "36228884"
 若要配置和测试 FreshDesk 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 FreshDesk 测试用户](#creating-a-freshdesk-test-user)** - 在 FreshDesk 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 FreshDesk 测试用户](#creating-a-freshdesk-test-user)** - 在 FreshDesk 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -105,40 +105,40 @@ ms.locfileid: "36228884"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的登录”作为“模式”以启用单一登录。
  
     ![配置单一登录](./media/freshdesk-tutorial/tutorial_freshdesk_samlbase.png)
 
-3. 在“FreshDesk 域和 URL”部分，请在“登录 URL”中输入 `https://<tenant-name>.freshdesk.com` 或 FreshDesk 建议的任何其他值。
+1. 在“FreshDesk 域和 URL”部分，请在“登录 URL”中输入 `https://<tenant-name>.freshdesk.com` 或 FreshDesk 建议的任何其他值。
 
     ![配置单一登录](./media/freshdesk-tutorial/tutorial_freshdesk_url.png)
 
     > [!NOTE] 
     > 请注意，这不是实际值。 必须使用实际登录 URL 更新此值。 若要获取此值，请与 [FreshDesk 客户端支持团队](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg)联系。  
 
-4. 在“SAML 签名证书”部分中，单击“证书”，并将证书保存在计算机上。
+1. 在“SAML 签名证书”部分中，单击“证书”，并将证书保存在计算机上。
 
     ![配置单一登录](./media/freshdesk-tutorial/tutorial_freshdesk_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录](./media/freshdesk-tutorial/tutorial_general_400.png)
 
-6. 在“FreshDesk 配置”部分中，单击“配置 FreshDesk”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”和“注销 URL”。
+1. 在“FreshDesk 配置”部分中，单击“配置 FreshDesk”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”和“注销 URL”。
 
     ![配置单一登录](./media/freshdesk-tutorial/tutorial_freshdesk_configure.png)
 
-7. 在另一个 Web 浏览器窗口中，以管理员身份登录 Freshdesk 公司站点。
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录 Freshdesk 公司站点。
 
-8. 在顶部菜单中，单击“管理员”。
+1. 在顶部菜单中，单击“管理员”。
    
    ![管理员](./media/freshdesk-tutorial/IC776768.png "管理员")
 
-9. 在“常规设置”选项卡上，单击“安全”。
+1. 在“常规设置”选项卡上，单击“安全”。
    
    ![安全](./media/freshdesk-tutorial/IC776769.png "安全")
 
-10. 在“安全”部分中，执行以下步骤：
+1. 在“安全”部分中，执行以下步骤：
    
     ![单一登录](./media/freshdesk-tutorial/IC776770.png "单一登录")
    
@@ -169,15 +169,15 @@ ms.locfileid: "36228884"
 
     ![创建 Azure AD 测试用户](./media/freshdesk-tutorial/create_aaduser_01.png) 
 
-2. 转到“用户和组”，单击“所有用户”显示用户列表。
+1. 转到“用户和组”，单击“所有用户”显示用户列表。
     
     ![创建 Azure AD 测试用户](./media/freshdesk-tutorial/create_aaduser_02.png) 
 
-3. 在对话框顶部单击“添加”，打开“用户”对话框。
+1. 在对话框顶部单击“添加”，打开“用户”对话框。
  
     ![创建 Azure AD 测试用户](./media/freshdesk-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/freshdesk-tutorial/create_aaduser_04.png) 
 
@@ -197,19 +197,19 @@ ms.locfileid: "36228884"
 **若要预配用户帐户，请执行以下步骤：**
 
 1. 登录到“Freshdesk”租户。
-2. 在顶部菜单中，单击“管理员”。
+1. 在顶部菜单中，单击“管理员”。
    
    ![管理员](./media/freshdesk-tutorial/IC776772.png "管理员")
 
-3. 在“常规设置”选项卡上，单击“代理”。
+1. 在“常规设置”选项卡上，单击“代理”。
    
    ![代理](./media/freshdesk-tutorial/IC776773.png "Agents")
 
-4. 单击“新建代理”。
+1. 单击“新建代理”。
    
     ![新建代理](./media/freshdesk-tutorial/IC776774.png "New Agent")
 
-5. 在“代理信息”对话框中，执行以下步骤：
+1. 在“代理信息”对话框中，执行以下步骤：
    
    ![代理信息](./media/freshdesk-tutorial/IC776775.png "Agent Information")
    
@@ -242,23 +242,23 @@ ms.locfileid: "36228884"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“FreshDesk”。
+1. 在应用程序列表中，选择“FreshDesk”。
 
     ![配置单一登录](./media/freshdesk-tutorial/tutorial_freshdesk_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 

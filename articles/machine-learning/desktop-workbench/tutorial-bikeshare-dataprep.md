@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/21/2017
-ms.openlocfilehash: 951ce8947d113eaad2ea0e3b5df5e9714aa33dd8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2a50350b9ba49d82a20b92804ffb92ec6906186d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723181"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39439894"
 ---
 # <a name="tutorial-use-azure-machine-learning-workbench-for-advanced-data-preparation-bike-share-data"></a>教程：使用 Azure Machine Learning Workbench 进行高级数据准备（共享自行车数据）
 Azure 机器学习（预览版）是一个集成式的端到端数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
@@ -60,7 +60,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
       - [201610-hubway-tripdata.zip](https://s3.amazonaws.com/hubway-data/201610-hubway-tripdata.zip)
       - [201701-hubway-tripdata.zip](https://s3.amazonaws.com/hubway-data/201701-hubway-tripdata.zip)
 
-2. 在下载后解压缩每个 .zip 文件。
+1. 在下载后解压缩每个 .zip 文件。
 
 ## <a name="upload-data-files-to-azure-blob-storage"></a>将数据文件上传到 Azure Blob 存储
 可以使用 Azure Blob 存储来托管数据文件。
@@ -69,9 +69,9 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
     ![HDInsight 群集存储帐户](media/tutorial-bikeshare-dataprep/hdinsightstorageaccount.png)
 
-2. 创建名为 **data-files** 的新容器，用于存储 **BikeShare** 数据文件。
+1. 创建名为 **data-files** 的新容器，用于存储 **BikeShare** 数据文件。
 
-3. 上传数据文件。 将 `BostonWeather.csv` 上传到名为 `weather` 的文件夹。 将行程数据文件上传到名为 `tripdata` 的文件夹。
+1. 上传数据文件。 将 `BostonWeather.csv` 上传到名为 `weather` 的文件夹。 将行程数据文件上传到名为 `tripdata` 的文件夹。
 
     ![上传数据文件](media/tutorial-bikeshare-dataprep/azurestoragedatafile.png)
 
@@ -91,7 +91,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
    * **HOURLYWindSpeed**
 
-2. __Hubway__ 数据按年份和月份组织到各个文件中。 例如，名为 `201501-hubway-tripdata.zip` 的文件包含一个 .csv 文件，其中包含了 2015 年 1 月份的数据。 该数据包含下列字段，每行表示一次自行车行程：
+1. __Hubway__ 数据按年份和月份组织到各个文件中。 例如，名为 `201501-hubway-tripdata.zip` 的文件包含一个 .csv 文件，其中包含了 2015 年 1 月份的数据。 该数据包含下列字段，每行表示一次自行车行程：
 
    * **行程持续时间(以秒为单位)**
 
@@ -114,7 +114,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 ## <a name="create-a-new-project"></a>创建新项目
 1. 从“开始”菜单或启动程序启动 **Machine Learning Workbench**。
 
-2. 创建一个新的机器学习项目。 选择“项目”页面上的 **+** 按钮，或者选择“文件” > “新建”。
+1. 创建一个新的机器学习项目。 选择“项目”页面上的 **+** 按钮，或者选择“文件” > “新建”。
 
    * 使用 **Bike Share** 模板。
 
@@ -126,7 +126,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
    ![“数据”视图选项卡](media/tutorial-bikeshare-dataprep/navigatetodatatab.png)
 
-2. 添加一个数据源。 选择 **+** 图标，然后选择“添加数据源”。
+1. 添加一个数据源。 选择 **+** 图标，然后选择“添加数据源”。
 
    ![“添加数据源”选项](media/tutorial-bikeshare-dataprep/newdatasource.png)
 
@@ -136,11 +136,11 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
    ![“文件/目录”条目](media/tutorial-bikeshare-dataprep/datasources.png)
 
-2. **文件选择**：添加天气数据。 浏览并选择此前上传到 Blob 存储的 `BostonWeather.csv` 文件。 选择“**下一步**”。
+1. **文件选择**：添加天气数据。 浏览并选择此前上传到 Blob 存储的 `BostonWeather.csv` 文件。 选择“**下一步**”。
 
    ![进行文件选择时选择了 BostonWeather.csv](media/tutorial-bikeshare-dataprep/azureblobpickweatherdatafile.png)
 
-3. **文件详细信息**：验证检测到的文件架构。 Machine Learning Workbench 可分析文件中的数据并推断要使用的架构。
+1. **文件详细信息**：验证检测到的文件架构。 Machine Learning Workbench 可分析文件中的数据并推断要使用的架构。
 
    ![验证文件详细信息](media/tutorial-bikeshare-dataprep/fileparameters.png)
 
@@ -170,7 +170,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
    若要继续操作，请选择“下一步”。
 
-4. **数据类型**：查看自动检测到的数据类型。 Machine Learning Workbench 可分析文件中的数据并推断要使用的数据类型。
+1. **数据类型**：查看自动检测到的数据类型。 Machine Learning Workbench 可分析文件中的数据并推断要使用的数据类型。
 
    a. 对于该数据，请将所有列的“数据类型”更改为“字符串”。
 
@@ -181,7 +181,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
    b. 若要继续操作，请选择“下一步”。 
 
-5. **采样**：若要创建采样方案，请选择“编辑”。 选择所添加的新的“前 10000 位”行，然后选择“编辑”。 将“采样策略”设置为“完整文件”，然后选择“应用”。
+1. **采样**：若要创建采样方案，请选择“编辑”。 选择所添加的新的“前 10000 位”行，然后选择“编辑”。 将“采样策略”设置为“完整文件”，然后选择“应用”。
 
    ![添加新的采样策略](media/tutorial-bikeshare-dataprep/weatherdatasamplingfullfile.png)
 
@@ -191,14 +191,14 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
    若要继续操作，请选择“下一步”。
 
-6. **路径列**：使用“路径列”部分可以将完整文件路径作为已导入数据中的一个列包括进来。 选择“不包括路径列”。
+1. **路径列**：使用“路径列”部分可以将完整文件路径作为已导入数据中的一个列包括进来。 选择“不包括路径列”。
 
    > [!TIP]
    > 如果要导入一个包含许多文件且文件名称各不相同的文件夹，则可将路径作为列包括进来。 如果文件名中包含以后要提取的信息，则这样做也非常有用。
 
    ![设置为不包括的路径列](media/tutorial-bikeshare-dataprep/pathcolumn.png)
 
-7. **完成**：若要完成数据源的创建，请选择“完成”。
+1. **完成**：若要完成数据源的创建，请选择“完成”。
 
     此时将打开一个名为“BostonWeather”的新数据源选项卡。 网格视图中会显示数据的样本。 样本基于之前指定的活动采样方案。
 
@@ -221,17 +221,17 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
 1. 选择“准备”以开始准备数据。 
 
-2. 出现提示时，为数据准备包输入一个名称，例如“BikeShare Data Prep”。 
+1. 出现提示时，为数据准备包输入一个名称，例如“BikeShare Data Prep”。 
 
-3. 选择“确定”以继续。
+1. 选择“确定”以继续。
 
    ![“准备”对话框](media/tutorial-bikeshare-dataprep/dataprepdialog.png)
 
-4. 一个名为“BikeShare Data Prep”的新包会出现在“数据”选项卡的“数据准备”部分下。 
+1. 一个名为“BikeShare Data Prep”的新包会出现在“数据”选项卡的“数据准备”部分下。 
 
    若要显示该包，请选择此条目。 
 
-5. 选择 **>>** 按钮将“数据流”展开，显示包中包含的数据流。 在本例中，“BostonWeather”是唯一的数据流。
+1. 选择 **>>** 按钮将“数据流”展开，显示包中包含的数据流。 在本例中，“BostonWeather”是唯一的数据流。
 
    > [!IMPORTANT]
    > 一个包可以包含多个数据流。
@@ -241,7 +241,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 ## <a name="filter-data-by-value"></a>按值筛选数据
 1. 若要筛选数据，请右键单击具有特定值的单元格并选择”筛选器”。 然后选择筛选器的类型。
 
-2. 对于本教程，请选择包含 `FM-15` 值的单元格。 然后，将筛选器设置为“等于”。  现在会对数据进行筛选，仅返回“REPORTTYPE”为 `FM-15` 的行。
+1. 对于本教程，请选择包含 `FM-15` 值的单元格。 然后，将筛选器设置为“等于”。  现在会对数据进行筛选，仅返回“REPORTTYPE”为 `FM-15` 的行。
 
    ![“筛选器”对话框](media/tutorial-bikeshare-dataprep/weatherfilterinfm15.png)
 
@@ -263,17 +263,17 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
    * **HOURLYWindSpeed**
 
-2. 右键单击选定的列标题之一，并选择“将字段类型转换为数字”。 此选项会将列的数据类型转换为数字。
+1. 右键单击选定的列标题之一，并选择“将字段类型转换为数字”。 此选项会将列的数据类型转换为数字。
 
    ![将多个列转换为数字](media/tutorial-bikeshare-dataprep/weatherconverttonumeric.png)
 
-3. 筛选出错误值。 某些列有数据类型转换问题。 此问题在列的__数据质量栏__中以红色指示。
+1. 筛选出错误值。 某些列有数据类型转换问题。 此问题在列的__数据质量栏__中以红色指示。
 
    若要删除有错误的行，请右键单击“HOURLYDRYBULBTEMPF”列标题。 选择“筛选列”。 将默认的“我希望”用作“保留行”。 更改“条件”下拉列表以选择“不是错误”。 选择“确定”以应用筛选器。
 
    ![筛选错误值](media/tutorial-bikeshare-dataprep/filtererrorvalues.png)
 
-4. 若要消除其他列中的剩余错误行，请针对“HOURLYRelativeHumidity”和“HOURLYWindSpeed”列重复此筛选过程。
+1. 若要消除其他列中的剩余错误行，请针对“HOURLYRelativeHumidity”和“HOURLYWindSpeed”列重复此筛选过程。
 
 ## <a name="use-by-example-transformations"></a>使用按示例转换
 
@@ -291,9 +291,9 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
    ![“按示例拆分列”条目](media/tutorial-bikeshare-dataprep/weathersplitcolumnbyexample.png)
 
-2. Machine Learning Workbench 可自动识别有意义的分隔符并通过将数据拆分为日期值和时间值来创建两个列。 
+1. Machine Learning Workbench 可自动识别有意义的分隔符并通过将数据拆分为日期值和时间值来创建两个列。 
 
-3. 选择“确定”以接受拆分操作结果。
+1. 选择“确定”以接受拆分操作结果。
 
    ![拆分列 DATE_1 和 DATE_2](media/tutorial-bikeshare-dataprep/weatherdatesplitted.png)
 
@@ -305,7 +305,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
    将添加一个具有 null 值的新的空列。
 
-2. 选择新列中的第一个空单元格。 若要提供所需时间范围的示例，请在新列中键入“12AM-2AM”，然后选择 Enter。
+1. 选择新列中的第一个空单元格。 若要提供所需时间范围的示例，请在新列中键入“12AM-2AM”，然后选择 Enter。
 
    ![具有“12AM-2AM”值的新列](media/tutorial-bikeshare-dataprep/weathertimerangeexample.png)
 
@@ -315,26 +315,26 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
    > [!IMPORTANT]
    > 当前版本的 Workbench 在 Mac 上可能无法识别边缘情况。 在 Mac 上，请跳过下面的步骤 3 和步骤 4， 改为在所有行都填入派生值后选择“确定”。
    
-3. 网格上方会显示“正在分析数据”文本，指示 Workbench 正在尝试检测边缘情况。 完成后，状态会更改为“审阅下一个建议行”或“无建议”。 在本例中，将返回“审阅下一个建议行”。
+1. 网格上方会显示“正在分析数据”文本，指示 Workbench 正在尝试检测边缘情况。 完成后，状态会更改为“审阅下一个建议行”或“无建议”。 在本例中，将返回“审阅下一个建议行”。
 
-4. 要审阅建议的更改，请选择“审阅下一个建议行”。 应当审阅和更正（如果需要）的单元格突出显示在屏幕上。
+1. 要审阅建议的更改，请选择“审阅下一个建议行”。 应当审阅和更正（如果需要）的单元格突出显示在屏幕上。
 
    ![审阅下一个建议行](media/tutorial-bikeshare-dataprep/weatherreviewnextsuggested.png)
 
     选择“确定”以接受转换。
  
-5. 将会返回到“BostonWeather” 的数据的网格视图。 网格现在包含之前添加的三个列。
+1. 将会返回到“BostonWeather” 的数据的网格视图。 网格现在包含之前添加的三个列。
 
    ![包含已添加行的网格视图](media/tutorial-bikeshare-dataprep/timerangecomputed.png)
 
    > [!TIP]
    > 已做的所有更改都保留在“步骤”窗格中。 转到在“步骤”窗格中创建的步骤，选择向下箭头，然后选择“编辑”。 此时将显示“按示例派生列”的高级窗口。 所有示例都保留在那里。 还可以通过双击以下网格中的行来手动添加示例。 选择“取消”可返回到主网格而不应用更改。 还可以通过在执行“按示例派生列”转换时选择“高级模式”来访问此视图。
 
-6. 若要重命名列，请双击列标题并键入“Hour Range”。 选择 Enter 以保存所做的更改。
+1. 若要重命名列，请双击列标题并键入“Hour Range”。 选择 Enter 以保存所做的更改。
 
    ![将列重命名](media/tutorial-bikeshare-dataprep/weatherhourrangecolumnrename.png)
 
-7. 若要派生日期和小时范围，请以多选方式同时选择“Date\_1”和“Hour Range”列，单击右键，然后选择“按示例派生列”。
+1. 若要派生日期和小时范围，请以多选方式同时选择“Date\_1”和“Hour Range”列，单击右键，然后选择“按示例派生列”。
 
    ![按示例派生列](media/tutorial-bikeshare-dataprep/weatherderivedatehourrange.png)
 
@@ -350,7 +350,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
    > * 转到包含“Feb 01, 2015 12AM-2AM”的第一个单元格。 它应为第 15 行。 将值更正为“Jan 02, 2015 12AM-2AM”，然后选择 Enter。 
    
 
-8. 等待状态从“正在分析数据”更改为“审阅下一个建议行”。 此更改可能需要数秒钟的时间。 选择状态链接以转到建议行。 
+1. 等待状态从“正在分析数据”更改为“审阅下一个建议行”。 此更改可能需要数秒钟的时间。 选择状态链接以转到建议行。 
 
    ![要审阅的建议行](media/tutorial-bikeshare-dataprep/wetherdatehourrangedisambiguate.png)
 
@@ -358,7 +358,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
    ![格式正确的数据](media/tutorial-bikeshare-dataprep/wetherdatehourrangedisambiguated.png)
 
-9. 选择“确定”以接受转换。
+1. 选择“确定”以接受转换。
 
    ![已完成的转换网格](media/tutorial-bikeshare-dataprep/weatherdatehourrangecomputed.png)
 
@@ -366,9 +366,9 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
    > 对于此步骤，若要使用**高级模式**“按示例派生列”， 请选择“步骤”窗格中的下箭头。 在数据网格中，“DATE\_1”和“Hour Range”旁边有复选框。 清除“Hour Range”列旁边的复选框即可查看输出如何变化。 如果缺少“Hour Range”列作为输入，则 **12AM-2AM** 会被视为一个常数并且将附加到派生值。 选择“取消”可返回到主网格而不应用更改。
    ![高级模式](media/tutorial-bikeshare-dataprep/derivedcolumnadvancededitdeselectcolumn.png)
 
-10. 若要重命名列，请双击标题。 将名称更改为“Date Hour Range”，然后选择 Enter。
+1. 若要重命名列，请双击标题。 将名称更改为“Date Hour Range”，然后选择 Enter。
 
-11. 以多选方式同时选择“DATE”、“DATE\_1”、“DATE\_2”和“Hour Range”列。 单击右键，然后选择“删除列”。
+1. 以多选方式同时选择“DATE”、“DATE\_1”、“DATE\_2”和“Hour Range”列。 单击右键，然后选择“删除列”。
 
 ## <a name="summarize-data-mean"></a>汇总数据（平均值）
 
@@ -378,7 +378,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
     ![“转换”菜单](media/tutorial-bikeshare-dataprep/weathersummarizemenu.png)
 
-2. 若要汇总数据，请将列从页面底部的网格拖到顶部的左窗格和右窗格中。 左窗格包含文本“将列拖到此处以对数据进行分组”。 右窗格包含文本“将列拖到此处以对数据进行汇总”。 
+1. 若要汇总数据，请将列从页面底部的网格拖到顶部的左窗格和右窗格中。 左窗格包含文本“将列拖到此处以对数据进行分组”。 右窗格包含文本“将列拖到此处以对数据进行汇总”。 
 
     a. 将“Date Hour Range”列从底部的网格拖到左窗格中。 将“HOURLYDRYBULBTEMPF”、“HOURLYRelativeHumidity”和“HOURLYWindSpeed”拖到右窗格中。 
 
@@ -392,7 +392,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
 1. 在“转换”菜单上选择“转换数据流(脚本)”。
 
-2. 在出现的文本框中输入以下代码。 如果使用了列名称，则代码应该不需要修改即可工作。 以 Python 编写一个简单的 min-max 规范化逻辑。
+1. 在出现的文本框中输入以下代码。 如果使用了列名称，则代码应该不需要修改即可工作。 以 Python 编写一个简单的 min-max 规范化逻辑。
 
     > [!WARNING]
     > 该脚本需要本教程中前面使用的列名称。 如果具有不同的列名称，必须更改脚本中的名称。
@@ -421,7 +421,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
     
    ![“转换数据流(脚本)”对话框](media/tutorial-bikeshare-dataprep/transformdataflowscript.png)
 
-3. 选择“确定”以使用脚本。 网格中的数字列现在包含 0-1 范围中的值。
+1. 选择“确定”以使用脚本。 网格中的数字列现在包含 0-1 范围中的值。
 
     ![包含 0-1 之间的值的网格](media/tutorial-bikeshare-dataprep/datagridwithdecimals.png)
 
@@ -437,13 +437,13 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
     * __数据类型__：接受默认值。
 
-2. 在导入数据后选择“准备”，开始准备数据。 选择现有的“BikeShare Data Prep.dprep”包，然后选择“确定”。
+1. 在导入数据后选择“准备”，开始准备数据。 选择现有的“BikeShare Data Prep.dprep”包，然后选择“确定”。
 
     此过程向现有的**数据准备**文件添加一个**数据流**而不创建新文件。
 
     ![选择现有的包](media/tutorial-bikeshare-dataprep/addjandatatodprep.png)
 
-3. 在加载网格后，展开“数据流”。 有两个数据流：“BostonWeather”和“201701-hubway-tripdata”。 选择“201701-hubway-tripdata”条目。
+1. 在加载网格后，展开“数据流”。 有两个数据流：“BostonWeather”和“201701-hubway-tripdata”。 选择“201701-hubway-tripdata”条目。
 
     ![“201701-hubway-tripdata”条目](media/tutorial-bikeshare-dataprep/twodfsindprep.png)
 
@@ -458,11 +458,11 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
     ![地图可视化](media/tutorial-bikeshare-dataprep/launchMapInspector.png)
 
-2. 若要最大化地图可视化，请选择“最大化”图标。 若要使地图适应窗口，请选择可视化左上方的 **E** 图标。
+1. 若要最大化地图可视化，请选择“最大化”图标。 若要使地图适应窗口，请选择可视化左上方的 **E** 图标。
 
     ![图像：最大化的](media/tutorial-bikeshare-dataprep/maximizedmap.png)
 
-3. 选择“最小化”按钮可返回到网格视图。
+1. 选择“最小化”按钮可返回到网格视图。
 
 ## <a name="use-the-column-statistics-inspector"></a>使用“列统计信息”检查器
 
@@ -491,7 +491,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
     ![“添加列(脚本)”菜单](media/tutorial-bikeshare-dataprep/computecolscript.png)
 
-2. 在“添加列(脚本)”对话框中，使用以下值：
+1. 在“添加列(脚本)”对话框中，使用以下值：
 
     * __新列名__：logtripduration
 
@@ -503,9 +503,9 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
    ![“添加列(脚本)”对话框](media/tutorial-bikeshare-dataprep/computecolscriptdialog.png)
 
-3. 选择“确定”以添加“logtripduration”列。
+1. 选择“确定”以添加“logtripduration”列。
 
-4. 右键单击该列并选择“直方图”。
+1. 右键单击该列并选择“直方图”。
 
     ![logtripduration 列的直方图](media/tutorial-bikeshare-dataprep/logtriphistogram.png)
 
@@ -517,7 +517,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
 1. 右键单击“logtripduration”列并选择“筛选列”。 
 
-2. 在“编辑”对话框中，使用下列值：
+1. 在“编辑”对话框中，使用下列值：
 
     * __筛选此数字列__：logtripduration
 
@@ -531,7 +531,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
     ![筛选器选项](media/tutorial-bikeshare-dataprep/loftripfilter.png)
 
-3. 选择“确定”以应用筛选器。
+1. 选择“确定”以应用筛选器。
 
     ![应用了筛选器后更新的直方图](media/tutorial-bikeshare-dataprep/loftripfilteredinspector.png)
 
@@ -550,11 +550,11 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
     > [!NOTE]
     > 与以前的直方图相比，蓝色直方图显得较短。 这种差异是因为对新范围中的数据进行了自动重新分段。
 
-2. 若要删除光圈，请选择“编辑”并清除“显示光圈”。
+1. 若要删除光圈，请选择“编辑”并清除“显示光圈”。
 
     ![直方图的选项](media/tutorial-bikeshare-dataprep/uncheckhalo.png)
 
-3. 选择“确定”，禁用光圈效果。 然后，使直方图最小化。
+1. 选择“确定”，禁用光圈效果。 然后，使直方图最小化。
 
 ### <a name="remove-columns"></a>删除列
 
@@ -570,7 +570,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
     ![“按示例派生列”选项](media/tutorial-bikeshare-dataprep/tripdataderivebyexample.png)
 
-2. 就本示例来说，请为第一行输入值“Jan 01, 2017 12AM-2AM”。
+1. 就本示例来说，请为第一行输入值“Jan 01, 2017 12AM-2AM”。
 
     > [!IMPORTANT]
     > 在派生列的上一个示例中，我们使用了多个步骤来派生包含日期和时间期间的列。 在此示例中，你会发现，通过提供最终输出的一个示例，可以通过单个步骤执行此操作。
@@ -585,19 +585,19 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
    >
    > * 转到包含“Jan 01, 2017 1AM-2AM”的第一个单元格。 它应为第 14 行。 将值更正为“Jan 01, 2017 12AM-2AM”，然后选择 Enter。 
 
-3. 一直等到应用程序针对所有行完成值计算。 此过程可能需要数秒钟的时间。 在分析完成后，使用“审阅下一个建议行”链接来审阅数据。
+1. 一直等到应用程序针对所有行完成值计算。 此过程可能需要数秒钟的时间。 在分析完成后，使用“审阅下一个建议行”链接来审阅数据。
 
    ![使用审阅链接完成的分析](media/tutorial-bikeshare-dataprep/tripdatabyexanalysiscomplete.png)
 
     确保计算的值正确。 如果不正确，请使用预期的值更新值，然后选择 Enter。 然后，等待分析完成。 完成“审阅下一个建议行”过程，直至看到“无建议”。 “无建议”意味着应用程序已查看了边缘情况并对合成的计划感到满意。 在接受转换之前，最好对转换后的数据执行可视化检查。 
 
-4. 选择“确定”以接受转换。 将新创建的列重命名为“Date Hour Range”。
+1. 选择“确定”以接受转换。 将新创建的列重命名为“Date Hour Range”。
 
     ![重命名的列](media/tutorial-bikeshare-dataprep/tripdatasummarize.png)
 
-5. 右键单击“starttime”列标题并选择“删除列”。
+1. 右键单击“starttime”列标题并选择“删除列”。
 
-6. 若要汇总数据，请在“转换”菜单上选择“汇总”。 若要创建转换，请使用以下步骤：
+1. 若要汇总数据，请在“转换”菜单上选择“汇总”。 若要创建转换，请使用以下步骤：
 
     * 将“Date Hour Range”和“start station id”拖到左侧的“分组依据”窗格中。
 
@@ -605,7 +605,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
    ![汇总选项](media/tutorial-bikeshare-dataprep/tripdatacount.png)
 
-7. 选择“确定”以接受汇总结果。
+1. 选择“确定”以接受汇总结果。
 
 ## <a name="join-dataflows"></a>联接数据流
 
@@ -613,15 +613,15 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
 1. 在“转换”菜单上选择“联接”。
 
-2. __表__：选择“BostonWeather”作为**左侧**数据流，选择“201701-hubway-tripdata”作为**右侧**数据流。 若要继续操作，请选择“下一步”。
+1. __表__：选择“BostonWeather”作为**左侧**数据流，选择“201701-hubway-tripdata”作为**右侧**数据流。 若要继续操作，请选择“下一步”。
 
     ![表选择](media/tutorial-bikeshare-dataprep/jointableselection.png)
 
-3. __键列__：选择两个表中的“Date Hour Range”列，然后选择“下一步”。
+1. __键列__：选择两个表中的“Date Hour Range”列，然后选择“下一步”。
 
     ![键列选择](media/tutorial-bikeshare-dataprep/joinkeyselection.png)
 
-4. __联接类型__：选择“匹配行”作为联接类型，然后选择“完成”。
+1. __联接类型__：选择“匹配行”作为联接类型，然后选择“完成”。
 
     ![“匹配行”联接类型](media/tutorial-bikeshare-dataprep/joinscreen.png)
 
@@ -633,11 +633,11 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
     ![为周几创建新列](media/tutorial-bikeshare-dataprep/featureweekday.png)
 
-2. 若要为行创建包含时段的列，请右键单击“Date Hour Range”列并选择“按示例派生列”。 对于包含“Jan 01, 2017 12AM-2AM”的行，请使用值“12AM-2AM”。 选择 Enter，然后选择“确定”。 将此列重命名为“Period”。
+1. 若要为行创建包含时段的列，请右键单击“Date Hour Range”列并选择“按示例派生列”。 对于包含“Jan 01, 2017 12AM-2AM”的行，请使用值“12AM-2AM”。 选择 Enter，然后选择“确定”。 将此列重命名为“Period”。
 
     ![“Period”列](media/tutorial-bikeshare-dataprep/featurehourrange.png)
 
-3. 若要删除“Date Hour Range”和“r_Date Hour Range”列，请选择“Ctrl”（在 Mac 上为 ⌘ 命令），然后选择每个列标题。 单击右键并选择“删除列”。
+1. 若要删除“Date Hour Range”和“r_Date Hour Range”列，请选择“Ctrl”（在 Mac 上为 ⌘ 命令），然后选择每个列标题。 单击右键并选择“删除列”。
 
 ## <a name="read-data-from-python"></a>通过 Python 读取数据
 
@@ -672,7 +672,7 @@ df.head(10)
 
     ![在 Visual Studio Code 中打开项目](media/tutorial-bikeshare-dataprep/openprojectinvscode.png)
 
-2. 使用以下代码更新 `BikeShare Data Prep.py` 文件中的 Python 脚本：
+1. 使用以下代码更新 `BikeShare Data Prep.py` 文件中的 Python 脚本：
 
     ```python
     import pyspark
@@ -706,7 +706,7 @@ df.head(10)
     print('done')
     ```
 
-3. 将 `Your Azure Storage blob path` 替换为要创建的输出文件的路径。 替换 `blobfolder` 和 `csvfiles` 变量。
+1. 将 `Your Azure Storage blob path` 替换为要创建的输出文件的路径。 替换 `blobfolder` 和 `csvfiles` 变量。
 
 ## <a name="create-an-hdinsight-run-configuration"></a>创建 HDInsight 运行配置
 
@@ -717,7 +717,7 @@ df.head(10)
    >[!IMPORTANT]
    >必须使用命令行窗口（从 Workbench 打开）完成以下步骤。
 
-2. 使用命令提示符登录到 Azure。 
+1. 使用命令提示符登录到 Azure。 
 
    针对 Azure 资源进行身份验证时，Workbench 应用和 CLI 使用独立的凭据缓存。 在缓存的令牌过期之前，只需执行此操作一次。 `az account list` 命令返回可用于登录的订阅列表。 如果存在多个订阅，请使用所需订阅中的 ID 值。 通过 `az account set -s` 命令将该订阅设置为要使用的默认帐户，并提供订阅 ID 值。 然后使用 account `show` 命令确认设置。
 
@@ -735,7 +735,7 @@ df.head(10)
    az account show
    ```
 
-3. 创建 HDInsight 运行配置需要群集的名称和 `sshuser` 密码。
+1. 创建 HDInsight 运行配置需要群集的名称和 `sshuser` 密码。
 
     ```azurecli
     az ml computetarget attach cluster --name hdinsight --address <yourclustername>.azurehdinsight.net --username sshuser --password <your password>
@@ -750,9 +750,9 @@ df.head(10)
 
 1. 选择左侧的“主屏幕”图标，返回到项目的主屏幕。
 
-2. 从下拉列表中选择“hdinsight”，在 HDInsight 群集中运行脚本。
+1. 从下拉列表中选择“hdinsight”，在 HDInsight 群集中运行脚本。
 
-3. 选择“运行”。 此脚本将作为作业提交。 在文件写入到存储容器中的指定位置后，作业状态会更改为“已完成”。
+1. 选择“运行”。 此脚本将作为作业提交。 在文件写入到存储容器中的指定位置后，作业状态会更改为“已完成”。
 
     ![HDInsight 运行脚本](media/tutorial-bikeshare-dataprep/hdinsightrunscript.png)
 
@@ -776,13 +776,13 @@ df.head(10)
 
    保存此数据源的名称，因为后面的步骤会用到它。
 
-2. 选择文件夹图标来查看项目中的文件。 展开“aml\_config”目录，然后选择 `hdinsight.runconfig` 文件。
+1. 选择文件夹图标来查看项目中的文件。 展开“aml\_config”目录，然后选择 `hdinsight.runconfig` 文件。
 
     ![hdinsight.runconfig 的位置](media/tutorial-bikeshare-dataprep/hdinsightsubstitutedatasources.png) 
 
-3. 选择“编辑”按钮，在 Visual Studio Code 中打开该文件。
+1. 选择“编辑”按钮，在 Visual Studio Code 中打开该文件。
 
-4. 将下列行添加到 `hdinsight.runconfig` 文件的末尾，然后选择磁盘图标来保存文件。
+1. 将下列行添加到 `hdinsight.runconfig` 文件的末尾，然后选择磁盘图标来保存文件。
 
     ```yaml
     DataSourceSubstitutions:
@@ -827,9 +827,9 @@ df.head(10)
     print('done')
     ```
 
-2. 将名为 `traindata` 的文件夹用于训练数据输出。
+1. 将名为 `traindata` 的文件夹用于训练数据输出。
 
-3. 若要提交新作业，请选择“运行”。 确保已选择“hdinsight”。 将使用新配置提交作业。 此作业的输出是训练数据。 创建此数据时使用的数据准备步骤与以前的相同。 该作业可能需要几分钟时间才能完成。
+1. 若要提交新作业，请选择“运行”。 确保已选择“hdinsight”。 将使用新配置提交作业。 此作业的输出是训练数据。 创建此数据时使用的数据准备步骤与以前的相同。 该作业可能需要几分钟时间才能完成。
 
 
 ## <a name="clean-up-resources"></a>清理资源

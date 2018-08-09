@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 93e0467314329ab783017489c385007d30f9076b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 344de0d5f09d33146fd5065a7dc723038b492273
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219381"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39445097"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-namely"></a>教程：Azure Active Directory 与 Namely 的集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "36219381"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Namely
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-namely-from-the-gallery"></a>从库中添加 Namely
 要配置Namely 与 Azure AD 的集成，需要从库中将 Namely 添加到托管 SaaS 应用列表。
@@ -63,19 +63,19 @@ ms.locfileid: "36219381"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入“Namely”。
+1. 在搜索框中，键入“Namely”。
 
     ![创建 Azure AD 测试用户](./media/namely-tutorial/tutorial_namely_search.png)
 
-5. 在结果窗格中，选择“Namely”，然后单击“添加”按钮添加该应用程序。
+1. 在结果窗格中，选择“Namely”，然后单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/namely-tutorial/tutorial_namely_addfromgallery.png)
 
@@ -89,10 +89,10 @@ ms.locfileid: "36219381"
 若要配置并测试 Namely 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. [创建 Namely 测试用户](#creating-a-namely-test-user) - 在 Namely 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. [创建 Namely 测试用户](#creating-a-namely-test-user) - 在 Namely 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -104,48 +104,48 @@ ms.locfileid: "36219381"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![配置单一登录](./media/namely-tutorial/tutorial_namely_samlbase.png)
 
-3. 在“Namely 域和 URL”部分，执行以下步骤：
+1. 在“Namely 域和 URL”部分，执行以下步骤：
 
     ![配置单一登录](./media/namely-tutorial/tutorial_namely_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.namely.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.namely.com`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.namely.com/saml/metadata`
 
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Namely 客户端支持团队](https://www.namely.com/contact/)获取这些值。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/namely-tutorial/tutorial_namely_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录](./media/namely-tutorial/tutorial_general_400.png)
 
-6. 在“Namely 配置”部分，单击“配置 Namely”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
+1. 在“Namely 配置”部分，单击“配置 Namely”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
 
     ![配置单一登录](./media/namely-tutorial/tutorial_namely_configure.png) 
 
-7. 在另一个浏览器窗口中，以管理员身份登录到 Namely 公司站点。
+1. 在另一个浏览器窗口中，以管理员身份登录到 Namely 公司站点。
 
-8. 在顶部工具栏中，单击“公司”。
+1. 在顶部工具栏中，单击“公司”。
    
     ![配置单一登录](./media/namely-tutorial/tutorial_namely_06.png) 
 
-9. 单击“设置”选项卡。
+1. 单击“设置”选项卡。
    
     ![配置单一登录](./media/namely-tutorial/tutorial_namely_07.png) 
 
-10. 单击“SAML”。
+1. 单击“SAML”。
    
     ![配置单一登录](./media/namely-tutorial/tutorial_namely_08.png) 
 
-11. 在“SAML 设置”页上，执行以下步骤：
+1. 在“SAML 设置”页上，执行以下步骤：
    
     ![配置单一登录](./media/namely-tutorial/tutorial_namely_09.png)
  
@@ -172,15 +172,15 @@ ms.locfileid: "36219381"
 
     ![创建 Azure AD 测试用户](./media/namely-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
     ![创建 Azure AD 测试用户](./media/namely-tutorial/create_aaduser_02.png) 
 
-3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
  
     ![创建 Azure AD 测试用户](./media/namely-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/namely-tutorial/create_aaduser_04.png) 
 
@@ -200,19 +200,19 @@ ms.locfileid: "36219381"
 
 1. 以管理员身份登录到 Namely 公司站点。
 
-2. 在顶部工具栏中，单击“人员”。
+1. 在顶部工具栏中，单击“人员”。
    
     ![配置单一登录](./media/namely-tutorial/tutorial_namely_10.png) 
 
-3. 单击“目录”选项卡。
+1. 单击“目录”选项卡。
    
     ![配置单一登录](./media/namely-tutorial/tutorial_namely_11.png) 
 
-4. 单击“添加新人员”。
+1. 单击“添加新人员”。
 
     ![配置单一登录](./media/namely-tutorial/tutorial_namely_12.png)
 
-5. 在“添加新人员”对话框中，执行以下步骤：
+1. 在“添加新人员”对话框中，执行以下步骤：
 
     a. 在“名字”文本框中，键入“Britta”。
 
@@ -234,23 +234,23 @@ ms.locfileid: "36219381"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Namely”。
+1. 在应用程序列表中，选择“Namely”。
 
     ![配置单一登录](./media/namely-tutorial/tutorial_namely_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 62c2ebcdd3c40fd5204e20e4e15b0af784804ff0
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: c592952c4e6ebff0db0833fd7b235fbb911909af
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100464"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423780"
 ---
 # <a name="deploy-kubernetes-cluster-for-linux-containers"></a>为 Linux 容器部署 Kubernetes 群集
 
@@ -28,7 +28,7 @@ ms.locfileid: "37100464"
 
 本快速入门假定你对 Kubernetes 概念有一个基本的了解。有关 Kubernetes 的详细信息，请参阅 [Kubernetes documentation]( https://kubernetes.io/docs/home/)（Kubernetes 文档）。
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -36,7 +36,7 @@ ms.locfileid: "37100464"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group#az_group_create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑组。 
+使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑组。 
 
 以下示例在“westeurope”位置创建名为“myResourceGroup”的资源组。
 
@@ -61,13 +61,13 @@ az group create --name myResourceGroup --location westeurope
 
 ## <a name="create-kubernetes-cluster"></a>创建 Kubernetes 群集
 
-使用 [az acs create](/cli/azure/acs#az_acs_create) 命令在 Azure 容器服务中创建 Kubernetes 群集。 以下示例创建名为 myK8sCluster 的群集，其中包含一个 Linux 主节点和三个 Linux 代理节点。
+使用 [az acs create](/cli/azure/acs#az-acs-create) 命令在 Azure 容器服务中创建 Kubernetes 群集。 以下示例创建名为 myK8sCluster 的群集，其中包含一个 Linux 主节点和三个 Linux 代理节点。
 
 ```azurecli-interactive 
 az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --name myK8sCluster --generate-ssh-keys
 ```
 
-在某些情况下（如限时试用），Azure 订阅对 Azure 资源的访问受限。 如果由于可用核心有限而导致部署失败，请将 `--agent-count 1` 添加到 [az acs creat](/cli/azure/acs#az_acs_create) 命令中，以减少默认代理计数。 
+在某些情况下（如限时试用），Azure 订阅对 Azure 资源的访问受限。 如果由于可用核心有限而导致部署失败，请将 `--agent-count 1` 添加到 [az acs creat](/cli/azure/acs#az-acs-create) 命令中，以减少默认代理计数。 
 
 几分钟后，该命令完成并返回有关群集的 JSON 格式信息。 
 
@@ -203,7 +203,7 @@ azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
 ![浏览到 Azure Vote 的图像](media/container-service-kubernetes-walkthrough/azure-vote.png)  
 
 ## <a name="delete-cluster"></a>删除群集
-如果不再需要群集，可以使用 [az group delete](/cli/azure/group#az_group_delete) 命令删除资源组、容器服务及所有相关资源。
+如果不再需要群集，可以使用 [az group delete](/cli/azure/group#az-group-delete) 命令删除资源组、容器服务及所有相关资源。
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes --no-wait

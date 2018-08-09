@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 922cb542de1ef8d1121646cf83fe790be0994953
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 9b997b198c526aec5dfc64c33969008988c1abff
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210643"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422454"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tivitz"></a>教程：Azure Active Directory 与 TiViTz 集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "36210643"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 TiViTz
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-tivitz-from-the-gallery"></a>从库中添加 TiViTz
 要配置 TiViTz 与 Azure AD 的集成，需要从库中将 TiViTz 添加到托管 SaaS 应用列表。
@@ -63,19 +63,19 @@ ms.locfileid: "36210643"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入“TiViTz”。
+1. 在搜索框中，键入“TiViTz”。
 
     ![创建 Azure AD 测试用户](./media/tivitz-tutorial/tutorial_tivitz_search.png)
 
-5. 在结果面板中，选择“TiViTz”，然后单击“添加”按钮添加该应用程序。
+1. 在结果面板中，选择“TiViTz”，然后单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/tivitz-tutorial/tutorial_tivitz_addfromgallery.png)
 
@@ -89,10 +89,10 @@ ms.locfileid: "36210643"
 若要配置和测试 TiViTz 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 TiViTz 测试用户](#creating-a-tivitz-test-user)** - 在 TiViTz 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 TiViTz 测试用户](#creating-a-tivitz-test-user)** - 在 TiViTz 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -104,30 +104,30 @@ ms.locfileid: "36210643"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![配置单一登录](./media/tivitz-tutorial/tutorial_tivitz_samlbase.png)
 
-3. 在“TiViTz 域和 URL”部分中，执行以下步骤：
+1. 在“TiViTz 域和 URL”部分中，执行以下步骤：
 
     ![配置单一登录](./media/tivitz-tutorial/tutorial_tivitz_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.o365.tivitz.com/`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.o365.tivitz.com/`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<companyname>.o365.tivitz.com/`
 
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [TiViTz 客户端支持团队](mailto:info@tivitz.com)获取这些值。 
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
+1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/tivitz-tutorial/tutorial_tivitz_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录](./media/tivitz-tutorial/tutorial_general_400.png)
 
-6. 若要在 TiViTz 端配置单一登录，需将下载的元数据 XML 发送给 [TiViTz 支持团队](mailto:info@tivitz.com)。
+1. 若要在 TiViTz 端配置单一登录，需将下载的元数据 XML 发送给 [TiViTz 支持团队](mailto:info@tivitz.com)。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -144,15 +144,15 @@ ms.locfileid: "36210643"
 
     ![创建 Azure AD 测试用户](./media/tivitz-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
     ![创建 Azure AD 测试用户](./media/tivitz-tutorial/create_aaduser_02.png) 
 
-3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
  
     ![创建 Azure AD 测试用户](./media/tivitz-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/tivitz-tutorial/create_aaduser_04.png) 
 
@@ -183,23 +183,23 @@ ms.locfileid: "36210643"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“TiViTz”。
+1. 在应用程序列表中，选择“TiViTz”。
 
     ![配置单一登录](./media/tivitz-tutorial/tutorial_tivitz_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 

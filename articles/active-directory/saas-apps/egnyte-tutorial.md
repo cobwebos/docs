@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: d52672099c309dfeac641cb3aedaf32c7230b676
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 4f6f6ef12f5a8dd8a9f210e9b1f1ca978ec5a1ac
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39047753"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440450"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-egnyte"></a>教程：Azure Active Directory 与 Egnyte 的集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "39047753"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Egnyte
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-egnyte-from-the-gallery"></a>从库中添加 Egnyte
 若要配置 Egnyte 与 Azure AD 的集成，需要从库中将 Egnyte 添加到托管 SaaS 应用列表。
@@ -63,19 +63,19 @@ ms.locfileid: "39047753"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入“Egnyte”。
+1. 在搜索框中，键入“Egnyte”。
 
     ![创建 Azure AD 测试用户](./media/egnyte-tutorial/tutorial_egnyte_search.png)
 
-5. 在结果窗格中，选择“Egnyte”，然后单击“添加”按钮添加该应用程序。
+1. 在结果窗格中，选择“Egnyte”，然后单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/egnyte-tutorial/tutorial_egnyte_addfromgallery.png)
 
@@ -89,10 +89,10 @@ ms.locfileid: "39047753"
 若要配置并测试 Egnyte 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. [创建 Egnyte 测试用户](#creating-an-egnyte-test-user) - 在 Egnyte 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. [创建 Egnyte 测试用户](#creating-an-egnyte-test-user) - 在 Egnyte 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -104,11 +104,11 @@ ms.locfileid: "39047753"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![配置单一登录](./media/egnyte-tutorial/tutorial_egnyte_samlbase.png)
 
-3. 在“Egnyte 域和 URL”部分中，请执行以下步骤：
+1. 在“Egnyte 域和 URL”部分中，请执行以下步骤：
 
     ![配置单一登录](./media/egnyte-tutorial/tutorial_egnyte_url.png)
 
@@ -117,37 +117,37 @@ ms.locfileid: "39047753"
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新此值。 请联系 [Egnyte 客户端支持团队](https://www.egnyte.com/corp/contact_egnyte.html)获取此值。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/egnyte-tutorial/tutorial_egnyte_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录](./media/egnyte-tutorial/tutorial_general_400.png)
 
-6. 在“Egnyte 配置”部分，单击“配置 Egnyte”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 实体 ID 和 SAML 单一登录服务 URL”。
+1. 在“Egnyte 配置”部分，单击“配置 Egnyte”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 实体 ID 和 SAML 单一登录服务 URL”。
 
     ![配置单一登录](./media/egnyte-tutorial/tutorial_egnyte_configure.png) 
 
-7. 在另一 Web 浏览器窗口中，以管理员身份登录到 Egnyte 公司站点。
+1. 在另一 Web 浏览器窗口中，以管理员身份登录到 Egnyte 公司站点。
 
-8. 单击“设置”。
+1. 单击“设置”。
    
    ![设置](./media/egnyte-tutorial/ic787819.png "设置")
 
-9. 在菜单中，单击“设置”。
+1. 在菜单中，单击“设置”。
 
    ![设置](./media/egnyte-tutorial/ic787820.png "设置")
 
-10. 单击“配置”选项卡，并单击“安全性”。
+1. 单击“配置”选项卡，并单击“安全性”。
 
     ![安全](./media/egnyte-tutorial/ic787821.png "安全")
 
-11. 在“单一登录身份验证”部分中，执行以下步骤：
+1. 在“单一登录身份验证”部分中，执行以下步骤：
 
     ![单一登录身份验证](./media/egnyte-tutorial/ic787822.png "Single Sign On Authentication")   
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“单一登录身份验证”，选择“SAML 2.0”。
+    a. 对于“单一登录身份验证”，选择“SAML 2.0”。
    
     b. 对于“标识提供者”，选择“AzureAD”。
    
@@ -178,19 +178,19 @@ ms.locfileid: "39047753"
 
     ![创建 Azure AD 测试用户](./media/egnyte-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
     ![创建 Azure AD 测试用户](./media/egnyte-tutorial/create_aaduser_02.png) 
 
-3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
  
     ![创建 Azure AD 测试用户](./media/egnyte-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/egnyte-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -206,17 +206,17 @@ ms.locfileid: "39047753"
 
 1. 以管理员身份登录到 Egnyte 公司站点。
 
-2. 转到“设置”\>“用户和组”。
+1. 转到“设置”\>“用户和组”。
 
-3. 单击“添加新用户”，并选择要添加的用户的类型。
+1. 单击“添加新用户”，并选择要添加的用户的类型。
    
    ![用户](./media/egnyte-tutorial/ic787824.png "用户")
 
-4. 在“新建标准用户”部分中，执行以下步骤：
+1. 在“新建标准用户”部分中，执行以下步骤：
    
    ![新建标准用户](./media/egnyte-tutorial/ic787825.png "New Standard User")   
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 键入要预配的有效 Azure Active Directory 帐户的“电子邮件”、“用户名”和其他详细信息。
+   a. 键入要预配的有效 Azure Active Directory 帐户的“电子邮件”、“用户名”和其他详细信息。
    
    b. 单击“ **保存**”。
     
@@ -240,23 +240,23 @@ ms.locfileid: "39047753"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Egnyte”。
+1. 在应用程序列表中，选择“Egnyte”。
 
     ![配置单一登录](./media/egnyte-tutorial/tutorial_egnyte_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 

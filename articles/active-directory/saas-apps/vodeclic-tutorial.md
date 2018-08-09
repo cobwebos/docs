@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: jeedes
-ms.openlocfilehash: dad37a0d66ff1af9ad7e7f3b6a807ef1104da39f
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: fb985b389139bfd8d54e6c54d101bbfa8a68a6d4
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041086"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39444617"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>教程：Azure Active Directory 与 Vodeclic 的集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "39041086"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Vodeclic
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="add-vodeclic-from-the-gallery"></a>从库中添加 Vodeclic
 要配置 Vodeclic 与 Azure AD 的集成，需要从库中将 Vodeclic 添加到托管 SaaS 应用列表。
@@ -64,15 +64,15 @@ ms.locfileid: "39041086"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 转到“企业应用程序”。 然后转到“所有应用程序”。
+1. 转到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 要添加新应用程序，请选择对话框顶部的“新建应用程序”按钮。
+1. 要添加新应用程序，请选择对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在“搜索框”中键入 Vodeclic。 在结果窗格中，选择“Vodeclic”，然后选择“添加”按钮添加该应用程序。
+1. 在“搜索框”中键入 Vodeclic。 在结果窗格中，选择“Vodeclic”，然后选择“添加”按钮添加该应用程序。
 
     ![结果列表中的 Vodeclic](./media/vodeclic-tutorial/tutorial_vodeclic_addfromgallery.png)
 
@@ -87,10 +87,10 @@ ms.locfileid: "39041086"
 要配置并测试 Vodeclic 的 Azure AD 单一登录，请完成以下构建基块：
 
 1. [配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)，使用户能够使用此功能。
-2. [创建 Azure AD 测试用户](#create-an-azure-ad-test-user)，使用 Britta Simon 测试 Azure AD 单一登录。
-3. [创建 Vodeclic 测试用户](#create-a-vodeclic-test-user)，在 Vodeclic 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式。
-4. [分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)，使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [测试单一登录](#test-single-sign-on)，以验证配置是否正常工作。
+1. [创建 Azure AD 测试用户](#create-an-azure-ad-test-user)，使用 Britta Simon 测试 Azure AD 单一登录。
+1. [创建 Vodeclic 测试用户](#create-a-vodeclic-test-user)，在 Vodeclic 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式。
+1. [分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)，使 Britta Simon 能够使用 Azure AD 单一登录。
+1. [测试单一登录](#test-single-sign-on)，以验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -102,19 +102,19 @@ ms.locfileid: "39041086"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，在“单一登录模式”下选择“基于 SAML 的登录”，启用单一登录。
+1. 在“单一登录”对话框中，在“单一登录模式”下选择“基于 SAML 的登录”，启用单一登录。
  
     ![“单一登录”对话框](./media/vodeclic-tutorial/tutorial_vodeclic_samlbase.png)
 
-3. 如果要在“IDP”发起的模式下配置应用程序，请在“Vodeclic 域和 URL”部分中执行下列步骤：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“Vodeclic 域和 URL”部分中执行下列步骤：
 
     ![Vodeclic 域和 URL 单一登录信息](./media/vodeclic-tutorial/tutorial_vodeclic_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”框中，使用以下模式键入 URL：`https://<companyname>.lms.vodeclic.net/auth/saml`
+    a. 在“标识符”框中，使用以下模式键入 URL：`https://<companyname>.lms.vodeclic.net/auth/saml`
 
     b. 在“回复 URL”框中，使用以下模式键入 URL：`https://<companyname>.lms.vodeclic.net/auth/saml/callback`
 
-4. 如果要在“SP”发起的模式下配置应用程序，请选中“显示高级 URL 设置”复选框，并执行以下步骤：
+1. 如果要在“SP”发起的模式下配置应用程序，请选中“显示高级 URL 设置”复选框，并执行以下步骤：
 
     ![Vodeclic 域和 URL 单一登录信息](./media/vodeclic-tutorial/tutorial_vodeclic_url1.png)
 
@@ -123,15 +123,15 @@ ms.locfileid: "39041086"
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Vodeclic 客户端支持团队](mailto:hotline@vodeclic.com)获取这些值。
 
-5. 在“SAML 签名证书”部分中，选择“元数据 XML”。 然后，将元数据文件保存到计算机。
+1. 在“SAML 签名证书”部分中，选择“元数据 XML”。 然后，将元数据文件保存到计算机。
 
     ![证书下载链接](./media/vodeclic-tutorial/tutorial_vodeclic_certificate.png) 
 
-6. 选择“保存”。
+1. 选择“保存”。
 
     ![配置单一登录“保存”按钮](./media/vodeclic-tutorial/tutorial_general_400.png)
     
-7. 要在 Vodeclic 端配置单一登录，请将下载的元数据 XML 发送给 [Vodeclic 支持团队](mailto:hotline@vodeclic.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+1. 要在 Vodeclic 端配置单一登录，请将下载的元数据 XML 发送给 [Vodeclic 支持团队](mailto:hotline@vodeclic.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了。 从“Active Directory” > “企业应用程序”部分添加该应用后，选择“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在 [Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)中阅读有关嵌入式文档功能的详细信息。
@@ -148,19 +148,19 @@ ms.locfileid: "39041086"
 
     ![“Azure Active Directory”按钮](./media/vodeclic-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”。 然后选择“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”。 然后选择“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/vodeclic-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，请在“所有用户”对话框顶部选择“添加”。
+1. 若要打开“用户”对话框，请在“所有用户”对话框顶部选择“添加”。
 
     ![“添加”按钮](./media/vodeclic-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/vodeclic-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -187,23 +187,23 @@ ms.locfileid: "39041086"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Vodeclic”。
+1. 在应用程序列表中，选择“Vodeclic”。
 
     ![应用程序列表中的 Vodeclic 链接](./media/vodeclic-tutorial/tutorial_vodeclic_app.png)  
 
-3. 在左侧菜单中，选择“用户和组”。
+1. 在左侧菜单中，选择“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 选择“添加”按钮。 然后，在“添加分配”对话框中，选择“用户和组”。
+1. 选择“添加”按钮。 然后，在“添加分配”对话框中，选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框中，选择“用户”列表中的“Britta Simon”。
+1. 在“用户和组”对话框中，选择“用户”列表中的“Britta Simon”。
 
-6. 在“用户和组”对话框中，选择“选择”按钮。
+1. 在“用户和组”对话框中，选择“选择”按钮。
 
-7. 在“添加分配”对话框中，选择“分配”按钮。
+1. 在“添加分配”对话框中，选择“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

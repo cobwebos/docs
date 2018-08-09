@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: c2735d385b0a3c2201ec2dad83c0c32fe44d458c
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: d1e4d8dd7201935ef1dbdc83224f905c812f9cca
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258237"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39447469"
 ---
 # <a name="tutorial-use-a-user-assigned-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>教程：使用 Linux VM 上的用户分配标识访问 Azure 资源管理器
 
@@ -72,7 +72,7 @@ ms.locfileid: "39258237"
     az login
     ```
 
-2. 使用 [az identity create](/cli/azure/identity#az_identity_create) 创建用户分配标识。 `-g` 参数指定创建了托管服务标识的资源组，`-n` 参数指定其名称。 请务必将 `<RESOURCE GROUP>` 和 `<MSI NAME>` 参数值替换为自己的值：
+2. 使用 [az identity create](/cli/azure/identity#az-identity-create) 创建用户分配标识。 `-g` 参数指定创建了托管服务标识的资源组，`-n` 参数指定其名称。 请务必将 `<RESOURCE GROUP>` 和 `<MSI NAME>` 参数值替换为自己的值：
     
 [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -102,7 +102,7 @@ az identity create -g <RESOURCE GROUP> -n <MSI NAME>
 
 用户分配标识可以由多个 Azure 资源上的客户端使用。 使用以下命令将用户分配的标识分配给单个 VM。 将上一步返回的 `Id` 属性用于 `-IdentityID` 参数。
 
-使用 [az vm assign-identity](/cli/azure/vm#az_vm_assign_identity) 将用户分配的托管服务标识分配给 Linux VM。 请务必将 `<RESOURCE GROUP>` 和 `<VM NAME>` 参数值替换为自己的值。 将上一步返回的 `id` 属性用于 `--identities` 参数值。
+使用 [az vm assign-identity](/cli/azure/vm#az-vm-assign-identity) 将用户分配的托管服务标识分配给 Linux VM。 请务必将 `<RESOURCE GROUP>` 和 `<VM NAME>` 参数值替换为自己的值。 将上一步返回的 `id` 属性用于 `--identities` 参数值。
 
 ```azurecli-interactive
 az vm assign-identity -g <RESOURCE GROUP> -n <VM NAME> --identities "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI NAME>"

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 235ba5fd1365ed8b400edce3db22420369540cce
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: d96fd1eacc98e88dc8578b259781cc661cf85933
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39052663"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39442823"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>将 Azure Active Directory 与 E Sales Manager Remix 集成
 
@@ -64,15 +64,15 @@ ms.locfileid: "39052663"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 选择“企业应用程序” > “所有应用程序”。
+1. 选择“企业应用程序” > “所有应用程序”。
 
     ![“企业应用程序”窗口][2]
     
-3. 若要添加新应用程序，请在窗口顶部选择“新建应用程序”。
+1. 若要添加新应用程序，请在窗口顶部选择“新建应用程序”。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中，键入 **E Sales Manager Remix**，在结果列表中选择“E Sales Manager Remix”，然后选择“添加”。
+1. 在搜索框中，键入 **E Sales Manager Remix**，在结果列表中选择“E Sales Manager Remix”，然后选择“添加”。
 
     ![结果列表中的 E Sales Manager Remix](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_addfromgallery.png)
 
@@ -92,15 +92,15 @@ ms.locfileid: "39052663"
 
     ![“单一登录”链接][4]
 
-2. 在“单一登录”窗口中的“单一登录模式”框内，选择“基于 SAML 的登录”。
+1. 在“单一登录”窗口中的“单一登录模式”框内，选择“基于 SAML 的登录”。
  
     ![“单一登录”窗口](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_samlbase.png)
 
-3. 在“E Sales Manager Remix 域和 URL”下，执行以下操作：
+1. 在“E Sales Manager Remix 域和 URL”下，执行以下操作：
 
     ![E Sales Manager Remix 域和 URL 单一登录信息](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下格式键入 URL：*https://\<Server-Based-URL>/\<sub-domain>/esales-pc*
+    a. 在“登录 URL”文本框中，使用以下格式键入 URL：*https://\<Server-Based-URL>/\<sub-domain>/esales-pc*
 
     b. 在“标识符”文本框中，使用以下格式键入 URL：*https://\<Server-Based-URL>/\<sub-domain>/*
 
@@ -109,51 +109,51 @@ ms.locfileid: "39052663"
     > [!NOTE] 
     > 上面的值不是实际值。 使用实际登录 URL 和标识符更新这些值。 若要获取这些值，请联系 [E Sales Manager Remix 客户端支持团队](mailto:esupport@softbrain.co.jp)。
 
-4. 在“SAML 签名证书”下，选择“证书(Base64)”，然后将证书文件保存到计算机。
+1. 在“SAML 签名证书”下，选择“证书(Base64)”，然后将证书文件保存到计算机。
 
     ![证书 (Base64) 下载链接](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_certificate.png) 
 
-5. 选中“查看和编辑其他所有用户属性”复选框，然后选择“emailaddress”属性。
+1. 选中“查看和编辑其他所有用户属性”复选框，然后选择“emailaddress”属性。
     
     ![“用户属性”窗口](./media/esalesmanagerremix-tutorial/configure1.png)
 
     此时会打开“编辑属性”窗口。
 
-6. 复制“Namespace”和“Name”值。 以 *\<Namespace>/\<Name>* 模式生成值，并保存以便稍后在本教程中使用。
+1. 复制“Namespace”和“Name”值。 以 *\<Namespace>/\<Name>* 模式生成值，并保存以便稍后在本教程中使用。
 
     ![“编辑属性”窗口](./media/esalesmanagerremix-tutorial/configure2.png)
 
-7. 在“E Sales Manager Remix 配置”下，选择“配置 E Sales Manager Remix”。
+1. 在“E Sales Manager Remix 配置”下，选择“配置 E Sales Manager Remix”。
 
     ![E Sales Manager Remix 配置](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
 
     此时会打开“配置登录”窗口。
 
-8. 在“快速参考”部分，复制注销 URL 和 SAML 单一登录服务 URL。
+1. 在“快速参考”部分，复制注销 URL 和 SAML 单一登录服务 URL。
 
-9. 选择“保存”。
+1. 选择“保存”。
 
     ![点击“保存”按钮](./media/esalesmanagerremix-tutorial/tutorial_general_400.png)
 
-10. 以管理员身份登录到 E Sales Manager Remix 应用程序。
+1. 以管理员身份登录到 E Sales Manager Remix 应用程序。
 
-11. 在右上角选择“到管理员菜单”。
+1. 在右上角选择“到管理员菜单”。
 
     ![“到管理员菜单”命令](./media/esalesmanagerremix-tutorial/configure4.png)
 
-12. 在左侧窗格中，选择“系统设置” > “与外部系统协作”。
+1. 在左侧窗格中，选择“系统设置” > “与外部系统协作”。
 
     ![“系统设置”和“与外部系统协作”链接](./media/esalesmanagerremix-tutorial/configure5.png)
     
-13. 在“与外部系统协作”窗口中，选择“SAML”。
+1. 在“与外部系统协作”窗口中，选择“SAML”。
 
     ![“与外部系统协作”窗口](./media/esalesmanagerremix-tutorial/configure6.png)
 
-14. 在“SAML 身份验证设置”下，执行以下操作：
+1. 在“SAML 身份验证设置”下，执行以下操作：
 
     ![“SAML 身份验证设置”部分](./media/esalesmanagerremix-tutorial/configure3.png)
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选中“电脑版本”复选框。
+    a. 选中“电脑版本”复选框。
     
     b. 在“协作项”部分的下拉列表中选择“电子邮件”。
 
@@ -183,17 +183,17 @@ ms.locfileid: "39052663"
 
     ![“Azure Active Directory”链接](./media/paloaltoadmin-tutorial/create_aaduser_01.png)
 
-2. 若要显示当前用户列表，请选择“用户和组” > “所有用户”。
+1. 若要显示当前用户列表，请选择“用户和组” > “所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/paloaltoadmin-tutorial/create_aaduser_02.png)
 
-3. 在“所有用户”窗口的顶部，选择“添加”。
+1. 在“所有用户”窗口的顶部，选择“添加”。
 
     ![“添加”按钮](./media/paloaltoadmin-tutorial/create_aaduser_03.png)
     
     此时会打开“用户”窗口。
 
-4. 在“用户”窗口中执行以下操作：
+1. 在“用户”窗口中执行以下操作：
 
     ![“用户”窗口](./media/paloaltoadmin-tutorial/create_aaduser_04.png)
 
@@ -209,19 +209,19 @@ ms.locfileid: "39052663"
 
 1. 以管理员身份登录到 E Sales Manager Remix 应用程序。
 
-2. 从右上角菜单选择“到管理员菜单”。
+1. 从右上角菜单选择“到管理员菜单”。
 
     ![E Sales Manager Remix 配置](./media/esalesmanagerremix-tutorial/configure4.png)
 
-3. 选择“公司设置” > “部门和员工维护”，然后选择“注册员工”。
+1. 选择“公司设置” > “部门和员工维护”，然后选择“注册员工”。
 
     ![“注册员工”选项卡](./media/esalesmanagerremix-tutorial/user1.png)
 
-4. 在“新员工注册”部分，执行以下操作：
+1. 在“新员工注册”部分，执行以下操作：
     
     ![“新员工注册”部分](./media/esalesmanagerremix-tutorial/user2.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“员工姓名”框中，键入用户名（如 **Britta**）。
+    a. 在“员工姓名”框中，键入用户名（如 **Britta**）。
 
     b. 填写剩余的必填字段。
     
@@ -229,7 +229,7 @@ ms.locfileid: "39052663"
 
     d. 选择“注册”。
 
-5. 将来若要以管理员身份登录，请以具有管理员权限的用户身份登录，然后在右上角选择“到管理员菜单”。
+1. 将来若要以管理员身份登录，请以具有管理员权限的用户身份登录，然后在右上角选择“到管理员菜单”。
 
     ![“到管理员菜单”命令](./media/esalesmanagerremix-tutorial/configure4.png)
 
@@ -243,23 +243,23 @@ ms.locfileid: "39052663"
 
     ![“企业应用程序”和“所有应用程序”链接][201] 
 
-2. 在“应用程序”列表中，选择“E Sales Manager Remix”。
+1. 在“应用程序”列表中，选择“E Sales Manager Remix”。
 
     ![“E Sales Manager Remix”链接](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_app.png)  
 
-3. 在左窗格中，选择“用户和组”。
+1. 在左窗格中，选择“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 选择“添加”，然后在“添加分配”窗格中选择“用户和组”。
+1. 选择“添加”，然后在“添加分配”窗格中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”窗口中的“用户”列表内，选择“Britta Simon”。
+1. 在“用户和组”窗口中的“用户”列表内，选择“Britta Simon”。
 
-6. 选择“选择”按钮。
+1. 选择“选择”按钮。
 
-7. 在“添加分配”窗口中，选择“分配”。
+1. 在“添加分配”窗口中，选择“分配”。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

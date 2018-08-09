@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: c35d267acfd1778e80605cdfe9eec0edbb18a281
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: ba75c3448b4e8edb3851b97f076c0eaf64a2bce4
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052838"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39428662"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>以增量方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
 在本教程中，请创建一个带管道的 Azure 数据工厂，将增量数据从本地 SQL Server 中的多个表加载到 Azure SQL 数据库。    
@@ -45,11 +45,11 @@ ms.locfileid: "37052838"
     
     在源数据存储中为每个表选择一个列，该列可用于确定每个运行的新记录或已更新记录。 通常，在创建或更新行时，此选定列中的数据（例如 last_modify_time 或 ID）会不断递增。 此列中的最大值用作水印。
 
-2. **准备用于存储水印值的数据存储**。   
+1. **准备用于存储水印值的数据存储**。   
     
     本教程在 SQL 数据库中存储水印值。
 
-3. **创建包含以下活动的管道**： 
+1. **创建包含以下活动的管道**： 
     
     a. 创建一个 ForEach 活动，循环访问一个列表，其中的源表名称是作为参数传递到管道的。 对于每个源表，它会调用以下活动，为该表执行增量加载。
 
@@ -64,7 +64,7 @@ ms.locfileid: "37052838"
     ![以增量方式加载数据](media\tutorial-incremental-copy-multiple-tables-portal\high-level-solution-diagram.png)
 
 
-如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="prerequisites"></a>先决条件
 * **SQL Server**。 在本教程中，请将本地 SQL Server 数据库用作源数据存储。 
@@ -74,9 +74,9 @@ ms.locfileid: "37052838"
 
 1. 打开 SQL Server Management Studio，连接到本地 SQL Server 数据库。
 
-2. 在“服务器资源管理器”中，右键单击数据库，然后选择“新建查询”。
+1. 在“服务器资源管理器”中，右键单击数据库，然后选择“新建查询”。
 
-3. 对数据库运行以下 SQL 命令，以便创建名为 `customer_table` 和 `project_table` 的表：
+1. 对数据库运行以下 SQL 命令，以便创建名为 `customer_table` 和 `project_table` 的表：
 
     ```sql
     create table customer_table
@@ -113,9 +113,9 @@ ms.locfileid: "37052838"
 ### <a name="create-destination-tables-in-your-azure-sql-database"></a>在 Azure SQL 数据库中创建目标表
 1. 打开 SQL Server Management Studio，连接到 Azure SQL 数据库。
 
-2. 在“服务器资源管理器”中，右键单击数据库，然后选择“新建查询”。
+1. 在“服务器资源管理器”中，右键单击数据库，然后选择“新建查询”。
 
-3. 对 SQL 数据库运行以下 SQL 命令，以便创建名为 `customer_table` 和 `project_table` 的表：  
+1. 对 SQL 数据库运行以下 SQL 命令，以便创建名为 `customer_table` 和 `project_table` 的表：  
     
     ```sql
     create table customer_table
@@ -144,7 +144,7 @@ ms.locfileid: "37052838"
         WatermarkValue datetime,
     );
     ```
-2. 将两个源表的初始水印值插入水印表中。
+1. 将两个源表的初始水印值插入水印表中。
 
     ```sql
 
@@ -230,32 +230,32 @@ END
 1. 在左侧菜单中单击“新建”，并依次单击“数据 + 分析”、“数据工厂”。 
    
    ![新建 -> DataFactory](./media/tutorial-incremental-copy-multiple-tables-portal/new-azure-data-factory-menu.png)
-2. 在“新建数据工厂”页中，输入 ADFMultiIncCopyTutorialDF 作为**名称**。 
+1. 在“新建数据工厂”页中，输入 ADFMultiIncCopyTutorialDF 作为**名称**。 
       
      ![“新建数据工厂”页](./media/tutorial-incremental-copy-multiple-tables-portal/new-azure-data-factory.png)
  
    Azure 数据工厂的名称必须 **全局唯一**。 如果收到错误，请更改数据工厂的名称（例如改为 yournameADFMultiIncCopyTutorialDF），并重新尝试创建。 有关数据工厂项目命名规则，请参阅[数据工厂 - 命名规则](naming-rules.md)一文。
   
        `Data factory name ADFMultiIncCopyTutorialDF is not available`
-3. 选择要在其中创建数据工厂的 Azure **订阅**。 
-4. 对于**资源组**，请执行以下步骤之一：
+1. 选择要在其中创建数据工厂的 Azure **订阅**。 
+1. 对于**资源组**，请执行以下步骤之一：
      
       - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
       - 选择“新建”，并输入资源组的名称。   
          
         若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
-4. 选择“V2 (预览)”作为**版本**。
-5. 选择数据工厂的**位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
-6. 选择“固定到仪表板”。     
-7. 单击“创建”。      
-8. 在仪表板上，会看到状态为“正在部署数据工厂”的以下磁贴。 
+1. 选择“V2 (预览)”作为**版本**。
+1. 选择数据工厂的**位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+1. 选择“固定到仪表板”。     
+1. 单击“创建”。      
+1. 在仪表板上，会看到状态为“正在部署数据工厂”的以下磁贴。 
 
     ![“正在部署数据工厂”磁贴](media/tutorial-incremental-copy-multiple-tables-portal/deploying-data-factory.png)
-9. 创建完成后，可以看到图中所示的“数据工厂”页。
+1. 创建完成后，可以看到图中所示的“数据工厂”页。
    
    ![数据工厂主页](./media/tutorial-incremental-copy-multiple-tables-portal/data-factory-home-page.png)
-10. 单击“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI)。
-11. 在 Azure 数据工厂 UI 的入门页中，单击“创建管道”或切换到“编辑”选项卡。 
+1. 单击“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI)。
+1. 在 Azure 数据工厂 UI 的入门页中，单击“创建管道”或切换到“编辑”选项卡。 
 
    ![“入门”页](./media/tutorial-incremental-copy-multiple-tables-portal/get-started-page.png)
 
@@ -265,30 +265,30 @@ END
 1. 单击左窗格底部的“连接”，切换到“连接”窗口中的“Integration Runtime”。 
 
    ![“连接”选项卡](./media/tutorial-incremental-copy-multiple-tables-portal/connections-tab.png)
-2. 在“Integration Runtime”选项卡中，单击“+ 新建”。 
+1. 在“Integration Runtime”选项卡中，单击“+ 新建”。 
 
    ![新建 Integration Runtime - 按钮](./media/tutorial-incremental-copy-multiple-tables-portal/new-integration-runtime-button.png)
-3. 在“Integration Runtime 安装”窗口中，选择“执行数据移动并将活动分发到外部计算”，然后单击“下一步”。 
+1. 在“Integration Runtime 安装”窗口中，选择“执行数据移动并将活动分发到外部计算”，然后单击“下一步”。 
 
    ![选择 Integration Runtime 类型](./media/tutorial-incremental-copy-multiple-tables-portal/select-integration-runtime-type.png)
-4. 选择“专用网络”，然后单击“下一步”。**** 
+1. 选择“专用网络”，然后单击“下一步”。**** 
 
    ![选择专用网络](./media/tutorial-incremental-copy-multiple-tables-portal/select-private-network.png)
-5. 在“名称”中输入 **MySelfHostedIR**，然后单击“下一步”。 
+1. 在“名称”中输入 **MySelfHostedIR**，然后单击“下一步”。 
 
    ![自承载 IR 名称](./media/tutorial-incremental-copy-multiple-tables-portal/self-hosted-ir-name.png)
-10. 在“选项 1: 快速安装”部分单击“单击此处对此计算机启动快速安装”。 
+1. 在“选项 1: 快速安装”部分单击“单击此处对此计算机启动快速安装”。 
 
    ![单击“快速安装”链接](./media/tutorial-incremental-copy-multiple-tables-portal/click-exress-setup.png)
-11. 在“集成运行时(自承载)快速安装”窗口中，单击“关闭”。 
+1. 在“集成运行时(自承载)快速安装”窗口中，单击“关闭”。 
 
    ![集成运行时安装 - 成功](./media/tutorial-incremental-copy-multiple-tables-portal/integration-runtime-setup-successful.png)
-12. 在 Web 浏览器中的“集成运行时安装”窗口中，单击“完成”。 
+1. 在 Web 浏览器中的“集成运行时安装”窗口中，单击“完成”。 
 
    ![集成运行时安装 -完成](./media/tutorial-incremental-copy-multiple-tables-portal/click-finish-integration-runtime-setup.png)
-17. 确认在 Integration Runtime 的列表中看到 **MySelfHostedIR**。
+1. 确认在 Integration Runtime 的列表中看到 **MySelfHostedIR**。
 
-       ![Integration Runtime - 列表](./media/tutorial-incremental-copy-multiple-tables-portal/integration-runtimes-list.png)
+       ![Integration runtimes - list](./media/tutorial-incremental-copy-multiple-tables-portal/integration-runtimes-list.png)
 
 ## <a name="create-linked-services"></a>创建链接服务
 可在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在本部分，请创建本地 SQL Server 数据库和 SQL 数据库的链接服务。 
@@ -299,20 +299,20 @@ END
 1. 在“连接”窗口中从“Integration Runtime”选项卡切换到“链接服务”选项卡，然后单击“+ 新建”。
 
     ![“新建链接服务”按钮](./media/tutorial-incremental-copy-multiple-tables-portal/new-sql-server-linked-service-button.png)
-2. 在“新建链接服务”窗口中，选择“SQL Server”，然后单击“继续”。 
+1. 在“新建链接服务”窗口中，选择“SQL Server”，然后单击“继续”。 
 
     ![选择 SQL Server](./media/tutorial-incremental-copy-multiple-tables-portal/select-sql-server.png)
-3. 在“新建链接服务”窗口中执行以下步骤：
+1. 在“新建链接服务”窗口中执行以下步骤：
 
     1. 输入 **SqlServerLinkedService** 作为**名称**。 
-    2. 为“通过集成运行时连接”选择“MySelfHostedIR”。 这是**重要**步骤。 默认的 Integration Runtime 无法连接到本地数据存储。 使用前面创建的自承载 Integration Runtime。 
-    3. 对于“服务器名称”，请输入装有 SQL Server 数据库的计算机的名称。
-    4. 对于“数据库名称”，请输入 SQL Server 中包含源数据的数据库的名称。 已按照先决条件创建一个表并将数据插入到此数据库中。 
-    5. 对于“身份验证类型”，请选择需要用于连接到数据库的**身份验证的类型**。 
-    6. 至于“用户名”，请输入能够访问 SQL Server 数据库的用户的名称。 如需在用户帐户或服务器名称中使用斜杠字符 (`\`)，请使用转义字符 (`\`)。 例如 `mydomain\\myuser`。
-    7. 至于“密码”，请输入用户的**密码**。 
-    8. 若要测试数据工厂是否可以连接到 SQL Server 数据库，请单击“测试连接”。 修复任何错误，直到连接成功。 
-    9. 若要保存链接服务，请单击“保存”。
+    1. 为“通过集成运行时连接”选择“MySelfHostedIR”。 这是**重要**步骤。 默认的 Integration Runtime 无法连接到本地数据存储。 使用前面创建的自承载 Integration Runtime。 
+    1. 对于“服务器名称”，请输入装有 SQL Server 数据库的计算机的名称。
+    1. 对于“数据库名称”，请输入 SQL Server 中包含源数据的数据库的名称。 已按照先决条件创建一个表并将数据插入到此数据库中。 
+    1. 对于“身份验证类型”，请选择需要用于连接到数据库的**身份验证的类型**。 
+    1. 至于“用户名”，请输入能够访问 SQL Server 数据库的用户的名称。 如需在用户帐户或服务器名称中使用斜杠字符 (`\`)，请使用转义字符 (`\`)。 例如 `mydomain\\myuser`。
+    1. 至于“密码”，请输入用户的**密码**。 
+    1. 若要测试数据工厂是否可以连接到 SQL Server 数据库，请单击“测试连接”。 修复任何错误，直到连接成功。 
+    1. 若要保存链接服务，请单击“保存”。
 
         ![SQL Server 链接服务 - 设置](./media/tutorial-incremental-copy-multiple-tables-portal/sql-server-linked-service-settings.png)
 
@@ -322,19 +322,19 @@ END
 1. 在“连接”窗口中从“Integration Runtime”选项卡切换到“链接服务”选项卡，然后单击“+ 新建”。
 
     ![“新建链接服务”按钮](./media/tutorial-incremental-copy-multiple-tables-portal/new-sql-server-linked-service-button.png)
-2. 在“新建链接服务”窗口中，选择“Azure SQL 数据库”，然后单击“继续”。 
-3. 在“新建链接服务”窗口中执行以下步骤：
+1. 在“新建链接服务”窗口中，选择“Azure SQL 数据库”，然后单击“继续”。 
+1. 在“新建链接服务”窗口中执行以下步骤：
 
     1. 对于“名称”，请输入 **AzureSqlDatabaseLinkedService**。 
-    3. 至于“服务器名称”，请从下拉列表中选择 Azure SQL Server 的名称。 
-    4. 至于“数据库名称”，请选择按照先决条件在其中创建了 created customer_table 和 project_table 的 Azure SQL 数据库。 
-    6. 至于“用户名”，请输入能够访问 Azure SQL 数据库的用户的名称。 
-    7. 至于“密码”，请输入用户的**密码**。 
-    8. 若要测试数据工厂是否可以连接到 SQL Server 数据库，请单击“测试连接”。 修复任何错误，直到连接成功。 
-    9. 若要保存链接服务，请单击“保存”。
+    1. 至于“服务器名称”，请从下拉列表中选择 Azure SQL Server 的名称。 
+    1. 至于“数据库名称”，请选择按照先决条件在其中创建了 created customer_table 和 project_table 的 Azure SQL 数据库。 
+    1. 至于“用户名”，请输入能够访问 Azure SQL 数据库的用户的名称。 
+    1. 至于“密码”，请输入用户的**密码**。 
+    1. 若要测试数据工厂是否可以连接到 SQL Server 数据库，请单击“测试连接”。 修复任何错误，直到连接成功。 
+    1. 若要保存链接服务，请单击“保存”。
 
         ![Azure SQL 链接服务 - 设置](./media/tutorial-incremental-copy-multiple-tables-portal/azure-sql-linked-service-settings.png)
-10. 确认在列表中看到两个链接服务。 
+1. 确认在列表中看到两个链接服务。 
    
     ![两个链接服务](./media/tutorial-incremental-copy-multiple-tables-portal/two-linked-services.png) 
 
@@ -346,13 +346,13 @@ END
 1. 在左窗格中单击“+ (加)”，然后单击“数据集”。
 
    ![“新建数据集”菜单](./media/tutorial-incremental-copy-multiple-tables-portal/new-dataset-menu.png)
-2. 在“新建数据集”窗口中选择“SQL Server”，然后单击“完成”。 
+1. 在“新建数据集”窗口中选择“SQL Server”，然后单击“完成”。 
 
    ![选择 SQL Server](./media/tutorial-incremental-copy-multiple-tables-portal/select-sql-server-for-dataset.png)
-3. 此时会在 Web 浏览器中看到打开的新选项卡，用于配置数据集。 树状视图中也会看到数据集。 在底部的属性窗口的“常规”选项卡中，输入 **SourceDataset** 作为**名称**。 
+1. 此时会在 Web 浏览器中看到打开的新选项卡，用于配置数据集。 树状视图中也会看到数据集。 在底部的属性窗口的“常规”选项卡中，输入 **SourceDataset** 作为**名称**。 
 
    ![源数据集 - 名称](./media/tutorial-incremental-copy-multiple-tables-portal/source-dataset-general.png)
-4. 在“属性”窗口中切换到“连接”选项卡，然后选择 **SqlServerLinkedService** 作为“链接服务”。 不要选择此处的表。 管道中的 Copy 活动使用 SQL 查询来加载数据，而不是加载整个表。
+1. 在“属性”窗口中切换到“连接”选项卡，然后选择 **SqlServerLinkedService** 作为“链接服务”。 不要选择此处的表。 管道中的 Copy 活动使用 SQL 查询来加载数据，而不是加载整个表。
 
    ![源数据集 - 连接](./media/tutorial-incremental-copy-multiple-tables-portal/source-dataset-connection.png)
 
@@ -361,29 +361,29 @@ END
 1. 在左窗格中单击“+ (加)”，然后单击“数据集”。
 
    ![“新建数据集”菜单](./media/tutorial-incremental-copy-multiple-tables-portal/new-dataset-menu.png)
-2. 在“新建数据集”窗口中，选择“Azure SQL 数据集”，然后单击“完成”。 
+1. 在“新建数据集”窗口中，选择“Azure SQL 数据库”，然后单击“完成”。 
 
    ![选择 Azure SQL 数据库](./media/tutorial-incremental-copy-multiple-tables-portal/select-azure-sql-database.png)
-3. 此时会在 Web 浏览器中看到打开的新选项卡，用于配置数据集。 树状视图中也会看到数据集。 在底部的“属性”窗口的“常规”选项卡中，输入 **SinkDataset** 作为**名称**。
+1. 此时会在 Web 浏览器中看到打开的新选项卡，用于配置数据集。 树状视图中也会看到数据集。 在底部的“属性”窗口的“常规”选项卡中，输入 **SinkDataset** 作为**名称**。
 
    ![接收器数据集 - 常规](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-general.png)
-4. 在“属性”窗口中切换到“参数”选项卡，然后执行以下步骤： 
+1. 在“属性”窗口中切换到“参数”选项卡，然后执行以下步骤： 
 
     1. 在“创建/更新参数”部分单击“新建”。 
-    2. 输入 **SinkTableName** 作为**名称**，输入**字符串**作为**类型**。 此数据集采用 **SinkTableName** 作为参数。 SinkTableName 参数由管道在运行时动态设置。 管道中的 ForEach 活动循环访问一个包含表名的列表，每一次迭代都将表名传递到此数据集。
+    1. 输入 **SinkTableName** 作为**名称**，输入**字符串**作为**类型**。 此数据集采用 **SinkTableName** 作为参数。 SinkTableName 参数由管道在运行时动态设置。 管道中的 ForEach 活动循环访问一个包含表名的列表，每一次迭代都将表名传递到此数据集。
    
        ![接收器数据集 - 属性](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png)
-5. 在“属性”窗口中切换到“连接”选项卡，然后选择 **AzureSqlLinkedService** 作为“链接服务”。 对于“表”属性，单击“添加动态内容”。 
+1. 在“属性”窗口中切换到“连接”选项卡，然后选择 **AzureSqlLinkedService** 作为“链接服务”。 对于“表”属性，单击“添加动态内容”。 
 
    ![接收器数据集 - 连接](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection.png)
     
     
-6. 在“参数”部分中选择 **SinkTableName**
+1. 在“参数”部分中选择 **SinkTableName**
    
    ![接收器数据集 - 连接](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-dynamicContent.png)
 
    
- 7. 单击“完成”后，可以看到表名为 **@dataset().SinkTableName**。
+ 1. 单击“完成”后，可以看到表名为 **@dataset().SinkTableName**。
    
    ![接收器数据集 - 连接](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png)
 
@@ -393,14 +393,14 @@ END
 1. 在左窗格中单击“+ (加)”，然后单击“数据集”。
 
    ![“新建数据集”菜单](./media/tutorial-incremental-copy-multiple-tables-portal/new-dataset-menu.png)
-2. 在“新建数据集”窗口中，选择“Azure SQL 数据集”，然后单击“完成”。 
+1. 在“新建数据集”窗口中，选择“Azure SQL 数据库”，然后单击“完成”。 
 
    ![选择 Azure SQL 数据库](./media/tutorial-incremental-copy-multiple-tables-portal/select-azure-sql-database.png)
-3. 在底部的“属性”窗口的“常规”选项卡中，输入 **WatermarkDataset** 作为**名称**。
-4. 切换到“连接”选项卡，然后执行以下步骤： 
+1. 在底部的“属性”窗口的“常规”选项卡中，输入 **WatermarkDataset** 作为**名称**。
+1. 切换到“连接”选项卡，然后执行以下步骤： 
 
     1. 为“链接服务”选择“AzureSqlDatabaseLinkedService”。
-    2. 对于“表”，请选择 **[dbo].[watermarktable]**。
+    1. 对于“表”，请选择 **[dbo].[watermarktable]**。
 
        ![水印数据集 - 连接](./media/tutorial-incremental-copy-multiple-tables-portal/watermark-dataset-connection.png)
 
@@ -409,116 +409,116 @@ END
 
 1. 通过 Lookup 活动检索旧的水印值（初始值或上次迭代中使用的值）。
 
-2. 通过 Lookup 活动检索新的水印值（源表中水印列的最大值）。
+1. 通过 Lookup 活动检索新的水印值（源表中水印列的最大值）。
 
-3. 通过 Copy 活动将这两个水印值之间的数据从源数据库复制到目标数据库。
+1. 通过 Copy 活动将这两个水印值之间的数据从源数据库复制到目标数据库。
 
-4. 通过 StoredProcedure 活动更新旧水印值，以便在下一迭代的第一步使用该值。 
+1. 通过 StoredProcedure 活动更新旧水印值，以便在下一迭代的第一步使用该值。 
 
 ### <a name="create-the-pipeline"></a>创建管道
 
 1. 在左窗格中单击“+ (加)”，然后单击“管道”。
 
     ![新建管道 - 菜单](./media/tutorial-incremental-copy-multiple-tables-portal/new-pipeline-menu.png)
-2. 在“属性”窗口的“常规”选项卡中，输入 **IncrementalCopyPipeline** 作为**名称**。 
+1. 在“属性”窗口的“常规”选项卡中，输入 **IncrementalCopyPipeline** 作为**名称**。 
 
     ![管道名称](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-name.png)
-3. 在“属性”窗口中执行以下步骤： 
+1. 在“属性”窗口中执行以下步骤： 
 
     1. 单击“+ 新建”。 
-    2. 输入 **tableList** 作为参数**名称**。 
-    3. 选择“对象”作为参数**类型**。
+    1. 输入 **tableList** 作为参数**名称**。 
+    1. 选择“对象”作为参数**类型**。
 
     ![管道参数](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-parameters.png) 
-4. 在“活动”工具栏中展开“迭代和条件语句”，然后将 **ForEach** 活动拖放到管道设计器图面。 在属性窗口的“常规”选项卡中，输入 **IterateSQLTables**。 
+1. 在“活动”工具栏中展开“迭代和条件语句”，然后将 **ForEach** 活动拖放到管道设计器图面。 在属性窗口的“常规”选项卡中，输入 **IterateSQLTables**。 
 
     ![ForEach 活动 - 名称](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-name.png)
-5. 在“属性”窗口中切换到“设置”选项卡，然后输入 `@pipeline().parameters.tableList` 作为**项目**。 ForEach 活动循环访问一系列表，并执行增量复制操作。 
+1. 在“属性”窗口中切换到“设置”选项卡，然后输入 `@pipeline().parameters.tableList` 作为**项目**。 ForEach 活动循环访问一系列表，并执行增量复制操作。 
 
     ![ForEach 活动 - 设置](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-settings.png)
-6. 在管道中选择 **ForEach** 活动（如果尚未选择）。 单击“编辑(铅笔图标)”按钮。
+1. 在管道中选择 **ForEach** 活动（如果尚未选择）。 单击“编辑(铅笔图标)”按钮。
 
     ![ForEach 活动 - 编辑](./media/tutorial-incremental-copy-multiple-tables-portal/edit-foreach.png)
-7. 在“活动”工具箱中展开“常规”，将**查找**活动拖放到管道设计器图面，然后输入 **LookupOldWaterMarkActivity** 作为**名称**。
+1. 在“活动”工具箱中展开“常规”，将**查找**活动拖放到管道设计器图面，然后输入 **LookupOldWaterMarkActivity** 作为**名称**。
 
     ![第一个查找活动 - 名称](./media/tutorial-incremental-copy-multiple-tables-portal/first-lookup-name.png)
-8. 在“属性”窗口中切换到“设置”选项卡，然后执行以下步骤： 
+1. 在“属性”窗口中切换到“设置”选项卡，然后执行以下步骤： 
 
     1. 选择“WatermarkDataset”作为“源数据集”。
-    2. 为“使用查询”选择“查询”。 
-    3. 为“查询”输入以下 SQL 查询。 
+    1. 为“使用查询”选择“查询”。 
+    1. 为“查询”输入以下 SQL 查询。 
 
         ```sql
         select * from watermarktable where TableName  =  '@{item().TABLE_NAME}'
         ```
 
         ![第一个查找活动 - 设置](./media/tutorial-incremental-copy-multiple-tables-portal/first-lookup-settings.png)
-9. 从“活动”工具箱拖放**查找**活动，然后输入 **LookupNewWaterMarkActivity** 作为**名称**。
+1. 从“活动”工具箱拖放**查找**活动，然后输入 **LookupNewWaterMarkActivity** 作为**名称**。
         
     ![第二个查找活动 - 名称](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-name.png)
-10. 切换到“设置”选项卡。
+1. 切换到“设置”选项卡。
 
     1. 为“源数据集”选择“SourceDataset”。 
-    2. 为“使用查询”选择“查询”。
-    3. 为“查询”输入以下 SQL 查询。
+    1. 为“使用查询”选择“查询”。
+    1. 为“查询”输入以下 SQL 查询。
 
         ```sql    
         select MAX(@{item().WaterMark_Column}) as NewWatermarkvalue from @{item().TABLE_NAME}
         ```
     
         ![第二个查找活动 - 设置](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-settings.png)
-11. 从“活动”工具箱拖放**复制**活动，然后输入 **IncrementalCopyActivity** 作为**名称**。 
+1. 从“活动”工具箱拖放**复制**活动，然后输入 **IncrementalCopyActivity** 作为**名称**。 
 
     ![复制活动 - 名称](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-name.png)
-12. 逐个地将“查找”活动连接到“复制”活动。 若要进行连接，可以开始将附加到“查找”活动的**绿色**框拖放到“复制”活动。 “复制”活动的边框颜色变为**蓝色**时，松开鼠标按键。
+1. 逐个地将“查找”活动连接到“复制”活动。 若要进行连接，可以开始将附加到“查找”活动的**绿色**框拖放到“复制”活动。 “复制”活动的边框颜色变为**蓝色**时，松开鼠标按键。
 
     ![将“查找”活动连接到“复制”活动](./media/tutorial-incremental-copy-multiple-tables-portal/connect-lookup-to-copy.png)
-13. 选择管道中的“复制”活动。 切换到“属性”窗口中的“源”选项卡。 
+1. 选择管道中的“复制”活动。 切换到“属性”窗口中的“源”选项卡。 
 
     1. 为“源数据集”选择“SourceDataset”。 
-    2. 为“使用查询”选择“查询”。 
-    3. 为“查询”输入以下 SQL 查询。
+    1. 为“使用查询”选择“查询”。 
+    1. 为“查询”输入以下 SQL 查询。
 
         ```sql
         select * from @{item().TABLE_NAME} where @{item().WaterMark_Column} > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and @{item().WaterMark_Column} <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'        
         ```
 
         ![复制活动 - 源设置](./media/tutorial-incremental-copy-multiple-tables-portal/copy-source-settings.png)
-14. 切换到“接收器”选项卡，然后选择“SinkDataset”作为“接收器数据集”。 
+1. 切换到“接收器”选项卡，然后选择“SinkDataset”作为“接收器数据集”。 
         
     ![复制活动 - 接收器设置](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
-15. 切换到“参数”选项卡，然后执行以下步骤：
+1. 切换到“参数”选项卡，然后执行以下步骤：
 
     1. 至于“接收器存储过程名称”属性，请输入 `@{item().StoredProcedureNameForMergeOperation}`。
-    2. 至于“接收器表类型”属性，请输入 `@{item().TableType}`。
-    3. 在“接收器数据集”部分，请输入 `@{item().TABLE_NAME}` 作为 **SinkTableName** 参数。
+    1. 至于“接收器表类型”属性，请输入 `@{item().TableType}`。
+    1. 在“接收器数据集”部分，请输入 `@{item().TABLE_NAME}` 作为 **SinkTableName** 参数。
 
         ![复制活动 - 参数](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
-16. 将“存储过程”活动从“活动”工具箱拖放到管道设计器图面。 将“复制”活动连接到“存储过程”活动。 
+1. 将“存储过程”活动从“活动”工具箱拖放到管道设计器图面。 将“复制”活动连接到“存储过程”活动。 
 
     ![复制活动 - 参数](./media/tutorial-incremental-copy-multiple-tables-portal/connect-copy-to-sproc.png)
-17. 在管道中选择“存储过程”活动，然后在“属性”窗口的“常规”选项卡中输入 **StoredProceduretoWriteWatermarkActivity** 作为**名称**。 
+1. 在管道中选择“存储过程”活动，然后在“属性”窗口的“常规”选项卡中输入 **StoredProceduretoWriteWatermarkActivity** 作为**名称**。 
 
     ![存储过程活动 - 名称](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-name.png)
-18. 切换到“SQL 帐户”选项卡。至于“链接服务”，请选择 **AzureSqlDatabaseLinkedService**。
+1. 切换到“SQL 帐户”选项卡。至于“链接服务”，请选择 **AzureSqlDatabaseLinkedService**。
 
     ![存储过程活动 - SQL 帐户](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
-19. 切换到“存储过程”选项卡，然后执行以下步骤：
+1. 切换到“存储过程”选项卡，然后执行以下步骤：
 
     1. 至于“存储过程名称”，请选择 `sp_write_watermark`。 
-    2. 选择“导入参数”。 
-    3. 指定以下参数值： 
+    1. 选择“导入参数”。 
+    1. 指定以下参数值： 
 
-        | 名称 | Type | 值 | 
+        | 名称 | 类型 | 值 | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![存储过程活动 - 存储过程设置](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
-20. 在左窗格中单击“发布”。 此操作将创建的实体发布到数据工厂服务。 
+1. 在左窗格中单击“发布”。 此操作将创建的实体发布到数据工厂服务。 
 
     ![发布按钮](./media/tutorial-incremental-copy-multiple-tables-portal/publish-button.png)
-21. 等待“已成功发布”消息出现。 若要查看通知，请单击“显示通知”链接。 单击“X”关闭通知窗口。
+1. 等待“已成功发布”消息出现。 若要查看通知，请单击“显示通知”链接。 单击“X”关闭通知窗口。
 
     ![显示通知](./media/tutorial-incremental-copy-multiple-tables-portal/notifications.png)
 
@@ -528,7 +528,7 @@ END
 1. 在管道的工具栏中单击“触发器”，然后单击“立即触发”。     
 
     ![立即触发](./media/tutorial-incremental-copy-multiple-tables-portal/trigger-now.png)
-2. 在“管道运行”窗口中，输入以下值作为 **tableList** 参数，然后单击“完成”。 
+1. 在“管道运行”窗口中，输入以下值作为 **tableList** 参数，然后单击“完成”。 
 
     ```
     [
@@ -554,7 +554,7 @@ END
 1. 在左侧切换到“监视”选项卡。 可以看到**手动触发器**触发的管道运行。 单击“刷新”按钮刷新列表。 使用“操作”列中的链接可以查看与管道运行关联的活动运行，以及重新运行管道。 
 
     ![管道运行](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-runs.png)
-2. 在“操作”列中单击“查看活动运行”链接。 此时会看到与所选管道运行相关联的所有活动运行。 
+1. 在“操作”列中单击“查看活动运行”链接。 此时会看到与所选管道运行相关联的所有活动运行。 
 
     ![活动运行](./media/tutorial-incremental-copy-multiple-tables-portal/activity-runs.png)
 
@@ -629,7 +629,7 @@ VALUES
 
 ## <a name="rerun-the-pipeline"></a>重新运行管道
 1. 在 Web 浏览器窗口中，切换到左侧的“编辑”选项卡。 
-2. 在管道的工具栏中单击“触发器”，然后单击“立即触发”。   
+1. 在管道的工具栏中单击“触发器”，然后单击“立即触发”。   
 
     ![立即触发](./media/tutorial-incremental-copy-multiple-tables-portal/trigger-now.png)
 1. 在“管道运行”窗口中，输入以下值作为 **tableList** 参数，然后单击“完成”。 
@@ -656,7 +656,7 @@ VALUES
 1. 在左侧切换到“监视”选项卡。 可以看到**手动触发器**触发的管道运行。 单击“刷新”按钮刷新列表。 使用“操作”列中的链接可以查看与管道运行关联的活动运行，以及重新运行管道。 
 
     ![管道运行](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-runs.png)
-2. 在“操作”列中单击“查看活动运行”链接。 此时会看到与所选管道运行相关联的所有活动运行。 
+1. 在“操作”列中单击“查看活动运行”链接。 此时会看到与所选管道运行相关联的所有活动运行。 
 
     ![活动运行](./media/tutorial-incremental-copy-multiple-tables-portal/activity-runs.png) 
 

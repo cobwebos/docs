@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 1963c2f45bc37741a6d00c8dae985bfa5237ce7f
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 5d5c4d5e26fa21488dd637805a4c22bd3ed18a7f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259222"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421077"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>教程：Azure Active Directory 与 ServiceNow 集成
 
@@ -56,7 +56,7 @@ ms.locfileid: "39259222"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 ServiceNow
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-servicenow-from-the-gallery"></a>从库中添加 ServiceNow
 要配置 ServiceNow 与 Azure AD 的集成，需要从库中将 ServiceNow 添加到托管 SaaS 应用列表。
@@ -67,15 +67,15 @@ ms.locfileid: "39259222"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中键入 **ServiceNow**，在结果面板中选择“ServiceNow”，单击“添加”按钮添加该应用程序。
+1. 在搜索框中键入 **ServiceNow**，在结果面板中选择“ServiceNow”，单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 ServiceNow](./media/servicenow-tutorial/tutorial_servicenow_addfromgallery.png)
 
@@ -90,11 +90,11 @@ ms.locfileid: "39259222"
 若要配置和测试 ServiceNow 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[针对 ServiceNow 配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on-for-servicenow)** - 让用户能够使用此功能。
-2. **[针对 ServiceNow Express 配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on-for-servicenow-express)** - 让用户能够使用此功能。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[创建 ServiceNow 测试用户](#create-a-servicenow-test-user)** - 在 ServiceNow 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
-5. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[针对 ServiceNow Express 配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on-for-servicenow-express)** - 让用户能够使用此功能。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 ServiceNow 测试用户](#create-a-servicenow-test-user)** - 在 ServiceNow 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on-for-servicenow"></a>为 ServiceNow 配置 Azure AD 单一登录
 
@@ -106,11 +106,11 @@ ms.locfileid: "39259222"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![“单一登录”对话框](./media/servicenow-tutorial/tutorial_servicenow_samlbase.png)
 
-3. 在“ServiceNow 域和 URL”部分中执行以下步骤：
+1. 在“ServiceNow 域和 URL”部分中执行以下步骤：
 
     ![ServiceNow 域和 URL 单一登录信息](./media/servicenow-tutorial/tutorial_servicenow_url.png)
 
@@ -121,7 +121,7 @@ ms.locfileid: "39259222"
     > [!NOTE] 
     > 这些不是实际值。 稍后需要基于实际登录 URL 和标识符更新这些值（本教程稍后会介绍）。
 
-4. 在“SAML 签名证书”部分中执行以下步骤： 
+1. 在“SAML 签名证书”部分中执行以下步骤： 
 
     ![证书下载链接](./media/servicenow-tutorial/tutorial_servicenow_certificate.png)
 
@@ -129,13 +129,13 @@ ms.locfileid: "39259222"
 
     b. 单击“证书(Base64)”，然后将证书保存在计算机上。
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/servicenow-tutorial/tutorial_general_400.png)
 
-6. 以管理员身份登录到 ServiceNow 应用程序。
+1. 以管理员身份登录到 ServiceNow 应用程序。
 
-7. 请按照以下步骤操作，激活“集成 - 多提供程序单一登录安装程序”插件：
+1. 请按照以下步骤操作，激活“集成 - 多提供程序单一登录安装程序”插件：
 
     a. 在左侧导航窗格中，通过搜索栏搜索“系统定义”部分，单击“插件”。
 
@@ -149,9 +149,9 @@ ms.locfileid: "39259222"
 
     d. 单击“激活”按钮。
 
-8. 可通过两种方式配置 **ServiceNow**：自动和手动。
+1. 可通过两种方式配置 **ServiceNow**：自动和手动。
 
-9. 若要自动配置 **ServiceNow**，请执行以下步骤
+1. 若要自动配置 **ServiceNow**，请执行以下步骤
 
     a. 返回到 Azure 门户中的 ServiceNow 单一登录页。
 
@@ -187,15 +187,15 @@ ms.locfileid: "39259222"
 
     * 单击页面右上角的“激活”。
 
-10. 若要手动配置 **ServiceNow**，请执行以下步骤
+1. 若要手动配置 **ServiceNow**，请执行以下步骤
 
-11. 以管理员身份登录到 ServiceNow 应用程序。
+1. 以管理员身份登录到 ServiceNow 应用程序。
 
-12. 在左侧导航窗格中，通过搜索栏搜索“多提供程序 SSO”，单击“属性”。
+1. 在左侧导航窗格中，通过搜索栏搜索“多提供程序 SSO”，单击“属性”。
 
     ![配置应用 URL](./media/servicenow-tutorial/tutorial_servicenow_06.png "配置应用 URL")
 
-13. 在“多提供程序 SSO 属性”对话框中，执行以下步骤：
+1. 在“多提供程序 SSO 属性”对话框中，执行以下步骤：
 
     ![配置应用 URL](./media/servicenow-tutorial/ic7694981.png "配置应用 URL")
 
@@ -209,15 +209,15 @@ ms.locfileid: "39259222"
 
     e. 单击“ **保存**”。
 
-14. 在左侧导航窗格中，通过搜索栏搜索“多提供程序 SSO”，单击“x509 证书”。
+1. 在左侧导航窗格中，通过搜索栏搜索“多提供程序 SSO”，单击“x509 证书”。
 
     ![配置单一登录](./media/servicenow-tutorial/tutorial_servicenow_05.png "配置单一登录")
 
-15. 在“X.509 证书”对话框中，单击“新建”。
+1. 在“X.509 证书”对话框中，单击“新建”。
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694974.png "配置单一登录")
 
-16. 在“x.509 证书”对话框中，执行以下步骤：
+1. 在“x.509 证书”对话框中，执行以下步骤：
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694975.png "配置单一登录")
 
@@ -233,19 +233,19 @@ ms.locfileid: "39259222"
 
      f. 单击“提交”。
 
-17. 在左侧导航窗格中，单击“标识提供者”。
+1. 在左侧导航窗格中，单击“标识提供者”。
 
     ![配置单一登录](./media/servicenow-tutorial/tutorial_servicenow_07.png "配置单一登录")
 
-18. 在“标识提供者”对话框中，单击“新建”。
+1. 在“标识提供者”对话框中，单击“新建”。
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694977.png "配置单一登录")
 
-19. 在“标识提供者”对话框中，单击“SAML2 Update1?”。
+1. 在“标识提供者”对话框中，单击“SAML2 Update1?”。
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694978.png "配置单一登录")
 
-20. 在“SAML2 Update1 属性”对话框中，执行以下步骤：
+1. 在“SAML2 Update1 属性”对话框中，执行以下步骤：
 
     ![配置单一登录](./media/servicenow-tutorial/idp.png "配置单一登录")
 
@@ -255,7 +255,7 @@ ms.locfileid: "39259222"
 
     c. 单击“导入”。
 
-21. 它将读取 IdP 元数据 URL，并填充所有字段信息。
+1. 它将读取 IdP 元数据 URL，并填充所有字段信息。
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694982.png "配置单一登录")
 
@@ -278,19 +278,19 @@ ms.locfileid: "39259222"
     > [!NOTE]
     > ServiceNow 不允许在未单击“测试连接”按钮的情况下激活 Idp，若要覆盖相同设置，请执行以下步骤。
 
-22. 单击在配置过程中创建的新标识提供者的菜单图标，并从列表中选择“副本 sys_id”
+1. 单击在配置过程中创建的新标识提供者的菜单图标，并从列表中选择“副本 sys_id”
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694992.png "配置单一登录")
 
-23. 在左上部的搜索框中，搜索 **sys_properties.list**，并按 Enter。
+1. 在左上部的搜索框中，搜索 **sys_properties.list**，并按 Enter。
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694993.png "配置单一登录")
 
-24. 单击“新建” 。
+1. 单击“新建” 。
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694994.png "配置单一登录")
 
-25. 在“系统属性”部分中，执行以下步骤：
+1. 在“系统属性”部分中，执行以下步骤：
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694995.png "配置单一登录")
 
@@ -302,11 +302,11 @@ ms.locfileid: "39259222"
 
     d. 单击“提交”。
 
-26. 单击“新建” 。
+1. 单击“新建” 。
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694994.png "配置单一登录")
 
-27. 在“系统属性”部分中，执行以下步骤：
+1. 在“系统属性”部分中，执行以下步骤：
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694996.png "配置单一登录")
 
@@ -316,7 +316,7 @@ ms.locfileid: "39259222"
 
     c. 单击“提交”。
 
-28. 执行上述步骤后，现在你将能够激活新的标识提供者，并且 SSO 应可正常工作
+1. 执行上述步骤后，现在你将能够激活新的标识提供者，并且 SSO 应可正常工作
 
 > [!NOTE]
 > 另请注意，必须在新的 incognito 窗口中测试新的 Idp 配置
@@ -327,11 +327,11 @@ ms.locfileid: "39259222"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
 
     ![配置单一登录](./media/servicenow-tutorial/tutorial_servicenow_samlbase.png)
 
-3. 在“ServiceNow 域和 URL”部分中执行以下步骤：
+1. 在“ServiceNow 域和 URL”部分中执行以下步骤：
 
     ![配置单一登录](./media/servicenow-tutorial/tutorial_servicenow_url.png)
 
@@ -342,29 +342,29 @@ ms.locfileid: "39259222"
     > [!NOTE]
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [ServiceNow 客户端支持团队](https://www.servicenow.com/support/contact-support.html)获取这些值。
 
-4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/servicenow-tutorial/tutorial_servicenow_certificates.png)
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录](./media/servicenow-tutorial/tutorial_general_400.png)
 
-6. 针对 ServiceNow 提供了一键式配置服务，即，让 Azure AD 自动配置 ServiceNow 的基于 SAML 的身份验证。 若要启用此服务，请转到“ServiceNow 配置”部分，单击“配置 ServiceNow”打开“配置登录”窗口。
+1. 针对 ServiceNow 提供了一键式配置服务，即，让 Azure AD 自动配置 ServiceNow 的基于 SAML 的身份验证。 若要启用此服务，请转到“ServiceNow 配置”部分，单击“配置 ServiceNow”打开“配置登录”窗口。
 
     ![配置单一登录](./media/servicenow-tutorial/tutorial_servicenow_configure.png)
 
-7. 在“配置登录”窗体中输入 ServiceNow 实例名称、管理员用户名和管理员密码，单击“立即配置”。 请注意，为使此操作生效，提供的管理员用户名必须具有在 ServiceNow 中分配的 **security_admin** 角色。 否则，若要手动将 ServiceNow 配置为使用 Azure AD 作为 SAML 标识提供者，请单击“手动配置单一登录”，从“快速参考”部分复制“注销 URL、SAML 实体 ID 和 SAML 单一登录服务 URL”。
+1. 在“配置登录”窗体中输入 ServiceNow 实例名称、管理员用户名和管理员密码，单击“立即配置”。 请注意，为使此操作生效，提供的管理员用户名必须具有在 ServiceNow 中分配的 **security_admin** 角色。 否则，若要手动将 ServiceNow 配置为使用 Azure AD 作为 SAML 标识提供者，请单击“手动配置单一登录”，从“快速参考”部分复制“注销 URL、SAML 实体 ID 和 SAML 单一登录服务 URL”。
 
     ![配置应用 URL](./media/servicenow-tutorial/configure.png "配置应用 URL")
 
-8. 以管理员身份登录到 ServiceNow Express 应用程序。
+1. 以管理员身份登录到 ServiceNow Express 应用程序。
 
-9. 在左侧导航窗格中，单击“单一登录”。
+1. 在左侧导航窗格中，单击“单一登录”。
 
     ![配置应用 URL](./media/servicenow-tutorial/ic7694980ex.png "配置应用 URL")
 
-10. 在“单一登录”对话框中，单击右上角的配置图标，设置以下属性：
+1. 在“单一登录”对话框中，单击右上角的配置图标，设置以下属性：
 
     ![配置应用 URL](./media/servicenow-tutorial/ic7694981ex.png "配置应用 URL")
 
@@ -374,11 +374,11 @@ ms.locfileid: "39259222"
     
     c. 在“...用户表上的字段”文本框中，键入“user_name”。
 
-11. 在“单一登录”对话框中，单击“添加新证书”。
+1. 在“单一登录”对话框中，单击“添加新证书”。
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694973ex.png "配置单一登录")
 
-12. 在“x.509 证书”对话框中，执行以下步骤：
+1. 在“x.509 证书”对话框中，执行以下步骤：
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694975.png "配置单一登录")
 
@@ -394,11 +394,11 @@ ms.locfileid: "39259222"
 
     f. 单击“更新”。
 
-13. 在“单一登录”对话框中，单击“添加新 IdP”。
+1. 在“单一登录”对话框中，单击“添加新 IdP”。
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694976ex.png "配置单一登录")
 
-14. 在“添加新的标识提供者”对话框的“配置标识提供者”下，执行以下步骤：
+1. 在“添加新的标识提供者”对话框的“配置标识提供者”下，执行以下步骤：
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694982ex.png "配置单一登录")
 
@@ -412,7 +412,7 @@ ms.locfileid: "39259222"
 
     e. 对于“标识提供者证书”，选择在上一步已创建的证书。
 
-15. 单击“高级设置”，并在“其他标识提供者属性”下，执行以下步骤：
+1. 单击“高级设置”，并在“其他标识提供者属性”下，执行以下步骤：
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694983ex.png "配置单一登录")
 
@@ -424,7 +424,7 @@ ms.locfileid: "39259222"
 
     d. 取消选择“创建 AuthnContextClass”。
 
-16. 在“其他服务提供者属性”下，执行以下步骤：
+1. 在“其他服务提供者属性”下，执行以下步骤：
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694984ex.png "配置单一登录")
 
@@ -458,15 +458,15 @@ ms.locfileid: "39259222"
 
     ![“Azure Active Directory”按钮](./media/servicenow-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/servicenow-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/servicenow-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/servicenow-tutorial/create_aaduser_04.png)
 
@@ -497,23 +497,23 @@ ms.locfileid: "39259222"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“ServiceNow”。
+1. 在应用程序列表中，选择“ServiceNow”。
 
     ![应用程序列表中的 ServiceNow 链接](./media/servicenow-tutorial/tutorial_servicenow_app.png)  
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

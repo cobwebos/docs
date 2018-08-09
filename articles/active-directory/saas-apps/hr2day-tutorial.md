@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2017
 ms.author: jeedes
-ms.openlocfilehash: a63ef3b089ec80da6a75aaaf8a4bb2454fec6cf7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 984e2e9999a2aba7a595034f1fec8bafb976f310
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224175"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441598"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>教程：Azure Active Directory 与 HR2day by Merces 集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "36224175"
 在本教程中，会在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加由 HR2day by Merces。
-2. 配置和测试 Azure AD 单一登录。
+1. 配置和测试 Azure AD 单一登录。
 
 ## <a name="add-hr2day-by-merces-from-the-gallery"></a>从库中添加由 HR2day by Merces
 若要配置 HR2day by Merces 与 Azure AD 的集成，请从库中将 HR2day by Merces 添加到托管 SaaS 应用列表。
@@ -63,19 +63,19 @@ ms.locfileid: "36224175"
 
     ![Active Directory][1]
 
-2. 转到“企业应用程序”。 然后转到“所有应用程序”。
+1. 转到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 若要添加新应用程序，请选择对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请选择对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入“HR2day by Merces”。
+1. 在搜索框中，键入“HR2day by Merces”。
 
     ![创建 Azure AD 测试用户](./media/hr2day-tutorial/tutorial_hr2daybymerces_search.png)
 
-5. 在结果面板中，选择“HR2day by Merces”，再选择“添加”按钮添加该应用程序。
+1. 在结果面板中，选择“HR2day by Merces”，再选择“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/hr2day-tutorial/tutorial_hr2daybymerces_addfromgallery.png)
 
@@ -89,10 +89,10 @@ ms.locfileid: "36224175"
 若要使用 HR2day by Merces 配置和测试 Azure AD 单一登录，需要完成以下构建基块：
 
 1. [配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)：使用户能够使用此功能。
-2. [创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)：通过 Britta Simon 测试 Azure AD 单一登录。
-3. [创建 HR2day by Merces 测试用户](#creating-an-hr2day-by-merces-test-user)：在 HR2day by Merces 中创建 Britta Simon 的对应者，链接到她的 Azure AD 表示形式。
-4. [分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)：使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [测试单一登录](#testing-single-sign-on)：验证配置是否正常工作。
+1. [创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)：通过 Britta Simon 测试 Azure AD 单一登录。
+1. [创建 HR2day by Merces 测试用户](#creating-an-hr2day-by-merces-test-user)：在 HR2day by Merces 中创建 Britta Simon 的对应者，链接到她的 Azure AD 表示形式。
+1. [分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)：使 Britta Simon 能够使用 Azure AD 单一登录。
+1. [测试单一登录](#testing-single-sign-on)：验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -104,11 +104,11 @@ ms.locfileid: "36224175"
 
     ![配置单一登录][4]
 
-2. 若要启用单一登录，请在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”。
+1. 若要启用单一登录，请在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”。
  
     ![配置单一登录](./media/hr2day-tutorial/tutorial_hr2daybymerces_samlbase.png)
 
-3. 在“HR2day by Merces 域和 URL”部分中，执行以下步骤：
+1. 在“HR2day by Merces 域和 URL”部分中，执行以下步骤：
 
     ![配置单一登录](./media/hr2day-tutorial/tutorial_hr2daybymerces_url.png)
 
@@ -121,11 +121,11 @@ ms.locfileid: "36224175"
  
 
 
-4. 在“SAML 签名证书”部分中，选择“证书(Base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，选择“证书(Base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/hr2day-tutorial/tutorial_hr2daybymerces_certificate.png) 
 
-5. 本部分介绍如何让用户通过他们在 Azure AD 中的帐户向 HR2day by Merces 进行身份验证。 为此，他们需要使用基于 SAML 协议的联合身份验证。
+1. 本部分介绍如何让用户通过他们在 Azure AD 中的帐户向 HR2day by Merces 进行身份验证。 为此，他们需要使用基于 SAML 协议的联合身份验证。
 
     HR2day by Merces 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 SAML 令牌。 以下屏幕截图显示了相关示例。 
 
@@ -134,7 +134,7 @@ ms.locfileid: "36224175"
     > [!NOTE] 
     在配置 SAML 断言前，必须联系 [HR2day by Merces 客户端支持团队](mailto:servicedesk@merces.nl)，并为租户请求唯一标识符属性值。 需要此值才能完成下一部分中的步骤。 
 
-6. 在“单一登录”对话框的“用户属性”部分中，按下图所示配置 SAML 令牌属性。 然后执行以下步骤。
+1. 在“单一登录”对话框的“用户属性”部分中，按下图所示配置 SAML 令牌属性。 然后执行以下步骤。
     
       | 属性名称    |   属性值 |  
     | ------------------- | -------------------- |    
@@ -158,15 +158,15 @@ ms.locfileid: "36224175"
     
     g. 选择“确定”。
 
-7. 选择“保存”按钮。
+1. 选择“保存”按钮。
 
     ![配置单一登录](./media/hr2day-tutorial/tutorial_general_400.png)
 
-8. 在“HR2day by Merces 配置”部分中，选择“通过 Merces 配置 HR2day”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+1. 在“HR2day by Merces 配置”部分中，选择“通过 Merces 配置 HR2day”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
 
     ![配置单一登录](./media/hr2day-tutorial/tutorial_hr2daybymerces_configure.png) 
 
-9. 若要配置应用程序的 SSO，请联系 [HR2day by Merces 客户端支持团队](mailTo:servicedesk@merces.nl)。 请在电子邮件中附加已下载的 **Certificate(Base64)** 文件。 另请提供“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”，将其配置为可以进行 SSO 集成。
+1. 若要配置应用程序的 SSO，请联系 [HR2day by Merces 客户端支持团队](mailTo:servicedesk@merces.nl)。 请在电子邮件中附加已下载的 **Certificate(Base64)** 文件。 另请提供“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”，将其配置为可以进行 SSO 集成。
 
     > [!NOTE]
     >向 Merces 团队提及此集成需要使用以下模式设置实体 ID：**https://hr2day.force.com/INSTANCENAME**。
@@ -186,15 +186,15 @@ ms.locfileid: "36224175"
 
     ![创建 Azure AD 测试用户](./media/hr2day-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，选择“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，选择“所有用户”。
     
     ![创建 Azure AD 测试用户](./media/hr2day-tutorial/create_aaduser_02.png) 
 
-3. 若要打开“用户”对话框，请选择对话框顶部的“添加”。
+1. 若要打开“用户”对话框，请选择对话框顶部的“添加”。
  
     ![创建 Azure AD 测试用户](./media/hr2day-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/hr2day-tutorial/create_aaduser_04.png) 
 
@@ -225,23 +225,23 @@ ms.locfileid: "36224175"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“HR2day by Merces”。
+1. 在应用程序列表中，选择“HR2day by Merces”。
 
     ![配置单一登录](./media/hr2day-tutorial/tutorial_hr2daybymerces_app.png) 
 
-3. 在左侧菜单中，选择“用户和组”。
+1. 在左侧菜单中，选择“用户和组”。
 
     ![分配用户][202] 
 
-4. 选择“添加”按钮。 然后，在“添加分配”对话框中选择“用户和组”。
+1. 选择“添加”按钮。 然后，在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框中的“用户”列表内，选择“Britta Simon”。
+1. 在“用户和组”对话框中的“用户”列表内，选择“Britta Simon”。
 
-6. 单击“选择”按钮。
+1. 单击“选择”按钮。
 
-7. 在“添加分配”对话框中选择“分配”。
+1. 在“添加分配”对话框中选择“分配”。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

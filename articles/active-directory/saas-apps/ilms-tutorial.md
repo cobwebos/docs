@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2017
 ms.author: jeedes
-ms.openlocfilehash: cdb59a7078b3bbce112356b61e19702fb6ed9df1
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0e67e97a68ca333dff366dd5e0222c96a1022557
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228717"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39425266"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ilms"></a>教程：Azure Active Directory 与 iLMS 的集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "36228717"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 iLMS
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-ilms-from-the-gallery"></a>从库中添加 iLMS
 要配置 iLMS 与 Azure AD 的集成，需要从库中将 iLMS 添加到托管 SaaS 应用列表。
@@ -63,19 +63,19 @@ ms.locfileid: "36228717"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 若要添加新的应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新的应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入 **iLMS**。
+1. 在搜索框中，键入 **iLMS**。
 
     ![创建 Azure AD 测试用户](./media/ilms-tutorial/tutorial_ilms_search.png)
 
-5. 在结果窗格中，选择“iLMS”，并单击“添加”按钮添加该应用程序。
+1. 在结果窗格中，选择“iLMS”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/ilms-tutorial/tutorial_ilms_addfromgallery.png)
 
@@ -89,10 +89,10 @@ ms.locfileid: "36228717"
 若要配置并测试 iLMS 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 iLMS 测试用户](#creating-an-ilms-test-user)** - 在 iLMS 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 iLMS 测试用户](#creating-an-ilms-test-user)** - 在 iLMS 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -104,11 +104,11 @@ ms.locfileid: "36228717"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![配置单一登录](./media/ilms-tutorial/tutorial_ilms_samlbase.png)
 
-3. 在“iLMS 域和 URL”部分中，如果要在“IDP”发起的模式下配置应用程序，请执行以下步骤：
+1. 在“iLMS 域和 URL”部分中，如果要在“IDP”发起的模式下配置应用程序，请执行以下步骤：
 
     ![配置单一登录](./media/ilms-tutorial/tutorial_ilms_url.png)
 
@@ -119,13 +119,13 @@ ms.locfileid: "36228717"
     >[!Note]
     >其中的“123456”是标识符的示例值。
 
-4. 如果要在“SP”发起的模式下配置应用程序，请选中“显示高级 URL 设置”：
+1. 如果要在“SP”发起的模式下配置应用程序，请选中“显示高级 URL 设置”：
 
     ![配置单一登录](./media/ilms-tutorial/tutorial_ilms_url1.png)
 
     在“登录 URL”文本框中，粘贴从 iLMS 管理门户上“SAML 设置”的“服务提供程序”部分中复制的、采用 `https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx` 模式的“终结点(URL)”值     
 
-5. 若要启用 JIT 预配，iLMS 应用程序需要采用特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示一个示例。
+1. 若要启用 JIT 预配，iLMS 应用程序需要采用特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示一个示例。
     
     ![配置单一登录](./media/ilms-tutorial/4.png)
     
@@ -134,7 +134,7 @@ ms.locfileid: "36228717"
     > [!NOTE] 
     > 必须在 iLMS 中启用“创建不可识别的用户帐户”才能映射这些属性。 遵照[此处](http://support.inspiredelearning.com/customer/portal/articles/2204526)的说明获取有关属性配置的思路。
 
-6. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
+1. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
     
     | 属性名称 | 属性值 |
     | ---------------| --------------- |    
@@ -154,17 +154,17 @@ ms.locfileid: "36228717"
     
     d. 单击“确定”
 
-7. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存 XML 文件。
+1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存 XML 文件。
 
     ![配置单一登录](./media/ilms-tutorial/tutorial_ilms_certificate.png) 
 
-8. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录](./media/ilms-tutorial/tutorial_general_400.png)
 
-9. 在另一个 Web 浏览器窗口中，以管理员身份登录到 **iLMS 管理门户**。
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 **iLMS 管理门户**。
 
-10. 单击“设置”选项卡下面的“SSO:SAML”打开“SAML 设置”并执行以下步骤：
+1. 单击“设置”选项卡下面的“SSO:SAML”打开“SAML 设置”并执行以下步骤：
     
     ![配置单一登录](./media/ilms-tutorial/1.png) 
 
@@ -182,13 +182,13 @@ ms.locfileid: "36228717"
         
        - 选中“创建不可识别的用户帐户”。
        
-       ![配置单一登录](./media/ilms-tutorial/tutorial_ilms_ssoconfig2.png)
+       ![Configure Single Sign-On](./media/ilms-tutorial/tutorial_ilms_ssoconfig2.png)
 
        -  将 Azure AD 中的属性映射到 iLMS 中的属性。 在属性列中，指定属性名称或默认值。
 
     e. 转到“业务规则”选项卡并执行以下步骤： 
         
-       ![配置单一登录](./media/ilms-tutorial/5.png)
+       ![Configure Single Sign-On](./media/ilms-tutorial/5.png)
 
        - 选中“创建不可识别的区域、分支和部门”，创建单一登录时尚不存在的区域、分支和部门。
         
@@ -198,7 +198,7 @@ ms.locfileid: "36228717"
         
        - 选中“发送错误通知电子邮件”，并输入要向其发送错误通知电子邮件的用户显示的电子邮件内容。
 
-11. 单击“保存”按钮保存设置。
+1. 单击“保存”按钮保存设置。
 
     ![配置单一登录](./media/ilms-tutorial/save.png)
 
@@ -216,15 +216,15 @@ ms.locfileid: "36228717"
 
     ![创建 Azure AD 测试用户](./media/ilms-tutorial/create_aaduser_01.png) 
 
-2. 转到“用户和组”，单击“所有用户”显示用户列表。
+1. 转到“用户和组”，单击“所有用户”显示用户列表。
     
     ![创建 Azure AD 测试用户](./media/ilms-tutorial/create_aaduser_02.png) 
 
-3. 在对话框顶部单击“添加”，打开“用户”对话框。
+1. 在对话框顶部单击“添加”，打开“用户”对话框。
  
     ![创建 Azure AD 测试用户](./media/ilms-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/ilms-tutorial/create_aaduser_04.png) 
 
@@ -244,11 +244,11 @@ ms.locfileid: "36228717"
 
 1. 以管理员身份登录到 iLMS 公司站点。
 
-2. 单击“用户”选项卡下面的“注册用户”打开“注册用户”页。 
+1. 单击“用户”选项卡下面的“注册用户”打开“注册用户”页。 
    
    ![添加员工](./media/ilms-tutorial/3.png)
 
-3. 在“注册用户”页上执行以下步骤。
+1. 在“注册用户”页上执行以下步骤。
 
     ![添加员工](./media/ilms-tutorial/create_testuser_add.png)
 
@@ -281,23 +281,23 @@ ms.locfileid: "36228717"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“iLMS”。
+1. 在应用程序列表中，选择“iLMS”。
 
     ![配置单一登录](./media/ilms-tutorial/tutorial_ilms_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 

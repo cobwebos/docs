@@ -9,19 +9,19 @@ editor: daden
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.openlocfilehash: 450c033fbce3544cdc17ddc6d47ff726b01a4d3e
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7a13cafd3dcfb4637a5deae2c678c518019ad168
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832656"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39450667"
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>基于 TB 量级的数据执行服务器工作负荷预测
 
@@ -49,7 +49,7 @@ ms.locfileid: "34832656"
 运行此示例的先决条件如下所示：
 
 * [Azure 帐户](https://azure.microsoft.com/free/)（有免费试用版可用）。
-* [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) 的已安装副本。 若要安装此程序并创建工作区，请参阅[快速入门安装指南](../service/quickstart-installation.md)。 如果有多个订阅，则可以[将所需订阅设置为当前的活动订阅](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az_account_set)。
+* [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) 的已安装副本。 若要安装此程序并创建工作区，请参阅[快速入门安装指南](../service/quickstart-installation.md)。 如果有多个订阅，则可以[将所需订阅设置为当前的活动订阅](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set)。
 * Windows 10（对于 macOS 系统，此示例中的说明通常也一样）。
 * Data Science Virtual Machine (DSVM) for Linux (Ubuntu)，最好位于数据所在的美国东部地区。 可以按照[这些说明](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)预配 Ubuntu DSVM。 也可参阅[此快速入门](https://ms.portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu)。 我们建议使用至少具有 8 个内核和 32 GB 内存的虚拟机。 
 
@@ -101,7 +101,7 @@ DSVM IP 地址 | xxx|
 
 总数据大小约为 1 TB。 每个文件约为 1-3 GB，且是不含标头的 CSV 文件格式。 每行数据代表某个特定服务器上的事务负荷。 数据架构的详细信息如下所示：
 
-列号 | 字段名称| Type | 说明 |  
+列号 | 字段名称| Type | Description |  
 |------------|------|-------------|---------------|
 1  | `SessionStart` | Datetime |    会话开始时间
 2  |`SessionEnd`    | Datetime | 会话结束时间
@@ -129,7 +129,7 @@ DSVM IP 地址 | xxx|
 
 本示例中的文件按如下方式组织。
 
-| 文件名 | Type | 说明 |
+| 文件名 | Type | Description |
 |-----------|------|-------------|
 | `Code` | 文件夹 | 包含该示例中所有代码的文件夹。 |
 | `Config` | 文件夹 | 包含配置文件的文件夹。 |
@@ -160,7 +160,7 @@ DSVM IP 地址 | xxx|
 
 应将一个容器用于一个月数据集的试验，将另一个容器用于完整数据集的试验。 因为数据和模型另存为 Parquet 文件，所以每个文件实际上是容器中的一个文件夹，包含多个 Blob。 生成的容器如下所示：
 
-| Blob 前缀名称 | Type | 说明 |
+| Blob 前缀名称 | Type | Description |
 |-----------|------|-------------|
 | featureScaleModel | Parquet | 数字功能的标准扩展器模型。 |
 | stringIndexModel | Parquet | 非数字功能的字符串索引器模型。|
@@ -186,7 +186,7 @@ DSVM IP 地址 | xxx|
 
 第一个参数 `configFilename` 是本地配置文件，可以在该文件中存储 Blob 存储信息并指定加载数据的位置。 默认情况下，它是 [`Config/storageconfig.json`](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/storageconfig.json)，并将在一个月数据运行中使用。 我们还加入了 [`Config/fulldata_storageconfig.json`](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldatastorageconfig.json)，完整数据集运行中将需要使用。 配置中的内容如下所示： 
 
-| 字段 | Type | 说明 |
+| 字段 | Type | Description |
 |-----------|------|-------------|
 | storageAccount | String | Azure 存储帐户名称 |
 | storageContainer | String | Azure 存储帐户中用于存储中间结果的容器 |

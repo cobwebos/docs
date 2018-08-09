@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: a4a25af2b4e05f9e635cec32571aff796084a8c7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4e33ad66fe0ced9a426a608f4193ff52dec4f7ee
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212703"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441827"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>教程：Azure Active Directory 与 HackerOne 集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "36212703"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 HackerOne
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-hackerone-from-the-gallery"></a>从库中添加 HackerOne
 若要配置 HackerOne 与 Azure AD 的集成，需要从库中将 HackerOne 添加到托管 SaaS 应用列表。
@@ -63,19 +63,19 @@ ms.locfileid: "36212703"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入“HackerOne”。
+1. 在搜索框中，键入“HackerOne”。
 
     ![创建 Azure AD 测试用户](./media/hackerone-tutorial/tutorial_hackerone_search.png)
 
-5. 在结果面板中，选择“HackerOne”，然后单击“添加”按钮添加该应用程序。
+1. 在结果面板中，选择“HackerOne”，然后单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/hackerone-tutorial/tutorial_hackerone_addfromgallery.png)
 
@@ -90,10 +90,10 @@ ms.locfileid: "36212703"
 若要配置和测试 HackerOne 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. [创建 HackerOne 测试用户](#creating-a-hackerone-test-user) - 在 HackerOne 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. [创建 HackerOne 测试用户](#creating-a-hackerone-test-user) - 在 HackerOne 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
+1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -105,44 +105,44 @@ ms.locfileid: "36212703"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![配置单一登录](./media/hackerone-tutorial/tutorial_hackerone_samlbase.png)
 
-3. 在“HackerOne 单一登录 URL 和标识符”部分，执行以下步骤：
+1. 在“HackerOne 单一登录 URL 和标识符”部分，执行以下步骤：
 
     ![配置单一登录](./media/hackerone-tutorial/tutorial_hackerone_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://hackerone.com/<company name>/authentication`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://hackerone.com/<company name>/authentication`
 
     b. 在“标识符”文本框中，键入 URL：`https://hackerone.com/users/saml/metadata`
     
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新此值。 请联系 [HackerOne 支持团队](mailto:support@hackerone.com)获取此值。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/hackerone-tutorial/tutorial_hackerone_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录](./media/hackerone-tutorial/tutorial_general_400.png)
 
-6. 在“HackerOne 配置”部分，单击“配置 HackerOne”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
+1. 在“HackerOne 配置”部分，单击“配置 HackerOne”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
 
     ![配置单一登录](./media/hackerone-tutorial/tutorial_hackerone_configure.png) 
 
-7. 以管理员身份登录到 HackerOne 租户。
+1. 以管理员身份登录到 HackerOne 租户。
 
-8. 在顶部菜单中，单击“设置”。
+1. 在顶部菜单中，单击“设置”。
    
     ![配置单一登录](./media/hackerone-tutorial/tutorial_hackerone_001.png) 
 
-9. 导航到“身份验证”并单击“添加 SAML 设置”。
+1. 导航到“身份验证”并单击“添加 SAML 设置”。
    
     ![配置单一登录](./media/hackerone-tutorial/tutorial_hackerone_003.png) 
 
-10. 在“SAML 设置”对话框中，执行以下步骤：
+1. 在“SAML 设置”对话框中，执行以下步骤：
    
     ![配置单一登录](./media/hackerone-tutorial/tutorial_hackerone_004.png) 
 
@@ -154,7 +154,7 @@ ms.locfileid: "36212703"
     
     d. 单击“ **保存**”。
 
-11. 在“身份验证设置”对话框中，执行以下步骤：
+1. 在“身份验证设置”对话框中，执行以下步骤：
    
     ![配置单一登录](./media/hackerone-tutorial/tutorial_hackerone_005.png) 
 
@@ -177,15 +177,15 @@ ms.locfileid: "36212703"
 
     ![创建 Azure AD 测试用户](./media/hackerone-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
     ![创建 Azure AD 测试用户](./media/hackerone-tutorial/create_aaduser_02.png) 
 
-3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
  
     ![创建 Azure AD 测试用户](./media/hackerone-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/hackerone-tutorial/create_aaduser_04.png) 
 
@@ -219,23 +219,23 @@ ms.locfileid: "36212703"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“HackerOne”。
+1. 在应用程序列表中，选择“HackerOne”。
 
     ![配置单一登录](./media/hackerone-tutorial/tutorial_hackerone_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 

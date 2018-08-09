@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: douglasl
-ms.openlocfilehash: 26ab8c0547bb533a032dec59183f8152be9180cf
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: c3aeb57bf9c613da3edb8c5dda0e88aa308a4b6e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364539"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39448435"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>在 Azure 数据工厂中进行持续集成和部署
 
@@ -53,15 +53,15 @@ ms.locfileid: "39364539"
 
 1.  使用 VSTS 设置开发数据工厂，以便所有开发人员都能创作数据工厂资源，例如管道、数据集，等等。
 
-2.  然后，开发人员就可以修改管道之类的资源。 进行修改后，开发人员可以选择“调试”来查看在使用最新更改的情况下管道的运行情况。
+1.  然后，开发人员就可以修改管道之类的资源。 进行修改后，开发人员可以选择“调试”来查看在使用最新更改的情况下管道的运行情况。
 
-3.  对所做的更改满意以后，开发人员可以创建一个拉取请求，将请求从其分支拉取到 master 分支（或 collaboration 分支），让同行来审核他们的更改。
+1.  对所做的更改满意以后，开发人员可以创建一个拉取请求，将请求从其分支拉取到 master 分支（或 collaboration 分支），让同行来审核他们的更改。
 
-4.  将更改置于 master 分支中以后，即可选择“发布”，将其发布到开发工厂。
+1.  将更改置于 master 分支中以后，即可选择“发布”，将其发布到开发工厂。
 
-5.  准备将更改提升到测试工厂和生产工厂时，团队可以将资源管理器模板从 master 分支导出，或者在 master 分支需要对实时开发数据工厂提供支持的情况下，从任何其他分支导出。
+1.  准备将更改提升到测试工厂和生产工厂时，团队可以将资源管理器模板从 master 分支导出，或者在 master 分支需要对实时开发数据工厂提供支持的情况下，从任何其他分支导出。
 
-6.  可以使用不同的参数文件，将导出的资源管理器模板部署到测试工厂和生产工厂。
+1.  可以使用不同的参数文件，将导出的资源管理器模板部署到测试工厂和生产工厂。
 
 ## <a name="automate-continuous-integration-with-vsts-releases"></a>使用 VSTS 版本自动完成持续集成
 
@@ -81,19 +81,19 @@ ms.locfileid: "39364539"
 
 1.  转到使用数据工厂配置的项目中的 VSTS 页。
 
-2.  单击顶部菜单“内部版本和版本”&gt;“版本”&gt;“创建版本定义”。
+1.  单击顶部菜单“内部版本和版本”&gt;“版本”&gt;“创建版本定义”。
 
     ![](media/continuous-integration-deployment/continuous-integration-image6.png)
 
-3.  选择“空进程”模板。
+1.  选择“空进程”模板。
 
-4.  输入环境的名称。
+1.  输入环境的名称。
 
-5.  添加一个 Git 项目，选择使用数据工厂配置的存储库。 选择 `adf_publish` 作为使用最新默认版本的默认分支。
+1.  添加一个 Git 项目，选择使用数据工厂配置的存储库。 选择 `adf_publish` 作为使用最新默认版本的默认分支。
 
     ![](media/continuous-integration-deployment/continuous-integration-image7.png)
 
-7.  添加 Azure 资源管理器部署任务：
+1.  添加 Azure 资源管理器部署任务：
 
     a.  创建新的任务，然后搜索并添加“Azure 资源组部署”。
 
@@ -109,9 +109,9 @@ ms.locfileid: "39364539"
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
-8.  保存发布定义。
+1.  保存发布定义。
 
-9.  根据此版本定义创建新版本。
+1.  根据此版本定义创建新版本。
 
     ![](media/continuous-integration-deployment/continuous-integration-image10.png)
 
@@ -144,7 +144,7 @@ ms.locfileid: "39364539"
 
     -   参数文件也需位于 publish 分支中。
 
-2.  在上一部分中介绍的 Azure 资源管理器部署之前添加 [Azure Key Vault 任务](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault)：
+1.  在上一部分中介绍的 Azure 资源管理器部署之前添加 [Azure Key Vault 任务](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault)：
 
     -   选择“任务”选项卡，创建新的任务，然后搜索并添加“Azure Key Vault”。
 
@@ -160,9 +160,9 @@ ms.locfileid: "39364539"
 
 1.  在 VSTS 版本的“任务”选项卡中，搜索并添加“Azure Powershell”。
 
-2.  选择“Azure 资源管理器”作为连接类型，然后选择订阅。
+1.  选择“Azure 资源管理器”作为连接类型，然后选择订阅。
 
-3.  选择“内联脚本”作为脚本类型，然后提供代码。 以下示例停止触发器：
+1.  选择“内联脚本”作为脚本类型，然后提供代码。 以下示例停止触发器：
 
     ```powershell
     $triggersADF = Get-AzureRmDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName

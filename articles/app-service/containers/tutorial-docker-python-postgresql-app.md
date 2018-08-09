@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 07/13/2018
 ms.author: beverst;cephalin
 ms.custom: mvc
-ms.openlocfilehash: 20b549914daf71c0d23235b5c20ebb6f14367471
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: ce84498ab89891bd7b96cfcc6b0c7ac029c93cbd
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172028"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423073"
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>在 Azure 中构建 Docker Python 和 PostgreSQL Web 应用
 
@@ -25,7 +25,7 @@ ms.locfileid: "39172028"
 
 ![Linux 应用服务中的 Docker Python Flask 应用](./media/tutorial-docker-python-postgresql-app/docker-flask-in-azure.png)
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 在 Azure 中创建 PostgreSQL 数据库
@@ -133,7 +133,7 @@ Flask 示例应用程序在数据库中存储用户数据。 如果成功注册�
 
 ### <a name="create-an-azure-database-for-postgresql-server"></a>创建 Azure Database for PostgreSQL 服务器
 
-在 Cloud Shell 中使用 [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az_postgres_server_create) 命令创建 PostgreSQL 服务器。
+在 Cloud Shell 中使用 [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create) 命令创建 PostgreSQL 服务器。
 
 在以下示例命令中，请将 *\<postgresql_name>* 替换为唯一的服务器名称，并将 *\<admin_username>* 和 *\<admin_password>* 替换为所需的用户凭据。 此服务器名称将用作 PostgreSQL 终结点 (`https://<postgresql_name>.postgres.database.azure.com`) 的一部分，因此需要在 Azure 中的所有服务器之间保持唯一。 用户凭据用于数据库管理员用户帐户。 
 
@@ -339,7 +339,7 @@ docker push <registry_name>.azurecr.io/flask-postgresql-sample
 
 ### <a name="create-a-web-app"></a>创建 Web 应用
 
-在 Cloud Shell 中，使用 [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) 命令在 myAppServicePlan 应用服务计划中创建 Web 应用。
+在 Cloud Shell 中，使用 [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 命令在 myAppServicePlan 应用服务计划中创建 Web 应用。
 
 在下面的命令中，将 \<app_name> 占位符替换为唯一应用名称。 该名称是 Web 应用的默认 URL 的一部分，因此需要在 Azure 应用服务中的所有应用之间保持唯一性。
 
@@ -368,7 +368,7 @@ az webapp create --name <app_name> --resource-group myResourceGroup --plan myApp
 
 在本教程的前面部分，你已定义用于连接到 PostgreSQL 数据库的环境变量。
 
-在应用服务中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) 命令将环境变量设置为应用设置。
+在应用服务中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令将环境变量设置为应用设置。
 
 以下示例将数据库连接详细信息指定为应用设置。 它还使用针对容器端口 5000 的 *WEBSITES_PORT* 变量，以便容器接收端口 80 上的 HTTP 流量。
 
@@ -378,7 +378,7 @@ az webapp config appsettings set --name <app_name> --resource-group myResourceGr
 
 ### <a name="configure-custom-container-deployment"></a>配置自定义容器部署
 
-即使已指定容器映像名称，也仍需指定自定义注册表 URL 和用户凭据。 在 Cloud Shell 中运行 [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set) 命令。
+即使已指定容器映像名称，也仍需指定自定义注册表 URL 和用户凭据。 在 Cloud Shell 中运行 [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) 命令。
 
 ```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app_name> --docker-registry-server-user "<registry_name>" --docker-registry-server-password "<registry_password>" --docker-registry-server-url "https://<registry_name>.azurecr.io"

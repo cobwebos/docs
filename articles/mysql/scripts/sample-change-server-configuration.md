@@ -11,12 +11,12 @@ ms.devlang: azure-cli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
-ms.openlocfilehash: 8a119d611d4b2817ad85ebe30b88d11cce6fca9f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 75b1228df8bc19ced1d8377768c08048e6ef9150
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38652838"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441650"
 ---
 # <a name="list-and-update-configurations-of-an-azure-database-for-mysql-server-using-azure-cli"></a>使用 Azure CLI 列出和更新用于 MySQL 服务器的 Azure 数据库的配置
 此示例 CLI 脚本列出了 Azure 数据库所有适用于 MySQL 服务器的可用配置参数及其允许的值，并将 innodb_lock_wait_timeout 设置为默认值以外的值。
@@ -38,12 +38,12 @@ ms.locfileid: "38652838"
 
 | **命令** | **说明** |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
-| [az mysql server create](/cli/azure/mysql/server#az_msql_server_create) | 创建用于托管数据库的 MySQL 服务器。 |
-| [az mysql server configuration list](/cli/azure/mysql/server/configuration#az_msql_server_configuration_list) | 列出用于 MySQL 服务器的 Azure 数据库的配置。 |
-| [az mysql server configuration set](/cli/azure/mysql/server/configuration#az_msql_server_configuration_set) | 更新用于 MySQL 服务器的 Azure 数据库的配置。 |
-| [az mysql server configuration show](/cli/azure/mysql/server/configuration#az_msql_server_configuration_show) | 显示用于 MySQL 服务器的 Azure 数据库的配置。 |
-| [az group delete](/cli/azure/group#az_group_delete) | 删除资源组，包括所有嵌套的资源。 |
+| [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
+| [az mysql server create](/cli/azure/mysql/server#az-msql-server-create) | 创建用于托管数据库的 MySQL 服务器。 |
+| [az mysql server configuration list](/cli/azure/mysql/server/configuration#az-msql-server-configuration-list) | 列出用于 MySQL 服务器的 Azure 数据库的配置。 |
+| [az mysql server configuration set](/cli/azure/mysql/server/configuration#az-msql-server-configuration-set) | 更新用于 MySQL 服务器的 Azure 数据库的配置。 |
+| [az mysql server configuration show](/cli/azure/mysql/server/configuration#az-msql-server-configuration-show) | 显示用于 MySQL 服务器的 Azure 数据库的配置。 |
+| [az group delete](/cli/azure/group#az-group-delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 - 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。

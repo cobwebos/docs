@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 962b3f0e18c2dbedf80c0cfca6bc8275b394307b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 4d8be22a6b700d5ea9d95ee19d6ad3fa7bf5910a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39046009"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440826"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silkroad-life-suite"></a>教程：Azure Active Directory 与 SilkRoad Life Suite 集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "39046009"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 SilkRoad Life Suite
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-silkroad-life-suite-from-the-gallery"></a>从库中添加 SilkRoad Life Suite
 要配置 SilkRoad Life Suite 与 Azure AD 的集成，需要从库中将 SilkRoad Life Suite 添加到托管 SaaS 应用列表。
@@ -64,15 +64,15 @@ ms.locfileid: "39046009"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中，键入“SilkRoad Life Suite”，在结果面板中选择“SilkRoad Life Suite”，然后单击“添加”按钮添加该应用程序。
+1. 在搜索框中，键入“SilkRoad Life Suite”，在结果面板中选择“SilkRoad Life Suite”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 SilkRoad Life Suite](./media/silkroad-life-suite-tutorial/tutorial_silkroadlifesuite_addfromgallery.png)
 
@@ -87,10 +87,10 @@ ms.locfileid: "39046009"
 若要配置和测试 SilkRoad Life Suite 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 SilkRoad Life Suite 测试用户](#create-a-silkroad-life-suite-test-user)** - 在 SilkRoad Life Suite 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 SilkRoad Life Suite 测试用户](#create-a-silkroad-life-suite-test-user)** - 在 SilkRoad Life Suite 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -102,15 +102,15 @@ ms.locfileid: "39046009"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![“单一登录”对话框](./media/silkroad-life-suite-tutorial/tutorial_silkroadlifesuite_samlbase.png)
 
-3. 在“SilkRoad Life Suite 域和 URL”部分中，执行以下步骤：
+1. 在“SilkRoad Life Suite 域和 URL”部分中，执行以下步骤：
 
     ![SilkRoad Life Suite 域和 URL 单一登录信息](./media/silkroad-life-suite-tutorial/tutorial_silkroadlifesuite_url1.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.silkroad-eng.com/Authentication/`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.silkroad-eng.com/Authentication/`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL： 
     | |
@@ -127,56 +127,56 @@ ms.locfileid: "39046009"
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [SilkRoad Life Suite 客户端支持团队](https://www.silkroad.com/locations/)获取这些值。 
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
+1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![证书下载链接](./media/silkroad-life-suite-tutorial/tutorial_silkroadlifesuite_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/silkroad-life-suite-tutorial/tutorial_general_400.png)
     
-6. 在“SilkRoad Life Suite 配置”部分中，单击“配置 SilkRoad Life Suite”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+1. 在“SilkRoad Life Suite 配置”部分中，单击“配置 SilkRoad Life Suite”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
 
     ![SilkRoad Life Suite 配置](./media/silkroad-life-suite-tutorial/tutorial_silkroadlifesuite_configure.png) 
 
-7. 以管理员身份登录 SilkRoad 公司站点。 
+1. 以管理员身份登录 SilkRoad 公司站点。 
  
     >[!NOTE] 
     > 若要获取对 SilkRoad Life Suite 身份验证应用程序的访问权限以配置 Microsoft Azure AD 的联合身份验证，请联系 SilkRoad 支持或 SilkRoad 服务代表。
 
-8. 转到“服务提供商”，并单击“联合身份验证详细信息”。 
+1. 转到“服务提供商”，并单击“联合身份验证详细信息”。 
    
     ![Azure AD 单一登录][10]
 
-9. 单击“下载联合元数据”，并在计算机上保存该元数据文件。
+1. 单击“下载联合元数据”，并在计算机上保存该元数据文件。
    
     ![Azure AD 单一登录][11] 
 
-10. 在 **SilkRoad** 应用程序中，单击“身份验证源”。
+1. 在 **SilkRoad** 应用程序中，单击“身份验证源”。
    
     ![Azure AD 单一登录][12] 
 
-11. 单击“添加身份验证源”。 
+1. 单击“添加身份验证源”。 
    
     ![Azure AD 单一登录][13] 
 
-12. 在“添加身份验证源”部分中，执行以下步骤： 
+1. 在“添加身份验证源”部分中，执行以下步骤： 
    
     ![Azure AD 单一登录][14]
   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“选项 2 - 元数据文件”下，单击“浏览”上传从 Azure 门户下载的元数据文件。
+    a. 在“选项 2 - 元数据文件”下，单击“浏览”上传从 Azure 门户下载的元数据文件。
   
     b. 单击“使用文件数据创建标识提供者”。
 
-13. 在“身份验证源”部分中，单击“编辑”。 
+1. 在“身份验证源”部分中，单击“编辑”。 
     
      ![Azure AD 单一登录][15] 
 
-14. 在“编辑身份验证源”对话框中，执行以下步骤： 
+1. 在“编辑身份验证源”对话框中，执行以下步骤： 
     
      ![Azure AD 单一登录][16] 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“启用”，请选择“是”。
+    a. 对于“启用”，请选择“是”。
 
     b. 将从 Azure 门户复制的“SAML 实体 ID”值粘贴到“实体 ID”文本框中。
    
@@ -192,7 +192,7 @@ ms.locfileid: "39046009"
 
     h. 单击“ **保存**”。
 
-15. 禁用所有其他身份验证源。 
+1. 禁用所有其他身份验证源。 
     
      ![Azure AD 单一登录][17]
 
@@ -211,19 +211,19 @@ ms.locfileid: "39046009"
 
     ![“Azure Active Directory”按钮](./media/silkroad-life-suite-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/silkroad-life-suite-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/silkroad-life-suite-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/silkroad-life-suite-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -247,23 +247,23 @@ ms.locfileid: "39046009"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“SilkRoad Life Suite”。
+1. 在应用程序列表中，选择“SilkRoad Life Suite”。
 
     ![应用程序列表中的 SilkRoad Life Suite 链接](./media/silkroad-life-suite-tutorial/tutorial_silkroadlifesuite_app.png)  
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

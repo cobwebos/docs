@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 05ec113db5fbdc0f2ea7d1f176c9be654f53a946
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 5d8aef1edf4d7a02686db48d3e788e4f9493c398
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39053336"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39448479"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-docusign"></a>教程：Azure Active Directory 与 DocuSign 的集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "39053336"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 DocuSign
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-docusign-from-the-gallery"></a>从库中添加 DocuSign
 若要配置 DocuSign 与 Azure AD 的集成，需要从库中将 DocuSign 添加到托管 SaaS 应用列表。
@@ -63,19 +63,19 @@ ms.locfileid: "39053336"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 单击对话框顶部的“新建应用程序”按钮。
+1. 单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入“DocuSign”。
+1. 在搜索框中，键入“DocuSign”。
 
     ![创建 Azure AD 测试用户](./media/docusign-tutorial/tutorial_docusign_search.png)
 
-5. 在结果面板中，选择“DocuSign”，然后单击“添加”按钮添加该应用程序。
+1. 在结果面板中，选择“DocuSign”，然后单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/docusign-tutorial/tutorial_docusign_addfromgallery.png)
 
@@ -89,10 +89,10 @@ ms.locfileid: "39053336"
 若要配置和测试 DocuSign 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 DocuSign 测试用户](#creating-a-docusign-test-user)** - 在 DocuSign 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 DocuSign 测试用户](#creating-a-docusign-test-user)** - 在 DocuSign 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -104,44 +104,44 @@ ms.locfileid: "39053336"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![配置单一登录](./media/docusign-tutorial/tutorial_docusign_samlbase.png)
 
-3. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
 
     ![配置单一登录](./media/docusign-tutorial/tutorial_docusign_certificate.png) 
 
-4. 在 Azure 门户的“DocuSign 配置”部分中，单击“配置 DocuSign”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+1. 在 Azure 门户的“DocuSign 配置”部分中，单击“配置 DocuSign”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
     
     ![配置单一登录](./media/docusign-tutorial/tutorial_docusign_configure.png)
 
-5. 在另一个 Web 浏览器窗口中，以管理员身份登录到 DocuSign 管理门户。
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 DocuSign 管理门户。
 
-6. 在左侧的导航菜单中，单击“域”。
+1. 在左侧的导航菜单中，单击“域”。
    
     ![配置单一登录][51]
 
-7. 在右窗格上，单击“声明域”。
+1. 在右窗格上，单击“声明域”。
    
     ![配置单一登录][52]
 
-8. 在“声明域”对话框中，在“域名”文本框中，键入你的公司域，并单击“声明”。 确保对域进行验证并且其状态为活动。
+1. 在“声明域”对话框中，在“域名”文本框中，键入你的公司域，并单击“声明”。 确保对域进行验证并且其状态为活动。
    
     ![配置单一登录][53]
 
-9. 在左侧的菜单中，单击“标识提供者”。  
+1. 在左侧的菜单中，单击“标识提供者”。  
    
     ![配置单一登录][54]
-10. 在右窗格上，单击“添加标识提供者”。 
+1. 在右窗格上，单击“添加标识提供者”。 
    
     ![配置单一登录][55]
 
-11. 在“标识提供者设置”页上，执行以下步骤：
+1. 在“标识提供者设置”页上，执行以下步骤：
    
     ![配置单一登录][56]
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，为配置键入一个唯一的名称。 请不要使用空格。
+    a. 在“名称”文本框中，为配置键入一个唯一的名称。 请不要使用空格。
 
     b. 将 SAML 实体 ID 粘贴到“标识提供者颁发者”文本框中。
 
@@ -155,28 +155,28 @@ ms.locfileid: "39053336"
 
     g. 对于“注销请求发送方式”，选择“GET”。
 
-12. 在“自定义属性映射”部分中，选择要通过 Azure AD 声明映射的字段。 在此示例中，**emailaddress** 声明使用 **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** 的值映射。 这是 Azure AD 中用于电子邮件声明的默认声明名称。 
+1. 在“自定义属性映射”部分中，选择要通过 Azure AD 声明映射的字段。 在此示例中，**emailaddress** 声明使用 **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** 的值映射。 这是 Azure AD 中用于电子邮件声明的默认声明名称。 
    
     > [!NOTE]
     > 请使用合适的“用户标识符”将用户从 Azure AD 映射到 Docusign 用户映射。 根据组织设置选择正确的字段并输入合适的值。
           
     ![配置单一登录][57]
 
-13. 在“标识提供者证书”部分中，单击“添加证书”，然后上传已从 Azure AD 门户下载的证书。   
+1. 在“标识提供者证书”部分中，单击“添加证书”，然后上传已从 Azure AD 门户下载的证书。   
    
     ![配置单一登录][58]
 
-14. 单击“ **保存**”。
+1. 单击“ **保存**”。
 
-15. 在“标识提供者”部分中，单击“操作”，并单击“终结点”。   
+1. 在“标识提供者”部分中，单击“操作”，并单击“终结点”。   
    
     ![配置单一登录][59]
  
-16. 在“DocuSign 管理门户”上的“查看 SAML 2.0 终结点”部分中，执行以下步骤：
+1. 在“DocuSign 管理门户”上的“查看 SAML 2.0 终结点”部分中，执行以下步骤：
    
     ![配置单一登录][60]
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 复制“服务提供程序颁发者 URL”，然后将其粘贴到 Azure 门户的“DocuSign 域和 URL”部分中的“标识符”文本框中，其模式如下：`https://<subdomain>.docusign.com/organization/<uniqueID>/saml2/login/sp/<uniqueID>`。
+    a. 复制“服务提供程序颁发者 URL”，然后将其粘贴到 Azure 门户的“DocuSign 域和 URL”部分中的“标识符”文本框中，其模式如下：`https://<subdomain>.docusign.com/organization/<uniqueID>/saml2/login/sp/<uniqueID>`。
    
     b. 复制“服务提供程序登录 URL”，然后将其粘贴到 Azure 门户的“DocuSign 域和 URL”部分中的“登录 URL”文本框中，其模式如下：`https://<subdomain>.docusign.com/organization/<uniqueID>/saml2/`。
 
@@ -184,7 +184,7 @@ ms.locfileid: "39053336"
       
     c.  单击“关闭”。
     
-17. 在 Azure 门户中，单击“保存”。
+1. 在 Azure 门户中，单击“保存”。
     
     ![配置单一登录](./media/docusign-tutorial/tutorial_general_400.png)
 
@@ -202,19 +202,19 @@ ms.locfileid: "39053336"
 
     ![创建 Azure AD 测试用户](./media/docusign-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
     ![创建 Azure AD 测试用户](./media/docusign-tutorial/create_aaduser_02.png) 
 
-3. 在对话框顶部，单击“添加”以打开“用户”对话框。
+1. 在对话框顶部，单击“添加”以打开“用户”对话框。
  
     ![创建 Azure AD 测试用户](./media/docusign-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/docusign-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -238,23 +238,23 @@ ms.locfileid: "39053336"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“DocuSign”。
+1. 在应用程序列表中，选择“DocuSign”。
 
     ![配置单一登录](./media/docusign-tutorial/tutorial_docusign_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 

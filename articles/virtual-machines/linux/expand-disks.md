@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: rogarana
-ms.openlocfilehash: 8b3a4d7feccc3af55415f54473ae1a2588ad5672
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 96d50260663f00f5ae2e9b2e0495c91ecb5da4b2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36936881"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421182"
 ---
 # <a name="how-to-expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>如何使用 Azure CLI 扩展 Linux VM 上的虚拟硬盘
 在 Azure 的 Linux 虚拟机 (VM) 上，操作系统 (OS) 的默认虚拟硬盘大小通常为 30 GB。 可通过[添加数据磁盘](add-disk.md)来扩充存储空间，也可扩展现有的数据磁盘。 本文详述如何使用 Azure CLI 2.0 扩展 Linux VM 的托管磁盘。 
@@ -43,7 +43,7 @@ ms.locfileid: "36936881"
     > [!NOTE]
     > 只有释放 VM 才能扩展虚拟硬盘。 `az vm stop` 不释放计算资源。 若要释放计算资源，请使用 `az vm deallocate`。
 
-2. 使用 [az disk list](/cli/azure/disk#az_disk_list) 查看资源组中的托管磁盘列表。 以下示例显示 myResourceGroup 资源组中托管磁盘的列表：
+1. 使用 [az disk list](/cli/azure/disk#az_disk_list) 查看资源组中的托管磁盘列表。 以下示例显示 myResourceGroup 资源组中托管磁盘的列表：
 
     ```azurecli
     az disk list \
@@ -64,7 +64,7 @@ ms.locfileid: "36936881"
     > [!NOTE]
     > 扩展托管磁盘时，更新的大小会映射到最近的托管磁盘大小。 有关可用托管磁盘大小和层的表，请参阅 [Azure 托管磁盘概述 - 定价和计费](../windows/managed-disks-overview.md#pricing-and-billing)。
 
-3. 使用 [az vm start](/cli/azure/vm#az_vm_start) 启动 VM。 以下示例在名为 myResourceGroup 的资源组中启动名为 myVM 的 VM：
+1. 使用 [az vm start](/cli/azure/vm#az_vm_start) 启动 VM。 以下示例在名为 myResourceGroup 的资源组中启动名为 myVM 的 VM：
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
@@ -80,7 +80,7 @@ ms.locfileid: "36936881"
     az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
     ```
 
-2. 若要使用扩展磁盘，需扩展基础分区和文件系统。
+1. 若要使用扩展磁盘，需扩展基础分区和文件系统。
 
     a. 如果已装载，请卸载磁盘：
 
@@ -121,25 +121,25 @@ ms.locfileid: "36936881"
 
     d. 若要退出，请输入 `quit`
 
-3. 重设分区大小后，请使用 `e2fsck` 验证分区一致性：
+1. 重设分区大小后，请使用 `e2fsck` 验证分区一致性：
 
     ```bash
     sudo e2fsck -f /dev/sdc1
     ```
 
-4. 现在使用 `resize2fs` 重设文件系统大小：
+1. 现在使用 `resize2fs` 重设文件系统大小：
 
     ```bash
     sudo resize2fs /dev/sdc1
     ```
 
-5. 将分区安装到目标位置，例如 `/datadrive`：
+1. 将分区安装到目标位置，例如 `/datadrive`：
 
     ```bash
     sudo mount /dev/sdc1 /datadrive
     ```
 
-6. 若要验证是否已调整 OS 磁盘的大小，请使用 `df -h`。 以下示例输出显示数据驱动器 /dev/sdc1 现在为 200 GB：
+1. 若要验证是否已调整 OS 磁盘的大小，请使用 `df -h`。 以下示例输出显示数据驱动器 /dev/sdc1 现在为 200 GB：
 
     ```bash
     Filesystem      Size   Used  Avail Use% Mounted on

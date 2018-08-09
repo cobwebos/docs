@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 2c571ebc45875167373b592abc720b045d1835bd
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 82a6911c85dd1438aa8f60cb36194a2916bc91e7
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048749"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429040"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>教程：Azure Active Directory 与 Central Desktop 集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "39048749"
 在本教程中，会在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Central Desktop
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="add-central-desktop-from-the-gallery"></a>从库中添加 Central Desktop
 要配置 Central Desktop 与 Azure AD 的集成，需要从库中将 Central Desktop 添加到托管 SaaS 应用列表。
@@ -64,15 +64,15 @@ ms.locfileid: "39048749"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 转到“企业应用程序”。 然后转到“所有应用程序”。
+1. 转到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请选择对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请选择对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中，键入“Central Desktop”。 在结果窗格中，选择“Central Desktop”，然后选择“添加”按钮添加该应用程序。
+1. 在搜索框中，键入“Central Desktop”。 在结果窗格中，选择“Central Desktop”，然后选择“添加”按钮添加该应用程序。
 
     ![结果列表中的 Central Desktop](./media/central-desktop-tutorial/tutorial_centraldesktop_addfromgallery.png)
 
@@ -87,10 +87,10 @@ ms.locfileid: "39048749"
 要配置和测试 Central Desktop 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. [配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)，使用户能够使用此功能。
-2. [创建 Azure AD 测试用户](#create-an-azure-ad-test-user)，使用 Britta Simon 测试 Azure AD 单一登录。
-3. [创建 Central Desktop 测试用户](#create-a-central-desktop-test-user)，在 Central Desktop 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
-4. [分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)，使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [测试单一登录](#test-single-sign-on)，验证配置是否正常工作。
+1. [创建 Azure AD 测试用户](#create-an-azure-ad-test-user)，使用 Britta Simon 测试 Azure AD 单一登录。
+1. [创建 Central Desktop 测试用户](#create-a-central-desktop-test-user)，在 Central Desktop 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+1. [分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)，使 Britta Simon 能够使用 Azure AD 单一登录。
+1. [测试单一登录](#test-single-sign-on)，验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -102,15 +102,15 @@ ms.locfileid: "39048749"
 
     ![配置单一登录链接][4]
 
-2. 若要启用单一登录，请在“单一登录”对话框中的“模式”下拉列表中，选择“基于 SAML 的登录”。
+1. 若要启用单一登录，请在“单一登录”对话框中的“模式”下拉列表中，选择“基于 SAML 的登录”。
  
     ![“单一登录”对话框](./media/central-desktop-tutorial/tutorial_centraldesktop_samlbase.png)
 
-3. 在“Central Desktop 域和 URL”部分中执行以下步骤：
+1. 在“Central Desktop 域和 URL”部分中执行以下步骤：
 
     ![Central Desktop 域和 URL 单一登录信息](./media/central-desktop-tutorial/tutorial_centraldesktop_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”框中，使用以下模式键入 URL：`https://<companyname>.centraldesktop.com`
+    a. 在“登录 URL”框中，使用以下模式键入 URL：`https://<companyname>.centraldesktop.com`
 
     b. 在“标识符”框中，使用以下模式键入 URL：
     | |
@@ -123,29 +123,29 @@ ms.locfileid: "39048749"
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Central Desktop 客户端支持团队](https://imeetcentral.com/contact-us)获取这些值。 
 
-4. 在“SAML 签名证书”部分中，选择“证书”。 然后将证书文件保存在计算机上。
+1. 在“SAML 签名证书”部分中，选择“证书”。 然后将证书文件保存在计算机上。
 
     ![证书下载链接](./media/central-desktop-tutorial/tutorial_centraldesktop_certificate.png) 
 
-5. 选择“保存”按钮。
+1. 选择“保存”按钮。
 
     ![配置单一登录 -“保存”按钮](./media/central-desktop-tutorial/tutorial_general_400.png)
     
-6. 在“Central Desktop 配置”部分中，选择“配置 Central Desktop”，打开“配置登录”窗口。 从“快速参考”部分，复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+1. 在“Central Desktop 配置”部分中，选择“配置 Central Desktop”，打开“配置登录”窗口。 从“快速参考”部分，复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
 
     ![Central Desktop 配置](./media/central-desktop-tutorial/tutorial_centraldesktop_configure.png) 
 
-7. 登录到 Central Desktop 租户。
+1. 登录到 Central Desktop 租户。
 
-8. 转到“设置”。 选择“高级”，然后选择“单一登录”。
+1. 转到“设置”。 选择“高级”，然后选择“单一登录”。
 
     ![设置 - 高级](./media/central-desktop-tutorial/ic769563.png "Setup - Advanced")
 
-9. 在“单一登录设置”页上，执行以下步骤：
+1. 在“单一登录设置”页上，执行以下步骤：
 
     ![单一登录设置](./media/central-desktop-tutorial/ic769564.png "Single Sign-On Settings")
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“启用 SAML v2 单一登录”。
+    a. 选择“启用 SAML v2 单一登录”。
     
     b. 在“SSO URL”框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
     
@@ -153,7 +153,7 @@ ms.locfileid: "39048749"
     
     d. 在“SSO 注销 URL”框中，粘贴从 Azure 门户复制的“注销 URL”值。
 
-10. 在“消息签名验证方法”部分执行以下步骤：
+1. 在“消息签名验证方法”部分执行以下步骤：
 
     ![消息签名验证方法](./media/central-desktop-tutorial/ic769565.png "Message Signature Verification Method") a. 选择“证书”。
     
@@ -180,19 +180,19 @@ ms.locfileid: "39048749"
 
     ![“Azure Active Directory”按钮](./media/central-desktop-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”。 然后选择“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”。 然后选择“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/central-desktop-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，请在“所有用户”对话框顶部选择“添加”。
+1. 若要打开“用户”对话框，请在“所有用户”对话框顶部选择“添加”。
 
     ![“添加”按钮](./media/central-desktop-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/central-desktop-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -211,17 +211,17 @@ ms.locfileid: "39048749"
 
 1. 登录到 Central Desktop 租户。
 
-2. 转到“人员” > “内部成员”。
+1. 转到“人员” > “内部成员”。
 
-3. 选择“添加内部成员”。
+1. 选择“添加内部成员”。
 
     ![人员](./media/central-desktop-tutorial/ic781051.png "人员")
     
-4. 在“新成员的电子邮件地址”框中，键入要预配的 Azure AD 帐户，并选择“下一步”。
+1. 在“新成员的电子邮件地址”框中，键入要预配的 Azure AD 帐户，并选择“下一步”。
 
     ![新成员的电子邮件地址](./media/central-desktop-tutorial/ic781052.png "Email Addresses of New Members")
 
-5. 选择“添加内部成员”。
+1. 选择“添加内部成员”。
 
     ![添加内部成员](./media/central-desktop-tutorial/ic781053.png "Add Internal Member")
    
@@ -238,27 +238,27 @@ ms.locfileid: "39048749"
 
 1. 在 Azure 门户中，打开应用程序视图。 转到目录视图，然后转到“企业应用程序”。
 
-2. 选择“所有应用程序”。
+1. 选择“所有应用程序”。
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Central Desktop”。
+1. 在应用程序列表中，选择“Central Desktop”。
 
     ![应用程序列表中的 Central Desktop 链接](./media/central-desktop-tutorial/tutorial_centraldesktop_app.png)  
 
-3. 在左侧菜单中，选择“用户和组”。
+1. 在左侧菜单中，选择“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 选择“添加”按钮。 然后，在“添加分配”对话框中，选择“用户和组”。
+1. 选择“添加”按钮。 然后，在“添加分配”对话框中，选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框中，选择“用户”列表中的“Britta Simon”。
+1. 在“用户和组”对话框中，选择“用户”列表中的“Britta Simon”。
 
-6. 在“用户和组”对话框中，单击“选择”按钮。
+1. 在“用户和组”对话框中，单击“选择”按钮。
 
-7. 在“添加分配”对话框中，选择“分配”按钮。
+1. 在“添加分配”对话框中，选择“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

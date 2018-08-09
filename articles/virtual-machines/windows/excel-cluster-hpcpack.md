@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 06/01/2017
 ms.author: danlep
-ms.openlocfilehash: aaf26e04fdb38fd76f4ab8211f9fdda8ebafd668
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 4a6327fcfe6f6e6f3b8b5c6ecbd14b832b4134c5
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971853"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421206"
 ---
 # <a name="get-started-running-excel-and-soa-workloads-on-an-hpc-pack-cluster-in-azure"></a>开始在 Azure 的 HPC Pack 群集上运行 Excel 和 SOA 工作负荷
 本文介绍如何使用 Azure 快速入门模板或 Azure PowerShell 部署脚本将 Microsoft HPC Pack 2012 R2 群集部署到 Azure 虚拟机。 此群集使用 Azure 市场 VM 映像，这些映像根据设计可以通过 HPC Pack 运行 Microsoft Excel 工作负荷或面向服务的体系结构 (SOA) 工作负荷。 可使用群集从本地客户端计算机运行 Excel HPC 和 SOA 服务。 Excel HPC 服务提供 Excel 工作簿卸载和 Excel 用户定义的函数或 UDF。
@@ -54,10 +54,10 @@ ms.locfileid: "38971853"
 > 
 
 1. 访问 [GitHub 上的“创建 HPC 群集”模板页](https://github.com/Azure/azure-quickstart-templates/tree/master/create-hpc-cluster)。 如果需要，查看有关该模板和源代码的信息。
-2. 单击“部署到 Azure”以启动使用 Azure 门户中的模板的部署。
+1. 单击“部署到 Azure”以启动使用 Azure 门户中的模板的部署。
    
    ![将模板部署到 Azure][github]
-3. 在门户中，按照以下步骤输入 HPC 群集模板的参数。
+1. 在门户中，按照以下步骤输入 HPC 群集模板的参数。
    
    a. 在“参数”页上，输入或修改模板参数的值。 （单击每个设置旁边的图标可获得帮助信息。）下面的屏幕中会显示示例值。 本示例会在 *hpc.local* 域中创建名为 *hpc01* 的群集，该群集由 1 个头节点和 2 个计算节点组成。 将从包含 Microsoft Excel 的 HPC Pack VM 映像创建计算节点。
    
@@ -77,7 +77,7 @@ ms.locfileid: "38971853"
    d. 选择资源组的位置，例如“美国中部”。
    
    e. 在“法律条款”页上，查看条款。 如果同意条款，请单击“购买”。 在完成为模板设置值后，单击“创建”。
-4. 在部署完成时（通常需要花费大约 30 分钟），从群集头节点导出群集证书文件。 在稍后的步骤中，会在客户端计算机上导入此公用证书，为安全 HTTP 绑定提供服务器端身份验证。
+1. 在部署完成时（通常需要花费大约 30 分钟），从群集头节点导出群集证书文件。 在稍后的步骤中，会在客户端计算机上导入此公用证书，为安全 HTTP 绑定提供服务器端身份验证。
    
    a. 在 Azure 门户中，通过远程桌面转到仪表板，选择头节点，然后在页面顶部单击“连接”以进行连接。
    
@@ -178,12 +178,12 @@ HPC Pack IaaS 部署脚本提供了另一种通用的方法来部署 HPC Pack �
 **运行脚本**
 
 1. 在客户端计算机上以管理员身份打开 PowerShell 控制台。
-2. 将目录更改到脚本文件夹（在此示例中为 E:\IaaSClusterScript）。
+1. 将目录更改到脚本文件夹（在此示例中为 E:\IaaSClusterScript）。
    
    ```
    cd E:\IaaSClusterScript
    ```
-3. 若要部署 HPC Pack 群集，请运行以下命令。 本示例假定配置文件位于 E:\HPCDemoConfig.xml。
+1. 若要部署 HPC Pack 群集，请运行以下命令。 本示例假定配置文件位于 E:\HPCDemoConfig.xml。
    
    ```
    .\New-HpcIaaSCluster.ps1 –ConfigFile E:\HPCDemoConfig.xml –AdminUserName MyAdminName
@@ -215,8 +215,8 @@ HPC Pack 部署脚本可运行一段时间。 此脚本的一项功能是导出�
 按照下列步骤卸载 Excel 工作簿，使之能够在 Azure 中的 HPC Pack 群集上运行。 为此，必须已在客户端计算机上安装 Excel 2010 或 Excel 2013。
 
 1. 使用步骤 1 中的选项之一通过 Excel 计算节点映像部署 HPC Pack 群集。 获取群集证书文件 (.cer) 和群集用户名和密码。
-2. 在客户端计算机上导入 Cert:\CurrentUser\Root 下的群集证书。
-3. 确保已安装 Excel。 使用与客户端计算机上的 Excel.exe 位于同一文件夹中的以下内容创建 Excel.exe.config 文件。 此步骤可确保 HPC Pack 2012 R2 Excel COM 外接程序成功加载。
+1. 在客户端计算机上导入 Cert:\CurrentUser\Root 下的群集证书。
+1. 确保已安装 Excel。 使用与客户端计算机上的 Excel.exe 位于同一文件夹中的以下内容创建 Excel.exe.config 文件。 此步骤可确保 HPC Pack 2012 R2 Excel COM 外接程序成功加载。
    
     ```
     <?xml version="1.0"?>
@@ -226,13 +226,13 @@ HPC Pack 部署脚本可运行一段时间。 此脚本的一项功能是导出�
         </startup>
     </configuration>
     ```
-4. 设置客户端，以便将作业提交到 HPC Pack 群集。 一个选项是下载完整的 [HPC Pack 2012 R2 Update 3 安装](http://www.microsoft.com/download/details.aspx?id=49922)，并安装 HPC Pack 客户端。 也可为计算机下载并安装 [HPC Pack 2012 R2 Update 3 客户端实用工具](https://www.microsoft.com/download/details.aspx?id=49923)和相应的 Visual C++ 2010 可再发行组件（[x64](http://www.microsoft.com/download/details.aspx?id=14632)、[x86](https://www.microsoft.com/download/details.aspx?id=5555)）。
-5. 此示例使用名为 ConvertiblePricing_Complete.xlsb 的示例 Excel 工作簿。 可以在[此处](https://www.microsoft.com/en-us/download/details.aspx?id=2939)下载。
-6. 将 Excel 工作簿复制到工作文件夹，例如 D:\Excel\Run。
-7. 打开 Excel 工作簿。 在“开发”功能区上，单击“COM 外接程序”并确认 HPC Pack Excel COM 外接程序已成功加载。
+1. 设置客户端，以便将作业提交到 HPC Pack 群集。 一个选项是下载完整的 [HPC Pack 2012 R2 Update 3 安装](http://www.microsoft.com/download/details.aspx?id=49922)，并安装 HPC Pack 客户端。 也可为计算机下载并安装 [HPC Pack 2012 R2 Update 3 客户端实用工具](https://www.microsoft.com/download/details.aspx?id=49923)和相应的 Visual C++ 2010 可再发行组件（[x64](http://www.microsoft.com/download/details.aspx?id=14632)、[x86](https://www.microsoft.com/download/details.aspx?id=5555)）。
+1. 此示例使用名为 ConvertiblePricing_Complete.xlsb 的示例 Excel 工作簿。 可以在[此处](https://www.microsoft.com/en-us/download/details.aspx?id=2939)下载。
+1. 将 Excel 工作簿复制到工作文件夹，例如 D:\Excel\Run。
+1. 打开 Excel 工作簿。 在“开发”功能区上，单击“COM 外接程序”并确认 HPC Pack Excel COM 外接程序已成功加载。
    
    ![HPC Pack 的 Excel 外接程序][addin]
-8. 通过更改注释行编辑 Excel 中的 VBA 宏 HPCControlMacros，如下面的脚本中所示。 替换为环境的相应值。
+1. 通过更改注释行编辑 Excel 中的 VBA 宏 HPCControlMacros，如下面的脚本中所示。 替换为环境的相应值。
    
    ![HPC Pack 的 Excel 宏][macro]
    
@@ -252,8 +252,8 @@ HPC Pack 部署脚本可运行一段时间。 此脚本的一项功能是导出�
    'HPCExcelClient.OpenSession headNode:=HPC_ClusterScheduler, remoteWorkbookPath:=HPCWorkbookPath
    HPCExcelClient.OpenSession headNode:=HPC_ClusterScheduler, remoteWorkbookPath:=HPCWorkbookPath, UserName:="hpc\azureuser", Password:="<YourPassword>"
    ```
-9. 将 Excel 工作簿复制到某个上传目录，例如 D:\Excel\Upload。 此目录在 VBA 宏的 HPC_DependsFiles 常量中指定。
-10. 若要在 Azure 中的群集上运行该工作簿，请单击工作表上的“群集”按钮。
+1. 将 Excel 工作簿复制到某个上传目录，例如 D:\Excel\Upload。 此目录在 VBA 宏的 HPC_DependsFiles 常量中指定。
+1. 若要在 Azure 中的群集上运行该工作簿，请单击工作表上的“群集”按钮。
 
 ### <a name="run-excel-udfs"></a>运行 Excel UDF
 若要运行 Excel UDF，请按照前面的步骤 1 – 3 设置客户端计算机。 对于 Excel UDF，不需在计算节点上安装 Excel 应用程序。 因此，在创建群集计算节点时，可以选择常规计算节点映像而非使用 Excel 的计算节点映像。
@@ -268,10 +268,10 @@ HPC Pack 部署脚本可运行一段时间。 此脚本的一项功能是导出�
 1. 打开一个新的 Excel 工作簿。 在“开发”功能区上，单击“外接程序”。然后，在对话框中单击“浏览”，导航到 %CCP_HOME%Bin\XLL32 文件夹，并选择示例 ClusterUDF32.xll。 如果 ClusterUDF32 未存在于客户端计算机上，请从头节点上的 %CCP_HOME%Bin\XLL32 文件夹复制它。
    
    ![选择 UDF][udf]
-2. 单击“文件” > “选项” > “高级”。 在“公式”下，选中“允许用户定义的 XLL 函数运行计算群集”。 然后，单击“选项”，在“群集头节点名称”中输入完整的群集名称。 （如前所述，此输入框限制为 34 个字符，因此较长的群集名称可能容纳不下。 可以在此处使用计算机范围的变量作为群集的长名称。）
+1. 单击“文件” > “选项” > “高级”。 在“公式”下，选中“允许用户定义的 XLL 函数运行计算群集”。 然后，单击“选项”，在“群集头节点名称”中输入完整的群集名称。 （如前所述，此输入框限制为 34 个字符，因此较长的群集名称可能容纳不下。 可以在此处使用计算机范围的变量作为群集的长名称。）
    
    ![配置 UDF][options]
-3. 要在群集上运行 UDF 计算，请单击值为 XllGetComputerNameC() 的单元格，并按 Enter。 该函数只检索运行 UDF 的计算节点的名称。 第一次运行时，凭据对话框会提示输入用于连接到 IaaS 群集的用户名和密码。
+1. 要在群集上运行 UDF 计算，请单击值为 XllGetComputerNameC() 的单元格，并按 Enter。 该函数只检索运行 UDF 的计算节点的名称。 第一次运行时，凭据对话框会提示输入用于连接到 IaaS 群集的用户名和密码。
    
    ![运行 UDF][run]
    
@@ -281,9 +281,9 @@ HPC Pack 部署脚本可运行一段时间。 此脚本的一项功能是导出�
 若要在 HPC Pack IaaS 群集上运行常规 SOA 应用程序，首先请使用步骤 1 中的方法之一部署该群集。 在此示例中，请指定一个泛型计算节点映像，因为计算节点上不需 Excel。 然后，执行以下步骤。
 
 1. 检索群集证书之后，在客户端计算机上的 Cert: \CurrentUser\Root 下导入它。
-2. 安装 [HPC Pack 2012 R2 Update 3 SDK](http://www.microsoft.com/download/details.aspx?id=49921) 和 [HPC Pack 2012 R2 Update 3 客户端实用工具](https://www.microsoft.com/download/details.aspx?id=49923)。 可以使用这些工具开发和运行 SOA 客户端应用程序。
-3. 下载 HelloWorldR2 [示例代码](https://www.microsoft.com/download/details.aspx?id=41633)。 在 Visual Studio 2010 或 2012 中打开 HelloWorldR2.sln。 （此示例当前与较新版本的 Visual Studio 不兼容。）
-4. 先生成 EchoService 项目。 然后，按照部署到本地群集的相同方式将服务部署到 IaaS 群集。 有关详细步骤，请参阅 HelloWordR2 中的 Readme.doc。 按以下部分所述修改并生成 HelloWorldR2 及其他项目，以便生成在 Azure IaaS 群集上运行的 SOA 客户端应用程序。
+1. 安装 [HPC Pack 2012 R2 Update 3 SDK](http://www.microsoft.com/download/details.aspx?id=49921) 和 [HPC Pack 2012 R2 Update 3 客户端实用工具](https://www.microsoft.com/download/details.aspx?id=49923)。 可以使用这些工具开发和运行 SOA 客户端应用程序。
+1. 下载 HelloWorldR2 [示例代码](https://www.microsoft.com/download/details.aspx?id=41633)。 在 Visual Studio 2010 或 2012 中打开 HelloWorldR2.sln。 （此示例当前与较新版本的 Visual Studio 不兼容。）
+1. 先生成 EchoService 项目。 然后，按照部署到本地群集的相同方式将服务部署到 IaaS 群集。 有关详细步骤，请参阅 HelloWordR2 中的 Readme.doc。 按以下部分所述修改并生成 HelloWorldR2 及其他项目，以便生成在 Azure IaaS 群集上运行的 SOA 客户端应用程序。
 
 ### <a name="use-http-binding-with-azure-storage-queue"></a>在有 Azure 存储队列的情况下使用 Http 绑定
 若要在有 Azure 存储队列的情况下使用 Http 绑定，需要对示例代码进行一些更改。
@@ -336,10 +336,10 @@ HPC Pack 部署脚本可运行一段时间。 此脚本的一项功能是导出�
 若要使用 NetTcp 绑定，配置与连接到本地群集时类似。 需要在头节点 VM 上打开几个终结点。 例如，如果已使用 HPC Pack IaaS 部署脚本创建群集，请在 Azure 门户中设置终结点，如下所示。
 
 1. 停止 VM。
-2. 分别为会话、代理、代理工作线程和数据服务添加 TCP 端口 9090、9087、9091、9094
+1. 分别为会话、代理、代理工作线程和数据服务添加 TCP 端口 9090、9087、9091、9094
    
     ![配置终结点][endpoint-new-portal]
-3. 启动 VM。
+1. 启动 VM。
 
 除了将头名称变更为 IaaS 群集完整名称外，SOA 客户端应用程序不需要进行任何更改。
 

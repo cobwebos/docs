@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 3f1bc925b772265a9f72c34f5ac661088123bb1a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8da9f0f8aeb36d9ff2f87511c902dd719bc755b9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626131"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441592"
 ---
 # <a name="register-data-from-data-lake-store-in-azure-data-catalog"></a>在 Azure 数据目录中从 Data Lake Store 注册数据
 在本文中，将了解如何将 Azure Data Lake Store 与 Azure 数据目录集成，以便通过将其与数据目录集成，使数据在组织内可发现。 了解对数据进行分类的详细信息，请参阅 [Azure 数据目录](../data-catalog/data-catalog-what-is-data-catalog.md)。 若要了解可以在其中使用数据目录的方案，请参阅 [Azure 数据目录常见方案](../data-catalog/data-catalog-common-scenarios.md)。
@@ -37,20 +37,20 @@ ms.locfileid: "34626131"
 > [!VIDEO https://channel9.msdn.com/Series/AzureDataLake/ADCwithADL/player]
 
 1. 转到 `https://azure.microsoft.com/services/data-catalog`，并单击“开始使用”。
-2. 登录到 Azure 数据目录门户，并单击“发布数据”。
+1. 登录到 Azure 数据目录门户，并单击“发布数据”。
 
     ![注册数据源](./media/data-lake-store-with-data-catalog/register-data-source.png "注册数据源")
-3. 在下一页上，单击“启动应用程序”。 这会在计算机上下载应用程序清单文件。 双击此清单文件以启动应用程序。
-4. 在“欢迎”页上，单击“登录”并输入凭据。
+1. 在下一页上，单击“启动应用程序”。 这会在计算机上下载应用程序清单文件。 双击此清单文件以启动应用程序。
+1. 在“欢迎”页上，单击“登录”并输入凭据。
 
     ![欢迎屏幕](./media/data-lake-store-with-data-catalog/welcome.screen.png "欢迎屏幕")
-5. 在“选择数据源”页上，选择“Azure Data Lake”，并单击“下一步”。
+1. 在“选择数据源”页上，选择“Azure Data Lake”，并单击“下一步”。
 
     ![选择数据源](./media/data-lake-store-with-data-catalog/select-source.png "选择数据源")
-6. 在下一页上，提供要在数据目录中注册的 Data Lake Store 帐户名称。 其他选项保留为默认值，并单击“连接”。
+1. 在下一页上，提供要在数据目录中注册的 Data Lake Store 帐户名称。 其他选项保留为默认值，并单击“连接”。
 
     ![连接到数据源](./media/data-lake-store-with-data-catalog/connect-to-source.png "连接到数据源")
-7. 下一个页面可以分为以下几部分。
+1. 下一个页面可以分为以下几部分。
 
     a. **服务器层次结构**框表示 Data Lake Store 帐户文件夹结构。 **$Root** 表示 Data Lake Store 帐户的根，而 **AmbulanceData** 表示 Data Lake Store 帐户的根中创建的文件夹。
 
@@ -59,20 +59,20 @@ ms.locfileid: "34626131"
     c. “要注册的对象”框中列出要在 Azure 数据目录中注册的文件和文件夹。
 
     ![查看数据结构](./media/data-lake-store-with-data-catalog/view-data-structure.png "查看数据结构")
-8. 在本教程中，应在目录中注册所有文件。 为此，请单击（![移动对象](./media/data-lake-store-with-data-catalog/move-objects.png "移动对象")）按钮将所有文件移到“要注册的对象”框。
+1. 在本教程中，应在目录中注册所有文件。 为此，请单击（![移动对象](./media/data-lake-store-with-data-catalog/move-objects.png "移动对象")）按钮将所有文件移到“要注册的对象”框。
 
     由于数据会在组织范围内的数据目录中注册，因此建议添加一些元数据，稍后可以使用这些元数据快速查找数据。 例如，可以为数据所有者添加电子邮件地址（例如，上传数据的用户）或添加标签以标识数据。 下面的屏幕截图显示了添加到数据的标记。
 
     ![查看数据结构](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "查看数据结构")
 
     单击“注册”。
-9. 以下屏幕截图表示数据已成功注册到数据目录中。
+1. 以下屏幕截图表示数据已成功注册到数据目录中。
 
     ![注册完成](./media/data-lake-store-with-data-catalog/registration-complete.png "查看数据结构")
-10. 单击“查看门户”返回到数据目录门户并验证现在是否可以从门户访问注册的数据。 若要搜索数据，可以使用注册数据时使用的标记。
+1. 单击“查看门户”返回到数据目录门户并验证现在是否可以从门户访问注册的数据。 若要搜索数据，可以使用注册数据时使用的标记。
 
      ![在目录中搜索数据](./media/data-lake-store-with-data-catalog/search-data-in-catalog.png "在目录中搜索数据")
-11. 现在可以执行向数据添加批注和文档等操作。 有关详细信息，请参阅以下链接。
+1. 现在可以执行向数据添加批注和文档等操作。 有关详细信息，请参阅以下链接。
 
     * [在数据目录中批注数据源](../data-catalog/data-catalog-how-to-annotate.md)
     * [在数据目录中阐述数据源](../data-catalog/data-catalog-how-to-documentation.md)

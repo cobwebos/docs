@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 1df301e197c90970aa1e73620f94f977ecd34ba0
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: f0e34a614251cf11c9547d749fef58dfa8ca623a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39046900"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39425191"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-sales-navigator"></a>教程：Azure Active Directory 与 LinkedIn Sales Navigator 的集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "39046900"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 LinkedIn Sales Navigator
-2. 配置并测试 Azure AD 单一登录
+1. 配置并测试 Azure AD 单一登录
 
 ## <a name="adding-linkedin-sales-navigator-from-the-gallery"></a>从库中添加 LinkedIn Sales Navigator
 要配置 LinkedIn Sales Navigator 与 Azure AD 的集成，需要从库中将 LinkedIn Sales Navigator 添加到托管 SaaS 应用列表。
@@ -63,19 +63,19 @@ ms.locfileid: "39046900"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 单击对话框顶部的“新建应用程序”按钮。
+1. 单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入 **LinkedIn Sales Navigator**。
+1. 在搜索框中，键入 **LinkedIn Sales Navigator**。
 
     ![创建 Azure AD 测试用户](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_search.png)
 
-5. 在结果窗格中选择“LinkedIn Sales Navigator”，并单击“添加”按钮添加该应用程序。
+1. 在结果窗格中选择“LinkedIn Sales Navigator”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_addfromgallery.png)
 
@@ -89,10 +89,10 @@ ms.locfileid: "39046900"
 若要配置并测试 LinkedIn Sales Navigator 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 LinkedIn Sales Navigator 测试用户](#creating-a-linkedin-sales-navigator-test-user)** - 在 LinkedIn Sales Navigator 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 LinkedIn Sales Navigator 测试用户](#creating-a-linkedin-sales-navigator-test-user)** - 在 LinkedIn Sales Navigator 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -104,39 +104,39 @@ ms.locfileid: "39046900"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，在“模式”中选择“基于 SAML 的登录”启用单一登录。
+1. 在“单一登录”对话框中，在“模式”中选择“基于 SAML 的登录”启用单一登录。
  
     ![配置单一登录](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_samlbase.png)
 
-3. 在另一个 Web 浏览器窗口中，以管理员身份登录到 **LinkedIn Sales Navigator** 网站。
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 **LinkedIn Sales Navigator** 网站。
 
-4. 在“帐户中心”，单击“设置”下的“全局设置”。 此外，请从下拉列表中选择“Sales Navigator”。
+1. 在“帐户中心”，单击“设置”下的“全局设置”。 此外，请从下拉列表中选择“Sales Navigator”。
 
     ![配置单一登录](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_01.png)
 
-5. 单击“或单击此处从窗体加载和复制单个字段”，并复制“实体 ID”和“断言使用者访问(ACS) URL”。
+1. 单击“或单击此处从窗体加载和复制单个字段”，并复制“实体 ID”和“断言使用者访问(ACS) URL”。
 
     ![配置单一登录](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_031.png)
 
-6. 在 Azure 门户的“LinkedIn Sales Navigator 域和 URL”部分中，如果想要以“已启动 IDP”模式配置应用程序，请执行以下步骤。
+1. 在 Azure 门户的“LinkedIn Sales Navigator 域和 URL”部分中，如果想要以“已启动 IDP”模式配置应用程序，请执行以下步骤。
 
     ![配置单一登录](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_url1.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，输入从 LinkedIn 门户复制的“实体 ID” 
+    a. 在“标识符”文本框中，输入从 LinkedIn 门户复制的“实体 ID” 
 
     b. 在“回复 URL”文本框中，输入从 LinkedIn 门户复制的“断言使用者访问(ACS) URL”
 
-7. 如果要在“SP”发起的模式下配置应用程序，请选中“显示高级 URL 设置”。
+1. 如果要在“SP”发起的模式下配置应用程序，请选中“显示高级 URL 设置”。
 
     ![配置单一登录](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_url2.png)
 
     在“登录 URL”文本框中，使用以下模式键入值：`https://www.linkedin.com/checkpoint/enterprise/login/<account id>?application=salesNavigator`
 
-8. **LinkedIn Sales Navigator** 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了示例。 “用户标识符”的默认值是“user.userprincipalname”，但 LinkedIn Sales Navigator 要求通过用户的电子邮件地址映射此项。 可以使用列表中的 **user.mail** 属性，或使用基于组织配置的相应属性值。 
+1. **LinkedIn Sales Navigator** 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了示例。 “用户标识符”的默认值是“user.userprincipalname”，但 LinkedIn Sales Navigator 要求通过用户的电子邮件地址映射此项。 可以使用列表中的 **user.mail** 属性，或使用基于组织配置的相应属性值。 
 
     ![配置单一登录](./media/linkedinsalesnavigator-tutorial/updateusermail.png)
     
-9. 在“用户属性”部分，单击“查看和编辑所有其他用户属性”并设置属性。 用户需要添加名为 email、department、firstname 和 lastname 的四个声明，并分别映射值 user.mail、user.department、user.givenname 和 user.surname
+1. 在“用户属性”部分，单击“查看和编辑所有其他用户属性”并设置属性。 用户需要添加名为 email、department、firstname 和 lastname 的四个声明，并分别映射值 user.mail、user.department、user.givenname 和 user.surname
 
     | 属性名称 | 属性值 |
     | --- | --- |    
@@ -147,7 +147,7 @@ ms.locfileid: "39046900"
     
     ![创建 Azure AD 测试用户](./media/linkedinsalesnavigator-tutorial/userattribute.png)
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”打开属性对话框。
+    a. 单击“添加属性”打开属性对话框。
     
     ![创建 Azure AD 测试用户](./media/linkedinsalesnavigator-tutorial/tutorial_attribute_04.png)
     
@@ -159,9 +159,9 @@ ms.locfileid: "39046900"
     
     d. 单击“确定”
 
-10. 对 name 属性执行以下步骤
+1. 对 name 属性执行以下步骤
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击该属性打开“编辑属性”窗口。
+    a. 单击该属性打开“编辑属性”窗口。
 
     ![配置单一登录](./media/linkedinsalesnavigator-tutorial/url_update.png)
 
@@ -169,19 +169,19 @@ ms.locfileid: "39046900"
     
     c. 单击“确定”保存设置。
 
-11. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存 XML 文件。
+1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存 XML 文件。
 
     ![配置单一登录](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_certificate.png) 
 
-12. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录](./media/linkedinsalesnavigator-tutorial/tutorial_general_400.png)
 
-13. 转到“LinkedIn 管理设置”分区。 单击“上传 XML 文件”上传从 Azure 门户下载的元数据 XML 文件。
+1. 转到“LinkedIn 管理设置”分区。 单击“上传 XML 文件”上传从 Azure 门户下载的元数据 XML 文件。
 
     ![配置单一登录](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_metadata_03.png)
 
-14. 单击“打开”启用 SSO。 SSO 状态将从“未连接”更改为“已连接”
+1. 单击“打开”启用 SSO。 SSO 状态将从“未连接”更改为“已连接”
 
     ![配置单一登录](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_05.png)
 
@@ -201,19 +201,19 @@ ms.locfileid: "39046900"
 
     ![创建 Azure AD 测试用户](./media/linkedinsalesnavigator-tutorial/create_aaduser_01.png) 
 
-2. 转到“用户和组”并单击“所有用户”。
+1. 转到“用户和组”并单击“所有用户”。
     
     ![创建 Azure AD 测试用户](./media/linkedinsalesnavigator-tutorial/create_aaduser_02.png) 
 
-3. 在对话框顶部单击“添加”，打开“用户”对话框。
+1. 在对话框顶部单击“添加”，打开“用户”对话框。
  
     ![创建 Azure AD 测试用户](./media/linkedinsalesnavigator-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/linkedinsalesnavigator-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -239,23 +239,23 @@ LinkedIn Sales Navigator 应用程序支持适时用户 (JIT) 预配，且进行
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“LinkedIn Sales Navigator”。
+1. 在应用程序列表中，选择“LinkedIn Sales Navigator”。
 
     ![配置单一登录](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 

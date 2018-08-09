@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 019d05cfb0339341e541e6fb3327568e8639bcda
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 9ec165253898ec77da2c7ae0e98cab578e773094
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230128"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429159"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-origami"></a>教程：Azure Active Directory 与 Origami 的集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "36230128"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Origami
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-origami-from-the-gallery"></a>从库中添加 Origami
 要通过配置将 Origami 集成到 Azure AD 中，需从库将 Origami 添加到托管式 SaaS 应用的列表中。
@@ -63,19 +63,19 @@ ms.locfileid: "36230128"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入“Origami”。
+1. 在搜索框中，键入“Origami”。
 
     ![创建 Azure AD 测试用户](./media/origami-tutorial/tutorial_origami_search.png)
 
-5. 在结果窗格中，选择“Origami”，然后单击“添加”按钮添加该应用程序。
+1. 在结果窗格中，选择“Origami”，然后单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/origami-tutorial/tutorial_origami_addfromgallery.png)
 
@@ -89,10 +89,10 @@ ms.locfileid: "36230128"
 若要使用 Origami 配置和测试 Azure AD 单一登录，需完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. [创建 Origami 测试用户](#creating-an-origami-test-user) - 目的是在 Origami 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. [创建 Origami 测试用户](#creating-an-origami-test-user) - 目的是在 Origami 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
+1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -104,38 +104,38 @@ ms.locfileid: "36230128"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![配置单一登录](./media/origami-tutorial/tutorial_origami_samlbase.png)
 
-3. 在“Origami 域和 URL”部分中，执行以下步骤：
+1. 在“Origami 域和 URL”部分中，执行以下步骤：
 
     ![配置单一登录](./media/origami-tutorial/tutorial_origami_url.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://live.origamirisk.com/origami/account/login?account=<companyname>`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://live.origamirisk.com/origami/account/login?account=<companyname>`
 
     > [!NOTE] 
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Origami 客户端支持团队](https://wordpress.org/support/theme/origami)获取此值。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/origami-tutorial/tutorial_origami_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录](./media/origami-tutorial/tutorial_general_400.png)
 
-6. 在“Origami 配置”部分，单击“配置 Origami”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL 和 SAML 单一登录服务 URL”。
+1. 在“Origami 配置”部分，单击“配置 Origami”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL 和 SAML 单一登录服务 URL”。
 
     ![配置单一登录](./media/origami-tutorial/tutorial_origami_configure.png) 
 
-7. 使用管理员权限登录到 Origami 帐户。
+1. 使用管理员权限登录到 Origami 帐户。
 
-8. 在顶部菜单中，单击“管理员”。
+1. 在顶部菜单中，单击“管理员”。
    
     ![配置单一登录](./media/origami-tutorial/tutorial_origami_51.png)
 
-9. 在“单一登录设置”对话框页上，执行以下步骤：
+1. 在“单一登录设置”对话框页上，执行以下步骤：
    
     ![配置单一登录](./media/origami-tutorial/tutorial_origami_531.png)
 
@@ -164,15 +164,15 @@ ms.locfileid: "36230128"
 
     ![创建 Azure AD 测试用户](./media/origami-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
     ![创建 Azure AD 测试用户](./media/origami-tutorial/create_aaduser_02.png) 
 
-3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
  
     ![创建 Azure AD 测试用户](./media/origami-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/origami-tutorial/create_aaduser_04.png) 
 
@@ -190,19 +190,19 @@ ms.locfileid: "36230128"
 
 1. 使用管理员权限登录到 Origami 帐户。
 
-2. 在顶部菜单中，单击“管理员”。
+1. 在顶部菜单中，单击“管理员”。
    
     ![配置单一登录](./media/origami-tutorial/tutorial_origami_51.png)
 
-3. 在“用户和安全”对话框中，单击“用户”。
+1. 在“用户和安全”对话框中，单击“用户”。
    
     ![配置单一登录](./media/origami-tutorial/tutorial_origami_54.png)
 
-4. 单击“添加新用户”。
+1. 单击“添加新用户”。
    
     ![配置单一登录](./media/origami-tutorial/tutorial_origami_55.png)
 
-5. 在“添加新用户”对话框中，执行以下步骤：
+1. 在“添加新用户”对话框中，执行以下步骤：
    
     ![配置单一登录](./media/origami-tutorial/tutorial_origami_56.png)
 
@@ -220,7 +220,7 @@ ms.locfileid: "36230128"
    
     ![配置单一登录](./media/origami-tutorial/tutorial_origami_57.png)
 
-6. 向用户分配“用户角色”和“客户端访问权限”。 
+1. 向用户分配“用户角色”和“客户端访问权限”。 
    
     ![配置单一登录](./media/origami-tutorial/tutorial_origami_58.png)
 
@@ -236,23 +236,23 @@ ms.locfileid: "36230128"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Origami”。
+1. 在应用程序列表中，选择“Origami”。
 
     ![配置单一登录](./media/origami-tutorial/tutorial_origami_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 

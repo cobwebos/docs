@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 10/10/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 57442cdb28dfce07ec653e2f0a69d19f5bb6c919
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 67ecb7c253d7968057b27c5b37b5ed4da12c8d05
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38674778"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441487"
 ---
 # <a name="create-a-ruby-app-in-app-service-on-linux"></a>使用 Linux 应用服务创建 Ruby 应用
 
@@ -106,7 +106,7 @@ To https://<your web app name>.scm.azurewebsites.net/<your web app name>.git
 myuser@ubuntu1234:~workspace/<app name>$
 ```
 
-在部署完成后，通过使用 [`az webapp restart`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_restart) 命令，重新启动 Web 应用以使部署生效，如下所示：
+在部署完成后，通过使用 [`az webapp restart`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-restart) 命令，重新启动 Web 应用以使部署生效，如下所示：
 
 ```azurecli-interactive
 az webapp restart --name <app name> --resource-group myResourceGroup

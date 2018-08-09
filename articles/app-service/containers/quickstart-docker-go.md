@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 01/17/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: b8fb814aa56465f9dce51de29de37f93213bf58f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f1d58adcc017367a3de8ee6130a3333f86fb501c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38317925"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423239"
 ---
 # <a name="deploy-a-dockergo-web-app-in-web-app-for-containers"></a>在用于容器的 Web 应用中部署 Docker/Go Web 应用
 
@@ -37,7 +37,7 @@ ms.locfileid: "38317925"
 
 ## <a name="create-a-web-app"></a>创建 Web 应用
 
-使用 [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) 命令在 `myAppServicePlan` 应用服务计划中创建 [Web 应用](../app-service-web-overview.md)。 不要忘记将 `<app name>` 替换为全局唯一的应用名称。
+使用 [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 命令在 `myAppServicePlan` 应用服务计划中创建 [Web 应用](../app-service-web-overview.md)。 不要忘记将 `<app name>` 替换为全局唯一的应用名称。
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --deployment-container-image-name microsoft/azure-appservices-go-quickstart

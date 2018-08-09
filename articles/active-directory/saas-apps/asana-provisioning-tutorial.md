@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 8c3224a392e7e130b62e36019a1d180c6826d0ed
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9ab2b22840d162fc0194151c5eec02675aad92dc
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36332205"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427646"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>教程：为 Asana 配置自动用户预配
 
@@ -61,15 +61,15 @@ Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所�
 
 1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory” > “企业应用” > “所有应用程序”部分。
 
-2. 如果已为 Asana 配置单一登录，请使用搜索字段搜索 Asana 实例。 否则，请选择“添加”并在应用程序库中搜索“Asana”。 从搜索结果中选择“Asana”，并将其添加到应用程序列表。
+1. 如果已为 Asana 配置单一登录，请使用搜索字段搜索 Asana 实例。 否则，请选择“添加”并在应用程序库中搜索“Asana”。 从搜索结果中选择“Asana”，并将其添加到应用程序列表。
 
-3. 选择 Asana 实例，然后选择“预配”选项卡。
+1. 选择 Asana 实例，然后选择“预配”选项卡。
 
-4. 将“预配模式”设置为“自动”。
+1. 将“预配模式”设置为“自动”。
 
     ![Asana 预配](./media/asana-provisioning-tutorial/asanaazureprovisioning.png)
 
-5. 在“管理员凭据”部分中，按照以下说明生成令牌并将其输入到“机密令牌”文本框中：
+1. 在“管理员凭据”部分中，按照以下说明生成令牌并将其输入到“机密令牌”文本框中：
 
     a. 使用管理员帐户登录到 [Asana](https://app.asana.com)。
 
@@ -81,19 +81,19 @@ Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所�
 
     e. 根据需要更新“姓名”、“关于”和个人资料照片。 复制中的令牌**令牌**，并选择在**保存更改**。
 
-6. 在 Azure 门户中，选择“测试连接”确保 Azure AD 可连接到 Asana 应用。 如果连接失败，请确保 Asana 帐户具有管理员权限，并重试“测试连接”步骤。
+1. 在 Azure 门户中，选择“测试连接”确保 Azure AD 可连接到 Asana 应用。 如果连接失败，请确保 Asana 帐户具有管理员权限，并重试“测试连接”步骤。
 
-7. 在“通知电子邮件”字段中输入应接收预配错误通知的人员或组的电子邮件地址。 然后选中复选框。
+1. 在“通知电子邮件”字段中输入应接收预配错误通知的人员或组的电子邮件地址。 然后选中复选框。
 
-8. 选择“保存”。 
+1. 选择“保存”。 
 
-9. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Asana”。
+1. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Asana”。
 
-10. 在“属性映射”部分中，查看将从 Azure AD 同步到 Asana 的用户属性。 选为“匹配”属性的特性用于匹配 Asana 中的用户帐户以执行更新操作。 选择“保存”，提交所有更改。 有关详细信息，请参阅[自定义用户预配属性映射](../active-directory-saas-customizing-attribute-mappings.md)。
+1. 在“属性映射”部分中，查看将从 Azure AD 同步到 Asana 的用户属性。 选为“匹配”属性的特性用于匹配 Asana 中的用户帐户以执行更新操作。 选择“保存”，提交所有更改。 有关详细信息，请参阅[自定义用户预配属性映射](../active-directory-saas-customizing-attribute-mappings.md)。
 
-11. 若要为 Asana 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”。
+1. 若要为 Asana 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”。
 
-12. 选择“保存”。 
+1. 选择“保存”。 
 
 这会对“用户”部分中分配到 Asana 的任何用户启动初始同步。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接。 这些审核日志描述了预配服务对 Asana 应用执行的所有操作。
 

@@ -9,12 +9,12 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: fcef86a19a77581ff82b64173e2ac68b26ae708a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d3969114323f5675c5e14ab36990b124e84ead37
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365485"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427561"
 ---
 # <a name="obtain-subscription-keys"></a>获取订阅密钥
 若要开始使用 Azure 自定义语音服务，首先需要将用户帐户关联到 Azure 订阅。 订阅适用于免费层和付费层。 若要了解层，请参阅[定价页](https://www.microsoft.com/cognitive-services/en-us/pricing)。
@@ -31,7 +31,7 @@ ms.locfileid: "35365485"
         ![认知服务 API](../../../media/cognitive-services/custom-speech-service/custom-speech-azure-subscription2.png)
 
     
-2. 填写以下必填字段：
+1. 填写以下必填字段：
 
       a. **帐户名**。 命名适合自己的名称。 请记住此名称，这样才能在资源列表中找到认知服务订阅。
 
@@ -45,7 +45,7 @@ ms.locfileid: "35365485"
 
       ![创建认知服务帐户](../../../media/cognitive-services/custom-speech-service/custom-speech-azure-cris-blade.png)
 
-3. 应使用所提供的帐户名在资源列表中找到仪表板视图或服务。 选择它后，就可以概览服务。 在左侧列表的“资源管理”下，选择“密钥”。 复制“密钥 1”。
+1. 应使用所提供的帐户名在资源列表中找到仪表板视图或服务。 选择它后，就可以概览服务。 在左侧列表的“资源管理”下，选择“密钥”。 复制“密钥 1”。
 
       在后续步骤中，需要用到此订阅密钥。
 
@@ -57,7 +57,7 @@ ms.locfileid: "35365485"
 
       ![“概览”页上的“订阅 ID”](../../../media/cognitive-services/custom-speech-service/custom-speech-azure-cris-keys.png)
 
-4. 若要输入订阅密钥，请选择功能区右上角的用户帐户。 选择下拉菜单中的“订阅”。
+1. 若要输入订阅密钥，请选择功能区右上角的用户帐户。 选择下拉菜单中的“订阅”。
 
       ![“订阅”菜单项](../../../media/cognitive-services/custom-speech-service/custom-speech-subscription-selection.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "35365485"
 
     ![订阅表](../../../media/cognitive-services/custom-speech-service/custom-speech-subscription-list.png)
 
-5. 选择“添加新订阅”。 输入订阅名称和订阅密钥。 可以是订阅中的“密钥 1”（主密钥）或“密钥 2”（辅助密钥）。
+1. 选择“添加新订阅”。 输入订阅名称和订阅密钥。 可以是订阅中的“密钥 1”（主密钥）或“密钥 2”（辅助密钥）。
 
       ![订阅密钥名称](../../../media/cognitive-services/custom-speech-service/custom-speech-enter-subsciption.png)
 

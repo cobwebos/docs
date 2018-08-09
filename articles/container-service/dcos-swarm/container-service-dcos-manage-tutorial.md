@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 28c217430dcbc8ee17998742c31888e06dddf96f
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 5b7f2f1bd1872f78377a0d16567ca4df8f8d0968
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902140"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440671"
 ---
 # <a name="azure-container-service-tutorial---manage-dcos"></a>Azure 容器服务教程 - 管理 DC/OS
 
@@ -34,7 +34,7 @@ DC/OS 提供了一个用于运行现代和容器化应用程序的分布式平�
 
 ## <a name="create-dcos-cluster"></a>创建 DC/OS 群集
 
-首先，使用 [az group create](/cli/azure/group#az_group_create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
+首先，使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
 
 以下示例在“westeurope”位置创建名为“myResourceGroup”的资源组。
 
@@ -42,7 +42,7 @@ DC/OS 提供了一个用于运行现代和容器化应用程序的分布式平�
 az group create --name myResourceGroup --location westeurope
 ```
 
-接下来，使用 [az acs create](/cli/azure/acs#az_acs_create) 命令创建 DC/OS 群集。
+接下来，使用 [az acs create](/cli/azure/acs#az-acs-create) 命令创建 DC/OS 群集。
 
 下面的示例创建一个名为 myDCOSCluster 的 DC/OS 群集，并且在不存在 SSH 密钥时创建这些密钥。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。  
 
@@ -240,13 +240,13 @@ az network public-ip list --resource-group myResourceGroup --query "[?contains(n
 
 在前面的示例中，应用程序已缩放到多个实例。 此外，还可以缩放 DC/OS 基础结构，以提供或多或少的计算能力。 这可通过 [az acs scale]() 命令完成。 
 
-若要查看 DC/OS 代理的当前计数，请使用 [az acs show](/cli/azure/acs#az_acs_show) 命令。
+若要查看 DC/OS 代理的当前计数，请使用 [az acs show](/cli/azure/acs#az-acs-show) 命令。
 
 ```azurecli
 az acs show --resource-group myResourceGroup --name myDCOSCluster --query "agentPoolProfiles[0].count"
 ```
 
-若要将计数增加到 5，请使用 [az acs scale](/cli/azure/acs#az_acs_scale) 命令。 
+若要将计数增加到 5，请使用 [az acs scale](/cli/azure/acs#az-acs-scale) 命令。 
 
 ```azurecli
 az acs scale --resource-group myResourceGroup --name myDCOSCluster --new-agent-count 5
@@ -254,7 +254,7 @@ az acs scale --resource-group myResourceGroup --name myDCOSCluster --new-agent-c
 
 ## <a name="delete-dcos-cluster"></a>删除 DC/OS 群集
 
-如果不再需要资源组、DC/OS 群集和所有相关的资源，则可以使用 [az group delete](/cli/azure/group#az_group_delete) 命令将其删除。
+如果不再需要资源组、DC/OS 群集和所有相关的资源，则可以使用 [az group delete](/cli/azure/group#az-group-delete) 命令将其删除。
 
 ```azurecli 
 az group delete --name myResourceGroup --no-wait

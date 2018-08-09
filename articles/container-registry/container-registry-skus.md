@@ -8,18 +8,18 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: marsma
-ms.openlocfilehash: a8dcc6fc60b80a19c4edebd57fdad5bb10cfdd0b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5d9001bce4f835e4b9b82ba1c30d09f74eebd1d2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32165208"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39442745"
 ---
 # <a name="azure-container-registry-skus"></a>Azure 容器注册表 SKU
 
 Azure 容器注册表 (ACR) 分为多个服务层（称为“SKU”）。 这些 SKU 提供可预测的定价和多个选项，用来适应你在 Azure 中的专用 Docker 注册表的容量和使用模式。
 
-| SKU | 托管 | 说明 |
+| SKU | 托管 | Description |
 | --- | :-------: | ----------- |
 | **基本** | 是 | 供开发者了解 Azure 容器注册表的入口点（已优化过成本）。 基本注册表的编程功能（Azure Active Directory 身份验证集成、映像删除和 Webhook）与标准注册表和高级注册表相同。不同之处在于大小和使用情况约束。 |
 | **标准** | 是 | 标准注册表的功能与基本注册表相同。不同之处在于，前者增加了存储空间上限和映像吞吐量。 标准注册表应能够满足大部分生产方案的需求。 |
@@ -101,7 +101,7 @@ az acr update --name myregistry --sku Premium
 [container-registry-uservoice]: https://feedback.azure.com/forums/903958-azure-container-registry
 
 <!-- LINKS - Internal -->
-[az-acr-update]: /cli/azure/acr#az_acr_update
+[az-acr-update]: /cli/azure/acr#az-acr-update
 [container-registry-geo-replication]: container-registry-geo-replication.md
 [container-registry-upgrade]: container-registry-upgrade.md
 [container-registry-storage]: container-registry-storage.md

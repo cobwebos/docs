@@ -7,17 +7,17 @@ ms.author: aashishb
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: 7a76322d70f6b54d65a4b751a7187425cb4be821
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 5c1a884ebe6216c4e8099f2ada2182ccff68b63e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834536"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39450327"
 ---
 # <a name="collect-model-data-by-using-data-collection"></a>使用数据收集来收集模型数据
 
@@ -56,7 +56,7 @@ ms.locfileid: "34834536"
     from azureml.datacollector import ModelDataCollector
     ```
 
-2. 将以下代码行添加到 `init()` 函数：
+1. 将以下代码行添加到 `init()` 函数：
     
     ```python
     global inputs_dc, prediction_dc
@@ -64,7 +64,7 @@ ms.locfileid: "34834536"
     prediction_dc = ModelDataCollector('model.pkl', identifier="prediction")
     ```
 
-3. 将以下代码行添加到 `run(input_df)` 函数：
+1. 将以下代码行添加到 `run(input_df)` 函数：
     
     ```python
     global inputs_dc, prediction_dc
@@ -74,13 +74,13 @@ ms.locfileid: "34834536"
 
     确保先初始化变量 `input_df` 和 `pred`（`model.predict()` 的预测值），然后再对它们调用 `collect()` 函数。
 
-4. 结合使用 `az ml service create realtime` 命令和 `--collect-model-data true` 交换机，创建实时 Web 服务。 本步骤确保在运行该服务时可以收集模型数据。
+1. 结合使用 `az ml service create realtime` 命令和 `--collect-model-data true` 交换机，创建实时 Web 服务。 本步骤确保在运行该服务时可以收集模型数据。
 
      ```batch
     c:\temp\myIris> az ml service create realtime -f iris_score.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true 
     ```
     
-5. 若要测试数据收集，请运行 `az ml service run realtime` 命令：
+1. 若要测试数据收集，请运行 `az ml service run realtime` 命令：
 
     ```
     C:\Temp\myIris> az ml service run realtime -i irisapp -d "ADD YOUR INPUT DATA HERE!!" 
@@ -90,15 +90,15 @@ ms.locfileid: "34834536"
 若要在 blob 存储中查看收集的数据：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“所有服务”。
-3. 在搜索框中键入“存储帐户”，并按“Enter”。
-4. 在“存储帐户”搜索边栏选项卡上，选择“存储帐户”资源。 若要确定存储帐户，请使用以下步骤：
+1. 选择“所有服务”。
+1. 在搜索框中键入“存储帐户”，并按“Enter”。
+1. 在“存储帐户”搜索边栏选项卡上，选择“存储帐户”资源。 若要确定存储帐户，请使用以下步骤：
 
     a. 转到 Azure Machine Learning Workbench，选择正在处理的项目，然后打开“文件”菜单中的命令行提示。
     
     b. 输入 `az ml env show -v` 并查看 storage_account 值。 这是存储帐户的名称。
 
-5. 选择资源边栏选项卡菜单中的“容器”，然后单击名为“modeldata”的容器。 若要看到数据开始传播到存储帐户，建议在提出第一个 Web 服务请求后，等待最多 10 分钟时间。 数据通过以下容器路径流入 Blob：
+1. 选择资源边栏选项卡菜单中的“容器”，然后单击名为“modeldata”的容器。 若要看到数据开始传播到存储帐户，建议在提出第一个 Web 服务请求后，等待最多 10 分钟时间。 数据通过以下容器路径流入 Blob：
 
     `/modeldata/<subscription_id>/<resource_group_name>/<model_management_account_name>/<webservice_name>/<model_id>-<model_name>-<model_version>/<identifier>/<year>/<month>/<day>/data.csv`
 

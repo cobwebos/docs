@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: 01d4f3873c854776078986918e6ece55017c9193
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: d5b3bf62999c197c437e55a66ee6ba935bdc6ea8
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917466"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39428524"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery 部署规划器成本估算报表 
 
@@ -105,7 +105,7 @@ Azure Site Recovery 部署规划器报表以[建议](hyper-v-deployment-planner-
 
 1. 选择“插入行”，在“开始”行与“结束”行之间插入新行。
 
-2. 根据与此配置相符的大致 VM 大小和 VM 数填充以下列： 
+1. 根据与此配置相符的大致 VM 大小和 VM 数填充以下列： 
 
     a. **VM 数**
 
@@ -125,9 +125,9 @@ Azure Site Recovery 部署规划器报表以[建议](hyper-v-deployment-planner-
 
     i. **Azure 混合使用权益**
 
-3. 可以将同一值应用到表中的所有 VM，只需针对“一年的 DR 演练次数”、“每次 DR 演练的持续时间(天)”、“数据冗余”、“Azure 混合使用权益”选择“应用到所有项”即可。
+1. 可以将同一值应用到表中的所有 VM，只需针对“一年的 DR 演练次数”、“每次 DR 演练的持续时间(天)”、“数据冗余”、“Azure 混合使用权益”选择“应用到所有项”即可。
 
-4. 选择“重新计算成本”即可更新成本。
+1. 选择“重新计算成本”即可更新成本。
 
 **VM 名称**：VM 的名称。
 

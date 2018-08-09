@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/1/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 63216d56fb3acbb954086fbf026441e69073621e
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 091a097fc9fafd5bdc6a2521f4fa2a1b6b77ba4c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263059"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422547"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 ## <a name="overview"></a>概述 ##
@@ -33,21 +33,21 @@ ms.locfileid: "35263059"
 1. 在[门户](https://portal.azure.com)中，选择“监视器”。 “监视器”边栏选项卡将所有监视设置和数据合并到一个视图中。
 
     ![“监视”服务](./media/monitoring-action-groups/home-monitor.png)
-2. 在“设置”部分中，选择“操作组”。
+1. 在“设置”部分中，选择“操作组”。
 
     ![“操作组”选项卡](./media/monitoring-action-groups/action-groups-blade.png)
-3. 选择“添加操作组”，并填写字段。
+1. 选择“添加操作组”，并填写字段。
 
     ![“添加操作组”命令](./media/monitoring-action-groups/add-action-group.png)
-4. 在“操作组名称”框中输入名称，然后在“短名称”框中输入名称。 使用此组发送通知时，短名称被用来代替完整的操作组名称。
+1. 在“操作组名称”框中输入名称，然后在“短名称”框中输入名称。 使用此组发送通知时，短名称被用来代替完整的操作组名称。
 
       ![“添加操作组”对话框](./media/monitoring-action-groups/action-group-define.png)
 
-5. “订阅”框会自动填充当前订阅。 此“订阅”是在其中保存操作组的订阅。
+1. “订阅”框会自动填充当前订阅。 此“订阅”是在其中保存操作组的订阅。
 
-6. 选择在其中保存操作组的“资源组”。
+1. 选择在其中保存操作组的“资源组”。
 
-7. 通过为每个操作提供以下项来定义操作列表：
+1. 通过为每个操作提供以下项来定义操作列表：
 
     a. 名称：输入此操作的唯一标识符。
 
@@ -55,7 +55,7 @@ ms.locfileid: "35263059"
 
     c. **详细信息**：根据操作类型，输入电话号码、电子邮件地址、webhook URI、Azure 应用、ITSM 连接或自动化 runbook。 对于 ITSM 操作，另外指定 ITSM 工具需要的“工作项”和其他字段。
 
-8. 选择“确定”创建操作组。
+1. 选择“确定”创建操作组。
 
 ## <a name="action-specific-information"></a>特定于操作的信息
 <dl>

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: c027aa3d980d22e60c24db68aceb49fbef59d101
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 61fb9904e69f5269c345b733ef2396294c6c790a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39046172"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39448166"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>教程：Azure Active Directory 与 Perception United States (Non-UltiPro) 的集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "39046172"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Perception United States (Non-UltiPro)
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-perception-united-states-non-ultipro-from-the-gallery"></a>从库中添加 Perception United States (Non-UltiPro)
 若要配置 Perception United States (Non-UltiPro)与 Azure AD 的集成，需要从库中将 Perception United States (Non-UltiPro) 添加到托管 SaaS 应用列表。
@@ -64,15 +64,15 @@ ms.locfileid: "39046172"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中键入 **Perception United States (Non-UltiPro)**，在结果面板中选择“Perception United States (Non-UltiPro)”，并单击“添加”按钮添加该应用程序。
+1. 在搜索框中键入 **Perception United States (Non-UltiPro)**，在结果面板中选择“Perception United States (Non-UltiPro)”，并单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 Perception United States (Non-UltiPro)](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_addfromgallery.png)
 
@@ -87,10 +87,10 @@ ms.locfileid: "39046172"
 若要配置和测试 Perception United States (Non-UltiPro) 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Perception United States (Non-UltiPro) 测试用户](#create-a-perception-united-states-non-ultipro-test-user)** - 在 Perception United States (Non-UltiPro) 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 Perception United States (Non-UltiPro) 测试用户](#create-a-perception-united-states-non-ultipro-test-user)** - 在 Perception United States (Non-UltiPro) 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -102,32 +102,32 @@ ms.locfileid: "39046172"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![“单一登录”对话框](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_samlbase.png)
 
-3. 在“Perception United States (Non-UltiPro)域和 URL”部分中，执行以下步骤：
+1. 在“Perception United States (Non-UltiPro)域和 URL”部分中，执行以下步骤：
 
     ![Perception United States (Non-UltiPro) 域和 URL 单一登录信息](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，键入 URL：`https://perception.kanjoya.com/sp`
+    a. 在“标识符”文本框中，键入 URL：`https://perception.kanjoya.com/sp`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://perception.kanjoya.com/sso?idp=<entity_id>`
 
     > [!NOTE] 
     > 此值不是真实值。 用户将使用实际的回复 URL 更新该值（本教程稍后将会介绍）。
  
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
+1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![证书下载链接](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/perceptionunitedstates-tutorial/tutorial_general_400.png)
 
-6. 在“Perception United States (Non-UltiPro)配置”部分中，单击“配置 Perception United States (Non-UltiPro)”打开“配置登录”窗口。 从“快速参考”部分复制“SAML 实体 ID”。
+1. 在“Perception United States (Non-UltiPro)配置”部分中，单击“配置 Perception United States (Non-UltiPro)”打开“配置登录”窗口。 从“快速参考”部分复制“SAML 实体 ID”。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **Perception United States (Non-UltiPro)** 应用程序要求对复制的“SAML 实体 ID”值进行 URL 编码。 若要获取 URI 编码值，请使用以下链接：**http://www.url-encode-decode.com/**。
+    a. **Perception United States (Non-UltiPro)** 应用程序要求对复制的“SAML 实体 ID”值进行 URL 编码。 若要获取 URI 编码值，请使用以下链接：**http://www.url-encode-decode.com/**。
 
     b. 获取 URI 编码值之后，请将它与下面所述的“回复 URL”合并：
 
@@ -137,17 +137,17 @@ ms.locfileid: "39046172"
 
     ![Perception United States (Non-UltiPro) 配置](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_configure.png) 
 
-7. 在另一浏览器窗口中，以管理员身份登录到 Perception United States (Non-UltiPro) 公司站点。
+1. 在另一浏览器窗口中，以管理员身份登录到 Perception United States (Non-UltiPro) 公司站点。
 
-8. 在主工具栏中，单击“帐户设置”。
+1. 在主工具栏中，单击“帐户设置”。
 
     ![Perception United States (Non-UltiPro) 用户](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_user.png)
 
-9. 在“帐户设置”页上，执行以下步骤：
+1. 在“帐户设置”页上，执行以下步骤：
 
     ![Perception United States (Non-UltiPro) 用户](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_account.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“公司名称”文本框中，键入**公司**的名称。
+    a. 在“公司名称”文本框中，键入**公司**的名称。
     
     b. 在“帐户名”文本框中，键入**帐户**的名称。
 
@@ -155,11 +155,11 @@ ms.locfileid: "39046172"
 
     d. 选择“SAML 2.0”作为“SSO 标识提供者”。
 
-10. 在“SSO 配置”页上，执行以下步骤：
+1. 在“SSO 配置”页上，执行以下步骤：
 
     ![Perception United States (Non-UltiPro) SSO 配置](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_ssoconfig.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“电子邮件”作为“SAML NameID 类型”。
+    a. 选择“电子邮件”作为“SAML NameID 类型”。
 
     b. 在“SSO 配置名称”文本框中，键入**配置**的名称。
     
@@ -187,19 +187,19 @@ ms.locfileid: "39046172"
 
     ![“Azure Active Directory”按钮](./media/perceptionunitedstates-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/perceptionunitedstates-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/perceptionunitedstates-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/perceptionunitedstates-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -223,23 +223,23 @@ ms.locfileid: "39046172"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Perception United States (Non-UltiPro)”。
+1. 在应用程序列表中，选择“Perception United States (Non-UltiPro)”。
 
     ![应用程序列表中的 Perception United States (Non-UltiPro) 链接](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_app.png)  
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

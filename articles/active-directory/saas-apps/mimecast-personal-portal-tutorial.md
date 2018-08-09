@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: jeedes
-ms.openlocfilehash: f1415a1ddc49f10539915ccf0ce8f95ce7daf321
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 71ecffebe095fd325837aeb1d6e741a2f3321aea
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39051864"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421832"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>教程：Azure Active Directory 与 Mimecast Personal Portal 的集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "39051864"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Mimecast Personal Portal
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-mimecast-personal-portal-from-the-gallery"></a>从库中添加 Mimecast Personal Portal
 要配置 Mimecast Personal Portal 与 Azure AD 的集成，需要从库中将 Mimecast Personal Portal 添加到托管 SaaS 应用列表。
@@ -64,15 +64,15 @@ ms.locfileid: "39051864"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中键入 Mimecast Personal Portal，在结果面板中选择“Mimecast Personal Portal”，并单击“添加”按钮添加该应用程序。
+1. 在搜索框中键入 Mimecast Personal Portal，在结果面板中选择“Mimecast Personal Portal”，并单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 Mimecast Personal Portal](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_addfromgallery.png)
 
@@ -85,10 +85,10 @@ ms.locfileid: "39051864"
 若要配置和测试 Mimecast Personal Portal 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. [创建 Mimecast Personal Portal 测试用户](#create-a-mimecast-personal-portal-test-user) - 在 Mimecast Personal Portal 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. [创建 Mimecast Personal Portal 测试用户](#create-a-mimecast-personal-portal-test-user) - 在 Mimecast Personal Portal 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -100,15 +100,15 @@ ms.locfileid: "39051864"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![“单一登录”对话框](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_samlbase.png)
 
-3. 在“Mimecast Personal Portal 域和 URL”部分中，执行以下步骤：
+1. 在“Mimecast Personal Portal 域和 URL”部分中，执行以下步骤：
 
     ![Mimecast Personal Portal 域和 URL 单一登录信息](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，键入 URL： 
+    a. 在“登录 URL”文本框中，键入 URL： 
 
     | 区域  |  值 | 
     | --------------- | --------------- | 
@@ -141,37 +141,37 @@ ms.locfileid: "39051864"
     > [!NOTE] 
     > 标识符非实际值。 请使用实际标识符更新此值。 请联系 [Mimecast Personal Portal 客户端支持团队](http://www.mimecast.com/customer-success/technical-support/)来获取这些值。 
 
-4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/mimecast-personal-portal-tutorial/tutorial_general_400.png)
 
-6. 在“Mimecast Personal Portal 配置”部分中，单击“配置 Mimecast Personal Portal”以打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+1. 在“Mimecast Personal Portal 配置”部分中，单击“配置 Mimecast Personal Portal”以打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
 
     ![Mimecast Personal Portal 配置](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_configure.png) 
 
-7. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Mimecast Personal Portal。
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Mimecast Personal Portal。
 
-8. 转到“服务”\>“应用程序”。
+1. 转到“服务”\>“应用程序”。
    
     ![应用程序](./media/mimecast-personal-portal-tutorial/ic794998.png "应用程序")
 
-9. 单击“身份验证配置文件”。
+1. 单击“身份验证配置文件”。
    
     ![身份验证配置文件](./media/mimecast-personal-portal-tutorial/ic794999.png "身份验证配置文件")
 
-10. 单击“新建身份验证配置文件”。
+1. 单击“新建身份验证配置文件”。
    
     ![新建身份验证配置文件](./media/mimecast-personal-portal-tutorial/ic795000.png "新建身份验证配置文件")
 
-11. 在“身份验证配置文件”部分中，执行以下步骤：
+1. 在“身份验证配置文件”部分中，执行以下步骤：
    
     ![身份验证配置文件](./media/mimecast-personal-portal-tutorial/ic795001.png "身份验证配置文件")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“描述”文本框中，键入配置名称。
+    a. 在“描述”文本框中，键入配置名称。
    
     b. 选择“对 Mimecast Personal Portal 强制实施 SAML 身份验证”。
    
@@ -201,19 +201,19 @@ ms.locfileid: "39051864"
 
     ![“Azure Active Directory”按钮](./media/mimecast-personal-portal-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/mimecast-personal-portal-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/mimecast-personal-portal-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/mimecast-personal-portal-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -231,23 +231,23 @@ ms.locfileid: "39051864"
 
 1. 以管理员身份登录到 **Mimecast Personal Portal**。
 
-2. 转到“目录”\>“内部”。
+1. 转到“目录”\>“内部”。
    
     ![目录](./media/mimecast-personal-portal-tutorial/ic795003.png "目录")
 
-3. 单击“注册新域”。
+1. 单击“注册新域”。
    
     ![注册新域](./media/mimecast-personal-portal-tutorial/ic795004.png "注册新域")
 
-4. 在创建新域后，单击“新建地址”。
+1. 在创建新域后，单击“新建地址”。
    
     ![新建地址](./media/mimecast-personal-portal-tutorial/ic795005.png "新建地址")
 
-5. 在“新建地址”对话框中，对要预配的有效 Azure AD 帐户执行下列步骤：
+1. 在“新建地址”对话框中，对要预配的有效 Azure AD 帐户执行下列步骤：
    
     ![保存](./media/mimecast-personal-portal-tutorial/ic795006.png "保存")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“电子邮件地址”文本框中，将用户的“电子邮件地址”键入为“BrittaSimon@contoso.com”。
+    a. 在“电子邮件地址”文本框中，将用户的“电子邮件地址”键入为“BrittaSimon@contoso.com”。
     
     b. 在“全局名称”文本框中，将“用户名”键入为“BrittaSimon”。
 
@@ -270,23 +270,23 @@ ms.locfileid: "39051864"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Mimecast Personal Portal”。
+1. 在应用程序列表中，选择“Mimecast Personal Portal”。
 
     ![应用程序列表中的“Mimecast Personal Portal”链接](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_app.png)  
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

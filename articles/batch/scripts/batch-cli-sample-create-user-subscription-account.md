@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: danlep
-ms.openlocfilehash: 0923512d62a1efe31e08377b6c074df2e0618552
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 14910aaec43e82bb118b5012b382367eac970f73
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29848818"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39425609"
 ---
 # <a name="cli-example-create-a-batch-account-in-user-subscription-mode"></a>CLI 示例：在用户订阅模式下创建 Batch 帐户
 
@@ -47,13 +47,13 @@ az group delete --name myResourceGroup
 
 | 命令 | 说明 |
 |---|---|
-| [az role assignment create](/cli/azure/role#az_role_assignment_create) | 为用户、组或服务主体创建新的角色分配。 |
-| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
-| [az keyvault create](https://docs.microsoft.com/cli/azure/keyvault#az_keyvault_create) | 创建密钥保管库。 |
-| [az keyvault set-policy](https://docs.microsoft.com/cli/azure/keyvault#az_keyvault_set_policy) | 更新指定 Key Vault 的安全策略。 |
-| [az batch account create](/cli/azure/batch/account#az_batch_account_create) | 创建批处理帐户。  |
-| [az batch account login](/cli/azure/batch/account#az_batch_account_login) | 针对指定的批处理帐户进行身份验证，以便进一步进行 CLI 交互。  |
-| [az group delete](/cli/azure/group#az_group_delete) | 删除资源组，包括所有嵌套的资源。 |
+| [az role assignment create](/cli/azure/role#az-role-assignment-create) | 为用户、组或服务主体创建新的角色分配。 |
+| [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
+| [az keyvault create](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-create) | 创建密钥保管库。 |
+| [az keyvault set-policy](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-set-policy) | 更新指定 Key Vault 的安全策略。 |
+| [az batch account create](/cli/azure/batch/account#az-batch-account-create) | 创建批处理帐户。  |
+| [az batch account login](/cli/azure/batch/account#az-batch-account-login) | 针对指定的批处理帐户进行身份验证，以便进一步进行 CLI 交互。  |
+| [az group delete](/cli/azure/group#az-group-delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 

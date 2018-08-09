@@ -1,22 +1,23 @@
 ---
-title: "使用逻辑应用自动执行 Azure Application Insights 过程。"
-description: "了解如何通过将 Application Insights 连接器添加到逻辑应用来快速自动执行可重复的过程。"
+title: 使用逻辑应用自动执行 Azure Application Insights 过程。
+description: 了解如何通过将 Application Insights 连接器添加到逻辑应用来快速自动执行可重复的过程。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: mbullwin
-ms.openlocfilehash: e17d8076a00cab2cf608fe1a690e4a780a69d56f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4ae5adaf37f49e9909fa80fd31f088ed6ee1b081
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39450437"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>使用逻辑应用自动执行 Application Insights 过程
 
@@ -32,7 +33,7 @@ ms.lasthandoff: 02/21/2018
 
 ### <a name="step-1-create-a-logic-app"></a>步骤 1：创建逻辑应用
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 单击“创建资源”，选择“Web + 移动”，然后选择“逻辑应用”。
+1. 单击“创建资源”，选择“Web + 移动”，然后选择“逻辑应用”。
 
     ![新建逻辑应用窗口](./media/automate-with-logic-apps/logicapp1.png)
 
@@ -41,16 +42,16 @@ ms.lasthandoff: 02/21/2018
 
     ![“逻辑应用设计器”窗口](./media/automate-with-logic-apps/logicapp2.png)
 
-2. 在“频率”框中选择“日期”，然后在“时间间隔”框中键入 1。
+1. 在“频率”框中选择“日期”，然后在“时间间隔”框中键入 1。
 
     ![逻辑应用设计器“重复周期”窗口](./media/automate-with-logic-apps/step2b.png)
 
 ### <a name="step-3-add-an-application-insights-action"></a>步骤 3：添加 Application Insights 操作
 1. 单击“新建步骤”，并单击“添加操作”。
 
-2. 在“选择操作”搜索框中，键入“Azure Application Insights”。
+1. 在“选择操作”搜索框中，键入“Azure Application Insights”。
 
-3. 在“操作”下，单击“Azure Application Insights - 将 Analytics 查询可视化(预览)”。
+1. 在“操作”下，单击“Azure Application Insights - 将 Analytics 查询可视化(预览)”。
 
     ![逻辑应用设计器“选择操作”窗口](./media/automate-with-logic-apps/flow2.png)
 
@@ -82,7 +83,7 @@ ms.lasthandoff: 02/21/2018
     | evaluate autocluster()
     ```
 
-2. 在“图表类型”框中，选择“Html 表”。
+1. 在“图表类型”框中，选择“Html 表”。
 
     ![Analytics 查询配置窗口](./media/automate-with-logic-apps/flow4.png)
 
@@ -90,13 +91,13 @@ ms.lasthandoff: 02/21/2018
 
 1. 单击“新建步骤”，然后选择“添加操作”。
 
-2. 在搜索框中键入 Office 365 Outlook。
+1. 在搜索框中键入 Office 365 Outlook。
 
-3. 单击“Office 365 Outlook - 发送电子邮件”。
+1. 单击“Office 365 Outlook - 发送电子邮件”。
 
     ![Office 365 Outlook 选择](./media/automate-with-logic-apps/flow2b.png)
 
-4. 在“发送电子邮件”窗口中，执行以下操作：
+1. 在“发送电子邮件”窗口中，执行以下操作：
 
    a. 键入收件人的电子邮件地址。
 
@@ -104,11 +105,11 @@ ms.lasthandoff: 02/21/2018
 
    c. 单击“正文”框中的任意位置，然后在右侧打开的动态内容菜单中选择“正文”。
 
-   d.单击“下一步”。 单击“显示高级选项”。
+   d. 单击“显示高级选项”。
 
       ![Office 365 Outlook 配置](./media/automate-with-logic-apps/flow5.png)
 
-5. 在动态内容菜单上执行以下操作：
+1. 在动态内容菜单上执行以下操作：
 
     a. 选择“附件名称”。
 

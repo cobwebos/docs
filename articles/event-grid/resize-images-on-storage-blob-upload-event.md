@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 06/20/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: f1f10e0cb552dfa938b85280f3acb302b4591426
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 922c87f2d577aff86d51a1fde53f221ebd2fa82c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295943"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446684"
 ---
 # <a name="automate-resizing-uploaded-images-using-event-grid"></a>使用事件网格自动调整上传图像的大小
 
@@ -52,7 +52,7 @@ ms.locfileid: "36295943"
 
 ## <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 
-Azure Functions 需要一个常规存储帐户。 使用 [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令在资源组中创建一个常规的独立存储帐户。
+Azure Functions 需要一个常规存储帐户。 使用 [az storage account create](/cli/azure/storage/account#az-storage-account-create) 命令在资源组中创建一个常规的独立存储帐户。
 
 存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。 
 
@@ -66,7 +66,7 @@ az storage account create --name <general_storage_account> \
 
 ## <a name="create-a-function-app"></a>创建函数应用  
 
-必须使用 Function App 托管函数的执行。 Function App 提供一个环境，以便在不使用服务器的情况下执行函数代码。 使用 [az functionapp create](/cli/azure/functionapp#az_functionapp_create) 命令创建 Function App。 
+必须使用 Function App 托管函数的执行。 Function App 提供一个环境，以便在不使用服务器的情况下执行函数代码。 使用 [az functionapp create](/cli/azure/functionapp#az-functionapp-create) 命令创建 Function App。 
 
 在以下命令中，请在看到 `<function_app>` 占位符的位置替换为自己的唯一函数应用名称。 函数应用名称用作该函数应用的默认 DNS 域，因此，该名称需要在 Azure 的所有应用中保持唯一。 请使用所创建的常规存储帐户的名称来代替 `<general_storage_account>`。
 
@@ -151,7 +151,7 @@ az functionapp deployment source config --name <function_app> \
 
     | 设置      | 建议的值  | 说明                                        |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **名称** | imageresizersub | 标识新事件订阅的名称。 | 
+    | **Name** | imageresizersub | 标识新事件订阅的名称。 | 
     | 主题类型 |  存储帐户 | 选择存储帐户事件提供程序。 | 
     | **订阅** | Azure 订阅 | 默认情况下，选择当前的 Azure 订阅。   |
     | **资源组** | myResourceGroup | 选择“使用现有”，然后选择此教程中使用的资源组。  |

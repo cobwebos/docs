@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: f51f9eff7a2ab0dd7ca466931f9de78355b917c0
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: f4247a24905b5865635495774412237118e3372a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39050718"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427357"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>教程：Azure Active Directory 与 Work.com 的集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "39050718"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库添加 Work.com
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="add-workcom-from-the-gallery"></a>从库添加 Work.com
 若要配置 Work.com 与 Azure AD 的集成，需要从库中将 Work.com 添加到托管 SaaS 应用列表。
@@ -64,15 +64,15 @@ ms.locfileid: "39050718"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中键入 **Work.com**，在结果面板中选择“Workrite”，并单击“添加”按钮添加该应用程序。
+1. 在搜索框中键入 **Work.com**，在结果面板中选择“Workrite”，并单击“添加”按钮添加该应用程序。
 
     ![从库添加](./media/work-com-tutorial/tutorial_work-com_addfromgallery.png)
 
@@ -86,10 +86,10 @@ ms.locfileid: "39050718"
 若要配置和测试 Work.com 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Work.com 测试用户](#create-a-workcom-test-user)** - 在 Work.com 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 Work.com 测试用户](#create-a-workcom-test-user)** - 在 Work.com 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -104,11 +104,11 @@ ms.locfileid: "39050718"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![基于 SAML 的登录](./media/work-com-tutorial/tutorial_work-com_samlbase.png)
 
-3. 在“Work.com 域和 URL”部分中，执行以下步骤：
+1. 在“Work.com 域和 URL”部分中，执行以下步骤：
 
     ![“Work.com 域和 URL”部分](./media/work-com-tutorial/tutorial_work-com_url.png)
 
@@ -117,54 +117,54 @@ ms.locfileid: "39050718"
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新此值。 请联系 [Work.com 客户端支持团队](https://help.salesforce.com/articleView?id=000159855&type=3)获取此值。 
 
-4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![“SAML 签名证书”部分](./media/work-com-tutorial/tutorial_work-com_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![保存按钮](./media/work-com-tutorial/tutorial_general_400.png)
 
-6. 在“Work.com 配置”部分，单击“配置 Work.com”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+1. 在“Work.com 配置”部分，单击“配置 Work.com”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
 
     ![“Work.com 配置”部分](./media/work-com-tutorial/tutorial_work-com_configure.png) 
-7. 以管理员身份登录到 Work.com 租户。
+1. 以管理员身份登录到 Work.com 租户。
 
-8. 转到“设置”。
+1. 转到“设置”。
    
     ![设置](./media/work-com-tutorial/ic794108.png "设置")
 
-9. 在左侧导航窗格中的“管理”部分中，单击“域管理”以展开相关部分，并单击“我的域”，打开“我的域”页。 
+1. 在左侧导航窗格中的“管理”部分中，单击“域管理”以展开相关部分，并单击“我的域”，打开“我的域”页。 
    
     ![我的域](./media/work-com-tutorial/ic767825.png "我的域")
 
-10. 要验证域是否已正确设置，请确保它在“步骤 4 部署到用户”中，并复查“我的域设置”。
+1. 要验证域是否已正确设置，请确保它在“步骤 4 部署到用户”中，并复查“我的域设置”。
    
     ![部署到用户的域](./media/work-com-tutorial/ic784377.png "部署到用户的域")
 
-11. 登录到 Work.com 租户。
+1. 登录到 Work.com 租户。
 
-12. 转到“设置”。
+1. 转到“设置”。
     
     ![设置](./media/work-com-tutorial/ic794108.png "设置")
 
-13. 展开“安全控件”菜单，并单击“单一登录设置”。
+1. 展开“安全控件”菜单，并单击“单一登录设置”。
     
     ![单一登录设置](./media/work-com-tutorial/ic794113.png "Single Sign-On Settings")
 
-14. 在“单一登录设置”对话框页上，执行以下步骤：
+1. 在“单一登录设置”对话框页上，执行以下步骤：
     
     ![已启用 SAML](./media/work-com-tutorial/ic781026.png "已启用 SAML")
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“已启用 SAML”。
+    a. 选择“已启用 SAML”。
     
     b. 单击“新建” 。
 
-15. 在“SAML 单一登录设置”部分中，执行以下步骤：
+1. 在“SAML 单一登录设置”部分中，执行以下步骤：
     
     ![SAML 单一登录设置](./media/work-com-tutorial/ic794114.png "SAML Single Sign-On Settings")
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入配置名称。  
+    a. 在“名称”文本框中，键入配置名称。  
        
     > [!NOTE]
     > 提供“名称”值时会自动填充“API 名称”文本框。
@@ -187,15 +187,15 @@ ms.locfileid: "39050718"
     
     j. 单击“ **保存**”。
 
-16. 在 Work.com 经典门户内，从左侧导航窗格中，单击“域管理”以展开相关部分，并单击“我的域”，打开“我的域”页。 
+1. 在 Work.com 经典门户内，从左侧导航窗格中，单击“域管理”以展开相关部分，并单击“我的域”，打开“我的域”页。 
     
     ![我的域](./media/work-com-tutorial/ic794115.png "我的域")
 
-17. 在“我的域”页上的“登录页品牌打造”部分中，单击“编辑”。
+1. 在“我的域”页上的“登录页品牌打造”部分中，单击“编辑”。
     
     ![登录页品牌打造](./media/work-com-tutorial/ic767826.png "登录页品牌打造")
 
-14. 在“登录页品牌打造”页上的“身份验证服务”部分中，会显示 **SAML SSO 设置**的名称。 选择它，并单击“保存”。
+1. 在“登录页品牌打造”页上的“身份验证服务”部分中，会显示 **SAML SSO 设置**的名称。 选择它，并单击“保存”。
     
     ![登录页品牌打造](./media/work-com-tutorial/ic784366.png "登录页品牌打造")
 
@@ -214,19 +214,19 @@ ms.locfileid: "39050718"
 
     ![创建 Azure AD 测试用户](./media/work-com-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
     ![“用户和组”->“所有用户”](./media/work-com-tutorial/create_aaduser_02.png) 
 
-3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
  
     ![添加](./media/work-com-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![“用户”对话框页](./media/work-com-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -240,22 +240,22 @@ ms.locfileid: "39050718"
 ### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>若要配置用户设置，请执行以下步骤：
 1. 以管理员身份登录到 Work.com 公司站点。
 
-2. 转到“设置”。
+1. 转到“设置”。
    
     ![设置](./media/work-com-tutorial/IC794108.png "设置")
-3. 转到“管理用户”\>“用户”。
+1. 转到“管理用户”\>“用户”。
    
     ![管理用户](./media/work-com-tutorial/IC784369.png "管理用户")
 
-4. 单击“新建用户”。
+1. 单击“新建用户”。
    
     ![所有用户](./media/work-com-tutorial/IC794117.png "所有用户")
 
-5. 在“编辑用户”部分，在要预配到相关文本框的有效 Azure AD 帐户的属性中执行以下步骤：
+1. 在“编辑用户”部分，在要预配到相关文本框的有效 Azure AD 帐户的属性中执行以下步骤：
    
     ![用户编辑](./media/work-com-tutorial/ic794118.png "用户编辑")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名字”文本框中，键入用户的**名字** (**Britta**)。
+    a. 在“名字”文本框中，键入用户的**名字** (**Britta**)。
     
     b. 在“姓氏”文本框中，键入用户的**姓氏** (**Simon**)。
     
@@ -288,23 +288,23 @@ ms.locfileid: "39050718"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Work.com”。
+1. 在应用程序列表中，选择“Work.com”。
 
     ![应用列表中的 Work.com](./media/work-com-tutorial/tutorial_work-com_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

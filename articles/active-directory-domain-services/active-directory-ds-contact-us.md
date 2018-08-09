@@ -12,15 +12,15 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/23/2017
 ms.author: maheshu
-ms.openlocfilehash: cc3bcaa5702cc5338e8ea1b7f350e58a98a4a013
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: eda5d76e46ddb9cfcee9ee7554f31ee432938358
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213244"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502761"
 ---
 # <a name="azure-ad-domain-services---contact-us"></a>Azure AD 域服务 - 联系我们
 ## <a name="contact-the-product-team"></a>联系产品团队

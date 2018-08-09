@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1a0f813e1857d2f1c1cc36b34b6339d26fa91c13
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7a630de281932358b0cecf841dc745a4d818aad4
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38488595"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424164"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>锁定资源以防止意外更改 
 
@@ -158,7 +158,7 @@ Remove-AzureRmResourceLock -LockId $lockId
 
 ## <a name="azure-cli"></a>Azure CLI
 
-可以通过 Azure CLI 使用 [az lock create](/cli/azure/lock#az_lock_create) 命令锁定已部署的资源。
+可以通过 Azure CLI 使用 [az lock create](/cli/azure/lock#az-lock-create) 命令锁定已部署的资源。
 
 若要锁定某个资源，请提供该资源的名称、其资源类型及其资源组名称。
 
@@ -172,7 +172,7 @@ az lock create --name LockSite --lock-type CanNotDelete --resource-group example
 az lock create --name LockGroup --lock-type CanNotDelete --resource-group exampleresourcegroup
 ```
 
-若要获取有关某个锁的信息，请使用 [az lock list](/cli/azure/lock#az_lock_list)。 若要获取订阅中的所有锁，请使用：
+若要获取有关某个锁的信息，请使用 [az lock list](/cli/azure/lock#az-lock-list)。 若要获取订阅中的所有锁，请使用：
 
 ```azurecli
 az lock list
@@ -218,6 +218,6 @@ az lock delete --ids $lockid
 ## <a name="next-steps"></a>后续步骤
 * 有关使用逻辑方式组织资源的信息，请参阅[使用标记来组织资源](resource-group-using-tags.md)
 * 要更改资源位于哪个资源组，请参阅[将资源移到新的资源组](resource-group-move-resources.md)
-* 可以使用自定义策略对订阅应用限制和约定。 有关详细信息，请参阅[什么是 Azure 策略？](../azure-policy/azure-policy-introduction.md)。
+* 可以使用自定义策略对订阅应用限制和约定。 有关详细信息，请参阅[什么是 Azure Policy？](../azure-policy/azure-policy-introduction.md)。
 * 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](/azure/architecture/cloud-adoption-guide/subscription-governance)。
 

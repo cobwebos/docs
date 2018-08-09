@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 304f3807a70179e4aab2ede80dc08a1aa85a2e51
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 5c133c61c989bf19be3e84287cb76a7d110dccc8
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098900"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440467"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster"></a>创建 Azure Kubernetes 服务 (AKS) 群集
 
@@ -30,7 +30,7 @@ az aks create --resource-group myResourceGroup --name myAKSCluster
 
 `az aks create` 命令可以使用以下选项。 有关其中每个参数的详细信息，请参阅 AKS 的 [Azure CLI 参考][az-aks-create]。
 
-| 参数 | 说明 | 必选 |
+| 参数 | Description | 必选 |
 |---|---|:---:|
 | `--name` `-n` | 托管群集的资源名称。 | 是 |
 | `--resource-group` `-g` | Azure Kubernetes 服务资源组的名称。 | 是 |
@@ -69,5 +69,5 @@ az aks create --resource-group myResourceGroup --name myAKSCluster
 有关使用 Azure 门户部署 AKS 群集的说明，请参阅 Azure Kubernetes 服务 (AKS) [Azure 门户快速入门][aks-portal-quickstart]。
 
 <!-- LINKS - internal -->
-[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az_aks_create
+[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
 [aks-portal-quickstart]: kubernetes-walkthrough-portal.md

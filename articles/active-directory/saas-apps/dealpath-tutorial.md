@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: jeedes
-ms.openlocfilehash: c79e9352cbeb1cf6349460d4e0b1b61c351f0c40
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 8fa9014ec066e888e9c5cc9330d76c2487786530
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39053421"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427694"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dealpath"></a>教程：Azure Active Directory 与 Dealpath 的集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "39053421"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Dealpath
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-dealpath-from-the-gallery"></a>从库中添加 Dealpath
 若要配置 Dealpath 与 Azure AD 的集成，需要从库中将 Dealpath 添加到托管 SaaS 应用列表。
@@ -64,15 +64,15 @@ ms.locfileid: "39053421"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中，键入“Dealpath”，在结果面板中选择“Dealpath”，然后单击“添加”按钮添加该应用程序。
+1. 在搜索框中，键入“Dealpath”，在结果面板中选择“Dealpath”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 Dealpath](./media/dealpath-tutorial/tutorial_dealpath_addfromgallery.png)
 
@@ -87,10 +87,10 @@ ms.locfileid: "39053421"
 若要配置并测试 Dealpath 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Dealpath 测试用户](#create-a-dealpath-test-user)** - 在 Dealpath 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 Dealpath 测试用户](#create-a-dealpath-test-user)** - 在 Dealpath 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -102,44 +102,44 @@ ms.locfileid: "39053421"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![“单一登录”对话框](./media/dealpath-tutorial/tutorial_dealpath_samlbase.png)
 
-3. 在“Dealpath 域和 URL”部分中，执行以下步骤：
+1. 在“Dealpath 域和 URL”部分中，执行以下步骤：
 
     ![Dealpath 域和 URL 单一登录信息](./media/dealpath-tutorial/tutorial_dealpath_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://app.dealpath.com/account/login`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://app.dealpath.com/account/login`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://api.dealpath.com/saml/metadata/<ID>`
 
     > [!NOTE] 
     > 此标识符不是实际值。 请使用实际标识符更新此值。 请联系 [Dealpath 客户端支持团队](mailto:kenter@dealpath.com)来获取此值。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(Base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/dealpath-tutorial/tutorial_dealpath_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/dealpath-tutorial/tutorial_general_400.png)
 
-6. 在“Dealpath 配置”部分中，单击“配置 Dealpath”以打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 实体 ID 和 SAML 单一登录服务 URL”。
+1. 在“Dealpath 配置”部分中，单击“配置 Dealpath”以打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 实体 ID 和 SAML 单一登录服务 URL”。
 
     ![Dealpath 配置](./media/dealpath-tutorial/tutorial_dealpath_configure.png) 
 
-7. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Dealpath。
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Dealpath。
 
-8. 在右上角，单击“管理工具”并导航到“集成”，然后在“SAML 2.0 身份验证”部分中单击“更新设置”：
+1. 在右上角，单击“管理工具”并导航到“集成”，然后在“SAML 2.0 身份验证”部分中单击“更新设置”：
 
     ![Dealpath 配置](./media/dealpath-tutorial/tutorial_dealpath_admin.png)
 
-9. 在“设置 SAML 2.0 身份验证”页面上，执行以下步骤：
+1. 在“设置 SAML 2.0 身份验证”页面上，执行以下步骤：
 
     ![Dealpath 配置](./media/dealpath-tutorial/tutorial_dealpath_saml.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“SAML SSO URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
+    a. 在“SAML SSO URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
     b. 在“标识提供程序颁发者”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
 
@@ -164,19 +164,19 @@ ms.locfileid: "39053421"
 
     ![“Azure Active Directory”按钮](./media/dealpath-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/dealpath-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/dealpath-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/dealpath-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -200,23 +200,23 @@ ms.locfileid: "39053421"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Dealpath”。
+1. 在应用程序列表中，选择“Dealpath”。
 
     ![应用程序列表中的 Dealpath 链接](./media/dealpath-tutorial/tutorial_dealpath_app.png)  
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

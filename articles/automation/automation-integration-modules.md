@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e7135e620ab799131f772c16f6799ed80be312e0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 93c61f0b9b923f84b2c84d2db4456442e2f9fb27
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195856"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39444498"
 ---
 # <a name="azure-automation-integration-modules"></a>Azure 自动化集成模块
 PowerShell 是 Azure 自动化背后的基本技术。 由于 Azure 自动化是基于 PowerShell 构建的，因此 PowerShell 模块对于 Azure 自动化的可扩展性很重要。 在本文中，我们将向你详细介绍 Azure 自动化如何使用 PowerShell 模块（也称“集成模块”），以及如何根据最佳做法创建自己的 PowerShell 模块，确保这些模块在 Azure 自动化中作为集成模块来运行。 
@@ -102,7 +102,7 @@ PowerShell 模块是指一组可以通过 PowerShell 控制台、脚本、工作
     }
     ```
    <br> 提供此信息以后，用户不仅可以使用 **Get-Help** cmdlet 在 PowerShell 控制台中显示此帮助，还可以在特定情况下在 Azure 自动化中公开此帮助功能。  例如，在进行 Runbook 创作过程中插入活动。 在使用 Web 浏览器访问 Azure 自动化时，单击“查看详细帮助”即可在该浏览器的另一标签页中打开帮助 URI。<br>![集成模块帮助](media/automation-integration-modules/automation-integration-module-activitydesc.png)
-2. 如果该模块是针对远程系统运行的：
+1. 如果该模块是针对远程系统运行的：
 
     a. 该模块应包含一个集成模块元数据文件，用于定义连接到该远程系统所需的信息，即定义连接类型。  
     b. 模块中的每个 cmdlet 都应能够使用连接对象（该连接类型的实例）作为参数。  
@@ -157,8 +157,8 @@ PowerShell 模块是指一组可以通过 PowerShell 控制台、脚本、工作
     }
     ```
    <br>
-3. 在模块中定义所有 cmdlet 的输出类型。 定义 cmdlet 的输出类型以后，就可以利用设计时 IntelliSense 来确定 cmdlet 的输出属性，供创作时使用。 这在自动化 Runbook 的图形创作过程中特别有用，这种创作过程要求掌握一定程度的设计时知识，以改进用户对模块的使用体验。<br><br> ![图形 Runbook 输出类型](media/automation-integration-modules/runbook-graphical-module-output-type.png)<br> 这类似于 PowerShell ISE 中 cmdlet 输出的“预输入”功能，不需要运行。<br><br> ![POSH IntelliSense](media/automation-integration-modules/automation-posh-ise-intellisense.png)<br>
-4. 模块中的 cmdlet 不应使用复杂对象类型作为参数。 PowerShell 工作流不同于 PowerShell，因为前者采用反序列化格式存储复杂类型。 基元类型仍为基元类型，而复杂类型则转换为反序列化版本，后者实质上是属性包。 例如，如果在 Runbook（或 PowerShell 工作流）中使用了 **Get-Process** cmdlet，则会返回 [Deserialized.System.Diagnostic.Process] 类型的对象，而不是所需的 [System.Diagnostic.Process] 类型。 此类型包含所有与非反序列化类型相同的属性，但不包含相关方法。 如果尝试将该值作为参数传递给某个 cmdlet，而此 cmdlet 需要该参数的值为 [System.Diagnostic.Process]，则会收到以下错误：*无法处理参数 'process' 的参数转换。错误：无法将 "System.Diagnostics.Process (CcmExec)" 值从类型 "Deserialized.System.Diagnostics.Process" 转换为类型 "System.Diagnostics.Process"。*   这是因为，预期的 [System.Diagnostic.Process] 类型与给定的 [Deserialized.System.Diagnostic.Process] 类型存在类型不匹配的情况。 若要解决此问题，必须确保模块的 cmdlet 不使用复杂类型作为参数。 下面是错误的处理方式。
+1. 在模块中定义所有 cmdlet 的输出类型。 定义 cmdlet 的输出类型以后，就可以利用设计时 IntelliSense 来确定 cmdlet 的输出属性，供创作时使用。 这在自动化 Runbook 的图形创作过程中特别有用，这种创作过程要求掌握一定程度的设计时知识，以改进用户对模块的使用体验。<br><br> ![图形 Runbook 输出类型](media/automation-integration-modules/runbook-graphical-module-output-type.png)<br> 这类似于 PowerShell ISE 中 cmdlet 输出的“预输入”功能，不需要运行。<br><br> ![POSH IntelliSense](media/automation-integration-modules/automation-posh-ise-intellisense.png)<br>
+1. 模块中的 cmdlet 不应使用复杂对象类型作为参数。 PowerShell 工作流不同于 PowerShell，因为前者采用反序列化格式存储复杂类型。 基元类型仍为基元类型，而复杂类型则转换为反序列化版本，后者实质上是属性包。 例如，如果在 Runbook（或 PowerShell 工作流）中使用了 **Get-Process** cmdlet，则会返回 [Deserialized.System.Diagnostic.Process] 类型的对象，而不是所需的 [System.Diagnostic.Process] 类型。 此类型包含所有与非反序列化类型相同的属性，但不包含相关方法。 如果尝试将该值作为参数传递给某个 cmdlet，而此 cmdlet 需要该参数的值为 [System.Diagnostic.Process]，则会收到以下错误：*无法处理参数 'process' 的参数转换。错误：无法将 "System.Diagnostics.Process (CcmExec)" 值从类型 "Deserialized.System.Diagnostics.Process" 转换为类型 "System.Diagnostics.Process"。*   这是因为，预期的 [System.Diagnostic.Process] 类型与给定的 [Deserialized.System.Diagnostic.Process] 类型存在类型不匹配的情况。 若要解决此问题，必须确保模块的 cmdlet 不使用复杂类型作为参数。 下面是错误的处理方式。
    
     ```
     function Get-ProcessDescription {
@@ -183,7 +183,7 @@ PowerShell 模块是指一组可以通过 PowerShell 控制台、脚本、工作
     ```
    <br>
    Runbook 中的连接资产是哈希表，这些表属于复杂类型。不过，这些哈希表似乎可以传递到 cmdlet 中用作 -Connection 参数而不出任何问题，不会有任何强制转换异常。 从技术上讲，某些 PowerShell 类型是能够正常地从序列化形式强制转换为反序列化形式的，因此可以传递到 cmdlet 中作为参数来接受非反序列化类型。 哈希表就是其中之一。 可以对模块作者所定义的类型进行某种方式的实施，使之也能正确地反序列化，但这种方式需要克服某些弊端。 该类型需要有一个默认的构造函数，需要公开其所有属性，且需要有一个 PSTypeConverter。 不过，对于模块作者没有所有权的已定义类型，则无法对其进行“修复”，因此建议用户还是避免使用复杂类型作为参数。 Runbook 创作提示：如果 cmdlet 因故而需要使用复杂类型参数，或者使用的是其他人的需要复杂类型参数的模块，则要想在本地 PowerShell 的 PowerShell 工作流 Runbook 和 PowerShell 工作流中解决这个问题，需要将生成复杂类型的 cmdlet 和使用该复杂类型的 cmdlet 打包到同一个 InlineScript 活动中。 由于 InlineScript 以 PowerShell 方式而非 PowerShell 工作流方式执行其内容，生成复杂类型的 cmdlet 会生成相应的正确类型，而不是反序列化的复杂类型。
-5. 使模块中的所有 cmdlet 以无状态方式呈现。 PowerShell 工作流在不同的会话中运行在工作流中调用的每个 cmdlet。 这意味着，任何依赖于同一模块中其他 cmdlet 创建/修改的会话状态的 cmdlet 都无法在 PowerShell 工作流 Runbook 中使用。  下面是应避免的处理方式的示例。
+1. 使模块中的所有 cmdlet 以无状态方式呈现。 PowerShell 工作流在不同的会话中运行在工作流中调用的每个 cmdlet。 这意味着，任何依赖于同一模块中其他 cmdlet 创建/修改的会话状态的 cmdlet 都无法在 PowerShell 工作流 Runbook 中使用。  下面是应避免的处理方式的示例。
    
     ```
     $globalNum = 0
@@ -201,7 +201,7 @@ PowerShell 模块是指一组可以通过 PowerShell 控制台、脚本、工作
     }
     ```
    <br>
-6. 该模块应完全包含在能够进行 Xcopy 操作的包中。 Azure 自动化模块是在需要执行 Runbook 时分发到自动化沙盒中的，因此在使用时需独立于运行时所在的主机。 这意味着，应该可以在压缩模块包后将其移到任何其他使用相同 PowerShell 版本或更新版本的主机上，并将其导入该主机的 PowerShell 环境中，就能正常地运行该模块包了。 因此，该模块不应依赖于模块文件夹（即导入到 Azure 自动化中时需要进行压缩的文件夹）外的任何文件，也不应依赖于主机上任何特殊的注册表设置，例如在安装产品时进行的设置。 如果不遵循此最佳实践，将无法在 Azure 自动化中使用该模块。  
+1. 该模块应完全包含在能够进行 Xcopy 操作的包中。 Azure 自动化模块是在需要执行 Runbook 时分发到自动化沙盒中的，因此在使用时需独立于运行时所在的主机。 这意味着，应该可以在压缩模块包后将其移到任何其他使用相同 PowerShell 版本或更新版本的主机上，并将其导入该主机的 PowerShell 环境中，就能正常地运行该模块包了。 因此，该模块不应依赖于模块文件夹（即导入到 Azure 自动化中时需要进行压缩的文件夹）外的任何文件，也不应依赖于主机上任何特殊的注册表设置，例如在安装产品时进行的设置。 如果不遵循此最佳实践，将无法在 Azure 自动化中使用该模块。  
 
 ## <a name="next-steps"></a>后续步骤
 

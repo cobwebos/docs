@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/29/2018
 ms.author: glenga
-ms.openlocfilehash: 91c16ad5a6bf8babffc0b83d801626932688631e
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 3ff02816cdd5641cdcd78a12206b80be6d518373
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34699948"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423702"
 ---
 # <a name="zip-push-deployment-for-azure-functions"></a>Azure Functions 的 Zip 推送部署 
 本文介绍如何将函数应用项目文件从 .zip（压缩）文件部署到 Azure。 可在本文中了解如何通过 Azure CLI 和 REST API 进行推送部署。 
@@ -73,7 +73,7 @@ Azure Functions 具有完整的持续部署范围，以及由 Azure 应用服务
 
 ## <a name="cli"></a>使用 Azure CLI 进行部署
 
-可使用 Azure CLI 来触发推送部署。 使用 [az functionapp deployment source config-zip](/cli/azure/functionapp/deployment/source#az_functionapp_deployment_source_config_zip) 命令将 .zip 文件推送部署到函数应用。 要使用此命令，必须使用 Azure CLI 版本 2.0.21 或更高版本。 要查看当前使用的 Azure CLI 版本，请使用 `az --version` 命令。
+可使用 Azure CLI 来触发推送部署。 使用 [az functionapp deployment source config-zip](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config-zip) 命令将 .zip 文件推送部署到函数应用。 要使用此命令，必须使用 Azure CLI 版本 2.0.21 或更高版本。 要查看当前使用的 Azure CLI 版本，请使用 `az --version` 命令。
 
 以下命令将 `<zip_file_path>` 占位符替换为 .zip 文件的位置路径。 此外，`<app_name>` 替换为函数应用的唯一名称。 
 

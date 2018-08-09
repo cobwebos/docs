@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: a194061bf443f50bed673a518ab62746f67b4a78
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 62e035c0d28a797ae08480b982598d8265b18767
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838153"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423838"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>用于 Azure 机器学习中高级分析的方案
 本文概述了各种示例数据源和可通过[团队数据科学过程 (TDSP)](overview.md) 处理的目标场景。 TDSP 为团队提供了一个系统性方法，可协作构建智能应用程序。 此处介绍的情景说明了数据处理工作流中的可用选项，具体取决于 Azure 中的数据特征、源位置和目标存储库。
@@ -48,47 +48,47 @@ ms.locfileid: "34838153"
 
 #### <a name="additional-azure-resources-none"></a>其他 Azure 资源：无
 1. 登录到 [Azure 机器学习工作室](https://studio.azureml.net/)。
-2. 上传数据集。
-3. 开始使用上传的数据集生成 Azure 机器学习实验流。
+1. 上传数据集。
+1. 开始使用上传的数据集生成 Azure 机器学习实验流。
 
 ## <a name="smalllocalprocess"></a>场景 \#2：需要处理的本地文件的小型到中型数据集
 ![需要处理的小型到中型本地文件][2]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>其他 Azure 资源：Azure 虚拟机（IPython Notebook 服务器）
 1. 创建运行 IPython Notebook 的 Azure 虚拟机。
-2. 将数据上传到 Azure 存储容器。
-3. 访问 Azure 存储容器中的数据，预处理并清理 IPython Notebook 中的数据。
-4. 将数据转换为已清除的表格格式。
-5. 将已转换的数据保存在 Azure blob 中。
-6. 登录到 [Azure 机器学习工作室](https://studio.azureml.net/)。
-7. 使用[导入数据][import-data]模块从 Azure blob 中读取数据。
-8. 开始使用引入的数据集生成 Azure 机器学习实验流。
+1. 将数据上传到 Azure 存储容器。
+1. 访问 Azure 存储容器中的数据，预处理并清理 IPython Notebook 中的数据。
+1. 将数据转换为已清除的表格格式。
+1. 将已转换的数据保存在 Azure blob 中。
+1. 登录到 [Azure 机器学习工作室](https://studio.azureml.net/)。
+1. 使用[导入数据][import-data]模块从 Azure blob 中读取数据。
+1. 开始使用引入的数据集生成 Azure 机器学习实验流。
 
 ## <a name="largelocal"></a>场景 \#3：本地文件针对 Azure Blob 的大型数据集
 ![大型本地文件][3]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>其他 Azure 资源：Azure 虚拟机（IPython Notebook 服务器）
 1. 创建运行 IPython Notebook 的 Azure 虚拟机。
-2. 将数据上传到 Azure 存储容器。
-3. 访问 Azure blob 中的数据，预处理并清理 IPython Notebook 中的数据。
-4. 如果需要，可将数据转换为已清除的表格格式。
-5. 浏览数据，并根据需要创建功能。
-6. 提取小到中型数据示例。
-7. 将采样的数据保存在 Azure blob 中。
-8. 登录到 [Azure 机器学习工作室](https://studio.azureml.net/)。
-9. 使用[导入数据][import-data]模块从 Azure blob 中读取数据。
-10. 开始使用引入的数据集生成 Azure 机器学习实验流。
+1. 将数据上传到 Azure 存储容器。
+1. 访问 Azure blob 中的数据，预处理并清理 IPython Notebook 中的数据。
+1. 如果需要，可将数据转换为已清除的表格格式。
+1. 浏览数据，并根据需要创建功能。
+1. 提取小到中型数据示例。
+1. 将采样的数据保存在 Azure blob 中。
+1. 登录到 [Azure 机器学习工作室](https://studio.azureml.net/)。
+1. 使用[导入数据][import-data]模块从 Azure blob 中读取数据。
+1. 开始使用引入的数据集生成 Azure 机器学习实验流。
 
 ## <a name="smalllocaltodb"></a>方案 \#4：本地文件中针对 Azure 虚拟机中 SQL Server 的小型到中型数据集
 ![Azure 中 SQL DB 的小型到中型本地文件][4]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>其他 Azure 资源：Azure 虚拟机（SQL Server/IPython Notebook 服务器）
 1. 创建运行 SQL Server + IPython Notebook 的 Azure 虚拟机。
-2. 将数据上传到 Azure 存储容器。
-3. 使用 IPython Notebook 预处理并清理 Azure 存储容器中的数据。
-4. 如果需要，可将数据转换为已清除的表格格式。
-5. 将数据保存到本地 VM 文件（IPython Notebook 正在 VM 上运行，本地驱动器是指 VM 驱动器）。
-6. 将数据加载到在 Azure VM 上运行的 SQL Server 数据库。
+1. 将数据上传到 Azure 存储容器。
+1. 使用 IPython Notebook 预处理并清理 Azure 存储容器中的数据。
+1. 如果需要，可将数据转换为已清除的表格格式。
+1. 将数据保存到本地 VM 文件（IPython Notebook 正在 VM 上运行，本地驱动器是指 VM 驱动器）。
+1. 将数据加载到在 Azure VM 上运行的 SQL Server 数据库。
    
    选项 \#1：使用 SQL Server Management Studio。
    
@@ -103,19 +103,19 @@ ms.locfileid: "34838153"
    * 使用 ODBC 连接字符串访问 VM 上的 SQL Server。
    * 创建数据库和目标表。
    * 使用某个大容量导入方法从本地 VM 文件加载数据。
-7. 浏览数据，根据需要创建功能。 请注意，这些功能不需要在数据库表中具体化。 仅请注意创建它们所需的查询。
-8. 如果需要和/或想要，请确定数据示例大小。
-9. 登录到 [Azure 机器学习工作室](https://studio.azureml.net/)。
-10. 使用[导入数据][import-data]模块直接从 SQL Server 中读取数据。 粘贴需要的查询，根据需要，这会直接在[导入数据][import-data]查询中提取字段、创建功能和示例数据。
-11. 开始使用引入的数据集生成 Azure 机器学习实验流。
+1. 浏览数据，根据需要创建功能。 请注意，这些功能不需要在数据库表中具体化。 仅请注意创建它们所需的查询。
+1. 如果需要和/或想要，请确定数据示例大小。
+1. 登录到 [Azure 机器学习工作室](https://studio.azureml.net/)。
+1. 使用[导入数据][import-data]模块直接从 SQL Server 中读取数据。 粘贴需要的查询，根据需要，这会直接在[导入数据][import-data]查询中提取字段、创建功能和示例数据。
+1. 开始使用引入的数据集生成 Azure 机器学习实验流。
 
 ## <a name="largelocaltodb"></a>场景 \#5：本地文件中针对 Azure VM 中 SQL Server 的大型数据集
 ![Azure 中 SQL DB 的大型本地文件][5]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>其他 Azure 资源：Azure 虚拟机（SQL Server/IPython Notebook 服务器）
 1. 创建运行 SQL Server 和 IPython Notebook 服务器的 Azure 虚拟机。
-2. 将数据上传到 Azure 存储容器。
-3. （可选）预处理并清理数据。
+1. 将数据上传到 Azure 存储容器。
+1. （可选）预处理并清理数据。
    
    a.  预处理并清理 IPython Notebook 中的数据，从 Azure 访问数据
    
@@ -124,7 +124,7 @@ ms.locfileid: "34838153"
    b.  如果需要，可将数据转换为已清除的表格格式。
    
    c.  将数据保存到本地 VM 文件（IPython Notebook 正在 VM 上运行，本地驱动器是指 VM 驱动器）。
-4. 将数据加载到在 Azure VM 上运行的 SQL Server 数据库。
+1. 将数据加载到在 Azure VM 上运行的 SQL Server 数据库。
    
    a.  登录到 SQL Server VM。
    
@@ -144,25 +144,25 @@ ms.locfileid: "34838153"
    > 为了加快较大数据大小的加载速度，建议创建分区表，并大容量导入并行数据。 有关详细信息，请参阅[将并行数据导入到 SQL 分区表](parallel-load-sql-partitioned-tables.md)。
    > 
    > 
-5. 浏览数据，根据需要创建功能。 请注意，这些功能不需要在数据库表中具体化。 仅请注意创建它们所需的查询。
-6. 如果需要和/或想要，请确定数据示例大小。
-7. 登录到 [Azure 机器学习工作室](https://studio.azureml.net/)。
-8. 使用[导入数据][import-data]模块直接从 SQL Server 中读取数据。 粘贴需要的查询，根据需要，这会直接在[导入数据][import-data]查询中提取字段、创建功能和示例数据。
-9. 开始使用上传的数据集对 Azure 机器学习实验流进行采样
+1. 浏览数据，根据需要创建功能。 请注意，这些功能不需要在数据库表中具体化。 仅请注意创建它们所需的查询。
+1. 如果需要和/或想要，请确定数据示例大小。
+1. 登录到 [Azure 机器学习工作室](https://studio.azureml.net/)。
+1. 使用[导入数据][import-data]模块直接从 SQL Server 中读取数据。 粘贴需要的查询，根据需要，这会直接在[导入数据][import-data]查询中提取字段、创建功能和示例数据。
+1. 开始使用上传的数据集对 Azure 机器学习实验流进行采样
 
 ## <a name="largedbtodb"></a>场景 \#6：本地 SQL Server 数据库中针对 Azure 虚拟机中 SQL Server 的大型数据集
 ![Azure 中 SQL DB 的本地大型 SQL DB][6]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>其他 Azure 资源：Azure 虚拟机（SQL Server/IPython Notebook 服务器）
 1. 创建运行 SQL Server 和 IPython Notebook 服务器的 Azure 虚拟机。
-2. 使用一种数据导出方法将数据从 SQL Server 导出到转储文件。
+1. 使用一种数据导出方法将数据从 SQL Server 导出到转储文件。
    
    > [!NOTE]
    > 如果决定移动本地数据库中所有数据，另一个方法（更快）是将完整数据库移动到 Azure 中的 SQL Server 实例。 跳过导出数据、创建数据库和将数据加载/导入到目标数据库的步骤，使用另一个方法。
    > 
    > 
-3. 将转储文件上传到 Azure 存储容器。
-4. 将数据加载到在 Azure 虚拟机上运行的 SQL Server 数据库。
+1. 将转储文件上传到 Azure 存储容器。
+1. 将数据加载到在 Azure 虚拟机上运行的 SQL Server 数据库。
    
    a.  登录到 SQL Server VM。
    
@@ -180,11 +180,11 @@ ms.locfileid: "34838153"
    > 为了加快较大数据大小的加载速度，可创建分区表，并大容量导入并行数据。 有关详细信息，请参阅[将并行数据导入到 SQL 分区表](parallel-load-sql-partitioned-tables.md)。
    > 
    > 
-5. 浏览数据，根据需要创建功能。 请注意，这些功能不需要在数据库表中具体化。 仅请注意创建它们所需的查询。
-6. 如果需要和/或想要，请确定数据示例大小。
-7. 登录到 [Azure 机器学习工作室](https://studio.azureml.net/)。
-8. 使用[导入数据][import-data]模块直接从 SQL Server 中读取数据。 粘贴需要的查询，根据需要，这会直接在[导入数据][import-data]查询中提取字段、创建功能和示例数据。
-9. 开始使用上传的数据集对 Azure 机器学习实验流进行采样。
+1. 浏览数据，根据需要创建功能。 请注意，这些功能不需要在数据库表中具体化。 仅请注意创建它们所需的查询。
+1. 如果需要和/或想要，请确定数据示例大小。
+1. 登录到 [Azure 机器学习工作室](https://studio.azureml.net/)。
+1. 使用[导入数据][import-data]模块直接从 SQL Server 中读取数据。 粘贴需要的查询，根据需要，这会直接在[导入数据][import-data]查询中提取字段、创建功能和示例数据。
+1. 开始使用上传的数据集对 Azure 机器学习实验流进行采样。
 
 ### <a name="alternate-method-to-copy-a-full-database-from-an-on-premises--sql-server-to-azure-sql-database"></a>另一个方法是将完整的数据库从本地 SQL Server 复制到 Azure SQL 数据库
 ![分离本地 DB，并附加到 Azure 中的 SQL DB][7]
@@ -193,8 +193,8 @@ ms.locfileid: "34838153"
 要复制 SQL Server VM 中的完整 SQL Server 数据库，假定数据库可暂时处于脱机状态，应将数据库从一个位置/服务器复制到另一个。 可在 SQL Server Management Studio 中执行此操作，或使用等效的 Transact-SQL 命令。
 
 1. 在源位置分离数据库。 有关详细信息，请参阅[分离数据库](https://technet.microsoft.com/library/ms191491\(v=sql.110\).aspx)。
-2. 在 Windows Explorer 或“Windows 命令提示”窗口中，将分离的一个或多个数据库文件和日志文件复制到 Azure 中 SQL Server VM 上的目标位置。
-3. 将复制的文件附加到目标 SQL Server 实例。 有关详细信息，请参阅[附加数据库](https://technet.microsoft.com/library/ms190209\(v=sql.110\).aspx)。
+1. 在 Windows Explorer 或“Windows 命令提示”窗口中，将分离的一个或多个数据库文件和日志文件复制到 Azure 中 SQL Server VM 上的目标位置。
+1. 将复制的文件附加到目标 SQL Server 实例。 有关详细信息，请参阅[附加数据库](https://technet.microsoft.com/library/ms190209\(v=sql.110\).aspx)。
 
 [使用分离和附加移动数据库 (Transact-SQL)](https://technet.microsoft.com/library/ms187858\(v=sql.110\).aspx)
 
@@ -203,8 +203,8 @@ ms.locfileid: "34838153"
 
 #### <a name="additional-azure-resources-azure-hdinsight-hadoop-cluster-and-azure-virtual-machine-ipython-notebook-server"></a>其他 Azure 资源：Azure HDInsight Hadoop 群集和Azure 虚拟机（IPython Notebook 服务器）
 1. 创建运行 IPython Notebook 的 Azure 虚拟机服务器。
-2. 创建 Azure HDInsight Hadoop 群集。
-3. （可选）预处理并清理数据。
+1. 创建 Azure HDInsight Hadoop 群集。
+1. （可选）预处理并清理数据。
    
    a.  预处理并清理 IPython Notebook 中的数据，从 Azure 访问数据
    
@@ -213,8 +213,8 @@ ms.locfileid: "34838153"
    b.  如果需要，可将数据转换为已清除的表格格式。
    
    c.  将数据保存到本地 VM 文件（IPython Notebook 正在 VM 上运行，本地驱动器是指 VM 驱动器）。
-4. 将数据上传到步骤 2 中选择的 Hadoop 群集的默认容器。
-5. 将数据加载到 Azure HDInsight Hadoop 群集中的 Hive 数据库。
+1. 将数据上传到步骤 2 中选择的 Hadoop 群集的默认容器。
+1. 将数据加载到 Azure HDInsight Hadoop 群集中的 Hive 数据库。
    
    a.  登录到 Hadoop 群集的头节点
    
@@ -228,7 +228,7 @@ ms.locfileid: "34838153"
    > 如果数据太大，用户可以使用分区创建 Hive 表。 然后，用户可以使用头节点上 Hadoop 命令行中的 `for` 循环，将数据加载到由分区进行分区的 Hive 表中。
    > 
    > 
-6. 浏览数据，并根据需要在 Hadoop 命令行中创建功能。 请注意，这些功能不需要在数据库表中具体化。 仅请注意创建它们所需的查询。
+1. 浏览数据，并根据需要在 Hadoop 命令行中创建功能。 请注意，这些功能不需要在数据库表中具体化。 仅请注意创建它们所需的查询。
    
    a.  登录到 Hadoop 群集的头节点
    
@@ -237,10 +237,10 @@ ms.locfileid: "34838153"
    c.  按照 Hadoop 命令行中的命令 `cd %hive_home%\bin` 输入 Hive 根目录。
    
    d.  在 Hadoop 群集的头节点上的 Hadoop 命令行中运行 Hive 查询，可浏览数据并根据需要创建功能。
-7. 如果需要和/或想要，对数据进行采样以满足 Azure 机器学习工作室。
-8. 登录到 [Azure 机器学习工作室](https://studio.azureml.net/)。
-9. 使用[导入数据][import-data]模块直接从 `Hive Queries` 中读取数据。 粘贴需要的查询，根据需要，这会直接在[导入数据][import-data]查询中提取字段、创建功能和示例数据。
-10. 开始使用上传的数据集对 Azure 机器学习实验流进行采样。
+1. 如果需要和/或想要，对数据进行采样以满足 Azure 机器学习工作室。
+1. 登录到 [Azure 机器学习工作室](https://studio.azureml.net/)。
+1. 使用[导入数据][import-data]模块直接从 `Hive Queries` 中读取数据。 粘贴需要的查询，根据需要，这会直接在[导入数据][import-data]查询中提取字段、创建功能和示例数据。
+1. 开始使用上传的数据集对 Azure 机器学习实验流进行采样。
 
 ## <a name="decisiontree"></a>用于方案选择的决策树
 - - -

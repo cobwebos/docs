@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: a538b23e829e309c10e745beef4fc8512c3294de
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 6ba37a026a3c8f50fa47b0775a2ad49ee75f2769
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131421"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424640"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Log Analytics 中的 VMware 监视（预览版）解决方案
 
@@ -49,29 +49,29 @@ vSphere ESXi 主机 5.5、6.0 和 6.5
 ### <a name="configure-syslog-collection"></a>配置系统日志收集
 1. 为 VSphere 设置 syslog 转发。 有关帮助设置 syslog 转发的详细信息，请参阅[在 ESXi 5.0 及更高版本上配置 syslog (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322)。 转到“ESXi 主机配置” > “软件” > “高级设置” > “Syslog”。
    ![vsphereconfig](./media/log-analytics-vmware/vsphere1.png)  
-2. 在“Syslog.global.logHost”字段中，添加 Linux 服务器和端口号 *1514*。 例如，`tcp://hostname:1514` 或 `tcp://123.456.789.101:1514`
-3. 为 syslog 打开 ESXi 主机防火墙。 “ESXi 主机配置” > “软件” > “安全配置文件” > “防火墙”并打开“属性”。  
+1. 在“Syslog.global.logHost”字段中，添加 Linux 服务器和端口号 *1514*。 例如，`tcp://hostname:1514` 或 `tcp://123.456.789.101:1514`
+1. 为 syslog 打开 ESXi 主机防火墙。 “ESXi 主机配置” > “软件” > “安全配置文件” > “防火墙”并打开“属性”。  
 
     ![vspherefw](./media/log-analytics-vmware/vsphere2.png)  
 
     ![vspherefwproperties](./media/log-analytics-vmware/vsphere3.png)  
-4. 检查 vSphere 控制台以验证该 syslog 是否已正确设置。 在 ESXI 主机上确认端口 **1514** 已配置。
-5. 在 Linux 服务器上下载并安装适用于 Linux 的 OMS 代理。 有关详细信息，请参阅 [适用于 Linux 的 OMS 代理的文档](https://github.com/Microsoft/OMS-Agent-for-Linux)。
-6. 安装 OMS Agent for Linux 后，转到 /etc/opt/microsoft/omsagent/sysconf/omsagent.d 目录，将 vmware_esxi.conf 文件复制到 /etc/opt/microsoft/omsagent/conf/omsagent.d 目录并更改文件的所有者/组和权限。 例如：
+1. 检查 vSphere 控制台以验证该 syslog 是否已正确设置。 在 ESXI 主机上确认端口 **1514** 已配置。
+1. 在 Linux 服务器上下载并安装适用于 Linux 的 OMS 代理。 有关详细信息，请参阅 [适用于 Linux 的 OMS 代理的文档](https://github.com/Microsoft/OMS-Agent-for-Linux)。
+1. 安装 OMS Agent for Linux 后，转到 /etc/opt/microsoft/omsagent/sysconf/omsagent.d 目录，将 vmware_esxi.conf 文件复制到 /etc/opt/microsoft/omsagent/conf/omsagent.d 目录并更改文件的所有者/组和权限。 例如：
 
     ```
     sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/vmware_esxi.conf /etc/opt/microsoft/omsagent/conf/omsagent.d
    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf
     ```
-7. 通过运行 `sudo /opt/microsoft/omsagent/bin/service_control restart` 重新启动 OMS Agent for Linux。
-8. 通过使用 ESXi 主机上的 `nc` 命令测试 Linux 服务器和 ESXi 主机之间的连接。 例如：
+1. 通过运行 `sudo /opt/microsoft/omsagent/bin/service_control restart` 重新启动 OMS Agent for Linux。
+1. 通过使用 ESXi 主机上的 `nc` 命令测试 Linux 服务器和 ESXi 主机之间的连接。 例如：
 
     ```
     [root@ESXiHost:~] nc -z 123.456.789.101 1514
     Connection to 123.456.789.101 1514 port [tcp/*] succeeded!
     ```
 
-9. 在 Azure 门户中，针对 `VMware_CL` 执行日志搜索。 Log Analytics 收集 syslog 数据时，它将保留 syslog 格式。 在该门户中，将捕获某些特定字段，如 *Hostname* 和 *ProcessName*。  
+1. 在 Azure 门户中，针对 `VMware_CL` 执行日志搜索。 Log Analytics 收集 syslog 数据时，它将保留 syslog 格式。 在该门户中，将捕获某些特定字段，如 *Hostname* 和 *ProcessName*。  
 
     ![type](./media/log-analytics-vmware/type.png)  
 
@@ -191,11 +191,11 @@ syslog 时间戳有一个 ESXi 主机 bug。 有关详细信息，请参阅 [VMw
   1. 若要确认，请登录到使用 ssh 的 ESXi 主机，并运行以下命令：`nc -z ipaddressofVM 1514`
 
       如果此操作不成功，则高级配置中的 vSphere 设置可能不正确。 若要深入了解如何设置 ESXi 主机以进行 syslog 转发，请参阅[配置 syslog 集合](#configure-syslog-collection)。
-  2. 如果 syslog 端口连接成功，但仍看不到任何数据，则通过使用 ssh 运行以下命令在 ESXi 主机上重新加载 syslog：` esxcli system syslog reload`
+  1. 如果 syslog 端口连接成功，但仍看不到任何数据，则通过使用 ssh 运行以下命令在 ESXi 主机上重新加载 syslog：` esxcli system syslog reload`
 * 具有 OMS 代理的 VM 设置不正确。 若要对此进行测试，请执行以下步骤：
 
   1. Log Analytics 侦听端口 1514。 若要验证其是否打开，请运行以下命令：`netstat -a | grep 1514`
-  2. 应看到端口 `1514/tcp` 处于打开状态。 如果未看到，请验证 omsagent 是否正确安装。 如果看不到端口信息，则未在 VM 上打开 syslog 端口。
+  1. 应看到端口 `1514/tcp` 处于打开状态。 如果未看到，请验证 omsagent 是否正确安装。 如果看不到端口信息，则未在 VM 上打开 syslog 端口。
 
     a. 使用 `ps -ef | grep oms` 验证 OMS 代理是否正在运行。 如果未运行，通过运行 ` sudo /opt/microsoft/omsagent/bin/service_control start` 命令启动此进程
 

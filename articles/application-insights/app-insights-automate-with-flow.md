@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: c92b50ee78c100a531a2973181251444b3810967
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 28228755f76f38ef2ed5e50c776a99427118e090
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293763"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424545"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>使用 Microsoft Flow 的连接器自动执行 Azure Application Insights 过程
 
@@ -35,19 +35,19 @@ ms.locfileid: "35293763"
 
 ### <a name="step-1-create-a-flow"></a>步骤 1：创建流
 1. 登录到 [Microsoft Flow](http://flow.microsoft.com)，然后选择“我的流”。
-2. 单击“从头开始创建流”。
+1. 单击“从头开始创建流”。
 
 ### <a name="step-2-create-a-trigger-for-your-flow"></a>步骤 2：为流创建触发器
 1. 选择“计划”，然后选择“计划 - 循环”。
-2. 在“频率”框中选择“天”，然后在“时间间隔”框中输入 1。
+1. 在“频率”框中选择“天”，然后在“时间间隔”框中输入 1。
 
     ![Microsoft Flow 触发器对话框](./media/app-insights-automate-with-flow/flow1.png)
 
 
 ### <a name="step-3-add-an-application-insights-action"></a>步骤 3：添加 Application Insights 操作
 1. 单击“新建步骤”，并单击“添加操作”。
-2. 搜索“Azure Application Insights”。
-3. 单击“Azure Application Insights - 将 Analytics 查询可视化(预览)”。
+1. 搜索“Azure Application Insights”。
+1. 单击“Azure Application Insights - 将 Analytics 查询可视化(预览)”。
 
     ![运行 Analytics 查询窗口](./media/app-insights-automate-with-flow/flow2.png)
 
@@ -84,12 +84,12 @@ ms.locfileid: "35293763"
 ### <a name="step-6-configure-the-flow-to-send-email"></a>步骤 6：配置流以发送电子邮件
 
 1. 单击“新建步骤”，并单击“添加操作”。
-2. 搜索“Office 365 Outlook”。
-3. 单击“Office 365 Outlook - 发送电子邮件”。
+1. 搜索“Office 365 Outlook”。
+1. 单击“Office 365 Outlook - 发送电子邮件”。
 
     ![Office 365 Outlook 选择窗口](./media/app-insights-automate-with-flow/flow2b.png)
 
-4. 在“发送电子邮件”窗口中，执行以下操作：
+1. 在“发送电子邮件”窗口中，执行以下操作：
 
    a. 键入收件人的电子邮件地址。
 
@@ -101,7 +101,7 @@ ms.locfileid: "35293763"
 
     ![Office 365 Outlook 配置](./media/app-insights-automate-with-flow/flow5.png)
 
-5. 在动态内容菜单上执行以下操作：
+1. 在动态内容菜单上执行以下操作：
 
     a. 选择“附件名称”。
 

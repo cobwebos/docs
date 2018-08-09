@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/25/2017
 ms.author: daveba
-ms.openlocfilehash: 947e0140c7943954be5eb285bb7ec514b74e9022
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a5da06eac7f4680282aad305f57cb9ca1c9d5730
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33929636"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424426"
 ---
 # <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-azure-cli"></a>使用 Azure CLI 授予托管服务标识 (MSI) 对资源的访问权限
 
@@ -43,13 +43,13 @@ ms.locfileid: "33929636"
 
 在 Azure 资源（如 [Azure 虚拟机](qs-configure-cli-windows-vm.md)或 [Azure 虚拟机规模集](qs-configure-cli-windows-vmss.md)）上启用 MSI 后： 
 
-1. 如果在本地控制台中使用 Azure CLI，首先请使用 [az login](/cli/azure/reference-index#az_login) 登录到 Azure。 使用与要在其下部署 VM 或虚拟机规模集的 Azure 订阅关联的帐户：
+1. 如果在本地控制台中使用 Azure CLI，首先请使用 [az login](/cli/azure/reference-index#az-login) 登录到 Azure。 使用与要在其下部署 VM 或虚拟机规模集的 Azure 订阅关联的帐户：
 
    ```azurecli-interactive
    az login
    ```
 
-2. 此示例要授予 Azure 虚拟机对存储帐户的访问权限。 首先，我们使用 [az resource list](/cli/azure/resource/#az_resource_list) 获取名为“myVM”的虚拟机的服务主体：
+2. 此示例要授予 Azure 虚拟机对存储帐户的访问权限。 首先，我们使用 [az resource list](/cli/azure/resource/#az-resource-list) 获取名为“myVM”的虚拟机的服务主体：
 
    ```azurecli-interactive
    spID=$(az resource list -n myVM --query [*].identity.principalId --out tsv)
@@ -60,7 +60,7 @@ ms.locfileid: "33929636"
    spID=$(az resource list -n DevTestVMSS --query [*].identity.principalId --out tsv)
    ```
 
-3. 获得服务主体 ID 后，立即使用 [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create)授予虚拟机或虚拟机规模集对“myStorageAcct”存储帐户的“读者”访问权限：
+3. 获得服务主体 ID 后，立即使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create)授予虚拟机或虚拟机规模集对“myStorageAcct”存储帐户的“读者”访问权限：
 
    ```azurecli-interactive
    az role assignment create --assignee $spID --role 'Reader' --scope /subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.Storage/storageAccounts/myStorageAcct

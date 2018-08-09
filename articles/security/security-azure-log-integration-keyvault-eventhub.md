@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/07/2018
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 3de876a8d06a52412bbbfd3ad922c2c4c6d8ec37
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: b91d405b8ada1446a477dc10a116b5dfdf349131
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235951"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440040"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Azure 日志集成教程：使用事件中心处理 Azure Key Vault 事件
 
@@ -54,9 +54,9 @@ ms.locfileid: "35235951"
 
 1. 一个 Azure 订阅和一个在该订阅中具有管理员权限的帐户。 如果没有订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/)。
  
-2. 一个能够访问 Internet 且满足 Azure 日志集成安装要求的系统。 该系统可以位于云服务中，也可以托管在本地。
+1. 一个能够访问 Internet 且满足 Azure 日志集成安装要求的系统。 该系统可以位于云服务中，也可以托管在本地。
 
-3. 已安装了 [Azure 日志集成](https://www.microsoft.com/download/details.aspx?id=53324)。 若要安装它，请执行以下操作：
+1. 已安装了 [Azure 日志集成](https://www.microsoft.com/download/details.aspx?id=53324)。 若要安装它，请执行以下操作：
 
    a. 使用远程桌面连接到步骤 2 中提到的系统。   
    b. 将 Azure 日志集成安装程序复制到该系统。 可以[下载安装文件](https://www.microsoft.com/download/details.aspx?id=53324)。   
@@ -65,7 +65,7 @@ ms.locfileid: "35235951"
    
    有关 Azure 日志集成以及如何安装它的详细信息，请参阅[包含 Azure 诊断日志记录和 Windows 事件转发功能的 Azure 日志集成](security-azure-log-integration-get-started.md)。
 
-4. 最新 PowerShell 版本。
+1. 最新 PowerShell 版本。
  
    如果已安装了 Windows Server 2016，则已至少具有 PowerShell 5.0。 如果使用的是任何其他版本的 Windows Server，则可能安装了较早版本的 PowerShell。 可以通过在 PowerShell 窗口中输入 ```get-host``` 来检查版本。 如果未安装 PowerShell 5.0，可以[下载它](https://www.microsoft.com/download/details.aspx?id=50395)。
 
@@ -80,19 +80,19 @@ ms.locfileid: "35235951"
 ## <a name="create-supporting-infrastructure-elements"></a>创建支持基础结构元素
 
 1. 打开一个提升权限的 PowerShell 窗口并转至 **C:\Program Files\Microsoft Azure Log Integration**。
-2. 通过运行脚本 LoadAzLogModule.ps1 导入 AzLog cmdlet。 输入 `.\LoadAzLogModule.ps1` 命令。 （请注意该命令中的“.\”。）应看到与下面类似的内容：</br>
+1. 通过运行脚本 LoadAzLogModule.ps1 导入 AzLog cmdlet。 输入 `.\LoadAzLogModule.ps1` 命令。 （请注意该命令中的“.\”。）应看到与下面类似的内容：</br>
 
    ![已加载的模块列表](./media/security-azure-log-integration-keyvault-eventhub/loaded-modules.png)
 
-3. 输入 `Connect-AzureRmAccount` 命令。 在登录窗口中，输入将用于本教程的订阅的凭据信息。
+1. 输入 `Connect-AzureRmAccount` 命令。 在登录窗口中，输入将用于本教程的订阅的凭据信息。
 
    >[!NOTE]
    >如果这是你首次从此计算机登录到 Azure，将会看到一条有关允许 Microsoft 收集 PowerShell 使用情况数据的消息。 建议启用此数据收集，因为该数据将用来改进 Azure PowerShell。
 
-4. 在身份验证成功后，你将完成登录并看到以下屏幕截图中的信息。 请记下订阅 ID 和订阅名称，因为将需要使用它们完成后面的步骤。
+1. 在身份验证成功后，你将完成登录并看到以下屏幕截图中的信息。 请记下订阅 ID 和订阅名称，因为将需要使用它们完成后面的步骤。
 
    ![PowerShell 窗口](./media/security-azure-log-integration-keyvault-eventhub/login-azurermaccount.png)
-5. 创建变量来存储后面将使用的值。 输入以下每个 PowerShell 行。 可能需要调整值来匹配你的环境。
+1. 创建变量来存储后面将使用的值。 输入以下每个 PowerShell 行。 可能需要调整值来匹配你的环境。
     - ```$subscriptionName = ‘Visual Studio Ultimate with MSDN’```（你的订阅名称可能不同。 可以在前面命令的输出中看到该名称。）
     - ```$location = 'West US'```（此变量将用来传递应当在其中创建资源的位置。 可以将此变量更改为你选择的任何位置。）
     - ```$random = Get-Random```
@@ -100,32 +100,32 @@ ms.locfileid: "35235951"
     - ``` $storageName = $name```（此变量将用于存储帐户名称。）
     - ```$rgname = $name ```（此变量将用于资源组名称。）
     - ``` $eventHubNameSpaceName = $name```（这是事件中心命名空间的名称。）
-6. 指定要使用的订阅：
+1. 指定要使用的订阅：
     
     ```Select-AzureRmSubscription -SubscriptionName $subscriptionName```
-7. 创建资源组：
+1. 创建资源组：
     
     ```$rg = New-AzureRmResourceGroup -Name $rgname -Location $location```
     
    如果此时输入 `$rg`，则应当会看到类似于以下屏幕截图的输出：
 
    ![创建资源组后的输出](./media/security-azure-log-integration-keyvault-eventhub/create-rg.png)
-8. 创建一个将用来跟踪状态信息的存储帐户：
+1. 创建一个将用来跟踪状态信息的存储帐户：
     
     ```$storage = New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $storagename -Location $location -SkuName Standard_LRS```
-9. 创建事件中心命名空间。 这是创建事件中心所必需的。
+1. 创建事件中心命名空间。 这是创建事件中心所必需的。
     
     ```$eventHubNameSpace = New-AzureRmEventHubNamespace -ResourceGroupName $rgname -NamespaceName $eventHubnamespaceName -Location $location```
-10. 获取将用于见解提供程序的规则 ID：
+1. 获取将用于见解提供程序的规则 ID：
     
     ```$sbruleid = $eventHubNameSpace.Id +'/authorizationrules/RootManageSharedAccessKey' ```
-11. 获取所有可能的 Azure 位置并将名称添加到可以在后面的步骤中使用的变量：
+1. 获取所有可能的 Azure 位置并将名称添加到可以在后面的步骤中使用的变量：
     
     a. ```$locationObjects = Get-AzureRMLocation```    
     b. ```$locations = @('global') + $locationobjects.location```
     
     如果此时输入 `$locations`，则会看到位置名称，且不会看到 Get-AzureRmLocation 返回的其他信息。
-12. 创建 Azure 资源管理器日志配置文件： 
+1. 创建 Azure 资源管理器日志配置文件： 
     
     ```Add-AzureRmLogProfile -Name $name -ServiceBusRuleId $sbruleid -Locations $locations```
     
@@ -142,7 +142,7 @@ ms.locfileid: "35235951"
 
    ```$kv = New-AzureRmKeyVault -VaultName $name -ResourceGroupName $rgname -Location $location ```
 
-2. 配置 key vault 的日志记录：
+1. 配置 key vault 的日志记录：
 
    ```Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -ServiceBusRuleId $sbruleid -Enabled $true ```
 
@@ -153,13 +153,13 @@ ms.locfileid: "35235951"
 1. 显示当前的存储密钥：
     
    ```Get-AzureRmStorageAccountKey -Name $storagename -ResourceGroupName $rgname  | ft -a```
-2. 生成一个新的 **key2**：
+1. 生成一个新的 **key2**：
     
    ```New-AzureRmStorageAccountKey -Name $storagename -ResourceGroupName $rgname -KeyName key2```
-3. 再次显示密钥，可以发现 **key2** 存储着一个不同的值：
+1. 再次显示密钥，可以发现 **key2** 存储着一个不同的值：
     
    ```Get-AzureRmStorageAccountKey -Name $storagename -ResourceGroupName $rgname  | ft -a```
-4. 设置并读取机密来生成其他日志条目：
+1. 设置并读取机密来生成其他日志条目：
     
    a. ```Set-AzureKeyVaultSecret -VaultName $name -Name TestSecret -SecretValue (ConvertTo-SecureString -String 'Hi There!' -AsPlainText -Force)``` b. ```(Get-AzureKeyVaultSecret -VaultName $name -Name TestSecret).SecretValueText```
 
@@ -171,14 +171,14 @@ ms.locfileid: "35235951"
 现在，你已配置了将 Key Vault 活动记录到事件中心内所需的所有元素，接下来需要配置 Azure 日志集成：
 
 1. ```$storage = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $storagename```
-2. ```$eventHubKey = Get-AzureRmEventHubNamespaceKey -ResourceGroupName $rgname -NamespaceName $eventHubNamespace.name -AuthorizationRuleName RootManageSharedAccessKey```
-3. ```$storagekeys = Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $storagename```
-4. ``` $storagekey = $storagekeys[0].Value```
+1. ```$eventHubKey = Get-AzureRmEventHubNamespaceKey -ResourceGroupName $rgname -NamespaceName $eventHubNamespace.name -AuthorizationRuleName RootManageSharedAccessKey```
+1. ```$storagekeys = Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $storagename```
+1. ``` $storagekey = $storagekeys[0].Value```
 
 针对每个事件中心运行 AzLog 命令：
 
 1. ```$eventhubs = Get-AzureRmEventHub -ResourceGroupName $rgname -NamespaceName $eventHubNamespaceName```
-2. ```$eventhubs.Name | %{Add-AzLogEventSource -Name $sub' - '$_ -StorageAccount $storage.StorageAccountName -StorageKey $storageKey -EventHubConnectionString $eventHubKey.PrimaryConnectionString -EventHubName $_}```
+1. ```$eventhubs.Name | %{Add-AzLogEventSource -Name $sub' - '$_ -StorageAccount $storage.StorageAccountName -StorageKey $storageKey -EventHubConnectionString $eventHubKey.PrimaryConnectionString -EventHubName $_}```
 
 在运行最后两个命令大约一分钟后，应当会看到正在生成的 JSON 文件。 可以通过监视 **C:\users\AzLog\EventHubJson** 进行确认。
 

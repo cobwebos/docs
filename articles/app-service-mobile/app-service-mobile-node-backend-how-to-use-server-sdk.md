@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 33a447e2161925d23385cbd0c471e0f5babd618f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 292540100096b26a652094cb0ea8d8f585961a22
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38473743"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422424"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>如何使用移动应用 Node.js SDK
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -50,7 +50,7 @@ Azure 移动应用 Node.js SDK 支持两个数据库驱动程序：
 1. 在命令窗口或 PowerShell 窗口中，为项目创建目录：
 
         mkdir basicapp
-2. 运行 `npm init` 初始化包结构：
+1. 运行 `npm init` 初始化包结构：
 
         cd basicapp
         npm init
@@ -58,10 +58,10 @@ Azure 移动应用 Node.js SDK 支持两个数据库驱动程序：
    `npm init` 命令将提出一系列问题以初始化项目。 查看示例输出：
 
    ![npm init 输出][0]
-3. 从 npm 存储库安装 `express` 和 `azure-mobile-apps` 库：
+1. 从 npm 存储库安装 `express` 和 `azure-mobile-apps` 库：
 
         npm install --save express azure-mobile-apps
-4. 创建 app.js 文件，实现基本移动服务器：
+1. 创建 app.js 文件，实现基本移动服务器：
 
         var express = require('express'),
             azureMobileApps = require('azure-mobile-apps');
@@ -94,18 +94,18 @@ Azure 移动应用 Node.js SDK 支持两个数据库驱动程序：
 Visual Studio 2015 需要使用一个扩展在 IDE 中开发 Node.js 应用程序。 首先，请安装[用于 Visual Studio 的 Node.js 工具 1.1]。 完成安装后，创建 Express 4.x 应用程序：
 
 1. 打开“新建项目”对话框（从“文件” > “新建” > “项目”）。
-2. 展开“模板” > “JavaScript” > “Node.js”。
-3. 选择“基本 Azure Node.js Express 4 应用程序”。
-4. 填写项目名称。 选择“确定”。
+1. 展开“模板” > “JavaScript” > “Node.js”。
+1. 选择“基本 Azure Node.js Express 4 应用程序”。
+1. 填写项目名称。 选择“确定”。
 
    ![Visual Studio 2015 中的“新建项目”][1]
-5. 右键单击“npm”节点，选择“安装新的 npm 包”。
-6. 创建第一个 Node.js 应用程序时，可能需要刷新 npm 目录。 根据需要选择“刷新”。
-7. 在搜索框中输入 **azure-mobile-apps**。 选择 **azure-mobile-apps 2.0.0** 包，然后选择“安装包”。
+1. 右键单击“npm”节点，选择“安装新的 npm 包”。
+1. 创建第一个 Node.js 应用程序时，可能需要刷新 npm 目录。 根据需要选择“刷新”。
+1. 在搜索框中输入 **azure-mobile-apps**。 选择 **azure-mobile-apps 2.0.0** 包，然后选择“安装包”。
 
    ![安装新的 npm 包][2]
-8. 选择“关闭”。
-9. 打开 app.js 文件，添加对移动应用 SDK 的支持。 在库 `require` 语句底部的第 6 行，添加以下代码：
+1. 选择“关闭”。
+1. 打开 app.js 文件，添加对移动应用 SDK 的支持。 在库 `require` 语句底部的第 6 行，添加以下代码：
 
         var bodyParser = require('body-parser');
         var azureMobileApps = require('azure-mobile-apps');
@@ -120,7 +120,7 @@ Visual Studio 2015 需要使用一个扩展在 IDE 中开发 Node.js 应用程�
         app.use(mobile);
 
    保存文件。
-10. 在本地运行应用程序（API 会在 http://localhost:3000) 上提供），或发布到 Azure。
+1. 在本地运行应用程序（API 会在 http://localhost:3000) 上提供），或发布到 Azure。
 
 ### <a name="create-node-backend-portal"></a>使用 Azure 门户创建 Node.js 后端
 可以在 [Azure 门户]中直接创建移动应用后端。 可以完成以下步骤，或根据[创建移动应用](app-service-mobile-ios-get-started.md)教程同时创建客户端和服务器。 本教程包含以下说明的简化版本，最适合用于概念认证项目。
@@ -136,13 +136,13 @@ Visual Studio 2015 需要使用一个扩展在 IDE 中开发 Node.js 应用程�
 以下过程使用 Git 存储库下载快速入门项目代码：
 
 1. 安装 Git（如果尚未安装）。 安装 Git 所需的步骤因操作系统的不同而异。 有关操作系统特定的分发和安装指南，请参阅[安装 Git](http://git-scm.com/book/en/Getting-Started-Installing-Git)。
-2. 若要启用后端站点的 GIT 存储库，请参阅[准备存储库](../app-service/app-service-deploy-local-git.md#prepare-your-repository)。 记下部署用户名和密码。
-3. 在移动应用后端的窗格中，记下“Git 克隆 URL”设置。
-4. 使用 Git 克隆 URL 执行 `git clone` 命令。 根据需要输入密码，如以下示例所示：
+1. 若要启用后端站点的 GIT 存储库，请参阅[准备存储库](../app-service/app-service-deploy-local-git.md#prepare-your-repository)。 记下部署用户名和密码。
+1. 在移动应用后端的窗格中，记下“Git 克隆 URL”设置。
+1. 使用 Git 克隆 URL 执行 `git clone` 命令。 根据需要输入密码，如以下示例所示：
 
         $ git clone https://username@todolist.scm.azurewebsites.net:443/todolist.git
-5. 浏览到本地目录（在上述示例中为 `/todolist`），可以看到项目文件已下载。 在 `/tables` 目录中找到 todoitem.json 文件。 此文件定义表上的权限。 另外，在同一目录中找到 todoitem.js 文件。 该文件定义表的 CRUD 操作脚本。
-6. 更改项目文件之后，请运行以下命令添加、提交更改，然后将更改上传到站点：
+1. 浏览到本地目录（在上述示例中为 `/todolist`），可以看到项目文件已下载。 在 `/tables` 目录中找到 todoitem.json 文件。 此文件定义表上的权限。 另外，在同一目录中找到 todoitem.js 文件。 该文件定义表的 CRUD 操作脚本。
+1. 更改项目文件之后，请运行以下命令添加、提交更改，然后将更改上传到站点：
 
         $ git commit -m "updated the table script"
         $ git push origin master
@@ -169,7 +169,7 @@ Azure 应用服务提供有关 Node.js 应用程序的具体建议，请在发�
 ## <a name="TableOperations"></a>表操作
 azure-mobile-apps Node.js Server SDK 提供将存储在 Azure SQL 数据库中的表公开为 Web API 的机制。 它提供五个操作：
 
-| Operation | 说明 |
+| Operation | Description |
 | --- | --- |
 | GET /tables/*tablename* |获取表中的所有记录。 |
 | GET /tables/*tablename*/:id |获取表中的特定记录。 |
@@ -252,7 +252,7 @@ azure-mobile-apps Node.js Server SDK 提供将存储在 Azure SQL 数据库中�
 >
 
 1. 下载并安装 [Microsoft SQL Server 2014 Express]。 请务必安装 SQL Server 2014 Express with Tools 版。 除非确实需要 64 位支持，否则请使用 32 位版本，因为它在运行时消耗的内存更少。
-2. 运行 SQL Server 2014 配置管理器：
+1. 运行 SQL Server 2014 配置管理器：
 
    a. 在树菜单中，展开“SQL Server 网络配置”节点。
 
@@ -275,25 +275,25 @@ azure-mobile-apps Node.js Server SDK 提供将存储在 Azure SQL 数据库中�
    i. 右键单击 **SQL Server (SQLEXPRESS)**，并选择“重启”。
 
    j. 关闭 SQL Server 2014 配置管理器。
-3. 运行 SQL Server 2014 Management Studio 并连接到本地 SQL Server Express 实例：
+1. 运行 SQL Server 2014 Management Studio 并连接到本地 SQL Server Express 实例：
 
    1. 在对象资源管理器中右键单击实例，并选择“属性”。
-   2. 选择“安全性”页。
-   3. 确保已选择“SQL Server 和 Windows 身份验证模式”。
-   4. 选择“确定”。
+   1. 选择“安全性”页。
+   1. 确保已选择“SQL Server 和 Windows 身份验证模式”。
+   1. 选择“确定”。
 
       ![配置 SQL Server Express 身份验证][4]
-   5. 在对象资源管理器中展开“安全性” > “登录”。
-   6. 右键单击“登录”，并选择“新建登录名”。
-   7. 输入登录名。 选择“SQL Server 身份验证”。 输入密码，并在“确认密码”中输入相同的密码。 密码必须符合 Windows 复杂性要求。
-   8. 选择“确定”。
+   1. 在对象资源管理器中展开“安全性” > “登录”。
+   1. 右键单击“登录”，并选择“新建登录名”。
+   1. 输入登录名。 选择“SQL Server 身份验证”。 输入密码，并在“确认密码”中输入相同的密码。 密码必须符合 Windows 复杂性要求。
+   1. 选择“确定”。
 
       ![向 SQL Server Express 添加新用户][5]
-   9. 右键单击新登录名并选择“属性”。
-   10. 选择“服务器角色”页。
-   11. 选中 **dbcreator** 服务器角色旁边的复选框。
-   12. 选择“确定”。
-   13. 关闭 SQL Server 2015 Management Studio。
+   1. 右键单击新登录名并选择“属性”。
+   1. 选择“服务器角色”页。
+   1. 选中 **dbcreator** 服务器角色旁边的复选框。
+   1. 选择“确定”。
+   1. 关闭 SQL Server 2015 Management Studio。
 
 请务必记下选择的用户名和密码。 可能需要根据数据库要求分配其他服务器角色或权限。
 
@@ -335,7 +335,7 @@ azureMobile.js 文件应导出配置对象。 最常见的设置如下：
 ### <a name="howto-appsettings"></a>配置移动应用的应用设置
 azureMobile.js 文件中的大多数设置在 [Azure 门户]中都有对等的应用设置。 使用以下列表在“应用设置”中配置应用：
 
-| 应用设置 | azureMobile.js 设置 | 说明 | 有效值 |
+| 应用设置 | azureMobile.js 设置 | Description | 有效值 |
 |:--- |:--- |:--- |:--- |
 | **MS_MobileAppName** |名称 |应用的名称 |字符串 |
 | **MS_MobileLoggingLevel** |logging.level |要记录的消息的最小日志级别 |error、warning、info、verbose、debug、silly |
@@ -348,13 +348,13 @@ azureMobile.js 文件中的大多数设置在 [Azure 门户]中都有对等的�
 若要指定某项应用设置，请执行以下操作：
 
 1. 登录到 [Azure 门户]。
-2. 选择“所有资源”或“应用服务”，并选择移动应用的名称。
-3. 默认会打开“设置”窗格。 如果没有打开，请选择“设置”。
-4. 在“常规”菜单中，选择“应用程序设置”。
-5. 滚动到“应用设置”部分。
-6. 如果该应用设置已存在，请选择其值进行编辑。
+1. 选择“所有资源”或“应用服务”，并选择移动应用的名称。
+1. 默认会打开“设置”窗格。 如果没有打开，请选择“设置”。
+1. 在“常规”菜单中，选择“应用程序设置”。
+1. 滚动到“应用设置”部分。
+1. 如果该应用设置已存在，请选择其值进行编辑。
    如果该应用设置不存在，请在“键”框中输入“应用设置”，在“值”框中输入值。
-8. 选择“保存”。
+1. 选择“保存”。
 
 更改大多数应用设置后都需要重新启动服务。
 
@@ -364,9 +364,9 @@ azureMobile.js 文件中的大多数设置在 [Azure 门户]中都有对等的�
 无论使用哪种 Azure 应用服务应用程序类型，将 SQL 数据库用作数据存储的过程都是相同的。 如果尚未这样做，请根据以下步骤创建移动应用后端：
 
 1. 登录到 [Azure 门户]。
-2. 在窗口左上方，选择“+新建”按钮 >“Web + 移动”>“移动应用”，并为移动应用后端提供名称。
-3. 在“资源组”框中，输入与应用相同的名称。
-4. 系统将选择默认应用服务计划。 若要更改应用服务计划：
+1. 在窗口左上方，选择“+新建”按钮 >“Web + 移动”>“移动应用”，并为移动应用后端提供名称。
+1. 在“资源组”框中，输入与应用相同的名称。
+1. 系统将选择默认应用服务计划。 若要更改应用服务计划：
 
    a. 选择“应用服务计划” > “+ 新建”。 
    
@@ -377,7 +377,7 @@ azureMobile.js 文件中的大多数设置在 [Azure 门户]中都有对等的�
    d. 单击“选择”按钮。 
    
    e. 返回“应用服务计划”窗格，选择“确定”。
-5. 选择**创建**。 
+1. 选择**创建**。 
 
 预配移动应用后端可能需要几分钟时间。 预配移动应用后端后，门户将打开移动应用后端的“设置”窗格。
 
@@ -389,13 +389,13 @@ azureMobile.js 文件中的大多数设置在 [Azure 门户]中都有对等的�
 >
 
 1. 在新移动应用后端中，选择“设置” > “移动应用” > “数据” > “+添加”。
-2. 在“添加数据连接”窗格中，选择“SQL 数据库 - 配置所需的设置” > “创建新数据库”。 在“名称”框中输入新数据库的名称。
-3. 选择“服务器”。 在“新建服务器”窗格中的“服务器名称”框内输入唯一的服务器名称，并提供合适的服务器管理员登录名和密码。 请确保选中“允许 Azure 服务访问服务器”。 选择“确定”。
+1. 在“添加数据连接”窗格中，选择“SQL 数据库 - 配置所需的设置” > “创建新数据库”。 在“名称”框中输入新数据库的名称。
+1. 选择“服务器”。 在“新建服务器”窗格中的“服务器名称”框内输入唯一的服务器名称，并提供合适的服务器管理员登录名和密码。 请确保选中“允许 Azure 服务访问服务器”。 选择“确定”。
 
    ![创建 Azure SQL 数据库][6]
-4. 在“新建数据库”窗格中，选择“确定”。
-5. 返回“添加数据连接”窗格，选择“连接字符串”，并输入创建数据库时提供的登录名与密码。 如果使用现有数据库，请提供该数据库的登录凭据。 选择“确定”。
-6. 再次返回“添加数据连接”窗格，选择“确定”创建数据库。
+1. 在“新建数据库”窗格中，选择“确定”。
+1. 返回“添加数据连接”窗格，选择“连接字符串”，并输入创建数据库时提供的登录名与密码。 如果使用现有数据库，请提供该数据库的登录凭据。 选择“确定”。
+1. 再次返回“添加数据连接”窗格，选择“确定”创建数据库。
 
 <!--- END OF ALTERNATE INCLUDE -->
 
@@ -693,8 +693,8 @@ azureMobile.js 文件中的大多数设置在 [Azure 门户]中都有对等的�
 定义自定义 API 的方法与表 API 大致相同：
 
 1. 创建 `api` 目录。
-2. 在 `api` 目录中创建 API 定义 JavaScript 文件。
-3. 使用 import 方法导入 `api` 目录。
+1. 在 `api` 目录中创建 API 定义 JavaScript 文件。
+1. 使用 import 方法导入 `api` 目录。
 
 下面是根据前面使用的基本应用示例所做的原型 API 定义：
 
@@ -857,7 +857,7 @@ Node.js 应用程序可访问各种诊断日志工具。 在内部，移动应�
 1. 在移动应用后端的窗格中，选择“所有设置”“简易表”或“简易 API”。 选择表或 API，并选择“编辑脚本”。 脚本文件会在应用服务编辑器中打开。
 
    ![应用服务编辑器](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-visual-studio-editor.png)
-2. 在在线编辑器中更改代码文件。 键入内容时，更改会自动保存。
+1. 在在线编辑器中更改代码文件。 键入内容时，更改会自动保存。
 
 <!-- Images -->
 [0]: ./media/app-service-mobile-node-backend-how-to-use-server-sdk/npm-init.png

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 0f8621ec55ee58e818a60dc74ea5c4f111909b8a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a6e1f73218efb11da475f3e67188863c3b99de97
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210269"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421332"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-versal"></a>教程：Azure Active Directory 与 Versal 的集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "36210269"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Versal
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-versal-from-the-gallery"></a>从库中添加 Versal
 若要配置 Versal 与 Azure AD 的集成，需要从库中将 Versal 添加到托管 SaaS 应用的列表。
@@ -64,15 +64,15 @@ ms.locfileid: "36210269"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中键入“Versal”，在结果面板中选择“Versal”，然后单击“添加”按钮添加该应用程序。
+1. 在搜索框中键入“Versal”，在结果面板中选择“Versal”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 Versal](./media/versal-tutorial/tutorial_versal_addfromgallery.png)
 
@@ -87,10 +87,10 @@ ms.locfileid: "36210269"
 若要配置并测试 Versal 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Versal 测试用户](#create-a-versal-test-user)** - 在 Versal 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 Versal 测试用户](#create-a-versal-test-user)** - 在 Versal 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -102,34 +102,34 @@ ms.locfileid: "36210269"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![“单一登录”对话框](./media/versal-tutorial/tutorial_versal_samlbase.png)
 
-3. 在“Versal 域和 URL”部分中，执行以下步骤：
+1. 在“Versal 域和 URL”部分中，执行以下步骤：
 
     ![Versal 域和 URL 单一登录信息](./media/versal-tutorial/tutorial_versal_url.png)
 
     a. 在“标识符”文本框中，键入值 `VERSAL`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://versal.com/sso/saml/orgs/<organization_id>`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://versal.com/sso/saml/orgs/<organization_id>`
 
     > [!NOTE] 
     > 答复 URL 值不是真实值。 请使用实际回复 URL 更新此值。 若要获取此值，请与 [Versal 支持团队](https://support.versal.com/hc/)联系。
     
-4. 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示一个示例。 “用户标识符”的默认值是“user.userprincipalname”，但 Versal 要求通过用户的电子邮件地址映射此项。 为此，可以使用列表中的 **user.mail** 属性，或使用基于组织配置的相应属性值。
+1. 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示一个示例。 “用户标识符”的默认值是“user.userprincipalname”，但 Versal 要求通过用户的电子邮件地址映射此项。 为此，可以使用列表中的 **user.mail** 属性，或使用基于组织配置的相应属性值。
     
     ![用户标识符下拉菜单](./media/versal-tutorial/tutorial_versal_attribute.png)
 
-5. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
+1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![证书下载链接](./media/versal-tutorial/tutorial_versal_certificate.png) 
 
-6. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/versal-tutorial/tutorial_general_400.png)
     
-7. 若要在“Versal”端配置单一登录，需要将下载的元数据 XML 和 SAML 签名证书 [发送到 Versal 支持团队](https://support.versal.com/hc/) 。 他们将对 Versal 组织进行配置，以使 SAML SSO 连接在两端均正确设置。
+1. 若要在“Versal”端配置单一登录，需要将下载的元数据 XML 和 SAML 签名证书 [发送到 Versal 支持团队](https://support.versal.com/hc/) 。 他们将对 Versal 组织进行配置，以使 SAML SSO 连接在两端均正确设置。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -146,15 +146,15 @@ ms.locfileid: "36210269"
 
     ![“Azure Active Directory”按钮](./media/versal-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/versal-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/versal-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/versal-tutorial/create_aaduser_04.png)
 
@@ -182,23 +182,23 @@ ms.locfileid: "36210269"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Versal”。
+1. 在应用程序列表中，选择“Versal”。
 
     ![应用程序列表中的 Versal 链接](./media/versal-tutorial/tutorial_versal_app.png)  
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 76308bbb06d6bf1cdc9147258f7c26babae371a9
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: ad3ec09f039b38290929289c7bca77664b0fb554
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36750479"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441779"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>自定义 Azure-SSIS 集成运行时的安装
 
@@ -53,52 +53,52 @@ Azure-SSIS 集成运行时的自定义安装界面提供了一个界面，用于
 
 ## <a name="instructions"></a>说明
 
-2.  下载并安装 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018)（5.4 或更高版本）。
+1.  下载并安装 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018)（5.4 或更高版本）。
 
-3.  准备自定义安装脚本及其关联的文件（例如 .bat、.cmd、.exe、.dll、.msi 或 .ps1 文件）。
+1.  准备自定义安装脚本及其关联的文件（例如 .bat、.cmd、.exe、.dll、.msi 或 .ps1 文件）。
 
     1.  必须创建一个名为 `main.cmd` 的脚本文件，即自定义安装程序的入口点。
 
-    2.  如果想要将其他工具（例如 `msiexec.exe`）生成的其他日志上传到容器，请在脚本中指定预定义的环境变量 `CUSTOM_SETUP_SCRIPT_LOG_DIR` 作为日志文件夹（例如 `msiexec /i xxx.msi /quiet /lv %CUSTOM_SETUP_SCRIPT_LOG_DIR%\install.log`）。
+    1.  如果想要将其他工具（例如 `msiexec.exe`）生成的其他日志上传到容器，请在脚本中指定预定义的环境变量 `CUSTOM_SETUP_SCRIPT_LOG_DIR` 作为日志文件夹（例如 `msiexec /i xxx.msi /quiet /lv %CUSTOM_SETUP_SCRIPT_LOG_DIR%\install.log`）。
 
-4.  下载、安装并启动 [Azure 存储资源管理器](http://storageexplorer.com/)。
+1.  下载、安装并启动 [Azure 存储资源管理器](http://storageexplorer.com/)。
 
     1.  在“(本地和附加)”下面，右键单击“存储帐户”并选择“连接到 Azure 存储”。
 
        ![连接到 Azure 存储](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png)
 
-    2.  选择“使用存储帐户名和密钥”并选择“下一步”。
+    1.  选择“使用存储帐户名和密钥”并选择“下一步”。
 
        ![使用存储帐户名称和密钥](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image2.png)
 
-    3.  输入 Azure 存储帐户名和密钥，并依次选择“下一步”、“连接”。
+    1.  输入 Azure 存储帐户名和密钥，并依次选择“下一步”、“连接”。
 
        ![提供存储帐户名和密钥](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image3.png)
 
-    4.  在已连接的 Azure 存储帐户下面，右键单击“Blob 容器”，选择“创建 Blob 容器”，并为新容器命名。
+    1.  在已连接的 Azure 存储帐户下面，右键单击“Blob 容器”，选择“创建 Blob 容器”，并为新容器命名。
 
        ![创建 Blob 容器](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image4.png)
 
-    5.  选择新容器并上传自定义安装脚本及其关联的文件。 请务必将 `main.cmd` 上传到容器的顶级目录，而不要上传到任何文件夹中。 
+    1.  选择新容器并上传自定义安装脚本及其关联的文件。 请务必将 `main.cmd` 上传到容器的顶级目录，而不要上传到任何文件夹中。 
 
        ![将文件上传到 Blob 容器](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image5.png)
 
-    6.  右键单击容器，并选择“获取共享访问签名”。
+    1.  右键单击容器，并选择“获取共享访问签名”。
 
        ![获取容器的共享访问签名](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image6.png)
 
-    7.  为容器创建一个过期时间足够长且具有读取 + 写入 + 列出权限的 SAS URI。 每当将 Azure-SSIS IR 的任何节点重置映像/重启时，都需要使用该 SAS URI 来下载并运行自定义安装脚本及其关联文件。 需要拥有写入权限才能上传安装执行日志。
+    1.  为容器创建一个过期时间足够长且具有读取 + 写入 + 列出权限的 SAS URI。 每当将 Azure-SSIS IR 的任何节点重置映像/重启时，都需要使用该 SAS URI 来下载并运行自定义安装脚本及其关联文件。 需要拥有写入权限才能上传安装执行日志。
 
         > [!IMPORTANT]
         > 请确保在 Azure-SSIS IR 的整个生命周期内（从创建到删除），尤其是在此期间你经常停止并启动 Azure-SSIS IR 时，SAS URI 不会过期，并且自定义安装资源始终可用。
 
        ![生成容器的共享访问签名](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image7.png)
 
-    8.  复制并保存容器的 SAS URI。
+    1.  复制并保存容器的 SAS URI。
 
        ![复制并保存共享访问签名](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image8.png)
 
-    9.  使用 PowerShell 预配或重新配置 Azure-SSIS IR 时，在启动 Azure-SSIS IR 之前，请运行 `Set-AzureRmDataFactoryV2IntegrationRuntime` cmdlet 并指定容器的 SAS URI 作为新 `SetupScriptContainerSasUri` 参数的值。 例如：
+    1.  使用 PowerShell 预配或重新配置 Azure-SSIS IR 时，在启动 Azure-SSIS IR 之前，请运行 `Set-AzureRmDataFactoryV2IntegrationRuntime` cmdlet 并指定容器的 SAS URI 作为新 `SetupScriptContainerSasUri` 参数的值。 例如：
 
        ```powershell
        Set-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName `
@@ -111,9 +111,9 @@ Azure-SSIS 集成运行时的自定义安装界面提供了一个界面，用于
                                                     -ResourceGroupName $MyResourceGroupName
        ```
 
-    10.  完成自定义安装并启动 Azure-SSIS IR 之后，可在存储容器的 `main.cmd.log` 文件夹中找到 `main.cmd` 的标准输出和其他执行日志。
+    1.  完成自定义安装并启动 Azure-SSIS IR 之后，可在存储容器的 `main.cmd.log` 文件夹中找到 `main.cmd` 的标准输出和其他执行日志。
 
-2.  若要查看其他自定义安装示例，请使用 Azure 存储资源管理器连接到公共预览版容器。
+1.  若要查看其他自定义安装示例，请使用 Azure 存储资源管理器连接到公共预览版容器。
 
     a.  在“(本地和附加)”下面，右键单击“存储帐户”，并依次选择“连接到 Azure 存储”、“使用连接字符串或共享访问签名 URI”、“下一步”。
 
@@ -129,7 +129,7 @@ Azure-SSIS 集成运行时的自定义安装界面提供了一个界面，用于
 
        1. 一个 `Sample` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装基本任务的自定义安装程序。 该任务不会执行任何操作，而是休眠几秒。 该文件夹还包含 `gacutil` 文件夹，其中包含 `gacutil.exe`。 此外，`main.cmd` 包含用于保存访问凭据以进行文件共享的注释。
 
-       2. 一个 `UserScenarios` 文件夹，其中包含用于实际用户方案的多个自定义设置。
+       1. 一个 `UserScenarios` 文件夹，其中包含用于实际用户方案的多个自定义设置。
 
     ![公共预览版容器的内容](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image11.png)
 
@@ -137,21 +137,21 @@ Azure-SSIS 集成运行时的自定义安装界面提供了一个界面，用于
 
        1. 一个 `.NET FRAMEWORK 3.5` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装自定义组件可能需要的 .NET Framework 早期版本的自定义安装程序。
 
-       2. 一个 `BCP` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装 SQL Server 命令行实用工具 (`MsSqlCmdLnUtils.msi`)（包括批量复制程序 (`bcp`)）的自定义安装程序。
+       1. 一个 `BCP` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装 SQL Server 命令行实用工具 (`MsSqlCmdLnUtils.msi`)（包括批量复制程序 (`bcp`)）的自定义安装程序。
 
-       3. 一个 `EXCEL` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装开源程序集（`DocumentFormat.OpenXml.dll`、`ExcelDataReader.DataSet.dll` 和 `ExcelDataReader.dll`）的自定义安装程序。
+       1. 一个 `EXCEL` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装开源程序集（`DocumentFormat.OpenXml.dll`、`ExcelDataReader.DataSet.dll` 和 `ExcelDataReader.dll`）的自定义安装程序。
 
-       4. 一个 `MSDTC` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上修改 Microsoft 分布式事务处理协调器 (MSDTC) 服务的网络和安全配置的自定义安装。 若要确保 MSDTC 已启动，请在包中控制流开头添加 Execute Process Task 以执行以下命令：`%SystemRoot%\system32\cmd.exe /c powershell -Command "Start-Service MSDTC"` 
+       1. 一个 `MSDTC` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上修改 Microsoft 分布式事务处理协调器 (MSDTC) 服务的网络和安全配置的自定义安装。 若要确保 MSDTC 已启动，请在包中控制流开头添加 Execute Process Task 以执行以下命令：`%SystemRoot%\system32\cmd.exe /c powershell -Command "Start-Service MSDTC"` 
 
-       5. 一个 `ORACLE ENTERPRISE` 文件夹，其中包含用于在 Azure-SSIS IR 企业版的每个节点上安装 Oracle OCI 驱动程序的自定义安装脚本 (`main.cmd`) 和无提示安装配置文件 (`client.rsp`)。 此安装程序允许使用 Oracle 连接管理器、源和目标。 首先，从 [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) 下载最新的 Oracle 客户端（例如 `winx64_12102_client.zip`），然后将其与 `main.cmd` 和 `client.rsp` 一起上传到容器中。 如果使用 TNS 连接到 Oracle，则还需要下载 `tnsnames.ora`，对其进行编辑，然后将其上传到容器，以便在安装期间将其复制到 Oracle 安装文件夹中。
+       1. 一个 `ORACLE ENTERPRISE` 文件夹，其中包含用于在 Azure-SSIS IR 企业版的每个节点上安装 Oracle OCI 驱动程序的自定义安装脚本 (`main.cmd`) 和无提示安装配置文件 (`client.rsp`)。 此安装程序允许使用 Oracle 连接管理器、源和目标。 首先，从 [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) 下载最新的 Oracle 客户端（例如 `winx64_12102_client.zip`），然后将其与 `main.cmd` 和 `client.rsp` 一起上传到容器中。 如果使用 TNS 连接到 Oracle，则还需要下载 `tnsnames.ora`，对其进行编辑，然后将其上传到容器，以便在安装期间将其复制到 Oracle 安装文件夹中。
 
-       6. 一个 `ORACLE STANDARD` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装 Oracle ODP.NET 驱动程序的自定义安装脚本 (`main.cmd`)。 此安装程序允许使用 ADO.NET 连接管理器、源和目标。 首先，从 [Oracle](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html) 下载最新的 Oracle ODP.NET 驱动程序（例如 `ODP.NET_Managed_ODAC122cR1.zip`），然后将其与 `main.cmd` 一起上传到容器中。
+       1. 一个 `ORACLE STANDARD` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装 Oracle ODP.NET 驱动程序的自定义安装脚本 (`main.cmd`)。 此安装程序允许使用 ADO.NET 连接管理器、源和目标。 首先，从 [Oracle](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html) 下载最新的 Oracle ODP.NET 驱动程序（例如 `ODP.NET_Managed_ODAC122cR1.zip`），然后将其与 `main.cmd` 一起上传到容器中。
 
-       7. 一个 `SAP BW` 文件夹，其中包含用于在 Azure-SSIS IR 企业版的每个节点上安装 SAP .NET 连接器程序集 (`librfc32.dll`) 的自定义安装脚本 (`main.cmd`)。 此安装程序允许使用 SAP BW 连接管理器、源和目标。 首先，将 64 位或 32 位版本的 `librfc32.dll` 连同 `main.cmd` 一起从 SAP 安装文件夹上传到容器中。 然后，该脚本会在安装期间将 SAP 程序集复制到 `%windir%\SysWow64` 或 `%windir%\System32` 文件夹中。
+       1. 一个 `SAP BW` 文件夹，其中包含用于在 Azure-SSIS IR 企业版的每个节点上安装 SAP .NET 连接器程序集 (`librfc32.dll`) 的自定义安装脚本 (`main.cmd`)。 此安装程序允许使用 SAP BW 连接管理器、源和目标。 首先，将 64 位或 32 位版本的 `librfc32.dll` 连同 `main.cmd` 一起从 SAP 安装文件夹上传到容器中。 然后，该脚本会在安装期间将 SAP 程序集复制到 `%windir%\SysWow64` 或 `%windir%\System32` 文件夹中。
 
-       8. 一个 `STORAGE` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装 Azure PowerShell 的自定义安装程序。 此安装程序允许部署并运行 SSIS 包，以便运行 [PowerShell 脚本来操作 Azure 存储帐户](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-use-blobs-powershell)。 将 `main.cmd`、示例 `AzurePowerShell.msi`（或安装最新版本）和 `storage.ps1` 复制到容器。 使用 PowerShell.dtsx 作为包的模板。 包模板中合并了 [Azure Blob 下载任务](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task)（包括可修改 PowerShell 脚本形式的 `storage.ps1`）和[执行进程任务](https://blogs.msdn.microsoft.com/ssis/2017/01/26/run-powershell-scripts-in-ssis/)（在每个节点上执行脚本）。
+       1. 一个 `STORAGE` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装 Azure PowerShell 的自定义安装程序。 此安装程序允许部署并运行 SSIS 包，以便运行 [PowerShell 脚本来操作 Azure 存储帐户](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-use-blobs-powershell)。 将 `main.cmd`、示例 `AzurePowerShell.msi`（或安装最新版本）和 `storage.ps1` 复制到容器。 使用 PowerShell.dtsx 作为包的模板。 包模板中合并了 [Azure Blob 下载任务](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task)（包括可修改 PowerShell 脚本形式的 `storage.ps1`）和[执行进程任务](https://blogs.msdn.microsoft.com/ssis/2017/01/26/run-powershell-scripts-in-ssis/)（在每个节点上执行脚本）。
 
-       9. 一个 `TERADATA` 文件夹，其中包含自定义安装脚本 (`main.cmd)`)、其关联的文件 (`install.cmd`) 和安装程序包 (`.msi`)。 这些文件将在 Azure-SSIS IR 企业版的每个节点上安装 Teradata 连接器、TPT API 和 ODBC 驱动程序。 此安装程序允许使用 Teradata 连接管理器、源和目标。 首先，从 [Teradata](http://partnerintelligence.teradata.com) 下载 Teradata 工具和实用工具 (TTU) 15.x zip 文件（例如 `TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip`），然后将其连同上述 `.cmd` 和 `.msi` 文件一起上传到容器中。
+       1. 一个 `TERADATA` 文件夹，其中包含自定义安装脚本 (`main.cmd)`)、其关联的文件 (`install.cmd`) 和安装程序包 (`.msi`)。 这些文件将在 Azure-SSIS IR 企业版的每个节点上安装 Teradata 连接器、TPT API 和 ODBC 驱动程序。 此安装程序允许使用 Teradata 连接管理器、源和目标。 首先，从 [Teradata](http://partnerintelligence.teradata.com) 下载 Teradata 工具和实用工具 (TTU) 15.x zip 文件（例如 `TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip`），然后将其连同上述 `.cmd` 和 `.msi` 文件一起上传到容器中。
 
     ![用户方案文件夹中的文件夹](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image12.png)
 

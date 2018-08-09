@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 90100461d7db93ece23bf2420a1b7e8c43da915b
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 94d443505c5c1634c9da00d455e0163b2762d969
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343043"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426017"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>如何以 WebJobs 的形式运行 Durable Functions
 
@@ -223,7 +223,7 @@ while (true)
   * `Microsoft.Azure.WebJobs.Extensions`
   * `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`
 
-2. 更改 `Main` 方法代码，以使用 .NET Core 配置框架从 *appsettings.json* 文件中获取存储连接字符串和 Application Insights 检测密钥。  下面是一个示例：
+1. 更改 `Main` 方法代码，以使用 .NET Core 配置框架从 *appsettings.json* 文件中获取存储连接字符串和 Application Insights 检测密钥。  下面是一个示例：
 
    ```cs
    static void Main(string[] args)

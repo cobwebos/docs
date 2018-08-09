@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/17/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: f1388843f2c5d3ea607b876ece288db1370329a2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 173588c0200666c52f3ac0a5d2e70d667cfe3294
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38461531"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39445555"
 ---
 # <a name="tutorial-secure-sql-database-connection-with-managed-service-identity"></a>教程：使用托管服务标识确保 SQL 数据库连接的安全
 
@@ -48,7 +48,7 @@ ms.locfileid: "38461531"
 
 ## <a name="enable-managed-service-identity"></a>启用托管服务标识
 
-若要为 Azure 应用启用服务标识，请在 Cloud Shell 中使用 [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az_webapp_identity_assign) 命令。 在以下命令中，替换 *\<app name>*。
+若要为 Azure 应用启用服务标识，请在 Cloud Shell 中使用 [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) 命令。 在以下命令中，替换 *\<app name>*。
 
 ```azurecli-interactive
 az webapp identity assign --resource-group myResourceGroup --name <app name>
@@ -73,7 +73,7 @@ az ad sp show --id <principalid>
 
 ## <a name="grant-database-access-to-identity"></a>授予数据库访问标识的权限
 
-接下来，请在 Cloud Shell 中使用 [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az_sql_server_ad-admin_create) 命令授予数据库访问应用的服务标识的权限。 在以下命令中，替换 *\<server_name>* 和 <principalid_from_last_step>。 键入 *\<admin_user>* 的管理员名称。
+接下来，请在 Cloud Shell 中使用 [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin_create) 命令授予数据库访问应用的服务标识的权限。 在以下命令中，替换 *\<server_name>* 和 <principalid_from_last_step>。 键入 *\<admin_user>* 的管理员名称。
 
 ```azurecli-interactive
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server_name> --display-name <admin_user> --object-id <principalid_from_last_step>
@@ -83,7 +83,7 @@ az sql server ad-admin create --resource-group myResourceGroup --server-name <se
 
 ## <a name="modify-connection-string"></a>修改连接字符串
 
-在 Cloud Shell 中使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) 命令修改以前为应用设置的连接。 在以下命令中，将 *\<app name>* 替换为应用的名称，将 *\<server_name>* 和 *\<db_name>* 替换为 SQL 数据库的相应名称。
+在 Cloud Shell 中使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令修改以前为应用设置的连接。 在以下命令中，将 *\<app name>* 替换为应用的名称，将 *\<server_name>* 和 *\<db_name>* 替换为 SQL 数据库的相应名称。
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='Server=tcp:<server_name>.database.windows.net,1433;Database=<db_name>;' --connection-string-type SQLAzure

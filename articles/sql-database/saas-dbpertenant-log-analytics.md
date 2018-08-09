@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
 ms.reviewer: billgib
-ms.openlocfilehash: 38adf3dd2be0770dd815644ece452a82bc98baf9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3ca2f811ff0ac81ea70ec0b22d7429cdc5604171
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645311"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39420176"
 ---
 # <a name="set-up-and-use-log-analytics-with-a-multitenant-sql-database-saas-app"></a>通过多租户 SQL 数据库 SaaS 应用设置和使用 Log Analytics
 
@@ -46,13 +46,13 @@ Log Analytics 工作区和分析解决方案可以在 Azure 门户和 Operations
 ### <a name="create-performance-diagnostic-data-by-simulating-a-workload-on-your-tenants"></a>通过模拟租户上的工作负荷创建性能诊断数据 
 
 1. 在 PowerShell ISE 中，打开 *..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\Performance Monitoring and Management\\Demo-PerformanceMonitoringAndManagement.ps1*。 请将此脚本保持打开状态，因为在此教程中可能需要运行多个负载生成方案。
-2. 如果尚未这样做，请预配一批租户，以使监视上下文更为微妙。 此过程需要花费几分钟时间。
+1. 如果尚未这样做，请预配一批租户，以使监视上下文更为微妙。 此过程需要花费几分钟时间。
 
    a. 设置 **$DemoScenario = 1**，_预配一批租户_。
 
    b. 若要运行此脚本并再部署 17 个租户，请按 F5。
 
-3. 现在请启动负载生成器，在所有租户上运行模拟的负载。
+1. 现在请启动负载生成器，在所有租户上运行模拟的负载。
 
     a. 设置 $DemoScenario = 2，生成正常强度负载（约 30 DTU）。
 
@@ -67,7 +67,7 @@ Log Analytics 工作区和分析解决方案可以在 Azure 门户和 Operations
 Log Analytics 是一项必须配置的单独服务。 Log Analytics 在 Log Analytics 工作区中收集日志数据、遥测数据和指标。 与 Azure 中的其他资源一样，必须创建一个 Log Analytics 工作区。 不要求将工作区创建在它监视的应用程序所在的同一资源组中。 但通常情况下，这样做是最合理的。 对于 Wingtip Tickets 应用，请使用单个资源组以确保将工作区与应用程序一起删除。
 
 1. 在 PowerShell ISE 中，打开 *..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\Performance Monitoring and Management\\Log Analytics\\Demo-LogAnalytics.ps1*。
-2. 若要运行脚本，请按 F5。
+1. 若要运行脚本，请按 F5。
 
 现在，可以在 Azure 门户或 Operations Management Suite 门户中打开 Log Analytics。 在 Log Analytics 工作区中收集遥测数据并使其可见需要花费几分钟时间。 留给系统收集诊断数据的时间越长，体验越微妙。 
 
@@ -80,38 +80,38 @@ Log Analytics 是一项必须配置的单独服务。 Log Analytics 在 Log Anal
 
    ![打开 Log Analytics](media/saas-dbpertenant-log-analytics/log-analytics-open.png)
 
-2. 选择名为 _wtploganalytics-&lt;user&gt;_ 的工作区。
+1. 选择名为 _wtploganalytics-&lt;user&gt;_ 的工作区。
 
-3. 选择“概览”，在 Azure 门户中打开 Log Analytics 解决方案。
+1. 选择“概览”，在 Azure 门户中打开 Log Analytics 解决方案。
 
    ![概述](media/saas-dbpertenant-log-analytics/click-overview.png)
 
     > [!IMPORTANT]
     > 可能需要花费数分钟时间才能激活解决方案。 
 
-4. 选择 **Azure SQL Analytics** 磁贴以将其打开。
+1. 选择 **Azure SQL Analytics** 磁贴以将其打开。
 
     ![概览磁贴](media/saas-dbpertenant-log-analytics/overview.png)
 
-5. 解决方案中的视图可以侧向滚动，其自身的内部滚动条位于底部。 如果需要，请刷新页面。
+1. 解决方案中的视图可以侧向滚动，其自身的内部滚动条位于底部。 如果需要，请刷新页面。
 
-6. 若要浏览摘要页面，请选择磁贴或各个数据库以打开向下钻取式资源管理器。
+1. 若要浏览摘要页面，请选择磁贴或各个数据库以打开向下钻取式资源管理器。
 
     ![Log Analytics 仪表板](media/saas-dbpertenant-log-analytics/log-analytics-overview.png)
 
-7. 更改筛选器设置来修改时间范围。 对于本教程，请选择“过去 1 小时”。
+1. 更改筛选器设置来修改时间范围。 对于本教程，请选择“过去 1 小时”。
 
     ![时间筛选器](media/saas-dbpertenant-log-analytics/log-analytics-time-filter.png)
 
-8. 选择单个数据库，了解该数据库的查询使用情况和指标。
+1. 选择单个数据库，了解该数据库的查询使用情况和指标。
 
     ![数据库分析](media/saas-dbpertenant-log-analytics/log-analytics-database.png)
 
-9. 若要查看使用情况指标，请在分析页中滚动到右侧。
+1. 若要查看使用情况指标，请在分析页中滚动到右侧。
  
      ![数据库指标](media/saas-dbpertenant-log-analytics/log-analytics-database-metrics.png)
 
-10. 在分析页中向左滚动，并在“资源信息”列表中选择服务器磁贴。  
+1. 在分析页中向左滚动，并在“资源信息”列表中选择服务器磁贴。  
 
     ![“资源信息”列表](media/saas-dbpertenant-log-analytics/log-analytics-resource-info.png)
 
@@ -119,12 +119,12 @@ Log Analytics 是一项必须配置的单独服务。 Log Analytics 在 Log Anal
 
     ![包含池和数据库的服务器](media/saas-dbpertenant-log-analytics/log-analytics-server.png)
 
-11. 选择一个池。 在打开的池页上滚动到右侧，以便查看池指标。 
+1. 选择一个池。 在打开的池页上滚动到右侧，以便查看池指标。 
 
     ![池指标](media/saas-dbpertenant-log-analytics/log-analytics-pool-metrics.png)
 
 
-12. 返回到 Log Analytics 工作区，选择“OMS 门户”以在那里打开工作区。
+1. 返回到 Log Analytics 工作区，选择“OMS 门户”以在那里打开工作区。
 
     ![Operations Management Suite 门户磁贴](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
 

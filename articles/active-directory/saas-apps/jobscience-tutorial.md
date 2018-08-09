@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 0d717c9a70d078300b59a4e3fd6df08e971e8075
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 92ff93f9836b1ab8157602569c8171f81b976d6f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042956"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422665"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>教程：Azure Active Directory 与 Jobscience 集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "39042956"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Jobscience
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-jobscience-from-the-gallery"></a>从库中添加 Jobscience
 若要配置 Jobscience 与 Azure AD 的集成，需要从库中将 Jobscience 添加到托管 SaaS 应用列表。
@@ -63,19 +63,19 @@ ms.locfileid: "39042956"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入“jobscience”。
+1. 在搜索框中，键入“jobscience”。
 
     ![创建 Azure AD 测试用户](./media/jobscience-tutorial/tutorial_jobscience_search.png)
 
-5. 在结果面板中，选择“Jobscience”，然后单击“添加”按钮添加该应用程序。
+1. 在结果面板中，选择“Jobscience”，然后单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/jobscience-tutorial/tutorial_jobscience_addfromgallery.png)
 
@@ -89,10 +89,10 @@ ms.locfileid: "39042956"
 若要配置和测试 Jobscience 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. [创建 Jobscience 测试用户](#creating-a-jobscience-test-user) - 在 Jobscience 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. [创建 Jobscience 测试用户](#creating-a-jobscience-test-user) - 在 Jobscience 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -104,11 +104,11 @@ ms.locfileid: "39042956"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![配置单一登录](./media/jobscience-tutorial/tutorial_jobscience_samlbase.png)
 
-3. 在“Jobscience 域和 URL”部分中，执行以下步骤：
+1. 在“Jobscience 域和 URL”部分中，执行以下步骤：
 
     ![配置单一登录](./media/jobscience-tutorial/tutorial_jobscience_url.png)
 
@@ -117,49 +117,49 @@ ms.locfileid: "39042956"
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新此值。 通过 [Jobscience 客户端支持团队](https://www.jobscience.com/support)获取此值，或从 SSO 配置文件可以创建将在教程后面部分进行说明的内容。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/jobscience-tutorial/tutorial_jobscience_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录](./media/jobscience-tutorial/tutorial_general_400.png)
 
-6. 在“Jobscience 配置”部分，单击“配置 Jobscience”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+1. 在“Jobscience 配置”部分，单击“配置 Jobscience”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
 
     ![配置单一登录](./media/jobscience-tutorial/tutorial_jobscience_configure.png) 
 
-7. 以管理员身份登录到 Jobscience 公司站点。
+1. 以管理员身份登录到 Jobscience 公司站点。
 
-8. 转到“设置”。
+1. 转到“设置”。
    
    ![设置](./media/jobscience-tutorial/IC784358.png "设置")
 
-9. 在左侧导航窗格中的“管理”部分中，单击“域管理”以展开相关部分，并单击“我的域”，打开“我的域”页。 
+1. 在左侧导航窗格中的“管理”部分中，单击“域管理”以展开相关部分，并单击“我的域”，打开“我的域”页。 
    
    ![我的域](./media/jobscience-tutorial/ic767825.png "我的域")
 
-10. 要验证域是否已正确设置，请确保它在“步骤 4 部署到用户”中，并复查“我的域设置”。
+1. 要验证域是否已正确设置，请确保它在“步骤 4 部署到用户”中，并复查“我的域设置”。
 
     ![部署到用户的域](./media/jobscience-tutorial/ic784377.png "部署到用户的域")
 
-11. 在 Jobscience 公司站点上，单击“安全控制”，并单击“单一登录设置”。
+1. 在 Jobscience 公司站点上，单击“安全控制”，并单击“单一登录设置”。
     
     ![安全性控制](./media/jobscience-tutorial/ic784364.png "安全性控制")
 
-12. 在“单一登录设置”部分中，执行以下步骤：
+1. 在“单一登录设置”部分中，执行以下步骤：
     
     ![单一登录设置](./media/jobscience-tutorial/ic781026.png "Single Sign-On Settings")
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“已启用 SAML”。
+    a. 选择“已启用 SAML”。
 
     b. 单击“新建” 。
 
-13. 在“SAML 单一登录设置编辑”对话框中，执行以下步骤：
+1. 在“SAML 单一登录设置编辑”对话框中，执行以下步骤：
     
     ![SAML 单一登录设置](./media/jobscience-tutorial/ic784365.png "SAML Single Sign-On Settings")
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入配置名称。
+    a. 在“名称”文本框中，键入配置名称。
 
     b. 将从 Azure 门户复制的“SAML 实体 ID”的值粘贴到“颁发者”文本框中。
 
@@ -177,19 +177,19 @@ ms.locfileid: "39042956"
 
     i. 单击“ **保存**”。
 
-14. 在左侧导航窗格中的“管理”部分中，单击“域管理”以展开相关部分，并单击“我的域”，打开“我的域”页。 
+1. 在左侧导航窗格中的“管理”部分中，单击“域管理”以展开相关部分，并单击“我的域”，打开“我的域”页。 
     
     ![我的域](./media/jobscience-tutorial/ic767825.png "我的域")
 
-15. 在“我的域”页上的“登录页品牌打造”部分中，单击“编辑”。
+1. 在“我的域”页上的“登录页品牌打造”部分中，单击“编辑”。
     
     ![登录页品牌打造](./media/jobscience-tutorial/ic767826.png "登录页品牌打造")
 
-16. 在“登录页品牌打造”页上的“身份验证服务”部分中，会显示 **SAML SSO 设置**的名称。 选择它，并单击“保存”。
+1. 在“登录页品牌打造”页上的“身份验证服务”部分中，会显示 **SAML SSO 设置**的名称。 选择它，并单击“保存”。
     
     ![登录页品牌打造](./media/jobscience-tutorial/ic784366.png "登录页品牌打造")
 
-17. 若要获取 SP 启动的单一登录的登录 URL，请单击“安全控制”菜单部分中的“单一登录设置”。
+1. 若要获取 SP 启动的单一登录的登录 URL，请单击“安全控制”菜单部分中的“单一登录设置”。
 
     ![安全性控制](./media/jobscience-tutorial/ic784368.png "安全性控制")
     
@@ -210,19 +210,19 @@ ms.locfileid: "39042956"
 
     ![创建 Azure AD 测试用户](./media/jobscience-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
     ![创建 Azure AD 测试用户](./media/jobscience-tutorial/create_aaduser_02.png) 
 
-3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
  
     ![创建 Azure AD 测试用户](./media/jobscience-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/jobscience-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -242,20 +242,20 @@ ms.locfileid: "39042956"
 
 1. 以管理员身份登录到 **Jobscience** 公司站点。
 
-2. 转到“设置”。
+1. 转到“设置”。
    
    ![设置](./media/jobscience-tutorial/ic784358.png "设置")
-3. 转到“管理用户”\>“用户”。
+1. 转到“管理用户”\>“用户”。
    
    ![用户](./media/jobscience-tutorial/ic784369.png "用户")
-4. 单击“新建用户”。
+1. 单击“新建用户”。
    
    ![所有用户](./media/jobscience-tutorial/ic784370.png "所有用户")
-5. 在“编辑用户”对话框中，执行以下步骤：
+1. 在“编辑用户”对话框中，执行以下步骤：
    
    ![用户编辑](./media/jobscience-tutorial/ic784371.png "用户编辑")
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名”文本框中键入用户的名（如 Britta）。
+   a. 在“名”文本框中键入用户的名（如 Britta）。
    
    b. 在“姓”文本框中键入用户的姓（如 Simon）。
    
@@ -285,23 +285,23 @@ ms.locfileid: "39042956"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Jobscience”。
+1. 在应用程序列表中，选择“Jobscience”。
 
     ![配置单一登录](./media/jobscience-tutorial/tutorial_jobscience_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 

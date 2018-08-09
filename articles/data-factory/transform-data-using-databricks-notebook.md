@@ -13,12 +13,12 @@ ms.topic: get-started-article
 ms.date: 03/12/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: c3774774ff220153d1af9ec9f9807414efb3f7ce
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: efef0c4a8fd5a1cd08c5c15d5cb5cea9fc0ee9aa
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37081799"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426045"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的 Databricks Notebook 活动运行 Databricks Notebook
 
@@ -34,7 +34,7 @@ ms.locfileid: "37081799"
 
   - 监视管道运行。
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
 有关此功能的十一分钟介绍和演示，请观看以下视频：
 
@@ -48,19 +48,19 @@ ms.locfileid: "37081799"
 
 1.  启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
 
-2.  在左侧菜单中选择“新建”，然后依次选择“数据 + 分析”、“数据工厂”。
+1.  在左侧菜单中选择“新建”，然后依次选择“数据 + 分析”、“数据工厂”。
 
     ![新建数据工厂](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image1.png)
 
-3.  在“新建数据工厂”窗格的“名称”下输入 **ADFTutorialDataFactory**。
+1.  在“新建数据工厂”窗格的“名称”下输入 **ADFTutorialDataFactory**。
 
     Azure 数据工厂的名称必须 *全局唯一*。 如果看到以下错误，请更改数据工厂的名称。 （例如，使用 **\<yourname\>ADFTutorialDataFactory**）。 有关数据工厂项目的命名规则，请参阅[数据工厂 - 命名规则](https://docs.microsoft.com/azure/data-factory/naming-rules)一文。
 
     ![为新数据工厂提供一个名称](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image2.png)
 
-4.  对于“订阅”，请选择要在其中创建数据工厂的 Azure 订阅。
+1.  对于“订阅”，请选择要在其中创建数据工厂的 Azure 订阅。
 
-5.  对于“资源组”，请执行以下步骤之一：
+1.  对于“资源组”，请执行以下步骤之一：
     
     - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。
     
@@ -70,19 +70,19 @@ ms.locfileid: "37081799"
 
 1.  对于“版本”，选择“V2”。
 
-2.  对于“位置”，请选择数据工厂所在的位置。
+1.  对于“位置”，请选择数据工厂所在的位置。
 
     要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（例如 Azure 存储和 Azure SQL 数据库）和计算资源（例如 HDInsight）可以位于其他区域。
 
-3.  选择“固定到仪表板”。
+1.  选择“固定到仪表板”。
 
-4.  选择**创建**。
+1.  选择“创建”。
 
-5.  仪表板上会显示状态为“正在部署数据工厂”的以下磁贴：
+1.  仪表板上会显示状态为“正在部署数据工厂”的以下磁贴：
 
     ![](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image3.png)
 
-6.  创建完成后，会显示“数据工厂”页。 选择“创作和监视”磁贴，在单独的选项卡中启动数据工厂 UI 应用程序。
+1.  创建完成后，会显示“数据工厂”页。 选择“创作和监视”磁贴，在单独的选项卡中启动数据工厂 UI 应用程序。
 
     ![启动数据工厂 UI 应用程序](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image4.png)
 
@@ -96,31 +96,31 @@ ms.locfileid: "37081799"
 
     ![编辑新的链接服务](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image5.png)
 
-2.  选择窗口底部的“连接”，然后选择“+ 新建”。
+1.  选择窗口底部的“连接”，然后选择“+ 新建”。
     
     ![创建新连接](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image6.png)
 
-3.  在“新建链接服务”窗口中，选择“数据存储”\>“Azure Databricks”，然后选择“继续”。
+1.  在“新建链接服务”窗口中，选择“数据存储”\>“Azure Databricks”，然后选择“继续”。
     
     ![指定 Databricks 链接服务](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image7.png)
 
-4.  在“新建链接服务”窗口中完成以下步骤：
+1.  在“新建链接服务”窗口中完成以下步骤：
     
     1.  至于“名称”，请输入 ***AzureDatabricks\_LinkedService***
     
-    2.  至于“群集”，请选择“新建群集”。
+    1.  至于“群集”，请选择“新建群集”。
     
-    3.  至于“域/区域”，请选择 Azure Databricks 工作区所在的区域。
+    1.  至于“域/区域”，请选择 Azure Databricks 工作区所在的区域。
     
-    4.  在本教程中，请选择 **Standard\_D3\_v2** 作为**群集节点类型**。
+    1.  在本教程中，请选择 **Standard\_D3\_v2** 作为**群集节点类型**。
     
-    5.  至于“访问令牌”，请从 Azure Databricks 工作区生成。 可以在[此处](https://docs.databricks.com/api/latest/authentication.html#generate-token)找到步骤。
+    1.  至于“访问令牌”，请从 Azure Databricks 工作区生成。 可以在[此处](https://docs.databricks.com/api/latest/authentication.html#generate-token)找到步骤。
     
-    6.  至于“群集版本”，请选择“4.0 Beta”（最新版本）
+    1.  至于“群集版本”，请选择“4.0 Beta”（最新版本）
     
-    7.  至于“辅助角色节点数”，请输入 **2**。
+    1.  至于“辅助角色节点数”，请输入 **2**。
     
-    8.  选择“完成”
+    1.  选择“完成”
 
         ![完成创建链接服务的操作](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image8.png)
 
@@ -130,17 +130,17 @@ ms.locfileid: "37081799"
 
     ![用于创建新管道的按钮](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image9.png)
 
-2.  创建在**管道**中使用的**参数**。 稍后请将此参数传递给 Databricks Notebook 活动。 在空管道中单击“参数”选项卡，然后单击“新建”并将其命名为 '**name**'。
+1.  创建在**管道**中使用的**参数**。 稍后请将此参数传递给 Databricks Notebook 活动。 在空管道中单击“参数”选项卡，然后单击“新建”并将其命名为 '**name**'。
 
     ![新建参数](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image10.png)
 
     ![创建名称参数](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image11.png)
 
-3.  在“活动”工具箱中，展开“Databricks”。 将“Notebook”活动从“活动”工具箱拖到管道设计器图面。
+1.  在“活动”工具箱中，展开“Databricks”。 将“Notebook”活动从“活动”工具箱拖到管道设计器图面。
 
     ![将 Notebook 拖至设计器图面](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image12.png)
 
-4.  在底部 **Databricks** **Notebook** 活动窗口的属性中完成以下步骤：
+1.  在底部 **Databricks** **Notebook** 活动窗口的属性中完成以下步骤：
 
     a. 切换到“设置”选项卡。
 
@@ -150,17 +150,17 @@ ms.locfileid: "37081799"
 
        1. 启动 Azure Databricks 工作区
 
-       2. 在工作区中创建**新文件夹**，将其称之为 **adftutorial**。
+       1. 在工作区中创建**新文件夹**，将其称之为 **adftutorial**。
 
           ![创建新文件夹](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png)
 
-       3. 在 **adftutorial** 文件夹下[创建新的 Notebook](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python)，将其命名为 **mynotebook**，然后单击“创建”。
+       1. 在 **adftutorial** 文件夹下[创建新的 Notebook](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python)，将其命名为 **mynotebook**，然后单击“创建”。
 
           ![创建新的 Notebook](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png)
 
           ![设置新 Notebook 的属性](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image15.png)
 
-       4. 在新创建的 Notebook“mynotebook”中添加以下代码：
+       1. 在新创建的 Notebook“mynotebook”中添加以下代码：
 
            ```
            # Creating widgets for leveraging parameters, and printing the parameters
@@ -174,9 +174,9 @@ ms.locfileid: "37081799"
 
            ![创建参数的小组件](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image16.png)
 
-       5. 在此示例中，“Notebook 路径”为 **/adftutorial/mynotebook**
+       1. 在此示例中，“Notebook 路径”为 **/adftutorial/mynotebook**
 
-5.  切换回“数据工厂 UI 创作工具”。 导航到“Notebook1 活动”下的“设置”选项卡。 
+1.  切换回“数据工厂 UI 创作工具”。 导航到“Notebook1 活动”下的“设置”选项卡。 
     
     a.  通过“添加参数”向 Notebook 活动添加参数。 使用的参数与此前添加到“管道”的参数相同。
 
@@ -184,11 +184,11 @@ ms.locfileid: "37081799"
 
     b.  将参数命名为 **input**，并以 **@pipeline().parameters.name** 表达式的方式提供值。
 
-6.  若要验证管道，请选择工具栏中的“验证”按钮。 若要关闭验证窗口，请选择 **\>\>**（右键头）按钮。
+1.  若要验证管道，请选择工具栏中的“验证”按钮。 若要关闭验证窗口，请选择 **\>\>**（右键头）按钮。
 
     ![验证管道](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image18.png)
 
-7.  选择“全部发布”。 数据工厂 UI 会将实体（链接服务和管道）发布到 Azure 数据工厂服务。
+1.  选择“全部发布”。 数据工厂 UI 会将实体（链接服务和管道）发布到 Azure 数据工厂服务。
 
     ![发布新数据工厂实体](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image19.png)
 
@@ -208,9 +208,9 @@ ms.locfileid: "37081799"
 
     ![监视管道](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image22.png)
 
-2.  定期选择“刷新”以检查管道运行的状态。
+1.  定期选择“刷新”以检查管道运行的状态。
 
-3.  若要查看与管道运行相关联的活动运行，请选择“操作”列中的“查看活动运行”。
+1.  若要查看与管道运行相关联的活动运行，请选择“操作”列中的“查看活动运行”。
 
     ![查看活动运行](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image23.png)
 

@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 1268ed0f5c46e0f65e1bf5381f2baca95fa0b915
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5a68baa0c04dd90236e99cf010c96b1876fb4638
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34610593"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39425704"
 ---
 # <a name="tutorial-deploy-a-container-to-azure-container-instances"></a>教程：将容器部署到 Azure 容器实例
 
 这是由三个部分组成的系列教程的最后一个教程。 在本系列教程的前几篇文章中，我们已[创建一个容器映像](container-instances-tutorial-prepare-app.md)并将其[推送到 Azure 容器注册表](container-instances-tutorial-prepare-acr.md)。 本文是本系列教程的最后一篇，介绍如何将容器部署到 Azure 容器实例。
 
-在本教程中：
+本教程介绍以下操作：
 
 > [!div class="checklist"]
 > * 将容器从 Azure 容器注册表部署到 Azure 容器实例
@@ -138,8 +138,8 @@ az group delete --name myResourceGroup
 [docker-windows]: https://docs.docker.com/docker-for-windows/
 
 <!-- LINKS - internal -->
-[az-container-create]: /cli/azure/container#az_container_create
-[az-container-show]: /cli/azure/container#az_container_show
-[az-group-delete]: /cli/azure/group#az_group_delete
+[az-container-create]: /cli/azure/container#az-container-create
+[az-container-show]: /cli/azure/container#az-container-show
+[az-group-delete]: /cli/azure/group#az-group-delete
 [azure-cli-install]: /cli/azure/install-azure-cli
 [prepare-app]: ./container-instances-tutorial-prepare-app.md

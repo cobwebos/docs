@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: bbfee75497681df0d51e164b3035b9b88c67ccaa
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 94ded0ef1bf77de20973a87a1ca2d6d1dd3fdf3f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39052129"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426646"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>教程：Azure Active Directory 与 Jitbit Helpdesk 集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "39052129"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Jitbit Helpdesk
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-jitbit-helpdesk-from-the-gallery"></a>从库中添加 Jitbit Helpdesk
 若要配置 Jitbit Helpdesk 与 Azure AD 的集成，需要从库中将 Jitbit Helpdesk 添加到托管 SaaS 应用列表。
@@ -63,19 +63,19 @@ ms.locfileid: "39052129"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入“Jitbit Helpdesk”。
+1. 在搜索框中，键入“Jitbit Helpdesk”。
 
     ![创建 Azure AD 测试用户](./media/jitbit-helpdesk-tutorial/tutorial_jitbit-helpdesk_search.png)
 
-5. 在结果面板中，选择“Jitbit Helpdesk”，然后单击“添加”按钮添加该应用程序。
+1. 在结果面板中，选择“Jitbit Helpdesk”，然后单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/jitbit-helpdesk-tutorial/tutorial_jitbit-helpdesk_addfromgallery.png)
 
@@ -89,10 +89,10 @@ ms.locfileid: "39052129"
 若要配置和测试 Jitbit Helpdesk 的 Azure AD 单一登录，需完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Jitbit Helpdesk 测试用户](#creating-a-jitbit-helpdesk-test-user)** - 在 Jitbit Helpdesk 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 Jitbit Helpdesk 测试用户](#creating-a-jitbit-helpdesk-test-user)** - 在 Jitbit Helpdesk 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -104,15 +104,15 @@ ms.locfileid: "39052129"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![配置单一登录](./media/jitbit-helpdesk-tutorial/tutorial_jitbit-helpdesk_samlbase.png)
 
-3. 在“Jitbit Helpdesk 域和 URL”部分中，执行以下步骤：
+1. 在“Jitbit Helpdesk 域和 URL”部分中，执行以下步骤：
 
     ![配置单一登录](./media/jitbit-helpdesk-tutorial/tutorial_jitbit-helpdesk_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： 
     | |     
     | ----------------------------------------|
     | `https://<hostname>/helpdesk/User/Login`|
@@ -128,33 +128,33 @@ ms.locfileid: "39052129"
  
 
 
-4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/jitbit-helpdesk-tutorial/tutorial_jitbit-helpdesk_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录](./media/jitbit-helpdesk-tutorial/tutorial_general_400.png)
 
-6. 在“Jitbit Helpdesk 配置”部分，单击“配置 Jitbit Helpdesk”，打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
+1. 在“Jitbit Helpdesk 配置”部分，单击“配置 Jitbit Helpdesk”，打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
 
     ![配置单一登录](./media/jitbit-helpdesk-tutorial/tutorial_jitbit-helpdesk_configure.png) 
 
-7. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Jitbit Helpdesk 公司站点。
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Jitbit Helpdesk 公司站点。
 
-8. 在顶部工具栏中，单击“管理”。
+1. 在顶部工具栏中，单击“管理”。
    
     ![管理](./media/jitbit-helpdesk-tutorial/ic777681.png "Administration")
 
-9. 单击“常规设置”。
+1. 单击“常规设置”。
    
     ![用户、公司和权限](./media/jitbit-helpdesk-tutorial/ic777680.png "用户、公司和权限")
 
-10. 在“身份验证设置”配置部分中，执行以下步骤：
+1. 在“身份验证设置”配置部分中，执行以下步骤：
    
     ![身份验证设置](./media/jitbit-helpdesk-tutorial/ic777683.png "身份验证设置")
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“启用 SAML 2.0 单一登录”，通过“OneLogin”使用单一登录 (SSO) 进行登录。
+    a. 选择“启用 SAML 2.0 单一登录”，通过“OneLogin”使用单一登录 (SSO) 进行登录。
 
     b. 在“终结点 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
@@ -177,19 +177,19 @@ ms.locfileid: "39052129"
 
     ![创建 Azure AD 测试用户](./media/jitbit-helpdesk-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
     ![创建 Azure AD 测试用户](./media/jitbit-helpdesk-tutorial/create_aaduser_02.png) 
 
-3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
  
     ![创建 Azure AD 测试用户](./media/jitbit-helpdesk-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/jitbit-helpdesk-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入名称“BrittaSimon”。
+    a. 在“名称”文本框中，键入名称“BrittaSimon”。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -205,23 +205,23 @@ ms.locfileid: "39052129"
 
 1. 登录到 **Jitbit Helpdesk** 租户。
 
-2. 在顶部菜单中，单击“管理”。
+1. 在顶部菜单中，单击“管理”。
    
     ![管理](./media/jitbit-helpdesk-tutorial/ic777681.png "Administration")
 
-3. 单击“用户、公司和权限”。
+1. 单击“用户、公司和权限”。
    
     ![用户、公司和权限](./media/jitbit-helpdesk-tutorial/ic777682.png "用户、公司和权限")
 
-4. 单击“添加用户”。
+1. 单击“添加用户”。
    
     ![添加用户](./media/jitbit-helpdesk-tutorial/ic777685.png "添加用户")
    
-5. 在“创建”部分中，键入要预配的 Azure AD 帐户，如下所示：
+1. 在“创建”部分中，键入要预配的 Azure AD 帐户，如下所示：
 
     ![创建](./media/jitbit-helpdesk-tutorial/ic777686.png "创建")
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“用户名”文本框中，键入用户名“BrittaSimon”，即 Azure 门户中的用户名。
+   a. 在“用户名”文本框中，键入用户名“BrittaSimon”，即 Azure 门户中的用户名。
 
    b. 在“电子邮件”文本框中，键入用户的电子邮件地址（如 BrittaSimon@contoso.com）。
 
@@ -248,23 +248,23 @@ ms.locfileid: "39052129"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Jitbit Helpdesk”。
+1. 在应用程序列表中，选择“Jitbit Helpdesk”。
 
     ![配置单一登录](./media/jitbit-helpdesk-tutorial/tutorial_jitbit-helpdesk_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 

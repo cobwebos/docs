@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 4b2c23745a5e624bcf668dfbfe5d085392d7a583
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e55d161b7c95118736f4443c3fed0312418feee7
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39052445"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441929"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-leapsome"></a>教程：Azure Active Directory 与 Leapsome 集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "39052445"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Leapsome
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-leapsome-from-the-gallery"></a>从库中添加 Leapsome
 若要配置将 Leapsome 集成到 Azure AD，需要将 Leapsome 从库中添加到托管 SaaS 应用程序列表。
@@ -63,15 +63,15 @@ ms.locfileid: "39052445"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中，键入“Leapsome”，从结果面板中选择“Leapsome”，再单击“添加”按钮，以添加应用程序。
+1. 在搜索框中，键入“Leapsome”，从结果面板中选择“Leapsome”，再单击“添加”按钮，以添加应用程序。
 
     ![结果列表中的“Leapsome”](./media/leapsome-tutorial/tutorial_leapsome_addfromgallery.png)
 
@@ -84,10 +84,10 @@ ms.locfileid: "39052445"
 若要配置和测试 Azure AD 与 Leapsome 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Leapsome 测试用户](#create-a-leapsome-test-user)** - 在 Leapsome 中创建与 Britta Simon 对等的用户，并将它与 Azure AD 用户相关联。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 Leapsome 测试用户](#create-a-leapsome-test-user)** - 在 Leapsome 中创建与 Britta Simon 对等的用户，并将它与 Azure AD 用户相关联。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -99,19 +99,19 @@ ms.locfileid: "39052445"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![“单一登录”对话框](./media/leapsome-tutorial/tutorial_leapsome_samlbase.png)
 
-3. 在“Leapsome 域和 URL”部分中，若要在 IDP 发起模式下配置应用程序，请按照以下步骤操作：
+1. 在“Leapsome 域和 URL”部分中，若要在 IDP 发起模式下配置应用程序，请按照以下步骤操作：
 
     ![“Leapsome 域和 URL”单一登录信息](./media/leapsome-tutorial/tutorial_leapsome_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，键入一个 URL：`https://www.leapsome.com`
+    a. 在“标识符”文本框中，键入一个 URL：`https://www.leapsome.com`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://www.leapsome.com/api/users/auth/saml/<CLIENTID>/assert`
 
-4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
+1. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
 
     ![“Leapsome 域和 URL”单一登录信息](./media/leapsome-tutorial/tutorial_leapsome_url1.png)
 
@@ -120,11 +120,11 @@ ms.locfileid: "39052445"
     > [!NOTE] 
     > 上面的回复 URL 和登录 URL 不是实际值。 将使用实际值更新这些值（本教程稍后将会介绍）。
 
-5. Leapsome 应用程序需要使用特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示了示例。
+1. Leapsome 应用程序需要使用特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示了示例。
     
     ![配置单一登录](./media/leapsome-tutorial/tutorial_Leapsome_attribute.png)
 
-6. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
+1. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
     
     | 属性名称 | 属性值 | 命名空间 |
     | ---------------| --------------- | --------- |   
@@ -136,7 +136,7 @@ ms.locfileid: "39052445"
     > [!Note]
     > 图片属性值不是实际值。 请使用实际图片 URL 更新此值。 若要获取此值，请联系 [Leapsome 客户端支持团队](mailto:support@leapsome.com)。
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
+    a. 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录](./media/leapsome-tutorial/tutorial_attribute_04.png)
 
@@ -150,29 +150,29 @@ ms.locfileid: "39052445"
     
     e. 单击“确定”
 
-7. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/leapsome-tutorial/tutorial_leapsome_certificate.png) 
 
-8. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/leapsome-tutorial/tutorial_general_400.png)
     
-9. 在“Leapsome 配置”部分中，单击“配置 Leapsome”，以打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
+1. 在“Leapsome 配置”部分中，单击“配置 Leapsome”，以打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
 
     ![Leapsome 配置](./media/leapsome-tutorial/tutorial_leapsome_configure.png)
 
-10. 在另一个 Web 浏览器窗口中，以安全管理员身份登录 Leapsome。
+1. 在另一个 Web 浏览器窗口中，以安全管理员身份登录 Leapsome。
 
-11. 依次单击右上角的“设置”徽标和“管理员设置”。 
+1. 依次单击右上角的“设置”徽标和“管理员设置”。 
 
     ![Leapsome 设置](./media/leapsome-tutorial/tutorial_leapsome_admin.png)
 
-12. 单击左侧菜单栏上的“单一登录(SSO)”，并在“基于 SAML 的单一登录(SSO)”页上按照以下步骤操作：
+1. 单击左侧菜单栏上的“单一登录(SSO)”，并在“基于 SAML 的单一登录(SSO)”页上按照以下步骤操作：
     
     ![Leapsome saml](./media/leapsome-tutorial/tutorial_leapsome_samlsettings.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选中“启用基于 SAML 的单一登录”。
+    a. 选中“启用基于 SAML 的单一登录”。
 
     b. 将“登录 URL (指引用户开始登录)”值复制并粘贴到 Azure 门户上“Leapsome 域和 URL”部分中的“登录 URL”文本框。
 
@@ -196,19 +196,19 @@ ms.locfileid: "39052445"
 
     ![“Azure Active Directory”按钮](./media/leapsome-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/leapsome-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/leapsome-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/leapsome-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -232,23 +232,23 @@ ms.locfileid: "39052445"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Leapsome”。
+1. 在应用程序列表中，选择“Leapsome”。
 
     ![应用程序列表中的“Leapsome”链接](./media/leapsome-tutorial/tutorial_leapsome_app.png)  
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

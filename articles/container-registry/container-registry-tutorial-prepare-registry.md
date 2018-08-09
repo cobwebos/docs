@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/30/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: afdee938145dacf50538ceb186957933fe7ec3bd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 379878e261007eca13a4e455ef2b97237c81eeba
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33768186"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39450022"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>教程：准备异地复制的 Azure 容器注册表
 
@@ -32,7 +32,7 @@ Azure 容器注册表是部署在 Azure 中的专用 Docker 注册表，能使�
 
 ## <a name="before-you-begin"></a>开始之前
 
-本教程需要本地安装 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
+本教程需要本地安装 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 要求熟悉 Docker 的核心概念，如容器、容器映像和基本的 Docker CLI 命令。 有关容器的入门基础知识，请参阅 [Docker 入门]( https://docs.docker.com/get-started/)。
 
@@ -90,7 +90,7 @@ Azure Cloud Shell 不包含完成本教程每个步骤所需的 Docker 组件。
 
 配置异地复制后，生成一个容器映像并将其推送到注册表。 在将映像推送到 ACR 实例之前，必须先登录到 ACR 实例。
 
-使用 [az acr login](https://docs.microsoft.com/cli/azure/acr#az_acr_login) 命令进行身份验证，并缓存注册表的凭据。 将 `<acrName>` 替换为之前创建的注册表的名称。
+使用 [az acr login](https://docs.microsoft.com/cli/azure/acr#az-acr-login) 命令进行身份验证，并缓存注册表的凭据。 将 `<acrName>` 替换为之前创建的注册表的名称。
 
 ```azurecli
 az acr login --name <acrName>

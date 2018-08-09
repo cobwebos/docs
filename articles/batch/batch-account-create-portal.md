@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 06/18/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 233129a6ddb655483812fdd222b55a6c3623a9b4
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: dfaee72be883ee8902fe4550890d757f114ff932
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114945"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426099"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>使用 Azure 门户创建 Batch 帐户
 
@@ -34,15 +34,15 @@ ms.locfileid: "39114945"
 
 1. 登录到 [Azure 门户][azure_portal]。
 
-2. 选择“创建资源” > “计算” > “Batch 服务”。
+1. 选择“创建资源” > “计算” > “Batch 服务”。
 
     ![市场中的批处理][marketplace_portal]
 
-3. 输入“新 Batch 帐户”设置。 查看以下详细信息。
+1. 输入“新 Batch 帐户”设置。 查看以下详细信息。
 
     ![创建批处理帐户][account_portal]
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **帐户名称**：所选名称必须在创建帐户的 Azure 区域中唯一（参见下面的“位置”）。 帐户名只能包含小写字符或数字，且长度必须为 3-24 个字符。
+    a. **帐户名称**：所选名称必须在创建帐户的 Azure 区域中唯一（参见下面的“位置”）。 帐户名只能包含小写字符或数字，且长度必须为 3-24 个字符。
 
     b. **订阅**：要在其中创建批处理帐户的订阅。 如果只有一个订阅，则默认选择此项。
 
@@ -56,7 +56,7 @@ ms.locfileid: "39114945"
 
     f. **池分配模式**：对于大多数情况，请接受默认值“Batch 服务”。
 
-4. 选择“创建”可创建帐户。
+1. 选择“创建”可创建帐户。
 
 
 
@@ -85,22 +85,22 @@ ms.locfileid: "39114945"
 
 1. 登录到 [Azure 门户][azure_portal]。
 
-2. 选择“所有服务” > “订阅”，然后选择要用于 Batch 帐户的订阅。
+1. 选择“所有服务” > “订阅”，然后选择要用于 Batch 帐户的订阅。
 
-3. 在“订阅”页中选择“资源提供程序”，然后搜索“Microsoft.Batch”。 查看 **Microsoft.Batch** 资源提供程序是否已在订阅中注册。 如果未注册，请选择“注册”链接。
+1. 在“订阅”页中选择“资源提供程序”，然后搜索“Microsoft.Batch”。 查看 **Microsoft.Batch** 资源提供程序是否已在订阅中注册。 如果未注册，请选择“注册”链接。
 
     ![注册 Microsoft.Batch 提供程序][register_provider]
 
-3. 在“订阅”页中，选择“访问控制(IAM)” > “添加”。
+1. 在“订阅”页中，选择“访问控制(IAM)” > “添加”。
 
     ![订阅访问控制][subscription_access]
 
-4. 在“添加权限”页上，选择“参与者”角色，然后搜索 Batch API。 搜索每一条字符串，直到找到此 API：
+1. 在“添加权限”页上，选择“参与者”角色，然后搜索 Batch API。 搜索每一条字符串，直到找到此 API：
     1. MicrosoftAzureBatch。
-    2. Microsoft Azure Batch。 较新的 Azure AD 租户可能使用此名称。
-    3. ddbf3205-c6bd-46ae-8127-60eb93363864 是此 Batch API 的 ID。 
+    1. Microsoft Azure Batch。 较新的 Azure AD 租户可能使用此名称。
+    1. ddbf3205-c6bd-46ae-8127-60eb93363864 是此 Batch API 的 ID。 
 
-5. 找到此 Batch API 后，将其选中，然后选择“保存”。
+1. 找到此 Batch API 后，将其选中，然后选择“保存”。
 
     ![添加批处理权限][add_permission]
 
@@ -109,7 +109,7 @@ ms.locfileid: "39114945"
 
 1. 在 [Azure 门户][azure_portal]中，选择“新建” > “安全性” > “Key Vault”。
 
-2. 在“创建密钥保管库”页中，输入密钥保管库的名称，并在区域中创建需要用于 Batch 帐户的资源组。 让其余设置保留默认值，然后选择“创建”。
+1. 在“创建密钥保管库”页中，输入密钥保管库的名称，并在区域中创建需要用于 Batch 帐户的资源组。 让其余设置保留默认值，然后选择“创建”。
 
 以用户订阅模式创建 Batch 帐户时，请使用密钥保管库的资源组，指定“用户订阅”作为池分配模式，然后选择密钥保管库。
 

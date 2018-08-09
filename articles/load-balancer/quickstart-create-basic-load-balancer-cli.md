@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 6c7a9bd83af5d23bdc9e6dd8c910dbf64a6efd6f
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 7cca2475228155de6dc1f5c00a0d306e3a40c11a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304913"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441980"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>快速入门：使用 Azure CLI 2.0 创建公共负载均衡器以对 VM 进行负载均衡
 
@@ -147,7 +147,7 @@ ms.locfileid: "34304913"
 ```
 ### <a name="create-nics"></a>创建 NIC
 
-使用 [az network nic create](/cli/azure/network/nic#az_network_nic_create) 创建三个网络接口，并将它们与公共 IP 地址和网络安全组关联。 
+使用 [az network nic create](/cli/azure/network/nic#az-network-nic-create) 创建三个网络接口，并将它们与公共 IP 地址和网络安全组关联。 
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -169,7 +169,7 @@ done
 
 ### <a name="create-an-availability-set"></a>创建可用性集
 
-使用 [az vm availabilityset create](/cli/azure/network/nic#az_network_availabilityset_create) 创建可用性集
+使用 [az vm availabilityset create](/cli/azure/network/nic#az-network-availabilityset-create) 创建可用性集
 
  ```azurecli-interactive
   az vm availability-set create \
@@ -223,7 +223,7 @@ runcmd:
   - nodejs index.js
 ``` 
  
-使用 [az vm create](/cli/azure/vm#az_vm_create) 创建虚拟机。
+使用 [az vm create](/cli/azure/vm#az-vm-create) 创建虚拟机。
 
  ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -242,7 +242,7 @@ VM 可能需要几分钟才能部署好。
 
 ## <a name="test-the-load-balancer"></a>测试负载均衡器
 
-若要获取负载均衡器的公共 IP 地址，请使用 [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show)。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。
+若要获取负载均衡器的公共 IP 地址，请使用 [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show)。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。
 
 ```azurecli-interactive
   az network public-ip show \
@@ -255,7 +255,7 @@ VM 可能需要几分钟才能部署好。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组、负载均衡器和所有相关的资源，可以使用 [az group delete](/cli/azure/group#az_group_delete) 命令将其删除。
+如果不再需要资源组、负载均衡器和所有相关的资源，可以使用 [az group delete](/cli/azure/group#az-group-delete) 命令将其删除。
 
 ```azurecli-interactive 
   az group delete --name myResourceGroupLB

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: jeedes
-ms.openlocfilehash: adf3b1310a3e79b12be5294fe9d7a012bfc0d433
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 065225bb6c206f980c19955c682fc2c8a5deb950
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042932"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441762"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>教程：Azure Active Directory 与 ClickTime 的集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "39042932"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 ClickTime
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-clicktime-from-the-gallery"></a>从库中添加 ClickTime
 要配置 ClickTime 与 Azure AD 的集成，需要从库中将 ClickTime 添加到托管 SaaS 应用列表。
@@ -64,15 +64,15 @@ ms.locfileid: "39042932"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中，键入“ClickTime”，在结果面板中选择“ClickTime”，然后单击“添加”按钮添加该应用程序。
+1. 在搜索框中，键入“ClickTime”，在结果面板中选择“ClickTime”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 ClickTime](./media/clicktime-tutorial/tutorial_clicktime_addfromgallery.png)
 
@@ -87,10 +87,10 @@ ms.locfileid: "39042932"
 若要配置并测试 ClickTime 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 ClickTime 测试用户](#create-a-clicktime-test-user)** - 在 ClickTime 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 ClickTime 测试用户](#create-a-clicktime-test-user)** - 在 ClickTime 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -102,15 +102,15 @@ ms.locfileid: "39042932"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![“单一登录”对话框](./media/clicktime-tutorial/tutorial_clicktime_samlbase.png)
 
-3. 在“ClickTime 域和 URL”部分中，执行以下步骤：
+1. 在“ClickTime 域和 URL”部分中，执行以下步骤：
 
     ![ClickTime 域和 URL 单一登录信息](./media/clicktime-tutorial/tutorial_clicktime_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，键入 URL：`https://app.clicktime.com/sp/`
+    a. 在“标识符”文本框中，键入 URL：`https://app.clicktime.com/sp/`
     
     b. 在“回复 URL”文本框中，使用以下模式键入 URL： 
 
@@ -119,27 +119,27 @@ ms.locfileid: "39042932"
     | `https://app.clicktime.com/Login/` |
     | `https://app.clicktime.com/App/Login/Consume.aspx` |
 
-4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/clicktime-tutorial/tutorial_clicktime_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/clicktime-tutorial/tutorial_general_400.png)
 
-6. 在“ClickTime 配置”部分中，单击“配置 ClickTime”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
+1. 在“ClickTime 配置”部分中，单击“配置 ClickTime”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
 
     ![ClickTime 配置](./media/clicktime-tutorial/tutorial_clicktime_configure.png) 
 
-7. 在另一个 Web 浏览器窗口中，以管理员身份登录到 ClickTime 公司站点。
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 ClickTime 公司站点。
 
-8. 在顶部工具栏中，单击“首选项”，并单击“安全设置”。
+1. 在顶部工具栏中，单击“首选项”，并单击“安全设置”。
 
-9. 在“单一登录首选项”配置部分中，执行以下步骤：
+1. 在“单一登录首选项”配置部分中，执行以下步骤：
    
     ![安全设置](./media/clicktime-tutorial/tic777280.png "安全设置")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  选择“允许”通过“Azure AD”使用单一登录 (SSO) 进行登录。
+    a.  选择“允许”通过“Azure AD”使用单一登录 (SSO) 进行登录。
    
     b. 在“标识提供者终结点”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”。
    
@@ -161,19 +161,19 @@ ms.locfileid: "39042932"
 
     ![“Azure Active Directory”按钮](./media/clicktime-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
     
     ![“用户和组”以及“所有用户”链接](./media/clicktime-tutorial/create_aaduser_02.png) 
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
  
     ![“添加”按钮](./media/clicktime-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
  
     ![“用户”对话框](./media/clicktime-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -191,17 +191,17 @@ ms.locfileid: "39042932"
 
 **若要预配用户帐户，请执行以下步骤：**
 1. 登录到 **ClickTime** 租户。
-2. 在顶部工具栏中，单击“公司”，并单击“人员”。
+1. 在顶部工具栏中，单击“公司”，并单击“人员”。
    
     ![人员](./media/clicktime-tutorial/tic777282.png "人员")
-3. 单击“添加用户”。
+1. 单击“添加用户”。
    
     ![添加人员](./media/clicktime-tutorial/tic777283.png "添加人员")
-4. 在“新建人员”部分中，执行以下步骤：
+1. 在“新建人员”部分中，执行以下步骤：
    
     ![人员](./media/clicktime-tutorial/tic777284.png "人员")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  在“全名”文本框中，键入用户的全名，例如 Britta Simon。 
+    a.  在“全名”文本框中，键入用户的全名，例如 Britta Simon。 
   
     b.  在“电子邮件地址”文本框中，键入用户的电子邮件，例如 brittasimon@contoso.com。
        
@@ -222,23 +222,23 @@ ms.locfileid: "39042932"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“ClickTime”。
+1. 在应用程序列表中，选择“ClickTime”。
 
     ![应用程序列表中的 ClickTime 链接](./media/clicktime-tutorial/tutorial_clicktime_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

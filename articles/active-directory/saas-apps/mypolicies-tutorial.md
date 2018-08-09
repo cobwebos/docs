@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 120acc30c968670cd81fac4c45e246991f5f9c81
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: f4c34d224c65a6e339f12def01079a87247d2d60
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39046220"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429108"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mypolicies"></a>教程：Azure Active Directory 与 myPolicies 集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "39046220"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 myPolicies
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-mypolicies-from-the-gallery"></a>从库中添加 myPolicies
 若要配置 myPolicies 与 Azure AD 的集成，需要从库中将 myPolicies 添加到托管 SaaS 应用列表。
@@ -63,19 +63,19 @@ ms.locfileid: "39046220"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入“myPolicies”。
+1. 在搜索框中，键入“myPolicies”。
 
     ![创建 Azure AD 测试用户](./media/mypolicies-tutorial/tutorial_mypolicies_search.png)
 
-5. 在结果面板中，选择“myPolicies”，并单击“添加”按钮添加该应用程序。
+1. 在结果面板中，选择“myPolicies”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/mypolicies-tutorial/tutorial_mypolicies_addfromgallery.png)
 
@@ -89,10 +89,10 @@ ms.locfileid: "39046220"
 若要配置并测试 myPolicies 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. [创建myPolicies 测试用户](#creating-a-mypolicies-test-user) - 在 myPolicies 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. [创建myPolicies 测试用户](#creating-a-mypolicies-test-user) - 在 myPolicies 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
+1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -104,26 +104,26 @@ ms.locfileid: "39046220"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![配置单一登录](./media/mypolicies-tutorial/tutorial_mypolicies_samlbase.png)
 
-3. 在“myPolicies 域和 URL”部分中，执行以下步骤：
+1. 在“myPolicies 域和 URL”部分中，执行以下步骤：
 
     ![配置单一登录](./media/mypolicies-tutorial/tutorial_mypolicies_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<tenantname>.mypolicies.com/`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<tenantname>.mypolicies.com/`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<tenantname>.mypolicies.com/users/auth/saml/callback`
 
     > [!NOTE] 
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [myPolicies 支持团队](mailto:support@mypolicies.com)获取这些值。
 
-4. myPolicies 应用程序需要特定格式的 SAML 断言，这要求向“SAML 令牌属性”配置添加自定义属性映射。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示一个示例。 
+1. myPolicies 应用程序需要特定格式的 SAML 断言，这要求向“SAML 令牌属性”配置添加自定义属性映射。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示一个示例。 
 
     ![配置单一登录](./media/mypolicies-tutorial/tutorial_mypolicies_attribute.png)
 
-5. 在“用户属性”部分中，单击“查看和编辑所有其他用户属性”复选框展开属性。 对显示的各个属性执行以下步骤：
+1. 在“用户属性”部分中，单击“查看和编辑所有其他用户属性”复选框展开属性。 对显示的各个属性执行以下步骤：
 
     | 属性名称 | 属性值 |
     | ------------------- | ---------- |
@@ -132,7 +132,7 @@ ms.locfileid: "39046220"
     | emailaddress | user.mail |
     | name | user.userprincipalname |
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击该属性打开“编辑属性”对话框。
+    a. 单击该属性打开“编辑属性”对话框。
     
     ![配置单一登录](./media/mypolicies-tutorial/tutorial_attribute_05.png)
     
@@ -140,19 +140,19 @@ ms.locfileid: "39046220"
     
     c. 单击“确定”保存设置。
     
-6. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/mypolicies-tutorial/tutorial_mypolicies_certificate.png) 
 
-7. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录](./media/mypolicies-tutorial/tutorial_general_400.png)
 
-8. 在“myPolicies 配置”分区中，单击“配置 myPolicies”，打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
+1. 在“myPolicies 配置”分区中，单击“配置 myPolicies”，打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
 
     ![配置单一登录](./media/mypolicies-tutorial/tutorial_mypolicies_configure.png) 
 
-9. 若要在 myPolicies 端配置单一登录，需要将下载的证书 (Base64) 和 SAML 单一登录服务 URL 发送给 [myPolicies 支持团队](mailto:support@mypolicies.com)。 
+1. 若要在 myPolicies 端配置单一登录，需要将下载的证书 (Base64) 和 SAML 单一登录服务 URL 发送给 [myPolicies 支持团队](mailto:support@mypolicies.com)。 
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -169,19 +169,19 @@ ms.locfileid: "39046220"
 
     ![创建 Azure AD 测试用户](./media/mypolicies-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
     ![创建 Azure AD 测试用户](./media/mypolicies-tutorial/create_aaduser_02.png) 
 
-3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
  
     ![创建 Azure AD 测试用户](./media/mypolicies-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/mypolicies-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -205,23 +205,23 @@ ms.locfileid: "39046220"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“myPolicies”。
+1. 在应用程序列表中，选择“myPolicies”。
 
     ![配置单一登录](./media/mypolicies-tutorial/tutorial_mypolicies_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 
