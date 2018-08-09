@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: ff9cfd0f1f3d8ee62b7f93d88023b3dedce3e7be
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 18db911782e03d17f0b2e2ace3f8b00ddfdebf70
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711726"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599925"
 ---
 # <a name="tutorial-enable-desktop-app-authentication-with-accounts-using-azure-active-directory-b2c"></a>教程：使桌面应用能够使用帐户通过 Azure Active Directory B2C 进行身份验证
 
@@ -37,7 +37,7 @@ ms.locfileid: "34711726"
 
 ## <a name="register-desktop-app"></a>注册桌面应用
 
-应用程序需要先在租户中[注册](../active-directory/develop/active-directory-dev-glossary.md#application-registration)，然后才能从 Azure Active Directory 接收[访问令牌](../active-directory/develop/active-directory-dev-glossary.md#access-token)。 应用注册可以为租户中的应用创建一个[应用程序 ID](../active-directory/develop/active-directory-dev-glossary.md#application-id-client-id)。 
+应用程序需要先在租户中[注册](../active-directory/develop/developer-glossary.md#application-registration)，然后才能从 Azure Active Directory 接收[访问令牌](../active-directory/develop/developer-glossary.md#access-token)。 应用注册可以为租户中的应用创建一个[应用程序 ID](../active-directory/develop/developer-glossary.md#application-id-client-id)。 
 
 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
 
@@ -53,7 +53,7 @@ ms.locfileid: "34711726"
     
     | 设置      | 建议的值  | 说明                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **名称** | 我的示例 WPF 应用 | 输入一个**名称**，用于向使用者描述你的应用。 | 
+    | **Name** | 我的示例 WPF 应用 | 输入一个**名称**，用于向使用者描述你的应用。 | 
     | 包括 Web 应用/Web API | 否 | 对于是否为桌面应用，选择“否”。 |
     | **包含本机客户端** | 是 | 因为这是一个桌面应用并且被视为本机客户端。 |
     | **重定向 URI** | 默认值 | Azure AD B2C 要在 OAuth 2.0 响应中将用户代理重定向到的唯一标识符。 |
@@ -83,10 +83,10 @@ Azure AD B2C 策略定义用户工作流。 例如，登录、注册、更改密
 
     | 设置      | 建议的值  | 说明                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **名称** | SiUpIn | 输入策略的**名称**。 策略名称以 **B2C_1_** 为前缀。 示例代码中使用了完整的策略名称 **B2C_1_SiUpIn**。 | 
+    | **Name** | SiUpIn | 输入策略的**名称**。 策略名称以 **B2C_1_** 为前缀。 示例代码中使用了完整的策略名称 **B2C_1_SiUpIn**。 | 
     | **标识提供者** | 电子邮件注册 | 用于唯一标识用户的标识提供者。 |
     | **注册属性** | 显示名称和邮政编码 | 选择要在注册期间从用户处收集的属性。 |
-    | **应用程序声明** | 显示名称、邮政编码、用户为新用户、用户的对象 ID | 选择需要包括在[访问令牌](../active-directory/develop/active-directory-dev-glossary.md#access-token)中的[声明](../active-directory/develop/active-directory-dev-glossary.md#claim)。 |
+    | **应用程序声明** | 显示名称、邮政编码、用户为新用户、用户的对象 ID | 选择需要包括在[访问令牌](../active-directory/develop/developer-glossary.md#access-token)中的[声明](../active-directory/develop/developer-glossary.md#claim)。 |
 
 2. 单击“创建”以创建策略。 
 
@@ -100,10 +100,10 @@ Azure AD B2C 策略定义用户工作流。 例如，登录、注册、更改密
 
     | 设置      | 建议的值  | 说明                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **名称** | SiPe | 输入策略的**名称**。 策略名称以 **B2C_1_** 为前缀。 示例代码中使用了完整的策略名称 **B2C_1_SiPe**。 | 
+    | **Name** | SiPe | 输入策略的**名称**。 策略名称以 **B2C_1_** 为前缀。 示例代码中使用了完整的策略名称 **B2C_1_SiPe**。 | 
     | **标识提供者** | 本地帐户登录名 | 用于唯一标识用户的标识提供者。 |
     | **配置文件属性** | 显示名称和邮政编码 | 选择允许用户在配置文件编辑过程中修改的属性。 |
-    | **应用程序声明** | 显示名称、邮政编码、用户的对象 ID | 选择在成功地进行配置文件编辑之后，需要包括在[访问令牌](../active-directory/develop/active-directory-dev-glossary.md#access-token)中的[声明](../active-directory/develop/active-directory-dev-glossary.md#claim)。 |
+    | **应用程序声明** | 显示名称、邮政编码、用户的对象 ID | 选择在成功地进行配置文件编辑之后，需要包括在[访问令牌](../active-directory/develop/developer-glossary.md#access-token)中的[声明](../active-directory/develop/developer-glossary.md#claim)。 |
 
 2. 单击“创建”以创建策略。 
 
@@ -117,9 +117,9 @@ Azure AD B2C 策略定义用户工作流。 例如，登录、注册、更改密
 
     | 设置      | 建议的值  | 说明                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **名称** | SSPR | 输入策略的**名称**。 策略名称以 **B2C_1_** 为前缀。 示例代码中使用了完整的策略名称 **B2C_1_SSPR**。 | 
+    | **Name** | SSPR | 输入策略的**名称**。 策略名称以 **B2C_1_** 为前缀。 示例代码中使用了完整的策略名称 **B2C_1_SSPR**。 | 
     | **标识提供者** | 使用电子邮件地址重置密码 | 这是用于唯一标识用户的标识提供者。 |
-    | **应用程序声明** | 用户的对象 ID | 选择在成功地进行密码重置之后，需要包括在[访问令牌](../active-directory/develop/active-directory-dev-glossary.md#access-token)中的[声明](../active-directory/develop/active-directory-dev-glossary.md#claim)。 |
+    | **应用程序声明** | 用户的对象 ID | 选择在成功地进行密码重置之后，需要包括在[访问令牌](../active-directory/develop/developer-glossary.md#access-token)中的[声明](../active-directory/develop/developer-glossary.md#claim)。 |
 
 2. 单击“创建”以创建策略。 
 

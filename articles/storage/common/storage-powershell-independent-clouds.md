@@ -2,23 +2,18 @@
 title: 使用 Azure PowerShell 管理 Azure 独立云中的存储 | Microsoft Docs
 description: 使用 Azure PowerShell 管理中国云、政府云和德国云中的存储
 services: storage
-documentationcenter: na
 author: roygara
-manager: jeconnoc
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: rogarana
-ms.openlocfilehash: 3eecf8918e6628071e44cc588b1826df68a00f10
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: common
+ms.openlocfilehash: f3f827958c0c5d71846d8f0d4184ef88b7f0a932
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32186902"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527397"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>使用 PowerShell 管理 Azure 独立云中的存储
 
@@ -62,7 +57,7 @@ Get-AzureRmLocation | select Location, DisplayName
 
 下表显示了针对德国云返回的位置。
 
-|Location | DisplayName |
+|位置 | DisplayName |
 |----|----|
 | germanycentral | 德国中部|
 | germanynortheast | 德国东北部 | 

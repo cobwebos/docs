@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2017
 ms.author: jeedes
-ms.openlocfilehash: 201abc6acd6e8021131f6064e346ca4b5df64e73
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: c27af4e7bc88f24b76310336859740d8795f7cbe
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211931"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39449267"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-knowbe4-security-awareness-training"></a>教程：Azure Active Directory 与 KnowBe4 安全意识培训集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "36211931"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 KnowBe4 安全意识培训
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-knowbe4-security-awareness-training-from-the-gallery"></a>从库中添加 KnowBe4 安全意识培训
 若要配置 KnowBe4 安全意识培训与 Azure AD 的集成，需从库中将 KnowBe4 安全意识培训添加到托管 SaaS 应用列表。
@@ -64,15 +64,15 @@ ms.locfileid: "36211931"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中，键入“KnowBe4 安全意识培训”，选择结果面板中的“KnowBe4 安全意识培训”，然后单击“添加”按钮，添加应用程序。
+1. 在搜索框中，键入“KnowBe4 安全意识培训”，选择结果面板中的“KnowBe4 安全意识培训”，然后单击“添加”按钮，添加应用程序。
 
     ![结果列表中的“KnowBe4 安全意识培训”](./media/knowbe4-tutorial/tutorial_knowbe4_addfromgallery.png)
 
@@ -87,10 +87,10 @@ ms.locfileid: "36211931"
 若要配置和测试 KnowBe4 安全意识培训的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 KnowBe4 安全意识培训测试用户](#create-a-knowbe4-security-awareness-training-test-user)** - 在 KnowBe4 安全意识培训中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 KnowBe4 安全意识培训测试用户](#create-a-knowbe4-security-awareness-training-test-user)** - 在 KnowBe4 安全意识培训中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -102,15 +102,15 @@ ms.locfileid: "36211931"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![“单一登录”对话框](./media/knowbe4-tutorial/tutorial_knowbe4_samlbase.png)
 
-3. 在“KnowBe4 安全意识培训域和 URL”部分中，执行以下步骤：
+1. 在“KnowBe4 安全意识培训域和 URL”部分中，执行以下步骤：
 
     ![KnowBe4 安全意识培训域和 URl 单一登录信息](./media/knowbe4-tutorial/tutorial_knowbe4_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.KnowBe4.com/auth/saml/<instancename>`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.KnowBe4.com/auth/saml/<instancename>`
 
     > [!NOTE] 
     > 登录 URL 值不是真实值。 使用实际登录 URL 更新此值。 请联系 [KnowBe4 安全意识培训客户端支持团队](mailto:support@KnowBe4.com)获取此值。 
@@ -120,19 +120,19 @@ ms.locfileid: "36211931"
     > [!NOTE]
     >要区分大小写
 
-4. 在“SAML 签名证书”部分中，单击“证书(原始)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(原始)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/knowbe4-tutorial/tutorial_knowbe4_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/knowbe4-tutorial/tutorial_general_400.png)
 
-6. 在“KnowBe4 安全意识培训配置”部分中，单击“配置 KnowBe4 安全意识培训”，打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+1. 在“KnowBe4 安全意识培训配置”部分中，单击“配置 KnowBe4 安全意识培训”，打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
 
     ![KnowBe4 安全意识培训配置](./media/knowbe4-tutorial/tutorial_knowbe4_configure.png) 
 
-7. 若要在 KnowBe4 安全意识培训端配置单一登录，需要将下载的证书(原始)、注销 URL、SAML 实体 ID 和 SAML 单一登录服务 URL 发送给 [KnowBe4 安全意识培训客户端支持团队](mailto:support@KnowBe4.com)。
+1. 若要在 KnowBe4 安全意识培训端配置单一登录，需要将下载的证书(原始)、注销 URL、SAML 实体 ID 和 SAML 单一登录服务 URL 发送给 [KnowBe4 安全意识培训客户端支持团队](mailto:support@KnowBe4.com)。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -150,15 +150,15 @@ ms.locfileid: "36211931"
 
     ![“Azure Active Directory”按钮](./media/knowbe4-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/knowbe4-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/knowbe4-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/knowbe4-tutorial/create_aaduser_04.png)
 
@@ -191,23 +191,23 @@ ms.locfileid: "36211931"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“KnowBe4 安全意识培训”。
+1. 在应用程序列表中，选择“KnowBe4 安全意识培训”。
 
     ![应用程序列表中的“KnowBe4 安全意识培训”链接](./media/knowbe4-tutorial/tutorial_knowbe4_app.png)  
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

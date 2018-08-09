@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 92089904941ae913f1992a4407083bfcae010f2d
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: a07a17105b4d84b51689e9636cfacc7a3b5428ad
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887417"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528021"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>在 Azure 中设计和生成管理解决方案（预览）
 > [!NOTE]
@@ -77,7 +77,8 @@ Log Analytics 中的视图用于可视化 Log Analytics 存储库中的数据。
 完成解决方案并进行测试以后，即可通过以下某种方式将其提供给客户。
 
 - **Azure 快速入门模板**。  [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)是一套 Resource Manager 模板，由社区通过 GitHub 提供。  可以按[贡献指南](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE)中的说明提供解决方案。
-- **Azure Marketplace**。  可以通过 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) 将解决方案分发和销售给其他开发人员、ISV 和 IT 专业人员。  要了解如何将解决方案发布到 Azure Marketplace，可参阅[如何在 Azure Marketplace 中发布和管理产品/服务](../marketplace-publishing/marketplace-publishing-getting-started.md)。
+- 
+  **Azure 市场**。  可以通过 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/)将解决方案分发和销售给其他开发人员、ISV 和 IT 专业人员。  要了解如何将解决方案发布到 Azure 市场，可参阅[如何在 Azure 市场中发布和管理产品/服务](../marketplace/marketplace-publishers-guide.md)。
 
 
 

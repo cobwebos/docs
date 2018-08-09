@@ -2,24 +2,18 @@
 title: 为 Azure 导入/导出的导入作业准备硬盘驱动器 - v1 | Microsoft Docs
 description: 了解如何使用 WAImportExport v1 工具准备硬盘驱动器，以便为 Azure 导入/导出服务创建导入作业。
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 3d818245-8b1b-4435-a41f-8e5ec1f194b2
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.openlocfilehash: 361e16262e528c7dea1bab4b9d945a28af8be399
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: 861b3302e065689a4ea9c0df0879f9c0df12e619
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23107845"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526940"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>为导入作业准备硬盘驱动器
 若要为导入作业准备一个或多个硬盘驱动器，请执行以下步骤：
@@ -108,7 +102,7 @@ ms.locfileid: "23107845"
 
  用于每个驱动器的第一个复制会话的命令需要的参数不同于后续复制会话的命令所需的参数。 下表列出了可用于第一个复制会话的附加参数：
 
-|命令行参数|说明|
+|命令行参数|Description|
 |-----------------------------|-----------------|
 |**/sk:**<StorageAccountKey\>|`Optional.` 将数据导入到的存储帐户的存储帐户密钥。 必须在命令中包含 **/sk:**<StorageAccountKey\> 或 **/csas:**<ContainerSas\>。|
 |**/csas:**<ContainerSas\>|`Optional`。 用于将数据导入存储帐户的容器 SAS。 必须在命令中包含 **/sk:**<StorageAccountKey\> 或 **/csas:**<ContainerSas\>。<br /><br /> 此参数的值必须以容器名称开头，后接问号 (?) 和 SAS 令牌。 例如：<br /><br /> `mycontainer?sv=2014-02-14&sr=c&si=abcde&sig=LiqEmV%2Fs1LF4loC%2FJs9ZM91%2FkqfqHKhnz0JM6bqIqN0%3D&se=2014-11-20T23%3A54%3A14Z&sp=rwdl`<br /><br /> 无论是在 URL 上还是存储的访问策略中指定，权限都必须包括“读取”、“写入”和“删除”导入作业，以及“读取”、“写入”和“列出”导出作业。<br /><br /> 指定此参数时，要导入或导出的所有 Blob 都必须位于共享访问签名中指定的容器内。|
@@ -124,14 +118,14 @@ ms.locfileid: "23107845"
 
 |||
 |-|-|
-|命令行参数|说明|
+|命令行参数|Description|
 |**/j:**<JournalFile\>|`Required.` 日记文件的路径。 每个驱动器必须正好有一个日志文件。 请注意，日志文件不得驻留在目标驱动器上。 日记文件扩展名为 `.jrn`。|
 |**/id:**<SessionId\>|`Required.` 会话 ID 标识复制会话。 它用于确保准确恢复中断的复制会话。 复制会话中复制的文件将存储在以目标驱动器上的会话 ID 命名的目录中。|
 
 ### <a name="parameters-for-copying-a-single-directory"></a>用于复制单个目录的参数
  复制单个目录时，可应用以下必需和可选参数：
 
-|命令行参数|说明|
+|命令行参数|Description|
 |----------------------------|-----------------|
 |**/srcdir:**<SourceDirectory\>|`Required.` 包含要复制到目标驱动器中的文件的源目录。 目录路径必须是绝对路径（而非相对路径）。|
 |**/dstdir:**<DestinationBlobVirtualDirectory\>|`Required.` Windows Azure 存储帐户中的目标虚拟目录的路径。 虚拟目录可能存在，也可能不存在。<br /><br /> 可以指定容器或 Blob 前缀（如 `music/70s/`）。 目标目录必须以容器名称开头，后接正斜杠“/”，并且可以选择包含以“/”结尾的虚拟 Blob 目录。<br /><br /> 当目标容器为根容器时，必须显式指定包含正斜杠的根容器（如 `$root/`）。 由于根容器下的 Blob 的名称中不能包含“/”，因此当目标目录为根容器时，不会复制源目录中的任何子目录。<br /><br /> 在指定目标虚拟目录或 Blob 时，请确保使用有效的容器名称。 请记住，容器名称必须是小写的。 有关容器命名规则，请参阅[命名和引用容器、Blob 与元数据](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。|
@@ -143,7 +137,7 @@ ms.locfileid: "23107845"
 ### <a name="parameters-for-copying-a-single-file"></a>用于复制单个文件的参数
  复制单个文件时，可应用以下必需和可选参数：
 
-|命令行参数|说明|
+|命令行参数|Description|
 |----------------------------|-----------------|
 |**/srcfile:**<SourceFile\>|`Required.` 要复制的文件的完整路径。 目录路径必须是绝对路径（而非相对路径）。|
 |**/dstblob:**<DestinationBlobPath\>|`Required.` Windows Azure 存储帐户中的目标 Blob 的路径。 该 Blob 可能存在，也可能不存在。<br /><br /> 指定以容器名称开头的 Blob 名称。 Blob 名称不能以“/”或存储帐户名称开头。 有关 Blob 命名规则，请参阅[命名和引用容器、Blob 与元数据](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。<br /><br /> 当目标容器为根容器时，必须显式将 `$root` 指定为容器，如 `$root/sample.txt`。 请注意，根容器下的 Blob 的名称中不能包含“/”。|

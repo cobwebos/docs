@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 6ce6661bf6d3841f7ade78a74d50a1d6eeefbdaf
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 604a557a91176c08a361ffd058adda63f53b30fc
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39047988"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433014"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>教程：Azure Active Directory 与 Clear Review 的集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "39047988"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库添加 Clear Review
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-clear-review-from-the-gallery"></a>从库添加 Clear Review
 若要配置 Clear Review 与 Azure AD 的集成，需要将库中的 Clear Review 添加到托管的 SaaS 应用列表。
@@ -64,15 +64,15 @@ ms.locfileid: "39047988"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中，键入“Clear Review”，在结果面板中选择“Clear Review”，然后单击“添加”按钮添加该应用程序。
+1. 在搜索框中，键入“Clear Review”，在结果面板中选择“Clear Review”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 Clear Review](./media/clearreview-tutorial/tutorial_clearreview_addfromgallery.png)
 
@@ -87,10 +87,10 @@ ms.locfileid: "39047988"
 若要配置和测试 Clear Review 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Clear Review 测试用户](#create-a-clear-review-test-user)** - 在 Clear Review 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 Clear Review 测试用户](#create-a-clear-review-test-user)** - 在 Clear Review 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -102,19 +102,19 @@ ms.locfileid: "39047988"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![“单一登录”对话框](./media/clearreview-tutorial/tutorial_clearreview_samlbase.png)
 
-3. 在“Clear Review 域和 URL”部分中，如果要在 **IdP 发起的**模式下配置应用程序，请执行以下步骤：
+1. 在“Clear Review 域和 URL”部分中，如果要在 **IdP 发起的**模式下配置应用程序，请执行以下步骤：
 
     ![Clear Review 域和 URL 单一登录信息](./media/clearreview-tutorial/tutorial_clearreview_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<customer name>.clearreview.com/sso/metadata/`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<customer name>.clearreview.com/sso/metadata/`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<customer name>.clearreview.com/sso/acs/`
 
-4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
+1. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
 
     ![Clear Review 域和 URL 单一登录信息](./media/clearreview-tutorial/tutorial_clearreview_url_sp.png)
 
@@ -123,38 +123,38 @@ ms.locfileid: "39047988"
     > [!NOTE] 
     > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 若要获取这些值，请联系 [Clear Review 支持团队](https://clearreview.com/contact/)。
 
-5. Clear Review 应用程序预期名称标识符声明中的用户标识符是唯一的。 应将用户标识符值映射到 **user.mail**。
+1. Clear Review 应用程序预期名称标识符声明中的用户标识符是唯一的。 应将用户标识符值映射到 **user.mail**。
 
     ![“属性”部分](./media/clearreview-tutorial/attribute.png)
 
 
-6. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/clearreview-tutorial/tutorial_clearreview_certificate.png)
 
-7. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/clearreview-tutorial/tutorial_general_400.png)
 
-8. 在“Clear Review 配置”部分中，单击“配置 Clear Review”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+1. 在“Clear Review 配置”部分中，单击“配置 Clear Review”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
 
     ![Clear Review 配置](./media/clearreview-tutorial/tutorial_clearreview_configure.png) 
 
-9. 若要在 **Clear Review** 端配置单一登录，请使用管理员凭据打开 **Clear Review** 门户。
+1. 若要在 **Clear Review** 端配置单一登录，请使用管理员凭据打开 **Clear Review** 门户。
 
-10. 从左侧导航窗格中选择“管理”。
+1. 从左侧导航窗格中选择“管理”。
 
     ![配置单一登录“保存”按钮](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
 
-11. 在页面底部选择“更改”。
+1. 在页面底部选择“更改”。
 
     ![配置单一登录“保存”按钮](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
 
-12. 在“单一登录设置”页上，执行以下步骤：
+1. 在“单一登录设置”页上，执行以下步骤：
 
     ![配置单一登录“保存”按钮](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将从 Azure 门户复制的“SAML 实体 ID”的值粘贴到“颁发者 URL”文本框中。
+    a. 将从 Azure 门户复制的“SAML 实体 ID”的值粘贴到“颁发者 URL”文本框中。
 
     b. 在“SAML 终结点”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。    
 
@@ -162,7 +162,7 @@ ms.locfileid: "39047988"
 
     d. 在记事本中打开下载的证书，将其内容粘贴到“X.509 证书”文本框中。   
 
-13. 单击“ **保存**”。
+1. 单击“ **保存**”。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -179,19 +179,19 @@ ms.locfileid: "39047988"
 
     ![“Azure Active Directory”按钮](./media/clearreview-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/clearreview-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/clearreview-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/clearreview-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -215,23 +215,23 @@ ms.locfileid: "39047988"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Clear Review”。
+1. 在应用程序列表中，选择“Clear Review”。
 
     ![应用程序列表中的 Clear Review 链接](./media/clearreview-tutorial/tutorial_clearreview_app.png)  
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

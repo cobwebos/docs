@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 59e36a2c8b719f2e8e3fd6aec20b91605221d8b2
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 925a1af53438e21282e65418edc9ea365ad6a653
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109437"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432433"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>教程：配置 Jenkins 环境以便为 Service Fabric 上的 Java 应用程序启用 CI/CD
 
@@ -53,15 +53,15 @@ ms.locfileid: "37109437"
 
 1. 拉取 Service Fabric Jenkins 容器映像：``docker pull rapatchi/jenkins:v10``。 此映像附带了预安装的 Service Fabric Jenkins 插件。
 
-2. 结合证书在本地计算机上的装载位置参数运行容器映像
+1. 结合证书在本地计算机上的装载位置参数运行容器映像
 
     ```bash
     docker run -itd -p 8080:8080 -v /Users/suhuruli/Documents/Work/Samples/service-fabric-java-quickstart/AzureCluster:/tmp/myCerts rapatchi/jenkins:v10
     ```
 
-3. 获取容器映像实例的 ID。 可以使用命令 ``docker ps –a`` 列出所有 Docker 容器
+1. 获取容器映像实例的 ID。 可以使用命令 ``docker ps –a`` 列出所有 Docker 容器
 
-4. 运行以下命令，检索 Jenkins 实例的密码：
+1. 运行以下命令，检索 Jenkins 实例的密码：
 
     ```sh
     docker exec [first-four-digits-of-container-ID] cat /var/jenkins_home/secrets/initialAdminPassword
@@ -71,7 +71,7 @@ ms.locfileid: "37109437"
     * 从门户 ``http://<HOST-IP>:8080`` 登录到 Jenkins 仪表板时需要此密码
     * 首次登录后，可以创建自己的用户帐户或使用管理员帐户。
 
-5. 使用[生成新的 SSH 密钥并将其添加到 SSH 代理](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)中所述的步骤，将 GitHub 设置为使用 Jenkins。 由于命令是从 Docker 容器运行的，因此请遵照适用于 Linux 环境的说明。
+1. 使用[生成新的 SSH 密钥并将其添加到 SSH 代理](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)中所述的步骤，将 GitHub 设置为使用 Jenkins。 由于命令是从 Docker 容器运行的，因此请遵照适用于 Linux 环境的说明。
     * 使用 GitHub 提供的说明生成 SSH 密钥。 接下来，将 SSH 密钥添加到托管存储库的 GitHub 帐户。
     * 在 Jenkins Docker shell（而不是主机）中运行上述链接中提到的命令。
     * 若要从主机登录到 Jenkins shell，请使用以下命令：
@@ -86,17 +86,17 @@ ms.locfileid: "37109437"
 
 1. 首先，如果没有可用于在 Github 上托管投票项目的存储库，请创建一个存储库。 在本教程的余下内容中，此存储库名为 **dev_test**。
 
-2. 在 Jenkins 仪表板上创建一个**新项**。
+1. 在 Jenkins 仪表板上创建一个**新项**。
 
-3. 输入项名称（例如 **MyJob**）。 选择“自由格式的项目”，并单击“确定”。
+1. 输入项名称（例如 **MyJob**）。 选择“自由格式的项目”，并单击“确定”。
 
-4. 转到作业页，单击“配置”。
+1. 转到作业页，单击“配置”。
 
    a. 在常规部分中，选择“GitHub 项目”所对应的复选框，指定 GitHub 项目 URL。 此 URL 托管要与 Jenkins 持续集成和持续部署 (CI/CD) 流（例如 ``https://github.com/testaccount/dev_test``）集成的 Service Fabric Java 应用程序。
 
    b. 在“源代码管理”部分，选择 **Git**。 指定用于托管要与 Jenkins CI/CD 流（例如 *https://github.com/testaccount/dev_test.git*）集成的 Service Fabric Java 应用程序的存储库 URL。 也可在此处指定要生成的分支（例如 **/master**）。
 
-5. 配置 *GitHub*（存储库的托管位置），使它能够与 Jenkins 通信。 请执行以下步骤：
+1. 配置 *GitHub*（存储库的托管位置），使它能够与 Jenkins 通信。 请执行以下步骤：
 
    a. 转到 GitHub 存储库页。 转到“设置” > “集成和服务”。
 
@@ -108,13 +108,13 @@ ms.locfileid: "37109437"
 
    ![Service Fabric Jenkins 配置](./media/service-fabric-tutorial-java-jenkins/jenkinsconfiguration.png)
 
-6. 在“生成触发器”部分下面，选择所需的生成选项。 在此示例中，我们希望每当向存储库推送信息，就会触发生成。 为此，可以选择“用于 GITScm 轮询的 GitHub 挂钩触发器”。
+1. 在“生成触发器”部分下面，选择所需的生成选项。 在此示例中，我们希望每当向存储库推送信息，就会触发生成。 为此，可以选择“用于 GITScm 轮询的 GitHub 挂钩触发器”。
 
-7. 在“生成”部分下面，从“添加生成步骤”下拉列表中选择“调用 Gradle 脚本”。 在出现的小组件中，打开高级菜单，为应用程序指定“根生成脚本”的路径。 该脚本将从指定的路径中选择 build.gradle，然后执行相应的操作。
+1. 在“生成”部分下面，从“添加生成步骤”下拉列表中选择“调用 Gradle 脚本”。 在出现的小组件中，打开高级菜单，为应用程序指定“根生成脚本”的路径。 该脚本将从指定的路径中选择 build.gradle，然后执行相应的操作。
 
     ![Service Fabric Jenkins 生成操作](./media/service-fabric-tutorial-java-jenkins/jenkinsbuildscreenshot.png)
 
-8. 在“生成后操作”下拉列表中，选择“部署 Service Fabric 项目”。 此处需要提供有关在何处部署 Jenkins 编译的 Service Fabric 应用程序的群集详细信息。 证书的路径是卷的装载位置 (/tmp/myCerts)。
+1. 在“生成后操作”下拉列表中，选择“部署 Service Fabric 项目”。 此处需要提供有关在何处部署 Jenkins 编译的 Service Fabric 应用程序的群集详细信息。 证书的路径是卷的装载位置 (/tmp/myCerts)。
 
     还可以提供用于部署应用程序的其他详细信息。 有关应用程序详细信息的示例，请参阅以下屏幕截图：
 
@@ -140,7 +140,7 @@ ms.locfileid: "37109437"
     </div>
     ```
 
-2. 在 *Voting/VotingApplication/ApplicationManifest.xml* 文件中，将 **ApplicationTypeVersion** 和 **ServiceManifestVersion** 版本更新为 **2.0.0**。
+1. 在 *Voting/VotingApplication/ApplicationManifest.xml* 文件中，将 **ApplicationTypeVersion** 和 **ServiceManifestVersion** 版本更新为 **2.0.0**。
 
     ```xml
     <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -167,7 +167,7 @@ ms.locfileid: "37109437"
     </ApplicationManifest>
     ```
 
-3. 在 *Voting/VotingApplication/VotingWebPkg/ServiceManifest.xml* 文件中，将 **ServiceManifest** 中的 **Version** 字段以及 **CodePackage** 标记中的 **Version** 字段更新为 **2.0.0**。
+1. 在 *Voting/VotingApplication/VotingWebPkg/ServiceManifest.xml* 文件中，将 **ServiceManifest** 中的 **Version** 字段以及 **CodePackage** 标记中的 **Version** 字段更新为 **2.0.0**。
 
     ```xml
     <CodePackage Name="Code" Version="2.0.0">
@@ -179,19 +179,19 @@ ms.locfileid: "37109437"
     </CodePackage>
     ```
 
-4. 若要初始化执行应用程序升级的 Jenkins 作业，请将新更改推送到 Github 存储库。
+1. 若要初始化执行应用程序升级的 Jenkins 作业，请将新更改推送到 Github 存储库。
 
-5. 在 Service Fabric Explorer 中，单击“应用程序”下拉列表。 若要查看升级状态，请单击“正在进行升级”选项卡。
+1. 在 Service Fabric Explorer 中，单击“应用程序”下拉列表。 若要查看升级状态，请单击“正在进行升级”选项卡。
 
     ![正在进行升级](./media/service-fabric-tutorial-create-java-app/upgradejava.png)
 
-6. 如果访问 **http://\<主机 IP >:8080**，会看到具有完整功能的投票应用程序正在运行。
+1. 如果访问 **http://\<主机 IP >:8080**，会看到具有完整功能的投票应用程序正在运行。
 
-    ![本地投票应用](./media/service-fabric-tutorial-java-jenkins/votingv2.png)
+    ![本地 Voting 应用](./media/service-fabric-tutorial-java-jenkins/votingv2.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了以下操作：
+本教程介绍了如何：
 
 > [!div class="checklist"]
 > * 在计算机上部署 Service Fabric Jenkins 容器

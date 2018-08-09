@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 7e1d942d593fc01f68c1cdb7ffd923d2529cf171
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e7f0f6bb778dedeea61b74b5ca0c2edbadd5279b
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39050606"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430281"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timeoffmanager"></a>教程：Azure Active Directory 与 TimeOffManager 集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "39050606"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 TimeOffManager
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="add-timeoffmanager-from-the-gallery"></a>从库中添加 TimeOffManager
 若要配置 TimeOffManager 与 Azure AD 的集成，需要将库中的 TimeOffManager 添加到托管的 SaaS 应用列表。
@@ -64,15 +64,15 @@ ms.locfileid: "39050606"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入“TimeOffManager”，在结果面板中选择“TimeOffManager”，然后单击“添加”按钮添加应用程序。
+1. 在搜索框中，键入“TimeOffManager”，在结果面板中选择“TimeOffManager”，然后单击“添加”按钮添加应用程序。
 
     ![从库添加](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_addfromgallery.png)
 
@@ -86,10 +86,10 @@ ms.locfileid: "39050606"
 若要配置和测试 TimeOffManager 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 TimeOffManager 测试用户](#create-a-timeoffmanager-test-user)** - 在 TimeOffManager 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 TimeOffManager 测试用户](#create-a-timeoffmanager-test-user)** - 在 TimeOffManager 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -101,11 +101,11 @@ ms.locfileid: "39050606"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![基于 SAML 的登录](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_samlbase.png)
 
-3. 在“TimeOffManager 域和 URL”部分中，执行以下步骤：
+1. 在“TimeOffManager 域和 URL”部分中，执行以下步骤：
 
      ![“TimeOffManager 域和 URL”部分](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_url.png)
 
@@ -114,11 +114,11 @@ ms.locfileid: "39050606"
     > [!NOTE] 
     > 此值不是真实值。 请使用实际回复 URL 更新此值。 可以从教程后面介绍的“单一登录设置页面”中获取此值，也可以联系 [TimeOffManager 支持团队](https://www.purelyhr.com/contact-us)。
  
-4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![“SAML 签名证书”部分](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_certificate.png) 
 
-5. 本部分的目的是概述如何让用户使用基于 SAML 协议的联合身份验证，通过他们在 Azure AD 中的帐户向 TimeOffManger 进行身份验证。
+1. 本部分的目的是概述如何让用户使用基于 SAML 协议的联合身份验证，通过他们在 Azure AD 中的帐户向 TimeOffManger 进行身份验证。
     
     TimeOffManger 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示一个示例。
 
@@ -130,7 +130,7 @@ ms.locfileid: "39050606"
     | Lastname |User.surname |
     | 电子邮件 |User.mail |
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  对于上表中的每个数据行，单击“添加用户属性”。
+    a.  对于上表中的每个数据行，单击“添加用户属性”。
     
     ![SAML 令牌属性](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_addattrb.png "SAML 令牌属性")
     
@@ -142,24 +142,24 @@ ms.locfileid: "39050606"
     
     d.  单击“确定” 。
     
-6. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录](./media/timeoffmanager-tutorial/tutorial_general_400.png)
 
-7. 在“TimeOffManager 配置”部分，单击“Configure TimeOffManager”打开“配置单一登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+1. 在“TimeOffManager 配置”部分，单击“Configure TimeOffManager”打开“配置单一登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
 
     ![“TimeOffManager 配置”部分](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_configure.png) 
 
-8. 在另一个 Web 浏览器窗口中，以管理员身份登录 TimeOffManager 公司站点。
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录 TimeOffManager 公司站点。
 
-9. 转到“帐户”\>“帐户选项”\>“单一登录设置”。
+1. 转到“帐户”\>“帐户选项”\>“单一登录设置”。
    
    ![单一登录设置](./media/timeoffmanager-tutorial/ic795917.png "Single Sign-On Settings")
-7. 在“单一登录设置”部分中，执行以下步骤：
+1. 在“单一登录设置”部分中，执行以下步骤：
    
    ![单一登录设置](./media/timeoffmanager-tutorial/ic795918.png "Single Sign-On Settings")
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将整个证书粘贴到“X.509 证书”文本框中。
+   a. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将整个证书粘贴到“X.509 证书”文本框中。
    
    b. 在“Idp 颁发者”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
    
@@ -173,7 +173,7 @@ ms.locfileid: "39050606"
    
    g. 单击“保存更改”。
 
-11. 在“单一登录设置”页中，复制“断言使用者服务 URL”的值，并将其粘贴到 Azure 门户中“TimeOffManager 域和 URL”部分下的“回复 URL”文本框中。 
+1. 在“单一登录设置”页中，复制“断言使用者服务 URL”的值，并将其粘贴到 Azure 门户中“TimeOffManager 域和 URL”部分下的“回复 URL”文本框中。 
 
       ![单一登录设置](./media/timeoffmanager-tutorial/ic795915.png "Single Sign-On Settings")
 
@@ -192,19 +192,19 @@ ms.locfileid: "39050606"
 
     ![创建 Azure AD 测试用户](./media/timeoffmanager-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
     ![“用户和组”-->“所有用户”](./media/timeoffmanager-tutorial/create_aaduser_02.png) 
 
-3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
  
     ![“添加”按钮](./media/timeoffmanager-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![“用户”对话框页](./media/timeoffmanager-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -236,23 +236,23 @@ TimeOffManager 支持实时用户预配。 不存在任何操作项。
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“TimeOffManager”。
+1. 在应用程序列表中，选择“TimeOffManager”。
 
     ![应用列表中的 TimeOffManager](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

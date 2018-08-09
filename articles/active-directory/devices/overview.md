@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 151aa2f8065c7232284c560ff515afab40ae7f5c
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 7e71ff5f5da17165d5127f3547d8eb0756411b8c
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39415760"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597687"
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Azure Active Directory 中的设备管理简介
 
@@ -32,7 +32,7 @@ ms.locfileid: "39415760"
 
 用户可通过设备访问企业资产。 为了保护企业资产，IT 管理员需要控制这些设备。 这可确保用户使用满足安全性和符合性标准的设备访问资源。 
 
-设备管理也是[基于设备的条件性访问](../active-directory-conditional-access-policy-connected-applications.md)的基础。 通过基于设备的条件访问，可确保只有受管理设备才能访问环境中的资源。   
+设备管理也是[基于设备的条件性访问](../conditional-access/require-managed-devices.md)的基础。 通过基于设备的条件访问，可确保只有受管理设备才能访问环境中的资源。   
 
 本文介绍了 Azure Active Directory 中设备管理的工作原理。
 
@@ -178,7 +178,7 @@ Azure AD 加入适用于希望成为云优先（即主要使用云服务，旨�
 
 - 若要大致了解如何在 Azure 门户中管理设备，请参阅[使用 Azure 门户管理设备](device-management-azure-portal.md)
 
-- 有关基于设备的条件性访问的详细信息，请参阅[配置 Azure Active Directory 基于设备的条件性访问策略](../active-directory-conditional-access-policy-connected-applications.md)。
+- 有关基于设备的条件性访问的详细信息，请参阅[配置 Azure Active Directory 基于设备的条件性访问策略](../conditional-access/require-managed-devices.md)。
 
 - 设备设置：
     - 若要设置已注册 Azure Active Directory 的 Windows 10 设备，请参阅[如何配置已注册 Azure Active Directory 的 Windows 10 设备](../user-help/device-management-azuread-registered-devices-windows10-setup.md)

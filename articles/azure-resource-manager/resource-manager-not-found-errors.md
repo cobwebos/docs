@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: 494526ae2084053f23bb3a096ac7d089c47a731a
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 176de6f19274dfd8a6cf0335bb4cf16a8baa874b
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823429"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525338"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>解决找不到 Azure 资源的错误
 
@@ -60,7 +60,7 @@ group {resource group name} was not found.
 }
 ```
 
-不过，你想要避免设置不必要的依赖项。 存在不必要的依赖项时，会导致不互相依赖的资源无法并行部署，从而延长了部署时间。 此外，可能会创建阻止部署的循环依赖项。 被引用资源在同一模板中部署并通过其名称（而非资源 ID）引用时，[reference](resource-group-template-functions-resource.md#reference) 函数和 [list*](resource-group-template-functions-resource.md#listkeys-listsecrets-and-list) 函数将在该资源上创建隐式依赖项。 因此，用户拥有的依赖项可以多于在 **dependsOn** 属性中指定的依赖项。 [resourceId](resource-group-template-functions-resource.md#resourceid) 函数不创建隐式依赖项，也不验证资源是否存在。 当资源通过其资源 ID 引用时，[reference](resource-group-template-functions-resource.md#reference) 函数和 [list*](resource-group-template-functions-resource.md#listkeys-listsecrets-and-list) 函数不会创建隐式依赖项。 若要创建隐式依赖项，请传递在同一模板中部署的资源的名称。
+不过，你想要避免设置不必要的依赖项。 存在不必要的依赖项时，会导致不互相依赖的资源无法并行部署，从而延长了部署时间。 此外，可能会创建阻止部署的循环依赖项。 被引用资源在同一模板中部署并通过其名称（而非资源 ID）引用时，[reference](resource-group-template-functions-resource.md#reference) 函数和 [list*](resource-group-template-functions-resource.md#list) 函数将在该资源上创建隐式依赖项。 因此，用户拥有的依赖项可以多于在 **dependsOn** 属性中指定的依赖项。 [resourceId](resource-group-template-functions-resource.md#resourceid) 函数不创建隐式依赖项，也不验证资源是否存在。 当资源通过其资源 ID 引用时，[reference](resource-group-template-functions-resource.md#reference) 函数和 [list*](resource-group-template-functions-resource.md#list) 函数不会创建隐式依赖项。 若要创建隐式依赖项，请传递在同一模板中部署的资源的名称。
 
 看到依赖项问题时，需要深入了解资源部署顺序。 查看部署操作顺序的方法如下：
 

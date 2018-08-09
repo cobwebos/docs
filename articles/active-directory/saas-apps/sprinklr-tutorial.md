@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: ece3509743bc3712d144a3547c5ff91f9ea101e7
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e2dc9b7e7cf5964c36b21418a0162c1c2ef92dc8
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39050736"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430175"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>教程：Azure Active Directory 与 Sprinklr 集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "39050736"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库添加 Sprinklr
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-sprinklr-from-the-gallery"></a>从库添加 Sprinklr
 若要配置 Sprinklr 与 Azure AD 的集成，需要从库中将 Sprinklr 添加到托管 SaaS 应用列表。
@@ -63,19 +63,19 @@ ms.locfileid: "39050736"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入 **Sprinklr**。
+1. 在搜索框中，键入 **Sprinklr**。
 
     ![创建 Azure AD 测试用户](./media/sprinklr-tutorial/tutorial_sprinklr_search.png)
 
-5. 在结果窗格中选择“Sprinklr”，然后单击“添加”按钮添加该应用程序。
+1. 在结果窗格中选择“Sprinklr”，然后单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/sprinklr-tutorial/tutorial_sprinklr_addfromgallery.png)
 
@@ -89,10 +89,10 @@ ms.locfileid: "39050736"
 若要配置和测试 Sprinklr 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Sprinklr 测试用户](#creating-a-sprinklr-test-user)** - 在 Sprinklr 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 Sprinklr 测试用户](#creating-a-sprinklr-test-user)** - 在 Sprinklr 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -104,50 +104,50 @@ ms.locfileid: "39050736"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![配置单一登录](./media/sprinklr-tutorial/tutorial_sprinklr_samlbase.png)
 
-3. 在“Sprinklr 域和 URL”部分中执行以下步骤：
+1. 在“Sprinklr 域和 URL”部分中执行以下步骤：
 
     ![配置单一登录](./media/sprinklr-tutorial/tutorial_sprinklr_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.sprinklr.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.sprinklr.com`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.sprinklr.com`
 
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新该值。 请联系 [Sprinklr 客户端支持团队](https://www.sprinklr.com/contact-us/)获取这些值。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/sprinklr-tutorial/tutorial_sprinklr_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录](./media/sprinklr-tutorial/tutorial_general_400.png)
 
-6. 在“Sprinklr 配置”部分中，单击“配置 Sprinklr”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+1. 在“Sprinklr 配置”部分中，单击“配置 Sprinklr”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
 
-7. 在另一个 Web 浏览器窗口中，以管理员身份登录 Sprinklr 公司站点。
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录 Sprinklr 公司站点。
 
-8. 转到“管理”\>“设置”。
+1. 转到“管理”\>“设置”。
    
     ![管理](./media/sprinklr-tutorial/ic782907.png "Administration")
 
-9. 从左侧窗格转到“管理合作伙伴”\>“单一登录”。
+1. 从左侧窗格转到“管理合作伙伴”\>“单一登录”。
    
     ![管理合作伙伴](./media/sprinklr-tutorial/ic782908.png "Manage Partner")
 
-10. 单击“+添加单一登录”。
+1. 单击“+添加单一登录”。
    
     ![单一登录](./media/sprinklr-tutorial/ic782909.png "Single Sign-Ons")
 
-11. 在“单一登录”页上，执行以下步骤：
+1. 在“单一登录”页上，执行以下步骤：
    
     ![单一登录](./media/sprinklr-tutorial/ic782910.png "Single Sign-Ons")
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入配置名称（例如：*WAADSSOTest*）。
+    a. 在“名称”文本框中，键入配置名称（例如：*WAADSSOTest*）。
 
     b. 选择“启用”。
 
@@ -183,19 +183,19 @@ ms.locfileid: "39050736"
 
     ![创建 Azure AD 测试用户](./media/sprinklr-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
     ![创建 Azure AD 测试用户](./media/sprinklr-tutorial/create_aaduser_02.png) 
 
-3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
  
     ![创建 Azure AD 测试用户](./media/sprinklr-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/sprinklr-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -207,23 +207,23 @@ ms.locfileid: "39050736"
 
 1. 以管理员身份登录 Sprinklr 公司站点。
 
-2. 转到“管理”\>“设置”。
+1. 转到“管理”\>“设置”。
    
     ![管理](./media/sprinklr-tutorial/ic782907.png "Administration")
 
-3. 从左侧窗格转到“管理客户端”\>“用户”。
+1. 从左侧窗格转到“管理客户端”\>“用户”。
    
     ![设置](./media/sprinklr-tutorial/ic782914.png "设置")
 
-4. 单击“添加用户”。
+1. 单击“添加用户”。
    
     ![设置](./media/sprinklr-tutorial/ic782915.png "设置")
 
-5. 在“编辑用户”对话框中，执行以下步骤：
+1. 在“编辑用户”对话框中，执行以下步骤：
    
     ![编辑用户](./media/sprinklr-tutorial/ic782916.png "Edit user") 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“电子邮件”、“名字”和“姓氏”文本框中，键入要预配的 Azure AD 用户帐户的信息。
+    a. 在“电子邮件”、“名字”和“姓氏”文本框中，键入要预配的 Azure AD 用户帐户的信息。
 
     b. 选择“禁用密码”。
 
@@ -236,11 +236,11 @@ ms.locfileid: "39050736"
      >[!IMPORTANT]
      >必须选择“禁用密码”才能让用户通过标识提供者登录。 
      
-6. 单击“角色”，并执行以下步骤：
+1. 单击“角色”，并执行以下步骤：
    
     ![合作伙伴角色](./media/sprinklr-tutorial/ic782917.png "Partner Roles")
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 从“全局”列表中，选择“ALL\_Permissions”。  
+    a. 从“全局”列表中，选择“ALL\_Permissions”。  
 
     b. 单击“更新”。
 
@@ -259,23 +259,23 @@ ms.locfileid: "39050736"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Sprinklr”。
+1. 在应用程序列表中，选择“Sprinklr”。
 
     ![配置单一登录](./media/sprinklr-tutorial/tutorial_sprinklr_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 

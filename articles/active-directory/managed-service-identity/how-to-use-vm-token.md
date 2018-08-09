@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: ee4702733e775051cbbcace109bd1a7ffdf50e9c
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 42ac1cc7dd50f46ada263089437740e680928e70
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325449"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596046"
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-token-acquisition"></a>如何使用 Azure VM 托管服务标识 (MSI) 获取令牌 
 
@@ -44,7 +44,7 @@ ms.locfileid: "39325449"
 
 ## <a name="overview"></a>概述
 
-客户端应用程序可以请求托管服务标识[仅限应用的访问令牌](../develop/active-directory-dev-glossary.md#access-token)用于访问给定的资源。 该令牌[基于 MSI 服务主体](overview.md#how-does-it-work)。 因此，客户端无需注册自身即可使用自己的服务主体获取访问令牌。 该令牌适合在[需要客户端凭据的服务到服务调用](../develop/active-directory-protocols-oauth-service-to-service.md)中用作持有者令牌。
+客户端应用程序可以请求托管服务标识[仅限应用的访问令牌](../develop/developer-glossary.md#access-token)用于访问给定的资源。 该令牌[基于 MSI 服务主体](overview.md#how-does-it-work)。 因此，客户端无需注册自身即可使用自己的服务主体获取访问令牌。 该令牌适合在[需要客户端凭据的服务到服务调用](../develop/v1-oauth2-client-creds-grant-flow.md)中用作持有者令牌。
 
 |  |  |
 | -------------- | -------------------- |

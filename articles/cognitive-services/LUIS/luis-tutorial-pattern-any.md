@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
-ms.date: 07/20/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: ca4ed4444cd753c0fe22c6596dfd34d033b7b0cf
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 1587debecd82072c29d4caffc2b81629b1f52b0e
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39236996"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527358"
 ---
 # <a name="tutorial-improve-app-with-patternany-entity"></a>教程：使用 pattern.any 实体改进应用
 
@@ -26,7 +26,7 @@ ms.locfileid: "39236996"
 * 创建使用 pattern.any 的模式
 * 如何验证预测改进
 
-本文需要一个免费的 [LUIS](luis-reference-regions.md) 帐户，以便创作 LUIS 应用程序。
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>开始之前
 如果还没有[模式角色](luis-tutorial-pattern-roles.md)教程中所述的人力资源应用，请将 JSON [导入](luis-how-to-start-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。 要导入的应用位于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-roles-HumanResources.json) GitHub 存储库中。
@@ -106,8 +106,9 @@ Pattern.any 实体提取不同长度的实体。 它仅适用于模式，因为�
 
 4. 如果删除了 keyPhrase 实体，请将其添加回应用。 
 
-5. 将应用定型。
+## <a name="train-the-luis-app"></a>训练 LUIS 应用
 
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="test-the-new-pattern-for-free-form-data-extraction"></a>测试自由格式的数据提取的新模式
 1. 从顶栏中选择“测试”，打开测试面板。 
@@ -123,7 +124,8 @@ Pattern.any 实体提取不同长度的实体。 它仅适用于模式，因为�
 4. 选择顶部导航栏上的“测试”按钮，关闭测试面板。
 
 ## <a name="clean-up-resources"></a>清理资源
-不再需要 LUIS 应用时，请将其删除。 为此，在应用列表中选择应用名称右侧的省略号 (***...***)，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 68ad44bae0856ff000f2847049a15a946d83c0a3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c635a869506918ab7ee032df349eb307987c1284
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32168531"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432273"
 ---
 # <a name="use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>结合使用 Draft 与 Azure 容器服务和 Azure 容器注册表，生成应用程序并将其部署到 Kubernetes
 
@@ -33,7 +33,7 @@ ms.locfileid: "32168531"
       az group create --name draft --location eastus
       ```
 
-2. 使用 [az acr create](/cli/azure/acr#az_acr_create) 创建 ACR 映像注册表，并确保 `--admin-enabled` 选项设置为 `true`。
+2. 使用 [az acr create](/cli/azure/acr#az-acr-create) 创建 ACR 映像注册表，并确保 `--admin-enabled` 选项设置为 `true`。
       ```azurecli
       az acr create --resource-group draft --name draftacs --sku Basic
       ```
@@ -41,7 +41,7 @@ ms.locfileid: "32168531"
 
 ## <a name="create-an-azure-container-service-with-kubernetes"></a>使用 Kubernetes 创建 Azure 容器服务
 
-现已准备好使用 [az acs create](/cli/azure/acs#az_acs_create) 创建 ACS 群集，使用 Kubernetes 作为 `--orchestrator-type` 值。
+现已准备好使用 [az acs create](/cli/azure/acs#az-acs-create) 创建 ACS 群集，使用 Kubernetes 作为 `--orchestrator-type` 值。
 ```azurecli
 az acs create --resource-group draft --name draft-kube-acs --dns-prefix draft-cluster --orchestrator-type kubernetes --generate-ssh-keys
 ```
@@ -221,7 +221,7 @@ Draft 每创建一个 Helm 图表（即每个正在处理的应用程序），�
     ```
 
 2. 为域创建 DNS 区域。
-使用 [az network dns zone create](/cli/azure/network/dns/zone#az_network_dns_zone_create) 命令获取名称服务器，为域将 DNS 控件委托给 Azure DNS。
+使用 [az network dns zone create](/cli/azure/network/dns/zone#az-network-dns-zone-create) 命令获取名称服务器，为域将 DNS 控件委托给 Azure DNS。
     ```azurecli
     az network dns zone create --resource-group squillace.io --name squillace.io
     {

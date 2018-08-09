@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
-ms.openlocfilehash: 1dfe8a903e19ff524a1c4a0228e6aefcbe9ff183
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 2c08522df598bd5c6313c3f026efe48e1c4a2c56
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29117674"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39449353"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>在 Azure 中管理应用服务计划
 
@@ -35,7 +35,7 @@ ms.locfileid: "29117674"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择“新建” > “Web + 移动”，然后选择“Web 应用”或其他应用服务应用类型。
 
-2. 选择现有的应用服务计划，或者为新应用创建计划。
+1. 选择现有的应用服务计划，或者为新应用创建计划。
 
    ![在 Azure 门户中创建应用。][createWebApp]
 
@@ -49,7 +49,7 @@ ms.locfileid: "29117674"
 
    c. 对于“位置”，选择适当的位置。
 
-   d.单击“下一步”。 对于“定价层”，选择适当的服务定价层。 选择“全部查看”以查看其他定价选项，例如“免费”和“共享”。 选择定价层后，单击“选择”按钮。
+   d. 对于“定价层”，选择适当的服务定价层。 选择“全部查看”以查看其他定价选项，例如“免费”和“共享”。 选择定价层后，单击“选择”按钮。
 
 <a name="move"></a>
 
@@ -59,13 +59,13 @@ ms.locfileid: "29117674"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，浏览到要移动的应用。
 
-2. 在菜单上，查找“应用服务计划”部分。
+1. 在菜单上，查找“应用服务计划”部分。
 
-3. 选择“更改应用服务计划”以打开“应用服务计划”选择器。
+1. 选择“更改应用服务计划”以打开“应用服务计划”选择器。
 
    ![应用服务计划选择器。][change] 
 
-4. 在“应用服务计划”选择器中，选择要将此应用移到的现有计划。   
+1. 在“应用服务计划”选择器中，选择要将此应用移到的现有计划。   
 
 > [!IMPORTANT]
 > “选择应用服务计划”页已根据以下条件筛选： 

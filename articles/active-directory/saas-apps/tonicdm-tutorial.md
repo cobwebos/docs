@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 638423dec8695b3e8090fdc4206e34020b37ea10
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b582af22707b7bff187ed93fb48ba96d15634ab3
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049648"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433318"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tonicdm"></a>教程：Azure Active Directory 与 TonicDM 集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "39049648"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 TonicDM
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-tonicdm-from-the-gallery"></a>从库中添加 TonicDM
 要配置 TonicDM 与 Azure AD 的集成，需要从库中将 TonicDM 添加到托管 SaaS 应用列表。
@@ -64,15 +64,15 @@ ms.locfileid: "39049648"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中，键入“TonicDM”，在结果面板中选择“TonicDM”，然后单击“添加”按钮添加该应用程序。
+1. 在搜索框中，键入“TonicDM”，在结果面板中选择“TonicDM”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 TonicDM](./media/tonicdm-tutorial/tutorial_tonicdm_addfromgallery.png)
 
@@ -85,10 +85,10 @@ ms.locfileid: "39049648"
 若要配置和测试 TonicDM 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. [创建 TonicDM 测试用户](#create-a-tonicdm-test-user) - 在 TonicDM 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. [创建 TonicDM 测试用户](#create-a-tonicdm-test-user) - 在 TonicDM 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -100,31 +100,31 @@ ms.locfileid: "39049648"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![“单一登录”对话框](./media/tonicdm-tutorial/tutorial_tonicdm_samlbase.png)
 
-3. 在“TonicDM 域和 URL”部分中，执行以下步骤：
+1. 在“TonicDM 域和 URL”部分中，执行以下步骤：
 
     ![TonicDM 域和 URL 单一登录信息](./media/tonicdm-tutorial/tutorial_tonicdm_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，键入 URL `https://tonicdm.com/`
+    a. 在“登录 URL”文本框中，键入 URL `https://tonicdm.com/`
 
     b. 在“标识符”文本框中，键入一个 URL：`https://tonicdm.com/saml/metadata`
 
-4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/tonicdm-tutorial/tutorial_tonicdm_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/tonicdm-tutorial/tutorial_general_400.png)
 
-6. 在“TonicDM 配置”部分中，单击“配置 TonicDM”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+1. 在“TonicDM 配置”部分中，单击“配置 TonicDM”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
 
     ![TonicDM 配置](./media/tonicdm-tutorial/tutorial_tonicdm_configure.png) 
 
-7. 若要在 TonicDM 端配置单一登录，需要将下载的证书 (Base64)、注销 URL、SAML 实体 ID 和 SAML 单一登录服务 URL 发送给 [TonicDM 支持团队](mailto:support@tonicdm.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+1. 若要在 TonicDM 端配置单一登录，需要将下载的证书 (Base64)、注销 URL、SAML 实体 ID 和 SAML 单一登录服务 URL 发送给 [TonicDM 支持团队](mailto:support@tonicdm.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -138,19 +138,19 @@ ms.locfileid: "39049648"
 
     ![“Azure Active Directory”按钮](./media/tonicdm-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/tonicdm-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/tonicdm-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/tonicdm-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -174,23 +174,23 @@ ms.locfileid: "39049648"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“TonicDM”。
+1. 在应用程序列表中，选择“TonicDM”。
 
     ![应用程序列表中的 TonicDM 链接](./media/tonicdm-tutorial/tutorial_tonicdm_app.png)  
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

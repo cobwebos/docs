@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 70615726ed313884a977ae1b338d3c484fc32a1a
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 7a9adc8e9b7bcf69cce6b8ecf00e44477c1b0da3
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39326167"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430733"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure SQL 数据仓库或从 Azure SQL 数据仓库复制数据 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -105,21 +105,21 @@ Azure SQL 数据仓库链接服务支持以下属性：
     - 应用程序密钥
     - 租户 ID
 
-2. 为 Azure 门户上的 Azure SQL Server **[预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**（如果尚未这样做）。 Azure AD 管理员可以是 Azure AD 用户，也可以是 Azure AD 组。 如果授予包含 MSI 的组管理员角色，则可跳过步骤 3 和 4。 管理员拥有对数据库的完全访问权限。
+1. 为 Azure 门户上的 Azure SQL Server **[预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**（如果尚未这样做）。 Azure AD 管理员可以是 Azure AD 用户，也可以是 Azure AD 组。 如果授予包含 MSI 的组管理员角色，则可跳过步骤 3 和 4。 管理员拥有对数据库的完全访问权限。
 
-3. 为服务主体**[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**。 使用 SSMS 等工具连接到要从中复制数据或要将数据复制到其中的数据仓库，其 Azure AD 标识至少具有 ALTER ANY USER 权限。 运行以下 T-SQL：
+1. 为服务主体**[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**。 使用 SSMS 等工具连接到要从中复制数据或要将数据复制到其中的数据仓库，其 Azure AD 标识至少具有 ALTER ANY USER 权限。 运行以下 T-SQL：
     
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
     ```
 
-4. 像通常对 SQL 用户或其他用户所做的那样**向服务主体授予所需的权限**。 运行以下代码：
+1. 像通常对 SQL 用户或其他用户所做的那样**向服务主体授予所需的权限**。 运行以下代码：
 
     ```sql
     EXEC sp_addrolemember [role name], [your application name];
     ```
 
-5. 在 Azure 数据工厂中**配置 Azure SQL 数据仓库链接服务**。
+1. 在 Azure 数据工厂中**配置 Azure SQL 数据仓库链接服务**。
 
 
 #### <a name="linked-service-example-that-uses-service-principal-authentication"></a>使用服务主体身份验证的链接服务示例
@@ -168,21 +168,21 @@ Azure SQL 数据仓库链接服务支持以下属性：
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory service identity ID>"
     ```
 
-2. 为 Azure 门户上的 Azure SQL Server **[预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**（如果尚未这样做）。
+1. 为 Azure 门户上的 Azure SQL Server **[预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**（如果尚未这样做）。
 
-3. 为 Azure AD 组**[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**。 使用 SSMS 等工具连接到要从中复制数据或要将数据复制到其中的数据仓库，其 Azure AD 标识至少具有 ALTER ANY USER 权限。 运行以下 T-SQL。 
+1. 为 Azure AD 组**[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**。 使用 SSMS 等工具连接到要从中复制数据或要将数据复制到其中的数据仓库，其 Azure AD 标识至少具有 ALTER ANY USER 权限。 运行以下 T-SQL。 
     
     ```sql
     CREATE USER [your Azure AD group name] FROM EXTERNAL PROVIDER;
     ```
 
-4. 像通常对 SQL 用户和其他用户所做的那样**向 Azure AD 组授予所需的权限**。 例如，运行以下代码。
+1. 像通常对 SQL 用户和其他用户所做的那样**向 Azure AD 组授予所需的权限**。 例如，运行以下代码。
 
     ```sql
     EXEC sp_addrolemember [role name], [your Azure AD group name];
     ```
 
-5. 在 Azure 数据工厂中**配置 Azure SQL 数据仓库链接服务**。
+1. 在 Azure 数据工厂中**配置 Azure SQL 数据仓库链接服务**。
 
 #### <a name="linked-service-example-that-uses-msi-authentication"></a>使用 MSI 身份验证的链接服务示例
 
@@ -398,13 +398,13 @@ SQL 数据仓库 PolyBase 直接支持 Azure Blob 和 Azure Data Lake Store。 �
 如果不满足要求，Azure 数据工厂会检查设置，并自动回退到 BULKINSERT 机制以进行数据移动。
 
 1. **源链接服务**类型为使用服务主体身份验证的 **AzureStorage** 或 **AzureDataLakeStore**。
-2. **输入数据集**类型为 **AzureBlob** 或 **AzureDataLakeStoreFile**。 `type` 属性下的格式类型为 **OrcFormat**、**ParquetFormat** 或 **TextFormat**，其配置如下：
+1. **输入数据集**类型为 **AzureBlob** 或 **AzureDataLakeStoreFile**。 `type` 属性下的格式类型为 **OrcFormat**、**ParquetFormat** 或 **TextFormat**，其配置如下：
 
    1. `rowDelimiter` 必须是 **\n**。
-   2. `nullValue` 设置为**空字符串**（""）或保留为默认值，`treatEmptyAsNull` 未设置为 false。
-   3. `encodingName` 设置为 **utf-8**（默认值）。
-   4. `escapeChar`、`quoteChar` 和 `skipLineCount` 未指定。 PolyBase 支持跳过可以在 ADF 中配置为 `firstRowAsHeader` 的标头行。
-   5. `compression` 可为**无压缩**、**GZip** 或 **Deflate**。
+   1. `nullValue` 设置为**空字符串**（""）或保留为默认值，`treatEmptyAsNull` 未设置为 false。
+   1. `encodingName` 设置为 **utf-8**（默认值）。
+   1. `escapeChar`、`quoteChar` 和 `skipLineCount` 未指定。 PolyBase 支持跳过可以在 ADF 中配置为 `firstRowAsHeader` 的标头行。
+   1. `compression` 可为**无压缩**、**GZip** 或 **Deflate**。
 
     ```json
     "typeProperties": {

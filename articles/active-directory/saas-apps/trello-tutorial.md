@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: jeedes
-ms.openlocfilehash: ef8e493816321d9aaffbf6e4870ff3e3a9e1180b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 163d7faa99d362f400581c42974eeb4a466641d9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041385"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39449156"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trello"></a>教程：Azure Active Directory 与 Trello 集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "39041385"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Trello
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-trello-from-the-gallery"></a>从库中添加 Trello
 要配置 Trello 与 Azure AD 的集成，需要从库中将 Trello 添加到托管 SaaS 应用列表。
@@ -64,15 +64,15 @@ ms.locfileid: "39041385"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中，键入“Trello”，在结果面板中选择“Trello”，然后单击“添加”按钮添加该应用程序。
+1. 在搜索框中，键入“Trello”，在结果面板中选择“Trello”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 Trello](./media/trello-tutorial/tutorial_trello_addfromgallery.png)
 
@@ -87,10 +87,10 @@ ms.locfileid: "39041385"
 若要配置和测试 Trello 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Trello 测试用户](#create-a-trello-test-user)** - 在 Trello 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 Trello 测试用户](#create-a-trello-test-user)** - 在 Trello 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -106,31 +106,31 @@ ms.locfileid: "39041385"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![“单一登录”对话框](./media/trello-tutorial/tutorial_trello_samlbase.png)
 
-3. 在“Trello 域和 URL”部分中，如果要在“IDP 发起的模式”下配置应用程序，请执行以下步骤：
+1. 在“Trello 域和 URL”部分中，如果要在“IDP 发起的模式”下配置应用程序，请执行以下步骤：
 
     ![Trello 域和 URL 单一登录信息](./media/trello-tutorial/tutorial_trello_url.png)
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，键入以下 URL：`https://trello.com/auth/saml/metadata`
+    a. 在“标识符”文本框中，键入以下 URL：`https://trello.com/auth/saml/metadata`
     
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://trello.com/auth/saml/consume/<enterprise>`
 
-4. 如果要在“SP 发起的模式”下配置应用程序，请执行以下步骤：
+1. 如果要在“SP 发起的模式”下配置应用程序，请执行以下步骤：
 
     ![Trello 域和 URL 单一登录信息](./media/trello-tutorial/tutorial_trello_url1.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选中“显示高级 URL 设置”。
+    a. 选中“显示高级 URL 设置”。
 
     b. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://trello.com/auth/saml/login/<enterprise>` 
 
-5. Trello 应用程序需要 SAML 断言包含特定属性。 请为此应用程序配置以下属性。 可从应用程序的“用户属性”下管理这些属性的值。 以下屏幕截图显示一个示例。
+1. Trello 应用程序需要 SAML 断言包含特定属性。 请为此应用程序配置以下属性。 可从应用程序的“用户属性”下管理这些属性的值。 以下屏幕截图显示一个示例。
 
     ![配置单一登录](./media/trello-tutorial/tutorial_trello_attribute.png)
 
-6. 在“SAML 令牌属性”对话框中，对于下表中显示的每个行，执行以下步骤：
+1. 在“SAML 令牌属性”对话框中，对于下表中显示的每个行，执行以下步骤：
  
     | 属性名称 | 属性值 |
     | --- | --- |
@@ -138,7 +138,7 @@ ms.locfileid: "39041385"
     | User.FirstName | user.givenname |
     | User.LastName | user.surname |
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
+    a. 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录](./media/trello-tutorial/tutorial_officespace_04.png)
 
@@ -150,19 +150,19 @@ ms.locfileid: "39041385"
     
     d. 单击“确定” 。 
 
-7. 在“SAML 签名证书”部分中，单击“证书(Base64)”，并在计算机上保存元数据文件。
+1. 在“SAML 签名证书”部分中，单击“证书(Base64)”，并在计算机上保存元数据文件。
 
     ![证书下载链接](./media/trello-tutorial/tutorial_trello_certificate.png) 
 
-8. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/trello-tutorial/tutorial_general_400.png)
     
-9. 在“Trello 配置”部分，单击“配置 Trello”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
+1. 在“Trello 配置”部分，单击“配置 Trello”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
 
     ![Trello 配置](./media/trello-tutorial/tutorial_trello_configure.png) 
 
-10. 若要在 **Trello** 端配置单一登录，需要转到[Trello 企业 SSO 配置](https://trello.com/sso-configuration)页，将下载的“证书(Base64)”和“SAML 单一登录服务 URL”发送给 [Trello 支持团队](mailto:support@trello.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+1. 若要在 **Trello** 端配置单一登录，需要转到[Trello 企业 SSO 配置](https://trello.com/sso-configuration)页，将下载的“证书(Base64)”和“SAML 单一登录服务 URL”发送给 [Trello 支持团队](mailto:support@trello.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -179,19 +179,19 @@ ms.locfileid: "39041385"
 
     ![“Azure Active Directory”按钮](./media/trello-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/trello-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/trello-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/trello-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -219,23 +219,23 @@ ms.locfileid: "39041385"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Trello”。
+1. 在应用程序列表中，选择“Trello”。
 
     ![应用程序列表中的 Trello 链接](./media/trello-tutorial/tutorial_trello_app.png)  
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

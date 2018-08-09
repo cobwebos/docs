@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: d002955bcdb6e521fd3daddc223e07afa50f2208
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 5c80abcfa4fe14bc211bf829f24d190790d80353
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082694"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430798"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>教程：将数据从本地 SQL Server 数据库复制到 Azure Blob 存储
 本教程使用 Azure PowerShell 创建一个数据工厂管道，用于将数据从本地 SQL Server 数据库复制到 Azure Blob 存储。 同时创建一个自承载 Integration Runtime，用其在本地数据存储和云数据存储之间移动数据。 
@@ -51,13 +51,13 @@ ms.locfileid: "37082694"
 
 1. 启动 SQL Server Management Studio。 如果此软件尚未安装在计算机上，请访问[下载 SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。 
 
-2. 使用凭据连接到 SQL Server 实例。 
+1. 使用凭据连接到 SQL Server 实例。 
 
-3. 创建示例数据库。 在树状视图中右键单击“数据库”，然后选择“新建数据库”。 
+1. 创建示例数据库。 在树状视图中右键单击“数据库”，然后选择“新建数据库”。 
  
-4. 在“新建数据库”窗口中输入数据库的名称，然后选择“确定”。 
+1. 在“新建数据库”窗口中输入数据库的名称，然后选择“确定”。 
 
-5. 若要创建 **emp** 表并将一些示例数据插入到其中，请对数据库运行以下查询脚本：
+1. 若要创建 **emp** 表并将一些示例数据插入到其中，请对数据库运行以下查询脚本：
 
    ```
        INSERT INTO emp VALUES ('John', 'Doe')
@@ -65,7 +65,7 @@ ms.locfileid: "37082694"
        GO
    ```
 
-6. 在树状视图中右键单击所创建的数据库，然后选择“新建查询”。
+1. 在树状视图中右键单击所创建的数据库，然后选择“新建查询”。
 
 ### <a name="azure-storage-account"></a>Azure 存储帐户
 在本教程中，请使用常规用途的 Azure 存储帐户（具体说来就是 Azure Blob 存储）作为目标/接收器数据存储。 如果没有常规用途的 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)。 在本教程中创建的数据工厂中的管道将数据从本地 SQL Server 数据库（源）复制到这个 Azure Blob 存储（接收器）。 
@@ -75,17 +75,17 @@ ms.locfileid: "37082694"
 
 1. 使用 Azure 用户名和密码登录到 [Azure 门户](https://portal.azure.com)。 
 
-2. 在左窗格中选择“更多服务”，使用“存储”关键字进行筛选，然后选择“存储帐户”。
+1. 在左窗格中选择“更多服务”，使用“存储”关键字进行筛选，然后选择“存储帐户”。
 
     ![搜索存储帐户](media/tutorial-hybrid-copy-powershell/search-storage-account.png)
 
-3. 在存储帐户列表中，通过筛选找出你的存储帐户（如果需要），然后选择你的存储帐户。 
+1. 在存储帐户列表中，通过筛选找出你的存储帐户（如果需要），然后选择你的存储帐户。 
 
-4. 在“存储帐户”窗口中选择“访问密钥”。
+1. 在“存储帐户”窗口中选择“访问密钥”。
 
     ![获取存储帐户名称和密钥](media/tutorial-hybrid-copy-powershell/storage-account-name-key.png)
 
-5. 复制“存储帐户名称”和“key1”框中的值，然后将其粘贴到记事本或其他编辑器中，在教程的后面部分使用。 
+1. 复制“存储帐户名称”和“key1”框中的值，然后将其粘贴到记事本或其他编辑器中，在教程的后面部分使用。 
 
 #### <a name="create-the-adftutorial-container"></a>创建 adftutorial 容器 
 此部分在 Azure Blob 存储中创建名为 **adftutorial** 的 Blob 容器。 
@@ -94,19 +94,19 @@ ms.locfileid: "37082694"
 
     ![选择“Blob”选项](media/tutorial-hybrid-copy-powershell/select-blobs.png)
 
-2. 在“Blob 服务”窗口中，选择“容器”。 
+1. 在“Blob 服务”窗口中，选择“容器”。 
 
     ![“添加容器”按钮](media/tutorial-hybrid-copy-powershell/add-container-button.png)
 
-3. 在“新建容器”窗口的“名称”框中输入“adftutorial”，然后选择“确定”。 
+1. 在“新建容器”窗口的“名称”框中输入“adftutorial”，然后选择“确定”。 
 
     ![输入容器名称](media/tutorial-hybrid-copy-powershell/new-container-dialog.png)
 
-4. 在容器列表中选择“adftutorial”。  
+1. 在容器列表中选择“adftutorial”。  
 
     ![选择容器](media/tutorial-hybrid-copy-powershell/seelct-adftutorial-container.png)
 
-5. 让 **adftutorial** 的“容器”窗口保持打开状态。 在教程结束时可以使用它来验证输出。 数据工厂自动在该容器中创建输出文件夹，因此不需要你来创建。
+1. 让 **adftutorial** 的“容器”窗口保持打开状态。 在教程结束时可以使用它来验证输出。 数据工厂自动在该容器中创建输出文件夹，因此不需要你来创建。
 
     ![“容器”窗口](media/tutorial-hybrid-copy-powershell/container-page.png)
 
@@ -117,9 +117,9 @@ ms.locfileid: "37082694"
 
 1. 访问 [Azure SDK 下载](https://azure.microsoft.com/downloads/)。 
 
-2. 在“命令行工具”下的“PowerShell”部分选择“Windows 安装”。 
+1. 在“命令行工具”下的“PowerShell”部分选择“Windows 安装”。 
 
-3. 若要安装 Azure PowerShell，请运行 MSI 文件。 
+1. 若要安装 Azure PowerShell，请运行 MSI 文件。 
 
 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps)。 
 
@@ -129,13 +129,13 @@ ms.locfileid: "37082694"
 
     ![启动 PowerShell](media/tutorial-hybrid-copy-powershell/search-powershell.png)
 
-2. 运行以下命令，然后输入用于登录 Azure 门户的 Azure 用户名和密码：
+1. 运行以下命令，然后输入用于登录 Azure 门户的 Azure 用户名和密码：
        
     ```powershell
     Connect-AzureRmAccount
     ```        
 
-3. 如果有多个 Azure 订阅，请运行以下命令，选择要使用的订阅。 请将 **SubscriptionId** 替换为自己的 Azure 订阅的 ID：
+1. 如果有多个 Azure 订阅，请运行以下命令，选择要使用的订阅。 请将 **SubscriptionId** 替换为自己的 Azure 订阅的 ID：
 
     ```powershell
     Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"       
@@ -149,7 +149,7 @@ ms.locfileid: "37082694"
     $resourceGroupName = "ADFTutorialResourceGroup"
     ```
 
-2. 若要创建 Azure 资源组，请运行以下命令： 
+1. 若要创建 Azure 资源组，请运行以下命令： 
 
     ```powershell
     New-AzureRmResourceGroup $resourceGroupName $location
@@ -157,7 +157,7 @@ ms.locfileid: "37082694"
 
     如果该资源组已存在，请勿覆盖它。 为 `$resourceGroupName` 变量分配另一个值，然后再次运行命令。
 
-3. 为数据工厂名称定义一个变量，稍后可在 PowerShell 命令中使用该变量。 名称必须以字母或数字开头，并且只能包含字母、数字和短划线 (-) 字符。
+1. 为数据工厂名称定义一个变量，稍后可在 PowerShell 命令中使用该变量。 名称必须以字母或数字开头，并且只能包含字母、数字和短划线 (-) 字符。
 
     > [!IMPORTANT]
     >  使用全局唯一的名称更新数据工厂名称。 例如 ADFTutorialFactorySP1127。 
@@ -166,13 +166,13 @@ ms.locfileid: "37082694"
     $dataFactoryName = "ADFTutorialFactory"
     ```
 
-4. 定义一个用于数据工厂位置的变量： 
+1. 定义一个用于数据工厂位置的变量： 
 
     ```powershell
     $location = "East US"
     ```  
 
-5. 若要创建数据工厂，请运行以下 `Set-AzureRmDataFactoryV2` cmdlet： 
+1. 若要创建数据工厂，请运行以下 `Set-AzureRmDataFactoryV2` cmdlet： 
     
     ```powershell       
     Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
@@ -199,7 +199,7 @@ ms.locfileid: "37082694"
    $integrationRuntimeName = "ADFTutorialIR"
     ```
 
-2. 创建自我托管的集成运行时。 
+1. 创建自我托管的集成运行时。 
 
     ```powershell
     Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $integrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
@@ -215,7 +215,7 @@ ms.locfileid: "37082694"
     Description       : selfhosted IR description
     ```
 
-3. 若要检索所创建的 Integration Runtime 的状态，请运行以下命令：
+1. 若要检索所创建的 Integration Runtime 的状态，请运行以下命令：
 
     ```powershell
    Get-AzureRmDataFactoryV2IntegrationRuntime -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Status
@@ -240,7 +240,7 @@ ms.locfileid: "37082694"
     State                     : NeedRegistration
     ```
 
-4. 若要检索可将自承载 Integration Runtime 注册到云中数据工厂服务的身份验证密钥，请运行以下命令。 复制其中一个密钥（去除引号），以便注册将在下一步安装到计算机上的自承载 Integration Runtime。 
+1. 若要检索可将自承载 Integration Runtime 注册到云中数据工厂服务的身份验证密钥，请运行以下命令。 复制其中一个密钥（去除引号），以便注册将在下一步安装到计算机上的自承载 Integration Runtime。 
 
     ```powershell
     Get-AzureRmDataFactoryV2IntegrationRuntimeKey -Name $integrationRuntimeName -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName | ConvertTo-Json
@@ -258,21 +258,21 @@ ms.locfileid: "37082694"
 ## <a name="install-the-integration-runtime"></a>安装 Integration Runtime
 1. 将 [Azure 数据工厂 Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) 下载到本地 Windows 计算机上，然后进行安装。 
 
-2. 在“欢迎使用 Microsoft Integration Runtime 安装向导”页上，选择“下一步”。  
+1. 在“欢迎使用 Microsoft Integration Runtime 安装向导”页上，选择“下一步”。  
 
-3. 在“最终用户许可协议”窗口中接受许可协议的条款，然后选择“下一步”。 
+1. 在“最终用户许可协议”窗口中接受许可协议的条款，然后选择“下一步”。 
 
-4. 在“目标文件夹”窗口中，选择“下一步”。 
+1. 在“目标文件夹”窗口中，选择“下一步”。 
 
-5. 在“准备安装 Microsoft Integration Runtime”窗口中选择“安装”。 
+1. 在“准备安装 Microsoft Integration Runtime”窗口中选择“安装”。 
 
-6. 如果看到一条警告消息，指出系统正将计算机配置为在不使用时进入睡眠或休眠模式，请选择“确定”。 
+1. 如果看到一条警告消息，指出系统正将计算机配置为在不使用时进入睡眠或休眠模式，请选择“确定”。 
 
-7. 如果显示“电源选项”窗口，请将其关闭，然后切换到安装窗口。 
+1. 如果显示“电源选项”窗口，请将其关闭，然后切换到安装窗口。 
 
-8. 在“完成 Microsoft Integration Runtime 安装向导”页中选择“完成”。
+1. 在“完成 Microsoft Integration Runtime 安装向导”页中选择“完成”。
 
-9. 在“注册 Integration Runtime (自承载)”窗口中粘贴在上一部分保存的密钥，然后选择“注册”。 
+1. 在“注册 Integration Runtime (自承载)”窗口中粘贴在上一部分保存的密钥，然后选择“注册”。 
 
     ![注册集成运行时](media/tutorial-hybrid-copy-powershell/register-integration-runtime.png)
 
@@ -280,22 +280,22 @@ ms.locfileid: "37082694"
 
     ![已成功注册](media/tutorial-hybrid-copy-powershell/registered-successfully.png)
 
-10. 在“新建 Integration Runtime (自承载)节点”窗口中，选择“下一步”。 
+1. 在“新建 Integration Runtime (自承载)节点”窗口中，选择“下一步”。 
 
     ![“新建 Integration Runtime 节点”窗口](media/tutorial-hybrid-copy-powershell/new-integration-runtime-node-page.png)
 
-11. 在“Intranet 信道”窗口中，选择“跳过”。  
+1. 在“Intranet 信道”窗口中，选择“跳过”。  
     可以选择 TLS/SSL 认证，确保多节点 Integration Runtime 环境中的节点内通信安全。
 
     ![“Intranet 信道”窗口](media/tutorial-hybrid-copy-powershell/intranet-communication-channel-page.png)
 
-12. 在“注册 Integration Runtime (自承载)”窗口中，选择“启动配置管理器”。 
+1. 在“注册 Integration Runtime (自承载)”窗口中，选择“启动配置管理器”。 
 
-13. 将节点连接到云服务后，会显示以下消息：
+1. 将节点连接到云服务后，会显示以下消息：
 
     ![节点已连接](media/tutorial-hybrid-copy-powershell/node-is-connected.png)
 
-14. 执行以下操作，测试到 SQL Server 数据库的连接：
+1. 执行以下操作，测试到 SQL Server 数据库的连接：
 
     ![“诊断”选项卡](media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png)   
 
@@ -344,9 +344,9 @@ ms.locfileid: "37082694"
     }
    ```
 
-2. 在 PowerShell 中切换到 *C:\ADFv2Tutorial* 文件夹。
+1. 在 PowerShell 中切换到 *C:\ADFv2Tutorial* 文件夹。
 
-3. 若要创建链接服务 AzureStorageLinkedService，请运行以下 `Set-AzureRmDataFactoryV2LinkedService` cmdlet： 
+1. 若要创建链接服务 AzureStorageLinkedService，请运行以下 `Set-AzureRmDataFactoryV2LinkedService` cmdlet： 
 
    ```powershell
    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
@@ -424,14 +424,14 @@ ms.locfileid: "37082694"
     > - 保存文件之前，请将 **\<servername>**、**\<databasename>**、**\<username>** 和 **\<password>** 替换为 SQL Server 实例的值。
     > - 如需在用户帐户或服务器名称中使用反斜杠 (\\)，请在其前面加上转义字符 (\\)。 例如，使用 *mydomain\\\\myuser*。 
 
-2. 若要加密敏感数据（用户名、密码等），请运行 `New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential` cmdlet。  
+1. 若要加密敏感数据（用户名、密码等），请运行 `New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential` cmdlet。  
     这种加密可确保使用数据保护应用程序编程接口 (DPAPI) 加密凭据。 加密的凭据存储在自承载 Integration Runtime 节点本地（本地计算机）。 可将输出的有效负载重定向到包含已加密凭据的另一个 JSON 文件（在本例中为 *encryptedLinkedService.json*）。
     
    ```powershell
    New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -IntegrationRuntimeName $integrationRuntimeName -File ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json
    ```
 
-3. 运行以下命令，创建 EncryptedSqlServerLinkedService：
+1. 运行以下命令，创建 EncryptedSqlServerLinkedService：
 
    ```powershell
    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "EncryptedSqlServerLinkedService" -File ".\encryptedSqlServerLinkedService.json"
@@ -476,7 +476,7 @@ ms.locfileid: "37082694"
     }
     ```
 
-2. 若要创建数据集 SqlServerDataset，请运行 `Set-AzureRmDataFactoryV2Dataset` cmdlet。
+1. 若要创建数据集 SqlServerDataset，请运行 `Set-AzureRmDataFactoryV2Dataset` cmdlet。
 
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SqlServerDataset" -File ".\SqlServerDataset.json"
@@ -518,7 +518,7 @@ ms.locfileid: "37082694"
     }
     ```
 
-2. 若要创建数据集 AzureBlobDataset，请运行 `Set-AzureRmDataFactoryV2Dataset` cmdlet。
+1. 若要创建数据集 AzureBlobDataset，请运行 `Set-AzureRmDataFactoryV2Dataset` cmdlet。
 
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureBlobDataset" -File ".\AzureBlobDataset.json"
@@ -573,7 +573,7 @@ ms.locfileid: "37082694"
     }
     ```
 
-2. 若要创建管道 SQLServerToBlobPipeline，请运行 `Set-AzureRmDataFactoryV2Pipeline` cmdlet。
+1. 若要创建管道 SQLServerToBlobPipeline，请运行 `Set-AzureRmDataFactoryV2Pipeline` cmdlet。
 
     ```powershell
     Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SQLServerToBlobPipeline" -File ".\SQLServerToBlobPipeline.json"
@@ -634,7 +634,7 @@ $runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -
     Error             : {errorCode, message, failureType, target}
     ```
 
-2. 可以运行以下命令，获取管道 SQLServerToBlobPipeline 的运行 ID，并查看详细的活动运行结果： 
+1. 可以运行以下命令，获取管道 SQLServerToBlobPipeline 的运行 ID，并查看详细的活动运行结果： 
 
     ```powershell
     Write-Host "Pipeline 'SQLServerToBlobPipeline' run result:" -foregroundcolor "Yellow"
@@ -662,8 +662,8 @@ $runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -
 1. 在 Azure 门户的“adftutorial”容器窗口中选择“刷新”，查看输出文件夹。
 
     ![创建的输出文件夹](media/tutorial-hybrid-copy-powershell/fromonprem-folder.png)
-2. 选择文件夹列表中的 `fromonprem`。 
-3. 确认可以看到名为 `dbo.emp.txt` 的文件。
+1. 选择文件夹列表中的 `fromonprem`。 
+1. 确认可以看到名为 `dbo.emp.txt` 的文件。
 
     ![输出文件](media/tutorial-hybrid-copy-powershell/fromonprem-file.png)
 

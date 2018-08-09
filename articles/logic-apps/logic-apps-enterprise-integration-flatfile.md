@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; divswa
-ms.openlocfilehash: 2f88b9c3d25b1a4771772e32bac8a4f7893831cf
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 4c8ac7aa3ccafaf14c0399860f3576430dd6ba1a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300073"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429992"
 ---
 # <a name="overview-of-enterprise-integration-with-flat-files"></a>企业集成与平面文件概述
 
@@ -29,9 +29,9 @@ ms.locfileid: "35300073"
 按照以下步骤可将平面文件编码连接器添加到逻辑应用。
 
 1. 创建逻辑应用并[将它链接到集成帐户](logic-apps-enterprise-integration-accounts.md "了解如何将集成帐户链接到逻辑应用")。 此帐户包含用于对 XML 数据进行编码的架构。  
-2. 向逻辑应用添加“请求 - 当收到 HTTP 请求时”触发器。  
+1. 向逻辑应用添加“请求 - 当收到 HTTP 请求时”触发器。  
    ![要选择的触发器的屏幕截图](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)    
-3. 添加平面文件编码操作，如下所示：
+1. 添加平面文件编码操作，如下所示：
    
     a. 选择**加号**。
    
@@ -41,13 +41,13 @@ ms.locfileid: "35300073"
    
     d. 从列表中选择“平面文件编码”选项。   
    ![“平面文件编码”选项的屏幕截图](media/logic-apps-enterprise-integration-flatfile/flatfile-2.png)   
-4. 在“平面文件编码”对话框中，选择“内容”文本框。  
+1. 在“平面文件编码”对话框中，选择“内容”文本框。  
    ![“内容”文本框的屏幕截图](media/logic-apps-enterprise-integration-flatfile/flatfile-3.png)  
-5. 选择正文标记作为要编码的内容。 正文标记回填充内容字段。     
+1. 选择正文标记作为要编码的内容。 正文标记回填充内容字段。     
    ![正文标记的屏幕截图](media/logic-apps-enterprise-integration-flatfile/flatfile-4.png)  
-6. 选择“架构名称”列表框，并选择要用于对输入内容进行编码的架构。    
+1. 选择“架构名称”列表框，并选择要用于对输入内容进行编码的架构。    
    ![“架构名称”列表框的屏幕截图](media/logic-apps-enterprise-integration-flatfile/flatfile-5.png)  
-7. 保存工作。   
+1. 保存工作。   
    ![“保存”图标的屏幕截图](media/logic-apps-enterprise-integration-flatfile/flatfile-6.png)  
 
 此时，已完成平面文件编码连接器设置。 在实际应用程序中，可能要将编码数据存储在业务线应用程序中，如 Salesforce。 或者，可以将该编码数据发送给贸易合作伙伴。 可以使用提供的其他连接器中的任何一个，轻松地添加操作以将编码操作的输出发送给 Salesforce 或贸易合作伙伴。
@@ -61,7 +61,7 @@ ms.locfileid: "35300073"
 
 1. 向逻辑应用添加“请求 - 当收到 HTTP 请求时”触发器。  
    ![要选择的触发器的屏幕截图](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)    
-2. 添加平面文件解码操作，如下所示：
+1. 添加平面文件解码操作，如下所示：
    
     a. 选择**加号**。
    
@@ -71,12 +71,12 @@ ms.locfileid: "35300073"
    
     d. 从列表中选择“平面文件解码”选项。   
    ![“平面文件解码”选项的屏幕截图](media/logic-apps-enterprise-integration-flatfile/flatfile-2.png)   
-3. 选择“内容”控件。 这会生成来自前面步骤的内容的列表，这些内容可以用作要解码的内容。 请注意，传入 HTTP 请求的正文可供用作要解码的内容。 还可以直接在“内容”控件中输入要解码的内容。     
-4. 选择正文标记。 请注意，正文标记现在处于“内容”控件中。
-5. 选择要用于对内容进行解码的架构的名称。 以下屏幕截图显示 OrderFile 是所选架构名称。 此架构名称以前已上传到集成帐户中。
+1. 选择“内容”控件。 这会生成来自前面步骤的内容的列表，这些内容可以用作要解码的内容。 请注意，传入 HTTP 请求的正文可供用作要解码的内容。 还可以直接在“内容”控件中输入要解码的内容。     
+1. 选择正文标记。 请注意，正文标记现在处于“内容”控件中。
+1. 选择要用于对内容进行解码的架构的名称。 以下屏幕截图显示 OrderFile 是所选架构名称。 此架构名称以前已上传到集成帐户中。
    
    ![“平面文件解码”对话框的屏幕截图](media/logic-apps-enterprise-integration-flatfile/flatfile-decode-1.png)    
-6. 保存工作。  
+1. 保存工作。  
    ![“保存”图标的屏幕截图](media/logic-apps-enterprise-integration-flatfile/flatfile-6.png)    
 
 此时，已完成平面文件解码连接器设置。 在实际应用程序中，可能要将解码数据存储在业务线应用程序中，如 Salesforce。 可以轻松地添加操作以将解码操作的输出发送给 Salesforce。

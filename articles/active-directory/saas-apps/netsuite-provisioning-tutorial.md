@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: c98781112db7cd91bdeebdaab461afd1f0ec3fbc
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 3dac2b1c90f6555abc71a52d75f8d58958d978c7
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226616"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39449462"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>教程：为 Netsuite 配置自动用户预配
 
@@ -27,7 +27,7 @@ ms.locfileid: "36226616"
 
 ## <a name="prerequisites"></a>先决条件
 
-在本教程中概述的方案假定您已具有以下各项：
+在本教程中概述的方案假定已有以下各项：
 
 *   Azure Active Directory 租户。
 *   已启用 Netsuite 单一登录的订阅。
@@ -60,33 +60,33 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”部分。
 
-2. 如果已为 Netsuite 配置单一登录，请使用搜索字段搜索 Netsuite 实例。 否则，请选择“添加”并在应用程序库中搜索“Netsuite”。 从搜索结果中选择 Netsuite，并将其添加到应用程序列表。
+1. 如果已为 Netsuite 配置单一登录，请使用搜索字段搜索 Netsuite 实例。 否则，请选择“添加”并在应用程序库中搜索“Netsuite”。 从搜索结果中选择 Netsuite，并将其添加到应用程序列表。
 
-3. 选择 Netsuite 实例，并选择“预配”选项卡。
+1. 选择 Netsuite 实例，并选择“预配”选项卡。
 
-4. 将“预配模式”设置为“自动”。 
+1. 将“预配模式”设置为“自动”。 
 
     ![预配](./media/netsuite-provisioning-tutorial/provisioning.png)
 
-5. 在“管理员凭据”部分中，提供以下配置设置：
+1. 在“管理员凭据”部分中，提供以下配置设置：
    
     a. 在“管理员用户名”文本框中，键入在 Netsuite.com 中已分配“系统管理员”配置文件的 Netsuite 帐户名称。
    
     b. 在“管理员密码”文本框中，键入此帐户的密码。
       
-6. 在 Azure 门户中，单击“测试连接”，确保 Azure AD 可以连接到 Netsuite 应用。
+1. 在 Azure 门户中，单击“测试连接”，确保 Azure AD 可以连接到 Netsuite 应用。
 
-7. 在“通知电子邮件”字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中复选框。
+1. 在“通知电子邮件”字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中复选框。
 
-8. 单击“保存”。
+1. 单击“保存”。
 
-9. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Netsuite”。
+1. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Netsuite”。
 
-10. 在“属性映射”部分，查看从 Azure AD 同步到 Netsuite 的用户属性。 请注意，选为“匹配”属性的属性将用于匹配 Netsuite 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
+1. 在“属性映射”部分，查看从 Azure AD 同步到 Netsuite 的用户属性。 请注意，选为“匹配”属性的属性将用于匹配 Netsuite 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
-11. 要为 Netsuite 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
+1. 要为 Netsuite 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
 
-12. 单击“保存”。
+1. 单击“保存”。
 
 这会开始将“用户和组”部分中分配的任何用户和/或组初始同步到 Netsuite。 请注意，初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 Netsuite 应用执行的所有操作。
 

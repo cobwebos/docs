@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 49fd4a9407bd46963037b0f7078cfe257d841627
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 46b8aead2a217ab827731a6636d3527fd99ea753
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100256"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432100"
 ---
 # <a name="run-applications-in-kubernetes"></a>在 Kubernetes 中运行应用程序
 
@@ -43,7 +43,7 @@ ms.locfileid: "37100256"
 
 在本教程中，Azure 容器注册表 (ACR) 用于存储容器映像。 运行应用程序前，需要先在 Kubernetes 清单文件中更新 ACR 登录服务器名称。
 
-使用 [az acr list](/cli/azure/acr#az_acr_list) 命令获取 ACR 登录服务器名称。
+使用 [az acr list](/cli/azure/acr#az-acr-list) 命令获取 ACR 登录服务器名称。
 
 ```azurecli-interactive
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table

@@ -3,18 +3,17 @@ title: Azure 存储帐户选项 | Microsoft Docs
 description: 了解使用 Azure 存储的选项。
 services: storage
 author: xyh1
-manager: jwillis
 ms.service: storage
-ms.workload: storage
 ms.topic: get-started-article
 ms.date: 07/14/2018
 ms.author: hux
-ms.openlocfilehash: 9ea4a6f0d1ff6e78d97fbc64b8a23406172ebf36
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.component: common
+ms.openlocfilehash: ff1d4e61b21eb4ffbfb5e43a66acb2a5a1fbf16f
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072408"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526596"
 ---
 # <a name="azure-storage-account-options"></a>Azure 存储帐户选项
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: bca5d5111f5cfc3bcf2720af855f44d1928bcfd6
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6828617e0ae61a3784e4db3d1c2ecf4ce9862ce2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221010"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39449460"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>教程：Azure Active Directory 与 IBM Kenexa Survey Enterprise 集成
 
@@ -63,19 +63,19 @@ ms.locfileid: "36221010"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 选择“企业应用程序”，然后选择“所有应用程序”。
+1. 选择“企业应用程序”，然后选择“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加一个应用程序，请点击“新建应用程序”按钮。
+1. 若要添加一个应用程序，请点击“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中，键入“IBM Kenexa Survey Enterprise”。
+1. 在搜索框中，键入“IBM Kenexa Survey Enterprise”。
 
     ![创建 Azure AD 测试用户](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_search.png)
 
-5. 在结果列表中，选择“IBM Kenexa Survey Enterprise”，并单击“添加”按钮以添加该应用程序。
+1. 在结果列表中，选择“IBM Kenexa Survey Enterprise”，并单击“添加”按钮以添加该应用程序。
 
     ![结果列表中的 IBM Kenexa Survey Enterprise](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_addfromgallery.png)
 
@@ -96,11 +96,11 @@ ms.locfileid: "36221010"
 
     ![“IBM Kenexa Survey Enterprise 配置”单一登录链接][4]
 
-2. 在“单一登录”对话框中的“模式”对话框内，选择“基于 SAML 的登录”启用 SSO。
+1. 在“单一登录”对话框中的“模式”对话框内，选择“基于 SAML 的登录”启用 SSO。
  
     ![“单一登录”对话框](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_samlbase.png)
 
-3. 在“IBM Kenexa Survey Enterprise 域和 URL”部分，执行以下步骤：
+1. 在“IBM Kenexa Survey Enterprise 域和 URL”部分，执行以下步骤：
 
     ![“IBM Kenexa Survey Enterprise 域和 URL”单一登录信息](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_url.png)
 
@@ -111,7 +111,7 @@ ms.locfileid: "36221010"
     > [!NOTE] 
     > 上面的值不是实际值。 使用实际标识符和回复 URL 更新它们。 若要获得实际值，请联系 [IBM Kenexa Survey Enterprise 支持团队](https://www.ibm.com/support/home/?lnk=fcw)。
 
-4. 在“SAML 签名证书”下面，单击“证书(Base64)”，然后将证书文件保存到计算机。
+1. 在“SAML 签名证书”下面，单击“证书(Base64)”，然后将证书文件保存到计算机。
 
     ![证书 (Base64) 下载链接](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_certificate.png) 
 
@@ -121,19 +121,19 @@ ms.locfileid: "36221010"
     
     ![“用户属性”对话框](./media/kenexasurvey-tutorial/tutorial_attribute.png) 
 
-5. 单击“ **保存**”。
+1. 单击“ **保存**”。
 
     ![配置单一登录“保存”按钮](./media/kenexasurvey-tutorial/tutorial_general_400.png)
 
-6. 若要打开“配置登录”窗口，请在“IBM Kenexa Survey Enterprise 配置”下点击“配置 IBM Kenexa Survey Enterprise”。 
+1. 若要打开“配置登录”窗口，请在“IBM Kenexa Survey Enterprise 配置”下点击“配置 IBM Kenexa Survey Enterprise”。 
  
     ![“配置IBM Kenexa Survey Enterprise”链接](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_configure.png)
 
-7. 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”的值。
+1. 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”的值。
 
-8. “配置登录”窗口中，在“快速参考”下方，复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”的值。
+1. “配置登录”窗口中，在“快速参考”下方，复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”的值。
 
-9. 若要在“IBM Kenexa Survey Enterprise”侧配置 SSO，请将已下载的“证书 (Base64)”、“登出 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”的值发送给 [IBM Kenexa Survey Enterprise 支持团队](https://www.ibm.com/support/home/?lnk=fcw)。
+1. 若要在“IBM Kenexa Survey Enterprise”侧配置 SSO，请将已下载的“证书 (Base64)”、“登出 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”的值发送给 [IBM Kenexa Survey Enterprise 支持团队](https://www.ibm.com/support/home/?lnk=fcw)。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中参考这些说明的简明版本了。 从“Active Directory” > “企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档](https://go.microsoft.com/fwlink/?linkid=845985)。
@@ -148,15 +148,15 @@ ms.locfileid: "36221010"
 
     ![“Azure Active Directory”按钮](./media/kenexasurvey-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
     
     ![“用户和组”以及“所有用户”链接](./media/kenexasurvey-tutorial/create_aaduser_02.png) 
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
  
     ![“添加”按钮](./media/kenexasurvey-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
  
     ![“用户”对话框](./media/kenexasurvey-tutorial/create_aaduser_04.png) 
 
@@ -186,23 +186,23 @@ ms.locfileid: "36221010"
 
     ![“企业应用程序”和“所有应用程序”链接][201] 
 
-2. 在应用程序列表中，选择“IBM Kenexa Survey Enterprise”。
+1. 在应用程序列表中，选择“IBM Kenexa Survey Enterprise”。
 
     ![应用程序列表中的“IBM Kenexa Survey Enterprise”链接](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_app.png) 
 
-3. 在左窗格中，单击“用户和组”。
+1. 在左窗格中，单击“用户和组”。
 
     ![“用户和组”链接][202] 
 
-4. 单击“添加”按钮，并在“添加分配”窗格中选择“用户和组”。
+1. 单击“添加”按钮，并在“添加分配”窗格中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框中的“用户”列表内，选择“Britta Simon”。
+1. 在“用户和组”对话框中的“用户”列表内，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中，单击“选择”按钮。
+1. 在“用户和组”对话框中，单击“选择”按钮。
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/27/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d2445713aa5d6a839950ca0fe9567133c06d1ffa
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 554991c7c0f11a095a11ae24dbb693a1a3ba50fd
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062235"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430114"
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复 
 
@@ -169,12 +169,12 @@ Azure 上的 SAP HANA（大型实例）为 SAP HANA 数据卷和日志卷使用�
 
 若要设置 HANA 大型实例的存储快照，请遵循以下步骤：
 1. 确保在 HANA 大型实例服务器上的 Linux 操作系统中安装 Perl。
-2. 修改 /etc/ssh/ssh\_config，添加代码行 _MACs hmac-sha1_。
-3. 在运行的每个 SAP HANA 实例的主节点上创建一个 SAP HANA 备份用户帐户（如果适用）。
-4. 在所有 SAP HANA 大型实例服务器上安装 SAP HANA HDB 客户端。
-5. 在每个区域的第一台 SAP HANA 大型实例服务器上，创建一个公钥用于访问对快照创建操作进行控制的底层存储基础结构。
-6. 将脚本和配置文件从 [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts) 复制到 SAP HANA 安装中的 **hdbsql** 位置。
-7. 必要时，根据相应的客户规范修改 *HANABackupDetails.txt* 文件。
+1. 修改 /etc/ssh/ssh\_config，添加代码行 _MACs hmac-sha1_。
+1. 在运行的每个 SAP HANA 实例的主节点上创建一个 SAP HANA 备份用户帐户（如果适用）。
+1. 在所有 SAP HANA 大型实例服务器上安装 SAP HANA HDB 客户端。
+1. 在每个区域的第一台 SAP HANA 大型实例服务器上，创建一个公钥用于访问对快照创建操作进行控制的底层存储基础结构。
+1. 将脚本和配置文件从 [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts) 复制到 SAP HANA 安装中的 **hdbsql** 位置。
+1. 必要时，根据相应的客户规范修改 *HANABackupDetails.txt* 文件。
 
 从 [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts) 获取最新的快照脚本和文档。 
 
@@ -384,7 +384,7 @@ testHANAConnection.pl
 
    移交 HANA 大型实例单元时，已提供存储用户名和存储 IP 地址。
 
-2. 运行测试脚本：
+1. 运行测试脚本：
    ```
     ./testStorageSnapshotConnection.pl
    ```
@@ -488,8 +488,8 @@ For snapshot of the volume storing the boot LUN
 执行脚本 `azure_hana_backup.pl` 会在以下三个阶段创建存储快照：
 
 1. 执行 SAP HANA 快照
-2. 执行存储快照
-3. 删除已创建的 SAP HANA 快照，然后再执行存储快照
+1. 执行存储快照
+1. 删除已创建的 SAP HANA 快照，然后再执行存储快照
 
 若要执行该脚本，请从脚本复制到的 HDB 可执行文件文件夹调用该脚本。 
 
@@ -701,44 +701,44 @@ HANA Backup ID:
 
 1. 确定要还原的快照。 除非另有说明，否则只能还原 hana/data 卷。 
 
-2. 关闭 HANA 实例。
+1. 关闭 HANA 实例。
 
  ![关闭 HANA 实例](./media/hana-overview-high-availability-disaster-recovery/image7-shutdown-hana.png)
 
-3. 卸载每个 HANA 数据库节点上的数据卷。 如果仍将数据卷载入操作系统，快照还原会失败。
+1. 卸载每个 HANA 数据库节点上的数据卷。 如果仍将数据卷载入操作系统，快照还原会失败。
  ![卸载每个 HANA 数据库节点上的数据卷](./media/hana-overview-high-availability-disaster-recovery/image8-unmount-data-volumes.png)
 
-4. 提出 Azure 支持请求，并包含有关如何还原特定快照的说明。
+1. 提出 Azure 支持请求，并包含有关如何还原特定快照的说明。
 
  - 还原期间：Azure 上的 SAP HANA 服务管理部门可能要求用户参加电话会议以进行协调、验证并确认还原的是正确的存储快照。 
 
  - 还原后：Azure 上的 SAP HANA 服务管理部门会告知存储快照已还原。
 
-5. 完成还原过程后，请重新装载所有数据卷。
+1. 完成还原过程后，请重新装载所有数据卷。
 
  ![重新装载所有数据卷](./media/hana-overview-high-availability-disaster-recovery/image9-remount-data-volumes.png)
 
-6. 在 SAP HANA Studio 中选择恢复选项（如果在通过 SAP HANA Studio 重新连接到 HANA DB 时未自动显示）。 以下示例演示如何还原到最后一个 HANA 快照。 存储快照中嵌入了一个 HANA 快照。 如果要还原到最近的存储快照，该快照应是最近的 HANA 快照。 （如果要还原到较旧的存储快照，需要根据存储快照的创建时间找到 HANA 快照。）
+1. 在 SAP HANA Studio 中选择恢复选项（如果在通过 SAP HANA Studio 重新连接到 HANA DB 时未自动显示）。 以下示例演示如何还原到最后一个 HANA 快照。 存储快照中嵌入了一个 HANA 快照。 如果要还原到最近的存储快照，该快照应是最近的 HANA 快照。 （如果要还原到较旧的存储快照，需要根据存储快照的创建时间找到 HANA 快照。）
 
  ![在 SAP HANA Studio 中选择恢复选项](./media/hana-overview-high-availability-disaster-recovery/image10-recover-options-a.png)
 
-7. 选择“将数据库恢复到特定的数据备份或存储快照”。
+1. 选择“将数据库恢复到特定的数据备份或存储快照”。
 
  ![“指定恢复类型”窗口](./media/hana-overview-high-availability-disaster-recovery/image11-recover-options-b.png)
 
-8. 选择“指定不包含目录的备份”。
+1. 选择“指定不包含目录的备份”。
 
  ![“指定备份位置”窗口](./media/hana-overview-high-availability-disaster-recovery/image12-recover-options-c.png)
 
-9. 在“目标类型”列表中，选择“快照”。
+1. 在“目标类型”列表中，选择“快照”。
 
  ![“指定要恢复的备份”窗口](./media/hana-overview-high-availability-disaster-recovery/image13-recover-options-d.png)
 
-10. 选择“完成”启动恢复过程。
+1. 选择“完成”启动恢复过程。
 
  ![选择“完成”启动恢复过程](./media/hana-overview-high-availability-disaster-recovery/image14-recover-options-e.png)
 
-11. HANA 数据库已还原并恢复到存储快照包含的 HANA 快照。
+1. HANA 数据库已还原并恢复到存储快照包含的 HANA 快照。
 
  ![HANA 数据库已还原并恢复到 HANA 快照](./media/hana-overview-high-availability-disaster-recovery/image15-recover-options-f.png)
 
@@ -751,23 +751,23 @@ HANA Backup ID:
 
 1. 完成[恢复到最近的 HANA 快照](#recovering-to-the-most-recent-hana-snapshot)中的步骤 1-6。
 
-2. 选择“将数据库恢复到其最近状态”。
+1. 选择“将数据库恢复到其最近状态”。
 
  ![选择“将数据库恢复到其最近状态”](./media/hana-overview-high-availability-disaster-recovery/image16-recover-database-a.png)
 
-3. 指定最新 HANA 日志备份的位置。 该位置需要包含从创建 HANA 快照开始，到处于最新状态为止的所有 HANA 事务日志备份。
+1. 指定最新 HANA 日志备份的位置。 该位置需要包含从创建 HANA 快照开始，到处于最新状态为止的所有 HANA 事务日志备份。
 
  ![指定最新 HANA 日志备份的位置](./media/hana-overview-high-availability-disaster-recovery/image17-recover-database-b.png)
 
-4. 选择一个备份用作恢复数据库的基础。 在本示例中，屏幕截图中的 HANA 快照为存储快照中包含的 HANA 快照。 
+1. 选择一个备份用作恢复数据库的基础。 在本示例中，屏幕截图中的 HANA 快照为存储快照中包含的 HANA 快照。 
 
  ![选择一个备份用作恢复数据库的基础](./media/hana-overview-high-availability-disaster-recovery/image18-recover-database-c.png)
 
-5. 如果增量备份在创建 HANA 快照之后、处于最近状态之前不存在，请清除“使用增量备份”复选框。
+1. 如果增量备份在创建 HANA 快照之后、处于最近状态之前不存在，请清除“使用增量备份”复选框。
 
  ![如果不存在增量备份，则清除“使用增量备份”复选框](./media/hana-overview-high-availability-disaster-recovery/image19-recover-database-d.png)
 
-6. 在摘要屏幕上选择“完成”启动还原过程。
+1. 在摘要屏幕上选择“完成”启动还原过程。
 
  ![在摘要屏幕上单击“完成”](./media/hana-overview-high-availability-disaster-recovery/image20-recover-database-e.png)
 
@@ -775,21 +775,21 @@ HANA Backup ID:
 若要恢复到 HANA 快照（包含在存储快照中）与晚于 HANA 快照时间点恢复之间的时间点，请执行以下步骤：
 
 1. 确保提供从创建 HANA 快照开始，到要恢复到的时间为止的所有事务日志备份。
-2. 开始执行[恢复到最新状态](#recovering-to-the-most-recent-state)下的过程。
-3. 执行步骤 2 时，请在“指定恢复类型”窗口中选择“将数据库恢复到以下时间点”，指定时间点。 
-4. 完成步骤 3-6。
+1. 开始执行[恢复到最新状态](#recovering-to-the-most-recent-state)下的过程。
+1. 执行步骤 2 时，请在“指定恢复类型”窗口中选择“将数据库恢复到以下时间点”，指定时间点。 
+1. 完成步骤 3-6。
 
 ### <a name="monitor-the-execution-of-snapshots"></a>监视快照执行
 
 使用 HANA 大型实例的存储快照时，还需要监视这些快照的执行。 执行存储快照的脚本会将输出写入某个文件，并将其保存在 Perl 脚本所在的同一位置。 会针对每个存储快照单独写入一个文件。 每个文件的输出显示了快照脚本执行的各个阶段：
 
 1. 查找需要创建快照的卷。
-2. 查找基于这些卷创建的快照。
-3. 根据指定的快照数量删除最终的现有快照。
-4. 创建 SAP HANA 快照
-5. 基于卷创建存储快照。
-6. 删除 SAP HANA 快照。
-7. 将最新的快照重命名为 **.0**。
+1. 查找基于这些卷创建的快照。
+1. 根据指定的快照数量删除最终的现有快照。
+1. 创建 SAP HANA 快照
+1. 基于卷创建存储快照。
+1. 删除 SAP HANA 快照。
+1. 将最新的快照重命名为 **.0**。
 
 脚本 cab 的最重要部分标识为此部分：
 ```
@@ -884,10 +884,10 @@ HANA 大型实例提供不同 Azure 区域中 HANA 大型实例戳之间的灾�
 若要在灾难恢复方案中实现更好的 RPO，可将 Azure 上的 SAP HANA（大型实例）中的 HANA 事务日志备份复制到其他 Azure 区域。 若要进一步降低 RPO，请执行以下步骤：
 
 1. 以尽可能高的频率将 HANA 事务日志备份到 /hana/logbackups。
-2. 使用 rsync 将事务日志备份复制到 NFS 共享托管的 Azure 虚拟机上。 这些 VM 位于 Azure 生产区域和 DR 区域中的 Azure 虚拟网络中。 需要将这两个 Azure 虚拟网络都连接到线路，该线路将 HANA 生产大型实例连接到 Azure。 请参阅[使用 HANA 大型实例实现灾难恢复的网络注意事项](#Network-considerations-for-disaster recovery-with-HANA-Large-Instances)部分中的插图。 
-3. 在该区域中附加到 NFS 导出存储的 VM 上保留事务日志备份。
-4. 在灾难故障转移方案中，使用在灾难恢复站点中 NFS 共享上较新创建的事务日志备份去补充在 /hana/logbackups 卷上找到的事务日志备份。 
-5. 对可保存到 DR 区域的最新备份执行事务日志备份还原。
+1. 使用 rsync 将事务日志备份复制到 NFS 共享托管的 Azure 虚拟机上。 这些 VM 位于 Azure 生产区域和 DR 区域中的 Azure 虚拟网络中。 需要将这两个 Azure 虚拟网络都连接到线路，该线路将 HANA 生产大型实例连接到 Azure。 请参阅[使用 HANA 大型实例实现灾难恢复的网络注意事项](#Network-considerations-for-disaster recovery-with-HANA-Large-Instances)部分中的插图。 
+1. 在该区域中附加到 NFS 导出存储的 VM 上保留事务日志备份。
+1. 在灾难故障转移方案中，使用在灾难恢复站点中 NFS 共享上较新创建的事务日志备份去补充在 /hana/logbackups 卷上找到的事务日志备份。 
+1. 对可保存到 DR 区域的最新备份执行事务日志备份还原。
 
 当 HANA 大型实例操作确认正在设置复制关系并启动执行存储快照备份时，即表示已开始复制数据。
 
@@ -909,15 +909,15 @@ HANA 大型实例提供不同 Azure 区域中 HANA 大型实例戳之间的灾�
 如需还原到最新的复制存储快照，请执行以下步骤： 
 
 1. 关闭在 HANA 大型实例的灾难恢复单元上运行的 HANA 非生产实例。 这是因为，已预安装 HANA 休眠生产实例。
-2. 确保未运行任何 SAP HANA 进程。 使用以下命令执行此项检查：`/usr/sap/hostctrl/exe/sapcontrol –nr <HANA instance number> - function GetProcessList`。 输出应显示 **hdbdaemon** 进程处于停止状态且没有其他 HANA 进程处于运行或已开始状态。
-3. 在 DR 站点 HANA 大型实例单元上, 执行脚本 *azure_hana_dr_failover.pl*。 脚本要求还原 SAP HANA SID。 根据请求键入一个或唯一一个已复制并保存在 DR 站点中的 HANA 大型实例单元上 *HANABackupCustomerDetails.txt* 文件中的 SAP HANA SID。 
+1. 确保未运行任何 SAP HANA 进程。 使用以下命令执行此项检查：`/usr/sap/hostctrl/exe/sapcontrol –nr <HANA instance number> - function GetProcessList`。 输出应显示 **hdbdaemon** 进程处于停止状态且没有其他 HANA 进程处于运行或已开始状态。
+1. 在 DR 站点 HANA 大型实例单元上, 执行脚本 *azure_hana_dr_failover.pl*。 脚本要求还原 SAP HANA SID。 根据请求键入一个或唯一一个已复制并保存在 DR 站点中的 HANA 大型实例单元上 *HANABackupCustomerDetails.txt* 文件中的 SAP HANA SID。 
 
       如果想要故障转移多个 SAP HANA 实例，则需要多次运行脚本。 根据请求键入想要故障转移和还原的 SAP HANA SID。 完成后，脚本会显示添加到 HANA 大型实例单元的卷的装载点列表。 此列表还包括已还原的 DR 卷。
 
-4. 使用 Linux 操作系统命令，将已还原的灾难恢复卷装载到灾难恢复站点中的 HANA 大型实例单元。 
-6. 启动处于休眠状态的 SAP HANA 生产实例。
-7. 如果已选择复制事务日志备份以缩短 RPO 时间，则需要将这些事务日志备份合并到新装载的 DR /hana/logbackups 目录。 不要覆盖现有备份。 复制尚未使用最新存储快照复制内容复制的较新备份。
-8. 还可以还原已复制到 DR Azure 区域中 /hana/shared/PRD 卷的快照中的单个文件。 
+1. 使用 Linux 操作系统命令，将已还原的灾难恢复卷装载到灾难恢复站点中的 HANA 大型实例单元。 
+1. 启动处于休眠状态的 SAP HANA 生产实例。
+1. 如果已选择复制事务日志备份以缩短 RPO 时间，则需要将这些事务日志备份合并到新装载的 DR /hana/logbackups 目录。 不要覆盖现有备份。 复制尚未使用最新存储快照复制内容复制的较新备份。
+1. 还可以还原已复制到 DR Azure 区域中 /hana/shared/PRD 卷的快照中的单个文件。 
 
 也可测试 DR 故障转移，而不会影响实际的复制关系。 若要执行测试故障转移，请执行上文列出的步骤 1 和 2，然后继续执行以下步骤 3。
 
@@ -935,10 +935,10 @@ HANA 大型实例提供不同 Azure 区域中 HANA 大型实例戳之间的灾�
    >[!NOTE]
    >如果需要故障转移到 DR 站点，以修复一些几小时前删除的数据，并因此需要将 DR 卷设置为早于最新快照的状态，此过程适用。 
 
-4. 关闭在 HANA 大型实例的灾难恢复单元上运行的 HANA 非生产实例。 这是因为，已预安装 HANA 休眠生产实例。
-5. 确保未运行任何 SAP HANA 进程。 使用以下命令执行此项检查：`/usr/sap/hostctrl/exe/sapcontrol –nr <HANA instance number> - function GetProcessList`。 输出应显示 **hdbdaemon** 进程处于停止状态且没有其他 HANA 进程处于运行或已开始状态。
-6. 确定希望将灾难恢复站点还原到的快照名称或 SAP HANA 备份 ID。 在真实的灾难恢复事例中，此快照通常是最新的快照。 如果需要恢复丢失的数据，请选择更早的快照。
-7. 通过高优先级支持请求联系 Azure 支持部门。 请求在 DR 站点上还原该快照（快照的名称和日期）或请求提供 HANA 备份 ID。 默认情况下，运营团队只会还原 /hana/data 卷。 如果还想要还原 / hana/logbackups 卷，需要特意提出此要求。 不要还原 /hana/shared 卷。 应在重新装载 PRD 的 /hana/shared 卷之后选择特定的文件，例如，**.snapshot** 及其子目录中的 global.ini。 
+1. 关闭在 HANA 大型实例的灾难恢复单元上运行的 HANA 非生产实例。 这是因为，已预安装 HANA 休眠生产实例。
+1. 确保未运行任何 SAP HANA 进程。 使用以下命令执行此项检查：`/usr/sap/hostctrl/exe/sapcontrol –nr <HANA instance number> - function GetProcessList`。 输出应显示 **hdbdaemon** 进程处于停止状态且没有其他 HANA 进程处于运行或已开始状态。
+1. 确定希望将灾难恢复站点还原到的快照名称或 SAP HANA 备份 ID。 在真实的灾难恢复事例中，此快照通常是最新的快照。 如果需要恢复丢失的数据，请选择更早的快照。
+1. 通过高优先级支持请求联系 Azure 支持部门。 请求在 DR 站点上还原该快照（快照的名称和日期）或请求提供 HANA 备份 ID。 默认情况下，运营团队只会还原 /hana/data 卷。 如果还想要还原 / hana/logbackups 卷，需要特意提出此要求。 不要还原 /hana/shared 卷。 应在重新装载 PRD 的 /hana/shared 卷之后选择特定的文件，例如，**.snapshot** 及其子目录中的 global.ini。 
 
    在操作端，将执行以下步骤：
 
@@ -948,26 +948,26 @@ HANA 大型实例提供不同 Azure 区域中 HANA 大型实例戳之间的灾�
    
    c. 还原后，灾难恢复卷可装载到灾难恢复区域中的 HANA 大型实例单元。
       
-8. 将灾难恢复卷装载到灾难恢复站点中的 HANA 大型实例单元。 
-9. 启动处于休眠状态的 SAP HANA 生产实例。
-10. 如果已选择复制事务日志备份以缩短 RPO 时间，则需要将这些事务日志备份合并到新装载的 DR /hana/logbackups 目录。 不要覆盖现有备份。 复制尚未使用最新存储快照复制内容复制的较新备份。
-11. 还可以还原已复制到 DR Azure 区域中 /hana/shared/PRD 卷的快照中的单个文件。
+1. 将灾难恢复卷装载到灾难恢复站点中的 HANA 大型实例单元。 
+1. 启动处于休眠状态的 SAP HANA 生产实例。
+1. 如果已选择复制事务日志备份以缩短 RPO 时间，则需要将这些事务日志备份合并到新装载的 DR /hana/logbackups 目录。 不要覆盖现有备份。 复制尚未使用最新存储快照复制内容复制的较新备份。
+1. 还可以还原已复制到 DR Azure 区域中 /hana/shared/PRD 卷的快照中的单个文件。
 
 接下来的一系列步骤包括基于还原的存储快照和可用的事务日志备份恢复 SAP HANA 生产实例。
 
 1. 使用 SAP HANA Studio 将备份位置更改为 **/hana/logbackups**。
    ![更改 DR 恢复的备份位置](./media/hana-overview-high-availability-disaster-recovery/change_backup_location_dr1.png)
 
-2. SAP HANA 会逐个扫描备份文件位置并建议要还原到的最新事务日志备份。 扫描需要花费几分钟时间，扫描完成后会显示如下所示的屏幕：![DR 恢复的事务日志备份列表](./media/hana-overview-high-availability-disaster-recovery/backup_list_dr2.PNG)
+1. SAP HANA 会逐个扫描备份文件位置并建议要还原到的最新事务日志备份。 扫描需要花费几分钟时间，扫描完成后会显示如下所示的屏幕：![DR 恢复的事务日志备份列表](./media/hana-overview-high-availability-disaster-recovery/backup_list_dr2.PNG)
 
-3. 调整一些默认设置：
+1. 调整一些默认设置：
 
       - 清除“使用增量备份”。
       - 选择“初始化日志区域”。
 
    ![设置“初始化日志区域”](./media/hana-overview-high-availability-disaster-recovery/initialize_log_dr3.PNG)
 
-4. 选择“完成”。
+1. 选择“完成”。
 
    ![完成 DR 还原](./media/hana-overview-high-availability-disaster-recovery/finish_dr4.PNG)
 
@@ -984,11 +984,11 @@ HANA 大型实例提供不同 Azure 区域中 HANA 大型实例戳之间的灾�
 步骤顺序如下：
 
 1. Azure 上的 SAP HANA 运营团队获取从灾难恢复存储卷同步生产存储卷（现表示生产状态）的触发指令。 在此状态中，生产站点中的 HANA 大型实例单元处于关闭状态。
-2. Azure 上的 SAP HANA 运营团队监视复制并确保在通知客户之前实现跟进。
-3. 需要关闭在灾难恢复站点使用 HANA 生产实例的应用程序。 然后执行 HANA 事务日志备份。 接下来，停止灾难恢复站点中 HANA 大型实例单元上运行的 HANA 实例。
-4. 关闭灾难恢复站点中 HANA 大型实例单元上运行的 HANA 实例后，运营团队再次手动同步磁盘卷。
-5. Azure 上的 SAP HANA 运营团队再次启动生产站点中的 HANA 大型实例单元，并将其交接于你。 确保在 HANA 大型实例单元启动时，SAP HANA 实例处于关闭状态。
-6. 执行相同的数据库还原步骤，与之前故障转移到灾难恢复站点时一样。
+1. Azure 上的 SAP HANA 运营团队监视复制并确保在通知客户之前实现跟进。
+1. 需要关闭在灾难恢复站点使用 HANA 生产实例的应用程序。 然后执行 HANA 事务日志备份。 接下来，停止灾难恢复站点中 HANA 大型实例单元上运行的 HANA 实例。
+1. 关闭灾难恢复站点中 HANA 大型实例单元上运行的 HANA 实例后，运营团队再次手动同步磁盘卷。
+1. Azure 上的 SAP HANA 运营团队再次启动生产站点中的 HANA 大型实例单元，并将其交接于你。 确保在 HANA 大型实例单元启动时，SAP HANA 实例处于关闭状态。
+1. 执行相同的数据库还原步骤，与之前故障转移到灾难恢复站点时一样。
 
 ### <a name="monitor-disaster-recovery-replication"></a>监视灾难恢复复制
 

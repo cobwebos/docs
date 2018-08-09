@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: a4ea4272b11c167d95840b45b39634abea8c1cea
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b2d5acfcb722845d7f346668597c073319f273f0
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39051592"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39448778"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-recognize"></a>教程：Azure Active Directory 与 Recognize 集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "39051592"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Recognize
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-recognize-from-the-gallery"></a>从库中添加 Recognize
 要配置 Recognize 与 Azure AD 的集成，需要从库中将 Recognize 添加到托管 SaaS 应用列表。
@@ -63,19 +63,19 @@ ms.locfileid: "39051592"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入“Recognize”。
+1. 在搜索框中，键入“Recognize”。
 
     ![创建 Azure AD 测试用户](./media/recognize-tutorial/tutorial_recognize_search.png)
 
-5. 在结果面板中，选择“Recognize”，并单击“添加”按钮添加该应用程序。
+1. 在结果面板中，选择“Recognize”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/recognize-tutorial/tutorial_recognize_addfromgallery.png)
 
@@ -89,10 +89,10 @@ ms.locfileid: "39051592"
 若要配置和测试 Recognize 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. [创建 Recognize 测试用户](#creating-a-recognize-test-user) - 在 Recognize 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 身份。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. [创建 Recognize 测试用户](#creating-a-recognize-test-user) - 在 Recognize 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 身份。
+1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -104,48 +104,48 @@ ms.locfileid: "39051592"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![配置单一登录](./media/recognize-tutorial/tutorial_recognize_samlbase.png)
 
-3. 在“Recognize 域和 URL”部分中，执行以下步骤：
+1. 在“Recognize 域和 URL”部分中，执行以下步骤：
 
     ![配置单一登录](./media/recognize-tutorial/tutorial_recognize_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://recognizeapp.com/<your-domain>/saml/sso`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://recognizeapp.com/<your-domain>/saml/sso`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://recognizeapp.com/<your-domain>`
 
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Recognize 客户端支持团队](mailto:support@recognizeapp.com)获取登录 URL，可通过从 SSO 设置部分打开服务提供程序元数据 URL 获取标识符值，本教程稍后将对此进行介绍。 。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/recognize-tutorial/tutorial_recognize_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录](./media/recognize-tutorial/tutorial_general_400.png)
 
-6. 在“Recognize 配置”部分，单击“配置 Recognize”，打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+1. 在“Recognize 配置”部分，单击“配置 Recognize”，打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
 
     ![配置单一登录](./media/recognize-tutorial/tutorial_recognize_configure.png) 
 
-7. 在另一个 Web 浏览器窗口中，以管理员身份登录 Recognize 租户。
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录 Recognize 租户。
 
-8. 在右上角，单击“菜单”。 转到“公司管理员”。
+1. 在右上角，单击“菜单”。 转到“公司管理员”。
    
     ![在应用端配置单一登录](./media/recognize-tutorial/tutorial_recognize_000.png)
 
-9. 在左侧导航窗格上，单击“设置”。
+1. 在左侧导航窗格上，单击“设置”。
    
     ![在应用端配置单一登录](./media/recognize-tutorial/tutorial_recognize_001.png)
 
-10. 在“SSO 设置”部分中执行以下步骤。
+1. 在“SSO 设置”部分中执行以下步骤。
    
     ![在应用端配置单一登录](./media/recognize-tutorial/tutorial_recognize_002.png)
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“启用 SSO”，选择“启用”。
+    a. 对于“启用 SSO”，选择“启用”。
 
     b. 在“IDP 实体 ID”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
     
@@ -157,11 +157,11 @@ ms.locfileid: "39051592"
     
     f. 单击“保存设置”按钮。 
 
-11. 在“SSO 设置”部分旁边，复制“服务提供程序元数据 url”下的 URL。
+1. 在“SSO 设置”部分旁边，复制“服务提供程序元数据 url”下的 URL。
    
     ![在应用端配置单一登录](./media/recognize-tutorial/tutorial_recognize_003.png)
 
-12. 在空白浏览器下打开“元数据 URL 链接”以下载元数据文档。 从文件复制 EntityDescriptor 值 (entityID)，并将其粘贴到 Azure 门户的“Recognize 域和 URL”部分的“标识符”文本框。
+1. 在空白浏览器下打开“元数据 URL 链接”以下载元数据文档。 从文件复制 EntityDescriptor 值 (entityID)，并将其粘贴到 Azure 门户的“Recognize 域和 URL”部分的“标识符”文本框。
     
     ![在应用端配置单一登录](./media/recognize-tutorial/tutorial_recognize_004.png)
 
@@ -180,19 +180,19 @@ ms.locfileid: "39051592"
 
     ![创建 Azure AD 测试用户](./media/recognize-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
     ![创建 Azure AD 测试用户](./media/recognize-tutorial/create_aaduser_02.png) 
 
-3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
  
     ![创建 Azure AD 测试用户](./media/recognize-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/recognize-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -210,15 +210,15 @@ ms.locfileid: "39051592"
 
 1. 以管理员身份登录 Recognize 公司站点。
 
-2. 在右上角，单击“菜单”。 转到“公司管理员”。
+1. 在右上角，单击“菜单”。 转到“公司管理员”。
 
-3. 在左侧导航窗格上，单击“设置”。
+1. 在左侧导航窗格上，单击“设置”。
 
-4. 在“用户同步”部分中，执行以下步骤。
+1. 在“用户同步”部分中，执行以下步骤。
    
    ![新建用户](./media/recognize-tutorial/tutorial_recognize_005.png "New User")
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“启用同步”，选择“启用”。
+   a. 对于“启用同步”，选择“启用”。
    
    b. 对于“选择同步提供程序”，选择“Microsoft/Office 365”。
    
@@ -236,23 +236,23 @@ ms.locfileid: "39051592"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Recognize”。
+1. 在应用程序列表中，选择“Recognize”。
 
     ![配置单一登录](./media/recognize-tutorial/tutorial_recognize_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 

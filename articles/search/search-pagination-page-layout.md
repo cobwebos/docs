@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 08/29/2016
 ms.author: heidist
-ms.openlocfilehash: 516760031918c667b39cc8b3dd94d91c42623efc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8953be2be77c14a82294e56ac60b8bc993ec6c2f
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32186872"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527063"
 ---
 # <a name="how-to-page-search-results-in-azure-search"></a>如何在 Azure 搜索中对搜索结果分页
 本文提供有关如何使用 Azure 搜索服务 REST API 实现搜索结果页面的标准元素（例如总计数、记录检索、排序顺序和导航）的指南。
@@ -102,7 +102,6 @@ ms.locfileid: "32186872"
 * [Azure 搜索服务 REST API](https://docs.microsoft.com/rest/api/searchservice)
 * [索引操作](https://docs.microsoft.com/rest/api/searchservice/Index-operations)
 * [文档操作](https://docs.microsoft.com/rest/api/searchservice/Document-operations)
-* [有关 Azure 搜索的视频和教程](search-video-demo-tutorial-list.md)
 * [Azure 搜索中的分面导航](search-faceted-navigation.md)
 
 <!--Image references-->

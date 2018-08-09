@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: jeedes
-ms.openlocfilehash: a453e2d16edecda9753c2940a745b260a3a2b893
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 2f87c4a15ac21241b3304d1fdf0a5bd0ae715615
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160257"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430199"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>教程：Azure Active Directory 与 Salesforce 集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "39160257"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Salesforce
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-salesforce-from-the-gallery"></a>从库中添加 Salesforce
 若要配置 Salesforce 与 Azure AD 的集成，需要从库中将 Salesforce 添加到托管的 SaaS 应用列表。
@@ -64,15 +64,15 @@ ms.locfileid: "39160257"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中键入 Salesforce，在结果面板中选择“Salesforce”，并单击“添加”按钮来添加该应用程序。
+1. 在搜索框中键入 Salesforce，在结果面板中选择“Salesforce”，并单击“添加”按钮来添加该应用程序。
 
     ![结果列表中的 Salesforce](./media/salesforce-tutorial/tutorial_salesforce_addfromgallery.png)
 
@@ -87,10 +87,10 @@ ms.locfileid: "39160257"
 若要配置和测试 Salesforce 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. [创建 Salesforce 测试用户](#create-a-salesforce-test-user) - 在 Salesforce 中创建 Britta Simon 的对应用户，该用户与 Azure AD 中表示 Britta Simon 的用户相关联。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. [创建 Salesforce 测试用户](#create-a-salesforce-test-user) - 在 Salesforce 中创建 Britta Simon 的对应用户，该用户与 Azure AD 中表示 Britta Simon 的用户相关联。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -102,11 +102,11 @@ ms.locfileid: "39160257"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
 
     ![“单一登录”对话框](./media/salesforce-tutorial/tutorial_salesforce_samlbase.png)
 
-3. 在“Salesforce 域和 URL”部分中，执行以下步骤：
+1. 在“Salesforce 域和 URL”部分中，执行以下步骤：
 
     ![Salesforce 域和 URL 单一登录信息](./media/salesforce-tutorial/tutorial_salesforce_url.png)
 
@@ -125,43 +125,43 @@ ms.locfileid: "39160257"
     > [!NOTE]
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Salesforce 客户端支持团队](https://help.salesforce.com/support)获取这些值。
 
-4. 在“SAML 签名证书”部分中单击“证书”，然后在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中单击“证书”，然后在计算机上保存证书文件。
 
     ![证书下载链接](./media/salesforce-tutorial/tutorial_salesforce_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/salesforce-tutorial/tutorial_general_400.png)
 
-6. 在“Salesforce 配置”部分，单击“配置 Salesforce”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 实体 ID 和 SAML 单一登录服务 URL”。
+1. 在“Salesforce 配置”部分，单击“配置 Salesforce”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 实体 ID 和 SAML 单一登录服务 URL”。
 
     ![Salesforce 配置](./media/salesforce-tutorial/tutorial_salesforce_configure.png) 
 
-7. 在浏览器中打开新选项卡并登录到 Salesforce 管理员帐户。
+1. 在浏览器中打开新选项卡并登录到 Salesforce 管理员帐户。
 
-8. 单击页面右上角设置图标下的“安装”。
+1. 单击页面右上角设置图标下的“安装”。
 
     ![配置单一登录](./media/salesforce-tutorial/configure1.png)
 
-9. 向下滚动到导航窗格中的“设置”，单击“标识”，以展开相关部分。 然后单击“单一登录设置”。
+1. 向下滚动到导航窗格中的“设置”，单击“标识”，以展开相关部分。 然后单击“单一登录设置”。
 
     ![配置单一登录](./media/salesforce-tutorial/sf-admin-sso.png)
 
-10. 在“单一登录设置”页上，单击“编辑”按钮。
+1. 在“单一登录设置”页上，单击“编辑”按钮。
 
     ![配置单一登录](./media/salesforce-tutorial/sf-admin-sso-edit.png)
     
     > [!NOTE]
     > 如果无法为 Salesforce 帐户启用单一登录设置，则需要联系 [Salesforce 客户端支持团队](https://help.salesforce.com/support)。 
 
-11. 选择“已启用 SAML”，并单击“保存”。
+1. 选择“已启用 SAML”，并单击“保存”。
 
       ![配置单一登录](./media/salesforce-tutorial/sf-enable-saml.png)
-12. 若要配置 SAML 单一登录设置，请单击“新建”。
+1. 若要配置 SAML 单一登录设置，请单击“新建”。
 
     ![配置单一登录](./media/salesforce-tutorial/sf-admin-sso-new.png)
 
-13. 在“SAML 单一登录设置编辑”页上进行以下配置：
+1. 在“SAML 单一登录设置编辑”页上进行以下配置：
 
     ![配置单一登录](./media/salesforce-tutorial/sf-saml-config.png)
 
@@ -192,15 +192,15 @@ ms.locfileid: "39160257"
 
     i. 最后，单击“保存”以应用 SAML 单一登录设置。
 
-14. 在 Salesforce 的左侧导航窗格中，单击“公司设置”展开相关部分，然后单击“我的域”。
+1. 在 Salesforce 的左侧导航窗格中，单击“公司设置”展开相关部分，然后单击“我的域”。
 
     ![配置单一登录](./media/salesforce-tutorial/sf-my-domain.png)
 
-15. 向下滚动到“身份验证配置”部分，并单击“编辑”按钮。
+1. 向下滚动到“身份验证配置”部分，并单击“编辑”按钮。
 
     ![配置单一登录](./media/salesforce-tutorial/sf-edit-auth-config.png)
 
-16. 在“身份验证配置”部分中，选中“AzureSSO”作为 SAML SSO 配置的“身份验证服务”，然后单击“保存”。
+1. 在“身份验证配置”部分中，选中“AzureSSO”作为 SAML SSO 配置的“身份验证服务”，然后单击“保存”。
 
     ![配置单一登录](./media/salesforce-tutorial/sf-auth-config.png)
 
@@ -219,15 +219,15 @@ ms.locfileid: "39160257"
 
     ![“Azure Active Directory”按钮](./media/salesforce-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/salesforce-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/salesforce-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/salesforce-tutorial/create_aaduser_04.png)
 
@@ -255,23 +255,23 @@ ms.locfileid: "39160257"
 
     ![分配用户][201]
 
-2. 在应用程序列表中，选择“Salesforce”。
+1. 在应用程序列表中，选择“Salesforce”。
 
     ![应用程序列表中的 Salesforce 链接](./media/salesforce-tutorial/tutorial_salesforce_app.png)
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

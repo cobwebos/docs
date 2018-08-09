@@ -2,23 +2,18 @@
 title: 在 Azure 表存储中设计可伸缩的高性能表。 | Microsoft Docs
 description: 在 Azure 表存储中设计可伸缩的高性能表。
 services: storage
-documentationcenter: na
 author: SnehaGunda
-manager: kfile
-ms.assetid: 8e228b0c-2998-4462-8101-9f16517393ca
 ms.service: storage
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
 ms.date: 04/23/2018
 ms.author: sngun
-ms.openlocfilehash: ba48283371ac099b162aeb3cbffd6127ccce1676
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: tables
+ms.openlocfilehash: 783522997a752c4eac575316983bc6ef853c3f43
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659244"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526906"
 ---
 # <a name="design-scalable-and-performant-tables"></a>设计可伸缩的高性能表
 
@@ -55,7 +50,7 @@ ms.locfileid: "34659244"
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>Email</th>
+<th>电子邮件</th>
 </tr>
 <tr>
 <td>Don</td>
@@ -75,7 +70,7 @@ ms.locfileid: "34659244"
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>Email</th>
+<th>电子邮件</th>
 </tr>
 <tr>
 <td>Jun</td>
@@ -87,7 +82,7 @@ ms.locfileid: "34659244"
 </tr>
 <tr>
 <td>Marketing</td>
-<td>Department</td>
+<td>部门</td>
 <td>2014-08-22T00:50:30Z</td>
 <td>
 <table>
@@ -112,7 +107,7 @@ ms.locfileid: "34659244"
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>Email</th>
+<th>电子邮件</th>
 </tr>
 <tr>
 <td>Ken</td>

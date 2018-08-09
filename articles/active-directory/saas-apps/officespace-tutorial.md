@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 5e77a8d557c44b76335ac4abab2cb19e099c7d8b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 7162645f41d26f1496bdec9c4d694e749bfec6a1
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215913"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39449523"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-officespace-software"></a>教程：Azure Active Directory 与 OfficeSpace Software 的集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "36215913"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 OfficeSpace Software
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-officespace-software-from-the-gallery"></a>从库中添加 OfficeSpace Software
 要配置 OfficeSpace Software 与 Azure AD 的集成，需要从库中将 OfficeSpace Software 添加到托管 SaaS 应用列表。
@@ -64,15 +64,15 @@ ms.locfileid: "36215913"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中，键入“OfficeSpace Software”，在结果面板中选择“OfficeSpace Software”，然后单击“添加”按钮添加该应用程序。
+1. 在搜索框中，键入“OfficeSpace Software”，在结果面板中选择“OfficeSpace Software”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 OfficeSpace Software](./media/officespace-tutorial/tutorial_officespace_addfromgallery.png)
 
@@ -87,10 +87,10 @@ ms.locfileid: "36215913"
 若要配置并测试 OfficeSpace Software 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 OfficeSpace Software 测试用户](#create-a-officespace-software-test-user)** - 在 OfficeSpace Software 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 OfficeSpace Software 测试用户](#create-a-officespace-software-test-user)** - 在 OfficeSpace Software 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -102,26 +102,26 @@ ms.locfileid: "36215913"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![“单一登录”对话框](./media/officespace-tutorial/tutorial_officespace_samlbase.png)
 
-3. 在“OfficeSpace Software 域和 URL”部分中，执行以下步骤：
+1. 在“OfficeSpace Software 域和 URL”部分中，执行以下步骤：
 
     ![OfficeSpace Software 域和 URL 单一登录信息](./media/officespace-tutorial/tutorial_officespace_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company name>.officespacesoftware.com/users/sign_in/saml`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<company name>.officespacesoftware.com/users/sign_in/saml`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`<company name>.officespacesoftware.com`
 
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [OfficeSpace Software 客户端支持团队](mailto:support@officespacesoftware.com)获取这些值。 
 
-4. OfficeSpace Software 应用程序需要采用特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示一个示例。
+1. OfficeSpace Software 应用程序需要采用特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示一个示例。
     
     ![配置属性](./media/officespace-tutorial/tutorial_officespace_attribute.png)
 
-5. 在“单一登录”对话框上的“用户属性”部分中，选择“user.mail”作为**用户标识符**，并针对下表中所示的每一行，执行以下步骤：
+1. 在“单一登录”对话框上的“用户属性”部分中，选择“user.mail”作为**用户标识符**，并针对下表中所示的每一行，执行以下步骤：
     
     | 属性名称 | 属性值 |
     | --- | --- |    
@@ -142,29 +142,29 @@ ms.locfileid: "36215913"
     
     d. 单击“确定”
  
-6. 在“SAML 签名证书”部分中，复制证书的“指纹”值。
+1. 在“SAML 签名证书”部分中，复制证书的“指纹”值。
 
     ![证书下载链接](./media/officespace-tutorial/tutorial_officespace_certificate.png) 
 
-7. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/officespace-tutorial/tutorial_general_400.png)
 
-8. 在“OfficeSpace Software 配置”部分中，单击“配置 OfficeSpace Software”以打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL 和 SAML 单一登录服务 URL”。
+1. 在“OfficeSpace Software 配置”部分中，单击“配置 OfficeSpace Software”以打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL 和 SAML 单一登录服务 URL”。
 
     ![OfficeSpace Software 配置](./media/officespace-tutorial/tutorial_officespace_configure.png) 
 
-9. 在另一 Web 浏览器窗口中，以管理员身份登录到 OfficeSpace Software 租户。
+1. 在另一 Web 浏览器窗口中，以管理员身份登录到 OfficeSpace Software 租户。
 
-10. 转到“设置”，并单击“连接器”。
+1. 转到“设置”，并单击“连接器”。
 
     ![在应用端配置单一登录](./media/officespace-tutorial/tutorial_officespace_002.png)
 
-11. 单击“SAML 身份验证”。
+1. 单击“SAML 身份验证”。
 
     ![在应用端配置单一登录](./media/officespace-tutorial/tutorial_officespace_003.png)
 
-12. 在“SAML 身份验证”部分中，执行以下步骤：
+1. 在“SAML 身份验证”部分中，执行以下步骤：
 
     ![在应用端配置单一登录](./media/officespace-tutorial/tutorial_officespace_004.png)
 
@@ -193,15 +193,15 @@ ms.locfileid: "36215913"
 
     ![“Azure Active Directory”按钮](./media/officespace-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/officespace-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/officespace-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/officespace-tutorial/create_aaduser_04.png)
 
@@ -234,23 +234,23 @@ ms.locfileid: "36215913"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“OfficeSpace Software”。
+1. 在应用程序列表中，选择“OfficeSpace Software”。
 
     ![应用程序列表中的 OfficeSpace Software 链接](./media/officespace-tutorial/tutorial_officespace_app.png)  
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

@@ -2,23 +2,18 @@
 title: Azure Data Lake Storage Gen2 预览版简介
 description: 提供 Azure Data Lake Storage Gen2 预览版的概述
 services: storage
-documentationcenter: ''
 author: jamesbak
-manager: jahogg
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 0631b1d0c8da925858f0b7fb1d778cb1161eb737
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 51f38cf7ade01b58ad5ce7925af5546d1a4f1a0c
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061518"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525376"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Azure Data Lake Storage Gen2 预览版简介
 
@@ -74,5 +69,5 @@ Data Lake Storage Gen2 的一个基本功能是在 Blob 存储服务中添加一
 
 * [分层命名空间](./namespace.md)
 * [创建存储帐户](./quickstart-create-account.md)
-* [创建包含 Azure Data Lake Storage Gen2 的 HDInsight 群集](./quickstart-create-connect-hdi-cluster.md)
+* [创建采用 Azure Data Lake Storage Gen2 的 HDInsight 群集](./quickstart-create-connect-hdi-cluster.md)
 * [在 Azure Databricks 中使用 Azure Data Lake Storage Gen2 帐户](./quickstart-create-databricks-account.md) 

@@ -2,24 +2,19 @@
 title: 使用 Azure 存储分析收集日志和指标数据 | Microsoft Docs
 description: 使用存储分析，可以跟踪所有存储服务的度量值数据，并收集 Blob、队列和表存储的日志。
 services: storage
-documentationcenter: ''
 author: roygara
-manager: jeconnoc
-editor: tysonn
-ms.assetid: 7894993b-ca42-4125-8f17-8f6dfe3dca76
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/03/2017
 ms.author: rogarana
-ms.openlocfilehash: edda01cbfe1b53d934f9f4a7bb01c645fa680873
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: common
+ms.openlocfilehash: a99375ae961e9239e5e8ea86db8b1b9b002b10c8
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30243428"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526957"
 ---
 # <a name="storage-analytics"></a>存储分析
 
@@ -78,7 +73,7 @@ Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 �
 
 下表说明了日志名称中的每个属性。
 
-| 属性 | 说明 |
+| 属性 | Description |
 | --- | --- |
 | <service-name> |存储服务的名称 例如：blob、table 或 queue。 |
 | YYYY |用四位数表示的日志年份。 例如：2011。 |
@@ -101,7 +96,7 @@ Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 �
 ### <a name="log-metadata"></a>日志元数据
 所有日志 Blob 与可用于确定 Blob 包含哪些日志记录数据的元数据一起存储。 下表说明了每个元数据属性。
 
-| 属性 | 说明 |
+| 属性 | Description |
 | --- | --- |
 | LogType |描述日志是否包含与读取、写入或删除操作有关的信息。 该值可能包含一种类型，也可能包含所有三种类型的组合并用逗号隔开。 示例 1：write；示例 2：read,write；示例 3：read,write,delete。 |
 | StartTime |日志中的项的最早时间，采用 YYYY-MM-DDThh:mm:ssZ 形式。 例如：2011-07-31T18:21:46Z。 |

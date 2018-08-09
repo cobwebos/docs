@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: ab3b38a053cf9695b6c09c7b0d86f068bfb3895c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ceab1293b5bd1fbae9088783651d0effa8c5a78a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39052214"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39448996"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>教程：Azure Active Directory 与 Kantega SSO for Bamboo 集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "39052214"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Kantega SSO for Bamboo
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-kantega-sso-for-bamboo-from-the-gallery"></a>从库中添加 Kantega SSO for Bamboo
 若要配置 Kantega SSO for Bamboo 与 Azure AD 的集成，需要从库中将 Kantega SSO for Bamboo 添加到托管 SaaS 应用列表。
@@ -63,19 +63,19 @@ ms.locfileid: "39052214"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入“Kantega SSO for Bamboo”。
+1. 在搜索框中，键入“Kantega SSO for Bamboo”。
 
     ![创建 Azure AD 测试用户](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_search.png)
 
-5. 在结果面板中，选择“Kantega SSO for Bamboo”，然后单击“添加”按钮添加该应用程序。
+1. 在结果面板中，选择“Kantega SSO for Bamboo”，然后单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_addfromgallery.png)
 
@@ -89,10 +89,10 @@ ms.locfileid: "39052214"
 若要配置和测试 Kantega SSO for Bamboo 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. [创建 Kantega SSO for Bamboo 测试用户](#creating-a-kantega-sso-for-bamboo-test-user) - 在 Kantega SSO for Bamboo 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. [创建 Kantega SSO for Bamboo 测试用户](#creating-a-kantega-sso-for-bamboo-test-user) - 在 Kantega SSO for Bamboo 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
+1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -104,19 +104,19 @@ ms.locfileid: "39052214"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![配置单一登录](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_samlbase.png)
 
-3. 在“IDP”发起的模式下，在“Kantega SSO for Bamboo 域和 URL”部分中，执行以下步骤：
+1. 在“IDP”发起的模式下，在“Kantega SSO for Bamboo 域和 URL”部分中，执行以下步骤：
 
     ![配置单一登录](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_url1.png)
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-4. 在“SP”发起的模式下，请选中“显示高级 URL 设置”并执行以下步骤：
+1. 在“SP”发起的模式下，请选中“显示高级 URL 设置”并执行以下步骤：
 
     ![配置单一登录](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_url2.png)
     
@@ -125,93 +125,93 @@ ms.locfileid: "39052214"
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 在配置 Bamboo 插件的过程中，将接收这些值，这将在教程的后面部分进行说明。
 
-5. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
+1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_certificate.png) 
 
-6. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录](./media/kantegassoforbamboo-tutorial/tutorial_general_400.png)
     
-7. 在另一 Web 浏览器窗口中，以管理员身份登录到 Bamboo 本地服务器。
+1. 在另一 Web 浏览器窗口中，以管理员身份登录到 Bamboo 本地服务器。
 
-8. 将鼠标悬停在小齿轮上，并单击“外接程序”。
+1. 将鼠标悬停在小齿轮上，并单击“外接程序”。
 
     ![配置单一登录](./media/kantegassoforbamboo-tutorial/addon1.png)
 
-9. 在“外接程序”选项卡部分，单击“查找新外接程序”。 搜索“Kantega SSO for Bamboo (SAML & Kerberos)”，然后单击“安装”按钮安装新的 SAML 插件。
+1. 在“外接程序”选项卡部分，单击“查找新外接程序”。 搜索“Kantega SSO for Bamboo (SAML & Kerberos)”，然后单击“安装”按钮安装新的 SAML 插件。
 
     ![配置单一登录](./media/kantegassoforbamboo-tutorial/addon2.png)
 
-10. 插件安装随即开始。
+1. 插件安装随即开始。
 
     ![配置单一登录](./media/kantegassoforbamboo-tutorial/addon21.png)
 
-11. 安装完成后。 单击“关闭”。
+1. 安装完成后。 单击“关闭”。
 
     ![配置单一登录](./media/kantegassoforbamboo-tutorial/addon33.png)
 
-12. 单击“管理”。
+1.  单击“管理”。
 
     ![配置单一登录](./media/kantegassoforbamboo-tutorial/addon34.png)
     
-13. 单击“配置”配置新的插件。    
+1. 单击“配置”配置新的插件。 
 
     ![配置单一登录](./media/kantegassoforbamboo-tutorial/addon3.png)
 
-14. 在“SAML”部分中。 从“添加标识提供者”下拉菜单选择“Azure Active Directory (Azure AD)”。
+1. 在“SAML”部分中。 从“添加标识提供者”下拉菜单选择“Azure Active Directory (Azure AD)”。
 
     ![配置单一登录](./media/kantegassoforbamboo-tutorial/addon4.png)
 
-15. 选择订阅级别为“基本”。
+1. 选择订阅级别为“基本”。
 
     ![配置单一登录](./media/kantegassoforbamboo-tutorial/addon5.png)
 
-16. 在“应用属性”部分，执行以下步骤：
+1. 在“应用属性”部分，执行以下步骤：
 
     ![配置单一登录](./media/kantegassoforbamboo-tutorial/addon6.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 复制“应用 ID URI”值并将其用作 Azure 门户中“Kantega SSO for Bamboo 域和 URL”部分中的“标识符”、“回复 URL”和“登录 URL”。
+    a. 复制“应用 ID URI”值并将其用作 Azure 门户中“Kantega SSO for Bamboo 域和 URL”部分中的“标识符”、“回复 URL”和“登录 URL”。
 
     b. 单击“下一步”。
 
-17. 在“元数据导入”部分，执行以下步骤：
+1. 在“元数据导入”部分，执行以下步骤：
 
     ![配置单一登录](./media/kantegassoforbamboo-tutorial/addon7.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“我的计算机上的元数据文件”，上传从 Azure 门户下载的元数据文件。
+    a. 选择“我的计算机上的元数据文件”，上传从 Azure 门户下载的元数据文件。
 
     b. 单击“下一步”。
 
-18. 在“名称和 SSO 位置”部分，执行以下步骤：
+1. 在“名称和 SSO 位置”部分，执行以下步骤：
 
     ![配置单一登录](./media/kantegassoforbamboo-tutorial/addon8.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识提供者名称”文本框中添加标识提供者名称（例如 Azure AD）。
+    a. 在“标识提供者名称”文本框中添加标识提供者名称（例如 Azure AD）。
 
     b. 单击“下一步”。
 
-19. 验证签名证书，然后单击“下一步”。  
+1. 验证签名证书，然后单击“下一步”。   
 
     ![配置单一登录](./media/kantegassoforbamboo-tutorial/addon9.png)
 
-20. 在“Bamboo 用户帐户”部分中，执行以下步骤：
+1. 在“Bamboo 用户帐户”部分中，执行以下步骤：
 
     ![配置单一登录](./media/kantegassoforbamboo-tutorial/addon10.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“根据需要在 Bamboo 的内部目录中创建用户”，并为用户组输入合适名称（可以为多个 组，用逗号隔开）。
+    a. 选择“根据需要在 Bamboo 的内部目录中创建用户”，并为用户组输入合适名称（可以为多个 组，用逗号隔开）。
 
     b. 单击“下一步”。
 
-21. 单击“完成”。
+1. 单击“完成”。
 
     ![配置单一登录](./media/kantegassoforbamboo-tutorial/addon11.png)
 
-22. 在“Azure AD 的已知域”部分，执行以下步骤： 
+1. 在“Azure AD 的已知域”部分，执行以下步骤：  
 
     ![配置单一登录](./media/kantegassoforbamboo-tutorial/addon12.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 从页的左侧面板中选择“已知域”。
+    a. 从页的左侧面板中选择“已知域”。
 
     b. 在“已知域”文本框中输入域名。
 
@@ -231,19 +231,19 @@ ms.locfileid: "39052214"
 
     ![创建 Azure AD 测试用户](./media/kantegassoforbamboo-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
     ![创建 Azure AD 测试用户](./media/kantegassoforbamboo-tutorial/create_aaduser_02.png) 
 
-3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
  
     ![创建 Azure AD 测试用户](./media/kantegassoforbamboo-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/kantegassoforbamboo-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -259,15 +259,15 @@ ms.locfileid: "39052214"
 
 1. 以管理员身份登录到 Bamboo 本地服务器。
 
-2. 将鼠标悬停在小齿轮上，并单击“用户管理”。
+1. 将鼠标悬停在小齿轮上，并单击“用户管理”。
 
     ![添加员工](./media/kantegassoforbamboo-tutorial/user1.png) 
 
-3. 单击“用户”。 在“添加用户”部分中，执行以下步骤：
+1. 单击“用户”。 在“添加用户”部分中，执行以下步骤：
 
     ![添加员工](./media/kantegassoforbamboo-tutorial/user2.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
+    a. 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
     
     b. 在“密码”文本框中，键入用户的密码。
 
@@ -291,23 +291,23 @@ ms.locfileid: "39052214"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Kantega SSO for Bamboo”。
+1. 在应用程序列表中，选择“Kantega SSO for Bamboo”。
 
     ![配置单一登录](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 

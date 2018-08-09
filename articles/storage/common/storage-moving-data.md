@@ -2,27 +2,21 @@
 title: 在 Azure 中将大量数据移入/移出云存储 | Microsoft Docs
 description: 将数据移入和移出 Azure 存储的不同方法概述。
 services: storage
-documentationcenter: ''
 author: JarrettRenshaw
-manager: msmets
-editor: tysonn
-ms.assetid: 5e3947a9-d99b-4108-9d57-3eb67c03e7ba
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: jarrettr
-ms.openlocfilehash: 980e4675c2d2e88716a3133abb027988aecd538f
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.component: common
+ms.openlocfilehash: 81d7b5cf03e56ecc54db71b09af335d6cb794806
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
-ms.locfileid: "28984589"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525529"
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>将数据移动到和移出 Azure 存储
-如果想将本地数据移动到 Azure 存储（或执行相反的操作），有许多种方式可以执行此操作。 最适合方法将取决于方案。 本文将提供不同方案以及针对每个方案的适当产品/服务的快速概述。
+如果想将本地数据移动到 Azure 存储（或执行相反的操作），有许多种方式可以执行此操作。 最适合方法将取决于方案。 本文会提供不同方案以及针对每个方案的适当产品/服务的快速概述。
 
 ## <a name="building-applications"></a>构建应用程序
 如果正在构建应用程序，针对 REST API 或我们的许多客户端库之一进行开发是将数据移动到和移出 Azure 存储的一个好办法。
@@ -31,7 +25,7 @@ Azure 存储为 .NET、iOS、Java、Android、通用 Windows 平台 (UWP)、Xama
 
 请参阅[ Azure Blob 存储入门](../blobs/storage-dotnet-how-to-use-blobs.md)了解详细信息。
 
-此外，还提供了 [Azure 存储数据移动库](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement)，该库用于将数据复制到 Azure 和从 Azure 复制数据的高性能操作。 请参阅数据移动库[文档](https://github.com/Azure/azure-storage-net-data-movement)了解详细信息。 
+此外，我们还提供了 [Azure 存储数据移动库](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement) ，该库专为高性能设计，用于将数据复制到 Azure 和从 Azure 复制数据。 请参阅数据移动库[文档](https://github.com/Azure/azure-storage-net-data-movement)了解详细信息。 
 
 ## <a name="quickly-viewinginteracting-with-your-data"></a>快速查看数据/与数据进行交互
 如果想要轻松地查看 Azure 存储数据，同时也能上传和下载数据，那么请考虑使用 Azure 存储资源管理器。

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: nini
 ms.component: na
-ms.openlocfilehash: 8296f0756aef7180efa777795cb361e653c0e4e3
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 9bc1f7d9eab73a086e664dcc520ecf26befbbf0e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128007"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432885"
 ---
 # <a name="assess-service-fabric-applications-and-micro-services-with-the-azure-portal"></a>使用 Azure 门户评估 Service Fabric 应用程序和微服务
 
@@ -39,15 +39,15 @@ Service Fabric 解决方案通过从 Azure WAD 表中收集相关数据来使用
 若要开始使用解决方案，需要将 Service Fabric 群集连接到 Log Analytics 工作区。 下面是需要考虑的三种方案：
 
 1. 如果尚未部署 Service Fabric 群集，请使用***部署已连接到 Log Analytics 工作区的 Service Fabric 群集***中的步骤部署新群集，并将其配置为向 Log Analytics 报告。
-2. 如果需要从主机中收集性能计数器以便在 Service Fabric 群集上使用其他管理解决方案（如安全性），请按照“部署已连接到装有 VM 扩展的 Log Analytics 工作区的 Service Fabric 群集”中的步骤操作。
-3. 如果已部署了 Service Fabric 群集并且希望将其连接到 Log Analytics，请按照***将现有的存储帐户添加到 Log Analytics*** 中的步骤操作。
+1. 如果需要从主机中收集性能计数器以便在 Service Fabric 群集上使用其他管理解决方案（如安全性），请按照“部署已连接到装有 VM 扩展的 Log Analytics 工作区的 Service Fabric 群集”中的步骤操作。
+1. 如果已部署了 Service Fabric 群集并且希望将其连接到 Log Analytics，请按照***将现有的存储帐户添加到 Log Analytics*** 中的步骤操作。
 
 ## <a name="deploy-a-service-fabric-cluster-connected-to-a-log-analytics-workspace"></a>部署连接到 Log Analytics 工作区的 Service Fabric 群集。
 此模板执行以下操作：
 
 1. 部署已连接到 Log Analytics 工作区的 Azure Service Fabric 群集。 可以选择在部署模板时创建新工作区，或者输入现有 Log Analytics 工作区的名称。
-2. 将诊断存储帐户添加到 Log Analytics 工作区。
-3. 在 Log Analytics 工作区中启用 Service Fabric 解决方案。
+1. 将诊断存储帐户添加到 Log Analytics 工作区。
+1. 在 Log Analytics 工作区中启用 Service Fabric 解决方案。
 
 [![部署到 Azure](./media/log-analytics-service-fabric/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2Fservice-fabric-oms%2F%2Fazuredeploy.json)
 
@@ -66,9 +66,9 @@ Service Fabric 解决方案通过从 Azure WAD 表中收集相关数据来使用
 此模板执行以下操作：
 
 1. 部署已连接到 Log Analytics 工作区的 Azure Service Fabric 群集。 可以创建新的工作区或使用现有的工作区。
-2. 将诊断存储帐户添加到 Log Analytics 工作区。
-3. 在 Log Analytics 工作区中启用 Service Fabric 解决方案。
-4. 在 Service Fabric 群集的每个虚拟机规模集中安装 MMA 代理扩展。 安装 MMA 代理后，可以查看有关节点的性能指标。
+1. 将诊断存储帐户添加到 Log Analytics 工作区。
+1. 在 Log Analytics 工作区中启用 Service Fabric 解决方案。
+1. 在 Service Fabric 群集的每个虚拟机规模集中安装 MMA 代理扩展。 安装 MMA 代理后，可以查看有关节点的性能指标。
 
 [![部署到 Azure](./media/log-analytics-service-fabric/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2Fservice-fabric-vmss-oms%2F%2Fazuredeploy.json)
 
