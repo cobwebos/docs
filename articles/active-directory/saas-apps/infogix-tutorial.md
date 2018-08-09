@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: ef45bbb20ccb5db8c383717eb81bfe8fa18720c7
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 3e54ade44828bf1e26c310a14ae401fe8ae33229
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042837"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39437655"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>教程：Azure Active Directory 与 Infogix Data3Sixty Govern 集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "39042837"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库添加 Infogix Data3Sixty Govern
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-infogix-data3sixty-govern-from-the-gallery"></a>从库添加 Infogix Data3Sixty Govern
 若要配置 Infogix Data3Sixty Govern 与 Azure AD 的集成，需从库将 Infogix Data3Sixty Govern 添加到托管 SaaS 应用列表。
@@ -64,15 +64,15 @@ ms.locfileid: "39042837"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中，键入“Infogix Data3Sixty Govern”，在结果面板中选择“Infogix Data3Sixty Govern”，然后单击“添加”按钮添加该应用程序。
+1. 在搜索框中，键入“Infogix Data3Sixty Govern”，在结果面板中选择“Infogix Data3Sixty Govern”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 Infogix Data3Sixty Govern](./media/infogix-tutorial/tutorial_infogix_addfromgallery.png)
 
@@ -85,10 +85,10 @@ ms.locfileid: "39042837"
 若要配置和测试 Infogix Data3Sixty Govern 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Infogix Data3Sixty Govern 测试用户](#create-an-infogix-data3sixty-govern-test-user)** - 在 Infogix Data3Sixty Govern 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 Infogix Data3Sixty Govern 测试用户](#create-an-infogix-data3sixty-govern-test-user)** - 在 Infogix Data3Sixty Govern 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -100,19 +100,19 @@ ms.locfileid: "39042837"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![“单一登录”对话框](./media/infogix-tutorial/tutorial_infogix_samlbase.png)
 
-3. 在“Infogix Data3Sixty Govern 域和 URL”部分中，如果要在“IDP”发起的模式下配置应用程序，请执行以下步骤：
+1. 在“Infogix Data3Sixty Govern 域和 URL”部分中，如果要在“IDP”发起的模式下配置应用程序，请执行以下步骤：
 
     ![Infogix Data3Sixty Govern 域和 URL 单一登录信息](./media/infogix-tutorial/tutorial_infogix_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，键入一个 URL：`https://data3sixty.com/ui`
+    a. 在“标识符”文本框中，键入一个 URL：`https://data3sixty.com/ui`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<subdomain>.data3sixty.com/sso/acs`
 
-4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
+1. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
 
     ![Infogix Data3Sixty Govern 域和 URL 单一登录信息](./media/infogix-tutorial/tutorial_infogix_url1.png)
 
@@ -121,11 +121,11 @@ ms.locfileid: "39042837"
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“回复 URL”和“注销 URL”更新这些值。 请联系 [Infogix Data3Sixty Govern 客户端支持团队](mailto:data3sixtysupport@infogix.com)获取这些值。
 
-5. Infogix Data3Sixty Govern 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示一个示例。
+1. Infogix Data3Sixty Govern 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示一个示例。
     
     ![配置单一登录 attb](./media/infogix-tutorial/tutorial_infogix_attribute.png)
     
-6. 在“单一登录”对话框的“用户属性”部分，按图中所示配置 SAML 令牌属性，然后执行以下步骤：
+1. 在“单一登录”对话框的“用户属性”部分，按图中所示配置 SAML 令牌属性，然后执行以下步骤：
     
     | 属性名称 | 属性值 |
     | ------------------- | -------------------- |    
@@ -133,7 +133,7 @@ ms.locfileid: "39042837"
     | 姓        | user.surname |
     | username       | user.mail    |
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
+    a. 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录 Add](./media/infogix-tutorial/tutorial_attribute_04.png)
 
@@ -147,19 +147,19 @@ ms.locfileid: "39042837"
     
     e. 单击“确定” 。
 
-7. 在“SAML 签名证书”部分中，单击“证书(原始)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(原始)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/infogix-tutorial/tutorial_infogix_certificate.png)
 
-8. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/infogix-tutorial/tutorial_general_400.png)
     
-9. 单击“Infogix Data3Sixty Govern 配置”部分的“配置 Infogix Data3Sixty Govern”，打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+1. 单击“Infogix Data3Sixty Govern 配置”部分的“配置 Infogix Data3Sixty Govern”，打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
 
     ![Infogix Data3Sixty Govern 配置](./media/infogix-tutorial/tutorial_infogix_configure.png) 
 
-10. 若要在 Infogix Data3Sixty Govern 端配置单一登录，需将下载的证书（原始）、注销 URL、SAML 实体 ID 和 SAML 单一登录服务 URL 发送给 [Infogix Data3Sixty Govern 支持团队](mailto:data3sixtysupport@infogix.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+1. 若要在 Infogix Data3Sixty Govern 端配置单一登录，需将下载的证书（原始）、注销 URL、SAML 实体 ID 和 SAML 单一登录服务 URL 发送给 [Infogix Data3Sixty Govern 支持团队](mailto:data3sixtysupport@infogix.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -173,19 +173,19 @@ ms.locfileid: "39042837"
 
     ![“Azure Active Directory”按钮](./media/infogix-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/infogix-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/infogix-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/infogix-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -213,23 +213,23 @@ ms.locfileid: "39042837"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Infogix Data3Sixty Govern”。
+1. 在应用程序列表中，选择“Infogix Data3Sixty Govern”。
 
     ![应用程序列表中的 Infogix Data3Sixty Govern 链接](./media/infogix-tutorial/tutorial_infogix_app.png)  
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

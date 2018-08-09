@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: df0842c494fd69f41c97019c3ded9c2509c2463f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 3b74ca178d3bf380dc759ce0325d4047891a39d3
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223811"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422386"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-syncplicity"></a>教程：Azure Active Directory 与 Syncplicity 集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "36223811"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库添加 Syncplicity
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-syncplicity-from-the-gallery"></a>从库添加 Syncplicity
 若要配置 Syncplicity 与 Azure AD 的集成，需要从库中将 Syncplicity 添加到托管 SaaS 应用列表。
@@ -63,19 +63,19 @@ ms.locfileid: "36223811"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入 **Syncplicity**。
+1. 在搜索框中，键入 **Syncplicity**。
 
     ![创建 Azure AD 测试用户](./media/syncplicity-tutorial/tutorial_syncplicity_search.png)
 
-5. 在结果窗格中选择“Syncplicity”，然后单击“添加”按钮添加该应用程序。
+1. 在结果窗格中选择“Syncplicity”，然后单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/syncplicity-tutorial/tutorial_syncplicity_addfromgallery.png)
 
@@ -89,10 +89,10 @@ ms.locfileid: "36223811"
 若要配置和测试 Syncplicity 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Syncplicity 测试用户](#creating-a-syncplicity-test-user)** - 在 Syncplicity 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 Syncplicity 测试用户](#creating-a-syncplicity-test-user)** - 在 Syncplicity 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -104,15 +104,15 @@ ms.locfileid: "36223811"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![配置单一登录](./media/syncplicity-tutorial/tutorial_syncplicity_samlbase.png)
 
-3. 在“Syncplicity 域和 URL”部分中执行以下步骤：
+1. 在“Syncplicity 域和 URL”部分中执行以下步骤：
 
     ![配置单一登录](./media/syncplicity-tutorial/tutorial_syncplicity_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.syncplicity.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.syncplicity.com`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<companyname>.syncplicity.com/sp`
 
@@ -120,26 +120,26 @@ ms.locfileid: "36223811"
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Syncplicity 客户端支持团队](https://www.syncplicity.com/contact-us)获取这些值。 
  
 
-4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/syncplicity-tutorial/tutorial_syncplicity_certificate.png) 
 
   
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录](./media/syncplicity-tutorial/tutorial_general_400.png)
 
-6. 在“Syncplicity 配置”部分，单击“配置 Syncplicity”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+1. 在“Syncplicity 配置”部分，单击“配置 Syncplicity”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
 
     ![配置单一登录](./media/syncplicity-tutorial/tutorial_syncplicity_configure.png) 
 
-7. 登录到 **Syncplicity** 租户。
+1. 登录到 **Syncplicity** 租户。
 
-8. 在顶部菜单中，单击“管理员”，选择“设置”，并单击“自定义域和单一登录”。
+1. 在顶部菜单中，单击“管理员”，选择“设置”，并单击“自定义域和单一登录”。
    
     ![Syncplicity](./media/syncplicity-tutorial/ic769545.png "Syncplicity")
 
-9. 在“单一登录(SSO)”对话框页上，执行以下步骤：
+1. 在“单一登录(SSO)”对话框页上，执行以下步骤：
    
     ![单一登录\(\)SSO](./media/syncplicity-tutorial/ic769550.png "Single Sign-On \\\(SSO\\\)")   
 
@@ -172,15 +172,15 @@ ms.locfileid: "36223811"
 
     ![创建 Azure AD 测试用户](./media/syncplicity-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
     ![创建 Azure AD 测试用户](./media/syncplicity-tutorial/create_aaduser_02.png) 
 
-3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
  
     ![创建 Azure AD 测试用户](./media/syncplicity-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/syncplicity-tutorial/create_aaduser_04.png) 
 
@@ -199,13 +199,13 @@ ms.locfileid: "36223811"
 
 1. 登录到 **Syncplicity** 租户（例如：`https://company.Syncplicity.com`）。
 
-2. 单击“管理员”，然后选择“用户帐户”。
+1. 单击“管理员”，然后选择“用户帐户”。
 
-3. 单击“添加用户”。
+1. 单击“添加用户”。
    
     ![管理用户](./media/syncplicity-tutorial/ic769764.png "管理用户")
 
-4. 键入要预配的 AAD 帐户的**电子邮件地址**，为“角色”选择“用户”，然后单击“下一步”。
+1. 键入要预配的 AAD 帐户的**电子邮件地址**，为“角色”选择“用户”，然后单击“下一步”。
    
     ![帐户信息](./media/syncplicity-tutorial/ic769765.png "帐户信息")
    
@@ -213,7 +213,7 @@ ms.locfileid: "36223811"
     >AAD 帐户持有者将收到一封电子邮件，其中包含用于确认和激活帐户的链接。 
     > 
 
-5. 选择新用户应属于你的公司中的哪个组，然后单击“下一步”。
+1. 选择新用户应属于你的公司中的哪个组，然后单击“下一步”。
    
     ![组成员身份](./media/syncplicity-tutorial/ic769772.png "组成员身份")
    
@@ -221,7 +221,7 @@ ms.locfileid: "36223811"
     >如果没有列出任何组，请单击“下一步”。 
     > 
 
-6. 在用户计算机上选择要在 Syncplicity 控件下放置的文件夹，然后单击“下一步”。
+1. 在用户计算机上选择要在 Syncplicity 控件下放置的文件夹，然后单击“下一步”。
    
     ![Syncplicity 文件夹](./media/syncplicity-tutorial/ic769773.png "Syncplicity 文件夹")
 
@@ -240,23 +240,23 @@ ms.locfileid: "36223811"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Syncplicity”。
+1. 在应用程序列表中，选择“Syncplicity”。
 
     ![配置单一登录](./media/syncplicity-tutorial/tutorial_syncplicity_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 

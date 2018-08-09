@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: jeedes
-ms.openlocfilehash: b60f80353a6c2a67c5c1602987ba06aad8bd38e1
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f5ea7a330891d4befeb6388bbe7f37b2a4aa848f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224821"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438202"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asana"></a>教程：Azure Active Directory 与 Asana 集成
 
@@ -54,7 +54,7 @@ ms.locfileid: "36224821"
 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Asana
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-asana-from-the-gallery"></a>从库中添加 Asana
 要配置 Asana 与 Azure AD 的集成，需要将库中的 Asana 添加到托管的 SaaS 应用列表。
@@ -65,15 +65,15 @@ ms.locfileid: "36224821"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中，键入“Asana”，在结果面板中选择“Asana”，然后单击“添加”按钮添加该应用程序。
+1. 在搜索框中，键入“Asana”，在结果面板中选择“Asana”，然后单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/asana-tutorial/tutorial_asana_addfromgallery.png)
 
@@ -88,10 +88,10 @@ ms.locfileid: "36224821"
 若要通过 Asana 配置和测试 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. [创建 Asana 测试用户](#create-an-asana-test-user) - 在 Asana 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. [创建 Asana 测试用户](#create-an-asana-test-user) - 在 Asana 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -103,11 +103,11 @@ ms.locfileid: "36224821"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
 
     ![“单一登录”对话框](./media/asana-tutorial/tutorial_asana_samlbase.png)
 
-3. 在“Asana 域和 URL”部分中，执行以下步骤：
+1. 在“Asana 域和 URL”部分中，执行以下步骤：
 
     ![Asana 域和 URL 单一登录信息](./media/asana-tutorial/tutorial_asana_url.png)
 
@@ -115,23 +115,23 @@ ms.locfileid: "36224821"
 
     b. 在“标识符”文本框中，键入值：`https://app.asana.com/`
 
-4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/asana-tutorial/tutorial_asana_certificate.png)
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/asana-tutorial/tutorial_general_400.png)
 
-6. 在“Asana 配置”部分，单击“配置 Asana”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
+1. 在“Asana 配置”部分，单击“配置 Asana”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
 
     ![Asana 配置](./media/asana-tutorial/tutorial_asana_configure.png)
 
-7. 在其他浏览器窗口中，登录 Asana 应用程序。 若要在 Asana 中配置 SSO，请单击屏幕右上角的工作区名称，访问工作区设置。 然后，单击“\<工作区名称\> 设置”。
+1. 在其他浏览器窗口中，登录 Asana 应用程序。 若要在 Asana 中配置 SSO，请单击屏幕右上角的工作区名称，访问工作区设置。 然后，单击“\<工作区名称\> 设置”。
 
     ![Asana SSO 设置](./media/asana-tutorial/tutorial_asana_09.png)
 
-8. 在“组织设置”窗口中，单击“管理”。 然后，单击“成员必须通过 SAML 登录”，启用 SSO 配置。 然后执行以下步骤：
+1. 在“组织设置”窗口中，单击“管理”。 然后，单击“成员必须通过 SAML 登录”，启用 SSO 配置。 然后执行以下步骤：
 
     ![配置单一登录组织设置](./media/asana-tutorial/tutorial_asana_10.png)  
 
@@ -139,7 +139,7 @@ ms.locfileid: "36224821"
 
      b. 右键单击从 Azure 门户下载的证书，然后使用记事本或首选文本编辑器打开证书文件。 复制证书开始和结束标题之间的内容，并将其粘贴在“X.509 证书”文本框中。
 
-9. 单击“ **保存**”。 如果需要进一步的协助，请转到 [“设置 SSO 的 Asana 指南”](https://asana.com/guide/help/premium/authentication#gl-saml)。
+1. 单击“ **保存**”。 如果需要进一步的协助，请转到 [“设置 SSO 的 Asana 指南”](https://asana.com/guide/help/premium/authentication#gl-saml)。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -153,15 +153,15 @@ ms.locfileid: "36224821"
 
     ![“Azure Active Directory”按钮](./media/asana-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/asana-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
 
     ![创建 Azure AD 测试用户](./media/asana-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
 
     ![“添加”按钮](./media/asana-tutorial/create_aaduser_04.png)
 
@@ -185,9 +185,9 @@ ms.locfileid: "36224821"
 
     ![创建 Azure AD 测试用户](./media/asana-tutorial/tutorial_asana_12.png)
 
-2. 在文本框中键入电子邮件 britta.simon@contoso.com，并选择“邀请”。
+1. 在文本框中键入电子邮件 britta.simon@contoso.com，并选择“邀请”。
 
-3. 单击“发送邀请”。 新用户会在电子邮件帐户中收到电子邮件。 她需要创建并验证该帐户。
+1. 单击“发送邀请”。 新用户会在电子邮件帐户中收到电子邮件。 她需要创建并验证该帐户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -201,23 +201,23 @@ ms.locfileid: "36224821"
 
     ![分配用户][201]
 
-2. 在应用程序列表中选择“Asana”。
+1. 在应用程序列表中选择“Asana”。
 
     ![应用程序列表中的 Asana 链接](./media/asana-tutorial/tutorial_asana_app.png)
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

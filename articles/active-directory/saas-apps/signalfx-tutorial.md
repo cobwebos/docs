@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 24a5c1a260cf86f0860e0292c2eb9527f976a363
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 0d21a409669cc7d7fceeec9787efbe31d880597c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040504"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39437842"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signalfx"></a>教程：Azure Active Directory 与 SignalFx 的集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "39040504"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 SignalFx
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-signalfx-from-the-gallery"></a>从库中添加 SignalFx
 若要配置 SignalFx 与 Azure AD 的集成，需要从库中将 SignalFx 添加到托管 SaaS 应用列表。
@@ -64,15 +64,15 @@ ms.locfileid: "39040504"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中，键入“SignalFx”，在结果面板中选择“SignalFx”，然后单击“添加”按钮以添加该应用程序。
+1. 在搜索框中，键入“SignalFx”，在结果面板中选择“SignalFx”，然后单击“添加”按钮以添加该应用程序。
 
     ![结果列表中的 SignalFx](./media/signalfx-tutorial/tutorial_signalfx_addfromgallery.png)
 
@@ -85,10 +85,10 @@ ms.locfileid: "39040504"
 若要配置和测试 SignalFx 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 SignalFx 测试用户](#create-a-signalfx-test-user)** - 在 SignalFx 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 SignalFx 测试用户](#create-a-signalfx-test-user)** - 在 SignalFx 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -100,26 +100,26 @@ ms.locfileid: "39040504"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![“单一登录”对话框](./media/signalfx-tutorial/tutorial_signalfx_samlbase.png)
 
-3. 在“SignalFx 域和 URL”部分中，执行以下步骤：
+1. 在“SignalFx 域和 URL”部分中，执行以下步骤：
 
     ![SignalFx 域和 URL 单一登录信息](./media/signalfx-tutorial/tutorial_signalfx_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，键入一个 URL：`https://api.signalfx.com/v1/saml/metadata`
+    a. 在“标识符”文本框中，键入一个 URL：`https://api.signalfx.com/v1/saml/metadata`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://api.signalfx.com/v1/saml/acs/<integration ID>`
 
     > [!NOTE] 
     > 上面的值不是实际值。 需要使用实际的回复 URL 更新该值（本教程稍后将会介绍）。
 
-4. SignalFx 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示一个示例。   
+1. SignalFx 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示一个示例。   
 
     ![配置单一登录](./media/signalfx-tutorial/tutorial_signalfx_attribute.png)
 
-5. 在“单一登录”对话框的“用户属性”部分，按图中所示配置 SAML 令牌属性，然后执行以下步骤：
+1. 在“单一登录”对话框的“用户属性”部分，按图中所示配置 SAML 令牌属性，然后执行以下步骤：
     
     | 属性名称 | 属性值 |
     | ------------------- | -------------------- |    
@@ -128,7 +128,7 @@ ms.locfileid: "39040504"
     | PersonImmutableID       | user.userprincipalname    |
     | User.LastName       | user.surname    |
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
+    a. 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录 Add](./media/signalfx-tutorial/tutorial_attribute_04.png)
 
@@ -142,37 +142,37 @@ ms.locfileid: "39040504"
     
     e. 单击“确定” 。
  
-6. 在“SAML 签名证书”部分中执行以下步骤： 
+1. 在“SAML 签名证书”部分中执行以下步骤： 
 
     ![证书下载链接](./media/signalfx-tutorial/tutorial_signalfx_certificate.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“复制”按钮，复制**应用联合元数据 URL** 并将其粘贴到记事本。
+    a. 单击“复制”按钮，复制**应用联合元数据 URL** 并将其粘贴到记事本。
 
     b. 单击“证书(Base64)”，然后将证书保存在计算机上。
 
-7. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/signalfx-tutorial/tutorial_general_400.png)
 
-8. 在“SignalFx 配置”部分中，单击“配置 SignalFx”以打开“配置登录”窗口。 从“快速参考”部分复制“SAML 实体 ID”。
+1. 在“SignalFx 配置”部分中，单击“配置 SignalFx”以打开“配置登录”窗口。 从“快速参考”部分复制“SAML 实体 ID”。
 
     ![SignalFx 配置](./media/signalfx-tutorial/tutorial_signalfx_configure.png) 
 
-9. 以管理员身份登录到 SignalFx 公司站点。
+1. 以管理员身份登录到 SignalFx 公司站点。
 
-10. 在 SignalFx 中，在顶部单击“集成”以打开“集成”页。
+1. 在 SignalFx 中，在顶部单击“集成”以打开“集成”页。
 
     ![SignalFx 集成](./media/signalfx-tutorial/tutorial_signalfx_intg.png)
 
-11. 在“登录服务”部分下单击 **Azure Active Directory** 磁贴。
+1. 在“登录服务”部分下单击 **Azure Active Directory** 磁贴。
  
     ![SignalFx SAML](./media/signalfx-tutorial/tutorial_signalfx_saml.png)
 
-12. 单击“新建集成”并在“安装”选项卡下执行以下步骤：
+1. 单击“新建集成”并在“安装”选项卡下执行以下步骤：
  
     ![SignalFx samlintgpage](./media/signalfx-tutorial/tutorial_signalfx_azure.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入一个新的集成名称，例如 **OurOrgName SAML SSO**。
+    a. 在“名称”文本框中，键入一个新的集成名称，例如 **OurOrgName SAML SSO**。
 
     b. 复制“集成 ID”值，在 Azure 门户中将其附加到“SignalFx 域和 URL”部分的“回复 URL”文本框中的“回复 URL”，例如 `https://api.signalfx.com/v1/saml/acs/<integration ID>`。
 
@@ -196,19 +196,19 @@ ms.locfileid: "39040504"
 
     ![“Azure Active Directory”按钮](./media/signalfx-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/signalfx-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/signalfx-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/signalfx-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -237,23 +237,23 @@ ms.locfileid: "39040504"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“SignalFx”。
+1. 在应用程序列表中，选择“SignalFx”。
 
     ![应用程序列表中的 SignalFx 链接](./media/signalfx-tutorial/tutorial_signalfx_app.png)  
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

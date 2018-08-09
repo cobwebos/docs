@@ -16,12 +16,12 @@ ms.workload: web
 ms.date: 07/03/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 929598f9b2d7c3bd4b7c96158486c019d6afc281
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 1d70e6468b8f9944df04e41a6fffb719e0cb8a04
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988766"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435299"
 ---
 # <a name="create-a-function-app-for-serverless-code-execution"></a>创建适合无服务器代码执行的函数应用
 
@@ -49,9 +49,9 @@ ms.locfileid: "38988766"
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
-| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | 创建 Azure 存储帐户。 |
-| [az functionapp create](/cli/azure/functionapp#az_functionapp_create) | 创建 Function App。 |
+| [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
+| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | 创建 Azure 存储帐户。 |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | 创建 Function App。 |
 
 ## <a name="next-steps"></a>后续步骤
 

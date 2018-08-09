@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: danlep
-ms.openlocfilehash: 605db81a7f7c3d5c71992cc51d665b04aa1c589f
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 9a8dadddb129d808e8a127c22b1ae9d0b4fc5568
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29843368"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438920"
 ---
 # <a name="cli-example-create-and-manage-a-linux-pool-in-azure-batch"></a>CLI 示例：在 Azure Batch 中创建和管理 Linux 池
 
@@ -47,17 +47,17 @@ az group delete --name myResourceGroup
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
-| [az batch account create](/cli/azure/batch/account#az_batch_account_create) | 创建批处理帐户。 |
-| [az batch account login](/cli/azure/batch/account#az_batch_account_login) | 针对指定的批处理帐户进行身份验证，以便进一步进行 CLI 交互。  |
-| [az batch pool node-agent-skus list](https://docs.microsoft.com/cli/azure/batch/pool/node-agent-skus#az_batch_pool_node_agent_skus_list) | 列出可用节点代理 SKU 和映像信息。  |
-| [az batch pool create](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_create) | 创建计算节点池。  |
-| [az batch pool resize](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_resize) | 调整指定池中正在运行的 VM 数目。  |
-| [az batch pool show](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_show) | 显示池的属性。  |
-| [az batch node list](https://docs.microsoft.com/cli/azure/batch/node#az_batch_node_list) | 列出指定池中的所有计算节点。  |
-| [az batch node reboot](https://docs.microsoft.com/cli/azure/batch/node#az_batch_node_reboot) | 重新启动指定的计算节点。  |
-| [az batch node delete](https://docs.microsoft.com/cli/azure/batch/node#az_batch_node_delete) | 从指定的池中删除列出的节点。  |
-| [az group delete](/cli/azure/group#az_group_delete) | 删除资源组，包括所有嵌套的资源。 |
+| [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
+| [az batch account create](/cli/azure/batch/account#az-batch-account-create) | 创建批处理帐户。 |
+| [az batch account login](/cli/azure/batch/account#az-batch-account-login) | 针对指定的批处理帐户进行身份验证，以便进一步进行 CLI 交互。  |
+| [az batch pool node-agent-skus list](https://docs.microsoft.com/cli/azure/batch/pool/node-agent-skus#az-batch-pool-node-agent-skus-list) | 列出可用节点代理 SKU 和映像信息。  |
+| [az batch pool create](https://docs.microsoft.com/cli/azure/batch/pool#az-batch-pool-create) | 创建计算节点池。  |
+| [az batch pool resize](https://docs.microsoft.com/cli/azure/batch/pool#az-batch-pool-resize) | 调整指定池中正在运行的 VM 数目。  |
+| [az batch pool show](https://docs.microsoft.com/cli/azure/batch/pool#az-batch-pool-show) | 显示池的属性。  |
+| [az batch node list](https://docs.microsoft.com/cli/azure/batch/node#az-batch-node-list) | 列出指定池中的所有计算节点。  |
+| [az batch node reboot](https://docs.microsoft.com/cli/azure/batch/node#az-batch-node-reboot) | 重新启动指定的计算节点。  |
+| [az batch node delete](https://docs.microsoft.com/cli/azure/batch/node#az-batch-node-delete) | 从指定的池中删除列出的节点。  |
+| [az group delete](/cli/azure/group#az-group-delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 

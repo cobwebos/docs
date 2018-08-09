@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 7705baa0ba912f24d7859110c75d36703aeb4a77
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 4c664fac99e93e94b46f5d917a63aa6530b695bd
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041953"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39437767"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>教程：Azure Active Directory 与 Riskware 的集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "39041953"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Riskware
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-riskware-from-the-gallery"></a>从库中添加 Riskware
 要配置 Riskware 与 Azure AD 的集成，需要从库中将 Riskware 添加到托管 SaaS 应用列表。
@@ -64,15 +64,15 @@ ms.locfileid: "39041953"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中键入“Riskware”，在结果面板中选择“Riskware”，然后单击“添加”按钮添加该应用程序。
+1. 在搜索框中键入“Riskware”，在结果面板中选择“Riskware”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 Riskware](./media/riskware-tutorial/tutorial_riskware_addfromgallery.png)
 
@@ -85,10 +85,10 @@ ms.locfileid: "39041953"
 若要配置和测试 Riskware 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Riskware 测试用户](#create-a-riskware-test-user)** - 在 Riskware 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 Riskware 测试用户](#create-a-riskware-test-user)** - 在 Riskware 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -100,15 +100,15 @@ ms.locfileid: "39041953"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
 
     ![“单一登录”对话框](./media/riskware-tutorial/tutorial_riskware_samlbase.png)
 
-3. 在“Riskware 域和 URL”部分中，执行以下步骤：
+1. 在“Riskware 域和 URL”部分中，执行以下步骤：
 
     ![Riskware 域和 URL 单一登录信息](./media/riskware-tutorial/tutorial_riskware_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，键入使用以下模式的 URL：
+    a. 在“登录 URL”文本框中，键入使用以下模式的 URL：
     | 环境| URL 模式|
     |--|--|
     | UAT|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
@@ -127,33 +127,33 @@ ms.locfileid: "39041953"
     > [!NOTE]
     > “登录 URL”值不是实际值。 请使用实际登录 URL 更新此值。 若要获取此值，请与 [Riskware 客户端支持团队](mailto:support@pansoftware.com.au)联系。
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
+1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![证书下载链接](./media/riskware-tutorial/tutorial_riskware_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/riskware-tutorial/tutorial_general_400.png)
 
-6. 在“Riskware 配置”部分，单击“配置 Riskware”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL 和 SAML 单一登录服务 URL”。
+1. 在“Riskware 配置”部分，单击“配置 Riskware”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL 和 SAML 单一登录服务 URL”。
 
     ![Riskware 配置](./media/riskware-tutorial/tutorial_riskware_configure.png)
 
-7. 在另一 Web 浏览器窗口中，以管理员身份登录到 Riskware 公司站点。
+1. 在另一 Web 浏览器窗口中，以管理员身份登录到 Riskware 公司站点。
 
-8. 在右上角，单击“维护”打开维护页。
+1. 在右上角，单击“维护”打开维护页。
 
     ![Riskware 配置 - 维护](./media/riskware-tutorial/tutorial_riskware_maintain.png)
 
-9. 在维护页中，单击“身份验证”。
+1. 在维护页中，单击“身份验证”。
 
     ![Riskware 配置 - 身份验证](./media/riskware-tutorial/tutorial_riskware_authen.png)
 
-10. 在“身份验证配置”页中执行以下步骤：
+1. 在“身份验证配置”页中执行以下步骤：
 
     ![Riskware 配置 - 身份验证配置](./media/riskware-tutorial/tutorial_riskware_config.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“SAML”作为身份验证的**类型**。
+    a. 选择“SAML”作为身份验证的**类型**。
 
     b. 在“代码”文本框中，键入类似于 AZURE_UAT 的代码。
 
@@ -194,19 +194,19 @@ ms.locfileid: "39041953"
 
     ![“Azure Active Directory”按钮](./media/riskware-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/riskware-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/riskware-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/riskware-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -222,45 +222,45 @@ ms.locfileid: "39041953"
 
 1. 以安全管理员身份登录到 Riskware。
 
-2. 在右上角，单击“维护”打开维护页。 
+1. 在右上角，单击“维护”打开维护页。 
 
     ![Riskware 配置 - 维护](./media/riskware-tutorial/tutorial_riskware_maintain.png)
 
-3. 在维护页中，单击“人员”。
+1. 在维护页中，单击“人员”。
 
     ![Riskware 配置 - 人员](./media/riskware-tutorial/tutorial_riskware_people.png)
 
-4. 选择“详细信息”选项卡，并执行以下步骤：
+1. 选择“详细信息”选项卡，并执行以下步骤：
 
     ![Riskware 配置 - 详细信息](./media/riskware-tutorial/tutorial_riskware_details.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“人员类型”，例如“员工”。
+    a. 选择“人员类型”，例如“员工”。
 
     b. 在“名字”文本框中，输入用户的名字（如“Britta”）。
 
     c. 在“姓氏”文本框中，输入用户的姓氏（如“Simon”）。
 
-5. 在“安全”选项卡中，执行以下步骤：
+1. 在“安全”选项卡中，执行以下步骤：
 
     ![Riskware 配置 - 安全性](./media/riskware-tutorial/tutorial_riskware_security.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“身份验证”部分下，选择设置的“身份验证”模式（例如“AZURE Configuration for SSO”）。
+    a. 在“身份验证”部分下，选择设置的“身份验证”模式（例如“AZURE Configuration for SSO”）。
 
     b. 在“登录详细信息”部分下的“用户 ID”文本框中，输入类似于 **brittasimon@contoso.com** 的用户电子邮件。
 
     c. 在“密码”文本框中，输入用户的密码。
 
-6. 在“组织”选项卡中执行以下步骤：
+1. 在“组织”选项卡中执行以下步骤：
 
     ![Riskware 配置 - 组织](./media/riskware-tutorial/tutorial_riskware_org.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择作为 **Level1** 组织的选项。
+    a. 选择作为 **Level1** 组织的选项。
 
     b. 在“人员的主要工作区”部分下的“位置”文本框中，键入自己的位置。
 
     c. 在“员工”部分下，选择“员工状态”，例如“休假”。
 
-7. 单击“ **保存**”。
+1. 单击“ **保存**”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -274,23 +274,23 @@ ms.locfileid: "39041953"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Riskware”。
+1. 在应用程序列表中，选择“Riskware”。
 
     ![应用程序列表中的 Riskware 链接](./media/riskware-tutorial/tutorial_riskware_app.png)  
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

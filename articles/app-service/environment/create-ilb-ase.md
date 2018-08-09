@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 9fdbfd0338b1c4b6ac863f07e5808ce6ccd9a6c7
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: df4730078b890353c697b0e9213fb66cdb4e7f9b
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347219"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39436686"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>在应用服务环境中创建和使用内部负载均衡器 #
 
@@ -58,17 +58,17 @@ ms.locfileid: "39347219"
 
 1. 在 Azure 门户中选择“创建资源” > “Web + 移动” > “应用服务环境”。
 
-2. 选择订阅。
+1. 选择订阅。
 
-3. 选择或创建资源组。
+1. 选择或创建资源组。
 
-4. 选择或创建 VNet。
+1. 选择或创建 VNet。
 
-5. 如果选择现有 VNet，需要创建子网来存放 ASE。 请确保设置的子网大小应该足够容纳 ASE 未来任何的增长。 建议的大小为 `/24`，其地址长度为 256 位且能够容纳最大尺寸的 ASE，满足任何缩放需求。 
+1. 如果选择现有 VNet，需要创建子网来存放 ASE。 请确保设置的子网大小应该足够容纳 ASE 未来任何的增长。 建议的大小为 `/24`，其地址长度为 256 位且能够容纳最大尺寸的 ASE，满足任何缩放需求。 
 
-6. 选择“虚拟网络/位置” > “虚拟网络配置”。 将“VIP 类型”设置为“内部”。
+1. 选择“虚拟网络/位置” > “虚拟网络配置”。 将“VIP 类型”设置为“内部”。
 
-7. 输入域名。 该域将用于在此 ASE 中创建的应用。 存在一些限制。 不能是：
+1. 输入域名。 该域将用于在此 ASE 中创建的应用。 存在一些限制。 不能是：
 
     * net   
 
@@ -88,7 +88,7 @@ ms.locfileid: "39347219"
 
    如果知道应用的自定义域名，请为 ILB ASE 选择一个不会与这些自定义域名发生冲突的域。 在此示例中，可以为 ASE 的域使用类似于 *contoso internal.com* 的域名，因为它不会与以 *.contoso.com* 结尾的自定义域名发生冲突。
 
-8. 选择“确定”，然后选择“创建”。
+1. 选择“确定”，然后选择“创建”。
 
     ![ASE 创建][1]
 
@@ -105,19 +105,19 @@ ms.locfileid: "39347219"
 
 1. 在 Azure 门户中，选择“创建资源” > “Web + 移动” > “Web 应用”。
 
-2. 输入应用的名称。
+1. 输入应用的名称。
 
-3. 选择订阅。
+1. 选择订阅。
 
-4. 选择或创建资源组。
+1. 选择或创建资源组。
 
-5. 选择 OS。 
+1. 选择 OS。 
 
     * 如果想要使用自定义 Docker 容器创建 Linux 应用，只需按照[此处][linuxapp]的说明自带容器即可。 
 
-6. 选择或创建应用服务计划。 若想创建新的应用服务计划，请选择 ASE 作为位置。 选择希望在其中创建应用服务计划的辅助角色池。 创建应用服务计划时，选择 ASE 作为位置并选择辅助角色池。 指定应用的名称时，应用名称下面的域会替换为 ASE 的域。
+1. 选择或创建应用服务计划。 若想创建新的应用服务计划，请选择 ASE 作为位置。 选择希望在其中创建应用服务计划的辅助角色池。 创建应用服务计划时，选择 ASE 作为位置并选择辅助角色池。 指定应用的名称时，应用名称下面的域会替换为 ASE 的域。
 
-7. 选择**创建**。 如果希望应用显示在仪表板上，请选中“固定到仪表板”复选框。
+1. 选择**创建**。 如果希望应用显示在仪表板上，请选中“固定到仪表板”复选框。
 
     ![应用服务计划创建][2]
 
@@ -156,27 +156,27 @@ ILB ASE 需要有效的 SSL 证书。 可使用内部证书颁发机构、向外
 
 1. 创建 ASE 后，转到 ASE UI。 选择“ASE” > “设置” > “ILB 证书”。
 
-2. 若要设置 ILB 证书，请选择证书 .pfx 文件并输入密码。 此步骤需要一些时间来处理。 系统会显示一条消息，指示正在进行上传操作。
+1. 若要设置 ILB 证书，请选择证书 .pfx 文件并输入密码。 此步骤需要一些时间来处理。 系统会显示一条消息，指示正在进行上传操作。
 
-3. 获取 ASE 的 ILB 地址。 选择“ASE” > “属性” > “虚拟 IP 地址”。
+1. 获取 ASE 的 ILB 地址。 选择“ASE” > “属性” > “虚拟 IP 地址”。
 
-4. 创建 ASE 后，在 ASE 中创建 Web 应用。
+1. 创建 ASE 后，在 ASE 中创建 Web 应用。
 
-5. 如果在该 VNet 中还没有 VM，请创建一个。
+1. 如果在该 VNet 中还没有 VM，请创建一个。
 
     > [!NOTE] 
     > 请勿尝试在 ASE 的同一子网中创建此 VM，因为该操作会失败或导致问题。
     >
 
-6. 设置 ASE 域的 DNS。 可以在 DNS 中将通配符与域结合使用。 若要执行一些简单测试，可编辑 VM 上的主机文件，将 Web 应用名称设置为 VIP IP 地址：
+1. 设置 ASE 域的 DNS。 可以在 DNS 中将通配符与域结合使用。 若要执行一些简单测试，可编辑 VM 上的主机文件，将 Web 应用名称设置为 VIP IP 地址：
 
     a. 如果 ASE 域名为 _.ilbase.com_，并且创建的 Web 应用名为 _mytestapp_，则它所在的地址为 _mytestapp.ilbase.com_。 然后设置 _mytestapp.ilbase.com_ 以解析为 ILB 地址。 （在 Windows 上，主机文件位于 _C:\Windows\System32\drivers\etc\_。）
 
     b. 若要测试 Web 部署发布或访问高级控制台，请为 _mytestapp.scm.ilbase.com_ 创建一条记录。
 
-7. 在该 VM 上使用浏览器并转到 http://mytestapp.ilbase.com。 （或者转到域中的任意 Web 应用名称。）
+1. 在该 VM 上使用浏览器并转到 http://mytestapp.ilbase.com。 （或者转到域中的任意 Web 应用名称。）
 
-8. 在该 VM 上使用浏览器并转到 https://mytestapp.ilbase.com。 如果使用自签名证书，则需接受安全性不足的缺点。
+1. 在该 VM 上使用浏览器并转到 https://mytestapp.ilbase.com。 如果使用自签名证书，则需接受安全性不足的缺点。
 
     ILB 的 IP 地址在“IP 地址”下列出。 此列表还包含由外部 VIP 用于入站流量管理的 IP 地址。
 

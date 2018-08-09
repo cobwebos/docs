@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
 ms.author: jeedes
-ms.openlocfilehash: c8ec2b8e312b9bedbd19cb203c0a59177c7fd6a5
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 8001f2d38ac80bb6c67419faa54bf834531f0332
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39265006"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39439396"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>教程：Azure Active Directory 与 G Suite 集成
 
@@ -56,19 +56,19 @@ ms.locfileid: "39265006"
     答：是的。 Google Cloud Platform 和 Google Apps 共用同一个身份验证平台。 因此，若要实现 GCP 集成，需要配置 Google Apps 的 SSO。
 
 
-2. **问：Chromebook 和其他 Chrome 设备是否与 Azure AD 单一登录兼容？**
+1. **问：Chromebook 和其他 Chrome 设备是否与 Azure AD 单一登录兼容？**
    
     答：是的，用户能够使用 Azure AD 凭据登录到 Chromebook 设备。 若要了解为何有时用户会两次收到输入凭据的提示，请参阅此 [G Suite 支持文章](https://support.google.com/chrome/a/answer/6060880)。
 
-3. **问：如果我启用单一登录，用户能够使用他们的 Azure AD 凭据登录到任何 Google 产品（例如 Google Classroom、GMail、Google Drive、YouTube 等）吗？**
+1. **问：如果我启用单一登录，用户能够使用他们的 Azure AD 凭据登录到任何 Google 产品（例如 Google Classroom、GMail、Google Drive、YouTube 等）吗？**
    
     答：可以，具体取决于选择为组织启用或禁用的 [G Suite](https://support.google.com/a/answer/182442?hl=en&ref_topic=1227583)。
 
-4. **问：能否仅为 G Suite 用户子集启用单一登录？**
+1. **问：能否仅为 G Suite 用户子集启用单一登录？**
    
     答：不可以，启用单一登录会立即要求所有 G Suite 用户使用其 Azure AD 凭据进行身份验证。 由于 G Suite 不支持具有多个标识提供者，因此，G Suite 环境的标识提供者可以是 Azure AD 或 Google - 但不能同时为两者。
 
-5. **问：如果用户通过 Windows 登录，他们是否会自动进行 G Suite 身份验证而不会收到输入密码的提示？**
+1. **问：如果用户通过 Windows 登录，他们是否会自动进行 G Suite 身份验证而不会收到输入密码的提示？**
    
     答：有两种用于启用此方案的选项。 第一种，用户可通过 [Azure Active Directory Join](../device-management-introduction.md) 登录到 Windows 10 设备。 或者，用户可以登录到通过域加入的方式加入到一个本地 Active Directory（已通加 [Active Directory 联合身份验证服务 (AD FS)](../connect/active-directory-aadconnect-user-signin.md) 部署启用 Azure AD 单一登录）的 Windows 设备。 两种选项都要求执行以下教程中的步骤，以在 Azure AD 和 G Suite 之间启用单一登录。
 
@@ -76,7 +76,7 @@ ms.locfileid: "39265006"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库添加 G Suite
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-g-suite-from-the-gallery"></a>从库添加 G Suite
 若要配置 G Suite 与 Azure AD 的集成，需要从库中将 G Suite 添加到托管 SaaS 应用列表。
@@ -87,15 +87,15 @@ ms.locfileid: "39265006"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中键入“G Suite”，在结果面板中选择“G Suite”，然后单击“添加”按钮添加该应用程序。
+1. 在搜索框中键入“G Suite”，在结果面板中选择“G Suite”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 G Suite](./media/google-apps-tutorial/tutorial_googleapps_addfromgallery.png)
 
@@ -110,10 +110,10 @@ ms.locfileid: "39265006"
 若要配置和测试 G Suite 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 G Suite 测试用户](#create-a-g-suite-test-user)** - 在 G Suite 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 G Suite 测试用户](#create-a-g-suite-test-user)** - 在 G Suite 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -125,11 +125,11 @@ ms.locfileid: "39265006"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
 
     ![“单一登录”对话框](./media/google-apps-tutorial/tutorial_googleapps_samlbase.png)
 
-3. 在“G Suite 域和 URL”部分，如果想要为 **Gmail** 进行配置，请执行以下步骤：
+1. 在“G Suite 域和 URL”部分，如果想要为 **Gmail** 进行配置，请执行以下步骤：
 
     ![G Suite 域和 URL 单一登录信息](./media/google-apps-tutorial/tutorial_googleapps_urlgmail.png)
 
@@ -146,7 +146,7 @@ ms.locfileid: "39265006"
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [G Suite 客户端支持团队](https://www.google.com/contact/)获取这些值。
 
-4. 在“G Suite 域和 URL”部分，如果想要为 **Google Cloud Platform** 进行配置，请执行以下步骤：
+1. 在“G Suite 域和 URL”部分，如果想要为 **Google Cloud Platform** 进行配置，请执行以下步骤：
 
     ![G Suite 域和 URL 单一登录信息](./media/google-apps-tutorial/tutorial_googleapps_url1.png)
 
@@ -163,29 +163,29 @@ ms.locfileid: "39265006"
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [G Suite 客户端支持团队](https://www.google.com/contact/)获取这些值。 
 
-5. 在“SAML 签名证书”部分中单击“证书”，然后在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中单击“证书”，然后在计算机上保存证书文件。
 
     ![证书下载链接](./media/google-apps-tutorial/tutorial_googleapps_certificate.png) 
 
-6. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/google-apps-tutorial/tutorial_general_400.png)
 
-7. 在“G Suite 配置”部分，单击“配置 G Suite”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL、SAML 单一登录服务 URL 和更改密码 URL”。
+1. 在“G Suite 配置”部分，单击“配置 G Suite”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL、SAML 单一登录服务 URL 和更改密码 URL”。
 
     ![G Suite 配置](./media/google-apps-tutorial/tutorial_googleapps_configure.png) 
 
-8. 在浏览器中打开新选项卡并使用管理员帐户登录到 [G Suite 管理员控制台](http://admin.google.com/)。
+1. 在浏览器中打开新选项卡并使用管理员帐户登录到 [G Suite 管理员控制台](http://admin.google.com/)。
 
-9. 单击“安全”。 如果没有看到该链接，它可能被隐藏在屏幕底部的“其他控件”菜单下。
+1. 单击“安全”。 如果没有看到该链接，它可能被隐藏在屏幕底部的“其他控件”菜单下。
    
     ![单击“安全”。][10]
 
-10. 在“安全”页上单击“设置单一登录 (SSO)”。
+1. 在“安全”页上单击“设置单一登录 (SSO)”。
    
     ![单击“SSO”。][11]
 
-11. 执行以下配置更改：
+1. 执行以下配置更改：
    
     ![配置 SSO][12]
    
@@ -219,15 +219,15 @@ ms.locfileid: "39265006"
 
     ![“Azure Active Directory”按钮](./media/google-apps-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/google-apps-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/google-apps-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/google-apps-tutorial/create_aaduser_04.png)
 
@@ -258,23 +258,23 @@ ms.locfileid: "39265006"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“G Suite”。
+1. 在应用程序列表中，选择“G Suite”。
 
     ![应用程序列表中的 G Suite 链接](./media/google-apps-tutorial/tutorial_googleapps_app.png)  
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2018
 ms.author: weig
-ms.openlocfilehash: 7d9d63d6c3d5c8ccf1777a46832457670d307d4a
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 46d156ce09b1ebcdcceb27ede6e7fa1595d30da6
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970853"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39439491"
 ---
 # <a name="data-science-code-testing-with-the-uci-adult-income-prediction-dataset"></a>使用 UCI 成人收入预测数据集进行数据科学代码测试
 本文提供的初步指导适用于在数据科学工作流中测试代码。 数据科学家可以通过此类测试以系统且有效的方式查看其代码的质量和预期结果。 我们使用的 Team Data Science Process (TDSP) [项目使用 UCI 成人收入数据集](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome)，该数据集是我们以前发布的，目的是演示代码测试方法。 
@@ -60,11 +60,11 @@ ms.locfileid: "38970853"
 
     ![解决方案资源管理器](./media/code-test/solution_explorer_in_vs.PNG)
 
-3. 将项目代码馈送到 VSTS 项目代码存储库中： 
+1. 将项目代码馈送到 VSTS 项目代码存储库中： 
 
     ![项目代码存储库](./media/code-test/create_repo.PNG)
 
-4. 假定你已经完成了一些数据准备工作，例如数据引入、特征工程、标签列的创建。 你需要确保代码生成预期的结果。 下面是一些可以用来测试数据处理代码是否正常运行的代码：
+1. 假定你已经完成了一些数据准备工作，例如数据引入、特征工程、标签列的创建。 你需要确保代码生成预期的结果。 下面是一些可以用来测试数据处理代码是否正常运行的代码：
 
     * 检查列名是否正确：
     
@@ -83,7 +83,7 @@ ms.locfileid: "38970853"
       ![检查未命中率的代码](./media/code-test/check_missing_rate.PNG)
 
 
-5. 完成数据处理和特征工程工作并训练出良好模型以后，请确保训练的模型能够正确地为新数据集评分。 可以使用下述两项测试来检查标签值的预测级别和分布：
+1. 完成数据处理和特征工程工作并训练出良好模型以后，请确保训练的模型能够正确地为新数据集评分。 可以使用下述两项测试来检查标签值的预测级别和分布：
 
     * 检查预测级别：
     
@@ -93,58 +93,58 @@ ms.locfileid: "38970853"
 
       ![用于检查预测值的代码](./media/code-test/check_prediction_values.PNG)
 
-6. 将所有测试函数一起放到名为 **test_funcs.py** 的 Python 脚本中：
+1. 将所有测试函数一起放到名为 **test_funcs.py** 的 Python 脚本中：
 
     ![用于测试函数的 Python 脚本](./media/code-test/create_file_test_func.PNG)
 
 
-7. 准备好测试代码以后，即可在 Visual Studio 中设置测试环境。
+1. 准备好测试代码以后，即可在 Visual Studio 中设置测试环境。
 
    创建名为 **test1.py** 的 Python 文件。 在此文件中创建一个类，其中包括要完成的所有测试。 以下示例显示了六个准备好的测试：
     
     ![类中包含一系列测试的 Python 文件](./media/code-test/create_file_test1_class.PNG)
 
-8. 如果将 **codetest.testCase** 置于类名之后，则可自动发现这些测试。 打开右窗格中的测试资源管理器，然后选择“全部运行”。 所有测试都会按顺序运行，并且会告知测试是否成功。
+1. 如果将 **codetest.testCase** 置于类名之后，则可自动发现这些测试。 打开右窗格中的测试资源管理器，然后选择“全部运行”。 所有测试都会按顺序运行，并且会告知测试是否成功。
 
     ![运行测试](./media/code-test/run_tests.PNG)
 
-9. 使用 Git 命令将代码签入项目存储库中。 最新的工作会很快反映在 VSTS 中。
+1. 使用 Git 命令将代码签入项目存储库中。 最新的工作会很快反映在 VSTS 中。
 
     ![用于签入代码的 Git 命令](./media/code-test/git_check_in.PNG)
 
     ![VSTS 中的最新工作](./media/code-test/git_check_in_most_recent_work.PNG)
 
-10. 在 VSTS 中设置自动生成和测试：
+1. 在 VSTS 中设置自动生成和测试：
 
     a. 在项目存储库中选择“生成并发布”，然后选择“+新建”以创建新的生成过程。
 
-       ![用于启动新生成过程的选择](./media/code-test/create_new_build.PNG)
+       ![Selections for starting a new build process](./media/code-test/create_new_build.PNG)
 
     b. 按提示选择源代码位置、项目名称、存储库和分库信息。
     
-       ![源、名称、存储库和分库信息](./media/code-test/fill_in_build_info.PNG)
+       ![Source, name, repository, and branch information](./media/code-test/fill_in_build_info.PNG)
 
     c. 选择模板。 由于没有 Python 项目模板，请一开始选择“空进程”。 
 
-       ![模板列表和“空进程”按钮](./media/code-test/start_empty_process_template.PNG)
+       ![List of templates and "Empty process" button](./media/code-test/start_empty_process_template.PNG)
 
     d. 为生成命名并选择代理。 如果需要使用 DSVM 来完成生成过程，可以选择此处的默认设置。 有关如何设置代理的详细信息，请参阅 [Build and release agents](https://docs.microsoft.com/vsts/build-release/concepts/agents/agents?view=vsts)（生成并发布代理）。
     
-       ![生成和代理选择](./media/code-test/select_agent.PNG)
+       ![Build and agent selections](./media/code-test/select_agent.PNG)
 
     e. 在左窗格中选择“+”，添加适合此生成阶段的任务。 由于我们将运行 Python 脚本 **test1.py** 来完成所有检查，因此此任务将使用 PowerShell 命令来运行 Python 代码。
     
-       ![“添加任务”窗格，其中的 PowerShell 已选中](./media/code-test/add_task_powershell.PNG)
+       !["Add tasks" pane with PowerShell selected](./media/code-test/add_task_powershell.PNG)
 
     f. 在 PowerShell 详细信息中填写所需的信息，例如 PowerShell 的名称和版本。 选择“内联脚本”作为类型。 
     
-       在“内联脚本”下的框中，可以键入 **python test1.py**。 确保为 Python 正确设置环境变量。 如果需要其他版本或核心的 Python，可以显式指定路径，如图所示： 
+       In the box under **Inline Script**, you can type **python test1.py**. Make sure the environment variable is set up correctly for Python. If you need a different version or kernel of Python, you can explicitly specify the path as shown in the figure: 
     
-       ![PowerShell 详细信息](./media/code-test/powershell_scripts.PNG)
+       ![PowerShell details](./media/code-test/powershell_scripts.PNG)
 
     g. 选择“保存并排队”，完成生成定义过程。
 
-       ![“保存并排队”按钮](./media/code-test/save_and_queue_build_definition.PNG)
+       !["Save & queue" button](./media/code-test/save_and_queue_build_definition.PNG)
 
 现在，每次将新提交的内容推送到代码存储库时，生成过程就会自动启动。 （在这里，我们使用 master 作为存储库，但你可以定义任何分库。）此过程运行代理计算机中的 **test1.py** 文件，目的是确保代码中定义的所有内容都能正确运行。 
 

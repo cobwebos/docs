@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 7bb15323a1f4ead02a24c4ee451de8890a635032
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 367310527619d4bdb5f84a80c567a9d83698846e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39053031"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433756"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fluxx-labs"></a>教程：Azure Active Directory 与 Fluxx Labs 集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "39053031"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Fluxx Labs
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-fluxx-labs-from-the-gallery"></a>从库中添加 Fluxx Labs
 要配置 Fluxx Labs 与 Azure AD 的集成，需要从库中将 Fluxx Labs 添加到托管 SaaS 应用列表。
@@ -63,15 +63,15 @@ ms.locfileid: "39053031"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中，键入“Fluxx Labs”，在结果面板中选择“Fluxx Labs”，然后单击“添加”按钮添加该应用程序。
+1. 在搜索框中，键入“Fluxx Labs”，在结果面板中选择“Fluxx Labs”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 Fluxx Labs](./media/fluxxlabs-tutorial/tutorial_fluxxlabs_addfromgallery.png)
 
@@ -86,10 +86,10 @@ ms.locfileid: "39053031"
 若要配置并测试 Fluxx Labs 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Fluxx Labs 测试用户](#create-a-fluxx-labs-test-user)** - 在 Fluxx Labs 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 Fluxx Labs 测试用户](#create-a-fluxx-labs-test-user)** - 在 Fluxx Labs 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -101,15 +101,15 @@ ms.locfileid: "39053031"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
 
     ![“单一登录”对话框](./media/fluxxlabs-tutorial/tutorial_fluxxlabs_samlbase.png)
 
-3. 在“Fluxx Labs 域和 URL”部分执行以下步骤：
+1. 在“Fluxx Labs 域和 URL”部分执行以下步骤：
 
     ![Fluxx Labs 域和 URL 单一登录信息](./media/fluxxlabs-tutorial/tutorial_fluxxlabs_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：
+    a. 在“标识符”文本框中，使用以下模式键入 URL：
 
     | 环境 | URL 模式|
     |-------------|------------|
@@ -126,33 +126,33 @@ ms.locfileid: "39053031"
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 若要获取这些值，请联系 [Fluxx Labs 支持团队](mailto:travis@fluxxlabs.com)。
 
-4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/fluxxlabs-tutorial/tutorial_fluxxlabs_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/fluxxlabs-tutorial/tutorial_general_400.png)
 
-6. 在“Fluxx Labs 配置”部分，单击“配置 Fluxx Labs”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
+1. 在“Fluxx Labs 配置”部分，单击“配置 Fluxx Labs”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
 
     ![Fluxx Labs 配置](./media/fluxxlabs-tutorial/tutorial_fluxxlabs_configure.png)
 
-7. 在其他 Web 浏览器窗口中，以管理员身份登录 Fluxx Labs 公司站点。
+1. 在其他 Web 浏览器窗口中，以管理员身份登录 Fluxx Labs 公司站点。
 
-8. 在“设置”部分下，选择“管理员”。
+1. 在“设置”部分下，选择“管理员”。
 
     ![Fluxx Labs 配置](./media/fluxxlabs-tutorial/config1.png)
 
-9. 在管理面板中，选择“插件” > “集成”，然后选择“SAML SSO (已禁用)”
+1. 在管理面板中，选择“插件” > “集成”，然后选择“SAML SSO (已禁用)”
 
     ![Fluxx Labs 配置](./media/fluxxlabs-tutorial/config2.png)
 
-10. 在属性部分执行以下步骤：
+1. 在属性部分执行以下步骤：
 
     ![Fluxx Labs 配置](./media/fluxxlabs-tutorial/config3.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选中“SAML SSO”复选框。
+    a. 选中“SAML SSO”复选框。
 
     b. 在“请求路径”文本框中，键入 **/auth/saml**。
 
@@ -185,19 +185,19 @@ ms.locfileid: "39053031"
 
     ![“Azure Active Directory”按钮](./media/fluxxlabs-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/fluxxlabs-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/fluxxlabs-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/fluxxlabs-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -213,19 +213,19 @@ ms.locfileid: "39053031"
 
 1. 以管理员身份登录到 Fluxx Labs 公司站点。
 
-2. 单击下面显示的**图标**。
+1. 单击下面显示的**图标**。
 
     ![Fluxx Labs 配置](./media/fluxxlabs-tutorial/config6.png)
 
-3. 在仪表板中，单击下面显示的图标打开“新建人员”卡。
+1. 在仪表板中，单击下面显示的图标打开“新建人员”卡。
 
     ![Fluxx Labs 配置](./media/fluxxlabs-tutorial/config4.png)
 
-4. 在“新建人员”部分中，执行以下步骤：
+1. 在“新建人员”部分中，执行以下步骤：
 
     ![Fluxx Labs 配置](./media/fluxxlabs-tutorial/config5.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 Fluxx Labs 使用电子邮件作为 SSO 登录名的唯一标识符。 在“SSO UID”字段中填写用户的电子邮件地址，该值与他们进行 SSO 登录时使用的电子邮件地址匹配。
+    a. Fluxx Labs 使用电子邮件作为 SSO 登录名的唯一标识符。 在“SSO UID”字段中填写用户的电子邮件地址，该值与他们进行 SSO 登录时使用的电子邮件地址匹配。
 
     b. 单击“ **保存**”。
 
@@ -241,23 +241,23 @@ ms.locfileid: "39053031"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Fluxx Labs”。
+1. 在应用程序列表中，选择“Fluxx Labs”。
 
     ![应用程序列表中的 Fluxx Labs 链接](./media/fluxxlabs-tutorial/tutorial_fluxxlabs_app.png)  
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: ae49e60188c554a2eaa0221c05b49ca67c835f0c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b79fa31aed1a264ba52675857c9a80dc65746173
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39055930"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434082"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>教程：Azure Active Directory 与 TargetProcess 集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "39055930"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库添加 TargetProcess
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="add-targetprocess-from-the-gallery"></a>从库添加 TargetProcess
 要配置 TargetProcess 与 Azure AD 的集成，需要从库中将 TargetProcess 添加到托管 SaaS 应用列表。
@@ -64,15 +64,15 @@ ms.locfileid: "39055930"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入“TargetProcess”，在结果面板中选择“TargetProcess”，然后单击“添加”按钮，添加应用程序。
+1. 在搜索框中，键入“TargetProcess”，在结果面板中选择“TargetProcess”，然后单击“添加”按钮，添加应用程序。
 
     ![从库添加 TargetProcess](./media/target-process-tutorial/tutorial_target-process_addfromgallery.png)
 
@@ -86,10 +86,10 @@ ms.locfileid: "39055930"
 若要配置和测试 TargetProcess 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. [创建 TargetProcess 测试用户](#create-a-targetprocess-test-user) - 在 TargetProcess 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. [创建 TargetProcess 测试用户](#create-a-targetprocess-test-user) - 在 TargetProcess 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -101,52 +101,52 @@ ms.locfileid: "39055930"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![基于 SAML 的登录](./media/target-process-tutorial/tutorial_target-process_samlbase.png)
 
-3. 在“TargetProcess 域和 URL”部分中，执行以下步骤：
+1. 在“TargetProcess 域和 URL”部分中，执行以下步骤：
 
     ![“TargetProcess 域和 URL”部分](./media/target-process-tutorial/tutorial_target-process_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.tpondemand.com/`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.tpondemand.com/`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.tpondemand.com/`
 
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [TargetProcess 客户端支持团队](mailto:support@targetprocess.com)获取这些值。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![“SAML 签名证书”部分](./media/target-process-tutorial/tutorial_target-process_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![“保存”按钮](./media/target-process-tutorial/tutorial_general_400.png)
 
-6. 在“TargetProcess 配置”部分，单击“配置 TargetProcess”，打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
+1. 在“TargetProcess 配置”部分，单击“配置 TargetProcess”，打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
 
     ![“TargetProcess 配置”部分](./media/target-process-tutorial/tutorial_target-process_configure.png) 
 
-7. 以管理员身份登录 TargetProcess 应用程序。
+1. 以管理员身份登录 TargetProcess 应用程序。
 
-8. 在顶部菜单中，单击“设置”。
+1. 在顶部菜单中，单击“设置”。
    
     ![设置](./media/target-process-tutorial/tutorial_target_process_05.png)
 
-9. 单击“设置”。
+1. 单击“设置”。
    
     ![设置](./media/target-process-tutorial/tutorial_target_process_06.png) 
 
-10. 单击“单一登录”。
+1. 单击“单一登录”。
    
     ![单击“单一登录”](./media/target-process-tutorial/tutorial_target_process_07.png) 
 
-11. 在“单一登录设置”对话框上，执行以下步骤：
+1. 在“单一登录设置”对话框上，执行以下步骤：
    
     ![配置单一登录](./media/target-process-tutorial/tutorial_target_process_08.png)
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“启用单一登录”。
+    a. 单击“启用单一登录”。
     
     b. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
@@ -171,19 +171,19 @@ ms.locfileid: "39055930"
 
     ![创建 Azure AD 测试用户](./media/target-process-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
     ![显示用户列表](./media/target-process-tutorial/create_aaduser_02.png) 
 
-3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
  
     ![“添加”按钮](./media/target-process-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![“用户”部分](./media/target-process-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -211,23 +211,23 @@ TargetProcess 支持实时预配。 已在[配置 Azure AD 单一登录](#config
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“TargetProcess”。
+1. 在应用程序列表中，选择“TargetProcess”。
 
     ![应用列表中的 TargetProcess](./media/target-process-tutorial/tutorial_target-process_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

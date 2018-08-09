@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: d6235f3a425481a13e627d683bb4c3943b473b40
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 25d40b6a72ab6da61feb1458f5930eb48ef1d900
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311071"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39436295"
 ---
 # <a name="set-up-a-common-identity-on-the-data-science-virtual-machine"></a>在数据科学虚拟机上设置通用标识
 
@@ -60,12 +60,12 @@ Azure AD DS 在 Azure 上提供完全托管的服务，简化了标识管理。 
     
    h. 以安全方式将生成的密码分发给新用户，以便用户可以登录。
 
-2. 创建 Azure AD DS 实例。 按照“[使用 Azure 门户启用 Azure Active Directory 域服务](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started)”一文（任务 1 到任务 5）中的说明操作。 必须更新 Active Directory 中的现有用户密码，以便同步 Azure AD DS 中的密码。 此外还必须将 DNS 添加到 Azure AD DS，如上文的任务 4 中描述的那样。 
+1. 创建 Azure AD DS 实例。 按照“[使用 Azure 门户启用 Azure Active Directory 域服务](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started)”一文（任务 1 到任务 5）中的说明操作。 必须更新 Active Directory 中的现有用户密码，以便同步 Azure AD DS 中的密码。 此外还必须将 DNS 添加到 Azure AD DS，如上文的任务 4 中描述的那样。 
 
-3. 在上一步骤的任务 2 所创建的虚拟网络中创建单独的 DSVM 子网。
-4. 在 DSVM 子网中创建一个或多个数据科学 VM 实例。 
-5. 请按照[说明](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-join-ubuntu-linux-vm )将 DSVM 添加到 Active Directory。 
-6. 装载用于托管主目录或笔记本目录的共享 Azure 文件，以便在任何计算机上装载工作区。 （如果需要严格的文件级别权限，则需在一个或多个 VM 上运行 NFS。）
+1. 在上一步骤的任务 2 所创建的虚拟网络中创建单独的 DSVM 子网。
+1. 在 DSVM 子网中创建一个或多个数据科学 VM 实例。 
+1. 请按照[说明](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-join-ubuntu-linux-vm )将 DSVM 添加到 Active Directory。 
+1. 装载用于托管主目录或笔记本目录的共享 Azure 文件，以便在任何计算机上装载工作区。 （如果需要严格的文件级别权限，则需在一个或多个 VM 上运行 NFS。）
 
    a. [创建 Azure 文件共享](../../storage/files/storage-how-to-create-file-share.md)。
     
@@ -74,8 +74,8 @@ Azure AD DS 在 Azure 上提供完全托管的服务，简化了标识管理。 
    ```
    sudo mount -t cifs //[STORAGEACCT].file.core.windows.net/workspace [Your mount point] -o vers=3.0,username=[STORAGEACCT],password=[Access Key or SAS],dir_mode=0777,file_mode=0777,sec=ntlmssp
    ```
-7. 例如，假设你将共享 Azure 文件装载在 /data/workspace 中。 现在为共享中的每个用户创建目录：/data/workspace/user1、/data/workspace/user2，依次类推。 在每个用户的工作区中创建 `notebooks` 目录。 
-8. 在 `$HOME/userx/notebooks/remote` 中为 `notebooks` 创建符号链接。   
+1. 例如，假设你将共享 Azure 文件装载在 /data/workspace 中。 现在为共享中的每个用户创建目录：/data/workspace/user1、/data/workspace/user2，依次类推。 在每个用户的工作区中创建 `notebooks` 目录。 
+1. 在 `$HOME/userx/notebooks/remote` 中为 `notebooks` 创建符号链接。   
 
 现在，你拥有 Azure 中托管的 Active Directory 实例中的用户。 通过使用 Active Directory 凭据，用户可以登录到已加入 Azure AD DS 的任何 DSVM（SSH 或 JupyterHub）。 由于用户工作区位于共享 Azure 文件上，因此用户在使用 JupyterHub 时，可以访问其笔记本以及 DSVM 中的任何其他工作。 
 

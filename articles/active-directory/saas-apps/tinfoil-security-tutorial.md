@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 1ad18bd1aea36c5f185f7a8e3062b1c2103017c5
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 4f25768cc7e4f5865c6cfa96ebfe3b0df97deeb6
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049783"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421366"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tinfoil-security"></a>教程：Azure Active Directory 与 TINFOIL SECURITY 集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "39049783"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 TINFOIL SECURITY
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="add-tinfoil-security-from-the-gallery"></a>从库中添加 TINFOIL SECURITY
 若要配置 TINFOIL SECURITY 与 Azure AD 的集成，需从库中将 TINFOIL SECURITY 添加到托管 SaaS 应用列表。
@@ -64,15 +64,15 @@ ms.locfileid: "39049783"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入“TINFOIL SECURITY”，从结果面板中选择“TINFOIL SECURITY”，然后单击“添加”按钮添加该应用程序。
+1. 在搜索框中，键入“TINFOIL SECURITY”，从结果面板中选择“TINFOIL SECURITY”，然后单击“添加”按钮添加该应用程序。
 
     ![库中的 TINFOIL SECURITY](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_addfromgallery.png)
 
@@ -86,10 +86,10 @@ ms.locfileid: "39049783"
 若要配置并测试 TINFOIL SECURITY 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 TINFOIL SECURITY 测试用户](#create-a-tinfoil-security-test-user)** - 在 TINFOIL SECURITY 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 TINFOIL SECURITY 测试用户](#create-a-tinfoil-security-test-user)** - 在 TINFOIL SECURITY 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -101,20 +101,20 @@ ms.locfileid: "39049783"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![基于 SAML 的登录](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_samlbase.png)
 
-3. 在“TINFOIL SECURITY 域和 URL”部分中，用户不必执行任何步骤，因为该应用已经与 Azure 预先集成。
+1. 在“TINFOIL SECURITY 域和 URL”部分中，用户不必执行任何步骤，因为该应用已经与 Azure 预先集成。
 
     ![配置单一登录](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_url.png)
 
 
-4. 在“SAML 签名证书”部分中，复制“指纹”值。
+1. 在“SAML 签名证书”部分中，复制“指纹”值。
 
     ![“SAML 签名证书”部分](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_certificate.png) 
 
-5. 若要添加所需的属性映射，请执行以下步骤：
+1. 若要添加所需的属性映射，请执行以下步骤：
     
     ![属性](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_attribute1.png "属性")
     
@@ -122,7 +122,7 @@ ms.locfileid: "39049783"
     | ------------------- | -------------------- |
     | 帐户 ID | UXXXXXXXXXXXXX |
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加用户属性”。
+    a. 单击“添加用户属性”。
     
     ![添加属性](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_attribute.png "属性")
     
@@ -134,29 +134,29 @@ ms.locfileid: "39049783"
     
     d. 单击“确定” 。    
 
-6. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![“保存”按钮](./media/tinfoil-security-tutorial/tutorial_general_400.png)
 
-7. 在“TINFOIL SECURITY 配置”部分中，单击“配置 TINFOIL SECURITY”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
+1. 在“TINFOIL SECURITY 配置”部分中，单击“配置 TINFOIL SECURITY”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
 
     ![TINFOIL SECURITY 配置](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_configure.png) 
 
-8. 在另一 Web 浏览器窗口中，以管理员身份登录 TINFOIL SECURITY 公司站点。
+1. 在另一 Web 浏览器窗口中，以管理员身份登录 TINFOIL SECURITY 公司站点。
 
-9. 在顶部菜单栏中，单击“我的帐户”。
+1. 在顶部菜单栏中，单击“我的帐户”。
    
     ![仪表板](./media/tinfoil-security-tutorial/ic798971.png "Dashboard")
 
-10. 单击“安全”。
+1. 单击“安全”。
    
     ![安全](./media/tinfoil-security-tutorial/ic798972.png "安全")
 
-11. 在“单一登录”配置页上，执行以下步骤：
+1. 在“单一登录”配置页上，执行以下步骤：
    
     ![单一登录](./media/tinfoil-security-tutorial/ic798973.png "单一登录")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“启用 SAML”。
+    a. 选择“启用 SAML”。
    
     b. 单击“手动配置”。
    
@@ -183,19 +183,19 @@ ms.locfileid: "39049783"
 
     ![创建 Azure AD 测试用户](./media/tinfoil-security-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
     ![“用户和组”->“所有用户” ](./media/tinfoil-security-tutorial/create_aaduser_02.png) 
 
-3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
  
     ![用户](./media/tinfoil-security-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/tinfoil-security-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -211,7 +211,7 @@ ms.locfileid: "39049783"
 
 1. 如果用户是企业帐户的一部分，你则需要联系 [TINFOIL SECURITY 支持团队](https://www.tinfoilsecurity.com/contact)以创建用户帐户。
 
-2. 如果用户是常规 TINFOIL SECURITY SaaS 用户，则该用户可向任何用户站点添加协作者。 这会触发向指定的电子邮件发送邀请以创建新 TINFOIL SECURITY 用户帐户的过程。
+1. 如果用户是常规 TINFOIL SECURITY SaaS 用户，则该用户可向任何用户站点添加协作者。 这会触发向指定的电子邮件发送邀请以创建新 TINFOIL SECURITY 用户帐户的过程。
 
 > [!NOTE]
 > 可使用任何其他 TINFOIL SECURITY 用户帐户创建工具或使用 TINFOIL SECURITY 提供的 API 来预配 Azure AD 用户帐户。
@@ -230,23 +230,23 @@ ms.locfileid: "39049783"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“TINFOIL SECURITY”。
+1. 在应用程序列表中，选择“TINFOIL SECURITY”。
 
     ![选择“TINFOIL SECURITY”](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

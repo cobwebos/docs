@@ -9,12 +9,12 @@ ms.date: 06/26/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 9ab441bdd30e7598dacfec8dd74702aef0299e1b
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 6922262856d6fba97349377d5d1b18b75638d88f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413484"
+ms.locfileid: "39436805"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-to-your-simulated-device"></a>教程：开发 Node.js IoT Edge 模块并将其部署到模拟设备
 
@@ -233,7 +233,7 @@ VS Code 窗口将加载你的 IoT Edge 解决方案空间。 有一个 **.vscode
 若要只删除 IoT 中心，请使用中心名称和资源组名称执行以下命令：
 
 ```azurecli-interactive
-az iot hub delete --name MyIoTHub --resource-group TestResources
+az iot hub delete --name {hub_name} --resource-group IoTEdgeResources
 ```
 
 

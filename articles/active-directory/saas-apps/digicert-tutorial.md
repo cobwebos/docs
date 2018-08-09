@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: jeedes
-ms.openlocfilehash: 428878d3b1a8a369b58b045544f034eb4235c74c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: f37ac37d80562a402d6891ffaa2a687e04c3a8c0
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39047862"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434874"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-digicert"></a>教程：Azure Active Directory 与 DigiCert 的集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "39047862"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 DigiCert
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-digicert-from-the-gallery"></a>从库中添加 DigiCert
 若要配置 DigiCert 与 Azure AD 的集成，需要从库中将 DigiCert 添加到托管 SaaS 应用列表。
@@ -63,19 +63,19 @@ ms.locfileid: "39047862"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入“DigiCert”。
+1. 在搜索框中，键入“DigiCert”。
 
     ![创建 Azure AD 测试用户](./media/digicert-tutorial/tutorial_digicert_search.png)
 
-5. 在结果面板中，选择“DigiCert”，然后单击“添加”按钮添加该应用程序。
+1. 在结果面板中，选择“DigiCert”，然后单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/digicert-tutorial/tutorial_digicert_addfromgallery.png)
 
@@ -89,10 +89,10 @@ ms.locfileid: "39047862"
 若要配置和测试 DigiCert 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 DigiCert 测试用户](#creating-a-digicert-test-user)** - 在 DigiCert 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 DigiCert 测试用户](#creating-a-digicert-test-user)** - 在 DigiCert 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -104,21 +104,21 @@ ms.locfileid: "39047862"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![配置单一登录](./media/digicert-tutorial/tutorial_digicert_samlbase.png)
 
-3. 在“DigiCert 域和 URL”部分中，执行以下步骤：
+1. 在“DigiCert 域和 URL”部分中，执行以下步骤：
 
     ![配置单一登录](./media/digicert-tutorial/tutorial_digicert_url.png)
     
     在“标识符”文本框中，键入 URL：`https://www.digicert.com/sso`
 
-4. DigiCert 应用程序需要采用特定格式的 SAML 断言语句。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示了此配置的示例。 
+1. DigiCert 应用程序需要采用特定格式的 SAML 断言语句。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示了此配置的示例。 
 
     ![配置单一登录](./media/digicert-tutorial/tutorial_digicert_attributes.png)
     
-5. 在“单一登录”对话框的“用户属性”部分，按图中所示配置 SAML 令牌属性，然后执行以下步骤：
+1. 在“单一登录”对话框的“用户属性”部分，按图中所示配置 SAML 令牌属性，然后执行以下步骤：
     
     | 属性名称 | 属性值 |
     | ------------------- | -------------------- |    
@@ -128,7 +128,7 @@ ms.locfileid: "39047862"
     > [!Note]
     > company 属性的值不是真实值。 使用实际的公司代码更新此值。 若要获取 company 属性的值，请联系 [DigiCert 支持团队](mailto:support@digicert.com)。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
+    a. 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录](./media/digicert-tutorial/tutorial_attribute_04.png)
 
@@ -140,15 +140,15 @@ ms.locfileid: "39047862"
     
     d. 单击“确定” 。 
 
-6. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
+1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/digicert-tutorial/tutorial_digicert_certificate.png) 
 
-7. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录](./media/digicert-tutorial/tutorial_general_400.png)
 
-8. 若要在 DigiCert 端配置单一登录，需要将下载的元数据 XML 发送给 [DigiCert 支持团队](mailto:support@digicert.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+1. 若要在 DigiCert 端配置单一登录，需要将下载的元数据 XML 发送给 [DigiCert 支持团队](mailto:support@digicert.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
@@ -161,19 +161,19 @@ ms.locfileid: "39047862"
 
     ![创建 Azure AD 测试用户](./media/digicert-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
     ![创建 Azure AD 测试用户](./media/digicert-tutorial/create_aaduser_02.png) 
 
-3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
  
     ![创建 Azure AD 测试用户](./media/digicert-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/digicert-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -197,23 +197,23 @@ ms.locfileid: "39047862"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“DigiCert”。
+1. 在应用程序列表中，选择“DigiCert”。
 
     ![配置单一登录](./media/digicert-tutorial/tutorial_digicert_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 

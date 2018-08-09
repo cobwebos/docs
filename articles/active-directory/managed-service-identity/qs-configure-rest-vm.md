@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/25/2018
 ms.author: daveba
-ms.openlocfilehash: 825f34d174c37c2ee5d4187048f7a31fbaeef226
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 7926944f329665af2df287d120bd9f4a8ee78380
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215923"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433929"
 ---
 # <a name="configure-managed-identity-on-an-azure-vm-using-rest-api-calls"></a>在 Azure VM 上使用 REST API 调用配置托管标识
 
@@ -39,7 +39,7 @@ ms.locfileid: "39215923"
 - 若要执行本文中的管理操作，帐户需要分配以下角色：
     - [虚拟机参与者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)，可创建 VM，并从 Azure VM 启用和删除系统和/或用户分配的托管标识。
     - [托管标识参与者](/azure/role-based-access-control/built-in-roles#managed-identity-contributor)角色，可以创建用户分配的标识。
-    - [托管标识操作员](/azure/role-based-access-control/built-in-roles#managed-identity-operator)角色，可在 VM 中分配和删除用户分配的标识。
+    - [托管标识操作员](/azure/role-based-access-control/built-in-roles#managed-identity-operator)角色，可在 VM 中分配和删除用户分配标识。
 - 如果使用 Windows，请安装[适用于 Linux 的 Windows 子系统](https://msdn.microsoft.com/commandline/wsl/about)或使用 Azure 门户中的 [Azure Cloud Shell](../../cloud-shell/overview.md)。
 - 如果使用[适用于 Linux 的 Windows 子系统](https://msdn.microsoft.com/commandline/wsl/about)或 [Linux 分发版 OS](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)，请[安装 Azure CLI 本地控制台](/azure/install-azure-cli)。
 - 如果使用 Azure CLI 本地控制台，请使用 `az login` 和与要用于管理系统或用户分配的标识的 Azure 订阅关联的帐户登录。
@@ -54,7 +54,7 @@ ms.locfileid: "39215923"
 
 要创建启用了系统分配的标识的 Azure VM，需要创建 VM 并检索访问令牌，使用 CURL 通过系统分配的标识类型值对资源管理器终结点进行调用。
 
-1. 运行 [az group create](/cli/azure/group/#az_group_create)，创建用于容纳和部署 VM 及其相关资源的[资源组](../../azure-resource-manager/resource-group-overview.md#terminology)。 如果已有要改用的资源组，可以跳过这一步：
+1. 运行 [az group create](/cli/azure/group/#az-group-create)，创建用于容纳和部署 VM 及其相关资源的[资源组](../../azure-resource-manager/resource-group-overview.md#terminology)。 如果已有要改用的资源组，可以跳过这一步：
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus

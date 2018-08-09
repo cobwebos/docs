@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 7eaf64c736201df044a2b34bcd88f2ed17047fb3
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: dbf21c7c22a9b3273a65f7e186a2ac02ccae6ba2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211829"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39436201"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>教程：Azure Active Directory 与 Symantec Web Security Service (WSS) 集成
 
@@ -56,7 +56,7 @@ ms.locfileid: "36211829"
 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库添加 Symantec Web Security Service (WSS) 应用
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-symantec-web-security-service-wss-from-the-gallery"></a>从库添加 Symantec Web Security Service (WSS)
 若要配置 Symantec Web Security Service (WSS) 与 Azure AD 的集成，需将库中的 Symantec Web Security Service (WSS) 添加到托管 SaaS 应用列表。
@@ -67,15 +67,15 @@ ms.locfileid: "36211829"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中键入“Symantec Web Security Service (WSS)”，从结果面板选择“Symantec Web Security Service (WSS)”，然后单击“添加”按钮添加该应用程序。
+1. 在搜索框中键入“Symantec Web Security Service (WSS)”，从结果面板选择“Symantec Web Security Service (WSS)”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 Symantec Web Security Service (WSS)](./media/symantec-tutorial/tutorial_symantecwebsecurityservicewss_addfromgallery.png)
 
@@ -90,10 +90,10 @@ ms.locfileid: "36211829"
 若要配置和测试 Symantec Web Security Service (WSS) 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Symantec Web Security Service (WSS) 测试用户](#create-a-symantec-web-security-service-wss-test-user)** - 在 Symantec Web Security Service (WSS) 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 Symantec Web Security Service (WSS) 测试用户](#create-a-symantec-web-security-service-wss-test-user)** - 在 Symantec Web Security Service (WSS) 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -105,11 +105,11 @@ ms.locfileid: "36211829"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![“单一登录”对话框](./media/symantec-tutorial/tutorial_symantecwebsecurityservicewss_samlbase.png)
 
-3. 在“Symantec Web Security Service (WSS) 域和 URL”部分中，执行以下步骤：
+1. 在“Symantec Web Security Service (WSS) 域和 URL”部分中，执行以下步骤：
 
     ![Symantec Web Security Service (WSS) 域和 URL 单一登录信息](./media/symantec-tutorial/tutorial_symantecwebsecurityservicewss_url.png)
 
@@ -120,15 +120,15 @@ ms.locfileid: "36211829"
     > [!NOTE]
     > 如果“标识符”和“回复 URL”的值由于某种原因不起作用，请联系[ Symantec Web Security Service (WSS) 客户支持团队](https://www.symantec.com/contact-us)。
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
+1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![证书下载链接](./media/symantec-tutorial/tutorial_symantecwebsecurityservicewss_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/symantec-tutorial/tutorial_general_400.png)
     
-6. 若要在 Symantec Web Security Service (WSS) 端配置单一登录，请参阅 WSS 联机文档。 需要将下载的“元数据 XML”文件导入到 WSS 门户。 如果配置 WSS 门户时需要帮助，请联系 [Symantec Web Security Service (WSS) 支持团队](https://www.symantec.com/contact-us)。
+1. 若要在 Symantec Web Security Service (WSS) 端配置单一登录，请参阅 WSS 联机文档。 需要将下载的“元数据 XML”文件导入到 WSS 门户。 如果配置 WSS 门户时需要帮助，请联系 [Symantec Web Security Service (WSS) 支持团队](https://www.symantec.com/contact-us)。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -145,15 +145,15 @@ ms.locfileid: "36211829"
 
     ![“Azure Active Directory”按钮](./media/symantec-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/symantec-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/symantec-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/symantec-tutorial/create_aaduser_04.png)
 
@@ -184,23 +184,23 @@ ms.locfileid: "36211829"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Symantec Web Security Service (WSS)”。
+1. 在应用程序列表中，选择“Symantec Web Security Service (WSS)”。
 
     ![应用程序列表中的 Symantec Web Security Service (WSS) 链接](./media/symantec-tutorial/tutorial_symantecwebsecurityservicewss_app.png)  
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

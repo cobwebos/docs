@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 0f6713b9b8704e813ab1fd77ab1cf4e71e7f6670
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5e50bc3c6804a6f3d3dafd07b2918605c4cbc6ab
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38235423"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434673"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>使用 Azure CLI 通过开发测试实验室创建和管理虚拟机
 本快速入门将指导用户在实验室中进行创建、启动、连接、更新和清理开发计算机等操作。 
@@ -38,7 +38,7 @@ az lab vm create --lab-name sampleLabName --resource-group sampleLabResourceGrou
 > 将实验室的资源组名称置于 --resource-group 参数中。
 >
 
-如果想要使用公式创建 VM，请使用 [az lab vm create](https://docs.microsoft.com/cli/azure/lab/vm#az_lab_vm_create) 中的 --formula 参数。
+如果想要使用公式创建 VM，请使用 [az lab vm create](https://docs.microsoft.com/cli/azure/lab/vm#az-lab-vm-create) 中的 --formula 参数。
 
 
 验证 VM 是否可用。

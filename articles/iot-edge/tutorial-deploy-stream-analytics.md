@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: f2ef53ee53eb2e95d84fc11f3190f62d0e3c2455
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: afbdf2171c1fc1eef95514526a509d171e262d4a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413869"
+ms.locfileid: "39435676"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module-preview"></a>教程：将 Azure 流分析作为 IoT Edge 模块（预览版）进行部署
 
@@ -60,7 +60,7 @@ Azure IoT Edge 设备：
 
 1. 在 Azure 门户中，转到“创建资源”，在搜索框输入“存储帐户”，选择“存储帐户 - Blob、文件、表、队列”。
 
-2. 在“创建存储帐户”窗格中，输入存储帐户的名称，选择存储 IoT 中心的同一位置，选择 IoT 中心所在的资源组，然后选择“创建”。 请记下该名称供稍后使用。
+1. 在“创建存储帐户”窗格中，输入存储帐户的名称，选择存储 IoT 中心的同一位置，选择 IoT 中心所在的资源组，然后选择“创建”。 请记下该名称供稍后使用。
 
     ![创建存储帐户][1]
 
@@ -69,40 +69,40 @@ Azure IoT Edge 设备：
 
 1. 在 Azure 门户中，转到“创建资源” > “物联网”，然后选择“流分析作业”。
 
-2. 在“新建流分析作业”窗格中执行以下步骤：
+1. 在“新建流分析作业”窗格中执行以下步骤：
 
    1. 在“作业名称”框中键入作业名称。
    
-   2. 与 IoT 中心使用同一**资源组**和**位置**。 
+   1. 与 IoT 中心使用同一**资源组**和**位置**。 
 
       > [!NOTE]
       > 目前，美国西部 2 区域不支持 IoT Edge 上的 Azure 流分析作业。 
 
-   3. 在“宿主环境”下，选择“Edge”。
+   1. 在“宿主环境”下，选择“Edge”。
     
-3. 选择**创建**。
+1. 选择**创建**。
 
-4. 在创建的作业中，在“作业拓扑”下，打开“输入”。
+1. 在创建的作业中，在“作业拓扑”下，打开“输入”。
 
    ![Azure 流分析输入](./media/tutorial-deploy-stream-analytics/asa_input.png)
 
-5. 选择“添加流输入”，然后选择“Edge 中心”。
+1. 选择“添加流输入”，然后选择“Edge 中心”。
 
-6. 在“新建输入”窗格中，输入 **temperature** 作为输入别名。 
+1. 在“新建输入”窗格中，输入 **temperature** 作为输入别名。 
 
-7. 选择“保存”。
+1. 选择“保存”。
 
-8. 在“作业拓扑”下，打开“输出”。
+1. 在“作业拓扑”下，打开“输出”。
 
    ![Azure 流分析输出](./media/tutorial-deploy-stream-analytics/asa_output.png)
 
-9. 选择“添加”，然后选择“Edge 中心”。
+1. 选择“添加”，然后选择“Edge 中心”。
 
-10. 在“新建输出”窗格中，输入 **alert** 作为输出别名。 
+1. 在“新建输出”窗格中，输入 **alert** 作为输出别名。 
 
-11. 选择“保存”。
+1. 选择“保存”。
 
-12. 在“作业拓扑”下选择“查询”，然后将默认文本替换为以下查询（如果计算机的平均温度在 30 秒的时限内达到 70 度，该查询会创建警报）：
+1. 在“作业拓扑”下选择“查询”，然后将默认文本替换为以下查询（如果计算机的平均温度在 30 秒的时限内达到 70 度，该查询会创建警报）：
 
     ```sql
     SELECT  
@@ -115,15 +115,15 @@ Azure IoT Edge 设备：
     HAVING Avg(machine.temperature) > 70
     ```
 
-13. 选择“保存”。
+1. 选择“保存”。
 
-14. 在“配置”下选择“IoT Edge 设置”。
+1. 在“配置”下选择“IoT Edge 设置”。
 
-15. 从下拉菜单中选择自己的**存储帐户**。
+1. 从下拉菜单中选择自己的**存储帐户**。
 
-16. 对于“容器”字段，请选择“新建”，然后为存储容器提供一个名称。 
+1. 对于“容器”字段，请选择“新建”，然后为存储容器提供一个名称。 
 
-17. 选择“保存”。 
+1. 选择“保存”。 
 
 
 ## <a name="deploy-the-job"></a>部署作业
@@ -132,25 +132,25 @@ Azure IoT Edge 设备：
 
 1. 在 Azure 门户的 IoT 中心转到“IoT Edge”，然后打开 IoT Edge 设备的详细信息页。
 
-2. 选择“设置模块”。  
+1. 选择“设置模块”。  
 
    如果以前在此设备上部署了 tempSensor 模块，则它可以自动填充数据。 如果该模块不存在，请通过以下步骤来添加该模块：
 
    1. 单击“添加”，然后选择“IoT Edge 模块”。
-   2. 键入 **tempSensor** 作为名称。
-   3. 输入 **mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0** 作为映像 URI。 
-   4. 将其他设置保留不变。
-   5. 选择“保存”。
+   1. 键入 **tempSensor** 作为名称。
+   1. 输入 **mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0** 作为映像 URI。 
+   1. 将其他设置保留不变。
+   1. 选择“保存”。
 
-3. 通过以下步骤添加 Azure 流分析 Edge 作业：
+1. 通过以下步骤添加 Azure 流分析 Edge 作业：
 
    1. 单击“添加”，然后选择“Azure 流分析模块”。
-   2. 选择创建的订阅和 Azure 流分析 Edge 作业。 
-   3. 选择“保存”。
+   1. 选择创建的订阅和 Azure 流分析 Edge 作业。 
+   1. 选择“保存”。
 
-4. 选择“**下一步**”。
+1. 选择“**下一步**”。
 
-5. 将“Routes”中的默认值替换为以下代码。 将 _{moduleName}_ 更新为 Azure 流分析模块的名称。 此模块的名称应该与创建模块时所依据的作业的名称相同。 
+1. 将“Routes”中的默认值替换为以下代码。 将 _{moduleName}_ 更新为 Azure 流分析模块的名称。 此模块的名称应该与创建模块时所依据的作业的名称相同。 
 
     ```json
     {
@@ -163,11 +163,11 @@ Azure IoT Edge 设备：
     }
     ```
 
-6. 选择“**下一步**”。
+1. 选择“**下一步**”。
 
-7. 在“复查部署”步骤中，选择“提交”。
+1. 在“复查部署”步骤中，选择“提交”。
 
-8. 返回到“设备详细信息”页，并选择“刷新”。  
+1. 返回到“设备详细信息”页，并选择“刷新”。  
 
     应会看到新的流分析模块与 IoT Edge 代理模块和 IoT Edge 中心在同时运行。
 
@@ -185,7 +185,7 @@ Azure IoT Edge 设备：
 <!--
    ![Docker output][8]
 -->
-2. 查看所有系统日志和指标数据。 使用流分析模块名称：
+1. 查看所有系统日志和指标数据。 使用流分析模块名称：
 
    ```cmd/sh
    iotedge logs -f {moduleName}  
@@ -210,7 +210,7 @@ Azure IoT Edge 设备：
 若要只删除 IoT 中心，请使用中心名称和资源组名称执行以下命令：
 
 ```azurecli-interactive
-az iot hub delete --name MyIoTHub --resource-group TestResources
+az iot hub delete --name {hub_name} --resource-group IoTEdgeResources
 ```
 
 
@@ -218,14 +218,14 @@ az iot hub delete --name MyIoTHub --resource-group TestResources
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。
 
-2. 在“按名称筛选...”文本框中键入包含 IoT 中心的资源组的名称。 
+1. 在“按名称筛选...”文本框中键入包含 IoT 中心的资源组的名称。 
 
-3. 在结果列表中的资源组右侧，单击“...”，然后单击“删除资源组”。
+1. 在结果列表中的资源组右侧，单击“...”，然后单击“删除资源组”。
 
 <!--
    ![Delete](./media/iot-edge-quickstarts-clean-up-resources/iot-edge-delete-resource-group.png)
 -->
-4. 系统会要求确认是否删除资源组。 再次键入资源组的名称进行确认，然后单击“删除”。 片刻之后，将会删除该资源组及其包含的所有资源。
+1. 系统会要求确认是否删除资源组。 再次键入资源组的名称进行确认，然后单击“删除”。 片刻之后，将会删除该资源组及其包含的所有资源。
 
 ## <a name="next-steps"></a>后续步骤
 

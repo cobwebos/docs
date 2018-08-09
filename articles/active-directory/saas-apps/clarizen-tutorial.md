@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: jeedes
-ms.openlocfilehash: f1ce8d961666b6abf4d9abe4fd881023afae7a3d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 510bf383848725f3864c40af02c2b309370237f0
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218091"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438080"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>教程：Azure Active Directory 与 Clarizen 的集成
 
@@ -32,7 +32,7 @@ ms.locfileid: "36218091"
 本教程中的方案包括两个主要任务：
 
 1. 从库中添加 Clarizen。
-2. 配置和测试 Azure AD 单一登录。
+1. 配置和测试 Azure AD 单一登录。
 
 如果想要了解有关软件即服务 (SaaS) 应用与 Azure AD 集成的更多详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)。
 
@@ -54,19 +54,19 @@ ms.locfileid: "36218091"
 
     ![Azure Active Directory 图标][1]
 
-2. 单击“企业应用程序”。 然后单击“所有应用程序”。
+1. 单击“企业应用程序”。 然后单击“所有应用程序”。
 
     ![单击“企业应用程序”和“所有应用程序”][2]
 
-3. 单击对话框顶部的“添加”按钮。
+1. 单击对话框顶部的“添加”按钮。
 
     ![“添加”按钮][3]
 
-4. 在搜索框中，键入“Clarizen”。
+1. 在搜索框中，键入“Clarizen”。
 
     ![在搜索框中键入“Clarizen”](./media/clarizen-tutorial/tutorial_clarizen_000.png)
 
-5. 在结果窗格中，选择“Clarizen”，并单击“添加”以添加该应用程序。
+1. 在结果窗格中，选择“Clarizen”，并单击“添加”以添加该应用程序。
 
     ![在结果窗格中选择 Clarizen](./media/clarizen-tutorial/tutorial_clarizen_0001.png)
 
@@ -78,10 +78,10 @@ ms.locfileid: "36218091"
 若要配置和测试 Clarizen 的 Azure AD 单一登录，请完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)**，让用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)**，以便使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Clarizen 测试用户](#create-a-clarizen-test-user)**，在 Clarizen 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)**，使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)**，验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)**，以便使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 Clarizen 测试用户](#create-a-clarizen-test-user)**，在 Clarizen 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)**，使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)**，验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 在 Azure 门户中启用 Azure AD 单一登录并在 Clarizen 应用程序中配置单一登录。
@@ -90,11 +90,11 @@ ms.locfileid: "36218091"
 
     ![单击“单一登录”][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的登录”作为“模式”以启用单一登录。
 
     ![选择“基于 SAML 的登录”](./media/clarizen-tutorial/tutorial_clarizen_01.png)
 
-3. 在“Clarizen 域和 URL”部分中，执行以下步骤：
+1. 在“Clarizen 域和 URL”部分中，执行以下步骤：
 
     ![标识符和回复 URL 的框](./media/clarizen-tutorial/tutorial_clarizen_02.png)
 
@@ -105,43 +105,43 @@ ms.locfileid: "36218091"
     > [!NOTE]
     > 这些不是实际值。 必须使用实际的标识符和回复 URL。 此处，我们建议使用唯一的字符串值作为标识符。 若要获取实际值，请与 [Clarizen 支持团队](https://success.clarizen.com/hc/en-us/requests/new)联系。
 
-4. 在“SAML 签名证书”部分中，单击“创建新证书”。
+1. 在“SAML 签名证书”部分中，单击“创建新证书”。
 
     ![单击“创建新证书”](./media/clarizen-tutorial/tutorial_clarizen_03.png)    
 
-5. 在“创建新证书”对话框中，单击日历图标，并选择一个到期日期。 然后单击“保存”。
+1. 在“创建新证书”对话框中，单击日历图标，并选择一个到期日期。 然后单击“保存”。
 
     ![选择并保存到期日期](./media/clarizen-tutorial/tutorial_general_300.png)
 
-6. 在“SAML 签名证书”部分中，选择“激活新证书”，并单击“保存”。
+1. 在“SAML 签名证书”部分中，选择“激活新证书”，并单击“保存”。
 
     ![选中“激活新证书”复选框](./media/clarizen-tutorial/tutorial_clarizen_04.png)
 
-7. 在“滚动更新证书”对话框中，单击“确定”。
+1. 在“滚动更新证书”对话框中，单击“确定”。
 
     ![单击“确定”以确认要激活证书](./media/clarizen-tutorial/tutorial_general_400.png)
 
-8. 在“SAML 签名证书”部分中，单击“证书(Base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(Base64)”，并在计算机上保存证书文件。
 
     ![单击“证书(Base64)”以开始下载](./media/clarizen-tutorial/tutorial_clarizen_05.png)
 
-9. 在“Clarizen 配置”部分中，单击“配置 Clarizen”打开“配置登录”窗口。
+1. 在“Clarizen 配置”部分中，单击“配置 Clarizen”打开“配置登录”窗口。
 
     ![单击“配置 Clarizen”](./media/clarizen-tutorial/tutorial_clarizen_06.png)
 
     ![“配置登录”窗口，其中包括了文件和 URL](./media/clarizen-tutorial/tutorial_clarizen_07.png)
 
-10. 在另一个 Web 浏览器窗口中，以管理员身份登录 Clarizen 公司站点。
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录 Clarizen 公司站点。
 
-11. 单击用户名，然后单击“设置”。
+1. 单击用户名，然后单击“设置”。
 
     ![单击用户名下的“设置”](./media/clarizen-tutorial/tutorial_clarizen_001.png "设置")
 
-12. 单击“全局设置”选项卡。然后，在“联合身份验证”旁边，单击“编辑”。
+1. 单击“全局设置”选项卡。然后，在“联合身份验证”旁边，单击“编辑”。
 
     ![“全局设置”选项卡](./media/clarizen-tutorial/tutorial_clarizen_002.png "全局设置")
 
-13. 在“联合身份验证”对话框中，执行以下步骤：
+1. 在“联合身份验证”对话框中，执行以下步骤：
 
     ![“联合身份验证”对话框](./media/clarizen-tutorial/tutorial_clarizen_003.png "联合身份验证")
 
@@ -166,15 +166,15 @@ ms.locfileid: "36218091"
 
     ![Azure Active Directory 图标](./media/clarizen-tutorial/create_aaduser_01.png)
 
-2. 单击“用户和组”，并单击“所有用户”以显示用户列表。
+1. 单击“用户和组”，并单击“所有用户”以显示用户列表。
 
     ![单击“用户和组”以及“所有用户”](./media/clarizen-tutorial/create_aaduser_02.png)
 
-3. 在对话框顶部，单击“添加”以打开“用户”对话框。
+1. 在对话框顶部，单击“添加”以打开“用户”对话框。
 
     ![“添加”按钮](./media/clarizen-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框，其中填写了姓名、电子邮件地址和密码](./media/clarizen-tutorial/create_aaduser_04.png)
 
@@ -196,15 +196,15 @@ ms.locfileid: "36218091"
 
 1. 以管理员身份登录到 Clarizen 公司站点。
 
-2. 单击“人员”。
+1. 单击“人员”。
 
     ![单击“人员”](./media/clarizen-tutorial/create_aaduser_001.png "人员")
 
-3. 单击“邀请用户”。
+1. 单击“邀请用户”。
 
     ![“邀请用户”按钮](./media/clarizen-tutorial/create_aaduser_002.png "邀请用户")
 
-4. 在“邀请人员”对话框中，执行以下步骤：
+1. 在“邀请人员”对话框中，执行以下步骤：
 
     ![“邀请人员”对话框](./media/clarizen-tutorial/create_aaduser_003.png "邀请人员")
 
@@ -224,23 +224,23 @@ ms.locfileid: "36218091"
 
     ![单击“企业应用程序”和“所有应用程序”][201]
 
-2. 在应用程序列表中，选择“Clarizen”。
+1. 在应用程序列表中，选择“Clarizen”。
 
     ![在列表中选择 Clarizen](./media/clarizen-tutorial/tutorial_clarizen_50.png)
 
-3. 在左窗格中，单击“用户和组”。
+1. 在左窗格中，单击“用户和组”。
 
     ![单击“用户和组”][202]
 
-4. 单击“添加”按钮。 然后，在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后，在“添加分配”对话框中选择“用户和组”。
 
     ![“添加”按钮和“添加分配”对话框][203]
 
-5. 在“用户和组”对话框中，在用户列表中选择“Britta Simon”。
+1. 在“用户和组”对话框中，在用户列表中选择“Britta Simon”。
 
-6. 在“用户和组”对话框中，单击“选择”按钮。
+1. 在“用户和组”对话框中，单击“选择”按钮。
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 使用访问面板测试 Azure AD 单一登录配置。

@@ -6,14 +6,14 @@ author: Christina-Kang
 manager: timlt
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 04/13/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 2cbc5778385a5a4af3f6dc0306e2b943482bf40c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2e71996e22fee34b29139fdf19764c47616beb1d
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642880"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492743"
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>使用 Azure Service Fabric CLI (sfctl) 管理 Azure Service Fabric 应用程序
 

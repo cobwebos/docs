@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 57c4d9ccc64c9644c3d333fad1262c997aeff5d1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bda52acc12aad3cad20143c319f557f11d760c42
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624655"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435146"
 ---
 # <a name="use-azure-data-lake-store-to-capture-data-from-event-hubs"></a>使用 Azure Data Lake Store 捕获事件中心的数据
 
@@ -39,11 +39,11 @@ ms.locfileid: "34624655"
 
     ![Data Lake Store 数据资源管理器](./media/data-lake-store-archive-eventhub-capture/data-lake-store-open-data-explorer.png "Data Lake Store data explorer")
 
-2.  单击“新建文件夹”，然后为要在其中捕获数据的文件夹输入名称。
+1.  单击“新建文件夹”，然后为要在其中捕获数据的文件夹输入名称。
 
     ![在 Data Lake Store 中新建文件夹](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-new-folder.png "Create a new folder in Data Lake Store")
 
-3. 分配 Data Lake Store 根目录的权限。 
+1. 分配 Data Lake Store 根目录的权限。 
 
     a. 单击“数据资源管理器”，选择 Data Lake Store 帐户的根目录，然后单击“访问”。
 
@@ -64,7 +64,7 @@ ms.locfileid: "34624655"
 
     单击“确定”。
 
-4. 为 Data Lake Store 帐户下要在其中捕获数据的文件夹分配权限。
+1. 为 Data Lake Store 帐户下要在其中捕获数据的文件夹分配权限。
 
     a. 单击“数据资源管理器”，选择 Data Lake Store 帐户中的文件夹，然后单击“访问”。
 
@@ -86,11 +86,11 @@ ms.locfileid: "34624655"
 
 本部分在事件中心命名空间内创建事件中心。 还可配置事件中心，将数据捕获到 Azure Data Lake Store 帐户。 本部分假设已创建事件中心命名空间。
 
-2. 在事件中心命名空间的“概述”窗格中，单击“+ 事件中心”。
+1. 在事件中心命名空间的“概述”窗格中，单击“+ 事件中心”。
 
     ![创建事件中心](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "Create Event Hub")
 
-3. 提供以下值以配置事件中心，将数据捕获到 Data Lake Store。
+1. 提供以下值以配置事件中心，将数据捕获到 Data Lake Store。
 
     ![创建事件中心](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "Create Event Hub")
 

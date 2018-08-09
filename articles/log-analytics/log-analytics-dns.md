@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: a6f63fac85008425f473f431ae85d04f62eed667
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 56ad633807a59eaa7ae75dc334aa630fb3bf94a3
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127585"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39436720"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>使用 DNS Analytics 预览解决方案收集有关 DNS 基础结构的见解
 
@@ -133,11 +133,11 @@ DNS Analytics 可帮助：
 
 1. 为客户端正在尝试更新的名称，找到权威的区域。
 
-2. 使用解决方案检查该区域的清单信息。
+1. 使用解决方案检查该区域的清单信息。
 
-3. 确认该区域的动态更新已启用。
+1. 确认该区域的动态更新已启用。
 
-4. 检查该区域是否已针对安全动态更新进行配置。
+1. 检查该区域是否已针对安全动态更新进行配置。
 
     ![“动态 DNS 注册”边栏选项卡](./media/log-analytics-dns/dynamic-dns-reg-blade.png)
 
@@ -177,7 +177,7 @@ DNS Analytics 可帮助：
 
     c. 若要查看配置更改的日志数据，请在左侧的分面控件中选择“ConfigurationChange”作为“子类型”筛选器。 此时会显示一个表格，其中列出了所选时间段内的所有配置更改事件。
 
-2. 在“搜索查询”框中，键入 `DnsInventory`，查看由该解决方案托管的 DNS 服务器中所有与 DNS 清单相关数据。 结果中列出 DNS 服务器的日志数据、DNS 区域和资源记录。
+1. 在“搜索查询”框中，键入 `DnsInventory`，查看由该解决方案托管的 DNS 服务器中所有与 DNS 清单相关数据。 结果中列出 DNS 服务器的日志数据、DNS 区域和资源记录。
 
     ![DnsInventory 日志搜索](./media/log-analytics-dns/log-search-dnsinventory.png)
 

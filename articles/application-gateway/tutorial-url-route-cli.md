@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 45057a23d54f42a4f5b165fc3eb50c001ce92e8d
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: a774d491de4ca1dfdb96181ff13fa644a061cd65
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069162"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434208"
 ---
 # <a name="tutorial-route-web-traffic-based-on-the-url-using-the-azure-cli"></a>教程 - 使用 Azure CLI 基于 URL 对 Web 流量进行路由
 
@@ -23,7 +23,7 @@ ms.locfileid: "39069162"
 
 若要启用流量路由，需要创建[路由规则](application-gateway-url-route-overview.md)并将其分配给在特定端口上侦听的侦听器以确保 Web 流量到达池中的合适服务器。
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 设置网络
@@ -53,7 +53,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>创建网络资源 
 
-使用 [az network vnet create](/cli/azure/network/vnet#az_net) 创建名为 *myVNet* 的虚拟网络和名为 *myAGSubnet* 的子网。 然后，使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) 添加后端服务器所需的名为 *myBackendSubnet* 的子网。 使用 [az network public-ip create](/cli/azure/public-ip#az_network_public_ip_create) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。
+使用 [az network vnet create](/cli/azure/network/vnet#az-net) 创建名为 *myVNet* 的虚拟网络和名为 *myAGSubnet* 的子网。 然后，使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network_vnet_subnet_create) 添加后端服务器所需的名为 *myBackendSubnet* 的子网。 使用 [az network public-ip create](/cli/azure/public-ip#az-network_public_ip_create) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。
 
 ```azurecli-interactive
 az network vnet create \
@@ -106,7 +106,7 @@ az network application-gateway create \
 
 ### <a name="add-image-and-video-backend-pools-and-port"></a>添加映像及视频后端池和端口
 
-使用 [az network application-gateway address-pool create](/cli/azure/application-gateway#az_network_application_gateway_address-pool_create) 向应用程序网关添加名为 *imagesBackendPool* 和 *videoBackendPool* 的后端池。 使用 [az network application-gateway frontend-port create](/cli/azure/application-gateway#az_network_application_gateway_frontend_port_create) 为池添加前端端口。 
+使用 [az network application-gateway address-pool create](/cli/azure/application-gateway#az-network_application_gateway_address-pool_create) 向应用程序网关添加名为 *imagesBackendPool* 和 *videoBackendPool* 的后端池。 使用 [az network application-gateway frontend-port create](/cli/azure/application-gateway#az-network_application_gateway_frontend_port_create) 为池添加前端端口。 
 
 ```azurecli-interactive
 az network application-gateway address-pool create \
@@ -128,7 +128,7 @@ az network application-gateway frontend-port create \
 
 ### <a name="add-backend-listener"></a>添加后端侦听器
 
-使用 [az network application-gateway http-listener create](/cli/azure/application-gateway#az_network_application_gateway_http_listener_create) 添加路由流量所需的名为 *backendListener* 的后端侦听器。
+使用 [az network application-gateway http-listener create](/cli/azure/application-gateway#az-network_application_gateway_http_listener_create) 添加路由流量所需的名为 *backendListener* 的后端侦听器。
 
 
 ```azurecli-interactive
@@ -142,7 +142,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-url-path-map"></a>添加 URL 路径映射
 
-URL 路径映射可确保将特定的 URL 路由到特定的后端池。 分别使用 [az network application-gateway url-path-map create](/cli/azure/application-gateway#az_network_application_gateway_url_path_map_create) 和 [az network application-gateway url-path-map rule create](/cli/azure/application-gateway#az_network_application_gateway_url_path_map_rule_create) 创建名为 *imagePathRule* 和 *videoPathRule* 的 URL 路径映射
+URL 路径映射可确保将特定的 URL 路由到特定的后端池。 分别使用 [az network application-gateway url-path-map create](/cli/azure/application-gateway#az-network_application_gateway_url_path_map_create) 和 [az network application-gateway url-path-map rule create](/cli/azure/application-gateway#az-network_application_gateway_url_path_map_rule_create) 创建名为 *imagePathRule* 和 *videoPathRule* 的 URL 路径映射
 
 ```azurecli-interactive
 az network application-gateway url-path-map create \
@@ -167,7 +167,7 @@ az network application-gateway url-path-map rule create \
 
 ### <a name="add-routing-rule"></a>添加路由规则
 
-路由规则可将 URL 映射与所创建的侦听器相关联。 使用 [az network application-gateway rule create](/cli/azure/application-gateway#az_network_application_gateway_rule_create) 添加名为 *rule2* 的规则。
+路由规则可将 URL 映射与所创建的侦听器相关联。 使用 [az network application-gateway rule create](/cli/azure/application-gateway#az-network_application_gateway_rule_create) 添加名为 *rule2* 的规则。
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -234,7 +234,7 @@ done
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
-若要获取应用程序网关的公共 IP 地址，请使用 [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show)。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如，*http://40.121.222.19*, *http://40.121.222.19:8080/images/test.htm*, 或 *http://40.121.222.19:8080/video/test.htm*。
+若要获取应用程序网关的公共 IP 地址，请使用 [az network public-ip show](/cli/azure/network/public-ip#az-network_public_ip_show)。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如，*http://40.121.222.19*, *http://40.121.222.19:8080/images/test.htm*, 或 *http://40.121.222.19:8080/video/test.htm*。
 
 ```azurecli-interactive
 az network public-ip show \

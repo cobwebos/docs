@@ -8,12 +8,12 @@ ms.author: tomfitz
 ms.date: 06/29/2018
 ms.topic: tutorial
 ms.service: event-grid
-ms.openlocfilehash: ee504f805c536ba9a6186514206546c3df1f0f1a
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 544f5210adbea6791f9224a1e2be0743ce9995d5
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127707"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434140"
 ---
 # <a name="route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>使用 Azure CLI 和事件网格将自定义事件路由到 Azure 中继混合连接
 
@@ -29,7 +29,7 @@ Azure 事件网格是针对云的事件处理服务。 Azure 中继混合连接�
 
 事件网格主题是 Azure 资源，必须放置在 Azure 资源组中。 该资源组是在其中部署和管理 Azure 资源的逻辑集合。
 
-使用 [az group create](/cli/azure/group#az_group_create) 命令创建资源组。 
+使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 
 
 以下示例在“westus2”位置创建名为“gridResourceGroup”的资源组。
 

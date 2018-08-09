@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 1af195e644fe93e0c59f5e4402dd8942f5fe1aba
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 108abe45b4b296e0d7928f2da00a06ac43e1ccbe
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38635500"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438777"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-vsts-continuous-integration-and-delivery-pipeline"></a>将 Azure 开发测试实验室集成到 VSTS 持续集成和交付管道
 可使用 Visual Studio Team Services (VSTS) 中安装的 *Azure 开发测试实验室任务*扩展，将你的 CI/CD 生成与发布管道与 Azure 开发测试实验室轻松集成。 该扩展将安装三个任务： 
@@ -91,10 +91,10 @@ ms.locfileid: "38635500"
 要创建发布定义，请执行以下操作：
 
 1. 在“生成与发布”中心的“发布”选项卡上，选择加号 (+) 按钮。
-2. 在“创建发布定义”窗口中，选择“空”模板，然后选择“下一步”。
-3. 选择“稍后选择”和“创建”，以新建有一个默认环境且无链接项目的发布定义。
-4. 在新发布定义中，选择环境名称旁边的省略号  (...)，然后选择“配置变量”，可打开快捷菜单。 
-5. 在“配置 - 环境”窗口中，对于在发布定义中使用的变量，输入以下值：
+1. 在“创建发布定义”窗口中，选择“空”模板，然后选择“下一步”。
+1. 选择“稍后选择”和“创建”，以新建有一个默认环境且无链接项目的发布定义。
+1. 在新发布定义中，选择环境名称旁边的省略号  (...)，然后选择“配置变量”，可打开快捷菜单。 
+1. 在“配置 - 环境”窗口中，对于在发布定义中使用的变量，输入以下值：
 
    a. 对于 vmName，输入在 Azure 门户中创建资源管理器模板时分配给 VM 的名称。
 
@@ -107,7 +107,7 @@ ms.locfileid: "38635500"
 部署的下一阶段是创建 VM，在后续部署中作为“黄金映像”。 使用为此目的专门开发的任务，在 Azure 开发测试实验室实例中创建 VM。 
 
 1. 在发布定义中，选择“添加任务”。
-2. 在“部署”选项卡上，添加“Azure 开发测试实验室创建 VM”任务。 对任务进行如下配置：
+1. 在“部署”选项卡上，添加“Azure 开发测试实验室创建 VM”任务。 对任务进行如下配置：
 
    > [!NOTE]
    > 若要创建 VM 以用于后续部署，请参阅 [Azure 开发测试实验室任务](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)。
@@ -134,8 +134,8 @@ ms.locfileid: "38635500"
    /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualMachines/{vmName}
    ```
 
-3. 执行之前创建的脚本，收集开发测试实验室 VM 的详细信息。 
-4. 在发布定义中，选择“添加任务”，然后在“部署选项卡”上添加“Azure PowerShell”任务。 对任务进行如下配置：
+1. 执行之前创建的脚本，收集开发测试实验室 VM 的详细信息。 
+1. 在发布定义中，选择“添加任务”，然后在“部署选项卡”上添加“Azure PowerShell”任务。 对任务进行如下配置：
 
    > [!NOTE]
    > 若要收集开发测试实验室 VM 的详细信息，请参阅[部署：Azure PowerShell](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/AzurePowerShell) 并执行脚本。
@@ -156,7 +156,7 @@ ms.locfileid: "38635500"
       ```
     此脚本收集所需的值，并将其存储在发布定义中的环境变量内，因此可在后续步骤中轻松引用它们。
 
-5. 将应用部署到新的开发测试实验室 VM。 用于部署应用的任务通常有 Azure 文件复制和目标计算机上的 PowerShell。
+1. 将应用部署到新的开发测试实验室 VM。 用于部署应用的任务通常有 Azure 文件复制和目标计算机上的 PowerShell。
    这些任务参数所需的 VM 相关信息存储在发布定义中名为 **labVmRgName****labVMIpAddress** 和 **labVMFqdn** 的三个配置变量内。 如果只想试验创建开发测试实验室 VM 和自定义映像，而不向其部署应用，可跳过此步骤。
 
 ### <a name="create-an-image"></a>创建映像
@@ -164,7 +164,7 @@ ms.locfileid: "38635500"
 下一阶段是为 Azure 开发测试实验室实例中新部署的 VM 创建映像。 然后，在需要执行开发任务或运行某些测试时，即可随时使用该映像按需创建 VM 的副本。 
 
 1. 在发布定义中，选择“添加任务”。
-2. 在“部署”选项卡上，添加“Azure 开发测试实验室创建自定义映像”任务。 请如下所述对其进行配置：
+1. 在“部署”选项卡上，添加“Azure 开发测试实验室创建自定义映像”任务。 请如下所述对其进行配置：
 
    > [!NOTE]
    > 若要创建映像，请参阅 [Azure 开发测试实验室任务](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)。
@@ -194,8 +194,8 @@ ms.locfileid: "38635500"
  
    b. 对于“源实验室 VM ID”，如果更改了在之前的任务中自动填充了实验室 VM ID 的环境变量的默认名称，请在此处对其进行编辑。 默认值为 $(labVMId)。
 
-2. 输入发布定义名称，然后保存它。
-3. 创建新版本，选择最新生成，并将其部署到定义中的单个环境。
+1. 输入发布定义名称，然后保存它。
+1. 创建新版本，选择最新生成，并将其部署到定义中的单个环境。
 
 在每个阶段，在 Azure 门户中刷新开发测试实验室实例的视图，可查看创建的 VM 和映像，以及再次删除的 VM。
 

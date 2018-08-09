@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/05/2016
 ms.author: dariagrigoriu
-ms.openlocfilehash: d66b5aa4eb2ad90596dfe9e26bbc18996c967295
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a17260770f0b2e0a73585ce4108bd5625ac22229
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "27778541"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39436142"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>为 Azure 应用服务配置部署凭据
 [Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)支持两种类型的凭据，这些凭据适用于[本地 GIT 部署](app-service-deploy-local-git.md)和 [FTP/S 部署](app-service-deploy-ftp.md)。 这与 Azure Active Directory 凭据不同。
@@ -46,7 +46,7 @@ ms.locfileid: "27778541"
 1. 在 [Azure 门户](https://portal.azure.com)中，单击“应用服务”> **&lt;any_app>** > “部署凭据”。
 
     > [!NOTE]
-    > 在门户中必须至少有一个应用，才能访问部署凭据页。 但在使用 [Azure CLI](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az_webapp_deployment_user_set) 时，却可在没有应用的情况下配置用户级凭据。
+    > 在门户中必须至少有一个应用，才能访问部署凭据页。 但在使用 [Azure CLI](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) 时，却可在没有应用的情况下配置用户级凭据。
 
 2. 配置用户名和密码，并单击“保存”。
 

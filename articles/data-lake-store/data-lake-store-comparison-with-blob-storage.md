@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: f44532f0b0c0927c7b06c7e92a4839c5ce762f6e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0b374e92a1e1d9828bc8c095e29e1dfdfd13275b
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34196774"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492905"
 ---
 # <a name="comparing-azure-data-lake-store-and-azure-blob-storage"></a>比较 Azure Data Lake Store 与 Azure 存储 Blob
 本文中的表总结了 Azure Data Lake Store 和 Azure 存储 Blob 在一些大数据处理的关键方面之间的差异。 Azure Blob 存储是一个常规用途和可扩展的对象存储，适用于多种存储方案。 Azure Data Lake Store 是一个超大规模存储库，优化用于大数据分析工作负荷。
@@ -31,7 +31,7 @@ ms.locfileid: "34196774"
 | API |基于 HTTPS 的 REST API |基于 HTTP/HTTPS 的 REST API |
 | 服务器端 API |[WebHDFS-compatible REST API](https://msdn.microsoft.com/library/azure/mt693424.aspx)（兼容 WebHDFS 的 REST API） |[Azure Blob Storage REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)（Azure blob 存储 REST API） |
 | Hadoop 文件系统客户端 |是 |是 |
-| 数据操作 - 身份验证 |基于 [Azure Active Directory 标识](../active-directory/active-directory-authentication-scenarios.md) |基于共享机密 - [帐户访问密钥](../storage/common/storage-create-storage-account.md#manage-your-storage-account)和[共享访问签名密钥](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。 |
+| 数据操作 - 身份验证 |基于 [Azure Active Directory 标识](../active-directory/develop/authentication-scenarios.md) |基于共享机密 - [帐户访问密钥](../storage/common/storage-create-storage-account.md#manage-your-storage-account)和[共享访问签名密钥](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。 |
 | 数据操作 - 身份验证协议 |OAuth 2.0。 调用必须包含 Azure Active Directory 发布的有效的 JWT（JSON Web 令牌） |基于哈希的消息身份验证代码 (HMAC)。 调用必须包含 Base64 编码的 SHA-256 哈希作为 HTTP 请求的一部分。 |
 | 数据操作 - 授权 |POSIX 访问控制列表 (ACL)。  可在文件和文件夹级别设置基于 Azure Active Directory 标识的 ACL。 |对于帐户级别授权 – 使用[帐户访问密钥](../storage/common/storage-create-storage-account.md#manage-your-storage-account)<br>对于帐户、容器 或 blob 授权 - 使用[共享访问签名密钥](../storage/common/storage-dotnet-shared-access-signature-part-1.md) |
 | 数据操作 - 审核 |可用。 详细信息参见[此处](data-lake-store-diagnostic-logs.md)。 |可用 |

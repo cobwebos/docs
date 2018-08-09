@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 29a5cc67ab4d515809d00e5f0b4277f95bfb08e6
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 8403e5d8dd3bad07e412b08709dcb8c28201bcdf
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100158"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434418"
 ---
 # <a name="deploy-a-kubernetes-cluster-in-azure-container-service"></a>在 Azure 容器服务中部署 Kubernetes 群集
 
@@ -35,7 +35,7 @@ Kubernetes 为容器化应用程序提供一个分布式平台。 通过 Azure �
 
 ## <a name="create-kubernetes-cluster"></a>创建 Kubernetes 群集
 
-使用 [az acs create](/cli/azure/acs#az_acs_create) 命令在 Azure 容器服务中创建 Kubernetes 群集。 
+使用 [az acs create](/cli/azure/acs#az-acs-create) 命令在 Azure 容器服务中创建 Kubernetes 群集。 
 
 下面的示例在 `myResourceGroup` 资源组中创建 `myK8sCluster` 群集。 此资源组是在[上一教程](./container-service-tutorial-kubernetes-prepare-acr.md)中进行创建。
 
@@ -43,7 +43,7 @@ Kubernetes 为容器化应用程序提供一个分布式平台。 通过 Azure �
 az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --name myK8SCluster --generate-ssh-keys 
 ```
 
-在某些情况下（如限时试用），Azure 订阅对 Azure 资源的访问受限。 如果由于可用核心有限而导致部署失败，请将 `--agent-count 1` 添加到 [az acs creat](/cli/azure/acs#az_acs_create) 命令中，以减少默认代理计数。 
+在某些情况下（如限时试用），Azure 订阅对 Azure 资源的访问受限。 如果由于可用核心有限而导致部署失败，请将 `--agent-count 1` 添加到 [az acs creat](/cli/azure/acs#az-acs-create) 命令中，以减少默认代理计数。 
 
 几分钟后，部署完成并返回有关 ACS 部署的 JSON 格式信息。
 
@@ -61,7 +61,7 @@ az acs kubernetes install-cli
 
 在 Windows 上，默认安装是 *c:\program files (x86)\kubectl.exe*。 可能需要将此文件添加到 Windows 路径。 
 
-## <a name="connect-with-kubectl"></a>连接 kubectl
+## <a name="connect-with-kubectl"></a>使用 kubectl 进行连接
 
 若要配置 kubectl 以连接到 Kubernetes 群集，请运行 [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) 命令。
 
@@ -94,7 +94,7 @@ k8s-master-98dc3136-0   Ready,SchedulingDisabled   5m        v1.6.2
 > [!div class="checklist"]
 > * 部署 Kubernetes ACS 群集
 > * 安装 Kubernetes CLI (kubectl)
-> * 配置 kubectl
+> * 配置了 kubectl
 
 继续学习下一个教程，了解如何在群集上运行应用程序。
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
-ms.openlocfilehash: d6e831692da37645e264c6674f1ba54bb16d25d4
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 2376ade49b990ff22683a14ecd4ae6b4dda356c3
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30911751"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434533"
 ---
 # <a name="configure-software-raid-on-linux"></a>在 Linux 上配置软件 RAID
 在 Azure 中的 Linux 虚拟机上使用软件 RAID 将多个附加的数据磁盘呈现为一个单一的 RAID 设备，是一种常见的情形。 通常，使用这种方法可以改进性能，而且与只使用单独一块磁盘相比，吞吐量也会有所改进。
@@ -62,13 +62,13 @@ zypper install mdadm
                     sectors (command 'u').
     ```
 
-2. 在提示符下按 n 键，创建**新**分区：
+1. 在提示符下按 n 键，创建**新**分区：
 
     ```bash
     Command (m for help): n
     ```
 
-3. 接下来，按 p 键，创建**主**分区：
+1. 接下来，按 p 键，创建**主**分区：
 
     ```bash 
     Command action
@@ -76,27 +76,27 @@ zypper install mdadm
             p   primary partition (1-4)
     ```
 
-4. 按 1 键，以选择分区号 1：
+1. 按 1 键，以选择分区号 1：
 
     ```bash
     Partition number (1-4): 1
     ```
 
-5. 选择新分区的起始点，或者按 `<enter>` 键接受默认值，将该分区置于驱动器可用空间的开始处：
+1. 选择新分区的起始点，或者按 `<enter>` 键接受默认值，将该分区置于驱动器可用空间的开始处：
 
     ```bash   
     First cylinder (1-1305, default 1):
     Using default value 1
     ```
 
-6. 选择分区大小，例如，键入“+10G”以创建一个 10 GB 的分区。 或者，按 `<enter>` 键创建一个跨整个驱动器的单一分区：
+1. 选择分区大小，例如，键入“+10G”以创建一个 10 GB 的分区。 或者，按 `<enter>` 键创建一个跨整个驱动器的单一分区：
 
     ```bash   
     Last cylinder, +cylinders or +size{K,M,G} (1-1305, default 1305): 
     Using default value 1305
     ```
 
-7. 接下来，将该分区的 ID 和**类型**从默认的 ID“83”(Linux) 更改为 ID“fd”(Linux raid auto)：
+1. 接下来，将该分区的 ID 和**类型**从默认的 ID“83”(Linux) 更改为 ID“fd”(Linux raid auto)：
 
     ```bash  
     Command (m for help): t
@@ -104,7 +104,7 @@ zypper install mdadm
     Hex code (type L to list codes): fd
     ```
 
-8. 最后，将分区表写入驱动器并退出 fdisk：
+1. 最后，将分区表写入驱动器并退出 fdisk：
 
     ```bash   
     Command (m for help): w
@@ -119,7 +119,7 @@ zypper install mdadm
         /dev/sdc1 /dev/sdd1 /dev/sde1
     ```
 
-2. 在新 RAID 设备上创建文件系统
+1. 在新 RAID 设备上创建文件系统
    
     a. **CentOS、Oracle Linux、SLES 12、openSUSE 和 Ubuntu**
 
@@ -154,7 +154,7 @@ zypper install mdadm
     ```bash
     sudo mkdir /data
     ```
-2. 在编辑 /etc/fstab 时，**UUID** 应该用于引用文件系统而不是设备名称。  使用 `blkid` 实用程序来确定新文件系统的 UUID：
+1. 在编辑 /etc/fstab 时，**UUID** 应该用于引用文件系统而不是设备名称。  使用 `blkid` 实用程序来确定新文件系统的 UUID：
 
     ```bash   
     sudo /sbin/blkid
@@ -162,7 +162,7 @@ zypper install mdadm
     /dev/md127: UUID="aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" TYPE="ext4"
     ```
 
-3. 在文本编辑器中打开 /etc/fstab 并为新文件系统添加新条目，例如：
+1. 在文本编辑器中打开 /etc/fstab 并为新文件系统添加新条目，例如：
 
     ```bash   
     UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults  0  2
@@ -176,7 +176,7 @@ zypper install mdadm
    
     然后，保存并关闭 /etc/fstab。
 
-4. 测试该 /etc/fstab 条目是否正确：
+1. 测试该 /etc/fstab 条目是否正确：
 
     ```bash  
     sudo mount -a
@@ -192,7 +192,7 @@ zypper install mdadm
     /dev/md127 on /data type ext4 (rw)
     ```
 
-5. （可选）故障安全引导参数
+1. （可选）故障安全引导参数
    
     **fstab 配置**
    

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 8e83e6dc66ec6192db589a0964e235c395a26eba
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: cc1ee04c9d614e895c4e8a021564e9b9405fa8c0
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048100"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438954"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-workplace"></a>教程：Azure Active Directory 与 Autotask Workplace 集成
 
@@ -56,7 +56,7 @@ ms.locfileid: "39048100"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Autotask Workplace
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-autotask-workplace-from-the-gallery"></a>从库中添加 Autotask Workplace
 若要配置 Autotask Workplace 与 Azure AD 的集成，需要从库中将 Autotask Workplace 添加到托管 SaaS 应用列表。
@@ -67,15 +67,15 @@ ms.locfileid: "39048100"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中键入“Autotask Workplace”，在结果面板中选择“Autotask Workplace”，然后单击“添加”按钮添加该应用程序。
+1. 在搜索框中键入“Autotask Workplace”，在结果面板中选择“Autotask Workplace”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 Autotask Workplace](./media/autotaskworkplace-tutorial/tutorial_autotaskworkplace_addfromgallery.png)
 
@@ -90,10 +90,10 @@ ms.locfileid: "39048100"
 若要配置和测试 Autotask Workplace 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Autotask Workplace 测试用户](#create-an-autotask-workplace-test-user)** - 在 Autotask Workplace 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 Autotask Workplace 测试用户](#create-an-autotask-workplace-test-user)** - 在 Autotask Workplace 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -105,19 +105,19 @@ ms.locfileid: "39048100"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![“单一登录”对话框](./media/autotaskworkplace-tutorial/tutorial_autotaskworkplace_samlbase.png)
 
-3. 在“Autotask Workplace 域和 URL”部分，如果要在 IDP 发起的模式下配置应用程序，请执行以下步骤：
+1. 在“Autotask Workplace 域和 URL”部分，如果要在 IDP 发起的模式下配置应用程序，请执行以下步骤：
 
     ![IDP 的 Autotask workplace 域和 URL 单一登录信息](./media/autotaskworkplace-tutorial/tutorial_autotaskworkplace_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.awp.autotask.net/singlesignon/saml/metadata`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.awp.autotask.net/singlesignon/saml/metadata`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<subdomain>.awp.autotask.net/singlesignon/saml/SSO`
 
-4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
+1. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
 
     ![SP 的 Autotask workplace 域和 URL 单一登录信息](./media/autotaskworkplace-tutorial/tutorial_autotaskworkplace_url1.png)
 
@@ -126,25 +126,25 @@ ms.locfileid: "39048100"
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 若要获取这些值，请与 [Autotask Workplace 客户端支持团队](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm)联系。 
 
-5. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
+1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![证书下载链接](./media/autotaskworkplace-tutorial/tutorial_autotaskworkplace_certificate.png) 
 
-6. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/autotaskworkplace-tutorial/tutorial_general_400.png)
 
-7. 在另一个 Web 浏览器窗口中，使用管理员凭据登录到 Workplace Online。
+1. 在另一个 Web 浏览器窗口中，使用管理员凭据登录到 Workplace Online。
 
     >[!Note]
     >配置 IdP 时，需要指定子域。 若要确认正确的子域，请登录到 Workplace Online。 登录后，请记下 URL 中的子域。
     >子域是 “https://” 和 “.awp.autotask.net/” 之间的部分，应为 us、eu、ca 或 au。
 
-8. 转到“配置” > “单一登录”并执行以下步骤：
+1. 转到“配置” > “单一登录”并执行以下步骤：
 
     ![Autotask 单一登录配置](./media/autotaskworkplace-tutorial/tutorial_autotaskssoconfig1.png)
  
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“XML 元数据文件”选项，然后上传从 Azure 门户下载的**元数据 XML**。
+    a. 选择“XML 元数据文件”选项，然后上传从 Azure 门户下载的**元数据 XML**。
 
     b. 单击“启用 SSO”。
     
@@ -172,19 +172,19 @@ ms.locfileid: "39048100"
 
     ![“Azure Active Directory”按钮](./media/autotaskworkplace-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/autotaskworkplace-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/autotaskworkplace-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/autotaskworkplace-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -208,23 +208,23 @@ ms.locfileid: "39048100"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Autotask Workplace”。
+1. 在应用程序列表中，选择“Autotask Workplace”。
 
     ![应用程序列表中的“Autotask Workplace”链接](./media/autotaskworkplace-tutorial/tutorial_autotaskworkplace_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

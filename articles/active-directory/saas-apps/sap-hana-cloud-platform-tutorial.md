@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 176ed1718818b24866620d86d7eff4d9af1d378f
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 07b3c32601d90fdeed1c335c0f36a5ccbdbe4f1d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39050868"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446708"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>教程：将 Azure Active Directory 与 SAP Cloud Platform 集成
 
@@ -56,7 +56,7 @@ ms.locfileid: "39050868"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 SAP Cloud Platform
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-sap-cloud-platform-from-the-gallery"></a>从库中添加 SAP Cloud Platform
 若要配置 SAP Cloud Platform 与 Azure AD 的集成，需要从库中将 SAP Cloud Platform 添加到托管 SaaS 应用列表。
@@ -67,15 +67,15 @@ ms.locfileid: "39050868"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中键入“SAP Cloud Platform”，在结果面板中选择“SAP Cloud Platform”，然后单击“添加”按钮添加该应用程序。
+1. 在搜索框中键入“SAP Cloud Platform”，在结果面板中选择“SAP Cloud Platform”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 SAP Cloud Platform](./media/sap-hana-cloud-platform-tutorial/tutorial_sapcloudplatform_addfromgallery.png)
 
@@ -90,10 +90,10 @@ ms.locfileid: "39050868"
 若要配置和测试 SAP Cloud Platform 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 SAP Cloud Platform 测试用户](#create-a-sap-cloud-platform-test-user)** - 目的是在 SAP Cloud Platform 中拥有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 SAP Cloud Platform 测试用户](#create-a-sap-cloud-platform-test-user)** - 目的是在 SAP Cloud Platform 中拥有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -105,15 +105,15 @@ ms.locfileid: "39050868"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![“单一登录”对话框](./media/sap-hana-cloud-platform-tutorial/tutorial_sapcloudplatform_samlbase.png)
 
-3. 在“SAP Cloud Platform 域和 URL”部分中，执行以下步骤：
+1. 在“SAP Cloud Platform 域和 URL”部分中，执行以下步骤：
 
     ![SAP Cloud Platform 域和 URL 单一登录信息](./media/sap-hana-cloud-platform-tutorial/tutorial_sapcloudplatform_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，键入用户用于登录“SAP Cloud Platform”应用程序的 URL。 这是“SAP Cloud Platform”应用程序中受保护资源的特定于帐户的 URL。 URL 基于以下模式：`https://<applicationName><accountName>.<landscape host>.ondemand.com/<path_to_protected_resource>`
+    a. 在“登录 URL”文本框中，键入用户用于登录“SAP Cloud Platform”应用程序的 URL。 这是“SAP Cloud Platform”应用程序中受保护资源的特定于帐户的 URL。 URL 基于以下模式：`https://<applicationName><accountName>.<landscape host>.ondemand.com/<path_to_protected_resource>`
       
      >[!NOTE]
      >这是“SAP Cloud Platform”应用程序中要求用户进行身份验证的 URL。
@@ -149,25 +149,25 @@ ms.locfileid: "39050868"
     > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [SAP Cloud Platform 客户端支持团队](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/5dd739823b824b539eee47b7860a00be.html)获取登录 URL 和标识符。 可以从“信任管理”部分获取回复 URL，本教程稍后将会介绍。
     > 
      
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
+1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![证书下载链接](./media/sap-hana-cloud-platform-tutorial/tutorial_sapcloudplatform_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/sap-hana-cloud-platform-tutorial/tutorial_general_400.png)
 
-6. 在另一个 Web 浏览器窗口中，登录到 SAP Cloud Platform 考核中心，网址为 `https://account.<landscape host>.ondemand.com/cockpit`（例如：https://account.hanatrial.ondemand.com/cockpit)）。
+1. 在另一个 Web 浏览器窗口中，登录到 SAP Cloud Platform 考核中心，网址为 `https://account.<landscape host>.ondemand.com/cockpit`（例如： https://account.hanatrial.ondemand.com/cockpit)）。
 
-7. 单击“信任”选项卡。
+1. 单击“信任”选项卡。
    
     ![信任](./media/sap-hana-cloud-platform-tutorial/ic790800.png "信任")
 
-8. 在“信任管理”部分中的“本地服务提供程序”下，执行以下步骤：
+1. 在“信任管理”部分中的“本地服务提供程序”下，执行以下步骤：
 
     ![信任管理](./media/sap-hana-cloud-platform-tutorial/ic793931.png "信任管理")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“编辑”。
+    a. 单击“编辑”。
 
     b. 对于“配置类型”，选择“自定义”。
 
@@ -181,17 +181,17 @@ ms.locfileid: "39050868"
 
     g. 单击“ **保存**”。
 
-9. 保存“本地服务提供程序”设置后，执行以下步骤获取回复 URL：
+1. 保存“本地服务提供程序”设置后，执行以下步骤获取回复 URL：
    
     ![获取元数据](./media/sap-hana-cloud-platform-tutorial/ic793930.png "获取元数据")
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“获取元数据”下载 SAP Cloud Platform 元数据文件。
+    a. 单击“获取元数据”下载 SAP Cloud Platform 元数据文件。
 
     b. 打开下载的 SAP Cloud Platform 元数据 XML 文件，并找到 **ns3:AssertionConsumerService** 标记。
  
     c. 复制 **Location** 属性的值，并将其粘贴到 SAP Cloud Platform Azure AD 配置中的“回复 URL”字段。
 
-10. 单击“受信任的标识提供者”选项卡，并单击“添加受信任的标识提供者”。
+1. 单击“受信任的标识提供者”选项卡，并单击“添加受信任的标识提供者”。
    
     ![信任管理](./media/sap-hana-cloud-platform-tutorial/ic790802.png "信任管理")
    
@@ -200,7 +200,7 @@ ms.locfileid: "39050868"
     > 
     > 
 
-11. 单击“常规” 选项卡，并单击“浏览”以上载已下载的元数据文件。
+1. 单击“常规” 选项卡，并单击“浏览”以上载已下载的元数据文件。
     
     ![信任管理](./media/sap-hana-cloud-platform-tutorial/ic793932.png "信任管理")
     
@@ -208,13 +208,13 @@ ms.locfileid: "39050868"
     >上传元数据文件后，会自动填充“单一登录 URL”、“单一注销 URL”和“签名证书”的值。
     > 
      
-12. 单击“属性”选项卡。
+1. 单击“属性”选项卡。
 
-13. 在“属性”选项卡中，执行以下步骤：
+1. 在“属性”选项卡中，执行以下步骤：
     
     ![属性](./media/sap-hana-cloud-platform-tutorial/ic790804.png "属性") 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加基于断言的属性”，并添加以下基于断言的属性：
+    a. 单击“添加基于断言的属性”，并添加以下基于断言的属性：
        
     | 断言属性 | 主体属性 |
     | --- | --- |
@@ -256,19 +256,19 @@ ms.locfileid: "39050868"
 
     ![“Azure Active Directory”按钮](./media/sap-hana-cloud-platform-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/sap-hana-cloud-platform-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/sap-hana-cloud-platform-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/sap-hana-cloud-platform-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -284,11 +284,11 @@ ms.locfileid: "39050868"
 
 1. 登录到 **SAP Cloud Platform** 考核中心。
 
-2. 执行以下操作：
+1. 执行以下操作：
    
     ![授权](./media/sap-hana-cloud-platform-tutorial/ic790805.png "授权")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“授权”。
+    a. 单击“授权”。
 
     b. 单击“用户”选项卡。
 
@@ -310,23 +310,23 @@ ms.locfileid: "39050868"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“SAP Cloud Platform”。
+1. 在应用程序列表中，选择“SAP Cloud Platform”。
 
     ![应用程序列表中的“SAP Cloud Platform”链接](./media/sap-hana-cloud-platform-tutorial/tutorial_sapcloudplatform_app.png)  
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

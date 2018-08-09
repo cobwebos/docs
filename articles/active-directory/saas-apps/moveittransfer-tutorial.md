@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: jeedes
-ms.openlocfilehash: f35fbacd4eac39cd9931d4725ac9bb299986c934
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e73ca95c27e7c9ef0799107dadc58c17aea5a9ca
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36217242"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435896"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moveit-transfer---azure-ad-integration"></a>教程：将 Azure Active Directory 与 MOVEit Transfer - Azure AD 集成集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "36217242"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 MOVEit Transfer - Azure AD 集成
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-moveit-transfer---azure-ad-integration-from-the-gallery"></a>从库中添加 MOVEit Transfer - Azure AD 集成
 要配置 MOVEit Transfer - Azure AD 集成与 Azure AD 的集成，需要从库中将 MOVEit Transfer - Azure AD 集成添加到托管 SaaS 应用列表。
@@ -64,15 +64,15 @@ ms.locfileid: "36217242"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中，键入“MOVEit Transfer - Azure AD 集成”，从结果面板中选择“MOVEit Transfer - Azure AD 集成”，然后单击“添加”按钮添加该应用程序。
+1. 在搜索框中，键入“MOVEit Transfer - Azure AD 集成”，从结果面板中选择“MOVEit Transfer - Azure AD 集成”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 MOVEit Transfer - Azure AD 集成](./media/moveittransfer-tutorial/tutorial_moveittransfer_addfromgallery.png)
 
@@ -87,10 +87,10 @@ ms.locfileid: "36217242"
 若要配置并测试 MOVEit Transfer - Azure AD 集成的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 MOVEit Transfer - Azure AD 集成测试用户](#create-a-moveit-transfer---azure-ad-integration-test-user)** - 在 MOVEit Transfer - Azure AD 集成中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 MOVEit Transfer - Azure AD 集成测试用户](#create-a-moveit-transfer---azure-ad-integration-test-user)** - 在 MOVEit Transfer - Azure AD 集成中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -102,42 +102,42 @@ ms.locfileid: "36217242"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![“单一登录”对话框](./media/moveittransfer-tutorial/tutorial_moveittransfer_samlbase.png)
 
-3. 在“MOVEit Transfer - Azure AD 集成域和 URL”部分中，执行以下步骤：
+1. 在“MOVEit Transfer - Azure AD 集成域和 URL”部分中，执行以下步骤：
 
     ![配置单一登录](./media/moveittransfer-tutorial/tutorial_moveittransfer_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://contoso.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://contoso.com`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://contoso.com/<tenatid>`
 
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://contoso.com/<tenatid>/SAML/SSO/HTTP-Post`    
+    c. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://contoso.com/<tenatid>/SAML/SSO/HTTP-Post`    
      
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 可以稍后在“服务提供程序元数据 URL”部分查看这些值或联系 [MOVEit Transfer - Azure AD 集成客户端支持团队](https://community.ipswitch.com/s/support)获取这些值。
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
+1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![证书下载链接](./media/moveittransfer-tutorial/tutorial_moveittransfer_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/moveittransfer-tutorial/tutorial_general_400.png)
     
-6. 以管理员身份登录到 MOVEit Transfer 租户。
+1. 以管理员身份登录到 MOVEit Transfer 租户。
 
-7. 在左侧导航窗格上，单击“设置”。
+1. 在左侧导航窗格上，单击“设置”。
 
     ![应用端上的“设置”部分](./media/moveittransfer-tutorial/tutorial_moveittransfer_000.png)
 
-8. 单击位于“安全策略”->“用户身份验证”下的“单一登录”链接。
+1. 单击位于“安全策略”->“用户身份验证”下的“单一登录”链接。
 
     ![应用端的安全策略](./media/moveittransfer-tutorial/tutorial_moveittransfer_001.png)
 
-9. 单击元数据 URL 链接以下载元数据文档。
+1. 单击元数据 URL 链接以下载元数据文档。
 
     ![服务提供程序元数据 URL](./media/moveittransfer-tutorial/tutorial_moveittransfer_002.png)
     
@@ -146,19 +146,19 @@ ms.locfileid: "36217242"
     
     ![在应用端配置单一登录](./media/moveittransfer-tutorial/tutorial_moveittransfer_007.png)
 
-10. 单击“添加标识提供程序”按钮以添加新的联合身份提供程序。
+1. 单击“添加标识提供程序”按钮以添加新的联合身份提供程序。
 
     ![添加标识提供者](./media/moveittransfer-tutorial/tutorial_moveittransfer_003.png)
 
-11. 单击“浏览...”以选择从 Azure 门户中下载的元数据文件，并单击“添加标识提供者”以上传所下载的文件。
+1. 单击“浏览...”以选择从 Azure 门户中下载的元数据文件，并单击“添加标识提供者”以上传所下载的文件。
 
     ![SAML 标识提供程序](./media/moveittransfer-tutorial/tutorial_moveittransfer_004.png)
 
-12. 在“编辑联合身份提供程序设置...”页上，对于“启用”选择“是”，并单击“保存”。
+1. 在“编辑联合身份提供程序设置...”页上，对于“启用”选择“是”，并单击“保存”。
 
     ![联合标识提供程序设置](./media/moveittransfer-tutorial/tutorial_moveittransfer_005.png)
 
-13. 在“编辑联合标识提供者用户设置”页上，执行以下操作：
+1. 在“编辑联合标识提供者用户设置”页上，执行以下操作：
     
     ![编辑联合标识提供程序设置](./media/moveittransfer-tutorial/tutorial_moveittransfer_006.png)
     
@@ -187,15 +187,15 @@ ms.locfileid: "36217242"
 
     ![“Azure Active Directory”按钮](./media/moveittransfer-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/moveittransfer-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/moveittransfer-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/moveittransfer-tutorial/create_aaduser_04.png)
 
@@ -226,23 +226,23 @@ ms.locfileid: "36217242"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“MOVEit Transfer - Azure AD 集成”。
+1. 在应用程序列表中，选择“MOVEit Transfer - Azure AD 集成”。
 
     ![应用程序列表中的 MOVEit Transfer - Azure AD 集成链接](./media/moveittransfer-tutorial/tutorial_moveittransfer_app.png)  
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

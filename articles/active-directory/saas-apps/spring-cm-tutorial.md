@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: jeedes
-ms.openlocfilehash: cf0495e27d7fc06c54266eba6640e0c0fb99be42
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 034d7b61d4a02ac899c7215a042d47bc7938176d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39051195"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438141"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>教程：Azure Active Directory 与 SpringCM 集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "39051195"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 SpringCM
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-springcm-from-the-gallery"></a>从库中添加 SpringCM
 若要配置 SpringCM 与 Azure AD 的集成，需要从库中将 SpringCM 添加到托管 SaaS 应用列表。
@@ -63,19 +63,19 @@ ms.locfileid: "39051195"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入“SpringCM”。
+1. 在搜索框中，键入“SpringCM”。
 
     ![创建 Azure AD 测试用户](./media/spring-cm-tutorial/tutorial_springcm_search.png)
 
-5. 在结果窗格中，选择“SpringCM”，并单击“添加”按钮添加该应用程序。
+1. 在结果窗格中，选择“SpringCM”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/spring-cm-tutorial/tutorial_springcm_addfromgallery.png)
 
@@ -89,10 +89,10 @@ ms.locfileid: "39051195"
 若要配置和测试 SpringCM 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 SpringCM 测试用户](#creating-a-springcm-test-user)** - 在 SpringCM 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 SpringCM 测试用户](#creating-a-springcm-test-user)** - 在 SpringCM 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -104,11 +104,11 @@ ms.locfileid: "39051195"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![配置单一登录](./media/spring-cm-tutorial/tutorial_springcm_samlbase.png)
 
-3. 在“SpringCM 域和 URL”部分中，执行以下步骤：
+1. 在“SpringCM 域和 URL”部分中，执行以下步骤：
 
     ![配置单一登录](./media/spring-cm-tutorial/tutorial_springcm_url.png)
 
@@ -117,29 +117,29 @@ ms.locfileid: "39051195"
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新此值。 请联系 [SpringCM 客户端支持团队](https://knowledge.springcm.com/support)来获取此值。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(原始)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(原始)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/spring-cm-tutorial/tutorial_springcm_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录](./media/spring-cm-tutorial/tutorial_general_400.png)
 
-6. 在“SpringCM 配置”部分中，单击“配置 SpringCM”以打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 实体 ID 和 SAML 单一登录服务 URL”。
+1. 在“SpringCM 配置”部分中，单击“配置 SpringCM”以打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 实体 ID 和 SAML 单一登录服务 URL”。
 
     ![配置单一登录](./media/spring-cm-tutorial/tutorial_springcm_configure.png)     
 
-7. 在另一个 Web 浏览器窗口中，以管理员身份登录 **SpringCM** 公司站点。
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录 **SpringCM** 公司站点。
 
-8. 在顶部菜单中，单击“转到”，单击“首选项”，并在“帐户首选项”部分中，单击“SAML SSO”。
+1. 在顶部菜单中，单击“转到”，单击“首选项”，并在“帐户首选项”部分中，单击“SAML SSO”。
    
     ![SAML SSO](./media/spring-cm-tutorial/ic797051.png "SAML SSO")
 
-9. 在“标识提供者配置”部分执行以下步骤：
+1. 在“标识提供者配置”部分执行以下步骤：
    
     ![标识提供者配置](./media/spring-cm-tutorial/ic797052.png "标识提供者配置")
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 若要上传已下载的 Azure Active Directory 证书，请单击“选择颁发者证书”或“更改颁发者证书”。
+    a. 若要上传已下载的 Azure Active Directory 证书，请单击“选择颁发者证书”或“更改颁发者证书”。
     
     b. 将从 Azure 门户复制的“SAML 实体 ID”值粘贴到“颁发者”文本框中。
     
@@ -164,19 +164,19 @@ ms.locfileid: "39051195"
 
     ![创建 Azure AD 测试用户](./media/spring-cm-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
     ![创建 Azure AD 测试用户](./media/spring-cm-tutorial/create_aaduser_02.png) 
 
-3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
  
     ![创建 Azure AD 测试用户](./media/spring-cm-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/spring-cm-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -195,21 +195,21 @@ ms.locfileid: "39051195"
 
 1. 以管理员身份登录 **SpringCM** 公司站点。
 
-2. 单击“转到”，然后单击“通讯簿”。
+1. 单击“转到”，然后单击“通讯簿”。
    
     ![创建用户](./media/spring-cm-tutorial/ic797054.png "创建用户")
 
-3. 单击“创建用户”。
+1. 单击“创建用户”。
 
-4. 选择**用户角色**。
+1. 选择**用户角色**。
 
-5. 选择“发送激活电子邮件”。
+1. 选择“发送激活电子邮件”。
 
-6. 在相关文本框中键入要预配的有效 Azure Active Directory 用户帐户的名字、姓氏和电子邮件地址。
+1. 在相关文本框中键入要预配的有效 Azure Active Directory 用户帐户的名字、姓氏和电子邮件地址。
 
-7. 将用户添加到某个**安全组**。
+1. 将用户添加到某个**安全组**。
 
-8. 单击“ **保存**”。
+1. 单击“ **保存**”。
 
   >[!NOTE]
   >可以使用 SpringCM 提供的任何其他 SpringCM 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。  
@@ -227,23 +227,23 @@ ms.locfileid: "39051195"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“SpringCM”。
+1. 在应用程序列表中，选择“SpringCM”。
 
     ![配置单一登录](./media/spring-cm-tutorial/tutorial_springcm_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 

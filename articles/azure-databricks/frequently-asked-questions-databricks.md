@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: cd231a6baad74cd88d82b219e2e58e9252187ff5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c3ba235c60480c38a21ee3264c54b4a4dcdea340
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598991"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434595"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>有关 Azure Databricks 的常见问题解答
 
@@ -34,8 +34,8 @@ Databricks 预配过程中会创建新的虚拟网络。 不能在此版本中�
 
 执行以下步骤:
 1. 在 Azure Active Directory (Azure AD) 中预配服务主体并记录其密钥。
-2. 在 Data Lake Store 中分配服务主体的必需权限。
-3. 若要访问 Data Lake Store 中的文件，请使用 Notebook 中的服务主体凭据。
+1. 在 Data Lake Store 中分配服务主体的必需权限。
+1. 若要访问 Data Lake Store 中的文件，请使用 Notebook 中的服务主体凭据。
 
 有关详细信息，请参阅[配合使用 Data Lake Store 和 Azure Databricks](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake.html)。
 
@@ -52,8 +52,8 @@ Databricks 预配过程中会创建新的虚拟网络。 不能在此版本中�
 #### <a name="solution"></a>解决方案
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
-2. 依次选择“订阅”、正在使用的订阅，然后单击“资源提供程序”。 
-3. 在资源提供程序列表中，针对“Microsoft.Databricks”选择“注册”。 必须具有订阅的参与者或所有者角色才能注册资源提供程序。
+1. 依次选择“订阅”、正在使用的订阅，然后单击“资源提供程序”。 
+1. 在资源提供程序列表中，针对“Microsoft.Databricks”选择“注册”。 必须具有订阅的参与者或所有者角色才能注册资源提供程序。
 
 
 ### <a name="issue-your-account-email-does-not-have-the-owner-or-contributor-role-on-the-databricks-workspace-resource-in-the-azure-portal"></a>问题：在 Azure 门户中，你的帐户 {email} 没有 Databricks 工作区资源的“所有者”或“参与者”角色
@@ -107,8 +107,8 @@ Azure 错误代码：MissingSubscriptionRegistration；Azure 错误消息：订�
 #### <a name="solution"></a>解决方案
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
-2. 依次选择“订阅”、正在使用的订阅，然后单击“资源提供程序”。 
-3. 在资源提供程序列表中，针对“Microsoft.Compute”选择“注册”。 必须具有订阅的参与者或所有者角色才能注册资源提供程序。
+1. 依次选择“订阅”、正在使用的订阅，然后单击“资源提供程序”。 
+1. 在资源提供程序列表中，针对“Microsoft.Compute”选择“注册”。 必须具有订阅的参与者或所有者角色才能注册资源提供程序。
 
 有关详细说明，请参阅[资源提供程序和类型](../azure-resource-manager/resource-manager-supported-services.md)。
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 1932980e1dd2f9de5ddb7ea3e77acb2a9f85fad5
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 326f12ff3923855b09462d4909d37638d4010b48
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225341"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435003"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>教程：Azure Active Directory 与 Image Relay 的集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "36225341"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Image Relay
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-image-relay-from-the-gallery"></a>从库中添加 Image Relay
 要配置 Image Relay 与 Azure AD 的集成，需要从库中将 Image Relay 添加到托管 SaaS 应用列表。
@@ -63,19 +63,19 @@ ms.locfileid: "36225341"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入“Image Relay”。
+1. 在搜索框中，键入“Image Relay”。
 
     ![创建 Azure AD 测试用户](./media/imagerelay-tutorial/tutorial_imagerelay_search.png)
 
-5. 在结果窗格中，选择“Image Relay”，然后单击“添加”按钮添加该应用程序。
+1. 在结果窗格中，选择“Image Relay”，然后单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/imagerelay-tutorial/tutorial_imagerelay_addfromgallery.png)
 
@@ -89,10 +89,10 @@ ms.locfileid: "36225341"
 若要配置和测试 Image Relay 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Image Relay 测试用户](#creating-an-image-relay-test-user)** - 在 Image Relay 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 Image Relay 测试用户](#creating-an-image-relay-test-user)** - 在 Image Relay 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -104,15 +104,15 @@ ms.locfileid: "36225341"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_samlbase.png)
 
-3. 在“Image Relay 域和 URL”部分中，执行以下步骤：
+1. 在“Image Relay 域和 URL”部分中，执行以下步骤：
 
     ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.imagerelay.com/`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.imagerelay.com/`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<companyname>.imagerelay.com/sso/metadata`
 
@@ -121,41 +121,41 @@ ms.locfileid: "36225341"
  
 
 
-4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录](./media/imagerelay-tutorial/tutorial_general_400.png)
 
-6. 在“Image Relay 配置”部分，单击“配置 Image Relay”打开“配置登录”窗口。 从“快速参考”部分中复制“注销服务 URL 和 SAML 单一登录服务 URL”。
+1. 在“Image Relay 配置”部分，单击“配置 Image Relay”打开“配置登录”窗口。 从“快速参考”部分中复制“注销服务 URL 和 SAML 单一登录服务 URL”。
 
     ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_configure.png) 
 
-7. 在另一个浏览器窗口中，以管理员身份登录到 Image Relay 公司站点。
+1. 在另一个浏览器窗口中，以管理员身份登录到 Image Relay 公司站点。
 
-8. 在顶部工具栏中，单击“用户和权限”工作负荷。
+1. 在顶部工具栏中，单击“用户和权限”工作负荷。
    
     ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_06.png) 
 
-9. 单击“创建新权限”。
+1. 单击“创建新权限”。
    
     ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_08.png)
 
-10. 在“单一登录设置”工作负荷中，选中“此组只能通过单一登录进行登录”复选框，并单击“保存”。
+1. 在“单一登录设置”工作负荷中，选中“此组只能通过单一登录进行登录”复选框，并单击“保存”。
    
     ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_09.png) 
 
-11. 转到“帐户设置”。
+1. 转到“帐户设置”。
    
     ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_10.png) 
 
-12. 转到“单一登录设置”工作负荷。
+1. 转到“单一登录设置”工作负荷。
     
      ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_11.png)
 
-13. 在“SAML 设置”对话框中，执行以下步骤：
+1. 在“SAML 设置”对话框中，执行以下步骤：
     
     ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_12.png)
     
@@ -200,15 +200,15 @@ ms.locfileid: "36225341"
 
     ![创建 Azure AD 测试用户](./media/imagerelay-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
     ![创建 Azure AD 测试用户](./media/imagerelay-tutorial/create_aaduser_02.png) 
 
-3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
  
     ![创建 Azure AD 测试用户](./media/imagerelay-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/imagerelay-tutorial/create_aaduser_04.png) 
 
@@ -228,15 +228,15 @@ ms.locfileid: "36225341"
 
 1. 以管理员身份登录 Image Relay 公司站点。
 
-2. 转到“用户和权限”，并选择“创建 SSO 用户”。
+1. 转到“用户和权限”，并选择“创建 SSO 用户”。
    
     ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
 
-3. 输入要预配的用户的“电子邮件”、“名字”、“姓氏”和“公司”，并选择只能通过单一登录进行登录的权限组（例如，SSO 基本）。
+1. 输入要预配的用户的“电子邮件”、“名字”、“姓氏”和“公司”，并选择只能通过单一登录进行登录的权限组（例如，SSO 基本）。
    
     ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_22.png) 
 
-4. 单击“创建”。
+1. 单击“创建”。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -250,23 +250,23 @@ ms.locfileid: "36225341"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Image Relay”。
+1. 在应用程序列表中，选择“Image Relay”。
 
     ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 

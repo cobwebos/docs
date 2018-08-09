@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 97e77fdbb352e1fcf66044f48e17cb19a8aa2e1d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 266c9523f45294899e3cddbe782cbc54846eb119
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042140"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422301"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform-identity-authentication"></a>教程：将 Azure Active Directory 与 SAP Cloud Platform Identity Authentication 集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "39042140"
 在本教程中，会在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库添加 SAP Cloud Platform Identity Authentication
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 深入了解技术细节前，先理解后面将会遇到的概念至关重要。 通过 SAP Cloud Platform Identity Authentication 和 Active Directory 联合身份验证服务，可以使用受 SAP Cloud Platform Identity Authentication 保护的 SAP 应用和服务，跨受 Azure AD（可用作 IdP）保护的应用或服务实现 SSO。
 
@@ -84,17 +84,17 @@ ms.locfileid: "39042140"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 转到“企业应用程序”。 然后转到“所有应用程序”。
+1. 转到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用，请选择对话框顶部的“新建应用”按钮。
+1. 若要添加新应用，请选择对话框顶部的“新建应用”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中，键入“SAP Cloud Platform Identity Authentication”。 
+1. 在搜索框中，键入“SAP Cloud Platform Identity Authentication”。 
 
-5. 在结果面板中，依次选择“SAP Cloud Platform Identity Authentication”和“添加”按钮。
+1. 在结果面板中，依次选择“SAP Cloud Platform Identity Authentication”和“添加”按钮。
 
     ![结果列表中的 SAP Cloud Platform Identity Authentication](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sapcpia_addfromgallery.png)
 
@@ -109,10 +109,10 @@ ms.locfileid: "39042140"
 若要配置和测试 Azure AD 与 SAP Cloud Platform Identity Authentication 的单一登录，请完成以下构建基块：
 
 1. [配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)，使用户能够使用此功能。
-2. [创建 Azure AD 测试用户](#create-an-azure-ad-test-user)，使用 Britta Simon 测试 Azure AD 单一登录。
-3. [创建 SAP Cloud Platform Identity Authentication 测试用户](#create-an-sap-cloud-platform-identity-authentication-test-user)，以便在 SAP Cloud Platform Identity Authentication 中创建 Britta Simon 的对应用户，与 Azure AD 表示的用户相关联。
-4. [分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)，使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [测试单一登录](#test-single-sign-on)，验证配置是否正常工作。
+1. [创建 Azure AD 测试用户](#create-an-azure-ad-test-user)，使用 Britta Simon 测试 Azure AD 单一登录。
+1. [创建 SAP Cloud Platform Identity Authentication 测试用户](#create-an-sap-cloud-platform-identity-authentication-test-user)，以便在 SAP Cloud Platform Identity Authentication 中创建 Britta Simon 的对应用户，与 Azure AD 表示的用户相关联。
+1. [分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)，使 Britta Simon 能够使用 Azure AD 单一登录。
+1. [测试单一登录](#test-single-sign-on)，验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -124,22 +124,22 @@ ms.locfileid: "39042140"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”下的“模式”，启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”下的“模式”，启用单一登录。
  
     ![“单一登录”对话框](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sapcpia_samlbase.png)
 
-3. 如果要在“IDP”发起的模式下配置应用程序，请在“SAP Cloud Platform Identity Authentication 域和 URL”部分中执行下列步骤：  
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“SAP Cloud Platform Identity Authentication 域和 URL”部分中执行下列步骤：  
 
     ![SAP Cloud Platform Identity Authentication 域和 URL 单一登录信息](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sapcpia_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”框中，使用以下模式键入 URL：`<IAS-tenant-id>.accounts.ondemand.com`
+    a. 在“标识符”框中，使用以下模式键入 URL：`<IAS-tenant-id>.accounts.ondemand.com`
 
     b. 在“回复 URL”框中，使用以下模式键入 URL：`https://<IAS-tenant-id>.accounts.ondemand.com/saml2/idp/acs/<IAS-tenant-id>.accounts.ondemand.com`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [SAP Cloud Platform Identity Authentication 客户支持团队](https://cloudplatform.sap.com/capabilities/security/trustcenter.html)获取这些值。 如果不了解标识符值，请阅读有关[租户 SAML 2.0 配置](https://help.hana.ondemand.com/cloud_identity/frameset.htm?e81a19b0067f4646982d7200a8dab3ca.html)的 SAP Cloud Platform Identity Authentication 文档。
 
-4. 若要为应用配置 SP 启动模式，请选中“显示高级 URL 设置”。
+1. 若要为应用配置 SP 启动模式，请选中“显示高级 URL 设置”。
 
     ![SAP Cloud Platform Identity Authentication 域和 URL 单一登录信息](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sapcpia_url1.png)
 
@@ -148,17 +148,17 @@ ms.locfileid: "39042140"
     > [!NOTE]
     > 此值不是真实值。 请将此值更新为实际登录 URL。 请使用特定业务应用程序登录 URL。 如果有任何疑问，请联系 [SAP Cloud Platform Identity Authentication 客户支持团队](https://cloudplatform.sap.com/capabilities/security/trustcenter.html)。
 
-5. 在“SAML 签名证书”部分中，选择“元数据 XML”。 然后，将元数据文件保存到计算机。
+1. 在“SAML 签名证书”部分中，选择“元数据 XML”。 然后，将元数据文件保存到计算机。
 
     ![证书下载链接](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sapcpia_certificate.png)
 
-6. SAP Cloud Platform Identity Authentication 应用程序要求 SAML 断言采用特定格式。 在应用集成页的“用户属性”部分中，管理这些属性的值。 下面的屏幕截图展示了此格式示例。 
+1. SAP Cloud Platform Identity Authentication 应用程序要求 SAML 断言采用特定格式。 在应用集成页的“用户属性”部分中，管理这些属性的值。 下面的屏幕截图展示了此格式示例。 
 
     ![配置单一登录](./media/sap-hana-cloud-platform-identity-authentication-tutorial/attribute.png)
 
-7. 如果 SAP 应用需要 firstName 等属性，请在“用户属性”部分中添加“firstName”属性。 在“SAML 令牌属性”对话框的“单一登录”对话框中，可以使用此选项。
+1. 如果 SAP 应用需要 firstName 等属性，请在“用户属性”部分中添加“firstName”属性。 在“SAML 令牌属性”对话框的“单一登录”对话框中，可以使用此选项。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 若要打开“添加属性”对话框，请选择“添加属性”。 
+    a. 若要打开“添加属性”对话框，请选择“添加属性”。 
     
     ![配置单一登录](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_attribute_04.png)
     
@@ -170,25 +170,25 @@ ms.locfileid: "39042140"
     
     d. 选择“确定”。
 
-8. 选择“保存”按钮。
+1. 选择“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_general_400.png)
 
-9. 在“SAP Cloud Platform Identity Authentication 配置”部分中，选择“配置 SAP Cloud Platform Identity Authentication”，打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+1. 在“SAP Cloud Platform Identity Authentication 配置”部分中，选择“配置 SAP Cloud Platform Identity Authentication”，打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
 
     ![SAP Cloud Platform Identity Authentication 配置](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sapcpia_configure.png) 
 
-10. 若要为应用配置 SSO，请转到“SAP Cloud Platform Identity Authentication 管理控制台”。 URL 采用以下模式：`https://<tenant-id>.accounts.ondemand.com/admin`。 然后，阅读与 SAP Cloud Platform Identity Authentication 相关的文档 - [与 Microsoft Azure AD 集成](https://help.hana.ondemand.com/cloud_identity/frameset.htm?626b17331b4d4014b8790d3aea70b240.html)。 
+1. 若要为应用配置 SSO，请转到“SAP Cloud Platform Identity Authentication 管理控制台”。 URL 采用以下模式：`https://<tenant-id>.accounts.ondemand.com/admin`。 然后，阅读与 SAP Cloud Platform Identity Authentication 相关的文档 - [与 Microsoft Azure AD 集成](https://help.hana.ondemand.com/cloud_identity/frameset.htm?626b17331b4d4014b8790d3aea70b240.html)。 
 
-11. 在 Azure 门户中，选择“保存”按钮。
+1. 在 Azure 门户中，选择“保存”按钮。
 
-12. 仅当要为另一个 SAP 应用添加和启用 SSO 时，才继续执行以下步骤。 重复执行“从库添加 SAP Cloud Platform Identity Authentication”部分下的步骤。
+1. 仅当要为另一个 SAP 应用添加和启用 SSO 时，才继续执行以下步骤。 重复执行“从库添加 SAP Cloud Platform Identity Authentication”部分下的步骤。
 
-13. 在 Azure 门户的“SAP Cloud Platform Identity Authentication”应用集成页上，选择“链接登录”。
+1. 在 Azure 门户的“SAP Cloud Platform Identity Authentication”应用集成页上，选择“链接登录”。
 
     ![配置链接登录](./media/sap-hana-cloud-platform-identity-authentication-tutorial/linked_sign_on.png)
 
-14. 保存配置。
+1. 保存配置。
 
 >[!NOTE] 
 >新应用利用旧 SAP 应用的单一登录配置。 确保在 SAP Cloud Platform Identity Authentication 管理控制台中使用相同的企业标识提供者。
@@ -209,19 +209,19 @@ ms.locfileid: "39042140"
 
     ![“Azure Active Directory”按钮](./media/sap-hana-cloud-platform-identity-authentication-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，选择“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，选择“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/sap-hana-cloud-platform-identity-authentication-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，请在“所有用户”对话框顶部选择“添加”。
+1. 若要打开“用户”对话框，请在“所有用户”对话框顶部选择“添加”。
 
     ![“添加”按钮](./media/sap-hana-cloud-platform-identity-authentication-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/sap-hana-cloud-platform-identity-authentication-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -251,23 +251,23 @@ SAP Cloud Platform Identity Authentication 支持“联合身份验证”选项�
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“SAP Cloud Platform Identity Authentication”。
+1. 在应用程序列表中，选择“SAP Cloud Platform Identity Authentication”。
 
     ![应用程序列表中的“SAP Cloud Platform Identity Authentication”链接](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sapcpia_app.png)  
 
-3. 在左侧菜单中，选择“用户和组”。
+1. 在左侧菜单中，选择“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 选择“添加”按钮。 然后，在“添加分配”对话框中，选择“用户和组”。
+1. 选择“添加”按钮。 然后，在“添加分配”对话框中，选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框中，选择“用户”列表内的“Britta Simon”。
+1. 在“用户和组”对话框中，选择“用户”列表内的“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中选择“分配”按钮。
+1. 在“添加分配”对话框中选择“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

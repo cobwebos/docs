@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: bdaead6fe739d62340ca225aa1a6d8adf9e86cb9
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: a55727c58f8f9d4a05f547100875f18291328ea2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100290"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435316"
 ---
 # <a name="azure-cosmos-db-import-mongodb-data"></a>Azure Cosmos DB：导入 MongoDB 数据 
 
@@ -45,8 +45,8 @@ ms.locfileid: "37100290"
 ## <a name="find-your-connection-string-information-host-port-username-and-password"></a>查找连接字符串信息（主机、端口、用户名和密码）
 
 1. 在 [Azure 门户](https://portal.azure.com)的左侧窗格中，单击“Azure Cosmos DB”条目。
-2. 在“订阅”窗格中，选择帐户名称。
-3. 在“连接字符串”边栏选项卡中，单击“连接字符串”。
+1. 在“订阅”窗格中，选择帐户名称。
+1. 在“连接字符串”边栏选项卡中，单击“连接字符串”。
 
    右侧窗格中包含成功连接到帐户所需的全部信息。
 
@@ -102,7 +102,7 @@ ms.locfileid: "37100290"
         }
         ```
 
-2. 计算单文档写入的近似 RU 费用：
+1. 计算单文档写入的近似 RU 费用：
 
     a. 通过 MongoDB Shell 连接到 Azure Cosmos DB MongoDB 数据库。 有关说明，可以参阅[将 MongoDB 应用程序连接到 Azure Cosmos DB](connect-mongodb-account.md)。
     
@@ -125,7 +125,7 @@ ms.locfileid: "37100290"
         
     d. 记下请求费用。
     
-3. 确定计算机连接 Azure Cosmos DB 云服务的延迟时间：
+1. 确定计算机连接 Azure Cosmos DB 云服务的延迟时间：
     
     a. 运行以下命令，通过 MongoDB Shell 启用详细日志记录：```setVerboseShell(true)```
     
@@ -135,9 +135,9 @@ ms.locfileid: "37100290"
         Fetched 1 record(s) in 100(ms)
         ```
         
-4. 迁移前，删除已插入的文档，以确保没有重复文档。 可以运行下列命令来删除文档：```db.coll.remove({})```
+1. 迁移前，删除已插入的文档，以确保没有重复文档。 可以运行下列命令来删除文档：```db.coll.remove({})```
 
-5. 计算 batchSize 和 numInsertionWorkers 的近似值：
+1. 计算 batchSize 和 numInsertionWorkers 的近似值：
 
     * 若要计算 batchSize，请用预配的总 RU 数除以第 3 步中单文档写入所使用的 RU 数。
     
@@ -157,7 +157,7 @@ ms.locfileid: "37100290"
     
     numInsertionWorkers = (10000 RU x 0.1 秒) / (24 x 10 RU) = 4.1666
 
-6. 运行最终迁移命令：
+1. 运行最终迁移命令：
 
    ```
    mongoimport.exe --host comsosdb-mongodb-account.documents.azure.com:10255 -u comsosdb-mongodb-account -p wzRJCyjtLPNuhm53yTwaefawuiefhbauwebhfuabweifbiauweb2YVdl2ZFNZNv8IU89LqFVm5U0bw== --ssl --sslAllowInvalidCertificates --jsonArray --db dabasename --collection collectionName --file "C:\sample.json" --numInsertionWorkers 4 --batchSize 24

@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 07/26/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: 2e100f2019c3bb99e3909e64305ebe641e2a637e
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 87d97b078927800e4e90c39a70e2acc7163a4c84
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308963"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493041"
 ---
 # <a name="tutorial-7-add-simple-entity-and-phrase-list"></a>教程：7. 添加简单实体和短语列表
 在本教程中，我们将使用**简单**实体创建一个应用，用于演示如何从陈述中提取机器学习的数据。
@@ -126,15 +126,8 @@ ms.locfileid: "39308963"
     还有其他示例陈述，但这些陈述不包含工作词汇。
 
 ## <a name="train-the-luis-app"></a>训练 LUIS 应用
-LUIS 在训练之前，并不知道意向和实体（模型）发生的变化。 
 
-1. 在 LUIS 网站的右上方，选择“训练”按钮。
-
-    ![选择训练按钮](./media/luis-quickstart-primary-and-secondary-data/train-button.png)
-
-2. 当网站顶部出现确认成功的绿色状态栏时，表示训练已完成。
-
-    ![训练成功通知](./media/luis-quickstart-primary-and-secondary-data/trained.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>发布应用以获取终结点 URL
 
@@ -367,7 +360,8 @@ LUIS 应用通过高置信度来查找正确的意向，然后提取工作名称
 LUIS 已完成此请求。 通话应用程序（例如聊天机器人）可以提取 topScoringIntent 结果和实体中的数据，以便使用第三方 API 向人力资源代表发送工作信息。 如果机器人或调用方应用程序有其他编程选项，LUIS 不会执行相关的工作。 LUIS 只确定用户的意向是什么。 
 
 ## <a name="clean-up-resources"></a>清理资源
-不再需要 LUIS 应用时，请将其删除。 在左上侧菜单中选择“我的应用”。 在应用列表中选择应用名称右侧的省略号 (***...***)，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

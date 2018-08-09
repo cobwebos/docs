@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 07/30/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: 9da2454afa130c4c2ccab458099a90d78354b3e2
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 994bd6f2a041e25d15c7e0b4a216952cec4101fa
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358258"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492817"
 ---
 # <a name="tutorial-3-add-regular-expression-entity"></a>教程：3. 添加正则表达式实体
 在本教程中，我们将创建一个应用，用于演示如何使用**正则表达式**实体从陈述中提取带有一致格式的数据。
@@ -110,15 +110,8 @@ HRF 代表“人力资源表单”。
     因为该实体不是机器学习的实体，因此，在创建标签后，该标签将立即应用到陈述并显示在 LUIS 网站中。
 
 ## <a name="train-the-luis-app"></a>训练 LUIS 应用
-正则表达式实体不需要训练，但新意向和陈述需要训练。 
 
-1. 在 LUIS 网站的右上方，选择“训练”按钮。
-
-    ![训练按钮的图像](./media/luis-quickstart-intents-regex-entity/train-button.png)
-
-2. 当网站顶部出现确认成功的绿色状态栏时，表示训练已完成。
-
-    ![成功通知栏的图像](./media/luis-quickstart-intents-regex-entity/trained.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>发布应用以获取终结点 URL
 
@@ -237,7 +230,8 @@ HRF 代表“人力资源表单”。
 LUIS 已完成此请求。 调用方应用程序（例如聊天机器人）可以提取 topScoringIntent 结果和表单编号，并可以搜索第三方 API。 LUIS 不执行此类工作。 LUIS 只会确定用户的意向，并提取有关该意向的数据。 
 
 ## <a name="clean-up-resources"></a>清理资源
-不再需要 LUIS 应用时，请将其删除。 在左上侧菜单中选择“我的应用”。 在应用列表中选择应用名称右侧的省略号 (***...***)，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: c15894f8cd559a08a1d75e2ac29cc0da0fc9e963
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f5aa724e9848c9794eef093aef15b0aaed9cae97
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226572"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435754"
 ---
 # <a name="integrate-azure-active-directory-with-box"></a>将 Azure Active Directory 与 Box 应用相集成
 
@@ -55,7 +55,7 @@ ms.locfileid: "36226572"
 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Box
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="add-box-from-the-gallery"></a>从库中添加 Box
 要配置 Box 与 Azure AD 的集成，请执行以下操作，将 Box 从库添加到托管 SaaS 应用列表：
@@ -64,15 +64,15 @@ ms.locfileid: "36226572"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 选择“企业应用程序” > “所有应用程序”。
+1. 选择“企业应用程序” > “所有应用程序”。
 
     ![“企业应用程序”窗口][2]
     
-3. 要添加新应用程序，请选择窗口顶部的“新建应用程序”按钮。
+1. 要添加新应用程序，请选择窗口顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中键入 **Box**，在结果列表中选择“Box”，然后选择“添加”。
+1. 在搜索框中键入 **Box**，在结果列表中选择“Box”，然后选择“添加”。
 
     ![结果列表中的 Box](./media/box-tutorial/tutorial_box_search.png)
 ### <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
@@ -93,11 +93,11 @@ ms.locfileid: "36226572"
 
     ![“单一登录”链接][4]
 
-2. 在“单一登录”窗口中的“单一登录模式”框内，选择“基于 SAML 的登录”。
+1. 在“单一登录”窗口中的“单一登录模式”框内，选择“基于 SAML 的登录”。
  
     ![“单一登录”窗口](./media/box-tutorial/tutorial_box_samlbase.png)
 
-3. 在“Box 域和 URL”下，执行以下操作：
+1. 在“Box 域和 URL”下，执行以下操作：
 
     ![Box 域和 URL 单一登录信息](./media/box-tutorial/url3.png)
 
@@ -108,15 +108,15 @@ ms.locfileid: "36226572"
     > [!NOTE] 
     > 上面的值不是实际值。 使用实际登录 URL 和标识符更新这些值。 若要获取这些值，请联系 [Box 客户端支持团队](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire)。 
 
-4. 在“SAML 签名证书”下，选择“元数据 XML”，并将元数据文件保存到计算机上。
+1. 在“SAML 签名证书”下，选择“元数据 XML”，并将元数据文件保存到计算机上。
 
     ![证书下载链接](./media/box-tutorial/tutorial_box_certificate.png) 
 
-5. 选择“保存”。
+1. 选择“保存”。
 
     ![配置单一登录“保存”按钮](./media/box-tutorial/tutorial_general_400.png)
     
-6. 若要为应用程序配置 SSO，请遵循[自行设置 SSO](https://community.box.com/t5/How-to-Guides-for-Admins/Setting-Up-Single-Sign-On-SSO-for-your-Enterprise/ta-p/1263#ssoonyourown) 中的过程。
+1. 若要为应用程序配置 SSO，请遵循[自行设置 SSO](https://community.box.com/t5/How-to-Guides-for-Admins/Setting-Up-Single-Sign-On-SSO-for-your-Enterprise/ta-p/1263#ssoonyourown) 中的过程。
 
 > [!NOTE] 
 > 如果无法为 Box 帐户启用 SSO 设置，可能需要联系 [Box 客户端支持团队](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire)并提供下载的 XML 文件。
@@ -135,17 +135,17 @@ ms.locfileid: "36226572"
 
     ![“Azure Active Directory”链接](./media/box-tutorial/create_aaduser_01.png)
 
-2. 若要显示当前用户列表，请选择“用户和组” > “所有用户”。
+1. 若要显示当前用户列表，请选择“用户和组” > “所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/box-tutorial/create_aaduser_02.png)
 
-3. 在“所有用户”窗口的顶部，选择“添加”。
+1. 在“所有用户”窗口的顶部，选择“添加”。
 
     ![“添加”按钮](./media/box-tutorial/create_aaduser_03.png)
 
     此时会打开“用户”窗口。
 
-4. 在“用户”窗口中执行以下操作：
+1. 在“用户”窗口中执行以下操作：
 
     ![“用户”窗口](./media/box-tutorial/create_aaduser_04.png)
 
@@ -171,23 +171,23 @@ ms.locfileid: "36226572"
 
     ![“企业应用程序”和“所有应用程序”链接][201] 
 
-2. 在“应用程序”列表中选择“Box”。
+1. 在“应用程序”列表中选择“Box”。
 
     ![Box 链接](./media/box-tutorial/tutorial_box_app.png)  
 
-3. 在左窗格中，选择“用户和组”。
+1. 在左窗格中，选择“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 选择“添加”，然后在“添加分配”窗格中选择“用户和组”。
+1. 选择“添加”，然后在“添加分配”窗格中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”窗口中的“用户”列表内，选择“Britta Simon”。
+1. 在“用户和组”窗口中的“用户”列表内，选择“Britta Simon”。
 
-6. 选择“选择”按钮。
+1. 选择“选择”按钮。
 
-7. 在“添加分配”窗口中，选择“分配”。
+1. 在“添加分配”窗口中，选择“分配”。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

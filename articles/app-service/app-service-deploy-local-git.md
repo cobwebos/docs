@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
-ms.openlocfilehash: a614dadae40fcfc28eba85e5943f60a38653224b
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 0f6a0e2fe3aa632137392efe806aaab265eedf10
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233897"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435536"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>从本地 Git 部署到 Azure 应用服务
 
@@ -53,13 +53,13 @@ git clone https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 
 ### <a name="enable-local-git-with-kudu"></a>使用 Kudu 启用本地 Git
 
-若要使用 Kudu 生成服务器为应用启用本地 Git 部署，请在 Cloud Shell 中运行 [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az_webapp_deployment_source_config_local_git)。
+若要使用 Kudu 生成服务器为应用启用本地 Git 部署，请在 Cloud Shell 中运行 [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git)。
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
 ```
 
-要创建启用 Git 的应用，请使用 `--deployment-local-git` 参数在 Cloud Shell 中运行 [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create)。
+要创建启用 Git 的应用，请使用 `--deployment-local-git` 参数在 Cloud Shell 中运行 [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create)。
 
 ```azurecli-interactive
 az webapp create --name <app_name> --resource-group <group_name> --plan <plan_name> --deployment-local-git
@@ -122,7 +122,7 @@ git push azure master
 > [!NOTE]
 > 如果想要使用未列出的现有 VSTS 帐户，则需要[将 VSTS 帐户链接到 Azure 订阅](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)。
 
-在“测试”页上，选择是否要启用负载测试，然后单击“继续”。
+在“测试”页面中，选择是否要启用负载测试，然后单击“继续”。
 
 根据应用服务计划的[定价层](/pricing/details/app-service/plans/)，可能还会看到“部署到过渡环境”页。 选择是否要启用部署槽位，然后单击“继续”。
 

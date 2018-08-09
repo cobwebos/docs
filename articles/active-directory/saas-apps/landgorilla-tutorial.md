@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
 ms.author: jeedes
-ms.openlocfilehash: a65c15991a4545cbd0dc9956069af3292c9859dd
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6712ecbc81abdf4756cb72f4949f51d2ffca4142
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222560"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435839"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-land-gorilla-client"></a>教程：Azure Active Directory 与 Land Gorilla 客户端的集成
 
@@ -56,7 +56,7 @@ ms.locfileid: "36222560"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库添加 Land Gorilla 客户端
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 
 ## <a name="adding-land-gorilla-client-from-the-gallery"></a>从库添加 Land Gorilla 客户端
@@ -68,19 +68,19 @@ ms.locfileid: "36222560"
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
-3. 单击对话框顶部的“添加”按钮。
+1. 单击对话框顶部的“添加”按钮。
 
     ![应用程序][3]
 
-4. 在搜索框中，键入 **Land Gorilla 客户端**。
+1. 在搜索框中，键入 **Land Gorilla 客户端**。
 
     ![创建 Azure AD 测试用户](./media/landgorilla-tutorial/tutorial_landgorilla_search.png)
 
-5. 在结果窗格中，选择“Land Gorilla 客户端”，并单击“添加”按钮添加该应用程序。
+1. 在结果窗格中，选择“Land Gorilla 客户端”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/landgorilla-tutorial/tutorial_landgorilla_addfromgallery.png)
 
@@ -95,10 +95,10 @@ ms.locfileid: "36222560"
 若要配置和测试 Land Gorilla 客户端的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用有限组测试 Azure AD 单一登录。
-3. **[创建 Land Gorilla 测试用户](#creating-a-land-gorilla-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用有限组测试 Azure AD 单一登录。
+1. **[创建 Land Gorilla 测试用户](#creating-a-land-gorilla-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -110,11 +110,11 @@ ms.locfileid: "36222560"
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的登录”作为“模式”以启用单一登录。
  
     ![配置单一登录](./media/landgorilla-tutorial/tutorial_landgorilla_samlbase.png)
 
-3. 在“Land Gorilla 客户端和 URL”部分中，执行以下步骤：
+1. 在“Land Gorilla 客户端和 URL”部分中，执行以下步骤：
 
     ![配置单一登录](./media/landgorilla-tutorial/tutorial_landgorilla_url_02.png)
 
@@ -137,15 +137,15 @@ ms.locfileid: "36222560"
     > [!NOTE] 
     > 请注意，这些不是实际值。 必须使用实际标识符和回复 URL 更新这些值。 此处我们建议在“标识符”中使用字符串的唯一值。 联系 [Land Gorilla 客户端团队](https://www.landgorilla.com/support/)获取这些值。 
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存 XML 文件。
+1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存 XML 文件。
 
     ![配置单一登录](./media/landgorilla-tutorial/tutorial_landgorilla_certificate.png) 
 
-5. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录](./media/landgorilla-tutorial/tutorial_general_400.png) 
 
-6. 若要在 Land Gorilla 端完成应用程序的 SSO 配置，请联系 [Land Gorilla 客户端支持团队](https://www.landgorilla.com/support/)并向他们提供下载的**元数据 XML** 文件。
+1. 若要在 Land Gorilla 端完成应用程序的 SSO 配置，请联系 [Land Gorilla 客户端支持团队](https://www.landgorilla.com/support/)并向他们提供下载的**元数据 XML** 文件。
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -159,15 +159,15 @@ ms.locfileid: "36222560"
 
     ![创建 Azure AD 测试用户](./media/landgorilla-tutorial/create_aaduser_01.png) 
 
-2. 转到“用户和组”，单击“所有用户”显示用户列表。
+1. 转到“用户和组”，单击“所有用户”显示用户列表。
     
     ![创建 Azure AD 测试用户](./media/landgorilla-tutorial/create_aaduser_02.png) 
 
-3. 在对话框顶部单击“添加”，打开“用户”对话框。
+1. 在对话框顶部单击“添加”，打开“用户”对话框。
  
     ![创建 Azure AD 测试用户](./media/landgorilla-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/landgorilla-tutorial/create_aaduser_04.png) 
 
@@ -195,23 +195,23 @@ ms.locfileid: "36222560"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Land Gorilla 客户端”。
+1. 在应用程序列表中，选择“Land Gorilla 客户端”。
 
     ![配置单一登录](./media/landgorilla-tutorial/tutorial_landgorilla_app.png) 
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![分配用户][202] 
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 
 

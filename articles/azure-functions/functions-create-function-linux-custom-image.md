@@ -11,12 +11,12 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
-ms.openlocfilehash: c5de0b1384958bc8553aa3722ad6a5829b69ab12
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fab67b503d060c8c01b5a3692c8a07b24c425c78
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38488693"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39437400"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>在 Linux 上使用自定义映像创建函数（预览）
 
@@ -26,7 +26,7 @@ ms.locfileid: "38488693"
 
 本教程逐步讲解如何使用 Azure Functions 创建自定义映像并将其推送到 Docker 中心。 然后，可将此映像用作 Linux 上运行的函数应用的部署源。 使用 Docker 生成和推送映像。 使用 Azure CLI 创建函数应用并从 Docker 中心部署映像。 
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 使用 Docker 生成自定义映像。
@@ -161,7 +161,7 @@ v1.0.0: digest: sha256:be080d80770df71234eb893fbe4d... size: 2422
 
 ## <a name="create-and-deploy-the-custom-image"></a>创建并部署自定义映像
 
-函数应用托管函数的执行环境。 使用 [az functionapp create](/cli/azure/functionapp#az_functionapp_create) 命令基于 Docker 中心映像创建一个函数应用。 
+函数应用托管函数的执行环境。 使用 [az functionapp create](/cli/azure/functionapp#az-functionapp-create) 命令基于 Docker 中心映像创建一个函数应用。 
 
 在以下命令中，请将 `<app_name>` 占位符替换成唯一函数应用名称，将 `<storage_name>` 替换为存储帐户名。 `<app_name>` 将用作 Function App 的默认 DNS 域，因此，该名称需要在 Azure 中的所有应用之间保持唯一。 如前所述，`<docker-id>` 是你的 Docker 帐户名称。
 
@@ -196,7 +196,7 @@ _deployment-container-image-name_ 参数表示 Docker 中心托管的、用于�
 
 该函数需要使用连接字符串连接到默认的存储帐户。 将自定义映像发布到专用容器帐户时，应该使用 [ENV 指令](https://docs.docker.com/engine/reference/builder/#env)或等效的命令将这些应用程序设置指定为 Dockerfile 中的环境变量。 
 
-在本例中，`<storage_account>` 是所创建的存储帐户的名称。 使用 [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string) 命令获得连接字符串。 使用 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) 命令将这些应用程序设置添加到函数应用。
+在本例中，`<storage_account>` 是所创建的存储帐户的名称。 使用 [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string) 命令获得连接字符串。 使用 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) 命令将这些应用程序设置添加到函数应用。
 
 ```azurecli-interactive
 storageConnectionString=$(az storage account show-connection-string \

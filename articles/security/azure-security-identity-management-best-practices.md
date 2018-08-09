@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 210781b36f6215afc925266e597031d772a94002
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e3fe033de05ed42d221795159461048790e1cec8
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059199"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493296"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 
@@ -123,7 +123,7 @@ ms.locfileid: "39059199"
 
 无法控制资源创建方式的组织更容易遇到用户创建的资源超过所需数目，因而滥用服务的情况。 强化资源创建过程是保护多租户方案的重要步骤。
 
-有关使用 Azure 资源管理器创建策略的详细信息，请参阅[什么是 Azure 策略？](../azure-policy/azure-policy-introduction.md)一文。
+有关使用 Azure 资源管理器创建策略的详细信息，请参阅[什么是 Azure Policy？](../azure-policy/azure-policy-introduction.md)一文。
 
 ## <a name="guide-developers-to-leverage-identity-capabilities-for-saas-apps"></a>指导开发人员利用适用于 SaaS 应用的标识功能
 
@@ -133,7 +133,7 @@ ms.locfileid: "39059199"
 
 不对应用访问实施标识控制且并不指导其开发人员如何安全地将应用与标识管理系统集成的组织，可能更容易遇到凭据失窃类型的攻击，例如[“开放 Web 应用程序安全项目 (OWASP) 10 大欺骗”中所述的弱身份验证和会话管理](https://www.owasp.org/index.php/OWASP_Top_Ten_Cheat_Sheet)。
 
-有关适用于 SaaS 应用的身份验证方案的详细信息，请阅读 [Azure AD 的身份验证方案](../active-directory/active-directory-authentication-scenarios.md)。
+有关适用于 SaaS 应用的身份验证方案的详细信息，请阅读 [Azure AD 的身份验证方案](../active-directory/develop/authentication-scenarios.md)。
 
 ## <a name="actively-monitor-for-suspicious-activities"></a>主动监视可疑活动
 

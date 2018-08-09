@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 6362bcb701b444c8cd71b270222ce4f87b4cc2e3
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 7e444692dfeab5ca14fbd896043cc28e2cbd8717
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39055852"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433988"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>教程：Azure Active Directory 与 vxMaintain 集成
 
@@ -65,19 +65,19 @@ ms.locfileid: "39055852"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 选择“企业应用程序” > “所有应用程序”。
+1. 选择“企业应用程序” > “所有应用程序”。
 
     ![“企业应用程序”窗格][2]
     
-3. 若要添加应用程序，请在“所有应用程序”对话框中，选择“新建应用程序”。
+1. 若要添加应用程序，请在“所有应用程序”对话框中，选择“新建应用程序”。
 
     ![“新建应用程序”按钮][3]
 
-4. 在搜索框中，键入 **vxMaintain**。
+1. 在搜索框中，键入 **vxMaintain**。
 
     ![“单一登录模式”下拉列表](./media/vxmaintain-tutorial/tutorial_vxmaintain_search.png)
 
-5. 在结果列表中，选择“vxMaintain”，然后选择“添加”。
+1. 在结果列表中，选择“vxMaintain”，然后选择“添加”。
 
     ![vxMaintain 链接](./media/vxmaintain-tutorial/tutorial_vxmaintain_addfromgallery.png)
 
@@ -98,30 +98,30 @@ ms.locfileid: "39055852"
 
     ![“单一登录”命令][4]
 
-2. 若要启用 SSO，请在“单一登录模式”下拉列表中选择“基于 SAML 的登录”。
+1. 若要启用 SSO，请在“单一登录模式”下拉列表中选择“基于 SAML 的登录”。
  
     ![“基于 SAML 的登录”命令](./media/vxmaintain-tutorial/tutorial_vxmaintain_samlbase.png)
 
-3. 在“vxMaintain 域和 URL”下，执行以下操作：
+1. 在“vxMaintain 域和 URL”下，执行以下操作：
 
     ![“vxMaintain 域和 URL”部分](./media/vxmaintain-tutorial/tutorial_vxmaintain_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”框中，键入包含 `https://<company name>.verisae.com` 语句的 URL
+    a. 在“标识符”框中，键入包含 `https://<company name>.verisae.com` 语句的 URL
 
     b. 在“回复 URL”框中，键入具有以下语法的 URL：`https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`
 
     > [!NOTE] 
     > 上面的值不是实际值。 使用实际标识符和回复 URL 更新它们。 若要获取这些值，请联系 [vxMaintain 支持团队](https://www.hubspot.com/company/contact)。
  
-4. 在“SAML 签名证书”下，选择“元数据 XML”，并将元数据文件保存到计算机上。
+1. 在“SAML 签名证书”下，选择“元数据 XML”，并将元数据文件保存到计算机上。
 
     ![“SAML 签名证书”部分](./media/vxmaintain-tutorial/tutorial_vxmaintain_certificate.png) 
 
-5. 选择“保存”。
+1. 选择“保存”。
 
     ![点击“保存”按钮](./media/vxmaintain-tutorial/tutorial_general_400.png)
 
-6. 若要配置“vxMaintain”SSO，请将下载的“元数据 XML”文件发送到 [vxMaintain 支持团队](https://www.hubspot.com/company/contact)。
+1. 若要配置“vxMaintain”SSO，请将下载的“元数据 XML”文件发送到 [vxMaintain 支持团队](https://www.hubspot.com/company/contact)。
 
 > [!TIP]
 > 设置应用时，可以在 [Azure 门户](https://portal.azure.com)中阅读前述教程的简洁版本。 从“Active Directory” > “企业应用程序”部分添加此应用后，选择“单一登录”选项卡，即可通过“配置”部分访问嵌入式文档。 
@@ -138,20 +138,20 @@ ms.locfileid: "39055852"
 
     ![“Azure Active Directory”按钮](./media/vxmaintain-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组” > “所有用户”。
+1. 若要显示用户列表，请转到“用户和组” > “所有用户”。
     
     ![“所有用户”链接](./media/vxmaintain-tutorial/create_aaduser_02.png)  
     “所有用户”对话框随即打开。 
 
-3. 若要打开“用户”对话框，请选择“添加”。
+1. 若要打开“用户”对话框，请选择“添加”。
  
     ![“添加”按钮](./media/vxmaintain-tutorial/create_aaduser_03.png) 
 
-4. 在“用户”对话框中执行以下操作：
+1. 在“用户”对话框中执行以下操作：
  
     ![“用户”对话框](./media/vxmaintain-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入测试用户 Britta Simon 的电子邮件地址。
 
@@ -173,21 +173,21 @@ ms.locfileid: "39055852"
 
     ![“所有应用程序”链接][201] 
 
-2. 在“应用程序”列表中，选择“vxMaintain”。
+1. 在“应用程序”列表中，选择“vxMaintain”。
 
     ![vxMaintain 链接](./media/vxmaintain-tutorial/tutorial_vxmaintain_app.png) 
 
-3. 在左窗格中，选择“用户和组”。
+1. 在左窗格中，选择“用户和组”。
 
     ![“用户和组”链接][202] 
 
-4. 选择“添加”，然后在“添加分配”窗格中选择“用户和组”。
+1. 选择“添加”，然后在“添加分配”窗格中选择“用户和组”。
 
     ![“用户和组”链接][203]
 
-5. 在“用户和组”对话框中的“用户”列表中，选择“Britta Simon”，然后选择“选择”按钮。
+1. 在“用户和组”对话框中的“用户”列表中，选择“Britta Simon”，然后选择“选择”按钮。
 
-7. 在“添加分配”对话框中选择“分配”。
+1. 在“添加分配”对话框中选择“分配”。
     
 ### <a name="test-your-azure-ad-single-sign-on"></a>测试 Azure AD 单一登录
 

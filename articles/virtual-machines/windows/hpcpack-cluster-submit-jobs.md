@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 05/14/2018
 ms.author: danlep
-ms.openlocfilehash: c4fd48e40eb4f03daf4bcb7e3b7d6794880799cf
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: f2cf26bc9f980729e74c4a4e0b4e3f4b311fd754
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036483"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421128"
 ---
 # <a name="submit-hpc-jobs-from-an-on-premises-computer-to-an-hpc-pack-cluster-deployed-in-azure"></a>将 HPC 作业从本地计算机提交到部署在 Azure 中的 HPC Pack 群集
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -47,34 +47,34 @@ ms.locfileid: "39036483"
 **安装 Web 组件**
 
 1. 使用群集管理员的凭据连接到头节点 VM。
-2. 在头节点上从 HPC Pack 安装程序文件夹中运行 HpcWebComponents.msi。
-3. 按照向导中的步骤安装 Web 组件。
+1. 在头节点上从 HPC Pack 安装程序文件夹中运行 HpcWebComponents.msi。
+1. 按照向导中的步骤安装 Web 组件。
 
 **配置 Web 组件**
 
 1. 在头节点上，以管理员身份启动 HPC PowerShell。
-2. 要将目录切换到配置脚本所在的位置，请键入以下命令：
+1. 要将目录切换到配置脚本所在的位置，请键入以下命令：
    
     ```powershell
     cd $env:CCP_HOME\bin
     ```
-3. 若要配置 REST 接口并启动 HPC Web 服务，请键入以下命令：
+1. 若要配置 REST 接口并启动 HPC Web 服务，请键入以下命令：
    
     ```powershell
     .\Set-HPCWebComponents.ps1 –Service REST –enable
     ```
-4. 在系统提示选择证书时，请选择与头节点的公共 DNS 名称对应的证书。 例如，如果使用经典部署模型部署头节点 VM，证书名称将类似于 CN=&lt;*HeadNodeDnsName*&gt;.cloudapp.net。 如果使用 Resource Manager 部署模型，证书名称将类似于 CN=&lt;*HeadNodeDnsName*&gt;.&lt;*region*&gt;.cloudapp.azure.com。
+1. 在系统提示选择证书时，请选择与头节点的公共 DNS 名称对应的证书。 例如，如果使用经典部署模型部署头节点 VM，证书名称将类似于 CN=&lt;*HeadNodeDnsName*&gt;.cloudapp.net。 如果使用 Resource Manager 部署模型，证书名称将类似于 CN=&lt;*HeadNodeDnsName*&gt;.&lt;*region*&gt;.cloudapp.azure.com。
    
    > [!NOTE]
    > 稍后将作业从本地计算机提交到头节点时，需选择此证书。 不要选择或配置与 Active Directory 域中头节点的计算机名称对应的证书（例如 CN=*MyHPCHeadNode.HpcAzure.local*）。
    > 
    > 
-5. 若要配置用于作业提交的 Web 门户，请键入以下命令：
+1. 若要配置用于作业提交的 Web 门户，请键入以下命令：
    
     ```powershell
     .\Set-HPCWebComponents.ps1 –Service Portal -enable
     ```
-6. 脚本完成后，请键入以下命令停止并重新启动 HPC 作业计划程序服务：
+1. 脚本完成后，请键入以下命令停止并重新启动 HPC 作业计划程序服务：
    
     ```powershell
     net stop hpcscheduler
@@ -89,18 +89,18 @@ ms.locfileid: "39036483"
 **从头节点中导出证书**
 
 1. 在头节点上，向 Microsoft 管理控制台中添加用于“本地计算机”帐户的证书管理单元。 有关添加此管理单元的步骤，请参阅[向 MMC 中添加证书管理单元](https://technet.microsoft.com/library/cc754431.aspx)。
-2. 在控制台树中，依次展开“证书 - 本地计算机” > “个人”，并单击“证书”。
-3. 找到在[步骤 1：在头节点上安装并配置 Web 组件](#step-1-install-and-configure-the-web-components-on-the-head-node)中为 HPC Pack Web 组件配置的证书（例如，CN=&lt;*HeadNodeDnsName*&gt;.cloudapp.net）。
-4. 右键单击该证书，并单击“所有任务” > “导出”。
-5. 在证书导出向导中，单击“下一步”并确保选中“否，不导出私钥”。
-6. 执行此向导中的其余步骤，以“DER 编码二进制 X.509 (.CER)”格式导出证书。
+1. 在控制台树中，依次展开“证书 - 本地计算机” > “个人”，并单击“证书”。
+1. 找到在[步骤 1：在头节点上安装并配置 Web 组件](#step-1-install-and-configure-the-web-components-on-the-head-node)中为 HPC Pack Web 组件配置的证书（例如，CN=&lt;*HeadNodeDnsName*&gt;.cloudapp.net）。
+1. 右键单击该证书，并单击“所有任务” > “导出”。
+1. 在证书导出向导中，单击“下一步”并确保选中“否，不导出私钥”。
+1. 执行此向导中的其余步骤，以“DER 编码二进制 X.509 (.CER)”格式导出证书。
 
 **在客户端计算机上导入证书**
 
 1. 从头节点中导出的证书复制到客户端计算机上的某个文件夹中。
-2. 在客户端计算机上，运行 certmgr.msc。
-3. 在证书管理器中，依次展开“证书 - 当前用户” > “受信任的根证书颁发机构”，右键单击“证书”，并单击“所有任务” > “导入”。
-4. 在证书导入向导中单击“下一步”，然后按照步骤将从头节点中导出的证书导入“受信任的根证书颁发机构”存储。
+1. 在客户端计算机上，运行 certmgr.msc。
+1. 在证书管理器中，依次展开“证书 - 当前用户” > “受信任的根证书颁发机构”，右键单击“证书”，并单击“所有任务” > “导入”。
+1. 在证书导入向导中单击“下一步”，然后按照步骤将从头节点中导出的证书导入“受信任的根证书颁发机构”存储。
 
 > [!TIP]
 > 由于客户端计算机无法识别头节点上的证书颁发机构，因此可能会显示安全警告。 在测试过程中，可以忽略此警告并完成证书导入。
@@ -113,7 +113,7 @@ ms.locfileid: "39036483"
 **在客户端计算机上运行作业提交命令**
 
 1. 在安装了 HPC Pack 客户端实用工具的客户端计算机上，启动命令提示符。
-2. 键入示例命令。 例如，若要列出群集中的所有作业，可键入如下所示的某个命令，具体取决于头节点的完整 DNS 名称：
+1. 键入示例命令。 例如，若要列出群集中的所有作业，可键入如下所示的某个命令，具体取决于头节点的完整 DNS 名称：
    
     ```command
     job list /scheduler:https://<HeadNodeDnsName>.cloudapp.net /all
@@ -129,7 +129,7 @@ ms.locfileid: "39036483"
    > 请在计划程序 URL 中使用头节点的完整 DNS 名称，而不是 IP 地址。 如果指定 IP 地址，会显示类似于下面的错误：“服务器证书必须具有有效的信任链，或放置在受信任的根存储区中”。
    > 
    > 
-3. 出现提示时，请键入 HPC 群集管理员或配置的另一群集用户的用户名（格式为 &lt;DomainName&gt;\\&lt;UserName&gt;）和密码。 可以选择在本地存储凭据以执行更多作业操作。
+1. 出现提示时，请键入 HPC 群集管理员或配置的另一群集用户的用户名（格式为 &lt;DomainName&gt;\\&lt;UserName&gt;）和密码。 可以选择在本地存储凭据以执行更多作业操作。
    
     将显示作业列表。
 
@@ -137,13 +137,13 @@ ms.locfileid: "39036483"
 
 1. 如果以前在提交作业时未存储群集用户的域凭据，可以在凭据管理器中添加凭据。
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在客户端计算机上的控制面板中，启动凭据管理器。
+    a. 在客户端计算机上的控制面板中，启动凭据管理器。
    
     b. 单击“Windows 凭据” > “添加普通凭据”。
    
-    c. 指定 Internet 地址（例如，https://&lt;HeadNodeDnsName&gt;.cloudapp.net/HpcScheduler 或 https://&lt;HeadNodeDnsName&gt;.&lt;region&gt;.cloudapp.azure.com/HpcScheduler），以及配置的群集管理员或另一群集用户的用户名 (&lt;DomainName&gt;\\&lt;UserName&gt;) 和密码。
-2. 在客户端计算机上启动 HPC 作业管理器。
-3. 在“选择头节点”对话框中，键入头节点在 Azure 中的 URL（例如，https://&lt;HeadNodeDnsName&gt;.cloudapp.net 或 https://&lt;HeadNodeDnsName&gt;.&lt;region&gt;.cloudapp.azure.com）。
+    c. 指定 Internet 地址（例如， https://&lt;HeadNodeDnsName&gt;.cloudapp.net/HpcScheduler 或 https://&lt;HeadNodeDnsName&gt;.&lt;region&gt;.cloudapp.azure.com/HpcScheduler），以及配置的群集管理员或另一群集用户的用户名 (&lt;DomainName&gt;\\&lt;UserName&gt;) 和密码。
+1. 在客户端计算机上启动 HPC 作业管理器。
+1. 在“选择头节点”对话框中，键入头节点在 Azure 中的 URL（例如， https://&lt;HeadNodeDnsName&gt;.cloudapp.net 或 https://&lt;HeadNodeDnsName&gt;.&lt;region&gt;.cloudapp.azure.com）。
    
     HPC 作业管理器会打开并显示头节点上的作业列表。
 
@@ -160,13 +160,13 @@ ms.locfileid: "39036483"
     ```
     https://<HeadNodeDnsName>.<region>.cloudapp.azure.com/HpcPortal
     ```
-2. 在出现的安全性对话框中，键入 HPC 群集管理员的域凭据。 （还可以添加具有不同角色的其他群集用户。 请参阅[管理群集用户](https://technet.microsoft.com/library/ff919335.aspx)。）
+1. 在出现的安全性对话框中，键入 HPC 群集管理员的域凭据。 （还可以添加具有不同角色的其他群集用户。 请参阅[管理群集用户](https://technet.microsoft.com/library/ff919335.aspx)。）
    
     Web 门户会打开并显示作业列表视图。
-3. 若要从群集中提交返回“Hello World”字符串的示例作业，请在左侧导航区域中单击“新建作业”。
-4. 在“新建作业”页面上的“从提交页面”下，单击“HelloWorld”。 此时会显示作业提交页面。
-5. 单击“提交”。 出现提示时，请提供 HPC 群集管理员的域凭据。 作业已提交，作业 ID 出现在“我的作业”页面上。
-6. 要查看提交的作业的结果，请单击作业 ID，并单击“查看任务”查看命令输出（在“输出”下方）。
+1. 若要从群集中提交返回“Hello World”字符串的示例作业，请在左侧导航区域中单击“新建作业”。
+1. 在“新建作业”页面上的“从提交页面”下，单击“HelloWorld”。 此时会显示作业提交页面。
+1. 单击“提交”。 出现提示时，请提供 HPC 群集管理员的域凭据。 作业已提交，作业 ID 出现在“我的作业”页面上。
+1. 要查看提交的作业的结果，请单击作业 ID，并单击“查看任务”查看命令输出（在“输出”下方）。
 
 ## <a name="next-steps"></a>后续步骤
 * 也可以使用 [HPC Pack REST API](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx) 将作业提交到 Azure 群集。

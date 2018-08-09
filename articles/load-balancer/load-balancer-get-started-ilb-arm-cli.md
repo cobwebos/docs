@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: kumud
-ms.openlocfilehash: 92e464aa4e0dcb7199b6db44d2c28db5b6d1673c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: bd4dda835279a21509f77814f4d5f9e30e8a42c1
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38676080"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39439192"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>使用 Azure CLI 2.0 创建内部负载均衡器以对 VM 进行负载均衡
 
@@ -110,7 +110,7 @@ ms.locfileid: "38676080"
 
 ### <a name="create-nics"></a>创建 NIC
 
-使用 [az network nic create](/cli/azure/network/nic#az_network_nic_create) 创建两个网络接口，并将它们与专用 IP 地址关联。 
+使用 [az network nic create](/cli/azure/network/nic#az-network-nic-create) 创建两个网络接口，并将它们与专用 IP 地址关联。 
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -130,7 +130,7 @@ done
 
 ### <a name="create-an-availability-set"></a>创建可用性集
 
-使用 [az vm availabilityset create](/cli/azure/network/nic#az_network_availabilityset_create) 创建可用性集
+使用 [az vm availabilityset create](/cli/azure/network/nic#az-network-availabilityset-create) 创建可用性集
 
  ```azurecli-interactive
   az vm availability-set create \
@@ -184,7 +184,7 @@ runcmd:
   - nodejs index.js
 ``` 
  
-使用 [az vm create](/cli/azure/vm#az_vm_create) 创建虚拟机。
+使用 [az vm create](/cli/azure/vm#az-vm-create) 创建虚拟机。
 
  ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -228,7 +228,7 @@ VM 可能需要几分钟才能部署好。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组、负载均衡器和所有相关的资源，可以使用 [az group delete](/cli/azure/group#az_group_delete) 命令将其删除。
+如果不再需要资源组、负载均衡器和所有相关的资源，可以使用 [az group delete](/cli/azure/group#az-group-delete) 命令将其删除。
 
 ```azurecli-interactive 
   az group delete --name myResourceGroupILB
