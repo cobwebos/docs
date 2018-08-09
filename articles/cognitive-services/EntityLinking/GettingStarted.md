@@ -49,12 +49,12 @@ Microsoft 实体链接是一款自然语言处理工具，可用于分析文本�
 
 接下来，搜索并安装“Newtonsoft.Json”。 如果系统提示查看更改，请单击“确定”。 如果看到 EntityLinking 许可条款，请单击“我接受”。
 
-实体链接现已安装为应用的一部分。 若要确认这一点，可检查解决方案资源管理器内的项目中是否显示“Microsoft.ProjectOxford.EntityLinking”****参考。
+实体链接现已安装为应用的一部分。 若要确认这一点，可检查解决方案资源管理器内的项目中是否显示 **Microsoft.ProjectOxford.EntityLinking** 参考。
 
  ![项目中包含的 nuget 库](./Images/NugetLibraryInProject.png)
  
 ### <a name="step-4-add-an-input-and-output-text-block-to-your-apps-xaml">第 4 步：向应用的 XAML 添加输入和输出文本块</a>
-转到“解决方案资源管理器”中的“MainPage.xaml”****，并双击此文件，在新窗口中打开它。 为方便起见，可以双击“设计器”选项卡中的“XAML”按钮，这会隐藏“可视化设计器”，并保留代码视图的所有空间。
+转到“解决方案资源管理器”中的 **MainPage.xaml**，并双击此文件，在新窗口中打开它。 为方便起见，可以双击“设计器”选项卡中的“XAML”按钮，这会隐藏“可视化设计器”，并保留代码视图的所有空间。
 
  ![项目中包含的 nuget 库](./Images/UWPMainPage.png)
  

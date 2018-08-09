@@ -4,22 +4,20 @@ description: 使用 Jenkins 针对 Service Fabric Linux 应用程序进行持续
 services: service-fabric
 documentationcenter: java
 author: sayantancs
-manager: timlt
-editor: ''
-ms.assetid: 02b51f11-5d78-4c54-bb68-8e128677783e
+manager: jpconnock
 ms.service: service-fabric
 ms.devlang: java
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 3/9/2018
+ms.date: 07/31/2018
 ms.author: saysa
-ms.openlocfilehash: efdbfa9664e180031926982adedfcf94a4184081
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 0de62b6fa05ccad1977e7d98a614e8d601409f5b
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972242"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390171"
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>使用 Jenkins 生成和部署 Linux 应用程序
 Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使用 Jenkins 生成和部署 Azure Service Fabric 应用程序。
@@ -325,6 +323,10 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
 11. 在“应用程序配置”下，配置“应用程序名称”、“应用程序类型”和（相对）“应用程序清单路径”字段。
     ![Service Fabric Jenkins 生成后操作配置 Azure 凭据](./media/service-fabric-cicd-your-linux-application-with-jenkins/post-build-credentials.png)
 12. 单击“验证配置”。 成功验证后，单击“保存”。 Jenkins 作业管道现在已完全配置。 转到[后续步骤](#next-steps)测试部署。
+
+## <a name="troubleshooting-the-jenkins-plugin"></a>排查 Jenkins 插件问题
+
+如果 Jenkins 插件出现任何 bug，请在 [Jenkins JIRA](https://issues.jenkins-ci.org/) 中提出特定组件的问题。
 
 ## <a name="next-steps"></a>后续步骤
 现已配置 GitHub 和 Jenkins。 考虑在存储库分支的 `reliable-services-actor-sample/Actors/ActorCounter` 项目中做出一些示例更改，https://github.com/Azure-Samples/service-fabric-java-getting-started。 将更改推送到远程 `master` 分支（或配置使用的任何分支）。 这会触发配置的 Jenkins 作业 `MyJob`。 它会从 GitHub 提取更改、生成这些更改并将应用程序部署到在生成后操作中指定的群集。  
