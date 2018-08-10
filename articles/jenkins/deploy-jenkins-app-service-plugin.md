@@ -8,12 +8,12 @@ manager: jpconnock
 ms.service: devops
 ms.custom: jenkins
 ms.date: 07/31/2018
-ms.openlocfilehash: 1b01eb760fa36c9f0fb6180c12dc3e5c1bf9de6f
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: f54e4e8f64fe444f264b547d5af475c533c5723f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391480"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441674"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>使用 Jenkins 插件部署到 Azure App Service 
 
@@ -65,7 +65,7 @@ sudo apt-get install -y maven
 在 Jenkins 中设置作业前，需要 Azure 应用服务计划和 Web 应用以运行 Java 应用。
 
 
-1. 使用 `az appservice plan create` [Azure CLI 命令](/cli/azure/appservice/plan#az_appservice_plan_create)通过免费定价层创建 Azure 应用服务计划。 应用服务计划定义用于托管应用的物理资源。 分配到应用服务计划的所有应用程序共享这些资源。 共享资源可帮助你在托管多个应用时节省成本。
+1. 使用 `az appservice plan create` [Azure CLI 命令](/cli/azure/appservice/plan#az-appservice-plan-create)通过免费定价层创建 Azure 应用服务计划。 应用服务计划定义用于托管应用的物理资源。 分配到应用服务计划的所有应用程序共享这些资源。 共享资源可帮助你在托管多个应用时节省成本。
 2. 创建 Web 应用。 可使用 [Azure 门户](/azure/app-service-web/web-sites-configure)或以下 `az` Azure CLI 命令：
     ```azurecli-interactive 
     az webapp create --name <myAppName> --resource-group <myResourceGroup> --plan <myAppServicePlan>
@@ -84,7 +84,7 @@ sudo apt-get install -y maven
 ### <a name="set-up-the-jenkins-job"></a>设置 Jenkins 作业
 
 1. 在 Jenkins 仪表板上创建新的自由式项目。
-2. 配置“源代码管理”字段，以使用[适用于 Azure 的简单 Java Web 应用](https://github.com/azure-devops/javawebappsample)的本地分支。 提供“存储库 URL”值。 例如：http://github.com/&lt;your_ID>/javawebappsample。
+2. 配置“源代码管理”字段，以使用[适用于 Azure 的简单 Java Web 应用](https://github.com/azure-devops/javawebappsample)的本地分支。 提供“存储库 URL”值。 例如： http://github.com/&lt;your_ID>/javawebappsample。
 3. 添加步骤以使用 Maven 生成项目，可通过添加 Execute shell 命令实现该操作。 在此示例中，需使用其他命令将目标文件夹中的 \*.war 文件重命名为 ROOT.war：   
     ```bash
     mvn clean package

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/31/2018
 ms.author: saysa
-ms.openlocfilehash: 0de62b6fa05ccad1977e7d98a614e8d601409f5b
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: f381285d29d70d6f5da6a6cd319c682cd0c6a235
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390171"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39444532"
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>使用 Jenkins 生成和部署 Linux 应用程序
 Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使用 Jenkins 生成和部署 Azure Service Fabric 应用程序。
@@ -26,12 +26,12 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
 本文介绍设置 Jenkins 环境的几种可行方法以及生成应用程序后将其部署到 Service Fabric 群集的不同方法。 按照下列常规步骤成功设置 Jenkins，从 GitHub 拉取更改，生成应用程序，以及将其部署到群集：
 
 1. 请确保安装[必备组件](#prerequisites)。
-2. 然后，按照以下对应部分的步骤设置 Jenkins：
+1. 然后，按照以下对应部分的步骤设置 Jenkins：
    * [在 Service Fabric 群集中设置 Jenkins](#set-up-jenkins-inside-a-service-fabric-cluster)， 
    * [在 Service Fabric 群集外部设置 Jenkins](#set-up-jenkins-outside-a-service-fabric-cluster)，或者
    * [在现有 Jenkins 环境中安装 Service Fabric 插件](#install-service-fabric-plugin-in-an-existing-jenkins-environment)。
-3. 设置 Jenkins 后，按照[创建和配置 Jenkins 作业](#create-and-configure-a-jenkins-job)中的步骤将 GitHub 设置为在应用程序发生更改时触发 Jenkins 并且通过生成步骤将 Jenkins 作业管道配置为从 GitHub 拉取更改并生成应用程序。 
-4. 最后，配置 Jenkins 作业生成后步骤，将应用程序部署到 Service Fabric 群集。 有两种方法可将 Jenkins 配置为将应用程序部署到群集：    
+1. 设置 Jenkins 后，按照[创建和配置 Jenkins 作业](#create-and-configure-a-jenkins-job)中的步骤将 GitHub 设置为在应用程序发生更改时触发 Jenkins 并且通过生成步骤将 Jenkins 作业管道配置为从 GitHub 拉取更改并生成应用程序。 
+1. 最后，配置 Jenkins 作业生成后步骤，将应用程序部署到 Service Fabric 群集。 有两种方法可将 Jenkins 配置为将应用程序部署到群集：    
    * 对于开发和测试环境，使用[通过群集管理终结点配置部署](#configure-deployment-using-cluster-management-endpoint)。 这是设置最简单的部署方法。
    * 对于生产环境，使用[通过 Azure 凭据配置部署](#configure-deployment-using-azure-credentials)。 Microsoft 建议对生产环境使用此方法，因为借助 Azure 凭据，可以限制 Jenkins 作业对 Azure 资源的访问权限。 
 
@@ -81,10 +81,10 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
    cd jenkins-container-application
    ```
 
-3. 保留文件共享中 Jenkins 容器的状态：
+1. 保留文件共享中 Jenkins 容器的状态：
    1. 使用名称（如 `sfjenkinsstorage1`）在群集所在的**同一区域**中创建 Azure 存储帐户。
-   2. 使用名称（如 `sfjenkins`）在该存储帐户下创建一个**文件共享**。
-   3. 针对文件共享单击“连接”，并记下它在“从 Linux 进行连接”下显示的值，该值应如下所示：
+   1. 使用名称（如 `sfjenkins`）在该存储帐户下创建一个**文件共享**。
+   1. 针对文件共享单击“连接”，并记下它在“从 Linux 进行连接”下显示的值，该值应如下所示：
 
       ```sh
       sudo mount -t cifs //sfjenkinsstorage1.file.core.windows.net/sfjenkins [mount point] -o vers=3.0,username=sfjenkinsstorage1,password=<storage_key>,dir_mode=0777,file_mode=0777
@@ -94,14 +94,14 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
    > 必须在群集节点中安装 cifs-utils 包，才能安装 cifs 共享。      
    >
 
-4. 使用步骤 2 中获得的 azure 存储详细信息更新 `setupentrypoint.sh` 脚本中的占位符值。
+1. 使用步骤 2 中获得的 azure 存储详细信息更新 `setupentrypoint.sh` 脚本中的占位符值。
    ```sh
    vi JenkinsSF/JenkinsOnSF/Code/setupentrypoint.sh
    ```
    * 将 `[REMOTE_FILE_SHARE_LOCATION]` 替换为前面步骤 2 中的连接输出中的值 `//sfjenkinsstorage1.file.core.windows.net/sfjenkins`。
    * 将 `[FILE_SHARE_CONNECT_OPTIONS_STRING]` 替换为前面步骤 2 中的值 `vers=3.0,username=sfjenkinsstorage1,password=GB2NPUCQY9LDGeG9Bci5dJV91T6SrA7OxrYBUsFHyueR62viMrC6NIzyQLCKNz0o7pepGfGY+vTa9gxzEtfZHw==,dir_mode=0777,file_mode=0777`。
 
-5. **仅安全群集** 
+1. **仅安全群集** 
    
    若要从 Jenkins 在安全群集上配置应用程序的部署，必须可从 Jenkins 容器中访问群集证书。 在 ApplicationManifest.xml 文件的“ContainerHostPolicies”标记下，添加此证书引用并使用群集证书值更新指纹值。
 
@@ -117,7 +117,7 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
    </Certificates> 
    ```
 
-6. 连接到群集并安装容器应用程序。
+1. 连接到群集并安装容器应用程序。
 
    **安全群集**
    ```sh
@@ -141,13 +141,13 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
    > 可能需要几分钟时间在群集上下载 Jenkins 映像。
    >
 
-7. 在浏览器中转到 `http://PublicIPorFQDN:8081`。 该 URL 提供了登录时所需的初始管理员密码的路径。 
-2. 查看 Service Fabric 资源管理器确定 Jenkins 容器在哪一节点上运行。 通过安全外壳 (SSH) 登录到此节点。
+1. 在浏览器中转到 `http://PublicIPorFQDN:8081`。 该 URL 提供了登录时所需的初始管理员密码的路径。 
+1. 查看 Service Fabric 资源管理器确定 Jenkins 容器在哪一节点上运行。 通过安全外壳 (SSH) 登录到此节点。
    ```sh
    ssh user@PublicIPorFQDN -p [port]
    ``` 
-3. 使用 `docker ps -a` 获取容器实例 ID。
-4. 通过安全外壳 (SSH) 登录到该容器，并粘贴 Jenkins 门户中显示的路径。 例如，如果门户中显示路径为 `PATH_TO_INITIAL_ADMIN_PASSWORD`，则可运行以下命令：
+1. 使用 `docker ps -a` 获取容器实例 ID。
+1. 通过安全外壳 (SSH) 登录到该容器，并粘贴 Jenkins 门户中显示的路径。 例如，如果门户中显示路径为 `PATH_TO_INITIAL_ADMIN_PASSWORD`，则可运行以下命令：
 
    ```sh
    docker exec -t -i [first-four-digits-of-container-ID] /bin/bash   # This takes you inside Docker shell
@@ -155,8 +155,8 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
    ```sh
    cat PATH_TO_INITIAL_ADMIN_PASSWORD # This displays the password value
    ```
-5. 在“Jenkins 入门”页上，选择“选择要安装的插件”选项，选择“无”复选框，单击“安装”。
-6. 创建用户，或选择以管理员身份继续。
+1. 在“Jenkins 入门”页上，选择“选择要安装的插件”选项，选择“无”复选框，单击“安装”。
+1. 创建用户，或选择以管理员身份继续。
 
 设置 Jenkins 后，跳到[创建和配置 Jenkins 作业](#create-and-configure-a-jenkins-job)。  
 
@@ -176,23 +176,23 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
 
 ### <a name="steps"></a>步骤
 1. 拉取 Service Fabric Jenkins 容器映像：`docker pull rapatchi/jenkins:latest`。 此映像附带了预安装的 Service Fabric Jenkins 插件。
-2. 运行容器映像：`docker run -itd -p 8080:8080 rapatchi/jenkins:latest`
-3. 获取容器映像实例的 ID。 可以使用命令 `docker ps –a` 列出所有 Docker 容器
-4. 执行以下步骤登录到 Jenkins 门户：
+1. 运行容器映像：`docker run -itd -p 8080:8080 rapatchi/jenkins:latest`
+1. 获取容器映像实例的 ID。 可以使用命令 `docker ps –a` 列出所有 Docker 容器
+1. 执行以下步骤登录到 Jenkins 门户：
 
    1. 从主机登录到 Jenkins shell。 使用容器 ID 的前四个数字。 例如，如果容器 ID 为 `2d24a73b5964`，则使用 `2d24`。
 
       ```sh
       docker exec -it [first-four-digits-of-container-ID] /bin/bash
       ```
-   2. 从 Jenkins shell 获取适用于容器实例的管理员密码：
+   1. 从 Jenkins shell 获取适用于容器实例的管理员密码：
 
       ```sh
       cat /var/jenkins_home/secrets/initialAdminPassword
       ```      
-   3. 若要登录到 Jenkins 仪表板，请在 web 浏览器中打开以下 URL：`http://<HOST-IP>:8080`。 使用上一步的密码解锁 Jenkins。
-   4. （可选。）首次登录后，可以创建自己的用户帐户供后续步骤使用，或者继续使用管理员帐户。 如果创建了一个用户，则需要继续使用该用户。
-5. 使用[生成新的 SSH 密钥并将其添加到 SSH 代理](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)中的步骤，将 GitHub 设置为使用 Jenkins。
+   1. 若要登录到 Jenkins 仪表板，请在 web 浏览器中打开以下 URL：`http://<HOST-IP>:8080`。 使用上一步的密码解锁 Jenkins。
+   1. （可选。）首次登录后，可以创建自己的用户帐户供后续步骤使用，或者继续使用管理员帐户。 如果创建了一个用户，则需要继续使用该用户。
+1. 使用[生成新的 SSH 密钥并将其添加到 SSH 代理](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)中的步骤，将 GitHub 设置为使用 Jenkins。
    * 根据 GitHub 提供的说明生成 SSH 密钥，然后将 SSH 密钥添加到托管存储库的 GitHub 帐户。
    * 在 Jenkins Docker shell（而不是主机）中运行上述链接中提到的命令。
    * 若要从主机登录到 Jenkins shell，请使用以下命令：
@@ -210,13 +210,13 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
 此部分中的步骤演示如何配置 Jenkins 作业以响应 GitHub 存储库中的更改，提取更改，并生成它们。 本部分结束时，会执行最后的步骤，也就是根据选择的部署环境配置作业，使其将应用程序部署到开发/测试环境或生产环境。 
 
 1. 在 Jenkins 仪表板上，单击“新建项”。
-2. 输入项名称（例如 **MyJob**）。 选择“自由格式的项目”，并单击“确定”。
-3. “作业配置”页面会打开。 （若要获取 Jenkins 仪表板的配置，请单击该作业，并单击“配置”）。
+1. 输入项名称（例如 **MyJob**）。 选择“自由格式的项目”，并单击“确定”。
+1. “作业配置”页面会打开。 （若要获取 Jenkins 仪表板的配置，请单击该作业，并单击“配置”）。
 
-4. 在“常规”选项卡上，选择“GitHub 项目”框，并指定 GitHub 项目 URL。 此 URL 托管要与 Jenkins 持续集成和持续部署 (CI/CD) 流（例如 `https://github.com/{your-github-account}/service-fabric-java-getting-started`）集成的 Service Fabric Java 应用程序。
+1. 在“常规”选项卡上，选择“GitHub 项目”框，并指定 GitHub 项目 URL。 此 URL 托管要与 Jenkins 持续集成和持续部署 (CI/CD) 流（例如 `https://github.com/{your-github-account}/service-fabric-java-getting-started`）集成的 Service Fabric Java 应用程序。
 
-5. 在“源代码管理”选项卡上，选择“Git”。 指定用于托管要与 Jenkins CI/CD 流（例如 `https://github.com/{your-github-account}/service-fabric-java-getting-started`）集成的 Service Fabric Java 应用程序的存储库 URL。 还可以指定要生成的分支（例如，`/master`）。
-6. 将 GitHub 存储库配置为与 Jenkins 通信：
+1. 在“源代码管理”选项卡上，选择“Git”。 指定用于托管要与 Jenkins CI/CD 流（例如 `https://github.com/{your-github-account}/service-fabric-java-getting-started`）集成的 Service Fabric Java 应用程序的存储库 URL。 还可以指定要生成的分支（例如，`/master`）。
+1. 将 GitHub 存储库配置为与 Jenkins 通信：
 
    a. 在 GitHub 存储库页上，转到“设置” > “集成和服务”。
 
@@ -226,8 +226,8 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
 
    d. 将向 Jenkins 实例发送一个测试事件。 GitHub 中的 Webhook 旁边应会显示一个绿色复选标记，表示可以生成项目。
 
-7. 在 Jenkins 的“生成触发器”选项卡上，选择所需的生成选项。 在此示例中，需要在推送到存储库时触发生成，所以选择“用于 GITScm 轮询的 GitHub 挂钩触发器”。 （以前，此选项称为“向 GitHub 推送更改时生成”。）
-8. 在“生成”选项卡上，执行下列操作之一，具体取决于是要生成 Java 应用程序还是 .NET Core 应用程序：
+1. 在 Jenkins 的“生成触发器”选项卡上，选择所需的生成选项。 在此示例中，需要在推送到存储库时触发生成，所以选择“用于 GITScm 轮询的 GitHub 挂钩触发器”。 （以前，此选项称为“向 GitHub 推送更改时生成”。）
+1. 在“生成”选项卡上，执行下列操作之一，具体取决于是要生成 Java 应用程序还是 .NET Core 应用程序：
 
    * **对于 Java 应用程序：** 从“添加生成步骤”下拉列表，选择“调用 Gradle 脚本”。 单击“高级”。 在高级菜单中，为应用程序指定“根生成脚本”的路径。 该脚本将从指定的路径中选择 build.gradle，然后执行相应的操作。 对于 [ActorCounter 应用程序](https://github.com/Azure-Samples/service-fabric-java-getting-started/tree/master/reliable-services-actor-sample/Actors/ActorCounter)，这是 `${WORKSPACE}/reliable-services-actor-sample/Actors/ActorCounter`。
 
@@ -244,7 +244,7 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
 
       ![Service Fabric Jenkins 生成操作][build-step-dotnet]
 
-9. 若要将 Jenkins 配置为在生成后操作中将应用部署到 Service Fabric 群集，需要 Jenkins 容器中群集的证书的位置。 基于 Jenkins 容器是在群集内还是群集外运行，选择以下选项之一，并记录群集证书的位置：
+1. 若要将 Jenkins 配置为在生成后操作中将应用部署到 Service Fabric 群集，需要 Jenkins 容器中群集的证书的位置。 基于 Jenkins 容器是在群集内还是群集外运行，选择以下选项之一，并记录群集证书的位置：
 
    * **对于在群集内运行的 Jenkins：** 可以通过从容器内部回显 Certificates_JenkinsOnSF_Code_MyCert_PEM环境变量的值找到证书的路径。
 
@@ -265,8 +265,8 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
          openssl pkcs12 -in clustercert.pfx -out clustercert.pem -nodes -passin pass:MyPassword1234!
          ``` 
 
-      2. 若要获取 Jenkins 容器的容器 ID，请从主机运行 `docker ps`。
-      3. 使用以下 Docker 命令，将 PEM 文件复制到容器：
+      1. 若要获取 Jenkins 容器的容器 ID，请从主机运行 `docker ps`。
+      1. 使用以下 Docker 命令，将 PEM 文件复制到容器：
     
          ```sh
          docker cp clustercert.pem [first-four-digits-of-container-ID]:/var/jenkins_home
@@ -281,15 +281,15 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
 对于开发和测试环境，可以使用群集管理终结点部署应用程序。 使用群集管理终结点来配置生成后操作以部署应用程序，这种方式需要的设置操作最少。 如果要部署到生产环境，请跳到[使用 Azure 凭据配置部署](#configure-deployment-using-azure-credentials)，将 Azure Active Directory 服务主体配置为在部署期间使用。    
 
 1. 在 Jenkins 作业中，单击“生成后操作”选项卡。 
-2. 在“生成后操作”下拉列表中，选择“部署 Service Fabric 项目”。 
-3. 在“Service Fabric 群集配置”下，选择“填充 Service Fabric 管理终结点”单选按钮。
-4. 对于“管理主机”，请输入群集的连接终结点，例如 `{your-cluster}.eastus.cloudapp.azure.com`。
-5. 对于“客户端密钥”和“客户端证书”，在 Jenkins 容器中输入 PEM 文件的位置，例如 `/var/jenkins_home/clustercert.pem`。 （复制[创建和配置 Jenkins 作业](#create-and-configure-a-jenkins-job)最后一步的证书位置。）
-6. 在“应用程序配置”下，配置“应用程序名称”、“应用程序类型”和（相对）“应用程序清单路径”字段。
+1. 在“生成后操作”下拉列表中，选择“部署 Service Fabric 项目”。 
+1. 在“Service Fabric 群集配置”下，选择“填充 Service Fabric 管理终结点”单选按钮。
+1. 对于“管理主机”，请输入群集的连接终结点，例如 `{your-cluster}.eastus.cloudapp.azure.com`。
+1. 对于“客户端密钥”和“客户端证书”，在 Jenkins 容器中输入 PEM 文件的位置，例如 `/var/jenkins_home/clustercert.pem`。 （复制[创建和配置 Jenkins 作业](#create-and-configure-a-jenkins-job)最后一步的证书位置。）
+1. 在“应用程序配置”下，配置“应用程序名称”、“应用程序类型”和（相对）“应用程序清单路径”字段。
 
    ![Service Fabric Jenkins 生成后操作配置管理终结点](./media/service-fabric-cicd-your-linux-application-with-jenkins/post-build-endpoint.png)
 
-7. 单击“验证配置”。 成功验证后，单击“保存”。 Jenkins 作业管道现在已完全配置。 跳到[后续步骤](#next-steps)测试部署。
+1. 单击“验证配置”。 成功验证后，单击“保存”。 Jenkins 作业管道现在已完全配置。 跳到[后续步骤](#next-steps)测试部署。
 
 ## <a name="configure-deployment-using-azure-credentials"></a>使用 Azure 凭据配置部署
 对于生产环境，强烈建议将 Azure 凭据配置为部署应用程序。 本部分演示如何配置要使用的 Azure Active Directory 服务主体，以在生成后操作中部署应用程序。 可以向目录中的角色分配服务主体以限制 Jenkins 作业权限。 
@@ -303,26 +303,26 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
    * 在[创建 Azure Active Directory 应用程序](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-azure-active-directory-application)部分中，“登录 URL”可以输入任何格式标准的 URL。
    * 在[为应用程序分配角色](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#assign-application-to-role)部分中，可以在群集的资源组上为应用程序分配“读者”角色。
 
-2. 在 Jenkins 作业中，单击“生成后操作”选项卡。
-3. 在“生成后操作”下拉列表中，选择“部署 Service Fabric 项目”。 
-4. 在“Service Fabric 群集配置”下，选择“选择 Service Fabric 群集”单选按钮。 单击“Azure 凭据”旁的“添加”。 单击“Jenkins”选择 Jenkins 凭据提供程序。
-5. 在 Jenkins 凭据提供程序中，从“种类”下拉列表中选择“Microsoft Azure 服务主体”。
-6. 使用在步骤 1 中设置服务主体时保存的值设置以下字段：
+1. 在 Jenkins 作业中，单击“生成后操作”选项卡。
+1. 在“生成后操作”下拉列表中，选择“部署 Service Fabric 项目”。 
+1. 在“Service Fabric 群集配置”下，选择“选择 Service Fabric 群集”单选按钮。 单击“Azure 凭据”旁的“添加”。 单击“Jenkins”选择 Jenkins 凭据提供程序。
+1. 在 Jenkins 凭据提供程序中，从“种类”下拉列表中选择“Microsoft Azure 服务主体”。
+1. 使用在步骤 1 中设置服务主体时保存的值设置以下字段：
 
    * **客户端 ID**：（应用程序 ID）
    * **客户端密码**：应用程序密钥
    * **租户 ID**：目录 ID
    * **订阅 ID**：订阅 ID
-6. 输入用来在 Jenkins 中选择凭据的描述性 ID 和一段简短说明。 然后，单击“验证服务主体”。 如果验证成功，单击“添加”。
+1. 输入用来在 Jenkins 中选择凭据的描述性 ID 和一段简短说明。 然后，单击“验证服务主体”。 如果验证成功，单击“添加”。
 
    ![Service Fabric Jenkins 输入 Azure 凭据](./media/service-fabric-cicd-your-linux-application-with-jenkins/enter-azure-credentials.png)
-7. 在“Service Fabric 群集配置”下，确定已为“Azure 凭据”选择新的凭据。 
-8. 从“资源组”下拉列表，选择想要部署应用程序的群集的资源组。
-9. 从“Service Fabric”下拉列表，选择想要部署应用程序的群集。
-10. 对于“客户端密钥”和“客户端证书”，在 Jenkins 容器中输入 PEM 文件的位置。 例如，`/var/jenkins_home/clustercert.pem`。 
-11. 在“应用程序配置”下，配置“应用程序名称”、“应用程序类型”和（相对）“应用程序清单路径”字段。
+1. 在“Service Fabric 群集配置”下，确定已为“Azure 凭据”选择新的凭据。 
+1. 从“资源组”下拉列表，选择想要部署应用程序的群集的资源组。
+1. 从“Service Fabric”下拉列表，选择想要部署应用程序的群集。
+1. 对于“客户端密钥”和“客户端证书”，在 Jenkins 容器中输入 PEM 文件的位置。 例如，`/var/jenkins_home/clustercert.pem`。 
+1. 在“应用程序配置”下，配置“应用程序名称”、“应用程序类型”和（相对）“应用程序清单路径”字段。
     ![Service Fabric Jenkins 生成后操作配置 Azure 凭据](./media/service-fabric-cicd-your-linux-application-with-jenkins/post-build-credentials.png)
-12. 单击“验证配置”。 成功验证后，单击“保存”。 Jenkins 作业管道现在已完全配置。 转到[后续步骤](#next-steps)测试部署。
+1. 单击“验证配置”。 成功验证后，单击“保存”。 Jenkins 作业管道现在已完全配置。 转到[后续步骤](#next-steps)测试部署。
 
 ## <a name="troubleshooting-the-jenkins-plugin"></a>排查 Jenkins 插件问题
 

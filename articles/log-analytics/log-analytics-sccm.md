@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 6bb59e4b63933500bc8571dca2422eec6c3456ee
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 611f3e70425cd6c80f8a976606dc6cd592571c6e
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129751"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503462"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>将配置管理器连接到 Log Analytics
 可将 System Center Configuration Manager 环境连接到 Azure Log Analytics 以同步设备集合数据，并在 Log Analytics 和 Azure 自动化中引用这些集合。  
@@ -60,12 +60,12 @@ Log Analytics 支持 System Center Configuration Manager 当前分支，版本 1
 查看[将 Windows 计算机连接到 Azure 中的 Log Analytics 服务](log-analytics-agent-windows.md)一文，了解在托管 Configuration Manager 服务连接点站点系统角色的计算机上安装 Microsoft Monitoring Agent 的可用方法。  
 
 ## <a name="add-an-oms-connection-to-configuration-manager"></a>将 OMS 连接添加到配置管理器
-若要添加 OMS 连接，配置管理器环境必须有针对联机模式配置的服务连接点[](https://technet.microsoft.com/library/mt627781.aspx)。
+若要添加 OMS 连接，配置管理器环境必须有针对联机模式配置的[服务连接点](https://technet.microsoft.com/library/mt627781.aspx)。
 
 1. 在配置管理器的“管理”工作区中，选择“OMS 连接器”。 这会打开**添加 OMS 连接向导**。 选择“**下一步**”。
 2. 在“常规”屏幕上，确认已完成以下操作，并且具有每个项的详细信息，然后选择“下一步”。
 
-   1. 在 Azure 门户中，已经将配置管理器注册为 Web 应用程序和/或 Web API 应用，并且有[在注册时收到的客户端 ID](../active-directory/active-directory-integrating-applications.md)。
+   1. 在 Azure 门户中，已经将配置管理器注册为 Web 应用程序和/或 Web API 应用，并且有[在注册时收到的客户端 ID](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)。
    2. 在 Azure 门户中，已经为 Azure Active Directory 中注册的应用创建了应用密钥。  
    3. 在 Azure 门户中，已为注册的 Web 应用提供访问 OMS 的权限。  
       ![连接到 OMS 向导常规页](./media/log-analytics-sccm/sccm-console-general01.png)
