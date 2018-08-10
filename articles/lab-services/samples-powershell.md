@@ -26,8 +26,7 @@ ms.locfileid: "34637389"
 | |  |
 |---|---|
 |[将外部用户添加到实验室](scripts/add-external-user-to-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 脚本将外部用户添加到 Azure 开发测试实验室中的实验室。 |
-|
-  [将市场映像添加到实验室](scripts/add-marketplace-images-to-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 脚本将市场映像添加到 Azure 开发测试实验室中的实验室。 |
+|[将市场映像添加到实验室](scripts/add-marketplace-images-to-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 脚本将市场映像添加到 Azure 开发测试实验室中的实验室。 |
 |[从 VHD 创建自定义映像](scripts/create-custom-image-from-vhd.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 脚本在 Azure 开发测试实验室的实验室中创建自定义映像。 |
 |[在实验室中创建自定义角色](scripts/create-custom-role-in-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 脚本在 Azure 实验室服务的实验室中创建自定义角色。 |
 |[在实验室中设置允许的 VM 大小](scripts/set-allowed-vm-sizes-in-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 脚本在实验室中设置允许的虚拟机 (VM) 大小。 |
