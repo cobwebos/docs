@@ -171,6 +171,8 @@
           href: functions-how-to-use-azure-function-app-settings.md
         - name: 设置运行时版本
           href: set-runtime-version.md
+        - name: 禁用函数
+          href: disable-function.md
     - name: 监视
       href: functions-monitoring.md
     - name: 集成

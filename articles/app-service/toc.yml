@@ -25,6 +25,8 @@
       href: app-service-web-get-started-java.md
     - name: 创建静态 HTML 站点
       href: app-service-web-get-started-html.md
+    - name: 运行自定义 Windows 容器
+      href: app-service-web-get-started-windows-container.md
 - name: 教程
   items:
     - name: 将应用与 DB 配合使用

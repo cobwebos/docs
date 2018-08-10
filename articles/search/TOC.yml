@@ -27,13 +27,13 @@
           href: search-import-data-rest-api.md
         - name: 搜索
           href: search-query-rest-api.md
-        - name: 使用 REST 客户端进行测试
+        - name: 使用 Postman 或 Fiddler 进行探索
           href: search-fiddler.md
 - name: 教程
   items:
     - name: 使用内置工具
       href: search-get-started-portal.md
-    - name: 认知搜索开发
+    - name: 了解认知搜索 API
       href: cognitive-search-tutorial-blob.md
     - name: 编制 Azure Blob 索引
       href: search-semi-structured-data.md
@@ -143,12 +143,12 @@
           href: search-synonyms.md
     - name: 为数据编制索引
       items:
-        - name: 推送和拉取索引编制
+        - name: 加载数据
           href: search-what-is-data-import.md
-        - name: 导入向导（门户）
-          href: search-import-data-portal.md
         - name: 重新生成索引
           href: search-howto-reindex.md
+        - name: 导入向导（门户）
+          href: search-import-data-portal.md
         - name: 编制大数据集索引
           href: search-howto-large-index.md
         - name: 处理并发更新
@@ -175,13 +175,13 @@
               href: search-indexer-field-mappings.md
     - name: 搜索数据
       items:
-        - name: 基本
+        - name: 查询类型/组合
           href: search-query-overview.md
         - name: 搜索浏览器（门户）
           href: search-explorer.md
-        - name: 简单语法的示例
+        - name: 简单语法示例
           href: search-query-simple-examples.md
-        - name: 完整语法的示例
+        - name: 完整语法示例
           href: search-query-lucene-examples.md
         - name: 查询参考
           items:

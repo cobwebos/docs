@@ -84,6 +84,8 @@
           href: sql-database-service-tiers-dtu.md
         - name: 资源限制
           href: sql-database-resource-limits.md
+        - name: 为预留容量预付费
+          href: sql-database-reserved-capacity.md
     - name: 逻辑服务器
       items:
         - name: 创建和管理
@@ -140,7 +142,7 @@
           items:
             - name: 长期备份保留
               href: sql-database-long-term-retention.md
-            - name: 使用Azure blob 存储进行配置
+            - name: 使用 Azure blob 存储进行配置
               href: sql-database-long-term-backup-retention-configure.md
             - name: 使用 Azure 保管库进行配置（已弃用）
               href: sql-database-long-term-backup-retention-configure-vault.md

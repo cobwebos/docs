@@ -131,13 +131,13 @@
           href: automation-linux-hrw-install.md
         - name: 在混合 Runbook 辅助角色中运行 Runbook
           href: automation-hrw-run-runbooks.md
-    - name: 部署配置管理 (DSC)
+    - name: 状态配置
       items:
-        - name: Desired State Configuration (DSC) 概述
+        - name: 状态配置概述
           href: automation-dsc-overview.md
         - name: 入门
           href: automation-dsc-getting-started.md
-        - name: 使用 Azure 自动化将服务器配置为所需状态并管理偏移
+        - name: 使用状态配置将服务器配置为所需状态并管理偏移
           href: tutorial-configure-servers-desired-state.md
         - name: 载入用于管理的计算机
           href: automation-dsc-onboarding.md
@@ -145,7 +145,7 @@
           href: automation-dsc-compile.md
         - name: 使用 Chocolatey 进行连续部署
           href: automation-dsc-cd-chocolatey.md
-        - name: 将 Azure Automation DSC 报告数据转发到 OMS Log Analytics
+        - name: 将状态配置报告数据转发到 Log Analytics
           href: automation-dsc-diagnostics.md
     - name: 管理共享资源
       items:

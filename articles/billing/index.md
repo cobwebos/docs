@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 05/24/2018
 ms.author: cwatson
-ms.openlocfilehash: e696f3829ce710ef38957a5f538c1a43f4ba33f5
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: b04cb7ca3e8e7b292efaed66096c206b268a034a
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285842"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626176"
 ---
 # <a name="azure-billing-and-cost-management-documentation"></a>Azure 计费和成本管理文档
 
@@ -101,8 +101,8 @@ ms.locfileid: "36285842"
                         <p>
                         <a href="/azure/billing/billing-manage-access">授予对计费信息的访问权限</a><br/>
                         <a href="/azure/billing/billing-how-to-pay-by-invoice">按发票付款</a><br/>
-                        <a href="/azure/billing/billing-manage-reserved-vm-instance">管理预留实例</a><br/>
-                        <a href="/azure/billing/billing-understand-reserved-instance-usage-ea">预留实例的使用情况</a>
+                        <a href="/azure/billing/billing-manage-reserved-vm-instance">管理 Azure 预留项</a><br/>
+                        <a href="/azure/billing/billing-understand-reserved-instance-usage-ea">Azure 预留项的使用情况</a>
                         </p>
                     </div>
                 </div>
@@ -131,11 +131,12 @@ ms.locfileid: "36285842"
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>借助虚拟机预留实例实现节约</h3>
+                        <h3>通过 Azure 预留项进行保存</h3>
                         <p>
-                        <a href="/azure/billing/billing-save-compute-costs-reservations">什么是预留实例？</a> <br/>
-                        <a href="/azure/virtual-machines/windows/prepay-reserved-vm-instances?toc=/azure/billing/TOC.json">购买预留实例</a><br/>
-                        <a href="/azure/billing/billing-understand-vm-reservation-charges">如何应用折扣</a><br/>
+                        <a href="/azure/billing/billing-save-compute-costs-reservations">什么是 Azure 预留项？</a> <br/>
+                        <a href="/azure/virtual-machines/windows/prepay-reserved-vm-instances?toc=/azure/billing/TOC.json">购买虚拟机预留实例</a><br/>
+                        <a href="/azure/sql-database/sql-database-reserved-capacity?toc=/azure/billing/TOC.json">购买 SQL 数据库预留容量</a><br/>
+                        <a href="/azure/billing/billing-understand-vm-reservation-charges">如何应用 VM 折扣</a><br/>
                         <a href="/azure/billing/billing-reserved-instance-windows-software-costs">未包括软件成本</a>
                         </p>
                     </div>

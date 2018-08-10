@@ -96,6 +96,8 @@
           href: stream-analytics-monitor-and-manage-jobs-use-powershell.md
         - name: 监视作业 - Azure .Net SDK
           href: stream-analytics-monitor-jobs.md
+        - name: 监视作业 - Visual Studio
+          href: stream-analytics-monitor-jobs-use-vs.md
     - name: 缩放
       items:
         - name: 利用流单元进行缩放
@@ -117,8 +119,10 @@
       items:
         - name: 安装工具
           href: stream-analytics-tools-for-visual-studio-install.md
-        - name: 开发云作业
-          href: stream-analytics-tools-for-visual-studio.md
+        - name: 在本地测试作业
+          href: stream-analytics-vs-tools-local-run.md
+        - name: 在 Visual Studio 中查看作业
+          href: stream-analytics-vs-tools.md
         - name: 开发 Edge 作业
           href: stream-analytics-tools-for-visual-studio-edge-jobs.md
         - name: 设置 CI/CD 管道

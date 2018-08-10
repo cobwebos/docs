@@ -32,6 +32,8 @@
       maintainContext: true
     - name: 用于提供云一致性的模板
       href: templates-cloud-consistency.md
+    - name: 部署模式
+      href: deployment-modes.md
 - name: 如何
   items:
     - name: 创建模板

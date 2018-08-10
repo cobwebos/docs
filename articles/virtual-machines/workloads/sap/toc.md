@@ -63,6 +63,7 @@
 ##### [一个 Azure 区域内的 Azure 上的 SAP HANA 可用性](sap-hana-availability-one-region.md)
 ##### [跨 Azure 区域的 Azure 上的 SAP HANA 可用性](sap-hana-availability-across-regions.md)
 ## [使用 Azure Site Recovery 进行 SAP 灾难恢复](../../../site-recovery/site-recovery-workload.md#protect-sap)
+## [适用于 Azure 的 SAP LaMa 连接器](lama-installation.md)
 # AAD SAP 标识集成和单一登录
 ## [与 SAP 云集成](../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ## [AAD 与 SAP Cloud Platform Identity Authentication 集成](../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)

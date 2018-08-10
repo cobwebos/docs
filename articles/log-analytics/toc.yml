@@ -110,9 +110,17 @@
     - name: 查询数据
       items:
         - name: 语言文档
-          href: 'https://docs.loganalytics.io'
-        - name: 从旧式语言转换
-          href: log-analytics-log-search-transition.md
+          items:
+            - name: 从旧式语言转换
+              href: log-analytics-log-search-transition.md
+            - name: 开始使用 Analytics 门户
+              href: query-language/get-started-analytics-portal.md
+            - name: 查询入门
+              href: query-language/get-started-queries.md
+            - name: 搜索查询
+              href: query-language/search-queries.md
+            - name: 语言参考
+              href: 'https://docs.loganalytics.io'
         - name: 跨资源搜索
           href: log-analytics-cross-workspace-search.md
         - name: 从搜索结果执行操作

@@ -88,6 +88,8 @@
           href: iot-accelerators-time-series-insights.md
         - name: 使用 Data Lake 分析遥测数据
           href: iot-accelerators-integrate-data-lake.md
+        - name: 配置基于角色的访问控制
+          href: iot-accelerators-remote-monitoring-rbac.md
     - name: 远程监视（旧版）
       items:
         - name: 什么是预配置的解决方案？
@@ -173,7 +175,7 @@
       items:
         - name: 开发人员参考指南
           href: 'https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide'
-    - name: “安全”
+    - name: 安全
       items:
         - name: 安全体系结构
           href: /azure/iot-fundamentals/iot-security-architecture?context=azure/iot-accelerators/rc/rc

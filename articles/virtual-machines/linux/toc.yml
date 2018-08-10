@@ -228,9 +228,9 @@
           href: metrics-vm-usage-rest.md
     - name: 管理成本
       items:
-        - name: 为 VM 预付费 - 预留实例
+        - name: 为 VM 预付费 - Azure 预留项
           href: prepay-reserved-vm-instances.md
-        - name: 什么是预留实例？
+        - name: 什么是 Azure 预留项？
           href: ../../billing/billing-save-compute-costs-reservations.md
         - name: VM 实例大小灵活性
           href: reserved-vm-instance-size-flexibility.md
