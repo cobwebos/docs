@@ -49,27 +49,27 @@ ms.locfileid: "39170627"
 
 例如，让我们尝试一个教学会话。
 
-1. 单击“训练对话”，然后单击“新建训练对话”。
-1. 输入“我丢失了密码”。
-2. 单击“对操作打分”。
-3. 单击以选择“那用于你的本地帐户还是 Microsoft 帐户？”
-4. 输入“本地帐户”。
-5. 单击“对操作打分”。
-3. 单击以选择“你的 Windows 是哪个版本的？”
+1. 单击 Train Dialogs，然后单击 New Train Dialog。
+1. 输入“I lost my password”。
+2. 单击“Score Action”。
+3. 单击以选择“Is that for your local account or Microsoft account?”
+4. 输入“Local account”。
+5. 单击“Score Actions”。
+3. 单击以选择“Which version of Windows do you have?”
 4. 输入“Windows 8”。
-5. 单击“对操作打分”。
-6. 选择“解决方案：如何在 Windows 8 上重置密码”。
-4. 单击“完成教学”。
+5. 单击“Score Actions”。
+6. 选择“SOLUTION: how to reset password on Windows 8”。
+4. 单击“Done Teaching”。
 
 让我们试验一下机器人如何学习域外类。
 
-1. 单击“训练对话”，然后单击“新建训练对话”。
-1. 输入“Web 搜索”。
+1. 单击 Train Dialogs，然后单击 New Train Dialog。
+1. 输入“web search”。
     - 这是域外类的一个示例。 
-2. 单击“对操作打分”。
-3. 单击以选择“抱歉，我无法对此做出帮助。”
+2. 单击“Score Action”。
+3. 单击以选择“Sorry, I can't help with that”。
     - 注意，此选项的得分当前较低。 但是，在进行更多一些教学后，得分将变高。
-4. 单击“完成教学”。
+4. 单击“Done Teaching”。
 
 现在，你已了解了如何创建一个基本的技术支持演示，以及它如何进行学习来提供解决方案并处理不符合示例的查询。
 

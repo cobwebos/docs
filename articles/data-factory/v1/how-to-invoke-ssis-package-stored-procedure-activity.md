@@ -302,7 +302,7 @@ ms.locfileid: "37052709"
 
 ### <a name="monitor-the-pipeline-run"></a>监视管道运行
 
-2. 运行 Get-AzureRmDataFactorySlice，获取有关输出数据集\**（管道的输出表）的所有切片的详细信息。
+2. 运行 Get-AzureRmDataFactorySlice，获取有关输出数据集\*\*（管道的输出表）的所有切片的详细信息。
 
     ```PowerShell
     Get-AzureRmDataFactorySlice $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z
