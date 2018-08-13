@@ -1,6 +1,6 @@
 ---
-title: Azure 快速入门 - 将 Azure Web 应用程序配置为从 Key Vault 读取机密 | Microsoft Docs
-description: 介绍如何将 ASP.Net Core 应用程序配置为从 Key Vault 读取机密的快速入门
+title: Azure 快速入门 - 将 Azure Web 应用程序配置为从 Key Vault 设置和检索机密 | Microsoft Docs
+description: 介绍如何将 ASP.Net Core 应用程序配置为从 Key Vault 设置和检索机密的快速入门
 services: key-vault
 author: prashanthyv
 manager: sumedhb
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 07/24/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 07a7bc5713f093e34a775aacab27094780ac6c7e
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 8b5624ae3083d92213b4ee919dc0860bf5ff4ab7
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247819"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480196"
 ---
-# <a name="quickstart-set-and-read-a-secret-from-key-vault-in-a-net-web-app"></a>快速入门：在 .NET Web 应用中通过 Key Vault 设置和读取机密
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-a-net-web-app"></a>快速入门：使用 .NET Web 应用在 Azure Key Vault 中设置和检索机密
 
 本快速入门演练将 Azure Web 应用程序配置为使用托管服务标识从 Key Vault 读取信息所要执行的步骤。 学习如何：
 
@@ -56,7 +56,7 @@ az login
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group#az_group_create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
+使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 请选择一个资源组名称，然后将其填充在占位符中。
 以下示例在 *eastus* 位置创建名为 *<YourResourceGroupName>* 的资源组。

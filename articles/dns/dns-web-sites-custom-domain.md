@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 7/20/2018
 ms.author: victorh
-ms.openlocfilehash: 9ebbc955bcb426738db598491266c2a1bcb9dd33
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: b39c2c672869bb446e58134a85130d10491fe047
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39204936"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621107"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>教程：为 Web 应用在自定义域中创建 DNS 记录 
 
@@ -29,7 +29,7 @@ ms.locfileid: "39204936"
 
 请记住，如果在 Azure 中为 Web 应用创建 A 记录，当 Web 应用的基础 IP 地址更改时，则必须手动更新 A 记录。
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 为自定义域创建 A 记录和 TXT 记录
@@ -56,7 +56,7 @@ ms.locfileid: "39204936"
 
 ## <a name="create-an-a-record-and-txt-record"></a>创建一个 A 记录和 TXT 记录
 
-A 记录可用于将名称映射到其 IP 地址。 在下面的示例中，使用你的 Web 应用 IPv4 地址将“@”分配为 A 记录。 @ 通常表示根域。
+A 记录可用于将名称映射到其 IP 地址。 在下面的示例中，使用你的 Web 应用 IPv4 地址将“\@”分配为 A 记录。 \@ 通常表示根域。
 
 ### <a name="get-the-ipv4-address"></a>获取 IPv4 地址
 

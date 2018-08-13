@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/30/2018
+ms.date: 08/03/2018
 ms.author: alkohli
-ms.openlocfilehash: 1ae6d3dbd01d2623fef511ed0663270ac605f257
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: e1a5cb33bb473daf5b9e45e7c64bcb297eca7733
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39362654"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595539"
 ---
 # <a name="troubleshoot-issues-in-azure-data-box-disk-preview"></a>排查 Azure Data Box 磁盘（预览版）中的问题
 
@@ -81,7 +81,7 @@ ms.locfileid: "39362654"
 |-------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|
 | 无<br><br>Data Box 磁盘解锁工具崩溃。                                                                            | 未安装 Bitlocker。 确保运行 Data Box 磁盘解锁工具的主机上已安装 BitLocker。                                                                            |
 | 当前的 .NET Framework 不受支持。 支持的版本为 4.5 和以上。<br><br>工具退出并显示一条消息。  | 未安装 .NET 4.5。 在运行 Data Box 磁盘解锁工具的主机上安装 .NET 4.5 或更高版本。                                                                            |
-| 无法解锁或验证任何卷。 请联系 Microsoft 支持。  <br><br>工具无法解锁或验证任何已锁定的驱动器。 | 工具无法解锁任何已使用提供的支持密钥解锁的驱动器。 联系 Microsoft 支持部门了解后续步骤。                                                |
+| 无法解锁或验证任何卷。 请联系 Microsoft 支持。  <br><br>工具无法解锁或验证任何已锁定的驱动器。 | 工具无法解锁任何已使用提供的支持密钥锁定的驱动器。 联系 Microsoft 支持部门了解后续步骤。                                                |
 | 已解锁并验证以下卷。 <br>卷驱动器号: E:<br>无法使用以下支持密钥解锁任何卷: werwerqomnf、qwerwerqwdfda <br><br>工具解锁了一些驱动器，并列出了成功和失败的驱动器号。| 部分成功。 使用提供的支持密钥无法解锁某些驱动器。 联系 Microsoft 支持部门了解后续步骤。 |
 | 找不到锁定的卷。 验证从 Microsoft 收到的磁盘是否已正确连接并处于锁定状态。          | 工具找不到任何已锁定的驱动器。 驱动器已解锁，或检测不到。 确保驱动器已连接并已锁定。                                                           |
 | 严重错误: 参数无效<br>参数名称: invalid_arg<br>用法:<br>DataBoxDiskUnlock /PassKeys:<passkey_list_separated_by_semicolon><br><br>示例: DataBoxDiskUnlock /PassKeys:passkey1;passkey2;passkey3<br>示例: DataBoxDiskUnlock /SystemCheck<br>示例: DataBoxDiskUnlock /Help<br><br>/PassKeys:       从 Azure DataBox 磁盘订单中获取此支持密钥。 该支持密钥用于解锁磁盘。<br>/Help:           此选项提供有关 cmdlet 用法和示例的帮助。<br>/SystemCheck:    此选项检查你的系统是否满足运行该工具的要求。<br><br>按任意键退出。 | 输入了无效的参数。 只允许参数 /SystemCheck、/PassKey 和 /Help。                                                                            |

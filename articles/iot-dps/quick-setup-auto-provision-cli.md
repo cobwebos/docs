@@ -1,20 +1,20 @@
 ---
 title: 使用 Azure CLI 设置设备预配 | Microsoft Docs
 description: Azure 快速入门 - 使用 Azure CLI 设置 Azure IoT 中心设备预配服务
-author: bryanla
-ms.author: bryanla
+author: wesmc7777
+ms.author: wesmc
 ms.date: 02/26/2018
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 2cf611e12402b22587faa83fefc4651e7307c41c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: cf2e108aa7cab6be2996cb535d27d597e462617c
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38482129"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626533"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>使用 Azure CLI 设置 IoT 中心设备预配服务
 
@@ -32,7 +32,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速�
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group#az_group_create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
+使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
 
 以下示例在 *westus* 位置创建名为 *my-sample-resource-group* 的资源组。
 
@@ -47,7 +47,7 @@ az group create --name my-sample-resource-group --location westus
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
-使用 [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) 命令创建 IoT 中心。 
+使用 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) 命令创建 IoT 中心。
 
 以下示例在 *westus* 位置创建名为 *my-sample-hub* 的 IoT 中心。  
 
@@ -57,7 +57,7 @@ az iot hub create --name my-sample-hub --resource-group my-sample-resource-group
 
 ## <a name="create-a-provisioning-service"></a>创建预配服务
 
-使用 [az iot dps create](/cli/azure/iot/dps#az_iot_dps_create) 命令创建预配服务。 
+使用 [az iot dps create](/cli/azure/iot/dps#az-iot-dps-create) 命令创建预配服务。 
 
 以下示例在 *westus* 位置创建名为 *my-sample-dps* 的预配服务。  
 
@@ -72,7 +72,7 @@ az iot dps create --name my-sample-dps --resource-group my-sample-resource-group
 
 ## <a name="get-the-connection-string-for-the-iot-hub"></a>获取 IoT 中心的连接字符串
 
-需要提供 IoT 中心的连接字符串才能将其与设备预配服务链接到一起。 使用 [az iot hub show-connection-string](/cli/azure/iot/hub#az_iot_hub_show_connection_string) 命令获取连接字符串，并使用其输出设置一个变量。链接这两个资源时，需要用到该变量。 
+需要提供 IoT 中心的连接字符串才能将其与设备预配服务链接到一起。 使用 [az iot hub show-connection-string](/cli/azure/iot/hub#az-iot-hub-show-connection-string) 命令获取连接字符串，并使用其输出设置一个变量。链接这两个资源时，需要用到该变量。 
 
 以下示例将 *hubConnectionString* 变量设置为中心的 *iothubowner* 策略的主键连接字符串值。 可以使用 `--policy-name` 参数指定另一策略。 此命令使用 Azure CLI [查询](/cli/azure/query-azure-cli)和[输出](/cli/azure/format-output-azure-cli#tsv-output-format)选项从命令输出提取连接字符串。
 
@@ -92,7 +92,7 @@ echo $hubConnectionString
 
 ## <a name="link-the-iot-hub-and-the-provisioning-service"></a>将 IoT 中心和预配服务相链接
 
-使用 [az iot dps linked-hub create](/cli/azure/iot/dps/linked-hub#az_iot_dps_linked_hub_create) 命令将 IoT 中心与预配服务相链接。 
+使用 [az iot dps linked-hub create](/cli/azure/iot/dps/linked-hub#az-iot-dps-linked-hub-create) 命令将 IoT 中心与预配服务相链接。 
 
 以下示例将 *westus* 位置中名为 *my-sample-hub* 的 IoT 中心与名为 *my-sample-dps* 的设备预配服务相链接。 它使用在上一步的 *hubConnectionString* 变量中存储的 *my-sample-hub* 的连接字符串。
 
@@ -102,7 +102,7 @@ az iot dps linked-hub create --dps-name my-sample-dps --resource-group my-sample
 
 ## <a name="verify-the-provisioning-service"></a>验证预配服务
 
-使用 [az iot dps show](/cli/azure/iot/dps#az_iot_dps_show) 命令获取预配服务的详细信息。
+使用 [az iot dps show](/cli/azure/iot/dps#az-iot-dps-show) 命令获取预配服务的详细信息。
 
 以下示例获取名为 *my-sample-dps* 的预配服务的详细信息。 链接的 IoT 中心显示在 *properties.iotHubs* 集合中。
 
@@ -114,18 +114,18 @@ az iot dps show --name my-sample-dps
 
 本教程系列中的其他快速入门教程是在本文的基础上制作的。 如果打算继续学习后续的快速入门或相关教程，请不要清理在本快速入门中创建的资源。 如果不打算继续，可以使用以下命令删除预配服务、IoT 中心或资源组及其所有资源。
 
-若要删除预配服务，请运行 [az iot dps delete](/cli/azure/iot/dps#az_iot_dps_delete) 命令：
+若要删除预配服务，请运行 [az iot dps delete](/cli/azure/iot/dps#az-iot-dps-delete) 命令：
 
 ```azurecli-interactive
 az iot dps delete --name my-sample-dps --resource-group my-sample-resource-group
 ```
-若要删除 IoT 中心，请运行 [az iot hub delete](/cli/azure/iot/hub#az_iot_hub_delete) 命令：
+若要删除 IoT 中心，请运行 [az iot hub delete](/cli/azure/iot/hub#az-iot-hub-delete) 命令：
 
 ```azurecli-interactive
 az iot hub delete --name my-sample-hub --resource-group my-sample-resource-group
 ```
 
-若要删除资源组及其所有资源，请运行 [az group delete](/cli/azure/group#az_group_delete) 命令：
+若要删除资源组及其所有资源，请运行 [az group delete](/cli/azure/group#az-group-delete) 命令：
 
 ```azurecli-interactive
 az group delete --name my-sample-resource-group

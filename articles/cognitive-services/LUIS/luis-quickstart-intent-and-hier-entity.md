@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 07/26/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: f4e03271f45c29ed2556256346e29c297be563cc
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 41f74ff00e4fad751d4a2b7ae96ebb048bbcdfcd
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345352"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492692"
 ---
 # <a name="tutorial-5-add-hierarchical-entity"></a>教程：5. 添加分层的实体
 在本教程中，我们将创建一个应用，用于演示如何根据上下文查找相关的数据片段。 
@@ -70,7 +70,7 @@ mv Jill Jones from a-2349 to b-1298
 
 2. 从意向列表中选择“MoveEmployee”。
 
-    [ ![LUIS 应用的屏幕截图，已在左菜单中突出显示“MoveEmployee”意向](./media/luis-quickstart-intent-and-hier-entity/hr-intents-list-moveemployee.png)](./media/luis-quickstart-intent-and-hier-entity/hr-intents-list-moveemployee.png#lightbox)
+    [ ![LUIS 应用的屏幕截图，已在左菜单中突出显示 MoveEmployee 意向](./media/luis-quickstart-intent-and-hier-entity/hr-intents-list-moveemployee.png)](./media/luis-quickstart-intent-and-hier-entity/hr-intents-list-moveemployee.png#lightbox)
 
 3. 添加以下示例陈述：
 
@@ -119,15 +119,8 @@ LUIS 需要通过在陈述中标记原始位置和目标位置来了解什么是
     ![在“预生成的实体”对话框中选择的数字的屏幕截图](./media/luis-quickstart-intent-and-hier-entity/hr-add-number-back-ddl.png)
 
 ## <a name="train-the-luis-app"></a>训练 LUIS 应用
-LUIS 在训练之前，并不知道意向和实体（模型）发生的变化。 
 
-1. 在 LUIS 网站的右上方，选择“训练”按钮。
-
-    ![训练应用](./media/luis-quickstart-intent-and-hier-entity/train-button.png)
-
-2. 当网站顶部出现确认成功的绿色状态栏时，表示训练已完成。
-
-    ![训练成功](./media/luis-quickstart-intent-and-hier-entity/trained.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>发布应用以获取终结点 URL
 
@@ -242,6 +235,10 @@ LUIS 在训练之前，并不知道意向和实体（模型）发生的变化。
 
 此示例中的位置（例如 `a-1234`）遵循特定的格式，即以一到两个字母开头，后接破折号，然后是一系列数字（4 到 5 个）。 可以将该数据描述为一个正则表达式实体，每个位置有一个角色。 角色适用于模式。 可以根据这些陈述创建模式，然后针对位置格式创建一个正则表达式，再将其添加到模式。 <!-- Go to this tutorial to see how that is done -->
 
+## <a name="patterns-with-roles"></a>将模式与角色配合使用
+
+[!include[LUIS Compare hierarchical entities to patterns with roles](../../../includes/cognitive-services-luis-hier-roles.md)]
+
 ## <a name="what-has-this-luis-app-accomplished"></a>此 LUIS 应用实现了哪些目的？
 此应用只包含数个意向和一个分层实体，识别了自然语言查询意向，并返回了提取的数据。 
 
@@ -251,7 +248,8 @@ LUIS 在训练之前，并不知道意向和实体（模型）发生的变化。
 LUIS 已完成此请求。 调用方应用程序（例如聊天机器人）可以提取 topScoringIntent 结果和实体中的数据，以执行下一步骤。 LUIS 不会针对机器人或调用方应用程序执行编程工作。 LUIS 只确定用户的意向是什么。 
 
 ## <a name="clean-up-resources"></a>清理资源
-不再需要 LUIS 应用时，请将其删除。 为此，请在应用列表中选择应用名称右侧的省略号 (***...***) 按钮，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"] 

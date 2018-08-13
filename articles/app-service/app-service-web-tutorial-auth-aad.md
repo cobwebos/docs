@@ -12,14 +12,14 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 04/03/2018
+ms.date: 08/07/2018
 ms.author: cephalin
-ms.openlocfilehash: 4bdb182d93b842bf94e75672b1d7b4cf4f6da253
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: e597ba5236fb2d7fea8649f423c4a952b01f87ee
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31589146"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599610"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>教程：在 Azure 应用服务中对用户进行端到端身份验证和授权
 
@@ -241,7 +241,7 @@ git push frontend master
 
 遵循前端应用的步骤进行操作，但跳过最后一步。 对于前端应用，不需要“应用程序 ID”。 让“Azure Active Directory 设置”页保持打开状态。
 
-根据需要导航到 `http://<front_end_app_name>.azurewebsites.net`。 现在你会被定向到登录页。 登录后仍无法从后端应用访问数据，因为仍需执行三项操作：
+根据需要导航到 `http://<front_end_app_name>.azurewebsites.net`。 现在你会被定向到安全登录页。 登录后仍无法从后端应用访问数据，因为仍需执行三项操作：
 
 - 授予前端访问后端的权限
 - 对应用服务进行配置，使之返回可用令牌
@@ -322,7 +322,7 @@ git commit -m "add authorization header for server code"
 git push frontend master
 ```
 
-再次登录到 `http://<front_end_app_name>.azurewebsites.net`。 在用户数据使用协议页上，单击“接受”。
+再次登录到 `https://<front_end_app_name>.azurewebsites.net`。 在用户数据使用协议页上，单击“接受”。
 
 现在应该可以像以前一样通过后端应用创建、读取、更新和删除数据了。 唯一区别是，两种应用现在都受应用服务身份验证和授权的保护，包括在进行服务间调用时受到保护。
 
@@ -340,7 +340,7 @@ git push frontend master
 
 ### <a name="configure-cors"></a>配置 CORS
 
-在 Cloud Shell 中，使用 [`az resource update`](/cli/azure/resource#az_resource_update) 命令对客户端的 URL 启用 CORS。 替换 _\<back\_end\_app\_name>_ 和 _\<front\_end\_app\_name>_ 占位符。
+在 Cloud Shell 中，使用 [`az resource update`](/cli/azure/resource#az-resource-update) 命令对客户端的 URL 启用 CORS。 替换 _\<back\_end\_app\_name>_ 和 _\<front\_end\_app\_name>_ 占位符。
 
 ```azurecli-interactive
 az resource update --name web --resource-group myAuthResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<back_end_app_name> --set properties.cors.allowedOrigins="['https://<front_end_app_name>.azurewebsites.net']" --api-version 2015-06-01
@@ -352,7 +352,7 @@ az resource update --name web --resource-group myAuthResourceGroup --namespace M
 
 在本地存储库中，打开 _wwwroot/index.html_。
 
-在第 51 行中，将 `apiEndpoint` 变量设置为后端应用的 URL (`http://<back_end_app_name>.azurewebsites.net`)。 在应用服务中将 _\<back\_end\_app\_name>_ 替换为你的应用名称。
+在第 51 行中，将 `apiEndpoint` 变量设置为后端应用的 URL (`https://<back_end_app_name>.azurewebsites.net`)。 在应用服务中将 _\<back\_end\_app\_name>_ 替换为你的应用名称。
 
 在本地存储库中打开 _wwwroot/app/scripts/todoListSvc.js_，然后就会看到 `apiEndpoint` 已前置到所有 API 调用。 Angular.js 应用现在可以调用后端 API 了。 
 
@@ -406,9 +406,13 @@ git commit -m "add authorization header for Angular"
 git push frontend master
 ```
 
-再次导航到 `http://<front_end_app_name>.azurewebsites.net`。 现在应该可以直接在 Angular.js 应用中通过后端应用创建、读取、更新和删除数据了。
+再次导航到 `https://<front_end_app_name>.azurewebsites.net`。 现在应该可以直接在 Angular.js 应用中通过后端应用创建、读取、更新和删除数据了。
 
 祝贺你！ 客户端代码现在可以代表经身份验证的用户访问后端数据了。
+
+## <a name="when-access-tokens-expire"></a>当访问令牌过期时
+
+访问令牌在一段时间后会过期。 若要了解如何在不需用户通过应用重新进行身份验证的情况下刷新访问令牌，请参阅[刷新访问令牌](app-service-authentication-how-to.md#refresh-access-tokens)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

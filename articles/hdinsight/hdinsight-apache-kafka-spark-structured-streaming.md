@@ -1,23 +1,20 @@
 ---
-title: 教程：Apache Spark 结构化流式处理与 Kafka - Azure HDInsight | Microsoft Docs
+title: '教程：Apache Spark 结构化流式处理与 Kafka - Azure HDInsight '
 description: 了解如何使用 Apache Spark 流式处理将数据传入或传出 Apache Kafka。 本教程使用 Spark on HDInsight 中的 Jupyter Notebook 流式传输数据。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: ''
 ms.topic: tutorial
 ms.date: 05/08/2018
-ms.author: larryfr
-ms.openlocfilehash: 8c7c1b37102e94f00ac6077958952eb52b342668
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: jasonh
+ms.openlocfilehash: 47879350c56b9e8b943e1bff61359727746b697d
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33939240"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39598291"
 ---
 # <a name="tutorial-use-spark-structured-streaming-with-kafka-on-hdinsight"></a>教程：将 Spark 结构化流与 Kafka on HDInsight 配合使用
 
@@ -147,7 +144,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
     | --- | --- |
     | 订阅 | Azure 订阅 |
     | 资源组 | 包含资源的资源组。 |
-    | Location | 创建资源时所在的 Azure 区域。 |
+    | 位置 | 创建资源时所在的 Azure 区域。 |
     | Spark 群集名称 | Spark 群集的名称。 前六个字符必须与 Kafka 群集名称不同。 |
     | Kafka 群集名称 | Kafka 群集的名称。 前六个字符必须与 Spark 群集名称不同。 |
     | 群集登录用户名 | 群集的管理员用户名。 |

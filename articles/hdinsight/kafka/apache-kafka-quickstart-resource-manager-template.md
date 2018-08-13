@@ -1,24 +1,19 @@
 ---
-title: Apache Kafka 入门 - Azure HDInsight 快速入门 | Microsoft Docs
+title: Apache Kafka 入门 - Azure HDInsight 快速入门
 description: 在此快速入门中，了解如何在 Azure HDInsight 上使用 Azure 门户创建 Apache Kafka 群集。 还可以了解 Kafka 主题、订阅服务器和使用者。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
 ms.custom: mvc,hdinsightactive
-ms.devlang: ''
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 04/16/2018
-ms.author: larryfr
-ms.openlocfilehash: 10d4d4b3c0236cf8a1edd6976fe5af573703b237
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e8f8ad9b7cc14d6a3d28832e4d14ef55e8c530c6
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33779219"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618103"
 ---
 # <a name="quickstart-create-a-kafka-on-hdinsight-cluster"></a>快速入门：创建 Kafka on HDInsight 群集
 
@@ -62,7 +57,7 @@ Kafka 是开源分布式流式处理平台。 通常用作消息代理，因为�
     | --- | --- |
     | 订阅 | Azure 订阅。 |
     | 资源组 | 在其中创建群集的资源组。 |
-    | Location | 在其中创建群集的 Azure 区域。 |
+    | 位置 | 在其中创建群集的 Azure 区域。 |
     | 群集名称 | Kafka 群集的名称。 |
     | 群集登录用户名 | 此帐户名用于登录到群集上托管的基于 HTTP 的服务。 |
     | 群集登录密码 | 输入用户名的密码。 |
@@ -203,7 +198,7 @@ Kafka 在主题中存储数据流。 可以使用 `kafka-topics.sh` 实用工具
 
         * 创建新主题或分区
 
-        * 扩展群集
+        * 纵向扩展群集
 
 * 若要列出主题，请使用以下命令：
 
@@ -232,7 +227,7 @@ Kafka 在主题中存储数据流。 可以使用 `kafka-topics.sh` 实用工具
 
 ## <a name="produce-and-consume-records"></a>生成和使用记录
 
-Kafka 将记录存储在主题中。 记录由生成者生成，由使用者使用。 生产者与使用者通过 Kafka 代理服务通信。 HDInsight 群集中的每个辅助角色节点都是 Kafka 代理主机。
+Kafka 将记录存储在主题中。 记录由生成者生成，由使用者使用。 生产者与使用者通过 Kafka 代理服务通信。 HDInsight 群集中的每个工作节点都是 Kafka 代理主机。
 
 若要将记录存储到之前创建的测试主题，并通过使用者对其进行读取，请使用以下步骤：
 

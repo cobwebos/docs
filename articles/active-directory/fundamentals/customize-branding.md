@@ -14,12 +14,12 @@ ms.date: 07/20/2018
 ms.author: lizross
 ms.reviewer: kexia
 custom: it-pro
-ms.openlocfilehash: 7804d6b0d4a100997fb545e678458424dac6ceed
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 45637122af3df1906a8c3b4b16233f6361eecca3
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39227253"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528320"
 ---
 # <a name="quickstart-add-company-branding-to-your-sign-in-page-in-azure-ad"></a>快速入门：在 Azure AD 登录页中添加公司品牌元素
 许多公司想要在他们管理的所有网站和服务上应用一致的外观，以免用户感到困惑。 Azure Active Directory (Azure AD) 提供了此功能，允许用户使用自己的公司徽标和自定义的颜色方案来自定义登录页外观。 登录到使用 Azure AD 作为标识提供者的基于 Web 的应用程序（例如 Office 365）时将显示登录页。 用户与此页进行交互以输入其凭据。
@@ -71,7 +71,7 @@ Description | 约束 | 建议
 ### <a name="square-logo-image"></a>方形徽标图像
 Description | 约束 | 建议
 ------- | ------- | ----------
-在设置新的 Enterprise Windows 10 PC 时会显示此图像。 它在员工设置新的工作 PC 时为他们提供上下文。 将为使用 [Windows AutoPilot](https://blogs.windows.com/business/2017/06/29/delivering-modern-promise-windows-10/?utm_source=dlvr.it&utm_medium=twitter#gDTp1u6q35bvDWIS.97) 来部署其工作设备的租户显示此图像，还会在其他 Windows 10 体验的密码输入页面上显示此图像。 | 透明 PNG（首选）或 JPG<br>图像尺寸：240 x 240 像素<br>文件大小：&lt; 10 KB | 在此处使用组织的徽标。<br> 使用透明图像。<br>请勿假设背景为白色。<br>请勿向图像中的徽标添加填充，否则徽标看起来会很小。
+在设置新的 Enterprise Windows 10 PC 时会显示此图像。 它在员工设置新的工作 PC 时为他们提供上下文。 将为使用 [Windows AutoPilot](https://blogs.windows.com/business/2017/06/29/delivering-modern-promise-windows-10/?utm_source=dlvr.it&utm_medium=twitter#gDTp1u6q35bvDWIS.97) 来部署其工作设备的租户显示此图像，还会在其他 Windows 10 体验的密码输入页面上显示此图像。<br>方形徽标专用于 Windows 身份验证。 深色主题版本已弃用，不再在任意位置使用。 | 透明 PNG（首选）或 JPG<br>图像尺寸：240 x 240 像素<br>文件大小：&lt; 10 KB | 在此处使用组织的徽标。<br> 使用透明图像。<br>请勿假设背景为白色。<br>请勿向图像中的徽标添加填充，否则徽标看起来会很小。
 
 ### <a name="show-option-to-remain-signed-in"></a>显示保持登录状态的选项
 Description | 约束 | 建议

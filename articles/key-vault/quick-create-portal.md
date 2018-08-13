@@ -1,6 +1,6 @@
 ---
-title: Azure 快速入门 - 使用门户创建 Key Vault | Microsoft Docs
-description: 介绍如何使用门户创建 Azure Key Vault 的快速入门
+title: Azure 快速入门 - 使用 Azure 门户在 Key Vault 中设置和检索机密 | Microsoft Docs
+description: 快速入门介绍如何使用 Azure 门户在 Azure Key Vault 中设置和检索机密
 services: key-vault
 author: barclayn
 manager: mbaldwin
@@ -14,18 +14,18 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: 251cd7eaba439708e7ef4e1ee8ccbd7efe7d66bb
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 5a203f8c92a1dc03a50415e78e509eafa62ebf4c
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34068874"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480092"
 ---
-# <a name="quickstart-create-a-key-vault-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Key Vault
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Key Vault 中设置和检索机密
 
 Azure Key Vault 是一项云服务，用作安全的机密存储。 可以安全地存储密钥、密码、证书和其他机密。 有关 Key Vault 的详细信息，可以参阅[概述](key-vault-overview.md)。 可以通过 Azure 门户创建和管理 Azure Key Vault。 在本快速入门中，请创建一个密钥保管库。 完成该操作后，即可存储机密。
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="log-into-azure"></a>登录到 Azure
 

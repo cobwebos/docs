@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/15/2018
 ms.author: juliako
-ms.openlocfilehash: 2ceae5b530d1967ccca2b33c05c183302684be41
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 8bfe2fb7274fb8c6dcf977e8bd72af525d8ce8a5
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116761"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528164"
 ---
 # <a name="use-drm-dynamic-encryption-and-license-delivery-service"></a>使用 DRM 动态加密和许可证传送服务
 
@@ -65,6 +65,7 @@ ms.locfileid: "39116761"
 以下是完成本教程所需具备的条件。
 
 * 查看[内容保护概述](content-protection-overview.md)一文。
+* 查看[设计带访问控制的多 DRM 内容保护系统](design-multi-drm-system-with-access-control.md)
 * 安装 Visual Studio Code 或 Visual Studio
 * 按照[本快速入门](create-account-cli-quickstart.md)所述，创建新的 Azure 媒体服务帐户。
 * 根据[访问 API](access-api-cli-how-to.md) 中所述，获取使用媒体服务 API 时所需的凭据

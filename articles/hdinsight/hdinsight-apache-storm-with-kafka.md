@@ -1,25 +1,20 @@
 ---
-title: 教程：Apache Kafka 与 Storm on HDInsight - Azure | Microsoft Docs
+title: '教程：Apache Kafka 与 Storm on HDInsight - Azure '
 description: 了解如何使用 Apache Storm 和 Apache Kafka on HDInsight 创建流式处理管道。 本教程使用 KafkaBolt 和 KafkaSpout 组件来流式传输 Kafka 的数据。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 05/21/2018
-ms.author: larryfr
-ms.openlocfilehash: b973890caddf598d5ba4e96a04a18df46cdb5cf8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: jasonh
+ms.openlocfilehash: a20cf616b119d208c9b2baa0f2cf608aa44c21ad
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626284"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595155"
 ---
 # <a name="tutorial-use-apache-storm-with-kafka-on-hdinsight"></a>教程：将 Apache Storm 与 Kafka on HDInsight 结合使用
 
@@ -372,7 +367,7 @@ streams:
 
 项目包含名为 `dev.properties` 的文件，用于传递拓扑使用的参数。 它定义以下属性：
 
-| dev.properties 文件 | 说明 |
+| dev.properties 文件 | Description |
 | --- | --- |
 | `kafka.zookeeper.hosts` | Kafka 群集的 Zookeeper 主机。 |
 | `kafka.broker.hosts` | Kafka 代理主机（辅助角色节点）。 |

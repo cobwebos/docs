@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 10/13/2017
 ms.author: asutton
 ms.custom: ''
-ms.openlocfilehash: 9834dbbc2232fc286451bcdcd19dfc639f49d3bf
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 504504f278907536e89055cd5c912d2d1f280931
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30903469"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627196"
 ---
 # <a name="what-is-batch-ai-in-azure"></a>Azure 中的 Batch AI 是什么？
 Batch AI 是一项托管的服务，可以让数据科学家和 AI 研究人员在 Azure 虚拟机（包括带 GPU 支持的 VM）群集上训练 AI 和其他机器学习模型。 你只需描述作业要求，在何处查找输入和存储输出，其余的由 Batch AI 处理。  
@@ -40,7 +40,7 @@ Batch AI 提供专用于 AI 训练和测试的资源管理和作业计划功能�
 * 自动或手动缩放使用 GPU 或 CPU 的 VM 群集 
 * 配置 VM 之间的以及适用于远程访问的 SSH 通信 
 * 支持任何深度学习或机器学习框架，并优化适用于常用工具包（例如 [Microsoft 认知工具包](https://github.com/Microsoft/CNTK) (CNTK)、[TensorFlow](https://www.tensorflow.org/)、[Chainer](https://chainer.org/)）的配置 
-* 基于优先级的作业队列，可以共享群集并利用低优先级 VM 和预订实例  
+* 基于优先级的作业队列，可以共享群集并利用低优先级 VM 和 Azure 预订  
 * 灵活的存储选项，包括 Azure 文件和托管 NFS 服务器 
 * 将远程文件共享装载到 VM 和可选容器中 
 * 提供作业状态，并在 VM 故障时重启 

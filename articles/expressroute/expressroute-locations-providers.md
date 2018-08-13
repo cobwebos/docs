@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/26/2018
+ms.date: 08/02/2018
 ms.author: jaredro
-ms.openlocfilehash: e5cb701295854c6908af04b5de5aec2ca5bd978c
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 122a227429dace3ee4a85565d47366d31b6c3ddf
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285153"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576825"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -62,7 +62,8 @@ ms.locfileid: "39285153"
 | **地缘政治区域** | **Azure 区域** | **ExpressRoute 位置** |
 | --- | --- | --- |
 | **美国政府云** |US Gov 亚利桑那州、US Gov 爱荷华州、US Gov 德克萨斯州、US Gov 弗吉尼亚州、US DoD 中部、US DoD 东部  |芝加哥、达拉斯、纽约、凤凰城、圣安东尼奥、西雅图、硅谷、华盛顿特区 |
-| **中国** |中国北部、中国东部 |北京、上海 |
+| **中国东部** |中国东部、中国东部 2 |上海 |
+| **中国北部** |中国北部、中国北部 2 |北京 |
 | **德国** |德国中部、德国东部 |柏林、法兰克福 |
 
 标准 ExpressRoute SKU 不支持跨地缘政治区域的连接。 需要启用 ExpressRoute 高级版附加组件才能支持全球连接。 不支持连接到国家/地区云环境。 如有需要，请联系连接服务提供商。
@@ -139,7 +140,7 @@ ms.locfileid: "39285153"
 ### <a name="germany"></a>德国
 | **位置** | **服务提供商** |
 | --- | --- |
-| **柏林** |Colt+、e-shelter、Megaport+、T-Systems |
+| **柏林** |e-shelter、Megaport+、T-Systems |
 | **法兰克福** |Colt、Equinix、Interxion |
 
 ## <a name="c1partners"></a>通过 Exchange 提供商建立的连接

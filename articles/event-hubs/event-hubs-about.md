@@ -8,14 +8,14 @@ manager: timlt
 ms.service: event-hubs
 ms.topic: overview
 ms.custom: mvc
-ms.date: 06/22/2018
+ms.date: 08/01/2018
 ms.author: shvija
-ms.openlocfilehash: d339ad79eb632f1e6fa91b1fca56488c3ae67d86
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: c5cec92094a2e76d02487adff43abf040aedfe0e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435341"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39425803"
 ---
 # <a name="what-is-azure-event-hubs"></a>什么是 Azure 事件中心？
 
@@ -38,25 +38,13 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 事件中心充当事件管道的“前门”，在解决方案体系结构中通常称作“事件引入器”。 事件引入器是位于事件发布者与事件使用者之间的组件或服务，可以将事件流的生成与这些事件的使用分离开来。 事件中心提供统一的流式处理平台和时间保留缓冲区，将事件生成者与事件使用者分离开来。 
 
-## <a name="key-features"></a>主要功能
-
-事件中心提供消息流处理功能，但其特征不同于传统的企业消息传送。 事件中心功能围绕高吞吐量和事件处理方案而构建。 事件中心包含以下[关键组件](event-hubs-features.md)：
-
-- **事件生成者**：向事件中心发送数据的实体。 事件发布者可以使用 HTTPS、AMQP 1.0 或 Apache Kafka（1.0 和更高版本）发布事件。
-- **分区**：每个使用者只读取消息流的特定子集或分区。
-- **使用者组**：整个事件中心的视图（状态、位置或偏移量）。 使用者组使多个消费应用程序都有各自独立的事件流视图，并按自身步调和偏移量独立读取流。
-- **吞吐量单位**：预先购买的容量单位，控制事件中心的吞吐量容量。
-- **事件接收者**：从事件中心读取事件数据的实体。 所有事件中心使用者通过 AMQP 1.0 会话进行连接，事件在可用时通过会话传送。
-
-下图显示了事件中心流处理体系结构：
-
-![事件中心](./media/event-hubs-about/event_hubs_architecture.png)
+以下部分介绍 Azure 事件中心服务的重要功能： 
 
 ## <a name="fully-managed-paas"></a>完全托管的 PaaS 
 
 事件中心是托管的服务，其配置或管理开销极低，因此你可以专注于业务解决方案。 [Apache Kafka 生态系统的事件中心](event-hubs-for-kafka-ecosystem-overview.md)提供 PaaS Kafka 体验，使用户无需管理、配置或运行群集。
 
-## <a name="real-time-and-batching"></a>实时处理和批处理
+## <a name="support-for-real-time-and-batch-processing"></a>支持实时处理和批处理
 
 实时引入、缓冲、存储和处理流，以获取可行的见解。 事件中心使用[分区的使用者模型](event-hubs-features.md#partitions)，可让多个应用程序同时处理流，并允许控制处理速度。
 
@@ -73,6 +61,21 @@ Azure 事件中心还能与 [Azure Functions](/azure/azure-functions/) 集成，
 [Apache Kafka 生态系统的事件中心](event-hubs-for-kafka-ecosystem-overview.md)可让 [Apache Kafka（1.0 和更高版本）](https://kafka.apache.org/)客户端和应用程序与事件中心通信，而无需管理任何群集。
  
 借助支持各种[语言（.NET、Java、Python、Go、Node.js）](https://github.com/Azure/azure-event-hubs)的丰富生态系统，可以从事件中心轻松开始处理流。 所有支持的客户端语言提供低级别集成。
+
+## <a name="key-architecture-components"></a>重要的体系结构组件
+
+事件中心提供消息流处理功能，但其特征不同于传统的企业消息传送。 事件中心功能围绕高吞吐量和事件处理方案而构建。 事件中心包含以下[关键组件](event-hubs-features.md)：
+
+- **事件生成者**：向事件中心发送数据的实体。 事件发布者可以使用 HTTPS、AMQP 1.0 或 Apache Kafka（1.0 和更高版本）发布事件。
+- **分区**：每个使用者只读取消息流的特定子集或分区。
+- **使用者组**：整个事件中心的视图（状态、位置或偏移量）。 使用者组使多个消费应用程序都有各自独立的事件流视图，并按自身步调和偏移量独立读取流。
+- **吞吐量单位**：预先购买的容量单位，控制事件中心的吞吐量容量。
+- **事件接收者**：从事件中心读取事件数据的实体。 所有事件中心使用者通过 AMQP 1.0 会话进行连接，事件在可用时通过会话传送。
+
+下图显示了事件中心流处理体系结构：
+
+![事件中心](./media/event-hubs-about/event_hubs_architecture.png)
+
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,14 +8,14 @@ ms.service: event-grid
 ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
-ms.date: 04/05/2018
+ms.date: 08/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: f320821baadc9ba14b1140ae474538ffd35f8292
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 1bf0d2c5da6cad2b451e21d7d926b6cea0c3b961
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31425782"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521340"
 ---
 # <a name="azure-powershell-samples-for-event-grid"></a>事件网格的 Azure PowerShell 示例
 
@@ -28,6 +28,7 @@ ms.locfileid: "31425782"
 | [订阅 Blob 存储](scripts/event-grid-powershell-blob.md)| 订阅 Blob 存储帐户的事件。 |
 | [订阅自定义主题](scripts/event-grid-powershell-subscribe-custom-topic.md)| 订阅自定义主题的事件。 |
 | [订阅资源组](scripts/event-grid-powershell-resource-group.md)| 订阅资源组的事件。 |
+| [订阅资源组并筛选出资源](scripts/event-grid-powershell-resource-group-filter.md)| 订阅资源组的事件并筛选资源的事件。 |
 |**事件网格主题**||
-| [创建自定义主题](scripts/event-grid-powershell-create-custom-topic.md) | 从作为操作系统磁盘的专用 VHD 或作为数据磁盘的数据 VHD 创建托管磁盘。  |
+| [创建自定义主题](scripts/event-grid-powershell-create-custom-topic.md) | 创建事件网格自定义主题，并返回终结点和密钥。  |
 | | |
