@@ -179,11 +179,11 @@ VM 需要完全关闭，以便迁移干净状态。 在迁移完成之前会存�
 
     下面是 AzCopy 命令中使用的参数的说明：
 
-   * **/Source: &lt;source&gt;:** 包含 VHD 的文件夹或存储容器 URL 的位置。
+   * **/Source: *&lt;source&gt;:*** 包含 VHD 的文件夹或存储容器 URL 的位置。
    * **/SourceKey: *&lt;source-account-key&gt;:*** 源存储帐户的存储帐户密钥。
    * **/Dest: *&lt;destination&gt;:*** 要将 VHD 复制到的存储容器 URL。
    * **/DestKey: *&lt;dest-account-key&gt;:*** 目标存储帐户的存储帐户密钥。
-   * **/Pattern: &lt;file-name&gt;:** 指定要复制的 VHD 文件名。
+   * **/Pattern: *&lt;file-name&gt;:*** 指定要复制的 VHD 文件名。
 
 有关使用 AzCopy 工具的详细信息，请参阅[使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)。
 
@@ -273,7 +273,7 @@ Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 
     下面是 AzCopy 命令中使用的参数的说明：
 
-   * **/Source: &lt;source&gt;:** 包含 VHD 的文件夹或存储容器 URL 的位置。
+   * **/Source: *&lt;source&gt;:*** 包含 VHD 的文件夹或存储容器 URL 的位置。
    * **/SourceKey: *&lt;source-account-key&gt;:*** 源存储帐户的存储帐户密钥。
    * **/Dest: *&lt;destination&gt;:*** 要将 VHD 复制到的存储容器 URL。
    * **/DestKey: *&lt;dest-account-key&gt;:*** 目标存储帐户的存储帐户密钥。
