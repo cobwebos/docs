@@ -210,7 +210,7 @@ ms.locfileid: "37114000"
 
 ![容器解决方案仪表板](./media/service-fabric-tutorial-monitoring-wincontainers/container-metrics.png)
 
-单击这些面板中的任意一个，均会将你转到 Log Analytics 查询，该查询将生成显示值。 将此查询更改为 \*，可看到正在收集的所有不同的日志类型。 在此处，你可以查询或筛选容器性能、日志，或查看 Service Fabric 平台事件。 此外，代理也会不断从各个节点发出检测信号，你可以查看这些信号，以确保群集配置更改后是否仍在从所有计算机收集数据。
+单击这些面板中的任意一个，均会将你转到 Log Analytics 查询，该查询将生成显示值。 将此查询更改为 *\**，可看到正在收集的所有不同的日志类型。 在此处，你可以查询或筛选容器性能、日志，或查看 Service Fabric 平台事件。 此外，代理也会不断从各个节点发出检测信号，你可以查看这些信号，以确保群集配置更改后是否仍在从所有计算机收集数据。
 
 ![容器查询](./media/service-fabric-tutorial-monitoring-wincontainers/query-sample.png)
 
