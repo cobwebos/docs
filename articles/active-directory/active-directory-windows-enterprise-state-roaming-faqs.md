@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: ee03ed3159ad2fc1cd8da4a84fd1be34d0b656c8
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: e6cb83eb6aaaea38686c63d0f3f70738efa4bcff
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224324"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630750"
 ---
 # <a name="settings-and-data-roaming-faq"></a>设置和数据漫游常见问题
 本文将解答 IT 管理员可能会遇到的一些设置和应用数据同步问题。
@@ -74,7 +74,7 @@ ms.locfileid: "39224324"
 ## <a name="do-settings-sync-for-azure-ad-accounts-from-multiple-tenants"></a>是否对来自多个租户的 Azure AD 帐户进行设置同步？
 当同一设备上有来自不同 Azure AD 租户的多个 Azure AD 帐户时，必须更新设备的注册表，才能与每个 Azure AD 租户的 Azure Rights Management 服务进行通信。  
 
-1. 为每个 Azure AD 租户查找 GUID。 打开 Azure 门户并选择 Azure AD 租户。 租户的 GUID 位于所选租户的“属性”页上（https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)，标记为**目录 ID**）。 
+1. 为每个 Azure AD 租户查找 GUID。 打开 Azure 门户并选择 Azure AD 租户。 租户的 GUID 位于所选租户的“属性”页上（ https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)，标记为**目录 ID** 。 
 2. 获取 GUID 后，需要添加注册表项 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenant ID GUID>**。
    从“租户 ID GUID”键中，新建名为 **AllowedRMSServerUrls** 的多字符串值 (REG-MULTI-SZ)。 对于其数据，指定设备访问的其他 Azure 租户的授权分发点 URL。
 3. 可以通过从 AADRM 模块运行 **Get-AadrmConfiguration** cmdlet 找到授权分发点 URL。 如果 **LicensingIntranetDistributionPointUrl** 和 **LicensingExtranetDistributionPointUrl** 的值不同，则指定这两个值。 如果值相同，则指定该值一次。
@@ -99,7 +99,7 @@ ms.locfileid: "39224324"
 ## <a name="who-owns-the-data-thats-being-roamed"></a>谁拥有正在进行漫游的数据？
 企业拥有通过企业状态漫游进行漫游的数据。 数据存储在 Azure 数据中心。 使用来自 Azure 信息保护的 Azure Rights Management 服务，云中的所有用户数据都在传输中或静止状态下加密。 与基于 Microsoft 帐户的设置同步（仅在离开设备之前加密某些敏感数据，如用户凭据）相比，这是一个进步。
 
-Microsoft 致力于保护客户数据。 企业用户的设置数据离开 Windows 10 设备前，会自动由 Azure Rights Management 服务进行加密，以便让其他用户无法读取此数据。 如果组织拥有 Azure Rights Management 服务的付费订阅，则可以使用其他保护功能，例如跟踪和撤销文档、自动保护包含敏感信息的电子邮件以及管理自己的密钥（“自带密钥”解决方案，也称为 BYOK）。 有关这些功能和此保护服务工作原理的详细信息，请参阅 [Azure Rights Management 是什么](https://docs.microsoft.com/azure/information-protection/understand-explore/what-is-information-protection)。
+Microsoft 致力于保护客户数据。 企业用户的设置数据离开 Windows 10 设备前，会自动由 Azure Rights Management 服务进行加密，以便让其他用户无法读取此数据。 如果组织拥有 Azure Rights Management 服务的付费订阅，则可以使用其他保护功能，例如跟踪和撤销文档、自动保护包含敏感信息的电子邮件以及管理自己的密钥（“自带密钥”解决方案，也称为 BYOK）。 有关这些功能和此保护服务工作原理的详细信息，请参阅 [Azure Rights Management 是什么](/azure/information-protection/what-is-information-protection)。
 
 ## <a name="can-i-manage-sync-for-a-specific-app-or-setting"></a>是否可以管理特定应用或设置的同步？
 在 Windows 10 中，没有用于禁用单个应用程序漫游的 MDM 或组策略设置。 租户管理员可以在托管设备上禁用所有应用的应用数据同步，但在每个应用或应用内级别没有更精细的控制。
