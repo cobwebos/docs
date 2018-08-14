@@ -16,22 +16,22 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 27068c1154a4cc5776bbcc74922ca31c4f28ced6
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 4e6600d81fedd884cf415d055aedd29d163b3365
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399911"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39629644"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何规划混合 Azure Active Directory 加入实现
 
-与用户类似，设备将成为要保护的另一标识，并且也用于随时保护资源和位置。 可以通过使用以下方法之一将设备的标识引入 Azure AD 来实现此目标：
+与用户类似，设备将成为要保护的另一标识，并且也用于随时保护资源和位置。 为此，可通过下述某一方法将设备的标识引入 Azure AD：
 
 - Azure AD 加入
 - 混合 Azure AD 加入
 - Azure AD 注册
 
-将设备引入 Azure AD，可以通过云和本地资源中的单一登录 (SSO) 使用户的工作效率最大化。 同时，可以使用[条件访问](../active-directory-conditional-access-azure-portal.md)保护对云和本地资源的访问。
+借助将设备引入 Azure AD，可通过云和本地资源中的单一登录 (SSO) 最大程度地提高用户的工作效率。 同时，可以使用[条件访问](../active-directory-conditional-access-azure-portal.md)保护对云和本地资源的访问。
 
 如果你有本地 Active Directory 环境，并且想要将已加入域的设备联接到 Azure AD，则可以通过配置联接到混合 Azure AD 的设备来实现。 本文提供了在环境中实现混合 Azure AD 加入的相关步骤。 
 
@@ -97,6 +97,13 @@ ms.locfileid: "39399911"
 
 已针对用户配置文件漫游或凭据漫游进行配置的设备不支持注册 Windows 下层设备。 如果依赖于配置文件或设置漫游，请使用 Windows 10。
 
+- 在非联合环境中，通过无缝单一登录支持 Windows 下层设备的注册 [Azure Active Directory 无缝单一登录](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start)。 
+ 
+- 使用 Azure AD 直通身份验证但不使用无缝单一登录时，不支持注册 Windows 下级设备。
+
+- 使用漫游配置文件的设备不支持 Windows 下层设备的注册。 如果依赖于配置文件或设置漫游，请使用 Windows 10。
+
+
 不支持注册运行域控制器 (DC) 角色的 Windows Server。
 
 如果组织需要通过经身份验证的出站代理访问 Internet，则必须确保 Windows 10 计算机能够成功对出站代理进行身份验证。 由于 Windows 10 计算机使用计算机上下文运行设备注册，因此，必须使用计算机上下文配置出站代理身份验证。
@@ -121,7 +128,7 @@ ms.locfileid: "39399911"
 
 - 使用无缝单一登录 (SSO) 的密码哈希同步 (PHS) 
 
-从版本 1.1.819.0 开始，Azure AD Connect 提供一个向导用于配置混合 Azure AD 加入。 使用该向导能够大幅简化配置过程。 有关详细信息，请参阅：
+从版本 1.1.819.0 开始，Azure AD Connect 提供一个向导用于配置混合 Azure AD 加入。 该向导可让你显著简化配置过程。 有关详细信息，请参阅：
 
 - [为联盟域配置混合 Azure Active Directory 加入](hybrid-azuread-join-federated-domains.md)
 

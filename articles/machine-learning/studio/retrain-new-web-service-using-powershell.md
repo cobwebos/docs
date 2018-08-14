@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 8ead74be1c1749d2c40d265af7c596e7a180a057
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 069a3022cf9b6423b95e8f9f35686965d2654be7
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835355"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39631072"
 ---
 # <a name="retrain-a-new-resource-manager-based-web-service-using-the-machine-learning-management-powershell-cmdlets"></a>使用机器学习管理 PowerShell cmdlet 重新训练新的基于 Resource Manager 的 Web 服务
 重新训练新的 Web 服务时，将更新预测 Web 服务定义以引用新的训练模型。
@@ -34,7 +34,7 @@ ms.locfileid: "34835355"
 
 有关部署 Web 服务的其他信息，请参阅[部署 Azure 机器学习 Web 服务](publish-a-machine-learning-web-service.md)。
 
-此过程要求已安装 Azure 机器学习 Cmdlet。 有关安装机器学习 cmdlet 的信息，请参阅 MSDN 上的 [Azure 机器学习 Cmdlet](https://msdn.microsoft.com/library/azure/mt767952.aspx) 参考。
+此过程要求已安装 Azure 机器学习 Cmdlet。 有关安装机器学习 cmdlet 的信息，请参阅 MSDN 上的 [Azure 机器学习 Cmdlet](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/) 参考。
 
 已从重新训练输出复制以下信息：
 
@@ -54,7 +54,7 @@ ms.locfileid: "34835355"
 首先必须使用 [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) cmdlet 从 PowerShell 环境中登录到 Azure 帐户。
 
 ## <a name="get-the-web-service-definition"></a>获取 Web 服务定义
-然后，通过调用 [Get-AzureRmMlWebService](https://msdn.microsoft.com/library/mt619267.aspx) cmdlet 获取 Web 服务。 Web 服务定义是 Web 服务训练模型的内部表示形式，它不能直接进行修改。 请确保为预测实验而不是训练实验检索 Web 服务定义。
+然后，通过调用 [Get-AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/get-azurermmlwebservice) cmdlet 获取 Web 服务。 Web 服务定义是 Web 服务训练模型的内部表示形式，它不能直接进行修改。 请确保为预测实验而不是训练实验检索 Web 服务定义。
 
     $wsd = Get-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 
@@ -73,7 +73,7 @@ ms.locfileid: "34835355"
 
 
 ## <a name="export-the-web-service-definition-as-json"></a>将 Web 服务定义导出为 JSON
-要将定义修改为训练的模型以使用重新训练的模型，首先必须使用 [Export-AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767935.aspx) cmdlet 将其导出到 JSON 格式的文件。
+要将定义修改为训练的模型以使用重新训练的模型，首先必须使用 [Export-AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/export-azurermmlwebservice) cmdlet 将其导出到 JSON 格式的文件。
 
     Export-AzureRmMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
 
@@ -94,13 +94,13 @@ ms.locfileid: "34835355"
       },
 
 ## <a name="import-the-json-into-a-web-service-definition"></a>将 JSON 导入到 Web 服务定义中
-必须使用 [Import-AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767925.aspx) 将修改的 JSON 文件转换回可用于更新 Web 服务定义的 Web 服务定义。
+必须使用 [Import-AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/import-azurermmlwebservice) 将修改的 JSON 文件转换回可用于更新 Web 服务定义的 Web 服务定义。
 
     $wsd = Import-AzureRmMlWebService -InputFile "C:\temp\mlservice_export.json"
 
 
 ## <a name="update-the-web-service-with-new-web-service-definition"></a>使用新的 Web 服务定义更新 Web 服务
-最后，可使用 [Update-AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767922.aspx) cmdlet 更新 Web 服务定义。
+最后，可使用 [Update-AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/update-azurermmlwebservice) cmdlet 更新 Web 服务定义。
 
     Update-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'  -ServiceUpdates $wsd
 

@@ -14,12 +14,12 @@ ms.date: 04/06/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 625894738b6cbf680baef0a1eeeea518586e4506
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 52ae7da666acaf234920a7f03afe3766f29a1e85
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37870310"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39629117"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>在 Azure Active Directory 中以管理员身份接管非托管目录
 本文介绍了在 Azure Active Directory (Azure AD) 的非托管目录中接管 DNS 域名的两种方式。 当自助服务用户注册一个使用 Azure AD 的云服务时，会根据其电子邮件域将其添加到非托管 Azure AD 目录。 有关自助服务或“迅速传播的”服务注册的详细信息，请参阅[什么是 Azure Active Directory 的自助服务注册？](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-self-service-signup)
@@ -104,7 +104,7 @@ ms.locfileid: "37870310"
 
 #### <a name="more-information-about-rms-for-individuals"></a>有关个人版 RMS 的详细信息
 
-对于[个人版 RMS](/information-protection/understand-explore/rms-for-individuals)，当非托管租户与你拥有的租户位于同一区域时，自动创建的 [Azure 信息保护租户密钥](/information-protection/plan-design/plan-implement-tenant-key)和[默认保护模板](/information-protection/deploy-use/configure-usage-rights#rights-included-in-the-default-templates)还会随域名一起移动。 
+对于[个人版 RMS](/azure/information-protection/rms-for-individuals)，当非托管租户与你拥有的租户位于同一区域时，自动创建的 [Azure 信息保护租户密钥](/azure/information-protection/plan-implement-tenant-key)和[默认保护模板](/azure/information-protection/configure-usage-rights#rights-included-in-the-default-templates)还会随域名一起移动。 
 
 当非托管租户位于不同区域时，密钥和模板不随之移动。 例如，非托管租户位于欧洲，而你拥有的租户位于北美。 
 

@@ -1,25 +1,20 @@
 ---
 title: Linux VM 的高性能高级存储和 Azure 托管磁盘 | Microsoft Docs
 description: 了解 Azure VM 的高性能高级存储和托管磁盘。 Azure DS 系列、DSv2 系列、GS 系列和 Fs 系列 VM 都支持高级存储。
-services: virtual-machines-linux
-documentationcenter: ''
+services: virtual-machines-linux,storage
 author: ramankumarlive
-manager: jeconnoc
-editor: tysonn
-ms.assetid: e2a20625-6224-4187-8401-abadc8f1de91
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.tgt_pltfrm: linux
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: ramankum
-ms.openlocfilehash: fa64f1f1b25646eeaaf701bb98b1a9bfd7b2166d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.component: disks
+ms.openlocfilehash: ea027bf19ae87e5875d9d590a98416a04c600921
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38478080"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39713442"
 ---
 [!INCLUDE [virtual-machines-common-premium-storage.md](../../../includes/virtual-machines-common-premium-storage.md)]
 

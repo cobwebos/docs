@@ -16,19 +16,19 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 1aa5c0f259fdb5fce449bc86f9cf293801b4770a
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: cc6d08de74097ba7566037664fd33d9be85ac390
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39368665"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628982"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>教程：为联盟域配置混合 Azure Active Directory 联接
 
 与用户类似，设备将成为要保护的另一标识，并且也用于随时保护资源和位置。 为此，可通过下述某一方法将设备的标识引入 Azure AD：
 
-- Azure AD 联接
-- 混合 Azure AD 联接
+- Azure AD 加入
+- 混合 Azure AD 加入
 - Azure AD 注册
 
 借助将设备引入 Azure AD，可通过云和本地资源中的单一登录 (SSO) 最大程度地提高用户的工作效率。 同时，可以使用[条件访问](../active-directory-conditional-access-azure-portal.md)保护对云和本地资源的访问。
@@ -50,6 +50,7 @@ ms.locfileid: "39368665"
 
 -  [如何计划混合 Azure Active Directory 加入实现](hybrid-azuread-join-plan.md)
 
+-  [如何控制设备的混合 Azure AD 加入](hybrid-azuread-join-control.md)
 
 
 要配置本教程中的方案，需具备以下项：
@@ -212,8 +213,8 @@ ms.locfileid: "39368665"
 
 如果在完成已加入域的 Windows 设备的混合 Azure AD 联接方面遇到问题，请参阅：
 
-- [对 Windows 当前设备的混合 Azure AD 联接进行故障排除](../device-management-troubleshoot-hybrid-join-windows-current.md)
-- [对 Windows 下层设备的混合 Azure AD 联接进行故障排除](../device-management-troubleshoot-hybrid-join-windows-legacy.md)
+- [对 Windows 当前设备的混合 Azure AD 联接进行故障排除](troubleshoot-hybrid-join-windows-current.md)
+- [对 Windows 下层设备的混合 Azure AD 联接进行故障排除](troubleshoot-hybrid-join-windows-legacy.md)
 
 
 
@@ -221,7 +222,7 @@ ms.locfileid: "39368665"
 
 > [!div class="nextstepaction"]
 > [为托管域配置混合 Azure Active Directory 联接](hybrid-azuread-join-managed-domains.md)
-> [手动配置混合 Azure Active Directory 联接](../device-management-hybrid-azuread-joined-devices-setup.md)
+> [手动配置混合 Azure Active Directory 联接](hybrid-azuread-join-manual-steps.md)
 
 
 
