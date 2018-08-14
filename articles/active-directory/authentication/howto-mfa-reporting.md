@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: bb5a005ba553d6392bf1427a4c2bba9ac5aad191
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: dc4cd28fe61c422f65f47c74c7cbc4686d73ab77
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358660"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628828"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure 多重身份验证中的报告
 
@@ -50,7 +50,7 @@ Azure 多重身份验证提供了几个可通过 Azure 门户访问的报告，�
 - 无法完成 MFA 质询的用户有多少？
 - 最终用户遇到的常见 MFA 问题有哪些？
 
-此数据可通过 [Azure 门户](https://portal.azure.com)和[报告 API](../active-directory-reporting-api-getting-started-azure-portal.md) 获取。
+此数据可通过 [Azure 门户](https://portal.azure.com)和[报告 API](../reports-monitoring/concept-reporting-api.md) 获取。
 
 ![云](./media/howto-mfa-reporting/sign-in-report.png)
 

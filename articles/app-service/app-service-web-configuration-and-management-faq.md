@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: e773435d89a511e6f1f369cc3fd5dc6f06507e45
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 7aa5b00d1497e384377ba4423431eac57c1aa4c9
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808751"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630397"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用配置和管理常见问题解答
 
@@ -34,7 +34,7 @@ ms.locfileid: "34808751"
 
 ## <a name="how-do-i-use-a-custom-domain-name-for-my-web-app"></a>如何为 Web 应用使用自定义域名？
 
-有关将自定义域名用于 Azure Web 应用的常见问题解答，请参阅我们的七分钟视频[添加自定义域名](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name)。 该视频提供有关如何添加自定义域名的演练。 它介绍如何将自己的 URL（而不是 *.azurewebsites.net URL）用于应用服务 Web 应用。 还可以查看有关[如何映射自定义域名](app-service-web-tutorial-custom-domain.md)的详细演练。
+有关将自定义域名用于 Azure Web 应用的常见问题解答，请参阅我们的七分钟视频[添加自定义域名](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name)。 该视频演示如何添加自定义域名。 它介绍如何将自己的 URL（而不是 *.azurewebsites.net URL）用于应用服务 Web 应用。 还可以查看有关[如何映射自定义域名](app-service-web-tutorial-custom-domain.md)的详细演练。
 
 
 ## <a name="how-do-i-purchase-a-new-custom-domain-for-my-web-app"></a>如何为 Web 应用购买新的自定义域？
@@ -106,7 +106,7 @@ ms.locfileid: "34808751"
 
 ## <a name="why-do-i-see-the-message-partially-succeeded-when-i-try-to-back-up-my-web-app"></a>当我尝试备份 Web 应用时，为何看到消息“已部分成功”？
 
-备份失败的一个常见原因是某些文件在由应用程序使用。 执行备份时，在使用的文件会锁定。 这会阻止备份这些文件，可能会导致“已部分成功”状态。 可以通过从备份过程中排除文件来防止此情况发生。 可以选择仅备份所需内容。 有关详细信息，请参阅[仅随 Azure Web 应用备份站点的重要部分](http://www.zainrizvi.io/2015/06/05/creating-partial-backups-of-your-site-with-azure-web-apps/)。
+备份失败的一个常见原因是某些文件在由应用程序使用。 执行备份时，在使用的文件会锁定。 这会阻止备份这些文件，可能会导致“已部分成功”状态。 可以通过从备份过程中排除文件来防止此情况发生。 可以选择仅备份所需内容。 有关详细信息，请参阅[仅随 Azure Web 应用备份站点的重要部分](http://zainrizvi.io/blog/creating-partial-backups-of-your-site-with-azure-web-apps/)。
 
 ## <a name="how-do-i-remove-a-header-from-the-http-response"></a>如何从 HTTP 响应中删除标头？
 
@@ -288,7 +288,7 @@ Invoke-AzureRmResourceAction -ResourceGroupName "<App Service Certificate Resour
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>如何将默认的 *.azurewebsites.net 域重定向到我的 Azure Web 应用的自定义域？
 
-在 Azure 中使用 Web 应用创建新网站时，会向站点分配默认的 sitename.azurewebsites.net 域。 如果将自定义主机名添加到站点，并且不希望用户能够访问默认的 *.azurewebsites.net 域，则可以重定向默认 URL。 若要了解如何将所有流量从网站的默认域重定向到自定义域，请参阅[在 Azure Web 应用中将默认域重定向到自定义域](http://www.zainrizvi.io/2016/04/07/block-default-azure-websites-domain/)。
+在 Azure 中使用 Web 应用创建新网站时，会向站点分配默认的 sitename.azurewebsites.net 域。 如果将自定义主机名添加到站点，并且不希望用户能够访问默认的 *.azurewebsites.net 域，则可以重定向默认 URL。 若要了解如何将所有流量从网站的默认域重定向到自定义域，请参阅[在 Azure Web 应用中将默认域重定向到自定义域](http://zainrizvi.io/blog/block-default-azure-websites-domain/)。
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>如何确定应用服务中安装的 .NET 版本？
 

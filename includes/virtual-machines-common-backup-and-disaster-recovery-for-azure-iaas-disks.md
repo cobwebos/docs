@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: luywang
 ms.custom: include file
-ms.openlocfilehash: 03db1bf84e200d8b66f0395cbd96813e2248eefe
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 7f093a1878bc3cf7e91cc14ec7a68b1a84764a49
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34806360"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39485715"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Azure IaaS 磁盘的备份和灾难恢复
 
@@ -148,15 +148,15 @@ IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应�
 
     b. 在“恢复服务保管库”菜单上，单击“添加”，并按相关步骤操作，在 VM 所在区域中新建一个保管库。 例如，如果 VM 位于美国西部区域，请为保管库选择“美国西部”。
 
-2.  验证新建保管库的存储复制功能。 访问“恢复服务保管库”下的保管库，转到“设置” > “备份配置”。 确保“异地冗余存储”选项默认处于选中状态。 该选项可确保保管库自动复制到辅助数据中心。 例如，位于美国西部的保管库会自动复制到美国东部。
+1.  验证新建保管库的存储复制功能。 访问“恢复服务保管库”下的保管库，转到“设置” > “备份配置”。 确保“异地冗余存储”选项默认处于选中状态。 该选项可确保保管库自动复制到辅助数据中心。 例如，位于美国西部的保管库会自动复制到美国东部。
 
-3.  配置备份策略，再从同一 UI 中选择 VM。
+1.  配置备份策略，再从同一 UI 中选择 VM。
 
-4.  确保在 VM 上安装了备份代理。 如果 VM 是使用 Azure 库映像创建而成，表明备份代理已安装。 否则（即使用的是自定义映像），请根据相关说明[在虚拟机中安装 VM 代理](../articles/backup/backup-azure-arm-vms-prepare.md#install-the-vm-agent-on-the-virtual-machine)。
+1.  确保在 VM 上安装了备份代理。 如果 VM 是使用 Azure 库映像创建而成，表明备份代理已安装。 否则（即使用的是自定义映像），请根据相关说明[在虚拟机中安装 VM 代理](../articles/backup/backup-azure-arm-vms-prepare.md#install-the-vm-agent-on-the-virtual-machine)。
 
-5.  确保 VM 允许备份服务的网络连接功能正常运行。 遵循[网络连接](../articles/backup/backup-azure-arm-vms-prepare.md#establish-network-connectivity)的说明。
+1.  确保 VM 允许备份服务的网络连接功能正常运行。 遵循[网络连接](../articles/backup/backup-azure-arm-vms-prepare.md#establish-network-connectivity)的说明。
 
-6.  完成上述步骤后，会按备份策略中指定的时间间隔定期进行备份。 如有必要，可以在 Azure 门户的保管库仪表板中手动触发首个备份。
+1.  完成上述步骤后，会按备份策略中指定的时间间隔定期进行备份。 如有必要，可以在 Azure 门户的保管库仪表板中手动触发首个备份。
 
 若要了解如何使用脚本自动执行 Azure 备份，请参阅[用于备份 VM 的 PowerShell cmdlet](../articles/backup/backup-azure-vms-automation.md)。
 
@@ -188,9 +188,9 @@ IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应�
 
 1.  冻结所有磁盘。
 
-2.  刷新所有挂起写入。
+1.  刷新所有挂起写入。
 
-3.  为所有磁盘[创建 Blob 快照](../articles/storage/blobs/storage-blob-snapshots.md)。
+1.  为所有磁盘[创建 Blob 快照](../articles/storage/blobs/storage-blob-snapshots.md)。
 
 某些 Windows 应用程序（如 SQL Server）通过卷影服务提供协调的备份机制，以创建应用程序一致性备份。 在 Linux 上，可以使用 fsfreeze 等工具来协调磁盘。 此工具提供文件一致性备份，而不是应用程序一致性快照。 此过程比较复杂。因此，应考虑使用 [Azure 备份](../articles/backup/backup-azure-vms-introduction.md)或已实施此过程的第三方备份解决方案。
 
@@ -202,11 +202,11 @@ IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应�
 
 1. 关闭 VM。
 
-2. 创建每个虚拟硬盘 Blob 的快照，这只需要几秒钟的时间。
+1. 创建每个虚拟硬盘 Blob 的快照，这只需要几秒钟的时间。
 
     若要创建快照，可以使用 [PowerShell](../articles/storage/common/storage-powershell-guide-full.md)、[Azure 存储 REST API](https://msdn.microsoft.com/library/azure/ee691971.aspx)、[Azure CLI](/cli/azure/) 或 Azure 存储客户端库之一（如[用于 .NET 的存储客户端库](https://msdn.microsoft.com/library/azure/hh488361.aspx)）。
 
-3. 启动 VM，这将终止故障时间。 整个过程通常会在几分钟内完成。
+1. 启动 VM，这将终止故障时间。 整个过程通常会在几分钟内完成。
 
 此过程生成所有磁盘的一组一致性快照，提供 VM 的备份还原点。
 

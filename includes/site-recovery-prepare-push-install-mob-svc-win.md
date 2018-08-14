@@ -1,18 +1,18 @@
 ### <a name="prepare-for-a-push-installation-on-a-windows-computer"></a>在 Windows 计算机上准备推送安装
 
 1. 确保 Windows 计算机与进程服务器之间已建立网络连接。
-2. 创建可供进程服务器用来访问计算机的帐户。 该帐户应具有管理员权限（本地或域）。 只能将此帐户用于推送安装和代理更新。
+1. 创建可供进程服务器用来访问计算机的帐户。 该帐户应具有管理员权限（本地或域）。 只能将此帐户用于推送安装和代理更新。
 
    > [!NOTE]
    > 如果不使用域帐户，请在本地计算机上禁用远程用户访问控制。 若要禁用远程用户访问控制，请在 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System 注册表项下添加一个新 DWORD：**LocalAccountTokenFilterPolicy**。 将值设置为 **1**。 若要执行此任务，请在命令提示符下运行以下命令：  
    `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
    >
    >
-3. 在要保护的计算机的 Windows 防火墙中，选择“允许应用或功能通过防火墙”。 启用“文件和打印机共享”和“Windows Management Instrumentation (WMI)”。 对于属于某个域的计算机，可以使用组策略对象 (GPO) 配置防火墙设置。
+1. 在要保护的计算机的 Windows 防火墙中，选择“允许应用或功能通过防火墙”。 启用“文件和打印机共享”和“Windows Management Instrumentation (WMI)”。 对于属于某个域的计算机，可以使用组策略对象 (GPO) 配置防火墙设置。
 
    ![防火墙设置](./media/site-recovery-prepare-push-install-mob-svc-win/mobility1.png)
 
-4. 添加在 CSPSConfigtool 中创建的帐户。 执行以下步骤:
+1. 添加在 CSPSConfigtool 中创建的帐户。 执行以下步骤:
 
     a. 登录到配置服务器。
 

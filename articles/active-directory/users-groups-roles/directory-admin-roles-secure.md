@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 1d08518a23dfe4a9cc63bf3f35ee69ea1815595f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c8c0f4c3f99aa413531f54c1807883fcd73f039a
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38239945"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627927"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
@@ -380,7 +380,7 @@ Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，
 
 4. 通过[提交 Azure 支持请求](../../azure-supportability/how-to-create-azure-support-request.md)从 Microsoft 获取帮助。
 
-5. 查看 [Azure AD 登录报告](../active-directory-reporting-azure-portal.md)。 事件发生之后，可能需要一段时间该事件才会出现在报告中。
+5. 查看 [Azure AD 登录报告](../reports-monitoring/overview-reports.md)。 事件发生之后，可能需要一段时间该事件才会出现在报告中。
 
 6. 对于混合环境，如果使用联合身份验证但 AD FS 服务器不可用，则可能需要临时从联合身份验证方式切换出来，改用密码哈希同步。这样就会将域联合身份验证恢复成托管身份验证，直至 AD FS 服务器可用。
 

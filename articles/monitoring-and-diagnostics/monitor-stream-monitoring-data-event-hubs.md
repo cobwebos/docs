@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 7/31/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: a43b70d2ce7a8205903fb877ea056dea88ac8bb5
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 2990ba290dfdaf45d8a341138ea515bad16d5b30
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389603"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628165"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>将 Azure 监视数据流式传输到事件中心以便外部工具使用
 
@@ -50,11 +50,11 @@ Azure Monitor 提供了获取 Azure 环境中所有监视数据访问权限的�
 
 ## <a name="how-do-i-set-up-azure-tenant-monitoring-data-to-be-streamed-to-an-event-hub"></a>如何将 Azure 租户监视数据设置为流式传输到事件中心？
 
-Azure 租户监视数据目前仅适用于 Azure Active Directory。 可以使用 [Azure Active Directory 报告](../active-directory/active-directory-reporting-azure-portal.md)中的数据，其中包含特定租户中的登录活动历史记录和更改审核跟踪。
+Azure 租户监视数据目前仅适用于 Azure Active Directory。 可以使用 [Azure Active Directory 报告](../active-directory/reports-monitoring/overview-reports.md)中的数据，其中包含特定租户中的登录活动历史记录和更改审核跟踪。
 
 ### <a name="stream-azure-active-directory-data-into-an-event-hub"></a>将 Azure Active Directory 数据流式传输到事件中心
 
-若要将 Azure Active Directory 日志中的数据发送到事件中心命名空间，请在 AAD 租户上设置租户诊断设置。 请[按照此指南](../active-directory/reporting-azure-monitor-diagnostics-azure-event-hub.md)设置租户诊断设置。
+若要将 Azure Active Directory 日志中的数据发送到事件中心命名空间，请在 AAD 租户上设置租户诊断设置。 请[按照此指南](../active-directory/reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md)设置租户诊断设置。
 
 ## <a name="how-do-i-set-up-azure-subscription-monitoring-data-to-be-streamed-to-an-event-hub"></a>如何将 Azure 订阅监视数据设置为流式传输到事件中心？
 

@@ -1,6 +1,6 @@
 ---
 title: BizTalk 服务中的颁发者名称和颁发者密钥 | Microsoft Docs
-description: 了解如何为 BizTalk 服务中的 Service Bus 或 Access Control (ACS) 检索颁发者名称和颁发者密钥。 MABS, WABS
+description: 了解如何为 BizTalk 服务中的 Service Bus 或 Access Control (ACS) 检索颁发者名称和颁发者密钥。 MABS，WABS
 services: biztalk-services
 documentationcenter: ''
 author: MandiOhlinger
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 18eac72d75680ab12c4a0bea9dfc5ac8a5fce566
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 78796b5dc62cb573f149c24d90205d26fb139cf7
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "24103423"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628641"
 ---
 # <a name="biztalk-services-issuer-name-and-issuer-key"></a>BizTalk 服务：颁发者名称和颁发者密钥
 
@@ -71,7 +71,7 @@ Access Control 颁发者名称和颁发者密钥由以下各项使用：
 颁发者名称 = SharedSecretIssuer  
 颁发者密钥 = SharedSecretKey
 
-在 [New-azuresbnamespace](https://msdn.microsoft.com/library/dn495165.aspx) cmdlet 中了解详细信息。 
+在 [New-azuresbnamespace](https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azuresbnamespace) cmdlet 中了解详细信息。 
 
 ## <a name="service-bus-issuer-name-and-issuer-key"></a>Service Bus 颁发者名称和颁发者密钥
 Service Bus 颁发者名称和颁发者密钥由 BizTalk 适配器服务使用。 在 Visual Studio 中的 BizTalk 服务项目中，使用 BizTalk 适配器服务连接到本地业务线 (LOB) 系统。 若要连接，请创建 LOB 中继并输入 LOB 系统的详细信息。 在执行此操作时，还可以输入 Service Bus 颁发者名称和颁发者密钥。
