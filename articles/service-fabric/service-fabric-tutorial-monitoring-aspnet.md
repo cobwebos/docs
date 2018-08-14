@@ -246,7 +246,7 @@ public async Task<IActionResult> Delete(string name)
 }
 ```
 
-进行这些更改以后，请启动应用程序，以便生成和部署最新版本。 应用程序部署完以后，请访问 [localhost:8080](localhost:8080)，添加和删除一些投票选项。 然后回到 Application Insights 资源，查看最新运行的跟踪（与前面一样，跟踪可能需要 1-2 分钟才会显示在 Application Insights 中）。 不管是添加的还是删除的投票，此时都会看到一个“自定义事件”，以及所有响应遥测。
+进行这些更改以后，请启动应用程序，以便生成和部署最新版本。 应用程序部署完以后，请访问 [localhost:8080](localhost:8080)，添加和删除一些投票选项。 然后回到 Application Insights 资源，查看最新运行的跟踪（与前面一样，跟踪可能需要 1-2 分钟才会显示在 Application Insights 中）。 不管是添加的还是删除的投票，此时都会看到一个“自定义事件”\*，以及所有响应遥测。
 
 ![自定义事件](./media/service-fabric-tutorial-monitoring-aspnet/custom-events.png)
 
