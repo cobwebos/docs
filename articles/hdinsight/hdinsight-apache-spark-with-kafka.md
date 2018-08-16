@@ -1,25 +1,21 @@
 ---
-title: Apache Spark 流式处理与 Kafka - Azure HDInsight | Microsoft Docs
+title: Apache Spark 流式处理与 Kafka- Azure HDInsight
 description: 了解如何使用 Spark Apache Spark 以流式方式 (DStream) 将数据传入或传出 Apache Kafka。 本示例使用 Spark on HDInsight 中的 Jupyter 笔记本流式传输数据。
 keywords: kafka 示例, kafka zookeeper, spark 流式处理 kafka, spark 流式处理 kafka 示例
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: dd8f53c1-bdee-4921-b683-3be4c46c2039
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/23/2018
-ms.author: larryfr
-ms.openlocfilehash: a9463b5983b5f41683a5cfe416ca125bf2810062
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jasonh
+ms.openlocfilehash: 607ad43f5cae3915b964caf816bd5fb5e3302ddf
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31402373"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592969"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-kafka-on-hdinsight"></a>Kafka on HDInsight 的 Apache Spark 流式处理 (DStream) 示例
 

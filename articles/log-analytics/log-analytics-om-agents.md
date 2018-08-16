@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 08/02/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 37cabadb18bf065de64b7ae24c4ed19994e60625
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 4d0c8a4395ee70881ffee56f9ed030943c6fa557
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413631"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495367"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>将 Operations Manager 连接到 Log Analytics
 若要保持 System Center Operations Manager 中的现有投资并将扩展功能用于 Log Analytics，可将 Operations Manager 与 Log Analytics 工作区集成。  这样既可以利用 Log Analytics，又可以继续使用 Operations Manager 执行以下操作：
@@ -54,7 +54,6 @@ ms.locfileid: "39413631"
 >* 对于 System Center 2016 - Operations Manager，请从[此处](https://www.microsoft.com/download/details.aspx?id=57172)下载管理包  
 >* 对于 System Center Operations Manager 2012 R2，请从[此处](https://www.microsoft.com/en-us/download/details.aspx?id=57171)下载管理包  
 
-
 ### <a name="network"></a>网络
 下面的信息列出了 Operations Manager 代理、管理服务器和操作控制台与 Log Analytics 通信时必需的代理和防火墙配置信息。  来自每个组件的流量将从网络传出到 Log Analytics 服务。     
 
@@ -82,6 +81,9 @@ ms.locfileid: "39413631"
 |api.loganalytics.io| 80 和 443||
 |docs.loganalytics.io| 80 和 443||  
 
+### <a name="tls-12-protocol"></a>TLS 1.2 协议
+为了确保传输到 Log Analytics 的数据的安全性，强烈建议将代理和管理组配置为至少使用传输层安全性 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们**不建议使用**。  有关其他信息，请查看[使用 TLS 1.2 安全地发送数据](log-analytics-data-security.md#sending-data-securely-using-tls-12)。 
+
 ## <a name="connecting-operations-manager-to-log-analytics"></a>将 Operations Manager 连接到 Log Analytics
 执行以下一系列步骤，将 Operations Manager 管理组配置为连接到你的一个 Log Analytics 工作区。
 
@@ -90,32 +92,32 @@ ms.locfileid: "39413631"
 1. 打开提升的命令指示符。
    a. 转到“启动”，然后键入“cmd”。
    b. 右键单击“命令提示符”然后选择“以管理员身份运行”**。
-2. 键入以下命令并按 Enter：
+1. 键入以下命令并按 Enter：
 
     `netsh winhttp set proxy <proxy>:<port>`
 
 完成与 Log Analytics 集成所需的以下步骤后，可运行 `netsh winhttp reset proxy` 来删除配置，然后使用操作控制台中的“配置代理服务器”选项来指定代理或 OMS 网关服务器。 
 
 1. 在 Operations Manager 控制台中，选择“**管理**”工作区。
-2. 展开 Operations Management Suite 节点，并单击“**连接**”。
-3. 单击“**向 Operations Management Suite 注册**”链接。
-4. 在“**Operations Management Suite 载入向导: 身份验证**”页面上，输入电子邮件地址或电话号码以及与 OMS 订阅关联的管理员帐户的密码，并单击“**登录**”。
-5. 成功进行身份验证后，在“Operations Management Suite 载入向导: 选择工作区”页面上，系统会提示选择 Azure 租户、订阅和 Log Analytics 工作区。  如果有多个工作区，从下拉列表中选择想要在 Operations Manager 管理组中注册的工作区，并单击“**下一步**”。
+1. 展开 Operations Management Suite 节点，并单击“**连接**”。
+1. 单击“**向 Operations Management Suite 注册**”链接。
+1. 在“**Operations Management Suite 载入向导: 身份验证**”页面上，输入电子邮件地址或电话号码以及与 OMS 订阅关联的管理员帐户的密码，并单击“**登录**”。
+1. 成功进行身份验证后，在“Operations Management Suite 载入向导: 选择工作区”页面上，系统会提示选择 Azure 租户、订阅和 Log Analytics 工作区。  如果有多个工作区，从下拉列表中选择想要在 Operations Manager 管理组中注册的工作区，并单击“**下一步**”。
    
    > [!NOTE]
    > Operations Manager 一次仅支持一个 Log Analytics 工作区。 连接以及通过上一个工作区注册到 Log Analytics 的计算机将从 Log Analytics 中删除。
    > 
    > 
-6. 在“**Operations Management Suite 载入向导:摘要**”页面上确认设置，如果设置正确无误，请单击 “**创建**”。
-7. 在“**Operations Management Suite 载入向导:完成**”页面上，单击“**关闭**”。
+1. 在“**Operations Management Suite 载入向导:摘要**”页面上确认设置，如果设置正确无误，请单击 “**创建**”。
+1. 在“**Operations Management Suite 载入向导:完成**”页面上，单击“**关闭**”。
 
 ### <a name="add-agent-managed-computers"></a>添加代理管理的计算机
 配置与 Log Analytics 工作区的集成后，只是建立了与服务的连接，不会从向管理组报告的代理中收集任何数据。 配置针对 Log Analytics 收集数据的特定代理管理计算机后才会出现这种情况。 可以单独选择计算机对象，或者选择一个包含 Windows 计算机对象的组。 不能选择包含另一个类实例的组，如逻辑磁盘或 SQL 数据库。
 
 1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
-2. 展开 Operations Management Suite 节点，并单击“**连接**”。
-3. 在窗格右侧的“操作”标题下单击“**添加计算机/组**”链接。
-4. 在“计算机搜索”对话框中，可以搜索 Operations Manager 监视的计算机或组。 选择要载入到 Log Analytics 的计算机或组，单击“添加”，然后单击“确定”。
+1. 展开 Operations Management Suite 节点，并单击“**连接**”。
+1. 在窗格右侧的“操作”标题下单击“**添加计算机/组**”链接。
+1. 在“计算机搜索”对话框中，可以搜索 Operations Manager 监视的计算机或组。 选择要载入到 Log Analytics 的计算机或组，单击“添加”，然后单击“确定”。
 
 可以在 Operations 控制台“**管理**”工作区中的 Operations Management Suite 下，查看配置为从“受管理计算机”节点收集数据的计算机和组。  在此处，可根据需要添加或移除计算机和组。
 
@@ -123,20 +125,20 @@ ms.locfileid: "39413631"
 如果内部代理服务器位于管理组和 Log Analytics 服务之间，请执行以下步骤。  这些设置可通过管理组集中进行管理并分发到代理托管系统，这些代理托管系统包含在收集 Log Analytics 数据的范围之中。  当某些解决方案绕过管理服务器并将数据直接发送到服务时，这很有用。
 
 1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
-2. 展开 Operations Management Suite，并单击“**连接**”。
-3. 在“OMS 连接”视图中，单击“**配置代理服务器**”。
-4. 在“Operations Management Suite 向导: 代理服务器”页上，选择“使用代理服务器访问 Operations Management Suite”，键入包含端口号的 URL，例如 http://corpproxy:80 ，并单击“完成”。
+1. 展开 Operations Management Suite，并单击“**连接**”。
+1. 在“OMS 连接”视图中，单击“**配置代理服务器**”。
+1. 在“Operations Management Suite 向导: 代理服务器”页上，选择“使用代理服务器访问 Operations Management Suite”，键入包含端口号的 URL，例如 http://corpproxy:80 ，并单击“完成”。
 
 如果代理服务器要求身份验证，请执行以下步骤，配置需要向管理组中 OMS 报告的受管理计算机传播的凭据和设置。
 
 1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
-2. 在“**运行方式配置**”下面，选择“**配置文件**”。
-3. 打开 **System Center Advisor Run As Profile Proxy** 配置文件。
-4. 在运行方式配置文件向导中，单击“添加”以使用运行方式帐户。 可以创建一个[运行方式帐户](https://technet.microsoft.com/library/hh321655.aspx)或使用现有帐户。 此帐户需要有足够的权限以通过代理服务器。
-5. 若要设置管理的帐户，请选择“**选定的类、组或对象**”，单击“**选择...**” 然后单击“**组...**” 打开“**组搜索**”框。
-6. 搜索然后选择 **Microsoft System Center Advisor Monitoring Server Group**。  选择组后单击“**确定**”以关闭“**组搜索**”框。
-7. 单击“**确定**”以关闭“**添加运行方式帐户**”框。
-8. 单击“**保存**”以完成该向导并保存更改。
+1. 在“**运行方式配置**”下面，选择“**配置文件**”。
+1. 打开 **System Center Advisor Run As Profile Proxy** 配置文件。
+1. 在运行方式配置文件向导中，单击“添加”以使用运行方式帐户。 可以创建一个[运行方式帐户](https://technet.microsoft.com/library/hh321655.aspx)或使用现有帐户。 此帐户需要有足够的权限以通过代理服务器。
+1. 若要设置管理的帐户，请选择“**选定的类、组或对象**”，单击“**选择...**” 然后单击“**组...**” 打开“**组搜索**”框。
+1. 搜索然后选择 **Microsoft System Center Advisor Monitoring Server Group**。  选择组后单击“**确定**”以关闭“**组搜索**”框。
+1. 单击“**确定**”以关闭“**添加运行方式帐户**”框。
+1. 单击“**保存**”以完成该向导并保存更改。
 
 在创建连接并配置将收集数据并将数据报告给 Log Analytics 的代理后，会在管理组中应用以下配置（不一定按顺序）：
 
@@ -156,11 +158,11 @@ ms.locfileid: "39413631"
 
 ## <a name="switch-an-operations-manager-group-to-a-new-log-analytics-workspace"></a>将 Operations Manager 组切换到新的 Log Analytics 工作区
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
-2. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”，然后创建一个工作区。  
-3. 使用属于 Operations Manager 管理员角色成员的帐户打开 Operations Manager 控制台，并选择“**管理**”工作区。
-4. 展开 Operations Management Suite，并选择“**连接**”。
-5. 在窗格中间选择“**重新配置 Operation Management Suite**”链接。
-6. 按照 **Operations Management Suite 载入向导**操作，输入与新 Log Analytics 工作区关联的管理员帐户的电子邮件地址（或电话号码）和密码。
+1. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”，然后创建一个工作区。  
+1. 使用属于 Operations Manager 管理员角色成员的帐户打开 Operations Manager 控制台，并选择“**管理**”工作区。
+1. 展开 Operations Management Suite，并选择“**连接**”。
+1. 在窗格中间选择“**重新配置 Operation Management Suite**”链接。
+1. 按照 **Operations Management Suite 载入向导**操作，输入与新 Log Analytics 工作区关联的管理员帐户的电子邮件地址（或电话号码）和密码。
    
    > [!NOTE]
    > “Operations Management Suite 载入向导：选择工作区”页面会显示使用中的现有工作区。
@@ -172,17 +174,17 @@ ms.locfileid: "39413631"
 
 ### <a name="to-confirm-integration-from-the-azure-portal"></a>通过 Azure 门户确认集成
 1. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。
-2. 在 Log Analytics 工作区列表中，选择相应的工作区。  
-3. 依次选择“高级设置”、“连接的源”、“System Center”。 
-4. 在 System Center Operations Manager 部分下的表中，应该可看到列出管理组的名称，以及代理数量和最后一次收到数据的状态。
+1. 在 Log Analytics 工作区列表中，选择相应的工作区。  
+1. 依次选择“高级设置”、“连接的源”、“System Center”。 
+1. 在 System Center Operations Manager 部分下的表中，应该可看到列出管理组的名称，以及代理数量和最后一次收到数据的状态。
    
    ![oms-settings-connectedsources](./media/log-analytics-om-agents/oms-settings-connectedsources.png)
 
 ### <a name="to-confirm-integration-from-the-operations-console"></a>通过 Operations 控制台确认集成
 1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
-2. 选择“**管理包**”，并在“**查找:**”文本框中键入 “**Advisor**”或“**Intelligence**”。
-3. 相应的管理包会在搜索结果中列出，具体取决于已启用的解决方案。  例如，如果已启用警报管理解决方案，管理包 Microsoft System Center Advisor 警报管理会在表中列出。
-4. 从“**监视**”视图导航到“**Operations Management Suite\Health State**”视图。  选择“管理服务器状态”窗格下的一个管理服务器，并在“详细信息视图”窗格中确认“身份验证服务 URI”属性值与 Log Analytics 工作区 ID 匹配。
+1. 选择“**管理包**”，并在“**查找:**”文本框中键入 “**Advisor**”或“**Intelligence**”。
+1. 相应的管理包会在搜索结果中列出，具体取决于已启用的解决方案。  例如，如果已启用警报管理解决方案，管理包 Microsoft System Center Advisor 警报管理会在表中列出。
+1. 从“**监视**”视图导航到“**Operations Management Suite\Health State**”视图。  选择“管理服务器状态”窗格下的一个管理服务器，并在“详细信息视图”窗格中确认“身份验证服务 URI”属性值与 Log Analytics 工作区 ID 匹配。
    
    ![oms-opsmgr-mg-authsvcuri-property-ms](./media/log-analytics-om-agents/oms-opsmgr-mg-authsvcuri-property-ms.png)
 
@@ -197,29 +199,29 @@ ms.locfileid: "39413631"
     > 继续操作之前，确认所有自定义管理包的名称中均没有 Advisor 或 IntelligencePack 字样，否则，以下步骤会将它们从管理组中删除。
     > 
 
-2. 在命令外壳提示下，键入 `Get-SCOMManagementPack -name "*Advisor*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
-3. 接着键入 `Get-SCOMManagementPack -name “*IntelligencePack*” | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
-4. 若要删除与其他 System Center Advisor 管理包具有依赖关系的剩余管理包，请使用之前从 TechNet 脚本中心下载的脚本  *RecursiveRemove.ps1*。  
+1. 在命令外壳提示下，键入 `Get-SCOMManagementPack -name "*Advisor*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
+1. 接着键入 `Get-SCOMManagementPack -name “*IntelligencePack*” | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
+1. 若要删除与其他 System Center Advisor 管理包具有依赖关系的剩余管理包，请使用之前从 TechNet 脚本中心下载的脚本  *RecursiveRemove.ps1*。  
  
     > [!NOTE]
     > 使用 PowerShell 删除顾问管理包的步骤不会自动删除 Microsoft System Center Advisor 或 Microsoft System Center Advisor Internal 管理包。  不要尝试将其删除。  
     >  
 
-5. 使用属于 Operations Manager 管理员角色成员的帐户打开 Operations Manager Operations 控制台。
-6. 在“**管理**”下面选择“**管理包**”节点，并在“**查找:**”框中键入“**Advisor**”并确认以下管理包仍导入到管理组中：
+1. 使用属于 Operations Manager 管理员角色成员的帐户打开 Operations Manager Operations 控制台。
+1. 在“**管理**”下面选择“**管理包**”节点，并在“**查找:**”框中键入“**Advisor**”并确认以下管理包仍导入到管理组中：
    
    * Microsoft System Center Advisor
    * Microsoft System Center Advisor Internal
 
-7. 在 OMS 门户中，单击“设置”磁贴。
-8. 选择“**相连的源**”。
-9. 在 System Center Operations Manager 部分下的表中，应该可看到想要从工作区移除的管理组的名称。  在“**最后的数据**”列下，单击“**移除**”。  
+1. 在 OMS 门户中，单击“设置”磁贴。
+1. 选择“**相连的源**”。
+1. 在 System Center Operations Manager 部分下的表中，应该可看到想要从工作区移除的管理组的名称。  在“**最后的数据**”列下，单击“**移除**”。  
    
     > [!NOTE]
     > 如果没有从连接的管理组中检测到活动，“移除”链接在 14 天后才可用。  
     > 
 
-10. 将出现一个窗口，要求确认是否继续进行移除。  单击“**是**”继续。 
+1. 将出现一个窗口，要求确认是否继续进行移除。  单击“**是**”继续。 
 
 要删除两个连接器 - Microsoft.SystemCenter.Advisor.DataConnector 和 Advisor Connector，请将以下 PowerShell 脚本保存到计算机，并使用以下示例执行删除：
 

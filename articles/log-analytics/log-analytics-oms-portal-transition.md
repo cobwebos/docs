@@ -14,14 +14,18 @@ ms.topic: conceptual
 ms.date: 07/27/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 1a8ccc818cafac4867cb533c83f297af61a21836
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: b9fb32f4f014f8e0fb67b558a2806d74edaac56c
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39309096"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576009"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS 门户即将转移到 Azure
+
+> [!NOTE]
+> 本文适用于 Azure 公有云和政府云（除非另有说明）。
+
 Log Analytics 客户不断地反映，他们需要通过单个用户体验来监视和管理本地与 Azure 工作负荷。 你们也许知道，Azure 门户是所有 Azure 服务的中心，提供丰富的管理体验和功能，例如，为固定资源提供仪表板、为查找资源提供智能搜索，以及为资源管理提供标记。 用于整合和简化监视与管理工作流，我们已开始将 OMS 门户功能添加到 Azure 门户。 我们很高兴地宣布，OMS 门户的大部分功能现已并入 Azure 门户。 事实上，某些新功能（例如流量分析）只在 Azure 门户中提供。 两个门户的功能差距不大，有几个解决方案仍在转移到 Azure 门户。 如果你不使用这些功能，使用 Azure 门户就能完成在 OMS 门户中所能完成的任何工作，而且 Azure 门户的功能更强大。 如果你尚未使用 Azure 门户，我们建议立即开始使用！ 
 
 我们预计在 2018 年 8 月之前弥补两个门户之间的剩余差距。 根据客户的反馈，我们会告知淘汰 OMS 门户的时间表。 我们很高兴能够转移到 Azure 门户，并且希望实现轻松过渡。 但我们也知道，变化会带来一定的困扰。 欢迎向 **LAUpgradeFeedback@microsoft.com** 发送任何问题、反馈或忧虑。 本文的剩余部分介绍此项过渡的关键场景、当前差距和路线图。 
@@ -62,6 +66,10 @@ Log Analytics 客户不断地反映，他们需要通过单个用户体验来监
 ## <a name="what-should-i-do-now"></a>现在应该做些什么？  
 请参阅 [Log Analytics 用户从 OMS 门户过渡到 Azure 门户时的常见问题](../log-analytics/log-analytics-oms-portal-faq.md)，了解有关如何过渡到 Azure 门户的信息。 如果[上述差距](#current-known-gaps)不适用于你的环境，应考虑开始使用 Azure 门户作为主要体验。 欢迎向 LAUpgradeFeedback@microsoft.com 发送任何反馈、问题或忧虑。
 
+如果不执行任何迁移，大多数功能也可继续运作。 下面列出了例外情况。
+
+- 有关转移更新管理解决方案的详细信息，请参阅[将 OMS 更新部署迁移到 Azure](../automation/migrate-oms-update-deployments.md)。 
+
 ## <a name="new-workspaces"></a>新工作区
 从 7 月 29 日开始，不再能够使用 OMS 门户创建新工作区。 请遵照[在 Azure 门户中创建 Log Analytics 工作区](log-analytics-quick-create-workspace.md)中的指导，在 Azure 门户中创建新工作区。
 
@@ -70,7 +78,7 @@ Log Analytics 客户不断地反映，他们需要通过单个用户体验来监
 ### <a name="alert-extension"></a>警报扩展  
 
 > [!NOTE]
-> 现在，警报已完全扩展到 Azure 门户中。 可在 OMS 门户中查看现有警报规则，但只能在 Azure 门户中对其进行管理。
+> 针对公有云，警报现已完全扩展到 Azure 门户中。 可在 OMS 门户中查看现有警报规则，但只能在 Azure 门户中对其进行管理。 针对 Azure 政府云，将于 2018 年 10 月开始将警报扩展到 Azure 门户中。
 
 警报正在[扩展到 Azure 门户](../monitoring-and-diagnostics/monitoring-alerts-extend.md)。 完成此过渡后，只能在 Azure 门户中针对警报执行管理操作。 现有的警报将继续列在 OMS 门户中。 如果使用 Log Analytics 警报 REST API 或 Log Analytics 警报资源模板以编程方式访问警报，需要在 API 调用、Azure 资源管理器模板和 PowerShell 命令中使用操作组而非操作。
 

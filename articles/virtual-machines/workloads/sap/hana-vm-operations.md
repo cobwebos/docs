@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 59db39e4d8cc68f8c7b63b347980044f06b4522a
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 98c7bd5daf3b84499e8e31c0a7a2da612834b83e
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344403"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521976"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure 上的 SAP HANA 基础结构配置和操作
 本文档提供有关配置 Azure 基础结构以及操作 Azure 本机虚拟机 (VM) 上部署的 SAP HANA 系统的指导。 本文档还包含有关 M128s VM SKU 的 SAP HANA 横向扩展的配置信息。 本文档并不旨在取代标准 SAP 文档，后者包括以下内容：
@@ -81,14 +81,14 @@ Azure 针对 Azure 标准和高级存储上的 VHD 提供两种部署方法。 �
 
 自从购买本地用的 SAP HANA 设备以来，我们从未考虑过 I/O 子系统及其功能， 因为设备供应商会确保满足 SAP HANA 的最低存储要求。 在自行构建 Azure 基础结构时，我们也应该注意其中的一些要求。 此外，应了解后续部分中建议的配置要求。 配置用于运行 SAP HANA 的虚拟机时，也应该这样做。 为了满足某些要求，需要做到以下几点：
 
-- 在最小大小为 1MB I/O、速率为 250MB/秒的 **/hana/log** 上启用读/写卷
-- 为 16MB 和 64MB I/O 大小的 **/hana/data** 启用至少 400MB/秒的读取活动
-- 为 16MB 和 64MB I/O 大小的 **/hana/data** 启用至少 250MB/秒的写入活动
+- 在最小大小为 1 MB I/O、速率为 250 MB/秒的 /hana/log 上启用读/写卷
+- 为 16 MB 和 64 MB I/O 大小的 /hana/data 启用至少 400 MB/秒的读取活动
+- 为 16 MB 和 64 MB I/O 大小的 /hana/data 启用至少 250MB/秒的写入活动
 
 如果低存储延迟对于 DBMS 系统至关重要（即使对于 SAP HANA 等 DBMS 系统也是如此），请将数据保留在内存中。 存储中的关键路径通常围绕 DBMS 系统的事务日志写入。 同时，在故障恢复之后写入保存点或加载内存中数据的操作可能也很关键。 因此，必须对 **/hana/data** 和 **/hana/log** 卷使用 Azure 高级磁盘。 为了达到 SAP 所需的最低 **/hana/log** 和 **/hana/data** 吞吐量，需要使用 MDADM 或 LVM 基于多个 Azure 高级存储磁盘构建 RAID 0。 将 RAID 卷用作 **/hana/data** 和 **/hana/log** 卷。 对于 RAID 0 的条带大小，建议使用：
 
-- **/hana/data**：64KB 或 128KB
-- **/hana/log**：32KB
+- 64 KB 或 128 KB 的 /hana/data
+- 32 KB 的 /hana/log
 
 > [!NOTE]
 > 不需要使用 RAID 卷配置任何冗余级别，因为 Azure 高级和标准存储保留 VHD 的三个映像。 使用 RAID 卷的原因仅仅是为了配置可提供足够 I/O 吞吐量的卷。
@@ -289,7 +289,7 @@ SAP HANA 横向扩展的 VM 节点基本配置如下所示：
 
 假设我们使用内存大约为 2 TB 且通过 SAP HANA 横向扩展认证的 M128s Azure VM，SAP 建议概括如下：
 
-- 1 个主节点和最多 4 个工作节点，**/hana/shared** 卷的大小需是 2 TB。 
+- 1 个主节点和最多 4 个工作节点，/hana/shared 卷的大小需是 2 TB。 
 - 1 个主节点和 5 到 8 个工作节点，**/hana/shared** 的大小应是 4 TB。 
 - 1 个主节点和 9 到 12 个工作节点，**/hana/shared** 的大小需是 6 TB。 
 - 1 个主节点和 12 到 15 个工作节点，需要提供 8 TB 大小的 **/hana/shared** 卷。
@@ -347,10 +347,112 @@ SAP HANA 横向扩展的 VM 节点基本配置如下所示：
 - 根据 SAP 文档安装 SAP HANA 主节点
 - **安装完成后，需要更改 global.ini 文件，并将参数“basepath_shared = no”添加到 global.ini**。 此参数使 SAP HANA 能够以横向扩展配置运行，且无需在节点之间使用“共享”的 **/hana/data** 和 **/hana/log** 卷。 [SAP 说明 #2080991](https://launchpad.support.sap.com/#/notes/2080991) 中提供了详细信息。
 - 更改 global.ini 参数后，重启 SAP HANA 实例
-- 添加其他工作节点。 另请参阅 <https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US/0d9fe701e2214e98ad4f8721f6558c34.html>。 在安装期间和之后，使用 local hdblcm 等命令为 SAP HANA 节点内部通信指定内部网络。 有关更详细的文档，请参阅 [SAP 说明 #2183363](https://launchpad.support.sap.com/#/notes/2183363)。 
+- 添加其他工作节点。 另请参阅 <https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US/0d9fe701e2214e98ad4f8721f6558c34.html>。 在安装期间或之后，使用 local hdblcm 等命令为 SAP HANA 节点内部通信指定内部网络。 有关更详细的文档，请参阅 [SAP 说明 #2183363](https://launchpad.support.sap.com/#/notes/2183363)。 
 
 完成此设置例程后，安装的横向扩展配置将使用非共享磁盘来运行 **/hana/data** 和 **/hana/log**。 **/hana/shared** 卷将放置在高可用性 NFS 共享上。
-  
+
+
+## <a name="sap-hana-dynamic-tiering-20-for-azure-virtual-machines"></a>适用于 Azure 虚拟机的 SAP HANA Dynamic Tiering 2.0
+
+除 Azure M 系列 VM 上的 SAP HANA 认证之外，Microsoft Azure 还支持 SAP HANA Dynamic Tiering 2.0（请参阅 SAP HANA Dynamic Tiering 文档链接进行详细了解）。 虽然安装该产品或运行该产品没有任何区别（例如，通过 Azure 虚拟机中的 SAP HANA），但要获得 Azure 上的官方支持，有几点是必不可少的。 这些要点如下所述。 在整篇文章中，使用缩写“DT 2.0”代替 Dynamic Tiering 2.0 全名。
+
+SAP BW 或 S4HANA 不支持 SAP HANA Dynamic Tiering 2.0。 现在的主要用例是本机 HANA 应用程序。
+
+
+### <a name="overview"></a>概述
+
+下图概述了有关 Microsoft Azure 支持的 DT 2.0。 还有一套强制性要求，必须遵循符合官方认证：
+
+- DT 2.0 必须安装在专用 Azure 虚拟机上。 它可能无法在运行 SAP HANA 的同一 VM 上运行
+- SAP HANA 和 DT 2.0 VM 必须部署在同一 Azure Vnet 中
+- 在启用 Azure 加速网络的情况下，才能部署 SAP HANA 和 DT 2.0 VM
+- DT 2.0 虚拟机的存储类型必须是 Azure 高级存储
+- 多个 Azure 磁盘必须附加到 DT 2.0 VM
+- 必须通过跨 Azure 磁盘的带区来创建软件 RAID /带区卷（通过 lvm 或 mdadm）
+
+后续部分会对此进行详细说明。
+
+![SAP HANA DT 2.0 体系结构概述](media/hana-vm-operations/hana-dt-20.PNG)
+
+
+
+### <a name="dedicated-azure-vm-for-sap-hana-dt-20"></a>适用于 SAP HANA DT 2.0 的专用 Azure VM
+
+在 Azure IaaS 上，DT 2.0 仅在专用 VM 上受支持。 不允许在运行 HANA 实例的同一 Azure VM 上运行 DT 2.0。 最初可以使用两种 VM 类型来运行 SAP HANA DT 2.0：
+
+M64-32ms 和 E32sv3 
+
+请在[此处](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)查看 VM 类型说明
+
+鉴于 DT 2.0 的基本理念，卸载“warm”数据以节省成本，最好使用相应的 VM 大小。 但对于可能的组合，并没有严格的规定。 这取决于特定的客户工作负载。
+
+推荐的配置是：
+
+| SAP HANA VM 类型 | DT 2.0 VM 类型 |
+| --- | --- | 
+| M128ms | M64-32ms |
+| M128s | M64-32ms |
+| M64ms | E32sv3 |
+| M64s | E32sv3 |
+
+
+SAP HANA 认证 M 系列 VM 与受支持的 DT 2.0 Vm (M64-32ms, E32sv3) 的所有组合都是可能的。
+
+
+### <a name="azure-networking-and-sap-hana-dt-20"></a>Azure 网络和 SAP HANA DT 2.0
+
+如果要在专用 VM 上安装 DT 2.0，DT 2.0 VM 和 SAP HANA VM 之间的网络吞吐量必须至少为 10 Gb。 因此，必须将所有 VM 放在相同的 Azure Vnet 中，并启用 Azure 加速网络。
+
+有关 Azure 加速网络的更多信息，请参阅[此处](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)
+
+### <a name="vm-storage-for-sap-hana-dt-20"></a>适用于 SAP HANA DT 2.0 的 VM 存储
+
+根据 DT 2.0 最佳做法指南，每个物理核心的磁盘 IO 吞吐量最低应为 50 MB/秒。 查看 DT 2.0 支持的两种 Azure VM 类型的规范，其中之一将看到 VM 的最大磁盘 IO 吞吐量限制：
+
+- E32sv3：768 MB/秒（未缓存）表示每个物理核心的比率为 48 MB /秒
+- M64-32ms：1000 MB/秒（未缓存）表示每个物理核心的比率为 62.5 MB /秒
+
+必须将多个 Azure 磁盘连接到 DT 2.0 VM 并在 OS 级别创建软件 RAID（带区），以实现每个 VM 的磁盘吞吐量的最大限制。 在这方面，单个 Azure 磁盘无法提供该吞吐量以达到最大 VM 限制。 Azure 高级存储是运行 DT 2.0 的必需条件。 
+
+- 有关可用的 Azure 磁盘类型的详细信息，请参阅[此处](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)
+- 有关通过 mdadm 创建软件 RAID 的详细信息，请参阅[此处](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid)
+- 有关配置 LVM 以创建最大吞吐量的带区卷的详细信息，请参阅[此处](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm)
+
+根据大小要求，可使用不同的选项来达到 VM 的最大吞吐量。 以下是针对每个 DT 2.0 VM 类型以实现 VM 的吞吐量上限可能的数据卷磁盘配置。 E32sv3 VM 应视为较小工作负载的入门级别。 如果它的速度不够快，可能需要将 VM 的大小调整为 M64-32ms。
+由于 M64-32ms VM 具有大量内存，因此 IO 负载可能无法达到限制，尤其是对于读取密集型工作负载而言。 因此，根据客户特定的工作负载，带区集中的磁盘可能很少就足够了。 但为了安全起见，请选择下面的磁盘配置以保证最大吞吐量：
+
+
+| VM SKU | 磁盘配置 1 | 磁盘配置 2 | 磁盘配置 3 | 磁盘配置 4 | 磁盘配置 5 | 
+| ---- | ---- | ---- | ---- | ---- | ---- | 
+| M64-32ms | 4 x P50 -> 16 TB | 4 x P40 -> 8 TB | 5 x P30 -> 5 TB | 7 x P20 -> 3.5 TB | 8 x P15 -> 2 TB | 
+| E32sv3 | 3 x P50 -> 12 TB | 3 x P40 -> 6 TB | 4 x P30 -> 4 TB | 5 x P20 -> 2.5 TB | 6 x P15 -> 1.5 TB | 
+
+
+特别是在工作负载读取密集的情况下，它可以提高 IO 性能，以打开 Azure 主机缓存“只读”，如数据库软件数据卷所建议的那样。 而对于事务日志，Azure 主机磁盘缓存必须是“无”。 
+
+关于日志卷的大小，推荐的起始点是数据大小的 15％。 可使用不同的 Azure 磁盘类型来完成日志卷的创建，具体取决于成本和吞吐量要求。 此外，对于日志卷，应首先高吞吐量，如果是 M64-32ms，强烈建议打开写入加速器（这是 SAP HANA 必需的）。 这为事务日志提供了最佳磁盘写入延迟（仅适用于 M 系列）。 有一些事项需要注意，比如每个 VM 类型的最大磁盘数。 关于 WA 的更多信息，请参阅[此处](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
+
+
+下面是一些有关调整日志卷大小的示例：
+
+| 数据卷的大小和磁盘类型 | 日志卷和磁盘类型配置 1 | 日志卷和磁盘类型配置 2 |
+| --- | --- | --- |
+| 4 x P50 -> 16 TB | 5 x P20 -> 2.5 TB | 3 x P30 -> 3 TB |
+| 6 x P15 -> 1.5 TB | 4 x P6 -> 256 GB | 1 x P15 -> 256 GB |
+
+
+与 SAP HANA 横向扩展类似，必须在 SAP HANA VM 和 DT 2.0 VM 之间共享 /hana/shared 目录。 建议使用与专用 VM 的 SAP HANA 横向扩展相同的体系结构，这些 VM 可充当高可用性 NFS 服务器。 为了提供共享的备份卷，可以使用完全相同的设计。 但是，是否必须使用 HA，或者只需使用具有足够存储容量的专用 VM 作为备份服务器就足够了，这些都可由客户决定。
+
+
+
+### <a name="links-to-dt-20-documentation"></a>DT 2.0 文档的链接 
+
+- [SAP HANA Dynamic Tiering 安装和更新指南](https://help.sap.com/viewer/88f82e0d010e4da1bc8963f18346f46e/2.0.03/en-US)
+- [SAP HANA Dynamic Tiering 教程和资源](https://www.sap.com/developer/topics/hana-dynamic-tiering.html)
+- [SAP HANA Dynamic Tiering PoC](https://blogs.sap.com/2017/12/08/sap-hana-dynamic-tiering-delivering-on-low-tco-with-impressive-performance/)
+- [SAP HANA 2.0 SPS 02 Dynamic Tiering 增强功能](https://blogs.sap.com/2017/07/31/sap-hana-2.0-sps-02-dynamic-tiering-enhancements/)
+
+
 
 
 ## <a name="operations-for-deploying-sap-hana-on-azure-vms"></a>在 Azure VM 上部署 SAP HANA 的操作

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2018
 ms.author: juliako
-ms.openlocfilehash: 600068113fec0549f3993ac57c1daa93577c6be6
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 2a3e94d37a926bd36b780b45eb3d6cb29fb73597
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399747"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521748"
 ---
 # <a name="content-protection-overview"></a>内容保护概述
 
@@ -192,6 +192,6 @@ ms.locfileid: "39399747"
   * [使用 AES 加密进行保护](protect-with-aes128.md)
   * [使用 DRM 提供保护](protect-with-drm.md)
 
-可以在 [DRM 参考设计和实施](../previous/media-services-cenc-with-multidrm-access-control.md)中找到更多信息
+其他信息可在[设计带访问控制的多 DRM 内容保护系统](design-multi-drm-system-with-access-control.md)中找到
 
 

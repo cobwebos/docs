@@ -4,16 +4,16 @@ description: 使用 Windows 计算机上的模拟设备通过设备预配服务�
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/27/2018
+ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e149886e1ade80d7751f58eb1f77031c4e432b75
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: e558f44f9271009b92fbf4ece9aa706801e4176c
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39307937"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576196"
 ---
 # <a name="create-and-provision-a-simulated-tpm-edge-device-on-windows"></a>在 Windows 上创建和预配模拟 TPM Edge 设备
 
@@ -58,6 +58,8 @@ ms.locfileid: "39307937"
 
 ## <a name="install-the-iot-edge-runtime"></a>安装 IoT Edge 运行时
 
+完成上一部分后，应该会发现新设备在 IoT 中心内列为 IoT Edge 设备。 现在，需要在设备上安装 IoT Edge 运行时。 
+
 IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在容器中运行，允许你将其他容器部署到设备，以便在边缘上运行代码。 在运行 Windows 的设备上，可以选择使用 Windows 容器或 Linux 容器。 选择要使用的容器类型，然后遵循本文中的步骤。 确保将 IoT Edge 运行时配置为自动预配而不是手动预配。 
 
 遵照说明在运行上一部分所述的模拟 TPM 的设备上安装 IoT Edge 运行时。 
@@ -67,30 +69,9 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
 * [Windows 容器](how-to-install-iot-edge-windows-with-windows.md)
 * [Linux 容器](how-to-install-iot-edge-windows-with-linux.md)
 
-## <a name="create-a-tpm-environment-variable"></a>创建 TPM 环境变量
-
-在运行模拟设备的计算机上，修改 **iotedge** 服务注册表以设置环境变量。
-
-1. 从“开始”菜单打开 **regedit**。 
-2. 导航到 **Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\iotedge**。 
-3. 选择“编辑” > “新建” > “多字符串值”。 
-4. 输入名称 **Environment**。 
-5. 双击新变量，并将值数据设置为 **IOTEDGE_USE_TPM_DEVICE = ON**。 
-6. 单击“确定”  保存更改。 
-
-## <a name="restart-the-iot-edge-runtime"></a>重启 IoT Edge 运行时
-
-重启 IoT Edge 运行时，使之拾取你在设备上所做的所有配置更改。 
-
-```powershell
-Stop-Service iotedge -NoWait
-sleep 5
-Start-Service iotedge
-```
-
 ## <a name="verify-successful-installation"></a>验证是否成功安装
 
-如果成功启动了运行时，则可以转到 IoT 中心，查看新设备是否已自动预配并已准备好运行 IoT Edge 模块。 
+如果运行时成功启动，则可以进入 IoT 中心，开始将 IoT Edge 模块部署到你的设备。 在设备上使用以下命令验证是否已成功安装并启动运行时。  
 
 检查 IoT Edge 服务的状态。
 

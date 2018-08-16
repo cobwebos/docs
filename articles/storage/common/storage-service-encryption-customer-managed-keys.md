@@ -1,19 +1,19 @@
 ---
 title: Azure Key Vault 中使用客户托管密钥的 Azure 存储服务加密 | Microsoft Docs
-description: 存储数据时，使用 Azure 存储服务加密功能在服务端加密 Azure Blob 存储、Azure 文件、Azure 队列存储和 Azure 表存储；使用客户托管的密钥检索数据时，使用此功能来解密存储。
+description: 存储数据时，可以使用 Azure 存储服务加密功能在服务端加密 Azure Blob 存储和 Azure 文件；使用客户托管的密钥检查数据时，可以使用此功能来解密存储。
 services: storage
 author: lakasa
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 08/01/2018
 ms.author: lakasa
-ms.openlocfilehash: b92a486ea8dfc148cd10b905f90a0e871602cc61
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.component: common
+ms.openlocfilehash: 0e1ebd8868cfe5ef69a09219ffc82092fb85a4c8
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39415700"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527080"
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault 中使用客户托管密钥的存储服务加密
 Microsoft Azure 致力于帮助保护数据，使组织能够信守在安全性与合规性方面所做的承诺。 Azure 存储平台保护数据的方法之一是使用存储服务加密 (SSE)，此功能可以在将数据写入存储时加密数据，在检索数据时解密数据。 加密和解密是自动且透明的，它使用 256 位 [AES 加密](https://wikipedia.org/wiki/Advanced_Encryption_Standard)，这是行业中最强的分组加密法之一。
@@ -23,7 +23,7 @@ Microsoft Azure 致力于帮助保护数据，使组织能够信守在安全性�
 Azure Blob 存储和 Azure 文件存储的 SSE 与 Azure Key Vault 集成，因此你可以使用 Key Vault 来管理加密密钥。 你可以创建自己的加密密钥并将其存储在 Key Vault 中，或使用 Azure Key Vault 的 API 来生成加密密钥。 使用 Azure Key Vault 可以管理和控制密钥，还可以审核密钥用法。
 
 > [!Note]  
-> 存储服务加密不适用于 [Azure 托管磁盘](../../virtual-machines/windows/managed-disks-overview.md)。 我们建议使用 OS 级别的加密（例如 [Azure 磁盘加密](../../security/azure-security-disk-encryption-overview.md)），此类加密在 Windows 上使用行业标准的 [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview)，在 Linux 上使用 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt)，以提供与 KeyVault 集成的加密。
+> 使用客户管理的密钥的存储服务加密不适用于 [Azure 托管磁盘](../../virtual-machines/windows/managed-disks-overview.md)。 [Azure 磁盘加密](../../security/azure-security-disk-encryption-overview.md)在 Windows 上使用行业标准的 [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview)，在 Linux 上使用 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt)，以提供与 KeyVault 集成的加密解决方案。
 
 为什么创建自己的密钥？ 自定义密钥可以提高灵活性，从而可以创建、轮换、禁用和定义访问控制。 自定义密钥还可以审核用于保护数据的加密密钥。
 
@@ -121,7 +121,7 @@ Set-AzureRmStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName -
 会产生 Azure Key Vault 相关的使用费。 有关详细信息，请访问[ Key Vault 定价](https://azure.microsoft.com/pricing/details/key-vault/)。 对所有存储帐户都启用的 SSE 不收取额外费用。
 
 **存储服务加密是否适用于 Azure 托管磁盘？**  
-否。存储服务加密不适用于 [Azure 托管磁盘](../../virtual-machines/windows/managed-disks-overview.md)。 我们建议使用 OS 级别的加密（例如 [Azure 磁盘加密](../../security/azure-security-disk-encryption-overview.md)），此类加密在 Windows 上使用行业标准的 [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview)，在 Linux 上使用 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt)，以提供与 KeyVault 集成的加密。
+存储服务加密适用于包含 Microsoft 托管密钥的 Azure 托管磁盘，而不适用于包含客户托管密钥的 Azure 托管磁盘。 建议使用包含客户托管密钥的支持 SSE 的托管磁盘代替 [Azure 磁盘加密](../../security/azure-security-disk-encryption-overview.md)，此类加密在 Windows 上使用行业标准的 [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview)，在 Linux 上使用 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt)，以提供与 KeyVault 集成的加密。
 
 **存储服务加密与 Azure 磁盘加密有何不同？**  
 Azure 磁盘加密在基于 OS 的解决方案（例如 BitLocker、DM-Crypt 和 Azure KeyVault）之间提供集成。 存储服务加密在虚拟机下面的 Azure 存储平台层上提供本机加密。

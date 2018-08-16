@@ -8,22 +8,27 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: 2f8cbb5b436930f89ece1a18d4e1e54a88b02650
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: e24008a2208d8dcfbb7f86c66bb7de39f3c75790
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39286166"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528181"
 ---
 # <a name="support-and-help-options"></a>支持和帮助选项
 
 你是否刚开始探索语音服务的功能？ 你是否正在为你的应用程序实现一项新功能？ 下面是一些提示，作为开发人员你可以从中获得帮助。
 
 > [!div class="checklist"]
+> * 随时获取 Microsoft 认知服务中新开发的最新消息或查找与语音服务相关的最新消息。
 > * 进行搜索来确定你的问题是否尚未由社区做出解答，或者尝试实现的功能是否已存在现有的文档。
 > * 如果在所需的资源中找不到解答，可在 *Stack Overflow* 上提问。
 > * 如果发现 GitHub 上的某个示例有问题，请提交 *GitHub* 问题。
 > * 在*用户之声论坛*中搜索解决方案。
+
+## <a name="stay-informed"></a>随时获取最新信息
+
+有关 Microsoft 认知服务的新闻，请关注[认知服务博客](https://azure.microsoft.com/en-us/blog/topics/cognitive-services/)。 有关语音服务的最新消息，请关注[语音服务博客](https://azure.microsoft.com/en-us/blog/tag/speech-service/)。
 
 ## <a name="search"></a>搜索
 
@@ -69,4 +74,4 @@ Stack Overflow 是解决开发相关问题的首选渠道 - 社区成员和 Micr
 
 分享与使认知服务和伴随的 API 更好地为你开发的应用程序工作相关的想法。 使用我们不断扩展的知识库查找常见问题的解答：
 
-[用户之声](https://cognitive.uservoice.com/)
+[UserVoice](https://cognitive.uservoice.com/)

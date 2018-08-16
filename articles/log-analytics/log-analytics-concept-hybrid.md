@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Log Analytics 收集环境中的数据 | Microsoft Docs
+title: 使用 Azure Log Analytics 代理收集混合环境中的数据 | Microsoft Docs
 description: 本主题有助于了解如何使用 Log Analytics 收集数据并监视托管在本地或其他云环境中的计算机。
 services: log-analytics
 documentationcenter: ''
@@ -12,25 +12,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/03/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 2a21c7867bf0dd2d6ca6ee0bd9025739315c8d0a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 96feb52bd5702c899faa8d845969ae8ba0995504
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003312"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495350"
 ---
-# <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>使用 Log Analytics 从环境中的计算机收集数据
+# <a name="collect-data-in-a-hybrid-environment-with-log-analytics-agent"></a>使用 Azure Log Analytics 代理收集混合环境中的数据
 
-Azure Log Analytics 可以从驻留在以下环境中的 Windows 或 Linux 计算机收集数据并进行处理：
+Azure Log Analytics 可以从运行在以下环境中的运行 Windows 或 Linux 操作系统的计算机中收集数据并进行处理：
 
 * 使用 Log Analytics VM 扩展的 [Azure 虚拟机](log-analytics-quick-collect-azurevm.md) 
 * 作为物理服务器或虚拟机的数据中心
 * Amazon Web Services (AWS) 等云托管服务中的虚拟机
 
-环境中托管的计算机可以直接连接到 Log Analytics，或者，如果已使用 System Center Operations Manager 2012 R2、2016 或版本 1801 监视这些计算机，则可以将 Operations Manage 管理组与 Log Analytics 集成，并继续维护 IT 服务操作进程。  
+环境中托管的计算机可以直接连接到 Log Analytics，或者，如果已使用 System Center Operations Manager 2012 R2 或更高版本监视这些计算机，则可以将 Operations Manage 管理组与 Log Analytics 集成，并继续维护 IT 服务操作进程。  
 
 ## <a name="overview"></a>概述
 
@@ -38,9 +38,9 @@ Azure Log Analytics 可以从驻留在以下环境中的 Windows 或 Linux 计�
 
 在分析和处理收集的数据之前，首先需要为要将数据发送到 Log Analytics 服务的所有计算机安装代理并进行连接。 可使用安装程序、命令行或 Azure 自动化中的 Desired State Configuration (DSC) 在本地计算机上安装代理。 
 
-适用于 Linux 和 Windows 的代理通过 TCP 端口 443 与 Log Analytics 服务进行出站通信；如果计算机连接到防火墙或代理服务器以通过 Internet 进行通信，请查看[先决条件部分](#prerequisites)来了解所需的网络配置。  如果 IT 安全策略不允许网络上的计算机连接到 Internet，则可以设置 [OMS 网关](log-analytics-oms-gateway.md)并将代理配置为通过该网关连接到 Log Analytics。 然后，代理可以接收配置信息，并发送根据已启用的数据收集规则和解决方案收集的数据。 
+适用于 Linux 和 Windows 的代理通过 TCP 端口 443 与 Log Analytics 服务进行出站通信；如果计算机连接到防火墙或代理服务器以通过 Internet 进行通信，请查看以下要求来了解所需的网络配置。  如果 IT 安全策略不允许网络上的计算机连接到 Internet，则可以设置 [OMS 网关](log-analytics-oms-gateway.md)并将代理配置为通过该网关连接到 Log Analytics。 然后，代理可以接收配置信息，并发送根据已启用的数据收集规则和解决方案收集的数据。 
 
-如果使用 System Center 2016（Operations Manager 或 Operations Manager 2012 R2）监视计算机，该计算机可以与 Log Analytics 服务进行多宿主连接，以便收集数据并将数据转发到该服务，且仍受 [Operations Manager](log-analytics-om-agents.md) 监视。 受 Operations Manager 管理组监视并与 Log Analytics 集成的 Linux 计算机不通过管理组接收数据源配置，也不转发收集的数据。 Windows 代理最多可以向四个工作区报告，而 Linux 代理只支持向单个工作区报告。  
+如果使用 System Center Operations Manager 2012 R2 或更高版本监视计算机，该计算机可以与 Log Analytics 服务进行多宿主连接，以便收集数据并将数据转发到该服务，且仍受 [Operations Manager](log-analytics-om-agents.md) 监视。 受 Operations Manager 管理组监视并与 Log Analytics 集成的 Linux 计算机不通过管理组接收数据源配置，也不转发收集的数据。 Windows 代理最多可以向四个工作区报告，而 Linux 代理只支持向单个工作区报告。  
 
 适用于 Linux 和 Windows 的代理不仅可连接到 Log Analytics，还支持使用 Azure 自动化来托管混合 Runbook 辅助角色和管理解决方案（例如更改跟踪和更新管理）。  有关混合 Runbook 辅助角色的详细信息，请参阅 [Azure 自动化混合 Runbook 辅助角色](../automation/automation-hybrid-runbook-worker.md)。  
 
@@ -79,7 +79,7 @@ Windows 代理正式支持以下版本的 Windows 操作系统：
 
 Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 OMS 网关与 Log Analytics 服务进行通信。  并同时支持匿名身份验证和基本身份验证（用户名/密码）。  对于直接连接到服务的 Windows 代理，代理配置在安装过程中指定，或[在部署后](log-analytics-agent-manage.md#update-proxy-settings)从控制面板或使用 PowerShell 指定。  
 
-对于 Linux 代理，代理服务器在安装过程中指定，或者[在安装后](/log-analytics-agent-manage.md#update-proxy-settings)通过修改 proxy.conf 配置文件来指定。  Linux 代理的代理配置值具有以下语法：
+对于 Linux 代理，代理服务器在安装过程中指定，或者[在安装后](log-analytics-agent-manage.md#update-proxy-settings)通过修改 proxy.conf 配置文件来指定。  Linux 代理的代理配置值具有以下语法：
 
 `[protocol://][user:password@]proxyhost[:port]`
 

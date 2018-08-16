@@ -1,24 +1,20 @@
 ---
-title: 使用 HDInsight 中的 Hadoop 分析航班延误数据 — Azure | Microsoft Docs
+title: 在 HDInsight 中使用 Hadoop 分析航班延误数据 | Microsoft Azure
 description: 了解如何使用一个 Windows PowerShell 脚本来创建 HDInsight 群集、运行 Hive 作业、运行 Sqoop 作业和删除群集。
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 00e26aa9-82fb-4dbe-b87d-ffe8e39a5412
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jgao
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: eec5d0eb3c9cb0ae6e3e7f4eadfc58c4ab039cfd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7d1ab85f3efeaa17abbe1cc93157e63bbca1a0b9
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33770566"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592248"
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>使用 HDInsight 中的 Hive 分析航班延误数据
 Hive 提供了通过类似 SQL 的脚本语言（称为 [HiveQL][hadoop-hiveql]）运行 Hadoop MapReduce 作业的方法，此方法可用于对大量数据进行汇总、查询和分析。
@@ -71,7 +67,7 @@ PowerShell 脚本的一部分将数据从公共 blob 容器复制到群集的默
 下表列出了本教程中使用的文件：
 
 <table border="1">
-<tr><th>文件</th><th>说明</th></tr>
+<tr><th>文件</th><th>Description</th></tr>
 <tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/flightdelays.hql</td><td>Hive 作业所用的 HiveQL 脚本文件。 此脚本已上传到具有公共访问权限的 Azure Blob 存储帐户。 <a href="#appendix-b">附录 B</a> 提供了有关准备此文件以及将其上传到自己的 Azure Blob 存储帐户的说明。</td></tr>
 <tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/2013Data</td><td>Hive 作业的输入的数据。 这些数据已上传到具有公共访问权限的 Azure Blob 存储帐户。 <a href="#appendix-a">附录 A</a> 提供了有关获取数据以及将数据上传到自己的 Azure Blob 存储帐户的说明。</td></tr>
 <tr><td>\tutorials\flightdelays\output</td><td>Hive 作业的输出路径。 默认容器用于存储输出数据。</td></tr>
@@ -708,7 +704,7 @@ HiveQL 脚本将执行以下操作：
 
     该脚本中使用的某些变量：
 
-   * **$ipAddressRestService** - 默认值为 http://bot.whatismyipaddress.com。这是用来获取外部 IP 地址的公共 IP 地址 REST 服务。 如果需要，可以使用其他服务。 使用此服务检索的外部 IP 地址用于创建 Azure SQL 数据库服务器的防火墙规则，使你能够从工作站访问数据库（通过 Windows PowerShell 脚本）。
+   * **$ipAddressRestService** - 默认值为 http://bot.whatismyipaddress.com。 这是用来获取外部 IP 地址的公共 IP 地址 REST 服务。 如果需要，可以使用其他服务。 使用此服务检索的外部 IP 地址用于创建 Azure SQL 数据库服务器的防火墙规则，使你能够从工作站访问数据库（通过 Windows PowerShell 脚本）。
    * **$fireWallRuleName** - 这是 Azure SQL 数据库服务器的防火墙规则名称。 默认名称为 <u>FlightDelay</u>。 如果需要，可以将它重命名。
    * **$sqlDatabaseMaxSizeGB** - 只有在创建新的 Azure SQL 数据库服务器时才会使用此值。 默认值为 10GB。 10GB 对于本教程来说已足够。
    * **$sqlDatabaseName** - 只有在创建新的 Azure SQL 数据库时才会使用此值。 默认值为 HDISqoop。 如果将它重命名，则必须相应地更新 Sqoop Windows PowerShell 脚本。

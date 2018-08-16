@@ -1,25 +1,20 @@
 ---
-title: 设置 HBase 和 Phoenix 的备份与复制 - Azure HDInsight | Microsoft Docs
+title: 设置 HBase 和 Phoenix 的备份与复制 - Azure HDInsight
 description: 为 HBase 和 Phoenix 设置备份与复制。
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: f43edaf16784e5ba5cc3d2b39df285582954210b
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: b9557dcd34ad59ae50240b76ae75df4ef3f39a5b
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34165326"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592941"
 ---
 # <a name="set-up-backup-and-replication-for-hbase-and-phoenix-on-hdinsight"></a>为 HDInsight 上的 HBase 和 Phoenix 设置备份与复制
 

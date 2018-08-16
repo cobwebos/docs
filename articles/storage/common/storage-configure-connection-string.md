@@ -1,25 +1,19 @@
 ---
 title: 配置 Azure 存储的连接字符串 | Microsoft Docs
-description: 配置 Azure 存储帐户的连接字符串。 连接字符串包含在运行时从应用程序访问 Azure 存储帐户所需的身份验证信息。
+description: 配置 Azure 存储帐户的连接字符串。 连接字符串包含在运行时从应用程序访问 Azure 存储帐户所需的授权信息。
 services: storage
-documentationcenter: ''
 author: craigshoemaker
-manager: jeconnoc
-editor: tysonn
-ms.assetid: ecb0acb5-90a9-4eb2-93e6-e9860eda5e53
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: cshoe
-ms.openlocfilehash: dee0fd68ccaf80ff6e44ee10fa24bb19e220d0d5
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: common
+ms.openlocfilehash: 1c6ba727bf9c19b5da0d0d0313377d5d4ad1e2ac
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30240823"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39529253"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>配置 Azure 存储连接字符串
 
@@ -32,7 +26,7 @@ ms.locfileid: "30240823"
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
 ## <a name="storing-your-connection-string"></a>存储连接字符串
-应用程序需要在运行时访问连接字符串，才能验证对 Azure 存储发出的请求。 可以通过几个选项来存储连接字符串：
+应用程序需要在运行时访问连接字符串，才能授权对 Azure 存储发出的请求。 可以通过几个选项来存储连接字符串：
 
 * 在桌面或设备上运行的应用程序可以在 **app.config** 文件或 **web.config** 文件中存储连接字符串。 将连接字符串添加到这些文件的 **AppSettings** 部分。
 * 在 Azure 云服务中运行的应用程序可以在 [Azure service configuration schema (.cscfg) file](https://msdn.microsoft.com/library/ee758710.aspx)（Azure 服务配置架构 (.cscfg) 文件）中存储连接字符串。 将连接字符串添加到服务配置文件的 **ConfigurationSettings** 部分。

@@ -7,14 +7,14 @@ manager: carmonm
 keywords: 备份和灾难恢复;备份服务
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/1/2018
+ms.date: 8/2/2018
 ms.author: markgal
-ms.openlocfilehash: 33a3a1c0fd375f6ed88e13f910c46e71f216b892
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 5fd0cb92bd35b1f238e4080d2c9e8caf781b8131
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412945"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493862"
 ---
 # <a name="questions-about-the-azure-backup-service"></a>有关 Azure 备份服务的问题
 本文回答有关 Azure 备份组件的常见问题。 某些答案提供内含全面信息的文章的链接。 单击“评论”（右侧）即可提问有关 Azure 备份的问题。 评论显示在本文末尾。 需要使用 Livefyre 帐户发表评论。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
@@ -30,14 +30,17 @@ ms.locfileid: "39412945"
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault-br"></a>可针对每个保管库注册的服务器/计算机数量是否有限制？ <br/>
 每个保管库最多可以注册 1000 个 Azure 虚拟机。 如果使用 MAB 代理，每个保管库最多可以注册 50 个 MAB 代理。 可以将 50 个 MAB 服务器/DPM 服务器注册到一个保管库。
 
+### <a name="can-i-use-a-rest-api-to-query-the-size-of-protected-items-in-a-vault-br"></a>可以使用 REST API 查询保管库中受保护项的大小吗？ <br/>
+可以，[使用情况 - 按保管库列出](https://t.co/2lgIrIaF0J)一文中列出了可从恢复服务保管库获取的信息。
+
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-one-servers-data-from-another-server-when-restoring-databr"></a>如果本组织有一个保管库，如何在还原数据时会一个服务器的数据与另一个服务器隔离？<br/>
 注册到同一个保管库的所有服务器都能够恢复由 *使用同一密码*的其他服务器备份的数据。 如果想要隔离服务器中的备份数据与组织中的其他服务器，请使用这些服务器的指定通行短语。 例如，人力资源服务器可能使用一个加密通行短语，会计结算服务器使用另一个通行短语，而存储服务器使用第三个通行短语。
 
 ### <a name="can-i-migrate-my-vault-between-subscriptions-br"></a>是否可以在订阅之间迁移我的保管库？ <br/>
-不可以。 保管库是在订阅级别创建的，无法重新分配到另一订阅。
+不是。 保管库是在订阅级别创建的，无法重新分配到另一订阅。
 
 ### <a name="can-i-migrate-backup-data-to-another-vault-br"></a>是否可以将备份数据迁移到另一个保管库？ <br/>
-不可以。 保管库中存储的备份数据无法移动到不同的保管库。
+不是。 保管库中存储的备份数据无法移动到不同的保管库。
 
 ### <a name="recovery-services-vaults-are-resource-manager-based-are-backup-vaults-still-supported-br"></a>恢复服务保管库基于 Resource Manager。 是否仍支持备份保管库？ <br/>
 备份保管库已转换为恢复服务保管库。 如果你未将备份保管库转换为恢复服务保管库，则系统已为你将备份保管库转换为恢复服务保管库。 
@@ -57,6 +60,8 @@ ms.locfileid: "39412945"
 
 是的。 可以使用 Azure 备份服务器将 VMware vCenter 和 ESXi 备份到 Azure。 若要了解支持的 VMware 版本，请参阅 [Azure 备份服务器保护矩阵](backup-mabs-protection-matrix.md)一文。 有关分步说明，请参阅[使用 Azure 备份服务器备份 VMware 服务器](backup-azure-backup-server-vmware.md)。
 
+### <a name="do-i-need-a-separate-license-to-recover-a-full-on-premises-vmwarehyper-v-cluster-from-dpm-or-azure-backup-serverbr"></a>是否需要单独的许可证才能从 DPM 或 Azure 备份服务器恢复完整的本地 VMware/Hyper-V 群集？<br/>
+不需要单独的 VMware/Hyper-V 保护许可。 如果是 System Center 客户，请使用 DPM 保护 VMware VM。 如果不是 System Center 客户，可以使用 Azure 备份服务器（即用即付）来保护 VMware VM。
 
 ## <a name="azure-backup-server-and-system-center-data-protection-manager"></a>Azure 备份服务器和 System Center Data Protection Manager
 ### <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-bmr-backup-for-a-physical-server-br"></a>是否可以使用 Azure 备份服务器为物理服务器创建裸机恢复 (BMR) 备份？ <br/>
@@ -90,6 +95,9 @@ ms.locfileid: "39412945"
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-i-backed-upbr"></a>为什么传输到恢复服务保管库的数据的大小小于我备份的数据？<br/>
  从 Azure 备份代理、SCDPM 或 Azure 备份服务器备份的所有数据都会在传输之前进行压缩和加密。 应用压缩和加密后，恢复服务保管库中的数据将减少 30-40%。
+
+### <a name="can-i-delete-individual-files-from-a-recovery-point-in-the-vaultbr"></a>可以从保管库中的恢复点删除单个文件吗？<br/>
+不可以，Azure 备份不支持从存储的备份中删除或清除单个项。
 
 ## <a name="what-can-i-back-up"></a>我能够备份的内容
 ### <a name="which-operating-systems-does-azure-backup-support-br"></a>Azure 备份支持哪些操作系统？ <br/>

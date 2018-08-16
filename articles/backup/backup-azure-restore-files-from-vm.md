@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: pullabhk
-ms.openlocfilehash: 4be1ffcabed6667ab76ec790326a687d75c8b125
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: fecdb54af58faaf601ab74f89039a47e0d32e650
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36958614"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493375"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -27,9 +27,9 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
 ## <a name="mount-the-volume-and-copy-files"></a>装载卷并复制文件
 
-若要从恢复点还原文件或文件夹，请转到虚拟机并选择所需的恢复点。 
+若要从恢复点还原文件或文件夹，请转到虚拟机并选择所需的恢复点。
 
-1. 登录到 [Azure 门户](http://portal.Azure.com)，在左侧菜单中单击“虚拟机”。 从虚拟机列表中，选择虚拟机以打开其仪表板。 
+1. 登录到 [Azure 门户](http://portal.Azure.com)，在左侧窗格中单击“虚拟机”。 从虚拟机列表中，选择虚拟机以打开其仪表板。
 
 2. 在虚拟机菜单中，单击“备份”以打开“备份”仪表板。
 
@@ -41,7 +41,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
 4. 从“选择恢复点”下拉菜单中，选择包含所需文件的恢复点。 默认已选择最新的恢复点。
 
-5. 要下载要用于从恢复点复制文件的软件，请单击“下载可执行文件”（适用于 Microsoft Azure VM）或“下载脚本”（适用于 Linux Azure VM）。 
+5. 要下载要用于从恢复点复制文件的软件，请单击“下载可执行文件”（适用于 Microsoft Azure VM）或“下载脚本”（适用于 Linux Azure VM）。
 
     ![生成的密码](./media/backup-azure-restore-files-from-vm/download-executable.png)
 
@@ -62,31 +62,33 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
     如果在访问受限的计算机上运行该脚本，请确保能够访问：
 
     - download.microsoft.com
-    - [用于 Azure VM 备份的 Azure 终结点](backup-azure-arm-vms-prepare.md#establish-network-connectivity)
+    - 恢复服务 URL（地区名称是指恢复服务保管库的区域）
+        - <https://pod01-rec2.geo-name.backup.windowsazure.com>（适用于 Azure 公共地区）
+        - <https://pod01-rec2.geo-name.backup.windowsazure.cn>（适用于 Azure 中国）
+        - <https://pod01-rec2.geo-name.backup.windowsazure.us>（适用于 Azure 美国政府）
+        - <https://pod01-rec2.geo-name.backup.windowsazure.de>（适用于 Azure 德国）
     - 出站端口 3260
 
     在 Linux 上，该脚本需要“open-iscsi”和“lshw”组件才能连接到恢复点。 如果这些组件不存在于运行脚本的计算机上，该脚本会请求权限以安装组件。 请同意安装必需组件。
-    
-    需要访问 download.microsoft.com 才能下载在运行脚本的计算机与恢复点中的数据之间构建安全通道所使用的组件。         
+
+    需要访问 download.microsoft.com 才能下载在运行脚本的计算机与恢复点中的数据之间构建安全通道所使用的组件。
 
     可以在具有与备份 VM 相同（或兼容）操作系统的任何计算机上运行该脚本。 有关兼容的操作系统，请参阅[兼容的 OS 表](backup-azure-restore-files-from-vm.md#system-requirements)。 如果受保护的 Azure 虚拟机使用 Windows 存储空间（适用于 Windows Azure VM）或 LVM/RAID 阵列（适用于 Linux VM），则不能在同一虚拟机上运行该可执行文件或脚本。 而应在具有兼容操作系统的任何其他计算机上运行该可执行文件或脚本。
- 
 
 ### <a name="identifying-volumes"></a>标识卷
 
 #### <a name="for-windows"></a>对于 Windows
 
 运行可执行文件时，操作系统将装载新卷并分配驱动器号。 可以使用 Windows 资源管理器或文件资源管理器来浏览这些驱动器。 分配给卷的驱动器号不能与原始虚拟机中的驱动器号相同，不过，卷名会保留。 例如，如果原始虚拟机上的卷为“数据磁盘(E:`\`)”，可在本地计算机上将该卷附加为“数据磁盘(‘任意字母’:`\`)”。 浏览脚本输出中所述的所有卷，直到找到文件/文件夹。  
-       
+
    ![文件恢复菜单](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
-           
+
 #### <a name="for-linux"></a>对于 Linux
 
 在 Linux 中，恢复点的卷将装载到运行脚本的文件夹。 将相应地显示附加的磁盘、卷和对应装载路径。 这些装载路径对于具有根级别访问权限的用户可见。 浏览脚本输出中涉及的卷。
 
   ![Linux 文件恢复菜单](./media/backup-azure-restore-files-from-vm/linux-mount-paths.png)
   
-
 ## <a name="closing-the-connection"></a>关闭连接
 
 识别文件并将其复制到本地存储位置后，请删除（或卸载）其他驱动器。 若要卸载驱动器，请在 Azure 门户中的“文件恢复”菜单上，单击“卸载磁盘”。
@@ -101,10 +103,10 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
 ### <a name="dynamic-disks"></a>动态磁盘
 
-如果受保护的 Azure VM 包含带有以下一个或两个特征的卷，则无法在同一 VM 上运行该可执行脚本。 
+如果受保护的 Azure VM 包含带有以下一个或两个特征的卷，则无法在同一 VM 上运行该可执行脚本。
 
-  - 跨多个磁盘的卷（跨区卷和带区卷）
-  - 动态磁盘上的容错卷（镜像卷和 RAID-5 卷） 
+    - 跨多个磁盘的卷（跨区卷和带区卷）
+    - 动态磁盘上的容错卷（镜像卷和 RAID-5 卷）
 
 而应在具有兼容操作系统的任何其他计算机上运行该可执行脚本。
 
@@ -121,40 +123,47 @@ Windows 存储空间是用于将存储器虚拟化的一种 Windows 技术。 �
 以下脚本输出显示了 LVM 和/或 RAID 阵列磁盘和卷，及其分区类型。
 
    ![Linux LVM 输出菜单](./media/backup-azure-restore-files-from-vm/linux-LVMOutput.png)
-   
-若要使这些分区联机，请运行以下各部分中的命令。 
 
-**对于 LVM 分区**
+若要使这些分区联机，请运行以下各部分中的命令。
+
+#### <a name="for-lvm-partitions"></a>对于 LVM 分区
 
 列出物理卷下的卷组名称。
+
+```bash
+#!/bin/bash
+$ pvs <volume name as shown above in the script output>
 ```
-$ pvs <volume name as shown above in the script output> 
-```
+
 列出卷组中所有逻辑卷、名称及其路径。
 
-```
-$ lvdisplay <volume-group-name from the pvs command’s results> 
+```bash
+#!/bin/bash
+$ lvdisplay <volume-group-name from the pvs command’s results>
 ```
 
 将逻辑卷装载到所选的路径。
 
-```
+```bash
+#!/bin/bash
 $ mount <LV path> </mountpath>
 ```
 
-
-
-**对于 RAID 阵列**
+#### <a name="for-raid-arrays"></a>对于 RAID 阵列
 
 使用以下命令，将显示有关所有 RAID 磁盘的详细信息。
 
-```
+```bash
+#!/bin/bash
 $ mdadm –detail –scan
 ```
+
  相关 RAID 磁盘显示为 `/dev/mdm/<RAID array name in the protected VM>`
 
 如果 RAID 磁盘具有物理卷，请使用 mount 命令。
-```
+
+```bash
+#!/bin/bash
 $ mount [RAID Disk Path] [/mountpath]
 ```
 
@@ -162,9 +171,9 @@ $ mount [RAID Disk Path] [/mountpath]
 
 ## <a name="system-requirements"></a>系统要求
 
-### <a name="for-windows"></a>对于 Windows
+### <a name="for-windows-os"></a>对于 Windows OS
 
-下表显示了服务器与计算机操作系统之间的兼容性。 恢复文件时，不能将文件还原到更旧或更新的操作系统版本。 例如，不能将文件从 Windows Server 2016 VM 还原到 Windows Server 2012 或 Windows 8 计算机。 可将 VM 中的文件还原到相同的服务器操作系统，或还原到兼容的客户端操作系统。   
+下表显示了服务器与计算机操作系统之间的兼容性。 恢复文件时，不能将文件还原到更旧或更新的操作系统版本。 例如，不能将文件从 Windows Server 2016 VM 还原到 Windows Server 2012 或 Windows 8 计算机。 可将 VM 中的文件还原到相同的服务器操作系统，或还原到兼容的客户端操作系统。
 
 |服务器 OS | 兼容的客户端 OS  |
 | --------------- | ---- |
@@ -201,10 +210,10 @@ $ mount [RAID Disk Path] [/mountpath]
 
 | 错误消息/情景 | 可能的原因 | 建议的操作 |
 | ------------------------ | -------------- | ------------------ |
-| 可执行文件输出：“连接到目标时发生异常” |脚本无法访问恢复点 | 检查计算机是否满足前述访问要求。 |  
-|   可执行文件输出：“已经通过 ISCSI 会话登录目标。” | 脚本已在同一台计算机上执行，并且已附加驱动器 | 已附加恢复点所在的卷。 不能使用与原始 VM 相同的驱动器号装载这些卷。 在文件的文件资源管理器中浏览所有可用卷 |
-| 可执行文件输出：“此脚本无效，因为磁盘已通过门户卸载/已超过 12 小时限制。*请从门户下载新脚本。* | 磁盘已从门户卸除或超过了 12 小时限制 |    此特定可执行文件现已失效，无法运行。 若要访问该恢复时间点的文件，请在门户中访问新的可执行文件|
-| 在运行可执行文件的计算机上：单击卸载按钮后，新卷不会卸载 |    计算机上的 ISCSI 发起程序无响应/不刷新它与目标之间的连接，并且不保留缓存 |    按下卸载按钮后，请等待几分钟。 如果仍然无法卸载新卷，请浏览所有卷。 这会强制发起程序刷新连接并卸载卷，但会出现错误消息，指出磁盘不可用|
-| 可执行文件输出：脚本已成功运行，但脚本输出中不显示“已附加新卷” | 这是暂时性的错误   | 卷其实已附加。 打开资源管理器即可浏览它们。 如果每次都使用同一台计算机来运行脚本，请考虑重新启动计算机，这样，以后运行可执行文件时应会显示列表。 |
+| 可执行文件输出：“连接到目标时发生异常” |脚本无法访问恢复点    | 检查计算机是否满足前述访问要求。 |  
+| 可执行文件输出：已经通过 iSCSI 会话登录目标。 | 脚本已在同一台计算机上执行，并且已附加驱动器 | 已附加恢复点所在的卷。 不能使用与原始 VM 相同的驱动器号装载这些卷。 在文件的文件资源管理器中浏览所有可用卷 |
+| 可执行文件输出：“此脚本无效，因为磁盘已通过门户卸载/已超过 12 小时限制。*请从门户下载新脚本。* |    磁盘已从门户卸除或超过了 12 小时限制 | 此特定可执行文件现已失效，无法运行。 若要访问该恢复时间点的文件，请在门户中访问新的可执行文件|
+| 在运行可执行文件的计算机上：单击卸载按钮后，新卷不会卸载 | 计算机上的 iSCSI 发起程序无响应/不刷新它与目标之间的连接，并且不保留缓存 |    按下卸载按钮后，请等待几分钟。 如果仍然无法卸载新卷，请浏览所有卷。 这会强制发起程序刷新连接并卸载卷，但会出现错误消息，指出磁盘不可用|
+| 可执行文件输出：脚本已成功运行，但脚本输出中不显示“已附加新卷” |    这是暂时性的错误    | 卷其实已附加。 打开资源管理器即可浏览它们。 如果每次都使用同一台计算机来运行脚本，请考虑重新启动计算机，这样，以后运行可执行文件时应会显示列表。 |
 | Linux 特定：无法查看所需的卷 | 运行脚本的计算机的 OS 可能无法识别受保护 VM 的基础文件系统 | 检查恢复点是崩溃一致还是文件一致。 如果文件一致，请在 OS 可识别受保护 VM 的文件系统的另一台计算机上运行该脚本 |
 | Windows 特定：无法查看所需的卷 | 磁盘可能已附加，但未配置卷 | 从磁盘管理屏幕中，识别与恢复点相关的其他磁盘。 如果这些磁盘有任何一个处于脱机状态，请尝试通过右键单击该磁盘并单击“联机”来使其联机|

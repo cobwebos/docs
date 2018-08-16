@@ -6,14 +6,14 @@ author: Christina-Kang
 manager: timlt
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 0c5509d323f14a6bb62f465fa23584ca927e0e61
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 370c8521127ffc28cc1b604c217544bccc82d705
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763351"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495941"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -25,7 +25,7 @@ Azure Service Fabric 命令行接口 (CLI) 是一个命令行实用程序，用�
 
 在安装之前，请确保环境中已安装 Python 和 pip。 有关详细信息，请参阅 [pip 快速入门文档](https://pip.pypa.io/en/latest/quickstart/)和官方的 [Python 安装文档](https://wiki.python.org/moin/BeginnersGuide/Download)。
 
-CLI 支持 Python 2.7、3.5 和 3.6 版。 建议使用 Python 3.6 版，因为很快会终止对 Python 2.7 的支持。
+CLI 支持 Python 2.7、3.5、3.6 和 3.7 版。 建议使用 Python 3.x 版，因为很快会终止对 Python 2.7 的支持。
 
 ### <a name="service-fabric-target-runtime"></a>Service Fabric 目标运行时
 
@@ -33,7 +33,8 @@ Service Fabric CLI 旨在支持 Service Fabric SDK 的最新运行时版本。 �
 
 | CLI 版本   | 支持的运行时版本 |
 |---------------|---------------------------|
-| 最新 (~=5)  | 最新 (~=6.2)            |
+| 最新 (~=6)  | 最新 (~=6.3)            |
+| 5.0.0         | 6.2                       |
 | 4.0.0         | 6.1                       |
 | 3.0.0         | 6.0                       |
 | 1.1.0         | 5.6, 5.7                  |
@@ -56,11 +57,11 @@ pip install -I sfctl==1.1.0
 
 对于 Windows 10、Windows Server 2016 和 Windows Server 2012 R2，使用标准官方安装说明进行操作。 默认情况下，Python 安装程序也安装 pip。
 
-1. 转到官方的 [Python 下载页](https://www.python.org/downloads/)，下载最新版本的 Python 3.6。
+1. 转到官方的 [Python 下载页](https://www.python.org/downloads/)，下载最新版本的 Python 3.7。
 
 2. 启动安装程序。
 
-3. 在提示的底部，选择“将 Python 3.6 添加到路径”。
+3. 在提示的底部，选择“将 Python 3.7 添加到路径”。
 
 4. 选择“立即安装”，并完成安装。
 
@@ -113,7 +114,7 @@ sudo pip3 install sfctl
 
 ### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4（Service Fabric 预览版支持）
 
-若要在 Redhat 上安装 Service Fabric CLI，请运行以下命令：
+若要在 Red Hat 上安装 Service Fabric CLI，请运行以下命令：
 
 ```bash
 sudo yum install -y python34
@@ -133,7 +134,7 @@ sudo pip3 install sfctl
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-然后从终端通过运行以下命令，安装 Python 3.6、pip 和 Service Fabric CLI：
+然后从终端通过运行以下命令，安装 Python 3.7、pip 和 Service Fabric CLI：
 
 ```bash
 brew install python3

@@ -2,24 +2,19 @@
 title: 如何将 Hudson 与 Blob 存储一起使用 | Microsoft Docs
 description: 介绍如何将 Hudson 与 Microsoft Azure Blob 存储一起使用作为生成项目的存储库。
 services: storage
-documentationcenter: java
 author: seguler
-manager: jahogg
-editor: tysonn
-ms.assetid: 119becdd-72c4-4ade-a439-070233c1e1ac
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
-ms.openlocfilehash: e54bedff5f744004288e132efbed8c3e7981f8a6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: c076ae96f8aba648196dc5222db3da3da68673ff
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23060122"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528385"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>将 Azure 存储用于 Hudson 持续集成解决方案
 ## <a name="overview"></a>概述
@@ -57,12 +52,12 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
   5. 完成初始设置后，取消正在运行的 Hudson WAR 实例，再次启动 Hudson WAR，然后重新打开 Hudson 仪表板 `http://localhost:8080/`，将使用它来安装和配置 Azure 存储插件。
      
       虽然典型 Hudson CI 解决方案将设置为作为一个服务运行，但在本教程中，通过命令行运行 Hudson war 就足够了。
-* 一个 Azure 帐户。 可在 <http://www.azure.com> 中注册 Azure 帐户。
+* 一个 Azure 帐户。 可在 <http://www.azure.com> 注册 Azure 帐户。
 * 一个 Azure 存储帐户。 如果还没有存储帐户，可使用[创建存储帐户](../common/storage-create-storage-account.md#create-a-storage-account)中的步骤创建一个。
 * 建议熟悉 Hudson CI 解决方案（但不是必需的），因为以下内容将使用一个基本示例向你演示使用 Blob 服务作为 Hudson CI 生成项目的存储库时所需的步骤。
 
 ## <a name="how-to-use-the-blob-service-with-hudson-ci"></a>如何将 Blob 服务用于 Hudson CI
-要将 Blob 服务用于 Hudson，需要安装 Azure 存储插件，并对该插件进行配置以使用存储帐户，然后创建一个将生成项目上传到存储帐户的生成后操作。 将在下面各节中介绍这些步骤。
+要将 Blob 服务用于 Hudson，需要安装 Azure 存储插件，并对该插件进行配置以使用你的存储帐户，然后创建一个将生成项目上载到存储帐户的生成后操作。 将在下面各节中介绍这些步骤。
 
 ## <a name="how-to-install-the-azure-storage-plugin"></a>如何安装 Azure 存储插件
 1. 在 Hudson 仪表板中，单击“管理 Hudson”。
@@ -70,7 +65,7 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
 3. 单击“可用”选项卡。
 4. 单击“其他”。
 5. 在“项目上传程序”部分，选择“Microsoft Azure 存储插件”。
-6. 单击“安装” 。
+6. 单击“安装”。
 7. 安装完毕后，重新启动 Hudson。
 
 ## <a name="how-to-configure-the-azure-storage-plugin-to-use-your-storage-account"></a>如何配置 Azure 存储插件以使用存储帐户
@@ -86,7 +81,7 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
    
     d. 单击“验证存储凭据”以验证存储帐户。
    
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 [可选]如果有其他存储帐户并且希望其可供 Hudson CI 使用，请单击“添加更多存储帐户”。
+    e. [可选]如果有其他存储帐户并且希望其可供 Hudson CI 使用，请单击“添加更多存储帐户”。
    
     f. 单击“保存”以保存设置。
 
@@ -115,7 +110,7 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
     针对“执行 Windows 批处理命令”输入脚本的“命令”部分下方，有一个指向 Hudson 所识别环境变量的链接。 单击此链接可了解环境变量名称和说明。 请注意，不允许将包含特殊字符的环境变量（如 **BUILD_URL** 环境变量）用作容器名称或通用虚拟路径。
 8. 对于此示例，请单击“默认将新容器设为公开”。 （如果要使用私有容器，需要创建共享访问签名以允许访问。 这超出了本文的范围。 可在[使用共享访问签名 (SAS)](../storage-dotnet-shared-access-signature-part-1.md)中了解有关共享访问签名的详细信息。）
 9. [可选] 如果要在上传生成项目之前清除容器的内容，请单击“在上传前清除容器”（如果不希望清除容器的内容，则使该复选框保持未选中状态）。
-10. 对于“要上传的项目列表”，请输入 **text/*.txt**。
+10. 对于“要上传的项目列表”，请输入 text/*.txt。
 11. 对于“已上传项目的通用虚拟路径”，请输入 **${BUILD\_ID}/${BUILD\_NUMBER}**。
 12. 单击“保存”以保存设置。
 13. 在 Hudson 仪表板中，单击“立即生成”以运行 **MyJob**。 检查控制台输出中的状态。 当生成后操作开始上传生成项目时，Azure 存储的状态消息将包括在控制台输出中。
@@ -129,7 +124,7 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
     
     d. 单击“容器”。
     
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击名为 **myjob** 的容器，该名称是创建 Hudson 作业时分配的作业名称的小写形式。 在 Azure 存储中，容器名称和 Blob 名称都是小写的（并且区分大小写）。 在名为 **myjob** 的容器的 Blob 列表中，应能看到 **hello.txt** 和 **date.txt**。 复制这两项中任一项的 URL 并在浏览器中打开。 会看到已作为生成项目上传的文本文件。
+    e. 单击名为 **myjob** 的容器，该名称是创建 Hudson 作业时分配的作业名称的小写形式。 在 Azure 存储中，容器名称和 Blob 名称都是小写的（并且区分大小写）。 在名为 **myjob** 的容器的 Blob 列表中，应能看到 **hello.txt** 和 **date.txt**。 复制这两项中任一项的 URL 并在浏览器中打开。 会看到已作为生成项目上传的文本文件。
 
 每个作业只能创建一个用于将项目上传到 Azure Blob 存储的生成后操作。 请注意，单个生成后操作用于将项目上传到 Azure Blob 存储，它可在“要上传的项目列表”中使用分号作为分隔符指定不同的文件（包括通配符）和文件路径。 例如，如果 Hudson 生成在工作区的 **build** 文件夹中生成了 JAR 文件和 TXT 文件，并且希望将两者都上传到 Azure Blob 存储，请使用以下项作为“要上传的项目列表”值：**build/\*.jar;build/\*.txt**。 还可以使用双冒号语法指定要在 Blob 名称内使用的路径。 例如，如果要在 Blob 路径中使用 **binaries** 上传 JAR 并在 Blob 路径中使用 **notices** 上传 TXT 文件，请使用以下项作为“要上传的项目列表”值：**build/\*.jar::binaries;build/\*.txt::notices**。
 
@@ -166,7 +161,7 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
 * [Hudson 简介](http://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
 * [用于 Java 的 Azure 存储 SDK](https://github.com/azure/azure-storage-java)
 * [Azure 存储客户端 SDK 参考](http://dl.windowsazure.com/storage/javadoc/)
-* [Azure 存储服务 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)
+* [Azure 存储空间服务 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
 
 有关详细信息，请访问[面向 Java 开发人员的 Azure](/java/azure)。

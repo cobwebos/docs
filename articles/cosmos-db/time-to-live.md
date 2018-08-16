@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: sngun
-ms.openlocfilehash: e1b11d637eec54d43c9f1212936d94b2d7396c97
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 49f6d6ee65ffae71cba8c73301355bfe2bdcd1d6
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34615115"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480550"
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>利用生存时间使 Azure Cosmos DB 集合中的数据自动过期
 应用程序可以生成和存储大量数据。 其中的某些数据（如计算机生成的事件数据、日志和用户会话信息）仅在有限的一段时间内才有用。 当数据变得多余，应用程序不再需要时，可以安全地清除这些数据并减少应用程序的存储需求。
@@ -48,7 +48,17 @@ TTL 功能在两个级别受 TTL 属性控制 - 集合级别和文档级别。 �
 | 文档上的 TTL = n |在文档级别没有要替代的内容。 系统未解释文档上的 TTL。 |TTL = n 的文档会在时间间隔 n 秒后过期。 其他文档将继承 -1 时间间隔，并且永不过期。 |TTL = n 的文档会在时间间隔 n 秒后过期。 其他文档将从集合中继承“n”时间间隔。 |
 
 ## <a name="configuring-ttl"></a>配置 TTL
-默认情况下，在所有 Cosmos DB 集合和所有文档上禁用生存时间。 可以编程方式设置 TTL，或在 Azure 门户下，集合的“设置”部分中进行设置。 
+默认情况下，在所有 Cosmos DB 集合和所有文档上禁用生存时间。 可采用编程方式或通过使用 Azure 门户来设置 TTL。 使用以下步骤从 Azure 门户配置 TTL：
+
+1. 登录到 [Azure 门户](https://portal.azure.com/)，导航到 Azure Cosmos DB 帐户。  
+
+2. 导航到要设置 TTL 值的集合，打开“规模和设置”窗格。 可以看到生存时间默认设置为“关”。 可将其更改为“开(无默认设置)”或“开”。
+
+   **关** - 文档不会自动删除。  
+   **开(无默认设置)** - 此选项可将 TTL 值设置为“-1”（无限期），这意味着默认情况下文档不会过期。  
+   **开** - 最后一次修改后，文档过期“n”秒。  
+
+   ![设置生存时间](./media/time-to-live/set-ttl-in-portal.png)
 
 ## <a name="enabling-ttl"></a>启用 TTL
 要在集合或集合内的文档上启用 TTL，需要将集合的 DefaultTTL 属性设置为 -1 或非零正数。 将 DefaultTTL 设置为 -1 表示默认情况下，集合中的所有文档将永久生存，但 Cosmos DB 服务应该监视此集合中已替代此默认值的文档。
@@ -151,7 +161,7 @@ TTL 功能在两个级别受 TTL 属性控制 - 集合级别和文档级别。 �
 
 如果需要返回确切数据，请不要在索引模式设置为“延迟”时更改 TTL 值。 最好应选择一致的索引，以确保查询结果一致。 
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 **TTL 将收取我多少费用？**
 
 在文档上设置 TTL 不会产生额外费用。

@@ -1,32 +1,22 @@
 ---
-title: 在 Azure 应用程序网关上启用端到端 SSL | Microsoft Docs
-description: 此页概述应用程序网关的端到端 SSL 支持。
-documentationcenter: na
+title: 在 Azure 应用程序网关上启用端到端 SSL
+description: 本文概述应用程序网关的端到端 SSL 支持。
 services: application-gateway
 author: amsriva
-manager: rossort
-editor: amsriva
-ms.assetid: 3976399b-25ad-45eb-8eb3-fdb736a598c5
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.custom: H1Hack27Feb2017
-ms.workload: infrastructure-services
-ms.date: 07/19/2017
+ms.topic: article
+ms.date: 8/6/2018
 ms.author: amsriva
-ms.openlocfilehash: 1c94bc7fb97902c9d44392d2eb9bf4ee29f72af6
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 4575bed18697a5661d58dc350c24a9497f7c46ff
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37949741"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578807"
 ---
 # <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>应用程序网关的端到端 SSL 概述
 
 应用程序网关支持在网关上终止 SSL，之后，流量通常会以未加密状态流到后端服务器。 此功能让 Web 服务器不用再负担昂贵的加密和解密开销。 但对于某些客户而言，与后端服务器的未加密通信不是可以接受的选项。 此通信未加密，可能是由于有安全要求、符合性要求，或应用程序可能仅接受安全连接。 对于此类应用程序，应用程序网关支持端到端 SSL 加密。
-
-## <a name="overview"></a>概述
 
 端到端 SSL 允许安全地将敏感数据以加密方式传输到后端，同时仍可利用应用程序网关提供的第 7 层负载均衡功能的好处。 部分功能包括：基于 Cookie 的会话相关性、基于 URL 的路由、基于站点的路由支持，或注入 X-Forwarded-* 标头。
 
@@ -39,6 +29,9 @@ ms.locfileid: "37949741"
 ## <a name="end-to-end-ssl-and-whitelisting-of-certificates"></a>端到端 SSL 和证书允许列表
 
 应用程序网关只会与已知的后端实例通信，这些实例已将其证书加入应用程序网关的允许列表。 要启用证书允许列表，必须将后端服务器证书的公钥上传到应用程序网关（而不是根证书）。 然后仅允许连接到已知且加入允许列表的后端。 剩余的后端会导致网关错误。 自签名证书仅用于测试目的，不建议用于生产工作负荷。 如前面的步骤中所述，此类证书必须加入应用程序网关的允许列表，才可以使用。
+
+> [!NOTE]
+> Azure Web 应用等受信任的 Azure 服务不需要身份验证证书设置。
 
 ## <a name="next-steps"></a>后续步骤
 

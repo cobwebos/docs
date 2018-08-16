@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 7790920b6553ba0e2738d693710bfc3a1d3b4f89
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 74fb62ffa707188779bcf827d427c61a0b9a4347
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325095"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576332"
 ---
 # <a name="quickstart-recognize-speech-in-c-under-net-core-on-windows-using-the-speech-sdk"></a>快速入门：使用语音 SDK 在 .NET Core 下的 C# 中识别语音
 
@@ -29,7 +29,7 @@ ms.locfileid: "39325095"
 ## <a name="prerequisites"></a>先决条件
 
 * 语音服务的订阅密钥。 请参阅[免费试用语音服务](get-started.md)。
-* 具有可正常工作的麦克风的 Windows 电脑。
+* 配有工作麦克风的 Windows 电脑。
 * [Microsoft Visual Studio 2017](https://www.visualstudio.com/)，Community Edition 或更高版本。
 * Visual Studio 中的“.NET Core 跨平台”工作负载。 可在“工具”\>“获取工具和功能”中启用它。
 
@@ -49,19 +49,19 @@ ms.locfileid: "39325095"
 
     ![安装 Microsoft.CognitiveServices.Speech NuGet 包](media/sdk/qs-csharp-dotnetcore-windows-03-nuget-install-0.5.0.png "安装 Nuget 包")
 
-1. 接受对话框中出现的许可证。
+1. 接受显示的许可证。
 
     ![接受许可证](media/sdk/qs-csharp-dotnetcore-windows-04-nuget-license.png "Accept the license")
 
 ## <a name="add-the-sample-code"></a>添加示例代码
 
-1. 在 Visual Studio 项目中打开 `Program.cs`，然后将此文件中的所有代码替换为以下内容。
+1. 打开 `Program.cs` 并将其中的所有代码替换为以下内容。
 
     [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-dotnetcore-windows/helloworld/Program.cs#code)]
 
-1. 将字符串 `YourSubscriptionKey` 替换为订阅密钥。
+1. 将字符串 `YourSubscriptionKey` 替换为你的订阅密钥。
 
-1. 将字符串 `YourServiceRegion` 替换为与订阅（例如，`westus` 免费试用版订阅）相关联的[区域](regions.md)。
+1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](regions.md)（例如，免费试用版订阅的 `westus`）。
 
 1. 保存对项目的更改。
 

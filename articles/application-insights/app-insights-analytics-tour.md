@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 8295abfae8d82a7c7762c6b27a8bac7487f6afff
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 470779f80e998c3908cf28328cfb415d98c5e06c
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335275"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579249"
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Application Insights 中 Analytics 的演示
 [Analytics](app-insights-analytics.md) 是 [Application Insights](app-insights-overview.md) 的强大搜索功能。 这些页面介绍 Log Analytics 查询语言。
@@ -226,7 +226,7 @@ ms.locfileid: "36335275"
 
 ### <a name="convert-to-local-time"></a>转换为本地时间
 
-时间戳始终为 UTC。 因此，如果位于正值冬季的美国太平洋海岸，则可能需要：
+时间戳始终为 UTC。 因此，如果位于正值冬季的美国太平洋海岸，并且当地时间比 UTC 慢 8 小时（西八区），则可能需要：
 
 ```AIQL
 
@@ -461,7 +461,7 @@ ms.locfileid: "36335275"
 ## <a name="join"></a>Join
 有权访问多个表，其中包括请求和异常。
 
-若要找出与返回失败响应的请求相关的异常，可联接 `session_Id` 上的表：
+若要找出与返回失败响应的请求相关的异常，可联接 `operation_Id` 上的表：
 
 ```AIQL
 

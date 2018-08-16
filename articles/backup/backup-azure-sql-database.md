@@ -13,15 +13,15 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/30/2018
+ms.date: 08/02/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: 430490859e6d8a58a54eea267e0c3f16991f74c8
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: c3321fb64c423b1b3c80f48fb97a70cc7dbc83f9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364370"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433558"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>将 SQL Server 数据库备份到 Azure
 
@@ -47,6 +47,8 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 - [分布式可用性组的备份](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/distributed-availability-groups?view=sql-server-2017)存在限制。
 - 不支持 SQL Server Always On 故障转移群集实例 (FCI)。
 - 使用 Azure 门户配置 Azure 备份，以保护 SQL Server 数据库。 目前不支持 Azure PowerShell、Azure CLI 和 REST API。
+
+有关支持/不支持的方案的详细信息，请参阅[常见问题解答部分](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#faq)。
 
 ## <a name="support-for-azure-geos"></a>支持的 Azure 地理区域
 

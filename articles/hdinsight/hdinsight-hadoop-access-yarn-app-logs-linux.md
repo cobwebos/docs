@@ -1,25 +1,20 @@
 ---
-title: 在基于 Linux 的 HDInsight 上访问 Hadoop YARN 应用程序日志 — Azure | Microsoft Docs
+title: 在基于 Linux 的 HDInsight 上访问 Hadoop YARN 应用程序日志 - Azure
 description: 了解如何使用命令行和 Web 浏览器在基于 Linux 的 HDInsight (Hadoop) 群集上访问 YARN 应用程序日志。
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-ms.assetid: 3ec08d20-4f19-4a8e-ac86-639c04d2f12e
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.author: larryfr
-ms.openlocfilehash: 67732b3a4c63408d8fc6ab5ed75b40a0eb043167
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jasonh
+ms.openlocfilehash: 0aa8d76ca97789844482d2b8ad7212c2f61a8ab8
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31392232"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591797"
 ---
 # <a name="access-yarn-application-logs-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上访问 YARN 应用程序日志
 

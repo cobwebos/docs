@@ -1,25 +1,21 @@
 ---
-title: 通过一个 Azure Data Lake Store 帐户使用多个 HDInsight 群集 - Azure | Microsoft Docs
+title: 通过一个 Azure Data Lake Store 帐户使用多个 HDInsight 群集 - Azure
 description: 了解如何通过单个 Data Lake Store 帐户使用多个 HDInsight 群集
 keywords: hdinsight 存储, hdfs, 结构化数据, 非结构化数据, data lake store
 services: hdinsight,storage
-documentationcenter: ''
-tags: azure-portal
-author: nitinme
-manager: jhubbard
-editor: cgronlun
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.author: nitinme
-ms.openlocfilehash: 1d073732b5dd9b9867813d9ffcfad5caa1131d81
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.author: jasonh
+ms.openlocfilehash: 3f928ea7de4346e1860ca05ca0e5a9a8ac1052ce
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37101241"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597097"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-store-account"></a>通过一个 Azure Data Lake Store 帐户使用多个 HDInsight 群集
 

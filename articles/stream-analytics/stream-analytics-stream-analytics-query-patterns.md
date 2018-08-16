@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 4a37ac6cdf5d13556c6a3e293c19c00ad36e4495
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 7f171fa1eb8c91b55119d0308b57fe3d3e70261b
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364159"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578885"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>常用流分析使用模式的查询示例
 
@@ -27,8 +27,7 @@ Azure 流分析中的查询以类似 SQL 的查询语言表示。 这些语言�
 
 ## <a name="work-with-complex-data-types-in-json-and-avro"></a>使用 JSON 和 AVRO 中的复杂数据类型 
 Azure 流分析支持处理采用 CSV、JSON 和 Avro 数据格式的事件。
-JSON 和 Avro 都可能包含嵌套对象（记录）或数组等复杂类型。 若要使用这些复杂的数据类型，请参阅[介绍如何处理 JSON 和 AVRO 页面中的复杂数据类型的 MSDN 页面](
-https://msdn.microsoft.com/azure/stream-analytics/reference/complex-data-types-stream-analytics)。
+JSON 和 Avro 都可能包含嵌套对象（记录）或数组等复杂类型。 若要使用这些复杂数据类型，请参阅[解析 JSON 和 AVRO 数据](stream-analytics-parsing-json.md)一文。
 
 
 ## <a name="query-example-convert-data-types"></a>查询示例：转换数据类型

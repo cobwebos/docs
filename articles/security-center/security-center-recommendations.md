@@ -3,7 +3,7 @@ title: 管理 Azure 安全中心的安全建议 | Microsoft Docs
 description: 本文档介绍 Azure 安全中心中的建议如何帮助你保护 Azure 资源并保持符合安全策略。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 86c50c9f-eb6b-4d97-acb3-6d599c06133e
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2018
-ms.author: terrylan
-ms.openlocfilehash: caeef52ed8eb456bbec015f1766a95aa5ceb49f8
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.date: 08/05/2018
+ms.author: rkarlin
+ms.openlocfilehash: 0581ddc4289f604533bae3650618fada15e02bef
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39367100"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522231"
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>管理 Azure 安全中心的安全建议
 本文档介绍如何使用 Azure 安全中心中的建议帮助你保护 Azure 资源。
@@ -50,6 +50,8 @@ ms.locfileid: "39367100"
 若要查看每项建议的详细信息，请选择“概述”下的“建议”磁贴。 这将打开“建议”。
 
 ![筛选器建议][2]
+
+可筛选建议。 要筛选建议，请选择“建议”边栏选项卡上的“筛选器”。 此时会打开“筛选器”边栏选项卡，选择要查看严重性和状态值。
 
 建议以表格形式显示，其中每一行都表示一个特定的建议。 此表的列有：
 
@@ -124,13 +126,6 @@ ms.locfileid: "39367100"
 | 从订阅中删除具有所有者权限的外部帐户 | 建议从订阅中删除具有所有者权限的外部帐户，以防止发生未受监视的访问。 |
 | 从订阅中删除已弃用的帐户 | 建议从订阅中删除已弃用的帐户。 |
 | 从订阅中删除具有所有者权限的已弃用帐户 | 建议从订阅中删除具有所有者权限的已弃用帐户。 |
-可筛选和取消建议。
-
-1. 选择“建议”边栏选项卡上的“筛选器”。 此时会打开“筛选器”边栏选项卡，选择要查看严重性和状态值。
-
-2. 如果确定某个建议不适用，即可取消此建议，将其从视图中筛除。 有两种方法可取消建议。 一种方法是右键单击项目，并选择“取消”。 另一种方法是将鼠标悬停在某个项目上，单击右侧显示的三个点，选择“取消”。 可以单击“筛选器”，选择“已取消”，查看已取消的建议。
-
-    ![取消建议][3]
 
 ### <a name="apply-recommendations"></a>应用建议
 查看所有建议后，决定应首先应用哪个建议。 我们建议使用严重性等级作为主要参数来评估应首先应用的建议。
@@ -150,4 +145,3 @@ ms.locfileid: "39367100"
 <!--Image references-->
 [1]: ./media/security-center-recommendations/recommendations-tile.png
 [2]: ./media/security-center-recommendations/filter-recommendations.png
-[3]: ./media/security-center-recommendations/dismiss-recommendations.png

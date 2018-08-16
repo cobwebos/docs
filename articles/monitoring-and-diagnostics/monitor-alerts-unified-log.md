@@ -8,19 +8,23 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: f36f05789424cfd3213525dd501333f852a0d9c2
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: fd278ad6865c871ed0a5ed9272c9fadfca0f38db
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971714"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440423"
 ---
 # <a name="log-alerts-in-azure-monitor---alerts"></a>Azure Monitor - 警报中的日志警报 
-本文提供日志警报的详细信息，该警报是新版 [Azure 警报](monitoring-overview-unified-alerts.md)中支持的警报类型之一，允许用户使用 Azure 的分析平台作为警报的基础。 有关使用日志的指标警报的详细信息，请参阅[准实时指标警报](monitoring-near-real-time-metric-alerts.md)
+本文提供日志警报的详细信息，该警报是新版 [Azure 警报](monitoring-overview-unified-alerts.md)中支持的警报类型之一，允许用户使用 Azure 分析平台作为警报的基础。
 
 
-日志警报包含为 [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) 或 [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events) 创建的日志搜索规则
+日志警报包含为 [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) 或 [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events) 创建的日志搜索规则。 有关日志警报的定价详细信息，请访问 [Azure Monitor 定价](https://azure.microsoft.com/en-us/pricing/details/monitor/)页。 在 Azure 帐单中，日志警报表示为 `microsoft.insights/scheduledqueryrules`，并且：
+- Application Insights 上的日志警报显示确切的警报名称以及资源组和警报属性
+- Log Analytics 上的日志警报显示 `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` 形式的警报名称以及资源组和警报属性
 
+    > [!NOTE]
+    > 所有已保存的搜索、计划和使用 Log Analytics API 创建的操作的名称必须小写。 如果使用了 `<, >, %, &, \, ?, /` 等无效字符，帐单中将以 `_` 替换这些字符。
 
 ## <a name="log-search-alert-rule---definition-and-types"></a>日志搜索警报规则 - 定义和类型
 
@@ -104,7 +108,7 @@ ms.locfileid: "38971714"
 - Azure 资源管理器模板
 
 ### <a name="azure-portal"></a>Azure 门户
-由于引入了[新的 Azure 警报](monitoring-overview-unified-alerts.md)，现在用户可以从单一位置以类似的步骤管理 Azure 门户中所有类型的警报。 详细了解如何[使用新的 Azure 警报](monitor-alerts-unified-usage.md)。
+由于引入了[新的 Azure 警报](monitoring-overview-unified-alerts.md)，现在用户可以从单一位置以类似的使用步骤管理 Azure 门户中所有类型的警报。 详细了解如何[使用新的 Azure 警报](monitor-alerts-unified-usage.md)。
 
 另外，用户可以在 Azure 中精选的 Analytics 平台中完善其查询，然后通过保存查询将它们导入以在警报中使用。 要遵循的步骤如下：
 - *对于 Application Insights*：转到 Analytics 门户，验证查询及其结果。 然后，以唯一名称将其保存到“共享查询”。
@@ -131,7 +135,7 @@ ms.locfileid: "38971714"
  
 
 ## <a name="next-steps"></a>后续步骤
-* 了解 [Azure 中的日志警报](monitor-alerts-unified-log-webhook.md)。
+* 了解 [Azure 日志警报中的 Webhook](monitor-alerts-unified-log-webhook.md)。
 * 了解新的 [Azure 警报](monitoring-overview-unified-alerts.md)。
 * 详细了解 [Application Insights](../application-insights/app-insights-analytics.md)。
 * 详细了解 [Log Analytics](../log-analytics/log-analytics-overview.md)。    

@@ -1,26 +1,21 @@
 ---
-title: 使用 Hive ODBC 驱动程序将 Excel 连接到 Hadoop - Azure HDInsight | Microsoft Docs
+title: 使用 Hive ODBC 驱动程序将 Excel 连接到 Hadoop - Azure HDInsight
 description: 了解如何设置和使用针对 Excel 的 Microsoft Hive ODBC 驱动程序来从 Microsoft Excel 查询 HDInsight 群集中的数据。
 keywords: hadoop excel,hive excel,hive odbc
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-tags: azure-portal
-editor: cgronlun
-ms.assetid: a7665a14-0211-4521-b3e7-3b26e8029cc0
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jgao
-ms.openlocfilehash: 26234ca17d833fef01ad5a6465824c99d84cc556
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: 4153504e7d0fb6dff4b8a675b301f54fb3588e46
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200497"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590861"
 ---
 # <a name="connect-excel-to-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 Azure HDInsight 中的 Hadoop
 
@@ -56,7 +51,7 @@ Microsoft 的大数据解决方案将 Microsoft 商业智能 (BI) 组件与已�
 4. 选择“Microsoft Hive ODBC 驱动程序”，并单击“完成”。 应当会看到“Microsoft Hive ODBC 驱动程序 DNS 设置”对话框。
 5. 键入或选择以下值：
    
-   | 属性 | 说明 |
+   | 属性 | Description |
    | --- | --- |
    |  数据源名称 |为数据源提供名称 |
    |  主机 |输入 &lt;HDInsightClusterName>.azurehdinsight.net。 例如，myHDICluster.azurehdinsight.net |
@@ -70,7 +65,7 @@ Microsoft 的大数据解决方案将 Microsoft 商业智能 (BI) 组件与已�
    
     在单击“高级选项”时，需要注意某些重要参数：
    
-   | 参数 | 说明 |
+   | 参数 | Description |
    | --- | --- |
    |  使用本机查询 |选择此项时，ODBC 驱动程序不会尝试将 TSQL 转换为 HiveQL。 仅 100% 确定提交的是纯 HiveQL 语句时，才应使用此项。 连接 SQL Server 或 Azure SQL 数据库时，应将此项保留为未选中状态。 |
    |  每块提取的行数 |提取大量记录时，可能需要调整此参数以确保最佳性能。 |

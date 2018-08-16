@@ -6,20 +6,28 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 07/19/2018
+ms.date: 08/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3303050311a30473bb973ac4f49bbeb707c16a33
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 6eb5cd9a086522bfe5125189f87a2498dda0ef7e
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173803"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493568"
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Azure 事件网格用于订阅的事件架构
 
 本文提供 Azure 订阅事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
 Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资源中的更改相关。 主要区别是资源组针对资源组中的资源发出事件，Azure 订阅针对跨订阅的资源发出事件。
+
+已为发送到 `management.azure.com` 的 PUT、PATCH 和 DELETE 操作创建资源事件。 POST 和 GET 操作不会创建事件。 发送到数据面板的操作（如 `myaccount.blob.core.windows.net`）不会创建事件。
+
+当订阅 Azure 订阅的事件时，终结点接收该订阅的所有事件。 事件可能包括要查看的事件（例如更新虚拟机），以及可能不重要的事件（例如在部署历史记录中编写新条目）。 可以接收终结点上的所有事件并编写处理待处理事件的代码，也可以在创建事件订阅时设置筛选器。
+
+若要以编程方式处理事件，可通过查看 `operationName` 值对事件进行排序。 例如，事件终结点可能只处理值等于 `Microsoft.Compute/virtualMachines/write` 或 `Microsoft.Storage/storageAccounts/write` 的操作的事件。
+
+事件主题是作为操作目标的资源的资源 ID。 若要筛选资源的事件，请在创建事件订阅时提供该资源 ID。 有关示例脚本，请参阅[订阅和筛选资源组 - PowerShell](scripts/event-grid-powershell-resource-group-filter.md) 或[订阅和筛选资源组 - Azure CLI](scripts/event-grid-cli-resource-group-filter.md)。 若要按资源类型筛选，请使用以下格式的值：`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
 ## <a name="available-event-types"></a>可用事件类型
 
@@ -36,7 +44,7 @@ Azure 订阅从 Azure 资源管理器发出管理事件，例如，在创建 VM 
 
 ## <a name="example-event"></a>示例事件
 
-以下示例显示了资源创建事件的架构： 
+以下示例展示了 ResourceWriteSuccess 事件的架构。 具有不同 `eventType` 值的 ResourceWriteFailure 和 ResourceWriteCancel 事件会使用相同的模式。
 
 ```json
 [{
@@ -96,7 +104,7 @@ Azure 订阅从 Azure 资源管理器发出管理事件，例如，在创建 VM 
 }]
 ```
 
-资源删除事件的架构与此类似：
+以下示例展示了 ResourceDeleteSuccess 事件的架构。 具有不同 `eventType` 值的 ResourceDeleteFailure 和 ResourceDeleteCancel 事件会使用相同的模式。
 
 ```json
 [{
@@ -184,7 +192,7 @@ Azure 订阅从 Azure 资源管理器发出管理事件，例如，在创建 VM 
 | authorization | 对象 | 操作请求的授权。 |
 | 声明 | 对象 | 声明的属性。 有关详细信息，请参阅 [JWT 规范](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)。 |
 | correlationId | 字符串 | 用于故障排除的操作 ID。 |
-| httpRequest | 对象 | 操作的详细信息。 |
+| httpRequest | 对象 | 操作的详细信息。 仅在更新现有资源或删除资源时才包含此对象。 |
 | resourceProvider | 字符串 | 执行该操作的资源提供程序。 |
 | resourceUri | 字符串 | 操作中资源的 URI。 |
 | operationName | 字符串 | 执行的操作。 |

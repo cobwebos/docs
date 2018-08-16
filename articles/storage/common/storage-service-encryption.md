@@ -1,33 +1,35 @@
 ---
 title: 静态数据的 Azure 存储服务加密 | Microsoft Docs
-description: 使用 Azure 存储服务加密功能可在存储数据时在服务端加密 Azure Blob 存储，并在检索数据时解密数据。
+description: 存储数据时，使用 Azure 存储服务加密功能在服务端加密 Azure 托管磁盘、Azure Blob 存储、Azure 文件、Azure 队列存储和 Azure 表存储；检索数据时，使用此功能来解密存储。
 services: storage
 author: lakasa
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 08/01/2018
 ms.author: lakasa
-ms.openlocfilehash: f35697139a4be49be8a645cfd4d451ad8e3c8094
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.component: common
+ms.openlocfilehash: 5b676bbc764cb5689a6c80e81f597776fe80413e
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412349"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39520718"
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>静态数据的 Azure 存储服务加密
-静态数据的 Azure 存储服务加密可帮助保护数据，使组织能够信守在安全性与合规性方面所做的承诺。 使用此功能，Azure 存储平台可以先自动加密数据，然后将其保存到 Azure Blob 存储、Azure 文件或 Azure 队列存储，并在检索之前解密数据。 存储服务加密中的加密、静态加密、解密和密钥管理的处理对用户是透明的。 通过 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)加密所有写入 Azure 存储平台的数据，AES 加密是现在最强大的分组加密之一。
+静态数据的 Azure 存储服务加密可帮助保护数据，使组织能够信守在安全性与合规性方面所做的承诺。 使用此功能，Azure 存储平台可以先自动加密数据，然后将其保存到 Azure 托管磁盘、Azure Blob 存储、Azure 文件或 Azure 队列存储，并在检索之前解密数据。 存储服务加密中的加密、静态加密、解密和密钥管理的处理对用户是透明的。 通过 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)加密所有写入 Azure 存储平台的数据，AES 加密是现在最强大的分组加密之一。
 
 针对所有新的和现有的存储帐户启用存储服务加密，并且不能禁用。 因为数据默认受保护，所以无需修改代码或应用程序，即可使用存储服务加密。
 
 该功能会自动加密以下位置的数据：
 
-- Azure Blob 存储、Azure 文件、Azure 队列存储、Azure 表存储。  
+- Azure 存储服务：
+    - Azure 托管磁盘
+    - Azure Blob 存储
+    - Azure 文件
+    - Azure 队列存储
+    - Azure 表存储。  
 - 两个性能层（标准和高级）。
 - 两个部署模型（Azure 资源管理器模型和经典模型）。
-
-> [!Note]  
-> 存储服务加密不适用于 [Azure 托管磁盘](../../virtual-machines/windows/managed-disks-overview.md)。 我们建议使用 OS 级别的加密（例如 [Azure 磁盘加密](../../security/azure-security-disk-encryption-overview.md)），此类加密在 Windows 上使用行业标准的 [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview)，在 Linux 上使用 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt)，以提供与 KeyVault 集成的加密。
 
 存储服务加密不影响 Azure 存储服务的性能。
 
@@ -55,13 +57,10 @@ ms.locfileid: "39412349"
 没有任何额外费用。
 
 **我可以使用自己的加密密钥吗？**  
-是的，可以使用自己的加密密钥。 有关详细信息，请参阅 [Azure Key Vault 中使用客户托管密钥的存储服务加密](storage-service-encryption-customer-managed-keys.md)。
+对于 Azure Blob 存储和 Azure 文件，是的，可使用自己的加密密钥。 Azure 托管磁盘当前不支持客户管理的密钥。 有关详细信息，请参阅 [Azure Key Vault 中使用客户托管密钥的存储服务加密](storage-service-encryption-customer-managed-keys.md)。
 
 **是否可以吊销加密密钥的访问权限？**  
 是的，如果在 Azure Key Vault 中[使用自己的加密密钥](storage-service-encryption-customer-managed-keys.md)。
-
-**存储服务加密是否适用于 Azure 托管磁盘？**  
-否。存储服务加密不适用于 [Azure 托管磁盘](../../virtual-machines/windows/managed-disks-overview.md)。 我们建议使用 OS 级别的加密（例如 [Azure 磁盘加密](../../security/azure-security-disk-encryption-overview.md)），此类加密在 Windows 上使用行业标准的 [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview)，在 Linux 上使用 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt)，以提供与 KeyVault 集成的加密。
 
 **存储服务加密与 Azure 磁盘加密有何不同？**  
 Azure 磁盘加密在基于 OS 的解决方案（例如 BitLocker、DM-Crypt 和 Azure KeyVault）之间提供集成。 存储服务加密在虚拟机下面的 Azure 存储平台层上提供本机加密。

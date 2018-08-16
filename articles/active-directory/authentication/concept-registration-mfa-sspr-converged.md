@@ -1,6 +1,6 @@
 ---
-title: 针对 Azure AD SSPR 和 MFA 的聚合注册
-description: Azure AD 多重身份验证和自助密码重置注册
+title: Azure AD SSPR 和 MFA 的聚合注册（公共预览版）
+description: Azure AD 多重身份验证和自助密码重置注册（公共预览版）
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
@@ -10,14 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: cdd100d113c3fbeda8ac840d479b065d648ac3ff
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: d6915ce659d96021d4185be3818919fcfb9d4371
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39415650"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492886"
 ---
-# <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication"></a>针对自助密码重置和 Azure 多重身份验证的聚合注册
+# <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication-public-preview"></a>针对自助密码重置和 Azure 多重身份验证的聚合注册（公共预览版）
 
 截至目前，用户需要在两个不同的门户中注册 Azure 多重身份验证 (MFA) 和自助密码重置 (SSPR) 的身份验证方法。 Azure MFA 和 SSPR 使用类似的方法，但这些方法不同时在两个门户注册，这一点让很多用户感到困惑。 这种差异让某些用户无法在需要时使用 Azure MFA 或 SSPR，他们就会呼叫帮助台，而且可能感到沮丧。 现在，用户只需注册一次即可使用 Azure MFA 和 SSPR，不用再针对这些功能注册两次身份验证方法。  
 
@@ -71,10 +71,12 @@ ms.locfileid: "39415650"
 ## <a name="known-issues"></a>已知问题
 
 当用户使用短信注册电话时，默认的 MFA 方法设置为“电话”
-   * 一些用户可能注意到，在其使用短信注册电话号码后，默认的 MFA 方法被设置为“电话”。 用户可按照以下说明更改其默认方法来解决此问题。 
+
+   * 一些用户可能注意到，在其使用短信注册电话号码后，默认的 MFA 方法被设置为“电话”。 用户可以通过遵循[管理安全信息（预览版）](../user-help/security-info-manage-settings.md#change-your-info)一文中的说明更改其默认方法来解决此问题。
 
 在管理员禁用其默认方法后，用户无法访问新的注册体验
-   * 如果用户之前注册的默认 MFA 方法遭到管理员禁用，则这些用户可能无法访问新的注册体验。 示例场景如下： 
+
+   * 如果用户之前注册的默认 MFA 方法遭到管理员禁用，则这些用户可能无法访问新的注册体验。 示例场景如下：
       1. 用户之前注册了电话号码，并将其默认方法设置为“电话”。
       2. 管理员禁止将电话作为租户的 MFA 方法。
       3. 系统在用户登录期间提示其注册，因为其需要注册其他方法以满足租户 SSPR 策略。

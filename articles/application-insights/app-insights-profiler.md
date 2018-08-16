@@ -11,14 +11,14 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
 ms.reviewer: cawa
-ms.date: 07/13/2018
+ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: e4712b94be94eb6d4cf363fc120b72c74f29f0a2
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 6048a17bf50ecac691c7cf687f87e454c54ee9d9
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39057919"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521877"
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>使用 Application Insights 探查实时 Azure Web 应用
 
@@ -33,15 +33,15 @@ Profiler 目前适用于 Web 应用上运行的 ASP.NET 和 ASP.NET Core Web 应
 在部署 Web 应用后，无论是否在源代码中包括了 App Insights SDK，都要执行以下操作：
 
 1. 转到 Azure 门户中的“应用服务”窗格。
-2. 导航到“设置”>“监视”窗格。
+1. 导航到“设置”>“监视”窗格。
 
    ![在应用服务门户上启用 App Insights](./media/app-insights-profiler/AppInsights-AppServices.png)
 
-3. 按窗格中的说明创建新资源，或者选择现有的 App Insights 资源，以便监视 Web 应用。 接受所有默认选项。 默认情况下会启用**代码级诊断**，并且它会启用 Profiler。
+1. 按窗格中的说明创建新资源，或者选择现有的 App Insights 资源，以便监视 Web 应用。 接受所有默认选项。 默认情况下会启用**代码级诊断**，并且它会启用 Profiler。
 
    ![添加 App Insights 站点扩展][Enablement UI]
 
-4. Profiler 现在已随 App Insights 站点扩展安装，并且使用应用服务应用设置启用。
+1. Profiler 现在已随 App Insights 站点扩展安装，并且使用应用服务应用设置启用。
 
     ![Profiler 的应用设置][profiler-app-setting]
 
@@ -167,9 +167,12 @@ Profiler 在 Web 应用中以连续 Web 作业的形式运行。 可以在 [Azur
 * 确保 Web 应用中已启用 Application Insights SDK 2.2 Beta 或更高版本。
 * 确保配置 Web 应用中的 APPINSIGHTS_INSTRUMENTATIONKEY 设置所采用的检测密钥与 Application Insights SDK 使用的检测密钥相同。
 * 确保 Web 应用在 .NET Framework 4.6 上运行。
-* 如果 Web 应用是一个 ASP.NET Core 应用程序，请检查[所需的依赖项](#aspnetcore)。
+* 如果 Web 应用是 ASP.NET Core 应用程序，则必须至少运行 ASP.NET Core 2.0。
 
 启动 Profiler 后，将有短暂的一段预热时间，在此期间，Profiler 会积极收集多种性能跟踪。 此后，Profiler 会每隔一小时收集性能跟踪两分钟。
+
+> [!NOTE]
+> 探查器代理中有一个 bug，使其无法上传从 ASP.NET Core 2.1 上运行的应用程序中获取的跟踪。 我们正在努力修复，很快就会解决。
 
 ### <a name="i-was-using-azure-service-profiler-what-happened-to-it"></a>使用 Azure 服务探查器时出现问题， 原因是什么？
 
@@ -214,14 +217,14 @@ Profiler 在 Web 应用中以连续 Web 作业的形式运行。 可以在 [Azur
 配置 Profiler 时，将对 Web 应用的设置进行更新。 如果你的环境有此要求，则可以手动应用更新。 例如，应用程序在适用于 PowerApps 的 Web 应用环境中运行。
 
 1. 在“Web 应用控制”窗格中，打开“设置”。
-2. 将“.Net Framework 版本”设置为“v4.6”。
-3. 将“Always On”设置为“打开”。
-4. 添加应用设置“APPINSIGHTS_INSTRUMENTATIONKEY”，将值设置为 SDK 使用的同一检测密钥。
-5. 打开“高级工具”。
-6. 选择“转到”打开 Kudu 网站。
-7. 在 Kudu 网站上，选择“站点扩展”。
-8. 从 Azure Web 应用库中安装“Application Insights”。
-9. 重新启动 Web 应用。
+1. 将“.Net Framework 版本”设置为“v4.6”。
+1. 将“Always On”设置为“打开”。
+1. 添加应用设置“APPINSIGHTS_INSTRUMENTATIONKEY”，将值设置为 SDK 使用的同一检测密钥。
+1. 打开“高级工具”。
+1. 选择“转到”打开 Kudu 网站。
+1. 在 Kudu 网站上，选择“站点扩展”。
+1. 从 Azure Web 应用库中安装“Application Insights”。
+1. 重新启动 Web 应用。
 
 ## <a id="profileondemand"></a> 手动触发 Profiler
 
@@ -272,7 +275,7 @@ Profiler 在 Web 应用中以连续 Web 作业的形式运行。 可以在 [Azur
 
 1. 按需 Profiler 会话已成功，但 Application Insights 花费了较长的时间来处理所收集的数据。 如果数据在 15 分钟内未完成处理，则门户将显示一条超时消息。 但是，片刻之后将显示 Profiler 跟踪。 如果发生此情况，目前请直接忽略错误消息。 我们正在积极开发修补程序。
 
-2. Web 应用有一个不具备按需功能的较旧版本的 Profiler 代理。 如果之前启用了 Application Insights Profiler，则可能需要更新 Profiler 代理以开始使用按需功能。
+1. Web 应用有一个不具备按需功能的较旧版本的 Profiler 代理。 如果之前启用了 Application Insights Profiler，则可能需要更新 Profiler 代理以开始使用按需功能。
   
 请执行以下步骤来检查并安装最新的 Profiler：
 
@@ -281,25 +284,25 @@ Profiler 在 Web 应用中以连续 Web 作业的形式运行。 可以在 [Azur
     * **APPINSIGHTS_PORTALINFO**：ASP.NET
     * **APPINSIGHTS_PROFILERFEATURE_VERSION**：1.0.0 如果这些设置有任何一个未设置，请转到 Application Insights 启用窗格来安装最新的站点扩展。
 
-2. 转到应用服务门户中的 Application Insights 窗格。
+1. 转到应用服务门户中的 Application Insights 窗格。
 
     ![从应用服务门户中启用 Application Insights][enable-app-insights]
 
-3. 如果在下面的页面中看到了“更新”按钮，请单击它以更新 Application Insights 站点扩展，这将安装最新的 Profiler 代理。
+1. 如果在下面的页面中看到了“更新”按钮，请单击它以更新 Application Insights 站点扩展，这将安装最新的 Profiler 代理。
 ![更新站点扩展][update-site-extension]
 
-4. 然后单击“更改”来确保启用 Profiler，并选择“确定”来保存更改。
+1. 然后单击“更改”来确保启用 Profiler，并选择“确定”来保存更改。
 
     ![更改并保存 App Insights][change-and-save-appinsights]
 
-5. 返回到应用服务的“应用设置”选项卡来复查是否已设置了以下应用设置项：
+1. 返回到应用服务的“应用设置”选项卡来复查是否已设置了以下应用设置项：
     * **APPINSIGHTS_INSTRUMENTATIONKEY**：替换为 Application Insights 的正确检测密钥。
     * **APPINSIGHTS_PORTALINFO**：ASP.NET
     * **APPINSIGHTS_PROFILERFEATURE_VERSION**：1.0.0
 
     ![Profiler 的应用设置][app-settings-for-profiler]
 
-6. （可选）检查扩展版本，并确保没有任何可用的更新。
+1. （可选）检查扩展版本，并确保没有任何可用的更新。
 
     ![检查是否有扩展更新][check-for-extension-update]
 

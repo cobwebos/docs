@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: e9d1e348ccdccfc72a8e60d70dda1c939c2393af
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f2a95ac879dd2d6b1af3d50e1be53efac26331c4
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004765"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525546"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参考 - IoT 中心配额和限制
 
@@ -43,7 +43,7 @@ ms.locfileid: "39004765"
 | 孪生（设备和模块）读取<sup>1</sup> | 10/秒 | 高于 10/秒或 1/秒/单位 | 50/秒/单位 |
 | 孪生更新（设备和模块）<sup>1</sup> | 10/秒 | 高于 10/秒或 1/秒/单位 | 50/秒/单位 |
 | 作业操作<sup>1</sup> <br/> （创建、更新、列表、删除） | 1.67/秒/单位（100/分钟/单位） | 1.67/秒/单位（100/分钟/单位） | 83.33/秒/单位（5000/分钟/单位） |
-| 作业每设备操作吞吐量<sup>1</sup> | 10/秒 | 高于 10/秒或 1/秒/单位 | 50/秒/单位 |
+| 作业设备操作<sup>1</sup> <br/> （更新孪生、调用直接方法） | 10/秒 | 高于 10/秒或 1/秒/单位 | 50/秒/单位 |
 | 配置和 Edge 部署<sup>1</sup> <br/> （创建、更新、列表、删除） | 0.33/秒/单位（20/分钟/单位） | 0.33/秒/单位（20/分钟/单位） | 0.33/秒/单位（20/分钟/单位） |
 
 

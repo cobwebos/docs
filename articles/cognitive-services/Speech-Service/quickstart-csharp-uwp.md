@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 549a8fd29cf1f986da0af1ae49dbf0e5335603bd
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: d1245b07ac0de680c13542b9af86b25bdf517c21
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325694"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576128"
 ---
 # <a name="quickstart-recognize-speech-in-a-uwp-app-using-the-speech-sdk"></a>快速入门：使用语音 SDK 在 UWP 应用中识别语音
 
@@ -60,7 +60,7 @@ ms.locfileid: "39325694"
 
     ![安装 Microsoft.CognitiveServices.Speech NuGet 包](media/sdk/qs-csharp-uwp-05-nuget-install-0.5.0.png "安装 Nuget 包")
 
-1. 接受对话框中出现的许可证。
+1. 接受显示的许可证。
 
     ![接受许可证](media/sdk/qs-csharp-uwp-06-nuget-license.png "Accept the license")
 

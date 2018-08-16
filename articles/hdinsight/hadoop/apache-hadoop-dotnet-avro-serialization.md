@@ -1,26 +1,21 @@
 ---
-title: 串行化 Hadoop 中的数据 - Microsoft Avro Library - Azure | Microsoft Docs
+title: 使用 Microsoft Avro Library 序列化 Hadoop 中的数据 - Azure
 description: 了解如何使用 Microsoft Avro Library 将 Hadoop on HDInsight 中的数据串行化和反序列化，以将其保留在内存、数据库或文件中。
 keywords: avro, hadoop avro
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: c78dc20d-5d8d-4366-94ac-abbe89aaac58
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jgao
+ms.author: jasonh
 ms.custom: hdiseo17may2017
-ms.openlocfilehash: 0d195ab3b84a522eae4010f3b08a829f7056a35f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 59e6116d1c325e32b4bead0ab44e00fb8682a205
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202334"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595590"
 ---
 # <a name="serialize-data-in-hadoop-with-the-microsoft-avro-library"></a>使用 Microsoft Avro Library 序列化 Hadoop 中的数据
 

@@ -1,24 +1,18 @@
 ---
-title: 使用 Azure HDInsight 对 YARN 进行故障排除 | Microsoft Docs
+title: Azure HDInsight 中的 YARN 故障排除
 description: 获取有关使用 Apache Hadoop YARN 和 Azure HDInsight 的常见问题的解答。
-keywords: Azure HDInsight, YARN, 常见问题解答, 故障排除指南, 常见问题
-services: Azure HDInsight
-documentationcenter: na
-author: arijitt
-manager: ''
-editor: ''
-ms.assetid: F76786A9-99AB-4B85-9B15-CA03528FC4CD
+services: hdinsight
 ms.service: hdinsight
-ms.devlang: na
-ms.topic: article
+author: jasonwhowell
+ms.author: jasonh
+ms.topic: conceptual
 ms.date: 11/2/2017
-ms.author: arijitt
-ms.openlocfilehash: 338d678fb31a86046b8bc6424d0e8aac2de1a0c5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f1f332164b5e954b2576f9fbde519241c7288006
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31407040"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596458"
 ---
 # <a name="troubleshoot-yarn-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 YARN 进行故障排除
 

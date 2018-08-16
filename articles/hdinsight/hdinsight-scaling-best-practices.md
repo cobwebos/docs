@@ -1,24 +1,20 @@
 ---
-title: 缩放群集大小 - Azure HDInsight | Microsoft Docs
+title: 缩放群集大小 - Azure HDInsight
 description: 根据工作负荷缩放 HDInsight 群集。
 services: hdinsight
-documentationcenter: ''
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ''
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: ashish
-ms.openlocfilehash: 8b76d7d0441a5c1c25ad17b73083ec0e4feef1fe
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2f1de608a8273d7be50e4ad432ab72052fc0e228
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596834"
 ---
 # <a name="scale-hdinsight-clusters"></a>缩放 HDInsight 群集
 

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2017
 ms.author: diberry
-ms.openlocfilehash: 8cafe2be190988cbcbe8da616fe17c9a35c722f3
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: cba156d784bfcdd2586073ab5562faf604569cd8
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226017"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505522"
 ---
 # <a name="plan-your-luis-app"></a>计划 LUIS 应用
 
@@ -65,7 +65,7 @@ LUIS 为诸如 `Number` 这样的常见类型提供[预生成实体](luis-prebui
 
 ![编号预生成实体](./media/luis-plan-your-app/number-entity.png)
 
-请参阅[数据提取](luis-concept-data-extraction.md#prebuilt-entity-data)，详细了解如何从终结点 JSON 查询响应提取正则表达式实体。 
+请参阅[数据提取](luis-concept-data-extraction.md#prebuilt-entity-data)，详细了解如何从终结点 JSON 查询响应提取预生成实体。 
 
 ### <a name="list-entity"></a>列表实体 
 列表实体是显式指定的值列表。 每个值都包含一个或多个同义词。 在旅行应用中，可选择创建列表实体表示机场名称。

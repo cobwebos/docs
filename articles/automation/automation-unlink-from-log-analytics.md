@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/04/2018
+ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f51103045f6a0cac1b1ed4f32200eaf7bef9cf24
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 1328ce8c306188c32bce5385f58f118a63c08deb
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193870"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426527"
 ---
 # <a name="how-to-unlink-your-automation-account-from-a-log-analytics-workspace"></a>如何从 Log Analytics 工作区取消链接自动化帐户
 
@@ -33,9 +33,7 @@ Azure 自动化与 Log Analytics 集成，以便不仅支持对所有自动化�
 
 ## <a name="unlink-workspace"></a>取消链接工作区
 
-1. 从 Azure 门户中打开自动化帐户，并在“自动化帐户”页左侧的“相关资源”部分下，选择“取消链接工作区”。
-
-   ![“取消链接工作区”选项](media/automation-unlink-from-log-analytics/automation-unlink-workspace-option.png)
+1. 从 Azure 门户中打开自动化帐户，并在“自动化帐户”页左侧的“相关资源”部分下，选择“链接工作区”。
 
 1. 在“取消链接工作区”页上，单击“取消链接工作区”。
 
@@ -47,9 +45,9 @@ Azure 自动化与 Log Analytics 集成，以便不仅支持对所有自动化�
 
 如果使用了“更新管理”解决方案，可能会选择要删除在删除该解决方案后不再需要的以下项。
 
-* 管理计划。  （每个计划都将具有与所创建的更新部署匹配的名称）
+* 更新计划 - 每个计划都将具有与所创建的更新部署匹配的名称
 
-* 为解决方案创建的混合辅助角色组。  （每个混合辅助角色组的命名将类似于 machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8）。
+* 为解决方案创建的混合辅助角色组 - 每个混合辅助角色组的命名都将类似于 machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8。
 
 如果使用了“在非工作时间启动/停止 VM”解决方案，可能会选择要删除在删除该解决方案后不再需要的以下项。
 

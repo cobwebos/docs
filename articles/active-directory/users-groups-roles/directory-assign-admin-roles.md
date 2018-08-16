@@ -14,24 +14,27 @@ ms.date: 07/25/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 5d6254efbb6051bf4fcd01abd4fbf858b0211319
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: c6c388bb98d189d91703c0ce82971b3ec4da4150
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399934"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505505"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>在 Azure Active Directory 中分配管理员角色
 
 使用 Azure Active Directory (Azure AD) 时，可以指定不同的管理员来执行不同的功能。 可以在 Azure AD 门户中指定管理员用于执行各种任务，例如，添加或更改用户、分配管理角色、重置用户密码、管理用户许可证，以及管理域名。
 
 ## <a name="details-about-the-global-administrator-role"></a>有关全局管理员角色的详细信息
+
 全局管理员有权访问所有管理功能。 默认情况下，系统会将注册 Azure 订阅的人员指派为目录的全局管理员角色。 只有全局管理员才能分配其他管理员角色。
 
 ## <a name="assign-or-remove-administrator-roles"></a>分配或删除管理员角色
+
 若要了解如何在 Azure Active Directory 中向用户分配管理角色，请参阅[在 Azure Active Directory 中向用户分配管理角色](../fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
 ## <a name="available-roles"></a>可用的角色
+
 提供以下管理员角色：
 
 * **[应用程序管理员](#application-administrator)**：此角色中的用户可以创建和管理企业应用程序、应用程序注册和应用程序代理设置的所有方面。 此角色还可以同意委派权限，以及除 Microsoft Graph 和 Azure AD Graph 之外的应用程序权限。 在创建新应用程序注册或企业应用程序时，不会将此角色的成员添加为所有者。
@@ -48,13 +51,13 @@ ms.locfileid: "39399934"
   > [!NOTE]
   > 若要在 Azure 中部署 Exchange ActiveSync 条件访问策略，用户还必须是全局管理员。
   
-* **[设备管理员](#device-administrators)**：具有此角色的用户将成为已加入 Azure Active Directory 的所有 Windows 10 设备上的本地计算机管理员。 他们无权管理 Azure Active Directory 中的设备对象。
+* **[设备管理员](#device-administrators)**：此角色只能作为[设备设置](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/)中的其他本地管理员进行分配。 拥有此角色的用户成为所有已加入 Azure Active Directory 的 Windows 10 设备上的本地计算机管理员。 他们无权管理 Azure Active Directory 中的设备对象。 
 
-* **[目录读取者](#directory-readers)**：这是一个遗留的角色，分配给不支持[许可框架](../develop/active-directory-integrating-applications.md)的应用程序。 不应将它分配给任何用户。
+* **[目录读取者](#directory-readers)**：这是一个遗留的角色，分配给不支持[许可框架](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)的应用程序。 不应将它分配给任何用户。
 
 * **[目录同步帐户](#directory-synchronization-accounts)**：请勿使用。 此角色自动分配给 Azure AD Connect 服务，不可用于其他任何用途。
 
-* **[目录写入者](#directory-writers)**：这是一个遗留的角色，分配给不支持[许可框架](../develop/active-directory-integrating-applications.md)的应用程序。 不应将它分配给任何用户。
+* **[目录写入者](#directory-writers)**：这是一个遗留的角色，分配给不支持[许可框架](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)的应用程序。 不应将它分配给任何用户。
 
 * **[Dynamics 365 服务管理员/CRM 服务管理员](#dynamics-365-service-administrator)**：具有此角色的用户在 Microsoft Dynamics 365 Online（如果存在此服务）中拥有全局权限，并可以管理支持票证和监视服务运行状况。 有关详细信息，请参阅[使用服务管理员角色管理租户](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant)。
 
@@ -353,15 +356,13 @@ ms.locfileid: "39399934"
 | microsoft.aad.directory/ConditionalAccessPolicy/Update/Owners | 更新 Azure Active Directory 中的 ConditionalAccessPolicys.Owners 属性。 |
 
 ### <a name="device-administrators"></a>设备管理员
-此角色的成员将添加到已加入 Azure AD 的设备上的本地管理员组。
+
+拥有此角色的用户成为所有已加入 Azure Active Directory 的 Windows 10 设备上的本地计算机管理员。 他们无权管理 Azure Active Directory 中的设备对象。
 
   > [!NOTE]
   > 此角色从[用户角色](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)继承其他权限。
   >
   >
-
-| **操作** | **说明** |
-| --- | --- |
 
 ### <a name="directory-readers"></a>目录读者
 可以读取基本目录信息。 用于授予对应用程序的访问权限。

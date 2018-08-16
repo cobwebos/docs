@@ -2,23 +2,19 @@
 title: 在 Azure 门户中启用存储度量值 | Microsoft Docs
 description: 如何为 Blob、队列、表和文件服务启用存储度量值
 services: storage
-documentationcenter: ''
 author: roygara
-manager: jeconnoc
-editor: tysonn
-ms.assetid: 0407adfc-2a41-4126-922d-b76e90b74563
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/14/2017
 ms.author: rogarana
-ms.openlocfilehash: 0caa4eff80877ad4bf8d501a276e82922b1a84c7
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: common
+ms.openlocfilehash: a12f2f3775808edb2045be5a1d955280f515ff7d
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39529245"
 ---
 # <a name="enabling-azure-storage-metrics-and-viewing-metrics-data"></a>启用 Azure 存储度量值并查看度量值数据
 [!INCLUDE [storage-selector-portal-enable-and-view-metrics](../../../includes/storage-selector-portal-enable-and-view-metrics.md)]
@@ -115,8 +111,8 @@ blobClient.SetServiceProperties(properties);
 
 > [!NOTE]
 > 从 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/) 0.8.0 版本开始，可以查看和下载分析度量表。
-> 
-> 
+>
+>
 
 要以编程方式访问分析表，请注意如果存储帐户中列出这些表，将不显示它们。 可按名称直接访问它们，也可使用 .NET 客户端库中的 [CloudAnalyticsClient API](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.analytics.cloudanalyticsclient.aspx) 查询表名。
 
@@ -148,6 +144,8 @@ blobClient.SetServiceProperties(properties);
 * 请求类型是 all（在这种情况下是摘要行）或可识别的特定 API，如 QueryEntity 或 UpdateEntity。
 
 上面的示例数据显示一分钟的所有记录（从上午 11:00 开始），因此，QueryEntities 请求数加 QueryEntity 请求数再加 UpdateEntity 请求数的和为 7，这是显示在 user:All 行上的总数。 同样，通过计算 ((143.8 * 5) + 3 + 9)/7，可以在 user:All 行得到平均端到端延迟为 104.4286。
+
+请注意，Blob 每小时指标设置同时应用于 Blob 容量指标 ($MetricsCapacityBlob) 和每小时 Blob 事务指标 ($MetricsHourPrimaryTransactionsBlob)。 这两种指标同时启用或禁用，并使用相同的保留策略。
 
 ## <a name="metrics-alerts"></a>度量警报
 应考虑在 [Azure 门户](https://portal.azure.com)中设置警报，以便存储指标可以自动通知存储服务行为的重要更改。 如果使用存储资源管理器工具下载这种采用分隔格式的指标数据，则可以使用 Microsoft Excel 分析数据。 有关可用存储资源管理器工具的列表，请参阅 [Azure 存储客户端工具](storage-explorers.md)。 可以在“警报规则”窗格中（可在存储帐户菜单窗格中的“监视”下进行访问）配置警报。

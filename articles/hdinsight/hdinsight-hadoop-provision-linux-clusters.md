@@ -1,26 +1,21 @@
 ---
-title: 针对 Hadoop、Spark、Kafka、HBase 或 ML Services 的群集设置 — Azure HDInsight | Microsoft Docs
+title: 针对 Hadoop、Spark、Kafka、HBase 或 ML Services 的群集设置 - Azure HDInsight
 description: 通过浏览器、Azure CLI、Azure PowerShell、REST 或 SDK 为 HDInsight 设置 Hadoop、Kafka、Spark、HBase、ML Services 或 Storm 群集。
 keywords: hadoop 群集设置, kafka 群集设置, spark 群集设置, 什么是 hadoop 群集
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 23a01938-3fe5-4e2e-8e8b-3368e1bbe2ca
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jgao
-ms.openlocfilehash: eddbd3f171cee9df9ff306368df47501ff9dcfca
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.author: jasonh
+ms.openlocfilehash: 0cb3840c0ce40e062b4de0b7bbd5c9e324d6081f
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051587"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595835"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>使用 Hadoop、Spark、Kafka 等等在 HDInsight 中设置群集
 
@@ -203,7 +198,7 @@ HDInsight 群集的成本取决于节点数和节点的虚拟机大小。
 - [群集大小](#cluster-size)
 - 高级设置
   - [脚本操作](#customize-clusters-using-script-action)
-  - 虚拟网络[](#use-virtual-network)
+  - [虚拟网络](#use-virtual-network)
 
 ## <a name="install-hdinsight-applications-on-clusters"></a>在群集上安装 HDInsight 应用程序
 

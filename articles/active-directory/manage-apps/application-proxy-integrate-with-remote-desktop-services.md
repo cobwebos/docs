@@ -15,12 +15,12 @@ ms.date: 06/27/2018
 ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 61ac0d823322b919952b7ea426c447e070a09fc1
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 5d8af50e3007342a5cd46e4862623f2cf7145172
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363190"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480415"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理发布远程桌面
 
@@ -64,14 +64,14 @@ ms.locfileid: "39363190"
 ### <a name="publish-the-rd-host-endpoint"></a>发布 RD 主机终结点
 
 1. 使用以下值[发布新的应用程序代理应用程序](application-proxy-publish-azure-portal.md)：
-   - 内部 URL：https://\<rdhost\>.com/，其中，\<rdhost\> 是 RD Web 和 RD 网关共享的共用根。
+   - 内部 URL：`https://\<rdhost\>.com/`，其中，`\<rdhost\>` 是 RD Web 和 RD 网关共享的共用根。
    - 外部 URL：系统会根据应用程序的名称自动填充此字段，但可以修改它。 用户访问 RDS 时，会转到此 URL。
    - 预身份验证方法：Azure Active Directory
    - 转换 URL 标头：否
 2. 将用户分配到已发布的 RD 应用程序。 确保这些用户也都有权访问 RDS。
 3. 将应用程序的单一登录方法保留为“已禁用 Azure AD 单一登录”。 用户必须在 Azure AD 和 RD Web 上各执行身份验证一次，但可以单一登录到 RD 网关。
 4. 转到“Azure Active Directory” > “应用注册” > *应用程序* > “设置”。
-5. 选择“属性”并将“主页 URL”字段更新为指向 RD Web 终结点（如 https://\<rdhost\>.com/RDWeb）。
+5. 选择“属性”并将“主页 URL”字段更新为指向 RD Web 终结点（如 `https://\<rdhost\>.com/RDWeb`）。
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>将 RDS 流量定向到应用程序代理
 

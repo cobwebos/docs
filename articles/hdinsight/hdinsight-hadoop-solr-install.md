@@ -1,25 +1,20 @@
 ---
-title: 使用脚本操作在 Hadoop 群集上安装 Solr — Azure | Microsoft Docs
+title: 使用脚本操作在 Hadoop 群集上安装 Solr - Azure
 description: 了解如何使用 Solr 通过脚本操作自定义 HDInsight 群集。
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: b1e6f338-8ac1-4b38-bbb5-2f7388b9de3b
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2016
-ms.author: nitinme
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6445bcdc361bcda3beb6abcb6196fecc9c6c0024
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: d9c2742081ec83a52f7029814acd7b04a2f0fdb7
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952869"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595658"
 ---
 # <a name="install-and-use-solr-on-windows-based-hdinsight-clusters"></a>在基于 Windows 的 HDInsight 群集上安装并使用 Solr
 

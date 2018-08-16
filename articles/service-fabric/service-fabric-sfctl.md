@@ -12,22 +12,22 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 456257e54da83ac629039b714cc74f9dafda2174
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: b6e3c769307f037c9f31dbb3f1a86675145ec1f6
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763266"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495401"
 ---
 # <a name="sfctl"></a>sfctl
-用于管理 Service Fabric 群集和实体的命令。 此版本与 Service Fabric 6.2 运行时兼容。
+用于管理 Service Fabric 群集和实体的命令。 此版本与 Service Fabric 6.3 运行时兼容。
 
 命令遵循名词谓词模式。 有关详细信息，请参阅子组。
 
 ## <a name="subgroups"></a>子组
-|子组|说明|
+|子组|Description|
 | --- | --- |
 | [application](service-fabric-sfctl-application.md) | 创建、删除和管理应用程序及应用程序类型。 |
 | [chaos](service-fabric-sfctl-chaos.md) | 启动、停止和报告混沌测试服务。 |

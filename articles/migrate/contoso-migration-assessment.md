@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/12/2018
+ms.date: 08/02/2018
 ms.author: raynew
-ms.openlocfilehash: e2fbe766391759f2bbe4a95e75897b2bc9523c0c
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 50d1b8fca8e5377c35810e08258a0ecc3770ae75
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399067"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422318"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso 迁移：评估本地工作负荷是否适合迁移到 Azure
 
@@ -99,7 +99,7 @@ Contoso 使用 Microsoft 工具进行迁移评估。 这些工具符合公司的
 - Contoso 是表示一家典型企业组织的虚构名称。
 - Contoso 拥有本地数据中心 (**contoso-datacenter**) 和本地域控制器（**CONTOSODC1**、**CONTOSODC2**）。
 - VMware VM 位于运行 6.5 版本的 VMware ESXi 主机（**contosohost1**、**contosohost2**）上。
-- VMware 环境由 VM 上运行的 vCenter Server 6.5 (**vcenter**) 托管。
+- VMware 环境由 vCenter Server 6.5（vcenter.contoso.com，在 VM 上运行）托管。
 - SmartHotel 旅行应用具有以下特征：
     - 该应用跨两个 VMware VM（**WEBVM** 和 **SQLVM**）分层。
     - 这两个 VM 位于 VMware ESXi 主机 contosohost1.contoso.com 上。
@@ -123,10 +123,8 @@ Contoso 使用 Microsoft 工具进行迁移评估。 这些工具符合公司的
 - 至少两个本地 VMware VM，一个 VM 运行一个 SQL Server 数据库。
 - 在每个 VM 上安装 Azure Migrate 代理的权限。
 - 这些 VM 应该有直接的 Internet 连接。  
-        
-- 可以仅限对[所需 URL](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites) 进行 Internet 访问。  
-
-- 如果 VM 未连接 Internet，则必须在其上安装 Azure Log Analytics [OMS 网关](../log-analytics/log-analytics-oms-gateway.md)。
+        - 可以仅限对[所需 URL](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites) 进行 Internet 访问。  
+        - 如果 VM 未连接 Internet，则必须在其上安装 Azure Log Analytics [OMS 网关](../log-analytics/log-analytics-oms-gateway.md)，并代理通过它定向的流量。
 - 运行 SQL Server 实例的 VM 的 FQDN（用于数据库评估）。
 - 在 SQL Server VM 上运行的 Windows 防火墙应该允许在 TCP 端口 1433（默认）上进行外部连接。 此设置允许数据迁移助手进行连接。
 
@@ -297,7 +295,7 @@ Azure Migrate 会创建一个称作*收集器设备*的本地 VM。 此 VM 可�
 
 ### <a name="create-the-collector-appliance"></a>创建收集器设备
 
-现在，Contoso 可将下载的文件导入到 vCenter Server 实例并且预配配置服务器 VM：
+现在，Contoso 可将下载的文件导入到 vCenter Server 实例并预配收集器设备 VM：
 
 1. 在 vSphere 客户端控制台中，Contoso 选择“文件” > “部署 OVF 模板”。
 
@@ -353,7 +351,7 @@ Azure Migrate 会创建一个称作*收集器设备*的本地 VM。 此 VM 可�
 
 ## <a name="step-5-prepare-for-dependency-analysis"></a>步骤 5：进行依赖项分析准备
 
-为了查看要访问的 VM 之间的依赖关系，Contoso 在应用 VM 上下载并安装代理。 Contoso 在所有 VM 上为其 Windows 和 Linux 应用安装代理。
+为了查看要评估的 VM 之间的依赖关系，Contoso 在应用 VM 上下载并安装代理。 Contoso 在所有 VM 上为其 Windows 和 Linux 应用安装代理。
 
 ### <a name="take-a-snapshot"></a>生成快照
 

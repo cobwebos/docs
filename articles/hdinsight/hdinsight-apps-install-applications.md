@@ -1,24 +1,20 @@
 ---
-title: 在 Azure HDInsight 上安装第三方 Hadoop 应用程序 | Microsoft 文档
+title: 在 Azure HDInsight 上安装第三方 Hadoop 应用程序
 description: 了解如何在 Azure HDInsight 上安装第三方 Hadoop 应用程序。
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: eaf5904d-41e2-4a5f-8bec-9dde069039c2
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jgao
-ms.openlocfilehash: 3ad112544a703a9b6ec37fa07cbd6df6976d5e26
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: c4d8f6fb1804ff48899ebb96d4c4248f337b56ad
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591969"
 ---
 # <a name="install-third-party-hadoop-applications-on-azure-hdinsight"></a>在 Azure HDInsight 上安装第三方 Hadoop 应用程序
 
@@ -31,7 +27,7 @@ HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程�
 * **AtScale 智能平台**可将 HDInsight 群集变为横向扩展 OLAP 服务器。 使用此应用程序可通过 BI 工具（包括 Microsoft Excel、PowerBI、Tableau Software 和 QlikView）以交互方式查询几十亿行数据。
 * **Cask CDAP for HDInsight** 为大数据提供首个统一的集成平台，可将数据应用程序和 Data Lake 的生产时间缩短 80%。 此应用程序仅支持标准 HBase 3.4 群集。
 * **DATAIKU DDS on HDInsight**，利用此应用程序，数据专家可以对针对性很强的服务进行原型、生成和部署方面的操作，将原始数据转换成有影响力的业务预测。
-* **H2O Artificial Intelligence for HDInsight (Beta)** H2O Sparkling Water 支持以下分布式算法：GLM、Naïve Bayes、分布式随机森林、梯度提升机、深层神经网络、深度学习、K 平均值、PCA、通用化低级别模型、异常检测和自动编码器。
+* **用于 HDInsight 的 H2O 人工智能（Beta 版本）** H2O Sparkling Water 支持以下分布式算法：GLM、Naïve Bayes、分布式随机森林、梯度增强机、深度神经网络、深度学习、K-means、PCA、广义低阶模型、异常情况检测和自编码器。
 * **Kyligence Analytics Platform** Kyligence Analytics Platform (KAP) 是以 Apache Kylin 和 Apache Hadoop 为后盾的，随时可供企业使用的数据仓库；它在处理大规模数据集时可提供次秒级的查询延迟，简化了企业用户和分析师的数据分析。 
 * **Paxata 自助服务数据准备**
 * **Spark Job Server for KNIME Spark Executor** Spark Job Server for KNIME Spark Executor 用于将 KNIME Analytics Platform 连接到 HDInsight 群集。
@@ -95,7 +91,8 @@ HTTP 终结点凭据是针对 HDInsight 群集配置的 HTTP 用户凭据；SSH 
 
 ## <a name="next-steps"></a>后续步骤
 * [安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)：了解如何将未发布的 HDInsight 应用程序部署到 HDInsight。
-* [发布 HDInsight 应用程序](hdinsight-apps-publish-applications.md)：了解如何将自定义 HDInsight 应用程序发布到 Azure Marketplace。
+* 
+  [发布 HDInsight 应用程序](hdinsight-apps-publish-applications.md)：了解如何将自定义 HDInsight 应用程序发布到 Azure 市场。
 * [MSDN：安装 HDInsight 应用程序](https://msdn.microsoft.com/library/mt706515.aspx)：了解如何定义 HDInsight 应用程序。
 * [使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)：了解如何使用脚本操作安装其他应用程序。
 * [使用 Resource Manager 模板在 HDInsight 中创建基于 Linux 的 Hadoop 群集](hdinsight-hadoop-create-linux-clusters-arm-templates.md)：了解如何调用 Resource Manager 模板创建 HDInsight 群集。

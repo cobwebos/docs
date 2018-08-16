@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 304476e2d6862fbb6a859ae6fefe96d177b1111b
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: f20e102ee1d100ea02da53fe460b56f8f8390418
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264249"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426687"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>用于日志警报规则的 Webhook 操作
 [在 Azure 中创建警报](monitor-alerts-unified-usage.md)时，可以选择[使用操作组配置](monitoring-action-groups.md)以执行一个或多个操作。  本文介绍可用的不同 Webhook 操作，以及有关配置基于 JSON 的自定义 Webhook 的详细信息。
@@ -25,7 +25,7 @@ ms.locfileid: "35264249"
 
 Webhook 操作需要下表中的属性：
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--- |:--- |
 | Webhook URL |Webhook 的 URL。 |
 | 自定义 JSON 负载 |如果在创建警报期间选择了此选项，请自定义要通过 webhook 发送的有效负载。 有关详细信息，请参阅[使用 Azure 警报管理警报](monitor-alerts-unified-usage.md) |
@@ -36,7 +36,7 @@ Webhook 操作需要下表中的属性：
 Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据）。  默认情况下，有效负载包括下表中的值：你可以选择将此有效负载替换为你的自定义值。  在这种情况下，可以使用下表中每个参数的变量，将其值包含在自定义负载中。
 
 
-| 参数 | 变量 | 说明 |
+| 参数 | 变量 | Description |
 |:--- |:--- |:--- |
 | AlertRuleName |#alertrulename |警报规则的名称。 |
 | Severity |#severity |为触发的日志警报设置的严重性。 |
@@ -53,6 +53,8 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
 | 应用程序 ID |#applicationid |你的 Application Insight 应用的 ID。 |
 | 订阅 ID |#subscriptionid |用于 Application Insights 的 Azure 订阅的 ID。 
 
+> [!NOTE]
+> LinkToSearchResults 将参数（如 SearchQuery、搜索时间间隔开始时间和搜索时间间隔结束时间）传递到 Azure 门户的 URL，以便在“Analytics”部分中查看。 Azure 门户的 URI 大小限制约为 2000 个字符，如果参数值超过此限制，则会打开。 用户可手动输入详细信息，以在 Analytics 门户中查看结果，或使用 [Application Insights Analytics REST API ](https://dev.applicationinsights.io/documentation/Using-the-API) 或 [Log Analytics REST API](https://dev.loganalytics.io/reference) 以编程方式检索结果 
 
 例如，可以指定以下自定义负载，其中包含名为 *text* 的单一参数。  该 Webhook 调用的服务将需要此参数。
 

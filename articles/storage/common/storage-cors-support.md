@@ -2,29 +2,24 @@
 title: 跨域资源共享 (CORS) 支持 | Microsoft Docs
 description: 了解如何为 Microsoft Azure 存储服务启用 CORS 支持。
 services: storage
-documentationcenter: .net
 author: cbrooksmsft
-manager: carmonm
-editor: tysonn
-ms.assetid: a0229595-5b64-4898-b8d6-fa2625ea6887
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 2/22/2017
 ms.author: cbrooks
-ms.openlocfilehash: 8d189d3ec3e6081dd37b912824f287cd75f39b35
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.component: common
+ms.openlocfilehash: fd5df50128885f6a96e68c8ad46204bc21d80264
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "23059842"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39529255"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>对 Azure 存储服务的跨域资源共享 (CORS) 支持
 从版本 2013-08-15 开始，Azure 存储服务支持 Blob、表、队列和文件服务的跨域资源共享 (CORS)。 CORS 是一项 HTTP 功能，使在一个域中运行的 Web 应用程序能够访问另一个域中的资源。 Web 浏览器实施一种称为[同源策略](http://www.w3.org/Security/wiki/Same_Origin_Policy)的安全限制，防止网页调用不同域中的 API；CORS 提供了一种安全的方法，允许一个域（源域）调用其他域中的 API。 有关 CORS 的详细信息，请参阅 [CORS 规范](http://www.w3.org/TR/cors/)。
 
-可分别为每个存储服务设置 CORS 规则，方式请参阅 [Set Blob Service Properties](https://msdn.microsoft.com/library/hh452235.aspx)（设置 Blob 服务属性）、[Set Queue Service Properties](https://msdn.microsoft.com/library/hh452232.aspx)（设置队列服务属性）和 [Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx)（设置表服务属性）。 为服务设置 CORS 规则后，会对从另一个域对服务发出的经过正确身份验证的请求进行评估，以根据你指定的规则确定是否允许该请求。
+可分别为每个存储服务设置 CORS 规则，方式请参阅 [Set Blob Service Properties](https://msdn.microsoft.com/library/hh452235.aspx)（设置 Blob 服务属性）、[Set Queue Service Properties](https://msdn.microsoft.com/library/hh452232.aspx)（设置队列服务属性）和 [Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx)（设置表服务属性）。 为服务设置 CORS 规则后，会对从另一个域对服务发出的经过正确授权的请求进行评估，以根据指定的规则确定是否允许该请求。
 
 > [!NOTE]
 > 请注意，CORS 不是一种身份验证机制。 在启用 CORS 的情况下针对存储资源发出的任何请求必须具有适当的身份验证签名，或者必须是针对公共资源发出的。

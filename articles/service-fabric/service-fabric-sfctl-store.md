@@ -12,21 +12,21 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 39ecf568c5c41c0007b358670af755be1dd5d99e
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 2f2da5b38ab39e3636ff0ac09ac2c5515e02b0c1
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763232"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492329"
 ---
 # <a name="sfctl-store"></a>sfctl store
 针对群集映像存储执行基本文件级别操作。
 
 ## <a name="commands"></a>命令
 
-|命令|说明|
+|命令|Description|
 | --- | --- |
 | delete | 删除现有的映像存储内容。 |
 | root-info | 获取映像存储根目录中的内容信息。 |
@@ -39,18 +39,18 @@ ms.locfileid: "34763232"
 
 ### <a name="arguments"></a>参数
 
-|参数|说明|
+|参数|Description|
 | --- | --- |
 | --content-path [必需] | 映像存储中文件或文件夹在其根目录中的相对路径。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值：60。 |
+| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|说明|
+|参数|Description|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
-| --output -o | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。 |
+| --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
 | --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
 
@@ -61,17 +61,17 @@ ms.locfileid: "34763232"
 
 ### <a name="arguments"></a>参数
 
-|参数|说明|
+|参数|Description|
 | --- | --- |
-| --timeout -t | 服务器超时，以秒为单位。  默认值：60。 |
+| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|说明|
+|参数|Description|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
-| --output -o | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。 |
+| --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
 | --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
@@ -82,20 +82,21 @@ ms.locfileid: "34763232"
 
 ### <a name="arguments"></a>参数
 
-|参数|说明|
+|参数|Description|
 | --- | --- |
 | --content-path [必需] | 映像存储中文件或文件夹在其根目录中的相对路径。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值：60。 |
+| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|说明|
+|参数|Description|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
-| --output -o | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。 |
+| --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
 | --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+
 
 ## <a name="next-steps"></a>后续步骤
 - [安装](service-fabric-cli.md) Service Fabric CLI。

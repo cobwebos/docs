@@ -2,24 +2,19 @@
 title: 在 Windows 中排查 Azure 文件问题 | Microsoft Docs
 description: 在 Windows 中排查 Azure 文件问题
 services: storage
-documentationcenter: ''
-author: wmgries
-manager: aungoo
-editor: tamram
+author: jeffpatt24
 tags: storage
 ms.service: storage
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
-ms.author: wgries
-ms.openlocfilehash: 18f594586aa95afaa01bfda712dfc23c8aad3a36
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.author: jeffpatt
+ms.component: files
+ms.openlocfilehash: 935d4a3ba3fc3199177be5bd4e70f82239c3c971
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738541"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39529247"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>在 Windows 中排查 Azure 文件问题
 
@@ -98,8 +93,8 @@ Windows 8、Windows Server 2012 及更高版本的每个系统协商包括支持
 
 尝试将文件传输到 Azure 文件服务时，可能会发现速度缓慢。
 
-- 如果没有特定的最低 I/O 大小要求，建议 I/O 大小为 1 MB 以实现最佳性能。
--   如果知道通过写入要扩展的最终文件大小，并且软件在文件的未写入结尾包含零时不出现兼容性问题，请提前设置文件大小，而不是让每次写入都成为扩展写入。
+- 如果没有特定的最低 I/O 大小要求，建议 I/O 大小为 1 MiB 以实现最佳性能。
+-   如果知道通过写入要扩展的最终文件大小，并且软件在文件的未写入结尾包含零时未出现兼容性问题，请提前设置文件大小，而不是让每次写入都成为扩展写入。
 -   使用正确的复制方法：
     -   使用 [AZCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) 在两个文件共享之间传输任何内容。
     -   在本地计算机上的文件共享之间使用 [Robocopy](https://blogs.msdn.microsoft.com/granth/2009/12/07/multi-threaded-robocopy-for-faster-copies/)。

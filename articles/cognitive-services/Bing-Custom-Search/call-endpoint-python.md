@@ -9,12 +9,12 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 889762ae0b401438f25546738268c584ddd58389
-ms.sourcegitcommit: 15bfce02b334b67aedd634fa864efb4849fc5ee2
+ms.openlocfilehash: 88bf82805ba46abf79b7899e0428a83485062302
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "35366845"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39504961"
 ---
 # <a name="call-bing-custom-search-endpoint-python"></a>调用必应自定义搜索终结点 (Python)
 
@@ -34,13 +34,18 @@ ms.locfileid: "35366845"
 要调用必应自定义搜索终结点，请执行以下步骤：
 
 1. 为代码创建文件夹。
+
 2. 从管理员命令提示符或终端处导航至刚刚创建的文件夹。
+
 3. 安装 requests python 模块：
+
     <pre>
     pip install pipenv
     pipenv install requests
     </pre>
-7. 创建 BingCustomSearch.py 文件并将向其中复制以下代码。
+    
+7. 创建 BingCustomSearch.py 文件并向其中复制以下代码。
+
 8. 用密钥和配置 ID（见步骤 1）替换“YOUR-SUBSCRIPTION-KEY”和“YOUR-CUSTOM-CONFIG-ID”。
 
     ``` Python

@@ -1,10 +1,12 @@
 - VNet 与 Batch 帐户必须位于同一 Azure 区域和订阅中。
 
-- 对于使用虚拟机配置创建的池，仅支持基于 Azure 资源管理器的 VNet。 对于使用云服务配置创建的池，仅支持经典 VNet。 
+- 对于使用虚拟机配置创建的池，仅支持基于 Azure 资源管理器的 VNet。 对于使用云服务配置创建的池，仅支持经典 VNet。
   
 - 若要使用经典 VNet，`MicrosoftAzureBatch` 服务主体必须为指定的 VNet 提供 `Classic Virtual Machine Contributor` 基于角色的访问控制 (RBAC) 角色。 若要使用基于 Azure 资源管理器的 VNet，你需要拥有访问 VNet 并在子网中部署 VM 的权限。
 
 - 为池指定的子网必须提供足够的未分配 IP 地址来容纳面向该池的 VM 的数量；即，池的 `targetDedicatedNodes` 和 `targetLowPriorityNodes` 属性的总和。 如果子网没有足够的未分配 IP 地址，池将分配部分计算节点，并发生调整大小错误。 
+
+- 部署在 Azure VNet 的虚拟机配置中的池会自动分配其他 Azure 网络资源。 在 VNet 中，每 50 个池节点需要以下资源：1 个网络安全组、1 个公共 IP 地址、1 个负载均衡器。 在包含创建 Batch 池时提供的虚拟网络的订阅中，这些资源受[配额](../articles/batch/batch-quota-limit.md)的限制。
 
 - VNet 必须允许来自 Batch 服务的通信，才能在计算节点上计划任务。 这可以通过检查 VNet 是否具有任何关联的网络安全组 (NSG) 来进行验证。 如果 NSG 拒绝与指定子网中的计算节点通信，则 Batch 服务会将计算节点的状态设置为“不可用”。 
 

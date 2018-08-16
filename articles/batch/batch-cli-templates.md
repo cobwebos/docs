@@ -1,34 +1,34 @@
 ---
-title: 运行端到端的 Azure Batch 作业而无需编写代码（预览版） | Microsoft Docs
-description: 创建 Azure CLI 的模板文件，以创建 Batch 池、作业和任务。
+title: 使用模板端到端运行 Azure Batch 作业 | Microsoft Docs
+description: 使用模板文件和 Azure CLI 创建 Batch 池、作业和任务。
 services: batch
-author: mscurrell
+author: dlepow
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
 ms.devlang: na
 ms.topic: article
 ms.workload: big-compute
-ms.date: 12/18/2017
-ms.author: markscu
-ms.openlocfilehash: 4dd9218b982860e62e04b46fb5d07e5553407599
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.date: 08/02/2018
+ms.author: danlep
+ms.openlocfilehash: 50ed5a6b57c3c994f636db5cc975ad1908e50c7d
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130846"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493427"
 ---
-# <a name="use-azure-batch-cli-templates-and-file-transfer-preview"></a>使用 Azure Batch CLI 模板和文件传输（预览版）
+# <a name="use-azure-batch-cli-templates-and-file-transfer"></a>使用 Azure Batch CLI 模板和文件传输
 
-使用 Azure CLI 可在不编写代码的情况下运行 Batch 作业。
+使用 Azure CLI 的 Azure Batch 扩展可在不编写代码的情况下运行 Batch 作业。
 
-创建并使用 Azure CLI 的模板文件，创建 Batch 池、作业和任务。 轻松将作业输入文件上传到与 Batch 帐户关联的存储帐户，并轻松下载作业输出文件。
+通过 Azure CLI 创建 JSON 模板文件，并使用模板文件创建 Batch 池、作业和任务。 使用 CLI 扩展命令轻松将作业输入文件上传到与 Batch 帐户关联的存储帐户，并下载作业输出文件。
 
 ## <a name="overview"></a>概述
 
 通过 Azure CLI 扩展，非开发者用户可使用端到端的 Batch。 只需使用 CLI 命令便可创建池、上传输入数据、创建作业和关联的任务，以及下载生成的输出数据。 不需要任何其他代码。 可以直接运行 CLI 命令，也可以将其集成到脚本中。
 
-Batch 模板基于 [Azure CLI 中现有的 Batch 支持](batch-cli-get-started.md#json-files-for-resource-creation)，在创建池、作业、任务和其他项时允许使用 JSON 文件来指定属性值。 通过 Batch 模板，可以在 JSON 文件功能的基础上添加以下功能：
+Batch 模板基于 [Azure CLI 中现有的 Batch 支持](batch-cli-get-started.md#json-files-for-resource-creation)，在创建池、作业、任务和其他项时允许使用 JSON 文件来指定属性值。 Batch 模板添加了以下功能：
 
 -   可以定义参数。 使用模板时，仅指定参数值以创建项，而在模板正文中指定其他项属性值。 了解 Batch 和 Batch 运行的应用程序的用户可以创建模板、指定池、作业和任务属性值。 不太熟悉 Batch 和/或应用程序的用户只需指定定义的参数的值。
 
@@ -47,25 +47,22 @@ Batch 模板基于 [Azure CLI 中现有的 Batch 支持](batch-cli-get-started.m
 
 ## <a name="installation"></a>安装
 
-安装 Azure Batch CLI 扩展来使用模板和文件传输功能。
+若要安装 Azure Batch CLI 扩展，请首先[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)，或在 [Azure Cloud Shell](../cloud-shell/overview.md) 中运行 Azure CLI。
 
-有关如何安装 Azure CLI 的说明，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。
-
-安装 Azure CLI 后，使用以下 CLI 命令安装最新版本的 Batch 扩展：
+使用以下 Azure CLI 命令安装最新版本的 Batch 扩展：
 
 ```azurecli
 az extension add --name azure-batch-cli-extensions
 ```
 
-有关 Batch 扩展的详细信息，请参阅 [Microsoft Azure Batch CLI Extensions for Windows, Mac and Linux](https://github.com/Azure/azure-batch-cli-extensions#microsoft-azure-batch-cli-extensions-for-windows-mac-and-linux)（Windows、Mac 和 Linux 的 Microsoft Azure Batch CLI 扩展）。
+有关 Batch CLI 扩展和其他安装选项的详细信息，请参阅 [GitHub 存储库](https://github.com/Azure/azure-batch-cli-extensions)。
+
+
+若要使用 CLI 扩展功能，需要 Azure Batch 帐户和链接的存储帐户（针对于在存储之间传输文件的命令）。
+
+要使用 Azure CLI 登录 Batch 帐户，请参阅[使用 Azure CLI 管理 Batch 资源](batch-cli-get-started.md)。
 
 ## <a name="templates"></a>模板
-
-通过 Azure Batch CLI，可通过指定包含属性名称和值的 JSON 文件创建池、作业和任务等项。 例如：
-
-```azurecli
-az batch pool create –-json-file AppPool.json
-```
 
 Azure Batch 模板在功能和语法上非常类似于 Azure 资源管理器模板。 它们是包含项属性名称和值的 JSON 文件，但添加了以下主要概念：
 
@@ -146,6 +143,25 @@ Azure Batch 模板在功能和语法上非常类似于 Azure 资源管理器模�
 az batch pool create --template pool-ffmpeg.json
 ```
 
+CLI 会提示你提供 `poolId` 和 `nodeCount` 参数的值。 也可以提供 JSON 文件中的参数。 例如：
+
+```json
+{
+  "poolId": {
+    "value": "mypool"
+  },
+  "nodeCount": {
+    "value": 2
+  }
+}
+```
+
+如果参数 JSON 文件名为 pool-parameters.json，请按以下所示调用该模板：
+
+```azurecli
+az batch pool create --template pool-ffmpeg.json --parameters pool-parameters.json
+```
+
 ### <a name="job-templates"></a>作业模板
 
 作业模板支持参数和变量的标准模板功能。 它们还支持以下更高级别的构造：
@@ -154,7 +170,7 @@ az batch pool create --template pool-ffmpeg.json
 
     -   通过一个任务定义即可为作业创建多项任务。 支持三种类型的任务工厂 - 参数扫描、每个文件任务和任务集合。
 
-下面是一个模板示例，它创建使用 ffmpeg 将 MP4 视频文件转码为两个较低分辨率之一的作业： 它针对每个源视频文件创建一个任务：
+下面是一个模板示例，它创建使用 ffmpeg 将 MP4 视频文件转码为两个较低分辨率之一的作业： 它针对每个源视频文件创建一个任务。 有关作业输入和输出文件组的详细信息，请参阅[文件组和文件传输](#file-groups-and-file-transfer)。
 
 ```json
 {
@@ -236,9 +252,23 @@ az batch pool create --template pool-ffmpeg.json
 az batch job create --template job-ffmpeg.json
 ```
 
+CLI 同样会提示你提供参数的值。 也可以提供 JSON 文件中的参数。
+
+### <a name="use-templates-in-batch-explorer"></a>使用 Batch Explorer 中的模板
+
+可以将 Batch CLI 模板上传到 [Batch Explorer](https://github.com/Azure/BatchExplorer) 桌面应用程序（以前称为 BatchLabs），以创建 Batch 池或作业。 还可以在 Batch Explorer 库中选择预定义的池和作业模板。
+
+上传模板：
+
+1. 在 Batch Explorer 中，选择“库” > “本地模板”。
+
+2. 选择或拖放本地池或作业模板。
+
+3. 选择“使用此模板”，并按照屏幕上的提示操作。
+
 ## <a name="file-groups-and-file-transfer"></a>文件组和文件传输
 
-大部分作业和任务均需要输入文件并生成输出文件。 通常，输入文件和输出文件从客户端传输到节点，或者从节点传输到客户端。 Azure Batch CLI 扩展提取文件传输，并利用默认情况下为每个 Batch 帐户创建的存储帐户。
+大部分作业和任务均需要输入文件并生成输出文件。 通常，输入文件和输出文件从客户端传输到节点，或者从节点传输到客户端。 Azure Batch CLI 扩展提取文件传输，并利用可与每个 Batch 帐户相关联的存储帐户。
 
 文件组等同于在 Azure 存储帐户中创建的容器。 文件组允许包含子文件夹。
 
@@ -252,15 +282,16 @@ az batch file download --file-group ffmpeg-output --local-path
     c:\output_lowres_videos
 ```
 
-通过池和作业模板，可将存储在文件组中的文件指定为复制到池节点或离开池节点返回到文件组。 例如，在以前指定的作业模板中，任务工厂的文件组“ffmpeg-input”被指定为复制到节点以供转码的源视频文件的位置；文件组“ffmpeg-output”是将已转码的输出文件从运行每个任务的节点上复制到的位置。
+通过池和作业模板，可将存储在文件组中的文件指定为复制到池节点或离开池节点返回到文件组。 例如，在之前指定的作业模板中，为任务工厂指定文件组 ffmpeg-input ，作为复制到节点以供转码的源视频文件的位置。 文件组 ffmpeg-output 是从运行每个任务的节点复制已转码输出文件的位置。
 
 ## <a name="summary"></a>摘要
 
-目前仅对 Azure CLI 添加了模板和文件传输支持。 目标是向无需使用 Batch API 开发代码的用户（如研究人员、IT 用户等）展开可使用 Batch 的受众。 了解 Azure、Batch 和 Batch 运行的应用程序的用户无需编码即可创建模板以创建池和作业。 通过模板参数，对 Batch 和应用程序没有深入了解的用户也可使用这些模板。
+目前仅对 Azure CLI 添加了模板和文件传输支持。 其目的在于，将可以使用 Batch 的受众扩大到无需使用 Batch API 开发代码的用户，例如研究人员和 IT 用户。 了解 Azure、Batch 和 Batch 运行的应用程序的用户无需编码即可创建模板以创建池和作业。 通过模板参数，对 Batch 和应用程序没有深入了解的用户也可使用这些模板。
 
 试用 Azure CLI 的 Batch 扩展，并通过本文的评论区或 [Batch 社区存储库](https://github.com/Azure/Batch)向我们提供任何反馈或建议。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 Batch 模板博客文章：[Running Azure Batch jobs using the Azure CLI – no code required](https://azure.microsoft.com/blog/running-azure-batch-jobs-using-the-azure-cli-no-code-required/)（使用 Azure CLI 运行 Azure Batch 作业 – 无需代码）。
 - 有关安装和使用情况的详细文档、示例和源代码，请参阅 [Azure GitHub 存储库](https://github.com/Azure/azure-batch-cli-extensions)。
+
+- 深入了解如何使用 [Batch Explorer](https://github.com/Azure/BatchExplorer) 来创建和管理 Batch 资源。

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: tonguyen
-ms.openlocfilehash: e4db9911697a4d79032b7a6358db642112a5a54e
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: dc516aa64399447973cefa47e913193adce2f8f5
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062155"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528259"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>通过 Azure 计费和成本管理来防止意外费用
 
@@ -121,7 +121,7 @@ ms.locfileid: "37062155"
 
 ### <a name="turn-on-and-check-out-azure-advisor-recommendations"></a>打开和查看 Azure 顾问建议
 
-[Azure 顾问](../advisor/advisor-overview.md)是一项预览功能，通过识别很少使用的资源来帮助降低成本。 在 Azure 门户中打开它：
+[Azure 顾问](../advisor/advisor-overview.md)是一项功能，通过识别很少使用的资源来帮助降低成本。 在 Azure 门户访问顾问：
 
 ![Azure 门户中的 Azure 顾问按钮的屏幕截图](./media/billing-getting-started/advisor-button.PNG)
 
@@ -144,7 +144,7 @@ ms.locfileid: "37062155"
 ### <a name="ea-csp-and-sponsorship-customers"></a>EA、CSP 和赞助客户
 请咨询帐户管理员或 Azure 合作伙伴以开始使用。
 
-| 产品 | 资源 |
+| 产品/服务 | 资源 |
 |-------------------------------|-----------------------------------------------------------------------------------|
 | 企业协议 (EA) | [EA 门户](https://ea.azure.com/)、[帮助文档](https://ea.azure.com/helpdocs)和[ Power BI 报表](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-enterprise/) |
 | 云解决方案提供商 (CSP) | 咨询提供商 |

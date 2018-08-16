@@ -12,23 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2018
+ms.date: 07/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: af9a2e47a5e91d9b32a787f8f40ba06b5a1596e7
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: f6ba0fccc6fadffb5f4d1a22b2c2fbcc38f9f0df
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39265040"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494975"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步实现密码哈希同步
 本文提供将用户密码从本地 Active Directory 实例同步到基于云的 Azure Active Directory (Azure AD) 实例时所需的信息。
 
 ## <a name="what-is-password-hash-synchronization"></a>什么是密码哈希同步？
-因为忘记密码而无法完成工作的机率与需要记住的不同密码数目有关。 要记住的密码越多，忘记密码的机率就越高。 就密码重置和其他密码相关问题的疑问和来电占据了最多的技术服务资源。
+因为忘记密码而无法完成工作的机率与需要记住的不同密码数目有关。 要记住的密码越多，忘记密码的机率就越高。 就密码重置和其他密码相关问题的疑问和来电占据了最多的技术支持资源。
 
-密码哈希同步是用于将用户密码从本地 Active Directory 实例同步到基于云的 Azure AD 实例的功能。
+密码哈希同步是一种功能，用于将用户密码的哈希从本地 Active Directory 实例同步到基于云的 Azure AD 实例。
 使用此功能可登录到各种 Azure AD 服务，例如 Office 365、Microsoft Intune、CRM Online 和 Azure Active Directory 域服务 (Azure AD DS)。 登录到该服务时使用的密码与登录到本地 Active Directory 实例时使用的密码相同。
 
 ![什么是 Azure AD Connect](./media/active-directory-aadconnectsync-implement-password-hash-synchronization/arch1.png)
@@ -40,7 +40,7 @@ ms.locfileid: "39265040"
 
 此外，如果决定[使用 Active Directory 联合身份验证服务 (AD FS) 进行联合身份验证](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Configuring-AD-FS-for-user-sign-in-with-Azure-AD-Connect)，则可以选择性地设置密码哈希同步，作为在 AD FS 基础结构发生故障时的备用身份验证方式。
 
-密码哈希同步是由 Azure AD Connect 同步实现的目录同步功能的扩展。要在环境中使用密码哈希同步，需执行以下操作：
+密码哈希同步是由 Azure AD Connect 同步实现的目录同步功能的扩展。若要在环境中使用密码哈希同步，需要：
 
 * 安装 Azure AD Connect。  
 * 配置本地 Azure Active Directory 实例与 Azure Active Directory 实例之间的目录同步。

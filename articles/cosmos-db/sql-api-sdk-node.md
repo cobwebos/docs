@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 5/3/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 94d60325fa53668628ddefa68e8ce313c4fa75c6
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: e19c1cb7b297d2537e969e0dd632dae3e1c3d211
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34797839"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39594342"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>用于 SQL API 的 Azure Cosmos DB Node.js SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -34,31 +34,24 @@ ms.locfileid: "34797839"
 > * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
-<table>
-
-<tr><td>**下载 SDK**</td><td>[NPM](https://www.npmjs.com/package/documentdb)</td></tr>
-
-<tr><td>**API 文档**</td><td>[Node.js API 参考文档](https://docs.microsoft.com/javascript/api/documentdb/?view=azure-node-latest)</td></tr>
-
-<tr><td>**SDK 安装说明**</td><td>[安装说明](http://azure.github.io/azure-documentdb-node/)</td></tr>
-
-<tr><td>**参与 SDK**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-node/tree/master/source)</td></tr>
-
-<tr><td>**示例**</td><td>[Node.js 代码示例](sql-api-nodejs-samples.md)</td></tr>
-
-<tr><td>**入门教程**</td><td>[Node.js SDK 入门](sql-api-nodejs-get-started.md)</td></tr>
-
-<tr><td>**Web 应用教程**</td><td>[使用 Azure Cosmos DB 创建 Node.js Web 应用程序](sql-api-nodejs-application.md)</td></tr>
-
-<tr><td>**当前受支持的平台**</td><td> 
-[Node.js v6.x](https://nodejs.org/en/blog/release/v6.10.3/)<br/> 
-[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)<br/> 
-[Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/> 
-[Node.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/) 
-</td></tr>
-</table></br>
+|资源  |链接  |
+|---------|---------|
+|下载 SDK  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
+|API 文档  |  [JavaScript SDK 参考文档](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
+|SDK 安装说明  |  [安装说明](https://github.com/Azure/azure-cosmos-js#installation)
+|参与 SDK | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
+| 示例 | [Node.js 代码示例](sql-api-nodejs-samples-preview.md)
+| 入门教程 | [JavaScript SDK 入门](sql-api-nodejs-get-started-preview.md)
+| Web 应用教程 | [使用 Azure Cosmos DB 创建 Node.js Web 应用程序](sql-api-nodejs-application-preview.md)
+| 当前受支持的平台 | [Node.js v6.x](https://nodejs.org/en/blog/release/v6.10.3/) - 要求 SDK 版本 2.0.0 及更高版本。<br/>[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)<br/> [Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/> [Node.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/) 
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="2.0.0-3"/>2.0.0-3</a>
+* RC1 版本 2.0.0 的 JavaScript SDK（公共预览版）。
+* 新对象模型，使用顶级 CosmosClient 和方法拆分成相关的数据库、容器和项类。 
+* 支持[承诺](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Using_promises)。 
+* 转换为 TypeScript 的 SDK。
 
 ### <a name="1.14.4"/>1.14.4</a>
 * npm 文档已修复。
@@ -201,6 +194,7 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.0.0-3 (RC)](#2.0.0-3) |2018 年 8 月 2 号 |--- |
 | [1.14.4](#1.14.4) |2018 年 5 月 3 日 |--- |
 | [1.14.3](#1.14.3) |2018 年 5 月 3 日 |--- |
 | [1.14.2](#1.14.2) |2017 年 12 月 21 日 |--- |
@@ -236,7 +230,7 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 | [1.0.1](#1.0.1) |2015年 5 月 15日 |--- |
 | [1.0.0](#1.0.0) |2015 年 4 月 8 日 |--- |
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>另请参阅

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8d8835bd97b489a730a040e86748c668963c7196
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 9c0c1ba9dd343baa453f10ad82c0cc8b8e69da7b
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187717"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596148"
 ---
 # <a name="create-a-new-simulated-device"></a>创建新的模拟设备
 
@@ -71,7 +71,7 @@ ms.locfileid: "39187717"
 
 本教程介绍如何在远程监视解决方案加速器中使用设备模拟器：
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 >[!div class="checklist"]
 > * 创建新设备类型
@@ -140,6 +140,8 @@ ms.locfileid: "39187717"
     ```sh
     az network nsg rule list --nsg-name YOUR-NETWORK-SECURITY-GROUP -o table
     ```
+
+    仅应在测试和开发期间启用 SSH 访问。 如果启用 SSH，[应尽快再次禁用](../security/azure-security-network-security-best-practices.md#disable-rdpssh-access-to-azure-virtual-machines)
 
 1. 若要将虚拟机密码更改为所需的密码，请运行以下命令。 使用前面记下的虚拟机名称和所选的密码：
 

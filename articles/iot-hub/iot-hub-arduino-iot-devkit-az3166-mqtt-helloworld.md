@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
-ms.openlocfilehash: ee8ff1acbaf5d97d62d6811e8e8abc86017b32fe
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fc74613e00adc459f7a7b0a16c6f773fe4bf601d
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632605"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39593649"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>向 MQTT 服务器发送消息
 
@@ -37,7 +37,7 @@ ms.locfileid: "34632605"
 
 ## <a name="open-the-project-folder"></a>打开项目文件夹
 
-1. 如果 DevKit 已连接，将其从计算机断开连接。
+1. 如果 DevKit 已连接到计算机，请断开连接。
 
 2. 启动 VS Code。
 
@@ -57,7 +57,7 @@ ms.locfileid: "34632605"
 ![设备上传](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/device-upload.jpg)
 
 > [!NOTE]
-> 可能会出现“错误: AZ3166: 未知程序包”错误消息。 如果未正确刷新板包索引，则会出现此错误。 若要解决此错误，请参阅此 [FAQ](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)（常见问题解答）。
+> 可能会出现“错误: AZ3166: 未知程序包”错误消息。 如果未正确刷新板包索引，则会出现此错误。 若要解决此错误，请参阅 [IoT DevKit 常见问题解答的开发部分](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)。
 
 ## <a name="test-the-project"></a>测试项目
 
@@ -75,15 +75,15 @@ ms.locfileid: "34632605"
 
 ## <a name="problems-and-feedback"></a>问题和反馈
 
-如果遇到问题，请参阅 [FAQ](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/)（常见问题解答）或通过以下渠道进行联系：
+如果遇到问题，请参阅 [IoT DevKit 常见问题解答](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/)或通过以下渠道进行联系：
 
 * [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
 * [堆栈溢出](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="see-also"></a>另请参阅
 
-* [将 IoT DevKit AZ3166 连接到云中的 Azure IoT 中心]({{"/docs/getting-started/" | absolute_url }})
-* [摇一摇，摇一摇搜推文]({{"/docs/projects/shake-shake/" | absolute_url }})
+* [将 IoT DevKit AZ3166 连接到云中的 Azure IoT 中心](iot-hub-arduino-iot-devkit-az3166-get-started.md)
+* [摇一摇，摇一摇搜推文](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2018
 ms.author: aljo
-ms.openlocfilehash: 5628315423db1f0064d0e6b77f061d8e674757aa
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 9e4d65875085ec293813e2683acde095ae112b75
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39309147"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503700"
 ---
-# <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>自定义 Service Fabric 群集设置和结构升级策略
-本文档说明如何为 Service Fabric 群集自定义各种结构设置和结构升级策略。 可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板完成自定义。
+# <a name="customize-service-fabric-cluster-settings"></a>自定义 Service Fabric 群集设置
+本文介绍如何为 Service Fabric 群集自定义各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板自定义设置。 对于独立群集，可通过更新 ClusterConfig.json 文件并对群集执行配置升级来自定义设置。 
 
 > [!NOTE]
 > 并非所有设备在门户中皆为可用。 如果不能通过门户使用下面列出的设置，请使用 Azure 资源管理器模板对其进行自定义。
@@ -35,14 +35,14 @@ ms.locfileid: "39309147"
 - **禁止** - 不能修改这些设置。 若要更改这些设置，需要销毁该群集并创建一个新群集。 
 
 ## <a name="customize-cluster-settings-using-resource-manager-templates"></a>使用资源管理器模板自定义群集设置
-下面的步骤演示如何将新设置 *MaxDiskQuotaInMB* 添加到“诊断”部分。
+下面的步骤演示如何使用 Azure 资源浏览器将新设置 MaxDiskQuotaInMB 添加到“诊断”部分。
 
 1. 转到 https://resources.azure.com
 2. 通过展开“订阅” -> \<你的订阅> -> “resourceGroups” -> \<你的资源组> -> “提供程序” -> “Microsoft.ServiceFabric” -> “群集” -> \<你的群集名称>导航到你的订阅
 3. 选择右上角的“读/写”。
 4. 选择“编辑”，更新 `fabricSettings` JSON 元素并添加新元素：
 
-```
+```json
       {
         "name": "Diagnostics",
         "parameters": [
@@ -53,6 +53,36 @@ ms.locfileid: "39309147"
         ]
       }
 ```
+
+此外，还可以使用 Azure 资源管理器通过以下任一方式自定义群集设置：
+
+- 使用 [Azure 门户](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template)导出和更新资源管理器模板。
+- 使用 [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell) 导出和更新资源管理器模板。
+- 使用 [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli) 导出和更新资源管理器模板。
+- 使用 Azure RM PowerShell [Set-AzureRmServiceFabricSetting](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/Set-AzureRmServiceFabricSetting) 和 [Remove-AzureRmServiceFabricSetting](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/Remove-AzureRmServiceFabricSetting) 命令直接修改这些设置。
+- 使用 Azure CLI [az sf cluster setting](https://docs.microsoft.com/cli/azure/sf/cluster/setting) 命令直接修改这些设置。
+
+## <a name="customize-cluster-settings-for-standalone-clusters"></a>自定义独立群集的群集设置
+通过 ClusterConfig.json 文件配置独立群集。 若要了解详细信息，请参阅[独立 Windows 群集的配置设置](./service-fabric-cluster-manifest.md)。
+
+可以在 ClusterConfig.json 中“[群集属性](./service-fabric-cluster-manifest.md#cluster-properties)”部分下的 `fabricSettings` 部分中添加、更新或删除设置。 
+
+例如，以下 JSON 将向 `fabricSettings` 下的“诊断”部分添加新设置“MaxDiskQuotaInMB”：
+
+```json
+      {
+        "name": "Diagnostics",
+        "parameters": [
+          {
+            "name": "MaxDiskQuotaInMB",
+            "value": "65536"
+          }
+        ]
+      }
+```
+
+修改 ClusterConfig.json 文件中的设置后，请按照[升级群集配置](./service-fabric-cluster-upgrade-windows-server.md#upgrade-the-cluster-configuration)中的说明，将设置应用到群集。 
+
 
 以下为可自定义的 Fabric 设置列表（按分区排序）。
 

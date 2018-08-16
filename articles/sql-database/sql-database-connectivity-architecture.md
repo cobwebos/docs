@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: carlrab
-ms.openlocfilehash: 0ae05456d957c6ebabe0faec7da4175618b191ef
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: afc82ea666fdbef89348e7453df92b8d8e1adc86
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036762"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493666"
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Azure SQL 数据库连接体系结构 
 
@@ -51,7 +51,7 @@ ms.locfileid: "39036762"
 ![体系结构概述](./media/sql-database-connectivity-architecture/connectivity-from-outside-azure.png)
 
 > [!IMPORTANT]
-> 在 Azure SQL 数据库中使用服务终结点时，默认情况下策略为**重定向**。 因此，要从 Vnet 内部启用连接，必须允许出站到所有 Azure SQL 数据库 IP 地址，而不仅仅是网关 IP。 这可以借助 NSG（网络安全组）服务标记来完成，如果要只允许出站到网关 IP，请将设置更改为“代理”。
+> 在 Azure SQL 数据库中使用服务终结点时，默认情况下策略为“代理”。 若要从 Vnet 内启用连接，请允许指向下面列表中指定的 Azure SQL 数据库网关 IP 地址的出站连接。 使用服务终结点时，我们强烈建议将连接策略更改为“重定向”，以实现更好的性能。 如果将连接策略更改为“重定向”，允许 NSG 出站到下面列出的 Azure SQLDB 网关 IP 将还不够，必须允许出站到所有 Azure SQLDB IP。 这可以借助 NSG（网络安全组）服务标记实现。 有关详细信息，请参阅[服务标记](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags)。
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Azure SQL 数据库网关 IP 地址
 

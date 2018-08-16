@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/30/2018
+ms.date: 08/06/2018
 ms.author: magoedte
-ms.openlocfilehash: f84452af9c2c731d69d5805961266c46351a7687
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 2ae61d672083508d49e72afd5a015191082c23e9
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366090"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521925"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>监视 Azure Kubernetes 服务 (AKS) 容器运行状况（预览版）
 
@@ -356,7 +356,13 @@ az aks show -g <resoourceGroupofAKSCluster> -n <nameofAksCluster>
 - **节点数**：Kubernetes 提供的节点计数和状态。 表示的群集节点状态为“全部”、“就绪”和“未就绪”，可通过图表上的选择器单独筛选或以组合方式进行筛选。 
 - **活动 Pod 计数**：Kubernetes 提供的 Pod 计数和状态。 表示的 Pod 状态为“全部”、“挂起”、“正在运行”和“未知”，可通过图表上的选择器单独筛选或以组合方式进行筛选。 
 
-如果切换到“节点”选项卡，行层次结构遵循以群集节点开头的 Kubernetes 对象模型。 展开节点即可查看在节点上运行的一个或多个 Pod。 如果将多个容器分组到 Pod 中，它们将在层次结构中的最后一行显示。 还可查看有多少非 Pod 相关工作负荷在主机上运行（如果主机有处理器或内存使用压力）。
+切换到“节点”、“控制器”和“容器”选项卡时，页面右侧会自动显示“属性”窗格。  它显示所选项的属性，包括定义用于组织 Kubernetes 对象的标签。  单击窗格中的 >> 链接以查看\隐藏窗格。  
+
+![示例 Kubernetes 透视属性窗格](./media/monitoring-container-health/perspectives-preview-pane-01.png)
+
+在层次结构中展开对象时，属性窗格将根据所选对象进行更新。 在窗格中，还可通过单击窗格顶部的“查看 Kubernetes 事件日志”链接，查看具有预定义日志搜索的 Kubernetes 事件。 有关查看 Kubernetes 日志数据的其他信息，请参阅[搜索日志以分析数据](#search-logs-to-analyze-data)。
+
+切换到“节点”选项卡，行层次结构遵循以群集节点开头的 Kubernetes 对象模型。 展开节点即可查看在节点上运行的一个或多个 Pod。 如果将多个容器分组到 Pod 中，它们将在层次结构中的最后一行显示。 还可查看有多少非 Pod 相关工作负荷在主机上运行（如果主机有处理器或内存使用压力）。
 
 ![性能视图中的示例 Kubernetes 节点层次结构](./media/monitoring-container-health/container-health-nodes-view.png)
 
@@ -481,9 +487,9 @@ az aks show -g <resoourceGroupofAKSCluster> -n <nameofAksCluster>
 ## <a name="search-logs-to-analyze-data"></a>搜索日志以分析数据
 Log Analytics 有助于查找趋势、诊断瓶颈、预测或关联有助于确定是否最优执行当前群集配置的数据。 提供预定义日志搜索，可直接使用，也可通过自定义来按自己想要的方式返回信息。 
 
-通过选择展开控制器或容器时最右侧提供的“查看日志”选项，可以在工作区中执行数据的交互式分析。 “日志搜索”页面在用户所处的 Azure 门户页面上方显示。
+通过在预览窗格中选择“查看 Kubernetes 事件日志”或“查看容器日志”选项，对工作区中的数据执行交互式分析。 “日志搜索”页面在用户所处的 Azure 门户页面的右侧显示。
 
-![在 Log Analytics 中分析数据](./media/monitoring-container-health/container-health-view-logs.png)   
+![在 Log Analytics 中分析数据](./media/monitoring-container-health/container-health-log-search-example.png)   
 
 转发到 Log Analytics 的容器日志输出为 STDOUT 和 STDERR。 由于容器运行状况正在监视 Azure 托管的 Kubernetes (AKS)，目前因生成了大量数据而不收集 Kube-system。 
 

@@ -12,21 +12,21 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: cc3d3e35ce3dd457d981dfe9420be765cf9fc45a
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 3ce0b63c579412d9d8d35b835803becab09f7ef4
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763402"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494146"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
 创建、删除和管理 Docker Compose 应用程序。
 
 ## <a name="commands"></a>命令
 
-|命令|说明|
+|命令|Description|
 | --- | --- |
 | create | 创建 Service Fabric compose 部署。 |
 | list | 获取在 Service Fabric 群集中创建的 compose 部署列表。 |
@@ -40,22 +40,22 @@ ms.locfileid: "34763402"
 
 ### <a name="arguments"></a>参数
 
-|参数|说明|
+|参数|Description|
 | --- | --- |
 | --deployment-name [必需] | 部署的名称。 |
 | --file-path       [必需] | 目标 Docker Compose 文件的路径。 |
 | --encrypted-pass | 不提示输入容器注册表密码，而是使用已加密的通行短语。 |
 | --has-pass | 将提示输入容器注册表的密码。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值：60。 |
+| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 | --user | 用于连接容器注册表的用户名。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|说明|
+|参数|Description|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
-| --output -o | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。 |
+| --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
 | --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
 
@@ -66,19 +66,19 @@ ms.locfileid: "34763402"
 
 ### <a name="arguments"></a>参数
 
-|参数|说明|
+|参数|Description|
 | --- | --- |
-| --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
+| --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则该继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
 | --max-results | 作为分页查询的一部分返回的最大结果数。 此参数定义返回结果数的上限。 如果根据配置中定义的最大消息大小限制，无法将这些结果容纳到消息中，则返回的结果数可能小于指定的最大结果数。 如果此参数为零或者未指定，则分页查询包含返回消息中最多可容纳的结果数。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值：60。 |
+| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|说明|
+|参数|Description|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
-| --output -o | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。 |
+| --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
 | --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
 
@@ -89,18 +89,18 @@ ms.locfileid: "34763402"
 
 ### <a name="arguments"></a>参数
 
-|参数|说明|
+|参数|Description|
 | --- | --- |
 | --deployment-name [必需] | 部署的标识。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值：60。 |
+| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|说明|
+|参数|Description|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
-| --output -o | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。 |
+| --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
 | --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
 
@@ -111,18 +111,18 @@ ms.locfileid: "34763402"
 
 ### <a name="arguments"></a>参数
 
-|参数|说明|
+|参数|Description|
 | --- | --- |
 | --deployment-name [必需] | 部署的标识。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值：60。 |
+| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|说明|
+|参数|Description|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
-| --output -o | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。 |
+| --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
 | --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
 
@@ -133,13 +133,13 @@ ms.locfileid: "34763402"
 
 ### <a name="arguments"></a>参数
 
-|参数|说明|
+|参数|Description|
 | --- | --- |
 | --deployment-name [必需] | 部署的名称。 |
 | --file-path        [必需] | 目标 Docker compose 文件的路径。 |
 | --default-svc-type-health-map | 描述用于评估服务运行状况的运行状况策略的 JSON 编码字典。 |
 | --encrypted-pass | 不提示输入容器注册表密码，而是使用已加密的通行短语。 |
-| --failure-action | 可能的值包括：“Invalid”、“Rollback”和“Manual”。 |
+| --failure-action | 可能的值包括\:“Invalid”、“Rollback”和“Manual”。 |
 | --force-restart | 强制重启。 |
 | --has-pass | 将提示输入容器注册表的密码。 |
 | --health-check-retry | 运行状况检查重试超时时间，以毫秒为单位。 |
@@ -147,22 +147,22 @@ ms.locfileid: "34763402"
 | --health-check-wait | 运行状况检查等待持续时间，以毫秒为单位。 |
 | --replica-set-check | 升级副本集检查超时时间，以秒为单位。 |
 | --svc-type-health-map | 描述用于评估不同服务类型的运行状况的运行状况策略的 JSON 编码对象列表。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值：60。 |
+| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 | --unhealthy-app | 报告错误之前允许的最大不正常应用程序百分比。 <br><br> 例如，若要允许 10% 的应用程序处于不正常状态，此值为 10。 该百分比表示在将群集视为出错之前可处于不正常状态的应用程序的最大容许百分比。 如果未超过该百分比，但至少存在一个不正常的应用程序，则将运行状况评估为 Warning。 该百分比的计算方式是将不正常的应用程序数除以群集中的应用程序实例总数。 |
 | --upgrade-domain-timeout | 升级域超时时间，以毫秒为单位。 |
-| --upgrade-kind | 默认值：Rolling。 |
-| --upgrade-mode | 可能的值包括：“Invalid”、“UnmonitoredAuto”、“UnmonitoredManual”和“Monitored”。  默认值：UnmonitoredAuto。 |
+| --upgrade-kind | 默认值\: Rolling。 |
+| --upgrade-mode | 可能的值包括\:“Invalid”、“UnmonitoredAuto”、“UnmonitoredManual”和“Monitored”。  默认值\: UnmonitoredAuto。 |
 | --upgrade-timeout | 升级超时时间，以毫秒为单位。 |
 | --user | 用于连接容器注册表的用户名。 |
 | --warning-as-error | 将警告的严重性视为与错误相同。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|说明|
+|参数|Description|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
-| --output -o | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。 |
+| --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
 | --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
 
@@ -173,21 +173,20 @@ ms.locfileid: "34763402"
 
 ### <a name="arguments"></a>参数
 
-|参数|说明|
+|参数|Description|
 | --- | --- |
 | --deployment-name [必需] | 部署的标识。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值：60。 |
+| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|说明|
+|参数|Description|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
-| --output -o | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。 |
+| --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
 | --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
-
 
 
 ## <a name="next-steps"></a>后续步骤

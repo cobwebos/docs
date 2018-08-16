@@ -1,25 +1,20 @@
 ---
-title: 使用 Azure 门户管理 HDInsight 中基于 Windows 的 Hadoop 群集 | Microsoft Docs
+title: 使用 Azure 门户在 HDInsight 中管理基于 Windows 的 Hadoop 群集
 description: 了解如何管理 HDInsight 服务。 创建 HDInsight 群集，打开交互式 JavaScript 控制台，并打开 Hadoop 命令控制台。
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 9295a988-bd88-453a-8c8b-55fa103bf39c
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jgao
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 78541feda8c82be143f91fdde88eac179cf0b1a5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a4cbc0c14d0f6c505b391becf33c56dd95bfc251
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31405358"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592214"
 ---
 # <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中基于 Windows 的 Hadoop 群集
 
@@ -83,11 +78,12 @@ HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件�
 
    * 要自定义菜单，可右键单击菜单中的任意位置，并单击“自定义”。
    * “设置”和“所有设置”：显示该群集的“设置”边栏选项卡，可让你访问该群集的详细配置信息。
-   * **仪表板**、**群集仪表板**和 **URL：这些是访问群集仪表板（即可用于基于 Linux 群集的 Ambari Web）的所有途径。-** 安全外壳\*\*：显示使用安全 Shell (SSH) 连接与群集建立连接的说明。
+   * “仪表板”、“群集仪表板”和“URL”：这些是访问群集仪表板（即可用于基于 Linux 群集的 Ambari Web）的所有途径。
+   * **安全外壳**：显示使用安全 Shell (SSH) 连接与群集建立连接的说明。
    * **缩放群集**：可更改此群集的辅助角色节点数。
    * **删除**：删除群集。
    * 快速启动：显示可帮助你开始使用 HDInsight 的信息。
-   * **用户：用于设置 Azure 订阅上其他用户对此群集的*门户管理*权限。
+   * **用户**：用于设置 Azure 订阅上其他用户对此群集的*门户管理*权限。
 
      > [!IMPORTANT]
      > 这“只会”影响在 Azure 门户中对此群集的访问和权限，对于连接到 HDInsight 群集或将作业提交到其上的用户并没有影响。
@@ -277,7 +273,7 @@ HDInsight 查询控制台包括下列功能：
 
     ![hdinsight 门户作业历史记录](./media/hdinsight-administer-use-management-portal/hdinsight-job-history.png)
 
-    单击“查询名称”以显示详细信息，其中包括“作业属性”、“作业查询”和\*\*“作业输出”。 还可将查询和输出下载到工作站。
+    单击“查询名称”以显示详细信息，其中包括“作业属性”、“作业查询”和“作业输出”。 还可将查询和输出下载到工作站。
 * **文件浏览器**：浏览默认存储帐户和链接的存储帐户。
 
     ![HDInsight 门户文件浏览器浏览](./media/hdinsight-administer-use-management-portal/hdinsight-file-browser.png)

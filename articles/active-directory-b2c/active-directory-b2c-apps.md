@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f4b45c743c0efa1c9df665018b28a8b4ffb76f73
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: e42bc63b0c2b6edf4dc0de204bbac5fe90071a67
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238397"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480506"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>可在 Azure Active Directory B2C 中使用的应用程序类型
 
@@ -60,7 +60,13 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 
 在 Web 应用程序中，每次执行[策略](active-directory-b2c-reference-policies.md)都要采用以下高级步骤：
 
-![Web 应用泳道图像](./media/active-directory-b2c-apps/webapp.png)
+1. 用户浏览到 Web 应用程序。
+2. Web 应用程序将用户重定向到指示要执行的策略的 Azure AD B2C。
+3. 用户完成策略。
+4. Azure AD B2C 将 `id_token` 返回到浏览器。
+5. `id_token` 发布到重定向 URI。
+6. 验证 `id_token` 并设置会话 Cookie。
+7. 安全页返回至用户。
 
 使用从 Azure AD 收到的公共签名密钥来验证 `id_token` ，就足以验证用户的标识。 这也会设置可在后续页面请求中用于识别用户的会话 Cookie。
 
@@ -89,7 +95,15 @@ Accept: application/json
 
 Web API 可从许多类型的客户端（包括 Web 应用程序、桌面和移动应用程序、单页应用程序、服务器端守护程序，甚至其他 Web API）接收令牌。 下面是 Web 应用程序调用 Web API 的完整流程示例：
 
-![Web 应用 Web API 泳道图像](./media/active-directory-b2c-apps/webapi.png)
+1. Web 应用程序执行策略，用户完成用户体验。
+2. Azure AD B2C 将 `access_token` 和授权代码返回到浏览器。
+3. 浏览器将 `access_token` 和授权代码发布到重定向 URI。
+4. Web 服务器验证 `access token` 并设置会话 Cookie。
+5. `access_token` 向 Azure AD B2C 提供授权代码、应用程序客户端 ID 和凭据。
+6. `access_token` 和 `refresh_token` 返回到 Web 服务器。
+7. 使用授权标头中的 `access_token` 调用 Web API。
+8. Web API 对令牌进行验证。
+9. 安全数据返回到 Web 服务器。
 
 有关授权代码、刷新令牌的详细信息和获取令牌的步骤，请参阅 [OAuth 2.0 protocol](active-directory-b2c-reference-oauth-code.md)（OAuth 2.0 协议）。
 
@@ -105,8 +119,6 @@ Web API 可从许多类型的客户端（包括 Web 应用程序、桌面和移�
 > Azure AD B2C 目前仅支持用于访问应用程序自身后端 Web 服务的令牌。 例如，完整的应用程序可能包括 iOS 应用程序、Android 应用程序和后端 Web API。 这种体系结构完全受支持。 目前不支持 iOS 应用程序使用 OAuth 2.0 访问令牌来访问合作伙伴 Web API。 完整应用程序的所有组件必须共享单个应用程序 ID。
 >
 >
-
-![本机应用泳道图像](./media/active-directory-b2c-apps/native.png)
 
 ## <a name="current-limitations"></a>当前限制
 

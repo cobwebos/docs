@@ -2,24 +2,18 @@
 title: 对 Azure 存储进行监视、诊断和故障排除 | Microsoft Docs
 description: 使用存储分析、客户端日志记录等功能及其他第三方工具来确定、诊断和排查与 Azure 存储相关的问题。
 services: storage
-documentationcenter: ''
 author: fhryo-msft
-manager: jahogg
-editor: tysonn
-ms.assetid: d1e87d98-c763-4caa-ba20-2cf85f853303
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
-ms.openlocfilehash: b89071048594e1e11efb321da3d0b48005824b46
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.component: common
+ms.openlocfilehash: e560eb9e0bbce09c541bfc66ea760ea3e636f841
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "29740657"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528708"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>监视、诊断和排查 Microsoft Azure 存储问题
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -92,7 +86,7 @@ ms.locfileid: "29740657"
 * 提供必要的过程和工具来帮助你确定应用程序中的问题是否与 Azure 存储有关。
 * 为提供用于解决与 Azure 存储相关的问题的可操作指南。
 
-### <a name="how-this-guide-is-organized"></a>本指南的组织方式
+### <a name="how-this-guide-is-organized">本指南的组织方式</a>
 “[监视存储服务]”一节介绍如何使用 Azure 存储分析度量值（存储度量值）监视 Azure 存储服务的运行状况和性能。
 
 “[诊断存储问题]”一节介绍如何使用 Azure 存储分析日志记录（存储日志记录）诊断问题。 它还介绍了如何使用其中一个客户端库（如 .NET 存储客户端库或 Azure SDK for Java）中的工具启用客户端日志记录。
@@ -131,7 +125,8 @@ ms.locfileid: "29740657"
 此外，[Azure 门户](https://portal.azure.com)还可以提供影响各种 Azure 服务的事件的通知。
 注意：此信息以前已在 [Azure 服务仪表板](http://status.azure.com)上与历史数据一起提供。
 
-虽然 [Azure 门户](https://portal.azure.com)从 Azure 数据中心内部收集运行状况信息（由内而外监视），但你也可以考虑采用由外而内的方法来生成定期从多个位置访问 Azure 托管的 Web 应用程序的综合事务。 [Dynatrace](http://www.dynatrace.com/en/synthetic-monitoring) 和 Application Insights for Visual Studio Team Services 提供的服务是此方法的示例。 有关 Application Insights for Visual Studio Team Services 的详细信息，请参阅附录“[附录 5：使用 Application Insights for Visual Studio Team Services 进行监视](#appendix-5)”。
+虽然 [Azure 门户](https://portal.azure.com)从 Azure 数据中心内部收集运行状况信息（由内而外监视），但你也可以考虑采用由外而内的方法来生成定期从多个位置访问 Azure 托管的 Web 应用程序的综合事务。 
+  [Dynatrace](http://www.dynatrace.com/en/synthetic-monitoring) 和 Application Insights for Visual Studio Team Services 提供的服务是此方法的示例。 有关 Application Insights for Visual Studio Team Services 的详细信息，请参阅附录“[附录 5：使用 Application Insights for Visual Studio Team Services 进行监视](#appendix-5)”。
 
 ### <a name="monitoring-capacity"></a>监视容量
 存储度量值仅存储 Blob 服务的容量度量值，因为 Blob 通常占所存储数据的最大比例（撰写本文时，尚不能使用存储度量值来监视表和队列的容量）。 如果已为 Blob 服务启用监视，则可以在 **$MetricsCapacityBlob** 表中找到此数据。 存储度量值每天记录一次此数据，并可以使用 **RowKey** 的值来确定某行是否包含与用户数据（值 **data**）或分析数据（值 **analytics**）相关的实体。 每个存储的实体均包含有关所用的存储量（**Capacity**，以字节为单位）、当前的容器数 (**ContainerCount**) 以及存储帐户中正在使用的 Blob 数 (**ObjectCount**) 的信息。 有关 **$MetricsCapacityBlob** 表中存储的容量度量值的详细信息，请参阅[存储分析度量值表架构](http://msdn.microsoft.com/library/azure/hh343264.aspx)。
@@ -402,7 +397,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 ### <a name="metrics-show-high-AverageServerLatency"></a>指标显示高 AverageServerLatency
 如果 blob 下载请求出现高 **AverageServerLatency**，则应使用存储日志记录日志来了解对于同一 blob（或一组 blob）是否存在重复的请求。 对于 Blob 上传请求，应调查客户端正在使用的数据块大小（例如，小于 64 K 的数据块大小可能会导致开销，除非读取操作也在小于 64 K 的区块中进行），以及是否有多个客户端正在并行将数据块上传到同一 Blob。 还应检查每分钟度量值以了解导致超出每秒可伸缩性目标的请求数峰值：另请参阅“[度量值显示 PercentTimeoutError 增加]”。
 
-如果当对于同一 Blob（或一组 Blob）存在重复的请求时，会看到 Blob 下载请求显示高 **AverageServerLatency**，则应考虑使用 Azure 缓存或 Azure 内容传送网络 (CDN) 缓存这些 Blob。 对于上传请求，你可以通过使用较大的数据块大小来提高吞吐量。 对于表查询，也可以在执行相同的查询操作并且数据不会频繁更改的客户端上实施客户端缓存。
+如果当对于同一 Blob（或一组 Blob）存在重复的请求时，会看到 Blob 下载请求显示高 **AverageServerLatency**，则应考虑使用 Azure 缓存或 Azure 内容分发网络 (CDN) 缓存这些 Blob。 对于上传请求，你可以通过使用较大的数据块大小来提高吞吐量。 对于表查询，也可以在执行相同的查询操作并且数据不会频繁更改的客户端上实施客户端缓存。
 
 高 **AverageServerLatency** 值也可能是设计欠佳的表或查询的症状，它会导致扫描操作或执行追加/前面预置反模式。 有关详细信息，请参阅“[度量值显示 PercentThrottlingError 增加]”。
 
@@ -656,7 +651,7 @@ client.SetServiceProperties(sp);
 ### <a name="capacity-metrics-show-an-unexpected-increase"></a>容量指标显示存储容量使用量意外增加
 如果发现存储帐户中的容量使用量意外突变，可调查其原因，具体方法是先查看可用性指标；例如，失败的删除请求数增加可能导致所用的 Blob 存储量增加，本来希望应用程序特定的清理操作可释放一些空间，但却未按预期工作（例如，因为用于释放空间的 SAS 令牌已过期）。
 
-### <a name="your-issue-arises-from-using-the-storage-emulator"></a>该问题是由于使用存储模拟器进行开发或测试而导致
+### <a name="your-issue-arises-from-using-the-storage-emulator">该问题是由于使用存储模拟器进行开发或测试而导致</a>
 通常，在开发和测试过程中使用存储模拟器以避免需要 Azure 存储帐户。 使用存储模拟器时可能发生的常见问题包括：
 
 * [功能“X”在存储模拟器中无法正常工作]
@@ -795,7 +790,7 @@ Microsoft Message Analyzer 中内置的 **Web 代理**跟踪基于 Fiddler；它
 有关 Microsoft Message Analyzer 本地链路层跟踪的详细信息，请参阅 [Microsoft-PEF-NDIS-PacketCapture Provider](http://technet.microsoft.com/library/jj659264.aspx)（Microsoft-PEF-NDIS-PacketCapture 提供程序）。
 
 ### <a name="appendix-4"></a>附录 4：使用 Excel 查看指标和日志数据
-使用许多工具可以从 Azure 表存储中下载带分隔符格式的存储度量值数据，以便可以轻松地将这些数据加载到 Excel 中进行查看和分析。 来自 Azure Blob 存储的存储日志记录数据已采用可以加载到 Excel 中的带分隔符格式。 但是，需要基于[存储分析日志格式](http://msdn.microsoft.com/library/azure/hh343259.aspx)和[存储分析度量表架构](http://msdn.microsoft.com/library/azure/hh343264.aspx)中的信息添加相应的列标题。
+使用许多工具可以从 Azure 表存储中下载带分隔符格式的存储度量值数据，以便可以轻松地将这些数据加载到 Excel 中进行查看和分析。 来自 Azure Blob 存储的存储日志记录数据已采用可以加载到 Excel 中的带分隔符格式。 但是，需要基于“存储分析日志格式”和“存储分析度量表架构”中的信息添加相应的列标题。[](http://msdn.microsoft.com/library/azure/hh343259.aspx)[](http://msdn.microsoft.com/library/azure/hh343264.aspx)
 
 要将存储日志记录数据导入 Excel（从 Blob 存储下载后），请执行以下操作：
 

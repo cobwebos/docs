@@ -3,7 +3,7 @@ title: 升级到安全中心的标准层以增强安全性 | Microsoft Docs
 description: 本文提供有关 Azure 安全中心定价的信息。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 4d1364cd-7847-425a-bb3a-722cb0779f78
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/19/2017
-ms.author: terrylan
-ms.openlocfilehash: 0a8fb526602692db6737842c24649b686bea5dad
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.date: 08/06/2018
+ms.author: rkarlin
+ms.openlocfilehash: 824362c5dab9f226aff84e75b6620221d3a9147f
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2017
-ms.locfileid: "23473926"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528471"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>升级到安全中心的标准层以增强安全性
 Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供统一的安全管理和高级威胁防护功能。 它可以提供针对混合云工作负载的可见性和可控性、可减小在威胁下的曝光面的积极防御功能以及有助于随时响应快速演变的网络攻击的智能检测功能。
@@ -35,7 +35,7 @@ Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供�
 ## <a name="try-standard-free-for-60-days"></a>免费试用标准层 60 天
 标准层在前 60 天免费提供。 60 天后，如果选择继续使用服务，会自动开始收取使用费用。
 
-可以将整个 Azure 订阅升级到标准层，这样此订阅中的所有资源均将继承此层，或者可以定义唯一的策略来仅升级特定的资源组。
+可将整个 Azure 订阅升级到标准层，这样此订阅中的所有资源均将继承此层。
 
 若要获取标准层，请执行以下操作：
 
@@ -43,7 +43,7 @@ Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供�
 2. 选择要升级到标准的订阅。
 3. 在“安全策略”边栏选项卡上，选择“定价层”。
 4. 选择“标准层”以进行升级。
-5. 单击“保存” 。
+5. 单击“ **保存**”。
 
 ![安全事件][1]
 

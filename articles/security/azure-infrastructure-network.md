@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: a6800b18d1bb588c747d4e9ef7049ac4cbb82f60
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 5a0f0594a9ccb27a0f76a679e454e9a3ffe19a43
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213463"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505374"
 ---
 # <a name="azure-network-architecture"></a>Azure 网络体系结构
 Azure 网络体系结构遵循行业标准核心/分配/访问模型的修改版本，并使用不同的硬件层。 这些层包括：
@@ -38,7 +38,7 @@ Azure 网络体系结构遵循行业标准核心/分配/访问模型的修改版
 - Digi CM
 - 配电装置
 
-Azure 有两个独立的体系结构。 某些现有 Azure 客户和共享服务驻留在默认的 LAN 体系结构 (DLA) 中，而新区域和虚拟客户驻留在 Quantum 10 (Q10) 体系结构中。 DLA 体系结构采用传统的树形设计，其中包含主动/被动接入路由器，并向接入路由器应用安全访问控制列表 (ACL)。 Quantum 10 体系结构采用 Clos/mesh 路由器设计，其中的 ACL 不在路由器上应用， 而是通过软件负载均衡 (SLB) 或软件定义的 VLAN 在路由下面应用。
+Azure 有两个独立的体系结构。 某些现有 Azure 客户和共享服务驻留在默认的 LAN 体系结构 (DLA) 中，而新区域和虚拟客户驻留在 Quantum 10 (Q10) 体系结构中。 DLA 体系结构采用传统的树形设计，其中包含主动/被动接入路由器，并向接入路由器应用安全访问控制列表 (ACL)。 Quantum 10 体系结构采用 Close/mesh 路由器设计，其中的 ACL 不在路由器上应用。 而是通过软件负载均衡 (SLB) 或软件定义的 VLAN 在路由下面应用。
 
 下图提供了 Azure 群集中网络体系结构的统括式概述：
 

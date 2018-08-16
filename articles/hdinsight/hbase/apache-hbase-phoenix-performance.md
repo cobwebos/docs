@@ -1,25 +1,20 @@
 ---
-title: Azure HDInsight 中的 Phoenix 性能 | Microsoft Docs
+title: Azure HDInsight 中的 Phoenix 性能
 description: 有关优化 Phoenix 性能的最佳做法。
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: b4c1e3fb919ab9ad88a15b51a5e204290a7a12cf
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: db00dcad8f3dffbb958158bef9fdb75423eba2f7
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164629"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592265"
 ---
 # <a name="phoenix-performance-best-practices"></a>Phoenix 性能最佳实践
 

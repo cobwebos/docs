@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: juliako
-ms.openlocfilehash: a7f20c22b39458134d3dcd42b7e13860c03bad58
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 08b7f50c3051c174158cff0b4c591a2b22fb4ab4
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785906"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502696"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>通过 Azure AD 身份验证访问 Azure 媒体服务 API
  
 Azure 媒体服务 API 是 RESTful API。 可用于通过 REST API 或可用的客户端 SDK 对媒体资源执行操作。 Azure 媒体服务提供了适用于 Microsoft.NET 的媒体服务客户端 SDK。 若要有权访问媒体服务资源和媒体服务 API，必须先进行身份验证。 
 
-媒体服务支持 [Azure Active Directory (Azure AD) 身份验证](../../active-directory/active-directory-whatis.md)。 Azure 媒体 REST 服务要求，发出 REST API 请求的用户或应用程序必须具有参与者或所有者角色，才能访问资源。 有关详细信息，请参阅 [Azure 门户中基于角色的访问控制入门](../../role-based-access-control/overview.md)。  
+媒体服务支持 [Azure Active Directory (Azure AD) 身份验证](../../active-directory/fundamentals/active-directory-whatis.md)。 Azure 媒体 REST 服务要求，发出 REST API 请求的用户或应用程序必须具有参与者或所有者角色，才能访问资源。 有关详细信息，请参阅 [Azure 门户中基于角色的访问控制入门](../../role-based-access-control/overview.md)。  
 
 > [!IMPORTANT]
 > 目前，媒体服务支持 Azure 访问控制服务身份验证模型。 不过，访问控制授权将于 2018 年 6 月 1 日弃用。 建议尽快迁移到 Azure AD 身份验证模型。
@@ -76,13 +76,13 @@ Azure 媒体服务 API 是 RESTful API。 可用于通过 REST API 或可用的�
         可以在 Azure 门户中检索租户信息。 将光标悬停在右上角的登录用户名之上。
     * 媒体服务资源 URI。 
 
-        对于同一 Azure 环境中的媒体服务帐户，此 URI 相同（例如，https://rest.media.azure.net)。
+        对于同一 Azure 环境中的媒体服务帐户，此 URI 相同（例如， https://rest.media.azure.net)。
 
     * 媒体服务（本机）应用程序客户端 ID。
     * 媒体服务（本机）应用程序重定向 URI。
     * REST 媒体服务的资源 URI。
         
-        该 URI 表示 REST API 终结点（例如，https://test03.restv2.westus.media.azure.net/api/)。
+        该 URI 表示 REST API 终结点（例如， https://test03.restv2.westus.media.azure.net/api/)。
 
     若要获取这些参数的值，请参阅[使用 Azure 门户访问 Azure AD 身份验证设置](media-services-portal-get-started-with-aad.md)（使用用户身份验证选项）。
 
@@ -100,7 +100,7 @@ Azure 媒体服务 API 是 RESTful API。 可用于通过 REST API 或可用的�
 
 使用服务主体身份验证方法生成使用者方案时，通常在中间层（通过一些 API）处理身份验证，而不直接在移动或桌面应用程序中处理。 
 
-若要使用这种方法，请在它自己的租户中创建 Azure AD 应用程序和服务主体。 创建应用程序后，向应用程序授予对媒体服务帐户的参与者或所有者角色访问权限。 为此，可以使用 Azure 门户、Azure CLI 或 PowerShell 脚本。 也可以使用现有 Azure AD 应用程序。 可以[在 Azure 门户中](media-services-portal-get-started-with-aad.md)注册和管理 Azure AD 应用程序和服务主体。 也可以使用 [Azure CLI 2.0](media-services-use-aad-auth-to-access-ams-api.md) 或 [PowerShell](media-services-powershell-create-and-configure-aad-app.md) 执行此操作。 
+若要使用这种方法，请在它自己的租户中创建 Azure AD 应用程序和服务主体。 创建应用程序后，向应用程序授予对媒体服务帐户的参与者或所有者角色访问权限。 可在 Azure 门户中使用 Azure CLI 或 PowerShell 脚本执行此操作。 也可以使用现有 Azure AD 应用程序。 可以[在 Azure 门户中](media-services-portal-get-started-with-aad.md)注册和管理 Azure AD 应用程序和服务主体。 也可以使用 [Azure CLI](media-services-use-aad-auth-to-access-ams-api.md) 或 [PowerShell](media-services-powershell-create-and-configure-aad-app.md) 执行此操作。 
 
 ![中间层应用](./media/media-services-use-aad-auth-to-access-ams-api/media-services-principal-service-aad-app1.png)
 
@@ -118,11 +118,11 @@ Azure 媒体服务 API 是 RESTful API。 可用于通过 REST API 或可用的�
         可以在 Azure 门户中检索租户信息。 将光标悬停在右上角的登录用户名之上。
     * 媒体服务资源 URI。 
 
-        对于位于同一 Azure 环境中的媒体服务帐户，此 URI 相同（例如，https://rest.media.azure.net)。
+        对于位于同一 Azure 环境中的媒体服务帐户，此 URI 相同（例如， https://rest.media.azure.net)。
 
     * REST 媒体服务的资源 URI。
 
-        该 URI 表示 REST API 终结点（例如，https://test03.restv2.westus.media.azure.net/api/)。
+        该 URI 表示 REST API 终结点（例如， https://test03.restv2.westus.media.azure.net/api/)。
 
     * Azure AD 应用程序值：客户端 ID和客户端密码。
     
@@ -146,8 +146,8 @@ Azure 媒体服务 API 是 RESTful API。 可用于通过 REST API 或可用的�
 
 下面的文章概述了 Azure AD 身份验证概念： 
 
-- [Azure AD 解决的身份验证方案](../../active-directory/develop/active-directory-authentication-scenarios.md#basics-of-authentication-in-azure-ad)
-- [在 Azure AD 中添加、更新或删除应用程序](../../active-directory/develop/active-directory-integrating-applications.md)
+- [Azure AD 解决的身份验证方案](../../active-directory/develop/authentication-scenarios.md#basics-of-authentication-in-azure-ad)
+- [在 Azure AD 中添加、更新或删除应用程序](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)
 - [使用 PowerShell 配置和管理基于角色的访问控制](../../role-based-access-control/role-assignments-powershell.md)
 
 ## <a name="next-steps"></a>后续步骤

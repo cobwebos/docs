@@ -2,19 +2,18 @@
 title: 使用 Azure AD DS 配置已加入域的 HDInsight 群集
 description: 了解如何使用 Azure Active Directory 域服务设置和配置已加入域的 HDInsight 群集
 services: hdinsight
+ms.service: hdinsight
 author: omidm1
 ms.author: omidm
-manager: jhubbard
-editor: cgronlun
-ms.service: hdinsight
+editor: jasonwhowell
 ms.topic: conceptual
 ms.date: 07/17/2018
-ms.openlocfilehash: 45cb9590e6dd0d8260f6e63b80caeca894f0fd44
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 0d44812c92fd14bf87aac9a942241f8de55f2eec
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126028"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590573"
 ---
 # <a name="configure-a-domain-joined-hdinsight-cluster-by-using-azure-active-directory-domain-services"></a>使用 Azure Active Directory 域服务配置已加入域的 HDInsight 群集
 
@@ -31,7 +30,7 @@ ms.locfileid: "39126028"
 
 预配 Azure AD DS 实例后，在 Azure Active Directory (Azure AD) 中创建一个具有适当权限的服务帐户。 如果此服务帐户已存在，则重置其密码并等待帐户同步到 Azure AD DS。 重置时会创建 Kerberos 密码哈希，并且同步到 Azure AD DS 可能需要长达 30 分钟的时间。 
 
-该服务帐户应具有以下权限：
+该服务帐户需要以下权限：
 
 - 将计算机加入到域，并将计算机主体放到在创建群集期间指定的 OU 中。
 - 在群集创建期间指定的 OU 内创建服务主体。
@@ -52,9 +51,12 @@ ms.locfileid: "39126028"
 创建已加入域的 HDInsight 群集时，必须提供以下参数：
 
 - **域名**：与 Azure AD DS 关联的域名。 例如 contoso.onmicrosoft.com。
+
 - **域用户名**：在前面的部分中创建的 Azure ADDS DC 托管域中的服务帐户。 例如 hdiadmin@contoso.onmicrosoft.com。 此域用户将成为此 HDInsight 群集的管理员。
+
 - **域密码**：服务帐户的密码。
-- **组织单位**：要用于 HDInsight 群集的 OU 的可分辨名称。 例如 OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com。 如果此 OU 不存在，则 HDInsight 群集会尝试使用服务帐户拥有的权限创建 OU。 例如，如果服务帐户位于 Azure AD DS 管理员组中，则拥有创建 OU 的权限。 否则，可能需要先创建 OU，并授予服务帐户对该 OU 的完全控制。 有关详细信息，请参阅[在 Azure AD DS 托管域上创建 OU](../../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md)。
+
+- **组织单位**：要用于 HDInsight 群集的 OU 的可分辨名称。 例如 OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com。 如果此 OU 不存在，则 HDInsight 群集会尝试使用服务帐户拥有的权限创建 OU。 例如，如果服务帐户位于 Azure AD DS 管理员组中，则拥有创建 OU 的权限。 否则，需要先创建 OU，并授予服务帐户对该 OU 的完全控制。 有关详细信息，请参阅[在 Azure AD DS 托管域上创建 OU](../../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md)。
 
     > [!IMPORTANT]
     > 在 OU 后包括所有 DC 并以逗号分隔（例如 OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com）。
@@ -64,11 +66,11 @@ ms.locfileid: "39126028"
     > [!IMPORTANT]
     > 输入完整的 URL，包括“ldaps://”和端口号 (:636)。
 
-- **访问用户组**：其用户要同步到群集的安全组。 例如，HiveUsers。 如果想要指定多个用户组，请使用分号“;”分隔。
- 
+- **访问用户组**：其用户要同步到群集的安全组。 例如，HiveUsers。 如果想要指定多个用户组，请使用分号“;”分隔。 预配之前，组必须存在于目录中。 有关详细信息，请参阅[在 Azure Active Directory 中创建组并添加成员](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。 如果该组不存在，则会发生错误：“在 Active Directory 中找不到组 HiveUsers”。
+
 以下屏幕截图显示了 Azure 门户中的配置：
 
-![Azure HDInsight 中已加入域的 Active Directory 域服务配置](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-domain-joined-configuration-azure-aads-portal.png)。
+   ![Azure HDInsight 中已加入域的 Active Directory 域服务配置](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-domain-joined-configuration-azure-aads-portal.png)。
 
 
 ## <a name="next-steps"></a>后续步骤

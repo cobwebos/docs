@@ -7,19 +7,17 @@ manager: shreeshd
 keywords: 备份和灾难恢复;备份服务
 ms.service: backup
 ms.topic: conceptual
-ms.date: 6/25/2018
-ms.author: trinadhk
-ms.openlocfilehash: ac6d2a8a152f3c6e22be962b867ef58421eda47b
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.date: 8/6/2018
+ms.author: saurse;trinadhk
+ms.openlocfilehash: 177e44bce7d8f159892d78c7003945ba55ef4b84
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37016479"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577875"
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>有关 Azure 备份代理的问题
 本文提供常见问题的解答，有助于快速了解 Azure 备份代理组件。 某些答案提供内含全面信息的文章的链接。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
-
-[!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
 ## <a name="configure-backup"></a>配置备份
 ### <a name="where-can-i-download-the-latest-azure-backup-agent-br"></a>我可以在哪里下载最新的 Azure 备份代理？ <br/>
@@ -66,6 +64,10 @@ ms.locfileid: "37016479"
 ### <a name="does-the-azure-backup-agent-work-on-a-server-that-uses-windows-server-2012-deduplication-br"></a>Azure 备份代理是否适用于使用 Windows Server 2012 删除重复功能的服务器？ <br/>
 是的。 代理服务在准备备份操作时会消除了重复的数据转换为常规数据。 然后，它将对数据进行优化以便备份、对数据进行加密，并将已加密的数据发送到联机备份服务。
 
+## <a name="prerequisites-and-dependencies"></a>先决条件和依赖项
+### <a name="what-features-of-microsoft-azure-recovery-services-mars-agent-require-net-framework-452-and-higher"></a>Microsoft Azure 恢复服务 (MARS) 代理的哪些功能需要. NET Framework 4.5.2 及更高版本？
+[即时还原](backup-azure-restore-windows-server.md#use-instant-restore-to-recover-data-to-the-same-machine) 功能可通过“恢复数据”向导还原单个文件和文件夹，该功能需要 .NET Framework 4.5.2 或更高版本。
+
 ## <a name="backup"></a>备份
 ### <a name="how-do-i-change-the-cache-location-specified-for-the-azure-backup-agentbr"></a>如何更改为 Azure 备份代理指定的缓存位置？<br/>
 请使用以下列表来更改缓存位置。
@@ -92,8 +94,8 @@ ms.locfileid: "37016479"
 ### <a name="where-can-i-put-the-cache-folder-for-the-azure-backup-agent-to-work-as-expectedbr"></a>可以将缓存文件夹放在何处，以便 Azure 备份代理按预期工作？<br/>
 不建议将缓存文件夹放在以下位置：
 
-* 网络共享或可移动媒体：缓存文件夹必须位于需要使用联机备份进行备份的服务器本地。 不支持网络位置或可移动媒体，例如 U 盘。
-* 脱机卷：缓存文件夹必须联机才能使用 Azure 备份代理执行预期的备份。
+* 网络共享或可移动媒体：缓存文件夹必须位于需要使用联机备份进行备份的服务器本地。 不支持网络位置或可移动媒体，例如 U 盘
+* 脱机卷：缓存文件夹必须联机才能使用 Azure 备份代理执行预期的备份
 
 ### <a name="are-there-any-attributes-of-the-cache-folder-that-are-not-supportedbr"></a>缓存文件夹是否有任何不受支持的属性？<br/>
 缓存文件夹不支持以下属性或其组合：
@@ -111,8 +113,7 @@ ms.locfileid: "37016479"
 
 ## <a name="manage-backups"></a>管理备份
 ### <a name="what-happens-if-i-rename-a-windows-server-that-is-backing-up-data-to-azurebr"></a>如果重命名了用于将数据备份到 Azure 的 Windows 服务器，会发生什么情况？<br/>
-重命名服务器时，所有当前配置的备份都将停止。
-将向备份保管库注册服务器的新名称。 向保管库注册新名称时，第一个备份操作是*完全*备份。 如果需要恢复备份到采用旧服务器名称的保管库的数据，可以使用“恢复数据”向导中的[**其他服务器**](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)选项。
+重命名服务器时，所有当前配置的备份都将停止。 将向备份保管库注册服务器的新名称。 向保管库注册新名称时，第一个备份操作是*完全*备份。 如果需要恢复备份到采用旧服务器名称的保管库的数据，可以使用“恢复数据”向导中的[**其他服务器**](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)选项。
 
 ### <a name="what-is-the-maximum-file-path-length-that-can-be-specified-in-backup-policy-using-azure-backup-agent-br"></a>可以使用 Azure 备份代理在备份策略中指定的文件路径的最大长度是多少？ <br/>
 Azure 备份代理依赖于 NTFS。 [可以指定的文件路径的长度受限于 Windows API](https://msdn.microsoft.com/library/aa365247.aspx#fully_qualified_vs._relative_paths)。 如果要保护的文件的文件路径超过 Windows API 允许的长度，可以备份父文件夹或磁盘驱动器。  

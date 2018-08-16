@@ -1,25 +1,20 @@
 ---
-title: 使用 Ambari API 在 HDInsight 中监视 Hadoop 群集 - Azure | Microsoft Docs
+title: 使用 Ambari API 在 HDInsight 中监视 Hadoop 群集 - Azure
 description: 使用 Apache Ambari API 创建、管理和监视 Hadoop 群集。 直观的操作员工具和 API 消除了 Hadoop 的复杂性。
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-editor: cgronlun
-manager: jhubbard
-ms.assetid: 052135b3-d497-4acc-92ff-71cee49356ff
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/07/2017
-ms.author: jgao
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3c8b1af3ad151a7a901150352202ab0b85aa6ec8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f55ee02ada5bb53d4634d119311fb9230ff15105
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31402030"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592816"
 ---
 # <a name="monitor-hadoop-clusters-in-hdinsight-using-the-ambari-api"></a>使用 Ambari API 在 HDInsight 中监视 Hadoop 群集
 学习如何使用 Ambari API 监视 HDInsight 群集。
@@ -47,7 +42,7 @@ HDInsight 目前仅支持 Ambari 监视功能。 Ambari API 1.0 受 HDInsight �
   > 
 * **一个 Azure HDInsight 群集**。 有关群集预配的说明，请参阅[开始使用 HDInsight][hdinsight-get-started] 或[预配 HDInsight 群集][hdinsight-provision]。 需要以下数据才能完成本教程：
   
-  | 群集属性 | Azure PowerShell 变量名 | 值 | 说明 |
+  | 群集属性 | Azure PowerShell 变量名 | 值 | Description |
   | --- | --- | --- | --- |
   |   HDInsight 群集名称 |$clusterName | |HDInsight 群集的名称。 |
   |   群集用户名 |$clusterUsername | |创建群集时指定的群集用户名。 |
@@ -127,7 +122,7 @@ HDInsight 目前仅支持 Ambari 监视功能。 Ambari API 1.0 受 HDInsight �
 ## <a name="ambari-monitoring-apis"></a>监视 API 的 Ambari
 下表列出了一些最常用的 Ambari 监视 API 调用。 有关该 API 的详细信息，请参阅 [Ambari API 参考][ambari-api-reference]。
 
-| 监视 API 调用 | URI | 说明 |
+| 监视 API 调用 | URI | Description |
 | --- | --- | --- |
 | 获取群集 |`/api/v1/clusters` | |
 | 获取群集信息 |`/api/v1/clusters/<ClusterName>.azurehdinsight.net` |群集、服务、主机 |

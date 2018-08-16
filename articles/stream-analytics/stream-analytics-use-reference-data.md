@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/25/2018
-ms.openlocfilehash: f87337d51b86f6b1eb053c1b618a2fc0696a9eb2
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 888a99cad68f98030d4481cc23cb82123c900ee6
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114501"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480523"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>使用参考数据在流分析中查找
 参考数据（也称为查找表）是一个静态的或本质上缓慢变化的有限数据集，用于执行查找或与数据流相关联。 Azure 流分析在内存中加载参考数据以实现低延迟流处理。 为了在 Azure 流分析作业中利用引用数据，通常会在查询中使用[引用数据联合](https://msdn.microsoft.com/library/azure/dn949258.aspx)。 流分析使用 Azure Blob 存储作为引用数据的存储层，并且通过 Azure 数据工厂，可以从[基于云和本地的任意数量的数据存储](../data-factory/copy-activity-overview.md)将引用数据转换和/或复制到 Azure Blob 存储，以用作引用数据。 引用数据建模为 blob 序列（在输入配置中定义），这些 blob 按blob 名称中指定的日期/时间顺序升序排列。 它**仅**支持使用**大于**序列中最后一个 blob 指定的日期/时间的日期/时间添加到序列的末尾。
@@ -46,8 +46,13 @@ ms.locfileid: "39114501"
 |事件序列化格式   | 为确保查询按预计的方式运行，流分析需要了解你对传入数据流使用哪种序列化格式。 对于引用数据，所支持的格式是 CSV 和 JSON。  |
 |编码   | 目前只支持 UTF-8 这种编码格式。  |
 
+## <a name="static-reference-data"></a>静态参考数据
+如果不希望参考数据发生变化，则可以通过在输入配置中指定静态路径来启用对静态参考数据的支持。 Azure 流分析从指定路径中获取 Blob。 不需要 {date} 和 {time} 替换令牌。 参考数据在流分析中不可变。 因此，不建议覆盖静态参考数据 Blob。
+
 ## <a name="generating-reference-data-on-a-schedule"></a>按计划生成引用数据
 如果引用数据是缓慢变化的数据集，则使用 {date} 和 {time} 替换令牌在输入配置中指定路径模式即可实现对刷新引用数据的支持。 流分析会根据此路径模式选取更新的引用数据定义。 例如，使用 `sample/{date}/{time}/products.csv` 模式时，日期格式为 **“YYYY-MM-DD”**，时间格式为 **“HH-mm”**，可指示流分析在 2015 年 4 月 16 日下午 5:30（UTC 时区）提取更新的 Blob `sample/2015-04-16/17-30/products.csv`。
+
+Azure 流分析每间隔一分钟都会自动扫描刷新的参考数据 Blob。
 
 > [!NOTE]
 > 当前，流分析作业仅在计算机时间提前于 blob 名称中的编码时间时才查找 blob 刷新。 例如，该作业将尽可能查找 `sample/2015-04-16/17-30/products.csv`，但不会早于 2015 年 4 月 16 日下午 5:30（UTC 时区）。 它*永远不会*查找编码时间早于发现的上一个 blob 的 blob。
@@ -63,8 +68,12 @@ ms.locfileid: "39114501"
 [Azure 数据工厂](https://azure.microsoft.com/documentation/services/data-factory/)可用来安排以下任务：创建流分析更新引用数据定义所需的已更新 blob。 数据工厂是一项基于云的数据集成服务，可对数据移动和转换进行安排并使其实现自动化。 数据工厂支持[连接到大量基于云和本地的数据存储](../data-factory/copy-activity-overview.md)以及按指定的定期计划轻松地移动数据。 有关如何将数据工厂管道设置为生成按预定义计划刷新的流分析引用数据的详细信息和分步指导，请查看此 [GitHub 示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ReferenceDataRefreshForASAJobs)。
 
 ## <a name="tips-on-refreshing-your-reference-data"></a>有关刷新引用数据的提示
-1. 覆盖引用数据 blob 不会导致流分析重新加载 blob，并且在某些情况下，它可能会导致作业失败。 更改引用数据的建议方法是使用作业输入中定义的相同容器和路径模式添加新的 blob，并且使用的日期/时间**大于**序列中最后一个 blob 指定的日期/时间。
-2. 引用数据 blob 并**不**按 blob 的“上次修改”时间排序，而是按 blob 名称中使用 {date} 和 {time} 替换项指定的日期和时间排序。
+1. 请勿覆盖参考数据 Blob，因为它们是不可变的。
+2. 刷新参考数据的推荐方法是：
+    * 使用路径模式中的 {date}/{time}
+    * 使用作业输入中定义的相同容器和路径模式来添加新 Blob
+    * 使用大于序列中最后一个 Blob 指定的日期/时间。
+3. 引用数据 blob 并**不**按 blob 的“上次修改”时间排序，而是按 blob 名称中使用 {date} 和 {time} 替换项指定的日期和时间排序。
 3. 为了避免必须列出大量 blob，请考虑删除不再对其进行处理的非常旧的 blob。 请注意，在某些情况下（如重新启动），ASA 可能需要重新处理一小部分 blob。
 
 ## <a name="next-steps"></a>后续步骤

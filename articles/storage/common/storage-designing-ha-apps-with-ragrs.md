@@ -2,24 +2,19 @@
 title: 使用 Azure 读取访问异地冗余存储 (RA-GRS) 设计高度可用的应用程序 | Microsoft Docs
 description: 如何使用 Azure RA-GRS 存储构建足以灵活处理中断的高度可用的应用程序。
 services: storage
-documentationcenter: .net
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: 8f040b0f-8926-4831-ac07-79f646f31926
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: tamram
-ms.openlocfilehash: f7f3f2d99e5582a1bcb672cc176258dfff9c3217
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.component: common
+ms.openlocfilehash: afcda23faf4e9f0999442fa91d3c016e446c04db
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30322924"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524536"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>使用 RA-GRS 设计高度可用的应用程序
 
@@ -27,7 +22,9 @@ ms.locfileid: "30322924"
 
 [!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 
-本文重点介绍 GRS 和 RA-GRS。 使用 GRS 选项，设置存储帐户时，数据的三个副本将保留在你所选的主要区域。 其他三个副本将异步保留在 Azure 指定的次要区域中。 RA-GRS 与 GRS 相同，但前者具有对次要副本的读取权限。 有关不同 Azure 存储冗余选项的详细信息，请参阅 [Azure 存储复制](https://docs.microsoft.com/azure/storage/storage-redundancy)。 复制文章还显示配对的主要和次要区域。
+本文重点介绍 GRS 和 RA-GRS。 使用 GRS 选项，设置存储帐户时，数据的三个副本将保留在你所选的主要区域。 其他三个副本将异步保留在 Azure 指定的次要区域中。 RA-GRS 提供对次要副本具有读取访问权限的异地冗余存储。
+
+如需深入了解主要区域配与次要区域的配对情况，请参阅[业务连续性和灾难恢复 (BCDR)：Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
 
 本文包含代码片段，末尾有完成示例的链接，可以下载并运行。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 5afa34a5eadf5367b3ab28749735197ca6ed82bd
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 588a0686eda1966582b82a4673a8b6805453c94c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263195"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441436"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>使用资源管理器模板创建日志警报
 本文演示如何在 Azure 中通过 [Azure Powershell](../azure-resource-manager/resource-group-template-deploy.md) 和 [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) 使用 [Azure 资源管理器模板](..//azure-resource-manager/resource-group-authoring-templates.md)，以编程方式大规模管理[日志警报](monitor-alerts-unified-log.md)。 目前，Azure 警报支持与来自 [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) 和 [Azure Application Insights](../application-insights/app-insights-analytics-tour.md) 的查询相关的日志警报。
@@ -27,7 +27,7 @@ ms.locfileid: "35263195"
 ### <a name="using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板
 通过警报规则创建 Log Analytics 的日志警报，该规则按固定时间间隔运行保存的搜索。 如果查询结果与指定的条件相符，则会创建一个警报记录且会运行一个或多个操作。 
 
-文档的 Log Analytics 部分提供 [Log Analytics 保存搜索](../log-analytics/log-analytics-log-searches.md)和 [Log Analytics 警报](../log-analytics/log-analytics-alerts.md)的资源模板。 详细了解[添加 Log Analytics 保存搜索和警报](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md)；其中包括说明性的示例和架构详细信息。
+文档的 Log Analytics 部分提供 Log Analytics 保存搜索和 Log Analytics 警报的资源模板。 若要了解详细信息，请参阅[添加 Log Analytics 保存搜索和警报](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md)，其中包括说明性的示例和架构详细信息。
 
 ### <a name="using-resource-template-via-apipowershell"></a>通过 API/Powershell 使用资源模板
 Log Analytics 警报 REST API 为 RESTful，可通过 Azure 资源管理器 REST API 访问。 因此，API 可以从 PowerShell 命令行访问，并输出 JSON 格式的搜索结果，以便用户可通过编程方式采用多种不同的方法使用结果。

@@ -1,3 +1,16 @@
+---
+author: Rajeswari-Mamilla
+ms.service: site-recovery
+ms.topic: include
+ms.date: 08/06/2018
+ms.author: ramamill
+ms.openlocfilehash: 81390d38b4c0c38b7ac6883ae2bf18c64542fa00
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39583012"
+---
 注销进程服务器的步骤取决于进程服务器与配置服务器的连接状态。
 
 ### <a name="unregister-a-process-server-that-is-in-a-connected-state"></a>注销处于连接状态的进程服务器
@@ -19,4 +32,8 @@
     ```
     perl Unregister-ASRComponent.pl -IPAddress <IP_of_Process_Server> -Component PS
     ```
-4. 成功删除进程服务器时会发出此消息：**成功注销了 server-name> (server-IP-address)**。
+4. 上面的命令将为进程服务器列表（在条目重复的情况下，进程服务器可能为多个）提供序列号（简称 S.No）、IP 地址（简称 IP）、部署进程服务器时所在 VM 的名称（简称“名称”）、VM 的检测信号（简称“检测信号”），如下所示。
+    ![Unregister-cmd](media/site-recovery-vmware-unregister-process-server/Unregister-cmd.PNG)
+5. 现在，请输入要注销的进程服务器的序列号。
+6. 此时会清除系统提供的进程服务器的详细信息，并会显示消息：**成功注销了 server-name> (server-IP-address)**
+

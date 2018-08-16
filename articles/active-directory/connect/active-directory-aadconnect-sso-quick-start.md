@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/27/2018
+ms.date: 08/01/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 24bda501f88d4f96fb558eeb6b21e437edd6d862
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 4710e30ad38485f47c115ac2e0e914e91c96d582
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325381"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522175"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory 无缝单一登录：快速入门
 
@@ -57,9 +57,12 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 
 如果你要全新安装 Azure AD Connect，请选择[自定义安装路径](active-directory-aadconnect-get-started-custom.md)。 在“用户登录”页上，请选择“启用单一登录”选项。
 
+>[!NOTE]
+> 仅当登录方式为“密码哈希同步”或“传递身份验证”时，该选项才适用。
+
 ![Azure AD Connect：用户登录](./media/active-directory-aadconnect-sso/sso8.png)
 
-如果你已安装了 Azure AD Connect，请在 Azure AD Connect 上选择“更改用户登录”页，然后选择“下一步”。
+如果你已安装了 Azure AD Connect，请在 Azure AD Connect 上选择“更改用户登录”页，然后选择“下一步”。 如果使用 Azure AD Connect 1.1.880.0 版本或更高版本，则默认情况下将选则“启用单一登录”选项。 如果使用是较旧版本的 Azure AD Connect，请选择“启用单一登录”选项。
 
 ![Azure AD Connect：更改用户登录](./media/active-directory-aadconnect-user-signin/changeusersignin.png)
 
@@ -118,7 +121,7 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 
     结果如下所示：
 
-    值：https://autologon.microsoftazuread-sso.com
+    值： https://autologon.microsoftazuread-sso.com
   
     Data 1
 

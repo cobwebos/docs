@@ -1,28 +1,25 @@
 ---
-title: 带 Azure 应用程序网关的多租户后端概述 | Microsoft Docs
+title: 带 Azure 应用程序网关的多租户后端概述
 description: 此页概述了应用程序网关对多租户后端的支持。
-documentationcenter: na
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: ''
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/26/2017
+ms.topic: article
+ms.date: 8/1/2018
 ms.author: victorh
-ms.openlocfilehash: 7c00369737d05f414f9ac23d9d3e8918b908fc80
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: c0084580a2e4860f24aecd37232f38da2e55ccc8
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33200988"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578426"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends"></a>应用程序网关对多租户后端的支持
 
 Azure 应用程序网关支持将虚拟机规模集、网络接口、公共/专用 IP 或完全限定的域名 (FQDN) 用作其后端池的一部分。 默认情况下，应用程序网关不更改从客户端传入的 HTTP 主机标头，而是将该标头原封不动地发送到后端。 有许多服务（例如 [Azure Web 应用](../app-service/app-service-web-overview.md)）从性质上来说是多租户的，依赖于特定的主机标头或 SNI 扩展，否则无法解析为正确的终结点。 应用程序网关现在允许用户根据后端 HTTP 设置覆盖传入的 HTTP 主机标头。 此功能支持多租户后端 Azure Web 应用和 API 管理。 此功能适用于标准 SKU 和 WAF SKU。 多租户后端支持也适用于 SSL 终止和端到端 SSL 方案。
+
+> [!NOTE]
+> Azure Web 应用等受信任的 Azure 服务不需要身份验证证书设置。
 
 ![Web 应用方案](./media/application-gateway-web-app-overview/scenario.png)
 

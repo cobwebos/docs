@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: jlian
-ms.openlocfilehash: eb186f4b6e1d742c9cae51e68b3d3dbda1bb751c
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 91e435c60a342768093b3bc869a78fa61df8782f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39400150"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446558"
 ---
 # <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>检测和排查 Azure IoT 中心的连接断开问题
 
@@ -52,7 +52,7 @@ ms.locfileid: "39400150"
 
 有关详细信息，请参阅 [Microsoft Azure 中的经典警报是什么？](../monitoring-and-diagnostics/monitoring-overview-alerts.md)。
 
-## <a name="resolve-common-connectivity-errors"></a>解决常见的连接错误
+## <a name="resolve-connectivity-errors"></a>解决连接错误
 
 为联网设备启用诊断日志和警报后，如果出错，则你会收到警报。 本部分介绍如何在收到警报时解决常见问题。 以下步骤假设已经在 Log Analytics 中设置了诊断日志。 
 
@@ -76,8 +76,8 @@ ms.locfileid: "39400150"
     |---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | 404104 DeviceConnectionClosedRemotely | 设备关闭了连接，但 IoT 中心不知道原因。 常见原因包括 MQTT/AMQP 超时和 Internet 连接断开。 | 通过[测试连接](tutorial-connectivity.md)，确保设备能够连接到 IoT 中心。 如果连接正常，但设备间歇性断开连接，请确保为所选的协议 (MQTT/AMPQ) 实现正确的 keep-alive 设备逻辑。 |
     | 401003 IoTHubUnauthorized | IoT 中心无法对连接进行身份验证。 | 确保所用的 SAS 或其他安全令牌未过期。 [Azure IoT SDK](iot-hub-devguide-sdks.md) 无需特殊的配置即可自动生成令牌。 |
-    | 409002 LinkCreationConflict | 同一设备存在多个连接。 针对设备发出新的连接请求时，IoT 中心会关闭上一个连接并返回此错误。 | 请确保仅当连接断开时，才发出新的连接请求。 |
-    | 500001 ServerError | IoT 中心遇到服务器端问题。 该问题很可能是暂时性的。 尽管 IoT 中心团队会努力维持 [SLA](https://azure.microsoft.com/support/legal/sla/iot-hub/)，但一小部分 IoT 中心节点偶尔会遇到暂时性故障。 如果设备尝试连接到有问题的节点，则你会收到此错误。 | 若要缓解暂时性故障，请从设备发出重试命令。 若要[自动管理重试](iot-hub-reliability-features-in-sdks.md)，请确保使用最新版本的 [Azure IoT SDK](iot-hub-devguide-sdks.md)。<br><br>有关暂时性故障处理和重试的最佳做法，请参阅[暂时性故障处理](/azure/architecture/best-practices/transient-faults.md)。  <br><br>如果重试后问题仍然出现，请检查[资源运行状况](iot-hub-monitor-resource-health.md#use-azure-resource-health)和 [Azure 状态](https://azure.microsoft.com/status/history/)，以确定 IoT 中心是否存在已知的问题。 如果不存在已知的问题并且问题仍然出现，请[联系支持人员](https://azure.microsoft.com/support/options/)以做进一步调查。 |
+    | 409002 LinkCreationConflict | 同一设备存在多个连接。 针对设备发出新的连接请求时，IoT 中心会关闭上一个连接并返回此错误。 | 在最常见的情况下，设备检测到断开连接并试图重新建立连接，但 IoT 中心尚未将其视为已断开，因此它会关闭先前的连接并记录此错误。 此错误表现的副作用通常为暂时性问题，因此请查看日志中的其他错误以进一步排除故障。 否则，请确保仅在连接断开时才发出新的连接请求。 |
+    | 500001 ServerError | IoT 中心遇到服务器端问题。 该问题很可能是暂时性的。 尽管 IoT 中心团队会努力维持 [SLA](https://azure.microsoft.com/support/legal/sla/iot-hub/)，但一小部分 IoT 中心节点偶尔会遇到暂时性故障。 如果设备尝试连接到有问题的节点，则你会收到此错误。 | 若要缓解暂时性故障，请从设备发出重试命令。 若要[自动管理重试](iot-hub-reliability-features-in-sdks.md#connection-and-retry)，请确保使用最新版本的 [Azure IoT SDK](iot-hub-devguide-sdks.md)。<br><br>有关暂时性故障处理和重试的最佳做法，请参阅[暂时性故障处理](/azure/architecture/best-practices/transient-faults.md)。  <br><br>如果重试后问题仍然出现，请检查[资源运行状况](iot-hub-monitor-resource-health.md#use-azure-resource-health)和 [Azure 状态](https://azure.microsoft.com/status/history/)，以确定 IoT 中心是否存在已知的问题。 如果不存在已知的问题并且问题仍然出现，请[联系支持人员](https://azure.microsoft.com/support/options/)以做进一步调查。 |
     | 500008 GenericTimeout | IoT 中心在超时之前无法完成连接请求。与 500001 ServerError 一样，此错误可能是暂时性的。 | 遵循 500001 ServerError 的故障排除步骤找到根本原因并解决此错误。|
 
 ## <a name="other-steps-to-try"></a>可尝试的其他步骤
@@ -89,6 +89,11 @@ ms.locfileid: "39400150"
 * 从 [Azure IoT 中心论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=azureiothub)、[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub) 或 [Azure 支持](https://azure.microsoft.com/support/options/)获得帮助。
 
 如果本指南未能提供所需的帮助，请在下面留言，以帮助我们改进文档。
+
+## <a name="next-steps"></a>后续步骤
+
+* 要了解有关解决暂时性问题的详细信息，请参阅[暂时性故障处理](/azure/architecture/best-practices/transient-faults.md)。
+* 要了解有关 Azure IoT SDK 和管理重试的详细信息，请参阅[如何使用 Azure IoT Hub 设备 SDK 管理连接和可靠消息传递](iot-hub-reliability-features-in-sdks.md#connection-and-retry)。
 
 <!-- Images -->
 [1]: ../../includes/media/iot-hub-diagnostics-settings/turnondiagnostics.png

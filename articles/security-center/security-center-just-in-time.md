@@ -3,7 +3,7 @@ title: Azure 安全中心中的恰时虚拟机访问 | Microsoft Docs
 description: 本文档说明 Azure 安全中心中的恰时 VM 访问可以如何帮助你控制对 Azure 虚拟机的访问。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2018
-ms.author: terrylan
-ms.openlocfilehash: 288524e58efd64670df098f249f3ad0b1cca464c
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.date: 08/05/2018
+ms.author: rkarlin
+ms.openlocfilehash: 18c05444c151a87048db71b039845e26796126b8
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990572"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525937"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>使用恰时功能管理虚拟机访问
 
@@ -168,10 +168,9 @@ ms.locfileid: "38990572"
 
 修改筛选器并选择“应用”来创建搜索和日志。
 
-## <a name="using-just-in-time-vm-access-via-powershell"></a>通过 PowerShell 使用恰时 VM 访问
+## <a name="using-just-in-time-vm-access-via-rest-apis"></a>通过 REST API 使用及时 VM 访问
 
-若要通过 PowerShell 使用恰时解决方案，请确保具有[最新](/powershell/azure/install-azurerm-ps) Azure PowerShell 版本。
-在具有最新版本后，需要从 PowerShell 库安装[最新](https://aka.ms/asc-psgallery) Azure 安全中心。
+通过 Azure 安全中心 API 可以使用及时 VM 访问功能。 可以通过此 API 获取有关配置 VM 的信息、添加新的 VM、请求访问 VM 等。 若要详细了解及时 REST API，请参阅 [Jit Network Access Policies](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies)（Jit 网络访问策略）。
 
 ### <a name="configuring-a-just-in-time-policy-for-a-vm"></a>为 VM 配置恰时策略
 

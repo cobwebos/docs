@@ -4,7 +4,7 @@ description: 了解支持哪些语言 (GA) 以及哪些语言是实验性的或�
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 tags: ''
 ms.service: functions
@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/07/2017
+ms.date: 08/02/2018
 ms.author: glenga
-ms.openlocfilehash: 00f291e903948bf43bc997816b6072186cf1f889
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 2de2ebdea41ca35e853b37ab804e516eb7f4df9f
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343077"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494442"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Azure Functions 中支持的语言
 
@@ -41,13 +41,13 @@ ms.locfileid: "39343077"
 
 ### <a name="experimental-languages"></a>实验性语言
 
-1.x 中的实验性语言扩展性不好，并且不支持所有绑定。 例如，Python 速度慢，因为每次调用函数时，Functions 运行时都运行 *python.exe*。 并且虽然 Python 支持 HTTP 绑定，但它无法访问请求对象。
+1.x 版中的实验性语言扩展性不好，并且不支持所有绑定。 例如，Python 速度慢，因为每次调用函数时，Functions 运行时都运行 *python.exe*。 并且虽然 Python 支持 HTTP 绑定，但它无法访问请求对象。
 
-对 PowerShell 的实验性支持仅限于版本 4.0，因为运行函数应用的 VM 上只安装了该版本。 如果要运行 PowerShell 脚本，请考虑 [Azure 自动化](https://azure.microsoft.com/services/automation/)。
-
-2.x 运行时不支持实验性语言。 在 2.x 中，仅当某种语言扩展性好并且支持高级触发器时，我们才会添加对该语言的支持。
+对 PowerShell 的实验性支持仅限于 5.1 版，因为运行函数应用的 VM 上只默认安装了该版本。 如果要运行 PowerShell 脚本，请考虑 [Azure 自动化](https://azure.microsoft.com/services/automation/)。
 
 如果要使用仅在 1.x 中可用的某种语言，将停留在 1.x 运行时。 但不要对所依赖的任何内容使用实验性语言，因此对其没有官方支持。 可以通过[创建 GitHub 问题](https://github.com/Azure/azure-webjobs-sdk-script/issues)请求帮助，但不应为实验性语言问题建立支持案例。 
+
+2.x 版运行时不支持实验性语言。 只有在生产环境中支持该语言时，才会添加对新语言的支持。 
 
 ### <a name="language-extensibility"></a>语言扩展性
 
