@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: fbbd66dea73747acaf1c267f7d3ba7b1bb17baa2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: b18cfce173da562aa7cffa48f336ff623c868f21
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38728861"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "40129204"
 ---
 ## <a name="build-and-run-code-in-kubernetes"></a>在 Kubernetes 中生成并运行代码
 让我们运行代码！ 在终端窗口中，从**根代码文件夹** webfrontend 运行以下命令：

@@ -1,5 +1,5 @@
 ## <a name="automatic-device-management"></a>自动设备管理
-Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的任务自动化，包括在大型设备阵列的整个生命周期内对其进行管理。 使用自动设备管理，可以根据设备的属性将一组设备指定为目标、定义所需的配置，并在设备进入管理范畴时让 IoT 中心更新这些设备。  包括[自动设备配置](/articles/iot-hub/iot-hub-auto-device-config.md)和 [IoT Edge 自动部署](/articles/iot-edge/how-to-deploy-monitor.md)。
+Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的任务自动化，包括在大型设备阵列的整个生命周期内对其进行管理。 使用自动设备管理，可以根据设备的属性将一组设备指定为目标、定义所需的配置，并在设备进入管理范畴时让 IoT 中心更新这些设备。  包括[自动设备配置](../articles/iot-hub/iot-hub-auto-device-config.md)和 [IoT Edge 自动部署](../articles/iot-edge/how-to-deploy-monitor.md)。
 
 ## <a name="iot-edge"></a>IoT Edge
 Azure IoT Edge 支持在本地设备进行 Azure 服务和解决方案特定代码的云驱动部署。 IoT Edge 设备可以聚合其他设备的数据，以在数据发送到云之前执行计算和分析。 有关详细信息，请参阅 [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/)。

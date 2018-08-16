@@ -5,15 +5,15 @@ services: iot-edge
 author: kgremban
 ms.service: iot-edge
 ms.topic: include
-ms.date: 06/27/2018
+ms.date: 08/14/2018
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: 3e7fcde204966e5a6a8154ab307807652cfa0419
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 06e2be14cf7592edf373b6f679ac5d9ff3c87269
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37086205"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40161450"
 ---
 Azure IoT Edge 的主要功能之一是能够从云中将模块部署到 IoT Edge 设备。 IoT Edge 模块是以容器形式实现的可执行包。 在此部分中，将为模拟设备部署用于生成遥测数据的模块。 
 
@@ -33,7 +33,7 @@ Azure IoT Edge 的主要功能之一是能够从云中将模块部署到 IoT Edg
    ```json
    {
        "routes": {
-           "route": "FROM /* INTO $upstream"
+           "route": "FROM /messages/* INTO $upstream"
        }
    }
    ```
