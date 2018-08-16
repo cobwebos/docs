@@ -73,7 +73,7 @@ Data Lake U-SQL SDK 需要以下依赖项：
 | | |\_ScopeCodeGenEngine\_.*|编译器输出|生成的本机代码|
 | | |引用的程序集|程序集引用|引用的程序集文件|
 | | |deployed_resources|资源部署|资源部署文件|
-| | |xxxxxxxx.xxx[1..n]\_\*.*|执行日志|执行步骤的日志|
+| | |xxxxxxxx.xxx[1..n]\_\*.\*|执行日志|执行步骤的日志|
 
 
 ## <a name="use-the-sdk-from-the-command-line"></a>从命令行使用 SDK
