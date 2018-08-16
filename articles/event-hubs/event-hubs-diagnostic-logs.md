@@ -4,7 +4,7 @@ description: 了解如何为 Azure 中的事件中心设置诊断日志。
 keywords: ''
 documentationcenter: ''
 services: event-hubs
-author: banisadr
+author: ShubhaVijayasarathy
 manager: ''
 editor: ''
 ms.assetid: ''
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 07/02/2018
-ms.author: sethm
-ms.openlocfilehash: fd7b85d18aeb1674ad7a5e67dd9ac65345c56887
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.author: shvija
+ms.openlocfilehash: d4ed53cf1f0d21e488631434b60309602169b59a
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435025"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004644"
 ---
 # <a name="event-hubs-diagnostic-logs"></a>事件中心诊断日志
 
@@ -70,7 +70,7 @@ ms.locfileid: "37435025"
 
 存档日志 JSON 字符串包括下表列出的元素：
 
-名称 | 说明
+名称 | Description
 ------- | -------
 TaskName | 失败的任务的说明。
 ActivityId | 用于跟踪的内部 ID。
@@ -108,7 +108,7 @@ category | ArchiveLogs
 
 运行日志 JSON 字符串包括下表列出的元素：
 
-名称 | 说明
+名称 | Description
 ------- | -------
 ActivityId | 用于跟踪目的的内部 ID。
 EventName | 操作名称。  

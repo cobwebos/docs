@@ -1,22 +1,20 @@
 ---
-title: 从 Kafka 到 Azure Cosmos DB 的 Apache Spark 结构化流式处理 - Azure HDInsight | Microsoft Docs
+title: 从 Kafka 到 Azure Cosmos DB 的 Apache Spark 结构化流式处理 - Azure HDInsight
 description: 了解如何使用 Apache Spark 结构化流式处理从 Apache Kafka 读取数据，然后将数据存储到 Azure Cosmos DB 中。 本示例使用 Spark on HDInsight 中的 Jupyter 笔记本流式传输数据。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.author: larryfr
-ms.openlocfilehash: 63c536f1a8bdcfbbbd97b904f15ccf83043659e0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jasonh
+ms.openlocfilehash: a02f517c72d1d9e07c8cc434cf57066bc828a684
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600466"
 ---
 # <a name="use-spark-structured-streaming-with-kafka-and-azure-cosmos-db"></a>将 Spark 结构化流式处理与 Kafka 和 Azure Cosmos DB 配合使用
 

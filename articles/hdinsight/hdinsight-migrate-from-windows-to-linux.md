@@ -1,24 +1,20 @@
 ---
-title: 从基于 Windows 的 HDInsight 迁移到基于 Linux 的 HDInsight - Azure | Microsoft Docs
+title: 从基于 Windows 的 HDInsight 迁移到基于 Linux 的 HDInsight - Azure
 description: 了解如何从基于 Windows 的 HDInsight 群集迁移到基于 Linux 的 HDInsight 群集。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-ms.assetid: ff35be59-bae3-42fd-9edc-77f0041bab93
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.author: larryfr
-ms.openlocfilehash: 964fa9853dc8bb4daae73905e05409deb775fd26
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: jasonh
+ms.openlocfilehash: f77ffd576c1470c3e5ade0fd6718e1bf3c3074fe
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626745"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39598875"
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>从基于 Windows 的 HDInsight 群集迁移到基于 Linux 的群集
 

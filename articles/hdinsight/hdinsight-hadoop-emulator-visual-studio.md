@@ -1,24 +1,20 @@
 ---
-title: 将针对 Visual Studio 的 Data Lake 工具与 Hortonworks 沙盒配合使用 — Azure HDInsight | Microsoft Docs
+title: 将针对 Visual Studio 的 Data Lake 工具与 Hortonworks 沙盒配合使用 - Azure HDInsight
 description: 了解如何将针对 Visual Studio 的 Azure Data Lake 工具与本地 VM 中运行的 Hortonworks 沙盒配合使用。 使用这些工具，可以在沙盒中创建和运行 Hive 与 Pig 作业，并查看作业输出和历史记录。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-ms.assetid: e3434c45-95d1-4b96-ad4c-fb59870e2ff0
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.author: larryfr
-ms.openlocfilehash: a4c1f5a8100d5d4017e56ef129aa4f4826746868
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.author: jasonh
+ms.openlocfilehash: 53bd629bcdf272e97c03dfb60c2693158698b837
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33886725"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597360"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>将针对 Visual Studio 的 Azure Data Lake 工具与 Hortonworks 沙盒配合使用
 

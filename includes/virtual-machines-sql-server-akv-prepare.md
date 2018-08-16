@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 19be449528481b4e35cad4418f82f2250917966b
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 0a5d0f87b31652b1e1ab32c6b1594021937751b6
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32787410"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "40046482"
 ---
 ## <a name="prepare-for-akv-integration"></a>准备 AKV 集成
 若要使用 Azure 密钥保管库集成来配置 SQL Server VM，有以下几个先决条件： 
@@ -49,7 +49,7 @@ ms.locfileid: "32787410"
 
 * 应用程序 ID 和机密将还可用于在 SQL Server 中创建凭据。
 
-* 必须为此新的客户端 ID 授予以下访问权限：**加密**、**解密**、**密钥换行**、**取消密钥换行**、**签名**和**验证**。 可通过 [Set-AzureRmKeyVaultAccessPolicy](https://msdn.microsoft.com/library/azure/mt603625.aspx) cmdlet 实现此操作。 有关详细信息，请参阅[授权应用程序使用密钥或密码](../articles/key-vault/key-vault-get-started.md#authorize)。
+* 必须为此新的客户端 ID 授予以下访问权限：**获取**、**密钥换行**、**取消密钥换行**。 可通过 [Set-AzureRmKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Set-AzureRmKeyVaultAccessPolicy) cmdlet 实现此操作。 有关详细信息，请参阅[授权应用程序使用密钥或密码](../articles/key-vault/key-vault-get-started.md#authorize)。
 
 ### <a id="createkeyvault"></a>创建密钥保管库
 要使用 Azure 密钥保管库来存储用于在 VM 中加密的密钥，需要对密钥保管库的访问权限。 如果尚未设置密钥保管库，请按照[开始使用 Azure Key Vault](../articles/key-vault/key-vault-get-started.md) 一文中的步骤创建一个。 在完成这些步骤之前，需要在设置期间收集一些信息，之后在 SQL VM 上启用 Azure Key Vault 集成时需要这些信息。

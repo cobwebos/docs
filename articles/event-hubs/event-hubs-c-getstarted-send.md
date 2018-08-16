@@ -3,7 +3,7 @@ title: 使用 C 将事件发送到 Azure 事件中心 | Microsoft 文档
 description: 使用 C 将事件发送到 Azure 事件中心
 services: event-hubs
 documentationcenter: ''
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: c
 ms.devlang: csharp
 ms.topic: article
 ms.date: 12/4/2017
-ms.author: sethm
-ms.openlocfilehash: e3267b54fa0c8593e0f9366c009656f36e4094ef
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.author: shvija
+ms.openlocfilehash: 25da8255af6a23a4f01db5a1ec4f1ddcd2eeb1bb
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807809"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40002451"
 ---
 # <a name="send-events-to-azure-event-hubs-using-c"></a>使用 C 将事件发送到 Azure 事件中心
 
@@ -155,7 +155,7 @@ ms.locfileid: "34807809"
 访问以下链接可以了解有关事件中心的详细信息：
 
 * [事件中心概述](event-hubs-what-is-event-hubs.md)
-* [事件中心常见问题](event-hubs-faq.md)
+* [事件中心常见问题解答](event-hubs-faq.md)
 
 <!-- Images. -->
 [21]: ./media/event-hubs-c-ephcs-getstarted/run-csharp-ephcs1.png

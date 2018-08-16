@@ -5,18 +5,18 @@ ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
 ms.author: anshan
-manager: jhubbard
+manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc
 ms.date: 11/15/2017
-ms.openlocfilehash: 45eb469fdbd3603d1ebdcb558485ff0f93822f6b
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 6d1e5951ed8cdd9542463ffc57be81e55e4b9194
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293854"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39629627"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>快速入门：浏览 Azure 时序见解
 此快速入门说明如何在免费的演示环境中开始使用 Azure 时序见解资源管理器。 了解如何使用 Web 浏览器将大量 IoT 数据可视化，并浏览时序见解资源管理器的关键功能。 

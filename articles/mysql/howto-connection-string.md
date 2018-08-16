@@ -2,19 +2,19 @@
 title: 将应用程序连接到 Azure Database for MySQL
 description: 本文档中列出了目前支持的用于将应用程序连接到 Azure Database for MySQL 的连接字符串，包括 ADO.NET (C#)、JDBC、Node.js、ODBC、PHP、Python 和 Ruby。
 services: mysql
-author: mswutao
-ms.author: wuta
+author: ajlam
+ms.author: andrela
 editor: jasonwhowell
 manager: kfile
 ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 083c6850151340ba8cb307a237f489e5923761a5
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 06bd91adb0a86198f7709d0989624657ce00dfa9
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265677"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40037917"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>如何将应用程序连接到 Azure Database for MySQL
 本主题列出了 Azure Database for MySQL 支持的连接字符串以及模板和示例。 你可能会在连接字符串中使用不同的参数和设置。

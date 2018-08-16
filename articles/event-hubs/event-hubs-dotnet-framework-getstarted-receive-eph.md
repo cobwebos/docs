@@ -3,7 +3,7 @@ title: 使用 .NET Framework 从 Azure 事件中心接收事件 | Microsoft 文�
 description: 按照本教程的说明，使用 .NET Framework 从 Azure 事件中心接收事件。
 services: event-hubs
 documentationcenter: ''
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: c4974bd3-2a79-48a1-aa3b-8ee2d6655b28
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
-ms.author: sethm
-ms.openlocfilehash: 4f74b0f90795362d3e509fdbd33e5f358227f147
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.author: shvija
+ms.openlocfilehash: 8fbce92c8c703b86d86367f83329cfa853bc5e4d
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436865"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003495"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-the-net-framework"></a>使用 .NET Framework 从 Azure 事件中心接收事件
 
@@ -48,7 +48,7 @@ Azure 事件中心是一个服务，可用于处理来自连接设备和应用�
 
 1. 登录到 [Azure 门户][Azure portal]，单击屏幕左上角的“创建资源”。
 
-2. 单击“存储”，并单击“存储帐户”。
+2. 依次“存储”、“存储帐户”。
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage1.png)
 
@@ -174,7 +174,7 @@ Azure 事件中心是一个服务，可用于处理来自连接设备和应用�
 
 * [事件处理程序主机概述][Event Processor Host]
 * [事件中心概述][Event Hubs overview]
-* [事件中心常见问题](event-hubs-faq.md)
+* [事件中心常见问题解答](event-hubs-faq.md)
 
 <!-- Images. -->
 [19]: ./media/event-hubs-csharp-ephcs-getstarted/create-eh-proj1.png

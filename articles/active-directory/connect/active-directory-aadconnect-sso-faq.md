@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 08/07/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9c59db56ad78818d9b6165d27fd2e64f0bfd902c
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 29ed96044ceaa914db3f8b7090a1be5f65827e54
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283217"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627468"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory 无缝单一登录：常见问题
 
@@ -40,19 +40,20 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 
 ## <a name="what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso"></a>哪些应用程序可以利用无缝 SSO 的 `domain_hint` 或 `login_hint` 参数功能？
 
-以下为将这些参数发送到 Azure AD 的应用程序的非详尽列表，因此使用无缝 SSO 可为用户提供无提示登录体验（即用户无需输入其用户名）：
+以下非详尽列表列出了可将这些参数发送到 Azure AD 的部分应用程序，因此使用无缝 SSO 可为用户提供无提示登录体验（即用户无需输入其用户名或密码）：
 
 | 应用程序名称 | 可供使用的应用程序 URL |
 | -- | -- |
-| 访问面板 | myapps.microsoft.com/contoso.com |
-| Outlook 网页版 | outlook.office365.com/contoso.com |
+| 访问面板 | https://myapps.microsoft.com/contoso.com |
+| Outlook 网页版 | https://outlook.office365.com/contoso.com |
+| Office 365 门户 | https://portal.office.com?domain_hint=contoso.com |
 
 此外，如果应用程序向 Azure AD 的租用终结点（即 https://login.microsoftonline.com/contoso.com/<..> 或 https://login.microsoftonline.com/<tenant_ID>/<..>）而不是 Azure AD 的普通终结点（即 https://login.microsoftonline.com/common/<...>）发送登录请求，用户可获得无提示登录体验。 以下为提出此类登录请求的应用程序的非详尽列表。
 
 | 应用程序名称 | 可供使用的应用程序 URL |
 | -- | -- |
-| SharePoint Online | contoso.sharepoint.com |
-| Azure 门户 | portal.azure.com/contoso.com |
+| SharePoint Online | https://contoso.sharepoint.com |
+| Azure 门户 | https://portal.azure.com/contoso.com |
 
 在上述表中，将“contoso.com”替换为域名，为租户获取正确的应用程序 URL。
 
@@ -105,7 +106,7 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 
 ## <a name="how-can-i-disable-seamless-sso"></a>如何禁用无缝 SSO？
 
-### <a name="step-1-disable-the-feature-on-your-tenant"></a>步骤 1. 在租户上禁用此功能
+### <a name="step-1-disable-the-feature-on-your-tenant"></a>步骤 1。 在租户上禁用此功能
 
 #### <a name="option-a-disable-using-azure-ad-connect"></a>选项 A：使用 Azure AD Connect 进行禁用
 

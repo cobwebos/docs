@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
-ms.openlocfilehash: 31a0177ecfd87fa7ea78989b36141070c2ac193b
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 3a6fbc8410dbc5aec4522f0972a29c67527edb23
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865720"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40037914"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>使用 Chef 自动部署 Azure 虚拟机
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -59,7 +59,7 @@ Chef 工作站是管理工作站，我们会在其中创建策略并执行管理
 
 现在，我们需要下载 Azure 设置文件，以便 Chef 可以与 Azure 订阅进行通信。
 
-使用 PowerShell Azure [Get-AzurePublishSettingsFile](https://docs.microsoft.com/powershell/module/azure/get-azurepublishsettingsfile?view=azuresmps-4.0.0) 命令下载发布设置。 
+使用 PowerShell Azure [Get-AzurePublishSettingsFile](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azurepublishsettingsfile?view=azuresmps-4.0.0) 命令下载发布设置。 
 
 将发布设置文件保存到 C:\chef 中。
 

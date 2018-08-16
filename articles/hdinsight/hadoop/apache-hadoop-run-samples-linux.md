@@ -1,26 +1,21 @@
 ---
-title: 在 HDInsight 上运行 Hadoop MapReduce 示例 — Azure | Microsoft Docs
+title: 在 HDInsight 上运行 Hadoop MapReduce 示例 - Azure
 description: 开始使用 HDInsight 随附的 jar 文件中的 MapReduce 示例。 使用 SSH 连接到群集，然后使用 Hadoop 命令运行示例作业。
 keywords: hadoop 示例 jar,hadoop 示例 jar,hadoop mapreduce 示例,mapreduce 示例
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: e1d2a0b9-1659-4fab-921e-4a8990cbb30a
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: larryfr
-ms.openlocfilehash: 14f860d64c482ac7ef74512aea4850821d30132c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: b29fb56f6ce244811aef924bb947a8b8ee8e4da4
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202299"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597297"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>运行 HDInsight 随附的 MapReduce 示例
 

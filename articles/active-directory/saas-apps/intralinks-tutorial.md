@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: b3c74631515301498aedcb035fae32b0a451e308
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 44cae95cfd01f8d6fbd6ddb4a11e9af290042ffa
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424771"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038068"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intralinks"></a>教程：Azure Active Directory 与 Intralinks 集成
 
@@ -115,7 +115,7 @@ ms.locfileid: "39424771"
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company name>.Intralinks.com/?PartnerIdpId=https://sts.windows.net/<AzureADTenantID>`
 
     > [!NOTE] 
-    > 此值不是真实值。 使用实际登录 URL 更新此值。 若要获取此值，请与 [Intralinks 客户端支持团队](https://www.intralinks.com/contact-1)联系。 
+    > 此值不是真实值。 使用实际登录 URL 更新此值。 若要获取此值，请与 [Intralinks 客户端支持团队](https://www.intralinks.com/contact)联系。 
  
 1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
@@ -125,7 +125,7 @@ ms.locfileid: "39424771"
 
     ![配置单一登录](./media/intralinks-tutorial/tutorial_general_400.png)
 
-1. 若要在“Intralinks”端配置单一登录，需要将下载的“元数据 XML”发送给 [Intralinks 支持团队](https://www.intralinks.com/contact-1)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+1. 若要在“Intralinks”端配置单一登录，需要将下载的“元数据 XML”发送给 [Intralinks 支持团队](https://www.intralinks.com/contact)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -163,7 +163,7 @@ ms.locfileid: "39424771"
  
 ### <a name="creating-an-intralinks-test-user"></a>创建 Intralinks 测试用户
 
-在本部分中，会在 Intralinks 中创建一个名为“Britta Simon”的用户。 请与 [Intralinks 支持团队](https://www.intralinks.com/contact-1)协作，将用户添加到 Intralinks 平台中。
+在本部分中，会在 Intralinks 中创建一个名为“Britta Simon”的用户。 请与 [Intralinks 支持团队](https://www.intralinks.com/contact)协作，将用户添加到 Intralinks 平台中。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -237,7 +237,7 @@ Intralinks 对所有其他 Intralinks 应用程序（不包括 Deal Nexus 应用
  
     ![配置单一登录](./media/intralinks-tutorial/tutorial_intralinks_linkedsignon.png)
 
-1. 从 [Intralinks 团队](https://www.intralinks.com/contact-1)获取其他 Intralinks 应用程序的 SP 启动 SSO URL并将其输入“配置登录 URL”中，如下所示。 
+1. 从 [Intralinks 团队](https://www.intralinks.com/contact)获取其他 Intralinks 应用程序的 SP 启动 SSO URL并将其输入“配置登录 URL”中，如下所示。 
     
      ![配置单一登录](./media/intralinks-tutorial/tutorial_intralinks_customappurl.png)
     

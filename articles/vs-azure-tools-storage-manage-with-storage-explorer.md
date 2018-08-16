@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: b41b1fcb437dac381a17bef4f1e5a7cebe213b98
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 329653e7494d2f993acb462d7d989db07a18f790
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435909"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600857"
 ---
 # <a name="get-started-with-storage-explorer"></a>存储资源管理器入门
 
@@ -118,14 +118,14 @@ Azure 存储资源管理器[发行说明](https://go.microsoft.com/fwlink/?LinkI
 
 ## <a name="work-with-local-development-storage"></a>使用本地开发存储
 
-使用存储资源管理器，可以通过模拟器对本地存储进行操作。 使用此方法可以模拟 Azure 存储的使用，而无需在 Azure 上部署存储帐户。
+使用存储资源管理器，可以通过模拟器使用本地存储。 使用此方法可以模拟 Azure 存储的使用，而无需在 Azure 上部署存储帐户。
 
 从 1.1.0 版开始，所有平台都支持本地存储模拟器。 存储资源管理器可以连接到侦听其默认本地存储终结点的任何模拟服务。
 
 > [!NOTE]
 > 对存储服务和功能的支持可能因你选择的模拟器而有很大不同。 请确保模拟器支持你打算使用的服务和功能。
 
-1. 配置所选的模拟器以侦听默认终结点。
+1. 配置所选模拟器的服务，以侦听未使用的端口。
 
    模拟服务 | 默认终结点
    -----------------|-------------------------
@@ -134,16 +134,19 @@ Azure 存储资源管理器[发行说明](https://go.microsoft.com/fwlink/?LinkI
    表           | `http://127.0.0.1:10002`
 
 2. 启动模拟器。
+   > [!IMPORTANT]
+   > 存储资源管理器不会自动启动模拟器。 必须自行启动。
 
-3. 在存储资源管理器的左窗格中，展开“(本地和附加)” > “存储帐户” > “(开发)”节点。
+3. 在存储资源管理器中，单击“添加帐户”按钮。 选择“附加到本地模拟器”并单击“下一步”。
+
+4. 输入前面配置的服务的端口号（如果不想使用该服务则留空）。 单击“下一步”，然后单击“连接”，以创建连接。
+
+5. 展开“本地和附加” > “存储帐户”>“节点”，然后展开模拟器连接对应的节点下的服务节点。
 
    可以使用此节点创建和使用本地 blob、队列和表。 若要了解如何使用每个存储帐户类型，请参阅以下指南：
 
    * [管理 Azure Blob 存储资源](vs-azure-tools-storage-explorer-blobs.md)
    * [管理 Azure 文件存储资源](vs-azure-tools-storage-explorer-files.md)
-
-> [!NOTE]
-> 存储资源管理器仅支持使用默认终结点连接到本地模拟器。 启动模拟器时，请确保仅配置了默认终结点。
 
 ## <a name="attach-or-detach-an-external-storage-account"></a>附加或分离外部存储帐户
 

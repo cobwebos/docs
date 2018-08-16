@@ -3,12 +3,12 @@ layout: HubPage
 hide_bc: true
 title: Microsoft Azure 文档
 description: 了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。
-ms.openlocfilehash: c7f46f9b22bd3696b7d281815687cca2b90b22b3
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 103d09b1a71239948c730f8dba47253741bbaa9c
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070051"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038043"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -770,7 +770,7 @@ ms.locfileid: "34070051"
                                         <li>
                                             <a href="https://docs.botframework.com/en-us/azure-bot-service/">
                                                 <img src="media/index/bot-service.svg" alt="" />
-                                                <p>Azure 机器人服务</p>
+                                                <p>Azure Bot 服务</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -3150,10 +3150,10 @@ ms.locfileid: "34070051"
                                                     <a href="https://pypi.python.org/pypi/azure">获取 Python SDK</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="http://azure-sdk-for-python.readthedocs.io/en/latest/">入门</a>
+                                                    <a href="https://docs.microsoft.com/python/azure/?view=azure-python">入门</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://azure-sdk-for-python.readthedocs.io/en/latest/">API 参考</a>
+                                                    <a href="https://docs.microsoft.com/python/azure/?view=azure-python">API 参考</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://azure.microsoft.com/resources/samples/?platform=python">获取示例</a>
@@ -3427,7 +3427,7 @@ ms.locfileid: "34070051"
                                                     <a href="/dotnet/articles/core/docker/visual-studio-tools-for-docker">入门</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://go.microsoft.com/fwlink/?LinkId=780680">适用于 Visual Studio 的下载项</a>
+                                                    <a href="https://marketplace.visualstudio.com/items?itemName=Click2CloudInc.Click2CloudDockerExtensionForVisualStudio2017">适用于 Visual Studio 的下载项</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://go.microsoft.com/fwlink/?LinkId=780681">适用于 Visual Studio Code 的下载项</a>
@@ -3502,13 +3502,13 @@ ms.locfileid: "34070051"
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://www.visualstudio.com/vs/python">Python 工具</a>
+                                                    <a href="http://aka.ms/ptvs">Python 工具</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://github.com/Microsoft/PTVS/wiki/PTVS-Installation">Visual Studio 入门</a>
+                                                    <a href="http://aka.ms/ptvsdocs">Visual Studio 入门</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.python">Visual Studio Code 入门</a>
+                                                    <a href="https://code.visualstudio.com/docs/python/python-tutorial">Visual Studio Code 入门</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -3598,7 +3598,7 @@ ms.locfileid: "34070051"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>云应用程序最佳做法</h3>
+                                                    <h3>云应用程序最佳实践</h3>
                                                     <p>适用于云应用程序的一套最佳实践，涉及自动缩放、缓存、数据分区、API 设计和监视等多个方面。</p>
                                                 </div>
                                             </div>

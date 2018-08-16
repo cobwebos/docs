@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 08/07/2018
 ms.author: jeedes
-ms.openlocfilehash: fdde8cbec7fc249eecfcc0c1682bb5eed94c1585
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 460a52f240f6b3723f93e81a11a8cd1ccc6c30c9
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39050483"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626687"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>教程：Azure Active Directory 与 Ziflow 集成
 
@@ -101,20 +101,20 @@ ms.locfileid: "39050483"
     ![配置单一登录链接][4]
 
 2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
+
     ![“单一登录”对话框](./media/ziflow-tutorial/tutorial_ziflow_samlbase.png)
 
 3. 在“Ziflow 域和 URL”部分中，执行以下步骤：
 
     ![Ziflow 域和 URL 单一登录信息](./media/ziflow-tutorial/tutorial_ziflow_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.ziflow.io/#/login-sso/<Unique ID>`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://ziflow-production.auth0.com/login/callback?connection=<UniqueID>`
 
-    b. 在“标识符”文本框中，使用以下模式键入 URL：`urn:auth0:ziflow-production:<Unique ID>`
+    b. 在“标识符”文本框中，使用以下模式键入 URL：`urn:auth0:ziflow-production:<UniqueID>`
 
-    > [!NOTE] 
-    > 上面的值不是实际值。 本教程稍后将介绍如何使用实际值来更新“标识符”和“登录 URL”中的唯一 ID 值。 请联系 [Ziflow 支持团队](mailto:support@ziflow.com)获取登录 URL 中的子域值。
-    
+    > [!NOTE]
+    > 上面的值不是实际值。 本教程稍后将介绍如何使用实际值来更新“标识符”和“登录 URL”中的唯一 ID 值。
+
 4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/ziflow-tutorial/tutorial_ziflow_certificate.png) 
@@ -129,7 +129,6 @@ ms.locfileid: "39050483"
 
 7. 在另一个 Web 浏览器窗口中，以安全管理员身份登录到 Ziflow。
 
-
 8. 单击右上角的头像，然后单击“管理帐户”。
 
     ![Ziflow 配置管理](./media/ziflow-tutorial/tutorial_ziflow_manage.png)
@@ -142,7 +141,7 @@ ms.locfileid: "39050483"
 
     ![Ziflow 配置单一登录](./media/ziflow-tutorial/tutorial_ziflow_page.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“SAML2.0”作为“类型”。
+    a. 选择“SAML2.0”作为“类型”。
 
     b. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
@@ -176,7 +175,7 @@ ms.locfileid: "39050483"
 
     ![“用户”对话框](./media/ziflow-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -204,7 +203,7 @@ ms.locfileid: "39050483"
 
     ![Ziflow 配置添加用户](./media/ziflow-tutorial/tutorial_ziflow_adduser.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“电子邮件”文本框中，输入用户的电子邮件，如 brittasimon@contoso.com。
+    a. 在“电子邮件”文本框中，输入用户的电子邮件，如 brittasimon@contoso.com。
 
     b. 在“名字”文本框中，输入用户的名字，例如 Britta。
 

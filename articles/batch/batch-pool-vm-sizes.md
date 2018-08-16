@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2018
+ms.date: 08/09/2018
 ms.author: danlep
-ms.openlocfilehash: 8f428df07de029bc79f26d5941d22e7472addb95
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 1669d5a2237322f72dce3b172c32e7199900a4e0
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915990"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038036"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>选择 Azure Batch 池中计算节点的 VM 大小
 
@@ -41,6 +41,7 @@ ms.locfileid: "37915990"
 | 基本 A 系列 | Basic_A0 (A0) |
 | A 系列 | Standard_A0 |
 | B 系列 | 全部 |
+| M 系列 | 全部 |
 
 
 

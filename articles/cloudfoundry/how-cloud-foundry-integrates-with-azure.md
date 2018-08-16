@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: 0aac3eab8a60dc1e1e15b4656fad9ffea062c08e
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 689730edcc98a23c82373ae8d36c3b831b33c076
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968613"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627434"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>将 Cloud Foundry 与 Azure 集成
 
@@ -81,8 +81,8 @@ Azure Log Analytics Nozzle 是一个 Cloud Foundry 组件，可将指标从 [Clo
 #### <a name="managed-standard-disk"></a>托管标准磁盘： 
 建议在生产环境中使用高级磁盘，以保持可靠的性能。  借助[托管磁盘](https://azure.microsoft.com/services/managed-disks/)，标准存储也能提供类似的可靠性，但性能有所差别。 针对非性能敏感型的工作负荷，例如开发/测试或非关键环境，托管标准磁盘可以充当一种成本更低的替代选项。  
 ### <a name="cost-saving-in-general"></a>大致成本节省 
-#### <a name="significant-vm-cost-saving-with-reserved-instances"></a>使用预留实例实现的重大 VM 成本节省： 
-目前，所有 CF VM 都是根据“按需”定价计费的，即使环境在一般情况下能够无限期保持运行。 现在，可按 1 年或 3 年期预留 VM 容量，并获取 45-65% 的折扣。 折扣在计费系统中应用，无需对环境进行更改。 有关详细信息，请参阅[预留实例的工作原理](https://azure.microsoft.com/pricing/reserved-vm-instances/)。 
+#### <a name="significant-vm-cost-saving-with-azure-reservations"></a>使用 Azure 预留大幅度节省 VM 成本： 
+目前，所有 CF VM 都是根据“按需”定价计费的，即使环境在一般情况下能够无限期保持运行。 现在，可按 1 年或 3 年期预留 VM 容量，并获取 45-65% 的折扣。 折扣在计费系统中应用，无需对环境进行更改。 有关详细信息，请参阅 [Azure 预留的工作原理](https://azure.microsoft.com/pricing/reserved-vm-instances/)。 
 #### <a name="managed-premium-disk-with-smaller-sizes"></a>较小的托管高级磁盘： 
 托管磁盘支持对高级磁盘和标准磁盘使用较小的磁盘大小，例如 P4 (32 GB) 和 P6 (64 GB)。 如果工作负荷较小，从标准高级磁盘迁移到托管高级磁盘可以节省成本。
 #### <a name="utilizing-azure-first-party-services"></a>利用 Azure 第一方服务： 

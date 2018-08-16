@@ -1,26 +1,21 @@
 ---
-title: Azure Toolkit for IntelliJ：通过 SSH 远程调试 Spark 应用程序 | Microsoft Docs
+title: 'Azure Toolkit for IntelliJ：通过 SSH 远程调试 Spark 应用程序 '
 description: 逐步介绍如何使用用于 IntelliJ 的 Azure 工具包中的 HDInsight 工具通过 SSH 远程调试 HDInsight 群集上的应用程序
 keywords: 远程调试 intellij, 远程调试 intellij, ssh, intellij, hdinsight, 调试 intellij, 调试
 services: hdinsight
-documentationcenter: ''
-author: jejiang
-manager: DJ
-editor: Jenny Jiang
-tags: azure-portal
-ms.assetid: ''
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: ''
-ms.topic: article
-ms.date: 11/25/2017
+author: jejiang
 ms.author: jejiang
-ms.openlocfilehash: ad0b1bbfc74f992a646ac375583f3399243873f5
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+editor: jasonwhowell
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.topic: conceptual
+ms.date: 11/25/2017
+ms.openlocfilehash: 53094e3f8b489f972dc3e22441c66c8487a01fca
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34165190"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622052"
 ---
 # <a name="debug-spark-applications-locally-or-remotely-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>使用用于 IntelliJ 的 Azure 工具包通过 SSH 本地或远程调试 HDInsight 群集上的 Spark 应用程序
 
@@ -58,7 +53,7 @@ ms.locfileid: "34165190"
 
    d. 选择“**下一步**”。     
  
-2. 在下一个“新建项目”窗口中执行以下操作：
+1. 在下一个“新建项目”窗口中执行以下操作：
 
    ![选择 Spark SDK](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-new-project.png)
 
@@ -70,7 +65,7 @@ ms.locfileid: "34165190"
 
    d. 选择“完成”。
 
-3. 选择“src” > “main” > “scala”，在项目中打开代码。 本示例使用“SparkCore_wasbloTest”脚本。
+1. 选择“src” > “main” > “scala”，在项目中打开代码。 本示例使用“SparkCore_wasbloTest”脚本。
 
 ### <a name="prerequisite-for-windows"></a>Windows 先决条件
 在 Windows 计算机上运行本地 Spark Scala 应用程序时，可能会发生 [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) 中所述的异常。 发生此异常的原因是 Windows 中缺少 WinUtils.exe。 
@@ -79,20 +74,20 @@ ms.locfileid: "34165190"
 
 ### <a name="scenario-2-perform-local-run"></a>情景 2：执行本地运行
 1. 打开 SparkCore_wasbloTest 脚本，右键单击脚本编辑器，然后选择“运行 [Spark 作业]XXX”选项来执行本地运行。
-2. 本地运行完成后，可以看到输出文件保存到当前的项目资源管理器的“数据” > “默认”中。
+1. 本地运行完成后，可以看到输出文件保存到当前的项目资源管理器的“数据” > “默认”中。
 
     ![本地运行结果](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-result.png)
-3. 执行本地运行和本地调试时，工具已自动设置默认的本地运行配置。 打开右上角的“[Spark 作业] XXX”配置，可以看到已在“Azure HDInsight Spark 作业”下创建了“[Spark 作业]XXX”。 切换到“本地运行”选项卡。
+1. 执行本地运行和本地调试时，工具已自动设置默认的本地运行配置。 打开右上角的“[Spark 作业] XXX”配置，可以看到已在“Azure HDInsight Spark 作业”下创建了“[Spark 作业]XXX”。 切换到“本地运行”选项卡。
 
     ![本地运行配置](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-configuration.png)
     - [环境变量](#prerequisite-for-windows)：如果已将系统环境变量“HADOOP_HOME”设置为“C:\WinUtils”，则它可自动检测到此设置，而无需手动添加此变量。
     - [WinUtils.exe 位置](#prerequisite-for-windows)：如果尚未设置此系统环境变量，则可单击其按钮找到它的位置。
     - 只需选择两个选项之一，在 MacOS 和 Linux 上不需要它们。
-4. 也可在执行本地运行和本地调试前手动设置此配置。 在前面的屏幕截图中，选择加号（“+”）。 然后选择“Azure HDInsight Spark 作业”选项。 输入“名称”、“主类名称”信息并保存，然后单击本地运行按钮。
+1. 也可在执行本地运行和本地调试前手动设置此配置。 在前面的屏幕截图中，选择加号（“+”）。 然后选择“Azure HDInsight Spark 作业”选项。 输入“名称”、“主类名称”信息并保存，然后单击本地运行按钮。
 
 ### <a name="scenario-3-perform-local-debugging"></a>情景 3：执行本地调试
 1. 打开“SparkCore_wasbloTest”脚本，设置断点。
-2. 右键单击脚本编辑器，然后选择“调试 [Spark 作业]XXX”选项来执行本地调试。   
+1. 右键单击脚本编辑器，然后选择“调试 [Spark 作业]XXX”选项来执行本地调试。   
 
 
 
@@ -103,24 +98,24 @@ ms.locfileid: "34165190"
 
    ![编辑配置](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-edit-configurations.png) 
 
-2. 在“运行/调试配置”对话框中，选择加号 (+)。 然后选择“Azure HDInsight Spark 作业”选项。
+1. 在“运行/调试配置”对话框中，选择加号 (+)。 然后选择“Azure HDInsight Spark 作业”选项。
 
    ![添加新配置](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-add-new-Configuration.png)
-3. 切换到“在群集中远程运行”选项卡。为“名称”、“Spark 群集”和“Main 类名”输入信息。 然后选择“高级配置”。 工具支持使用“执行器”进行调试。 numExectors 默认值为 5。 设置的值最好不要大于 3。
+1. 切换到“在群集中远程运行”选项卡。为“名称”、“Spark 群集”和“Main 类名”输入信息。 然后选择“高级配置”。 工具支持使用“执行器”进行调试。 numExectors 默认值为 5。 设置的值最好不要大于 3。
 
    ![运行调试配置](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-run-debug-configurations.png)
 
-4. 在“Spark 提交高级配置”对话框中，选择“启用 Spark 远程调试”。 输入 SSH 用户名，然后输入密码或使用私钥文件。 要保存配置，请选择“确定”。 若要执行远程调试，则需要设置它。 若只想使用远程运行，则无需设置它。
+1. 在“Spark 提交高级配置”对话框中，选择“启用 Spark 远程调试”。 输入 SSH 用户名，然后输入密码或使用私钥文件。 要保存配置，请选择“确定”。 若要执行远程调试，则需要设置它。 若只想使用远程运行，则无需设置它。
 
    ![启用 Spark 远程调试](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-enable-spark-remote-debug.png)
 
-5. 该配置现在以用户提供的名称保存。 若要查看配置详细信息，请选择配置名称。 若要进行更改，请选择“编辑配置”。 
+1. 该配置现在以用户提供的名称保存。 若要查看配置详细信息，请选择配置名称。 若要进行更改，请选择“编辑配置”。 
 
-6. 完成配置设置后，可以对远程群集运行项目，或执行远程调试。
+1. 完成配置设置后，可以对远程群集运行项目，或执行远程调试。
    
    ![远程运行按钮](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/perform-remote-run.png)
 
-7. 单击“断开连接”按钮，提交日志未显示在左面板中。 但是，它仍在在后端上运行。
+1. 单击“断开连接”按钮，提交日志未显示在左面板中。 但是，它仍在在后端上运行。
 
    ![远程运行按钮](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/remote-run-result.png)
 
@@ -131,30 +126,30 @@ ms.locfileid: "34165190"
 
    ![选择“调试”图标](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-icon.png)
 
-2. 程序执行到达断点时，会在“调试程序”窗格中显示一个“驱动程序”选项卡和两个“执行程序”选项卡。 选择“恢复程序”图标继续运行代码，这会到达下一个断点。 需要切换到正确的“执行程序”选项卡，以找到目标执行程序来进行调试。 可以在相应的“控制台”选项卡上查看执行日志。
+1. 程序执行到达断点时，会在“调试程序”窗格中显示一个“驱动程序”选项卡和两个“执行程序”选项卡。 选择“恢复程序”图标继续运行代码，这会到达下一个断点。 需要切换到正确的“执行程序”选项卡，以找到目标执行程序来进行调试。 可以在相应的“控制台”选项卡上查看执行日志。
 
    ![“调试”选项卡](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debugger-tab.png)
 
 ### <a name="scenario-3-perform-remote-debugging-and-bug-fixing"></a>情景 3：执行远程调试和 bug 修复
 1. 设置两个断点，然后选择“调试”图标启动远程调试过程。
 
-2. 代码在第一个断点处停止，“变量”窗格中显示参数和变量信息。 
+1. 代码在第一个断点处停止，“变量”窗格中显示参数和变量信息。 
 
-3. 选择“恢复程序”图标继续运行。 代码在第二个断点处停止。 按预期方式捕获异常。
+1. 选择“恢复程序”图标继续运行。 代码在第二个断点处停止。 按预期方式捕获异常。
 
    ![引发错误](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-throw-error.png) 
 
-4. 再次选择“恢复程序”图标。 “HDInsight Spark 提交”窗口随即显示“作业运行失败”错误。
+1. 再次选择“恢复程序”图标。 “HDInsight Spark 提交”窗口随即显示“作业运行失败”错误。
 
    ![错误提交](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-error-submission.png) 
 
-5. 要使用 IntelliJ 调试功能动态更新变量值，请再次选择“调试”。 “变量”窗格会再次出现。 
+1. 要使用 IntelliJ 调试功能动态更新变量值，请再次选择“调试”。 “变量”窗格会再次出现。 
 
-6. 右键单击“调试”选项卡上的目标，然后选择“设置值”。 接下来，输入变量的新值。 然后选择 **Enter** 保存该值。 
+1. 右键单击“调试”选项卡上的目标，然后选择“设置值”。 接下来，输入变量的新值。 然后选择 **Enter** 保存该值。 
 
    ![设置值](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-set-value.png) 
 
-7. 选择“恢复程序”图标继续运行程序。 这一次不会捕获到异常。 可以看到项目成功运行，无任何异常。
+1. 选择“恢复程序”图标继续运行程序。 这一次不会捕获到异常。 可以看到项目成功运行，无任何异常。
 
    ![调试后无异常](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-without-exception.png)
 

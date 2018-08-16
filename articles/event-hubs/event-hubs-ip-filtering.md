@@ -3,19 +3,19 @@ title: Azure 事件中心 IP 连接筛选器 | Microsoft Docs
 description: 使用 IP 筛选阻止从特定 IP 地址到 Azure 事件中心的连接。
 services: event-hubs
 documentationcenter: ''
-author: clemensv
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
-ms.author: clemensv
-ms.openlocfilehash: 425a5b641fbfd2e52e1294c6317b51ff2a584aa3
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.author: shvija
+ms.openlocfilehash: 0ecce667584f522b5bd6aac28291bda427f37608
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034347"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005346"
 ---
 # <a name="use-ip-filters"></a>使用 IP 筛选器
 

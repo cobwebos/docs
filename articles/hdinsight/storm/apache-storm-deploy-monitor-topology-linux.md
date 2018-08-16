@@ -1,26 +1,22 @@
 ---
-title: 在基于 Linux 的 HDInsight 上部署和管理 Apache Storm 拓扑 | Microsoft Docs
+title: 在 Azure HDInsight 中部署和管理 Apache Storm 拓扑
 description: 了解如何使用基于 Linux 的 HDInsight 上的 Storm 仪表板部署、监视和管理 Apache Storm 拓扑。 使用 Hadoop Tools for Visual Studio。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 35086e62-d6d8-4ccf-8cae-00073464a1e1
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.author: larryfr
-ms.openlocfilehash: 53433e6a677a2576a11209075f397bb5f246b875
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: cf3de9899cdefd5761bb31f64bcb537b12eb4df3
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129279"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619458"
 ---
-# <a name="deploy-and-manage-apache-storm-topologies-on-hdinsight"></a>在 HDInsight 上部署和管理 Apache Storm 拓扑
+# <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>在 Azure HDInsight 中部署和管理 Apache Storm 拓扑 
 
 本文档介绍有关如何在 HDInsight 群集上管理和监视 Storm 上运行的 Storm 拓扑的基本知识。
 

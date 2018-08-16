@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 11/05/2017
-ms.openlocfilehash: a58b5c315b9f1baa3a0c3fe55917e94a47006f62
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 85f80ef1ea776d48d9c2f8091568d40dbf46db46
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258525"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716462"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>使用流分析进行高频交易模拟
 用户可以在 Azure 流分析中结合使用 SQL 语言和 JavaScript 的用户定义函数 (UDF) 与用户定义聚合 (UDA) 进行高级分析。 高级分析可能包括在线机器学习训练和评分，以及有状态过程模拟。 本文介绍如何在 Azure 流分析作业中执行线性回归操作，该作业在高频交易方案中进行持续的训练和评分。
@@ -444,7 +444,7 @@ JavaScript UDA 在 `init` 函数中初始化所有累加器，在计算状态转
 ## <a name="summary"></a>摘要
 可以在 Azure 流分析中使用中等复杂程度的查询来实现逼真的高频交易模型。 由于缺少内置的线性回归函数，我们必须将模型从五个输入变量简化为两个。 但如果用户有决心，也可以 JavaScript UDA 方式实现更高维且更复杂的算法。 
 
-需要指出的是，除 JavaScript UDA 之外的大部分查询可以在 Visual Studio 中通过[用于 Visual Studio 的 Azure 流分析工具](stream-analytics-tools-for-visual-studio.md)进行测试和调试。 在编写初始查询以后，作者在 Visual Studio 中花不到 30 分钟的时间对查询进行了测试和调试。 
+需要指出的是，除 JavaScript UDA 之外的大部分查询可以在 Visual Studio 中通过[用于 Visual Studio 的 Azure 流分析工具](stream-analytics-tools-for-visual-studio-install.md)进行测试和调试。 在编写初始查询以后，作者在 Visual Studio 中花不到 30 分钟的时间对查询进行了测试和调试。 
 
 目前，UDA 不能在 Visual Studio 中调试。 我们正在努力实现该功能，希望能够对 JavaScript 代码进行单步调试。 另请注意，进入 UDA 的字段的名称为小写。 在查询测试过程中，这并没有引起注意。 但在兼容性级别为 1.1 的 Azure 流分析中，我们保留字段名称的大小写，这样更显自然。
 

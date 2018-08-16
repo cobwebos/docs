@@ -1,25 +1,20 @@
 ---
-title: 在 Azure HDInsight 中使用交互式 Spark Shell | Microsoft Docs
+title: 在 Azure HDInsight 中使用交互式 Spark Shell
 description: 交互式 Spark Shell 提供了一个读取执行打印进程，用于一次运行一个 Spark 命令并查看结果。
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: maxluk
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.date: 01/09/2018
+author: maxluk
 ms.author: maxluk
-ms.openlocfilehash: d2b65980516a7ae1857711f2e58d9cd0a8e8ec9a
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+editor: jasonwhowell
+ms.custom: hdinsightactive
+ms.topic: conceptual
+ms.date: 01/09/2018
+ms.openlocfilehash: 454f05f6ec17a42d0f0d3795d490352e5e74783a
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164136"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617500"
 ---
 # <a name="run-spark-from-the-spark-shell"></a>从 Spark Shell 运行 Spark
 

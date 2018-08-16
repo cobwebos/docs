@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 25cb3ba53c663a642f0871becbfbcab39d521c67
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 501dc942fc41a4e06aa13fba2eb670f8bc0f8a21
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437709"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597814"
 ---
 # <a name="door-monitor"></a>门监视器          
 
-MXChip IoT DevKit 包含内置的磁传感器。 在此项目中，请检测附近是否存在强磁场--在此示例中，该磁场来自一块小的 永久磁铁。
+MXChip IoT DevKit 包含内置的磁传感器。 在此项目中，请检测附近是否存在强磁场 - 在此示例中，该磁场来自一块小的、永久性磁铁。
 
 ## <a name="what-you-learn"></a>学习内容
 
@@ -27,7 +27,7 @@ MXChip IoT DevKit 包含内置的磁传感器。 在此项目中，请检测附�
 - 如何使用 SendGrid 服务向电子邮件地址发送通知。
 
 > [!NOTE]
-> 在实际使用此项目时，请执行以下操作：
+> 要具体应用此项目，请执行以下任务：
 > - 将一块磁铁装载到门的边缘。
 > - 将 DevKit 装载到靠近磁铁的门框上。 打开或关闭此门会触发传感器，然后你就会收到有关此事件的电子邮件通知。
 
@@ -43,7 +43,7 @@ MXChip IoT DevKit 包含内置的磁传感器。 在此项目中，请检测附�
 * 激活 [30 天免费试用版 Microsoft Azure 帐户](https://azure.microsoft.com/free/)。
 * 声明你的 [Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)（如果你是 MSDN 或 Visual Studio 订阅者）。
 
-## <a name="deploy-sendgrid-service-in-azure"></a>在 Azure 中部署 SendGrid 服务
+## <a name="deploy-the-sendgrid-service-in-azure"></a>在 Azure 中部署 SendGrid 服务
 
 [SendGrid](https://sendgrid.com/) 是基于云的电子邮件传递平台。 此服务将用于发送电子邮件通知。
 
@@ -58,35 +58,35 @@ MXChip IoT DevKit 包含内置的磁传感器。 在此项目中，请检测附�
 
 [![部署到 Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FVSChina%2Fdevkit-door-monitor%2Fmaster%2FSendGridDeploy%2Fazuredeploy.json)
 
-然后，会看到以下页面。
+如果尚未登录到 Azure 帐户，请立即登录。 
 
-> [!NOTE]
-> 如果看不到以下页面，则可能需要先登录到 Azure 帐户。
+现在，你将看到 SendGrid 注册表单。
+
+![SendGrid 部署](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-deploy.png)
 
 完成注册表单：
 
-  * **资源组**：创建用于托管 SendGrid 服务的资源组，或使用现有的资源组。 请参阅[使用资源组管理 Azure 资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)。
+   * **资源组**：创建用于托管 SendGrid 服务的资源组，或使用现有的资源组。 请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-portal.md)。
 
-  * **名称**：SendGrid 服务的名称。 选择一个不同于你的其他服务的唯一名称。
+   * **名称**：SendGrid 服务的名称。 选择一个不同于你的其他服务的唯一名称。
 
-  * **密码**：此服务需要一个密码，该密码将不用于此项目中的任何项。
+   * **密码**：此服务需要一个密码，该密码将不用于此项目中的任何项。
 
-  * **电子邮件**：SendGrid 服务将向此电子邮件地址发送验证。
+   * **电子邮件**：SendGrid 服务将向此电子邮件地址发送验证。
 
-  > [!NOTE]
-  > 选中“固定到仪表板”选项，以便以后能够轻松查找此应用程序。
+选中“固定到仪表板”选项，以便以后能够轻松查找此应用程序，然后单击“购买”以提交注册表单。
  
-![SendGrid 部署](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-deploy.png)
-
 ### <a name="sendgrid-api-key-creation"></a>创建 SendGrid API 密钥
 
-部署成功以后，请单击此部署，然后单击“管理”按钮。 此时会转到 SendGrid 页，并需验证电子邮件地址。
+完成部署后，请单击此部署，然后单击“管理”按钮。 此时将显示 SendGrid 帐户页，需要在其中验证电子邮件地址。
 
 ![SendGrid 的“管理”按钮](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-manage.png)
 
-在 SendGrid 页上，单击“设置” > “API 密钥” > “创建 API 密钥”。 输入 **API 密钥名称**，然后单击“创建和查看”。
+在 SendGrid 页上，单击“设置” > “API 密钥” > “创建 API 密钥”。
 
 ![SendGrid 的第一个“创建 API”](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-create-api-first.png)
+
+在“创建 API 密钥”页上，输入 API 密钥名称，然后单击“创建和查看”。
 
 ![SendGrid 的第二个“创建 API”](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-create-api-second.png)
 
@@ -100,27 +100,25 @@ API 密钥仅显示一次。 请确保将其安全地复制和存储，因为下
 
 [![部署到 Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FVSChina%2Fdevkit-door-monitor%2Fmaster%2Fazuredeploy.json)
 
-然后，会看到以下页面。
+此时会显示注册表单。
 
-> [!NOTE]
-> 如果看不到以下页面，则可能需要先登录到 Azure 帐户。
-
-完成注册表单：
-
-  * **资源组**：创建用于托管 SendGrid 服务的资源组，或使用现有的资源组。 请参阅[使用资源组管理 Azure 资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)。
-
-  * **Iot 中心名称**：IoT 中心的名称。 选择一个不同于你的其他服务的唯一名称。
-
-  * **Iot 中心 SKU**：F1（一个订阅仅限一个）是免费的。 有关定价的详细信息，可参阅[定价和缩放层](https://azure.microsoft.com/pricing/details/iot-hub/)。
-
-  * **从电子邮件**：此项应该是设置 SendGrid 服务时使用的电子邮件地址。
-
-  > [!NOTE]
-  > 选中“固定到仪表板”选项，以便以后能够轻松查找此应用程序。
- 
 ![IoTHub 部署](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/iot-hub-deploy.png)
 
+填充注册表单上的字段。
+
+   * **资源组**：创建用于托管 SendGrid 服务的资源组，或使用现有的资源组。 请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-portal.md)。
+
+   * **Iot 中心名称**：IoT 中心的名称。 选择一个不同于你的其他服务的唯一名称。
+
+   * **IoT 中心 SKU**：F1（一个订阅仅限一个）是免费的。 可在[定价页](https://azure.microsoft.com/pricing/details/iot-hub/)上查看定价详细信息。
+
+   * **从电子邮件**：此字段应该是设置 SendGrid 服务时使用的电子邮件地址。
+
+选中“固定到仪表板”选项，以便以后能够轻松查找此应用程序，然后准备好继续下一步时单击“购买”。
+ 
 ## <a name="build-and-upload-the-code"></a>生成并上传代码
+
+接下来，加载 VS Code 中的示例代码并预配必要的 Azure 服务。
 
 ### <a name="start-vs-code"></a>启动 VS Code
 
@@ -137,8 +135,7 @@ API 密钥仅显示一次。 请确保将其安全地复制和存储，因为下
 
 ![mini-solution-examples](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-examples.png)
 
-> [!NOTE]
-> 也可以从命令面板打开示例。 使用 `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) 打开命令面板，键入“Arduino”，然后找到并选择“Arduino: Examples”。
+还可以从命令面板打开示例应用。 使用 `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) 打开命令面板，键入“Arduino”，然后找到并选择“Arduino: Examples”。
 
 ### <a name="provision-azure-services"></a>预配 Azure 服务
 
@@ -151,41 +148,36 @@ API 密钥仅显示一次。 请确保将其安全地复制和存储，因为下
 ![云预配](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/cloud-provision.png)
 
 > [!NOTE]
-> 如果在尝试登录 Azure 时，页面停滞在“正在加载”状态，请参阅 [FAQ](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#page-hangs-when-log-in-azure)（常见问题解答）来解决此问题。 
+> 如果在尝试登录 Azure 时，页面停滞在“正在加载”状态，请参阅 [IoT DevKit 常见问题解答的“登录时页面停滞”部分](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#page-hangs-when-log-in-azure)来解决此问题。 
 
 ### <a name="build-and-upload-the-device-code"></a>生成并上传设备代码
+
+接下来，上传设备代码。
 
 #### <a name="windows"></a>Windows
 
 1. 使用 `Ctrl+P` 运行 `task device-upload`。
+
 2. 终端会提示进入配置模式。 为此，请长按按钮 A，然后按下重置按钮并松开。 屏幕会显示 DevKit 标识号和 *Configuration*（配置）一词。
-
-此过程设置从[预配 Azure 服务](#provision-azure-services)步骤检索的连接字符串。
-
-然后，VS Code 开始验证 Arduino 草图并将其上传到 DevKit：
-
-![设备上传](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/device-upload.png)
-
-DevKit 将重新启动并开始运行代码。
-
-> [!NOTE]
-> 有时会收到“错误: AZ3166: 未知程序包”错误消息。 如果未正确刷新板包索引，则会出现此错误。 若要解决此错误，请参阅此 [FAQ](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)（常见问题解答）。
 
 #### <a name="macos"></a>macOS
 
 1. 将 DevKit 置于配置模式：按下按钮 A，然后按下重置按钮并松开。 屏幕将显示“配置”。
-2. 使用 `Cmd+P` 运行 `task device-upload`。
 
-此过程设置从[预配 Azure 服务](#provision-azure-services)步骤检索的连接字符串。
+2. 单击 `Cmd+P` 以运行 `task device-upload`。
 
-然后，VS Code 开始验证 Arduino 草图并将其上传到 DevKit：
+#### <a name="verify-upload-and-run-the-sample-app"></a>验证、上传并运行示例应用
+
+现已设置从[预配 Azure 服务](#provision-azure-services)步骤检索的连接字符串。 
+
+然后，VS Code 开始验证 Arduino 草图并将其上传到 DevKit。
 
 ![设备上传](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/device-upload.png)
 
 DevKit 将重新启动并开始运行代码。
 
 > [!NOTE]
-> 有时会收到“错误: AZ3166: 未知程序包”错误消息。 如果未正确刷新板包索引，则会出现此错误。 若要解决此错误，请参阅此 [FAQ](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)（常见问题解答）。
+> 有时会收到“错误: AZ3166: 未知程序包”错误消息。 如果未正确刷新板包索引，则会出现此错误。 若要解决此错误，请参阅 [IoT DevKit 常见问题解答的开发部分](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)。
 
 ## <a name="test-the-project"></a>测试项目
 
@@ -199,7 +191,7 @@ DevKit 将重新启动并开始运行代码。
 
 ## <a name="problems-and-feedback"></a>问题和反馈
 
-如果遇到问题，请参阅 [FAQ](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/)（常见问题解答）或通过以下渠道进行联系：
+如果遇到问题，请参阅 [IoT DevKit 常见问题解答](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/)或通过以下渠道进行联系：
 
 * [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
 * [堆栈溢出](https://stackoverflow.com/questions/tagged/iot-devkit)

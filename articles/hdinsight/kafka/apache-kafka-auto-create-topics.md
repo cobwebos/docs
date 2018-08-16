@@ -1,22 +1,19 @@
 ---
-title: 在 Apache Kafka 中启用自动创建主题功能 - Azure HDInsight | Microsoft Docs
+title: 在 Apache Kafka 中启用自动创建主题功能 - Azure HDInsight
 description: 了解如何将 Apache Kafka on HDInsight 配置为自动创建主题。 配置 Kafka 时，可以通过 Ambari 将 auto.create.topics.enable 设置为 true，也可以在创建群集的过程中通过 PowerShell 或资源管理器模板来进行。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
+author: jasonwhowell
+ms.author: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/18/2018
-ms.author: larryfr
-ms.openlocfilehash: fa5dd7533259c794671cd16231fd3f530173bfa3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f187991b1ff128a45845c2096928945722a9ae6a
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33781366"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618263"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>如何将 Apache Kafka on HDInsight 配置为自动创建主题
 

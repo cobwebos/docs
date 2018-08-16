@@ -1,39 +1,41 @@
 ---
-title: Azure 搜索中用于数据提取和自然语言处理的认知搜索 | Microsoft Docs
-description: 使用认知技能进行数据提取、自然语言处理 (NLP) 和图像处理，以便在 Azure 搜索索引中创建可搜索的内容。
+title: Azure 搜索中用于数据提取和自然语言 AI 处理的认知搜索 | Microsoft Docs
+description: 使用认知技能和 AI 算法进行内容提取、自然语言处理 (NLP) 和图像处理，以便在 Azure 搜索索引中创建可搜索的内容
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/04/2018
+ms.date: 08/07/2018
 ms.author: heidist
-ms.openlocfilehash: 64b4c0a315e206cd260f2f1108362e92f55d1843
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 72d1630ecaeada3acf8b49952a31ccd3ae8634aa
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36304278"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617952"
 ---
 # <a name="what-is-cognitive-search"></a>什么是认知搜索？
 
-认知搜索是 [Azure 搜索](search-what-is-azure-search.md)的一项预览功能，已在美国中南部和西欧的所有层上推出，可将 AI 添加到索引工作负荷。 编制索引期间的数据提取、自然语言处理和图像处理能够查找非结构化或不可搜索内容中的潜在信息，并使其在 Azure 搜索中可搜索。
+认知搜索通过将 AI 算法附加到索引管道，从非可搜索内容中创建可搜索信息。 AI 集成通过认知技能实现。该技能在搜索索引的路由中扩充源文档。 
 
-AI 集成通过认知技能实现。该技能在搜索索引的路由中通过有序过程扩充源文档。 
+自然语言处理技能包括[实体识别](cognitive-search-skill-named-entity-recognition.md)、语言检测、[关键短语提取](cognitive-search-skill-keyphrases.md)、文本操作和情绪检测。 通过这些技能，非结构化的文本将变得结构化，映射到索引中的可搜索和可筛选字段。
+
+图像处理包括 [OCR](cognitive-search-skill-ocr.md) 和[视觉特征](cognitive-search-skill-image-analysis.md)标识，例如面部检测、图像解释、图像识别（名人和地标）或属性（例如颜色或图像方向）。 可以创建图像内容的文本表示形式，并且可使用 Azure 搜索的所有查询功能来搜索。
 
 ![认知搜索管道示意图](./media/cognitive-search-intro/cogsearch-architecture.png "认知搜索管道概述")
 
-可以预定义或自定义索引编制期间使用的技能：
+Azure 搜索中的认知技能基于认知服务 API 中使用的相同 AI 算法：[命名实体识别](cognitive-search-skill-named-entity-recognition.md)、[关键短语提取 API](cognitive-search-skill-keyphrases.md) 和 [OCR API](cognitive-search-skill-ocr.md) 只是其中的几个。 
 
-+ [预定义技能](cognitive-search-predefined-skills.md)基于认知服务 API 中使用的相同 AI 算法：[命名实体识别](cognitive-search-skill-named-entity-recognition.md)、[关键短语提取](cognitive-search-skill-keyphrases.md)和 [OCR](cognitive-search-skill-ocr.md) 只是其中的几个。 
-
-+ [自定义技能](cognitive-search-create-custom-skill-example.md)可由你针对所需的任何专业处理进行开发。 自定义技能的示例包括面向特定领域（例如金融、科技出版或医疗）的自定义实体模块或文档分类器。
+数据引入阶段应用了自然语言和图形处理，同时结果会成为 Azure 搜索中可搜索索引中文档撰写的一部分。 数据作为 Azure 数据集的来源，然后使用任意所需的[内置技能](cognitive-search-predefined-skills.md)通过索引管道进行推送。 体系结构可扩展，因此如果内置技能不足，可以创建并附加[自定义技能](cognitive-search-create-custom-skill-example.md)，以集成自定义处理。 示例包括面向特定领域（例如金融、科技出版或医疗）的自定义实体模块或文档分类器。
 
 > [!NOTE]
-> 认知搜索以公共预览版提供，技能集执行目前免费提供。 我们日后会公布此功能的定价。
+> 认知搜索以公共预览版提供，技能集执行目前免费提供。 我们日后会公布此功能的定价。 
 
 ## <a name="components-of-cognitive-search"></a>认知搜索的组件
+
+认知搜索是 [Azure 搜索](search-what-is-azure-search.md)的一项预览功能，已在美国中南部和西欧的所有层上推出。 
 
 认知搜索管道基于 [Azure 搜索索引器](search-indexer-overview.md)，该索引器抓取数据源，并提供端到端索引处理。 技能现已附加到索引器，根据定义的技能集截获并扩充文档。 编制索引后，可以通过搜索请求和 [Azure 搜索支持的所有查询类型](search-query-overview.md)来访问内容。  本部分引导索引器的新手完成这些步骤。
 
@@ -69,7 +71,7 @@ AI 集成通过认知技能实现。该技能在搜索索引的路由中通过�
 
 ## <a name="key-features-and-concepts"></a>重要功能和概念
 
-| 概念 | 说明| 链接 |
+| 概念 | Description| 链接 |
 |---------|------------|-------|
 | 技能集 | 包含技能集合的顶级命名资源。 技能集是扩充管道。 在索引编制期间索引器会调用它。 | [定义技能集](cognitive-search-defining-skillset.md) |
 | 认知技能 | 扩充管道中的原子转换。 通常，它是提取或推断结构的组件，因此增强了我们对输入数据的理解。 输出几乎总是基于文本，处理是自然语言处理，或者从图像输入提取或生成文本的图像处理。 技能的输出可映射到索引中的字段，或用作下游扩充组件的输入。 技能是预定义的、由 Microsoft 提供的或自定义的（由你创建并部署）。 | [预定义技能](cognitive-search-predefined-skills.md) |
@@ -101,7 +103,7 @@ AI 集成通过认知技能实现。该技能在搜索索引的路由中通过�
 
 目前仅提供 REST API。 请对所有请求使用 `api-version=2017-11-11-Preview`。 使用以下 API 生成认知搜索解决方案。 只会为认知搜索添加或扩展两个 API。 其他 API 的语法与正式版相同。
 
-| REST API | 说明 |
+| REST API | Description |
 |-----|-------------|
 | [创建数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | 标识外部数据源的资源，提供用于创建扩充文档的源数据。  |
 | [创建技能集 (api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | 在索引编制期间协调扩充管道中所用[预定义技能](cognitive-search-predefined-skills.md)和[自定义认知技能](cognitive-search-custom-skill-interface.md)的使用的资源。 |

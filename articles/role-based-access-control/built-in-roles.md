@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 07/17/2018
+ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 42a11607c46f77840b14973dd5b7faf4b1734fdc
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 5a373c397df09653395eea7996b19262aee75c7a
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136836"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619043"
 ---
 # <a name="built-in-roles-in-azure"></a>Azure 中的内置角色
 [基于角色的访问控制 (RBAC)](overview.md) 拥有多个内置角色定义，可将其分配给用户、组和服务主体。 角色分配是控制对 Azure 资源的访问的方式。 如果内置角色不能满足组织的特定需求，则你可以创建自己的[自定义角色](custom-roles.md)。
@@ -63,6 +63,8 @@ ms.locfileid: "39136836"
 | [经典虚拟机参与者](#classic-virtual-machine-contributor) | 允许管理经典虚拟机，但不允许访问这些虚拟机及其连接到的虚拟网络或存储帐户。 |
 | [ClearDB MySQL DB 参与者](#cleardb-mysql-db-contributor) | 允许管理 ClearDB MySQL 数据库，但不允许访问这些数据库。 |
 | [Cosmos DB 帐户读者角色](#cosmos-db-account-reader-role) | 可以读取 Azure Cosmos DB 帐户数据。 请参阅 [Cosmos DB 帐户参与者](#documentdb-account-contributor)，了解如何管理 Azure Cosmos DB 帐户。 |
+| [Data Box 参与者](#data-box-contributor) | 可让你管理 Data Box 服务下的所有内容，但不能向其他人授予访问权限。 |
+| [Data Box 操作员](#data-box-operator) | 可让你管理 Data Box 服务，但不能创建订单或编辑订单详细信息，以及向其他人授予访问权限。 |
 | [数据工厂参与者](#data-factory-contributor) | 允许管理数据工厂，但不允许访问它们。 |
 | [Data Lake Analytics 开发人员](#data-lake-analytics-developer) | 允许提交、监视和管理自己的作业，但是不允许创建或删除 Data Lake Analytics 帐户。 |
 | [数据清除程序](#data-purger) | 可清除分析数据 |
@@ -76,6 +78,7 @@ ms.locfileid: "39136836"
 | [Log Analytics 读者](#log-analytics-reader) | Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置，其中包括查看所有 Azure 资源上的 Azure 诊断的配置。 |
 | [逻辑应用参与者](#logic-app-contributor) | 允许管理逻辑应用，但不允许对其进行访问。 |
 | [逻辑应用操作员](#logic-app-operator) | 允许读取、启用和禁用逻辑应用。 |
+| [托管应用程序操作员角色](#managed-application-operator-role) | 可让你在托管应用程序资源上读取和执行操作 |
 | [托管的标识参与者](#managed-identity-contributor) | 创建、读取、更新和删除用户分配的标识 |
 | [托管的标识操作员](#managed-identity-operator) | 读取和分配用户分配的标识 |
 | [管理组参与者](#management-group-contributor) | 管理组参与者角色 |
@@ -347,33 +350,34 @@ ms.locfileid: "39136836"
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
 > | Microsoft.Network/virtualNetworks/read | 获取虚拟网络定义 |
+> | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp 是服务使用的内部操作 |
+> | Microsoft.RecoveryServices/Vaults/backupconfig/vaultconfig/* |  |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/* | 管理备份管理操作的结果 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/* | 创建和管理恢复服务保管库备份结构中的备份容器 |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | 创建和管理备份作业 |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | 导出作业 |
+> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read | 返回导出作业操作的结果。 |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | 创建和管理与备份管理相关的元数据 |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | 创建和管理备份管理操作的结果 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/* | 创建和管理备份策略 |
 > | Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | 创建和管理可备份的项 |
 > | Microsoft.RecoveryServices/Vaults/backupProtectedItems/* | 创建和管理已备份的项 |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/* | 创建和管理包含备份项的容器 |
+> | Microsoft.RecoveryServices/Vaults/backupSecurityPIN/* |  |
+> | Microsoft.RecoveryServices/Vaults/backupUsageSummaries/read | 返回恢复服务的受保护项和受保护服务器的摘要。 |
 > | Microsoft.RecoveryServices/Vaults/certificates/* | 创建和管理与恢复服务保管库中的备份相关的证书 |
 > | Microsoft.RecoveryServices/Vaults/extendedInformation/* | 创建和管理与保管库相关的扩展信息 |
+> | Microsoft.RecoveryServices/Vaults/monitoringAlerts/read | 获取恢复服务保管库的警报。 |
+> | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/* |  |
 > | Microsoft.RecoveryServices/Vaults/read | “获取保管库”操作获取表示“vault”类型的 Azure 资源的对象 |
 > | Microsoft.RecoveryServices/Vaults/refreshContainers/* | 管理用于获取新创建的容器的发现操作 |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/* | 创建和管理已注册的标识 |
+> | Microsoft.RecoveryServices/Vaults/storageConfig/* |  |
 > | Microsoft.RecoveryServices/Vaults/usages/* | 创建和管理恢复服务保管库的使用情况 |
-> | Microsoft.RecoveryServices/Vaults/backupUsageSummaries/read | 返回恢复服务的受保护项和受保护服务器的摘要。 |
 > | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Storage/storageAccounts/read | 返回存储帐户的列表，或获取指定存储帐户的属性。 |
-> | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp 是服务使用的内部操作 |
-> | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/* |  |
-> | Microsoft.RecoveryServices/Vaults/monitoringAlerts/read | 获取恢复服务保管库的警报。 |
-> | Microsoft.RecoveryServices/Vaults/storageConfig/* |  |
-> | Microsoft.RecoveryServices/Vaults/backupconfig/vaultconfig/* |  |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read | 返回导出作业操作的结果。 |
-> | Microsoft.RecoveryServices/Vaults/backupSecurityPIN/* |  |
+> | Microsoft.RecoveryServices/locations/* |  |
 > | Microsoft.Support/* | 创建和管理支持票证 |
 
 ## <a name="backup-operator"></a>备份操作员
@@ -658,6 +662,32 @@ ms.locfileid: "39136836"
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Support/* | 创建和管理支持票证 |
 
+## <a name="data-box-contributor"></a>Data Box 参与者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 可让你管理 Data Box 服务下的所有内容，但不能向其他人授予访问权限。 |
+> | **Id** | add466c9-e687-43fc-8d98-dfcf8d720be5 |
+> | **操作** |  |
+> | Microsoft.Authorization/*/read | 读取角色和角色分配 |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
+> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Databox/* |  |
+
+## <a name="data-box-operator"></a>Data Box 操作员
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 可让你管理 Data Box 服务，但不能创建订单或编辑订单详细信息，以及向其他人授予访问权限。 |
+> | **Id** | 028f4ed7-e2a9-465e-a8f4-9c0ffdfdc027 |
+> | **操作** |  |
+> | Microsoft.Authorization/*/read | 读取角色和角色分配 |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
+> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Databox/jobs/listsecrets/action | 列出与订单相关的未加密密码。 |
+
 ## <a name="data-factory-contributor"></a>数据工厂参与者
 > [!div class="mx-tableFixed"]
 > | | |
@@ -828,7 +858,7 @@ ms.locfileid: "39136836"
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
 > | Microsoft.LabServices/labAccounts/*/read |  |
 > | Microsoft.LabServices/labAccounts/createLab/action | 在实验室帐户中创建实验室。 |
-> | Microsoft.LabServices/labAccounts/sizes/getRegionalAvailability/action | 获取实验室帐户下每个大小类别的区域可用性信息 |
+> | Microsoft.LabServices/labAccounts/sizes/getRegionalAvailability/action | 获取实验室帐户下配置的每个大小类别的区域可用性信息 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Support/* | 创建和管理支持票证 |
 
@@ -918,6 +948,15 @@ ms.locfileid: "39136836"
 > | Microsoft.Web/connections/*/read | 读取连接。 |
 > | Microsoft.Web/customApis/*/read | 读取自定义 API。 |
 > | Microsoft.Web/serverFarms/read | 获取应用服务计划的属性 |
+
+## <a name="managed-application-operator-role"></a>托管应用程序操作员角色
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 可让你在托管应用程序资源上读取和执行操作 |
+> | **Id** | c7393b34-138c-406f-901b-d8cf2b17e6ae |
+> | **操作** |  |
+> | Microsoft.Solutions/applications/read | 检索应用程序列表。 |
 
 ## <a name="managed-identity-contributor"></a>托管的标识参与者
 > [!div class="mx-tableFixed"]
@@ -1125,6 +1164,7 @@ ms.locfileid: "39136836"
 > | Microsoft.Authorization/policyDefinitions/* | 创建和管理策略定义 |
 > | Microsoft.Authorization/policySetDefinitions/* | 创建和管理策略集 |
 > | Microsoft.Insights/alertRules/* | 创建和管理警报规则 |
+> | Microsoft.Management/managementGroups/read | 列出已通过身份验证的用户的管理组。 |
 > | Microsoft.operationalInsights/workspaces/*/read | 查看 Log Analytics 数据 |
 > | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
@@ -1134,8 +1174,9 @@ ms.locfileid: "39136836"
 > | Microsoft.Security/locations/tasks/activate/action | 激活安全建议 |
 > | Microsoft.Security/locations/tasks/dismiss/action | 关闭安全建议 |
 > | Microsoft.Security/policies/write | 更新安全策略 |
+> | Microsoft.Security/securityContacts/write | 更新安全联系信息 |
+> | Microsoft.Security/securityContacts/delete | 删除安全联系信息 |
 > | Microsoft.Support/* | 创建和管理支持票证 |
-> | Microsoft.Management/managementGroups/read | 列出已通过身份验证的用户的管理组。 |
 
 ## <a name="security-manager"></a>安全管理器
 > [!div class="mx-tableFixed"]

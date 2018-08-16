@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: v-sharos@microsoft.com
-ms.openlocfilehash: b0d6a797e4fe84ce2cb969d001ff96177f6ac641
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 946b5a568d98367daec0244968b962618f22ae76
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097040"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40037941"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 系列：混合云存储解决方案
 ## <a name="overview"></a>概述
@@ -57,7 +57,7 @@ Microsoft Azure StorSimple 解决方案包括以下组件：
 * **StorSimple 云设备** – 也称为 StorSimple 虚拟设备，这是 StorSimple 设备的软件版本，可复制物理混合存储设备的体系结构和多数功能。 StorSimple 云设备在 Azure 虚拟机中的单个节点上运行。 Update 2 及更高版本中提供了高级虚拟设备，可充分利用 Azure 高级存储性能。
 * **StorSimple 设备管理器服务** – Azure 门户的扩展，可用于从单个 Web 界面管理 StorSimple 设备或 StorSimple 云设备。 可以使用 StorSimple 设备管理器服务来创建和管理服务、查看和管理设备、查看警报、管理卷以及查看和管理备份策略和备份目录。
 * **Windows PowerShell for StorSimple** – 一个命令行接口，可用于管理 StorSimple 设备。 Windows PowerShell for StorSimple 具有多种功能，让你能够注册 StorSimple 设备、配置设备上的网络接口、安装特定类型的更新、通过访问支持会话为设备排除故障，以及更改设备状态。 可以通过连接到串行控制台或通过使用 Windows PowerShell 远程处理来访问 Windows PowerShell for StorSimple。
-* **Azure PowerShell StorSimple cmdlet** - Windows PowerShell cmdlet 的一个集合，使你能够自动从命令行执行服务级别和迁移任务。 有关适用于 StorSimple 的 Azure Powershell cmdlet 的详细信息，请转到 [cmdlet 参考](/powershell/module/azure/?view=azuresmps-3.7.0#azure)。
+* **Azure PowerShell StorSimple cmdlet** - Windows PowerShell cmdlet 的一个集合，使你能够自动从命令行执行服务级别和迁移任务。 有关适用于 StorSimple 的 Azure Powershell cmdlet 的详细信息，请转到 [cmdlet 参考](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0#azure)。
 * **StorSimple Snapshot Manager** – 一个 MMC 管理单元，它使用卷组和 Windows 卷影复制服务来生成应用程序一致性备份。 此外，还可以使用 StorSimple 快照管理器来创建备份计划，并克隆或还原卷。
 * **StorSimple Adapter for SharePoint** – 一种工具，可将 Microsoft Azure StorSimple 存储和数据保护透明地扩展到 SharePoint 服务器场，同时让用户能够从 SharePoint 中心管理门户查看和管理 StorSimple 存储。
 
@@ -126,7 +126,7 @@ Windows PowerShell for StorSimple 提供一个命令行界面，可以使用该�
 有关详细信息，请转到[使用 Windows PowerShell for StorSimple 管理设备](storsimple-8000-windows-powershell-administration.md)。
 
 ## <a name="azure-powershell-storsimple-cmdlets"></a>Azure PowerShell StorSimple cmdlet
-Azure PowerShell StorSimple cmdlet 是 Windows PowerShell cmdlet 的一个集合，使你能够自动从命令行执行服务级别和迁移任务。 有关适用于 StorSimple 的 Azure Powershell cmdlet 的详细信息，请转到 [cmdlet 参考](/powershell/module/azure/?view=azuresmps-3.7.0)。
+Azure PowerShell StorSimple cmdlet 是 Windows PowerShell cmdlet 的一个集合，使你能够自动从命令行执行服务级别和迁移任务。 有关适用于 StorSimple 的 Azure Powershell cmdlet 的详细信息，请转到 [cmdlet 参考](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0)。
 
 ## <a name="storsimple-snapshot-manager"></a>StorSimple 快照管理器
 StorSimple 快照管理器是 Microsoft 管理控制台 (MMC) 管理单元，可用于创建本地数据和云数据的一致时间点备份副本。 该管理单元在基于 Windows Server 的主机上运行。 可以使用 StorSimple 快照管理器执行以下操作：
@@ -255,7 +255,7 @@ StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorS
 部署 Microsoft Azure StorSimple 解决方案之前，我们建议查看以下术语和定义。
 
 ### <a name="key-terms-and-definitions"></a>关键术语和定义
-| 术语（首字母缩写词或缩写） | 说明 |
+| 术语（首字母缩写词或缩写） | Description |
 | --- | --- |
 | 访问控制记录 (ACR) |与 Microsoft Azure StorSimple 设备上的卷相关联的记录，可决定哪些主机可以连接到它。 此决定基于连接到 StorSimple 设备的主机（包含在 ACR 中）上 iSCSI 限定的名称 (IQN)。 |
 | AES-256 |当数据在云中出入时，用于加密该数据的 256 位高级加密标准 (AES) 算法。 |

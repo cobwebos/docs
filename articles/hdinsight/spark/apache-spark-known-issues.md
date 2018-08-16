@@ -1,25 +1,20 @@
 ---
-title: 排查 Azure HDInsight 中 Apache Spark 群集的相关问题 | Microsoft Docs
+title: 排查 Azure HDInsight 中 Apache Spark 群集的相关问题
 description: 了解与 Azure HDInsight 中的 Apache Spark 群集相关的问题以及如何解决这些问题。
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 610c4103-ffc8-4ec0-ad06-fdaf3c4d7c10
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.author: nitinme
-ms.openlocfilehash: 664c97117de793209007843fa23c98f52c2b079d
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: jasonh
+ms.openlocfilehash: a2cb862102462d00822686de7a273c013a164bde
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31519233"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39616949"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight 上的 Apache Spark 群集的已知问题
 

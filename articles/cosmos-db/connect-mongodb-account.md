@@ -3,20 +3,20 @@ title: Azure Cosmos DB 帐户的 MongoDB 连接字符串 | Microsoft Docs
 description: 了解如何使用 MongoDB 连接字符串，将 MongoDB 应用连接到 Azure Cosmos DB 帐户。
 keywords: mongodb 连接字符串
 services: cosmos-db
-author: SnehaGunda
+author: slyons
 manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/19/2017
-ms.author: sngun
-ms.openlocfilehash: 441f6725b96dc7a099304e06db6d46a65e7f9c81
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.author: sclyon
+ms.openlocfilehash: ad8d6fe36c289c4c9e37689e1c7d755dc3bf9048
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795952"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038083"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>将 MongoDB 应用程序连接到 Azure Cosmos DB
 了解如何使用 MongoDB 连接字符串，将 MongoDB 应用连接到 Azure Cosmos DB 帐户。 然后，可使用 Azure Cosmos DB 数据库作为 MongoDB 应用的数据存储。 

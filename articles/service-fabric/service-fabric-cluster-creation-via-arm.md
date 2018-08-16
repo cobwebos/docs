@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/07/2017
+ms.date: 07/31/2018
 ms.author: aljo
-ms.openlocfilehash: e963b0f816d30411aa7d1e8c172ca0c2e5ddf0f1
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: ccdea2833a24aa9e2bdf4fadd12b19d78b40f999
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444355"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038008"
 ---
 # <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>使用 Azure 资源管理器创建 Service Fabric 群集 
 > [!div class="op_single_selector"]
@@ -341,6 +341,9 @@ Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 
 .\SetupApplications.ps1 -TenantId '690ec069-8200-4068-9d01-5aaf188e557a' -ClusterName 'mycluster' -WebApplicationReplyUrl 'https://mycluster.westus.cloudapp.azure.com:19080/Explorer/index.html'
 ```
 
+> [!NOTE]
+> 对于国家/地区云（Azure 政府、Azure 中国、Azure 德国），还应指定 `-Location` 参数。
+
 执行 PowerShell 命令 `Get-AzureSubscription`，可找到租户 ID。 执行此命令，为每个订阅显示 TenantId。
 
 将 ClusterName 用作脚本创建的 Azure AD 应用程序的前缀。 它不需要完全匹配实际的群集名称。 旨在更加轻松地将 Azure AD 项目映射到其配合使用的 Service Fabric 群集。
@@ -371,7 +374,10 @@ https://&lt;cluster_domain&gt;:19080/Explorer
 
 [GitHub 上的 Azure 示例](https://github.com/Azure-Samples/service-fabric-cluster-templates)中提供了示例资源管理器模板。 这些模板可用作群集模板的起点。
 
-### <a name="create-the-resource-manager-template"></a>创建 Resource Manager 模板
+> [!NOTE]
+> 对于国家/地区云（Azure 政府、Azure 中国、Azure 德国），还应将以下 `fabricSettings` 添加到 ARM 模板：`AADLoginEndpoint`、`AADTokenEndpointFormat` 和 `AADCertEndpointFormat`。
+
+### <a name="create-the-resource-manager-template"></a>创建 资源管理器模板
 本指南使用 [5 节点安全群集][service-fabric-secure-cluster-5-node-1-nodetype]示例模板和模板参数。 将 `azuredeploy.json` 和 `azuredeploy.parameters.json` 下载到计算机，在偏好的文本编辑器中打开这两个文件。
 
 ### <a name="add-certificates"></a>添加证书
@@ -675,7 +681,7 @@ Azure AD 的设置和使用可能有一定难度，可以参考下面的一些�
 Connect-ServiceFabricCluster -ConnectionEndpoint <endpoint> -KeepAliveIntervalInSec 10 -AzureActiveDirectory -ServerCertThumbprint <thumbprint>
 ```
 
-若要了解有关 Connect-servicefabriccluster cmdlet 的信息，请参阅 [Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx)。
+若要了解有关 Connect-servicefabriccluster cmdlet 的信息，请参阅 [Connect-ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster)。
 
 ### <a name="can-i-reuse-the-same-azure-ad-tenant-in-multiple-clusters"></a>是否可将同一个 Azure AD 租户用于多个群集？
 是的。 请记得将 Service Fabric Explorer 的 URL 添加到群集 (Web) 应用程序。 否则 Service Fabric Explorer 无法正常工作。
@@ -694,7 +700,7 @@ FabricClient 和 FabricGateway 执行相互身份验证。 使用 Azure AD 身�
 [aad-graph-api-docs]:https://msdn.microsoft.com/library/azure/ad/graph/api/api-catalog
 [azure-portal]: https://portal.azure.com/
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
-[active-directory-howto-tenant]: ../active-directory/active-directory-howto-tenant.md
+[active-directory-howto-tenant]:../active-directory/develop/quickstart-create-new-tenant.md
 [service-fabric-visualizing-your-cluster]: service-fabric-visualizing-your-cluster.md
 [service-fabric-manage-application-in-visual-studio]: service-fabric-manage-application-in-visual-studio.md
 [sf-aad-ps-script-download]:http://servicefabricsdkstorage.blob.core.windows.net/publicrelease/MicrosoftAzureServiceFabric-AADHelpers.zip
@@ -714,4 +720,3 @@ FabricClient 和 FabricGateway 执行相互身份验证。 使用 Azure AD 身�
 [sfx-select-certificate-dialog]: ./media/service-fabric-cluster-creation-via-arm/sfx-select-certificate-dialog.png
 [sfx-reply-address-not-match]: ./media/service-fabric-cluster-creation-via-arm/sfx-reply-address-not-match.png
 [web-application-reply-url]: ./media/service-fabric-cluster-creation-via-arm/web-application-reply-url.png
-

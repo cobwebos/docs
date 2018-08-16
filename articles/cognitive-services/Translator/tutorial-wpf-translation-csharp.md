@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: nolachar
-ms.openlocfilehash: 5dc9478516f4e9850543a6ee129fef0f1d3ee4f7
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 353c1d91b7925a84667ef1bb7c38ab87c6a89cc1
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214911"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716366"
 ---
 # <a name="tutorial-write-a-wpf-application-for-translator-text-using-c35"></a>教程：使用 C# 编写用于文本翻译的 WPF 应用程序
 
@@ -666,9 +666,9 @@ private async void TranslateButton_Click(object sender, EventArgs e)
 名为 `X-ClientTraceId` 的 HTTP 标头是可选的。 该值应是一个 GUID。 当事情无法按预期方式执行时，客户端提供的跟踪 ID 可用于跟踪请求。 但是，为了有用处，客户端必须记录 X-ClientTraceID 的值。 客户端跟踪 ID 和请求日期可以帮助 Microsoft 诊断可能发生的问题。
 
 > [!NOTE]
-> 本教程重点介绍 Microsoft Translator 服务，因此没有详细介绍 `DetectLanguage()` 和 `CorrectSpelling()` 方法。 文本分析和必应拼写检查服务以 JSON 格式而不是 XML 提供响应，文本分析要求也将请求格式化为 JSON。 这些特征导致了与此处讨论的方法的大部分差异。
+> 本教程重点介绍 Microsoft Translator 服务，因此没有详细介绍 `DetectLanguage()` 和 `CorrectSpelling()` 方法。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [Microsoft 文本翻译 API 参考](http://docs.microsofttranslator.com/text-translate.html)
+> [Microsoft 文本翻译 API 参考](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)

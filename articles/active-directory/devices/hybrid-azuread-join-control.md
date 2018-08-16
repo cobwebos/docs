@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 2332923946e414325b9723a59cf493d9d1060cc6
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 9ffc84009adfca60e9ae6b188b65b15e874e7d9c
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39368675"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622164"
 ---
 # <a name="how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>如何控制设备的混合 Azure AD 联接
 
@@ -110,6 +110,9 @@ ms.locfileid: "39368675"
     
 
 需要将此客户端设置链接到所选位置。 例如，若要对组织中的所有 Window 当前设备配置此客户端设置，请将客户端设置链接到域。 若要执行受控部署，请对组织单位或安全组中已加入域的 Windows 当前设备配置此客户端设置。
+
+> [!Important]
+> 虽然上述配置负责处理现有已加入域的 Windows 10 设备，但由于在新加入域的 Windows 10 设备上，组策略或 Configuration Manager 设置的实际应用可能发生延迟，因此，正在加入域的新设备仍可能尝试完成混合 Azure AD 加入。 若要避免此问题，建议从以前未加入过混合 Azure AD 并且已应用上述组策略设置或 Configuration Manager 客户端设置的设备中创建一个新的 sysprep 映像（用作预配方法示例）。 此外，还必须使用新映像预配加入组织域的新计算机。 
 
 ## <a name="control-windows-down-level-devices"></a>控制 Windows 下层设备
 

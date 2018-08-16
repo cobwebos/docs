@@ -3,17 +3,16 @@ title: Azure 事件网格概念
 description: 介绍 Azure 事件网格及其概念。 定义事件网格的几个关键组件。
 services: event-grid
 author: tfitzmac
-manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/23/2018
+ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: abc1302f0317c8d5ecdc7ddaf8ca6d3a9e82b582
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2a288cdb96a1e1ff7e261d4782f7e02aee12868f
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626029"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621195"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure 事件网格中的概念
 
@@ -65,13 +64,17 @@ ms.locfileid: "34626029"
 
 有关实现任何受支持的事件网格处理程序的信息，请参阅 [Azure 事件网格中的事件处理程序](event-handlers.md)。
 
-## <a name="security"></a>“安全”
+## <a name="security"></a>安全
 
 事件网格可为订阅主题和发布主题提供安全性。 订阅时，必须对资源或事件网格主题具有足够的权限。 发布时，必须具有该主题的 SAS 令牌或密钥身份验证。 有关详细信息，请参阅[事件网格安全性和身份验证](security-authentication.md)。
 
 ## <a name="event-delivery"></a>事件传送
 
 如果事件网格无法确认订阅服务器的终结点已接收到事件，它将重新传递该事件。 有关详细信息，请参阅[事件网格消息传递和重试](delivery-and-retry.md)。
+
+## <a name="batching"></a>批处理
+
+使用自定义主题时，必须始终在数组中发布事件。 对于低吞吐量方案，可采用单批；但对于大容量用例，建议在每次发布时对多个事件进行批处理，以实现更高的效率。 批的大小最大可达 1 MB。 每个事件仍不应超过 64 KB。
 
 ## <a name="next-steps"></a>后续步骤
 

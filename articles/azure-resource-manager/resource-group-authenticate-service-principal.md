@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: aec79655dde48a18891776f40c51aa5a5c859ef8
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: df1cf093a154b4f7adf59fae93f90fbc70459788
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577258"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038047"
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>通过 Azure PowerShell 使用证书创建服务主体
 
@@ -186,7 +186,7 @@ Param (
 
 ## <a name="change-credentials"></a>更改凭据
 
-若要更改 AD 应用的凭据（为了保障安全或由于凭据过期的缘故），请使用 [Remove-AzureRmADAppCredential](/powershell/resourcemanager/azurerm.resources/v3.3.0/remove-azurermadappcredential) 和 [New-AzureRmADAppCredential](/powershell/module/azurerm.resources/new-azurermadappcredential) cmdlet。
+若要更改 AD 应用的凭据（为了保障安全或由于凭据过期的缘故），请使用 [Remove-AzureRmADAppCredential](/powershell/module/azurerm.resources/remove-azurermadappcredential) 和 [New-AzureRmADAppCredential](/powershell/module/azurerm.resources/new-azurermadappcredential) cmdlet。
 
 若要删除应用程序的所有凭据，请使用：
 

@@ -3,20 +3,20 @@ title: Azure Cosmos DB 中的一致性级别 | Microsoft Docs
 description: Azure Cosmos DB 提供五种一致性级别来帮助在最终一致性、可用性和延迟之间做出取舍。
 keywords: 最终一致性, azure cosmos db, azure, Microsoft azure
 services: cosmos-db
-author: SnehaGunda
+author: aliuy
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2018
-ms.author: sngun
+ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 20edcd5e8e3ec3a9d3d294f7a81a2e97b4958f50
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: e9503759b776bb045c4dc0357b1ab88be1294013
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857178"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038031"
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB 中的可优化数据一致性级别
 Azure Cosmos DB 是从无到有开发出来的，其设计考虑到了适合每个数据模型的全局分发。 它旨在提供可预测的低延迟保证以及多个完善定义的宽松一致性模型。 Azure Cosmos DB 当前提供 5 种一致性级别：非常、有限过期、会话、一致前缀和最终级别。 有限过期、会话、一致性前缀和最终级别称为“宽松一致性模型”，因为它们提供的一致性比非常一致性更差，后者是可用的最高一致性模型。 

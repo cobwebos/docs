@@ -1,24 +1,20 @@
 ---
-title: 使用 HDInsight 中的 Hadoop 分析 Twitter 数据 — Azure | Microsoft Docs
+title: 使用 HDInsight 中的 Hadoop 分析 Twitter 数据 - Azure
 description: 了解如何在 HDInsight 中的 Hadoop 上使用 Hive 分析 Twitter 数据以找到特定单词的使用频率。
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 78e4ea33-9714-424d-ac07-3d60ecaebf2e
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jgao
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6b47e54e56b12a2975c44ab3b87b023d20a769c3
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 8ac97c14b4abaa1c07e8f982edb53e0acac3692f
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436158"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597614"
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>使用 HDInsight 中的 Hive 分析 Twitter 数据
 社交网站是采用大数据的主要推动力之一。 Twitter 等网站所提供的公共 API 是一类用于分析和了解流行趋势的有用数据源。
@@ -55,7 +51,7 @@ ms.locfileid: "37436158"
 
 下表列出了本教程中使用的文件：
 
-| 文件 | 说明 |
+| 文件 | Description |
 | --- | --- |
 | /tutorials/twitter/data/tweets.txt |Hive 作业的源数据。 |
 | /tutorials/twitter/output |Hive 作业的输出文件夹。 默认 Hive 作业输出文件名是 **000000_0**。 |
@@ -83,7 +79,7 @@ Twitter 使用 OAuth 提供对其 API 的授权访问。 OAuth 是一种身份�
    | 字段 | 值 |
    | --- | --- |
    |  名称 |MyHDInsightApp |
-   |  说明 |MyHDInsightApp |
+   |  Description |MyHDInsightApp |
    |  网站 |http://www.myhdinsightapp.com |
 4. 选中“是，我同意”，并单击“创建 Twitter 应用程序”。
 5. 单击“权限”选项卡。默认权限为“只读”。 这对于本教程来说已足够。
@@ -230,7 +226,7 @@ Twitter 使用 OAuth 提供对其 API 的授权访问。 OAuth 是一种身份�
 
 3. 设置此脚本中的前五个到前八个变量：
 
-    变量|说明
+    变量|Description
     ---|---
     $clusterName|这是要在其运行该应用程序的 HDInsight 群集的名称。
     $oauth_consumer_key|这是你先前在创建 Twitter 应用程序时记下的 Twitter 应用程序**使用者密钥**。
@@ -439,7 +435,7 @@ HiveQL 脚本将执行以下操作：
 
 3. 设置此脚本中的前两个变量：
 
-   | 变量 | 说明 |
+   | 变量 | Description |
    | --- | --- |
    |  $clusterName |输入要在其中运行该应用程序的 HDInsight 群集名称。 |
    |  $subscriptionID |输入 Azure 订阅 ID。 |
@@ -491,7 +487,7 @@ Use-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $
 $response = Invoke-AzureRmHDInsightHiveJob -DefaultStorageAccountName $defaultStorageAccountName -DefaultStorageAccountKey $defaultStorageAccountKey -DefaultContainer $defaultBlobContainerName -file $hqlScriptFile -StatusFolder $statusFolder #-OutVariable $outVariable
 
 Write-Host "Display the standard error log ... " -ForegroundColor Green
-$jobID = ($response | Select-String job_ | Select-Object -First 1) -replace ‘\s*$’ -replace ‘.*\s’
+$jobID = ($response | Select-String job_ | Select-Object -First 1) -replace �\s*$� -replace �.*\s�
 Get-AzureRmHDInsightJobOutput -ClusterName $clusterName -JobId $jobID -DefaultContainer $defaultBlobContainerName -DefaultStorageAccountName $defaultStorageAccountName -DefaultStorageAccountKey $defaultStorageAccountKey -HttpCredential $httpCredential
 #endregion
 ```

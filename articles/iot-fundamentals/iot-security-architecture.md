@@ -8,12 +8,12 @@ services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: dobett
-ms.openlocfilehash: 31d01d597f1ce3284fc69809855345bbde5c3406
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7ff0ef9ef41891a22b516d922fd6b347545e37db
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38299300"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038079"
 ---
 [!INCLUDE [iot-security-architecture](../../includes/iot-security-architecture.md)]
 
@@ -23,4 +23,4 @@ ms.locfileid: "38299300"
 可以通过 IoT 中心开发人员指南中的[控制 IoT 中心的访问权限][lnk-devguide-security]了解 IoT 中心安全性。
 
 [lnk-security-deployment]: iot-security-deployment.md
-[lnk-devguide-security]: /azure/iot-hub/iot-hub-devguide-security.md
+[lnk-devguide-security]: /azure/iot-hub/iot-hub-devguide-security

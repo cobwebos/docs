@@ -1,24 +1,20 @@
 ---
-title: 教程：使用 Azure HDInsight 中的 Apache Spark 处理来自 Azure 事件中心的数据 | Microsoft Docs
+title: '教程：使用 Azure HDInsight 中的 Apache Spark 处理来自 Azure 事件中心的数据 '
 description: 将 Azure HDInsight 中的 Apache Spark 连接到 Azure 事件中心并处理流数据。
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive,mvc
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/07/2018
-ms.author: jgao
-ms.openlocfilehash: 9b59f5d58234aaf8f8385f722d6659548e066933
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 06/14/2018
+ms.openlocfilehash: 27c8a51ee3f0274489041f4dafbbf73d906e2fa4
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33781406"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617628"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-spark-in-hdinsight"></a>教程：使用 HDInsight 中的 Azure 事件中心和 Spark 处理推文
 
@@ -208,7 +204,7 @@ ms.locfileid: "33781406"
     val eventHubNSConnStr = "<Event hub namespace connection string>"
     val connStr = ConnectionStringBuilder(eventHubNSConnStr).setEventHubName(eventHubName).build 
     
-    val customEventhubParameters = EventHubsConf(connectionString).setMaxEventsPerTrigger(5)
+    val customEventhubParameters = EventHubsConf(connStr).setMaxEventsPerTrigger(5)
     val incomingStream = spark.readStream.format("eventhubs").options(customEventhubParameters.toMap).load()
     //incomingStream.printSchema    
     
@@ -226,13 +222,13 @@ ms.locfileid: "33781406"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-使用 HDInsight 可将数据存储在 Azure 存储或 Azure Data Lake Store 中，以便可以在群集未用时安全地将其删除。 此外，还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。 如果你打算立即学习下一篇教程，可以保留群集。
+有了 HDInsight，便可以将数据存储在 Azure 存储或 Azure Data Lake Store 中，以便在群集不用时安全地删除群集。 此外，还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。 如果打算立即开始学习下一教程，可能需要保留该群集。
 
 在 Azure 门户中打开群集，然后选择“删除”。
 
 ![删除 HDInsight 群集](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "删除 HDInsight 群集")
 
-还可以选择资源组名称来打开“资源组”页，然后选择“删除资源组”。 删除资源组会删除 HDInsight Spark 群集和默认的存储帐户。
+还可以选择资源组名称来打开“资源组”页，然后选择“删除资源组”。 通过删除资源组，可以删除 HDInsight Spark 群集和默认存储帐户。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/3/2018
 ms.author: jonor
-ms.openlocfilehash: 2c8ca8bcce43596d521fa9c81438ac6a16f6dcdf
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: fc3f334771c11d6917e15628557adfb59051f0f6
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445375"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621015"
 ---
 # <a name="azure-virtual-datacenter-a-network-perspective"></a>Azure 虚拟数据中心：网络透视图
 **Microsoft Azure**：更快更省地迁移、集成本地应用和数据
@@ -266,7 +266,7 @@ Azure 中主要有两种日志类型：
 
 所有日志都可以存储在 Azure 存储帐户中，以便进行审核、静态分析或备份。 日志存储在 Azure 存储帐户时，客户可以对该数据使用不同类型的框架进行检索、准备、分析和可视化操作，以报告云资源的状态和运行状况。
 
-大型企业应该已经获取到用于监视本地系统的标准框架，并可以扩展该框架以集成云部署生成的日志。 对于希望将所有日志记录保留在云中的组织，[Log Analytics][LogAnalytics] 是一个不错的选择。 由于 Log Analytics 作为基于云的服务实现，因此在基础结构服务上进行极低的投资即可快速使其启动并运行。 Log Analytics 还可与 System Center Operations Manager 等 System Center 组件集成，将现有管理投资扩展到云。
+大型企业应该已经获取到用于监视本地系统的标准框架，并可以扩展该框架以集成云部署生成的日志。 对于希望将所有日志记录保留在云中的组织，[Log Analytics][../log-analytics/log-analytics-overview .md] 是一个不错的选择。 由于 Log Analytics 作为基于云的服务实现，因此在基础结构服务上进行极低的投资即可快速使其启动并运行。 Log Analytics 还可与 System Center Operations Manager 等 System Center 组件集成，将现有管理投资扩展到云。
 
 Log Analytics 是 Azure 中的一个服务，可帮助收集、关联、搜索以及处理由操作系统、应用程序和基础结构云组件生成的日志和性能数据。 使用集成搜索和自定义仪表板为客户提供实时操作见解，分析 vDC 中所有工作负荷的所有记录。
 

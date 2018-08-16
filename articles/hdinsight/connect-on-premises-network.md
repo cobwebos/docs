@@ -1,22 +1,19 @@
 ---
-title: 将 HDInsight 连接到本地网络 - Azure HDInsight | Microsoft Docs
+title: 将 HDInsight 连接到本地网络 - Azure HDInsight
 description: 了解如何在 Azure 虚拟网络中创建 HDInsight 群集，并将其连接到本地网络。 了解如何使用自定义 DNS 服务器配置 HDInsight 与本地网络之间的名称解析。
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/23/2018
-ms.author: larryfr
-ms.openlocfilehash: bfb6515ba9b7f36e90783444fc474dc575b32f37
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.author: jasonh
+ms.openlocfilehash: c7186298c95667f1f29febca8c85d6799710deab
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113616"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597501"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>将 HDInsight 连接到本地网络
 

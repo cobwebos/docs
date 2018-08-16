@@ -1,23 +1,20 @@
 ---
-title: 在 Azure HDInsight 上使用 Grafana | Microsoft Docs
-description: 了解如何在 Azure HDInsight 中访问 Grafana
+title: 在 Azure HDInsight 上使用 Grafana
+description: 了解如何在 Azure HDInsight 中访问 Grafana。
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: cgronlun
-editor: cgronlun
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.author: jgao
-ms.openlocfilehash: c452cb1264dceff8cb791588fa7c58f73631d422
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: ae8e676e9a6d6590398d6ccbb759aa29d33e108e
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34305550"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39598137"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>在 Azure HDInsight 中访问 Grafana
 
@@ -104,7 +101,7 @@ Grafana 是一个受欢迎的开源图形和仪表板生成器。 Grafana 功能
 
     ![删除 HDInsight 群集](./media/hdinsight-grafana/hdinsight-delete-cluster.png "删除 HDInsight 群集")
 
-2. 如果希望删除群集和默认存储库帐户，请选择资源组名称（之前的屏幕截图中已突出显示），打开资源组页。
+2. 如果希望删除群集和默认存储帐户，请选择资源组名称（之前的屏幕截图中已突出显示），打开资源组页。
 
 3. 选择“删除资源组”，删除资源组（包括群集和默认存储帐户）。 注意，删除资源组会删除存储帐户。 如果想要保留存储帐户，请选择仅删除群集。
 

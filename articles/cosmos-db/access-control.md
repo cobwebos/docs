@@ -2,19 +2,19 @@
 title: 设置 Azure Cosmos DB 中的访问控制 | Microsoft Docs
 description: 了解如何设置 Azure Cosmos DB 中的访问控制。
 services: cosmos-db
-author: SnehaGunda
+author: rafats
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/06/2018
-ms.author: sngun
-ms.openlocfilehash: 2dae2b6291aa7ce18cc6f612b25cd5bdcc1ba753
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: rafats
+ms.openlocfilehash: 0d4595bcf8a9f009dce928d3f3cbc442328ec39b
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611137"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40037907"
 ---
 # <a name="access-control-in-azure-cosmos-db"></a>Azure Cosmos DB 中的访问控制
 

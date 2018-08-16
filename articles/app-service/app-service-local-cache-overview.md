@@ -3,8 +3,8 @@ title: Azure 应用服务本地缓存概述 | Microsoft Docs
 description: 本文介绍如何针对 Azure 应用服务本地缓存功能执行启用、大小调整和状态查询操作。
 services: app-service
 documentationcenter: app-service
-author: SyntaxC4
-manager: yochayk
+author: cephalin
+manager: jpconnock
 editor: ''
 tags: optional
 keywords: ''
@@ -15,15 +15,19 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2016
-ms.author: cfowler
-ms.openlocfilehash: 75f2dcb80514105ed663ba1fe5f7adccc05af1fc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: cephalin
+ms.openlocfilehash: 59fe70e4d2a710160751ab8e7a83c9f86310dc24
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22985942"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597724"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure 应用服务本地缓存概述
+
+> [!NOTE]
+> 在容器化的应用服务应用中（例如在 [Linux 上的应用服务](containers/app-service-linux-intro.md)上）不支持本地缓存。
+
 Azure Web 应用内容存储在 Azure 存储中，作为内容共享持续提供。 此设计旨在兼容各种应用，具有以下特点：  
 
 * 内容跨 Web 应用的多个虚拟机 (VM) 实例共享。
@@ -41,10 +45,10 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
 
 ## <a name="how-local-cache-changes-the-behavior-of-app-service"></a>本地缓存如何改变应用服务的行为
 * 本地缓存是 Web 应用的 /site 和 /siteextensions 文件夹的副本。 它是在 Web 应用启动后在本地 VM 实例上创建的。 默认情况下，每个 Web 应用的本地缓存的大小仅限 300 MB，但最高可增至 2 GB。
-* 本地缓存是可以读写的。 不过，如果 Web 应用移动了虚拟机，或者系统重新启动了 Web 应用，则会抛弃所做的任何修改。 如果应用在内容存储中存储了任务关键型数据，请不要使用本地缓存。
+* 本地缓存是可以读写的。 不过，如果 Web 应用移动了虚拟机，或者系统重启了 Web 应用，则会放弃所做的任何修改。 如果应用在内容存储中存储了任务关键型数据，请不要使用本地缓存。
 * Web 应用可以像目前一样继续写入日志文件和诊断数据。 不过，日志文件和数据是以本地方式存储在 VM 上的。 然后，这些文件和数据会定期复制到共享内容存储中。 复制到共享内容存储时，不得出任何差错 -- VM 实例突然崩溃可能会导致写回信息丢失。
 * 对于使用本地缓存的 Web 应用来说，LogFiles 和数据文件夹的文件夹结构会发生变化。 存储 LogFiles 和数据文件夹中现在出现了子文件夹，其遵循的命名模式为“唯一标识符”+ 时间戳。 每个子文件夹对应于一个 VM 实例，其中的 Web 应用正在运行或已运行。  
-* 通过任何发布机制发布对 Web 应用的更改时，会将内容发布到共享内容存储中。 这是设计使然，因为需要确保已发布内容的持久性。 若要刷新 Web 应用的本地缓存，需重新启动该应用。 这看起来是不是多余步骤呢？ 若要确保无缝的生命周期，请参阅本文后面提供的信息。
+* 通过任何发布机制发布对 Web 应用的更改时，会将内容发布到持久性共享内容存储中。 若要刷新 Web 应用的本地缓存，需重新启动该应用。 若要确保无缝的生命周期，请参阅本文后面提供的信息。
 * D:\Home 指向本地缓存。 D:\local 继续指向特定于临时 VM 的存储。
 * SCM 站点的默认内容视图仍是共享内容存储的视图。
 
@@ -52,7 +56,7 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
 组合使用保留的应用设置即可配置本地缓存。 可以通过以下方法配置这些应用设置：
 
 * [Azure 门户](#Configure-Local-Cache-Portal)
-* [Azure Resource Manager](#Configure-Local-Cache-ARM)
+* [Azure 资源管理器](#Configure-Local-Cache-ARM)
 
 ### <a name="configure-local-cache-by-using-the-azure-portal"></a>通过 Azure 门户配置本地缓存
 <a name="Configure-Local-Cache-Portal"></a>
@@ -61,7 +65,7 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
 
 ![Azure 门户应用设置：本地缓存](media/app-service-local-cache-overview/app-service-local-cache-configure-portal.png)
 
-### <a name="configure-local-cache-by-using-azure-resource-manager"></a>使用 Azure Resource Manager 配置本地缓存
+### <a name="configure-local-cache-by-using-azure-resource-manager"></a>使用 Azure 资源管理器配置本地缓存
 <a name="Configure-Local-Cache-ARM"></a>
 
 ```

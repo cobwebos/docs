@@ -1,24 +1,20 @@
 ---
-title: 使用脚本操作自定义 HDInsight 群集 — Azure | Microsoft Docs
+title: 使用脚本操作自定义 HDInsight 群集 - Azure
 description: 了解如何使用脚本操作自定义 HDInsight 群集。
 services: hdinsight
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 3a63e216-4163-40c1-aa04-6b42fd0162ad
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/05/2016
-ms.author: nitinme
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 50ef40b3ea3bc8c768e8b4266ef50ad02e02f026
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 0f49284782ab5ab17476f37ae5ae40a753ee107b
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950608"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597409"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>使用脚本操作自定义基于 Windows 的 HDInsight 群集
 在创建群集的过程中，可以使用**脚本操作**来调用[自定义脚本](hdinsight-hadoop-script-actions.md)，以便在群集上安装其他软件。

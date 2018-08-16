@@ -2,19 +2,19 @@
 title: 预配 Azure Cosmos DB 的吞吐量 | Microsoft Docs
 description: 了解如何为 Azure Cosmos DB 容器、集合以及关系图和表设置预配吞吐量。
 services: cosmos-db
-author: SnehaGunda
+author: aliuy
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
-ms.author: sngun
-ms.openlocfilehash: a454bfc06cf119d43e545a5a911a2f6686fb755b
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.author: andrl
+ms.openlocfilehash: 2c3e4806aef506ef9016699b46eadd5f8a187224
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600153"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40037927"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>为 Azure Cosmos DB 容器和数据库设置和获取吞吐量
 
@@ -262,20 +262,6 @@ MongoDB API 支持使用自定义命令 *getLastRequestStatistics* 来检索给�
 > 如果有多种项类型，它们的索引属性大小和数目截然不同，则记录与每种类型的典型项相关联的适用操作请求单位费用。
 > 
 > 
-
-## <a id="RequestchargeGraphAPI"></a>获取 Gremlin API 帐户的请求费用 
-
-下面是一个示例，展示了如何使用 Gremlin.Net library 获取 Gremlin API 帐户的请求费用。 
-
-```csharp
-
-var response = await gremlinClient.SubmitAsync<int>(requestMsg, bindings);
-                var resultSet = response.AsResultSet();
-                var statusAttributes= resultSet.StatusAttributes;
-```
-
-除了以上方法之外，还可以使用“x-ms-total-request-charge”标头进行请求单位计算。
-
 
 ## <a name="throughput-faq"></a>吞吐量常见问题
 

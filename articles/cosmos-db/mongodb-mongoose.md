@@ -2,20 +2,20 @@
 title: 将 Mongoose 框架与 Azure Cosmos DB 配合使用 | Microsoft Docs
 description: 了解如何将 Node.js Mongoose 应用连接到 Azure Cosmos DB
 services: cosmos-db
-author: romitgirdhar
+author: slyons
 manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 01/08/2018
-ms.author: rogirdh
-ms.openlocfilehash: 3c2a1299bec954a1b00b3315113c0967171b0001
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: sclyon
+ms.openlocfilehash: aa178a24f0c36a1c5fb56b342141b066c150c7c3
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38543944"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40037910"
 ---
 # <a name="azure-cosmos-db-using-the-mongoose-framework-with-azure-cosmos-db"></a>Azure Cosmos DB：将 Mongoose 框架与 Azure Cosmos DB 配合使用
 

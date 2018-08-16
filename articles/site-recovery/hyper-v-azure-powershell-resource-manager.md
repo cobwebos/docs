@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: bsiva
-ms.openlocfilehash: 13456dc53f85f6f26aab222ab0cb499aabb7d1cc
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 721bb725538b0b1f6eb0e7132b99e75491b6f969
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916225"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40037923"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>使用 PowerShell 和 Azure 资源管理器对 Hyper-V VM 设置到 Azure 的灾难恢复
 
@@ -205,4 +205,4 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
         $TFjob = Resume-AzureRmSiteRecoveryJob -Job $TFjob
 
 ## <a name="next-steps"></a>后续步骤
-[详细了解](https://msdn.microsoft.com/library/azure/mt637930.aspx) Azure Site Recovery 和 Azure 资源管理器 PowerShell cmdlet。
+[详细了解](https://docs.microsoft.com/powershell/module/azurerm.siterecovery) Azure Site Recovery 和 Azure 资源管理器 PowerShell cmdlet。

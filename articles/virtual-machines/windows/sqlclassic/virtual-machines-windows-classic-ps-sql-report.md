@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: edfae3a56bc13e4c41a1676bfc0f4e8cf4cd9d30
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c688de79c985eda9b0898d0f7d989de58f7dbc71
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31425072"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038015"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>使用 PowerShell 创建运行本机模式报表服务器的 Azure VM
 > [!IMPORTANT] 
@@ -40,7 +40,7 @@ ms.locfileid: "31425072"
   * 若要增加内核配额，请联系 [Azure 支持](https://azure.microsoft.com/support/options/)。 有关 VM 大小信息，请参阅 [Azure 的虚拟机大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 * **Windows PowerShell 脚本**：本主题假定你具有有关 Windows PowerShell 的基础知识。 有关使用 Windows PowerShell 的详细信息，请参阅以下部分：
   
-  * [在 Windows Server 上启动 Windows PowerShell](https://technet.microsoft.com/library/hh847814.aspx)
+  * [在 Windows Server 上启动 Windows PowerShell](https://docs.microsoft.com/powershell/scripting/setup/starting-windows-powershell)
   * [Windows PowerShell 入门](https://technet.microsoft.com/library/hh857337.aspx)
 
 ## <a name="step-1-provision-an-azure-virtual-machine"></a>步骤 1：设置 Azure 虚拟机
@@ -67,7 +67,7 @@ ms.locfileid: "31425072"
    * **大小：A3** 是 SQL Server 工作负荷的建议 VM 大小。 如果 VM 仅用作报表服务器，A2 的 VM 大小就足够了，除非报表服务器遇到大量工作负荷。 有关 VM 定价信息，请参阅[虚拟机定价](https://azure.microsoft.com/pricing/details/virtual-machines/)。
    * **新用户名**：将所提供的名称创建为 VM 上的管理员。
    * **新密码**和**确认**。 此密码用于新的管理员帐户并建议使用强密码。
-   * 单击“资源组名称” 的 Azure 数据工厂。 ![下一步](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
+   * 单击“下一步”。 ![下一步](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 7. 在下一页上，编辑以下字段：
    
    * **云服务**：选择“创建新的云服务”。
@@ -512,7 +512,7 @@ ms.locfileid: "31425072"
    
    1. 单击“更改数据库”。
    2. 单击“创建新的报表服务器数据库”，并单击“下一步”。
-   3. 将默认的“服务器名称”保留为 VM 名称，将默认的“身份验证类型”保留为“当前用户”-“集成安全性”。 单击“资源组名称” 的 Azure 数据工厂。
+   3. 将默认的“服务器名称”保留为 VM 名称，将默认的“身份验证类型”保留为“当前用户”-“集成安全性”。 单击“下一步”。
    4. 将默认的“数据库名称”保留为“ReportServer”，然后单击“下一步”。
    5. 将默认的“身份验证类型”保留为“服务凭据”，然后单击“下一步”。
    6. 在“摘要”页上单击“下一步”。
@@ -586,7 +586,7 @@ ms.locfileid: "31425072"
   
   * [Microsoft SQL Server Data Tools - Business Intelligence for Visual Studio 2013](https://www.microsoft.com/download/details.aspx?id=42313)
   * [Microsoft SQL Server Data Tools - Business Intelligence for Visual Studio 2012](https://www.microsoft.com/download/details.aspx?id=36843)
-  * [SQL Server Data Tools 和 SQL Server Business Intelligence (SSDT-BI)](http://curah.microsoft.com/30004/sql-server-data-tools-ssdt-and-sql-server-business-intelligence)
+  * [SQL Server Data Tools 和 SQL Server Business Intelligence (SSDT-BI)](https://docs.microsoft.com/sql/ssdt/previous-releases-of-sql-server-data-tools-ssdt-and-ssdt-bi)
 * **SQL Server Data Tools：远程**：在本地计算机上，在 SQL Server Data Tools 中创建一个包含 Reporting Services 报表的 Reporting Services 项目。 将项目配置为连接到 web 服务 URL。
   
     ![SSRS 项目的 ssdt 项目属性](./media/virtual-machines-windows-classic-ps-sql-report/IC650114.gif)
@@ -598,7 +598,7 @@ ms.locfileid: "31425072"
 
 ## <a name="more-information"></a>更多信息
 ### <a name="resources"></a>资源
-* 有关对 SQL Server Business Intelligence 和 SharePoint 2013 进行单一服务器部署的相关类似内容，请参阅[使用 Windows PowerShell 创建装有 SQL Server BI 和 SharePoint 2013 的 Azure VM](https://msdn.microsoft.com/library/azure/dn385843.aspx)。
+* 有关对 SQL Server Business Intelligence 和 SharePoint 2013 进行单一服务器部署的相关类似内容，请参阅[使用 Windows PowerShell 创建装有 SQL Server BI 和 SharePoint 2013 的 Azure VM](https://blogs.technet.microsoft.com/ptsblog/2013/10/24/use-powershell-to-create-a-windows-azure-vm-with-sql-server-bi-and-sharepoint-2013/)。
 * 有关对 SQL Server Business Intelligence 和 SharePoint 2013 进行多服务器部署的相关类似内容，请参阅[在 Azure 虚拟机中部署 SQL Server Business Intelligence](https://msdn.microsoft.com/library/dn321998.aspx)。
 * 有关在 Azure 虚拟机上部署 SQL Server Business Intelligence 的常规信息，请参阅[在 Azure 虚拟机中部署 SQL Server Business Intelligence](virtual-machines-windows-classic-ps-sql-bi.md)。
 * 有关 Azure 计算费用成本的详细信息，请参阅 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/?scenario=virtual-machines)的“虚拟机”选项卡。

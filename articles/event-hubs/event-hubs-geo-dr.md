@@ -3,7 +3,7 @@ title: Azure 事件中心异地灾难恢复 | Microsoft Docs
 description: 如何使用地理区域进行故障转移并在 Azure 事件中心执行灾难恢复
 services: event-hubs
 documentationcenter: ''
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.service: event-hubs
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2018
-ms.author: sethm
-ms.openlocfilehash: 0192f65f394a3bb6d5cffc90639966b5f913b291
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.author: shvija
+ms.openlocfilehash: 8d75e28f48749484dca2060bb16cff75109b5c87
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36302107"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40002958"
 ---
 # <a name="azure-event-hubs-geo-disaster-recovery"></a>Azure 事件中心异地灾难恢复
 
@@ -120,7 +120,7 @@ Azure 事件中心的异地灾难恢复功能是一种灾难恢复解决方案�
 有关事件中心的详细信息，请访问以下链接：
 
 * 使用 [事件中心教程](event-hubs-dotnet-standard-getstarted-send.md)
-* [事件中心常见问题](event-hubs-faq.md)
+* [事件中心常见问题解答](event-hubs-faq.md)
 * [使用事件中心的示例应用程序](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 
 [1]: ./media/event-hubs-geo-dr/geo1.png

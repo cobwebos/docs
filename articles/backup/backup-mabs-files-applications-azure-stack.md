@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/5/2018
 ms.author: adigan
-ms.openlocfilehash: 2fb3bad56de781dd81d4c5f82b734c9420c75dee
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: a9eca3c3aeaa8d9d0d3d7728f8aebd63543cb604
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751698"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617109"
 ---
 # <a name="back-up-files-on-azure-stack"></a>备份 Azure Stack 中的文件
 可以使用 Azure 备份保护（或备份）Azure Stack 上的文件和应用程序。 若要备份文件和应用程序，请将 Microsoft Azure 备份服务器安装为 Azure Stack 上运行的虚拟机。 可以保护相同虚拟网络中任何 Azure Stack 服务器上的文件。 安装 Azure 备份服务器后，可添加 Azure 磁盘以增加可用于短期备份数据的本地存储。 Azure 备份服务器将 Azure 存储用于长期保留。
@@ -27,7 +27,7 @@ ms.locfileid: "36751698"
 
 ## <a name="back-up-files-and-folders-in-azure-stack-vms-to-azure"></a>将 Azure Stack VM 中的文件和文件夹备份到 Azure
 
-若要将 Azure 备份服务器配置为保护 Azure Stack VM 虚拟机中的文件，请打开 Azure 备份服务器控制台。 将使用控制台配置保护组，以及保护虚拟机上的数据。
+若要将 Azure 备份服务器配置为保护 Azure Stack 虚拟机中的文件，请打开 Azure 备份服务器控制台。 将使用控制台配置保护组，以及保护虚拟机上的数据。
 
 1. 在 Azure 备份服务器控制台中单击“保护”，并在工具栏中，单击“新建”打开“创建新保护组”向导。
 
@@ -90,15 +90,13 @@ ms.locfileid: "36751698"
 
 13. 在“摘要”中检查设置。 单击“创建组”时，会进行初始数据复制。 数据复制完成后，在“状态”页上，保护组状态显示为“正常”。 初始备份作业根据保护组设置运行。
 
-需要回答的问题：如何为 Azure Stack 短期磁盘存储扩展磁盘存储。 需要回顾哪些准则来解释短期磁盘存储？
-
 ## <a name="recover-file-data"></a>恢复文件数据
 
 使用 Azure 备份服务器控制台将数据恢复到虚拟机。
 
 1. 在 Azure 备份服务器控制台中的导航栏上单击“恢复”，并浏览到想要恢复的数据。 在结果窗格中选择数据。
 
-2. 在恢复点部分的日历上，以粗体显示的日期表示可用的恢复点。 选择要恢复的恢复点的日期。
+2. 在恢复点部分的日历上，以粗体显示的日期表示可用的恢复点。 选择要恢复的日期。
 
 3. 在“可恢复的项”窗格中，选择要恢复的项。
 

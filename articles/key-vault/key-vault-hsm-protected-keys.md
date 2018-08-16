@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: barclayn
-ms.openlocfilehash: 5f7cccfe0288b547f84d5642c46c21ab4095a7bf
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 774fd4ca6bbae0d02f5733269f091d325f4c776d
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287715"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038023"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>如何为 Azure 密钥保管库生成和传输受 HSM 保护的密钥
 ## <a name="introduction"></a>介绍
@@ -86,7 +86,7 @@ Microsoft 已与 Thales 联手增强 HSM 的技术开发水平。 这些增强�
 ```Powershell
    Add-AzureAccount
 ```
-在弹出的浏览器窗口中，输入 Azure 帐户用户名和密码。 然后，使用 [Get-AzureSubscription](/powershell/module/azure/get-azuresubscription?view=azuresmps-3.7.0) 命令：
+在弹出的浏览器窗口中，输入 Azure 帐户用户名和密码。 然后，使用 [Get-AzureSubscription](/powershell/module/servicemanagement/azure/get-azuresubscription?view=azuresmps-3.7.0) 命令：
 
 ```powershell
    Get-AzureSubscription

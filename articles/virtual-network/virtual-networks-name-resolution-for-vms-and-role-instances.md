@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: subsarma
-ms.openlocfilehash: 32d4f72afb4cd18e6b66c52eb78b2fc7b6b75cbd
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 53e3a298dd8a3eebca1943d9bade51187f14d722
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "31603651"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40037936"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 虚拟网络中资源的名称解析
 
@@ -160,7 +160,7 @@ DNS 转发还可用于在虚拟网络之间进行 DNS 解析，可以通过本�
 如果需要，可以使用 PowerShell 或 API 确定内部 DNS 后缀：
 
 * 对于 Azure 资源管理器部署模型中的虚拟网络，可以通过[网络接口卡 REST API](/rest/api/virtualnetwork/networkinterfaces/get)、[Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) PowerShell cmdlet 和 [az network nic show](/cli/azure/network/nic#az-network-nic-show) Azure CLI 命令获取该后缀。
-* 在经典部署模型中，可以通过 [Get Deployment API](https://msdn.microsoft.com/library/azure/ee460804.aspx) 调用或 [Get-AzureVM -Debug](/powershell/module/azure/get-azurevm) cmdlet 获取该后缀。
+* 在经典部署模型中，可以通过 [Get Deployment API](https://msdn.microsoft.com/library/azure/ee460804.aspx) 调用或 [Get-AzureVM -Debug](/powershell/module/servicemanagement/azure/get-azurevm) cmdlet 获取该后缀。
 
 如果不想将查询转发到 Azure，应提供自己的 DNS 解析。 DNS 解决方案需要：
 
@@ -198,7 +198,7 @@ DNS 转发还可用于在虚拟网络之间进行 DNS 解析，可以通过本�
 
 使用 Azure 资源管理器部署模型时，可为虚拟网络和网络接口指定 DNS 服务器。 有关详细信息，请参阅[管理虚拟网络](manage-virtual-network.md)和[管理网络接口](virtual-network-network-interface.md)。
 
-使用经典部署模型时，可以在 Azure 门户或[网络配置文件](https://msdn.microsoft.com/library/azure/jj157100)中指定虚拟网络的 DNS 服务器。 对于云服务器，可以通过[服务配置文件](https://msdn.microsoft.com/library/azure/ee758710)或者在 PowerShell 中使用 [New-AzureVM](/powershell/module/azure/new-azurevm) 指定 DNS 服务器。
+使用经典部署模型时，可以在 Azure 门户或[网络配置文件](https://msdn.microsoft.com/library/azure/jj157100)中指定虚拟网络的 DNS 服务器。 对于云服务器，可以通过[服务配置文件](https://msdn.microsoft.com/library/azure/ee758710)或者在 PowerShell 中使用 [New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm) 指定 DNS 服务器。
 
 > [!NOTE]
 > 如果更改已部署的虚拟网络或虚拟机的 DNS 设置，则需重启每个受影响的 VM，所做的更改才会生效。

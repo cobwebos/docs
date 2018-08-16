@@ -1,23 +1,20 @@
 ---
 title: 在已加入域的 HDInsight 中配置 Hive 策略 - Azure
-description: 学习内容
+description: 了解如何在已加入域的 Azure HDInsight 服务中为 Hive 配置 Apache Ranger 策略。
 services: hdinsight
-author: omidm1
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 3fade1e5-c2e1-4ad5-b371-f95caea23f6d
 ms.service: hdinsight
+author: omidm1
+ms.author: omidm
+editor: jasonwhowell
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/17/2018
-ms.author: omidm
-ms.openlocfilehash: bd99e5fda80663b37c60d972742b16c27b92cf55
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8579c3c13ace1f97d2400a4fc6e2e9a63c2c4d26
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31592669"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599684"
 ---
 # <a name="configure-hive-policies-in-domain-joined-hdinsight"></a>在已加入域的 HDInsight 中配置 Hive 策略
 了解如何为 Hive 配置 Apache Ranger 策略。 本文将创建两个 Ranger 策略来限制对 hivesampletable 的访问。 HDInsight 群集附带 hivesampletable。 配置这些策略后，可以使用 Excel 和 ODBC 驱动程序连接到 HDInsight 中的 Hive 表。
@@ -79,7 +76,7 @@ ms.locfileid: "31592669"
 ## <a name="create-hive-odbc-data-source"></a>创建 Hive ODBC 数据源
 可以在 [Create Hive ODBC data source](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)（创建 Hive ODBC 数据源）中找到说明。  
 
- | 属性  |说明 |
+ | 属性  |Description |
  | --- | --- |
  | 数据源名称 | 为数据源提供名称 |
  | 主机 | 输入 &lt;HDInsightClusterName>.azurehdinsight.net。 例如，myHDICluster.azurehdinsight.net |
@@ -88,7 +85,7 @@ ms.locfileid: "31592669"
  | Hive 服务器类型 | 选择“Hive Server 2” |
  | 机制 | 选择“Azure HDInsight 服务” |
  | HTTP 路径 | 将此字段留空。 |
- | 用户名 | 输入 hiveuser1@contoso158.onmicrosoft.com。如果域名不同，请更新域名。 |
+ | 用户名 | 输入 hiveuser1@contoso158.onmicrosoft.com。 如果域名不同，请更新域名。 |
  | 密码 | 输入 hiveuser1 的密码。 |
 
 在保存数据源之前，请务必单击“测试”。
@@ -104,7 +101,7 @@ ms.locfileid: "31592669"
 4. 从 ODBC 数据源中，选择在上一步中创建的数据源名称，并单击“下一步”。
 5. 在向导中重新输入群集的密码，然后单击“确定”。 等待“选择数据库和表”对话框打开。 这可能需要几秒钟时间。
 6. 选择 **hivesampletable**，并单击“下一步”。
-7. 单击“完成” 。
+7. 单击“完成”。
 8. 在“导入数据”对话框中，可更改或指定查询。 为此，请单击“属性”。 这可能需要几秒钟时间。
 9. 单击“定义”选项卡。命令文本为：
 

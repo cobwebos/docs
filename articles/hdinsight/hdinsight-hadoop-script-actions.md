@@ -1,23 +1,20 @@
 ---
-title: 使用 HDInsight 进行脚本操作开发 — Azure | Microsoft Docs
+title: 使用 HDInsight 进行脚本操作开发 - Azure
 description: 了解如何使用脚本操作自定义 Hadoop 群集。 脚本操作可用于安装运行在 Hadoop 群集上的其他软件，或更改安装在群集上的应用程序的配置。
 services: hdinsight
-tags: azure-portal
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 836d68a8-8b21-4d69-8b61-281a7fe67f21
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jgao
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8b00661e1561b4aa93be26994b20e33feac97ff6
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: f26a11e623148eecc8096b45c6ac9df68b8e102a
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952362"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599150"
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>为 HDInsight 基于 Windows 的群集开发脚本操作脚本
 了解如何为 HDInsight 编写脚本操作脚本。 有关如何使用脚本操作脚本的信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster.md)。 有关为基于 Linux 的 HDInsight 群集编写的同一篇文章，请参阅[为 HDInsight 开发脚本操作脚本](hdinsight-hadoop-script-actions-linux.md)。
@@ -137,7 +134,7 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装附加组件�
 
 以下是通过此脚本提供的帮助器方法：
 
-| 帮助器方法 | 说明 |
+| 帮助器方法 | Description |
 | --- | --- |
 | **Save-HDIFile** |将文件从指定的统一资源标识符 (URI) 下载到本地磁盘上与分配到群集的 Azure VM 节点关联的位置。 |
 | **Expand-HDIZippedFile** |解压缩已压缩的文件。 |
@@ -166,7 +163,7 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装附加组件�
 * 提供指向脚本资源的可靠链接
 
     用户应确保自定义群集过程中使用的所有脚本和其他项目在群集的整个生存期内一直可用，并且这些文件的版本在此期间也不会发生更改。 如果需要为群集中的节点重置映像，则需要用到这些资源。 最佳做法是，下载用户控制的存储帐户中的所有内容并将其存档。 这可能是默认存储帐户，也可能是在部署自定义群集时指定的其他任何存储帐户。
-    例如，在文档提供的 Spark 和 R 自定义群集示例中，此存储帐户中的资源具有一个本地副本：https://hdiconfigactions.blob.core.windows.net/。
+    例如，在文档提供的 Spark 和 R 自定义群集示例中，此存储帐户中的资源具有一个本地副本： https://hdiconfigactions.blob.core.windows.net/。
 * 确保群集自定义脚本是幂等的
 
     用户必须预料到在群集生存期内对 HDInsight 群集的节点重置映像。 只要对群集重置映像，就会运行群集自定义脚本。 从某种意义上讲，此脚本必须设计为幂等的，即重置映像时，该脚本应确保将群集恢复为在初次创建群集时首次运行脚本后所处的自定义状态。 例如，如果自定义脚本首次运行时在 D:\AppLocation 上安装了应用程序，则在随后每次运行时，重置映像后，该脚本应检查应用程序是否在 D:\AppLocation 位置存在，然后才能继续在该脚本中执行其他步骤。

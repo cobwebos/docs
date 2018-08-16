@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 8c1db4693c6816ca7c3cc5b3147c0e8f3f8179c5
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 85d0c91a0b1cdf5703b394d6d232ab9cee72ee0c
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807452"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627138"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>为 Azure 应用服务购买和配置 SSL 证书
 
 本教程将演示如何通过以下方法保护 Web 应用的安全：为 **[Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)** 购买 SSL 证书、将其安全存储在 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) 中并与自定义域进行关联。
 
-## <a name="step-1---log-in-to-azure"></a>步骤 1 - 登录 Azure
+## <a name="step-1---sign-in-to-azure"></a>步骤 1 - 登录 Azure
 
-在 http://portal.azure.com 登录 Azure 门户
+登录到 Azure 门户 (http://portal.azure.com)
 
 ## <a name="step-2---place-an-ssl-certificate-order"></a>步骤 2 - 订购 SSL 证书
 
@@ -38,7 +38,7 @@ ms.locfileid: "34807452"
 为 SSL 证书输入友好“名称”并输入“域名”
 
 > [!NOTE]
-> 此步骤是购买过程中的最重要步骤之一。 请务必输入想要使用此证书保护的正确主机名（自定义域）。 **切勿**在主机名前面附加 WWW。 
+> 此步骤是购买过程中的最重要步骤之一。 请务必输入想要使用此证书保护的正确主机名（自定义域）。 切勿在主机名前面附加 WWW。 
 >
 
 选择“订阅”、“资源组”和“证书 SKU”
@@ -78,7 +78,7 @@ SSL 证书购买过程完成之后，需要打开[应用服务证书](https://po
 
 选择首选的域验证方法。 
 
-应用服务证书支持四种类型的域验证：应用服务验证、域验证、邮件验证和手动验证。 有关验证类型的更多详细信息，请参阅[“高级”部分](#advanced)。
+应用服务证书支持四种类型的域验证：应用服务验证、域验证和手动验证。 有关验证类型的更多详细信息，请参阅[“高级”部分](#advanced)。
 
 > [!NOTE]
 > 当要验证的域已映射到同一订阅中的应用服务应用时，**应用服务验证**是最方便的选项。 它可利用应用服务应用已验证域所有权这一事实。
@@ -135,16 +135,7 @@ SSL 证书购买过程完成之后，需要打开[应用服务证书](https://po
 
 ### <a name="verifying-domain-ownership"></a>验证域所有权
 
-应用服务证书还支持其他两种类型的域验证：邮件验证和手动验证。
-
-#### <a name="mail-verification"></a>邮件验证
-
-验证电子邮件已发送到与此自定义域关联的电子邮件地址。
-要完成电子邮件验证步骤，请打开电子邮件，并单击验证链接。
-
-![插入电子邮件验证图像](./media/app-service-web-purchase-ssl-web-site/KVVerifyEmailSuccess.png)
-
-如果需要重新发送验证电子邮件，请单击“重新发送电子邮件”按钮。
+应用服务证书还支持两种其他类型的域验证：域验证和手动验证。
 
 #### <a name="domain-verification"></a>域验证
 
@@ -199,11 +190,11 @@ SSL 证书购买过程完成之后，需要打开[应用服务证书](https://po
 
 ## <a name="renew-the-certificate"></a>续订证书
 
-若要随时打开证书的自动续订，请单击证书管理页中的“自动续订设置”。 选择“开”，然后单击“保存”。
+若要随时打开证书的自动续订，请单击证书管理页中的“自动续订设置”。 选择“开”，然后单击“保存”。 如果启用了自动续订，则证书会在到期前 90 天自动续订。
 
 ![](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
 
-若要改为手动续订证书，请单击“手动续订”。
+若要改为手动续订证书，请单击“手动续订”。 可以请求在到期前 60 天手动续订证书。
 
 > [!NOTE]
 > 无论是手动续订还是自动续订，续订的证书都不会自动绑定到应用。 若要将其绑定到应用，请参阅[续订证书](./app-service-web-tutorial-custom-ssl.md#renew-certificates)。 

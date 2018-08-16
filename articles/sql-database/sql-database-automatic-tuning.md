@@ -2,19 +2,20 @@
 title: Azure SQL 数据库 - 自动优化 | Microsoft Docs
 description: Azure SQL 数据库可分析 SQL 查询并自动适应用户工作负荷。
 services: sql-database
-author: jovanpop-msft
+author: danimir
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.author: jovanpop
-ms.openlocfilehash: bef8d01bd4c220fac595177089088ff64ee3bc3b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: v-daljep
+ms.reviewer: carlrab
+ms.openlocfilehash: dd6e8f5f46e9fdf6887cc2a0b0c7b15bbd00fabd
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646637"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626193"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Azure SQL 数据库中的自动优化
 
@@ -76,6 +77,6 @@ Azure SQL 数据库确定可优化数据库的“创建索引”、“删除索�
 
 - 若要在 Azure SQL 数据库中启用自动优化以管理工作负载，请参阅[启用自动优化](sql-database-automatic-tuning-enable.md)。
 - 若要手动查看并应用自动优化建议，请参阅[查找并应用性能建议](sql-database-advisor-portal.md)。
-- 若要了解有关生成自动优化建议的电子邮件通知，请参阅[电子邮件通知以进行自动优化](sql-database-automatic-tuning-email-notifications.md)
+- 若要了解如何生成自动优化建议的电子邮件通知，请参阅[针对自动优化的电子邮件通知](sql-database-automatic-tuning-email-notifications.md)。
 - 若要详细了解自动优化中使用的内置智能，请参阅 [Artificial Intelligence tunes Azure SQL Databases](https://azure.microsoft.com/blog/artificial-intelligence-tunes-azure-sql-databases/)（人工智能优化 Azure SQL 数据库）。
 - 若要了解有关 Azure SQL 数据库和 SQL Server 2017 中自动优化工作原理的详细信息，请参阅 [SQL Server 自动优化](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)。

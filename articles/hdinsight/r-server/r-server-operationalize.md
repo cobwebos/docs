@@ -1,23 +1,20 @@
 ---
-title: 操作 HDInsight 上的 ML Services - Azure | Microsoft Docs
+title: 操作 HDInsight 上的 ML Services - Azure
 description: 了解如何操作 Azure HDInsight 中的 ML Services。
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: cgronlun
-editor: cgronlun
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: R
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: caefe30ff567a5e24e1f4c3a11309bd35e06190c
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: aef34fea2252cdc875fa1ea1c73a8df14fdf1b9c
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046133"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622297"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>操作 Azure HDInsight 上的 ML Services 群集
 
@@ -40,7 +37,7 @@ ms.locfileid: "37046133"
 
     有关如何将 SSH 与 Azure HDInsight 配合使用的说明，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-2. 请更改相关版本的目录并使用 sudo 运行 .net dll： 
+1. 请更改相关版本的目录并使用 sudo 运行 .net dll： 
 
     - 对于 Microsoft ML Server 9.1：
 
@@ -52,21 +49,21 @@ ms.locfileid: "37046133"
             cd /usr/lib64/microsoft-deployr/9.0.1
             sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
 
-3. 将提供选项供你选择。 选择第一个选项（如以下屏幕截图所示）“配置 ML Server 的操作化”。
+1. 将提供选项供你选择。 选择第一个选项（如以下屏幕截图所示）“配置 ML Server 的操作化”。
 
     ![单机操作](./media/r-server-operationalize/admin-util-one-box-1.png)
 
-4. 现在将提供选项供你选择要操作 ML Server 的方式。 输入 **A** 从提供的选项中选择第一项。
+1. 现在将提供选项供你选择要操作 ML Server 的方式。 输入 **A** 从提供的选项中选择第一项。
 
     ![单机操作](./media/r-server-operationalize/admin-util-one-box-2.png)
 
-5. 出现提示时，输入然后再次输入本地管理员用户的密码。
+1. 出现提示时，输入然后再次输入本地管理员用户的密码。
 
-6. 应看到提示操作成功的输出。 系统还会提示你从菜单中选择另一个选项。 选择 E 以返回到主菜单。
+1. 应看到提示操作成功的输出。 系统还会提示你从菜单中选择另一个选项。 选择 E 以返回到主菜单。
 
     ![单机操作](./media/r-server-operationalize/admin-util-one-box-3.png)
 
-7. （可选）通过运行诊断测试来执行诊断检查，如下所示：
+1. （可选）通过运行诊断测试来执行诊断检查，如下所示：
 
     a. 从主菜单中，选择 **6** 运行诊断测试。
 
@@ -124,7 +121,7 @@ ms.locfileid: "37046133"
 
     ssh -L localhost:12800:localhost:12800 USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
 
-SSH 会话处于活动状态后，来自计算机端口 12800 的流量将通过 SSH 会话转发到边缘节点的端口 12800。 请确保在 `remoteLogin()` 方法中使用 `127.0.0.1:12800`。 这样将通过端口转发登录到边缘节点的操作化。
+SSH 会话处于活动状态后，来自本地计算机端口 12800 的流量将通过 SSH 会话转发到边缘节点的端口 12800。 请确保在 `remoteLogin()` 方法中使用 `127.0.0.1:12800`。 这样将通过端口转发登录到边缘节点的操作化。
 
 
     library(mrsdeploy)
@@ -148,9 +145,9 @@ ML Services 群集未通过 YARN 托管。 如果工作节点未解除授权，Y
 
 1. 登录到群集的 Ambari 控制台，并单击“主机”选项卡。
 
-2. 选择（要解除授权）的工作节点。
+1. 选择（要解除授权）的工作节点。
 
-3. 单击“操作” > “所选主机” > “主机” > “打开维护模式”。 例如，下图中，选择了对 wn3 和 wn4 解除授权。  
+1. 单击“操作” > “所选主机” > “主机” > “打开维护模式”。 例如，下图中，选择了对 wn3 和 wn4 解除授权。  
 
    ![解除辅助节点的授权](./media/r-server-operationalize/get-started-operationalization.png)  
 
@@ -166,15 +163,15 @@ ML Services 群集未通过 YARN 托管。 如果工作节点未解除授权，Y
 
 1. 通过 SSH 登录到每个已解除授权的辅助角色节点。
 
-2. 使用所用 ML Services 群集的相关 DLL 运行管理实用程序。 对于 ML Server 9.1，运行以下命令：
+1. 使用所用 ML Services 群集的相关 DLL 运行管理实用程序。 对于 ML Server 9.1，运行以下命令：
 
         dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
 
-3. 输入“1”，选择“配置 ML Server 的操作化”选项。
+1. 输入“1”，选择“配置 ML Server 的操作化”选项。
 
-4. 输入“C”选择选项 `C. Compute node`。 这将在辅助角色节点上配置计算节点。
+1. 输入“C”选择选项 `C. Compute node`。 这将在辅助角色节点上配置计算节点。
 
-5. 退出管理实用工具。
+1. 退出管理实用工具。
 
 ### <a name="step-3-add-compute-nodes-details-on-web-node"></a>步骤 3：在 Web 节点上添加计算节点详细信息
 
@@ -182,9 +179,9 @@ ML Services 群集未通过 YARN 托管。 如果工作节点未解除授权，Y
 
 1. 通过 SSH 登录到边缘节点。
 
-2. 运行 `vi /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Server.WebAPI/appsettings.json`。
+1. 运行 `vi /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Server.WebAPI/appsettings.json`。
 
-3. 找到“Uris”部分，并添加工作节点的 IP 和端口详细信息。
+1. 找到“Uris”部分，并添加工作节点的 IP 和端口详细信息。
 
        "Uris": {
          "Description": "Update 'Values' section to point to your backend machines. Using HTTPS is highly recommended",

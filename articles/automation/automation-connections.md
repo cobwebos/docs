@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d5b31529c9ccfdc5d7871ec860a97d964ece69f8
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 5c865ff5c83626f13bb4fb9df7c1533371733540
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435681"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40037928"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure 自动化中的连接资产
 
@@ -29,7 +29,7 @@ ms.locfileid: "37435681"
 
 下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化连接。 可在自动化 Runbook 和 DSC 配置中使用的 [Azure PowerShell 模块](/powershell/azure/overview)已随附了这些 cmdlet。
 
-|Cmdlet|说明|
+|Cmdlet|Description|
 |:---|:---|
 |[Get-AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection)|检索连接。 包括一个哈希表，其中包括连接的字段的值。|
 |[New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection)|创建新连接。|
@@ -40,9 +40,9 @@ ms.locfileid: "37435681"
 
 下表中的活动用于在 Runbook 或 DSC 配置中访问连接。
 
-|活动|说明|
+|活动|Description|
 |---|---|
-|[Get-AutomationConnection](/powershell/module/azure/get-azureautomationconnection?view=azuresmps-3.7.0)|获取要使用的连接。 返回包括该连接属性的哈希表。|
+|[Get-AutomationConnection](/powershell/module/servicemanagement/azure/get-azureautomationconnection?view=azuresmps-3.7.0)|获取要使用的连接。 返回包括该连接属性的哈希表。|
 
 >[!NOTE] 
 >应避免在 **Get- AutomationConnection** 的 -Name 参数中使用变量，因为这可能会使设计时发现 Runbook 或 DSC 配置与连接资产之间的依赖关系变得复杂化。
@@ -51,7 +51,7 @@ ms.locfileid: "37435681"
 ## <a name="python2-functions"></a>Python2 函数 
 下表中的函数用于在 Python2 Runbook 中访问连接。 
 
-| 函数 | 说明 | 
+| 函数 | Description | 
 |:---|:---| 
 | automationassets.get_automation_connection | 检索连接。 返回包括该连接属性的字典。 | 
 

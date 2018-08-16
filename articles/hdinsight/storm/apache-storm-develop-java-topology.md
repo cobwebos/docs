@@ -1,26 +1,21 @@
 ---
-title: Apache Storm 示例 Java 拓扑 - Azure HDInsight | Microsoft Docs
+title: Apache Storm 示例 Java 拓扑 - Azure HDInsight
 description: 了解如何通过创建一个简单的单词计数拓扑，来以 Java 语言创建 Apache Storm 拓扑。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
+author: jasonwhowell
+editor: jasonwhowell
 keywords: apache storm,apache storm 示例,storm java,storm 拓扑示例
-ms.assetid: a8838f29-9c08-4fd9-99ef-26655d1bf6d7
 ms.service: hdinsight
-ms.devlang: java
 ms.topic: conceptual
 ms.date: 02/20/2018
-ms.author: larryfr
+ms.author: jasonh
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 02277d8398fe5e3f3cfd1244e53cc80c4b627fa3
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 9376d80e3c856df570f3709ca52c353b81579100
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857416"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618999"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>以 Java 语言创建 Apache Storm 拓扑
 
@@ -81,7 +76,7 @@ mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupI
 
 ## <a name="add-maven-repositories"></a>添加 Maven 存储库
 
-由于 HDInsight 基于 Hortonworks Data Platform (HDP)，因此我们建议使用 Hortonworks 存储库来下载 Apache Storm 项目的依赖项。 在 __pom.xml__ 文件中，在 `<url>http://maven.apache.org</url>` 行后添加以下 XML：
+由于 HDInsight 基于 Hortonworks Data Platform (HDP)，因此我们建议使用 Hortonworks 存储库来下载 Apache Storm 项目的依赖项。 在 __pom.xml__ 文件中，在  `<url>http://maven.apache.org</url>` 行后添加以下 XML：
 
 ```xml
 <repositories>

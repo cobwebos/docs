@@ -1,31 +1,26 @@
 ---
-title: HDInsight 上的示例 Apache Storm 拓扑 | Microsoft Docs
+title: Azure HDInsight 中的示例 Apache Storm 拓扑
 description: 使用 Apache Storm on HDInsight 创建和测试的示例 Storm 拓扑列表，包括基本 C# 和 Java 拓扑，以及事件中心的用法。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
-ms.assetid: f9b1bdff-5928-4705-a76d-52fd200917cb
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.author: larryfr
-ms.openlocfilehash: 429373a27ad9be23b986116182a4eda80bace7f7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a07e4ec9fe0d47853a7ccefe337f2df9d3f85a79
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626881"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617680"
 ---
 # <a name="example-storm-topologies-and-components-for-apache-storm-on-hdinsight"></a>Apache Storm on HDInsight 的示例 Storm 拓扑和组件
 
 以下是 Microsoft 创建和维护的、可配合 Apache Storm on HDInsight 使用的示例列表。 这些示例涵盖各种主题，从创建基本 C# 和 Java 拓扑，到使用 Azure 服务（例如事件中心、Cosmos DB、SQL 数据库、HBase on HDInsight 和 Azure 存储）。 一些示例还演示了如何使用非 Azure 或甚至非 Microsoft 的技术，例如 SignalR 和 Socket.IO。
 
-| 说明 | 演示 | 语言/框架 |
+| Description | 演示 | 语言/框架 |
 |:--- |:--- |:--- |
 | [从 Apache Storm 写入 Azure Data Lake Store](apache-storm-write-data-lake-store.md) |写入 Azure Data Lake 存储 |Java |
 | [事件中心 Spout 和 Bolt 源](https://github.com/apache/storm/tree/master/external/storm-eventhubs) |事件中心 Spout 和 Bolt 的源 |Java |

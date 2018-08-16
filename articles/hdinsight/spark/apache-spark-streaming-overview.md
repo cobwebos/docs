@@ -1,25 +1,20 @@
 ---
-title: Azure HDInsight 中的 Spark 流式处理 | Microsoft Docs
+title: Azure HDInsight 中的 Spark 流式处理
 description: 如何在 HDInsight Spark 群集上使用 Spark 流式处理应用程序。
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: maxluk
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.date: 02/05/2018
+author: maxluk
 ms.author: maxluk
-ms.openlocfilehash: 2f521df81e5153affa95248cda2aa001bc5d6484
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+editor: jasonwhowell
+ms.custom: hdinsightactive
+ms.topic: conceptual
+ms.date: 02/05/2018
+ms.openlocfilehash: b3420737147f9ee67d5d2d021c28a98d34e209df
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164775"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617609"
 ---
 # <a name="overview-of-spark-streaming"></a>Spark 流式处理概述
 

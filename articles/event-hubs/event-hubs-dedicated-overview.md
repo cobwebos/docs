@@ -3,7 +3,7 @@ title: 专用 Azure 事件中心容量概述 | Microsoft Docs
 description: 专用 Microsoft Azure 事件中心容量概述。
 services: event-hubs
 documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,17 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: sethm
-ms.openlocfilehash: 7009710328c96660accdcf9c88313ad92d25d41c
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.author: shvija
+ms.openlocfilehash: 1a7a7593e80f08296e3163e528e880f343366b8a
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32311410"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005698"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>专用事件中心概述
 
-针对需求最严苛的客户，专用事件中心容量提供单个租户部署。 完整规模的 Azure 事件中心可每秒传入超过两百万个事件或每秒高达 2 GB 的遥测，并具有完全持久的存储和次秒级的延迟。 通过在相同系统上实时和批处理，它还实现了集成的解决方案。 借助包含在产品中的[事件中心捕获](event-hubs-capture-overview.md)功能，单个流可以同时支持实时和基于批处理的管道，从而降低解决方案的复杂性。
+
+  *专用事件中心* 容量提供单租户部署。 完整规模的 Azure 事件中心可每秒传入超过两百万个事件或每秒高达 2 GB 的遥测，并具有完全持久的存储和次秒级的延迟。 通过在相同系统上实时和批处理，它还实现了集成的解决方案。 借助包含在产品中的[事件中心捕获](event-hubs-capture-overview.md)功能，单个流可以同时支持实时和基于批处理的管道，从而降低解决方案的复杂性。
 
 下表比较了事件中心的各可用服务层。 不同于标准事件中心中大部分功能的使用定价，专用事件中心产品每月价格是固定的。 专用层提供标准计划的所有功能，但具有企业规模容量，以满足客户的工作负荷需求。 
 
@@ -54,7 +55,7 @@ ms.locfileid: "32311410"
 * 固定小时定价。
 * 消息保留期长达 7 天，无需支付额外费用。
 
-专用事件中心还会删除一些标准产品的吞吐量限制。 基本层的吞吐量单位可达每秒 1000 个事件，或者每个 TU 每秒 1 MB 的流入量和两倍的流出量。 专用规模产品对入口和出口事件计数不设限制。 这些限制仅由购买的事件中心处理容量管理。
+专用事件中心还去除了标准产品的部分吞吐量限制。 基本层的吞吐量单位可达每秒 1000 个事件，或者每个 TU 每秒 1 MB 的流入量和两倍的流出量。 专用规模产品对入口和出口事件计数不设限制。 这些限制仅由购买的事件中心处理容量管理。
 
 此保留的专用环境提供该层独有的其他功能，例如：
 

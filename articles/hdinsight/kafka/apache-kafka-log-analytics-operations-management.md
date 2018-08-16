@@ -1,25 +1,20 @@
 ---
-title: 适用于 Apache Kafka 的 Log Analytics - Azure HDInsight | Microsoft Docs
+title: 适用于 Apache Kafka 的 Log Analytics - Azure HDInsight
 description: 了解如何使用 Log Analytics 分析 Azure HDInsight 上 Apache Kafka 群集的日志。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 05/01/2018
-ms.author: larryfr
-ms.openlocfilehash: 9f366631ced4392831ad9ed97898a88b3290cd22
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.date: 06/15/2018
+ms.openlocfilehash: 9421217383f390630687d8416512401487ad3f7e
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32772256"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621382"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>分析 HDInsight 上 Apache Kafka 的日志
 
@@ -40,7 +35,7 @@ ms.locfileid: "32772256"
     >
     > * HDInsight 群集名称。
     > * 用于 Log Analytics 的工作区 ID。 可以在 Log Analytics 工作区中找到工作区 ID。
-    > * 用于 Log Analytics 连接的主密钥。 若要查找主密钥，请依次选择 Log Analytics 实例和 __OMS 门户__。 在 OMS 门户中，依次选择 __“设置”__、__“已连接的源”__ 和 __“Linux 服务器”__。
+    > * 用于 Log Analytics 连接的主密钥。 若要查找主键，请在 Azure 门户中打开工作区，从左侧菜单中选择“高级设置”。 从“高级设置”中，选择“已连接的源”>“Linux 服务器”。
 
 
 > [!IMPORTANT]
@@ -67,7 +62,7 @@ ms.locfileid: "32772256"
 
     也可输入 `*` 来搜索全部已记录的类型。 当前有以下日志可用于查询：
 
-    | 日志类型 | 说明 |
+    | 日志类型 | Description |
     | ---- | ---- |
     | log\_kafkaserver\_CL | Kafka broker server.log |
     | log\_kafkacontroller\_CL | Kafka broker controller.log |

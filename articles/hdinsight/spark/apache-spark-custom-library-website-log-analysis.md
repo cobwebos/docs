@@ -1,25 +1,20 @@
 ---
-title: 使用 Spark 中的 Python 库分析网站日志 — Azure | Microsoft Docs
+title: 使用 Spark 中的 Python 库分析网站日志 - Azure
 description: 此笔记本演示如何将自定义库与 Azure HDInsight 上的 Spark 配合使用来分析日志数据。
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 8c61c70f-fe7f-4f0f-a4ab-0cccee5668c9
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.author: jgao
-ms.openlocfilehash: 00940d4eb438fceb683eca8663d0d23f53ff7ff3
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: jasonh
+ms.openlocfilehash: bb176c9c188aff5d3ec583216ade187decddbe2c
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31521819"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620512"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-spark-cluster-on-hdinsight"></a>将自定义 Python 库与 HDInsight 上的 Spark 群集配合使用来分析网站日志
 

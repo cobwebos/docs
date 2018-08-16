@@ -1,24 +1,20 @@
 ---
-title: 使用 Spark 分析 Application Insight 日志 - Azure HDInsight | Microsoft Docs
+title: 使用 Spark 分析 Application Insight 日志 - Azure HDInsight
 description: 了解如何将 Application Insight 日志导出到 Blob 存储，然后使用 HDInsight 上的 Spark 分析这些日志。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-ms.assetid: 883beae6-9839-45b5-94f7-7eb0f4534ad5
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/09/2018
-ms.author: larryfr
-ms.openlocfilehash: 31068376e20b240a440432319e65f4e479163ee0
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 60d837737b1b196ebc83fac4165905218e0f3034
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33939594"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621957"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-spark-on-hdinsight"></a>使用 HDInsight 上的 Spark 分析 Application Insights 遥测日志
 

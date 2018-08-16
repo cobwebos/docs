@@ -1,24 +1,20 @@
 ---
-title: 使用 Apache Storm 写入存储/Data Lake Store - Azure HDInsight | Microsoft Docs
-description: 了解如何使用 Apache Storm 将数据写入到与 HDFS 兼容的 HDInsight 存储。 Azure 存储或 Azure Data Lake Store 为 HDInsight 提供 HDFS 兼容的存储。 本文档和相关的示例演示如何使用 HdfsBolt 组件将数据写入到 Storm on HDInsight 群集的默认存储。
+title: 使用 Apache Storm 写入存储/Data Lake Store - Azure HDInsight
+description: 了解如何使用 Apache Storm 将数据写入到与 HDFS 兼容的 HDInsight 存储。
 services: hdinsight
-documentationcenter: na
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 1df98653-a6c8-4662-a8c6-5d288fc4f3a6
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: larryfr
-ms.openlocfilehash: 7a314ada1c25b57b6d1701bf414a42a58397e1f0
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 076c52022cd9305190a1d7683c7040a2efc1da04
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903126"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619648"
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>从 Apache Storm on HDInsight 写入 HDFS
 

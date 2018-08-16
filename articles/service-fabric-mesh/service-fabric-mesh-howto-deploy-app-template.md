@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: ''
 ms.service: service-fabric-mesh
 ms.devlang: azure-cli
-ms.topic: conceputal
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/12/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 8d813669f2f44fd64db669e9750e3bc064c7f916
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 356e8019f9a4a64cb1c1c113d0f44990aa4e0f95
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090321"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038028"
 ---
 # <a name="deploy-a-service-fabric-mesh-application-to-service-fabric-mesh-using-a-template"></a>使用模板将 Service Fabric 网格应用程序部署到 Service Fabric 网格
 本文介绍如何使用模板将 .NET Core 应用程序部署到 Service Fabric 网格。 完成后，将生成一个投票应用程序，其中包含 ASP.NET Core Web 前端，用于将投票结果保存到群集的后端服务中。 前端使用 DNS 解析后端服务的地址。

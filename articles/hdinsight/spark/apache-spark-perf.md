@@ -1,24 +1,20 @@
 ---
-title: 优化 Spark 作业的性能 - Azure HDInsight | Microsoft Docs
+title: 优化 Spark 作业的性能 - Azure HDInsight
 description: 介绍实现 Spark 群集最佳性能的常见策略。
 services: hdinsight
-documentationcenter: ''
-author: maxluk
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.date: 01/11/2018
+author: maxluk
 ms.author: maxluk
-ms.openlocfilehash: f35ed98efb26dfa0d75a57ca3646f567a7949dae
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+editor: jasonwhowell
+ms.custom: hdinsightactive
+ms.topic: conceptual
+ms.date: 01/11/2018
+ms.openlocfilehash: 7d542a4fe8c63bb44e073f3af05aed926fc4ba81
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164360"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619543"
 ---
 # <a name="optimize-spark-jobs"></a>优化 Spark 作业
 

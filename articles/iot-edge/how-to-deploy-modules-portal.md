@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4082189d451f670c1ae3f76b8ec785d8bd0518b3
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 83f199c49209210ec577017534f93e36d05bd70a
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034370"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620359"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>通过 Azure 门户部署 Azure IoT Edge 模块
 
@@ -30,13 +30,13 @@ ms.locfileid: "37034370"
 ## <a name="select-your-device"></a>选择设备
 
 1. 登录 [Azure 门户](https://portal.azure.com)，导航到 IoT 中心。
-2. 从菜单中选择 IoT Edge。
+2. 从菜单中选择“IoT Edge”。
 3. 在设备列表中单击目标设备的 ID。 
 4. 选择“设置模块”。
 
 ## <a name="configure-a-deployment-manifest"></a>配置部署清单
 
-部署清单是一个 JSON 文档，其中描述了要部署的模块、数据在模块间的流动方式以及模块孪生的必需属性。 要详细了解部署清单的工作原理及创建方式，请参阅[了解如何使用、配置和重用 IoT Edge 模块](module-composition.md)。
+部署清单是一个 JSON 文档，其中描述了要部署的模块、数据在模块间的流动方式以及模块孪生的所需属性。 要详细了解部署清单的工作原理及创建方式，请参阅[了解如何使用、配置和重用 IoT Edge 模块](module-composition.md)。
 
 Azure 门户提供部署清单的创建向导，无需你手动构建 JSON 文档。 创建分为三步：添加模块、指定路由和评审部署。 
 
@@ -44,17 +44,17 @@ Azure 门户提供部署清单的创建向导，无需你手动构建 JSON 文�
 
 1. 在页面的“注册表设置”部分，提供用于任何访问包含模块映像的专用容器注册表的凭据。 
 2. 在页面的“部署模块”部分中，选择“添加”。 
-3. 在下拉列表中选择模块类型： 
+3. 在下拉列表中找到模块类型： 
    * **IoT Edge 模块** - 默认选项。
    * **Azure 流分析模块** - 仅限通过 Azure 流分析工作负荷生成的模块。 
-
-4. 提供模块名称，然后指定容器映像。 例如： 
+4. 选择“IoT Edge 模块”。
+5. 提供模块名称，然后指定容器映像。 例如： 
    * **名称** - tempSensor
    * **映像 URI** - mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0
-5. 必要时请填写可选字段。 要详细了解容器创建选项、重启策略和所需状态，请参阅 [EdgeAgent 必需属性](module-edgeagent-edgehub.md#edgeagent-desired-properties)。 要详细了解模块孪生，请参阅[定义或更新所需属性](module-composition.md#define-or-update-desired-properties)。
-6. 选择“保存”。
-7. 重复步骤 2-6，将其他模块添加到部署。 
-8. 选择“下一步”转到路由部分。
+6. 必要时请填写可选字段。 要详细了解容器创建选项、重启策略和所需状态，请参阅 [EdgeAgent 必需属性](module-edgeagent-edgehub.md#edgeagent-desired-properties)。 要详细了解模块孪生，请参阅[定义或更新所需属性](module-composition.md#define-or-update-desired-properties)。
+7. 选择“保存”。
+8. 重复步骤 2-6，将其他模块添加到部署。 
+9. 选择“下一步”转到路由部分。
 
 ### <a name="specify-routes"></a>指定路由
 

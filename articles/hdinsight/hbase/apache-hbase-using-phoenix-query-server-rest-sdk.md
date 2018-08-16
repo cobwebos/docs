@@ -1,24 +1,20 @@
 ---
-title: Phoenix 查询服务器 REST SDK - Azure HDInsight | Microsoft Docs
-description: ''
+title: Phoenix Query Server REST SDK - Azure HDInsight
+description: 在 Azure HDInsight 中安装并使用适用于 Phoenix Query Server 的 REST SDK。
 services: hdinsight
-documentationcenter: ''
-author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.date: 12/04/2017
+author: ashishthaps
 ms.author: ashishth
-ms.openlocfilehash: ef89bcea3eab92c3137a6f532398764462ae204c
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+editor: jasonwhowell
+ms.custom: hdinsightactive
+ms.topic: conceptual
+ms.date: 12/04/2017
+ms.openlocfilehash: 93a08baddb12f427902f33171eba72f3dea628a6
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164578"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599038"
 ---
 # <a name="phoenix-query-server-rest-sdk"></a>Phoenix 查询服务器 REST SDK
 
@@ -76,7 +72,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 下面是一些相关属性：
 
-| 属性 | 说明 |
+| 属性 | Description |
 | -- | -- |
 | AutoCommit | 一个布尔值，表示是否为 Phoenix 事务启用 `autoCommit`。 |
 | ReadOnly | 一个布尔值，表示连接是否为只读。 |
@@ -87,7 +83,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 下面是 `TransactionIsolation` 值：
 
-| 隔离值 | 说明 |
+| 隔离值 | Description |
 | -- | -- |
 | 0 | 事务不受支持。 |
 | 1 | 可能出现脏读、不可重复读和幻读。 |

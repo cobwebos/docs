@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 2371ad00728a47af9e96e8e711aa07cc5170266c
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: f786a20f61c8851c1d50a89edd392b9b974db076
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158856"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622314"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>如何成功推出自助密码重置
 
@@ -29,8 +29,8 @@ ms.locfileid: "39158856"
    * 他们将如何帮助你的用户？
    * 你是否会强制用户使用 SSPR 而不允许支持人员协助用户？
    * 你是否向他们提供了用于注册和重置的 URL？
-      * 注册：https://aka.ms/ssprsetup
-      * 重置：https://aka.ms/sspr
+      * 注册： https://aka.ms/ssprsetup
+      * 重置： https://aka.ms/sspr
 1. 培训用户。
    * 本文档的以下部分将介绍示例通信、密码门户、如何强制注册和填充身份验证数据。
    * Azure Active Directory 产品组创建了[分步部署计划](https://aka.ms/SSPRDeploymentPlan)，组织可以将该计划与在此站点上找到的文档一起使用，针对自助服务密码重置部署生成业务案例和计划。
@@ -75,12 +75,13 @@ ms.locfileid: "39158856"
 
 ## <a name="disable-self-service-password-reset"></a>禁用自助密码重置
 
-如果你的组织决定禁用自助密码重置，则这是一个简单过程。 打开 Azure AD 租户，转到“密码重置” > “属性”，然后在“启用自助密码重置”下选择“无”。 用户将仍保持其
+如果你的组织决定禁用自助密码重置，则这是一个简单过程。 打开 Azure AD 租户，转到“密码重置” > “属性”，然后在“启用自助密码重置”下选择“无”。 用户仍将保留其已注册的身份验证方法以供将来使用。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [重置或更改密码](../user-help/active-directory-passwords-update-your-own-password.md)
 * [注册自助密码重置](../user-help/active-directory-passwords-reset-register.md)
+* [针对 Azure 多重身份验证和 Azure AD 自助密码重置启用聚合注册](concept-registration-mfa-sspr-converged.md)
 * [是否有许可问题？](concept-sspr-licensing.md)
 * [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
 * [SSPR 有哪些策略选项？](concept-sspr-policy.md)

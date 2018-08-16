@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/14/2017
 ms.author: sngun
-ms.openlocfilehash: 6a98d3b477a3cb06c1454a79b77dffa685853a35
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 8eba0f70141fe28a478e842523023a22c2db50fe
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38668118"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628743"
 ---
 # <a name="nodejs-tutorial-use-the-sql-api-in-azure-cosmos-db-to-create-a-nodejs-console-application"></a>Node.js 教程：在 Azure Cosmos DB 中使用 SQL API 创建 Node.js 控制台应用程序
 
@@ -26,6 +26,7 @@ ms.locfileid: "38668118"
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
 > * [用于 MongoDB 的 Node.js](mongodb-samples.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
+> * [Node.js - v2.0 预览版](sql-api-nodejs-get-started-preview.md)
 > * [Java](sql-api-java-get-started.md)
 
 

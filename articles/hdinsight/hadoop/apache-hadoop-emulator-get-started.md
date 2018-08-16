@@ -1,25 +1,21 @@
 ---
-title: 了解如何使用 Hadoop 沙盒 - 仿真器 - Azure HDInsight | Microsoft Docs
+title: 了解如何使用 Hadoop 沙盒 - 模拟器 - Azure HDInsight
 description: '若要了解如何使用 Hadoop 生态系统，可以在 Azure 虚拟机上设置 Hortonworks 提供的 Hadoop 沙盒。 '
 keywords: hadoop emulator,hadoop 沙盒
-editor: cgronlun
-manager: jhubbard
+editor: jasonwhowell
 services: hdinsight
-author: nitinme
-documentationcenter: ''
-tags: azure-portal
-ms.assetid: 6ad5bb58-8215-4e3d-a07f-07fcd8839cc6
+author: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/11/2017
-ms.author: nitinme
-ms.openlocfilehash: 0b4daa8c832d40457b19ffe4aee1a365796b2435
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jasonh
+ms.openlocfilehash: 6a2a81f89e86a75dd56283526713b88cdfd21569
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39598706"
 ---
 # <a name="get-started-with-a-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>在虚拟机上开始使用 Hadoop 沙盒和 Hadoop 仿真器
 
@@ -33,7 +29,7 @@ ms.lasthandoff: 04/16/2018
 ## <a name="download-and-install-the-virtual-machine"></a>下载并安装虚拟机
 1. 浏览到 [Hortonworks 下载](http://hortonworks.com/downloads/#sandbox)。
 
-2. 单击“下载 VirtualBox”，将最新的 Hortonworks 沙盒下载到 VM 上。 开始下载之前，系统会提示注册 Hortonworks。 下载需要一到两个小时，具体取决于网络速度。
+2. 单击“下载 VIRTUALBOX”，将最新的 Hortonworks 沙盒下载到 VM 上。 开始下载之前，网站会提示在 Hortonworks 上注册。 下载需要一到两个小时，具体取决于网络速度。
    
     ![用于下载 Hortonworks Sandbox for VirtualBox 的链接图像](./media/apache-hadoop-emulator-get-started/download-sandbox.png)
 3. 在同一网页上，单击“在 Virtual Box 上导入”链接，下载包含虚拟机安装说明的 PDF。

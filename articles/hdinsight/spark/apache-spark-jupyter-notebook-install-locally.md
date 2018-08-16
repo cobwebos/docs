@@ -1,25 +1,20 @@
 ---
-title: 在本地安装 Jupyter 并将其连接到 Azure HDInsight Spark 群集 | Microsoft Docs
-description: 了解如何在计算机上本地安装 Jupyter 笔记本并将其连接到 Azure HDInsight 上的 Apache Spark 群集。
+title: 在本地安装 Jupyter 并将其连接到 Azure HDInsight 中的 Spark
+description: 了解如何在计算机上本地安装 Jupyter 笔记本并将其连接到 Apache Spark 群集。
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 48593bdf-4122-4f2e-a8ec-fdc009e47c16
 ms.service: hdinsight
+author: jasonwhowell
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.author: nitinme
-ms.openlocfilehash: eea61586054f34142d77f16333fe70a66d95d529
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: jasonh
+ms.openlocfilehash: 5e1a089f24a3223220b703bd4225e2750c7cae72
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31528352"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619237"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>在计算机上安装 Jupyter 笔记本并连接到 HDInsight 上的 Apache Spark
 
@@ -44,7 +39,7 @@ ms.locfileid: "31528352"
 必须先安装 Python 才能安装 Jupyter 笔记本。 Python 和 Jupyter 都作为 [Anaconda 分发版](https://www.continuum.io/downloads)的一部分提供。 安装 Anaconda 时，安装的是某个 Python 发行版。 安装 Anaconda 之后，可通过运行相应命令来添加 Jupyter 安装。
 
 1. 下载适用于平台的 [Anaconda 安装程序](https://www.continuum.io/downloads)，并运行安装程序。 运行安装向导时，请确保选择将 Anaconda 添加到 PATH 变量的选项。
-2. 运行以下命令来安装 Jupyter。
+1. 运行以下命令来安装 Jupyter。
 
         conda install jupyter
 
@@ -73,8 +68,8 @@ ms.locfileid: "31528352"
         import os
         print(os.path.expanduser('~'))
 
-2. 导航到主目录，并创建一个名为 **.sparkmagic** 的文件夹（如果尚不存在）。
-3. 在该文件夹中，创建一个名为 **config.json** 的文件，并在该文件中添加以下 JSON 代码片段。
+1. 导航到主目录，并创建一个名为 **.sparkmagic** 的文件夹（如果尚不存在）。
+1. 在该文件夹中，创建一个名为 **config.json** 的文件，并在该文件中添加以下 JSON 代码片段。
 
         {
           "kernel_python_credentials" : {
@@ -89,9 +84,9 @@ ms.locfileid: "31528352"
           }
         }
 
-4. 将 **{USERNAME}**、**{CLUSTERDNSNAME}** 和 **{BASE64ENCODEDPASSWORD}** 替换为适当的值。 可以使用许多以你偏好的编程语言编写的实用工具或联机实用工具，生成 base64 编码的密码作为实际密码。
+1. 将 **{USERNAME}**、**{CLUSTERDNSNAME}** 和 **{BASE64ENCODEDPASSWORD}** 替换为适当的值。 可以使用许多以你偏好的编程语言编写的实用工具或联机实用工具，生成 base64 编码的密码作为实际密码。
 
-5. 在 `config.json` 中配置相应的检测信号设置。 应以早前添加 `kernel_python_credentials` 和 `kernel_scala_credentials` 代码片段的等级添加这些设置。 有关添加该信号检测设置的方法和位置的示例，请参阅此[示例 config.json](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json)。
+1. 在 `config.json` 中配置相应的检测信号设置。 应以早前添加 `kernel_python_credentials` 和 `kernel_scala_credentials` 代码片段的等级添加这些设置。 有关添加该信号检测设置的方法和位置的示例，请参阅此[示例 config.json](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json)。
 
     * 对于 `sparkmagic 0.2.3`（群集 v3.4），包括：
 
@@ -108,11 +103,11 @@ ms.locfileid: "31528352"
     >[!TIP]
     >将发送检测信号，以确保会话不会泄漏。 计算机进入睡眠状态或关闭时不会发送检测信号，从而导致会话被清除。 对于群集 v3.4，如果要禁用此行为，可以从 Ambari UI 将 Livy 配置 `livy.server.interactive.heartbeat.timeout` 设置为 `0`。 对于群集 v3.5，如果未设置上述 3.5 配置，会话将不会删除。
 
-6. 启动 Jupyter。 从命令提示符使用以下命令。
+1. 启动 Jupyter。 从命令提示符使用以下命令。
 
         jupyter notebook
 
-7. 验证是否可以使用 Jupyter 笔记本连接到群集，以及是否可以使用内核随附的 Spark magic。 执行以下步骤。
+1. 验证是否可以使用 Jupyter 笔记本连接到群集，以及是否可以使用内核随附的 Spark magic。 执行以下步骤。
 
     a. 创建新的笔记本。 在右下角单击“新建”。 用户应该会看到默认内核 **Python2** 和安装的两个新内核：**PySpark** 和 **Spark**。 单击“PySpark”。
 

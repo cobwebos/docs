@@ -1,24 +1,20 @@
 ---
-title: 将 Apache Hive 用作 ETL 工具 - Azure HDInsight | Microsoft Docs
+title: 将 Apache Hive 用作 ETL 工具 - Azure HDInsight
 description: 使用 Apache Hive 提取、转换和加载 (ETL) Azure HDInsight 中的数据。
 services: hdinsight
-documentationcenter: ''
-author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ''
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.date: 11/14/2017
+author: ashishthaps
 ms.author: ashishth
-ms.openlocfilehash: 06e06d87abd66c80deb2c8731f68bb8171da574b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+editor: jasonwhowell
+ms.custom: hdinsightactive
+ms.topic: conceptual
+ms.date: 11/14/2017
+ms.openlocfilehash: d4f07896e835821612971f1558ca5a030a59d154
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597433"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>将 Apache Hive 用作提取、转换和加载 (ETL) 工具
 

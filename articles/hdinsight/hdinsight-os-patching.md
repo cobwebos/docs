@@ -1,23 +1,19 @@
 ---
-title: 为基于 Linux 的 HDInsight 群集配置 OS 修补计划 - Azure | Microsoft Docs
+title: 为基于 Linux 的 HDInsight 群集配置 OS 修补计划 - Azure
 description: 了解如何为基于 Linux 的 HDInsight 群集配置 OS 修补计划。
 services: hdinsight
-documentationcenter: ''
-author: bprakash
-manager: asadk
-editor: bprakash
-ms.assetid: ''
+author: omidm1
+ms.author: omidm
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/21/2017
-ms.author: bhanupr
-ms.openlocfilehash: 42771b9ff0f177b6b31f626d1dd2d07046a53965
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5d8fae7412bece631e6961fb92b7d87e308cc857
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599208"
 ---
 # <a name="os-patching-for-hdinsight"></a>针对 HDInsight 的 OS 修补 
 作为托管的 Hadoop 服务，HDInsight 负责修补 HDInsight 群集使用的基础 VM 的 OS。 自 2016 年 8 月 1 日起，我们已经为基于 Linux 的 HDInsight 群集（版本 3.4 或更高版本）更改了来宾 OS 修补策略。 新策略的目标是显著减少由于修补导致的重启次数。 新策略会继续在 Linux 群集上修补虚拟机 (VM)，每周一或周四从 12AM UTC 开始以交错的方式在任意给定群集的节点上进行。 但是由于来宾 OS 修补，任何给定 VM 每 30 天最多重启一次。 此外，自新创建群集的创建日期起 30 天内，该群集不会发生第一次重启。 重启 VM 后，修补程序即可生效。
@@ -42,7 +38,7 @@ ms.lasthandoff: 04/16/2018
 ## <a name="how-to-use-the-script"></a>如何使用脚本 
 
 使用此脚本需要以下信息：
-1. 脚本位置：https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv01/os-patching-reboot-config.sh。HDInsight 使用此 URI 在群集中的所有虚拟机上查找并运行脚本。
+1. 脚本位置： https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv01/os-patching-reboot-config.sh。HDInsight 使用此 URI 在群集中的所有虚拟机上查找并运行脚本。
   
 2. 应用该脚本的群集节点类型：头节点、辅助节点、zookeeper。 此脚本必须应用于群集中的所有节点类型。 如果不将其应用于某个节点类型，则该节点类型的虚拟机将继续使用以前的修补计划。
 

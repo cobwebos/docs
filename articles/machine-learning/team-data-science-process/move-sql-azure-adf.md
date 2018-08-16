@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: e9f6de3d4f4f731c2e727889bef1aef129cb00bf
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 2d4ddc91911b9481c9bd21346c3c06325edf1afd
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838095"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40037934"
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>使用 Azure 数据工厂将数据从本地 SQL 服务器移到 SQL Azure
 本主题演示如何使用 Azure 数据工厂 (ADF)，通过 Azure Blob 存储将数据从本地 SQL Server 数据库移到 SQL Azure 数据库。
@@ -46,7 +46,7 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 * 从 Azure Blob 存储帐户将数据复制到 Azure SQL 数据库。
 
 > [!NOTE]
-> 此处介绍的步骤源于 ADF 团队所提供的更详细的教程：[使用数据管理网关在本地源和云之间移动数据](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md) 在适当的时候，将提供该主题相关部分的引用。
+> 此处介绍的步骤源于 ADF 团队所提供的更详细的教程：[使用数据管理网关在本地源和云之间移动数据](../../data-factory/tutorial-hybrid-copy-portal.md) 在适当的时候，将提供该主题相关部分的引用。
 >
 >
 
@@ -69,7 +69,7 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 可将此处提供的流程调整为自己的一组数据，或者使用 NYC 出租车数据集遵循所述的步骤进行操作。 若要将 NYC 出租车数据集上传到本地 SQL Server 数据库，请按照[将数据批量导入 SQL Server 数据库](sql-walkthrough.md#dbload)中概述的过程进行操作。 这些说明适用于 Azure 虚拟机上的 SQL Server，但是上传到本地 SQL Server 的过程是相同的。
 
 ## <a name="create-adf"></a>创建 Azure 数据工厂
-[创建 Azure 数据工厂](../../data-factory/v1/data-factory-build-your-first-pipeline-using-editor.md#create-a-data-factory)中提供了在 [Azure 门户](https://portal.azure.com/)中创建新的 Azure 数据工厂和资源组的相关说明。 将新的 ADF 实例命名为 *adfdsp*，将创建的资源组命名为 *adfdsprg*。
+[创建 Azure 数据工厂](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory)中提供了在 [Azure 门户](https://portal.azure.com/)中创建新的 Azure 数据工厂和资源组的相关说明。 将新的 ADF 实例命名为 *adfdsp*，将创建的资源组命名为 *adfdsprg*。
 
 ## <a name="install-and-configure-up-the-data-management-gateway"></a>安装和配置数据管理网关
 若要使 Azure 数据工厂中的管道适用于本地 SQL Server，请将其作为链接服务添加到数据工厂。 若要创建适用于本地 SQL Server 的链接服务，必须执行以下操作：
@@ -79,7 +79,7 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 
 数据管理网关在托管其的计算机上对源和接收器数据进行序列化和反序列化。
 
-有关设置说明和数据管理网关的详细信息，请参阅[使用数据管理网关在本地源和云之间移动数据](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md)
+有关设置说明和数据管理网关的详细信息，请参阅[使用数据管理网关在本地源和云之间移动数据](../../data-factory/tutorial-hybrid-copy-portal.md)
 
 ## <a name="adflinkedservices"></a>创建链接服务以连接到数据资源
 链接服务定义 Azure 数据工厂连接到数据资源所需的信息。 在此方案中，我们有三个需要链接服务的资源：
@@ -88,14 +88,14 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 2. Azure Blob 存储
 3. Azure SQL 数据库
 
-[创建链接服务](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md#create-linked-services)中提供了创建链接服务的分步过程。
+[创建链接服务](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)中提供了创建链接服务的分步过程。
 
 
 ## <a name="adf-tables"></a>定义和创建表以指定访问数据集的方式
-使用以下基于脚本的过程，创建指定数据集的结构、位置和可用性的表。 可使用 JSON 文件定义表。 若要深入了解这些文件的结构，请参阅[数据集](../../data-factory/v1/data-factory-create-datasets.md)。
+使用以下基于脚本的过程，创建指定数据集的结构、位置和可用性的表。 可使用 JSON 文件定义表。 若要深入了解这些文件的结构，请参阅[数据集](../../data-factory/concepts-datasets-linked-services.md)。
 
 > [!NOTE]
-> 在执行 [New-AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx) cmdlet 之前，应先执行 `Add-AzureAccount` cmdlet，以确认是否为命令执行选择了正确的 Azure 订阅。 有关此 cmdlet 的文档，请参阅 [Add-AzureAccount](/powershell/module/azure/add-azureaccount?view=azuresmps-3.7.0)。
+> 在执行 [New-AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx) cmdlet 之前，应先执行 `Add-AzureAccount` cmdlet，以确认是否为命令执行选择了正确的 Azure 订阅。 有关此 cmdlet 的文档，请参阅 [Add-AzureAccount](/powershell/module/servicemanagement/azure/add-azureaccount?view=azuresmps-3.7.0)。
 >
 >
 
@@ -111,7 +111,7 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 3. [SQL Azure 表](#adf-table-azure-sql)
 
 > [!NOTE]
-> 这些过程使用 Azure PowerShell 来定义和创建 ADF 活动。 但是，也可使用 Azure 门户来完成这些任务。 有关详细信息，请参阅[创建数据集](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md#create-datasets)。
+> 这些过程使用 Azure PowerShell 来定义和创建 ADF 活动。 但是，也可使用 Azure 门户来完成这些任务。 有关详细信息，请参阅[创建数据集](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)。
 >
 >
 
@@ -143,7 +143,7 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
             }
         }
 
-此处不包括列名称。 可通过将列名称包含在此处以对其进行子选择（有关详细信息，请参阅 [ADF 文档](../../data-factory/v1/data-factory-data-movement-activities.md)主题）。
+此处不包括列名称。 可通过将列名称包含在此处以对其进行子选择（有关详细信息，请参阅 [ADF 文档](../../data-factory/copy-activity-overview.md)主题）。
 
 将表的 JSON 定义复制到名为 onpremtabledef.json 的文件中，并将其保存到已知位置（此处假定为 *C:\temp\onpremtabledef.json*）。 使用以下 Azure PowerShell cmdlet 在 ADF 中创建表：
 
@@ -218,7 +218,7 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 * 另请注意：我们将管道的周期设置为每天执行，并且为作业使用默认的执行时间（UTC 的凌晨 12 点）。
 
 > [!NOTE]
-> 以下过程使用 Azure PowerShell 来定义和创建 ADF 管道。 但是，也可使用 Azure 门户来完成此任务。 有关详细信息，请参阅[创建管道](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md#create-pipeline)。
+> 以下过程使用 Azure PowerShell 来定义和创建 ADF 管道。 但是，也可使用 Azure 门户来完成此任务。 有关详细信息，请参阅[创建管道](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)。
 >
 >
 

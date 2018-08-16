@@ -1,25 +1,20 @@
 ---
-title: 将 Hive 与用于 Visual Studio 的 Data Lake (Hadoop) 工具配合使用 — Azure HDInsight | Microsoft Docs
+title: 将 Hive 与用于 Visual Studio 的 Data Lake (Hadoop) 工具配合使用 — Azure HDInsight
 description: 了解如何使用用于 Visual Studio 的 Data Lake 工具，通过 Azure HDInsight 上的 Apache Hadoop 运行 Apache Hive 查询。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 2b3e672a-1195-4fa5-afb7-b7b73937bfbe
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: larryfr
-ms.openlocfilehash: 862a2aae2e9d417ccf9daf336177b23842dd3db7
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: 938605bebe30dd23e73fbf43a37328d9e753a06e
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201782"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597219"
 ---
 # <a name="run-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具运行 Hive 查询
 

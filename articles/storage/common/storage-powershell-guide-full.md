@@ -2,23 +2,18 @@
 title: 对 Azure 存储使用 Azure PowerShell | Microsoft Docs
 description: 了解如何对 Azure 存储使用 Azure PowerShell cmdlet。
 services: storage
-documentationcenter: na
 author: roygara
-manager: jeconnoc
-ms.assetid: f4704f58-abc6-4f89-8b6d-1b1659746f5a
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 06/13/2018
 ms.author: rogarana
-ms.openlocfilehash: 951b69877718c5da3c165c24c297906a1ad9a976
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: common
+ms.openlocfilehash: 6cf7f35e60502d0e21ffa2b777f1700a57add965
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652495"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40037915"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>对 Azure 存储 使用 Azure PowerShell
 
@@ -37,7 +32,7 @@ Azure PowerShell 用于从 PowerShell 命令行或脚本创建和管理 Azure �
 
 本文提供有关存储的其他几篇 PowerShell 文章的链接，例如，如何启用和访问存储分析、如何使用数据平面 cmdlet，以及如何访问中国云、德国云和政府云等 Azure 独立云。
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 本演练需要 Azure PowerShell 模块 4.4 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 
 
@@ -55,7 +50,7 @@ Connect-AzureRmAccount
 
 ## <a name="list-the-storage-accounts-in-the-subscription"></a>列出订阅中的存储帐户
 
-运行 [Get-AzureRMStorageAccount](/powershell/module/azurerm.resources/get-azurermstorageaccount) cmdlet 来检索当前订阅中的存储帐户列表。 
+运行 [Get-AzureRMStorageAccount](/powershell/module/azurerm.storage/Get-AzureRmStorageAccount) cmdlet 来检索当前订阅中的存储帐户列表。 
 
 ```powershell
 Get-AzureRMStorageAccount | Select StorageAccountName, Location
@@ -108,11 +103,11 @@ $ctx = $storageAccount.Context
 
 该脚本使用以下 PowerShell cmdlet： 
 
-*   [Get-AzureRmLocation](/powershell/module/azurerm.storage/Get-AzureRmLocation) -- 检索有效位置的列表。 该示例使用 `eastus` 作为位置。
+*   [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation) -- 检索有效位置的列表。 该示例使用 `eastus` 作为位置。
 
-*   [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/New-AzureRmResourceGroup) -- 创建新资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。 我们的资源组称为 `teststoragerg`。 
+*   [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) -- 创建新资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。 我们的资源组称为 `teststoragerg`。 
 
-*   [New-AzureRmStorageAccount](/powershell/module/azurerm.resources/New-AzureRmStorageAcccount) -- 创建实际存储帐户。 该示例使用 `testpshstorage`。
+*   [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) -- 创建存储帐户。 该示例使用 `testpshstorage`。
 
 SKU 名称指示用于存储帐户的复制类型，如 LRS（本地冗余存储）。 有关复制的详细信息，请参阅 [Azure 存储复制](storage-redundancy.md)。
 
@@ -128,7 +123,7 @@ SKU 名称指示用于存储帐户的复制类型，如 LRS（本地冗余存储
 
 ### <a name="storage-account-properties"></a>存储帐户属性
 
-若要更改存储帐户的设置，请使用 [Set-AzureRmStorageAccount](/powershell/module/azurerm.resources/Set-AzureRmStorageAccount)。 虽然无法更改存储帐户的位置或该帐户所在的资源组，但可以更改许多其他属性。 下面列出一些可使用 PowerShell 更改的属性。
+若要更改存储帐户的设置，请使用 [Set-AzureRmStorageAccount](/powershell/module/azurerm.storage/set-azurermstorageaccount)。 虽然无法更改存储帐户的位置或该帐户所在的资源组，但可以更改许多其他属性。 下面列出一些可使用 PowerShell 更改的属性。
 
 * 分配给存储帐户的自定义域。
 
@@ -220,7 +215,6 @@ Remove-AzureRmStorageAccount -ResourceGroup $resourceGroup -AccountName $storage
 Azure Cosmos DB 表 API 提供了用于表存储的高级功能，如统包全局分发、低延迟读取和写入、自动辅助索引和专用吞吐量。 
 
 * 有关详细信息，请参阅 [Azure Cosmos DB 表 API](../../cosmos-db/table-introduction.md) 
-* 若要了解如何使用 PowerShell 执行 Azure Cosmos DB 表 API 操作，请参阅[使用 PowerShell 执行 Azure Cosmos DB 表 API 操作](../../cosmos-db/table-powershell.md)。
 
 ## <a name="independent-cloud-deployments-of-azure"></a>Azure 的独立云部署
 

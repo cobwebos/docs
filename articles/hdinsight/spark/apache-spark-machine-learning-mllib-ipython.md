@@ -1,26 +1,21 @@
 ---
-title: HDInsight 上 Spark MLlib 的机器学习示例 — Azure | Microsoft Docs
+title: HDInsight 上 Spark MLlib 的机器学习示例 - Azure
 description: 了解如何使用 Spark MLlib 创建机器学习应用，以通过逻辑回归使用分类对数据集进行分析。
 keywords: spark 机器学习, spark 机器学习示例
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: c0fd4baa-946d-4e03-ad2c-a03491bd90c8
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/18/2018
-ms.author: jgao
-ms.openlocfilehash: 1fc89f2181a5b9fb6b6c5a26d974b016fa1926a6
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.author: jasonh
+ms.openlocfilehash: 068d5ee7200f9597da11c0a2850ef4941f4ea900
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361329"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619526"
 ---
 # <a name="use-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>使用 Spark MLlib 生成机器学习应用程序并分析数据集
 

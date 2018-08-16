@@ -1,25 +1,20 @@
 ---
-title: 使用脚本操作自定义 HDInsight 群集 — Azure | Microsoft Docs
+title: 使用脚本操作自定义 HDInsight 群集 - Azure
 description: 使用脚本操作将自定义组件添加到基于 Linux 的 HDInsight 群集。 脚本操作是 Bash 脚本，可用于自定义群集配置，或者添加 Hue、Solr 或 R 等其他服务和实用工具。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 48e85f53-87c1-474f-b767-ca772238cc13
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.author: larryfr
-ms.openlocfilehash: 500b6ef33bb70cd5138067d88303b7db9121e867
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.author: jasonh
+ms.openlocfilehash: 0837029cbe22ba7f659efefb113ed47ae1cf2dfe
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37101427"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038087"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>使用脚本操作自定义基于 Linux 的 HDInsight 群集
 
@@ -229,7 +224,7 @@ HDInsight 提供了脚本用于在 HDInsight 群集上安装以下组件：
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>在创建群集期间从 Azure PowerShell 使用脚本操作
 
-本部分使用 [Add-AzureRmHDInsightScriptAction](https://msdn.microsoft.com/library/mt603527.aspx) cmdlet 来调用脚本，以自定义群集。 在继续前，确保已安装并配置 Azure PowerShell。 有关配置工作站以运行 HDInsight PowerShell cmdlet 的信息，请参阅[安装和配置 Azure PowerShell](/powershell/azure/overview)。
+本部分使用 [Add-AzureRmHDInsightScriptAction](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/add-azurermhdinsightscriptaction) cmdlet 来调用脚本，以自定义群集。 在继续前，确保已安装并配置 Azure PowerShell。 有关配置工作站以运行 HDInsight PowerShell cmdlet 的信息，请参阅[安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 以下脚本演示如何在使用 PowerShell 创建群集时应用脚本操作：
 

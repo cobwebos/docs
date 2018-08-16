@@ -1,24 +1,20 @@
 ---
-title: Java HBase 客户端 - Azure HDInsight | Microsoft Docs
-description: 了解如何使用 Apache Maven 构建基于 Java 的 Apache HBase 应用程序，并将其部署到 Azure HDInsight 上的 HBase。
+title: Java HBase 客户端 - Azure HDInsight
+description: 了解如何使用 Apache Maven 构建基于 Java 的 Apache HBase 应用程序，然后将其部署到 Azure HDInsight 上的 HBase。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: ''
-ms.assetid: 1d1ed180-e0f4-4d1c-b5ea-72e0eda643bc
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.author: larryfr
-ms.openlocfilehash: 564bfb9c80fe835bd5defb4321607e0970c9f0aa
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.author: jasonh
+ms.openlocfilehash: 4700a25cdeb9bf9800d01f09691b0f16df3f6637
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32311482"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597746"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>构建适用于 Apache HBase 的 Java 应用程序
 

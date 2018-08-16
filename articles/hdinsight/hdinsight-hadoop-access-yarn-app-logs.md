@@ -1,25 +1,20 @@
 ---
-title: 以编程方式访问 Hadoop YARN 应用程序日志 — Azure | Microsoft Docs
+title: 以编程方式访问 Hadoop YARN 应用程序日志 - Azure
 description: 以编程方式访问 HDInsight 中 Hadoop 群集上的应用程序日志。
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 0198d6c9-7767-4682-bd34-42838cf48fc5
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jgao
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: aab7865548c034cb550874c31977b05936dc45b9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 42484f2a93ab5effdcafca0f0769c3fb4cdbb926
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31403928"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600177"
 ---
 # <a name="access-yarn-application-logs-on-windows-based-hdinsight"></a>在基于 Windows 的 HDInsight 上访问 YARN 应用程序日志
 本文档介绍了如何访问 Azure HDInsight 中基于 Windows 的 Hadoop 群集上已完成的 YARN 应用程序的日志。
@@ -51,7 +46,7 @@ ms.locfileid: "31403928"
 
 
 ## <a name="yarn-applications-and-logs"></a>YARN 应用程序和日志
-YARN 通过将资源管理与应用程序计划/监视相分离，来支持多种编程模型。 YARN 使用全局 *ResourceManager* (RM)、按工作色节点 *NodeManagers* (NM) 和按应用程序 *ApplicationMasters* (AM)。 按应用程序 AM 与 RM 协商用于运行应用程序的资源（CPU、内存、磁盘、网络）。 RM 与 NM 合作来授予这些资源（以容器的形式授予）。 AM 负责跟踪 RM 分配给它的容器的进度。 根据应用程序的性质，一个应用程序可能需要多个容器。
+YARN 通过将资源管理与应用程序计划/监视相分离，来支持多种编程模型。 YARN 使用全局 *ResourceManager* (RM)、按辅助角色节点 *NodeManagers* (NM) 和按应用程序 *ApplicationMasters* (AM)。 按应用程序 AM 与 RM 协商用于运行应用程序的资源（CPU、内存、磁盘、网络）。 RM 与 NM 合作来授予这些资源（以容器的形式授予）。 AM 负责跟踪 RM 分配给它的容器的进度。 根据应用程序的性质，一个应用程序可能需要多个容器。
 
 * 每个应用程序可能包含多个应用程序尝试。 
 * 容器授予给应用程序的特定尝试。 
@@ -60,7 +55,7 @@ YARN 通过将资源管理与应用程序计划/监视相分离，来支持多�
 
 有关详细信息，请参阅 [YARN 概念][YARN-concepts]。
 
-应用程序日志（和关联的容器日志）在对有问题的 Hadoop 应用程序进行调试上相当重要。 YARN 提供一个良好的框架，通过使用[日志聚合][log-aggregation]功能收集、聚合和存储应用程序日志。 日志聚合功能让访问应用程序日志更具确定性，因为它会聚合工作节点上所有容器的日志，并在应用程序完成之后，将它们按每个工作节点一个聚合日志的方式存储在默认文件系统上。 应用程序可能使用数百或数千个容器，但在单个工作节点上运行的所有容器的日志将聚合成单个文件，也就是为应用程序所用的每个工作节点生成一个文件。 默认情况下，日志聚合已在 HDInsight 群集（3.0 和更高版本）上启用，在群集的默认容器中，可以找到聚合的日志，位置如下：
+应用程序日志（和关联的容器日志）在对有问题的 Hadoop 应用程序进行调试上相当重要。 YARN 提供一个良好的框架，通过使用[日志聚合][log-aggregation]功能收集、聚合和存储应用程序日志。 日志聚合功能让访问应用程序日志更具确定性，因为它会聚合辅助节点上所有容器的日志，并在应用程序完成之后，将它们按每个辅助节点一个聚合日志的方式存储在默认文件系统上。 应用程序可能使用数百或数千个容器，但在单个工作节点上运行的所有容器的日志将聚合成单个文件，也就是为应用程序所用的每个工作节点生成一个文件。 默认情况下，日志聚合已在 HDInsight 群集（3.0 和更高版本）上启用，在群集的默认容器中，可以找到聚合的日志，位置如下：
 
     wasb:///app-logs/<user>/logs/<applicationId>
 

@@ -1,26 +1,20 @@
 ---
-title: 使用基于 Linux 的 HDInsight 进行脚本操作开发 — Azure | Microsoft Docs
+title: 使用基于 Linux 的 HDInsight 进行脚本操作开发
 description: 了解如何使用 Bash 脚本自定义基于 Linux 的 HDInsight 群集。 利用 HDInsight 的脚本操作功能，可在群集创建期间或之后运行脚本。 脚本可用于更改群集配置设置或安装其他软件。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-ms.assetid: cf4c89cd-f7da-4a10-857f-838004965d3e
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/10/2018
-ms.author: larryfr
-ms.openlocfilehash: 5f6609018f2582ebfc6e2ecbe48bde6a6f2d0f5d
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.author: jasonh
+ms.openlocfilehash: 35d54970e41a7e1533f3d5adc09fc60dc1bbd68d
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098254"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600483"
 ---
 # <a name="script-action-development-with-hdinsight"></a>使用 HDInsight 进行脚本操作开发
 
@@ -231,7 +225,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 可在脚本中使用以下帮助器：
 
-| 帮助器用法 | 说明 |
+| 帮助器用法 | Description |
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |将文件从源 URI 下载到指定的文件路径。 默认情况下，它不会覆盖现有的文件。 |
 | `untar_file TARFILE DESTDIR` |将 tar 文件（使用 `-xf`）解压缩到目标目录。 |

@@ -10,14 +10,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 804906e1c1b361b9274dbc8fa3ab1cb204e27dfc
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 842ec8f641fca80e469864dd4d81e14c863fd464
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857270"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600051"
 ---
-# <a name="using-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>使用 Bulk Executor .NET 库在 Azure Cosmos DB 中执行批量操作
+# <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>使用 Bulk Executor .NET 库在 Azure Cosmos DB 中执行批量操作
 
 本教程提供有关使用 Azure Cosmos DB 的 Bulk Executor .NET 库在 Azure Cosmos DB 容器中导入和更新文档的说明。 若要了解 Bulk Executor 库及它如何帮助你利用大量吞吐量和存储，请参阅 [Bulk Executor 库概述](bulk-executor-overview.md)一文。 本教程将逐步讲解一个示例 .NET 应用程序，该应用程序可将随机生成的文档批量导入 Azure Cosmos DB 容器。 导入之后，它会显示如何通过指定要对特定文档字段执行的修补操作，来批量更新导入的数据。
 

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 06/19/2018
 ms.author: raynew
-ms.openlocfilehash: a91543dcea1fb9fb6a33b5a7bc3892a2bac7b241
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 37c4ce8638c8f0481151449317d6cd387b61b256
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215766"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622892"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>使用组依赖项映射优化组
 
@@ -39,7 +39,7 @@ ms.locfileid: "36215766"
 2. 在“欢迎”页面上，单击“下一步”。 在“许可条款”页面上，单击“我接受”以接受许可协议。
 3. 在“目标文件夹”中，保留或修改默认安装文件夹，然后选择“下一步”。 
 4. 在“代理安装选项”中，选择“Azure Log Analytics” > “下一步”。 
-5. 单击“添加”以添加 Log Analytics 工作区。 粘贴从门户复制的工作区 ID 和密钥。 单击“资源组名称” 的 Azure 数据工厂。
+5. 单击“添加”以添加 Log Analytics 工作区。 粘贴从门户复制的工作区 ID 和密钥。 单击“下一步”。
 
 
 若要在 Linux 计算机上安装代理：
@@ -56,7 +56,7 @@ ms.locfileid: "36215766"
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-[详细了解](../monitoring/monitoring-service-map-configure.md#supported-operating-systems)依赖项代理支持的操作系统。 
+深入了解针对 [Windows](../monitoring/monitoring-service-map-configure.md#supported-windows-operating-systems) 和 [Linux](../monitoring/monitoring-service-map-configure.md#supported-linux-operating-systems) 操作系统的依赖项代理支持。
 
 ## <a name="refine-the-group-based-on-dependency-visualization"></a>通过依赖项可视化优化组
 在组中的所有计算机上都安装代理后，可以可视化该组的依赖项，并通过执行以下步骤优化该组。
