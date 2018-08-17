@@ -1,0 +1,62 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 9e78d534579a89f0fc97830616d7b5cd550253f7
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40177305"
+documentType: LandingData
+title: Azure AD 条件访问文档
+metadata:
+  document_id: 
+  title: Azure Active Directory 条件访问文档 - 教程、快速入门、概念、引用 | Microsoft Docs
+  description: 了解如何配置和测试 Azure Active Directory 条件访问。
+  services: active-directory
+  ms.component: authentication
+  author: MarkusVi
+  manager: mtillman
+  ms.service: active-directory
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 08/14/2018
+  ms.author: markvi
+abstract:
+  description: 了解如何通过配置 Azure AD 条件访问来掌握安全性和效率之间的平衡。 使用条件访问策略，可以将云应用的访问方式包括到访问决策中。 例如，可以在访问决策中解决以下问题：<ul><li>什么是用户的网络位置？</li><li>是否已从托管设备发起访问尝试？</li><li>已从哪个客户端应用发起连接尝试？</li><li>是否已通过有风险的登录尝试访问？</li></ul>以下资源可帮助你快速入门。
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: ./media/index/video.png
+      width: 246
+    title: 所述条件访问
+    href: https://www.youtube.com/watch?v=A7IrxAH87wc
+    width: 246
+sections:
+- title: 5 分钟快速入门
+  items:
+  - type: paragraph
+    text: 了解如何为常见访问方案配置条件访问策略。
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: ./media/index/i_security-management.png
+      text: 要求对特定应用执行 MFA
+      href: app-based-mfa.md
+    - image:
+        src: ./media/index/i_security-management.png
+      text: 检测到会话风险时阻止访问
+      href: app-sign-in-risk.md
+    - image:
+        src: ./media/index/i_security-management.png
+      text: 要求接受使用条款
+      href: require-tou.md
+- title: 分步教程
+  items:
+  - type: paragraph
+    text: 了解如何迁移经典条件访问策略。
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/conditional-access/policy-migration-mfa">迁移一个要求进行多重身份验证的经典策略</a>

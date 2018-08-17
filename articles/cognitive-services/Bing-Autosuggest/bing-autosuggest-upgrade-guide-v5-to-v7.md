@@ -25,7 +25,7 @@ ms.locfileid: "35366448"
 
 ### <a name="endpoints"></a>终结点
 
-- 终结点的版本号已从 v5 更改为 v7。 例如 https://api.cognitive.microsoft.com/bing/\*\*v7.0**/Suggestions。
+- 终结点的版本号已从 v5 更改为 v7。 例如 https://api.cognitive.microsoft.com/bing/\*\*v7.0\*\*/Suggestions。
 
 ### <a name="error-response-objects-and-error-codes"></a>错误响应对象和错误代码
 

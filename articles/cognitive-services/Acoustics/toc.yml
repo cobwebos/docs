@@ -1,0 +1,32 @@
+items:
+- name: 项目音响效果文档
+- name: 概述
+  items:
+  - name: 什么是项目音响效果？
+    href: what-is-acoustics.md
+- name: 快速入门
+  items:
+  - name: 入门
+    href: getting-started.md
+- name: 操作方法
+  items:
+  - name: 创建 Azure Batch 帐户
+    href: create-azure-account.md
+  - name: 制作音响效果
+    href: bake-ui-walkthrough.md
+  - name: 设计音响效果
+    href: design-process.md
+- name: 资源
+  items:
+  - name: 音响效果示例场景
+    href: sample-walkthrough.md
+  - name: 常见问题
+    href: faq.md
+  - name: 已知问题
+    href: known-issues.md
+ms.openlocfilehash: 225d620cddfd68f3d5fb6d6d841c8f33254f1309
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "40181822"

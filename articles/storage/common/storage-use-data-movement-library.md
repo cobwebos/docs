@@ -196,7 +196,7 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 点击 `F5` 运行应用程序。 可通过使用 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)查看存储帐户，来验证是否已发生上传。
 
 ## <a name="set-number-of-parallel-operations"></a>设置并行操作数目
-数据移动库提供的一个极佳功能就是设置并行操作数目，以提高数据传输吞吐量。 默认情况下，数据移动库将并行操作数目设置为计算机上核心数的 8 倍。 
+数据移动库提供的一个极佳功能就是设置并行操作数目，以提高数据传输吞吐量。 默认情况下，数据移动库将并行操作数目设置为 8 * 计算机上核心数。 
 
 请注意，在低带宽环境中，大量的并发操作可能会使网络连接变得紊乱，实质性地阻碍操作的全面完成。 需要试运行一下此设置，根据可用网络带宽确定哪种设置最合适。 
 
