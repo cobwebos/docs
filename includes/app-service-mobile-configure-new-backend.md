@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 05/25/2018
 ms.author: crdun
 ms.custom: include file
-ms.openlocfilehash: 4da469ac31c3ee50d601c87b4d7487ae5bb7bc3a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1d3bfb7bc8a5432392dba3b0c5019902b3e59773
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34663996"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39514011"
 ---
 1. 单击“应用服务”按钮，然后依次选择移动应用后端、“快速入门”、客户端平台（iOS、Android、Xamarin、Cordova）。
 
     ![突出显示移动应用快速启动的 Azure 门户][quickstart]
 
-2. 如果未配置数据库连接，请创建一个，方法是执行以下操作：
+1. 如果未配置数据库连接，请创建一个，方法是执行以下操作：
 
     ![Azure 门户：移动应用：连接到数据库][connect]
 
-    a. 新建 SQL 数据库和服务器。
+    a. 新建 SQL 数据库和服务器。 可能需要将连接字符串名称字段保留为默认值 MS_TableConnectionString，然后才能完成下面的步骤 3。
 
     ![Azure 门户：移动应用：新建数据库和服务器][server]
 
@@ -35,9 +35,9 @@ ms.locfileid: "34663996"
 
     ![Azure 门户通知“你已经有一个数据连接”][already-connection]
 
-3. 在“2.创建表 API”下，为“后端语言”选择“Node.js”。
+1. 在“2. 定义警报详细信息“下，创建表 API”下，为“后端语言”选择“Node.js”。
 
-4. 接受确认，然后选择“创建 TodoItem 表”。
+1. 接受确认，然后选择“创建 TodoItem 表”。
     此操作会在数据库中创建一个新的代办事项表。
 
     >[!IMPORTANT]

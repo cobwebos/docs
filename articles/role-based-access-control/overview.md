@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/30/2018
+ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a2e0bf35f73a355197f821f7cce12294f7b35576
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: d0d140a1656719b406567fee431d8e48a51852c5
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344743"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714445"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>什么是基于角色的访问控制 (RBAC)？
 
@@ -79,16 +79,15 @@ Azure 引入了数据操作（目前以预览版提供），用于授予对对�
 
 范围是访问权限适用的边界。 分配角色时，可以通过定义范围来进一步限制允许的操作。 如果你想要将某人分配为[网站参与者](built-in-roles.md#website-contributor)，但只针对一个资源组执行此分配，则使用范围就很有帮助。
 
-在 Azure 中，可在多个级别指定范围：订阅、资源组或资源。 范围以父子关系构建，其中的每个子级只有一个父级。
+在 Azure 中，可在多个级别指定范围：[管理组](../azure-resource-manager/management-groups-overview.md)、订阅、资源组或资源。 范围采用父子关系结构。
 
 ![角色分配的范围](./media/overview/rbac-scope.png)
 
-在父范围分配的访问权限将继承到子范围。 例如：
+在父范围授予访问权限时，这些权限会继承到子范围。 例如：
 
+- 如果将[所有者](built-in-roles.md#owner)角色分配给管理组范围的用户，则该用户可以在管理组中管理所有订阅中的一切内容。
 - 如果在订阅范围向某个组分配了[读取者](built-in-roles.md#reader)角色，则该组的成员可以查看订阅中的每个资源组和资源。
 - 如果在资源组范围向某个应用程序分配了[参与者](built-in-roles.md#contributor)角色，则该应用程序可以管理该资源组中所有类型的资源，但不能管理订阅中的其他资源组资源。
-
-Azure 还包含一个高于订阅的、称作[管理组](../azure-resource-manager/management-groups-overview.md)的范围（目前以预览版提供）。 管理组是管理多个订阅的一种方式。 指定 RBAC 的范围时，可以指定管理组，或者指定订阅、资源组或资源层次结构。
 
 ### <a name="role-assignment"></a>角色分配
 

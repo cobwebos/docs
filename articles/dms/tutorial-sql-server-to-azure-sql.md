@@ -1,24 +1,24 @@
 ---
-title: 使用 Azure 数据库迁移服务将 SQL Server 迁移到 Azure SQL 数据库 | Microsoft 文档
-description: 了解如何使用 Azure 数据库迁移服务从本地 SQL Server 迁移到 Azure SQL 数据库。
+title: 使用 Azure 数据库迁移服务将 SQL Server 脱机迁移到 Azure SQL 数据库 | Microsoft Docs
+description: 了解如何使用 Azure 数据库迁移服务从本地 SQL Server 脱机迁移到 Azure SQL 数据库。
 services: dms
 author: edmacauley
-ms.author: edmaca
+ms.author: jtoland
 manager: craigg
 ms.reviewer: ''
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 06/08/2018
-ms.openlocfilehash: f64b2922818eddcab02f7d1c7b8f97671d92589e
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.date: 08/13/2018
+ms.openlocfilehash: 9f4ff8684576d90f1958a307d6ab876f0e2515fb
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850247"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "40099303"
 ---
-# <a name="migrate-sql-server-to-azure-sql-database-using-dms"></a>使用 DMS 将 SQL Server 迁移到 Azure SQL 数据库
+# <a name="migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库
 可以使用 Azure 数据库迁移服务将数据库从本地 SQL Server 实例迁移到 [Azure SQL 数据库](https://docs.microsoft.com/en-us/azure/sql-database/)。 在本教程中，将通过使用 Azure 数据库迁移服务，将还原到 SQL Server 2016（或更高版本）本地实例的 Adventureworks2012 数据库迁移到 Azure SQL 数据库。
 
 本教程介绍如何执行下列操作：
@@ -137,21 +137,23 @@ ms.locfileid: "34850247"
   
 3.  在“创建迁移服务”屏幕上，为服务、订阅以及新的或现有资源组指定名称。
 
-4. 选择现有虚拟网络 (VNET) 或创建一个新的。
+4. 选择要在其中创建 Azure 数据库迁移服务实例的位置。 
+
+5. 选择现有虚拟网络 (VNET) 或创建一个新的。
 
     VNET 为 Azure 数据库迁移服务提供源 SQL Server 和目标 Azure SQL 数据库实例的访问权限。
 
     若要深入了解如何在 Azure 门户中创建 VNET，请参阅[使用 Azure 门户创建虚拟网络](https://aka.ms/DMSVnet)一文。
 
-5. 选择定价层。
+6. 选择定价层。
 
     有关成本和定价层的详细信息，请参阅[价格页](https://aka.ms/dms-pricing)。
 
     如果选择合适的 Azure 数据库迁移服务层时需要帮助，请参阅[此处](https://go.microsoft.com/fwlink/?linkid=861067)帖子中的建议。  
 
-     ![配置 Azure 数据库迁移服务实例设置](media\tutorial-sql-server-to-azure-sql\dms-settings1.png)
+     ![配置 Azure 数据库迁移服务实例设置](media\tutorial-sql-server-to-azure-sql\dms-settings2.png)
 
-6.  选择“创建”来创建服务。
+7.  选择“创建”来创建服务。
 
 ## <a name="create-a-migration-project"></a>创建迁移项目
 创建服务后，在 Azure 门户中找到并打开它，然后创建一个新的迁移项目。
@@ -165,14 +167,14 @@ ms.locfileid: "34850247"
      ![查找 Azure 数据库迁移服务实例](media\tutorial-sql-server-to-azure-sql\dms-instance-search.png)
  
 3. 选择“+ 新建迁移项目”。
-4. 在“新建迁移项目”屏幕上，指定项目名称，在“源服务器类型”文本框中，选择“SQL Server”，然后在“目标服务器类型”文本框中，选择“Azure SQL数据库”。
+4. 在“新建迁移项目”屏幕上指定项目名称，在“源服务器类型”文本框中选择“SQL Server”，在“目标服务器类型”文本框中选择“Azure SQL 数据库”，然后在“选择活动类型”中选择“脱机数据迁移”。 
 
-    ![创建数据库迁移服务项目](media\tutorial-sql-server-to-azure-sql\dms-create-project1.png)
+    ![创建数据库迁移服务项目](media\tutorial-sql-server-to-azure-sql\dms-create-project2.png)
 
-5.  选择“创建”来创建项目。
+5.  选择“创建并运行活动”，以便创建项目并运行迁移活动。
 
 ## <a name="specify-source-details"></a>指定源详细信息
-1. 在“源详细信息”屏幕上，指定源 SQL Server 实例的连接详细信息。
+1. 在“迁移源详细信息”屏幕上，指定源 SQL Server 实例的连接详细信息。
  
     请确保为源 SQL Server 实例名称使用完全限定的域名 (FQDN)。 如果不能使用 DNS 名称解析，也可使用 IP 地址。
 
@@ -181,57 +183,39 @@ ms.locfileid: "34850247"
     如果没有安装受信任的证书，SQL Server 会在实例启动时生成自签名证书。 此证书用于加密客户端连接的凭据。
 
     > [!CAUTION]
-    > 使用自签名证书加密的 SSL 连接不提供可靠的安全性。 它们易遭受中间人攻击。 不应在生产环境中或在连接到 Internet 的服务器上依赖使用自签名证书的 SSL。
+    > 使用自签名证书加密的 SSL 连接不提供可靠的安全性。 它们易遭受中间人攻击。 不得在生产环境中或在连接到 Internet 的服务器上依赖使用自签名证书的 SSL。
 
-   ![源详细信息](media\tutorial-sql-server-to-azure-sql\dms-source-details1.png)
-  
-2. 选择“保存”，然后选择用于迁移的“AdventureWorks2012”数据库。
-
-    ![选择源 DB](media\tutorial-sql-server-to-azure-sql\dms-select-source-db1.png)
+   ![源详细信息](media\tutorial-sql-server-to-azure-sql\dms-source-details2.png)
 
 ## <a name="specify-target-details"></a>指定目标详细信息
-1. 选择“保存”，然后在“目标详细信息”屏幕中，指定目标 Azure SQL 数据库服务器的连接详细信息，这是使用数据迁移助手向其部署 AdventureWorks2012 架构的预配 Azure SQL 数据库。
+1. 选择“保存”，然后在“迁移目标详细信息”屏幕中，指定目标 Azure SQL 数据库服务器的连接详细信息，这是使用数据迁移助手向其部署 AdventureWorks2012 架构的预配 Azure SQL 数据库。
 
-    ![选择目标](media\tutorial-sql-server-to-azure-sql\dms-select-target1.png)
+    ![选择目标](media\tutorial-sql-server-to-azure-sql\dms-select-target2.png)
 
-2. 选择“保存”以保存项目。
+2. 选择“保存”，然后在“映射到目标数据库”屏幕上，映射源和目标数据库以进行迁移。
 
-3. 在“项目摘要”屏幕上，查看并确认与迁移项目关联的详细信息。
+    如果目标数据库包含的数据库名称与源数据库的相同，则 Azure 数据库迁移服务会默认选择目标数据库。
 
-    ![DMS 摘要](media\tutorial-sql-server-to-azure-sql\dms-summary1.png)
+    ![映射到目标数据库](media\tutorial-sql-server-to-azure-sql\dms-map-targets-activity2.png)
 
-4. 选择“保存”。
-
-## <a name="run-the-migration"></a>运行迁移
-1.  选择最近保存的项目，依次选择“+ 新建活动”和“运行迁移”。
-
-    ![新建活动](media\tutorial-sql-server-to-azure-sql\dms-new-activity1.png)
-
-2.  出现提示时，输入源服务器和目标服务器的凭据，然后选择“保存”。
-
-3.  在“映射到目标数据库”屏幕上，映射源和目标数据库以进行迁移。
-
-    如果目标数据库包含的数据库名称与源数据库的相同，则 Azure DMS 会默认选择目标数据库。
-
-    ![映射到目标数据库](media\tutorial-sql-server-to-azure-sql\dms-map-targets-activity1.png)
-
-4. 在“选择表”屏幕上选择“保存”，展开表列表，如何查看受影响字段的列表。
+3. 在“选择表”屏幕上选择“保存”，展开表列表，如何查看受影响字段的列表。
 
     请注意，Azure 数据库迁移服务会自动选择目标 Azure SQL 数据库实例上的所有空源表。 若要重新迁移已含数据的表，需要在此边栏选项卡上明确选择表。
 
-    ![选择表](media\tutorial-sql-server-to-azure-sql\dms-configure-setting-activity1.png)
+    ![选择表](media\tutorial-sql-server-to-azure-sql\dms-configure-setting-activity2.png)
 
-5.  在“迁移摘要”屏幕上，选择“保存”，在“活动名称”文本框中，指定迁移活动的名称。
+4.  在“迁移摘要”屏幕上，选择“保存”，在“活动名称”文本框中，指定迁移活动的名称。
 
-6. 展开“验证选项”部分以调出“选择验证选项”屏幕，指定是否对已迁移数据库执行“架构比较”、“数据一致性”和“查询正确性”验证。
+5. 展开“验证选项”部分以显示“选择验证选项”屏幕，然后指定是否对已迁移数据库执行“架构比较”、“数据一致性”和“查询正确性”验证。
     
-    ![选择“验证”选项](media\tutorial-sql-server-to-azure-sql\dms-configuration1.png)
+    ![选择“验证”选项](media\tutorial-sql-server-to-azure-sql\dms-configuration2.png)
 
 6.  选择“保存”，查看摘要以确保源和目标详细信息与你先前指定的内容匹配。
 
-    ![迁移摘要](media\tutorial-sql-server-to-azure-sql\dms-run-migration1.png)
+    ![迁移摘要](media\tutorial-sql-server-to-azure-sql\dms-run-migration2.png)
 
-7.  选择“运行迁移”。
+## <a name="run-the-migration"></a>运行迁移
+1.  选择“运行迁移”。
 
     迁移活动窗口随即出现，活动的“状态”为“挂起”。
 
