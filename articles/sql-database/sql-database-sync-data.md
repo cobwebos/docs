@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: data-sync
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 08/09/2018
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: 6bfe2288e239738addb9c97706c5fc1c9b0e72b8
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 8fe77522297dc6020cf98f4532aea9f580d8bdb9
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617324"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004805"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>使用 SQL 数据同步跨多个云和本地数据库同步数据
 
@@ -165,7 +165,7 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 
 ### <a name="what-regions-support-data-sync"></a>哪些区域支持数据同步？
 
-SQL 数据同步在所有公共云区域中都可用。
+SQL 数据同步在所有区域中都可用。
 
 ### <a name="is-a-sql-database-account-required"></a>是否需要 SQL 数据库帐户？ 
 

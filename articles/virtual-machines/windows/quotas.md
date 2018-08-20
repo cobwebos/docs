@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: dffc76151e0739bf56091d987bf21d02b5bfb1e2
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 991deed871594efd310cfd24c5e9fc6a369b1a75
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716537"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628692"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>虚拟机 vCPU 配额
 
@@ -79,7 +79,7 @@ Premium Storage Managed Disks                1 10000 Count
 
 
 ## <a name="reserved-vm-instances"></a>虚拟机预留实例
-虚拟机预留实例对应于单个订阅，会给 vCPU 配额造成新的影响。 这些值描述一定能够部署在订阅中的所述大小的实例数。 它们在配额系统中用作占位符，确保预留该配额，以便能够在订阅中部署预留的实例。 例如，如果特定订阅包含 10 个 Standard_D1 预留实例，则 Standard_D1 预留实例的用量限制将是 10。 这会导致 Azure 确保总区域 vCPU 配额中始终至少有 10 个 vCPU 可用于 Standard_D1 实例，并且标准 D 系列 vCPU 配额中始终至少有 10 个 vCPU 可用于 Standard_D1 实例。
+虚拟机预留实例对应于单个订阅，会给 vCPU 配额造成新的影响。 这些值描述一定能够部署在订阅中的所述大小的实例数。 它们在配额系统中用作占位符，确保预留该配额，以便能够在订阅中部署虚拟机预留实例。 例如，如果特定订阅包含 10 个 Standard_D1 虚拟机预留实例，则 Standard_D1 虚拟机预留实例的用量限制将是 10。 这会导致 Azure 确保总区域 vCPU 配额中始终至少有 10 个 vCPU 可用于 Standard_D1 实例，并且标准 D 系列 vCPU 配额中始终至少有 10 个 vCPU 可用于 Standard_D1 实例。
 
 如果需要增加配额来购买单个订阅 RI，则可以在订阅上[请求增加配额](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)。
 

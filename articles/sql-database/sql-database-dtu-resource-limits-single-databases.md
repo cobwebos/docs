@@ -7,18 +7,18 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 08/03/2018
 ms.author: carlrab
-ms.openlocfilehash: effb09cfc68961065ad0b4e4be52255bcd1fe4e0
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: fae9f0aaa001c233a6687dda5cd5b7c0128ff8b0
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414161"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40037911"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>使用基于 DTU 的购买模型的单一数据库的资源限制 
 
-本文详细介绍了使用基于 DTU 的购买模型的 Azure SQL 数据库弹性池的资源限制。
+本文提供了针对使用基于 DTU 的购买模型的 Azure SQL 数据库的单一数据库的详细资源限制。
 
 有关弹性池的基于 DTU 的购买模型资源限制，请参阅[基于 DTU 的资源限制 - 弹性池](sql-database-vcore-resource-limits-elastic-pools.md)。 有关基于 vCore 的资源限制，请参阅[基于 vCore 的资源限制 - 单一数据库](sql-database-vcore-resource-limits-single-databases.md)和[基于 vCore 的资源限制 - 弹性池](sql-database-vcore-resource-limits-elastic-pools.md)。
 

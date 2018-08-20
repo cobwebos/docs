@@ -1,5 +1,5 @@
 ---
-title: Azure 预留实例 Windows 软件成本 | Microsoft Docs
+title: Azure 预留 Windows 软件成本 | Microsoft Docs
 description: 了解 Azure 虚拟机预留实例成本中不包含哪些 Windows 软件计量。
 services: billing
 documentationcenter: ''
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: manshuk
-ms.openlocfilehash: 6602424e2b2e4a4c2c3c51b5cb4bb1024a39d2e0
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 8ff2d126fd491ddc40f6223b6d4ec1fc4505b8fb
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064216"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630105"
 ---
-# <a name="windows-software-costs-not-included-with-azure-reserved-instances"></a>Azure 预留实例未包含的 Windows 软件成本
+# <a name="windows-software-costs-not-included-with-azure-reservations"></a>Azure 预留未包括的 Windows 软件成本
 
-如果你对预留实例虚拟机没有 Azure 混合使用权益，则会针对以下部分中列出的 Windows 软件计量向你收取费用。
+如果你对虚拟机预留实例没有 Azure 混合使用权益，则会针对以下部分中列出的 Windows 软件计量向你收取费用。
 
-## <a name="windows-software-meters-not-included-in-reserved-instance-cost"></a>预留实例成本中未包含的 Windows 软件计量
+## <a name="windows-software-meters-not-included-in-reservation-cost"></a>预留成本中未包括的 Windows 软件计量
 
 | 计量 ID | 使用情况文件中的计量名称 | VM 使用的系列 |
 | ------- | ------------------------| --- |
@@ -53,14 +53,14 @@ ms.locfileid: "37064216"
 可以通过 Azure RateCard API 来获取上述每个计量的成本。 有关如何获取 azure 计量的费率的信息，请参阅[获取 Azure 订阅中使用的资源的价格和元数据信息](https://msdn.microsoft.com/library/azure/mt219004)。
 
 ## <a name="next-steps"></a>后续步骤
-若要了解有关 Azure 预留实例的详细信息，请参阅以下文章：
+若要了解有关 Azure 预留的详细信息，请参阅以下文章：
 
-- [什么是 Azure 虚拟机预留实例？](billing-save-compute-costs-reservations.md)
+- [什么是 Azure 预留？](billing-save-compute-costs-reservations.md)
 - [通过 Azure 虚拟机预留实例为虚拟机预付费](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [管理 Azure 中的预留实例](billing-manage-reserved-vm-instance.md)
-- [了解如何应用预留实例折扣](billing-understand-vm-reservation-charges.md)
-- [了解即用即付订阅的预留实例使用情况](billing-understand-reserved-instance-usage.md)
-- [了解适用于企业合约的预留实例使用情况](billing-understand-reserved-instance-usage-ea.md)
+- [管理 Azure 中的预留](billing-manage-reserved-vm-instance.md)
+- [了解预留折扣的应用方式](billing-understand-vm-reservation-charges.md)
+- [了解即用即付订阅的预留使用情况](billing-understand-reserved-instance-usage.md)
+- [了解企业合约的预留使用情况](billing-understand-reserved-instance-usage-ea.md)
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 

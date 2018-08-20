@@ -6,18 +6,20 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/19/2018
+ms.date: 08/09/2018
 ms.author: raynew
-ms.openlocfilehash: 96fc44ad7f69b4de0ec5ea3967fe5495086ba53a
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: d19aa4c3765beecc853a1b800a7ba1d3ebd74e9c
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413597"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004321"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware 和物理服务器到 Azure 的复制支持矩阵
 
 本文汇总了使用 [Azure Site Recovery](site-recovery-overview.md) 服务执行从 VMware VM 到 Azure 的灾难恢复时支持的组件和设置。
+
+若要从最简单的部署方案开始使用 Azure Site Recovery，请访问我们的[教程](tutorial-prepare-azure.md)。 可以从[此处](vmware-azure-architecture.md)详细了解 Azure Site Recovery 体系结构。
 
 ## <a name="replication-scenario"></a>复制方案
 
@@ -112,7 +114,7 @@ SUSE Linux Enterprise Server 12（SP1、SP2、SP3） | 9.18 | SP1 3.12.49-11-def
 组件 | **支持**
 --- | ---
 文件系统 | ext3、ext4、XFS。
-卷管理器 | LVM2。
+卷管理器 | LVM2。 仅数据磁盘支持 LVM。 Azure VM 仅包含单个 OS 磁盘。
 半虚拟化存储设备 | 不支持半虚拟化驱动程序导出的设备。
 多队列块 IO 设备 | 不支持。
 具有 HP CCISS 存储控制器的物理服务器 | 不支持。
@@ -241,12 +243,15 @@ VM 名称 | 1 到 63 个字符。<br/><br/> 限制为字母、数字和连字符
 跨资源组移动存储、网络和 Azure VM<br/><br/> 订阅内和跨订阅移动 | 否
 
 
-## <a name="mobility-service"></a>移动服务
+## <a name="download-latest-azure-site-recovery-components"></a>下载最新的 Azure Site Recovery 组件
 
-**Name** | **说明** | **最新版本** | **详细信息**
+**名称** | **说明** | **最新版本下载说明** 
 --- | --- | --- | --- | ---
-Azure Site Recovery 统一安装程序 | 协调本地 VMware 服务器与 Azure 之间的通信 <br/><br/> 在本地 VMware 服务器上安装 | 9.12.4653.1（可从门户获取） | [最新功能和修复](https://aka.ms/latest_asr_updates)
-移动服务 | 协调本地 VMware 服务器/物理服务器和 Azure/辅助站点之间的复制<br/><br/> 在想要复制的 VMware VM 或物理服务器上安装 | 9.12.4653.1（可从门户获取） | [最新功能和修复](https://aka.ms/latest_asr_updates)
+配置服务器 | 协调本地 VMware 服务器与 Azure 之间的通信 <br/><br/> 在本地 VMware 服务器上安装 | 若要进行全新安装，请单击[此处](vmware-azure-deploy-configuration-server.md)。 若要将现有组件升级到最新版本，请单击[此处](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)。
+进程服务器|默认安装在配置服务器上。 它接收复制数据，通过缓存、压缩和加密对其进行优化，然后将数据发送到 Azure 存储。 随着部署扩大，可以另外添加单独的进程服务器来处理更大的复制流量。| 若要进行全新安装，请单击[此处](vmware-azure-set-up-process-server-scale.md)。 若要将现有组件升级到最新版本，请单击[此处](vmware-azure-manage-process-server.md#upgrade-a-process-server)。
+移动服务 | 协调本地 VMware 服务器/物理服务器和 Azure/辅助站点之间的复制<br/><br/> 在想要复制的 VMware VM 或物理服务器上安装 | 若要进行全新安装，请单击[此处](vmware-azure-install-mobility-service.md)。 若要将现有组件升级到最新版本，请单击[此处](vmware-azure-install-mobility-service.md#update-mobility-service)。
+
+若要了解最新功能和修复程序，请单击[此处](https://aka.ms/latest_asr_updates)。
 
 
 ## <a name="next-steps"></a>后续步骤

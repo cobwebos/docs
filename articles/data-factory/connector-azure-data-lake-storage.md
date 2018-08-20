@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/26/2018
+ms.date: 08/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 110bfe4b98045149bb52af2ad6f1156ea6d4018d
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 65495209714c37e5e166545ed7ed029e36c258c0
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034345"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038051"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-preview-using-azure-data-factory-preview"></a>使用 Azure 数据工厂向/从 Azure Data Lake Storage Gen2 预览版复制数据（预览）
 
@@ -32,6 +32,9 @@ ms.locfileid: "37034345"
 - 使用帐户密钥复制数据。
 - 按原样复制文件，或使用[支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md)分析/生成文件。
 
+>[!TIP]
+>如果启用分层命名空间，则当前 Blob 和 ADLS Gen2 API 之间没有操作的互操作性。 如果遇到“ErrorCode=FilesystemNotFound”错误，详细消息为“指定的文件系统不存在。”，这是由于指定的接收器文件系统是通过 Blob API 而非其他地方的 ADLS Gen2 API 创建的。 若要解决此问题，请指定其名称不同于已存在的 Blob 容器名称的一个新文件系统，ADF 在复制数据期间将自动创建该文件系统。
+
 ## <a name="get-started"></a>入门
 
 >[!TIP]
@@ -45,7 +48,7 @@ ms.locfileid: "37034345"
 
 Data Lake Storage Gen2 链接服务支持以下属性：
 
-| 属性 | 说明 | 是否必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 AzureBlobFS。 |是 |
 | url | Data Lake Storage Gen2 的终结点，其模式为 `https://<accountname>.dfs.core.windows.net`。 | 是 | 
@@ -78,7 +81,7 @@ Data Lake Storage Gen2 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 Azure Data Lake Storage 数据集支持以下属性：
 
-| 属性 | 说明 | 是否必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 AzureBlobFSFile。 |是 |
 | folderPath | Data Lake Storage Gen2 中的文件夹的路径。 不支持通配符筛选器。 例如 rootfolder/subfolder/。 |是 |
@@ -125,7 +128,7 @@ Data Lake Storage Gen2 链接服务支持以下属性：
 
 复制活动**源**部分支持以下属性：
 
-| 属性 | 说明 | 是否必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 AzureBlobFSSource。 |是 |
 | recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 请注意，当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。<br/>允许的值为 **true**（默认值）和 **false**。 | 否 |
@@ -166,10 +169,10 @@ Data Lake Storage Gen2 链接服务支持以下属性：
 
 复制活动接收器部分中支持以下属性：
 
-| 属性 | 说明 | 是否必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 AzureBlobFSSink。 |是 |
-| copyBehavior | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认值）</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名，则合并文件的名称为指定名称。 否则，其文件名自动生成。 | 否 |
+| copyBehavior | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认值）</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名，则合并文件的名称为指定名称。 否则，它是自动生成的文件名。 | 否 |
 
 **示例：**
 

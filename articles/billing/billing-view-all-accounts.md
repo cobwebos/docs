@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2018
 ms.author: amberb
-ms.openlocfilehash: 344d4032b59a920630a18f026aa3765fbc69d6d5
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 7c4152140d291270386203e121da169b2a8deff5
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34077732"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630800"
 ---
 # <a name="view-all-your-billing-accounts-in-azure-portal"></a>在 Azure 门户中查看所有计费帐户  
 
@@ -27,7 +27,7 @@ ms.locfileid: "34077732"
 
 目前，只能查看你的个人计费帐户和企业协议计费帐户。 默认情况下，[成本管理 + 计费](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingMenuBlade/Overview)页显示个人计费帐户。 但是，可以导航到“计费帐户”并更改该帐户。
 
-对于个人计费帐户，可以在 [Azure 门户](https://portal.azure.com)中管理并查看所有费用。 但是，对于企业协议帐户，只能查看预留实例购买、余额和本月截止到现在的费用。 这些企业协议功能处于预览状态，仅当你是企业管理员角色时才会提供。
+对于个人计费帐户，可以在 [Azure 门户](https://portal.azure.com)中管理并查看所有费用。 但是，对于企业协议帐户，只能查看 Azure 预留购买、余额和本月截止到现在的费用。 这些企业协议功能处于预览状态，仅当你是企业管理员角色时才会提供。
 
 ## <a name="change-billing-account-view"></a>更改计费帐户视图 
 

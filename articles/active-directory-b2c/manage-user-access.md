@@ -7,17 +7,17 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/04/2018
+ms.date: 07/24/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: adf2f555e907976f8b8efa863f255aa283098be9
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 15bc320bd82ea21ff608fcc834ba51b9bc7b6dea
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448756"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716138"
 ---
-# <a name="manage-user-access-in-azure-ad-b2c"></a>在 Azure AD B2C 中管理用户访问
+# <a name="manage-user-access-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中管理用户访问
 
 本文介绍如何使用 Azure Active Directory (AD) B2C 管理用户对应用程序的访问。 应用程序中的访问管理包括：
 
@@ -27,9 +27,6 @@ ms.locfileid: "37448756"
 - 捕获使用条款的同意状态和限制访问。
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
-
->[!Note] 
->本文提供的信息有助于履行 GDPR 规定的义务。 如需关于 GDPR 的常规信息，请参阅[服务信任门户的 GDPR 部分](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted)。
 
 ## <a name="control-minor-access"></a>控制未成年人访问
 
@@ -109,7 +106,7 @@ ms.locfileid: "37448756"
 在以下情况下，可以捕获使用条款的接受状态：
 
 - 新用户正在注册。 显示使用条款，并存储接受结果。
-- 用户正在登录，并已事先接受最新或现行的协议条款。 不显示使用条款。
+- 用户正在登录，并已事先接受了最新或现行的使用条款。 不显示使用条款。
 - 用户正在登录，且尚未接受最新或现行的使用条款。 显示使用条款，并存储接受结果。
 - 用户正在登录，并已接受旧版使用条款，该版本现已更新为最新版本。 显示使用条款，并存储接受结果。
 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/04/2018
 ms.author: glenga
-ms.openlocfilehash: b0e078e3e7f18e3370ff1bcd90935e7fece265f0
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 1a4b970b07514619b2d81a0483546ac64d07927f
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391174"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005469"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 
@@ -94,7 +94,9 @@ context.bindings.myOutput = {
 context.done([err],[propertyBag])
 ```
 
-通知运行时代码已完成。 必须调用 `context.done`，否则，运行时永远不会知道函数已完成并且执行将超时。 
+通知运行时代码已完成。 如果你的函数使用了 `async function` 声明（使用 Functions 2.x 版本中的 Node 8+ 时可用），则不需要使用 `context.done()`。 `context.done` 回调是隐式调用的。
+
+如果你的函数不是一个异步函数，**则必须调用 `context.done`** 来告知运行时你的函数是完整的。 如果缺少它，则执行将超时。
 
 `context.done` 方法允许将用户定义的错误，以及一个将覆盖 `context.bindings` 对象上的属性的属性包传回运行时。
 

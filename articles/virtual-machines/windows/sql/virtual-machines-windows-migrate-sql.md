@@ -13,14 +13,14 @@ ms.workload: iaas-sql-server
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2018
+ms.date: 08/18/2018
 ms.author: jroth
-ms.openlocfilehash: 64245a968eca94518d2e4238b4bc5c93c952563a
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 0677faa90c73ffe4c0c1c48600c2f1ef2d05eb50
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29809431"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628777"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-in-an-azure-vm"></a>将 SQL Server 数据库迁移到 Azure VM 中的 SQL Server
 
@@ -85,7 +85,7 @@ ms.locfileid: "29809431"
 ## <a name="convert-to-vm-and-upload-to-url-and-deploy-as-new-vm"></a>转换为 VM、上传到 URL 并部署为新的 VM
 使用此方法可将本地 SQL Server 实例中的所有系统数据库和用户数据库迁移到 Azure 虚拟机。 使用此手动方法按照下列常规步骤迁移整个 SQL Server 实例：
 
-1. 使用 [Microsoft 虚拟机转换器](https://technet.microsoft.com/library/dn874008(v=ws.11).aspx)将物理或虚拟机转换为 Hyper-V VHD。
+1. 将物理机或虚拟机转换为 Hyper-V VHD。
 2. 使用 [Add-AzureVHD cmdlet](https://msdn.microsoft.com/library/windowsazure/dn495173.aspx) 将 VHD 文件上传到 Azure 存储。
 3. 使用上传的 VHD 部署新的虚拟机。
 

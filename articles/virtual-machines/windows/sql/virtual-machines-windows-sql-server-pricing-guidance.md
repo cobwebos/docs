@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 07/02/2018
+ms.date: 08/09/2018
 ms.author: jroth
-ms.openlocfilehash: e9033724f62b383ce70488b98a3a8919e3cb198a
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: a748532de7e8b8e910e335b67a693c4470861bf1
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345271"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003553"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>SQL Server Azure VM 的定价指南
 
@@ -90,9 +90,12 @@ ms.locfileid: "37345271"
 >
 >而不包括 Web、Standard 和 Enterprise 版本的其他 SQL Server 许可成本。 若要获取最准确的估算定价，请在适用于 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) 或 [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) 的定价页上选择操作系统和 SQL Server 版本。
 
-## <a name="bring-your-own-license-byol"></a>自带许可证 (BYOL)
+## <a id="byol"></a> 自带许可证 (BYOL)
 
 “通过许可移动性使用自己的 SQL Server 许可证”（也称为**BYOL**）是指在 Azure VM 中使用带软件保障的现有 SQL Server 批量许可证。 使用 BYOL 的 SQL Server VM 仅收取 VM 运行费用，而不收取 SQL Server 许可的费用，前提是已通过批量许可计划获得许可证和软件保障。
+
+> [!IMPORTANT]
+> BYOL 映像需要具有软件保障的企业协议。 目前，它们未作为 Azure 云解决方案合作伙伴 (CSP) 的一部分提供。
 
 > [!NOTE]
 > BYOL 映像目前仅适用于 Windows 虚拟机。 但是，可以在仅限 Linux 的 VM 上手动安装 SQL Server。 请参阅 [Linux SQL VM 常见问题解答](../../linux/sql/sql-server-linux-faq.md)中的指导原则。
@@ -105,7 +108,7 @@ ms.locfileid: "37345271"
 
 若要对 SQL Server VM 使用 BYOL，必须拥有 SQL Server Standard 或 Enterprise 的许可证以及[软件保障](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default.aspx#tab=1)，这是通过某些批量许可计划的必需选项，而对其他计划而言为可选购买项。 根据协议类型以及 SQL Server 的数量和/或对其的承诺，批量许可计划提供的定价级别各不相同。 但一般而言，针对连续生产工作负荷自带许可证具有以下优点：
 
-| BYOL 权益 | 说明 |
+| BYOL 权益 | Description |
 |-----|-----|
 | 节省费用 | 如果工作负荷将连续运行 SQL Server Standard 或 Enterprise 超过 10 个月，则自带 SQL Server 许可证比按使用情况付费更具成本效益。 |
 | 长期节省 | 通常，若购买或续订 SQL Server 许可证，前三年每年要便宜 30%。 此外，三年之后，无需再续订许可证，只需支付软件保障费用。 此时，它将便宜两倍。 |

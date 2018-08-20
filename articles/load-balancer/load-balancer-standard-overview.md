@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/20/2018
+ms.date: 08/08/2018
 ms.author: kumud
-ms.openlocfilehash: f8779af725346a456efe8e718cfc8ff3a91c72fc
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: dad76ab9f2a1a621fb513a4d411792fe2f88a557
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325245"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005869"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Azure 负载均衡器标准版概述
 
@@ -64,7 +64,15 @@ ms.locfileid: "39325245"
 
 考虑后端池的设计方式时，可针对单个后端池资源的最小数字进行设计，从而进一步优化管理操作的持续时间。  在数据平面性能或规模中不存在任何差异。
 
-## <a name="az"></a>可用性区域
+### <a name="probes"></a>运行状况探测
+  
+标准负载均衡器增加了对 [HTTPS 运行状况探测](load-balancer-custom-probe-overview.md#httpprobe)（具有传输层安全 (TLS) 包装程序的 HTTP 探测）的支持来准确地监视 HTTPS 应用程序。  
+
+此外，当整个后端池[探测关闭](load-balancer-custom-probe-overview.md#probedown)时，标准负载均衡器允许所有已建立的 TCP 连接继续运行。 （基本负载均衡器会终止所有实例的所有 TCP 连接）。
+
+有关详细信息，请查看[负载均衡器运行状况探测](load-balancer-custom-probe-overview.md)。
+
+### <a name="az"></a>可用性区域
 
 标准负载均衡器在提供可用性区域的区域中支持其他功能。  这些功能可增量到所有标准负载均衡器提供的内容。  可用性区域配置可用于公共和内部标准负载均衡器。
 
@@ -167,7 +175,7 @@ SKU 不可变。 按照本部分中的步骤从一个资源 SKU 移动到另一�
 
 ### <a name="migrate-from-basic-to-standard-sku"></a>从基本 SKU 迁移到标准 SKU
 
-1. 根据需要创建新的标准版资源（负载均衡器和公共 IP）。 重新创建规则和探测定义。
+1. 根据需要创建新的标准版资源（负载均衡器和公共 IP）。 重新创建规则和探测定义。  如果之前在使用针对 443/tcp 的 TCP 探测，请考虑将此探测协议更改为 HTTPS 探测并添加路径。
 
 2. 为 NIC 或子网创建新的 NSG 或更新现有 NSG，以便将负载均衡流量、探测以及你想要允许的任何其他流量加入允许列表。
 
@@ -177,7 +185,7 @@ SKU 不可变。 按照本部分中的步骤从一个资源 SKU 移动到另一�
 
 ### <a name="migrate-from-standard-to-basic-sku"></a>从标准 SKU 迁移到基本 SKU
 
-1. 根据需要创建新的基本版资源（负载均衡器和公共 IP）。 重新创建规则和探测定义。 
+1. 根据需要创建新的基本版资源（负载均衡器和公共 IP）。 重新创建规则和探测定义。  将 HTTPS 探测更改为针对 443/tcp 的 TCP 探测。 
 
 2. 如果适用，从所有 VM 实例中删除标准 SKU 资源（负载均衡器和公共 IP）。 确保还会删除可用性集的所有 VM 实例。
 
@@ -218,15 +226,16 @@ SKU 不可变。 按照本部分中的步骤从一个资源 SKU 移动到另一�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何使用[标准负载均衡器和可用性区域](load-balancer-standard-availability-zones.md)
+- 了解如何使用[标准负载均衡器和可用性区域](load-balancer-standard-availability-zones.md)。
+- 了解[运行状况探测](load-balancer-custom-probe-overview.md)。
 - 详细了解[可用性区域](../availability-zones/az-overview.md)。
-- 了解有关[标准负载均衡器诊断](load-balancer-standard-diagnostics.md)的信息。
+- 了解[标准负载均衡器诊断](load-balancer-standard-diagnostics.md)。
 - 在 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 中了解用于诊断的[支持的多维度指标](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers)。
-- 了解如何使用[出站连接的负载均衡器](load-balancer-outbound-connections.md)
-- 了解有关[具有 HA 端口负载均衡规则的标准负载均衡器](load-balancer-ha-ports-overview.md)的信息
-- 了解如何使用[具有多个前端的负载均衡器](load-balancer-multivip-overview.md)
+- 了解如何[对出站连接使用负载均衡器](load-balancer-outbound-connections.md)。
+- 了解[具有 HA 端口负载均衡规则的标准负载均衡器](load-balancer-ha-ports-overview.md)。
+- 了解如何使用[具有多个前端的负载均衡器](load-balancer-multivip-overview.md)。
 - 了解有关[虚拟网络](../virtual-network/virtual-networks-overview.md)的信息。
 - 详细了解[网络安全组](../virtual-network/security-overview.md)。
-- 了解 [VNet 服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)
+- 了解 [VNet 服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。
 - 了解 Azure 的部分其他关键[网络功能](../networking/networking-overview.md)。
 - 详细了解[负载均衡器](load-balancer-overview.md)。

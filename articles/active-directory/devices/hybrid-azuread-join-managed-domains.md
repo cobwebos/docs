@@ -13,22 +13,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2018
+ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: b9acc829439578f2f86dfbd51164cb3eaf923c2a
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 55818bf3c6997925fbac32f913d573d630bc20f4
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39368865"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004372"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>教程：为托管域配置混合 Azure Active Directory 联接
 
 与用户类似，设备将成为要保护的另一标识，并且也用于随时保护资源和位置。 为此，可通过下述某一方法将设备的标识引入 Azure AD：
 
-- Azure AD 联接
-- 混合 Azure AD 联接
+- Azure AD 加入
+- 混合 Azure AD 加入
 - Azure AD 注册
 
 借助将设备引入 Azure AD，可通过云和本地资源中的单一登录 (SSO) 最大程度地提高用户的工作效率。 同时，可以使用[条件访问](../active-directory-conditional-access-azure-portal.md)保护对云和本地资源的访问。
@@ -49,6 +49,9 @@ ms.locfileid: "39368865"
 -  [Azure Active Directory 中的设备管理简介](../device-management-introduction.md)
     
 -  [如何计划混合 Azure Active Directory 加入实现](hybrid-azuread-join-plan.md)
+
+-  [如何控制设备的混合 Azure AD 加入](hybrid-azuread-join-control.md)
+  
 
 要配置本文中的方案，需要安装[最新版本的 Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 或更高版本)。 
  
@@ -101,7 +104,7 @@ ms.locfileid: "39368865"
 
     ![设备选项](./media/hybrid-azuread-join-managed-domains/15.png)
 
-6. 在 SCP 页上，对于希望 Azure AD Connect 指向 SCP 的每个林，执行以下步骤，然后单击“下一步”： 
+6. 在 SCP 页上，对于希望 Azure AD Connect 配置 SCP 的每个林，执行以下步骤，然后单击“下一步”： 
 
     ![SCP](./media/hybrid-azuread-join-managed-domains/16.png)
 
@@ -119,7 +122,7 @@ ms.locfileid: "39368865"
 
 8. 在“准备好配置”页上，单击“配置”。 
 
-    ![准备好配置](./media/hybrid-azuread-join-managed-domains/19.png)
+    ![已准备好配置](./media/hybrid-azuread-join-managed-domains/19.png)
 
 9. 在“配置完成”页上，单击“退出”。 
 
@@ -156,8 +159,6 @@ ms.locfileid: "39368865"
 
 - `https://device.login.microsoftonline.com`
 
-- `https://device.login.microsoftonline.com`
-
 - `https://autologon.microsoftazuread-sso.com`。
 
 此外，还需要在用户的本地 Intranet 区域中启用“允许通过脚本更新状态栏”。
@@ -191,14 +192,13 @@ ms.locfileid: "39368865"
 
 如果在完成已加入域的 Windows 设备的混合 Azure AD 联接方面遇到问题，请参阅：
 
-- [对 Windows 当前设备的混合 Azure AD 联接进行故障排除](../device-management-troubleshoot-hybrid-join-windows-current.md)
-- [对 Windows 下层设备的混合 Azure AD 联接进行故障排除](../device-management-troubleshoot-hybrid-join-windows-legacy.md)
-
+- [对 Windows 当前设备的混合 Azure AD 联接进行故障排除](troubleshoot-hybrid-join-windows-current.md)
+- [对 Windows 下层设备的混合 Azure AD 联接进行故障排除](troubleshoot-hybrid-join-windows-legacy.md)
 
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [为联盟域配置混合 Azure Active Directory 联接](hybrid-azuread-join-federated-domains.md)
-> [手动配置混合 Azure Active Directory 联接](../device-management-hybrid-azuread-joined-devices-setup.md)
+> [手动配置混合 Azure Active Directory 联接](hybrid-azuread-join-manual-steps.md)
 

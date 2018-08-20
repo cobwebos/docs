@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 1475e1955a282581c66235c13d4dbe7153735a35
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: e0c9708107139ec899cd5902a68ff90b57b741f7
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526736"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005913"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -674,6 +674,12 @@ if ($fileShare -eq $null) {
 2. 检查“混合文件同步服务”是否与“读取器和数据访问”角色一起显示在列表中。 
 
     ![存储帐户访问控制选项卡中的“混合文件同步服务”服务主体的屏幕截图](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
+
+    如果“混合文件同步服务”没有出现在列表中，请执行以下步骤：
+
+    - 单击 **“添加”**。
+    - 在“角色”字段中，选择“读者和数据访问”。
+    - 在“选择”字段中，键入“混合文件同步服务”，选择角色并单击“保存”。
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 ```PowerShell    

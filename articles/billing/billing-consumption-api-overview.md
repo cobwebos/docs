@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/07/2018
 ms.author: erikre
-ms.openlocfilehash: 69e148089f48ebe04faceff87b08eb3f7127f8a3
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: c37ff7e2f81b3dbca42193777287dae873768e24
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248361"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630494"
 ---
 # <a name="azure-consumption-api-overview"></a>Azure 使用情况 API 概述 
 

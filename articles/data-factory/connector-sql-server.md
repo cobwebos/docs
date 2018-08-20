@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 7fc4fc42893ec839f3ffbe667e9fcfad944115f5
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 06535cd86e32d9e5d083bfde5f1c40e345a88640
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053551"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004613"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 SQL Server 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -55,7 +55,7 @@ SQL Server 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SqlServer** | 是 |
-| connectionString |指定使用 SQL 身份验证或 Windows 身份验证连接到 SQL Server 数据库时所需的 connectionString 信息。 请参阅以下示例，并添加扩展以包含更多属性，例如添加 AlwaysOn。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
+| connectionString |指定使用 SQL 身份验证或 Windows 身份验证连接到 SQL Server 数据库时所需的 connectionString 信息。 请参阅以下示例。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
 | userName |如果使用的是 Windows 身份验证，请指定用户名。 示例：**域名\\用户名**。 |否 |
 | password |指定为 userName 指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
@@ -444,7 +444,7 @@ create table dbo.TargetTbl
 }
 ```
 
-在数据库中，使用与 SqlWriterStoredProcedureName 相同的名称定义存储过程。 它处理来自指定源的输入数据，并合并到输出表中。 请注意，存储过程的参数名称应与数据集中定义的“tableName”相同。
+在数据库中，使用与 SqlWriterStoredProcedureName 相同的名称定义存储过程。 它处理来自指定源的输入数据，并合并到输出表中。 存储过程中的表类型的参数名称应与数据集中定义的“tableName”相同。
 
 ```sql
 CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)

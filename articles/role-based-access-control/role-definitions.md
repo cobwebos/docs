@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/17/2018
+ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 416565a248fc9ef0861b5309d71fdac3b8fccc22
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 3d88ac7adc950e2c216824f74586ff6ef4f70712
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116055"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715764"
 ---
 # <a name="understand-role-definitions"></a>了解角色定义
 
@@ -214,7 +214,7 @@ Bob 的权限限制为[存储 Blob 数据参与者（预览版）](built-in-role
 
 ## <a name="assignablescopes"></a>AssignableScopes
 
-`AssignableScopes` 属性指定角色可供分配的范围（管理组（目前处于预览状态）、订阅、资源组或资源）。 可以让角色只在需要它的订阅或资源组中进行分配，而不影响其他订阅或资源组的用户体验。 必须使用至少一个管理组、订阅、资源组或资源 ID。
+`AssignableScopes` 属性指定角色可供分配的范围（订阅、资源组或资源）。 可以让角色只在需要它的订阅或资源组中进行分配，而不影响其他订阅或资源组的用户体验。 必须使用至少一个订阅、资源组或资源 ID。
 
 内置角色已将 `AssignableScopes` 设置为根范围 (`"/"`)。 根范围指示角色可供在所有范围中进行分配。 有效的可分配范围的示例包括：
 

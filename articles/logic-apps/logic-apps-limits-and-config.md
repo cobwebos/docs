@@ -7,15 +7,15 @@ author: ecfan
 ms.author: estfan
 manager: jeconnoc
 ms.topic: article
-ms.date: 07/31/2018
+ms.date: 08/10/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 644d382b87b0cc7c60cc8917edbaeff34b222718
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: b60b25e1692e065276d731d6cad8700373f1c456
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390732"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038084"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -69,6 +69,14 @@ ms.locfileid: "39390732"
 2. 在“运行时选项”下，从“运行历史记录保留天数”列表中选择“自定义”。 
 
 3. 输入或拖动滑块以获得所需的天数。
+
+<a name="disable-delete"></a>
+
+## <a name="disabling-or-deleting-logic-apps"></a>禁用或删除逻辑应用
+
+禁用逻辑应用后，任何新运行都不会实例化。 所有正在进行的和挂起的运行将继续进行，直到完成，这可能要花费一些时间才能完成。
+
+删除逻辑应用后，任何新运行都不会实例化。 所有正在进行和挂起的运行都将取消。 如果有成千上万个运行，取消操作可能需要很长时间才能完成。
 
 <a name="looping-debatching-limits"></a>
 

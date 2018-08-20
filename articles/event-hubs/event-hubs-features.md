@@ -3,7 +3,7 @@ title: Azure 事件中心功能概述 | Microsoft Docs
 description: 有关 Azure 事件中心功能的概述和详细信息
 services: event-hubs
 documentationcenter: .net
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: na
@@ -11,19 +11,22 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/08/2018
-ms.author: sethm
-ms.openlocfilehash: f16f8aa73ecfa3e0a47ce2373a2e28a7a9968ff5
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.author: shvija
+ms.openlocfilehash: abc85c322f7b8ee63c06639ae8845a5f07266b50
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248735"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40007042"
 ---
 # <a name="event-hubs-features-overview"></a>事件中心功能概述
 
 Azure 事件中心是可缩放的事件处理服务，它引入并处理大量事件和数据，具有低延迟和高可靠性。 有关简要概述，请参阅[什么是事件中心？](event-hubs-what-is-event-hubs.md)。
 
 本文基于[概述文章](event-hubs-what-is-event-hubs.md)中的信息编写，并提供有关事件中心组件和功能的技术和实现详细信息。
+
+## <a name="namespace"></a>命名空间
+事件中心命名空间提供唯一的范围容器，可以通过其[完全限定的域名](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)进行引用，而在该容器中，可以创建一个或多个事件中心或 Kafka 主题。 
 
 ## <a name="event-publishers"></a>事件发布者
 
@@ -145,14 +148,14 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 
 事件中心的吞吐量容量由“吞吐量单位”控制。 吞吐量单位是预先购买的容量单位。 单个吞吐量单位包括以下容量：
 
-* 入口：最高每秒 1 MB 或每秒 1000 个事件（以先达到的限制为准）
-* 出口：最高每秒 2 MB
+* 入口：最高每秒 1 MB 或每秒 1000 个事件（以先达到的限制为准）。
+* 出口：最高每秒 2 MB，或每秒 4096 个事件。
 
 超出所购吞吐量单位的容量时，入口受限，返回 [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception)。 出口不会生成限制异常，但仍受限于所购吞吐量单位的容量。 如果收到发布速率异常或者预期会看到更高的出口，请务必检查为命名空间购买了多少吞吐量单位。 可以在 [Azure 门户](https://portal.azure.com)的命名空间的“规模”边栏选项卡上管理吞吐量单位。 也可使用[事件中心 API](event-hubs-api-overview.md) 以编程方式管理吞吐量单位。
 
 吞吐量单位按小时计费，需提前购买。 购买后，吞吐量单位的最短计费时限为一小时。 最多可以为一个事件中心命名空间购买 20 个吞吐量单位，这些单位跨此命名空间内的所有事件中心进行共享。
 
-联系 Azure 支持部门即可购买更多吞吐量单位（以块的形式购买，每个块 20 个单位，最多可购买 100 个单位）。 除此之外，还可以购买包含 100 个吞吐量单位的块级元素。
+可以联系 Azure 支持部门来购买更多吞吐量单位（以块的形式购买，每个块 20 个单位，最多可购买 100 个单位）。 你可以超出该限制购买包含 100 个吞吐量单位的块级元素。
 
 建议权衡吞吐量单位和分区数目，实现最佳缩放。 一个分区最多只能缩放一个吞吐量单位。 吞吐量单位数应小于或等于事件中心内的分区数。
 
@@ -165,7 +168,7 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 * 使用[事件中心教程][Event Hubs tutorial]入门
 * [事件中心编程指南](event-hubs-programming-guide.md)
 * [事件中心中的可用性和一致性](event-hubs-availability-and-consistency.md)
-* [事件中心常见问题](event-hubs-faq.md)
+* [事件中心常见问题解答](event-hubs-faq.md)
 * [事件中心示例][]
 
 [Event Hubs tutorial]: event-hubs-dotnet-standard-getstarted-send.md

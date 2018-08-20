@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: f654aaa6d44011a089008558849d37bf6cdfa6f6
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 6dfa1f247a079bf801f28d1083c86d36a74117c5
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39037221"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004192"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>在 Azure 门户中添加 Azure Active Directory B2B 协作用户
 
@@ -40,6 +40,9 @@ ms.locfileid: "39037221"
 5. 在“用户名”下，输入外部用户的电子邮件地址。 （可选）包含一条欢迎消息。 例如：
 
    ![显示“新来宾用户”在 UI 中的位置](./media/add-users-administrator/InviteGuest.png) 
+
+    > [!NOTE]
+    > 某些电子邮件提供程序允许用户向其电子邮件地址中添加加号 (+) 和附加文本来帮助执行收件箱筛选之类的操作。 但是，Azure AD 当前不支持在电子邮件地址中使用加号。 为避免在传送时出现问题，请省略加号及其之后的任何字符，直至 @ 符号。
 
 6. 选择“邀请”，以自动向来宾用户发送邀请。 
  

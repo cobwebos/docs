@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
-ms.openlocfilehash: cb402f51ca20551bf34140322f3f259470a637ac
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: eb2b26333647d464a3a18cd07bf1576251fb3830
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656391"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715397"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 Azure 虚拟机部署
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -72,6 +72,7 @@ ms.locfileid: "34656391"
 [2367194]:https://launchpad.support.sap.com/#/notes/2367194
 
 [azure-cli]:../../../cli-install-nodejs.md
+[azure-cli-2]:https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
 [azure-portal]:https://portal.azure.com
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
@@ -182,7 +183,7 @@ ms.locfileid: "34656391"
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
 
-[msdn-set-azurermvmaemextension]:https://msdn.microsoft.com/library/azure/mt670598.aspx
+[msdn-set-azurermvmaemextension]:https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmaemextension
 
 [planning-guide]:planning-guide.md (适用于 SAP 的 Azure 虚拟机规划和实施)
 [planning-guide-1.2]:planning-guide.md#e55d1e22-c2c8-460b-9897-64622a34fdff (资源)
@@ -406,11 +407,11 @@ ms.locfileid: "34656391"
 #### <a name="create-a-virtual-machine-by-using-the-azure-portal"></a>使用 Azure 门户创建虚拟机
 使用 Azure 市场中的映像创建新虚拟机的最简单方式是使用 Azure 门户。
 
-1.  转到 <https://portal.azure.com/#create/hub>。  或者，在 Azure 门户菜单中，选择“+ 新建”。
-2.  选择“计算”，并选择要部署的操作系统的类型。 例如，Windows Server 2012 R2、SUSE Linux Enterprise Server 12 (SLES 12)、Red Hat Enterprise Linux 7.2 (RHEL 7.2) 或 Oracle Linux 7.2。 默认列表视图并未显示所有受支持的操作系统。 若要查看完整列表，请选择“查看所有”。 有关 SAP 软件部署支持的操作系统的详细信息，请参阅 SAP 说明 [1928533]。
-3.  在下一页上，查看条款和条件。
-4.  在“选择部署模型”框中，选择“资源管理器”。
-5.  选择**创建**。
+1.  转到  <https://portal.azure.com/#create/hub> 。  或者，在 Azure 门户菜单中，选择“+ 新建”。
+1.  选择“计算”，并选择要部署的操作系统的类型。 例如，Windows Server 2012 R2、SUSE Linux Enterprise Server 12 (SLES 12)、Red Hat Enterprise Linux 7.2 (RHEL 7.2) 或 Oracle Linux 7.2。 默认列表视图并未显示所有受支持的操作系统。 若要查看完整列表，请选择“查看所有”。 有关 SAP 软件部署支持的操作系统的详细信息，请参阅 SAP 说明 [1928533]。
+1.  在下一页上，查看条款和条件。
+1.  在“选择部署模型”框中，选择“资源管理器”。
+1.  选择**创建**。
 
 向导将引导完成创建虚拟机以及所有必需资源（例如网络接口和存储帐户）时所需的参数的设置。 其中一些参数包括：
 
@@ -421,11 +422,11 @@ ms.locfileid: "34656391"
  * **订阅**：选择要用于预配新虚拟机的订阅。
  * **资源组**：VM 的资源组的名称。 可以输入一个新资源组的名称或已存在的资源组的名称。
  * **位置**：要将新虚拟机部署到的地方。 如果想要将虚拟机连接到本地网络，请确保选择将 Azure 连接到本地网络的虚拟网络的位置。 有关详细信息，请参阅[适用于 SAP NetWeaver 的 Azure 虚拟机规划和实施][planning-guide]中的 [Microsoft Azure 网络][planning-guide-microsoft-azure-networking]。
-2. **大小**：
+1. **大小**：
 
      有关支持的 VM 类型的列表，请查看 SAP 说明 [1928533]。 如果想要使用 Azure 高级存储，请确保选择正确的 VM 类型。 并非所有 VM 类型都支持高级存储。 有关详细信息，请参阅[适用于 SAP NetWeaver 的 Azure 虚拟机规划和实施][planning-guide]中的[存储：Microsoft Azure 存储和数据磁盘][planning-guide-storage-microsoft-azure-storage-and-data-disks]与 [Azure 高级存储][planning-guide-azure-premium-storage]。
 
-3. **设置**：
+1. **设置**：
   * **存储**
     * **磁盘类型**：选择 OS 磁盘的磁盘类型。 若要对数据磁盘使用高级存储，我们建议也对 OS 磁盘使用高级存储。
     * **使用托管磁盘**：若要使用托管磁盘，请选择“是”。 有关托管磁盘的详细信息，请参阅规划指南中的[托管磁盘][planning-guide-managed-disks]一章。
@@ -440,7 +441,7 @@ ms.locfileid: "34656391"
     * **启动诊断**：可以选择“禁用”启动诊断。
     * **来宾 OS 诊断**：可以选择“禁用”监视诊断。
 
-4. **汇总**：
+1. **汇总**：
 
   复查选择，然后选择“确定”。
 
@@ -469,7 +470,7 @@ ms.locfileid: "34656391"
   * **资源组**：要用来部署模板的资源组。 可以创建一个新的资源组，也可以选择订阅中的一个现有资源组。
   * **位置**：要将模板部署到的地方。 如果选择了一个现有资源组，则会使用该资源组的位置。
 
-2. **设置**：
+1. **设置**：
   * **SAP 系统 ID**：SAP 系统 ID (SID)。
   * **OS 类型**：要部署的操作系统，例如 Windows Server 2012 R2、SUSE Linux Enterprise Server 12 (SLES 12)、Red Hat Enterprise Linux 7.2 (RHEL 7.2) 或 Oracle Linux 7.2。
 
@@ -492,10 +493,10 @@ ms.locfileid: "34656391"
   * **新子网或现有子网**：确定是要创建新的虚拟网络和子网，还是使用现有子网。 如果已有连接到本地网络的虚拟网络，请选择“现有”。
   * **子网 ID**：虚拟机将连接到的子网的 ID。 选择用于将虚拟机连接到本地网络的虚拟专用网络 (VPN) 或 Azure ExpressRoute 虚拟网络的子网。 ID 通常如下所示：/subscriptions/&lt;订阅 id>/resourceGroups/&lt;资源组名称>/providers/Microsoft.Network/virtualNetworks/&lt;虚拟网络名称>/subnets/&lt;子网名称>
 
-3. **条款和条件**：  
+1. **条款和条件**：  
     查看并接受法律条款。
 
-4.  选择“购买”。
+1.  选择“购买”。
 
 使用 Azure 市场中的映像时，默认情况下会部署 Azure VM 代理。
 
@@ -541,8 +542,8 @@ ms.locfileid: "34656391"
 #### <a name="create-a-virtual-machine-by-using-the-azure-portal"></a>使用 Azure 门户创建虚拟机
 通过托管磁盘映像创建新虚拟机的最简单方式是使用 Azure 门户。 有关如何创建托管磁盘映像的详细信息，请阅读[在 Azure 中捕获通用 VM 的托管映像](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)
 
-1.  转到 <https://ms.portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Compute%2Fimages>。 或者，在 Azure 门户菜单中，选择“映像”。
-2.  选择想要部署的托管磁盘映像并单击“创建 VM”
+1.  转到  <https://ms.portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Compute%2Fimages> 。 或者，在 Azure 门户菜单中，选择“映像”。
+1.  选择想要部署的托管磁盘映像并单击“创建 VM”
 
 向导将引导完成创建虚拟机以及所有必需资源（例如网络接口和存储帐户）时所需的参数的设置。 其中一些参数包括：
 
@@ -553,11 +554,11 @@ ms.locfileid: "34656391"
  * **订阅**：选择要用于预配新虚拟机的订阅。
  * **资源组**：VM 的资源组的名称。 可以输入一个新资源组的名称或已存在的资源组的名称。
  * **位置**：要将新虚拟机部署到的地方。 如果想要将虚拟机连接到本地网络，请确保选择将 Azure 连接到本地网络的虚拟网络的位置。 有关详细信息，请参阅[适用于 SAP NetWeaver 的 Azure 虚拟机规划和实施][planning-guide]中的 [Microsoft Azure 网络][planning-guide-microsoft-azure-networking]。
-2. **大小**：
+1. **大小**：
 
      有关支持的 VM 类型的列表，请查看 SAP 说明 [1928533]。 如果想要使用 Azure 高级存储，请确保选择正确的 VM 类型。 并非所有 VM 类型都支持高级存储。 有关详细信息，请参阅[适用于 SAP NetWeaver 的 Azure 虚拟机规划和实施][planning-guide]中的[存储：Microsoft Azure 存储和数据磁盘][planning-guide-storage-microsoft-azure-storage-and-data-disks]与 [Azure 高级存储][planning-guide-azure-premium-storage]。
 
-3. **设置**：
+1. **设置**：
   * **存储**
     * **磁盘类型**：选择 OS 磁盘的磁盘类型。 若要对数据磁盘使用高级存储，我们建议也对 OS 磁盘使用高级存储。
     * **使用托管磁盘**：若要使用托管磁盘，请选择“是”。 有关托管磁盘的详细信息，请参阅规划指南中的[托管磁盘][planning-guide-managed-disks]一章。
@@ -571,7 +572,7 @@ ms.locfileid: "34656391"
     * **启动诊断**：可以选择“禁用”启动诊断。
     * **来宾 OS 诊断**：可以选择“禁用”监视诊断。
 
-4. **汇总**：
+1. **汇总**：
 
   复查选择，然后选择“确定”。
 
@@ -598,7 +599,7 @@ ms.locfileid: "34656391"
   * **订阅**：要用来部署模板的订阅。
   * **资源组**：要用来部署模板的资源组。 可以创建一个新的资源组，也可以选择订阅中的一个现有资源组。
   * **位置**：要将模板部署到的地方。 如果选择了一个现有资源组，则会使用该资源组的位置。
-2. **设置**：
+1. **设置**：
   * **SAP 系统 ID**：SAP 系统 ID。
   * **OS 类型**：要部署的操作系统类型（Windows 或 Linux）。
   * **SAP 系统大小**：SAP 系统的大小。
@@ -625,10 +626,10 @@ ms.locfileid: "34656391"
 
     /subscriptions/&lt;订阅 id>/resourceGroups/&lt;资源组名称>/providers/Microsoft.Network/virtualNetworks/&lt;虚拟网络名称>/subnets/&lt;子网名称>
 
-3. **条款和条件**：  
+1. **条款和条件**：  
     查看并接受法律条款。
 
-4.  选择“购买”。
+1.  选择“购买”。
 
 #### <a name="install-the-vm-agent-linux-only"></a>安装 VM 代理（仅限 Linux）
 要使用前面的部分中描述的模板，必须已经在用户映像中安装了 Linux 代理，否则，部署会失败。 如[下载、安装并启用 Azure VM 代理][deployment-guide-4.4]中所述，下载 VM 代理并将其安装在用户映像中。 如果不使用模板，也可以在以后安装 VM 代理。
@@ -688,7 +689,7 @@ ms.locfileid: "34656391"
   * **订阅**：要用来部署模板的订阅。
   * **资源组**：要用来部署模板的资源组。 可以创建一个新的资源组，也可以选择订阅中的一个现有资源组。
   * **位置**：要将模板部署到的地方。 如果选择了一个现有资源组，则会使用该资源组的位置。
-2. **设置**：
+1. **设置**：
   * **SAP 系统 ID**：SAP 系统 ID。
   * **OS 类型**：要部署的操作系统类型（Windows 或 Linux）。
   * **SAP 系统大小**：SAP 系统的大小。
@@ -708,10 +709,10 @@ ms.locfileid: "34656391"
 
     /subscriptions/&lt;订阅 id>/resourceGroups/&lt;资源组名称>/providers/Microsoft.Network/virtualNetworks/&lt;虚拟网络名称>/subnets/&lt;子网名称>
 
-3. **条款和条件**：  
+1. **条款和条件**：  
     查看并接受法律条款。
 
-4.  选择“购买”。
+1.  选择“购买”。
 
 #### <a name="install-the-vm-agent"></a>安装 VM 代理
 要使用前面的部分中描述的模板，必须已经在 OS 磁盘中安装了 VM 代理，否则，部署会失败。 如[下载、安装并启用 Azure VM 代理][deployment-guide-4.4]中所述，下载 VM 代理并将其安装在 VM 中。
@@ -745,15 +746,15 @@ ms.locfileid: "34656391"
 
 ### <a name="604bcec2-8b6e-48d2-a944-61b0f5dee2f7"></a>部署 Azure PowerShell cmdlet
 1.  转到 [Microsoft Azure 下载](https://azure.microsoft.com/downloads/)。
-2.  在“命令行工具”下，在“PowerShell”下选择“Windows 安装”。
-3.  在 Microsoft 下载管理器对话框中，针对已下载的文件（例如 WindowsAzurePowershellGet.3f.3f.3fnew.exe）选择“运行”。
-4.  若要运行 Microsoft Web 平台安装程序 (Microsoft Web PI)，请选择“是”。
-5.  将显示一个如下所示的页面：
+1.  在“命令行工具”下，在“PowerShell”下选择“Windows 安装”。
+1.  在 Microsoft 下载管理器对话框中，针对已下载的文件（例如 WindowsAzurePowershellGet.3f.3f.3fnew.exe）选择“运行”。
+1.  若要运行 Microsoft Web 平台安装程序 (Microsoft Web PI)，请选择“是”。
+1.  将显示一个如下所示的页面：
 
   ![Azure PowerShell cmdlet 的安装页面][deployment-guide-figure-500]<a name="figure-5"></a>
 
-6.  选择“安装”，并接受 Microsoft 软件许可条款。
-7.  PowerShell 安装完成。 选择“完成”以关闭安装向导。
+1.  选择“安装”，并接受 Microsoft 软件许可条款。
+1.  PowerShell 安装完成。 选择“完成”以关闭安装向导。
 
 请经常检查 PowerShell cmdlet 的更新，通常每月都会更新。 检查更新的最简单方法是执行上述安装步骤，直到出现步骤 5 中显示的安装页面。 步骤 5 中显示的页面上包括了 cmdlet 的发布日期和发行版号。 除非 SAP 说明 [1928533] 或 SAP 说明 [2015553] 中另有规定，否则建议使用最新版本的 Azure PowerShell cmdlet。
 
@@ -773,15 +774,15 @@ ms.locfileid: "34656391"
 
 ### <a name="1ded9453-1330-442a-86ea-e0fd8ae8cab3"></a>部署 Azure CLI
 1.  转到 [Microsoft Azure 下载](https://azure.microsoft.com/downloads/)。
-2.  在“命令行工具”下，在“Azure 命令行接口”下选择适用于操作系统的**安装**链接。
-3.  在 Microsoft 下载管理器对话框中，针对已下载的文件（例如 WindowsAzureXPlatCLI.3f.3f.3fnew.exe）选择“运行”。
-4.  若要运行 Microsoft Web 平台安装程序 (Microsoft Web PI)，请选择“是”。
-5.  将显示一个如下所示的页面：
+1.  在“命令行工具”下，在“Azure 命令行接口”下选择适用于操作系统的**安装**链接。
+1.  在 Microsoft 下载管理器对话框中，针对已下载的文件（例如 WindowsAzureXPlatCLI.3f.3f.3fnew.exe）选择“运行”。
+1.  若要运行 Microsoft Web 平台安装程序 (Microsoft Web PI)，请选择“是”。
+1.  将显示一个如下所示的页面：
 
   ![Azure PowerShell cmdlet 的安装页面][deployment-guide-figure-500]<a name="figure-5"></a>
 
-6.  选择“安装”，并接受 Microsoft 软件许可条款。
-7.  Azure CLI 安装完成。 选择“完成”以关闭安装向导。
+1.  选择“安装”，并接受 Microsoft 软件许可条款。
+1.  Azure CLI 安装完成。 选择“完成”以关闭安装向导。
 
 请经常检查 Azure CLI 的更新，通常每月都会更新。 检查更新的最简单方法是执行上述安装步骤，直到出现步骤 5 中显示的安装页面。
 
@@ -808,13 +809,13 @@ azure --version
 #### <a name="b2db5c9a-a076-42c6-9835-16945868e866"></a>Windows
 1.  下载 Azure VM 代理：
   1.  下载 [Azure VM 代理安装程序包](https://go.microsoft.com/fwlink/?LinkId=394789)。
-  2.  将 VM 代理 MSI 包存储在个人计算机或服务器本地。
-2.  安装 Azure VM 代理：
+  1.  将 VM 代理 MSI 包存储在个人计算机或服务器本地。
+1.  安装 Azure VM 代理：
   1.  使用远程桌面协议 (RDP) 连接到已部署的 Azure VM。
-  2.  在 VM 上打开一个 Windows 资源管理器窗口，并选择 VM 代理的 MSI 文件的目标目录。
-  3.  将 Azure VM 代理安装程序 MSI 文件从本地计算机/服务器拖放到 VM 上 VM 代理的目标目录中。
-  4.  在 VM 上双击该 MSI 文件。
-3.  对于加入到本地域的 VM，请确保最终的 Internet 代理设置也适用于 VM 中的 Windows 本地系统帐户 (S-1-5-18)，如[配置代理][deployment-guide-configure-proxy]中所述。 VM 代理在此上下文中运行，并且需要能够连接到 Azure。
+  1.  在 VM 上打开一个 Windows 资源管理器窗口，并选择 VM 代理的 MSI 文件的目标目录。
+  1.  将 Azure VM 代理安装程序 MSI 文件从本地计算机/服务器拖放到 VM 上 VM 代理的目标目录中。
+  1.  在 VM 上双击该 MSI 文件。
+1.  对于加入到本地域的 VM，请确保最终的 Internet 代理设置也适用于 VM 中的 Windows 本地系统帐户 (S-1-5-18)，如[配置代理][deployment-guide-configure-proxy]中所述。 VM 代理在此上下文中运行，并且需要能够连接到 Azure。
 
 更新 Azure VM 代理时不需要用户参与。 VM 代理会自动更新，并且不要求 VM 重新启动。
 
@@ -842,13 +843,13 @@ azure --version
 必须正确设置代理设置，本地系统帐户才能访问 Internet。 如果没有通过组策略设置代理设置，则可以为本地系统帐户配置这些设置。
 
 1. 转到“开始”，输入 **gpedit.msc**，并选择 **Enter**。
-2. 选择“计算机配置” > “管理模板” > “Windows 组件” > “Internet Explorer”。 确保“按计算机进行代理设置(而不是按用户)”设置已禁用或者未配置。
-3. 在**控制面板**中，转到“网络和共享中心” > “Internet 选项”。
-4. 在“连接”选项卡上，选择“局域网设置”按钮。
-5. 清除**自动检测设置**复选框。
-6. 选中“为 LAN 使用代理服务器”复选框，并输入代理地址和端口。
-7. 选择“高级”按钮。
-8. 在“例外”框中，输入 IP 地址 **168.63.129.16**。 选择“确定”。
+1. 选择“计算机配置” > “管理模板” > “Windows 组件” > “Internet Explorer”。 确保“按计算机进行代理设置(而不是按用户)”设置已禁用或者未配置。
+1. 在**控制面板**中，转到“网络和共享中心” > “Internet 选项”。
+1. 在“连接”选项卡上，选择“局域网设置”按钮。
+1. 清除**自动检测设置**复选框。
+1. 选中“为 LAN 使用代理服务器”复选框，并输入代理地址和端口。
+1. 选择“高级”按钮。
+1. 在“例外”框中，输入 IP 地址 **168.63.129.16**。 选择“确定”。
 
 #### <a name="linux"></a>Linux
 在 Microsoft Azure 来宾代理的配置文件（位于 \\etc\\waagent.conf 中）中配置正确的代理。
@@ -860,12 +861,12 @@ azure --version
   HttpProxy.Host=<proxy host>
 
   ```
-2.  **HTTP 代理端口**。 例如，将其设置为 **80**。
+1.  **HTTP 代理端口**。 例如，将其设置为 **80**。
   ```
   HttpProxy.Port=<port of the proxy host>
 
   ```
-3.  重新启动该代理。
+1.  重新启动该代理。
 
   ```
   sudo service waagent restart
@@ -899,7 +900,7 @@ azure --version
 若要使用 PowerShell 安装适用于 SAP 的 Azure 增强型监视扩展，请执行以下操作：
 
 1. 确保已安装最新版本的 Azure PowerShell cmdlet。 有关详细信息，请参阅[部署 Azure PowerShell cmdlet][deployment-guide-4.1]。  
-2. 运行以下 Azure PowerShell cmdlet。
+1. 运行以下 Azure PowerShell cmdlet。
     若要获得可用环境的列表，请运行 `commandlet Get-AzureRmEnvironment`。 如果想要使用全局 Azure，则环境是 **AzureCloud**。 对于中国区 Azure，请选择 **AzureChinaCloud**。
 
     ```powershell
@@ -930,37 +931,61 @@ azure --version
 #### <a name="408f3779-f422-4413-82f8-c57a23b4fc2f"></a>适用于 Linux VM 的 Azure CLI
 若要使用 Azure CLI 安装适用于 SAP 的 Azure 增强型监视扩展，请执行以下操作：
 
-1. 如[安装 Azure CLI 1.0][azure-cli] 中所述安装 Azure CLI 1.0。
-2. 使用 Azure 帐户进行登录：
+1. 使用 Azure CLI 1.0 进行安装
 
-  ```
-  azure login
-  ```
+   1. 如[安装 Azure CLI 1.0][azure-cli] 中所述安装 Azure CLI 1.0。
+   1. 使用 Azure 帐户进行登录：
 
-3. 切换到 Azure 资源管理器模式：
+      ```
+      azure login
+      ```
 
-  ```
-  azure config mode arm
-  ```
+   1. 切换到 Azure 资源管理器模式：
 
-4. 启用 Azure 增强型监视：
+      ```
+      azure config mode arm
+      ```
 
-  ```
-  azure vm enable-aem <resource-group-name> <vm-name>
-  ```
+   1. 启用 Azure 增强型监视：
 
-5. 验证 Azure 增强型监视扩展在 Azure Linux VM 上是否处于活动状态。 检查 \\var\\lib\\AzureEnhancedMonitor\\PerfCounters 文件是否存在。 如果它存在，则在命令提示符下运行以下命令来显示 Azure 增强型监视器收集的信息：
-```
-cat /var/lib/AzureEnhancedMonitor/PerfCounters
-```
+      ```
+      azure vm enable-aem <resource-group-name> <vm-name>
+      ```
 
-输出如下所示：
-```
-2;cpu;Current Hw Frequency;;0;2194.659;MHz;60;1444036656;saplnxmon;
-2;cpu;Max Hw Frequency;;0;2194.659;MHz;0;1444036656;saplnxmon;
-???
-???
-```
+1. 使用 Azure CLI 2.0 进行安装
+
+   1. 如[安装 Azure CLI 2.0][azure-cli-2] 中所述安装 Azure CLI 2.0。
+   1. 使用 Azure 帐户进行登录：
+
+      ```
+      az login
+      ```
+
+   1. 安装 Azure CLI AEM 扩展
+  
+      ```
+      az extension add --name aem
+      ```
+  
+   1. 通过以下命令安装扩展
+  
+      ```
+      az vm aem set -g <resource-group-name> -n <vm name>
+      ```
+
+1. 验证 Azure 增强型监视扩展在 Azure Linux VM 上是否处于活动状态。 检查 \\var\\lib\\AzureEnhancedMonitor\\PerfCounters 文件是否存在。 如果它存在，则在命令提示符下运行以下命令来显示 Azure 增强型监视器收集的信息：
+
+   ```
+   cat /var/lib/AzureEnhancedMonitor/PerfCounters
+   ```
+
+   输出如下所示：
+   ```
+   ...
+   2;cpu;Current Hw Frequency;;0;2194.659;MHz;60;1444036656;saplnxmon;
+   2;cpu;Max Hw Frequency;;0;2194.659;MHz;0;1444036656;saplnxmon;
+   ...
+   ```
 
 ## <a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>检查端到端监视设置并对其进行故障排除
 在部署 Azure VM 并设置相关的 Azure 监视基础结构后，请检查 Azure 增强型监视扩展的所有组件是否都正常工作。
@@ -973,14 +998,14 @@ cat /var/lib/AzureEnhancedMonitor/PerfCounters
 #### <a name="run-the-readiness-check-on-a-windows-vm"></a>在 Windows VM 上运行就绪状态检查
 
 1.  登录到 Azure 虚拟机（不需要使用管理员帐户）。
-2.  打开命令提示符窗口。
-3.  在命令提示符下，将目录切换到适用于 SAP 的 Azure 增强型监视扩展的安装文件夹：C:\\Packages\\Plugins\\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;版本>\\drop
+1.  打开命令提示符窗口。
+1.  在命令提示符下，将目录切换到适用于 SAP 的 Azure 增强型监视扩展的安装文件夹：C:\\Packages\\Plugins\\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;版本>\\drop
 
   监视扩展的路径中的*版本*可能因具体情况而异。 如果在安装文件夹中看到了监视扩展的多个版本的文件夹，请检查 Windows 服务 AzureEnhancedMonitoring 的配置，并切换到“可执行文件的路径”指示的文件夹。
 
   ![运行适用于 SAP 的 Azure 增强型监视扩展的服务的属性][deployment-guide-figure-1000]
 
-4.  在命令提示符下，在不使用任何参数的情况下运行 **azperflib.exe**。
+1.  在命令提示符下，在不使用任何参数的情况下运行 **azperflib.exe**。
 
   > [!NOTE]
   > Azperflib.exe 以循环方式运行，并且每隔 60 秒更新一次所收集的计数器。 若要结束循环，请关闭命令提示符窗口。
@@ -1012,7 +1037,7 @@ Azperflib.exe 输出会显示针对 SAP 的所有已填充的 Azure 性能计数
 
 1.  使用 SSH 连接到 Azure 虚拟机。
 
-2.  检查 Azure 增强型监视扩展的输出。
+1.  检查 Azure 增强型监视扩展的输出。
 
   a.  运行 `more /var/lib/AzureEnhancedMonitor/PerfCounters`
 
@@ -1038,7 +1063,7 @@ Azperflib.exe 输出会显示针对 SAP 的所有已填充的 Azure 性能计数
 
    **预期结果**：显示一个类似于以下内容的条目：`python /usr/sbin/waagent -daemon`
 
-3.   确保 Azure 增强型监视扩展已安装且正在运行。
+1.   确保 Azure 增强型监视扩展已安装且正在运行。
 
   a.  运行 `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'`
 
@@ -1048,7 +1073,7 @@ Azperflib.exe 输出会显示针对 SAP 的所有已填充的 Azure 性能计数
 
      **预期结果**：显示一个类似于以下内容的条目：`python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon`
 
-3. 如 SAP 说明 [1031096] 中所述安装 SAP 主机代理，并检查 `saposcol` 的输出。
+1. 如 SAP 说明 [1031096] 中所述安装 SAP 主机代理，并检查 `saposcol` 的输出。
 
   a.  运行 `/usr/sap/hostctrl/exe/saposcol -d`
 
@@ -1064,7 +1089,7 @@ Azperflib.exe 输出会显示针对 SAP 的所有已填充的 Azure 性能计数
 如果[适用于 SAP 的 Azure 增强型监视的就绪状态检查][deployment-guide-5.1]中所述的测试指出未正确提供某些监视数据，请运行 `Test-AzureRmVMAEMExtension` cmdlet 来检查是否正确配置了适用于 SAP 的 Azure 监视基础结构和监视扩展。
 
 1.  确保已根据[部署 Azure PowerShell cmdlet][deployment-guide-4.1] 中所述安装了最新版本的 Azure PowerShell cmdlet。
-2.  运行以下 Azure PowerShell cmdlet。 若要获得可用环境的列表，请运行 cmdlet `Get-AzureRmEnvironment`。 若要使用全局 Azure，请选择 **AzureCloud** 环境。 对于中国区 Azure，请选择 **AzureChinaCloud**。
+1.  运行以下 Azure PowerShell cmdlet。 若要获得可用环境的列表，请运行 cmdlet `Get-AzureRmEnvironment`。 若要使用全局 Azure，请选择 **AzureCloud** 环境。 对于中国区 Azure，请选择 **AzureChinaCloud**。
   ```powershell
   $env = Get-AzureRmEnvironment -Name <name of the environment>
   Connect-AzureRmAccount -Environment $env
@@ -1072,11 +1097,11 @@ Azperflib.exe 输出会显示针对 SAP 的所有已填充的 Azure 性能计数
   Test-AzureRmVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
   ```
 
-3.  输入帐户数据并标识 Azure 虚拟机。
+1.  输入帐户数据并标识 Azure 虚拟机。
 
   ![特定于 SAP 的 Azure cmdlet Test-VMConfigForSAP_GUI 的输入页面][deployment-guide-figure-1200]
 
-4. 脚本将测试你选择的虚拟机的配置。
+1. 脚本将测试你选择的虚拟机的配置。
 
   ![对适用于 SAP 的 Azure 监视基础结构的测试成功时的输出][deployment-guide-figure-1300]
 

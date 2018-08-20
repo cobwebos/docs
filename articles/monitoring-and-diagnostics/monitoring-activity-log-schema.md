@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 4/12/2018
 ms.author: dukek
 ms.component: activitylog
-ms.openlocfilehash: 123ae27310d70812918f3c81ac3b9a71959a6c2c
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 9c1f4699f067ece3108813d28ff834c68f44316d
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917221"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003825"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure 活动日志事件架构
 通过 Azure 活动日志，可以深入了解 Azure 中发生的任何订阅级别事件。 本文介绍了每种数据类别的事件架构。 数据架构各有不同，具体取决于是在门户、PowerShell、CLI，或直接通过 REST API 读取数据，还是[使用日志配置文件将数据流式传输到存储或事件中心](./monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)。 以下示例显示的是通过门户、PowerShell、CLI 和 REST API 获得的架构。 本文末尾提供了这些属性到 [Azure 诊断日志架构](./monitoring-diagnostic-logs-schema.md)的映射。
@@ -110,7 +110,7 @@ ms.locfileid: "37917221"
 ```
 
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | 说明 |
+| 元素名称 | Description |
 | --- | --- |
 | authorization |包含事件的 RBAC 属性的 Blob。 通常包括“action”、“role”和“scope”属性。 |
 | caller |执行操作（UPN 声明或 SPN 声明，具体取决于可用性）的用户的电子邮件地址。 |
@@ -120,7 +120,7 @@ ms.locfileid: "37917221"
 | description |事件的静态文本说明。 |
 | eventDataId |事件的唯一标识符。 |
 | httpRequest |描述 Http 请求的 Blob。 通常包括“clientRequestId”、“clientIpAddress”和“method”（HTTP 方法。 例如 PUT）。 |
-| 级别 |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”、“Informational”和“Verbose” |
+| 级别 |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”和“Informational” |
 | resourceGroupName |受影响资源的资源组的名称。 |
 | resourceProviderName |受影响资源的资源提供程序的名称 |
 | resourceId |受影响资源的资源 ID。 |
@@ -258,7 +258,7 @@ ms.locfileid: "37917221"
 ```
 
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | 说明 |
+| 元素名称 | Description |
 | --- | --- |
 | caller | 始终是 Microsoft.Insights/alertRules |
 | channels | 始终是“Admin, Operation” |
@@ -266,7 +266,7 @@ ms.locfileid: "37917221"
 | correlationId | 字符串格式的 GUID。 |
 | description |警报事件的静态文本说明。 |
 | eventDataId |警报事件的唯一标识符。 |
-| 级别 |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”、“Informational”和“Verbose” |
+| 级别 |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”和“Informational” |
 | resourceGroupName |受影响资源的资源组的名称（如果是指标警报）。 对其它警报类型而言，这是包含警报本身的资源组的名称。 |
 | resourceProviderName |受影响资源的资源提供程序的名称（如果是指标警报）。 对其它警报类型而言，这是警报本身的资源提供程序的名称。 |
 | resourceId | 受影响资源的资源 ID 的名称（如果是指标警报）。 对其它警报类型而言，这是警报资源本身的资源 ID。 |
@@ -283,7 +283,7 @@ ms.locfileid: "37917221"
 该属性字段包含不同的值，具体取决于警报事件的源。 两种常见警报事件提供程序是活动日志警报和指标警报。
 
 #### <a name="properties-for-activity-log-alerts"></a>活动日志警报的属性
-| 元素名称 | 说明 |
+| 元素名称 | Description |
 | --- | --- |
 | properties.subscriptionId | 激活活动日志预警规则的活动日志事件的订阅 ID。 |
 | properties.eventDataId | 激活活动日志预警规则的活动日志事件的事件数据 ID。 |
@@ -294,7 +294,7 @@ ms.locfileid: "37917221"
 | properties.status | 激活活动日志预警规则的活动日志事件的状态。|
 
 #### <a name="properties-for-metric-alerts"></a>指标警报的属性
-| 元素名称 | 说明 |
+| 元素名称 | Description |
 | --- | --- |
 | properties.RuleUri | 指标预警规则自身的资源 ID。 |
 | properties.RuleName | 指标预警规则的名称。 |
@@ -367,7 +367,7 @@ ms.locfileid: "37917221"
 ```
 
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | 说明 |
+| 元素名称 | Description |
 | --- | --- |
 | caller | 始终是 Microsoft.Insights/autoscaleSettings |
 | channels | 始终是“Admin, Operation” |
@@ -375,7 +375,7 @@ ms.locfileid: "37917221"
 | correlationId | 字符串格式的 GUID。 |
 | description |自动缩放事件的静态文本说明。 |
 | eventDataId |自动缩放事件的唯一标识符。 |
-| 级别 |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”、“Informational”和“Verbose” |
+| 级别 |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”和“Informational” |
 | resourceGroupName |自动缩放设置的资源组名称。 |
 | resourceProviderName |自动缩放设置的资源提供程序名称。 |
 | resourceId |自动缩放设置的资源 ID。 |
@@ -393,7 +393,7 @@ ms.locfileid: "37917221"
 | submissionTimestamp |事件可供查询的时间戳。 |
 | subscriptionId |Azure 订阅 ID。 |
 
-## <a name="security"></a>“安全”
+## <a name="security"></a>安全
 此类别包含 Azure 安全中心生成的任何警报记录。 可在此类别中看到的事件类型示例为“执行了可疑的双扩展名文件”。
 
 ### <a name="sample-event"></a>示例事件
@@ -457,7 +457,7 @@ ms.locfileid: "37917221"
 ```
 
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | 说明 |
+| 元素名称 | Description |
 | --- | --- |
 | channels | 始终为“运行” |
 | correlationId | 字符串格式的 GUID。 |
@@ -465,7 +465,7 @@ ms.locfileid: "37917221"
 | eventDataId |安全事件的唯一标识符。 |
 | eventName |安全事件的友好名称。 |
 | id |安全事件的唯一资源标识符。 |
-| 级别 |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”、“Informational”或“Verbose” |
+| 级别 |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”或“Informational” |
 | resourceGroupName |资源的资源组名称。 |
 | resourceProviderName |Azure 安全中心的资源提供程序名称。 始终为“Microsoft.Security”。 |
 | resourceType |生成安全事件的资源的类型，如“Microsoft.Security/locations/alerts” |
@@ -537,7 +537,7 @@ ms.locfileid: "37917221"
 
 ```
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | 说明 |
+| 元素名称 | Description |
 | --- | --- |
 | channels | 始终为“运行” |
 | correlationId | 字符串格式的 GUID。 |
@@ -545,7 +545,7 @@ ms.locfileid: "37917221"
 | eventDataId | 建议事件的唯一标识符。 |
 | category | 始终为“Recommendation” |
 | id |建议事件的唯一资源标识符。 |
-| 级别 |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”、“Informational”或“Verbose” |
+| 级别 |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”或“Informational” |
 | operationName |操作的名称。  始终为“Microsoft.Advisor/generateRecommendations/action”|
 | resourceGroupName |资源的资源组名称。 |
 | resourceProviderName |此建议适用的资源的资源提供程序名称，例如“MICROSOFT.COMPUTE” |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: e4144ca0d87abda3d9f8de47e56af59d0e4af312
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: a499f609e517d880b3a942ac6dc3eb0dc10b69e7
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36938360"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038016"
 ---
 # <a name="azure-logging-and-auditing"></a>Azure 日志记录和审核
 
@@ -60,7 +60,7 @@ Azure 日志划分为以下类型：
 
 ![活动日志示意图](./media/azure-log-audit/azure-log-audit-fig1.png)
 
-可以通过 Azure 门户、[Azure CLI](https://docs.microsoft.com/azure/storage/storage-azure-cli)、PowerShell cmdlet 和 [Azure Monitor REST API](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough) 从活动日志检索事件。 活动日志的数据保留期为 19 天。
+可以通过 Azure 门户、[Azure CLI](https://docs.microsoft.com/azure/storage/storage-azure-cli)、PowerShell cmdlet 和 [Azure Monitor REST API](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough) 从活动日志检索事件。 活动日志的数据保留期为 90 天。
 
 活动日志事件的集成方案：
 
@@ -179,7 +179,7 @@ Azure AD 审核报告中的事件将保留 180 天。
 | 已获得验证  | 匿名|
 | :------------- | :-------------|
 | 成功的请求 | 成功的请求 |
-|失败的请求，包括超时、限制、网络、授权和其他错误 | 使用共享访问签名的请求，包括失败和成功的请求。 |
+|失败的请求，包括超时、限制、网络、授权和其他错误 | 使用共享访问签名的请求，包括失败和成功的请求 |
 | 使用共享访问签名的请求，包括失败和成功的请求 |客户端和服务器的超时错误 |
 |   分析数据请求 |    失败的 GET 请求，错误代码为 304（未修改） |
 | 不会记录存储分析本身发出的请求，如创建或删除日志。 若要查看所记录数据的完整列表，请参阅[存储分析记录的操作和状态消息](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages)和[存储分析日志格式](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format)。 | 不会记录所有其他失败的匿名请求。 若要查看所记录数据的完整列表，请参阅[存储分析记录的操作和状态消息](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages)和[存储分析日志格式](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format)。 |
@@ -267,7 +267,7 @@ Application Insights 主要面向开发团队，旨在帮助用户了解应用�
 
 下表列出并描述了集成方案：
 
-| 集成方案 | 说明 |
+| 集成方案 | Description |
 | --------------------- | :---------- |
 |[应用程序映射](https://docs.microsoft.com/azure/application-insights/app-insights-app-map)|应用的组件，包含关键指标和警报。||
 |[实例数据的诊断搜索](https://docs.microsoft.com/azure/application-insights/app-insights-diagnostic-search)| 搜索和筛选事件，例如请求、异常、依赖项调用、日志跟踪和页面视图。||

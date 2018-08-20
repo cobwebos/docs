@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 373a35ea7b93c7717cd251e276be60b14df0920f
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 4da8ec3bb20f2af2b8172731bbf9f43c302ffa94
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39400160"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004743"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse-preview"></a>使用 Java 和 Eclipse 创建第一个函数（预览版）
 
@@ -73,7 +73,7 @@ Maven 在新文件夹中创建名为 artifactId 的项目文件。 项目中生�
 
 ### <a name="debug-the-function-in-eclipse"></a>在 Eclipse 中调试函数
 
-在上一步骤的“运行方式配置设置”中，将 `azure-functions:run` 更改为 `mvn azure-functions:run -DenableDebug` 并运行更新的配置，以便在调试模式下启动函数应用。
+在上一步骤的“运行方式”配置设置中，将 `azure-functions:run` 更改为 `mvn azure-functions:run -DenableDebug` 并运行更新的配置，以便在调试模式下启动函数应用。
 
 选择“运行”菜单并打开“调试配置”。 选择“远程 Java 应用程序”并创建新配置。 为配置命名，并填写设置。 端口应与函数主机打开的调试端口一致，默认为 `5005`。 设置后，单击 `Debug` 开始调试。
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/08/2018
 ms.author: glenga
-ms.openlocfilehash: 5f629ea791a839e1eca25e7487ea395638d136ab
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 6afc54bfcbef4d0714e9a09d0aa27ea4829d4dd5
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344624"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715380"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions 的事件网格触发器
 
@@ -279,7 +279,7 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, Trac
 
 ### <a name="azure-cli"></a>Azure CLI
 
-若要使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) 创建订阅，请运行 [az eventgrid event-subscription create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_create) 命令。
+若要使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) 创建订阅，请运行 [az eventgrid event-subscription create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-create) 命令。
 
 该命令需要可调用函数的终结点 URL。 以下示例演示 URL 模式：
 
@@ -340,7 +340,7 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 4. [生成请求](#generate-a-request)，并从查看器应用复制请求正文。
 5. [将请求手动发布](#manually-post-the-request)到事件网格触发器函数的 localhost URL。
 
-完成测试后，可以更新终结点，将同一订阅用于生产。 使用 [az eventgrid event-subscription update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update) Azure CLI 命令。
+完成测试后，可以更新终结点，将同一订阅用于生产。 使用 [az eventgrid event-subscription update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) Azure CLI 命令。
 
 ### <a name="create-a-viewer-web-app"></a>创建查看器 Web 应用
 
@@ -406,7 +406,7 @@ http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={fu
 5. [创建事件网格订阅](#create-a-subscription)，用于向 ngrok 终结点发送事件。
 6. [触发事件](#trigger-an-event)。
 
-完成测试后，可以更新终结点，将同一订阅用于生产。 使用 [az eventgrid event-subscription update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update) Azure CLI 命令。
+完成测试后，可以更新终结点，将同一订阅用于生产。 使用 [az eventgrid event-subscription update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) Azure CLI 命令。
 
 ### <a name="create-an-ngrok-endpoint"></a>创建 ngrok 终结点
 
@@ -432,7 +432,7 @@ Connections                   ttl     opn     rt1     rt5     p50     p90
                               0       0       0.00    0.00    0.00    0.00
 ```
 
-请对事件网格订阅使用 https://{subdomain}.ngrok.io URL。
+请为事件网格订阅使用 `https://{subdomain}.ngrok.io` URL。
 
 ### <a name="run-the-event-grid-trigger-function"></a>运行事件网格触发器函数
 
@@ -440,12 +440,16 @@ Connections                   ttl     opn     rt1     rt5     p50     p90
 
 ### <a name="create-a-subscription"></a>创建订阅
 
-创建想要测试的类型的事件网格订阅，并使用以下模式在其中指定你的 ngrok 终结点：
+创建想要测试的类型的事件网格订阅，并在其中指定你的 ngrok 终结点。
 
+对于 Functions 1.x，请使用以下终结点模式：
 ```
 https://{subdomain}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName={functionname}
 ``` 
-
+对于 Functions 2.x，请使用以下终结点模式：
+```
+https://{subdomain}.ngrok.io/runtime/webhooks/EventGridExtensionConfig?functionName={functionName}
+``` 
 `functionName` 参数必须是在 `FunctionName` 特性中指定的名称。
 
 下面是使用 Azure CLI 的示例：

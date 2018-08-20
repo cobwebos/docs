@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: d248f8bc5708dfe8554f513d4f96a6c1bee7605e
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: c2d0f14bca2b9ab062c61407479ab45a0104ff0a
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412406"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716257"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>部署基于云的 Azure 多重身份验证
 
@@ -30,7 +30,7 @@ Azure 多重身份验证 (Azure MFA) 入门是一个直截了当的过程。
 
 **通过条件访问策略启用** - 本文将介绍此方法。 这是为用户启用双重验证的最灵活方式。 通过条件访问策略启用仅适用于云中的 Azure MFA，并且是 Azure AD 的高级功能。
 
-通过 Azure AD Identity Protection 启用 - 此方法使用 Azure AD Identity Protection 风险策略，要求仅基于所有云应用程序的登录风险进行双重验证。 此方法需要 Azure Active Directory P2 授权。 有关此方法的详细信息，请参阅 [Azure Active Directory Identity Protection](../active-directory-identityprotection.md#risky-sign-ins)
+通过 Azure AD Identity Protection 启用 - 此方法使用 Azure AD Identity Protection 风险策略，要求仅基于所有云应用程序的登录风险进行双重验证。 此方法需要 Azure Active Directory P2 授权。 有关此方法的详细信息，请参阅 [Azure Active Directory Identity Protection](../identity-protection/overview.md#risky-sign-ins)。
 
 通过更改用户状态启用 - 这是需要进行双重验证的传统方法。 它适用于云中的 Azure MFA 以及 Azure MFA 服务器。 使用此方法要求用户**每次**登录时都执行双重验证并重写条件访问策略。 可在[如何要求对用户进行双重验证](howto-mfa-userstates.md)中找到有关此方法的详细信息
 
@@ -109,3 +109,5 @@ Azure 多重身份验证 (Azure MFA) 入门是一个直截了当的过程。
 若要配置其他设置（例如受信任的 IP、自定义语音消息和欺诈警报），请参阅[配置 Azure 多重身份验证设置](howto-mfa-mfasettings.md)一文
 
 有关管理 Azure 多重身份验证的用户设置的信息，请参阅[管理云中 Azure 多重身份验证的用户设置](howto-mfa-userdevicesettings.md)一文
+
+[针对 Azure 多重身份验证和 Azure AD 自助密码重置启用聚合注册](concept-registration-mfa-sspr-converged.md)

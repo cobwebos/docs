@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: ellacroi
-ms.openlocfilehash: ce862758d97737d16ef26ca7172cad39f8d8336a
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 46cd5dbc044cbd0b7e38e5f0d0c8aa1916387a2d
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39359509"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40037933"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure 合作伙伴和客户使用情况归因
 
@@ -55,23 +55,8 @@ Microsoft 正在创建一种新方法，帮助合作伙伴更好地跟踪与客�
 
 ## <a name="sample-template-code"></a>示例模板代码
 
-```
+![](https://raw.githubusercontent.com/ellacroi/azure-docs-pr/lu-images-again-dangit-all/articles/marketplace/media/marketplace-publishers-guide/tracking-sample-code-for-lu-1.PNG?token=Ak8ZDB0JzsBdUGlKEIeHNJRS7b0BWn4Gks5bbMwwwA%3D%3D)
 
-{ // add this resource to the mainTemplate.json (do not add the entire file)
-      "apiVersion": "2018-02-01",
-      "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", // use your GUID here
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "Incremental",
-        "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "resources": []
-        }
-      }
-    } // remove all comments from the file when done
-
-```
 
 ## <a name="method-2-azure-resource-manager-apis"></a>方法 2：Azure 资源管理器 API
 
@@ -81,6 +66,8 @@ Microsoft 正在创建一种新方法，帮助合作伙伴更好地跟踪与客�
 
 **如何使用 Azure 资源管理器 API 标记部署：** 对于此方法，在设计 API 调用时，需要在请求的用户代理标头中包含 GUID。 应为每个产品/服务或 SKU 添加 GUID。  字符串需要使用前缀为“pid-”的格式，然后包含合作伙伴生成的 GUID。   
 
+![](https://raw.githubusercontent.com/ellacroi/azure-docs-pr/lu-images-again-dangit-all/articles/marketplace/media/marketplace-publishers-guide/tracking-sample-guid-for-lu-2.PNG?token=Ak8ZDDiokRcj4PJj0aMkZmfF8BdOuOTzks5bbM35wA%3D%3D)
+
 >[!Note] 
 >用于插入用户代理的 GUID 格式：pid-eb7927c8-dd66-43e1-b0cf-c346a422063     //在“pid-”之后输入 GUID
 
@@ -88,13 +75,7 @@ Microsoft 正在创建一种新方法，帮助合作伙伴更好地跟踪与客�
 
 **使用 Python SDK 的示例：** 对于 Python，需要使用“config”属性。 只能添加到 UserAgent。 下面是一个示例：
 
-```python
-
-client = azure.mgmt.servicebus.ServiceBusManagementClient(**parameters)
-        client.config.add_user_agent("pid-eb7927c8-dd66-43e1-b0cf-c346a422063")
-
-
-```
+![](https://raw.githubusercontent.com/ellacroi/azure-docs-pr/lu-images-again-dangit-all/articles/marketplace/media/marketplace-publishers-guide/python-for-lu.PNG?token=Ak8ZDK5Um4J6oY-7x25tuBpa168BEiYMks5bbMuUwA%3D%3D)
 
 >必须为每个客户端执行此操作，没有全局静态配置（可以选择通过客户端工厂来确保每个客户端都执行此操作）。 
 >[其他参考信息](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79)
@@ -123,13 +104,38 @@ export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 
 模板 GUID 的所有注册都将通过 Azure 市场云合作伙伴门户 (CPP) 完成。 
 
-立即向 [Azure 市场](http://aka.ms/listonazuremarketplace)提出申请，获取云合作伙伴门户的访问权限。
+1. 立即向 [Azure 市场](http://aka.ms/listonazuremarketplace)提出申请，获取云合作伙伴门户的访问权限。
 
-*   要求合作伙伴[在 CPP 中拥有个人资料](https://docs.microsoft.com/azure/marketplace/become-publisher)，并鼓励他们在 Azure 市场或 AppSource 中列出产品/服务 
-*   合作伙伴将能够注册多个 GUID 
-*   合作伙伴还能够为非市场解决方案模板/产品/服务注册 GUID
+ *  要求合作伙伴[在 CPP 中拥有个人资料](https://docs.microsoft.com/azure/marketplace/become-publisher)，并鼓励他们在 Azure 市场或 AppSource 中列出产品/服务 
+ *  合作伙伴将能够注册多个 GUID 
+ *  合作伙伴还能够为非市场解决方案模板/产品/服务注册 GUID
+ 
+2. 登录到[云合作伙伴门户](https://cloudpartner.azure.com/)
+3. 在门户的右上角，单击你的帐户图标，然后单击“发布者个人资料”
 
-将 GUID 添加到模板或用户代理并在 CPP 中注册 GUID 后，系统将跟踪所有部署。 
+![](https://github.com/ellacroi/azure-docs-pr/blob/more-lu-images/articles/marketplace/media/marketplace-publishers-guide/guid-image-for-lu.png)
+
+4. 在“个人资料”页面上，单击“添加跟踪 GUID”。
+
+![](https://github.com/ellacroi/azure-docs-pr/blob/last-lu-images-i-hope/articles/marketplace/media/marketplace-publishers-guide/guid-how-to-add-tracking.png)
+
+5. 在展开的字段中，在“跟踪 GUID”字段中输入你的跟踪 GUID（仅限 GUID，不包括“pid-”前缀），并在“自定义说明”字段中输入你的套餐名称或说明。
+
+![](https://github.com/ellacroi/azure-docs-pr/blob/more-lu-images/articles/marketplace/media/marketplace-publishers-guide/guid-dev-center-login.png)
+
+![](https://github.com/ellacroi/azure-docs-pr/blob/more-lu-images/articles/marketplace/media/marketplace-publishers-guide/guid-dev-center-example.png)
+
+6. 若要注册多个 GUID，请再次单击“添加跟踪 GUID”。 这将打开另一个展开的字段。 
+
+![](https://github.com/ellacroi/azure-docs-pr/blob/more-lu-images/articles/marketplace/media/marketplace-publishers-guide/guid-dev-center-example-add.png)
+
+![](https://github.com/ellacroi/azure-docs-pr/blob/more-lu-images/articles/marketplace/media/marketplace-publishers-guide/guid-dev-center-example-description.png)
+
+7. 完成编辑后，单击“保存”以保存所做的更改。 
+
+![](https://github.com/ellacroi/azure-docs-pr/blob/more-lu-images/articles/marketplace/media/marketplace-publishers-guide/guid-dev-center-save.png)
+
+
 
 ## <a name="verification-of-guid-deployment"></a>验证 GUID 部署 
 
@@ -204,15 +210,18 @@ GUID（全局唯一标识符）是由 32 位十六进制数字组成的唯一参
 如需帮助，请执行以下步骤：
  1. 访问位于 [go.microsoft.com/fwlink/?linkid=844975](https://go.microsoft.com/fwlink/?linkid=844975) 的支持页面
  2. 对于有关使用情况关联的问题 — 选择问题类型“市场入门”和类别“其他”，然后单击“启动请求”。 
->[!Note]
->对于有关访问 Azure 市场云合作伙伴门户的问题 — 选择问题类型“市场入门”和类别“访问问题”，然后单击“启动请求”。
- 3. 填写下一页中的必填字段，然后单击“继续”。
- 4. 填写下一页中的自定义文本字段。  
+
+对于有关访问 Azure 市场云合作伙伴门户的问题 — 选择问题类型“市场入门”和类别“访问问题”，然后单击“启动请求”。
+
+ ![](https://github.com/ellacroi/azure-docs-pr/blob/last-lu-images-i-hope/articles/marketplace/media/marketplace-publishers-guide/lu-article-incident.png)
  
 
+ 3. 填写下一页中的必填字段，然后单击“继续”。
+ 4. 填写下一页中的自定义文本字段。 **重要提示**：在事件标题中填写“ISV 使用情况跟踪”，然后在大型自定义文本字段中详细说明你的问题。  填写表格的其余部分，然后单击“提交”。 
  
->[!Important] 
->在事件标题中填写“ISV 使用情况跟踪”，然后在大型自定义文本字段中详细说明你的问题。  填写表格的其余部分，然后单击“提交”。
+  ![](https://github.com/qianw211/azure-docs-pr/blob/MyImgAdded-2/articles/marketplace/media/marketplace-publishers-guide/guid-dev-center-help.png)
+
+ 
 
 ## <a name="faqs"></a>常见问题
 

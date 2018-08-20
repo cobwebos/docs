@@ -1,24 +1,20 @@
 ---
-title: 有关在基于 Linux 的 HDInsight 上使用 Hadoop 的提示 - Azure | Microsoft Docs
+title: 有关在基于 Linux 的 HDInsight 上使用 Hadoop 的提示 - Azure
 description: 获取有关使用基于 Linux 的 HDInsight (Hadoop) 群集的实施提示（群集在 Azure 云中熟悉的 Linux 环境中运行）。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: c41c611c-5798-4c14-81cc-bed1e26b5609
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/27/2018
-ms.author: larryfr
-ms.openlocfilehash: 3ad7aa01200bf2bf4a63a380b2b883983c8622d6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.date: 08/09/2018
+ms.openlocfilehash: 85741e91ab074ca45fef79e7e946a74824a1734f
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038027"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>有关在 Linux 上使用 HDInsight 的信息
 
@@ -102,18 +98,21 @@ Hadoop 相关文件可在群集节点上的 `/usr/hdp` 中找到。 此目录包
 
 ## <a name="hdfs-azure-storage-and-data-lake-store"></a>HDFS、Azure 存储和 Data Lake Store
 
-在大部分的 Hadoop 分发中，HDFS 受群集中计算机上的本地存储的支持。 对基于云的解决方案使用本地存储可能费用高昂，因为计算资源以小时或分钟为单位来计费。
+在大部分 Hadoop 发行版中，数据都存储在 HDFS 中，HDFS 由群集中计算机上的本地存储提供支持。 对基于云的解决方案使用本地存储可能费用高昂，因为计算资源以小时或分钟为单位来计费。
 
-HDInsight 使用 Azure 存储中的 Blob 或 Azure Data Lake Store 作为默认存储。 这些服务提供以下优势：
+使用 HDInsight 时，数据文件使用 Azure Blob 存储以及可选的 Azure Data Lake Store 以可缩放和复原的方式存储在云中。 这些服务提供以下优势：
 
 * 成本低廉的长期存储
 * 可从外部服务访问，例如网站、文件上传/下载实用程序、各种语言 SDK 和 Web 浏览器
+* 大型文件容量和大型可缩放存储
 
-一个 Azure 存储帐户容量最多为 4.75 TB，而单个 Blob（从 HDInsight 角度来说是文件）大小最多为 195 GB。 Azure Data Lake Store 可以动态增长以保存数万亿个文件，并且单个文件大于 1 PB。 有关详细信息，请参阅[了解 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 和 [Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)。
+有关详细信息，请参阅[了解 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 和 [Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)。
 
 使用 Azure 存储或 Data Lake Store 时，不需要从 HDInsight 进行任何特殊操作即可访问数据。 例如，以下命令将列出 `/example/data` 文件夹中的文件，无论它是存储在 Azure 存储还是 Data Lake Store 上：
 
     hdfs dfs -ls /example/data
+
+在 HDInsight 中，数据存储资源（Azure Blob 存储和 Azure Data Lake Store）与计算资源相分离。 因此，你可以根据需要创建 HDInsight 群集来执行计算，然后在工作完成后删除该群集，同时，在云存储中安全地将数据文件持久保存所需的任意时长。
 
 ### <a name="uri-and-scheme"></a>URI 和方案
 
@@ -271,7 +270,7 @@ HDInsight 是一个托管服务。 如果 Azure 检测到群集问题，可以�
 > [!WARNING]
 > 完全支持通过 HDInsight 群集提供的组件，Microsoft 支持部门将帮助找出并解决与这些组件相关的问题。
 >
-> 自定义组件可获得合理范围的支持，以帮助你进一步排查问题。 这可能导致问题解决，或要求参与可用的开放源代码技术渠道，在该处可找到该技术的深入专业知识。 有许多可以使用的社区站点，例如：[HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)和 [http://stackoverflow.com](http://stackoverflow.com)。此外，Apache 项目在 [http://apache.org](http://apache.org) 上提供了项目站点，例如 [Hadoop](http://hadoop.apache.org/)、[Spark](http://spark.apache.org/)。
+> 自定义组件可获得合理范围的支持，以帮助你进一步排查问题。 这可能导致问题解决，或要求参与可用的开放源代码技术渠道，在该处可找到该技术的深入专业知识。 有许多可以使用的社区站点，例如：[HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)和 [http://stackoverflow.com](http://stackoverflow.com)。 此外，Apache 项目在 [http://apache.org](http://apache.org) 上提供了项目站点，例如 [Hadoop](http://hadoop.apache.org/)、[Spark](http://spark.apache.org/)。
 
 ## <a name="next-steps"></a>后续步骤
 

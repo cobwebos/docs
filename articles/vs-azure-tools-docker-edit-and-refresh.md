@@ -3,7 +3,7 @@ title: 在本地 Docker 容器中调试应用 | Microsoft Docs
 description: 了解如何通过编辑和刷新以及设置调试断点功能来修改本地 Docker 容器中运行的应用以及刷新容器
 services: azure-container-service
 documentationcenter: na
-author: mlearned
+author: ghogen
 manager: douge
 editor: ''
 ms.assetid: 480e3062-aae7-48ef-9701-e4f9ea041382
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 07/22/2016
 ms.author: mlearned
-ms.openlocfilehash: 7df8bb2dd61466fd9af6492277d54cf0ffdfeb0b
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 01741ba25ac3a6ab187a08636b7e26ee58dbee90
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26781388"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038064"
 ---
 # <a name="debugging-apps-in-a-local-docker-container"></a>在本地 Docker 容器中调试应用
 ## <a name="overview"></a>概述
-Visual Studio Tools for Docker 提供了在本地 Linux Docker 容器中开发和验证应用程序的一致性方法。
+Visual Studio 2017 提供了在本地在 Linux Docker 容器中进行开发以及对应用程序进行验证的一致方法。
 每次进行代码更改后，不需要重新启动该容器。
 本文将演示如何使用“编辑和刷新”功能在本地 Docker 容器中启动 ASP.NET Core Web 应用，进行任何必要的更改，并刷新浏览器查看这些更改。
 本文还将说明如何为调试设置断点。
@@ -36,7 +36,7 @@ Visual Studio Tools for Docker 提供了在本地 Linux Docker 容器中开发�
 ## <a name="prerequisites"></a>先决条件
 必须安装以下工具。
 
-* [最新版本的 Visual Studio](https://www.visualstudio.com/downloads/)
+* [Visual Studio 2017](https://www.visualstudio.com/downloads/)
 * [Microsoft ASP.NET Core 1.0 SDK](https://go.microsoft.com/fwlink/?LinkID=809122)
 
 若要在本地运行 Docker 容器，需要本地 docker 客户端。
@@ -90,13 +90,12 @@ Visual Studio Tools for Docker 提供了在本地 Linux Docker 容器中开发�
    ![][2]
 
 ## <a name="summary"></a>摘要
-使用 [Visual Studio 2015 Tools for Docker](https://aka.ms/DockerToolsForVS)，可以通过在 Docker 容器内开发的生产真实性，获得在本地工作的生产效率。
+借助 Visual Studio 2017 中的 Docker 支持，可以通过在 Docker 容器内进行开发的生产真实性，获得在本地工作的生产效率。
 
 ## <a name="troubleshooting"></a>故障排除
 [Visual Studio Docker 开发故障排除](vs-azure-tools-docker-troubleshooting-docker-errors.md)
 
 ## <a name="more-about-docker-with-visual-studio-windows-and-azure"></a>提供有关在 Visual Studio、Windows 和 Azure 中使用 Docker 的更多信息
-* [Docker Tools for Visual Studio](http://aka.ms/dockertoolsforvs) - 在容器中开发 .NET Core 代码
 * [Docker Tools for Visual Studio Team Services](http://aka.ms/dockertoolsforvsts) - 生成和部署 docker 容器
 * [Docker Tools for Visual Studio Code](http://aka.ms/dockertoolsforvscode) - 用于编辑 docker 文件的语言服务，随后将推出更多 e2e 方案
 * [Windows 容器信息](http://aka.ms/containers) - Windows Server 和 Nano Server 信息

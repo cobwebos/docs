@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 06/19/2018
 ms.author: heidist
-ms.openlocfilehash: 241d24746d82a359b4bbf4febbbaaf91180dd23e
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f7cf471a69395cef0aef7d5dd2e3c77218bf97a3
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210918"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715274"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>选择 Azure 搜索的定价层
 
@@ -36,14 +36,14 @@ ms.locfileid: "36210918"
 
 ### <a name="capacity"></a>Capacity
 
-容量的结构为副本和分区。 副本是搜索服务的实例，每个副本托管一个索引的一个负载均衡副本。 例如，包含 6 个副本的服务具有加载到服务中的每个索引的 6 个副本。 分区存储索引并自动拆分可搜索的数据：两个分区将索引分成两部分，三个分区分成三部分，以此类推。 在容量方面，分区大小是各层级的主要区别特征。
+容量的结构为副本和分区。 
+
++ 副本是搜索服务的实例，每个副本托管一个索引的一个负载均衡副本。 例如，包含 6 个副本的服务具有加载到服务中的每个索引的 6 个副本。 
+
++ 分区存储索引并自动拆分可搜索的数据：两个分区将索引分成两部分，三个分区分成三部分，以此类推。 在容量方面，分区大小是各层级的主要区别特征。
 
 > [!NOTE]
 > 所有“标准”层都支持[灵活组合副本和分区](search-capacity-planning.md#chart)，用户可通过改变均衡来[增加系统的速度或存储空间](search-performance-optimization.md)。 “基本”层最多可提供三个副本以实现高可用性，但只有一个分区。 “免费”层不提供专用资源：计算资源由多个免费服务共享。
-
-### <a name="limits"></a>限制
-
-服务托管资源，如索引、索引器等。 每个层级都会对可以创建的资源数量施加[服务限制](search-limits-quotas-capacity.md)。 因此，索引数量（以及其他对象）的上限是各层级的第二个区别特征。 在门户中查看每个选项时，请注意索引数量的限制。 其他资源（如索引器、数据源和技能集）受索引限制约束。
 
 ### <a name="search-units"></a>搜索单位
 
@@ -52,6 +52,10 @@ ms.locfileid: "36210918"
 尽管每个层级提供的容量越来越大，但你可以将总容量的一部分联机，其余部分储备待用。 在计费方面，实际支付的费用取决于联机的分区和副本数量（使用 SU 公式计算）。
 
 每个 SU 的计费率是每小时一次，每个层级的计费率各不相同。 有关每层的费率，请参阅 [Pricing Details](https://azure.microsoft.com/pricing/details/search/)（定价详细信息）。
+
+### <a name="limits"></a>限制
+
+服务托管资源，如索引、索引器等。 每个层级都会对可以创建的资源数量施加[服务限制](search-limits-quotas-capacity.md)。 因此，索引数量（以及其他对象）的上限是各层级的第二个区别特征。 在门户中查看每个选项时，请注意索引数量的限制。 其他资源（如索引器、数据源和技能集）受索引限制约束。
 
 ## <a name="consumption-patterns"></a>消费模式
 
@@ -86,7 +90,7 @@ ms.locfileid: "36210918"
 
 若要确定索引大小，必须[生成一个索引](search-create-index-portal.md)。 Azure 搜索中的数据结构主要是[倒排索引](https://en.wikipedia.org/wiki/Inverted_index)，它具有与源数据不同的特征。 对于倒排索引，大小和复杂度由内容决定，不一定是输入的数据量。 具有大量冗余的大型数据源可能会导致比包含高度可变内容的较小数据集更小的索引。  在这种情况下，很难根据原始数据集的大小来推断索引大小。
 
-### <a name="preliminary-estimates-using-the-free-tier"></a>使用“免费”层进行初步估计
+### <a name="step-1-develop-rough-estimates-using-the-free-tier"></a>步骤 1：使用“免费”层进行粗略估计
 
 估计容量的一种方法是从“免费”层开始。 回想一下，“免费”服务最多提供 3 个索引、50 MB 存储和 2 分钟索引时间。 使用这些约束来估计预计的索引大小可能具有挑战性，但以下示例介绍了一种方法：
 
@@ -96,7 +100,7 @@ ms.locfileid: "36210918"
 
 假设示例既具有代表性，又占整个数据源的 10%，如果所有文档都编入索引，则 30 MB 索引将变为大约 300 MB。 有了此初始数量，你可以将此数额增加一倍到两个索引（开发和生产）的预算，总共 600MB 的存储需求。 “基本”层可以轻松满足此需求，因此你将从“基本”层开始。
 
-### <a name="advanced-estimates-using-a-billable-tier"></a>使用可计费层进行高级估计
+### <a name="step-2-develop-refined-estimates-using-a-billable-tier"></a>步骤 2：使用可计费层进行改进的估计
 
 有些客户更喜欢从可以适应更大采样和处理时间的专用资源开始，然后在开发期间对索引数量、大小和查询量进行现实估计。 最初，服务是根据最佳预计提供的，然后随着开发项目的成熟，团队通常会知道现有服务是否超出或低于预计的生产工作负载的容量。 
 

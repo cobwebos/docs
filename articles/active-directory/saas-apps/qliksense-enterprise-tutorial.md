@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2017
+ms.date: 08/06/2018
 ms.author: jeedes
-ms.openlocfilehash: 09e1850956150eab6bd7fea365a17c12fa15bdc3
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a8816451b45171e0ba8cbd7acc937201c587c481
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230094"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627944"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qlik-sense-enterprise"></a>教程：Azure Active Directory 与 Qlik Sense Enterprise 集成
 
@@ -60,14 +60,14 @@ ms.locfileid: "36230094"
 
 **若要从库中添加 Qlik Sense Enterprise，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
     ![“Azure Active Directory”按钮][1]
 
 2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
-    
+
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
@@ -103,155 +103,154 @@ ms.locfileid: "36230094"
     ![配置单一登录链接][4]
 
 2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
+
     ![“单一登录”对话框](./media/qliksense-enterprise-tutorial/tutorial_qliksense-enterprise_samlbase.png)
 
 3. 在“Qlik Sense Enterprise 域和 URL”部分中，执行以下步骤：
 
     ![Qlik Sense Enterprise 域和 URL 单一登录信息](./media/qliksense-enterprise-tutorial/tutorial_qliksense-enterprise_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<Qlik Sense Fully Qualifed Hostname>:443//samlauthn/`
-    
-    > [!NOTE]
-    > 请注意此 URI 末尾的尾部反斜杠。 这是必需的。
-    
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<Qlik Sense Fully Qualifed Hostname>:4443/azure/hub`
+
     b. 在“标识符”文本框中，使用以下模式键入 URL：
     | |
     |--|
     | `https://<Qlik Sense Fully Qualifed Hostname>.qlikpoc.com`|
     | `https://<Qlik Sense Fully Qualifed Hostname>.qliksense.com`|
+    | |
 
-    > [!NOTE] 
-    > 这些不是实际值。 使用实际登录 RUL 和标识符更新这些值（本教程后面部分将进行介绍）或联系 [Qlik Sense Enterprise 客户端支持团队](https://www.qlik.com/us/services/support)来获取这些值。 
+    c. 在“回复 URL”文本框中，使用以下模式键入 URL：
+
+    `https://<Qlik Sense Fully Qualifed Hostname>:4443/samlauthn/`
+
+    > [!NOTE]
+    > 这些不是实际值。 请将这些值更新为实际登录 RUL、标识符和回复 URL（本教程后面部分将进行介绍）或联系 [Qlik Sense Enterprise 客户端支持团队](https://www.qlik.com/us/services/support)来获取这些值。
 
 4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
-    ![证书下载链接](./media/qliksense-enterprise-tutorial/tutorial_qliksense-enterprise_certificate.png) 
+    ![证书下载链接](./media/qliksense-enterprise-tutorial/tutorial_qliksense-enterprise_certificate.png)
 
 5. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/qliksense-enterprise-tutorial/tutorial_general_400.png)
 
 6. 准备联合元数据 XML 文件，以便将其上传到 Qlik Sense 服务器。
-   
+
     > [!NOTE]
     > 将 IdP 元数据上传到 Qlik Sense 服务器之前，需要编辑该文件以删除信息，从而确保在 Azure AD 和 Qlik Sense 服务器之间操作正确。
-    
+
     ![QlikSense][qs24]
-   
+
     a. 在文本编辑器中打开从 Azure 门户下载的 FederationMetaData.xml 文件。
-   
+
     b. 搜索值“RoleDescriptor”。  会出现四个条目（两对开始和结束元素标记）。
-   
+
     c. 从文件中删除 RoleDescriptor 标记和标记之间的所有信息。
-   
+
     d. 保存文件，将该文件放在便于取用处，以便稍后在本文档中使用。
 
 7. 作为可以创建虚拟代理配置的用户，导航到 Qlik Sense Qlik 管理控制台 (QMC)。
 
 8. 在 QMC 中，单击“虚拟代理”菜单项。
-   
-    ![QlikSense][qs6] 
+
+    ![QlikSense][qs6]
 
 9. 在屏幕的底部，单击“新建”按钮。
-   
+
     ![QlikSense][qs7]
 
 10. 将显示虚拟代理编辑屏幕。  屏幕右侧是显示配置选项的菜单。
-   
+
     ![QlikSense][qs9]
 
 11. 选中“标识”菜单选项后，输入 Azure 虚拟代理配置的标识信息。
-    
+
     ![QlikSense][qs8]  
-    
+
     a. “说明”字段是虚拟代理配置的友好名称。  输入说明的值。
-    
+
     b. “前缀”字段标识虚拟代理终结点，用于通过 Azure AD 单一登录连接到 Qlik Sense。  输入此虚拟代理服务器的唯一前缀名称。
-    
+
     c. “会话非活动超时(分钟)”是使用此虚拟代理进行连接产生的超时。
-    
+
     d. “会话 Cookie 标头名称”是用于存储用户在成功进行身份验证后接收到的 Qlik Sense 会话的会话标识符的 Cookie 名称。  此名称必须唯一。
 
 12. 单击“身份验证”菜单选项，使其可见。  出现身份验证屏幕。
-    
+
     ![QlikSense][qs10]
-    
+
     a. “匿名访问模式”下拉列表决定匿名用户是否可以通过虚拟代理访问 Qlik Sense。  默认选项为非匿名用户。
-    
+
     b. “身份验证方法”下拉列表决定了虚拟代理要使用的身份验证方案。  从下拉列表中选择“SAML”。  会出现更多选项。
-    
+
     c. 在“SAML 主机 URI 字段”中，输入用户通过此 SAML 虚拟代理访问 Qlik Sense 时将输入的主机名。  主机名是 Qlik Sense 服务器的 URI。
-    
+
     d. 在“SAML 实体 ID”中，输入“SAML 主机 URI”字段中的相同值。
-    
+
     e. “SAML IdP 元数据”是之前在“从 Azure AD 配置编辑联合身份验证元数据”部分中编辑的文件。  **上传 IdP 元数据之前，需要编辑该文件**以删除信息，从而确保在 Azure AD 和 Qlik Sense 服务器之间操作正确。  **如果文件尚未编辑，请参考以上说明进行操作。**  如果文件已编辑，单击“浏览”按钮并选择编辑过的元数据文件，将其上传到虚拟代理配置。
-    
+
     f. 针对 SAML 属性（该属性表示 Azure AD 要发送到 Qlik Sense 服务器的“UserID”），输入属性名称或架构引用。  可从 Azure 应用屏幕后期配置中获取架构引用信息。  若要使用 name 属性，请输入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
-    
+
     g. 输入“用户目录”的值，当用户通过 Azure AD 对 Qlik Sense 服务器进行身份验证时，该值将附加到用户。  硬编码值必须用**方括号 []** 包围。  若要使用 Azure AD SAML 断言中发送的属性，请在此文本框中输入属性名称，**不带**方括号。
-    
+
     h. **SAML 签名算法**设置服务提供者（此案例中为 Qlik Sense 服务器）证书签名，以实现虚拟代理配置。  如果 Qlik Sense 服务器使用通过 Microsoft 增强 RSA 和 AES 加密提供程序生成的受信任证书，则将 SAML 签名算法更改为 **SHA 256**。
-    
+
     i. SAML 属性映射部分允许将其他属性（例如，组）发送到 Qlik Sense，以在安全规则中使用。
 
 13. 单击“负载均衡”菜单选项，使其可见。  出现负载均衡屏幕。
-    
+
     ![QlikSense][qs11]
 
 14. 单击“添加新服务器”节点按钮，选择一个或多个引擎节点，Qlik Sense 将向其发送会话以实现负载均衡，并单击“添加”按钮。
-    
+
     ![QlikSense][qs12]
 
 15. 单击“高级”菜单选项，使其可见。 出现高级屏幕。
-    
+
     ![QlikSense][qs13]
-    
+
     “主机允许列表”标识连接到 Qlik Sense 服务器时接受的主机名。  **输入连接到 Qlik Sense 服务器时用户将指定的主机名。** 主机名是与 SAML 主机 URI 相同的值，但没有 https://。
 
 16. 单击“应用”按钮。
-    
+
     ![QlikSense][qs14]
 
 17. 单击“确定”以接受警告消息，该警告消息指出将重启链接到虚拟代理的代理。
-    
+
     ![QlikSense][qs15]
 
 18. 屏幕右侧出现“关联项”菜单。  单击“代理”菜单选项。
-    
+
     ![QlikSense][qs16]
 
 19. 出现代理屏幕。  单击底部的“链接”按钮，将代理链接到虚拟代理。
-    
+
     ![QlikSense][qs17]
 
 20. 选择用于支持此虚拟代理连接的代理节点，单击“链接”按钮。  链接后，该代理会显示在关联代理下。
-    
+
     ![QlikSense][qs18]
   
     ![QlikSense][qs19]
 
 21. 约五到十秒后显示“刷新 QMC”消息。  单击“刷新 QMC”按钮。
-    
+
     ![QlikSense][qs20]
 
 22. 在 QMC 刷新时，单击“虚拟代理”菜单项。 屏幕上的表中将列出新的 SAML 虚拟代理条目。  单击虚拟代理条目。
-    
+
     ![QlikSense][qs51]
 
 23. 将激活屏幕底部的“下载 SP 元数据”按钮。  单击“下载 SP 元数据”按钮，将元数据保存到文件。
-    
+
     ![QlikSense][qs52]
 
-24. 打开 SP 元数据文件。  观察“entityID”条目和“AssertionConsumerService”条目。  这些值等效于Azure AD 应用程序配置中的“标识符”和“登录 URL”。 将这些值粘贴到 Azure AD 应用程序配置中的“Qlik Sense Enterprise 域和 URL”部分中，如果它们不匹配，则应当在 Azure AD 应用配置向导中替换它们。
-    
+24. 打开 SP 元数据文件。  观察“entityID”条目和“AssertionConsumerService”条目。  这些值等效于Azure AD 应用程序配置中的**标识符**、**登录 URL** 和**回复 URL**。 将这些值粘贴到 Azure AD 应用程序配置中的“Qlik Sense Enterprise 域和 URL”部分中，如果它们不匹配，则应当在 Azure AD 应用配置向导中替换它们。
+
     ![QlikSense][qs53]
 
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
 ![创建 Azure AD 测试用户][100]
@@ -281,22 +280,22 @@ ms.locfileid: "36230094"
    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
    d. 单击“创建”。
- 
+
 ### <a name="create-a-qlik-sense-enterprise-test-user"></a>创建 Qlik Sense Enterprise 测试用户
 
-在本部分中，会在 Qlik Sense Enterprise 中创建一个名为“Britta Simon”的用户。 请与 [Qlik Sense Enterprise 客户端支持团队](https://www.qlik.com/us/services/support)协作来在 Qlik Sense Enterprise 平台中添加用户。 使用单一登录前，必须先创建并激活用户。 
+在本部分中，会在 Qlik Sense Enterprise 中创建一个名为“Britta Simon”的用户。 请与 [Qlik Sense Enterprise 客户端支持团队](https://www.qlik.com/us/services/support)协作来在 Qlik Sense Enterprise 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Qlik Sense Enterprise 的权限，允许其使用 Azure 单一登录。
 
-![分配用户角色][200] 
+![分配用户角色][200]
 
 **要将 Britta Simon 分配到 Qlik Sense Enterprise，请执行以下步骤：**
 
 1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
-    ![分配用户][201] 
+    ![分配用户][201]
 
 2. 在应用程序列表中，选择“Qlik Sense Enterprise”。
 
@@ -315,12 +314,12 @@ ms.locfileid: "36230094"
 6. 在“用户和组”对话框中单击“选择”按钮。
 
 7. 在“添加分配”对话框中单击“分配”按钮。
-    
+
 ### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-当在访问面板中单击 Qlik Sense Enterprise 磁贴时，应当会自动登录到 Qlik Sense Enterprise 应用程序。 
+当在访问面板中单击 Qlik Sense Enterprise 磁贴时，应当会自动登录到 Qlik Sense Enterprise 应用程序。
 
 ## <a name="additional-resources"></a>其他资源
 
@@ -360,4 +359,3 @@ ms.locfileid: "36230094"
 [qs51]: ./media/qliksense-enterprise-tutorial/tutorial_qliksenseenterprise_51.png
 [qs52]: ./media/qliksense-enterprise-tutorial/tutorial_qliksenseenterprise_52.png
 [qs53]: ./media/qliksense-enterprise-tutorial/tutorial_qliksenseenterprise_53.png
-

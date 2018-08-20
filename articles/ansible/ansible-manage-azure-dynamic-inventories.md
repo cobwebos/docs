@@ -6,14 +6,14 @@ keywords: ansible, azure, devops, bash, cloudshell, 动态库存
 author: tomarcher
 manager: routlaw
 ms.author: tarcher
-ms.date: 01/14/2018
+ms.date: 08/09/2018
 ms.topic: article
-ms.openlocfilehash: 35033f7a6a0340be4dff5fa0051fd3c5ddb3c0eb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5f4793759bfba68c8a01d682b6b13de5cb96a8f6
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449411"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038011"
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>使用 Ansible 管理 Azure 动态库存
 使用 Ansible 可将各种源（包括 Azure 等云源）中的库存信息提取到动态库存中。 本文介绍如何使用 [Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md) 配置一个 Ansible Azure 动态库存，并在该库存中创建两个虚拟机、标记其中的一个虚拟机，然后在标记的虚拟机上安装 Nginx。
@@ -31,6 +31,9 @@ ms.locfileid: "39449411"
 1. 打开 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。
 
 1. 创建一个 Azure 资源组，用于保存本教程创建的虚拟机。
+
+    > [!IMPORTANT]  
+    > 在此步骤中创建的 Azure 资源组必须具有完全小写的名称。 否则，生成动态清单将会失败。
 
     ```azurecli-interactive
     az group create --resource-group ansible-inventory-test-rg --location eastus
@@ -183,7 +186,7 @@ ansible-inventory-test-vm1 | SUCCESS => {
     --query [0].virtualMachine.network.publicIpAddresses[0].ipAddress -o tsv`
     ```
 
-1. [nginx -v](https://nginx.org/en/docs/switches.html) 命令通常用于列显 Nginx 版本。 但是，也可以使用它来确定是否安装了 Nginx。 请在连接到 `ansible-inventory-test-vm1` 虚拟机后输入该命令。
+1. 连接到 `ansible-inventory-test-vm1` 虚拟机后，运行 [nginx -v](https://nginx.org/en/docs/switches.html) 命令来确定是否安装了 Nginx。
 
     ```azurecli-interactive
     nginx -v

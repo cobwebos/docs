@@ -11,12 +11,12 @@ ms.topic: article
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
 manager: douge
-ms.openlocfilehash: b2ef450a429b26843cf770a6243c6f4de932de43
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 61bc081ca3221c0d588b7b7a2d9482d2fc70c0d5
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247311"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038060"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
 
@@ -63,6 +63,26 @@ azds remove -g <resource group name> -n <cluster name>
 2. 将“MSBuild 项目生成输出详细级别”的设置更改为“详细”或“诊断”。
 
     ![“工具选项”对话框的屏幕截图](media/common/VerbositySetting.PNG)
+    
+## <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>对与 Dev Spaces 服务关联的公用 URL 进行 DNS 名称解析失败
+
+发生此情况时，当尝试连接到与 Dev Spaces 服务关联的公用 URL 时，可能会在 Web 浏览器中看到“页面无法显示”或“无法访问此站点”错误。
+
+### <a name="try"></a>请尝试：
+
+可以使用以下命令列出与 Dev Spaces 服务关联的所有 URL：
+
+```cmd
+azds list-uris
+```
+
+如果某个 URL 处于“挂起”状态，则意味着该 Dev Spaces 仍然在等待 DNS 注册完成。 有时，这需要花费几分钟时间来执行。 Dev Spaces 还为每个服务打开一个本地主机隧道，在等待 DNS 注册时你可以使用该隧道。
+
+如果某个 URL 保持在“挂起”状态的时间超过 5 分钟，则这可能表明负责获取公用终结点的 nginx 入口控制器出现问题。 可以使用以下命令删除运行 nginx 控制器的 pod。 它将自动重新创建。
+
+```cmd
+kubectl delete pod -n kube-system -l app=addon-http-application-routing-nginx-ingress
+```
 
 ## <a name="error-required-tools-and-configurations-are-missing"></a>错误“缺少必需的工具和配置”
 

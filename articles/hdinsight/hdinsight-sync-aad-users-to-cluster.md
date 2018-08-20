@@ -1,25 +1,20 @@
 ---
-title: 将 Azure Active Directory 用户同步到群集 - Azure HDInsight | Microsoft Docs
+title: 将 Azure Active Directory 用户同步到群集 - Azure HDInsight
 description: 将经身份验证的用户从 Azure Active Directory 同步到群集。
 services: hdinsight
-documentationcenter: ''
-author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ''
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.date: 01/19/2018
+author: ashishthaps
 ms.author: ashishth
-ms.openlocfilehash: f2deaaa31a4d0e8a91d048b538e9251a8eb9e1b7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+editor: jasonwhowell
+ms.custom: hdinsightactive
+ms.topic: conceptual
+ms.date: 08/19/2018
+ms.openlocfilehash: 05ac13fe849f90e3f0dbc60d5c232f469e1f290d
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31409275"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714836"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>将 Azure Active Directory 用户同步到 HDInsight 群集
 
@@ -80,10 +75,10 @@ ms.locfileid: "31409275"
     }
     ```
 
-4. 若要查看同步状态，请使用从前一命令返回的 `href` 值执行新的 `curl` 命令：
+4. 若要查看同步状态，执行一个新的 `curl` 命令：
 
     ```bash
-    curl -u admin:<YOUR PASSWORD> http://hn0-hadoop.<YOUR DOMAIN>.com:8080/api/v1/ldap_sync_events/1
+    curl -u admin:<YOUR PASSWORD> https://<YOUR CLUSTER NAME>.azurehdinsight.net/api/v1/ldap_sync_events/1
     ```
     
     响应应为如下所示：

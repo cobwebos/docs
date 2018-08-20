@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/17/2018
+ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d7554ef46289600cd15e4675a91f42a2cd735f18
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 002eb9b70c2f3f9d0f6633b2d81425c688495d19
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112655"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714047"
 ---
 # <a name="custom-roles-in-azure"></a>Azure 中的自定义角色
 
@@ -28,7 +28,7 @@ ms.locfileid: "39112655"
 
 ## <a name="custom-role-example"></a>自定义角色示例
 
-下面提供了使用 Azure PowerShell 显示的用于监视和重启虚拟机的自定义角色：
+下面展示了以 JSON 格式显示的自定义角色的样子。 自定义角色可以用于监视和重新启动虚拟机。
 
 ```json
 {
@@ -82,7 +82,9 @@ ms.locfileid: "39112655"
 
 3. 测试自定义角色
 
-    创建自定义角色后，必须对其进行测试，以验证它是否按预期工作。 如果需要做出调整，可以更新自定义角色。
+    创建自定义角色后，必须对其进行测试，以验证它是否按预期工作。 如果以后需要进行调整，可以更新自定义角色。
+
+有关如何创建自定义角色的分步教程，请参阅[教程：使用 Azure PowerShell 创建自定义角色](tutorial-custom-role-powershell.md)或[教程：使用 Azure CLI 创建自定义角色](tutorial-custom-role-cli.md)。
 
 ## <a name="custom-role-properties"></a>自定义角色属性
 
@@ -98,16 +100,16 @@ ms.locfileid: "39112655"
 | `NotActions` | 否 | String[] | 一个字符串数组，指定要从允许的 `Actions` 中排除的管理操作。 有关详细信息，请参阅 [NotActions](role-definitions.md#notactions)。 |
 | `DataActions` | 否 | String[] | 一个字符串数组，指定该角色允许对该对象中的数据执行的数据操作。 有关详细信息，请参阅 [DataActions（预览）](role-definitions.md#dataactions-preview)。 |
 | `NotDataActions` | 否 | String[] | 一个字符串数组，指定要从允许的 `DataActions` 中排除的数据操作。 有关详细信息，请参阅 [NotDataActions（预览）](role-definitions.md#notdataactions-preview)。 |
-| `AssignableScopes` | 是 | String[] | 一个字符串数组，指定自定义角色的可分配范围。 不能设置为根范围 (`"/"`)。 有关详细信息，请参阅 [AssignableScopes](role-definitions.md#assignablescopes)。 |
+| `AssignableScopes` | 是 | String[] | 一个字符串数组，指定自定义角色的可分配范围。 当前不能设置为根范围 (`"/"`) 或管理组范围。 有关详细信息，请参阅 [AssignableScopes](role-definitions.md#assignablescopes) 和[使用 Azure 管理组来组织资源](../azure-resource-manager/management-groups-overview.md#custom-rbac-role-definition-and-assignment)。 |
 
-## <a name="assignablescopes-for-custom-roles"></a>自定义角色的 AssignableScopes
+## <a name="who-can-create-delete-update-or-view-a-custom-role"></a>谁可以创建、删除、更新或查看自定义角色
 
-与在内置角色中一样，`AssignableScopes` 属性指定角色的可配置范围。 但是，你不能在自己的自定义角色中使用根范围 (`"/"`)。 如果你尝试，会收到一个授权错误。 自定义角色的 `AssignableScopes` 属性还控制谁可以创建、删除、修改或查看自定义角色。
+与在内置角色中一样，`AssignableScopes` 属性指定角色的可配置范围。 自定义角色的 `AssignableScopes` 属性还控制谁可以创建、删除、更新或查看自定义角色。
 
 | 任务 | Operation | Description |
 | --- | --- | --- |
 | 创建/删除自定义角色 | `Microsoft.Authorization/ roleDefinition/write` | 在自定义角色的所有 `AssignableScopes` 上被允许此操作的用户可以创建（或删除）用于这些范围的自定义角色。 例如，订阅、资源组和资源的[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)。 |
-| 修改自定义角色 | `Microsoft.Authorization/ roleDefinition/write` | 在自定义角色的所有 `AssignableScopes` 上被允许此操作的用户可以修改这些范围中的自定义角色。 例如，订阅、资源组和资源的[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)。 |
+| 更新自定义角色 | `Microsoft.Authorization/ roleDefinition/write` | 被授权在自定义角色的所有 `AssignableScopes` 上执行此操作的用户可以更新这些范围中的自定义角色。 例如，订阅、资源组和资源的[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)。 |
 | 查看自定义角色 | `Microsoft.Authorization/ roleDefinition/read` | 在某个范围内被允许此操作的用户可以查看可在该范围内分配的自定义角色。 所有内置角色都允许自定义角色可用于分配。 |
 
 ## <a name="next-steps"></a>后续步骤

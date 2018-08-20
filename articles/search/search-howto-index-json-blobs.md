@@ -9,19 +9,19 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: 752df29200a5e020ccf10f511ae2f02c0d72bd48
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5b4cd1c592c4cd965a0b5d9e4fb8eef84a6bea91
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34362996"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003275"
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>使用 Azure 搜索 Blob 索引器对 JSON blob 编制索引
 本文介绍如何配置 Azure 搜索 Blob 索引器，以从 Azure Blob 存储中的 JSON Blob 提取结构化内容。
 
 Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档或 JSON 数组。 Azure 搜索中的 Blob 索引器可以根据请求中 **parsingMode** 参数设置方式分析上述任一构造。
 
-| JSON 文档 | parsingMode | 说明 | 可用性 |
+| JSON 文档 | parsingMode | Description | 可用性 |
 |--------------|-------------|--------------|--------------|
 | 每个 Blob 各有一个 | `json` | 将 JSON Blob 分析为单个文本区块。 每个 JSON Blob 成为单个 Azure 搜索文档。 | 已在 [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) 和 [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) API 中正式发布。 |
 | 每个 Blob 有多个 | `jsonArray` | 分析 Blob 中的 JSON 数组，其中数组的每个元素成为单独的 Azure 搜索文档。  | 在预览版中，采用 [REST api-version=`2017-11-11-Preview`](search-api-2017-11-11-preview.md) 和 [.NET SDK 预览](https://aka.ms/search-sdk-preview)格式。 |
@@ -76,7 +76,7 @@ Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档或 JSON 数组。 
     {
         "article" : {
             "text" : "A hopefully useful article explaining how to parse JSON blobs",
-            "datePublished" : "2016-04-13"
+            "datePublished" : "2016-04-13",
             "tags" : [ "search", "storage", "howto" ]    
         }
     }

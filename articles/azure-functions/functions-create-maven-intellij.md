@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: e926bfb023fe3edfd564aa6389e21f6594bec169
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 5e265543e2ce5feeed095d89cdb47ede9817bad1
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39117057"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40002672"
 ---
 # <a name="create-your-first-function-with-java-and-intellij-preview"></a>使用 Java 和 IntelliJ 创建你的第一个函数（预览版）
 
@@ -74,8 +74,15 @@ Maven 在新文件夹中创建名为 artifactId 的项目文件。 项目中生�
 完成函数测试后关闭运行对话框。 一次只能有一个函数主机处于活动状态并在本地运行。
 
 ### <a name="debug-the-function-in-intellij"></a>在 IntelliJ 中调试函数
+若要在调试模式下启动函数主机，请在运行函数时添加 **-DenableDebug** 作为参数。 可以在终端中运行以下命令行或者在 [maven goals](https://www.jetbrains.com/help/idea/maven-support.html#run_goal) 中配置它。 然后，函数主机将打开调试端口 5005。 
 
-可以在 IntelliJ 中调试函数，方法是在启动后将函数附加到函数主机。  使用上述步骤在本地运行 Azure Function，然后在“Run”（运行）菜单中选择“Attach to local process”（附加到本地进程）。  端口 5005 上应该会显示一个可用进程。  附加后，可以在函数应用内命中并调试断点。
+```
+mvn azure-functions:run -DenableDebug
+```
+
+若要在 IntelliJ 中进行调试，请在“运行”菜单中选择“编辑配置”。 单击 **+** 以添加**远程配置**。 填写**名称**和**设置**，然后单击“确定”以保存配置。 在设置后，单击“调试‘你的远程配置名称’”或按 **Shift+F9** 以启动调试。
+
+![在 IntelliJ 中调试函数](media/functions-create-first-java-intellij/debug-configuration-intellij.PNG)
 
 完成后，停止调试器和正在运行的进程。 一次只能有一个函数主机处于活动状态并在本地运行。
 

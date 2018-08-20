@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 018ca5d0510ef37c58a6d841ac17d2920817e216
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 7fe4fdbf6c6b3cbbd6d01ef5309699c3d3991d53
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895345"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003808"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>为 Azure 网络接口添加、更改或删除 IP 地址
 
@@ -72,7 +72,7 @@ ms.locfileid: "33895345"
 2. 从列表中选择要查看或更改 IP 网络设置的网络接口。
 3. 在“设置”下选择“IP 配置”。
 4. 从列表中选择想要修改的 IP 配置。
-5. 使用有关[添加 IP 配置](#create-ip-config)的步骤 5 中的设置的信息，根据需要更改设置。
+5. 使用有关[添加 IP 配置](#add-ip-addresses)的步骤 5 中的设置的信息，根据需要更改设置。
 6. 选择“保存”。
 
 >[!NOTE]
@@ -170,9 +170,9 @@ ms.locfileid: "33895345"
 
 ### <a name="static"></a>静态
 
-（可选）可以为 IP 配置分配公共或专用静态 IPv4 地址。 无法为 IP 配置分配静态公共或专用 IPv6 地址。 若要详细了解 Azure 如何分配静态公共 IPv4 地址，请参阅[公共 IP 地址](virtual-network-public-ip-address.md)一文。
+（可选）可以为 IP 配置分配公共或专用静态 IPv4 地址。 无法为 IP 配置分配静态公共或专用 IPv6 地址。 若要详细了解 Azure 如何分配静态公用 IPv4 地址，请参阅[公用 IP 地址](virtual-network-public-ip-address.md)。
 
-- 仅公共：Azure 从特定于每个 Azure 区域的范围分配地址。 若要了解向每个区域分配了哪些范围，请参阅 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 该地址不会更改，除非其所分配到的公共 IP 地址资源已删除，或者分配方法已更改为动态。 如果将公共 IP 地址资源关联到某个 IP 配置，则必须取消其与 IP 配置的关联，然后才能更改其分配方法。
+- 仅公共：Azure 从特定于每个 Azure 区域的范围分配地址。 对于 Azure [公有](https://www.microsoft.com/download/details.aspx?id=56519)云、[美国政府](https://www.microsoft.com/download/details.aspx?id=57063)云、[中国](https://www.microsoft.com/download/details.aspx?id=57062)云和[德国](https://www.microsoft.com/download/details.aspx?id=57064)云，可以下载范围（前缀）的列表。 该地址不会更改，除非其所分配到的公共 IP 地址资源已删除，或者分配方法已更改为动态。 如果将公共 IP 地址资源关联到某个 IP 配置，则必须取消其与 IP 配置的关联，然后才能更改其分配方法。
 - **仅专用**：由你选择并分配子网地址范围中的地址。 分配的地址可以是子网地址范围中的任何地址，前提是该地址不是子网地址范围中的头四个地址，也不是当前已分配给子网中任何其他资源的地址。 只有在删除网络接口之后，静态地址才会释放。 如果将分配方法更改为静态，Azure 会动态地将以前分配的静态 IP 地址作为动态地址分配，即使该地址不是子网地址范围内的下一个可用地址。 如果将网络接口分配给同一虚拟网络中的另一子网，则该地址也会更改。但是，若要将网络接口分配给另一子网，必须先将分配方法从静态更改为动态。 将网络接口分配给另一子网以后，即可将分配方法改回为静态，并根据新子网的地址范围分配 IP 地址。
 
 ## <a name="ip-address-versions"></a>IP 地址版本

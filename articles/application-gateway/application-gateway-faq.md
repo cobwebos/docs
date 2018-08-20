@@ -7,14 +7,14 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 6/20/2018
+ms.date: 8/10/2018
 ms.author: victorh
-ms.openlocfilehash: b8b5b1da902a854dacea7e3019e3fa1116f04212
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 858427bfd2a9b4c40ddf7054e09d98bcf5c1a992
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399135"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038091"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>应用程序网关常见问题
 
@@ -122,6 +122,12 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 * 不能阻止出站 Internet 连接。
 
 * 必须允许来自 AzureLoadBalancer 标记的流量。
+
+**问：应用程序网关子网是否支持用户定义的路由？**
+
+只要用户定义的路由 (UDR) 未更改端到端请求/响应通信，则应用程序网关子网支持用户定义的路由。
+
+例如，可以在应用程序网关子网中设置 UDR 来指向用于数据包检查的防火墙设备，但必须确保数据包在检查后可以到达其预定目的地。 如果做不到这一点，可能会导致不正确的运行状况探测或流量路由行为。 这包括已了解的路由或通过 ExpressRoute 或 VPN 网关在虚拟网络中传播的默认 0.0.0.0/0 路由。
 
 **问：应用程序网关有哪些限制？是否可以提高这些限制？**
 

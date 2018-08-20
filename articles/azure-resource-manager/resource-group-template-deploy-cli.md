@@ -4,22 +4,20 @@ description: 使用 Azure 资源管理器和 Azure CLI 将资源部署到 Azure�
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: 493b7932-8d1e-4499-912c-26098282ec95
 ms.service: azure-resource-manager
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2017
+ms.date: 08/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5a6b227cee3765593adbda430d8c47312f996c18
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c9595b0e6313dc4620b48296fdca6dc2c6ae6413
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723459"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628131"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>使用 Resource Manager 模板和 Azure CLI 部署资源
 
@@ -43,15 +41,13 @@ ms.locfileid: "38723459"
 
 以下示例将创建一个资源组，并从本地计算机部署模板：
 
-```azurecli
-az login
-
+```azurecli-interactive
 az group create --name ExampleGroup --location "Central US"
 az group deployment create \
-    --name ExampleDeployment \
-    --resource-group ExampleGroup \
-    --template-file storage.json \
-    --parameters storageAccountType=Standard_GRS
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters storageAccountType=Standard_GRS
 ```
 
 部署可能需要几分钟才能完成。 完成后，会看到一条包含结果的消息：
@@ -66,15 +62,13 @@ az group deployment create \
 
 若要部署外部模板，请使用 **template-uri** 参数。 使用示例中的 URI 从 GitHub 部署示例模板。
    
-```azurecli
-az login
-
+```azurecli-interactive
 az group create --name ExampleGroup --location "Central US"
 az group deployment create \
-    --name ExampleDeployment \
-    --resource-group ExampleGroup \
-    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
-    --parameters storageAccountType=Standard_GRS
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
+  --parameters storageAccountType=Standard_GRS
 ```
 
 前面的示例要求模板的 URI 可公开访问，它适用于大多数情况，因为模板应该不会包含敏感数据。 如果需要指定敏感数据（如管理员密码），请以安全参数的形式传递该值。 但是，如果不希望模板可公开访问，可以通过将其存储在专用存储容器中来保护它。 有关部署需要共享访问签名 (SAS) 令牌的模板的信息，请参阅[部署具有 SAS 令牌的专用模板](resource-manager-cli-sas-token.md)。
@@ -93,6 +87,34 @@ az group deployment create --resource-group examplegroup \
 ## <a name="deploy-to-more-than-one-resource-group-or-subscription"></a>部署到多个资源组或订阅
 
 通常情况下，将模板中的所有资源部署到单个资源组。 不过，在某些情况下，你可能希望将一组资源部署在一起但将其放置在不同的资源组或订阅中。 在单个部署中可以仅部署到五个资源组。 有关详细信息，[将 Azure 资源部署到多个订阅或资源组](resource-manager-cross-resource-group-deployment.md)。
+
+## <a name="redeploy-when-deployment-fails"></a>部署失败时，重新部署
+
+对于失败的部署，可以指定从部署历史记录自动重新部署以前的部署。 若要使用此选项，部署必须具有唯一的名称，以便可以在历史记录中标识它们。 如果没有唯一名称，则当前失败的部署可能会覆盖历史记录中以前成功的部署。 只能将此选项用于根级别部署。 从嵌套模板进行的部署不可用于重新部署。
+
+若要重新部署最后一个成功的部署，请将 `--rollback-on-error` 参数添加为标志。
+
+```azurecli-interactive
+az group deployment create \
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters storageAccountType=Standard_GRS \
+  --rollback-on-error
+```
+
+若要重新部署某个特定部署，请使用 `--rollback-on-error` 参数并提供部署名称。
+
+```azurecli-interactive
+az group deployment create \
+  --name ExampleDeployment02 \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters storageAccountType=Standard_GRS \
+  --rollback-on-error ExampleDeployment01
+```
+
+指定的部署必须已成功。
 
 ## <a name="parameter-files"></a>参数文件
 
@@ -116,23 +138,23 @@ az group deployment create --resource-group examplegroup \
 
 若要传递本地参数文件，请使用 `@` 指定名为 storage.parameters.json 的本地文件。
 
-```azurecli
+```azurecli-interactive
 az group deployment create \
-    --name ExampleDeployment \
-    --resource-group ExampleGroup \
-    --template-file storage.json \
-    --parameters @storage.parameters.json
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters @storage.parameters.json
 ```
 
 ## <a name="test-a-template-deployment"></a>测试模板部署
 
-若要测试模板和参数值而不实际部署任何资源，请使用 [az group deployment validate](/cli/azure/group/deployment#az_group_deployment_validate)。 
+若要测试模板和参数值而不实际部署任何资源，请使用 [az group deployment validate](/cli/azure/group/deployment#az-group-deployment-validate)。 
 
-```azurecli
+```azurecli-interactive
 az group deployment validate \
-    --resource-group ExampleGroup \
-    --template-file storage.json \
-    --parameters @storage.parameters.json
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters @storage.parameters.json
 ```
 
 如果未检测到错误，则该命令将返回有关测试部署的信息。 需要特别注意的是，**error** 值为 null。
@@ -173,19 +195,6 @@ az group deployment validate \
   },
   "properties": null
 }
-```
-
-[!INCLUDE [resource-manager-deployments](../../includes/resource-manager-deployments.md)]
-
-若要使用完整模式，请使用 `mode` 参数：
-
-```azurecli
-az group deployment create \
-    --name ExampleDeployment \
-    --mode Complete \
-    --resource-group ExampleGroup \
-    --template-file storage.json \
-    --parameters storageAccountType=Standard_GRS
 ```
 
 ## <a name="sample-template"></a>示例模板
@@ -239,7 +248,7 @@ az group deployment create \
 
 ## <a name="next-steps"></a>后续步骤
 * 本文中的示例将资源部署到默认订阅中的资源组。 若要使用其他订阅，请参阅[管理多个 Azure 订阅](/cli/azure/manage-azure-subscriptions-azure-cli)。
-* 有关用于部署模板的完整示例脚本，请参阅 [Resource Manager 模板部署脚本](resource-manager-samples-cli-deploy.md)。
+* 若要指定如何处理存在于资源组中但未在模板中定义的资源，请参阅 [Azure 资源管理器部署模式](deployment-modes.md)。
 * 若要了解如何在模板中定义参数，请参阅[了解 Azure 资源管理器模板的结构和语法](resource-group-authoring-templates.md)。
 * 有关解决常见部署错误的提示，请参阅[排查使用 Azure 资源管理器时的常见 Azure 部署错误](resource-manager-common-deployment-errors.md)。
 * 有关部署需要 SAS 令牌的模板的信息，请参阅[使用 SAS 令牌部署专用模板](resource-manager-cli-sas-token.md)。

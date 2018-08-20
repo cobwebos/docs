@@ -2,30 +2,25 @@
 title: Azure 事件中心 .NET Framework API 概述 | Microsoft 文档
 description: 汇总了一些重要的事件中心 .NET Framework 客户端 API。
 services: event-hubs
-documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
-editor: ''
-ms.assetid: 7f3b6cc0-9600-417f-9e80-2345411bd036
 ms.service: event-hubs
 ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/19/2017
-ms.author: sethm
-ms.openlocfilehash: a51d4552df2643a25ce492b8525b9aa7fa36e21c
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.date: 06/13/2018
+ms.author: shvija
+ms.openlocfilehash: dd915671c8b7d51595fea520187b917005f5dc53
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26781888"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40007037"
 ---
 # <a name="event-hubs-net-framework-api-overview"></a>事件中心 .NET Framework API 概述
 
-本文汇总了一些重要的事件中心 .NET Framework 客户端 API。 有两个类别：管理 API 和运行时 API。 运行时 API 包括发送和接收消息所需的全部操作。 使用管理操作，可以通过创建、更新和删除实体来管理事件中心实体状态。
+本文汇总了一些重要的 Azure 事件中心 [.NET Framework 客户端 API](https://www.nuget.org/packages/WindowsAzure.ServiceBus/)。 有两个类别：管理 API 和运行时 API。 运行时 API 包括发送和接收消息所需的全部操作。 使用管理操作，可以通过创建、更新和删除实体来管理事件中心实体状态。
 
-[监视方案](event-hubs-metrics-azure-monitor.md)跨越管理和运行时。 有关 .NET API 的详细参考文档，请参阅[服务总线 .NET](/dotnet/api/microsoft.servicebus.messaging) 和 [EventProcessorHost API](/dotnet/api/microsoft.azure.eventhubs.processor) 参考。
+[监视方案](event-hubs-metrics-azure-monitor.md)跨越管理和运行时。 有关 .NET API 的详细参考文档，请参阅 [.NET Framework](/dotnet/api/microsoft.servicebus.messaging.eventhubclient)、[.NET Standard](/dotnet/api/microsoft.azure.eventhubs) 和 [EventProcessorHost API](/dotnet/api/microsoft.azure.eventhubs.processor) 参考。
 
 ## <a name="management-apis"></a>管理 API
 
@@ -180,6 +175,7 @@ public class SimpleEventProcessor : IEventProcessor
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
 若要了解有关事件中心方案的详细信息，请访问以下链接：
 
 * [什么是 Azure 事件中心？](event-hubs-what-is-event-hubs.md)

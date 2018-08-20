@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: bf73f9419732e93c1f32f2fb39d3acee02f49b64
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: b61b6b730d645e2ffd518628abe2a121f119fd09
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34656435"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715057"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虚拟机规模集常见问题解答
 
@@ -65,7 +65,7 @@ ms.locfileid: "34656435"
 
 **问：** 规模集是否适用于 Azure 可用性集？
 
-**答：** 地区（非区域性）规模集使用*放置组*，其中每个放置组可以配置为充当具有五个容错域和五个更新域的隐式可用性集。 VM 多于 100 个的规模集跨多个放置组。 有关放置组的详细信息，请参阅[使用大型虚拟机规模集](virtual-machine-scale-sets-placement-groups.md)。 由 VM 组成的可用性集可以与由 VM 组成的规模集位于相同的虚拟网络中。 常见的配置是将控件节点 VM（经常需要独特的配置）放在可用性集中，将数据节点放在规模集中。
+**答：** 地区（非区域性）规模集使用*放置组*，放置组充当具有五个容错域和五个更新域的隐式可用性集。 VM 多于 100 个的规模集跨多个放置组。 有关放置组的详细信息，请参阅[使用大型虚拟机规模集](virtual-machine-scale-sets-placement-groups.md)。 由 VM 组成的可用性集可以与由 VM 组成的规模集位于相同的虚拟网络中。 常见的配置是将控件节点 VM（经常需要独特的配置）放在可用性集中，将数据节点放在规模集中。
 
 **问：** 规模集是否可以与 Azure 可用性区域配合使用？
 
@@ -266,7 +266,7 @@ ms.locfileid: "34656435"
     }
 ```
  
-linuxConfiguration 元素名称 | 必选 | Type | 说明
+linuxConfiguration 元素名称 | 必选 | Type | Description
 --- | --- | --- | --- |  ---
 ssh | 否 | 集合 | 指定 Linux OS 的 SSH 密钥配置
 路径 | 是 | String | 指定 SSH 密钥或证书应放置到的 Linux 文件路径

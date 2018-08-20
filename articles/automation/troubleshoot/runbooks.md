@@ -8,12 +8,12 @@ ms.date: 07/13/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 48b2aab9d2a3937fb53a2e63efa26efc18a894f8
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 53b35fbdc469639b1fdc09293e05247bcc5d8c31
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413852"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714479"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook 错误故障排除
 
@@ -43,13 +43,37 @@ Unknown_user_type: Unknown User Type
 
    ```powershell
    $Cred = Get-Credential  
-   #Using Azure Service Management   
+   #Using Azure Service Management
    Add-AzureAccount –Credential $Cred  
    #Using Azure Resource Manager  
    Connect-AzureRmAccount –Credential $Cred
    ```
 
 3. 如果无法在本地进行身份验证，则意味着你尚未设置好 Azure Active Directory 凭据。 请参阅[使用 Azure Active Directory 向 Azure 进行身份验证](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/)博客文章，了解如何正确设置 Azure Active Directory 帐户。  
+
+4. 如果它看起来是暂时性错误，请尝试向身份验证例程添加重试逻辑，使身份验证更加可靠。
+
+   ```powershell
+   # Get the connection "AzureRunAsConnection"
+   $connectionName = "AzureRunAsConnection"
+   $servicePrincipalConnection = Get-AutomationConnection -Name $connectionName
+
+   $logonAttempt = 0
+   $logonResult = $False
+
+   while(!($connectionResult) -And ($logonAttempt -le 10))
+   {
+   $LogonAttempt++
+   # Logging in to Azure...
+   $connectionResult = Connect-AzureRmAccount `
+      -ServicePrincipal `
+      -TenantId $servicePrincipalConnection.TenantId `
+      -ApplicationId $servicePrincipalConnection.ApplicationId `
+      -CertificateThumbprint $servicePrincipalConnection.CertificateThumbprint
+
+   Start-Sleep -Seconds 30
+   }
+   ```
 
 ### <a name="unable-to-find-subscription"></a>场景：无法找到 Azure 订阅
 

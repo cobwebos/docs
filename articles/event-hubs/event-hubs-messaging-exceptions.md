@@ -3,7 +3,7 @@ title: Azure 事件中心消息传送异常 | Microsoft Docs
 description: Azure 事件中心消息传送异常和建议的操作列表。
 services: event-hubs
 documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2018
-ms.author: sethm
-ms.openlocfilehash: 22fcedfdb1921c941250b63f09bfa7fcff9c2f1b
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.author: shvija
+ms.openlocfilehash: 4576aad82b8c581cbe1630b56a07fc469207ef5f
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856699"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40037916"
 ---
 # <a name="event-hubs-messaging-exceptions"></a>事件中心消息传送异常
 
@@ -35,27 +35,26 @@ ms.locfileid: "37856699"
 ## <a name="exception-types"></a>异常类型
 下表列出了消息异常的类型及其原因，并说明可以采取的建议性操作。
 
-| **异常类型** | **说明/原因/示例** | **建议的操作** | **自动/立即重试注意事项** |
-| --- | --- | --- | --- |
-| [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) |服务器在 [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout) 控制的指定时间内未响应请求的操作。 服务器可能已完成请求的操作。 这可能是由于网络或其他基础结构延迟造成的。 |检查系统状态的一致性，并根据需要重试。<br /> 请参阅 [TimeoutException](#timeoutexception)。 |在某些情况下，重试可能会有帮助；在代码中添加重试逻辑。 |
-| [InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx) |不允许在服务器或服务中执行请求的用户操作。 有关详细信息，请查看异常消息。 例如，如果在 [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) 模式下收到消息，则 [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) 将生成此异常。 |检查代码和文档。 确保请求的操作有效。 |重试不会解决问题。 |
-| [OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx) |尝试对已关闭、中止或释放的对象调用某个操作。 在极少数的情况下，已释放环境事务。 |检查代码并确保代码不会对已释放的对象调用操作。 |重试不会解决问题。 |
-| [UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx) |[TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) 对象无法获取令牌，该令牌无效，或者令牌不包含执行操作所需的声明。 |确保使用正确的值创建令牌提供程序。 检查访问控制服务的配置。 |在某些情况下，重试可能会有帮助；在代码中添加重试逻辑。 |
-| [ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)<br /> [ArgumentNullException](https://msdn.microsoft.com/library/system.argumentnullexception.aspx)<br />[ArgumentOutOfRangeException](https://msdn.microsoft.com/library/system.argumentoutofrangeexception.aspx) |提供给该方法的一个或多个参数均无效。 提供给 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 或 [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory#Microsoft_ServiceBus_Messaging_MessagingFactory_Create_System_Collections_Generic_IEnumerable_System_Uri__) 的 URI 包含路径段。 提供给 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 或 [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory#Microsoft_ServiceBus_Messaging_MessagingFactory_Create_System_Collections_Generic_IEnumerable_System_Uri__) 的 URI 方案无效。 属性值大于 32KB。 |检查调用代码并确保参数正确。 |重试不会解决问题。 |
-| [Microsoft.ServiceBus.Messaging.MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception) <br /> [Microsoft.Azure.EventHubs.MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception) |与操作关联的实体不存在或已被删除。 |确保该实体存在。 |重试不会解决问题。 |
-| [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) |客户端无法与事件中心建立连接。 |确保提供的主机名正确并且主机可访问。 |如果存在间歇性的连接问题，重试可能会有帮助。 |
-| [Microsoft.ServiceBus.Messaging.ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) <br /> [Microsoft.Azure.EventHubs.ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) |服务目前无法处理请求。 |客户端可以等待一段时间，并重试操作。 <br /> 请参阅 [ServerBusyException](#serverbusyexception)。 |客户端可在特定的时间间隔后重试操作。 如果重试导致其他异常，请检查该异常的重试行为。 |
-| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) |在以下情况下，可能会引发一般消息异常：尝试使用属于其他实体类型（例如主题）的名称或路径创建 [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient)。 尝试发送大于 256KB 的消息。 服务器或服务在处理请求期间遇到错误。 有关详细信息，请查看异常消息。 这通常是暂时性的异常。 |检查代码，并确保只对消息正文使用可序列化对象（或使用自定义序列化程序）。 在文档中查看属性支持的值类型，并只使用支持的类型。 检查 [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception#Microsoft_ServiceBus_Messaging_MessagingException_IsTransient) 属性。 如果为 **true**，可以重试操作。 |重试行为的效果不确定，可能不会解决问题。 |
-| [MessagingEntityAlreadyExistsException](/dotnet/api/microsoft.servicebus.messaging.messagingentityalreadyexistsexception) |尝试使用已被该服务命名空间中另一实体使用的名称创建实体。 |删除现有的实体，或者选择不同的名称来创建实体。 |重试不会解决问题。 |
-| [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) |消息实体已达到其最大允许大小。 如果已经在每使用者组级别上打开最大接收方数（即 5），则可能发生此情况。 |通过从实体或其子队列接收消息在该实体中创建空间。 <br /> 请参阅 [QuotaExceededException](#quotaexceededexception) |如果同时已删除消息，则重试可能会有帮助。 |
-|  | | | |
-| [MessagingEntityDisabledException](/dotnet/api/microsoft.servicebus.messaging.messagingentitydisabledexception) |对已禁用的实体请求运行时操作。 |激活实体。 |如果在此期间该实体已激活，则重试可能会有帮助。 |
-| [Microsoft.ServiceBus.Messaging.MessageSizeExceededException](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) <br /> [Microsoft.Azure.EventHubs.MessageSizeExceededException](/dotnet/api/microsoft.azure.eventhubs.messagesizeexceededexception) | 消息负载超出 256K 限制。 请注意，256K 限制是指总消息大小，可能包括系统属性和任何 .NET 开销。 |减少消息负载的大小，并重试操作。 |重试不会解决问题。 |
+| 异常类型 | 说明/原因/示例 | 建议的操作 | 自动/立即重试注意事项 |
+| -------------- | -------------------------- | ---------------- | --------------------------------- |
+| [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) |服务器在 [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout) 控制的指定时间内未响应请求的操作。 服务器可能已完成请求的操作。 此异常可能是由于网络或其他基础结构延迟造成的。 |检查系统状态的一致性，并根据需要重试。<br /> 请参阅 [TimeoutException](#timeoutexception)。 | 在某些情况下，重试可能会有帮助；在代码中添加重试逻辑。 |
+| [InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx) |不允许在服务器或服务中执行请求的用户操作。 有关详细信息，请查看异常消息。 例如，如果在 [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) 模式下收到消息，则 [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) 将生成此异常。 | 检查代码和文档。 确保请求的操作有效。 | 重试不会解决问题。 |
+| [OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx) | 尝试对已关闭、中止或释放的对象调用某个操作。 在极少数的情况下，已释放环境事务。 | 检查代码并确保代码不会对已释放的对象调用操作。 | 重试不会解决问题。 |
+| [UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx) | [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) 对象无法获取令牌，该令牌无效，或者令牌不包含执行操作所需的声明。 | 确保使用正确的值创建令牌提供程序。 检查访问控制服务的配置。 | 在某些情况下，重试可能会有帮助；在代码中添加重试逻辑。 |
+| [ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)<br /> [ArgumentNullException](https://msdn.microsoft.com/library/system.argumentnullexception.aspx)<br />[ArgumentOutOfRangeException](https://msdn.microsoft.com/library/system.argumentoutofrangeexception.aspx) | 提供给该方法的一个或多个参数均无效。 提供给 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 或 [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory#Microsoft_ServiceBus_Messaging_MessagingFactory_Create_System_Collections_Generic_IEnumerable_System_Uri__) 的 URI 包含路径段。 提供给 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 或 [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory#Microsoft_ServiceBus_Messaging_MessagingFactory_Create_System_Collections_Generic_IEnumerable_System_Uri__) 的 URI 方案无效。 属性值大于 32 KB。 | 检查调用代码并确保参数正确。 | 重试不会解决问题。 |
+| [Microsoft.ServiceBus.Messaging MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception) <br /><br/> [Microsoft.Azure.EventHubs MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception) | 与操作关联的实体不存在或已被删除。 | 确保该实体存在。 | 重试不会解决问题。 |
+| [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) | 客户端无法与事件中心建立连接。 |确保提供的主机名正确并且主机可访问。 | 如果存在间歇性的连接问题，重试可能会有帮助。 |
+| [Microsoft.ServiceBus.Messaging ServerBusyException ](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) <br /> <br/>[Microsoft.Azure.EventHubs ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) | 服务目前无法处理请求。 | 客户端可以等待一段时间，并重试操作。 <br /> 请参阅 [ServerBusyException](#serverbusyexception)。 | 客户端可在特定的时间间隔后重试操作。 如果重试导致其他异常，请检查该异常的重试行为。 |
+| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) | 在以下情况下，可能会引发一般消息异常：尝试使用属于其他实体类型（例如主题）的名称或路径创建 [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient)。 尝试发送大于 256 KB 的消息。 服务器或服务在处理请求期间遇到错误。 有关详细信息，请查看异常消息。 此异常通常是暂时性的异常。 | 检查代码，并确保只对消息正文使用可序列化对象（或使用自定义序列化程序）。 在文档中查看属性支持的值类型，并只使用支持的类型。 检查 [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception#Microsoft_ServiceBus_Messaging_MessagingException_IsTransient) 属性。 如果为 **true**，可以重试操作。 | 重试行为的效果不确定，可能不会解决问题。 |
+| [MessagingEntityAlreadyExistsException](/dotnet/api/microsoft.servicebus.messaging.messagingentityalreadyexistsexception) | 尝试使用已被该服务命名空间中另一实体使用的名称创建实体。 | 删除现有的实体，或者选择不同的名称来创建实体。 | 重试不会解决问题。 |
+| [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) | 消息实体已达到其最大允许大小。 如果已经在每使用者组级别上打开最大接收方数（即 5），则可能会发生此异常。 | 通过从实体或其子队列接收消息在该实体中创建空间。 <br /> 请参阅 [QuotaExceededException](#quotaexceededexception) | 如果同时已删除消息，则重试可能会有帮助。 |
+| [MessagingEntityDisabledException](/dotnet/api/microsoft.servicebus.messaging.messagingentitydisabledexception) | 对已禁用的实体请求运行时操作。 |激活实体。 | 如果在此期间该实体已激活，则重试可能会有帮助。 |
+| [Microsoft.ServiceBus.Messaging MessageSizeExceededException](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) <br /><br/> [Microsoft.Azure.EventHubs MessageSizeExceededException](/dotnet/api/microsoft.azure.eventhubs.messagesizeexceededexception) | 消息负载超出 256K 限制。 256K 限制是指总消息大小，可能包括系统属性和任何 .NET 开销。 | 减少消息负载的大小，并重试操作。 |重试不会解决问题。 |
 
 ## <a name="quotaexceededexception"></a>QuotaExceededException
 [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) 指示已超出某个特定实体的配额。
 
-如果已经在每使用者组级别上打开最大接收方数 (5)，则可能发生此情况。
+如果已经在每使用者组级别上打开最大接收方数 (5)，则可能会发生此异常。
 
 ### <a name="event-hubs"></a>事件中心
 每个事件中心最多只能有 20 个使用者组。 尝试创建更多组时，会收到 [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception)。 
@@ -68,7 +67,7 @@ ms.locfileid: "37856699"
 ### <a name="common-causes"></a>常见原因
 此错误有两个常见的原因：配置不正确或暂时性服务错误。
 
-1. **配置不正确** 运行条件下的操作超时值可能太小。 客户端 SDK 的操作超时默认值为 60 秒。 请查看代码是否将该值设置得过小。 请注意，网络和 CPU 使用率的状况会影响完成特定操作所用的时间，因此，操作超时不应设置为非常小的值。
+1. **配置不正确** 运行条件下的操作超时值可能太小。 客户端 SDK 的操作超时默认值为 60 秒。 请查看代码是否将该值设置得过小。 请注意，网络和 CPU 使用率的状况会影响完成特定操作所用的时间，因此，操作超时不应设置为很小的值。
 2. **暂时性服务错误**有时，事件中心服务在处理请求时会遇到延迟，例如，高流量时段。 在这种情况下，可以在延迟后重试操作，直到操作成功为止。 如果多次尝试同一操作后仍然失败，请访问 [Azure 服务状态站点](https://azure.microsoft.com/status/)，看是否有任何已知的服务中断。
 
 ## <a name="serverbusyexception"></a>ServerBusyException
@@ -83,7 +82,7 @@ ms.locfileid: "37856699"
     
     解决方法：修改分区分发策略，或尝试 [EventHubClient.Send(eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_) 可能会有所帮助。
 
-2. 事件中心命名空间没有足够的吞吐量单位（可以在 [Azure 门户](https://portal.azure.com)中检查事件中心命名空间窗口中的“指标”屏幕来确认）。 请注意，门户显示聚合（1 分钟）的信息，但吞吐量是实时测量的 - 因此吞吐量只是一个估计值。
+2. 事件中心命名空间没有足够的吞吐量单位（可以在 [Azure 门户](https://portal.azure.com)中检查事件中心命名空间窗口中的“指标”屏幕来确认）。 门户显示聚合（1 分钟）的信息，但吞吐量是实时测量的 - 因此吞吐量只是一个估计值。
 
     解决方法：增加命名空间上的吞吐量单位可有所帮助。 可在门户上的事件中心命名空间屏幕的“缩放”窗口中执行此操作。 或者，可以使用[自动膨胀](event-hubs-auto-inflate.md)。
 

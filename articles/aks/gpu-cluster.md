@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: laevenso
 ms.custom: mvc
-ms.openlocfilehash: 7ee5198b070fee6b6ce04d9fc2639ba23ae93296
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 7fb60f3c440b4804ad8c5e6c013ecfa454358833
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070560"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716111"
 ---
 # <a name="using-gpus-on-aks"></a>在 AKS 上使用 GPU
 
@@ -270,6 +270,64 @@ Adding run metadata for 499
 ```
 $ kubectl delete jobs samples-tf-mnist-demo
 job "samples-tf-mnist-demo" deleted
+```
+
+## <a name="troubleshoot"></a>故障排除
+
+某些情况下，在“容量”下可能不会看到 GPU 资源。 例如：将群集升级到 Kubernetes 版本 1.10 或创建新的 Kubernetes 版本 1.10 群集后，运行 `kubectl describe node <node-name>` 时 `Capacity` 中缺少预期的 `nvidia.com/gpu` 资源。 
+
+若要解决此问题，请应用以下 daemonset 发布预配或升级，然后你会看到 `nvidia.com/gpu` 作为可计划的资源列出。 
+
+复制清单并将其另存为 **nvidia-device-plugin-ds.yaml**。 对于下面的映像标记 `image: nvidia/k8s-device-plugin:1.10`，请更新此标记以匹配你的 Kubernetes 版本。 例如，对于 Kubernetes 版本 1.11，请使用标记 `1.11`。
+
+```yaml
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  labels:
+    kubernetes.io/cluster-service: "true"
+  name: nvidia-device-plugin
+  namespace: kube-system
+spec:
+  template:
+    metadata:
+      # Mark this pod as a critical add-on; when enabled, the critical add-on scheduler
+      # reserves resources for critical add-on pods so that they can be rescheduled after
+      # a failure.  This annotation works in tandem with the toleration below.
+      annotations:
+        scheduler.alpha.kubernetes.io/critical-pod: ""
+      labels:
+        name: nvidia-device-plugin-ds
+    spec:
+      tolerations:
+      # Allow this pod to be rescheduled while the node is in "critical add-ons only" mode.
+      # This, along with the annotation above marks this pod as a critical add-on.
+      - key: CriticalAddonsOnly
+        operator: Exists
+      containers:
+      - image: nvidia/k8s-device-plugin:1.10 # Update this tag to match your Kubernetes version
+        name: nvidia-device-plugin-ctr
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop: ["ALL"]
+        volumeMounts:
+          - name: device-plugin
+            mountPath: /var/lib/kubelet/device-plugins
+      volumes:
+        - name: device-plugin
+          hostPath:
+            path: /var/lib/kubelet/device-plugins
+      nodeSelector:
+        beta.kubernetes.io/os: linux
+        accelerator: nvidia
+```
+
+使用 [kubectl apply][kubectl-apply] 命令创建 daemonset。
+
+```
+$ kubectl apply -f nvidia-device-plugin-ds.yaml
+daemonset "nvidia-device-plugin" created
 ```
 
 ## <a name="next-steps"></a>后续步骤

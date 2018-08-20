@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/11/2017
 ms.author: kuhussai
 ms.component: blobs
-ms.openlocfilehash: 5d12b9f04dc1cc5017ab4c9ff1bde9b84ac24cfe
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: b3279006d1ff947b76dd8fbba1438972e5f3ad8b
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39400100"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630956"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob 存储：热、冷、存档存储层
 
@@ -71,6 +71,9 @@ Blob 存储和 GPv2 帐户在帐户级别公开“访问层”属性，方便你
 
 > [!NOTE]
 > 存档存储和 Blob 级别分层仅支持块 Blob。 也不能更改包含快照的块 Blob 的层。
+
+### <a name="blob-lifecycle-management"></a>Blob 生命周期管理
+Blob 存储生命周期管理（预览版）提供丰富的基于规则的策略，用于将数据转移到最适合的访问层，并在数据的生命周期结束时使数据过期。 请参阅[管理 Azure Blob 存储生命周期](https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts)来了解详细信息。  
 
 ### <a name="blob-level-tiering-billing"></a>Blob 级别分层计费
 
@@ -187,6 +190,8 @@ Azure 门户、PowerShell 和 CLI 工具以及 .NET、Java、Python 和 Node.js 
 ### <a name="evaluate-hot-cool-and-archive-in-gpv2-blob-storage-accounts"></a>评估 GPv2 Blob 存储帐户中的热层、冷层和存档层
 
 [按区域查看热层、冷层和存档层](https://azure.microsoft.com/regions/#services)
+
+[管理 Azure Blob 存储生命周期](https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts)
 
 [通过启用 Azure 存储度量值来评估当前存储帐户的使用情况](../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 

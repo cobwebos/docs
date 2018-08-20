@@ -2,28 +2,23 @@
 title: Azure 事件中心管理库 | Microsoft Docs
 description: 管理 .NET 中的事件中心命名空间和实体
 services: event-hubs
-cloud: na
-documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
-ms.assetid: ''
 ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/19/2017
-ms.author: sethm
-ms.openlocfilehash: 2ae2f8f2006507284338fb4fa62e4942476cf2bc
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.date: 06/13/2018
+ms.author: shvija
+ms.openlocfilehash: 1b158fd3ac3f36b71a76c149e8b6815f576be1c5
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26780967"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40007045"
 ---
 # <a name="event-hubs-management-libraries"></a>事件中心管理库
 
-事件中心管理库可以动态设置事件中心命名空间和实体。 这种动态性可以实现复杂的部署和消息传送方案，以便能够以编程方式确定要预配的实体。 这些库目前可用于 .NET。
+可以使用 Azure 事件中心管理库动态设置事件中心命名空间和实体。 这种动态性可以实现复杂的部署和消息传送方案，以便能够以编程方式确定要预配的实体。 这些库目前可用于 .NET。
 
 ## <a name="supported-functionality"></a>支持的功能
 
