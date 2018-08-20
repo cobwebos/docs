@@ -1,0 +1,167 @@
+items:
+- name: 用户管理文档
+  href: index.yml
+- name: 概述
+  items:
+  - name: Azure 标识管理
+    href: ../fundamentals/identity-fundamentals.md?context=azure/active-directory/users-groups-roles/context/ugr-context
+- name: 快速入门
+  items:
+  - name: 将用户添加到 Azure AD
+    href: ../fundamentals/add-users-azure-active-directory.md?context=azure/active-directory/users-groups-roles/context/ugr-context
+  - name: 将许可证分配给用户
+    href: ../fundamentals/license-users-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context
+  - name: 设置组过期策略
+    href: groups-quickstart-expiration.md
+  - name: 设置组命名策略
+    href: groups-quickstart-naming-policy.md
+- name: 教程
+  items:
+  - name: 创建动态填充的组
+    href: groups-dynamic-tutorial.md
+- name: 概念
+  items:
+  - name: 委托 Azure AD 管理员角色
+    href: roles-concept-delegation.md
+  - name: 基于组的许可基础知识
+    href: ../fundamentals/active-directory-licensing-whatis-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context
+  - name: 比较默认用户权限
+    href: ../fundamentals/users-default-permissions.md?context=azure/active-directory/users-groups-roles/context/ugr-context
+  - name: Azure 和 Azure AD 管理员角色
+    href: ../../role-based-access-control/rbac-and-directory-admin-roles.md?context=azure/active-directory/users-groups-roles/context/ugr-context
+  - name: 服务限制和局限性
+    href: directory-service-limits-restrictions.md
+  expanded: true
+- name: 操作指南
+  items:
+  - name: 管理用户
+    items:
+    - name: 将新用户添加到 Azure AD
+      href: ../fundamentals/add-users-azure-active-directory.md?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: 管理用户个人资料
+      href: ../fundamentals/active-directory-users-profile-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: 共享帐户
+      href: ../active-directory-sharing-accounts.md?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: 将用户分配到管理员角色
+      href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: 还原已删除的用户
+      href: ../fundamentals/active-directory-users-restore.md?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: 添加 B2B 用户
+      href: ../b2b/what-is-b2b.md?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: 向 B2B 用户分配角色
+      href: ../b2b/add-guest-to-role.md?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: 动态组和 B2B
+      href: ../b2b/use-dynamic-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context
+  - name: 管理目录
+    items:
+    - name: 管理目录
+      href: ../fundamentals/active-directory-administer.md?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: 删除目录
+      href: directory-delete-howto.md
+    - name: 多个目录
+      href: licensing-directory-independence.md
+    - name: 自助服务注册
+      href: directory-self-service-signup.md
+    - name: 接管目录
+      href: domains-admin-takeover.md
+    - name: Azure AD Connect
+      href: ../connect/active-directory-aadconnect.md?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: 配置公司品牌
+      href: ../fundamentals/customize-branding.md?context=azure/active-directory/users-groups-roles/context/ugr-context
+  - name: 管理组
+    items:
+    - name: 使用组管理访问权限
+      href: ../fundamentals/active-directory-manage-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: 在 Azure 门户中管理组
+      href: ../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: 管理组 - 用于 Graph 的 PowerShell (v2)
+      href: groups-settings-v2-cmdlets.md
+    - name: 管理组 - PowerShell MSOnline
+      href: groups-settings-cmdlets.md
+    - name: 管理组成员
+      href: ../fundamentals/active-directory-groups-members-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: 管理组所有者
+      href: ../fundamentals/active-directory-accessmanagement-managing-group-owners.md?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: 管理组中的组
+      href: ../fundamentals/active-directory-groups-membership-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: 添加对 SaaS 应用的组访问权限
+      href: groups-saasapps.md
+    - name: 还原已删除的组
+      href: ../fundamentals/active-directory-groups-restore-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: 管理组设置
+      href: ../fundamentals/active-directory-groups-settings-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: 动态组
+      items:
+      - name: 创建动态组
+        href: groups-create-rule.md
+      - name: 规则语法和属性
+        href: groups-dynamic-membership.md
+      - name: 更改组成员身份类型
+        href: groups-change-type.md
+      - name: 故障排除
+        href: groups-troubleshooting.md
+    - name: 设置用户创建的组
+      href: groups-self-service-management.md
+  - name: 分配许可证
+    items:
+    - name: 将许可证分配给用户
+      href: ../fundamentals/license-users-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: 将许可证分配给组
+      href: licensing-groups-assign.md
+    - name: 解决组的许可证问题
+      href: licensing-groups-resolve-problems.md
+    - name: 将基于用户的许可更改为基于组的许可
+      href: licensing-groups-migrate-users.md
+    - name: 更改用户的许可证
+      href: licensing-groups-change-licenses.md
+    - name: 其他方案
+      href: licensing-group-advanced.md
+    - name: 使用 PowerShell 进行基于组的许可
+      href: licensing-ps-examples.md
+    - name: 产品和服务计划参考
+      href: licensing-service-plan-reference.md
+  - name: Azure AD 管理员角色
+    items:
+    - name: 角色和权限参考
+      href: directory-assign-admin-roles.md
+    - name: 查看角色成员
+      href: directory-manage-roles-portal.md
+    - name: 向用户分配角色
+      href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: 管理员角色安全性
+      items:
+      - name: 角色安全规划
+        href: directory-admin-roles-secure.md
+      - name: 创建紧急帐户
+        href: directory-emergency-access.md
+    - name: 管理单元
+      href: directory-administrative-units.md
+    - name: 配置令牌生存期
+      href: ../active-directory-configurable-token-lifetimes.md?context=azure/active-directory/users-groups-roles/context/ugr-context
+  - name: 将服务与 Azure AD 集成
+    items:
+    - name: 将 LinkedIn 与 Azure AD 集成
+      href: linkedin-integration.md
+  - name: 故障排除
+    items:
+    - name: 获取 Azure AD 支持
+      href: ../fundamentals/active-directory-troubleshooting-support-howto.md?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: 排查组问题
+      href: groups-troubleshooting.md
+    - name: 排查组许可问题
+      href: licensing-groups-resolve-problems.md
+  expanded: true
+- name: 引用
+  items:
+  - name: 图形 API
+    href: https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/azure_ad_overview
+  - name: Azure AD CLI
+    href: https://docs.microsoft.com/cli/azure/ad
+  - name: 用于 Graph 的 Azure AD PowerShell
+    href: https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0
+ms.openlocfilehash: bb524817600d2ab8c41ab5153c0b7865472e9134
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "40209034"

@@ -1,0 +1,52 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 153c3884d3802259fafac82650d79534472d7641
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "40209036"
+documentType: LandingData
+title: Azure Active Directory 用户管理文档
+metadata:
+  document_id: 
+  title: Azure Active Directory 用户、组、角色和许可证文档
+  description: 了解如何使用用户、组、角色和许可证管理向租户中的 Azure 云服务进行身份验证。
+  services: active-directory
+  ms.component: users-groups-roles
+  author: curtand
+  manager: mtillman
+  ms.service: active-directory
+  ms.topic: landing-page
+  ms.date: 08/12/2018
+  ms.author: curtand
+abstract:
+  description: 组和管理员角色分配等 Azure AD 用户管理工具将帮助你更快地完成重要任务并适应增长。 可以将 SaaS 应用的访问权限或许可证分配给组而不是个人，或者委托权限以分散 Azure AD 标识管理开销。
+sections:
+- title: 5 分钟快速入门
+  items:
+  - type: paragraph
+    text: 了解如何使用 Azure Active Directory 中的管理工具
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/fundamentals/add-users-azure-active-directory">将用户添加到 Azure AD</a>
+    - html: <a href="/azure/active-directory/fundamentals/license-users-groups">将许可证分配给用户</a>
+    - html: <a href="/azure/active-directory/fundamentals/active-directory-get-started-premium">注册 Azure AD Premium</a>
+    - html: <a href="/azure/active-directory/users-groups-roles/groups-quickstart-expiration">为用户创建的组设置过期策略</a>
+    - html: <a href="/azure/active-directory/users-groups-roles/groups-quickstart-naming-policy">为用户创建的组设置命名策略</a>
+- title: 分步教程
+  items:
+  - type: paragraph
+    text: 了解如何动态填充 Azure Active Directory 中的组
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/users-groups-roles/groups-dynamic-tutorial">创建动态填充的组</a>
+- title: 参考
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: 参考链接
+      html: <p><a href="https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0">Azure AD PowerShell cmdlet</a></p>
