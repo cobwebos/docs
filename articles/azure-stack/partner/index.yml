@@ -1,0 +1,57 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 749dc6c2d329ae7055ee0a6adc429c378de51871
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "40235261"
+documentType: LandingData
+title: Azure Stack 合作伙伴文档
+metadata:
+  document_id: 
+  title: Azure Stack 合作伙伴 D\documentation-教程和 API R\reference
+  description: 了解如何验证您的硬件的 Azure Stack 主机。 作为一项服务的验证是本机 Azure 服务设计为供解决方案合作伙伴共同工程与 Microsoft Azure Stack 产品/服务。
+  services: azure-stack
+  author: mattbriggs
+  manager: femila
+  ms.service: azure-stack
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 07/25/2018
+  ms.author: mabrigg
+  ms.reviewer: John.Haskin
+abstract:
+  description: 可以使用作为服务的验证来验证您的硬件与 Azure Stack 配合使用。 该服务是本机 Azure 服务设计为供解决方案合作伙伴共同工程与 Microsoft Azure Stack 产品/服务。
+sections:
+- title: 5 分钟的快速入门
+  items:
+  - type: paragraph
+    text: 了解如何将 VM 和计算机载入到安全中心并连接安全解决方案。
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/i_account-management.svg
+      text: 用于验证的服务门户，作为计划第一次测试
+      href: /azure/azure-stack/partner/azure-stack-vaas-schedule-your-first-test
+- title: 分步教程
+  items:
+  - type: paragraph
+    text: 了解如何验证 Azure Stack 硬件。
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/azure-stack/partner/azure-stack-vaas-test-vm">部署本地代理和测试虚拟机</a>
+    - html: <a href="/azure/azure-stack/partner/azure-stack-vaas-automate-with-powershell">自动执行使用 PowerShell 的 Azure Stack 验证</a>
+    - html: <a href="/azure/azure-stack/partner/azure-stack-vaas-validate-solution-new">验证新的 Azure Stack 解决方案</a>
+    - html: <a href="/azure/azure-stack/partner/azure-stack-vaas-validate-oem-package">验证 OEM 包</a>
+    - html: <a href="/azure/azure-stack/partner/azure-stack-vaas-validate-microsoft-updates">从 Microsoft 的软件更新进行验证</a>
+- title: 参考
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: 作为一项服务的验证
+      html: <a href="/azure/azure-stack/partner/azure-stack-vaas-parameters">验证配置文件</a>
