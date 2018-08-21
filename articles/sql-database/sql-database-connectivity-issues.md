@@ -259,10 +259,8 @@ Enterprise Library 6 (EntLib60) 提供了 .NET 托管类来帮助进行日志记
 
 | 日志查询 | Description |
 |:--- |:--- |
-| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |
-  [sys.event_log](http://msdn.microsoft.com/library/dn270018.aspx) 视图提供有关各个事件的信息，包括一些可能导致暂时性错误或连接故障的事件。<br/><br/>理想情况下，可以将 **start_time** 或 **end_time** 值与有关客户端程序遇到问题时的信息相关联。<br/><br/>必须连接到 *master* 数据库才能运行此查询。 |
-| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |
-  [sys.database_connection_stats](http://msdn.microsoft.com/library/dn269986.aspx) 视图针对其他诊断提供事件类型的聚合计数。<br/><br/>必须连接到 *master* 数据库才能运行此查询。 |
+| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |[sys.event_log](http://msdn.microsoft.com/library/dn270018.aspx) 视图提供有关各个事件的信息，包括一些可能导致暂时性错误或连接故障的事件。<br/><br/>理想情况下，可以将 **start_time** 或 **end_time** 值与有关客户端程序遇到问题时的信息相关联。<br/><br/>必须连接到 *master* 数据库才能运行此查询。 |
+| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |[sys.database_connection_stats](http://msdn.microsoft.com/library/dn269986.aspx) 视图针对其他诊断提供事件类型的聚合计数。<br/><br/>必须连接到 *master* 数据库才能运行此查询。 |
 
 <a id="d-search-for-problem-events-in-the-sql-database-log" name="d-search-for-problem-events-in-the-sql-database-log"></a>
 

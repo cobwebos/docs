@@ -214,8 +214,7 @@ ImageReference imageReference = new ImageReference(
 >
 >
 
-| **发布者** | 
-  **产品** | **映像 SKU** | **版本** | **节点代理 SKU ID** |
+| **发布者** | **产品** | **映像 SKU** | **版本** | **节点代理 SKU ID** |
 | ------------- | --------- | ------------- | ----------- | --------------------- |
 | 批处理 | rendering-centos73 | 呈现 | 最新 | batch.node.centos 7 |
 | 批处理 | rendering-windows2016 | 呈现 | 最新 | batch.node.windows amd64 |
