@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 07/25/2018
 ms.author: juliako
-ms.openlocfilehash: 9a926eb274e5e4cec721864d1d9c5faee8ec58ef
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 43cc02417fad8a2fa46bd309235951393cd55b8a
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618323"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40187363"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>探讨 v2 API 生成的视频索引器输出
 
@@ -81,8 +81,8 @@ ms.locfileid: "39618323"
 |shortId|视频的 ID。 例如 63c6d532ff。|
 |privacyMode|可以细分为以下模式之一：“私用”、“公共”。 **公共** - 向你帐户中的任何人，以及具有视频链接的每个人显示该视频。 **私用** - 向你帐户中的每个人显示该视频。|
 |duration|包含一个持续时间，用于描述见解发生的时间。 持续时间以秒为单位。|
-|thumbnailVideoId|从中创建缩略图的视频的 ID。
-|thumbnailId|视频的缩略图 ID。若要获取实际缩略图，请调用 Get-Thumbnail (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) 并为其传递 thumbnailVideoId 和 thumbnailId。|
+|thumbnailVideoId|从其创建缩略图的视频的 ID。
+|thumbnailId|视频的缩略图 ID。 若要获取实际缩略图，请调用 Get-Thumbnail (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) 并为其传递 thumbnailVideoId 和 thumbnailId。|
 |人脸|可以包含零个或多个人脸。 有关更详细的信息，请参阅 [faces](#faces)。|
 |关键字|可以包含零个或多个关键字。 有关更详细的信息，请参阅 [keywords](#keywords)。|
 |情绪|可以包含零个或多个情绪。 有关更详细的信息，请参阅 [sentiments](#sentiments)。|
@@ -107,7 +107,7 @@ ms.locfileid: "39618323"
 |metadata|视频的外部元数据（如果用户已指定）。|
 |isAdult|指示视频是否已经过人工审查，并已标识为成人视频。|
 |insights|见解对象。 有关详细信息，请参阅 [insights](#insights)。|
-|thumbnailId|视频的缩略图 ID。若要获取实际缩略图，请调用 Get-Thumbnail (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) 并为其传递视频 ID 和 thumbnailId。|
+|thumbnailId|视频的缩略图 ID。 若要获取实际缩略图，请调用 Get-Thumbnail (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) 并为其传递视频 ID 和 thumbnailId。|
 |publishedUrl|用于流式传输视频的 URL。|
 |publishedUrlProxy|要从中流式传输视频的 URL（适用于 Apple 设备）。|
 |viewToken|用于流式传输视频的短期查看令牌。|
@@ -670,7 +670,7 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 ## <a name="next-steps"></a>后续步骤
 
-[视频索引器 API](https://videobreakdown.portal.azure-api.net/docs/services/582074fb0dc56116504aed75/operations/5857caeb0dc5610f9ce979e4)
+[视频索引器 API](https://api-portal.videoindexer.ai)
 
 有关如何在应用程序中嵌入小组件的信息，请参阅[将视频索引器小组件嵌入应用程序](video-indexer-embed-widgets.md)。 
 
