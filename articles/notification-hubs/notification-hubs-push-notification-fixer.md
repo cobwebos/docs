@@ -265,8 +265,8 @@ Azure 通知中心客户提出的最常见问题之一是如何排查以下问�
 [通知中心概述]: notification-hubs-push-notification-overview.md
 [Azure 通知中心入门]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [模板]: https://msdn.microsoft.com/library/dn530748.aspx 
-[APNs overview]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html（APNs 概述）
-[About FCM messages]: https://firebase.google.com/docs/cloud-messaging/concept-options（关于 FCM 消息）
+[APNs overview]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html
+[About FCM messages]: https://firebase.google.com/docs/cloud-messaging/concept-options
 [Export and modify registrations in bulk]: http://msdn.microsoft.com/library/dn790624.aspx
 [服务总线资源管理器]: https://msdn.microsoft.com/library/dn530751.aspx#sb_explorer
 [服务总线资源管理器代码]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Explorer-f2abca5a

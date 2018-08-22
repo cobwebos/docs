@@ -55,8 +55,7 @@ Azure 开发测试实验室满足在任意虚拟环境中进行培训所需的�
    
    | 任务 | 学习内容 |
    | --- | --- |
-   | 
-  [配置 Azure 市场映像](devtest-lab-configure-marketplace-images.md) |了解如何将 Azure 市场映像列入允许列表；仅将培训所需的映像选择为可用。 |
+   | [配置 Azure 市场映像](devtest-lab-configure-marketplace-images.md) |了解如何将 Azure 市场映像列入允许列表；仅将培训所需的映像选择为可用。 |
    | [创建自定义映像](devtest-lab-create-template.md) |通过预先安装培训所需的软件创建自定义映像，让学员能够使用自定义映像快速创建 VM。 |
 3. **为培训计算机创建可重复使用的模板** 
    

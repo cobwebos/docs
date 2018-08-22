@@ -100,8 +100,7 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 | **Microsoft Edge 浏览器**：显示主页按钮 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
 | **Microsoft Edge 浏览器**：阻止弹出窗口 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
 | **Microsoft Edge 浏览器**：询问如何处理每个下载 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| 
-  **Microsoft Edge 浏览器**：提出保存密码 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Microsoft Edge 浏览器**：提出保存密码 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
 | **Microsoft Edge 浏览器**：发送 Do Not Track 请求 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
 | **Microsoft Edge 浏览器**：保存窗体项 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
 | **Microsoft Edge 浏览器**：键入时显示搜索和站点建议 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
