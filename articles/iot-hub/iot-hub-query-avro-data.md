@@ -18,7 +18,7 @@ ms.locfileid: "37081362"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>使用 Azure Data Lake Analytics 查询 Avro 数据
 
-本文讨论了如何查询 Avro 数据，以高效地将消息从 Azure IoT 中心路由到 Azure 服务。 正如我们在博客文章 [Azure IoT Hub message routing: now with routing on message body]中宣布的那样，IoT 中心支持基于属性或消息正文进行路由。 有关详细信息，请参阅[基于消息正文进行路由][Routing on message bodies]。 
+本文讨论了如何查询 Avro 数据，以高效地将消息从 Azure IoT 中心路由到 Azure 服务。 正如我们在博客文章 [Azure IoT 中心消息路由：现在可基于消息正文进行路由]中宣布的那样，IoT 中心支持基于属性或消息正文进行路由。 有关详细信息，请参阅[基于消息正文进行路由][Routing on message bodies]。 
 
 挑战在于，当 Azure IoT 中心将消息路由到 Azure Blob 存储时，IoT 中心以 Avro 格式写入内容，该格式同时包括消息正文属性和消息属性。 IoT 中心仅支持以 Avro 数据格式将数据写入到 Blob 存储，此格式不用于任何其他终结点。 有关详细信息，请参阅[如果使用 Azure 存储容器][When using Azure storage containers]。 尽管 Avro 格式可用于保存数据和消息，但将其用于查询数据将是一项挑战。 比较而言，JSON 或 CSV 格式更容易用来查询数据。
 
@@ -182,7 +182,7 @@ U-SQL 中有一个适用于 Avro 的“提取程序”。 有关详细信息，�
 [img-query-avro-data-8]: ./media/iot-hub-query-avro-data/query-avro-data-8.png
 
 <!-- Links -->
-[Azure IoT Hub message routing: now with routing on message body]: https://azure.microsoft.com/blog/iot-hub-message-routing-now-with-routing-on-message-body/（Azure IoT 中心消息路由：现在可基于消息正文进行路由了）
+[Azure IoT 中心消息路由：现在可基于消息正文进行路由]: https://azure.microsoft.com/blog/iot-hub-message-routing-now-with-routing-on-message-body/
 
 [Routing on message bodies]: iot-hub-devguide-query-language.md#routing-on-message-bodies
 [When using Azure storage containers]:iot-hub-devguide-endpoints.md#when-using-azure-storage-containers
