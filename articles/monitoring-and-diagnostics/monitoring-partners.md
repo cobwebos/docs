@@ -5,27 +5,28 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 3/15/2018
+ms.date: 8/08/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 5d5b2e78755d6800f61e3e4adb1769799d01dad2
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: b21afecc27f1550cf557305ef069278ed66acaf0
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37111517"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005311"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 | 合作伙伴 |  |  |
 | --- | --- | --- |
-| [![合作伙伴徽标][alertlogic-logo]<br/>**AlertLogic**][alertlogic-anchor] | [![合作伙伴徽标][appdynamics-logo]<br/>**AppDynamics**][appdynamics-anchor] | [![合作伙伴徽标][atlassian-logo]<br/>**Atlassian**][atlassian-anchor] |
-| [**Botmetric**][botmetric-anchor] | [![合作伙伴徽标][circonus-logo]<br/>**Circonus**][circonus-anchor] | [![合作伙伴徽标][cloudhealth-logo]<br/>**CloudHealth**][cloudhealth-anchor] |
-| [![合作伙伴徽标][cloudmonix-logo]<br/>**CloudMonix**][cloudmonix-anchor] | [![合作伙伴徽标][cloudyn-logo]<br/>**Cloudyn**][cloudyn-anchor] | [![合作伙伴徽标][datadog-logo]<br/>**Datadog**][datadog-anchor] |
-| [![合作伙伴徽标][dynatrace-logo]<br/>**Dynatrace**][dynatrace-anchor] | [![合作伙伴徽标][grafana-logo]<br/>**Grafana**][grafana-anchor] | [![合作伙伴徽标][logicmonitor-logo]<br/>**Logic Monitor**][logicmonitor-anchor] |
-| [![合作伙伴徽标][moogsoft-logo]<br/>**Moogsoft**][moogsoft-anchor] | [![合作伙伴徽标][opsgenie-logo]<br/>**OpsGenie**][opsgenie-anchor] | [![合作伙伴徽标][pagerduty-logo]<br/>**PagerDuty**][pagerduty-anchor] |
-| [![合作伙伴徽标][qradar-logo]<br/>**QRadar**][qradar-anchor] | [![合作伙伴徽标][sciencelogic-logo]<br/>**ScienceLogic**][sciencelogic-anchor] | [![合作伙伴徽标][signalfx-logo]<br/>**SignalFx**][signalfx-anchor] |
-| [![合作伙伴徽标][signl4-logo]<br/>**SIGNL4**][signl4-anchor] | [**SolarWinds**][solarwinds-anchor] | [![合作伙伴徽标][splunk-logo]<br/>**Splunk**][splunk-anchor] |
-| [![合作伙伴徽标][sumologic-logo]<br/>**Sumo Logic**][sumologic-anchor] | [![合作伙伴徽标][turbonomic-logo]<br/>**Turbonomic**][turbonomic-anchor] | |
+| [**AlertLogic**<br/>![合作伙伴徽标][alertlogic-logo]][alertlogic-anchor] | [**AppDynamics**<br/>![合作伙伴徽标][appdynamics-logo]][appdynamics-anchor]  | [**Atlassian**<br/>![合作伙伴徽标][atlassian-logo]][atlassian-anchor] 
+| [**Botmetric**][botmetric-anchor] | [**Circonus**<br/>![合作伙伴徽标][circonus-logo]][circonus-anchor]  | [**CloudHealth**<br/>![合作伙伴徽标][cloudhealth-logo]][cloudhealth-anchor] 
+| [**CloudMonix** <br/> ![合作伙伴徽标][cloudmonix-logo]][cloudmonix-anchor] | [**Cloudyn**<br/>![合作伙伴徽标][cloudyn-logo]][cloudyn-anchor] | [**Datadog**<br/>![合作伙伴徽标][datadog-logo]][datadog-anchor] 
+| [**Dynatrace** <br/> ![合作伙伴徽标][dynatrace-logo]][dynatrace-anchor] | [**Grafana**<br/>![合作伙伴徽标][grafana-logo]][grafana-anchor] | [**Logic Monitor**<br/>![合作伙伴徽标][logicmonitor-logo]][logicmonitor-anchor] 
+| [**Moogsoft**<br/>![合作伙伴徽标][moogsoft-logo]][moogsoft-anchor] | [**NewRelic**<br/>![合作伙伴徽标][newrelic-logo]][newrelic-anchor] | [**OpsGenie**<br/>![合作伙伴徽标][opsgenie-logo]][opsgenie-anchor] 
+| [**PagerDuty**<br/>![合作伙伴徽标][pagerduty-logo]][pagerduty-anchor] | [**QRadar**<br/>![合作伙伴徽标][qradar-logo]][qradar-anchor] | [**ScienceLogic**<br/>![合作伙伴徽标][sciencelogic-logo]][sciencelogic-anchor] 
+| [**SignalFx**<br/>![合作伙伴徽标][signalfx-logo]<br/>][signalfx-anchor] | [**SIGNL4**<br/>![合作伙伴徽标][signl4-logo]][signl4-anchor] | [**SolarWinds**][solarwinds-anchor] 
+| [**Splunk** <br/> ![合作伙伴徽标][splunk-logo]][splunk-anchor] | [**Sumo Logic**<br/>![合作伙伴徽标][sumologic-logo]][sumologic-anchor] | [**Turbonomic**<br/>![合作伙伴徽标][turbonomic-logo]][turbonomic-anchor] 
+
 
 ## <a name="alertlogic-log-manager"></a>AlertLogic Log Manager
 Alert Logic Log Manager 收集 VM、应用程序和 Azure 平台日志进行安全分析和数据保留。 它还通过 Azure Monitor API 收集 Azure 活动日志。 使用这些信息可以检测不法行为，确保满足合规性要求。
@@ -89,14 +90,16 @@ LogicMonitor® 是适用于复杂 IT 基础结构的、基于 SaaS 的领先性�
 ## <a name="moogsoft"></a>Moogsoft
 Moogsoft AIOps 可加快敏捷业务转换。
 
-Microsoft Azure 自动化和控制工具可让用户实时观察 Azure 中部署的应用程序和微服务的状态，并有助于协调诊断和 Runbook，以提高补救速度。
-使用其他第三方工具可以观察本地应用程序和基础结构的状态。
+Microsoft Azure 自动化和控制工具可让用户实时观察 Azure 中部署的应用程序和微服务的状态， 并有助于协调诊断和 Runbook，以提高补救速度。 使用其他第三方工具可以观察本地应用程序和基础结构的状态。
 
 Moogsoft AIOps 可将“事件引入到补救”工作流自动化，无需更改现有的流程和组织结构。 
 
-Moogsoft AIOps 在 Azure 资产中运行并与整个混合构造的监视和自动化工具集成，可以提前主动检测影响应用程序的事件，动态协调相应的资源，使资源能够适应场合，同时减少补救以及对客户体验造成负面影响的平均时间。 
+Moogsoft 在 Azure 资产中运行并与整个混合构造的监视和自动化工具集成， 可以提前主动检测影响应用程序的事件，动态协调相应的资源，使资源能够适应场合，同时减少补救以及对客户体验造成负面影响的平均时间。 
 
 [查看相关文档。][moogsoft-doc]
+
+## <a name="newrelic"></a>NewRelic
+[了解详细信息。][newrelic-doc]
 
 ## <a name="opsgenie"></a>OpsGenie
 OpsGenie 充当 Azure 所生成的警报的发送器。 OpsGenie 根据值守计划和呈报情况来确定需要进行通知的人员。 它可以通过电子邮件、短信 (SMS)、电话或推送通知来通知这些人员。 Azure 根据检测到的问题生成警报。 OpsGenie 可确保为问题安排合适的解决人员。
@@ -117,12 +120,12 @@ ScienceLogic 提供下一代 IT 服务保证平台，用于随时随地管理任
 [了解详细信息。][sciencelogic-doc]
 
 ## <a name="signalfx"></a>SignalFx
-SignalFx 是领先的面向数据驱动型 DevOps 的实时操作智能服务。 该服务可以发现并收集云中每个组件的指标，取代传统的点选工具，提供当前动态环境的实时洞察信息。 利用可大规模缩放的 SignalFx 平台，可以根据体系结构针对容器和微服务优化 SaaS 平台，并在各种规模的组织中提供强大的可视化、主动警报和协作会审功能。 还可以通过 Telegraf、statsD 和 collectd 等开源连接器直接将 SignalFx 与 Azure Monitor 集成，以便在 Azure 中提供一流的仪表板、分析和警报。
+SignalFx 是领先的面向数据驱动型 DevOps 的实时操作智能服务。 该服务可以发现并收集云中每个组件的指标， 取代传统的点选工具，提供当前动态环境的实时洞察信息。 利用可大规模缩放的 SignalFx 平台，可以根据体系结构针对容器和微服务优化 SaaS 平台，并在各种规模的组织中提供强大的可视化、主动警报和协作会审功能。 还可以通过 Telegraf、statsD 和 collectd 等开源连接器直接将 SignalFx 与 Azure Monitor 集成，以便在 Azure 中提供一流的仪表板、分析和警报。
 
 [查看相关文档。][signalfx-doc]
 
 ## <a name="signl4"></a>SIGNL4
-面向运营团队的移动警报应用 SIGNL4，是在适当的时间，在任何位置通过推送、短信和语音呼叫，将重要警报从 Azure Monitor 路由到适当人员的最快捷方式。 SIGNL4 可以管理团队的值勤和轮班，跟踪警报的传送和所有权，并根据需要升级事务。 它可为整个团队提供透明度。 使用 SIGNL4 的超级易用型 REST Webhook，可以毫不费力地连接任何 Azure 服务。 使用 SIGNL4 时，响应速度比使用电子邮件通知和人工警报要快 10 倍。
+面向运营团队的移动警报应用 SIGNL4，是在适当的时间，在任何位置通过推送、短信和语音呼叫，将重要警报从 Azure Monitor 路由到适当人员的最快捷方式。 SIGNL4 可以管理团队的值勤和轮班，跟踪警报的传送和所有权，并根据需要升级事务。 它可为整个团队提供透明度。 使用 SIGNL4 的超级易用型 REST Webhook，可以毫不费力地连接任何 Azure 服务。 使用 SIGNL4 时，响应速度最多是使用电子邮件通知和人工警报的 10 倍。
 
 [查看相关文档。][signl4-doc]
 
@@ -149,8 +152,8 @@ Turbonomic 为混合云提供工作负荷自动化解决方案，同时实时优
 ## <a name="next-steps"></a>后续步骤
 * [了解有关 Azure Monitor 的详细信息](monitoring-overview.md)
 * [使用 REST API 访问指标](monitoring-rest-api-walkthrough.md)
-* [将活动日志流式传输给第三方服务](monitoring-stream-activity-logs-event-hubs.md)
-* [将诊断日志流式传输给第三方服务](monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [将活动日志流式传输给非 Microsoft 服务](monitoring-stream-activity-logs-event-hubs.md)
+* [将诊断日志流式传输给非 Microsoft 服务](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 
 <!--Partner Anchors-->
 [alertlogic-anchor]: #alertlogic-log-manager "AlertLogic"
@@ -163,6 +166,7 @@ Turbonomic 为混合云提供工作负荷自动化解决方案，同时实时优
 [cloudyn-anchor]: #cloudyn "Cloudyn"
 [datadog-anchor]: #datadog "Datadog"
 [dynatrace-anchor]: #dynatrace "Dynatrace"
+[newrelic-anchor]: #newrelic "NewRelic"
 [grafana-anchor]: #grafana "Grafana"
 [logicmonitor-anchor]: #logic-monitor "Logic Monitor"
 [moogsoft-anchor]: #moogsoft "Moogsoft"
@@ -187,6 +191,7 @@ Turbonomic 为混合云提供工作负荷自动化解决方案，同时实时优
 [cloudyn-logo]: ./media/partner-logos/cloudyn.png
 [datadog-logo]: ./media/partner-logos/datadog.png
 [dynatrace-logo]: ./media/partner-logos/dynatrace.png
+[newrelic-logo]: ./media/partner-logos/newrelic.png
 [grafana-logo]: ./media/partner-logos/grafana.png
 [logicmonitor-logo]: ./media/partner-logos/logicmonitor.png
 [moogsoft-logo]: ./media/partner-logos/moogsoft.png
@@ -214,6 +219,7 @@ Turbonomic 为混合云提供工作负荷自动化解决方案，同时实时优
 [grafana-doc]: ./monitor-send-to-grafana.md "Azure Monitor Grafana 集成。"
 [logicmonitor-doc]: https://www.logicmonitor.com/lmcloud-azure/ "Logic Monitor 文档。"
 [moogsoft-doc]: https://www.moogsoft.com/partners/microsoft-azure "Moogsoft 文档。"
+[newrelic-doc]: https://newrelic.com/azure "NewRelic 文档。"
 [opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "OpsGenie 文档。"
 [pagerduty-doc]: https://www.pagerduty.com/docs/guides/azure-integration-guide/ "PagerDuty 文档。"
 [qradar-doc]: https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0 "QRadar 文档。"

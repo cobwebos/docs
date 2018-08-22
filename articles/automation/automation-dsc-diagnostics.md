@@ -1,40 +1,39 @@
 ---
-title: 将 Azure Automation DSC 报告数据转发到 Log Analytics
-description: 本文演示如何将 Desired State Configuration (DSC) 报告数据发送到 Log Analytics，以提供附加见解和管理信息。
+title: 将 Azure Automation State Configuration 报告数据转发到 Log Analytics
+description: 本文演示如何将 Desired State Configuration (DSC) 报告数据从 Azure Automation State Configuration 发送到 Log Analytics，以提供附加见解和管理信息。
 services: automation
 ms.service: automation
 ms.component: dsc
-author: georgewallace
-ms.author: gwallace
-ms.date: 06/12/2018
+author: DCtheGeek
+ms.author: dacoulte
+ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 822d0e285e6f1cc9907625d7928dff3d9bf66921
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1b3c0cd71508aef9a608e0c41e32cd079e40d4e5
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218949"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003460"
 ---
-# <a name="forward-azure-automation-dsc-reporting-data-to-log-analytics"></a>将 Azure Automation DSC 报告数据转发到 Log Analytics
+# <a name="forward-azure-automation-state-configuration-reporting-data-to-log-analytics"></a>将 Azure Automation State Configuration 报告数据转发到 Log Analytics
 
-自动化可以将 DSC 节点状态数据发送到 Log Analytics 工作区。  
-节点和节点配置中的单个 DSC 资源的符合性状态在 Azure 门户中或使用 PowerShell 可见。 使用 Log Analytics，可以：
+Azure Automation State Configuration 可以将 Desired State Configuration (DSC) 节点状态数据发送到 Log Analytics 工作区。 节点和节点配置中的单个 DSC 资源的符合性状态可以通过 Azure 门户或 PowerShell 查看。 使用 Log Analytics，可以：
 
-* 获取托管节点和单个资源的符合性信息
-* 基于符合性状态触发电子邮件或警报
-* 跨托管节点编写高级查询
-* 跨自动化帐户关联符合性状态
-* 随着时间的推移，可视化节点符合性历史记录
+- 获取托管节点和单个资源的符合性信息
+- 基于符合性状态触发电子邮件或警报
+- 跨托管节点编写高级查询
+- 跨自动化帐户关联符合性状态
+- 随着时间的推移，可视化节点符合性历史记录
 
 ## <a name="prerequisites"></a>先决条件
 
-要开始将 Automation DSC 报表发送到 Log Analytics，需要准备：
+若要开始将 Automation State Configuration 报表发送到 Log Analytics，需要准备：
 
-* 2016 年 11 月或之后发布的 [Azure PowerShell](/powershell/azure/overview) (v2.3.0) 版本。
-* 一个 Azure 自动化帐户。 有关详细信息，请参阅 [Azure 自动化入门](automation-offering-get-started.md)
-* 具有“自动化和控制”服务产品的 Log Analytics 工作区。 有关详细信息，请参阅 [Log Analytics 入门](../log-analytics/log-analytics-get-started.md)。
-* 至少一个 Azure Automation DSC 节点。 有关详细信息，请参阅[登记由 Azure Automation DSC 管理的计算机](automation-dsc-onboarding.md)
+- 2016 年 11 月或之后发布的 [Azure PowerShell](/powershell/azure/overview) (v2.3.0) 版本。
+- 一个 Azure 自动化帐户。 有关详细信息，请参阅 [Azure 自动化入门](automation-offering-get-started.md)
+- 具有“自动化和控制”服务产品的 Log Analytics 工作区。 有关详细信息，请参阅 [Log Analytics 入门](../log-analytics/log-analytics-get-started.md)。
+- 至少一个 Azure Automation State Configuration 节点。 有关详细信息，请参阅[登记由 Azure Automation State Configuration 管理的计算机](automation-dsc-onboarding.md)
 
 ## <a name="set-up-integration-with-log-analytics"></a>设置与 Log Analytics 的集成
 
@@ -45,54 +44,56 @@ ms.locfileid: "36218949"
 
   ```powershell
   # Find the ResourceId for the Automation Account
-  Find-AzureRmResource -ResourceType "Microsoft.Automation/automationAccounts"
+  Find-AzureRmResource -ResourceType 'Microsoft.Automation/automationAccounts'
   ```
+
 1. 通过运行以下 PowerShell 命令获取 Log Analytics 工作区的 ResourceId：（如果具有多个工作区，选择想要配置的工作区的 ResourceID）。
 
   ```powershell
   # Find the ResourceId for the Log Analytics workspace
-  Find-AzureRmResource -ResourceType "Microsoft.OperationalInsights/workspaces"
+  Find-AzureRmResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
   ```
+
 1. 运行以下 PowerShell 命令，将 `<AutomationResourceId>` 和 `<WorkspaceResourceId>` 替换为前面每个步骤中的 ResourceId 值：
 
   ```powershell
-  Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Categories "DscNodeStatus"
+  Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Categories 'DscNodeStatus'
   ```
 
-如果想要停止将数据从 Azure Automation DSC 导入到 Log Analytics，运行以下 PowerShell 命令。
+若要停止将数据从 Azure Automation State Configuration 导入到 Log Analytics，请运行以下 PowerShell 命令：
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $false -Categories "DscNodeStatus"
+Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $false -Categories 'DscNodeStatus'
 ```
 
-## <a name="view-the-dsc-logs"></a>查看 DSC 日志
+## <a name="view-the-state-configuration-logs"></a>查看 Automation State Configuration 日志
 
-为 Automation DSC 数据设置与 Log Analytics 的集成后，“日志搜索”按钮将出现在自动化帐户的“DSC 节点”边栏选项卡上。 单击“日志搜索”按钮，查看 DSC 节点数据的日志。
+为 Automation State Configuration 数据设置与 Log Analytics 的集成后，“日志搜索”按钮会出现在自动化帐户的“DSC 节点”边栏选项卡上。 单击“日志搜索”按钮，查看 DSC 节点数据的日志。
 
 ![日志搜索按钮](media/automation-dsc-diagnostics/log-search-button.png)
 
-“日志搜索”边栏选项卡将打开，并且你将看到针对每个 DSC 节点的“DscNodeStatusData”操作，以及针对在应用于该节点的节点配置中调用的每个 [DSC 资源](https://msdn.microsoft.com/powershell/dsc/resources)的“DscResourceStatusData”操作。
+“日志搜索”边栏选项卡将打开，并且你会看到针对每个 State Configuration 节点的“DscNodeStatusData”操作，以及针对在应用于该节点的节点配置中调用的每个 [DSC 资源](/powershell/dsc/resources)的“DscResourceStatusData”操作。
 
 “DscResourceStatusData”操作包含针对失败的任何 DSC 资源的错误信息。
 
 单击列表中的每个操作可查看该操作的数据。
 
 还可以通过 [在 Log Analytics 中进行搜索来查看日志。 请参阅[使用日志搜索查找数据](../log-analytics/log-analytics-log-searches.md)。
-键入以下查询以查找 DSC 日志：`Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category = "DscNodeStatus"`
+键入以下查询以查找 State Configuration 日志：`Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus'`
 
-还可以通过操作名称缩小查询范围。 例如：`Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category = "DscNodeStatus" OperationName = "DscNodeStatusData"
+还可以通过操作名称缩小查询范围。 例如： `Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus' OperationName='DscNodeStatusData'`
 
-### <a name="send-an-email-when-a-dsc-compliance-check-fails"></a>DSC 符合性检查失败时发送一封电子邮件
+### <a name="send-an-email-when-a-state-configuration-compliance-check-fails"></a>State Configuration 符合性检查失败时发送一封电子邮件
 
-我们的一家重要客户提出的请求是，当 DSC 配置出现问题时能够发送电子邮件或短信。   
+我们的一家重要客户提出的请求是，当 DSC 配置出现问题时能够发送电子邮件或短信。
 
-若要创建预警规则，需要首先针对应调用警报的 DSC 报表记录创建日志搜索。  单击“+ 新建警报规则”按钮以创建并配置警报规则。
+若要创建预警规则，需要首先针对应调用警报的 State Configuration 报表记录创建日志搜索。 单击“+ 新建警报规则”按钮以创建并配置警报规则。
 
 1. 在 Log Analytics“概述”页面中，单击“日志搜索”。
-1. 在查询字段中键入以下搜索，针对警报创建日志搜索查询：`Type=AzureDiagnostics Category=DscNodeStatus NodeName_s=DSCTEST1 OperationName=DscNodeStatusData ResultType=Failed`
+1. 在查询字段中键入以下搜索，针对警报创建日志搜索查询：`Type=AzureDiagnostics Category='DscNodeStatus' NodeName_s='DSCTEST1' OperationName='DscNodeStatusData' ResultType='Failed'`
 
-  如果已设置在工作区中收集来自多个自动化帐户或订阅的日志，则可以按照订阅或自动化帐户来为警报分组。  
-  自动化帐户名称可能派生自 DscNodeStatusData 搜索中的 Resource 字段。  
+   如果已设置在工作区中收集来自多个自动化帐户或订阅的日志，则可以按照订阅或自动化帐户来为警报分组。  
+   自动化帐户名称可能派生自 DscNodeStatusData 搜索中的 Resource 字段。  
 1. 若要打开“创建规则”屏幕，请单击页面顶部的“+ 新建警报规则”。 有关用于配置警报的选项的详细信息，请参阅[创建警报规则](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)。
 
 ### <a name="find-failed-dsc-resources-across-all-nodes"></a>在所有节点中查找失败的 DSC 资源
@@ -101,7 +102,7 @@ Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <Wo
 若要查找失败的 DSC 资源的所有实例。
 
 1. 在 Log Analytics“概述”页面中，单击“日志搜索”。
-1. 在查询字段中键入以下搜索，针对警报创建日志搜索查询：`Type=AzureDiagnostics Category=DscNodeStatus OperationName=DscResourceStatusData ResultType=Failed`
+1. 在查询字段中键入以下搜索，针对警报创建日志搜索查询：`Type=AzureDiagnostics Category='DscNodeStatus' OperationName='DscResourceStatusData' ResultType='Failed'`
 
 ### <a name="view-historical-dsc-node-status"></a>查看历史 DSC 节点状态
 
@@ -118,7 +119,7 @@ Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <Wo
 
 ### <a name="dscnodestatusdata"></a>DscNodeStatusData
 
-| 属性 | 说明 |
+| 属性 | Description |
 | --- | --- |
 | TimeGenerated |符合性检查运行的日期和时间。 |
 | OperationName |DscNodeStatusData |
@@ -149,7 +150,7 @@ Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <Wo
 
 ### <a name="dscresourcestatusdata"></a>DscResourceStatusData
 
-| 属性 | 说明 |
+| 属性 | Description |
 | --- | --- |
 | TimeGenerated |符合性检查运行的日期和时间。 |
 | OperationName |DscResourceStatusData|
@@ -180,16 +181,20 @@ Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <Wo
 
 ## <a name="summary"></a>摘要
 
-将 Automation DSC 数据发送到 Log Analytics 后，可以通过以下操作更好地了解 Automation DSC 节点的状态：
+将 Automation State Configuration 数据发送到 Log Analytics 后，可以通过以下操作更好地了解 Automation State Configuration 节点的状态：
 
-* 设置警报，以便在出现问题时获得通知
-* 使用自定义视图和搜索查询直观地显示 Runbook 结果、Runbook 作业状态，以及其他相关的关键指标。  
+- 设置警报，以便在出现问题时获得通知
+- 使用自定义视图和搜索查询直观地显示 Runbook 结果、Runbook 作业状态，以及其他相关的关键指标。  
 
-Log Analytics 可以更直观地显示 Automation DSC 数据的运行情况，并且可以帮助更快地解决事件。  
+Log Analytics 可以更直观地显示 Automation State Configuration 数据的运行情况，并且有助于更快地解决事件。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解如何使用 Log Analytics 构造不同的搜索查询和查看 Automation DSC 日志，请参阅 [Log Analytics 中的日志搜索](../log-analytics/log-analytics-log-searches.md)
-* 若要了解使用 Azure Automation DSC 的详细信息，请参阅 [Azure Automation DSC 入门](automation-dsc-getting-started.md)
-* 若要了解有关 Log Analytics 和数据收集源的详细信息，请参阅[在 Log Analytics 中收集 Azure 存储数据概述](../log-analytics/log-analytics-azure-storage.md)
-
+- 有关概述，请参阅 [Azure Automation State Configuration](automation-dsc-overview.md)
+- 若要开始使用，请参阅 [Azure Automation State Configuration 入门](automation-dsc-getting-started.md)
+- 若要了解如何编译 DSC 配置，以便将它们分配给目标节点，请参阅[在 Azure Automation State Configuration 中编译配置](automation-dsc-compile.md)
+- 有关 PowerShell cmdlet 参考，请参阅 [Azure Automation State Configuration cmdlet](/powershell/module/azurerm.automation/#automation)
+- 有关定价信息，请参阅 [Azure Automation State Configuration 定价](https://azure.microsoft.com/pricing/details/automation/)
+- 若要查看在持续部署管道中使用 Azure Automation State Configuration 的示例，请参阅[使用 Azure Automation State Configuration 和 Chocolatey 进行持续部署](automation-dsc-cd-chocolatey.md)
+- 若要详细了解如何使用 Log Analytics 构造不同的搜索查询和查看 Automation State Configuration 日志，请参阅 [Log Analytics 中的日志搜索](../log-analytics/log-analytics-log-searches.md)
+- 若要了解有关 Log Analytics 和数据收集源的详细信息，请参阅[在 Log Analytics 中收集 Azure 存储数据概述](../log-analytics/log-analytics-azure-storage.md)
