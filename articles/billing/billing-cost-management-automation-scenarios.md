@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
-ms.date: 6/07/2018
+ms.date: 6/13/2018
 ms.author: erikre
-ms.openlocfilehash: f84071577e9636e40d621093e2c57e3e9adf4913
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: c5445eb5e936fe73d51a41936b052f6495b1bcc6
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35247660"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39632142"
 ---
 # <a name="billing-and-cost-management-automation-scenarios"></a>计费和成本管理自动化方案
 
 常用的计费和成本管理空间方案已在下面标识，将映射到可以在这些方案中使用的不同 API。 在方案到 API 的映射下可以找到所有可用 API 及其提供的功能的摘要。 
 
-## <a name="common-scenarios"></a>常见方案 
+## <a name="common-scenarios"></a>常见方案
 
 可以在多种方案中使用计费和成本管理 API 来解答与成本和使用情况相关的问题。  下面概述了常用方案。
 
@@ -88,8 +88,38 @@ ms.locfileid: "35247660"
 -   **市场存储费用**：通过[市场存储费用 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) 获取当前月份、特定计费周期或自定义日期段的第三方 Azure 使用情况详细信息。 企业可以使用此数据根据费率和使用情况手动计算帐单，也可以根据提供的部门/组织信息来确定整个组织的成本归属情况。 可以通过市场存储费用 API 按资源查看使用情况/成本。
 -   **价目表**：[价目表 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) 为给定注册和计费周期的每个计量提供适用的费率。 可以将此费率信息与使用情况详细信息和市场使用情况信息结合使用，以便手动计算预期的帐单。
 -   **计费周期**：使用[计费周期 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) 获取一系列计费周期和一个属性，该属性指向的 API 路由针对四组与该计费周期相关的企业 API 数据：BalanceSummary、UsageDetails、市场费用、PriceSheet。
--   **预留实例建议**：[预留实例建议 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation) 可以查看客户 7 天、30 天或 60 天的虚拟机使用情况，提供单个和共享的购买建议。 预留实例 API 让客户能够分析预期的成本节省情况和建议的购买金额。
+-   **Azure 预留建议**：[预留实例建议 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation) 可以查看客户 7 天、30 天或 60 天的虚拟机使用情况，提供单个和共享的购买建议。 预留实例 API 让客户能够分析预期的成本节省情况和建议的购买金额。
+
+## <a name="frequently-asked-questions"></a>常见问题
+
+### <a name="what-is-the-difference-between-the-enterprise-reporting-apis-and-the-consumption-apis-when-should-i-use-each"></a>企业报告 API 与消耗 API 之间有什么区别？ 何时应使用其中的哪一个？
+这些 API 具有类似的功能集，都可以解答计费和成本管理方面的各种相同问题。 但是，每个 API 面向不同的受众： 
+
+- **企业报告 API**：这些 API 适用于与 Microsoft 签署了企业协议、有权访问协商的货币承诺和自定义定价的客户。 这些 API 需要密钥，可通过[企业门户](https://ea.azure.com)获取这些密钥。 有关这些 API 的说明，请参阅[面向企业客户的报告 API 概述](billing-enterprise-api.md)。
+
+- **消耗 API**：这些 API 适用于所有客户，但存在几种例外情况。 有关详细信息，请参阅 [Azure 消耗 API 概述](billing-consumption-api-overview.md)和 [Azure 消耗 API 参考](https://docs.microsoft.com/rest/api/consumption/)。 提供的 API 是建议用于最新开发方案的解决方案。 
+
+### <a name="what-is-the-difference-between-the-usage-details-api-and-the-usage-api"></a>使用情况详细信息 API 和使用情况 API 之间有什么区别？
+这些 API 提供本质不同的数据：
+
+- **使用情况详细信息**：[使用情况详细信息 API](https://docs.microsoft.com/rest/api/consumption/usagedetails) 提供每个计量实例的 Azure 使用情况和成本信息。 提供的数据已通过 Azure 的成本计量系统进行传递，其中已经应用了成本和其他可能的更改：
+
+    - 用于预付货币承诺款项的帐户的更改
+    - Azure 发现的用量差异帐户的更改
+
+- **使用情况**：[使用情况 API](https://msdn.microsoft.com/library/Mt219003.aspx) 提供原始的 Azure 使用情况信息，然后通过 Azure 的成本计量系统传递这些信息。 此数据可能与通过 Azure 费用计量系统传递后显示的使用情况和/或费用金额没有任何关联。
+
+### <a name="what-is-the-difference-between-the-invoice-api-and-the-usage-details-api"></a>发票 API 和使用情况详细信息 API 之间有什么区别？
+这些 API 提供相同数据的不同视图。 [发票 API](https://docs.microsoft.com/rest/api/billing/invoices) 仅适用于 Web Direct 客户，它基于每个计量类型的聚合费用提供帐单的每月累加成本。 [使用情况详细信息 API](https://docs.microsoft.com/rest/api/consumption/usagedetails) 提供使用情况/成本记录的每日精细视图，可由企业客户和 Web Direct 客户使用。
+
+### <a name="what-is-the-difference-between-the-price-sheet-api-and-the-ratecard-api"></a>价目表 API 和 RateCard API 之间有什么区别？
+这些 API 提供类似的数据集，但受众不同。 信息如下。
+
+- 价目表 API：[价目表 API](https://docs.microsoft.com/rest/api/consumption/pricesheet) 提供与企业客户协商好的自定义定价。
+- RateCard API：[RateCard API](https://msdn.microsoft.com/library/mt219005.aspx) 提供适用于 Web Direct 客户的面向公众的定价。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解如何使用 Azure 计费 API 以编程方式洞察 Azure 使用情况，请参阅 [Azure 计费 API 概述](billing-usage-rate-card-overview.md)。
+- 若要了解如何使用 Azure API 以编程方式洞察 Azure 使用情况，请参阅 [Azure 消耗 API 概述](billing-consumption-api-overview.md)和 [Azure 计费 API 概述](billing-usage-rate-card-overview.md)。
+- 若要在 Azure 门户中将发票与每日使用情况明细文件和成本管理报表进行比较，请参阅[了解 Microsoft Azure 帐单](billing-understand-your-bill.md)。
+- 如果仍有疑问，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
