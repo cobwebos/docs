@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8024033c8eb059fd0c7cc8d226a630f2bc47f01b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d5ee37b8ab79e29efcb4d12f36e927b2ed9e9e71
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38618319"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41918045"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli-20"></a>教程：通过 Azure CLI 2.0 创建和使用虚拟机规模集的自定义映像
 创建规模集时，需指定部署 VM 实例时要使用的映像。 若要在部署 VM 实例之后减少任务数目，可以使用自定义 VM 映像。 在此自定义 VM 映像中可以完成全部所需的应用程序安装或配置步骤。 在规模集中创建的任何 VM 实例使用自定义 VM 映像，并随时可为应用程序流量提供服务。 本教程介绍如何执行下列操作：
@@ -107,7 +107,7 @@ az image create \
 
 
 ## <a name="create-a-scale-set-from-the-custom-vm-image"></a>从自定义 VM 映像创建规模集
-使用 [az vmss create](/cli/az/vmss#az_vmss_create) 创建规模集。 不要使用 *UbuntuLTS* 或 *CentOS* 之类的平台映像，而应指定自定义 VM 映像的名称。 以下示例创建名为 *myScaleSet* 的规模集，该规模集使用上一步骤中创建的名为 *myImage* 的自定义映像：
+使用 [az vmss create](/cli/azure/vmss#az-vmss-create) 创建规模集。 不要使用 *UbuntuLTS* 或 *CentOS* 之类的平台映像，而应指定自定义 VM 映像的名称。 以下示例创建名为 *myScaleSet* 的规模集，该规模集使用上一步骤中创建的名为 *myImage* 的自定义映像：
 
 ```azurecli-interactive
 az vmss create \
