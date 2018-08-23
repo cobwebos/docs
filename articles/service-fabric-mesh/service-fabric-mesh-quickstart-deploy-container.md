@@ -9,12 +9,12 @@ ms.date: 07/12/2018
 ms.topic: quickstart
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 5359920ab32fab65df0466474aec2d305bcf633c
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: a740672ea948bd86efce92c534e0f95f65563438
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091044"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42022588"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>快速入门：将 Hello World 部署到 Service Fabric 网格
 
@@ -30,7 +30,7 @@ ms.locfileid: "39091044"
 可以使用 Azure Cloud Shell 或 Azure CLI 的本地安装完成本快速入门。 根据这些[说明](service-fabric-mesh-howto-setup-cli.md)安装 Azure Service Fabric 网格 CLI 扩展模块。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
-登录到 Azure 并设置你的订阅。
+登录到 Azure 并设置订阅。
 
 ```azurecli-interactive
 az login
@@ -57,7 +57,7 @@ az mesh deployment create --resource-group myResourceGroup --template-uri https:
 `helloWorldApp has been deployed successfully on helloWorldNetwork with public ip address <IP Address>` 
 
 ## <a name="open-the-application"></a>打开应用程序
-在应用程序成功部署后，从 CLI 输出中复制服务终结点的公用 IP 地址。  在 Web 浏览器中打开该 IP 地址。 此时将显示包含 Azure Service Fabric 网格徽标的网页。
+在应用程序成功部署后，从 CLI 输出中复制服务终结点的公用 IP 地址。 在 Web 浏览器中打开该 IP 地址。 此时将显示包含 Azure Service Fabric 网格徽标的网页。
 
 ## <a name="check-the-application-details"></a>检查应用程序详细信息
 可以使用 `az mesh app show` 命令来验证应用程序的状态。 此命令提供你可以跟进的有用信息。

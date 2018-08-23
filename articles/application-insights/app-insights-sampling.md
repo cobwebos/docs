@@ -10,15 +10,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/24/2017
-ms.author: mbullwin; vitalyg
-ms.openlocfilehash: 53753a3202362c73356e8e39bfca9d813f6387e0
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: vitalyg
+ms.author: mbullwin
+ms.openlocfilehash: 3c706b88ec9e67a607a75733833c67e62eebb724
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869897"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42144754"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -326,9 +327,12 @@ ms.locfileid: "33869897"
 ## <a name="how-do-i-know-whether-sampling-is-in-operation"></a>如何知道采样是否在运行？
 若要查找实际采样率（无论是否已应用），请使用如下所示的[分析查询](app-insights-analytics.md)：
 
-    requests | where timestamp > ago(1d)
-    | summarize 100/avg(itemCount) by bin(timestamp, 1h) 
-    | render areachart 
+```
+union * 
+| where timestamp > ago(1d)
+| summarize 100/avg(itemCount) by bin(timestamp, 1h), itemType
+| render timechart 
+```
 
 在每个保留的记录中，`itemCount` 指示它表示的原始记录数，其等于 1 +（即以前已放弃的记录数）。 
 

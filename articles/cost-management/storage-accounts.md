@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: carmonm
 ms.custom: ''
-ms.openlocfilehash: e37604e5cd36cfed016ef596060459011ec32d35
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: dab7100c97fab7e086352916ec222ec70a0d0400
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297829"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42143984"
 ---
 # <a name="configure-storage-accounts-for-cost-management"></a>为成本管理配置存储帐户
 
@@ -27,7 +27,7 @@ ms.locfileid: "35297829"
 
 必须有 Azure 存储帐户或 Amazon 存储 Bucket。
 
-如果没有 Azure 存储帐户，则需创建一个。 有关如何创建 Azure 存储帐户的详细信息，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)。
+如果没有 Azure 存储帐户，则需创建一个。 有关如何创建 Azure 存储帐户的详细信息，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)。
 
 如果没有 AWS 简单存储服务 (S3) Bucket，则需创建一个。 有关如何创建 S3 Bucket 的详细信息，请参阅 [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html)（创建存储 Bucket）。
 

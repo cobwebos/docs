@@ -13,12 +13,12 @@ ms.date: 09/07/2017
 ms.author: lizross
 ms.reviewer: piotrci
 ms.custom: it-pro;
-ms.openlocfilehash: c15cbb632410eb0b6867677d7802960033dfdd44
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: a5ede142b7f3dd314d1a6b3eb8f100ec55a4ea4e
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268376"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42023801"
 ---
 # <a name="quickstart-sign-up-for-azure-active-directory-premium"></a>快速入门：注册 Azure Active Directory Premium
 若要开始使用 Azure Active Directory (Azure AD) Premium，可以购买许可证并将其与 Azure 订阅相关联。 如果创建新的 Azure 订阅，则还需激活许可计划和 Azure AD 服务访问权限，如以下部分所述。 
@@ -46,7 +46,7 @@ Azure 或 Office 365 订户可以在线购买 Azure Active Directory Premium。
 ### <a name="microsoft-volume-licensing"></a>Microsoft 批量许可
 可以通过 [Microsoft 企业协议](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx)（250 个或更多个许可证）或[开放批量许可](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)（5-250 个许可证）计划获取 Azure Active Directory Premium。
 
-可以在 [How to purchase through Volume Licensing](https://www.microsoft.com/en-us/Licensing/how-to-buy/how-to-buy.aspx)（如何通过批量许可进行购买）页上了解有关批量许可购买选项的更多信息。
+可以在 [How to purchase through Volume Licensing](https://www.microsoft.com/en-us/licensing/how-to-buy/how-to-buy.aspx)（如何通过批量许可进行购买）页上了解有关批量许可购买选项的更多信息。
 
 > [!NOTE]
 > 在中国，使用 Azure Active Directory 全球实例的客户可以使用 Azure Active Directory 高级和基本版。 由中国 21Vianet 运营的 Microsoft Azure 服务目前不支持 Azure Active Directory 高级和基本版。 有关详细信息，请在 [Azure Active Directory 论坛](https://feedback.azure.com/forums/169401-azure-active-directory/)与我们联系。

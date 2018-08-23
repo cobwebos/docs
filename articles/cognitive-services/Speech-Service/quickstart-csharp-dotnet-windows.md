@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 8b257a6f4c32b4013ac0478d82dc1f7f32675b9b
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: a625ee4d8d672ddfd42128a9dd871dcfcc013060
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578154"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41944430"
 ---
 # <a name="quickstart-recognize-speech-in-c-under-net-framework-on-windows-using-the-speech-sdk"></a>快速入门：使用语音 SDK 在 .NET Framework 下的 C# 中识别语音
 
@@ -55,7 +55,7 @@ ms.locfileid: "39578154"
 1. 包管理器控制台中将显示以下输出行。
 
    ```text
-   Successfully installed 'Microsoft.CognitiveServices.Speech 0.5.0' to helloworld
+   Successfully installed 'Microsoft.CognitiveServices.Speech 0.6.0' to helloworld
    ```
 
 ## <a name="create-a-platform-configuration-matching-your-pc-architecture"></a>创建与你的电脑体系结构相匹配的平台配置

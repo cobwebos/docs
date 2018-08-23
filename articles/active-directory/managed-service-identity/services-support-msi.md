@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: active-directory
 ms.component: msi
 manager: mtillman
-ms.openlocfilehash: 74fb9e784122dadd1ad2f6f29a497398eacf7464
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 9e49e7cdb9157fea2ae29d015bd84d391c73e71b
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412876"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42144171"
 ---
 # <a name="services-that-support-managed-service-identity"></a>支持托管服务标识的服务 
 
@@ -46,4 +46,4 @@ ms.locfileid: "39412876"
 | Azure SQL | https://database.windows.net/ | 可用 | 2017 年 10 月 | |
 | Azure 事件中心 | https://eventhubs.azure.net | 可用 | 2017 年 12 月 | |
 | Azure 服务总线 | https://servicebus.azure.net | 可用 | 2017 年 12 月 | |
-| Azure 存储 | https://storage.azure.com/ | 预览 | 2018 年 5 月 | |
+| Azure 存储 | https://azure.microsoft.com/services/storage/ | 预览 | 2018 年 5 月 | |

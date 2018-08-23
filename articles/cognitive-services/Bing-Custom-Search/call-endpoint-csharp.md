@@ -9,12 +9,12 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: be4cc79d16b9a22124f16878b11ca04a916f98ae
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 87970e1c5e8487f9afca2acc680bdfeb610dc89f
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365886"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41929766"
 ---
 # <a name="call-bing-custom-search-endpoint-c"></a>调用必应自定义搜索终结点 (C#)
 
@@ -27,7 +27,7 @@ ms.locfileid: "35365886"
 - 具有必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)足以满足此快速入门的要求。 需要激活免费试用版时提供的访问密钥，或使用 Azure 仪表板中的付费订阅密钥。  
 
   >[!NOTE]  
-  >如果现有必应自定义搜索客户具有在 2017 年 10 月 15 日当天或之前预配的预览密钥，则可以在 2017 年 11 月 30 日或用尽所允许的最大查询数前使用他们的密钥。 之后，他们需要迁移到 Azure 上的通用版本。 
+  >如果现有必应自定义搜索客户具有在 2017 年 10 月 15 日当天或之前预配的预览密钥，则可以在 2017 年 11 月 30 日或用尽所允许的最大查询数前使用他们的密钥。 之后，他们需要迁移到 Azure 上的正式发布版本。 
  
 ## <a name="run-the-code"></a>运行代码
 
@@ -119,10 +119,12 @@ ms.locfileid: "35365886"
     }
     ```
 6. 使用以下命令来生成应用程序。 请注意由命令输出引用的 dll 路径。
+
     <pre>
     dotnet build 
     </pre>
 7. 使用下面的命令来运行应用程序，将**输出路径**替换为生成步骤引用的路径。
+
     <pre>    
     dotnet **PATH TO OUTPUT**
     </pre>

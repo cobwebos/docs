@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/03/2018
 ms.author: marsma
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 78dc9eceba11ce07deb7fe0d10df1fea9cd74a75
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b17df81dd1d972f3e559140e9f43963e9c8cab2a
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426108"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42022733"
 ---
 # <a name="quickstart-create-a-container-registry-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建容器注册表
 
@@ -40,9 +40,7 @@ az group create --name myResourceGroup --location eastus
 
 [!INCLUDE [container-registry-sku-matrix](../../includes/container-registry-sku-matrix.md)]
 
-使用 [az acr create][az-acr-create] 命令创建 ACR 实例。
-
-注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 以下示例使用 myContainerRegistry007。 将其更新为唯一值。
+使用 [az acr create][az-acr-create] 命令创建 ACR 实例。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 以下示例使用 myContainerRegistry007。 将其更新为唯一值。
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name myContainerRegistry007 --sku Basic

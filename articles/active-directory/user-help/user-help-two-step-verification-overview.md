@@ -11,17 +11,17 @@ ms.component: user-help
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: e61c96d754c240df89607db0cf84dca0e0ccd17e
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: de5c9810b234a93643321d1ba299a66a3ae965a3
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347226"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42022379"
 ---
 # <a name="two-step-verification-overview"></a>双重验证概述
 
 >[!Important]
->此内容适用于用户。 如果你是管理员，可以在 [Azure Active Directory 文档](https://docs.microsoft.com/en-us/azure/active-directory)中查找有关如何设置和管理 Azure Active Directory (Azure AD) 环境的详细信息。
+>此内容适用于用户。 如果你是管理员，可以在 [Azure Active Directory 文档](https://docs.microsoft.com/azure/active-directory)中查找有关如何设置和管理 Azure Active Directory (Azure AD) 环境的详细信息。
 
 假设 IT 部门的某位同事或者你的老板向你发送了一封电子邮件，指出组织已对你的帐户添加了附加的安全验证。 这意味着什么？ 这意味着组织要采取额外的措施来确保使用你帐户登录的是你本人。 这种额外的验证也称双重验证，是使用用户名、密码和移动设备或电话的组合来实现的。
 

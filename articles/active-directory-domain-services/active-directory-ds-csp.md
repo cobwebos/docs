@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: maheshu
-ms.openlocfilehash: 63244a8f767f71d0f9be80aad09f06f14c4d3acf
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 8d87312591f44bac5fd9a4ff63eccc19333a870c
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503965"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42142250"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Azure 云解决方案提供商 (CSP) 的 Azure Active Directory (AD) 域服务
 本文介绍如何在 Azure CSP 订阅中使用 Azure AD 域服务。
@@ -87,7 +87,7 @@ Azure AD 域服务现在支持 Azure CSP 订阅。 用户现可在关联到客�
 
 
 ## <a name="next-steps"></a>后续步骤
-* [注册 Azure CSP 计划](https://partnercenter.microsoft.com/partner/programs)并开始通过 Azure CSP 创建业务。
+* [注册 Azure CSP 计划](https://docs.microsoft.com/partner-center/enrolling-in-the-csp-program)并开始通过 Azure CSP 创建业务。
 * 查看 [Azure CSP 中提供的 Azure 服务](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services)列表。
 * [使用 PowerShell 启用 Azure AD 域服务](active-directory-ds-enable-using-powershell.md)
 * [Azure AD 域服务入门](active-directory-ds-getting-started.md)

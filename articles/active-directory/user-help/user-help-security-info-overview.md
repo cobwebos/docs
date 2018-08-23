@@ -11,19 +11,19 @@ ms.component: user-help
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: b2a7ce113b509bb734edb204896f2ee5603e8e80
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 77756a062d02b723444e5cc9e3a45df1f3719378
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389729"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42023928"
 ---
 # <a name="security-info-preview-overview"></a>安全信息（预览版）概述
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Important]
->此内容适用于用户。 如果你是管理员，可以在 [Azure Active Directory 文档](https://docs.microsoft.com/en-us/azure/active-directory)中查找有关如何设置和管理 Azure Active Directory (Azure AD) 环境的详细信息。
+>此内容适用于用户。 如果你是管理员，可以在 [Azure Active Directory 文档](https://docs.microsoft.com/azure/active-directory)中查找有关如何设置和管理 Azure Active Directory (Azure AD) 环境的详细信息。
 
 在“安全信息”中设置双重验证和密码重置信息。 在初次设置安全信息后，不需再次设置。 但是，可以随时编辑该信息并更改默认方法。
 

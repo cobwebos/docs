@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 282f6d965ea85b25f1eada1a63897734c6c7b298
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 23ab97918d7def744f9ac3427faa3743b15124eb
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435258"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42022651"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure CLI
 
@@ -46,7 +46,7 @@ az group create --name myResourceGroupAG --location eastus
 
 需要为应用程序网关创建虚拟网络才能与其他资源进行通信。 可以在创建应用程序网关的同时创建虚拟网络。 在本示例中创建了两个子网：一个用于应用程序网关，另一个用于虚拟机。 
 
-使用 [az network vnet create](/cli/azure/vnet#az-vnet-create) 创建虚拟网络和子网。 使用 [az network public-ip create](/cli/azure/public-ip#az-public-ip-create) 创建公共 IP 地址。
+使用 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) 创建虚拟网络和子网。 使用 [az network public-ip create](/cli/azure/network/public-ip#az-public-ip-create) 创建公共 IP 地址。
 
 ```azurecli-interactive
 az network vnet create \
@@ -140,7 +140,7 @@ done
 
 ## <a name="create-the-application-gateway"></a>创建应用程序网关
 
-使用 [az network application-gateway create](/cli/azure/application-gateway#az-application-gateway-create) 创建应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 将添加网络接口的专用 IP 地址作为应用程序网关后端池中的服务器。
+使用 [az network application-gateway create](/cli/azure/network/application-gateway#az-application-gateway-create) 创建应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 将添加网络接口的专用 IP 地址作为应用程序网关后端池中的服务器。
 
 ```azurecli-interactive
 address1=$(az network nic show --name myNic1 --resource-group myResourceGroupAG | grep "\"privateIpAddress\":" | grep -oE '[^ ]+$' | tr -d '",')

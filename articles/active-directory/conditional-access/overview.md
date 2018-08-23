@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/18/2018
+ms.date: 08/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: b191e041d219ad629c2f3ac6a0ac689551187eca
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 3e96e251e655c7c7ad862fbf875111e08c0dfbdf
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630202"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42022958"
 ---
 # <a name="what-is-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中的条件访问是什么？
 
@@ -47,7 +47,7 @@ ms.locfileid: "39630202"
 
 
 
-- [登录风险](conditions.md#sign-in-risk)：Azure AD Identity Protection 可检测登录风险。 如果检测到的登录风险指示可疑操作者，如何限制访问？ 如果想要获取更有力的证据，证明登录是由合法用户执行的，该怎么办？ 如果你十分怀疑特定的用户，以至于想要阻止其访问某个应用，该怎么办？ 通过配置 
+- [登录风险](conditions.md#sign-in-risk)：Azure AD Identity Protection 可检测登录风险。 如果检测到的登录风险指示可疑操作者，如何限制访问？ 如果想要获取更有力的证据，证明登录是由合法用户执行的，该怎么办？ 如果你十分怀疑特定的用户，以至于想要阻止其访问某个应用，该怎么办？  
 
 - [网络位置](location-condition.md)：Azure AD 可从任意位置进行访问。 如果试图从不在 IT 部门控制范围内的网络位置访问，应怎么办？ 使用用户名和密码的组合可能足以作为公司网络资源访问尝试的身份证据。 如果从其他意外的国家或地区发起的访问尝试要求更有力的身份证据，应怎么办？ 如果想要阻止从某些位置发起的访问尝试，应怎么办？  
 

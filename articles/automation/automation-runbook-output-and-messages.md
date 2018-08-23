@@ -9,19 +9,19 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5dc1a4bc1de3560338e1734e73ad04910535be5b
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 751175e46e13d6046cd6f459e1405a876fdce39a
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751296"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42144763"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Azure 自动化中的 Runbook 输出和消息
 大多数 Azure 自动化 Runbook 向用户或旨在由其他工作流使用的复杂对象提供某种形式的输出，例如错误消息。 Windows PowerShell 提供[多个流](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx)，以便从脚本或工作流发送输出。 Azure 自动化以不同方式处理其中的每个流，在创建 Runbook 时，应该遵循有关如何使用每个流的最佳实践。
 
 下表提供每个流的简要说明，以及运行发布的 Runbook 和[测试 Runbook](automation-testing-runbook.md) 时这些流在 Azure 门户中的行为。 后续部分将提供有关每个流的更多详细信息。
 
-| Stream | 说明 | 已发布 | 测试 |
+| Stream | Description | 已发布 | 测试 |
 |:--- |:--- |:--- |:--- |
 | 输出 |对象旨在由其他 Runbook 使用。 |写入作业历史记录。 |显示在测试输出窗格中。 |
 | 警告 |面向用户的警告消息。 |写入作业历史记录。 |显示在测试输出窗格中。 |
@@ -175,7 +175,7 @@ Windows PowerShell 使用[首选项变量](http://technet.microsoft.com/library/
 可以从 Azure 门户中 Runbook 的“作业”选项卡查看 Runbook 作业的详细信息。 作业的“摘要”可显示输入参数和[输出流](#output-stream)，此外，还显示有关作业以及任何发生的异常的常规信息。 “历史记录”包含来自[输出流](#output-stream)以及[警告和错误流](#warning-and-error-streams)中的消息，此外，如果 Runbook 已配置为记录详细记录和进度记录，则还包含[详细流](#verbose-stream)和[进度记录](#progress-records)。
 
 ### <a name="windows-powershell"></a>Windows PowerShell
-在 Windows PowerShell 中，可以使用 [Get-AzureAutomationJobOutput](https://msdn.microsoft.com/library/mt603476.aspx) cmdlet 检索 Runbook 的输出和消息。 此 cmdlet 需要作业的 ID，如果指定了要返回的流，则它还要使用一个名为 Stream 的参数。 可以指定 **Any** 来返回作业的所有流。
+在 Windows PowerShell 中，可以使用 [Get-AzureAutomationJobOutput](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjoboutput) cmdlet 检索 Runbook 的输出和消息。 此 cmdlet 需要作业的 ID，如果指定了要返回的流，则它还要使用一个名为 Stream 的参数。 可以指定 **Any** 来返回作业的所有流。
 
 以下示例将启动一个示例 Runbook，然后等待该 Runbook 完成。 完成后，将从作业收集该 Runbook 的输出流。
 

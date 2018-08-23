@@ -9,12 +9,12 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 03/16/2017
 ms.author: priyar
-ms.openlocfilehash: 4b633cefa37c11511a8171d5a7f61b03dfaa4466
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6236bf1c4d9ac7ba672939543c16b8d02a79892e
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365773"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41929971"
 ---
 # <a name="bing-text-to-speech-api"></a>必应文本转语音 API
 
@@ -37,7 +37,7 @@ Content-Length: 0
 
 令牌访问所需的标头信息如下所示。
 
-名称| 格式 | 说明
+名称| 格式 | Description
 ----|----|----
 Ocp-Apim-Subscription-Key | ASCII | 订阅密钥
 
@@ -118,7 +118,7 @@ Content-Length: 0
 
 ### <a name="ErrorResponse"></a>错误响应
 
-错误 | 说明
+错误 | Description
 ----|----
 HTTP/400 错误的请求 | 必需参数缺失、为空或为 null，或者传递给必需参数或可选参数的值无效。 获得“无效”响应的一个原因是正在传递一个超过允许长度的字符串值。 对有问题的参数的简要说明包含在内。
 HTTP/401 未授权 | 未对请求授权。
@@ -234,11 +234,10 @@ hr-HR | 男 | “Microsoft 服务器语音的文本转语音（hr-HR，Matej）�
 hu-HU | 男 | “Microsoft 服务器语音的文本转语音（hu-HU，Szabolcs）”
 id-ID | 男 | “Microsoft 服务器语音的文本转语音（id-ID，Andika）”
 it-IT | 男 | “Microsoft 服务器语音的文本转语音（it-IT，Cosimo，Apoll）”
+it-IT | 女 | “Microsoft 服务器语音的文本转语音（it-IT，LuciaRUS）”
 ja-JP | 女 | “Microsoft 服务器语音的文本转语音（ja-JP，Ayumi，Apollo）”
 ja-JP | 男 | “Microsoft 服务器语音的文本转语音（ja-JP，Ichiro，Apollo）”
 ja-JP | 女 | “Microsoft 服务器语音的文本转语音（ja-JP，HarukaRUS）”
-ja-JP | 女 | “Microsoft 服务器语音的文本转语音（ja-JP，LuciaRUS）”
-ja-JP | 男 | “Microsoft 服务器语音的文本转语音（ja-JP，EkaterinaRUS）”
 ko-KR | 女 | “Microsoft 服务器语音的文本转语音（ko-KR，HeamiRUS）”
 ms-MY | 男 | “Microsoft 服务器语音的文本转语音（ms-MY，Rizwan）”
 nb-NO | 女 | “Microsoft 服务器语音的文本转语音（nb-NO，HuldaRUS）”
@@ -250,6 +249,7 @@ pt-PT | 女 | “Microsoft 服务器语音的文本转语音（pt-PT，HeliaRUS�
 ro-RO | 男 | “Microsoft 服务器语音的文本转语音（ro-RO，Andrei）”
 ru-RU | 女 | “Microsoft 服务器语音的文本转语音（ru-RU，Irina，Apollo）”
 ru-RU | 男 | “Microsoft 服务器语音的文本转语音（ru-RU，Pavel，Apollo）”
+ru-RU | 女 | “Microsoft 服务器语音的文本转语音（ru-RU，EkaterinaRUS）”
 sk-SK | 男 | “Microsoft 服务器语音的文本转语音（sk-SK，Filip）”
 sl-SI | 男 | “Microsoft 服务器语音的文本转语音（sl-SI，Lado）”
 sv-SE | 女 | “Microsoft 服务器语音的文本转语音（sv-SE，HedvigRUS）”

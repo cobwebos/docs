@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: femila
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 5c34219d01c8670102df40d9157cb0deff74b8e4
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: fbd728ec8cd2c8c4cd7ca74ecd84fd4d0d41cbd0
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724279"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42143980"
 ---
 # <a name="azure-authenticator-for-android"></a>适用于 Android 的 Azure 验证器
 IT 管理员可能会建议使用 Microsoft Azure 验证器登录以访问工作资源。 此应用程序提供以下两个登录选项：
@@ -89,7 +89,7 @@ IT 管理员可能会建议使用 Microsoft Azure 验证器登录以访问工作
 ### <a name="sending-log-files-to-report-issues"></a>发送日志文件以报告问题
 1. 遵循 Microsoft 支持网站上的指导报告 Azure 验证器应用相关的事件、获取事件编号，以及针对指定的事件编号发送日志文件，如下所示：
 2. 在弹出菜单中单击“日志记录”。
-3. 如果有未结的 Microsoft 支持事件，请记下事件编号（后面的步骤需要用到它）。 如果尚未创建支持事件并想要获得帮助，请根据 [Microsoft 支持](https://support.microsoft.com/en-us/contactus)网站上的指导来建立新的事件。
+3. 如果有未结的 Microsoft 支持事件，请记下事件编号（后面的步骤需要用到它）。 如果尚未创建支持事件并想要获得帮助，请根据 [Microsoft 支持](https://support.microsoft.com/contactus)网站上的指导来建立新的事件。
 4. 在“日志记录”屏幕上单击“立即发送”。
 5. 选择想要使用的电子邮件提供程序。
 6. 如果已有未结的 Microsoft 支持事件，请联系受理问题的支持工程师，以了解如何发送日志数据并使其与事件相关联。 支持工程师将提供电子邮件地址和主题行信息。 如果尚未创建支持事件，请根据 Microsoft 支持网站上的指导来建立新的事件。

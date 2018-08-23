@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.topic: article
 ms.date: 3/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: e82c5c5ccfa6b7de8a9ec111140dad1a40ad44f6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 010ad8b5ceeaf046c8d361ff352e6058154a482d
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365696"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41929893"
 ---
 # <a name="tutorial-microsoft-translator-wpf-application-in-c"></a>教程：C# 中的 Microsoft Translator WPF 应用程序
 
@@ -357,7 +357,7 @@ private void Connect()
 }
 ```
 
-`Connect()` 的很大一部分涉及 `SpeechClientOptions` 实例（请参阅 `SpeechClientOptions.cs`）的创建，用于保存翻译选项。 选项包括连接到服务所需的信息（例如身份验证密钥和主机名）以及用于翻译的功能。 此处的字段映射到[语音翻译 API](http://docs.microsofttranslator.com/speech-translate.html) 公开的标头字段和 HTTP 参数。
+`Connect()` 的很大一部分涉及 `SpeechClientOptions` 实例（请参阅 `SpeechClientOptions.cs`）的创建，用于保存翻译选项。 选项包括连接到服务所需的信息（例如身份验证密钥和主机名）以及用于翻译的功能。 此处的字段映射到[语音翻译 API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference) 公开的标头字段和 HTTP 参数。
 
 `Connect()` 还创建并初始化音频输入设备（变量 `sampleProvider`），该设备用作待翻译的语音源。 此设备为硬件输入设备（如麦克风）或包含 WAVE 音频数据的文件。
 
@@ -431,4 +431,4 @@ private async Task ConnectAsync(SpeechClientOptions options, bool suspendInputAu
 此代码示例是一个功能丰富的应用程序，演示了语音翻译 API 的用法。 因此，需要了解相当多的活动部件。 你已了解最重要的部分。 对其他部分而言，在 Visual Studio 中设置几个断点并完成翻译过程可能很有帮助。 了解示例应用程序后，即可在自己的应用程序中使用语音翻译服务。
 
 > [!div class="nextstepaction"]
-> [Microsoft 语音翻译 API 参考](http://docs.microsofttranslator.com/speech-translate.html)
+> [Microsoft 语音翻译 API 参考](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

@@ -2,22 +2,20 @@
 title: 有关用于 Azure 上的机器学习的 Visual Studio Code 工具的快速入门文章 | Microsoft Docs
 description: 本文介绍了如何开始使用用于机器学习的 Visual Studio Code 工具，包括创建试验、训练模型以及操作 web 服务。
 services: machine-learning
-author: ahgyger
-ms.author: ahgyger
-manager: haining
-ms.reviewer: garyericson, jasonwhowell, mldocs
+author: chris-lauren
+ms.author: chris.lauren
 ms.service: machine-learning
 ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/15/2017
-ms.openlocfilehash: 16379b94a751ccd61a76ce1d3dda6a3ff1515751
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a215c562ad15b69dcec20c1951fe8bc3fe80c6ff
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38767062"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42023862"
 ---
 # <a name="visual-studio-code-tools-for-ai"></a>用于 AI 的 Visual Studio Code 工具
 用于 AI 的 Visual Studio Code 工具是一个开发扩展，用于生成、测试和部署深度学习 / AI 解决方案。 它具有与 Azure 机器学习的无缝集成，尤其是运行历史记录视图，其中详细列出了以前的训练和自定义指标的性能。 它还提供了一个示例资源管理器视图，允许通过 [Microsoft Cognitive Toolkit（以前称为 CNTK）](http://www.microsoft.com/en-us/cognitive-toolkit)、[Google TensorFlow](https://www.tensorflow.org) 和其他深度学习框架浏览和启动新项目。 最后，它针对计算目标提供了一个资源管理器，可以使用该资源管理器提交作业以在远程环境（例如 Azure 虚拟机或具有 GPU 的 Linux 服务器）中训练模型。 

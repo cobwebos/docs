@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: jroth
-ms.openlocfilehash: 252e4f9fe5ed6b4ff9997fc41c691636e6d002b3
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: bb9e30489aa8870fe1c71c8c9a8bd557a2dcf2b1
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413532"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42144163"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>将 Azure 高级存储用于虚拟机上的 SQL Server
 ## <a name="overview"></a>概述
@@ -645,7 +645,7 @@ ms.locfileid: "39413532"
 
 在之后的迁移步骤中，需要使用引用负载均衡器的更新后的 IP 地址来更新 AlwaysOn 侦听器，此操作涉及到删除和添加 IP 地址资源。 更新 IP 之后，需要确保已在 DNS 区域中更新新的 IP 地址并且客户端将更新其本地 DNS 缓存。
 
-如果你的客户端驻留在不同的网络段中且引用不同的 DNS 服务器，则需要考虑到迁移期间 DNS 区域复制发生的情况，因为侦听器的任意新 IP 地址的区域复制时间都会制约应用程序连接时间（可能还有其他制约情况）。 如果在此处受到时间约束，则应与 Windows 团队讨论并测试强制增量区域传送，同时还应将 DNS 主机记录设为较小的生存时间 (TTL)，以使客户端更新。 有关详细信息，请参阅[增量区域传送](https://technet.microsoft.com/library/cc958973.aspx)和 [Start-DnsServerZoneTransfer](https://technet.microsoft.com/library/jj649917.aspx)。
+如果你的客户端驻留在不同的网络段中且引用不同的 DNS 服务器，则需要考虑到迁移期间 DNS 区域复制发生的情况，因为侦听器的任意新 IP 地址的区域复制时间都会制约应用程序连接时间（可能还有其他制约情况）。 如果在此处受到时间约束，则应与 Windows 团队讨论并测试强制增量区域传送，同时还应将 DNS 主机记录设为较小的生存时间 (TTL)，以使客户端更新。 有关详细信息，请参阅[增量区域传送](https://technet.microsoft.com/library/cc958973.aspx)和 [Start-DnsServerZoneTransfer](https://docs.microsoft.com/powershell/module/dnsserver/start-dnsserverzonetransfer)。
 
 默认情况下，与 Azure 中的 Always On 中的侦听器关联的 DNS 记录的 TTL 为 1200 秒。 如果在迁移期间受时间约束，你可能希望减少此时间，以确保客户端使用侦听器更新后的 IP 地址更新其 DNS。 可以通过转储 VNN 的配置来查看并修改该配置：
 

@@ -15,12 +15,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/26/2016
 ms.author: huvalo
-ms.openlocfilehash: f1859660d2370093ab582c417233b25d363ce952
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 796de682df28c28bc66f2409e486dfdc221aedd1
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39227763"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42144167"
 ---
 # <a name="configuring-python-with-azure-app-service-web-apps"></a>使用 Azure 应用服务 Web 应用配置 Python
 本教程介绍在 [Azure 应用服务 Web 应用](http://go.microsoft.com/fwlink/?LinkId=529714)中创作和配置符合基本 Web 服务器网关接口 (WSGI) 的 Python 应用程序的选项。
@@ -356,7 +356,7 @@ Python 3.4 的示例 `web.config`：
 [!INCLUDE [web-sites-python-troubleshooting-wsgi-error-log](../../includes/web-sites-python-troubleshooting-wsgi-error-log.md)]
 
 ## <a name="next-steps"></a>后续步骤
-有关详细信息，请参阅 [Python 开发人员中心](/python/azure/)。
+有关详细信息，请参阅 [Python 开发人员中心](https://azure.microsoft.com/develop/python/)。
 
 > [!NOTE]
 > 如果要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](https://azure.microsoft.com/try/app-service/)，可以在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。

@@ -9,12 +9,12 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: zhouwang
-ms.openlocfilehash: 63c767483fa56f1b716ef61a18fa93c6947a1d3b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 20ffba69d9f0f5b6648b19967c086e23e1dcb923
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365659"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41936184"
 ---
 # <a name="microsoft-speech-client-samples"></a>Microsoft 语音客户端示例
 
@@ -32,4 +32,4 @@ Microsoft 语音服务提供端到端示例，演示如何在不同的用例（�
 
 - [iOS 上的 ObjectiveC 示例](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS)
 
-所有 Microsoft 认知服务 SDK 和示例均获得 MIT 许可证的许可。 有关详细信息，请参阅[许可证](https://github.com/Microsoft/Cognitive-Speech-STT-JavaScript/blob/master/LICENSE.md)。
+所有 Microsoft 认知服务 SDK 和示例均获得 MIT 许可证的许可。 有关详细信息，请参阅[许可证](https://github.com/Azure-Samples/SpeechToText-REST/blob/master/LICENSE)。

@@ -10,20 +10,20 @@ ms.custom: ''
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 02/26/2018
-ms.author: viviswan
-ms.openlocfilehash: f8c8d068a188052b5e8b66ccb4486a0fc75e2af9
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.author: sclyon
+ms.openlocfilehash: 90c8d73e32f4c99c6871ce9cdb7839cd1d380b9b
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796659"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42144182"
 ---
 # <a name="how-to-globally-distribute-reads-using-read-preference-with-the-azure-cosmos-db-mongodb-api"></a>如何在 Azure Cosmos DB MongoDB API 中使用读取首选项全局分配读取操作 
 
 本文介绍如何在 Azure Cosmos DB 的 MongoDB API 中使用 [MongoDB 读取首选项](https://docs.mongodb.com/manual/core/read-preference/)设置全局分配读取操作。 
 
 ## <a name="prerequisites"></a>先决条件 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
 请参阅此[快速入门](tutorial-global-distribution-mongodb.md)，获取有关在全局分布区中使用 Azure 门户设置 Azure Cosmos DB 帐户，然后使用 MongoDB API 建立连接的说明。

@@ -10,18 +10,18 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: dbb95c8aadc66e7ece93fa800055a0f6be81f015
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 7e7952a327134197f1e8492931d7ada871789395
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161403"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42144770"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>升级到最新的 Azure 多重身份验证服务器
 
 本文指导完成 Azure 多重身份验证 (MFA) 服务器 v6.0 或更高版本的升级过程。 如果需要升级旧版 PhoneFactor 代理，请参阅[将 PhoneFactor 代理升级到 Azure 多重身份验证服务器](howto-mfaserver-deploy-upgrade-pf.md)。
 
-如果要从 v6.x 或更低版本升级到 v7.x 或更高版本，所有组件都需从 .NET 2.0 更改为 .NET 4.5。 所有组件还需要 Microsoft Visual C++ 2015 Redistributable Update 1 或更高版本。 MFA 服务器安装程序将安装这些组件的 x86 和 x64 版本（如果尚未安装）。 如果用户门户和移动应用 Web 服务在不同的服务器上运行，则需要先安装这些包，才能对这些组件升级。 可以在 [Microsoft 下载中心](https://www.microsoft.com/en-us/download/)搜索最新的 Microsoft Visual C++ 2015 Redistributable 更新。 
+如果要从 v6.x 或更低版本升级到 v7.x 或更高版本，所有组件都需从 .NET 2.0 更改为 .NET 4.5。 所有组件还需要 Microsoft Visual C++ 2015 Redistributable Update 1 或更高版本。 MFA 服务器安装程序将安装这些组件的 x86 和 x64 版本（如果尚未安装）。 如果用户门户和移动应用 Web 服务在不同的服务器上运行，则需要先安装这些包，才能对这些组件升级。 可以在 [Microsoft 下载中心](https://www.microsoft.com/download/)搜索最新的 Microsoft Visual C++ 2015 Redistributable 更新。 
 
 ## <a name="install-the-latest-version-of-azure-mfa-server"></a>安装最新版本的 Azure MFA 服务器
 

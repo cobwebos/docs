@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 4774efda6748ac640d87ce83e2d5c4ee68310546
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 0f38aabf008f0335a6f9e21717aa38aefdd21615
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125733"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42022732"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>快速入门：使用 Azure 逻辑应用创建第一个自动化工作流 - Azure 门户
 
@@ -44,7 +44,7 @@ ms.locfileid: "39125733"
 
    | 属性 | 值 | 说明 | 
    |----------|-------|-------------| 
-   | **名称** | MyFirstLogicApp | 逻辑应用的名称 | 
+   | **Name** | MyFirstLogicApp | 逻辑应用的名称 | 
    | **订阅** | <*your-Azure-subscription-name*> | Azure 订阅的名称 | 
    | **资源组** | My-First-LA-RG | 用于组织相关资源的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称 | 
    | **位置** | 美国西部 | 用于存储逻辑应用信息的区域 | 
@@ -171,6 +171,9 @@ ms.locfileid: "39125733"
 2. 输入资源组名称作为确认，然后选择“删除”。
 
    ![确认删除](./media/quickstart-create-first-logic-app-workflow/delete-resource-group-2.png)
+
+> [!NOTE]
+> 删除逻辑应用后，任何新运行都不会实例化。 所有正在进行和挂起的运行都将取消。 如果有成千上万个运行，取消操作可能需要很长时间才能完成。
 
 ## <a name="get-support"></a>获取支持
 

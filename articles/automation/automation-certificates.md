@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 70d5c777f98a1e09125c7ef42ba597009bde084b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c13da6ff7c864ffa365dbad33d6eb0cf2e35fa42
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194327"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42143970"
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Azure 自动化中的证书资产
 
@@ -26,7 +26,7 @@ ms.locfileid: "34194327"
 ## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell cmdlet
 对于 AzureRM，下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化凭据资产。 可在自动化 Runbook 和 DSC 配置中使用的 [AzureRM.Automation 模块](/powershell/azure/overview)已随附了这些 cmdlet。
 
-|Cmdlet|说明|
+|Cmdlet|Description|
 |:---|:---|
 |[Get-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationcertificate)|检索有关要在 Runbook 或 DSC 配置中使用的证书的信息。 只能从 Get-AutomationCertificate 活动中检索证书本身。|
 |[New-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/new-azurermautomationcertificate)|将新证书创建到 Azure 自动化中。|
@@ -37,7 +37,7 @@ ms.locfileid: "34194327"
 ## <a name="activities"></a>活动
 下表中的活动用于在 Runbook 和 DSC 配置中访问证书。
 
-| 活动 | 说明 |
+| 活动 | Description |
 |:---|:---|
 |Get-AutomationCertificate|在 Runbook 或 DSC 配置中获取要使用的证书。 返回一个 [System.Security.Cryptography.X509Certificates.X509Certificate2](https://msdn.microsoft.com/library/system.security.cryptography.x509certificates.x509certificate2.aspx) 对象。|
 
@@ -48,7 +48,7 @@ ms.locfileid: "34194327"
 
 下表中的函数用于在 Python2 Runbook 中访问证书。
 
-| 函数 | 说明 |
+| 函数 | Description |
 |:---|:---|
 | automationassets.get_automation_certificate | 检索有关证书资产的信息。 |
 
@@ -83,7 +83,7 @@ New-AzureRmAutomationCertificate -AutomationAccountName "MyAutomationAccount" -N
 
 ## <a name="using-a-certificate"></a>使用证书
 
-若要使用证书，请使用 Get-AutomationCertificate 活动。 不能使用 [Get-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603765.aspx) cmdlet，因为它返回有关证书资产的信息，而不是证书本身的信息。
+若要使用证书，请使用 Get-AutomationCertificate 活动。 不能使用 [Get-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationcertificate?view=azurermps-6.6.0) cmdlet，因为它返回有关证书资产的信息，而不是证书本身的信息。
 
 ### <a name="textual-runbook-sample"></a>文本 Runbook 示例
 

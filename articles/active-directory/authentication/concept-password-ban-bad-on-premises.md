@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: fa6048800aad04b45b72c4da61ad9e8b94541502
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: ff349c480ca14b4242fb7597751b4eb6acb0ee78
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308470"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42144769"
 ---
 # <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>预览版：为 Windows Server Active Directory 实施 Azure AD 密码保护
 
@@ -37,7 +37,7 @@ Azure AD 密码保护是由 Azure Active Directory (Azure AD) 提供支持的一
 ## <a name="requirements"></a>要求
 
 * 安装了 Azure AD 密码保护组件的所有计算机（包括域控制器）都必须运行 Windows Server 2012 或更高版本。
-* 安装了 Azure AD 密码保护组件的所有计算机（包括域控制器）都必须安装 Universal C 运行时。 这最好通过使用 Windows 更新完全修补计算机来完成。 否则，可以安装合适的特定于 OS 的更新包 - 请参阅[适用于 Windows 中的 Universal C 运行时的更新](https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows)。
+* 安装了 Azure AD 密码保护组件的所有计算机（包括域控制器）都必须安装 Universal C 运行时。 这最好通过使用 Windows 更新完全修补计算机来完成。 否则，可以安装合适的特定于 OS 的更新包 - 请参阅[适用于 Windows 中的 Universal C 运行时的更新](https://support.microsoft.com/help/2999226/update-for-universal-c-runtime-in-windows)。
 * 在每个域中的至少一台域控制器和托管 Azure AD 密码保护代理服务的至少一台服务器之间必须存在网络连接。
 * 运行 DC 代理服务软件的任何 Active Directory 域都必须使用 DFSR 进行 sysvol 复制。
 * 拥有用来向 Azure AD 注册 Azure AD 密码保护代理服务的全局管理员帐户。

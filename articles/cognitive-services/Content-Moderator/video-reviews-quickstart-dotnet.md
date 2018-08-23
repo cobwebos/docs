@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: sajagtap
-ms.openlocfilehash: cb487314b8695f3676fdb22a9d7e3ec5ca3ed9f2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: fe321d08a44e7f843228668908c8b2c4ff3a3c32
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365559"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "41929812"
 ---
 # <a name="create-video-reviews-using-net"></a>使用 .NET 创建视频审查
 
@@ -24,7 +24,7 @@ ms.locfileid: "35365559"
 - 将帧添加到审查
 - 获取帧以供审查 
 - 获取审查状态和详细信息
-- 发布审查
+- 发布评论
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -34,7 +34,7 @@ ms.locfileid: "35365559"
 
 ### <a name="sign-up-for-content-moderator-services"></a>注册内容审查器服务
 
-在可以通过 REST API 或 SDK 使用内容审查器服务之前，需要一个订阅密钥。
+需要有订阅密钥才能通过 REST API 或 SDK 使用内容审查器服务。
 
 在内容审查器仪表板中，可以在“设置” > “凭据” > “API” > “试用 Ocp-Apim-Subscription-Key”中查找订阅密钥。 有关详细信息，请参阅[概述](overview.md)。
 
@@ -63,11 +63,11 @@ ms.locfileid: "35365559"
 
 1. 为项目“VideoReviews”命名。
 
-1. 选择此项目作为解决方案的单个启动项目。
+1. 将此项目选为解决方案的单一启动项目。
 
 ### <a name="install-required-packages"></a>安装所需程序包
 
-为 TermLists 项目安装下列 NuGet 包。
+为 TermLists 项目安装以下 NuGet 包。
 
 - Microsoft.Azure.CognitiveServices.ContentModerator
 - Microsoft.Rest.ClientRuntime
@@ -76,7 +76,7 @@ ms.locfileid: "35365559"
 
 ### <a name="update-the-programs-using-statements"></a>更新程序的 using 语句
 
-如下所示修改程序的 using 语句。
+按下面所示修改程序的 using 语句。
 
     using System;
     using System.Collections.Generic;
@@ -156,20 +156,20 @@ ms.locfileid: "35365559"
 
 ## <a name="create-a-video-review"></a>创建视频审查
 
-使用 ContentModeratorClient.Reviews.CreateVideoReviews 创建视频审查。 有关详细信息，请参阅 [API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)。
+使用 **ContentModeratorClient.Reviews.CreateVideoReviews** 创建视频评论。 有关详细信息，请参阅 [API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)。
 
-CreateVideoReviews 具有以下必需参数：
-1. 一个包含应为“应用程序/json”的 MIME 类型的字符串。 
-1. 你的内容审查器团队名称。
-1. 一个 IList<CreateVideoReviewsBodyItem>对象。 每个 CreateVideoReviewsBodyItem  对象表示一次视频审查。 本快速入门教程每次创建一个审查。
+**CreateVideoReviews** 具有以下必需参数：
+1. 一个字符串，包含应为“application/json”的 MIME 类型。 
+1. 内容审查器团队名称。
+1. 一个 **IList<CreateVideoReviewsBodyItem>** 对象。 每个 CreateVideoReviewsBodyItem  对象表示一次视频审查。 本快速入门一次创建一条评论。
 
-“CreateVideoReviewsBodyItem”具有多个属性。 至少设置以下属性：
-- Content。 将要审查的视频的 URL。
-- ContentId。 要分配给视频审查的 ID。
-- Status。 将此值设为“未发布”。 如果未进行设置，则默认为“正在等待审查”，这意味着视频审查已发布且正在等待人工审查。 视频审查发布后，无法再添加视频帧、脚本或其脚本审查结果。
+**CreateVideoReviewsBodyItem** 具有多个属性。 至少应设置以下属性：
+- Content。 要评论的视频的 URL。
+- ContentId。 要分配给视频评论的 ID。
+- Status。 将该值设置为“未发布”。 如果未进行设置，则默认为“挂起”，这意味着视频评论已发布并且正在等待人工评论。 视频评论发布后，就无法再向其中添加视频帧、脚本或脚本审查结果。
 
 > [!NOTE]
-> “CreateVideoReviews”返回 IList<string>。 这些字符串中的每一个都包含视频审查的 ID。 这些 ID 是 GUID，与“ContentId”属性值不同。 
+> **CreateVideoReviews** 返回 IList<string>。 这些字符串中的每一个都包含视频评论 ID。 这些 ID 是 GUID，与 **ContentId** 属性的值不同。 
 
 添加下列方法定义到命名空间 VideoReviews、类程序。
 
@@ -215,7 +215,7 @@ CreateVideoReviews 具有以下必需参数：
 
 “AddVideoFrameUrl”具有以下必需参数：
 1. 一个包含应为“应用程序/json”的 MIME 类型的字符串。
-1. 你的内容审查器团队名称。
+1. 内容审查器团队名称。
 1. 由“CreateVideoReviews”返回的视频审查 ID。
 1. 一个 IList<VideoFrameBodyItem>对象。 每个“VideoFrameBodyItem”对象表示一个视频帧。
 
@@ -310,7 +310,7 @@ CreateVideoReviews 具有以下必需参数：
     {
         Console.WriteLine("Getting frames for the review with ID {0}.", review_id);
 
-        Frames result = client.Reviews.GetVideoFrames(TeamName, review_id, 0, Int32.MaxValue);
+        Frames result = client.Reviews.GetVideoFrames(TeamName, review_id, 0);
         Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
         Thread.Sleep(throttleRate);
@@ -320,7 +320,7 @@ CreateVideoReviews 具有以下必需参数：
 
 使用“ContentModeratorClient.Reviews.GetReview”获取视频审查信息。 “GetReview”具有以下必需参数：
 1. 你的内容审查器团队名称。
-1. 由“CreateVideoReviews”返回的视频审查 ID。
+1. **CreateVideoReviews** 返回的视频评论 ID。
 
 添加下列方法定义到命名空间 VideoReviews、类程序。
 
@@ -342,11 +342,11 @@ CreateVideoReviews 具有以下必需参数：
 
 ## <a name="publish-video-review"></a>发布视频审查
 
-使用“ContentModeratorClient.Reviews.PublishVideoReview”发布视频审查。 “PublishVideoReview”具有以下必需参数：
-1. 你的内容审查器团队名称。
-1. 由“CreateVideoReviews”返回的视频审查 ID。
+使用 **ContentModeratorClient.Reviews.PublishVideoReview** 发布视频评论。 **PublishVideoReview** 具有以下必需参数：
+1. 内容审查器团队名称。
+1. **CreateVideoReviews** 返回的视频评论 ID。
 
-添加下列方法定义到命名空间 VideoReviews、类程序。
+将以下方法定义添加到 VideoReviews 命名空间中的 Program 类。
 
     /// <summary>
     /// Publish the indicated video review. For more information, see the reference API:

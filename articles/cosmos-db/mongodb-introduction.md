@@ -4,19 +4,19 @@ description: 了解如何通过常用 OSS MongoDB API 使用 Azure Cosmos DB 以
 keywords: 什么是 MongoDB
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
+manager: slyons
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: na
 ms.topic: overview
 ms.date: 02/12/2018
-ms.author: sngun
-ms.openlocfilehash: 214dfe3e676d3b07cf688fa0f7dcaf11462edfe8
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: sclyon
+ms.openlocfilehash: 3a5978603ae57a6975b76a0736dc4e2d1f133d30
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930879"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42022957"
 ---
 # <a name="introduction-to-azure-cosmos-db-mongodb-api"></a>Azure Cosmos DB 简介：MongoDB API
 

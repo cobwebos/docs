@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 08/01/2018
 ms.author: shvija
-ms.openlocfilehash: c5cec92094a2e76d02487adff43abf040aedfe0e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8437b1c10facc28c5fd71b70dd7acf01b7d39e8e
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425803"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42023927"
 ---
 # <a name="what-is-azure-event-hubs"></a>什么是 Azure 事件中心？
 
@@ -81,7 +81,8 @@ Azure 事件中心还能与 [Azure Functions](/azure/azure-functions/) 集成，
 
 若要开始使用事件中心，请参阅以下文章：
 
-* [将数据引入事件中心](event-hubs-quickstart-powershell.md)
+* [将数据引入事件中心](event-hubs-quickstart-portal.md)
 * [事件中心功能概述](event-hubs-features.md)
+* [常见问题](event-hubs-faq.md)
 
 

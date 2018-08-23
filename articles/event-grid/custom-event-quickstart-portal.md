@@ -8,12 +8,12 @@ ms.author: tomfitz
 ms.date: 07/05/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 4fef565dbd78cf3559cd47ed6c59800c8e6f9c9d
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: ec85a866279412232aa23fad8f975d1642525772
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37869137"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42022806"
 ---
 # <a name="create-and-route-custom-events-with-the-azure-portal-and-event-grid"></a>使用 Azure 门户和事件网格创建和路由自定义事件
 
@@ -41,7 +41,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 
 
    ![开始执行步骤](./media/custom-event-quickstart-portal/select-create.png)
 
-1. 为自定义主题提供唯一名称。 主题名称必须唯一，因为它由 DNS 条目表示。 请不要使用图中所示的名称。 应创建自己的名称。 选择一个[支持的区域](overview.md)。 为资源组提供名称。 选择**创建**。
+1. 为自定义主题提供唯一名称。 主题名称必须唯一，因为它由 DNS 条目表示。 请不要使用图中所示的名称。 应创建自己的名称。 为资源组提供名称。 选择**创建**。
 
    ![提供事件网格主题值](./media/custom-event-quickstart-portal/create-custom-topic.png)
 

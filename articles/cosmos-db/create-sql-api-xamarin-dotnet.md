@@ -2,7 +2,7 @@
 title: Azure Cosmos DB：使用 Xamarin 生成 ToDo 应用 | Microsoft Docs
 description: 演示了一个可以用来连接到 Azure Cosmos DB 并进行查询的 Xamarin 代码示例
 services: cosmos-db
-author: SnehaGunda
+author: codemillmatt
 manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
@@ -10,13 +10,13 @@ ms.custom: quick start connect, mvc
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
-ms.author: sngun
-ms.openlocfilehash: b224a40f1ed5e778da6429d44a449d3f9ffdf16d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: masoucou
+ms.openlocfilehash: 2be4ab0b65827c3d6a906b31e063d8618e12ca0c
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38543894"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42023790"
 ---
 # <a name="azure-cosmos-db-build-a-todo-app-with-xamarin"></a>Azure Cosmos DB：使用 Xamarin 生成 ToDo 应用
 

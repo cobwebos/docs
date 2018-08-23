@@ -7,15 +7,17 @@ manager: douge
 ms.assetid: 324c9376-0225-4092-9825-5d1bd5550058
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 4800d6ad0482462b9eccb72de34de56e4f7c370c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 798073d5510e50ead35ed118b03e981d133cd32a
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42144186"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>开始使用 Azure Blob 存储和 Visual Studio 连接服务（WebJob 项目）
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
@@ -26,7 +28,7 @@ ms.lasthandoff: 04/23/2018
 ## <a name="how-to-trigger-a-function-when-a-blob-is-created-or-updated"></a>如何在创建或更新 Blob 后触发函数
 本部分说明如何使用 **BlobTrigger** 属性。
 
- **注意：**WebJobs SDK 会扫描日志文件，以观察新的或更改的 blob。 此过程非常缓慢；创建 blob 之后数分钟或更长时间内可能仍不会触发函数。  如果应用程序需要立即处理 blob，推荐的方法是在创建该 blob 时创建队列消息，并在处理该 blob 的函数上使用 **QueueTrigger** 属性而非 **BlobTrigger** 属性。
+ **注意：** WebJobs SDK 会扫描日志文件，以观察新的或更改的 blob。 此过程非常缓慢；创建 blob 之后数分钟或更长时间内可能仍不会触发函数。  如果应用程序需要立即处理 blob，推荐的方法是在创建该 blob 时创建队列消息，并在处理该 blob 的函数上使用 **QueueTrigger** 属性而非 **BlobTrigger** 属性。
 
 ### <a name="single-placeholder-for-blob-name-with-extension"></a>Blob 名称和扩展名的单个占位符
 以下代码示例将 *input* 容器中显示的文本 blob 复制到 *output* 容器中：

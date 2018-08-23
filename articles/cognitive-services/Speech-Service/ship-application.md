@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: wolfma
-ms.openlocfilehash: df6224208e93f4a332247440933b3a4d11c1bb43
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 65ff0e47cf7a53d519bfd0c50ea4c3ebd09a5766
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283025"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41929863"
 ---
 # <a name="shipping-an-application"></a>交付应用程序
 
@@ -31,7 +31,7 @@ ms.locfileid: "39283025"
 - [Win32](https://aka.ms/vs/15/release/vc_redist.x86.exe)
 - [x64](https://aka.ms/vs/15/release/vc_redist.x64.exe)
 
-如果应用程序使用托管代码，则目标计算机上需要 `.Net Framework 4.6.1` 或更高版本。
+如果应用程序使用托管代码，则目标计算机上需要 `.NET Framework 4.6.1` 或更高版本。
 
 对于麦克风输入，需要安装媒体基础库。 这些库包含在 Windows 10 和 Windows Server 2016 中。 只要未将麦克风用作音频输入设备，则可在没有这些库的情况下使用语音 SDK。
 

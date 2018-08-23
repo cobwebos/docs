@@ -9,12 +9,12 @@ ms.component: translator-speech
 ms.topic: article
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: b06ee0c37d52f81db1a3bad6907690619002ef7c
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 0db55f4064d3415cb647519ea9030936012a8446
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205497"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41929707"
 ---
 # <a name="quickstart-for-microsoft-translator-speech-api-with-java"></a>将 Microsoft 语音翻译 API 与 Java 配合使用的快速入门 
 <a name="HOLTop"></a>
@@ -277,4 +277,4 @@ public class Speak {
 ## <a name="see-also"></a>另请参阅 
 
 [语音翻译概述](../overview.md)
-[API 参考](http://docs.microsofttranslator.com/speech-translate.html)
+[API 参考](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

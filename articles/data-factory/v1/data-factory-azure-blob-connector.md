@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ec3c87c39cd8b8d1dafa8ad062776171c602135b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 2efc20d5a2248fed69f38880a9e75a6ccb2403dd
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047054"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42144256"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure Blob 存储中或从 Azure Blob 存储中复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -174,7 +174,7 @@ ms.locfileid: "37047054"
 让我们看一下如何快速将数据复制到 Azure Blob 存储/从 Azure Blob 存储复制数据。 在本演练中，源和目标数据存储都属于 Azure Blob 存储类型。 本演练中的管道将数据从一个文件夹复制到同一 blob 容器中的其他文件夹中。 本演练有意简单设计，以显示使用 Blob 存储作为源或接收器时的设置或属性。 
 
 ### <a name="prerequisites"></a>先决条件
-1. 如果尚无 Azure 存储帐户，请创建一个通用 Azure 存储帐户。 在本演练中，使用 blob 存储同时作为源和目标数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-create-storage-account.md#create-a-storage-account)一文获取创建步骤。
+1. 如果尚无 Azure 存储帐户，请创建一个通用 Azure 存储帐户。 在本演练中，使用 blob 存储同时作为源和目标数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)一文获取创建步骤。
 2. 在存储帐户中创建名为 adfblobconnector 的 Blob 容器。 
 4. 在 adfblobconnector 容器中创建名为 input 的文件夹。
 5. 创建含以下内容且名为 emp.txt 的文件，并使用 [Azure 存储资源管理器](https://azurestorageexplorer.codeplex.com/)等工具将其上传到 input 文件夹

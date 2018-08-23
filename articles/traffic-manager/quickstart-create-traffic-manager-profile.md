@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2018
 ms.author: kumud
-ms.openlocfilehash: b3a9bbe8b88df4ac7dcb96903341e92261a2649b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: c969dbc347f0463f6f675a11f69776948d45a9e2
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39531928"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42023479"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application"></a>快速入门：为高度可用的 Web 应用程序创建流量管理器配置文件。
 
@@ -128,7 +128,7 @@ ms.locfileid: "39531928"
 本快速入门介绍了如何创建流量管理器配置文件，以便将用户流量定向到高度可用的 Web 应用程序。 若要详细了解如何路由流量，请继续学习流量管理器的教程。
 
 > [!div class="nextstepaction"]
-> [流量管理器教程](traffic-manager-configure-performance-routing-method.md)
+> [流量管理器教程](tutorial-traffic-manager-improve-website-response.md)
 
 
 

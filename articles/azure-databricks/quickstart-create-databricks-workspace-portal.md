@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 07/23/2018
 ms.custom: mvc
-ms.openlocfilehash: a302c0c6c4ecbaff2d11d852caf9e1e1500931b8
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: cd6a3b768077880d47462d1db559a4884cceb84a
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225340"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42023871"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业
 
@@ -95,7 +95,7 @@ ms.locfileid: "39225340"
    - 选择“帐户类型”：“Blob 存储”
    - 选择一个**资源组**名称。 使用在其中创建了 Databricks 工作区的同一个资源组。
    
-   有关详细信息，请参阅[创建 Azure Blob 存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)。 
+   有关详细信息，请参阅[创建 Azure Blob 存储帐户](../storage/common/storage-quickstart-create-account.md)。 
 
 3. 在 Blob 存储帐户中创建一个存储容器，并将示例 json 文件上传到该容器中。 可以使用 Azure 门户或 [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)来上传文件。
 

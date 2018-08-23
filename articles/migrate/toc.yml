@@ -1,70 +1,87 @@
+items:
 - name: Azure Migrate 文档
   href: index.yml
 - name: 概述
   items:
-    - name: 关于 Azure Migrate
-      href: migrate-overview.md
+  - name: 关于 Azure Migrate
+    href: migrate-overview.md
 - name: 教程
   items:
-    - name: 发现和评估 VMware VM
-      href: tutorial-assessment-vmware.md
+  - name: 发现和评估 VMware VM
+    href: tutorial-assessment-vmware.md
 - name: 概念
   items:
-    - name: 关于收集器
-      href: concepts-collector.md
-    - name: 评估计算
-      href: concepts-assessment-calculation.md
-    - name: 关于依赖项可视化
-      href: concepts-dependency-visualization.md
+  - name: 关于收集器
+    href: concepts-collector.md
+  - name: 评估计算
+    href: concepts-assessment-calculation.md
+  - name: 关于依赖项可视化
+    href: concepts-dependency-visualization.md
 - name: 操作指南
   items:
-    - name: Contoso 迁移系列
-      items:
-        - name: 1. Contoso - 迁移概述
-          href: contoso-migration-overview.md
-        - name: 2. Contoso - 部署 Azure 基础结构
-          href: contoso-migration-infrastructure.md
-        - name: 3. Contoso - 评估要迁移到 Azure 的本地资源
-          href: contoso-migration-assessment.md
-        - name: 4. Contoso - 在 Azure VM 和 Azure SQL 托管实例上重新托管应用
-          href: contoso-migration-rehost-vm-sql-managed-instance.md
-        - name: 5. Contoso - 在 Azure VM 上重新托管应用
-          href: contoso-migration-rehost-vm.md
-        - name: 6. Contoso - 在 Azure VM 和 Azure SQL AlwaysOn 可用性组上重新托管应用
-          href: contoso-migration-rehost-vm-sql-ag.md
-        - name: 7. Contoso - 在 Azure VM 上重新托管 Linux 应用
-          href: contoso-migration-rehost-linux-vm.md
-        - name: 8. Contoso - 在 Azure VM 和 Azure MySQL 上重新托管 Linux 应用
-          href: contoso-migration-rehost-linux-vm-mysql.md
-        - name: 9. Contoso - 基于 Azure Web 应用和 Azure SQL 数据库重构应用
-          href: contoso-migration-refactor-web-app-sql.md
-        - name: 10. Contoso - 基于 Azure Web 应用和 Azure MySQL 重构 Linux 应用
-          href: contoso-migration-refactor-linux-app-service-mysql.md
-        - name: 11. Contoso - 从 TFS 迁移到 VSTS
-          href: contoso-migration-tfs-vsts.md
-        - name: 12. Contoso - 在 Azure 容器和 Azure SQL 数据库上重塑应用架构
-          href: contoso-migration-rearchitect-container-sql.md
-        - name: 13. Contoso - 在 Azure 中重新生成应用
-          href: contoso-migration-rebuild.md
-    - name: 发现和评估大型环境
-      href: how-to-scale-assessment.md
-    - name: 将计算机分组
-      href: how-to-create-a-group.md
-    - name: 使用计算机依赖关系将计算机分组
-      href: how-to-create-group-machine-dependencies.md
-    - name: 使用组依赖关系优化组
-      href: how-to-create-group-dependencies.md
-    - name: 自定义评估
-      href: how-to-modify-assessment.md
-    - name: 在评估后迁移计算机
-      href: how-to-get-migration-tool.md
-    - name: 排查 Azure Migrate 问题
-      href: troubleshooting-general.md
+  - name: Contoso 迁移系列
+    items:
+    - name: 1. Contoso - 迁移概述
+      href: contoso-migration-overview.md
+    - name: 2. Contoso - 部署 Azure 基础结构
+      href: contoso-migration-infrastructure.md
+    - name: 3. Contoso - 评估要迁移到 Azure 的本地资源
+      href: contoso-migration-assessment.md
+    - name: 4. Contoso - 在 Azure VM 和 Azure SQL 托管实例上重新托管应用
+      href: contoso-migration-rehost-vm-sql-managed-instance.md
+    - name: 5. Contoso - 在 Azure VM 上重新托管应用
+      href: contoso-migration-rehost-vm.md
+    - name: 6. Contoso - 在 Azure VM 和 Azure SQL AlwaysOn 可用性组上重新托管应用
+      href: contoso-migration-rehost-vm-sql-ag.md
+    - name: 7. Contoso - 在 Azure VM 上重新托管 Linux 应用
+      href: contoso-migration-rehost-linux-vm.md
+    - name: 8. Contoso - 在 Azure VM 和 Azure MySQL 上重新托管 Linux 应用
+      href: contoso-migration-rehost-linux-vm-mysql.md
+    - name: 9. Contoso - 基于 Azure Web 应用和 Azure SQL 数据库重构应用
+      href: contoso-migration-refactor-web-app-sql.md
+    - name: 10. Contoso - 基于 Azure Web 应用和 Azure MySQL 重构 Linux 应用
+      href: contoso-migration-refactor-linux-app-service-mysql.md
+    - name: 11. Contoso - 从 TFS 迁移到 VSTS
+      href: contoso-migration-tfs-vsts.md
+    - name: 12. Contoso - 在 Azure 容器和 Azure SQL 数据库上重塑应用架构
+      href: contoso-migration-rearchitect-container-sql.md
+    - name: 13. Contoso - 在 Azure 中重新生成应用
+      href: contoso-migration-rebuild.md
+  - name: 发现和评估大型环境
+    href: how-to-scale-assessment.md
+  - name: 将计算机分组
+    href: how-to-create-a-group.md
+  - name: 使用计算机依赖关系将计算机分组
+    href: how-to-create-group-machine-dependencies.md
+  - name: 使用组依赖关系优化组
+    href: how-to-create-group-dependencies.md
+  - name: 自定义评估
+    href: how-to-modify-assessment.md
+  - name: 在评估后迁移计算机
+    href: how-to-get-migration-tool.md
+  - name: 排查 Azure Migrate 问题
+    href: troubleshooting-general.md
 - name: 资源
   items:
-    - name: Azure Migrate
-      href: 'https://azure.microsoft.com/migrate'
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: 常见问题解答
-      href: resources-faq.md
+  - name: 常见问题解答
+    href: resources-faq.md
+  - name: REST API
+    href: https://docs.microsoft.com/rest/api/migrate/
+  - name: 定价
+    href: https://azure.microsoft.com/pricing/details/azure-migrate/
+  - name: UserVoice
+    href: http://aka.ms/AzureMigrateUservoice
+  - name: 论坛
+    href: http://aka.ms/AzureMigrateForum
+  - name: 博客
+    href: https://azure.microsoft.com/blog/tag/azure-migrate/
+  - name: Azure Migrate
+    href: https://azure.microsoft.com/migrate
+  - name: Azure 路线图
+    href: https://azure.microsoft.com/roadmap/
+ms.openlocfilehash: 2cc402e15ff8d34559192c8162afbbc2397e4fce
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41929635"

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: e00af59c39219cf6efd14a1c6b2d831fc8addf5a
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 405f69ae1c37e478758d984ddf7dc0e267910fef
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364422"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42023791"
 ---
 # <a name="what-is-azure-policy"></a>什么是 Azure Policy？
 
@@ -119,19 +119,7 @@ Azure Policy 的权限在两个不同的资源提供程序中以操作形式体�
 
 ## <a name="maximum-count-of-policy-objects"></a>Policy 对象的最大计数
 
-Azure Policy 的每个对象类型都有一个最大计数。 “作用域”条目是指订阅或管理组。
-
-| 其中 | 对象 | 最大计数 |
-|---|---|---|
-| 范围 | 策略定义 | 250 |
-| 范围 | 计划定义 | 100 |
-| 租户 | 计划定义 | 1000 |
-| 范围 | 策略/计划分配数 | 100 |
-| 策略定义 | parameters | 20 |
-| 计划定义 | 策略 | 100 |
-| 计划定义 | parameters | 100 |
-| 策略/计划分配数 | 排除项 (notScopes) | 100 |
-| 策略规则 | 嵌套式条件语句 | 512 |
+[!INCLUDE [policy-limits](../../includes/azure-policy-limits.md)]
 
 ## <a name="recommendations-for-managing-policies"></a>管理策略的建议
 
