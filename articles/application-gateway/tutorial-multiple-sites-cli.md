@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: f84b9555343d0f902e887160845099cbc49e8ef2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 13f37f1b0efaa8169d272220362290bac9b3aac1
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441385"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "41919481"
 ---
 # <a name="tutorial-create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>教程：使用 Azure CLI 创建托管多个网站的应用程序网关
 
@@ -54,7 +54,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>创建网络资源 
 
-使用 [az network vnet create](/cli/azure/network/vnet#az-net) 创建虚拟网络和名为 *myAGSubnet* 的子网。 然后，可以使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network_vnet_subnet_create) 添加后端服务器所需的子网。 使用 [az network public-ip create](/cli/azure/public-ip#az-network_public_ip_create) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。
+使用 [az network vnet create](/cli/azure/network/vnet#az-net) 创建虚拟网络和名为 *myAGSubnet* 的子网。 然后，可以使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network_vnet_subnet_create) 添加后端服务器所需的子网。 使用 [az network public-ip create](/cli/azure/network/public-ip#az-network_public_ip_create) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。
 
 ```azurecli-interactive
 az network vnet create \
@@ -78,7 +78,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>创建应用程序网关
 
-可以使用 [az network application-gateway create](/cli/azure/application-gateway#create) 创建应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 将应用程序网关分配给之前创建的 *myAGSubnet* 和 *myAGPublicIPAddress*。 
+可以使用 [az network application-gateway create](/cli/azure/network/application-gateway#create) 创建应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 将应用程序网关分配给之前创建的 *myAGSubnet* 和 *myAGPublicIPAddress*。 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -106,7 +106,7 @@ az network application-gateway create \
 
 ### <a name="add-the-backend-pools"></a>添加后端池
 
-使用 [az network application-gateway address-pool create](/cli/azure/application-gateway#az-network_application_gateway_address_pool_create) 添加包含后端服务器所需的后端池。
+使用 [az network application-gateway address-pool create](/cli/azure/network/application-gateway#az-network_application_gateway_address_pool_create) 添加包含后端服务器所需的后端池。
 
 ```azurecli-interactive
 az network application-gateway address-pool create \
@@ -122,7 +122,7 @@ az network application-gateway address-pool create \
 
 ### <a name="add-backend-listeners"></a>添加后端侦听器
 
-使用 [az network application-gateway http-listener create](/cli/azure/application-gateway#az-network_application_gateway_http_listener_create) 添加路由流量所需的后端侦听器。
+使用 [az network application-gateway http-listener create](/cli/azure/network/application-gateway#az-network_application_gateway_http_listener_create) 添加路由流量所需的后端侦听器。
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -146,7 +146,7 @@ az network application-gateway http-listener create \
 
 规则按其列出的顺序进行处理，并且流量使用匹配的第一个规则进行定向，而无论特殊性如何。 例如，如果在同一端口上同时有使用基本侦听器的规则和使用多站点侦听器的规则，则使用多站点侦听器的规则必须在使用基本侦听器的规则之前列出，多站点规则才能正常运行。 
 
-在此示例中，将创建两个新规则并删除在创建应用程序网关时创建的默认规则。 可以使用 [az network application-gateway rule create](/cli/azure/application-gateway#az-network_application_gateway_rule_create) 添加规则。
+在此示例中，将创建两个新规则并删除在创建应用程序网关时创建的默认规则。 可以使用 [az network application-gateway rule create](/cli/azure/network/application-gateway#az-network_application_gateway_rule_create) 添加规则。
 
 ```azurecli-interactive
 az network application-gateway rule create \

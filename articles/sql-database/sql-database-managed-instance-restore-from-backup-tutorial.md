@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 07/06/2018
 ms.author: bonova
 manager: craigg
-ms.openlocfilehash: 1d8db471a3f8ebf9dbcce77b101a2688f2570fd6
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 5dd8b1f662f1ae6d6502743c6d976db4b58e962f
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37949878"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41924732"
 ---
 # <a name="restore-a-database-backup-to-an-azure-sql-database-managed-instance"></a>将数据库备份还原到 Azure SQL 数据库托管实例
 
@@ -29,7 +29,7 @@ ms.locfileid: "37949878"
 
 ## <a name="prerequisites"></a>先决条件
 
-本教程使用此教程中创建的资源作为其起点：[创建 Azure SQL 数据库托管实例](sql-database-managed-instance-create-tutorial-portal.md)。
+本教程使用此教程中创建的资源作为其起点：[创建 Azure SQL 数据库托管实例](sql-database-managed-instance-get-started.md)。
 
 ## <a name="download-the-wide-world-importers---standard-backup-file"></a>下载 Wide World Importers - 标准备份文件
 

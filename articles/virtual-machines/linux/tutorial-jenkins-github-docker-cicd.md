@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b19d02e7d2bcbd696a7256c06b067f976fd36161
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 05ec147e705da4951735616881ad19ad265b403d
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931722"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41919484"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>教程：使用 Jenkins、GitHub 和 Docker 在 Azure 中的 Linux VM 上创建开发基础结构
 
@@ -151,7 +151,7 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 - 在“常规”部分下面，选择“GitHub”项目并输入分叉的存储库的 URL，例如 *https://github.com/cynthn/nodejs-docs-hello-world*
 - 在“源代码管理”部分下面，选择“Git”并输入分叉的存储库 *.git* 的 URL，例如 *https://github.com/cynthn/nodejs-docs-hello-world.git*
 - 在“生成触发器”部分下面，选择“用于 GITscm 轮询的 GitHub 挂钩触发器”。
-- 在“生成”部分下面，选择“添加生成步骤”。 选择“执行 shell”，并在命令窗口中输入 `echo "Testing"`。
+- 在“生成”部分下面，选择“添加生成步骤”。 选择“执行 shell”，并在命令窗口中输入 `echo "Test"`。
 - 选择作业窗口底部的“保存”。
 
 

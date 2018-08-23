@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: 77cd4c1d5333f7f10e6caccee5011200bdb4ccca
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5e1d7a88e5a1a8ab60a01aea6ca42e850ac6e0e3
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424382"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41919362"
 ---
 # <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>教程：在 Azure 中构建 Java 和 MySQL Web 应用
 
@@ -243,7 +243,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 ### <a name="create-an-azure-web-app"></a>创建 Azure Web 应用
 
-在 Cloud Shell 中，使用 [`az webapp create`](/cli/azure/appservice/web#az-appservice-web-create) CLI 命令在 `myAppServicePlan` 应用服务计划中创建 Web 应用定义。 Web 应用定义提供了一个用于访问应用程序的 URL，并配置了多个将代码部署到 Azure 的选项。 
+在 Cloud Shell 中，使用 [`az webapp create`](/cli/azure/webapp#az-webapp-create) CLI 命令在 `myAppServicePlan` 应用服务计划中创建 Web 应用定义。 Web 应用定义提供了一个用于访问应用程序的 URL，并配置了多个将代码部署到 Azure 的选项。 
 
 ```azurecli-interactive
 az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan
@@ -282,7 +282,7 @@ az webapp config set --name <app_name> --resource-group myResourceGroup --java-v
 
 在运行示例应用之前，请在 Web 应用上设置应用程序设置，以便使用在 Azure 中创建的 Azure MySQL 数据库。 这些属性以环境变量的形式公开给 Web 应用程序，并替代在已打包 Web 应用的 application.properties 中设置的值。 
 
-在 Cloud Shell 的 CLI 中使用 [`az webapp config appsettings`](https://docs.microsoft.com/cli/azure/appservice/web/config/appsettings) 设置应用程序设置：
+在 Cloud Shell 的 CLI 中使用 [`az webapp config appsettings`](https://docs.microsoft.com/cli/azure/webapp/config/appsettings) 设置应用程序设置：
 
 ```azurecli-interactive
 az webapp config appsettings set --settings SPRING_DATASOURCE_URL="jdbc:mysql://<mysql_server_name>.mysql.database.azure.com:3306/tododb?verifyServerCertificate=true&useSSL=true&requireSSL=false" --resource-group myResourceGroup --name <app_name>
@@ -299,7 +299,7 @@ az webapp config appsettings set --settings SPRING_DATASOURCE_PASSWORD=Javaapp_p
 ### <a name="get-ftp-deployment-credentials"></a>获取 FTP 部署凭据 
 可以通过不同的方法将应用程序部署到 Azure appservice，包括 FTP、本地 Git、 GitHub、Visual Studio Team Services 和 BitBucket。 就本示例来说，请通过 FTP 将此前在本地计算机上生成的 .WAR 文件部署到 Azure 应用服务。
 
-若要确定要在 ftp 命令中将哪些凭据传递给 Web 应用，请在 Cloud Shell 中使用 [`az appservice web deployment list-publishing-profiles`](https://docs.microsoft.com/cli/azure/appservice/web/deployment#az-appservice-web-deployment-list-publishing-profiles) 命令： 
+若要确定要在 ftp 命令中将哪些凭据传递给 Web 应用，请在 Cloud Shell 中使用 [`az appservice web deployment list-publishing-profiles`](https://docs.microsoft.com/cli/azure/webapp/deployment#az-appservice-web-deployment-list-publishing-profiles) 命令： 
 
 ```azurecli-interactive
 az webapp deployment list-publishing-profiles --name <app_name> --resource-group myResourceGroup --query "[?publishMethod=='FTP'].{URL:publishUrl, Username:userName,Password:userPWD}" --output json

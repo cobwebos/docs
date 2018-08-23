@@ -1,140 +1,149 @@
+items:
 - name: 媒体服务文档
   href: ./index.yml
 - name: 概述
   items:
-    - name: 关于媒体服务
-      href: media-services-overview.md
+  - name: 关于媒体服务
+    href: media-services-overview.md
 - name: 快速入门
-  expanded: true
   items:
-    - name: 使用 .NET 来流式处理视频文件
-      href: stream-files-dotnet-quickstart.md
+  - name: 使用 .NET 来流式处理视频文件
+    href: stream-files-dotnet-quickstart.md
+  expanded: true
 - name: 教程
   items:
-    - name: 上传、编码和流式处理
-      items:
-        - name: 使用 .NET
-          href: stream-files-tutorial-with-api.md
-        - name: 使用 REST
-          href: stream-files-tutorial-with-rest.md
-    - name: 实时流式处理
-      items:
-        - name: 使用 .NET Core
-          href: stream-live-tutorial-with-api.md
-    - name: 分析视频
-      items:
-        - name: 使用 .NET
-          href: analyze-videos-tutorial-with-api.md
+  - name: 上传、编码和流式处理
+    items:
+    - name: 使用 .NET
+      href: stream-files-tutorial-with-api.md
+    - name: 使用 REST
+      href: stream-files-tutorial-with-rest.md
+  - name: 实时流式处理
+    items:
+    - name: 使用 .NET Core
+      href: stream-live-tutorial-with-api.md
+  - name: 分析视频
+    items:
+    - name: 使用 .NET
+      href: analyze-videos-tutorial-with-api.md
 - name: 示例
   items:
-    - name: Azure 代码示例
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=media-services&term=v3'
-    - name: Azure CLI
-      href: cli-samples.md
+  - name: Azure 代码示例
+    href: https://azure.microsoft.com/resources/samples/?sort=0&service=media-services&term=v3
+  - name: Azure CLI
+    href: cli-samples.md
 - name: 概念
   items:
-    - name: 资产
-      href: assets-concept.md
-    - name: 内容保护
-      items:
-        - name: 概述
-          href: content-protection-overview.md
-        - name: 带有访问控制的多 DRM 系统
-          href: design-multi-drm-system-with-access-control.md
-    - name: 编码
-      items:
-        - name: 概述
-          href: encoding-concept.md
-        - name: 自动生成自适应比特率阶梯
-          href: autogen-bitrate-ladder.md
-    - name: 实时传送视频流
-      href: live-streaming-overview.md
-    - name: 媒体智能
-      href: intelligence-concept.md
-    - name: 对事件做出响应
-      href: reacting-to-media-services-events.md
-    - name: 存储帐户
-      href: storage-account-concept.md
-    - name: 转换和作业
-      href: transform-concept.md
+  - name: 资产
+    href: assets-concept.md
+  - name: 内容保护
+    items:
+    - name: 概述
+      href: content-protection-overview.md
+    - name: 带有访问控制的多 DRM 系统
+      href: design-multi-drm-system-with-access-control.md
+  - name: 编码
+    items:
+    - name: 概述
+      href: encoding-concept.md
+    - name: 自动生成自适应比特率阶梯
+      href: autogen-bitrate-ladder.md
+  - name: 实时传送视频流
+    href: live-streaming-overview.md
+  - name: 媒体智能
+    href: intelligence-concept.md
+  - name: 对事件做出响应
+    href: reacting-to-media-services-events.md
+  - name: 存储帐户
+    href: storage-account-concept.md
+  - name: 转换和作业
+    href: transform-concept.md
 - name: 操作指南
   items:
-    - name: 从 v2 迁移到 v3
-      href: migrate-from-v2-to-v3.md
-    - name: 创建帐户 - CLI
-      href: create-account-cli-how-to.md
-    - name: 访问 API - CLI
-      href: access-api-cli-how-to.md
-    - name: 监视作业状态事件 - CLI
-      href: job-state-events-cli-how-to.md
-    - name: 自定义转换预设 - .NET Core
-      href: customize-encoder-presets-how-to.md
-    - name: 上传内容
-      items:
-        - name: 从 HTTP(S) - .NET
-          href: job-input-from-http-how-to.md
-        - name: 从本地文件 - .NET
-          href: job-input-from-local-file-how-to.md
-    - name: 保护内容
-      items:
-        - name: 使用 AES-128 - .NET
-          href: protect-with-aes128.md
-        - name: 使用 DRM - .NET
-          href: protect-with-drm.md
+  - name: 从 v2 迁移到 v3
+    href: migrate-from-v2-to-v3.md
+  - name: 创建帐户 - CLI
+    href: create-account-cli-how-to.md
+  - name: 访问 API - CLI
+    href: access-api-cli-how-to.md
+  - name: 监视作业状态事件 - CLI
+    href: job-state-events-cli-how-to.md
+  - name: 自定义转换预设 - .NET Core
+    href: customize-encoder-presets-how-to.md
+  - name: 上传内容
+    items:
+    - name: 从 HTTP(S) - .NET
+      href: job-input-from-http-how-to.md
+    - name: 从本地文件 - .NET
+      href: job-input-from-local-file-how-to.md
+  - name: 保护内容
+    items:
+    - name: 使用 AES-128 - .NET
+      href: protect-with-aes128.md
+    - name: 使用 DRM - .NET
+      href: protect-with-drm.md
 - name: 引用
   items:
-    - name: OpenAPI 规范 (Swagger)
-      href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2018-03-30-preview'
-    - name: Azure CLI
-      href: 'https://aka.ms/ams-v3-cli-ref'
-    - name: REST
-      href: 'https://aka.ms/ams-v3-rest-ref'
-    - name: .NET
-      href: 'https://aka.ms/ams-v3-dotnet-ref'
-    - name: Java
-      href: 'https://aka.ms/ams-v3-java-ref'
-    - name: Python
-      href: 'https://aka.ms/ams-v3-python-ref'
-    - name: Node .js
-      href: 'https://aka.ms/ams-v3-nodejs-ref'
-    - name: 事件架构
-      href: media-services-event-schemas.md
-    - name: DRM 许可证
-      items:
-        - name: PlayReady 许可证模板
-          href: playready-license-template-overview.md
-        - name: Widevine 许可证模板
-          href: widevine-license-template-overview.md
-        - name: FairPlay 许可证要求
-          href: fairplay-license-overview.md
+  - name: OpenAPI 规范 (Swagger)
+    href: https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2018-03-30-preview
+  - name: Azure CLI
+    href: https://aka.ms/ams-v3-cli-ref
+  - name: REST
+    href: https://aka.ms/ams-v3-rest-ref
+  - name: .NET
+    href: https://aka.ms/ams-v3-dotnet-ref
+  - name: Java
+    href: https://aka.ms/ams-v3-java-ref
+  - name: Python
+    href: https://aka.ms/ams-v3-python-ref
+  - name: Node .js
+    href: https://aka.ms/ams-v3-nodejs-ref
+  - name: Go
+    href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/mediaservices/mgmt/2018-06-01-preview/media
+  - name: 事件架构
+    href: media-services-event-schemas.md
+  - name: DRM 许可证
+    items:
+    - name: PlayReady 许可证模板
+      href: playready-license-template-overview.md
+    - name: Widevine 许可证模板
+      href: widevine-license-template-overview.md
+    - name: FairPlay 许可证要求
+      href: fairplay-license-overview.md
 - name: 资源
   items:
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
-    - name: 定价
-      href: 'https://azure.microsoft.com/pricing/details/media-services/'
-    - name: 区域可用性
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: 视频
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=media-services'
-    - name: SDK
-      items:
-        - name: Azure CLI
-          href: 'https://aka.ms/ams-v3-cli'
-        - name: REST
-          href: 'https://aka.ms/ams-v3-rest-sdk'
-        - name: .NET
-          href: 'https://aka.ms/ams-v3-dotnet-sdk'
-        - name: Java
-          href: 'https://aka.ms/ams-v3-java-sdk'
-        - name: Python
-          href: 'https://aka.ms/ams-v3-python-sdk'
-        - name: Node .js
-          href: 'https://aka.ms/ams-v3-nodejs-sdk'
-    - name: 发行说明
-    - name: 发行说明
-      href: release-notes.md
-    - name: 配额和限制
-      href: limits-quotas-constraints.md
-    - name: 常见问题解答
-      href: frequently-asked-questions.md
+  - name: Azure 路线图
+    href: https://azure.microsoft.com/roadmap/?category=web-mobile
+  - name: 定价
+    href: https://azure.microsoft.com/pricing/details/media-services/
+  - name: 区域可用性
+    href: https://azure.microsoft.com/regions/services/
+  - name: 视频
+    href: https://azure.microsoft.com/resources/videos/index/?services=media-services
+  - name: SDK
+    items:
+    - name: Azure CLI
+      href: https://aka.ms/ams-v3-cli
+    - name: REST
+      href: https://aka.ms/ams-v3-rest-sdk
+    - name: .NET
+      href: https://aka.ms/ams-v3-dotnet-sdk
+    - name: Java
+      href: https://aka.ms/ams-v3-java-sdk
+    - name: Python
+      href: https://aka.ms/ams-v3-python-sdk
+    - name: Node .js
+      href: https://aka.ms/ams-v3-nodejs-sdk
+  - name: 发行说明
+  - name: 发行说明
+    href: release-notes.md
+  - name: 配额和限制
+    href: limits-quotas-constraints.md
+  - name: 常见问题解答
+    href: frequently-asked-questions.md
+ms.openlocfilehash: f68492799ce9066e2e70bb1c3056deef20805413
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41927599"

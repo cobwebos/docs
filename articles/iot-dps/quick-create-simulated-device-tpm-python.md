@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: d711222e3ecade0923573a16c074144a7d74f137
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 46c25e19fbf8882779e7334da69f74ef0fa79272
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091299"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42024222"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>使用适用于 IoT 中心设备预配服务的 Python 设备 SDK 创建和预配模拟的 TPM 设备
 
@@ -25,7 +25,7 @@ ms.locfileid: "39091299"
 
 如果不熟悉自动预配过程，还务必查看[自动预配概念](concepts-auto-provisioning.md)。 另外，在继续操作之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
 
-[!INCLUDE [IoT DPS basic](../../includes/iot-dps-basic.md)]
+[!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
 ## <a name="prepare-the-environment"></a>准备环境 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 05/29/2018
 ms.author: sngun
-ms.openlocfilehash: 0fd8184601f32bcaae7db4c911a4b0d155997fca
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: d3f73651dda3dd57740d61fd341baf5700a20964
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795680"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41920663"
 ---
 # <a name="azure-cosmos-db-create-a-mongodb-api-account-using-powershell"></a>Azure Cosmos DB：使用 PowerShell 创建 MongoDB API 帐户
 
@@ -45,9 +45,9 @@ Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
 
 | 命令 | 说明 |
 |---|---|
-| [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.5.0/new-azurermresourcegroup) | 创建用于存储所有资源的资源组。 |
+| [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzureRmResource](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresource?view=azurermps-3.8.0) | 创建用于托管数据库或弹性池的逻辑服务器。 |
-| [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.5.0/remove-azurermresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
+| [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/remove-azurermresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||
 
 ## <a name="next-steps"></a>后续步骤

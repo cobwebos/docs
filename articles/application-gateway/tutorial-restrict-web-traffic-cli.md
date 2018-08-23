@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: be6032d8c0ce7c20a080037fad216c4b540c90cb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 20a15f5062780e0a9fb687b5f35bb214d16119f0
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435591"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "41920006"
 ---
 # <a name="tutorial-enable-web-application-firewall-using-the-azure-cli"></a>教程：使用 Azure CLI 启用 Web 应用程序防火墙
 
@@ -73,7 +73,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway-with-a-waf"></a>创建具有 WAF 的应用程序网关
 
-可以使用 [az network application-gateway create](/cli/azure/application-gateway#az-application-gateway-create) 创建名为 *myAppGateway* 的应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 将应用程序网关分配给之前创建的 *myAGSubnet* 和 *myPublicIPSddress*。
+可以使用 [az network application-gateway create](/cli/azure/network/application-gateway#az-application-gateway-create) 创建名为 *myAppGateway* 的应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 将应用程序网关分配给之前创建的 *myAGSubnet* 和 *myPublicIPSddress*。
 
 ```azurecli-interactive
 az network application-gateway create \

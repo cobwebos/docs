@@ -15,12 +15,12 @@ ms.workload: signalr
 ms.date: 04/20/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: a8df62fe229a627b2e551ab04528ad601c5d5d2a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9000531384e7aa14cb412863f99d2271cee9fb39
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33766421"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41920818"
 ---
 # <a name="create-a-signalr-service"></a>创建 SignalR 服务 
 
@@ -56,7 +56,7 @@ az extension add -n signalr
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az signalr create](/cli/azure/group#az-group-create) | 创建 Azure SignalR 服务资源。 |
-| [az signalr key list](/cli/azure/signalr/key#az-signalr-key-list) | 列出密钥，使用 SignalR 推送实时内容更新时，应用程序将使用这些密钥。 |
+| [az signalr key list](/cli/azure/ext/signalr/signalr/key#ext-signalr-az-signalr-key-list) | 列出密钥，使用 SignalR 推送实时内容更新时，应用程序将使用这些密钥。 |
 
 
 ## <a name="next-steps"></a>后续步骤

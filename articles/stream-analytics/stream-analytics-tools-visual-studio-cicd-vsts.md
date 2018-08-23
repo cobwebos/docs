@@ -9,17 +9,17 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 7/10/2018
-ms.openlocfilehash: 303c1cfaf2b91712f706c5b78e027bb02739c770
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: d4f1e188a1a145ba3be5fb45d2b0ea4d0bfd57a7
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39074099"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41919366"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-vsts"></a>教程：使用 VSTS 通过 CI/CD 部署 Azure 流分析作业
 本教程介绍如何使用 Visual Studio Team Services 为 Azure 流分析作业设置持续集成和部署。 
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 向项目中添加源代码管理
@@ -32,8 +32,8 @@ ms.locfileid: "39074099"
 
 * 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 安装 [Visual Studio](stream-analytics-tools-for-visual-studio-install.md) 以及“Azure 开发”或“数据存储和处理”工作负荷。
-* [在 Visual Studio 中创建流分析项目](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-quick-create-vs)。
-* 创建 [Visual Studio Team Services](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services) 帐户。
+* [在 Visual Studio 中创建流分析项目](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-vs)。
+* 创建 [Visual Studio Team Services](https://visualstudio.microsoft.com/team-services/) 帐户。
 
 ## <a name="configure-nuget-package-dependency"></a>配置 NuGet 包依赖项
 若要在任意计算机上执行自动生成和自动部署，需要使用 NuGet 包 `Microsoft.Azure.StreamAnalytics.CICD`。 它提供了 MSBuild、本地运行和部署工具，用于支持流分析 Visual Studio 项目的持续集成和部署进程。 有关详细信息，请参阅[流分析 CI/CD 工具](stream-analytics-tools-for-visual-studio-cicd.md)。

@@ -10,12 +10,12 @@ ms.devlang: php
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: 52c49475fb9014308db4ae5510d82fe9f423a828
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 7ca8e786a8284fd958948e313b79e34a6f502120
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205402"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41918304"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>如何通过 PHP 使用 Azure 存储表服务或 Azure Cosmos DB 表 API
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -508,7 +508,7 @@ catch(ServiceException $e){
 
 * [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)是 Microsoft 免费提供的独立应用，适用于在 Windows、macOS 和 Linux 上以可视方式处理 Azure 存储数据。
 
-* [PHP 开发人员中心](/develop/php/)。
+* [PHP 开发人员中心](https://azure.microsoft.com/develop/php/)。
 
 [download]: https://packagist.org/packages/microsoft/azure-storage-table
 [require_once]: http://php.net/require_once

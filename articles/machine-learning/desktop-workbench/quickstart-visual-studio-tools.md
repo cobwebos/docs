@@ -2,22 +2,20 @@
 title: 有关用于 Azure 上的机器学习的 Visual Studio Tools 的快速入门文章 | Microsoft Docs
 description: 本文介绍了如何开始使用用于机器学习的 Visual Studio Tools，包括创建试验、训练模型以及操作 Web 服务。
 services: machine-learning
-author: ahgyger
-ms.author: ahgyger
-manager: haining
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.workload: data-services
+author: chris-lauren
+ms.author: chris.lauren
 ms.service: machine-learning
 ms.component: core
-ms.workload: data-services
-ms.custom: mvc
+ms.custom: mvc, vs-azure
 ms.topic: quickstart
 ms.date: 11/15/2017
-ms.openlocfilehash: 735bfd911a738d4e71974f5cdcd94afa50acc502
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 94bca4d7670b1ec6fba5057b8295f7a3caac2968
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932976"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42024362"
 ---
 # <a name="visual-studio-tools-for-ai"></a>用于 AI 的 Visual Studio Tools
 用于 AI 的 Visual Studio Tools 是一个开发扩展，用于生成、测试和部署深度学习/AI 解决方案。 它具有与 Azure 机器学习的无缝集成，尤其是运行历史记录视图，其中详细列出了以前的训练和自定义指标的性能。 它还提供了一个示例资源管理器视图，允许通过 [Microsoft Cognitive Toolkit（以前称为 CNTK）](http://www.microsoft.com/en-us/cognitive-toolkit)、[Google TensorFlow](https://www.tensorflow.org) 和其他深度学习框架浏览和启动新项目。 最后，它针对计算目标提供了一个资源管理器，可以使用该资源管理器提交作业以在远程环境（例如 Azure 虚拟机或具有 GPU 的 Linux 服务器）中训练模型。 它还可用于快速访问 [Azure Batch AI（预览版）](https://docs.microsoft.com/azure/batch-ai/)。

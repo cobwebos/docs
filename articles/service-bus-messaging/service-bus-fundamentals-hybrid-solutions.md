@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: get-started-article
 ms.date: 05/23/2018
 ms.author: sethm
-ms.openlocfilehash: 994510b415e21288fd38a116f7e77a59ba79af59
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bef88f09f182b1bb450ee0e045985ed59d5b5648
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641316"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41918882"
 ---
 # <a name="azure-service-bus"></a>Azure 服务总线
 
@@ -36,7 +36,12 @@ ms.locfileid: "34641316"
 * “主题”，使用“订阅”提供单向通信。 单个主题可有多个订阅。 主题与队列一样可充当中转站，但每个订阅可以选择使用筛选器接收仅符合特定条件的消息。
 * *中继*，提供双向通信。 与队列和主题不同，中继不存储传送中的消息；它不是中转站。 相反，中继只是将消息传递到目标应用程序。
 
-创建队列、主题或中继时，请对其进行命名。 结合对命名空间的任何命名，此名称可创建对象的唯一标识符。 应用程序可将此名称提供给服务总线，然后使用队列、主题或中继相互通信。 
+创建队列、主题或中继时，请对其进行命名。 结合对命名空间的任何命名，此名称可创建对象的唯一标识符。 应用程序可将此名称提供给服务总线，然后使用队列、主题或中继相互通信。
+
+ >**示例：**   
+     *https://&lt;servicebus-namespace-name&gt;.servicebus.windows.net/&lt;queue-name&gt;*  
+     *https://&lt;servicebus-namespace-name&gt;.servicebus.windows.net/&lt;topic-name&gt;*  
+     *https://&lt;servicebus-namespace-name&gt;.servicebus.windows.net/&lt;relay-name&gt;*  
 
 若要在中继场景中使用任意这些对象，Windows 应用程序可使用 Windows Communication Foundation (WCF)。 此服务称为 [WCF 中继](../service-bus-relay/relay-what-is-it.md)。 对于队列和主题，Windows 应用程序可使用服务总线定义的消息传送 API。 为了更轻松地通过非 Windows 应用程序使用这些对象，Microsoft 提供了 Java、Node.js 和其他语言的 SDK。 此外，也可以使用 [REST API](/rest/api/servicebus/) 通过 HTTP 访问队列和主题。 
 

@@ -6,14 +6,14 @@ author: vhorne
 ms.service: firewall
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 7/11/2018
+ms.date: 8/13/2018
 ms.author: victorh
-ms.openlocfilehash: daf847ea9a6b6310afbc8eca7f662065fe75ade6
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: b65a5dec63bdc625dda64e101620f56cd6dd7308
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397176"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41919865"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>创建 Azure 防火墙测试环境
 
@@ -80,10 +80,10 @@ Remove-AzureRmResourceGroup -Name AzfwSampleScriptEastUS -Force
 | [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) | 创建 VM 配置。 此配置包括 VM 名称、操作系统和管理凭据等信息。 在创建 VM 期间将使用此配置。 |
 | [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) | 创建虚拟机。 |
 |[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | 删除资源组及其中包含的所有资源。 |
-|New-AzureRmFirewall| 创建新的 Azure 防火墙。|
-|Get-AzureRmFirewall|获取 Azure 防火墙对象。|
-|New-AzureRmFirewallApplicationRule|创建新的 Azure 防火墙应用程序规则。|
-|Set-AzureRmFirewall|将更改提交到 Azure 防火墙对象。|
+|[New-AzureRmFirewall](https://github.com/Azure/azure-powershell/blob/Networking-AzureFirewall/src/ResourceManager/Network/Commands.Network/help/New-AzureRmFirewall.md)| 创建新的 Azure 防火墙。|
+|[Get-AzureRmFirewall](https://github.com/Azure/azure-powershell/blob/Networking-AzureFirewall/src/ResourceManager/Network/Commands.Network/help/Get-AzureRmFirewall.md)|获取 Azure 防火墙对象。|
+|[New-AzureRmFirewallApplicationRule](https://github.com/Azure/azure-powershell/blob/Networking-AzureFirewall/src/ResourceManager/Network/Commands.Network/help/New-AzureRmFirewallApplicationRule.md)|创建新的 Azure 防火墙应用程序规则。|
+|[Set-AzureRmFirewall](https://github.com/Azure/azure-powershell/blob/Networking-AzureFirewall/src/ResourceManager/Network/Commands.Network/help/Set-AzureRmFirewall.md)|将更改提交到 Azure 防火墙对象。|
 
 
 ## <a name="next-steps"></a>后续步骤

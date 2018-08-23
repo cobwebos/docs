@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: ace7f11eeea081077855a409824272b4b55f3c33
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: ca920a93d754254390a5c5c5a066be3144b47fc7
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247221"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41919866"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-sql"></a>教程：使用 Windows VM 托管服务标识访问 Azure SQL
 
@@ -147,8 +147,8 @@ b83305de-f496-49ca-9427-e77512f6cc64 0b67a6d6-6090-4ab4-b423-d6edda8e5d9f DevTes
 
 在下一步骤中，需要使用 [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。 在开始之前，查看以下文章了解有关 Azure AD 集成的背景知识可能也有帮助：
 
-- [使用 SQL 数据库和 SQL 数据仓库进行通用身份验证（MFA 的 SSMS 支持）](/azure/sql-database/sql-database-ssms-mfa-authentication.md)
-- [使用 SQL 数据库或 SQL 数据仓库配置和管理 Azure Active Directory 身份验证](/azure/sql-database/sql-database-aad-authentication-configure.md)
+- [使用 SQL 数据库和 SQL 数据仓库进行通用身份验证（MFA 的 SSMS 支持）](/azure/sql-database/sql-database-ssms-mfa-authentication)
+- [使用 SQL 数据库或 SQL 数据仓库配置和管理 Azure Active Directory 身份验证](/azure/sql-database/sql-database-aad-authentication-configure)
 
 1.  启动 SQL Server Management Studio。
 2.  在“连接到服务器”对话框的“服务器名称”字段中，输入 SQL 服务器名称。

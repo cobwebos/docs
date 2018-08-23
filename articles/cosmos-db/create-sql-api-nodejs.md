@@ -2,7 +2,7 @@
 title: Azure Cosmos DB：使用 Node.js 和 SQL API 生成应用 | Microsoft Docs
 description: 演示一个可以用来连接到 Azure Cosmos DB SQL API 并进行查询的 Node.js 代码示例
 services: cosmos-db
-author: SnehaGunda
+author: deborahc
 manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
@@ -10,13 +10,13 @@ ms.custom: quick start connect, mvc
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 04/10/2018
-ms.author: sngun
-ms.openlocfilehash: 78aaba91851d118c45d6796a99b704de8e8a3e04
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: dech
+ms.openlocfilehash: fb54d0acba3f0ad2e633f1f32732ef3180e866a2
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38667805"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42024223"
 ---
 # <a name="azure-cosmos-db-build-a-sql-api-app-with-nodejs-and-the-azure-portal"></a>Azure Cosmos DB：使用 Node.js 和 Azure 门户生成 SQL API 应用
 

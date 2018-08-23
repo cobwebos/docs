@@ -78,7 +78,7 @@
 ### [如何配合使用 Azure 文件存储与 Linux ](../../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Azure 表存储入门](../../cosmos-db/table-storage-how-to-use-dotnet.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Azure 队列存储入门](../../storage/queues/storage-dotnet-how-to-use-queues.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [创建存储帐户](../../storage/common/storage-create-storage-account.md#create-a-storage-account)
+### [创建存储帐户](../../storage/common/storage-quickstart-create-account.md)
 ### [对 Azure 存储空间使用 Azure PowerShell](../../storage/common/storage-powershell-guide-full.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [将 Azure CLI 用于 Azure 存储](../../storage/common/storage-azure-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Azure 存储客户端工具](../../storage/common/storage-explorers.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)

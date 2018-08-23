@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: d4f512a9450422d819d0134f9f5d291db4ef9b20
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 381cda9072e1433048611628c692fa72ede3dceb
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480057"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42024022"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>快速入门：使用 PowerShell 在 Azure Key Vault 中设置和检索机密
 
@@ -105,4 +105,4 @@ Remove-AzureRmResourceGroup -Name ContosoResourceGroup
 在本快速入门中，你已创建 Key Vault 并在其中存储了一个软件密钥。 若要详细了解 Key Vault 以及如何将它与应用程序配合使用，请继续学习有关如何将 Web 应用程序与 Key Vault 配合使用的教程。
 
 > [!div class="nextstepaction"]
-> 若要了解如何使用 Web 应用程序通过托管服务标识从 Key Vault 读取机密，请继续学习以下教程：[配置 Azure Web 应用程序以从 Key Vault 读取机密](tutorial-web-application-keyvault.md)。
+> 若要了解如何使用 Web 应用程序通过托管服务标识从 Key Vault 读取机密，请继续学习以下教程：[配置 Azure Web 应用程序以从 Key Vault 读取机密](quick-create-net.md)。

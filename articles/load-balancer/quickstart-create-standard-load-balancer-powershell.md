@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/21/2018
+ms.date: 08/22/2018
 ms.author: kumud
 ms:custom: mvc
-ms.openlocfilehash: f6252b09078bcce936fc3102725519e5e433f8c4
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 67d514fe6315604016dc10b7dfc8154c3919f914
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38481792"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616537"
 ---
 # <a name="get-started"></a>快速入门：使用 Azure PowerShell 创建标准负载均衡器
 本快速入门介绍如何使用 Azure PowerShell 创建标准负载均衡器。 为了测试负载均衡器，需要部署两台运行 Windows 服务器的虚拟机 (VM)，并在 VM 之间对一个 Web 应用进行负载均衡。 若要了解有关标准负载均衡器的详细信息，请参阅[什么是标准负载均衡器](load-balancer-standard-overview.md)。
@@ -44,10 +44,12 @@ New-AzureRmResourceGroup `
 
 ```azurepowershell-interactive
 $publicIP = New-AzureRmPublicIpAddress `
-  -ResourceGroupName "myResourceGroupLB" `
-  -Location "EastUS" `
-  -AllocationMethod "Dynamic" `
-  -Name "myPublicIP"
+-Name "myPublicIP" `
+-ResourceGroupName "myResourceGroupLB" `
+-Location "EastUS" `
+-Sku "Standard" `
+-AllocationMethod "Static"
+  
 ```
 ## <a name="create-standard-load-balancer"></a>创建标准负载均衡器
  在本部分中，将为负载均衡器配置前端 IP 和后端地址池，然后创建基本负载均衡器。

@@ -15,12 +15,12 @@ ms.workload: signalr
 ms.date: 04/22/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: ec095572dc8fe20c913d543ffcf926355b5715df
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 76094a816fc7698994b77507c2a3dcf3dcf9880b
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38600122"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41920007"
 ---
 # <a name="create-a-web-app-that-uses-signalr-service-and-github-authentication"></a>创建使用 SignalR 服务和 GitHub 身份验证的 Web 应用
 
@@ -53,8 +53,8 @@ az extension add -n signalr
 | 命令 | 说明 |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az signalr create](/cli/azure/signalr#az-signalr-create) | 创建 Azure SignalR 服务资源。 |
-| [az signalr key list](/cli/azure/signalr/key#az-signalr-key-list) | 列出密钥，使用 SignalR 推送实时内容更新时，应用程序将使用这些密钥。 |
+| [az signalr create](/cli/azure/ext/signalr/signalr#ext-signalr-az-signalr-create) | 创建 Azure SignalR 服务资源。 |
+| [az signalr key list](/cli/azure/ext/signalr/signalr/key#ext-signalr-az-signalr-key-list) | 列出密钥，使用 SignalR 推送实时内容更新时，应用程序将使用这些密钥。 |
 | [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) | 创建用于托管 Web 应用的 Azure 应用服务计划。 |
 | [az webapp create](/cli/azure/webapp#az-webapp-create) | 使用应用服务托管计划创建 Azure Web 应用。 |
 | [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) | 为 Web 应用添加新的应用设置。 这些应用设置用于存储 SignalR 连接字符串和 GitHub OAuth 应用密钥。 |

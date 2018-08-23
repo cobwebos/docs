@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 06/02/2017
 ms.author: sngun
-ms.openlocfilehash: 519da5373b834c56e6cd94d925d55a56df5d7c9c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 601130dc07613d42b8ec55f670d8b9c050136143
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432593"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41920253"
 ---
 # <a name="regenerate-an-azure-cosmos-db-account-key-using-the-azure-cli"></a>使用 Azure CLI 重新生成 Azure Cosmos DB 帐户密钥
 
@@ -49,7 +49,7 @@ az group delete --name myResourceGroup
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az cosmosdb create](https://docs.microsoft.com/cli/azure/cosmosdb#az-cosmosdb-create) | 更新 Azure Cosmos DB 帐户。 |
-| [az cosmosdb regenerate-key](/cli/azure/cosmosdb/regenerate-key) | 重新生成 Azure Cosmos DB 帐户密钥。 |
+| [az cosmosdb regenerate-key](/cli/azure/cosmosdb#az-cosmosdb-regenerate-key) | 重新生成 Azure Cosmos DB 帐户密钥。 |
 | [az group delete](https://docs.microsoft.com/cli/azure/group#az-group-delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤

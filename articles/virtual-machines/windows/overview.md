@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c1122ab403eb7192d7acbd493c46d478d0382a6b
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: e12b8153494eaefb1f7e2d27fc667ef0070c68d0
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932174"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41919859"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Azure 中的 Windows 虚拟机概述
 
@@ -59,7 +59,7 @@ Azure 虚拟机 (VM) 是 Azure 提供的多种[可缩放按需分配计算资源
 
 下表显示了获取可用位置列表的一些方法。
 
-| 方法 | 说明 |
+| 方法 | Description |
 | --- | --- |
 | Azure 门户 |创建 VM 时，可从列表中选择位置。 |
 | Azure PowerShell |使用 [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation) 命令。 |
@@ -81,10 +81,10 @@ Azure 提供许多[市场映像](https://azure.microsoft.com/marketplace/virtual
 
 下表显示了查找映像信息的一些方法。
 
-| 方法 | 说明 |
+| 方法 | Description |
 | --- | --- |
 | Azure 门户 |选择要使用的映像时，系统会自动指定值。 |
-| Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimagepublisher) -Location "location"<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimageoffer) -Location "location" -Publisher "publisherName"<BR>
+| Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimagepublisher) -Location "location"<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimageoffer) -Location "location" -Publisher "publisherName"<BR>
   [Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) -Location "location" -Publisher "publisherName" -Offer "offerName" |
 | REST API |[列出映像发布者](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<BR>
   [列出映像产品](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[列出映像 SKU](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
@@ -105,7 +105,7 @@ VM [扩展](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ft
 ### <a name="related-resources"></a>相关资源
 VM 使用下表中的资源，创建 VM 时，这些资源必须存在，否则要予以创建。
 
-| 资源 | 必选 | 说明 |
+| 资源 | 必选 | Description |
 | --- | --- | --- |
 | [资源组](../../azure-resource-manager/resource-group-overview.md) |是 |VM 必须包含在资源组中。 |
 | [存储帐户](../../storage/common/storage-create-storage-account.md) |是 |VM 需要使用存储帐户来存储其虚拟硬盘。 |
@@ -136,7 +136,7 @@ VM 使用下表中的资源，创建 VM 时，这些资源必须存在，否则�
 ### <a name="get-information-about-a-vm"></a>获取有关 VM 的信息
 下表显示了获取有关 VM 的信息的一些方法。
 
-| 方法 | 说明 |
+| 方法 | Description |
 | --- | --- |
 | Azure 门户 |在中心菜单中，单击“虚拟机”，并从列表中选择 VM。 在 VM 的边栏选项卡中，可以访问概述信息、设置值以及监控指标。 |
 | Azure PowerShell |若要了解如何使用 PowerShell 来管理 VM，请参阅[使用 Azure PowerShell 模块创建和管理 Windows VM](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 |

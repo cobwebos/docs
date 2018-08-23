@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 08/22/2017
 ms.author: ramkris
-ms.openlocfilehash: 55b6799960efbed413e24cab1556b1c980e5a695
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 87654132a6ad01ad5e100da09ca6426af46f94b3
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600410"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41920256"
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>使用 Azure Cosmos DB 和 SQL API 构建 Java Web 应用程序
 > [!div class="op_single_selector"]
@@ -50,7 +50,7 @@ ms.locfileid: "39600410"
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 * [Java 开发工具包 (JDK) 7+](http://www.oracle.com/technetwork/java/javase/downloads/index.html)。
-* [Eclipse IDE for Java EE Developers。](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr1)
+* [Eclipse IDE for Java EE Developers。](http://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [已启用 Java 运行时环境（例如 Tomcat 或 Jetty）的 Azure 网站。](../app-service/app-service-web-get-started-java.md)
 
 如果是首次安装这些工具，那么可以参考 coreservlets.com 网站的 [教程：安装 TomCat7 并将其与 Eclipse 一起使用](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) 文章的 Quick Start 部分提供的安装过程演练。

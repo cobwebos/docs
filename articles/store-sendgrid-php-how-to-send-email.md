@@ -14,12 +14,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
-ms.openlocfilehash: bceec3e85a54eb0e8b542d40ab20536ab41a50f0
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 846002264d5f709f7cef6bba67927fc8959a9ccb
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38718934"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42143969"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>如何通过 PHP 使用 SendGrid 电子邮件服务
 本指南演示了如何在 Azure 上使用 SendGrid 电子邮件服务执行常见编程任务。 通过 PHP 编写示例。
@@ -47,7 +47,7 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
 可以使用 SMTP 或由 SendGrid 提供的 Web API 发送电子邮件。
 
 ### <a name="smtp-api"></a>SMTP API
-若要使用 SendGrid SMTP API 发送电子邮件，请使用 Swift Mailer，这是用于从 PHP 应用程序中发送电子邮件的基于组件的库。 可以从 [http://swiftmailer.org/download][https://swiftmailer.symfony.com/] v5.3.0 中下载 Swift Mailer 库（使用 [Composer] 安装 Swift Mailer）。 利用库发送电子邮件涉及创建 <span class="auto-style2">Swift\_SmtpTransport</span>、<span class="auto-style2">Swift\_Mailer</span> 和 <span class="auto-style2">Swift\_Message</span> 类的实例，设置适当的属性以及调用 <span class="auto-style2">Swift\_Mailer::send</span> 方法。
+若要使用 SendGrid SMTP API 发送电子邮件，请使用 Swift Mailer，这是用于从 PHP 应用程序中发送电子邮件的基于组件的库。 可以从 [http://swiftmailer.org/download][https://swiftmailer.symfony.com/] v5.3.0 中下载 Swift Mailer 库（使用 [编辑器] 安装 Swift Mailer）。 利用库发送电子邮件涉及创建 <span class="auto-style2">Swift\_SmtpTransport</span>、<span class="auto-style2">Swift\_Mailer</span> 和 <span class="auto-style2">Swift\_Message</span> 类的实例，设置适当的属性以及调用 <span class="auto-style2">Swift\_Mailer::send</span> 方法。
 
     <?php
      include_once "vendor/autoload.php";
@@ -281,7 +281,7 @@ SendGrid 通过使用“筛选器”提供其他电子邮件功能。 可将这�
 
 可使用 filters 属性将筛选器应用于邮件。 每个筛选器均由一个包含特定于筛选器的设置的哈希指定。 下面的示例将启用页脚筛选器并指定将追加到电子邮件底部的短信。
 在此示例中，我们将使用 [sendgrid-php 库]。
-使用[Composer]安装库：
+使用[编辑器]安装库：
 
     php composer.phar require sendgrid/sendgrid 2.1.1
 
@@ -387,7 +387,7 @@ SendGrid 通过使用“筛选器”提供其他电子邮件功能。 可将这�
 * SendGrid PHP 库：<https://github.com/sendgrid/sendgrid-php>
 * 面向 Azure 客户的 SendGrid 特惠产品/服务：<https://sendgrid.com/windowsazure.html>
 
-有关详细信息，另请参阅 [PHP 开发人员中心](/develop/php/)。
+有关详细信息，另请参阅 [PHP 开发人员中心](https://azure.microsoft.com/develop/php/)。
 
 [https://sendgrid.com]: https://sendgrid.com
 [https://sendgrid.com/transactional-email/pricing]: https://sendgrid.com/transactional-email/pricing
@@ -398,4 +398,4 @@ SendGrid 通过使用“筛选器”提供其他电子邮件功能。 可将这�
 [基于云的电子邮件服务]: https://sendgrid.com/email-solutions
 [事务电子邮件传递]: https://sendgrid.com/transactional-email
 [sendgrid-php 库]: https://github.com/sendgrid/sendgrid-php/tree/v2.1.1
-[Composer]: https://getcomposer.org/download/
+[编辑器]: https://getcomposer.org/download/

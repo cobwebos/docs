@@ -10,22 +10,22 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 7d7d3f6a773fad0b0d4ba0593230af5ff5a1e443
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 01ff741cd47e26000e971fd4a417d5ac1f11284e
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792447"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42024023"
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>快速入门：使用 T-SQL 在 Azure SQL 数据仓库中缩放计算资源
 
 缩放 Azure SQL 数据仓库使用 T-SQL 和 SQL Server Management Studio (SSMS) 中的计算。 [横向扩展计算](sql-data-warehouse-manage-compute-overview.md)以提高性能或按比例缩减计算以节约成本。 
 
-如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="before-you-begin"></a>开始之前
 
-下载并安装最新版本的 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS)。
+下载并安装最新版本的 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。
  
 ## <a name="create-a-data-warehouse"></a>创建数据仓库
 
@@ -33,7 +33,7 @@ ms.locfileid: "31792447"
 
 ## <a name="connect-to-the-server-as-server-admin"></a>以服务器管理员的身份连接到服务器
 
-本部分使用 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) 来建立与 Azure SQL Server 的连接。
+本部分使用 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) 来建立与 Azure SQL Server 的连接。
 
 1. 打开 SQL Server Management Studio。
 

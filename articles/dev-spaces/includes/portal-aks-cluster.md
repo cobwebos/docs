@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 0f64bcecadf5979e9983028354c41457771020bd
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: aeb4ff26b05a5542fd77ac32589c8f8efb622798
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "40129212"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40165760"
 ---
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>创建为 Azure Dev Spaces 启用的 Kubernetes 群集
 
@@ -28,7 +28,7 @@ ms.locfileid: "40129212"
     - **群集详细信息**：输入 AKS 群集的名称、区域（当前必须选择 EastUS、Central US、WestEurope、WestUS2、CanadaCentral 或 CanadaEast）、版本和 DNS 名称前缀。
     - **规模**：选择 AKS 代理节点的 VM 大小和节点数。 如果是刚开始使用 Azure Dev Spaces，则采用一个节点来公开所有功能就足够了。 在部署群集后，随时可以轻松调整节点数。 请注意，在部署 AKS 群集后无法更改 VM 大小。 但是，在部署 AKS 群集后，如果需要纵向扩展，可以轻松创建具有更大 VM 的新 AKS 群集并使用 Dev Spaces 重新部署到该更大的群集。
 
-   请确保选择 Kubernetes 版本 1.10.3 或更高版本。
+   请确保选择 Kubernetes 版本 1.9.6 或更高版本。
 
    ![Kubernetes 配置设置](../media/common/Kubernetes-Create-Cluster-2.PNG)
 

@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/08/2018
 ms.author: juliako
-ms.openlocfilehash: e17a800ff61822a5040737e479c3e1855eeb8893
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 48f85311f38d7e4ab1414dfc22c111b92163740e
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34701032"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42024026"
 ---
 # <a name="quickstart-stream-video-files---net"></a>快速入门：流式传输视频文件 - .NET
 
@@ -42,7 +42,7 @@ ms.locfileid: "34701032"
 使用以下命令将包含流式处理 .NET 示例的 GitHub 存储库克隆到计算机：  
 
  ```bash
- git clone https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts.git
+ git clone http://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts.git
  ```
 
 该示例位于 [EncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/tree/master/AMSV3Quickstarts/EncodeAndStreamFiles) 文件夹。

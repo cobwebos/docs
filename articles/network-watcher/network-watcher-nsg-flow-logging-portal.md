@@ -18,11 +18,11 @@ ms.date: 04/30/2018
 ms.author: jdial
 ms.custom: mvc
 ms.openlocfilehash: f010bebcf1130b3061c60987ffbd4e706a030773
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32776544"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41918307"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>教程：使用 Azure 门户记录出入虚拟机的网络流量
 
@@ -35,7 +35,7 @@ ms.locfileid: "32776544"
 > * 下载记录的数据
 > * 查看记录的数据
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="create-a-vm"></a>创建 VM
 
@@ -50,7 +50,7 @@ ms.locfileid: "32776544"
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |订阅| 选择订阅。|
     |资源组| 选择“新建”，并输入 myResourceGroup|
-    |Location| 选择“美国东部”|
+    |位置| 选择“美国东部”|
 
 4. 选择 VM 的大小，然后选择“选择”。
 5. 保留“设置”下的所有默认设置，然后选择“确定”。
@@ -89,7 +89,7 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
     | 设置        | 值                                                        |
     | ---            | ---   |
     | 名称           | 长度为 3-24 个字符，只能包含小写字母和数字，且必须在所有 Azure 存储帐户中唯一。                                                               |
-    | Location       | 选择“美国东部”                                           |
+    | 位置       | 选择“美国东部”                                           |
     | 资源组 | 选择“使用现有资源组”，然后选择“myResourceGroup” |
 
     创建存储帐户可能需要大约一分钟的时间。 在创建好存储帐户之前，请勿继续执行剩余的步骤。 如果使用现有的存储帐户而不是创建一个，请确保在存储帐户的“设置”下针对“防火墙和虚拟网络”选择了“所有网络”（默认设置）。

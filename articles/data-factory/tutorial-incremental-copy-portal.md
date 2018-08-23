@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: yexu
-ms.openlocfilehash: 6d63a443da0fd331d02039ed3a3715dbc59f273b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: f1803dd051b380743b56f4f026ee5c5fb684ce69
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051461"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41919372"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 在本教程中，请创建一个带管道的 Azure 数据工厂，将增量数据从 Azure SQL 数据库中的表加载到 Azure Blob 存储。 
@@ -61,11 +61,11 @@ ms.locfileid: "37051461"
     * 创建 StoredProcedure 活动，用于更新下一次运行的管道的水印值。 
 
 
-如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="prerequisites"></a>先决条件
 * **Azure SQL 数据库**。 将数据库用作源数据存储。 如果没有 SQL 数据库，请参阅[创建 Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)，了解创建该数据库的步骤。
-* **Azure 存储**。 将 Blob 存储用作接收器数据存储。 如果没有存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)以获取创建步骤。 创建名为 adftutorial 的容器。 
+* **Azure 存储**。 将 Blob 存储用作接收器数据存储。 如果没有存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)以获取创建步骤。 创建名为 adftutorial 的容器。 
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>在 SQL 数据库中创建数据源表
 1. 打开 SQL Server Management Studio。 在“服务器资源管理器”中，右键单击数据库，然后选择“新建查询”。
@@ -298,7 +298,7 @@ END
 24. 在管道设计器中选择“存储过程活动”，将其名称更改为 **StoredProceduretoWriteWatermarkActivity**。 
 
     ![存储过程活动 - 名称](./media/tutorial-incremental-copy-portal/stored-procedure-activity-name.png)
-25. 切换到“SQL 帐户”选项卡。对于“链接服务”，请选择 *AzureSqlDatabaseLinkedService*\*。 
+25. 切换到“SQL 帐户”选项卡。对于“链接服务”，请选择 *AzureSqlDatabaseLinkedService**。 
 
     ![存储过程活动 - SQL 帐户](./media/tutorial-incremental-copy-portal/sp-activity-sql-account-settings.png)
 26. 切换到“存储过程”选项卡，然后执行以下步骤： 
@@ -306,7 +306,7 @@ END
     1. 至于“存储过程名称”，请选择 **sp_write_watermark**。 
     2. 若要指定存储过程参数的值，请单击“导入参数”，然后为参数输入以下值： 
 
-        | 名称 | Type | 值 | 
+        | 名称 | 类型 | 值 | 
         | ---- | ---- | ----- | 
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | String | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |

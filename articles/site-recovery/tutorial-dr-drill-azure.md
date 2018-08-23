@@ -4,14 +4,14 @@ description: 了解使用 Azure Site Recovery 对从 Azure 本地计算机运行
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 08/13/2018
 ms.author: raynew
-ms.openlocfilehash: af8062fc0134975542c8a5ec420c790f33996154
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 33cbe29771573bd234548f549ed6027fb5801945
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920165"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41919482"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>运行 Azure 灾难恢复演练
 
@@ -32,7 +32,7 @@ ms.locfileid: "37920165"
 > * 准备在故障转移后连接到 Azure VM
 > * 为单一计算机运行测试故障转移
 
-本教程：
+
 
 ## <a name="verify-vm-properties"></a>验证 VM 属性
 

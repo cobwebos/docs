@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 840e4a7cb70d32927d4d11e0364826231ac73841
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41927182"
 documentType: LandingData
 title: Azure AD 域服务文档
 metadata:
@@ -13,12 +19,6 @@ metadata:
   ms.devlang: na
   ms.service: active-directory
   ms.component: domain-services
-  ms.openlocfilehash: be65bd568bc631af3d199678631bad6c7525dcd6
-  ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
-  ms.translationtype: HT
-  ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/19/2018
-  ms.locfileid: "36219632"
 sections:
 - items:
   - type: markdown
@@ -32,22 +32,22 @@ sections:
     - href: active-directory-ds-overview.md
       html: <p>了解 Azure AD 域服务的功能。</p>
       image:
-        src: https://docs.microsoft.com/en-us/media/common/i_investigate.svg
+        src: https://docs.microsoft.com/media/common/i_investigate.svg
       title: 什么是 Azure AD 域服务？
     - href: active-directory-ds-getting-started.md
       html: <p>通过这个简单的演练创建自己的托管域。</p>
       image:
-        src: https://docs.microsoft.com/en-us/media/common/i_deploy.svg
+        src: https://docs.microsoft.com/media/common/i_deploy.svg
       title: 入门
     - href: active-directory-ds-contact-us.md
       html: <p>随时随地为你提供帮助。</p>
       image:
-        src: https://docs.microsoft.com/en-us/media/common/i_support.svg
+        src: https://docs.microsoft.com/media/common/i_support.svg
       title: 获取支持
-    - href: https://azure.microsoft.com/en-us/updates/?product=active-directory-ds
+    - href: https://azure.microsoft.com/updates/?product=active-directory-ds
       html: <p>了解 Azure AD 域服务中的新功能。</p>
       image:
-        src: https://docs.microsoft.com/en-us/media/common/i_whats-new.svg
+        src: https://docs.microsoft.com/media/common/i_whats-new.svg
       title: 新增功能
 - title: 视频
   items:
@@ -62,7 +62,7 @@ sections:
     - html: <a href="active-directory-ds-features.md">Azure AD 域服务的功能</a>
     - html: <a href="active-directory-ds-scenarios.md">如何使用此服务？</a>
     - html: <a href="active-directory-ds-synchronization.md">了解 Azure AD 域服务中的同步原理</a>
-    - html: <a href="https://azure.microsoft.com/en-us/pricing/details/active-directory-ds/">Azure AD 域服务定价</a>
+    - html: <a href="https://azure.microsoft.com/pricing/details/active-directory-ds/">Azure AD 域服务定价</a>
 - title: 应用程序和 Azure AD 域服务
   items:
   - type: list
@@ -91,12 +91,12 @@ sections:
     - html: <a href="active-directory-ds-troubleshooting.md">故障排除指南</a>
     - html: <a href="active-directory-ds-troubleshoot-alerts.md">排查托管域的警报问题</a>
     - html: <a href="active-directory-ds-faqs.md">常见问题</a>
-    - html: <a href="https://azure.microsoft.com/en-us/support/options/">获取支持</a>
+    - html: <a href="https://azure.microsoft.com/support/options/">获取支持</a>
 - title: 其他资源
   items:
   - type: list
     style: unordered
     items:
     - html: <a href="https://feedback.azure.com/forums/169401-azure-active-directory/">通过 UserVoice 提供有关 Azure AD 域服务的反馈</a>
-    - html: <a href="https://azure.microsoft.com/en-us/roadmap/?category=security-identity">Azure 路线图</a>
-    - html: <a href="https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-contact-us">联系我们</a>
+    - html: <a href="https://azure.microsoft.com/roadmap/?category=security-identity">Azure 路线图</a>
+    - html: <a href="https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-contact-us">联系我们</a>

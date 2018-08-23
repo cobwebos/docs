@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 10ade991b77b90f31309dbe6a105744dbc02df40
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: d9871b399ff06fb08d817c0d892b667b4ef0242d
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003636"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41918299"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>用于 Visual Studio 的 Python 工具中的 Python Web 角色和辅助角色
 
@@ -42,7 +42,7 @@ Azure 为运行应用程序提供了三种计算模型：[Azure 应用服务中�
 
 > [!NOTE]
 > *想要构建一个简单的网站？*
-> 如果方案只涉及一个简单的网站前端，请考虑使用 Azure 应用服务中的轻型 Web 应用功能。 随着网站的不断扩大和需求的变化，可以轻松升级到云服务。 请参阅 <a href="/develop/python/">Python 开发人员中心</a>关于如何在 Azure 应用服务中开发 Web 应用功能的文章。
+> 如果方案只涉及一个简单的网站前端，请考虑使用 Azure 应用服务中的轻型 Web 应用功能。 随着网站的不断扩大和需求的变化，可以轻松升级到云服务。 请参阅 [Python 开发人员中心](https://azure.microsoft.com/develop/python/)关于如何在 Azure 应用服务中开发 Web 应用功能的文章。
 > <br />
 > 
 > 

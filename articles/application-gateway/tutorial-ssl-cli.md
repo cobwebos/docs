@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8a75736dc574c591f3f59c3ecf6ef7a2435e8111
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 57ef2bc1adbd65525c1801e67459a7d1832f79df
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447850"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "41919864"
 ---
 # <a name="tutorial-create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>教程：通过 Azure CLI 使用 SSL 终端创建应用程序网关
 
@@ -65,7 +65,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>创建网络资源
 
-使用 [az network vnet create](/cli/azure/network/vnet#az-net) 创建名为 *myVNet* 的虚拟网络和名为 *myAGSubnet* 的子网。 然后，可以使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network_vnet_subnet_create) 添加后端服务器所需的名为 *myBackendSubnet* 的子网。 使用 [az network public-ip create](/cli/azure/public-ip#az-network_public_ip_create) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。
+使用 [az network vnet create](/cli/azure/network/vnet#az-net) 创建名为 *myVNet* 的虚拟网络和名为 *myAGSubnet* 的子网。 然后，可以使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network_vnet_subnet_create) 添加后端服务器所需的名为 *myBackendSubnet* 的子网。 使用 [az network public-ip create](/cli/azure/network/public-ip#az-network_public_ip_create) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。
 
 ```azurecli-interactive
 az network vnet create \
@@ -89,7 +89,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>创建应用程序网关
 
-可以使用 [az network application-gateway create](/cli/azure/application-gateway#create) 创建应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 
+可以使用 [az network application-gateway create](/cli/azure/network/application-gateway#create) 创建应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 
 
 将应用程序网关分配给之前创建的 *myAGSubnet* 和 *myAGPublicIPAddress*。 在此示例中，在创建应用程序网关时将关联所创建的证书及其密码。 
 

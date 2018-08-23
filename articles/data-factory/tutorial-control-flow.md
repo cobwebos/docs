@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 3b69556c45709629e73aced374db276844e41120
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 7f555c727db88efd54aeae57da0b8ac626672ced
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618370"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41920518"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>数据工厂管道中的分支和链接活动
 在本教程中，我们将创建一个数据工厂管道来展示某些控制流功能。 此管道执行从 Azure Blob 存储容器中某个容器到同一存储帐户中另一个容器的简单复制。 如果复制活动成功，可以在告知成功结果的电子邮件中发送成功复制操作的详细信息（例如写入的数据量）。 如果复制活动失败，可以在告知失败结果的电子邮件中发送复制失败的详细信息（例如错误消息）。 整个教程讲解了如何传递参数。
@@ -43,7 +43,7 @@ ms.locfileid: "39618370"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 存储帐户**。 可将 Blob 存储用作**源**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)一文获取创建步骤。
+* **Azure 存储帐户**。 可将 Blob 存储用作**源**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)一文获取创建步骤。
 * **Azure SQL 数据库**。 将数据库用作**接收器**数据存储。 如果没有 Azure SQL 数据库，请参阅[创建 Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)一文获取创建步骤。
 * **Visual Studio** 2013、2015 或 2017。 本文中的演练使用 Visual Studio 2017。
 * **下载并安装 [Azure .NET SDK](http://azure.microsoft.com/downloads/)**。

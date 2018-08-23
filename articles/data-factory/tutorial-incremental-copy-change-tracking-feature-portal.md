@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/12/2018
 ms.author: yexu
-ms.openlocfilehash: 4d2339ace047a5aacda74f6b1ccb9f1eb77aab0c
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 2f56cba26f4f21e81734f68663d0054e77ab23a4
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054035"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41920969"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储 
 在本教程中，请创建一个带管道的 Azure 数据工厂，以便根据源 Azure SQL 数据库中的**更改跟踪**信息将增量数据加载到 Azure Blob 存储。  
@@ -70,7 +70,7 @@ ms.locfileid: "37054035"
 
 ## <a name="prerequisites"></a>先决条件
 * **Azure SQL 数据库**。 将数据库用作**源**数据存储。 如果没有 Azure SQL 数据库，请参阅[创建 Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)一文获取创建步骤。
-* **Azure 存储帐户**。 将 Blob 存储用作**接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)一文获取创建步骤。 创建名为 **adftutorial** 的容器。 
+* **Azure 存储帐户**。 将 Blob 存储用作**接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)一文获取创建步骤。 创建名为 **adftutorial** 的容器。 
 
 ### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>在 Azure SQL 数据库中创建数据源表
 1. 启动 **SQL Server Management Studio**，连接到 Azure SQL Server。 
@@ -411,7 +411,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
     2. 选择“导入参数”。 
     3. 在“存储过程参数”部分，指定以下参数值： 
 
-        | 名称 | Type | 值 | 
+        | 名称 | 类型 | 值 | 
         | ---- | ---- | ----- | 
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} | 
         | TableName | String | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} | 

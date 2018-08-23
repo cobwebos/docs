@@ -11,12 +11,12 @@ ms.devlang: python
 ms.topic: sample
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: 5effc20f421e448d6d27841d2d3f02c0220af8c8
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 87d1e9a988de30d217058ee17cdba876d24ff3e9
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751020"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41920950"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Azure Cosmos DB Python 示例
 
@@ -46,7 +46,7 @@ ms.locfileid: "36751020"
 还需要 [Python SDK](sql-api-sdk-python.md)。 
    
    > [!NOTE]
-   > 每个示例都是独立的，自行对自身进行设置并在完成后自行进行清理。 示例问题将多次调用 [document_client.CreateCollection](http://azure.github.io/azure-documentdb-python/api/pydocumentdb.document_client.html)。 每次调用完成后，你的订阅将按使用一小时计费。 有关 Azure Cosmos DB 计费的详细信息，请参阅 [Azure Cosmos DB 定价](https://azure.microsoft.com/pricing/details/cosmos-db/)。
+   > 每个示例都是独立的，自行对自身进行设置并在完成后自行进行清理。 示例问题将多次调用 [document_client.CreateCollection](https://docs.microsoft.com/python/api/pydocumentdb.document_client.documentclient#createcollection)。 每次调用完成后，你的订阅将按使用一小时计费。 有关 Azure Cosmos DB 计费的详细信息，请参阅 [Azure Cosmos DB 定价](https://azure.microsoft.com/pricing/details/cosmos-db/)。
    > 
    > 
 

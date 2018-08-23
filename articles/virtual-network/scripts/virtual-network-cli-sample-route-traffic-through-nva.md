@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: jdial
-ms.openlocfilehash: d0d410fd59574fe2884ae941ef3fd64600930f31
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 381cd913df41a0bbe03b6c12c44c62ec5654d639
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30840796"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41918720"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance-script-sample"></a>通过网络虚拟设备脚本示例路由流量
 
@@ -57,8 +57,8 @@ az group delete --name MyResourceGroup --yes
 | [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) | 创建网络安全组 (NSG)。 |
 | [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) | 创建允许 HTTP 和 HTTPS 端口入站到 VM 的 NSG 规则。 |
 | [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update)| 将 NSG 和路由表关联到子网。 |
-| [az network route-table create](/cli/azure/network/route-table#az_network_route_table_create)| 为所有路由创建路由表。 |
-| [az network route-table route create](/cli/azure/network/route-table/route#az_network_route_table_route_create)| 创建路由，通过 VM 在子网和 Internet 之间路由流量。 |
+| [az network route-table create](/cli/azure/network/route-table#az-network-route-table-create)| 为所有路由创建路由表。 |
+| [az network route-table route create](/cli/azure/network/route-table/route#az-network-route-table-route-create)| 创建路由，通过 VM 在子网和 Internet 之间路由流量。 |
 | [az vm create](/cli/azure/vm#az_vm_create) | 创建虚拟机并向其附加 NIC。 此命令还指定要使用的虚拟机映像和管理凭据。 |
 | [az group delete](/cli/azure/group#az_group_delete) | 删除资源组及其包含的所有资源。 |
 

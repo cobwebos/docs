@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 7d348bf2372ff3bc48590b6c5e97e8eee8a4136b
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 80046bf39bd3973322b799f588fb9ee149d95950
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37084937"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41919749"
 ---
 # <a name="create-a-data-factory-and-pipeline-using-python"></a>使用 Python 创建数据工厂和管道
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -33,7 +33,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 存储帐户**。 可以将 blob 存储用作**源**和**接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)一文来获取创建步骤。
+* **Azure 存储帐户**。 可以将 blob 存储用作**源**和**接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)一文来获取创建步骤。
 * 按照[此说明](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)**在 Azure Active Directory 中创建应用程序**。 记下要在后续步骤中使用的以下值：**应用程序 ID**、**身份验证密钥**和**租户 ID**。 根据同一文章中的以下说明将应用程序分配到“参与者”角色。
 
 ### <a name="create-and-upload-an-input-file"></a>创建并上传输入文件
@@ -383,7 +383,7 @@ main()
 ## <a name="run-the-code"></a>运行代码
 生成并启动应用程序，然后验证管道执行。
 
-控制台会输出数据工厂、链接服务、数据集、管道和管道运行的创建进度。 请等待，直至看到包含数据读取/写入大小的复制活动运行详细信息。 然后，使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)等工具检查 blob 是否已根据变量中的指定从“inputBlobPath”复制到“outputBlobPath”。
+控制台会输出数据工厂、链接服务、数据集、管道和管道运行的创建进度。 请等到出现包含数据读取/写入大小的复制活动运行详细信息。 然后，使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)等工具检查 blob 是否已根据变量中的指定从“inputBlobPath”复制到“outputBlobPath”。
 
 下面是示例输出：
 
