@@ -3,7 +3,7 @@ title: 在 Azure Stack 中使用 Azure 资源管理器模板 | Microsoft Docs
 description: 了解如何在 Azure Stack 中使用 Azure 资源管理器模板来部署资源。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: 2022dbe5-47fd-457d-9af3-6c01688171d7
@@ -12,54 +12,54 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2018
-ms.author: brenduns
-ms.reviewer: ''
-ms.openlocfilehash: 9c4d538f77ae056163fd17aa547162a4ad3eff63
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.date: 08/15/2018
+ms.author: sethm
+ms.reviewer: jeffgo
+ms.openlocfilehash: 456f27b97ee644aef34f9bb9e2c0525bd61c1c84
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34301672"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42139663"
 ---
 # <a name="use-azure-resource-manager-templates-in-azure-stack"></a>在 Azure Stack 中使用 Azure 资源管理器模板
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-Azure 资源管理器模板可用于部署和设置为一个协调的操作应用程序的所有资源。 你还可以重新部署模板，以对资源组中的资源进行更改。
+可使用 Azure 资源管理器 模板通过单个协调操作部署和预配应用程序的所有资源。 还可以重新部署模板，对资源组中的资源进行更改。
 
-可以使用 Microsoft Azure 堆栈门户、 PowerShell、 命令行和 Visual Studio 部署这些模板。
+可以使用 Microsoft Azure Stack 门户、 PowerShell、 命令行和 Visual Studio 部署这些模板。
 
-以下快速入门模板都位于[GitHub](http://aka.ms/azurestackgithub)。
+[GitHub](http://aka.ms/azurestackgithub) 中提供了以下快速入门模板。
 
-## <a name="deploy-sharepoint-server-non-high-availability-deployment"></a>部署 SharePoint Server （非高可用性部署）
+## <a name="deploy-sharepoint-server-non-high-availability-deployment"></a>部署 SharePoint Server（非高可用性部署）
 
-使用 PowerShell DSC 扩展来创建一个 SharePoint Server 2013 场，包括以下资源：
+使用 PowerShell DSC 扩展创建包含以下资源的 SharePoint Server 2013 场：
 
 * 虚拟网络
 * 三个存储帐户
 * 两个外部负载均衡器
-* 一个虚拟机 (VM) 配置为具有单个域的新林的域控制器
+* 一个虚拟机 (VM)，配置为包含单个域的新林的域控制器
 * 一个 VM，配置为 SQL Server 2014 独立服务器
-* 一个 VM 配置为一台计算机 SharePoint Server 2013 场
+* 一个 VM，配置为单机 SharePoint Server 2013 场
 
-## <a name="deploy-ad-non-high-availability-deployment"></a>部署 AD （非次高可用性的部署）
+## <a name="deploy-ad-non-high-availability-deployment"></a>部署 AD（非高可用性部署）
 
 使用 PowerShell DSC 扩展创建包含以下资源的 AD 域控制器服务器：
 
 * 虚拟网络
 * 一个存储帐户
 * 一个外部负载均衡器
-* 一个虚拟机 (VM) 配置为具有单个域的新林的域控制器
+* 一个虚拟机 (VM)，配置为包含单个域的新林的域控制器
 
-## <a name="deploy-adsql-non-high-availability-deployment"></a>部署 AD/SQL （非次高可用性的部署）
+## <a name="deploy-adsql-non-high-availability-deployment"></a>部署 AD/SQL（非高可用性部署）
 
 使用 PowerShell DSC 扩展创建包含以下资源的 SQL Server 2014 独立服务器：
 
 * 虚拟网络
 * 两个存储帐户
 * 一个外部负载均衡器
-* 一个虚拟机 (VM) 配置为具有单个域的新林的域控制器
+* 一个虚拟机 (VM)，配置为包含单个域的新林的域控制器
 * 一个 VM，配置为 SQL Server 2014 独立服务器
 
 ## <a name="vm-dsc-extension-azure-automation-pull-server"></a>VM-DSC-Extension-Azure-Automation-Pull-Server

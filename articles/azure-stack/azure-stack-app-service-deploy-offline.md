@@ -12,21 +12,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/22/2018
+ms.date: 08/15/2018
 ms.author: anwestg
-ms.openlocfilehash: 7084243c0fc84429b585c3e8fd9e5c64df469ec4
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 9e36e470c3516c55089ce1e44540b6b1eacbb6b2
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604278"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139392"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>将应用服务资源提供程序添加到受 AD FS 保护且已断开连接的 Azure Stack 环境
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 > [!IMPORTANT]
-> 请将 1804 更新应用于 Azure Stack 集成系统，或部署最新的 Azure Stack 开发工具包，然后部署 Azure 应用服务 1.2。
+> 适用于 Azure Stack 集成系统的 1807年更新或部署 Azure 应用服务 1.3 之前部署最新的 Azure Stack 开发工具包。
 >
 >
 
@@ -84,7 +84,7 @@ ms.locfileid: "34604278"
     2. 在“Azure Stack 订阅”框中，选择“默认提供商订阅”。
     
     > [!NOTE]
-    > 仅可以将应用程序服务部署到**默认提供程序订阅**在此时间。  在未来的更新 App Service 将部署到新计数的订阅中 Azure 堆栈 1804年引入和所有现有部署将迁移到此新订阅还。
+    > 目前，应用服务只能部署到“默认提供程序订阅”。  在将来的更新中，应用服务将部署到 Azure Stack 1804 中引入的新“计量订阅”，所有现有部署也会迁移到此新订阅。
     >
     >
     
@@ -103,10 +103,10 @@ ms.locfileid: "34604278"
 
     ![应用服务安装程序][5]
 
-9. 输入文件共享的信息，然后单击“下一步”。 文件共享的地址必须使用文件服务器的完全限定域名或 IP 地址。 例如， \\\appservicefileserver.local.cloudapp.azurestack.external\websites，或\\\10.0.0.1\websites
+9. 输入文件共享的信息，然后单击“下一步”。 文件共享的地址必须使用文件服务器的完全限定域名或 IP 地址。 例如 \\\appservicefileserver.local.cloudapp.azurestack.external\websites，或 \\\10.0.0.1\websites
 
     > [!NOTE]
-    > 在继续下一步之前，安装程序会尝试测试与文件共享的连接。  但是，如果你选择要在现有虚拟网络中部署，安装程序将可能无法连接到文件共享，并显示一条警告，询问您是否要继续。  请检查文件共享信息，如果正确，则继续。
+    > 在继续下一步之前，安装程序会尝试测试与文件共享的连接。  但是，如果前面已选择部署到现有虚拟网络，则安装程序可能无法连接到文件共享，并显示警告来询问是否继续。  请检查文件共享信息，如果正确，则继续。
     >
     >
 
@@ -138,7 +138,17 @@ ms.locfileid: "34604278"
     > [!NOTE]
     > 在继续下一步之前，安装程序会尝试测试与 SQL Server 的连接。  但是，如果前面已选择部署到现有虚拟网络，则安装程序可能无法连接到 SQL Server，并显示警告来询问是否继续。  请检查 SQL Server 信息，如果正确，则继续。
     >
-    >
+    > 从 Azure Stack 1.3 及更高版本上的 Azure 应用服务，安装程序将检查 SQL Server 已在 SQL Server 级别启用的数据库包含关系。  如果不是这样，系统将提示您出现以下异常：
+    > ```sql
+    >    Enable contained database authentication for SQL server by running below command on SQL server (Ctrl+C to copy)
+    >    ***********************************************************
+    >    sp_configure 'contained database authentication', 1;  
+    >    GO  
+    >    RECONFIGURE;  
+    >    GO
+    >    ***********************************************************
+    > ```
+    > 请参阅[Azure 应用服务在 Azure Stack 1.3 的发行说明](azure-stack-app-service-release-notes-update-three.md)的更多详细信息。
    
    ![应用服务安装程序][12]
 
@@ -151,7 +161,7 @@ ms.locfileid: "34604278"
 
     | 角色 | 最小实例数 | 最小 SKU | 说明 |
     | --- | --- | --- | --- |
-    | 控制器 | 1 | Standard_A1 -（1 vCPU，1792 MB） | 管理和维护应用服务云的运行状况。 |
+    | 控制器 | 1 | Standard_A2 -（2 个 vCPU，3584 MB） | 管理和维护应用服务云的运行状况。 |
     | 管理 | 1 | Standard_A2 -（2 vCPU，3584 MB） | 管理应用服务 Azure 资源管理器和 API 终结点、门户扩展（管理员门户、租户门户、Functions 门户）和数据服务。 为了支持故障转移，已将建议的实例数增加到 2 个。 |
     | 发布者 | 1 | Standard_A1 -（1 vCPU，1792 MB） | 通过 FTP 和 Web 部署发布内容。 |
     | FrontEnd | 1 | Standard_A1 -（1 vCPU，1792 MB） | 将请求路由到应用服务应用程序。 |
@@ -160,7 +170,7 @@ ms.locfileid: "34604278"
     ![应用服务安装程序][14]
 
     > [!NOTE]
-    > **不支持将 Windows Server 2016 Core 平台映像与 Azure Stack 上的 Azure 应用服务配合使用。请勿将评估映像用于生产部署。**
+    > **不支持将 Windows Server 2016 Core 平台映像与 Azure Stack 上的 Azure 应用服务配合使用。请不要将评估映像用于生产部署。Azure Stack 上的 azure 应用服务需要 microsoft.net 3.5.1 SP1 已激活用于部署的映像上。 Marketplace 联合 Windows Server 2016 映像没有启用此功能。**
 
 14. 在“选择平台映像”框中选择部署型 Windows Server 2016 虚拟机映像，该映像由应用服务云的计算资源提供程序提供。 单击“下一步”。
 
@@ -210,7 +220,7 @@ ms.locfileid: "34604278"
 部署并注册应用服务资源提供程序后，对其进行测试以确保用户可以部署 Web 应用和 API 应用。
 
 > [!NOTE]
-> 需要创建在计划中有 Microsoft.Web 命名空间的产品/服务。 然后，需要有订阅此产品/服务的租户订阅。 有关详细信息，请参阅[创建产品/服务](azure-stack-create-offer.md)和[创建计划](azure-stack-create-plan.md)。
+> 需要创建一个套餐，其中的计划包含 Microsoft.Web 命名空间。 然后，需要有订阅此套餐的租户订阅。 有关详细信息，请参阅[创建套餐](azure-stack-create-offer.md)和[创建计划](azure-stack-create-plan.md)。
 >
 必须有租户订阅，才能创建使用 Azure Stack 上的应用服务的应用程序。 服务管理员只能在管理员门户中完成的功能与资源提供程序对应用服务的管理相关。 这些功能包括添加容量、配置部署源以及添加辅助角色层和 SKU。
 >
@@ -234,11 +244,11 @@ ms.locfileid: "34604278"
 
 ## <a name="deploy-a-wordpress-dnn-or-django-website-optional"></a>部署 WordPress、DNN 或 Django 网站（可选）
 
-1. 在 Azure Stack 租户门户中，单击“+”，转到 Azure Marketplace，部署 Django 网站并等待成功完成。 Django Web 平台使用基于文件系统的数据库。 它不需要任何其他资源提供程序，如 SQL 或 MySQL。
+1. 在 Azure Stack 租户门户中，单击“+”，转到 Azure 市场，部署 Django 网站并等待成功完成。 Django Web 平台使用基于文件系统的数据库。 它不需要任何其他资源提供程序，如 SQL 或 MySQL。
 
-2. 如果还部署了 MySQL 资源提供程序，则可从 Marketplace 部署 WordPress 网站。 当系统提示输入数据库参数时，请输入用户名，其格式为 *User1@Server1*（使用所选的用户名和服务器名称）。
+2. 如果还部署了 MySQL 资源提供程序，则可从市场部署 WordPress 网站。 当系统提示输入数据库参数时，请输入用户名，其格式为 *User1@Server1*（使用所选的用户名和服务器名称）。
 
-3. 如果还部署了 SQL Server 资源提供程序，则可从 Marketplace 部署 DNN 网站。 当系统提示输入数据库参数时，请在运行 SQL Server 的计算机中选择连接到资源提供程序的数据库。
+3. 如果还部署了 SQL Server 资源提供程序，则可从市场部署 DNN 网站。 当系统提示输入数据库参数时，请在运行 SQL Server 的计算机中选择连接到资源提供程序的数据库。
 
 ## <a name="next-steps"></a>后续步骤
 

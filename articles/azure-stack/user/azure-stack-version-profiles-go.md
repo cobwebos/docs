@@ -3,21 +3,22 @@ title: 在 Azure Stack 中将 API 版本配置文件与 GO 配合使用 | Micros
 description: 了解如何在 Azure Stack 中将 API 版本配置文件与 GO 配合使用。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
-ms.author: mabrigg
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: dd2d0c46c0829a73d32c96b506b9f2111eda3c84
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 9ad4402098e938f72cf4b8c61cce8d0d46b5a147
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139331"
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Go 配合使用
 
@@ -80,8 +81,8 @@ GO SDK 依赖 Azure Go-AutoRest 模块将 REST 请求发送到 Azure 资源管�
   }
   ```
 
-  3. 如果不可用，请创建订阅，并保存订阅 ID 供稍后使用。 有关创建订阅的信息，请参阅[在 Azure Stack 中创建产品/服务的订阅](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm)。 
-  4. 创建具有“订阅”范围和“所有者”角色的服务主体。 保存服务主体 ID 和密码。 有关为 Azure Stack 创建服务主体的信息，请参阅[创建服务主体](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-azure-ad)。 已设置 Azure Stack 环境。
+  3. 如果不可用，请创建订阅，并保存订阅 ID 供稍后使用。 有关创建订阅的信息，请参阅[在 Azure Stack 中创建套餐的订阅](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm)。 
+  4. 创建具有“订阅”范围和“所有者”角色的服务主体。 保存服务主体的 ID 和机密。 有关为 Azure Stack 创建服务主体的信息，请参阅[创建服务主体](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-azure-ad)。 已设置 Azure Stack 环境。
   5. 在代码中从 Go SDK 配置文件导入服务模块。 最新版本的 Azure Stack 配置文件为 **2017-03-09**。 例如，若要从 **2017-03-09** 配置文件类型导入网络模块： 
 
   ````go
@@ -196,7 +197,7 @@ Authorizer 必须设置为资源客户端的授权者。 可通过不同的方�
   )
   ````
 
-2. 定义环境变量。 若要创建虚拟网络，你需要有一个资源组。 
+2. 定义环境变量。 若要创建虚拟网络，需要有一个资源组。 
 
   ````go
   var (

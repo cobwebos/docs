@@ -3,7 +3,7 @@ title: 使用 PowerShell 管理 Azure Stack 中的 Key Vault | Microsoft Docs
 description: 了解如何使用 PowerShell 管理 Azure Stack 中的 Key Vault
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: 22B62A3B-B5A9-4B8C-81C9-DA461838FAE5
@@ -12,27 +12,27 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
-ms.author: mabrigg
-ms.openlocfilehash: 5e9de401f64a835c286c226bfac88caf5168b96e
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.date: 08/15/2018
+ms.author: sethm
+ms.openlocfilehash: b2dc79c9000c9cb1a826791b4b152cfd2bdb1584
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34075759"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139681"
 ---
-# <a name="manage-key-vault-in-azure-stack-using-powershell"></a>管理密钥保管库中使用 PowerShell 的 Azure 堆栈
+# <a name="manage-key-vault-in-azure-stack-using-powershell"></a>使用 PowerShell 管理 Azure Stack 中的 Key Vault
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-你可以管理使用 PowerShell 的 Azure 堆栈中的密钥保管库。 了解如何使用密钥保管库 PowerShell cmdlet:
+可以使用 PowerShell 管理 Azure Stack 中的 Key Vault。 了解如何使用 Key Vault PowerShell cmdlet 执行以下操作：
 
 * 创建密钥保管库。
 * 存储和管理加密密钥和机密。
 * 授权用户或应用程序调用保管库中的操作。
 
 >[!NOTE]
->Azure PowerShell SDK 中提供了密钥保管库 PowerShell cmdlet 介绍这篇文章中。
+>本文中介绍的 Key Vault PowerShell cmdlet 在 Azure PowerShell SDK 中提供。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -50,7 +50,7 @@ Get-AzureRmResourceProvider -ProviderNamespace Microsoft.KeyVault | ft -Autosize
 
 **输出**
 
-如果为保管库操作启用了你的订阅，该输出将显示"RegistrationState"为"已注册"针对所有资源类型的密钥保管库。
+如果订阅可以进行保管库操作，则输出会显示某个密钥保管库的所有资源类型的“RegistrationState”为“已注册”。
 
 ![密钥保管库注册状态](media/azure-stack-kv-manage-powershell/image1.png)
 
@@ -91,11 +91,11 @@ New-AzureRmKeyVault -VaultName “Vault01” -ResourceGroupName “VaultRG” -L
 
 ![新的密钥保管库](media/azure-stack-kv-manage-powershell/image4.png)
 
-此命令的输出会显示创建的密钥保管库的属性。 当应用程序访问此保管库时，它必须使用**保管库 URI**属性，它是"https://vault01.vault.local.azurestack.external"在此示例中。
+此命令的输出会显示创建的密钥保管库的属性。 当应用程序访问此保管库时，它必须使用“保管库 URI”属性（在本例中为“https://vault01.vault.local.azurestack.external”）。
 
 ### <a name="active-directory-federation-services-ad-fs-deployment"></a>Active Directory 联合身份验证服务 (AD FS) 部署
 
-在 AD FS 部署中，你可能收到此警告:"未设置访问策略。 没有用户或应用程序具有使用此保管库所需的访问权限。” 若要解决此问题，请通过 [Set-AzureRmKeyVaultAccessPolicy](azure-stack-kv-manage-powershell.md#authorize-an-application-to-use-a-key-or-secret) 命令设置保管库的访问策略：
+在 AD FS 部署中，你可能会收到此警告：“未设置访问策略。 没有用户或应用程序具有使用此保管库所需的访问权限。” 若要解决此问题，请通过 [Set-AzureRmKeyVaultAccessPolicy](azure-stack-kv-manage-powershell.md#authorize-an-application-to-use-a-key-or-secret) 命令设置保管库的访问策略：
 
 ```PowerShell
 # Obtain the security identifier(SID) of the active directory user
@@ -108,7 +108,7 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName "{key vault name}" -ResourceGroupName
 
 ## <a name="manage-keys-and-secrets"></a>管理密钥和机密
 
-创建保管库后，使用以下步骤来创建和管理保管库中密钥和机密。
+创建保管库后，使用以下步骤来创建并管理保管库中的密钥和机密。
 
 ### <a name="create-a-key"></a>创建密钥
 

@@ -3,7 +3,7 @@ title: 使用门户管理 Azure Stack 中的 Key Vault | Microsoft Docs
 description: 了解如何使用门户管理 Azure Stack 中的 Key Vault
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: D4300668-461F-45F6-BF3B-33B502C39D17
@@ -13,13 +13,13 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: mabrigg
-ms.openlocfilehash: e387e365b2de3412c23c995939f75400a03eeb80
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: sethm
+ms.openlocfilehash: 91035f84d02810d838127ecf6a2f6424ef5df6cf
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070458"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139679"
 ---
 # <a name="manage-key-vault-in-azure-stack-by-using-the-portal"></a>使用门户管理 Azure Stack 中的 Key Vault
 
@@ -49,7 +49,7 @@ ms.locfileid: "34070458"
 
 7. 选择一个现有**访问策略**或创建一个新访问策略。 使用访问策略，可授予用户、应用程序或安全组对此保管库执行操作的权限。
 
-8. （可选） 选择**高级访问权限策略**以允许访问功能。 例如： 对于部署，资源管理器模板部署，以及对 Azure 磁盘加密卷加密的访问权限的虚拟机 (Vm)。
+8. （可选）选择“高级访问权限策略”以允许访问功能。 例如：访问虚拟机 (VM) 进行部署、访问资源管理器进行模板部署，以及访问 Azure 磁盘加密进行卷加密。
 
 9. 配置设置后，请选择“确定”，然后选择“创建”。 这将启动密钥保管库部署。
 
@@ -73,7 +73,7 @@ ms.locfileid: "34070458"
 
 7. 选择“创建”以开始部署。
 
-成功创建密钥后，可以在“密钥”下选择该密钥，并查看或修改其属性。 属性部分包含**密钥标识符**，即外部应用程序用于访问此密钥统一资源标识符 (URI)。 若要限制对此密钥的操作，请在“允许的操作”下配置设置。
+成功创建密钥后，可以在“密钥”下选择该密钥，并查看或修改其属性。 属性部分包含**密钥标识符**，即外部应用程序用来访问此密钥的统一资源标识符 (URI)。 若要限制对此密钥的操作，请在“允许的操作”下配置设置。
 
 ![密钥 URI](media/azure-stack-kv-manage-portal/image4.png)
 
@@ -92,7 +92,7 @@ ms.locfileid: "34070458"
 
 7. 选择“创建”以开始部署。
 
-成功创建机密后，可以在“机密”下选择该机密，并查看或修改其属性。 **机密标识符**是外部应用程序可用于访问此密钥的 URI。
+成功创建机密后，可以在“机密”下选择该机密，并查看或修改其属性。 **机密标识符**是外部应用程序可用来访问此机密的 URI。
 
 ![机密 URI](media/azure-stack-kv-manage-portal/image5.png)
 

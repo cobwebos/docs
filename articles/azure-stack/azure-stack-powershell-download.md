@@ -14,18 +14,18 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: a116b7a048ff95ca601a65633cdc63f98fefee9d
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 5800cb1bf0badce6e1d0c53c3164f7d2bd2d8b1b
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34075283"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42139354"
 ---
 # <a name="download-azure-stack-tools-from-github"></a>从 GitHub 下载 Azure Stack 工具
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-**AzureStack-Tools** 是托管 PowerShell 模块的 GitHub 存储库，可用于管理资源并将其部署到 Azure Stack。 如果你打算建立 VPN 连接，则可将这些 PowerShell 模块下载到 Azure Stack 开发工具包或基于 Windows 的外部客户端。 若要获取这些工具，请克隆 GitHub 存储库，或运行以下脚本来下载 **AzureStack-Tools** 文件夹：
+**Azurestack-tools**是[GitHub 存储库](https://github.com/Azure/AzureStack-Tools)承载管理以及将资源部署到 Azure Stack 的 PowerShell 模块。 如果你打算建立 VPN 连接，则可将这些 PowerShell 模块下载到 Azure Stack 开发工具包或基于 Windows 的外部客户端。 若要获取这些工具，请克隆 GitHub 存储库，或运行以下脚本来下载 **AzureStack-Tools** 文件夹：
 
 ```PowerShell
 # Change directory to the root directory. 
@@ -55,9 +55,9 @@ cd AzureStack-Tools-master
 | --- | --- | --- |
 | [云功能](user/azure-stack-validate-templates.md) | 使用此模块可获取云的云功能。 例如，可以使用此模块来获取 API 版本和 Azure 资源管理器资源等云功能。 还可以使用此模块获取 Azure Stack 和 Azure 云的 VM 扩展。 | 云操作员和用户 |
 | [Azure Stack 的资源管理器策略](user/azure-stack-policy-module.md) | 使用此模块可以配置版本和服务可用性与 Azure Stack 相同的 Azure 订阅或 Azure 资源组。 | 云操作员和用户 |
-| [注册到 Azure](azure-stack-register.md) | 使用此模块可将开发工具包实例注册到 Azure。 注册后，可从 Azure 下载 Marketplace 项，并在 Azure Stack 中使用它们。 | 云操作员 |
+| [注册到 Azure](azure-stack-register.md) | 使用此模块可将开发工具包实例注册到 Azure。 注册后，可从 Azure 下载市场项，并在 Azure Stack 中使用它们。 | 云操作员 |
 | [Azure Stack 部署](azure-stack-run-powershell-script.md) | 使用此模块可通过 Azure Stack 虚拟硬盘 (VHD) 映像来准备用于部署和重新部署的 Azure Stack 主计算机。 | 云操作员|
-| [连接到 Azure Stack](azure-stack-connect-powershell.md) | 此模块用于配置 VPN 连接到 Azure 堆栈。 | 云操作员和用户 |
+| [连接到 Azure Stack](azure-stack-connect-powershell.md) | 使用此模块配置与 Azure Stack 的 VPN 连接。 | 云操作员和用户 |
 | [模板验证程序](user/azure-stack-validate-templates.md) | 使用此模块可以验证是否可将现有或新的模板部署到 Azure Stack。 | 云操作员和用户|
 
 

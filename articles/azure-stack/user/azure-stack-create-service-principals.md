@@ -3,7 +3,7 @@ title: 创建 Azure Stack 的服务主体 | Microsoft Docs
 description: 介绍了如何创建服务主体，并在 Azure 资源管理器中将此服务主体与基于角色的访问控制配合使用以管理对资源的访问权限。
 services: azure-resource-manager
 documentationcenter: na
-author: mattbriggs
+author: sethmanheim
 manager: femila
 ms.assetid: 7068617b-ac5e-47b3-a1de-a18c918297b6
 ms.service: azure-resource-manager
@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/21/2018
-ms.author: mabrigg
+ms.date: 08/22/2018
+ms.author: sethm
 ms.reviewer: thoroet
-ms.openlocfilehash: 3c9f114c2844021d515765888aa19f18a0adc10b
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 77940a52c0817b9eaf49cdf7d1a2d284c5e662e3
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321267"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42366094"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>通过创建服务主体向应用程序授予对 Azure Stack 资源的访问权限
 
@@ -63,7 +63,7 @@ ms.locfileid: "36321267"
 
 若要为应用程序创建服务主体，请执行以下操作：
 
-1. 登录到你的 Azure 帐户通过[Azure 门户](https://portal.azure.com)。
+1. 通过 [Azure 门户](https://portal.azure.com)登录到 Azure 帐户。
 2. 选择“Azure Active Directory” > “应用注册” > “添加”。
 3. 为应用提供名称和 URL。 选择“Web 应用/API”或“本机”作为要创建的应用程序的类型。 设置这些值后，选择“创建”。
 

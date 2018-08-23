@@ -13,12 +13,12 @@ ms.topic: get-started-article
 ms.date: 07/03/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 1adfd5dc21a7cab207fa14eeecc21d02507277f8
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 91ba9b388566cc72f3024943005af499b7c3f3ec
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444130"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42139351"
 ---
 # <a name="use-data-transfer-tools-for-azure-stack-storage"></a>使用 Azure Stack 存储的数据传输工具
 
@@ -46,7 +46,7 @@ Microsoft Azure Stack 提供一组存储服务，适用于磁盘、 blob、 表�
 
 * [Blobfuse ](#blobfuse)
 
-    Azure Blob 存储，以便您可以通过 Linux 文件系统访问现有块 blob 数据在存储帐户中的的虚拟文件系统驱动程序。 
+    一个适用于 Azure Blob 存储的虚拟文件系统驱动程序，用于通过 Linux 文件系统访问存储帐户中的现有块 Blob 数据。 
 
 由于 Azure 和 Azure Stack 之间具有存储服务差异，因此，以下部分中描述的每个工具可能存在一些特定的要求。 若要了解 Azure Stack 存储和 Azure 存储之间的比较情况，请参阅 [Azure Stack 存储：差异和注意事项](azure-stack-acs-differences.md)。
 
@@ -221,9 +221,9 @@ $blobs | Get-AzureStorageBlobContent –Destination $DestinationFolder
 
 ### <a name="powershell-known-issues"></a>PowerShell 已知问题
 
-目前兼容 Azure Stack 的 Azure PowerShell 模块版本为 1.3.0。 它不同于最新版本的 Azure PowerShell。 这种差异影响存储服务操作：
+Azure Stack 的当前兼容 Azure PowerShell 模块版本是 1.2.11 用户操作。 它不同于最新版本的 Azure PowerShell。 这种差异影响存储服务操作：
 
-* 在版本 1.3.0 中，`Get-AzureRmStorageAccountKey` 的返回值格式有两个属性：`Key1` 和 `Key2`，而当前的 Azure 版本返回的数组包含所有帐户密钥。
+* 返回值格式`Get-AzureRmStorageAccountKey`1.2.11 版本中有两个属性：`Key1`和`Key2`，而当前的 Azure 版本返回一个数组，包含所有的帐户密钥。
 
    ```
    # This command gets a specific key for a storage account, 
@@ -307,15 +307,15 @@ Microsoft Azure 存储资源管理器是 Microsoft 的一款独立应用。 它�
 
 ## <a name="blobfuse"></a>Blobfuse 
 
-[Blobfuse](https://github.com/Azure/azure-storage-fuse) 是适用于 Azure Blob 存储的虚拟文件系统驱动程序，用于通过 Linux 文件系统访问存储帐户中的现有块 Blob 数据。 Azure Blob 存储是一项对象存储服务，因此没有分层命名空间。 Blobfuse 提供虚拟 direcectory 方案使用正斜杠使用此命名空间`/`作为分隔符。 Blobfuse 适用于 Azure 和 Azure Stack。 
+[Blobfuse](https://github.com/Azure/azure-storage-fuse) 是适用于 Azure Blob 存储的虚拟文件系统驱动程序，用于通过 Linux 文件系统访问存储帐户中的现有块 Blob 数据。 Azure Blob 存储是一项对象存储服务，因此没有分层命名空间。 Blobfuse 使用虚拟目录方案提供此命名空间，并使用正斜杠 `/` 作为分隔符。 Blobfuse 同时适用于 Azure 和 Azure Stack。 
 
 若要了解有关在 Linux 上装载为文件系统使用 Blobfuse 的 Blob 存储的详细信息，请参阅[Blob 存储装载为文件系统如何使用 Blobfuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux)。 
 
-适用于 Azure Stack **blobEndpoint**需要装载的准备步骤中配置存储帐户凭据时指定帐户名、 accountKey/sasToken、 containerName，除了。 
+对于 Azure Stack，在装载准备步骤中配置存储帐户凭据时，除了 accountName、accountKey/sasToken、containerName 之外，还需要指定 **blobEndpoint**。 
 
-在 Azure Stack 开发工具包中，应为 blobEndpoint `myaccount.blob.local.azurestack.external`。 在 Azure Stack 集成系统中，请联系您的云管理员，如果你不确定你的终结点。 
+在 Azure Stack 开发工具包中，blobEndpoint 应当为 `myaccount.blob.local.azurestack.external`。 在 Azure Stack 集成系统中，如果不确定你的终结点，请与云管理员联系。 
 
-请注意 accountKey 和 sasToken 只能一次配置的一个。 当给定存储帐户密钥时，凭据配置文件是采用以下格式： 
+请注意，accountKey 和 sasToken 一次只能配置一个。 提供存储帐户密钥时，凭据配置文件采用以下格式： 
 
 ```text  
     accountName myaccount 
@@ -324,7 +324,7 @@ Microsoft Azure 存储资源管理器是 Microsoft 的一款独立应用。 它�
     blobEndpoint myaccount.blob.local.azurestack.external
 ```
 
-当给定共享的访问令牌时，凭据配置文件是采用以下格式：
+提供共享访问密钥时，凭据配置文件采用以下格式：
 
 ```text  
     accountName myaccount 

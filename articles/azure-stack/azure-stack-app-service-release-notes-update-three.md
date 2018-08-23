@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 08/20/2018
 ms.author: anwestg
 ms.reviewer: brenduns
-ms.openlocfilehash: 7cf41a10f13e2edeb4ab1944c0d38cc7064c02bb
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 88a4bcf018387ac83b485ec9e2efac11f85ba97c
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40161469"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42432283"
 ---
 # <a name="app-service-on-azure-stack-update-3-release-notes"></a>应用服务在 Azure Stack update 3 发行说明
 
@@ -70,6 +70,10 @@ Azure Stack 更新 3 上的 azure 应用服务包括以下改进和修补程序�
   - 添加了的 Wincache 2.0.0.8
   - 更新的 Git 的 Windows 到 v 2.17.1.2
   - 已更新到 74.10611.3437 Kudu
+  
+- **对所有角色的基础操作系统更新**:
+  - [对于基于 x64 的系统 (KB4132216) 的 Windows Server 2016 的服务堆栈更新](https://support.microsoft.com/help/4132216/servicing-stack-update-for-windows-10-1607-may-17-2018)
+  - [2018-07 适用于 Windows Server 2016 的基于 x64 的系统 (KB4338822) 的累积更新](https://support.microsoft.com/help/4338822/windows-10-update-kb4338822)
 
 ### <a name="post-update-steps-optional"></a>发布更新步骤 （可选）
 
@@ -80,7 +84,7 @@ Azure Stack 更新 3 上的 azure 应用服务包括以下改进和修补程序�
 >
 >
 
-1. 添加[数据库到可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)
+1. 添加[AppService 数据库 （appservice_hosting 和 appservice_metering） 到可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)
 
 1. 启用包含数据库
     ```sql

@@ -12,21 +12,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 08/15/2018
 ms.author: anwestg
-ms.openlocfilehash: c822f25e25953b8709f481e51d6a63e6a912a60a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f12eb7d74d9c47567c72cddda8d2813f394fb1de
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358806"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139391"
 ---
 # <a name="update-azure-app-service-on-azure-stack"></a>更新 Azure Stack 上的 Azure 应用服务
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 > [!IMPORTANT]
-> 将 1804年更新应用于你的 Azure 堆栈集成系统，或在部署 Azure 应用程序服务 1.2 之前部署的最新的 Azure 堆栈开发工具包。
+> 适用于 Azure Stack 集成系统的 1807年更新或部署 Azure 应用服务 1.3 之前部署最新的 Azure Stack 开发工具包。
 >
 >
 
@@ -55,7 +55,7 @@ ms.locfileid: "34358806"
 
 若要升级 Azure Stack 上的应用服务部署，请遵循以下步骤：
 
-1. 下载[应用服务安装程序](https://aka.ms/appsvcupdate2installer)
+1. 下载[应用服务安装程序](https://aka.ms/appsvcupdate3installer)
 
 2. 以管理员身份运行 appservice.exe
 
@@ -67,7 +67,7 @@ ms.locfileid: "34358806"
 
 5. 查看并接受第三方许可条款，然后单击“下一步”。
 
-6. 确保 Azure Stack Azure 资源管理器终结点和 Active Directory 租户信息正确。 如果在 Azure Stack 开发工具包部署过程中使用了默认设置，可以接受此处的默认值。 但是，如果在部署 Azure Stack 时自定义了选项，则必须根据自定义的情况编辑此窗口中的值。 例如，如果使用域后缀 *mycloud.com*，则必须将“Azure Stack”Azure 资源管理器终结点更改为 *management.region.mycloud.com*。确认信息后，单击“下一步”。
+6. 确保 Azure Stack Azure 资源管理器终结点和 Active Directory 租户信息正确。 如果在 Azure Stack 开发工具包部署过程中使用了默认设置，可以接受此处的默认值。 但是，如果在部署 Azure Stack 时自定义了选项，则必须根据自定义的情况编辑此窗口中的值。 例如，如果使用域后缀 *mycloud.com*，则必须将“Azure Stack”Azure 资源管理器终结点更改为 *management.region.mycloud.com*。 确认信息后，单击“下一步”。
 
     ![Azure Stack 云信息][2]
 

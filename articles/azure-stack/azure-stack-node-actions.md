@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 08/14/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 3ecc8885a30a11472fe93bbda60c39131c6b3bd7
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 1f59f2ce6e3bf8d34ce225aa93da76ad523775e0
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801409"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42139312"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Azure Stack 中的缩放单元节点操作
 
@@ -43,11 +43,11 @@ ms.locfileid: "34801409"
  
 可在此处查看以下信息：
 
-- 区域名称。 区域名称引用与 **-位置**PowerShell 模块中。
+- 区域名称。 在 PowerShell 模块中使用 **-Location** 引用区域名称。
 - 系统类型
 - 逻辑核心总数
 - 总内存量
-- 各个节点和它们的状态; 的列表任一**运行**或**停止**。
+- 各个节点的列表及其状态：“正在运行”或“已停止”。
 
 ![显示每个节点运行状态的缩放单元磁贴](media/azure-stack-node-actions/ScaleUnitStatus.PNG)
 
@@ -70,7 +70,6 @@ ms.locfileid: "34801409"
 
 查看缩放单元节点的相关信息时，也可以执行节点操作，例如：
 
-- 开机和关机
 - 清空和恢复
 - 修复
 
@@ -154,4 +153,4 @@ ms.locfileid: "34801409"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 Azure 堆栈 Fabric 管理员模块的详细信息，请参阅[Azs.Fabric.Admin](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.3.0)。
+若要详细了解 Azure Stack Fabric 管理员模块，请参阅 [Azs.Fabric.Admin](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.4.0)。

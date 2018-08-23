@@ -3,7 +3,7 @@ title: Azure Stack 中支持的虚拟机大小 | Microsoft Docs
 description: Azure Stack 中支持的 VM 大小参考。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2018
-ms.author: brenduns
-ms.openlocfilehash: bfdfc2ff879db11f5a8ba35898069b2b937c49b0
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.date: 08/15/2018
+ms.author: mabrigg
+ms.openlocfilehash: 74d521f1890f8ff6567802c1a16f4169dbf4a53f
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928975"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139755"
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>Azure Stack 中支持的虚拟机大小
 
@@ -38,7 +38,7 @@ ms.locfileid: "37928975"
 |**A1\Basic_A1**  |1    |1.75 GB  | 40 GB   |300  | 300  |2 / 2x300  |1   |
 |**A2\Basic_A2**  |2    |3.5 GB   | 60 GB   |300  | 300  |4 / 4x300  |1   |
 |**A3\Basic_A3**  |4    |7 GB     | 120 GB  |300  | 300  |8 / 8x300  |1   |
-|**A4\Basic_A4**  |8    |14 GB    | 240 GB  |300  | 300  |16 / 16 X 300 |1   |
+|**A4\Basic_A4**  |8    |14 GB    | 240 GB  |300  | 300  |16 / 16X300 |1   |
 
 ### <a name="standard-a"></a>标准 A 
 |大小     |vCPU     |内存 (GiB) | 临时存储 (GiB)  | 最大 OS 磁盘吞吐量 (IOPS) | 最大临时存储吞吐量 (IOPS) | 最大数据磁盘数/吞吐量 (IOPS) | 最大 NIC 数/预期网络带宽 (MBps) |    

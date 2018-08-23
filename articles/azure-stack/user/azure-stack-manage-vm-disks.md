@@ -3,7 +3,7 @@ title: 在 Azure Stack 中管理 VM 磁盘 | Microsoft Docs
 description: 在 Azure Stack 中为虚拟机预配磁盘。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: 4e5833cf-4790-4146-82d6-737975fb06ba
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/11/2018
-ms.author: brenduns
+ms.date: 08/15/2018
+ms.author: mabrigg
 ms.reviewer: jiahan
-ms.openlocfilehash: 6364c0bec8437ba0dfa195c6532b26ec506a2e90
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: fc17ce0ebd13fb7e89405fcf4d6633551f340a27
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807425"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139353"
 ---
 # <a name="provision-virtual-machine-disk-storage-in-azure-stack"></a>在 Azure Stack 中预配虚拟机磁盘存储
 
@@ -53,7 +53,7 @@ Azure Stack 支持在虚拟机中使用[非托管磁盘](https://docs.microsoft.
 
 ## <a name="use-the-portal-to-add-disks-to-a-vm"></a>使用门户向 VM 添加磁盘
 
-默认情况下，使用门户为大多数 Marketplace 项创建 VM 时，只会创建 OS 磁盘。
+默认情况下，使用门户为大多数市场项创建 VM 时，只会创建 OS 磁盘。
 
 创建 VM 后，可以使用门户执行以下操作：
 * 创建新的数据磁盘并将其附加到 VM。

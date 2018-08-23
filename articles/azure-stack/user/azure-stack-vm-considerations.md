@@ -3,7 +3,7 @@ title: Azure Stack 中虚拟机的差异和注意事项 | Microsoft Docs
 description: 了解 Azure Stack 中虚拟机的差异和用法注意事项。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: 6613946D-114C-441A-9F74-38E35DF0A7D7
@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/23/2018
-ms.author: brenduns
-ms.openlocfilehash: 4d475ec93bd8bfa5cc84848ed61afa6a9d6e319b
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.date: 08/15/2018
+ms.author: mabrigg
+ms.openlocfilehash: 7eb82457d8c8d7e306dcbdac39510ce328cd925b
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902174"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139518"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>在 Azure Stack 中使用虚拟机时的注意事项
 
@@ -47,7 +47,7 @@ Azure Stack 施加了一些资源限制，以避免资源（服务器本地和�
 
 - VM 的网络出口有带宽上限。 Azure Stack 中的上限与 Azure 中的上限相同。
 - 对于存储资源，Azure Stack 实施存储 IOPS 限制，以避免租户为了访问存储而造成资源过度消耗。
-- 对于具有多个附加的数据磁盘的 Vm，每个数据磁盘的最大吞吐量为 500 IOPS 的 Hdd 和 Ssd 的 2300 IOPS。
+- 对于附加了多个数据磁盘的 VM，每个数据磁盘的最大吞吐量为 500 IOPS（适用于 HDD）和 2300 IOPS（适用于 SSD）。
 
 下表列出了 Azure Stack 支持的 VM 及其配置：
 

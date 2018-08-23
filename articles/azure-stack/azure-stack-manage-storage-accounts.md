@@ -15,11 +15,12 @@ ms.topic: get-started-article
 ms.date: 05/10/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 2ae2b628b2e61893a5289151c3b405e7412e7d13
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 8914391a586bb508192200beaba7f591649a1e99
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42139748"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>管理 Azure Stack 中的存储帐户
 了解如何管理 Azure Stack 中的存储帐户，以根据业务需求查找、恢复和回收存储容量。
@@ -29,13 +30,13 @@ ms.lasthandoff: 05/12/2018
 
 1. 在 Internet 浏览器中，导航到 https://adminportal.local.azurestack.external。
 2. 以云操作员身份登录到 Azure Stack 管理门户（使用部署期间提供的凭据）
-3. 在默认的仪表板 – 找到**区域管理**列表，然后选择你想要探索，例如的区域 **(本地**)。
+3. 在默认仪表板 – 找到**区域管理**列表并选择你想要探索，例如的区域 **(本地**)。
    
    ![](media/azure-stack-manage-storage-accounts/image1.png)
 4. 从“资源提供程序”列表中选择“存储”。
    
    ![](media/azure-stack-manage-storage-accounts/image2.png)
-5. 现在，在存储资源提供程序的管理员窗格中 – 上向下滚动到**存储帐户**选项卡上，然后选择它。
+5. 现在，在存储资源提供程序管理员窗格 – 向下滚动到**存储帐户**选项卡，然后选择它。
    
    ![](media/azure-stack-manage-storage-accounts/image3.png)
    
@@ -47,17 +48,17 @@ ms.lasthandoff: 05/12/2018
 
 或
 
-如果你感兴趣的特定存储帐户-你可以**筛选并提取相关帐户**仅。
+如果您感兴趣的特定的存储帐户-你可以**筛选并提取相关的帐户**仅。
 
 
 **筛选帐户：**
 
-1. 选择**筛选器**窗格的顶部。
+1. 选择窗格顶部的“筛选”。
 2. 在“筛选”窗格中，可以指定“帐户名”、“订阅 ID”或“状态”，以调整要显示的存储帐户列表。 适当地使用筛选器。
 3. 选择“更新”。 列表会相应地刷新。
    
     ![](media/azure-stack-manage-storage-accounts/image5.png)
-4. 若要重置筛选器： 选择**筛选器**、 清除所做的选择和更新。
+4. 若要重置筛选器，请选择“筛选”、清除选择内容，然后更新。
 
 使用搜索文本框（位于存储帐户列表窗格的顶部）可以突出显示帐户列表中选择的文本。 无法轻松获取完整名称或 ID 时，可以使用此功能。
 
@@ -66,7 +67,7 @@ ms.lasthandoff: 05/12/2018
 ![](media/azure-stack-manage-storage-accounts/image6.png)
 
 ## <a name="look-at-account-details"></a>查看帐户详细信息
-一旦找到你感兴趣查看的帐户，你可以选择要查看某些详细信息的特定帐户。 此时将打开新的窗格，其中包含帐户详细信息，例如帐户类型、创建时间、位置等等。
+找到想要查看的帐户后，可以选择特定帐户查看特定详细信息。 此时将打开新的窗格，其中包含帐户详细信息，例如帐户类型、创建时间、位置等等。
 
 ![](media/azure-stack-manage-storage-accounts/image7.png)
 
@@ -78,13 +79,13 @@ ms.lasthandoff: 05/12/2018
 1. 浏览到存储帐户列表。 有关详细信息，请参阅本主题中的[查找存储帐户](#find)。
 2. 在列表中找到该特定帐户。 可能需要执行筛选。
 3. 检查帐户的状态。 状态应显示为“已删除”。
-4. 选择的帐户，这将打开帐户详细信息窗格。
-5. 基于此窗格中，找到**恢复**按钮，然后选择它。
+4. 选择该帐户，这会打开帐户详细信息窗格。
+5. 在此窗格的顶部找到“恢复”按钮，并选择它。
 6. 请选择“是”以确认。
    
    ![](media/azure-stack-manage-storage-accounts/image8.png)
 7. 恢复过程随即显示“正在处理...请稍候”，表示恢复成功。
-   你还可以选择在门户中查看进度指示顶部的"钟形"图标。
+   也可以选择门户顶部的铃铛图标查看进度指示。
    
    ![](media/azure-stack-manage-storage-accounts/image9.png)
    
@@ -105,10 +106,10 @@ ms.lasthandoff: 05/12/2018
 
 1. 在 Internet 浏览器中，导航到 https://adminportal.local.azurestack.external。
 2. 以云操作员身份登录到 Azure Stack 管理门户（使用部署期间提供的凭据）
-3. 在默认的仪表板 – 找到**区域管理**列表，然后选择你想要探索 – 例如的区域 **(本地**)。
+3. 在默认仪表板 – 找到**区域管理**列表并选择想要浏览 – 例如的区域 **(本地**)。
 4. 从“资源提供程序”列表中选择“存储”。
-5. 选择**设置**顶部以打开设置窗格。
-6. 选择**配置**然后编辑保持期值。
+5. 选择顶部的“设置”打开设置窗格。
+6. 选择“配置”，然后编辑保留期值。
 
    设置天数并保存。
    
@@ -123,8 +124,8 @@ ms.lasthandoff: 05/12/2018
 
 **使用门户回收容量：**
 1. 导航到存储帐户窗格。 请参阅[查找存储帐户](#find)。
-2. 选择**回收空间**窗格的顶部。
-3. 读取消息，然后选择**确定**。
+2. 选择窗格顶部的“回收空间”。
+3. 阅读消息，并选择“确定”。
 
     ![](media/azure-stack-manage-storage-accounts/image11.png)
 4. 等待显示成功通知（查看门户上的铃铛图标）。
@@ -142,17 +143,17 @@ ms.lasthandoff: 05/12/2018
 2. 运行以下 cmdlet：
 
 > [!NOTE]
-> 如果你运行这些 cmdlet，永久删除的帐户，而且其内容。 不可恢复。 请慎用此 cmdlet。
+> 如果运行这些 cmdlet，将会永久删除帐户及其内容。 不可恢复。 请慎用此 cmdlet。
 
 ```PowerShell  
     $farm_name = (Get-AzsStorageFarm)[0].name
     Start-AzsReclaimStorageCapacity -FarmName $farm_name
 ````
 
-有关详细信息，请参阅[Azure 堆栈 PowerShell 文档。](https://msdn.microsoft.com/library/mt637964.aspx)
+有关详细信息，请参阅 [Azure Stack PowerShell 文档](https://docs.microsoft.com/powershell/module/azurerm.azurestackstorage)。
  
 
 ## <a name="next-steps"></a>后续步骤
 
- - 有关管理权限的信息请参阅[Manage Role-Based 访问控制](azure-stack-manage-permissions.md)。
- - 有关管理的 Azure 堆栈的存储容量的信息，请参阅[管理 Azure 堆栈的存储容量](azure-stack-manage-storage-shares.md)。
+ - 有关管理权限的信息，请参阅[管理基于角色的访问控制](azure-stack-manage-permissions.md)。
+ - 有关管理 Azure Stack 的存储容量的信息，请参阅[管理 Azure Stack 的存储容量](azure-stack-manage-storage-shares.md)。

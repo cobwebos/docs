@@ -6,20 +6,20 @@ documentationcenter: ''
 author: brenduns
 manager: femila
 editor: ''
-ms.assetid: 96b080a4-a9a5-407c-ba54-111de2413d59
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/2/2018
+ms.date: 08/20/2018
 ms.author: brenduns
-ms.openlocfilehash: eed715a7c2cb967f6c9ea0b7d4442a4f9976bd17
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.reviewer: efemmano
+ms.openlocfilehash: 66a89c3cb14dd642ae993cbf3c45885635f59759
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345883"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42139710"
 ---
 # <a name="create-an-offer-in-azure-stack"></a>在 Azure Stack 中创建套餐
 
@@ -46,20 +46,16 @@ ms.locfileid: "37345883"
    > [!TIP]  
    > 套餐的更改不会对用户立即可见。 若要查看所做的更改，用户可能需要先注销，然后重新登录到用户门户，这样才能看到新的套餐。
 
-   若要更改套餐的状态：
-
-   - **1803 和更高版本**：  
-     在套餐的“概述”中，选择“访问性状态”。 选择要使用的状态（例如“公共”），然后选择“保存”。
+   在套餐的“概述”中，选择“访问性状态”。 选择要使用的状态（例如“公共”），然后选择“保存”。
  
-     ![选择辅助功能状态](media/azure-stack-create-offer/change-state.png)
+     ![选择状态](media/azure-stack-create-offer/change-stage-1807.png)
 
-     或者，在访问套餐之后，可以转到“套餐设置”。 选择“访问性状态”以更改状态。
+     或者，选择**更改状态**，然后选择一种状态。
 
-   - **低于 1803 的版本**：  
-     选择“所有资源”，搜索新套餐，然后选择新套餐。 依次选择“更改状态”、“公共”。
+    ![选择辅助功能状态](media/azure-stack-create-offer/change-stage-select-1807.png)
 
    > [!NOTE]
-   > 还可以使用 PowerShell 来创建默认套餐、计划和配额。 有关详细信息，请参阅[Azure Stack PowerShell 模块 1.3.0](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0)。
+   > 还可以使用 PowerShell 来创建默认套餐、计划和配额。 有关详细信息，请参阅[Azure Stack PowerShell 模块 1.4.0](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.4.0)。
 
 ## <a name="next-steps"></a>后续步骤
 

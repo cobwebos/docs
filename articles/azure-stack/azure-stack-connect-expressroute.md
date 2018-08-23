@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/14/2018
+ms.date: 08/14/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 9322c364832a12e711ee7e1b6ad9722ec82d8468
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 878b7952938c7ec534bc09e27ee8b859c1aaeefb
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449966"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139408"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>使用 Azure ExpressRoute 将 Azure Stack 连接到 Azure
 
@@ -180,7 +180,7 @@ Azure ExpressRoute，可将本地网络扩展到 Microsoft 云，通过连接提
 
 1. 在 Azure Stack 用户门户中，选择“所有资源”。
 1. 在“所有资源”下选择虚拟网络网关（在本示例中为 **GW1**）。
-1. 在“虚拟网络网关”下，选择“概述”。 （从资源列表中。） 或者，可以选择“属性”。
+1. 下**虚拟网络网关**，选择**概述**从列表中的资源。 或者，可以选择“属性”。
 1. 要记下的 IP 地址列在“公共 IP 地址”下。 对于示例配置，此地址为 192.68.102.1。
 
 #### <a name="create-a-virtual-machine"></a>创建虚拟机
@@ -360,7 +360,7 @@ Azure Stack 开发工具包是自主性的，与部署物理主机的网络相�
 
 ## <a name="configure-the-router"></a>配置路由器
 
-可以使用以下 ExpressRoute 路由器配置示意图作为指导来配置 ExpressRoute 路由器。 此图显示了两个租户（租户 1 和租户 2）及其各自的 Express Route 线路。 每个租户链接到各自在 ExpressRoute 路由器的 LAN 和 WAN 端的 VRF（虚拟路由和转发）。 此配置可确保在两个租户之间保持端到端隔离。 在学习示例配置的过程中，请记下路由器接口中使用的 IP 地址。
+可以使用以下 ExpressRoute 路由器配置示意图作为指导来配置 ExpressRoute 路由器。 下图显示了两个租户 （租户 1 和租户 2） 提供其各自的 ExpressRoute 线路。 每个租户链接到各自在 ExpressRoute 路由器的 LAN 和 WAN 端的 VRF（虚拟路由和转发）。 此配置可确保在两个租户之间保持端到端隔离。 在学习示例配置的过程中，请记下路由器接口中使用的 IP 地址。
 
 *图 4.ExpressRoute 路由器配置*
 
@@ -368,7 +368,7 @@ Azure Stack 开发工具包是自主性的，与部署物理主机的网络相�
 
 可以使用任何支持 IKEv2 VPN 和 BGP 的路由器，来终止 Azure Stack 的站点到站点 VPN 连接。 同一路由器用于通过 ExpressRoute 线路连接到 Azure。
 
-以下 Cisco Azure Site Recovery 1000 配置示例支持 *ExpressRoute 路由器配置*示意图中所示的网络基础结构。
+下面的 Cisco ASR 1000 系列聚合服务路由器配置示例支持网络基础结构中所示*ExpressRoute 路由器配置*关系图。
 
 **Cisco ASR 1000 配置示例**
 
@@ -457,7 +457,7 @@ description S2S VPN Tunnel for Tenant 2
  tunnel protection ipsec profile V4-PROFILE
 !
 interface GigabitEthernet0/0/1
- description PRIMARY Express Route Link to AZURE over Equinix
+ description PRIMARY ExpressRoute Link to AZURE over Equinix
  no ip address
  negotiation auto
 !
@@ -476,7 +476,7 @@ description Primary WAN interface of Tenant 2
  ip address 192.168.1.17 255.255.255.252
 !
 interface GigabitEthernet0/0/2
- description BACKUP Express Route Link to AZURE over Equinix
+ description BACKUP ExpressRoute Link to AZURE over Equinix
  no ip address
  negotiation auto
 !

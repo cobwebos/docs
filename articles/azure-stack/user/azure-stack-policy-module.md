@@ -3,7 +3,7 @@ title: 使用 Azure Stack 策略模块 | Microsoft Docs
 description: 了解如何限制 Azure 订阅使其行为像 Azure Stack 订阅
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: 937ef34f-14d4-4ea9-960b-362ba986f000
@@ -12,20 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2018
-ms.author: mabrigg
-ms.openlocfilehash: 105991296629e04addab33a0611736b379b11688
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.date: 08/15/2018
+ms.author: sethm
+ms.openlocfilehash: 273b1065d51552dd7b92d4a10fc856294a23a4e7
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281858"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42139281"
 ---
-# <a name="manage-azure-policy-using-the-azure-stack-policy-module"></a>使用 Azure Stack 策略模块管理 Azure 策略
+# <a name="manage-azure-policy-using-the-azure-stack-policy-module"></a>使用 Azure Stack 策略模块管理 Azure Policy
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-使用 Azure Stack 策略模块，可为 Azure 订阅配置与 Azure Stack 相同的版本控制和服务可用性。  该模块使用 **New-AzureRMPolicyAssignment** cmdlet 创建 Azure 策略，限制订阅中可用的资源类型和服务。  配置策略后，可以使用 Azure 订阅来开发针对 Azure Stack 的应用。
+使用 Azure Stack 策略模块，可为 Azure 订阅配置与 Azure Stack 相同的版本控制和服务可用性。  该模块使用 **New-AzureRMPolicyAssignment** cmdlet 创建 Azure Policy，限制订阅中可用的资源类型和服务。  配置策略后，可以使用 Azure 订阅来开发针对 Azure Stack 的应用。
 
 ## <a name="install-the-module"></a>安装模块
 
@@ -68,7 +68,7 @@ New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /s
 
 ## <a name="policy-in-action"></a>执行中的策略
 
-部署 Azure 策略后，当你尝试部署策略禁止的资源时会收到错误。
+部署 Azure Policy 后，当你尝试部署策略禁止的资源时会收到错误。
 
 ![由于策略约束而资源部署失败的结果](./media/azure-stack-policy-module/image1.png)
 

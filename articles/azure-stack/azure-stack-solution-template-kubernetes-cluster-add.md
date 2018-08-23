@@ -11,22 +11,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/29/2018
+ms.date: 08/09/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: ed2d55b8346acb79563a882bbaf2f46110dcf1bb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: bff0140d173fc3393ac56ec3d709c3c067842a2a
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442711"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42139531"
 ---
 # <a name="add-a-kubernetes-cluster-to-the-azure-stack-marketplace"></a>将 Kubernetes 群集添加到 Azure Stack 市场
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 > [!note]  
-> Azure Stack 上的 Azure 容器服务 (ACS) Kubernetes 目前为个人预览版。 若要请求访问根据本文中的说明进行操作所需的 Kubernetes 市场项，请[提交请求来获取访问权限](https://aka.ms/azsk8)。
+> Azure Stack 上的 Azure Kubernetes 服务 (AKS) Kubernetes 处于个人预览状态。 若要请求访问根据本文中的说明进行操作所需的 Kubernetes 市场项，请[提交请求来获取访问权限](https://aka.ms/azsk8)。
 
 可以将 Kubernetes 群集作为市场项提供给用户。 用户可以通过单个协调的操作部署 Kubernetes。
 

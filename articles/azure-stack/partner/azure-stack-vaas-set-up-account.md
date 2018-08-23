@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 07/24/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: f6c78a3e79ac88194e7e34ad8be7a941ee715d39
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 3f87721dcf7485e15a473e82597f6bf4baeca659
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40235278"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42139579"
 ---
 # <a name="set-up-your-validation-as-a-service-account"></a>设置你的验证作为服务帐户
 
@@ -95,7 +95,7 @@ VaaS 创建诊断日志时运行验证测试。 需要一个位置的 Azure blob
 
 ### <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 
-1. 若要创建存储帐户，请按照说明进行操作，[创建存储帐户](https://docs.microsoft.com/azure/storage/storage-create-storage-account#create-a-storage-account)。
+1. 若要创建存储帐户，请按照说明进行操作，[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)。
 
 2. 选择存储帐户的类型时，选择**Blob 存储**帐户类型。
 

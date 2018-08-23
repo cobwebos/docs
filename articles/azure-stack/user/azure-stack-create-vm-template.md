@@ -3,7 +3,7 @@ title: 本教程介绍如何使用模板创建 Azure Stack VM | Microsoft Docs
 description: 介绍如何使用 ASDK 通过预定义模板和 GitHub 自定义模板来创建 VM。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,18 +13,18 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 06/07/2018
-ms.author: brenduns
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: e772dc41ce2cb77a03b91515cae35ffc48f5dbc3
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 5026a7a753ec744d281266b2fb30a70a66a7f9db
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35238361"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139680"
 ---
 # <a name="tutorial-create-a-vm-using-a-community-template"></a>教程：使用社区模板创建 VM
-作为 Azure Stack 操作员或用户，你可以使用[自定义 GitHub 快速入门模板](https://github.com/Azure/AzureStack-QuickStart-Templates)来创建 VM，不需通过 Azure Stack Marketplace 来手动进行部署。
+作为 Azure Stack 操作员或用户，你可以使用[自定义 GitHub 快速入门模板](https://github.com/Azure/AzureStack-QuickStart-Templates)来创建 VM，不需通过 Azure Stack 市场来手动进行部署。
 
 本教程介绍如何执行下列操作：
 
@@ -34,7 +34,7 @@ ms.locfileid: "35238361"
 > * 启动 minikube 并安装应用程序
 
 ## <a name="learn-about-azure-stack-quickstart-templates"></a>了解 Azure Stack 快速入门模板
-Azure Stack 快速入门模板存储在 GitHub 上的[公共 AzureStack 快速入门模板存储库](https://github.com/Azure/AzureStack-QuickStart-Templates)中。 此存储库包含已经过测试与 Microsoft Azure 堆栈开发工具包 (ASDK) 的 Azure 资源管理器部署模板。 可以通过这些模板更轻松地评估 Azure Stack 并使用 ASDK 环境。 
+Azure Stack 快速入门模板存储在 GitHub 上的[公共 AzureStack 快速入门模板存储库](https://github.com/Azure/AzureStack-QuickStart-Templates)中。 此存储库包含已经过测试与 Microsoft Azure Stack 开发工具包 (ASDK) 的 Azure 资源管理器部署模板。 可以通过这些模板更轻松地评估 Azure Stack 并使用 ASDK 环境。 
 
 许多 GitHub 用户不断地向存储库贡献模板，因此部署模板数已超出 400，这是一个很大的集合。 可以从此存储库着手，更好地了解如何将各种环境部署到 Azure Stack。 
 
@@ -63,7 +63,7 @@ Minikube 是一种工具，方便用户在本地运行 Kubernetes。 Minikube �
 - xRDP
 
 > [!IMPORTANT]
-> Ubuntu VM 映像 (Ubuntu Server 16.04 LTS 在此示例中) 必须具有已添加到 Azure 堆栈 marketplace 在开始这些步骤之前。
+> 在开始执行这些步骤之前，必须已将 Ubuntu VM 映像（在此示例中为 Ubuntu Server 16.04 LTS）添加到 Azure Stack 市场。
 
 1.  单击“+新建” > “自定义” > “模板部署”。
 

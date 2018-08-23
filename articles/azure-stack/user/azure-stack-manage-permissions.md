@@ -3,7 +3,7 @@ title: 管理 Azure Stack 中每个用户对资源的权限 | Microsoft Docs
 description: 作为服务管理员或租户，了解如何管理 RBAC 权限。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: PatAltimore
 manager: femila
 editor: ''
 ms.assetid: cccac19a-e1bf-4e36-8ac8-2228e8487646
@@ -12,21 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
-ms.author: brenduns
+ms.date: 08/15/2018
+ms.author: patricka
 ms.reviewer: ''
-ms.openlocfilehash: 026c686b1d5654aa50dd63b9addd619dd5322da0
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 2e36f52568d349aeecd47f90bf9431f096cc4fdc
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808139"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139678"
 ---
 # <a name="manage-access-to-resources-with-azure-stack-role-based-access-control"></a>使用 Azure Stack 基于角色的访问控制管理对资源的访问权限
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-Azure 堆栈支持基于角色的访问控制 (RBAC)，相同[访问管理的安全模型](https://docs.microsoft.com/azure/role-based-access-control/overview)Microsoft Azure 使用。 可以使用 RBAC 来管理用户、组或应用程序对订阅、资源和服务的访问权限。
+Azure Stack 支持基于角色的访问控制 (RBAC)，相同[访问管理的安全模型](https://docs.microsoft.com/azure/role-based-access-control/overview)的 Microsoft Azure 使用。 可以使用 RBAC 来管理用户、组或应用程序对订阅、资源和服务的访问权限。
 
 ## <a name="basics-of-access-management"></a>访问管理基础知识
 

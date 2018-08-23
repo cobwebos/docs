@@ -3,22 +3,22 @@ title: 管理 Azure Stack 中的 API 版本配置文件 | Microsoft Docs
 description: 了解 Azure Stack 中的 API 版本配置文件。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/21/2018
-ms.author: mabrigg
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: adbe88a44ac38868a68a6845c328ef4cf7fba60c
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: ba8778bad9ed1b8ec095da084ffcec79658bdea8
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604431"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139559"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>管理 Azure Stack 中的 API 版本配置文件
 
@@ -36,8 +36,8 @@ API 配置文件指定 Azure 资源提供程序和 Azure REST 终结点的 API �
 
 ## <a name="summary-of-api-profiles"></a>API 配置文件的摘要
 
-- API 配置文件用于表示一组的 Azure 资源提供程序和其 API 版本。
-- 为你创建多个 Azure 云的模板创建 API 配置文件。 配置文件旨在满足对兼容和稳定接口的需要。
+- API 配置文件用于表示一组 Azure 资源提供程序及其 API 版本。
+- API 配置文件是为了让你创建跨多个 Azure 云的模板而创建的。 配置文件设计用来满足对兼容且稳定的接口的需求。
 - 配置文件每年发布四次。
 - 使用了以下三个配置文件命名约定：
     - **latest**  
@@ -80,13 +80,13 @@ API 配置文件可与使用 Azure 资源管理器的工具（例如 PowerShell�
 - **PowerShell**  
 可以使用通过 PowerShell 库提供的 **AzureRM.Bootstrapper** 模块来获取使用 API 版本配置文件所需的 PowerShell cmdlet。 有关信息，请参阅[使用适用于 PowerShell 的 API 版本配置文件](azure-stack-version-profiles-powershell.md)。
 - **Azure CLI 2.0**  
-可将环境配置更新为使用 Azure Stack 特定的 API 版本配置文件。 有关信息，请参阅[使用 API 版本配置文件为使用 Azure CLI 2.0](azure-stack-version-profiles-azurecli2.md)。
+可将环境配置更新为使用 Azure Stack 特定的 API 版本配置文件。 有关信息，请参阅[使用适用于 Azure CLI 2.0 的 API 版本配置文件](azure-stack-version-profiles-azurecli2.md)。
 - **GO**  
 在 GO SDK 中，配置文件结合了不同服务的不同版本的不同资源类型。 配置文件在 profiles/ 路径下提供，其版本采用 **YYYY-MM-DD** 格式。 有关信息，请参阅[为 GO 使用 API 版本配置文件](azure-stack-version-profiles-go.md)。
 - **Ruby**  
 用于 Azure Stack 资源管理器的 Ruby SDK 提供了相关工具来帮助构建和管理基础结构。 该 SDK 中的资源提供程序包括了采用 Ruby 语言的计算、虚拟网络和存储提供程序。 有关信息，请参阅[将 API 版本配置文件与 Ruby 配合使用](azure-stack-version-profiles-ruby.md)
 - **Python**  
-- Python SDK 支持 API 版本配置文件设置以面向不同的云平台，如 Azure 堆栈和全局 Azure。 你可以使用 API 配置文件中创建混合云的解决方案。 有关信息，请参阅[通过 Python 使用 API 版本配置文件](azure-stack-version-profiles-python.md)
+- Python SDK 支持 API 版本配置文件将不同的云平台（例如 Azure Stack 和 Azure 公有云）用作目标。 可以使用 API 配置文件为混合云创建解决方案。 有关信息，请参阅[将 API 版本配置文件与 Python 配合使用](azure-stack-version-profiles-python.md)
 
 ## <a name="next-steps"></a>后续步骤
 

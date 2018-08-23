@@ -3,22 +3,22 @@ title: Azure Stack 中的配置文件支持的资源提供程序 API 版本 | Mi
 description: 了解 Azure Stack 中的配置文件支持的 Azure 资源管理器版本。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2018
-ms.author: mabrigg
+ms.date: 08/17/2018
+ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 1a516c890441c3b703d43f31816b7c37cac364fd
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 9ba954db7003e062444e57bd56f87ff5d279b07f
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054375"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42139393"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Azure Stack 中的配置文件支持的资源提供程序 API 版本
 
@@ -149,8 +149,8 @@ API 配置文件使用三个命名约定：
 | 事件类别 | 2015-04-01 |
 | 指标定义 | 2018-01-01 |
 | 度量值 | 2018-01-01 |
-| 诊断设置 | 自 2017 年 1-05-01-preview |
-| 诊断设置类别 | 自 2017 年 1-05-01-preview |
+| 诊断设置 | 2017-05-01-preview |
+| 诊断设置类别 | 2017-05-01-preview |
 
 
 ### <a name="microsoftkeyvault"></a>Microsoft.KeyVault
@@ -193,27 +193,27 @@ API 配置文件使用三个命名约定：
 | 资源类型 | API 版本 |
 |-----------------------------------------|-------------------|
 | 应用程序注册 | 2015-01-01 |
-| 检查资源名称 | 2015-012016-09-01 |
+| 检查资源名称 | 2016-09-01 |
 | 委托的提供程序 | 2015-01-01 |
 | 委托的提供程序/产品（服务） | 2015-01-01 |
 | 委托的提供程序/产品（服务）/估算价格 | 2015-01-01 |
 | 部署 | 2016-0209-01 |
 | 部署/操作 | 2016-0209-01 |
 | 扩展元数据 | 2015-01-01 |
-| 链接 | 2015-012016-09-01 |
+| 链接 | 2016-09-01 |
 | 位置 | 2015-01-01 |
 | 产品 | 2015-01-01 |
 | 操作 | 2015-01-01 |
 | 提供程序 | 2015-012017-08-01 |
-| 资源组 | 2015-012016-09-01 |
-| 资源 | 2015-012016-09-01 |
-| 订阅 | 2015-012016-09-01 |
-| 订阅/位置 | 2015-012016-09-01 |
-| 订阅/操作结果 | 2015-012016-09-01 |
+| 资源组 | 2016-09-01 |
+| 资源 | 2016-09-01 |
+| 订阅 | 2016-09-01 |
+| 订阅/位置 | 2016-09-01 |
+| 订阅/操作结果 | 2016-09-01 |
 | 订阅/提供程序 | 2015-012017-08-01 |
-| 订阅/资源组 | 2015-012016-09-01 |
-| 订阅/资源组/资源 | 2015-012016-09-01 |
-| 订阅/资源 | 2015-012016-09-01 |
+| 订阅/资源组 | 2016-09-01 |
+| 订阅/资源组/资源 | 2016-09-01 |
+| 订阅/资源 | 2016-09-01 |
 | 订阅/标记名称 | 2016-0609-01 |
 | 订阅/标记名称/标记值 | 2016-0609-01 |
 | 租户 | 2015-012017-08-01 |

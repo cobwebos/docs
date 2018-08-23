@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 08/07/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: c22831ae781239f2474720ee9cd1b58f6e14fe41
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 9bbe55e08d7a005d38c5608df39f9285d79eb203
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412859"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42139488"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack 数据中心集成 - 标识
 可以使用 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识提供者来部署 Azure Stack。 必须在部署 Azure Stack 之前做出选择。 使用 AD FS 的部署也称为在断开连接模式下部署 Azure Stack。
@@ -151,7 +151,7 @@ Azure Stack 中的 Graph 服务使用以下协议和端口来与目标 Active Di
 
 ## <a name="setting-up-ad-fs-integration-by-providing-federation-metadata-file"></a>通过提供联合元数据文件来设置 AD FS 集成
 
-如果符合以下任一条件，则可以使用此方法：
+从版本 1807年开始，使用此方法，如果以下条件之一成立：
 
 - AD FS 的证书链不同于 Azure Stack 中的其他所有终结点。
 - 未在 Azure Stack 的 AD FS 实例与现有 AD FS 服务器之间建立网络连接。
@@ -163,6 +163,8 @@ Azure Stack 中的 Graph 服务使用以下协议和端口来与目标 Active Di
 |---------|---------|---------|
 |CustomAdfsName|声明提供程序的名称。 AD FS 登录页上会显示此名称。|Contoso|
 |CustomADFSFederationMetadataFileContent|元数据内容|$using: federationMetadataFileContent|
+
+
 
 ### <a name="create-federation-metadata-file"></a>创建联合元数据文件
 

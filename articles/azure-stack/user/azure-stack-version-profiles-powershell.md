@@ -1,9 +1,9 @@
 ---
-title: 使用 Azure 堆栈中的 PowerShell API 版本配置文件 |Microsoft 文档
-description: 了解有关 Azure 堆栈中的 PowerShell 使用 API 版本配置文件。
+title: 在 Azure Stack 中将 API 版本配置文件与 PowerShell 配合使用 | Microsoft Docs
+description: 了解如何在 Azure Stack 中将 API 版本配置文件与 PowerShell 配合使用。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: EBAEA4D2-098B-4B5A-A197-2CEA631A1882
@@ -12,17 +12,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2018
-ms.author: mabrigg
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: b09799fe102522e1ad91f4983cf4f5fa8122b2c1
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8da02641cc54f9308f8e0bbb8d2b28da9a930aa2
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31392844"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139535"
 ---
-# <a name="use-api-version-profiles-for-powershell-in-azure-stack"></a>使用适用于 Azure 堆栈中的 PowerShell API 版本配置文件
+# <a name="use-api-version-profiles-for-powershell-in-azure-stack"></a>在 Azure Stack 中使用 PowerShell 的 API 版本配置文件
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
@@ -38,7 +38,7 @@ Install-Module -Name AzureRm.BootStrapper
 
 ## <a name="install-a-profile"></a>安装配置文件
 
-使用 **Install-AzureRmProfile** cmdlet 搭配 **2017-03-09-profile** API 版本配置文件，安装 Azure Stack 所需的 AzureRM 模块。 Azure 堆栈运算符模块未安装与此 API 版本配置文件中。 它们应安装单独的步骤 3 中指定[安装适用于 Azure 堆栈的 PowerShell](azure-stack-powershell-install.md)文章。
+使用 **Install-AzureRmProfile** cmdlet 搭配 **2017-03-09-profile** API 版本配置文件，安装 Azure Stack 所需的 AzureRM 模块。 Azure Stack 操作员模块并不会随此 API 版本配置文件一起安装。 应该根据[安装适用于 Azure Stack 的 PowerShell](azure-stack-powershell-install.md) 一文的“步骤 3”中所述，单独安装这些模块。
 
 ```PowerShell 
 Install-AzureRMProfile -Profile 2017-03-09-profile

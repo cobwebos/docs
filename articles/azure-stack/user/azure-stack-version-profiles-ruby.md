@@ -3,7 +3,7 @@ title: 在 Azure Stack 中将 API 版本配置文件与 Ruby 配合使用 | Micr
 description: 了解如何在 Azure Stack 中将 API 版本配置文件与 Ruby 配合使用。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: B82E4979-FB78-4522-B9A1-84222D4F854B
@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
-ms.author: mabrigg
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 4d62c192b4e74980fc8cd8a671a702ba2ddfdbcb
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: a000a54f79e479567168992cdd0786eb9e8b5c32
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866587"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139489"
 ---
 # <a name="use-api-version-profiles-with-ruby-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Ruby 配合使用
 
@@ -201,7 +201,7 @@ end
 
 ## <a name="samples-using-api-profiles"></a>使用 API 配置文件的示例
 
-可以使用下面的示例使用 Ruby 和 Azure Stack API 配置文件创建解决方案的引用作为 GitHub repositoreis 中找到：
+若要使用 Ruby 和 Azure Stack API 配置文件来创建解决方案，可以将 GitHub 存储库中的以下示例用作参考：
 
  - [使用 Ruby 管理 Azure 资源和资源组](https://github.com/Azure-Samples/resource-manager-ruby-resources-and-groups/tree/master/Hybrid)
  - [Manage virtual machines using Ruby](https://github.com/Azure-Samples/compute-ruby-manage-vm/tree/master/Hybrid)（使用 Ruby 管理虚拟机）
