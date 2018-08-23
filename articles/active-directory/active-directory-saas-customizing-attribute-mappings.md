@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 366b89d3db0db634e239ac2d99188c7ea0444c13
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: accc2e994e7ea361315d5dfb33b257e58410490c
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365186"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42145088"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
 Microsoft Azure AD 支持将用户预配到第三方 SaaS 应用程序，例如 Salesforce、Google Apps 等等。 如果已为第三方 SaaS 应用程序启用用户预配，Azure 门户将以属性映射的形式控制其属性值。
@@ -121,7 +121,7 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 * **多值?** - 属性是否支持多个值。
 * **区分大小写?** - 是否以区分大小写的方式计算属性值。
 * **API 表达式** - 除非特定预配连接器（例如 Workday）的文档要求使用，否则请不要使用。
-* **引用的对象属性** - 如果这是一个引用类型的属性，则此菜单允许在目标应用程序中选择包含与该属性关联的值的表和属性。 例如，如果名为“Department”的属性的存储值引用了独立“Departments”表中的对象，则需要选择“Departments.Name”。 请注意，给定应用程序支持的引用表和主要 ID 字段是预先配置的，目前无法使用 Azure 门户进行编辑，但可以使用[图形 API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes) 进行编辑。
+* **引用的对象属性** - 如果这是一个引用类型的属性，则此菜单允许在目标应用程序中选择包含与该属性关联的值的表和属性。 例如，如果名为“Department”的属性的存储值引用了独立“Departments”表中的对象，则需要选择“Departments.Name”。 请注意，给定应用程序支持的引用表和主要 ID 字段是预先配置的，目前无法使用 Azure 门户进行编辑，但可以使用[图形 API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes) 进行编辑。
 
 若要添加新属性，请滚动到受支持属性列表的末尾，使用提供的输入填充上述字段，然后选择“添加属性”。 添加完属性后选择“保存”。 然后需要重新加载“预配”选项卡，使新属性显示在属性映射编辑器中。
 

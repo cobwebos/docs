@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 1d19cf6ecc9f2bedb6ceaf6312b247670d965b84
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: d695627efddc0ca02c3d9299f4b8a13bdc85e8fb
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048543"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42141722"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>使用数据管理网关在本地源与云之间移动数据
 > [!NOTE]
@@ -48,7 +48,7 @@ ms.locfileid: "37048543"
 开始本演练之前，必须具备以下先决条件：
 
 * **Azure 订阅**。  如果没有订阅，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[免费使用](http://azure.microsoft.com/pricing/free-trial/)一文。
-* **Azure 存储帐户**。 在本教程中，将 Blob 存储用作**目标/接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-create-storage-account.md#create-a-storage-account)一文获取创建步骤。
+* **Azure 存储帐户**。 在本教程中，将 Blob 存储用作**目标/接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)一文获取创建步骤。
 * **SQL Server**。 在本教程中，将本地 SQL Server 数据库用作**源**数据存储。 
 
 ## <a name="create-data-factory"></a>创建数据工厂

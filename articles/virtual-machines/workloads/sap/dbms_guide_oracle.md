@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bda1c4074db123294ffde39e5c4cd5494474ca38
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 2daa624dd7912d09f01e5bab5dc6de9cc14a771c
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39075191"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42140012"
 ---
 # <a name="oracle-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 Oracle Azure 虚拟机 DBMS 部署
 
@@ -311,7 +311,7 @@ ms.locfileid: "39075191"
 
 
 ## <a name="specifics-to-oracle-database"></a>有关 Oracle Database 的具体信息
-Oracle 支持在 Microsoft Azure 上运行 Oracle 软件。 有关 Windows Hyper-V 和 Azure 常规支持的详细信息，请查看：<https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces> 
+Oracle 支持在 Microsoft Azure 上运行 Oracle 软件。 有关 Windows Hyper-V 和 Azure 常规支持的详细信息，请查看：<http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html> 
 
 根据常规支持，SAP 应用程序使用 Oracle 数据库的特定方案也受到支持。 文档中进行了详细介绍。 在阅读本文档之前，应已经阅读了[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)文档以及 [Azure 文档上的 SAP 工作负荷](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)中的其他指南。 
 
@@ -384,7 +384,7 @@ Azure 上的 Oracle 和 SAP 支持确切的配置和功能，如 SAP 说明 [#20
 如[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)所述，Azure 可用性集或 SAP 监视等所有其他常规领域也适用于使用 Oracle Database 进行的 VM 部署。
 
 ## <a name="specifics-to-oracle-database-on-oracle-linux"></a>有关 Oracle Linux 上的 Oracle 数据库的具体信息
-Oracle 支持在 Oracle Linux 作为来宾 OS 的 Microsoft Azure 上运行 Oracle 软件。 有关 Windows Hyper-V 和 Azure 常规支持的详细信息，请查看：<https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces> 
+Oracle 支持在 Oracle Linux 作为来宾 OS 的 Microsoft Azure 上运行 Oracle 软件。 有关 Windows Hyper-V 和 Azure 常规支持的详细信息，请查看：<http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html> 
 
 根据常规支持，SAP 应用程序使用 Oracle 数据库的特定方案也受到支持。 文档的这一部分对此进行了详细介绍。
 

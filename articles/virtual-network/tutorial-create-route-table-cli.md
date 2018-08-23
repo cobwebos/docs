@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: eb4a28b5a57d7e301e800cd4ad87c56b7c5df6d2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 3217524ccfd03184a93a4e6637696195b3f0bf16
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38701829"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42142047"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>使用 Azure CLI 通过路由表路由网络流量
 
@@ -53,7 +53,7 @@ az group create \
   --location eastus
 ``` 
 
-使用 [az network route-table create](/cli/azure/network/route#az_network_route_table_create) 创建路由表。 以下示例创建名为 *myRouteTablePublic* 的路由表。 
+使用 [az network route-table create](/cli/azure/network/route-table#az-network-route-table-create) 创建路由表。 以下示例创建名为 *myRouteTablePublic* 的路由表。 
 
 ```azurecli-interactive 
 # Create a route table
@@ -64,7 +64,7 @@ az network route-table create \
 
 ## <a name="create-a-route"></a>创建路由
 
-使用 [az network route-table route create](/cli/azure/network/route-table/route#az_network_route_table_route_create) 在路由表中创建路由。 
+使用 [az network route-table route create](/cli/azure/network/route-table/route#az-network-route-table-route-create) 在路由表中创建路由。 
 
 ```azurecli-interactive
 az network route-table route create \

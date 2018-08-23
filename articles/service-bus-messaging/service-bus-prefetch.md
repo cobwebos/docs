@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: sethm
-ms.openlocfilehash: 0a61918108a48f4a9fa3d1c07cc8d41525f1f2a0
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a61b7b08d883c1b5a7fde93c249fc8de1473d15d
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28928155"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42139806"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>预提取 Azure 服务总线消息
 
@@ -40,9 +40,9 @@ ms.locfileid: "28928155"
 
 预提取可加快消息流程，方法是在应用程序请求消息时及请求消息前，准备好消息用于本地检索。 这种吞吐量提升是应用程序作者不得不明确作出的某种权衡的结果：
 
-通过 [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode.receiveanddelete) 接收模式，预提取缓存区获取的所有消息在队列中不再可用，仅驻留在内存中预提取缓存区，直到应用程序通过 Receive/ReceiveAsync 或 OnMessage/OnMessageAsync API 接收到它们。 如果在应用程序接收到消息前终止应用程序，这些消息将丢失，且不可恢复。
+通过 [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) 接收模式，预提取缓存区获取的所有消息在队列中不再可用，仅驻留在内存中预提取缓存区，直到应用程序通过 Receive/ReceiveAsync 或 OnMessage/OnMessageAsync API 接收到它们。 如果在应用程序接收到消息前终止应用程序，这些消息将丢失，且不可恢复。
 
-在 [PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode.peeklock) 接收模式下，提取到预提取缓存区的消息将以锁定状态进入缓存区，并且将超时时钟用于锁定计时。 如果预提取缓存区很大，且处理所需时间过长，以致消息锁定在驻留于预提取缓存区，甚至应用程序还在处理消息时就到期，可能出现一些令人困惑的事件要应用程序处理。
+在 [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) 接收模式下，提取到预提取缓存区的消息将以锁定状态进入缓存区，并且将超时时钟用于锁定计时。 如果预提取缓存区很大，且处理所需时间过长，以致消息锁定在驻留于预提取缓存区，甚至应用程序还在处理消息时就到期，可能出现一些令人困惑的事件要应用程序处理。
 
 应用程序可能收到包含到期或即将到期的锁定的消息。 如果是这样，应用程序可能处理该消息，但随后发现，因锁定到期而无法完成处理。 应用程序可查看 [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.lockeduntilutc#Microsoft_Azure_ServiceBus_Core_MessageReceiver_LockedUntilUtc) 属性（受代理时钟和本地计算机时钟之间的时钟偏差约束）。 如果消息锁定已到期，则应用程序必须忽略该消息，不应对该消息或通过该消息调用任何 API。 如果消息未到期但即将到期，可通过调用 [message.RenewLock()](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_) 延续和扩展又一默认锁定时间段
 

@@ -7,15 +7,17 @@ manager: douge
 assetId: eb3afde6-ba90-4308-9ac1-3cc29da4ede0
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 8/31/2017
 ms.author: ghogen
-ms.openlocfilehash: a19f33c4dd2654538c5718d2cd7dbe5d018e4de1
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 81a0e2923ddbb6960066f01d6365e8c9278defac
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42142061"
 ---
 # <a name="accessing-azure-virtual-machines-from-server-explorer"></a>从服务器资源管理器访问 Azure 虚拟机
 
@@ -25,7 +27,7 @@ ms.lasthandoff: 04/23/2018
 
     下表显示了可用的属性，但这些属性都是只读的。 若要更改这些属性，请使用 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
-   | 属性 | 说明 |
+   | 属性 | Description |
    | --- | --- |
    | DNS 名称 |包含虚拟机 Internet 地址的 URL。 |
    | 环境 |对于虚拟机，此属性的值始终为“生产”。 |
@@ -36,7 +38,7 @@ ms.lasthandoff: 04/23/2018
 2. 选择一个终结点节点，并查看“属性”窗口。
 3. 下表描述了可用的终结点属性，但这些属性都是只读的。 若要添加或编辑虚拟机的终结点，请使用 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。 
 
-   | 属性 | 说明 |
+   | 属性 | Description |
    | --- | --- |
    | 名称 |终结点的标识符。 |
    | 专用端口 |应用程序的内部网络访问端口。 |

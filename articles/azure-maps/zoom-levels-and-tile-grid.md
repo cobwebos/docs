@@ -1,24 +1,24 @@
 ---
 title: Azure Maps 中的缩放级别和磁贴网格 | Microsoft Docs
 description: 了解 Azure Maps 中的缩放级别和磁贴网格
-author: jinzh-azureiot
+author: jingjing-z
 ms.author: jinzh
 ms.date: 05/07/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 55441cda7a6fc65ac8103d19510823a7c84a9cbf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c6d38dbb7ee292172fe081c2b77a49db61856d5c
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34599919"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42140414"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>缩放级别和磁贴网格
 Azure Maps 使用球面 Mercator 投影坐标系统 (EPSG: 3857)。
 
-世界分成正方形磁贴。 呈现（光栅）有 19 个缩放级别，其编号为 0 到 18。 呈现（矢量）有 21 个缩放级别，其编号为 0 到 20。 在缩放级别为 0 时，单个磁贴可以容纳整个世界：
+世界分成正方形磁贴。 呈现（光栅）有 21 个缩放级别，其编号为 0 到 20。 呈现（矢量）有 23 个缩放级别，其编号为 0 到 22。 在缩放级别为 0 时，单个磁贴可以容纳整个世界：
 
 ![世界磁贴](./media/zoom-levels-and-tile-grid/world0.png)
 
@@ -29,7 +29,7 @@ Azure Maps 使用球面 Mercator 投影坐标系统 (EPSG: 3857)。
 ![世界磁贴左下方](./media/zoom-levels-and-tile-grid/world1b.png)     ![世界磁贴右下方](./media/zoom-levels-and-tile-grid/world1d.png) 
 
 
-每个后续缩放级别都将前一个缩放级别的磁贴分为四份，从而创建一个 2 <sup>缩放</sup> x 2 <sup>缩放</sup>的网格。 缩放级别 20 是一个 2<sup>20</sup> x 2<sup>20</sup> 的网格，或 1,048,576 x 1,048,576 个磁贴（总共为 109,951,162,778 个磁贴）。
+每个后续缩放级别都将前一个缩放级别的磁贴分为四份，从而创建一个 2 <sup>缩放</sup> x 2 <sup>缩放</sup>的网格。 缩放级别 22 是一个 2<sup>22</sup> x 2<sup>22</sup> 的网格，或有 4,194,304 x 4,194,304 个磁贴（共有 17,592,186,044,416 个磁贴）。
 
 下表提供了缩放级别的完整列表值：
 
@@ -56,6 +56,8 @@ Azure Maps 使用球面 Mercator 投影坐标系统 (EPSG: 3857)。
 |18|0.6|152.8|
 |19|0.3|76.4|
 |20|0.15|38.2|
+|21|0.075|19.1|
+|22|0.0375|9.55|
 
 通过缩放级别调用磁贴，x 和 y 坐标对应磁贴在该缩放级别的网格上的位置。
 

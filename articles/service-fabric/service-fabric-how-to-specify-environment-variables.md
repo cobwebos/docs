@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: mikhegn
-ms.openlocfilehash: 4325b3acd3cbc73ee5976021bebe96c267b2a6dd
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f75de635f08ae06db349387a436c636c149ec9f2
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206022"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42145287"
 ---
 # <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>如何在 Service Fabric 中指定服务的环境变量
 
@@ -34,7 +34,7 @@ ms.locfileid: "34206022"
       <CodePackage Name="MyCode" Version="CodeVersion1">
       ...
         <EnvironmentVariables>
-          <EnvironmentVariable Name="MyEnvVariable" Value="DeafultValue"/>
+          <EnvironmentVariable Name="MyEnvVariable" Value="DefaultValue"/>
           <EnvironmentVariable Name="HttpGatewayPort" Value="19080"/>
         </EnvironmentVariables>
       </CodePackage>

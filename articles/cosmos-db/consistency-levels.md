@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e9503759b776bb045c4dc0357b1ab88be1294013
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 8d95790dc09f6d26c6ae749ed0cd386053c5cb35
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038031"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42139804"
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB 中的可优化数据一致性级别
 Azure Cosmos DB 是从无到有开发出来的，其设计考虑到了适合每个数据模型的全局分发。 它旨在提供可预测的低延迟保证以及多个完善定义的宽松一致性模型。 Azure Cosmos DB 当前提供 5 种一致性级别：非常、有限过期、会话、一致前缀和最终级别。 有限过期、会话、一致性前缀和最终级别称为“宽松一致性模型”，因为它们提供的一致性比非常一致性更差，后者是可用的最高一致性模型。 
@@ -132,7 +132,7 @@ Azure Cosmos DB 当前实现了 MongoDB 3.4 版，其中具有两个一致性设
 * [Doug Terry 借助棒球阐释复制数据一致性（视频）](https://www.youtube.com/watch?v=gluIh8zd26I)
 * [Doug Terry 借助棒球阐释复制数据一致性（白皮书）](http://research.microsoft.com/pubs/157411/ConsistencyAndBaseballReport.pdf)
 * [弱一致性重复数据的会话保证](http://dl.acm.org/citation.cfm?id=383631)
-* [现代分布式数据库系统设计中的一致性平衡方案：CAP 只是冰山一角](http://computer.org/csdl/mags/co/2012/02/mco2012020037-abs.html)
+* [现代分布式数据库系统设计中的一致性平衡方案：CAP 只是冰山一角](https://www.computer.org/web/csdl/index/-/csdl/mags/co/2012/02/mco2012020037-abs.html)
 * [Probabilistic Bounded Staleness (PBS) for Practical Partial Quorums](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)（实用部分仲裁的概率有限过期性 (PBS)）
 * [最终一致性 - 再探](http://allthingsdistributed.com/2008/12/eventually_consistent.html)
 * [The Load, Capacity, and Availability of Quorum Systems, SIAM Journal on Computing](http://epubs.siam.org/doi/abs/10.1137/S0097539795281232)（仲裁系统的负载、容量和可用性, SIAM Journal on Computing）

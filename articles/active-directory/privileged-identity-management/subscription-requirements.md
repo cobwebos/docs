@@ -16,12 +16,12 @@ ms.component: pim
 ms.date: 06/01/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 2fe80f01faae89256c96e23944025d3bd0c55811
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: dbe4efa57a7c4c31b2bdca84665eef8179564a8f
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617184"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617063"
 ---
 # <a name="azure-active-directory-privileged-identity-management-subscription-requirements"></a>Azure Active Directory Privileged Identity Management 订阅要求
 
@@ -42,7 +42,7 @@ Azure AD Privileged Identity Management 作为 Azure AD 的 Premium P2 版本的
 
 如果此命令返回的行中 SkuPartNumber 为“AAD_PREMIUM_P2”或“EMSPREMIUM”且 IsTrial 为“True”，这指示 Azure AD Premium P2 试用版已存在于租户中。  如果未启用订阅状态，并且未购买 Azure AD Premium P2 或 EMS E5 订阅，则必须购买 Azure AD Premium P2 订阅或 EMS E5 订阅，才能继续使用 Azure AD Privileged Identity Management。
 
-Azure AD Premium P2 通过 [Microsoft 企业协议](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx)、[开放批量许可计划](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)和[云解决方案提供商计划](https://partner.microsoft.com/en-US/cloud-solution-provider)提供。 Azure 和 Office 365 订户还可以在线购买 Azure AD Premium P2。  有关 Azure AD Premium 定价以及如何在线订购的详细信息可以在 [Azure Active Directory 定价](https://azure.microsoft.com/pricing/details/active-directory/)中找到。
+Azure AD Premium P2 通过 [Microsoft 企业协议](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx)、[开放批量许可计划](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)和[云解决方案提供商计划](https://partner.microsoft.com/cloud-solution-provider)提供。 Azure 和 Office 365 订户还可以在线购买 Azure AD Premium P2。  有关 Azure AD Premium 定价以及如何在线订购的详细信息可以在 [Azure Active Directory 定价](https://azure.microsoft.com/pricing/details/active-directory/)中找到。
 
 ## <a name="azure-ad-privileged-identity-management-is-not-available-in-tenant"></a>Azure AD Privileged Identity Management 在租户中不可用
 

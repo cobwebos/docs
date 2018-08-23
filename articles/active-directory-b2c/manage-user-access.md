@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 15bc320bd82ea21ff608fcc834ba51b9bc7b6dea
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 6709fb8ae328f749b367c58f95b8a9ef8da9bc65
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716138"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42142058"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中管理用户访问
 
@@ -46,7 +46,7 @@ ms.locfileid: "39716138"
 
 下面是收集家长同意的用户流示例：
 
-1. [Azure Active Directory 图形 API](https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/api-catalog) 操作将用户识别为未成年人，并将用户数据以未签名 JSON 令牌的形式返回给应用程序。
+1. [Azure Active Directory 图形 API](https://msdn.microsoft.com/library/azure/ad/graph/api/api-catalog) 操作将用户识别为未成年人，并将用户数据以未签名 JSON 令牌的形式返回给应用程序。
 
 2. 应用程序处理 JSON 令牌，并向未成年人显示一个屏幕，告知他（她）需要家长同意，并请求家长在线同意。 
 
@@ -56,7 +56,7 @@ ms.locfileid: "39716138"
 
 5. 未成年人或成人撤消同意时，可以使用 Azure AD 图形 API 将 **consentProvidedForMinor** 更改为 **denied**。 或者，应用程序可以选择删除已撤消其同意的未成年人。 可以选择性地自定义用户流，让经过身份验证的未成年人（或使用未成年人帐户的家长）撤消同意。 Azure AD B2C 将 **consentProvidedForMinor** 记录为 **denied**。
 
-有关 **legalAgeGroupClassification**、**consentProvidedForMinor** 和 **ageGroup** 的详细信息，请参阅[用户资源类型](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/user)。 有关自定义属性的详细信息，请参阅[使用自定义属性来收集有关用户的信息](active-directory-b2c-reference-custom-attr.md)。 使用 Azure AD 图形 API 解决扩展属性时，必须使用长版本的属性，例如 *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*。
+有关 **legalAgeGroupClassification**、**consentProvidedForMinor** 和 **ageGroup** 的详细信息，请参阅[用户资源类型](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user)。 有关自定义属性的详细信息，请参阅[使用自定义属性来收集有关用户的信息](active-directory-b2c-reference-custom-attr.md)。 使用 Azure AD 图形 API 解决扩展属性时，必须使用长版本的属性，例如 *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*。
 
 ## <a name="gather-date-of-birth-and-country-data"></a>收集出生日期和国家/地区数据
 

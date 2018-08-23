@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: c43c15131afb5fbf346b0137dac566f5331c65a2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f89c97f1220c0e949912a3002021eca20f91441d
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33776366"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42145686"
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>通过使用 ASP.NET 注册推送通知的当前用户
 > [!div class="op_single_selector"]
@@ -107,7 +107,7 @@ ms.locfileid: "33776366"
     这为请求设置设备标记。
    
    > [!NOTE]
-   > 此时，此方法中不应有任何其他代码。 如果已调用在完成[通知中心入门](/manage/services/notification-hubs/get-started-notification-hubs-ios/)教程的学习时添加的 **registerNativeWithDeviceToken** 方法，必须注释掉或删除该调用。
+   > 此时，此方法中不应有任何其他代码。 如果已调用在完成[通知中心入门](notification-hubs-ios-apple-push-notification-apns-get-started.md)教程的学习时添加的 **registerNativeWithDeviceToken** 方法，必须注释掉或删除该调用。
    > 
    > 
 8. 在 PushToUserAppDelegate.m 文件中，添加以下处理程序方法：
@@ -218,6 +218,6 @@ ms.locfileid: "33776366"
 [1]: ./media/notification-hubs-ios-aspnet-register-user-push-notifications/notification-hub-user-aspnet-ios2.png
 
 <!-- URLs. -->
-[使用通知中心通知用户]: /manage/services/notification-hubs/notify-users-aspnet
+[使用通知中心通知用户]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 
-[通知中心入门]: /manage/services/notification-hubs/get-started-notification-hubs-ios
+[通知中心入门]: notification-hubs-ios-apple-push-notification-apns-get-started.md

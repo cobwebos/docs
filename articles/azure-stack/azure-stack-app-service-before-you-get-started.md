@@ -12,29 +12,29 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2018
+ms.date: 08/20/2018
 ms.author: anwestg
-ms.openlocfilehash: 22901374988f6654bc1fb282315db81bb17c815f
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: e5fc6b5d396a45d15548cfdd8f445158147ad12f
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857859"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42139618"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>在 Azure Stack 上开始使用应用服务之前
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-在部署 Azure Stack 上的 Azure 应用服务之前，必须完成这篇文章中的先决条件步骤。
+在 Azure Stack 上部署 Azure 应用服务之前，必须完成本文中的先决条件步骤。
 
 > [!IMPORTANT]
-> 将 1804年更新应用于 Azure Stack 集成系统，或在部署 Azure 应用服务 1.2 之前部署最新 Azure Stack 开发工具包 (ASDK)。
+> 将 1807年更新应用于 Azure Stack 集成系统，或在部署 Azure 应用服务 1.3 之前部署最新 Azure Stack 开发工具包 (ASDK)。
 
 ## <a name="download-the-installer-and-helper-scripts"></a>下载安装程序与帮助器脚本
 
 1. 下载 [Azure Stack 上的应用服务部署帮助器脚本](https://aka.ms/appsvconmashelpers)。
 2. 下载 [Azure Stack 上的应用服务安装程序](https://aka.ms/appsvconmasinstaller)。
-3. 提取帮助器脚本 .zip 文件中的文件。 提取以下文件和文件夹：
+3. 提取帮助器脚本 .zip 文件中的文件。 会提取以下文件和文件夹：
 
    - Common.ps1
    - Create-AADIdentityApp.ps1
@@ -47,21 +47,21 @@ ms.locfileid: "37857859"
 
 ## <a name="high-availability"></a>高可用性
 
-Azure Stack 1802 更新添加了支持容错域。 Azure Stack 上的 Azure 应用服务的新部署将分布在容错域，并提供容错能力。
+Azure Stack 1802 更新增加了对容错域的支持。 Azure Stack 上新的 Azure 应用服务部署将分配到各个容错域并提供容错功能。
 
-现有的 Azure Stack 上的 Azure 应用服务部署已部署在 1802年更新之前，请参阅[跨容错域重新均衡应用服务资源提供程序](azure-stack-app-service-fault-domain-update.md)一文。
+对于 Azure Stack 上现有的 Azure 应用服务部署（部署时间在 1802 更新以前），请参阅[跨容错域重新均衡应用服务资源提供程序](azure-stack-app-service-fault-domain-update.md)一文。
 
-此外，部署所需的文件服务器和高度可用配置中的 SQL Server 实例。
+另外，请在高可用性配置中部署所需的文件服务器和 SQL Server 实例。
 
 ## <a name="get-certificates"></a>获取证书
 
 ### <a name="azure-resource-manager-root-certificate-for-azure-stack"></a>Azure Stack 的 Azure 资源管理器根证书
 
-打开提升的 PowerShell 会话可以访问 Azure Stack 集成系统或 Azure Stack 开发工具包主机上的特权终结点的计算机上。
+在计算机上打开一个提升的 PowerShell 会话，该计算机可以访问 Azure Stack 集成系统或 Azure Stack 开发工具包主机上的特权终结点。
 
-运行*Get-AzureStackRootCert.ps1*从帮助器脚本解压缩的文件夹的脚本。 此脚本在应用服务所需的、用于创建证书的脚本所在的同一文件夹中创建一个根证书。
+从帮助器脚本提取到的文件夹运行 *Get-AzureStackRootCert.ps1* 脚本。 此脚本在应用服务所需的、用于创建证书的脚本所在的同一文件夹中创建一个根证书。
 
-运行以下 PowerShell 命令时必须提供 AzureStack\CloudAdmin 特权终结点和凭据。
+运行以下 PowerShell 命令时，必须为 AzureStack\CloudAdmin 提供特权终结点和凭据。
 
 ```PowerShell
     Get-AzureStackRootCert.ps1
@@ -74,9 +74,9 @@ Azure Stack 1802 更新添加了支持容错域。 Azure Stack 上的 Azure 应�
 | PrivilegedEndpoint | 需要 | AzS-ERCS01 | 特权终结点 |
 | CloudAdminCredential | 需要 | AzureStack\CloudAdmin | Azure Stack 云管理的域帐户凭据 |
 
-### <a name="certificates-required-for-asdk-deployment-of-azure-app-service"></a>所需的 ASDK 部署 Azure 应用服务证书
+### <a name="certificates-required-for-asdk-deployment-of-azure-app-service"></a>Azure 应用服务的 ASDK 部署所需的证书
 
-*Create-AppServiceCerts.ps1*脚本适用于 Azure Stack 证书颁发机构来创建应用服务所需的四个证书。
+*Create-AppServiceCerts.ps1* 脚本配合 Azure Stack 证书颁发机构运行，创建应用服务所需的四个证书。
 
 | 文件名 | 用途 |
 | --- | --- |
@@ -87,10 +87,10 @@ Azure Stack 1802 更新添加了支持容错域。 Azure Stack 上的 Azure 应�
 
 若要创建证书，请执行以下步骤：
 
-1. 登录到 Azure Stack 开发工具包主机使用 azurestack\azurestackadmin 身份帐户。
+1. 使用 AzureStack\AzureStackAdmin 帐户登录到 Azure Stack 开发工具包主机。
 2. 打开提升的 PowerShell 会话。
-3. 运行*Create-AppServiceCerts.ps1*从帮助器脚本解压缩的文件夹的脚本。 此脚本在应用服务用于创建证书所需的脚本所在的同一文件夹中创建四个证书。
-4. 输入密码来保护 .pfx 文件，并记下该密码。 您必须输入在 Azure Stack 安装程序上的应用服务中。
+3. 从帮助器脚本提取到的文件夹运行 *Create-AppServiceCerts.ps1* 脚本。 此脚本在应用服务所需的、用于创建证书的脚本所在的同一文件夹中创建四个证书。
+4. 输入密码来保护 .pfx 文件，并记下该密码。 必须在 Azure Stack 上的应用服务安装程序中输入此密码。
 
 #### <a name="create-appservicecertsps1-script-parameters"></a>Create-AppServiceCerts.ps1 脚本参数
 
@@ -99,9 +99,9 @@ Azure Stack 1802 更新添加了支持容错域。 Azure Stack 上的 Azure 应�
 | pfxPassword | 需要 | Null | 帮助保护证书私钥的密码 |
 | DomainName | 需要 | local.azurestack.external | Azure Stack 区域和域后缀 |
 
-### <a name="certificates-required-for-azure-stack-production-deployment-of-azure-app-service"></a>所需的 Azure Stack 生产部署中的 Azure 应用服务证书
+### <a name="certificates-required-for-azure-stack-production-deployment-of-azure-app-service"></a>Azure 应用服务的 Azure Stack 生产部署所需的证书
 
-若要在生产环境中运行的资源提供程序，必须提供以下证书：
+若要在生产环境中运行资源提供程序，必须提供以下证书：
 
 - 默认域证书
 - API 证书
@@ -110,7 +110,7 @@ Azure Stack 1802 更新添加了支持容错域。 Azure Stack 上的 Azure 应�
 
 #### <a name="default-domain-certificate"></a>默认域证书
 
-默认域证书放在“前端”角色上。 通配符或默认域请求到 Azure 应用服务的用户应用程序使用此证书。 该证书还用于源代码管理操作 (Kudu)。
+默认域证书放在“前端”角色上。 对 Azure 应用服务发出通配符或默认域请求的用户应用程序使用此证书。 该证书还用于源代码管理操作 (Kudu)。
 
 该证书必须采用 .pfx 格式，并且应该是包含三个使用者的通配符证书。 此要求允许一个证书同时涵盖用于源代码管理操作的默认域和 SCM 终结点。
 
@@ -151,7 +151,7 @@ API 证书放在“管理”角色上。 资源提供程序使用它来帮助保
 
 ## <a name="virtual-network"></a>虚拟网络
 
-Azure Stack 上的 azure 应用服务，可将资源提供程序部署到现有的虚拟网络，或可以作为部署的一部分创建的虚拟网络。 使用现有的虚拟网络启用内部 Ip 连接到的文件服务器和 SQL server 所需的 Azure Stack 上的 Azure 应用服务的使用。 在 Azure Stack 上安装 Azure 应用服务之前，必须使用以下地址范围和子网配置的虚拟网络：
+Azure Stack 上的 Azure 应用服务允许将资源提供程序部署到现有的虚拟网络，或者允许在部署时创建虚拟网络。 使用现有虚拟网络可以通过内部 IP 连接到 Azure Stack 上的 Azure 应用服务所需的文件服务器和 SQL Server。 在 Azure Stack 上安装 Azure 应用服务之前，必须为虚拟网络配置以下地址范围和子网：
 
 虚拟网络 - /16
 
@@ -184,7 +184,7 @@ Azure 应用服务需要使用文件服务器。 在生产部署中，必须将�
    - FileShareOwner
    - FileShareUser
 
-   作为安全性最佳做法是，这些帐户 （以及所有 web 角色） 的用户应该是唯一的并使用强用户名和密码。 根据以下条件设置密码：
+   根据安全最佳做法，这些帐户（以及所有 Web 角色）的用户应该各不相同，并采用强用户名和密码。 根据以下条件设置密码：
 
    - 启用“密码永不过期”。
    - 启用“用户不能更改密码”。
@@ -198,7 +198,7 @@ Azure 应用服务需要使用文件服务器。 在生产部署中，必须将�
 ### <a name="provision-groups-and-accounts-in-a-workgroup"></a>在工作组中预配组和帐户
 
 >[!NOTE]
-> 当配置文件服务器上，运行中的以下命令**管理员命令提示符**。 <br>***不要使用 PowerShell。***
+> 配置文件服务器时，请通过**管理员命令提示符**运行以下所有命令。 <br>***请勿使用 PowerShell。***
 
 使用 Azure 资源管理器模板时已创建用户。
 
@@ -239,27 +239,6 @@ set WEBSITES_FOLDER=C:\WebSites
 md %WEBSITES_FOLDER%
 net share %WEBSITES_SHARE% /delete
 net share %WEBSITES_SHARE%=%WEBSITES_FOLDER% /grant:Everyone,full
-```
-
-### <a name="add-the-fileshareowners-group-to-the-local-administrators-group"></a>将 FileShareOwners 组添加到本地管理员组
-
-为了让 Windows 远程管理正常运行，必须将 FileShareOwners 组添加到本地管理员组。
-
-#### <a name="active-directory"></a>Active Directory
-
-在文件服务器上或充当故障转移群集节点的每个文件服务器上，在权限提升的命令提示符下运行以下命令。 将 `<DOMAIN>` 的值替换为要使用的域名。
-
-```DOS
-set DOMAIN=<DOMAIN>
-net localgroup Administrators %DOMAIN%\FileShareOwners /add
-```
-
-#### <a name="workgroup"></a>工作组
-
-在文件服务器上，在权限提升的命令提示符下运行以下命令：
-
-```DOS
-net localgroup Administrators FileShareOwners /add
 ```
 
 ### <a name="configure-access-control-to-the-shares"></a>配置共享访问控制
@@ -353,6 +332,7 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 | AzureStackAdminCredential | 需要 | Null | Azure AD 服务管理员凭据。 |
 | CertificateFilePath | 需要 | Null | 前面生成的标识应用程序证书文件的**完整路径**。 |
 | CertificatePassword | 需要 | Null | 帮助保护证书私钥的密码。 |
+| 环境 | 可选 | AzureCloud | 目标 Azure Active Directory Graph 服务位于受支持的云环境的名称。  允许的值: AzureCloud、 AzureChinaCloud、 AzureUSGovernment、 AzureGermanCloud。|
 
 ## <a name="create-an-active-directory-federation-services-application"></a>创建 Active Directory 联合身份验证服务应用程序
 

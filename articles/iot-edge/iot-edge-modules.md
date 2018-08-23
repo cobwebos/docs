@@ -8,12 +8,12 @@ ms.date: 02/15/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 261c26290a4a7c4b8bb22ada7f97470a6efa7a91
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 9064e0da6dde6c4b30235adf771f06a4f25d709a
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576315"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42141430"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>了解 Azure IoT Edge 模块
 
@@ -33,7 +33,11 @@ IoT Edge 模块映像包含能够充分利用 IoT Edge 运行时的管理、安�
 
 ![云中的模块映像 - 设备上模块实例][1]
 
-在实现中，模块映像作为存储库中的容器映像存在，而模块实例则是设备上的容器。 随着 Azure IoT Edge 使用情况的不断增长，将会创建新类型的模块映像和实例。 例如，资源受限的设备不能运行容器，因此，可能需要作为动态链接库和可执行文件实例存在的模块映像。 
+在实现中，模块映像作为存储库中的容器映像存在，而模块实例则是设备上的容器。 
+
+<!--
+As use cases for Azure IoT Edge grow, new types of module images and instances will be created. For example, resource constrained devices cannot run containers so may require module images that exist as dynamic link libraries and instances that are executables. 
+-->
 
 ## <a name="module-identities"></a>模块标识
 

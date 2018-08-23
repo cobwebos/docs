@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 0eefb8ecb7c9641b3e025054f54e2b7cf97b94bd
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 37b11eea5c37103c0bc296a5f466658fbc77ed24
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205997"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42140014"
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>在 Azure 应用服务中启用 Web 应用的诊断日志记录
 ## <a name="overview"></a>概述
@@ -171,7 +171,7 @@ Visual Studio Application Insights 可提供用于筛选和搜索日志的工具
 若要查看可用的路径列表，请使用 -ListPath 参数。
 
 > [!NOTE]
-> 如果尚未安装 Azure PowerShell，或尚未将其配置为使用 Azure 订阅，请参阅[如何使用 Azure PowerShell](/develop/nodejs/how-to-guides/powershell-cmdlets/)。
+> 如果尚未安装 Azure PowerShell，或尚未将其配置为使用 Azure 订阅，请参阅[如何使用 Azure PowerShell](http://azure.microsoft.com/develop/nodejs/how-to-guides/powershell-cmdlets/)。
 >
 >
 

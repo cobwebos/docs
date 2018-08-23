@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/01/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1ad1d6662d276039ae1e01e49c60fc06682cb54a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: b71dd51547365503ac4ce76f07d6c783d26acd50
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622810"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42142265"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-windows-based-hdinsight"></a>在基于 Windows 的 HDInsight 上部署和管理 Apache Storm 拓扑
 
@@ -88,7 +88,7 @@ Storm UI 的主页面提供以下信息：
 
   * **重新平衡**：调整拓扑的并行度。 更改群集中的节点数目之后，应该重新平衡正在运行的拓扑。 这可让拓扑调整并行度，以弥补群集中增加或减少的节点数目。
 
-      有关详细信息，请参阅[了解 Storm 拓扑的并行度 (http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。
+      有关详细信息，请参阅[了解 Storm 拓扑的并行度](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。
 
   * **终止**：在经过指定的超时之后终止 Storm 拓扑。
 

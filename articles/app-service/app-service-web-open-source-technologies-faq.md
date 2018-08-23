@@ -15,31 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 747ee61d2620e7f79353207c0e44bcea36df30ee
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: d65a33dc13d0b91a9ace04dab0be6c37bcd2188f
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617673"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的开放源代码技术常见问题解答
 
 本文包含有关针对 [Azure 应用服务的 Web 应用功能](https://azure.microsoft.com/services/app-service/web/)的开放源代码技术问题的常见问题 (FAQ) 解答。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
-
-## <a name="my-cleardb-database-is-down-how-do-i-resolve-this"></a>我的 ClearDB 数据库关闭。 如何解决此问题？
-
-有关数据库相关问题，请联系 [ClearDB 支持人员](https://www.cleardb.com/developers/help/support)。 
-
-有关 ClearDB 常见问题解答，请参阅 [ClearDB 常见问题解答](https://docs.microsoft.com/azure/store-cleardb-faq/)。
-
-## <a name="why-wasnt-my-cleardb-database-migrated-during-my-subscription-migration"></a>为何我的 ClearDB 数据库未在订阅迁移过程中进行迁移？
-
-在订阅间迁移资源时，存在某些限制。 ClearDB MySQL 数据库是第三方服务，因而在 Azure 订阅迁移过程中不会进行迁移。
-
-如果在迁移 Azure 资源之前未管理 MySQL 数据库的迁移，则 ClearDB MySQL 数据库可能不可用。 若要避免此问题，请先手动迁移 ClearDB 数据库，然后迁移 Web 应用的 Azure 订阅。
-
-有关详细信息，请参阅 [ClearDB MySQL 数据库与 Azure 应用服务搭配使用时的常见问题解答](https://docs.microsoft.com/azure/store-cleardb-faq/)。
 
 ## <a name="how-do-i-turn-on-php-logging-to-troubleshoot-php-issues"></a>如何打开 PHP 日志记录以对 PHP 问题进行故障排除？
 
@@ -65,16 +52,7 @@ ms.lasthandoff: 05/11/2018
 有关详细信息，请参阅[启用 WordPress 错误日志](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/)。
 
 ## <a name="how-do-i-log-python-application-errors-in-apps-that-are-hosted-in-app-service"></a>如何在应用服务中承载的应用中记录 Python 应用程序错误？
-
-捕获 Python 应用程序错误：
-
-1. 在 Azure 门户中，在你的 Web 应用中选择“设置”。
-2. 在“设置”选项卡上，选择“应用程序设置”。
-3. 在“应用设置”下，输入以下键/值对：
-    * 键：WSGI_LOG
-    * 值：D:\home\site\wwwroot\logs.txt（输入所选文件名）
-
-你现在应在 wwwroot 文件夹中的 logs.txt 文件中看到错误。
+[!INCLUDE [web-sites-python-troubleshooting-wsgi-error-log](../../includes/web-sites-python-troubleshooting-wsgi-error-log.md)]
 
 ## <a name="how-do-i-change-the-version-of-the-nodejs-application-that-is-hosted-in-app-service"></a>如何更改应用服务中承载的 Node.js 应用程序的版本？
 
@@ -133,7 +111,7 @@ ms.lasthandoff: 05/11/2018
 
 ## <a name="where-are-the-tomcat-log-files-located"></a>Tomcat 日志文件位于何处？
 
-对于 Azure Marketplace 和自定义部署：
+对于 Azure 市场和自定义部署：
 
 * 文件夹位置：D:\home\site\wwwroot\bin\apache-tomcat-8.0.33\logs
 * 相关文件：
@@ -165,7 +143,7 @@ The web application[ROOT] registered the JDBC driver [com.mysql.jdbc.Driver] but
 解决该错误：
 
 1. 从 app/lib 文件夹中删除 sqljdbc*.jar 文件。
-2. 如果使用自定义 Tomcat 或 Azure Marketplace Tomcat Web 服务器，请将此 .jar 文件复制到 Tomcat lib 文件夹中。
+2. 如果使用自定义 Tomcat 或 Azure 市场 Tomcat Web 服务器，请将此 .jar 文件复制到 Tomcat lib 文件夹中。
 3. 如果从 Azure 门户启用 Java（选择“Java 1.8” > “Tomcat 服务器”），则在与应用平行的文件夹中复制 sqljdbc.* jar 文件。 然后，将以下类路径设置添加到 web.config 文件：
 
     ```
@@ -197,7 +175,7 @@ The process cannot access the file because it is being used by another process.
 
 ## <a name="where-do-i-find-the-log-files-for-jetty"></a>可在何处找到 Jetty 的日志文件？
 
-对于 Marketplace 和自定义部署，日志文件位于 D:\home\site\wwwroot\bin\jetty-distribution-9.1.2.v20140210\logs 文件夹中。 请注意，文件夹位置取决于所使用的 Jetty 版本。 例如，此处提供的路径适用于 Jetty 9.1.2。 查找 jetty_YYYY_MM_DD.stderrout.log。
+对于市场和自定义部署，日志文件位于 D:\home\site\wwwroot\bin\jetty-distribution-9.1.2.v20140210\logs 文件夹中。 请注意，文件夹位置取决于所使用的 Jetty 版本。 例如，此处提供的路径适用于 Jetty 9.1.2。 查找 jetty_YYYY_MM_DD.stderrout.log。
 
 对于门户应用设置部署，日志文件位于 D:\home\LogFiles 中。 查找 jetty_YYYY_MM_DD.stderrout.log
 

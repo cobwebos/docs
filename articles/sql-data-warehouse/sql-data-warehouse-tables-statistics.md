@@ -10,12 +10,12 @@ ms.component: implement
 ms.date: 05/09/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: bbc6a5083aebba40885700cab6c67128c9d9f916
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 778da6d244561d87e7070ab244fd92dba043488e
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643424"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42145690"
 ---
 # <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>创建、更新 Azure SQL 数据仓库中表的统计信息
 用于创建和更新 Azure SQL 数据仓库中表的查询优化统计信息的建议和示例。
@@ -65,7 +65,10 @@ DBCC SHOW_STATISTICS (<tablename>, <targetname>)
 
 下面是关于更新统计信息的建议：
 
-| **统计信息更新频率** | 保守：每日 <br></br> 在加载或转换数据后 | | **采样** | 小于 10 亿行，使用默认采样率 (20%) <br></br> 对于包含 10 亿行以上的表，最好是根据 2% 的范围生成统计信息 |
+|||
+|-|-|
+| **统计信息更新频率**  | 保守：每日 <br></br> 加载或转换数据之后 |
+| **采样** |  低于 10 亿行，使用默认采样 (20%) <br></br> 对于包含 10 亿行以上的表，最好是根据 2% 的范围生成统计信息 |
 
 在排查查询问题时，首先要询问的问题之一就是 **“统计信息是最新的吗？”**
 
@@ -385,7 +388,7 @@ UPDATE STATISTICS dbo.table1;
 ### <a name="catalog-views-for-statistics"></a>统计信息的目录视图
 这些系统视图提供有关统计信息的信息：
 
-| 目录视图 | 说明 |
+| 目录视图 | Description |
 |:--- |:--- |
 | [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql) |针对每个列提供一行。 |
 | [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |针对数据库中的每个对象提供一行。 |
@@ -398,7 +401,7 @@ UPDATE STATISTICS dbo.table1;
 ### <a name="system-functions-for-statistics"></a>统计信息的系统函数
 这些系统函数适合用于处理统计信息：
 
-| 系统函数 | 说明 |
+| 系统函数 | Description |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql) |上次更新统计信息对象的日期。 |
 | [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql) |有关统计信息对象识别的值分布的摘要级别和详细信息。 |

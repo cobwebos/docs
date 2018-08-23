@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: jeconnoc
-ms.openlocfilehash: 725a705f746bbf5e32fcc410ba4153ac29e3fc3d
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e9fbe59c40fe55218429a3b479ddbbec7220c66a
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003847"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42139826"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>云服务监视简介
 
@@ -58,7 +58,7 @@ ms.locfileid: "39003847"
 
 ## <a name="setup-diagnostics-extension"></a>设置诊断扩展
 
-首先，如果你没有**经典**存储帐户，请[创建一个](../storage/common/storage-create-storage-account.md#create-a-storage-account)。 确保为创建的存储帐户指定**经典部署模型**。
+首先，如果你没有**经典**存储帐户，请[创建一个](../storage/common/storage-quickstart-create-account.md)。 确保为创建的存储帐户指定**经典部署模型**。
 
 接下来，导航到“存储帐户(经典)”资源。 选择“设置” > “访问密钥”，并复制“主连接字符串”值。 云服务需要此值。 
 

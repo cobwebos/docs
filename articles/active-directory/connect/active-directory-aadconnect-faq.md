@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1897f2c5d532c030b2711a35eabeefd889f560c8
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 4f3ffb3c769adeabd1edc10ce064653f7b336330
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264989"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42145342"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常见问题解答
 
@@ -65,7 +65,7 @@ ms.locfileid: "39264989"
 所有网络软件、物理设备或其他软硬件限制最长连接时间的阈值应该至少为 5 分钟 (300 秒)，使装有 Azure AD Connect 客户端的服务器能够与 Azure Active Directory 连接。 此项建议同样适用于以前发布的 Microsoft 标识同步工具。
 
 **是否支持单一标签域 (SLD)？**  
-虽然我们强烈建议不要使用此网络配置（[请参阅相关文章](https://support.microsoft.com/en-us/help/2269810/microsoft-support-for-single-label-domains)），但只要单级域的网络配置正常发挥作用，将 Azure AD Connect 同步与单标签域配合使用就是受支持的。
+虽然我们强烈建议不要使用此网络配置（[请参阅相关文章](https://support.microsoft.com/help/2269810/microsoft-support-for-single-label-domains)），但只要单级域的网络配置正常发挥作用，将 Azure AD Connect 同步与单标签域配合使用就是受支持的。
 
 **问：是否支持具有非连续 AD 域的林？**  
 Azure AD Connect 不支持包含非连续命名空间的本地林。
@@ -91,8 +91,8 @@ Azure AD Connect 不支持纯 IPv6 环境。
 **问：Azure AD 中的 userPrincipalName (UPN) 属性为何与本地 UPN 不匹配？**  
 有关信息，请参阅以下文章：
 
-* [Office 365、Azure 或 Intune 中的用户名与本地 UPN 或备用登录 ID 不匹配](https://support.microsoft.com/en-us/kb/2523192)
-* [在将用户帐户的 UPN 更改为使用不同的联合域后，Azure Active Directory 同步工具未同步更改](https://support.microsoft.com/en-us/kb/2669550)
+* [Office 365、Azure 或 Intune 中的用户名与本地 UPN 或备用登录 ID 不匹配](https://support.microsoft.com/kb/2523192)
+* [在将用户帐户的 UPN 更改为使用不同的联合域后，Azure Active Directory 同步工具未同步更改](https://support.microsoft.com/kb/2669550)
 
 还可以根据 [Azure AD Connect 同步服务功能](active-directory-aadconnectsyncservice-features.md)中所述配置 Azure AD，以允许同步引擎更新 UPN。
 
@@ -134,11 +134,11 @@ Azure AD Connect 不支持纯 IPv6 环境。
 
 若要手动进行升级，必须下载并运行最新版的 AADConnect.msi 文件。
  
--  如果当前版本低于 1.1.750.0，请[下载并升级到最新版本](https://www.microsoft.com/en-us/download/details.aspx?id=47594)。
+-  如果当前版本低于 1.1.750.0，请[下载并升级到最新版本](https://www.microsoft.com/download/details.aspx?id=47594)。
 - 如果 Azure AD Connect 版本为 1.1.750.0 或更高，则不需要采取其他措施。 所用的版本已包含自动升级修复程序。 
 
 **问：我收到一封电子邮件，要求我升级到最新版本，以便重新启用自动升级。我使用的版本是 1.1.654.0，需要升级吗？**  
-需要。需要升级到 1.1.750.0 或更高版本才能重新启用自动升级。 [下载并升级到最新版本](https://www.microsoft.com/en-us/download/details.aspx?id=47594)。
+需要。需要升级到 1.1.750.0 或更高版本才能重新启用自动升级。 [下载并升级到最新版本](https://www.microsoft.com/download/details.aspx?id=47594)。
 
 **问：我收到一封电子邮件，要求我升级到最新版本，以便重新启用自动升级。如果我已经通过 PowerShell 启用了自动升级，是否仍需安装最新版本？**  
 是的，仍需要升级到 1.1.750.0 或更高版本。 通过 PowerShell 启用自动升级服务不会解决在 1.1.750.0 之前的版本中发现的自动升级问题。
@@ -190,7 +190,7 @@ Azure AD Connect 服务偶尔会在升级以后无法启动。 在这种情况�
 ## <a name="troubleshooting"></a>故障排除
 **问：如何获取有关 Azure AD Connect 的帮助？**
 
-[搜索 Microsoft 知识库 (KB)](https://www.microsoft.com/en-us/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport)
+[搜索 Microsoft 知识库 (KB)](https://www.microsoft.com/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport)
 
 * 在知识库 (KB) 中搜索有关 Azure AD Connect 支持的常见故障维修服务问题的技术解决方案。
 

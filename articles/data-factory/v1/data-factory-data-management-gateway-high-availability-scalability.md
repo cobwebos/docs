@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b9ec9867e9abd188142067e593c925e3c8acdd0b
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 58f612906af55575e9d42307af924ea0a8501ca1
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37113334"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42145490"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>数据管理网关 - 高可用性和可伸缩性（预览）
 > [!NOTE]
@@ -169,7 +169,7 @@ ms.locfileid: "37113334"
 - 支持通配符证书。 如果 FQDN 名称为 **node1.domain.contoso.com** ，可以使用 ***.domain.contoso.com** 作为证书的使用者名称。
 - 不建议使用 SAN 证书，因为鉴于当前限制，只会使用使用者可选名称的最后一项，其他所有项都会遭忽略。 例如 有一个 SAN 证书，其中 SAN 为 node1.domain.contoso.com 和 node2.domain.contoso.com，那么只能在 FQDN 为 node2.domain.contoso.com 的计算机上使用此证书。
 - 针对 SSL 证书支持受 Windows Server 2012 R2 支持的任何密钥大小。
-- 不支持使用 CNG 密钥的证书。 不支持使用 CNG 密钥的证书。
+- 不支持使用 CNG 密钥的证书。
 
 #### <a name="faq-when-would-i-not-enable-this-encryption"></a>FAQ：何时禁用此加密？
 启用加密会增加一定的基础结构成本（拥有公用证书）。因此，在下列情况下，可以跳过启用加密：
@@ -185,7 +185,7 @@ ms.locfileid: "37113334"
 
 可在“网关”页中启用“高级设置”以查看网络（进/出）、角色和凭据状态等高级指标，这有助于调试网关问题以及并发作业数（运行中/上限），可在性能优化期间相应地更改并发作业数。 下表介绍“网关节点”列表中的列：  
 
-监视属性 | 说明
+监视属性 | Description
 :------------------ | :---------- 
 名称 | 逻辑网关和与网关关联的节点的名称。  
 状态 | 逻辑网关和网关节点的状态。 示例：联机/脱机/受限等。有关这些状态的信息，请参阅[网关状态](#gateway-status)部分。 

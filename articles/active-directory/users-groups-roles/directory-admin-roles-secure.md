@@ -13,19 +13,19 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: c8c0f4c3f99aa413531f54c1807883fcd73f039a
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: b52a447bf643510528e1bd8c6d473bf5d77731fe
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627927"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42144771"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
 在现代组织中，大多数或所有业务资产的安全性取决于管理 IT 系统的特权帐户的完整性。 恶意操作者（包括网络攻击者）通常会以管理员帐户和特权访问的其他元素为目标，试图通过凭据窃取攻击快速获得敏感数据和系统的访问权限。 就云服务来说，预防此类攻击并对其做出响应是云服务提供商和客户的共同责任。 若要详细了解对终结点和云的最新威胁，请参阅 [Microsoft 安全情报报告](https://www.microsoft.com/security/sir/default.aspx)。 本文有助于你制定路线图，消除当前计划和此处所述指南的差距。
 
 > [!NOTE] 
-> Microsoft 致力于实现最高信任度、透明度、合标性和合规性。 若要详细了解 Microsoft 全球事件响应团队如何减轻云服务攻击影响，以及如何将安全措施内置到 Microsoft 商业产品和云服务中，请参阅 [Microsoft 信任中心 - 安全性](https://www.microsoft.com/en-us/trustcenter/security)；若要了解 Microsoft 符合性目标，请参阅 [Microsoft 信任中心 - 符合性](https://www.microsoft.com/en-us/trustcenter/compliance)。
+> Microsoft 致力于实现最高信任度、透明度、合标性和合规性。 若要详细了解 Microsoft 全球事件响应团队如何减轻云服务攻击影响，以及如何将安全措施内置到 Microsoft 商业产品和云服务中，请参阅 [Microsoft 信任中心 - 安全性](https://www.microsoft.com/trustcenter/security)；若要了解 Microsoft 符合性目标，请参阅 [Microsoft 信任中心 - 符合性](https://www.microsoft.com/trustcenter/compliance)。
 
 <!--## Risk management, incident response, and recovery preparation
 
@@ -337,7 +337,7 @@ Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，
 * 仅在需要的时候才授予特许访问权限，操作完后即将其删除（恰时）。
 * 保留并查看与特权帐户相关的审核活动。
 
-若要深入了解如何构建完整的安全路线图，请参阅 [Microsoft 云 IT 体系结构资源](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources)。 若要深入了解如何运用 Microsoft 服务来帮助实现上述任意主题中的功能，请联系 Microsoft 代表或参阅 [Build critical cyber defenses to protect your enterprise](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx)（构建关键的网络防御来保护企业）。
+若要深入了解如何构建完整的安全路线图，请参阅 [Microsoft 云 IT 体系结构资源](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources)。 若要深入了解如何运用 Microsoft 服务来帮助实现上述任意主题中的功能，请联系 Microsoft 代表或参阅 [Build critical cyber defenses to protect your enterprise](https://www.microsoft.com/microsoftservices/campaigns/cybersecurity-protection.aspx)（构建关键的网络防御来保护企业）。
 
 这个最后进行的阶段的安全特权访问路线图包括以下组件。
 
@@ -440,17 +440,17 @@ Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Microsoft 信任中心确保产品安全性](https://www.microsoft.com/en-us/trustcenter/security) - Microsoft 云产品和服务的安全特性
+* [Microsoft 信任中心确保产品安全性](https://www.microsoft.com/trustcenter/security) - Microsoft 云产品和服务的安全特性
 
 * 
-  [Microsoft 信任中心 - 符合性](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) - Microsoft 推出的一组范围广泛的符合性产品/服务，适用于云服务
+  [Microsoft 信任中心 - 符合性](https://www.microsoft.com/trustcenter/compliance/complianceofferings) - Microsoft 推出的一组范围广泛的符合性产品/服务，适用于云服务
 
-* [有关如何执行风险评估的指南](https://www.microsoft.com/en-us/trustcenter/guidance/risk-assessment) - 管理 Microsoft 云服务的安全性和符合性要求
+* [有关如何执行风险评估的指南](https://www.microsoft.com/trustcenter/guidance/risk-assessment) - 管理 Microsoft 云服务的安全性和符合性要求
 
 ### <a name="other-ms-online-services"></a>其他 MS Online Services 
 
-* [Microsoft Intune 安全性](https://www.microsoft.com/en-us/trustcenter/security/intune-security) - Intune 从云端提供移动设备管理、移动应用程序管理和电脑管理功能。
+* [Microsoft Intune 安全性](https://www.microsoft.com/trustcenter/security/intune-security) - Intune 从云端提供移动设备管理、移动应用程序管理和电脑管理功能。
 
-* [Microsoft Dynamics 365 安全性](https://www.microsoft.com/en-us/trustcenter/security/dynamics365-security) – Dynamics 365 是 Microsoft 的基于云的解决方案，该方案将客户关系管理 (CRM) 和企业资源规划 (ERP) 功能统合在一起。
+* [Microsoft Dynamics 365 安全性](https://www.microsoft.com/trustcenter/security/dynamics365-security) – Dynamics 365 是 Microsoft 的基于云的解决方案，该方案将客户关系管理 (CRM) 和企业资源规划 (ERP) 功能统合在一起。
 
  

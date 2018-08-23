@@ -3,20 +3,20 @@ title: Azure Stack 快速入门 - 创建 VM 门户
 description: Azure Stack 快速入门 - 使用门户创建 Linux VM
 services: azure-stack
 cloud: azure-stack
-author: brenduns
+author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 04/24/2018
-ms.author: brenduns
+ms.date: 08/15/2018
+ms.author: mabrigg
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: c364a9ba5a9606967fa86262417ccd1ac3aeffc3
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: c692bc461c116b4c0497c2378ae4e21e1b841c8f
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866264"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139749"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-with-the-azure-stack-portal"></a>快速入门：使用 Azure Stack 门户创建 Linux 服务器虚拟机
 
@@ -118,7 +118,7 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 ```
 
-完成安装 NGINX 后，关闭 SSH 会话并在 Azure Stack 门户中打开虚拟机概述页。
+完成 NGINX 安装后，关闭 SSH 会话并打开 Azure Stack 门户中的虚拟机“概述”页。
 
 ## <a name="open-port-80-for-web-traffic"></a>为 Web 流量打开端口 80
 

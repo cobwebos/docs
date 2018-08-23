@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 5b9ef9691d3d9b9aaced3ad2aaa54e6cfc03fa14
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 254c68c45a06022588ade6ab6f005989205ff405
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857440"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42141435"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>安全框架：配置管理 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -606,7 +606,7 @@ public void ConfigureServices(IServiceCollection services)
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | .NET Framework 3 |
 | **属性**              | 不适用  |
-| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com) |
 | **步骤** | <p>不对系统资源的使用施加限制可能会导致资源耗尽，最终出现拒绝服务。</p><ul><li>
   **说明：** Windows Communication Foundation (WCF) 提供限制服务请求的功能。 允许过多的客户端请求可能会使系统泛洪并耗尽其资源。 另一方面，只允许向服务发出少量的请求可能会防碍合法用户使用该服务。 应该单独针对每个服务进行优化和配置，以允许适当数量的资源。</li><li>**建议：** 启用 WCF 的服务限制功能，并设置适合应用程序的限制。</li></ul>|
 
@@ -630,7 +630,7 @@ public void ConfigureServices(IServiceCollection services)
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | .NET Framework 3 |
 | **属性**              | 不适用  |
-| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com) |
 | **步骤** | 元数据可帮助攻击者了解系统并规划攻击形式。 WCF 服务可能会配置为公开元数据。 元数据提供详细的服务说明信息，不应在生产环境中广播。 ServiceMetaData 类的 `HttpGetEnabled` / `HttpsGetEnabled` 属性定义服务是否要公开元数据 | 
 
 ### <a name="example"></a>示例

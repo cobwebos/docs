@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 50fb5eeea5e3d6a2f991e92ae9c188822ddb40b0
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 18a9709893533c2c0b606077a126437282f9195e
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42141849"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure 资源管理器模板中的虚拟机
 
@@ -279,7 +280,7 @@ Resource Manager 将同时部署所有不依赖于其他所要部署的资源的
 定义虚拟机资源时，需要使用几个 profile 元素。 其中一些元素是必需的，还有一些是可选的。 例如，hardwareProfile、osProfile、storageProfile 和 networkProfile 元素是必需的，而 diagnosticsProfile 是可选的。 这些配置文件定义如下所述的设置：
    
 - [大小](sizes.md)
-- [名称](/architecture/best-practices/naming-conventions)和凭据
+- [名称](/azure/architecture/best-practices/naming-conventions)和凭据
 - 磁盘和[操作系统设置](cli-ps-findimage.md)
 - [网络接口](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
 - 启动诊断

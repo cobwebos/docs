@@ -6,14 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 07/20/2018
+ms.date: 08/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9ed918a7402abcbe79e302421f3b2ac725857464
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: d18a6718e4c29f3d04639644dc752b0733f15ba8
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188647"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42140009"
 ---
 # <a name="azure-event-grid-event-schema-for-container-registry"></a>容器注册表的 Azure 事件网格事件架构
 
@@ -117,8 +117,6 @@ Blob 存储发出以下事件类型：
 | action | 字符串 | 包含所提供事件的操作。 |
 | 目标 | 对象 | 事件的目标。 |
 | 请求 | 对象 | 生成事件的请求。 |
-| actor | 对象 | 启动事件的代理。 在大多数情况下，此值可以来自请求的授权上下文。 |
-| 源 | 对象 | 生成事件的注册表节点。 换句话说，当执行组件启动事件时，源会生成它。 |
 
 目标对象具有以下属性：
 
@@ -129,7 +127,6 @@ Blob 存储发出以下事件类型：
 | digest | 字符串 | 内容摘要，由注册表 V2 HTTP API 规范定义。 |
 | length | integer | 内容的字节数。 与 Size 字段相同。 |
 | repository | 字符串 | 存储库名称。 |
-| url | 字符串 | 指向内容的直接 URL。 |
 | 标记 | 字符串 | 标记名称。 |
 
 请求对象具有以下属性：
@@ -141,19 +138,6 @@ Blob 存储发出以下事件类型：
 | host | 字符串 | 注册表实例的外部可访问主机名，由传入请求中的 http 主机标头指定。 |
 | 方法 | 字符串 | 生成事件的请求方法。 |
 | useragent | 字符串 | 请求的用户代理标头。 |
-
-执行组件对象具有以下属性：
-
-| 属性 | Type | Description |
-| -------- | ---- | ----------- |
-| 名称 | 字符串 | 与生成事件的请求上下文关联的使用者或用户名。 |
-
-源对象具有以下属性：
-
-| 属性 | Type | Description |
-| -------- | ---- | ----------- |
-| addr | 字符串 | 生成事件的注册表节点的 IP 或主机名和端口。 通常，此值将由 os.Hostname() 与正在运行的端口一起解析。 |
-| instanceID | 字符串 | 正在运行的应用程序实例。 每次重启后更改。 |
 
 ## <a name="next-steps"></a>后续步骤
 

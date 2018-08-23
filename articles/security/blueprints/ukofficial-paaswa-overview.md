@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: b4b37a073f41295bf800d4e6c34681e0a06799c7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f465a6e6cb0642f64670a8d2727c939f91bad134
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39450317"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617243"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure 安全性与符合性蓝图：适用于英国官方工作负载的 PaaS Web 应用程序托管
 
@@ -23,7 +23,7 @@ Azure 蓝图由指导文档和自动化模板组成，用于部署基于云的�
 
 ## <a name="overview"></a>概述
 
-此 Azure 安全性与符合性蓝图提供了指南和自动化脚本，提供 适用于处理归类为[英国官方](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/251480/Government-Security-Classifications-April-2014.pdf)工作负载的 Microsoft Azure [平台即服务 (PaaS)](https://azure.microsoft.com/overview/what-is-paas/)托管 Web 应用程序体系结构。 该安全分类包含公共部门创建或处理的大部分信息。 这包括日常业务运营和服务，如果这些信息丢失、被盗或已发布在媒体上，某些情况可能会产生破坏性后果。 官方分类的典型威胁配置文件与提供有价值信息和服务的私营企业大致相同。 英国官方预计需要维护英国政府数据或服务免受具有有限能力和资源威胁或攻击者造成的泄露，例如（但不限于）黑客行动者、单一问题压力团体、调查记者、有能力的个人黑客和大多数犯罪个人和团体。
+此 Azure 安全性与符合性蓝图提供了指南和自动化脚本，提供 适用于处理归类为[英国官方](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/715778/May-2018_Government-Security-Classifications-2.pdf)工作负载的 Microsoft Azure [平台即服务 (PaaS)](https://azure.microsoft.com/overview/what-is-paas/)托管 Web 应用程序体系结构。 该安全分类包含公共部门创建或处理的大部分信息。 这包括日常业务运营和服务，如果这些信息丢失、被盗或已发布在媒体上，某些情况可能会产生破坏性后果。 官方分类的典型威胁配置文件与提供有价值信息和服务的私营企业大致相同。 英国官方预计需要维护英国政府数据或服务免受具有有限能力和资源威胁或攻击者造成的泄露，例如（但不限于）黑客行动者、单一问题压力团体、调查记者、有能力的个人黑客和大多数犯罪个人和团体。
 
 英国国家网络安全中心 (NCSC) 对此蓝图进行了审查，并与 NCSC 14 云安全原则保持一致。
 

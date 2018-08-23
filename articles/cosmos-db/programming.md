@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 6374fcf1477d56b9803b63476f3fef38fc12def1
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 6296eb423f24762ed32a21ef40852dc1a9dd8f36
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618890"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144842"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure Cosmos DB 服务器端编程：存储过程、数据库触发器和 UDF
 
@@ -98,7 +98,7 @@ client.executeStoredProcedureAsync('dbs/testdb/colls/testColl/sprocs/helloWorld'
     });
 ```
 
-上下文对象提供对所有可在 Cosmos DB 存储上执行的操作的访问，以及对请求和响应对象的访问。 在本例中，请使用响应对象来设置发送回客户端的响应的主体。 有关详细信息，请参阅 [Azure Cosmos DB JavaScript 服务器 SDK 文档](http://azure.github.io/azure-documentdb-js-server/)。  
+上下文对象提供对所有可在 Cosmos DB 存储上执行的操作的访问，以及对请求和响应对象的访问。 在本例中，请使用响应对象来设置发送回客户端的响应的主体。 有关详细信息，请参阅 [Azure Cosmos DB JavaScript 服务器 SDK 文档](https://azure.github.io/azure-cosmosdb-js-server/)。  
 
 让我们扩展此示例，并将更多数据库相关的功能添加到存储过程中。 存储过程可以创建、更新、读取、查询和删除集合内部的文档和附件。    
 
@@ -591,7 +591,7 @@ client.createUserDefinedFunctionAsync('dbs/testdb/colls/testColl', taxUdf)
 * 控制流（例如，if、for、while）
 * 函数调用
 
-有关详细信息，请参阅[服务器端 JSDoc](http://azure.github.io/azure-documentdb-js-server/)。
+有关详细信息，请参阅[服务器端 JSDoc](https://azure.github.io/azure-cosmosdb-js-server/)。
 
 ### <a name="example-write-a-stored-procedure-using-the-javascript-query-api"></a>示例：使用 JavaScript 查询 API 编写存储过程
 下面的代码示例是一个有关可如何在存储过程的上下文中使用 JavaScript 查询 API 的示例。 存储过程使用 `__.filter()` 方法插入一个由输入参数给定的文档并更新元数据文档，其中 minSize、maxSize 和 totalSize 以输入文档的大小属性为基础。
@@ -674,7 +674,7 @@ function insertDocumentAndUpdateMetadata(doc) {
 
 
 ## <a name="runtime-support"></a>运行时支持
-Azure Cosmos DB [JavaScript 服务器端 API](http://azure.github.io/azure-documentdb-js-server/) 为大多数由 [ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 规范的主流 JavaScript 语言功能提供支持。
+Azure Cosmos DB [JavaScript 服务器端 API](https://azure.github.io/azure-cosmosdb-js-server/) 为大多数由 [ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 规范的主流 JavaScript 语言功能提供支持。
 
 ### <a name="security"></a>安全
 JavaScript 存储过程和触发器经过沙盒处理，以使一个脚本的效果不会在未经过数据库级别的快照事务隔离的情况下泄漏到其他脚本。 运行时环境是共用的，但是在每次运行后都会清理上下文。 因此可以保证它们安全避免互相之间的任何意外副作用。
@@ -683,7 +683,7 @@ JavaScript 存储过程和触发器经过沙盒处理，以使一个脚本的效
 存储过程、触发器和 UDF 是隐式预编译到字节代码格式的，这是为了避免每次脚本调用时产生的编译成本。 预编译可确保存储过程的调用迅速且痕迹较少。
 
 ## <a name="client-sdk-support"></a>客户端 SDK 支持
-除 Azure Cosmos DB 的[Node.js](sql-api-sdk-node.md) 外，Azure Cosmos DB 还有适用于 SQL API 的 [.NET](sql-api-sdk-dotnet.md)、[.NET Core](sql-api-sdk-dotnet-core.md)、[Java](sql-api-sdk-java.md)、[JavaScript](http://azure.github.io/azure-documentdb-js/) 和[Python SDK](sql-api-sdk-python.md)。 也可以使用这些 SDK 来创建和执行存储过程、触发器和 UDF。 以下示例演示如何使用 .NET 客户端创建和执行存储过程。 请注意 .NET 类型是如何以 JSON 传递到存储过程中并从中读回的。
+除 Azure Cosmos DB 的[Node.js](sql-api-sdk-node.md) 外，Azure Cosmos DB 还有适用于 SQL API 的 [.NET](sql-api-sdk-dotnet.md)、[.NET Core](sql-api-sdk-dotnet-core.md)、[Java](sql-api-sdk-java.md)、[JavaScript](sql-api-sdk-node.md) 和[Python SDK](sql-api-sdk-python.md)。 也可以使用这些 SDK 来创建和执行存储过程、触发器和 UDF。 以下示例演示如何使用 .NET 客户端创建和执行存储过程。 请注意 .NET 类型是如何以 JSON 传递到存储过程中并从中读回的。
 
 ```javascript
 var markAntiquesSproc = new StoredProcedure
@@ -828,7 +828,7 @@ foreach (Book book in client.CreateDocumentQuery(UriFactory.CreateDocumentCollec
 此处，要通过请求运行的预触发器在 x-ms-documentdb-pre-trigger-include 标头中指定。 相应地，任何后触发器会在 x-ms-documentdb-post-trigger-include 标头中给定。 可以针对某个给定的请求指定预触发器和后触发器。
 
 ## <a name="sample-code"></a>代码示例
-可在 [GitHub 存储库](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples)中找到更多服务器端代码示例（包括 [bulk-delete](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/bulkDelete.js) 和 [update](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/update.js)）。
+可在 [GitHub 存储库](https://github.com/Azure/azure-cosmosdb-js-server/tree/master/samples)中找到更多服务器端代码示例（包括 [bulk-delete](https://github.com/Azure/azure-cosmosdb-js-server/blob/master/samples/stored-procedures/bulkDelete.js) 和 [update](https://github.com/Azure/azure-cosmosdb-js-server/blob/master/samples/stored-procedures/update.js)）。
 
 想要共享出色的存储过程吗？请将其贡献给存储库并创建拉取请求！ 
 

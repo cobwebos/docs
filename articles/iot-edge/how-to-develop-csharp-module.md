@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 06/27/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: a895f21bc061763b1d5d45b2bedb44fc932190dc
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 212de83a88f5a8114454761121ee3f22830d2448
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345204"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42141845"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>使用 Visual Studio Code 开发和调试 Azure IoT Edge 的 C# 模块
 
@@ -72,7 +72,7 @@ VS Code 采用你提供的信息，创建一个 IoT Edge 解决方案，然后�
 
 * 一个 **deployment.template.json** 文件，列出新模块以及模拟可用于测试的数据的示例 **tempSensor** 模块。 有关部署清单如何工作的详细信息，请参阅[了解如何使用部署清单部署模块和建立路由](module-composition.md)。 
 
-## <a name="devlop-your-module"></a>开发模块
+## <a name="develop-your-module"></a>开发模块
 
 解决方案附带的默认 Azure 函数代码位于**模块** > **\<你的模块名称\>** > **Program.cs**。 设置模块和 deployment.template.json 文件，以便可以生成解决方案，将其推送到容器注册表，然后将其部署到设备以开始测试而无需触及任何代码。 该模块构建为只需从源（在此示例中，为模拟数据的 tempSensor 模块）获取输入并通过管道将其传送到 IoT Hub。 
 

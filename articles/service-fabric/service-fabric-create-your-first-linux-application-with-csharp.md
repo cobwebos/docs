@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/11/2018
 ms.author: subramar
-ms.openlocfilehash: 59dc090053c78dbddc1854f21db39f66df7bc91c
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 7427af3e814752801c4738675f7cd2263843f9b8
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37020539"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617080"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>创建第一个 Azure Service Fabric 应用程序
 > [!div class="op_single_selector"]
@@ -41,27 +41,19 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
 
 1. 在计算机上安装 nodejs 和 NPM
 
-   Ubuntu
    ```bash
-   curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash –
-   sudo apt-get install -y nodejs 
+   curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash 
+   nvm install node 
    ```
-
-   Red Hat Enterprise Linux 7.4（Service Fabric 预览版支持）
-   ```bash
-   sudo yum install nodejs
-   sudo yum install npm
-   ```
-
 2. 通过 NPM 在计算机上安装 [Yeoman](http://yeoman.io/) 模板生成器
 
   ```bash
-  sudo npm install -g yo
+  npm install -g yo
   ```
 3. 通过 NPM 安装 Service Fabric Yeoman C# 应用程序生成器
 
   ```bash
-  sudo npm install -g generator-azuresfcsharp
+  npm install -g generator-azuresfcsharp
   ```
 
 ## <a name="create-the-application"></a>创建应用程序
@@ -109,7 +101,7 @@ Service Fabric Yeoman 模板包含一个可用于（在导航到应用程序文�
 应用程序部署完以后，请打开浏览器并导航到 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)，其地址为 [http://localhost:19080/Explorer](http://localhost:19080/Explorer)。 然后，展开“应用程序”节点，注意现在有一个条目是用于你的应用程序类型，另一个条目用于该类型的第一个实例。
 
 > [!IMPORTANT]
-> 要将应用程序部署到 Azure 中的安全 Linux 群集，你需要配置证书以使用 Service Fabric 运行时验证应用程序。 这样做可使 Reliable Services 服务与基础 Service Fabric 运行时 API 通信。 要了解详细信息，请参阅[配置 Reliable Services 应用以在 Linux 群集上运行](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)。  
+> 必须将证书配置为向 Service Fabric 运行时验证应用程序，才能将应用程序部署到 Azure 中的安全 Linux 群集。 这样做可允许 Reliable Services 服务与基础 Service Fabric 运行时 API 通信。 若要了解详细信息，请参阅[将 Reliable Services 应用程序配置为在 Linux 群集上运行](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)。  
 >
 
 ## <a name="start-the-test-client-and-perform-a-failover"></a>启动测试客户端并执行故障转移

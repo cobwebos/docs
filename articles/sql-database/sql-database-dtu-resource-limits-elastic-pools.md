@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 128b4bc787cd882e719ee3332d285af44b15dfe2
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 0920489daf99445a9d715d0858cf68ae45e6a178
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412984"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42140214"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-based-purchasing-model"></a>使用基于 DTU 的购买模型的弹性池的资源限制 
 
@@ -128,6 +128,7 @@ ms.locfileid: "39412984"
 ## <a name="next-steps"></a>后续步骤
 
 - 有关常见问题的解答，请参阅 [SQL 数据库常见问题解答](sql-database-faq.md)。
+- 有关服务器和订阅级别限制的信息，请参阅 [Azure SQL 数据库资源限制概述](sql-database-resource-limits.md)。
 - 有关常规 Azure 限制的相关信息，请参阅 [Azure 订阅和服务限制、配额和约束](../azure-subscription-service-limits.md)。
 - 有关 DTU 和 eDTU 的信息，请参阅 [DTU 和 eDTU](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)。
 - 有关 tempdb 大小限制的信息，请参阅 https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database。

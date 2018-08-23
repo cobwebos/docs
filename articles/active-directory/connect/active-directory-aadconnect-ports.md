@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 317c94abdf14d3d88e07e32ab16769bd1f641438
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 55100d14ab7acbff87a726615ad9fa8b1fe9a3c8
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34591290"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42145087"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>混合标识所需的端口和协议
 以下文档是用于实现混合标识解决方案所需的端口和协议的技术参考。 使用下图并参考相应的表格。
@@ -30,7 +30,7 @@ ms.locfileid: "34591290"
 ## <a name="table-1---azure-ad-connect-and-on-premises-ad"></a>表 1 - Azure AD Connect 和本地 AD
 此表描述了 Azure AD Connect 服务器与本地 AD 之间通信所需的端口和协议。
 
-| 协议 | 端口 | 说明 |
+| 协议 | 端口 | Description |
 | --- | --- | --- |
 | DNS |53 (TCP/UDP) |在目标林中进行 DNS 查找。 |
 | Kerberos |88 (TCP/UDP) |对 AD 林进行 Kerberos 身份验证。 |
@@ -43,7 +43,7 @@ ms.locfileid: "34591290"
 ## <a name="table-2---azure-ad-connect-and-azure-ad"></a>表 2 - Azure AD Connect 和 Azure AD
 此表描述了 Azure AD Connect 服务器与 Azure AD 之间通信所需的端口和协议。
 
-| 协议 | 端口 | 说明 |
+| 协议 | 端口 | Description |
 | --- | --- | --- |
 | HTTP |80 (TCP/UDP) |用于下载 CRL（证书吊销列表）以验证 SSL 证书。 |
 | HTTPS |443 (TCP/UDP) |用来与 Azure AD 同步。 |
@@ -53,7 +53,7 @@ ms.locfileid: "34591290"
 ## <a name="table-3---azure-ad-connect-and-ad-fs-federation-serverswap"></a>表 3 - Azure AD Connect 和 AD FS 联合身份验证服务器/WAP
 此表描述了 Azure AD Connect 服务器与 AD FS 联合身份验证服务器/WAP 服务器之间通信所需的端口和协议。  
 
-| 协议 | 端口 | 说明 |
+| 协议 | 端口 | Description |
 | --- | --- | --- |
 | HTTP |80 (TCP/UDP) |用于下载 CRL（证书吊销列表）以验证 SSL 证书。 |
 | HTTPS |443 (TCP/UDP) |用来与 Azure AD 同步。 |
@@ -62,14 +62,14 @@ ms.locfileid: "34591290"
 ## <a name="table-4---wap-and-federation-servers"></a>表 4 - WAP 和联合服务器
 此表描述了联合服务器与 WAP 服务器之间通信所需的端口和协议。
 
-| 协议 | 端口 | 说明 |
+| 协议 | 端口 | Description |
 | --- | --- | --- |
 | HTTPS |443 (TCP/UDP) |用于身份验证。 |
 
 ## <a name="table-5---wap-and-users"></a>表 5 - WAP 和用户
 此表描述了用户与 WAP 服务器之间通信所需的端口和协议。
 
-| 协议 | 端口 | 说明 |
+| 协议 | 端口 | Description |
 | --- | --- | --- |
 | HTTPS |443 (TCP/UDP) |用于设备身份验证。 |
 | TCP |49443 (TCP) |用于证书身份验证。 |
@@ -78,20 +78,20 @@ ms.locfileid: "34591290"
 下表描述了 Azure AD Connect 与 Azure AD 之间通信所需的端口和协议。
 
 ### <a name="table-6a---pass-through-authentication-with-sso"></a>表 6a - 通过 SSO 进行直通身份验证
-|协议|端口号|说明
+|协议|端口号|Description
 | --- | --- | ---
 |HTTP|80|启用出站 HTTP 流量以进行安全验证，例如 SSL。 连接器自动更新功能要正常工作也需要完成此操作。
 |HTTPS|443| 为操作（例如启用和禁用功能、注册连接器、下载连接器更新和处理所有用户登录请求）启用出站 HTTPS 流量。
 
-此外，Azure AD Connect 需要能够建立到 [Azure 数据中心 IP 范围](https://www.microsoft.com/en-us/download/details.aspx?id=41653)的直接 IP 连接。
+此外，Azure AD Connect 需要能够建立到 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)的直接 IP 连接。
 
 ### <a name="table-6b---password-hash-sync-with-sso"></a>表 6b - 通过 SSO 进行密码哈希同步
 
-|协议|端口号|说明
+|协议|端口号|Description
 | --- | --- | ---
 |HTTPS|443| 启用 SSO 注册（只有 SSO 注册过程才需要）。
 
-此外，Azure AD Connect 需要能够建立到 [Azure 数据中心 IP 范围](https://www.microsoft.com/en-us/download/details.aspx?id=41653)的直接 IP 连接。 同样，这只是 SSO 注册过程所需的。
+此外，Azure AD Connect 需要能够建立到 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)的直接 IP 连接。 同样，这只是 SSO 注册过程所需的。
 
 ## <a name="table-7a--7b---azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>表 7a 和 7b - 适用于 (AD FS/Sync) 和 Azure AD 的 Azure AD Connect Health 代理
 下表描述了在 Azure AD Connect Health 代理与 Azure AD 之间通信所需的终结点、端口和协议
@@ -99,7 +99,7 @@ ms.locfileid: "34591290"
 ### <a name="table-7a---ports-and-protocols-for-azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>表 7a - 适用于 (AD FS/Sync) 和 Azure AD 的 Azure AD Connect Health 代理的端口和协议
 此表描述了 Azure AD Connect Health 代理与 Azure AD 之间通信所需的以下出站端口和协议。  
 
-| 协议 | 端口 | 说明 |
+| 协议 | 端口 | Description |
 | --- | --- | --- |
 | HTTPS |443 (TCP/UDP) |出站 |
 | Azure 服务总线 |5671 (TCP/UDP) |出站 |

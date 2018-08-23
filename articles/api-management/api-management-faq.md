@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 243f0b8206166e3e054dfc423259bd3444d8a2db
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 7082edf43e53766d32bd967d0b894f6439eaa492
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31589826"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42145282"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API 管理常见问题
 了解有关 Azure API 管理的常见问题解答、模式和最佳做法。
@@ -78,7 +78,7 @@ ms.locfileid: "31589826"
 
 * [API 管理 REST API](https://msdn.microsoft.com/library/azure/dn776326.aspx)。
 * [Microsoft Azure API 管理服务管理库 SDK](http://aka.ms/apimsdk)。
-* [服务部署](https://msdn.microsoft.com/library/mt619282.aspx)和[服务管理](https://msdn.microsoft.com/library/mt613507.aspx) PowerShell cmdlet。
+* [服务部署](https://docs.microsoft.com/powershell/module/wds)和[服务管理](https://docs.microsoft.com/powershell/azure/servicemanagement/overview) PowerShell cmdlet。
 
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>如何向管理员组添加用户？
 下面是向管理员组添加用户的方法：
@@ -87,7 +87,7 @@ ms.locfileid: "31589826"
 2. 转到具有要更新的 API 管理实例的资源组。
 3. 在 API 管理中，将 **API 管理参与者**角色分配给该用户。
 
-现在，新添加的参与者可以使用 Azure PowerShell [cmdlet](https://msdn.microsoft.com/library/mt613507.aspx)。 下面是以管理员身份登录的方法：
+现在，新添加的参与者可以使用 Azure PowerShell [cmdlet](https://docs.microsoft.com/powershell/azure/overview)。 下面是以管理员身份登录的方法：
 
 1. 使用 `Connect-AzureRmAccount` cmdlet 登录。
 2. 使用 `Set-AzureRmContext -SubscriptionID <subscriptionGUID>` 将上下文设置为具有该服务的订阅。

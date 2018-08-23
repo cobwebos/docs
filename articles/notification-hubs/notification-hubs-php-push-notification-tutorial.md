@@ -14,12 +14,12 @@ ms.devlang: php
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 930da7cca312ac6233b337dd7ddac478c3bbee7b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b812d60363ffebf1f4374b6fd44dff5e67497e08
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33776033"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42142251"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>如何通过 PHP 使用通知中心
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -250,7 +250,7 @@ ms.locfileid: "33776033"
 * 在 [突发新闻教程] 中继续学习通知中心标记功能
 * 在 [通知用户教程] 中了解如何将通知推送到单个用户
 
-有关详细信息，另请参阅 [PHP 开发人员中心](/develop/php/)。
+有关详细信息，另请参阅 [PHP 开发人员中心](https://azure.microsoft.com/develop/php/)。
 
 [PHP REST 包装器示例]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
 [入门教程]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/

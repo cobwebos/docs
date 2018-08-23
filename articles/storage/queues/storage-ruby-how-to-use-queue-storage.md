@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
 ms.component: queues
-ms.openlocfilehash: 7074ae21c1816b5266cbcf69d0126751ded19439
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 907175ac341632d2ba0048ab486392b949f83626
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522598"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42140010"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>如何通过 Ruby 使用队列存储
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -156,4 +156,4 @@ azure_queue_service.delete_queue("test-queue")
 * 访问 [Azure Storage Team Blog](http://blogs.msdn.com/b/windowsazurestorage/)（Azure 存储团队博客）
 * 访问 GitHub 上的 [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) 存储库
 
-若要了解 Azure 队列服务（本文所述）和 Azure 服务总线队列（[如何使用服务总线队列](/develop/ruby/how-to-guides/service-bus-queues/)文章中所述）之间的比较，请参阅 [Azure 队列和服务总线队列 - 比较与对照](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+若要了解 Azure 队列服务（本文所述）和 Azure 服务总线队列（[如何使用服务总线队列](https://azure.microsoft.com/develop/ruby/how-to-guides/service-bus-queues/)文章中所述）之间的比较，请参阅 [Azure 队列和服务总线队列 - 比较与对照](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)

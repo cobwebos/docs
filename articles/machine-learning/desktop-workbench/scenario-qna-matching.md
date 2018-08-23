@@ -3,25 +3,21 @@ title: 使用 Azure Machine Learning Workbench 进行问答匹配 | Microsoft Do
 description: 如何使用各种有效的机器学习方法，以便将开放式查询与预先存在的常见问题解答的问答对进行匹配。
 services: machine-learning
 documentationcenter: ''
-author: mezmicrosoft
-editor: mezmicrosoft
-ms.assetid: ''
-ms.reviewer: garyericson, jasonwhowell, mldocs
+author: rastala
+ms.author: roastala
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
-ms.author: mez
-manager: tihazen
-ms.openlocfilehash: 3695657d819f52ef04468a0f1a44828403c65373
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 33d95e0c17e8b9b18313cb0854532337ec76cfd1
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835094"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144838"
 ---
 #  <a name="q--a-matching-using-azure-machine-learning-workbench"></a>使用 Azure Machine Learning Workbench 进行问答匹配
 回答开放式问题很难，通常需要行业专家 (SME) 提供人力帮助。 公司通常会创建常见问题解答 (FAQ) 的列表，作为一种协助用户的手段，同时也可以降低对内部 SME 的需求。 本示例介绍了各种有效的机器学习方法，将开放式查询与预先存在的常见问题解答的问答对进行匹配。 本示例演示了如何通过简单的开发过程，使用 Azure Machine Learning Workbench 生成此类解决方案。 
@@ -82,7 +78,7 @@ ms.locfileid: "34835094"
 
 这三个数据集的数据架构和直接下载链接见下表：
 
-| 数据集 | 字段 | Type | 说明
+| 数据集 | 字段 | Type | Description
 | ----------|------------|------------|--------
 | [问题](https://bostondata.blob.core.windows.net/stackoverflow/orig-q.tsv.gz) | ID | String | 唯一的问题 ID（主键）
 |  | AnswerId | String | 每个问题的唯一解答 ID
@@ -102,7 +98,7 @@ ms.locfileid: "34835094"
 
 本示例中的文件按如下方式组织。
 
-| 文件名 | Type | 说明
+| 文件名 | Type | Description
 | ----------|------------|--------
 | `Image` | 文件夹 | 用于保存自述文件的图像的文件夹
 | `notebooks` | 文件夹 | Jupyter Notebooks 文件夹

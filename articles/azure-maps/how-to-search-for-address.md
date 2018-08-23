@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 8b7d2119e1eef8532c30b0a45ae2684493462277
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: fe3bb3a778a42696cd15f9e4265448479bf043a1
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990007"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42141842"
 ---
 # <a name="how-to-find-an-address-using-the-azure-maps-search-service"></a>如何使用 Azure Maps 搜索服务查找地址
 
@@ -164,19 +164,11 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
 
     | 密钥 | 值 |
     |-----|------------|
-    | spatialKeys | 是 |
-
-    如果设置了 [spatialKeys](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) 查询参数，响应将会包含指定位置的专属地域空间键信息。
-
-6. 将以下键/值对添加至 Params 部分，并单击“发送”：
-
-    | 密钥 | 值 |
-    |-----|------------|
     | returnSpeedLimit | 是 |
     
     如果设置了 [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) 查询参数，响应将返回发布的速度限制。
 
-7. 将以下键/值对添加至 Params 部分，并单击“发送”：
+6. 将以下键/值对添加至 Params 部分，并单击“发送”：
 
     | 密钥 | 值 |
     |-----|------------|
@@ -184,7 +176,7 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
 
     如果设置了 [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) 查询参数，响应将返回街道级别的 reversegeocodes 的道路用途数组。
 
-8. 将以下键/值对添加至 Params 部分，并单击“发送”：
+7. 将以下键/值对添加至 Params 部分，并单击“发送”：
 
     | 密钥 | 值 |
     |-----|------------|

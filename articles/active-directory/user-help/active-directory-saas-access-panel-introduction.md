@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/11/18
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: a5b96279993c35aad4cc49c52950576f12dd15ce
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: f69830deb4d2c74b5fe1c85ad8c9452097dd2a1e
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345937"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42141903"
 ---
 # <a name="what-is-the-access-panel"></a>访问面板是什么？
 
@@ -79,7 +79,7 @@ ms.locfileid: "39345937"
 - 可通过访问应用的“登录 URL”直接登录应用。 导航到应用的登录 URL 时，该扩展插件会检测操作并提供从该扩展插件进行登录的选项。
 - 可使用该扩展插件的“快速搜索”功能，从访问面板启动其任何应用。 
 - 该扩展插件还会在“最近使用的应用”部分显示最近启动的三个应用程序。
-- 通过[应用程序代理](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-get-started)进行远程操作时，可以使用内部公司 URL
+- 通过[应用程序代理](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started)进行远程操作时，可以使用内部公司 URL
 
 > [!NOTE]
 > 附加功能仅适用于 Microsoft Edge、Chrome 和 Firefox。
@@ -97,8 +97,8 @@ ms.locfileid: "39345937"
 5. 选择“登录以开始使用”。
 
 若要在使用扩展进行远程操作时使用内部公司 URL，请执行以下操作：
-1. 在租户上[配置应用程序代理](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-enable)。
-2. 通过应用程序代理[发布应用程序](https://docs.microsoft.com/en-us/azure/active-directory/application-proxy-publish-azure-portal)和 URL。
+1. 在租户上[配置应用程序代理](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-enable)。
+2. 通过应用程序代理[发布应用程序](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal)和 URL。
 3. 安装该扩展，并通过选择“登录以开始使用”登录到该扩展。
 4. 现在，即使在执行远程操作时也可以浏览内部公司 URL。
 

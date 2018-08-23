@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 9d398d810a2d43b3754fd8950376c605d4654f38
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: cde70518164c386697127b079979b5b3b76ae088
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621525"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42142060"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>有关 Azure Active Directory 中应用程序管理的文章索引
 本页提供了一份完整列表，列出编写的 Azure Active Directory (Azure AD) 中各种应用程序相关功能的所有文章。
@@ -96,7 +96,7 @@ ms.locfileid: "39621525"
 |:---:| --- |
 | Azure AD Connect 中提供的单一登录选项概述，以及管理混合环境的相关信息 |[Azure AD Connect 中的用户登录选项](active-directory-aadconnect-user-signin.md) |
 | 同时使用本地 Active Directory 和 Azure Active Directory 管理环境的一般指导 |[Azure AD 混合标识设计注意事项](active-directory-hybrid-identity-design-considerations-overview.md)<br /><br />[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md) |
-| 有关使用密码同步启用 SSO 的指导 |[实现与 Azure AD Connect 的密码同步](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)<br /><br />[排查密码同步问题](https://support.microsoft.com/en-us/kb/2855271) |
+| 有关使用密码同步启用 SSO 的指导 |[实现与 Azure AD Connect 的密码同步](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)<br /><br />[排查密码同步问题](https://support.microsoft.com/kb/2855271) |
 | 有关使用密码写回启用 SSO 的指导 |[Azure AD 中的密码管理入门](authentication/quickstart-sspr.md)<br /><br />[排查密码写回问题](authentication/active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | 有关使用第三方标识提供者启用 SSO 的指导 |[可用于启用单一登录的兼容第三方标识提供者列表](https://aka.ms/ssoproviders) |
 | Windows 10 用户如何通过 Azure AD Join 享受单一登录的优点 |[通过 Azure Active Directory Join 将云功能扩展到 Windows 10 设备](active-directory-azureadjoin-overview.md) |

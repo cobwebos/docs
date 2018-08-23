@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: a9e01039f1fbf46739ff8dbafea411aad2c3f4f2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 512dd7c3318022106b721d8f215bff17de51e51d
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38308047"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42139798"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>使用 Azure CLI 2.0 管理虚拟机规模集
 在虚拟机规模集的整个生命周期内，可能需要运行一个或多个管理任务。 此外，可能还需要创建自动执行各种生命周期任务的脚本。 本文详细介绍了执行这些任务常用的一些 Azure CLI 2.0 命令。
@@ -92,7 +92,7 @@ az vmss scale \
 
 
 ## <a name="stop-and-start-vms-in-a-scale-set"></a>停止和启动规模集中的 VM
-要在规模集中停止一个或多个 VM，请使用 [az vmss stop](/cli/azure/vmss/stop)。 通过 `--instance-ids` 参数，可指定要停止的一个或多个 VM。 若不指定实例 ID，则停止规模集中的所有 VM。 要停止多个 VM，请用空格分隔每个实例 ID。
+要在规模集中停止一个或多个 VM，请使用 [az vmss stop](/cli/azure/vmss#az-vmss-stop)。 通过 `--instance-ids` 参数，可指定要停止的一个或多个 VM。 若不指定实例 ID，则停止规模集中的所有 VM。 要停止多个 VM，请用空格分隔每个实例 ID。
 
 以下示例将停止 myScaleSet 规模集和 myResourceGroup 资源组中的实例“0”。 请按照如下所示，提供值：
 

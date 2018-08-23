@@ -10,12 +10,12 @@ ms.component: design
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 5ceb8cfd8efea66dbf17b8c522316b9a010e437d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 33e4a405547fcdd797ddfdf6aba6c6c1c126b742
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799441"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42141844"
 ---
 # <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>为 Azure SQL 数据仓库设计提取、加载和转换 (ELT)
 
@@ -101,7 +101,7 @@ PolyBase 从 UTF-8 和 UTF-16 编码的带分隔符文本文件加载数据。 �
 ## <a name="load-to-a-staging-table"></a>加载到临时表
 若要将数据提取到数据仓库，最好是先将数据载入临时表。 使用临时表可以处理错误且不干扰生产表，同时可避免针对生产表运行回滚操作。 将数据插入生产表之前，还可以通过临时表使用 SQL 数据仓库来运行转换。
 
-若要使用 T-SQL 执行加载，请运行 [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse.md) T-SQL 语句。 此命令将 select 语句的结果插入新表。 如果该语句从外部表选择了项，则会导入外部数据。 
+若要使用 T-SQL 执行加载，请运行 [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL 语句。 此命令将 select 语句的结果插入新表。 如果该语句从外部表选择了项，则会导入外部数据。 
 
 在以下示例中，ext.Date 是一个外部表。 所有行将导入名为 dbo.Date 的新表。
 

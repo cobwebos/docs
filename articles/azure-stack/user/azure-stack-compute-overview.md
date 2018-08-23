@@ -2,38 +2,38 @@
 title: Azure Stack 虚拟机简介
 description: 了解 Azure Stack 虚拟机
 services: azure-stack
-author: mattbriggs
+author: sethmanheim
 manager: femila
 ms.service: azure-stack
 ms.topic: get-started-article
-ms.date: 05/21/2018
-ms.author: mabrigg
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: kivenkat
-ms.openlocfilehash: 967fcb86c1bf0c85517bc13c2066ed32e8fa28d9
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: d478ccd0895ad067657bce56469a3a61d4ea0e17
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604125"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139654"
 ---
 # <a name="introduction-to-azure-stack-virtual-machines"></a>Azure Stack 虚拟机简介
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-Azure 堆栈提供一种类型的按需、 可缩放的计算资源与虚拟机 (Vm)。 当你需要更好地控制计算环境比其他选项时，你可以选择 VM。 在创建你的 VM 之前，本文提供了详细信息。
+Azure Stack 以按需可缩放的计算资源的形式提供虚拟机 (VM)。 如果需要以更大的力度（相对于其他控制选项）控制计算环境，可以选择 VM。 本文提供创建 VM 之前所需的详细信息。
 
 Azure Stack VM 可提供虚拟化的灵活性，而无需管理群集或单个计算机。 不过，仍然需要通过执行任务（例如，配置、修补和安装在 VM 上运行的软件）来维护 VM。
 
 可通过多种方式使用 Azure Stack 虚拟机。 例如：
 
 - **开发和测试**  
-    Azure 堆栈 Vm 提供一种快速而简单的方法来创建使用特定的配置代码所需的计算机和测试应用程序。
+    Azure Stack VM 提供快速又简单的方法来创建计算机，让计算机具备编写和测试应用程序所需的特定配置。
 
 - **云中的应用程序**  
-    应用程序需求可以波动情况，因为它可能会使经济意义上，在 Azure 堆栈中的 VM 上运行它。 使用 VM 时，需要支付额外的费用；关闭 VM 时，则无需付费。
+    由于应用程序的需求会不断变化，在 Azure Stack 中的 VM 上运行应用程序可能会较具经济效益。 使用 VM 时，需要支付额外的费用；关闭 VM 时，则无需付费。
 
-- **扩展数据中心**  
-    到您的组织网络或 Azure，可以轻松连接 Azure 堆栈虚拟网络中的虚拟机。
+- **扩展的数据中心**  
+    Azure Stack 虚拟网络中的虚拟机可以轻松连接到组织的网络或 Azure。
 
 可以根据需要，将应用程序使用的 VM 纵向或横向扩展为任意数目。
 
@@ -65,7 +65,7 @@ Azure Stack VM 可提供虚拟化的灵活性，而无需管理群集或单个�
 ### <a name="operating-system-disks-and-images"></a>操作系统磁盘和映像
 
 虚拟机使用虚拟硬盘 (VHD) 来存储其操作系统 (OS) 和数据。 VHD 还可用于存储映像，可以选择某个映像来安装 OS。
-Azure Stack 提供一个 Marketplace，适用于各种版本和类型的操作系统。 Marketplace 映像由映像发布者、产品/服务、SKU 和版本（通常指定为最新版本）标识。
+Azure Stack 提供一个市场，适用于各种版本和类型的操作系统。 市场映像由映像发布者、产品/服务、SKU 和版本（通常指定为最新版本）标识。
 
 下表显示了查找映像信息的一些方法：
 
@@ -73,7 +73,8 @@ Azure Stack 提供一个 Marketplace，适用于各种版本和类型的操作�
 |---------|---------|
 |Azure Stack 门户|选择要使用的映像时，系统会自动指定值。|
 |Azure Stack PowerShell|`Get-AzureRMVMImagePublisher -Location "location"`<br>`Get-AzureRMVMImageOffer -Location "location" -Publisher "publisherName"`<br>`Get-AzureRMVMImageSku -Location "location" -Publisher "publisherName" -Offer "offerName"`|
-|REST API     |[列出映像发布者](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<br>[列出映像产品](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<br>[列出映像 SKU](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus)|
+|REST API     |[列出映像发布者](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<br>
+  [列出映像产品](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<br>[列出映像 SKU](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus)|
 
 可以选择上传并使用自己的映像。 如果这样做，则不会使用发布者名称、产品/服务和 SKU。
 
@@ -83,13 +84,13 @@ VM 扩展通过部署后配置和自动化任务来增加 VM 的功能。
 可以使用扩展完成以下常见任务：
 
 - **运行自定义脚本**  
-    自定义脚本扩展可帮助你通过运行你的脚本设置 VM 在 VM 上配置工作负荷。
+    预配 VM 时，自定义脚本扩展可以通过运行脚本，帮助在 VM 上配置工作负荷。
 
 - **部署和管理配置**  
-    PowerShell Desired State Configuration (DSC) 扩展名可帮助你设置虚拟机上的 DSC 以便管理配置和环境。
+    可以借助 PowerShell Desired State Configuration (DSC) 扩展在 VM 上设置用于管理配置和环境的 DSC。
 
 - **收集诊断数据**  
-    Azure 诊断扩展可帮助你配置 VM 以收集用于监视你的应用程序的运行状况的诊断数据。
+    Azure 诊断扩展可帮助你配置 VM 来收集诊断数据，用于监视应用程序的运行状况。
 
 ### <a name="related-resources"></a>相关资源
 
@@ -127,7 +128,7 @@ VM 扩展通过部署后配置和自动化任务来增加 VM 的功能。
 - 管理可用性
 - 进行备份
 
-### <a name="get-information-about-your-vm"></a>获取有关你的 VM 的信息
+### <a name="get-information-about-your-vm"></a>获取有关 VM 的信息
 
 下表显示了获取有关 VM 的信息的一些方法。
 

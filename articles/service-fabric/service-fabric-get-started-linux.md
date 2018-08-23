@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 5d4fa878197732daf188fcc318569b178e608684
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 00164789d7f37277127878911c3f368a56ec7710
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345954"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616966"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上准备开发环境
 > [!div class="op_single_selector"]
@@ -208,27 +208,20 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
 
 1. 在计算机上安装 Node.js 和 npm。
 
-    * Ubuntu
-        ```bash
-        curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash –
-        sudo apt-get install -y nodejs 
-        ```
-
-    * Red Hat Enterprise Linux 7.4（Service Fabric 预览版支持）
-        ```bash
-        sudo yum install nodejs
-        sudo yum install npm
-        ```
+    ```bash
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+    nvm install node
+    ```
 2. 通过 npm 在计算机上安装 [Yeoman](http://yeoman.io/) 模板生成器。
 
     ```bash
-    sudo npm install -g yo
+    npm install -g yo
     ```
 3. 通过 npm 安装 Service Fabric Yeo 容器生成器和来宾可执行文件生成器。
 
     ```bash
-    sudo npm install -g generator-azuresfcontainer  # for Service Fabric container application
-    sudo npm install -g generator-azuresfguest      # for Service Fabric guest executable application
+    npm install -g generator-azuresfcontainer  # for Service Fabric container application
+    npm install -g generator-azuresfguest      # for Service Fabric guest executable application
     ```
 
 安装生成器后，可通过运行 `yo azuresfguest` 或 `yo azuresfcontainer` 分别创建来宾可执行文件或容器服务。
@@ -260,7 +253,7 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
 还需要为 Java 可执行文件安装 Service Fabric Yeo 生成器。 确保已安装 [Yeoman](#set-up-yeoman-generators-for-containers-and-guest-executables)，然后运行以下命令：
 
   ```bash
-  sudo npm install -g generator-azuresfjava
+  npm install -g generator-azuresfjava
   ```
  
 ## <a name="install-the-eclipse-plug-in-optional"></a>安装 Eclipse 插件（可选）
@@ -310,8 +303,8 @@ sudo apt-get install servicefabric servicefabricsdkcommon
 
     ```bash
     sudo apt-get remove servicefabric servicefabicsdkcommon
-    sudo npm uninstall generator-azuresfcontainer
-    sudo npm uninstall generator-azuresfguest
+    npm uninstall -g generator-azuresfcontainer
+    npm uninstall -g generator-azuresfguest
     sudo apt-get install -f
     ```
 
@@ -319,9 +312,9 @@ sudo apt-get install servicefabric servicefabricsdkcommon
 * Red Hat Enterprise Linux 7.4（Service Fabric 预览版支持）
 
     ```bash
-    sudo yum remote servicefabric servicefabicsdkcommon
-    sudo npm uninstall generator-azuresfcontainer
-    sudo npm uninstall generator-azuresfguest
+    sudo yum remove servicefabric servicefabicsdkcommon
+    npm uninstall -g generator-azuresfcontainer
+    npm uninstall -g generator-azuresfguest
     ```
 
 ## <a name="next-steps"></a>后续步骤

@@ -7,16 +7,17 @@ manager: douge
 assetId: 94b35d0d-0d35-48b6-b48b-3641377867fd
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/05/2017
 ms.author: ghogen
-ms.openlocfilehash: 7d0138abb07aea46ad8d0069c87964b393347dcf
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: c47da12feeef2a1536cdbfbe0187fe8991b3257d
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31791420"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42142259"
 ---
 # <a name="building-azure-projects-from-the-command-line"></a>通过命令行生成 Azure 项目
 通过使用 Microsoft 生成引擎 (MSBuild)，可以在未安装 Visual Studio 的生成实验室环境中生成产品。 MSBuild 对可扩展且 Microsoft 完全支持的项目文件使用 XML 格式。 通过使用 MSBuild 文件格式，可以描述必须为一个或多个平台和配置生成的项目。

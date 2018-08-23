@@ -13,12 +13,12 @@ ms.date: 06/13/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 44781c976afa94ebe3c8df8c7fd70c3e16956916
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: b1d3439412e324c71687c43aa9e47c520cb72262
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37870241"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42145503"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>删除 Azure Active Directory 租户
 删除租户时，也会删除包含在该租户中的所有资源。 最小化租户及其关联的资源，做好准备后再将其删除。 只有 Azure Active Directory (Azure AD) 全局管理员可从门户中删除 Azure AD 租户。
@@ -63,7 +63,7 @@ ms.locfileid: "37870241"
 
 可将订阅置于“已取消预配”状态，通过适用于企业的 Microsoft Store 管理中心在 3 天后删除。 Office 365 管理中心也即将推出此功能。
 
-1. 使用租户的全局管理员帐户登录到[适用于企业的 Microsoft Store 管理中心](https://businessstore.microsoft.com/en-us/manage/)。 如果尝试删除具有初始默认域 contoso.onmicrosoft.com 的“Contoso”租户，请使用 UPN（例如 admin@contoso.onmicrosoft.com）登录。
+1. 使用租户的全局管理员帐户登录到[适用于企业的 Microsoft Store 管理中心](https://businessstore.microsoft.com/manage/)。 如果尝试删除具有初始默认域 contoso.onmicrosoft.com 的“Contoso”租户，请使用 UPN（例如 admin@contoso.onmicrosoft.com）登录。
 
 2. 转到“管理”选项卡，选择“产品和服务”然后选择想要取消的订阅。 单击“取消”后，刷新该页面。
   

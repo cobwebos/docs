@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 599c016763fde6f1dc8221fffa554cf68e8c498f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 43db9db3842d05fa13c3be92df14b905d2ddfc17
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31790383"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42140002"
 ---
 # <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>将 Azure 资源管理器支持与 Azure 负载均衡器配合使用
 
@@ -61,7 +61,7 @@ Azure 资源管理器可让你使用声明性模板预配应用程序。 在单�
 
 Azure 资源管理器 cmdlet、命令行工具和 REST API 入门
 
-* [Azure 网络 Cmdlet](https://msdn.microsoft.com/library/azure/mt163510.aspx) 可用于创建负载负载均衡器。
+* [Azure 网络 Cmdlet](https://docs.microsoft.com/powershell/module/azurerm.network#networking) 可用于创建负载均衡器。
 * [如何使用 Azure 资源管理器创建负载均衡器](load-balancer-get-started-ilb-arm-ps.md)
 * [将 Azure CLI 与 Azure 资源管理结合使用](../xplat-cli-azure-resource-manager.md)
 * [负载均衡器 REST API](https://msdn.microsoft.com/library/azure/mt163651.aspx)

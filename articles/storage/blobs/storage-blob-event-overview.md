@@ -8,12 +8,12 @@ ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
 ms.component: blobs
-ms.openlocfilehash: 6f3afa22a50728070c42cd6e2eff0cc148815fbc
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: d38ab71ed2d2ebff04004f02589cfccca4199318
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39262678"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42142271"
 ---
 # <a name="reacting-to-blob-storage-events"></a>响应 Blob 存储事件
 
@@ -21,7 +21,7 @@ Azure 存储事件允许应用程序使用新式无服务器体系结构响应 b
 
 常见的 Blob 存储事件方案包括图像或视频处理、搜索索引或任何面向文件的工作流。  异步文件上传十分适合事件。  基于事件的体系结构对于鲜少更改，但要求立即响应的情况尤为有效。
 
-存储事件的可用性与事件网格[可用性](../../event-grid/overview.md)相关联，当事件网格在其他地区可用时，存储事件也同样可用。 查看[将 Blob 存储事件路由到自定义 Web 终结点 - CLI](storage-blob-event-quickstart.md) 或[将 Blob 存储事件路由到自定义 Web 终结点 - PowerShell](storage-blob-event-quickstart-powershell.md)，获取简单示例。 
+查看[将 Blob 存储事件路由到自定义 Web 终结点 - CLI](storage-blob-event-quickstart.md) 或[将 Blob 存储事件路由到自定义 Web 终结点 - PowerShell](storage-blob-event-quickstart-powershell.md)，获取简单示例。 
 
 ![事件网格模型](./media/storage-blob-event-overview/event-grid-functional-model.png)
 

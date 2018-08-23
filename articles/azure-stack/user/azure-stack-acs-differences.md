@@ -1,9 +1,9 @@
 ---
-title: Azure 堆栈存储差异和注意事项 |Microsoft 文档
-description: 了解 Azure 堆栈存储和 Azure 存储，以及 Azure 堆栈部署注意事项之间的差异。
+title: Azure Stack 存储的差异和注意事项 | Microsoft Docs
+description: 了解 Azure Stack 存储与 Azure 存储之间的差异，以及 Azure Stack 部署注意事项。
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 ms.assetid: ''
 ms.service: azure-stack
@@ -11,31 +11,31 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/21/2018
-ms.author: jeffgilb
+ms.date: 08/15/2018
+ms.author: mabrigg
 ms.reviwer: xiaofmao
-ms.openlocfilehash: 2a6cb3f1a1f8009af411ba4d97a23194f6f089ae
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 6c0c42763ec3d124850555500c3a322073af2479
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604454"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139410"
 ---
-# <a name="azure-stack-storage-differences-and-considerations"></a>Azure 堆栈存储： 差异和注意事项
+# <a name="azure-stack-storage-differences-and-considerations"></a>Azure Stack 存储：差异和注意事项
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-Azure 堆栈存储是一组存储在 Microsoft Azure 堆栈中的云服务。 Azure 堆栈存储提供了 blob、 表、 队列和帐户管理功能，带有 Azure 一致的语义。
+Azure stack 存储是存储在 Microsoft Azure Stack 中的云服务的组。 Azure Stack 存储使用与 Azure 一致的语义来提供 Blob、表、队列和帐户管理功能。
 
-本文汇总了 Azure Stack 存储与 Azure 存储服务之间的已知差异。 它还列出了部署 Azure Stack 时要考虑的事项。 若要了解有关高级全局 Azure 和 Azure 堆栈之间的差异信息，请参阅[密钥注意事项](azure-stack-considerations.md)主题。
+本文汇总了 Azure Stack 存储与 Azure 存储服务之间的已知差异。 它还列出了部署 Azure Stack 时要考虑的事项。 有关 Azure 公有云与 Azure Stack 之间大致差异的详细信息，请参阅[重要注意事项](azure-stack-considerations.md)主题。
 
 ## <a name="cheat-sheet-storage-differences"></a>速查表：存储差异
 
 | 功能 | Azure（公有云） | Azure Stack |
 | --- | --- | --- |
 |文件存储|支持基于云的 SMB 文件共享|尚不支持
-|Azure 存储服务加密对静止数据|256 位 AES 加密|BitLocker 128 位 AES 加密
-|存储帐户类型|通用和 Azure blob 存储帐户|仅限常规用途。
+|静态数据的 Azure 存储服务加密|256 位 AES 加密|BitLocker 128 位 AES 加密
+|存储帐户类型|常规用途和 Azure Blob 存储帐户|仅限常规用途。
 |复制选项|本地冗余存储、异地冗余存储、读取访问异地冗余存储和区域冗余存储|本地冗余存储。
 |高级存储|完全支持|可预配，但无性能限制或保证。
 |托管磁盘|支持高级和标准版|尚不支持。
@@ -81,7 +81,7 @@ Azure 存储服务管理 API：
 
 ## <a name="sdk-versions"></a>SDK 版本
 
-Azure 堆栈存储空间支持以下客户端库：
+Azure Stack 存储支持以下客户端库：
 
 | 客户端库 | Azure Stack 支持的版本 | 链接                                                                                                                                                                                                                                                                                                                                     | 终结点规范       |
 |----------------|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|

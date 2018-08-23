@@ -9,11 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0bc414d42acd665e52f3f76037dffe225344b23d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 00143ab1f4aaba0f700e084d9225570c28713d0d
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42139784"
 ---
 # <a name="starting-a-runbook-in-azure-automation"></a>在 Azure 自动化中启动 Runbook
 下表将帮助你确定如何在 Azure 自动化中以最适合你方案的方法启动 Runbook。 本文包含有关使用 Azure 门户和 Windows PowerShell 启动 Runbook 的详细信息。 有关其他方法的详细信息会在其他文档中提供，可以通过以下链接来访问。
@@ -21,7 +22,7 @@ ms.lasthandoff: 05/16/2018
 | **方法** | **特征** |
 | --- | --- |
 | [Azure 门户](#starting-a-runbook-with-the-azure-portal) |<li>使用交互式用户界面的最简单方法。<br> <li>用于提供简单参数值的窗体。<br> <li>轻松跟踪作业状态。<br> <li>使用 Azure 登录对访问进行身份验证。 |
-| [Windows PowerShell](https://msdn.microsoft.com/library/dn690259.aspx) |<li>使用 Windows PowerShell cmdlet 从命令行调用。<br> <li>可以使用多个步骤包含在自动化解决方案中。<br> <li>使用证书或 OAuth 用户主体/服务主体对请求进行身份验证。<br> <li>提供简单和复杂的参数值。<br> <li>跟踪作业状态。<br> <li>支持 PowerShell cmdlet 所需的客户端。 |
+| [Windows PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/start-azureautomationrunbook) |<li>使用 Windows PowerShell cmdlet 从命令行调用。<br> <li>可以使用多个步骤包含在自动化解决方案中。<br> <li>使用证书或 OAuth 用户主体/服务主体对请求进行身份验证。<br> <li>提供简单和复杂的参数值。<br> <li>跟踪作业状态。<br> <li>支持 PowerShell cmdlet 所需的客户端。 |
 | [Azure 自动化 API](https://msdn.microsoft.com/library/azure/mt662285.aspx) |<li>最有弹性的方法，但也最复杂。<br> <li>从任何可发出 HTTP 请求的自定义代码调用。<br> <li>使用证书或 OAuth 用户主体/服务主体对请求进行身份验证。<br> <li>提供简单和复杂的参数值。 *如果你正在调用 Python runbook 使用 API 时，必须序列化 JSON 有效负载。*<br> <li>跟踪作业状态。 |
 | [Webhook](automation-webhooks.md) |<li>从单个 HTTP 请求启动 Runbook。<br> <li>使用 URL 中的安全令牌进行身份验证。<br> <li>客户端无法覆盖创建 Webhook 时指定的参数值。 Runbook 可以定义填入了 HTTP 请求详细信息的单个参数。<br> <li>无法通过 Webhook URL 跟踪作业状态。 |
 | [响应 Azure 警报](../log-analytics/log-analytics-alerts.md) |<li>启动 Runbook 以响应 Azure 警报。<br> <li>为 Runbook 配置 webhook 并链接到警报。<br> <li>使用 URL 中的安全令牌进行身份验证。 |
@@ -40,13 +41,13 @@ ms.lasthandoff: 05/16/2018
 5. 在“作业”页上，可以查看 runbook 作业的状态。
 
 ## <a name="starting-a-runbook-with-windows-powershell"></a>使用 Windows PowerShell 启动 Runbook
-可以在 Windows PowerShell 中使用 [Start-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603661.aspx) 启动 Runbook。 以下示例代码将启动名为 Test-Runbook 的 Runbook。
+可以在 Windows PowerShell 中使用 [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) 启动 Runbook。 以下示例代码将启动名为 Test-Runbook 的 Runbook。
 
 ```
 Start-AzureRmAutomationRunbook -AutomationAccountName "MyAutomationAccount" -Name "Test-Runbook" -ResourceGroupName "ResourceGroup01"
 ```
 
-Start-AzureRmAutomationRunbook 将返回一个作业对象，启动 Runbook 后，可以使用该对象来跟踪 Runbook 的状态。 然后可结合使用此作业对象和 [Get-AzureRmAutomationJob](https://msdn.microsoft.com/library/mt619440.aspx)，以确定作业的状态，也可以结合使用此作业对象和 [Get-AzureRmAutomationJobOutput](https://msdn.microsoft.com/library/mt603476.aspx)，以获取作业的输出。 以下示例代码将启动名为 Test-Runbook 的 Runbook，等待它完成，并显示其输出。
+Start-AzureRmAutomationRunbook 将返回一个作业对象，启动 Runbook 后，可以使用该对象来跟踪 Runbook 的状态。 然后可结合使用此作业对象和 [Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjob)，以确定作业的状态，也可以结合使用此作业对象和 [Get-AzureRmAutomationJobOutput](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjoboutput)，以获取作业的输出。 以下示例代码将启动名为 Test-Runbook 的 Runbook，等待它完成，并显示其输出。
 
 ```
 $runbookName = "Test-Runbook"

@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 05/29/2018
+ms.date: 08/16/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 9efd9470982f0afaa357114828d51df37a7c2890
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: be3fd304e04a66e6564141b6a20efea88cf62553
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39520922"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42145286"
 ---
 # <a name="manage-access-rights-to-azure-storage-data-with-rbac-preview"></a>使用 RBAC 管理对 Azure 存储数据的访问权限（预览版）
 
@@ -32,7 +32,7 @@ Azure 存储同时支持内置和自定义 RBAC 角色。 Azure 存储提供以�
 
 有关如何为 Azure 存储定义内置角色的详细信息，请参阅[了解角色定义](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#management-and-data-operations-preview)。
 
-还可以定义用于容器和队列的自定义角色。 有关详细信息，请参阅[针对 Azure 基于角色的访问控制创建自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles.md)。 
+还可以定义用于容器和队列的自定义角色。 有关详细信息，请参阅[针对 Azure 基于角色的访问控制创建自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)。 
 
 > [!IMPORTANT]
 > 此预览版仅用于非生产用途。 适用于 Azure 存储的 Azure AD 集成正式发布后，生产服务级别协议 (SLA) 方可使用。 如果你的方案尚不支持 Azure AD 集成，请继续使用应用程序中的共享密钥授权或 SAS 令牌。 有关该预览版的其他信息，请参阅[使用 Azure Active Directory进行 Azure 存储访问权限身份验证（预览版）](storage-auth-aad.md)。

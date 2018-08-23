@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: f19c52629a997687692eef9bce2e13b2b7894052
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: da5d59aaaea8e6186609eb5f3419fba5e67d4279
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31794729"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42141644"
 ---
 # <a name="securing-paas-deployments"></a>保护 PaaS 部署
 
@@ -101,7 +101,7 @@ PaaS 与传统本地部署之间的另一个重大差别在于，前者为主要
 
 - [Azure 应用服务](security-paas-applications-using-app-services.md)
 - [Azure SQL 数据库和 Azure SQL 数据仓库](security-paas-applications-using-sql.md)
-- Azure 存储
+- [Azure 存储](security-paas-applications-using-storage.md)
 - Azure REDIS 缓存
 - Azure 服务总线
 - Web 应用程序防火墙

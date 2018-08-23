@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 08/21/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: c6c388bb98d189d91703c0ce82971b3ec4da4150
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 6c97d7c2f901110421f9fc5d0a1d4468d832c472
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505505"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42141931"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>在 Azure Active Directory 中分配管理员角色
 
@@ -59,7 +59,7 @@ ms.locfileid: "39505505"
 
 * **[目录写入者](#directory-writers)**：这是一个遗留的角色，分配给不支持[许可框架](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)的应用程序。 不应将它分配给任何用户。
 
-* **[Dynamics 365 服务管理员/CRM 服务管理员](#dynamics-365-service-administrator)**：具有此角色的用户在 Microsoft Dynamics 365 Online（如果存在此服务）中拥有全局权限，并可以管理支持票证和监视服务运行状况。 有关详细信息，请参阅[使用服务管理员角色管理租户](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant)。
+* **[Dynamics 365 服务管理员/CRM 服务管理员](#dynamics-365-service-administrator)**：具有此角色的用户在 Microsoft Dynamics 365 Online（如果存在此服务）中拥有全局权限，并可以管理支持票证和监视服务运行状况。 有关详细信息，请参阅[使用服务管理员角色管理租户](https://docs.microsoft.com/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant)。
 
 * **[Exchange 服务管理员](#exchange-service-administrator)**：具有此角色的用户在 Microsoft Exchange Online（如果存在此服务）中拥有全局权限。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)（关于 Office 365 管理员角色）。
 
@@ -74,7 +74,7 @@ ms.locfileid: "39505505"
 
 * **[信息保护管理员](#information-protection-administrator)**：具有此角色的用户拥有 Azure 信息保护服务中的所有权限。 此角色可以配置 Azure 信息保护策略的标签、管理保护模板，以及激活保护。 此角色不会授予 Identity Protection Center、Privileged Identity Management、监视 Office 365 服务运行状况或 Office 365 安全与合规中心的权限。
 
-* **[Intune 服务管理员](#intune-service-administrator)**：具有此角色的用户在 Microsoft Intune Online（如果存在此服务）中拥有全局权限。 此外，此角色包含管理以关联策略，以及创建和管理组的用户和设备的能力。 有关详细信息，请参阅[使用 Microsoft Intune 进行基于角色的管理控制 (RBAC)](https://docs.microsoft.com/en-us/intune/role-based-access-control)
+* **[Intune 服务管理员](#intune-service-administrator)**：具有此角色的用户在 Microsoft Intune Online（如果存在此服务）中拥有全局权限。 此外，此角色包含管理以关联策略，以及创建和管理组的用户和设备的能力。 有关详细信息，请参阅[使用 Microsoft Intune 进行基于角色的管理控制 (RBAC)](https://docs.microsoft.com/intune/role-based-access-control)
 
 * **[消息中心读取者](#message-center-reader)**：具有此角色的用户可以在其组织的 [Office 365 消息中心](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093)内，监视 Exchange、Intune 和 Microsoft Teams 等已配置服务的通知和公告运行状况更新。 消息中心读者会收到包含帖子和最新动态的每周电子邮件摘要，并能在 Office 365 内共享消息中心帖子。 在 Azure AD 中，分配到此角色的用户对 Azure AD 服务只拥有只读访问权限，如用户和组。 
 
@@ -89,7 +89,7 @@ ms.locfileid: "39505505"
   >
   >
   
-* **[Power BI 服务管理员](#power-bi-service-administrator)**：具有此角色的用户在 Microsoft Power BI（如果存在此服务）中拥有全局权限，并可以管理支持票证和监视服务运行状况。 有关详细信息，请参阅[了解 Power BI 管理员角色](https://docs.microsoft.com/en-us/power-bi/service-admin-role)。
+* **[Power BI 服务管理员](#power-bi-service-administrator)**：具有此角色的用户在 Microsoft Power BI（如果存在此服务）中拥有全局权限，并可以管理支持票证和监视服务运行状况。 有关详细信息，请参阅[了解 Power BI 管理员角色](https://docs.microsoft.com/power-bi/service-admin-role)。
 
 * **[特权角色管理员](#privileged-role-administrator)**：具有此角色的用户可以管理角色分配以及 Azure AD Privileged Identity Management 内的 Azure Active Directory。 此外，此角色允许 Privileged Identity Management 的所有方面。
 
@@ -163,7 +163,7 @@ ms.locfileid: "39505505"
 可以创建和管理应用注册和企业应用的所有方面。
 
   > [!NOTE]
-  > 此角色从[用户角色](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)继承其他权限。
+  > 此角色从[用户角色](https://docs.microsoft.com/azure/active-directory/users-default-permissions)继承其他权限。
   >
   >
 
@@ -198,7 +198,7 @@ ms.locfileid: "39505505"
 可以创建独立于“用户可注册应用程序”设置的应用程序注册。
 
   > [!NOTE]
-  > 此角色从[用户角色](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)继承其他权限。
+  > 此角色从[用户角色](https://docs.microsoft.com/azure/active-directory/users-default-permissions)继承其他权限。
   >
   >
 
@@ -213,7 +213,7 @@ ms.locfileid: "39505505"
 可以执行与常见计费相关的任务，例如更新付款信息。
 
   > [!NOTE]
-  > 此角色从[用户角色](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)继承其他权限。
+  > 此角色从[用户角色](https://docs.microsoft.com/azure/active-directory/users-default-permissions)继承其他权限。
   >
   >
 
@@ -235,7 +235,7 @@ ms.locfileid: "39505505"
 可以创建和管理应用注册和企业应用的所有方面，应用代理除外。
 
   > [!NOTE]
-  > 此角色从[用户角色](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)继承其他权限。
+  > 此角色从[用户角色](https://docs.microsoft.com/azure/active-directory/users-default-permissions)继承其他权限。
   >
   >
 
@@ -318,7 +318,7 @@ ms.locfileid: "39505505"
 可以读取和管理 Azure AD 和 Office 365 中的符合性配置和报表。
 
   > [!NOTE]
-  > 此角色从[用户角色](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)继承其他权限。
+  > 此角色从[用户角色](https://docs.microsoft.com/azure/active-directory/users-default-permissions)继承其他权限。
   >
   >
 
@@ -341,7 +341,7 @@ ms.locfileid: "39505505"
 可以管理条件访问功能。
 
   > [!NOTE]
-  > 此角色从[用户角色](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)继承其他权限。
+  > 此角色从[用户角色](https://docs.microsoft.com/azure/active-directory/users-default-permissions)继承其他权限。
   >
   >
 
@@ -360,7 +360,7 @@ ms.locfileid: "39505505"
 拥有此角色的用户成为所有已加入 Azure Active Directory 的 Windows 10 设备上的本地计算机管理员。 他们无权管理 Azure Active Directory 中的设备对象。
 
   > [!NOTE]
-  > 此角色从[用户角色](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)继承其他权限。
+  > 此角色从[用户角色](https://docs.microsoft.com/azure/active-directory/users-default-permissions)继承其他权限。
   >
   >
 
@@ -472,7 +472,7 @@ ms.locfileid: "39505505"
 可以管理 Dynamics 365 产品的所有方面。
 
   > [!NOTE]
-  > 此角色从[用户角色](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)继承其他权限。
+  > 此角色从[用户角色](https://docs.microsoft.com/azure/active-directory/users-default-permissions)继承其他权限。
   >
   >
 
@@ -493,7 +493,7 @@ ms.locfileid: "39505505"
 可以管理 Exchange 产品的所有方面。
 
   > [!NOTE]
-  > 此角色从[用户角色](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)继承其他权限。
+  > 此角色从[用户角色](https://docs.microsoft.com/azure/active-directory/users-default-permissions)继承其他权限。
   >
   >
 
@@ -536,7 +536,7 @@ ms.locfileid: "39505505"
 可以重置非管理员和支持理员的密码。
 
   > [!NOTE]
-  > 此角色从[用户角色](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)继承其他权限。
+  > 此角色从[用户角色](https://docs.microsoft.com/azure/active-directory/users-default-permissions)继承其他权限。
   >
   >
 
@@ -553,7 +553,7 @@ ms.locfileid: "39505505"
 可以管理 Azure 信息保护产品的所有方面。
 
   > [!NOTE]
-  > 此角色从[用户角色](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)继承其他权限。
+  > 此角色从[用户角色](https://docs.microsoft.com/azure/active-directory/users-default-permissions)继承其他权限。
   >
   >
 
@@ -574,7 +574,7 @@ ms.locfileid: "39505505"
 可以管理 Intune 产品的所有方面。
 
   > [!NOTE]
-  > 此角色从[用户角色](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)继承其他权限。
+  > 此角色从[用户角色](https://docs.microsoft.com/azure/active-directory/users-default-permissions)继承其他权限。
   >
   >
 
@@ -615,7 +615,7 @@ ms.locfileid: "39505505"
 可以管理 Skype for Business 产品的所有方面。
 
   > [!NOTE]
-  > 此角色从[用户角色](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)继承其他权限。
+  > 此角色从[用户角色](https://docs.microsoft.com/azure/active-directory/users-default-permissions)继承其他权限。
   >
   >
 
@@ -654,7 +654,7 @@ ms.locfileid: "39505505"
 不要使用 - 不适用于常规用途。
 
   > [!NOTE]
-  > 此角色从[用户角色](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)继承其他权限。
+  > 此角色从[用户角色](https://docs.microsoft.com/azure/active-directory/users-default-permissions)继承其他权限。
   >
   >
 
@@ -690,7 +690,7 @@ ms.locfileid: "39505505"
 不要使用 - 不适用于常规用途。
 
   > [!NOTE]
-  > 此角色从[用户角色](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)继承其他权限。
+  > 此角色从[用户角色](https://docs.microsoft.com/azure/active-directory/users-default-permissions)继承其他权限。
   >
   >
 
@@ -729,7 +729,7 @@ ms.locfileid: "39505505"
 可以管理 Power BI 产品的所有方面。
 
   > [!NOTE]
-  > 此角色从[用户角色](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)继承其他权限。
+  > 此角色从[用户角色](https://docs.microsoft.com/azure/active-directory/users-default-permissions)继承其他权限。
   >
   >
 
@@ -750,7 +750,7 @@ ms.locfileid: "39505505"
 可以管理 Azure AD 中的角色分配
 
   > [!NOTE]
-  > 此角色从[用户角色](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)继承其他权限。
+  > 此角色从[用户角色](https://docs.microsoft.com/azure/active-directory/users-default-permissions)继承其他权限。
   >
   >
 
@@ -787,7 +787,7 @@ ms.locfileid: "39505505"
 可以读取安全信息和报告
 
   > [!NOTE]
-  > 此角色从[用户角色](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)继承其他权限。
+  > 此角色从[用户角色](https://docs.microsoft.com/azure/active-directory/users-default-permissions)继承其他权限。
   >
   >
 
@@ -836,7 +836,7 @@ ms.locfileid: "39505505"
 可以读取服务运行状况信息和管理支持票证。
 
   > [!NOTE]
-  > 此角色从[用户角色](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)继承其他权限。
+  > 此角色从[用户角色](https://docs.microsoft.com/azure/active-directory/users-default-permissions)继承其他权限。
   >
   >
 
@@ -856,7 +856,7 @@ ms.locfileid: "39505505"
 可以管理 SharePoint 服务的所有方面。
 
   > [!NOTE]
-  > 此角色从[用户角色](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)继承其他权限。
+  > 此角色从[用户角色](https://docs.microsoft.com/azure/active-directory/users-default-permissions)继承其他权限。
   >
   >
 
@@ -876,7 +876,7 @@ ms.locfileid: "39505505"
 可以管理用户与组的所有方面
 
   > [!NOTE]
-  > 此角色从[用户角色](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)继承其他权限。
+  > 此角色从[用户角色](https://docs.microsoft.com/azure/active-directory/users-default-permissions)继承其他权限。
   >
   >
 

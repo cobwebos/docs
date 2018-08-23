@@ -17,12 +17,12 @@ ms.date: 04/13/2018
 ms.author: celested
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 1450cffca7a4cfa57856c75cdcc9e106958ea043
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: f3ac6050ca73f96facd621823dc4bad413b139c7
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600921"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42142059"
 ---
 # <a name="azure-active-directory-v20-authentication-libraries"></a>Azure Active Directory v2.0 身份验证库
 
@@ -44,7 +44,7 @@ Azure AD v2.0 终结点适用于两种类型的库：
 
 ## <a name="library-support"></a>库支持
 
-可以在使用 v2.0 终结点时选择任何符合标准的库，此时必须知道可从何处寻求支持。 有关库代码中的问题和功能请求，请联系库所有者。 有关服务端协议实现中的问题和功能请求，请联系 Microsoft。 有关要在协议中看到的其他功能，请[提出功能请求](https://feedback.azure.com/forums/169401-azure-active-directory)。 如果发现 Azure AD v2.0 终结点与 OAuth 2.0 或 OpenID Connect 1.0 不兼容的问题，请[创建支持请求](https://docs.microsoft.com/en-us/azure/azure-supportability/how-to-create-azure-support-request)。
+可以在使用 v2.0 终结点时选择任何符合标准的库，此时必须知道可从何处寻求支持。 有关库代码中的问题和功能请求，请联系库所有者。 有关服务端协议实现中的问题和功能请求，请联系 Microsoft。 有关要在协议中看到的其他功能，请[提出功能请求](https://feedback.azure.com/forums/169401-azure-active-directory)。 如果发现 Azure AD v2.0 终结点与 OAuth 2.0 或 OpenID Connect 1.0 不兼容的问题，请[创建支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。
 
 库的支持类型有两种：
 

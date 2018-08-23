@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 05/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 202ee9da94fc93e7301c29b62dc61ad443685807
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 49e9efa537ad1f2a1d7f06dd7f8a68a409c7d4e0
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448905"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42145502"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中管理用户数据
 
- 本文介绍如何使用 [Azure Active Directory Graph API](https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/api-catalog) 提供的操作在 Azure Active Directory (Azure AD) B2C 中管理用户数据。 管理用户数据包括从审核日志中删除或导出数据。
+ 本文介绍如何使用 [Azure Active Directory Graph API](https://msdn.microsoft.com/library/azure/ad/graph/api/api-catalog) 提供的操作在 Azure Active Directory (Azure AD) B2C 中管理用户数据。 管理用户数据包括从审核日志中删除或导出数据。
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 

@@ -3,19 +3,19 @@ ms.assetid: ''
 title: Azure Key Vault - 如何将软删除与 PowerShell 配合使用
 description: 使用 PowerShell 代码段进行软删除的用例示例
 services: key-vault
-author: lleonard-msft
+author: bryanla
 manager: mbaldwin
 ms.service: key-vault
 ms.topic: article
 ms.workload: identity
 ms.date: 08/21/2017
-ms.author: alleonar
-ms.openlocfilehash: 48569e31e6400e3ec8958e0bceda1fd3b72207ea
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.author: bryanla
+ms.openlocfilehash: 174a5b41e6a48ea74cd813746b7c070463a8185b
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27927985"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42145071"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>如何将 Key Vault 软删除与 PowerShell 配合使用
 
@@ -39,7 +39,7 @@ Azure Key Vault 的软删除功能可以恢复已删除的保管库和保管库�
 
 Key Vault 操作通过基于角色的访问控制 (RBAC) 权限单独管理，如下所示：
 
-| Operation | 说明 | 用户权限 |
+| Operation | Description | 用户权限 |
 |:--|:--|:--|
 |列出|列出已删除的密钥保管库。|Microsoft.KeyVault/deletedVaults/read|
 |恢复|还原已删除的密钥保管库。|Microsoft.KeyVault/vaults/write|

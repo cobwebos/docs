@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 41513f89838aca2dfabbc19072e973aa12cd0010
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 155aa8ac1ee01ba46297e66763e0c0501ead32e2
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436380"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42141444"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workfront"></a>教程：Azure Active Directory 与 Workfront 的集成
 
@@ -117,7 +117,7 @@ ms.locfileid: "39436380"
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<companyname>.attasksandbox.com/SAML2`
 
     > [!NOTE] 
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Workfront 客户端支持团队](https://www.workfront.com/contact-us/)来获取这些值。 
+    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Workfront 客户端支持团队](https://www.workfront.com/services-and-support)来获取这些值。 
  
 1. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
 

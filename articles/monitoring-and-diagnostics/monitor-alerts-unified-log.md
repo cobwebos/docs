@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: fd278ad6865c871ed0a5ed9272c9fadfca0f38db
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: fd1fb978fb47c69b2eb672bc27baee73dfdd0a29
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440423"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42140083"
 ---
 # <a name="log-alerts-in-azure-monitor---alerts"></a>Azure Monitor - 警报中的日志警报 
 本文提供日志警报的详细信息，该警报是新版 [Azure 警报](monitoring-overview-unified-alerts.md)中支持的警报类型之一，允许用户使用 Azure 分析平台作为警报的基础。
@@ -87,7 +87,7 @@ ms.locfileid: "39440423"
 #### <a name="example"></a>示例
 考虑一下这样一种情形：如果任何计算机的处理器利用率在 30 分钟内超出 90% 三次，则需发出警报。  可以创建一个警报规则，详情如下：  
 
-- **查询：** Perf | where ObjectName == "Processor" and CounterName == "% Processor Time" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5 m), Computer<br>
+- **查询：** Perf | where ObjectName == "Processor" and CounterName == "% Processor Time" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer<br>
 - **时间段：** 30 分钟<br>
 - **警报频率：** 五分钟<br>
 - **聚合值：** 大于 90<br>

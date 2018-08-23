@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1d11b7d8f008c8ba000530e0486562882bfe3db3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: bc03bbf63427061c8d9f9e96ebcd9dce84f9fccf
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193887"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42145277"
 ---
 # <a name="runbook-input-parameters"></a>Runbook 输入参数
 
@@ -80,7 +80,7 @@ Param
 
 [使用 Azure 运行方式帐户进行 Runbook 身份验证](automation-sec-configure-azure-runas-account.md)，以便与 Azure 进行身份验证。
 
-通过 [**Get-AzureRmVm**](https://msdn.microsoft.com/library/mt603718.aspx) 获取虚拟机属性。
+通过 [**Get-AzureRmVm**](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvm) 获取虚拟机属性。
 
 可使用 [**Write-Output**](https://technet.microsoft.com/library/hh849921.aspx) 活动输出虚拟机的名称。 **Get-AzureRmVm** 活动接受两个参数：**虚拟机名称**和**资源组名称**。 由于这些参数在每次启动 Runbook 时可能需要不同的值，因此可以将输入参数添加到 Runbook。 以下是添加输入参数的步骤：
 
@@ -93,7 +93,7 @@ Param
    | **属性** | **说明** |
    |:--- |:--- |
    | 名称 |必需。 参数的名称。 在 Runbook 中必须唯一，并且只能包含字母、数字或下划线字符。 必须以字母开头。 |
-   | 说明 |可选。 有关输入参数用途的说明。 |
+   | Description |可选。 有关输入参数用途的说明。 |
    | Type |可选。 参数值的预期数据类型。 支持的参数类型包括 **String**、**Int32**、**Int64**、**Decimal**、**Boolean**、**DateTime** 和 **Object**。 如果未选择数据类型，将默认为 **String**。 |
    | 必需 |可选。 指定是否必须为该参数提供值。 如果选择“是”，则启动 Runbook 时必须提供一个值。 如果选择“否”，则启动 Runbook 时不需要提供值，并且可以设置一个默认值。 |
    | 默认值 |可选。 指定在启动 Runbook 时未传入值的情况下要用于参数的值。 对于不是必需的参数，可以设置默认值。 若要设置默认值，请选择“自定义”。 除非在 Runbook 启动时提供了其他值，否则将使用此值。 如果不想提供任何默认值，请选择“无”。 |
@@ -147,7 +147,7 @@ Runbook 有多种启动方式：通过 Azure 门户、Webhook、PowerShell cmdle
 
 #### <a name="start-a-published-runbook-by-using-powershell-cmdlets-and-assign-parameters"></a>使用 PowerShell cmdlet 启动已发布的 Runbook 并分配参数
 
-* **Azure 资源管理器 cmdlet**：可使用 [Start-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603661.aspx) 启动在资源组中创建的自动化 Runbook。
+* **Azure 资源管理器 cmdlet**：可使用 [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) 启动在资源组中创建的自动化 Runbook。
   
   **示例：**
   
@@ -156,7 +156,7 @@ Runbook 有多种启动方式：通过 Azure 门户、Webhook、PowerShell cmdle
   
   Start-AzureRmAutomationRunbook -AutomationAccountName “TestAutomation” -Name “Get-AzureVMGraphical” –ResourceGroupName $resourceGroupName -Parameters $params
   ```
-* **Azure 经典部署模型 cmdlet**：可以使用 [Start-AzureAutomationRunbook](https://msdn.microsoft.com/library/dn690259.aspx) 启动在默认资源组中创建的自动化 Runbook。
+* **Azure 经典部署模型 cmdlet**：可以使用 [Start-AzureAutomationRunbook](https://docs.microsoft.com/powershell/module/servicemanagement/azure/start-azureautomationrunbook) 启动在默认资源组中创建的自动化 Runbook。
   
   **示例：**
   

@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: marsma
-ms.openlocfilehash: 1d7855ff840fc1dd68effb19c43c3a691bd15d62
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 051402a319e1dc26145b5a1602a4caeffa7fba19
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714666"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42445501"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的网络配置
 
@@ -189,5 +189,5 @@ az aks create --resource-group myAKSCluster --name myAKSCluster --network-plugin
 
 <!-- LINKS - Internal -->
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
-[aks-ssh]: aks-ssh.md
+[aks-ssh]: ssh.md
 [ManagedClusterAgentPoolProfile]: /azure/templates/microsoft.containerservice/managedclusters#managedclusteragentpoolprofile-object

@@ -7,15 +7,15 @@ ms.reviewer: carlrab, bonova
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 06/22/2018
+ms.date: 0813/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 89544ea72a4356fb8d4f3a192e6fc546eb6b3cff
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: f05f6f785ec8466fc6d0ae2c94c975312ef37fa2
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092004"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42141641"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 之间的 T-SQL 差异 
 
@@ -267,7 +267,7 @@ WITH PRIVATE KEY ( <private_key_options> )
 
 ### <a name="replication"></a>复制 
  
-托管实例上支持复制。 有关复制的信息，请参阅 [SQL Server 复制](http://review.docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance)。
+托管实例上支持复制。 有关复制的信息，请参阅 [SQL Server 复制](http://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance)。
  
 ### <a name="restore-statement"></a>RESTORE 语句 
  

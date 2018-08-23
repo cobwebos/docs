@@ -3,7 +3,7 @@ title: Azure Stack 的基础结构备份服务最佳做法 | Microsoft Docs
 description: 在数据中心内部署和管理 Azure Stack 时可以遵守一套最佳做法，以便在发生灾难性故障时帮助减轻数据损失。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: 221FDE40-3EF8-4F54-A075-0C4D66EECE1A
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/20/2017
-ms.author: mabrigg
+ms.date: 08/01/2018
+ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 4a0166856cf4d3f91c6cadf3e71f93000fbf158d
-ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
+ms.openlocfilehash: 08d8822410545fb0ae3a2a99de00b38566c9834c
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39242965"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42139605"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>基础结构备份服务最佳做法
 
@@ -34,7 +34,7 @@ ms.locfileid: "39242965"
 
 ### <a name="deployment"></a>部署
 
-在部署每个 Azure Stack 云后启用基础结构备份 可以使用 AzureStack-Tools 通过访问操作员管理 API 终结点从任何客户端/服务器来计划备份。
+在部署每个 Azure Stack 云后启用基础结构备份 使用 Azure Stack PowerShell 可以安排从任何具有访问权限的客户端/服务器到操作员管理 API 终结点备份。
 
 ### <a name="networking"></a>网络
 
@@ -42,7 +42,7 @@ ms.locfileid: "39242965"
 
 ### <a name="encryption"></a>加密
 
-加密密钥用来对导出到外部存储的备份数据进行加密。 作为的一部分生成密钥[使用 PowerShell 为 Azure Stack 启用备份](azure-stack-backup-enable-backup-powershell.md)。
+加密密钥用来对导出到外部存储的备份数据进行加密。 密钥将在[使用 PowerShell 为 Azure Stack 启用备份](azure-stack-backup-enable-backup-powershell.md)的过程中生成。
 
 密钥必须存储在一个安全位置（例如，公共 Azure Key Vault 机密）。 在重新部署 Azure Stack 期间，必须使用此密钥。 
 

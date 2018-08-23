@@ -6,16 +6,17 @@ author: ghogen
 manager: douge
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 04/15/2018
 ms.author: ghogen
-ms.openlocfilehash: 64d1a404eac955f47308f01edd56b3d008e250a0
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e591771ee9c9cb12d9ec2ff61ec7f5a76691c8c7
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33781776"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42145091"
 ---
 # <a name="get-started-with-key-vault-connected-service-in-visual-studio-aspnet-core-projects"></a>Visual Studio 中的 Key Vault 连接服务入门（ASP.NET Core 项目）
 
@@ -29,11 +30,11 @@ ms.locfileid: "33781776"
 
 ## <a name="after-you-connect"></a>连接后
 
-1. 在 Azure 中将机密添加到 Key Vault。 若要转到门户中的相应位置，请单击用于管理此 Key Vault 中存储的机密的链接。 如果已关闭该页或项目，可以在 [Azure 门户](https://portal.azure.com)中通过选择“安全性”下的“所有服务”导航到它，选择 **Key Vault**，然后选择刚刚创建的密钥保管库。
+1. 在 Azure 中将机密添加到 Key Vault。 若要转到门户中的相应位置，请单击用于管理此 Key Vault 中存储的机密的链接。 如果已关闭该页或项目，可以在 [Azure 门户](https://portal.azure.com)中通过选择“安全性”下的“所有服务”导航到它，选择 **Key Vault**，然后选择刚刚创建的 Key Vault。
 
    ![导航到门户](media/vs-key-vault-add-connected-service/manage-secrets-link.jpg)
 
-1. 在创建的密钥保管库的 Key Vault 部分中，依次选择“机密”、“生成/导入”。
+1. 在创建的 Key Vault 的 Key Vault 部分，依次选择“机密”、“生成/导入”。
 
    ![生成/导入机密](media/vs-key-vault-add-connected-service/generate-secrets.jpg)
 
@@ -54,7 +55,7 @@ ms.locfileid: "33781776"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要资源组时，即可将其删除。 这将删除 Key Vault 及相关资源。 若要通过门户删除资源组，请执行以下操作：
+不再需要资源组时，可将其删除。 这会删除 Key Vault 和相关的资源。 若要通过门户删除资源组，请执行以下操作：
 
 1. 在门户顶部的“搜索”框中输入资源组的名称。 在搜索结果中看到在本快速入门中使用的资源组后，请将其选中。
 2. 选择“删除资源组”。

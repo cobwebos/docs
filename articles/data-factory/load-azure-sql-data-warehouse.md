@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 4322f1837c9b7fffba180f7106911d010a9ad8aa
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8525dd443e80bb7d67bc48cc007ab1632ee3e611
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448530"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42145353"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂向 Azure SQL 数据仓库加载数据
 
@@ -40,7 +40,7 @@ ms.locfileid: "39448530"
 * Azure 订阅：如果没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 * Azure SQL 数据仓库：数据仓库包含从 SQL 数据库复制的数据。 如果没有 Azure SQL 数据仓库，请参阅[创建 Azure SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md)中的说明。
 * Azure SQL 数据库：本教程使用 Adventure Works LT 示例数据从 Azure SQL 数据库复制数据。 可以遵照[创建 Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)中的说明创建 SQL 数据库。 
-* Azure 存储帐户：Azure 存储用作批量复制操作中的过渡 Blob。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)中的说明。
+* Azure 存储帐户：Azure 存储用作批量复制操作中的过渡 Blob。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)中的说明。
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 

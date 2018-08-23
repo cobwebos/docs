@@ -7,14 +7,14 @@ manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.date: 05/29/2017
+ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: fb2020f7bfc8521e141adb4eefbc227e8123a269
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 5b468e1758d752cd3001c85b328d064369429499
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40002614"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42141895"
 ---
 # <a name="create-an-event-hubs-namespace-and-an-event-hub-using-the-azure-portal"></a>使用 Azure 门户创建事件中心命名空间和事件中心
 

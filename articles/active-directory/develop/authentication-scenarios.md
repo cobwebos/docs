@@ -17,12 +17,12 @@ ms.date: 07/26/2018
 ms.author: celested
 ms.reviewer: jmprieur, andret, nacanuma, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: dda0d8e9496eb310f6d2a2791977e9de0eea6503
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: fc6c97906525b2f575a18ce5357eb3e10bfb4887
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578518"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42145289"
 ---
 # <a name="authentication-scenarios-for-azure-ad"></a>Azure AD 的身份验证方案
 
@@ -52,7 +52,7 @@ Azure Active Directory (Azure AD) 通过以下方式简化了对开发人员的�
 * Azure AD 是标识提供程序，负责对组织的目录中存在的用户和应用程序的标识进行验证，并最终在那些用户和应用程序成功通过身份验证时颁发安全令牌。
 * 希望将身份验证外包给 Azure AD 的应用程序必须在 Azure AD 中进行注册，Azure AD 会在目录中注册并唯一地标识该应用程序。
 * 开发人员可以使用开源 Azure AD 身份验证库处理协议细节，方便你进行身份验证。 有关详细信息，请参阅 [Azure Active Directory 身份验证库](active-directory-authentication-libraries.md)。
-* 在用户通过身份验证后，应用程序必须对用户的安全令牌进行验证以确保身份验证是成功的。 在 [GitHub](https://github.com/Azure-Samples?q=active-directory) 上，我们有一些应用程序必须使用各种语言和框架执行的操作的示例。 如果要使用 ASP.NET 构建 Web 应用，请参阅[为 ASP.NET Web 应用添加登录功能指南](https://docs.microsoft.com/en-us/azure/active-directory/develop/guidedsetups/active-directory-aspnetwebapp)。 如果要使用 ASP.NET 构建 Web API 资源，请参阅 [Web API 入门指南](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devquickstarts-webapi-dotnet)。
+* 在用户通过身份验证后，应用程序必须对用户的安全令牌进行验证以确保身份验证是成功的。 在 [GitHub](https://github.com/Azure-Samples?q=active-directory) 上，我们有一些应用程序必须使用各种语言和框架执行的操作的示例。 如果要使用 ASP.NET 构建 Web 应用，请参阅[为 ASP.NET Web 应用添加登录功能指南](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-aspnetwebapp)。 如果要使用 ASP.NET 构建 Web API 资源，请参阅 [Web API 入门指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devquickstarts-webapi-dotnet)。
 * 身份验证过程的请求和响应流是由所使用的身份验证协议（例如 OAuth 2.0、OpenID Connect、WS 联合身份验证或 SAML 2.0）决定的。 [Azure Active Directory 身份验证协议](active-directory-authentication-protocols.md)一文和下面的部分中更详细地讨论了这些协议。
 
 > [!NOTE]

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: jeedes
-ms.openlocfilehash: c3a91509238534bed37cfd169c66f37732546bfb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 06cccaeaea3ff43bd5a4100ef0d4628e8cc77254
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425113"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42142048"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envoy"></a>教程：Azure Active Directory 与 Envoy 的集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "39425113"
 
     ![Envoy 域和 URL 单一登录信息](./media/envoy-tutorial/tutorial_envoy_url.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<tenant-name>.Envoy.com`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://app.envoy.com/a/saml/auth/<company-ID-from-Envoy>`
     
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新此值。 请联系 [Envoy 客户端支持团队](https://envoy.com/contact/)获取此值。

@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
-ms.openlocfilehash: 6b71aa004095a94bea84623fd2b5dbdfc1f81af0
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 34ee673ee1cf870e376ac8c954a9f3fc468abaa2
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
-ms.locfileid: "29461836"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42141640"
 ---
 # <a name="troubleshoot-slow-web-app-performance-issues-in-azure-app-service"></a>排查 Azure 应用服务中 Web 应用性能缓慢的问题
 本文将帮助排查 [Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)中 Web 应用性能缓慢的问题。
@@ -91,7 +91,7 @@ ms.locfileid: "29461836"
 - 源代码编辑器，如 [Visual Studio Team Services](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx)。 
 - 连接的资源（如连接到 Web 应用的 MySQL 数据库）的管理工具。
 
-[Azure Application Insights](/services/application-insights/) 是也可用的性能监视站点扩展。 若要使用 Application Insights，请使用 SDK 重新生成代码。 还可以安装用于访问其他数据的扩展。 SDK 可用于编写代码，以便更详细地监视应用的使用情况和性能。 有关详细信息，请参阅[在 Web 应用程序中监视性能](../application-insights/app-insights-web-monitor-performance.md)。
+[Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 是也可用的性能监视站点扩展。 若要使用 Application Insights，请使用 SDK 重新生成代码。 还可以安装用于访问其他数据的扩展。 SDK 可用于编写代码，以便更详细地监视应用的使用情况和性能。 有关详细信息，请参阅[在 Web 应用程序中监视性能](../application-insights/app-insights-web-monitor-performance.md)。
 
 <a name="collect" />
 

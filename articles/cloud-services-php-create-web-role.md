@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 9d4be08e732127d6da12a9e0367383347f53c796
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 30afc1c577ab6dd18374d5ef5199c7e7d9e89fe4
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "34608893"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42145051"
 ---
 # <a name="create-php-web-and-worker-roles"></a>创建 PHP Web 角色和辅助角色
 
@@ -211,7 +211,7 @@ Azure 模拟器提供了一个本地环境，可在将 Azure 应用程序部署�
 
 ## <a name="publish-your-application"></a>发布应用程序
 
-若要发布应用程序，需要先使用 [Import-AzurePublishSettingsFile](https://msdn.microsoft.com/library/azure/dn790370.aspx) cmdlet 导入发布设置。 然后使用 [Publish-AzureServiceProject](https://msdn.microsoft.com/library/azure/dn495166.aspx) cmdlet 发布应用程序。 有关登录的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+若要发布应用程序，需要先使用 [Import-AzurePublishSettingsFile](https://docs.microsoft.com/powershell/module/servicemanagement/azure/import-azurepublishsettingsfile) cmdlet 导入发布设置。 然后使用 [Publish-AzureServiceProject](https://docs.microsoft.com/powershell/module/servicemanagement/azure/publish-azureserviceproject) cmdlet 发布应用程序。 有关登录的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -221,6 +221,6 @@ Azure 模拟器提供了一个本地环境，可在将 Azure 应用程序部署�
 [服务定义 (.csdef)]: http://msdn.microsoft.com/library/windowsazure/ee758711.aspx
 [服务配置 (.cscfg)]: http://msdn.microsoft.com/library/windowsazure/ee758710.aspx
 [iis.net]: http://www.iis.net/
-[sql native client]: http://msdn.microsoft.com/sqlserver/aa937733.aspx
+[sql native client]: https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation
 [sqlsrv drivers]: http://php.net/sqlsrv
 [sqlncli.msi x64 安装程序]: http://go.microsoft.com/fwlink/?LinkID=239648

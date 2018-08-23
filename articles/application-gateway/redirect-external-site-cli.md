@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/24/2018
 ms.author: victorh
-ms.openlocfilehash: b19f3f52340501076d896d1f9f7cc6cb755bdc69
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ea4fd94a00e1d22021417373da0b3fcffea4d120
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432661"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42141637"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>使用 Azure CLI 创建支持外部重定向的应用程序网关
 
@@ -48,7 +48,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>创建网络资源 
 
-使用 [az network vnet create](/cli/azure/network/vnet#az-net) 创建名为 *myVNet* 的虚拟网络和名为 *myAGSubnet* 的子网。 使用 [az network public-ip create](/cli/azure/public-ip#az-network_public_ip_create) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。 这些资源用于提供与应用程序网关及其关联资源的网络连接。
+使用 [az network vnet create](/cli/azure/network/vnet#az-net) 创建名为 *myVNet* 的虚拟网络和名为 *myAGSubnet* 的子网。 使用 [az network public-ip create](/cli/azure/network/public-ip#az-network_public_ip_create) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。 这些资源用于提供与应用程序网关及其关联资源的网络连接。
 
 ```azurecli-interactive
 az network vnet create \
@@ -65,7 +65,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
-可以使用 [az network application-gateway create](/cli/azure/application-gateway#create) 创建名为 *myAppGateway* 的应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 将应用程序网关分配给之前创建的 *myAGSubnet* 和 *myPublicIPSddress*。 
+可以使用 [az network application-gateway create](/cli/azure/network/application-gateway#create) 创建名为 *myAppGateway* 的应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 将应用程序网关分配给之前创建的 *myAGSubnet* 和 *myPublicIPSddress*。 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -106,7 +106,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-a-listener-and-routing-rule"></a>添加侦听器和路由规则
 
-应用程序网关需要侦听器才能适当地将流量路由到后端池。 使用创建侦听器[az 网络应用程序网关 http 侦听器创建](/cli/azure/application-gateway#az-network_application_gateway_http_listener_create)使用创建的前端端口与[az 网络应用程序网关前端端口创建](/cli/azure/application-gateway#az-network_application_gateway_frontend_port_create)。 侦听器需要使用规则来了解哪个后端池使用传入流量。 使用 [az network application-gateway rule create](/cli/azure/application-gateway#az-network_application_gateway_rule_create) 创建名为 *redirectRule* 的基本规则。
+应用程序网关需要侦听器才能适当地将流量路由到后端池。 使用创建侦听器[az 网络应用程序网关 http 侦听器创建](/cli/azure/network/application-gateway#az-network_application_gateway_http_listener_create)使用创建的前端端口与[az 网络应用程序网关前端端口创建](/cli/azure/network/application-gateway#az-network_application_gateway_frontend_port_create)。 侦听器需要使用规则来了解哪个后端池使用传入流量。 使用 [az network application-gateway rule create](/cli/azure/network/application-gateway#az-network_application_gateway_rule_create) 创建名为 *redirectRule* 的基本规则。
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \

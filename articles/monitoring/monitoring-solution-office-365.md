@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2018
+ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: 2cc00aefb6099eb053aac321625a9b94cb7b4188
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 3772b03d9a9d688b9d0eac42d51af7a2f2e0c5bd
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888868"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42145496"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览）
 
@@ -122,23 +122,18 @@ ms.locfileid: "37888868"
     )
     
     $option = [System.StringSplitOptions]::RemoveEmptyEntries 
-        
+    
     IF ($Subscription -eq $null)
         {Login-AzureRmAccount -ErrorAction Stop}
     $Subscription = (Select-AzureRmSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
     $Subscription
     $Workspace = (Set-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
     $WorkspaceLocation= $Workspace.Location
-    $WorkspaceLocationShort= $Workspace.PortalUrl.Split("/",$option)[1].Split(".",$option)[0]
     $WorkspaceLocation
     
     Function AdminConsent{
     
     $domain='login.microsoftonline.com'
-    $mmsDomain = 'login.mms.microsoft.com'
-    $WorkspaceLocationShort= $Workspace.PortalUrl.Split("/",$option)[1].Split(".",$option)[0]
-    $WorkspaceLocationShort
-    $WorkspaceLocation
     switch ($WorkspaceLocation.Replace(" ","").ToLower()) {
            "eastus"   {$OfficeAppClientId="d7eb65b0-8167-4b5d-b371-719a2e5e30cc"; break}
            "westeurope"   {$OfficeAppClientId="c9005da2-023d-40f1-a17a-2b7d91af4ede"; break}
@@ -152,16 +147,13 @@ ms.locfileid: "37888868"
            "eastus2"  {$OfficeAppClientId="7eb65b0-8167-4b5d-b371-719a2e5e30cc"; break}
            "westus2"  {$OfficeAppClientId="98a2a546-84b4-49c0-88b8-11b011dc8c4e"; break} #Need to check
            "usgovvirginia" {$OfficeAppClientId="c8b41a87-f8c5-4d10-98a4-f8c11c3933fe"; 
-                             $domain='login.microsoftonline.us';
-                             $mmsDomain = 'usbn1.login.oms.microsoft.us'; break} # US Gov Virginia
+                             $domain='login.microsoftonline.us'; break}
            default {$OfficeAppClientId="55b65fb5-b825-43b5-8972-c8b6875867c1";
                     $domain='login.windows-ppe.net'; break} #Int
         }
     
-        $OfficeAppRedirectUrl="https://$($WorkspaceLocationShort).$($mmsDomain)/Office365/Authorize"
-        $OfficeAppRedirectUrl
         $domain
-        Start-Process -FilePath  "https://$($domain)/common/adminconsent?client_id=$($OfficeAppClientId)&state=12345&redirect_uri=$($OfficeAppRedirectUrl)"
+        Start-Process -FilePath  "https://$($domain)/common/adminconsent?client_id=$($OfficeAppClientId)&state=12345"
     }
     
     AdminConsent -ErrorAction Stop
@@ -231,12 +223,6 @@ ms.locfileid: "37888868"
     
     Function RESTAPI-Auth { 
     
-    # Load ADAL Azure AD Authentication Library Assemblies
-    $adal = "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Services\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
-    $adalforms = "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Services\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll"
-    $null = [System.Reflection.Assembly]::LoadFrom($adal)
-    $null = [System.Reflection.Assembly]::LoadFrom($adalforms)
-     
     $global:SubscriptionID = $Subscription.SubscriptionId
     # Set Resource URI to Azure Service Management API
     $resourceAppIdURIARM=$ARMResource;
@@ -364,7 +350,7 @@ ms.locfileid: "37888868"
     .\office365_subscription.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeUsername 'admin@contoso.com' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx' -OfficeClientId 'f8f14c50-5438-4c51-8956-zzzzzzzzzzzz' -OfficeClientSecret 'y5Lrwthu6n5QgLOWlqhvKqtVUZXX0exrA2KRHmtHgQb='
     ```
 
-### <a name="troublshooting"></a>故障排除
+### <a name="troubleshooting"></a>故障排除
 
 在订阅已存在后，如果尝试创建订阅，则会出现以下错误。
 
@@ -436,12 +422,6 @@ At line:12 char:18
     
     Function RESTAPI-Auth { 
     
-    # Load ADAL Azure AD Authentication Library Assemblies
-    $adal = "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Services\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
-    $adalforms = "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Services\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll"
-    $null = [System.Reflection.Assembly]::LoadFrom($adal)
-    $null = [System.Reflection.Assembly]::LoadFrom($adalforms)
-     
     $global:SubscriptionID = $Subscription.SubscriptionId
     # Set Resource URI to Azure Service Management API
     $resourceAppIdURIARM=$ARMResource;
@@ -512,7 +492,7 @@ Office 365 解决方案不会从任何 [OMS 代理](../log-analytics/log-analyti
 
 仪表板包含下表中的列。 每个列按照指定范围和时间范围内符合该列条件的计数列出了前十个警报。 可通过以下方式运行提供整个列表的日志搜索：单击该列底部的“全部查看”或单击列标题。
 
-| 列 | 说明 |
+| 列 | Description |
 |:--|:--|
 | 操作 | 提供所有监视的 Office 365 订阅中的活动用户相关信息。 还能够看到随着时间的推移发生的活动数。
 | Exchange | 显示 Exchange Server 活动的明细，例如 Add-Mailbox 权限或 Set-Mailbox。 |
@@ -529,7 +509,7 @@ Office 365 解决方案在 Log Analytics 工作区中创建的所有记录都具
 ### <a name="common-properties"></a>通用属性
 以下属性对于所有 Office 365 记录通用。
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--- |:--- |
 | Type | OfficeActivity |
 | ClientIP | 记录活动时使用的设备的 IP 地址。 IP 地址以 IPv4 或 IPv6 地址格式显示。 |
@@ -546,7 +526,7 @@ Office 365 解决方案在 Log Analytics 工作区中创建的所有记录都具
 ### <a name="azure-active-directory-base"></a>Azure Active Directory Base
 以下属性对于所有 Azure Active Directory 记录通用。
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -557,7 +537,7 @@ Office 365 解决方案在 Log Analytics 工作区中创建的所有记录都具
 ### <a name="azure-active-directory-account-logon"></a>Azure Active Directory 帐户登录
 Active Directory 用户尝试登录时，将创建这些记录。
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectoryAccountLogon |
@@ -570,7 +550,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 ### <a name="azure-active-directory"></a>Azure Active Directory
 更改 Azure Active Directory 对象或向其添加内容时，将创建这些记录。
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -587,7 +567,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 ### <a name="data-center-security"></a>数据中心安全
 基于数据中心安全审核数据创建这些记录。  
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--- |:--- |
 | EffectiveOrganization | 提升/cmdlet 面向的租户的名称。 |
 | ElevationApprovedTime | 提升获得批准时的时间戳。 |
@@ -602,7 +582,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 ### <a name="exchange-admin"></a>Exchange 管理员
 更改 Exchange 配置时，将创建这些记录。
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeAdmin |
@@ -616,7 +596,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 ### <a name="exchange-mailbox"></a>Exchange 邮箱
 更改 Exchange 邮箱或向其添加内容时，将创建这些记录。
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
@@ -638,7 +618,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 ### <a name="exchange-mailbox-audit"></a>Exchange 邮箱审核
 创建邮箱审核项时，将创建这些记录。
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
@@ -652,7 +632,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 ### <a name="exchange-mailbox-audit-group"></a>Exchange 邮箱审核组
 更改 Exchange 组或向其添加内容时，将创建这些记录。
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | OfficeWorkload | ExchangeItemGroup |
@@ -670,7 +650,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 ### <a name="sharepoint-base"></a>SharePoint Base
 这些属性对于所有 SharePoint 记录通用。
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -686,7 +666,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 ### <a name="sharepoint-schema"></a>SharePoint 架构
 对 SharePoint 进行配置更改时，将创建这些记录。
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -698,7 +678,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 ### <a name="sharepoint-file-operations"></a>SharePoint 文件操作
 响应 SharePoint 中的文件操作时，将创建这些记录。
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePointFileOperation |
@@ -718,7 +698,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 ## <a name="sample-log-searches"></a>示例日志搜索
 下表提供了此解决方案收集的更新记录的示例日志搜索。
 
-| 查询 | 说明 |
+| 查询 | Description |
 | --- | --- |
 |Office 365 订阅上所有操作的计数 |OfficeActivity &#124; summarize count() by Operation |
 |SharePoint 网站的使用情况|OfficeActivity &#124; where OfficeWorkload =~ "sharepoint" &#124; summarize count() by SiteUrl | sort by Count asc|

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 8/04/2017
 ms.author: cawa
-ms.openlocfilehash: e2772cc2c59b93c7e523eaa0127dcf4ea0bc589e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8d76a2144234591792359ed8dd4a0779e6a2fc5c
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208679"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42142045"
 ---
 # <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>从 Visual Studio 配置与 Service Fabric 群集的安全连接
 了解如何使用 Visual Studio 安全访问已配置访问控制策略的 Azure Service Fabric 群集。
@@ -46,7 +46,7 @@ Visual Studio Service Fabric 工具支持所有用于连接到群集来进行发
    
    由于正在手动编辑“发布配置文件”XML 文件以指定证书信息，因此请务必记下证书存储名称、存储位置以及证书指纹。 稍后需要为证书的存储名称和存储位置提供这些值。 有关详细信息，请参阅[如何：检索证书的指纹](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx)。
    
-   可以使用 *ClusterConnectionParameters* 参数指定连接到 Service Fabric 群集时要使用的 PowerShell 参数。 有效的参数是 Connect-ServiceFabricCluster cmdlet 所接受的任何参数。 有关可用参数的列表，请参阅 [Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx)。
+   可以使用 *ClusterConnectionParameters* 参数指定连接到 Service Fabric 群集时要使用的 PowerShell 参数。 有效的参数是 Connect-ServiceFabricCluster cmdlet 所接受的任何参数。 有关可用参数的列表，请参阅 [Connect-ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster)。
    
    如果要发布到远程群集，需要指定该特定群集的相应参数。 下面是连接到不安全群集的示例：
    

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: rogarana
 ms.component: queues
-ms.openlocfilehash: 7ab755972760d5f262e00ca4aaf284c8d2847460
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 70efdf1fb2c1b8411e922f16fdf401d1bf428d08
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528276"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42142252"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>如何通过 PHP 使用队列存储
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -416,7 +416,7 @@ catch(ServiceException $e){
 * 请访问 [Azure 存储 PHP 客户端库的 API 参考](http://azure.github.io/azure-storage-php/)
 * 请参阅[高级队列示例](https://github.com/Azure/azure-storage-php/blob/master/samples/QueueSamples.php)。
 
-有关详细信息，另请参阅 [PHP 开发人员中心](/develop/php/)。
+有关详细信息，另请参阅 [PHP 开发人员中心](https://azure.microsoft.com/develop/php/)。
 
 [download]: https://github.com/Azure/azure-storage-php
 [require_once]: http://www.php.net/manual/en/function.require-once.php

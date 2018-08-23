@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: fd2505d6262948e193531d91222cdec319f33100
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 72035c2f13f5a2a749feabbb26db5500f6c3fc0a
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597147"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42141650"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
 
@@ -99,12 +99,12 @@ USER 设备下面只会列出以下设备：
 
 **问：我的用户无法从 Azure AD 联接设备中搜索打印机。如何从 Azure AD 联接设备启用打印？**
 
-**答：** 有关为 Azure AD 联接设备部署打印机的信息，请参阅[混合云打印](https://docs.microsoft.com/en-us/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)。 需要安装本地 Windows Server 才能部署混合云打印。 当前，无法使用基于云的打印服务。 
+**答：** 有关为 Azure AD 联接设备部署打印机的信息，请参阅[混合云打印](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)。 需要安装本地 Windows Server 才能部署混合云打印。 当前，无法使用基于云的打印服务。 
 
 ---
 
 **问：如何连接到已加入 Azure AD 的远程设备？**
-**答：** 有关详细信息，请参阅文章 https://docs.microsoft.com/en-us/windows/client-management/connect-to-remote-aadj-pc。
+**答：** 有关详细信息，请参阅文章 https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc。
 
 ---
 

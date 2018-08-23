@@ -3,7 +3,8 @@ title: 在 Azure 上预配 Linux (Ubuntu) 数据科学虚拟机 | Microsoft Docs
 description: 在 Azure 上配置和创建适用于 Linux (Ubuntu) 的数据科学虚拟机，进行分析和机器学习。
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: gopitk
+ms.author: gokuma
 manager: cgronlun
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
@@ -13,13 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: bradsev
-ms.openlocfilehash: 19f190c66f7bb4042c640f2cbb82f911746ceb45
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f45bb3b47209bd6b02cea49c23b0a59ad75fc2e2
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422369"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42141920"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>在 Azure 上预配适用于 Linux (Ubuntu) 的数据科学虚拟机
 
@@ -53,7 +53,7 @@ ms.locfileid: "39422369"
 * 机器学习工具
   * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit)：一种快速机器学习系统，支持在线、哈希、allreduce、缩减、learning2search、主动和交互式学习等技术
   * [XGBoost](https://xgboost.readthedocs.org/en/latest/)：一种提供快速、准确的提升树实现的工具
-  * [Rattle](http://rattle.togaware.com/)：一种图形工具，可帮助在 R 中轻松开始进行数据分析和机器学习
+  * [Rattle](https://togaware.com/rattle/)：一种图形工具，可帮助在 R 中轻松开始进行数据分析和机器学习
   * [LightGBM](https://github.com/Microsoft/LightGBM)：一种快速、分布式、高性能的梯度提升框架
 * Java、Python、node.js、Ruby 和 PHP 中的 Azure SDK
 * R 和 Python 中的库，供 Azure 机器学习和其他 Azure 服务使用
@@ -149,7 +149,7 @@ Linux VM 已通过 X2Go 服务器进行预配并且可接受客户端连接。 �
 
 Ubuntu DSVM 运行 [JupyterHub](https://github.com/jupyterhub/jupyterhub)，一个多用户 Jupyter 服务器。 若要连接，请浏览到笔记本电脑或台式电脑上的 https://your-vm-ip:8000 ，输入用来创建 VM 的用户名和密码，然后登录。 提供多个示例笔记本用于浏览和试用。
 
-也会提供 JupyterLab（下一代的 Jupyter 笔记本和 JupyterHub）。 若要访问它，请登录到 JupyterHub，然后浏览到 URL https://your-vm-ip:8000/lab。 可以通过将此行添加到 /etc/jupyterhub/jupyterhub_config.py，将 JupyterLab 设置为默认笔记本服务器：
+也会提供 JupyterLab（下一代的 Jupyter 笔记本和 JupyterHub）。 若要访问它，请登录到 JupyterHub，然后浏览到 URL https://your-vm-ip:8000/user/your-username/lab。 可以通过将此行添加到 /etc/jupyterhub/jupyterhub_config.py，将 JupyterLab 设置为默认笔记本服务器：
 
     c.Spawner.default_url = '/lab'
 

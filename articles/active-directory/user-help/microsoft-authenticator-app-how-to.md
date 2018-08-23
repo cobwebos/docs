@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: 8afd743f6010822709bf3d49f7a3bbcd51b19edf
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: c8e14091d7a3fb5b925735824b1dd3ce26f034e8
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346481"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42142273"
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Microsoft 验证器应用入门
 
-Microsoft Authenticator 应用可以帮助阻止未经授权的人员访问帐户；此外，它还能为工作或学校帐户（例如 alain@contoso.com）或个人 Microsoft 帐户（例如 alain@outlook.com）提供附加的安全层，以此阻止欺诈性的交易。 可以将它用作第二种验证方法，或者在使用手机登录时，用它来取代密码。 有关如何设置和使用无密码手机登录的详细信息，请参阅[使用手机（而不是密码）登录](microsoft-authenticator-app-phone-signin-faq.md)。
+Microsoft Authenticator 应用可以帮助阻止未经授权的人员访问帐户；此外，它还能为工作或学校帐户（例如 alain@contoso.com）或个人 Microsoft 帐户（例如 alain@outlook.com）提供附加的安全层，以此阻止欺诈性的交易。
 
 将该应用用于双重验证时，它采用以下两种工作方式之一：
 
@@ -110,8 +110,6 @@ Microsoft Authenticator 应用适用于 [Android](https://go.microsoft.com/fwlin
 ## <a name="next-steps"></a>后续步骤
 
 - 如果对该应用存在其他一般性的问题，请参阅 [Microsoft Authenticator 常见问题解答](microsoft-authenticator-app-faq.md)
-
-- 如果在手机登录的用法方面有任何疑问，请参阅[使用手机（而不是密码）登录](microsoft-authenticator-app-phone-signin-faq.md)
 
 - 如需有关双重验证的详细信息，请参阅[为帐户设置双重验证](multi-factor-authentication-end-user-first-time.md)
 

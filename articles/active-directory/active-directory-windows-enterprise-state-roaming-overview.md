@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: markvi
-ms.openlocfilehash: c2c94f488da6399965c59f761ff9f0539cf4de2f
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: c1332679af57a4994f4337e241845a87bf16b341
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39227724"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42141449"
 ---
 # <a name="enterprise-state-roaming-overview"></a>企业状态漫游概述
-通过 Windows 10，[Azure Active Directory (Azure AD)](fundamentals/active-directory-whatis.md) 用户能够安全地将其用户设置和应用程序设置数据同步到云。 企业状态漫游可跨 Windows 设备为用户提供统一体验，并减少配置新设备所需的时间。 企业状态漫游的操作类似于首次在 Windows 8 中引入的标准[用户设置同步](http://windows.microsoft.com/en-US/windows-8/sync-settings-pcs)。 此外，企业状态漫游还提供以下优势：
+通过 Windows 10，[Azure Active Directory (Azure AD)](fundamentals/active-directory-whatis.md) 用户能够安全地将其用户设置和应用程序设置数据同步到云。 企业状态漫游可跨 Windows 设备为用户提供统一体验，并减少配置新设备所需的时间。 企业状态漫游的操作类似于首次在 Windows 8 中引入的标准[用户设置同步](http://windows.microsoft.com/windows-8/sync-settings-pcs)。 此外，企业状态漫游还提供以下优势：
 
 * **分离企业数据和用户数据** – 组织可掌控其数据，且用户云帐户中不会混有企业数据，企业云帐户中不会混有用户数据。
 * **增强安全性** - 数据离开用户的 Windows 10 设备前，会使用 Azure Rights Management (Azure RMS) 自动对其加密，云中的静态数据也会保持加密状态。 云中的所有静态内容保持加密状态，设置名称和 Windows 应用名称等命名空间除外。  

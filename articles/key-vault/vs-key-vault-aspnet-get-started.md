@@ -6,16 +6,17 @@ author: ghogen
 manager: douge
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 04/15/2018
 ms.author: ghogen
-ms.openlocfilehash: cd305801f10c899682aa6d751e48f30b6e8303fa
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3ca62d47d8e7682c80985bf5409b8540382fbf45
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33781616"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42142264"
 ---
 # <a name="get-started-with-key-vault-connected-service-in-visual-studio-aspnet-projects"></a>Visual Studio 中的 Key Vault 连接服务入门（ASP.NET 项目）
 
@@ -33,7 +34,7 @@ ms.locfileid: "33781616"
 
    ![导航到门户](media/vs-key-vault-add-connected-service/manage-secrets-link.jpg)
 
-1. 在创建的密钥保管库的 Key Vault 部分，依次选择“机密”、“生成/导入”。
+1. 在创建的 Key Vault 的 Key Vault 部分，依次选择“机密”、“生成/导入”。
 
    ![生成/导入机密](media/vs-key-vault-add-connected-service/generate-secrets.jpg)
 
@@ -43,7 +44,7 @@ ms.locfileid: "33781616"
  
 1. （可选）输入另一个机密，但这一次通过将其命名为“Secrets--MySecret”将其放入某个类别。 此语法指定的类别 **Secrets** 包含机密 **MySecret**。
 
-1. 将 web.config 修改如下。 这些密钥是占位符，将会由 AzureKeyVault ConfigurationBuilder 替换为 Key Vault 中的机密值。
+1. 将 web.config 修改如下。 这些键是占位符，AzureKeyVault ConfigurationBuilder 会将其替换为 Key Vault 中的机密值。
 
    ```xml
      <appSettings configBuilders="AzureKeyVault">
@@ -56,7 +57,7 @@ ms.locfileid: "33781616"
      </appSettings>
    ```
 
-1. 在 HomeController 的 About 控制器方法中添加以下行，以便检索机密并将其存储在 ViewBag 中。
+1. 在 HomeController 的 About 控制器方法中添加以下行，以检索机密并将其存储在 ViewBag 中。
  
    ```csharp
             var secret = ConfigurationManager.AppSettings["MySecret"];
@@ -76,7 +77,7 @@ ms.locfileid: "33781616"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要资源组时，即可将其删除。 这将删除 Key Vault 及相关资源。 若要通过门户删除资源组，请执行以下操作：
+不再需要资源组时，可将其删除。 这会删除 Key Vault 和相关的资源。 若要通过门户删除资源组，请执行以下操作：
 
 1. 在门户顶部的“搜索”框中输入资源组的名称。 在搜索结果中看到在本快速入门中使用的资源组后，请将其选中。
 2. 选择“删除资源组”。

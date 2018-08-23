@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
 ms.component: queues
-ms.openlocfilehash: 975f76fa15507874a16b2b14c2988d618daf2b29
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 8779b067c33ce76cd60b020e2952bcbccf0dd944
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39520480"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42142052"
 ---
 # <a name="how-to-use-queue-storage-from-python"></a>如何通过 Python 使用队列存储
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -127,7 +127,7 @@ queue_service.delete_queue('taskqueue')
 ## <a name="next-steps"></a>后续步骤
 在了解了队列存储的基础知识后，可单击下面的链接了解详细信息。
 
-* [Python 开发人员中心](/develop/python/)
+* [Python 开发人员中心](https://azure.microsoft.com/develop/python/)
 * [Azure 存储服务 REST API](http://msdn.microsoft.com/library/azure/dd179355)
 * [Azure 存储团队博客]
 * [用于 Python 的 Microsoft Azure 存储 SDK]

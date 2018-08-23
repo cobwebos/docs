@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/19/2017
 ms.author: tamram
 ms.component: files
-ms.openlocfilehash: 7e5c85890585230961f52803b081c636c950c518
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 37c42c5a680b8768d0882ad97fb3f3f2ed4ab821
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39529188"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42145488"
 ---
 # <a name="develop-for-azure-files-with-python"></a>使用 Python 针对 Azure 文件进行开发
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -177,6 +177,6 @@ file_service.delete_share(share_name, delete_snapshots=DeleteSnapshot.Include)
 ## <a name="next-steps"></a>后续步骤
 了解如何使用 Python 操作 Azure 文件后，请单击以下链接了解更多信息。
 
-* [Python 开发人员中心](/develop/python/)
+* [Python 开发人员中心](https://azure.microsoft.com/develop/python/)
 * [Azure 存储空间服务 REST API](http://msdn.microsoft.com/library/azure/dd179355)
 * [用于 Python 的 Microsoft Azure 存储 SDK](https://github.com/Azure/azure-storage-python)
