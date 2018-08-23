@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/30/2018
 ms.author: mstewart
-ms.openlocfilehash: 19fe03a6d06b0f058a90e8bdc40d862601db4f7e
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 5421858fd7f31f18c2e6a1e3693b67b3c47a6945
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399892"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42145483"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Azure 磁盘加密先决条件 
  本文“Azure 磁盘加密先决条件”介绍了在使用 Azure 磁盘加密之前所要满足的条件。 除满足常规先决条件外，Azure 磁盘加密还与 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) 集成，并使用 Azure AD 应用程序提供身份验证，以管理 Key Vault 中的加密密钥。 还可以使用 [Azure PowerShell](/powershell/azure/overview) 或 [Azure CLI](/cli/azure/) 来设置或配置 Key Vault 与 Azure AD 应用程序。
@@ -109,7 +109,7 @@ ms.locfileid: "39399892"
 
 ## <a name="bkmk_CLI"></a>Azure CLI
 
-[Azure CLI 2.0](/cli/azure) 是用于管理 Azure 资源的命令行工具。 CLI 旨在提高数据查询灵活性、支持非阻塞进程形式的长时间操作，以及简化脚本编写。 可以在浏览器中结合 [Azure Cloud Shell](/cloud-shell/overview.md) 使用这些 cmdlet，或者将它们安装在本地计算机上并在任何 PowerShell 会话中使用。
+[Azure CLI 2.0](/cli/azure) 是用于管理 Azure 资源的命令行工具。 CLI 旨在提高数据查询灵活性、支持非阻塞进程形式的长时间操作，以及简化脚本编写。 可以在浏览器中结合 [Azure Cloud Shell](../cloud-shell/overview.md) 使用这些 cmdlet，或者将它们安装在本地计算机上并在任何 PowerShell 会话中使用。
 
 1. 安装在本地计算机上使用的 [Azure CLI](/cli/azure/install-azure-cli)（可选）：
 
@@ -174,7 +174,7 @@ Azure 磁盘加密与 [Azure Key Vault](https://azure.microsoft.com/documentatio
 可以在 Azure CLI 中使用 [az keyvault](/cli/azure/keyvault#commands) 命令管理 Key Vault。 若要创建 Key Vault，请使用 [az keyvault create](/cli/azure/keyvault#az-keyvault-create)。
 
 1. 根据需要[连接到 Azure 订阅](azure-security-disk-encryption-appendix.md#bkmk_ConnectCLI)。
-2. 根据需要，使用 [az group create](/cli/azure/groupt#az-group-create) 创建新资源组。 若要列出位置，请使用 [az account list-locations](/cli/azure/account#az-account-list) 
+2. 根据需要，使用 [az group create](/cli/azure/group#az-group-create) 创建新资源组。 若要列出位置，请使用 [az account list-locations](/cli/azure/account#az-account-list) 
      
      ```azurecli-interactive
      # To list locations: az account list-locations --output table
@@ -260,7 +260,7 @@ Azure AD 应用程序需有访问保管库中密钥或机密的权限。 使用 
      ```
 
 ### <a name="bkmk_KVAPCLI"></a>使用 Azure CLI 为 Azure AD 应用设置 Key Vault 访问策略
-使用 [az keyvault set-policy](https://docs.microsoft.com/cli/azure/keyvault.md#az-keyvault-set-policy) 设置访问策略。 有关详细信息，请参阅[使用 CLI 2.0 管理 Key Vault](../key-vault/key-vault-manage-with-cli2.md#authorize-the-application-to-use-the-key-or-secret)。
+使用 [az keyvault set-policy](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-set-policy) 设置访问策略。 有关详细信息，请参阅[使用 CLI 2.0 管理 Key Vault](../key-vault/key-vault-manage-with-cli2.md#authorize-the-application-to-use-the-key-or-secret)。
 
 1. 根据需要[连接到 Azure 订阅](azure-security-disk-encryption-appendix.md#bkmk_ConnectCLI)。
 2. 使用以下命令，为通过 Azure CLI 创建的服务主体授予获取机密和包装密钥的访问权限：
@@ -341,13 +341,13 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
 
 * Key Vault 机密和 KEK URL 必须已设置版本。 Azure 会强制实施这项版本控制限制。 有关有效的机密和 KEK URL，请参阅以下示例：
 
-  * 有效机密 URL 的示例：https://contosovault.vault.azure.net/secrets/EncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-  * 有效 KEK URL 的示例：https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  * 有效机密 URL 的示例：   *https://contosovault.vault.azure.net/secrets/EncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * 有效 KEK URL 的示例：   *https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 * Azure 磁盘加密不支持将端口号指定为 Key Vault 机密和 KEK URL 的一部分。 有关不支持和支持的 Key Vault URL 的示例，请参阅以下示例：
 
-  * 无法接受的密钥保管库 URL：https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-  * 可接受的密钥保管库 URL：https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  * 无法接受的密钥保管库 URL：   *https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * 可接受的密钥保管库 URL：   *https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 ### <a name="bkmk_KEKPSH"></a>使用 Azure PowerShell 设置密钥加密密钥 
 在使用 PowerShell 脚本之前，应熟悉 Azure 磁盘加密必备组件，以了解脚本中的步骤。 可能需要根据环境更改示例脚本。 此脚本创建所有 Azure 磁盘加密必备组件、加密现有 IaaS VM，并使用密钥加密密钥来包装磁盘加密密钥。 
