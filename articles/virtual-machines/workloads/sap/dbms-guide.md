@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2caa9a5137edd4e012adf704c01dc5c470e1bb51
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: f6b0ea7479910f7026974e37f8c05099453c0b26
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972438"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42141052"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机 DBMS 部署
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -1166,7 +1166,7 @@ SAP 目前支持 SAP ASE 版本 16.0，可与 SAP Business Suite 产品搭配使
 目前不支持通过 SAP 复制服务器实现 ASE HADR。 未来可能会针对 Microsoft Azure 平台进行测试和发行。
 
 ## <a name="specifics-to-oracle-database-on-windows"></a>有关 Windows 上的 Oracle 数据库的具体信息
-Oracle 支持在 Microsoft Windows Hyper-V 和 Azure 上运行 Oracle 软件。 有关 Windows Hyper-V 和 Azure 常规支持的详细信息，请查看：<https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces> 
+Oracle 支持在 Microsoft Windows Hyper-V 和 Azure 上运行 Oracle 软件。 
 
 根据常规支持，SAP 应用程序使用 Oracle 数据库的特定方案也受到支持。 文档的这一部分对此进行了详细介绍。
 
@@ -1204,7 +1204,7 @@ Oracle 支持在 Microsoft Windows Hyper-V 和 Azure 上运行 Oracle 软件。 
 Azure 可用性集或 SAP 监视等所有其他常规领域也适用于使用 Oracle 数据库进行的 VM 部署，如本文档的前三章所述。
 
 ## <a name="specifics-to-oracle-database-on-oracle-linux"></a>有关 Oracle Linux 上的 Oracle 数据库的具体信息
-Oracle 支持在 Microsoft Windows Hyper-V 和 Azure 上运行 Oracle 软件。 有关 Windows Hyper-V 和 Azure 常规支持的详细信息，请查看：<https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces> 
+Oracle 支持在 Microsoft Windows Hyper-V 和 Azure 上运行 Oracle 软件。 
 
 根据常规支持，SAP 应用程序使用 Oracle 数据库的特定方案也受到支持。 文档的这一部分对此进行了详细介绍。
 

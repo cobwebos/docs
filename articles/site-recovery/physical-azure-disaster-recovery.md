@@ -8,18 +8,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 173423c1a578500a990d6a7b43017d06ea96f6e7
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 3a82fa0464cd98c1e056e097018ba22ac19d72ac
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38704894"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246427"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>针对本地物理服务器设置到 Azure 的灾难恢复
 
 [Azure Site Recovery](site-recovery-overview.md) 服务可管理和协调本地计算机和 Azure 虚拟机 (VM) 的复制、故障转移和故障回复，进而有利于灾难恢复策略。
 
-本教程演示如何对本地物理 Windows 和 Linux 服务器设置到 Azure 的灾难恢复。 本教程介绍如何执行以下操作：
+本教程演示如何对本地物理 Windows 和 Linux 服务器设置到 Azure 的灾难恢复。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 设置 Azure 和本地先决条件
@@ -76,7 +76,7 @@ ms.locfileid: "38704894"
 
 ## <a name="set-up-an-azure-storage-account"></a>设置 Azure 存储帐户
 
-设置 [Azure 存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)。
+设置 [Azure 存储帐户](../storage/common/storage-quickstart-create-account.md)。
 
 - Site Recovery 将本地计算机复制到 Azure 存储。 发生故障转移后，将从存储中创建 Azure VM。
 - 存储帐户必须位于与恢复服务保管库相同的区域。

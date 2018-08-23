@@ -2,18 +2,18 @@
 title: 适用于 Azure 机器学习的硬件加速 FPGA 包
 description: 了解适用于 Azure 机器学习用户的 Python 包。
 ms.service: machine-learning
-ms.component: studio
+ms.component: core
 ms.topic: conceptual
 ms.reviewer: jmartens
-ms.author: routlaw
-author: rloutlaw
+ms.author: tedway
+author: tedway
 ms.date: 05/07/2018
-ms.openlocfilehash: e680ef34be1d5dae2942c432de5e81fe620bbdc4
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: a81f5f811058f3c7940da79419b9801225716e6b
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832972"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42145765"
 ---
 # <a name="azure-machine-learning-hardware-acceleration-package"></a>Azure 机器学习硬件加速包
 
@@ -27,7 +27,7 @@ Azure 机器学习硬件加速包是适用于 Azure 机器学习的 Python pip �
 
 ## <a name="prerequisites"></a>先决条件
 
-1. 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+1. 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 1. 必须创建 Azure 机器学习模型管理帐户。 有关如何创建帐户的详细信息，请参阅 [Azure 机器学习快速入门和 Workbench 安装](../service/quickstart-installation.md)文档。 
 
@@ -40,18 +40,18 @@ Azure 机器学习硬件加速包是适用于 Azure 机器学习的 Python pip �
 
 2. 安装 [Anaconda (Python 3.6)](https://conda.io/miniconda.html)
 
-3. 若要下载预配置的 Anaconda 环境，请使用 Git 提示中的下述命令：
+   若要下载预配置的 Anaconda 环境，请使用 Git 提示中的下述命令：
 
     ```
     git clone https://aka.ms/aml-real-time-ai
     ```
-5. 若要创建环境，请打开“Anaconda 提示”窗口并使用以下命令：
+1. 若要创建环境，请打开“Anaconda 提示”窗口并使用以下命令：
 
     ```
     conda env create -f aml-real-time-ai/environment.yml
     ```
 
-6. 使用以下命令激活环境：
+1. 使用以下命令激活环境：
 
     ```
     conda activate amlrealtimeai

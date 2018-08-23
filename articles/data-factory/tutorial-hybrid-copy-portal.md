@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: jingwang
-ms.openlocfilehash: e007fd5e616b24b3a802b7ded0cd879bb0d7f34b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 994df42557ebd99d159e531f11ffa892be2e9870
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436002"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41917658"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>将数据从本地 SQL Server 数据库复制到 Azure Blob 存储
 本教程使用 Azure 数据工厂用户界面 (UI) 创建一个数据工厂管道，用于将数据从本地 SQL Server 数据库复制到 Azure Blob 存储。 同时创建一个自承载 Integration Runtime，用其在本地数据存储和云数据存储之间移动数据。
@@ -75,7 +75,7 @@ ms.locfileid: "39436002"
 1. 在树状视图中右键单击所创建的数据库，然后选择“新建查询”。
 
 ### <a name="azure-storage-account"></a>Azure 存储帐户
-在本教程中，请使用常规用途的 Azure 存储帐户（具体说来就是 Blob 存储）作为目标/接收器数据存储。 如果没有常规用途的 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)。 在本教程中创建的数据工厂中的管道将数据从本地 SQL Server 数据库（源）复制到 Blob 存储（接收器）。 
+在本教程中，请使用常规用途的 Azure 存储帐户（具体说来就是 Blob 存储）作为目标/接收器数据存储。 如果没有常规用途的 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)。 在本教程中创建的数据工厂中的管道将数据从本地 SQL Server 数据库（源）复制到 Blob 存储（接收器）。 
 
 #### <a name="get-the-storage-account-name-and-account-key"></a>获取存储帐户名称和帐户密钥
 在本教程中，请使用存储帐户的名称和密钥。 若要获取存储帐户的名称和密钥，请执行以下步骤： 
@@ -269,15 +269,15 @@ ms.locfileid: "39436002"
 
 1. 此时应已返回到打开了接收器数据集的窗口。 在“连接”选项卡中执行以下步骤： 
 
-       a. In **Linked service**, confirm that **AzureStorageLinkedService** is selected.
+    a. 在“链接服务”中，确认选择了“AzureStorageLinkedService”。
 
-       b. For the **folder**/ **Directory** part of **File path**, enter **adftutorial/fromonprem**. If the output folder doesn't exist in the adftutorial container, Data Factory automatically creates the output folder.
+    b. 对于**文件路径**的**文件夹**/ **目录**部分，输入 **adftutorial/fromonprem**。 如果 adftutorial 容器中不包含 output 文件夹，数据工厂会自动创建 output 文件夹。
 
-       c. For the **file name** part of **File path**, select **Add dynamic content**.   
+    c. 对于**文件路径**的**文件名**部分，选择“添加动态内容”。   
 
     ![动态文件名值](./media/tutorial-hybrid-copy-portal/file-name.png)
 
-       d. Add `@CONCAT(pipeline().RunId, '.txt')`, select **Finish**. This will rename the file with PipelineRunID.txt. 
+    d. 添加 `@CONCAT(pipeline().RunId, '.txt')`，选择“完成”。 这会将文件重命名为 PipelineRunID.txt。 
 
     ![用于解析文件名的动态表达式](./media/tutorial-hybrid-copy-portal/add-dynamic-file-name.png)
 

@@ -11,15 +11,16 @@ ms.service: multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: multiple
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.date: 11/11/2016
 ms.author: cawa
-ms.openlocfilehash: 3ee2cc3ac5098ebf205331167faffa2b5f9b6d56
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 0497ac628d7882a0b722796493c10c0d8b04e759
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937551"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42443662"
 ---
 # <a name="optimizing-your-azure-code"></a>优化 Azure 代码
 对使用 Microsoft Azure 的应用程序进行编程时，应遵循某些编码做法，以免在云环境中应用程序的伸缩性、行为和性能出现问题。 Microsoft 提供了 Azure 代码分析工具，该工具可识别并确定部分常见问题并帮助你解决这些问题。 可以通过 NuGet 在 Visual Studio 中下载该工具。
@@ -31,7 +32,7 @@ ms.locfileid: "36937551"
 ### <a name="id"></a>ID
 AP0000
 
-### <a name="description"></a>说明
+### <a name="description"></a>Description
 如果对云应用程序使用默认（进程内）会话状态模式，可能丢失会话状态。
 
 请通过 [Azure 代码分析反馈](http://go.microsoft.com/fwlink/?LinkId=403771)来分享看法和意见。
@@ -48,7 +49,7 @@ ASP.NET 会话状态支持多种不同的会话状态数据存储选项：InProc
 ### <a name="id"></a>ID
 AP1000
 
-### <a name="description"></a>说明
+### <a name="description"></a>Description
 在 [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法外部创建异步方法（例如 [await](https://msdn.microsoft.com/library/hh156528.aspx)），并从 [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 调用异步方法。 将 [[Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法声明为异步方法会导致辅助角色进入重新启动循环。
 
 请通过 [Azure 代码分析反馈](http://go.microsoft.com/fwlink/?LinkId=403771)来分享看法和意见。
@@ -93,7 +94,7 @@ public async Task RunAsync()
 ### <a name="id"></a>ID
 AP2000
 
-### <a name="description"></a>说明
+### <a name="description"></a>Description
 使用共享访问签名 (SAS) 进行身份验证。 用于服务总线身份验证的访问控制服务 (ACS) 会被弃用。
 
 请通过 [Azure 代码分析反馈](http://go.microsoft.com/fwlink/?LinkId=403771)来分享看法和意见。
@@ -120,7 +121,7 @@ BrokeredMessage receivedMessage = sc.Receive();
 ### <a name="id"></a>ID
 AP2002
 
-### <a name="description"></a>说明
+### <a name="description"></a>Description
 为了避免陷入“receive 循环”，接收消息时调用 **OnMessage** 方法是比调用 **Receive** 方法更适合的解决方案。 但是，如果必须使用 **Receive** 方法并指定了非默认的服务器等待时间，请确保服务器等待时间超过一分钟。
 
 请通过 [Azure 代码分析反馈](http://go.microsoft.com/fwlink/?LinkId=403771)来分享看法和意见。
@@ -223,7 +224,7 @@ while (true)
 ### <a name="id"></a>ID
 AP2003
 
-### <a name="description"></a>说明
+### <a name="description"></a>Description
 使用异步服务总线方法可改善中转消息传送的性能。
 
 请通过 [Azure 代码分析反馈](http://go.microsoft.com/fwlink/?LinkId=403771)来分享看法和意见。
@@ -240,7 +241,7 @@ AP2003
 ### <a name="id"></a>ID
 AP2004
 
-### <a name="description"></a>说明
+### <a name="description"></a>Description
 对服务总线队列和主题进行分区以提高服务总线消息传送的性能。
 
 请通过 [Azure 代码分析反馈](http://go.microsoft.com/fwlink/?LinkId=403771)来分享看法和意见。
@@ -265,7 +266,7 @@ ns.CreateTopic(td);
 ### <a name="id"></a>ID
 AP3001
 
-### <a name="description"></a>说明
+### <a name="description"></a>Description
 应避免使用设置为当前时间的 SharedAccessStartTimeset，以立即启动共享访问策略。 仅想要在以后启动共享访问策略时，才需要设置此属性。
 
 请通过 [Azure 代码分析反馈](http://go.microsoft.com/fwlink/?LinkId=403771)来分享看法和意见。
@@ -297,7 +298,7 @@ blobPermissions.SharedAccessPolicies.Add("mypolicy", new SharedAccessBlobPolicy(
 ### <a name="id"></a>ID
 AP3002
 
-### <a name="description"></a>说明
+### <a name="description"></a>Description
 由于存在所谓“时钟偏差”的情况，位于不同位置的数据中心之间最多可能有五分钟的时间差。 为了防止 SAS 策略令牌早于预计时间过期，请将过期时间设置为五分钟以上。
 
 请通过 [Azure 代码分析反馈](http://go.microsoft.com/fwlink/?LinkId=403771)来分享看法和意见。
@@ -347,7 +348,7 @@ blobPermissions.SharedAccessPolicies.Add("mypolicy", new SharedAccessBlobPolicy(
 ### <a name="id"></a>ID
 AP4000
 
-### <a name="description"></a>说明
+### <a name="description"></a>Description
 对 Azure 网站和 Azure 移动服务等项目使用 [ConfigurationManager](https://msdn.microsoft.com/library/system.configuration.configurationmanager\(v=vs.110\).aspx) 类不会造成运行时问题。 但是，最佳做法是使用 Cloud[ConfigurationManager](https://msdn.microsoft.com/library/system.configuration.configurationmanager\(v=vs.110\).aspx) 作为所有 Azure 云应用程序配置的统一管理方式。
 
 请通过 [Azure 代码分析反馈](http://go.microsoft.com/fwlink/?LinkId=403771)来分享看法和意见。
@@ -384,7 +385,7 @@ CloudConfigurationManager 读取适合应用程序环境使用的配置文件。
 ### <a name="id"></a>ID
 AP4001
 
-### <a name="description"></a>说明
+### <a name="description"></a>Description
 如果使用硬编码的连接字符串并且以后需要更新，则必须对源代码进行更改并重新编译应用程序。 但是，如果将连接字符串存储在配置文件中，以后只需更新配置文件就能更改连接字符串。
 
 请通过 [Azure 代码分析反馈](http://go.microsoft.com/fwlink/?LinkId=403771)来分享看法和意见。
@@ -405,7 +406,7 @@ AP4001
 ### <a name="id"></a>ID
 AP5000
 
-### <a name="description"></a>说明
+### <a name="description"></a>Description
 不要在代码中配置诊断设置（例如使用 Microsoft.WindowsAzure.Diagnostics 编程 API），而应该在 diagnostics.wadcfg 文件中配置诊断设置。 （或者，如果使用 Azure SDK 2.5，请使用 diagnostics.wadcfgx）。 这样，就可以更改诊断设置而无需重新编译代码。
 
 请通过 [Azure 代码分析反馈](http://go.microsoft.com/fwlink/?LinkId=403771)来分享看法和意见。
@@ -430,7 +431,7 @@ AP5000
 ### <a name="id"></a>ID
 AP6000
 
-### <a name="description"></a>说明
+### <a name="description"></a>Description
 为了节省内存，请避免将 DBContext 对象声明为静态。
 
 请通过 [Azure 代码分析反馈](http://go.microsoft.com/fwlink/?LinkId=403771)来分享看法和意见。

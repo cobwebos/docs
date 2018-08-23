@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 4e6600d81fedd884cf415d055aedd29d163b3365
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: fbc40d0768a7cf1cb83a3e78dd524fac26254bea
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629644"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42140221"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何规划混合 Azure Active Directory 加入实现
 
@@ -97,7 +97,7 @@ ms.locfileid: "39629644"
 
 已针对用户配置文件漫游或凭据漫游进行配置的设备不支持注册 Windows 下层设备。 如果依赖于配置文件或设置漫游，请使用 Windows 10。
 
-- 在非联合环境中，通过无缝单一登录支持 Windows 下层设备的注册 [Azure Active Directory 无缝单一登录](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start)。 
+- 在非联合环境中，通过无缝单一登录支持 Windows 下层设备的注册 [Azure Active Directory 无缝单一登录](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start)。 
  
 - 使用 Azure AD 直通身份验证但不使用无缝单一登录时，不支持注册 Windows 下级设备。
 

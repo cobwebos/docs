@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 7c6bade68e6190ec52cbc136c057906be6d9d37c
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 6a375da3c97790bd6a7a6fa505de82b2fc298385
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39632051"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42141239"
 ---
 # <a name="search-queries-in-log-analytics"></a>Log Analytics 中的搜索查询
 
@@ -144,4 +144,4 @@ search in (Event) "win"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在 [Log Analytics 查询语言站点](http://http://docs.loganalytics.io)上参阅其他教程
+- 在 [Log Analytics 查询语言站点](https://docs.loganalytics.io)上参阅其他教程

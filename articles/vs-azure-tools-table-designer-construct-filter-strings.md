@@ -7,16 +7,17 @@ manager: douge
 assetId: a1a10ea1-687a-4ee1-a952-6b24c2fe1a22
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/18/2016
 ms.author: ghogen
-ms.openlocfilehash: 7390e8f463d14f2e74e05263e970665a0199029a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 3ed3e0829932a6db37b4bd48627b68480f5d7343
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31794273"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42146136"
 ---
 # <a name="constructing-filter-strings-for-the-table-designer"></a>为表设计器构造筛选字符串
 ## <a name="overview"></a>概述
@@ -27,7 +28,7 @@ WCF 数据服务基于[开放数据协议](http://go.microsoft.com/fwlink/p/?Lin
 ## <a name="comparison-operators"></a>比较运算符
 所有属性类型都支持以下逻辑运算符：
 
-| 逻辑运算符 | 说明 | 示例筛选器字符串 |
+| 逻辑运算符 | Description | 示例筛选器字符串 |
 | --- | --- | --- |
 | eq |等于 |City eq 'Redmond' |
 | gt |大于 |Price gt 20 |

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 229e2c07a3e8d83fc01dc5f1542fd250cb4678f7
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 2c26c26f201e9b500018b4851ac0bc462820a8e5
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838970"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246432"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>将数据移到 Azure 虚拟机上的 SQL Server
 本主题概述了用于将数据从平面文件（CSV 或 TSV 格式）或从本地 SQL Server 移动到 Azure 虚拟机上的 SQL Server 的选项。 将数据移到云中的这些任务是“团队数据科学流程”的一部分。
@@ -41,7 +41,7 @@ ms.locfileid: "34838970"
 请注意，本文档假设你从 SQL Server Management Studio 或 Visual Studio 数据库资源管理器执行 SQL 命令。
 
 > [!TIP]
-> 也可以使用 [Azure 数据工厂](https://azure.microsoft.com/services/data-factory/)来创建和安排会将数据移动到 Azure 上的 SQL Server 虚拟机的管道。 有关更多信息，请参阅[使用 Azure 数据工厂复制数据（复制活动）](../../data-factory/v1/data-factory-data-movement-activities.md)。
+> 也可以使用 [Azure 数据工厂](https://azure.microsoft.com/services/data-factory/)来创建和安排会将数据移动到 Azure 上的 SQL Server 虚拟机的管道。 有关更多信息，请参阅[使用 Azure 数据工厂复制数据（复制活动）](../../data-factory/copy-activity-overview.md)。
 >
 >
 
@@ -49,7 +49,7 @@ ms.locfileid: "34838970"
 本教程假设你拥有：
 
 * 一个 **Azure 订阅**。 如果尚无订阅，可注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* 一个 **Azure 存储帐户**。 在本教程中，将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-create-storage-account.md#create-a-storage-account)一文。 创建存储帐户后，需要获取用于访问存储的帐户密钥。 请参阅[管理存储访问密钥](../../storage/common/storage-create-storage-account.md#manage-your-storage-access-keys)。
+* 一个 **Azure 存储帐户**。 在本教程中，将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)一文。 创建存储帐户后，需要获取用于访问存储的帐户密钥。 请参阅[管理存储访问密钥](../../storage/common/storage-create-storage-account.md#manage-your-storage-access-keys)。
 * 在 **Azure 虚拟机上置备了 SQL Server**。 有关说明，请参阅[将 Azure SQL Server 虚拟机设置为用于高级分析的 IPython Notebook 服务器](../data-science-virtual-machine/setup-sql-server-virtual-machine.md)。
 * 已在本地安装和配置 **Azure PowerShell**。 有关说明，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 

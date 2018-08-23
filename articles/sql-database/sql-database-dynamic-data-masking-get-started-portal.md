@@ -9,16 +9,16 @@ ms.custom: security
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: ronitr
-ms.openlocfilehash: 9b47345278bd74449c16e4e17ed1748dba489f82
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8f7720555a3cfc39ce9e9b5ad2c392bab74b64ca
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645508"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42141035"
 ---
 # <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Azure 门户的 SQL 数据库动态数据掩码入门
 
-本文介绍如何使用 Azure 门户实现[动态数据掩码](sql-database-dynamic-data-masking-get-started.md)。 还可以使用 [Azure SQL 数据库 cmdlet](https://msdn.microsoft.com/library/azure/mt574084.aspx) 或 [REST API](https://msdn.microsoft.com/library/dn505719.aspx) 实现动态数据掩码。
+本文介绍如何使用 Azure 门户实现[动态数据掩码](sql-database-dynamic-data-masking-get-started.md)。 还可以使用 [Azure SQL 数据库 cmdlet](https://docs.microsoft.com/powershell/module/azurerm.sql/) 或 [REST API](https://msdn.microsoft.com/library/dn505719.aspx) 实现动态数据掩码。
 
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-the-azure-portal"></a>使用 Azure 门户为数据库设置动态数据掩码
@@ -54,4 +54,4 @@ ms.locfileid: "34645508"
 ## <a name="next-steps"></a>后续步骤
 
 * 有关动态数据掩码的概述，请参阅[动态数据掩码](sql-database-dynamic-data-masking-get-started.md)。
-* 还可以使用 [Azure SQL 数据库 cmdlet](https://msdn.microsoft.com/library/azure/mt574084.aspx) 或 [REST API](https://msdn.microsoft.com/library/dn505719.aspx) 实现动态数据掩码。
+* 还可以使用 [Azure SQL 数据库 cmdlet](https://docs.microsoft.com/powershell/module/azurerm.sql/) 或 [REST API](https://msdn.microsoft.com/library/dn505719.aspx) 实现动态数据掩码。

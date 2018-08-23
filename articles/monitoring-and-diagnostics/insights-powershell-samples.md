@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/14/2018
 ms.author: robb
 ms.component: ''
-ms.openlocfilehash: d7275bb0399ae5832e85089e44f4b9a1fe412747
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: c6189291a9e944acde751a66cdb58f2052c73999
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35262413"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42146319"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure 监视器 PowerShell 快速入门示例
 本文给出了示例 PowerShell 命令，可帮助用户访问 Azure 监视器的功能。
@@ -27,7 +27,7 @@ ms.locfileid: "35262413"
 如果尚未安装，请在计算机上安装要运行的 PowerShell。 有关详细信息，请参阅[如何安装和配置 PowerShell](/powershell/azure/overview)。
 
 ## <a name="examples-in-this-article"></a>本文中的示例
-本文中的示例演示了如何使用 Azure 监视器 cmdlet。 还可以在 [Azure 监视器 (Insights) Cmdlet](https://msdn.microsoft.com/library/azure/mt282452#40v=azure.200#41.aspx) 上查看 Azure 监视器 PowerShell cmdlet 的完整列表。
+本文中的示例演示了如何使用 Azure 监视器 cmdlet。 还可以在 [Azure 监视器 (Insights) Cmdlet](https://docs.microsoft.com/powershell/module/azurerm.insights) 上查看 Azure 监视器 PowerShell cmdlet 的完整列表。
 
 ## <a name="sign-in-and-use-subscriptions"></a>登录并使用订阅
 首先，登录到 Azure 订阅。

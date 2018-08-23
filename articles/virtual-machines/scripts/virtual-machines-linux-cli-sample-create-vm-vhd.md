@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/09/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: 414ef43063cc48b7b9ae7be5fbccbb7906ae8c03
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 271390757b7e79eb29c5a3c14ca9ee1b38b53e29
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29849335"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41917899"
 ---
 # <a name="create-a-vm-with-a-virtual-hard-disk"></a>使用虚拟硬盘创建 VM
 
@@ -29,8 +29,7 @@ ms.locfileid: "29849335"
 本示例创建资源组、存储帐户、容器，然后通过将 VHD 上传到容器来创建 VM。
 本示例将 ssh 公钥替换为用户的公钥，因此用户可以访问 VM。
 
-用户需要可引导 VHD。
-用户可以从 https://azclisamples.blob.core.windows.net/vhds/sample.vhd 下载我们所使用的 VHD，也可以使用自己的 VHD。 脚本会查找 `~/sample.vhd`。
+用户需要可引导 VHD。 脚本会查找 `~/sample.vhd`。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -63,7 +62,6 @@ az group delete -n az-cli-vhd
 | [az storage blob upload](https://docs.microsoft.com/cli/azure/storage/blob#az_storage_blob_upload) | 通过上传 VHD，在容器中创建一个 Blob。 |
 | [az vm list](https://docs.microsoft.com/cli/azure/vm#az_vm_list) | 与 `--query` 一起使用，用于检查 VM 名称是否已使用。 | 
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set#az_vm_availability_set_create) | 创建虚拟机。 |
-| [az vm access set-linux-user](https://docs.microsoft.com/cli/azure/vm/access#az_vm_access_set_linux_user) | 重置 SSH 密钥，以便当前用户能够访问 VM。 |
 | [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#az_vm_list-ip-addresses) | 获取已创建虚拟机的 IP 地址。 |
 
 ## <a name="next-steps"></a>后续步骤

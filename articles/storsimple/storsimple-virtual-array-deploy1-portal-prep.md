@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/14/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6685c5ab7768176a0c8e7084c8512d5345732d9a
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2126ff7ffd503e1d7b30997f3f32f30429cffefb
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38477918"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42146341"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>部署 StorSimple 虚拟阵列 - 准备 Azure 门户
 
@@ -144,7 +144,7 @@ StorSimple Device Manager 服务的单个实例可以管理多个 StorSimple 虚
 
 此步骤是可选的，只应在未通过服务启用自动创建存储帐户的情况下执行。
 
-如需在其他区域创建 Azure 存储帐户，请参阅[如何创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)以获取分步说明。
+如需在其他区域创建 Azure 存储帐户，请参阅[如何创建存储帐户](../storage/common/storage-quickstart-create-account.md)以获取分步说明。
 
 在 [Azure 门户](https://ms.portal.azure.com/)的“StorSimple Device Manager 服务”页上执行以下步骤，添加现有的 Microsoft Azure 存储帐户。
 

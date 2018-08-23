@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: eb46347e82063d2e990b319ab108cf257c7e6b88
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4c7dddcb5e39eb1f72fb59af753ab167bc44d3e3
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440620"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246443"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>从 Azure 数据工厂管道调用 Spark 程序
 
@@ -56,7 +56,7 @@ Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-trans
 * 创建一个包含 Spark 活动的管道，使该活动引用创建的 HDInsight 链接服务。 该活动配置为使用上一步骤中创建的数据集作为输出数据集。 输出数据集驱动计划（每小时、每日）。 因此，即使该活动实际上不生成任何输出，也必须指定输出数据集。
 
 ### <a name="prerequisites"></a>先决条件
-1. 遵循[创建存储帐户](../../storage/common/storage-create-storage-account.md#create-a-storage-account)中的说明创建一个常规用途存储帐户。
+1. 遵循[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)中的说明创建一个常规用途存储帐户。
 
 1. 遵循[在 HDInsight 中创建 Spark 群集](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)教程中的说明在 HDInsight 中创建一个 Spark 群集。 将在步骤 1 中创建的存储帐户与此群集相关联。
 

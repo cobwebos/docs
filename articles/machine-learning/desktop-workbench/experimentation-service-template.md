@@ -2,21 +2,19 @@
 title: 使用 Azure 资源管理器模板创建 Azure 机器学习试验 | Microsoft 文档
 description: 本文提供了一个示例，使用 Azure 资源管理器模板创建 Azure 机器学习试验帐户。
 services: machine-learning
-author: ahgyger
-ms.author: ahgyger
-manager: haining
-ms.reviewer: jmartens, jasonwhowell, mldocs
+author: hning86
+ms.author: haining
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/14/2017
-ms.openlocfilehash: 65efee0eea5e2595ef8833788281c5ba60ca3a43
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7938eaa0e06c9a33034a7388d02845d60967774e
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830776"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42140642"
 ---
 # <a name="configure-the-azure-machine-learning-experimentation-service"></a>配置 Azure 机器学习试验服务
 

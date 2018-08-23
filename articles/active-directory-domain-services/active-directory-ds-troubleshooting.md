@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: maheshu
-ms.openlocfilehash: 41a06846e914eb79e15aa47c7203b17166731ae0
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: fa4d40786fdc61183c119a17b6e36bd853a6fd64
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502322"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42146332"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD 域服务 - 故障排除指南
 本文提供设置或管理 Azure Active Directory (AD) 域服务时可能遇到的问题的故障排除提示。
@@ -139,7 +139,7 @@ if ($sp -ne $null)
 * **外部帐户：** 确保受影响的用户帐户不是 Azure AD 租户中的外部帐户。 外部帐户的示例包括 Microsoft 帐户（例如“joe@live.com”），或来自外部 Azure AD 目录的用户帐户。 由于 Azure AD 域服务没有此类用户帐户的凭据，因此这些用户无法登录到托管域。
 * **已同步的帐户：** 如果受影响的用户帐户已从本地目录同步，请确认：
 
-  * 已部署或更新到[最新版本的 Azure AD Connect](https://www.microsoft.com/en-us/download/details.aspx?id=47594)。
+  * 已部署或更新到[最新版本的 Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)。
   * 已将 Azure AD Connect 配置为[执行完全同步](active-directory-ds-getting-started-password-sync.md)。
   * 根据目录的大小，可能需要在一段时间后，用户帐户和凭据哈希才可在 Azure AD 域服务中使用。 请确保重试身份验证之前等待足够长的时间。
   * 如果在执行上述步骤后问题仍然出现，请尝试重新启动 Microsoft Azure AD 同步服务。 在同步计算机上启动命令提示符，并执行以下命令：

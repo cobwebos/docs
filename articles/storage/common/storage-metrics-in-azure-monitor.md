@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 880632a39332f7d9ad24b0f7aa2301660eb2f9b8
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 849253dd4a2e66acc6a509a0515a22309c90e081
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528567"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42141210"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 存储指标
 
@@ -332,14 +332,14 @@ Azure 存储在 Azure Monitor 中提供以下容量指标。
 
 | 指标名称 | Description |
 | ------------------- | ----------------- |
-| UsedCapacity | 存储帐户使用的存储量。 对于标准存储帐户，该指标是 Blob、表、文件和队列使用的容量总和。 对于高级存储帐户和 Blob 存储帐户，它与 BlobCapacity 相同。 <br/><br/> 单元：字节 <br/> 聚合类型：平均 <br/> 值示例：1024 |
+| UsedCapacity | 存储帐户使用的存储量。 对于标准存储帐户，该指标是 Blob、表、文件和队列使用的容量总和。 对于高级存储帐户和 Blob 存储帐户，它与 BlobCapacity 相同。 <br/><br/> 单元：字节 <br/> 聚合类型：总计 <br/> 值示例：1024 |
 
 ### <a name="blob-storage"></a>Blob 存储
 
 | 指标名称 | Description |
 | ------------------- | ----------------- |
-| BlobCapacity | 存储帐户中使用的 Blob 存储总计。 <br/><br/> 单元：字节 <br/> 聚合类型：平均 <br/> 值示例：1024 <br/> 维度：BlobType（[定义](#metrics-dimensions)） |
-| BlobCount    | 在存储帐户中存储的 Blob 对象数。 <br/><br/> 单位：计数 <br/> 聚合类型：平均 <br/> 值示例：1024 <br/> 维度：BlobType（[定义](#metrics-dimensions)） |
+| BlobCapacity | 存储帐户中使用的 Blob 存储总计。 <br/><br/> 单元：字节 <br/> 聚合类型：总计 <br/> 值示例：1024 <br/> 维度：BlobType（[定义](#metrics-dimensions)） |
+| BlobCount    | 在存储帐户中存储的 Blob 对象数。 <br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 值示例：1024 <br/> 维度：BlobType（[定义](#metrics-dimensions)） |
 | ContainerCount    | 存储帐户中的容器数。 <br/><br/> 单位：计数 <br/> 聚合类型：平均 <br/> 值示例：1024 |
 
 ### <a name="table-storage"></a>表存储

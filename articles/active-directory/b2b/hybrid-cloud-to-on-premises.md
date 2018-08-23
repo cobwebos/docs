@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.component: B2B
 ms.topic: article
 ms.date: 04/20/2018
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: f34bb9eaa04491dfbef8fac711690d1b19677d89
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 9c9cde23f8f8dc557b99d2f1508c923aaa2dce91
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34259486"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42141042"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>向 Azure AD 中的 B2B 用户授予对本地应用程序的访问权限
 
@@ -79,7 +79,7 @@ ms.locfileid: "34259486"
 
 ## <a name="license-considerations"></a>许可证注意事项
 
-请确保获取有权访问本地应用的外部来宾用户的正确客户端访问许可证 (CAL)。 有关详细信息，请参阅[客户端访问许可证和管理许可证](https://www.microsoft.com/en-us/licensing/product-licensing/client-access-license.aspx)的“外部连接器”部分。 有关具体的许可需求，请咨询 Microsoft 代表或当地经销商。
+请确保获取有权访问本地应用的外部来宾用户的正确客户端访问许可证 (CAL)。 有关详细信息，请参阅[客户端访问许可证和管理许可证](https://www.microsoft.com/licensing/product-licensing/client-access-license.aspx)的“外部连接器”部分。 有关具体的许可需求，请咨询 Microsoft 代表或当地经销商。
 
 ## <a name="next-steps"></a>后续步骤
 

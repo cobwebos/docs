@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: eefb07136215d79b7c351dd4498bfeb79b6833de
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 27f271a20af2bb9910f1cf7d63e6033d78e67b83
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413719"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41918169"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>教程：登录屏幕中的 Azure AD 密码重置
 
@@ -86,8 +86,6 @@ ms.locfileid: "39413719"
 你现在已使用 Intune 创建并分配了设备配置策略以在登录屏幕上启用“重置密码”链接。
 
 ## <a name="configure-reset-password-link-using-the-registry"></a>使用注册表配置“重置密码”链接
-
-建议只使用此方法来测试设置更改。
 
 1. 使用管理凭据登录到 Windows PC
 2. 以管理员身份运行 **regedit**

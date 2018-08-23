@@ -7,18 +7,19 @@ author: ggailey777
 manager: cfowler
 editor: ''
 ms.service: functions
-ms.workload: na
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: glenga
-ms.openlocfilehash: 155062a702d45683be9009a366b4e5fcaf80335f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 06cf0334fbc0f21f5ce6865ee88faed64ccbc8e7
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425786"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444837"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>使用 Visual Studio 开发 Azure Functions  
 
@@ -51,7 +52,7 @@ Azure Functions 工具包含在 [Visual Studio 2017 版本 15.5](https://www.vis
 
 * 一个有效的 Azure 订阅。 如果没有 Azure 订阅，可以使用[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* 一个 Azure 存储帐户。 若要创建存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)。
+* 一个 Azure 存储帐户。 若要创建存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)。
 
 ### <a name="check-your-tools-version"></a>检查工具版本
 

@@ -12,12 +12,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: c6340133971a226002ce11ae1521bdc88e3e7975
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 86cc98721681750617e374679c38ad29cf5a2362
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343282"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42140224"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>管理双重验证的应用密码
 
@@ -38,7 +38,7 @@ ms.locfileid: "39343282"
 
 在最初注册双重验证期间，系统会提供一个应用密码。 如果需要多个密码，可以根据双重验证的使用方式创建更多的密码：
 
-- **对 Microsoft Azure 帐户使用双重验证。** 使用 [Azure 门户](https://portal.azure.com)创建和删除应用密码。 有关详细信息，请参阅[应用密码和双重验证](https://support.microsoft.com/en-us/help/12409/microsoft-account-app-passwords-two-step-verification)一文。
+- **对 Microsoft Azure 帐户使用双重验证。** 使用 [Azure 门户](https://portal.azure.com)创建和删除应用密码。 有关详细信息，请参阅[应用密码和双重验证](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification)一文。
 
 - **对个人 Microsoft 帐户使用双重验证。** 使用 Microsoft 帐户的[安全基本信息](https://account.microsoft.com/account/)页创建和删除应用密码。 有关详细信息，请参阅[应用密码和双重验证](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification)一文。
 

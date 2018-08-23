@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: db1d449e5c9f66446f00b637c5550dc9144920ff
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3883fc71c099718face38c16897040788fe0c6ab
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446759"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246447"
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>在 Azure 上预配 Linux CentOS 数据科学虚拟机
 
@@ -38,7 +38,7 @@ Linux 数据科学虚拟机是基于 CentOS 的 Azure 虚拟机，附带一组�
   * [认知工具包](https://github.com/Microsoft/CNTK)：Microsoft Research 的深度学习软件工具包。
   * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit)：一种快速机器学习系统，支持在线、哈希、allreduce、缩减、learning2search、主动和交互式学习等技术。
   * [XGBoost](https://xgboost.readthedocs.org/en/latest/)：一种提供快速、准确的提升树实现的工具。
-  * [Rattle](http://rattle.togaware.com/) (R Analytical Tool To Learn Easily)（用于实现轻松学习的 R 分析工具）：该工具使在 R 中开始数据分析和机器学习变得简单，支持基于 GUI 的数据浏览和使用自动 R 代码生成进行建模。
+  * [Rattle](https://togaware.com/rattle/) (R Analytical Tool To Learn Easily)（用于实现轻松学习的 R 分析工具）：该工具使在 R 中开始数据分析和机器学习变得简单，支持基于 GUI 的数据浏览和使用自动 R 代码生成进行建模。
 * Java、Python、node.js、Ruby 和 PHP 中的 Azure SDK
 * R 和 Python 中的库，供 Azure 机器学习和其他 Azure 服务使用
 * 开发工具和编辑器（RStudio、PyCharm、IntelliJ、Emacs、gedit、vi）
@@ -63,7 +63,7 @@ Linux 数据科学虚拟机可大大减轻这种负担。 使用它快速开始�
 创建 Linux 数据科学虚拟机之前，必须具备以下条件：
 
 * **Azure 订阅**：若要获取订阅，请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/free/)。
-* **Azure 存储帐户**：若要创建帐户，请参阅[创建 Azure 存储帐户](../../storage/common/storage-create-storage-account.md#create-a-storage-account)。 或者，如果不想使用现有帐户，可以在创建 VM 过程中创建存储帐户。
+* **Azure 存储帐户**：若要创建帐户，请参阅[创建 Azure 存储帐户](../../storage/common/storage-quickstart-create-account.md)。 或者，如果不想使用现有帐户，可以在创建 VM 过程中创建存储帐户。
 
 ## <a name="create-your-linux-data-science-virtual-machine"></a>创建 Linux 数据科学虚拟机
 以下是创建 Linux 数据科学虚拟机实例的步骤：

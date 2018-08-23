@@ -11,15 +11,16 @@ ms.service: visual-studio-online
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.date: 11/11/2016
 ms.author: mikejo
-ms.openlocfilehash: d230632fe49874385e3c337a7b07d1f1acec585e
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: af961533648ce3a939c25fca32173684255a52a8
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30292792"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444684"
 ---
 # <a name="debugging-an-azure-cloud-service-or-virtual-machine-in-visual-studio"></a>在 Visual Studio 中调试云服务或虚拟机
 
@@ -137,7 +138,7 @@ Visual Studio 提供了不同的选项来调试 Azure 云服务和虚拟机。
 
 在发布 Azure 项目之前，你可能会发现，在支持调试和测试方案并且可以在其中安装测试和监视程序的受控环境中对项目进行测试会很有用。 运行这类测试的方法之一是远程调试虚拟机上的应用。
 
-Visual Studio ASP.NET 项目提供了一个选项，让你创建可用于应用程序测试且易于操作的虚拟机。 该虚拟机包含通常需要的终结点，例如 PowerShell、远程桌面和 WebDeploy。
+Visual Studio ASP.NET 项目提供了一个选项，可创建用于应用程序测试且易于操作的虚拟机。 该虚拟机包含通常需要的终结点，例如 PowerShell、远程桌面和 WebDeploy。
 
 ### <a name="to-create-a-web-project-and-a-virtual-machine-for-debugging"></a>创建用于调试的 Web 项目和虚拟机
 

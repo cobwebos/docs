@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: fa8cdaf1a21a59a5bb695e3be90382f1e33823a2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4ee3d424d5a2f58a87cd83ca3d6e9b131dc0383c
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34590583"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246441"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect：启用设备写回
 > [!NOTE]
@@ -36,7 +36,7 @@ ms.locfileid: "34590583"
 
 > [!IMPORTANT]
 > <li>设备必须位于用户所在的同一个林中。 由于设备必须写回到单个林，此功能当前不支持具有多个用户林的部署。</li>
-> <li>只能将一个设备注册配置对象添加到本地 Active Directory 林。 此功能与本地 Active Directory 同步到多个 Azure AD 目录的拓扑不兼容。</li>> 
+> <li>只能将一个设备注册配置对象添加到本地 Active Directory 林。 此功能与本地 Active Directory 同步到多个 Azure AD 目录的拓扑不兼容。</li>
 
 ## <a name="part-1-install-azure-ad-connect"></a>第 1 部分：安装 Azure AD Connect
 使用自定义或快速设置安装 Azure AD Connect。 Microsoft 建议在启用设备写回之前，首先让所有用户和组成功完成同步。

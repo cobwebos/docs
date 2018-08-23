@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: b560022f1f727949021a599e1ab342551f64c084
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: ac81525c107fcc291a8c3ef0163bf0ef2bbfdc3b
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129126"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42146340"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Log Analytics 中视图设计器可视化部件的参考指南
 使用 Azure Log Analytics 中的视图设计器，可在 Azure 门户中创建自定义视图，用于显示 Log Analytics 工作区中的各种数据可视化效果。 本文针对自定义视图中可用的可视化部件，提供设置方面的参考指南。
@@ -33,7 +33,7 @@ ms.locfileid: "37129126"
 
 下表描述了可用的视图设计器磁贴类型：
 
-| 视图类型 | 说明 |
+| 视图类型 | Description |
 |:--- |:--- |
 | [查询列表](#list-of-queries-part) |显示日志搜索查询的列表。 可以选择每个查询以显示其结果。 |
 | [数字和列表](#number-and-list-part) |标头具有单个数字，用于表示来自日志搜索查询中的记录数。 列表显示查询的前十个结果，其中的图形指示数值列的相关值或其随时间的变化。 |
@@ -52,7 +52,7 @@ ms.locfileid: "37129126"
 
 ![查询列表视图](media/log-analytics-view-designer/view-list-queries.png)
 
-| 设置 | 说明 |
+| 设置 | Description |
 |:--- |:--- |
 | **常规** | |
 | 标题 |在视图顶部显示的文本。 |
@@ -68,7 +68,7 @@ ms.locfileid: "37129126"
 
 ![查询列表视图](media/log-analytics-view-designer/view-number-list.png)
 
-| 设置 | 说明 |
+| 设置 | Description |
 |:--- |:--- |
 | **常规** | |
 | 组标题 |在视图顶部显示的文本。 |
@@ -97,7 +97,7 @@ ms.locfileid: "37129126"
 
 ![两个数字和列表视图](media/log-analytics-view-designer/view-two-numbers-list.png)
 
-| 设置 | 说明 |
+| 设置 | Description |
 |:--- |:--- |
 | **常规** | |
 | 组标题 |在视图顶部显示的文本。 |
@@ -128,7 +128,7 @@ ms.locfileid: "37129126"
 
 ![圆环图和列表视图](media/log-analytics-view-designer/view-donut-list.png)
 
-| 设置 | 说明 |
+| 设置 | Description |
 |:--- |:--- |
 | **常规** | |
 | 组标题 |在磁贴顶部显示的文本。 |
@@ -169,7 +169,7 @@ ms.locfileid: "37129126"
 
 ![两条时间线和列表视图](media/log-analytics-view-designer/view-two-timelines-list.png)
 
-| 设置 | 说明 |
+| 设置 | Description |
 |:--- |:--- |
 | **常规** | |
 | 组标题 |在磁贴顶部显示的文本。 |
@@ -201,7 +201,7 @@ ms.locfileid: "37129126"
 
 ![信息视图](media/log-analytics-view-designer/view-information.png)
 
-| 设置 | 说明 |
+| 设置 | Description |
 |:--- |:--- |
 | **常规** | |
 | 组标题 |在磁贴顶部显示的文本。 |
@@ -222,7 +222,7 @@ ms.locfileid: "37129126"
 
 ![折线图、标注和列表视图](media/log-analytics-view-designer/view-line-chart-callout-list.png)
 
-| 设置 | 说明 |
+| 设置 | Description |
 |:--- |:--- |
 | **常规** | |
 | 组标题 |在磁贴顶部显示的文本。 |
@@ -262,7 +262,7 @@ ms.locfileid: "37129126"
 
 ![折线图和列表视图](media/log-analytics-view-designer/view-line-chart-callout-list.png)
 
-| 设置 | 说明 |
+| 设置 | Description |
 |:--- |:--- |
 | **常规** | |
 | 组标题 |在磁贴顶部显示的文本。 |
@@ -298,7 +298,7 @@ ms.locfileid: "37129126"
 
 ![折线图的堆栈](media/log-analytics-view-designer/view-stack-line-charts.png)
 
-| 设置 | 说明 |
+| 设置 | Description |
 |:--- |:--- |
 | **常规** | |
 | 组标题 |在磁贴顶部显示的文本。 |
@@ -324,11 +324,11 @@ ms.locfileid: "37129126"
 例如，考虑一个名为 *Location* 的属性，该属性包括 *Redmond-Building 41* 和 *Bellevue-Building 12* 等值。 可以指定短划线 (–) 作为名称和值分隔符，指定 *City-Building* 作为名称。 此方法会将每个值分析为两个称作 *City* 和 *Building* 的属性。
 
 ### <a name="click-through-navigation"></a>点击导航
-点击导航定义在单击标题或视图中的列表项时要执行的操作。  此操作将在[日志搜索门户](log-analytics-log-search-portals.md#log-search)中打开查询或启动另一个视图。
+点击导航定义在单击标题或视图中的列表项时要执行的操作。  此操作将在[日志搜索门户](log-analytics-log-search-portals.md)中打开查询或启动另一个视图。
 
 下表描述了点击导航的设置。
 
-| 设置           | 说明 |
+| 设置           | Description |
 |:--|:--|
 | 日志搜索(自动) | 选择标题项时要运行的日志搜索。  这是该项所基于的同一日志搜索。
 | 日志搜索        | 选择列表中的项时要运行的日志搜索。  在“导航查询”框中键入查询。   使用 *{selected item}* 以包括用户选择的项的语法。  例如，如果查询具有名为 *Computer* 的列且导航查询为 *{selected item}*，则选择计算机时会运行 *Computer="MyComputer"* 之类的查询。 如果导航查询为 *Type=Event {selected item}*，则将运行查询 *Type=Event Computer="MyComputer"*。 |
@@ -341,7 +341,7 @@ ms.locfileid: "37129126"
 
 下表描述迷你图的设置：
 
-| 设置 | 说明 |
+| 设置 | Description |
 |:--- |:--- |
 | 启用迷你图 |选择此链接可显示迷你图而不是水平条。 |
 | Operation |如果已启用迷你图，则对列表中每个属性执行此操作，计算迷你图的值。<ul><li>最后一个采样：时间间隔内序列的最后一个值。</li><li>最大值：时间间隔内序列的最大值。</li><li>最小值：时间间隔内序列的最小值。</li><li>总和：时间间隔内序列值的总和。</li><li>摘要：使用相同的 `measure` 命令作为标头中的查询。</li></ul> |
@@ -355,7 +355,7 @@ ms.locfileid: "37129126"
 
 下表描述了阈值的设置：
 
-| 设置 | 说明 |
+| 设置 | Description |
 |:--- |:--- |
 | 启用阈值 |选择此链接可在每个值的左侧显示颜色图标。 该图标指示其相对于指定阈值的运行状况。 |
 | 名称 |阈值的名称。 |

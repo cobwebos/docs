@@ -1,6 +1,6 @@
 ---
 title: 持续部署到 Azure 应用服务 | Microsoft Docs
-description: 了解如何实现持续部署到 Azure 应用服务。
+description: 了解如何实现连续部署到 Azure 应用服务。
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cephalin;dariagrigoriu
-ms.openlocfilehash: d83d1ad74d04356f73f18a744c2d1509b5efc280
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 4d3f1c66c6403720bf02c80af1d6833dc3cee3f1
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233838"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42146118"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>持续部署到 Azure 应用服务
 本文展示了如何为 [Azure 应用服务](app-service-web-overview.md)配置持续部署。 应用服务可以使用 BitBucket、GitHub 和 [Visual Studio Team Services (VSTS)](https://www.visualstudio.com/team-services/) 实现持续部署，方法是从上述服务之一中的现有存储库拉取最新的更新。
@@ -62,7 +62,7 @@ ms.locfileid: "35233838"
 
 在“测试”页面中，选择是否要启用负载测试，然后单击“继续”。
 
-根据应用服务计划的[定价层](/pricing/details/app-service/plans/)，可能还会看到“部署到过渡环境”页。 选择是否[要启用部署槽位](web-sites-staged-publishing.md)，然后单击“继续”。
+根据应用服务计划的[定价层](https://azure.microsoft.com/pricing/details/app-service/plans/)，可能还会看到“部署到过渡环境”页。 选择是否[要启用部署槽位](web-sites-staged-publishing.md)，然后单击“继续”。
 
 ### <a name="finish-configuration"></a>完成配置
 
@@ -119,7 +119,7 @@ ms.locfileid: "35233838"
 
 在“测试”页面中，选择是否要启用负载测试，然后单击“继续”。
 
-根据应用服务计划的[定价层](/pricing/details/app-service/plans/)，可能还会看到“部署到过渡环境”页。 选择是否[要启用部署槽位](web-sites-staged-publishing.md)，然后单击“继续”。 
+根据应用服务计划的[定价层](https://azure.microsoft.com/pricing/details/app-service/plans/)，可能还会看到“部署到过渡环境”页。 选择是否[要启用部署槽位](web-sites-staged-publishing.md)，然后单击“继续”。 
 
 ### <a name="finish-configuration"></a>完成配置
 
@@ -139,7 +139,7 @@ ms.locfileid: "35233838"
 
 ## <a name="additional-resources"></a>其他资源
 
-* [How to investigate common issues with continuous deployment](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)（如何调查持续部署的常见问题）
+* [How to investigate common issues with continuous deployment](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)（如何调查连续部署的常见问题）
 * [如何使用适用于 Azure 的 PowerShell]
 * [Git 文档]
 * [项目 Kudu](https://github.com/projectkudu/kudu/wiki)

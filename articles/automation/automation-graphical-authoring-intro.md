@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b0517af9f8066d2d5849b0ffe3d4a0d00afdad44
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: afc1ec8e171bc602f2698b4a36f249bc454cbed9
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437869"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42140426"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure 自动化中的图形创作
 
@@ -44,7 +44,7 @@ Azure 自动化中的所有 Runbook 都是 Windows PowerShell 工作流。 图�
 
 库控件是你选择要添加到 Runbook 的[活动](#activities)的地方。 可以将活动添加到画布，再将它们连接到其他活动。 它包括下表中描述的四个部分：
 
-| 部分 | 说明 |
+| 部分 | Description |
 |:--- |:--- |
 | Cmdlet |包括可以在 Runbook 中使用的所有 cmdlet。 Cmdlet 按模块组织。 所有安装在自动化帐户中的模块都可用。 |
 | Runbook |包括你自动化帐户中的 Runbook。 这些 Runbook 可以添加到画布中用作子 Runbook。 仅显示核心类型与所编辑 Runbook 相同的 Runbook；对于图形 Runbook，仅显示基于 PowerShell 的 Runbook，而对于图形 PowerShell 工作流 Runbook，则仅显示基于 PowerShell 工作流的 Runbook。 |
@@ -109,7 +109,7 @@ Azure 自动化中的每个 Runbook 都有草稿版和已发布版。 只有已�
 
 指定某个参数的值时，可以选择一个数据源，以便确定如何指定该值。 可用于特定参数的数据源将取决于该参数的有效值。 例如，对于不允许 Null 值的参数，Null 不会是可用选项。
 
-| 数据源 | 说明 |
+| 数据源 | Description |
 |:--- |:--- |
 | 常量值 |键入参数的值。 这仅适用于以下数据类型：Int32、Int64、字符串、布尔值、DateTime、开关。 |
 | 活动输出 |工作流中某个位于当前活动前面的活动的输出。 将列出所有有效的活动。 只选择要将其输出用于参数值的活动。 如果该活动输出的对象具有多个属性，可以在选择活动之后键入属性的名称。 |
@@ -139,7 +139,7 @@ Azure 自动化中的每个 Runbook 都有草稿版和已发布版。 只有已�
 
 重试条件可以使用名为 $RetryData 的变量提供活动重试相关信息的访问权限。 此变量具有下表中的属性。
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--- |:--- |
 | NumberOfAttempts |活动已运行的次数。 |
 | 输出 |活动上次运行的输出。 |
@@ -191,7 +191,7 @@ $DateTimeStart
 
 选择可在“配置”边栏选项卡中配置其属性的链接。 这种情况下，会包括下表中描述的链接类型。
 
-| 链接类型 | 说明 |
+| 链接类型 | Description |
 |:--- |:--- |
 | 管道 |对于源活动中的每个对象输出，目标活动都将运行一次。 如果源活动没有生成任何输出，目标活动将不会运行。 源活动的输出可用作对象。 |
 | 序列 |目标活动只运行一次。 它会接收来自源活动的对象数组。 源活动的输出可用作对象数组。 |
@@ -322,17 +322,17 @@ Runbook 可能会要求用户提供输入（如果该用户是通过 Azure 门�
 
 按下表中的属性定义每个输入参数：
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--- |:--- |
 | 名称 |参数的唯一名称。 此项只能包含字母数字字符，不能包含空格。 |
-| 说明 |针对输入参数的可选说明。 |
+| Description |针对输入参数的可选说明。 |
 | Type |参数值应有的数据类型。 提示输入时，Azure 门户将针对每个参数的数据类型提供相应的控件。 |
 | 必需 |指定是否必须为该参数提供值。 如果没有为每个没有定义默认值的必需参数提供值，将无法启动 Runbook。 |
 | 默认值 |指定在未提供值的情况下，对参数使用什么值。 此项可以为 Null 或特定值。 |
 
 ### <a name="runbook-output"></a>Runbook 输出
 
-由任何没有传出链接的活动创建的数据将保存到 [Runbook 的输出](http://msdn.microsoft.com/library/azure/dn879148.aspx)。 输出将与 Runbook 作业一起保存，在该 Runbook 作为子 Runbook 使用的情况下，还可供父 Runbook 使用。
+由任何没有传出链接的活动创建的数据将保存到 [Runbook 的输出](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages)。 输出将与 Runbook 作业一起保存，在该 Runbook 作为子 Runbook 使用的情况下，还可供父 Runbook 使用。
 
 ## <a name="powershell-expressions"></a>PowerShell 表达式
 

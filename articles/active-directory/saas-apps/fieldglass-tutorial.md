@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 446eac2bf6eed10f919d6c64de1d7b9dbba1f35d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a14aeb55d9e5756660708e9e63a867a66a54a7b6
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420340"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42443946"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fieldglass"></a>教程：Azure Active Directory 与 Fieldglass 的集成
 
@@ -121,7 +121,7 @@ ms.locfileid: "39420340"
     | `https://<company name>.fgvms.com/<company name>`|
 
     > [!NOTE] 
-    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Fieldglass 支持团队](http://www.fieldglass.com/solutions/support)获取这些值。
+    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Fieldglass 支持团队](https://www.fieldglass.com/customer-support)获取这些值。
  
 1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
@@ -135,7 +135,7 @@ ms.locfileid: "39420340"
 
     ![配置单一登录](./media/fieldglass-tutorial/tutorial_fieldglass_configure.png) 
 
-1. 若要在“Fieldglass”端配置单一登录，需要将下载的“证书(Base64)”和“注销 URL、SAML 实体 ID”发送给 [Fieldglass 支持团队](http://www.fieldglass.com/solutions/support) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+1. 若要在“Fieldglass”端配置单一登录，需要将下载的“证书(Base64)”和“注销 URL、SAML 实体 ID”发送给 [Fieldglass 支持团队](https://www.fieldglass.com/customer-support) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -173,7 +173,7 @@ ms.locfileid: "39420340"
  
 ### <a name="creating-a-fieldglass-test-user"></a>创建 Fieldglass 测试用户
 
-本部分的目的是在 FieldGlass 中创建名为 Britta Simon 的用户。 请与 [Fieldglass 支持团队](http://www.fieldglass.com/solutions/support)协作，将用户添加到 Fieldglass 帐户户中。
+本部分的目的是在 FieldGlass 中创建名为 Britta Simon 的用户。 请与 [Fieldglass 支持团队](https://www.fieldglass.com/customer-support)协作，将用户添加到 Fieldglass 帐户户中。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

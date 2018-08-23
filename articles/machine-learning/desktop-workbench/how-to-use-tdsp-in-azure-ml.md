@@ -3,25 +3,25 @@ title: 使用团队数据科学过程模板构建项目 | Microsoft Docs
 description: 如何实例化 Azure 机器学习中用于构建项目以实现协作的团队数据科学过程 (TDSP) 模板
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
+ms.author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
-ms.author: bradsev
-ms.openlocfilehash: 5b53bd3ec479ba6e096b4d00089f968e37f0135c
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 05cb2a62cf0f001012f5faa022de233d7cbdce97
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831762"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42140230"
 ---
 # <a name="structure-projects-with-the-team-data-science-process-template"></a>使用团队数据科学过程模板构建项目
 

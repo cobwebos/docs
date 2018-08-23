@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/22/2018
-ms.openlocfilehash: e87fc5b91e9e1d5f4f8449e84b17bcdab9c0b6b2
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: ba00d859dcfa968dcff7b321d571d61aea98463f
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39713588"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246457"
 ---
 # <a name="install-azure-stream-analytics-tools-for-visual-studio"></a>安装适用于 Visual Studio 的 Azure 流分析工具
 Azure 流分析工具支持 Visual Studio 2017、2015 和 2013。 本文介绍如何安装和卸载工具。
@@ -38,7 +38,7 @@ Azure 流分析工具支持 Visual Studio 2017、2015 和 2013。 本文介绍�
 ### <a name="visual-studio-2013-2015"></a>Visual Studio 2013、2015
 * 安装 Visual Studio 2015 或 Visual Studio 2013 Update 4。 支持 Enterprise (Ultimate/Premium)、Professional、Community 版本。 不支持 Express 版本。 
 * 使用 [Web 平台安装程序](http://www.microsoft.com/web/downloads/platform.aspx)安装用于 .NET 的 Microsoft Azure SDK 版本 2.7.1 或更高版本。
-* 安装[适用于 Visual Studio 的 Azure 流分析工具](http://aka.ms/asatoolsvs)。
+* 安装[适用于 Visual Studio 的 Azure 流分析工具](https://www.microsoft.com/en-us/download/details.aspx?id=49504)。
 
 ## <a name="update"></a>更新
 

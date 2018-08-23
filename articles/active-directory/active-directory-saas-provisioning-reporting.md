@@ -14,17 +14,17 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: e3be74fbb571a806fc03a92d0b1b373e35d196be
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 3231792ed1cb7f80cd2a106faf3760c48dd13c19
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363608"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42141043"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>教程：有关自动用户帐户预配的报告
 
 
-Azure Active Directory 包含一个[用户帐户预配服务](active-directory-saas-app-provisioning.md)，可帮助在 SaaS 应用和其他系统中自动预配/取消预配用户帐户，以进行端到端的标识生命周期管理。 Azure AD 支持对 [Azure AD 应用程序库](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured)的“特色”部分中的所有应用程序和系统使用预先集成的用户预配连接器。
+Azure Active Directory 包含一个[用户帐户预配服务](active-directory-saas-app-provisioning.md)，可帮助在 SaaS 应用和其他系统中自动预配/取消预配用户帐户，以进行端到端的标识生命周期管理。 Azure AD 支持对 [Azure AD 应用程序库](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured)的“特色”部分中的所有应用程序和系统使用预先集成的用户预配连接器。
 
 本文介绍如何在设置预配作业后检查其状态，以及如何排查单个用户和组的预配问题。
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4538e5b49b161f22ba6d5979234786a58cae5783
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: a9f76b38139cccedb97c6026f0e0efa14d0dbc8c
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047720"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246365"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>教程：使用数据工厂将数据从 Blob 存储复制到 SQL 数据库
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ ms.locfileid: "37047720"
 开始本教程之前，必须具有以下先决条件：
 
 * **Azure 订阅**。  如果没有订阅，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[免费使用](http://azure.microsoft.com/pricing/free-trial/)一文。
-* **Azure 存储帐户**。 在本教程中，将 Blob 存储用作**源**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-create-storage-account.md#create-a-storage-account)一文获取创建步骤。
+* **Azure 存储帐户**。 在本教程中，将 Blob 存储用作**源**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)一文获取创建步骤。
 * **Azure SQL 数据库**。 在本教程中，将 Azure SQL 数据库用作**目标**数据存储。 如果没有可在本教程中使用的 Azure SQL 数据库，请参阅[如何创建和配置 Azure SQL 数据库](../../sql-database/sql-database-get-started.md)进行创建。
 * **SQL Server 2012/2014 或 Visual Studio 2013**。 可使用 SQL Server Management Studio 或 Visual Studio 创建示例数据库和查看数据库中的结果数据。  
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9dda6d45caf69734eb135779c8bac00fea721efd
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 17029f51be9fed8fc36c5f919ece84acbf0461d9
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901052"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42146313"
 ---
 # <a name="dcos-agent-pools-for-azure-container-service"></a>Azure 容器服务的 DC/OS 代理池
 Azure 容器服务中的 DC/OS 群集包含两个池（公共池和专用池）中的代理节点。 可将应用程序部署到任一个池，从而影响容器服务中计算机之间的可访问性。 计算机可以向 Internet 公开（公共）或保持在内部（专用）。 本文简要概述了使用公共池和专用池的原因。
@@ -24,7 +24,7 @@ Azure 容器服务中的 DC/OS 群集包含两个池（公共池和专用池）�
 
 * **公共代理**：公共代理节点通过可公共访问的网络运行 DC/OS 应用和服务。 
 
-有关 DC/OS 网络安全性的详细信息，请参阅 [DC/OS 文档](https://dcos.io/docs/1.7/administration/securing-your-cluster/)。
+有关 DC/OS 网络安全性的详细信息，请参阅 [DC/OS 文档](https://dcos.io/docs/1.8/administration/securing-your-cluster/)。
 
 ## <a name="deploy-agent-pools"></a>部署代理池
 

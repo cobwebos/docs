@@ -12,13 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 08/20/2018
 ms.author: juliako
-ms.openlocfilehash: 2d3219f6f2617fec941e308febb2e47efa184170
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9e8dc926fd796e82ea531aba6cb3a682649dff41
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246366"
 ---
 # <a name="overview-of-live-streaming-using-azure-media-services"></a>使用 Azure 媒体服务实时传送视频流概述
 
@@ -74,7 +75,6 @@ ms.lasthandoff: 05/10/2018
 | 支持插入静态图像 |否 |是 |
 | 支持发出广告指示 |否 |是 |
 | 直通 CEA 608/708 字幕 |是 |是 |
-| 能够从贡献源出现的短时停顿中恢复 |是 |否（如果超过 6 秒而没有输入数据，通道就会开始插入静态图像） |
 | 支持非一致性输入 GOP |是 |否 - 输入必须是固定的 2 秒 GOP |
 | 支持可变帧率输入 |是 |否 - 输入必须是固定的帧速率。<br/>轻微的帧率变化是容许的，例如在高速运动情况下出现的轻微帧率变化。 但是，编码器不能掉到 10 帧/秒的帧率。 |
 | 输入源丢失时，会自动关闭通道 |否 |12 小时后，如果没有运行的程序 |

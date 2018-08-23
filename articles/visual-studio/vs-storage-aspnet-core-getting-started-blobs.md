@@ -8,17 +8,18 @@ manager: wpickett
 editor: ''
 ms.service: storage
 ms.workload: web
+ms.custom: vs-azure
 ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: casoper
-ms.openlocfilehash: 42390effd6a2d2a8afe9350e0a77d3c0a17b6129
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 82c5fb0f3f3e8edad948b82f77c9c336636f3077
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38720223"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42442735"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>开始使用 Azure Blob 存储和 Visual Studio 连接服务 (ASP.NET Core)
 
@@ -69,7 +70,7 @@ Azure Blob 存储是一种将非结构化数据作为对象或 Blob 存储在云
 1. 在“Azure 存储”对话框中，选择要在本教程中使用的 Azure 存储帐户。 若要创建新的 Azure 存储帐户，请选择“创建新的存储帐户”并填写表单。 选择现有存储帐户或创建新的存储帐户后，选择“添加”。 Visual Studio 将会安装 Azure 存储的 NuGet 包，并将一个存储连接字符串添加到 **appsettings.json**。
 
 > [!TIP]
-> 若要了解如何使用 [Azure 门户](https://portal.azure.com)创建存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)。
+> 若要了解如何使用 [Azure 门户](https://portal.azure.com)创建存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)。
 >
 > 也可以使用 [Azure PowerShell](../storage/common/storage-powershell-guide-full.md)、[Azure CLI](../storage/common/storage-azure-cli.md) 或 [Azure Cloud Shell](../cloud-shell/overview.md) 创建存储帐户。
 

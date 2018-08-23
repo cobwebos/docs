@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/16/2016
 ms.author: mbullwin
-ms.openlocfilehash: 056716e243980f0a8aadc1ff7e9b8776809ad88e
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 660080a629e00884dd61a49bc0950ebe25b6a0c5
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036391"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42146122"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>为 Application Insights 中的指标图表添加批注
 [指标资源管理器](app-insights-metrics-explorer.md)图表上的批注显示将新版本部署到了何处，或者显示其他重要事件。 使用批注可让轻松查看更改是否对应用程序的性能产生了任何影响。 [Visual Studio Team Services 生成系统](https://docs.microsoft.com/vsts/pipelines/tasks/)可自动创建批注。 也可以[通过 PowerShell 创建批注](#create-annotations-from-powershell)用于标记所要处理的任何事件。
@@ -34,7 +34,7 @@ ms.locfileid: "39036391"
 ### <a name="install-the-annotations-extension-one-time"></a>安装批注扩展（一次性操作）
 若要创建版本批注，必须安装 Visual Studio Marketplace 中提供的多个 Team Service 扩展中的一个。
 
-1. 登录到 [Visual Studio Team Services](https://www.visualstudio.com/en-us/get-started/setup/sign-up-for-visual-studio-online) 项目。
+1. 登录到 [Visual Studio Team Services](https://visualstudio.microsoft.com/vso/) 项目。
 2. 在 Visual Studio Marketplace 中，[获取“版本批注”扩展](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)，并将其添加到 Team Services 帐户。
 
 ![在 Team Services 网页右上角打开“市场”。 选择“Visual Team Services”，并在“生成与发布”下面选择“查看更多”。](./media/app-insights-annotations/10.png)

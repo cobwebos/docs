@@ -8,18 +8,19 @@ manager: craigg
 ms.assetid: 7398c0c9-7a03-4628-94b3-f2aaef4a72c5
 ms.service: data-factory
 ms.workload: data-services
+ms.custom: vs-azure
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 02c9d3715d8c4632bf19512cd9ffee64e4a22e8a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 41ffd50f791cd380cd66a6eb5cb3c013da9bc43a
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047014"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42282307"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>教程：使用 Visual Studio 创建数据工厂
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -32,7 +33,7 @@ ms.locfileid: "37047014"
 
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1。 如果你使用的是数据工厂服务的当前版本，请参阅[快速入门：使用 Azure 数据工厂创建数据工厂](../quickstart-create-data-factory-dot-net.md)。
+> 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[快速入门：使用 Azure 数据工厂创建数据工厂](../quickstart-create-data-factory-dot-net.md)。
 
 本教程演示如何使用 Visual Studio 创建 Azure 数据工厂。 你可以使用数据工厂项目模板创建 Visual Studio 项目，以 JSON 格式定义数据工厂实体（链接服务、数据集和管道），并将这些实体发布/部署到云。 
 
@@ -119,7 +120,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
     下表提供了代码片段中使用的 JSON 属性的描述：
 
-    属性 | 说明
+    属性 | Description
     -------- | ----------- 
     ClusterSize | 指定 HDInsight Hadoop 群集的大小。
     TimeToLive | 指定 HDInsight 群集在被删除之前的空闲时间。
@@ -168,7 +169,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
     下表提供了代码片段中使用的 JSON 属性的描述：
 
-    属性 | 说明 |
+    属性 | Description |
     -------- | ----------- |
     type |type 属性设置为 **AzureBlob**，因为数据驻留在 Azure Blob 存储中。
     linkedServiceName | 表示前面创建的 AzureStorageLinkedService1。
@@ -562,7 +563,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
 
 ## <a name="see-also"></a>另请参阅
-| 主题 | 说明 |
+| 主题 | Description |
 |:--- |:--- |
 | [管道](data-factory-create-pipelines.md) |帮助你了解 Azure 数据工厂中的管道和活动，以及如何利用它们为方案或业务构造数据驱动工作流。 |
 | [数据集](data-factory-create-datasets.md) |还有助于了解 Azure 数据工厂中的数据集。 |

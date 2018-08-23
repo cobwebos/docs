@@ -7,16 +7,17 @@ manager: douge
 ms.assetid: 92ee2f9e-ec49-4c7a-900d-620abe5e9d8a
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ghogen
-ms.openlocfilehash: 7656f0ea7ddc283d430eacdccb60a1a2df6e3b70
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 084ba64389e2f3f8d62b77697df368dac7e09eac
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798975"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42141045"
 ---
 # <a name="prepare-to-publish-or-deploy-a-cloud-service-from-visual-studio"></a>准备从 Visual Studio 发布或部署云服务
 
@@ -59,7 +60,7 @@ ms.locfileid: "31798975"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 1. 选择左上角的“+ 新建”。
-1. 选择“Azure Marketplace”下的“存储”，然后从右侧选择“存储帐户 - Blob、文件、表、队列”。
+1. 选择“Azure 市场”下的“存储”，然后从右侧选择“存储帐户 - Blob、文件、表、队列”。
 1. 提供所需的信息（名称、部署模型等）。
 1. 选择“创建”以完成过程。
 

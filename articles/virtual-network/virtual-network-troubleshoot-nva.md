@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2018
 ms.author: genli
-ms.openlocfilehash: 5f11129e562ec47f4c81790cf21c9a390cc697b8
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: d16f106fa1776b0d11a97f71ffe16cf89fb9584a
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621399"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42140641"
 ---
 #  <a name="network-virtual-appliance-issues-in-azure"></a>Azure 中的网络虚拟设备问题
 
@@ -132,5 +132,5 @@ NVA 供应商提供了对第三方 NVA 及其与 Azure 平台集成的技术支�
 
 如果无法看到数据包传入到后端 VM 跟踪，原因很可能是存在 NSG 或 UDR 干扰或是 NVA 路由表不正确。
 
-如果看到数据包传入但没有响应，则可能需要解决 VM 应用程序或防火墙问题。 对于上述任意问题，如有需要[请联系 NVA 供应商以获取帮助](Let's link customer to 3rd party vendor again here: https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
+如果看到数据包传入但没有响应，则可能需要解决 VM 应用程序或防火墙问题。 对于上述任意问题，如有需要[请联系 NVA 供应商以获取帮助](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
 

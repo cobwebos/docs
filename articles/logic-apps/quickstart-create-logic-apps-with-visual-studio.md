@@ -3,20 +3,21 @@ title: 使用 Visual Studio 创建自动执行工作流的逻辑应用 - Azure �
 description: 本快速入门介绍如何在 Visual Studio 中使用 Azure 逻辑应用自动执行任务、流程和工作流
 services: logic-apps
 ms.service: logic-apps
+ms.workload: azure-vs
 author: ecfan
 ms.author: estfan
 manager: jeconnoc
-ms.date: 07/31/2018
 ms.topic: quickstart
 ms.custom: mvc
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 92f4fb57e3bd1f3ee61625256d661980d6a11275
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.date: 07/31/2018
+ms.openlocfilehash: b8961edebd80d5f36d844734e3c93a4bd3b1f0cf
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39367124"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42162127"
 ---
 # <a name="quickstart-create-and-automate-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>快速入门：使用 Azure 逻辑应用创建并自动执行任务、流程和工作流 - Visual Studio
 

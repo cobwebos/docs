@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 9ffc84009adfca60e9ae6b188b65b15e874e7d9c
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: d49b5404f1a2b4ac7fa4cc170ccc010a28bf98a2
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622164"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42140837"
 ---
 # <a name="how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>如何控制设备的混合 Azure AD 联接
 
@@ -116,7 +116,7 @@ ms.locfileid: "39622164"
 
 ## <a name="control-windows-down-level-devices"></a>控制 Windows 下层设备
 
-若要注册 Windows 下层设备，需要在[适用于非 Windows 10 计算机的 Microsoft Workplace Join](https://www.microsoft.com/en-us/download/details.aspx?id=53554) 网页中通过下载中心下载并安装 Windows Installer 包 (.msi)。
+若要注册 Windows 下层设备，需要在[适用于非 Windows 10 计算机的 Microsoft Workplace Join](https://www.microsoft.com/download/details.aspx?id=53554) 网页中通过下载中心下载并安装 Windows Installer 包 (.msi)。
 
 可以使用 System Center Configuration Manager 等软件分发系统部署该包。 此包支持使用标准无提示安装选项（包含 quiet 参数）。 从早期版本开始，[System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager) Current Branch 一直在提供附加功能，例如，跟踪已完成的注册。
 

@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: f0a6e164ed6b2269ec223a18f37d3475316d3e77
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 38d024de0fd2490d33f7c06498d3ff8d0d06e503
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629066"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42140634"
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>使用 Azure Active Directory 设备注册设置本地条件访问
 当你要求用户在工作区将其个人设备加入到 Azure Active Directory (Azure AD) 设备注册服务时，他们的设备会被标记为组织已知的设备。 以下是在 Windows Server 2012 R2 中使用 Active Directory 联合身份验证服务 (AD FS) 启用对本地应用程序的条件访问的分步指南。
@@ -48,7 +48,7 @@ ms.locfileid: "39629066"
 * Azure Active Directory Premium 许可证
 * Windows Server 2012 R2 联合身份验证服务，为 Azure AD 的 SSO 配置
 * Windows Server 2012 R2 Web 应用程序代理 
-* Microsoft Azure Active Directory Connect (Azure AD Connect) [（下载 Azure AD Connect）](http://www.microsoft.com/en-us/download/details.aspx?id=47594)
+* Microsoft Azure Active Directory Connect (Azure AD Connect) [（下载 Azure AD Connect）](http://www.microsoft.com/download/details.aspx?id=47594)
 * 已验证的域
 
 ## <a name="known-issues-in-this-release"></a>本版本中的已知问题
