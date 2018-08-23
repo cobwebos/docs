@@ -121,7 +121,7 @@ U-SQL 脚本测试项目和 C# UDO 测试项目都继承 C# 单元测试项目�
 
 ### <a name="run-u-sql-test-cases-in-visual-studio-team-service"></a>在 Visual Studio Team Service 中运行 U-SQL 测试用例
 
-对于 U-SQL 测试，请确保在生成计算机上加载 `CPPSDK`，然后将 `CPPSDK` 路径传递到 USqlScriptTestRunner(cppSdkFolderFullPath: @"")。
+对于 U-SQL 测试，请确保在生成计算机上加载 `CPPSDK`，然后将 `CPPSDK` 路径传递到 USqlScriptTestRunner(cppSdkFolderFullPath: \@"")。
 
 **什么是 CPPSDK？**
 
