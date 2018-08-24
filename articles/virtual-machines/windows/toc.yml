@@ -1,466 +1,480 @@
+items:
 - name: Windows VM 文档
   href: index.yml
 - name: 概述
   items:
-    - name: 关于虚拟机
-      href: overview.md
+  - name: 关于虚拟机
+    href: overview.md
 - name: 快速入门
-  expanded: true
   items:
-    - name: 创建 VM - 门户
-      href: quick-create-portal.md
-    - name: 创建 VM - PowerShell
-      href: quick-create-powershell.md
-    - name: 创建 VM - Azure CLI
-      href: quick-create-cli.md
+  - name: 创建 VM - 门户
+    href: quick-create-portal.md
+  - name: 创建 VM - PowerShell
+    href: quick-create-powershell.md
+  - name: 创建 VM - Azure CLI
+    href: quick-create-cli.md
+  expanded: true
 - name: 教程
   items:
-    - name: 1 - 创建/管理 VM
-      href: tutorial-manage-vm.md
-    - name: 2 - 创建/管理磁盘
-      href: tutorial-manage-data-disk.md
-    - name: 3 - 自动执行配置
-      href: tutorial-automate-vm-deployment.md
-    - name: 4 - 创建 VM 映像
-      href: tutorial-custom-images.md
-    - name: 5 - 高度可用的 VM
-      href: tutorial-availability-sets.md
-    - name: 6 - 创建 VM 规模集
-      href: tutorial-create-vmss.md
-    - name: 7 - 对 VM 进行负载均衡
-      href: tutorial-load-balancer.md
-    - name: 8 - 管理网络
-      href: tutorial-virtual-network.md
-    - name: 9 - 备份虚拟机
-      href: tutorial-backup-vms.md
-    - name: 10 - 控制 VM
-      href: tutorial-govern-resources.md
-    - name: 11 - 监视和更新 VM
-      href: tutorial-monitoring.md
-    - name: 12 - 管理 VM 安全性
-      href: tutorial-azure-security.md
-    - name: 13 - Team Services CI/CD
-      href: tutorial-vsts-iis-cicd.md
-    - name: 14 - 安装 SQL\IIS\.NET 堆栈
-      href: tutorial-iis-sql.md
-    - name: 15 - 使用 SSL 保护 Web 服务器
-      href: tutorial-secure-web-server.md
+  - name: 1 - 创建/管理 VM
+    href: tutorial-manage-vm.md
+  - name: 2 - 创建/管理磁盘
+    href: tutorial-manage-data-disk.md
+  - name: 3 - 自动执行配置
+    href: tutorial-automate-vm-deployment.md
+  - name: 4 - 创建 VM 映像
+    href: tutorial-custom-images.md
+  - name: 5 - 高度可用的 VM
+    href: tutorial-availability-sets.md
+  - name: 6 - 创建 VM 规模集
+    href: tutorial-create-vmss.md
+  - name: 7 - 对 VM 进行负载均衡
+    href: tutorial-load-balancer.md
+  - name: 8 - 管理网络
+    href: tutorial-virtual-network.md
+  - name: 9 - 备份虚拟机
+    href: tutorial-backup-vms.md
+  - name: 10 - 控制 VM
+    href: tutorial-govern-resources.md
+  - name: 11 - 监视和更新 VM
+    href: tutorial-monitoring.md
+  - name: 12 - 管理 VM 安全性
+    href: tutorial-azure-security.md
+  - name: 13 - Team Services CI/CD
+    href: tutorial-vsts-iis-cicd.md
+  - name: 14 - 安装 SQL\IIS\.NET 堆栈
+    href: tutorial-iis-sql.md
+  - name: 15 - 使用 SSL 保护 Web 服务器
+    href: tutorial-secure-web-server.md
 - name: 示例
   items:
-    - name: PowerShell
-      href: powershell-samples.md
-    - name: Azure CLI
-      href: cli-samples.md
+  - name: PowerShell
+    href: powershell-samples.md
+  - name: Azure CLI
+    href: cli-samples.md
 - name: 概念
   items:
-    - name: Azure 资源管理器
-      href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: 区域和可用性
-      href: regions-and-availability.md
-    - name: VM 类型和大小
-      href: sizes.md
+  - name: Azure 资源管理器
+    href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+  - name: 区域和可用性
+    href: regions-and-availability.md
+  - name: VM 类型和大小
+    href: sizes.md
+    items:
+    - name: 常规用途
+      href: sizes-general.md
       items:
-        - name: 常规用途
-          href: sizes-general.md
-          items:
-            - name: B 系列可突增
-              href: b-series-burstable.md
-        - name: 计算优化
-          href: sizes-compute.md
-        - name: 内存优化
-          items:
-            - name: 约束的 vCPU
-              href: constrained-vcpu.md
-          href: sizes-memory.md
-        - name: 存储优化
-          href: sizes-storage.md
-        - name: GPU 优化
-          href: sizes-gpu.md
-          items:
-            - name: 安装 GPU 驱动程序
-              href: n-series-driver-setup.md
-        - name: 高性能计算
-          href: sizes-hpc.md
-        - name: 前几代
-          href: sizes-previous-gen.md
-        - name: Azure 计算单元 (ACU)
-          href: acu.md
-        - name: 基准评分
-          href: compute-benchmark-scores.md
-    - name: 维护和更新
-      href: maintenance-and-updates.md
-    - name: 磁盘存储
-      href: about-disks-and-vhds.md
+      - name: B 系列可突增
+        href: b-series-burstable.md
+    - name: 计算优化
+      href: sizes-compute.md
+    - name: 内存优化
+      href: sizes-memory.md
       items:
-        - name: 托管磁盘
-          href: managed-disks-overview.md
-        - name: 高级存储
-          href: premium-storage.md
-        - name: 高级存储性能
-          href: premium-storage-performance.md
-        - name: 标准存储
-          href: standard-storage.md
-        - name: 磁盘的可伸缩性目标
-          href: disk-scalability-targets.md
-        - name: 磁盘的备份和灾难恢复
-          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
-    - name: 网络
-      href: network-overview.md
-    - name: 自动缩放应用程序
-      href: autoscale.md
-    - name: 基础结构自动化
-      href: infrastructure-automation.md
-    - name: 安全和策略
-      href: security-policy.md
-    - name: 监视
-      href: monitor.md
-    - name: 备份和恢复
-      href: backup-recovery.md
+      - name: 约束的 vCPU
+        href: constrained-vcpu.md
+    - name: 存储优化
+      href: sizes-storage.md
+    - name: GPU 优化
+      href: sizes-gpu.md
+      items:
+      - name: 安装 GPU 驱动程序
+        href: n-series-driver-setup.md
     - name: 高性能计算
-      href: high-performance-computing.md
-    - name: 部署注意事项
-      items:
-        - name: 基础结构指南
-          href: infrastructure-example.md
-        - name: vCPU 配额
-          href: quotas.md
+      href: sizes-hpc.md
+    - name: 前几代
+      href: sizes-previous-gen.md
+    - name: Azure 计算单元 (ACU)
+      href: acu.md
+    - name: 基准评分
+      href: compute-benchmark-scores.md
+  - name: 维护和更新
+    href: maintenance-and-updates.md
+  - name: 磁盘存储
+    href: about-disks-and-vhds.md
+    items:
+    - name: 托管磁盘
+      href: managed-disks-overview.md
+    - name: 高级存储
+      href: premium-storage.md
+    - name: 标准 SSD
+      href: disks-standard-ssd.md
+    - name: 高级存储性能
+      href: premium-storage-performance.md
+    - name: 标准存储
+      href: standard-storage.md
+    - name: 磁盘的可伸缩性目标
+      href: disk-scalability-targets.md
+    - name: 磁盘的备份和灾难恢复
+      href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+  - name: 网络
+    href: network-overview.md
+  - name: 自动缩放应用程序
+    href: autoscale.md
+  - name: 基础结构自动化
+    href: infrastructure-automation.md
+  - name: 安全和策略
+    href: security-policy.md
+  - name: 状态和生命周期
+    href: states-lifecycle.md
+  - name: 监视
+    href: monitor.md
+  - name: 备份和恢复
+    href: backup-recovery.md
+  - name: 高性能计算
+    href: high-performance-computing.md
+  - name: 部署注意事项
+    items:
+    - name: 基础结构指南
+      href: infrastructure-example.md
+    - name: vCPU 配额
+      href: quotas.md
 - name: 操作指南
   items:
+  - name: 创建 VM
+    items:
+    - name: 使用 C#
+      href: csharp.md
+    - name: 使用专用磁盘
+      items:
+      - name: 门户
+        href: create-vm-specialized-portal.md
+      - name: PowerShell
+        href: create-vm-specialized.md
+    - name: 将模板与 C# 配合使用
+      href: csharp-template.md
+    - name: 使用 Chef 创建 VM
+      href: chef-automation.md
+    - name: 使用 Java
+      href: java.md
+    - name: 使用 Python
+      href: python.md
+    - name: 使用模板
+      href: ps-template.md
+    - name: 连接到 VM
+      href: connect-logon.md
+    - name: 使用 Azure 混合权益许可证
+      href: hybrid-use-benefit-licensing.md
+    - name: 使用用于 Windows 10 的多租户托管权限
+      href: windows-desktop-multitenant-hosting-deployment.md
+  - name: 保护 VM
+    items:
+    - name: 加密
+      href: encrypt-disks.md
+    - name: 使用 WinRM
+      href: winrm.md
+    - name: 使用访问控制
+      href: ../../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+    - name: 使用策略
+      href: policy.md
+    - name: 创建密钥保管库
+      href: key-vault-setup.md
+  - name: 保护 VM
+    href: ../../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+    items:
+    - name: 备份单个 VM
+      items:
+      - name: Azure 门户
+        href: ../../backup/quick-backup-vm-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+      - name: Azure PowerShell
+        href: ../../backup/quick-backup-vm-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+    - name: 备份多个 VM
+      href: ../../backup/tutorial-backup-vm-at-scale.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+  - name: 管理 VM
+    items:
+    - name: VM 使用情况
+      href: vm-usage.md
+    - name: 常见 PowerShell 任务
+      href: ps-common-ref.md
+    - name: 移动 VM
+      href: move-vm.md
+    - name: 更改 VM 大小
+      href: resize-vm.md
+    - name: 交换 OS 磁盘
+      href: os-disk-swap.md
+    - name: 标记 VM
+      href: tag.md
+    - name: 在 VM 上运行脚本
+      href: run-scripts-in-vm.md
+      items:
+      - name: 自定义脚本扩展
+        href: ../extensions/custom-script-windows.md
+      - name: 运行命令
+        href: run-command.md
+    - name: 更改临时驱动器号
+      href: change-drive-letter.md
+    - name: 更改可用性集
+      href: change-availability-set.md
+    - name: 下载模板
+      href: download-template.md
+    - name: Azure VM 代理
+      href: ../extensions/agent-windows.md
+    - name: 计划内维护
+      href: maintenance-notifications.md
+    - name: 缓解推理执行
+      href: mitigate-se.md
+    - name: 计划事件
+      href: scheduled-events.md
+    - name: 监视元数据
+      href: instance-metadata-service.md
+    - name: 启用嵌套虚拟化
+      href: nested-virtualization.md
+  - name: 管理成本
+    items:
+    - name: 为 VM 预付费 - Azure 预留项
+      href: prepay-reserved-vm-instances.md
+    - name: 什么是 Azure 预留？
+      href: ../../billing/billing-save-compute-costs-reservations.md
+    - name: VM 实例大小灵活性
+      href: reserved-vm-instance-size-flexibility.md
+  - name: 使用映像
+    items:
+    - name: 查找和使用映像
+      href: cli-ps-findimage.md
+    - name: 准备要上传的 VM
+      href: prepare-for-upload-vhd-image.md
+    - name: 将 VM 捕获到映像
+      href: capture-image-resource.md
+    - name: 使用通用映像
+      href: create-vm-generalized-managed.md
+    - name: 使用 Packer 生成映像
+      href: build-image-with-packer.md
+    - name: 使用 Windows 客户端映像
+      href: client-images.md
+    - name: 下载现有磁盘
+      href: download-vhd.md
+  - name: 可用性和规模
+    items:
+    - name: 虚拟机规模集
+      href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+    - name: 高可用性
+      href: manage-availability.md
+    - name: 纵向缩放
+      href: vertical-scaling-automation.md
+    - name: 在可用性区域中创建 VM
+      items:
+      - name: PowerShell
+        href: create-powershell-availability-zone.md
+      - name: 门户
+        href: create-portal-availability-zone.md
+  - name: 使用自动化工具
+    items:
+    - name: Chef
+      href: chef-automation.md
+    - name: 从 Visual Studio 发布 Web 应用
+      href: publish-web-app-from-visual-studio.md
+  - name: 运行应用程序
+    items:
+    - name: SQL Server
+      href: sql/virtual-machines-windows-sql-server-iaas-overview.md
+    - name: MongoDB
+      href: install-mongodb.md
+    - name: Azure 上的 SAP
+      href: ../workloads/sap/get-started.md
+    - name: MATLAB 群集
+      href: matlab-mdcs-cluster.md
+    - name: Visual Studio
+      href: using-visual-studio-vm.md
+    - name: 高性能计算 (HPC)
+      href: hpcpack-cluster-options.md
+      items:
+      - name: HPC Pack 2016 群集
+        href: hpcpack-2016-cluster.md
+      - name: HPC Pack 2016 Azure Active Directory 集成
+        href: hpcpack-cluster-active-directory.md
+      - name: HPC Pack 2012 R2 头节点
+        href: hpcpack-cluster-headnode.md
+      - name: 将本地将作业提交到 HPC Pack 2012 R2
+        href: hpcpack-cluster-submit-jobs.md
+      - name: HPC Pack 上的 Excel
+        href: excel-cluster-hpcpack.md
+  - name: 管理存储
+    items:
+    - name: 磁盘常见问题解答
+      href: faq-for-disks.md
+    - name: 添加磁盘
+      items:
+      - name: Azure Powershell
+        href: attach-disk-ps.md
+      - name: Azure 门户
+        href: attach-managed-disk-portal.md
+    - name: 分离磁盘
+      href: detach-disk.md
+    - name: 调整磁盘大小
+      href: expand-os-disk.md
+    - name: 拍摄磁盘快照
+      href: snapshot-copy-managed-disk.md
+    - name: 备份非托管磁盘
+      href: incremental-snapshots.md
+    - name: 在“标准”和“高级”之间转换磁盘
+      href: convert-disk-storage.md
+    - name: 使用 Azure Site Recovery 迁移到高级存储
+      href: migrate-to-premium-storage-using-azure-site-recovery.md
+    - name: 查找未附加的磁盘
+      href: find-unattached-disks.md
+    - name: 使用文件存储
+      href: mount-azure-file-storage.md
+    - name: 使用模板部署磁盘
+      href: using-managed-disks-template-deployments.md
+    - name: 启用写入加速器
+      href: how-to-enable-write-accelerator.md
+    - name: 迁移到托管磁盘
+      href: migrate-to-managed-disks.md
+      items:
+      - name: 非托管 VM 到托管磁盘
+        href: convert-unmanaged-to-managed-disks.md
+      - name: 单个经典 VM 到资源管理器
+        href: migrate-single-classic-to-resource-manager.md
+  - name: 管理网络
+    href: ps-common-network-ref.md
+    items:
+    - name: 创建虚拟网络
+      href: ../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+    - name: 打开 VM 的端口
+      items:
+      - name: Azure 门户
+        href: nsg-quickstart-portal.md
+      - name: Azure PowerShell
+        href: nsg-quickstart-powershell.md
+    - name: 分配公共 IP 地址
+      href: ../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+    - name: 使用多个 NIC
+      href: multiple-nics.md
+    - name: 使用加速网络
+      href: ../../virtual-network/create-vm-accelerated-networking-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+    - name: 分配公用 DNS 名称
+      href: portal-create-fqdn.md
+    - name: DNS 解析
+      href: ../../dns/dns-for-azure-services.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+  - name: 使用 VM 扩展
+    href: ../extensions/overview.md
+  - name: 迁移 VM
+    items:
+    - name: 迁移 AWS 和本地 VM
+      href: on-prem-to-azure.md
+      items:
+      - name: 上传本地 VM
+        href: upload-generalized-managed.md
+      - name: 从 Amazon Web Services (AWS)
+        href: aws-to-azure.md
+      - name: 使用 Azure Site Recovery
+        href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+    - name: 从经典部署迁移到 Azure 资源管理器部署
+      href: migration-classic-resource-manager-overview.md
+      items:
+      - name: 深入了解迁移
+        href: migration-classic-resource-manager-deep-dive.md
+      - name: 规划迁移
+        href: migration-classic-resource-manager-plan.md
+      - name: 使用 PowerShell 迁移
+        href: migration-classic-resource-manager-ps.md
+      - name: 常见的迁移错误
+        href: migration-classic-resource-manager-errors.md
+      - name: 用于迁移的社区工具
+        href: migration-classic-resource-manager-community-tools.md
+      - name: 常见问题解答
+        href: migration-classic-resource-manager-faq.md
+  - name: 故障排除
+    items:
+    - name: 远程桌面连接
+      href: troubleshoot-rdp-connection.md
+      items:
+      - name: 详细步骤
+        href: detailed-troubleshoot-rdp.md
+      - name: 错误消息
+        href: troubleshoot-specific-rdp-errors.md
+    - name: 重置 RDP 密码
+      href: reset-rdp.md
+    - name: 在不使用 Azure 代理的情况下重置本地密码
+      href: reset-local-password-without-agent.md
+    - name: 了解系统重启
+      href: understand-vm-reboot.md
+    - name: 重置 NIC
+      href: reset-network-interface.md
+    - name: 启动诊断
+      href: boot-diagnostics.md
+    - name: 串行控制台
+      href: serial-console.md
+      items:
+      - name: CMD 和 PowerShell 命令
+        href: serial-console-cmd-ps-commands.md
     - name: 创建 VM
+      href: troubleshoot-deployment-new-vm.md
+    - name: 部署问题
+      href: troubleshoot-deploy-vm.md
+    - name: 重新启动 VM 或调整其大小
+      href: restart-resize-error-troubleshooting.md
+    - name: 应用程序访问
+      href: troubleshoot-app-connection.md
+    - name: “激活”问题
+      href: troubleshoot-activation-problems.md
+    - name: 分配失败
+      href: allocation-failure.md
+    - name: 分配失败 - 经典 VM
+      href: allocation-failure-classic.md
+    - name: 重新部署 VM
+      href: redeploy-to-new-node.md
+    - name: 常见错误消息
+      href: error-messages.md
+    - name: VM 恢复方法
       items:
-        - name: '使用 C#'
-          href: csharp.md
-        - name: 使用专用磁盘
-          items:
-            - name: 门户
-              href: create-vm-specialized-portal.md
-            - name: PowerShell
-              href: create-vm-specialized.md
-        - name: '将模板与 C# 配合使用'
-          href: csharp-template.md
-        - name: 使用 Chef 创建 VM
-          href: chef-automation.md
-        - name: 使用 Java
-          href: java.md
-        - name: 使用 Python
-          href: python.md
-        - name: 使用模板
-          href: ps-template.md
-        - name: 连接到 VM
-          href: connect-logon.md
-        - name: 使用 Azure 混合权益许可证
-          href: hybrid-use-benefit-licensing.md
-        - name: 使用用于 Windows 10 的多租户托管权限
-          href: windows-desktop-multitenant-hosting-deployment.md
-    - name: 保护 VM
+      - name: Azure PowerShell
+        href: troubleshoot-recovery-disks.md
+      - name: Azure 门户
+        href: troubleshoot-recovery-disks-portal.md
+    - name: 使用 PerfInsights
+      href: how-to-use-perfInsights.md
+    - name: 性能诊断 VM 扩展
+      href: performance-diagnostics-vm-extension.md
+    - name: 使用嵌套虚拟化
+      href: troubleshoot-vm-by-use-nested-virtualization.md
+    - name: 在脱机模式下安装 VM 代理
+      href: install-vm-agent-offline.md
+    - name: 对附加的 VHD 进行故障排除
       items:
-        - name: 加密
-          href: encrypt-disks.md
-        - name: 使用 WinRM
-          href: winrm.md
-        - name: 使用访问控制
-          href: ../../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-        - name: 使用策略
-          href: policy.md
-        - name: 创建密钥保管库
-          href: key-vault-setup.md
-    - name: 保护 VM
-      href: ../../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-      items:
-        - name: 备份单个 VM
-          items:
-            - name: Azure 门户
-              href: ../../backup/quick-backup-vm-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-            - name: Azure PowerShell
-              href: ../../backup/quick-backup-vm-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-        - name: 备份多个 VM
-          href: ../../backup/tutorial-backup-vm-at-scale.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: 管理 VM
-      items:
-        - name: VM 使用情况
-          href: vm-usage.md
-        - name: 常见 PowerShell 任务
-          href: ps-common-ref.md
-        - name: 移动 VM
-          href: move-vm.md
-        - name: 更改 VM 大小
-          href: resize-vm.md
-        - name: 交换 OS 磁盘
-          href: os-disk-swap.md
-        - name: 标记 VM
-          href: tag.md
-        - name: 在 VM 上运行脚本
-          href: run-scripts-in-vm.md
-          items:
-            - name: 自定义脚本扩展
-              href: ../extensions/custom-script-windows.md
-            - name: 运行命令
-              href: run-command.md
-        - name: 更改临时驱动器号
-          href: change-drive-letter.md
-        - name: 更改可用性集
-          href: change-availability-set.md
-        - name: 下载模板
-          href: download-template.md
-        - name: Azure VM 代理
-          href: ../extensions/agent-windows.md
-        - name: 计划内维护
-          href: maintenance-notifications.md
-        - name: 缓解推理执行
-          href: mitigate-se.md
-        - name: 计划事件
-          href: scheduled-events.md
-        - name: 监视元数据
-          href: instance-metadata-service.md
-        - name: 启用嵌套虚拟化
-          href: nested-virtualization.md
-    - name: 管理成本
-      items:
-        - name: 为 VM 预付费 - Azure 预留项
-          href: prepay-reserved-vm-instances.md
-        - name: 什么是 Azure 预留项？
-          href: ../../billing/billing-save-compute-costs-reservations.md
-        - name: VM 实例大小灵活性
-          href: reserved-vm-instance-size-flexibility.md
-    - name: 使用映像
-      items:
-        - name: 查找和使用映像
-          href: cli-ps-findimage.md
-        - name: 准备要上传的 VM
-          href: prepare-for-upload-vhd-image.md
-        - name: 将 VM 捕获到映像
-          href: capture-image-resource.md
-        - name: 使用通用映像
-          href: create-vm-generalized-managed.md
-        - name: 使用 Packer 生成映像
-          href: build-image-with-packer.md
-        - name: 使用 Windows 客户端映像
-          href: client-images.md
-        - name: 下载现有磁盘
-          href: download-vhd.md
-    - name: 可用性和规模
-      items:
-        - name: 虚拟机规模集
-          href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-        - name: 高可用性
-          href: manage-availability.md
-        - name: 纵向缩放
-          href: vertical-scaling-automation.md
-        - name: 在可用性区域中创建 VM
-          items:
-            - name: PowerShell
-              href: create-powershell-availability-zone.md
-            - name: 门户
-              href: create-portal-availability-zone.md
-    - name: 使用自动化工具
-      items:
-        - name: Chef
-          href: chef-automation.md
-        - name: 从 Visual Studio 发布 Web 应用
-          href: publish-web-app-from-visual-studio.md
-    - name: 运行应用程序
-      items:
-        - name: SQL Server
-          href: sql/virtual-machines-windows-sql-server-iaas-overview.md
-        - name: MongoDB
-          href: install-mongodb.md
-        - name: Azure 上的 SAP
-          href: ../workloads/sap/get-started.md
-        - name: MATLAB 群集
-          href: matlab-mdcs-cluster.md
-        - name: Visual Studio
-          href: using-visual-studio-vm.md
-        - name: 高性能计算 (HPC)
-          href: hpcpack-cluster-options.md
-          items:
-            - name: HPC Pack 2016 群集
-              href: hpcpack-2016-cluster.md
-            - name: HPC Pack 2016 Azure Active Directory 集成
-              href: hpcpack-cluster-active-directory.md
-            - name: HPC Pack 2012 R2 头节点
-              href: hpcpack-cluster-headnode.md
-            - name: 将本地将作业提交到 HPC Pack 2012 R2
-              href: hpcpack-cluster-submit-jobs.md
-            - name: HPC Pack 上的 Excel
-              href: excel-cluster-hpcpack.md
-    - name: 管理存储
-      items:
-        - name: 磁盘常见问题解答
-          href: faq-for-disks.md
-        - name: 添加磁盘
-          items:
-            - name: Azure Powershell
-              href: attach-disk-ps.md
-            - name: Azure 门户
-              href: attach-managed-disk-portal.md
-        - name: 分离磁盘
-          href: detach-disk.md
-        - name: 调整磁盘大小
-          href: expand-os-disk.md
-        - name: 拍摄磁盘快照
-          href: snapshot-copy-managed-disk.md
-        - name: 备份非托管磁盘
-          href: incremental-snapshots.md
-        - name: 在“标准”和“高级”之间转换磁盘
-          href: convert-disk-storage.md
-        - name: 使用 Azure Site Recovery 迁移到高级存储
-          href: migrate-to-premium-storage-using-azure-site-recovery.md
-        - name: 查找未附加的磁盘
-          href: find-unattached-disks.md
-        - name: 使用文件存储
-          href: mount-azure-file-storage.md
-        - name: 使用模板部署磁盘
-          href: using-managed-disks-template-deployments.md
-        - name: 启用写入加速器
-          href: how-to-enable-write-accelerator.md
-        - name: 迁移到托管磁盘
-          href: migrate-to-managed-disks.md
-          items:
-            - name: 非托管 VM 到托管磁盘
-              href: convert-unmanaged-to-managed-disks.md
-            - name: 单个经典 VM 到资源管理器
-              href: migrate-single-classic-to-resource-manager.md
-    - name: 管理网络
-      href: ps-common-network-ref.md
-      items:
-        - name: 创建虚拟网络
-          href: ../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-        - name: 打开 VM 的端口
-          items:
-            - name: Azure 门户
-              href: nsg-quickstart-portal.md
-            - name: Azure PowerShell
-              href: nsg-quickstart-powershell.md
-        - name: 分配公共 IP 地址
-          href: ../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-        - name: 使用多个 NIC
-          href: multiple-nics.md
-        - name: 使用加速网络
-          href: ../../virtual-network/create-vm-accelerated-networking-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-        - name: 分配公用 DNS 名称
-          href: portal-create-fqdn.md
-        - name: DNS 解析
-          href: ../../dns/dns-for-azure-services.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: 使用 VM 扩展
-      href: ../extensions/overview.md
-    - name: 迁移 VM
-      items:
-        - name: 迁移 AWS 和本地 VM
-          href: on-prem-to-azure.md
-          items:
-            - name: 上传本地 VM
-              href: upload-generalized-managed.md
-            - name: 从 Amazon Web Services (AWS)
-              href: aws-to-azure.md
-            - name: 使用 Azure Site Recovery
-              href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-        - name: 从经典部署迁移到 Azure 资源管理器部署
-          href: migration-classic-resource-manager-overview.md
-          items:
-            - name: 深入了解迁移
-              href: migration-classic-resource-manager-deep-dive.md
-            - name: 规划迁移
-              href: migration-classic-resource-manager-plan.md
-            - name: 使用 PowerShell 迁移
-              href: migration-classic-resource-manager-ps.md
-            - name: 常见的迁移错误
-              href: migration-classic-resource-manager-errors.md
-            - name: 用于迁移的社区工具
-              href: migration-classic-resource-manager-community-tools.md
-            - name: 常见问题解答
-              href: migration-classic-resource-manager-faq.md
-    - name: 故障排除
-      items:
-        - name: 远程桌面连接
-          href: troubleshoot-rdp-connection.md
-          items:
-            - name: 详细步骤
-              href: detailed-troubleshoot-rdp.md
-            - name: 错误消息
-              href: troubleshoot-specific-rdp-errors.md
-        - name: 重置 RDP 密码
-          href: reset-rdp.md
-        - name: 在不使用 Azure 代理的情况下重置本地密码
-          href: reset-local-password-without-agent.md
-        - name: 了解系统重启
-          href: understand-vm-reboot.md
-        - name: 重置 NIC
-          href: reset-network-interface.md
-        - name: 启动诊断
-          href: boot-diagnostics.md
-        - name: 串行控制台
-          href: serial-console.md
-        - name: 创建 VM
-          href: troubleshoot-deployment-new-vm.md
-        - name: 部署问题
-          href: troubleshoot-deploy-vm.md
-        - name: 重新启动 VM 或调整其大小
-          href: restart-resize-error-troubleshooting.md
-        - name: 应用程序访问
-          href: troubleshoot-app-connection.md
-        - name: “激活”问题
-          href: troubleshoot-activation-problems.md
-        - name: 分配失败
-          href: allocation-failure.md
-        - name: 分配失败 - 经典 VM
-          href: allocation-failure-classic.md
-        - name: 重新部署 VM
-          href: redeploy-to-new-node.md
-        - name: 常见错误消息
-          href: error-messages.md
-        - name: VM 恢复方法
-          items:
-            - name: Azure PowerShell
-              href: troubleshoot-recovery-disks.md
-            - name: Azure 门户
-              href: troubleshoot-recovery-disks-portal.md
-        - name: 使用 PerfInsights
-          href: how-to-use-perfInsights.md
-        - name: 性能诊断 VM 扩展
-          href: performance-diagnostics-vm-extension.md
-        - name: 使用嵌套虚拟化
-          href: troubleshoot-vm-by-use-nested-virtualization.md
-        - name: 在脱机模式下安装 VM 代理
-          href: install-vm-agent-offline.md
-        - name: 对附加的 VHD 进行故障排除
-          items:
-            - name: 存储资源删除错误
-              href: storage-resource-deletion-errors.md
-            - name: 附加 VHD 的 VM 意外重启
-              href: unexpected-reboots-attached-vhds.md
+      - name: 存储资源删除错误
+        href: storage-resource-deletion-errors.md
+      - name: 附加 VHD 的 VM 意外重启
+        href: unexpected-reboots-attached-vhds.md
 - name: 引用
   items:
-    - name: Azure CLI
-      href: /cli/azure/vm
-    - name: Azure PowerShell
-      href: /powershell/azureps-cmdlets-docs
-    - name: .NET
-      href: /dotnet/api/microsoft.azure.management.compute
-    - name: Java
-      href: /java/api
-    - name: Node.js
-      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
-    - name: Python
-      href: 'https://azure.microsoft.com/develop/python/'
-    - name: 计算 REST
-      href: /rest/api/compute
-    - name: 托管磁盘 REST
-      href: /rest/api/compute/disks
+  - name: Azure CLI
+    href: /cli/azure/vm
+  - name: Azure PowerShell
+    href: /powershell/azureps-cmdlets-docs
+  - name: .NET
+    href: /dotnet/api/microsoft.azure.management.compute
+  - name: Java
+    href: /java/api
+  - name: Node.js
+    href: https://azure.microsoft.com/develop/nodejs/#azure-sdk
+  - name: Python
+    href: https://azure.microsoft.com/develop/python/
+  - name: 计算 REST
+    href: /rest/api/compute
+  - name: 托管磁盘 REST
+    href: /rest/api/compute/disks
 - name: 资源
   items:
-    - name: 创作模板
-      href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: 社区模板
-      href: 'https://azure.microsoft.com/documentation/templates'
-    - name: 定价
-      href: 'https://azure.microsoft.com/pricing/details/#Linux'
-    - name: 区域可用性
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: 堆栈溢出
-      href: 'http://stackoverflow.com/questions/tagged/azure-virtual-machine'
-    - name: 视频
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'
-    - name: 常见问题解答
-      href: faq.md
+  - name: 创作模板
+    href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+  - name: Azure 路线图
+    href: https://azure.microsoft.com/roadmap/
+  - name: 社区模板
+    href: https://azure.microsoft.com/documentation/templates
+  - name: 定价
+    href: https://azure.microsoft.com/pricing/details/#Linux
+  - name: 区域可用性
+    href: https://azure.microsoft.com/regions/services/
+  - name: 堆栈溢出
+    href: http://stackoverflow.com/questions/tagged/azure-virtual-machine
+  - name: 视频
+    href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
+  - name: 常见问题解答
+    href: faq.md
+ms.openlocfilehash: 62ee21ca28ea4f9dd70188f546051a284fd3aba3
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41928641"

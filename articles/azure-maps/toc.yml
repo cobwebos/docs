@@ -1,150 +1,159 @@
+items:
 - name: Azure IoT 基础
   href: ../iot-fundamentals/index.yml
 - name: Azure Maps 文档
   href: index.yml
 - name: 概述
   items:
-    - name: 什么是 Azure Maps？
-      href: about-azure-maps.md
+  - name: 什么是 Azure Maps？
+    href: about-azure-maps.md
 - name: 快速入门
   items:
-    - name: 创建地图应用
-      href: quick-demo-map-app.md
+  - name: 创建地图应用
+    href: quick-demo-map-app.md
 - name: 教程
   items:
-    - name: 1 - 搜索兴趣点
-      href: tutorial-search-location.md
-    - name: 2 - 目的地路线
-      href: tutorial-route-location.md
-    - name: 3 - 按旅行模式规划多条路线
-      href: tutorial-prioritized-routes.md
+  - name: 1 - 搜索兴趣点
+    href: tutorial-search-location.md
+  - name: 2 - 目的地路线
+    href: tutorial-route-location.md
+  - name: 3 - 按旅行模式规划多条路线
+    href: tutorial-prioritized-routes.md
 - name: 概念
   items:
-    - name: 缩放级别和磁贴网格
-      href: zoom-levels-and-tile-grid.md
-    - name: 服务覆盖范围
-      items:
-        - name: 地理编码
-          href: geocoding-coverage.md
-        - name: 交通
-          href: traffic-coverage.md
-        - name: 呈现
-          href: render-coverage.md
-        - name: 路由
-          href: routing-coverage.md
-    - name: 支持的语言
-      href: supported-languages.md
+  - name: 缩放级别和磁贴网格
+    href: zoom-levels-and-tile-grid.md
+  - name: 服务覆盖范围
+    items:
+    - name: 地理编码
+      href: geocoding-coverage.md
+    - name: 交通
+      href: traffic-coverage.md
+    - name: 呈现
+      href: render-coverage.md
+    - name: 路由
+      href: routing-coverage.md
+  - name: 支持的语言
+    href: supported-languages.md
 - name: 操作指南
   items:
-    - name: 管理 Maps 帐户
-      items:
-        - name: 管理帐户和密钥
-          href: how-to-manage-account-keys.md
-        - name: 查看使用情况指标
-          href: how-to-view-api-usage.md
-    - name: 从 REST API 获取地图数据
-      items:
-        - name: 搜索地址
-          href: how-to-search-for-address.md
-    - name: 创建 JavaScript 地图
-      items:
-        - name: 使用地图控件
-          href: how-to-use-map-control.md
-        - name: 创建地图
-          href: map-create.md
-        - name: 添加图钉
-          href: map-add-pin.md
-        - name: 添加弹出项
-          href: map-add-popup.md
-        - name: 添加形状
-          href: map-add-shape.md
-        - name: 添加自定义 HTML
-          href: map-add-custom-html.md
-        - name: 显示搜索结果
-          href: map-search-location.md
-        - name: 从坐标获取信息
-          href: map-get-information-from-coordinate.md
-        - name: 显示从 A 到 B 的路线
-          href: map-route.md
-        - name: 显示交通情况
-          href: map-show-traffic.md
-        - name: 与鼠标事件交互
-          href: map-events.md
-        - name: 可访问的地图应用程序
-          href: map-accessibility.md
+  - name: 管理 Maps 帐户
+    items:
+    - name: 管理帐户和密钥
+      href: how-to-manage-account-keys.md
+    - name: 查看使用情况指标
+      href: how-to-view-api-usage.md
+  - name: 从 REST API 获取地图数据
+    items:
+    - name: 搜索地址
+      href: how-to-search-for-address.md
+  - name: 创建 JavaScript 地图
+    items:
+    - name: 使用地图控件
+      href: how-to-use-map-control.md
+    - name: 创建地图
+      href: map-create.md
+    - name: 添加图钉
+      href: map-add-pin.md
+    - name: 添加弹出项
+      href: map-add-popup.md
+    - name: 添加形状
+      href: map-add-shape.md
+    - name: 添加自定义 HTML
+      href: map-add-custom-html.md
+    - name: 显示搜索结果
+      href: map-search-location.md
+    - name: 从坐标获取信息
+      href: map-get-information-from-coordinate.md
+    - name: 显示从 A 到 B 的路线
+      href: map-route.md
+    - name: 显示交通情况
+      href: map-show-traffic.md
+    - name: 与鼠标事件交互
+      href: map-events.md
+    - name: 可访问的地图应用程序
+      href: map-accessibility.md
 - name: 引用
   items:
-    - name: API 和参数扩展
-      items:
-        - name: 车辆消耗模型
-          href: consumption-model.md
-        - name: 扩展 GeoJSON 格式
-          href: extend-geojson.md
-        - name: 支持的搜索类别
-          href: supported-search-categories.md
-    - name: REST
-      items:
-        - name: 地理位置服务
-          href: 'https://docs.microsoft.com/rest/api/maps/geolocation'
-        - name: 呈现服务
-          href: 'https://docs.microsoft.com/rest/api/maps/render'
-        - name: 路线服务
-          href: 'https://docs.microsoft.com/rest/api/maps/route'
-        - name: 搜索服务
-          href: 'https://docs.microsoft.com/rest/api/maps/search'
-        - name: 时区服务
-          href: 'https://docs.microsoft.com/rest/api/maps/timezone'
-        - name: 交通服务
-          href: 'https://docs.microsoft.com/rest/api/maps/traffic'
-        - name: 地图帐户管理
-          href: 'https://docs.microsoft.com/rest/api/maps-management'
-    - name: JavaScript
-      items:
-        - name: 地图控件
-          href: 'https://docs.microsoft.com/javascript/api/azure-maps-javascript/'
+  - name: API 和参数扩展
+    items:
+    - name: 车辆消耗模型
+      href: consumption-model.md
+    - name: 扩展 GeoJSON 格式
+      href: extend-geojson.md
+    - name: 支持的搜索类别
+      href: supported-search-categories.md
+  - name: REST
+    items:
+    - name: 地理位置服务
+      href: https://docs.microsoft.com/rest/api/maps/geolocation
+    - name: 呈现服务
+      href: https://docs.microsoft.com/rest/api/maps/render
+    - name: 路线服务
+      href: https://docs.microsoft.com/rest/api/maps/route
+    - name: 搜索服务
+      href: https://docs.microsoft.com/rest/api/maps/search
+    - name: 时区服务
+      href: https://docs.microsoft.com/rest/api/maps/timezone
+    - name: 交通服务
+      href: https://docs.microsoft.com/rest/api/maps/traffic
+    - name: 地图帐户管理
+      href: https://docs.microsoft.com/rest/api/maps-management
+  - name: JavaScript
+    items:
+    - name: 地图控件
+      href: https://docs.microsoft.com/javascript/api/azure-maps-javascript/
+    - name: 服务模块
+      href: https://docs.microsoft.com/javascript/api/azure-maps-rest/
 - name: 相关内容
   items:
-    - name: 解决方案
-      items:
-        - name: IoT 解决方案加速器
-          href: /azure/iot-suite
-        - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-    - name: 平台服务
-      items:
-        - name: IoT 中心
-          href: /azure/iot-hub
-        - name: IoT 中心设备预配服务
-          href: /azure/iot-dps
-        - name: 地图
-          href: /azure/azure-maps
-        - name: 服务 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: 时序见解
-          href: /azure/time-series-insights
-    - name: Microsoft Edge
-      items:
-        - name: IoT Edge
-          href: /azure/iot-edge
-        - name: IoT 设备 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+  - name: 解决方案
+    items:
+    - name: IoT 解决方案加速器
+      href: /azure/iot-suite
+    - name: IoT Central
+      href: https://docs.microsoft.com/microsoft-iot-central/
+  - name: 平台服务
+    items:
+    - name: IoT 中心
+      href: /azure/iot-hub
+    - name: IoT 中心设备预配服务
+      href: /azure/iot-dps
+    - name: 地图
+      href: /azure/azure-maps
+    - name: 服务 SDK
+      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+    - name: 时序见解
+      href: /azure/time-series-insights
+  - name: Microsoft Edge
+    items:
+    - name: IoT Edge
+      href: /azure/iot-edge
+    - name: IoT 设备 SDK
+      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
 - name: 资源
   items:
-    - name: Azure IoT 开发人员中心
-      href: 'https://azure.microsoft.com/develop/iot/'
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/?category=iot'
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs'
-    - name: 定价
-      href: 'https://azure.microsoft.com/pricing/details/azure-maps'
-    - name: 定价计算器
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: 服务更新
-      href: 'https://azure.microsoft.com/updates'
-    - name: 堆栈溢出
-      href: 'http://stackoverflow.com/questions/tagged/azure-maps'
-    - name: 技术案例研究
-      href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
-    - name: 视频
-      href: 'https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo'
+  - name: Azure IoT 开发人员中心
+    href: https://azure.microsoft.com/develop/iot/
+  - name: Azure 路线图
+    href: https://azure.microsoft.com/roadmap/?category=iot
+  - name: MSDN 论坛
+    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs
+  - name: 定价
+    href: https://azure.microsoft.com/pricing/details/azure-maps
+  - name: 定价计算器
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: 服务更新
+    href: https://azure.microsoft.com/updates
+  - name: 堆栈溢出
+    href: http://stackoverflow.com/questions/tagged/azure-maps
+  - name: 技术案例研究
+    href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
+  - name: 视频
+    href: https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo
+ms.openlocfilehash: 7099709193e3680d9f177ead4e6b663ed34dee4c
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616214"

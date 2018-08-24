@@ -74,9 +74,9 @@
 #### [客户端和服务器版本控制](app-service-mobile-client-and-server-versioning.md)
 
 ### 应用服务环境
-#### [在应用服务环境中创建 Web 应用](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [如何使用 Azure 资源管理器模板创建 ILB ASE](../app-service/environment/app-service-app-service-environment-create-ilb-ase-resourcemanager.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [使用内部负载均衡器](../app-service/environment/app-service-environment-with-internal-load-balancer.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [在应用服务环境中创建 Web 应用](../app-service/environment/intro.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [创建和使用内部负载均衡器](../app-service/environment/create-ilb-ase.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [使用模板创建 ASE](../app-service/environment/create-from-template.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## 部署
 ### [云同步部署](../app-service/app-service-deploy-content-sync.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
@@ -173,7 +173,7 @@
 ## [定价](https://azure.microsoft.com/pricing/details/app-service/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=mobile-services)
-## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-mobile-services)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-mobile-services)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=mobile-services)
 ## 示例
 ### [现场工程师](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-fieldengineer/)

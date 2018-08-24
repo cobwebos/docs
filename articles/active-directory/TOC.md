@@ -82,34 +82,9 @@
 #### [获取 B2B 支持](b2b/get-support.md)
 
 ## [管理组和成员](fundamentals/active-directory-manage-groups.md)
-### 管理组
-#### [Azure 门户](fundamentals/active-directory-groups-create-azure-portal.md)
-#### [用于 Graph 的 Azure AD PowerShell (v2)](users-groups-roles/groups-settings-v2-cmdlets.md)
-#### [Azure AD PowerShell MSOnline](users-groups-roles/groups-settings-cmdlets.md)
-### [管理组成员](fundamentals/active-directory-groups-members-azure-portal.md)
-### [管理组所有者](fundamentals/active-directory-accessmanagement-managing-group-owners.md)
-### [管理组成员身份](fundamentals/active-directory-groups-membership-azure-portal.md)
-### [使用组分配许可证](fundamentals/active-directory-licensing-whatis-azure-portal.md)
-#### [将许可证分配到组](users-groups-roles/licensing-groups-assign.md)
-#### [识别和解决组中的许可证问题](users-groups-roles/licensing-groups-resolve-problems.md)
-#### [将单个许可用户迁移到基于组的许可](users-groups-roles/licensing-groups-migrate-users.md)
-#### [在产品许可证之间迁移用户](users-groups-roles/licensing-groups-change-licenses.md)
-#### [基于组的许可的其他方案](users-groups-roles/licensing-group-advanced.md)
-#### [基于组的许可的 Azure PowerShell 示例](users-groups-roles/licensing-ps-examples.md)
-#### [Azure AD 中的产品和服务计划的参考](users-groups-roles/licensing-service-plan-reference.md)
-### [设置 Office 365 组过期时间](users-groups-roles/groups-lifecycle.md)
-### [为组强制执行命名策略](users-groups-roles/groups-naming-policy.md)
-### [查看所有组](fundamentals/active-directory-groups-view-azure-portal.md)
-### [添加对 SaaS 应用的组访问权限](users-groups-roles/groups-saasapps.md)
+### [管理组](fundamentals/active-directory-groups-create-azure-portal.md)
 ### [还原已删除的 Office 365 组](fundamentals/active-directory-groups-restore-azure-portal.md)
 ### [管理组设置](fundamentals/active-directory-groups-settings-azure-portal.md)
-### [设置自助服务组](users-groups-roles/groups-self-service-management.md)
-### 动态组
-#### [创建动态组](users-groups-roles/groups-create-rule.md)
-#### [规则语法和属性](users-groups-roles/groups-dynamic-membership.md)
-#### [更改组成员身份类型](users-groups-roles/groups-change-type.md)
-#### [故障排除](users-groups-roles/groups-troubleshooting.md)
-
 ## [管理报表](reports-monitoring/overview-reports.md)
 ### [登录活动](reports-monitoring/concept-sign-ins.md)
 ### [审核活动](reports-monitoring/concept-audit-logs.md)
@@ -137,15 +112,13 @@
 #### [解释 Azure Monitor 中的登录日志架构](reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md)
 
 ### 故障排除
-#### [缺少审核数据](reports-monitoring/troubleshoot-missing-audit-data.md)
+#### [在 Azure AD 活动日志中缺少数据](reports-monitoring/troubleshoot-missing-audit-data.md)
 #### [在下载项中缺少数据](reports-monitoring/troubleshoot-missing-data-download.md)
 #### [Azure AD 活动日志内容包错误](reports-monitoring/troubleshoot-content-pack.md)
 #### [Azure AD 报告 API 中的错误](reports-monitoring/troubleshoot-graph-api.md)
 
 ### [以编程方式访问](reports-monitoring/concept-reporting-api.md)
 #### [先决条件](reports-monitoring/howto-configure-prerequisites-for-reporting-api.md)
-#### [审核示例](reports-monitoring/sample-audit-api.md)
-#### [登录示例](reports-monitoring/sample-sign-in-api.md)
 #### [使用证书](reports-monitoring/tutorial-access-api-with-certificates.md)
 
 ## [管理密码](authentication/concept-sspr-howitworks.md)
@@ -235,13 +208,14 @@
 ### 管理企业应用
 #### [添加应用程序](manage-apps/add-application-portal.md)
 #### [查看租户应用](manage-apps/view-applications-portal.md)
+#### [配置单一登录](manage-apps/configure-single-sign-on-portal.md)
 #### [分配用户](manage-apps/assign-user-or-group-access-portal.md)
 #### [自定义品牌](manage-apps/change-name-or-logo-portal.md)
 #### [禁用用户登录](manage-apps/disable-user-sign-in-portal.md)
 #### [删除用户](manage-apps/remove-user-or-group-access-portal.md)
 
 #### [管理用户帐户预配](manage-apps/configure-automatic-user-provisioning-portal.md)
-#### [管理适用于企业应用的单一登录](manage-apps/configure-single-sign-on-portal.md)
+
 #### [SAML 应用的高级证书签名](manage-apps/certificate-signing-options.md)
 #### [从用户体验中隐藏应用程序](manage-apps/hide-application-from-user-portal.md)
 ### [使用 HRD 策略配置登录自动加速](manage-apps/configure-authentication-for-federated-users-portal.md)
@@ -363,12 +337,7 @@
 ### [Azure AD Connect](./connect/active-directory-aadconnect.md)
 ### 自定义域名
 #### [快速入门](fundamentals/add-custom-domain.md)
-#### [添加自定义域名](users-groups-roles/domains-manage.md)
 ### [管理目录](fundamentals/active-directory-administer.md)
-### [删除目录](users-groups-roles/directory-delete-howto.md)
-### [多个目录](users-groups-roles/licensing-directory-independence.md)
-### [自助服务注册](users-groups-roles/directory-self-service-signup.md)
-### [接管非托管目录](users-groups-roles/domains-admin-takeover.md)
 ### [企业状态漫游](active-directory-windows-enterprise-state-roaming-overview.md)
 #### [启用](active-directory-windows-enterprise-state-roaming-enable.md)
 #### [组策略设置](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
@@ -379,14 +348,6 @@
 
 ### [使用 Azure AD Connect 集成本地标识](./connect/active-directory-aadconnect.md)
 
-## 委托对资源的访问权限
-### [管理员角色](users-groups-roles/directory-assign-admin-roles.md)
-#### [查看管理员角色的成员](users-groups-roles//directory-manage-roles-portal.md)
-#### [向用户分配管理员角色](fundamentals/active-directory-users-assign-role-azure-portal.md)
-#### [比较成员和来宾的用户权限](fundamentals/users-default-permissions.md)
-### [管理员角色安全性](users-groups-roles/directory-admin-roles-secure.md)  
-#### [创建紧急访问管理员帐户](users-groups-roles/directory-emergency-access.md)
-### [管理单元](users-groups-roles/directory-administrative-units.md)
 ### [配置令牌生存期](active-directory-configurable-token-lifetimes.md)
 
 ## 访问评审
@@ -401,35 +362,6 @@
 ### [检索访问评审结果](active-directory-azure-ad-controls-retrieve-access-review.md)
 
 ## 保护标识
-### 条件性访问
-#### [概述](conditional-access/overview.md)
-#### 快速入门
-##### [需要对特定应用执行 MFA](conditional-access/app-based-mfa.md)
-##### [需要接受使用条款](conditional-access/require-tou.md)
-##### [检测到会话风险时阻止访问](conditional-access/app-sign-in-risk.md)
-#### 教程
-##### [迁移经典 MFA 策略](conditional-access/policy-migration-mfa.md)
-#### 概念
-##### [基线保护](conditional-access/baseline-protection.md)
-##### [条件](conditional-access/conditions.md)
-##### [位置条件](conditional-access/location-condition.md)
-##### [控制](conditional-access/controls.md)
-##### [假设分析工具](conditional-access/what-if-tool.md)
-##### [了解 Office 365 服务的设备策略](active-directory-conditional-access-device-policies.md)
-#### 操作指南
-##### [最佳实践](conditional-access/best-practices.md)
-##### [需要对来自不受信任网络的访问尝试执行 MFA](conditional-access/untrusted-networks.md)
-##### [需要托管设备](conditional-access/require-managed-devices.md)
-##### [需要已批准的客户端应用](conditional-access/app-based-conditional-access.md)
-##### [需要用户和应用的使用条款](active-directory-tou.md)
-##### [迁移经典策略](conditional-access/policy-migration.md)
-##### [设置 VPN 连接](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/always-on-vpn-deploy)
-##### [设置 SharePoint 和 Exchange Online](active-directory-conditional-access-no-modern-authentication.md)
-##### [补救方法](active-directory-conditional-access-device-remediation.md)
-#### [参考](conditional-access/technical-reference.md)
-##### [技术参考](conditional-access/technical-reference.md)
-#### [常见问题](conditional-access/faqs.md)
-
 ### 基于证书的身份验证
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)
@@ -449,9 +381,6 @@
 #### [Microsoft Graph](identity-protection/graph-get-started.md)
 ### [Privileged Identity Management](privileged-identity-management/pim-configure.md?toc=%2fazure%2factive-directory%2ftoc.json)
 
-## 将其他服务与 Azure AD 集成 
-### [将 LinkedIn 与 Azure AD 集成](users-groups-roles/linkedin-integration.md)
-
 ## [在 Azure 中部署 AD FS](active-directory-aadconnect-azure-adfs.md)
 ### [高可用性](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
 ### [更改签名哈希算法](active-directory-federation-sha256-guidance.md)
@@ -464,13 +393,11 @@
 ### [PoC 演练手册：实现](active-directory-playbook-implementation.md)
 ### [PoC 演练手册：构建基块](active-directory-playbook-building-blocks.md)
 
-
 # 引用
 ## [代码示例](https://azure.microsoft.com/resources/samples/?service=active-directory)
 ## [Azure PowerShell cmdlet](/powershell/azure/overview)
 ## [Java API 参考](/java/api)
 ## [.NET API](/active-directory/adal/microsoft.identitymodel.clients.activedirectory)
-## [服务限制和局限性](users-groups-roles/directory-service-limits-restrictions.md)
 
 # 相关内容
 ## [多重身份验证](/azure/multi-factor-authentication/)

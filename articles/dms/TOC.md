@@ -9,7 +9,8 @@
 ## [将 SQL Server 迁移到 Azure SQL DB 托管实例](tutorial-sql-server-to-managed-instance.md)
 
 # 操作指南
-## [使用 PowerShell 迁移 SQL Server](howto-sql-server-to-azure-sql-powershell.md)
+## [使用 PowerShell 将 SQL Server 迁移到 Azure SQL DB](howto-sql-server-to-azure-sql-powershell.md)
+## [使用 PowerShell 将 SQL Server 迁移到 Azure SQL DB MI](howto-sql-server-to-azure-sql-mi-powershell.md)
 
 # 资源
 ## [用户语音反馈](https://feedback.azure.com/forums/906100-azure-database-migration-service)

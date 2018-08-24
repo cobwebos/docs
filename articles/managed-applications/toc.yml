@@ -1,98 +1,107 @@
+items:
 - name: Azure 托管应用程序文档
   href: index.yml
 - name: 概述
   items:
-    - name: 关于托管应用程序
-      href: overview.md
+  - name: 关于托管应用程序
+    href: overview.md
 - name: 快速入门
-  expanded: true
   items:
-    - name: 创建托管应用程序
-      href: managed-apps-quickstart-cli.md
+  - name: 创建托管应用程序
+    href: managed-apps-quickstart-cli.md
+  expanded: true
 - name: 教程
   items:
-    - name: 创建托管应用程序文件
-      href: publish-service-catalog-app.md
-    - name: 创建市场应用程序
-      href: publish-marketplace-app.md
+  - name: 创建托管应用程序文件
+    href: publish-service-catalog-app.md
+  - name: 创建市场应用程序
+    href: publish-marketplace-app.md
 - name: 示例
   items:
-    - name: Azure CLI
-      href: cli-samples.md
-    - name: Azure PowerShell
-      href: powershell-samples.md
-    - name: 托管应用程序解决方案
-      href: sample-projects.md
+  - name: Azure CLI
+    href: cli-samples.md
+  - name: Azure PowerShell
+    href: powershell-samples.md
+  - name: 托管应用程序解决方案
+    href: sample-projects.md
 - name: 操作指南
   items:
-    - name: 定义用户界面
-      href: create-uidefinition-overview.md
-    - name: 更新托管资源
-      href: update-managed-resources.md
-    - name: 使用门户发布
-      href: publish-portal.md
-    - name: 使用来自 Key Vault 的机密
-      href: key-vault-access.md
+  - name: 创建门户界面
+    href: create-uidefinition-overview.md
+  - name: 测试门户界面
+    href: test-createuidefinition.md
+  - name: 更新托管资源
+    href: update-managed-resources.md
+  - name: 使用门户发布
+    href: publish-portal.md
+  - name: 使用来自 Key Vault 的机密
+    href: key-vault-access.md
 - name: 引用
   items:
-    - name: Azure CLI
-      href: /cli/azure/managedapp
-    - name: PowerShell
-      href: /powershell/module/azurerm.resources
-    - name: REST
-      href: /rest/api/resources/
-    - name: 用户界面函数
-      href: create-uidefinition-functions.md
-    - name: 用户界面元素
-      href: create-uidefinition-elements.md
+  - name: Azure CLI
+    href: /cli/azure/managedapp
+  - name: PowerShell
+    href: /powershell/module/azurerm.resources
+  - name: REST
+    href: /rest/api/resources/
+  - name: 用户界面函数
+    href: create-uidefinition-functions.md
+  - name: 用户界面元素
+    href: create-uidefinition-elements.md
+    items:
+    - name: 常见
       items:
-        - name: 常见
-          items:
-            - name: DropDown
-              href: microsoft-common-dropdown.md
-            - name: FileUpload
-              href: microsoft-common-fileupload.md
-            - name: InfoBox
-              href: microsoft-common-infobox.md
-            - name: OptionsGroup
-              href: microsoft-common-optionsgroup.md
-            - name: PasswordBox
-              href: microsoft-common-passwordbox.md
-            - name: 部分
-              href: microsoft-common-section.md
-            - name: TextBlock
-              href: microsoft-common-textblock.md
-            - name: TextBox
-              href: microsoft-common-textbox.md
-        - name: 计算
-          items:
-            - name: CredentialsCombo
-              href: microsoft-compute-credentialscombo.md
-            - name: SizeSelector
-              href: microsoft-compute-sizeselector.md
-            - name: UserNameTextBox
-              href: microsoft-compute-usernametextbox.md
-        - name: 网络
-          items:
-            - name: AvailabilityZoneDropDown
-              href: microsoft-network-availabilityzonedropdown.md
-            - name: PublicIPAddressCombo
-              href: microsoft-network-publicipaddresscombo.md
-            - name: VirtualNetworkCombo
-              href: microsoft-network-virtualnetworkcombo.md
-        - name: 存储
-          items:
-            - name: MultiStorageAccountCombo
-              href: microsoft-storage-multistorageaccountcombo.md
-            - name: StorageAccountSelector
-              href: microsoft-storage-storageaccountselector.md
+      - name: DropDown
+        href: microsoft-common-dropdown.md
+      - name: FileUpload
+        href: microsoft-common-fileupload.md
+      - name: InfoBox
+        href: microsoft-common-infobox.md
+      - name: OptionsGroup
+        href: microsoft-common-optionsgroup.md
+      - name: PasswordBox
+        href: microsoft-common-passwordbox.md
+      - name: 部分
+        href: microsoft-common-section.md
+      - name: TextBlock
+        href: microsoft-common-textblock.md
+      - name: TextBox
+        href: microsoft-common-textbox.md
+    - name: 计算
+      items:
+      - name: CredentialsCombo
+        href: microsoft-compute-credentialscombo.md
+      - name: SizeSelector
+        href: microsoft-compute-sizeselector.md
+      - name: UserNameTextBox
+        href: microsoft-compute-usernametextbox.md
+    - name: 网络
+      items:
+      - name: AvailabilityZoneDropDown
+        href: microsoft-network-availabilityzonedropdown.md
+      - name: PublicIPAddressCombo
+        href: microsoft-network-publicipaddresscombo.md
+      - name: VirtualNetworkCombo
+        href: microsoft-network-virtualnetworkcombo.md
+    - name: 存储
+      items:
+      - name: MultiStorageAccountCombo
+        href: microsoft-storage-multistorageaccountcombo.md
+      - name: StorageAccountSelector
+        href: microsoft-storage-storageaccountselector.md
 - name: 资源
   items:
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: 定价
-      href: 'https://azure.microsoft.com/pricing/details/managed-applications/'
-    - name: 定价计算器
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: 堆栈溢出
-      href: 'http://stackoverflow.com/questions/tagged/azure-managedapps'
+  - name: Azure 路线图
+    href: https://azure.microsoft.com/roadmap/
+  - name: 定价
+    href: https://azure.microsoft.com/pricing/details/managed-applications/
+  - name: 定价计算器
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: 堆栈溢出
+    href: http://stackoverflow.com/questions/tagged/azure-managedapps
+ms.openlocfilehash: c468b30361163d39b94af999c9767cbc491a06ac
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41927908"

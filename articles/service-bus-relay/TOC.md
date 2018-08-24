@@ -5,14 +5,12 @@
 ## [常见问题](relay-faq.md)
 
 # 快速入门
-## [创建命名空间](relay-create-namespace-portal.md)
 ## [创建本地/云混合应用程序](service-bus-dotnet-hybrid-app-using-service-bus-relay.md)
 ## 混合连接
 ### [.NET Websocket](relay-hybrid-connections-dotnet-get-started.md)
 ### [.NET HTTP](relay-hybrid-connections-http-requests-dotnet-get-started.md)
 ### [Node Websocket](relay-hybrid-connections-node-get-started.md)
 ### [Node HTTP](relay-hybrid-connections-http-requests-node-get-started.md)
-## [WCF 中继](relay-wcf-dotnet-get-started.md)
 ## [WCF 中继教程](service-bus-relay-tutorial.md)
 ## [WCF 中继 REST 教程](service-bus-relay-rest-tutorial.md)
 
@@ -22,6 +20,8 @@
 #### [从 ACS 迁移到 SAS](relay-migrate-acs-sas.md)
 ### [混合连接协议](relay-hybrid-connections-protocol.md)
 ## 开发
+### [创建命名空间](relay-create-namespace-portal.md)
+### [使用 WCF 中继向外部客户端公开 WCF 服务](relay-wcf-dotnet-get-started.md)
 ### [可用 API](relay-api-overview.md)
 #### [.NET](relay-hybrid-connections-dotnet-api-overview.md)
 #### [Node](relay-hybrid-connections-node-ws-api-overview.md)
@@ -41,4 +41,4 @@
 ## [定价](https://azure.microsoft.com/pricing/details/service-bus/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [示例](https://github.com/azure/azure-relay/tree/master/samples)
-## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-servicebusrelay)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-servicebusrelay)

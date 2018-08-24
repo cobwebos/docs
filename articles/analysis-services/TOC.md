@@ -34,6 +34,7 @@
 ### [配置服务器名称别名](analysis-services-server-alias.md)
 ### [配置横向扩展](analysis-services-scale-out.md)
 ### [安装并配置本地数据网关](analysis-services-gateway-install.md)
+### [对 Azure 虚拟网络上的数据源使用网关](analysis-services-vnet-gateway.md)
 ### [管理服务器](analysis-services-manage.md)
 ### [监视服务器指标](analysis-services-monitor.md)
 ### [设置诊断日志记录](analysis-services-logging.md)
@@ -64,7 +65,7 @@
 #### [补充课程 - 动态安全性](tutorials/aas-supplemental-lesson-dynamic-security.md)
 #### [补充课程 - 不规则层次结构](tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  
 
-## “安全”
+## 安全
 ### [管理数据库用户](analysis-services-database-users.md)
 ### [管理服务器管理员](analysis-services-server-admins.md)
 
