@@ -94,7 +94,7 @@ ms.locfileid: "39258427"
 
 ### <a name="step-3-specify-routes-optional"></a>步骤 3：指定路由（可选）
 
-路由定义模块在部署中如何相互通信。 向导默认提供名为“route”且定义为 FROM /\* INTO $upstream** 的路由，这表示任何模块输出的任何消息都将发送到 IoT 中心。  
+路由定义模块在部署中如何相互通信。 向导默认提供名为“route”且定义为 FROM /\* INTO $upstream 的路由，这表示任何模块输出的任何消息都将发送到 IoT 中心。  
 
 在路由中添加或更新[声明路由](module-composition.md#declare-routes)中的信息，再选择“下一步”继续转到评审部分。
 

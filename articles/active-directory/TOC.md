@@ -54,6 +54,7 @@
 #### [管理员添加 B2B 用户](b2b/add-users-administrator.md)
 #### [信息工作者添加 B2B 用户](b2b/add-users-information-worker.md)
 #### [API 和自定义](b2b/customize-invitation-api.md)
+#### [Google 联合身份验证](b2b/google-federation.md)
 #### [代码和 Azure PowerShell 示例](b2b/code-samples.md)
 #### [自助注册门户示例](b2b/self-service-portal.md)
 #### [邀请电子邮件](b2b/invitation-email-elements.md)
