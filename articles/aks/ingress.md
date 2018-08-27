@@ -6,15 +6,15 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 08/17/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: c65cfec41c2002fd4d4ff27ea74daf0bb4246b5f
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: b5adf161c99ebe6d7b8b2d7b0c7b5b73c67bec02
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145591"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42146134"
 ---
 # <a name="deploy-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中部署 HTTPS 入口控制器
 
@@ -51,6 +51,40 @@ eager-crab-nginx-ingress-default-backend   ClusterIP      10.0.255.77    <none> 
 尚未创建入口规则。 如果浏览到公共 IP 地址，将显示 NGINX 入口控制器的默认 404 页面，如以下示例所示：
 
 ![默认的 NGINX 后端](media/ingress/default-back-end.png)
+
+### <a name="use-an-existing-static-public-ip-address"></a>使用现有的静态公用 IP 地址
+
+在前面的 `helm install` 步骤中，NGINX 入口控制器是使用新的、动态公用 IP 地址分配创建的。 常见的配置要求是提供现有的“静态”公用 IP 地址。 此方法允许以一致的方式使用现有的 DNS 记录和网络配置。 可以使用下面的可选步骤代替前面的 `helm install` 命令，该命令分配动态公用 IP 地址。
+
+如果需要创建静态公用 IP 地址，请首先使用 [az aks show][az-aks-show] 命令获取 AKS 群集的资源组名称：
+
+```azurecli
+az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
+```
+
+接下来，使用 [az network public-ip create][az-network-public-ip-create] 命令通过 *static* 分配方法创建一个公用 IP 地址。 以下示例在前面的步骤中获取的 AKS 群集资源组中创建名为 *myAKSPublicIP* 的公用 IP 地址：
+
+```azurecli
+az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --allocation-method static
+```
+
+现在，通过 Helm 部署 *nginx-ingress* 图表。 添加 `--set controller.service.loadBalancerIP` 参数，并指定在前面的步骤中创建的你自己的公用 IP 地址：
+
+```console
+helm install stable/nginx-ingress --namespace kube-system --set controller.service.loadBalancerIP="40.121.63.72"
+```
+
+为 NGINX 入口控制器创建 Kubernetes 负载均衡器服务时，会分配你的静态 IP 地址，如以下示例输出中所示：
+
+```
+$ kubectl get service -l app=nginx-ingress --namespace kube-system
+
+NAME                                        TYPE           CLUSTER-IP    EXTERNAL-IP    PORT(S)                      AGE
+dinky-panda-nginx-ingress-controller        LoadBalancer   10.0.232.56   40.121.63.72   80:31978/TCP,443:32037/TCP   3m
+dinky-panda-nginx-ingress-default-backend   ClusterIP      10.0.95.248   <none>         80/TCP                       3m
+```
+
+同样，由于尚未创建入口规则，如果浏览到该公用 IP 地址，则会显示 NGINX 入口控制器的默认 404 页面。 入口规则是通过以下步骤配置的。
 
 ## <a name="configure-a-dns-name"></a>配置 DNS 名称
 
@@ -119,10 +153,10 @@ spec:
     http01: {}
 ```
 
-若要创建证书颁发者，请使用 `kubectl create -f cluster-issuer.yaml` 命令。
+若要创建证书颁发者，请使用 `kubectl apply -f cluster-issuer.yaml` 命令。
 
 ```
-$ kubectl create -f cluster-issuer.yaml
+$ kubectl apply -f cluster-issuer.yaml
 
 clusterissuer.certmanager.k8s.io/letsencrypt-staging created
 ```
@@ -153,10 +187,10 @@ spec:
     kind: ClusterIssuer
 ```
 
-若要创建证书资源，请使用 `kubectl create -f certificates.yaml` 命令。
+若要创建证书资源，请使用 `kubectl apply -f certificates.yaml` 命令。
 
 ```
-$ kubectl create -f certificates.yaml
+$ kubectl apply -f certificates.yaml
 
 certificate.certmanager.k8s.io/tls-secret created
 ```
@@ -219,10 +253,10 @@ spec:
           servicePort: 80
 ```
 
-使用 `kubectl create -f hello-world-ingress.yaml` 命令创建入口资源。
+使用 `kubectl apply -f hello-world-ingress.yaml` 命令创建入口资源。
 
 ```
-$ kubectl create -f hello-world-ingress.yaml
+$ kubectl apply -f hello-world-ingress.yaml
 
 ingress.extensions/hello-world-ingress created
 ```
@@ -267,3 +301,5 @@ ingress.extensions/hello-world-ingress created
 <!-- LINKS - internal -->
 [use-helm]: kubernetes-helm.md
 [azure-cli-install]: /cli/azure/install-azure-cli
+[az-aks-show]: /cli/azure/aks#az-aks-show
+[az-network-public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create

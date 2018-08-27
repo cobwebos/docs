@@ -12,14 +12,14 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/07/2018
+ms.date: 08/20/2018
 ms.author: terrylan
-ms.openlocfilehash: b0e674eb161af41a848f0456a033d615293a9947
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 117fc5cb6583c4e3eed0c9506bda470400941f61
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622783"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41920028"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>在 Azure 安全中心集成安全解决方案
 本文档介绍如何管理已连接到 Azure 安全中心的安全解决方案，以及如何添加新的安全解决方案。
@@ -39,7 +39,11 @@ ms.locfileid: "39622783"
 - 下一代防火墙（[Check Point](https://www.checkpoint.com/products/vsec-microsoft-azure/)、[Barracuda](https://campus.barracuda.com/product/nextgenfirewallf/article/NGF/AzureDeployment/)、[Fortinet](http://docs.fortinet.com/d/fortigate-fortios-handbook-the-complete-guide-to-fortios-5.2)、[Cisco](http://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/azure/ftdv-azure-qsg.html) 和 [Palo Alto Networks](https://www.paloaltonetworks.com/products)）
 - 漏洞评估（[Qualys](https://www.qualys.com/public-clouds/microsoft-azure/) 和 [Rapid7](https://www.rapid7.com/products/insightvm/)）
 
-终结点保护集成体验可能因解决方案而异。 下表包含每个解决方案的体验的更多详细信息：
+> [!NOTE]
+> 安全中心不会在合作伙伴虚拟设备上安装 Microsoft Monitoring Agent，因为大多数安全供应商都禁止在其设备上运行外部代理。
+>
+>
+
 
 | 终结点保护               | 平台                             | 安全中心安装 | 安全中心发现 |
 |-----------------------------------|---------------------------------------|------------------------------|---------------------------|
@@ -69,9 +73,9 @@ ms.locfileid: "39622783"
 
 2. 在 **Microsoft Azure 菜单**上选择“安全中心”。 此时会打开“安全中心 - 概览”。
 
-  ![安全中心概述](./media/security-center-partner-integration/overview.png)
+3. 在“安全中心”菜单下，选择“安全解决方案”。
 
-3. 在“概览”下，选择“安全解决方案”。
+  ![安全中心概述](./media/security-center-partner-integration/overview.png)
 
 在“安全解决方案”下，可以查看集成式 Azure 安全解决方案的运行状况信息，并执行基本的管理任务。 还可以连接其他类型的安全数据源，例如通用事件格式 (CEF) 的 Azure Active Directory Identity Protection 警报和防火墙日志。
 

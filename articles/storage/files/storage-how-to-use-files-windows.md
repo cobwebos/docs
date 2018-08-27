@@ -2,24 +2,18 @@
 title: 将 Azure 文件共享与 Windows 配合使用 | Microsoft Docs
 description: 了解如何将 Azure 文件共享与 Windows 和 Windows Server 配合使用。
 services: storage
-documentationcenter: na
 author: RenaShahMSFT
-manager: aungoo
-editor: tamram
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/07/2018
 ms.author: renash
-ms.openlocfilehash: 54e084e6480c872ff6dd4625b8c87d5a60a181ba
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.component: files
+ms.openlocfilehash: 96ad812aff8f6ea4f47035188940730e5dc2992c
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39392261"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "41919863"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>将 Azure 文件共享与 Windows 配合使用
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 Azure 文件共享可以在 Windows 和 Windows Server 中无缝使用。 本文讨论将 Azure 文件共享与 Windows 和 Windows Server 配合使用时的注意事项。
@@ -52,20 +46,11 @@ ms.locfileid: "39392261"
 
 * **存储帐户密钥**：需提供主要（或辅助）存储帐户密钥才能装载 Azure 文件共享。 目前不支持使用 SAS 密钥进行装载。
 
-* **确保端口 445 已打开**：SMB 协议要求 TCP 端口 445 处于打开状态；如果阻止了端口 445，则连接会失败。 可以通过 `Test-NetConnection` cmdlet 来查看防火墙是否在阻止端口 445。 以下 PowerShell 代码假定你已安装 AzureRM PowerShell 模块。有关详细信息，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 记得将 `<your-storage-account-name>` 和 `<your-resoure-group-name>` 替换为存储帐户的相应名称。
+* **确保端口 445 已打开**：SMB 协议要求 TCP 端口 445 处于打开状态；如果阻止了端口 445，则连接会失败。 可以通过 `Test-NetConnection` cmdlet 来查看防火墙是否在阻止端口 445。 记得将 `your-storage-account-name` 替换为存储帐户的相应名称。
 
     ```PowerShell
-    $resourceGroupName = "<your-resource-group-name>"
-    $storageAccountName = "<your-storage-account-name>"
-
-    # This command requires you to be logged into your Azure account, run Login-AzureRmAccount if you haven't
-    # already logged in.
-    $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
-
-    # The ComputerName, or host, is <storage-account>.file.core.windows.net for Azure Public Regions.
-    # $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as soverign clouds
-    # or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
-    Test-NetConnection -ComputerName [System.Uri]::new($storageAccount.Context.FileEndPoint).Host -Port 445
+    Test-NetConnection -ComputerName <your-storage-account-name>.core.windows.net -Port 445
+    
     ```
 
     如果连接成功，则会看到以下输出：
@@ -208,6 +193,26 @@ Remove-PSDrive -Name <desired-drive-letter>
     ![Azure 文件共享现已装载](./media/storage-how-to-use-files-windows/4_MountOnWindows10.png)
 
 7. 做好卸载 Azure 文件共享的准备以后，即可在文件资源管理器中右键单击“网络位置”下对应于共享的条目，然后选择“断开连接”。
+
+### <a name="accessing-share-snapshots-from-windows"></a>从 Windows 访问共享快照
+如果已手动或通过脚本或 Azure 备份等服务自动获取共享快照，则可以从 Windows 上的文件共享查看以前版本的共享、目录或特定文件。 可以通过 [Azure 门户](storage-how-to-use-files-portal.md)、[Azure PowerShell](storage-how-to-use-files-powershell.md) 和 [Azure CLI](storage-how-to-use-files-cli.md) 获取共享快照。
+
+#### <a name="list-previous-versions"></a>列出以前版本
+浏览到需要还原的项或父项。 通过双击转到所需的目录。 右键单击，然后从菜单中选择“属性”。
+
+![所选目录的右键单击菜单](./media/storage-how-to-use-files-windows/snapshot-windows-previous-versions.png)
+
+选择"以前版本”，以查看此目录的共享快照列表。 列表可能需要几秒钟才能加载，具体要取决于网速和目录中共享快照的数量。
+
+![“以前版本”选项卡](./media/storage-how-to-use-files-windows/snapshot-windows-list.png)
+
+可以选择“打开”以打开特定快照。 
+
+![打开的快照](./media/storage-how-to-use-files-windows/snapshot-browse-windows.png)
+
+#### <a name="restore-from-a-previous-version"></a>从以前版本还原
+选择“还原”，以递归方式将整个目录在共享快照创建时包含的内容复制到原始位置。
+ ![警告消息中的“还原”按钮](./media/storage-how-to-use-files-windows/snapshot-windows-restore.png) 
 
 ## <a name="securing-windowswindows-server"></a>保护 Windows/Windows Server
 若要在 Windows 上装载 Azure 文件共享，必须确保端口 445 可以访问。 许多组织因 SMB 1 中固有的安全风险而阻止端口 445。 SMB 1 也称 CIFS（通用 Internet 文件系统），是 Windows 和 Windows Server 随附的旧版文件系统协议。 SMB 1 是过时且效率不高的协议，而且最重要的是，它是不安全的协议。 好消息是，Azure 文件不支持 SMB 1，并且所有受支持的 Windows 和 Windows Server 版本均可删除或禁用 SMB 1。 在将 Azure 文件共享用于生产环境之前，[强烈建议](https://aka.ms/stopusingsmb1)删除或禁用 Windows 中的 SMB 1 客户端和服务器。

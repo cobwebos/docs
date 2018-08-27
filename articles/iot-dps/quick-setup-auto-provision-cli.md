@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 设置设备预配 | Microsoft Docs
+title: 使用 Azure CLI 设置设备预配服务 | Microsoft Docs
 description: Azure 快速入门 - 使用 Azure CLI 设置 Azure IoT 中心设备预配服务
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: cf2e108aa7cab6be2996cb535d27d597e462617c
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: c9e3bbbc4fbe8a9aade3364d6cbe9e93b5798595
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626533"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42024025"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>使用 Azure CLI 设置 IoT 中心设备预配服务
 

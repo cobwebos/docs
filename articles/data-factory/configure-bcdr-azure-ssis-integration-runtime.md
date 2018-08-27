@@ -1,6 +1,6 @@
 ---
-title: Azure-SSIS 集成运行时的业务连续性和灾难恢复 (BCDR) 建议 | Microsoft Docs
-description: 本文概述 Azure-SSIS 集成运行时的业务连续性和灾难恢复建议。
+title: 为 SQL 数据库故障转移配置 Azure-SSIS Integration Runtime | Microsoft Docs
+description: 本文介绍了如何针对 Azure SQL 数据库异地复制和 SSISDB 数据库的故障转移配置 Azure-SSIS Integration Runtime。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -8,23 +8,69 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 07/26/2018
+ms.date: 08/14/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 37347df2d543116085f52fed76c692b60fac2ad6
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 2012ccf4d9fd3e62ba248f29f922f868077e4061
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39295181"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42140430"
 ---
-# <a name="business-continuity-and-disaster-recovery-bcdr-recommendations-for-azure-ssis-integration-runtime"></a>Azure-SSIS 集成运行时的业务连续性和灾难恢复 (BCDR) 建议
+# <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>针对 Azure SQL 数据库异地复制和故障转移配置 Azure-SSIS Integration Runtime
 
-若要实现灾难恢复，可以停止区域中当前正在运行的 Azure-SSIS 集成运行时，然后切换到另一个区域以重启该运行时。 我们建议使用 [Azure 配对区域](../best-practices-availability-paired-regions.md)来实现此目的。
+本文介绍了如何针对 Azure SQL 数据库异地复制和 SSISDB 数据库配置 Azure-SSIS Integration Runtime。 发生故障转移时，你可以确保 Azure-SSIS IR 使用辅助数据库保持工作。
 
-## <a name="prerequisites"></a>先决条件
+有关 SQL 数据库的异地复制和故障转移的详细信息，请参阅[概述：活动异地复制和自动故障转移组](../sql-database/sql-database-geo-replication-overview.md)。
+
+## <a name="scenario-1---azure-ssis-ir-is-pointing-to-read-write-listener-endpoint"></a>方案 1 - Azure-SSIS IR 指向读写侦听器终结点
+
+### <a name="conditions"></a>条件
+
+当以下条件成立时本部分内容适用：
+
+- Azure-SSIS IR 指向故障转移组的读写侦听器终结点。
+
+  且
+
+- SQL 数据库服务器“未”配置虚拟网络服务终结点规则。
+
+### <a name="solution"></a>解决方案
+
+发生故障转移时，它对 Azure-SSIS IR 是透明的。 Azure-SSIS IR 会自动连接到故障转移组的新的主数据库。
+
+## <a name="scenario-2---azure-ssis-ir-is-pointing-to-primary-server-endpoint"></a>方案 2 - Azure-SSIS IR 指向主服务器终结点
+
+### <a name="conditions"></a>条件
+
+当以下条件之一成立时本部分内容适用：
+
+- Azure-SSIS IR 指向故障转移组的主服务器终结点。 发生故障转移时，此终结点更改。
+
+  或
+
+- Azure SQL 数据库服务器配置了虚拟网络服务终结点规则。
+
+  或
+
+- 数据库服务器是配置有虚拟网络的 SQL 数据库托管实例。
+
+### <a name="solution"></a>解决方案
+
+发生故障转移时，您必须执行以下操作：
+
+1. 停止 Azure-SSIS IR。
+
+2. 重新配置 IR 以指向新的主终结点并指向新区域中的虚拟网络。
+
+3. 重启 IR。
+
+以下各部分更详细地说明了这些步骤。
+
+### <a name="prerequisites"></a>先决条件
 
 - 确保为 Azure SQL 数据库服务器启用灾难恢复，以防该服务器同时发生服务中断。 有关详细信息，请参阅[使用 Azure SQL 数据库确保业务连续性的相关概述](../sql-database/sql-database-business-continuity.md)。
 
@@ -32,13 +78,13 @@ ms.locfileid: "39295181"
 
 - 如果使用自定义设置，可能需要为存储自定义设置脚本和关联文件的 Blob 容器准备另一个 SAS URI，以便在中断期间可以继续访问该容器。 有关详细信息，请参阅[在 Azure-SSIS 集成运行时中配置自定义设置](how-to-configure-azure-ssis-ir-custom-setup.md)。
 
-## <a name="steps"></a>Steps
+### <a name="steps"></a>Steps
 
 遵循以下步骤停止 Azure-SSIS IR，切换到新区域，然后再次启动该 IR。
 
 1. 在原始区域中停止 IR。
 
-2. 在 PowerShell 中调用以下命令来更新 IR
+2. 在 PowerShell 中调用以下命令来使用新设置更新 IR。
 
     ```powershell
     Set-AzureRmDataFactoryV2IntegrationRuntime -Location "new region" `

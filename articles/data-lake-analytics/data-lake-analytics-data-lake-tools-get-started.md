@@ -9,13 +9,13 @@ manager: kfile
 editor: jasonwhowell
 ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: get-started-article
-ms.date: 05/02/2018
-ms.openlocfilehash: 0acaace474d62f18b9b6ca4aaae324405a2f43db
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.date: 08/13/2018
+ms.openlocfilehash: 852840fc29589292e7a74390026b78b15f81e721
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34735787"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41918308"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -38,12 +38,12 @@ ms.locfileid: "34735787"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Visual Studio**：支持除 Express 以外的所有版本。
+* Visual Studio：支持除 Express 以外的所有版本。
     * Visual Studio 2017
     * Visual Studio 2015
     * Visual Studio 2013
-* **用于 .NET 的 Microsoft Azure SDK** 2.7.1 版或更高版本。  使用 [Web 平台安装程序](http://www.microsoft.com/web/downloads/platform.aspx)进行安装。
-* **Data Lake Analytics** 帐户。 若要创建帐户，请参阅[通过 Azure 门户开始使用 Azure Data Lake Analytics](data-lake-analytics-get-started-portal.md)。
+* Microsoft Azure SDK for .NET 2.7.1 版或更高版本。  使用 [Web 平台安装程序](http://www.microsoft.com/web/downloads/platform.aspx)进行安装。
+* Data Lake Analytics 帐户。 若要创建帐户，请参阅[通过 Azure 门户开始使用 Azure Data Lake Analytics](data-lake-analytics-get-started-portal.md)。
 
 ## <a name="install-azure-data-lake-tools-for-visual-studio"></a>安装针对 Visual Studio 的 Azure Data Lake 工具
 
@@ -52,16 +52,20 @@ ms.locfileid: "34735787"
 ## <a name="connect-to-an-azure-data-lake-analytics-account"></a>连接到 Azure Data Lake Analytics 帐户
 
 1. 打开 Visual Studio。
-2. 选择“查看” > “服务器资源管理器”以打开“服务器资源管理器”。
-3. 右键单击“Azure”。 然后选择“连接到 Microsoft Azure 订阅”，并按照说明操作。
-4. 在“服务器资源管理器”中，选择“Azure” > “Data Lake Analytics”。 将看到 Data Lake Analytics 帐户列表。
 
+2. 选择“查看” > “服务器资源管理器”以打开“服务器资源管理器”。
+
+3. 右键单击“Azure”。 然后选择“连接到 Microsoft Azure 订阅”，并按照说明操作。
+
+4. 在“服务器资源管理器”中，选择“Azure” > “Data Lake Analytics”。 将看到 Data Lake Analytics 帐户列表。
 
 ## <a name="write-your-first-u-sql-script"></a>编写第一个 U-SQL 脚本
 
 以下文本是一个简单的 U-SQL 脚本。 它定义一个小型数据集，并将该数据集作为名为 `/data.csv` 的文件写入默认 Data Lake Store 中。
 
 ```
+USE DATABASE master;
+USE SCHEMA dbo;
 @a  = 
     SELECT * FROM 
         (VALUES
@@ -74,7 +78,7 @@ OUTPUT @a
     USING Outputters.Csv();
 ```
 
-### <a name="submit-a-data-lake-analytics-job"></a>提交 Data Lake Analytics 作业
+## <a name="submit-a-data-lake-analytics-job"></a>提交 Data Lake Analytics 作业
 
 1. 选择“文件” > “新建” > “项目”。
 
@@ -87,31 +91,35 @@ OUTPUT @a
     ![提交 U-SQL Visual Studio 项目](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job.png)
 
 5. 在 **Script.usql** 窗口的左上角，选择“提交”。
-6. 验证“Analytics 帐户”，然后选择“提交”。 完成提交后，“适用于 Visual Studio 的 Data Lake 工具结果”窗口中会出现提交结果。
 
-    ![提交 U-SQL Visual Studio 项目](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job-advanced.png)
-7. 若要查看最新作业状态和刷新屏幕，请单击“刷新”。 作业成功时，将显示“作业图”、“元数据操作”、“状态历史记录”和“诊断”：
+6. 作业提交后，将打开“作业视图”选项卡以显示作业进度。 若要查看最新作业状态和刷新屏幕，请单击“刷新”。
 
     ![U-SQL Visual Studio Data Lake Analytics 作业性能图表](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-performance-graph.png)
 
    * “作业摘要”显示作业的摘要。   
-   * “作业详细信息”显示有关该作业的更具体的信息，包括脚本、资源和顶点。
    * “作业图”直观显示作业的进度。
    * “元数据操作”显示对 U-SQL 目录已执行的所有操作。
    * “数据”显示所有输入和输出。
+   * **状态历史记录**显示时间线和状态详细信息。
+   * **AU 分析**显示了作业中使用的 AU 数并探索了不同 AU 分配策略的模拟。
    * “诊断”提供有助于作业执行和性能优化的高级分析。
 
-### <a name="to-check-job-state"></a>检查作业状态
+## <a name="check-job-status"></a>检查作业状态
 
-1. 在“服务器资源管理器”中，选择“Azure” > “Data Lake Analytics”。 
+1. 在“服务器资源管理器”中，选择“Azure” > “Data Lake Analytics”。
+
 2. 展开 Data Lake Analytics 帐户名。
+
 3. 双击“作业”。
+
 4. 选择之前提交的作业。
 
-### <a name="to-see-the-output-of-a-job"></a>查看作业的输出
+## <a name="see-the-job-output"></a>查看作业输出
 
 1. 在“服务器资源管理器”中，浏览到所提交的作业。
+
 2. 单击“数据”选项卡。
+
 3. 在“作业输出”选项卡中，选择 `"/data.csv"` 文件。
 
 ## <a name="next-steps"></a>后续步骤

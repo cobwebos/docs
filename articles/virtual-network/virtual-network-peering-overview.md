@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/17/2018
+ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: 63ea834401e5c6798b6f84b6f09a964005d14306
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: c20375d42786b817f677be22dee8f4e71e710bc5
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257865"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41917896"
 ---
 # <a name="virtual-network-peering"></a>虚拟网络对等互连
 
@@ -77,7 +77,12 @@ ms.locfileid: "39257865"
 
 ## <a name="requirements-and-constraints"></a>要求和约束
 
-若要了解要求和约束，请参阅[虚拟网络对等互连要求和约束](virtual-network-manage-peering.md#requirements-and-constraints)。 若要了解可以为虚拟网络创建的对等互连的数目限制，请参阅 [Azure 网络限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。 
+当虚拟网络全局对等互连时，以下约束适用：
+- 虚拟网络可以存在于任何 Azure 公有云区域中，但不能存在于 Azure 国有云中。
+- 一个虚拟网络中的资源无法与全局对等互连虚拟网络中 Azure 内部负载均衡器的前端 IP 地址通信。 负载均衡器和与之通信的资源必须位于同一区域中。
+- 不能使用远程网关，也不能允许网关传输。 若要使用远程网关或允许网关传输，对等互连的虚拟网络必须位于同一区域中。
+
+若要详细了解要求和约束，请参阅[虚拟网络对等互连要求和约束](virtual-network-manage-peering.md#requirements-and-constraints)。 若要了解可以为虚拟网络创建的对等互连的数目限制，请参阅 [Azure 网络限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。 
 
 ## <a name="permissions"></a>权限
 
@@ -102,3 +107,4 @@ ms.locfileid: "39257865"
 
 * 了解如何创建[中心和分支网络拓扑](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 * 了解所有[虚拟网络对等互连设置以及如何对其进行更改](virtual-network-manage-peering.md)。
+* 通过我们的 [VNet 对等互连常见问题解答](virtual-networks-faq.md#vnet-peering)获取常见的 VNet 对等互连和全局 VNet 对等互连问题的答案

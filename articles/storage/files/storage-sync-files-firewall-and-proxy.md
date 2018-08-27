@@ -5,15 +5,15 @@ services: storage
 author: fauhse
 ms.service: storage
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 08/08/2018
 ms.author: fauhse
 ms.component: files
-ms.openlocfilehash: 44bfdd192f846b710e378b1f00799eda304cec1e
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: f5fa68488fa8130ad49da37c91b7f4c04376edb3
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522758"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42440673"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure 文件同步代理和防火墙设置
 Azure 文件同步可以将本地服务器连接到 Azure 文件，启用多站点同步和云分层功能。 因此，本地服务器必须连接到 Internet。 IT 管理员需确定服务器访问 Azure 云服务的最佳路径。
@@ -46,15 +46,47 @@ Azure 文件同步会通过任何可用方式来访问 Azure，自动适应各�
 ## <a name="proxy"></a>代理
 Azure 文件同步支持特定于应用和计算机范围的代理设置。
 
-计算机范围的代理设置对 Azure 文件同步代理来说是透明的，因为服务器的整个流量都通过该代理路由。
-
-特定于应用的代理设置可以配置专用于 Azure 文件同步流量的代理。 代理版本 3.0.12.0 或更高版本支持特定于应用的代理设置，可以在代理安装期间或使用 Set-StorageSyncProxyConfiguration PowerShell cmdlet 进行配置。
+**特定于应用的代理设置**可以配置专用于 Azure 文件同步流量的代理。 代理版本 3.0.12.0 或更高版本支持特定于应用的代理设置，可以在代理安装期间或使用 Set-StorageSyncProxyConfiguration PowerShell cmdlet 进行配置。
 
 用于配置特定于应用的代理设置的 PowerShell 命令：
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCredential <credentials>
 ```
+**计算机范围的代理设置**对 Azure 文件同步代理来说是透明的，因为服务器的整个流量都通过该代理路由。
+
+若要配置计算机范围的代理设置，请执行以下步骤： 
+
+1. 配置 .NET 应用程序的代理设置 
+
+  - 编辑以下这两个文件：  
+    C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config  
+    C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
+
+  - 在 machine.config 文件中添加 <system.net> 节（在 <system.serviceModel> 节下）。  将 127.0.01:8888 更改为代理服务器的 IP 地址和端口。 
+  ```
+      <system.net>
+        <defaultProxy enabled="true" useDefaultCredentials="true">
+          <proxy autoDetect="false" bypassonlocal="false" proxyaddress="http://127.0.0.1:8888" usesystemdefault="false" />
+        </defaultProxy>
+      </system.net>
+  ```
+
+2. 设置 WinHTTP 代理设置 
+
+  - 从提升的命令提示符或 PowerShell 运行以下命令来查看现有的代理设置：   
+
+    netsh winhttp show proxy
+
+  - 从提升的命令提示符或 PowerShell 运行以下命令来设置代理设置（将 127.0.01:8888 更改为代理服务器的 IP 地址和端口）：  
+
+    netsh winhttp set proxy 127.0.0.1:8888
+
+3. 通过从提升的命令提示符或 PowerShell 运行以下命令，重新启动存储同步代理服务： 
+
+      net stop filesyncsvc
+
+      注意：存储同步代理 (filesyncsvc) 服务在停止后会自动启动。
 
 ## <a name="firewall"></a>防火墙
 如前面的部分所述，端口 443 需对外开放。 可能需要进一步对通过此端口流向特定域的流量进行限制，具体取决于所在数据中心、分支或区域的策略。
@@ -76,7 +108,22 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 出于业务连续性和灾难恢复 (BCDR) 的原因，你可能在全局冗余 (GRS) 存储帐户中指定了 Azure 文件共享。 如果是这样，在发生长时间的区域性中断时，Azure 文件共享将故障转移到配对的区域。 Azure 文件同步使用的区域配对与存储相同。 因此，如果使用 GRS 存储帐户，则需要启用附加的 URL 才能让服务器与 Azure 文件同步的配对区域通信。在下表中，此配对称为“配对区域”。 此外，还需要启用一个流量管理器配置文件 URL。 在发生故障转移时，此 URL 可确保将网络流量无缝重新路由到配对区域；在下表中，此 URL 称为“发现 URL”。
 
-| 区域 | 主终结点 URL | 配对区域 | 发现 URL | |--------|---------------------------------------||--------||---------------------------------------| | 澳大利亚东部 | https://kailani-aue.one.microsoft.com | 澳大利亚东南部 | https://kailani-aue.one.microsoft.com | | 澳大利亚东南部 | https://kailani-aus.one.microsoft.com | 澳大利亚东部 | https://tm-kailani-aus.one.microsoft.com | | 加拿大中部 | https://kailani-cac.one.microsoft.com | 加拿大东部 | https://tm-kailani-cac.one.microsoft.com | | 加拿大东部 | https://kailani-cae.one.microsoft.com | 加拿大中部 | https://tm-kailani.cae.one.microsoft.com | | 美国中部 | https://kailani-cus.one.microsoft.com | 美国东部 2 | https://tm-kailani-cus.one.microsoft.com | | 东亚 | https://kailani11.one.microsoft.com | 东南亚 | https://tm-kailani11.one.microsoft.com | | 美国东部 | https://kailani1.one.microsoft.com | 美国西部 | https://tm-kailani1.one.microsoft.com | | 美国东部 2 | https://kailani-ess.one.microsoft.com | 美国中部 | https://tm-kailani-ess.one.microsoft.com | | 北欧 | https://kailani7.one.microsoft.com | 西欧 | https://tm-kailani7.one.microsoft.com | | 东南亚 | https://kailani10.one.microsoft.com | 东亚 | https://tm-kailani10.one.microsoft.com | | 英国南部 | https://kailani-uks.one.microsoft.com | 英国西部 | https://tm-kailani-uks.one.microsoft.com | | 英国西部 | https://kailani-ukw.one.microsoft.com | 英国南部 | https://tm-kailani-ukw.one.microsoft.com | | 西欧 | https://kailani6.one.microsoft.com | 北欧 | https://tm-kailani6.one.microsoft.com | | 美国西部 | https://kailani.one.microsoft.com | 美国东部 | https://tm-kailani.one.microsoft.com |
+| 区域 | 主终结点 URL | 配对区域 | 发现 URL |
+|--------|---------------------------------------|--------|---------------------------------------|
+| 澳大利亚东部 | https://kailani-aue.one.microsoft.com | 澳大利亚东南部 | https://kailani-aue.one.microsoft.com |
+| 澳大利亚东南部 | https://kailani-aus.one.microsoft.com | 澳大利亚东部 | https://tm-kailani-aus.one.microsoft.com |
+| 加拿大中部 | https://kailani-cac.one.microsoft.com | 加拿大东部 | https://tm-kailani-cac.one.microsoft.com |
+| 加拿大东部 | https://kailani-cae.one.microsoft.com | 加拿大中部 | https://tm-kailani.cae.one.microsoft.com |
+| 美国中部 | https://kailani-cus.one.microsoft.com | 美国东部 2 | https://tm-kailani-cus.one.microsoft.com |
+| 东亚 | https://kailani11.one.microsoft.com | 东南亚 | https://tm-kailani11.one.microsoft.com |
+| 美国东部 | https://kailani1.one.microsoft.com | 美国西部 | https://tm-kailani1.one.microsoft.com |
+| 美国东部 2 | https://kailani-ess.one.microsoft.com | 美国中部 | https://tm-kailani-ess.one.microsoft.com |
+| 北欧 | https://kailani7.one.microsoft.com | 西欧 | https://tm-kailani7.one.microsoft.com |
+| 东南亚 | https://kailani10.one.microsoft.com | 东亚 | https://tm-kailani10.one.microsoft.com |
+| 英国南部 | https://kailani-uks.one.microsoft.com | 英国西部 | https://tm-kailani-uks.one.microsoft.com |
+| 英国西部 | https://kailani-ukw.one.microsoft.com | 英国南部 | https://tm-kailani-ukw.one.microsoft.com |
+| 西欧 | https://kailani6.one.microsoft.com | 北欧 | https://tm-kailani6.one.microsoft.com |
+| 美国西部 | https://kailani.one.microsoft.com | 美国东部 | https://tm-kailani.one.microsoft.com |
 
 - 如果使用本地冗余 (LRS) 或区域冗余 (ZRS) 存储帐户，只需启用“主终结点 URL”下面列出的 URL。
 

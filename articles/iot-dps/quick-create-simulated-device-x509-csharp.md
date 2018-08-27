@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 28e6158a3dcd4cee98c380c53a1a345983bdf4f7
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: cc8db9a11aa4c942f0dcee3dce320a5bb77cf14a
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090813"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42023047"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>使用适用于 IoT 中心设备预配服务的 C# 设备 SDK 创建和预配模拟的 X.509 设备
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "39090813"
 
 如果不熟悉自动预配过程，还务必查看[自动预配概念](concepts-auto-provisioning.md)。 另外，在继续操作之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
 
-[!INCLUDE [IoT DPS basic](../../includes/iot-dps-basic.md)]
+[!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
 <a id="setupdevbox"></a>
 ## <a name="prepare-the-development-environment"></a>准备开发环境 
@@ -41,9 +41,9 @@ ms.locfileid: "39090813"
 
 ## <a name="create-a-self-signed-x509-device-certificate-and-individual-enrollment-entry"></a>创建自签名的 X.509 设备证书和单个注册项
 
-在本部分中，你将使用自签名 X.509 证书，请务必记住以下事项：
+在本部分，你将使用自签名的 X.509 证书。请务必记住以下事项：
 
-* 自签名证书仅用于测试，不应在生产中使用。
+* 自签名证书仅用于测试，不应在生产环境中使用。
 * 自签名证书的默认到期日期为 1 年。
 
 你将使用来自 [Azure IoT SDK for .NET](https://github.com/Azure/azure-iot-sdk-csharp.git) 的示例代码创建要与模拟设备的个体注册条目一起使用的证书。
@@ -87,7 +87,7 @@ ms.locfileid: "39090813"
 
 1. 在预配服务的“概览”边栏选项卡中，记下“ID 范围”的值。
 
-    ![从门户边栏选项卡提取 DPS 终结点信息](./media/quick-create-simulated-device-x509-csharp/copy-scope.png) 
+    ![从门户边栏选项卡中提取设备预配服务终结点信息](./media/quick-create-simulated-device-x509-csharp/copy-scope.png) 
 
 
 2. 键入以下命令，生成并运行 X.509 设备预配示例。 将 `<IDScope>` 值替换为预配服务的 ID 范围。 

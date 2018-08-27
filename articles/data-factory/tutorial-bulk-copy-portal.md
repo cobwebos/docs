@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 651f9ba71d08698c64f3e90de59b5f29a8afc77d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b6d7b926a414c95d4e05834bafc91a2aa9c047fe
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433504"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41918306"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>使用 Azure 数据工厂批量复制多个表
 本教程演示如何**将 Azure SQL 数据库中的多个表复制到 Azure SQL 数据仓库**。 在其他复制方案中，也可以应用相同的模式。 例如，将 SQL Server/Oracle 中的表复制到 Azure SQL 数据库/数据仓库/Azure Blob，将 Blob 中的不同路径复制到 Azure SQL 数据库表。
@@ -265,7 +265,7 @@ ms.locfileid: "39433504"
     1. 单击 DWTableName 参数的“值”输入框，选择下方的“添加动态内容”，输入 `[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` 表达式作为脚本，然后选择“完成”。
     1. 展开“Polybase 设置”，然后选择“允许 Polybase”。 
     1. 清除“使用类型默认值”选项。 
-    1. 单击“清理脚本”输入框，选择下方的“添加动态内容”，输入以下表达式作为脚本，然后选择“完成”。 
+    1. 单击“复制前脚本”输入框，选择下方的“添加动态内容”，输入以下表达式作为脚本，然后选择“完成”。 
 
         ```sql
         TRUNCATE TABLE [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]

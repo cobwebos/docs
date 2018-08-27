@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
 manager: douge
-ms.openlocfilehash: 93a63c39b2ba30d0b70607671262428d93392ad4
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: fdaba2afecd453794dbee3b47ef5202700d005d2
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522146"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41920514"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>通过 .NET Core 开始使用 Azure Dev Spaces
 
@@ -34,7 +34,7 @@ Azure Dev Spaces 需要进行最基本的本地计算机设置。 开发空间�
 首先，请下载并运行 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 
 
 > [!IMPORTANT]
-> 如果已安装 Azure CLI，请确保使用 2.0.38 版或更高版本。
+> 如果已安装 Azure CLI，请确保使用 2.0.43 版或更高版本。
 
 [!INCLUDE[](includes/sign-into-azure.md)]
 

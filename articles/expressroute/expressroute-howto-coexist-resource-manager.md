@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/05/2018
+ms.date: 08/17/2018
 ms.author: charwen,cherylmc,rambala
-ms.openlocfilehash: 80d2f65f516d7f1190f276fa9f2c62206bd31e67
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 0e69a85f320a0a8d77bd07fc0dedb77eb99efb36
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39262866"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41918177"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections"></a>设置 ExpressRoute 和站点到站点并存连接
 > [!div class="op_single_selector"]
@@ -183,14 +183,7 @@ ms.locfileid: "39262866"
   ```
 
 ## <a name="add"></a>为现有的 VNet 配置并存连接
-如果已经有了一个虚拟网络，请检查网关子网大小。 如果网关子网为 /28 或 /29，则必须先删除虚拟网络网关，然后增加网关子网大小。 本部分的步骤说明如何这样做。
-
-如果网关子网为 /27 或更大，且虚拟网络是通过 ExpressRoute 连接的，则可跳过下面的步骤，转到前一部分的[“步骤 4 - 创建站点到站点 VPN 网关”](#vpngw)。 
-
-> [!NOTE]
-> 如果删除的是现有网关，则进行此配置时，本地系统将失去与虚拟网络建立的连接。 
-> 
-> 
+如果你的虚拟网络只有一个虚拟网络网关（例如，站点到站点 VPN 网关），并且你想要添加另一个不同类型的网关（例如，ExpressRoute 网关），请检查网关子网大小。 如果网关子网为 /27 或更大，则可以跳过以下步骤并按照上一部分中的步骤添加站点到站点 VPN 网关或 ExpressRoute 网关。 如果网关子网为 /28 或 /29，则必须先删除虚拟网络网关，然后增加网关子网大小。 本部分的步骤说明如何这样做。
 
 1. 需要安装 Azure PowerShell cmdlet 的最新版本。 有关安装 cmdlet 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 针对此配置使用的 cmdlet 可能与你熟悉的 cmdlet 稍有不同。 请务必使用说明内容中指定的 cmdlet。 
 2. 删除现有的 ExpressRoute 或站点到站点 VPN 网关。
@@ -220,7 +213,7 @@ ms.locfileid: "39262866"
   ```powershell
   $vnet = Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
   ```
-5. 此时，拥有不带网关的虚拟网络。 若要创建新网关并完成连接，可以转到[步骤 4 - 创建站点到站点 VPN 网关](#vpngw)（可在前一组步骤中找到）。
+5. 此时，已有不带网关的虚拟网络。 若要创建新网关并设置连接，请按照上一部分中的步骤操作。
 
 ## <a name="to-add-point-to-site-configuration-to-the-vpn-gateway"></a>将点到站点配置添加到 VPN 网关
 可以按照下面的步骤将点到站点配置添加到共存设置中的 VPN 网关。

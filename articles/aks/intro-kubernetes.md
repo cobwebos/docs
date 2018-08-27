@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 06/13/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: cb38285a009d8dfba175de6e3037970e6111d929
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: e6f67c8900a7ee1728b474651b47d278cdfa51eb
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096121"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42022659"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS)
 
@@ -66,7 +66,7 @@ AKS 支持创建启用了 GPU 的节点池。 Azure 目前提供单个或多个�
 
 ## <a name="development-tooling-integration"></a>开发工具集成
 
-Kubernetes 有丰富的生态系统，其中包含各种开发和管理工具，例如 Helm、Draft 以及适用于 Visual Studio Code 的 Kubernetes 扩展。 这些工具可以与 Azure Kuberntees 服务无缝地配合使用。
+Kubernetes 有丰富的生态系统，其中包含各种开发和管理工具，例如 Helm、Draft 以及适用于 Visual Studio Code 的 Kubernetes 扩展。 这些工具可以与 Azure Kubernetes 服务无缝地配合使用。
 
 另外，Azure Dev Spaces 为团队提供快速、迭代的 Kubernetes 开发体验。 只需最少的配置，即可直接在 Azure Kubernetes 服务 (AKS) 中运行和调试容器。
 
@@ -104,7 +104,7 @@ Azure Kubernetes 服务 (AKS) 已被 CNCF 认证为符合 Kubernetes 规范。
 
 ## <a name="regulatory-compliance"></a>法规符合性
 
-Azure Kubernetes 服务 (AKS) 符合 SOC 和 ISO/HIPAA/HITRUST 规范。
+Azure Kubernetes 服务 (AKS) 符合 SOC 和 ISO 规范。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -131,7 +131,7 @@ Azure Kubernetes 服务 (AKS) 符合 SOC 和 ISO/HIPAA/HITRUST 规范。
 [aks-scale]: ./scale-cluster.md
 [aks-upgrade]: ./upgrade-cluster.md
 [azure-dev-spaces]: https://docs.microsoft.com/en-us/azure/dev-spaces/azure-dev-spaces
-[azure-devops]: https://docs.microsoft.com/en-us/vsts/pipelines/actions/azure-devops-project-aks?view=vsts
+[azure-devops]: https://docs.microsoft.com/en-us/azure/devops-project/overview
 [azure-disk]: ./azure-disks-dynamic-pv.md
 [azure-files]: ./azure-files-dynamic-pv.md
 [container-health]: ../monitoring/monitoring-container-health.md

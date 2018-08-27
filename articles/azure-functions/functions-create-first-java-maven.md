@@ -11,15 +11,15 @@ ms.devlang: java
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 07/28/2018
+ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: a1ce9aa87d8f70d3d55daa3a8f46c6a7f706f78e
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: aeb00bf55c578f61e5e1edbaab11c7773b9eab94
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620726"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42024015"
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>通过 Java 和 Maven 创建你的第一个函数（预览版）
 
@@ -68,6 +68,8 @@ mvn archetype:generate ^
 
 Maven 会请求你提供所需的值以完成项目的生成。 有关 groupId、artifactId 和 version 值，请参阅 [Maven 命名约定](https://maven.apache.org/guides/mini/guide-naming-conventions.html)参考。 AppName 值在 Azure 中必须唯一，以便 Maven 基于以前输入的 artifactId 生成默认应用名称。 PackageName 值确定所生成函数代码的 Java 包。
 
+`appRegion` 值指定要在其中运行已部署的函数应用的 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)。 可以通过 Azure CLI 中的 `az account list-locations` 命令获取区域名称值的列表。 `resourceGroup` 值指定将在其中创建函数应用的 Azure 资源组。
+
 下面的 `com.fabrikam.functions` 和 `fabrikam-functions` 标识符用作示例，目的是使本快速入门中后面的步骤更易读。 建议你在此步骤中向 Maven 提供你自己的值。
 
 ```Output
@@ -76,22 +78,18 @@ Define value for property 'artifactId' : fabrikam-functions
 Define value for property 'version' 1.0-SNAPSHOT : 
 Define value for property 'package': com.fabrikam.functions
 Define value for property 'appName' fabrikam-functions-20170927220323382:
+Define value for property 'appRegion' westus : 
+Define value for property 'resourceGroup' java-functions-group: 
 Confirm properties configuration: Y
 ```
 
-在此示例 `fabrikam-functions` 中，Maven 在新文件夹中创建名为 artifactId 的项目文件 项目中生成的可以运行的代码是一个简单的回显请求正文的 [HTTP 触发](/azure/azure-functions/functions-bindings-http-webhook)函数：
+在此示例 `fabrikam-functions` 中，Maven 在新文件夹中创建名为 artifactId 的项目文件 项目中生成的可以运行的代码是一个简单的在“Hello, ”字符串回显请求正文的 [HTTP 触发](/azure/azure-functions/functions-bindings-http-webhook)函数。
 
 ```java
 public class Function {
-    /**
-     * This function listens at endpoint "/api/hello". Two ways to invoke it using "curl" command in bash:
-     * 1. curl -d "HTTP Body" {your host}/api/hello
-     * 2. curl {your host}/api/hello?name=HTTP%20Query
-     */
-    @FunctionName("hello")
-    public HttpResponseMessage<String> hello(
-            @HttpTrigger(name = "req", methods = {"get", "post"}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
-            final ExecutionContext context) {
+    @FunctionName("HttpTrigger-Java")
+    public HttpResponseMessage HttpTriggerJava(
+    @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,final ExecutionContext context) {
         context.getLogger().info("Java HTTP trigger processed a request.");
 
         // Parse query parameter
@@ -99,13 +97,12 @@ public class Function {
         String name = request.getBody().orElse(query);
 
         if (name == null) {
-            return request.createResponse(400, "Please pass a name on the query string or in the request body");
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body("Please pass a name on the query string or in the request body").build();
         } else {
-            return request.createResponse(200, "Hello, " + name);
+            return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
         }
     }
 }
-
 ```
 
 ## <a name="run-the-function-locally"></a>在本地运行函数
@@ -124,22 +121,22 @@ mvn azure-functions:run
 当函数在本地系统上运行并且做好响应 HTTP 请求的准备时，将显示以下输出：
 
 ```Output
-Listening on http://localhost:7071
+Listening on http://0.0.0.0:7071/
 Hit CTRL-C to exit...
 
 Http Functions:
 
-   hello: http://localhost:7071/api/hello
+        HttpTrigger-Java: http://localhost:7071/api/HttpTrigger-Java
 ```
 
 使用 curl 在新的终端窗口中从命令行触发函数：
 
 ```
-curl -w '\n' -d LocalFunction http://localhost:7071/api/hello
+curl -w '\n' -d LocalFunctionTest http://localhost:7071/api/HttpTrigger-Java
 ```
 
 ```Output
-Hello LocalFunction!
+Hello, LocalFunctionTest
 ```
 
 在终端中使用 `Ctrl-C` 停止函数代码。
@@ -171,11 +168,11 @@ mvn azure-functions:deploy
 使用 `cURL` 测试在 Azure 上运行的函数应用。 需更改以下示例中的 URL，使之与前一步骤中你自己的函数应用的已部署 URL 匹配。
 
 ```
-curl -w '\n' https://fabrikam-functions-20170920120101928.azurewebsites.net/api/hello -d AzureFunctions
+curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.azurewebsites.net/api/HttpTrigger-Java
 ```
 
 ```Output
-Hello AzureFunctions!
+Hello, AzureFunctionsTest
 ```
 
 ## <a name="next-steps"></a>后续步骤

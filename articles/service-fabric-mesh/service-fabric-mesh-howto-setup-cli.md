@@ -9,12 +9,12 @@ ms.date: 07/26/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 567f2afdea44f439779212c61fb3a129f4f979be
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: c0e2aefe1222263b169e21490da079b165a57321
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281566"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42108472"
 ---
 # <a name="set-up-the-service-fabric-mesh-cli"></a>设置 Service Fabric 网格 CLI
 Service Fabric 网格 CLI 是在 Service Fabric 网格中部署和管理资源所必需的。 
@@ -23,18 +23,18 @@ Service Fabric 网格 CLI 是在 Service Fabric 网格中部署和管理资源�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-如果选择在本地安装和使用 CLI，必须安装 Azure CLI 版本 2.0.35 或更高版本。 运行 `az --version` 即可查找版本。 若要安装或升级到最新版本的 CLI，请参阅[安装 Azure CLI 2.0][azure-cli-install]。
-
-删除以前安装的任何 Azure Service Fabric 网格 CLI 模块。
-
-```azurecli-interactive
-az extension remove --name mesh
-```
+如果选择在本地安装和使用 CLI，必须安装 Azure CLI 版本 2.0.43 或更高版本。 运行 `az --version` 即可查找版本。 若要安装或升级到最新版本的 CLI，请参阅[安装 Azure CLI 2.0][azure-cli-install]。
 
 使用以下命令安装 Azure Service Fabric 网格 CLI 扩展模块。 
 
 ```azurecli-interactive
-az extension add --source https://meshcli.blob.core.windows.net/cli/mesh-0.9.1-py2.py3-none-any.whl
+az extension add --name mesh
+```
+
+若要更新现有的 Azure Service Fabric 网格 CLI 模块，请运行以下命令。
+
+```azurecli-interactive
+az extension update --name mesh
 ```
 
 还可以设置你的 [Windows 开发环境](service-fabric-mesh-howto-setup-developer-environment-sdk.md)。

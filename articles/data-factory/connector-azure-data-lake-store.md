@@ -12,12 +12,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: a3df91adf7c35343dc890dc734ec052f1aa97134
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 735b152f55a9309e5d5dd85dac64a607de6417b0
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860242"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42443963"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Data Lake Storage Gen1 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -45,13 +45,16 @@ ms.locfileid: "37860242"
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
+>[!NOTE]
+>当使用“复制数据”工具创作复制管道或者在创作期间使用 ADF UI 执行测试连接/在文件夹间导航时，它需要在根级别授予的服务主体或 MSI 的权限。 同时，只要授予了对要复制的数据的权限，复制活动执行就可以工作。 如果你需要对权限进行限制，则可以跳过创作操作。
+
 对于特定于 Azure Data Lake Store 的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
 ## <a name="linked-service-properties"></a>链接服务属性
 
 Azure Data Lake Store 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **AzureDataLakeStore**。 | 是 |
 | dataLakeStoreUri | Azure Data Lake Store 帐户相关信息。 此信息采用以下格式之一：`https://[accountname].azuredatalakestore.net/webhdfs/v1` 或 `adl://[accountname].azuredatalakestore.net/`。 | 是 |
@@ -74,12 +77,12 @@ Azure Data Lake Store 链接服务支持以下属性：
 
 >[!IMPORTANT]
 > 请确保在 Azure Data Lake Store 中授予服务主体适当的权限：
->- **作为源**，在数据资源管理器 ->“访问权限”中，至少授予“读取 + 执行”权限以便列出和复制文件夹/子文件夹中的文件，或授予“读取”权限以便复制单个文件，并选择以添加为“访问权限和默认权限项”。 对帐户级别访问控制 (IAM) 没有要求。
->- **作为接收器**，在数据资源管理器 ->“访问权限”中，至少授予“写入 + 执行”权限以便在文件夹中创建子项目，并选择以添加为“访问权限和默认权限项”。 如果使用 Azure IR 复制（源和接收器都在云中），请在“访问控制(标识和访问管理)”中，至少授予“读者”角色，以便让数据工厂检测 Data Lake Store 区域。 如果需要避免此 IAM 角色，请通过 Data Lake Store 的位置显式[创建 Azure IR](create-azure-integration-runtime.md#create-azure-ir)，并在 Data Lake Store 链接服务中进行关联，如下面的示例所示。
+>- **作为源**，在数据资源管理器 ->“访问权限”中，至少授予“读取 + 执行”权限以便列出和复制文件夹/子文件夹中的文件，或授予“读取”权限以便复制单个文件；对于“递归”，选择添加到“此文件夹和所有子代”并添加为“访问权限和默认权限项”。 对帐户级别访问控制 (IAM) 没有要求。
+>- **作为接收器**，在数据资源管理器 ->“访问权限”中，至少授予“写入 + 执行”权限以便在文件夹中创建子项目；对于“递归”，选择添加到“此文件夹和所有子代”并添加为“访问权限和默认权限项”。 如果使用 Azure IR 复制（源和接收器都在云中），请在“访问控制(标识和访问管理)”中，至少授予“读者”角色，以便让数据工厂检测 Data Lake Store 区域。 如果需要避免此 IAM 角色，请通过 Data Lake Store 的位置显式[创建 Azure IR](create-azure-integration-runtime.md#create-azure-ir)，并在 Data Lake Store 链接服务中进行关联，如下面的示例所示。
 
 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | servicePrincipalId | 指定应用程序的客户端 ID。 | 是 |
 | servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
@@ -122,8 +125,8 @@ Azure Data Lake Store 链接服务支持以下属性：
 
 >[!IMPORTANT]
 > 确保在 Azure Data Lake Store 中授予数据工厂服务标识适当的权限：
->- **作为源**，在数据资源管理器 ->“访问权限”中，至少授予“读取 + 执行”权限以便列出和复制文件夹/子文件夹中的文件，或授予“读取”权限以便复制单个文件，并选择以添加为“访问权限和默认权限项”。 对帐户级别访问控制 (IAM) 没有要求。
->- **作为接收器**，在数据资源管理器 ->“访问权限”中，至少授予“写入 + 执行”权限以便在文件夹中创建子项目，并选择以添加为“访问权限和默认权限项”。 如果使用 Azure IR 复制（源和接收器都在云中），请在“访问控制(标识和访问管理)”中，至少授予“读者”角色，以便让数据工厂检测 Data Lake Store 区域。 如果需要避免此 IAM 角色，请通过 Data Lake Store 的位置显式[创建 Azure IR](create-azure-integration-runtime.md#create-azure-ir)，并在 Data Lake Store 链接服务中进行关联，如下面的示例所示。
+>- **作为源**，在数据资源管理器 ->“访问权限”中，至少授予“读取 + 执行”权限以便列出和复制文件夹/子文件夹中的文件，或授予“读取”权限以便复制单个文件；对于“递归”，选择添加到“此文件夹和所有子代”并添加为“访问权限和默认权限项”。 对帐户级别访问控制 (IAM) 没有要求。
+>- **作为接收器**，在数据资源管理器 ->“访问权限”中，至少授予“写入 + 执行”权限以便在文件夹中创建子项目；对于“递归”，选择添加到“此文件夹和所有子代”并添加为“访问权限和默认权限项”。 如果使用 Azure IR 复制（源和接收器都在云中），请在“访问控制(标识和访问管理)”中，至少授予“读者”角色，以便让数据工厂检测 Data Lake Store 区域。 如果需要避免此 IAM 角色，请通过 Data Lake Store 的位置显式[创建 Azure IR](create-azure-integration-runtime.md#create-azure-ir)，并在 Data Lake Store 链接服务中进行关联，如下面的示例所示。
 
 在 Azure 数据工厂中，除了链接服务中的常规 Data Lake Store 信息以外，不需要指定任何属性。
 
@@ -153,7 +156,7 @@ Azure Data Lake Store 链接服务支持以下属性：
 
 要向/从 Azure Data Lake Store 复制数据，请将数据集的 type 属性设置为“AzureDataLakeStoreFile”。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**AzureDataLakeStoreFile** |是 |
 | folderPath | Data Lake Store 中的文件夹的路径。 不支持通配符筛选器。 例如：rootfolder/subfolder/ |是 |
@@ -200,7 +203,7 @@ Azure Data Lake Store 链接服务支持以下属性：
 
 要从 Azure Data Lake Store 复制数据，请将复制活动中的源类型设置为“AzureDataLakeStoreSource”。 复制活动**源**部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：**AzureDataLakeStoreSource** |是 |
 | recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制/创建空的文件夹/子文件夹。<br/>允许的值为：true（默认）、false | 否 |
@@ -241,7 +244,7 @@ Azure Data Lake Store 链接服务支持以下属性：
 
 若要向 Azure Data Lake Store 复制数据，请将复制活动中的接收器类型设置为“AzureDataLakeStoreSink”。 接收器部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为：**AzureDataLakeStoreSink** |是 |
 | copyBehavior | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认值）</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定文件/Blob 名称，则合并的文件名称将为指定的名称；否则，会自动生成文件名。 | 否 |

@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
 manager: douge
-ms.openlocfilehash: 91302f21f3b3f9db50dc0c930a4cdfc02749d151
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 600625f143041eaf983b7ec7e945c5a968b522f5
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950999"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42024221"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-visual-studio"></a>快速入门：使用 Azure Dev Spaces 创建 Kubernetes 开发空间（.NET Core 和 Visual Studio）
 
@@ -31,7 +31,7 @@ ms.locfileid: "37950999"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 在 EastUS、CentralUS、WestUS2、WestEurope、CanadaCentral 或 CanadaEast 区域中运行 Kubernetes 1.10.3 且已启用“HTTP 应用程序路由”的 Kubernetes 群集。
+- 在 EastUS、CentralUS、WestUS2、WestEurope、CanadaCentral 或 CanadaEast 区域中运行 Kubernetes 1.9.6 或更高版本且已启用“Http 应用程序路由”的 Kubernetes 群集。
 
   ![请务必启用“Http 应用程序路由”。](media/common/Kubernetes-Create-Cluster-3.PNG)
 

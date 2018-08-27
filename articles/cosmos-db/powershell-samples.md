@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: sample
 ms.date: 10/16/2017
 ms.author: sngun
-ms.openlocfilehash: 066826661381f40af2943359eb75abae8306bb7b
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 9ee5c7a008f375beffd6bbdf00cca8b28752b1fb
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37855577"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "41919480"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db"></a>适用于 Azure Cosmos DB 的 Azure PowerShell 示例
 
@@ -28,6 +28,8 @@ ms.locfileid: "37855577"
 |[创建 SQL API 帐户](scripts/create-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 创建单个要用于 SQL API 的 Azure Cosmos DB 帐户。 |
 |[创建 MongoDB API 帐户](scripts/create-mongodb-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 创建单个要用于 MongoDB API 的 Azure Cosmos DB 帐户。 |
 |[创建 Gremlin API 帐户](scripts/create-graph-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 创建单个要用于 Gremlin API 的 Azure Cosmos DB 帐户。 |
+|[创建 Cassandra API 帐户](scripts/create-and-configure-cassandra-database.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 创建单个要用于 Cassandra API 的 Azure Cosmos DB 帐户。 |
+|[创建表 API 帐户](scripts/create-table-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 创建单个要用于表 API 的 Azure Cosmos DB 帐户。 |
 |**缩放 Azure Cosmos DB**||
 |[将 Azure Cosmos DB 帐户复制到多个区域中并配置故障转移优先级](scripts/scale-multiregion-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)|在全局范围内将帐户数据复制到具有指定故障转移优先级的多个区域中。|
 |**保护 Azure Cosmos DB**||

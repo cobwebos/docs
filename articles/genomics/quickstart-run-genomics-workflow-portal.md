@@ -10,12 +10,12 @@ ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: quickstart
 ms.date: 12/07/2017
-ms.openlocfilehash: 1436ad54eb13052aa87ccfd5adc371c8d7d5a100
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4387e1c935ada99e1f9c335fb7e1b67905c01188
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31403784"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42023724"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>快速入门：通过 Microsoft 基因组学服务运行工作流
 
@@ -41,7 +41,7 @@ Microsoft 基因组学是一种可缩放的安全服务，适用于二次分析�
  |帐户名         | MyGenomicsAccount     |选择唯一的帐户标识符。 至于有效的名称，请参阅[命名规则](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) |
  |订阅         | 订阅名称|这是 Azure 服务的计费单位 - 有关订阅的详细信息，请参阅[订阅](https://account.azure.com/Subscriptions) |      
  |资源组       | MyResourceGroup       |  可以通过资源组将多个 Azure 资源（存储帐户、基因组学帐户等）分到一个组中，方便管理。 有关详细信息，请参阅 [资源组] (https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)。 至于有效的资源组名称，请参阅[命名规则](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) |
- |Location                   | 美国西部 2                    |    在美国西部 2、西欧和东南亚提供服务 |
+ |位置                   | 美国西部 2                    |    在美国西部 2、西欧和东南亚提供服务 |
 
 
 
@@ -57,7 +57,9 @@ Microsoft 基因组学是一种可缩放的安全服务，适用于二次分析�
 
 ### <a name="install-python"></a>安装 Python
 
-Microsoft 基因组学 Python 客户端兼容 Python 2.7。 建议使用 2.7.12 或更高版本；2.7.14 是建议的版本。 可以在[此处](https://www.python.org/downloads/)找到下载版本。 
+Microsoft 基因组学 Python 客户端兼容 Python 2.7。 12 或更高的 2.7.xx 版本；2.7.15 是撰写本文时的最新版本；2.7.14 是建议的版本。 可以在[此处](https://www.python.org/downloads/)找到下载版本。 
+
+注意：Python 3.x 与 Python 2.7.xx 不兼容。  MSGen 是 Python 2.7 应用程序。 运行 MSGen 时，请确保活动 Python 环境使用的是 2.7.xx 版本的 Python。 尝试将 MSGen 与 3.x 版本的 Python 一起使用时，可能会出错。
 
 
 ### <a name="install-the-microsoft-genomics-client"></a>安装 Microsoft 基因组学客户端
@@ -124,7 +126,7 @@ Microsoft 基因组学服务要求将输入作为块 Blob 存储在 Azure 存储
  |访问层                  | 热                   | 热访问是指存储帐户中对象的访问频率会更高。    |
  |订阅         | Azure 订阅 |有关订阅的详细信息，请参阅[订阅](https://account.azure.com/Subscriptions) |      
  |资源组       | MyResourceGroup       |  可以选择同一资源组作为基因组学帐户。 至于有效的资源组名称，请参阅[命名规则](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) |
- |Location                  | 美国西部 2                  | 使用的位置与基因组学帐户的位置相同，目的是降低传出费用和延迟。 在美国西部 2、西欧和东南亚提供基因组学服务    |
+ |位置                  | 美国西部 2                  | 使用的位置与基因组学帐户的位置相同，目的是降低传出费用和延迟。 在美国西部 2、西欧和东南亚提供基因组学服务    |
  |虚拟网络                | 已禁用                   | 默认为禁用。 有关详细信息，请参阅 [Azure 虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security)。    |
 
 

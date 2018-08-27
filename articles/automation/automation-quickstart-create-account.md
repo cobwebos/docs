@@ -4,17 +4,17 @@ description: 了解如何创建 Azure 自动化帐户和运行 Runbook
 services: automation
 author: csand-msft
 ms.author: csand
-ms.date: 12/13/2017
+ms.date: 08/22/2018
 ms.topic: quickstart
 ms.service: automation
 ms.component: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 3accd62415cd7d3a8210b7a05aa1edfd7a380edc
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 81dbcb4f77708f9f679d146b1db83ddecc30629d
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34055148"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616590"
 ---
 # <a name="create-an-azure-automation-account"></a>创建 Azure 自动化帐户
 
@@ -22,21 +22,21 @@ Azure 自动化帐户可以通过 Azure 创建。 此方法提供一个基于浏
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="log-in-to-azure"></a>登录 Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
-在 https://portal.azure.com 中登录 Azure
+登录 Azure (https://portal.azure.com)
 
 ## <a name="create-automation-account"></a>创建自动化帐户
 
 1. 单击 Azure 左上角的“创建资源”按钮。
 
-1. 选择“监视 + 管理”，然后选择“自动化”。
+1. 选择“管理工具”，然后选择“自动化”。
 
-1. 输入帐户信息。 对于“创建 Azure 运行方式帐户”，请选择“是”，以便自动启用可简化向 Azure 进行的身份验证的项目。 完成后，请单击“创建”，启动自动化帐户部署。
+1. 输入帐户信息。 对于“创建 Azure 运行方式帐户”，请选择“是”，以便自动启用可简化向 Azure 进行的身份验证的项目。 需要注意的是，在创建自动化帐户时，选择它后将无法更改名称。 完成后，请单击**创建**，启动自动化帐户部署。
 
     ![在页面中输入有关自动化帐户的信息](./media/automation-quickstart-create-account/create-automation-account-portal-blade.png)  
 
-1. 自动化帐户固定到 Azure 仪表板。 完成部署后，自动化帐户概览会自动打开。
+1. 部署完成后，单击“所有服务”，选择“自动化帐户”并选择所创建的自动化帐户。
 
     ![自动化帐户概览](./media/automation-quickstart-create-account/automation-account-overview.png)
 

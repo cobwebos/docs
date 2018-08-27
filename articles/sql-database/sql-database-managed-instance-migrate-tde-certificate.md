@@ -8,15 +8,15 @@ ms.reviewer: carlrab, jovanpop
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: tutorial
-ms.date: 07/16/2018
+ms.date: 08/09/2018
 ms.author: mlandzic
 manager: craigg
-ms.openlocfilehash: 042d89017db898102deafc9156cf847a08c92227
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: afecd69cdf9832e1c6dc294ca01968ee50a3eabd
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39074180"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41919483"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-managed-instance"></a>将 TDE 保护的数据库的证书迁移到 Azure SQL 托管实例
 
@@ -38,8 +38,9 @@ ms.locfileid: "39074180"
 
 - 已在本地服务器上，或者有权访问导出为文件的证书的计算机上，安装了 [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) 命令行工具。 Pvk2Pfx 工具是[企业 Windows 驱动程序工具包](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk)（一个独立的自包含性命令行环境）的一部分。
 - 已安装 [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/setup/installing-windows-powershell) 5.0 或更高版本。
-- [已安装并更新](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) AzureRM PowerShell 模块。\[AzureRM.Sql 模块](https://www.powershellgallery.com/packages/AzureRM.Sql) 4.10.0 或更高版本。
-- 在 PowerShell 中运行以下命令，以安装/更新 PowerShell 模块：
+- [已安装并更新](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) AzureRM PowerShell 模块。
+- [AzureRM.Sql 模块](https://www.powershellgallery.com/packages/AzureRM.Sql) 4.10.0 版或更高版本。
+  在 PowerShell 中运行以下命令，以安装/更新 PowerShell 模块：
 
    ```powershell
    Install-Module -Name AzureRM.Sql
@@ -108,16 +109,6 @@ ms.locfileid: "39074180"
 
 4. 遵照向导将证书和私钥导出为个人信息交换格式
 
-## <a name="extract-certificate-from-file-to-base-64-string"></a>将文件中的证书提取成 base-64 字符串
-
-在 PowerShell 中执行以下脚本，并获取 base-64 编码的证书作为输出：
-
-```powershell
-$fileContentBytes = Get-Content 'C:/full_path/TDE_Cert.pfx' -Encoding Byte
-$base64EncodedCert = [System.Convert]::ToBase64String($fileContentBytes)
-echo $base64EncodedCert
-```
-
 ## <a name="upload-certificate-to-azure-sql-managed-instance-using-azure-powershell-cmdlet"></a>使用 Azure PowerShell cmdlet 将证书上传到 Azure SQL 托管实例
 
 1. 在 PowerShell 中开始准备步骤：
@@ -129,15 +120,16 @@ echo $base64EncodedCert
    Connect-AzureRmAccount
    # List subscriptions available and copy id of the subscription target Managed Instance belongs to
    Get-AzureRmSubscription
-   # Set subscription for the session
+   # Set subscription for the session (replace Guid_Subscription_Id with actual subscription id)
    Select-AzureRmSubscription Guid_Subscription_Id
    ```
 
 2. 完成所有准备步骤后，运行以下命令将 base-64 编码的证书上传到目标托管实例：
 
    ```powershell
-   $privateBlob = "<base-64-encoded-certificate-string>"
-   $securePrivateBlob = $privateBlob  | ConvertTo-SecureString -AsPlainText -Force
+   $fileContentBytes = Get-Content 'C:/full_path/TDE_Cert.pfx' -Encoding Byte
+   $base64EncodedCert = [System.Convert]::ToBase64String($fileContentBytes)
+   $securePrivateBlob = $base64EncodedCert  | ConvertTo-SecureString -AsPlainText -Force
    $password = "SomeStrongPassword"
    $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
    Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate -ResourceGroupName "<ResourceGroupName>" -ManagedInstanceName "<ManagedInstanceName>" -PrivateBlob $securePrivateBlob -Password $securePassword

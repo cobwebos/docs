@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/17/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d48d7625221dfb96e0119ef0d42b3b0a8d04baba
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 59ff3434e7b984f4530ad4f8b03b27991d3a9c1c
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185663"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41920516"
 ---
 # <a name="tutorial-create-debug-and-deploy-a-multi-service-web-application-to-service-fabric-mesh"></a>教程：创建、调试多服务 Web 应用程序并将其部署到 Service Fabric 网格
 
@@ -227,7 +227,7 @@ public static class DataContext
 
 ### <a name="add-a-controller"></a>添加控制器
 
-在创建 **ToDoService** 项目时，模板已经提供了一个可以处理 HTPP 请求和创建 HTTP 响应的默认控制器。 在“解决方案资源管理器”中的“ToDoService”下面，打开 **Controllers** 文件夹查看 **ValuesController.cs** 文件。 
+在创建 **ToDoService** 项目时，模板已经提供了一个可以处理 HTTP 请求和创建 HTTP 响应的默认控制器。 在“解决方案资源管理器”中的“ToDoService”下面，打开 **Controllers** 文件夹查看 **ValuesController.cs** 文件。 
 
 右键单击“ValuesController.cs”并选择“重命名”。 将此文件重命名为 `ToDoController.cs`。 如果出现提示，询问是否要重命名所有引用，请单击“是”。
 
@@ -314,7 +314,8 @@ public class ToDoController : Controller
 </div>
 ```
 
-在“解决方案资源管理器”中，通过依次打开 **Index.cshtml** 和 **Index.cshtml.cs**，打开索引页的代码。 在 **Index.cshtml.cs** 的顶部添加 `using System.Net.Http;`
+在“解决方案资源管理器”中，通过依次打开 **Index.cshtml** 和 **Index.cshtml.cs**，打开索引页的代码。
+在 **Index.cshtml.cs** 的顶部添加 `using System.Net.Http;`
 
 将 `public class IndexModel` 的内容替换为：
 
@@ -336,7 +337,7 @@ public class IndexModel : PageModel
         }
     }
 
-    private static string backendDNSName = $"{Environment.GetEnvironmentVariable("ServiceName")}";
+    private static string backendDNSName = $"{Environment.GetEnvironmentVariable("ToDoServiceName")}";
     private static Uri backendUrl = new Uri($"http://{backendDNSName}:{Environment.GetEnvironmentVariable("ApiHostPort")}/api/todo");
 }
 ```
@@ -346,7 +347,7 @@ public class IndexModel : PageModel
 需要使用后端服务的 URL 来与该服务通信。 在本教程中，以下代码摘录（前面已定义为 IndexModel 的一部分）读取环境变量以撰写 URL：
 
 ```csharp
-private static string backendDNSName = $"{Environment.GetEnvironmentVariable("ServiceName")}";
+private static string backendDNSName = $"{Environment.GetEnvironmentVariable("ToDoServiceName")}";
 private static Uri backendUrl = new Uri($"http://{backendDNSName}:{Environment.GetEnvironmentVariable("ApiHostPort")}/api/todo");
 ```
 

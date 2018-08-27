@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 3/23/2018
+ms.date: 8/8/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 851c8c1eb13497355038ef4a8d5f1f9326c8c3bc
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 179db61777fe60ae53d7fee553c8124d7a9f7abf
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33781174"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42022586"
 ---
 # <a name="what-is-azure-virtual-network"></a>什么是 Azure 虚拟网络？
 
@@ -37,7 +37,10 @@ Azure 虚拟网络允许许多类型的 Azure 资源（例如 Azure 虚拟机 (V
 
 ## <a name="communicate-with-the-internet"></a>与 Internet 通信
 
-默认情况下，虚拟网络中的所有资源都可以与 Internet 进行出站通信。 将公共 IP 地址分配给某个资源即可与之进行入站通信。 有关详细信息，请参阅[公共 IP 地址](virtual-network-public-ip-address.md)。
+默认情况下，虚拟网络中的所有资源都可以与 Internet 进行出站通信。 可以通过分配公共 IP 地址或公共负载均衡器来与资源进行入站通信。 还可以使用公共 IP 或公共负载均衡器来管理出站连接。  若要详细了解 Azure 中的出站连接，请参阅[出站连接](../load-balancer/load-balancer-outbound-connections.md)、[公共 IP 地址](virtual-network-public-ip-address.md)和[负载均衡器](../load-balancer/load-balancer-overview.md)。
+
+>[!NOTE]
+>仅使用内部[标准负载均衡器](../load-balancer/load-balancer-standard-overview.md)时，在定义[出站连接](../load-balancer/load-balancer-outbound-connections.md)如何与实例级公共 IP 或公共负载均衡器配合使用之前，出站连接不可用。
 
 ## <a name="communicate-between-azure-resources"></a>Azure 资源之间的通信
 
@@ -57,7 +60,7 @@ Azure 资源采用下述某种方式安全地相互通信：
 ## <a name="filter-network-traffic"></a>筛选网络流量
 可使用以下两个选项中任意一个或同时使用这两个方案筛选子网之间的网络流量：
 - **网络安全组：** 每个网络安全组可包含多个入站和出站安全规则，通过这些规则可按源和目标 IP 地址、端口和协议筛选出入资源的流量。 有关详细信息，请参阅[网络安全组](security-overview.md#network-security-groups)。
-- **虚拟网络设备：** 虚拟网络设备是可执行网络功能（例如防火墙、WAN 优化等）的 VM。 若要查看可在虚拟网络中部署的网络虚拟设备，请参阅 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances)。
+- **虚拟网络设备：** 虚拟网络设备是可执行网络功能（例如防火墙、WAN 优化等）的 VM。 若要查看可在虚拟网络中部署的网络虚拟设备，请参阅 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances)。
 
 ## <a name="route-network-traffic"></a>路由网络流量
 

@@ -1,22 +1,49 @@
 ---
-title: 认知服务语音 SDK 文档
+title: 认知服务语音 SDK 文档 | Microsoft Docs
 description: 发行说明 - 最新版本中的内容更改
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: wolfma61
+manager: onano
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 08/16/2018
 ms.author: wolfma
-ms.openlocfilehash: f346241e1d10d16eae08e389296f4be9149ec086
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 0900588f818855d72e415678338c96fb6505318d
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502452"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41937516"
 ---
 # <a name="release-notes"></a>发行说明
+
+## <a name="cognitive-services-speech-sdk-060-2018-august-release"></a>认知服务语音 SDK 0.6.0：2018 年 8 月版本
+
+**新功能**
+
+* 使用语音 SDK 生成的 UWP 应用现在可以通过 Windows 应用认证工具包 (WACK)。
+  查看 [UWP 快速入门](quickstart-csharp-uwp.md)。
+* 在 Linux (Ubuntu 16.04 x64) 上支持 .NET Standard 2.0。
+* 实验性：在 Windows (64-bit) 和 Linux (Ubuntu 16.04 x64) 上支持 Java 8。
+  请查看 [Java 运行时环境快速入门](quickstart-java-jre.md)
+
+**功能性更改**
+
+* 公开了关于连接错误的更多错误详细信息。
+
+**重大更改**
+
+* 在 Java (Android) 中，`SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` 函数不再需要 path 参数。 现在，在所有受支持的平台上都会自动检测路径。
+* 在 Java 和 C# 中，属性 `EndpointUrl` 的 get 访问器已被删除。
+
+**Bug 修复**
+
+* 在 Java 中，目前在翻译识别器上实现了音频合成结果。
+* 修复了一个 bug，该 bug 可能会导致非活动线程和更多的已打开且未使用的套接字。
+* 修复了一个问题，该问题导致在传输过程中无法终止长时间运行的识别。
+* 修复了识别器关闭过程中的一个争用条件。
 
 ## <a name="cognitive-services-speech-sdk-050-2018-july-release"></a>认知服务语音 SDK 0.5.0：2018 年 7 月版本
 

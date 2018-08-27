@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
+ms.date: 08/21/2018
 ms.author: jeedes
-ms.openlocfilehash: f30b2356b9d3d8ecf7afcdd8ad039a1f02c47550
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: cd1e4b376b634a3e3c7fa2c87723aff05f431a25
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438233"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42140644"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>教程：Azure Active Directory 与本地 SharePoint 的集成
 
@@ -99,11 +99,11 @@ ms.locfileid: "39438233"
 
     ![配置单一登录链接][4]
 
-1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
 
     ![“单一登录”对话框](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_samlbase.png)
 
-1. 在“本地 SharePoint 域和 URL”部分执行以下步骤：
+3. 在“本地 SharePoint 域和 URL”部分执行以下步骤：
 
     ![本地 SharePoint 域和 URL 单一登录信息](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_url1.png)
 
@@ -111,26 +111,32 @@ ms.locfileid: "39438233"
 
     b. 在“标识符”文本框中，键入 URL：`urn:sharepoint:federation`
 
-1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_certificate.png)
 
-1. 单击“保存”按钮。
+    > [!Note]
+    > 请记下你将证书文件下载到的文件路径，因为稍后需要在用于配置的 PowerShell 脚本中使用它。
+
+5. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media\sharepoint-on-premises-tutorial/tutorial_general_400.png)
 
-1. 在“本地 SharePoint 配置”部分，单击“配置本地 SharePoint”打开“配置登录”窗口。 从“快速参考”部分中复制“单一登录服务 URL”。
+6. 在“本地 SharePoint 配置”部分，单击“配置本地 SharePoint”打开“配置登录”窗口。 从“快速参考”部分复制“SAML 实体 ID”。 对于“单一登录服务 URL”，请使用采用以下模式的值：`https://login.microsoftonline.com/_my_directory_id_/wsfed` 
+
+    > [!Note]
+    > _my_directory_id_ 是 Azure AD 订阅的租户 ID。
 
     ![本地 SharePoint 配置](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_configure.png)
 
     > [!NOTE]
     > 本地 SharePoint 应用程序使用 SAML 1.1 令牌，因此，Azure AD 预期 WS 联合身份验证请求来自 SharePoint 服务器；身份验证后，它会颁发 SAML 1.1 令牌。
 
-1. 在另一个 Web 浏览器窗口中，以管理员身份登录到本地 SharePoint 公司站点。
+7. 在另一个 Web 浏览器窗口中，以管理员身份登录到本地 SharePoint 公司站点。
 
-1. **在 SharePoint Server 2016 中配置新的受信任标识提供者**
+8. **在 SharePoint Server 2016 中配置新的受信任标识提供者**
 
-    登录到 SharePoint Server 2016 服务器并打开 SharePoint 2016 Management Shell。 填写 Azure 门户中的 $realm、$wsfedurl 和 $filepath 值，并运行以下命令配置新的受信任标识提供者。
+    登录到 SharePoint Server 2016 服务器并打开 SharePoint 2016 Management Shell。 从 Azure 门户中填写 $realm（Azure 门户中“SharePoint 本地域和 URL”部分中的标识符值）、$wsfedurl（单一登录服务 URL）和 $filepath（你将证书文件下载到的文件路径），并运行以下命令来配置新的可信标识提供者。
 
     > [!TIP]
     > 如果不熟悉 PowerShell 的用法，或想要详细了解 PowerShell 的工作原理，请参阅 [SharePoint PowerShell](https://docs.microsoft.com/en-us/powershell/sharepoint/overview?view=sharepoint-ps)。 
@@ -138,7 +144,7 @@ ms.locfileid: "39438233"
     ```
     $realm = "<Identifier value from the SharePoint on-premises Domain and URLs section in the Azure portal>"
     $wsfedurl="<SAML single sign-on service URL value which you have copied from the Azure portal>"
-    $filepath="<Full path to SAML signing certificate file which you have copied from the Azure portal>"
+    $filepath="<Full path to SAML signing certificate file which you have downloaded from the Azure portal>"
     $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($filepath)
     New-SPTrustedRootAuthority -Name "AzureAD" -Certificate $cert
     $map = New-SPClaimTypeMapping -IncomingClaimType "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name" -IncomingClaimTypeDisplayName "name" -LocalClaimType "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"
@@ -161,6 +167,9 @@ ms.locfileid: "39438233"
     e. 单击“确定”。
 
     ![配置身份验证提供程序](./media\sharepoint-on-premises-tutorial/fig10-configauthprovider.png)
+
+    > [!NOTE]
+    > 某些外部用户将不能使用此单一登录集成，因为其 UPN 将具有扭曲的值，例如 `MYEMAIL_outlook.com#ext#@TENANT.onmicrosoft.com`。 不久，我们将允许客户应用配置如何根据用户类型来处理 UPN。 在那之后，所有来宾用户应当都能够与组织员工一样无缝地使用 SSO。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -200,27 +209,27 @@ ms.locfileid: "39438233"
 
 1. 在管理中心，单击“应用程序管理”。
 
-1. 在“应用程序管理”页上的“Web 应用程序”部分，单击“管理 Web 应用程序”。
+2. 在“应用程序管理”页上的“Web 应用程序”部分，单击“管理 Web 应用程序”。
 
-1. 单击相应的 Web 应用程序，然后单击“用户策略”。
+3. 单击相应的 Web 应用程序，然后单击“用户策略”。
 
-1. 在“Web 应用程序的策略”中，单击“添加用户”。
+4. 在“Web 应用程序的策略”中，单击“添加用户”。
 
     ![按名称声明搜索用户](./media\sharepoint-on-premises-tutorial/fig11-searchbynameclaim.png)
 
-1. 在“添加用户”对话框中的“区域”内单击相应的区域，然后单击“下一步”。
+5. 在“添加用户”对话框中的“区域”内单击相应的区域，然后单击“下一步”。
 
-1. 在“Web 应用程序的策略”对话框中的“选择用户”部分，单击“浏览”图标。
+6. 在“Web 应用程序的策略”对话框中的“选择用户”部分，单击“浏览”图标。
 
-1. 在“查找”文本框中，键入已在 Azure AD 中为其配置 SharePoint 本地应用程序的**用户主体名称(UPN)** 值，然后单击“搜索”。 </br>示例：*brittasimon@contoso.com*。
+7. 在“查找”文本框中，键入已在 Azure AD 中为其配置 SharePoint 本地应用程序的**用户主体名称(UPN)** 值，然后单击“搜索”。 </br>示例：*brittasimon@contoso.com*。
 
-1. 在列表视图中的 AzureAD 标题下，选择名称属性，单击“添加”，然后单击“确定”关闭对话框。
+8. 在列表视图中的 AzureAD 标题下，选择名称属性，单击“添加”，然后单击“确定”关闭对话框。
 
-1. 在“权限”中，单击“完全控制”。
+9. 在“权限”中，单击“完全控制”。
 
     ![向声明用户授予完全控制权限](./media\sharepoint-on-premises-tutorial/fig12-grantfullcontrol.png)
 
-1. 依次单击“完成”、“确定”。
+10. 依次单击“完成”、“确定”。
 
 ### <a name="configuring-one-trusted-identity-provider-for-multiple-web-applications"></a>为多个 Web 应用程序配置一个受信任标识提供者
 
@@ -228,22 +237,22 @@ ms.locfileid: "39438233"
 
 1. 在 Azure 门户中，打开 Azure AD 目录。 单击“应用注册”，然后单击“查看所有应用程序”。 单击之前创建的应用程序 (SharePoint SAML Integration)。
 
-1. 单击“设置”。
+2. 单击“设置”。
 
-1. 在“设置”边栏选项卡中，单击“回复 URL”。 
+3. 在“设置”边栏选项卡中，单击“回复 URL”。 
 
-1. 为附加的 Web 应用程序添加 URL 并将 `/_trust/default.aspx` 追加到 URL 后面（如 `https://sales.contoso.local/_trust/default.aspx`），并单击“保存”。
+4. 为附加的 Web 应用程序添加 URL 并将 `/_trust/default.aspx` 追加到 URL 后面（如 `https://sales.contoso.local/_trust/default.aspx`），并单击“保存”。
 
-1. 在 SharePoint Server 上打开 **SharePoint 2016 Management Shell**，并使用先前使用的受信任标识令牌颁发者的名称执行以下命令。
+5. 在 SharePoint Server 上打开 **SharePoint 2016 Management Shell**，并使用先前使用的受信任标识令牌颁发者的名称执行以下命令。
 
     ```
     $t = Get-SPTrustedIdentityTokenIssuer "AzureAD"
     $t.UseWReplyParameter=$true
     $t.Update()
     ```
-1. 在管理中心内，转到该 Web 应用程序并启用现有的受信任标识提供者。 记住还将登录页 URL 配置为自定义登录页 `/_trust/`。
+6. 在管理中心内，转到该 Web 应用程序并启用现有的受信任标识提供者。 记住还将登录页 URL 配置为自定义登录页 `/_trust/`。
 
-1. 在管理中心内，单击该 Web 应用程序并选择“用户策略”。 添加具有相应权限的用户，如本文中前面所示。
+7. 在管理中心内，单击该 Web 应用程序并选择“用户策略”。 添加具有相应权限的用户，如本文中前面所示。
 
 ### <a name="fixing-people-picker"></a>固定人员选取器
 
@@ -267,23 +276,23 @@ ms.locfileid: "39438233"
 
     ![分配用户][201]
 
-1. 在应用程序列表中，选择“本地 SharePoint”。
+2. 在应用程序列表中，选择“本地 SharePoint”。
 
     ![应用程序列表中的“SharePoint”链接](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_app.png)
 
-1. 在左侧菜单中，单击“用户和组”。
+3. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-1. 在“用户和组”对话框中单击“选择”按钮。
+6. 在“用户和组”对话框中单击“选择”按钮。
 
-1. 在“添加分配”对话框中单击“分配”按钮。
+7. 在“添加分配”对话框中单击“分配”按钮。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

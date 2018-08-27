@@ -9,16 +9,16 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ccc699a500cbaf20c9b90d71e7c730e617bc572c
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: c2c80790fa3e7c20408346fbebf60c39879a94df
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145530"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41920963"
 ---
 # <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>通过 IoT 中心设备预配服务配置云资源以进行设备预配
 
-本教程演示如何利用 IoT 中心设备预配服务来设置云资源以进行自动设备预配。 本教程介绍如何执行以下操作：
+本教程演示如何利用 IoT 中心设备预配服务来设置云资源以进行自动设备预配。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 使用 Azure 门户创建 IoT 中心设备预配服务并获取 ID 范围
@@ -48,7 +48,7 @@ ms.locfileid: "39145530"
    | **资源组** | myResourceGroup | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)（命名规则和限制）。 |
    | **位置** | 任何有效的位置 | 有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。 |   
 
-   ![在门户中输入 DPS 的基本信息](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
+   ![在门户中输入有关设备预配服务的基本信息](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
 
 5. 单击“创建”。 片刻之后，将创建设备预配服务实例并显示“概述”页面。
 6. 在新服务实例的“概述”页面上，复制“ID 范围”的值供稍后使用。 该值用于标识注册 ID，并保证注册 ID 的唯一性。
@@ -71,7 +71,7 @@ ms.locfileid: "39145530"
     * **IoT 中心：** 选择要与此设备预配服务实例进行链接的 IoT 中心的名称。
     * **访问策略：** 选择 **iothubowner** 作为用于与 IoT 中心建立链接的凭据。
 
-   ![链接中心名称，以便链接到门户中的 DPS](./media/tutorial-set-up-cloud/link-iot-hub-to-dps-portal.png)
+   ![链接中心名称，以便链接到门户中的设备预配服务](./media/tutorial-set-up-cloud/link-iot-hub-to-dps-portal.png)
 
 ## <a name="set-the-allocation-policy-on-the-device-provisioning-service"></a>设置设备预配服务上的分配策略
 

@@ -6,47 +6,35 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 06/01/2018
+ms.date: 08/17/2018
 ms.author: babanisa
-ms.openlocfilehash: 6d0f769d65bc8ed4f41469b96edf4f0595d994de
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 90e8d6a3ef093046c5ee6324f6e6590e59124da7
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725235"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42023404"
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Azure 事件网格简介
 
-通过 Azure 事件网格，可使用基于事件的体系结构轻松生成应用程序。 你可以选择要订阅的 Azure 资源，并提供要向其发送事件的事件处理程序或 WebHook 终结点。 事件网格包含来自 Azure 服务对事件的内置支持，如存储 blob 和资源组。 事件网格还可以使用自定义主题和自定义 webhook 对应用程序和第三方事件提供自定义支持。 
+通过 Azure 事件网格，可使用基于事件的体系结构轻松生成应用程序。 先选择要订阅的 Azure 资源，然后提供要向其发送事件的事件处理程序或 WebHook 终结点。 事件网格包含来自 Azure 服务对事件的内置支持，如存储 blob 和资源组。 事件网格还使用自定义主题支持自己的事件。 
 
-可以使用筛选器将特定事件路由到不同的终结点，多播到多个终结点，并确保事件可靠传送。 此外，事件网格还提供对自定义和第三方事件的内置支持。
+可以使用筛选器将特定事件路由到不同的终结点，多播到多个终结点，并确保事件可靠传送。
 
-目前，事件网格支持以下区域：
+目前，Azure 事件网格可在所有公共区域中使用。 它尚未在 Azure 德国、Azure 中国或 Azure 政府云中提供。
 
-* 亚洲东南部
-* 亚洲东部
-* 澳大利亚东部
-* 澳大利亚东南部
-* 美国中部
-*   美国东部
-*   美国东部 2
-* 西欧
-* 北欧
-* 日本东部
-* 日本西部
-*   美国中西部
-*   美国西部
-*   美国西部 2
-
-本文将对 Azure 事件网格进行简要概述。 若要开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。 下图显示了事件网格如何连接来源和处理程序，但它未提供支持的选项的完整列表。
+本文将对 Azure 事件网格进行简要概述。 若要开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。 
 
 ![事件网格功能模型](./media/overview/functional-model.png)
 
+请注意：此图显示了事件网格如何连接源和处理程序，而不是支持的集成的完整列表。
+
 ## <a name="event-sources"></a>事件源
 
-当前，以下 Azure 服务支持将事件发送到事件网格：
+有关每个源的功能的完整详细信息及相关文章，请参阅[事件源](event-sources.md)。 当前，以下 Azure 服务支持将事件发送到事件网格：
 
 * Azure 订阅（管理操作）
+* 容器注册表
 * 自定义主题
 * 事件中心
 * IoT 中心
@@ -56,11 +44,9 @@ ms.locfileid: "34725235"
 * 存储 Blob
 * 常规用途 v2 (GPv2) 存储
 
-有关演示如何使用每个事件源的文章的链接，请参阅 [Azure 事件网格中的事件源](event-sources.md)。
-
 ## <a name="event-handlers"></a>事件处理程序
 
-当前，以下 Azure 服务支持从事件网格处理事件： 
+有关每个处理程序的功能的完整详细信息及相关文章，请参阅[事件处理程序](event-handlers.md)。 当前，以下 Azure 服务支持从事件网格处理事件： 
 
 * Azure 自动化
 * Azure Functions
@@ -70,8 +56,6 @@ ms.locfileid: "34725235"
 * Microsoft Flow
 * 队列存储
 * Webhook
-
-有关演示如何使用每个事件处理程序的文章的链接，请参阅 [Azure 事件网格中的事件处理程序](event-handlers.md)。
 
 ## <a name="concepts"></a>概念
 

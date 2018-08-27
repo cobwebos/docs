@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/09/2018
 ms.author: bonova
 manager: craigg
-ms.openlocfilehash: e337a5c7c203e2e1048149dfeff71436a4d2752f
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: a019b21c130bebfe27925e90d7f7843d92654e01
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850604"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41918588"
 ---
 # <a name="create-an-azure-sql-database-managed-instance-in-the-azure-portal"></a>在 Azure 门户中创建 Azure SQL 数据库托管实例
 
@@ -33,13 +33,15 @@ ms.locfileid: "34850604"
 > * 连接到虚拟机
 > * 安装 SSMS 并连接到托管实例
 
+> [!Note]
+> 本教程介绍如何使用 Azure 门户配置网络、子网、实例和虚拟机，这可能是一个较长的过程。 如果需要更简短的快速入门教程，在其中只需单击一次“部署到 Azure”按钮即可创建用于访问实例的网络和虚拟机，可以查看[入门教程](sql-database-managed-instance-get-started.md)。
 
-如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 > [!IMPORTANT]
 > 有关目前支持托管实例的区域列表，请参阅[使用 Azure SQL 数据库托管实例将数据库迁移到完全托管的服务](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/)。
  
-## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
+## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
 登录到 [Azure 门户](https://portal.azure.com/#create/Microsoft.SQLManagedInstance)。
 
@@ -77,7 +79,7 @@ ms.locfileid: "34850604"
 
    | 设置| 建议的值 | 说明 |
    | ------ | --------------- | ----------- |
-   |**名称**|任何有效的名称|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
+   |**Name**|任何有效的名称|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
    |**地址空间**|任何有效的地址范围，例如 10.14.0.0/24|虚拟网络的地址名称，采用 CIDR 表示法。|
    |**订阅**|你的订阅|有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.com/Subscriptions)。|
    |**资源组**|任何有效的资源组（新的或现有的）|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
@@ -104,7 +106,7 @@ ms.locfileid: "34850604"
 
    | 设置| 建议的值 | 说明 |
    | ------ | --------------- | ----------- |
-   |**名称**|任何有效的名称|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
+   |**Name**|任何有效的名称|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
    |**订阅**|你的订阅|有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.com/Subscriptions)。|
    |**资源组**|选择在前述过程中创建的资源组|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
    |**位置**|选择在前面的过程中指定的位置| 有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。|
@@ -124,7 +126,7 @@ ms.locfileid: "34850604"
 
 7.  根据下表中的说明，添加“0.0.0.0/0 下一跃点 Internet 路由”作为**唯一**路由：
 
-    | 设置| 建议的值 | 说明 |
+    | 设置| 建议的值 | Description |
     | ------ | --------------- | ----------- |
     |**路由名称**|任何有效的名称|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
     |**地址前缀**|0.0.0.0/0|此路由应用到的目标 IP 地址，以 CIDR 表示法表示。|
@@ -160,7 +162,7 @@ ms.locfileid: "34850604"
 2. 找到“托管实例”，然后选择“Azure SQL 数据库托管实例(预览版)”。
 3. 单击“创建”。
 
-   ![托管实例“创建”按钮](./media/sql-database-managed-instance-tutorial/managed-instance-create.png)
+   ![创建托管实例](./media/sql-database-managed-instance-tutorial/managed-instance-create.png)
 
 4. 选择订阅，并验证预览版条款是否显示“已接受”。
 
@@ -168,7 +170,7 @@ ms.locfileid: "34850604"
 
 5. 根据下表中的说明，在托管实例窗体中填充请求的信息：
 
-   | 设置| 建议的值 | 说明 |
+   | 设置| 建议的值 | Description |
    | ------ | --------------- | ----------- |
    |**托管实例名称**|任何有效的名称|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
    |**托管实例管理员登录名**|任何有效的用户名|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。 不要使用“serveradmin”，因为这是保留的服务器级角色。| 
@@ -214,7 +216,7 @@ ms.locfileid: "34850604"
 
    | 设置| 建议的值 | 说明 |
    | ------ | --------------- | ----------- |
-   |**名称**|任何有效的名称|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
+   |**Name**|任何有效的名称|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
    |**地址范围(CIDR 块)**|VNet 中任何有效的地址范围（使用默认值）||
    |**网络安全组**|无||
    |**路由表**|无||
@@ -237,7 +239,7 @@ ms.locfileid: "34850604"
 
    | 设置| 建议的值 | 说明 |
    | ------ | --------------- | ----------- |
-   |**名称**|任何有效的名称|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
+   |**Name**|任何有效的名称|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
    | **VM 磁盘类型**|SSD|SSD 的性价比最佳。|   
    |**用户名**|任何有效的用户名|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。| 
    |**密码**|任何有效的密码|密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。| 
@@ -302,7 +304,7 @@ ms.locfileid: "34850604"
 8. 在系统提示时，单击“安装”即可开始。
 9. 安装完成后，单击“关闭”。
 10. 打开 SSMS。
-11. 在“连接到服务器”对话框的“服务器名称”框中输入托管实例的主机名*，选择“SQL Server 身份验证”，提供登录名和密码，然后单击“连接”。
+11. 在“连接到服务器”对话框的“服务器名称”框中输入托管实例的主机名，选择“SQL Server 身份验证”，提供登录名和密码，然后单击“连接”。
 
     ![ssms 连接](./media/sql-database-managed-instance-tutorial/ssms-connect.png)  
 

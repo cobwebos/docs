@@ -6,15 +6,15 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 04/30/2018
+ms.date: 08/20/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 6347c460ab88929152424d301445a219720b98e8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 25e3fdfe72fc2a6ffec1bcee23cd9f1edc783838
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582295"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41918436"
 ---
 # <a name="tutorial-deploy-web-app-from-azure-container-registry"></a>快速入门：从 Azure 容器注册表部署 Web 应用
 
@@ -42,11 +42,13 @@ Azure 容器注册表支持直接将容器化应用程序部署到[用于容器�
 
 登录到 [Azure 门户](https://portal.azure.com)，并导航到在前一篇教程中创建的注册表。
 
-选择“存储库” > “acr-helloworld”，右键单击“标记”下的“v1”标记，并选择“部署到 Web 应用”。
+选择“存储库” > “acr-helloworld”，右键单击“标记”下的“v1”标记，并选择“部署到 Web 应用”：
 
 ![在 Azure 门户中部署到应用服务][deploy-app-portal-01]
 
-在显示的“容器的 Web 应用”下，为每项设置指定以下值：
+如果“部署到 Web 应用”已禁用，则可能未按照第一个教程的[创建容器注册表](container-registry-tutorial-prepare-registry.md#create-a-container-registry)中的指示启用注册表管理员用户。 可以在 Azure 门户的“设置” > “访问密钥”中启用管理员用户。
+
+在选择“部署到 Web 应用”后显示的“容器的 Web 应用”下，为每项设置指定以下值：
 
 | 设置 | 值 |
 |---|---|

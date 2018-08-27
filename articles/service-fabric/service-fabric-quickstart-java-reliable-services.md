@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 10/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 2e3852ffc01312f01843a90de5f5565784b1c0b5
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: ed5da0afe67deaa7000c1bf3b8d75bdea14f2ecd
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114245"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616320"
 ---
 # <a name="quickstart-deploy-a-java-reliable-services-application-to-service-fabric"></a>快速入门：将 Java Reliable Services 应用程序部署到 Service Fabric
 
@@ -66,8 +66,8 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
     ![本地群集正常运行](./media/service-fabric-quickstart-java/localclusterup.png)
 
 2. 打开 Eclipse。
-3. 单击“文件”->“从文件系统打开项目...”
-4. 单击“目录”，然后在从 Github 克隆的 `service-fabric-java-quickstart` 文件夹中选择 `Voting` 目录。 单击“完成”。
+3. 单击“文件”- >“导入”- > Gradle - > 现有 Gradle 项目，然后按照向导进行操作。
+4. 单击“目录”，然后在从 Github 克隆的 `service-fabric-java-quickstart` 文件夹中选择 `Voting` 目录。 单击“完成”。 
 
     ![Eclipse 的“导入”对话框](./media/service-fabric-quickstart-java/eclipseimport.png)
 

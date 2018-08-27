@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: aaed3dd5a2a7b32d24aa8b19dab870c28e6f58ec
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 4638b697dcaa0d4c11bae1878a94f76f6237d4a4
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216176"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42154775"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>为 Azure VM 设置到 Azure 次要区域的灾难恢复
 
 [Azure Site Recovery](site-recovery-overview.md) 服务可管理和协调本地计算机和 Azure 虚拟机 (VM) 的复制、故障转移和故障回复，进而有利于灾难恢复策略。
 
-本教程演示了如何为 Azure VM 设置到辅助 Azure 区域的灾难恢复。 本教程介绍如何执行以下操作：
+本教程演示了如何为 Azure VM 设置到辅助 Azure 区域的灾难恢复。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建恢复服务保管库
@@ -114,8 +114,9 @@ Azure Site Recovery 提供了三个用于控制 Site Recovery 管理操作的内
 2. 在“源”中，选择“Azure”。
 3. 在“源位置”中，选择当前运行 VM 的 Azure 源区域。
 4. 为 VM 选择 Azure 虚拟机部署模型：“资源管理器”或“经典”。
-5. 为资源管理器 VM 选择“源资源组”，为经典 VM 选择“云服务”。
-6. 单击“确定”保存设置。
+5. 选择运行虚拟机的**源订阅**。 这可以是存在恢复服务保管库的同一 Azure Active Directory 租户中的任何订阅。
+6. 为资源管理器 VM 选择“源资源组”，为经典 VM 选择“云服务”。
+7. 单击“确定”保存设置。
 
 ### <a name="select-the-vms"></a>选择 VM
 
@@ -134,9 +135,11 @@ Site Recovery 会针对目标区域创建默认设置和复制策略。 你可�
   ![配置设置](./media/azure-to-azure-tutorial-enable-replication/settings.png)
 
 
+- **目标订阅**：用于灾难恢复的目标订阅。 默认情况下，目标订阅将与源订阅相同。 单击“自定义”以在同一 Azure Active Directory 租户中选择其他目标订阅。
+
 - **目标位置**：用于灾难恢复的目标区域。 建议选择与 Site Recovery 保管库位置匹配的目标位置。
 
-- **目标资源组**：故障转移后，目标区域中用于容纳 Azure VM 的资源组。 默认情况下，Site Recovery 会在目标位置中创建一个带有“asr”后缀的新资源组。 目标资源组的资源组位置可以是除托管源虚拟机的区域以外的任何区域。 
+- **目标资源组**：故障转移后，目标区域中用于容纳 Azure VM 的资源组。 默认情况下，Site Recovery 会在目标位置中创建一个带有“asr”后缀的新资源组。 目标资源组的资源组位置可以是除托管源虚拟机的区域以外的任何区域。
 
 - **目标虚拟网络**：故障转移后，目标区域中 VM 所位于的网络。
   默认情况下，Site Recovery 会在目标位置中创建一个带有“asr”后缀的新虚拟网络（以及子网）。

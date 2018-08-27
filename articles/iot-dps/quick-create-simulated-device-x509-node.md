@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 7ff567b02fb3371186dc02b97cafb8135ae7bbd2
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 1a3015a458a579b0aadf51d610db512eb908352b
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090939"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42023798"
 ---
 # <a name="create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>使用适用于 IoT 中心设备预配服务的 Node.js 设备 SDK 创建和预配 X.509 模拟设备
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "39090939"
 
 如果不熟悉自动预配过程，还务必查看[自动预配概念](concepts-auto-provisioning.md)。 另外，在继续操作之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
 
-[!INCLUDE [IoT DPS basic](../../includes/iot-dps-basic.md)]
+[!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
 ## <a name="prepare-the-environment"></a>准备环境 
 
@@ -42,9 +42,9 @@ ms.locfileid: "39090939"
 
 ## <a name="create-a-self-signed-x509-device-certificate-and-individual-enrollment-entry"></a>创建自签名的 X.509 设备证书和单个注册项
 
-在本部分中，你将使用自签名 X.509 证书，请务必记住以下事项：
+在本部分，你将使用自签名的 X.509 证书。请务必记住以下事项：
 
-* 自签名证书仅用于测试，不应在生产中使用。
+* 自签名证书仅用于测试，不应在生产环境中使用。
 * 自签名证书的默认到期日期为 1 年。
 
 你将使用来自 [Azure IoT SDK for Node.js](https://github.com/Azure/azure-iot-sdk-node.git) 的示例代码创建要与模拟设备的个体注册条目一起使用的证书。
@@ -92,7 +92,7 @@ ms.locfileid: "39090939"
 
 1. 在 Azure 门户中，选择设备预配服务的“概览”边栏选项卡，记下“全局设备终结点”和“ID 范围”的值。
 
-    ![从门户边栏选项卡提取 DPS 终结点信息](./media/quick-create-simulated-device-x509-node/extract-dps-endpoints.png) 
+    ![从门户边栏选项卡中提取设备预配服务终结点信息](./media/quick-create-simulated-device-x509-node/extract-dps-endpoints.png) 
 
 2. 将证书和密钥复制到示例文件夹。
 

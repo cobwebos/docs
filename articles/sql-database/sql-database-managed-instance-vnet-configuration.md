@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 08/21/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 0fea91fb067a6d78ef25cb0ff8014b65a8b6a916
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: f634167f24c221e702696174ea86a212c535695b
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258093"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246438"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>为 Azure SQL 数据库托管实例配置 VNet
 
@@ -29,7 +29,7 @@ Azure SQL 数据库托管实例（预览版）必须在 Azure [虚拟网络 (VNe
 使用以下问题的解答，规划如何在虚拟网络中部署托管实例： 
 - 计划部署单个还是多个托管实例？ 
 
-  托管实例的数量决定了要分配给托管实例的子网的最小大小。 有关详细信息，请参阅[确定托管实例的子网大小](#create-a-new-virtual-network-for-managed-instances)。 
+  托管实例的数量决定了要分配给托管实例的子网的最小大小。 有关详细信息，请参阅[确定托管实例的子网大小](#determine-the-size-of-subnet-for-managed-instances)。 
 - 是要将托管实例部署到现有的虚拟网络，还是创建新的网络？ 
 
    如果打算使用现有的虚拟网络，则需要修改该网络的配置，以适应托管实例。 有关详细信息，请参阅[根据托管实例修改现有的虚拟网络](#modify-an-existing-virtual-network-for-managed-instances)。 
@@ -38,7 +38,7 @@ Azure SQL 数据库托管实例（预览版）必须在 Azure [虚拟网络 (VNe
 
 ## <a name="requirements"></a>要求
 
-若要创建托管实例，需在 VNet 中专门指定一个符合以下要求的子网：
+若要创建托管实例，需要专门使用 VNet 中符合以下要求的一个子网：
 - **为空**：该子网不能包含任何关联的其他云服务，并且不能是网关子网。 无法在包含除托管实例以外的资源的子网中创建托管实例，并且以后无法在子网中添加其他资源。
 - **无 NSG**：该子网不能有关联的网络安全组。
 - **具有特定的路由表**：该子网必须有一个用户路由表 (UDR)，并且向该路由表分配了 0.0.0.0/0 下一跃点 Internet 作为唯一路由。 有关详细信息，请参阅[创建并关联所需的路由表](#create-the-required-route-table-and-associate-it)
@@ -63,7 +63,28 @@ Azure SQL 数据库托管实例（预览版）必须在 Azure [虚拟网络 (VNe
 
 **示例**：你计划拥有三个常规用途和两个业务关键托管实例。 这意味着，需要 5 + 3 * 2 + 2 * 4 = 19 个 IP 地址。 由于 IP 范围定义为 2 的 N 次方，因此需要 32 个 (2^5) IP 地址。 因此，需要保留子网掩码为 /27 的子网。 
 
-## <a name="create-a-new-virtual-network-for-managed-instances"></a>为托管实例创建新的虚拟网络 
+## <a name="create-a-new-virtual-network-for-managed-instance-using-azure-resource-manager-deployment"></a>使用 Azure 资源管理器部署为托管实例创建新的虚拟网络
+
+创建和配置虚拟网络的最简单方法是使用 Azure 资源管理器部署模板。
+
+1. 登录到 Azure 门户。
+
+2. 使用“部署到 Azure”按钮在 Azure 云中部署虚拟网络：
+
+  <a target="_blank" href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-managed-instance-azure-environment%2Fazuredeploy.json" rel="noopener" data-linktype="external"> <img src="http://azuredeploy.net/deploybutton.png" data-linktype="external"> </a>
+
+  此按钮将打开一个窗体，可以使用该窗体来配置你可以在其中部署托管实例的网络环境。
+
+  > [!Note]
+  > 此 Azure 资源管理器模板将部署包含两个子网的虚拟网络。 一个名为 **ManagedInstances** 的子网预留给托管实例并且已预配置了路由表，而名为 **Default** 的另一个子网用于应当访问托管实例的其他资源（例如 Azure 虚拟机）。 如果不需要 **Default** 子网，可以将其删除。
+
+3. 配置网络环境。 在以下窗体上，可以配置网络环境的参数：
+
+![配置 Azure 网络](./media/sql-database-managed-instance-get-started/create-mi-network-arm.png)
+
+可以更改 VNet 和子网的名称并调整与网络资源关联的 IP 范围。 按下“购买”按钮后，此窗体将创建并配置你的环境。 如果不需要两个子网，可以删除默认子网。 
+
+## <a name="create-a-new-virtual-network-for-managed-instances-using-portal"></a>使用门户为托管实例创建新的虚拟网络
 
 创建 Azure 虚拟网络是创建托管实例的先决条件。 可以使用 Azure 门户、[PowerShell](../virtual-network/quick-create-powershell.md) 或 [Azure CLI](../virtual-network/quick-create-cli.md)。 以下部分介绍使用 Azure 门户的步骤。 此处所述的详细信息适用于上述每种方法。
 
@@ -92,7 +113,7 @@ Azure SQL 数据库托管实例（预览版）必须在 Azure [虚拟网络 (VNe
 
    ![虚拟网络创建窗体](./media/sql-database-managed-instance-tutorial/service-endpoint-disabled.png)
 
-## <a name="create-the-required-route-table-and-associate-it"></a>创建并关联所需的路由表
+### <a name="create-the-required-route-table-and-associate-it"></a>创建并关联所需的路由表
 
 1. 登录到 Azure 门户  
 2. 找到并单击“路由表”，然后单击“路由表”页中的“创建”。

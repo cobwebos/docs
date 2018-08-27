@@ -1,6 +1,6 @@
 ---
-title: “将 Azure Web 应用程序配置为从 Key Vault 读取机密”教程 | Microsoft Docs
-description: 教程：将 Node.js 应用程序配置为从 Key Vault 读取机密
+title: 快速入门 - 使用 Node Web 应用在 Azure Key Vault 中设置和检索机密 | Microsoft Docs
+description: 快速入门 - 使用 Node Web 应用在 Azure Key Vault 中设置和检索机密
 services: key-vault
 documentationcenter: ''
 author: prashanthyv
@@ -8,19 +8,19 @@ manager: sumedhb
 ms.service: key-vault
 ms.workload: identity
 ms.topic: quickstart
-ms.date: 08/01/2018
+ms.date: 08/08/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: cc43081463667eba06af6538f3d78f16544ed2a5
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 4592b256dfda75e81a94034545cd54dbf0d71532
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412236"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42022804"
 ---
-# <a name="quickstart-how-to-set-and-read-a-secret-from-key-vault-in-a-node-web-app"></a>快速入门：如何在 Node Web 应用中通过 Key Vault 设置和读取机密 
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-a-node-web-app"></a>快速入门：使用 Node Web 应用在 Azure Key Vault 中设置和检索机密 
 
-本快速入门介绍如何在 Key Vault 中存储机密，以及如何使用 Web 应用来检索它。 此 Web 应用可以在本地或 Azure 中运行。 本快速入门使用 Node.js 和托管服务标识 (MSI)
+本快速入门介绍如何在 Key Vault 中存储机密，以及如何使用 Web 应用来检索它。 若要查看机密值，必须在 Azure 上运行此应用。 本快速入门使用 Node.js 和托管服务标识 (MSI)
 
 > [!div class="checklist"]
 > * 创建 Key Vault。
@@ -31,6 +31,9 @@ ms.locfileid: "39412236"
 > * 授予所需的权限，让 Web 应用程序从 Key Vault 读取数据。
 
 在继续操作之前，请确保熟悉[基本概念](key-vault-whatis.md#basic-concepts)。
+
+>[!NOTE]
+若要理解为什么以下教程是最佳做法，我们需要了解一些概念。 Key Vault 是一个以编程方式存储机密的中央存储库。 但要这样做，应用程序/用户需要首先向 Key Vault 进行身份验证，即提供机密。 为了遵循安全最佳做法，第一个机密也需要定期轮换。 但是，在 Azure 中运行的[托管服务标识](../active-directory/managed-service-identity/overview.md)应用程序将获得由 Azure 自动管理的标识。 这有助于解决**机密采用问题**，其中用户/应用程序可以遵循最佳做法，而不必担心轮换第一个机密
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -49,7 +52,7 @@ az login
 
 ## <a name="create-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group#az_group_create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
+使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 请选择一个资源组名称，然后将其填充在占位符中。
 以下示例在 *eastus* 位置创建名为 *<YourResourceGroupName>* 的资源组。
@@ -123,8 +126,6 @@ git clone https://github.com/Azure-Samples/key-vault-node-quickstart.git
     ```
     # Bash
     az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "NODE|6.9" --deployment-local-git
-    # PowerShell
-    az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "NODE|6.9"
     ```
     创建 Web 应用后，Azure CLI 会显示类似于以下示例的输出：
     ```

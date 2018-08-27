@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/03/2018
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: a110998505ed49c36e1ec722b1dfbf0969def060
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 6fb9b5cd1379f39796f984f0436900f629c66436
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449552"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "40209541"
 ---
 若要开始在 Azure 中使用服务总线消息实体，必须先使用在 Azure 中唯一的名称创建一个命名空间。 命名空间提供了用于对应用程序中的 Service Bus 资源进行寻址的范围容器。
 
@@ -39,7 +39,7 @@ ms.locfileid: "37449552"
 3. 在“共享访问策略”屏幕中，单击“RootManageSharedAccessKey”。
    
     ![connection-info][connection-info]
-4. 在“策略: RootManageSharedAccessKey”窗口中，单击“连接字符串 - 主键”旁边的复制按钮，将连接字符串复制到剪贴板供以后使用。 将此值粘贴到记事本或其他某个临时位置。
+4. 在“策略: RootManageSharedAccessKey”窗口中，单击“主连接字符串”旁边的“复制”按钮，将连接字符串复制到剪贴板供以后使用。 将此值粘贴到记事本或其他某个临时位置。
    
     ![connection-string][connection-string]
 

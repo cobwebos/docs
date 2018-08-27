@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: a75087c980a98726cc9f871c78b5cd6cb9278643
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 18342b7f3980bcd43b386c3282dda6ebf17eebba
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090673"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42022378"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-java-device-sdk-for-azure-iot-hub-device-provisioning-service"></a>使用适用于 Azure IoT 中心设备预配服务的 Java 设备 SDK 创建和预配模拟的 TPM 设备
 
@@ -25,7 +25,7 @@ ms.locfileid: "39090673"
 
 如果不熟悉自动预配过程，还务必查看[自动预配概念](concepts-auto-provisioning.md)。 另外，在继续操作之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
 
-[!INCLUDE [IoT DPS basic](../../includes/iot-dps-basic.md)]
+[!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
 ## <a name="prepare-the-environment"></a>准备环境 
 
@@ -64,7 +64,7 @@ ms.locfileid: "39090673"
 
 1. 登录到 Azure 门户，单击左侧菜单上的“所有资源”按钮，打开设备预配服务。 记下“ID 范围”和“预配服务全局终结点”。
 
-    ![DPS 信息](./media/java-quick-create-simulated-device/extract-dps-endpoints.png)
+    ![设备预配服务信息](./media/java-quick-create-simulated-device/extract-dps-endpoints.png)
 
 1. 编辑 `src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningTpmSample.java`，使之包括“ID 范围”和“预配服务全局终结点”，如前所述。  
 

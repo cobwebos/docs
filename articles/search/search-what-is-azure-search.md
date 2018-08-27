@@ -6,17 +6,22 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 07/09/2018
+ms.date: 08/09/2018
 ms.author: heidist
-ms.openlocfilehash: 4874e42139e277400c866a7fc4c7094faeae136d
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e4d01fdb4c11277af68127e4671a36ad7e2c74d2
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002198"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42024017"
 ---
 # <a name="what-is-azure-search"></a>什么是 Azure 搜索？
-Azure 搜索是一种搜索即服务云解决方案，它为开发人员提供 API 和工具，以便基于 Web、移动和企业应用程序中的专用异类内容添加丰富的搜索体验。
+Azure 搜索是一种搜索即服务云解决方案，它为开发人员提供 API 和工具，以便基于 Web、移动和企业应用程序中的专用异类内容添加丰富的搜索体验。 查询执行是通过用户定义的索引进行的。
+
++ 生成仅包含你的数据的搜索语料库，这些数据源自多种内容类型和平台。 
++ 利用 AI 驱动的索引从图像文件或实体以及原始文本中的关键短语中提取文本和特征。
++ 使用分面导航和筛选器、同义词、自动完成和文本分析创建直观的搜索体验，以获取“你的意思是”自动更正的搜索词。
++ 添加“查找我附近”的地理搜索、非英语全文搜索的语言分析器以及搜索排名的评分逻辑。
 
 功能通过简单的 [REST API](/rest/api/searchservice/) 或 [.NET SDK](search-howto-dotnet-sdk.md) 公开，消除了信息检索固有的复杂性。 除了 API，Azure 门户还通过原型制作和查询索引工具，提供管理和内容管理支持。 因为服务在云中运行，所以基础结构和可用性由 Microsoft 管理。
 
@@ -51,7 +56,7 @@ Azure 搜索是一种搜索即服务云解决方案，它为开发人员提供 A
 
 架构可在 Azure 门户中创建，也可以[使用 .NET SDK](search-howto-dotnet-sdk.md) 或 [REST API](/rest/api/searchservice/) 以编程方式创建。
 
-### <a name="step-3-index-data"></a>步骤 3：索引数据
+### <a name="step-3-load-data"></a>步骤 3：加载数据
 定义索引后，便可以上传内容。 可以使用推送或提取模型。
 
 提取模型从外部数据源检索数据。 支持通过*索引器*检索数据。索引器可以简化和自动数据引入的方方面面，例如，连接、读取和序列化数据。 [索引器](/rest/api/searchservice/Indexer-operations)适用于 Azure Cosmos DB、Azure SQL 数据库、Azure Blob 存储，以及 Azure VM 中托管的 SQL Server。 可以针对按需刷新或计划的数据刷新配置索引器。
@@ -61,7 +66,7 @@ Azure 搜索是一种搜索即服务云解决方案，它为开发人员提供 A
 ### <a name="step-4-search"></a>步骤 4：搜索
 填充索引后，可以通过将简单的 HTTP 请求与 REST API 或 .NET SDK 结合使用，向服务终结点[发出搜索查询](/rest/api/searchservice/Search-Documents)。
 
-## <a name="how-azure-search-compares"></a>Azure 搜索有何不同
+## <a name="how-it-compares"></a>它如何进行比较
 
 客户常常询问 Azure 搜索与其他搜索相关解决方案有何不同。 下表总结主要区别。
 
@@ -104,13 +109,16 @@ Azure 订户可以[在免费层中预配服务](search-create-service-portal.md)
 
 ## <a name="how-to-get-started"></a>如何入门
 
-1. 在[免费层](search-create-service-portal.md)中创建服务。
+1. 创建[免费服务](search-create-service-portal.md)。 所有快速入门和教程都可以通过免费服务完成。
 
-2. 循序渐进地学习以下一篇或多篇教程。 
+2. 逐步学习[有关使用内置工具进行索引和查询的教程](search-get-started-portal.md)。 学习重要概念并熟悉门户提供的信息。
 
-  + [如何使用 .NET SDK](search-howto-dotnet-sdk.md) 演示了托管代码中的主要步骤。  
-  + [REST API 入门](https://github.com/Azure-Samples/search-rest-api-getting-started)演示了使用 REST API 的相同步骤。  
-  + 使用内置索引和原型功能[在门户中创建第一个索引](search-get-started-portal.md)。   
+3. 使用 .NET 或 REST API 继续编写代码：
+
+  + [如何使用 .NET SDK](search-howto-dotnet-sdk.md) 演示了托管代码中的主要工作流。  
+  + [REST API 入门](https://github.com/Azure-Samples/search-rest-api-getting-started)演示了使用 REST API 的相同步骤。 还可以使用此快速入门从 Postman 或 Fiddler 调用 REST API：[探索 Azure 搜索 REST API](search-fiddler.md)。
+
+## <a name="watch-this-video"></a>观看此视频
 
 搜索引擎是在移动应用中、网站上和公司数据存储中检索信息时常用的驱动程序。 Azure 搜索提供了用于打造与大型商业网站上的搜索体验类似的搜索体验的工具。
 
@@ -122,5 +130,3 @@ Azure 订户可以[在免费层中预配服务](search-create-service-portal.md)
 + 3-4 分钟介绍了服务预配。 
 + 4-6 分钟介绍了用来使用内置的房地产业数据集创建索引的“导入数据”向导。
 + 6-9 分钟介绍了搜索浏览器和各种查询。
-
-

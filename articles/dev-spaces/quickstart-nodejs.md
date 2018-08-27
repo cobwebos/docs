@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
 manager: douge
-ms.openlocfilehash: 02b15295cce1a1a018b0532948f9ba113c2f8c14
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 51ace875616a4627fafab89137cfc1e2d30872ad
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522965"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42023402"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-nodejs"></a>快速入门：使用 Azure Dev Spaces 创建 Kubernetes 开发空间 (Node.js)
 
@@ -32,7 +32,7 @@ ms.locfileid: "39522965"
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 如果没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free)。
-- 在 EastUS、CentralUS、WestUS2、WestEurope、CanadaCentral 或 CanadaEast 区域中运行 Kubernetes 1.10.3 且已启用“HTTP 应用程序路由”的 [Kubernetes 群集](https://ms.portal.azure.com/#create/microsoft.aks)。
+- 在 EastUS、CentralUS、WestUS2、WestEurope、CanadaCentral 或 CanadaEast 区域中运行 Kubernetes 1.9.6 或更高版本且已启用“Http 应用程序路由”的 [Kubernetes 群集](https://ms.portal.azure.com/#create/microsoft.aks)。
 
   ![请务必启用“Http 应用程序路由”。](media/common/Kubernetes-Create-Cluster-3.PNG)
 
@@ -44,9 +44,9 @@ Azure CLI 和 Azure Dev Spaces 扩展可以在 Windows、Mac 或 Linux 计算机
 
 请按以下步骤设置 Azure Dev Spaces：
 
-1. 安装 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)（版本 2.0.38 或更高版本）。
+1. 安装 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)（版本 2.0.43 或更高版本）。
 1. 在 AKS 群集上设置 Dev Spaces：`az aks use-dev-spaces -g MyResourceGroup -n MyAKS`
-1. 下载适用于 VS Code 的 [Azure Dev Spaces 扩展](https://aka.ms/get-azds-code)。 在扩展的“市场”页上单击“安装”一次，然后再在 VS Code 中单击一次。
+1. 下载适用于 VS Code 的 [Azure Dev Spaces 扩展](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)。 在扩展的“市场”页上单击“安装”一次，然后再在 VS Code 中单击一次。
 
 ## <a name="build-and-run-code-in-kubernetes"></a>在 Kubernetes 中生成并运行代码
 

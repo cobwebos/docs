@@ -1,3 +1,20 @@
+---
+title: include 文件
+description: include 文件
+services: data-factory
+author: linda33wj
+ms.service: data-factory
+ms.topic: include
+ms.date: 08/20/2018
+ms.author: jingwang
+ms.custom: include file
+ms.openlocfilehash: ac6b53926ca6c44c8ec1e71db67321366aacb00e
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617599"
+---
 ## <a name="prerequisites"></a>先决条件
 
 ### <a name="azure-subscription"></a>Azure 订阅
@@ -6,8 +23,10 @@
 ### <a name="azure-roles"></a>Azure 角色
 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。 在 Azure 门户中，选择右上角的用户名，然后选择“权限”查看你在订阅中拥有的权限。 如果可以访问多个订阅，请选择相应的订阅。 有关将用户添加到角色的示例说明，请参阅[添加角色](../articles/billing/billing-add-change-azure-subscription-administrator.md)一文。
 
+若要通过 Azure 门户中的“创作和监视”UI为数据工厂创建和管理子资源（包括数据集、链接服务、管道、触发器和集成运行时），你必须属于“数据工厂参与者”角色。 若要使用 Powershell 或 SDK 创建和管理子资源，“参与者”角色已足够。
+
 ### <a name="azure-storage-account"></a>Azure 存储帐户
-在本快速入门中，使用通用的 Azure 存储帐户（具体说来就是 Blob 存储）作为源和目标数据存储。 如果没有通用的 Azure 存储帐户，请参阅[创建存储帐户](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account)创建一个。 
+在本快速入门中，使用通用的 Azure 存储帐户（具体说来就是 Blob 存储）作为源和目标数据存储。 如果没有通用的 Azure 存储帐户，请参阅[创建存储帐户](../articles/storage/common/storage-quickstart-create-account.md)创建一个。 
 
 #### <a name="get-the-storage-account-name-and-account-key"></a>获取存储帐户名称和帐户密钥
 在本快速入门中，请使用 Azure 存储帐户的名称和密钥。 以下过程提供的步骤用于获取存储帐户的名称和密钥： 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/28/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 92258ce7ea39a06f2af85efd9174b1b200710566
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4d5222889d5e840bd03bf77a56584dac48bb740c
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216960"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41917657"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>使用 Azure 自动化管理 Windows 更新
 
@@ -104,7 +104,7 @@ UpdateRunProgress
 
 ![配置信号逻辑](./media/automation-tutorial-update-management/signal-logic.png)
 
-在“2. 定义警报详细信息”下，输入警报的名称和说明。 将“严重性”设置为“参考(严重性 2)”，因为此警报针对的是成功的运行。
+在“2. 定义警报详细信息“下，下，输入警报的名称和说明。 将“严重性”设置为“参考(严重性 2)”，因为此警报针对的是成功的运行。
 
 ![配置信号逻辑](./media/automation-tutorial-update-management/define-alert-details.png)
 
@@ -126,9 +126,6 @@ UpdateRunProgress
 
 接下来，请计划一个遵循发布时间和服务窗口的部署，以便安装更新。 可选择在部署中包括哪种更新类型。 例如，可包括关键或安全更新，排除更新汇总。
 
-> [!WARNING]
-> 如果更新要求重启，VM 会自动重启。
-
 若要为 VM 计划新的更新部署，请转到“更新管理”，然后选择“计划更新部署”。
 
 在“新建更新部署”下，指定以下信息：
@@ -136,6 +133,8 @@ UpdateRunProgress
 * **名称**：输入用于更新部署的唯一名称。
 
 * **操作系统**：选择更新部署的目标 OS。
+
+* **要更新的计算机**：选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的准备情况将显示在“更新代理准备”列中。若要了解在 Log Analytics 中创建计算机组的不同方法，请参阅 [Log Analytics 中的计算机组](../log-analytics/log-analytics-computer-groups.md)
 
 * **更新分类**：选择更新部署包含在部署中的软件类型。 对于本教程，请保留所有选定的类型。
 
@@ -154,13 +153,21 @@ UpdateRunProgress
 
 * **维护时段(分钟)**：保留默认值。 可以设置要进行更新部署的时间段。 此设置有助于确保在定义的服务时段内执行更改。
 
+* **重新启动选项**：此设置确定应如何处理重新启动。 可用选项包括：
+  * 需要时重新启动(默认)
+  * 始终重新启动
+  * 从不重新启动
+  * 仅重新启动 - 不会安装更新
+
+配置完计划以后，选择“创建”。
+
 ![更新“计划设置”窗格](./media/automation-tutorial-update-management/manageupdates-schedule-win.png)
 
-配置完计划以后，选择“创建”。 此时会回到状态仪表板。 选择“计划性更新部署”即可显示所创建的部署计划。
+此时会回到状态仪表板。 选择“计划性更新部署”即可显示所创建的部署计划。
 
 ## <a name="view-results-of-an-update-deployment"></a>查看更新部署结果
 
-在计划性部署开始后，可以在“更新管理”下的“更新部署”选项卡上查看该部署的状态。 部署当前正在运行时，其状态为“正在进行”。 部署完成以后，如果成功，则状态更改为“成功”。 当部署中有一个或多个更新失败时，状态为“部分失败”。
+在计划的部署开始后，可以在“更新管理”下的“更新部署”选项卡上查看该部署的状态。 部署当前正在运行时，其状态为“正在进行”。 部署完成以后，如果成功，则状态更改为“成功”。 当部署中有一个或多个更新失败时，状态为“部分失败”。
 
 选择已完成的更新部署，查看该更新部署的仪表板。
 

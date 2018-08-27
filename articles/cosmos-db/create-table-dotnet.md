@@ -9,14 +9,14 @@ ms.component: cosmosdb-table
 ms.custom: quickstart connect, mvc
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 04/10/2018
+ms.date: 08/17/2018
 ms.author: sngun
-ms.openlocfilehash: e70501be61455e9707fcf57d1996729097a0641f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 020345f5f5de3235a0fb34f1efc27efd771a842d
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582377"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42023407"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-and-azure-cosmos-db"></a>快速入门：使用 .NET 和 Azure Cosmos DB 生成表 API 应用 
 
@@ -117,7 +117,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 1. 在 Visual Studio 中，右键单击“解决方案资源管理器”中的“TableStorage”项目，并单击“管理 NuGet 包”。 
 
    ![管理 NuGet 包](media/create-table-dotnet/azure-cosmosdb-manage-nuget.png)
-2. 在 NuGet“浏览”框中，键入 *Microsoft.Azure.CosmosDB.Table*。 这样会查找 Cosmos DB 表 API 客户端库。
+2. 在 NuGet“浏览”框中，键入 *Microsoft.Azure.CosmosDB.Table*。 这样会查找 Cosmos DB 表 API 客户端库。 请注意，此库目前仅适用于 .NET Standard，尚不可用于 .NET Core。
    
    ![NuGet 的“浏览”选项卡](media/create-table-dotnet/azure-cosmosdb-nuget-browse.png)
 

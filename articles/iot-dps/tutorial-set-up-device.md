@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6e90d20053a8ccfcafc7648d81c61e9313ec57ab
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 998bc7cb7e3289a85a9ffc315f7c1f5e568a75cb
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523353"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41918434"
 ---
 # <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中心设备预配服务设置设备以进行预配
 
@@ -149,7 +149,7 @@ ms.locfileid: "39523353"
 
 1. 在 Azure 门户中，选择设备预配服务的“概览”边栏选项卡，复制“ID 范围”值。 ID 范围由此服务生成，可保证唯一性。 它是不可变的，可用于唯一标识注册 ID。
 
-    ![从门户边栏选项卡提取 DPS 终结点信息](./media/tutorial-set-up-device/extract-dps-endpoints.png) 
+    ![从门户边栏选项卡中提取设备预配服务终结点信息](./media/tutorial-set-up-device/extract-dps-endpoints.png) 
 
 1. 在计算机上的 Visual Studio *解决方案资源管理器*中，导航到 **Provision\_Samples** 文件夹。 选择名为 **prov\_dev\_client\_sample** 的示例项目，打开 **prov\_dev\_client\_sample.c** 源文件。
 

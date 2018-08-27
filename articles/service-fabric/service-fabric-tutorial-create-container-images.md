@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: a2814ff299d1bfb003b6133e2b75b47a312f8728
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 15fcea6ca8f9c66ee4907018a11481b6c714b81a
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114034"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616277"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>教程：在 Linux Service Fabric 群集上创建容器映像
 
@@ -68,6 +68,8 @@ cd service-fabric-containers/Linux/container-tutorial/
 ```bash
 docker build -t azure-vote-front .
 ```
+> [!Note]
+> 如果你的权限被拒绝，请按照[此](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user)文档操作，了解如何在没有 sudo 的情况下使用 docker。
 
 此命令可能需要一些时间，因为需要从 Docker 中心拉取所有必需的依赖项。 完成后，使用 [docker images](https://docs.docker.com/engine/reference/commandline/images/) 命令查看创建的映像。
 

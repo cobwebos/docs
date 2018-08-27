@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 64bbebcf8b014841d7f0609120e81cf072fdf96e
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: ef3cfb77a47face18ea5f3b75cbbf08d3e275d2e
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091636"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42022590"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>使用适用于 IoT 中心设备预配服务的 Node.js 设备 SDK 创建和预配模拟的 TPM 设备
 
@@ -24,7 +24,7 @@ ms.locfileid: "39091636"
 
 如果不熟悉自动预配过程，还务必查看[自动预配概念](concepts-auto-provisioning.md)。 另外，在继续操作之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
 
-[!INCLUDE [IoT DPS basic](../../includes/iot-dps-basic.md)]
+[!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
 ## <a name="prepare-the-environment"></a>准备环境 
 
@@ -152,7 +152,7 @@ ms.locfileid: "39091636"
 
 1. 在 Azure 门户中，选择设备预配服务的“概览”边栏选项卡，记下“全局设备终结点”和“ID 范围”的值。
 
-    ![从门户边栏选项卡提取 DPS 终结点信息](./media/quick-create-simulated-device/extract-dps-endpoints.png) 
+    ![从门户边栏选项卡中提取设备预配服务终结点信息](./media/quick-create-simulated-device/extract-dps-endpoints.png) 
 
 1. 在 **registerdevice** 文件夹中，使用文本编辑器创建新的 **RegisterDevice.js** 文件。
 

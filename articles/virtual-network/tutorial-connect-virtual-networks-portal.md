@@ -14,19 +14,19 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 03/13/2018
+ms.date: 08/16/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: d702253c7b58b0a29c03e6563238b56ae75fa0d1
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 8b1290c2030835af1435e9a21602d3d2334a6737
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30841782"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41920024"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>教程：通过 Azure 门户使用虚拟网络对等互连连接虚拟网络
 
-可以使用虚拟网络对等互连将虚拟网络互相连接。 将虚拟网络对等互连后，两个虚拟网络中的资源将能够以相同的延迟和带宽相互通信，就像这些资源位于同一个虚拟网络中一样。 本教程介绍如何执行下列操作：
+可以使用虚拟网络对等互连将虚拟网络互相连接。 这些虚拟网络可以位于相同区域或不同区域中（也称为全局 VNet 对等互连）。 将虚拟网络对等互连后，两个虚拟网络中的资源将能够以相同的延迟和带宽相互通信，就像这些资源位于同一个虚拟网络中一样。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建两个虚拟网络
@@ -36,7 +36,7 @@ ms.locfileid: "30841782"
 
 如果你愿意，可以使用 [Azure CLI](tutorial-connect-virtual-networks-cli.md) 或 [Azure PowerShell](tutorial-connect-virtual-networks-powershell.md) 完成本教程中的步骤。
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="log-in-to-azure"></a>登录 Azure 
 
@@ -54,7 +54,7 @@ ms.locfileid: "30841782"
     |地址空间|10.0.0.0/16|
     |订阅| 选择订阅。|
     |资源组| 选择“新建”，并输入 myResourceGroup|
-    |Location| 选择“美国东部”。|
+    |位置| 选择“美国东部”。|
     |子网名称|Subnet1|
     |子网地址范围|10.0.0.0/24|
 
@@ -82,7 +82,7 @@ ms.locfileid: "30841782"
     |---|---|
     |名称|myVirtualNetwork1-myVirtualNetwork2|
     |订阅| 选择订阅。|
-    |虚拟网络|myVirtualNetwork2 - 若要选择 *myVirtualNetwork2* 虚拟网络，请依次选择“虚拟网络”、“myVirtualNetwork2”。|
+    |虚拟网络|myVirtualNetwork2 - 若要选择 *myVirtualNetwork2* 虚拟网络，请依次选择“虚拟网络”、“myVirtualNetwork2”。 可以在相同区域或不同区域中选择虚拟网络。|
 
     ![对等互连设置](./media/tutorial-connect-virtual-networks-portal/peering-settings.png)
 
@@ -118,7 +118,7 @@ ms.locfileid: "30841782"
     |用户名| 输入所选用户名。|
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |资源组| 选择“使用现有”，然后选择“myResourceGroup”。|
-    |Location| 选择“美国东部”。|
+    |位置| 选择“美国东部”。|
 4. 在“选择大小”下选择 VM 大小。
 5. 对于“设置”选择以下值，然后选择“确定”：
     |设置|值|

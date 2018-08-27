@@ -3,27 +3,23 @@ title: 将 Azure自动化与事件网格相集成 | Microsoft Docs
 description: 了解如何在创建新的 VM 并向 Microsoft Teams 发送通知时自动添加标记。
 keywords: 自动化, runbook, Teams, 事件网格, 虚拟机, VM
 services: automation
-documentationcenter: ''
 author: eamonoreilly
 manager: ''
-editor: ''
 ms.service: automation
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/06/2017
+ms.date: 08/14/2018
 ms.author: eamono
-ms.openlocfilehash: 6270f8bad893798f46d8db91e7b1140b6a125350
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: a4356f38df017901ab219318463538003d3a979e
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049858"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41920821"
 ---
 # <a name="integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>将 Azure 自动化与事件网格和 Microsoft Teams 相集成
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 导入事件网格示例 runbook。
@@ -87,28 +83,30 @@ ms.locfileid: "39049858"
 
     ![配置 Webhook 参数](media/ensure-tags-exists-on-new-virtual-machines/configure-webhook-parameters.png)
 
-5. 选择“确定”创建自动化 runbook Webhook。
-
+5. 选择“创建”创建自动化 runbook Webhook。
 
 ## <a name="create-an-event-grid-subscription"></a>创建事件网格订阅
+
 1. 在“自动化帐户”概述页上，选择“事件网格”。
 
     ![选择“事件网格”](media/ensure-tags-exists-on-new-virtual-machines/select-event-grid.png)
 
-2. 选择“+ 事件订阅”按钮。
+2. 单击“+ 事件订阅”。
 
 3. 使用以下信息配置订阅：
 
-    *   输入 AzureAutomation 作为名称。
-    *   在“主题类型”中，选择“Azure 订阅”。
-    *   清除“订阅所有事件类型”复选框。
-    *   在“事件类型”中，选择“资源写入成功”。
-    *   在“订阅者终结点”中，输入 Watch-VMWrite runbook 的 Webhook URL。
-    *   在“前缀筛选器”中，输入需要在其中查找新创建的 VM 的订阅和资源组。 它看起来应该如下所示：`/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Compute/virtualMachines`
+   * 对于“主题类型”，选择“Azure 订阅”。
+   * 取消选中“订阅所有事件类型”复选框。
+   * 输入 AzureAutomation 作为名称。
+   * 在“定义的事件类型”下拉列表中，取消选中除“资源写入成功”之外的所有选项。
+   * 对于“终结点类型”，选择 **Webhook**。
+   * 单击“选择终结点”。 在打开的“选择 Web Hook”页上，粘贴你为 Watch-VMWrite Runbook 创建的 Webhook URL。
+   * 在“筛选器”下，输入需要在其中查找新创建的 VM 的订阅和资源组。 它看起来应该如下所示：`/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Compute/virtualMachines`
 
 4. 选择“创建”保存事件网格订阅。
 
 ## <a name="create-a-vm-that-triggers-the-runbook"></a>创建触发 runbook 的 VM
+
 1. 在事件网格订阅前缀筛选器中指定的资源组中创建新的 VM。
 
 2. 应调用 Watch-VMWrite runbook，且一个新的标记应添加到 VM。
@@ -120,6 +118,7 @@ ms.locfileid: "39049858"
     ![Microsoft Teams 通知](media/ensure-tags-exists-on-new-virtual-machines/teams-vm-message.png)
 
 ## <a name="next-steps"></a>后续步骤
+
 在本教程中，在事件网格和自动化之间设置集成。 你已了解如何：
 
 > [!div class="checklist"]

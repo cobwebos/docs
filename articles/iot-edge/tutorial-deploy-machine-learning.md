@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 28b963922b423bb776aa97e9b76392bc484ddcd6
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: c13cd495f7802f14937321134a975b7a00c791ab
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627801"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "41918298"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>教程：将 Azure 机器学习作为 IoT Edge 模块（预览版）进行部署
 
@@ -208,35 +208,14 @@ az ml service create realtime --model-file model.pkl -f iot_score.py -n machinel
 
 ## <a name="clean-up-resources"></a>清理资源 
 
-<!--[!INCLUDE [iot-edge-quickstarts-clean-up-resources](../../includes/iot-edge-quickstarts-clean-up-resources.md)] -->
+如果打算继续学习下一篇建议的文章，可以保留已创建的资源和配置，以便重复使用。 还可以继续使用相同的 IoT Edge 设备作为测试设备。 
 
-如果想要继续学习下一篇建议的文章，可以保留已创建的资源和配置，以便重复使用。
+否则，可以删除本文中创建的本地配置和 Azure 资源，以避免收费。 
 
-否则，可删除本文中创建的本地配置和 Azure 资源，避免收费。 
+[!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-> [!IMPORTANT]
-> 删除 Azure 资源和资源组的操作不可逆。 资源组以及包含在其中的所有资源一旦删除就会被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有的包含要保留资源的资源组中创建了 IoT 中心，则只删除 IoT 中心资源本身，而不要删除资源组。
->
+[!INCLUDE [iot-edge-clean-up-local-resources](../../includes/iot-edge-clean-up-local-resources.md)]
 
-若要只删除 IoT 中心，请使用中心名称和资源组名称执行以下命令：
-
-```azurecli-interactive
-az iot hub delete --name {hub_name} --resource-group IoTEdgeResources
-```
-
-
-若要按名称删除整个资源组，请执行以下操作：
-
-1. 登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。
-
-2. 在“按名称筛选...”文本框中键入包含 IoT 中心的资源组的名称。 
-
-3. 在结果列表中的资源组右侧，单击“...”，然后单击“删除资源组”。
-
-<!--
-   ![Delete](./media/iot-edge-quickstarts-clean-up-resources/iot-edge-delete-resource-group.png)
--->
-4. 系统会要求确认是否删除资源组。 再次键入资源组的名称进行确认，然后单击“删除”。 片刻之后，将会删除该资源组及其包含的所有资源。
 
 ## <a name="next-steps"></a>后续步骤
 

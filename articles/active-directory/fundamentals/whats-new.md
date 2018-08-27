@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d39d98a39fb8692d696adfbedc9bb1a34f8be4d6
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: d4bbf26f6535f50b15068125d911df6a1ca20a72
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358828"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42146133"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
-> 通过订阅 [![RSS](./media/whats-new/feed-icon-16x16.png)](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us) [feed](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us) 获取有关何时重新访问此页以查看更新的通知。
+>通过将此 [URL](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us) 添加到 ![RSS 图标](./media/whats-new/feed-icon-16x16.png)订阅源阅读器获取有关何时重新访问此页面来获得更新的通知。
 
 Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，本文将提供以下方面的信息：
 
@@ -38,6 +38,24 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 ---
 
 ## <a name="july-2018"></a>2018 年 7 月
+
+### <a name="changes-to-azure-active-directory-ip-address-ranges"></a>对 Azure Active Directory IP 地址范围的更改
+
+**类型：** 更改计划  
+**服务类别：** 其他  
+**产品功能：** 平台
+
+我们正在为 Azure AD 引入更大的 IP 范围，这意味着如果你已为防火墙、路由器或网络安全组配置了 Azure AD IP 地址范围，则需要更新它们。 我们正在进行此更新，因此，在 Azure AD 添加新的终结点时，你不必再次更改防火墙、路由器或网络安全组 IP 范围配置。 
+
+在接下来的两个月中，网络流量将迁移到这些新范围。 若要保持不间断地提供服务，必须在 2018 年 9 月 10 日之前将这些更新的值添加到你的 IP 地址：
+
+- 20.190.128.0/18 
+
+- 40.126.0.0/18 
+
+我们强烈建议不要删除旧的 IP 地址范围，直到你的所有网络流量都已迁移到新范围。 若要了解有关迁移的更新并了解何时可以删除旧范围，请参阅 [Office 365 URL 和 IP 地址范围](https://support.office.com/en-us/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)。
+
+---
 
 ### <a name="improvements-to-azure-active-directory-email-notifications"></a>对 Azure Active Directory 电子邮件通知的改进
 
@@ -273,11 +291,11 @@ Azure AD Connect 的最新版本包括：
 
 传输层安全性 (TLS) 是一种在两个通信应用程序间提供隐私和数据完整性的协议，是目前使用最广泛的安全协议。
 
-[PCI 安全标准委员会](https://www.pcisecuritystandards.org/) 已决定禁用早期版本的 TLS 和安全套接字层 (SSL)，以此支持启用新的和更安全的应用协议，该决定于 2018 年 6 月 30 日开始生效。 这一改变意味着如果连接到 Azure AD 服务并要求符合 PCI DSS，则必须禁用 TLS 1.0。 有多个 TLS 版本可供使用，但 TLS 1.2 是可供 Azure Active Directory 服务使用的最新版本。 强烈建议直接为客户端/服务器和浏览器/服务器组合使用 TLS 1.2。
+[PCI 安全标准委员会](https://www.pcisecuritystandards.org/)已决定禁用早期版本的 TLS 和安全套接字层 (SSL)，以此支持启用新的和更安全的应用协议，该决定于 2018 年 6 月 30 日开始生效。 这一改变意味着如果连接到 Azure AD 服务并要求符合 PCI DSS，则必须禁用 TLS 1.0。 有多个 TLS 版本可供使用，但 TLS 1.2 是可供 Azure Active Directory 服务使用的最新版本。 强烈建议直接为客户端/服务器和浏览器/服务器组合使用 TLS 1.2。
 
-过时的浏览器可能不支持较新的 TLS 版本，例如 TLS 1.2。 若要查看浏览器支持哪些版本的 TLS，请转到 [Qualys SSL 实验室](https://www.ssllabs.com/)网站，然后单击“测试浏览器”。 建议将 Web 浏览器升级到最新版本，并且最好只启用 TLS 1.2。
+过时的浏览器可能不支持较新的 TLS 版本，例如 TLS 1.2。 若要查看浏览器支持哪些版本的 TLS，请转到 [Qualys SSL 实验室](https://www.ssllabs.com/)网站，然后单击“Test your browser”（测试浏览器）。 建议将 Web 浏览器升级到最新版本，并且最好只启用 TLS 1.2。
 
-**通过浏览器启用 TLS 1.2**
+**在各种浏览器中启用 TLS 1.2**
 
 - **Microsoft Edge和 Internet Explorer（均使用 Internet Explorer 设置）**
 
@@ -296,7 +314,7 @@ Azure AD Connect 的最新版本包括：
 
     1. 打开 Firefox，在地址栏键入“about:config”，然后按 Enter。
     2. 搜索 TLS 一词，然后选择“security.tls.version.max”条目。
-    3. 将值设置为 3，强制浏览器使用版本 TLS 1.2，然后选择“确定”。
+    3. 将值设置为 3，强制浏览器使用最高 TLS 1.2 的版本，然后选择“确定”。
 
         >[!NOTE]
         >Firefox 版本 60.0 支持 TLS 1.3，因此还可将 security.tls.version.max 值设置为 4。
@@ -325,7 +343,7 @@ Azure AD Connect 的最新版本包括：
 **服务类别：** 标识保护  
 **产品功能：** 用户身份验证
 
-使用 Azure AD 密码保护有助于杜绝环境中出现易于猜到的密码。 消除这些密码有助于降低遭受密码喷射型攻击时密码泄露的危险。
+使用 Azure AD 密码保护有助于杜绝环境中出现易于猜到的密码。 消除这些密码有助于降低遭受密码喷射型攻击时密码泄露的风险。
 
 具体来说，Azure AD 密码保护有助于：
 
@@ -337,7 +355,7 @@ Azure AD Connect 的最新版本包括：
 
 ---
 
-### <a name="new-all-guests-conditional-access-policy-template-created-during-terms-of-use-tou-creation"></a>创建使用条款 (ToU) 期间创建了全新的“所有来宾”条件访问策略模板
+### <a name="new-all-guests-conditional-access-policy-template-created-during-terms-of-use-tou-creation"></a>创建使用条款 (ToU) 期间创建全新的“所有来宾”条件访问策略模板
 
 **类型：** 新功能  
 **服务类别：** 使用条款  
@@ -349,7 +367,7 @@ Azure AD Connect 的最新版本包括：
 
 ---
 
-### <a name="new-custom-conditional-access-policy-template-created-during-terms-of-use-tou-creation"></a>创建使用条款 (ToU) 期间创建了全新的“自定义”条件访问策略模板
+### <a name="new-custom-conditional-access-policy-template-created-during-terms-of-use-tou-creation"></a>创建使用条款 (ToU) 期间创建全新的“自定义”条件访问策略模板
 
 **类型：** 新功能  
 **服务类别：** 使用条款  
@@ -395,7 +413,7 @@ Azure AD Connect 的最新版本包括：
 
     - **企业应用所有者。** 授予管理自有企业应用许多方面的权限，包括 SSO 设置、应用分配和同意（Azure AD 资源除外）。
 
-有关公共预览版的详细信息，请参阅[ Azure AD 委派的应用程序管理角色处于公共预览状态！](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/13/hallelujah-azure-ad-delegated-application-management-roles-are-in-public-preview/) 博客。 有关角色和权限的详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)。
+有关公共预览版的详细信息，请参阅 [Azure AD 委派的应用程序管理角色处于公共预览状态！](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/13/hallelujah-azure-ad-delegated-application-management-roles-are-in-public-preview/) 博客。 有关角色和权限的详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)。
 
 ---
 
@@ -795,7 +813,7 @@ Criterion HCM、[FiscalNote](https://docs.microsoft.com/azure/active-directory/a
 
 有关详细信息，请参阅：
 
-- [设置基于应用程序的条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
+- [设置基于应用程序的条件访问](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 - [配置 Managed browser 策略](https://aka.ms/managedbrowser)  
 
@@ -1155,7 +1173,7 @@ Azure AD Connect 是在 Azure AD 与本地数据源（包括 Windows Server Acti
 有关详细信息，请参阅：
 
 - [批准的客户端应用要求](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
-- [Azure AD 基于应用的条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
+- [Azure AD 基于应用的条件访问](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
 
@@ -1447,13 +1465,13 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 
 以下应用包含在[批准的客户端应用](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)列表中：
 
-- [Microsoft Kaizala](https://microsoft.com/garage/profiles/kaizala/)
+- [Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
 - [Microsoft StaffHub](https://staffhub.office.com/what-it-is)
 
 有关详细信息，请参阅：
 
 - [批准的客户端应用要求](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
-- [Azure AD 基于应用的条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
+- [Azure AD 基于应用的条件访问](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
 
@@ -1491,9 +1509,9 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 **服务类别：** Azure AD  
 **产品功能：** 标识安全和保护
 
-现在可将对 Office 365 和其他已连接 Azure AD 的云应用的访问权限限于[批准的客户端应用](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)，这些应用支持使用[基于 Azure AD 的应用的条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)的 Intune 应用保护策略。 Intune 应用保护策略用于配置和保护这些客户端应用程序中的公司数据。
+现在可将对 Office 365 和其他已连接 Azure AD 的云应用的访问权限限于[批准的客户端应用](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)，这些应用支持使用[基于 Azure AD 的应用的条件访问](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)的 Intune 应用保护策略。 Intune 应用保护策略用于配置和保护这些客户端应用程序中的公司数据。
 
-通过组合[基于应用](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)的条件访问策略和[基于设备](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications)的条件访问策略，可以灵活地保护个人和公司设备的数据。
+通过组合[基于应用](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)的条件访问策略和[基于设备](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications)的条件访问策略，可以灵活地保护个人和公司设备的数据。
 
 以下条件和控制现可用于基于应用的条件访问：
 
@@ -1510,7 +1528,7 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 
 - 需要批准的客户端应用
 
-有关详细信息，请参阅[基于 Azure AD 应用的条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)。
+有关详细信息，请参阅[基于 Azure AD 应用的条件访问](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)。
  
 ---
 
@@ -1607,7 +1625,7 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 有关详细信息，请参阅：
 
 - [批准的客户端应用要求](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
-- [Azure AD 基于应用的条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
+- [Azure AD 基于应用的条件访问](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 
 ---

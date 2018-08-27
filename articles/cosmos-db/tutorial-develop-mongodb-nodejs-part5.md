@@ -10,14 +10,14 @@ ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
-ms.author: john.papa
+ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: 8674e5daee003ea0688ea8702362165ebb8ccfcf
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 5bb1aeadeb31728dcc2d9ac5fa0aeade31857169
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249200"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41918721"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-5-use-mongoose-to-connect-to-azure-cosmos-db"></a>通过 Angular 和 Azure Cosmos DB 创建 MongoDB 应用 - 第 5 部分：使用 Mongoose 连接到 Azure Cosmos DB
 
@@ -123,7 +123,7 @@ ms.locfileid: "39249200"
 
 ## <a name="create-a-hero-model"></a>创建 Hero 模型
 
-1.  在“资源管理器”窗格的 server 文件夹中，创建 hero.model.js 文件。
+1.  在“资源管理器”窗格的 server 文件夹下，创建 hero.model.js 文件。
 
 2. 将以下代码复制到 hero.model.js 中。 此代码：
    * 需要 Mongoose。
@@ -155,7 +155,7 @@ ms.locfileid: "39249200"
 
 ## <a name="create-a-hero-service"></a>创建 Hero 服务
 
-1.  在“资源管理器”窗格的 server 文件夹中，创建 hero.service.js 文件。
+1.  在“资源管理器”窗格的 server 文件夹下，创建 hero.service.js 文件。
 
 2. 将以下代码复制到 hero.service.js 中。 此代码：
    * 获取刚创建的模型

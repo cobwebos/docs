@@ -6,18 +6,18 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: tutorial
-ms.date: 05/04/2018
+ms.date: 08/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 41cd2f1081cbe8d8fca9d6afa77b87f9aa1017d3
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 432436ee13519cf342313ad369c168ba764f9264
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302933"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616509"
 ---
 # <a name="stream-big-data-into-a-data-warehouse"></a>将大数据流式传输到数据仓库
 
-Azure [事件网格](overview.md)是一项智能事件路由服务，可用于对应用和服务的通知作出响应。 [事件中心捕获和事件网格示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)展示了如何将 Azure 事件中心捕获与 Azure 事件网格结合使用，从而将数据从事件中心顺畅迁移到 SQL 数据仓库。
+Azure [事件网格](overview.md)是一项智能事件路由服务，可用于对应用和服务的通知作出响应。 例如，它可以触发 Azure 函数来处理已捕获到 Azure Blob 存储或 Data Lake Store 的事件中心数据，并将数据迁移到其他数据存储库。 此[事件中心捕获和事件网格示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)展示了如何将事件中心捕获与事件网格结合使用，从而将事件中心数据从 blob 存储顺畅迁移到 SQL 数据仓库。
 
 ![应用概览](media/event-grid-event-hubs-integration/overview.png)
 
@@ -69,13 +69,13 @@ Azure [事件网格](overview.md)是一项智能事件路由服务，可用于�
 
 若要完成本教程，必须满足以下先决条件：
 
-* Azure 订阅。 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [Visual Studio 2017 版本 15.3.2 或更高版本](https://www.visualstudio.com/vs/)，并包含适用于以下用途的工作负载：.NET 桌面开发、Azure 开发、ASP.NET 和 Web 开发、Node.js 开发和 Python 开发。
 * 已将 [EventHubsCaptureEventGridDemo 示例项目](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)下载到计算机上。
 
 ## <a name="deploy-the-infrastructure"></a>部署基础结构
 
-为了缩短本文的篇幅，请使用资源管理器模板部署所需的基础结构。 若要查看已部署的资源，请查看[模板](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/EventHubsDataMigration.json)。 请使用[支持的区域](overview.md)之一作为资源组位置。
+为了缩短本文的篇幅，请使用资源管理器模板部署所需的基础结构。 若要查看已部署的资源，请查看[模板](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/EventHubsDataMigration.json)。
 
 对于 Azure CLI，请使用：
 

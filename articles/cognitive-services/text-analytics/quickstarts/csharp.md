@@ -1,6 +1,6 @@
 ---
-title: 适用于 Azure 认知服务中的文本分析 API 的 C# 快速入门 | Microsoft Docs
-description: 获取信息和代码示例，帮助快速开始使用 Azure 上 Microsoft 认知服务中的文本分析 API。
+title: 适用于认知服务中的文本分析 API 的 C# 快速入门 | Microsoft Docs
+description: 获取信息和代码示例，帮助你快速开始使用 Azure 上 Microsoft 认知服务中的文本分析 API。
 services: cognitive-services
 documentationcenter: ''
 author: luiscabrer
@@ -9,46 +9,46 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 09/20/2017
 ms.author: ashmaka
-ms.openlocfilehash: 59e2254054f51a8d5f30e1b38dc5e6c23899c054
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 4bf5179ade6f49b847b8b674d33652071e19a769
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284312"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41929834"
 ---
-# <a name="quickstart-for-text-analytics-api-with-c"></a>适用于文本分析 API 的 C# 快速入门 
+# <a name="quickstart-for-the-text-analytics-api-with-c"></a>适用于文本分析 API 的 C# 快速入门 
 <a name="HOLTop"></a>
 
-本文演示如何通过 C# 使用[文本分析 API](//go.microsoft.com/fwlink/?LinkID=759711) 来检测语言、分析情绪和提取关键短语。 代码是为了在 .NET Core 应用程序上工作而编写的，对外部库的引用最少，所以还可以在 Linux 或 MacOS 上运行它。
+本文展示了如何通过 C# 使用[文本分析 API](//go.microsoft.com/fwlink/?LinkID=759711) 来检测语言、分析情绪和提取关键短语。 代码是为了在 .NET Core 应用程序上工作而编写的，对外部库的引用最少，所以还可以在 Linux 或 MacOS 上运行它。
 
 有关 API 的技术文档，请参阅 [API 定义](//go.microsoft.com/fwlink/?LinkID=759346)。
 
 ## <a name="prerequisites"></a>先决条件
 
-必须拥有包含**文本分析 API** 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 可使用“每月 5,000 笔交易的免费层”完成此快速入门。
+必须拥有包含文本分析 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 可使用“每月 5,000 笔交易的免费层”完成此快速入门。
 
 还必须拥有在注册期间生成的[终结点和访问密钥](../How-tos/text-analytics-how-to-access-key.md)。 
 
 
-## <a name="install-the-nuget-sdk-package"></a>安装 Nuget SDK 包
+## <a name="install-the-nuget-sdk-package"></a>安装 NuGet SDK 包
 1. 在 Visual Studio 中创建一个新的控制台解决方案。
-1. 右键单击解决方案，然后单击“管理解决方案的 NuGet 包”
+1. 右键单击解决方案，并选择“管理解决方案的 NuGet 包”。
 1. 选中“包括预发行版”复选框。
-1. 选择“浏览”选项卡，然后搜索“Microsoft.Azure.CognitiveServices.Language”
-1. 选择 Nuget 包并安装。
+1. 选择“浏览”选项卡，然后搜索“Microsoft.Azure.CognitiveServices.Language”。
+1. 选择 NuGet 包并安装它。
 
 > [!Tip]
->  虽然可以直接从 C# 调用 [HTTP 终结点](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)，但使用 Microsoft.Azure.CognitiveServices.Language SDK 可以更轻松地调用服务，而不必担心 JSON 的序列化和反序列化。
+> 虽然可以直接通过 C# 调用 [HTTP 终结点](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)，但使用 Microsoft.Azure.CognitiveServices.Language SDK 可以更轻松地调用服务，而不必担心 JSON 的序列化和反序列化。
 >
-> 一些有用链接：
-> - [SDK Nuget 页](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
+> 下面是一些有用的链接：
+> - [SDK NuGet 页面](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
 > - [SDK 代码](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Language/TextAnalytics)
 
 
-## <a name="call-the-text-analytics-api-using-the-sdk"></a>使用 SDK 调用文本分析 API
-1. 将 Program.cs 替换为下面提供的代码。 此程序通过 3 个部分（语言提取、关键短语提取和情绪分析）演示了文本分析 API 的功能。
-1. 将 `Ocp-Apim-Subscription-Key` 标头值替换为对订阅有效的访问密钥。
-1. 将 `Endpoint` 中的位置替换为注册的终结点。 可在 Azure 门户资源上找到该终结点。 终结点通常以“https://[region].api.cognitive.microsoft.com”开头，在此处请仅包括协议和主机名。
+## <a name="call-the-text-analytics-api-by-using-the-sdk"></a>使用 SDK 调用文本分析 API
+1. 将 Program.cs 替换为以下代码： 此程序通过三个部分（语言提取、关键短语提取和情绪分析）演示了文本分析 API 的功能。
+1. 将 `Ocp-Apim-Subscription-Key` 标头值替换为对你的订阅有效的访问密钥。
+1. 将 `Endpoint` 中的位置替换为你针对其进行注册的终结点。 可以在 Azure 门户资源上找到该终结点。 终结点通常以 "https://[region].api.cognitive.microsoft.com" 开头。 仅包括协议和主机名。
 1. 运行该程序。
 
 ```csharp
@@ -88,7 +88,7 @@ namespace ConsoleApp1
 
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            // Extracting language
+            // Extracting language.
             Console.WriteLine("===== LANGUAGE EXTRACTION ======");
 
             var result =  client.DetectLanguageAsync(new BatchInput(
@@ -105,7 +105,7 @@ namespace ConsoleApp1
                 Console.WriteLine("Document ID: {0} , Language: {1}", document.Id, document.DetectedLanguages[0].Name);
             }
 
-            // Getting key-phrases
+            // Getting key phrases.
             Console.WriteLine("\n\n===== KEY-PHRASE EXTRACTION ======");
 
             KeyPhraseBatchResult result2 = client.KeyPhrasesAsync(new MultiLanguageBatchInput(
@@ -117,7 +117,7 @@ namespace ConsoleApp1
                           new MultiLanguageInput("es", "4", "A mi me encanta el fútbol!")
                         })).Result;
 
-            // Printing keyphrases
+            // Printing key phrases.
             foreach (var document in result2.Documents)
             {
                 Console.WriteLine("Document ID: {0} ", document.Id);
@@ -130,7 +130,7 @@ namespace ConsoleApp1
                 }
             }
 
-            // Extracting sentiment
+            // Extracting sentiment.
             Console.WriteLine("\n\n===== SENTIMENT ANALYSIS ======");
 
             SentimentBatchResult result3 = client.SentimentAsync(
@@ -144,7 +144,7 @@ namespace ConsoleApp1
                         })).Result;
 
 
-            // Printing sentiment results
+            // Printing sentiment results.
             foreach (var document in result3.Documents)
             {
                 Console.WriteLine("Document ID: {0} , Sentiment Score: {1:0.00}", document.Id, document.Score);

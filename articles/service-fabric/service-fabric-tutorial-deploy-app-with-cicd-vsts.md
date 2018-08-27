@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 12/13/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: f3cc4f518278cca915e40bd691c6a7674219916e
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 2122b6d9c385e1137d0fc6df5229975359fa20d5
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109386"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41920949"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>教程：将具有 CI/CD 的应用程序部署到 Service Fabric 群集
 
@@ -50,7 +50,7 @@ ms.locfileid: "37109386"
 * [安装 Visual Studio 2017](https://www.visualstudio.com/)，并安装 **Azure 开发**以及 **ASP.NET 和 Web 开发**工作负荷。
 * [安装 Service Fabric SDK](service-fabric-get-started.md)
 * 在 Azure 上创建一个 Windows Service Fabric 群集，例如[根据此教程](service-fabric-tutorial-create-vnet-and-windows-cluster.md)创建
-* 创建一个 [Team Services 帐户](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)。
+* 创建一个 [Team Services 帐户](https://docs.microsoft.com/vsts/organizations/accounts/create-organization-msa-or-work-student)。
 
 ## <a name="download-the-voting-sample-application"></a>下载投票示例应用程序
 
@@ -94,7 +94,13 @@ Team Services 发布定义描述了将应用程序程序包部署到群集的工
 
 打开 Web 浏览器并导航到新的团队项目：[https://&lt;myaccount&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting)。
 
-依次选择“生成和发布”选项卡、“生成”、“+ 新建定义”。  在“选择模板”中，选择“Azure Service Fabric 应用程序”模板，然后单击“应用”。
+依次选择“生成和发布”选项卡、“生成”，然后单击“新建管道”。
+
+![新建管道][new-pipeline]
+
+选择 **VSTS Git** 作为源，选择“Voting”团队项目、“Voting”存储库和**主**默认分支或手动和计划的生成。  然后单击“继续”。
+
+在“选择模板”中，选择“Azure Service Fabric 应用程序”模板，然后单击“应用”。
 
 ![选择“生成模板”][select-build-template]
 
@@ -102,7 +108,9 @@ Team Services 发布定义描述了将应用程序程序包部署到群集的工
 
 ![选择“任务”][save-and-queue]
 
-在“触发器”下，通过设置触发器状态启用持续集成。  选择“保存并排队”以手动启动生成。
+在“触发器”下，选中“启用持续集成”来启用持续集成。 在**分支筛选器**中，单击“+ 添加”，**分支规范**将默认为“主”。 选择“保存并排队”以手动启动生成。
+
+在“保存生成管道和队列”对话框中，单击“保存并排队”。
 
 ![选择“触发器”][save-and-queue2]
 
@@ -110,7 +118,7 @@ Team Services 发布定义描述了将应用程序程序包部署到群集的工
 
 ### <a name="create-a-release-definition"></a>创建发布定义
 
-依次选择“生成和发布”选项卡、“发布”、“+ 新建定义”。  在“选择模板”中，从列表中选择“Azure Service Fabric 部署”模板，然后单击“应用”。
+依次选择“生成和发布”选项卡、“发布”、“+ 新建管道”。  在“选择模板”中，从列表中选择“Azure Service Fabric 部署”模板，然后单击“应用”。
 
 ![选择发布模板][select-release-template]
 
@@ -134,7 +142,9 @@ Team Services 发布定义描述了将应用程序程序包部署到群集的工
 
 ![启用触发器][enable-trigger]
 
-选择“+ 发布” -> “创建发布” -> “创建”，手动创建发布。  验证部署是否已成功且应用程序是否正在群集中运行。  打开 Web 浏览器并导航到 [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/)。  记下应用程序版本，在本例中为“1.0.0.20170616.3”。
+选择“+ 发布” -> “创建发布” -> “创建”，手动创建发布。 可以在“发布”选项卡中监视发布进度。
+
+验证部署是否已成功且应用程序是否正在群集中运行。  打开 Web 浏览器并导航到 [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/)。  记下应用程序版本，在本例中为“1.0.0.20170616.3”。
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>提交并推送更改，触发发布
 
@@ -188,6 +198,7 @@ Team Services 发布定义描述了将应用程序程序包部署到群集的工
 [publish-app-profile]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishAppProfile.png
 [push-git-repo]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishGitRepo.png
 [publish-code]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishCode.png
+[new-pipeline]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/NewPipeline.png
 [select-build-template]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SelectBuildTemplate.png
 [save-and-queue]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SaveAndQueue.png
 [save-and-queue2]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SaveAndQueue2.png

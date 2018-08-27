@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 8a98b12a42dff186c9226df39ce02c71cbc40c7e
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 30dd3f4a467f19efd2edc7ca26305ee2e7ff05a5
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113317"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41917898"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>教程：使用 Application Insights 在 Service Fabric 上监视和诊断 ASP.NET Core 应用程序
 
@@ -100,7 +100,7 @@ Application Insights 有两个特定于 Service Fabric 的 NuGet，可以根据�
 3. 搜索 `Microsoft.ApplicationInsights.ServiceFabric.Native`，然后单击相应的 NuGet 包。
 
 >[!NOTE]
->可能需要采用类似的方式安装 Microsoft.ServiceFabric.Diagnistics.Internal 包，前提是此包在安装 Application Insights 包之前未预先安装
+>可能需要采用类似的方式安装 Microsoft.ServiceFabric.Diagnostics.Internal 包，前提是此包在安装 Application Insights 包之前未预先安装
 
 4. 在右侧单击应用程序中两项服务旁边的复选框“VotingWeb”和“VotingData”，然后单击“安装”。
     ![AI sdk Nuget](./media/service-fabric-tutorial-monitoring-aspnet/ai-sdk-nuget-new.png)
@@ -113,7 +113,8 @@ Application Insights 有两个特定于 Service Fabric 的 NuGet，可以根据�
     using Microsoft.ApplicationInsights.ServiceFabric;
     ```
 
-    2. 在 CreateServiceInstanceListeners() 或 CreateServiceReplicaListeners() 的嵌套式 return 语句中，在 ConfigureServices > services 下两个已声明的单一实例服务之间添加：`.AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))`。这会将服务上下文添加到遥测，让你更好地了解 Application Insights 中遥测的源。 VotingWeb.cs 中的嵌套式 return 语句应如下所示：
+    2. 在 CreateServiceInstanceListeners() 或 CreateServiceReplicaListeners() 的嵌套式 return 语句中，在 ConfigureServices > services 下两个已声明的单一实例服务之间添加：`.AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))`
+    此时会向遥测添加服务上下文，方便用户更好地理解 Application Insights 中遥测的源代码。 VotingWeb.cs 中的嵌套式 return 语句应如下所示：
 
     ```csharp
     return new WebHostBuilder()

@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 中创建 ASP.NET Core Web 应用 | Microsoft Docs
-description: 了解如何通过部署默认的 ASP.NET Web 应用，在 Azure 应用服务中运行 Web 应用。
+title: 在 Azure 中创建 C# ASP.NET Core Web 应用 | Microsoft Docs
+description: 了解如何通过部署默认的 C# ASP.NET Web 应用，在 Azure 应用服务中运行 Web 应用。
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -12,14 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 06/14/2017
+ms.date: 06/11/2018
 ms.author: cephalin
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 91f6fd077146e94833a5527f03ac710352e4fd9c
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.custom: mvc, devcenter, vs-azure
+ms.openlocfilehash: 811f4df807292b9d539084a049cc643dbee07a7e
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42432049"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>在 Azure 中创建 ASP.NET Core Web 应用
 
@@ -39,13 +40,9 @@ ms.lasthandoff: 04/05/2018
 
 完成本教程：
 
-* 使用以下工作负荷安装 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a>：
-    - **ASP.NET 和 Web 开发**
-    - **Azure 开发**
+安装带有 ASP.NET 和 Web 开发工作负荷的 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a>。
 
-    ![ASP.NET 和 Web 开发以及 Azure 开发（在 Web 和云下）](media/app-service-web-tutorial-dotnet-sqldatabase/workloads.png)
-
-如果已安装 Visual Studio，请单击“工具” > **Get Tools and Features**“获取工具和功能”，以便在 Visual Studio 中添加工作负荷。
+如果已安装 Visual Studio，请单击“工具” > “获取工具和功能”，以便在 Visual Studio 中添加工作负荷。
 
 ## <a name="create-an-aspnet-core-web-app"></a>创建一个 ASP.NET Core Web 应用
 
@@ -62,10 +59,6 @@ ms.lasthandoff: 04/05/2018
 选择“确定”。
 
 ![“新建 ASP.NET 项目”对话框](./media/app-service-web-get-started-dotnet/razor-pages-aspnet-dialog.png)
-
-创建 ASP.NET Core 项目后，将显示 ASP.NET Core 欢迎页上，其中提供了大量资源的链接来帮助用户入门。 
-
-![欢迎页](./media/app-service-web-get-started-dotnet/aspnet-core-welcome-page.png)
 
 在菜单中，选择“调试>启动但不调试”以在本地运行 Web 应用。
 
@@ -85,11 +78,10 @@ ms.lasthandoff: 04/05/2018
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-在“创建应用服务”对话框中，选择“添加帐户”，然后登录到你的 Azure 订阅。 如果已登录，请从下拉列表中选择包含所需订阅的帐户。
+在“创建应用服务”对话框中单击“添加帐户”，并登录到 Azure 订阅。 如果已登录，请从下拉列表中选择包含所需订阅的帐户。
 
 > [!NOTE]
 > 如果已经登录，请先不要选择“创建”。
->
 >
    
 ![登录 Azure](./media/app-service-web-get-started-dotnet/sign-in-azure.png)
@@ -112,10 +104,10 @@ ms.lasthandoff: 04/05/2018
 
 ![创建应用服务计划](./media/app-service-web-get-started-dotnet/configure-app-service-plan.png)
 
-| 设置 | 建议的值 | 说明 |
+| 设置 | 建议的值 | Description |
 |-|-|-|
 |应用服务计划| myAppServicePlan | 应用服务计划的名称。 |
-| Location | 欧洲西部 | 托管 Web 应用的数据中心。 |
+| 位置 | 西欧 | 托管 Web 应用的数据中心。 |
 | 大小 | 免费 | [定价层](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)确定托管功能。 |
 
 选择“确定”。
@@ -151,7 +143,8 @@ ms.lasthandoff: 04/05/2018
 
 若要重新部署到 Azure，请在“解决方案资源管理器”中右键单击“myFirstAzureWebApp”项目，然后选择“发布”。
 
-在发布页中选择“发布”。
+在“发布摘要”页中选择“发布”。
+![Visual Studio“发布摘要”页](./media/app-service-web-get-started-dotnet/publish-summary-page.png)
 
 发布完成后，Visual Studio 将启动浏览器并转到 Web 应用的 URL。
 

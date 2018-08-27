@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f4bae9ba41f61223a8e18e88e30b8fbf89eff1a9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: ce1586e472e1d1ea5ddd9ca5a426b1bea2b5b931
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527586"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42023561"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>使用 Azure 门户设置 IoT 中心设备预配服务
 
@@ -43,7 +43,7 @@ ms.locfileid: "39527586"
     * **位置**：选择离你的设备最近的位置。
     * **固定到仪表板：** 选择此选项会将实例固定到仪表板，使其更易于查找。
 
-    ![在门户边栏选项卡中输入 DPS 实例的基本信息](./media/quick-setup-auto-provision/create-iot-dps-portal.png)  
+    ![在门户边栏选项卡中输入有关设备预配服务实例的基本信息](./media/quick-setup-auto-provision/create-iot-dps-portal.png)  
 
 4. 成功部署服务以后，其摘要边栏选项卡会自动打开。
 
@@ -52,17 +52,17 @@ ms.locfileid: "39527586"
 
 在本部分中，你将向设备预配服务实例添加配置。 此配置设置将为其预配设备的 IoT 中心。
 
-1. 在 Azure 门户的左侧菜单中单击“所有资源”按钮。 选择在上一部分创建的设备预配服务实例。  
+1. 在 Azure 门户的左侧菜单中单击“所有资源”按钮。 选择在上一部分中创建的设备预配服务实例。  
 
 2. 在设备预配服务摘要边栏选项卡上，选择“链接的 IoT 中心”。 单击显示在顶部的“+ 添加”按钮。 
 
-3. 在“添加 IoT 中心的链接”页面上，提供以下信息来将新的设备预配服务实例链接到 IoT 中心。 然后单击“保存”。 
+3. 在“添加 IoT 中心的链接”页上，提供以下信息来将新的设备预配服务实例链接到 IoT 中心。 然后单击“保存”。 
 
     * **订阅：** 选择包含要与新的设备预配服务实例进行链接的 IoT 中心的订阅。
     * **IoT 中心：** 选择要与新的设备预配服务实例进行链接的 IoT 中心。
     * **访问策略：** 选择 **iothubowner** 作为用于与 IoT 中心建立链接的凭据。  
 
-    ![链接中心名称，以便链接到门户边栏选项卡中的 DPS 实例](./media/quick-setup-auto-provision/link-iot-hub-to-dps-portal.png)  
+    ![链接中心名称，以便链接到门户边栏选项卡中的设备预配服务实例](./media/quick-setup-auto-provision/link-iot-hub-to-dps-portal.png)  
 
 3. 此时会在“链接的 IoT 中心”边栏选项卡下看到所选中心。 可能需要单击“刷新”才能显示“链接的 IoT 中心”。
 

@@ -12,27 +12,26 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: c2071e662b50e57189e048b028fd5359482c817f
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 6120ef39c4eb91c4b595f6b97a0eb4b96621b6f2
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358643"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42145774"
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Microsoft Authenticator 应用常见问题解答
 
-本文解答了有关 Microsoft Authenticator 应用的常见问题。 如果没有看到所提问题的答案，请转到 [Microsoft Authenticator 应用论坛](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)。 此外，[使用手机登录时的常见问题解答](microsoft-authenticator-app-phone-signin-faq.md)中也提供了有关手机登录过程的详细信息。
+本文解答了有关 Microsoft Authenticator 应用的常见问题。 如果没有看到所提问题的答案，请转到 [Microsoft Authenticator 应用论坛](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)。
 
 Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使用 Azure 多重身份验证时使用该应用。 Microsoft Authenticator 应用适用于 [Android](https://go.microsoft.com/fwlink/?linkid=866594)、[iOS](https://go.microsoft.com/fwlink/?linkid=866594) 和 [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 |问题|解决方案|
 |--------|--------|
-|哪些数据是 Authenticator 以我的名义存储的，我如何删除它？| Microsoft Authenticator 应用存储添加帐户时创建的帐户信息。 使用该应用时，将会创建诊断日志用于调试，其中只存储有助于 Microsoft 诊断不可预见问题的数据。 可以打开该应用，并依次选择“帮助”、“发送日志”、“查看日志”按钮来查看日志数据。<br><br>在“帐户”屏幕上删除帐户磁贴可以删除所有数据，包括日志文件。 有关 Microsoft 如何使用数据的详细信息，请参阅[服务信任门户](https://servicetrust.microsoft.com/ViewPage/HomePage.)|
+|哪些数据是 Authenticator 以我的名义存储的，我如何删除它？|Microsoft Authenticator 应用收集三种类型的信息：<ul><li>你在添加帐户时提供的帐户信息。 可以通过删除帐户删除此数据。</li><li>诊断日志数据，该数据仅驻留在应用中，直到你通过应用的“帮助”菜单选择“发送日志”来将日志发送到 Microsoft。 这些日志文件包含诸如你的电子邮件地址（例如 alain@contoso.com）、服务器/IP 地址和设备数据（例如设备名称和操作系统版本）之类的个人数据，以及仅限用于帮助解决应用问题的个人数据。 任何时候都可以在应用中查看这些日志文件来查看所收集的信息。 如果你发送日志文件，则身份验证应用工程师可以使用它来解决客户报告的问题。</li><li>非个人识别使用情况数据，例如“已启动添加帐户流/已成功添加了帐户”或者“通知已批准”。 此数据是我们的工程决策不可或缺的一部分，并帮助我们确定哪些功能对你很重要，以及什么地方需要以应用更新的形式进行改进。 应用用户在首次启动应用时会看到有关此数据收集的通知，并且系统会告知用户可以在应用的“设置”页面上关闭此数据收集。 可以在任何时候启用或禁用此设置。</li></ul>|
 |此应用中的代码有哪些用途？|打开 Microsoft Authenticator 应用时，会看到已添加的帐户，它们以带有六位数或八位数编号的磁贴形式显示。<br><br>你将使用这些代码来验证自己声明的身份。 使用用户名和密码登录后，需要键入帐户磁贴中显示相同的验证码。 例如，如果以 Alain 的身份登录到 Contoso 帐户，应使用验证码 427303。<br><br>![应用中的“帐户”屏幕](./media/microsoft-authenticator-app-faq/auth-app-accounts.png)|
 |为何代码旁边的数字不断地倒计数？|活动验证码的旁边可能会出现 30 秒倒计时。 此计时器可防止使用同一代码登录两次。 与密码不同，你不需要记住此数字。 此机制确保只有有权访问你手机的人才知道验证码。|
 |帐户磁贴为何灰显？|某些组织要求 Microsoft Authenticator 应用使用单一登录并保护组织资源。 在此情况下，该帐户不会用于双重验证，并且灰显或处于非活动状态。 此类帐户往往称为“代理”帐户。|
-|所有图标的含义是什么？|![手机铵键图标](./media/microsoft-authenticator-app-faq/icon.png)<br>手机按键图标表示帐户已升级，可以使用无密码手机登录。 可以针对所有个人 Microsoft 帐户以及 Authenticator 应用中的单个工作或学校帐户启用此图标。 有关手机登录的详细信息，请参阅[使用手机（而不是密码）登录](microsoft-authenticator-app-phone-signin-faq.md)<br><br>![锁定图标](./media/microsoft-authenticator-app-faq/lock.png)<br>锁定图标表明工作或学校帐户已注册到组织。 组织可能希望你注册设备，以便知道哪些设备正在访问受保护的资源（例如文件和应用），并可能启用条件访问，以减少不当地访问这些资源的风险。|
 |什么是设备注册？|组织可能希望你注册设备，以便知道哪些设备正在访问受保护的资源（例如文件和应用），并可能启用条件访问，以减少不当地访问这些资源的风险。 可以使用“设置”来取消注册设备，但这可能会失去 Outlook 中电子邮件、OneDrive 中文件的访问权限，同时，可能无法使用手机登录。|
 |是否需要连接到 Internet 或网络才能获取和使用验证码？|无需连接到 Internet 或数据网络即可获取验证码，因此，无需手机服务即可登录。 此外，应用在关闭后会停止运行，因为不会耗尽电池。|
 |仅当应用处于打开状态时才会收到通知。 如果应用关闭，则无法收到通知。|如果接收的是通知而不是警报，则即使打开了铃声，也应该检查应用设置。 请确保在应用中启用声音或振动通知。 如果完全收不到通知，应检查是否存在以下情况：<ul><li>手机是否进入“免打扰”或“静音”模式？ 这些模式可能阻止应用发送通知。</li><li>是否能从其他应用收到通知？ 如果不能，原因可能是手机出现网络连接问题，或者 Android 或 Apple 的通知通道出现问题。 可以尝试通过手机设置解决网络连接问题，但可能需要联系服务提供商来帮助解决 Android 或 Apple 通知通道问题。</li><li>是否应用中的某些帐户可以收到通知，而其他帐户则不能？ 如果是，请从应用中删除有问题的帐户，然后再次添加并允许其发送通知，看看是否能解决问题。</li></ul>如果尝试了所有这些步骤但仍有问题，我们建议发送日志文件做诊断。 打开应用，转到“帮助”并选择“发送日志”。 然后，转到 [Microsoft Authenticator 应用论坛](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)告知遇到的问题，以及目前为止已尝试过的步骤。|
@@ -50,8 +49,6 @@ Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使�
 |我的 Apple Watch 伴侣应用已崩溃。 是否可以向你们发送崩溃日志以便调查？ |首先，请务必选择与我们共享分析数据。 如果你是 TestFlight 用户，则已注册。 否则，可以转到“设置”>“隐私”>“分析”，并同时选择“共享 iPhone 和 Watch 分析”和“与应用开发人员共享”选项。<br><br>注册后，可以尝试重现崩溃，因此自动将崩溃日志发送给我们进行调查。 但是，如果无法重现崩溃，可以手动复制日志文件并将其发送给我们。<ol><li>在手机上打开 Watch 应用，转到“设置”>“通用”，然后单击“复制 Watch 分析数据”。</li><li>在“设置”>“隐私”>“分析”>“分析数据”下找到相应的崩溃信息，然后手动复制整个文本。</li><li>在手机上打开 Microsoft Authenticator 应用，并将复制的文本粘贴到“发送日志”页上的“与应用开发人员共享”文本框中。</li></ol>|
 
 ## <a name="next-steps"></a>后续步骤
-
--   如果在手机登录方面还有其他问题，请参阅[使用手机（而不是密码）登录](microsoft-authenticator-app-phone-signin-faq.md)
 
 -   如需有关双重验证的详细信息，请参阅[为帐户设置双重验证](multi-factor-authentication-end-user-first-time.md)
 

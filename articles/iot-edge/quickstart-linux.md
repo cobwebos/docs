@@ -4,17 +4,17 @@ description: 本快速入门介绍如何将预生成的代码远程部署到 IoT
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/27/2018
+ms.date: 08/14/2018
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: dfcb764d75b7328d1234d47d82afdae8d6a0deef
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: af291782585cf0211cf8beac54adc36fd9fe0d34
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413008"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42022742"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>快速入门：将第一个 IoT Edge 模块部署到 Linux x64 设备
 
@@ -54,7 +54,9 @@ Azure IoT Edge 将云带来的价值转移至物联网设备。 本快速入门�
    az group create --name IoTEdgeResources --location westus
    ```
 
-* 充当 IoT Edge 设备的 Linux 虚拟机。 
+IoT Edge 设备：
+
+* 充当 IoT Edge 设备的 Linux 设备或虚拟机。 如果要在 Azure 中创建虚拟机，请使用以下命令快速入门：
 
    ```azurecli-interactive
    az vm create --resource-group IoTEdgeResources --name EdgeVM --image Canonical:UbuntuServer:16.04-LTS:latest --admin-username azureuser --generate-ssh-keys --size Standard_B1ms
@@ -78,10 +80,12 @@ Azure IoT Edge 将云带来的价值转移至物联网设备。 本快速入门�
 
 ## <a name="register-an-iot-edge-device"></a>注册 IoT Edge 设备
 
-使用新创建的 IoT 中心注册 IoT Edge 设备。
+使用新创建的 IoT 中心注册 IoT Edge 设备。 
 ![注册设备][4]
 
-为模拟设备创建设备标识，以便它可以与 IoT 中心通信。 由于 IoT Edge 设备的行为和托管方式与典型 IoT 设备不同，请从一开始就将此设备声明为 IoT Edge 设备。 
+为模拟设备创建设备标识，以便它可以与 IoT 中心通信。 设备标识存在于云中，而将物理设备关联到设备标识时，则使用唯一的设备连接字符串。 
+
+由于 IoT Edge 设备的行为和托管方式与典型 IoT 设备不同，请从一开始就将此设备声明为 IoT Edge 设备。 
 
 1. 在 Azure Cloud Shell 中输入以下命令，以便在中心创建名为 **myEdgeDevice** 的设备。
 
@@ -100,12 +104,14 @@ Azure IoT Edge 将云带来的价值转移至物联网设备。 本快速入门�
 
 ## <a name="install-and-start-the-iot-edge-runtime"></a>安装和启动 IoT Edge 运行时
 
-在设备上安装并启动 Azure IoT Edge 运行时。 
+在 IoT Edge 设备上安装并启动 Azure IoT Edge 运行时。 
 ![注册设备][5]
 
 IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 每次某个 Edge 设备在启动后通过启动 IoT Edge 代理来启动此设备时，**IoT Edge 安全守护程序**就会启动。 **IoT Edge 代理**协助部署和监视 IoT Edge 设备（包括 IoT Edge 中心）的模块。 IoT Edge 中心管理 IoT Edge 设备模块之间以及设备和 Azure IoT 中心之间的通信。 
 
-在为本快速入门准备的 Linux 计算机或 VM 中完成以下步骤。 
+在运行时配置期间，你提供设备连接字符串。 请使用从 Azure CLI 检索的字符串。 此字符串将物理设备与 Azure 中的 IoT Edge 设备标识关联在一起。 
+
+在准备用作 IoT Edge 设备的 Linux 计算机或 VM 中完成以下步骤。 
 
 ### <a name="register-your-device-to-use-the-software-repository"></a>注册设备，以便使用软件存储库
 
@@ -131,19 +137,19 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 �
 
 IoT Edge 运行时是一组容器，而部署到 IoT Edge 设备的逻辑则以容器形式打包。 通过安装容器运行时，针对这些组件准备设备。
 
-更新 **apt-get**。
+1. 更新 **apt-get**。
 
    ```bash
    sudo apt-get update
    ```
 
-安装容器运行时 **Moby**。
+2. 安装容器运行时 **Moby**。
 
    ```bash
    sudo apt-get install moby-engine
    ```
 
-安装 Moby 的 CLI 命令。 
+3. 安装 Moby 的 CLI 命令。 
 
    ```bash
    sudo apt-get install moby-cli
@@ -166,19 +172,26 @@ IoT Edge 运行时是一组容器，而部署到 IoT Edge 设备的逻辑则以�
    sudo nano /etc/iotedge/config.yaml
    ```
 
-3. 添加 IoT Edge 设备连接字符串。 找到变量 **device_connection_string**，将其值更新为注册设备后复制的字符串。
+3. 添加 IoT Edge 设备连接字符串。 找到变量 **device_connection_string**，将其值更新为注册设备后复制的字符串。 此连接字符串将物理设备与在 Azure 中创建的设备标识相关联。
 
 4. 保存并关闭该文件。 
 
    `CTRL + X`、`Y`、`Enter`
 
-4. 重启 IoT Edge 安全守护程序。
+5. 重启 IoT Edge 安全守护程序以应用更改。
 
    ```bash
    sudo systemctl restart iotedge
    ```
 
-5. 查看 Edge 安全守护程序是否正作为系统服务运行。
+>[!TIP]
+>需要提升的权限才能运行 `iotedge` 命令。 安装 IoT Edge 运行时后从计算机中注销并第一次重新登录后，你的权限将自动更新。 在此之前，请在命令前使用 **sudo**。 
+
+### <a name="view-the-iot-edge-runtime-status"></a>查看 IoT Edge 运行时状态
+
+验证是否已成功安装并配置运行时。
+
+1. 查看 Edge 安全守护程序是否正作为系统服务运行。
 
    ```bash
    sudo systemctl status iotedge
@@ -186,22 +199,21 @@ IoT Edge 运行时是一组容器，而部署到 IoT Edge 设备的逻辑则以�
 
    ![查看作为系统服务运行的 Edge 守护程序](./media/quickstart-linux/iotedged-running.png)
 
-   也可通过运行以下命令来查看 Edge 安全守护程序提供的日志：
+2. 若需排查服务问题，请检索服务日志。 
 
    ```bash
    journalctl -u iotedge
    ```
 
-6. 查看在设备上运行的模块。 
-
-   >[!TIP]
-   >首先，需使用 *sudo* 运行 `iotedge` 命令。 注销计算机后重新登录以更新权限，然后即可在不提升特权的情况下运行 `iotedge` 命令。 
+3. 查看在设备上运行的模块。 
 
    ```bash
    sudo iotedge list
    ```
 
    ![查看设备上的一个模块](./media/quickstart-linux/iotedge-list-1.png)
+
+IoT Edge 设备现在已配置好。 它可以运行云部署型模块了。 
 
 ## <a name="deploy-a-module"></a>部署模块
 
@@ -214,12 +226,11 @@ IoT Edge 运行时是一组容器，而部署到 IoT Edge 设备的逻辑则以�
 
 此快速入门中，创建了新的 IoT Edge 设备，并在该设备上安装了 IoT Edge 运行时。 然后，使用了 Azure 门户推送 IoT Edge 模块，使其在不更改设备本身的情况下在设备上运行。 这种情况下，推送的模块创建可用于本教程的环境数据。 
 
-在运行模拟设备的计算机上再次打开命令提示符。 确认从云中部署的模块正在 IoT Edge 设备上运行：
+再次打开 IoT Edge 设备上的命令提示符。 确认从云中部署的模块正在 IoT Edge 设备上运行：
 
    ```bash
    sudo iotedge list
    ```
-   先注销再登录以后，上述命令就不需要 *sudo*。
 
    ![查看设备上的三个模块](./media/quickstart-linux/iotedge-list-2.png)
 
@@ -234,7 +245,7 @@ IoT Edge 运行时是一组容器，而部署到 IoT Edge 设备的逻辑则以�
 
 如果在日志中看到的最后一行是 `Using transport Mqtt_Tcp_Only`，则说明温度传感器模块可能正等着连接到 Edge 中心。 尝试终止该模块，然后让 Edge 代理重启它。 可以使用 `sudo docker stop tempSensor` 命令来终止它。
 
-也可使用 [IoT 中心资源管理器工具][lnk-iothub-explorer]或 [Visual Studio Code 的 Azure IoT Toolkit 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)查看设备正发送的遥测数据。 
+还可以使用[用于 Visual Studio Code 的 Azure IoT Toolkit 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)来查看到达 IoT 中心的遥测数据。 
 
 
 ## <a name="clean-up-resources"></a>清理资源
@@ -278,7 +289,8 @@ IoT Edge 运行时是一组容器，而部署到 IoT Edge 设备的逻辑则以�
 删除容器运行时。
 
    ```bash
-   sudo apt-get remove --purge moby
+   sudo apt-get remove --purge moby-cli
+   sudo apt-get remove --purge moby-engine
    ```
 
 ## <a name="next-steps"></a>后续步骤
@@ -305,10 +317,9 @@ IoT Edge 运行时是一组容器，而部署到 IoT Edge 设备的逻辑则以�
 
 <!-- Links -->
 [lnk-docker-ubuntu]: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/ 
-[lnk-iothub-explorer]: https://github.com/azure/iothub-explorer
 [lnk-account]: https://azure.microsoft.com/free
 [lnk-portal]: https://portal.azure.com
-[lnk-delete]: https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az_iot_hub_delete
+[lnk-delete]: https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-delete
 
 <!-- Anchor links -->
 [anchor-register]: #register-an-iot-edge-device

@@ -1,24 +1,24 @@
 ---
-title: 为 Service Fabric 网格应用设置 Windows 开发环境 | Microsoft Docs
+title: 设置 Windows 开发环境以生成 Service Fabric 网格应用 | Microsoft Docs
 description: 设置 Windows 开发环境，以便可以创建 Service Fabric 网格应用程序并将其部署到 Azure Service Fabric 网格。
 services: service-fabric-mesh
 keywords: ''
 author: tylermsft
 ms.author: twhitney
-ms.date: 07/20/2018
+ms.date: 08/08/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: 589bef1894a3bee1e6974a0ea2516200fae2891f
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+manager: jeconnoc
+ms.openlocfilehash: e95c0ad90503410601cc0764fdc559579a1dd13d
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185537"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41920513"
 ---
-# <a name="set-up-your-windows-development-environment-to-build-service-fabric-applications"></a>设置 Windows 开发环境以生成 Service Fabric 应用程序
+# <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>设置 Windows 开发环境以生成 Service Fabric 网格应用
 
-若要在 Windows 开发计算机上生成并运行 Azure Service Fabric 应用，请安装 Service Fabric 运行时、SDK 和工具。
+若要在 Windows 开发计算机上生成并运行 Azure Service Fabric 网格应用程序，请安装 Service Fabric 网格运行时、SDK 和工具。
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
@@ -31,28 +31,30 @@ ms.locfileid: "39185537"
 
 ## <a name="visual-studio"></a>Visual Studio
 
-需有 Visual Studio 2017 才能部署 Service Fabric 应用。 [安装版本 15.6.0][download-visual-studio] 或更高版本，并启用以下工作负荷：
+需有 Visual Studio 2017 才能部署 Service Fabric 网格应用程序。 [安装版本 15.6.0][download-visual-studio] 或更高版本，并启用以下工作负荷：
 
-- ASP.NET 和 Web 开发
-- Azure 开发
- 
-## <a name="windows-10---install-docker"></a>Windows 10 - 安装 Docker
+* ASP.NET 和 Web 开发
+* Azure 开发
+
+## <a name="install-docker"></a>安装 Docker
+
+#### <a name="windows-10"></a>Windows 10
 
 下载并安装最新版本的 [Docker Community Edition for Windows][download-docker] 来支持 Service Fabric 网格使用的容器化 Service Fabric 应用。
 
-在安装过程中出现提示时，请选择“使用 Windows 容器而不是 Linux 容器”。 如果你的计算机上未启用 Hyper-V，则 Docker 安装将请求启用它。 如果出现提示，单击“确定”以执行此操作。
+在安装过程中出现提示时，请选择“使用 Windows 容器而不是 Linux 容器”。
 
-## <a name="windows-server-2016---install-hyper-v-and-docker"></a>Windows Server 2016 - 安装 Hyper-V 和 Docker
+如果计算机上未启用 Hyper-V，则 Docker 安装程序将建议启用它。 如果出现提示，单击“确定”以执行此操作。
 
-**安装 Hyper-V**
+#### <a name="windows-server-2016"></a>Windows Server 2016
 
-首先，以管理员身份打开 PowerShell 并运行以下命令来安装 HYPER-V 并重启计算机。 有关详细信息，请参阅 [Docker Enterprise Edition for Windows Server][download-docker-server]。
+如果未启用 Hyper-V 角色，请以管理员身份打开 PowerShell 并运行以下命令以启用 Hyper-V，然后重启计算机。 有关详细信息，请参阅 [Docker Enterprise Edition for Windows Server][download-docker-server]。
 
 ```powershell
 Install-WindowsFeature -Name Hyper-V -IncludeManagementTools
 ```
 
-**安装 Docker**
+重启计算机。
 
 以管理员身份打开 PowerShell 并运行以下命令来安装 Docker：
 
@@ -61,8 +63,6 @@ Install-Module DockerMsftProvider -Force
 Install-Package Docker -ProviderName DockerMsftProvider -Force
 Install-WindowsFeature Containers
 ```
-
-重启计算机。
 
 ## <a name="sdk-and-tools"></a>SDK 和工具
 

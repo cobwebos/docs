@@ -1,6 +1,6 @@
 ---
-title: Azure 快速入门 - 使用 Azure CLI 处理事件流 | Microsoft Docs
-description: 本快速入门介绍如何使用 Azure CLI 处理事件流。
+title: Azure 快速入门 - 使用 Azure CLI 创建事件中心 | Microsoft Docs
+description: 本快速入门介绍如何使用 Azure CLI 创建事件中心，然后使用 Java 发送和接收事件。
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/26/2018
 ms.author: shvija
-ms.openlocfilehash: 7a15b252727589194da90af729a74e1baad7094f
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 0607c9a65febdb5890eb49808a0fcef582deb37e
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004558"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42022383"
 ---
-# <a name="quickstart-process-event-streams-using-azure-cli-and-java"></a>快速入门：使用 Azure CLI 和 Java 处理事件流
+# <a name="quickstart-create-an-event-hub-using-azure-cli"></a>快速入门：使用 Azure CLI 创建事件中心
 
 Azure 事件中心是高度可缩放的数据流平台和引入服务，每秒能够接收和处理数百万个事件。 本快速入门介绍如何使用 Azure CLI 创建事件中心资源，然后使用 Java 代码发送事件流，以及事件中心接收事件流。
 

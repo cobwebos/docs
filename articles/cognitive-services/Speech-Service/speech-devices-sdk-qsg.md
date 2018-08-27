@@ -8,12 +8,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 266315a731eec8a2c0ab0a880ce9e1db58331184
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 463a015b7c01dafc5b30de56b95fa0510ffb98e4
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283130"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42424363"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>语音设备 SDK 入门
 
@@ -44,11 +44,11 @@ ms.locfileid: "39283130"
 
 ## <a name="set-up-the-development-kit"></a>设置开发工具包
 
-1. 插入开发工具包的电源适配器。 顶部板下的绿色电源指示器应亮起。
+1. 使用连接到电脑或电源适配器的微型 USB 电缆为开发工具包通电。 顶部板下的绿色电源指示器应亮起。
 
-1. 使用迷你 USB 电缆将开发工具包连接到计算机。
+1. 使用另一条微型 USB 电缆将开发工具包连接到计算机。
 
-    ![连接开发工具包](media/speech-devices-sdk/qsg-1.jpg)
+    ![连接开发工具包](media/speech-devices-sdk/qsg-1.png)
 
 1. 适当设置开发工具包方向。
 
@@ -57,7 +57,7 @@ ms.locfileid: "39283130"
     |环形|竖直，麦克风面向天花板|
     |线性|在其一端，麦克风面向你（如下所示）|
 
-    ![线性开发工具包方向](media/speech-devices-sdk/qsg-2.jpg)
+    ![线性开发工具包方向](media/speech-devices-sdk/qsg-2.png)
 
 1. 安装证书和唤醒字（关键字）表文件，并设置声音设备的权限。 在命令窗口中键入以下命令。
 
@@ -82,9 +82,22 @@ ms.locfileid: "39283130"
 
 1.  你的设备应列在“选择设备”下。 单击其旁边的“查看”按钮。 
  
-1.  通过单击“设置”，然后单击“WLAN”，连接到无线网络。
+1.  通过单击文件夹图标，然后依次单击“设置”和“WLAN”连接到无线网络。
 
     ![Vysor WLAN](media/speech-devices-sdk/qsg-4.png)
+ 
+ > [!NOTE]
+ > 如果你的公司有关于将设备连接到 wifi 系统的政策，则你需要获取 Mac 地址并联系你的 IT 部门来了解如何将它连接到你的 wifi 系统。 若要查找开发工具包的 Mac 地址，请在桌面上单击开发工具包的文件夹，然后单击“设置”，搜索“Mac 地址”，单击“Mac 地址”以进入“高级 WLAN”，记下在靠近底部位置发现的 Mac 地址。 另外，某些公司可能会限制设备可以连接到其 wifi 系统的时长。 在一定的天数后，你可能需要延长开发工具包在 wifi 系统中的注册。  
+ 
+ 
+   ![Vysor 文件夹](media/speech-devices-sdk/qsg-10.png)
+   
+   ![Vysor Mac 地址](media/speech-devices-sdk/qsg-11.png)
+   
+   
+ > 如果希望将扬声器连接到开发工具包，可以将其连接到音频线路输出。还应当选择高质量的 3.5mm 扬声器。
+ 
+   ![Vysor 音频](media/speech-devices-sdk/qsg-14.png)
  
 ## <a name="run-a-sample-application"></a>运行示例应用程序
 
@@ -126,7 +139,7 @@ ms.locfileid: "39283130"
         exit
         ```
 
-    * 将文件 `kws.table`、`kws_g.fst`、`kws_k.fst` 和 `words_kw.txt`) 复制到设备的 \data\keyword\ 文件夹。 在命令窗口中运行以下命令。
+    * 将文件 `kws.table`、`kws_g.fst`、`kws_k.fst` 和 `words_kw.txt`) 复制到设备的 \data\keyword\ 文件夹。 在命令窗口中运行以下命令。 如果已创建了[自定义唤醒字](speech-devices-sdk-create-kws.md)，则从 Web 生成的 kws.table 文件将与 `kws.table`、`kws_g.fst`、`kws_k.fst` 和 `words_kw.txt` 文件位于同一目录中。 请改用 adb push C:\SDSDK\Android-Sample-Release\keyword\[wake_word_name]\kws.table /data/keyword 命令将 kws.table 文件推送到开发工具包。
 
         ```
         adb push C:\SDSDK\Android-Sample-Release\keyword\kws.table /data/keyword
@@ -179,7 +192,11 @@ ms.locfileid: "39283130"
 
 ## <a name="troubleshooting"></a>故障排除
 
-如果在使用语音服务时发生证书故障，请确保设备具有正确的日期和时间。
+如果在使用语音服务时发生证书故障，请确保设备具有正确的日期和时间。 转到“设置”，在“系统”下单击“日期和时间”，并单击“选择时区”以选择你的当前时区。 使“自动日期和时间”保持开启。 当看到开发工具包的时间与你的电脑的时间匹配时，表明开发工具包已连接到 Internet。 
+
+ ![Vysor 文件夹](media/speech-devices-sdk/qsg-12.png)
+ 
+ ![Vysor 文件夹](media/speech-devices-sdk/qsg-13.png)
 
 有关更多开发信息，请参阅 Roobo 的[开发指南](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf)。
 

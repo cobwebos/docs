@@ -5,16 +5,16 @@ description: 存储帐户密钥在 Azure Key Vault 与 Azure 存储帐户基于�
 ms.topic: article
 services: key-vault
 ms.service: key-vault
-author: lleonard-msft
-ms.author: alleonar
+author: bryanla
+ms.author: bryanla
 manager: mbaldwin
-ms.date: 10/12/2017
-ms.openlocfilehash: 4f42a47a6d934bf0538efccbcf7f057fd28e2c03
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.date: 08/21/2017
+ms.openlocfilehash: 0112d48647c031845bc89ccebfcdd40954c59f14
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32179582"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42142340"
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Azure Key Vault 存储帐户密钥
 
@@ -38,8 +38,8 @@ Azure 存储帐户 (ASA) 密钥功能负责管理密钥轮换。 此外，它还
     - Azure Key Vault 定期重新生成（轮换）密钥。
     - 响应调用方时永远不会返回密钥值。
     - Azure Key Vault 管理存储帐户和经典存储帐户的密钥。
-- Azure Key Vault 允许保管库/对象所有者创建 SAS（帐户或服务 SAS）的定义。
-    - 通过 REST URI 路径以机密形式返回使用 SAS 定义创建的 SAS 值。 有关详细信息，请参阅 [Azure Key Vault 存储帐户操作](https://docs.microsoft.com/rest/api/keyvault/storage-account-key-operations)。
+- Azure Key Vault 允许保管库/对象所有者创建 SAS（共享访问签名、帐户或服务 SAS）的定义。
+    - 通过 REST URI 路径以机密形式返回使用 SAS 定义创建的 SAS 值。 有关详细信息，请参阅 [Azure Key Vault REST API 参考](/rest/api/keyvault)中的 SAS 定义操作。
 
 ## <a name="naming-guidance"></a>命名指南
 
@@ -97,7 +97,9 @@ accountSasCredential.UpdateSASToken(sasToken);
 
 ## <a name="getting-started"></a>入门
 
-### <a name="setup-for-role-based-access-control-rbac-permissions"></a>基于角色的访问控制 (RBAC) 权限的设置
+### <a name="give-key-vault-access-to-your-storage-account"></a>向 Key Vault 授予对你的存储帐户的访问权限 
+
+像许多应用程序一样，Key Vault 必须向 Azure AD 进行注册才能使用 OAuth 来访问其他服务。 在注册期间，会创建[服务主体](/azure/active-directory/develop/app-objects-and-service-principals)对象，该对象在运行时用来提供应用程序的标识。 服务主体还用来通过基于角色的访问控制 (RBAC) 授权应用程序的标识访问其他资源。
 
 Azure Key Vault 应用程序标识需要有权列出和重新生成存储帐户的密钥。 可使用以下步骤设置这些权限：
 
@@ -106,7 +108,7 @@ Azure Key Vault 应用程序标识需要有权列出和重新生成存储帐户�
 # Below, we are fetching a storage account using Azure Resource Manager
 $storage = Get-AzureRmStorageAccount -ResourceGroupName "mystorageResourceGroup" -StorageAccountName "mystorage"
 
-# Get ObjectId of Azure Key Vault Identity
+# Get Application ID of Azure Key Vault's service principal
 $servicePrincipal = Get-AzureRmADServicePrincipal -ServicePrincipalName cfa8b339-82a2-471a-a3c9-0fc0be7a4093
 
 # Assign Storage Key Operator role to Azure Key Vault Identity
@@ -118,7 +120,7 @@ New-AzureRmRoleAssignment -ObjectId $servicePrincipal.Id -RoleDefinitionName 'St
 
 ## <a name="working-example"></a>有效示例
 
-下面的示例展示了如何创建 Key Vault 托管 Azure 存储帐户和关联的共享访问签名 (SAS) 定义。
+下面的示例演示了如何创建 Key Vault 托管 Azure 存储帐户和关联的 SAS 定义。
 
 ### <a name="prerequisite"></a>先决条件
 
@@ -205,8 +207,9 @@ $writeSasToken = (Get-AzureKeyVaultSecret -VaultName $keyVaultName -SecretName "
 $context1 = New-AzureStorageContext -SasToken $readSasToken -StorageAccountName $storage.StorageAccountName
 $context2 = New-AzureStorageContext -SasToken $writeSasToken -StorageAccountName $storage.StorageAccountName
 
-Set-AzureStorageBlobContent -Container containertest1 -File "abc.txt" -Context $context1
-Set-AzureStorageBlobContent -Container cont1-file "file.txt" -Context $context2
+# Ensure the txt file in command exists in local path mentioned
+Set-AzureStorageBlobContent -Container containertest1 -File "./abc.txt" -Context $context1
+Set-AzureStorageBlobContent -Container cont1-file "./file.txt" -Context $context2
 ```
 
 可以使用拥有写权限的 SAS 令牌访问存储 blob 内容。
@@ -232,7 +235,7 @@ Set-AzureStorageBlobContent -Container cont1-file "file.txt" -Context $context2
 - Key Vault 会列出对存储帐户资源的 RBAC 权限。
 - Key Vault 会通过操作和非操作的正则表达式匹配来验证响应。
 
-可在 [Key Vault - 托管存储帐户密钥示例](https://github.com/Azure/azure-sdk-for-net/blob/psSdkJson6/src/SDKs/KeyVault/dataPlane/Microsoft.Azure.KeyVault.Samples/samples/HelloKeyVault/Program.cs#L167)中找到一些支持示例。
+可在 [Key Vault - 托管存储帐户密钥示例](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)中找到一些支持示例。
 
 如果该标识没有“重新生成”权限，或者 Key Vault 第一方标识没有“列出”或“重新生成”权限，则登记请求会失败，并返回相应的错误代码和消息。
 

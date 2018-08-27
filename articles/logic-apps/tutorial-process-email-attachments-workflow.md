@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
-ms.openlocfilehash: 133cc9d8fa52bb655e9baaad53ee157fdc7524f7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d07342bac3f76472a4783c28cac0741906049bb2
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429407"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41920971"
 ---
 # <a name="process-emails-and-attachments-with-azure-logic-apps"></a>使用 Azure 逻辑应用处理电子邮件和附件
 
@@ -56,7 +56,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 可以在 [Azure 存储容器](../storage/common/storage-introduction.md)中以 Blob 形式保存传入电子邮件和附件。 
 
-1. 请先使用以下设置[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)，然后才能创建存储容器：
+1. 请先使用以下设置[创建存储帐户](../storage/common/storage-quickstart-create-account.md)，然后才能创建存储容器：
 
    | 设置 | 值 | 说明 | 
    |---------|-------|-------------| 

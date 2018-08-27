@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 9d60b85051ff6e24c64f074ccd4fad055ba47ae8
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 18f4d2656ec7f027557d73959531b781be1d8d44
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523574"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42022516"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-preview-storage-account"></a>快速入门：创建 Azure Data Lake Storage Gen2 预览版存储帐户
 
@@ -114,15 +114,6 @@ Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 �
 2. 找到要删除的资源组，右键单击列表右侧的“更多”按钮 (**...**)。
 3. 选择“删除资源组”并进行确认。
 
-
-## <a name="upgrade-your-powershell-module"></a>升级 powershell 模块
-
-若要通过 PowerShell 来与 Data Lake Storage Gen2 交互，必须将模块升级到预览版。
-
-为此，请打开提升的 PowerShell 并输入以下命令：`Install-Module AzureRM.Storage –Repository PSGallery -RequiredVersion 5.0.4-preview –AllowPrerelease –AllowClobber –Force `
-
-然后重启 shell。
-
 ## <a name="create-an-account-using-powershell"></a>使用 PowerShell 创建帐户
 
 使用 `Login-AzureRmAccount` 命令登录到 Azure 订阅，然后按照屏幕上的说明进行身份验证。
@@ -130,6 +121,14 @@ Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 �
 ```powershell
 Login-AzureRmAccount
 ```
+
+### <a name="upgrade-your-powershell-module"></a>升级 powershell 模块
+
+若要通过 PowerShell 来与 Data Lake Storage Gen2 交互，必须将模块升级到预览版。
+
+为此，请打开提升的 PowerShell 并输入以下命令：`Install-Module AzureRM.Storage –Repository PSGallery -RequiredVersion 5.0.4-preview –AllowPrerelease –AllowClobber –Force `
+
+然后重启 shell。
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
@@ -170,13 +169,7 @@ New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-## <a name="upgrade-your-cli-module"></a>升级 CLI 模块
-
-若要通过 CLI 来与 Data Lake Storage Gen2 交互，必须将扩展添加到 shell。
-
-为此，请使用 Cloud Shell 或本地 shell 输入以下命令：`az extension add --name storage-preview`
-
-## <a name="create-an-account-using-azure-cli"></a>使用 Azure CLI 创建帐户 
+## <a name="create-an-account-using-azure-cli"></a>使用 Azure CLI 创建帐户
 
 若要启动 Azure Cloud Shell，请登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -186,9 +179,15 @@ Remove-AzureRmResourceGroup -Name $resourceGroup
 az login
 ```
 
+### <a name="upgrade-your-cli-module"></a>升级 CLI 模块
+
+若要通过 CLI 来与 Data Lake Storage Gen2 交互，必须将扩展添加到 shell。
+
+为此，请使用 Cloud Shell 或本地 shell 输入以下命令：`az extension add --name storage-preview`
+
 ### <a name="create-a-resource-group"></a>创建资源组
 
-若要通过 Azure CLI 创建新的资源组，请使用 [az group create](/cli/azure/group#az_group_create) 命令。 
+若要通过 Azure CLI 创建新的资源组，请使用 [az group create](/cli/azure/group#az_group_create) 命令。
 
 ```azurecli-interactive
 az group create \

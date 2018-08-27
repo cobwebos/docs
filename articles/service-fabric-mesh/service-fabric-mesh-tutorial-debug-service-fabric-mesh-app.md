@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/17/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ad6812f25ee33bf723ed86d4ec32ca6898d01774
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: c519d24a8401823039f3d6598276890ec6498bbc
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186732"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41918433"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-web-application"></a>教程：调试 Service Fabric 网格 Web 应用程序
 
@@ -74,9 +74,17 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 
 **调试提示**
 
-* 如果收到“未运行任何 Service Fabric 本地群集”错误，请确保服务本地群集管理器 (SLCM) 正在运行，然后右键单击任务栏中的 SLCM 图标，并单击“启动本地群集”。 启动本地群集后，返回 Visual Studio 并按 **F5**。
-* 如果启动应用时收到 **404** 错误，可能表示 **service.yaml** 中的环境变量不正确。 请确保根据[创建环境变量](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore#create-environment-variables)中的说明正确设置 `ApiHostPort` 和 `ServiceName`。
-* 如果 **service.yaml** 中出现生成错误，请确保使用空格而不是制表符来缩进代码行。 此外，目前必须使用英语区域设置来构建应用。
+目前存在导致调用 `using (HttpResponseMessage response = client.GetAsync("").GetAwaiter().GetResult())` 无法连接到服务的问题。 只要主机 IP 地址发生变化，就会发生这种情况。 若要解决此问题：
+
+1. 从本地群集中删除应用（在 Visual Studio 中**生成** > **清理解决方案**）。
+2. 从 Service Fabric 本地群集管理器中，选择“停止本地群集”，然后选择“启动本地群集”。
+3. 重新部署应用（在 Visual Studio 中为 **F5**）。
+
+如果收到“未运行任何 Service Fabric 本地群集”错误，请确保 Service Fabric 本地群集管理器 (LCM) 正在运行，然后右键单击任务栏中的 LCM 图标，并单击“启动本地群集”。 启动本地群集后，返回 Visual Studio 并按 **F5**。
+
+如果启动应用时收到 **404** 错误，可能表示 **service.yaml** 中的环境变量不正确。 请确保根据[创建环境变量](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore#create-environment-variables)中的说明正确设置 `ApiHostPort` 和 `ToDoServiceName`。
+
+如果 **service.yaml** 中出现生成错误，请确保使用空格而不是制表符来缩进代码行。 此外，目前必须使用英语区域设置来构建应用。
 
 ### <a name="debug-in-visual-studio"></a>在 Visual Studio 中进行调试
 

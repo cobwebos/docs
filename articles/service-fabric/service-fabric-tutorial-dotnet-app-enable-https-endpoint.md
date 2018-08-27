@@ -1,6 +1,6 @@
 ---
-title: 将 HTTPS 终结点添加到 Azure 中的 Service Fabric 应用 |Microsoft Docs
-description: 本教程介绍如何向 ASP.NET Core 前端 Web 服务添加 HTTPS 终结点，以及如何将应用程序部署到群集。
+title: 使用 Kestrel 将 HTTPS 终结点添加到 Azure 中的 Service Fabric 应用 | Microsoft Docs
+description: 本教程介绍如何使用 Kestrel 向 ASP.NET Core 前端 Web 服务添加 HTTPS 终结点，以及如何将应用程序部署到群集。
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 04/12/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 309a43d3383658029f4fe7f90f869888bac67bb1
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 70bbeabe2c2b14e8e0dcccac9ffa63f2e19230a2
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130044"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41919363"
 ---
-# <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service"></a>教程：向 ASP.NET Core Web API 前端服务添加 HTTPS 终结点
+# <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>教程：使用 Kestrel 向 ASP.NET Core Web API 前端服务添加 HTTPS 终结点
 
 本教程是一个系列中的第三部分。  你将了解如何在 ASP.NET Core 服务（在 Service Fabric 上运行）中启用 HTTPS。 完成后，你会有一个通过已启用 HTTPS 的 ASP.NET Core Web 前端在端口 443 上进行侦听的投票应用程序。 如果不希望根据[生成 .NET Service Fabric 应用程序](service-fabric-tutorial-deploy-app-to-party-cluster.md)中的说明手动创建投票应用程序，可以[下载源代码](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)（适用于已完成的应用程序）。
 

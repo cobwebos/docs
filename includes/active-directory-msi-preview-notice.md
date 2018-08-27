@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: daveba
 ms.custom: include file
-ms.openlocfilehash: e1f55b26e7e9f76ae4bc3f6d4af98c8110c3d37a
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 3004e2e4db12b7b5beb7ab024562d4e285c99a50
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399968"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "40237522"
 ---
 |  |
 |--|
-|托管服务标识是 Azure Active Directory 的公共预览版功能。 在开始之前，请确保已查看[已知问题](/azure/active-directory/managed-service-identity/known-issues)。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
+|托管服务标识是 Azure Active Directory 的功能。 每个[支持托管服务标识的 Azure 服务](/azure/active-directory/managed-service-identity/services-support-msi)都受其自己的时间线限制。 在开始之前，请务必查看资源的托管标识的[可用性](/azure/active-directory/managed-service-identity/services-support-msi)状态以及[已知问题](/azure/active-directory/managed-service-identity/known-issues)。|
 |  |

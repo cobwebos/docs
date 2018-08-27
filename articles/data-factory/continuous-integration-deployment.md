@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 08/16/2018
 ms.author: douglasl
-ms.openlocfilehash: c3aeb57bf9c613da3edb8c5dda0e88aa308a4b6e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8bbc64a34b5ae95e044b95f921770adc9045574c
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448435"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42142276"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>在 Azure 数据工厂中进行持续集成和部署
 
@@ -47,6 +47,10 @@ ms.locfileid: "39448435"
 选择“加载文件”，以便选择导出的资源管理器模板并提供所有配置值（例如，链接服务）。
 
 ![](media/continuous-integration-deployment/continuous-integration-image5.png)
+
+**连接字符串**。 可以在关于各个连接器的文章中找到创建连接字符串所需的信息。 例如，对于 Azure SQL 数据库，请参阅[使用 Azure 数据工厂向/从 Azure SQL 数据库复制数据](connector-azure-sql-database.md)。 若要验证正确的连接字符串（例如，针对链接的服务），还可以在数据工厂 UI 中打开资源的代码视图。 但是，在代码视图中，连接字符串的密码或帐户密钥部分已删除。 若要打开代码视图，请选择下面的屏幕截图中突出显示的图标。
+
+![打开代码视图来查看连接字符串](media/continuous-integration-deployment/continuous-integration-codeview.png)
 
 ## <a name="continuous-integration-lifecycle"></a>持续集成生命周期
 下面是持续集成和部署的整个生命周期。使用此类集成和部署的前提是在数据工厂 UI 中启用 VSTS GIT 集成：
@@ -174,11 +178,7 @@ ms.locfileid: "39448435"
 
 可以在部署后按照类似的步骤并使用类似的代码（通过 `Start-AzureRmDataFactoryV2Trigger` 函数）来重启触发器。
 
-## <a name="sample-template-and-script"></a>示例模板和脚本
-下面是两个示例，可以用来作为数据工厂的持续集成和部署的入门：
-
--   一个可以在 VSTS 中导入的示例部署模板。
--   一个示例脚本，用于在部署之前停止触发器并随后重启触发器。 此脚本还包括用于删除已删除资源的代码。
+## <a name="sample-deployment-template"></a>示例部署模板
 
 下面是一个可以在 VSTS 中导入的示例部署模板。
 
@@ -718,7 +718,9 @@ ms.locfileid: "39448435"
 }
 ```
 
-下面是一个示例脚本，用于在部署之前停止触发器并随后重启触发器：
+## <a name="sample-script-to-stop-and-restart-triggers-and-clean-up"></a>用来停止和重启触发器以及进行清理的示例脚本
+
+下面是一个示例脚本，用于在部署之前停止触发器并随后重启触发器。 此脚本还包括用于删除已移除资源的代码。
 
 ```powershell
 param

@@ -4,17 +4,17 @@ description: 本快速入门介绍如何开始创建流分析作业、配置输�
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 05/11/2018
+ms.date: 08/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: 830b3d4226440a68c7de62170d2ffc28082315c2
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 1e466b2945793f866aad4e6f0ace3d7379226830
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902898"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42022382"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建流分析作业
 
@@ -34,7 +34,7 @@ ms.locfileid: "37902898"
 
    ```json
    {
-     "time": "2018-01-26T21:18:52.0000000",
+     "time": "2018-08-19T21:18:52.0000000",
      "dspl": "sensorC",
      "temp": 87,
      "hmdt": 44
@@ -146,6 +146,16 @@ ms.locfileid: "37902898"
 3. 在此示例中，查询从 Blob 读取数据，然后将其复制到 Blob 中的新文件。请选择“保存”。  
 
    ![配置作业转换](./media/stream-analytics-quick-create-portal/configure-job-transformation.png)
+
+## <a name="configure-late-arrival-policy"></a>配置延迟到达策略
+
+1. 导航到此前创建的的流分析作业。
+
+2. 在“配置”下，选择“事件排序”。
+
+3. 将“延迟到达的事件”设置为 20 天，然后选择“保存”。
+
+   ![配置延迟到达策略](./media/stream-analytics-quick-create-portal/configure-late-policy.png)
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>启动流分析作业并检查输出
 

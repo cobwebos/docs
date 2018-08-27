@@ -9,12 +9,12 @@ ms.date: 06/26/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: fa01d2d3f4ab3923129ab1690477d5a8af82d4df
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1bd6f048682b93e3dfa1e19f6b3c50bff2ed232e
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448896"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "41920951"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>教程：使用 SQL Server 数据库在边缘存储数据
 
@@ -36,8 +36,7 @@ ms.locfileid: "39448896"
 
 Azure IoT Edge 设备：
 
-* 可以按照适用于 [Linux](quickstart-linux.md) 的快速入门中的步骤，将开发计算机或虚拟机用作 Edge 设备。
-* 用于 IoT Edge 的 Python 模块不支持 ARM 处理器或 Windows 设备。
+* 可以按照适用于 [Linux](quickstart-linux.md) 或 [Windows 设备](quickstart.md)的快速入门中的步骤，将开发计算机或虚拟机用作 Edge 设备。
 
 云资源：
 
@@ -341,45 +340,13 @@ Azure IoT Edge 设备：
 
 ## <a name="clean-up-resources"></a>清理资源
 
-[!INCLUDE [iot-edge-quickstarts-clean-up-resources](../../includes/iot-edge-quickstarts-clean-up-resources.md)]
+如果打算继续学习下一篇建议的文章，可以保留已创建的资源和配置，以便重复使用。 还可以继续使用相同的 IoT Edge 设备作为测试设备。 
 
-删除基于 IoT 设备平台（Linux 或 Windows）的 IoT Edge 服务运行时。
+否则，可以删除本文中创建的本地配置和 Azure 资源，以避免收费。 
 
-#### <a name="windows"></a>Windows
+[!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-删除 IoT Edge 运行时。
-
-```Powershell
-stop-service iotedge -NoWait
-sleep 5
-sc.exe delete iotedge
-```
-
-删除在设备上创建的容器。 
-
-```Powershell
-docker rm -f $(docker ps -a --no-trunc --filter "name=edge" --filter "name=tempSensor")
-```
-
-#### <a name="linux"></a>Linux
-
-删除 IoT Edge 运行时。
-
-```bash
-sudo apt-get remove --purge iotedge
-```
-
-删除在设备上创建的容器。 
-
-```bash
-sudo docker rm -f $(sudo docker ps -a --no-trunc --filter "name=edge" --filter "name=tempSensor")
-```
-
-删除容器运行时。
-
-```bash
-sudo apt-get remove --purge moby
-```
+[!INCLUDE [iot-edge-clean-up-local-resources](../../includes/iot-edge-clean-up-local-resources.md)]
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: Azure 快速入门 - 将 Azure Web 应用程序配置为从 Key Vault 设置和检索机密 | Microsoft Docs
-description: 介绍如何将 ASP.Net Core 应用程序配置为从 Key Vault 设置和检索机密的快速入门
+title: 快速入门 - 使用 Node Web 应用在 Azure Key Vault 中设置和检索机密 | Microsoft Docs
+description: 快速入门 - 使用 Node Web 应用在 Azure Key Vault 中设置和检索机密
 services: key-vault
 author: prashanthyv
 manager: sumedhb
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 07/24/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 8b5624ae3083d92213b4ee919dc0860bf5ff4ab7
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 0188d06e5c58287e1040f6a15456d3ffe291b04a
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480196"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42022739"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-a-net-web-app"></a>快速入门：使用 .NET Web 应用在 Azure Key Vault 中设置和检索机密
 
@@ -28,7 +28,10 @@ ms.locfileid: "39480196"
 > * [启用托管服务标识](../active-directory/managed-service-identity/overview.md)。
 > * 授予所需的权限，让 Web 应用程序从 Key Vault 读取数据。
 
-在继续下一步之前，请阅读[基本概念](key-vault-whatis.md#basic-concepts)，尤其是[托管服务标识](../active-directory/managed-service-identity/overview.md)
+在我们进一步讨论之前，请阅读[基本概念](key-vault-whatis.md#basic-concepts)。
+
+>[!NOTE]
+若要理解为什么以下教程是最佳做法，我们需要了解一些概念。 Key Vault 是一个以编程方式存储机密的中央存储库。 但要这样做，应用程序/用户需要首先向 Key Vault 进行身份验证，即提供机密。 为了遵循安全最佳做法，第一个机密也需要定期轮换。 但是，在 Azure 中运行的[托管服务标识](../active-directory/managed-service-identity/overview.md)应用程序将获得由 Azure 自动管理的标识。 这有助于解决**机密采用问题**，其中用户/应用程序可以遵循最佳做法，而不必担心轮换第一个机密
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -165,6 +168,8 @@ az webapp identity assign --name "keyvaultdotnetcorequickstart" --resource-group
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --secret-permissions get
 
 ```
+
+**现在运行应用程序时，应该会看到检索到的机密值**
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Log Analytics 中开始使用 Analytics 门户 | Microsoft Docs
-description: 本文提供有关在 Log Analytics 中使用 Analytics 门户编写查询的教程。
+title: Azure 门户中的 Log Analytics 页面入门 | Microsoft Docs
+description: 本文提供了有关使用 Log Analytics 页面编写查询的教程。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/06/2018
+ms.date: 08/20/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 6f6916b27aa251bc0a0c25be060378c11faab607
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 493497476fdfe7d96d6f2dde735bab0147e547a7
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39631984"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42144255"
 ---
-# <a name="get-started-with-the-analytics-portal"></a>Analytics 门户入门
+# <a name="get-started-with-the-log-analytics-page-in-the-azure-portal"></a>Azure 门户中的 Log Analytics 页面入门
 
-本教程介绍如何使用 Analytics 门户编写 Azure Log Analytics 查询。 具体内容包括：
+在本教程中，你将学习如何使用 Azure 门户中的 Log Analytics 页面（当前为预览版）编写 Log Analytics 查询。 具体内容包括：
 
 - 编写简单的查询
 - 了解数据的架构
@@ -35,12 +35,12 @@ ms.locfileid: "39631984"
 - 导出和共享查询
 
 
-## <a name="meet-the-analytics-portal"></a>Analytics 门户概观
-Analytics 门户是用于编写和执行 Azure Log Analytics 查询的 Web 工具。 
+## <a name="meet-the-log-analytics-page"></a>初识 Log Analytics 页面 
+Log Analytics 页面是用于编写和执行 Azure Log Analytics 查询的 Web 工具。 通过在 Log Analytics 菜单中选择“日志(预览版)”将其打开。 它将启动并显示一个新的空白查询。
 
 ![主页](media/get-started-analytics-portal/homepage.png)
 
-在主页中可以轻松访问有用的资源，例如最近打开的和已保存的查询，以及示例。 打开新选项卡可以开始编写自己的查询。
+
 
 ## <a name="basic-queries"></a>基本查询
 查询可用于搜索字词、识别趋势、分析模式，以及基于数据提供其他许多见解。 从基本查询着手：
@@ -83,7 +83,7 @@ search in (Event) "error"
 Event
 ```
 
-Analytics 门户会按以下依据自动限定结果的范围：
+Log Analytics 页面会按以下依据自动限定结果的范围：
 
 - 时间范围：默认情况下，查询限制为过去 24 小时。
 - 结果数：结果数限制为最多 10,000 条记录。
@@ -121,7 +121,7 @@ Analytics 门户会按以下依据自动限定结果的范围：
 
 
 ## <a name="select-a-time-range"></a>选择时间范围
-默认情况下，Analytics 门户应用“过去 24 小时”时间范围。 若要使用不同的范围，请通过时间选取器选择另一个值，然后单击“运行”。 除预设值以外，还可以使用“自定义时间范围”选项来选择查询的绝对范围。
+默认情况下，Log Analytics 页面应用“过去 24 小时”时间范围。 若要使用不同的范围，请通过时间选取器选择另一个值，然后单击“运行”。 除预设值以外，还可以使用“自定义时间范围”选项来选择查询的绝对范围。
 
 ![时间选取器](media/get-started-analytics-portal/time-picker.png)
 
@@ -183,7 +183,7 @@ Log Analytics 查询始终保存到选定的工作区中，并与该工作区的
 ![查询资源管理器](media/get-started-analytics-portal/query-explorer.png)
 
 ## <a name="export-and-share-as-link"></a>作为链接导出和共享
-Analytics 门户支持多种导出方法：
+Log Analytics 页面支持多种导出方法：
 
 - Excel：将结果保存为 CSV 文件。
 - Power BI：将结果导出到 Power BI。 有关详细信息，请参阅[将 Azure Log Analytics 数据导入 Power BI](../log-analytics-powerbi.md)。

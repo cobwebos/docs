@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 336e6e163178cd6d244460dbf9bee2a5bc9d714e
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: e8005da056c08b21bf0b91dc71b3dafac281de1f
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37935764"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "40237568"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>有关 Azure IaaS VM 磁盘以及托管和非托管高级磁盘的常见问题解答
 
@@ -67,7 +67,7 @@ ms.locfileid: "37935764"
 
 托管磁盘是否是 Azure 门户中的默认选项？
 
-是的。 
+是的。
 
 是否可以创建一个空托管磁盘？
 
@@ -101,7 +101,6 @@ ms.locfileid: "37935764"
 
 是的，非托管磁盘和托管磁盘均受支持。 我们建议你对新的工作负荷使用托管磁盘，并将当前的工作负荷迁移到托管磁盘。
 
-
 如果创建 128 GB 磁盘，然后将大小增加到 130 GB，是否会针对下一磁盘大小 (256 GB) 进行收费？
 
 是的。
@@ -130,23 +129,24 @@ Azure 托管磁盘当前仅支持本地冗余存储托管磁盘。
 
 不是。
 
+**基于 blob 创建磁盘时，与该源 blob 之间是否会一直保持任何现有关系？**
+
+否，创建新磁盘时，它是该 blob 在该时间的完整独立副本，两者之间没有联系。 如果你愿意，可以在创建磁盘后删除源 blob，这对新创建的磁盘没有任何影响。
+
+**创建托管或非托管磁盘后，是否可以对其进行重命名？**
+
+对于托管磁盘，无法对其进行重命名。 但是，可以对非托管磁盘进行重命名，只要它当前未附加到 VHD 或 VM。
+
 ## <a name="standard-ssd-disks-preview"></a>标准 SSD 盘（预览）
 
 Azure 标准 SSD 盘是什么？
 标准 SSD 盘是受固态介质支持的标准磁盘，经过优化而作为在较低 IOPS 级别需要一致性能的工作负载的高性价比存储。 在预览期间，标准 SSD 盘已在有限数量的区域内推出，其具有有限的可管理性（通过资源管理器模板提供）。
 
-<a id="standard-ssds-azure-regions"></a>当前支持标准 SSD 盘（预览）的区域有哪些？
-* 北欧
-* 法国中部
-* 美国东部 2
-* 美国中部
-* 加拿大中部
-* 东亚
-* 韩国南部
-* 澳大利亚东部
+<a id="standard-ssds-azure-regions"></a>**当前支持标准 SSD 盘的区域有哪些？**
+所有 Azure 区域现在都支持标准 SSD 盘。
 
 如何创建标准 SSD 盘？
-目前可以使用 Azure 资源管理器模板创建标准 SSD 盘。 以下为创建标准 SSD 盘时资源管理器模板中所需的参数：
+可以使用 Azure 资源管理器模板、SDK、PowerShell 或 CLI 创建标准 SSD 盘。 以下为创建标准 SSD 盘时资源管理器模板中所需的参数：
 
 * Microsoft.Compute 的 apiVersion 必须设置为 `2018-04-01`（或更高）
 * 将 managedDisk.storageAccountType 指定为 `StandardSSD_LRS`
@@ -171,17 +171,20 @@ Azure 标准 SSD 盘是什么？
 可以。 请参阅[将 Azure 托管磁盘存储从标准转换为高级，反之亦然](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/convert-disk-storage)，以了解有关转换托管磁盘的常规指南。 此外，使用以下值将磁盘类型更新为标准 SSD。
 -AccountType StandardSSD_LRS
 
+**使用标准 SSD 盘而不使用 HDD 的好处是什么？**
+与 HDD 磁盘相比，标准 SSD 盘可以提供更好的延迟、一致性、可用性和可靠性。 因此，应用程序工作负荷可以更平稳地在标准 SSD 上运行。 注意，高级 SSD 盘是适用于大多数 IO 密集型生产工作负荷的建议解决方案。 
+
 是否可将标准 SSD 用作非托管磁盘？
 不可以，标准 SSD 盘仅可用作托管磁盘。
 
 标准 SSD 磁盘是否支持“单实例 VM SLA”？
 不是，标准 SSD 没有单实例 VM SLA。 将高级 SSD 磁盘用于单实例 VM SLA。
 
-## <a name="migrate-to-managed-disks"></a>迁移到托管磁盘 
+## <a name="migrate-to-managed-disks"></a>迁移到托管磁盘
 
 迁移到托管磁盘之前/之后，需要在现有的 Azure 备份服务配置中进行哪些更改？
 
-不需要进行任何更改。 
+不需要进行任何更改。
 
 在迁移之前通过 Azure 备份服务创建的 VM 备份是否可继续工作？
 
@@ -189,15 +192,15 @@ Azure 标准 SSD 盘是什么？
 
 迁移到托管磁盘之前/之后，需要在现有的 Azure 磁盘加密配置中进行哪些更改？
 
-不需要进行任何更改。 
+不需要进行任何更改。
 
 是否支持将现有虚拟机规模集从非托管磁盘自动迁移到托管磁盘？
 
-不可以。 可以使用包含非托管磁盘的旧规模集中的映像创建包含托管磁盘的新规模集。 
+不可以。 可以使用包含非托管磁盘的旧规模集中的映像创建包含托管磁盘的新规模集。
 
 是否可以通过迁移到托管磁盘之前创建的页 Blob 快照创建托管磁盘？
 
-不可以。 可将页 Blob 快照导出为页 Blob，然后从导出的页 Blob 创建托管磁盘。 
+不可以。 可将页 Blob 快照导出为页 Blob，然后从导出的页 Blob 创建托管磁盘。
 
 是否可将 Azure Site Recovery 保护的本地计算机故障转移到包含托管磁盘的 VM？
 
@@ -211,7 +214,7 @@ Azure 标准 SSD 盘是什么？
 
 是
 
-## <a name="managed-disks-and-storage-service-encryption"></a>托管磁盘和存储服务加密 
+## <a name="managed-disks-and-storage-service-encryption"></a>托管磁盘和存储服务加密
 
 创建托管磁盘时，是否会默认启用 Azure 存储服务加密？
 

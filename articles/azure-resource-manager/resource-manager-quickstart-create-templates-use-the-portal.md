@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 07/17/2018
+ms.date: 08/22/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: d5bb5ed45363216bb1bcd39f85157a3eed68c2f9
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: fcae6d656f6e309b0fdcd60db743d3bebf3cd5a9
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126835"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617032"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板
 
@@ -78,7 +78,9 @@ Resource Manager 模板为 JSON 文件，用于定义针对解决方案进行部
 
 ## <a name="edit-and-deploy-the-template"></a>编辑和部署模板
 
-在本部分，我们将从模板库打开保存的模板、在门户中编辑该模板，然后部署修改后的模板。 若要编辑更复杂的模板，请考虑使用 Visual Studio Code，因为它提供更丰富的编辑功能。
+在本部分，我们将从模板库打开保存的模板、在门户中编辑该模板，然后部署修改后的模板。 若要编辑更复杂的模板，请考虑使用 [Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)，因为它提供更丰富的编辑功能。
+
+Azure 要求每个 Azure 服务都具有唯一的名称。 如果输入已存在的存储帐户名，则部署将失败。 若要避免此问题，可以使用模板函数调用 uniquestring()，以生成唯一的存储帐户名。
 
 1. 在 Azure 门户上的左侧菜单中选择“所有服务”，在筛选框中输入“模板”，然后选择“模板(预览版)”。
 
@@ -162,7 +164,7 @@ Resource Manager 模板为 JSON 文件，用于定义针对解决方案进行部
 8. 选择“部署”。
 9. 输入以下值：
 
-    - **订阅**：选择自己的 Azure 订阅。
+    - **订阅**：选择 Azure 订阅。
     - **资源组**：使用唯一的名称为资源组命名。
     - **位置**：选择资源组的位置。
     - **位置**：选择存储帐户的位置。  可以使用与资源组相同的位置。
@@ -177,6 +179,14 @@ Resource Manager 模板为 JSON 文件，用于定义针对解决方案进行部
 
 10. 选择“购买”。
 11. 选择屏幕顶部的铃铛图标（通知）可查看部署状态。
+
+    ![Azure 资源管理器模板部署通知](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-portal-notification.png)
+
+12. 从通知窗格选择“转到资源组”。 将看到类似于以下的屏幕：
+
+    ![Azure 资源管理器模板部署资源组](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-portal-deployment-resource-group.png)
+
+    可以看到部署状态为成功，资源组中只有一个存储帐户。 存储帐户名称是模板生成的唯一字符串。 若要了解有关使用 Azure 存储帐户的更多信息，请参阅[快速入门：使用 Azure 门户上载、下载和列出 blob](../storage/blobs/storage-quickstart-blobs-portal.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

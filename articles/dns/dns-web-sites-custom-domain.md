@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 7/20/2018
 ms.author: victorh
-ms.openlocfilehash: b39c2c672869bb446e58134a85130d10491fe047
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 2abe6c11b2a6fe9a9146f5c5689597fe3e29fa82
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621107"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41920252"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>教程：为 Web 应用在自定义域中创建 DNS 记录 
 
@@ -88,7 +88,7 @@ New-AzureRMDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResource
 
 ## <a name="create-the-cname-record"></a>创建 CNAME 记录
 
-如果域已由 Azure DNS 管理（请参阅 [DNS 域委派](dns-domain-delegation.md)），可以使用下面的示例，创建 contoso.azurewebsites.net 的 CNAME 记录。
+如果域已由 Azure DNS 管理（请参阅 [DNS 域委派](dns-domain-delegation.md)），可以使用下面的示例创建 contoso.azurewebsites.net 的 CNAME 记录。
 
 打开 Azure PowerShell 并创建一条新的 CNAME 记录。 此示例使用 Web 应用 contoso.azurewebsites.net 的别名在名为“contoso.com”的 DNS 区域中创建一个“生存时间”为 600 秒的记录集类型 CNAME。
 

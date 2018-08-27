@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: ambapat
-ms.openlocfilehash: 8bc2355c5df73d2469cab63bfbf783624228b341
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: df577222fb8f9d13bd33c5705e6234362519d351
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576961"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41920023"
 ---
 # <a name="secure-your-key-vault"></a>保护密钥保管库
 Azure 密钥保管库是一种云服务，用于保护云应用程序的加密密钥和机密（例如证书、连接字符串、密码）。 因为此数据是敏感数据和业务关键数据，会希望保护对密钥保管库的访问，以便只有得到授权的应用程序和用户可以访问密钥保管库。 本文章提供对密钥保管库访问模型的概述，介绍身份验证和授权，并举例描述如何保护对云应用程序的密钥保管库的访问。
@@ -87,7 +87,7 @@ Azure 密钥保管库是一种可通过 Azure 资源管理器部署模型使用�
 ## <a name="data-plane-access-control"></a>数据平面访问控制
 密钥保管库数据平面包含影响密钥保管库中的对象的操作，例如密钥、机密和证书。  这包括密钥操作（如创建、导入、更新、列出、备份和还原密钥）和加密操作（如签名、验证、加密、解密、包装、取消包装），以及设置密钥的标记和其他属性。 同样，对于机密，它包括获取、设置、列出、删除。
 
-通过设置密钥保管库的访问策略授予数据平面访问权限。 用户、组或应用程序必须具有密钥保管库的管理平面的参与者权限 (RBAC)，才能设置该密钥保管库的访问策略。 可以向用户、组或应用程序授予对密钥保管库中的密钥或机密执行特定操作的访问权限。 密钥保管库支持最多 16 个密钥保管库访问策略条目。 创建一个 Azure Active Directory 安全组，并将用户添加到该组，以向多个用户授予对密钥保管库的数据平面访问权限。
+通过设置密钥保管库的访问策略授予数据平面访问权限。 用户、组或应用程序必须具有密钥保管库的管理平面的参与者权限 (RBAC)，才能设置该密钥保管库的访问策略。 可以向用户、组或应用程序授予对密钥保管库中的密钥或机密执行特定操作的访问权限。 密钥保管库最多支持 1024 个密钥保管库访问策略条目。 创建一个 Azure Active Directory 安全组，并将用户添加到该组，以向多个用户授予对密钥保管库的数据平面访问权限。
 
 ### <a name="key-vault-access-policies"></a>密钥保管库访问策略
 密钥保管库访问策略单独授予对密钥、机密和证书的权限。 例如，可以向用户提供仅针对密钥的访问权限，但不提供针对机密的权限。 但是，访问密钥、机密或证书的权限是保管库级别的。 换而言之，密钥保管库访问策略不支持对象级别的权限。 可以使用 [Azure 门户](https://portal.azure.com/)、[Azure CLI 工具](../cli-install-nodejs.md)、[PowerShell](/powershell/azureps-cmdlets-docs) 或[密钥保管库管理 REST API](https://msdn.microsoft.com/library/azure/mt620024.aspx) 设置密钥保管库的访问策略。

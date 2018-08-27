@@ -7,15 +7,15 @@ manager: shivamg
 keywords: windows server 备份; 备份 windows server; 备份和灾难恢复
 ms.service: backup
 ms.topic: tutorial
-ms.date: 2/14/2018
+ms.date: 8/22/2018
 ms.author: saurse
 ms.custom: mvc
-ms.openlocfilehash: d52866a4f441a74bbc4b63f6dc362989865151b3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9bf4c25b416edf86d29c27bcb19901bf43073bb4
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34609012"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616183"
 ---
 # <a name="back-up-windows-server-to-azure"></a>将 Windows Server 备份到 Azure
 
@@ -29,7 +29,7 @@ ms.locfileid: "34609012"
 > * 执行即席备份
 
 
-## <a name="log-in-to-azure"></a>登录 Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
 通过 http://portal.azure.com 登录到 Azure 门户。
 
@@ -41,11 +41,11 @@ ms.locfileid: "34609012"
 
    ![打开恢复服务保管库](./media/tutorial-backup-windows-server-to-azure/full-browser-open-rs-vault_2.png)
 
-2.  在“恢复服务保管库”菜单中，单击“添加”。
+2. 在“恢复服务保管库”菜单中，单击“添加”。
 
    ![提供保管库信息](./media/tutorial-backup-windows-server-to-azure/provide-vault-detail-2.png)
 
-3.  在“恢复服务保管库”菜单中，
+3. 在“恢复服务保管库”菜单中，
 
     - 在“名称”中键入“myRecoveryServicesVault”。
     - 当前订阅 ID 显示在“订阅”中。
@@ -59,27 +59,28 @@ ms.locfileid: "34609012"
 
 Microsoft Azure 恢复服务 (MARS) 代理在 Windows Server 和恢复服务保管库之间创建关联。 以下过程介绍如何将代理下载到服务器。
 
-1.  在恢复服务保管库列表中，选择“myRecoveryServicesVault”以打开其仪表板。
+1. 在恢复服务保管库列表中，选择“myRecoveryServicesVault”以打开其仪表板。
 
    ![提供保管库信息](./media/tutorial-backup-windows-server-to-azure/open-vault-from-list.png)
 
-2.  在保管库仪表板菜单中，单击“备份”。
+2. 在保管库仪表板菜单中，单击“备份”。
 
-3.  在“备份目标”菜单上：
+3. 在“备份目标”菜单上：
 
-    - 对于“工作负载的运行位置?”，请选择“本地” 
-    - 对于“要备份的项?”，请选择“文件和文件夹”以及“系统状态” 
+   * 对于“工作负载的运行位置?”，请选择“本地”； 
+   * 对于“要备份的项?”，请选择“文件和文件夹”以及“系统状态”
 
-    ![提供保管库信息](./media/tutorial-backup-windows-server-to-azure/backup-goal.png)
-    
-4.  单击“准备基础结构”以打开“准备基础结构”菜单。
-5.  在“准备基础结构”菜单上，单击“下载 Windows Server 或 Windows 客户端的代理”，下载 MARSAgentInstaller.exe。 
+   ![提供保管库信息](./media/tutorial-backup-windows-server-to-azure/backup-goal.png)
+
+4. 单击“准备基础结构”以打开“准备基础结构”菜单。
+
+5. 在“准备基础结构”菜单上，单击“下载 Windows Server 或 Windows 客户端的代理”，下载 MARSAgentInstaller.exe。 
 
     ![准备基础结构](./media/tutorial-backup-windows-server-to-azure/prepare-infrastructure.png)
 
     安装程序单独打开浏览器并下载 MARSAgentInstaller.exe。
  
-6.  运行此下载文件前，请单击“准备基础结构”边栏选项卡上的“下载”按钮，下载并保存“保管库凭据”文件。 连接 MARS 代理和恢复服务保管库时需使用此文件。
+6. 运行此下载文件前，请在“准备基础结构”菜单上单击“下载”，并保存“保管库凭据”文件。 需要保管库凭据才能将 MARS 代理与恢复服务保管库连接。
 
     ![准备基础结构](./media/tutorial-backup-windows-server-to-azure/download-vault-credentials.png)
  
@@ -97,7 +98,7 @@ Microsoft Azure 恢复服务 (MARS) 代理在 Windows Server 和恢复服务保�
  
 4. 出现提示时，请提供在 Windows Server 中加密备份的加密密码。 请将密码保存于安全位置，因为若密码丢失，Microsoft 无法恢复密码。
 
-5. 单击“完成” 。 
+5. 单击“完成”。 
 
 ## <a name="configure-backup-and-retention"></a>配置备份和保留期
 
@@ -113,15 +114,19 @@ Microsoft Azure 恢复服务 (MARS) 代理在 Windows Server 和恢复服务保�
 
 4. 单击“添加项”，然后在打开的对话框中选择“系统状态”，以及要备份的文件或文件夹。 然后单击“确定”。
 
-5. 单击“资源组名称” 的 Azure 数据工厂。
+5. 单击“下一步”。
 
-6. 在“指定备份计划(系统状态)”页上，指定需为系统状态触发文件和文件夹备份的具体时间（哪天或哪周），然后单击“下一步”。 
+6. 在“指定备份计划(系统状态)”页上，指定需触发系统状态备份的时间（哪天或哪周），然后单击“下一步”。
 
-7.  在“选择保留策略”页上，为系统状态的文件和文件夹备份副本选择“保留策略”，然后单击“下一步”。
+7. 在“选择保留策略(系统状态)”页上，为系统状态的备份副本选择“保留策略”，然后单击“下一步”。
+
 8. 同样，为选择的文件和文件夹选择备份计划和保留策略。 
-8.  在“选择初始备份类型”页面上，使“自动通过网络”选项保持选中状态，然后单击“下一步”。
-9.  在“确认”页上检查信息，并单击“完成”。
-10. 在向导完成创建备份计划后，请单击“**关闭**”。
+
+9. 在“选择初始备份类型”页上，选择“自动通过网络”，然后单击“下一步”。
+
+10. 在“确认”页上检查信息，并单击“完成”。
+
+11. 在向导完成创建备份计划后，请单击“**关闭**”。
 
 ## <a name="perform-an-ad-hoc-back-up"></a>执行即席备份
 

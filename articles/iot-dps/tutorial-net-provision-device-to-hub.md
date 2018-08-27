@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 1d82ccdf85b34416dc630b9fcad969d87cc53ff1
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 84072c7e5f7aa37e89fc1b93c1585167dd6d9f4b
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39520660"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41918176"
 ---
 # <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>使用 Azure IoT 中心设备预配服务客户端将设备登记到 IoT 中心 (.NET)
 
@@ -70,10 +70,10 @@ ms.locfileid: "39520660"
     using Microsoft.Azure.Devices.Provisioning.Service;
     ```
 
-1. 将以下字段添加到 Program 类。 将占位符值替换为上一部分所述的 DPS 连接字符串。
+1. 将以下字段添加到 Program 类。 将占位符值替换为上一部分中所述的设备预配服务连接字符串。
    
     ```csharp
-    static readonly string ServiceConnectionString = "{DPS connection string}";
+    static readonly string ServiceConnectionString = "{Device Provisioning Service connection string}";
 
     private const string SampleRegistrationId = "sample-individual-csharp";
     private const string SampleTpmEndorsementKey =
@@ -222,10 +222,10 @@ ms.locfileid: "39520660"
 
 现在，以下设置已可用于设备注册：
 
-1. 设备或设备组已登记到设备预配服务，并且 
+1. 设备或一组设备将向设备预配服务进行注册，并且 
 2. 现在可以使用设备预配服务客户端 SDK 通过应用程序在设备中配置安全性并对其进行访问。
 
-启动该设备可让客户端应用程序开始注册到设备预配服务。  
+启动设备可使客户端应用程序开始向设备预配服务进行注册。  
 
 
 ## <a name="verify-the-device-is-registered"></a>验证设备已注册

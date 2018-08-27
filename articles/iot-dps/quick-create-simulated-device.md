@@ -1,5 +1,5 @@
 ---
-title: 本快速入门介绍如何使用 C 将模拟的 TPM 设备预配到 Azure IoT 中心 | Microsoft Docs
+title: 使用 C 将模拟的 TPM 设备预配到 Azure IoT 中心 | Microsoft Docs
 description: 在快速入门中，我们将使用适用于 Azure IoT 中心设备预配服务的 C 设备 SDK 创建和预配模拟的 TPM 设备
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 15c0ce5a545b0bd6b2d1f320b50e9990f8278296
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 4e03268db32b4be6900234abe58e7a308110520a
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091459"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42022888"
 ---
 # <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>快速入门：使用 Azure IoT C SDK 预配模拟的 TPM 设备
 
@@ -147,7 +147,7 @@ ms.locfileid: "39091459"
 
 1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，并复制“ID 范围”值。
 
-    ![从门户中提取 DPS 终结点信息](./media/quick-create-simulated-device/extract-dps-endpoints.png) 
+    ![从门户中提取设备预配服务终结点信息](./media/quick-create-simulated-device/extract-dps-endpoints.png) 
 
 2. 在 Visual Studio 的“解决方案资源管理器”窗口中，导航到 **Provision\_Samples** 文件夹。 展开名为 **prov\_dev\_client\_sample** 的示例项目。 展开“源文件”，打开 **prov\_dev\_client\_sample.c**。
 
