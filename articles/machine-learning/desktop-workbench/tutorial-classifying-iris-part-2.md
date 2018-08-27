@@ -41,7 +41,7 @@ Azure 机器学习服务（预览版）是一个集成式的数据科学和高�
 - Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 - 已创建一个试验帐户，并已根据此[快速入门](../service/quickstart-installation.md)中所述安装了 Azure Machine Learning Workbench
 - [教程第 1 部分](tutorial-classifying-iris-part-1.md)提供的项目和准备好的 Iris 数据
-- 在本地安装和运行的 Docker 引擎。 Docker 的 Community Edition 已足够。 若要了解如何安装 Docker，请参阅：https://docs.docker.com/engine/installation/。
+- 在本地安装和运行的 Docker 引擎。 Docker 的 Community Edition 已足够。 若要了解如何安装 Docker，请参阅： https://docs.docker.com/engine/installation/。
 
 ## <a name="review-irissklearnpy-and-the-configuration-files"></a>查看 iris_sklearn.py 和配置文件
 

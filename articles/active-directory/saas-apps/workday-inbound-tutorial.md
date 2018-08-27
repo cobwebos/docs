@@ -281,7 +281,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
    * **管理员密码** – 输入 Workday 集成系统帐户的密码
 
-   * **租户 URL** – 输入租户的 Workday Web 服务终结点的 URL。 此值应类似于：https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources，其中，contoso4 需替换为正确的租户名，wd3-impl 需替换为正确的环境字符串。
+   * **租户 URL –** 输入租户的 Workday Web 服务终结点的 URL。 此值应类似于：https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources，其中，contoso4 需替换为正确的租户名，wd3-impl 需替换为正确的环境字符串。
 
    * **Active Directory 林** – Get-ADForest PowerShell cmdlet 返回的 Active Directory 林“名称”。 这通常是如下所示的字符串：*contoso.com*
 
@@ -539,7 +539,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
    * **管理员密码** – 输入 Workday 集成系统帐户的密码
 
-   * **租户 URL** – 输入租户的 Workday Web 服务终结点的 URL。 此值应类似于：https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources，其中，contoso4 需替换为正确的租户名，wd3-impl 需替换为正确的环境字符串。 如果不知道此 URL，请咨询 Workday 集成合作伙伴或支持代表，确定要使用的正确 URL。
+   * **租户 URL –** 输入租户的 Workday Web 服务终结点的 URL。 此值应类似于：https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources，其中，contoso4 需替换为正确的租户名，wd3-impl 需替换为正确的环境字符串。 如果不知道此 URL，请咨询 Workday 集成合作伙伴或支持代表，确定要使用的正确 URL。
 
    * **通知电子邮件** – 输入电子邮件地址，然后选中“如果失败，则发送电子邮件”复选框。
 
@@ -642,7 +642,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
    * **管理员密码** – 输入 Workday 集成系统帐户的密码
 
-   * **租户 URL** – 输入租户的 Workday Web 服务终结点的 URL。 此值应类似于：https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources，其中，contoso4 需替换为正确的租户名，wd3-impl 需替换为正确的环境字符串（如果需要）。
+   * **租户 URL –** 输入租户的 Workday Web 服务终结点的 URL。 此值应类似于：https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources，其中，contoso4 需替换为正确的租户名，wd3-impl 需替换为正确的环境字符串（如果需要）。
 
    * **通知电子邮件** – 输入电子邮件地址，然后选中“如果失败，则发送电子邮件”复选框。
 
@@ -680,7 +680,7 @@ Azure AD 预配服务支持自定义列表或 Workday 属性，以包含人力�
 
 为此，必须使用 [Workday Studio](https://community.workday.com/studio-download) 来提取表示要使用的属性的 XPath 表达式，然后在 Azure 门户中使用高级属性编辑器将其添加到预配配置。
 
-**检索 Workday 用户属性的 XPath 表达式：**
+**检索 Workday 用户属性的 XPath 表达式：** 
 
 1. 下载并安装 [Workday Studio](https://community.workday.com/studio-download)。 需要使用 Workday 社区帐户来访问安装程序。
 
