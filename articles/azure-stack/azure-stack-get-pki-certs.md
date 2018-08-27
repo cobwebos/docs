@@ -16,11 +16,11 @@ ms.date: 05/18/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.openlocfilehash: b5adc1bb5a5aae96f37cc312588aa71e57d8342e
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37083220"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42916345"
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Azure Stack 证书签名请求生成
 
@@ -39,7 +39,7 @@ Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 执行以下证书请
 
 在为 Azure Stack 部署生成 PKI 证书的 CSR 之前，系统应符合以下先决条件：
 
- - Microsoft Azure 堆栈准备情况检查程序
+ - Microsoft Azure Stack 就绪性检查器
  - 证书属性：
     - 区域名称
     - 外部完全限定的域名 (FQDN)
@@ -96,7 +96,7 @@ Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 执行以下证书请
     > [!note]  
     > `<regionName>.<externalFQDN>` 构成了 Azure Stack 中所有外部 DNS 名称创建位置的基础，在此示例中，门户是 `portal.east.azurestack.contoso.com`。  
 
-6. 若要生成证书签名请求每个 DNS 名称：
+6. 若要为每个 DNS 名称生成证书签名请求，请执行以下命令：
 
     ```PowerShell  
     Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
@@ -104,7 +104,7 @@ Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 执行以下证书请
 
     若要包括 PaaS 服务，请指定开关 ```-IncludePaaS```
 
-7. 或者，对于开发/测试环境。 若要生成多个使用者备用名称的单个证书请求将添加 **-RequestType SingleCSR**参数和值 (**不**建议用于生产环境):
+7. 或者，用于开发/测试环境。 若要生成具有多个使用者可选名称的单个证书请求，请添加 **-RequestType SingleCSR** 参数和值（**不**建议用于生产环境）：
 
     ```PowerShell  
     Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem

@@ -1,7 +1,7 @@
 # 概述
 ## [关于 Azure 网络](networking-overview.md)
 ## 体系结构
-### [虚拟数据中心](networking-virtual-datacenter.md)
+### [虚拟数据中心](/azure/architecture/vdc/networking-virtual-datacenter)
 ### [非对称路由与多个网络路径](../expressroute/expressroute-asymmetric-routing.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [安全网络设计](../best-practices-network-security.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [中心辐射型拓扑](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)
@@ -71,6 +71,6 @@
 ## [定价](https://azure.microsoft.com/pricing)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [区域可用性](https://azure.microsoft.com/regions/services/)
-## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-virtual-network)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-network)
 ## [视频](https://azure.microsoft.com/resources/videos/index/?services=virtual-network)
 

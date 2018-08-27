@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2018
+ms.date: 08/24/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: dba43f0823282bd385dca30402a9b16fa3b99de6
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 5e5ebac221060058a44f7605f77d33a133f5e72c
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42139536"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887217"
 ---
 # <a name="azure-stack-1807-update"></a>Azure Stack 1807 更新
 
@@ -245,7 +245,9 @@ Azure Stack 使用服务器核心安装的 Windows Server 2016 主机基础结�
 
 - <!-- 1662991 IS ASDK --> Azure Stack 不支持 Linux VM 诊断。 在部署启用 VM 诊断的 Linux VM 时，部署会失败。 如果通过诊断设置启用 Linux VM 的基本指标，部署也会失败。  
 
-- <!-- 2724961- IS ASDK --> 当你注册**Microsoft.Insight**订阅设置中的资源提供程序和创建包含来宾 OS 诊断已启用的 Windows VM，VM 概述页中的 CPU 百分比图表将不能显示指标数据。 若要查找 VM 的 CPU 百分比图表，请转到**指标**边栏选项卡，并显示所有受支持的 Windows VM 来宾指标。
+- <!-- 2724961- IS ASDK --> 注册时**Microsoft.Insight**订阅设置中的资源提供程序并创建 Windows VM 与来宾 OS 诊断已启用，VM 的概述页不显示度量值的数据。 
+
+   若要查找 VM 的 CPU 百分比图表类似的指标数据，请转到**指标**边栏选项卡，并显示所有受支持的 Windows VM 来宾指标。
 
 ### <a name="networking"></a>网络  
 

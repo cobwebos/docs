@@ -28,7 +28,7 @@ ms.locfileid: "39579538"
 
 ## <a name="alert-aadds102-service-principal-not-found"></a>警报 AADDS102：找不到服务主体
 
-**警报消息：** 已从 Azure AD 目录中删除 Azure AD 域服务正常运行所需的服务主体。* 此配置影响 Microsoft 监视、管理、修补和同步托管域的功能。
+**警报消息：** *已从 Azure AD 目录中删除 Azure AD 域服务正常运行所需的服务主体。此配置影响 Microsoft 监视、管理、修补和同步托管域的功能*。
 
 [服务主体](../active-directory/develop/app-objects-and-service-principals.md)是指 Microsoft 用于管理、更新和维护托管域的应用程序。 如果删除服务主体，将中断 Microsoft 为域提供服务的功能。
 

@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 08/24/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: 46e46cfea621f99e150446fcc75b71feb468fa49
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: aedaa729ec51d7b60b2c242239935f7b3e41794f
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052692"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918181"
 ---
 # <a name="provider-resource-usage-api"></a>提供商资源使用情况 API
 “提供者”一词适用于服务管理员和任何委派的提供者。 Azure Stack 操作员和委派的提供者可使用提供者使用情况 API，查看其直接租户的使用情况。 例如，如图中所示，P0 可以调用提供者 API，以获取 P1 和 P2 直接使用的使用情况信息；而 P1 可以调用以获取 P3 和 P4 的使用情况信息。
@@ -34,7 +34,7 @@ ms.locfileid: "37052692"
 
 | **方法** | **请求 URI** |
 | --- | --- |
-| GET |https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={reportedStartTime}&reportedEndTime={reportedEndTime}&aggregationGranularity={granularity}& subscriberId = {sub1.1} （& a) 的 api-version = 2015年-06-01-预览版 （& a) continuationToken = {令牌 value} |
+| GET |https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={reportedStartTime}&reportedEndTime={reportedEndTime}&aggregationGranularity={granularity}&subscriberId={sub1.1}&api-version=2015-06-01-preview&continuationToken={token-value} |
 
 ### <a name="arguments"></a>参数
 | **参数** | **说明** |
@@ -49,7 +49,7 @@ ms.locfileid: "37052692"
 | *continuationToken* |从上次调用使用情况 API 提供者取回的标记。 响应大于 1,000 行时，需要此标记，可作为进度的书签。 若无此标记，则会从一天或小时开始时的时间检索数据，取决于所传入的粒度。 |
 
 ### <a name="response"></a>响应
-获取 /subscriptions/sub1/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime=reportedStartTime=2014-05-01T00%3a00%3a00%2b00%3a00 和 reportedEndTime = 2015年-06-01t00%3a00%3a00%2b00 %3a00 （& a)aggregationGranularity = 每日 subscriberId = sub1.1 的 api-version = 1.0
+GET /subscriptions/sub1/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime=reportedStartTime=2014-05-01T00%3a00%3a00%2b00%3a00&reportedEndTime=2015-06-01T00%3a00%3a00%2b00%3a00&aggregationGranularity=Daily&subscriberId=sub1.1&api-version=1.0
 
 ```json
 {
@@ -93,6 +93,8 @@ meterID1",
 
 ## <a name="retrieve-usage-information"></a>检索使用情况信息
 
+### <a name="powershell"></a>PowerShell
+
 若要生成使用情况数据，你应当有正在运行且在主动使用系统的资源，例如，活动虚拟机或包含某些数据的存储帐户，等等。如果不确定你是否有任何资源在 Azure Stack 市场中运行，请部署一个虚拟机 (VM)，并验证 VM 监视边栏选项卡以确保它正在运行。 使用以下 PowerShell cmdlet 来查看使用情况数据：
 
 1. [安装适用于 Azure Stack 的 PowerShell。](azure-stack-powershell-install.md)
@@ -101,6 +103,22 @@ meterID1",
 ```powershell
 Get-UsageAggregates -ReportedStartTime "<Start time for usage reporting>" -ReportedEndTime "<end time for usage reporting>" -AggregationGranularity <Hourly or Daily>
 ```
+### <a name="rest-api"></a>REST API
+
+可以通过调用 Microsoft.Commerce.Admin 服务收集已删除订阅的使用情况的信息。 
+
+**若要返回的所有租户使用情况删除活动用户：**
+
+| **方法** | **请求 URI** |
+| --- | --- |
+| GET | https://{armendpoint}/subscriptions/{subId}/providersMicrosoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&api-version=2015-06-01-预览 |
+
+**若要返回已删除或处于活动状态的租户的使用情况：**
+
+| **方法** | **请求 URI** |
+| --- | --- |
+| GET |https://{armendpoint}/subscriptions/{subId}/providersMicrosoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&subscriberId={订阅者 id} & 的 api-version = 2015年-06-01-预览 |
+
 
 ## <a name="next-steps"></a>后续步骤
 [租户资源使用情况 API 参考](azure-stack-tenant-resource-usage-api.md)

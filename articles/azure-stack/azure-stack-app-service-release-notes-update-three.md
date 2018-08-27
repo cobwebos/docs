@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/20/2018
 ms.author: anwestg
 ms.reviewer: brenduns
-ms.openlocfilehash: 88a4bcf018387ac83b485ec9e2efac11f85ba97c
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: f825a2a343d9b5ad8f9802042b7aca2ba1544dfb
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42432283"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42917396"
 ---
 # <a name="app-service-on-azure-stack-update-3-release-notes"></a>应用服务在 Azure Stack update 3 发行说明
 
@@ -178,6 +178,21 @@ Azure Stack 更新 3 上的 azure 应用服务包括以下改进和修补程序�
     ```sql
         SELECT containment FROM sys.databases WHERE NAME LIKE (SELECT DB_NAME())
     ```
+
+### <a name="known-issues-post-installation"></a>已知问题（安装后）
+
+- 当应用服务部署在现有虚拟网络中并且文件服务器仅在专用网络上可用时，工作人员将无法访问文件服务器。  这也称为在 Azure Stack 部署文档上的 Azure 应用服务中。
+
+如果选择部署到现有虚拟网络和内部 IP 地址以连接到文件服务器，则必须添加出站安全规则，以便在工作子网和文件服务器之间启用 SMB 流量。 为此，请转到管理门户中的 WorkersNsg 并添加具有以下属性的出站安全规则：
+ * 源：任何
+ * 源端口范围：*
+ * 目标：IP 地址
+ * 目标 IP 地址范围：文件服务器的 IP 范围
+ * 目标端口范围：445
+ * 协议：TCP
+ * 操作：允许
+ * 优先级：700
+ * 名称：Outbound_Allow_SMB445
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>云管理员在操作基于 Azure Stack 的 Azure 应用服务时的已知问题
 
