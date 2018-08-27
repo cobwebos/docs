@@ -82,7 +82,7 @@ Azure 存储服务支持为 **AllowedHeaders** 和 **ExposedHeaders** 两个元�
 * 允许的标头、公开的标头或允许的源的长度不应超过 256 个字符。
 * 允许的标头和公开的标头可能是：
   * 文本标头，其中提供了准确的标头名称，如 **x-ms-meta-processed**。 最多可在请求中指定 64 个文本标头。
-  * 带前缀的标头，其中提供了标头的前缀，如 **x-ms-meta-data***。 以此方式指定前缀将允许或公开以给定前缀开头的所有标头。 最多可在请求中指定 2 个带前缀的标头。
+  * 带前缀的标头，其中提供了标头的前缀，如 **x-ms-meta-data**\*。 以此方式指定前缀将允许或公开以给定前缀开头的所有标头。 最多可在请求中指定 2 个带前缀的标头。
 * 在 **AllowedMethods** 元素中指定的方法（或 HTTP 谓词）必须与 Azure 存储服务 API 支持的方法一致。 支持的方法为 DELETE、GET、HEAD、MERGE、POST、OPTIONS 和 PUT。
 
 ## <a name="understanding-cors-rule-evaluation-logic"></a>了解 CORS 规则的评估逻辑

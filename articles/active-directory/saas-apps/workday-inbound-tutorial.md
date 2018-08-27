@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: asmalser
-ms.openlocfilehash: 262c864a9e580ab5e2ebb0d4fc1e6ec16adeacb3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0df23d50fa208482e45d2d35555ec79c587cc80a
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36334320"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42445654"
 ---
-# <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教程：为 Workday 配置自动用户预配
+# <a name="tutorial-configure-workday-for-automatic-user-provisioning-preview"></a>教程：为 Workday 配置自动用户预配（预览版）
 
 本教程旨在说明需要执行哪些步骤才能将用户从 Workday 导入 Active Directory 和 Azure Active Directory，并有选择性地将某些属性写回到 Workday。
 
@@ -31,9 +31,9 @@ ms.locfileid: "36334320"
 
 * **将用户预配到 Active Directory** - 将 Workday 的选定用户集同步到一个或多个 Active Directory 林中。
 
-* **将仅限云的用户预配到 Azure Active Directory** - 可以使用 [AAD Connect](../connect/active-directory-aadconnect.md) 将同时存在于 Active Directory 和 Azure Active Directory 中的混合用户预配到 Azure Active Directory。 但是，可以使用 Azure AD 用户预配服务将仅限云的用户从 Workday 直接预配到 Azure Active Directory。
+* **将纯云用户预配到 Azure Active Directory** - 在未使用本地 Active Directory 的方案中，可以使用 Azure AD 用户预配服务将用户从 Workday 直接预配到 Azure Active Directory。 
 
-* **将电子邮件地址写回到 Workday** - Azure AD 用户预配服务可将选定的 Azure AD 用户属性（例如电子邮件地址）写回到 Workday。
+* **将电子邮件地址写回到 Workday** - Azure AD 用户预配服务可以将 Azure AD 用户的电子邮件地址写回到 Workday。 
 
 ### <a name="what-human-resources-scenarios-does-it-cover"></a>该服务涵盖哪些人力资源方案？
 
@@ -281,7 +281,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
    * **管理员密码** – 输入 Workday 集成系统帐户的密码
 
-   * **租户 URL** – 输入租户的 Workday Web 服务终结点的 URL。 此值应类似于：https://wd3-impl-services1.workday.com/ccx/service/contoso4，其中，contoso4 需替换为正确的租户名，wd3-impl 需替换为正确的环境字符串。
+   * **租户 URL** – 输入租户的 Workday Web 服务终结点的 URL。 此值应类似于：https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources，其中，contoso4 需替换为正确的租户名，wd3-impl 需替换为正确的环境字符串。
 
    * **Active Directory 林** – Get-ADForest PowerShell cmdlet 返回的 Active Directory 林“名称”。 这通常是如下所示的字符串：*contoso.com*
 
@@ -407,6 +407,9 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 * 输入：对于“目录名称”，请输入在第 \#2 部分中所输入的 AD 林名称
 * 输入：Active Directory 林的管理员用户名和密码
 
+>[!TIP]
+> 如果收到错误消息“主域和受信任的域之间的关系失败”，则这是因为本地计算机位于其中配置多个 Active Directory 林或域的环境中，并且所配置的至少一个信任关系失败或没有运转。 若要解决此问题，请更正或删除损坏的信任关系。
+
 **命令 #3**
 
 > Add-ADSyncAgentAzureActiveDirectoryConfiguration
@@ -418,7 +421,6 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
 >[!IMPORTANT]
 >目前有一个已知的问题：如果全局管理员凭据使用多重身份验证，则这些凭据不起作用。 要解决这个问题，可以禁用全局管理员的多重身份验证。
-
 
 **命令 #4**
 
@@ -517,7 +519,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
 **若要为仅限云的用户配置 Workday 到 Azure Active Directory 的预配：**
 
-1.  转到 <https://portal.azure.com>。
+1.  转到  <https://portal.azure.com> 。
 
 2.  在左侧导航栏中选择“Azure Active Directory”。
 
@@ -537,7 +539,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
    * **管理员密码** – 输入 Workday 集成系统帐户的密码
 
-   * **租户 URL** – 输入租户的 Workday Web 服务终结点的 URL。 此值应类似于：https://wd3-impl-services1.workday.com/ccx/service/contoso4，其中，contoso4 需替换为正确的租户名，wd3-impl 需替换为正确的环境字符串。 如果不知道此 URL，请咨询 Workday 集成合作伙伴或支持代表，确定要使用的正确 URL。
+   * **租户 URL** – 输入租户的 Workday Web 服务终结点的 URL。 此值应类似于：https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources，其中，contoso4 需替换为正确的租户名，wd3-impl 需替换为正确的环境字符串。 如果不知道此 URL，请咨询 Workday 集成合作伙伴或支持代表，确定要使用的正确 URL。
 
    * **通知电子邮件** – 输入电子邮件地址，然后选中“如果失败，则发送电子邮件”复选框。
 
@@ -640,7 +642,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
    * **管理员密码** – 输入 Workday 集成系统帐户的密码
 
-   * **租户 URL** – 输入租户的 Workday Web 服务终结点的 URL。 此值应类似于：https://wd3-impl-services1.workday.com/ccx/service/contoso4，其中，contoso4 需替换为正确的租户名，wd3-impl 需替换为正确的环境字符串（如果需要）。
+   * **租户 URL** – 输入租户的 Workday Web 服务终结点的 URL。 此值应类似于：https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources，其中，contoso4 需替换为正确的租户名，wd3-impl 需替换为正确的环境字符串（如果需要）。
 
    * **通知电子邮件** – 输入电子邮件地址，然后选中“如果失败，则发送电子邮件”复选框。
 
@@ -654,7 +656,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
 2. 在“源对象范围”字段中，可以有选择性地在 Azure Active Directory 中筛选要将其电子邮件地址写回到 Workday 的用户集。 默认范围是“Azure AD 中的所有用户”。 
 
-3. 在“属性映射”部分中，可以定义 Workday 属性到 Active Directory 属性的各个映射。 默认情况下，电子邮件地址存在映射。 但是，必须更新匹配 ID，使 Azure AD 中的用户与其在 Workday 中的相应条目匹配。 常用的匹配方法是将 Workday 工作人员 ID 或员工 ID 同步到 Azure AD 中的 extensionAttribute1-15，然后使用 Azure AD 中的此属性来重新匹配 Workday 中的用户。
+3. 在“属性映射”部分中，更新匹配的 ID 以指明 Azure Active Directory 中存储着 Workday 工作人员 ID 或员工 ID 的属性。 常用的匹配方法是将 Workday 工作人员 ID 或员工 ID 同步到 Azure AD 中的 extensionAttribute1-15，然后使用 Azure AD 中的此属性来重新匹配 Workday 中的用户。 
 
 4. 若要保存映射，请单击“属性映射”部分顶部的“保存”。
 
@@ -772,7 +774,7 @@ Azure AD 预配服务支持自定义列表或 Workday 属性，以包含人力�
 
 8. 对于“类型”，请选择对应于属性的类型（最常用的选项是“字符串”）。
 
-9. 对于“API 表达式”，请输入从 Workday Studio 复制的 XPath 表达式。 示例：`wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Birth_Date/text()`
+9. 对于“API 表达式”，请输入从 Workday Studio 复制的 XPath 表达式。 示例： `wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Birth_Date/text()`
 
 10. 选择“添加属性”。
 
@@ -794,6 +796,10 @@ Azure AD 预配服务支持自定义列表或 Workday 属性，以包含人力�
 
 * 运行 **Add-ADSyncAgentAzureActiveDirectoryConfiguration** Powershell 命令时，目前有一个已知的问题：如果全局管理员凭据使用自定义域（例如：admin@contoso.com），则这些凭据不起作用。 解决方法是在 Azure AD 中创建并使用包含 onmicrosoft.com 域的全局管理员帐户（例如：admin@contoso.onmicrosoft.com）。
 
+* 当前不支持将数据写入到本地 Active Directory 中的 thumbnailPhoto 用户属性。
+
+* 启用了 AAD Connect 的 Azure AD 租户上当前不支持“Workday 到 Azure AD”连接器。  
+
 * 以前存在的，审核日志在位于欧盟的 Azure AD 租户中不显示的问题现已得到解决。 但是，需要对欧盟的 Azure AD 租户进行附加的代理配置。 有关详细信息，请参阅[第 3 部分：配置本地同步代理](#Part 3: Configure the on-premises synchronization agent)
 
 ## <a name="managing-personal-data"></a>管理个人数据
@@ -805,3 +811,4 @@ Active Directory 的 Workday 预配解决方案需要在已加入域的服务器
 * [了解如何查看日志并获取有关预配活动的报告](../active-directory-saas-provisioning-reporting.md)
 * [了解如何在 Workday 和 Azure Active Directory 之间配置单一登录](workday-tutorial.md)
 * [了解如何将其他 SaaS 应用程序与 Azure Active Directory 进行集成](tutorial-list.md)
+

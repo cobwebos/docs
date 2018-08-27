@@ -75,7 +75,7 @@ ms.locfileid: "39438699"
 
     ![创建 Azure AD 测试用户](./media/oc-tanner-tutorial/tutorial_octannerappreciatehub_search.png)
 
-1. 在结果面板中，选择“O.C. Tanner - AppreciateHub”****，然后单击“添加”** 按钮添加该应用程序。
+1. 在结果面板中，选择 **“O.C. Tanner - AppreciateHub”**，然后单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/oc-tanner-tutorial/tutorial_octannerappreciatehub_addfromgallery.png)
 
@@ -135,7 +135,7 @@ ms.locfileid: "39438699"
 
     ![配置单一登录](./media/oc-tanner-tutorial/tutorial_general_400.png)
 
-1. 要在 O.C.Tanner-AppreciateHub** 端配置单一登录，需要将下载的元数据 XML 发送到 [O.C.Tanner - AppreciateHub 支持团队](mailto:sso@octanner.com)。
+1. 要在 **O.C.Tanner-AppreciateHub** 端配置单一登录，需要将下载的元数据 XML 发送到 [O.C.Tanner - AppreciateHub 支持团队](mailto:sso@octanner.com)。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)

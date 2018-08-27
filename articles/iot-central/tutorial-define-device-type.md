@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: b085911f760693a774d443ca055944268b20f055
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 4c850cd98280940c53a07c70c9c478f9e20e2963
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37869554"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41919874"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>教程：在 Azure IoT Central 应用程序中定义新设备类型
 
@@ -29,7 +29,7 @@ ms.locfileid: "37869554"
 * 具有属性，例如固件版本和序列号。
 * 具有设置，例如目标温度和风扇速度。
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建新设备模板
@@ -47,7 +47,7 @@ ms.locfileid: "37869554"
 
 若要完成本教程，需要一个 Azure IoT Central 应用程序。 如果已完成[创建 Azure IoT Central 应用程序](quick-deploy-iot-central.md)快速入门，则可以重复使用此快速入门中创建的应用程序。 否则，请完成以下步骤，以创建一个空的 Azure IoT Central 应用程序：
 
-1. 导航到 Azure IoT Central 的 [应用程序管理器](https://aka.ms/iotcentral) 页。
+1. 导航到 Azure IoT Central 的“[应用程序管理器](https://aka.ms/iotcentral)”页。
 
 2. 输入用于访问 Azure 订阅的电子邮件地址和密码：
 
@@ -265,7 +265,7 @@ ms.locfileid: "37869554"
     | 最小值        | 20              |
     | 最大值        | 200             |
     | 初始值        | 80              |
-    | 说明          | 设置空调的目标温度 |
+    | Description          | 设置空调的目标温度 |
 
     然后选择“保存”：
 
@@ -295,7 +295,7 @@ ms.locfileid: "37869554"
     | 显示名称         | 序列号        |
     | 字段名称           | serialNumber         |
     | 初始值        | cac00001             |
-    | 说明          | 设备序列号 |
+    | Description          | 设备序列号 |
 
     在其他字段中保留默认值。
 
@@ -312,7 +312,7 @@ ms.locfileid: "37869554"
     | 显示名称         | 固件版本        |
     | 字段名称           | firmwareVersion         |
     | 初始值        | 0.1                     |
-    | 说明          | 设备固件版本 |
+    | Description          | 设备固件版本 |
 
     ![配置设备属性](./media/tutorial-define-device-type/configureproperties2.png)
 
@@ -342,8 +342,8 @@ ms.locfileid: "37869554"
     | 显示名称         | 回显命令    |
     | 字段名称           | echo            |
     | 默认超时      | 30              |
-    | 显示名称         | 显示文本    |
-    | 显示类型         | text            |  
+    | 显示类型         | text            |
+    | Description          | 设备命令  |  
 
 可以向命令添加其他输入，方法是单击“+”进行输入。
 

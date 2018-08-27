@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
 ms.author: daveba
-ms.openlocfilehash: 9cc7683b260a9afbe4aee006a22af9c4834c4eb1
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: db4d423a09b6b37fd0ba88d466319cb5da4fdedf
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248381"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41918590"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-service-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>教程：使用 Windows VM 上用户分配的托管服务标识访问 Azure 资源管理器
 
@@ -42,8 +42,12 @@ ms.locfileid: "39248381"
 - 如果不熟悉托管服务标识，请查阅[概述](overview.md)部分。 请务必了解[系统分配标识与用户分配标识之间的差异](overview.md#how-does-it-work)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
 - 若要执行本教程中必需的资源创建和角色管理步骤，你的帐户需要在相应范围（订阅或资源组）具有“所有者”权限。 如果需要有关角色分配的帮助，请参阅[使用基于角色的访问控制管理对 Azure 订阅资源的访问权限](/azure/role-based-access-control/role-assignments-portal)。
-
-如果选择在本地安装并使用 PowerShell，则本教程需要安装 Azure PowerShell 模块 5.7 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 以创建与 Azure 的连接。
+- 如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 5.7.0 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 
+- 如果在本地运行 PowerShell，则还需要： 
+    - 运行 `Login-AzureRmAccount`，创建与 Azure 的连接。
+    - 安装[最新版本的 PowerShellGet](/powershell/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget)。
+    - 运行 `Install-Module -Name PowerShellGet -AllowPrerelease` 以获得 `PowerShellGet` 模块的预发布版本（运行此命令安装 `AzureRM.ManagedServiceIdentity` 模块后，可能需要从当前 PowerShell 会话中退出`Exit`）。
+    - 运行 `Install-Module -Name AzureRM.ManagedServiceIdentity -AllowPrerelease` 安装 `AzureRM.ManagedServiceIdentity` 模块的预发布版本，以执行本文中用户分配的标识操作。
 
 ## <a name="create-resource-group"></a>创建资源组
 
@@ -83,10 +87,10 @@ New-AzureRmVm `
 [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
 ```azurepowershell-interactive
-Get-AzureRmUserAssignedIdentity -ResourceGroupName myResourceGroupVM -Name ID1
+New-AzureRmUserAssignedIdentity -ResourceGroupName myResourceGroupVM -Name ID1
 ```
 
-该响应包含已创建的用户分配标识的详细信息，与以下示例类似。 记下用户分配标识的 `Id` 值，因为下一步会用到它：
+该响应包含已创建的用户分配标识的详细信息，与以下示例类似。 请记录用户分配的标识的 `Id` 和 `ClientId` 值，因为它们用于后续步骤：
 
 ```azurepowershell
 {
@@ -148,10 +152,10 @@ CanDelegate: False
 
 4. 现在，已经创建了与虚拟机的远程桌面连接，请在远程会话中打开 PowerShell。
 
-5. 使用 PowerShell 的 `Invoke-WebRequest` 向本地托管服务标识终结点发出请求，以获取 Azure 资源管理器的访问令牌。
+5. 使用 PowerShell 的 `Invoke-WebRequest` 向本地托管服务标识终结点发出请求，以获取 Azure 资源管理器的访问令牌。  `client_id` 值是[创建用户分配的托管标识](#create-a-user-assigned-identity)时返回的值。
 
     ```azurepowershell
-    $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&client_id=73444643-8088-4d70-9532-c3a0fdc190fz&resource=https://management.azure.com' -Method GET -Headers @{Metadata="true"}
+    $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&client_id=af825a31-b0e0-471f-baea-96de555632f9&resource=https://management.azure.com/' -Method GET -Headers @{Metadata="true"}
     $content = $response.Content | ConvertFrom-Json
     $ArmToken = $content.access_token
     ```
@@ -166,7 +170,7 @@ CanDelegate: False
 响应包含特定资源组信息，类似于下面的示例：
 
 ```json
-{"id":"/subscriptions/<SUBSCRIPTIONID>/resourceGroups/TestRG","name":"myResourceGroupVM","location":"eastus","properties":{"provisioningState":"Succeeded"}}
+{"id":"/subscriptions/<SUBSCRIPTIONID>/resourceGroups/myResourceGroupVM","name":"myResourceGroupVM","location":"eastus","properties":{"provisioningState":"Succeeded"}}
 ```
 
 ## <a name="next-steps"></a>后续步骤

@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 08/21/2018
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: b38d90251ab59e537e7d637f45f04c4db87a94ae
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 6d3847f547646ae7c62f98b4cee716af5c6ba5e9
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39580077"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42144052"
 ---
 # <a name="scopes-permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Azure Active Directory v2.0 终结点中的范围、权限和同意
 与 Azure Active Directory (Azure AD) 集成的应用遵循一种授权模型，该模型可让用户控制应用访问其数据的方式。 此授权模型的 v2.0 实现已更新，其中更改了应用程序必须与 Azure AD 交互的方式。 本文涵盖此授权模型的基本概念，包括范围、权限和同意。
@@ -73,6 +73,19 @@ OpenID Connect 的 v2.0 实现有一些明确定义但未应用到指定资源�
 如果应用未请求 `offline_access` 范围，则收不到 refresh_tokens。 这意味着，当在 [OAuth 2.0 授权代码流](active-directory-v2-protocols.md)中兑换 authorization_code 时，只从 `/token` 终结点接收 access_token。 访问令牌在短期内有效。 访问令牌的有效期通常为一小时。 到时，应用需要将用户重定向回到 `/authorize` 终结点以获取新的 authorization_code。 在此重定向期间，根据应用的类型，用户或许无需再次输入其凭据或重新同意权限。
 
 有关如何获取及使用刷新令牌的详细信息，请参阅 [v2.0 协议参考](active-directory-v2-protocols.md)。
+
+## <a name="accessing-v10-resources"></a>访问 v1.0 资源
+v2.0 应用程序可以请求 v1.0 应用程序（例如 PowerBI API `https://analysis.windows.net/powerbi/api` 或 Sharepoint API `https://{tenant}.sharepoint.com`）的令牌和同意。  若要执行此操作，可以在 `scope` 参数中引用应用 URI 和作用域字符串。  例如，`scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All` 将为应用程序请求 PowerBI `View all Datasets` 权限。 
+
+若要请求多个权限，请附加带空格或 `+` 的完整 URI，例如 `scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All+https://analysis.windows.net/powerbi/api/Report.Read.All`。  这同时请求 `View all Datasets` 和 `View all Reports` 权限。  请注意，与所有 Azure AD 作用域和权限一样，应用程序一次只能对一个资源发出请求，因此，请求 `scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All+https://api.skypeforbusiness.com/Conversations.Initiate`（它同时请求 PowerBI `View all Datasets` 权限和 Skype for Business `Initiate conversations` 权限）将由于请求对两个不同资源的权限而被拒绝。  
+
+### <a name="v10-resources-and-tenancy"></a>v1.0 资源和租赁
+v1.0 和 v2.0 Azure AD 协议都使用嵌入在 URI (`https://login.microsoftonline.com/{tenant}/oauth2/`) 中的 `{tenant}` 参数。  使用 v2.0 终结点访问 v1.0 组织资源时，无法使用 `common` 和 `consumers` 租户，因为这些资源只能通过组织 (Azure AD) 帐户进行访问。  因此，访问这些资源时，只能将租户 GUID 或 `organizations` 用作 `{tenant}` 参数。  
+
+如果应用程序尝试使用不正确的租户访问组织 v1.0 资源，则会返回类似于以下错误的错误。 
+
+`AADSTS90124: Resource 'https://analysis.windows.net/powerbi/api' (Microsoft.Azure.AnalysisServices) is not supported over the /common or /consumers endpoints. Please use the /organizations or tenant-specific endpoint.`
+
 
 ## <a name="requesting-individual-user-consent"></a>请求单个用户的同意
 在 [OpenID Connect 或 OAuth 2.0](active-directory-v2-protocols.md) 授权请求中，应用可以使用 `scope` 查询参数来请求它所需的权限。 例如，当用户登录应用程序时，应用发送如下示例所示的请求（包含换行符以便于阅读）：
@@ -148,11 +161,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&state=12345&redirect_uri=http://localhost/myapp/permissions
 ```
 
-| 参数 | 条件 | Description |
+| 参数 | 条件 | 说明 |
 | --- | --- | --- |
-| tenant |必选 |要向其请求权限的目录租户。 可以采用 GUID 或友好名称格式提供或使用“common”以一般方式引用，如示例所示。 |
-| client_id |必选 |[应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)分配给该应用的应用程序 ID。 |
-| redirect_uri |必选 |要向其发送响应以供应用处理的重定向 URI。 其必须与在门户中注册的重定向 URI 之一完全匹配。 |
+| tenant |必需 |要向其请求权限的目录租户。 可以采用 GUID 或友好名称格式提供或使用“common”以一般方式引用，如示例所示。 |
+| client_id |必需 |[应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)分配给该应用的应用程序 ID。 |
+| redirect_uri |必需 |要向其发送响应以供应用处理的重定向 URI。 其必须与在门户中注册的重定向 URI 之一完全匹配。 |
 | state |建议 |同样随令牌响应返回的请求中所包含的值。 其可以是关于想要的任何内容的字符串。 在发出身份验证请求出现之前，使用该状态对有关用户在应用中的状态的信息（例如前面所在的页面或视图）进行编码。 |
 
 此时，Azure AD 会要求租户管理员进行登录来完成请求。 系统会要求管理员批准在应用注册门户中针对应用请求的所有权限。
@@ -164,7 +177,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- | --- |
 | tenant |向应用程序授予所请求权限的目录租户（采用 GUID 格式）。 |
 | state |同样随令牌响应返回的请求中所包含的值。 其可以是关于想要的任何内容的字符串。 该状态用于对发出身份验证请求出现之前，有关用户在应用中的状态的信息（例如前面所在的页面或视图）编码。 |
@@ -177,7 +190,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 GET http://localhost/myapp/permissions?error=permission_denied&error_description=The+admin+canceled+the+request
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- | --- |
 | error |用于分类发生的错误类型与响应错误的错误码字符串。 |
 | error_description |帮助开发人员识别错误根本原因的具体错误消息。 |

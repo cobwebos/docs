@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 6fe314125440096d21a1276defd082c4e1997b8e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 50ece1d1f74ace494e6bebb84f9f121c1fad7a6c
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642676"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41918575"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>教程：将 Windows 容器中的 .NET 应用程序部署到 Azure Service Fabric
 
@@ -223,6 +223,9 @@ $vnetRuleObject1 = New-AzureRmSqlServerVirtualNetworkRule `
 在“输出”窗口中跟进部署进度。  应用程序部署完毕后，打开浏览器并键入群集地址和应用程序端口。 例如，http://http://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/。
 
 ![Fabrikam Web 示例][fabrikam-web-page-deployed]
+
+## <a name="set-up-continuous-integration-and-deployment-cicd-with-a-service-fabric-cluster"></a>使用 Service Fabric 群集设置持续集成和部署 (CI/CD)
+若要了解如何使用 VSTS 配置到 Service Fabric 群集的 CI/CD 应用程序部署，请参阅[教程：使用 CI/CD 将应用程序部署到 Service Fabric 群集](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)。 本教程中所述的过程与此 (FabrikamFiber) 项目相同，只需跳过下载 Voting 示例并将 FabrikamFiber 替换为存储库名称而不是 Voting。
 
 ## <a name="clean-up-resources"></a>清理资源
 如果已完成，请务必删除所创建的所有资源。  最简单的方法是删除包含 Service Fabric 群集、Azure SQL DB 和 Azure 容器注册表的资源组。
