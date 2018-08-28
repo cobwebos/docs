@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 2/22/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 607c7938a789b3504a425057645b291bd4c8235b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9a5390b51b3b901b159f99e757ca4db1aaf8258e
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31399025"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050961"
 ---
 # <a name="overview-of-identity-for-azure-stack"></a>Azure Stack 的标识概述
 
@@ -63,7 +63,7 @@ Azure Stack 要求使用 Active Directory 所支持的 Azure Active Directory (A
 ### <a name="guest-users"></a>来宾用户
 来宾用户是其他目录租户中的用户帐户，这些用户已获得目录中资源的访问权限。 若要支持来宾用户，请使用 Azure AD 并启用多租户支持。 若已启用支持，可以邀请来宾用户访问目录租户中的资源，方便他们与外部组织协作。 
 
-若要邀请来宾用户，云操作员和用户可以使用[Azure AD B2B 协作](/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)。 受邀的用户获取对文档、 资源和应用程序从你的目录的访问权限并维护对你自己的资源和数据的控制。 
+若要邀请的来宾用户，云操作员和用户可以使用[Azure AD B2B 协作](/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)。 受邀的用户有权访问文档、 资源和应用程序从你的目录，并保持对你自己的资源和数据的控制。 
 
 可以作为来宾用户登录到其他组织的目录租户。 为此，请将该组织的目录名称追加到门户 URL。 例如，如果你属于 Contoso 组织，但想要登录 Fabrikam 目录，请使用 https://portal.local.azurestack.external/fabrikam.onmicrosoft.com。
 
@@ -137,7 +137,7 @@ Azure Stack 的标识包括用户帐户、组和服务主体。
 |层    |各层之间的身份验证  |
 |---------|---------|
 |工具与客户端，例如管理门户     | 为了访问或修改 Azure Stack 中的资源，工具和客户端将使用 [JSON Web 令牌](/azure/active-directory/develop/active-directory-token-and-claims)来调用 Azure 资源管理器。 <br>Azure 资源管理器验证 JSON Web 令牌并扫视所颁发令牌中的声明，以评估用户或服务主体在 Azure Stack 中的授权级别。 |
-|Azure 资源管理器及其核心服务     |Azure 资源管理器与资源提供程序通信，以传输用户的通信。 <br> 传输通过 [Azure 资源管理器模板](/azure/azure-stack/user/azure-stack-arm-templates.md)使用直接命令式调用或声明式调用。|
+|Azure 资源管理器及其核心服务     |Azure 资源管理器与资源提供程序通信，以传输用户的通信。 <br> 传输通过 [Azure 资源管理器模板](/azure/azure-stack/user/azure-stack-arm-templates)使用直接命令式调用或声明式调用。|
 |资源提供程序     |传递给资源提供程序的调用通过基于证书的身份验证进行保护。 <br>随后，Azure 资源管理器和资源提供程序持续通过 API 通信。 对于从 Azure 资源管理器 收到的每个调用，资源提供程序使用该证书来验证调用。|
 |基础结构和业务逻辑     |资源提供程序使用所选的身份验证模式与业务逻辑和基础结构通信。 Azure Stack 随附的默认资源提供程序使用 Windows 身份验证来保护此通信。|
 
@@ -169,7 +169,7 @@ Azure Stack 的标识包括用户帐户、组和服务主体。
 
 
 ### <a name="use-role-based-access-control"></a>使用基于角色的访问控制  
-基于角色的访问控制 (RBAC) 在 Azure 堆栈在与 Microsoft Azure 中实现一致。 可以通过将相应的 RBAC 角色分配给用户、组和应用程序，来管理资源访问权限。 有关如何在 Azure Stack 中使用 RBAC 的信息，请参阅以下文章：
+基于角色的访问控制 (RBAC) 在 Azure Stack 中是与 Microsoft Azure 中实现一致的。 可以通过将相应的 RBAC 角色分配给用户、组和应用程序，来管理资源访问权限。 有关如何在 Azure Stack 中使用 RBAC 的信息，请参阅以下文章：
 - [Azure 门户中基于角色的访问控制入门](/azure/role-based-access-control/overview)。
 - [使用基于角色的访问控制管理 Azure 订阅资源的访问权限](/azure/role-based-access-control/role-assignments-portal)
 - [创建用于 Azure 基于角色的访问控制的自定义角色](/azure/role-based-access-control/custom-roles)
@@ -180,7 +180,7 @@ Azure Stack 的标识包括用户帐户、组和服务主体。
 有关使用 Azure PowerShell 在 Azure Stack 中进行身份验证的详细信息，请参阅[配置 Azure Stack 用户的 PowerShell 环境](azure-stack-powershell-configure-user.md)。
 
 ### <a name="authenticate-with-azure-cli"></a>使用 Azure CLI 进行身份验证
-有关使用 Azure PowerShell 在 Azure Stack 中进行身份验证的信息，请参阅[安装和配置与 Azure Stack 配合使用的 Azure CLI](/azure/azure-stack/user/azure-stack-connect-cli.md)。
+有关使用 Azure PowerShell 在 Azure Stack 中进行身份验证的信息，请参阅[安装和配置与 Azure Stack 配合使用的 Azure CLI](/azure/azure-stack/user/azure-stack-connect-cli)。
 
 ## <a name="next-steps"></a>后续步骤
 - [标识体系结构](azure-stack-identity-architecture.md)   

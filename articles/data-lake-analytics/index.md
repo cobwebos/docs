@@ -5,16 +5,15 @@ services: data-lake-analytics
 ms.service: data-lake-analytics
 author: jasonwhowell
 ms.author: jasonh
-manager: kfile
 layout: LandingPage
 ms.topic: landing-page
 ms.date: 01/23/2017
-ms.openlocfilehash: 74ffc5f6a80ca21f679e6a345e9a482cd83a027e
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 07bf3f5013d288934fec6146f52ddc43a2779d98
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37340441"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43043141"
 ---
 # <a name="azure-data-lake-analytics-documentation"></a>Azure Data Lake Analytics 文档
 
@@ -80,7 +79,7 @@ ms.locfileid: "37340441"
 ## <a name="quickstarts"></a>快速入门
 <table>
     <tr>
-        <td><a href="data-lake-analytics-get-started-portal.md">Portal</a></td>
+        <td><a href="data-lake-analytics-get-started-portal.md">门户</a></td>
         <td><a href="data-lake-analytics-data-lake-tools-get-started.md">Visual Studio</a></td>
         <td><a href="data-lake-analytics-data-lake-tools-for-vscode.md">Visual Studio Code</a></td>
         <td><a href="data-lake-analytics-get-started-powershell.md">PowerShell</a></td>
@@ -91,7 +90,7 @@ ms.locfileid: "37340441"
 ## <a name="manage-data-lake-analytics"></a>管理 Data Lake Analytics
 <table>
     <tr>
-        <td><a href="data-lake-analytics-manage-use-portal.md">Portal</a></td>
+        <td><a href="data-lake-analytics-manage-use-portal.md">门户</a></td>
         <td><a href="data-lake-analytics-manage-use-powershell.md">Python</a></td>
         <td><a href="data-lake-analytics-manage-use-cli.md">Azure CLI</a></td>
         <td><a href="data-lake-analytics-manage-use-dotnet-sdk.md">.NET SDK</a></td>

@@ -1,6 +1,6 @@
 ---
-title: 图像搜索 SDK Node 快速入门 | Microsoft Docs
-description: 设置图像搜索 SDK 控制台应用程序。
+title: 快速入门：在 Node.js 中使用 SDK 请求和筛选图像
+description: 本快速入门将使用 Node.js 请求和筛选必应图像搜索返回的图像。
 titleSuffix: Azure cognitive services
 services: cognitive-services
 author: mikedodaro
@@ -10,14 +10,14 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: v-gedod
-ms.openlocfilehash: e4c8303e39accbb7caec15c0ef47d701971ce632
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e88c045b220192a617e6b8caf5d8d53f70a25b5e
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366685"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41929764"
 ---
-# <a name="image-search-sdk-node-quickstart"></a>图像搜索 SDK Node 快速入门
+# <a name="quickstart-request-and-filter-images-using-the-sdk-and-nodejs"></a>快速入门：使用 SDK 和 Node.js 请求和筛选图像
 
 必应图像搜索 SDK 包含用于图像查询以及对结果进行分析的 REST API 功能。 
 

@@ -1,6 +1,6 @@
 ---
-title: 图像搜索 SDK Python 快速入门 | Microsoft Docs
-description: 设置图像搜索 SDK 控制台应用程序。
+title: 快速入门：在 Python 中使用 SDK 请求和筛选图像
+description: 本快速入门将使用 Python 请求和筛选必应图像搜索返回的图像。
 titleSuffix: Azure Image Search SDK Python quickstart
 services: cognitive-services
 author: mikedodaro
@@ -10,14 +10,14 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: v-gedod
-ms.openlocfilehash: e30852439ad8ec2d5ddc667b75167e8b5d35be33
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 4729f103bb9b50d4ff039907db8eb677f3dc290a
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366683"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41929791"
 ---
-# <a name="image-search-sdk-python-quickstart"></a>图像搜索 SDK Python 快速入门
+ # <a name="quickstart-request-and-filter-images-using-the-sdk-and-python"></a>快速入门：使用 SDK 和 Python 请求和筛选图像
 
 必应图像搜索 SDK 包含用于 Web 查询以及对结果进行分析的 REST API 功能。 
 

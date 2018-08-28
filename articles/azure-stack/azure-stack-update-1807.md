@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/24/2018
+ms.date: 08/27/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 5e5ebac221060058a44f7605f77d33a133f5e72c
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: afbe3ff2e6be4e03f8de8ac2490922c3ec788733
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887217"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43091374"
 ---
 # <a name="azure-stack-1807-update"></a>Azure Stack 1807 更新
 
@@ -168,6 +168,8 @@ Azure Stack 使用服务器核心安装的 Windows Server 2016 主机基础结�
 下面是此内部版本的安装后已知问题。
 
 ### <a name="portal"></a>门户
+- <!-- 2931230 – IS  ASDK --> 无法删除加载项计划，即使在用户订阅中删除该计划时都会添加到用户订阅的计划。 该计划将保留，直到引用加载项计划的订阅也会被删除。 
+
 - <!--2760466 – IS  ASDK --> 在安装新的 Azure Stack 环境运行此版本时，警报，指示*需要激活*可能不会显示。 [激活](azure-stack-registration.md)是必需的然后才能使用 marketplace 联合。  
 
 - <!-- TBD - IS ASDK --> 是两种管理订阅类型[版本 1804年中引入的](azure-stack-update-1804.md#new-features)不应使用。 订阅类型是**计数订阅**，并**消耗订阅**。 从版本 1804 开始，这些订阅类型会在新的 Azure Stack 环境中显示，但尚不可用。 请继续使用“默认提供程序”订阅类型。

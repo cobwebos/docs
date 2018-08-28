@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2018
+ms.date: 08/24/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 9ba954db7003e062444e57bd56f87ff5d279b07f
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 9d33ccf9262d4432ac7255121e97f318d00b5145
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42139393"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050643"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Azure Stack 中的配置文件支持的资源提供程序 API 版本
 
@@ -197,26 +197,26 @@ API 配置文件使用三个命名约定：
 | 委托的提供程序 | 2015-01-01 |
 | 委托的提供程序/产品（服务） | 2015-01-01 |
 | 委托的提供程序/产品（服务）/估算价格 | 2015-01-01 |
-| 部署 | 2016-0209-01 |
-| 部署/操作 | 2016-0209-01 |
+| 部署 | 2016-09-01 |
+| 部署/操作 | 2016-09-01 |
 | 扩展元数据 | 2015-01-01 |
 | 链接 | 2016-09-01 |
 | 位置 | 2015-01-01 |
 | 产品 | 2015-01-01 |
 | 操作 | 2015-01-01 |
-| 提供程序 | 2015-012017-08-01 |
+| 提供程序 | 2017-08-01 |
 | 资源组 | 2016-09-01 |
 | 资源 | 2016-09-01 |
 | 订阅 | 2016-09-01 |
 | 订阅/位置 | 2016-09-01 |
 | 订阅/操作结果 | 2016-09-01 |
-| 订阅/提供程序 | 2015-012017-08-01 |
+| 订阅/提供程序 | 2017-08-01 |
 | 订阅/资源组 | 2016-09-01 |
 | 订阅/资源组/资源 | 2016-09-01 |
 | 订阅/资源 | 2016-09-01 |
-| 订阅/标记名称 | 2016-0609-01 |
-| 订阅/标记名称/标记值 | 2016-0609-01 |
-| 租户 | 2015-012017-08-01 |
+| 订阅/标记名称 | 2016-09-01 |
+| 订阅/标记名称/标记值 | 2016-09-01 |
+| 租户 | 2017-08-01 |
 
 ### <a name="microsoftstorage"></a>Microsoft.Storage 
 

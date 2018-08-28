@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/24/2018
+ms.date: 08/27/2018
 ms.author: brenduns
 ms.reviewer: misainat
-ms.openlocfilehash: ed1c47830cbc4a629d827853c7d440b9bbd80d64
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 6016d6fd4dcae699efba49667676373a6586e723
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888180"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43101639"
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Azure Stack 开发工具包发行说明  
 这些发行说明提供 Azure Stack 开发工具包的改进、修复和已知问题的相关信息。 如果不确定所运行的版本，可以[使用门户检查版本](.\.\azure-stack-updates.md#determine-the-current-version)。
@@ -106,6 +106,8 @@ ms.locfileid: "42888180"
 ### <a name="known-issues"></a>已知问题
 
 #### <a name="portal"></a>门户  
+- <!-- 2931230 – IS  ASDK --> 无法删除加载项计划，即使在用户订阅中删除该计划时都会添加到用户订阅的计划。 该计划将保留，直到引用加载项计划的订阅也会被删除。 
+
 - <!--2760466 – IS  ASDK --> 在安装新的 Azure Stack 环境运行此版本时，警报，指示*需要激活*可能不会显示。 [激活](.\.\azure-stack-registration.md)是必需的然后才能使用 marketplace 联合。 
 
 - <!-- TBD - IS ASDK --> 是两种管理订阅类型[版本 1804年中引入的](.\.\azure-stack-update-1804.md#new-features)不应使用。 订阅类型是**计数订阅**，并**消耗订阅**。 这些订阅类型是**计数订阅**，并**消耗订阅**。 从版本 1804 开始，这些订阅类型会在新的 Azure Stack 环境中显示，但尚不可用。 应继续使用**默认提供商订阅**类型。
@@ -251,6 +253,8 @@ ms.locfileid: "42888180"
 ### <a name="known-issues"></a>已知问题
 
 #### <a name="portal"></a>门户
+- <!-- 2931230 – IS  ASDK --> 无法删除加载项计划，即使在用户订阅中删除该计划时都会添加到用户订阅的计划。 该计划将保留，直到引用加载项计划的订阅也会被删除。 
+
 - <!-- 2551834 - IS, ASDK --> 在管理员门户或用户门户中选择存储帐户的“概述”时，“概要”窗格中的信息不会显示。  “概要”窗格显示有关帐户的信息，例如其资源组、位置和订阅 ID。  可以访问“概述”中的其他选项，例如“服务”和“监视”，以及“在资源管理器中打开”或“删除存储帐户”。  
 
   若要查看未显示的信息，请使用 [Get-azureRMstorageaccount](https://docs.microsoft.com/powershell/module/azurerm.storage/get-azurermstorageaccount?view=azurermps-6.2.0) PowerShell cmdlet。

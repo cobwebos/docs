@@ -1,6 +1,6 @@
 ---
-title: 图像搜索 SDK C# 快速入门 | Microsoft Docs
-description: 在 C# 控制台应用程序中设置图像搜索 SDK。
+title: 快速入门：使用 C# 通过 SDK 请求和筛选图像
+description: 本快速入门将使用 C# 请求和筛选必应图像搜索返回的图像。
 titleSuffix: Azure cognitive services setup Image search SDK C# console application
 services: cognitive-services
 author: mikedodaro
@@ -10,14 +10,14 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: v-gedod
-ms.openlocfilehash: f58556f13bb25c3ea2ed9378c0669d649554a8c0
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 81375019e53b49b531fde1f81fbcb9a061cc5562
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366686"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41929790"
 ---
-# <a name="image-search-sdk-c-quickstart"></a>图像搜索 SDK C# 快速入门
+# <a name="quickstart-request-and-filter-images-using-the-sdk-and-c"></a>快速入门：使用 SDK 和 C# 请求和筛选图像
 
 必应图像搜索 SDK 包含用于图像请求以及对结果进行分析的 REST API 功能。 
 
