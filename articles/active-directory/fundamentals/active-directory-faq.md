@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/14/2017
 ms.author: lizross
-ms.openlocfilehash: 787178b2c1582729249fcf549356fa7445f5ecbe
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 419b5d480ebd1f978eb2a870231d151b549b25ea
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494958"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42141716"
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory 常见问题
 Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决方案，涉及到标识、访问管理和安全的方方面面。
@@ -214,4 +214,4 @@ Azure AD 提供另一组管理员角色来管理与目录和标识相关的功�
 - - -
 **问：是否可以通过 Azure AD 设置安全的 LDAP 连接？**
 
-**答：** 否。 Azure AD 不支持 LDAP 协议。
+**答：** 否。 Azure AD 不支持 LDAP 协议。 但是，可以使用 Azure AD 域服务配置安全 LDAP。

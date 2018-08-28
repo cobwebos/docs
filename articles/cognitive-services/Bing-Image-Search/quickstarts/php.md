@@ -1,6 +1,6 @@
 ---
-title: 调用和响应 - 适用于 Azure 认知服务中的必应图像搜索 API 的 PHP 快速入门 | Microsoft Docs
-description: 获取信息和代码示例，以帮助你快速开始使用 Azure 上的 Microsoft 认知服务中的必应图像搜索 API。
+title: 快速入门：使用 PHP 向必应图像搜索 API 发送搜索查询（使用 REST API）
+description: 本快速入门将使用 PHP 向必应搜索 API 发送搜索查询，以获取相关图像的列表。
 services: cognitive-services
 documentationcenter: ''
 author: v-jerkin
@@ -9,16 +9,16 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: b3b7e082eeca5fbccb8729ab8abdf7ec933b4197
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d91021c4bd5e0f78e518811f3794055b397c1a39
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366440"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41929850"
 ---
-# <a name="call-and-response-your-first-bing-image-search-query-in-php"></a>调用和响应：你的采用 PHP 的第一个必应图像搜索查询
+# <a name="quickstart-send-search-queries-using-the-rest-api-and-php"></a>快速入门：使用 REST API 和 PHP 发送搜索查询
 
-必应图像搜索 API 提供的体验类似于 Bing.com/图像，都是让你向必应发送用户搜索查询，然后就会返回相关图像的列表。
+必应图像搜索 API 通过允许向必应发送用户搜索查询并获取相关图像的列表，提供与 Bing.com/图像相似的体验。
 
 本文包括一个简单的控制台应用程序，它执行必应图像搜索 API 查询并显示返回的原始搜索结果，这些结果采用 JSON 格式。 虽然此应用程序是用 PHP 编写的，但 API 是一种 RESTful Web 服务，与任何可以发出 HTTP 请求并分析 JSON 的编程语言兼容。 
 
@@ -26,16 +26,16 @@ ms.locfileid: "35366440"
 
 需要使用 [PHP 5.6.x](http://php.net/downloads.php) 来运行此代码。
 
-必须拥有包含**必应搜索 API** 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 你需要使用激活免费试用版时提供的访问密钥，也可以使用 Azure 仪表板中的付费订阅密钥。
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="running-the-application"></a>运行应用程序
 
-若要运行此应用程序，请执行以下步骤。
+要运行此应用程序，请执行以下步骤。
 
 1. 请确保在 `php.ini` 中启用安全 HTTP 支持，如代码注释中所述。 在 Windows 上，此文件位于 `C:\windows` 中。
-2. 在你喜欢使用的 IDE 或编辑器中新建一个 PHP 项目。
+2. 在喜欢使用的 IDE 或编辑器中新建一个 PHP 项目。
 3. 添加提供的代码。
-4. 将 `accessKey` 值替换为对你的订阅有效的访问密钥。
+4. 使用对订阅有效的访问密钥替换 `accessKey` 值。
 5. 运行该程序。
 
 ```php
@@ -109,7 +109,7 @@ if (strlen($accessKey) == 32) {
 
 ## <a name="json-response"></a>JSON 响应
 
-示例响应如下。 为了限制 JSON 的长度，仅显示了单个结果，并截断了响应的其他部分。 
+示例响应如下。 为了限制 JSON 的长度，系统仅显示一个结果，并截断了响应的其他部分。 
 
 ```json
 {
@@ -203,6 +203,6 @@ if (strlen($accessKey) == 32) {
 ## <a name="see-also"></a>另请参阅 
 
 [必应图像搜索概述](../overview.md)  
-[试试看](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+[试用](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
 [获取免费试用访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
 [必应图像搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

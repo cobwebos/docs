@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 08/14/2018
 ms.author: raynew
-ms.openlocfilehash: 709afe03570ca4cf81718fb071778439444d6bf6
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: e363885afb77a60bfc0229a872fdb4e519d5979d
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171977"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42143968"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>用于 Hyper-V 到 Azure 的复制的支持矩阵
 
@@ -25,7 +25,7 @@ ms.locfileid: "39171977"
 
 **方案** | **详细信息**
 --- | ---
-使用 Virtual Machine Manager 的 Hyper-V | 对于托管在 System Center Virtual Machine Manager 结构中的 Hyper-V 主机，可针对在其上运行的 VM 执行到 Azure 的灾难恢复。<br/><br/> 可以在 Azure 门户中部署此方案，也可使用 PowerShell 进行部署。<br/><br/> 由 Virtual Machine Manager 托管 Hyper-V 主机时，也可以执行到辅助本地站点的灾难恢复。 若要了解有关此方案的详细信息，请阅读[此教程](tutorial-vmm-to-vmm.md)。
+使用 Virtual Machine Manager 的 Hyper-V | 对于托管在 System Center Virtual Machine Manager 结构中的 Hyper-V 主机，可针对在其上运行的 VM 执行到 Azure 的灾难恢复。<br/><br/> 可以在 Azure 门户中部署此方案，也可使用 PowerShell 进行部署。<br/><br/> 由 Virtual Machine Manager 托管 Hyper-V 主机时，也可以执行到辅助本地站点的灾难恢复。 若要了解有关此方案的详细信息，请阅读[此教程](hyper-v-vmm-disaster-recovery.md)。
 不使用 Virtual Machine Manager 的 Hyper-V | 对于并非由 Virtual Machine Manager 托管的 Hyper-V 主机，可针对在其上运行的 VM 执行到 Azure 的灾难恢复。<br/><br/> 可以在 Azure 门户中部署此方案，也可使用 PowerShell 进行部署。
 
 
@@ -44,8 +44,8 @@ Hyper-V（使用 Virtual Machine Manager 运行） | Virtual Machine Manager 201
 
  组件 | **详细信息**
 --- | ---
-VM 配置 | 复制到 Azure 的 VM 必须满足[Azure 要求](#failed-over-azure-vm-requirements)。
-来宾操作系统 | Azure 支持的任何来宾操作系统。<br/><br/> 不支持 Windows Server 2016 Nano Server。
+VM 配置 | 复制到 Azure 的 VM 必须满足[Azure 要求](#azure-vm-requirements)。
+来宾操作系统 | [Azure 支持](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases)的任何来宾 OS。<br/><br/> 不支持 Windows Server 2016 Nano Server。
 
 
 ## <a name="vmdisk-management"></a>VM/磁盘管理
@@ -113,7 +113,8 @@ RDM | NA | NA
 磁盘 > 1 TB | 是，最大 4,095 GB | 是，最大 4,095 GB
 磁盘：4K 逻辑和物理扇区 | 不支持：第 1 代/第 2 代 | 不支持：第 1 代/第 2 代
 磁盘：4K 逻辑扇区和 512 字节物理扇区 | 是 |  是
-包含条带化磁盘的卷 > 1 TB<br/><br/> 逻辑卷管理 (LVM) | 是 | 是
+逻辑卷管理 (LVM)。 仅数据磁盘支持 LVM。 Azure 仅提供单个 OS 磁盘。 | 是 | 是
+包含条带化磁盘的卷 > 1 TB | 是 | 是
 存储空间 | 是 | 是
 热添加/移除磁盘 | 否 | 否
 排除磁盘 | 是 | 是

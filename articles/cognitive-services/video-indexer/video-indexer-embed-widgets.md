@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: juliako
-ms.openlocfilehash: 4ce1eedac69b06f491510be93fcfbdfbc879ff7e
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: ba81030c3d6384ca6b66d6a3b14e614d1626e3e0
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398126"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41929911"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>将视频索引器小组件嵌入应用程序
 
@@ -241,6 +241,4 @@ iframe 窗口的标题也可自定义，只需为 iframe URL 提供 **&title=**<
 
 若要了解如何查看和编辑视频索引器见解，请参阅[此](video-indexer-view-edit.md)文。
 
-## <a name="see-also"></a>另请参阅
-
-[视频索引器概述](video-indexer-overview.md)
+另外，请查看[视频索引器 codepen](https://codepen.io/videoindexer/pen/eGxebZ)。

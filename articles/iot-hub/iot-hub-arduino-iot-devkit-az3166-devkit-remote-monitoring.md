@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: 806ae38f614c44ce25b8fcc159b74f1bda3f00f3
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 79a44e3f5303aaf0d337333b482c2df670e0b3da
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343111"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42141250"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>将 MXChip IoT DevKit 连接到 Azure IoT 远程监视解决方案加速器
 
@@ -120,7 +120,7 @@ DevKit 将重新启动并开始运行代码。
 
 ## <a name="change-device-id"></a>更改设备 ID
 
-可以根据[自定义设备 ID 指南](https://microsoft.github.io/azure-iot-developer-kit/docs/customize-device-id/)在 IoT 中心内更改设备 ID。 如果希望在代码中将硬编码的 **AZ3166** 更改为自定义的设备 ID，请修改[远程监视示例](https://github.com/Microsoft/devkit-sdk/blob/master/AZ3166/src/libraries/AzureIoT/examples/RemoteMonitoring/RemoteMonitoring.ino#L23)中显示的代码行。
+如果希望在代码中将硬编码的 **AZ3166** 更改为自定义的设备 ID，请修改[远程监视示例](https://github.com/Microsoft/devkit-sdk/blob/master/AZ3166/src/libraries/AzureIoT/examples/RemoteMonitoring/RemoteMonitoring.ino#L23)中显示的代码行。
 
 ## <a name="problems-and-feedback"></a>问题和反馈
 
@@ -136,3 +136,5 @@ DevKit 将重新启动并开始运行代码。
 * [Azure IoT 解决方案加速器概述](https://docs.microsoft.com/azure/iot-suite/)
 
 * [将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)
+
+* [IoT 开发人员工具包](https://microsoft.github.io/azure-iot-developer-kit/) 

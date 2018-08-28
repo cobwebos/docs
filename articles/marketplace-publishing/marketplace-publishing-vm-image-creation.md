@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 9199c9fc9a46e6b09eb066be5125c74420ad6cd6
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: bf2ba6d31c170715a52b84439276c45665293c35
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715329"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246453"
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure 市场创建虚拟机映像指南
 本文的**步骤 2** 将引导用户完成虚拟硬盘 (VHD) 的准备工作，并将其部署到 Azure 市场。 VHD 是 SKU 的基础。 此过程各有不同，具体取决于提供的是基于 Linux 还是基于 Windows 的 SKU。 本文对这两种方案都做了介绍。 此过程可与[帐户创建和注册][link-acct-creation] 并行执行。
@@ -29,8 +29,8 @@ ms.locfileid: "39715329"
 
 产品/服务是其所有 SKU 的“父级”。 用户可以拥有多个产品/服务。 用户决定如何构造套餐。 将产品/服务推送到过渡环境时，它会随其所有的 SKU 一起推送。 请仔细考虑 SKU 标识符，因为它们会显示在 URL 中：
 
-* Azure.com： http://azure.microsoft.com/marketplace/partners/{PartnerNamespace}/{OfferIdentifier}-{SKUidentifier}
-* Azure 预览门户： https://portal.azure.com/#gallery/{PublisherNamespace}.{OfferIdentifier}{SKUIDdentifier}  
+* Azure.com：http://azure.microsoft.com/marketplace/partners/{PartnerNamespace}/{OfferIdentifier}-{SKUidentifier}
+* Azure 预览门户：https://portal.azure.com/#gallery/{PublisherNamespace}.{OfferIdentifier}{SKUIDdentifier}  
 
 SKU 是 VM 映像的商业名称。 一个 VM 映像包含一个操作系统磁盘以及零个或更多数据磁盘。 它本质上是虚拟机的完整存储配置文件。 每个磁盘都需要一个 VHD。 即使空白数据磁盘也需要创建 VHD。
 
@@ -70,8 +70,8 @@ SKU 是 VM 映像的商业名称。 一个 VM 映像包含一个操作系统磁�
 开始时，请从位于 [Microsoft Azure 门户][link-azure-portal] 的以下映像中创建 VM：
 
 * Windows Server（[2012 R2 Datacenter][link-datactr-2012-r2]、[2012 Datacenter][link-datactr-2012]、[2008 R2 SP1][link-datactr-2008-r2]）
-* SQL Server 2014（[Enterprise][link-sql-2014-ent]、[Standard][link-sql-2014-std]、[Web][link-sql-2014-web]）
-* SQL Server 2012 SP2（[Enterprise][link-sql-2012-ent]、[Standard][link-sql-2012-std]、[Web][link-sql-2012-web]）
+* SQL Server 2014 
+* SQL Server 2012 SP2 
 
 这些链接也可以在发布门户中 SKU 页面下找到。
 
@@ -515,11 +515,11 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 换句�
 
 |问题|失败消息|解决方法|文档链接|
 |---|---|---|---|
-|复制映像时失败 - 在 SAS url 中找不到 "?"|失败：复制映像。 无法使用所提供的 SAS Uri 下载 blob。|使用建议的工具更新 SAS Url|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|复制映像时失败 -“st”和“se”参数不在 SAS url 中|失败：复制映像。 无法使用所提供的 SAS Uri 下载 blob。|使用其开始和结束日期更新 SAS Url|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|复制映像时失败 - "sp = rl" 不在 SAS url 中|失败：复制映像。 无法使用所提供的 SAS Uri 下载 blob|使用设置为“读取”和“列出”的权限更新 SAS Url|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|复制映像时失败 - SAS url 的 vhd 名称中包含空格|失败：复制映像。 无法使用所提供的 SAS Uri 下载 blob。|将 SAS Url 更新为不包含空格|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|复制映像时失败 - SAS Url 授权错误|失败：复制映像。 由于授权错误，无法下载 blob|重新生成 SAS Url|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|复制映像时失败 - 在 SAS url 中找不到 "?"|失败：复制映像。 无法使用所提供的 SAS Uri 下载 blob。|使用建议的工具更新 SAS Url|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|复制映像时失败 -“st”和“se”参数不在 SAS url 中|失败：复制映像。 无法使用所提供的 SAS Uri 下载 blob。|使用其开始和结束日期更新 SAS Url|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|复制映像时失败 - "sp = rl" 不在 SAS url 中|失败：复制映像。 无法使用所提供的 SAS Uri 下载 blob|使用设置为“读取”和“列出”的权限更新 SAS Url|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|复制映像时失败 - SAS url 的 vhd 名称中包含空格|失败：复制映像。 无法使用所提供的 SAS Uri 下载 blob。|将 SAS Url 更新为不包含空格|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|复制映像时失败 - SAS Url 授权错误|失败：复制映像。 由于授权错误，无法下载 blob|重新生成 SAS Url|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 |复制映像失败 - SAS URL“st”和“se”参数不具有完整的日期时间格式|失败：复制映像。 由于 SAS URL 错误，无法下载 blob |SAS URL 开始日期和结束日期参数（“st”、“se”）需要具有完整的日期时间格式（如 11-02-2017T00:00:00Z），不能仅具有日期或采用时间的缩写形式。 使用 Azure CLI 2.0（az 命令）时很可能会遇到这种情况。 请务必提供完整的日期时间格式并重新生成 SAS URL。|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 
 ## <a name="next-step"></a>后续步骤
@@ -558,15 +558,6 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 换句�
 [link-technet-2]:https://msdn.microsoft.com/library/dn495261.aspx
 [link-azure-portal]:https://portal.azure.com
 [link-pubportal]:https://publish.windowsazure.com
-[link-sql-2014-ent]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2014enterprisewindowsserver2012r2/
-[link-sql-2014-std]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2014standardwindowsserver2012r2/
-[link-sql-2014-web]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2014webwindowsserver2012r2/
-[link-sql-2012-ent]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2012sp2enterprisewindowsserver2012/
-[link-sql-2012-std]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2012sp2standardwindowsserver2012/
-[link-sql-2012-web]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2012sp2webwindowsserver2012/
-[link-datactr-2012-r2]:http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2012r2datacenter/
-[link-datactr-2012]:http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2012datacenter/
-[link-datactr-2008-r2]:http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2008r2sp1/
 [link-acct-creation]:marketplace-publishing-accounts-creation-registration.md
 [link-technet-1]:https://technet.microsoft.com/library/hh848454.aspx
 [link-azure-vm-2]:./virtual-machines-linux-agent-user-guide/

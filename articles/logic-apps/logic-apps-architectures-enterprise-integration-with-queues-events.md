@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: a86c4c4227795a712dd51ace1fbefe9d2b96518a
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 9eef382ea264bcf9e59dcc408d14a59355b0369b
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116106"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42445671"
 ---
 # <a name="reference-architecture-enterprise-integration-with-queues-and-events"></a>参考体系结构：企业集成与队列和事件
 
@@ -42,7 +42,7 @@ ms.locfileid: "39116106"
 - **连接器**。 逻辑应用使用[连接器](https://docs.microsoft.com/azure/connectors/apis-list)连接到常用的服务。 逻辑应用已有数百个不同的连接器，但你也可以创建自定义连接器。
 - **Azure 服务总线**。 [服务总线](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview)提供安全可靠的消息传递。 可以使用消息传递来解耦应用程序，以及与其他基于消息的系统相集成。
 - **Azure 事件网格**。 [事件网格](https://docs.microsoft.com/azure/event-grid/overview)是用于发布和传送应用程序事件的无服务器平台。
-- **IP 地址**。 Azure API 管理服务具有固定的公共 [IP 地址](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)和域名。 域名是 azure-api.net 的子域，例如 contoso..azure-api.net。 逻辑应用和服务总线也具有公共 IP 地址。 但是，在此体系结构中，仅限 API 管理的 IP 地址调用逻辑应用终结点（出于安全考虑）。 对服务总线的调用受共享访问签名 (SAS) 的保护。
+- **IP 地址**。 Azure API 管理服务具有固定的公共 [IP 地址](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)和域名。 默认域名是 azure-api.net 的子域（例如 contoso.azure-api.net），但也可以配置[自定义域](https://docs.microsoft.com/azure/api-management/configure-custom-domain)。 逻辑应用和服务总线也具有公共 IP 地址。 但是，在此体系结构中，仅限 API 管理的 IP 地址调用逻辑应用终结点（出于安全考虑）。 对服务总线的调用受共享访问签名 (SAS) 的保护。
 - **Azure DNS**。 [Azure DNS](https://docs.microsoft.com/azure/dns/) 是 DNS 域的托管服务。 Azure DNS 使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。 若要使用自定义域名（例如 contoso.com），请创建可将自定义域名映射到 IP 地址的 DNS 记录。 有关详细信息，请参阅[在 API 管理中配置自定义域名](https://docs.microsoft.com/en-us/azure/api-management/configure-custom-domain)。
 - **Azure Active Directory (Azure AD)**。 使用 [Azure AD](https://docs.microsoft.com/azure/active-directory/) 或其他标识提供者进行身份验证。 Azure AD 为 API 终结点访问提供身份验证（通过传递 [API 管理的 JSON Web 令牌](https://docs.microsoft.com/azure/api-management/policies/authorize-request-based-on-jwt-claims)进行验证）。 Azure AD 可以保护对 API 管理开发人员门户的访问（仅限标准层和高级层）。
 
@@ -119,7 +119,7 @@ ms.locfileid: "39116106"
 
 与 API 管理和逻辑应用一样，可以使用 Azure Monitor 监视服务总线。 Azure Monitor 根据为每个服务配置的指标提供信息。 Azure Monitor 默认处于启用状态。
 
-## <a name="security"></a>“安全”
+## <a name="security"></a>安全
 
 使用 SAS 保护服务总线。 可以使用 [SAS 身份验证](../service-bus-messaging/service-bus-sas.md)向具有特定权限的用户授予对服务总线资源的访问权限。 有关详细信息，请参阅[服务总线身份验证和授权](../service-bus-messaging/service-bus-authentication-and-authorization.md)。
 

@@ -8,14 +8,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 03/26/2018
+ms.date: 08/17/2018
 ms.author: rnagpal
-ms.openlocfilehash: 2fba67b247ad0b53e11ca012969163a68013e82f
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: d0bd7dba5d50445cb681c16d9575b1bd69167e2f
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126705"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42142274"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB 表 .NET API：下载和发行说明
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ ms.locfileid: "39126705"
 ## <a name="release-notes"></a>发行说明
 
 ### <a name="a-name113113"></a><a name="1.1.3"/>1.1.3
-* 已修复 Nuget 包对 Microsoft.Azure.Storage.Common 和 Microsoft.Azure.DocumentDB 的依赖关系。
+* 修复了 NuGet 包对 Microsoft.Azure.Storage.Common 和 Microsoft.Azure.DocumentDB 的依赖关系。
 * 修复了配置 JsonConvert.DefaultSettings 时表序列化的 Bug。
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
@@ -60,7 +60,7 @@ ms.locfileid: "39126705"
 ## <a name="release-and-retirement-dates"></a>发布日期和停用日期
 Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利转换为更高版本/受支持版本。
 
-[WindowsAzure.Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) 预览包已弃用，已被 [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) 包取代。 WindowsAzure.Storage-PremiumTable SDK 将在 2018 年 11 月 15 日停用，到时，将不允许向已停用的 SDK 发出请求。
+[WindowsAzure.Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) 预览包已弃用，已被 [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) 包取代。 WindowsAzure.Storage-PremiumTable SDK 将在 2018 年 11 月 15 日停用，到时将不允许向已停用的 SDK 发出请求。 `Microsoft.Azure.CosmosDB.Table` 库目前仅适用于 .NET Standard，尚不可用于 .NET Core。
 
 新特性和功能以及优化仅添加到当前 SDK，因此建议始终尽早升级到最新的 SDK 版本。 
 
@@ -91,7 +91,7 @@ Unable to resolve dependency 'Microsoft.Azure.Storage.Common'. Source(s) used: '
     Install-Package Microsoft.Azure.CosmosDB.Table -IncludePrerelease
     ```
     
-* 使用首选 Nuget 包管理工具先安装 Microsoft.Azure.Storage.Common Nuget 包，再安装 Microsoft.Azure.CosmosDB.Table。
+* 使用首选 NuGet 包管理工具先安装 Microsoft.Azure.Storage.Common NuGet 包，再安装 Microsoft.Azure.CosmosDB.Table。
 
 ## <a name="faq"></a>常见问题解答
 

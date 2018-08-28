@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/13/2018
 ms.author: raynew
-ms.openlocfilehash: 0cfb583f9d16039249aaffe18f71039e91dc3705
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: cd7a5832faf0fbb15349edee8ed504c1f94d1aa9
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39359200"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42141230"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Contoso 迁移：在 Azure VM 和 SQL Server AlwaysOn 可用性组上重新托管本地应用
 
@@ -76,8 +76,8 @@ Contoso 云团队制定了本次迁移的目标。 这些目标用于确定最�
 
 **服务** | **说明** | **成本**
 --- | --- | ---
-[数据库管理服务](https://docs.microsoft.com/azure/dms/dms-overview) | Contoso 将使用 DMS 迁移应用数据层。 DMS 将通过站点到站点 VPN 连接到本地 SQLVM 计算机并迁移 DMS，从而在尽量减少停机时间的情况下实现多个数据库源到 Azure 数据平台的无缝迁移。 | 了解[可使用 DMS 的区域](https://docs.microsoft.com/azure/dms/dms-overview#regional-availability)并获取[定价详细信息](https://azure.microsoft.com/pricing/details/database-migration/)。
-[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/) | Contoso 将使用 Site Recovery 直接迁移应用前端 VM。 Site Recovery 可安排和管理 Azure VM 以及本地 VM 和物理服务器的迁移和灾难恢复操作。  | 在复制到 Azure 的过程中，会产生 Azure 存储费用。  故障转移时会创建 Azure VM，因此会产生费用。 [详细了解](https://azure.microsoft.com/pricing/details/site-recovery/)费用和定价。
+[数据库迁移服务](https://docs.microsoft.com/azure/dms/dms-overview) | 使用 DMS 可从多个数据库源无缝迁移到 Azure 数据平台，且会尽量缩短停机时间。 | 了解[可使用 DMS 的区域](https://docs.microsoft.com/azure/dms/dms-overview#regional-availability)并获取[定价详细信息](https://azure.microsoft.com/pricing/details/database-migration/)。
+[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/) | Site Recovery 可安排和管理 Azure VM 以及本地 VM 和物理服务器的迁移和灾难恢复操作。  | 在复制到 Azure 的过程中，会产生 Azure 存储费用。  故障转移时会创建 Azure VM，因此会产生费用。 [详细了解](https://azure.microsoft.com/pricing/details/site-recovery/)费用和定价。
 
  
 

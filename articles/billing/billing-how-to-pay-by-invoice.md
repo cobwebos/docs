@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: ac8262da05837dcdb4ebddd5029f9b5ece3dbc6f
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: cc174822af436e7c31eb5ad4bfa419e1fa022f44
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617363"
 ---
 # <a name="submit-a-request-to-pay-azure-subscription-by-invoice"></a>提交用发票为 Azure 订阅付款的请求
 
@@ -26,7 +27,7 @@ ms.lasthandoff: 05/11/2018
 
 > [!IMPORTANT]
 > * 转账付款仅适用于公司帐户。
-> * 使用转账付款无法购买或支付[第三方和外部服务](billing-understand-your-azure-marketplace-charges.md)。 如果订阅包含来自 ClearDB 或 SendGrid 等外部服务的资源，则需要在更改为转账付款之前将其删除。 若要在切换为转账付款后购买外部服务，需要使用信用卡或借记卡的单独订阅。
+> * 使用转账付款无法购买或支付[第三方和外部服务](billing-understand-your-azure-marketplace-charges.md)。 如果订阅包含来自 SendGrid 等外部服务的资源，则需要在更改为转账付款之前将其删除。 若要在切换为转账付款后购买外部服务，需要使用信用卡或借记卡的单独订阅。
 > * 切换为转账付款后，无法切换回信用卡或借记卡付款。
 
 ## <a name="request-pay-by-invoice"></a>请求使用转账付款

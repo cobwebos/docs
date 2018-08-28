@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: v-wingf
-ms.openlocfilehash: 74907693270e6cd340d3b34585a80077aa87f0f7
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: bb3b3061c15a661caff778ca5c0ec48b0434c718
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055338"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42144762"
 ---
 # <a name="tutorial-configure-cisco-spark-for-automatic-user-provisioning"></a>教程：配置 Cisco Spark 实现自动用户预配
 
@@ -116,7 +116,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
     * 向下滚动到[身份验证部分](https://developer.webex.com/getting-started.html#authentication)
     ![Cisco Spark 身份验证令牌](./media/cisco-spark-provisioning-tutorial/SecretToken.png)
     * 框中的字母数字字符串是密钥令牌。 将此令牌复制到剪贴板
-    * 转到 [Get My Own Details page](https://developer.webex.com/endpoint-people-me-get.html)（“获取我的详细信息”页）
+    * 转到[“获取我的详细信息”页](https://developer.webex.com/endpoint-people-me-get.html)
         * 请确保“测试模式”为“开”
         * 键入“Bearer”一词，在该词后添加一个空格，然后将密钥令牌粘贴到授权字段 ![Cisco Spark 身份验证令牌](./media/cisco-spark-provisioning-tutorial/GetMyDetails.png)
         * 单击“运行”
@@ -171,6 +171,10 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 此操作会对“设置”部分的“范围”中定义的所有用户和/或组启动初始同步。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 可使用“同步详细信息”部分监视进度并跟踪指向预配活动报告的链接，这些报告描述了 Azure AD 预配服务对 Cisco Spark 执行的所有操作。
 
 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../active-directory-saas-provisioning-reporting.md)。
+
+## <a name="connector-limitations"></a>连接器限制
+
+* Cisco Spark 当前处于 Cisco 的早期现场测试 (EFT) 阶段。 有关详细信息，请联系 [Cisco 的支持团队](https://www.webex.co.in/support/support-overview.html)。 
 
 ## <a name="additional-resources"></a>其他资源
 

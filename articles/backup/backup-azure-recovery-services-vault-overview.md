@@ -6,14 +6,14 @@ author: markgalioto
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/15/2017
+ms.date: 8/10/2018
 ms.author: markgal
-ms.openlocfilehash: b6195feb25a7206d7c453e31f0ac312e070b3113
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 04b755d7ca1ec72b075ecaa4b32a35f5009a938b
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606162"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42144165"
 ---
 # <a name="recovery-services-vaults-overview"></a>恢复服务保管库概述
 
@@ -38,11 +38,17 @@ ms.locfileid: "34606162"
 - **适用于 IaaS VM 的即时还原**：使用恢复服务保管库时，可以从 IaaS VM 还原文件和文件夹，不需还原整个 VM，从而缩短还原时间。 适用于 IaaS VM 的即时还原可供 Windows 和 Linux VM 使用。 [了解详细信息](http://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>在门户中管理恢复服务保管库
-在 Azure 门户中创建和管理恢复服务保管库很容易，因为备份服务已集成到“Azure 设置”菜单中。 这种集成意味着，可以在目标服务上下文中创建和管理恢复服务保管库。 例如，若要查看 VM 的恢复点，请选中该 VM，并在“设置”菜单中单击“备份”。 特定于该 VM 的备份信息就会显示。 在以下示例中，ContosoVM 是虚拟机的名称。 **ContosoVM-demovault** 是恢复服务保管库的名称。 不需记住用于存储恢复点的恢复服务保管库的名称，可以在虚拟机中访问该信息。  
+在 Azure 门户中创建和管理恢复服务保管库很容易，因为备份服务可集成到其他 Azure 服务中。 这种集成意味着，可以在目标服务上下文中创建和管理恢复服务保管库。 例如，若要查看 VM 的恢复点，请选中该 VM，并在“操作”菜单中单击“备份”。 
 
-![VM 中的恢复服务保管库详细信息](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context.png)
+![VM 中的恢复服务保管库详细信息](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context-vm.png)
 
-如果多个服务器使用同一恢复服务保管库进行保护，则更应查看恢复服务保管库。 可以在订阅中搜索所有恢复服务保管库，并从列表中选择一个。
+如果 VM 未配置备份，则会提示你配置备份。 如果已配置备份，你将看到有关 VM 的备份信息，包括还原点列表。  
+
+![VM 中的恢复服务保管库详细信息](./media/backup-azure-recovery-services-vault-overview/vm-recovery-point-list.png)
+
+在前面的示例中，ContosoVM 是虚拟机的名称。 **ContosoVM-demovault** 是恢复服务保管库的名称。 不需记住用于存储恢复点的恢复服务保管库的名称，可以在虚拟机中访问该信息。  
+
+如果一个恢复服务保管库保护多个服务器，则查看恢复服务保管库可能更符合逻辑。 可以在订阅中搜索所有恢复服务保管库，并从列表中选择一个。
 
 以下部分包含多篇文章的链接，这些文章说明了如何在每类活动中使用恢复服务保管库。
 

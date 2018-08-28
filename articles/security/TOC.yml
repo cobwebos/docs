@@ -40,22 +40,35 @@ items:
     - name: 静态数据加密
       href: azure-security-encryption-atrest.md
     - name: IaaS VM 的磁盘加密
-      href: azure-security-disk-encryption-overview.md
       items:
-      - name: 磁盘加密先决条件
-        href: azure-security-disk-encryption-prerequisites.md
-      - name: 适用于 Windows VM 的磁盘加密
-        href: azure-security-disk-encryption-windows.md
-      - name: 适用于 Linux VM 的磁盘加密
-        href: azure-security-disk-encryption-linux.md
+      - name: 关于 Azure 磁盘加密
+        href: azure-security-disk-encryption-overview.md
+      - name: 快速入门
+        items:
+        - name: 加密 VM - Azure PowerShell
+          href: quick-encrypt-vm-powershell.md
+      - name: Azure 磁盘加密
+        items:
+        - name: 磁盘加密先决条件
+          href: azure-security-disk-encryption-prerequisites.md
+        - name: 适用于 Windows VM 的磁盘加密
+          href: azure-security-disk-encryption-windows.md
+        - name: 适用于 Linux VM 的磁盘加密
+          href: azure-security-disk-encryption-linux.md
       - name: 有关磁盘加密的附录
         href: azure-security-disk-encryption-appendix.md
       - name: 磁盘加密常见问题解答
         href: azure-security-disk-encryption-faq.md
       - name: 故障排除
         href: azure-security-disk-encryption-tsg.md
-    - name: 加密 Azure VM
-      href: ../security-center/security-center-disk-encryption.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
+      - name: 使用 Azure AD 应用的 Azure 磁盘加密（以前的版本）
+        items:
+        - name: 使用 Azure AD 应用的磁盘加密先决条件
+          href: azure-security-disk-encryption-prerequisites-aad.md
+        - name: 使用 Azure AD 应用的磁盘加密（用于 Windows VM）
+          href: azure-security-disk-encryption-windows-aad.md
+        - name: 使用 Azure AD 应用的磁盘加密（用于 Linux VM）
+          href: azure-security-disk-encryption-linux-aad.md
   - name: Azure 存储安全
     href: security-storage-overview.md
   - name: 存储安全指南
@@ -303,9 +316,9 @@ items:
         href: azure-security-threat-modeling-tool-sensitive-data.md
       - name: 会话管理
         href: azure-security-threat-modeling-tool-session-management.md
-ms.openlocfilehash: 0ec99adbb53dda738eeaa3edb5bd181b8a91c0e7
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: cb321a012d89f87022d66f50c3bc8fdcc921d6d6
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41929640"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887827"

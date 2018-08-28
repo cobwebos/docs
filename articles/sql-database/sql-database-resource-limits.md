@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 6f6fa1ebc086530f138d32ee5a9c799b5bfbbdeb
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 3b05f553e591de2660e9842f316de0cb6f80c852
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412104"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42141251"
 ---
 # <a name="overview-azure-sql-database-resource-limits"></a>Azure SQL 数据库资源限制概述 
 
@@ -22,15 +22,15 @@ ms.locfileid: "39412104"
 
 ## <a name="what-is-the-maximum-number-of-servers-and-databases"></a>服务器和数据库的最大数目是多少？
 
-| 最大值 | 值 |
-| :--- | :--- |
-| 每个服务器的数据库数 | 5000 |
-| 任意区域中每个订阅的服务器默认数量 | 20 |
-| 任意区域中每个订阅的服务器数上限 | 200 |
-| 每个服务器的 DTU/eDTU 配额 | 54,000 |
-| 每个服务器的 vCore 配额 | 540 |
-| 每个服务器的最大池数 | 受限于 DTU 或 vCore 数 |
-|||
+| 最大值 | 逻辑服务器 | 托管实例 |
+| :--- | :--- | :--- |
+| 每个服务器/实例的数据库数 | 5000 | 100 |
+| 任意区域中每个订阅的服务器默认数量 | 20 | 不适用 |
+| 任意区域中每个订阅的服务器数上限 | 200 | 不适用 | 
+| 每个服务器的 DTU/eDTU 配额 | 54,000 | 不适用 |  
+| 每个服务器/实例的 vCore 配额 | 540 | 80 |
+| 每个服务器的最大池数 | 受限于 DTU 或 vCore 数 | 不适用 |
+||||
 
 > [!NOTE]
 > 若要获得超过默认数量的 DTU/eDTU 配额、vCore 配额或服务器，可以在 Azure 门户中为订阅提交问题类型为“配额”的新支持请求。 每个服务器的 DTU/eDTU 配额和数据库限制约束了每个服务器的弹性池数。 

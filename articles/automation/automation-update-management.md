@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d12ce7b3416fac5de5cba9543f3bed5bcedf2012
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: ea96898e36080096c91285f3ff7621f84bf81edf
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115667"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42144169"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -213,12 +213,14 @@ Heartbeat
 
 | 属性 | Description |
 | --- | --- |
-|名称 |用于标识更新部署的唯一名称。 |
-|操作系统| 选择 **Linux** 或 **Windows**。|
-|要更新的计算机 |选择一个已保存的搜索，或者从下拉列表中选择“计算机”，然后选择个体计算机。 |
-|更新分类|选择所需的所有更新分类。 CentOS 不能现成地支持此功能。|
-|要排除的更新|输入要排除的更新。 对于 Windows，输入不带 **KB** 前缀的知识库文章。 对于 Linux，输入包名称或使用通配符。  |
-|计划设置|选择启动时间，对于“定期”，然后“一次”或“重复”。|| 维护时段 |为更新设置的分钟数。 该值不能小于 30 分钟，也不能大于 6 小时。 |
+| 名称 |用于标识更新部署的唯一名称。 |
+|操作系统| Linux 或 Windows|
+| 要更新的计算机 |选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的准备情况将显示在“更新代理准备”列中。</br> 若要了解在 Log Analytics 中创建计算机组的不同方法，请参阅 [Log Analytics 中的计算机组](../log-analytics/log-analytics-computer-groups.md) |
+|更新分类|选择所需的所有更新分类|
+|要排除的更新|输入要排除的更新。 对于 Windows，输入不带“KB”前缀的 KB。 对于 Linux，输入包名称或使用通配符。  |
+|计划设置|选择启动时间，然后选择任“一次”或“重复”|
+| 维护时段 |为更新设置的分钟数。 该值不能小于 30 分钟，且不能大于 6 小时 |
+| 重新启动控制| 确定应如何处理重新启动。</br>可用选项包括：</br>需要时重新启动(默认)</br>始终重新启动</br>从不重新启动</br>仅重新启动 - 不会安装更新|
 
 ## <a name="update-classifications"></a>更新分类
 
@@ -264,7 +266,7 @@ sudo yum -q --security check-update
 
 有关混合 Runbook 辅助角色所需端口的详细信息，请参阅[混合辅助角色端口](automation-hybrid-runbook-worker.md#hybrid-worker-role)。
 
-建议在定义异常时使用列出的地址。 对于 IP 地址，可以下载 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 此文件每周更新一次，反映当前已部署的范围和任何即将对 IP 范围进行的更改。
+建议在定义例外时使用列出的地址。 对于 IP 地址，可以下载 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 此文件每周更新一次，反映当前已部署的范围和任何即将对 IP 范围进行的更改。
 
 ## <a name="search-logs"></a>搜索日志
 

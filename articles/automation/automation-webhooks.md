@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f8ee8a2a4aae61e2edc275527d80a162c9bb4dc0
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 241fd1f9168ce6bfb8a4dfe97bbb1ef45ddf3f74
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345700"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42141437"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>通过 Webhook 启动 Azure 自动化 Runbook
 
@@ -27,7 +27,7 @@ Webhook 可以用来在 Azure 自动化中通过单个 HTTP 请求来启动特�
 
 下表介绍了必须为 webhook 配置的属性。
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--- |:--- |
 | 名称 |可以提供用于 Webhook 的任何名称，因为该名称不会公开给客户端。 它只用来标识 Azure 自动化中的 Runbook。 <br> 最好是为 Webhook 提供一个名称，该名称需要与使用它的客户端相关。 |
 | 代码 |Webhook 的 URL 是客户端通过 HTTP POST 来调用的唯一地址，用于启动链接到 Webhook 的 Runbook。 它是在创建 Webhook 时自动生成的。 不能指定自定义 URL。 <br> <br> URL 包含一个允许第三方系统调用 Runbook 的安全令牌，不需要进一步进行身份验证。 因此，应将其视为密码。 出于安全原因，只能在创建 Webhook 时通过 Azure 门户查看该 URL。 请将保存在安全位置的 URL 记下来，供将来使用。 |
@@ -44,7 +44,7 @@ Webhook 可以定义 Runbook 参数的值，当该 Webhook 启动 Runbook 时会
 
 $WebhookData 对象具有以下属性：
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--- |:--- |
 | WebhookName |Webhook 的名称。 |
 | RequestHeader |包含传入 POST 请求标头的哈希表。 |
@@ -74,7 +74,7 @@ $WebhookData 对象具有以下属性：
 > [!NOTE]
 > 所有输入参数的值都会通过 Runbook 作业进行记录。 这意味着，客户端在 Webhook 请求中提供的任何输入都将记录下来，并可供有权访问自动化作业的任何人使用。  因此，在 Webhook 调用中包括敏感信息时，应该特别小心。
 
-## <a name="security"></a>“安全”
+## <a name="security"></a>安全
 
 Webhook 的安全性取决于其 URL 的私密性，可以通过 URL 中包含的安全令牌来调用它。 如果请求是向正确的 URL 发出的，Azure 自动化不对请求进行任何身份验证。 因此，不应将 Webhook 用于执行敏感性很高的功能却不使用替代方法来验证请求的 Runbook。
 
@@ -107,7 +107,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 客户端从 POST 请求中接收以下返回代码之一。
 
-| 代码 | 文本 | 说明 |
+| 代码 | 文本 | Description |
 |:--- |:--- |:--- |
 | 202 |已接受 |已接受该请求，并已成功将 Runbook 排队。 |
 | 400 |错误的请求 |出于以下原因之一，未接受该请求： <ul> <li>Webhook 已过期。</li> <li>Webhook 已禁用。</li> <li>URL 中的令牌无效。</li>  </ul> |
@@ -120,7 +120,7 @@ http://<Webhook Server>/token?=<Token Value>
 {"JobIds":["<JobId>"]}
 ```
 
-客户端无法从 Webhook 确定 Runbook 的作业何时完成或其完成状态。 可以使用作业 ID 并配合其他方法（例如 [Windows PowerShell](http://msdn.microsoft.com/library/azure/dn690263.aspx) 或 [Azure 自动化 API](/rest/api/automation/job)）来确定此信息。
+客户端无法从 Webhook 确定 Runbook 的作业何时完成或其完成状态。 可以使用作业 ID 并配合其他方法（例如 [Windows PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjob) 或 [Azure 自动化 API](/rest/api/automation/job)）来确定此信息。
 
 ## <a name="sample-runbook"></a>示例 Runbook
 

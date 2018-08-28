@@ -7,21 +7,21 @@ manager: shreeshd
 keywords: azure vm 备份, azure vm 还原, 备份策略
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/18/2017
+ms.date: 8/16/2018
 ms.author: trinadhk
-ms.openlocfilehash: d637a98029b33be890b31f32c3080650b251f7a8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 58b0622da2ef617e652c8bb9dacbf7daa2d79966
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606369"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42143976"
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>有关 Azure VM 备份服务的问题
 本文提供常见问题的解答，有助于快速了解 Azure VM 备份组件。 某些答案提供内含全面信息的文章的链接。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
 
 ## <a name="configure-backup"></a>配置备份
 ### <a name="do-recovery-services-vaults-support-classic-vms-or-resource-manager-based-vms-br"></a>恢复服务保管库是支持基于经典 VM 还是支持基于 Resource Manager 的 VM？ <br/>
-恢复服务保管库同时支持这两种模式。  可以将经典 VM（在经典门户中创建的）或 Resource Manager VM（在 Azure 门户中创建的）备份到恢复服务保管库。
+恢复服务保管库同时支持这两种模式。  可以将经典 VM 或资源管理器 VM 备份到恢复服务保管库。
 
 ### <a name="what-configurations-are-not-supported-by-azure-vm-backup"></a>Azure VM 备份不支持哪些配置？
 请参阅[支持的操作系统](backup-azure-arm-vms-prepare.md#supported-operating-systems-for-backup)和 [VM 备份限制](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm)
@@ -33,7 +33,7 @@ ms.locfileid: "34606369"
 
 ## <a name="backup"></a>备份
 ### <a name="will-on-demand-backup-job-follow-same-retention-schedule-as-scheduled-backups"></a>按需备份作业是否与计划内备份遵循相同的保留计划？
-不会。 应为按需备份作业指定保留期。 默认情况下，从门户触发时，该作业会保留 30 天。 
+不是。 应为按需备份作业指定保留期。 默认情况下，从门户触发时，该作业会保留 30 天。 
 
 ### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-to-work"></a>我最近在一些 VM 上启用了 Azure 磁盘加密。 我的备份是否继续有效？
 需提供 Azure 备份服务访问 Key Vault 所需的权限。 可以在 PowerShell 中使用 [PowerShell](backup-azure-vms-automation.md) 文档的“启用备份”部分所述步骤提供这些权限。
@@ -51,7 +51,7 @@ ms.locfileid: "34606369"
 如果用户锁定了资源组，则备份服务将无法删除较早的还原点。 由于这一原因，新备份将开始失败，因为从后端施加了最多 18 个还原点的限制。 如果 RG 锁定后备份失败并显示内部错误，请按照以下[删除还原点集合的步骤](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock)进行操作。
 
 ### <a name="does-backup-policy-take-daylight-saving-timedst-into-account"></a>备份策略是否考虑夏令时 (DST)？
-不会。 请注意，本地计算机上的日期和时间会显示当地时间以及当前夏令时偏差。 因此，由于 DST，计划备份的配置时间可能与当地时间不同。
+不是。 请注意，本地计算机上的日期和时间会显示当地时间以及当前夏令时偏差。 因此，由于 DST，计划备份的配置时间可能与当地时间不同。
 
 ## <a name="restore"></a>还原
 ### <a name="how-do-i-decide-between-restoring-disks-versus-full-vm-restore"></a>如何决定是进行磁盘还原，还是进行完整的 VM 还原？
@@ -73,6 +73,9 @@ ms.locfileid: "34606369"
 2. [将还原的磁盘转换为托管磁盘](tutorial-restore-disk.md#convert-the-restored-disk-to-a-managed-disk)
 3. [使用托管磁盘创建 VM](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk) <br>
 有关 Powershell cmdlet，请参阅[此处](backup-azure-vms-automation.md#restore-an-azure-vm)。
+
+### <a name="can-i-restore-the-vm-if-my-vm-is-deleted"></a>如果我的 VM 被删除，是否可以还原 VM？
+是的。 VM 的生命周期及其相应的备份项是不同的。 因此，即使你删除了 VM，也可以转到恢复服务保管库中的相应备份项，并使用其中一个恢复点触发还原。 
 
 ## <a name="manage-vm-backups"></a>管理 VM 备份
 ### <a name="what-happens-when-i-change-a-backup-policy-on-vms"></a>在 VM 上更改备份策略时，会发生什么情况？

@@ -4,22 +4,20 @@ description: 使用 Azure 资源管理器将资源移到新的资源组或订阅
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: ab7d42bd-8434-4026-a892-df4a97b60a9b
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/02/2018
+ms.date: 08/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 69614fe84941ea2003d39de165c692b812d10785
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 7ddab3717626df14f491662849d01cb85658791c
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503574"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617284"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -113,11 +111,11 @@ ms.locfileid: "39503574"
 
 支持同时移动到新资源组和订阅的服务包括：
 
+* Analysis Services
 * API 管理
 * 应用服务应用（Web 应用）- 请参阅[应用服务限制](#app-service-limitations)
 * 应用服务证书
 * Application Insights
-* Analysis Services
 * 自动化
 * Azure Active Directory B2C
 * Azure Cosmos DB
@@ -133,6 +131,8 @@ ms.locfileid: "39503574"
 * 认知服务
 * 容器注册表
 * 内容审查器
+* 成本管理
+* Customer Insights
 * 数据目录
 * 数据工厂
 * Data Lake Analytics
@@ -142,11 +142,13 @@ ms.locfileid: "39503574"
 * 事件中心
 * HDInsight 群集 - 请参阅 [HDInsight 限制](#hdinsight-limitations)
 * IoT 中心
+* IoT 中心
 * Key Vault
 * 负载均衡器 - 请参阅[负载均衡器限制](#lb-limitations)
 * Log Analytics
 * 逻辑应用
 * 机器学习 - 机器学习工作室 Web 服务可以移动到同一订阅中的资源组，但不能移动到不同订阅中。 其他机器学习资源可以跨订阅进行移动。
+* 托管标识 - 用户分配
 * 媒体服务
 * Mobile Engagement
 * 通知中心
@@ -160,6 +162,7 @@ ms.locfileid: "39503574"
 * 搜索
 * 服务总线
 * Service Fabric
+* Service Fabric 网格
 * SignalR 服务
 * 存储
 * 存储（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
@@ -187,7 +190,10 @@ ms.locfileid: "39503574"
 * Azure Databricks
 * Batch AI
 * 证书 - 应用服务证书可以移动，但上传的证书存在[限制](#app-service-limitations)。
+* 容器实例
 * 容器服务
+* Data Box
+* Dev Spaces
 * Dynamics LCS
 * Express Route
 * Kubernetes 服务
@@ -196,6 +202,7 @@ ms.locfileid: "39503574"
 * 托管应用程序
 * 托管磁盘 - 请参阅[虚拟机限制](#virtual-machines-limitations)
 * Microsoft 基因组学
+* NetApp
 * 公共 IP - 请参阅[公共 IP 限制](#pip-limitations)
 * 恢复服务保管库 - 此外，也不可以移动与恢复服务保管库关联的计算、网络和存储资源，请参阅[恢复服务限制](#recovery-services-limitations)。
 * Azure 上的 SAP HANA
@@ -225,7 +232,7 @@ ms.locfileid: "39503574"
 
 ## <a name="virtual-networks-limitations"></a>虚拟网络限制
 
-移动虚拟网络时，还必须移动其从属资源。 例如，必须随虚拟网络一起移动网关。
+移动虚拟网络时，还必须移动其从属资源。 对于 VPN 网关，必须移动 IP 地址、虚拟网络网关和所有关联的连接资源。 本地网络网关可以位于不同的资源组中。
 
 若要移动对等的虚拟网络，必须首先禁用虚拟网络对等互连。 在禁用后，可以移动虚拟网络。 在移动后，重新启用虚拟网络对等互连。
 

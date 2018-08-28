@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: sajagtap
-ms.openlocfilehash: 316c7212c30e9fe1151cdf5ceabf875439ad4c65
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 4570b514bef33c8dfa6d220ee4cd88ad068ba4d0
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365556"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "41936756"
 ---
 # <a name="facebook-content-moderation-with-content-moderator"></a>使用内容审查器执行 Facebook 内容审核
 
@@ -64,7 +64,7 @@ ms.locfileid: "35365556"
 > 例如，应为 westeurope，而不是 West Europe；应为 westcentralus，而不是 West Central US，以此类推。
 >
 
-| 应用设置 | 说明   | 
+| 应用设置 | Description   | 
 | -------------------- |-------------|
 | cm:TeamId   | 内容审查器 TeamId  | 
 | cm:SubscriptionKey | 内容审查器的订阅密钥 - 请参阅[凭据](/review-tool-user-guide/credentials.md) | 
@@ -85,7 +85,7 @@ ms.locfileid: "35365556"
     6. 单击“创建”。
     7. 将 run.csx 的内容替换为 [FbListener/run.csx](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/FbListener/run.csx) 的内容。
 
-6. 创建名为 CMListener 的新 HttpTrigger-CSharp 函数。 此函数接收来自 Facebook 的事件。 按照以下步骤创建此函数。
+6. 创建名为 CMListener 的新 HttpTrigger-CSharp 函数。 此函数接收来自内容审查器的事件。 按照以下步骤创建此函数。
 
     1. 保持 [Azure Functions 创建](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal)页处于打开状态，以供参考。
     2. 单击“+”创建新函数。
@@ -150,7 +150,7 @@ ms.locfileid: "35365556"
 
 ## <a name="license"></a>许可
 
-所有 Microsoft 认知服务 SDK 和示例均通过 MIT 许可进行许可。 有关详细信息，请参阅[许可](https://microsoft.mit-license.org/)。
+所有 Microsoft 认知服务 SDK 和示例均获得 MIT 许可证的许可。 有关详细信息，请参阅[许可证](https://microsoft.mit-license.org/)。
 
 ## <a name="developer-code-of-conduct"></a>开发人员行为准则
 

@@ -10,12 +10,12 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 4/19/2018
 ms.author: scottwhi
-ms.openlocfilehash: 43b7b71ee1cce3d0f9f8d9f955004825d6b1a3af
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9095ef443e406c0f3e40ae575cdf6d6484726e0f
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366808"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41936181"
 ---
 # <a name="bing-visual-search-sdk"></a>必应视觉搜索 SDK
 
@@ -32,3 +32,8 @@ ms.locfileid: "35366808"
     * 有关定义和依赖项，请参阅 [Python 库](https://github.com/Azure/azure-sdk-for-python/tree/master/azure-cognitiveservices-search-imagesearch)
 
 每种语言的 SDK 示例包括一个自述文件，用于使用 SDK 的先决条件，以及用于安装和运行这些示例的步骤。
+
+### <a name="sdk-tools"></a>SDK 工具
+可以在此 Git 存储库中找到用于探索必应视觉搜索功能的 SDK 工具：[必应视觉搜索工具](https://github.com/Azure-Samples/bing-visualsearch-tools)
+
+

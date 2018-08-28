@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 7a9adc8e9b7bcf69cce6b8ecf00e44477c1b0da3
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3c447a37b1dfbdac2c6e2a4eaa61d0e0e08a2176
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430733"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42442233"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure SQL 数据仓库或从 Azure SQL 数据仓库复制数据 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -71,6 +71,9 @@ Azure SQL 数据仓库链接服务支持以下属性：
 - [SQL 身份验证](#sql-authentication)
 - Azure AD 应用程序令牌身份验证：[服务主体](#service-principal-authentication)
 - Azure AD 应用程序令牌身份验证：[托管服务标识](#managed-service-identity-authentication)
+
+>[!TIP]
+>如果遇到错误（错误代码为“UserErrorFailedToConnectToSqlServer”，且消息如“数据库的会话限制为 XXX 且已达到。”），请将 `Pooling=false` 添加到连接字符串中，然后重试。
 
 ### <a name="sql-authentication"></a>SQL 身份验证
 
@@ -397,7 +400,7 @@ SQL 数据仓库 PolyBase 直接支持 Azure Blob 和 Azure Data Lake Store。 �
 
 如果不满足要求，Azure 数据工厂会检查设置，并自动回退到 BULKINSERT 机制以进行数据移动。
 
-1. **源链接服务**类型为使用服务主体身份验证的 **AzureStorage** 或 **AzureDataLakeStore**。
+1. **源链接服务**类型是具有帐户密钥身份验证的 Azure Blob 存储 (**AzureBLobStorage**/**AzureStorage**)，或具有服务主体身份验证的 Azure Data Lake Storage Gen1 (**AzureDataLakeStore**)。
 1. **输入数据集**类型为 **AzureBlob** 或 **AzureDataLakeStoreFile**。 `type` 属性下的格式类型为 **OrcFormat**、**ParquetFormat** 或 **TextFormat**，其配置如下：
 
    1. `rowDelimiter` 必须是 **\n**。

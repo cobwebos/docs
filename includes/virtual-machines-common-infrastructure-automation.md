@@ -19,8 +19,8 @@
 了解如何：
 
 - [在 Linux 上安装和配置与 Azure 配合使用的 Ansible](../articles/virtual-machines/linux/ansible-install-configure.md)。
-- [创建基本 VM](../articles/virtual-machines/linux/ansible-create-vm.md)。
-- [创建包括支持资源在内的完整 VM 环境](../articles/virtual-machines/linux/ansible-create-complete-vm.md)。
+- [创建 Linux 虚拟机](../articles/virtual-machines/linux/ansible-create-vm.md)。
+- [管理 Linux 虚拟机](../articles/virtual-machines/linux/ansible-manage-linux-vm.md)。
 
 
 ## <a name="chef"></a>Chef
@@ -39,7 +39,7 @@
 了解如何：
 
 - 
-  [从 Azure 市场部署 Puppet](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2016-1?tab=Overview)。
+  [从 Azure 市场部署 Puppet](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2?tab=Overview)。
 
 
 ## <a name="cloud-init"></a>Cloud-init

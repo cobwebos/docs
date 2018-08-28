@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 07/31/2018
+ms.date: 08/22/2018
 ms.author: rolyon
-ms.openlocfilehash: edf8eccf8c0a1cba70ac178ac5863a68b26f14a3
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 6162ee59689df12e2dace9a0419490979a13d4c5
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622069"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616857"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory 使用条款功能
 组织可以通过 Azure AD 使用条款这种简单的方法向最终用户显示信息。 可以通过这样的呈现方式确保用户看到法律要求或符合性要求的相关免责声明。 本文介绍如何开始使用 Azure AD 使用条款。
@@ -122,6 +122,8 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 以下屏幕显示了使用条款在移动设备上的外观。
 
 ![审核事件](media/active-directory-tou/mobile-tou.png)
+
+用户只需接受一次使用条款，他们将不会在后续登录时再次看到使用条款。
 
 ### <a name="how-users-can-review-their-terms-of-use"></a>用户如何查看其使用条款
 用户可按以下过程查看已接受的使用条款。

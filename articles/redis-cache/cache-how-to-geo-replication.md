@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: wesmc
-ms.openlocfilehash: 883683f6af7943fa4da49095c9a15aefd5cfa719
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 644a7414365ded53acb20bb2f9ae9d086f263765
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27911364"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42141229"
 ---
 # <a name="how-to-configure-geo-replication-for-azure-redis-cache"></a>如何为 Azure Redis 缓存配置异地复制功能
 
@@ -35,7 +35,9 @@ ms.locfileid: "27911364"
 - 如果主链接缓存已启用群集，辅助链接缓存必须启用分片数量与主链接缓存相同的群集。
 - 两个缓存都必须已创建且都处于运行状态。
 - 任一缓存都不能启用暂留。
-- 支持在同一 VNET 中的缓存间进行异地复制。 也支持不同 VNET 中的缓存间异地复制，只要两个 VNET 都以这样一种方式进行配置，即最终 VNET 中的资源可以通过 TCP 连接到达彼此。
+- 支持在同一 VNET 中的缓存间进行异地复制。 
+- 目前，同一区域内对等互连的 VNET 中的缓存间的异地复制是预览功能。 需要以这样的方式配置两个 VNET：使得 VNET 中的资源能够通过 TCP 连接彼此访问。
+- 目前尚不支持在不同区域的对等互连 VNET 中的缓存之间进行异地复制，但此功能不久将以预览版提供。
 
 完成异地复制配置后，链接缓存对会有以下限制：
 

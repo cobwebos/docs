@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: a74eab546eefd765b89aae6f12fcff554d9937c4
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: bc9fbf56b37cb8c6690bd036db704532cb8b0437
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036932"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42144192"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>在 Service Fabric 群集中修补 Windows 操作系统
 
@@ -391,6 +391,10 @@ A. 否，修补业务流程应用不能用来修补单节点群集。 此限制�
 - 由于修复任务准备过程中的运行状况检查，RM 任务创建过程中的 Bug 修复未能按预期方式进行。
 - 将窗口服务 POANodeSvc 的启动模式从自动更改为延时自动。
 
-### <a name="version-121-latest"></a>版本 1.2.1（最新）
+### <a name="version-121"></a>版本 1.2.1
 
 - 群集缩减工作流中的 Bug 修复。 引入了针对不存在节点中 POA 修复任务的垃圾回收逻辑。
+
+### <a name="version-122-latest"></a>版本 1.2.2（最新版本）
+
+- 其他 Bug 修复。

@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 06/27/2018
+ms.date: 08/14/2018
 ms.author: kgremban
-ms.openlocfilehash: e814785af7041ba762f7c383a0cfdc434fce9dce
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 7720e0471c6d8f2ba20f28753773829a28f93c7a
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213866"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42141645"
 ---
 # <a name="install-azure-iot-edge-runtime-on-linux-arm32v7armhf"></a>在 Linux 上安装 Azure IoT Edge 运行时 (ARM32v7/armhf)
 
@@ -111,6 +111,9 @@ sudo nano /etc/iotedge/config.yaml
 ```cmd/sh
 sudo systemctl restart iotedge
 ```
+
+>[!TIP]
+>需要提升的权限才能运行 `iotedge` 命令。 安装 IoT Edge 运行时后从计算机中注销并第一次重新登录后，你的权限将自动更新。 在此之前，请在命令前使用 **sudo**。 
 
 ## <a name="verify-successful-installation"></a>验证是否成功安装
 

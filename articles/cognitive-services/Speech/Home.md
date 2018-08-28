@@ -1,5 +1,5 @@
 ---
-title: Microsoft 语音服务 | Microsoft Docs
+title: Microsoft 必应语音服务 | Microsoft Docs
 description: 使用 Microsoft 语音 API 向应用添加语音驱动的操作，包括与用户进行实时交互。
 services: cognitive-services
 author: zhouwangzw
@@ -9,19 +9,22 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: zhouwang
-ms.openlocfilehash: c041132e992f07e94e4b6669ec7ce174f7c2d0dd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ee328145419aaf8962c08bca2fb9cf1a42daae0c
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365669"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41929933"
 ---
-# <a name="microsoft-speech-api-overview"></a>Microsoft 语音 API 概述
+# <a name="microsoft-bing-speech-api-overview"></a>Microsoft 必应语音 API 概述
 
-使用基于云的 Microsoft 语音 API，开发人员可以轻松地在其应用程序中创建支持语音的强大功能，例如语音命令控制、使用自然语音对话的用户对话以及语音听录和听写。 Microsoft 语音 API 支持“语音转文本”和“文本转语音”转换。
+使用基于云的 Microsoft 必应语音 API，开发人员可以轻松地在其应用程序中创建支持语音的强大功能，例如语音命令控制、使用自然语音聊天的用户对话以及语音听录和听写。 Microsoft 语音 API 支持“语音转文本”和“文本转语音”转换。
 
 - 语音转文本 API 将人类语音转换为可用作控制应用程序的输入或命令的文本。
 - 文本转语音 API 将文本转换为可向应用程序用户播放的音频流。
+
+> [!NOTE] 
+> 在 2018 年 5 月，我们以公共预览版形式发布了新的[语音服务](/speech-service/overview.md)。 我们建议你[免费试用](/speech-service/get-started.md)。
 
 ## <a name="speech-to-text-speech-recognition"></a>语音转文本（语音识别）
 
@@ -43,7 +46,7 @@ Microsoft 语音识别 API 将音频流转录为应用程序可以向用户显�
 - 实时连续识别。 语音识别 API 使用户能够实时将音频听录为文本，并支持接收目前为止已识别字词的中间结果。 语音服务还支持语音结束检测。 此外，用户可选择其他格式功能，例如大写和标点符号、屏蔽不当字词和文本规范化。
 - 支持已针对交互、对话和听写场景优化的语音识别结果。 对于需要自定义语言模型和声学模型的用户方案，[自定义语音服务](../custom-speech-service/cognitive-services-custom-speech-home.md)允许创建适合应用程序和用户的语音模型。
 - 支持多种方言中的多种口语。 有关每种识别模式下支持的语言的完整列表，请参阅[识别语言](api-reference-rest/supportedlanguages.md)。
-- 与语言理解集成。 除了将输入音频转换为文本外，语音转文本还为应用程序提供了理解文本含义的附加功能。 它使用[语言理解智能服务 (LUIS)](../LUIS/Home.md) 从识别文本中提取意向和实体。
+- 与语言理解集成。 除了将输入音频转换为文本外，语音转文本还为应用程序提供了理解文本含义的附加功能。 它使用[语言理解智能服务 (LUIS)](../LUIS/what-is-luis.md) 从识别文本中提取意向和实体。
 
 ### <a name="next-steps"></a>后续步骤
 

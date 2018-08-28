@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: dobett
-ms.openlocfilehash: 718bf82a921ec3b70939b7a70205a4c650702dd0
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: ad1ce768ea5be2356f141d10a53ea0166546a2b7
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823344"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42142046"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>了解和使用 Azure IoT 中心 SDK
 
@@ -66,6 +66,7 @@ Microsoft Azure IoT 设备 SDK 包含的代码可帮助构建连接到 Azure IoT
 
 ### <a name="os-platform-and-hardware-compatibility"></a>操作系统平台和硬件兼容性
 
+可以在此[文档](iot-hub-device-sdk-platform-support.md)中找到支持的 SDK 平台。
 有关与特定硬件设备的 SDK 兼容性的详细信息，请参阅 [Azure IoT 认证设备目录][lnk-certified]或个体存储库。
 
 ## <a name="azure-iot-service-sdks"></a>Azure IoT 服务 SDK
@@ -103,7 +104,12 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 > 有关使用语言和平台特定的程序包管理器在开发计算机上安装二进制文件和依赖项的信息，请参阅 GitHub 存储库中的自述文件。
 
 
+
 ## <a name="next-steps"></a>后续步骤
+
+Azure IoT SDK 还提供了一组工具来帮助开发：
+* [iothub-diagnostics](https://github.com/Azure/iothub-diagnostics)：一个跨平台的命令行工具，用于帮助诊断与 IoT Hub 连接相关的问题。
+* [设备资源管理器](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)：用于连接到 IoT 中心的 Windows 桌面应用程序。
 
 此 IoT 中心开发人员指南中的其他参考主题包括：
 
@@ -112,6 +118,7 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 * [配额和限制][lnk-devguide-quotas]
 * [IoT 中心 MQTT 支持][lnk-devguide-mqtt]
 * [IoT 中心 REST API 参考][lnk-rest-ref]
+* [Azure IoT SDK 平台支持](iot-hub-device-sdk-platform-support.md)
 
 <!-- Links and images -->
 

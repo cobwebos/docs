@@ -4,20 +4,44 @@ description: 了解如何排查更新管理问题
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/19/2018
+ms.date: 08/08/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: b77d1210ff48a4bd30834fcbad64173bf77b1290
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 2e47320d5ad88edfa8ea6122f3a0abd104230974
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064286"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42141434"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>排查更新管理问题
 
-本文讨论用于解决使用更新管理时可能遇到的问题的解决方案
+本文讨论用于解决使用更新管理时可能遇到的问题的解决方案。
+
+## <a name="general"></a>常规
+
+### <a name="components-enabled-not-working"></a>场景：已启用“更新管理”解决方案的组件，现在正在配置此虚拟机
+
+#### <a name="issue"></a>问题
+
+在加入 15 分钟后继续在虚拟机上看到以下消息：
+
+```
+The components for the 'Update Management' solution have been enabled, and now this virtual machine is being configured. Please be patient, as this can sometimes take up to 15 minutes.
+```
+
+#### <a name="cause"></a>原因
+
+此错误可能由以下原因引起：
+
+1. 返回到自动化帐户的通信被阻止。
+2. 正在加入的 VM 可能来自未在安装 Microsoft Monitoring Agent 的情况下进行系统准备的克隆计算机。
+
+#### <a name="resolution"></a>解决方法
+
+1. 访问[网络规划](../automation-hybrid-runbook-worker.md#network-planning)，了解需要允许哪些地址和端口才能使更新管理正常工作。
+2. 如果使用克隆映像，请首先对映像进行 sysprep，然后在事后安装 MMA 代理。
 
 ## <a name="windows"></a>Windows
 
@@ -31,7 +55,7 @@ ms.locfileid: "37064286"
 
 看到以下错误消息：
 
-```error
+```
 Unable to Register Machine for Patch Management, Registration Failed with Exception System.InvalidOperationException: {"Message":"Machine is already registered to a different account."}
 ```
 
@@ -135,8 +159,8 @@ Linux 混合辅助角色运行状况不正常。
 
 ## <a name="next-steps"></a>后续步骤
 
-如果未看到问题或者不能解决问题，请访问以下通道获取更多支持：
+如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
 * 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答
 * 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
-* 如果需要更多帮助，可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。
+* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。

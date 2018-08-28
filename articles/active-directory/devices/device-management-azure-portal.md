@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: fd810f6e5a4211f64044a88ae6ca6bb6dc044e28
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: bc29fbd0946f0abfe692e2270d145cd2cb292356
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39416110"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42141040"
 ---
 # <a name="managing-devices-using-the-azure-portal"></a>使用 Azure 门户管理设备
 
@@ -46,7 +46,7 @@ Azure 门户提供了用于管理设备的集中场所。 可以使用[直接链
 
 3. 在“管理”部分单击“设备”。
 
-    ![配置设备设置](./media/device-management-azure-portal/11.png)
+    ![配置设备设置](./media/device-management-azure-portal/74.png)
  
 可在“设备”页上完成以下操作：
 
@@ -70,13 +70,13 @@ Azure 门户提供了用于管理设备的集中场所。 可以使用[直接链
 ![管理 Intune 设备](./media/device-management-azure-portal/21.png)
 
 
-- **用户可将设备加入 Azure AD** - 可通过此设置选择可以[将设备加入](overview.md#azure-ad-joined-devices) Azure AD 的用户。 默认值为“全部”。
+- **用户可将设备加入 Azure AD** - 可通过此设置选择可以[将设备加入](overview.md#azure-ad-joined-devices) Azure AD 的用户。 默认值为“全部”。 此设置仅适用于 Windows 10 上的 Azure AD 加入。
 
 - **已加入 Azure AD 设备上的其他本地管理员** - 可选择具有此设备的本地管理员权限的用户。 此处添加的用户会添加到 Azure AD 中的“设备管理员”角色。 默认情况下，Azure AD 中的全局管理员和设备所有者均具有本地管理员权限。 此选项属于高级版功能，通过 Azure AD Premium 或企业移动性套件 (EMS) 提供。 
 
 - **用户可向 Azure AD 注册其设备** - 需要配置此设置，以允许向 Azure AD [注册](overview.md#azure-ad-registered-devices)设备。 如果选择“无”，则在设备未加入 Azure AD 或混合 Azure AD 时，不允许进行注册。 登记到 Microsoft Intune 或 Office 365 移动设备管理 (MDM) 需要进行注册。 如果已配置其中的任一服务，则会选中“全部”且“无”不可用。
 
-- **需要进行多重身份验证才能加入设备** - 可以选择用户是否需要进行第二重身份验证因素才能将其设备[加入](overview.md#azure-ad-joined-devices) Azure AD。 默认值为“否”。 在注册设备时，建议要求多重身份验证。 为此设备启用多重身份验证前，必须确保已针对注册其设备的用户配置多重身份验证。 有关各种 Azure 多重身份验证服务的详细信息，请参阅 [Azure 多重身份验证入门](../authentication/concept-mfa-whichversion.md)。 
+- **需要进行多重身份验证才能加入设备** - 可以选择用户是否需要进行第二重身份验证因素才能将其设备[加入](overview.md#azure-ad-joined-devices) Azure AD。 默认值为“否”。 在注册设备时，建议要求多重身份验证。 为此设备启用多重身份验证前，必须确保已针对注册其设备的用户配置多重身份验证。 有关各种 Azure 多重身份验证服务的详细信息，请参阅 [Azure 多重身份验证入门](../authentication/concept-mfa-whichversion.md)。 此设置不会影响 Windows 10 或 Windows 7 的混合加入。 这仅适用于 Windows 10 上的 Azure AD 加入和 Windows 10、iOS 和 Android 的 BYO 设备注册。 
 
 - **最大设备数** - 可通过此设置选择用户可在 Azure AD 中拥有的最大设备数。 如果用户达到此配额，则必须先删除一个或多个现有设备，然后才可添加其他设备。 设备配额会计入当前已加入 Azure AD 或已注册 Azure AD 的所有设备。 默认值为 20。
 

@@ -9,12 +9,12 @@ ms.date: 06/26/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5766f9708d2439f42f9ad77169fd1fe7f7dc451e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6cf3a721dfd601fc4d4beb122f56b4a4de5fe426
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439106"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41918871"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device"></a>教程：开发 Python IoT Edge 模块并将其部署到模拟设备
 
@@ -37,7 +37,7 @@ ms.locfileid: "39439106"
 Azure IoT Edge 设备：
 
 * 可以按照适用于 [Linux](quickstart-linux.md) 的快速入门中的步骤，将开发计算机或虚拟机用作 Edge 设备。
-* 用于 IoT Edge 的 Python 模块不支持 ARM 处理器或 Windows 设备。
+* 用于 IoT Edge 的 Python 模块不支持 Windows 设备。
 
 云资源：
 
@@ -51,6 +51,9 @@ Azure IoT Edge 设备：
 * [Docker CE](https://docs.docker.com/engine/installation/)。 
 * [Python](https://www.python.org/downloads/)。
 * [Pip](https://pip.pypa.io/en/stable/installing/#installation) 用于安装 Python 包（通常包含在 Python 安装中）。
+
+>[!Note]
+>确保 `bin` 文件夹在平台的路径中。 通常为 `~/.local/`（针对 UNIX 和 macOS）或 `%APPDATA%\Python`（针对 Windows）。
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 本教程将使用适用于 VS Code 的 Azure IoT Edge 扩展来生成模块并从文件创建**容器映像**。 然后将该映像推送到用于存储和管理映像的**注册表**。 最后，从注册表部署在 IoT Edge 设备上运行的映像。  
@@ -78,6 +81,8 @@ Azure IoT Edge 设备：
     ```cmd/sh
     pip install --upgrade --user cookiecutter
     ```
+   >[!Note]
+   >确保将要在其中安装 Cookiecutter 的目录位于环境的 `Path` 中，这样才可以从命令提示符处调用它。
 
 3. 选择“视图” > “命令面板”，打开 VS Code 命令面板。 
 
@@ -91,7 +96,13 @@ Azure IoT Edge 设备：
    4. 将模块命名为 **PythonModule**。 
    5. 将在上一部分创建的 Azure 容器注册表指定为第一个模块的映像存储库。 将 **localhost:5000** 替换为复制的登录服务器值。 最终的字符串看起来类似于 \<注册表名称\>.azurecr.io/pythonmodule。
  
-VS Code 窗口将加载你的 IoT Edge 解决方案工作区：modules 文件夹、一个部署清单模板文件，以及一个 \.env 文件。 
+   ![提供 Docker 映像存储库](./media/tutorial-python-module/repository.png)
+
+VS Code 窗口将加载你的 IoT Edge 解决方案空间。 解决方案工作区包含五个顶级组件。 你不会在本教程中编辑 **\.gitignore** 文件。 **modules** 文件夹包含模块的 Python 代码以及用于将模块构建为容器映像的 Dockerfile。 **\.env** 文件存储容器注册表凭据。 **deployment.template.json** 文件包含 IoT Edge 运行时用于在设备上部署模块的信息。 
+
+如果在创建解决方案时未指定容器注册表，但接受了默认的 localhost:5000 值，则不会有 \.env 文件。 
+
+   ![Python 解决方案工作区](./media/tutorial-python-module/workspace.png)
 
 ### <a name="add-your-registry-credentials"></a>添加注册表凭据
 
@@ -200,7 +211,7 @@ VS Code 窗口将加载你的 IoT Edge 解决方案工作区：modules 文件夹
 
 4. 保存此文件。
 
-5. 在 VS Code 资源管理器中右键单击“deployment.template.json”文件，然后选择“生成 IoT Edge 解决方案”。 
+5. 在 VS Code 资源管理器中右键单击“deployment.template.json”文件，然后选择“生成并推送 IoT Edge 解决方案”。 
 
 告知 Visual Studio Code 生成解决方案时，它首先获取部署模板中的信息，然后在名为 **config** 的新文件夹中生成 deployment.json 文件。然后，它在集成终端运行两个命令，即 `docker build` 和 `docker push`。 这两个命令会生成代码，将 Python 代码容器化，然后将代码推送到在初始化解决方案时指定的容器注册表。 
 
@@ -208,23 +219,21 @@ VS Code 窗口将加载你的 IoT Edge 解决方案工作区：modules 文件夹
 
 ## <a name="deploy-and-run-the-solution"></a>部署并运行解决方案
 
-可以使用 Azure 门户将 Python 模块部署到 IoT Edge 设备，就像在快速入门中所做的一样。 也可以在 Visual Studio Code 中部署和监视模块。 以下部分使用用于 VS Code 的 Azure IoT Edge 扩展，该扩展已在先决条件中列出。 如果尚未安装该扩展，现在请安装。 
+在用于设置 IoT Edge 设备的快速入门文章中，已使用 Azure 门户部署了一个模块。 还可以使用用于 Visual Studio Code 的 Azure IoT Toolkit 扩展来部署模块。 你已经为方案准备了部署清单，即 **deployment.json** 文件。 现在需要做的就是选择一个设备来接收部署。
 
-1. 打开 VS Code 命令面板，方法是选择“视图” > “命令面板”。
+1. 在 VS Code 命令面板中，运行“Azure IoT 中心: 选择 IoT 中心”。 
 
-2. 搜索并运行“Azure: 登录”命令。 按照说明登录 Azure 帐户。 
+2. 选择包含要配置的 IoT Edge 设备的订阅和 IoT 中心。 
 
-3. 在命令面板中，搜索并运行“Azure IoT 中心: 选择 IoT 中心”命令。 
+3. 在 VS Code 资源管理器中，展开“Azure IoT 中心设备”部分。 
 
-4. 选择包含 IoT 中心的订阅，然后选择要访问的 IoT 中心。
+4. 右键单击 IoT Edge 设备的名称，然后选择“为单个设备创建部署”。 
 
-5. 在 VS Code 资源管理器中，展开“Azure IoT 中心设备”部分。 
+   ![为单个设备创建部署](./media/tutorial-python-module/create-deployment.png)
 
-6. 右键单击 IoT Edge 设备的名称，然后选择“为 IoT Edge 设备创建部署”。 
+5. 选择 **config** 文件夹中的 **deployment.json** 文件，然后单击“选择 Edge 部署清单”。 不要使用 deployment.template.json 文件。 
 
-7. 浏览到包含 **PythonModule** 的解决方案文件夹。 打开 config 文件夹，选择 deployment.json 文件，然后选择“选择 Edge 部署清单”。
-
-8. 刷新“Azure IoT 中心设备”部分。 此时会看到新的 **PythonModule** 在运行，此外还有 **TempSensor** 模块以及 **$edgeAgent** 和 **$edgeHub** 在运行。 
+6. 单击刷新按钮。 此时会看到新的 **PythonModule** 在运行，此外还有 **TempSensor** 模块以及 **$edgeAgent** 和 **$edgeHub** 在运行。 
 
 ## <a name="view-generated-data"></a>查看生成的数据
 
@@ -236,32 +245,42 @@ VS Code 窗口将加载你的 IoT Edge 解决方案工作区：modules 文件夹
 
 ## <a name="clean-up-resources"></a>清理资源 
 
-<!--[!INCLUDE [iot-edge-quickstarts-clean-up-resources](../../includes/iot-edge-quickstarts-clean-up-resources.md)] -->
-
-如果打算继续学习下一篇建议的文章，可以保留已创建的资源和配置，以便重复使用。
+如果打算继续学习下一篇建议的文章，可以保留已创建的资源和配置，以便重复使用。 还可以继续使用相同的 IoT Edge 设备作为测试设备。 
 
 否则，可以删除本文中创建的本地配置和 Azure 资源，以避免收费。 
 
-> [!IMPORTANT]
-> 删除 Azure 资源和资源组的操作不可逆。 删除这些项时，资源组以及其中包含的所有资源会被永久删除。 请确保不要意外删除错误的资源组或资源。 如果在现有的包含要保留资源的资源组中创建了 IoT 中心，请只删除 IoT 中心资源本身，而不要删除资源组。
->
+[!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-若要只删除 IoT 中心，请使用中心名称和资源组名称执行以下命令：
+### <a name="delete-local-resources"></a>删除本地资源
 
-```azurecli-interactive
-az iot hub delete --name {hub_name} --resource-group IoTEdgeResources
-```
+若要从设备中删除 IoT Edge 运行时和相关的资源，请使用以下命令。 
 
+删除 IoT Edge 运行时。
 
-若要按名称删除整个资源组，请执行以下操作：
+   ```bash
+   sudo apt-get remove --purge iotedge
+   ```
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，然后选择“资源组”。
+删除 IoT Edge 运行时以后，已创建的容器会被停止，但仍存在于设备上。 查看所有容器。
 
-2. 在“按名称筛选”文本框中，输入包含你的 IoT 中心的资源组的名称。 
+   ```bash
+   sudo docker ps -a
+   ```
 
-3. 在结果列表中你的资源组的右侧，选择 (**...**)，然后选择“删除资源组”。
+删除在设备上创建的运行时容器。
 
-4. 系统会要求确认是否删除资源组。 重新键入资源组的名称进行确认，然后选择“删除”。 片刻之后，将会删除该资源组及其包含的所有资源。
+   ```bash
+   docker rm -f edgeHub
+   docker rm -f edgeAgent
+   ```
+
+按照容器名称删除在 `docker ps` 输出中列出的任何其他容器。 
+
+删除容器运行时。
+
+   ```bash
+   sudo apt-get remove --purge moby
+   ```
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/06/2018
+ms.date: 08/15/2018
 ms.author: magoedte
-ms.openlocfilehash: 2ae61d672083508d49e72afd5a015191082c23e9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 8027149f3e5ace163bf380bc5362fcb101397986
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521925"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42141236"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>监视 Azure Kubernetes 服务 (AKS) 容器运行状况（预览版）
 
 本文介绍如何设置和使用 Azure Monitor 容器运行状况来监视部署到 Kubernetes 环境并在 Azure Kubernetes 服务 (AKS) 中托管的工作负荷的性能。 监视 Kubernetes 群集和容器至关重要，特别是在大规模运行包含多个应用程序的生产群集时。
 
-容器运行状况提供性能监视功能，用户可以通过 Metrics API 从 Kubernetes 中提供的控制器、节点和容器收集内存和处理器指标。 启用容器运行状况后，通过适用于 Linux 的 Operations Management Suite (OMS) 代理的容器化版本自动收集这些指标并将其存储在 [Log Analytics](../log-analytics/log-analytics-overview.md) 工作区中。 包含的预定义视图显示驻留容器的工作负荷，以及影响 Kubernetes 群集性能运行状况的对象，因此可以：  
+容器运行状况提供性能监视功能，用户可以通过 Metrics API 从 Kubernetes 中提供的控制器、节点和容器收集内存和处理器指标。 启用容器运行状况后，会通过适用于 Linux 的 Log Analytics 代理的容器化版本自动收集这些指标并将其存储在 [Log Analytics](../log-analytics/log-analytics-overview.md) 工作区中。 包含的预定义视图显示驻留容器的工作负荷，以及影响 Kubernetes 群集性能运行状况的对象，因此可以：  
 
 * 确定节点上运行的容器及其平均处理器和内存利用率。 此信息可帮助标识资源瓶颈。
 * 确定容器在控制器或 Pod 中的驻留位置。 此信息可帮助了解控制器或 Pod 的整体性能。 
@@ -38,13 +38,15 @@ ms.locfileid: "39521925"
 在开始之前，请确保做好以下准备：
 
 - 新的或现有的 AKS 群集。
-- 适用于 Linux 版本 microsoft/oms:ciprod04202018 或更高版本的容器化 OMS 代理。 版本号以 *mmddyyyy* 格式的日期表示。 代理在容器运行状况载入期间自动安装。 
+- 适用于 Linux 的容器化 Log Analytics 代理版本 microsoft/oms:ciprod04202018 或更高版本。 版本号以 *mmddyyyy* 格式的日期表示。 代理在容器运行状况载入期间自动安装。 
 - Log Analytics 工作区。 可以在对新 AKS 群集启用监视时创建该工作区，或者让载入体验在 AKS 群集订阅的默认资源组中创建默认的工作区。 如果选择自行创建工作区，可以通过 [Azure 资源管理器](../log-analytics/log-analytics-template-workspace-configuration.md)、[PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json) 或在 [Azure 门户](../log-analytics/log-analytics-quick-create-workspace.md)来创建。
 - 拥有 Log Analytics 参与者角色，以便启用容器监视。 有关如何控制对 Log Analytics 工作区的访问的详细信息，请参阅[管理工作区](../log-analytics/log-analytics-manage-access.md)。
 
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
+
 ## <a name="components"></a>组件 
 
-监视性能的能力依赖于适用于 Linux 的容器化 OMS 代理，该代理从群集的所有节点收集性能和事件数据。 启用容器监视后，自动部署代理并注册到指定的 Log Analytics 工作区。 
+监视性能的能力依赖于适用于 Linux 的容器化 Log Analytics 代理，该代理从群集的所有节点收集性能和事件数据。 启用容器监视后，自动部署代理并注册到指定的 Log Analytics 工作区。 
 
 >[!NOTE] 
 >如果已部署 AKS 群集，可使用 Azure CLI 或提供的 Azure 资源管理器模板启用监视，如后文所示。 不能使用 `kubectl` 升级、删除、重新部署或部署代理。 
@@ -59,7 +61,7 @@ ms.locfileid: "39521925"
 若要使用 Azure CLI 对新建的 AKS 群集启用监视，请遵循快速入门文章的[创建 AKS 群集](../aks/kubernetes-walkthrough.md#create-aks-cluster)部分中所述的步骤。  
 
 >[!NOTE]
->如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 2.0.27 版或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
+>如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 2.0.43 版或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
 >
 
 启用监视并成功完成所有配置任务后，可通过两种方法监视群集性能：
@@ -303,7 +305,7 @@ omsagent   1         1         1            1            3h
 
 ### <a name="agent-version-earlier-than-06072018"></a>代理版本低于 06072018
 
-若要验证 *06072018* 之前发布的 OMS 代理版本是否已正确部署，请运行以下命令：  
+若要验证 *06072018* 之前发布的 Log Analytics 代理版本是否已正确部署，请运行以下命令：  
 
 ```
 kubectl get ds omsagent --namespace=kube-system

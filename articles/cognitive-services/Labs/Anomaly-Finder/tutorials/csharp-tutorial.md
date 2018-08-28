@@ -9,12 +9,12 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 2e4100fd7d8e85a6b103c31000176aaaeb3d7151
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7d4f6a12c94620f447b5d6df4d7715d32eac2d98
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38317673"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "41944426"
 ---
 # <a name="anomaly-detection-c-application"></a>异常情况检测 C# 应用程序
 
@@ -48,7 +48,7 @@ ms.locfileid: "38317673"
 
 1. 生成完成后，按 F5 或单击功能区菜单上的“启动”来运行该示例。
 2. 使用读取“{your_subscription_key}”的文本编辑框找到异常情况检测用户界面窗口。
-3. 将包含示例数据的 Request.json 文件替换为你自己的数据，然后单击“发送”按钮。 Microsoft 会收到你上传的数据，并使用它们来检测其中的任何异常点。 更新的数据不会保留在 Microsoft 服务器中。 若要再次检测异常点，需要再次上传数据。
+3. 将包含示例数据的 Request.json 文件替换为你自己的数据，然后单击“发送”按钮。 Microsoft 会收到你上传的数据，并使用它们来检测其中的任何异常点。 加载的数据不会保留在 Microsoft 服务器中。 若要再次检测异常点，需要再次上传数据。
 4. 如果数据正常，将在“响应”字段中找到异常情况检测结果。 如果出现任何错误，错误信息同样会显示在“响应”字段中。
 
 <a name="Review"></a>
@@ -77,7 +77,8 @@ ms.locfileid: "38317673"
             // ----------------------------------------------------------------------
 
 ```
-Request(...) 下面的代码片段演示如何使用 HttlClient 将订阅密钥和数据点提交到异常情况检测 API 的终结点。
+### <a name="request"></a>**请求**
+下面的代码片段演示如何使用 HttpClient 将订阅密钥和数据点提交到异常情况检测 API 的终结点。
 
 ```csharp
     public async Task<string> Request(string baseAddress, string endpoint, string subscriptionKey, string requestData)

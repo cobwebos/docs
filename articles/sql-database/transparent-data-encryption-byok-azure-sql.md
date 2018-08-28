@@ -17,16 +17,16 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: aliceku
 monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: 4a2f751c55a3bd386c6a984a3b5a16a24166f90c
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: d3e8d34599600512a1d9d0308c0d6014691bf519
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40043296"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42442716"
 ---
 # <a name="transparent-data-encryption-with-bring-your-own-key-support-for-azure-sql-database-and-data-warehouse"></a>Azure SQL 数据库和数据仓库的支持“创建自己的密钥”的透明数据加密
 
-借助 [透明数据加密 (TDE)]((https://docs.microsoft.com/sql/relational-databases/security/transparent-data-encryption) 的“创建自己的密钥”(BYOK) 支持，可以使用称作 TDE 保护器的非对称密钥来加密数据库加密密钥 (DEK)。  TDE 保护器存储在 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)（Azure 的基于云的外部密钥管理系统）中，并受你的控制。 Azure Key Vault 是第一个密钥管理服务，已与 TDE 的 BYOK 支持相集成。 存储在数据库启动页上的 TDE DEK 由 TDE 保护器加密和解密。 TDE 保护器存储在 Azure Key Vault 中，永远不会离开 Key Vault。 如果撤销了服务器对 Key Vault 的访问权限，则无法解密数据库并将其读入内存。  TDE 保护器在逻辑服务器级别设置，并由该服务器关联的所有数据库继承。 
+借助[透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/transparent-data-encryption) 的“创建自己的密钥”(BYOK) 支持，可以使用称作 TDE 保护器的非对称密钥来加密数据库加密密钥 (DEK)。  TDE 保护器存储在 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)（Azure 的基于云的外部密钥管理系统）中，并受你的控制。 Azure Key Vault 是第一个密钥管理服务，已与 TDE 的 BYOK 支持相集成。 存储在数据库启动页上的 TDE DEK 由 TDE 保护器加密和解密。 TDE 保护器存储在 Azure Key Vault 中，永远不会离开 Key Vault。 如果撤销了服务器对 Key Vault 的访问权限，则无法解密数据库并将其读入内存。  TDE 保护器在逻辑服务器级别设置，并由该服务器关联的所有数据库继承。 
 
 使用 BYOK 支持，用户可以控制密钥管理任务，包括密钥轮换、Key Vault 权限、删除密钥，以及使用 Azure Key Vault 功能对所有 TDE 保护器启用审核/报告。 Key Vault 提供集中密钥管理功能，利用严格监控的硬件安全模块 (HSM)，并可在密钥与数据管理之间实现职责分离，以帮助满足法规监管要求。  
 

@@ -8,12 +8,12 @@ ms.date: 07/13/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 53b35fbdc469639b1fdc09293e05247bcc5d8c31
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 78f9ba817008a28e63ec167c4e2ccc7f3859be16
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714479"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42141455"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook 错误故障排除
 
@@ -137,7 +137,43 @@ Exception: A task was canceled.
 
 可以通过将 Azure 模块更新到最新版本来解决此错误。
 
-在自动化帐户中，单击“模块”，然后单击“更新 Azure 模块”。 更新需要花费大约 15 分钟，完成后，重新运行失败的 runbook。
+在自动化帐户中，单击“模块”，然后单击“更新 Azure 模块”。 更新需要花费大约 15 分钟，完成后，重新运行失败的 runbook。 若要了解有关更新模块的详细信息，请参阅[在 Azure 自动化中更新 Azure 模块](../automation-update-azure-modules.md)。
+
+### <a name="child-runbook-auth-failure"></a>场景：处理多个订阅时，子 Runbook 失败
+
+#### <a name="issue"></a>问题
+
+使用 `Start-AzureRmRunbook` 执行子 Runbook 时，子 Runbook 无法管理 Azure 资源。
+
+#### <a name="cause"></a>原因
+
+子 Runbook 在运行时没有使用正确的上下文。
+
+#### <a name="resolution"></a>解决方法
+
+如果使用多个订阅，则在调用子 Runbook 时可能会丢失订阅上下文。 若要确保将订阅上下文传递给子 Runbook，请将 `DefaultProfile` 参数添加到 cmdlet 并将上下文传递给它。
+
+```azurepowershell-interactive
+# Connect to Azure with RunAs account
+$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
+
+Add-AzureRmAccount `
+    -ServicePrincipal `
+    -TenantId $ServicePrincipalConnection.TenantId `
+    -ApplicationId $ServicePrincipalConnection.ApplicationId `
+    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
+
+$AzureContext = Select-AzureRmSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
+
+$params = @{"VMName"="MyVM";"RepeatCount"=2;"Restart"=$true}
+
+Start-AzureRmAutomationRunbook `
+    –AutomationAccountName 'MyAutomationAccount' `
+    –Name 'Test-ChildRunbook' `
+    -ResourceGroupName 'LabRG' `
+    -DefaultProfile $AzureContext `
+    –Parameters $params –wait
+```
 
 ### <a name="not-recognized-as-cmdlet"></a>场景：由于缺少 cmdlet，Runbook 失败
 
@@ -189,6 +225,8 @@ The job was tried three times but it failed
 * 在内存限制内工作的建议方法是拆分多个 runbook 之间的工作负载，不作为内存中的诸多数据进行处理，不从 runbook 写入不必要的输出，或考虑在 PowerShell 工作流 runbook 中写入多少个检查点。  
 
 * 按照[如何更新 Azure 自动化中的 Azure PowerShell 模块](../automation-update-azure-modules.md)中的步骤更新 Azure 模块。  
+
+* 另一个解决方案是在[混合 Runbook 辅助角色](../automation-hrw-run-runbooks.md)上运行 runbook。 混合辅助角色不受[公平份额](../automation-runbook-execution.md#fair-share)限制，而 Azure 沙盒受限于此限制。
 
 ### <a name="fails-deserialized-object"></a>场景：Runbook 因反序列化的对象而失败
 

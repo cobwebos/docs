@@ -12,14 +12,14 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2016
+ms.date: 08/08/2018
 ms.author: LADocs; padmavc
-ms.openlocfilehash: a5ca615d984d07513b12399b6f7e7901490f2e41
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: a1b2d68a4a9433dc5c68d65552bf6bd509463958
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298825"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42141209"
 ---
 # <a name="decode-as2-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 为 Azure 逻辑应用的 AS2 消息解码 
 
@@ -67,6 +67,7 @@ ms.locfileid: "35298825"
 
     ![从请求输出中选择正文和标头](media/logic-apps-enterprise-integration-as2-decode/as2decodeimage5.png) 
 
+
 ## <a name="as2-decoder-details"></a>AS2 解码器详细信息
 
 解码 AS2 连接器可执行以下任务： 
@@ -75,6 +76,7 @@ ms.locfileid: "35298825"
 * 验证签名（如果已配置）
 * 对消息进行解密（如果已配置）
 * 解压缩消息（如果已配置）
+* 检查并禁止消息 ID 重复（如果已配置）
 * 协调收到的 MDN 和原始的出站消息
 * 更新并关联不可否认数据库中的记录
 * 写入 AS2 状态报告的记录
@@ -82,6 +84,13 @@ ms.locfileid: "35298825"
 * 根据 AS2 协议中的配置确定是否需要 MDN，以及 MDN 应该同步还是异步
 * 生成同步或异步 MDN（基于协议的配置）
 * 在 MDN 上设置关联令牌和属性
+
+
+  > [!NOTE]
+  > 如果使用 Azure Key Vault 进行证书管理，请确保配置密钥以允许**解密**操作。
+  > 否则，AS2 解码将失败。
+  >
+  > ![KeyVault 解密](media/logic-apps-enterprise-integration-as2-decode/keyvault1.png)
 
 ## <a name="try-this-sample"></a>尝试此示例
 

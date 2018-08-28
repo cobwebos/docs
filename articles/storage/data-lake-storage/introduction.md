@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 51f38cf7ade01b58ad5ce7925af5546d1a4f1a0c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 072573b16fbeebac1ec942b0be508cf901b5cd27
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525376"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42141413"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Azure Data Lake Storage Gen2 预览版简介
 
@@ -33,6 +33,8 @@ Data Lake Storage Gen2 的一个基本功能是在 Blob 存储服务中添加一
 
 - 管理更为容易，因为你可以通过目录和子目录来组织和操作文件。
 
+- **安全性**是可以强制实施的，因为可以在文件夹或单个文件上定义 POSIX 权限。
+
 - 由于 Data Lake Storage Gen2 基于低成本的 [Azure Blob 存储](../blobs/storage-blobs-introduction.md)而构建，因此，可以实现成本效益。 这些新增功能进一步降低了在 Azure 上运行大数据分析的总拥有成本。
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Data Lake Storage Gen2 的主要功能
@@ -43,9 +45,7 @@ Data Lake Storage Gen2 的一个基本功能是在 Blob 存储服务中添加一
 
 - Hadoop 兼容访问：Data Lake Storage Gen2 允许你管理和访问数据，就像在 [Hadoop 分布式文件系统 (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) 中一样。 新的 [ABFS 驱动程序](./abfs-driver.md)可在所有 Apache Hadoop 环境中使用，包括 [Azure HDInsight](../../hdinsight/index.yml) 和 [Azure Databricks](../../azure-databricks/index.yml)，以访问 Data Lake Storage Gen2 中存储的数据。
 
-- 多协议和多模式数据访问：Data Lake Storage Gen2 被视为多模式存储服务，因为它为相同数据同时提供对象存储和文件系统接口。 这是通过提供能够访问相同数据的多个协议终结点来实现的。 
-
-    与其他分析解决方案不同，存储在 Data Lake Storage Gen2 的数据在运行各种分析工具之前无需移动或转换。 你可以通过传统的 [Blob 存储 API](../blobs/storage-blobs-introduction.md) 访问数据（例如：通过[事件中心捕获](../../event-hubs/event-hubs-capture-enable-through-portal.md)来引入数据）并同时使用 HDInsight 或 Azure Databricks 来处理该数据。 
+- **POSIX 权限的超集**：Data Lake Gen2 的安全模型完全支持 ACL 和 POSIX 权限以及特定于 Data Lake Storage Gen2 的一些额外粒度。 可以通过管理工具或 Hive 和 Spark 等框架配置设置。
 
 - 成本效益：Data Lake Storage Gen2 具有低成本的存储容量和事务。 随着数据在其整个生命周期中的转换，记帐费率变化通过诸如 [Azure Blob 存储生命周期](../common/storage-lifecycle-managment-concepts.md)的内置功能使成本保持在最低水平。
 

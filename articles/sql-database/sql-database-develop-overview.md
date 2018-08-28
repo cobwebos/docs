@@ -10,12 +10,12 @@ ms.custom: develop apps
 ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: sstein
-ms.openlocfilehash: 2194293d23e5db277f2ff7aa207c298533f74571
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 4236372370858e940d7e3a1671c0e8a8278796fb
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308860"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42141234"
 ---
 # <a name="sql-database-application-development-overview"></a>SQL 数据库应用程序开发概述
 本文逐步讲解开发人员在编写代码以连接到 Azure SQL 数据库时应考虑的基本注意事项。
@@ -35,12 +35,12 @@ ms.locfileid: "36308860"
 ## <a name="resource-limitations"></a>资源限制
 Azure SQL 数据库使用两种不同的机制管理可用于数据库的资源：资源调控和强制限制。 有关详细信息，请参阅：
 
-- [基于 DTU 的资源模型限制 - 单一数据库](sql-database-dtu-resource-limits-elastic-pools.md)
-- [基于 DTU 的资源模型限制 - 单一数据库](sql-database-dtu-resource-limits-elastic-pools.md)
+- [基于 DTU 的资源模型限制 - 单一数据库](sql-database-dtu-resource-limits-single-databases.md)
+- [基于 DTU 的资源模型限制 - 弹性池](sql-database-dtu-resource-limits-elastic-pools.md)
 - [基于 vCore 的资源限制 - 单一数据库](sql-database-vcore-resource-limits-single-databases.md)
 - [基于 vCore 的资源限制 - 弹性池](sql-database-vcore-resource-limits-elastic-pools.md)
 
-## <a name="security"></a>“安全”
+## <a name="security"></a>安全
 Azure SQL 数据库提供用于在 SQL 数据库中限制访问、保护数据和监视活动的资源。
 
 * 详细信息：[保护 SQL 数据库](sql-database-security-overview.md)。

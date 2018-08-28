@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: sujayt
-ms.openlocfilehash: c2892d51c6eb5e71c0b1af400b78e993742fede0
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 32bdf1080aa6e7c5884747eeecad3f42c7334c3a
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173044"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444820"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>用于在 Azure 区域之间进行复制的支持矩阵
 
@@ -34,11 +34,11 @@ ms.locfileid: "39173044"
 
 ## <a name="resource-support"></a>资源支持
 
-**资源移动类型** | **详细信息** 
+**资源移动类型** | **详细信息**
 --- | --- | ---
 **跨资源组移动保管库** | 不支持<br/><br/> 不能跨资源组移动恢复服务保管库。
 **跨资源组移动计算/存储/网络资源** | 不支持。<br/><br/> 如果在复制后移动 VM 或相关组件（如存储/网络），则需要为 VM 禁用并重新启用复制。
-**将 Azure VM 从一个订阅复制到另一个订阅以进行灾难恢复** | 不支持。
+**将 Azure VM 从一个订阅复制到另一个订阅以进行灾难恢复** | 在同一个 Azure Active Directory 租户中受支持。
 **跨订阅迁移 VM** | 不支持。
 **在同一区域内迁移 VM** | 不支持。
 

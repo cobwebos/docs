@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 08/20/2018
 ms.author: danlep
-ms.openlocfilehash: d0762f80267fa927681344a3e0de78b0800c8306
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fc245d38af90e0c395389e24b14d061fcfe0c10c
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38630205"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42142070"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>如何在 Azure 上将 SSH 密钥与 Windows 配合使用
 
@@ -33,9 +33,9 @@ ms.locfileid: "38630205"
 ## <a name="windows-packages-and-ssh-clients"></a>Windows 程序包和 SSH 客户端
 可使用 *SSH 客户端*连接到 Azure 中的 Linux VM，并对其进行管理。 运行 Linux 或 macOS 的计算机通常具有一套 SSH 命令来生成和管理 SSH 密钥并建立 SSH 连接。 
 
-Windows 计算机并不总是装有类似的 SSH 命令。 通过包含[适用于 Linux 的 Windows 子系统](https://docs.microsoft.com/windows/wsl/about)的 Windows 10 版本，可在 Bash shell 中以本机方式运行并访问 SSH 客户端等实用工具。 
+Windows 计算机并不总是装有类似的 SSH 命令。 最新版本的 Windows 10 提供 [OpenSSH 客户端命令](https://blogs.msdn.microsoft.com/commandline/2018/03/07/windows10v1803/)来创建和管理 SSH 密钥，并通过命令提示符建立 SSH 连接。 最近的 Windows 10 版本还包括[适用于 Linux 的 Windows 子系统](https://docs.microsoft.com/windows/wsl/about)，以便在 Bash shell 中以本机方式运行并访问 SSH 客户端等实用工具。 
 
-如果不希望使用 Bash for Windows，以下包中包含可本地安装的常见 Windows SSH 客户端：
+如果希望对 Windows 使用其他 SSH 工具，以下包中包含可本地安装的常见 Windows SSH 客户端：
 
 * [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
 * [Git For Windows](https://git-for-windows.github.io/)
@@ -52,7 +52,7 @@ Windows 计算机并不总是装有类似的 SSH 命令。 通过包含[适用�
 
 ### <a name="create-ssh-keys-with-ssh-keygen"></a>使用 ssh-keygen 创建 SSH 密钥
 
-如果可运行 Bash for Windows 或 GitBash（或 Azure Cloud Shell 中的 Bash）等命令 shell，请使用 `ssh-keygen` 命令创建一个 SSH 密钥对。 键入以下命令，并回答提示。 如果当前位置存在 SSH 密钥对，这些文件将被覆盖。 
+如果在 Windows 上运行支持 SSH 客户端工具的命令外壳（或使用 Azure Cloud Shell），请使用 `ssh-keygen` 命令创建 SSH 密钥对。 键入以下命令，并回答提示。 如果当前位置存在 SSH 密钥对，这些文件将被覆盖。 
 
 ```bash
 ssh-keygen -t rsa -b 2048

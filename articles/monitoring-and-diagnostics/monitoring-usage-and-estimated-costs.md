@@ -5,18 +5,24 @@ author: dalekoetke
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/31/2018
+ms.date: 08/11/2018
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.component: ''
-ms.openlocfilehash: edfcc244105403ae33251777c560d4cc21dfe5cb
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 35e7d36043defd236252f86facf4b9e2ed945d67
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264276"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42144766"
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>监视使用情况和预估成本
+
+> [!NOTE]
+> 本文介绍如何针对不同的定价模型查看多个 Azure 监视功能的使用情况和估算成本。  有关相关信息，请参阅以下文章。
+> - [通过在 Log Analytics 中控制数据量和保留期管理成本](../log-analytics/log-analytics-manage-cost-storage.md)介绍如何通过更改数据保留期来控制成本。
+> - [在 Log Analytics 中分析数据使用情况](../log-analytics/log-analytics-usage.md)介绍如何根据数据使用情况进行分析和警告。
+> - [在 Application Insights 中管理定价和数据量](../application-insights/app-insights-pricing.md)介绍如何在 Application Insights 中分析数据使用情况。
 
 在 Azure 门户的 Monitor 中心，“使用情况和预估成本”页说明[警报、指标和通知](https://azure.microsoft.com/pricing/details/monitor/)、[Azure Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) 及 [Azure Application Insights](https://azure.microsoft.com/pricing/details/application-insights/) 等核心监视功能的使用情况。 对于使用 2018 年 4 月之前提供的定价计划的客户，这还包括通过见解和分析产品/服务购买的 Log Analytics 使用情况功能。
 

@@ -12,16 +12,20 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
 ms.reviewer: Dale.Koetke
-ms.date: 06/21/2018
+ms.date: 08/11/2018
 ms.author: mbullwin
-ms.openlocfilehash: a401bc3ed68dc9273ac14cfd357b9c05111dd54c
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 221d0d8a78a46cad9f1994e9313b21e2867d9563
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311101"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42141037"
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>在 Application Insights 中管理定价和数据量
+
+> [!NOTE]
+> 本文介绍如何在 Application Insights 中分析数据使用情况。  有关相关信息，请参阅以下文章。
+> - [监视使用情况和估算成本](../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md)介绍如何针对不同的定价模型查看多个 Azure 监视功能的使用情况和估算成本。 它还介绍如何更改定价模型。
 
 [Azure Application Insights][start] 的定价以每个应用程序的数据量为基础。 每个 Application Insights 资源作为独立服务计费，并在 Azure 订阅的帐单中产生相应费用。
 

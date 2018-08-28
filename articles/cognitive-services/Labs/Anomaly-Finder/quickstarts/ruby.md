@@ -9,12 +9,12 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: ca4754514ba5012f7e9e28981d0869d174561fb3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6eb559f8971583afe9619fb41fe331bd3013bb69
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366042"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41929928"
 ---
 # <a name="use-the-anomaly-finder-api-with-ruby"></a>将异常查找器 API 与 Ruby 配合使用
 
@@ -28,7 +28,9 @@ ms.locfileid: "35366042"
 [!INCLUDE [DataContract](../includes/datacontract.md)]
 
 ### <a name="example-of-time-series-data"></a>时序数据示例
-时序数据点示例如下，[!INCLUDE [Request](../includes/request.md)]
+时序数据点示例如下，
+
+[!INCLUDE [Request](../includes/request.md)]
 
 ### <a name="analyze-data-and-get-anomaly-points-ruby-example"></a>分析数据，并获取异常点 Ruby 示例
 
@@ -74,7 +76,7 @@ puts response.body
 
 ### <a name="example-response"></a>示例响应
 
-JSON 中返回了成功的响应。 示例响应如下。
+JSON 中返回成功响应。 示例响应如下。
 [!INCLUDE [Response](../includes/response.md)]
 
 ## <a name="next-steps"></a>后续步骤

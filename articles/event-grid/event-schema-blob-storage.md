@@ -3,27 +3,28 @@ title: Azure 事件网格 Blob 存储事件架构
 description: 介绍为 Azure 事件网格 Blob 存储事件提供的属性
 services: event-grid
 author: tfitzmac
-manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/30/2018
+ms.date: 08/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: a4d3f5d50df49851437cfd3bcec16ad217220eca
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 11524f8868a0102e30b06f3385a26b1bd06aae6e
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34301383"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42142258"
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Blob 存储的 Azure 事件网格事件架构
 
 本文提供 Blob 存储事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
+有关示例脚本和教程的列表，请参阅[存储事件源](event-sources.md#storage)。
+
 ## <a name="available-event-types"></a>可用事件类型
 
 Blob 存储发出以下事件类型：
 
-| 事件类型 | 说明 |
+| 事件类型 | Description |
 | ---------- | ----------- |
 | Microsoft.Storage.BlobCreated | 创建 Blob 时引发。 |
 | Microsoft.Storage.BlobDeleted | 删除 Blob 时引发。 |
@@ -87,7 +88,7 @@ Blob 删除事件的架构与此类似：
 
 事件具有以下顶级数据：
 
-| 属性 | Type | 说明 |
+| 属性 | Type | Description |
 | -------- | ---- | ----------- |
 | 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | 字符串 | 事件主题的发布者定义路径。 |
@@ -100,7 +101,7 @@ Blob 删除事件的架构与此类似：
 
 数据对象具有以下属性：
 
-| 属性 | Type | 说明 |
+| 属性 | Type | Description |
 | -------- | ---- | ----------- |
 | api | 字符串 | 触发事件的操作。 |
 | ClientRequestId | 字符串 | 客户端生成的不透明值，限制为 1-KB 字符。 启用存储分析日志记录后，该值会记录在分析日志中。 |

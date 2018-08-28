@@ -9,12 +9,12 @@ ms.component: custom-vision
 ms.topic: article
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: 80cb022808748ed2c60dff7c363d6020cb4043a8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d3c2ffb0fd9578458bd07241eed4a87cf70d3c3c
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365890"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617428"
 ---
 # <a name="use-the-custom-vision-service-from-a-c35-application"></a>从 C# 应用程序使用自定义影像服务
 
@@ -22,11 +22,17 @@ ms.locfileid: "35365890"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 任何适用于 Windows 的 Visual Studio 2015 或 2017 版本。
+* 任何适用于 Windows 的 Visual Studio 2017 版本。
 
-* [自定义影像服务 SDK](http://github.com/Microsoft/Cognitive-CustomVision-Windows/)。 其中包括本文档中使用的示例和图像。
+## <a name="get-the-custom-vision-sdk-and-samples"></a>获取自定义视觉 SDK 和示例
+若要构建此示例，需要具有以下自定义视觉 SDK NuGet 包：
 
-## <a name="get-the-training-and-prediction-keys"></a>获取定型密钥和预测密钥
+* [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)
+* [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)
+
+你可以下载图像以及 [C# 示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/CustomVision)。
+
+## <a name="get-the-training-and-prediction-keys"></a>获取定型和预测密钥
 
 若要获取此示例中使用的密钥，请访问[自定义影像网页](https://customvision.ai)并选择右上角齿轮图标。 在“帐户”部分中，复制“定型密钥”和“预测密钥”字段中的值。
 

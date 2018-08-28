@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
 ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: e19130c5ee418ebaa41f9ee42e217c52cdeec6cb
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7297633b5a8954eb39e0a40bfd45b02d3838a734
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38697936"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42142056"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>创建使用可用性区域的虚拟机规模集
 
@@ -45,10 +45,10 @@ ms.locfileid: "38697936"
 
 ### <a name="zone-balancing"></a>区域均衡
 
-最后，对于跨多个区域部署的规模集，还可以选择“尽量实现区域均衡”或“严格执行区域均衡”。 如果每个区域中的 VM 数与规模集的所有其他区域中的 VM 数只相差 1，则可以认为该规模集“已实现均衡”。 例如：
+最后，对于跨多个区域部署的规模集，还可以选择“尽量实现区域均衡”或“严格执行区域均衡”。 如果每个区域中的 VM 数相同或与规模集的所有其他区域中的 VM 数只相差 1，则可以认为该规模集“已实现均衡”。 例如：
 
-- 某个规模集的区域 1 中有 2 个 VM，区域 2 中有 3 个 VM，区域 3 中有 3 个 VM，则可以认为该规模集已实现均衡。
-- 某个规模集的区域 1 中有 1 个 VM，区域 2 中有 3 个 VM，区域 3 中有 3 个 VM，则可以认为该规模集未实现均衡。
+- 某个规模集的区域 1 中有 2 个 VM，区域 2 中有 3 个 VM，区域 3 中有 3 个 VM，则可以认为该规模集已实现均衡。 只有一个区域具有不同的 VM 计数，它只比其他区域少 1 个 VM。 
+- 某个规模集的区域 1 中有 1 个 VM，区域 2 中有 3 个 VM，区域 3 中有 3 个 VM，则可以认为该规模集未实现均衡。 区域 1 比区域 2 和区域 3 少 2 个 VM。
 
 一个可能的情况是，规模集中的 VM 已成功创建，但这些 VM 的扩展部署失败。 在确定某个规模集是否已实现均衡时，这些 VM 虽然扩展失败，但仍计在内。 例如，如果某个规模集的区域 1 中有 3 个 VM，区域 2 中有 3 个 VM，区域 3 中有 3 个 VM，则可以认为该规模集已实现均衡，即使区域 1 中的所有扩展都失败而区域 2 和 3 中的所有扩展都成功。
 
@@ -98,7 +98,7 @@ az vmss create \
 
 ### <a name="zone-redundant-scale-set"></a>区域冗余规模集
 
-若要创建区域冗余规模集，请使用标准 SKU 公用 IP 地址和负载均衡器。 为增强冗余，标准 SKU 创建区域冗余网络资源。 有关详细信息，请参阅 [Azure 负载均衡器标准概述](../load-balancer/load-balancer-standard-overview.md)。
+若要创建区域冗余规模集，请使用标准 SKU 公用 IP 地址和负载均衡器。 为增强冗余，标准 SKU 创建区域冗余网络资源。 有关详细信息，请参阅 [Azure 负载均衡器标准概述](../load-balancer/load-balancer-standard-overview.md)和[标准负载均衡器和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md)。
 
 若要创建区域冗余规模集，可使用 `--zones` 参数指定多个区域。 下例跨区域 1、2、3 创建名为 myScaleSet 的区域冗余规模集：
 
@@ -215,7 +215,7 @@ New-AzureRmVmss `
 }
 ```
 
-如果创建公用 IP 地址或负载均衡器，则指定 "sku": { "name": "Standard" }" 属性以创建区域冗余网络资源。 还需要创建网络安全组和规则以允许任意流量。 有关详细信息，请参阅 [Azure 负载均衡器标准概述](../load-balancer/load-balancer-standard-overview.md)。
+如果创建公用 IP 地址或负载均衡器，则指定 "sku": { "name": "Standard" }" 属性以创建区域冗余网络资源。 还需要创建网络安全组和规则以允许任意流量。 有关详细信息，请参阅 [Azure 负载均衡器标准概述](../load-balancer/load-balancer-standard-overview.md)和[标准负载均衡器和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md)。
 
 有关区域冗余规模集和网络资源的完整示例，请参阅[此示例资源管理器模板](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)
 

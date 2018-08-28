@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 12/02/2017
+ms.date: 08/20/2017
 ms.author: marsma
-ms.openlocfilehash: e85b69e452f4d76dfdf974698fa7d3b5cdbc0c30
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c424e81b13c3c60e975d3721693b1f80e00cfdd7
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426082"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144191"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>使用 Azure 容器注册表 webhook
 
@@ -95,4 +95,14 @@ az acr webhook delete --registry mycontainerregistry --name myacrwebhook01
 
 ## <a name="next-steps"></a>后续步骤
 
+### <a name="webhook-schema-reference"></a>Webhook 架构参考
+
+有关 Azure 容器注册表发出的 JSON 事件负载的格式和属性的详细信息，请参阅 Webhook 架构参考：
+
 [Azure 容器注册表 Webhook 架构参考](container-registry-webhook-reference.md)
+
+### <a name="event-grid-events"></a>事件网格事件
+
+除了本文中讨论的本机注册表 Webhook 事件之外，Azure 容器注册表还可以向事件网格发送事件：
+
+[快速入门：将容器注册表事件发送到事件网格](container-registry-event-grid-quickstart.md)

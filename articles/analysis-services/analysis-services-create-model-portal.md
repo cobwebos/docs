@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 17ff6ebed615971b4157831431d9e2395ca68b48
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: dcfcfb24d2b47a8272c576856fc3accc547f354a
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441669"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42141447"
 ---
 # <a name="create-a-model-in-azure-portal"></a>在 Azure 门户中创建模型
 
@@ -23,9 +23,10 @@ Azure 门户的 Azure Analysis Services Web 设计器（预览）功能提供了
 
 ## <a name="before-you-begin"></a>开始之前
 
-- 位于标准层或开发人员层的 Azure Analysis Services 服务器。 使用 Web 设计器创建的新模型是 DirectQuery，且仅支持上述这些层。
+- Azure Analysis Services 服务器必须位于标准或开发人员层。 使用 Web 设计器创建的新模型是 DirectQuery，且仅支持上述这些层。
 - 作为数据源的 Azure SQL 数据库、Azure SQL 数据仓库或 Power BI Desktop (.pbix) 文件。 从 Power BI Desktop 文件创建的新模型支持 Azure SQL 数据库和 Azure SQL 数据仓库。
 - 用于连接到 Azure SQL 数据库或 Azure SQL 数据仓库数据源的 SQL Server 帐户和密码。
+- 必须具有服务器管理员权限才能创建新模型。 使用设计器编辑和查询模型需要数据库管理员权限。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 

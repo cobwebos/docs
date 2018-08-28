@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/05/2018
+ms.date: 08/13/2018
 ms.author: raynew
-ms.openlocfilehash: 7146865270accb73981b09be6409180c4ef1440f
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 733a93d0fc80d86d28f13a9e1d32108b58893bf0
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003191"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42141028"
 ---
 # <a name="contoso-migration-rearchitect-an-on-premises-app-to-an-azure-container-and-azure-sql-database"></a>Contoso 迁移：将本地应用重新架构到 Azure 容器和 Azure SQL 数据库
 
@@ -32,8 +32,8 @@ ms.locfileid: "39003191"
 [文章 8：将 Linux 应用重新托管到 Azure VM 和 Azure MySQL 服务器](contoso-migration-rehost-linux-vm-mysql.md) | 演示 Contoso 如何使用 Site Recovery 将 Linux osTicket 应用迁移到 Azure VM，以及如何使用 MySQL 工作台将应用数据库迁移到 Azure MySQL 服务器实例。 | 可用
 [文章 9：将应用重构到 Azure Web 应用和 Azure SQL 数据库](contoso-migration-refactor-web-app-sql.md) | 演示 Contoso 如何将 SmartHotel 应用迁移到 Azure Web 应用，并将应用数据库迁移到 Azure SQL Server 实例 | 可用
 [文章 10：将 Linux 应用重构到 Azure Web 应用和 Azure MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | 演示 Contoso 如何将 Linux 应用 osTicket 迁移到多个站点中的 Azure Web 应用，并集成 GitHub 以实现持续交付。 他们将应用数据库迁移到 Azure MySQL 实例。 | 可用
-文章 11：基于 Azure 容器和 Azure SQL 数据库重新架构应用 | 展示 Contoso 如何将其 SmartHotel 应用迁移并重新架构到 Azure。 他们将应用 Web 层重新架构为 Windows 容器，将应用数据库重新架构到 Azure SQL 数据库中。 | 本文。
-[文章 12：基于 Azure 容器和 Azure SQL 数据库重新架构应用](contoso-migration-rearchitect-container-sql.md) | 展示 Contoso 如何将其 SmartHotel 应用迁移并重新架构到 Azure。 他们将应用 Web 层重新架构为 Windows 容器，将应用数据库重新架构到 Azure SQL 数据库中。 | 可用
+[文章 11：基于 VSTS 重构 TFS](contoso-migration-tfs-vsts.md) | 展示 Contoso 如何通过将本地 Team Foundation Server (TFS) 部署迁移到 Azure 中的 Visual Studio Team Services (VSTS) 来迁移该部署。
+文章 12：在 Azure 容器和 Azure SQL 数据库上重构应用 | 展示 Contoso 如何将其 SmartHotel 应用迁移并重新架构到 Azure。 他们将应用 Web 层重新架构为 Windows 容器，将应用数据库重新架构到 Azure SQL 数据库中。 | 本文
 [文章 13：在 Azure 中重新生成应用](contoso-migration-rebuild.md) | 展示 Contoso 如何使用一系列 Azure 功能和服务（包括应用服务、Azure Kubernetes、Azure Functions、认知服务和 Cosmos DB）重新生成其 SmartHotel 应用。 | 可用
 
 在本文中，Contoso 将 VMware VM 上运行的双层 Windows. NET SmartHotel 应用迁移到 Azure。 此应用作为开源应用提供，可在 [github](https://github.com/Microsoft/SmartHotel360) 上下载。
@@ -95,14 +95,14 @@ Contoso 通过将利弊清单放置在一起来评估其建议的设计。
 
 
 
-### <a name="migration-process"></a>迁移流程
+### <a name="migration-process"></a>迁移过程
 
 1. Contoso 预配用于 Windows 的 Azure Service Fabric 群集。
 2. 预配一个 Azure SQL 实例，并将 SmartHotel 数据库迁移到它。
 3. 使用 Service Fabric SDK 工具将 Web 层 VM 转变为 Docker 容器。
 4. 连接 Service Fabric 群集和 ACR，并使用 Azure Service Fabric 部署应用。
 
-    ![迁移流程](./media/contoso-migration-rearchitect-container-sql/migration-process.png) 
+    ![迁移过程](./media/contoso-migration-rearchitect-container-sql/migration-process.png) 
 
 ### <a name="azure-services"></a>Azure 服务
 
@@ -398,16 +398,16 @@ Contoso 将使用 Visual Studio 和 SDK 工具将应用转变为容器，如下�
 
 1. 从 Azure 市场创建 Azure Cosmos DB 资源。
 
-    ![扩展](./media/contoso-migration-rearchitect-container-sql/extend1.png)
+    ![Extend](./media/contoso-migration-rearchitect-container-sql/extend1.png)
 
 2. 提供数据库名称 (**contososmarthotel**)，选择 SQL API，并将资源放置在主区域“美国东部 2”中的生产资源组中。
 
-    ![扩展](./media/contoso-migration-rearchitect-container-sql/extend2.png)
+    ![Extend](./media/contoso-migration-rearchitect-container-sql/extend2.png)
 
 3. 在“开始使用”中，选择“数据资源管理器”，然后添加一个新集合。
 4. 在“添加集合”中，提供 ID 并设置存储容量和吞吐量。
 
-    ![扩展](./media/contoso-migration-rearchitect-container-sql/extend3.png)
+    ![Extend](./media/contoso-migration-rearchitect-container-sql/extend3.png)
 
 5. 在门户中，打开新数据库 >“集合” > “文档”并单击“新建文档”。
 6. 将以下 JSON 代码粘贴到文档窗口中。 这是单条推文形式的示例数据。
@@ -431,11 +431,11 @@ Contoso 将使用 Visual Studio 和 SDK 工具将应用转变为容器，如下�
     }
     ```
 
-    ![扩展](./media/contoso-migration-rearchitect-container-sql/extend4.png)
+    ![Extend](./media/contoso-migration-rearchitect-container-sql/extend4.png)
 
 7. 找到 Cosmos DB 终结点和身份验证密钥。 这些在应用中用来连接到集合。 在数据库中，单击“密钥”，将 URI 和主密钥复制到记事本。
 
-    ![扩展](./media/contoso-migration-rearchitect-container-sql/extend5.png)
+    ![Extend](./media/contoso-migration-rearchitect-container-sql/extend5.png)
 
 ### <a name="update-the-sentiment-app"></a>更新情绪应用
 
@@ -491,7 +491,7 @@ Contoso 将使用 Visual Studio 和 SDK 工具将应用转变为容器，如下�
 
 Azure 显示已迁移的资源后，Contoso 需要积极行动、全面保护新的基础结构。
 
-### <a name="security"></a>安全性
+### <a name="security"></a>安全
 
 - Contoso 需要确保其新的 **SmartHotel-Registration** 数据库是安全的。 [了解详细信息](https://docs.microsoft.com/azure/sql-database/sql-database-security-overview)。
 - 尤其重要的是，他们应当更新容器以将 SSL 与证书配合使用。

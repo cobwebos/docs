@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/21/2017
+ms.date: 08/16/2018
 ms.author: sethm
-ms.openlocfilehash: 28b8d7a71f01d8633d020b99fbe6bc5c16f272b4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0013301a33dabc9739eed45a1b801c33b791abb9
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32188491"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42144767"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>使用 AMQP 1.0 通过 .NET 使用服务总线
 
@@ -29,7 +29,7 @@ AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保�
 
 默认情况下，Service Bus .NET 客户端库使用基于 SOAP 的专用协议与 Service Bus 服务通信。 若要使用 AMQP 1.0 而非默认协议，需要对服务总线连接字符串进行显式配置，如下一部分所述。 除了此更改之外，在使用 AMQP 1.0 时应用程序代码仍保持不变。
 
-在当前版本中，有一些在使用 AMQP 时不受支持的 API 功能。 这些不受支持的功能会在后面的[不支持的功能、限制和行为差异](#unsupported-features-restrictions-and-behavioral-differences)部分中列出。 在使用 AMQP 时，一些高级配置设置还具有不同的含义。
+在当前版本中，有一些在使用 AMQP 时不受支持的 API 功能。 [行为差异](#behavioral-differences)部分中列出了这些不受支持的功能。 在使用 AMQP 时，一些高级配置设置还具有不同的含义。
 
 ### <a name="configuration-using-appconfig"></a>使用 App.config 进行配置
 
@@ -108,7 +108,8 @@ AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保�
 [.NET API](/dotnet/api/) 公开了几项设置以控制 AMQP 协议的行为：
 
 * **[MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)**：控制应用于链接的初始信用额度。 默认值为 0。
-* **[MessagingFactorySettings.AmqpTransportSettings.MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)**：控制在打开连接时协商期间提供的最大 AMQP 帧大小。 默认值为 65,536 字节。
+* 
+  [MessagingFactorySettings.AmqpTransportSettings.MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)：控制在打开连接时协商期间提供的最大 AMQP 帧大小。**** 默认值为 65,536 字节。
 * **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)**：如果传输可以分批进行，此值确定发送处置的最大延迟。 默认情况下由发送方/接收方继承。 单个发送方/接收方可以覆盖默认值（即 20 毫秒）。
 * **[MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)**：控制是否通过 SSL 连接建立 AMQP 连接。 默认值为 **true**。
 
@@ -117,7 +118,7 @@ AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保�
 准备好了解详细信息？ 请访问以下链接：
 
 * [服务总线 AMQP 概述]
-* [AMQP 1.0 协议指南]
+* [AMQP 1.0 protocol guide]
 
 [Create a Service Bus namespace using the Azure portal]: service-bus-create-namespace-portal.md
 [DataContractSerializer]: https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer.aspx
@@ -127,5 +128,5 @@ AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保�
 [NuGet]: http://nuget.org/packages/WindowsAzure.ServiceBus/
 [Azure portal]: https://portal.azure.com
 [服务总线 AMQP 概述]: service-bus-amqp-overview.md
-[AMQP 1.0 协议指南]: service-bus-amqp-protocol-guide.md
+[AMQP 1.0 protocol guide]: service-bus-amqp-protocol-guide.md
 

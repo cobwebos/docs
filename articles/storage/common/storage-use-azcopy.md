@@ -5,15 +5,15 @@ services: storage
 author: seguler
 ms.service: storage
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 08/13/2018
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: aaae191baaa7b712c77d93303ded777afe97c249
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: a0e2400163433ba5290525d0fe807ede624a31ed
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39529279"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42141850"
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>使用 AzCopy on Windows 传输数据
 AzCopy 是一个命令行实用程序，专用于使用旨在实现最佳性能的简单命令将数据复制到 Microsoft Azure Blob、文件和表存储以及从这些位置复制数据。 可在文件系统和存储帐户之间或在存储帐户之间复制数据。  
@@ -22,16 +22,16 @@ AzCopy 是一个命令行实用程序，专用于使用旨在实现最佳性能�
 
 ## <a name="download-and-install-azcopy-on-windows"></a>下载并安装 AzCopy on Windows
 
-### <a name="latest-preview-version-v800"></a>最新预览版本 (v8.0.0)
-下载 [AzCopy on Windows 的最新预览版](https://aka.ms/downloadazcopypr)。 此预览版本提供了显着的性能改进，并在安装中打包了 .NET Core。
+### <a name="latest-version-v81"></a>最新版本 (v8.1)
+下载[最新版本的 AzCopy on Windows](https://aka.ms/downloadazcopy)。
 
-#### <a name="azcopy-on-windows-80-preview-release-notes"></a>AzCopy on Windows 8.0 预览版发行说明
-- 最新版本不再支持表服务。 如果使用表导出功能，请下载稳定版本。
+#### <a name="azcopy-on-windows-81-release-notes"></a>AzCopy on Windows 8.1 发行说明
+- 最新版本不再支持表服务。 如果使用表导出功能，请下载 AzCopy 7.3 版本。
 - 使用 .NET Core 2.1 构建，现在所有 .NET Core 依赖项都打包在安装中。
-- 上传和下载方案都有显著的性能改进
+- 添加了 OAuth 身份验证支持。 使用 ```azcopy login``` 通过 Azure Active Directory 登录。
 
-### <a name="latest-stable-version-v710"></a>最新稳定版本 (v7.1.0)
-下载 [AzCopy on Windows 的最新稳定版本](https://aka.ms/downloadazcopy)。
+### <a name="azcopy-with-table-support-v73"></a>带表支持的 Azcopy (v7.3)
+下载[带表支持的 AzCopy 7.3](https://aka.ms/downloadazcopynet)。
 
 ### <a name="post-installation-step"></a>安装后步骤
 

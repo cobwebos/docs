@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/09/2018
+ms.date: 08/10/2018
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 8bf7f18f8051f1647a86bbe9c0be638045781a72
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: cb4c9f91c7a116e6171a8e94030b6bb40fdb38ea
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989905"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42144758"
 ---
 # <a name="configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>在 Azure Active Directory 中为企业应用程序配置 SAML 令牌中颁发的角色声明
 
@@ -58,7 +58,7 @@ ms.locfileid: "38989905"
 
 6. 在另一个窗口中打开 [Azure AD Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)，然后执行以下步骤：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 使用租户的全局管理员或共同管理员凭据登录到 Graph 浏览器站点。
+    a. 使用租户的全局管理员或共同管理员凭据登录到 Graph 浏览器站点。
 
     b. 需要足够的权限才能创建角色。 选择“修改权限”以获取权限。
 
@@ -67,6 +67,9 @@ ms.locfileid: "38989905"
     c. 从列表中选择以下权限（如果还没有这些权限），然后选择“修改权限”。
 
       ![权限列表和“修改权限”按钮](./media/active-directory-enterprise-app-role-management/graph-explorer-new10.png)
+
+    > [!Note]
+    > 在此方案中，“云应用管理员”和“应用管理员”角色将无法工作，因为我们需要可目录读写的全局管理员权限。
 
     d. 接受许可。 此时会再次登录到系统。
 
@@ -153,7 +156,7 @@ ms.locfileid: "38989905"
     | -------------- | ----------------|
     | 角色名称  | user.assignedroles |
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“添加属性”，打开“添加属性”窗格。
+    a. 选择“添加属性”，打开“添加属性”窗格。
 
       ![“添加属性”按钮](./media/active-directory-enterprise-app-role-management/tutorial_attribute_04.png)
 
@@ -199,7 +202,7 @@ ms.locfileid: "38989905"
 
     ![“PATCH”的请求正文，突出显示了“description”和“displayname”](./media/active-directory-enterprise-app-role-management/graph-explorer-patchupdate.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将方法从“GET”更改为“PATCH”。
+    a. 将方法从“GET”更改为“PATCH”。
 
     b. 复制现有角色，并将其粘贴到“请求正文”下。
 
@@ -237,7 +240,7 @@ ms.locfileid: "38989905"
 
     ![“PATCH”的请求正文，IsEnabled 设置为 false](./media/active-directory-enterprise-app-role-management/graph-explorer-new8.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将方法从“GET”更改为“PATCH”。
+    a. 将方法从“GET”更改为“PATCH”。
 
     b. 从应用程序中复制现有角色，并将其粘贴到“请求正文”下。
 

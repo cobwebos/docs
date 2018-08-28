@@ -4,7 +4,7 @@ description: 了解如何处理 Azure Functions 中的事件网格事件。
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 tags: ''
 keywords: ''
@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 06/08/2018
+ms.date: 08/20/2018
 ms.author: glenga
-ms.openlocfilehash: 6afc54bfcbef4d0714e9a09d0aa27ea4829d4dd5
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: f0cb698bad42bcfd035451361b9a20d0f0b5bddf
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715380"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42142275"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions 的事件网格触发器
 
@@ -53,6 +53,7 @@ ms.locfileid: "39715380"
 * [C#](#c-example)
 * [C# 脚本 (.csx)](#c-script-example)
 * [JavaScript](#javascript-example)
+* [Java](#trigger---java-example)
 
 有关 HTTP 触发器示例，请参阅本文稍后介绍的[如何使用 HTTP 触发器](#use-an-http-trigger-as-an-event-grid-trigger)。
 
@@ -180,6 +181,36 @@ module.exports = function (context, eventGridEvent) {
     context.done();
 };
 ```
+
+### <a name="trigger---java-example"></a>触发器 - Java 示例
+
+以下示例演示 *function.json* 文件中的一个触发器绑定以及使用该绑定并输出事件的 [Java 函数](functions-reference-java.md)。
+
+```json
+{
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "eventGridEvent",
+      "direction": "in"
+    }
+  ]
+}
+```
+
+下面是 Java 代码：
+
+```java
+@FunctionName("eventGridMonitor")
+  public void logEvent(
+     @EventGridTrigger(name = "event") String content,
+      final ExecutionContext context
+  ) { 
+      context.getLogger().info(content);
+    }
+```
+
+在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自 EventGrid 的参数使用 `EventGridTrigger` 注释。 带有这些注释的参数会导致函数在事件到达时运行。  可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。 
      
 ## <a name="attributes"></a>属性
 
@@ -310,7 +341,7 @@ az eventgrid resource event-subscription create -g myResourceGroup \
 http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextensionconfig_extension?code={adminkey}
 ```
 
-这是一个管理 API，因此需要[管理密钥](functions-bindings-http-webhook.md#authorization-keys)。 请不要混淆系统密钥（用于调用事件网格触发器函数）和管理密钥（用于针对函数应用执行管理任务）。 订阅事件网格主题时，请务必使用系统密钥。
+这是一个管理 API，因此它需要函数应用[主密钥](functions-bindings-http-webhook.md#authorization-keys)。 请不要混淆系统密钥（用于调用事件网格触发器函数）和主密钥（用于针对函数应用执行管理任务）。 订阅事件网格主题时，请务必使用系统密钥。 
 
 下面是提供系统密钥的响应示例：
 

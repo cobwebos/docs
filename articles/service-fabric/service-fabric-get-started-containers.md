@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: e76ffa3256da5acecf55ad37ea3d927510565ffe
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 41246e434f8adade65f39b3471417888f62d7528
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577282"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42141714"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>在 Windows 上创建第一个 Service Fabric 容器应用程序
 > [!div class="op_single_selector"]
@@ -204,6 +204,8 @@ Service Fabric SDK 和工具提供服务模板，用于创建容器化应用程�
   </Endpoints>
 </Resources>
 ```
+> [!NOTE]
+> 可以通过使用适用的属性值声明其他 EndPoint 元素来添加服务的其他终结点。 每个端口可以仅声明一个协议值。
 
 定义终结点后，Service Fabric 即可将该终结点发布到命名服务。 在群集中运行的其他服务可以解析此容器。 还可以使用[反向代理](service-fabric-reverseproxy.md)进行容器到容器通信。 将 HTTP 侦听端口和想要与其通信的服务名称作为环境变量提供给反向代理，以此方式进行通信。
 
@@ -247,6 +249,8 @@ Service Fabric SDK 和工具提供服务模板，用于创建容器化应用程�
     ...
 </ServiceManifestImport>
 ```
+> [!NOTE]
+> 可以通过使用适用的属性值声明其他 PortBinding 元素来添加服务的其他端口绑定。
 
 ## <a name="configure-container-registry-authentication"></a>配置容器注册表身份验证
 将 `RepositoryCredentials` 添加到 ApplicationManifest.xml 文件的 `ContainerHostPolicies`，配置容器注册表身份验证。 为 myregistry.azurecr.io 容器注册表添加帐户和密码，以便服务从存储库下载容器映像。
@@ -598,13 +602,13 @@ Service Fabric 运行时为下载和解压缩容器映像分配了 20 分钟的�
 
 ```json
 {
-"name": "Hosting",
+        "name": "Hosting",
         "parameters": [
           {
               "name": "ContainerImageDownloadTimeout",
               "value": "1200"
           }
-]
+        ]
 }
 ```
 
@@ -626,7 +630,7 @@ ContainersRetentionCount 设置指定在容器故障时需保留的容器数。 
 
 ```json
 { 
-   "name": "Hosting", 
+        "name": "Hosting", 
         "parameters": [ 
           { 
             "name": "ContainerServiceArguments", 

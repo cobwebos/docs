@@ -11,22 +11,24 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/04/2017
+ms.date: 08/14/2018
 ms.author: mbullwin
-ms.openlocfilehash: d891cd92e70d3491ee0c7a58f1409823301b299c
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: cfcdf13f8aa4dfab9b361ccbb82ea4b2c3e2ca0d
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989745"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42142253"
 ---
 # <a name="import-data-into-analytics"></a>将数据导入到 Analytics 中
 
 将任何表格数据导入到 [Analytics](app-insights-analytics.md) 中，以便将这些数据与来自应用的 [Application Insights](app-insights-overview.md) 遥测数据联接，或者将其作为单独的流进行分析。 Analytics 是一种功能强大的查询语言，非常适合于分析大量加盖时间戳的遥测数据流。
-
 可以使用自己的架构将数据导入到 Analytics 中。 它不一定使用标准 Application Insights 架构（如请求或跟踪）。
 
 可以导入 JSON 或 DSV（分隔符分隔的值 - 逗号、分号或制表符）文件。
+
+> [!IMPORTANT]
+> 此文已**弃用**。 将数据导入 Log Analytics 的建议方法是通过 [Log Analytics 数据收集器 API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api)。
 
 在三种情况下，导入到 Analytics 非常有用：
 

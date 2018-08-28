@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: e22fedda4861e68f2318aff89bc3fe5a15cb6ede
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 6348a6d003aa3efcd1b9c45e61438e0ac4b4c8d5
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160097"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42141723"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>使用网络策略服务器 (NPS) 扩展和 Azure AD 集成远程桌面网关基础结构
 
@@ -226,7 +226,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 默认情况下，当将 RD 网关配置为使用中央策略存储进行授权策略连接时，RD 网关配置为将 CAP 请求转发到 NPS 服务器。 安装了 Azure MFA 扩展的 NPS 服务器处理 RADIUS 访问请求。 以下步骤显示如何验证默认连接请求策略。 
 
 1. 在 RD 网关的“NPS (本地)”控制台中，展开“策略”，然后选择“连接请求策略”。
-2. 右键单击“连接请求策略”，然后双击“TS 网关授权策略”。
+2. 双击“TS 网关授权策略”。
 3. 在“TS 网关授权策略”属性对话框中，单击“设置”选项卡。
 4. 在“设置”选项卡的“转发连接请求”下，单击“身份验证”。 RADIUS 客户端配置为转发请求进行身份验证。
 
@@ -266,7 +266,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 ### <a name="configure-network-policy"></a>配置网络策略
 撤回 NPS 服务器与 Azure MFA 扩展是连接授权策略 (CAP) 的指定中央策略存储。 因此，需要在 NPS 服务器上实现 CAP，以授权有效的连接请求。  
 
-1. 在“NPS (本地)”控制台中，展开“策略”，然后单击“网络策略”。
+1. 在 NPS 服务器上，打开“NPS (本地)”控制台，展开“策略”，然后单击“网络策略”。
 2. 右键单击“到其他访问服务器的连接”，然后单击“重复策略”。 
 
  ![重复策略](./media/howto-mfa-nps-extension-rdg/image19.png)

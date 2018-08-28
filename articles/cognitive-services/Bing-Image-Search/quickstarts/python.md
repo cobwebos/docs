@@ -1,6 +1,6 @@
 ---
-title: 调用和响应 - 适用于 Azure 认知服务中的必应图像搜索 API 的 Python 快速入门 | Microsoft Docs
-description: 获取信息和代码示例，有助于快速开始使用 Azure 上 Microsoft 认知服务中的必应图像搜索 API。
+title: 快速入门：使用 Python 向必应图像搜索 API 发送搜索查询（使用 REST API）
+description: 本快速入门将使用 Python 向必应搜索 API 发送搜索查询，以获取相关图像的列表。
 services: cognitive-services
 author: v-jerkin
 ms.service: cognitive-services
@@ -8,14 +8,14 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 3b5d6a961ce4bcde8aaf73f1fbd30689a6c2c2d1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: bc527ba39b580935f113f56aa63f7bdd283ba304
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365716"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41936732"
 ---
-# <a name="call-and-response-your-first-bing-image-search-query-in-python"></a>调用和响应：Python 中的第一个必应图像搜索查询
+# <a name="quickstart-send-search-queries-using-the-rest-api-and-python"></a>快速入门：使用 REST API 和 Python 发送搜索查询
 
 必应图像搜索 API 通过允许向必应发送用户搜索查询并获取相关图像的列表，提供与 Bing.com/图像相似的体验。
 
@@ -27,7 +27,7 @@ ms.locfileid: "35365716"
 
 ## <a name="prerequisites"></a>先决条件
 
-必须拥有包含必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 需要使用激活免费试用版时提供的访问密钥，也可以使用 Azure 仪表板中的付费订阅密钥。
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="running-the-walkthrough"></a>运行演练
 若要继续本演练，请将 `subscription_key` 设置为必应 API 服务的 API 密钥。
@@ -99,6 +99,6 @@ for i in range(4):
 ## <a name="see-also"></a>另请参阅 
 
 [必应图像搜索概述](../overview.md)  
-[试试看](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-[获取免费试用版访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+[试用](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+[获取免费试用访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
 [必应图像搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

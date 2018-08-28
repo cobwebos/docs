@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 7/18/2018
+ms.date: 8/21/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: a075b60c525fc3883f4464f19a8964fb64ce15a0
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 69ff295e434f199f3a15e96f134f92098b1b8b79
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627706"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42142072"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Azure 诊断日志支持的服务、架构和类别
 
@@ -53,6 +53,7 @@ ms.locfileid: "39627706"
 | 应用程序网关 |[应用程序网关的诊断日志记录](../application-gateway/application-gateway-diagnostics.md) |
 | Azure 自动化 |[Azure 自动化的 Log Analytics](../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure 批处理 |[Azure Batch 诊断日志记录](../batch/batch-diagnostics.md) |
+| 认知服务 | 架构不可用。 |
 | 内容分发网络 | [CDN 的 Azure 诊断日志](../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Azure Cosmos DB 日志记录](../cosmos-db/logging.md) |
 | 数据工厂 | [使用 Azure Monitor 监视数据工厂](../data-factory/monitor-using-azure-monitor.md) |
@@ -61,13 +62,14 @@ ms.locfileid: "39627706"
 | 适用于 PostgreSQL 的 DB |  架构不可用。 |
 | 事件中心 |[Azure 事件中心诊断日志](../event-hubs/event-hubs-diagnostic-logs.md) |
 | Express Route | 架构不可用。 |
+| Azure 防火墙 | 架构不可用。 |
 | IoT 中心 | [IoT 中心操作](../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
 | Key Vault |[Azure 密钥保管库日志记录](../key-vault/key-vault-logging.md) |
 | 负载均衡器 |[Azure 负载均衡器的 Log Analytics](../load-balancer/load-balancer-monitor-log.md) |
 | 逻辑应用 |[逻辑应用 B2B 自定义跟踪架构](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | 网络安全组 |[网络安全组 (NSG) 的 Log Analytics](../virtual-network/virtual-network-nsg-manage-log.md) |
 | DDOS 保护 | [管理 Azure DDoS 防护标准](../virtual-network/manage-ddos-protection.md) |
-| PowerBI 专用 | 架构不可用。 |
+| PowerBI 专用 | [Azure 中 PowerBI Embedded 的诊断日志记录](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
 | 恢复服务 | [Azure 备份的数据模型](../backup/backup-azure-reports-data-model.md)|
 | 搜索 |[允许并使用搜索流量分析](../search/search-traffic-analytics.md) |
 | 服务总线 |[Azure 服务总线诊断日志](../service-bus-messaging/service-bus-diagnostic-logs.md) |
@@ -88,6 +90,12 @@ ms.locfileid: "39627706"
 |Microsoft.Automation/automationAccounts|DscNodeStatus|Dsc 节点状态|
 |Microsoft.Batch/batchAccounts|ServiceLog|服务日志|
 |Microsoft.Cdn/profiles/endpoints|CoreAnalytics|获取终结点的指标，例如带宽、流出量等。|
+|Microsoft.ClassicNetwork/networksecuritygroups|网络安全组规则流事件|网络安全组规则流事件|
+|Microsoft.CognitiveServices/accounts|审核|审核|
+|Microsoft.ContainerService/managedClusters|kube-apiserver|Kubernetes API 服务器|
+|Microsoft.ContainerService/managedClusters|kube-controller-manager|Kubernetes 控制器管理器|
+|Microsoft.ContainerService/managedClusters|kube-scheduler|Kubernetes 计划程序|
+|Microsoft.ContainerService/managedClusters|防护|身份验证 Webhook|
 |Microsoft.CustomerInsights/hubs|AuditEvents|AuditEvents|
 |Microsoft.DataFactory/factories|ActivityRuns|管道活动运行日志|
 |Microsoft.DataFactory/factories|PipelineRuns|管道运行日志|
@@ -97,7 +105,6 @@ ms.locfileid: "39627706"
 |Microsoft.DataLakeStore/accounts|审核|审核日志|
 |Microsoft.DataLakeStore/accounts|Requests|请求日志|
 |Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|PostgreSQL 服务器日志|
-|Microsoft.DBforPostgreSQL/servers|PostgreSQLBackupEvents|PostgreSQL 备份事件|
 |Microsoft.Devices/IotHubs|连接|连接|
 |Microsoft.Devices/IotHubs|DeviceTelemetry|设备遥测|
 |Microsoft.Devices/IotHubs|C2DCommands|C2D 命令|
@@ -110,6 +117,7 @@ ms.locfileid: "39627706"
 |Microsoft.Devices/IotHubs|JobsOperations|作业操作|
 |Microsoft.Devices/IotHubs|DirectMethods|直接方法|
 |Microsoft.Devices/IotHubs|E2EDiagnostics|E2E 诊断（预览版）|
+|Microsoft.Devices/IotHubs|配置|配置|
 |Microsoft.Devices/provisioningServices|DeviceOperations|设备操作|
 |Microsoft.Devices/provisioningServices|ServiceOperations|服务操作|
 |Microsoft.DocumentDB/databaseAccounts|DataPlaneRequests|DataPlaneRequests|
@@ -130,13 +138,17 @@ ms.locfileid: "39627706"
 |Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|应用程序网关访问日志|
 |Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|应用程序网关性能日志|
 |Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|应用程序网关防火墙日志|
+|Microsoft.Network/securegateways|AzureFirewallApplicationRule|Azure 防火墙应用程序规则|
+|Microsoft.Network/securegateways|AzureFirewallNetworkRule|Azure 防火墙网络规则|
+|Microsoft.Network/azurefirewalls|AzureFirewallApplicationRule|Azure 防火墙应用程序规则|
+|Microsoft.Network/azurefirewalls|AzureFirewallNetworkRule|Azure 防火墙网络规则|
 |Microsoft.Network/virtualNetworkGateways|GatewayDiagnosticLog|网关诊断日志|
 |Microsoft.Network/virtualNetworkGateways|TunnelDiagnosticLog|隧道诊断日志|
 |Microsoft.Network/virtualNetworkGateways|RouteDiagnosticLog|路由诊断日志|
 |Microsoft.Network/virtualNetworkGateways|IKEDiagnosticLog|IKE 诊断日志|
 |Microsoft.Network/virtualNetworkGateways|P2SDiagnosticLog|P2S 诊断日志|
 |Microsoft.Network/trafficManagerProfiles|ProbeHealthStatusEvents|流量管理器探测运行状况结果事件|
-|Microsoft.Network/expressRouteCircuits|GWMCountersTable|GWM 计数器表|
+|Microsoft.Network/expressRouteCircuits|PeeringRouteLog|对等互连路由表日志|
 |Microsoft.PowerBIDedicated/capacities|引擎|引擎|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Azure 备份报告数据|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Azure Site Recovery 作业|
@@ -148,15 +160,19 @@ ms.locfileid: "39627706"
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryProtectedDiskDataChurn|Azure Site Recovery 受保护的磁盘数据改动|
 |Microsoft.Search/searchServices|OperationLogs|操作日志|
 |Microsoft.ServiceBus/namespaces|OperationalLogs|运行日志|
+|Microsoft.Sql/servers/databases|SQLInsights|SQL Insights|
+|Microsoft.Sql/servers/databases|AutomaticTuning|自动优化|
 |Microsoft.Sql/servers/databases|QueryStoreRuntimeStatistics|查询存储运行时统计信息|
 |Microsoft.Sql/servers/databases|QueryStoreWaitStatistics|查询存储等待统计信息|
 |Microsoft.Sql/servers/databases|Errors|Errors|
 |Microsoft.Sql/servers/databases|DatabaseWaitStatistics|数据库等待统计信息|
 |Microsoft.Sql/servers/databases|超时|超时|
 |Microsoft.Sql/servers/databases|块|块|
-|Microsoft.Sql/servers/databases|SQLInsights|SQL Insights|
+|Microsoft.Sql/servers/databases|死锁数|死锁数|
 |Microsoft.Sql/servers/databases|审核|审核日志|
 |Microsoft.Sql/servers/databases|SQLSecurityAuditEvents|SQL 安全审核事件|
+|Microsoft.Sql/servers/databases|SqlDw_Requests|SQL DW 请求|
+|Microsoft.Sql/servers/databases|SqlDw_RequestSteps|SQL DW 请求步骤|
 |Microsoft.StreamAnalytics/streamingjobs|执行|执行|
 |Microsoft.StreamAnalytics/streamingjobs|创作|创作|
 

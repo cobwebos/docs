@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 90f41e56f8e95584959576d3e5ad837f4774048a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cb763327eb292feb9d58fb21b1ca808a3f2909aa
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629076"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42141899"
 ---
 # <a name="tpm-attestation"></a>TPM 证明
 
 IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务用于将零接触设备预配到指定 IoT 中心。 使用设备预配服务，可以通过安全的方式预配数百万台设备。
 
-本文介绍使用 [TPM](./concepts-device.md) 时的标识证明过程。 TPM 表示受信任的平台模块，是一类硬件安全模块 (HSM)。 本文假定你使用单独的、固件式的或集成式的 TPM。 软件模拟 TPM 适用于原型制作或测试，但其提供的安全级别不同于单独的、固件式的或集成式的 TPM。 建议不要在生产中使用软件 TPM。 [详细了解](http://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf) TPM 类型。
+本文介绍使用 [TPM](./concepts-device.md) 时的标识证明过程。 TPM 表示受信任的平台模块，是一类硬件安全模块 (HSM)。 本文假定你使用单独的、固件式的或集成式的 TPM。 软件模拟 TPM 适用于原型制作或测试，但其提供的安全级别不同于单独的、固件式的或集成式的 TPM。 建议不要在生产中使用软件 TPM。 有关 TPM 类型的详细信息，请参阅 [TPM 简介](http://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf)。
 
 本文仅适用于特定的设备，这些设备使用提供 HMAC 密钥支持的 TPM 2.0，同时使用认可密钥。 本文不适用于使用 X.509 证书进行身份验证的设备。 TPM 是一种行业通用的 ISO 标准，由 Trusted Computing Group 提出。有关 TPM 的详细信息，可参阅[完整的 TPM 2.0 规范](https://trustedcomputinggroup.org/tpm-library-specification/)或 [ISO/IEC 11889 规范](https://www.iso.org/standard/66510.html)。本文还假定你熟悉公钥和私钥对以及如何将其用于加密。
 
@@ -61,7 +61,7 @@ TPM 还有另一类密钥，称为存储根密钥 (SRK)。 SRK 可以由 TPM 的
 
 然后，设备可以使用解密的 nonce 给 SAS 令牌签名，并使用签名的 SAS 令牌重新建立到设备预配服务的连接。 完成 Nonce 质询以后，服务就会允许设备进行预配。
 
-![设备重新建立到 DPS 的连接，以便验证 EK 所有权](./media/concepts-tpm-attestation/step-three-validation.png)
+![设备重新建立与设备预配服务的连接，以便验证 EK 所有权](./media/concepts-tpm-attestation/step-three-validation.png)
 
 ## <a name="next-steps"></a>后续步骤
 

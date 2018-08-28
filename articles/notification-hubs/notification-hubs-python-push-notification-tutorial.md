@@ -14,17 +14,17 @@ ms.devlang: php
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 32953bacb8fdb135d5f3e0e9324218d2a71b0818
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 339029f14c4fd9a0158f2b7a4fb80bf03bd83cf3
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777012"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42142051"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>如何通过 Python 使用通知中心
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-如 MSDN 主题[通知中心 REST API](http://msdn.microsoft.com/library/dn223264.aspx) 中所述，可以使用通知中心 REST 接口从 Java/PHP/Python/Ruby 后端访问所有通知中心功能。
+如 MSDN 文章[通知中心 REST API](http://msdn.microsoft.com/library/dn223264.aspx) 中所述，可以使用通知中心 REST 接口从 Java/PHP/Python/Ruby 后端访问所有通知中心功能。
 
 > [!NOTE]
 > 这是在 Python 中实现通知发送的示例引用实现，不是官方支持的通知中心 Python SDK。
@@ -33,7 +33,7 @@ ms.locfileid: "33777012"
 > 
 > 
 
-本文介绍如何：
+本文介绍以下操作：
 
 * 以 Python 构建 REST 客户端以获取通知中心功能。
 * 使用 Python 接口发送通知到通知中心 REST API。 
@@ -261,7 +261,7 @@ ms.locfileid: "33777012"
 这些方法将 HTTP POST 请求发送到通知中心的 /messages 终结点，该请求具有发送通知的正确正文和标头。
 
 ### <a name="using-debug-property-to-enable-detailed-logging"></a>使用调试属性启用详细的日志记录
-在初始化通知中心时启用调试属性会写出关于 HTTP 请求和响应转储的详细日志记录信息，以及详细的通知消息发送结果。 [通知中心 TestSend 属性](http://msdn.microsoft.com/library/microsoft.servicebus.notifications.notificationhubclient.enabletestsend.aspx)会返回有关通知发送结果的详细信息。 若要使用它 - 请使用以下代码进行初始化：
+在初始化通知中心时启用调试属性会写出关于 HTTP 请求和响应转储的详细日志记录信息，以及详细的通知消息发送结果。 [通知中心 TestSend 属性](https://docs.microsoft.com/en-us/previous-versions/azure/reference/dn495827(v=azure.100))会返回有关通知发送结果的详细信息。 若要使用它 - 请使用以下代码进行初始化：
 
     hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 
@@ -321,7 +321,7 @@ ms.locfileid: "33777012"
 
 运行 Python 代码，现在应该生成显示在目标设备上的通知。
 
-## <a name="examples"></a>示例:
+## <a name="examples"></a>示例：
 ### <a name="enabling-debug-property"></a>启用调试属性
 如果在初始化 NotificationHub 时启用调试标志，则会出现详细的 HTTP 请求和响应转储以及 NotificationOutcome，如下所示，可从中了解哪些 HTTP 标头传入请求以及从通知中心收到哪些 HTTP 响应：![][1]
 

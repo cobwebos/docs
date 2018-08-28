@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: e12cc37c579c10d3b59197d126589d36e80a8451
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ffe15fc42aad2945ba622f1e38566100f2625340
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444515"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42141036"
 ---
 # <a name="configure-managed-service-identity-on-an-azure-vm-using-azure-cli"></a>使用 Azure CLI 在 Azure VM 上 配置托管服务标识
 
@@ -42,7 +42,11 @@ ms.locfileid: "39444515"
 - 若要运行 CLI 脚本示例，可以使用下列三种方法：
     - 在 Azure 门户中使用 [Azure Cloud Shell](../../cloud-shell/overview.md)（见下一部分）。
     - 单击各代码块右上角的“试运行”按钮，使用嵌入的 Azure Cloud Shell。
-    - 如果希望使用本地 CLI 控制台，可以[安装最新版 CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)（2.0.13 或更高版本）。 
+    - 如果喜欢使用本地 CLI 控制台，请[安装最新版的 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+      
+      > [!NOTE]
+      > 命令已更新，以反映最新版本的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。     
+        
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -88,7 +92,7 @@ ms.locfileid: "39444515"
    az vm identity assign -g myResourceGroup -n myVm
    ```
 
-### <a name="disable-the-system-assigned-identity-from-an-azure-vm"></a>从 Azure VM 中禁用系统分配标识
+### <a name="disable-system-assigned-identity-from-an-azure-vm"></a>从 Azure VM 中禁用系统分配标识
 
 如果某个虚拟机不再需要系统分配的标识，但仍需要用户分配的标识，请使用以下命令：
 
@@ -140,7 +144,7 @@ az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentit
        "clientSecretUrl": "https://control-westcentralus.identity.azure.net/subscriptions/<SUBSCRIPTON ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI NAME>/credentials?tid=5678&oid=9012&aid=73444643-8088-4d70-9532-c3a0fdc190fz",
        "id": "/subscriptions/<SUBSCRIPTON ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI NAME>",
        "location": "westcentralus",
-       "name": "<MSI NAME>",
+       "name": "<USER ASSIGNED IDENTITY NAME>",
        "principalId": "e5fdfdc1-ed84-4d48-8551-fe9fb9dedfll",
        "resourceGroup": "<RESOURCE GROUP>",
        "tags": {},
@@ -149,10 +153,10 @@ az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentit
    }
    ```
 
-3. 运行 [az vm create](/cli/azure/vm/#az-vm-create) 创建 VM。 下面的示例创建与新用户分配标识关联的 VM，用 `--assign-identity` 参数指定。 请务必将 `<RESOURCE GROUP>`、`<VM NAME>`、`<USER NAME>`、`<PASSWORD>` 和 `<MSI ID>` 参数值替换为你自己的值。 对于 `<MSI ID>`，请使用上一步创建的用户分配标识的资源 `id` 属性： 
+3. 运行 [az vm create](/cli/azure/vm/#az-vm-create) 创建 VM。 下面的示例创建与新用户分配标识关联的 VM，用 `--assign-identity` 参数指定。 请务必将 `<RESOURCE GROUP>`、`<VM NAME>`、`<USER NAME>`、`<PASSWORD>` 和 `<USER ASSIGNED IDENTITY NAME>` 参数值替换为你自己的值。 
 
    ```azurecli-interactive 
-   az vm create --resource-group <RESOURCE GROUP> --name <VM NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <MSI ID>
+   az vm create --resource-group <RESOURCE GROUP> --name <VM NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <USER ASSIGNED IDENTITY NAME>
    ```
 
 ### <a name="assign-a-user-assigned-identity-to-an-existing-azure-vm"></a>向现有 Azure VM 分配用户分配标识
@@ -165,7 +169,7 @@ az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentit
     ```azurecli-interactive
     az identity create -g <RESOURCE GROUP> -n <MSI NAME>
     ```
-响应包含所创建的用户分配的托管标识的详细信息，与以下示例类似。 下一步会用到分配给用户分配标识的资源 `id` 值。
+   响应包含所创建的用户分配的托管标识的详细信息，与以下示例类似。 
 
    ```json
    {
@@ -182,18 +186,18 @@ az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentit
    }
    ```
 
-2. 使用 [az vm identity assign](/cli/azure/vm#az-vm-identity-assign) 将用户分配标识分配给 VM。 请务必将 `<RESOURCE GROUP>` 和 `<VM NAME>` 参数值替换为自己的值。 `<MSI ID>` 将为上一步创建的用户分配标识的资源 `id` 属性：
+2. 使用 [az vm identity assign](/cli/azure/vm#az-vm-identity-assign) 将用户分配标识分配给 VM。 请务必将 `<RESOURCE GROUP>` 和 `<VM NAME>` 参数值替换为自己的值。 `<USER ASSIGNED IDENTITY>` 为上一步创建的用户分配标识的资源 `name` 属性：
 
     ```azurecli-interactive
-    az vm identity assign -g <RESOURCE GROUP> -n <VM NAME> --identities <MSI ID>
+    az vm identity assign -g <RESOURCE GROUP> -n <VM NAME> --identities <USER ASSIGNED IDENTITY>
     ```
 
 ### <a name="remove-a-user-assigned-identity-from-an-azure-vm"></a>从 Azure VM 中删除用户分配标识
 
-若要从 VM 删除用户分配的标识，请使用 [az vm identity remove](/cli/azure/vm#az-vm-identity-remove)。 请务必将 `<RESOURCE GROUP>` 和 `<VM NAME>` 参数值替换为自己的值。 `<MSI NAME>` 将为用户分配标识的 `name` 属性，可通过 `az vm identity show` 在 VM 的标识部分中找到：
+若要从 VM 删除用户分配的标识，请使用 [az vm identity remove](/cli/azure/vm#az-vm-identity-remove)。 如果这是用户分配给虚拟机的唯一标识，则将从标识类型值中删除 `UserAssigned`。  请务必将 `<RESOURCE GROUP>` 和 `<VM NAME>` 参数值替换为自己的值。 `<USER ASSIGNED IDENTITY>` 将为用户分配标识的 `name` 属性，可通过 `az vm identity show` 在虚拟机的标识部分中找到：
 
 ```azurecli-interactive
-az vm identity remove -g <RESOURCE GROUP> -n <VM NAME> --identities <MSI NAME>
+az vm identity remove -g <RESOURCE GROUP> -n <VM NAME> --identities <USER ASSIGNED IDENTITY>
 ```
 
 如果 VM 没有系统分配的标识，并且你希望从中删除所有用户分配的标识，请使用以下命令：
@@ -202,13 +206,13 @@ az vm identity remove -g <RESOURCE GROUP> -n <VM NAME> --identities <MSI NAME>
 > 值 `none` 区分大小写。 它必须为小写。
 
 ```azurecli-interactive
-az vm update -n myVM -g myResourceGroup --set identity.type="none" identity.identityIds=null
+az vm update -n myVM -g myResourceGroup --set identity.type="none" identity.userAssignedIdentities=null
 ```
 
 如果 VM 同时具有系统分配标识和用户分配标识，则可以切换为仅使用系统分配标识，从而删除所有用户分配标识。 请使用以下命令：
 
 ```azurecli-interactive
-az vm update -n myVM -g myResourceGroup --set identity.type='SystemAssigned' identity.identityIds=null 
+az vm update -n myVM -g myResourceGroup --set identity.type='SystemAssigned' identity.userAssignedIdentities=null 
 ```
 
 ## <a name="related-content"></a>相关内容

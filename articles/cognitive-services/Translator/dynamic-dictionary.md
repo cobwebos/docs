@@ -9,12 +9,12 @@ ms.component: translator-text
 ms.topic: article
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: a18348c9786669ac41c4e149577d97cd631d5531
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: dbc754093827730b8709d67f314e5b327518ef50
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366817"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "41929951"
 ---
 # <a name="how-to-use-the-dynamic-dictionary-feature-of-the-microsoft-translator-text-api"></a>如何使用 Microsoft 文本翻译 API 的动态字典功能
 
@@ -32,5 +32,5 @@ ms.locfileid: "35366817"
 
 无论使用还是不使用 HTML 模式，此功能都以相同的方式工作。 
 
-应尽量少使用此功能。 对翻译进行自定义的合适且更好的方法是使用 Microsoft Translator Hub。 该 Hub 能够充分利用上下文和统计概率。 如果你必须或者有能力创建在上下文中显示你的工作或短语的训练数据，则会得到更好的结果。 可以在 [http://hub.microsofttranslator.com](http://hub.microsofttranslator.com) 中找到有关该 Hub 的详细信息。
+应尽量少使用此功能。 对翻译进行自定义时，一个合适且要好得多的方法是使用自定义翻译工具。 自定义翻译工具能够充分利用上下文和统计概率。 如果你有或可以创建在上下文中显示你的工作或短语的训练数据，则会得到好得多的结果。 可以在 [http://aka.ms/CustomTranslator](http://aka.ms/CustomTranslator) 中找到有关自定义翻译的详细信息。
 

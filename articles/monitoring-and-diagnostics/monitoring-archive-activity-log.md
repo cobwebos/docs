@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: a519cd242b88916d1a11df47c0b7450594848ef5
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: d7ed440ba794bcdfab4744e0ac4864aab6896ca8
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920543"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42144045"
 ---
 # <a name="archive-the-azure-activity-log"></a>存档 Azure 活动日志
 本文介绍如何使用 Azure 门户、PowerShell Cmdlet 或跨平台 CLI 将 [**Azure 活动日志**](monitoring-overview-activity-logs.md)存档到存储帐户中。 此选项适用于对保留时长超过 90 天的活动日志进行审核、静态分析或备份（对保留策略具备完全控制权限）。 如果只需将事件保留 90 天或更短的时间，则不需设置到存储帐户的存档，因为在不启用存档的情况下，活动日志事件保留在 Azure 平台中的时间是 90 天。
@@ -24,7 +24,7 @@ ms.locfileid: "37920543"
 > 
 
 ## <a name="prerequisites"></a>先决条件
-在开始之前，需要[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)，将活动日志存档到其中。 强烈建议用户不要使用其中存储了其他非监视数据的现有存储帐户，以便更好地控制监视数据所需的访问权限。 但是，如果还要将诊断日志和指标存档到存储帐户，则也可将该存储帐户用于活动日志，使得所有监视数据都位于一个中心位置。 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，存储帐户就不必与订阅发出日志位于同一订阅中。
+在开始之前，需要[创建存储帐户](../storage/common/storage-quickstart-create-account.md)，将活动日志存档到其中。 强烈建议用户不要使用其中存储了其他非监视数据的现有存储帐户，以便更好地控制监视数据所需的访问权限。 但是，如果还要将诊断日志和指标存档到存储帐户，则也可将该存储帐户用于活动日志，使得所有监视数据都位于一个中心位置。 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，存储帐户就不必与订阅发出日志位于同一订阅中。
 
 > [!NOTE]
 >  当前无法将数据存档到安全虚拟网络中的存储帐户。
@@ -62,7 +62,7 @@ ms.locfileid: "37920543"
    Add-AzureRmLogProfile -Name $logProfileName -Location $locations -StorageAccountId $storageAccountId
    ```
 
-| 属性 | 必选 | 说明 |
+| 属性 | 必选 | Description |
 | --- | --- | --- |
 | StorageAccountId |是 |应该将活动日志保存到其中的存储帐户的资源 ID。 |
 | 位置 |是 |要为其收集活动日志事件的逗号分隔区域的列表。 可以使用 `(Get-AzureRmLocation).Location` 查看订阅的所有区域列表。 |
@@ -75,7 +75,7 @@ ms.locfileid: "37920543"
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --storage-account-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>"
    ```
 
-| 属性 | 必选 | 说明 |
+| 属性 | 必选 | Description |
 | --- | --- | --- |
 | 名称 |是 |日志配置文件的名称。 |
 | storage-account-id |是 |应该将活动日志保存到其中的存储帐户的资源 ID。 |
@@ -158,7 +158,7 @@ insights-operational-logs/name=default/resourceId=/SUBSCRIPTIONS/s1id1234-5679-0
 ```
 
 
-| 元素名称 | 说明 |
+| 元素名称 | Description |
 | --- | --- |
 | time |处理与事件对应的请求的 Azure 服务生成事件时的时间戳。 |
 | resourceId |受影响资源的资源 ID。 |

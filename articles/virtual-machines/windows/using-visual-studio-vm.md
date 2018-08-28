@@ -8,6 +8,8 @@ manager: sacalla
 editor: tysonn
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
@@ -15,12 +17,12 @@ ms.prod: vs-devops-alm
 ms.date: 03/02/2018
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 2c8cd5cb837787db7bd6cb0d76bdf734b7d7bc0f
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 082015929da5ffa15a5a1cd23e137a5f22c8fec8
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285368"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444702"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 上的 Visual Studio 映像
 使用预配置的 Azure 虚拟机 (VM) 中的 Visual Studio 是从无到启动并运行的开发环境的简单快捷方法。 具有不同 Visual Studio 配置的系统映像位于 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps?search=%22visual%20studio%202017%22&page=1)。
@@ -32,9 +34,9 @@ ms.locfileid: "39285368"
 
 | 发行版本                                              | 版本                     |     产品版本     |
 |:------------------------------------------------------------:|:----------------------------:|:-----------------------:|
-| Visual Studio 2017：最新（版本 15.7）                    |    Enterprise、Community     |      版本 15.7.5     |
+| Visual Studio 2017：最新（版本 15.8）                    |    Enterprise、Community     |      版本 15.8.0     |
 | Visual Studio 2017：最新预览版（版本 15.8，预览版 5） |    Enterprise、Community     |      版本 15.8.5     |
-|         Visual Studio 2017：RTW                              |    Enterprise、Community     |      版本 15.0.15    |
+|         Visual Studio 2017：RTW                              |    Enterprise、Community     |      版本 15.0.17    |
 |   Visual Studio 2015：最新 (Update 3)                      |    Enterprise、Community     |  版本 14.0.25431.01  |
 |         Visual Studio 2015：RTW                              |             无             | （已过期，无法进行维护） |
 

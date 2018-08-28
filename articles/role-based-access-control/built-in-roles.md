@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 08/07/2018
+ms.date: 08/19/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 5a373c397df09653395eea7996b19262aee75c7a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 537777d2e379959d427c025036652a87ecc4a1fe
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39619043"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617152"
 ---
 # <a name="built-in-roles-in-azure"></a>Azure 中的内置角色
 [基于角色的访问控制 (RBAC)](overview.md) 拥有多个内置角色定义，可将其分配给用户、组和服务主体。 角色分配是控制对 Azure 资源的访问的方式。 如果内置角色不能满足组织的特定需求，则你可以创建自己的[自定义角色](custom-roles.md)。
@@ -47,6 +47,8 @@ ms.locfileid: "39619043"
 | [自动化作业操作员](#automation-job-operator) | 使用自动化 Runbook 创建和管理作业。 |
 | [自动化操作员](#automation-operator) | 自动化操作员能够启动、停止、暂停和恢复作业 |
 | [自动化 Runbook 操作员](#automation-runbook-operator) | 读取 Runbook 属性 - 以能够创建 runbook 的作业。 |
+| [Azure Kubernetes 服务群集管理员角色](#azure-kubernetes-service-cluster-admin-role) | 列出群集管理员凭据操作。 |
+| [Azure Kubernetes 服务群集用户角色](#azure-kubernetes-service-cluster-user-role) | 列出群集用户凭据操作。 |
 | [Azure Stack 注册所有者](#azure-stack-registration-owner) | 允许管理 Azure Stack 注册。 |
 | [备份参与者](#backup-contributor) | 允许管理备份服务，但不允许创建保管库以及授予其他人访问权限 |
 | [备份操作员](#backup-operator) | 允许管理备份服务，但删除备份、创建保管库以及授予其他人访问权限除外 |
@@ -60,8 +62,7 @@ ms.locfileid: "39619043"
 | [经典网络参与者](#classic-network-contributor) | 允许管理经典网络，但不允许访问这些网络。 |
 | [经典存储帐户参与者](#classic-storage-account-contributor) | 允许管理经典存储帐户，但不允许对其进行访问。 |
 | [经典存储帐户密钥操作员服务角色](#classic-storage-account-key-operator-service-role) | 允许经典存储帐户密钥操作员在经典存储帐户上列出和再生成密钥 |
-| [经典虚拟机参与者](#classic-virtual-machine-contributor) | 允许管理经典虚拟机，但不允许访问这些虚拟机及其连接到的虚拟网络或存储帐户。 |
-| [ClearDB MySQL DB 参与者](#cleardb-mysql-db-contributor) | 允许管理 ClearDB MySQL 数据库，但不允许访问这些数据库。 |
+| [经典虚拟机参与者](#classic-virtual-machine-contributor) | 允许管理经典虚拟机，但不允许访问这些虚拟机及其连接到的虚拟网络或存储帐户。|
 | [Cosmos DB 帐户读者角色](#cosmos-db-account-reader-role) | 可以读取 Azure Cosmos DB 帐户数据。 请参阅 [Cosmos DB 帐户参与者](#documentdb-account-contributor)，了解如何管理 Azure Cosmos DB 帐户。 |
 | [Data Box 参与者](#data-box-contributor) | 可让你管理 Data Box 服务下的所有内容，但不能向其他人授予访问权限。 |
 | [Data Box 操作员](#data-box-operator) | 可让你管理 Data Box 服务，但不能创建订单或编辑订单详细信息，以及向其他人授予访问权限。 |
@@ -84,6 +85,7 @@ ms.locfileid: "39619043"
 | [管理组参与者](#management-group-contributor) | 管理组参与者角色 |
 | [管理组读取者](#management-group-reader) | 管理组读取者角色 |
 | [监视参与者](#monitoring-contributor) | 可以读取所有监视数据和编辑监视设置。 另请参阅 [Azure Monitor 的角色、权限和安全入门](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles)。 |
+| [监视指标发布者](#monitoring-metrics-publisher) | 允许针对 Azure 资源发布指标 |
 | [监视查阅者](#monitoring-reader) | 可以读取所有监视数据（指标、日志等）。 另请参阅 [Azure Monitor 的角色、权限和安全入门](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles)。 |
 | [网络参与者](#network-contributor) | 允许管理网络，但不允许访问这些网络。 |
 | [New Relic APM 帐户参与者](#new-relic-apm-account-contributor) | 允许管理 New Relic 应用程序性能管理帐户和应用程序，但不允许访问它们。 |
@@ -275,13 +277,14 @@ ms.locfileid: "39619043"
 > | **Id** | 4fe576fe-1146-4730-92eb-48519fa6bf9f |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
+> | Microsoft.Automation/automationAccounts/hybridRunbookWorkerGroups/read | 读取混合 Runbook 辅助角色资源 |
 > | Microsoft.Automation/automationAccounts/jobs/read | 获取 Azure 自动化作业 |
 > | Microsoft.Automation/automationAccounts/jobs/resume/action | 恢复 Azure 自动化作业 |
 > | Microsoft.Automation/automationAccounts/jobs/stop/action | 停止 Azure 自动化作业 |
-> | Microsoft.Automation/automationAccounts/hybridRunbookWorkerGroups/read | 读取混合 Runbook 辅助角色资源 |
 > | Microsoft.Automation/automationAccounts/jobs/streams/read | 获取 Azure 自动化作业流 |
 > | Microsoft.Automation/automationAccounts/jobs/suspend/action | 暂停 Azure 自动化作业 |
 > | Microsoft.Automation/automationAccounts/jobs/write | 创建 Azure 自动化作业 |
+> | Microsoft.Automation/automationAccounts/jobs/output/read | 获取作业的输出 |
 > | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
 > | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
@@ -329,6 +332,24 @@ ms.locfileid: "39619043"
 > | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Support/* | 创建和管理支持票证 |
+
+## <a name="azure-kubernetes-service-cluster-admin-role"></a>Azure Kubernetes 服务群集管理员角色
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 列出群集管理员凭据操作。 |
+> | **Id** | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
+> | **操作** |  |
+> | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | 列出托管群集的 clusterAdmin 凭据 |
+
+## <a name="azure-kubernetes-service-cluster-user-role"></a>Azure Kubernetes 服务群集用户角色
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 列出群集用户凭据操作。 |
+> | **Id** | 4abbcc35-e782-43d8-92c5-2d3f1bd2253f |
+> | **操作** |  |
+> | Microsoft.ContainerService/managedClusters/listClusterUserCredential/action | 列出托管群集的 clusterUser 凭据 |
 
 ## <a name="azure-stack-registration-owner"></a>Azure Stack 注册所有者
 > [!div class="mx-tableFixed"]
@@ -631,21 +652,6 @@ ms.locfileid: "39619043"
 > | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Support/* | 创建和管理支持票证 |
-
-## <a name="cleardb-mysql-db-contributor"></a>ClearDB MySQL DB 参与者
-> [!div class="mx-tableFixed"]
-> | | |
-> | --- | --- |
-> | **说明** | 允许管理 ClearDB MySQL 数据库，但不允许访问这些数据库。 |
-> | **Id** | 9106cda0-8a86-4e81-b686-29a22c54effe |
-> | **操作** |  |
-> | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理警报规则 |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
-> | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
-> | successbricks.cleardb/databases/* | 创建和管理 ClearDB MySQL 数据库 |
 
 ## <a name="cosmos-db-account-reader-role"></a>Cosmos DB 帐户读者角色
 > [!div class="mx-tableFixed"]
@@ -1041,6 +1047,19 @@ ms.locfileid: "39619043"
 > | Microsoft.Support/* | 创建和管理支持票证 |
 > | Microsoft.WorkloadMonitor/workloads/* |  |
 > | Microsoft.WorkloadMonitor/workloadInsights/* |  |
+
+## <a name="monitoring-metrics-publisher"></a>监视指标发布者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 允许针对 Azure 资源发布指标 |
+> | **Id** | 3913510d-42f4-4e42-8a64-420c390055eb |
+> | **操作** |  |
+> | Microsoft.Insights/Register/Action | 注册 Microsoft Insights 提供程序 |
+> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | **DataActions** |  |
+> | Microsoft.Insights/Metrics/Write | 写入指标 |
 
 ## <a name="monitoring-reader"></a>监视查阅者
 > [!div class="mx-tableFixed"]

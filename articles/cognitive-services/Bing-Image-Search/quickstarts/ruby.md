@@ -1,6 +1,6 @@
 ---
-title: 调用和响应 - 适用于 Azure 认知服务、必应图像搜索 API 的 Ruby 快速入门 | Microsoft Docs
-description: 获取信息和代码示例，以帮助你快速开始使用 Azure 上的 Microsoft 认知服务中的必应图像搜索 API。
+title: 快速入门：使用 Ruby 向必应图像搜索 API 发送搜索查询（使用 REST API）
+description: 本快速入门将使用 Ruby 向必应搜索 API 发送搜索查询，以获取相关图像的列表。
 services: cognitive-services
 documentationcenter: ''
 author: v-jerkin
@@ -9,16 +9,16 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 30fae3c589bdb232d57c25a0cba46b89f2c58d2f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: bbe154f22557fb357edfb6b981eb1024f0a81d38
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366428"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41936182"
 ---
-# <a name="call-and-response-your-first-bing-image-search-query-in-ruby"></a>调用和响应：你的采用 Ruby 的第一个必应图像搜索查询
+# <a name="quickstart-send-search-queries-using-the-rest-api-and-ruby"></a>快速入门：使用 REST API 和 Ruby 发送搜索查询
 
-必应图像搜索 API 提供的体验类似于 Bing.com/Images，都是让你向必应发送用户搜索查询，然后就会返回相关图像的列表。
+必应图像搜索 API 通过允许向必应发送用户搜索查询并获取相关图像的列表，提供与 Bing.com/图像相似的体验。
 
 本文包括一个简单的控制台应用程序，它执行必应图像搜索 API 查询并显示返回的原始搜索结果，这些结果采用 JSON 格式。 虽然此应用程序是用 Ruby 编写的，但 API 是一种 RESTful Web 服务，与任何可以发出 HTTP 请求并分析 JSON 的编程语言兼容。 
 
@@ -26,7 +26,7 @@ ms.locfileid: "35366428"
 
 需要使用 [Ruby 2.4 或更高版本](https://www.ruby-lang.org/en/downloads/)来运行示例代码。
 
-必须拥有包含必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 需要激活免费试用版时提供的访问密钥，或使用 Azure 仪表板中的付费订阅密钥。
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="running-the-application"></a>运行应用程序
 
@@ -90,7 +90,7 @@ puts JSON::pretty_generate(JSON(response.body))
 
 ## <a name="json-response"></a>JSON 响应
 
-示例响应如下。 为了限制 JSON 的长度，仅显示了单个结果，并截断了响应的其他部分。 
+示例响应如下。 为了限制 JSON 的长度，系统仅显示一个结果，并截断了响应的其他部分。 
 
 ```json
 {

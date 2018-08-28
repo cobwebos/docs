@@ -9,12 +9,12 @@ ms.date: 06/26/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 6922262856d6fba97349377d5d1b18b75638d88f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6c47deebfe9617cdb21f473b282dd6ea2b912dc0
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436805"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41920953"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-to-your-simulated-device"></a>教程：开发 Node.js IoT Edge 模块并将其部署到模拟设备
 
@@ -36,7 +36,6 @@ ms.locfileid: "39436805"
 Azure IoT Edge 设备：
 
 * 可以按照适用于 [Linux](quickstart-linux.md) 或 [Windows 设备](quickstart.md)的快速入门中的步骤，将开发计算机或虚拟机用作 Edge 设备。
-* Azure 机器学习模块不支持 ARM 处理器。
 
 云资源：
 
@@ -87,8 +86,14 @@ Azure IoT Edge 设备：
    3. 选择“Node.js 模块”作为模块模板。 
    4. 将模块命名为 **NodeModule**。 
    5. 将在上一部分创建的 Azure 容器注册表指定为第一个模块的映像存储库。 将 **localhost:5000** 替换为复制的登录服务器值。 最终的字符串看起来类似于 **\<注册表名称\>.azurecr.io/nodemodule**。
- 
-VS Code 窗口将加载你的 IoT Edge 解决方案空间。 有一个 **.vscode** 文件夹、一个 **modules** 文件夹、一个 **.env** 文件，以及一个部署清单模板文件
+
+   ![提供 Docker 映像存储库](./media/tutorial-node-module/repository.png)
+
+VS Code 窗口将加载你的 IoT Edge 解决方案空间。 解决方案工作区包含五个顶级组件。 你不会在本教程中编辑 **\.vscode** 文件夹或 **\.gitignore** 文件。 **modules** 文件夹包含模块的 Node.js 代码以及用于将模块构建为容器映像的 Dockerfile。 **\.env** 文件存储容器注册表凭据。 **deployment.template.json** 文件包含 IoT Edge 运行时用于在设备上部署模块的信息。 
+
+如果在创建解决方案时未指定容器注册表，但接受了默认的 localhost:5000 值，则不会有 \.env 文件。 
+
+   ![Node.js 解决方案工作区](./media/tutorial-node-module/workspace.png)
 
 ### <a name="add-your-registry-credentials"></a>添加注册表凭据
 
@@ -107,7 +112,7 @@ VS Code 窗口将加载你的 IoT Edge 解决方案空间。 有一个 **.vscode
 5. 在所需的节点模块下面添加温度阈值变量。 温度阈值设置一个值，若要向 IoT 中心发送数据，测量的温度必须超出该值。
 
     ```javascript
-    var temperatureThreshold = 30;
+    var temperatureThreshold = 25;
     ```
 
 6. 将整个 `PipeMessage` 函数替换为 `FilterMessage` 函数。
@@ -183,7 +188,7 @@ VS Code 窗口将加载你的 IoT Edge 解决方案空间。 有一个 **.vscode
         }
     ```
 5. 保存此文件。
-6. 在 VS Code 资源管理器中右键单击 **deployment.template.json** 文件，然后选择“生成 IoT Edge 解决方案”。 
+6. 在 VS Code 资源管理器中右键单击“deployment.template.json”文件，然后选择“生成并推送 IoT Edge 解决方案”。 
 
 要求 Visual Studio Code 生成解决方案时，它首先获取部署模板中的信息，然后在新的 **config** 文件夹中生成 `deployment.json` 文件。 然后，它在集成终端运行两个命令，即 `docker build` 和 `docker push`。 这两个命令会生成代码，将 Node.js 代码容器化，然后将其推送到在初始化解决方案时指定的容器注册表。 
 
@@ -191,23 +196,21 @@ VS Code 窗口将加载你的 IoT Edge 解决方案空间。 有一个 **.vscode
 
 ## <a name="deploy-and-run-the-solution"></a>部署并运行解决方案
 
-可以使用 Azure 门户将 Node.ms 模块部署到 IoT Edge 设备，就像在快速入门中操作一样，但也可在 Visual Studio Code 中部署和监视模块。 以下部分使用用于 VS Code 的 Azure IoT Edge 扩展，该扩展已在先决条件中列出。 立即安装该扩展（如果尚未安装）。 
+在用于设置 IoT Edge 设备的快速入门文章中，已使用 Azure 门户部署了一个模块。 还可以使用用于 Visual Studio Code 的 Azure IoT Toolkit 扩展来部署模块。 你已经为方案准备了部署清单，即 **deployment.json** 文件。 现在需要做的就是选择一个设备来接收部署。
 
-1. 打开 VS Code 命令面板，方法是选择“视图” > “命令面板”。
+1. 在 VS Code 命令面板中，运行“Azure IoT 中心: 选择 IoT 中心”。 
 
-2. 搜索并运行“Azure: 登录”命令。 按照说明登录 Azure 帐户。 
+2. 选择包含要配置的 IoT Edge 设备的订阅和 IoT 中心。 
 
-3. 在命令面板中，搜索并运行“Azure IoT 中心: 选择 IoT 中心”命令。 
+3. 在 VS Code 资源管理器中，展开“Azure IoT 中心设备”部分。 
 
-4. 选择包含 IoT 中心的订阅，然后选择要访问的 IoT 中心。
+4. 右键单击 IoT Edge 设备的名称，然后选择“为单个设备创建部署”。 
 
-5. 在 VS Code 资源管理器中，展开“Azure IoT 中心设备”部分。 
+   ![为单个设备创建部署](./media/tutorial-node-module/create-deployment.png)
 
-6. 右键单击 IoT Edge 设备的名称，然后选择“为 IoT Edge 设备创建部署”。 
+5. 选择 **config** 文件夹中的 **deployment.json** 文件，然后单击“选择 Edge 部署清单”。 不要使用 deployment.template.json 文件。 
 
-7. 导航到包含 NodeModule 的解决方案文件夹。 打开 **config** 文件夹，选择 **deployment.json** 文件。 单击“选择 Edge 部署清单”。
-
-8. 刷新“Azure IoT 中心设备”部分。 此时会看到新的 **NodeModule** 在运行，此外还有 **TempSensor** 模块以及 **$edgeAgent** 和 **$edgeHub** 在运行。 
+6. 单击刷新按钮。 此时会看到新的 **NodeModule** 在运行，此外还有 **TempSensor** 模块以及 **$edgeAgent** 和 **$edgeHub** 在运行。 
 
 
 ## <a name="view-generated-data"></a>查看生成的数据
@@ -220,32 +223,14 @@ VS Code 窗口将加载你的 IoT Edge 解决方案空间。 有一个 **.vscode
 
 ## <a name="clean-up-resources"></a>清理资源 
 
-<!--[!INCLUDE [iot-edge-quickstarts-clean-up-resources](../../includes/iot-edge-quickstarts-clean-up-resources.md)] -->
+如果打算继续学习下一篇建议的文章，可以保留已创建的资源和配置，以便重复使用。 还可以继续使用相同的 IoT Edge 设备作为测试设备。 
 
-如果想要继续学习下一篇建议的文章，可以保留已创建的资源和配置，以便重复使用。
+否则，可以删除本文中创建的本地配置和 Azure 资源，以避免收费。 
 
-否则，可删除本文中创建的本地配置和 Azure 资源，避免收费。 
+[!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-> [!IMPORTANT]
-> 删除 Azure 资源和资源组的操作不可逆。 资源组以及包含在其中的所有资源一旦删除就会被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有的包含要保留资源的资源组中创建了 IoT 中心，则只删除 IoT 中心资源本身，而不要删除资源组。
->
+[!INCLUDE [iot-edge-clean-up-local-resources](../../includes/iot-edge-clean-up-local-resources.md)]
 
-若要只删除 IoT 中心，请使用中心名称和资源组名称执行以下命令：
-
-```azurecli-interactive
-az iot hub delete --name {hub_name} --resource-group IoTEdgeResources
-```
-
-
-若要按名称删除整个资源组，请执行以下操作：
-
-1. 登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。
-
-2. 在“按名称筛选...”文本框中键入包含 IoT 中心的资源组的名称。 
-
-3. 在结果列表中的资源组右侧，单击“...”，然后单击“删除资源组”。
-
-4. 系统会要求确认是否删除资源组。 再次键入资源组的名称进行确认，然后单击“删除”。 片刻之后，将会删除该资源组及其包含的所有资源。
 
 ## <a name="next-steps"></a>后续步骤
 

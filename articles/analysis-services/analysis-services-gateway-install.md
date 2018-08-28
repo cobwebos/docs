@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 08/13/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 59dc2dad103de60cb7d4b6a44a6d6f7271368391
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 10bcf54da9660da1edcc8358f10289e9678be5cb
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444933"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42141433"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>安装并配置本地数据网关
 同一区域中的一个或多个 Azure Analysis Services 服务器连接到本地数据源时，需要具备本地数据网关。 要了解有关网关的更多信息，请参阅[本地数据网关](analysis-services-gateway.md)。
@@ -38,6 +38,7 @@ ms.locfileid: "37444933"
 * 在计算机处于开启但未处于休眠状态下安装网关。
 * 不要在使用无线网络连接的计算机上安装网关。 否则，可能会降低性能。
 * 在 Azure AD 中使用与要在其中注册网关的订阅相同[租户](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant)的帐户登录到 Azure。 安装和注册网关时不支持 Azure B2B（来宾）帐户。
+* 如果数据源位于 Azure 虚拟网络 (VNet) 上，则必须配置 [AlwaysUseGateway](analysis-services-vnet-gateway.md) 服务器属性。
 * Azure 政府、Azure 德国和 Azure 中国主权区域不支持此处所述的（统一）网关。 请使用从门户中服务器的**快速入门**安装的**用于 Azure Analysis Services 的专用本地网关**。 
 
 
@@ -114,4 +115,5 @@ ms.locfileid: "37444933"
 
 ## <a name="next-steps"></a>后续步骤
 * [管理 Analysis Services](analysis-services-manage.md)   
-* [从 Azure Analysis Services 获取数据](analysis-services-connect.md)
+* [从 Azure Analysis Services 获取数据](analysis-services-connect.md)   
+* [对 Azure 虚拟网络上的数据源使用网关](analysis-services-vnet-gateway.md)

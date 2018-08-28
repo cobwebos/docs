@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 08/21/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 69cd7774c92cf1c213f8522dffeb02be6c024acb
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 3cd178333ee0d8d92db08fb08cbd02b05112f58b
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525131"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42445016"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 文件同步代理发行说明
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Windows Server 安装可转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上提供的任意协议（包括 SMB、NFS 和 FTPS）以本地方式访问数据， 并且可以根据需要在世界各地设置多个缓存。
@@ -25,7 +25,8 @@ ms.locfileid: "39525131"
 
 | 里程碑 | 代理版本号 | 发行日期 | 状态 |
 |----|----------------------|--------------|------------------|
-| 正式版 | 3.1 | 2018 年 7 月 19日 | 支持（建议的版本） |
+| 8 月更新汇总 | 3.2.0.0 | 2018 年 8 月 15 日 | 支持（建议的版本） |
+| 正式版 | 3.1.0.0 | 2018 年 7 月 19日 | 支持 |
 | 6 月更新汇总 | 3.0.13.0 | 2018 年 6 月 29日 | 代理版本将于 2018 年 9 月 4 日到期 |
 | 刷新 2 | 3.0.12.0 | 2018 年 5 月 22 日 | 代理版本将于 2018 年 9 月 4 日到期 |
 | 4 月更新汇总 | 2.3.0.0 | 2018 年 5 月 8 日 | 代理版本将于 2018 年 9 月 4 日到期 |
@@ -39,6 +40,12 @@ ms.locfileid: "39525131"
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure 文件同步代理更新策略
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-3200"></a>代理版本 3.2.0.0
+以下发行说明适用于 Azure 文件同步代理版本 3.2.0.0（2018 年 8 月 15 日发布）。 这些说明是对针对版本 3.1.0.0 列出的发行说明的补充。
+
+此版本包括以下修复：
+- 由于内存泄漏，同步失败并出现内存不足错误 (0x8007000e)
 
 ## <a name="agent-version-3100"></a>代理版本 3.1.0.0
 以下发行说明适用于 Azure 文件同步代理版本 3.1.0.0（2018 年 7 月 19 日发布）。
@@ -84,6 +91,7 @@ ms.locfileid: "39525131"
 
 ### <a name="cloud-endpoint"></a>云终结点
 - Azure 文件同步支持直接对 Azure 文件共享进行更改。 但是，首先需要通过 Azure 文件同步更改检测作业来发现对 Azure 文件共享进行的更改。 每 24 小时针对云终结点启动一次更改检测作业。 此外，通过 REST 协议对 Azure 文件共享所做的更改将不会更新 SMB 上次修改时间，亦不会被视为同步更改。
+- 存储同步服务和/或存储帐户可以移动到不同的资源组或订阅。 如果移动了存储帐户，则需要向混合文件同步服务授予对存储帐户的访问权限（请参阅[确保 Azure 文件同步可以访问存储帐户](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)）。
 
 ### <a name="cloud-tiering"></a>云分层
 - 如果使用 Robocopy 将分层的文件复制到另一位置，生成的文件不会分层。 可能会对脱机属性进行设置，因为 Robocopy 会在复制操作中错误地包括该属性。

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: 982a5eabf8c6c3012a9b3e8fdbe2ff32ba439972
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: f73a9e59c0add664128b506172182afe566ca670
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113586"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444504"
 ---
 # <a name="reference-architecture-simple-enterprise-integration"></a>参考体系结构：简单的企业集成
 
@@ -38,7 +38,7 @@ ms.locfileid: "39113586"
 - **Azure API 管理开发人员门户**。 Azure API 管理的每个实例都可以访问[开发人员门户](https://docs.microsoft.com/azure/api-management/api-management-customize-styles)。 你可以通过 API 管理开发人员门户访问文档和代码示例。 可以在开发人员门户中测试 API。
 - **Azure 逻辑应用**。 [逻辑应用](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)是一个无服务器平台，用于生成企业工作流和集成。
 - **连接器**。 逻辑应用使用[连接器](https://docs.microsoft.com/azure/connectors/apis-list)连接到常用的服务。 逻辑应用已有数百个不同的连接器，但你也可以创建自定义连接器。
-- **IP 地址**。 Azure API 管理服务具有固定的公共 [IP 地址](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)和域名。 域名是 azure-api.net 的子域，例如 contoso..azure-api.net。 逻辑应用和服务总线也具有公共 IP 地址。 但是，在此体系结构中，仅限 API 管理的 IP 地址调用逻辑应用终结点（出于安全考虑）。 对服务总线的调用受共享访问签名 (SAS) 的保护。
+- **IP 地址**。 Azure API 管理服务具有固定的公共 [IP 地址](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)和域名。 默认域名是 azure-api.net 的子域（例如 contoso.azure-api.net），但也可以配置[自定义域](https://docs.microsoft.com/azure/api-management/configure-custom-domain)。 逻辑应用和服务总线也具有公共 IP 地址。 但是，在此体系结构中，仅限 API 管理的 IP 地址调用逻辑应用终结点（出于安全考虑）。 对服务总线的调用受共享访问签名 (SAS) 的保护。
 - **Azure DNS**。 [Azure DNS](https://docs.microsoft.com/azure/dns/) 是 DNS 域的托管服务。 Azure DNS 使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。 若要使用自定义域名（例如 contoso.com），请创建可将自定义域名映射到 IP 地址的 DNS 记录。 有关详细信息，请参阅[在 API 管理中配置自定义域名](https://docs.microsoft.com/en-us/azure/api-management/configure-custom-domain)。
 - **Azure Active Directory (Azure AD)**。 使用 [Azure AD](https://docs.microsoft.com/azure/active-directory/) 或其他标识提供者进行身份验证。 Azure AD 为 API 终结点访问提供身份验证（通过传递 [API 管理的 JSON Web 令牌](https://docs.microsoft.com/azure/api-management/policies/authorize-request-based-on-jwt-claims)进行验证）。 Azure AD 可以保护对 API 管理开发人员门户的访问（仅限标准层和高级层）。
 
@@ -76,7 +76,7 @@ ms.locfileid: "39113586"
 
 在适用的情况下，API 管理管理员应添加[缓存策略](../api-management/api-management-howto-cache.md)来提高服务的可伸缩性。 缓存还有助于减少后端服务的负载。
 
-可在 Azure 区域中横向扩展 Azure API 管理基本层、标准层和高级层，以提高容量。 管理员可以使用“指标”菜单中的“容量指标”选项来分析其服务的使用情况，然后相应地纵向扩展或缩减****。
+可在 Azure 区域中横向扩展 Azure API 管理基本层、标准层和高级层，以提高容量。 管理员可以使用“指标”菜单中的“容量指标”选项来分析其服务的使用情况，然后相应地纵向扩展或缩减。
 
 有关缩放 API 管理服务的建议：
 
@@ -156,7 +156,7 @@ API 管理有两个不同（但互补）的[版本概念](https://blogs.msdn.mic
 - API 管理支持配置 Azure Application Insights 用于开发运营监视。
 - API 管理支持[使用 Power BI 解决方案模板进行自定义 API 分析](http://aka.ms/apimpbi)。 客户可以使用解决方案模板来创建自己的自定义分析解决方案。 业务用户可在 Power BI 中查看报表。
 
-## <a name="security"></a>“安全”
+## <a name="security"></a>安全
 
 此部分列出的安全注意事项特定于本文所述的体系结构中部署的 Azure 服务， 内容并非安全最佳做法的完整列表。
 

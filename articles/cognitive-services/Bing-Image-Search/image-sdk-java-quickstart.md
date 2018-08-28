@@ -1,6 +1,6 @@
 ---
-title: 必应图像搜索 SDK Java 快速入门 | Microsoft Docs
-description: 如何设置必应图像搜索 SDK 控制台应用程序。
+title: 快速入门：在 Java 中使用 SDK 请求和筛选图像
+description: 本快速入门将使用 Java 请求和筛选必应图像搜索返回的图像。
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: mikedodaro
@@ -10,14 +10,14 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 02/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: 0c44bb313328081167a419f3b7d5ce17e49d2c99
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 280a4b67d81b0734ea983c1d7fe1389e59651ccd
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366687"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41929832"
 ---
-# <a name="bing-image-search-sdk-java-quickstart"></a>必应图像搜索 SDK Java 快速入门
+# <a name="quickstart-request-and-filter-images-using-the-sdk-and-java"></a>快速入门：使用 SDK 和 Java 请求和筛选图像
 
 必应图像搜索 SDK 提供了用于图像查询以及对结果进行分析的 REST API 功能。 
 

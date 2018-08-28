@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/15/2018
 ms.author: daveba
-ms.openlocfilehash: 6474b34abeceb58c2eff9e7a2d2237ec47e61933
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 225fd7800f05514e989ec0153b5de22e63b62bde
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447517"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42142254"
 ---
 # <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-azure-cli"></a>使用 Azure CLI 配置虚拟机规模集托管服务标识 (MSI)
 
@@ -43,7 +43,10 @@ ms.locfileid: "39447517"
 - 若要运行 CLI 脚本示例，可以使用下列三种方法：
     - 在 Azure 门户中使用 [Azure Cloud Shell](../../cloud-shell/overview.md)（见下一部分）。
     - 单击各代码块右上角的“试运行”按钮，使用嵌入的 Azure Cloud Shell。
-    - 如果希望使用本地 CLI 控制台，可以[安装最新版 CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)（2.0.13 或更高版本）。 
+    - 如果喜欢使用本地 CLI 控制台，请[安装最新版的 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
+      
+      > [!NOTE]
+      > 命令已更新，以反映最新版本的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -116,7 +119,7 @@ az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGrou
 
 在此部分中，你将了解如何使用 Azure CLI 启用和删除用户分配标识。
 
-### <a name="assign-a-user-assigned-identity-during-the-creation-of-an-azure-vmss"></a>在创建 Azure VMSS 的过程中分配用户分配标识
+### <a name="assign-a-user-assigned-identity-during-the-creation-of-a-virtual-machine-scale-set"></a>在创建虚拟机规模集的过程中分配用户分配的标识
 
 此部分介绍如何创建 VMSS 以及向 VMSS 分配用户分配标识。 如果已有要使用的 VMSS，请跳过此部分，转到下一部分。
 
@@ -150,13 +153,13 @@ az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGrou
    }
    ```
 
-3. 使用 [az vmss create](/cli/azure/vmss/#az-vmss-create) 创建 VMSS。 下面的示例创建与新用户分配标识关联的 VMSS，用 `--assign-identity` 参数指定。 请务必将 `<RESOURCE GROUP>`、`<VMSS NAME>`、`<USER NAME>`、`<PASSWORD>` 和 `<USER ASSIGNED IDENTITY ID>` 参数值替换为你自己的值。 对于 `<USER ASSIGNED IDENTITY ID>`，请使用上一步创建的用户分配标识的资源 `id` 属性： 
+3. 使用 [az vmss create](/cli/azure/vmss/#az-vmss-create) 创建 VMSS。 下面的示例创建与新用户分配标识关联的 VMSS，用 `--assign-identity` 参数指定。 请务必将 `<RESOURCE GROUP>`、`<VMSS NAME>`、`<USER NAME>`、`<PASSWORD>` 和 `<USER ASSIGNED IDENTITY>` 参数值替换为你自己的值。 
 
    ```azurecli-interactive 
-   az vmss create --resource-group <RESOURCE GROUP> --name <VMSS NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <USER ASSIGNED IDENTITY ID>
+   az vmss create --resource-group <RESOURCE GROUP> --name <VMSS NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <USER ASSIGNED IDENTITY>
    ```
 
-### <a name="assign-a-user-assigned-identity-to-an-existing-azure-vm"></a>向现有 Azure VM 分配用户分配标识
+### <a name="assign-a-user-assigned-identity-to-an-existing-virtual-machine-scale-set"></a>将用户分配的标识分配到现有虚拟机规模集
 
 1. 使用 [az identity create](/cli/azure/identity#az-identity-create) 创建用户分配标识。  `-g` 参数指定要创建用户分配标识的资源组，`-n` 参数指定其名称。 请务必将 `<RESOURCE GROUP>` 和 `<USER ASSIGNED IDENTITY NAME>` 参数值替换为自己的值：
 
@@ -166,7 +169,7 @@ az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGrou
     ```azurecli-interactive
     az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
     ```
-响应包含所创建的用户分配标识的详细信息，与以下示例类似。 下一步会用到分配给用户分配标识的资源 `id` 值。
+响应包含所创建的用户分配标识的详细信息，与以下示例类似。
 
    ```json
    {
@@ -183,18 +186,18 @@ az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGrou
    }
    ```
 
-2. 使用 [az vmss identity assign](/cli/azure/vmss/identity#az-vm-assign-identity) 将用户分配标识分配给 VMSS。 请务必将 `<RESOURCE GROUP>` 和 `<VMSS NAME>` 参数值替换为自己的值。 `<USER ASSIGNED IDENTITY ID>` 将为上一步创建的用户分配标识的资源 `id` 属性：
+2. 使用 [az vmss identity assign](/cli/azure/vmss/identity#az-vm-assign-identity) 将用户分配标识分配给 VMSS。 请务必将 `<RESOURCE GROUP>` 和 `<VMSS NAME>` 参数值替换为自己的值。 `<USER ASSIGNED IDENTITY>` 为上一步创建的用户分配标识的资源 `name` 属性：
 
     ```azurecli-interactive
-    az vmss identity assign -g <RESOURCE GROUP> -n <VMSS NAME> --identities <USER ASSIGNED IDENTITY ID>
+    az vmss identity assign -g <RESOURCE GROUP> -n <VMSS NAME> --identities <USER ASSIGNED IDENTITY>
     ```
 
 ### <a name="remove-a-user-assigned-identity-from-an-azure-virtual-machine-scale-set"></a>从 Azure 虚拟机规模集中删除用户分配的标识
 
-若要从虚拟机规模集中删除用户分配的标识，请使用 [az vmss identity remove](/cli/azure/vmss/identity#az-vmss-identity-remove)。 请务必将 `<RESOURCE GROUP>` 和 `<VMSS NAME>` 参数值替换为自己的值。 `<MSI NAME>` 将为用户分配标识的 `name` 属性，可通过 `az vmss identity show` 在 VM 的标识部分中找到：
+若要从虚拟机规模集中删除用户分配的标识，请使用 [az vmss identity remove](/cli/azure/vmss/identity#az-vmss-identity-remove)。 如果这是用户分配给虚拟机规模集的唯一标识，则将从标识类型值中删除 `UserAssigned`。  请务必将 `<RESOURCE GROUP>` 和 `<VMSS NAME>` 参数值替换为自己的值。 `<USER ASSIGNED IDENTITY>` 将为用户分配标识的 `name` 属性，可通过 `az vmss identity show` 在虚拟机规模集的标识部分中找到：
 
 ```azurecli-interactive
-az vmss identity remove -g <RESOURCE GROUP> -n <VMSS NAME> --identities <MSI NAME>
+az vmss identity remove -g <RESOURCE GROUP> -n <VMSS NAME> --identities <USER ASSIGNED IDENTITY>
 ```
 
 如果虚拟机规模集没有系统分配的标识，并且你想要从中删除所有用户分配的标识，请使用以下命令：
@@ -203,13 +206,13 @@ az vmss identity remove -g <RESOURCE GROUP> -n <VMSS NAME> --identities <MSI NAM
 > 值 `none` 区分大小写。 它必须为小写。
 
 ```azurecli-interactive
-az vmss update -n myVMSS -g myResourceGroup --set identity.type="none" identity.identityIds=null
+az vmss update -n myVMSS -g myResourceGroup --set identity.type="none" identity.userAssignedIdentities=null
 ```
 
 如果虚拟机规模集同时具有系统分配的标识和用户分配的标识，则可通过切换到仅使用系统分配的标识，删除所有用户分配的标识。 请使用以下命令：
 
 ```azurecli-interactive
-az vmss update -n myVMSS -g myResourceGroup --set identity.type='SystemAssigned' identity.identityIds=null 
+az vmss update -n myVMSS -g myResourceGroup --set identity.type='SystemAssigned' identity.userAssignedIdentities=null 
 ```
 
 ## <a name="next-steps"></a>后续步骤

@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/15/2018
+ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: ba965b0610525f66c24dd6d5bad3fd113a6b6758
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: ffe7337282d06dd9a7e22d6750ac98b3a56964bd
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050859"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42141046"
 ---
 # <a name="azure-data-factory-service-identity"></a>Azure 数据工厂服务标识
 
@@ -27,10 +27,10 @@ ms.locfileid: "37050859"
 
 创建数据工厂时，可在创建工厂的同时创建服务标识。 服务标识是注册到 Azure Activity Directory 的托管应用程序，表示此特定数据工厂。
 
-数据工厂服务标识提供以下两项功能：
+数据工厂服务标识提供以下功能：
 
 - [在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)，在这种情况下，数据工厂服务标识用于 Azure Key Vault 身份验证。
-- [从/向 Azure Data Lake Store 复制数据](connector-azure-data-lake-store.md)，在这种情况下，数据工厂服务标识可用作支持的 Data Lake Store 身份验证类型之一。
+- 连接器包括 [Azure Blob 存储](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure SQL 数据库](connector-azure-sql-database.md)和 [Azure SQL 数据仓库](connector-azure-sql-data-warehouse.md)。
 
 ## <a name="generate-service-identity"></a>生成服务标识
 

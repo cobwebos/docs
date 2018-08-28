@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: f954e726aabb34f74d81580e3afc08f2b0b9914b
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 0056364883d5a4a350e5b35374e1fc3abd0c7bea
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39619400"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42141030"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的故障排除和限制
 
@@ -31,6 +31,11 @@ ms.locfileid: "39619400"
 
 - **详细信息**：Cloud Shell 利用打开的 Websocket 将输入/输出传递到你的浏览器。 FireFox 已经预设了可提前关闭 websocket 的策略，导致在 Cloud Shell 中提前超时。
 - **解决方法**：打开 FireFox 并在 URL 框中导航到“about:config”。 搜索“network.Websocket.timeout.ping.request”并将值从 0 更改为 10。
+
+### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>在锁定的网络环境中禁用 Cloud Shell
+
+- **详细信息**：管理员可能希望禁止其用户访问 Cloud Shell。 Cloud Shell 利用对 `ux.console.azure.com` 域的访问（可被拒绝），停止对 Cloud Shell入口点的任何访问，包括 portal.azure.com、shell.azure.com、Visual Studio Code Azure 帐户扩展和 docs.microsoft.com。
+- **解决方案**：通过环境的网络设置限制对 `ux.console.azure.com` 的访问权限。 Cloud Shell 图标仍将存在于 portal.azure.com 中，但无法成功连接到该服务。
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>存储对话框 - 错误：403 RequestDisallowedByPolicy
 

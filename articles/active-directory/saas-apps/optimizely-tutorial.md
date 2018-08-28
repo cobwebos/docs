@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/23/2017
+ms.date: 08/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 872a441df795e742ac884f97843f179a782aec0d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: be56218e174e5d8b0e6bde394f2dfd40fc91e87d
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421586"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42144752"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>教程：Azure Active Directory 与 Optimizely 的集成
 
@@ -49,12 +49,15 @@ ms.locfileid: "39421586"
 - 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 
 ## <a name="scenario-description"></a>方案描述
-在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
+
+在本教程中，将在测试环境中测试 Azure AD 单一登录。
+本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Optimizely
-1. 配置和测试 Azure AD 单一登录
+2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-optimizely-from-the-gallery"></a>从库中添加 Optimizely
+
 要通过配置将 Optimizely 集成到 Azure AD 中，需从库将 Optimizely 添加到托管式 SaaS 应用的列表中。
 
 **若要从库添加 Optimizely，请执行以下步骤：**
@@ -63,23 +66,24 @@ ms.locfileid: "39421586"
 
     ![Active Directory][1]
 
-1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
-    
-1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-1. 在搜索框中，键入“Optimizely”。
+4. 在搜索框中，键入“Optimizely”。
 
     ![创建 Azure AD 测试用户](./media/optimizely-tutorial/tutorial_optimizely_search.png)
 
-1. 在结果面板中，选择“Optimizely”，然后单击“添加”按钮添加该应用程序。
+5. 在结果面板中，选择“Optimizely”，然后单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/optimizely-tutorial/tutorial_optimizely_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+
 在本部分中，将基于名为“Britta Simon”的测试用户配置并测试 Optimizely 的 Azure AD 单一登录。
 
 若要使用单一登录，Azure AD 需要了解与 Azure AD 中的用户相对应的 Optimizely 中的用户是谁。 换句话说，需要建立 Azure AD 用户与 Optimizely 中相关用户之间的关联关系。
@@ -89,10 +93,10 @@ ms.locfileid: "39421586"
 若要使用 Optimizely 配置和测试 Azure AD 单一登录，需完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-1. **[创建 Optimizely 测试用户](#creating-an-optimizely-test-user)** - 在 Optimizely 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+3. **[创建 Optimizely 测试用户](#creating-an-optimizely-test-user)** - 在 Optimizely 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -104,11 +108,11 @@ ms.locfileid: "39421586"
 
     ![配置单一登录][4]
 
-1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
+2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+
     ![配置单一登录](./media/optimizely-tutorial/tutorial_optimizely_samlbase.png)
 
-1. 在“Optimizely 域和 URL”部分中，执行以下步骤：
+3. 在“Optimizely 域和 URL”部分中，执行以下步骤：
 
     ![配置单一登录](./media/optimizely-tutorial/tutorial_optimizely_url.png)
 
@@ -116,46 +120,65 @@ ms.locfileid: "39421586"
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`urn:auth0:optimizely:contoso`
 
-    > [!NOTE] 
-    > 这些不是实际值。 本教程稍后将介绍如何使用实际的登录 URL 和标识符来更新该值。 
+    > [!NOTE]
+    > 这些不是实际值。 本教程稍后将介绍如何使用实际的登录 URL 和标识符来更新该值。
 
-1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+4. Optimizely 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示一个示例。
+    
+    ![配置单一登录](./media/optimizely-tutorial/tutorial_optimizely_attribute.png)
+    
+5. 在“用户属性”部分中，单击“查看和编辑所有其他用户属性”复选框展开属性。 对显示的各个属性执行以下步骤：
 
-    ![配置单一登录](./media/optimizely-tutorial/tutorial_optimizely_certificate.png) 
+    | 属性名称 | 属性值 |
+    | ---------------| --------------- |
+    | 电子邮件 | user.mail |
 
-1. 单击“保存”按钮。
+    a. 单击“添加属性”，打开“添加属性”对话框。
+
+    ![配置单一登录](./media/optimizely-tutorial/tutorial_attribute_04.png)
+
+    ![配置单一登录](./media/optimizely-tutorial/tutorial_attribute_05.png)
+
+    b. 在“名称”文本框中，键入为该行显示的**属性名称**。
+
+    c. 在“值”列表中，选择为该行显示的属性值。
+
+    d. 单击“确定” 。
+
+6. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+
+    ![配置单一登录](./media/optimizely-tutorial/tutorial_optimizely_certificate.png)
+
+7. 单击“保存”按钮。
 
     ![配置单一登录](./media/optimizely-tutorial/tutorial_general_400.png)
 
-1. 在“Optimizely 配置”部分，单击“配置 Optimizely”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
+8. 在“Optimizely 配置”部分，单击“配置 Optimizely”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
 
-    ![配置单一登录](./media/optimizely-tutorial/tutorial_optimizely_configure.png) 
+    ![配置单一登录](./media/optimizely-tutorial/tutorial_optimizely_configure.png)
 
-1. 若要在“Optimizely”端配置单一登录，请联系 Optimizely 帐户经理，并提供已下载的“证书 (Base64)”和“SAML 单一登录服务 URL”。 
+9. 若要在“Optimizely”端配置单一登录，请联系 Optimizely 帐户经理，并提供已下载的“证书 (Base64)”和“SAML 单一登录服务 URL”。
 
-1. 在电子邮件回复中，Optimizely 会提供登录 URL（SP 发起的 SSO）和标识符（服务提供商实体 ID）值。
+10. 在电子邮件回复中，Optimizely 会提供登录 URL（SP 发起的 SSO）和标识符（服务提供商实体 ID）值。
 
-    a. 复制 Optimizely 提供的“SP 发起的 SSO URL”，并粘贴到 Azure 门户中“Optimizely 域和 URL”部分的“登录 URL”文本框中 
+    a. 复制 Optimizely 提供的“SP 发起的 SSO URL”，并粘贴到 Azure 门户中“Optimizely 域和 URL”部分的“登录 URL”文本框中。
 
-    b. 复制 Optimizely 提供的“服务提供商实体 ID”，并粘贴到 Azure 门户中“Optimizely 域和 URL”部分中的“标识符”文本框中 
+    b. 复制 Optimizely 提供的“服务提供商实体 ID”，并粘贴到 Azure 门户中“Optimizely 域和 URL”部分的“标识符”文本框中。
 
-1. 在其他浏览器窗口中，登录 Optimizely 应用程序。
+11. 在其他浏览器窗口中，登录 Optimizely 应用程序。
 
-1. 单击右上角的帐户名称，并单击“帐户设置”。
-   
+12. 单击右上角的帐户名称，并单击“帐户设置”。
+
     ![Azure AD 单一登录](./media/optimizely-tutorial/tutorial_optimizely_09.png)
 
-1. 在“帐户”选项卡中，选中“概述”部分“单一登录”下的“启用 SSO”框。
-   
+13. 在“帐户”选项卡中，选中“概述”部分“单一登录”下的“启用 SSO”框。
+  
     ![Azure AD 单一登录](./media/optimizely-tutorial/tutorial_optimizely_10.png)
-    
-1. 单击“保存”
 
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+14. 单击“保存”
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
 ![创建 Azure AD 用户][100]
@@ -166,15 +189,15 @@ ms.locfileid: "39421586"
 
     ![创建 Azure AD 测试用户](./media/optimizely-tutorial/create_aaduser_01.png) 
 
-1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
     ![创建 Azure AD 测试用户](./media/optimizely-tutorial/create_aaduser_02.png) 
 
-1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
  
     ![创建 Azure AD 测试用户](./media/optimizely-tutorial/create_aaduser_03.png) 
 
-1. 在“用户”对话框页上，执行以下步骤：
+4. 在“用户”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/optimizely-tutorial/create_aaduser_04.png) 
 
@@ -185,22 +208,22 @@ ms.locfileid: "39421586"
     c. 选择“显示密码”并记下“密码”的值。
 
     d. 单击“创建”。
- 
+
 ### <a name="creating-an-optimizely-test-user"></a>创建 Optimizely 测试用户
 
 本部分需在 Optimizely 中创建名为“Britta Simon”的用户。
 
 1. 在主页上选择“协作者”选项卡。
 
-1. 单击“新建协作者”，向项目添加新协作者。
+2. 单击“新建协作者”，向项目添加新协作者。
    
     ![创建 Azure AD 测试用户](./media/optimizely-tutorial/create_aaduser_10.png)
 
-1. 填写电子邮件地址，为其分配角色。 单击“邀请”。
+3. 填写电子邮件地址，为其分配角色。 单击“邀请”。
 
     ![创建 Azure AD 测试用户](./media/optimizely-tutorial/create_aaduser_11.png)
 
-1. 他们将收到电子邮件邀请。 使用电子邮件地址，需登录到 Optimizely。
+4. 他们将收到电子邮件邀请。 使用电子邮件地址，需登录到 Optimizely。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -212,38 +235,36 @@ ms.locfileid: "39421586"
 
 1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
-    ![分配用户][201] 
+    ![分配用户][201]
 
-1. 在应用程序列表中，选择“Optimizely”。
+2. 在应用程序列表中，选择“Optimizely”。
 
     ![配置单一登录](./media/optimizely-tutorial/tutorial_optimizely_app.png) 
 
-1. 在左侧菜单中，单击“用户和组”。
+3. 在左侧菜单中，单击“用户和组”。
 
-    ![分配用户][202] 
+    ![分配用户][202]
 
-1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-1. 在“用户和组”对话框中单击“选择”按钮。
+6. 在“用户和组”对话框中单击“选择”按钮。
 
-1. 在“添加分配”对话框中单击“分配”按钮。
-    
+7. 在“添加分配”对话框中单击“分配”按钮。
+
 ### <a name="testing-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的“Optimizely”磁贴时，用户就会自动登录到 Optimizely 应用程序。 
+单击访问面板中的“Optimizely”磁贴时，用户就会自动登录到 Optimizely 应用程序。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
 * [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
-
-
 
 <!--Image references-->
 
@@ -258,4 +279,3 @@ ms.locfileid: "39421586"
 [201]: ./media/optimizely-tutorial/tutorial_general_201.png
 [202]: ./media/optimizely-tutorial/tutorial_general_202.png
 [203]: ./media/optimizely-tutorial/tutorial_general_203.png
-

@@ -12,22 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 997269efc017a024f2abbcb6561c951d7957af86
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e9bd3f60800976967e1fc1e5f163a6ae3ea525f2
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594323"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42142245"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>针对对象无法同步到 Azure AD 进行故障排除
 
 如果对象未能按照预期同步到 Azure AD，则可能存在多种原因。 如果收到来自 Azure AD 的有关错误的电子邮件，或者在 Azure AD Connect Health 中看到错误，请参阅[解决导出错误](active-directory-aadconnect-troubleshoot-sync-errors.md)。 但是，如果要解决的问题所涉及的对象不在 Azure AD 中，则应使用本主题作为参考。 本主题介绍如何在本地组件 Azure AD Connect 同步中查找错误。
 
 >[!IMPORTANT]
->对于 <verison> 或更高版本的 Azure Active Directory (AAD) Connect 部署，请使用向导中的[故障排除任务](active-directory-aadconnect-troubleshoot-objectsync.md)来排查对象同步问题。 
+>对于 1.1.749.0 或更高版本的 Azure Active Directory (AAD) Connect 部署，请使用向导中的[故障排除任务](active-directory-aadconnect-troubleshoot-objectsync.md)来排查对象同步问题。 
 
 若要查找错误，需要按以下顺序查看几个不同位置的内容：
 

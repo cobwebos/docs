@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: d97388732f0b5cf4570026d5b23a64b2d689e5d4
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 9ee61ae931f08d2087835eaa9cb1c0b0fde23fde
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056845"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42141648"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>安全框架：输入验证 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -49,7 +49,7 @@ settings.EnableScript = true; // WRONG: THIS SHOULD BE SET TO false
 ```
 
 ### <a name="example"></a>示例
-如果使用.MSXML 6.0，XSLT 脚本默认已禁用；但是，必须确保未通过 XML DOM 对象属性 AllowXsltScript 显式将它启用。 
+如果使用的是 MSXML 6.0，XSLT 脚本默认已禁用；但是，必须确保未通过 XML DOM 对象属性 AllowXsltScript 显式将它启用。 
 
 ```csharp
 doc.setProperty("AllowXsltScript", true); // WRONG: THIS SHOULD BE SET TO false

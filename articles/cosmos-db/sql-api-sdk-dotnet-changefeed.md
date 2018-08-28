@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/21/2018
 ms.author: maquaran
-ms.openlocfilehash: f47b847b3a356540e5f366235713b8f99aea3404
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 443cb2786c12bddd87535a7267d66c0332473b1b
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113711"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42141639"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 更改源处理器 SDK：下载和发行说明
 > [!div class="op_single_selector"]
@@ -42,6 +42,12 @@ ms.locfileid: "37113711"
 ## <a name="release-notes"></a>发行说明
 
 ### <a name="v2-builds"></a>v2 版本
+
+### <a name="a-name206206"></a><a name="2.0.6"/>2.0.6
+* 添加了 ChangeFeedEventHost.HostName 公共属性以与 v1 兼容。
+
+### <a name="a-name205205"></a><a name="2.0.5"/>2.0.5
+* 修复了在分区拆分期间发生的争用条件。 争用条件可能导致获得租用后，在分区拆分期间立即失去该租用，从而引起争用。 此版本修复了争用条件问题。
 
 ### <a name="a-name204204"></a><a name="2.0.4"/>2.0.4
 * GA SDK
@@ -133,7 +139,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 | [1.0.0](#1.0.0) |2017 年 7 月 7 日 |--- |
 
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>另请参阅

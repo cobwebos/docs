@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: a4b63c9d184f58fe13c1271f9a425919a42fd897
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 8e107c1721d5623239a694eba39b32e8a2a6089d
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216686"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42142069"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>在 Azure 虚拟机上配置 SQL Server 故障转移群集实例
 
@@ -481,7 +481,13 @@ S2D 的磁盘需是空的，不包含分区或其他数据。 若要清除磁盘
 >如果需要，可以[下载 SQL Server Management Studio](http://msdn.microsoft.com/library/mt238290.aspx)。
 
 ## <a name="limitations"></a>限制
-Azure 虚拟机上的 FCI 不支持 Microsoft 分布式事务处理协调器 (DTC)，因为负载均衡器不支持 RPC 端口。
+
+Azure 虚拟机支持 Windows Server 2019 上的 Microsoft 分布式事务处理协调器 (MSDTC)，其中存储位于群集共享卷 (CSV) 和[标准负载均衡器](../../../load-balancer/load-balancer-standard-overview.md)上。
+
+在 Azure 虚拟机上，Windows Server 2016 及更早版本不支持 MSDTC，因为：
+
+- 无法将群集 MSDTC 资源配置为使用共享存储。 对于 Windows Server 2016，如果创建 MSDTC 资源，即使存储存在，也不会显示任何可用的共享存储。 Windows Server 2019 中已修复此问题。
+- 基本负载均衡器不处理 RPC 端口。
 
 ## <a name="see-also"></a>另请参阅
 

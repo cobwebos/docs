@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 25349d48d88b64568fef0f5a6bac5950da15196b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: c4f83d2bf082b5f1358b4eee6468d470b5cb8088
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298631"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42141852"
 ---
 # <a name="overview-b2b-scenarios-and-communication-with-the-enterprise-integration-pack"></a>概述：使用 Enterprise Integration Pack 实现 B2B 方案和通信
 
@@ -37,7 +37,7 @@ ms.locfileid: "35298631"
 
 ## <a name="how-to-get-started-with-enterprise-integration"></a>如何开始使用企业集成？
 
-可以通过 **Azure 门户**中的逻辑应用设计器来使用 Enterprise Integration Pack 构建和管理 B2B 应用。 还可以使用 [PowerShell](https://msdn.microsoft.com/library/azure/mt652195.aspx "逻辑应用 PowerShell 主题")来管理逻辑应用。
+可以通过 **Azure 门户**中的逻辑应用设计器来使用 Enterprise Integration Pack 构建和管理 B2B 应用。 还可以使用 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp "逻辑应用 PowerShell") 来管理逻辑应用。
 
 以下是在 Azure 门户中创建应用前必须先执行的高级步骤：
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: cd97b00a522ff41a74f46195da5d8b1a0d92d344
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 04db7655f3f4b63edffcb731d0e92db25f1847b9
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36960002"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42144764"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>创建、更改或删除路由表
 
@@ -43,7 +43,7 @@ Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 
 
 1. 在门户左上角选择“+ 创建资源”。
 2. 依次选择“网络”、“路由表”。
-3. 输入路由表的**名称**，选择自己的**订阅**，创建新的**资源组**或选择现有的资源组，选择一个**位置**，然后选择“创建”。 “禁用 BGP 路由传播”选项会禁止本地路由通过 BGP 传播到路由表所关联到的任何子网中的网络接口。 如果虚拟网络未连接到 Azure 网络网关（VPN 或 ExpressRoute），请清除“已禁用”选项。
+3. 输入路由表的**名称**，选择自己的**订阅**，创建新的**资源组**或选择现有的资源组，选择一个**位置**，然后选择“创建”。 如果计划将路由表与通过 VPN 网关连接到本地网络的虚拟网络中的子网关联，并禁用 **BGP 路由传播**，则不会将本地路由 传播到子网中的网络接口。
 
 **命令**
 
@@ -251,4 +251,4 @@ Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 
 ## <a name="next-steps"></a>后续步骤
 
 - 使用 [PowerShell](powershell-samples.md) 或 [Azure CLI](cli-samples.md) 示例脚本或使用 Azure [资源管理器模板](template-samples.md)创建路由表
-- 为虚拟网络创建并应用 [Azure 策略](policy-samples.md)
+- 为虚拟网络创建并应用 [Azure Policy](policy-samples.md)

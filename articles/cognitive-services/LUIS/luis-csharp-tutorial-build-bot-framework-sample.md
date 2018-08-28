@@ -1,24 +1,24 @@
 ---
-title: 在 Azure 中使用 Bot Builder SDK for C# 将 LUIS 与机器人集成 | Microsoft Docs
-description: 使用 Bot Framework 生成与 LUIS 应用程序集成的机器人。
+title: 使用 C# 通过 Bot Builder SDK 将 LUIS 与机器人集成 - Azure 认知服务 | Microsoft Docs
+description: 使用 C# 构建集成了语言理解 (LUIS) 的聊天机器人。 此聊天机器人使用预建的 HomeAutomation 域来快速实现机器人解决方案。
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 08/13/2018
 ms.author: diberry
-ms.openlocfilehash: ca893dadfed04c90a4d89087299bf1cc2bf55eb9
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: d0010ccf51fc688fa66e1be82c735ae38455509b
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225952"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41929710"
 ---
 # <a name="web-app-bot-using-the-luis-template-for-c"></a>使用适用于 C# 的 LUIS 模板的 Web 应用机器人
 
-生成一个已集成语言理解的聊天机器人。
+使用 C# 构建集成了语言理解 (LUIS) 的聊天机器人。 此聊天机器人使用预建的 HomeAutomation 域来快速实现机器人解决方案。 
 
 ## <a name="prerequisite"></a>先决条件
 
@@ -148,7 +148,7 @@ ms.locfileid: "39225952"
 > 无需对机器人代码进行任何修改即可重新训练 LUIS 应用。 请参阅[添加示例陈述](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances)和[训练和测试 LUIS 应用](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-interactive-test)。 
 
 ## <a name="download-the-bot-to-debug"></a>下载机器人以进行调试
-如果机器人不能正常运行，请将此项目下载至本地计算机并继续[调试](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-an-azure-app-service-web-app-c-bot)。 
+如果机器人不能正常运行，请将此项目下载至本地计算机并继续[调试](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-a-c-bot)。 
 
 ## <a name="learn-more-about-bot-framework"></a>深入了解 Bot Framework
 深入了解 [Bot Framework](https://dev.botframework.com/) 以及 [3.x](https://github.com/Microsoft/BotBuilder) 和 [4.x](https://github.com/Microsoft/botbuilder-dotnet) SDK。

@@ -136,6 +136,8 @@ items:
         href: azure-to-azure-network-mapping.md
       - name: 设置 IP 地址以进行故障转移
         href: site-recovery-retain-ip-azure-vm-failover.md
+      - name: 使用 Azure VM 灾难恢复加速联网
+        href: azure-vm-disaster-recovery-with-accelerated-networking.md
       - name: 将 ExpressRoute 与 Azure VM 灾难恢复配合使用
         href: azure-vm-disaster-recovery-with-expressroute.md
     - name: 灾难恢复
@@ -388,9 +390,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: 服务更新
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: 3466d2428f30a237ef6ba95504793badcf481e9e
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: cdc1990f71a38e7e0740456ccc8fb82e8ed1b5f9
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41926916"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42914912"

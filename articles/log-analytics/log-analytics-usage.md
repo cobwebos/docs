@@ -12,17 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: d02c3ad3e1ca2812049608cad2eacced3686dad3
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 1bb96821b61647f5dfad54c8b0cb6248eb0db4af
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128555"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42144173"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>在 Log Analytics 中分析数据使用情况
+
+> [!NOTE]
+> 本文介绍如何在 Log Analytics 中分析数据使用情况。  有关相关信息，请参阅以下文章。
+> - [通过在 Log Analytics 中控制数据量和保留期管理成本](log-analytics-manage-cost-storage.md)介绍如何通过更改数据保留期来控制成本。
+> - [监视使用情况和估算成本](../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md)介绍如何针对不同的定价模型查看多个 Azure 监视功能的使用情况和估算成本。 它还介绍如何更改定价模型。
+
 Log Analytics 包括以下信息：收集的数据量、哪些源发送了数据、所发送数据的不同类型。  使用“Log Analytics 使用情况”仪表板查看和分析数据使用情况。 该仪表板显示每个解决方案收集的数据量，以及计算机所发送的数据量。
 
 ## <a name="understand-the-usage-dashboard"></a>了解“使用情况”仪表板

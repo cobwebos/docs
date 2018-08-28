@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/12/2018
+ms.date: 08/22/2018
 ms.author: shlo
-ms.openlocfilehash: 25bb455ea46fdc96e32e34d434dd844779b0b650
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 1023eadbf4b799cd8b0c761c1689b9249cee450a
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495292"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616838"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>使用 Azure Monitor 发警报和监视数据工厂
 云应用程序很复杂，包含很多移动部件。 监视可以为用户提供数据，确保应用程序始终处于健康运行状态。 监视还有助于避免潜在问题，或者解决过去的问题。 此外，还可以利用监视数据深入了解应用程序的情况。 了解这些情况有助于改进应用程序的性能或可维护性，或者实现本来需要手动干预的操作的自动化。
@@ -398,6 +398,70 @@ ADFV2 发出以下指标
 | TriggerFailedRuns    | 失败的触发器运行数指标     | Count    | 总计                | 在一分钟时段内失败的触发器运行总数      |
 
 若要访问指标，请按照 https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics 一文中的说明进行操作
+
+## <a name="monitor-data-factory-metrics-with-azure-monitor"></a>使用 Azure Monitor 监视数据工厂指标
+
+可以使用 Azure 数据工厂与 Azure Monitor 的集成将数据路由到 Azure Monitor。 此集成在以下情况下非常有用：
+
+1.  你希望针对由数据工厂发布到 Azure Monitor 的丰富指标集编写复杂查询。 你还可以通过 Azure Monitor 创建针对这些查询的自定义警报。
+
+2.  你希望跨数据工厂进行监视。 你可以将来自多个数据工厂的数据路由到单个 Azure Monitor 工作区。
+
+有关此功能的 7 分钟介绍和演示，请观看以下视频：
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Monitor-Data-Factory-pipelines-using-Operations-Management-Suite-OMS/player]
+
+### <a name="configure-diagnostic-settings-and-workspace"></a>配置诊断设置和工作区
+
+为数据工厂启用诊断设置。
+
+1.  选择“Azure Monitor” -> “诊断设置”-> 选择数据工厂 -> 启用诊断。
+
+    ![monitor-oms-image1.png](media/data-factory-monitor-oms/monitor-oms-image1.png)
+
+2.  提供包括工作区配置在内的诊断设置。
+
+    ![monitor-oms-image2.png](media/data-factory-monitor-oms/monitor-oms-image2.png)
+
+### <a name="install-azure-data-factory-analytics-from-azure-marketplace"></a>从 Azure 市场安装 Azure 数据工厂分析
+
+![monitor-oms-image3.png](media/data-factory-monitor-oms/monitor-oms-image3.png)
+
+![monitor-oms-image4.png](media/data-factory-monitor-oms/monitor-oms-image4.png)
+
+单击“创建”并选择工作区和工作区设置。
+
+![monitor-oms-image5.png](media/data-factory-monitor-oms/monitor-oms-image5.png)
+
+### <a name="monitor-data-factory-metrics"></a>监视数据工厂指标
+
+安装 **Azure 数据工厂分析**将创建一组默认视图，这些视图将启用以下指标：
+
+- ADF 运行- 1) 数据工厂执行的管道运行
+
+- ADF 运行- 2) 数据工厂执行的活动运行
+
+- ADF 运行- 3) 数据工厂执行的触发器运行
+
+- ADF 错误-1) 数据工厂引发的排名前 10 的管道错误
+
+- ADF 错误- 2) 数据工厂执行的排名前 10 的活动运行
+
+- ADF 错误- 3) 数据工厂引发的排名前 10 的触发器错误
+
+- ADF 统计信息- 1) 按类型显示的活动运行
+
+- ADF 统计信息- 2) 按类型显示的触发器运行
+
+- ADF 统计信息- 3) 最大管道运行持续时间
+
+![monitor-oms-image6.png](media/data-factory-monitor-oms/monitor-oms-image6.png)
+
+![monitor-oms-image7.png](media/data-factory-monitor-oms/monitor-oms-image7.png)
+
+你可以将上述指标可视化，查看这些指标背后的查询，编辑查询，创建警报，等等。
+
+![monitor-oms-image8.png](media/data-factory-monitor-oms/monitor-oms-image8.png)
 
 ## <a name="alerts"></a>警报
 

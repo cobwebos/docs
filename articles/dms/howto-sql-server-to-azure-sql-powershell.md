@@ -10,13 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 08/02/2018
-ms.openlocfilehash: 9b182b0efad16f74c21b04712143b70071943c1e
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.date: 08/13/2018
+ms.openlocfilehash: d6c2503a95fe6b1072848c047280a293a49c147a
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412546"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42143965"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-db-using-azure-powershell"></a>使用 Azure PowerShell 从本地 SQL Server 迁移到 Azure SQL DB
 在本文中，请使用 Microsoft Azure PowerShell 将还原为 SQL Server 2016 或更高版本的本地实例的 **Adventureworks2012** 数据库迁移到 Azure SQL 数据库。 可以使用 Microsoft Azure PowerShell 中的 `AzureRM.DataMigration` 模块，将数据库从本地 SQL Server 实例迁移到 Azure SQL 数据库。
@@ -32,16 +32,16 @@ ms.locfileid: "39412546"
 若要完成这些步骤，需满足以下条件：
 
 - [SQL Server 2016 或更高版本](https://www.microsoft.com/sql-server/sql-server-downloads)（任意版本）
-- 使用 SQL Server Express 安装的情况下会默认禁用 TCP/IP 协议。 请按[此文中的说明](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)来启用它。
+- 启用 TCP / IP 协议，使用 SQL Server Express 安装的情况下会默认禁用该协议。 遵循[启用或禁用服务器网络协议](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)一文启用 TCP/IP 协议。
 - 配置[针对数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 - Azure SQL 数据库实例。 可以按照[在 Azure 门户中创建 Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)一文中的详细信息来创建 Azure SQL 数据库实例。
 - [数据迁移助手](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 或更高版本。
-- Azure 数据库迁移服务需要使用 Azure 资源管理器部署模型创建的 VNET，它通过使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点的连接。
-- 已使用[ Performing a SQL Server migration assessment](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)（执行 SQL Server 迁移评估）一文中所述的数据迁移助手完成对本地数据库和架构迁移的评估
-- 使用 [Install-Module PowerShell cmdlet](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1) 从 PowerShell 库下载并安装 AzureRM.DataMigration 模块
-- 用于连接到源 SQL Server 实例的凭据必须具有 [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) 权限。
-- 用于连接到目标 Azure SQL DB 实例的凭据必须具有目标 Azure SQL 数据库的 CONTROL DATABASE 权限。
-- 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+- 已使用 Azure 资源管理器部署模型创建了一个 VNET，该 VNET 使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 使 Azure 数据库迁移服务与本地源服务器建立站点到站点连接。
+- 已使用[执行 SQL Server 迁移评估](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)一文中所述的数据迁移助手完成对本地数据库和架构迁移的评估
+- 使用 [Install-Module PowerShell cmdlet](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1) 从 PowerShell 库下载并安装 AzureRM.DataMigration 模块；请务必使用“以管理员身份运行”来打开 powershell 命令窗口。
+- 确保用于连接到源 SQL Server 实例的凭据具有 [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) 权限。
+- 确保用于连接到目标 Azure SQL DB 实例的凭据具有目标 Azure SQL 数据库的 CONTROL DATABASE 权限。
+- Azure 订阅。 如果没有订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="log-in-to-your-microsoft-azure-subscription"></a>登录到 Microsoft Azure 订阅
 根据[使用 Azure PowerShell 登录](https://docs.microsoft.com/powershell/azure/authenticate-azureps?view=azurermps-4.4.1)一文中的说明，使用 PowerShell 登录到 Azure 订阅。
@@ -56,7 +56,7 @@ Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 请先
 ```powershell
 New-AzureRmResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
-## <a name="create-an-azure-database-migration-service-instance"></a>创建 Azure 数据库迁移服务实例 
+## <a name="create-an-instance-of-the-azure-database-migration-service"></a>创建 Azure 数据库迁移服务的实例 
 可以通过 `New-AzureRmDataMigrationService` cmdlet 创建 Azure 数据库迁移服务的新实例。 此 cmdlet 需要以下必需参数：
 - Azure 资源组名称。 可以使用 [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup?view=azurermps-4.4.1) 命令创建前述 Azure 资源组，并提供其名称作为参数。
 - 服务名称。 与 Azure 数据库迁移服务的所需唯一服务名称相对应的字符串 
@@ -64,7 +64,7 @@ New-AzureRmResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 - Sku。 此参数对应于 DMS Sku 名称。 目前支持的 Sku 名称为 Basic_1vCore、Basic_2vCores、GeneralPurpose_4vCores
 - 虚拟子网标识符。 可以使用 cmdlet [New-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig?view=azurermps-4.4.1) 创建子网。 
 
-以下示例使用名为 MyVNET 的虚拟子网和名为 MySubnet 的子网在位于“美国东部”的资源组 MyDMSResourceGroup 中创建名为 MyDMS 的服务。
+以下示例使用名为 *MyVNET* 的虚拟网络和名为 *MySubnet* 的子网，在位于“美国东部”的资源组 *MyDMSResourceGroup* 中创建名为 *MyDMS* 的服务。
 
 ```powershell
  $vNet = Get-AzureRmVirtualNetwork -ResourceGroupName MyDMSResourceGroup -Name MyVNET
@@ -83,33 +83,33 @@ $service = New-AzureRmDms -ResourceGroupName myResourceGroup `
 
 ### <a name="create-a-database-connection-info-object-for-the-source-and-target-connections"></a>创建源和目标连接的数据库连接信息对象
 可以使用 `New-AzureRmDmsConnInfo` cmdlet 创建数据库连接信息对象。 此 cmdlet 需要以下参数：
-- ServerType。 请求的数据库连接的类型，例如 SQL、Oracle 或 MySQL。 将 SQL 用于 SQL Server 和 SQL Azure。
-- DataSource。 SQL 实例或 SQL Azure 服务器的名称或 IP。
+- ServerType。 请求的数据库连接的类型，例如 SQL、Oracle 或 MySQL。 将 SQL 用于 SQL Server 和 Azure SQL。
+- DataSource。 SQL Server 实例或 Azure SQL 数据库的名称或 IP。
 - AuthType。 连接的身份验证类型，可以为 SqlAuthentication 或 WindowsAuthentication。
 - TrustServerCertificate 参数设置的值用于指示在绕过验证信任的证书链时，是否对通道加密。 可以是 true 或 false。
 
-以下示例使用 SQL 身份验证为名为 MySQLSourceServer 的源 SQL Server 创建连接信息对象 
+以下示例使用 SQL 身份验证为名为 MySourceSQLServer 的源 SQL Server 创建连接信息对象： 
 
 ```powershell
 $sourceConnInfo = New-AzureRmDmsConnInfo -ServerType SQL `
-  -DataSource MySQLSourceServer `
+  -DataSource MySourceSQLServer `
   -AuthType SqlAuthentication `
   -TrustServerCertificate:$true
 ```
 
-下一示例显示如何使用 SQL 身份验证为名为 MySQLAzureTarget 的 SQL Azure 数据库服务器创建连接信息
+下一示例显示如何使用 SQL 身份验证为名为 SQLAzureTarget 的 Azure SQL 数据库服务器创建连接信息：
 
 ```powershell
 $targetConnInfo = New-AzureRmDmsConnInfo -ServerType SQL `
-  -DataSource "mysqlazuretarget.database.windows.net" `
+  -DataSource "sqlazuretarget.database.windows.net" `
   -AuthType SqlAuthentication `
   -TrustServerCertificate:$false
 ```
 
 ### <a name="provide-databases-for-the-migration-project"></a>为迁移项目提供数据库
-创建 `AzureRmDataMigrationDatabaseInfo` 对象的列表，以便指定 Azure 数据库迁移项目中的数据库（可以作为创建项目所需的参数提供）。 Cmdlet `New-AzureRmDataMigrationDatabaseInfo` 可以用来创建 AzureRmDataMigrationDatabaseInfo。 
+创建 `AzureRmDataMigrationDatabaseInfo` 对象的列表，以便指定 Azure 数据库迁移项目中的数据库（可以作为创建项目所需的参数提供）。 Cmdlet `New-AzureRmDataMigrationDatabaseInfo` 可用于创建 AzureRmDataMigrationDatabaseInfo。 
 
-以下示例为数据库 AdventureWorks2016 创建 `AzureRmDataMigrationDatabaseInfo` 项目，并将其添加到列表，以便在创建项目时作为参数提供。
+以下示例为 **AdventureWorks2016** 数据库创建 `AzureRmDataMigrationDatabaseInfo` 项目，并将其添加到列表，以便在创建项目时作为参数提供。
 
 ```powershell
 $dbInfo1 = New-AzureRmDataMigrationDatabaseInfo -SourceDatabaseName AdventureWorks2016
@@ -140,7 +140,7 @@ $project = New-AzureRmDataMigrationProject -ResourceGroupName myResourceGroup `
 以下示例显示了如何为源和目标连接创建 PSCredential 对象，将密码作为字符串变量 $sourcePassword 和 $targetPassword 提供。 
 
 ```powershell
-secpasswd = ConvertTo-SecureString -String $sourcePassword -AsPlainText -Force
+$secpasswd = ConvertTo-SecureString -String $sourcePassword -AsPlainText -Force
 $sourceCred = New-Object System.Management.Automation.PSCredential ($sourceUserName, $secpasswd)
 $secpasswd = ConvertTo-SecureString -String $targetPassword -AsPlainText -Force
 $targetCred = New-Object System.Management.Automation.PSCredential ($targetUserName, $secpasswd)
@@ -159,10 +159,10 @@ $tableMap.Add("HumanResources.JobCandidate","HumanResources.JobCandidate")
 $tableMap.Add("HumanResources.Shift","HumanResources.Shift")
 ```
 
-下一步是使用 `New-AzureRmDmsSqlServerSqlDbSelectedDB` cmdlet 选择源和目标数据库并提供要作为参数迁移的表映射，如以下示例所示：
+下一步是使用 `New-AzureRmDmsSelectedDB` cmdlet 选择源和目标数据库并提供要作为参数迁移的表映射，如以下示例所示：
 
 ```powershell
-$selectedDbs = New-AzureRmDmsSqlServerSqlDbSelectedDB -Name AdventureWorks2016 `
+$selectedDbs = New-AzureRmDmsSelectedDB -MigrateSqlServerSqlDb -Name AdventureWorks2016 `
   -TargetDatabaseName AdventureWorks2016 `
   -TableMap $tableMap
 ```
@@ -170,16 +170,16 @@ $selectedDbs = New-AzureRmDmsSqlServerSqlDbSelectedDB -Name AdventureWorks2016 `
 ### <a name="create-and-start-a-migration-task"></a>创建并启动迁移任务
 
 使用 `New-AzureRmDataMigrationTask` cmdlet 创建并启动迁移任务。 此 cmdlet 需要以下参数：
-- TaskType。 要创建的迁移任务的类型。对于从 SQL Server 到 SQL Azure 的迁移类型，此项应为 MigrateSqlServerSqlDb。 
+- TaskType。 要创建的迁移任务的类型。对于从 SQL Server 到 Azure SQL 数据库的迁移类型，此项应为 MigrateSqlServerSqlDb。 
 - ResourceGroupName。 要在其中创建任务的 Azure 资源组的名称。
 - ServiceName。 要在其中创建任务的 Azure 数据库迁移服务实例。
-- ProjectName。 要在其中创建任务的 Azure 数据库迁移项目的名称。 
+- ProjectName。 要在其中创建任务的 Azure 数据库迁移服务项目的名称。 
 - TaskName。 要创建的任务的名称。 
-- SourceConnection。 AzureRmDmsConnInfo 对象，表示源连接。
-- TargetConnection。 AzureRmDmsConnInfo 对象，表示目标连接。
+- *SourceConnection*。 表示源 SQL Server 连接的 AzureRmDmsConnInfo 对象。
+- *TargetConnection*。 表示目标 Azure SQL 数据库连接的 AzureRmDmsConnInfo 对象。
 - SourceCred。 [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) 对象，用于连接到源服务器。
 - TargetCred。 [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) 对象，用于连接到目标服务器。
-- SelectedDatabase。 AzureRmDmsSqlServerSqlDbSelectedDB 对象，表示源和目标数据库映射。
+- SelectedDatabase。 表示源和目标数据库映射的 AzureRmDataMigrationSelectedDB 对象。
 
 以下示例创建并启动名为 myDMSTask 的迁移任务：
 
