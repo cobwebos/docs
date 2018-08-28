@@ -11,12 +11,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: bd62ff03c3158743337ce958eb1bda7c7bd2a7f6
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: e7b07ba892f8f904b1b2127fa8e76649eb004388
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347628"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42140433"
 ---
 # <a name="set-up-security-info-to-use-an-authenticator-app-preview"></a>设置安全信息以使用验证器应用（预览版）
 
@@ -61,6 +61,9 @@ ms.locfileid: "39347628"
 
     在使用双重验证或自助密码重置时，安全信息会更新为使用 Microsoft Authenticator 应用验证身份。
 
+    >[!Note]
+    >如果你的组织允许，你还将获得验证码以及 Microsoft Authenticator 应用通知。 如果要将代码设为默认方法，请按照[管理安全信息](security-info-setup-auth-app.md)中的说明进行操作。
+
 ## <a name="additional-security-info-options"></a>其他安全信息选项
 
 基于你想要执行的操作，还可以选择组织如何联系你以验证你的身份的其他选项。 选项包括：
@@ -78,7 +81,7 @@ ms.locfileid: "39347628"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果需要更新安全信息，请按照[管理安全信息](security-info-manage-settings.md)一文中的说明进行操作。
+- 如需更新安全信息，请遵照[管理安全信息](security-info-manage-settings.md)一文中的说明。
 
 - 如果丢失或忘记密码，请通过[密码重置门户](https://passwordreset.microsoftonline.com/)或遵循[重置工作或学校帐户密码](user-help-reset-password.md)一文中的步骤重置密码。
 

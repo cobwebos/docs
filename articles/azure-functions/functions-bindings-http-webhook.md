@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 5f6538c69139b8cd254b44cb9875e18a14c8fa8b
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 183dad8f70a4094f6d6ba3605fd19f8921dcc988
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344141"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42140436"
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Azure Functions HTTP 和 webhook 绑定
 
@@ -58,6 +58,7 @@ HTTP 触发器可进行自定义以响应 [Webhook](https://en.wikipedia.org/wik
 * [C# 脚本 (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [JavaScript](#trigger---javascript-example)
+* [Java](#trigger---java-example)
 
 ### <a name="trigger---c-example"></a>触发器 - C# 示例
 
@@ -275,6 +276,45 @@ module.exports = function(context, req) {
     }
     context.done();
 };
+```
+
+### <a name="trigger---java-example"></a>触发器 - Java 示例
+
+以下示例演示 *function.json* 文件中的一个触发器绑定以及使用该绑定的 [Java 函数](functions-reference-java.md)。 该函数返回一个 HTTP 状态代码 200 响应，其中请求正文在触发请求正文前面加上“Hello,”问候语。
+
+
+function.json 文件如下所示：
+
+```json
+{
+    "disabled": false,    
+    "bindings": [
+        {
+            "authLevel": "anonymous",
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req"
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "res"
+        }
+    ]
+}
+```
+
+下面是 Java 代码：
+
+```java
+@FunctionName("hello")
+public HttpResponseMessage<String> hello(@HttpTrigger(name = "req", methods = {"post"}, authLevel = AuthorizationLevel.ANONYMOUS), Optional<String> request,
+                        final ExecutionContext context) 
+    {
+        // default HTTP 200 response code
+        return String.format("Hello, %s!", request);
+    }
+}
 ```
      
 ## <a name="trigger---webhook-example"></a>触发器 - Webhook 示例

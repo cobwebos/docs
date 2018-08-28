@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/18/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: a9aa4680d91a4ab95933ae636c4467217fd162b2
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: e2e8da3d2dec2c74bbd1c0ca0f52b7eaba5c024e
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39278007"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42358069"
 ---
 | 资源 | 目标 | 硬限制 |
 |----------|--------------|------------|
@@ -27,5 +27,6 @@ ms.locfileid: "39278007"
 | 每个同步组的文件系统对象数（目录和文件） | 2500 万个对象 | 否 |
 | 目录中的最大文件系统对象（目录和文件）数 | 200,000 个对象 | 是 |
 | 最大对象（目录和文件）名称长度 | 255 个字符 | 是 |
+| 最大对象（目录和文件）安全描述符大小 | 4 KiB | 是 |
 | 文件大小 | 100 GiB | 否 |
 | 要进行分层的文件的最小文件大小 | 64 KiB | 是 |

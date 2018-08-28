@@ -8,24 +8,26 @@ manager: timlt
 editor: ''
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/30/2018
+ms.date: 08/17/2018
 ms.author: kgremban
-ms.openlocfilehash: 812ca3ba546112f54a76319fda853d441ce34f1b
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 4bb33eae53d31701b66d13cb4e810b1a0b8a4b0b
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303532"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42140630"
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>IoT 中心的 Azure 事件网格事件架构
 
 本文提供 Azure IoT 中心事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。 
 
+有关示例脚本和教程的列表，请参阅 [IoT 中心事件源](event-sources.md#iot-hub)。
+
 ## <a name="available-event-types"></a>可用事件类型
 
 Azure IoT 中心发出以下事件类型：
 
-| 事件类型 | 说明 |
+| 事件类型 | Description |
 | ---------- | ----------- |
 | Microsoft.Devices.DeviceCreated | 当设备注册到 IoT 中心时发布。 |
 | Microsoft.Devices.DeviceDeleted | 当设备从 IoT 中心删除时发布。 | 
@@ -85,7 +87,7 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 
 所有事件均包含相同的顶级数据： 
 
-| 属性 | Type | 说明 |
+| 属性 | Type | Description |
 | -------- | ---- | ----------- |
 | id | 字符串 | 事件的唯一标识符。 |
 | 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
@@ -98,7 +100,7 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 
 每个事件发布者的数据对象内容是不同的。 就 IoT 中心事件而言，数据对象包含以下属性：
 
-| 属性 | Type | 说明 |
+| 属性 | Type | Description |
 | -------- | ---- | ----------- |
 | hubName | 字符串 | 已创建或已删除设备的 IoT 中心的名称。 |
 | deviceId | 字符串 | 设备的唯一标识符。 此区分大小写的字符串最多可长达 128 个字符，并支持 ASCII 7 位字母数字字符加上以下特殊字符：`- : . + % _ # * ? ! ( ) , = @ ; $ '`。 |

@@ -90,7 +90,7 @@ ms.locfileid: "38633343"
 
 ### <a name="trends-of-loss-latency-and-throughput"></a>丢包、延迟和吞吐量的趋势 
 
-带宽利用率、延迟和丢包图表是交互式的。 可以使用鼠标控件放大这些图表的任何部分。 还可以看到其他时间间隔的带宽、延迟和丢包数据。 在左上角的“操作”按钮下，选择“日期/时间” ****。 
+带宽利用率、延迟和丢包图表是交互式的。 可以使用鼠标控件放大这些图表的任何部分。 还可以看到其他时间间隔的带宽、延迟和丢包数据。 在左上角的 **“操作”** 按钮下，选择 **“日期/时间”**。 
 
 ![ExpressRoute 延迟](media/log-analytics-network-performance-monitor/expressroute-latency.png) 
 

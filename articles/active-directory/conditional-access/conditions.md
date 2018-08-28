@@ -17,16 +17,16 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 5f5e2051f9c67fa4e37ce0e1213e14e197222f05
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 9feb6ef5b708813c2f73a70a930cabfd69dff114
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627536"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42140836"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的条件是什么？ 
 
-使用 [Azure Active Directory (Azure AD) 条件访问](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-azure-portal)，可以控制授权用户访问云应用的方式。 在条件访问策略中，定义对策略触发原因的响应。 示例响应是“则执行此操作”。 示例原因是“出现这种情况时”。
+使用 [Azure Active Directory (Azure AD) 条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)，可以控制授权用户访问云应用的方式。 在条件访问策略中，定义触发策略的诱因（“出现这种情况时”）的响应（“执行此操作”）。 
 
 ![原因和响应](./media/conditions/10.png)
 
@@ -56,7 +56,7 @@ ms.locfileid: "39627536"
 
 * “用户和组”面向特定的用户集。 例如，将某个人力资源应用选作云应用时，可以选择包含人力资源部所有成员的组。 某个组可以是 Azure AD 中任何类型的组，包括动态组，或分配的安全组和通讯组。
 
-还可以从策略中排除特定的用户或组。 例如，在策略强制实施多重身份验证 (MFA) 的情况下，往往会排除服务帐户。 
+此外，你还可以从策略中排除特定的用户或组。 例如，在策略强制实施多重身份验证 (MFA) 的情况下，往往会排除服务帐户。 
 
 若要部署新策略，面向特定的用户集十分有用。 在新策略中，应该只将初始用户集用作目标来验证策略行为。 
 
@@ -64,15 +64,17 @@ ms.locfileid: "39627536"
 
 ## <a name="cloud-apps"></a>云应用 
 
-云应用是网站或服务。 Azure AD 应用程序代理保护的网站也是云应用。 有关受支持云应用的详细说明，请参阅[云应用分配](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-technical-reference#cloud-apps-assignments)。 
+云应用是网站或服务。 Azure AD 应用程序代理保护的网站也是云应用。 有关受支持云应用的详细说明，请参阅[云应用分配](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#cloud-apps-assignments)。 
 
 **云应用**条件在条件访问策略中是必需的。 在策略中，可以选择**所有云应用**或选择特定的应用。
 
 ![包括云应用](./media/conditions/03.png)
 
-- 选择“所有云应用”可对要应用到整个组织的策略设置基准。 对于要求执行多重身份验证（由于检测到任何云应用存在登录风险）的策略，请使用此选项。 应用到“所有云应用”的策略将应用于对所有网站和服务的访问权限。 此设置并非仅限用于“选择应用”列表上显示的云应用。 
+选择：
 
-- 根据策略选择以特定服务为目标的单个云应用。 例如，可以要求用户使用[合规的设备](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)访问 SharePoint Online。 当其他服务访问 SharePoint 内容时，也会对这些服务应用此策略。 例如 Microsoft Teams。 
+- “所有云应用”可对要应用到整个组织的策略设置基准。 对于要求执行多重身份验证（由于检测到任何云应用存在登录风险）的策略，请使用此选项。 应用到“所有云应用”的策略将应用于对所有网站和服务的访问权限。 此设置并非仅限用于“选择应用”列表上显示的云应用。 
+
+- 根据策略将特定服务指定为目标的单个云应用。 例如，可以要求用户使用[合规的设备](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)访问 SharePoint Online。 当其他服务访问 SharePoint 内容时，也会对这些服务应用此策略。 例如 Microsoft Teams。 
 
 可以从策略中排除特定的应用。 但是，这些应用仍受到应用于它们访问的服务的策略的限制。 
 
@@ -80,18 +82,18 @@ ms.locfileid: "39627536"
 
 ## <a name="sign-in-risk"></a>登录风险
 
-登录风险指不是由用户帐户合法所有者执行的登录尝试的可能性（高、中、低）。 Azure AD 在用户登录期间会计算登录风险级别。 可将计算出的登录风险级别用作条件性访问策略中的条件。 
+登录风险指不是由用户帐户合法所有者执行的登录尝试的可能性（高、中或低）。 Azure AD 在用户登录期间会计算登录风险级别。 可以将计算得到的登录风险级别用作条件性访问策略中的条件。
 
 ![登录风险级别](./media/conditions/22.png)
 
-若要使用此条件，需要启用 [Azure Active Directory Identity Protection](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-identityprotection-enable)。
+若要使用此条件，需要启用 [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-enable)。
  
 此条件的常见用例包括提供以下保护的策略： 
 
 - 阻止存在高登录风险的用户。 此项保护可防止潜在的非法用户访问你的云应用。 
 - 要求中等登录风险的用户执行多重身份验证。 通过强制实施多重身份验证，可以更加肯定登录操作是由帐户的合法所有者执行的。
 
-有关详细信息，请参阅[风险登录](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-security-risky-sign-ins)。  
+有关详细信息，请参阅[风险登录](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-security-risky-sign-ins)。  
 
 ## <a name="device-platforms"></a>设备平台
 
@@ -114,7 +116,7 @@ ms.locfileid: "39627536"
 
 ![配置设备状态](./media/conditions/112.png)
 
-若要阻止对非托管设备的访问，请实现[基于设备的条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)。
+若要阻止对非托管设备的访问，请实现[基于设备的条件访问](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)。
 
 
 ## <a name="locations"></a>位置
@@ -148,7 +150,7 @@ ms.locfileid: "39627536"
 
 此条件的常见用例包括提供以下保护的策略： 
 
-- 要求在移动和桌面应用程序中使用[合规设备](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)将大量数量下载到设备。 同时，允许从任何设备上的浏览器进行访问。
+- 要求在移动和桌面应用程序中使用[合规设备](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)将大量数量下载到设备。 同时，允许从任何设备上的浏览器进行访问。
 
 - 阻止从 Web 应用程序访问，但允许从移动和桌面应用程序访问。
 
@@ -163,7 +165,7 @@ ms.locfileid: "39627536"
  
 ![仅将策略应用到支持的平台](./media/conditions/33.png)
 
-仅向支持的平台应用此条件相当于将所有设备平台置于一个[设备平台条件](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)中。
+仅向支持的平台应用此条件相当于将所有设备平台置于一个[设备平台条件](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)中。
 
 ![配置设备平台](./media/conditions/34.png)
 
@@ -172,7 +174,7 @@ ms.locfileid: "39627536"
 
 - [为 Azure Active Directory 条件访问设置 SharePoint Online 和 Exchange Online](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-no-modern-authentication)。
  
-- [基于 Azure Active Directory 应用的条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)。 
+- [基于 Azure Active Directory 应用的条件访问](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)。 
 
 
 ### <a name="legacy-authentication"></a>旧式身份验证  

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/30/2018
+ms.date: 08/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 17f40790343181c592eca7bf6337b0f37d3ec20c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8cac3c8d3a1877ad7c93efc0954c2f07ecaa0a29
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34602809"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42140804"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
@@ -48,6 +48,8 @@ ms.locfileid: "34602809"
 ```
 
 为部署资源提供的属性将因要链接到外部模板，还是要将内联模板嵌套在主模板中而异。
+
+对于链接模板和嵌套模板，只能使用[增量](deployment-modes.md)部署模式。
 
 ### <a name="nested-template"></a>嵌套模板
 
@@ -487,7 +489,7 @@ az group deployment create --resource-group ExampleGroup --template-uri $url?$to
 
 以下示例演示了链接模板的常见用法。
 
-|主模板  |链接模板 |说明  |
+|主模板  |链接模板 |Description  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[链接模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | 从链接模板返回字符串。 |
 |[使用公共 IP 地址的负载均衡器](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[链接模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |从链接模板返回公共 IP 地址，并在负载均衡器中设置该值。 |

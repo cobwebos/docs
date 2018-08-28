@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: d6915ce659d96021d4185be3818919fcfb9d4371
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: af57faddcc1413747b4bb847e27287ba86562175
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492886"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42146335"
 ---
 # <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication-public-preview"></a>针对自助密码重置和 Azure 多重身份验证的聚合注册（公共预览版）
 
@@ -55,6 +55,9 @@ ms.locfileid: "39492886"
 > 仅在系统在用户登录时提示注册的情况下才显示此体验。 对于在 aka.ms/setupsecurityinfo 处直接转到新体验的用户，将显示不同版本的体验（详见本文的稍后部分）。
 
 显示的身份验证方法将基于 MFA 或 SSPR 策略中启用的方法进行更改。 用户必须注册符合 MFA 策略和/或 SSPR 策略所需的最小数目的身份验证方法。 如果用户能够灵活选择可注册的身份验证方法，则可选择“选择安全信息”，从而选择其他身份验证方法。  
+
+> [!NOTE]
+> 如果你同时启用移动应用通知和移动应用代码，则使用通知注册 Microsoft Authenticator 应用的用户可以使用通知和代码来验证其身份。
 
 与之前的 MFA 注册体验不同，在进行新的注册体验时，系统不提示用户注册应用密码。 相反，他们应遵循应用密码教程中列出的步骤，在新体验中注册应用密码。  
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/14/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: 24d89b617c347bc9443b437c92cb034acb3e05cb
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 2eb7fb82b358d4ec8628bfa546b572ee3cbe47fa
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33901323"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "40210126"
 ---
 创建虚拟机 (VM)、重新启动已停止（解除分配）的 VM 和重设 VM 大小时，Microsoft Azure 会为订阅分配计算资源。 我们会不断投入其他基础结构和功能，确保始终提供可用于支持客户需求的所有 VM 类型。 但是，偶尔可能因特定区域中前所未有的 Azure 服务需求增长而遇到资源分配失败的情况。 当尝试在区域中创建或启动 VM，同时 VM 显示以下错误代码和消息时，会出现此问题：
 
@@ -80,9 +80,10 @@ ms.locfileid: "33901323"
 |旧版 VM 系列/大小|建议使用新版 VM 系列/大小|详细信息|
 |----------------------|----------------------------|--------------------|
 |Av1 系列|[Av2 系列](../articles/virtual-machines/windows/sizes-general.md#av2-series)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
-|Dv1 或 DSv1 系列（D1 到 D5）|[Dv3 或 DSv3 系列](../articles/virtual-machines/windows/sizes-general.md#dsv3-series-sup1sup)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
-|Dv1 或 DSv1 系列（D11 到 D14）|[Ev3 或 ESv3 系列](../articles/virtual-machines/windows/sizes-memory.md#ev3-series)|
-|D15v2 或 DS15v2|如果你使用资源管理器部署模型以便充分利用更大的 VM 大小，请考虑移动到 D16v3/DS16v3 或 D32v3/DS32v3。 这些为在最新硬件上运行而设计。 如果使用资源管理器部署模型以确保你的 VM 实例独立于单个客户专用的硬件，请考虑移动到新的独立 VM 大小 E64i_v3 或 E64is_v3，它们为在最新硬件上运行而设计。 |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/
+|Dv1 或 DSv1 系列（D1 到 D5）|[Dv3 或 Dsv3 系列](../articles/virtual-machines/windows/sizes-general.md#dsv3-series-sup1sup)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
+|Dv1 或 DSv1 系列（D11 到 D14）|[Ev3 或 Esv3 系列](../articles/virtual-machines/windows/sizes-memory.md#esv3-series)|
+|D15v2 或 DS15v2|如果你使用资源管理器部署模型以便充分利用更大的 VM 大小，请考虑移动到 E16v3/E16sv3 或 E32v3/E32sv3。 这些为在最新硬件上运行而设计。 如果使用资源管理器部署模型以确保你的 VM 实例独立于单个客户专用的硬件，请考虑移动到新的独立 VM 大小 E64i_v3 或 E64is_v3，它们为在最新硬件上运行而设计。 |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/
+
 
 ## <a name="allocation-failures-for-large-deployments-more-than-500-cores"></a>大型部署（超过 500 个内核）的分配失败
 

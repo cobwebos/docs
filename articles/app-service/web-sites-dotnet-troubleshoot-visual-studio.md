@@ -14,16 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
-ms.openlocfilehash: 522bc9e757abeae930e47eaf53bb6da4bd9d0531
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 1c56f705c07e2001e1ef8f5f9f05c264c33c2c3f
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224103"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42146123"
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>使用 Visual Studio 对 Azure 应用服务中的 Web 应用进行故障排除
 ## <a name="overview"></a>概述
-本教程介绍如何使用 Visual Studio 工具，通过远程运行[调试模式](http://www.visualstudio.com/get-started/debug-your-app-vs.aspx)或查看应用程序日志和 Web 服务器日志帮助调试[应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)中的 Web 应用。
+本教程介绍如何使用 Visual Studio 工具，通过远程运行[调试模式](https://docs.microsoft.com/visualstudio/debugger/)或查看应用程序日志和 Web 服务器日志帮助调试[应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)中的 Web 应用。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -134,7 +134,8 @@ public ActionResult About()
     return View();
 }
 ```
-4. 在 `ViewBag.Message` 行上[设置一个断点](http://www.visualstudio.com/get-started/debug-your-app-vs.aspx)。
+
+4. 在 `ViewBag.Message` 行上[设置一个断点](https://docs.microsoft.com/visualstudio/debugger/)。
 
 5. 在“解决方案资源管理器”中，右键单击该项目并单击“发布”。
 
@@ -185,7 +186,7 @@ public ActionResult About()
 
 2. 在 ContosoAdsWebJob 项目中，打开 *Functions.cs*。
 
-3. 在 `GnerateThumbnail` 方法的第一个语句中[设置一个断点](http://www.visualstudio.com/get-started/debug-your-app-vs.aspx)。
+3. 在 `GnerateThumbnail` 方法的第一个语句中[设置一个断点](https://docs.microsoft.com/visualstudio/debugger/)。
 
     ![设置断点](./media/web-sites-dotnet-troubleshoot-visual-studio/wjbreakpoint.png)
 
@@ -250,7 +251,7 @@ public ActionResult About()
   <httpRuntime targetFramework="4.5" />
 </system.web>
 ```
-* 如果发现调试程序没有针对希望调试的代码展开行动，可能需要更改“仅我的代码”设置。  有关详细信息，请参阅[限制为仅逐行调试我的代码](http://msdn.microsoft.com/library/vstudio/y740d9d3.aspx#BKMK_Restrict_stepping_to_Just_My_Code)。
+* 如果发现调试程序没有针对希望调试的代码展开行动，可能需要更改“仅我的代码”设置。  有关详细信息，请参阅[指定是否仅使用 Visual Studio 中的“仅我的代码”调试用户代码](https://docs.microsoft.com/visualstudio/debugger/just-my-code)。
 * 启用远程调试功能时，服务器上会出现一个计时器，48 小时后该功能会自动关闭。 这一 48 小时的限制是出于安全性与性能的考虑。 可以根据需要轻松地多次重启该功能。 我们建议，在不主动进行调试的时候，保持其处于禁用状态。
 * 可以手动将调试器附加到任何进程，而不仅仅是 Web 应用进程 (w3wp.exe)。 有关如何在 Visual Studio 中使用调试模式的信息，请参阅[在 Visual Studio 中进行调试](http://msdn.microsoft.com/library/vstudio/sc65sadd.aspx)。
 

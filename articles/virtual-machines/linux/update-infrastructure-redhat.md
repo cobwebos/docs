@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: borisb
-ms.openlocfilehash: 570b820e21df6db70b9cadf33d5a120132be62ed
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4a8bc45b253def1130e5a02dfcd6d359f0e74506
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426745"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42140643"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>用于 Azure 中按需 Red Hat Enterprise Linux VM 的 Red Hat 更新基础结构
  [Red Hat 更新基础结构](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) 允许云提供程序（如 Azure）镜像 Red Hat 托管的存储库内容，创建包含 Azure 特定内容的自定义存储库，并将其提供给最终用户 VM 使用。
@@ -29,7 +29,7 @@ ms.locfileid: "39426745"
 ## <a name="important-information-about-azure-rhui"></a>有关 Azure RHUI 的重要信息
 * Azure RHUI 目前仅支持每个 RHEL 系列（RHEL6 或 RHEL7）中的最新次要版本。 要将连接到 RHUI 的 RHEL VM 实例升级到最新次要版本，请运行 `sudo yum update`。
 
-    例如，如果从 RHEL 7.2 PAYG 映像预配 VM 并运行 `sudo yum update`，最终会获得 RHEL 7.4 VM（RHEL7 系列中的最新次要版本）。
+    例如，如果从 RHEL 7.2 PAYG 映像预配 VM 并运行 `sudo yum update`，最终会获得 RHEL 7.5 VM（RHEL7 系列中的最新次要版本）。
 
     要避免此行为，请按照[为 Azure 创建和上传基于 Red Hat 的虚拟机](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)一文的描述，构建自己的映像。 然后将其连接到不同的更新基础结构（直接连接到 [Red Hat 内容传送服务器](https://access.redhat.com/solutions/253273)或 [Red Hat 卫星服务器](https://access.redhat.com/products/red-hat-satellite)）。
 

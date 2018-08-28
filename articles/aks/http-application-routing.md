@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: 9c26a85a50bf4e7272b229bac8a8b9aa8c1ae364
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 93b9075831db356607438288a7c153dde2f8b210
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238516"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42146137"
 ---
 # <a name="http-application-routing"></a>HTTP 应用程序路由
 
@@ -33,13 +33,19 @@ ms.locfileid: "39238516"
 HTTP 应用程序路由加载项可以在部署 AKS 群集时通过 Azure CLI 来启用。 若要执行此操作，请将 [az aks create][az-aks-create] 命令与 `--enable-addons` 参数结合使用。
 
 ```azurecli
-az aks create --resource-group myAKSCluster --name myAKSCluster --enable-addons http_application_routing
+az aks create --resource-group myResourceGroup --name myAKSCluster --enable-addons http_application_routing
 ```
 
-部署群集后，使用 [az aks show][az-aks-show] 命令检索 DNS 区域名称。 将应用程序部署到 AKS 群集时，需要此名称。
+还可以使用 [az aks enable-addons][az-aks-enable-addons] 命令在现有 AKS 群集上启用 HTTP 路由。 若要在现有群集上启用 HTTP 路由，请添加 `--addons` 参数并指定 *http_application_routing*，如以下示例所示：
 
 ```azurecli
-$ az aks show --resource-group myAKSCluster --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
+az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addons http_application_routing
+```
+
+部署或更新群集后，使用 [az aks show][az-aks-show] 命令检索 DNS 区域名称。 将应用程序部署到 AKS 群集时，需要此名称。
+
+```azurecli
+$ az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
 
 Result
 -----------------------------------------------------
@@ -155,7 +161,7 @@ $ curl party-clippy.471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io
 可以使用 Azure CLI 删除 HTTP 路由解决方案。 为此，请运行以下命令，并替换 AKS 群集和资源组名称。
 
 ```azurecli
-az aks disable-addons --addons http_application_routing --name myAKSCluster --resource-group myAKSCluster --no-wait
+az aks disable-addons --addons http_application_routing --name myAKSCluster --resource-group myResourceGroup --no-wait
 ```
 
 ## <a name="troubleshoot"></a>故障排除
@@ -232,6 +238,7 @@ ingress "party-clippy" deleted
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
 [az-aks-show]: /cli/azure/aks?view=azure-cli-latest#az-aks-show
 [ingress-https]: ./ingress.md
+[az-aks-enable-addons]: /cli/azure/aks#az-aks-enable-addons
 
 
 <!-- LINKS - external -->

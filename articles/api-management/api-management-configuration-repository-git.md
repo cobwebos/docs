@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: b2cdb88ba71b4a3d3005ec9d64b6e94cdb1d1c55
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 8c4ae9c7b8be8cf390ad4ad6d99cd1ec41cd3d08
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857525"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42146320"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>如何使用 Git 保存和配置 API 管理服务
 
@@ -147,7 +147,7 @@ git push
 
 本地 Git 存储库中的文件和文件夹包含有关服务实例的配置信息。
 
-| Item | 说明 |
+| Item | Description |
 | --- | --- |
 | 根 api-management 文件夹 |包含服务实例的顶级配置 |
 | apis 文件夹 |包含服务实例中的 API 的配置 |
@@ -259,8 +259,8 @@ git push
 有关管理服务实例的其他方法的信息，请参阅：
 
 * 使用以下 PowerShell cmdlet 管理服务实例
-  * [服务部署 PowerShell cmdlet 参考](https://msdn.microsoft.com/library/azure/mt619282.aspx)
-  * [服务管理 PowerShell cmdlet 参考](https://msdn.microsoft.com/library/azure/mt613507.aspx)
+  * [服务部署 PowerShell cmdlet 参考](https://docs.microsoft.com/powershell/module/wds)
+  * [服务管理 PowerShell cmdlet 参考](https://docs.microsoft.com/powershell/azure/servicemanagement/overview)
 * 使用 REST API 管理服务实例
   * [API 管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn776326.aspx)
 

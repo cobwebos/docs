@@ -8,19 +8,19 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: f2a95ac879dd2d6b1af3d50e1be53efac26331c4
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 11cec9621ad72cfeaee45e4cd466430e64b9b836
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525546"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42146113"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参考 - IoT 中心配额和限制
 
 ## <a name="quotas-and-throttling"></a>配额和限制
 每个 Azure 订阅最多可以有 50 个 IoT 中心和 1 个免费中心。
 
-每个 IoT 中心都在特定层中预配了特定单位数。 有关详细信息，请参阅 [Azure IoT 中心定价][lnk-pricing]。 层和单位数决定了可以发送的消息的每日配额上限。
+每个 IoT 中心都在特定层中预配了特定单位数。 层和单位数决定了可以发送的消息的每日配额上限。 用于计算每日配额的消息大小对于免费层中心为 0.5 KB，对于所有其他层为 4KB。 有关详细信息，请参阅 [Azure IoT 中心定价][lnk-pricing]。
 
 层还决定了 IoT 中心对所有操作强制实施的限制。
 

@@ -1,6 +1,6 @@
 ---
 title: IoT 设备预配服务中的安全性终结点 | Microsoft Docs
-description: 概念 - 如何控制后端应用中 IoT 设备预配服务的访问权限。 包括安全令牌的相关信息。
+description: 概念 - 如何控制后端应用对 IoT 设备预配服务的访问权限。 包括安全令牌的相关信息。
 author: wesmc7777
 manager: timlt
 ms.service: iot-dps
@@ -8,25 +8,25 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: wesmc
-ms.openlocfilehash: b4776ef3589d994fff692e450d252c491c20f7b2
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 4751a76c39060f48d3b816ecee0de5b58e29bdaa
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522860"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42140631"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>控制对 Azure IoT 中心设备预配服务的访问
 
-本文介绍了用于保护 IoT 设备预配服务的方法。 预配服务使用“权限”向每个终结点授予访问权限。 权限可根据功能限制对服务实例的访问。
+本文介绍用于保护 IoT 设备预配服务的选项。 预配服务使用“权限”向每个终结点授予访问权限。 权限可根据功能限制对服务实例的访问。
 
 本文介绍：
 
-* 可向后端应用授予不同的预配服务访问权限。
+* 可向后端应用授予的不同预配服务访问权限。
 * 身份验证过程以及它用于验证权限的令牌。
 
 ### <a name="when-to-use"></a>使用时机
 
-要访问某预配服务终结点，必须具有适当的权限。 例如，后端应用必须包含一个带安全证书的令牌，以及每条发送给该服务的消息。
+要访问某预配服务终结点，必须具有适当的权限。 例如，后端应用必须包含一个带安全凭据的令牌，以及它发送给该服务的每条消息。
 
 ## <a name="access-control-and-permissions"></a>访问控制和权限
 
@@ -34,7 +34,7 @@ ms.locfileid: "39522860"
 
 * 共享访问授权策略。 共享访问策略可以授予任意[权限](#device-provisioning-service-permissions)组合。 可在 [Azure 门户][lnk-management-portal]中定义策略，也可使用[设备预配服务 REST API][lnk-resource-provider-apis] 以编程方式进行定义。 新建的预配服务有以下默认策略：
 
-  * provisioningserviceowner：包含所有权限的策略。
+   provisioningserviceowner：包含所有权限的策略。
 
 > [!NOTE]
 > 有关详细信息，请参阅[权限](#device-provisioning-service-permissions)。
@@ -51,12 +51,16 @@ Azure IoT 中心设备预配服务通过针对共享访问策略验证令牌，�
 HTTP 是唯一受支持的协议，它通过在“Authorization”请求标头中包含有效的令牌来实现身份验证。
 
 #### <a name="example"></a>示例
-`SharedAccessSignature sr=mydps.azure-devices-provisioning.net&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501&skn=provisioningserviceowner`
+```csharp
+SharedAccessSignature sr = 
+   mydps.azure-devices-provisioning.net&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501&skn=provisioningserviceowner`\
+```
 
 > [!NOTE]
 > [Azure IoT 设备预配服务 SDK][lnk-sdks] 在连接到服务时自动生成令牌。
 
 ## <a name="security-tokens"></a>安全令牌
+
 设备预配服务使用安全令牌对服务进行身份验证，以避免在线发送密钥。 并且安全令牌的有效期和范围有限。 [Azure IoT 设备预配服务 SDK][lnk-sdks] 无需任何特殊配置即可自动生成令牌。 在某些情况下，确实需要用户生成并直接使用安全令牌。 这种情况包括直接使用 HTTP。
 
 ### <a name="security-token-structure"></a>安全令牌结构
@@ -131,7 +135,6 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
 > [!NOTE]
 > 由于 IoT 设备预配服务计算机会验证令牌的有效期，因此生成令牌的计算机的时间偏差必须很小。
 
-
 ### <a name="use-security-tokens-from-service-components"></a>使用服务组件提供的安全令牌
 
 如前所述，服务组件使用共享访问策略只能生成安全令牌，授予适当权限。
@@ -150,9 +153,9 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
 * 资源 URI：`{mydps}.azure-devices-provisioning.net`，
 * 签名密钥：`enrollmentread` 策略的密钥之一，
 * 策略名称：`enrollmentread`，
-* 任何过期时间。
+* 任何过期 time.backn
 
-![在门户中为 DPS 实例创建共享访问策略][img-add-shared-access-policy]
+![在门户中为设备预配服务实例创建共享访问策略][img-add-shared-access-policy]
 
 ```nodejs
 var endpoint ="mydps.azure-devices-provisioning.net";
@@ -170,7 +173,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 以下参考主题详细删除如何控制对 IoT 设备预配服务的访问。
 
-## <a name="device-provisioning-service-permissions"></a>设备预配服务权限
+### <a name="device-provisioning-service-permissions"></a>设备预配服务权限
 
 下表列出了可用于控制对 IoT 设备预配服务的访问的权限。
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 6ba37a026a3c8f50fa47b0775a2ad49ee75f2769
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b6078ac326fe51f4198137eec2de728b6036c271
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424640"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42140623"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Log Analytics 中的 VMware 监视（预览版）解决方案
 
@@ -36,7 +36,7 @@ Log Analytics 中的 VMware 监视解决方案是一个有助于创建针对大�
 ## <a name="install-and-configure-the-solution"></a>安装和配置解决方案
 使用以下信息安装和配置解决方案。
 
-* 使用[添加管理解决方案](log-analytics-add-solutions.md#add-a-management-solution)中所述的进程将 VMware 监视解决方案添加到订阅。
+* 使用[安装管理解决方案](../monitoring/monitoring-solutions.md#install-a-management-solution)中所述的过程将 VMware 监视解决方案添加到订阅。
 
 #### <a name="supported-vmware-esxi-hosts"></a>受支持的 VMware ESXi 主机
 vSphere ESXi 主机 5.5、6.0 和 6.5

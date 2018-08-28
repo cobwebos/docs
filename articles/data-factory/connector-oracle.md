@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: 5039399ac875add02319e1a745d99344956c7bee
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: ec0fc11ac2caf421f331a8fe72f1dacdf6b8a702
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860208"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42311960"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Oracle 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -64,6 +64,12 @@ Oracle 链接服务支持以下属性。
 
 >[!TIP]
 >如果遇到错误消息指出“ORA-01025: UPI 参数超出范围”，且 Oracle 版本为 8i，请将 `WireProtocolMode=1` 添加到连接字符串并重试。
+
+若要在 Oracle 连接上启用加密，你有两种选择：
+
+1.  在Oracle 服务器端，转到“Oracle 高级安全性 (OAS)”并配置加密设置，该设置支持三重 DES 加密 (3DES) 和高级加密标准 (AES)，请参阅[此处](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759)的详细信息。 ADF Oracle 连接器会自动协商加密方法，以便在建立与 Oracle 的连接时使用在 OAS 中配置的加密方法。
+
+2.  在客户端，可以在连接字符串中添加 `EncryptionMethod=1`。 这将使用 SSL/TLS 作为加密方法。 若要使用此功能，需要在 Oracle 服务器端的 OAS 中禁用非 SSL 加密设置，以避免加密冲突。
 
 **示例：**
 

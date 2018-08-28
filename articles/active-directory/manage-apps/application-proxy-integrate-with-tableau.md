@@ -1,26 +1,23 @@
 ---
 title: Azure Active Directory 应用程序代理和 Tableau | Microsoft 文档
-description: 了解如何使用 Azure Active Directory (Azure AD) 应用程序代理为 Tableau 部署提供远程访问。  。
+description: 了解如何使用 Azure Active Directory (Azure AD) 应用程序代理为 Tableau 部署提供远程访问。
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 08/20/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 7cace1af527c1c7c80bf0e23f7a88aa9ac9f9d03
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: a68b0465acdb416cd953e22d7f024eb399c94493
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365016"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246368"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory 应用程序代理和 Tableau 
 
@@ -35,19 +32,10 @@ Azure Active Directory 应用程序代理和 Tableau 已展开合作，以确保
 - 已安装[应用程序代理连接器](application-proxy-enable.md)。 
 
  
-
 ## <a name="enabling-application-proxy-for-tableau"></a>为 Tableau 启用应用程序代理 
 
-如果想要为 Tableau 使用应用程序代理，则需要将电子邮件发送至 [aadapfeedback@microsoft.com](mailto:aadapfeedback@microsoft.com) 才能启用此方案。
-在你的电子邮件中：
+应用程序代理支持 OAuth 2.0 授权流，这是 Tableau 正常工作所必需的。 这意味着启用此应用程序不再需要任何特殊步骤，只需按照以下发布步骤进行配置即可。
 
--   将“为 Tableau 启用应用程序代理”作为主题
--   在正文中包括你的租户 ID    
-
-准备好使用应用程序时，将收到确认消息。 可以在等待确认时完成配置。
-
-
- 
 
 ## <a name="publish-your-applications-in-azure"></a>在 Azure 中发布应用程序 
 

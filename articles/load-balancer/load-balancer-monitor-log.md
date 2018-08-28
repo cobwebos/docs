@@ -1,6 +1,6 @@
 ---
-title: 监视负载均衡器的操作、事件和计数器 | Microsoft 文档
-description: 了解如何为 Azure 负载均衡器启用警报事件以及探测运行状况日志记录
+title: 监视公共基本负载均衡器的操作、事件和计数器 | Microsoft Docs
+description: 了解如何为公共基本负载均衡器启用警报事件以及探测运行状况日志记录
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -12,28 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 08/10/2018
 ms.author: kumud
-ms.openlocfilehash: dabf4bcae957559978e731636bb13554f1a68b73
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5c196a24d5cc9e4343762e55b5885c1264c2fcad
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30179049"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42140907"
 ---
-# <a name="log-analytics-for-azure-load-balancer"></a>Azure 负载均衡器的 Log Analytics
+# <a name="log-analytics-for-public-basic-load-balancer"></a>适用于公共基本负载均衡器的 Log Analytics
 
->[!NOTE] 
->Azure 负载均衡器支持两种不同的类型：“基本”和“标准”。 本文介绍基本负载均衡器。 有关标准负载均衡器的详细信息，请参阅[标准负载均衡器概述](load-balancer-standard-overview.md)。
+>[!IMPORTANT] 
+>Azure 负载均衡器支持两种不同的类型：“基本”和“标准”。 本文介绍基本负载均衡器。 有关标准负载均衡器的详细信息，请参阅[标准负载均衡器概述](load-balancer-standard-overview.md)，该概述通过 Azure Monitor 中的多维指标公开遥测数据。
 
-可以在 Azure 中使用不同类型的日志对负载均衡器进行管理和故障排除。 可通过门户访问其中某些日志。 可从 Azure Blob 存储提取所有日志并在 Excel 和 PowerBI 等各种工具中查看。 可从下表了解有关各种类型日志的详细信息。
+可以在 Azure 中使用不同类型的日志对基本负载均衡器进行管理和故障排除。 可通过门户访问其中某些日志。 可从 Azure Blob 存储提取所有日志并在 Excel 和 PowerBI 等各种工具中查看。 可从下表了解有关各种类型日志的详细信息。
 
 * **审核日志：** 可以使用 [Azure 审核日志](../monitoring-and-diagnostics/insights-debugging-with-events.md)（旧称为“运行日志”）查看提交到 Azure 订阅的所有操作及其状态。 审核日志默认情况下启用，并且可以在 Azure 门户中查看。
 * **警报事件日志：** 可以使用此日志查看负载均衡器引发的警报。 每隔五分钟收集一次负载均衡器的状态。 仅在引发了负载均衡器警报事件的情况下，才会向此日志写入相关内容。
 * **运行状况探测日志：** 可以使用此日志查看运行状况探测器检测到的问题，例如后端池中由于运行状况探测失败未从负载均衡器接收请求的实例数。 当运行状况探测状态发生更改时，将写入此日志。
 
 > [!IMPORTANT]
-> Log Analytics 当前仅适用于面向 Internet 的负载均衡器。 日志仅适用于 Resource Manager 部署模型中部署的资源。 不能将日志用于经典部署模型中的资源。 有关部署模型的详细信息，请参阅[了解 Resource Manager 部署和经典部署](../azure-resource-manager/resource-manager-deployment-model.md)。
+> Log Analytics 当前仅适用于公共基本负载均衡器。 日志仅适用于 Resource Manager 部署模型中部署的资源。 不能将日志用于经典部署模型中的资源。 有关部署模型的详细信息，请参阅[了解 Resource Manager 部署和经典部署](../azure-resource-manager/resource-manager-deployment-model.md)。
 
 ## <a name="enable-logging"></a>启用日志记录
 
@@ -56,7 +56,9 @@ ms.locfileid: "30179049"
 7. 在“日志”下，选择现有存储帐户或创建新存储帐户。 使用滑块来确定事件数据值得在事件日志中存储的天数。 
 8. 单击“ **保存**”。
 
-    ![门户 - 诊断日志](./media/load-balancer-monitor-log/load-balancer-diagnostics.png)
+诊断将保存在指定存储帐户的表存储中。 如果未保存日志，则是因为没有生成相关日志。
+
+![门户 - 诊断日志](./media/load-balancer-monitor-log/load-balancer-diagnostics.png)
 
 > [!NOTE]
 > 审核日志不需要单独的存储帐户。 使用存储来记录事件和运行状况探测需支付服务费用。

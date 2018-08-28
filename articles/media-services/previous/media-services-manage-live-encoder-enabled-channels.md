@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 08/20/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: f4b57241085381f4b975c07038b41133b8a4319b
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 008fac84eedfd58cbcfe563504a50bc19d519382
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436185"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246448"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>使用 Azure 媒体服务执行实时流式处理以创建多比特率流
 
@@ -228,7 +228,8 @@ ms.locfileid: "37436185"
 | 200 |340 |192 |30 |基线 |Video_340x192_200kbps |
 
 #### <a name="output-audio-stream"></a>输出音频流
-音频以 64 kbps 的速率编码为立体声 AAC-LC，采样率为 44.1 kHz。
+
+音频以 128 kbps 的速率编码为立体声 AAC-LC，采样率为 48 kHz。
 
 ## <a name="signaling-advertisements"></a>指示广告
 当频道已启用实时编码时，在管道中有一个组件正在处理视频，并可以操作它。 可以向频道发出信号，以将清单和/或广告插入到传出自适应比特率流中。 清单是在某些情况下（例如，在商业广告期间）可用于覆盖输入实时源的静止图像。 广告信号是嵌入到传出流中的时间同步信号，用于指示视频播放机执行特殊操作（例如，在适当时间切换到广告）。 有关用于此目的的 SCTE-35 信号机制的概述，请参阅此[博客](https://codesequoia.wordpress.com/2014/02/24/understanding-scte-35/)。 下面是可以在实时事件中实现的典型方案。
@@ -281,7 +282,7 @@ ms.locfileid: "37436185"
 ## <a name="channels-programs"></a>频道的节目
 频道与节目相关联，使用节目，可以控制实时流中的段的发布和存储。 通道管理节目。 通道和节目的关系非常类似于传统媒体，通道具有恒定的内容流，而节目的范围限定为该通道上的一些定时事件。
 
-可以通过设置 **存档窗口** 长度，指定希望保留节目录制内容的小时数。 此值的设置范围是最短 5 分钟，最长 25 小时。 存储时间窗口长度还决定了客户端能够从当前实时位置按时间向后搜索的最长时间。 超出指定时间长度后，节目也能够运行，但落在时间窗口长度后面的内容将全部被丢弃。 此属性的这个值还决定了客户端清单能够增加多长时间。
+可以通过设置 **存档窗口** 长度，指定希望保留节目录制内容的小时数。 此值的设置范围是最短 5 分钟，最长 25 小时。 存档时段长度还决定了客户端能够从当前实时位置向后搜索的最长时间。 超出指定时间长度后，节目也能够运行，但落在时间窗口长度后面的内容将全部被丢弃。 此属性的这个值还决定了客户端清单能够增加多长时间。
 
 每个节目都与存储流式处理内容的资源相关联。 资产映射到 Azure 存储帐户中的 blob 容器，资产中的文件作为 blob 存储在该容器中。 若要发布节目，以便客户可以查看该流，必须为关联的资源创建按需定位符。 创建此定位符后，可以生成提供给客户端的流 URL。
 
@@ -338,7 +339,7 @@ ms.locfileid: "37436185"
 
 ## <a name="known-issues"></a>已知问题
 * 通道启动时间已改善为平均 2 分钟，但有时因为需求提高，可能仍然需要长达 20 分钟以上的时间。
-* 盖板图像应符合[此处](media-services-manage-live-encoder-enabled-channels.md#default_slate)所述的限制。 如果想要尝试创建默认静态图像大于 1920x1080 的频道，最终请求会出错。
+* 盖板图像应符合[此处](media-services-manage-live-encoder-enabled-channels.md#default_slate)所述的限制。 如果尝试创建默认盖板大于 1920x1080 的频道，请求最终会出错。
 * 再次强调，完成流式处理后请不要忘记关闭通道。 否则会继续计费。
 
 ## <a name="next-step"></a>后续步骤

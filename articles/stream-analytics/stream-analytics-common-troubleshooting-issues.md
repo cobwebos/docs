@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2018
-ms.openlocfilehash: e04d1072acee635235b0a5bd8465ca38c861017b
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d3b01e75a9b34ce4e38138816935bdae2e0ea778
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31523517"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42146336"
 ---
 # <a name="common-issues-in-stream-analytics-and-steps-to-troubleshoot"></a>流分析的常见问题以及故障排除的步骤
 
@@ -38,7 +38,9 @@ ms.locfileid: "31523517"
 
 3. 若要获取格式不正确的 JSON 数据，请运行 CheckMalformedEvents.cs 代码。 [GitHub 示例存储库](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH)中提供了此示例。 此代码读取分区 ID、偏移量并列显位于该偏移位置的数据。 
 
-4. 在阅读数据后，你可以分析并更正序列化格式。 
+4. 在阅读数据后，你可以分析并更正序列化格式。
+
+5. 还可以[使用服务总线资源管理器从 IoT 中心读取事件](https://code.msdn.microsoft.com/How-to-read-events-from-an-1641eb1b)。
 
 ## <a name="delayed-output"></a>延迟输出
 

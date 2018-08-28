@@ -6,18 +6,20 @@ author: banisadr
 manager: darosa
 ms.service: event-grid
 ms.topic: reference
-ms.date: 07/23/2018
+ms.date: 08/17/2018
 ms.author: babanisa
-ms.openlocfilehash: 39bf8df69f491aace546386b1b3aabce9ea6c696
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: afb85f20c49821ca98e078791730a3376198e9e5
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226537"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42140830"
 ---
 # <a name="azure-event-grid-event-schema-for-service-bus"></a>服务总线的 Azure 事件网格事件架构
 
 本文提供了服务总线事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
+
+有关示例脚本和教程的列表，请参阅[服务总线事件源](event-sources.md#service-bus)。
 
 ## <a name="available-event-types"></a>可用事件类型
 

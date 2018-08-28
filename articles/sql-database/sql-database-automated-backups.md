@@ -11,12 +11,12 @@ ms.workload: Active
 ms.date: 07/25/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 8798d0f17918ecce473afe8dc21b3f60bf0fa4b1
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: ac548d90d5a5ed931dc199b6fed52c7cd8f25239
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620124"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42140848"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>了解 SQL 数据库自动备份
 
@@ -26,7 +26,7 @@ SQL 数据库会自动创建数据库备份，并使用 Azure 读取访问异地
 
 ## <a name="what-is-a-sql-database-backup"></a>什么是 SQL 数据库备份？
 
-SQL 数据库使用 SQL Server 技术创建[完整](https://msdn.microsoft.com/library/ms186289.aspx)、[差异](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server)和[事务日志](https://msdn.microsoft.com/library/ms191429.aspx)备份，以便用于时间点还原 (PITR)。 一般每隔 5 - 10 分钟创建一次事务日志备份，每隔 12 小时创建一次差异备份，具体频率取决于性能级别和数据库活动量。 借助事务日志备份以及完整备份和差异备份，可将数据库还原到托管数据库的服务器上的特定时间点。 还原数据库时，服务会确定需要还原哪些完整、差异备份和事务日志备份。
+SQL 数据库使用 SQL Server 技术创建[完整](https://msdn.microsoft.com/library/ms186289.aspx)、[差异](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server)和[事务日志](https://msdn.microsoft.com/library/ms191429.aspx)备份，以便用于时间点还原 (PITR)。 一般每隔 5 - 10 分钟创建一次事务日志备份，每隔 12 小时创建一次差异备份，具体频率取决于性能级别和数据库活动量。 借助事务日志备份以及完整备份和差异备份，可将数据库还原到托管数据库的服务器上的特定时间点。 完整和差异数据库备份也会复制到[配对的数据中心](../best-practices-availability-paired-regions.md)，以防数据中心中断。 还原数据库时，服务会确定需要还原哪些完整、差异备份和事务日志备份。
 
 
 可使用这些备份执行以下任务：
@@ -51,12 +51,14 @@ SQL 数据库使用 SQL Server 技术创建[完整](https://msdn.microsoft.com/l
 > [!IMPORTANT]
 > 如果删除了托管 SQL 数据库的 Azure SQL 服务器，则属于该服务器的所有弹性池和数据库也会被删除且不可恢复。 无法还原已删除的服务器。 但是，如果配置了长期保留，将不会删除具有 LTR 的数据库的备份，并且可以还原这些数据库。
 
-### <a name="pitr-retention-for-dtu-based-service-tiers"></a>基于 DTU 的服务层的 PITR 保留
+### <a name="pitr-retention-period"></a>PITR 保留期
 使用基于 DTU 的购买模型创建的数据库的默认保持期取决于服务层：
 
 * 基本服务层为 1 周。
 * 标准服务层为 5 周。
 * 高级服务层为 5 周。
+
+如果使用[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)，则备份保留期是可配置的，最长为 35 天。 
 
 如果缩短当前 PITR 保持期，早于新保持期的所有现有备份将不再可用。 
 

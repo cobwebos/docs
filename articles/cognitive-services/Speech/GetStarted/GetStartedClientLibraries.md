@@ -1,5 +1,5 @@
 ---
-title: 通过使用客户端库开始使用 Microsoft 语音识别 API | Microsoft Docs
+title: 通过使用必应语音客户端库开始使用 Microsoft 语音识别 API | Microsoft Docs
 description: 使用 Microsoft 认知服务中的 Microsoft 语音服务客户端库开发将语音转换为文本的应用程序。
 services: cognitive-services
 author: zhouwangzw
@@ -9,28 +9,31 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: zhouwang
-ms.openlocfilehash: 5abe5bc48c2bd73d0facf33e41a8076df2972153
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f4b6a97260c6dc176600af8844001e4de819ff7c
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365660"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42357504"
 ---
-# <a name="get-started-with-speech-service-client-libraries"></a>语音服务客户端库入门
+# <a name="get-started-with-bing-speech-service-client-libraries"></a>必应语音服务客户端库入门
 
-除了通过 REST API 直接提出 HTTP 请求，语音服务还为开发人员提供采用不同语言的语音客户端库。 语音客户端库：
+除了通过 REST API 直接发出 HTTP 请求外，必应语音服务还为开发人员提供采用不同语言的语音客户端库。 语音客户端库：
 
 - 支持更高级的语音识别功能，例如实时的中间结果，长时间的音频流（长达 10 分钟）和连续识别。
 - 采用首选语言提供简单和常用的 API。
 - 隐藏低级别通信详细信息。
 
-目前，提供以下语音客户端库：
+目前，提供以下必应语音客户端库：
 
 - [C# 桌面库](GetStartedCSharpDesktop.md)
 - [C# 服务库](GetStartedCSharpServiceLibrary.md)
 - [JavaScript 库](GetStartedJSWebsockets.md)
 - [适用于 Android 的 Java 库](GetStartedJavaAndroid.md)
 - [适用于 iOS 的 Objective-C 库](Get-Started-ObjectiveC-iOS.md)
+
+> [!NOTE] 
+在 2018 年 5 月，我们还以公共预览版形式发布了新的[语音服务](/speech-service/overview.md)。 我们建议你[免费试用](/speech-service/get-started.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 

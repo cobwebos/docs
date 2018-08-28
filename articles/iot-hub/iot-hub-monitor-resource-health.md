@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 10/09/2017
+ms.date: 08/09/2018
 ms.author: kgremban
-ms.openlocfilehash: 39171f7d7a7b27ec54f67b592e184e90134a1a52
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c7d8631a8e7b99cca8f84ea1011c361db01e399e
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38611365"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42146316"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>监视 Azure IoT 中心的运行状况并快速诊断问题
 
@@ -155,7 +155,7 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 
 #### <a name="cloud-to-device-twin-operations"></a>云到设备孪生操作
 
-云到设备孪生操作类别跟踪设备孪生上服务发起的事件。 这些操作可能包括获取孪生、更新报告属性和订阅所需属性
+云到设备孪生操作类别跟踪设备孪生上服务发起的事件。 这些操作可能获取孪生、更新或替换标记，以及更新或替换所需属性。 
 
 ```json
 {
@@ -172,7 +172,7 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 
 #### <a name="device-to-cloud-twin-operations"></a>设备到云孪生操作
 
-设备到云孪生操作类别跟踪设备孪生上设备发起的事件。 这些操作可能获取孪生、更新或替换标记，以及更新或替换所需属性。 
+设备到云孪生操作类别跟踪设备孪生上设备发起的事件。 这些操作可能包括获取孪生、更新报告属性和订阅所需属性。
 
 ```json
 {

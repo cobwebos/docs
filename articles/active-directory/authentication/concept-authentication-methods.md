@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 4a0fb5739812950f3a01a18acae1d797fa4f9158
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 7776ca63dd5c02e470ead35e3dad73c051731fd1
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622246"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42140838"
 ---
 # <a name="what-are-authentication-methods"></a>有哪些身份验证方法？
 
@@ -136,6 +136,8 @@ Microsoft Authenticator 应用通过将通知推送到智能手机或平板电�
 >
 > 如果需要两种方法，则用户可以使用通知或验证码进行重置，此外还能使用其他任何已启用的方法。
 >
+
+如果你允许通过移动应用和移动应用的验证码使用通知，则使用通知注册 Microsoft Authenticator 应用的用户可以使用通知和代码来验证其身份。
 
 ### <a name="verification-code-from-mobile-app"></a>通过移动应用发送验证码
 

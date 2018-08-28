@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: d3b2f8860f5b8ddd2cc53d8805b7eace788e73a7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ff22ad4f8abae019591150dd9a8ea2cd4ca4e5d9
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230533"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42140431"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>教程：为 GitHub 配置自动用户预配
 
@@ -29,7 +29,7 @@ ms.locfileid: "36230533"
 
 ## <a name="prerequisites"></a>先决条件
 
-在本教程中概述的方案假定您已具有以下各项：
+在本教程中概述的方案假定已有以下各项：
 
 *   Azure Active Directory 租户
 *   启用了[企业计划](https://help.github.com/articles/organization-billing-plans/#business-plan)或更佳计划的 GitHub 租户 
@@ -80,7 +80,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
     ![授权对话框](./media/github-provisioning-tutorial/GitHub2.png)
 
-7. 在 Azure 门户中，输入“租户 URL”并单击“测试连接”，确保 Azure AD 可以连接到 GitHub 应用。 如果连接失败，请确保 GitHub 帐户具有管理员权限，且输入的“租户 URL”正确无误，然后再次尝试“授权”步骤（可以按规则：“https://api.github.com/scim/v2/organizations/ + <Organizations_name>”来编写“租户 URL”，可在 GitHub 帐户：“设置” > “组织”下找到你的组织）。
+7. 在 Azure 门户中，输入“租户 URL”并单击“测试连接”，确保 Azure AD 可以连接到 GitHub 应用。 如果连接失败，请确保 GitHub 帐户具有管理员权限，且输入的“租户 URL”正确无误，然后再次尝试“授权”步骤（可以按规则：`https://api.github.com/scim/v2/<Organizations_name>` 来编写“租户 URL”，可在 GitHub 帐户：“设置” > “组织”下找到你的组织）。
 
     ![授权对话框](./media/github-provisioning-tutorial/GitHub3.png)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: v-wingf
-ms.openlocfilehash: fdaf77e3d8a1858372298fb0d67ca05c2717adf6
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 76a83ef4f647dcf7d79218cb281f1f976b292870
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36324162"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42146318"
 ---
 # <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>教程：为 Cisco Webex 配置自动用户预配
 
@@ -171,6 +171,10 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 此操作会对“设置”部分的“范围”中定义的所有用户和/或组启动初始同步。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 可使用“同步详细信息”部分监视进度并跟踪指向预配活动报告的链接，这些报告描述了 Azure AD 预配服务对 Cisco Webex 执行的所有操作。
 
 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../active-directory-saas-provisioning-reporting.md)。
+
+## <a name="connector-limitations"></a>连接器限制
+
+* Cisco Webex 当前处于 Cisco 的早期现场测试 (EFT) 阶段。 有关详细信息，请联系 [Cisco 的支持团队](https://www.webex.co.in/support/support-overview.html)。 
 
 ## <a name="additional-resources"></a>其他资源
 

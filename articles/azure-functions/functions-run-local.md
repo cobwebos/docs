@@ -4,7 +4,7 @@ description: 了解如何通过本地计算机上的命令提示符或终端编�
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.service: functions
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 08/14/2018
 ms.author: glenga
-ms.openlocfilehash: 57011e1f7633688e00a4639ba36fd4442073161d
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: cb336d6742aab10e1fd8305fd52f1376bb4f2598
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618608"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42140236"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -131,13 +131,13 @@ Functions 项目目录包含文件 [host.json](functions-host-json.md) 和 [loca
 func init MyFunctionProj
 ```
 
+提供项目名称时，将创建并初始化具有该名称的新文件夹。 否则，初始化当前文件夹。  
 在版本 2.x 中运行命令时，必须为项目选择一个运行时。 如果你打算开发 JavaScript 函数，请选择“节点”：
 
 ```output
 Select a worker runtime:
 dotnet
 node
-java
 ```
 
 使用向上/向下箭头键选择语言，然后按 Enter。 JavaScript 项目的输出如以下示例所示：
@@ -298,19 +298,24 @@ func new --template "Queue Trigger" --name QueueTriggerJS
 ```bash
 func host start
 ```
+仅在版本 1.x 中需要 `host` 命令。
 
 `func host start` 支持以下选项：
 
 | 选项     | Description                            |
 | ------------ | -------------------------------------- |
-|**`--port -p`** | 要侦听的本地端口。 默认值：7071。 |
-| **`--debug <type>`** | 在调试端口打开的情况下启动主机，以便可以从 [Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started) 或 [Visual Studio 2017](functions-dotnet-class-library.md) 附加到 **func.exe** 进程。 *\<type\>* 选项为 `VSCode` 和 `VS`。  |
 | **`--cors`** | 以逗号分隔的 CORS 来源列表，其中不包含空格。 |
-| **`--nodeDebugPort -n`** | 节点调试程序要使用的端口。 默认值：launch.json 中的值或 5858。 |
-| **`--debugLevel -d`** | 控制台跟踪级别（关闭、详情、信息、警告或错误）。 默认：信息。|
+| **`--debug <type>`** | 在调试端口打开的情况下启动主机，以便可以从 [Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started) 或 [Visual Studio 2017](functions-dotnet-class-library.md) 附加到 **func.exe** 进程。 *\<type\>* 选项为 `VSCode` 和 `VS`。  |
+| **`--port -p`** | 要侦听的本地端口。 默认值：7071。 |
 | **`--timeout -t`** | Functions 主机启动的超时时间（以秒为单位）。 默认值：20 秒。|
 | **`--useHttps`** | 绑定到 `https://localhost:{port}` ，而不是绑定到 `http://localhost:{port}` 。 默认情况下，此选项会在计算机上创建可信证书。|
-| **`--pause-on-error`** | 退出进程前，暂停增加其他输入。 从 Visual Studio 或 VS Code 启动 Core Tools 时使用。|
+| **`--build`** | 在运行之前生成当前项目。 仅限 2.x 和 C# 项目。 |
+| **`--cert`** | 包含私钥的 .pfx 文件的路径。 仅与 `--useHttps` 一起使用。 仅限 2.x 版。 | 
+| **`--password`** | 密码或包含 .pfx 文件密码的文件。 仅与 `--cert` 一起使用。 仅限 2.x 版。 |
+| **`--language-worker`** | 用于配置语言辅助角色的参数。 仅限 2.x 版。 |
+| **`--nodeDebugPort -n`** | 节点调试程序要使用的端口。 默认值：launch.json 中的值或 5858。 仅限 1.x 版。 |
+
+对于 C# 类库项目 (.csproj)，必须包含 `--build` 选项才能生成库 .dll。
 
 Functions 主机启动时，会输出 HTTP 触发的函数的 URL：
 

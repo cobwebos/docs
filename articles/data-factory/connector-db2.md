@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/28/2018
+ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 11647c231db3ff7beb2fed641dc72ff339b2b45a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: f9d1d2181649cf24784dc7ad11638946c9ee4406
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046235"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42146328"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 DB2 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -63,7 +63,7 @@ DB2 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：Db2 | 是 |
-| server |DB2 服务器的名称。 |是 |
+| server |DB2 服务器的名称。 可以在冒号分隔的服务器名称后面指定端口号，例如 `server:port`。 |是 |
 | database |DB2 数据库的名称。 |是 |
 | authenticationType |用于连接 DB2 数据库的身份验证类型。<br/>允许的值为：Basic。 |是 |
 | username |指定用于连接到 DB2 数据库的用户名。 |是 |
@@ -78,7 +78,7 @@ DB2 链接服务支持以下属性：
     "properties": {
         "type": "Db2",
         "typeProperties": {
-            "server": "<servername>",
+            "server": "<servername:port>",
             "database": "<dbname>",
             "authenticationType": "Basic",
             "username": "<username>",

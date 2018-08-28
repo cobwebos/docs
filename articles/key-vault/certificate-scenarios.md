@@ -3,7 +3,7 @@ title: Key Vault 证书入门
 description: 以下方案概述了 Key Vault 的证书管理服务的多种主要使用方式，包括在密钥保管库中创建第一个证书所需的其他步骤。
 services: key-vault
 documentationcenter: ''
-author: lleonard-msft
+author: bryanla
 manager: mbaldwin
 tags: azure-resource-manager
 ms.assetid: a788b958-3acb-4bb6-9c94-4776852aeea1
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
-ms.author: alleonar
-ms.openlocfilehash: f1a1a2fa083dd1bf02132e08981d736a17a2c58f
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.author: bryanla
+ms.openlocfilehash: f2becc5d746c3079e8f686748f33f10cd4a8d8c8
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109477"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42140818"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 证书入门
 以下方案概述了 Key Vault 的证书管理服务的多种主要使用方式，包括在密钥保管库中创建第一个证书所需的其他步骤。
@@ -51,14 +51,14 @@ ms.locfileid: "37109477"
 
 **步骤 3** - Contoso 管理员以及拥有证书（取决于 CA）的 Contoso 员工（Key Vault 用户）可以从管理员处获取证书，也可以直接从 CA 的帐户获取。  
 
--   开始通过创建[证书颁发者](https://docs.microsoft.com/rest/api/keyvault/certificate-issuers)资源，对密钥保管库执行添加凭据操作。 
+-   开始通过[设置证书颁发者](/rest/api/keyvault/setcertificateissuer)资源，对密钥保管库执行添加凭据操作。 证书颁发者是 Azure Key Vault (KV) 中表示为 CertificateIssuer 资源的实体。 它用于提供有关 KV 证书来源的信息：颁发者名称、提供者、凭据和其他管理详细信息。
     -   例如： MyDigiCertIssuer  
         -   提供程序  
         -   凭据 - CA 帐户凭据。 每个 CA 都有其自身的特定数据。  
 
      若要详细了解如何通过 CA 提供者来创建帐户，请参阅 [Key Vault 博客](http://aka.ms/kvcertsblog)上的相关文章。  
 
-**步骤 3.1** - 设置用于接收通知的[证书联系人](https://docs.microsoft.com/rest/api/keyvault/certificate-contacts)。 这是 Key Vault 用户的联系人。 Key Vault 不强制执行此步骤。  
+**步骤 3.1** - 设置用于接收通知的[证书联系人](/rest/api/keyvault/setcertificatecontacts)。 这是 Key Vault 用户的联系人。 Key Vault 不强制执行此步骤。  
 
 注意 - 上述过程（一直到步骤 3.1）是一次性操作。  
 
@@ -121,5 +121,5 @@ ms.locfileid: "37109477"
   (5) - 应用程序在合并 CA 提供的 X509 证书后，就完成了新证书创建过程。
 
 ## <a name="see-also"></a>另请参阅
-- [证书操作](/rest/api/keyvault/certificate-operations)
+
 - [关于键、密钥和证书](about-keys-secrets-and-certificates.md)

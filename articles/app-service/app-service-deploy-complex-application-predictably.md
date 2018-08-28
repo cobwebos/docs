@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 3719e037f1564411a8f94d1ca962ba1ef6b5d435
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 884edbf56fbf67e4ee71e0832f8924a3747994c9
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22987452"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42146314"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>按可预见的方式在 Azure 中设置和部署微服务
-本教程演示如何通过使用 JSON 资源组模板和 PowerShell 脚本以一种可预见的方式，在 [Azure 应用服务](/services/app-service/)中由[微服务](https://en.wikipedia.org/wiki/Microservices)构成的应用程序设置并部署为单个单元。 
+本教程演示如何通过使用 JSON 资源组模板和 PowerShell 脚本以一种可预见的方式，在 [Azure 应用服务](https://azure.microsoft.com/services/app-service/)中由[微服务](https://en.wikipedia.org/wiki/Microservices)构成的应用程序设置并部署为单个单元。 
 
-在设置和部署由高度分离的微服务构成的高扩展性应用程序时，可重复性和可预见性对成功至关重要。 使用 [Azure 应用服务](/services/app-service/)，可以创建包括 Web 应用、移动应用、API 应用和逻辑应用在内的微服务。 使用 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)，可以将所有微服务作为一个单元与资源依赖项（如数据库和源代码管理设置）一起进行管理。 现在，还可以使用 JSON 模板和简单的 PowerShell 脚本部署此类应用程序。 
+在设置和部署由高度分离的微服务构成的高扩展性应用程序时，可重复性和可预见性对成功至关重要。 使用 [Azure 应用服务](https://azure.microsoft.com/services/app-service/)，可以创建包括 Web 应用、移动应用、API 应用和逻辑应用在内的微服务。 使用 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)，可以将所有微服务作为一个单元与资源依赖项（如数据库和源代码管理设置）一起进行管理。 现在，还可以使用 JSON 模板和简单的 PowerShell 脚本部署此类应用程序。 
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -39,10 +39,10 @@ ms.locfileid: "22987452"
 ## <a name="tools-you-will-use"></a>将使用的工具
 在本教程中，将使用以下工具。 由于对工具的讨论并不全面，我将坚持使用端到端方案，并只提供每个方案的简要介绍及在哪里可找到它的详细信息。 
 
-### <a name="azure-resource-manager-templates-json"></a>Azure Resource Manager 模板 (JSON)
-例如，每当在 Azure 应用服务中创建 Web 应用时，Azure Resource Manager 都将使用 JSON 模板来创建具有组件资源的整个资源组。 [Azure 应用商店](/marketplace)中的复杂模板（例如 [Scalable WordPress](/marketplace/partners/wordpress/scalablewordpress/) 应用）可能包含 MySQL 数据库、存储帐户、应用服务计划、Web 应用本身、警报规则、应用设置、自动缩放设置等等，可以通过 PowerShell 使用所有这些模板。 有关如何下载和使用这些模板的信息，请参阅[将 Azure PowerShell 与 Azure Resource Manager 配合使用](../powershell-azure-resource-manager.md)。
+### <a name="azure-resource-manager-templates-json"></a>Azure 资源管理器模板 (JSON)
+例如，每当在 Azure 应用服务中创建 Web 应用时，Azure 资源管理器都将使用 JSON 模板来创建具有组件资源的整个资源组。 [Azure 市场](/marketplace)中的复杂模板（例如 [Scalable WordPress](/marketplace/partners/wordpress/scalablewordpress/) 应用）可能包含 MySQL 数据库、存储帐户、应用服务计划、Web 应用本身、警报规则、应用设置、自动缩放设置等等，可以通过 PowerShell 使用所有这些模板。 有关如何下载和使用这些模板的信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../powershell-azure-resource-manager.md)。
 
-有关 Azure Resource Manager 模板的详细信息，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)
+有关 Azure 资源管理器模板的详细信息，请参阅[创作 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)
 
 ### <a name="azure-sdk-26-for-visual-studio"></a>Azure SDK 2.6 for Visual Studio
 最新的 SDK 包含对 JSON 编辑器中 Resource Manager 模板支持的改进。 可以使用它快速从头开始创建资源组模板，或打开现有 JSON 模板（例如下载的库模板）以进行修改、填充参数文件，甚至直接从 Azure 资源组解决方案部署资源组。
@@ -50,9 +50,9 @@ ms.locfileid: "22987452"
 有关详细信息，请参阅 [Azure SDK 2.6 for Visual Studio](https://azure.microsoft.com/blog/2015/04/29/announcing-the-azure-sdk-2-6-for-net/)。
 
 ### <a name="azure-powershell-080-or-later"></a>Azure PowerShell 0.8.0 或更高版本
-从版本 0.8.0 开始，Azure PowerShell 安装除了包括 Azure 模块外还包括 Azure Resource Manager 模块。 使用此新模块可以编写资源组部署的脚本。
+从版本 0.8.0 开始，Azure PowerShell 安装除了包括 Azure 模块外还包括 Azure 资源管理器模块。 使用此新模块可以编写资源组部署的脚本。
 
-有关详细信息，请参阅[将 Azure PowerShell 与 Azure Resource Manager 配合使用](../powershell-azure-resource-manager.md)
+有关详细信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../powershell-azure-resource-manager.md)
 
 ### <a name="azure-resource-explorer"></a>Azure 资源浏览器
 使用此[预览工具](https://resources.azure.com)可以够浏览订阅中所有资源组的 JSON 定义和独立资源。 在工具中，可编辑资源的 JSON 定义、删除资源的整个层次结构及创建新资源。  此工具中随时可用的信息对模板创作非常有帮助，因为它会显示需要为特定类型的资源设置的属性、正确值等。甚至可在 [Azure 门户](https://portal.azure.com/)中创建资源组，并在资源管理器工具中检查其 JSON 定义以帮助模板化资源组。
@@ -81,7 +81,7 @@ ms.locfileid: "22987452"
    
    ![](./media/app-service-deploy-complex-application-predictably/gettemplate-4-portalresourcegroupclicked.png)
 
-刚才在几分钟内看到的全部内容就是一个经过完全部署的由两个微服务构成的应用程序，以及所有组件、依赖项、设置、数据库和连续发布，均由 Azure Resource Manager 中的自动化协调所设置。 所有这一切均是通过两项内容完成：
+刚才在几分钟内看到的全部内容就是一个经过完全部署的由两个微服务构成的应用程序，以及所有组件、依赖项、设置、数据库和连续发布，均由 Azure 资源管理器中的自动化协调所设置。 所有这一切均是通过两项内容完成：
 
 * “部署到 Azure”按钮
 * 存储库根中的 azuredeploy.json
@@ -127,19 +127,19 @@ ms.locfileid: "22987452"
 
 * 使用参数可确保已创建资源的命名和配置方式使其与其他资源保持一致。
 * SQLServer 资源具有两个嵌套的资源，而每个具有不同的 `type` 值。
-* `“resources”: […]` 内（其中定义了数据库和防火墙规则）的嵌套资源具有 `dependsOn` 元素，后者指定根级别 SQLServer 资源的资源 ID。 这会告知 Azure Resource Manager：“创建此资源之前，另一个资源必须已经存在；如果在模板中定义另一个资源，则先创建一个。”
+* `“resources”: […]` 内（其中定义了数据库和防火墙规则）的嵌套资源具有 `dependsOn` 元素，后者指定根级别 SQLServer 资源的资源 ID。 这会告知 Azure 资源管理器：“创建此资源之前，另一个资源必须已经存在；如果在模板中定义另一个资源，则先创建一个。”
   
   > [!NOTE]
-  > 有关如何使用 `resourceId()` 函数的详细信息，请参阅 [Azure Resource Manager 模板功能](../azure-resource-manager/resource-group-template-functions-resource.md#resourceid)。
+  > 有关如何使用 `resourceId()` 函数的详细信息，请参阅 [Azure 资源管理器模板功能](../azure-resource-manager/resource-group-template-functions-resource.md#resourceid)。
   > 
   > 
-* `dependsOn` 元素的影响在于让 Azure Resource Manager 能够知道哪些资源可以并行创建，哪些资源必须按顺序创建。 
+* `dependsOn` 元素的影响在于让 Azure 资源管理器能够知道哪些资源可以并行创建，哪些资源必须按顺序创建。 
 
 #### <a name="web-app"></a>Web 应用
 现在，让我们继续，看看实际的 Web 应用本身，这更加复杂。 在“JSON 概要”中单击“[variables(‘apiSiteName’)]”Web 应用以突出显示其 JSON 代码。 你会注意到内容正在变得更加有趣。 为此，我将一个一个地讨论功能：
 
 ##### <a name="root-resource"></a>根资源
-Web 应用取决于两个不同的资源。 这意味着只有在创建应用服务计划和 SQL Server 实例后，Azure Resource Manager 才将创建 Web 应用。
+Web 应用取决于两个不同的资源。 这意味着只有在创建应用服务计划和 SQL Server 实例后，Azure 资源管理器才将创建 Web 应用。
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-5-webapproot.png)
 
@@ -166,7 +166,7 @@ Web 应用取决于两个不同的资源。 这意味着只有在创建应用服
 > 
 
 ##### <a name="source-control"></a>源代码管理
-源代码管理设置也被定义为嵌套资源。 Azure Resource Manager 使用此资源来配置连续发布（稍后请参阅 `IsManualIntegration` 上的注意事项），并且还可在 JSON 文件的处理过程中自动启动应用程序代码的部署。
+源代码管理设置也被定义为嵌套资源。 Azure 资源管理器使用此资源来配置连续发布（稍后请参阅 `IsManualIntegration` 上的注意事项），并且还可在 JSON 文件的处理过程中自动启动应用程序代码的部署。
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-8-webappsourcecontrol.png)
 
@@ -175,7 +175,7 @@ Web 应用取决于两个不同的资源。 这意味着只有在创建应用服
 请注意，在 `dependsOn` 元素中，除 Web 应用资源本身外，`sourcecontrols/web` 也取决于 `config/appsettings` 和 `config/connectionstrings`。 这是因为一旦配置 `sourcecontrols/web` 后，Azure 部署进程会自动尝试部署、构建和启动应用程序代码。 因此，插入此依赖项可帮助你确保在运行应用程序代码之前，应用程序有权访问所需的应用设置和连接字符串。 
 
 > [!NOTE]
-> 另请注意，`IsManualIntegration` 设置为 `true`。 此属性在本教程中是必需的，由于你实际上并不拥有 GitHub 存储库，因此不能实际授权 Azure 配置从 [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) 的连续发布（即，将自动存储库更新推送到 Azure）。 只有当之前已在 [Azure 门户](https://portal.azure.com/)中配置了所有者的 GitHub 凭据时，才可将默认值 `false` 用于指定的存储库。 换言之，如果之前已在 [Azure 门户](https://portal.azure.com/)中使用用户凭据为任何应用将源代码管理设置到 GitHub 或 BitBucket，则 Azure 将记住凭据并在将来每当从 GitHub 或 BitBucket 部署任何应用时使用这些凭据。 但是，如果还没有完成此操作，在 Azure Resource Manager 尝试配置 Web 应用的源代码管理设置时 JSON 模板的部署会失败，因为它不能使用存储库所有者的凭据登录到 GitHub 或 BitBucket。
+> 另请注意，`IsManualIntegration` 设置为 `true`。 此属性在本教程中是必需的，由于你实际上并不拥有 GitHub 存储库，因此不能实际授权 Azure 配置从 [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) 的连续发布（即，将自动存储库更新推送到 Azure）。 只有当之前已在 [Azure 门户](https://portal.azure.com/)中配置了所有者的 GitHub 凭据时，才可将默认值 `false` 用于指定的存储库。 换言之，如果之前已在 [Azure 门户](https://portal.azure.com/)中使用用户凭据为任何应用将源代码管理设置到 GitHub 或 BitBucket，则 Azure 将记住凭据并在将来每当从 GitHub 或 BitBucket 部署任何应用时使用这些凭据。 但是，如果还没有完成此操作，在 Azure 资源管理器尝试配置 Web 应用的源代码管理设置时 JSON 模板的部署会失败，因为它不能使用存储库所有者的凭据登录到 GitHub 或 BitBucket。
 > 
 > 
 
@@ -258,15 +258,15 @@ Web 应用取决于两个不同的资源。 这意味着只有在创建应用服
 最后一个 cmdlet，`New-AzureResourceGroup`，实际执行了该操作。 所有这一切向你展示了，借助工具可相对简单地以可预见的方式部署云应用程序。 每使用相同的参数文件在相同的模板上运行该 cmdlet 时，都会获得相同的结果。
 
 ## <a name="summary"></a>摘要
-在 DevOps 中，可重复性和可预见性对成功部署由微服务构成的高扩展性应用程序至关重要。 在本教程中，已经通过使用 Azure Resource Manager 模板将一个由两个微服务构成的应用程序作为单个资源组部署到 Azure。 但愿这已提供所需的知识，使你能够在 Azure 中开始将应用程序转换为模板，并且能够以可预见的方式设置和部署它。 
+在 DevOps 中，可重复性和可预见性对成功部署由微服务构成的高扩展性应用程序至关重要。 在本教程中，已经通过使用 Azure 资源管理器模板将一个由两个微服务构成的应用程序作为单个资源组部署到 Azure。 但愿这已提供所需的知识，使你能够在 Azure 中开始将应用程序转换为模板，并且能够以可预见的方式设置和部署它。 
 
 <a name="resources"></a>
 
 ## <a name="more-resources"></a>更多资源
-* [Azure Resource Manager 模板语言](../azure-resource-manager/resource-group-authoring-templates.md)
-* [创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)
-* [Azure Resource Manager 模板功能](../azure-resource-manager/resource-group-template-functions.md)
-* [使用 Azure Resource Manager 模板部署应用程序](../azure-resource-manager/resource-group-template-deploy.md)
-* [将 Azure PowerShell 与 Azure Resource Manager 配合使用](../azure-resource-manager/powershell-azure-resource-manager.md)
+* [Azure 资源管理器模板语言](../azure-resource-manager/resource-group-authoring-templates.md)
+* [创作 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Azure 资源管理器模板功能](../azure-resource-manager/resource-group-template-functions.md)
+* [使用 Azure 资源管理器模板部署应用程序](../azure-resource-manager/resource-group-template-deploy.md)
+* [将 Azure PowerShell 与 Azure 资源管理器配合使用](../azure-resource-manager/powershell-azure-resource-manager.md)
 * [Azure 中的资源组部署故障排除](../azure-resource-manager/resource-manager-common-deployment-errors.md)
 

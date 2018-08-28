@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/04/2018
+ms.date: 08/14/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 582513e7e556859e70c1af9c4f6179e1d60e0139
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 2060239b27ef05c34ea6f5b388b4c4086a44a826
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216685"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42140620"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Azure 自动化中的子 Runbook
 
@@ -42,7 +42,7 @@ ms.locfileid: "39216685"
 
 * Runbook 的发布顺序仅对于 PowerShell 工作流和图形 PowerShell 工作流 Runbook 重要。
 
-在通过内联执行调用图形或 PowerShell 工作流子 Runbook 时，只需使用 Runbook 的名称。  调用 PowerShell 子 runbook 时，必须在其名称前面添加 *.\\*，以指定脚本位于本地目录中。 
+在通过内联执行调用图形或 PowerShell 工作流子 Runbook 时，只需使用 Runbook 的名称。  调用 PowerShell 子 runbook 时，必须在其名称前面添加 *.\\*，以指定脚本位于本地目录中。
 
 ### <a name="example"></a>示例
 
@@ -72,25 +72,36 @@ $output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 
 使用 cmdlet 启动的子 Runbook 的参数以哈希表形式提供，如 [Runbook 参数](automation-starting-a-runbook.md#runbook-parameters)中所述。 只能使用简单数据类型。 如果 Runbook 的参数使用复杂数据类型，则必须内联调用该 Runbook。
 
+如果使用多个订阅，则在调用子 Runbook 时可能会丢失订阅上下文。 若要确保将订阅上下文传递给子 Runbook，请将 `DefaultProfile` 参数添加到 cmdlet 并将上下文传递给它。
+
 ### <a name="example"></a>示例
 
 以下示例将启动一个包含参数的子 Runbook，然后使用 Start-AzureRmAutomationRunbook -wait 参数等待其完成。 完成后，将从子 Runbook 收集其输出。 若要使用 `Start-AzureRmAutomationRunbook`，必须向 Azure 订阅进行身份验证。
 
 ```azurepowershell-interactive
 # Connect to Azure with RunAs account
-$conn = Get-AutomationConnection -Name "AzureRunAsConnection"
+$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
 
-$null = Add-AzureRmAccount `
-  -ServicePrincipal `
-  -TenantId $conn.TenantId `
-  -ApplicationId $conn.ApplicationId `
-  -CertificateThumbprint $conn.CertificateThumbprint
+Add-AzureRmAccount `
+    -ServicePrincipal `
+    -TenantId $ServicePrincipalConnection.TenantId `
+    -ApplicationId $ServicePrincipalConnection.ApplicationId `
+    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
+
+$AzureContext = Select-AzureRmSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
 
 $params = @{"VMName"="MyVM";"RepeatCount"=2;"Restart"=$true}
-$joboutput = Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-ChildRunbook" -ResourceGroupName "LabRG" –Parameters $params –wait
+
+Start-AzureRmAutomationRunbook `
+    –AutomationAccountName 'MyAutomationAccount' `
+    –Name 'Test-ChildRunbook' `
+    -ResourceGroupName 'LabRG' `
+    -DefaultProfile $AzureContext `
+    –Parameters $params –wait
 ```
 
 ## <a name="comparison-of-methods-for-calling-a-child-runbook"></a>子 Runbook 调用方法的比较
+
 下表汇总了从一个 Runbook 调用另一个 Runbook 的两种方法的差异。
 
 |  | 内联 | Cmdlet |

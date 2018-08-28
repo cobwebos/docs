@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: lmolkova
-ms.openlocfilehash: 847056acd2d97391782dcac1874a2739b7f5825c
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: 5489fa999f3427345c3ee9f07f904296de224e31
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
-ms.locfileid: "27741214"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42140829"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>通过服务总线消息传递进行分布式跟踪和关联
 
@@ -30,7 +30,7 @@ ms.locfileid: "27741214"
 Microsoft Azure 服务总线消息传递已定义生成者与使用者应该用来传递此类跟踪上下文的有效负载属性。
 该协议基于 [HTTP 关联协议](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)。
 
-| 属性名称        | 说明                                                 |
+| 属性名称        | Description                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnostic-Id       | 生成者针对队列发出的外部调用的唯一标识符。 请参阅 [HTTP 协议中的 Request-Id](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) 了解事实依据、注意事项和格式 |
 |  Correlation-Context | 操作上下文，将传播到操作处理流程涉及到的所有服务。 有关详细信息，请参阅 [HTTP 协议中的 Correlation-Context](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) |
@@ -45,8 +45,8 @@ Microsoft Azure 服务总线消息传递已定义生成者与使用者应该用�
 [Microsoft Application Insights](https://azure.microsoft.com/services/application-insights/) 提供丰富的性能监视功能，包括自动请求和依赖项跟踪。
 
 请根据项目类型安装 Application Insights SDK：
-- [ASP.NET](../application-insights/app-insights-asp-net.md) 2.5-beta2 或更高版本
-- [ASP.NET Core](../application-insights/app-insights-asp-net-core.md) 2.2.0-beta2 或更高版本。
+- [ASP.NET](../application-insights/app-insights-asp-net.md) - 安装版本 2.5-beta2 或更高版本
+- [ASP.NET Core](../application-insights/app-insights-asp-net-core.md) - 安装版本 2.2.0-beta2 或更高版本。
 这些链接提供了有关安装 SDK、创建资源和配置 SDK（如果需要）的详细信息。 针对非 ASP.NET 应用程序，请参阅[适用于控制台应用程序的 Azure Application Insights](../application-insights/application-insights-console.md) 一文。
 
 如果使用[消息处理程序模式](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler)来处理消息，则无需执行其他操作，系统会自动跟踪由服务所完成的所有服务总线调用，并将其与其他遥测项关联。 否则，请参考以下示例手动进行消息处理跟踪。

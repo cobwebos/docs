@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: conceptual
-ms.date: 07/27/2018
+ms.date: 08/21/2018
 ms.author: carlrab
-ms.openlocfilehash: 6c43a52309a6f41d73ead19fc5f5b7df2f06d6f6
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 03e24679ea01dabb78a0d7028d49b624b2e3bf64
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308807"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246446"
 ---
 # <a name="sql-database-faq"></a>SQL 数据库常见问题
 
@@ -46,7 +46,6 @@ SQL 数据库的当前版本是 V12。 V11 版本已停用。
 
 ## <a name="are-there-dual-use-rights-with-azure-hybrid-benefit-for-sql-server"></a>面向 SQL Server 的 Azure 混合权益是否具有双倍使用权利？
 我们为客户提供 180 天的许可证双倍使用权利，以确保无缝运行迁移。 在 180 天期限过后，SQL Server 许可证只能在云中的 SQL 数据库内使用，并且在本地和云中都没有双倍使用权利。
-
 
 ## <a name="how-does-azure-hybrid-benefit-for-sql-server-differ-from-license-mobility"></a>面向 SQL Server 的 Azure 混合权益与许可证移动性有何区别？
 目前，我们为 SQL Server 客户提供软件保障许可证移动性权益，以便将其许可证重新分配到第三方共享服务器。 可对 Azure IaaS 和 AWS EC2 使用此权益。
@@ -168,7 +167,10 @@ SQL 数据库根据[购买模型](sql-database-service-tiers-dtu.md)按可预测
 在 [Azure 门户](https://portal.azure.com)中，单击“SQL Server”，从列表中选择服务器，并单击“重置密码”。
 
 ## <a name="how-do-i-manage-databases-and-logins"></a>如何管理数据库和登录名？
-请参阅[管理数据库和登录名](sql-database-manage-logins.md)。
+请参阅[管理数据库和登录名](sql-database-manage-logins.md)。 
+
+> [!NOTE]
+> 创建服务器管理员帐户后，将不能更改该帐户的名称。
 
 ## <a name="how-do-i-make-sure-only-authorized-ip-addresses-are-allowed-to-access-a-server"></a>如何确保只允许经过授权的 IP 地址访问服务器？
 请参阅[如何：在 SQL 数据库上配置防火墙设置](sql-database-configure-firewall-settings.md)。

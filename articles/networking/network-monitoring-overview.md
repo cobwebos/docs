@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ajaycode
-ms.openlocfilehash: aea43eed0cb66b0e0d3bb7a393f569714feb475d
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 0656cfcc2dcded284be1a337f797681117f3b313
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850131"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42146337"
 ---
 # <a name="network-monitoring-solutions"></a>网络监视解决方案 
 
@@ -35,7 +35,7 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 * 任务关键型多层应用程序/微服务
 * 用户位置和基于 web 的应用程序 (HTTP/HTTPs) 
 
-性能监视器、ExpressRoute 监视器和服务终结点监视器用于监视 NPM 中的功能，如下所述。
+性能监视器、ExpressRoute 监视器和服务连接监视器是 NPM 中的监视功能，如下所述。
 
 ## <a name="performance-monitor"></a>性能监视
 
@@ -73,9 +73,9 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 * [为 ExpressRoute 配置网络性能监视器](../expressroute/how-to-npm.md)
 * [博客文章](https://aka.ms/NPMExRmonitorGA)
 
-## <a name="service-endpoint-monitor"></a>服务终结点监视器
+## <a name="service-connectivity-monitor"></a>服务连接监视器
 
-使用服务终结点监视功能，现在可以在本地、运营商网络和云/专用数据中心测试应用程序的可访问性并检测性能瓶颈。
+使用服务连接监视功能，现在可以在本地、运营商网络和云/专用数据中心测试应用程序的可访问性并检测性能瓶颈。
 
 * 监视到应用程序的端到端网络连接
 * 将应用程序传送与网络性能相关联，检测用户与应用程序之间的路径上准确的降级位置

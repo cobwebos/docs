@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 07/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9469a5827765a9b82469ac1eedc66666231d82d6
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: d0b380aa6046daa235098516a8c93d3ba72533a6
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116997"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42140821"
 ---
 # <a name="migrate-your-oms-update-deployments-to-azure"></a>将 OMS 更新部署迁移到 Azure
 
@@ -61,10 +61,12 @@ Operations Management Suite (OMS) 门户已被[弃用](../log-analytics/log-anal
 | --- | --- |
 |名称 |用于标识更新部署的唯一名称。 |
 |操作系统| 选择 **Linux** 或 **Windows**。|
-|要更新的计算机 |对于要更新的计算机，请选择现有 OMS 部署所用的保存的搜索结果。 |
+|要更新的计算机 |选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的准备情况将显示在“更新代理准备”列中。</br> 若要了解在 Log Analytics 中创建计算机组的不同方法，请参阅 [Log Analytics 中的计算机组](../log-analytics/log-analytics-computer-groups.md) |
 |更新分类|选择所需的所有更新分类。 CentOS 不能现成地支持此功能。|
 |要排除的更新|输入要排除的更新。 对于 Windows，输入不带 **KB** 前缀的知识库文章。 对于 Linux，输入包名称或使用通配符。  |
 |计划设置|选择启动时间，对于“定期”，然后“一次”或“重复”。|| 维护时段 |为更新设置的分钟数。 该值不能小于 30 分钟，也不能大于 6 小时。 |
+| 维护时段 |为更新设置的分钟数。 该值不能小于 30 分钟，且不能大于 6 小时 |
+| 重新启动控制| 确定应如何处理重新启动。</br>可用选项包括：</br>需要时重新启动(默认)</br>始终重新启动</br>从不重新启动</br>仅重新启动 - 不会安装更新|
 
 单击“计划的更新部署”以查看新建更新部署的状态。
 

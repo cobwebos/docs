@@ -3,9 +3,8 @@ title: Azure 顾问成本建议 | Microsoft Docs
 description: 使用 Azure 顾问优化 Azure 部署的成本。
 services: advisor
 documentationcenter: NA
-author: KumudD
-manager: carmonm
-editor: ''
+author: manbeenkohli
+manager: ''
 ms.assetid: ''
 ms.service: advisor
 ms.devlang: NA
@@ -13,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
-ms.author: kumud
-ms.openlocfilehash: ade6ef996c00c0c06d5b8e44815520e6e4ab7e9f
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.author: makohli
+ms.openlocfilehash: 71c380a1caae730b6b01615ce3047c2e22bd6dfb
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34735861"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42140820"
 ---
 # <a name="advisor-cost-recommendations"></a>顾问成本建议
 
@@ -35,10 +34,13 @@ ms.locfileid: "34735861"
 ## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>通过消除未设置的 ExpressRoute 线路来降低成本
 顾问将识别提供程序状态为“未设置”长达一个月以上的 ExpressRoute 线路将被顾问标识，如果没有使用连接性提供程序配置该线路的计划，顾问将建议删除它。
 
-## <a name="buy-virtual-machine-reserved-instances-to-save-money-over-pay-as-you-go-costs"></a>购买虚拟机预留实例可节省即用即付成本
-顾问将查看你过去 30 天的虚拟机使用情况，并确定你是否可以通过购买预留实例来节省资金。 顾问将向你显示可能在其中最大程度节省资金的区域和大小，并显示通过购买预留实例节约下来的估算费用。 
+## <a name="reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways"></a>通过删除或重新配置空闲虚拟网络网关来降低成本
+顾问会识别已闲置超过 90 天的虚拟网络网关。 由于这些网关按小时计费，因此如果你不打算再使用它们，则应考虑重新配置或删除它们。 
 
-通过预留实例，你可以预先购买虚拟机的基本成本。 折扣将自动应用于新的或现有的 VM，这些 VM 具有与预留实例相同的大小和区域。 [深入了解 Azure 虚拟机预留实例。](https://azure.microsoft.com/pricing/reserved-vm-instances/)
+## <a name="buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs"></a>购买虚拟机预留实例可节省即用即付成本
+顾问将查看你过去 30 天的虚拟机使用情况，并确定你是否可以通过购买 Azure 预留来节省资金。 顾问将向你显示可能在其中最大程度节省资金的区域和大小，并显示通过购买预留节约下来的估算费用。 
+
+通过 Azure 预留，你可以预先购买虚拟机的基本成本。 折扣将自动应用于新的或现有的 VM，这些 VM 具有与预留相同的大小和区域。 [深入了解 Azure 虚拟机预留实例。](https://azure.microsoft.com/pricing/reserved-vm-instances/)
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>如何访问 Azure 顾问中的成本建议
 

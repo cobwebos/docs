@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 44f4dc3a9c876e383a6e4df8ef5f467f2b93eaa9
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0238dce3f8cbf838e7fce3afefb866e3aaa791bc
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205478"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42140427"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>使用 PowerShell 升级 Service Fabric 应用程序
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "34205478"
 
 最常用的推荐升级方法是受监控的滚动升级。  Azure Service Fabric 基于一组运行状况策略监视正在升级的应用程序的运行状况。 升级某个更新域 (UD) 之后，Service Fabric 将评估应用程序运行状况，根据运行状况策略继续升级下一个更新域，或者使升级失败。
 
-可使用托管或本机 API、PowerShell 或 REST 执行应用程序的受监控升级。 有关使用 Visual Studio 执行升级的说明，请参阅[使用 Visual Studio 升级应用程序](service-fabric-application-upgrade-tutorial.md)。
+可使用托管或本机 API、PowerShell、Azure CLI、Java 或 REST 执行受监视的应用程序升级。 有关使用 Visual Studio 执行升级的说明，请参阅[使用 Visual Studio 升级应用程序](service-fabric-application-upgrade-tutorial.md)。
 
 使用 Service Fabric 监视的滚动升级，应用程序管理员可以配置 Service Fabric 用于确定应用程序运行状况是否正常的运行状况评估策略。 此外，管理员还可以配置当运行状况评估失败时要采取的措施（例如，执行自动回滚）。本部分将演练使用 PowerShell 对其中一个 SDK 示例进行受监视的升级。 以下 Microsoft Virtual Academy 视频也分步讲解了应用升级：<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=OrHJH66yC_6406218965">
 <img src="./media/service-fabric-application-upgrade-tutorial-powershell/AppLifecycleVid.png" WIDTH="360" HEIGHT="244">

@@ -11,22 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/19/2018
+ms.date: 08/15/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 8468186d545d7aae484b037f3962b01b0ed4cd2e
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: e97bab36a9a1a18cab1d45abfa451139323b2320
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127544"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42140639"
 ---
 # <a name="create-log-searches-in-azure-log-analytics-using-the-log-search-portal"></a>在 Azure Log Analytics 中使用日志搜索门户创建日志搜索
-
-> [!NOTE]
-> 本文介绍 Azure Log Analytics 中使用新查询语言的日志搜索门户。  若要了解有关新语言的详细信息和工作区升级过程，请参阅[将 Azure Log Analytics 工作区升级到新日志搜索](log-analytics-log-search-upgrade.md)。  
->
-> 如果尚未将工作区升级到新查询语言，应参考[在 Log Analytics 中使用日志搜索查找数据](log-analytics-log-searches.md)，了解有关日志搜索门户当前版本的信息。
 
 本文所含教程介绍如何使用日志搜索门户创建日志搜索并分析存储在 Log Analytics 工作区中的数据。  本教程包括运行一些简单的查询，返回不同类型的数据和分析结果。  它侧重于日志搜索门户中用于修改查询而不是直接对其进行修改的功能。  有关直接编辑查询的详细信息，请参阅[查询语言参考](https://go.microsoft.com/fwlink/?linkid=856079)。
 

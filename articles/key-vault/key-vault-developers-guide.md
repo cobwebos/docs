@@ -2,19 +2,19 @@
 title: Azure 密钥保管库开发人员指南
 description: 开发人员可以使用 Azure 密钥保管库来管理 Microsoft Azure 环境中的加密密钥。
 services: key-vault
-author: lleonard-msft
+author: bryanla
 manager: mbaldwin
 ms.service: key-vault
 ms.topic: article
 ms.workload: identity
 ms.date: 10/12/2017
-ms.author: alleonar
-ms.openlocfilehash: 3a2ab6bbe2470fa12113ca4367316cf7a21190b8
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.author: bryanla
+ms.openlocfilehash: d8554d235fdfeb5b192ddf1268e60b7bc32aabe7
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626722"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42146317"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 密钥保管库开发人员指南
 
@@ -23,7 +23,7 @@ ms.locfileid: "39626722"
 - 无需自己编写代码即可保护密钥和机密信息，并且能够轻松地在应用程序中使用它们。
 - 能够让客户拥有和管理其自己的密钥，因此可以专注于提供核心软件功能。 这样，应用程序便不会对客户的租户密钥和机密承担职责或潜在责任。
 - 应用程序可以使用密钥进行签名和加密，不过使密钥管理与应用程序分开，可以使解决方案适用于地理分散的应用。
-- 自 2016 年 9 月版本的 Key Vault 发布起，应用程序现在可以使用 Key Vault [证书](https://docs.microsoft.com/rest/api/keyvault/certificate-operations)。 有关详细信息，请参阅[关于密钥、机密和证书](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates)。
+- 自 2016 年 9 月版本的 Key Vault 发布起，应用程序现在可以管理 Key Vault 证书。 有关详细信息，请参阅[关于密钥、机密和证书](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates)。
 
 有关 Azure 密钥保管库的更多常规信息，请参阅[什么是密钥保管库](key-vault-whatis.md)。
 

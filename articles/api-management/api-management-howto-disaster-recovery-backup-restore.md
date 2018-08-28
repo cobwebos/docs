@@ -3,7 +3,7 @@ title: 使用 Azure API 管理中的备份和还原实现灾难恢复 | Microsof
 description: 了解如何在 Azure API 管理中使用备份和还原执行灾难恢复。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: erikre
 editor: ''
 ms.service: api-management
@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2018
+ms.date: 08/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 4135bd66e839037d7db694cb3c6df8f3905222e6
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: ce3208fed119452ef9383fcb5b5eefb1aac6e224
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283082"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42140227"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
 
@@ -39,8 +39,6 @@ ms.locfileid: "39283082"
 
 > [!IMPORTANT]
 > 用于还原和备份的 REST API 使用 Azure 资源管理器，并且具有与用于管理 API 管理实体的 REST API 不同的身份验证机制。 本部分中的步骤介绍如何对 Azure 资源管理器请求进行身份验证。 有关详细信息，请参阅[对 Azure 资源管理器请求进行身份验证](http://msdn.microsoft.com/library/azure/dn790557.aspx)。
->
->
 
 使用 Azure 资源管理器对资源所进行的所有任务都必须使用以下步骤通过 Azure Active Directory 进行身份验证：
 
@@ -209,15 +207,16 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 > 也可分别使用 Powershell *Backup-AzureRmApiManagement* 和 *Restore-AzureRmApiManagement* 命令执行备份和还原操作。
 
 ## <a name="next-steps"></a>后续步骤
-查看以下 Microsoft 博客了解备份/还原过程的两种不同的演练。
+
+有关备份/还原过程的不同演练，请查看以下资源。
 
 * [复制 Azure API 管理帐户](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
+* [使用逻辑应用自动执行 API 管理备份和还原](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
 * [Azure API 管理：备份和还原配置](http://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
-  * Stuart 详述的方法与官方指南不匹配，但非常有趣。
+   Stuart 详述的方法与官方指南不匹配，但非常有趣。
 
 [Backup an API Management service]: #step1
 [Restore an API Management service]: #step2
-
 
 [Azure API Management REST API]: http://msdn.microsoft.com/library/azure/dn781421.aspx
 

@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/09/2018
+ms.date: 08/13/2018
 ms.author: raynew
-ms.openlocfilehash: 0d195d5fbede3100c0474ae9614a880cfb3acb19
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 3d835a7bd93426e57c5ab204d277faca22ae0638
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004993"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42140817"
 ---
 # <a name="contoso-migration-rebuild-an-on-premises-app-to-azure"></a>Contoso 迁移：在 Azure 中重新生成本地应用
 
@@ -91,7 +91,7 @@ Contoso 通过将利弊清单放置在一起来评估其建议的设计。
 
 
 
-### <a name="migration-process"></a>迁移流程
+### <a name="migration-process"></a>迁移过程
 
 1. Contoso 预配 ACR、AKS 和 CosmosDB。
 2. 他们为部署预配基础结构，包括 Azure Web 应用、存储帐户、函数和 API。 
@@ -99,7 +99,7 @@ Contoso 通过将利弊清单放置在一起来评估其建议的设计。
 4. Contoso 将使用一个 PowerShell 脚本将这些微服务部署到 ASK。
 5. 最后，他们将部署 Azure 函数和 Web 应用。
 
-    ![迁移流程](./media/contoso-migration-rebuild/migration-process.png) 
+    ![迁移过程](./media/contoso-migration-rebuild/migration-process.png) 
 
 ### <a name="azure-services"></a>Azure 服务
 
@@ -470,7 +470,7 @@ Contoso 预配计算机视觉 API。 函数将调用该 API 来评估用户上�
     ![部署函数](./media/contoso-migration-rebuild/function6.png)
 
 
-7. 浏览到应用来测试“宠物检查程序 AI”是否按预期工作，网址为 [http://smarthotel360public.azurewebsites.net/Pets](http://smarthotel360public.azurewebsites.net/Pets)。
+7. 浏览到应用以测试“宠物检查器”应用是否按预期工作，网址为 [http://smarthotel360public.azurewebsites.net/Pets](http://smarthotel360public.azurewebsites.net/Pets)。
 8. 单击头像来上传照片。
 
     ![部署函数](./media/contoso-migration-rebuild/function7.png)
@@ -490,7 +490,7 @@ Contoso 预配计算机视觉 API。 函数将调用该 API 来评估用户上�
 
 Azure 显示已迁移的资源后，Contoso 需要积极行动、全面保护新的基础结构。
 
-### <a name="security"></a>安全性
+### <a name="security"></a>安全
 
 - Contoso 必须确保其新数据库是安全的。 [了解详细信息](https://docs.microsoft.com/azure/sql-database/sql-database-security-overview)。
 - 需要将应用更新为将 SSL 与证书配合使用。 容器实例应当重新部署为在端口 443 上进行应答。

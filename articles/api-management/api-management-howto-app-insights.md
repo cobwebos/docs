@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 8546b1228c8d8f213cb87692144e8d1d31a949d8
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: a660b36f383eaf1fd0e868200ad7f59aba0f8225
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001797"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42140420"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>如何将 Azure API 管理与 Azure Application Insights 集成
 
@@ -114,6 +114,12 @@ Azure Application Insights 接收：
 可以通过调整“采样率”设置来操控所记录的请求数（参阅前面的步骤）。 值 100% 表示记录所有请求，0% 表示不记录任何请求。 “采样率”有助于减少遥测量，可有效防止性能出现明显下降，同时仍可保持日志记录的优势。
 
 跳过请求和响应的标头与正文的日志记录也有利于缓解性能问题。
+
+## <a name="video"></a>视频
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2pkXv]
+>
+>
 
 ## <a name="next-steps"></a>后续步骤
 

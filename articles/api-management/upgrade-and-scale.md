@@ -3,24 +3,24 @@ title: 升级和缩放 Azure API 管理实例 | Microsoft Docs
 description: 本主题介绍如何升级和缩放 Azure API 管理实例。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: anneta
 editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 06/18/2018
+ms.date: 08/18/2018
 ms.author: apimpm
-ms.openlocfilehash: ca32c72b1582b2a09f9f1754ad778cf1b682a1c2
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 99848cf4ba1e6e65a8c41c682916ca391128eb21
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293306"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42145771"
 ---
-# <a name="upgrade-and-scale-an-api-management-instance"></a>升级和缩放 Azure API 管理实例  
+# <a name="upgrade-and-scale-an-azure-api-management-instance"></a>升级和缩放 Azure API 管理实例  
 
-客户可通过添加和删除单位来缩放 API 管理 (APIM) 实例。 **单位**由专用的 Azure 资源构成，具有以每月 API 调用次数表示的承载容量。 此数字不表示调用限制，而是粗略容量规划允许的最大吞吐量值。 实际吞吐量和延迟因多种因素而异，例如并发连接的数量和速率、配置策略的类型和数量、请求和响应大小以及后端延迟。
+客户可通过添加和删除单位来缩放 Azure API 管理 (APIM) 实例。 **单位**由专用的 Azure 资源构成，具有以每月 API 调用次数表示的承载容量。 此数字不表示调用限制，而是粗略容量规划允许的最大吞吐量值。 实际吞吐量和延迟因多种因素而异，例如并发连接的数量和速率、配置策略的类型和数量、请求和响应大小以及后端延迟。
 
 每个单位的容量和价格取决于该单位所在的**层**。 可在四个层之间选择：“开发人员”、“基本”、“标准”和“高级”。 如果需要提高层中服务的容量，应添加单位。 如果当前在 APIM 实例中选择的层不允许添加更多单位，则需要升级到更高级别的层。
 
@@ -47,7 +47,7 @@ ms.locfileid: "36293306"
 
 “基本”、“标准”和“高级”是附带 SLA 的生产层，可以缩放。 “基本”层是附带 SLA 的最便宜层，最多可以扩展 2 个单位，“标准”层最多可以扩展到四个单位。 可将任意数目的单位添加到“高级”层。
 
-使用“高级”层可在任意数目的所需 Azure 区域中分配单个 API 管理实例。 最初创建 API 管理服务时，实例仅包含一个单位，并驻留在单个 Azure 区域中。 初始区域被指定为**主要**区域。 可以轻松添加更多的区域。 添加区域时，需指定想要分配的单位数。 例如，可在**主要**区域中包含一个单位，在另外某个区域中包含五个单位。 可以定制用于处理每个区域中的流量的单位数。 有关详细信息，请参阅[如何将 Azure API 管理服务实例部署到多个 Azure 区域](api-management-howto-deploy-multi-region.md)。
+使用“高级”层可在任意数目的所需 Azure 区域中分配单个 Azure API 管理实例。 最初创建 Azure API 管理服务时，实例仅包含一个单位，并驻留在单个 Azure 区域中。 初始区域被指定为**主要**区域。 可以轻松添加更多的区域。 添加区域时，需指定想要分配的单位数。 例如，可在**主要**区域中包含一个单位，在另外某个区域中包含五个单位。 可以定制用于处理每个区域中的流量的单位数。 有关详细信息，请参阅[如何将 Azure API 管理服务实例部署到多个 Azure 区域](api-management-howto-deploy-multi-region.md)。
 
 可在任意两个层之间来回升级和降级。 请注意，升级或降级可能会删除某些功能，例如，从“高级”层降级到“标准”或“基本”层时，会删除 VNET 或多区域部署。
 
@@ -63,8 +63,9 @@ ms.locfileid: "36293306"
 3. 选择所需的层。
 4. 指定想要添加的**单位**数。 可以使用滑块，或键入单位数。  
     如果选择“高级”层，则首先需要选择一个区域。
-5. 按“保存”
+5. 按“保存”。
 
 ## <a name="next-steps"></a>后续步骤
 
-[如何将 Azure API 管理服务实例部署到多个 Azure 区域](api-management-howto-deploy-multi-region.md)
+*[如何将 Azure API 管理服务实例部署到多个 Azure 区域](api-management-howto-deploy-multi-region.md)
+*[如何自动缩放 Azure API 管理服务实例](api-management-howto-autoscale.md)

@@ -6,14 +6,14 @@ author: vhorne
 manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 8/15/2018
 ms.author: victorh
-ms.openlocfilehash: b44a57fe8ebcc985d3ab66ea04936a1558d00863
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 48bd548ec977d2dc4dd3b5b2f34df04562a6e918
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598260"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42140624"
 ---
 # <a name="renew-application-gateway-certificates"></a>续订应用程序网关证书
 
@@ -31,7 +31,7 @@ ms.locfileid: "34598260"
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-若要使用 Azure PowerShell 续订证书，请使用以下 cmdlet：
+若要使用 Azure PowerShell 续订证书，请使用以下脚本：
 
 ```azurepowershell-interactive
 $appgw = Get-AzureRmApplicationGateway `
@@ -45,6 +45,8 @@ $password = ConvertTo-SecureString `
 
 set-azureRmApplicationGatewaySSLCertificate -Name <oldcertname> `
 -ApplicationGateway $appgw -CertificateFile <newcertPath> -Password $password
+
+Set-AzureRmApplicationGateway -ApplicationGateway $appgw
 ```
 ## <a name="azure-cli"></a>Azure CLI
 

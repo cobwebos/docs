@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-deasim
-ms.openlocfilehash: e1e002b51aa5a93e7fcc800f5cf48ac401c5cb2d
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 57648486e515b5438f937c4295b33843583e622e
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011418"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42146110"
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Azure CDN 规则引擎功能
 本文列出 Azure 内容分发网络 (CDN) [规则引擎](cdn-rules-engine.md)的可用功能的详细说明。
@@ -216,7 +216,7 @@ If the desired site does not appear in the list, then you should edit its config
 
 若要正确设置带宽限制，下面的两个选项都必须定义。
 
-选项|说明
+选项|Description
 --|--
 每秒千字节数|将此选项设置为可以用来提供响应的最大带宽 (Kb/s)。
 预缓存秒数|将此选项设置为在限制带宽之前 POP 要等待的秒数。 在此时间段内不限制带宽，目的是防止媒体播放器因带宽限制而出现中断或缓冲问题。
@@ -315,7 +315,7 @@ If the desired site does not appear in the list, then you should edit its config
 - 请指定一个或多个查询字符串参数名称，并用一个空格分隔各个参数名称。
 - 此功能确定 cache-key 中是否包括查询字符串参数。 下表提供了每个选项的详细信息。
 
-Type|说明
+Type|Description
 --|--
  包括|  表示 cache-key 中应包括每个指定的参数。 将为每个包含此功能中定义的查询字符串参数的唯一值的请求生成唯一 cache-key。 
  全部包括  |表示将为每个发送到资产的请求生成唯一 cache-key，该资产包括唯一查询字符串。 通常不建议此类配置，因为此类配置可能导致缓存命中百分比低。 缓存命中数少会增加源服务器上的负载，因为它必须发送更多请求。 此配置复制“Query-String 缓存”页上名为“unique-cache”的缓存行为。 
@@ -333,7 +333,7 @@ Type|说明
 
 此功能的以下示例用法提供了示例请求和默认的 cache-key：
 
-- **示例请求：**http://wpc.0001.&lt;Domain&gt;/800001/Origin/folder/asset.htm?sessionid=1234&language=EN&userid=01
+- **示例请求：** http://wpc.0001.&lt;Domain&gt;/800001/Origin/folder/asset.htm?sessionid=1234&language=EN&userid=01
 - **默认 cache-key：**/800001/Origin/folder/asset.htm
 
 ##### <a name="include"></a>包括
@@ -390,7 +390,7 @@ cache-key 是一个相对路径，用于确定缓存的资产。 换言之，服
 
 同时定义以下两个选项即可配置此功能：
 
-选项|说明
+选项|Description
 --|--
 原始路径| 定义要重新写入其 cache-key 的请求类型的相对路径。 可以先选择基础源路径，然后定义一个正则表达式模式，从而定义相对路径。
 新建路径|定义新 cache-key 的相对路径。 可以先选择基础源路径，然后定义一个正则表达式模式，从而定义相对路径。 可以使用 [HTTP 变量](cdn-http-variables.md)动态构造此相对路径。
@@ -466,7 +466,7 @@ This feature is not available for the ADN platform. The typical traffic on this 
 
 文件格式可以通过其 Internet 媒体类型（例如 Content-Type）指定。 Internet 媒体类型是独立于平台的元数据，服务器可以利用它来确定特定资产的文件格式。 下面提供了常见 Internet 媒体类型的列表。
 
-Internet 媒体类型|说明
+Internet 媒体类型|Description
 --|--
 text/plain|纯文本文件
 text/html| HTML 文件
@@ -497,8 +497,8 @@ application/javascript|Javascript
 
 标头类型|格式|示例
 -|-|-
-请求标头|%{[RequestHeader]()}[i]() | %{Accept-Encoding}i <br/> {Referer}i <br/> %{Authorization}i
-响应标头|%{[ResponseHeader]()}[o]()| %{Age}o <br/> %{Content-Type}o <br/> %{Cookie}o
+请求标头|`%{[RequestHeader]()}[i]()` | %{Accept-Encoding}i <br/> {Referer}i <br/> %{Authorization}i
+响应标头|`%{[ResponseHeader]()}[o]()`| %{Age}o <br/> %{Content-Type}o <br/> %{Cookie}o
 
 重要信息：
 
@@ -883,7 +883,7 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 可以对请求标头执行以下操作之一：
 
-选项|说明|示例
+选项|Description|示例
 -|-|-
 附加|指定的值将添加到现有请求标头值的末尾。|**请求标头值（客户端）：**<br/>Value1<br/>**请求标头值（规则引擎）：**<br/>Value2 <br/>**新的请求标头值：** <br/>Value1Value2
 覆盖|请求标头值将设置为指定的值。|**请求标头值（客户端）：**<br/>Value1<br/>**请求标头值（规则引擎）：**<br/>Value2<br/>**新的请求标头值：**<br/> Value2 <br/>
@@ -921,7 +921,7 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 可以对响应标头执行以下操作之一：
 
-选项|说明|示例
+选项|Description|示例
 -|-|-
 附加|指定的值将添加到现有响应标头值的末尾。|**响应标头值（客户端）：**<br />Value1<br/>**响应标头值（规则引擎）：**<br/>Value2<br/>**新的响应标头值：**<br/>Value1Value2
 覆盖|响应标头值将设置为指定的值。|**响应标头值（客户端）：**<br/>Value1<br/>**响应标头值（规则引擎）：**<br/>Value2 <br/>**新的响应标头值：**<br/>Value2 <br/>
@@ -1140,7 +1140,7 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 下表列出了可用的响应代码。
 
-响应代码|响应名称|说明
+响应代码|响应名称|Description
 -------------|-------------|--------
 301|已永久移动|此状态代码将未经授权的用户重定向到在 Location 标头中指定的 URL。
 302|已找到|此状态代码将未经授权的用户重定向到在 Location 标头中指定的 URL。 此状态代码是执行重定向操作的行业标准方法。
@@ -1232,7 +1232,7 @@ WWW-Authenticate 标头仅适用于 401 响应代码。
 
 此功能的配置需要设置以下选项：
 
-选项|说明
+选项|Description
 -|-
 代码|选择会返回给请求者的响应代码。
 源和模式| 这些设置定义的请求 URI 模式用于标识可重定向请求的类型。 只会重定向其 URL 同时满足下述两个条件的请求： <br/> <br/> **源（或内容访问点）：** 选择用于标识源服务器的相对路径。 该路径是 _/XXXX/_ 部分和终结点名称。 <br/><br/> **源（模式）：** 必须定义一个可通过相对路径标识请求的模式。 此正则表达式模式必须定义一个路径，该路径直接开始于以前选择的内容访问点（见上）之后。 <br/> - 确保上面定义的请求 URI 条件（即源和模式）不与为此功能定义的任何匹配条件冲突。 <br/> - 指定模式；如果使用空白值作为模式，则匹配所有字符串。
@@ -1275,7 +1275,7 @@ WWW-Authenticate 标头仅适用于 401 响应代码。
 
 - 此功能的配置需要设置以下选项：
 
-选项|说明
+选项|Description
 -|-
  源和模式 | 这些设置定义的请求 URI 模式用于标识可重写请求的类型。 只会重写其 URL 同时满足下述两个条件的请求： <br/><br/>  - **源（或内容访问点）：** 选择用于标识源服务器的相对路径。 该路径是 _/XXXX/_ 部分和终结点名称。 <br/><br/> - **源（模式）：** 必须定义一个可通过相对路径标识请求的模式。 此正则表达式模式必须定义一个路径，该路径直接开始于以前选择的内容访问点（见上）之后。 <br/> 确认上面定义的请求 URI 条件（即源和模式）不与为此功能定义的任何匹配条件冲突。 指定模式；如果使用空白值作为模式，则匹配所有字符串。 
  目标  |定义要通过其将上述请求重写的相对 URL： <br/>    1.选择用于标识源服务器的内容访问点。 <br/>    2.使用以下方式定义相对路径： <br/>        - 正则表达式模式 <br/>        - [HTTP 变量](cdn-http-variables.md) <br/> <br/> 使用 $_n_ 将源模式中捕获的值替换到目标模式中，其中 _n_ 用于按捕获顺序来标识值。 例如，$1 代表按源模式捕获的第一个值，而 $2 则代表第二个值。 

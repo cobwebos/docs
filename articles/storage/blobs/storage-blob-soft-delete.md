@@ -53,7 +53,7 @@ Azure 存储现提供 Blob 对象软删除，目的是为了在应用程序或�
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-delete-snapshot.png)
 
-*软删除数据呈现为灰色，而活动数据为蓝色。新写入的数据显示在旧数据下方。调用 **Snapshot Blob** 时，B0 将变为快照，B1 成为该 blob 的活动状态。如果删除 B0 快照，它将被标记为软删除*。
+*软删除数据呈现为灰色，而活动数据为蓝色。新写入的数据显示在旧数据下方。调用**Snapshot Blob**时，B0 将变为快照，B1 成为该 blob 的活动状态。如果删除 B0 快照，它将被标记为软删除*。
 
 如果对基础 blob（本身不是快照的任何 blob）调用“删除 Blob”，该 blob 将被标记为软删除。 与以前的行为一致，对具有活动快照的 blob 调用“删除 Blob”将返回错误。 对具有软删除快照的 blob 调用“删除 Blob”不会返回错误。 启用软删除后，仍可在单个操作中删除 blob 及其所有快照。 执行该操作会将基础 blob 和快照标记为软删除。
 

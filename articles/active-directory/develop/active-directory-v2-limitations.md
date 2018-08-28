@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 08/14/2018
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: edf0b52e5889fe8fa875de65fcaa8c2a22df1a7f
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 9245e85781482a3aa1e45333d8e8a748983675b6
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39590743"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246420"
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>我是否应使用 v2.0 终结点？
 
@@ -101,6 +101,7 @@ v2.0 终结点目前不支持以下应用类型。 有关支持的应用类型�
 * 若要构建桌面或移动应用程序，可以使用一个预览版 Microsoft 身份验证库 (MSAL)。 这些库当前是支持生产的预览版，因此可在生产应用程序中放心使用。 有关预览版和可用库的术语的详细信息，请阅读[身份验证库参考](reference-v2-libraries.md)中的内容。
 * 对于 Microsoft 库不支持的平台，可以通过直接在应用程序代码中发送和接收协议消息来与 v2.0 终结点进行集成。 v2.0 OpenID Connect 和 OAuth 协议[有明确的说明文档](active-directory-v2-protocols.md)，可帮助执行此类集成。
 * 最后，可以使用开源 Open ID Connect 和 OAuth 库来与 v2.0 终结点集成。 v2.0 协议应与许多开源协议库兼容，不需要进行重大更改。 这些类型的库的可用性根据语言和平台而有所差异。 [Open ID Connect](http://openid.net/connect/) 和 [OAuth 2.0](http://oauth.net/2/) 网站将维护一份热门实现列表。 有关详细信息和经过 v2.0 终结点检验的开放源代码客户端库和示例列表，请参阅 [Azure Active Directory v2.0 身份验证库](reference-v2-libraries.md)。
+  * 作为参考，v2.0 公共终结点的 `.well-known` 终结点为 `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration`。  将 `common` 替换为你的租户 ID，以获取特定于你的租户的数据。  
 
 ## <a name="restrictions-on-protocols"></a>协议限制
 
@@ -109,7 +110,6 @@ v2.0 终结点不支持 SAML 或 WS 联合身份验证；它仅支持 Open ID Co
 以下协议的特性和功能目前在 v2.0 终结点中不可用：
 
 * 目前，仅当配置了可选声明并在请求中指定了范围为 scope=email 时，才会返回 `email` 声明。 但是，此行为会随着 v2.0 终结点的更新而更改，以进一步符合 Open ID Connect 和 OAuth2.0 标准。
-* 未在 v2.0 终结点上实现 OpenID Connect UserInfo 终结点。 但是，在该终结点上可能收到的所有用户配置文件数据都可从 Microsoft Graph `/me` 终结点获取。
 * v2.0 终结点不支持在 ID 令牌中发布角色或组声明。
 * v2.0 终结点不支持 [OAuth 2.0 资源所有者密码凭据授予](https://tools.ietf.org/html/rfc6749#section-4.3)。
 

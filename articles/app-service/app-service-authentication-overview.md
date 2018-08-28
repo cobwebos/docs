@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: mahender
-ms.openlocfilehash: 6b536ba7792e66fe09ba2cc8a631dc5e934faaea
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 0b682b369bf0e0238b3930d89087db535faa8c53
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937969"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42140803"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权
 
@@ -95,7 +95,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 - 使用提供程序 SDK：应用程序手动将用户登录，然后将身份验证令牌提交给应用服务进行验证。 无浏览器应用通常采用此方案，这可以防止向用户显示提供程序的登录页。 应用程序代码管理登录过程，因此，此流也称为“客户端导向流”或“客户端流”。 此方案适用于 REST API、[Azure Functions](../azure-functions/functions-overview.md) 和 JavaScript 浏览器客户端，以及在登录过程中需要更高灵活性的 Web 应用。 它还适用于使用提供程序 SDK 登录用户的本机移动应用。
 
 > [!NOTE]
-> 可以使用服务器导向流，对来自应用服务中受信任浏览器应用的调用，或者来自应用服务或 [Azure Functions](../azure-functions/functions-overview.md) 中另一 REST API 的调用进行身份验证。 有关详细信息，请参阅[使用 Azure 应用服务对用户进行身份验证]()。
+> 可以使用服务器导向流，对来自应用服务中受信任浏览器应用的调用，或者来自应用服务或 [Azure Functions](../azure-functions/functions-overview.md) 中另一 REST API 的调用进行身份验证。 有关详细信息，请参阅[在应用服务中自定义身份验证和授权](app-service-authentication-how-to.md)。
 >
 
 下表说明了身份验证流的步骤。

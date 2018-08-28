@@ -15,18 +15,18 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: e7ca3bcb3c3322c0eba12d7f9eb2ee2bc7b7600c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 75116e0ba50c3f195d528d33822af0c446acd5fe
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049841"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42140847"
 ---
 # <a name="perform-cross-resource-log-searches-in-log-analytics"></a>在 Log Analytics 中执行跨资源日志搜索  
 
 之前通过 Azure Log Analytics，只可以分析来自当前工作区内的数据，这限制了跨订阅中定义的多个工作区查询数据的能力。  此外，之前只能直接在 Application Insights 中或从 Visual Studio 中使用 Application Insights 搜索通过基于 web 的应用程序收集的遥测数据项。  这还使得难以采用本机方式将操作数据和应用程序数据一起分析。   
 
-现在不但可以跨多个 Log Analytics 工作区进行查询，而且还可以查询同一资源组、另一资源组或另一订阅中特定 Application Insights 应用的数据。 这可以提供数据的系统级视图。  只能在[高级门户](log-analytics-log-search-portals.md#advanced-analytics-portal)中执行这些类型的查询，不能在 Azure 门户中执行。 可以在单个查询中包含的资源（Log Analytics 工作区和 Application Insights 应用）数量限制为 100。 
+现在不但可以跨多个 Log Analytics 工作区进行查询，而且还可以查询同一资源组、另一资源组或另一订阅中特定 Application Insights 应用的数据。 这可以提供数据的系统级视图。  只能在 [Log Analytics 页（预览版）](log-analytics-log-search-portals.md#log-analytics-page-preview)中执行这些类型的查询，而不能在 Azure 门户中执行。 可以在单个查询中包含的资源（Log Analytics 工作区和 Application Insights 应用）数量限制为 100。 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>跨 Log Analytics 工作区以及从 Application Insights 进行查询
 若要在查询中引用另一个工作区，请使用 [*workspace*](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/workspace()) 标识符，对于 Application Insights 中的应用，请使用 [*app*](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/app()) 标识符。  

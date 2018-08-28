@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 7a0dc7e92df342789d2c498479aa54b94070c9f4
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 436656195e00311dd350a5526b01fffa56ac02ca
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835937"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246439"
 ---
 # <a name="walkthrough-step-5-deploy-the-azure-machine-learning-web-service"></a>演练步骤 5：部署 Azure 机器学习 Web 服务
 这是演练[在 Azure 机器学习中开发预测分析解决方案](walkthrough-develop-predictive-solution.md)的第五个步骤。
@@ -106,6 +106,7 @@ ms.locfileid: "34835937"
 > 
 > 服务的确无需原始信用卡数据， 但需要该数据的架构，例如，有多少个列及哪些列是数值等信息。 需要此架构信息才能解释用户的数据。 保留连接这些组件的目的是在运行服务时，评分模型可获得数据集架构。 使用的不是数据，而只是架构。  
 > 
+>需要注意的一件重要事情是，如果原始数据集包含标签，那么Web 输入中的所需架构也会需要带标签的列！ 解决此问题的一种方法是在将 Web 输入和训练数据集连接到通用模块之前，删除标签以及在训练数据集中但不在 Web 输入中的任何其他数据。 
 > 
 
 最后一次运行试验（单击“运行”）。要验证模型是否仍然正常工作，请单击[评分模型][score-model]模块的输出，并选择“查看结果”。 此时将显示原始数据，以及信用风险值（“评分标签”）和评分概率值（“评分概率”）。 

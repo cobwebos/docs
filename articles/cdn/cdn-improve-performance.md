@@ -3,8 +3,8 @@ title: 通过在 Azure CDN 中压缩文件来提高性能 | Microsoft Docs
 description: 了解如何通过在 Azure CDN 中压缩文件来提高文件传输速度和增加页面加载性能。
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: cfowler
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: af1cddff-78d8-476b-a9d0-8c2164e4de5d
 ms.service: cdn
@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2018
-ms.author: v-deasim
-ms.openlocfilehash: bdff57275cf123079004ada732fe782d98399d71
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 08/15/2018
+ms.author: magattus
+ms.openlocfilehash: c3a20bd4fa1cccdca7cba0de52620f09fe01abc5
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260390"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42140622"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>通过在 Azure CDN 中压缩文件来提高性能
 文件压缩是提高文件传输速度和增加页面加载性能的一种简单有效的方法，可通过在从服务器发送文件之前减少其大小来实现。 文件压缩可以减少带宽成本，并为用户提供更快的响应体验。
@@ -65,6 +65,10 @@ ms.locfileid: "35260390"
    
    > [!TIP]
    > 建议不要对压缩格式应用压缩（虽然可以执行此操作）。 压缩格式示例有 ZIP、MP3、MP4 或 JPG。
+   > 
+   
+   > [!NOTE]
+   > Microsoft 的 Azure CDN 标准版目前不支持修改 MIME 类型的默认列表。
    > 
  
 5. 进行更改后，请选择“保存”。

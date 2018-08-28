@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: yuemlu
 ms.custom: include file
-ms.openlocfilehash: 4e62342a32456787863da775ea98df178ab1d559
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 70f80b880fadaeb4d5859524b3ba3b55ececbdda
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34806292"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40258881"
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>高性价比标准存储以及非托管和托管 Azure VM 磁盘
 
@@ -42,7 +42,7 @@ Azure 标准存储为运行不区分延迟的工作负荷提供可靠、低成�
 
 让我们看一下标准存储的一些功能。 有关详细信息，请参阅 [Azure 存储简介](../articles/storage/common/storage-introduction.md)。
 
-**标准存储**：Azure 标准存储支持 Azure 磁盘、Azure Blob、Azure 文件、Azure 表和 Azure 队列。 要使用标准存储服务，请从[创建 Azure 存储帐户](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account)开始。
+**标准存储**：Azure 标准存储支持 Azure 磁盘、Azure Blob、Azure 文件、Azure 表和 Azure 队列。 要使用标准存储服务，请从[创建 Azure 存储帐户](../articles/storage/common/storage-quickstart-create-account.md)开始。
 
 **标准 SSD 磁盘：** 与标准 HDD 磁盘相比，标准 SSD 盘提供更可靠的性能，当前提供预览版。 有关标准 SSD 盘区域可用性的详细信息，请参阅[标准 SSD 盘（预览版）区域可用性](../articles/virtual-machines/windows/faq-for-disks.md#standard-ssds-azure-regions)。
 
@@ -119,7 +119,12 @@ Azure 标准存储为运行不区分延迟的工作负荷提供可靠、低成�
 
 **非托管存储数据和磁盘大小：** 对于非托管磁盘和其他数据（blob、表、队列和文件），只需为所使用的空间付费。 例如，如果 VM 的页 blob 预配为 127 GB，但 VM 实际只使用了 10 GB 的空间，则只需为 10 GB 空间付费。 我们支持高达 8191 GB 的标准存储和高达 4095 GB 的标准非托管磁盘。 
 
-**托管磁盘：** 托管磁盘按预配大小计费。 如果磁盘预配为 10 GB，即使只使用了 5 GB，仍要为预配的 10 GB 大小付费。
+**托管磁盘**：标准托管磁盘的计费取决于磁盘的预配大小。 Azure 会将预配大小映射（向上舍入）到下面各表中指定的最接近的托管磁盘选项。 每个托管磁盘都映射到其中一种受支持的预配大小并相应地进行计费。 例如，如果创建了一个标准托管磁盘并将预配大小指定为 200 GiB，则会根据 S15 磁盘类型的定价向你收费。
+
+| 标准 HDD 托管<br>磁盘类型 | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** |
+|------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------| 
+| 磁盘大小        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 
+
 
 **快照**：对标准磁盘的快照使用的额外容量计费。 有关快照的详细信息，请参阅 [Creating a Snapshot of a Blob](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)（创建 Blob 的快照）。
 

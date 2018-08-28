@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: db508e2311602a66a2c252ffaa842f8bfb4f670b
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 22b18f77b3d997cdba7b60b53f1968b516701cc1
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34076065"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42146124"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>适用于 Linux 的网络观察程序代理虚拟机扩展
 
@@ -28,7 +28,7 @@ ms.locfileid: "34076065"
 
 [Azure 网络观察程序](/azure/network-watcher/)是一项网络性能监视、诊断和分析服务，适用于对 Azure 网络进行监视。 网络观察程序代理虚拟机 (VM) 扩展是 Azure VM 上的某些网络观察程序功能（例如按需捕获网络流量）和其他高级功能所必需的。
 
-本文详细介绍适用于 Linux 的网络观察程序代理 VM 扩展支持的平台和部署选项。 安装代理时不会中断，也不会需要重新启动 VM。
+本文详细介绍适用于 Linux 的网络观察程序代理 VM 扩展支持的平台和部署选项。 安装代理时不会中断，也不会需要重新启动 VM。 可以将扩展部署到所部署的虚拟机。 如果 Azure 服务部署了虚拟机，请查看该服务的文档以确定它是否允许在虚拟机中安装扩展。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "34076065"
 |---|---|
 | Ubuntu | 16.04 LTS、14.04 LTS 和 12.04 LTS |
 | Debian | 7 和 8 |
-| RedHat | 6 和 7 |
+| Red Hat | 6 和 7 |
 | Oracle Linux | 6.8+ 和 7 |
 | SUSE Linux Enterprise Server | 11 和 12 |
 | OpenSUSE Leap | 42.3+ |

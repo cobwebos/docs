@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: d900a778aa003357fb85d3e8ec8e40dee64f0f9c
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 77c7d9a549b10a56faaf6226062d0e6212ce19c0
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131848"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42140846"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>在 Log Analytics 中使用视图设计器创建自定义视图
 在 [Azure Log Analytics](log-analytics-overview.md) 中使用视图设计器即可在 Azure 门户中创建各种自定义视图，使 Log Analytics 工作区中的数据可视化。 本文概述了视图设计器以及创建和编辑自定义视图的过程。
@@ -38,7 +38,7 @@ ms.locfileid: "37131848"
 
 使用视图设计器创建的视图所包含的元素在下表中进行了说明：
 
-| 部分 | 说明 |
+| 部分 | Description |
 |:--- |:--- |
 | 磁贴 | 显示在 Log Analytics 工作区的“概览”页上。 每个磁贴都会显示一个可视化摘要，其中包含磁贴所代表的自定义视图。 每个磁贴类型提供的记录可视化效果各不相同。 选择磁贴即可显示自定义视图。 |
 | 自定义视图 | 在选择磁贴时显示。 每个视图包含一个或多个可视化部件。 |
@@ -52,10 +52,10 @@ ms.locfileid: "37131848"
 
 下表描述了这些选项：
 
-| 选项 | 说明 |
+| 选项 | Description |
 |:--|:--|
 | 刷新   | 使用最新数据刷新视图。 | 
-| 分析 | 打开[高级分析门户](log-analytics-log-search-portals.md#advanced-analytics-portal)，使用日志搜索对数据进行分析。 |
+| 分析 | 打开[高级分析门户](log-analytics-log-search-portals.md)，使用日志查询对数据进行分析。 |
 | 编辑       | 在视图设计器中打开视图，以便编辑其内容和配置。  |
 | 克隆      | 创建一个新视图，并在视图设计器中打开它。 新视图的名称与原始名称相同，但其末尾附加了 *Copy* 字样。 |
 | 日期范围 | 为视图中包含的数据设置日期和时间范围筛选器。 |
@@ -98,7 +98,7 @@ ms.locfileid: "37131848"
 
 ![编辑菜单](media/log-analytics-view-designer/edit-menu.png)
 
-| 选项 | 说明 |
+| 选项 | Description |
 |:--|:--|
 | 保存        | 保存所做的更改并关闭视图。 |
 | 取消      | 放弃所做的更改并关闭视图。 |

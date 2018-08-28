@@ -2,25 +2,22 @@
 title: 使用 Azure AD 应用程序代理发布应用 | Microsoft Docs
 description: 在 Azure 门户中使用 Azure AD 应用程序代理将本地应用程序发布到云。
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 08/20/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 1224642bb7e6fc0c51b3f839a78449132db5b4bb
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 973a6201a227e6c2e295e6e5ea2f40c302572504
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364251"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42146404"
 ---
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理发布应用程序
 
@@ -72,6 +69,7 @@ Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问
    ![配置应用程序](./media/application-proxy-publish-azure-portal/configure-app.png)
 5. 如有必要，请配置其他设置。 对于大多数应用程序，应保留这些设置的默认状态。 
    - 后端应用程序超时：仅当应用程序身份验证和连接速度较慢时，才将此值设为“长”。 
+   - **使用仅 HTTP Cookie**：将此值设置为“是”，以使应用程序代理 Cookie 在 HTTP 响应标头中包含 HTTPOnly 标志。
    - 转换标头中的 URL：除非应用程序要求身份验证请求中的原始主机标头，否则请将此值保留为“是”。
    - 转换应用程序正文中的 URL：除非具有指向其他本地应用程序的硬编码 HTML 链接，且不使用自定义域，否则请将此值保留为“否”。 有关详细信息，请参阅[使用应用程序代理进行链接转换](application-proxy-configure-hard-coded-link-translation.md)。
    
