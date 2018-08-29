@@ -1,24 +1,22 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 4b7fd390b309500c6d3937fd07dac53d968b4b71
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 9f537ee8fe646a024fb191901b3669b4b5d60d6b
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41929368"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43086663"
 documentType: LandingData
 title: “Azure 中的 Ansible”文档
 metadata:
   title: “Azure 中的 Ansible”文档 - 教程、示例、参考和资源
-  meta.description: Learn how to use Ansible to automate cloud provisioning, configuration management, and application deployments.
-  services: terraform
-  author: tomarcher
-  manager: routlaw
+  description: 了解如何使用 Ansible 自动执行云预配、配置管理和应用程序部署。
   ms.service: ansible
-  ms.tgt_pltfrm: na
-  ms.devlang: devops
-  ms.topic: landing-page
-  ms.date: 08/15/2018
+  keywords: ansible, azure, devops, 教程, 示例, 参考
+  author: tomarcher
+  manager: jeconnoc
   ms.author: tarcher
+  ms.topic: landing-page
+  ms.date: 08/27/2018
 abstract:
   description: 使用 <a href="http://www.ansible.com">Ansible</a> 自动执行云预配、配置管理和应用程序部署。
 sections:

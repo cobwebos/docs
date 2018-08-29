@@ -607,8 +607,7 @@ public void ConfigureServices(IServiceCollection services)
 | **适用的技术** | .NET Framework 3 |
 | **属性**              | 不适用  |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com) |
-| **步骤** | <p>不对系统资源的使用施加限制可能会导致资源耗尽，最终出现拒绝服务。</p><ul><li>
-  **说明：** Windows Communication Foundation (WCF) 提供限制服务请求的功能。 允许过多的客户端请求可能会使系统泛洪并耗尽其资源。 另一方面，只允许向服务发出少量的请求可能会防碍合法用户使用该服务。 应该单独针对每个服务进行优化和配置，以允许适当数量的资源。</li><li>**建议：** 启用 WCF 的服务限制功能，并设置适合应用程序的限制。</li></ul>|
+| **步骤** | <p>不对系统资源的使用施加限制可能会导致资源耗尽，最终出现拒绝服务。</p><ul><li>**说明：** Windows Communication Foundation (WCF) 提供限制服务请求的功能。 允许过多的客户端请求可能会使系统泛洪并耗尽其资源。 另一方面，只允许向服务发出少量的请求可能会防碍合法用户使用该服务。 应该单独针对每个服务进行优化和配置，以允许适当数量的资源。</li><li>**建议：** 启用 WCF 的服务限制功能，并设置适合应用程序的限制。</li></ul>|
 
 ### <a name="example"></a>示例
 下面是启用了限制的示例配置：
