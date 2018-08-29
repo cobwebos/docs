@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e10f6cdb60a2c03bfb42e46f179546b623d625dd
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 5803bf2c71b2cf3fe7bb145b4d3d664c60642294
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443760"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42140020"
 ---
 # <a name="get-data"></a>获取数据
 
@@ -52,11 +52,11 @@ ms.locfileid: "37443760"
   
 5.  在导航器中，选择“AdventureWorksDW2014”数据库，然后单击“确定”。这会创建到该数据库的连接。 
   
-6.  在导航器中，选中下列表的复选框：“DimCustomer”、“DimDate”、“DimGeography”、“DimProduct”、“DimProductCategory”、“DimProductSubcategory”和“FactInternetSales”。  
+6.  在导航器中，选中下列表的复选框：“DimCustomer”、“DimDate”、“DimGeography”、“DimProduct”、“DimProductCategory”、“DimProductSubcategory”和“FactInternetSales”，然后单击“编辑”。
 
     ![aas-lesson2-select-tables](../tutorials/media/aas-lesson2-select-tables.png)
   
-单击“确定”后，将打开“查询编辑器”。 在下一部分中，仅选择要导入的数据。
+    此时会打开查询编辑器。 在下一部分中，仅选择要导入的数据。
 
   
 ## <a name="filter-the-table-data"></a>筛选表数据  
