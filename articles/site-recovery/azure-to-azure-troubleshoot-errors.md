@@ -7,14 +7,14 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 08/09/2018
 ms.author: sujayt
-ms.openlocfilehash: a41cd658060ef92efb0fc21a98ca616276378c5e
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 86d6c77dab817cf755c34bdd699ee1158e852f37
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113848"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42141429"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure 到 Azure VM 复制问题故障排除
 
@@ -148,12 +148,44 @@ ms.locfileid: "39113848"
 
 ## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Site Recovery URL 或 IP 范围的出站连接（错误代码 151037 或 151072）
 
-若要 Site Recovery 复制正常运行，需要从 VM 到特定 URL 或 IP 范围的出站连接。 如果 VM 位于防火墙后或使用网络安全组 (NSG) 规则来控制出站连接，则可能会看到以下错误消息之一：
+若要 Site Recovery 复制正常运行，需要从 VM 到特定 URL 或 IP 范围的出站连接。 如果 VM 位于防火墙后或使用网络安全组 (NSG) 规则来控制出站连接，则可能会遇到以下问题之一。
 
-**错误代码** | **可能的原因** | **建议**
---- | --- | ---
-151037<br></br>**消息**：Failed to register Azure virtual machine with Site Recovery.（未能向 Site Recovery 注册 Azure 虚拟机。） | - 使用 NSG 来控制 VM 的出站访问，且未将所需的 IP 范围加入出站访问允许列表。</br></br>- 使用第三方防火墙工具，且未将所需的 IP 范围/URL 加入允许列表。</br>| - 如果使用防火墙代理来控制 VM 的出站网络连接，请确保已将必备 URL 或数据中心 IP 范围加入白名单。 有关信息，请参阅[防火墙代理指南](https://aka.ms/a2a-firewall-proxy-guidance)。</br></br>- 如果使用 NSG 规则来控制 VM 的出站网络连接，请确保已将必备数据中心 IP 范围加入允许列表。 有关信息，请参阅[网络安全组指南](https://aka.ms/a2a-nsg-guidance)。
-151072<br></br>**消息**：Site Recovery configuration failed.（Site Recovery 配置失败。） | 无法建立到 Site Recovery 服务终结点的连接。 | - 如果使用防火墙代理来控制 VM 的出站网络连接，请确保已将必备 URL 或数据中心 IP 范围加入允许列表。 有关信息，请参阅[防火墙代理指南](https://aka.ms/a2a-firewall-proxy-guidance)。</br></br>- 如果使用 NSG 规则来控制 VM 的出站网络连接，请确保已将必备数据中心 IP 范围加入允许列表。 有关信息，请参阅[网络安全组指南](https://aka.ms/a2a-nsg-guidance)。
+### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151037-br"></a>问题 1：未能向 Site Recovery 注册 Azure 虚拟机 (151037) </br>
+- **可能的原因** </br>
+  - 使用 NSG 来控制 VM 的出站访问，且未将所需的 IP 范围加入出站访问允许列表。
+  - 使用第三方防火墙工具，且未将所需的 IP 范围/URL 加入允许列表。
+
+
+- **解决方法**
+   - 如果使用防火墙代理来控制 VM 的出站网络连接，请确保已将必备 URL 或数据中心 IP 范围加入允许列表。 有关信息，请参阅[防火墙代理指南](https://aka.ms/a2a-firewall-proxy-guidance)。
+   - 如果使用 NSG 规则来控制 VM 的出站网络连接，请确保已将必备数据中心 IP 范围加入允许列表。 有关信息，请参阅[网络安全组指南](https://aka.ms/a2a-nsg-guidance)。
+   - 若要将[所需的 URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) 或[所需的 IP 范围](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)加入允许列表，请按照[网络指南文档](site-recovery-azure-to-azure-networking-guidance.md)中的步骤执行操作。
+
+### <a name="issue-2-site-recovery-configuration-failed-151072"></a>问题 2：Site Recovery 配置失败 (151072)
+- **可能的原因** </br>
+  - 无法建立到 Site Recovery 服务终结点的连接
+
+
+- **解决方法**
+   - 如果使用防火墙代理来控制 VM 的出站网络连接，请确保已将必备 URL 或数据中心 IP 范围加入允许列表。 有关信息，请参阅[防火墙代理指南](https://aka.ms/a2a-firewall-proxy-guidance)。
+   - 如果使用 NSG 规则来控制 VM 的出站网络连接，请确保已将必备数据中心 IP 范围加入允许列表。 有关信息，请参阅[网络安全组指南](https://aka.ms/a2a-nsg-guidance)。
+   - 若要将[所需的 URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) 或[所需的 IP 范围](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)加入允许列表，请按照[网络指南文档](site-recovery-azure-to-azure-networking-guidance.md)中的步骤执行操作。
+
+### <a name="issue-3-a2a-replication-failed-when-the-network-traffic-goes-through-on-premise-proxy-server-151072"></a>问题 3：当网络流量通过本地代理服务器时A2A 复制失败 (151072)
+ - **可能的原因** </br>
+   - 自定义代理设置无效，并且 ASR 移动服务代理未在 IE 中自动检测到代理设置
+
+
+ - **解决方法**
+  1.    移动服务代理通过 Windows 上的 IE 和 Linux 上的 /etc/environment 检测代理设置。
+  2.  如果只想对 ASR 移动服务设置代理，可在位于以下路径的 ProxyInfo.conf 中提供代理详细信息：</br>
+      - ***Linux*** 上的 ``/usr/local/InMage/config/``
+      - ***Windows*** 上的 ``C:\ProgramData\Microsoft Azure Site Recovery\Config``
+  3.    ProxyInfo.conf 应包含采用以下 INI 格式的代理设置。 </br>
+                   *[proxy]*</br>
+                   *Address=http://1.2.3.4*</br>
+                   *Port=567*</br>
+  4. ASR 移动服务代理仅支持***未经身份验证的代理***。
 
 ### <a name="fix-the-problem"></a>解决问题
 若要将[所需的 URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) 或[所需的 IP 范围](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)加入允许列表，请按照[网络指南文档](site-recovery-azure-to-azure-networking-guidance.md)中的步骤执行操作。
@@ -213,6 +245,20 @@ Azure Site Recovery 当前强制要求源区域资源组和虚拟机应位于同
 - 如果 **provisioningState** 是“失败”，请联系支持人员并提供详细信息，以便进行故障排除。
 - 如果 **provisioningState** 是“正在更新”，可以部署其他扩展。 检查 VM 上是否有任何正在进行的操作，等待这些操作完成，然后重试失败的 Site Recovery 的“启用复制”作业。
 
+## <a name="unable-to-select-target-virtual-network---network-selection-tab-is-grayed-out"></a>无法选择目标虚拟网络 - 网络选择选项卡灰显。
+
+**原因 1：VM 附加到了已映射至“目标网络”的网络。**
+- 如果源 VM 在某个虚拟网络中，并且同一虚拟网络中的另一个 VM 已映射到目标资源组中的某个网络，则默认将禁用网络选择下拉列表。
+
+![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png)
+
+**原因 2：之前已使用 Azure Site Recovery 保护了 VM，并禁用了复制。**
+ - 禁用 VM 复制不会删除网络映射。 必须从保护 VM 的恢复服务保管库中删除网络映射。 </br>
+ 导航到恢复服务保管库并选择“Site Recovery 基础结构”>“网络映射”。 </br>
+ ![Delete_NW_Mapping](./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png)
+ - 保护 VM 之后，可以在完成初始设置后更改灾难恢复设置期间配置的目标网络。 </br>
+ ![Modify_NW_mapping](./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png)
+ - 请注意，更改网络映射会影响使用该特定网络映射的所有受保护 VM。
 
 
 ## <a name="comvolume-shadow-copy-service-error-error-code-151025"></a>COM+/卷影复制服务错误（错误代码 151025）

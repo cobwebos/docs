@@ -12,20 +12,41 @@ ms.workload: On Demand
 ms.date: 07/25/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 46ab4a177cc7d86e5d967ff8e219dae96f82a0dc
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: ce0684f9ab06b5362ccdf25aeaff15ea668ce96c
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263140"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444142"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>使用 Azure SQL 数据库确保业务连续性的相关概述
+
+Azure SQL 数据库是针对 Azure 云环境配置并优化的最新稳定 SQL Server 数据库引擎的一种实现，它提供[高可用性](sql-database-high-availability.md)，并能够弹性应对可能影响业务流程的错误。 Azure SQL 数据库中的**业务连续性**是指在遇到中断（尤其是计算基础结构的中断）时，使企业能够继续运营的机制、策略和过程。  在大多数情况下，Azure SQL 数据库将会处理云环境中可能发生的中断事件，并让业务流程保持运行。 但是，SQL 数据库无法处理某些中断事件，例如：
+ - 用户意外删除或更新了表中的某行。
+ - 恶意攻击者成功删除了数据或数据库。
+ - 地震导致断电和暂时性的数据中心停运。
+ 
+Azure SQL 数据库无法控制这种情况，因此，需要使用 SQL 数据库中的业务连续性功能来恢复数据和保持应用程序的运行。
 
 本概述介绍 Azure SQL 数据库针对业务连续性和灾难恢复所提供的功能。 了解用于从干扰性事件恢复的选项、建议和教程，这些事件可能导致数据丢失或者数据库和应用程序无法使用。 了解对一些情况的处理方式，包括用户或应用程序错误影响数据完整性、Azure 区域服务中断，或者应用程序需要维护。
 
 ## <a name="sql-database-features-that-you-can-use-to-provide-business-continuity"></a>有利于业务连续性的 SQL 数据库功能
 
-SQL 数据库提供若干业务连续性功能，包括自动备份和可选的数据库复制。 对于最近发生的事务，每种功能在估计恢复时间 (ERT) 和可能丢失的数据方面都有不同的特性。 了解这些选项后，便可从中进行选择 — 在大多数方案中，可以针对不同方案将其搭配使用。 制定业务连续性计划时，需了解应用程序在干扰性事件之后完全恢复的最大可接受时间，即恢复时间目标 (RTO)。 此外，还需要了解从干扰性事件恢复时，应用程序可忍受丢失的最近数据更新（时间间隔）最大数量，即恢复点目标 (RPO)。
+从数据库角度看，主要有四种潜在的中断场景：
+- 影响数据库节点的**本地硬件或软件故障**，例如磁盘驱动器故障。
+- **数据损坏或删除** - 通常由应用程序 bug 或人为失误所导致。  此类故障在本质上与特定的应用程序相关，一般而言，基础结构无法检测或缓解它们。
+- 可能由自然灾害造成的**数据中心中断**。  针对这种情况，需要采取某种程度的异地冗余，并将应用程序故障转移到备用数据中心。
+- **升级或维护错误** – 在对应用程序或数据库执行计划内升级或维护期间发生意外的问题时，可能需要快速回滚到以前的数据库状态。
+
+SQL 数据库提供多种可以缓解此类情况的业务连续性功能，包括自动备份和可选的数据库复制。 首先，需要了解 SQL 数据库[高可用性体系结构](sql-database-high-availability.md)如何针对可能影响业务流程的某些中断事件提供 99.99% 的可用性和复原能力。
+然后，可以了解能够使用其他哪些机制，在发生 SQL 数据库高可用性体系结构无法处理的中断事件时进行恢复，例如：
+ - 使用[时态表](sql-database-temporal-tables.md)可以从任意时间点还原行版本。
+ - 使用[内置自动备份](sql-database-automated-backups.md)和[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)可将整个数据库还原到过去 35 天内的某个时间点。
+ - 如果**逻辑服务器尚未删除**，可[将已删除的数据库还原](sql-database-recovery-using-backups.md#deleted-database-restore)到删除时的时间点。
+ - 使用[长期备份保留](sql-database-long-term-retention.md)可将备份保留长达 10 年之久。
+ - 发生数据中心规模的中断时，应用程序可以通过[异地复制](sql-database-geo-replication-overview.md)执行快速灾难恢复。
+
+对于最近发生的事务，每种功能在估计恢复时间 (ERT) 和可能丢失的数据方面都有不同的特性。 了解这些选项后，便可从中进行选择 — 在大多数方案中，可以针对不同方案将其搭配使用。 制定业务连续性计划时，需了解应用程序在中断事件发生后完全恢复之前的最大可接受时间。 应用程序完全恢复所需的时间称为恢复时间目标 (RTO)。 此外，还需要了解从中断事件恢复时，应用程序可忍受最近数据更新丢失的最长期限（时间间隔）。 可以承受更新丢失的时限称为恢复点目标 (RPO)。
 
 下表针对三种最常见方案比较了每个服务层的 ERT 和 RPO。
 
@@ -36,19 +57,15 @@ SQL 数据库提供若干业务连续性功能，包括自动备份和可选的�
 | 从 SQL 长期保留还原 |ERT < 12 小时，RPO < 1 周 |ERT < 12 小时，RPO < 1 周 |ERT < 12 小时，RPO < 1 周 |ERT < 12 小时，RPO < 1 周|ERT < 12 小时，RPO < 1 周|
 | 活动异地复制 |ERT < 30 秒，RPO < 5 秒 |ERT < 30 秒，RPO < 5 秒 |ERT < 30 秒，RPO < 5 秒 |ERT < 30 秒，RPO < 5 秒|ERT < 30 秒，RPO < 5 秒|
 
-### <a name="use-point-in-time-restore-to-recover-a-database"></a>使用时间点还原恢复数据库
+## <a name="recover-a-database-to-the-existing-server"></a>将数据库恢复到现有服务器
 
-SQL 数据库每周自动执行完整数据库备份，每小时自动执行差异数据库备份，每 5 到 10 分钟自动执行事务日志备份，防止企业丢失数据。 如果使用的是[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)，则对于“标准”和“高级”服务层中的数据库，这些备份会在 RA-GRS 存储中存储 35 天；对于“基本”服务层中的数据库，则存储 7 天。 如果服务层的保留期不符合企业需求，可[更改服务层](sql-database-single-database-scale.md)来延长保留期。 如果使用[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)，则在“常规用途”和“业务关键”层中，备份保留期是可配置的，最长为 35 天。 完整和差异数据库备份也会复制到[配对的数据中心](../best-practices-availability-paired-regions.md)，以防数据中心中断。 有关更多详细信息，请参阅[自动数据库备份](sql-database-automated-backups.md)。
+SQL 数据库每周自动执行完整数据库备份，每小时自动执行差异数据库备份，每隔 5 - 10 分钟自动执行事务日志备份，防止企业丢失数据。 所有服务层的备份在 RA-GRS 存储中存储 35 天；但基本 DTU 服务层除外，其中的备份将存储 7 天。 有关更多详细信息，请参阅[自动数据库备份](sql-database-automated-backups.md)。 可以使用 Azure 门户、PowerShell 或 REST API，将自动备份中的现有数据库还原到早期的时间点，作为同一逻辑服务器上的新数据库。 有关详细信息，请参阅[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)。
 
-如果支持的最长时间点还原 (PITR) 保留期对你的应用程序而言不足，可以通过为数据库配置长期保留 (LTR) 策略来延长保留期。 有关详细信息，请参阅[自动备份](sql-database-automated-backups.md)和[长期备份保留](sql-database-long-term-retention.md)。
+如果支持的最长时间点还原 (PITR) 保留期对你的应用程序而言不足，可以通过为数据库配置长期保留 (LTR) 策略来延长保留期。 有关详细信息，请参阅[长期备份保留](sql-database-long-term-retention.md)。
 
-通过这些自动数据库备份，可在自己的数据中心以及其他数据中心内从各种干扰性事件中恢复数据库。 使用自动数据库备份时，估计恢复时间取决于若干因素，包括在相同区域同时进行恢复的数据库总数、数据库大小、事务日志大小以及网络带宽。 恢复时间通常少于 12 小时。 恢复非常大或活动的数据库可能需要更长时间。 有关恢复时间的更多详细信息，请参阅[数据库恢复时间](sql-database-recovery-using-backups.md#recovery-time)。 恢复到另一个数据区域时，因为每小时会针对异地冗余存储进行差异数据库备份，因此最多只可能丢失 1 小时的数据。
+通过这些自动数据库备份，可在自己的数据中心以及其他数据中心内从各种干扰性事件中恢复数据库。 使用自动数据库备份时，估计恢复时间取决于若干因素，包括在相同区域同时进行恢复的数据库总数、数据库大小、事务日志大小以及网络带宽。 恢复时间通常少于 12 小时。 恢复非常大或活动的数据库可能需要更长时间。 有关恢复时间的详细信息，请参阅[数据库恢复时间](sql-database-recovery-using-backups.md#recovery-time)。 恢复到另一个数据区域时，因为每小时会针对异地冗余存储进行差异数据库备份，因此最多只可能丢失 1 小时的数据。
 
-> [!IMPORTANT]
-> 若要使用自动备份进行恢复，必须是 SQL Server 参与者角色的成员或订阅所有者 — 请参阅 [RBAC：内置角色](../role-based-access-control/built-in-roles.md)。 可以使用 Azure 门户、PowerShell 或 REST API 进行恢复。 但不能使用 Transact-SQL。
->
-
-如果应用程序符合以下条件，则可以会自动备份作为业务连续性和恢复机制：
+如果应用程序符合以下条件，则可将自动备份和[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)用作业务连续性和恢复机制：
 
 * 不是任务关键型应用程序。
 * 没有约束性的 SLA，因此，停机 24 小时或更长时间不会导致财务责任。
@@ -57,60 +74,32 @@ SQL 数据库每周自动执行完整数据库备份，每小时自动执行差�
 
 如需更快速的恢复，请使用[活动异地复制](sql-database-geo-replication-overview.md)（接下来将讨论）。 如果需要从 35 天前的一个时间段恢复数据，请使用[长期保留](sql-database-long-term-retention.md)。 
 
-### <a name="use-active-geo-replication-and-auto-failover-groups-to-reduce-recovery-time-and-limit-data-loss-associated-with-a-recovery"></a>使用活动异地复制和自动故障转移组缩短恢复时间，并限制与恢复相关的数据丢失
+## <a name="recover-a-database-to-another-region"></a>将数据库恢复到另一区域
+<!-- Explain this scenario -->
 
-除了在发生业务中断时使用数据库备份来恢复数据库之外，还可以使用[活动异地复制](sql-database-geo-replication-overview.md)来配置数据库，在所选区域中最多可拥有 4 个可读辅助数据库。 这些辅助数据库使用异步复制机制与主数据库保持同步。 在数据中心中断或应用程序升级期间，此功能可以防止出现业务中断。 活动异地复制还可为地理位置分散的用户提高只读查询的查询性能。
+Azure 数据中心会罕见地发生中断。 发生中断时，业务可能仅中断几分钟，也可能持续数小时。
 
-要启用自动和透明故障转移，应使用 SQL 数据库的[自动故障转移组](sql-database-geo-replication-overview.md)功能，将异地复制数据库整理成组。
+* 用户可以选择等待数据中心中断结束，数据库重新联机。 这适用于可以容忍数据库脱机的应用程序。 例如无需一直处理的开发项目或免费试用版。 数据中心中断时，不知道中断会持续多久，因此该选项仅适用于暂时不需要数据库的情况。
+* 另一个选项是使用[异地冗余数据库备份](sql-database-recovery-using-backups.md#geo-restore)（异地还原）来还原任何 Azure 区域中任何服务器上的数据库。 异地还原使用异地冗余备份作为源，即使由于停电而无法访问数据库或数据中心，也依然能够使用它来恢复数据库。
+* 最后，可将另一数据区域中的辅助数据库快速提升为主数据库（也称为故障转移），并将应用程序配置为连接到提升的主数据库（如果使用活动异地复制）。 由于异步复制的性质使然，最近的事务可能会丢失少量数据。 使用自动故障转移组，可以自定义故障转移策略，将潜在数据丢失降低到最小。 无论在什么情况下，用户都会经历短暂的停机，并需要重新连接。 故障转移只需几秒钟，而从备份恢复数据库需要数小时。
 
-如果主数据库意外脱机，或者需要脱机维护，可以将辅助数据库快速提升为主数据库（也称为故障转移），并配置应用程序，将它们连接到提升的主数据库。 如果使用故障转移组侦听器将应用程序连接到数据库，则在故障转移后无需更改 SQL 连接字符串配置。 进行计划内故障转移时，不会丢失任何数据。 进行计划外故障转移时，由于异步复制的性质使然，最近的事务可能会丢失少量数据。 使用自动故障转移组，可以自定义故障转移策略，将潜在数据丢失降低到最小。 故障转移之后，可以根据计划或在数据中心重新联机时回复故障。 无论在什么情况下，用户都会经历短暂的停机，并需要重新连接。
+若要故障转移到另一区域，还可以使用[活动异地复制](sql-database-geo-replication-overview.md)将数据库配置为在所选区域中最多具有四个可读的辅助数据库。 这些辅助数据库使用异步复制机制与主数据库保持同步。 
+
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-protecting-important-DBs-from-regional-disasters-is-easy/player]
+>
+
 
 > [!IMPORTANT]
 > 若要使用活动异地复制和自动故障转移组，则必须是订阅所有者或在 SQL Server 中拥有管理权限。 可通过 Azure 订阅的权限使用 Azure 门户、PowerShell 或 REST API 进行配置和故障转移，也可以通过 SQL Server 中的权限使用 Transact-SQL 进行配置和故障转移。
 > 
 
-如果应用程序符合以下任意条件，请使用活动异地复制和自动故障转移组：
+在数据中心中断或应用程序升级期间，此功能可以防止出现业务中断。 要启用自动和透明故障转移，应使用 SQL 数据库的[自动故障转移组](sql-database-geo-replication-overview.md)功能，将异地复制数据库整理成组。 如果应用程序符合以下任意条件，请使用活动异地复制和自动故障转移组：
 
 * 是任务关键型应用程序。
 * 具有服务级别协议 (SLA)，不允许停机 24 小时或更长时间。
 * 停机可能导致财务责任。
 * 具有很高的数据更改率，而且不接受丢失一小时的数据。
 * 活动异地复制的额外成本低于潜在财务责任和相关业务损失所付出的代价。
-
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-protecting-important-DBs-from-regional-disasters-is-easy/player]
->
-
-## <a name="recover-a-database-after-a-user-or-application-error"></a>在用户或应用程序错误之后恢复数据库
-
-人无完人！ 用户可能会不小心删除某些数据、无意中删除重要的表，甚至删除整个数据库。 或者，应用程序可能因为自身缺陷，意外以错误数据覆盖正确数据。
-
-在此方案中，可使用以下恢复选项。
-
-### <a name="perform-a-point-in-time-restore"></a>执行时间点还原
-可使用自动备份，将数据库副本恢复到数据库保留期内的已知时间点。 数据库还原之后，可以将原始数据库替换为还原的数据库，或从还原的数据将所需数据复制到原始数据库。 如果数据库使用活动异地复制，建议从还原的副本将所需数据复制到原始数据库。 如果将原始数据库替换为还原的数据库，需要重新配置并重新同步活动异地复制（大型数据库可能要花费很长时间）。 尽管这会将数据库还原到最后一个可用时间点，但目前不支持将异地辅助数据库还原到任何时间点。
-
-有关使用 Azure 门户或 PowerShell 将数据库还原至某个时间点的详细信息及步骤，请参阅[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)。 不能使用 Transact-SQL 进行恢复。
-
-### <a name="restore-a-deleted-database"></a>还原已删除的数据库
-如果已删除数据库，但逻辑服务器尚未删除，可以将已删除的数据库还原到它被删除的时间点。 这会将数据库备份还原到之前删除数据库的同一个逻辑 SQL 服务器。 可以使用原始名称还原，也可以为还原的数据库提供新名称。
-
-有关使用 Azure 门户或 PowerShell 还原已删除数据库的详细信息和步骤，请参阅[还原已删除数据库](sql-database-recovery-using-backups.md#deleted-database-restore)。 不能使用 Transact-SQL 进行还原。
-
-> [!IMPORTANT]
-> 如果逻辑服务器已删除，则无法恢复已删除的数据库。
-
-
-### <a name="restore-backups-from-long-term-retention"></a>从长期保留存储中还原备份
-
-如果数据丢失发生在自动备份的当前保留期之外，且数据库已配置为使用 Azure Blob 存储进行长期保留，可从 Azure Blob 存储中的完整备份还原到新的数据库。 此时，可以将原始数据库替换为还原的数据库，或从还原的数据库将所需数据复制到原始数据库。 如果需要在主要应用程序升级之前检索旧版数据库，在审核员或法律指令的要求下，可使用 Azure Blob 存储中保存的完整备份创建数据库。  有关详细信息，请参阅[长期保留](sql-database-long-term-retention.md)。
-
-## <a name="recover-a-database-to-another-region-from-an-azure-regional-data-center-outage"></a>Azure 区域数据中心中断时会数据库恢复到另一个区域
-<!-- Explain this scenario -->
-
-Azure 数据中心会罕见地发生中断。 发生中断时，业务可能仅中断几分钟，也可能持续数小时。
-
-* 用户可以选择等待数据中心中断结束，数据库重新联机。 这适用于可以容忍数据库脱机的应用程序。 例如无需一直处理的开发项目或免费试用版。 数据中心中断时，不知道中断会持续多久，因此该选项仅适用于暂时不需要数据库的情况。
-* 另一个选项是故障转移到另一个数据区域（如果使用活动异地复制）或使用异地冗余数据库备份恢复数据库（异地还原）。 故障转移只需几秒钟，而从备份恢复数据库需要数小时。
 
 执行操作时，恢复所需的时间以及数据丢失量会有所不同，这具体取决于用户要在应用程序中使用哪些业务连续性功能。 事实上，可以根据应用程序需求，选择结合使用数据库备份与活动异地复制。 若要探讨使用这些业务连续性功能为独立数据库和弹性池设计应用程序时的注意事项，请参阅[设计用于云灾难恢复的应用程序](sql-database-designing-cloud-solutions-for-disaster-recovery.md)和[弹性池灾难恢复策略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)。
 

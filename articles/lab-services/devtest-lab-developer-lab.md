@@ -54,8 +54,7 @@ ms.locfileid: "38633275"
    
    | 任务 | 学习内容 |
    | --- | --- |
-   | 
-  [配置 Azure 市场映像](devtest-lab-configure-marketplace-images.md) |了解如何将 Azure 市场映像列入允许列表，仅使需用于开发人员的映像可供选择。|
+   | [配置 Azure 市场映像](devtest-lab-configure-marketplace-images.md) |了解如何将 Azure 市场映像列入允许列表，仅使需用于开发人员的映像可供选择。|
    | [创建自定义映像](devtest-lab-create-template.md) |通过预安装所需的软件创建自定义映像，让开发人员能够使用自定义映像快速创建 VM。|
    | [了解映像工厂](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/) |观看介绍如何设置和使用映像工厂的视频。|
 

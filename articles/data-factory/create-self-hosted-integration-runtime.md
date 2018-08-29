@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: afd061b026e30378f5e645d11b84b44b7a516143
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 705f2ce674a31d7dda4d87d893078a2ade26e327
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341573"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42443384"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>如何创建和配置自承载的集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的计算基础结构。 有关 IR 的详细信息，请参阅[集成运行时概述](concepts-integration-runtime.md)。
@@ -27,17 +27,20 @@ ms.locfileid: "37341573"
 本文档介绍了如何创建和配置自承载 IR。
 
 ## <a name="high-level-steps-to-install-self-hosted-ir"></a>安装自承载 IR 的高级步骤
-1.  创建自承载集成运行时。 下面是 PowerShell 示例：
+1. 创建自承载集成运行时。 可以使用 ADF UI 来创建自承载 IR。 下面是 PowerShell 示例：
 
     ```powershell
     Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
     ```
-2.  下载和安装自承载集成运行时（在本地计算机上）。
-3.  检索身份验证密钥并使用密钥注册自承载集成运行时。 下面是 PowerShell 示例：
+2. 下载和安装自承载集成运行时（在本地计算机上）。
+3. 检索身份验证密钥并使用密钥注册自承载集成运行时。 下面是 PowerShell 示例：
 
     ```powershell
     Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
     ```
+
+## <a name="setting-up-self-hosted-ir-on-azure-vm-using-azure-resource-manager-template-automatation"></a>使用 Azure 资源管理器模板 (automatation) 在 Azure VM 上设置自承载 IR
+可以使用[此 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vms-with-selfhost-integration-runtime)在 Azure VM 上自动完成自承载 IR 设置。 这样可以轻松地在 Azure VNet 中设置一个完全正常运行的、具有高可用性和可伸缩性功能的自承载 IR（前提是能够将节点计数设置为 2 或以上）。
 
 ## <a name="command-flow-and-data-flow"></a>命令流和数据流
 在本地和云之间移动数据时，该活动使用自承载集成运行时将数据从本地数据源传输到云，反之亦然。
@@ -48,9 +51,9 @@ ms.locfileid: "37341573"
 
 1. 数据开发者使用 PowerShell cmdlet 在 Azure 数据工厂中创建了自承载集成运行时。 目前，Azure 门户不支持此功能。
 2. 数据开发者通过指定应用于连接数据存储的自承载集成运行时实例，为本地数据存储创建了链接服务。 作为设置链接服务的一部分，数据开发者使用“凭据管理员”应用程序（当前不受支持）来设置身份验证类型和凭据。 凭据管理员应用程序对话框与数据存储进行通信，以测试连接和自承载集成运行时，从而保存凭据。
-4.  自承载集成运行时节点使用 Windows 数据保护应用程序编程接口 (DPAPI) 加密凭据，并将它保存在本地。 如果设置多个节点以实现高可用性，则凭据将跨其他节点进一步同步。 每个节点都使用 DPAPI 加密凭据并将其存储在本地。 凭据同步对数据开发者透明并由自承载 IR 处理。    
-5.  数据工厂服务与自承载集成运行时通信，以通过使用共享 Azure 服务总线队列的**控件通道**调度和管理作业。 当需要运行活动作业时，数据工厂会将请求与任何凭据信息一起加入队列（以防凭证尚未存储在自承载集成运行时）。 自承载集成运行时轮询队列后启动该作业。
-6.  自承载集成运行时将数据从本地存储复制到云存储，反之亦然，具体取决于数据管道中复制活动的配置方式。 对于此步骤，自承载集成运行时直接通过安全 (HTTPS) 通道与基于云的存储服务（如 Azure Blob 存储）通信。
+   - 自承载集成运行时节点使用 Windows 数据保护应用程序编程接口 (DPAPI) 加密凭据，并将它保存在本地。 如果设置多个节点以实现高可用性，则凭据将跨其他节点进一步同步。 每个节点都使用 DPAPI 加密凭据并将其存储在本地。 凭据同步对数据开发者透明并由自承载 IR 处理。    
+   - 数据工厂服务与自承载集成运行时通信，以通过使用共享 Azure 服务总线队列的**控件通道**调度和管理作业。 当需要运行活动作业时，数据工厂会将请求与任何凭据信息一起加入队列（以防凭证尚未存储在自承载集成运行时）。 自承载集成运行时轮询队列后启动该作业。
+   - 自承载集成运行时将数据从本地存储复制到云存储，反之亦然，具体取决于数据管道中复制活动的配置方式。 对于此步骤，自承载集成运行时直接通过安全 (HTTPS) 通道与基于云的存储服务（如 Azure Blob 存储）通信。
 
 ## <a name="considerations-for-using-self-hosted-ir"></a>使用自承载 IR 的注意事项
 
@@ -113,7 +116,20 @@ ms.locfileid: "37341573"
 > [!NOTE]
 > 在添加另一个节点以实现**高可用性和可伸缩性**之前，请确保已在第 1 个节点上**启用**“远程访问 Intranet”选项（Microsoft Integration Runtime Configuration Manager ->“设置”->“远程访问 Intranet”）。 
 
+### <a name="scale-considerations"></a>扩展注意事项
+
+#### <a name="scale-out"></a>横向扩展
+
+如果**自承载 IR 上的可用内存较低**并且 **CPU 使用量较高**，则添加新节点有助于跨计算机横向扩展负载。 如果活动因超时或自承载 IR 节点处于脱机状态而失败，则向网关添加节点会有所作用。
+
+#### <a name="scale-up"></a>纵向扩展
+
+如果可用内存和 CPU 未充分利用，但并发作业执行即将达到限制，应通过增加节点上可运行的并发作业数进行纵向扩展。 此外，活动因自承载 IR 过载而超时时，可能也需要进行扩展。 如下图所示，可以增加节点的最大容量。  
+
+![](media\create-self-hosted-integration-runtime\scale-up-self-hosted-IR.png)
+
 ### <a name="tlsssl-certificate-requirements"></a>TLS/SSL 证书要求
+
 下面是用于保护集成运行时节点间通信的 TLS/SSL 证书的相关要求：
 
 - 证书必须是公共可信的 X509 v3 证书。 建议使用公共（即第三方）证书颁发机构 (CA) 颁发的证书。
@@ -121,9 +137,57 @@ ms.locfileid: "37341573"
 - 支持通配符证书。 如果 FQDN 名称为 **node1.domain.contoso.com** ，可以使用 ***.domain.contoso.com** 作为证书的使用者名称。
 - 不建议使用 SAN 证书，因为鉴于当前限制，只会使用使用者可选名称的最后一项，其他所有项都会遭忽略。 例如 有一个 SAN 证书，其中 SAN 为 node1.domain.contoso.com 和 node2.domain.contoso.com，那么只能在 FQDN 为 node2.domain.contoso.com 的计算机上使用此证书。
 - 针对 SSL 证书支持受 Windows Server 2012 R2 支持的任何密钥大小。
-- 不支持使用 CNG 密钥的证书。 不支持使用 CNG 密钥的证书。
+- 不支持使用 CNG 密钥的证书。  
+
+## <a name="sharing-the-self-hosted-integration-runtime-ir-with-multiple-data-factories"></a>与多个数据工厂共享自承载集成运行时 (IR)
+
+可以重复使用可能已在数据工厂中设置的现有自承载集成运行时基础结构。 这样，便可以通过引用现有的自承载 IR（共享），在不同的数据工厂中创建**链接的自承载集成运行时**。
+
+#### <a name="terminologies"></a>**术语**
+
+- **共享 IR** – 在物理基础结构上运行的原始自承载 IR。  
+- **链接 IR** – 引用另一个共享 IR 的 IR。 这是一个逻辑 IR，它使用另一个自承载 IR（共享）的基础结构。
+
+#### <a name="high-level-steps-for-creating-a-linked-self-hosted-ir"></a>用于创建链接自承载 IR 的高级步骤
+
+在要共享的自承载 IR 中，
+
+1. 授予要在其中创建链接 IR 的数据工厂的权限 
+
+   ![](media\create-self-hosted-integration-runtime\grant-permissions-IR-sharing.png)
+
+2. 记下要共享的自承载 IR 的“资源 ID”。
+
+   ![](media\create-self-hosted-integration-runtime\4_ResourceID_self-hostedIR.png)
+
+在已授予权限的数据工厂中，
+
+3. 创建新的自承载 IR（链接），并输入上述“资源 ID”
+
+   ![](media\create-self-hosted-integration-runtime\6_create-linkedIR_2.png)
+
+   ![](media\create-self-hosted-integration-runtime\6_create-linkedIR_3.png)
+
+#### <a name="known-limitations-of-self-hosted-ir-sharing"></a>自承载 IR 共享的已知限制
+
+1. 在单个自承载 IR 下可创建的默认链接 IR 数为 **20**。 如需更多的链接 IR，请联系支持部门。 
+
+2. 要在其中创建链接 IR 的数据工厂必须包含一个 MSI（[托管服务标识](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)）。 默认情况下，在 Ibiza 门户或 PowerShell cmdlet 中创建的数据工厂已隐式创建 MSI。 但是，在某些情况下，如果数据工厂是使用 Azure 资源管理器模板或 SDK 创建的，则**必须显式设置**“**Identity**”属性，以确保 Azure 资源管理器创建包含 MSI 的数据工厂。 
+
+3. 自承载 IR 版本必须等于或大于 3.8.xxxx.xx。 请[下载最新版本](https://www.microsoft.com/download/details.aspx?id=39717)的自承载 IR
+
+4. 要在其中创建链接 IR 的数据工厂必须包含一个 MSI（[托管服务标识](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)）。 默认情况下，在 Ibiza 门户或 PowerShell cmdlet 中创建的数据工厂包含 MSI（[托管服务标识](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)）。
+但是，使用 Azure 资源管理器 (ARM) 模板或 SDK 隐式创建的数据工厂需要设置“Identity”属性才能确保创建 MSI。
+
+5. 支持此功能的 ADF .Net SDK 版本大于或等于 1.1.0
+
+6. 支持此功能的 Azure PowerShell 版本大于或等于 6.6.0 (AzureRM.DataFactoryV2 >= 0.5.7)
+
+  > [!NOTE]
+  > 此功能只能在 Azure 数据工厂版本 2 中使用 
 
 ## <a name="system-tray-icons-notifications"></a>系统托盘图标/通知
+
 如果将游标移动到系统托盘图标/通知消息上，可以查看自承载集成运行时状态的详细信息。
 
 ![系统托盘通知](media\create-self-hosted-integration-runtime\system-tray-notifications.png)
@@ -135,7 +199,7 @@ ms.locfileid: "37341573"
 
 在**企业防火墙**级别，需配置以下域和出站端口：
 
-域名 | 端口 | 说明
+域名 | 端口 | Description
 ------------ | ----- | ------------
 *.servicebus.windows.net | 443, 80 | 用于与数据移动服务后端进行通信
 *.core.windows.net | 443 | 用于使用 Azure Blob 的暂存复制（如果已配置）
@@ -180,10 +244,10 @@ download.microsoft.com | 443 | 用于下载更新
 
 成功注册自承载集成运行时后，如果想要查看或更新代理设置，请使用集成运行时配置管理器。
 
-1.  启动 **Microsoft 集成运行时配置管理器**。
-2.  切换到“设置”选项卡。
-3.  单击“HTTP 代理”部分的“更改”链接，以启动“设置 HTTP 代理”对话框。
-4.  单击“下一步”按钮后，将出现警告对话框，询问是否允许保存代理设置和重启集成运行时主机服务。
+1. 启动 **Microsoft 集成运行时配置管理器**。
+   - 切换到“设置”选项卡。
+   - 单击“HTTP 代理”部分的“更改”链接，以启动“设置 HTTP 代理”对话框。
+   - 单击“下一步”按钮后，将出现警告对话框，询问是否允许保存代理设置和重启集成运行时主机服务。
 
 可以使用配置管理器工具查看和更新 HTTP 代理。
 
@@ -229,8 +293,8 @@ download.microsoft.com | 443 | 用于下载更新
 ### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>防火墙和代理服务器相关问题的可能症状
 如果遇到类似于以下的错误，可能是由于防火墙或代理服务器配置错误，阻止了自承载集成运行时连接到数据工厂进行自身身份验证。 请参考上一部分，确保防火墙和代理服务器已正确配置。
 
-1.  尝试注册自承载集成运行时的时候，会收到以下错误：“无法注册此集成运行时节点！ 请确认身份验证密钥有效，且集成服务主机服务在此计算机上运行。 "
-2.  打开集成运行时配置管理器时，将看到状态为“已断开连接”或“正在连接”。 查看 Windows 事件日志时，在“事件查看器”>“应用程序和服务日志”>“Microsoft 集成运行时”下，会看到错误消息，例如以下错误：
+1. 尝试注册自承载集成运行时的时候，会收到以下错误：“无法注册此集成运行时节点！ 请确认身份验证密钥有效，且集成服务主机服务在此计算机上运行。 "
+   - 打开集成运行时配置管理器时，将看到状态为“已断开连接”或“正在连接”。 查看 Windows 事件日志时，在“事件查看器”>“应用程序和服务日志”>“Microsoft 集成运行时”下，会看到错误消息，例如以下错误：
 
     ```
     Unable to connect to the remote server

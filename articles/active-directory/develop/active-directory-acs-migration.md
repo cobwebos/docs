@@ -255,8 +255,7 @@ Possible nameIdentifiers from Access Control (via AAD or AD FS):
 |     |     | 
 | --- | --- |
 | ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) 是一种灵活的云标识服务，该服务创建了[针对访问控制客户的高级迁移指南](https://auth0.com/acs)，并且几乎支持 ACS 所支持的所有功能。 |
-| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | 
-  [Ping 标识](https://www.pingidentity.com)提供两种类似于 ACS 的解决方案。 PingOne 是一种云标识服务，支持多种与 ACS 相同的功能，PingFederate 是一个类似的本地标识产品，可提供更大的灵活性。 若要深入了解如何使用这些产品，请参阅 [Ping 的 ACS 停用指南](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)。 |
+| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping 标识](https://www.pingidentity.com)提供两种类似于 ACS 的解决方案。 PingOne 是一种云标识服务，支持多种与 ACS 相同的功能，PingFederate 是一个类似的本地标识产品，可提供更大的灵活性。 若要深入了解如何使用这些产品，请参阅 [Ping 的 ACS 停用指南](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)。 |
 
 使用 Ping 标识和 Auth0 是为了确保所有访问控制客户都拥有适用于其应用和服务的迁移途径，从而最大限度地减少从访问控制迁移所需的工作量。
 
@@ -318,8 +317,7 @@ Other IDPs: use Auth0? https://auth0.com/docs/integrations/sharepoint.
 |     |     | 
 | --- | --- |
 | ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) 是一种灵活的云标识服务，该服务创建了[针对访问控制客户的高级迁移指南](https://auth0.com/acs)，并且几乎支持 ACS 所支持的所有功能。 |
-| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | 
-  [Ping 标识](https://www.pingidentity.com)提供两种类似于 ACS 的解决方案。 PingOne 是一种云标识服务，支持多种与 ACS 相同的功能，PingFederate 是一个类似的本地标识产品，可提供更大的灵活性。 若要深入了解如何使用这些产品，请参阅 [Ping 的 ACS 停用指南](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)。 |
+| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping 标识](https://www.pingidentity.com)提供两种类似于 ACS 的解决方案。 PingOne 是一种云标识服务，支持多种与 ACS 相同的功能，PingFederate 是一个类似的本地标识产品，可提供更大的灵活性。 若要深入了解如何使用这些产品，请参阅 [Ping 的 ACS 停用指南](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)。 |
 
 使用 Ping 标识和 Auth0 是为了确保所有访问控制客户都拥有适用于其应用和服务的迁移途径，从而最大限度地减少从访问控制迁移所需的工作量。
 

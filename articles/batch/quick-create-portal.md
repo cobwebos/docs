@@ -61,8 +61,7 @@ ms.locfileid: "37859568"
   |---------|---------|
   |**映像类型**|市场 (Linux/Windows)|
   |**发布者**     |MicrosoftWindowsServer|
-  |
-  **产品**     |WindowsServer|
+  |**产品**     |WindowsServer|
   |**Sku**     |2012-R2-Datacenter-smalldisk|
 
   ![选择池操作系统][pool_os] 

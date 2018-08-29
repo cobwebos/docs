@@ -174,9 +174,7 @@ ms.locfileid: "40038092"
 
 | 先决条件 | 资源 |
 | --- | --- |
-| SaaS 应用程序的测试环境。 HipChat 和 Twitter 就是密码 SSO 的示例。 而其他的任何应用程序都需要 html 登录窗体页面的确切 URL。 | 
-  [Microsoft Azure 市场上的 Twitter](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>
-  [Microsoft Azure 市场上的 HipChat](https://azuremarketplace.microsoft.com/marketplace/apps/aad.hipchat) |
+| SaaS 应用程序的测试环境。 HipChat 和 Twitter 就是密码 SSO 的示例。 而其他的任何应用程序都需要 html 登录窗体页面的确切 URL。 | [Microsoft Azure 市场上的 Twitter](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[Microsoft Azure 市场上的 HipChat](https://azuremarketplace.microsoft.com/marketplace/apps/aad.hipchat) |
 | 应用程序的测试帐户。 | [注册 Twitter](https://twitter.com/signup?lang=en)<br/>[免费注册：HipChat](https://www.hipchat.com/sign_up) |
 | 要分配应用程序的目标用户群。 建议使用包含用户的安全组。 | [在 Azure Active Directory 中向企业应用分配用户或组](manage-apps/assign-user-or-group-access-portal.md) |
 | 对计算机的本地管理员访问权限，以便为 Internet Explorer、Chrome 或 Firefox 部署访问面板扩展 | [适用于 IE 的访问面板扩展](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[适用于 Chrome 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[适用于 Firefox 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
