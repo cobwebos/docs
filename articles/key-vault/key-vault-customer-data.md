@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 05/22/2018
 ms.author: barclayn
-ms.openlocfilehash: 1ddc74b1960095509a77d4b3072017847df42d90
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 359648a843375477ea56ab791533208c11af9c81
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38235527"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42145279"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault 客户数据功能
 
@@ -52,7 +52,7 @@ Azure Key Vault 在创建或更新保管库、密钥、机密、证书和托管�
 
 Azure Key Vault 访问日志记录是可选功能，可将其打开，为每个 REST API 调用生成日志。 这些日志将被传输到订阅中的存储帐户，并且你向该订阅应用符合组织要求的保留策略。
 
-Azure Key Vault 诊断日志包含可以通过在用户隐私门户中发出导出请求来进行检索的个人数据。 此请求必须由租户管理员发出。
+Azure Key Vault 诊断日志包含可通过在用户隐私门户中发出导出请求来进行检索的个人数据。 此请求必须由租户管理员发出。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -60,14 +60,10 @@ Azure Key Vault 诊断日志包含可以通过在用户隐私门户中发出导�
 
 - [Azure Key Vault 软删除概述](key-vault-soft-delete-cli.md)
 
-- [保管库](https://docs.microsoft.com/rest/api/keyvault/vaults)
-
 - [Azure Key Vault 密钥操作](https://docs.microsoft.com/rest/api/keyvault/key-operations)
 
 - [Azure Key Vault 机密操作](https://docs.microsoft.com/rest/api/keyvault/secret-operations)
 
 - [Azure Key Vault 证书和策略](https://docs.microsoft.com/rest/api/keyvault/certificates-and-policies)
-
-- [证书颁发者](https://docs.microsoft.com/rest/api/keyvault/certificate-issuers)
 
 - [Azure Key Vault 存储帐户操作](https://docs.microsoft.com/rest/api/keyvault/storage-account-key-operations)

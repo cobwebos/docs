@@ -8,29 +8,27 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: na
 ms.topic: reference
-ms.date: 10/18/2017
+ms.date: 08/19/2018
 ms.author: laviswa
-ms.openlocfilehash: 4e9bdfab3abf9545218e80bf79d1b9b5df0cf2ff
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 33614628926e53354db14886530d7ca44da61f0a
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042004"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42145553"
 ---
 # <a name="azure-cosmos-db-sql-syntax-reference"></a>Azure Cosmos DB SQL 语法参考
 
-Azure Cosmos DB 支持使用分层 JSON 文档中的语法等熟悉的 SQL（结构化查询语言）来查询文档，无需显示架构或创建辅助索引。 本主题提供 SQL 查询语言（与 SQL API 帐户兼容）的参考文档。
-
-有关 SQL 查询语言的演练，请参阅 [Azure Cosmos DB 的 SQL 查询](sql-api-sql-query.md)。  
+Azure Cosmos DB 支持使用分层 JSON 文档中的语法等熟悉的 SQL（结构化查询语言）来查询文档，无需显示架构或创建辅助索引。 本文提供 SQL 查询语言（与 SQL API 帐户兼容）的参考/语法文档。 有关使用示例数据的 SQL 查询演练，请参阅[查询 Azure Cosmos DB 数据](sql-api-sql-query.md)。  
   
-我们同时邀请你访问[查询板块](http://www.documentdb.com/sql/demo)，你可以在其中尝试 Azure Cosmos DB，并针对数据集运行 SQL 查询。  
+请访问[查询板块](http://www.documentdb.com/sql/demo)，你可以在其中尝试 Azure Cosmos DB，并针对数据集运行 SQL 查询。  
   
 ## <a name="select-query"></a>SELECT 查询  
-从数据库中检索 JSON 文档。 支持表达式计算、投影、筛选和联接。  用于描述 SELECT 语句的约定在“语法约定”部分以表格形式列出。  
+每个查询按 ANSI-SQL 标准由 SELECT 子句和可选的 FROM 和 WHERE 子句组成。 通常，对于每个查询，已枚举 FROM 子句中的源。 然后将 WHERE 子句中的筛选器应用到源以检索 JSON 文档的子集。 最后，使用 SELECT 子句以投影选择列表中请求的 JSON 值。 用于描述 SELECT 语句的约定在“语法约定”部分以表格形式列出。 有关示例，请参阅 [SELECT 查询示例](sql-api-sql-query.md#SelectClause)
   
 **语法**  
   
-```
+```sql
 <select_query> ::=  
 SELECT <select_specification>   
     [ FROM <from_specification>]   
@@ -42,17 +40,14 @@ SELECT <select_specification>
   
  有关每个子句的详细信息，请参阅以下部分。  
   
--   [SELECT 子句](#bk_select_query)  
-  
--   [FROM 子句](#bk_from_clause)  
-  
--   [WHERE 子句](#bk_where_clause)  
-  
+-   [SELECT 子句](#bk_select_query)    
+-   [FROM 子句](#bk_from_clause)    
+-   [WHERE 子句](#bk_where_clause)    
 -   [ORDER BY 子句](#bk_orderby_clause)  
   
 SELECT 语句中的子句必须按照以上所示进行排序。 可以省略任一可选子句。 但是当使用可选子句时，它们必须按正确的顺序显示。  
   
-**SELECT 语句的逻辑处理顺序**  
+### <a name="logical-processing-order-of-the-select-statement"></a>SELECT 语句的逻辑处理顺序  
   
 处理子句的顺序是：  
 
@@ -63,7 +58,7 @@ SELECT 语句中的子句必须按照以上所示进行排序。 可以省略任
 
 请注意，此顺序与语法中出现的顺序不同。 采用此排序是为了使已处理子句引入的所有新符号可见，并且可用于后来处理的字句中。 例如，在 WHERE 和 SELECT 子句中可访问在 FROM 子句中声明的别名。  
 
-空格字符和注释  
+### <a name="whitespace-characters-and-comments"></a>空白字符和注释  
 
 不属于带引号的字符串或带引号的标识符中的所有空格字符也不属于语言语法的一部分，在解析过程中将被忽略。  
 
@@ -74,10 +69,11 @@ SELECT 语句中的子句必须按照以上所示进行排序。 可以省略任
 虽然空格字符和注释在语法中没有任何意义，但它们必须用于分隔令牌。 例如：`-1e5` 是单个数字令牌，而 `: – 1 e5` 是减号令牌，后跟数字 1 和标识符 e5。  
 
 ##  <a name="bk_select_query"></a> SELECT 子句  
-SELECT 语句中的子句必须按照以上所示进行排序。 可以省略任一可选子句。 但是当使用可选子句时，它们必须按正确的顺序显示。  
+SELECT 语句中的子句必须按照以上所示进行排序。 可以省略任一可选子句。 但是当使用可选子句时，它们必须按正确的顺序显示。 有关示例，请参阅 [SELECT 查询示例](sql-api-sql-query.md#SelectClause)
 
 **语法**  
-```  
+
+```sql
 SELECT <select_specification>  
 
 <select_specification> ::=   
@@ -92,25 +88,25 @@ SELECT <select_specification>
   
  **参数**  
   
- `<select_specification>`  
+- `<select_specification>`  
+
+  为结果集选择的属性或值。  
   
- 为结果集选择的属性或值。  
+- `'*'`  
+
+  指定在不进行任何更改的情况下检索该值。 具体来说，如果处理的值是一个对象，将检索所有属性。  
   
- `'*'`  
+- `<object_property_list>`  
   
-指定在不进行任何更改的情况下检索该值。 具体来说，如果处理的值是一个对象，将检索所有属性。  
+  指定要检索的属性列表。 每个返回值将是一个具有指定属性的对象。  
   
- `<object_property_list>`  
+- `VALUE`  
+
+  指定应检索 JSON 值而不是完整的 JSON 对象。 与 `<property_list>` 不同的是，它不会将投影值包装在对象中。  
   
-指定要检索的属性列表。 每个返回值将是一个具有指定属性的对象。  
-  
-`VALUE`  
-  
-指定应检索 JSON 值而不是完整的 JSON 对象。 与 `<property_list>` 不同的是，它不会将投影值包装在对象中。  
-  
-`<scalar_expression>`  
-  
-表示要计算的值的表达式。 请参阅[标量表达式](#bk_scalar_expressions)部分，了解详细信息。  
+- `<scalar_expression>`  
+
+  表示要计算的值的表达式。 请参阅[标量表达式](#bk_scalar_expressions)部分，了解详细信息。  
   
 **备注**  
   
@@ -118,17 +114,17 @@ SELECT <select_specification>
   
 请注意，`SELECT <select_list>` 和 `SELECT *` 是“语法糖”，可另外使用简单的 SELECT 语句表示，如下所示。  
   
-1.  `SELECT * FROM ... AS from_alias ...`  
+1. `SELECT * FROM ... AS from_alias ...`  
   
-     等效于：  
+   等效于：  
   
-     `SELECT from_alias FROM ... AS from_alias ...`  
+   `SELECT from_alias FROM ... AS from_alias ...`  
   
-2.  `SELECT <expr1> AS p1, <expr2> AS p2,..., <exprN> AS pN [other clauses...]`  
+2. `SELECT <expr1> AS p1, <expr2> AS p2,..., <exprN> AS pN [other clauses...]`  
   
-     等效于：  
+   等效于：  
   
-     `SELECT VALUE { p1: <expr1>, p2: <expr2>, ..., pN: <exprN> }[other clauses...]`  
+   `SELECT VALUE { p1: <expr1>, p2: <expr2>, ..., pN: <exprN> }[other clauses...]`  
   
 另请参阅  
   
@@ -136,11 +132,11 @@ SELECT <select_specification>
 [SELECT 子句](#bk_select_query)  
   
 ##  <a name="bk_from_clause"></a> FROM 子句  
-指定源或联接源。 FROM 子句是可选项。 如果未指定，其他子句仍将继续执行，如同 FROM 子句提供了单个文档。  
+指定源或联接源。 FROM 子句是可选的，除非稍后在查询中对源进行筛选或投影。 此子句的目的在于指定必须对其执行查询的数据源。 通常情况下，整个集合作为源，但可以改为指定集合的子集作为源。 如果未指定此子句，其他子句仍将继续执行，如同 FROM 子句提供了单个文档。 有关示例，请参阅 [FROM 子句示例](sql-api-sql-query.md#FromClause)
   
 **语法**  
   
-```  
+```sql  
 FROM <from_specification>  
   
 <from_specification> ::=   
@@ -160,55 +156,55 @@ FROM <from_specification>
   
 **参数**  
   
-`<from_source>`  
+- `<from_source>`  
   
-指定一个具有或不具有别名的数据源。 如果未指定别名，将从 `<collection_expression>` 中使用以下规则推断：  
+  指定一个具有或不具有别名的数据源。 如果未指定别名，将从 `<collection_expression>` 中使用以下规则推断：  
   
--   如果表达式为 collection_name，那么 collection_name 将用作别名。  
+  -  如果表达式为 collection_name，那么 collection_name 将用作别名。  
   
--   如果表达式为 `<collection_expression>`，其次是 property_name，那么 property_name 将用作别名。 如果表达式为 collection_name，那么 collection_name 将用作别名。  
+  -  如果表达式为 `<collection_expression>`，其次是 property_name，那么 property_name 将用作别名。 如果表达式为 collection_name，那么 collection_name 将用作别名。  
   
-AS `input_alias`  
+- AS `input_alias`  
   
-指定 `input_alias` 为基础集合表达式返回的一组值。  
+  指定 `input_alias` 为基础集合表达式返回的一组值。  
  
-`input_alias` IN  
+- `input_alias` IN  
   
-指定 `input_alias` 应表示通过遍历由基础集合表达式返回的每个数组的所有数组元素获得的一组值。 基础集合表达式返回的非数组的任何值都将被忽略。  
+  指定 `input_alias` 应表示通过遍历由基础集合表达式返回的每个数组的所有数组元素获得的一组值。 基础集合表达式返回的非数组的任何值都将被忽略。  
   
-`<collection_expression>`  
+- `<collection_expression>`  
   
-指定要用于检索文档的集合表达式。  
+  指定要用于检索文档的集合表达式。  
   
-`ROOT`  
+- `ROOT`  
   
-指定应从当前连接的默认集合中检索文档。  
+  指定应从当前连接的默认集合中检索文档。  
   
-`collection_name`  
+- `collection_name`  
   
-指定应从当前提供的集合中检索文档。 集合的名称必须匹配当前连接到的集合名称。  
+  指定应从当前提供的集合中检索文档。 集合的名称必须匹配当前连接到的集合名称。  
   
-`input_alias`  
+- `input_alias`  
   
-指定应从提供的别名定义的其他源中检索文档。  
+  指定应从提供的别名定义的其他源中检索文档。  
   
-`<collection_expression> '.' property_`  
+- `<collection_expression> '.' property_`  
   
-指定应通过访问由指定集合表达式检索的所有文档的 `property_name` 属性或 array_index 数组元素来检索文档。  
+  指定应通过访问由指定集合表达式检索的所有文档的 `property_name` 属性或 array_index 数组元素来检索文档。  
   
-`<collection_expression> '[' "property_name" | array_index ']'`  
+- `<collection_expression> '[' "property_name" | array_index ']'`  
   
-指定应通过访问由指定集合表达式检索的所有文档的 `property_name` 属性或 array_index 数组元素来检索文档。  
+  指定应通过访问由指定集合表达式检索的所有文档的 `property_name` 属性或 array_index 数组元素来检索文档。  
   
 **备注**  
   
 `<from_source>(`) 中提供或推断的所有别名必须唯一。 语法 `<collection_expression>.`property_name 等同于 `<collection_expression>' ['"property_name"']'`。 但是，如果属性名称包含非标识符字符，则可以使用后一种语法。  
   
-未命中属性、未命中数组元素、未定义值处理  
+### <a name="handling-missing-properties-missing-array-elements-and-undefined-values"></a>处理未命中属性、未命中数组元素和未定义值
   
 如果某个集合表达式访问属性或数组元素，但该值不存在，将忽略该值，且不会做进一步处理。  
   
-**集合表达式上下文范围**  
+### <a name="collection-expression-context-scoping"></a>集合表达式上下文范围  
   
 集合表达式的范围可能为集合或文档：  
   
@@ -216,11 +212,11 @@ AS `input_alias`
   
 -   如果集合表达式的基础源是之前在查询中引入的 `input_alias`，则表达式的范围是文档。 此类表达式表示通过计算每个文档范围内的集合表达式获得的一组文档，该文档属于与别名集合相关联的集。  结果集为多个集的合并，通过计算基础集中每个文档的集合表达式获得。  
   
-**联接**  
+### <a name="joins"></a>联接 
   
-在当前发布的版本中，Azure Cosmos DB 支持内联。 其他联接功能即将发布。
+在当前发布的版本中，Azure Cosmos DB 支持内联。 其他联接功能即将发布。 
 
-内联会导致加入联接的集产生完整叉积。 N 向联接的结果是获得一组 N-元素元组，其中元组中的每个值与参与联接的别名集相关联，并且可以通过引用其他子句中的这些别名来访问。  
+内联会导致加入联接的集产生完整叉积。 N 向联接的结果是获得一组 N-元素元组，其中元组中的每个值与参与联接的别名集相关联，并且可以通过引用其他子句中的这些别名来访问。 有关示例，请参阅 [JOIN 关键字示例](sql-api-sql-query.md#Joins)
   
 联接的计算取决于参与集的上下文范围：  
   
@@ -230,13 +226,13 @@ AS `input_alias`
   
  在当前发布的版本中，查询处理器支持一个集合范围的表达式的最大值。  
   
-**联接示例：**  
+### <a name="examples-of-joins"></a>联接示例  
   
 请看以下 FROM 子句：`<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
   
  让每个源定义 `input_alias1, input_alias2, …, input_aliasN`。 此 FROM 子句将返回一组 N 元组（带有 N 个值的元组）。 每个元组拥有通过对它们相应的集遍历所有集合别名所产生的值。  
   
-JOIN 示例 1，具有 2 个源：  
+示例 1 - 2 个源  
   
 - 让 `<from_source1>` 的范围为集合，并表示集 {A, B, C}。  
   
@@ -254,7 +250,7 @@ JOIN 示例 1，具有 2 个源：
   
     `(A, 1), (A, 2), (B, 3), (C, 4), (C, 5)`  
   
-*JOIN 示例 2，具有 3 个源：*  
+示例 2 - 3 个源  
   
 - 让 `<from_source1>` 的范围为集合，并表示集 {A, B, C}。  
   
@@ -278,10 +274,10 @@ JOIN 示例 1，具有 2 个源：
   
     (A, 1, 100), (A, 1, 200), (B, 3, 300)  
   
-> [!NOTE]
-> `input_alias1` 和 `input_alias2` 的其他值缺少元组，`<from_source3>` 不对其返回任何值。  
+  > [!NOTE]
+  > `input_alias1` 和 `input_alias2` 的其他值缺少元组，`<from_source3>` 不对其返回任何值。  
   
-*JOIN 示例 3，具有 3 个源：*  
+示例 3 - 3 个源  
   
 - 让 <from_source1> 的范围为集合，并表示集 {A, B, C}。  
   
@@ -307,19 +303,19 @@ JOIN 示例 1，具有 2 个源：
   
     (A, 1, 100), (A, 1, 200), (A, 2, 100), (A, 2, 200),  (C, 4, 300) ,  (C, 5, 300)  
   
-> [!NOTE]
-> 这会导致 `<from_source2>` 和 `<from_source3>` 产生叉积，因为两者的范围都为 `<from_source1>`。  这会产生 4 (2x2) 个具有 A 值的元组、0 个具有 B (1x0) 值的元组、和 2 (2x1) 个具有 C 值的元组。  
+  > [!NOTE]
+  > 这会导致 `<from_source2>` 和 `<from_source3>` 产生叉积，因为两者的范围都为 `<from_source1>`。  这会产生 4 (2x2) 个具有 A 值的元组、0 个具有 B (1x0) 值的元组、和 2 (2x1) 个具有 C 值的元组。  
   
 **另请参阅**  
   
  [SELECT 子句](#bk_select_query)  
   
 ##  <a name="bk_where_clause"></a> WHERE 子句  
- 为查询返回的文档指定搜索条件。  
+ 为查询返回的文档指定搜索条件。 有关示例，请参阅 [WHERE 子句示例](sql-api-sql-query.md#WhereClause)
   
  **语法**  
   
-```  
+```sql  
 WHERE <filter_condition>  
 <filter_condition> ::= <scalar_expression>  
   
@@ -340,11 +336,11 @@ WHERE <filter_condition>
  为了能够返回文档，指定为筛选条件的表达式的求值结果必须为 true。 只有当布尔值为 true 才可以满足条件，任何其他值：未定义、null、false、数字、数组或对象均不满足条件。  
   
 ##  <a name="bk_orderby_clause"></a> ORDER BY 子句  
- 为查询返回的结果指定排序顺序。  
+ 为查询返回的结果指定排序顺序。 有关示例，请参阅 [ORDER BY 子句示例](sql-api-sql-query.md#OrderByClause)
   
  **语法**  
   
-```  
+```sql  
 ORDER BY <sort_specification>  
 <sort_specification> ::= <sort_expression> [, <sort_expression>]  
 <sort_expression> ::= <scalar_expression> [ASC | DESC]  
@@ -378,13 +374,13 @@ ORDER BY <sort_specification>
  虽然查询语法支持多个排序依据属性，但 Azure Cosmos DB 查询运行时支持仅按单个属性排序，以及仅按属性名称排序，即不支持按计算属性排序。 排序也要求索引策略尽可能精确地加入属性和指定类型的范围索引。 有关详细信息，请参阅索引策略文档。  
   
 ##  <a name="bk_scalar_expressions"></a> 标量表达式  
- 标量表达式是符号和运算符的组合，经计算后可获得单个值。 简单表达式可以是常数、属性引用、数组元素引用、别名引用或函数调用。 简单表达式可以使用运算符组合成复杂的表达式。  
+ 标量表达式是符号和运算符的组合，经计算后可获得单个值。 简单表达式可以是常数、属性引用、数组元素引用、别名引用或函数调用。 简单表达式可以使用运算符组合成复杂的表达式。 有关示例，请参阅[标量表达式示例](sql-api-sql-query.md#scalar-expressions)
   
  有关标量表达式可能包含的值的详细信息，请参阅[常数](#bk_constants)部分。  
   
  **语法**  
   
-```  
+```sql  
 <scalar_expression> ::=  
        <constant>   
      | input_alias   
@@ -550,7 +546,7 @@ ORDER BY <sort_specification>
   
  **语法**  
   
-```  
+```sql  
 <constant> ::=  
    <undefined_constant>  
      | <null_constant>   
@@ -580,45 +576,45 @@ ORDER BY <sort_specification>
   
  **参数**  
   
-1.  `<undefined_constant>; undefined`  
+* `<undefined_constant>; undefined`  
   
-     表示 Undefined 类型的未定义值。  
+  表示 Undefined 类型的未定义值。  
   
-2.  `<null_constant>; null`  
+* `<null_constant>; null`  
   
-     表示 Null 类型的 null 值。  
+  表示 Null 类型的 null 值。  
   
-3.  `<boolean_constant>`  
+* `<boolean_constant>`  
   
-     表示 Boolean 类型的常数。  
+  表示 Boolean 类型的常数。  
   
-4.  `false`  
+* `false`  
   
-     表示 Boolean 类型的 false 值。  
+  表示 Boolean 类型的 false 值。  
   
-5.  `true`  
+* `true`  
   
-     表示 Boolean 类型的 true 值。  
+  表示 Boolean 类型的 true 值。  
   
-6.  `<number_constant>`  
+* `<number_constant>`  
   
-     表示常数。  
+  表示常数。  
   
-7.  `decimal_literal`  
+* `decimal_literal`  
   
-     十进制文本是使用十进制表示法或科学记数法表示的数字。  
+  十进制文本是使用十进制表示法或科学记数法表示的数字。  
   
-8.  `hexadecimal_literal`  
+* `hexadecimal_literal`  
   
-     十六进制文本是使用 "0x" 前缀表示的数字，后跟一个或多个十六进制数字。  
+  十六进制文本是使用 "0x" 前缀表示的数字，后跟一个或多个十六进制数字。  
   
-9. `<string_constant>`  
+* `<string_constant>`  
   
-     表示字符串类型的常数。  
+  表示字符串类型的常数。  
   
-10. `string _literal`  
+* `string _literal`  
   
-     字符串文本是以零个或多个 Unicode 字符序列或转义符序列表示的 Unicode 字符串。 字符串文本括在单引号 (') 或双引号 (") 中。  
+  字符串文本是以零个或多个 Unicode 字符序列或转义符序列表示的 Unicode 字符串。 字符串文本括在单引号 (') 或双引号 (") 中。  
   
  允许以下转义序列：  
   
@@ -1854,7 +1850,7 @@ SELECT
 |[LOWER](#bk_lower)|[LTRIM](#bk_ltrim)|[REPLACE](#bk_replace)|  
 |[REPLICATE](#bk_replicate)|[REVERSE](#bk_reverse)|[RIGHT](#bk_right)|  
 |[RTRIM](#bk_rtrim)|[STARTSWITH](#bk_startswith)|[SUBSTRING](#bk_substring)|  
-|[ToString](#bk_tostring)|[UPPER](#bk_upper)|||  
+|[ToString](#bk_tostring)|[TRIM](#bk_trim)|[UPPER](#bk_upper)||| 
   
 ####  <a name="bk_concat"></a> CONCAT  
  返回一个字符串，该字符串是连接两个或多个字符串值的结果。  
@@ -2440,7 +2436,40 @@ JOIN n IN food.nutrients
 {"nutrientID":"307","nutritionVal":"912"},
 {"nutrientID":"308","nutritionVal":"90"},
 {"nutrientID":"309","nutritionVal":"null"}]
- ```  
+ ``` 
+ 
+####  <a name="bk_trim"></a> TRIM  
+ 返回删除前导空格和尾随空格后的字符串表达式。  
+  
+ **语法**  
+  
+```  
+TRIM(<str_expr>)  
+```  
+  
+ **参数**  
+  
+-   `str_expr`  
+  
+     为任何有效的字符串表达式。  
+  
+ 返回类型  
+  
+ 返回字符串表达式。  
+  
+ **示例**  
+  
+ 以下示例介绍了如何在查询中使用 TRIM。  
+  
+```  
+SELECT TRIM("   abc"), TRIM("   abc   "), TRIM("abc   "), TRIM("abc")   
+```  
+  
+ 结果集如下。  
+  
+```  
+[{"$1": "abc", "$2": "abc", "$3": "abc", "$4": "abc"}]  
+``` 
 ####  <a name="bk_upper"></a> UPPER  
  返回在将小写字符数据转换为大写后的字符串表达式。  
   

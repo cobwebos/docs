@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: dfeacb266d6aa6a43e49a39bd19c9699ef65ce82
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 1ad499e2703ff8376c063d933c0cc1f03765fc23
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39162008"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42145478"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>消除你的组织中的错误密码
 
@@ -54,11 +54,10 @@ Microsoft 一直在努力，力求比网络罪犯先行一步。 因此，Azure 
 
 ## <a name="license-requirements"></a>许可要求
 
-全局禁止密码列表会使 Azure Active Directory (Azure AD) 的所有用户受益。
-
-自定义的禁止密码列表需要 Azure AD Basic 许可证。
-
-Windows Server Active Directory 的 Azure AD 密码保护需要 Azure AD Premium 许可证。 
+|   | 带有全局禁止密码列表的 Azure AD 密码保护 | 带有自定义禁止密码列表的 Azure AD 密码保护|
+| --- | --- | --- |
+| 仅限云的用户 | Azure AD Free | Azure AD Basic |
+| 从本地 Windows Server Active Directory 同步的用户 | Azure AD Premium P1 或 P2 | Azure AD Premium P1 或 P2 |
 
 可以在 [Azure Active Directory 定价站点](https://azure.microsoft.com/pricing/details/active-directory/)上找到包括成本在内的其他许可信息。
 

@@ -11,16 +11,16 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/10/2018
+ms.date: 08/15/2018
 ms.author: alkohli
-ms.openlocfilehash: 4dc4ddb2d11cf792bfa6288eadce8eb03470ae1d
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 6a52db27491ef707b813a7645d275b371b11368c
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "40099660"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42140017"
 ---
-# <a name="migrate-data-from-storsimple-5000-7000-series"></a>从 StorSimple 5000-7000 系列迁移数据 
+# <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>将数据从 StorSimple 5000-7000 系列迁移到 Azure 文件同步
 
 数据迁移是将数据从一个存储位置转移到另一个位置的过程。 这需要在组织中的一台设备上，创建另一台设备上的当前数据的完全相同的副本 — 最好能够避免中断或禁用活动的应用程序 — 然后将所有输入/输出 (I/O) 活动重定向到新设备。 
 
@@ -67,12 +67,12 @@ StorSimple 5000 和 7000 系列存储设备将在 2019 年 7 月退役。 这意
 
 执行以下步骤，将 StorSimple 卷上配置的 Windows 文件共享迁移到 Azure 文件同步共享。 
 1.  在同一台 Windows Server 主机（其中的 StorSimple 卷已装载或使用不同的系统）上执行这些步骤。 
-    - [准备 Windows Server 用于 Azure 文件同步](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal)。
-    - [安装 Azure 文件同步代理](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal)。
-    - [部署存储同步服务](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal)。 
-    - [将 Windows Server 注册到存储同步服务](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal)。 
-    - [创建同步组和云终结点](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal。 对于需要从主机迁移的每个 Windows 文件共享，请创建同步组。
-    - [创建服务器终结点](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal)。 将路径指定为包含文件共享数据的 StorSimple 卷的路径。 例如，如果 StorSimple 卷是驱动器 `J`，而数据驻留在 `J:/<myafsshare>` 中，则将此路径添加为服务器终结点。 将“分层”保留为“已禁用”。
+    - [准备 Windows Server 用于 Azure 文件同步](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#prepare-windows-server-to-use-with-azure-file-sync)。
+    - [安装 Azure 文件同步代理](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#install-the-azure-file-sync-agent)。
+    - [部署存储同步服务](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#deploy-the-storage-sync-service)。 
+    - [将 Windows Server 注册到存储同步服务](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#register-windows-server-with-storage-sync-service)。 
+    - [创建同步组和云终结点](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#create-a-sync-group-and-a-cloud-endpoint)。 对于需要从主机迁移的每个 Windows 文件共享，请创建同步组。
+    - [创建服务器终结点](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal#create-a-server-endpoint)。 将路径指定为包含文件共享数据的 StorSimple 卷的路径。 例如，如果 StorSimple 卷是驱动器 `J`，而数据驻留在 `J:/<myafsshare>` 中，则将此路径添加为服务器终结点。 将“分层”保留为“已禁用”。
 2.  等到文件服务器同步完成。 对于给定同步组中的每个服务器，请确保：
     - 上传和下载会话的“上次尝试同步”时间戳是最近的时间。
     - 上传和下载会话的状态为绿色。

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: f2283125aff705aae87b6260b48deee01aa12f0d
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: bd3eeb5ebb9b30ac315fee1597348f3bd34f3bb6
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343546"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42140229"
 ---
 # <a name="getting-compliance-data"></a>获取符合性数据
 
@@ -26,6 +26,9 @@ Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../a
 - 通过[命令行](#command_line)脚本
 
 在探讨符合性报告方法之前，让我们了解符合性信息的更新时间和频率，以及触发评估周期的事件。
+
+> [!WARNING]
+> 如果符合性状态被报告为“N/A”，请确认是否已注册 Microsoft.PolicyInsights 资源提供程序，并确认用户是否具有相应的基于角色的访问控制 (RBAC) 权限，如[此处](azure-policy-introduction.md#rbac-permissions-in-azure-policy)所述。
 
 ## <a name="evaluation-triggers"></a>评估触发器
 

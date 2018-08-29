@@ -204,7 +204,7 @@ Azure 服务广泛记录系统和用户活动以及系统运行状况：
 
 **Azure Monitor**：[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) 通过使组织能够审核、创建警报和存档数据（包括在用户的 Azure 资源中跟踪 API 调用），帮助用户跟踪性能、维护安全性和确定趋势。
 
-Azure 网络观察程序：[Azure 网络观察程序]9https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview) 提供所需的工具用于监视、诊断 Azure 虚拟网络中的资源、查看其指标，以及为其启用或禁用日志。  英联邦实体应为 NSG 和虚拟机实施网络观察程序流日志。 这些日志只能存储在专门用于存储安全日志的存储帐户中，对该存储帐户的访问应受基于角色的访问控制的保护。
+Azure 网络观察程序： [Azure 网络观察程序]9https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview) 提供所需的工具用于监视、诊断 Azure 虚拟网络中的资源、查看其指标，以及为其启用或禁用日志。  英联邦实体应为 NSG 和虚拟机实施网络观察程序流日志。 这些日志只能存储在专门用于存储安全日志的存储帐户中，对该存储帐户的访问应受基于角色的访问控制的保护。
 
 ## <a name="threat-model"></a>威胁模型
 

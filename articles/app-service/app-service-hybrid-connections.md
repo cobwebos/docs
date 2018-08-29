@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 07/26/2018
 ms.author: ccompy
-ms.openlocfilehash: 677642e4e97523ed71ff5857ae27263743dca535
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 69897e288a90a731d95db82d0ff978d776c12580
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2017
-ms.locfileid: "25990813"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42139802"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure 应用服务混合连接 #
 
@@ -40,9 +40,7 @@ ms.locfileid: "25990813"
 > [!NOTE]
 > 这意味着，始终应该尽量为混合连接使用 DNS 名称。 如果终结点使用 IP 地址，某些客户端软件不会执行 DNS 查找。
 >
->
 
-混合连接功能有两种类型：在服务总线中继中以服务形式提供的混合连接，以及旧式 Azure BizTalk 服务混合连接。 后者在门户中称为“经典混合连接”。 本文稍后将提供相关的详细信息。
 
 ### <a name="app-service-hybrid-connection-benefits"></a>应用服务混合连接的优势 ###
 
@@ -56,29 +54,29 @@ ms.locfileid: "25990813"
 - 由于该功能在网络级别运行，它并不知道应用使用的语言以及终结点使用的技术。
 - 可以通过单个应用使用它在多个网络中提供访问。 
 
-### <a name="things-you-cannot-do-with-hybrid-connections"></a>混合连接无法提供的功能 ###
+### <a name="things-you-cannot-do-with-hybrid-connections"></a>混合连接无法实现的操作 ###
 
-混合连接无法提供某些功能，包括：
+混合连接无法实现以下操作：
 
 - 装载驱动器。
 - 使用 UDP。
 - 访问使用动态端口（例如 FTP 被动模式或扩展被动模式）的基于 TCP 的服务。
-- 支持 LDAP，因为有时需要 UDP。
-- 支持 Active Directory。
+- 支持 LDAP，因为它可能需要 UDP。
+- 支持 Active Directory，因为你无法域加入应用服务辅助角色。
 
 ## <a name="add-and-create-hybrid-connections-in-your-app"></a>在应用中添加和创建混合连接 ##
 
-可以在 Azure 门户中通过应用服务应用创建混合连接，或通过 Azure 门户中的 Azure 中继创建。 我们建议通过要使用混合连接的应用服务应用来创建混合连接。 要创建混合连接，请转到 [Azure 门户][portal]，并选择应用。 选择“网络” > “配置混合连接终结点”。 从此处，可以看到为应用配置的混合连接。  
+要创建混合连接，请转到 [Azure 门户][portal]，并选择应用。 选择“网络” > “配置混合连接终结点”。 此处显示了为应用配置的混合连接。  
 
 ![混合连接列表的屏幕截图][2]
 
-若要添加新的混合连接，请选择“添加混合连接”。  此时会显示已创建的混合连接列表。 要将其中的一个或多个混合连接添加到应用，请选择所需的混合连接，然后选择“添加选定的混合连接”。  
+要添加新的混合连接，请选择“[+]添加混合连接”。  此时会显示已创建的混合连接的列表。 要将其中的一个或多个混合连接添加到应用，请选择所需的混合连接，然后选择“添加选定的混合连接”。  
 
 ![混合连接门户的屏幕截图][3]
 
 如果想要创建新的混合连接，请选择“创建新的混合连接”。 指定： 
 
-- 终结点名称。
+- 混合连接名称。
 - 终结点主机名。
 - 终结点端口。
 - 要使用的服务总线命名空间。
@@ -102,11 +100,7 @@ ms.locfileid: "25990813"
 
 ## <a name="hybrid-connections-and-app-service-plans"></a>混合连接和应用服务计划 ##
 
-混合连接功能只能在“基本”、“标准”、“高级”和“隔离”定价 SKU 中使用。 定价计划没有相关的限制。  
-
-> [!NOTE] 
-> 只能创建基于 Azure 中继的新混合连接。 无法创建新 BizTalk 混合连接。
->
+应用服务混合连接只能在“基本”、“标准”、“高级”和“隔离”定价 SKU 中使用。 定价计划没有相关的限制。  
 
 | 定价计划 | 在计划中可以使用的混合连接数 |
 |----|----|
@@ -115,7 +109,7 @@ ms.locfileid: "25990813"
 | 高级 | 200 |
 | 隔离 | 200 |
 
-请注意，应用服务计划会显示混合连接的用量以及由哪些应用使用。  
+应用服务计划 UI 会显示混合连接的用量以及由哪些应用使用。  
 
 ![应用服务计划属性的屏幕截图][6]
 
@@ -123,13 +117,15 @@ ms.locfileid: "25990813"
 
 可在一个应用服务计划中使用的混合连接终结点数目有限制。 但是，所用的每个混合连接可在该计划中任意数目的应用中使用。 例如，在一个应用服务计划下的 5 个单独应用中共同使用的单个混合连接，仅算作 1 个混合连接。
 
-使用混合连接不收取额外费用。 有关详细信息，请参阅[服务总线定价][sbpricing]。
+### <a name="pricing"></a>定价 ###
+
+除了存在应用服务计划 SKU 要求，使用混合连接还会产生额外的成本。 混合连接使用的每个侦听器都要收费。 侦听器是混合连接管理器。 如果你有 5 个混合连接，它们由 2 个混合连接管理器支持，则总计是 10 个侦听器。 有关详细信息，请参阅[服务总线定价][sbpricing]。
 
 ## <a name="hybrid-connection-manager"></a>混合连接管理器 ##
 
 混合连接功能要求在网络中安装一个中继代理用于托管混合连接终结点。 该中继代理称为混合连接管理器 (HCM)。 若要下载 HCM，请在 [Azure 门户][portal]上的应用中，选择“网络” > “配置混合连接终结点”。  
 
-此工具可在 Windows Server 2012 和更高版本上运行。 安装后，HCM 将作为服务运行，可基于配置的终结点连接到服务总线中继。 从 HCM 建立的连接是与端口 443 建立的 Azure 出站连接。    
+此工具可在 Windows Server 2012 和更高版本上运行。 HCM 作为服务运行，并在端口 443 上出站连接到 Azure 中继。  
 
 安装 HCM 后，可以运行 HybridConnectionManagerUi.exe 来使用该工具的 UI。 此文件位于混合连接管理器的安装目录中。 在 Windows 10 上，也可以在搜索框中搜索“混合连接管理器 UI”即可。  
 
@@ -156,11 +152,9 @@ ms.locfileid: "25990813"
 
 若要支持配置的混合连接，HCM 需要：
 
-- 通过端口 80 和 443 对 Azure 进行 TCP 访问。
+- 通过端口 443 对 Azure 进行 TCP 访问。
 - 对混合连接终结点进行 TCP 访问。
 - 能够在终结点主机和服务总线命名空间中执行 DNS 查找。
-
-HCM 支持新式混合连接和 BizTalk 混合连接。
 
 > [!NOTE]
 > Azure 中继的连接性依赖于 Web 套接字。 此功能仅适用于 Windows Server 2012 或更高版本。 因此，低于 Windows Server 2012 的版本将不支持 HCM。
@@ -168,12 +162,62 @@ HCM 支持新式混合连接和 BizTalk 混合连接。
 
 ### <a name="redundancy"></a>冗余 ###
 
-每个 HCM 可以支持多个混合连接。 此外，多个 HCM 可以支持任一给定的混合连接。 默认行为是在为任一给定终结点配置的 HCM 之间路由流量。 如果希望从网络建立的混合连接具有高可用性，可在单独的计算机上运行多个 HCM。 
+每个 HCM 可以支持多个混合连接。 此外，多个 HCM 可以支持任一给定的混合连接。 默认行为是在为任一给定终结点配置的 HCM 之间路由流量。 如果希望从网络建立的混合连接具有高可用性，可在单独的计算机上运行多个 HCM。 中继服务用于将流量分配到 HCM 的负载分配算法是随机分配。 
 
 ### <a name="manually-add-a-hybrid-connection"></a>手动添加混合连接 ###
 
-若要让订阅外部的某人托管给定混合连接的 HCM 实例，可与他（她）共享该混合连接的网关连接字符串。 在 [Azure 门户][portal]上的混合连接属性中可以看到该字符串。 要使用该字符串，请在 HCM 中选择“手动输入”，并粘贴网关连接字符串。
+要让订阅外部的某人能够托管给定混合连接的 HCM 实例，可与其共享该混合连接的网关连接字符串。 网关连接字符串位于 [Azure 门户][portal]的“混合连接”属性中。 要使用该字符串，请在 HCM 中选择“手动输入”，并粘贴网关连接字符串。
 
+![手动添加混合连接][11]
+
+### <a name="upgrade"></a>升级 ###
+
+混合连接管理器会定期更新，以解决问题或提供改进。 发布升级时，HCM UI 中将显示一个弹出窗口。 应用升级时将一并应用更改并重启 HCM。 
+
+## <a name="adding-a-hybrid-connection-to-your-app-programmatically"></a>以编程方式向应用添加混合连接 ##
+
+下面提到的 API 可直接用于管理连接到 Web 应用的混合连接。 
+
+    /subscriptions/[subscription name]/resourceGroups/[resource group name]/providers/Microsoft.Web/sites/[app name]/hybridConnectionNamespaces/[relay namespace name]/relays/[hybrid connection name]?api-version=2016-08-01
+
+与混合连接关联的 JSON 对象如下所示：
+
+    {
+      "name": "[hybrid connection name]",
+      "type": "Microsoft.Relay/Namespaces/HybridConnections",
+      "location": "[location]",
+      "properties": {
+        "serviceBusNamespace": "[namespace name]",
+        "relayName": "[hybrid connection name]",
+        "relayArmUri": "/subscriptions/[subscription id]/resourceGroups/[resource group name]/providers/Microsoft.Relay/namespaces/[namespace name]/hybridconnections/[hybrid connection name]",
+        "hostName": "[endpoint host name]",
+        "port": [port],
+        "sendKeyName": "defaultSender",
+        "sendKeyValue": "[send key]"
+      }
+    }
+
+要使用此信息，一种方式是使用 armclient（可从 [ARMClient][armclient] github 项目中获取）。 下面是将预先存在的混合连接附加到 Web 应用的示例。 按照上述架构创建一个 JSON 文件，如：
+
+    {
+      "name": "relay-demo-hc",
+      "type": "Microsoft.Relay/Namespaces/HybridConnections",
+      "location": "North Central US",
+      "properties": {
+        "serviceBusNamespace": "demo-relay",
+        "relayName": "relay-demo-hc",
+        "relayArmUri": "/subscriptions/ebcidic-asci-anna-nath-rak1111111/resourceGroups/myrelay-rg/providers/Microsoft.Relay/namespaces/demo-relay/hybridconnections/relay-demo-hc",
+        "hostName": "my-wkstn.home",
+        "port": 1433,
+        "sendKeyName": "defaultSender",
+        "sendKeyValue": "Th9is3is8a82lot93of3774stu887ff122235="
+      }
+    }
+
+要使用此 API，需要发送密钥和中继资源 ID。 如果使用文件名 hctest.json 保存了信息，请发出此命令以将混合连接附加到你的应用： 
+
+    armclient login
+    armclient put /subscriptions/ebcidic-asci-anna-nath-rak1111111/resourceGroups/myapp-rg/providers/Microsoft.Web/sites/myhcdemoapp/hybridConnectionNamespaces/demo-relay/relays/relay-demo-hc?api-version=2016-08-01 @hctest.json
 
 ## <a name="troubleshooting"></a>故障排除 ##
 
@@ -185,13 +229,9 @@ HCM 支持新式混合连接和 BizTalk 混合连接。
 
 ## <a name="biztalk-hybrid-connections"></a>BizTalk 混合连接 ##
 
-旧式 BizTalk 混合连接功能已不再能够用于创建新 BizTalk 混合连接。 可以继续对应用使用现有的 BizTalk 混合连接，但应该迁移到使用 Azure 中继的新混合连接。 与 BizTalk 版本相比，新服务的优点包括：
+此功能的早期形式被称为 BizTalk 混合连接。 此功能于 2018 年 5 月 31 日结束并停止操作。 BizTalk 混合连接已从所有 Web 应用中删除，无法通过门户或 API 访问。 如果仍在混合连接管理器中配置了这些旧连接，则会看到“已停用”状态且底部显示“生命周期结束”。
 
-- 不需要额外的 BizTalk 帐户。
-- TLS 版本为 1.2，而不是 1.0。
-- 通信是通过端口 80 和 443 进行的，它使用 DNS 名称来访问 Azure，而不是使用 IP 地址和其他一系列端口。  
-
-若要将现有的 BizTalk 混合连接添加到应用，请在 [Azure 门户][portal]中转到该应用，然后选择“网络” > “配置混合连接终结点”。 在“经典混合连接”表中，选择“添加经典混合连接”。 随后可以看到 BizTalk 混合连接的列表。  
+![HCM 中的 BizTalk 混合连接][12]
 
 
 <!--Image references-->
@@ -205,9 +245,12 @@ HCM 支持新式混合连接和 BizTalk 混合连接。
 [8]: ./media/app-service-hybrid-connections/hybridconn-hcmadd.png
 [9]: ./media/app-service-hybrid-connections/hybridconn-hcmadded.png
 [10]: ./media/app-service-hybrid-connections/hybridconn-hcmdetails.png
+[11]: ./media/app-service-hybrid-connections/hybridconn-manual.png
+[12]: ./media/app-service-hybrid-connections/hybridconn-bt.png
 
 <!--Links-->
 [HCService]: http://docs.microsoft.com/azure/service-bus-relay/relay-hybrid-connections-protocol/
 [portal]: http://portal.azure.com/
 [oldhc]: http://docs.microsoft.com/azure/biztalk-services/integration-hybrid-connection-overview/
 [sbpricing]: http://azure.microsoft.com/pricing/details/service-bus/
+[armclient]: https://github.com/projectkudu/ARMClient/

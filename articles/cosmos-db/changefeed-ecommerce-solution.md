@@ -9,18 +9,18 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: 21f63ebcca4b766f8df8c7b2390c4f44ff4dc7b1
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: d2c4c890e1a1599e68fba1a0728061ec244f382f
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "40099659"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42145081"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>使用 Azure Cosmos DB 更改源将实时数据分析可视化
 
 Azure Cosmos DB 更改源是在 Azure Cosmos DB 容器中创建或修改记录时，获取连续增量记录源的一种机制。 更改源支持的工作原理是侦听容器中发生的任何更改。 然后，它会按照所更改文档的修改顺序输出这些文档的排序列表。 若要详细了解更改源，请参阅[使用更改源](change-feed.md)一文。 
 
-本文介绍零售公司如何使用更改源来了解用户模式，以及执行实时数据分析和可视化。 我们将分析各种事件，例如，用户查看某个商品、将商品添加到购物车，或购买商品。 发生其中一个事件时，将创建一个新记录，而更改源将会记录该记录。 然后，更改源触发一系列步骤，从而生成用于分析公司绩效和活动的指标的可视化效果。 可以可视化的示例指标包括收入、唯一的站点访客、最受欢迎的商品，以及查看的商品、添加到购物车的商品与购买的商品的平均价格。 这些示例指标可帮助电子商务公司评估其站点热门度、制定其广告和定价策略，并做出投资哪些存货的决策。
+本文介绍了电商企业如何通过变化信息了解用户模式并执行实时数据分析和可视化。 我们将分析各种事件，例如，用户查看某个商品、将商品添加到购物车，或购买商品。 发生其中一个事件时，将创建一个新记录，而更改源将会记录该记录。 然后，更改源触发一系列步骤，从而生成用于分析公司绩效和活动的指标的可视化效果。 可以可视化的示例指标包括收入、唯一的站点访客、最受欢迎的商品，以及查看的商品、添加到购物车的商品与购买的商品的平均价格。 这些示例指标可帮助电子商务公司评估其站点热门度、制定其广告和定价策略，并做出投资哪些存货的决策。
 
 如有兴趣，请在开始之前观看有关该解决方案的以下视频：
 
@@ -315,7 +315,7 @@ Power BI 是一套商业分析工具，可以分析数据和分享见解。 在�
    * 对于 Revenue 查询，最好是绘制折线图，其中以时间为轴，以价格总和为值。 显示的时间窗口应尽可能大，以便尽量提供最多的信息。  
    * 对于 Unique Visitors 查询，最好是绘制卡片可视化效果，其中以唯一访客数为值。
 
-   包含这些图表的仪表板如下所示：
+   包含这些图表的仪表板示例如下所示：
 
    ![可视化效果](./media/changefeed-ecommerce-solution/visualizations.png)
 

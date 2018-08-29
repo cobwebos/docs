@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/02/2018
+ms.date: 08/17/2018
 ms.author: terrylan
-ms.openlocfilehash: 7533f9db25da8e69d3fcfa76a61a06af2f1bc78c
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: ec8e4b1edfe815670664de83edf98a9e478101d2
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345951"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42144823"
 ---
 # <a name="azure-network-security-overview"></a>Azure 网络安全概述
 
@@ -57,6 +57,9 @@ Azure 支持多种类型的网络访问控制，例如：
 ### <a name="network-layer-control"></a>网络层控制
 
 任何安全部署都需要一定程度的网络访问控制。 网络访问控制的目的是将虚拟机通信限制为必要的系统。 将阻止其他通信尝试。
+
+>[!NOTE]
+要了解存储防火墙，请参阅 [Azure 存储安全概述](security-storage-overview.md)一文
 
 #### <a name="network-security-rules-nsgs"></a>网络安全规则 (NSG)
 
@@ -323,7 +326,6 @@ Azure 安全中心帮助预防、检测和响应威胁，同时提高 Azure 资�
 了解更多：
 
 * [网络安全组 (NSG) 的 Log Analytics](../virtual-network/virtual-network-nsg-manage-log.md)
-
 
 ## <a name="azure-ddos-protection"></a>Azure DDoS 防护
 

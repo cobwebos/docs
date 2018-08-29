@@ -5,19 +5,19 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 08/15/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 17abcc7dea2f695b4678b30fe7448b0bcbb11590
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: b9d3e9df62ffd31a6a01ea427fec8d5a3d168bfa
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441479"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42140219"
 ---
 # <a name="create-a-tabular-model-project"></a>创建表格模型项目
 
-本课程介绍如何将 Visual Studio 与 SQL Server Data Tools (SSDT) 配合使用，以便创建 1400 兼容级别的新表格模型项目。 创建新项目后，可以开始添加数据和创作模型。 本课程还提供 Visual Studio 中表格模型创作环境的简介。  
+本课程介绍如何将 Visual Studio 与 Analysis Services 项目或 SQL Server Data Tools (SSDT) 配合使用，以便创建 1400 兼容级别的新表格模型项目。 创建新项目后，可以开始添加数据和创作模型。 本课程还提供 Visual Studio 中表格模型创作环境的简介。  
   
 本课预计完成时间：**10 分钟**  
   
@@ -49,7 +49,7 @@ ms.locfileid: "37441479"
     如果“兼容性级别”列表框中未显示“SQL Server 2017/Azure Analysis Services (1400)”，则表示使用的不是最新版本的 SQL Server Data Tools。 若要获取最新版本，请参阅[安装 SQL Server Data tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)。  
       
   
-## <a name="understanding-the-ssdt-tabular-model-authoring-environment"></a>了解 SSDT 表格模型创作环境  
+## <a name="understanding-the-visual-studio-tabular-model-authoring-environment"></a>了解 Visual Studio 表格模型创作环境  
 创建新的表格模型项目后，让我们花点时间了解 Visual Studio 中的表格模型创作环境。  
   
 创建项目后，它会在 Visual Studio 中打开。 右侧的“表格模型资源管理器”显示了模型中对象的树状视图。 由于尚未导入数据，因此文件夹是空的。 可以右键单击某个对象文件夹来执行操作，就像使用菜单栏一样。 在学习本教程的过程中，将使用“表格模型资源管理器”来浏览模型项目中的不同对象。
@@ -68,7 +68,7 @@ ms.locfileid: "37441479"
 
 在“解决方案资源管理器”中，右键单击“AW Internet Sales”（项目），并单击“属性”。 此时会显示“AW Internet Sales 属性页”对话框。 稍后在部署模型时，可设置其中的某些属性。  
   
-安装 SSDT 时，已将一些新的菜单项添加到 Visual Studio 环境。 单击“模型”菜单。 可在此处导入数据、刷新工作区数据、在 Excel 中浏览模型、创建透视图和角色、选择模型视图，以及设置计算选项。 单击“表”菜单。 可在此处创建和管理关系、指定日期表设置、创建分区，以及编辑表属性。 如果单击“列”菜单，可在表中添加和删除列、冻结列，以及指定排序顺序。 SSDT 还会在栏中添加一些按钮。 最有用的功能是“自动求和”，可为选定的列创建标准聚合度量值。 使用其他工具栏按钮可以快速访问常用的功能和命令。  
+安装 Analysis Services 项目或 SSDT 时，已将一些新的菜单项添加到 Visual Studio 环境。 单击“模型”菜单。 可在此处导入数据、刷新工作区数据、在 Excel 中浏览模型、创建透视图和角色、选择模型视图，以及设置计算选项。 单击“表”菜单。 可在此处创建和管理关系、指定日期表设置、创建分区，以及编辑表属性。 如果单击“列”菜单，可在表中添加和删除列、冻结列，以及指定排序顺序。 Visual Studio 还会在栏中添加一些按钮。 最有用的功能是“自动求和”，可为选定的列创建标准聚合度量值。 使用其他工具栏按钮可以快速访问常用的功能和命令。  
   
 浏览专门用于创作表格模型的各种功能的一些对话框和位置。 尽管某些项尚未激活，但可以从中大致了解表格模型的创作环境。  
   

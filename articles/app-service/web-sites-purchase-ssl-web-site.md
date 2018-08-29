@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 85d0c91a0b1cdf5703b394d6d232ab9cee72ee0c
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 21dde5b0199345e9e8faffc6feac4854a3aa7350
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627138"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42145083"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>为 Azure 应用服务购买和配置 SSL 证书
 
@@ -205,7 +205,7 @@ SSL 证书购买过程完成之后，需要打开[应用服务证书](https://po
 如果你的 SSL 证书配置为自动续订，但没有自动续订，则可能存在未完成的域验证。 请注意： 
 
 - GoDaddy（用于生成应用服务证书）要求每两年进行一次域验证。 域管理员每隔三年会收到一封电子邮件，要求对域进行验证。 如果没有检查该电子邮件或者没有验证你的域，则会阻止自动续订应用服务证书。 
-- 由于 GoDaddy 策略更改，在 2018 年 3 月 1 日之前颁发的所有应用服务证书在下次续订时都会要求重新验证域（即使为证书启用了自动续订也是如此）。 请检查电子邮件并完成此一次性域验证，以继续自动续订应用服务证书。 
+- 由于 GoDaddy 策略更改，在 2017 年 3 月 1 日之前颁发的所有应用服务证书在下次续订时都会要求重新验证域（即使为证书启用了自动续订也是如此）。 请检查电子邮件并完成此一次性域验证，以继续自动续订应用服务证书。 
 
 ## <a name="more-resources"></a>更多资源
 

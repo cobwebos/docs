@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2016
 ms.author: yushwang
-ms.openlocfilehash: 3708a2f7c445a161f02416cf8427b1707e1db8f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c510bb060d5c0dc866c3802fab751c1cbeff3745
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23126305"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42145476"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>高可用性跨界连接与 VNet 到 VNet 连接
 本文概述使用 Azure VPN 网关的跨界连接和 VNet 到 VNet 连接的高可用性配置选项。
@@ -44,7 +44,7 @@ ms.locfileid: "23126305"
 
 此配置提供多个活动隧道用于从同一个 Azure VPN 网关连接到同一位置中的本地设备。 此配置有一些要求和限制：
 
-1. 需要创建从 VPN 设备到 Azure 的多个 S2S VPN 连接。 从同一个本地网络的多个 VPN 设备连接到 Azure 时，需要为每个 VPN 设备创建一个本地网络网关，以及一个从 Azure VPN 网关到本地网络网关的连接。
+1. 需要创建从 VPN 设备到 Azure 的多个 S2S VPN 连接。 将多个 VPN 设备从同一本地网络连接到 Azure 时，需要为每个 VPN 设备创建一个本地网络网关，以及一个从 Azure VPN 网关到每个本地网络网关的连接。
 2. 对应于 VPN 设备的本地网络网关在“GatewayIpAddress”属性中必须有唯一的公共 IP 地址。
 3. 此配置需要 BGP。 必须在“BgpPeerIpAddress”属性中为代表 VPN 设备的每个本地网络网关指定唯一的 BGP 对等 IP 地址。
 4. 每个本地网络网关中的 AddressPrefix 属性字段不能重叠。 应在 AddressPrefix 字段中指定 /32 CIDR 格式的“BgpPeerIpAddress”，例如 10.200.200.254/32。

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: sngun
-ms.openlocfilehash: 49f6d6ee65ffae71cba8c73301355bfe2bdcd1d6
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 020f9c8753b2b91b3336b304a1c92590f62be003
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480550"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42140016"
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>利用生存时间使 Azure Cosmos DB 集合中的数据自动过期
 应用程序可以生成和存储大量数据。 其中的某些数据（如计算机生成的事件数据、日志和用户会话信息）仅在有限的一段时间内才有用。 当数据变得多余，应用程序不再需要时，可以安全地清除这些数据并减少应用程序的存储需求。
@@ -41,11 +41,11 @@ TTL 功能在两个级别受 TTL 属性控制 - 集合级别和文档级别。 �
 
 上面的逻辑可显示在以下矩阵中：
 
-|  | 集合上的 DefaultTTL 缺失/未设置 | 集合上的 DefaultTTL =-1 | 集合上的 DefaultTTL =“n” |
+|  | 集合上的 DefaultTTL 缺失/未设置 | 集合上的 DefaultTTL =-1 | 集合上的 DefaultTTL = n' |
 | --- |:--- |:--- |:--- |
 | 文档上的 TTL 缺失 |在文档级别没有要替代的内容，因为文档和集合都没有 TTL 的概念。 |在此集合中的文档不会过期。 |在此集合中的文档会在 n 秒间隔后过期。 |
-| 文档上的 TTL =-1 |在文档级别没有要替代的内容，因为集合并未定义文档可以替代的 DefaultTTL 属性。 系统未解释文档上的 TTL。 |在此集合中的文档不会过期。 |此集合中，TTL =-1 的文档将永不过期。 所有其他文档将在“n”秒间隔后过期。 |
-| 文档上的 TTL = n |在文档级别没有要替代的内容。 系统未解释文档上的 TTL。 |TTL = n 的文档会在时间间隔 n 秒后过期。 其他文档将继承 -1 时间间隔，并且永不过期。 |TTL = n 的文档会在时间间隔 n 秒后过期。 其他文档将从集合中继承“n”时间间隔。 |
+| 文档上的 TTL =-1 |在文档级别没有要替代的内容，因为集合并未定义文档可以替代的 DefaultTTL 属性。 系统未解释文档上的 TTL。 |在此集合中的文档不会过期。 |此集合中，TTL =-1 的文档将永不过期。 所有其他文档将在 n 秒间隔后过期。 |
+| 文档上的 TTL = n |在文档级别没有要替代的内容。 系统未解释文档上的 TTL。 |TTL = n 的文档会在时间间隔 n 秒后过期。 其他文档将继承 -1 时间间隔，并且永不过期。 |TTL = n 的文档会在时间间隔 n 秒后过期。 其他文档将从集合中继承 n 秒时间间隔。 |
 
 ## <a name="configuring-ttl"></a>配置 TTL
 默认情况下，在所有 Cosmos DB 集合和所有文档上禁用生存时间。 可采用编程方式或通过使用 Azure 门户来设置 TTL。 使用以下步骤从 Azure 门户配置 TTL：

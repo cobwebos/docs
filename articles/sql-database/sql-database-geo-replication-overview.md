@@ -10,18 +10,24 @@ ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 77f95ef6fb04673d79b01694d1d6f84d2c694e96
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 08179ae21465a57161cc6f18c12a3d9a21449359
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40037939"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42145361"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>概述：活动异地复制和自动故障转移组
+
+活动异地复制是一项 Azure SQL 数据库功能，可用于在相同或不同的数据中心（区域）创建数据库的可读副本。
+
+![异地复制](./media/sql-database-geo-replication-failover-portal/geo-replication.png )
+
 活动异地复制旨在作为业务连续性解决方案，允许应用程序在发生数据中心规模的服务中断时执行快速灾难恢复。 如果启用了异地复制，则应用程序可以向其他 Azure 区域中的辅助数据库启动故障转移。 在相同或不同的区域中最多支持四个辅助数据库，并且辅助数据库也可以用于只读访问查询。 故障转移必须由应用程序或用户手动启动。 故障转移后，新的主数据库具有不同的连接终结点。 
 
 > [!NOTE]
 > 活动异地复制现在可供所有区域的所有服务层中的所有数据库使用。
+> 活动异地复制不可在托管实例中使用。
 >  
 
 自动故障转移组是活动异地复制的扩展。 它旨在使用应用程序启动的故障转移或通过基于用户定义的条件委派 SQL 数据库服务完成故障转移，来同时管理多个异地复制数据库的故障转移。 后者允许你在发生下述情况后自动恢复次要区域中的多个相关数据库：灾难性故障或其他导致主要区域中 SQL 数据库服务完全或部分丧失可用性的计划外事件。 此外，你还可以使用可读辅助数据库卸载只读查询工作负荷。 由于自动故障转移组涉及多个数据库，因此这些数据库必须在主服务器上进行配置。 故障转移组中数据库的主服务器和辅助服务器必须位于同一订阅中。 自动故障转移组支持将组中所有的数据库复制到另一个区域中唯一的辅助服务器。

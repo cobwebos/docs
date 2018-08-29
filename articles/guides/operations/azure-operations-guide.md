@@ -13,16 +13,16 @@ ms.devlang: ''
 ms.topic: ''
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 06/12/2017
+ms.date: 08/21/2018
 ms.author: mibender
-ms.openlocfilehash: 86f11e7c2d5503a0c474a6c15501a6b872c564e3
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 286b9b133bfbe633ad1fe69f66aa11b9e4c4fc1d
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072328"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42145775"
 ---
-# <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>云计算和 Microsoft Azure 简介
+# <a name="get-started-for-azure-it-operators"></a>Azure IT 操作人员入门
 
 本指南介绍与部署和管理 Microsoft Azure 基础结构相关的核心概念。 对于不熟悉云计算或 Azure 本身的用户，本指南可帮助其快速了解相关概念、部署和管理的详细信息。 本指南的许多部分讨论了部署虚拟机等操作，还提供了链接，供深入了解技术详情。
 
@@ -53,27 +53,33 @@ Microsoft 在全球部署了多个 Azure 数据中心，并且计划部署更多
 
 有关可用 Azure 区域的详细信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。
 
-### <a name="cloud-computing-is-classified-into-three-categories-saas-paas-and-iaas"></a>云计算分为三类：SaaS、PaaS 和 IaaS。
+### <a name="cloud-computing-model"></a>云计算模型
 
-#### <a name="saas-software-as-a-service"></a>SaaS：服务型软件
-
-SaaS 是集中托管和管理的软件。 它通常基于多租户体系结构 - 所有客户使用的单一版本的应用程序。 可以扩大到多个实例，确保在所有位置都达到最佳性能。 SaaS 软件通常通过月度订阅或年度订阅获得许可。
-
-Microsoft Office 365 就是一款典型的 SaaS 服务。 订阅者支付月度订阅或年度订阅的费用，以服务的形式获得 Microsoft Exchange、Microsoft OneDrive 以及其余 Microsoft Office 套件。 订阅者获取的始终是最新版本，并且 Exchange 服务器由系统进行管理。 与每年安装和升级 Office 相比，这可以节省金钱和精力。
-
-#### <a name="paas-platform-as-a-service"></a>PaaS：平台即服务
-
-使用 PaaS，可以将应用程序部署到云服务供应商提供的环境中。 由供应商进行所有基础结构管理，因此用户可以专注于应用程序开发。
-
-Azure 提供了多个 PaaS 计算服务，包括 Azure 应用服务和 Azure 云服务的 Web 应用功能（Web 角色和辅助角色）。 在任一情况下，开发者都可通过多种方式来部署应用程序，而无需了解支持该应用程序的任何具体细节。 开发者不必创建虚拟机 (VM)，无需使用远程桌面协议 (RDP) 登录每个虚拟机，也不必安装应用程序。 他们只需点击按钮（或者靠近它），Microsoft 提供的工具就会预配 VM，然后在其中部署并安装应用程序。
+Azure 基于提供给客户的服务类别使用云计算模型。 这三类服务包括基础结构即服务 (IaaS)、平台即服务 (PaaS) 和软件即服务 (SaaS)。 在上述每个类别中的计算堆栈方面，供应商负责部分或所有组件。 让我们看看云计算的每个类别。
+![云计算堆栈比较](./media/cloud-computing-comparison.png)
 
 #### <a name="iaas-infrastructure-as-a-service"></a>IaaS：服务架构
 
-由 IaaS 云供应商运行并管理所有物理计算资源和所需软件，实现计算机虚拟化。 此服务的客户在这些托管的数据中心部署虚拟机。 虽然虚拟机位于场外数据中心，但 IaaS 使用者可以控制其配置和管理。
+由 IaaS 云供应商运行并管理所有物理计算资源和所需软件，实现计算机虚拟化。 此服务的客户在这些托管的数据中心部署虚拟机。 虽然虚拟机位于场外数据中心，但 IaaS 使用者可对操作系统的配置和管理进行控制，让云供应商负责底层基础架构。
 
 Azure 提供了多个 IaaS 解决方案，包括虚拟机、虚拟机规模集和相关网络基础结构。 虚拟机是最初向 Azure 迁移服务的常用选择，因为它可以启用“直接迁移”迁移模型。 可以像配置当前在数据中心运行服务的基础结构那样配置 VM，然后将软件迁移到新的 VM。 可能需要进行配置更新（例如，更新其他服务或存储的 URL），但可以按照这种方式迁移多个应用程序。
 
 虚拟机规模集基于 Azure 虚拟机而构建，可用于轻松部署相同 VM 的群集。 虚拟机规模集还支持自动缩放，可以在需要时可以自动部署新 VM。 这让虚拟机规模集成为托管高级微服务计算群集（如 Azure Service Fabric 和 Azure 容器服务）的理想平台。
+
+#### <a name="paas-platform-as-a-service"></a>PaaS：平台即服务
+
+使用 PaaS，可以将应用程序部署到云服务供应商提供的环境中。 由供应商负责基础结构的所有管理，让你能够专注开发应用程序和管理数据。
+
+Azure 提供了多个 PaaS 计算服务，包括 Azure 应用服务和 Azure 云服务的 Web 应用功能（Web 角色和辅助角色）。 在任一情况下，开发者都可通过多种方式来部署应用程序，而无需了解支持该应用程序的任何具体细节。 开发者不必创建虚拟机 (VM)，无需使用远程桌面协议 (RDP) 登录每个虚拟机，也不必安装应用程序。 他们只需点击按钮（或者靠近它），Microsoft 提供的工具就会预配 VM，然后在其中部署并安装应用程序。
+
+#### <a name="saas-software-as-a-service"></a>SaaS：服务型软件
+
+SaaS 是集中托管和管理的软件。 它通常基于多租户体系结构 - 所有客户使用的单一版本的应用程序。 可以扩大到多个实例，确保在所有位置都达到最佳性能。 SaaS 软件通常通过月度订阅或年度订阅获得许可。 SaaS 软件通常通过月度订阅或年度订阅获得许可。 SaaS 软件供应商负责软件堆栈的所有组件，因此你只需要管理所提供的服务。
+
+Microsoft Office 365 就是一款典型的 SaaS 服务。 订阅者支付月度订阅或年度订阅的费用，以服务的形式获得 Microsoft Exchange、Microsoft OneDrive 以及其余 Microsoft Office 套件。 订阅者获取的始终是最新版本，并且 Exchange 服务器由系统进行管理。 与每年安装和升级 Office 相比，这可以节省金钱和精力。
+
+
+
 
 ## <a name="azure-services"></a>Azure 服务
 
@@ -175,6 +181,9 @@ Azure 命令行接口是一种可用于从命令行创建、管理和删除 Azur
 
 **REST API** Azure 是基于一组支持 Azure 门户 UI 的 REST API 构建的。 其中大多数 REST API 还支持以编程方式在任何启用了 Internet 的设备上预配和管理 Azure 资源和应用。 有关详细信息，请参阅 [Azure REST SDK Reference](https://docs.microsoft.com/rest/api/index)（Azure REST SDK 参考）。
 
+### <a name="azure-cloud-shell"></a>Azure Cloud Shell
+
+管理员通过名为 Azure Cloud Shell 的可由浏览器访问的体验，可访问 Azure PowerShell 和 Azure CLI。 此交互式接口为 Linux 和 Windows 管理员提供了一种灵活的工具，使他们能够随意选用命令行接口（Bash 或 PowerShell）。 可通过门户访问 Azure Cloud Shell，将其看做 [shell.azure.com](https://shell.azure.com) 上的独立 Web 接口，也可从众多其他访问点进行访问。 有关详细信息，请参阅 [Azure Cloud Shell 概述](https://docs.microsoft.com/en-us/azure/cloud-shell/overview)。
 ## <a name="azure-subscriptions"></a>Azure 订阅
 
 订阅是链接到 Azure 帐户的 Azure 服务的逻辑分组。 一个 Azure 帐户可包含多个订阅。 Azure 服务按订阅计费。 Azure 订阅有一个帐户管理员和一个服务管理员，前者可以完全控制订阅，后者可以控制订阅中的所有服务。 除了管理员外，还可以通过 RBAC 对单个帐户授予对 Azure 资源的详细控制权限。
@@ -355,6 +364,7 @@ Azure 虚拟机是 Azure 中的一个中心 IaaS 服务。 Azure 虚拟机支持
 
 可使用网络安全组 (NSG) 资源来管理通过公共 IP 地址访问虚拟机。 NSG 的作用类似于防火墙，允许或拒绝一组定义的端口上网络接口或子网的流量。 例如，若要使用 Azure VM 创建远程桌面会话，需要配置 NSG，允许端口 3389 上的入站流量。 有关详细信息，请参阅[在 Azure 中使用 Azure 门户打开 VM 端口](../../virtual-machines/windows/nsg-quickstart-portal.md)。
 
+
 最后，与任何计算机系统的管理一样，应使用安全凭据和软件防火墙，在操作系统中保证 Azure 虚拟机的安全性。
 
 ## <a name="azure-storage"></a>Azure 存储
@@ -415,7 +425,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
 
 **门户**
 
-要使用 Azure 门户部署存储帐户，只需要具有一个有效的 Azure 订阅，以及对 Web 浏览器的访问权限。 可将新的存储帐户部署到新的或现有资源组中。 创建存储帐户后，可以使用门户创建一个 blob 容器或文件共享。 可通过编程方式创建表和队列存储实体。 有关详细信息，请参阅[创建存储帐户](../../storage/common/storage-create-storage-account.md#create-a-storage-account)。
+要使用 Azure 门户部署存储帐户，只需要具有一个有效的 Azure 订阅，以及对 Web 浏览器的访问权限。 可将新的存储帐户部署到新的或现有资源组中。 创建存储帐户后，可以使用门户创建一个 blob 容器或文件共享。 可通过编程方式创建表和队列存储实体。 有关详细信息，请参阅[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)。
 
 使用 Azure 门户，除了部署存储帐户之外，还可以部署 Azure 资源管理器模板。 这将部署并配置模板中定义的所有资源，包括任何存储帐户。 有关详细信息，请参阅[使用资源管理器模板和 Azure 门户部署资源](../../azure-resource-manager/resource-group-template-deploy-portal.md)。
 

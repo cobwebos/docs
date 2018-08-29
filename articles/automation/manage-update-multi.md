@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/20/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 59a00f5605f7664148b65f2ec9a88fbaa9057ccf
-ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
+ms.openlocfilehash: e06db4e356de6a4572721d1652d6a2666e7cfefc
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36946051"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144832"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>管理多个计算机的更新
 
@@ -104,7 +104,7 @@ Linux 代理必须具有访问更新存储库的权限。
 
 下表介绍了此解决方案支持的连接的源：
 
-| 连接的源 | 支持 | 说明 |
+| 连接的源 | 支持 | Description |
 | --- | --- | --- |
 | Windows 代理 |是 |“更新管理”从 Windows 代理收集有关系统更新的信息，并开始安装必需的更新。 |
 | Linux 代理 |是 |“更新管理”从 Linux 代理收集有关系统更新的信息，然后开始在受支持的发行版上安装必需的更新。 |
@@ -127,7 +127,7 @@ Linux 代理必须具有访问更新存储库的权限。
 
 - **名称**：输入用于标识更新部署的唯一名称。
 - **操作系统**：选择 **Windows** 或 **Linux**。
-- **要更新的计算机**：选择要更新的虚拟机。 计算机的就绪情况显示在**更新代理准备**列中。 可以在计划更新部署之前查看计算机的运行状况状态。
+- **要更新的计算机**：选择“已保存的搜索”、“已导入的组”或“计算机”，进而选择要更新的计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示。 可以在计划更新部署之前查看计算机的运行状况状态。 要了解在 Log Analytics 中创建计算机组的不同方法，请参阅 [Log Analytics 中的计算机组](../log-analytics/log-analytics-computer-groups.md)
 
   ![“新建更新部署”窗格](./media/manage-update-multi/update-select-computers.png)
 
@@ -150,10 +150,16 @@ Linux 代理必须具有访问更新存储库的权限。
    ![“计划设置”对话框](./media/manage-update-multi/update-set-schedule.png)
 - **维护时段(分钟)**：指定要进行更新部署的时间段。 此设置有助于确保在定义的服务时段内执行更改。
 
-配置完计划后，选择“创建”按钮以返回到状态仪表板。 “已计划”表会显示你创建的部署计划。
+- **重启控制** - 此设置确定如何为更新部署处理重启。
 
-> [!WARNING]
-> 对于需要重启的更新，虚拟机会自动重启。
+   |选项|说明|
+   |---|---|
+   |必要时请重启| **（默认）** 必要时且在维护时段允许的情况下开始重启。|
+   |永远重启|无论是否需要重启，都会开始重启。 |
+   |永不重启|无论是否需要重启，都会禁止重启。|
+   |仅重启 - 不安装更新|此选项忽略安装更新，仅开始重启。|
+
+配置完计划后，选择“创建”按钮以返回到状态仪表板。 “已计划”表会显示你创建的部署计划。
 
 ## <a name="view-results-of-an-update-deployment"></a>查看更新部署结果
 

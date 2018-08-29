@@ -13,18 +13,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/09/2018
+ms.date: 08/16/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 1b9807b587b6b52594133e8c792c72b21e8bd4ea
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 7d27b95f9c7d21f49f547534ca99a44657062abc
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503615"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42145693"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>创建、更改或删除虚拟网络对等互连
 
-了解如何创建、更改或删除虚拟网络对等互连。 虚拟网络对等互连支持通过 Azure 主干网络连接虚拟网络。 对等互连后，这些虚拟网络仍将作为单独的资源进行管理。 如果不熟悉虚拟网络对等互连，可以通过阅读[虚拟网络对等互连概述](virtual-network-peering-overview.md)或完成[教程](tutorial-connect-virtual-networks-portal.md)来了解其详细信息。
+了解如何创建、更改或删除虚拟网络对等互连。 虚拟网络对等互连可以通过 Azure 主干网络连接同一区域或不同区域的虚拟网络（也称为全球 VNet 对等互连）。 对等互连后，这些虚拟网络仍将作为单独的资源进行管理。 如果不熟悉虚拟网络对等互连，可以通过阅读[虚拟网络对等互连概述](virtual-network-peering-overview.md)或完成[教程](tutorial-connect-virtual-networks-portal.md)来了解其详细信息。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -112,10 +112,10 @@ ms.locfileid: "39503615"
 
 ## <a name="requirements-and-constraints"></a>要求和约束 
 
-- <a name="cross-region"></a>可在相同区域或不同区域中的虚拟网络之间建立对等互连。 当两个虚拟网络位于同一区域中时，以下约束不适用；当两个虚拟网络全局对等时，这些约束适用： 
-    - 虚拟网络可以存在于任何 Azure 公有云区域中，但不能存在于 Azure 国有云中。
-    - 一个虚拟网络中的资源无法与对等互连虚拟网络中 Azure 内部负载均衡器的 IP 地址通信。 负载均衡器以及与之通信的资源必须位于同一虚拟网络。
-    - 不能使用远程网关，也不能允许网关传输。 若要使用远程网关或允许网关传输，对等互连的两个虚拟网络必须位于同一区域。 
+- <a name="cross-region"></a>可在相同区域或不同区域中的虚拟网络之间建立对等互连。 不同区域中的对等互连虚拟网络也称为“全球对等互连”。 
+- 创建全球对等互连时，对等虚拟网络可以存在于任何 Azure 公有云区域中，但不能存在于 Azure 国有云中。 只能在国有云中相同区域中的虚拟网络之间建立对等互连。
+- 一个虚拟网络中的资源无法与全球对等互连虚拟网络中 Azure 内部负载均衡器的前端 IP 地址通信。 负载均衡器以及与之通信的资源必须位于相同区域中的同一虚拟网络。 但是，如果对等互连的虚拟网络位于相同区域，则任一虚拟网络中的资源可以与进行对等互连的任一虚拟网络中的 Azure 内部负载均衡器的前端 IP 地址通信。
+- 无法使用远程网关或允许网关在全球对等互连的虚拟网络中传输。 若要使用远程网关或允许网关传输，对等互连的虚拟网络必须位于同一区域中。
 - 虚拟网络可以位于相同或不同的订阅中。 如果对等虚拟网络位于不同的订阅中，两个订阅必须关联到同一 Azure Active Directory 租户。 如果还没有 AD 租户，可以快速[创建一个](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant)。 可以使用 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V)连接关联到不同 Active Directory 租户的不同订阅中的两个虚拟网络。
 - 进行对等互连的虚拟网络的 IP 地址空间不得重叠。
 - 虚拟网络与另一个虚拟网络对等后，不能向其添加或从中删除地址范围。 若要添加或删除地址范围，请删除对等，添加或删除地址范围，然后重新创建对等。 若要为虚拟网络添加或删除地址范围，请参阅[管理虚拟网络](manage-virtual-network.md)。

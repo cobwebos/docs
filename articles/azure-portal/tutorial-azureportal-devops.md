@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/05/2016
 ms.author: mlearned
-ms.openlocfilehash: 2764d8a17d50f1589d413c2343badfded6adb66e
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: db3cc8bb546758402e4f0b3fe91449e597e754fa
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216336"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42140013"
 ---
 # <a name="tutorial-devops-with-the-azure-portal"></a>教程：使用 Azure 门户中的 DevOps
 Azure 平台提供各式各样的灵活 DevOps（开发运营）工作流。 在本教程中，将了解如何利用 Azure 门户功能来开发、测试、部署、监控和管理正在运行的应用程序，以及对其进行故障排除。 本教程着重于以下内容：
@@ -125,7 +125,7 @@ Azure 平台提供各式各样的灵活 DevOps（开发运营）工作流。 在
 12. 返回到工具边栏选项卡，并单击“开发”类别下的“性能测试”。
     
     ![image28][image28]
-13. 需要设置 Team Services 帐户。 有关详细信息，请参阅 [Create a Team Services Account](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)
+13. 需要设置 Team Services 帐户。 有关详细信息，请参阅[创建 Team Services 帐户](https://docs.microsoft.com/vsts/organizations/accounts/create-organization-msa-or-work-student)。
 14. 单击“新建”以创建性能测试。
     
     ![image29][image29]

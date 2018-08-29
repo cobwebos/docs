@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 77d766358135f5cdabfe7e9b62e54513c2604ed3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 021ab6cd29634c2e2f17234e188edce2a14449cf
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193560"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42145497"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>创建独立的 Azure 自动化帐户
 
@@ -41,9 +41,9 @@ ms.locfileid: "34193560"
 
 如果在被添加到订阅的全局管理员/共同管理员角色之前不是订阅的 Active Directory 实例的成员，则将作为来宾添加到 Active Directory。 在这种情况下，“添加自动化帐户”页中会显示此消息：“你无权创建”。
 
-如果用户已被添加到全局管理员/共同管理员角色，可以先将其从订阅的 Active Directory 实例中删除，然后重新添加到 Active Directory 中的完整用户角色。
+如果已将某用户添加到全局管理员/共同管理员角色，则可先将其从订阅的 Active Directory 实例中删除，然后将其重新添加到 Active Directory 中的完整用户角色。
 
-若要验证用户角色，请执行以下操作：
+要验证用户角色，请执行以下操作：
 
 1. 在 Azure 门户中，转到“Azure Active Directory”窗格。
 1. 选择“用户和组”。
@@ -58,7 +58,7 @@ ms.locfileid: "34193560"
 1. 选择“+ 创建资源”。
 1. 搜索“自动化”。 在搜索结果中，选择“自动化”。
 
-   ![在 Azure Marketplace 中搜索并选择“自动化和控制”](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)
+   ![在 Azure 市场中搜索并选择“自动化和控制”](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)
 
 1. 在下一个屏幕上选择“创建”。
   ![添加自动化帐户](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
@@ -68,7 +68,7 @@ ms.locfileid: "34193560"
   >
   > ![添加自动化帐户警报](media/automation-create-standalone-account/create-account-without-perms.png)
   >
-1. 在“添加自动化帐户”窗格的“名称”框中，输入新自动化帐户的名称。
+1. 在“添加自动化帐户”窗格的“名称”框中，输入新自动化帐户的名称。 此名称选定后即不可更改。
 1. 如果有多个订阅，请在“订阅”框中为新帐户指定一个订阅。
 1. 对于“资源组”，请输入或选择新的或现有的资源组。
 1. 对于“位置”，请选择一个 Azure 数据中心位置。
@@ -88,7 +88,7 @@ ms.locfileid: "34193560"
 
 成功创建自动化帐户后，系统会自动创建几个资源。 创建后，如果不想保留这些 runbook，可以放心地将其删除。 运行方式帐户可用于对 runbook 中的帐户进行身份验证，除非创建其他运行方式帐户或不需要它们，否则应将其保留。 下表汇总了运行方式帐户的资源。
 
-| 资源 | 说明 |
+| 资源 | Description |
 | --- | --- |
 | AzureAutomationTutorial Runbook |一个示例图形 Runbook，演示如何使用运行方式帐户进行身份验证。 该 Runbook 获取所有资源管理器资源。 |
 | AzureAutomationTutorialScript Runbook |一个示例 PowerShell Runbook，演示如何使用运行方式帐户进行身份验证。 该 Runbook 获取所有资源管理器资源。 |
@@ -98,7 +98,7 @@ ms.locfileid: "34193560"
 
 下表汇总了经典运行方式帐户的资源。
 
-| 资源 | 说明 |
+| 资源 | Description |
 | --- | --- |
 | AzureClassicAutomationTutorial Runbook |一个示例图形 Runbook。 该 Runbook 使用经典运行方式帐户（证书）获取订阅中的所有经典 VM。 然后，它显示 VM 名称和状态。 |
 | AzureClassicAutomationTutorial 脚本 Runbook |一个示例 PowerShell Runbook。 该 Runbook 使用经典运行方式帐户（证书）获取订阅中的所有经典 VM。 然后，它显示 VM 名称和状态。 |

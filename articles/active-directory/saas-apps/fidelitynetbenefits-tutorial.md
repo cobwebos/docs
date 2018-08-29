@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2018
+ms.date: 08/07/2018
 ms.author: jeedes
-ms.openlocfilehash: d11164fafa3c05c8c61c352f4d6be6607fa52ebb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a1308035a8b758a9e2f824de3a78c03103c19931
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425249"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42145682"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fidelity-netbenefits"></a>教程：Azure Active Directory 与 Fidelity NetBenefits 集成
 
@@ -50,29 +50,32 @@ ms.locfileid: "39425249"
 - 如果没有 Azure AD 试用环境，可以[获取一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>方案描述
-在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
+
+在本教程中，将在测试环境中测试 Azure AD 单一登录。
+本教程中概述的方案包括两个主要构建基块：
 
 1. 从库添加 Fidelity NetBenefits
-1. 配置和测试 Azure AD 单一登录
+2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-fidelity-netbenefits-from-the-gallery"></a>从库添加 Fidelity NetBenefits
+
 若要配置 Fidelity NetBenefits 与 Azure AD 的集成，需要从库中将 Fidelity NetBenefits 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Fidelity NetBenefits，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
     ![“Azure Active Directory”按钮][1]
 
-1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
-    
-1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-1. 在搜索框中，键入“Fidelity NetBenefits”，在结果面板中选择“Fidelity NetBenefits”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中，键入“Fidelity NetBenefits”，在结果面板中选择“Fidelity NetBenefits”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 Fidelity NetBenefits](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_addfromgallery.png)
 
@@ -87,10 +90,10 @@ ms.locfileid: "39425249"
 若要配置和测试 Fidelity NetBenefits 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-1. **[创建 Fidelity NetBenefits 测试用户](#create-a-fidelity-netbenefits-test-user)** - 在 Fidelity NetBenefits 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
-1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+3. **[创建 Fidelity NetBenefits 测试用户](#create-a-fidelity-netbenefits-test-user)** - 在 Fidelity NetBenefits 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -102,11 +105,11 @@ ms.locfileid: "39425249"
 
     ![配置单一登录链接][4]
 
-1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
+2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+
     ![“单一登录”对话框](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_samlbase.png)
 
-1. 在“Fidelity NetBenefits 域和 URL”部分中，执行以下步骤：
+3. 在“Fidelity NetBenefits 域和 URL”部分中，执行以下步骤：
 
     ![Fidelity NetBenefits 域和 URL 单一登录信息](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_url.png)
 
@@ -116,35 +119,28 @@ ms.locfileid: "39425249"
 
     对于生产环境：`urn:sp:fidelity:geninbndnbparts20`
 
-    b. 在“回复 URL”文本框中键入 URL：
+    b. 在“回复 URL”文本框中，输入在实现时 Fidelity 要提供的 URL，或者联系所分配的 Fidelity 客户端服务管理员。
 
-    对于测试环境：`https://loginxq1.fidelity.com/ftgw/Fas/NBExternal/NBPartSSO/InboundSSO/consumer/sp/ACS.saml2`
-
-    对于生产环境：`https://login.fidelity.com/ftgw/Fas/NBExternal/NBPartSSO/InboundSSO/consumer/sp/ACS.saml2`
- 
-1. Fidelity NetBenefits 应用程序需要特定格式的 SAML 断言。 我们已通过 **user.userprincipalname** 映射**用户标识符**。 可以使用 **employeeid** 或任何其他声明来完成此映射，只要该声明可以作为**用户标识符**应用于组织。 以下屏幕截图显示了此方面的一个示例。
+4. Fidelity NetBenefits 应用程序需要特定格式的 SAML 断言。 我们已通过 **user.userprincipalname** 映射**用户标识符**。 可以使用 **employeeid** 或任何其他声明来完成此映射，只要该声明可以作为**用户标识符**应用于组织。 以下屏幕截图显示了此方面的一个示例。
 
     ![Fidelity NetBenefits 属性](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_attribute.png)
 
     >[!Note]
-    >Fidelity NetBenefits 支持静态和动态联合身份验证。 静态意味着不会使用基于 SAML 的恰时用户预配；动态意味着支持恰时用户预配。 若要使用基于 JIT 的预配，客户必须在 Azure AD 中添加更多的声明，例如用户的生日，等等。这些详细信息由 [Fidelity NetBenefits 支持团队](mailto:SSOMaintenance@fmr.com)提供，他们必须为你的实例启用此动态联合身份验证。
-    
-1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
+    >Fidelity NetBenefits 支持静态和动态联合身份验证。 静态意味着不会使用基于 SAML 的恰时用户预配；动态意味着支持恰时用户预配。 若要使用基于 JIT 的预配，客户必须在 Azure AD 中添加更多的声明，例如用户的生日，等等。这些详细信息由分配的 Fidelity 客户端服务管理员提供，他们必须为你的实例启用此动态联合身份验证。
 
-    ![证书下载链接](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_certificate.png) 
+5. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
-1. 单击“保存”按钮。
+    ![证书下载链接](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_certificate.png)
+
+6. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/fidelitynetbenefits-tutorial/tutorial_general_400.png)
 
-1. 在“Fidelity NetBenefits 配置”部分，单击“配置 Fidelity NetBenefits”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 实体 ID 和 SAML 单一登录服务 URL”。
+7. 在“Fidelity NetBenefits 配置”部分，单击“配置 Fidelity NetBenefits”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 实体 ID 和 SAML 单一登录服务 URL”。
 
-    ![Fidelity NetBenefits 配置](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_configure.png) 
+    ![Fidelity NetBenefits 配置](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_configure.png)
 
-1. 若要在 Fidelity NetBenefits 端配置单一登录，需要将下载的元数据 XML、SAML 单一登录服务 URL 和 SAML 实体 ID 发送给 [Fidelity NetBenefits 支持团队](mailto:SSOMaintenance@fmr.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
-
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+8. 若要在 Fidelity NetBenefits 端配置单一登录，需要将下载的元数据 XML、SAML 单一登录服务 URL 和 SAML 实体 ID 发送给所分配的 Fidelity 客户端服务管理员。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -158,15 +154,15 @@ ms.locfileid: "39425249"
 
     ![“Azure Active Directory”按钮](./media/fidelitynetbenefits-tutorial/create_aaduser_01.png)
 
-1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/fidelitynetbenefits-tutorial/create_aaduser_02.png)
 
-1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/fidelitynetbenefits-tutorial/create_aaduser_03.png)
 
-1. 在“用户”对话框中，执行以下步骤：
+4. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/fidelitynetbenefits-tutorial/create_aaduser_04.png)
 
@@ -180,53 +176,51 @@ ms.locfileid: "39425249"
   
 ### <a name="create-a-fidelity-netbenefits-test-user"></a>创建 Fidelity NetBenefits 测试用户
 
-在本部分，请在 Fidelity NetBenefits 中创建一个名为 Britta Simon 的用户。 若要创建静态联合身份验证，请与 [Fidelity NetBenefits 支持团队](mailto:SSOMaintenance@fmr.com)合作，在 Fidelity NetBenefits 平台中创建用户。 使用单一登录前，必须先创建并激活这些用户。 
+在本部分，请在 Fidelity NetBenefits 中创建一个名为 Britta Simon 的用户。 若要创建静态联合身份验证，请与所分配的 Fidelity 客户端服务管理员合作，在 Fidelity NetBenefits 平台中创建用户。 使用单一登录前，必须先创建并激活这些用户。
 
-对于动态联合身份验证，用户是使用恰时用户预配创建的。 若要使用基于 JIT 的预配，客户必须在 Azure AD 中添加更多的声明，例如用户的生日，等等。这些详细信息由 [Fidelity NetBenefits 支持团队](mailto:SSOMaintenance@fmr.com)提供，他们必须为你的实例启用此动态联合身份验证。
+对于动态联合身份验证，用户是使用恰时用户预配创建的。 若要使用基于 JIT 的预配，客户必须在 Azure AD 中添加更多的声明，例如用户的生日，等等。这些详细信息由分配的 Fidelity 客户端服务管理员提供，他们必须为你的实例启用此动态联合身份验证。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，请通过授予 Britta Simon 访问 Fidelity NetBenefits 的权限，支持其使用 Azure 单一登录。
 
-![分配用户角色][200] 
+![分配用户角色][200]
 
 **若要将 Britta Simon 分配到 Fidelity NetBenefits，请执行以下步骤：**
 
 1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
-    ![分配用户][201] 
+    ![分配用户][201]
 
-1. 在应用程序列表中，选择“Fidelity NetBenefits”。
+2. 在应用程序列表中，选择“Fidelity NetBenefits”。
 
     ![应用程序列表中的 Fidelity NetBenefits 链接](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_app.png)  
 
-1. 在左侧菜单中，单击“用户和组”。
+3. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-1. 在“用户和组”对话框中单击“选择”按钮。
+6. 在“用户和组”对话框中单击“选择”按钮。
 
-1. 在“添加分配”对话框中单击“分配”按钮。
-    
+7. 在“添加分配”对话框中单击“分配”按钮。
+
 ### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Fidelity NetBenefits 磁贴时，会自动登录到 Fidelity NetBenefits 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
 * [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
-
-
 
 <!--Image references-->
 
@@ -241,4 +235,3 @@ ms.locfileid: "39425249"
 [201]: ./media/fidelitynetbenefits-tutorial/tutorial_general_201.png
 [202]: ./media/fidelitynetbenefits-tutorial/tutorial_general_202.png
 [203]: ./media/fidelitynetbenefits-tutorial/tutorial_general_203.png
-

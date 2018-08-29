@@ -8,22 +8,21 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4b6e642c86c5e618cae2d46aad84a61b3f4866ae
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: a53bcbe90f39999a838c84807ca834a1e6cd1813
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446135"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42139821"
 ---
 # <a name="azure-analysis-services---adventure-works-tutorial"></a>Azure Analysis Services - Adventure Works 教程
 
-本教程提供的课程介绍了如何将 Visual Studio 与 [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) 配合使用，在 1400 兼容级别创建和部署表格模型。  
-
+本教程提供的课程介绍了如何使用 Visual Studio [Analysis Services 项目](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects)或 [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) 在 1400 兼容级别创建和部署表格模型。  
 如果不熟悉 Analysis Services 和表格建模，则完成本教程是了解如何使用 Visual Studio 创建和部署基本表格模型的最快方法。 在满足所有先决条件后，需花费两到三个小时来完成本教程。  
   
 ## <a name="what-you-learn"></a>学习内容   
   
--   如何在 Visual Studio 中使用 SSDT 在 **1400 兼容级别**创建新的表格模型项目。
+-   如何使用 Visual Studio 在 1400 兼容级别创建新的表格模型项目。
   
 -   如何将数据从关系数据库导入到表格模型项目工作区数据库中。  
   
@@ -37,7 +36,7 @@ ms.locfileid: "37446135"
   
 -   如何通过创建包含用户成员的角色来保护模型对象和数据的安全。  
   
--   如何使用 SSDT 将表格模型部署到 **Azure Analysis Services** 服务器或 **SQL Server 2017 Analysis Services** 服务器。  
+-   如何使用 Visual Studio 将表格模型部署到 Azure Analysis Services 服务器或 SQL Server 2017 Analysis Services 服务器。  
   
 ## <a name="prerequisites"></a>先决条件  
 要完成本教程，需要：  

@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/07/2018
+ms.date: 08/19/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a4e062b1bc56eada2fa2c27797151e265271022e
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 86a2fba7730a653a254a2fd996f9e45ed322fbe3
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621151"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42145355"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure 资源管理器资源提供程序操作
 
@@ -391,8 +391,12 @@ ms.locfileid: "39621151"
 > | --- | --- | --- |
 > | 操作 | Microsoft.Authorization/checkAccess/action | 查看调用方是否有权执行特定操作 |
 > | 操作 | Microsoft.Authorization/classicAdministrators/delete | 从订阅中删除管理员。 |
+> | 操作 | Microsoft.Authorization/classicAdministrators/operationstatuses/read | 获取订阅的管理员操作状态。 |
 > | 操作 | Microsoft.Authorization/classicAdministrators/read | 读取订阅的管理员。 |
 > | 操作 | Microsoft.Authorization/classicAdministrators/write | 在订阅中添加或修改管理员。 |
+> | 操作 | Microsoft.Authorization/denyAssignments/delete | 在指定范围处删除拒绝分配。 |
+> | 操作 | Microsoft.Authorization/denyAssignments/read | 获取拒绝分配的相关信息。 |
+> | 操作 | Microsoft.Authorization/denyAssignments/write | 在指定范围处创建拒绝分配。 |
 > | 操作 | Microsoft.Authorization/elevateAccess/action | 向调用方授予租户范围的“用户访问管理员”访问权限 |
 > | 操作 | Microsoft.Authorization/locks/delete | 删除指定范围的锁。 |
 > | 操作 | Microsoft.Authorization/locks/read | 获取指定范围的锁。 |
@@ -1165,6 +1169,7 @@ ms.locfileid: "39621151"
 > | 操作 | Microsoft.Compute/virtualMachineScaleSets/instanceView/read | 获取虚拟机规模集的实例视图 |
 > | 操作 | Microsoft.Compute/virtualMachineScaleSets/manualUpgrade/action | 手动将实例更新到虚拟机规模集的最新模型 |
 > | 操作 | Microsoft.Compute/virtualMachineScaleSets/networkInterfaces/read | 获取虚拟机规模集的所有网络接口的属性 |
+> | 操作 | Microsoft.Compute/virtualMachineScaleSets/osRollingUpgrade/action | 启动滚动升级，将所有虚拟机规模集实例移动到最新可用的平台映像操作系统版本。 |
 > | 操作 | Microsoft.Compute/virtualMachineScaleSets/osUpgradeHistory/read | 获取虚拟机规模集的 OS 升级历史记录 |
 > | 操作 | Microsoft.Compute/virtualMachineScaleSets/performMaintenance/action | 在虚拟机规模集的实例上执行计划内维护 |
 > | 操作 | Microsoft.Compute/virtualMachineScaleSets/powerOff/action | 关闭虚拟机规模集的实例 |
@@ -1244,10 +1249,23 @@ ms.locfileid: "39621151"
 > | 操作 | Microsoft.ContainerRegistry/locations/operationResults/read | 获取异步操作结果 |
 > | 操作 | Microsoft.ContainerRegistry/operations/read | 列出所有可用的 Azure 容器注册表 REST API 操作 |
 > | 操作 | Microsoft.ContainerRegistry/register/action | 注册容器注册表资源提供程序的订阅，并启用容器注册表的创建 |
+> | 操作 | Microsoft.ContainerRegistry/registries/builds/cancel/action | 取消现有生成。 |
+> | 操作 | Microsoft.ContainerRegistry/registries/builds/getLogLink/action | 获取链接以下载生成日志。 |
+> | 操作 | Microsoft.ContainerRegistry/registries/builds/read | 获取指定生成的属性，或列出指定容器注册表的所有生成。 |
+> | 操作 | Microsoft.ContainerRegistry/registries/builds/write | 使用指定参数更新容器注册表的生成。 |
+> | 操作 | Microsoft.ContainerRegistry/registries/buildTasks/delete | 从容器注册表中删除生成任务。 |
+> | 操作 | Microsoft.ContainerRegistry/registries/buildTasks/listSourceRepositoryProperties/action | 列出生成任务的源代码管理属性。 |
+> | 操作 | Microsoft.ContainerRegistry/registries/buildTasks/read | 获取指定生成任务的属性，或列出指定容器注册表的所有生成任务。 |
+> | 操作 | Microsoft.ContainerRegistry/registries/buildTasks/steps/delete | 从生成任务中删除生成步骤。 |
+> | 操作 | Microsoft.ContainerRegistry/registries/buildTasks/steps/listBuildArguments/action | 列出生成步骤的生成参数，包括机密参数。 |
+> | 操作 | Microsoft.ContainerRegistry/registries/buildTasks/steps/read | 获取指定生成步骤的属性，或列出指定生成任务的所有生成步骤。 |
+> | 操作 | Microsoft.ContainerRegistry/registries/buildTasks/steps/write | 使用指定的参数创建或更新生成任务的生成步骤。 |
+> | 操作 | Microsoft.ContainerRegistry/registries/buildTasks/write | 使用指定参数创建或更新容器注册表的生成任务。 |
 > | 操作 | Microsoft.ContainerRegistry/registries/delete | 删除容器注册表。 |
 > | 操作 | Microsoft.ContainerRegistry/registries/eventGridFilters/delete | 从容器注册表中删除事件网格筛选器。 |
 > | 操作 | Microsoft.ContainerRegistry/registries/eventGridFilters/read | 获取指定事件网格筛选器的属性，或列出指定容器注册表的所有事件网格筛选器。 |
 > | 操作 | Microsoft.ContainerRegistry/registries/eventGridFilters/write | 使用指定参数创建或更新容器注册表的事件网格筛选器。 |
+> | 操作 | Microsoft.ContainerRegistry/registries/getBuildSourceUploadUrl/action | 获取上传位置，以便用户能够上传源。 |
 > | 操作 | Microsoft.ContainerRegistry/registries/importImage/action | 使用指定的参数将映像导入到容器注册表中。 |
 > | 操作 | Microsoft.ContainerRegistry/registries/listCredentials/action | 列出指定容器注册表的登录凭据。 |
 > | 操作 | Microsoft.ContainerRegistry/registries/listPolicies/read | 列出指定容器注册表的策略 |
@@ -1256,12 +1274,18 @@ ms.locfileid: "39621151"
 > | 操作 | Microsoft.ContainerRegistry/registries/providers/Microsoft.Insights/diagnosticSettings/read | 获取资源的诊断设置 |
 > | 操作 | Microsoft.ContainerRegistry/registries/providers/Microsoft.Insights/diagnosticSettings/write | 创建或更新资源的诊断设置 |
 > | 操作 | Microsoft.ContainerRegistry/registries/providers/Microsoft.Insights/metricDefinitions/read | 获取 Microsoft ContainerRegistry 的可用指标。 |
+> | 操作 | Microsoft.ContainerRegistry/registries/pull/read | 从容器注册表中拉取或获取映像。 |
+> | 操作 | Microsoft.ContainerRegistry/registries/push/write | 将映像推送或写入容器注册表。 |
+> | 操作 | Microsoft.ContainerRegistry/registries/quarantineRead/read | 从容器注册表中拉取或获取已隔离的映像 |
+> | 操作 | Microsoft.ContainerRegistry/registries/quarantineWrite/write | 写入/修改已隔离映像的隔离状态 |
+> | 操作 | Microsoft.ContainerRegistry/registries/queueBuild/action | 根据请求参数创建新生成，并将其添加到生成队列。 |
 > | 操作 | Microsoft.ContainerRegistry/registries/read | 获取指定容器注册表的属性，或列出指定资源组或订阅下的所有容器注册表。 |
 > | 操作 | Microsoft.ContainerRegistry/registries/regenerateCredential/action | 为指定容器注册表重新生成一个登录凭据。 |
 > | 操作 | Microsoft.ContainerRegistry/registries/replications/delete | 从容器注册表中删除复制。 |
 > | 操作 | Microsoft.ContainerRegistry/registries/replications/operationStatuses/read | 获取复制步操作状态 |
 > | 操作 | Microsoft.ContainerRegistry/registries/replications/read | 获取指定复制的属性，或列出指定容器注册表的所有复制。 |
 > | 操作 | Microsoft.ContainerRegistry/registries/replications/write | 使用指定参数创建或更新容器注册表的复制。 |
+> | 操作 | Microsoft.ContainerRegistry/registries/sign/write | 推送/拉取容器注册表的内容信任元数据。 |
 > | 操作 | Microsoft.ContainerRegistry/registries/updatePolicies/write | 更新指定容器注册表的策略 |
 > | 操作 | Microsoft.ContainerRegistry/registries/webhooks/delete | 从容器注册表中删除 Webhook。 |
 > | 操作 | Microsoft.ContainerRegistry/registries/webhooks/getCallbackConfig/action | 获取服务 URI 的配置和 Webhook 的自定义标头。 |
@@ -1524,9 +1548,11 @@ ms.locfileid: "39621151"
 > | 操作 | Microsoft.DataFactory/factories/pipelineruns/activityruns/read | 读取指定的管道运行 ID 的活动运行。 |
 > | 操作 | Microsoft.DataFactory/factories/pipelineruns/cancel/action | 取消由运行 ID 指定的管道运行。 |
 > | 操作 | Microsoft.DataFactory/factories/pipelineruns/queryactivityruns/action | 查询指定的管道运行 ID 的活动运行。 |
+> | 操作 | Microsoft.DataFactory/factories/pipelineruns/queryactivityruns/read | 读取指定管道运行 ID 的查询活动运行的结果。 |
 > | 操作 | Microsoft.DataFactory/factories/pipelineruns/read | 读取管道运行。 |
 > | 操作 | Microsoft.DataFactory/factories/pipelines/createrun/action | 为管道创建运行。 |
 > | 操作 | Microsoft.DataFactory/factories/pipelines/delete | 删除管道。 |
+> | 操作 | Microsoft.DataFactory/factories/pipelines/pipelineruns/activityruns/progress/read | 获取活动运行的进程。 |
 > | 操作 | Microsoft.DataFactory/factories/pipelines/pipelineruns/read | 读取管道运行。 |
 > | 操作 | Microsoft.DataFactory/factories/pipelines/read | 读取管道。 |
 > | 操作 | Microsoft.DataFactory/factories/pipelines/write | 创建或更新管道 |
@@ -1535,7 +1561,9 @@ ms.locfileid: "39621151"
 > | 操作 | Microsoft.DataFactory/factories/providers/Microsoft.Insights/logDefinitions/read | 获取工厂的可用日志 |
 > | 操作 | Microsoft.DataFactory/factories/providers/Microsoft.Insights/metricDefinitions/read | 获取工厂的可用指标 |
 > | 操作 | Microsoft.DataFactory/factories/querypipelineruns/action | 查询管道运行。 |
+> | 操作 | Microsoft.DataFactory/factories/querypipelineruns/read | 读取查询管道运行的结果。 |
 > | 操作 | Microsoft.DataFactory/factories/querytriggerruns/action | 查询触发器运行。 |
+> | 操作 | Microsoft.DataFactory/factories/querytriggerruns/read | 读取触发器运行的结果。 |
 > | 操作 | Microsoft.DataFactory/factories/read | 读取数据工厂。 |
 > | 操作 | Microsoft.DataFactory/factories/triggerruns/read | 读取触发器运行。 |
 > | 操作 | Microsoft.DataFactory/factories/triggers/delete | 删除任何触发器。 |
@@ -1546,6 +1574,7 @@ ms.locfileid: "39621151"
 > | 操作 | Microsoft.DataFactory/factories/triggers/write | 创建或更新任何触发器。 |
 > | 操作 | Microsoft.DataFactory/factories/write | 创建或更新数据工厂 |
 > | 操作 | Microsoft.DataFactory/locations/configureFactoryRepo/action | 配置工厂的存储库。 |
+> | 操作 | Microsoft.DataFactory/operations/read | 读取 Microsoft 数据工厂提供程序中的所有操作。 |
 > | 操作 | Microsoft.DataFactory/register/action | 注册数据工厂资源提供程序的订阅。 |
 > | 操作 | Microsoft.DataFactory/unregister/action | 取消注册数据工厂资源提供程序的订阅。 |
 
@@ -2071,6 +2100,14 @@ ms.locfileid: "39621151"
 > | 操作 | Microsoft.Features/providers/features/unregister/action | 取消注册给定资源提供程序中的订阅的功能。 |
 > | 操作 | Microsoft.Features/register/action | 注册某个订阅的功能。 |
 
+## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
+
+> [!div class="mx-tdCol2BreakAll"]
+> | 操作类型 | Operation | Description |
+> | --- | --- | --- |
+> | 操作 | Microsoft.GuestConfiguration/guestConfigurationAssignments/read | 获取来宾配置分配。 |
+> | 操作 | Microsoft.GuestConfiguration/guestConfigurationAssignments/write | 创建新的来宾配置分配。 |
+
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
 > [!div class="mx-tdCol2BreakAll"]
@@ -2503,6 +2540,7 @@ ms.locfileid: "39621151"
 > | DataAction | Microsoft.LogAnalytics/logs/WindowsFirewall/read | 从 WindowsFirewall 表读取数据 |
 > | DataAction | Microsoft.LogAnalytics/logs/WindowsServerAssessmentRecommendation/read | 从 WindowsServerAssessmentRecommendation 表读取数据 |
 > | DataAction | Microsoft.LogAnalytics/logs/WireData/read | 从 WireData 表读取数据 |
+> | DataAction | Microsoft.LogAnalytics/logs/WorkloadMonitoringPerf/read | 从 WorkloadMonitoringPerf 表中读取数据 |
 > | DataAction | Microsoft.LogAnalytics/logs/WUDOAggregatedStatus/read | 从 WUDOAggregatedStatus 表读取数据 |
 > | DataAction | Microsoft.LogAnalytics/logs/WUDOStatus/read | 从 WUDOStatus 表读取数据 |
 
@@ -2715,6 +2753,7 @@ ms.locfileid: "39621151"
 > [!div class="mx-tdCol2BreakAll"]
 > | 操作类型 | Operation | Description |
 > | --- | --- | --- |
+> | DataAction | Microsoft.Maps/accounts/data/read | 授予对映射帐户的数据读权限。 |
 > | 操作 | Microsoft.Maps/accounts/delete | 删除 Maps 帐户。 |
 > | 操作 | Microsoft.Maps/accounts/listKeys/action | 列出 Maps 帐户密钥 |
 > | 操作 | Microsoft.Maps/accounts/providers/Microsoft.Insights/diagnosticSettings/read | 获取资源的诊断设置 |
@@ -3449,8 +3488,11 @@ ms.locfileid: "39621151"
 > | --- | --- | --- |
 > | 操作 | Microsoft.PolicyInsights/asyncOperationResults/read | 获取异步操作结果。 |
 > | 操作 | Microsoft.PolicyInsights/policyEvents/queryResults/action | 查询有关策略事件的信息。 |
+> | 操作 | Microsoft.PolicyInsights/policyEvents/queryResults/read | 查询有关策略事件的信息。 |
 > | 操作 | Microsoft.PolicyInsights/policyStates/queryResults/action | 查询有关策略状态的信息。 |
+> | 操作 | Microsoft.PolicyInsights/policyStates/queryResults/read | 查询有关策略状态的信息。 |
 > | 操作 | Microsoft.PolicyInsights/policyStates/summarize/action | 查询有关策略最新状态的摘要信息。 |
+> | 操作 | Microsoft.PolicyInsights/policyStates/summarize/read | 查询有关策略最新状态的摘要信息。 |
 > | 操作 | Microsoft.PolicyInsights/policyStates/triggerEvaluation/action | 为所选范围触发新的符合性评估。 |
 > | 操作 | Microsoft.PolicyInsights/register/action | 注册策略见解资源提供程序，并启用对其执行的操作。 |
 
@@ -4809,6 +4851,7 @@ ms.locfileid: "39621151"
 > | 操作 | microsoft.web/sites/config/delete | 删除 Web 应用配置。 |
 > | 操作 | Microsoft.Web/sites/config/list/Action | 列出 Web 应用的安全敏感设置，例如发布凭据、应用设置和连接字符串 |
 > | 操作 | Microsoft.Web/sites/config/Read | 获取 Web 应用配置设置 |
+> | 操作 | microsoft.web/sites/config/snapshots/read | 获取 Web 应用配置快照。 |
 > | 操作 | Microsoft.Web/sites/config/Write | 更新 Web 应用的配置设置 |
 > | 操作 | microsoft.web/sites/containerlogs/action | 获取 Web 应用的压缩容器日志。 |
 > | 操作 | microsoft.web/sites/continuouswebjobs/delete | 删除 Web 应用连续 Web 作业。 |
@@ -4857,6 +4900,8 @@ ms.locfileid: "39621151"
 > | 操作 | microsoft.web/sites/hostnamebindings/delete | 删除 Web 应用主机名绑定。 |
 > | 操作 | microsoft.web/sites/hostnamebindings/read | 获取 Web 应用主机名绑定。 |
 > | 操作 | microsoft.web/sites/hostnamebindings/write | 更新 Web 应用主机名绑定。 |
+> | 操作 | Microsoft.Web/sites/hostruntime/host/_master/read | 获取管理员操作的 Function App 主密钥 |
+> | 操作 | Microsoft.Web/sites/hostruntime/host/action | 执行 Function App 运行时操作，例如同步触发器、添加函数、调用函数、删除函数等。 |
 > | 操作 | microsoft.web/sites/hybridconnection/delete | 删除 Web 应用混合连接。 |
 > | 操作 | microsoft.web/sites/hybridconnection/read | 获取 Web 应用混合连接。 |
 > | 操作 | microsoft.web/sites/hybridconnection/write | 更新 Web 应用混合连接。 |
@@ -4871,6 +4916,7 @@ ms.locfileid: "39621151"
 > | 操作 | microsoft.web/sites/instances/extensions/read | 获取 Web 应用实例扩展。 |
 > | 操作 | microsoft.web/sites/instances/processes/delete | 删除 Web 应用实例进程。 |
 > | 操作 | microsoft.web/sites/instances/processes/read | 获取 Web 应用实例进程。 |
+> | 操作 | microsoft.web/sites/instances/processes/threads/read | 获取 Web 应用实例进程线程。 |
 > | 操作 | microsoft.web/sites/instances/read | 获取 Web 应用实例。 |
 > | 操作 | microsoft.web/sites/listsyncfunctiontriggerstatus/action | 列出同步函数触发器状态 Web 应用。 |
 > | 操作 | microsoft.web/sites/metricdefinitions/read | 获取 Web 应用指标定义。 |
@@ -4886,6 +4932,7 @@ ms.locfileid: "39621151"
 > | 操作 | microsoft.web/sites/premieraddons/delete | 删除 Web 应用高级加载项。 |
 > | 操作 | microsoft.web/sites/premieraddons/read | 获取 Web 应用高级加载项。 |
 > | 操作 | microsoft.web/sites/premieraddons/write | 更新 Web 应用高级加载项。 |
+> | 操作 | microsoft.web/sites/privateaccess/read | 获取有关可访问站点的专用站点访问支持和授权虚拟网络的数据。 |
 > | 操作 | microsoft.web/sites/processes/read | 获取 Web 应用进程。 |
 > | 操作 | microsoft.web/sites/providers/Microsoft.Insights/diagnosticSettings/read | 获取资源的诊断设置 |
 > | 操作 | microsoft.web/sites/providers/Microsoft.Insights/diagnosticSettings/write | 创建或更新资源的诊断设置 |
@@ -4907,6 +4954,7 @@ ms.locfileid: "39621151"
 > | 操作 | Microsoft.Web/sites/restart/Action | 重新启动 Web 应用 |
 > | 操作 | microsoft.web/sites/restore/read | 获取 Web 应用还原设置。 |
 > | 操作 | microsoft.web/sites/restore/write | 还原 Web 应用。 |
+> | 操作 | microsoft.web/sites/restorefrombackupblob/action | 基于备份 Blob 还原 Web 应用。 |
 > | 操作 | microsoft.web/sites/restorefromdeletedwebapp/action | 从已删除的应用还原 Web 应用。 |
 > | 操作 | microsoft.web/sites/restoresnapshot/action | 还原 Web 应用快照。 |
 > | 操作 | microsoft.web/sites/siteextensions/delete | 删除 Web 应用站点扩展。 |
@@ -4917,6 +4965,7 @@ ms.locfileid: "39621151"
 > | 操作 | Microsoft.Web/sites/slots/backup/Action | 创建新的 Web 应用槽备份。 |
 > | 操作 | microsoft.web/sites/slots/backup/read | 获取 Web 应用槽备份。 |
 > | 操作 | microsoft.web/sites/slots/backup/write | 更新 Web 应用槽备份。 |
+> | 操作 | microsoft.web/sites/slots/backups/action | 发现 Web 应用槽备份。 |
 > | 操作 | microsoft.web/sites/slots/backups/delete | 删除 Web 应用槽备份。 |
 > | 操作 | microsoft.web/sites/slots/backups/list/action | 列出 Web 应用槽备份。 |
 > | 操作 | Microsoft.Web/sites/slots/backups/Read | 获取 Web 应用槽的备份属性 |
@@ -4925,6 +4974,7 @@ ms.locfileid: "39621151"
 > | 操作 | Microsoft.Web/sites/slots/config/list/Action | 列出 Web 应用槽的安全敏感设置，例如发布凭据、应用设置和连接字符串 |
 > | 操作 | Microsoft.Web/sites/slots/config/Read | 获取 Web 应用槽的配置设置 |
 > | 操作 | Microsoft.Web/sites/slots/config/Write | 更新 Web 应用槽的配置设置 |
+> | 操作 | microsoft.web/sites/slots/containerlogs/action | 获取 Web 应用槽的压缩容器日志。 |
 > | 操作 | microsoft.web/sites/slots/continuouswebjobs/delete | 删除 Web 应用槽连续 Web 作业。 |
 > | 操作 | microsoft.web/sites/slots/continuouswebjobs/read | 获取 Web 应用槽连续 Web 作业。 |
 > | 操作 | microsoft.web/sites/slots/continuouswebjobs/start/action | 启动 Web 应用槽连续 Web 作业。 |
@@ -4934,6 +4984,7 @@ ms.locfileid: "39621151"
 > | 操作 | microsoft.web/sites/slots/deployments/log/read | 获取 Web 应用槽部署日志。 |
 > | 操作 | microsoft.web/sites/slots/deployments/read | 获取 Web 应用槽部署。 |
 > | 操作 | microsoft.web/sites/slots/deployments/write | 更新 Web 应用槽部署。 |
+> | 操作 | microsoft.web/sites/slots/detectors/read | 获取 Web 应用槽检测程序。 |
 > | 操作 | microsoft.web/sites/slots/diagnostics/analyses/execute/Action | 运行 Web 应用槽诊断分析。 |
 > | 操作 | microsoft.web/sites/slots/diagnostics/analyses/read | 获取 Web 应用槽诊断分析。 |
 > | 操作 | microsoft.web/sites/slots/diagnostics/aspnetcore/read | 获取 ASP.NET Core 应用的 Web 应用槽诊断。 |
@@ -4958,6 +5009,7 @@ ms.locfileid: "39621151"
 > | 操作 | microsoft.web/sites/slots/diagnostics/workeravailability/read | 获取 Web 应用槽诊断 Workeravailability。 |
 > | 操作 | microsoft.web/sites/slots/diagnostics/workerprocessrecycle/read | 获取 Web 应用槽诊断工作进程回收。 |
 > | 操作 | microsoft.web/sites/slots/domainownershipidentifiers/read | 获取 Web 应用槽域所有权标识符。 |
+> | 操作 | microsoft.web/sites/slots/functions/read | 获取 Web 应用槽函数。 |
 > | 操作 | microsoft.web/sites/slots/hostnamebindings/delete | 删除 Web 应用槽主机名绑定。 |
 > | 操作 | microsoft.web/sites/slots/hostnamebindings/read | 获取 Web 应用槽主机名绑定。 |
 > | 操作 | microsoft.web/sites/slots/hostnamebindings/write | 更新 Web 应用槽主机名绑定。 |
@@ -4999,6 +5051,7 @@ ms.locfileid: "39621151"
 > | 操作 | Microsoft.Web/sites/slots/restart/Action | 重新启动 Web 应用槽 |
 > | 操作 | microsoft.web/sites/slots/restore/read | 获取 Web 应用槽还原设置。 |
 > | 操作 | microsoft.web/sites/slots/restore/write | 还原 Web 应用槽。 |
+> | 操作 | microsoft.web/sites/slots/restorefrombackupblob/action | 从备份 Blob 还原 Web 应用槽。 |
 > | 操作 | microsoft.web/sites/slots/restorefromdeletedwebapp/action | 从已删除的应用还原 Web 应用槽位。 |
 > | 操作 | microsoft.web/sites/slots/restoresnapshot/action | 还原 Web 应用槽快照。 |
 > | 操作 | microsoft.web/sites/slots/siteextensions/delete | 删除 Web 应用槽站点扩展。 |
@@ -5057,21 +5110,15 @@ ms.locfileid: "39621151"
 > [!div class="mx-tdCol2BreakAll"]
 > | 操作类型 | Operation | Description |
 > | --- | --- | --- |
-> | 操作 | Microsoft.WorkloadMonitor/components/read | 读取操作资源 |
-> | 操作 | Microsoft.WorkloadMonitor/healthInstances/read | 读取操作资源 |
-> | 操作 | Microsoft.WorkloadMonitor/Operations/read | 读取操作资源 |
-> | 操作 | Microsoft.WorkloadMonitor/workloadInsights/delete | 删除 workloadInsights 资源 |
-> | 操作 | Microsoft.WorkloadMonitor/workloadInsights/delete | 删除 workloadInsights 资源 |
-> | 操作 | Microsoft.WorkloadMonitor/workloadInsights/read | 读取 workloadInsights 资源 |
-> | 操作 | Microsoft.WorkloadMonitor/workloadInsights/read | 读取 workloadInsights 资源 |
-> | 操作 | Microsoft.WorkloadMonitor/workloadInsights/write | 写入 workloadInsights 资源 |
-> | 操作 | Microsoft.WorkloadMonitor/workloadInsights/write | 写入 workloadInsights 资源 |
-> | 操作 | Microsoft.WorkloadMonitor/workloads/delete |  |
-> | 操作 | Microsoft.WorkloadMonitor/workloads/delete |  |
-> | 操作 | Microsoft.WorkloadMonitor/workloads/read | 读取工作负载资源 |
-> | 操作 | Microsoft.WorkloadMonitor/workloads/read | 读取工作负载资源 |
-> | 操作 | Microsoft.WorkloadMonitor/workloads/write | 写入工作负载资源 |
-> | 操作 | Microsoft.WorkloadMonitor/workloads/write | 写入工作负载资源 |
+> | 操作 | Microsoft.WorkloadMonitor/components/read | 获取资源的组件 |
+> | 操作 | Microsoft.WorkloadMonitor/componentsSummary/read | 获取组件的摘要 |
+> | 操作 | Microsoft.WorkloadMonitor/monitorInstances/read | 获取资源的监视器实例 |
+> | 操作 | Microsoft.WorkloadMonitor/monitorInstancesSummary/read | 获取监视器实例的摘要 |
+> | 操作 | Microsoft.WorkloadMonitor/monitors/read | 获取资源的监视器 |
+> | 操作 | Microsoft.WorkloadMonitor/monitors/write | 配置资源的监视器 |
+> | 操作 | Microsoft.WorkloadMonitor/notificationSettings/read | 获取资源的通知设置 |
+> | 操作 | Microsoft.WorkloadMonitor/notificationSettings/write | 配置资源的通知设置 |
+> | 操作 | Microsoft.WorkloadMonitor/operations/read | 获取支持的操作 |
 
 ## <a name="next-steps"></a>后续步骤
 

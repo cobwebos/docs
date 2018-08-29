@@ -3,7 +3,7 @@ title: 关于密钥、机密和证书
 description: REST 接口和 KV 开发人员详细信息概述
 services: key-vault
 documentationcenter: ''
-author: lleonard-msft
+author: BryanLa
 manager: mbaldwin
 tags: azure-resource-manager
 ms.assetid: abd1b743-1d58-413f-afc1-d08ebf93828a
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/09/2018
-ms.author: alleonar
-ms.openlocfilehash: 8597b2d995b68e9ccff9b856b2ef6bd325cd2439
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.date: 08/14/2018
+ms.author: bryanla
+ms.openlocfilehash: 962f9be53ce0b2022e8e5490bdeb04b2eefb4d7c
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39359183"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42140213"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>关于密钥、机密和证书
 用户通过 Azure Key Vault 可以在 Microsoft Azure 环境中存储和使用加密密钥。 Key Vault 支持多种密钥类型和算法，可以对高价值的密钥使用硬件安全模块 (HSM)。 此外，用户还可以使用 Key Vault 安全地存储机密。 机密是有限大小的八位组对象，无任何特定语义。 Key Vault 还支持基于密钥和机密并且添加了自动续订功能的证书。
@@ -28,26 +28,26 @@ ms.locfileid: "39359183"
 
 **的综合详细信息**
 
--   [支持标准](about-keys-secrets-and-certificates.md#BKMK_Standards)
--   [数据类型](about-keys-secrets-and-certificates.md#BKMK_DataTypes)  
--   [对象、标识符和版本控制](about-keys-secrets-and-certificates.md#BKMK_ObjId)  
+-   [支持标准](#BKMK_Standards)
+-   [数据类型](#BKMK_DataTypes)  
+-   [对象、标识符和版本控制](#BKMK_ObjId)  
 
 **关于密钥**
 
--   [密钥和密钥类型](about-keys-secrets-and-certificates.md#BKMK_KeyTypes)  
--   [RSA 算法](about-keys-secrets-and-certificates.md#BKMK_RSAAlgorithms)  
--   [RSA-HSM 算法](about-keys-secrets-and-certificates.md#BKMK_RSA-HSMAlgorithms)  
--   [加密保护](about-keys-secrets-and-certificates.md#BKMK_Cryptographic)
--   [密钥操作](about-keys-secrets-and-certificates.md#BKMK_KeyOperations)  
--   [密钥属性](about-keys-secrets-and-certificates.md#BKMK_KeyAttributes)  
--   [密钥标记](about-keys-secrets-and-certificates.md#BKMK_Keytags)  
+-   [密钥和密钥类型](#BKMK_KeyTypes)  
+-   [RSA 算法](#BKMK_RSAAlgorithms)  
+-   [RSA-HSM 算法](#BKMK_RSA-HSMAlgorithms)  
+-   [加密保护](#BKMK_Cryptographic)
+-   [密钥操作](#BKMK_KeyOperations)  
+-   [密钥属性](#BKMK_KeyAttributes)  
+-   [密钥标记](#BKMK_Keytags)  
 
 **关于机密** 
 
--   [使用机密](about-keys-secrets-and-certificates.md#BKMK_WorkingWithSecrets)  
--   [机密属性](about-keys-secrets-and-certificates.md#BKMK_SecretAttrs)  
--   [机密标记](about-keys-secrets-and-certificates.md#BKMK_SecretTags)  
--   [机密访问控制](about-keys-secrets-and-certificates.md#BKMK_SecretAccessControl)  
+-   [使用机密](#BKMK_WorkingWithSecrets)  
+-   [机密属性](#BKMK_SecretAttrs)  
+-   [机密标记](#BKMK_SecretTags)  
+-   [机密访问控制](#BKMK_SecretAccessControl)  
 
 **关于证书**
 
@@ -133,7 +133,7 @@ Azure Key Vault 支持大小为 2048、3072 和 4096 的 RSA 密钥，以及 P-2
 
 ### <a name="BKMK_Cryptographic"></a> 加密保护
 
-Azure Key Vault 使用的加密模块（HSM 或软件）经过 FIPS 验证。 因此不必执行任何特殊操作便可在 FIPS 模式下运行。 如果创建或导入受 HSM 保护的密钥，可确保这些密钥在验证为 FIPS 140-2 第 2 级或更高级别的 HSM 中处理。 如果创建或导入受软件包保护的密钥，这些密钥会在验证为 FIPS 140-2 第 1 级或更高级别的加密模块中处理。 有关详细信息，请参阅[密钥和密钥类型](about-keys-secrets-and-certificates.md#BKMK_KeyTypes)。
+Azure Key Vault 使用的加密模块（HSM 或软件）经过 FIPS 验证。 因此不必执行任何特殊操作便可在 FIPS 模式下运行。 如果创建或导入受 HSM 保护的密钥，可确保这些密钥在验证为 FIPS 140-2 第 2 级或更高级别的 HSM 中处理。 如果创建或导入受软件包保护的密钥，这些密钥会在验证为 FIPS 140-2 第 1 级或更高级别的加密模块中处理。 有关详细信息，请参阅[密钥和密钥类型](#BKMK_KeyTypes)。
 
 ###  <a name="BKMK_ECAlgorithms"></a>EC 算法
  Azure Key Vault 中的 EC 和 EC-HSM 密钥支持以下算法标识符。 
@@ -174,7 +174,7 @@ Azure Key Vault 支持对密钥对象执行以下操作：
 -   备份：导出受保护窗体中的密钥。  
 -   还原：导入以前备份的密钥。  
 
-有关详细信息，请参阅[密钥操作](/rest/api/keyvault/key-operations)。  
+有关详细信息，请参阅 [Key Vault REST API 中的密钥操作参考](/rest/api/keyvault)。  
 
 在 Azure Key Vault 中创建密钥后，即可使用密钥执行以下加密操作：  
 
@@ -194,22 +194,22 @@ Azure Key Vault 不支持“导出”操作：在系统中设置密钥后，便�
 
 除密钥材料外，还可以指定以下属性。 在 JSON 请求中，即使未指定任何属性，也需要属性关键字和大括号“{”“}”。  
 
-- enabled：布尔型，可选，默认值为 true。 指定密钥是否已启用并可用于加密操作。 enabled 属性结合 nbf 和 exp 使用。如果在 nbf 和 exp 之间出现操作，只有在 enabled 设置为 true 时，才允许该操作。 nbf / exp 时段外的操作会自动禁止，[特定条件](about-keys-secrets-and-certificates.md#BKMK_key-date-time-ctrld-ops)下的某些操作类型除外。
-- nbf：IntDate，可选，默认值为“现在”。 nbf（非过去）属性识别密钥不得用于加密操作以前的时间，[特定条件](about-keys-secrets-and-certificates.md#BKMK_key-date-time-ctrld-ops)下的某些操作类型除外。 处理 nbf 属性要求当前日期/时间必须晚于或等于 nbf 属性中列出的非过去日期/时间。 Azure Key Vault 可能会稍微留有一些余地（通常不超过几分钟），以适应时钟偏差。 其值必须是包含 IntDate 值的数字。  
-- exp：IntDate，可选，默认值为“永远”。 exp（过期时间）属性识别密钥不得用于加密操作当时或之后的过期时间，[特定条件](about-keys-secrets-and-certificates.md#BKMK_key-date-time-ctrld-ops)下的某些操作类型除外。 处理 exp 属性要求当前日期/时间必须早于 exp 属性中列出的过期日期/时间。 Azure Key Vault 可能会稍微留有一些余地（通常不超过几分钟），以适应时钟偏差。 其值必须是包含 IntDate 值的数字。  
+- enabled：布尔型，可选，默认值为 true。 指定密钥是否已启用并可用于加密操作。 enabled 属性结合 nbf 和 exp 使用。如果在 nbf 和 exp 之间出现操作，只有在 enabled 设置为 true 时，才允许该操作。 nbf / exp 时段外的操作会自动禁止，[特定条件](#BKMK_key-date-time-ctrld-ops)下的某些操作类型除外。
+- nbf：IntDate，可选，默认值为“现在”。 nbf（非过去）属性识别密钥不得用于加密操作以前的时间，[特定条件](#BKMK_key-date-time-ctrld-ops)下的某些操作类型除外。 处理 nbf 属性要求当前日期/时间必须晚于或等于 nbf 属性中列出的非过去日期/时间。 Azure Key Vault 可能会稍微留有一些余地（通常不超过几分钟），以适应时钟偏差。 其值必须是包含 IntDate 值的数字。  
+- exp：IntDate，可选，默认值为“永远”。 exp（过期时间）属性识别密钥不得用于加密操作当时或之后的过期时间，[特定条件](#BKMK_key-date-time-ctrld-ops)下的某些操作类型除外。 处理 exp 属性要求当前日期/时间必须早于 exp 属性中列出的过期日期/时间。 Azure Key Vault 可能会稍微留有一些余地（通常不超过几分钟），以适应时钟偏差。 其值必须是包含 IntDate 值的数字。  
 
 在包含密钥属性的任何响应中还包括以下其他只读属性：  
 
 - created：IntDate，可选。 created 属性指示创建此版本的密钥的时间。 如果密钥在添加此属性之前创建，此值为 NULL。 其值必须是包含 IntDate 值的数字。  
 - updated：IntDate，可选 updated 属性指示更新此版本的密钥的时间。 如果密钥上次更新的时间早于添加此属性的时间，此值为 NULL。 其值必须是包含 IntDate 值的数字。  
 
-有关 IntDate 和其他数据类型的详细信息，请参阅[数据类型](about-keys-secrets-and-certificates.md#BKMK_DataTypes)  
+有关 IntDate 和其他数据类型的详细信息，请参阅[数据类型](#BKMK_DataTypes)  
 
 #### <a name="BKMK_key-date-time-ctrld-ops"></a> 日期时间控制的操作
 
 这些在 nbf / exp 时段外的尚未生效的秘钥和过期密钥适合 decrypt、unwrap 和 verify 操作（不会返回 403 禁止访问）。 使用尚未生效状态的基本原理是允许在投入生产前测试密钥。 使用过期状态的基本原理是允许对秘钥有效期间创建的数据执行恢复操作。 此外，使用 Key Vault 策略，或通过将 enabled 密钥属性更新为 false 可以禁用访问密钥。
 
-有关数据类型的详细信息，请参阅[数据类型](about-keys-secrets-and-certificates.md#BKMK_DataTypes)
+有关数据类型的详细信息，请参阅[数据类型](#BKMK_DataTypes)
 
 有关其他可能的属性的详细信息，请参阅 [JSON Web 密钥 (JWK)](http://tools.ietf.org/html/draft-ietf-jose-json-web-key)。
 
@@ -256,9 +256,9 @@ Azure Key Vault 还支持机密的 contentType 字段。 客户端可以指定�
 
 除机密数据外，还可以指定以下属性：  
 
-- exp：IntDate，可选，默认值为“永远”。 exp（过期时间）属性标识在不得检索机密数据当时或之后的过期时间，[特定情况](about-keys-secrets-and-certificates.md#BKMK_secret-date-time-ctrld-ops)除外。 处理 exp 属性要求当前日期/时间必须早于 exp 属性中列出的过期日期/时间。 Azure Key Vault 可能会稍微留有一些余地（通常不超过几分钟），以适应时钟偏差。 其值必须是包含 IntDate 值的数字。  
-- nbf：IntDate，可选，默认值为“现在”。 nbf（非过去）属性标识在不得检索机密数据之前的时间，[特定情况](about-keys-secrets-and-certificates.md#BKMK_secret-date-time-ctrld-ops)除外。 处理 nbf 属性要求当前日期/时间必须晚于或等于 nbf 属性中列出的非过去日期/时间。 Azure Key Vault 可能会稍微留有一些余地（通常不超过几分钟），以适应时钟偏差。 其值必须是包含 IntDate 值的数字。  
-- enabled：布尔型，可选，默认值为 true。 此属性指定是否可以检索机密数据。 enabled 属性与 exp 结合使用，如果在 nbf 和 exp 之间出现操作，只有在 enabled 设置为 true 时，才允许该操作。 nbf 和 exp 时段外的操作会自动禁止，[特定情况](about-keys-secrets-and-certificates.md#BKMK_secret-date-time-ctrld-ops)除外。  
+- exp：IntDate，可选，默认值为“永远”。 exp（过期时间）属性标识在不应检索机密数据当时或之后的过期时间，[特定情况](#BKMK_secret-date-time-ctrld-ops)除外。 此字段仅供参考，因为它通知密钥保管库服务用户可能无法使用特定机密。 其值必须是包含 IntDate 值的数字。   
+- nbf：IntDate，可选，默认值为“现在”。 nbf（非过去）属性标识在不应检索机密数据之前的时间，[特定情况](#BKMK_secret-date-time-ctrld-ops)除外。 此字段仅供参考。 其值必须是包含 IntDate 值的数字。 
+- enabled：布尔型，可选，默认值为 true。 此属性指定是否可以检索机密数据。 enabled 属性与 exp 结合使用，如果在 nbf 和 exp 之间出现操作，只有在 enabled 设置为 true 时，才允许该操作。 nbf 和 exp 时段外的操作会自动禁止，[特定情况](#BKMK_secret-date-time-ctrld-ops)除外。  
 
 在包含机密属性的任何响应中还包括以下其他只读属性：  
 
@@ -269,7 +269,7 @@ Azure Key Vault 还支持机密的 contentType 字段。 客户端可以指定�
 
 机密的获取操作在 nbf / exp 时段外适合尚未生效的机密和过期的机密。 对于尚未生效的机密，调用机密的“获取”操作可用于测试目的。 检索（获取）过期的密钥可以用于恢复操作。
 
-有关数据类型的详细信息，请参阅[数据类型](about-keys-secrets-and-certificates.md#BKMK_DataTypes)  
+有关数据类型的详细信息，请参阅[数据类型](#BKMK_DataTypes)  
 
 ###  <a name="BKMK_SecretAccessControl"></a> 机密访问控制
 
@@ -283,7 +283,7 @@ Azure Key Vault 中托管的机密的访问控制是在充当这些机密的容�
 -   删除：删除机密  
 -   所有：所有权限  
 
-有关使用机密的详细信息，请参阅[机密操作](/rest/api/keyvault/secret-operations)。  
+有关使用机密的详细信息，请参阅 [Key Vault REST API 中的机密操作参考](/rest/api/keyvault)。  
 
 ###  <a name="BKMK_SecretTags"></a> 机密标记  
 可以用标记的形式指定其他特定于应用程序的元数据。 Azure Key Vault 支持多达 15 种标记，每种标记可以有 256 个字符的名称和 256 个字符的值。  
@@ -443,11 +443,7 @@ Key Vault 允许使用其他颁发者提供者的配置创建多个颁发者对�
 -   删除颁发者：允许删除 Key Vault 证书颁发者  
 -   所有：授予所有权限  
 
-## <a name="additional-information-for-certificates"></a>证书的其他信息
-
-- [证书和策略](/rest/api/keyvault/certificates-and-policies)
-- [证书颁发者](/rest/api/keyvault/certificate-issuers)
-- [证书联系人](/rest/api/keyvault/certificate-contacts)
+有关详细信息，请参阅 [Key Vault REST API 中的证书操作参考](/rest/api/keyvault)。 
 
 ## <a name="see-also"></a>另请参阅
 

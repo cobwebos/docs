@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: jeffya
-ms.openlocfilehash: 300bde27f956b449d1e0e73f7efb54a13df27b0c
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: d8912a5da8c4df2069d8bc53454748b5fb3d5c39
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145659"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42139825"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>使用 Azure IoT 中心设备预配服务的自动预配功能将 MXChip IoT DevKit 注册到 IoT 中心
 
-本文介绍如何使用 Azure IoT 中心设备预配服务的[自动预配](concepts-auto-provisioning.md)功能将 MXChip IoT DevKit 注册到 Azure IoT 中心 本教程介绍如何执行以下操作：
+本文介绍如何使用 Azure IoT 中心设备预配服务的[自动预配](concepts-auto-provisioning.md)功能将 MXChip IoT DevKit 注册到 Azure IoT 中心 本教程介绍如何执行下列操作：
 
 * 在设备上配置设备预配服务的全局终结点。
 * 使用唯一设备机密 (UDS) 生成 X.509 证书。
@@ -32,18 +32,18 @@ ms.locfileid: "39145659"
 
 * 遵循[将 IoT DevKit AZ3166 连接到云中的 Azure IoT 中心](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)中的步骤准备好 DevKit。
 * 参考[更新 DevKit 固件](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/)教程升级到最新固件（1.3.0 或以上）。
-* 遵循[使用 Azure 门户设置 IoT 中心设备预配服务](/azure/iot-dps/quick-setup-auto-provision)中的步骤，创建 IoT 中心并将其链接到设备预配服务实例。
+* 按照[使用 Azure 门户设置 IoT 中心设备预配服务](/azure/iot-dps/quick-setup-auto-provision)中的步骤，创建 IoT 中心并将其链接到设备预配服务实例。
 
 ## <a name="build-and-deploy-auto-provisioning-registration-software-to-the-device"></a>生成自动预配注册软件并将其部署到设备
 
 将 DevKit 连接到创建的设备预配服务实例：
 
 1. 在 Azure 门户中，选择设备预配服务的“概述”窗格，记下“全局设备终结点”和“ID 范围”的值。
-  ![DPS 全局终结点和 ID 范围](./media/how-to-connect-mxchip-iot-devkit/dps-global-endpoint.png)
+  ![设备预配服务全局终结点和 ID 范围](./media/how-to-connect-mxchip-iot-devkit/dps-global-endpoint.png)
 
 2. 确保在计算机上安装 `git` 并将其添加到可供命令窗口访问的环境变量。 参阅[软件自由保护组织的 Git 客户端工具](https://git-scm.com/download/)安装最新版本。
 
-3. 打开命令提示符。 克隆设备预配服务示例代码的 GitHub 存储库：
+3. 打开命令提示符。 克隆 GitHub 存储库以获取设备预配服务示例代码：
   ```bash
   git clone https://github.com/DevKitExamples/DevKitDPS.git
   ```
@@ -51,7 +51,7 @@ ms.locfileid: "39145659"
 4. 打开 Visual Studio Code，将 DevKit 连接到计算机，然后打开包含所克隆代码的文件夹。
 
 5. 打开 **DevKitDPS.ino**。 找到 `[Global Device Endpoint]` 和 `[ID Scope]` 并将其替换为刚刚记下的值。
-  ![DPS 终结点](./media/how-to-connect-mxchip-iot-devkit/endpoint.png)可将 **registrationId** 留空。 应用程序会根据 MAC 地址和固件版本自动生成一个 ID。 如果想要自定义注册 ID，只能使用字母数字、小写字母和连字符的组合，并且长度不能超过 128 个字符。 有关详细信息，请参阅[使用 Azure 门户管理设备登记](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments)。
+  ![设备预配服务终结点](./media/how-to-connect-mxchip-iot-devkit/endpoint.png) 可将 **registrationId** 留空。 应用程序会根据 MAC 地址和固件版本自动生成一个 ID。 如果想要自定义注册 ID，只能使用字母数字、小写字母和连字符的组合，并且长度不能超过 128 个字符。 有关详细信息，请参阅[使用 Azure 门户管理设备登记](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments)。
 
 6. 在 VS Code 中使用 Quick Open（Windows：`Ctrl+P`；macOS：`Cmd+P`），并键入 *task device-upload* 生成代码并将其上传到 DevKit。
 
@@ -88,9 +88,11 @@ ms.locfileid: "39145659"
 
 ## <a name="generate-an-x509-certificate"></a>生成 X.509 证书
 
+现在需要生成一个 X.609 证书。 
+
 ### <a name="windows"></a>Windows
 
-1. 打开文件资源管理器，转到包含所克隆的设备预配服务示例代码的文件夹。 在 **.build** 文件夹中，找到并复制 **DPS.ino.bin** 和 **DPS.ino.map**。
+1. 打开文件资源管理器，然后转到包含之前克隆的设备预配服务示例代码的文件夹。 在 **.build** 文件夹中，找到并复制 **DPS.ino.bin** 和 **DPS.ino.map**。
   ![生成的文件](./media/how-to-connect-mxchip-iot-devkit/generated-files.png)
   > [!NOTE]
   > 如果已将 Arduino 的 `built.path` 配置更改为其他文件夹，则需要在配置的文件夹中找到这些文件。
@@ -109,10 +111,11 @@ ms.locfileid: "39145659"
 2. 选择 **添加** 。
 
 3. 在“添加注册”面板中，请执行以下操作：
-   - 在“机制”下选择“X.509”
-   - 在“主证书 .pem 或 .cer 文件”下单击“选择文件”
-   - 在“打开的文件”对话框中，导航到刚生成的 **.pem** 证书并将其上传
-   - 将其余的设置保留默认值，然后单击“保存”
+
+   - 在“机制”下选择“X.509”。
+   - 在“主证书 .pem 或 .cer 文件”下单击“选择文件”。
+   - 在“打开的文件”对话框中，导航到刚生成的“.pem”证书并将其上传。
+   - 将其余的设置保留默认值，然后单击“保存”。
 
    ![上传证书](./media/how-to-connect-mxchip-iot-devkit/upload-cert.png)
 
@@ -125,7 +128,6 @@ ms.locfileid: "39145659"
   >
   > `"-----BEGIN CERTIFICATE-----"` 和 `"-----END CERTIFICATE-----"`。
   >
-
 
 ## <a name="start-the-devkit"></a>启动 DevKit
 
@@ -141,16 +143,12 @@ ms.locfileid: "39145659"
 
 设备启动后，会执行以下操作：
 
-1. 设备向设备预配服务发送注册请求。
+1. 设备会向设备预配服务发送注册请求。
 2. 设备预配服务回复注册质询，设备需对此做出响应。
 3. 注册成功后，设备预配服务会向设备发送 IoT 中心 URI、设备 ID 和加密密钥。
 4. 设备上的 IoT 中心客户端应用程序连接到你的中心。
 5. 成功连接到中心后，设备出现在 IoT 中心的 Device Explorer 中。
   ![设备已注册](./media/how-to-connect-mxchip-iot-devkit/device-registered.png)
-
-## <a name="change-the-device-id"></a>更改设备 ID
-
-在 Azure IoT 中心注册的默认设备 ID 为 *AZ3166*。 若要修改此 ID，请遵照[自定义设备 ID](https://microsoft.github.io/azure-iot-developer-kit/docs/customize-device-id/) 中的说明。
 
 ## <a name="problems-and-feedback"></a>问题和反馈
 
@@ -161,7 +159,7 @@ ms.locfileid: "39145659"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，我们已了解如何使用设备标识组合引擎将设备安全登记到设备预配服务，使设备能够自动注册到 Azure IoT 中心。 
+在本教程中，你已了解如何使用设备标识组合引擎将设备安全登记到设备预配服务，使设备能够自动注册到 Azure IoT 中心。 
 
 概括而言，我们已了解如何：
 

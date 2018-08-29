@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: c2297f072786bdc1e80255dee278d640b0c0d26d
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 5a134e14768e0576c501232b6aedb1f836bc05b1
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629508"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42145085"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>使用 PowerShell 部署和管理通知中心
 ## <a name="overview"></a>概述
-本文说明如何使用 PowerShell 来创建和管理 Azure 通知中心。 本主题中将演示以下常见自动化任务。
+本文说明如何使用 PowerShell 来创建和管理 Azure 通知中心。 本文将演示以下常见自动化任务。
 
 * 创建通知中心
 * 设置凭据
@@ -89,10 +89,10 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 
 该脚本的此部分会设置四个本地变量。 
 
-1. `$Namespace`：将此变量设置为要创建通知中心的命名空间的名称。
+1. `$Namespace`：将此变量设置为要在其中创建通知中心的命名空间的名称。
 2. `$Path`：将此路径设置为新通知中心的名称。  例如“MyHub”。    
-3. `$WnsPackageSid`：从 [Windows 开发人员中心](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409)将此变量设置为 Windows 应用的包 SID。
-4. `$WnsSecretkey`：从 [Windows 开发人员中心](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409)将此变量设置为 Windows 应用的机密密钥。
+3. `$WnsPackageSid`：从 [Windows 开发人员中心](https://developer.microsoft.com/en-us/windows)将此变量设置为 Windows 应用的包 SID。
+4. `$WnsSecretkey`：从 [Windows 开发人员中心](https://developer.microsoft.com/en-us/windows)将此变量设置为 Windows 应用的机密密钥。
 
 这些变量可用于连接命名空间，以及创建配置为使用 Windows 应用 Windows 通知中心 (WNS) 凭据处理 WNS 通知的新通知中心。 有关获取包 SID 和机密密钥的信息，请参阅[通知中心入门](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)教程。 
 

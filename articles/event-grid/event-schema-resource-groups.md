@@ -3,17 +3,16 @@ title: Azure 事件网格资源组事件架构
 description: 介绍针对 Azure 事件网格中的资源组事件提供的属性
 services: event-grid
 author: tfitzmac
-manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/02/2018
+ms.date: 08/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: 407d9fd5b6f4d554af37b60edf12422f8816ac00
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 22629ba553cc58435f99ed0fed97be252b24b409
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495316"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42145695"
 ---
 # <a name="azure-event-grid-event-schema-for-resource-groups"></a>资源组的 Azure 事件网格事件架构
 
@@ -27,7 +26,9 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 
 若要以编程方式处理事件，可通过查看 `operationName` 值对事件进行排序。 例如，事件终结点可能只处理值等于 `Microsoft.Compute/virtualMachines/write` 或 `Microsoft.Storage/storageAccounts/write` 的操作的事件。
 
-事件主题是作为操作目标的资源的资源 ID。 若要筛选资源的事件，请在创建事件订阅时提供该资源 ID。 有关示例脚本，请参阅[订阅和筛选资源组 - PowerShell](scripts/event-grid-powershell-resource-group-filter.md) 或[订阅和筛选资源组 - Azure CLI](scripts/event-grid-cli-resource-group-filter.md)。 若要按资源类型筛选，请使用以下格式的值：`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
+事件主题是作为操作目标的资源的资源 ID。 若要筛选资源的事件，请在创建事件订阅时提供该资源 ID。  若要按资源类型筛选，请使用以下格式的值：`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
+
+有关示例脚本和教程的列表，请参阅[资源组事件源](event-sources.md#resource-groups)。
 
 ## <a name="available-event-types"></a>可用事件类型
 

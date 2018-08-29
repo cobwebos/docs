@@ -16,11 +16,12 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 74d34e708fb74daa295642d50643b78af8f6cb7a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4bf92638e15767ea254b33e5804977f0d6ab5476
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42140011"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>通过 Power BI 工作区集合进行身份验证和授权
 
@@ -43,12 +44,12 @@ Power BI 工作区集合使用**密钥**和**应用令牌**进行身份验证和
 
 应用令牌可以包含下列声明：
 
-| 声明 | 说明 |
+| 声明 | Description |    
 | --- | --- |
 | **ver** |应用令牌的版本。 当前版本为 0.2.0。 |
-| **aud** |令牌的目标接收方。 对于 Power BI 工作区集合，使用：“https://analysis.windows.net/powerbi/api”。 |
+| **aud** |令牌的目标接收方。 对于 Power BI 工作区集合，请使用：https:\//analysis.windows.net/powerbi/api。 |
 | **iss** |一个字符串，指示颁发了令牌的应用程序。 |
-| **类型** |要创建的应用令牌的类型。 当前唯一支持的类型是 **embed**。 |
+| type |要创建的应用令牌的类型。 当前唯一支持的类型是 **embed**。 |
 | **wcn** |要为其颁发令牌的工作区集合名称。 |
 | **wid** |要为其颁发令牌的工作区 ID。 |
 | **rid** |要为其颁发令牌的报表 ID。 |
@@ -99,7 +100,7 @@ SDK 中提供了可以更轻松地创建应用令牌的方法。 例如，对于
 
 下面是针对 Power BI 工作区集合的可用作用域。
 
-|范围|说明|
+|范围|Description|
 |---|---|
 |Dataset.Read|提供对指定数据集进行读取的权限。|
 |Dataset.Write|提供向指定数据集进行写入的权限。|

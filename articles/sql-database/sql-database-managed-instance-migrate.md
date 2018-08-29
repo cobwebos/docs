@@ -11,20 +11,18 @@ ms.custom: managed instance
 ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: bonova
-ms.openlocfilehash: a9a02f9007c174024028305746682f9ac07dab22
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: e152fa4bb439f1881dc9974bfdf1b3e8c77c434a
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247204"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42145283"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>将 SQL Server 实例迁移到 Azure SQL 数据库托管实例
 
-本文介绍将 SQL Server 2005 或更高版本的实例迁移到 Azure SQL 数据库托管实例（预览版）的方法。 
+本文介绍了将 SQL Server 2005 或更高版本的实例迁移到 [Azure SQL 数据库托管实例](sql-database-managed-instance.md)（预览版）的方法。
 
-SQL 数据库托管实例是现有 SQL 数据库服务的扩展，提供了第三个部署选项以及单个数据库和弹性池。  使用托管实例可将数据库即时转移到完全托管的 PaaS，而无需重新设计应用程序。 SQL 数据库托管实例与本地 SQL Server 编程模型高度兼容，对大多数 SQL Server 功能提供现成的支持，并提供随附的工具和服务。
-
-概括而言，应用程序迁移过程如下所示：
+概括而言，数据库迁移过程如下所示：
 
 ![迁移过程](./media/sql-database-managed-instance-migration/migration-process.png)
 
@@ -41,9 +39,9 @@ SQL 数据库托管实例是现有 SQL 数据库服务的扩展，提供了第�
 
 首先，确定托管实例是否与应用程序的数据库要求相符。 托管实例旨在方便即时迁移大多数使用本地 SQL Server 或虚拟机中 SQL Server 的现有应用程序。 但是，我们有时可能需要用到一些目前尚不支持的功能，而实施某种解决方法的成本过高。 
 
-使用[数据迁移助手 (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) 可以检测影响 Azure SQL 数据库功能的潜在兼容性问题。 DMA 目前不支持将托管实例用作迁移目标，但我们建议针对 Azure SQL 数据库运行评估，仔细查看报告的功能搭配列表，并根据产品文档检查兼容性问题。 托管实例已经消除了大部分导致无法迁移到 Azure SQL 数据库的阻碍性问题。 例如，托管实例中提供跨数据库查询、同一实例中的跨数据库事务、链接服务器到其他 SQL 源的查询、CLR、全局临时表、实例级视图、Service Broker 等功能。 
+使用[数据迁移助手 (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) 可以检测影响 Azure SQL 数据库功能的潜在兼容性问题。 DMA 目前不支持将托管实例用作迁移目标，但我们建议针对 Azure SQL 数据库运行评估，仔细查看报告的功能搭配列表，并根据产品文档检查兼容性问题。 请参阅 [Azure SQL 数据库单一实例和托管实例之间的差异](sql-database-features.md)，检查是否报告了一些不是托管实例中阻止程序导致的拦截问题，因为大多数阻止迁移到 Azure SQL 数据库的拦截问题已通过托管实例删除。 例如，托管实例中提供跨数据库查询、同一实例中的跨数据库事务、链接服务器到其他 SQL 源的查询、CLR、全局临时表、实例级视图、Service Broker 等功能。 
 
-但是，在某些情况下，可以考虑使用替代选项，例如 [Azure 中虚拟机上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)。 下面是一些示例：
+如果某些报告的拦截问题未在 Azure SQL 托管实例中删除，则可能需要考虑其他选项，例如 [Azure 虚拟机上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)。 下面是一些示例：
 
 - 需要直接访问操作系统或文件系统（例如，为了在装有 SQL Server 的同一个虚拟机上安装第三方代理或自定义代理）。
 - 严重依赖于目前尚不支持的功能，例如 FileStream/FileTable、PolyBase 和跨实例事务。
@@ -52,13 +50,13 @@ SQL 数据库托管实例是现有 SQL 数据库服务的扩展，提供了第�
 
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>部署到具有最佳大小的托管实例
 
-托管实例针对要转移到云中的本地工作负荷量身定制。 它引入了一个新的采购模型，在为工作负荷选择适当的资源级别时可提供更高的灵活性。 在本地，你可能习惯于使用物理核心来调整这些工作负荷的大小。 托管实例的新采购模型基于虚拟核心 (vCore)，客户可以单独购买更多的存储和 IO 资源。 借助 vCore 模型可以更方便地根据当前在本地使用的计算资源，来了解云中的计算要求。 使用此新模型可以适当地调整云中目标环境的大小。
+托管实例针对要转移到云中的本地工作负荷量身定制。 它引入了一个[新的采购模型](sql-database-service-tiers-vcore.md)，这让你在为工作负荷选择适当的资源级别时更具灵活性。 在本地环境中，你可能习惯于使用物理核心和 IO 带宽来调整这些工作负荷的大小。 托管实例的新采购模型基于虚拟核心 (vCore)，客户可以单独购买更多的存储和 IO 资源。 借助 vCore 模型可以更方便地根据当前在本地使用的计算资源，来了解云中的计算要求。 使用此新模型可以适当地调整云中目标环境的大小。
 
-可以在部署时选择计算和存储资源，以后可进行更改，而不会造成应用程序关闭。
+可在部署时选择计算和存储资源，稍后再通过 [Azure 门户](sql-database-scale-resources.md)更改它，而不必让应用程序关闭：
 
 ![托管实例大小调整](./media/sql-database-managed-instance-migration/managed-instance-sizing.png)
 
-若要了解如何创建 VNet 基础结构和托管实例，请参阅[创建托管实例](sql-database-managed-instance-create-tutorial-portal.md)。
+若要了解如何创建 VNet 基础结构和托管实例，请参阅[创建托管实例](sql-database-managed-instance-get-started.md)。
 
 > [!IMPORTANT]
 > 始终必须根据[托管实例的 VNET 要求](sql-database-managed-instance-vnet-configuration.md#requirements)保留目标 VNet 和子网。 任何不兼容性问题都可能导致无法创建新实例或使用已创建的实例。
@@ -76,8 +74,8 @@ SQL 数据库托管实例是现有 SQL 数据库服务的扩展，提供了第�
 
 托管实例支持以下数据库迁移选项（目前仅支持这些迁移方法）：
 
-- Azure 数据库迁移服务 - 在几乎不停机的情况下进行迁移
-- 通过 URL 进行本机还原 - 使用来自 SQL Server 的本机备份并需要一定的停机时间
+- Azure 数据库迁移服务 - 几乎无需停机即可实现迁移。
+- 本机 `RESTORE DATABASE FROM URL` - 使用来自 SQL Server 的本机备份，且需要停机一段时间。
 
 ### <a name="azure-database-migration-service"></a>Azure 数据库迁移服务
 
@@ -105,7 +103,7 @@ SQL 数据库托管实例是现有 SQL 数据库服务的扩展，提供了第�
 |从 Azure 存储还原到托管实例|[使用 SAS CREDENTIAL 执行 RESTORE FROM URL](sql-database-managed-instance-restore-from-backup-tutorial.md)|
 
 > [!IMPORTANT]
-> - 使用本机还原选项将[透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption)保护的数据库迁移到 Azure SQL 托管实例时，需在还原数据库之前迁移本地或 IaaS SQL Server 中的相应证书。 有关详细步骤，请参阅[将 TDE 证书迁移到托管实例](sql-database-managed-instance-migrate-tde-certificate.md)
+> - 使用本机还原选项将[透明数据加密](transparent-data-encryption-azure-sql.md)保护的数据库迁移到 Azure SQL 托管实例时，需在还原数据库之前迁移本地或 IaaS SQL Server 中的相应证书。 有关详细步骤，请参阅[将 TDE 证书迁移到托管实例](sql-database-managed-instance-migrate-tde-certificate.md)
 > - 不支持还原系统数据库。 若要迁移实例级对象（存储在 master 或 msdb 数据库中），我们建议编写 T-SQL 脚本，并在目标实例上运行这些脚本。
 
 有关如何使用 SAS 凭据将数据库备份还原到托管实例的完整教程，请参阅[从备份还原到托管实例](sql-database-managed-instance-restore-from-backup-tutorial.md)。
@@ -121,11 +119,10 @@ SQL 数据库托管实例是现有 SQL 数据库服务的扩展，提供了第�
 
 若要增强安全性，请考虑使用某些可用功能：
 - 数据库级别的 Azure Active Directory 身份验证
-- 用于监视活动的审核和检测威胁
-- 控制对敏感数据和特权数据的访问（[行级安全性](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)和[动态数据掩码](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)）。
+- 使用[审核](sql-database-managed-instance-auditing.md)、[威胁检测](sql-advanced-threat-protection.md)、[行级安全](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)和[动态数据掩码](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)等[高级安全功能](sql-database-security-overview.md)保证实例的安全。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 有关托管实例的信息，请参阅[什么是托管实例？](sql-database-managed-instance.md)。
-- 有关如何从备份还原的教程，请参阅[创建托管实例](sql-database-managed-instance-create-tutorial-portal.md)。
+- 有关如何从备份还原的教程，请参阅[创建托管实例](sql-database-managed-instance-get-started.md)。
 - 有关使用 DMS 进行迁移的教程，请参阅[使用 DMS 将本地数据库迁移到托管实例](../dms/tutorial-sql-server-to-managed-instance.md)。  

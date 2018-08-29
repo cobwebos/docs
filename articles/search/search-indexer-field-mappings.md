@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 08/30/2017
 ms.author: eugenesh
-ms.openlocfilehash: 041866cd1c290bc576577771abcae31db747095e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 51fa689030c4a8ce4e900ecd600cdd0524aa13d9
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31796841"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42140211"
 ---
 # <a name="field-mappings-in-azure-search-indexers"></a>Azure 搜索索引器中的字段映射
 使用 Azure 搜索索引器时，偶尔可能发现自己处于输入数据与目标索引架构不完全匹配的情形。 在这些情况下，可以使用**字段映射**将数据转换为所需形状。
@@ -106,7 +106,7 @@ Blob 索引器将 blob 路径元数据用作文档密钥来索引 blob。 检索
     "targetFieldName" : "IndexKey",
     "mappingFunction" : { "name" : "base64Encode", "parameters" : { "useHttpServerUtilityUrlTokenEncode" : false } }
   }]
-```
+ ```
 
 如果无需根据密钥查找文档，也无需对已编码内容进行解码，则可以忽略映射函数的 `parameters`（`useHttpServerUtilityUrlTokenEncode` 默认设置为 `true`）。 否则，请参阅 [base64 详细信息](#base64details)部分，确定要使用哪些设置。
 
@@ -136,9 +136,9 @@ Blob 自定义元数据值必须以 ASCII 进行编码。 可以使用 Base64 �
 ### <a name="details-of-base64-encoding-and-decoding"></a>base64 编码和解码详细信息
 Azure 搜索支持两种 base64 编码：HttpServerUtility URL 令牌和无填充 URL 安全 base64 编码。 如果想对文档密钥编码以便查找、对值编码以供索引器解码或解码由索引器编码的字段，需要使用相同的编码作为映射函数。
 
-如果使用 .NET Framework 进行编码和解码，可以分别将 `useHttpServerUtilityUrlTokenEncode` 和 `useHttpServerUtilityUrlTokenDecode` 设置为 `true`。 然后 `base64Encode` 会发挥 [HttpServerUtility.UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) 的作用，`base64Decode` 会发挥 [HttpServerUtility.UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx) 的作用。
+如果将用于编码或解码的 `useHttpServerUtilityUrlTokenEncode` 或 `useHttpServerUtilityUrlTokenDecode` 参数分别设置为 `true`，则 `base64Encode` 的行为与 [HttpServerUtility.UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) 类似，`base64Decode` 的行为与 [HttpServerUtility.UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx) 类似。
 
-如果未使用 .NET Framework，则应将 `useHttpServerUtilityUrlTokenEncode` 和 `useHttpServerUtilityUrlTokenDecode` 设置为 `false`。 Base64 编码和解码实用工具函数可能与 Azure 搜索不同，具体取决于所使用的库。
+如果没有使用完整的.NET Framework（即使用的是 .NET Core 或其他编程环境）来生成模拟 Azure 搜索行为的键值，则应将 `useHttpServerUtilityUrlTokenEncode` 和 `useHttpServerUtilityUrlTokenDecode` 设置为 `false`。 Base64 编码和解码实用工具函数可能与 Azure 搜索不同，具体取决于所使用的库。
 
 下表比较了对字符串 `00>00?00` 进行不同的 base64 编码的结果。 若要确定 base64 函数所需的其他处理（如有），请对字符串 `00>00?00` 应用库编码函数，然后比较输出和预期的输出 `MDA-MDA_MDA`。
 

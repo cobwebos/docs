@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/06/2018
+ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 6777842f3ca336eb4ae0d134cbc7ffd062bc6f29
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 1a4be7b5caba751f0f90e865d8ef23e5e9c899d6
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37890654"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42146108"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>排查 Azure 负载均衡器问题
 
@@ -87,7 +87,7 @@ ms.locfileid: "37890654"
 * 负载均衡器后端池 VM 未侦听数据端口 
 * 网络安全组要阻止负载均衡器后端池 VM 上的端口  
 * 从相同的 VM 和 NIC 访问负载均衡器 
-* 从参与的负载均衡器后端池 VM 访问 Internet 负载均衡器 VIP 
+* 从参与的负载均衡器后端池 VM 访问 Internet 负载均衡器前端 
 
 ### <a name="cause-1-load-balancer-backend-pool-vm-is-not-listening-on-the-data-port"></a>原因 1：负载均衡器后端池 VM 未侦听数据端口 
 如果 VM 未响应数据流量，这可能是因为参与的 VM 上的目标端口未打开，或者 VM 未侦听此端口。 
@@ -119,10 +119,11 @@ ms.locfileid: "37890654"
 * 为每个应用程序配置单独的后端池 VM。 
 * 在双 NIC VM 中配置应用程序，以便每个应用程序均使用自己的网络接口和 IP 地址。 
 
-### <a name="cause-4-accessing-the-internal-load-balancer-vip-from-the-participating-load-balancer-backend-pool-vm"></a>原因 4：从参与的负载均衡器后端池 VM 访问内部负载均衡器 VIP
+### <a name="cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm"></a>原因 4：从参与的负载均衡器后端池 VM 访问 Internet 负载均衡器前端
 
-如果 VNet 中配置了 ILB VIP，且某个参与的后端 VM 正尝试访问内部负载均衡器 VIP，该操作会失败。 此方案不受支持。
-解决方法 - 评估应用程序网关或其他代理（例如 nginx 或 haproxy），以支持此类方案。 有关应用程序网关的详细信息，请参阅[应用程序网关概述](../application-gateway/application-gateway-introduction.md)
+如果在 VNet 中配置了内部负载均衡器，并且某个参与的后端 VM 正在尝试访问内部负载均衡器前端，则当将流映射到原始 VM 时会发生故障。 此方案不受支持。 有关详细讨讨论，请参阅[限制](load-balancer-overview.md#limitations)。
+
+解决方案：有几种方法来取消阻止此方案，包括使用代理。 评估应用程序网关或其他第三方代理服务器（例如 nginx 或 haproxy）。 有关应用程序网关的详细信息，请参阅[应用程序网关概述](../application-gateway/application-gateway-introduction.md)
 
 ## <a name="additional-network-captures"></a>附加网络捕获
 如果决定打开支持案例，请收集下列信息，以更快获得解决方案。 选择单个后端 VM 执行下列测试：

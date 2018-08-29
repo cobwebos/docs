@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 9a43774a5327536ae4fa1346ae933739ea629771
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 4b7b1a9dc25b1bfaf72ab67dd0725a4518263ca5
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130078"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42140018"
 ---
 # <a name="data-sources-in-log-analytics"></a>Log Analytics 中的数据源
 Log Analytics 从已连接的数据源收集数据并将其存储在 Log Analytics 工作区中。  从每个源收集的数据由所配置的数据源定义。  Log Analytics 中的数据以一组记录的形式存储。  每个数据源将创建具有某种特殊类型的记录，而每个类型都具有自己的一组属性。
@@ -59,7 +59,7 @@ Log Analytics 从已连接的数据源收集数据并将其存储在 Log Analyti
 ## <a name="data-collection"></a>数据收集
 数据源配置会在几分钟内传送到与 Log Analytics 直接连接的各个代理。  指定的数据从代理收集，并按特定于每个数据源的时间间隔直接传送到 Log Analytics。  请参阅每个数据源的文档以了解详情。
 
-对于已连接管理组中的 System Center Operations Manager 代理，数据源配置默认以每 5 分钟的间隔转换成管理包并传送到管理组。  代理会下载任何其他的管理包，并收集指定的数据。 根据数据源的不同，数据或者被发送到管理服务器，再由管理服务器转发到 Log Analytics；或者不通过管理服务器，由代理将数据发送到 Log Analytics。 有关详细信息，请参阅[数据收集详细信息](log-analytics-add-solutions.md#data-collection-details)。  可以在[配置与 System Center Operations Manager 的集成](log-analytics-om-agents.md)中阅读有关连接 Operations Manager 和 Log Analytics 以及修改配置传送频率的详细信息。
+对于已连接管理组中的 System Center Operations Manager 代理，数据源配置默认以每 5 分钟的间隔转换成管理包并传送到管理组。  代理会下载任何其他的管理包，并收集指定的数据。 根据数据源的不同，数据或者被发送到管理服务器，再由管理服务器转发到 Log Analytics；或者不通过管理服务器，由代理将数据发送到 Log Analytics。 有关详细信息，请参阅 [Azure 中的管理解决方案的数据收集详细信息](../monitoring/monitoring-solutions-inventory.md)。  可以在[配置与 System Center Operations Manager 的集成](log-analytics-om-agents.md)中阅读有关连接 Operations Manager 和 Log Analytics 以及修改配置传送频率的详细信息。
 
 如果代理无法连接到 Log Analytics 或 Operations Manager，将继续收集在建立连接时传送的数据。  如果数据量达到客户端的最大缓存大小，或者如果代理无法在 24 小时内建立连接，则可能会丢失数据。
 
@@ -67,6 +67,6 @@ Log Analytics 从已连接的数据源收集数据并将其存储在 Log Analyti
 Log Analytics 所收集的所有数据都作为记录存储在工作区中。  按不同数据源收集的记录具有其自己的属性集，并由其“**类型**”属性来识别。  有关每种记录类型的详细信息，请参阅每个数据源和解决方案的相关文档。
 
 ## <a name="next-steps"></a>后续步骤
-* 了解[解决方案](log-analytics-add-solutions.md)如何将功能添加到 Log Analytics，以及如何将数据收集到工作区中。
+* 了解[解决方案](../monitoring/monitoring-solutions.md)如何将功能添加到 Log Analytics，以及如何将数据收集到工作区中。
 * 了解[日志搜索](log-analytics-log-searches.md)以便分析从数据源和解决方案中收集的数据。  
 * 配置[警报](log-analytics-alerts.md)以便主动向你通知从数据源和解决方案中收集的关键数据。

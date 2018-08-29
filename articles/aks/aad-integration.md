@@ -1,36 +1,36 @@
 ---
 title: 将 Azure Active Directory 与 Azure Kubernetes Service 集成
-description: 如何创建支持 Azure Active Directory 的 Azure Kubernetes Service 群集。
+description: 如何创建支持 Azure Active Directory 的 Azure Kubernetes Service (AKS) 群集。
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 6/17/2018
+ms.date: 8/9/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 2c4e0f8c31299644c912a70fc91bbdfa6da6795b
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 9bbf7ad201a70a315b75ed5e1f35671e4a5604fc
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579021"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42145501"
 ---
-# <a name="integrate-azure-active-directory-with-aks---preview"></a>将 Azure Active Directory 与 AKS 集成 - 预览版
+# <a name="integrate-azure-active-directory-with-aks"></a>将 Azure Active Directory 与 AKS 应用相集成
 
-可将 Azure Kubernetes Service (AKS) 配置为使用 Azure Active Directory 进行用户身份验证。 在此配置中，你可以使用自己的 Azure Active Directory 身份验证令牌登录到 Azure Kubernetes Service 群集。 此外，群集管理员可以根据用户标识或目录组成员身份来配置 Kubernetes 基于角色的访问控制。
+可将 Azure Kubernetes Service (AKS) 配置为使用 Azure Active Directory (AD) 进行用户身份验证。 在此配置中，你可以使用自己的 Azure Active Directory 身份验证令牌登录到 AKS 群集。 此外，群集管理员可以根据用户标识或目录组成员身份来配置 Kubernetes 基于角色的访问控制 (RBAC)。
 
-本文档详细介绍如何创建 AKS 和 Azure AD 的所有必备组件、部署支持 Azure AD 的群集，以及在 AKS 群集中创建简单的 RBAC 角色。 请注意，当前不能对现有非 RBAC 启用的 AKS 群集更新以供 RBAC 使用。
+本文介绍如何部署 AKS 和 Azure AD 的先决条件、部署支持 Azure AD 的群集以及在 AKS 群集中创建简单的 RBAC 角色。
 
-> [!IMPORTANT]
-> Azure Kubernetes Service (AKS) RBAC 与 Azure AD 集成目前以**预览版**提供。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
->
+以下限制适用：
+
+- 当前不能更新现有不支持 RBAC 的 AKS 群集以供 RBAC 使用。
+- 不支持 Azure AD 中的来宾用户，例如，从其他目录使用联合登录。
 
 ## <a name="authentication-details"></a>身份验证详细信息
 
-使用 OpenID Connect 向 Azure Kubernetes 群集提供 Azure AD 身份验证。 OpenID Connect 是构建在 OAuth 2.0 协议顶层的标识层。 [Open ID Connect 文档][open-id-connect]中提供了有关 OpenID Connect 的详细信息。
+使用 OpenID Connect 向 AKS 群集提供 Azure AD 身份验证。 OpenID Connect 是构建在 OAuth 2.0 协议顶层的标识层。 有关 OpenID Connect 的详细信息，请参阅 [Open ID Connect 文档][open-id-connect]。
 
-在 Kubernetes 群集内部，使用 Webhook 令牌身份验证来验证身份验证令牌。 Webhook 令牌身份验证作为 AKS 群集的一部分进行配置和管理。 [Webhook 身份验证文档][kubernetes-webhook]中提供了有关 Webhook 令牌身份验证的详细信息。
+在 Kubernetes 群集内部，使用 Webhook 令牌身份验证来验证身份验证令牌。 Webhook 令牌身份验证作为 AKS 群集的一部分进行配置和管理。 有关 Webhook 令牌身份验证的详细信息，请参阅 [Webhook 身份验证文档][kubernetes-webhook]。
 
 > [!NOTE]
 > 将 Azure AD 配置用于 AKS 身份验证时，会配置两个 Azure AD 应用程序。 此操作必须由 Azure 租户管理员完成。
@@ -72,6 +72,10 @@ ms.locfileid: "39579021"
 7. 选择“完成”，选择 API 列表中的“Microsoft Graph”，然后选择“授予权限”。 如果当前帐户不是租户管理员，此步骤将会失败。
 
   ![设置应用程序 Graph 权限](media/aad-integration/grant-permissions.png)
+
+  成功授予权限后，门户中会显示以下通知：
+
+  ![权限授予成功的通知](media/aad-integration/permissions-granted.png)
 
 8. 返回应用程序并记下“应用程序 ID”。 部署支持 Azure AD 的 AKS 群集时，此值称为 `Server application ID`。
 
@@ -131,7 +135,7 @@ az aks create --resource-group myAKSCluster --name myAKSCluster --generate-ssh-k
 
 ## <a name="create-rbac-binding"></a>创建 RBAC 绑定
 
-在对 AKS 群集使用 Azure Active Directory 帐户之前，需要创建角色绑定或群集角色绑定。
+在对 AKS 群集使用 Azure Active Directory 帐户之前，需要创建角色绑定或群集角色绑定。 “角色”定义要授予的权限，“绑定”将这些权限应用于目标用户。 这些分配可应用于特定命名空间或整个群集。 有关详细信息，请参阅[使用 RBAC 授权][rbac-authorization]。
 
 首先，使用管理员访问权限，结合 `--admin` 参数运行 [az aks get-credentials][az-aks-get-credentials] 命令登录到群集。
 
@@ -139,7 +143,7 @@ az aks create --resource-group myAKSCluster --name myAKSCluster --generate-ssh-k
 az aks get-credentials --resource-group myAKSCluster --name myAKSCluster --admin
 ```
 
-接下来，使用以下清单为 Azure AD 帐户创建 ClusterRoleBinding。 将用户名更新为 Azure AD 租户中的某个用户名。 此示例向该帐户授予对群集所有命名空间的完全访问权限。
+接下来，使用以下清单为 Azure AD 帐户创建 ClusterRoleBinding。 将用户名更新为 Azure AD 租户中的某个用户名。 此示例向该帐户授予对群集所有命名空间的完全访问权限：
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -156,7 +160,7 @@ subjects:
   name: "user@contoso.com"
 ```
 
-此外，可为 Azure AD 组的所有成员创建角色绑定。 使用组对象 ID 指定 Azure AD 组。
+此外，可为 Azure AD 组的所有成员创建角色绑定。 使用组对象 ID 指定 Azure AD 组，如以下示例所示：
 
  ```yaml
 apiVersion: rbac.authorization.k8s.io/v1

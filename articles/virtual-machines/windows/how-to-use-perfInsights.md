@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 2f496f906eef416b35e2e59b2db93481ce65acb1
-ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
+ms.openlocfilehash: 16d023a2f3abf0feb1f1c0478edb3de7a157d5a4
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36946259"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42140210"
 ---
 # <a name="how-to-use-perfinsights"></a>如何使用 PerfInsights
 
@@ -64,7 +64,7 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 > 此方案可能影响系统，不应在实时生产系统中运行。 必要时可在专用维护时段运行此方案，以免出现问题。 因跟踪或基准测试而导致工作负荷增加时，可能会对 VM 性能造成负面影响。
 >
 
-### <a name="slow-vm-analysis"></a>慢速 VM 分析
+### <a name="performance-analysis"></a>性能分析
 
 此方案使用在 RuleEngineConfig.json 文件中指定的计数器运行[性能计数器](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx)跟踪。 如果 VM 确定为运行 SQL Server 的服务器，则会运行性能计数器跟踪。 通过使用在 RuleEngineConfig.json 文件中找到的计数器，它也会执行此操作。 此方案还包括性能诊断数据。
 
@@ -90,9 +90,9 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 |              | 平均写入队列长度       |
 |              | 平均数据队列长度        |
 
-### <a name="advanced-slow-vm-analysis"></a>高级慢速 VM 分析
+### <a name="advanced-performance-analysis"></a>高级性能分析
 
-运行高级慢速 VM 分析时，可以选择要并行运行的跟踪。 如果需要，可以运行所有这些跟踪（性能计数器、Xperf、网络和 StorPort）。  
+运行高级性能分析时，可选择要并行运行的跟踪。 如果需要，可以运行所有这些跟踪（性能计数器、Xperf、网络和 StorPort）。  
 
 > [!Note]
 > 此方案可能影响系统，不应在实时生产系统中运行。 必要时可在专用维护时段运行此方案，以免出现问题。 因跟踪或基准测试而导致工作负荷增加时，可能会对 VM 性能造成负面影响。
@@ -104,7 +104,7 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 
 |收集的数据                              |  |  | 性能方案 |  |  | |
 |----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
-|                               | 快速性能分析 | 基准测试 | 慢速 VM 分析 | Azure 文件分析 | 高级慢速 VM 分析 |
+|                               | 快速性能分析 | 基准测试 | 性能分析 | Azure 文件分析 | 高级性能分析 |
 | 事件日志中的信息       | 是                        | 是                                | 是                      | 是                  | 是                  |
 | 系统信息                | 是                        | 是                                | 是                      | 是                  | 是                  |
 | 卷映射                        | 是                        | 是                                | 是                      | 是                  | 是                  |
@@ -138,7 +138,7 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 - HighMemoryUsage 规则：检测内存使用率高的期间，并显示在这些期间内存使用率高的使用者。
 
 > [!NOTE] 
-> 目前支持包含 .NET Framework 3.5 或更高版本的 Windows 版本。
+> 目前支持包含 .NET Framework 4.5 或更高版本的 Windows 版本。
 
 ### <a name="performance-counter-trace-"></a>性能计数器跟踪 (\*\*)
 
@@ -171,9 +171,9 @@ Diskspd I/O 工作负荷测试（OS 磁盘 [写入] 和池驱动器 [读/写]）
 
 #### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>在生产 VM 上运行该工具时可能会出现的问题
 
--  对于基准检验方案或配置为使用 Xperf 或 Diskspd 的“高级慢速 VM 分析”方案，此工具可能会对 VM 性能造成不利影响。 不应在实时生产环境中运行这些方案。
+-  对于基准检验方案或配置为使用 Xperf 或 Diskspd 的“高级性能分析”方案，此工具可能会对 VM 性能造成不利影响。 不应在实时生产环境中运行这些方案。
 
--  对于基准检验方案或配置为使用 Diskspd 的“高级慢速 VM 分析”方案，请确保没有其他任何后台活动干扰 I/O 工作负载。
+-  对于基准检验方案或配置为使用 Diskspd 的“高级性能分析”方案，请确保没有其他任何后台活动干扰 I/O 工作负载。
 
 -  默认情况下，此工具使用临时存储驱动器来收集数据。 如果跟踪保持启用状态较长的时间，则收集的数据量会与之相关。 这会降低临时磁盘上空间的可用性，因此可能影响任何依赖于该驱动器的应用程序。
 
@@ -212,7 +212,7 @@ Diskspd I/O 工作负荷测试（OS 磁盘 [写入] 和池驱动器 [读/写]）
     PerfInsights /run <ScenarioName> [AdditionalOptions]
     ```
 
-    可以使用以下示例运行 5 分钟慢速 VM 方案：
+    可使用以下示例运行 5 分钟性能分析方案：
     
     ```
     PerfInsights /run vmslow /d 300 /AcceptDisclaimerAndShareDiagnostics
@@ -224,7 +224,7 @@ Diskspd I/O 工作负荷测试（OS 磁盘 [写入] 和池驱动器 [读/写]）
     PerfInsights /run advanced xp /d 300 /AcceptDisclaimerAndShareDiagnostics
     ```
 
-    借助下面的示例，可以运行 5 分钟慢速 VM 方案，并以 zip 文件的形式将结果上传到存储帐户：
+    可借助下面的示例，运行 5 分钟性能分析方案，并以 zip 文件的形式将结果上传到存储帐户：
     
     ```
     PerfInsights /run vmslow /d 300 /AcceptDisclaimerAndShareDiagnostics /sa <StorageAccountName> /sk <StorageAccountKey>

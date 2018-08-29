@@ -3,7 +3,7 @@ title: 在 Azure 中的 Linux VM 上运行自定义脚本 | Microsoft 文档
 description: 使用自定义脚本扩展 v1 自动化 Linux VM 配置任务
 services: virtual-machines-linux
 documentationcenter: ''
-author: zroiy
+author: danielsollondon
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,66 +13,69 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/25/2018
-ms.author: roiyz
-ms.openlocfilehash: 918d09a870d5f8b523fb49141e4950ccdde825f2
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.date: 08/14/2018
+ms.author: danis
+ms.openlocfilehash: b88d850b708a10d0e0fdff2f54b68cb9b39988f5
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413467"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139815"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>在 Linux 虚拟机上使用 Azure 自定义脚本扩展版本 1
-自定义脚本扩展版本 1 在 Azure 虚拟机上下载和运行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或其他可访问的 Internet 位置下载脚本，或者将脚本提供给扩展运行时。 
+
+[!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]
+
+自定义脚本扩展版本 1 在 Azure 虚拟机上下载和运行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或其他可访问的 Internet 位置下载脚本，或者将脚本提供给扩展运行时。
 
 将自定义脚本扩展与 Azure 资源管理器模板集成。 也可使用 Azure CLI、PowerShell、Azure 门户或 Azure 虚拟机 REST API 来运行它。
 
 本文详细介绍如何使用 Azure CLI 中的自定义脚本扩展以及如何使用 Azure 资源管理器模板运行扩展。 本文还提供针对 Linux 系统的疑难解答步骤。
 
-
 存在两个 Linux 自定义脚本扩展：
+
 * 版本 1 - Microsoft.OSTCExtensions.CustomScriptForLinux
+
 * 版本 2 - Microsoft.Azure.Extensions.CustomScript
 
-请切换新部署和现有部署，改用新版本 ([Microsoft.Azure.Extensions.CustomScript](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-linux))。 新版本可作为一个简易的替代版本。 因此，迁移时只需更改名称和版本，无需更改扩展配置。
-
- 
+请切换新部署和现有部署，改用新版本 ([Microsoft.Azure.Extensions.CustomScript](custom-script-linux.md))。 新版本可作为一个简易的替代版本。 因此，迁移时只需更改名称和版本，无需更改扩展配置。
 
 ### <a name="operating-system"></a>操作系统
+
 支持的 Linux 分发：
 
-- CentOS 6.5 和更高版本
-- Debian 8 和更高版本
-    - Debian 8.7 未在最新映像中随附 Python2，这将中断 CustomScriptForLinux。
-- FreeBSD
-- OpenSUSE 13.1 和更高版本
-- Oracle Linux 6.4 和更高版本
-- SUSE Linux Enterprise Server 11 SP3 和更高版本
-- Ubuntu 12.04 和更高版本
+* CentOS 6.5 和更高版本
+* Debian 8 和更高版本
+  * Debian 8.7 未在最新映像中随附 Python2，这将中断 CustomScriptForLinux。
+* FreeBSD
+* OpenSUSE 13.1 和更高版本
+* Oracle Linux 6.4 和更高版本
+* SUSE Linux Enterprise Server 11 SP3 和更高版本
+* Ubuntu 12.04 和更高版本
 
 ### <a name="script-location"></a>脚本位置
 
 可使用扩展，利用 Azure Blob 存储凭据来访问 Azure Blob 存储。 或者，脚本位置可以是任何位置，只要 VM 可以路由到该终结点（如 GitHub、内部文件服务器等）即可。
 
 ### <a name="internet-connectivity"></a>Internet 连接
-如果需要从外部（例如 GitHub 或 Azure 存储）下载脚本，则需要打开其他防火墙/网络安全组端口。 例如，如果脚本位于 Azure 存储中，可以使用[存储](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags)的 Azure NSG 服务标记来允许访问。
+
+如果需要从外部（例如 GitHub 或 Azure 存储）下载脚本，则需要打开其他防火墙/网络安全组端口。 例如，如果脚本位于 Azure 存储中，可以使用[存储](../../virtual-network/security-overview.md#service-tags)的 Azure NSG 服务标记来允许访问。
 
 如果脚本位于本地服务器上，则可能仍需要打开其他防火墙/网络安全组端口。
 
 ### <a name="tips-and-tricks"></a>提示和技巧
+
 * 脚本中的语法错误会导致此扩展失败率最高，应测试脚本运行正确无误，同时在脚本中添加其他日志记录，以便更轻松地找到失败位置。
 * 编写幂等性的脚本，这样一来，如果脚本意外多次运行，将不会导致系统更改。
 * 确保这些脚本在运行时不需要用户输入。
 * 脚本可以运行 90 分钟，若运行时间超过 90 分钟，将导致扩展的预配失败。
 * 请勿将 reboot 置于脚本中，这会导致正在安装的其他扩展出现问题，并且在重启后，该扩展将不会继续。 
 * 如果脚本会导致重启，则安装应用程序并运行脚本等。应该使用 Cron 作业或者使用 DSC 或 Chef、Puppet 扩展等工具来计划重启。
-* 该扩展只会运行一个脚本一次，如果想要在每次启动时运行一个脚本，则可以使用 [cloud-init 映像](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/using-cloud-init)和 [Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) 模块。 或者，可以使用脚本创建 Systemd 服务单元。
-* 如果想要计划脚本何时运行，应使用扩展创建一个 Cron 作业。 
+* 该扩展只会运行一个脚本一次，如果想要在每次启动时运行一个脚本，则可以使用 [cloud-init 映像](../linux/using-cloud-init.md)和 [Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) 模块。 或者，可以使用脚本创建 Systemd 服务单元。
+* 如果想要计划脚本何时运行，应使用扩展创建一个 Cron 作业。
 * 脚本运行时，Azure 门户或 CLI 中只会显示“正在转换”扩展状态。 如果希望更频繁地更新正在运行的脚本的状态，需要创建自己的解决方案。
-* 自定义脚本扩展本身不支持代理服务器，但可以使用脚本中支持代理服务器的文件传输工具，如 Curl。 
+* 自定义脚本扩展本身不支持代理服务器，但可以使用脚本中支持代理服务器的文件传输工具，如 Curl。
 * 请注意脚本或命令可能依赖的非默认目录位置，按逻辑对其进行处理。
-
-
 
 ## <a name="extension-schema"></a>扩展架构
 
@@ -116,19 +119,20 @@ ms.locfileid: "39413467"
 
 ### <a name="property-values"></a>属性值
 
-| 名称 | 值/示例 | 数据类型 | 
+| 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | 日期 |
 | 发布者 | Microsoft.OSTCExtensions | 字符串 |
 | type | CustomScriptForLinux | 字符串 |
 | typeHandlerVersion | 1.5 | int |
 | fileUris（例如） | https://github.com/MyProject/Archive/MyPythonScript.py | 数组 |
-| commandToExecute（例如） | python MyPythonScript.py <my-param1> | 字符串 |
+| commandToExecute（例如） | python MyPythonScript.py \<my-param1\> | 字符串 |
 | enableInternalDNSCheck | 是 | 布尔值 |
 | storageAccountName（例如） | examplestorageacct | 字符串 |
 | storageAccountKey（例如） | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | 字符串 |
 
 ### <a name="property-value-details"></a>属性值详细信息
+
 * `fileUris`：（可选，字符串数组）脚本的 URI 列表
 * `enableInternalDNSCheck`：（可选，布尔型）默认为 True，设置为 False 可禁用 DNS 检查。
 * `commandToExecute`：（可选，字符串）要执行的入口点脚本
@@ -136,16 +140,16 @@ ms.locfileid: "39413467"
 * `storageAccountKey`：（可选，字符串）存储帐户的访问密钥
 
 可以在公共设置或受保护设置中设置以下值，但不得同时在公共设置和受保护设置中设置以下值。
+
 * `commandToExecute`
 
 虽然使用公共设置可能对调试很有用，但强烈建议使用受保护设置。
 
 公共设置会以明文形式发送到将执行脚本的 VM。  受保护设置使用只有 Azure 和 VM 知道的密钥进行加密。 这些设置会在发送时保存到 VM 中，也就是说，如果设置已加密，则会在 VM 上加密保存。 用于对已加密值解密的证书存储在 VM 上，该证书用于在运行时对设置解密（如必要）。
 
-
 ## <a name="template-deployment"></a>模板部署
-可使用 Azure 资源管理器模板部署 Azure VM 扩展。 可以在 Azure 资源管理器模板中使用上一部分中详细介绍的 JSON 架构，以便在 Azure 资源管理器模板部署过程中运行自定义脚本扩展。 
 
+可使用 Azure 资源管理器模板部署 Azure VM 扩展。 可以在 Azure 资源管理器模板中使用上一部分中详细介绍的 JSON 架构，以便在 Azure 资源管理器模板部署过程中运行自定义脚本扩展。
 
 ```json
 {
@@ -180,6 +184,7 @@ ms.locfileid: "39413467"
 >这些属性名称区分大小写。 要避免部署问题，请使用如下所示的名称。
 
 ## <a name="azure-cli"></a>Azure CLI
+
 在使用 Azure CLI 运行自定义脚本扩展时，请创建一个或多个配置文件。 至少必须具有“commandToExecute”。
 
 ```azurecli
@@ -245,7 +250,7 @@ az vm extension set \
 Azure CLI 命令：
 
 ```azurecli
-az vm extension set 
+az vm extension set
   --resource-group myResourceGroup \
   --vm-name myVM \
   --name CustomScriptForLinux \
@@ -255,7 +260,8 @@ az vm extension set
 ```
 
 ## <a name="troubleshooting"></a>故障排除
-运行自定义脚本扩展时，会创建脚本，或将脚本下载到类似于以下示例的目录中。 命令输出也会保存到此目录中的 `stdout` 和 `stderr` 文件中。 
+
+运行自定义脚本扩展时，会创建脚本，或将脚本下载到类似于以下示例的目录中。 命令输出也会保存到此目录中的 `stdout` 和 `stderr` 文件中。
 
 ```bash
 /var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux-<version>/download/1
@@ -264,10 +270,11 @@ az vm extension set
 要排除故障，请首先查看 Linux 代理日志，确保扩展运行，并检查：
 
 ```bash
-/var/log/waagent.log 
+/var/log/waagent.log
 ```
 
 应该查找如下所示的扩展执行：
+
 ```text
 2018/04/26 15:29:44.835067 INFO [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] Target handler state: enabled
 2018/04/26 15:29:44.867625 INFO [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] [Enable] current handler state is: notinstalled
@@ -284,17 +291,22 @@ az vm extension set
 ..
 2018/04/26 15:29:47.178163 INFO Event: name=Microsoft.OSTCExtensions.CustomScriptForLinux, op=Enable, message=Launch command succeeded: customscript.py -enable, duration=1012
 ```
+
 一些需要注意的要点：
+
 1. Enable 表示该命令何时开始运行。
-2. Download 涉及下载 Azure 中的 CustomScript 扩展包，而非 fileUris 中指定的脚本文件。
-3. 还可以看到正将它写出到哪个日志文件，/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log。
+1. Download 涉及下载 Azure 中的 CustomScript 扩展包，而非 fileUris 中指定的脚本文件。
+1. 还可查看其写出到的日志文件 `/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log
+`
 
 下一步是查看以下格式的日志文件：
+
 ```bash
 /var/log/azure/<extension-name>/<version>/extension.log file.
 ```
 
 应该查找如下所示的个别执行：
+
 ```text
 2018/04/26 15:29:46 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] Enable,transitioning,0,Launching the script...
 2018/04/26 15:29:46 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] sequence number is 0
@@ -310,18 +322,20 @@ az vm extension set
 2018/04/26 15:29:46 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] Internal DNS is ready, retry count = 0
 2018/04/26 15:29:47 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] Command is finished.
 2018/04/26 15:29:47 ---stdout---
-2018/04/26 15:29:47 
+2018/04/26 15:29:47
 2018/04/26 15:29:47 ---errout---
-2018/04/26 15:29:47 
-2018/04/26 15:29:47 
+2018/04/26 15:29:47
+2018/04/26 15:29:47
 2018/04/26 15:29:47 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] Daemon,success,0,Command is finished.
 2018/04/26 15:29:47 ---stdout---
-2018/04/26 15:29:47 
+2018/04/26 15:29:47
 2018/04/26 15:29:47 ---errout---
-2018/04/26 15:29:47 
-2018/04/26 15:29:47 
+2018/04/26 15:29:47
+2018/04/26 15:29:47
 ```
+
 可在此处看到：
+
 * 此日志表示 Enable 命令开始执行
 * 设置已传递到扩展
 * 扩展下载文件及其结果。
@@ -342,5 +356,5 @@ CustomScriptForLinux  Succeeded            Microsoft.OSTCExtensions        1.5  
 ```
 
 ## <a name="next-steps"></a>后续步骤
-若要查看代码、当前问题和版本，请参阅 [CustomScript 扩展存储库](https://github.com/Azure/azure-linux-extensions/tree/master/CustomScript)。
 
+若要查看代码、当前问题和版本，请参阅 [CustomScript 扩展存储库](https://github.com/Azure/azure-linux-extensions/tree/master/CustomScript)。

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 8c0810c4a1b92f14e510d005eaf1b6945a058dd7
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 54e6b4f5804e7390b7574aa60b4d3a76df15da11
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413097"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42145481"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>工作原理：Azure AD 自助密码重置
 
@@ -94,6 +94,9 @@ ms.locfileid: "39413097"
 | 可用的移动应用功能 | 代码 | 代码或通知 |
 
 用户通过 [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) 注册自助密码重置时，无法选择注册其移动应用。 用户可以在 [https://aka.ms/mfasetup](https://aka.ms/mfasetup) 中，或者在新的安全信息注册预览版 ([https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)) 中注册其移动应用。
+
+> [!WARNING]
+> 必须启用[针对自助服务密码重置和 Azure 多重身份验证的聚合注册（公共预览版）](concept-registration-mfa-sspr-converged.md)，然后用户才能够获取 [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) 上的新体验。
 
 ### <a name="change-authentication-methods"></a>更改身份验证方法
 

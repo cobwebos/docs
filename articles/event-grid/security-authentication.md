@@ -6,13 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/27/2018
+ms.date: 08/13/2018
 ms.author: babanisa
-ms.openlocfilehash: 783766c3e12da2c6fd77f919cf0ec44aea7db3b7
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: ce0e766a07fd19f523f1f35b9a3cbc865cfb8c71
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42140209"
 ---
 # <a name="event-grid-security-and-authentication"></a>事件网格安全和身份验证 
 
@@ -24,20 +25,32 @@ Azure 事件网格包含三种类型的身份验证：
 
 ## <a name="webhook-event-delivery"></a>WebHook 事件传送
 
-Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事件准备就绪时，事件网格 WebHook 会向已配置的 HTTP 终结点发送 HTTP 请求，并在正文中包含该事件。
+Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事件准备就绪时，EventGrid 服务会向已配置的终结点 POST HTTP 请求，并在请求正文中包含该事件。
 
-当你向事件网格注册自己的 WebHook 终结点时，事件网格为证明终结点所有权，会向你发送 POST 请求，其中包含简单的验证代码。 应用需要通过回显验证代码，做出响应。 事件网格不会将事件传送到未通过验证的 WebHook 终结点。 如果使用第三方 API 服务（例如 [Zapier](https://zapier.com) 或 [IFTTT](https://ifttt.com/)），可能无法以编程方式回显验证码。 对于这些服务，可以使用订阅验证事件中发送的验证 URL 手动验证订阅。 通过 REST 客户端或 Web 浏览器复制该 URL 并发送 GET 请求。
+与众多支持 Webhook 的其他服务一样，EventGrid 需要你证明对 Webhook 的“所有权”，然后才能开始向该终结点传送事件。 此要求是为了防止意外的终结点成为来自 EventGrid 的事件传送的目标终结点。 但是，如果使用下面列出的三项 Azure 服务中的任何一项，Azure 基础结构将自动进行此验证：
 
-“手动验证”功能处于预览状态。 若要使用它，必须安装用于 [AZ CLI 2.0](/cli/azure/install-azure-cli) 的[事件网格扩展](/cli/azure/azure-cli-extensions-list)。 可使用 `az extension add --name eventgrid` 进行安装。 如果使用 REST API，请确保使用 `api-version=2018-05-01-preview`。
+* Azure 逻辑应用，
+* Azure 自动化，
+* 适用于 EventGrid 的 Azure Functions 触发器。
+
+如果使用其他任何类型的终结点（例如基于 HTTP 触发器的 Azure 函数），终结点代码需要参与 EventGrid 的验证握手。 EventGrid 支持两种不同的验证握手模型：
+
+1. **ValidationCode 握手**：创建事件订阅时，EventGrid 将向终结点 POST“订阅验证事件”。 此事件的架构类似于其他任何 EventGridEvent，并且此事件的数据部分包括 `validationCode` 属性。 应用程序确认验证请求针对预期的事件订阅后，应用程序代码需要通过将验证代码回显回 EventGrid 以进行响应。 所有 EventGrid 版本均都支持此握手机制。
+
+2. **ValidationURL 握手（手动握手）**：在某些情况下，可能无法控制终结点源代码，以便能够实现基于 ValidationCode 的握手。 如果使用第三方服务（例如 [Zapier](https://zapier.com) 或 [IFTTT](https://ifttt.com/)），可能无法以编程方式使用验证码回应。 因此，从版本 2018-05-01-preview 开始，EventGrid 现在支持手动验证握手。 如果要使用此新的 API 版本 (2018-05-01-preview) 的 SDK/工具创建事件订阅，EventGrid 将发送 `validationUrl` 属性（以及 `validationCode` 属性）作为订阅验证事件数据部分的一部分。 若要完成握手，只需通过 REST 客户端或使用 Web 浏览器对该 URL 执行 GET 请求。 提供的验证 URL 有效时间仅 10 分钟左右。 在该时间内，事件订阅的预配状态为 `AwaitingManualAction`。 如果在 10 分钟内未完成手动验证，则配置状态被设为 `Failed`。 再次尝试手动验证前，必须重新尝试创建此事件订阅。
+
+“手动验证”机制处于预览状态。 若要使用它，必须安装用于 [AZ CLI 2.0](/cli/azure/install-azure-cli) 的[事件网格扩展](/cli/azure/azure-cli-extensions-list)。 可使用 `az extension add --name eventgrid` 进行安装。 如果使用 REST API，请确保使用 `api-version=2018-05-01-preview`。
 
 ### <a name="validation-details"></a>验证详细信息
 
-* 在创建/更新事件订阅时，事件网格会将“SubscriptionValidationEvent”事件发送到目标终结点。
-* 该事件包含标头值“Aeg-Event-Type: SubscriptionValidation”。
+* 在创建/更新事件订阅时，事件网格会将“订阅验证”事件发送到目标终结点。 
+* 该事件包含标头值“aeg-event-type: SubscriptionValidation”。
 * 事件正文具有与其他事件网格事件相同的架构。
-* 事件数据包括“validationCode”属性，其中含有随机生成的字符串。 例如，“validationCode: acb13…”。
-* 事件数据包括“validationUrl”属性，其中包含用于手动验证订阅的 URL。
+* 该事件的 eventType 属性是“Microsoft.EventGrid.SubscriptionValidationEvent”。
+* 事件数据属性包括“validationCode”属性，其中含有随机生成的字符串。 例如，“validationCode: acb13…”。
+* 如果使用 API 版本 2018-05-01-preview，事件数据还将包括 `validationUrl` 属性，其中包含用于手动验证订阅的 URL。
 * 该数组仅包含验证事件。 你回显验证代码后，事件网格会以单独的请求发送其他事件。
+* EventGrid DataPlane SDK 包含对应订阅验证事件数据和订阅验证响应的类。
 
 以下示例显示了 SubscriptionValidationEvent 示例：
 
@@ -65,13 +78,24 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 }
 ```
 
-或者，通过将 GET 请求发送到验证 URL 来手动验证订阅。 事件订阅将一直处于挂起状态，直到得到验证。
+或者，可以通过将 GET 请求发送到验证 URL 来手动验证订阅。 事件订阅将一直处于挂起状态，直到得到验证。
+
+若要查找演示如何处理订阅验证握手的 C# 示例，请访问 https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs。
+
+### <a name="checklist"></a>清单
+
+创建事件订阅期间，是否看到“尝试验证所提供的终结点 https://your-endpoint-here 失败。 有关更多详细信息，请访问 https://aka.ms/esvalidation ”等错误消息，它表示验证握手出现故障。 若要解决此错误，请验证以下各方面：
+
+* 能否控制目标终结点中的应用程序代码？ 例如，如果正在编写基于 HTTP 触发器的 Azure 函数，是否有权访问应用程序代码，以对其进行更改？
+* 如果有权访问应用程序代码，请实现基于 ValidationCode 的握手机制，如上面的示例中所示。
+
+* 如果无权访问应用程序代码（例如使用的是支持 Webhook 的第三方服务），则可以使用手动握手机制。 为了执行此操作，请确保使用 2018-05-01-preview API 版本（例如，使用上述 EventGrid CLI 扩展）以便接收验证事件中的 validationUrl。 若要完成手动验证握手，请获取“validationUrl”属性值，并在 Web 浏览器中访问该 URL。 如果验证成功，应在 Web 浏览器中看到表示验证成功的消息，并且事件订阅的 provisioningState 为“已成功”。 
 
 ### <a name="event-delivery-security"></a>事件传递安全性
 
 在创建事件订阅时，可以通过向 Webhook URL 中添加查询参数来保护 Webhook 终结点。 将这些查询参数之一设置为机密（例如[访问令牌](https://en.wikipedia.org/wiki/Access_token)），Webhook 可以使用它来确认事件来自具有有效权限的事件网格。 事件网格会在前往 Webhook 的每个事件传递中包括这些查询参数。
 
-编辑事件订阅时，除非在 Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 中使用了 [--include-full-endpoint-url](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_show) 参数，否则，不会显示或返回查询参数。
+编辑事件订阅时，除非在 Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 中使用了 [--include-full-endpoint-url](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) 参数，否则，不会显示或返回查询参数。
 
 最后，请务必注意 Azure 事件网格仅支持 HTTPS Webhook 终结点。
 

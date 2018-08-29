@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure Site Recovery 通过迁移将 Contoso 应用重新托管到 Azure VM | Microsoft Docs
-description: 了解如何使用 Azure Site Recovery 服务通过直接迁移将本地应用重新托管到 Azure（实现本地计算机的迁移）。
+description: 了解如何使用 Azure Site Recovery 服务重新托管将本地计算机直接迁移到 Azure 的本地应用。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/12/2018
+ms.date: 08/13/2018
 ms.author: raynew
-ms.openlocfilehash: e152a95a392fd503e027591a4930fbeef744d6f4
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 11859beb3d7bf0d0b0b801328c6570d274f1ea68
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39012275"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42145484"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms"></a>Contoso 迁移：将本地应用重新托管到 Azure VM
 
@@ -424,7 +424,7 @@ Contoso 现可运行完整故障转移来完成迁移。
 
 应用现已运行，Contoso 需要积极行动，在 Azure 中全面保护此应用。
 
-### <a name="security"></a>“安全”
+### <a name="security"></a>安全
 
 Contoso 安全团队会审查 Azure VM，确定是否存在任何安全问题。
 

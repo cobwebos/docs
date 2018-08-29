@@ -14,15 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/23/2018
 ms.author: chackdan
-ms.openlocfilehash: 16758cc85b552e82d3daa63893558e1048bcefb8
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a1cfd68b526d8ce63fcfbc3b6e0eac84926fabaa
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207547"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42145500"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>在 Azure 中添加或删除 Service Fabric 群集的证书
 建议先了解 Service Fabric 使用 X.509 证书的方式，并熟悉[群集安全性应用场景](service-fabric-cluster-security.md)。 在继续下一步之前，必须先了解群集证书的定义和用途。
+
+Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日期最远的已定义证书，而不管其主要或次要配置定义如何。 回退到经典行为是非推荐的高级操作，需要在 Fabric.Code 配置内将“UseSecondaryIfNever”设置参数的值设置为 false。
 
 在创建群集期间配置证书安全性时，Service Fabric 允许指定两个群集证书（主要证书和辅助证书）以及客户端证书。 请参阅[通过门户创建 Azure 群集](service-fabric-cluster-creation-via-portal.md)或[通过 Azure 资源管理器创建 Azure 群集](service-fabric-cluster-creation-via-arm.md)，了解在创建时进行相关设置的详细信息。 如果创建时只指定了一个群集证书，将使用该证书作为主要证书。 在创建群集后，可以添加一个新证书作为辅助证书。
 
@@ -34,17 +36,12 @@ ms.locfileid: "34207547"
 ## <a name="add-a-secondary-cluster-certificate-using-the-portal"></a>使用门户添加辅助群集证书
 无法通过 Azure 门户使用 Azure powershell 添加辅助群集证书。 稍后在本文档中对该过程进行概述。
 
-## <a name="swap-the-cluster-certificates-using-the-portal"></a>使用门户交换群集证书
-成功部署辅助群集证书之后，如果要交换主要证书和辅助证书，则导航到“安全性”部分，并从上下文菜单中选择“交换主要”选项来交换主要证书和辅助证书。
-
-![交换证书][Delete_Swap_Cert]
-
 ## <a name="remove-a-cluster-certificate-using-the-portal"></a>使用门户删除群集证书
-对于安全群集，始终至少需要部署一个有效的（未吊销或过期）证书（主要或辅助），否则，群集无法正常运行。
+对安全群集，始终需要至少一个有效（未撤销且未过期）证书。 将使用具有最远过期日期的已部署证书，并且删除该证书会导致群集停止运行；请确保仅删除过期的证书或最快过期的未使用证书。
 
-若要删除辅助证书，以防将其用于群集安全，请导航到“安全性”部分，并从辅助证书的上下文菜单中选择“删除”选项。
+若要删除未使用的群集安全证书，请导航到“安全性”部分，然后在该未使用证书的上下文菜单中选择“删除”选项。
 
-如果目的是删除标记为主要的证书，则需要首先将其与辅助证书交换，然后在升级完成后删除辅助证书。
+若要删除标记为“主要”的证书，则需部署一个过期日期比该主要证书更远的辅助证书，从而启用自动变换行为；并在自动变换完成后该删除主要证书。
 
 ## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>使用 Resource Manager Powershell 添加辅助证书
 > [!TIP]
@@ -295,7 +292,6 @@ Get-ServiceFabricClusterHealth
 * [为客户端设置基于角色的访问](service-fabric-cluster-security-roles.md)
 
 <!--Image references-->
-[Delete_Swap_Cert]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_09.PNG
 [Add_Client_Cert]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_13.PNG
 [Json_Pub_Setting1]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_14.PNG
 [Json_Pub_Setting2]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_15.PNG

@@ -2,18 +2,18 @@
 title: Azure SQL 数据同步最佳做法 | Microsoft Docs
 description: 了解有关配置和运行 Azure SQL 数据同步的最佳做法。
 services: sql-database
-ms.date: 07/03/2018
+ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: sql-database
 author: allenwux
 ms.author: xiwu
 manager: craigg
-ms.openlocfilehash: 2b23f9f2edbec468ecbd1395bd138e1be801c6e5
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 96fff35b95a63e4f806258eff59d08afb2db0ffd
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620794"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42145559"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>SQL 数据同步最佳做法 
 
@@ -77,15 +77,14 @@ SQL 数据同步提供了基本的数据库自动预配。
 
 SQL 数据同步自动预配的限制如下：
 
--   在目标表中仅选择已创建的列。  
-    在目标表中，不会对不属于同步组一部分的任何列进行预配。
--   仅为所选列创建索引。  
-    如果源表索引包含不是同步组一部分的列，则不会在目标表中预配这些索引。  
+-   在目标表中仅选择已创建的列。 在目标表中，不会对不属于同步组一部分的任何列进行预配。
+-   仅为所选列创建索引。 如果源表索引包含不是同步组一部分的列，则不会在目标表中预配这些索引。  
 -   不会预配 XML 类型列上的索引。  
 -   不会预配 CHECK 约束。  
 -   不会预配源表上的现有触发器。  
 -   不会在目标数据库上创建视图和存储的过程。
 -   对外键约束的 ON UPDATE CASCADE 和 ON DELETE CASCADE 操作不会在目标表中重新创建。
+-   如果具有精度大于 28 的十进制或数值列，则 SQL 数据同步在同步期间可能出现转换溢出问题。建议将十进制或数值列的精度限制为 28 或更小。
 
 #### <a name="recommendations"></a>建议
 

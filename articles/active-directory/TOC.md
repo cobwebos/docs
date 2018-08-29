@@ -128,31 +128,6 @@
 #### [注册自助密码重置](user-help/active-directory-passwords-reset-register.md)
 
 
-## 管理设备
-### [概述](devices/overview.md)
-
-### 快速入门
-#### [设置已注册到 Azure AD 的 Windows 10 设备](user-help/device-management-azuread-registered-devices-windows10-setup.md)
-#### [设置已加入 Azure AD 的设备](user-help/device-management-azuread-joined-devices-setup.md)
-
-### 教程
-#### [为托管域配置混合 Azure AD 加入](devices/hybrid-azuread-join-managed-domains.md)
-#### [为联盟域配置混合 Azure AD 加入](devices/hybrid-azuread-join-federated-domains.md)
-#### [手动配置混合 Azure AD 加入](devices/hybrid-azuread-join-manual-steps.md)
-#### [在 Windows 10 首次运行体验期间配置 Azure AD 加入](devices/azuread-joined-devices-frx.md)
-
-### 操作方法指南
-#### [计划 Azure AD 加入](devices/azureadjoin-plan.md)
-#### [计划混合 Azure AD 加入实现](devices/hybrid-azuread-join-plan.md)
-#### [控制设备的混合 Azure AD 加入](devices/hybrid-azuread-join-control.md)
-#### [将本地管理员分配到加入 Azure AD 的设备](devices/assign-local-admin.md)
-#### [排查加入混合 Azure AD 的 Windows 当前设备问题](devices/troubleshoot-hybrid-join-windows-current.md)
-#### [排查加入混合 Azure AD 的旧式 Windows 设备问题](devices/troubleshoot-hybrid-join-windows-legacy.md)
-
-### 概念
-#### [使用 Azure 门户管理设备](devices/device-management-azure-portal.md)
-#### [常见问题](devices/faq.md)
-
 ## 管理应用
 ### [概述](manage-apps/what-is-application-management.md)
 ### [入门](manage-apps/plan-an-application-integration.md)

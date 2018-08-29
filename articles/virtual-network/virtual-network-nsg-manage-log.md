@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: jdial
-ms.openlocfilehash: 81809660bdda957eb4502e02799b9f7f5538ae51
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 5635998eb72f08ddc665793e77008890b2cdb05d
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114017"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42145093"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>网络安全组的诊断日志记录
 
@@ -140,7 +140,7 @@ az monitor diagnostic-settings create \
 
 ### <a name="event"></a>事件
 
-此事件日志记录了根据 MAC 地址将哪些 NSG 规则应用于 VM。 针对每个事件记录以下示例数据：
+此事件日志记录了根据 MAC 地址将哪些 NSG 规则应用于 VM。 对每个事件记录以下数据。 在以下示例中，对 IP 地址为 192.168.1.4 和 MAC 地址为 00-0D-3A-92-6A-7C 的虚拟机记录了数据：
 
 ```json
 {
@@ -154,16 +154,16 @@ az monitor diagnostic-settings create \
         "subnetPrefix":"192.168.1.0/24",
         "macAddress":"00-0D-3A-92-6A-7C",
         "primaryIPv4Address":"192.168.1.4",
-        "ruleName":"[SECURITY RULE NAME]",
-        "direction":"In",
-        "priority":1000,
-        "type":"allow",
+        "ruleName":"[SECURITY-RULE-NAME]",
+        "direction":"[DIRECTION-SPECIFIED-IN-RULE]",
+        "priority":[PRIORITY-SPECIFIED-IN-RULE],
+        "type":"[ALLOW-OR-DENY-AS-SPECIFIED-IN-RULE]",
         "conditions":{
-            "protocols":"6",
-            "destinationPortRange":"[PORT RANGE]",
-            "sourcePortRange":"0-65535",
-            "sourceIP":"0.0.0.0/0",
-            "destinationIP":"0.0.0.0/0"
+            "protocols":"[PROTOCOLS-SPECIFIED-IN-RULE]",
+            "destinationPortRange":"[PORT-RANGE-SPECIFIED-IN-RULE]",
+            "sourcePortRange":"[PORT-RANGE-SPECIFIED-IN-RULE]",
+            "sourceIP":"[SOURCE-IP-OR-RANGE-SPECIFIED-IN-RULE]",
+            "destinationIP":"[DESTINATION-IP-OR-RANGE-SPECIFIED-IN-RULE]"
             }
         }
 }
@@ -171,7 +171,7 @@ az monitor diagnostic-settings create \
 
 ### <a name="rule-counter"></a>规则计数器
 
-此规则计数器日志记录了应用到资源的每个规则。 每次应用规则时会记录以下示例数据：
+此规则计数器日志记录了应用到资源的每个规则。 每次应用规则时会记录以下示例数据。 在以下示例中，对 IP 地址为 192.168.1.4 和 MAC 地址为 00-0D-3A-92-6A-7C 的虚拟机记录了数据：
 
 ```json
 {
@@ -185,9 +185,9 @@ az monitor diagnostic-settings create \
         "subnetPrefix":"192.168.1.0/24",
         "macAddress":"00-0D-3A-92-6A-7C",
         "primaryIPv4Address":"192.168.1.4",
-        "ruleName":"[SECURITY RULE NAME]",
-        "direction":"In",
-        "type":"allow",
+        "ruleName":"[SECURITY-RULE-NAME]",
+        "direction":"[DIRECTION-SPECIFIED-IN-RULE]",
+        "type":"[ALLOW-OR-DENY-AS-SPECIFIED-IN-RULE]",
         "matchedConnections":125
         }
 }

@@ -1,25 +1,25 @@
 ---
 title: Azure 搜索的 Lucene 查询示例 | Microsoft Docs
 description: 在 Azure 搜索服务中进行模糊搜索、邻近搜索、术语提升、正则表达式搜索和通配符搜索的 Lucene 查询语法。
-author: LiamCa
-manager: pablocas
+author: HeidiSteen
+manager: cgronlun
 tags: Lucene query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 07/16/2018
-ms.author: liamca
-ms.openlocfilehash: d90a7b2d12a147b8020abbd51ef055f0e70471fb
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.date: 08/09/2018
+ms.author: heidist
+ms.openlocfilehash: b5a3e2eac218ba2aa6958ffc56bd59f5b513cf48
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365422"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42140417"
 ---
 # <a name="lucene-syntax-query-examples-for-building-advanced-queries-in-azure-search"></a>在 Azure 搜索中生成高级查询的 Lucene 语法查询示例
-在构造 Azure 搜索的查询时，可以将默认的[简单查询分析器](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)替换为另一种 [Azure 搜索中的 Lucene 查询分析器](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)，以便制定专用的高级查询定义。 
+在构造 Azure 搜索的查询时，可以将默认的[简单查询分析器](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)替换为更全面的 [Azure 搜索中的 Lucene 查询分析器](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)，以便制定专用的高级查询定义。 
 
-Lucene 查询分析器支持较复杂的查询构造，如字段范围查询、模糊搜索和通配符搜索、邻近搜索、字词提升和正则表达式搜索。 功能的提升也带了额外的处理要求。 本文展示了使用完整语法时的查询操作示例，可以按照这些示例逐步操作。
+Lucene 查询分析器支持复杂的查询构造，比如字段范围查询、模糊和前缀通配符搜索、邻近搜索、术语提升以及正则表达式搜索。 额外的功能需遵守额外的处理要求，因此执行时间应该会更长一些。 本文展示了使用完整语法时的查询操作示例，可以按照这些示例逐步操作。
 
 > [!Note]
 > 通过完整的 Lucene 查询语法实现的专用查询构造很多都不是[按文本分析的](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis)，所以并不涉及词干分解和词形还原，这一点有些出人意料。 只会对完整字词（字词查询或短语查询）进行词法分析。 字词不完整的查询类型（前缀查询、通配符查询、正则表达式查询、模糊查询）会被直接添加到查询树中，绕过分析阶段。 对不完整查询字词执行的唯一转换操作是转换为小写。 
@@ -27,9 +27,9 @@ Lucene 查询分析器支持较复杂的查询构造，如字段范围查询、�
 
 ## <a name="formulate-requests-in-postman"></a>在 Postman 中创建请求
 
-下面的示例使用“纽约工作岗位”搜索索引，它包含基于[纽约市开放数据](https://nycopendata.socrata.com/)计划提供的数据集得出的岗位。 此数据不应认为是最新或完整数据。 该索引位于 Microsoft 提供的一项沙盒服务上，也就是说无需 Azure 订阅或 Azure 搜索即可试用这些查询。
+下面的示例使用“纽约工作岗位”搜索索引，它包含基于[纽约市开放数据](https://opendata.cityofnewyork.us/)计划提供的数据集得出的岗位。 此数据不应认为是最新或完整数据。 该索引位于 Microsoft 提供的一项沙盒服务上，也就是说无需 Azure 订阅或 Azure 搜索即可试用这些查询。
 
-要在 GET 上发出 HTTP 请求，需具备 Postman 或其等效工具。 有关详细信息，请参阅[使用 REST 客户端进行测试](search-fiddler.md)。
+要在 GET 上发出 HTTP 请求，需具备 Postman 或其等效工具。 有关详细信息，请参阅[使用 REST 客户端进行浏览](search-fiddler.md)。
 
 ### <a name="set-the-request-header"></a>设置请求标头
 
@@ -50,22 +50,22 @@ Lucene 查询分析器支持较复杂的查询构造，如字段范围查询、�
 URL 组合具备以下元素：
 
 + `https://azs-playground.search.windows.net/` 是由 Azure 搜索开发团队维护的沙盒搜索服务。 
-+ **`indexes/nycjobs/`** 是该服务的索引集合中的 NYC 作业索引。 请求中需同时具备服务名称和索引。
-+ **`docs`** 是包含所有可搜索内容的文档集合。 请求标头中提供的查询 api-key 仅适用于针对文档集合的读取操作。
-+ **`api-version=2017-11-11`** 设置了 api-version，这是每个请求都需要的参数。
-+ **`search=*`** 是查询字符串，它在初始查询中为 NULL，返回前 50 个结果（默认情况下）。
++ `indexes/nycjobs/` 是该服务的索引集合中的“纽约工作岗位”索引。 请求中需同时具备服务名称和索引。
++ `docs` 是包含所有可搜索内容的文档集合。 请求标头中提供的查询 api-key 仅适用于针对文档集合的读取操作。
++ `api-version=2017-11-11` 设置了 api-version（每个请求都需具备此参数）。
++ `search=*` 是查询字符串，此元素在初始查询中为 NULL，返回前 50 个结果（此为默认情况）。
 
 ## <a name="send-your-first-query"></a>发送自己的第一个查询
 
-进行验证，将以下请求粘贴至 GET 并单击“发送”。 结果会以详细的 JSON 文档形式返回。 可以复制粘贴下方第一个示例中的此 URL。
+进行验证，将以下请求粘贴至 GET 并单击“发送”。 结果以详细的 JSON 文档形式返回。 可在下方第一个示例复制粘贴此 URL。
 
   ```http
-  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&search=*
+  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=*
   ```
 
-查询字符串 `search=*` 是一个与 NULL 或空搜索等效的未指定的搜索。 它不是很有用，但它是最简单的搜索。
+查询字符串 `search=*` 是一个未指定的搜索，它与 NULL 或空搜索等效。 它的用处不大，但却是你能执行的最简单的搜索。
 
-可以选择将 `$count=true` 添加到该 URL，以便返回符合搜索条件的文档的计数。 在空搜索字符串上，这就是索引中的文档总数。例如在纽约工作岗位中，数量为 2802。
+可选择将 `$count=true` 添加到 URL，以便返回一个符合搜索条件的文档的计数。 在空搜索字符串上，这就是索引中的所有文档（在“纽约工作岗位”例子中，数量约为 2800）。
 
 ## <a name="how-to-invoke-full-lucene-parsing"></a>如何调用完整 Lucene 分析
 
@@ -79,27 +79,29 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 
 ## <a name="example-1-field-scoped-query"></a>示例 1：字段范围查询
 
-第一个查询演示的不是完整 Lucene 语法（它适用于简单语法和完整语法），不过我们用此示例来引出生成合理可读的 JSON 响应的基线查询概念。 出于简洁目的，该查询仅针对 business_title 字段并指定仅返回职位。 
+第一个示例并未特定于分析器，但我们将先使用它来介绍第一个基本查询概念，即“包含”。 本示例显示查询执行情况以及对几个特定字段的响应。 当你的工具是 Postman 或搜索资源管理器时，了解如何构建可读的 JSON 响应非常重要。 
 
-```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=*
+出于简洁目的，该查询仅针对 business_title 字段并指定仅返回职位。 语法是 searchFields 和 select，前者将查询执行限制为只执行 business_title 字段，后者指定响应中包含哪些字段。
+
+```http
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&search=*
 ```
-
-**searchFields** 参数将搜索限制在 business title 字段范围内。 Select 参数决定结果集中包含哪些字段。
 
 此查询的响应应与以下屏幕截图类似。
 
   ![Postman 示例响应](media/search-query-lucene-examples/postman-sample-results.png)
 
-你可能已经注意到，即使没有指定搜索分数，返回的每个文档也包含搜索分数。 这是因为搜索分数是元数据，它的值指示结果的排名顺序。 当搜索不是全文搜索或者没有要应用的条件时，则不存在排名，统一的搜索分数为 1。 对于 NULL 搜索，没有搜索条件，返回的行是任意顺序。 随着搜索条件带来更多的定义，你会看到搜索分数变为有意义的值。
+你可能已经注意到响应中的搜索分数。 当搜索不是全文搜索或者没有要应用的条件时，则不存在排名，分数统统为 1。 对于不带条件的空搜索，按任意顺序返回行。 包括实际条件时，能看到搜索分数变成有意义的值。
 
-## <a name="example-2-in-field-filtering"></a>示例 2：字段内筛选
+## <a name="example-2-intra-field-filtering"></a>示例 2：字段内筛选
 
 完整 Lucene 语法支持字段内的表达式。 此查询搜索其中带有术语“高级”而非“初级”的 business title：
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:senior+NOT+junior
 ```
+
+  ![Postman 示例响应](media/search-query-lucene-examples/intrafieldfilter.png)
 
 通过指定 fieldname:searchterm 构造，可以定义现场查询操作，该操作的字段是一个词，搜索词也是一个词或短语，并且根据需要使用布尔运算符。 一些示例包括以下内容：
 
@@ -119,6 +121,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:asosiate~
 ```
+  ![模糊搜索响应](media/search-query-lucene-examples/fuzzysearch.png)
 
 对于 [Lucene 文档](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)，模糊搜索基于 [Damerau-Levenshtein 距离](https://en.wikipedia.org/wiki/Damerau%e2%80%93Levenshtein_distance)。
 
@@ -134,6 +137,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:%22senior%20analyst%22~1
 ```
+  ![邻近查询](media/search-query-lucene-examples/proximity-before.png)
 
 再次尝试删除术语“高级分析师”之间的词。 请注意，此查询返回了 8 个文档，而前面的查询中返回了 10 个文档。
 
@@ -149,6 +153,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:computer%20analyst
 ```
+  ![...前提升术语](media/search-query-lucene-examples/termboostingbefore.png)
 
 在“after”查询中，请重试该搜索，如果两个词都不存在，此时会提升包含术语“analyst”而非“computer”的结果。 
 
@@ -156,6 +161,8 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:computer%20analyst%5e2
 ```
 上述查询有一个更能让人理解的版本：`search=business_title:computer analyst^2`。 对于可操作的查询，`^2` 被编码为 `%5E2`，这比较不容易理解。
+
+  ![...后提升术语](media/search-query-lucene-examples/termboostingafter.png)
 
 术语提升不同于计分配置文件，因为计分配置文件提升某些字段，而非特定术语。 以下示例有助于解释这些差异。
 
@@ -173,6 +180,9 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:/(Sen|Jun)ior/
 ```
+
+  ![正则表达式查询](media/search-query-lucene-examples/regex.png)
+
 > [!Note]
 > 不会对正则表达式查询进行[分析](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis)。 对不完整查询字词执行的唯一转换操作是转换为小写。
 >
@@ -180,12 +190,12 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 ## <a name="example-7-wildcard-search"></a>示例 7：通配符搜索
 可将通常可识别的语法用于多个 (\*) 或单个 (?) 字符通配符搜索。 请注意，Lucene 查询分析器支持将这些符号与单个术语一起使用，但不能与短语一起使用。
 
-在此查询中，搜索包含前缀“prog”的作业，这会包含带有术语“编程”和“程序员”的职位。
+在此查询中，搜索包含前缀“prog”的作业，这会包含带有术语“编程”和“程序员”的职位。 不得将 * 或 ? 符号用作搜索的第一个字符。
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:prog*
 ```
-不得将 * 或 ? 符号用作搜索的第一个字符。
+  ![通配符查询](media/search-query-lucene-examples/wildcard.png)
 
 > [!Note]
 > 不会对通配符查询进行[分析](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis)。 对不完整查询字词执行的唯一转换操作是转换为小写。

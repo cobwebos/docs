@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: 321d70a04e3c524e578a01e8531d63733d088c3f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 7704e08246798108aa251c19a4ab0c3baaaad570
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444178"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42145284"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>用于设备和模块孪生、作业和消息路由的 IoT 中心查询语言
 
@@ -309,7 +309,7 @@ WHERE devices.jobs.jobId = 'myJobId'
 
 可使用[设备到云的路由][lnk-devguide-messaging-routes]配置 IoT 中心，以将设备到云的消息分派给不同的终结点。 根据针对各消息计算的表达式进行分派。
 
-在克隆和作业查询中，路由[条件][lnk-query-expressions]使用相同的 IoT 中心查询语言作为条件。 基于消息标题和正文评估路由条件。 路由查询表达式可能只涉及消息标题、只涉及消息正文或同时涉及两者。 为了对消息进行路由，IoT 中心为标头和消息正文采用了特定的架构。 以下各节介绍了 IoT 中心正确进行路由所需满足的要求。
+路由[条件][lnk-query-expressions]使用 IoT 中心查询语言语法作为双查询和作业查询中的条件，但只有一部分函数可用。 基于消息标题和正文评估路由条件。 路由查询表达式可能只涉及消息标题、只涉及消息正文或同时涉及消息标题和正文。 IoT 中心假设标题和消息正文采用特定架构来路由消息，以下部分介绍了 IoT 中心正常路由所需的条件。
 
 ### <a name="routing-on-message-headers"></a>基于消息标题路由
 
@@ -557,13 +557,13 @@ GROUP BY <group_by_element>
 ### <a name="functions"></a>函数
 查询克隆和作业时唯一受支持的函数是：
 
-| 函数 | 说明 |
+| 函数 | Description |
 | -------- | ----------- |
 | IS_DEFINED(property) | 返回一个布尔值，指示是否已向属性分配值（包括 `null`）。 |
 
 在路由情况下，支持以下数学函数：
 
-| 函数 | 说明 |
+| 函数 | Description |
 | -------- | ----------- |
 | ABS(x) | 返回指定数值表达式的绝对（正）值。 |
 | EXP(x) | 返回指定数值表达式 (e^x) 的指数值。 |
@@ -576,7 +576,7 @@ GROUP BY <group_by_element>
 
 在路由情况下，支持以下检查和强制转换类型的函数：
 
-| 函数 | 说明 |
+| 函数 | Description |
 | -------- | ----------- |
 | AS_NUMBER | 将输入字符串转换为数字。 如果输入数字，则为 `noop`；如果字符串不表示数字，则为 `Undefined`。|
 | IS_ARRAY | 返回一个布尔值，指示指定表达式类型是否为数组。 |
@@ -590,7 +590,7 @@ GROUP BY <group_by_element>
 
 在路由情况下，支持以下字符串函数：
 
-| 函数 | 说明 |
+| 函数 | Description |
 | -------- | ----------- |
 | CONCAT(x, y, …) | 返回一个字符串，该字符串是连接两个或多个字符串值的结果。 |
 | LENGTH(x) | 返回指定字符串表达式的字符数。|
