@@ -1,20 +1,8 @@
+---Data title: 通过迁移到 Azure VM 和 Azure SQL 数据库托管实例来重新托管 Contoso 本地应用 | Microsoft Docs description: 了解 Contoso 如何在 Azure VM 上和通过使用 Azure SQL 数据库托管实例重新托管本地应用。
+services: site-recovery author: rayne-wiselman manager: carmonm ms.service: site-recovery ms.topic: conceptual ms.date: 08/13/2018 ms.author: raynew
+
 ---
-title: 通过迁移到 Azure VM 和 Azure SQL 数据库托管实例，重新托管 Contoso 本地应用 | Microsoft Docs
-description: 了解 Contoso 如何在 Azure VM 上和通过使用 Azure SQL 数据库托管实例重新托管本地应用。
-services: site-recovery
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
-ms.topic: conceptual
-ms.date: 07/12/2018
-ms.author: raynew
-ms.openlocfilehash: 3e3f8dffbaa7109423aacdbfbaa658bada8bb84a
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215333"
----
+
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Contoso 迁移：在 Azure VM 和 SQL 数据库托管实例上重新托管本地应用
 
 在本文中，Contoso 使用 Azure Site Recovery 服务将其 SmartHotel 应用前端 VM 迁移到 Azure VM。 Contoso 还将应用数据库迁移到 Azure SQL 数据库托管实例。
@@ -28,7 +16,7 @@ ms.locfileid: "39215333"
 文章 | 详细信息 | 状态
 --- | --- | ---
 [文章 1：概述](contoso-migration-overview.md) | 概述 Contoso 的迁移策略、文章系列和该系列所用的示例应用。 | 可用
-[文章 2：部署 Azure 基础结构](contoso-migration-infrastructure.md) | Contoso 装备其本地基础结构和 Azure 基础结构进行迁移。 此系列所有迁移文章共用同一个基础结构。 | 可用
+[文章 2：部署 Azure 基础结构](contoso-migration-infrastructure.md) | Contoso 准备其本地和 Azure 基础结构进行迁移。 该系列的所有迁移文章共用同一个基础结构。 | 可用
 [文章 3：评估要迁移到 Azure 的本地资源](contoso-migration-assessment.md) | Contoso 评估 VMware 上运行的本地双层 SmartHotel 应用。 Contoso 使用 [Azure Migrate](migrate-overview.md) 服务评估应用 VM。 Contoso 使用[数据迁移助手](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)评估应用 SQL Server 数据库。 | 可用
 文章 4：在 Azure VM 和 SQL 数据库托管实例上重新托管应用 | Contoso 将其本地 SmartHotel 应用直接迁移到 Azure。 Contoso 使用 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) 迁移应用前端 VM。 Contoso 使用 [Azure 数据库迁移服务](https://docs.microsoft.com/azure/dms/dms-overview)将应用数据库迁移到 Azure SQL 数据库托管实例。 | 本文
 [文章 5：在 Azure VM 上重新托管应用](contoso-migration-rehost-vm.md) | Contoso 使用 Site Recovery 服务将其 SmartHotel 应用 VM 迁移到 Azure VM。 | 可用
@@ -94,7 +82,7 @@ Contoso 云团队已确定本次迁移的目标。 公司使用迁移目标确�
 
 服务 | Description | 成本
 --- | --- | ---
-[数据库管理服务](https://docs.microsoft.com/azure/dms/dms-overview) | 使用数据库管理服务可从多个数据库源无缝迁移到 Azure 数据平台，且会尽量缩短停机时间。 | 了解[支持的区域](https://docs.microsoft.com/azure/dms/dms-overview#regional-availability)和[数据库管理服务定价](https://azure.microsoft.com/pricing/details/database-migration/)。
+[数据库迁移服务](https://docs.microsoft.com/azure/dms/dms-overview) | 使用数据库迁移服务可从多个数据库源无缝迁移到 Azure 数据平台，且会尽量缩短停机时间。 | 了解[支持的区域](https://docs.microsoft.com/azure/dms/dms-overview#regional-availability)和[数据库迁移服务定价](https://azure.microsoft.com/pricing/details/database-migration/)。
 [Azure SQL 数据库托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) | 托管实例是一个托管数据库服务，表示 Azure 云中完全托管的 SQL Server 实例。 它与最新版本的 SQL Server 数据库引擎使用相同的代码，并具有最新的功能、性能改进和安全修补。 | 使用 Azure 中运行的 SQL 数据库托管实例会产生容量相关的费用。 详细了解[托管实例定价](https://azure.microsoft.com/pricing/details/sql-database/managed/)。 
 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/) | Site Recovery 服务可安排和管理 Azure VM 以及本地 VM 和物理服务器的迁移和灾难恢复操作。  | 在复制到 Azure 的过程中，会产生 Azure 存储费用。  故障转移时会创建 Azure VM，因此会产生费用。 详细了解 [Site Recovery 费用和定价](https://azure.microsoft.com/pricing/details/site-recovery/)。
 
@@ -117,7 +105,7 @@ Contoso 云团队已确定本次迁移的目标。 公司使用迁移目标确�
 **注册托管实例预览版** | 必须在 SQL 数据库托管实例的受限公共预览版中注册。 需有一个 Azure 订阅才能[注册](https://portal.azure.com#create/Microsoft.SQLManagedInstance)。 注册需要几天时间才能完成，因此请务必在开始部署本方案之前进行注册。
 **Azure 订阅** | 在本系列的第 1 篇文章中执行评估时，应该已创建一个订阅。 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。<br/><br/> 如果创建的是免费帐户，则你是自己的订阅的管理员，可以执行所有操作。<br/><br/> 如果你使用现有订阅并且不是订阅管理员，则需要请求管理员为你分配“所有者”或“参与者”权限。<br/><br/> 如果需要更为细化的权限，请参阅[使用基于角色的访问控制管理 Site Recovery 访问权限](../site-recovery/site-recovery-role-based-linked-access-control.md)。 
 **Site Recovery（本地）** | 本地 vCenter Server 示例应运行版本 5.5、6.0 或 6.5<br/><br/> 运行版本 5.5、6.0 或 6.5 的 ESXi 主机<br/><br/> ESXi 主机上运行的一个或多个 VMware VM。<br/><br/> VM 必须符合 [Azure 要求](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#azure-vm-requirements)。<br/><br/> 支持的[网络](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#network)和[存储](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#storage)配置。
-**数据库管理服务** | 对于数据库管理服务，需要[兼容的本地 VPN 设备](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)。<br/><br/> 必须能够配置本地 VPN 设备。 它必须有一个面向外部的公共 IPv4 地址。 该地址不能位于 NAT 设备之后。<br/><br/> 确保有权访问本地 SQL Server 数据库。<br/><br/> Windows 防火墙应该能够访问源数据库引擎。 了解如何[为数据库引擎访问配置 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。<br/><br/> 如果数据库计算机的前面有防火墙，请添加规则，以允许通过 SMB 端口 445 访问数据库和文件。<br/><br/> 用于连接源 SQL Server 实例和以托管实例为目标的凭据必须是 sysadmin 服务器角色的成员。<br/><br/> 本地数据库中需要一个可供数据库管理服务用来备份源数据库的网络共享。<br/><br/> 确保运行源 SQL Server 实例的服务帐户对该网络共享拥有写入权限。<br/><br/> 记下在该网络共享中拥有完全控制权限的 Windows 用户和密码。 数据库管理服务模拟这些用户凭据，将备份文件上传到 Azure 存储容器。<br/><br/> SQL Server Express 安装过程默认会将 TCP/IP 协议设置为“已禁用”。 请确保已启用该协议。
+**数据库迁移服务** | 对于数据库迁移服务，需要[兼容的本地 VPN 设备](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)。<br/><br/> 必须能够配置本地 VPN 设备。 它必须有一个面向外部的公共 IPv4 地址。 该地址不能位于 NAT 设备之后。<br/><br/> 确保有权访问本地 SQL Server 数据库。<br/><br/> Windows 防火墙应该能够访问源数据库引擎。 了解如何[为数据库引擎访问配置 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。<br/><br/> 如果数据库计算机的前面有防火墙，请添加规则，以允许通过 SMB 端口 445 访问数据库和文件。<br/><br/> 用于连接源 SQL Server 实例和以托管实例为目标的凭据必须是 sysadmin 服务器角色的成员。<br/><br/> 本地数据库中需要一个可供数据库迁移服务用来备份源数据库的网络共享。<br/><br/> 确保运行源 SQL Server 实例的服务帐户对该网络共享拥有写入权限。<br/><br/> 记下在该网络共享中拥有完全控制权限的 Windows 用户和密码。 数据库迁移服务模拟这些用户凭据，将备份文件上传到 Azure 存储容器。<br/><br/> SQL Server Express 安装过程默认会将 TCP/IP 协议设置为“已禁用”。 请确保已启用该协议。
 
 ## <a name="scenario-steps"></a>方案步骤
 
@@ -125,11 +113,11 @@ Contoso 计划按以下流程设置部署：
 
 > [!div class="checklist"]
 > * **步骤 1：设置 SQL 数据库托管实例**：Contoso 需要预创建一个托管实例，以便将本地 SQL Server 数据库迁移到其中。
-> * **步骤 2：准备数据库管理服务**：Contoso 必须注册数据库迁移提供程序，创建实例，然后创建一个数据库管理服务项目。 Contoso 还必须为数据库管理服务设置共享访问签名 (SAS) 统一资源标识符 (URI)。 SAS URI 提供对 Contoso 存储帐户中资源的委托访问，因此 Contoso 可以向存储对象授予有限的权限。 Contoso 设置 SAS URI，因此数据库管理服务可以访问该服务上传 SQL Server 备份文件的存储帐户容器。
+> * **步骤 2：准备数据库迁移服务**：Contoso 必须注册数据库迁移提供程序，创建实例，然后创建一个数据库迁移服务项目。 Contoso 还必须为数据库迁移服务设置共享访问签名 (SAS) 统一资源标识符 (URI)。 SAS URI 提供对 Contoso 存储帐户中资源的委托访问，因此 Contoso 可以向存储对象授予有限的权限。 Contoso 设置 SAS URI，因此数据库迁移服务可以访问该服务上传 SQL Server 备份文件的存储帐户容器。
 > * **步骤 3：为 Site Recovery 准备 Azure**：Contoso 必须创建一个存储帐户为 Site Recovery 保存复制数据。 它还必须创建 Azure 恢复服务保管库。
 > * **步骤 4：为 Site Recovery 准备本地 VMware**：Contoso 将准备帐户用来发现 VM 和安装代理，以在故障转移后连接 Azure VM。
 > * **步骤 5：复制 VM**：为了设置复制，Contoso 配置 Site Recovery 源和目标环境、设置复制策略，并开始将 VM 复制到 Azure 存储。
-> * **步骤 6：通过使用数据库管理服务迁移数据库**：Contoso 迁移数据库。
+> * **步骤 6：通过使用数据库迁移服务迁移数据库**：Contoso 迁移数据库。
 > * **步骤 7：通过使用 Site Recovery 迁移 VM**：Contoso 运行测试故障转移，确保一切正常工作。 然后，Contoso 运行完整故障转移将 VM 迁移到 Azure。
 
 ## <a name="step-1-prepare-a-sql-database-managed-instance"></a>步骤 1：准备 SQL 数据库托管实例
@@ -229,36 +217,36 @@ Contoso 现可预配 SQL 数据库托管实例：
 
 了解如何[预配托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-create-tutorial-portal)。
 
-## <a name="step-2-prepare-the-database-management-service"></a>步骤 2：准备数据库管理服务
+## <a name="step-2-prepare-the-database-migration-service"></a>步骤 2：准备数据库迁移服务
 
-若要准备数据库管理服务，Contoso 需要执行一些操作：
+若要准备数据库迁移服务，Contoso 需要执行一些操作：
 
-- 在 Azure 中注册数据库管理服务提供程序。
-- 为数据库管理服务提供对 Azure 存储的访问权限，以便上传用于迁移数据库的备份文件。 为了提供对 Azure 存储的访问权限，Contoso 创建了一个 Azure Blob 存储容器。 Contoso 为 Blob 存储容器生成 SAS URI。 
-- 创建数据库管理服务项目。
+- 在 Azure 中注册数据库迁移服务提供程序。
+- 为数据库迁移服务提供对 Azure 存储的访问权限，以便上传用于迁移数据库的备份文件。 为了提供对 Azure 存储的访问权限，Contoso 创建了一个 Azure Blob 存储容器。 Contoso 为 Blob 存储容器生成 SAS URI。 
+- 创建数据库迁移服务项目。
 
 然后，Contoso 完成以下步骤：
 
 1. Contoso 在其订阅下注册数据库迁移提供程序。
-    ![数据库管理服务 - 注册](media/contoso-migration-rehost-vm-sql-managed-instance/dms-subscription.png)
+    ![数据库迁移服务 - 注册](media/contoso-migration-rehost-vm-sql-managed-instance/dms-subscription.png)
 
-2. Contoso 创建 Blob 存储容器。 Contoso 生成 SAS URI，以便数据库管理服务可以访问它。
+2. Contoso 创建 Blob 存储容器。 Contoso 生成 SAS URI，以便数据库迁移服务可以访问它。
 
-    ![数据库管理服务 - 生成 SAS URI](media/contoso-migration-rehost-vm-sql-managed-instance/dms-sas.png)
+    ![数据库迁移服务 - 生成 SAS URI](media/contoso-migration-rehost-vm-sql-managed-instance/dms-sas.png)
 
-3. Contoso 创建数据库管理服务实例。 
+3. Contoso 创建数据库迁移服务实例。 
 
-    ![数据库管理服务 - 创建实例](media/contoso-migration-rehost-vm-sql-managed-instance/dms-instance.png)
+    ![数据库迁移服务 - 创建实例](media/contoso-migration-rehost-vm-sql-managed-instance/dms-instance.png)
 
-4. Contoso 将数据库管理服务实例置于 VNET-PROD-DC-EUS2 虚拟网络的 PROD-DC-EUS2 子网中。
-    - Contoso 将数据库管理服务置于该位置，因为该服务必须位于可以通过 VPN 网关访问本地 SQL Server VM 的虚拟网络中。
-    - VNET-PROD-EUS2 与 VNET-HUB-EUS2 对等互连，且可使用远程网关。 “使用远程网关”选项可确保数据库管理服务能够按需进行通信。
+4. Contoso 将数据库迁移服务实例置于 **VNET-PROD-DC-EUS2** 虚拟网络的 **PROD-DC-EUS2** 子网中。
+    - Contoso 将数据库迁移服务置于该位置，因为该服务必须位于可以通过 VPN 网关访问本地 SQL Server VM 的虚拟网络中。
+    - VNET-PROD-EUS2 与 VNET-HUB-EUS2 对等互连，且可使用远程网关。 “使用远程网关”选项可确保数据库迁移服务能够按需进行通信。
 
-        ![数据库管理服务 - 配置网络](media/contoso-migration-rehost-vm-sql-managed-instance/dms-network.png)
+        ![数据库迁移服务 - 配置网络](media/contoso-migration-rehost-vm-sql-managed-instance/dms-network.png)
 
 *需要更多帮助？*
 
-- 了解如何[设置数据库管理服务](https://docs.microsoft.com/azure/dms/quickstart-create-data-migration-service-portal)。
+- 了解如何[设置数据库迁移服务](https://docs.microsoft.com/azure/dms/quickstart-create-data-migration-service-portal)。
 - 了解如何[创建和使用 SAS](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)。
 
 
@@ -451,15 +439,15 @@ Contoso 现可开始复制 WebVM。
 
 有关上述步骤的完整演练，可参阅[启用复制](https://docs.microsoft.com/azure/site-recovery/vmware-azure-enable-replication)。
 
-## <a name="step-6-migrate-the-database-by-using-the-database-management-service"></a>步骤 6：通过使用数据库管理服务迁移数据库
+## <a name="step-6-migrate-the-database-by-using-the-database-migration-service"></a>步骤 6：使用数据库迁移服务迁移数据库
 
-Contoso 需要先创建一个数据库管理服务项目，然后迁移数据库。
+Contoso 需要先创建一个数据库迁移服务项目，然后迁移数据库。
 
-### <a name="create-a-database-management-service-project"></a>创建数据库管理服务项目
+### <a name="create-a-database-migration-service-project"></a>创建数据库迁移服务项目
 
-1. Contoso 创建数据库管理服务项目。 Contoso 选择“SQL Server”源服务器类型。 Contoso 选择“Azure SQL 数据库托管实例”作为目标。
+1. Contoso 创建数据库迁移服务项目。 Contoso 选择“SQL Server”源服务器类型。 Contoso 选择“Azure SQL 数据库托管实例”作为目标。
 
-     ![数据库管理服务 - 新迁移项目](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-project.png)
+     ![数据库迁移服务 - 新建迁移项目](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-project.png)
 
 2. 迁移向导随即打开。
 
@@ -467,34 +455,34 @@ Contoso 需要先创建一个数据库管理服务项目，然后迁移数据库
 
 1. 在迁移向导中，Contoso 指定本地数据库所在的源 VM。 Contoso 输入凭据以访问数据库。
 
-    ![数据库管理服务 - 源详细信息](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-wizard-source.png)
+    ![数据库迁移服务 - 源详细信息](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-wizard-source.png)
 
 2. Contoso 选择要迁移的数据库 (SmartHotel.Registration)：
 
-    ![数据库管理服务 - 选择源数据库](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-wizard-sourcedb.png)
+    ![数据库迁移服务 - 选择源数据库](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-wizard-sourcedb.png)
 
 3. 对于目标，Contoso 在 Azure 中输入托管实例的名称。 Contoso 输入托管实例的访问凭据。
 
-    ![数据库管理服务 - 目标详细信息](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-target-details.png)
+    ![数据库迁移服务 - 目标详细信息](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-target-details.png)
 
 4. 在“新建活动” > “运行迁移”中，Contoso 指定以下设置以运行迁移：
     - 源和目标凭据。
     - 要迁移的数据库。
-    - Contoso 在本地 VM 上创建的网络共享。 数据库管理服务将源备份到此共享。 
+    - Contoso 在本地 VM 上创建的网络共享。 数据库迁移服务将源备份到此共享。 
         - 运行源 SQL Server 实例的服务帐户必须具有此共享的写权限。
         - 必须使用共享的 FQDN 路径。
-    - 为数据库管理服务提供存储帐户容器访问权限的 SAS URI，服务将备份文件上载到该容器以进行迁移。
+    - 为数据库迁移服务提供存储帐户容器访问权限的 SAS URI，服务将备份文件上传到该容器以进行迁移。
 
-        ![数据库管理服务 - 配置迁移设置](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-migration-settings.png)
+        ![数据库迁移服务 - 配置迁移设置](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-migration-settings.png)
 
 5. Contoso 保存迁移，然后运行它。
 6. 在“概述”中，Contoso 监视迁移状态。
 
-    ![数据库管理服务 - 监视](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-monitor1.png)
+    ![数据库迁移服务 - 监视](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-monitor1.png)
 
 7. 完成迁移后，Contoso 验证托管实例上是否存在该目标数据库。
 
-    ![数据库管理服务 - 验证数据库迁移](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-monitor2.png)
+    ![数据库迁移服务 - 验证数据库迁移](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-monitor2.png)
 
 ## <a name="step-7-migrate-the-vm-by-using-site-recovery"></a>步骤 7：通过使用 Site Recovery 迁移 VM
 
@@ -568,7 +556,7 @@ Contoso 运行快速测试故障转移，然后迁移 VM。
 
 Azure 中存在已迁移的资源后，Contoso 需要全面运营并保护其新基础设施。
 
-### <a name="security"></a>“安全”
+### <a name="security"></a>安全
 
 Contoso 安全团队会审查 Azure VM 和 SQL 数据库托管实例，检查实施方面是否存在任何安全问题：
 
@@ -592,7 +580,7 @@ Contoso 使用 Azure 备份服务来备份 WEBVM 上的数据。 详细了解 [A
 
 ## <a name="conclusion"></a>结束语
 
-在本文中，Contoso 通过使用 Site Recovery 服务将应用前端 VM 迁移到 Azure，在 Azure 中重新托管 SmartHotel 应用。 Contoso 使用 Azure 数据库管理服务将本地数据库迁移到 Azure SQL 数据库托管实例。
+在本文中，Contoso 通过使用 Site Recovery 服务将应用前端 VM 迁移到 Azure，在 Azure 中重新托管 SmartHotel 应用。 Contoso 使用 Azure 数据库迁移服务将本地数据库迁移到 Azure SQL 数据库托管实例。
 
 ## <a name="next-steps"></a>后续步骤
 
