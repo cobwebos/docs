@@ -1,6 +1,6 @@
 ---
-title: Azure Database for MySQL 服务器 vnet 服务终结点概述 | Microsoft Docs
-description: 介绍了 vnet 服务终结点如何为 Azure Database for MySQL 服务器工作。
+title: Azure Database for MySQL 服务器 VNet 服务终结点概述 | Microsoft Docs
+description: 介绍了 VNet 服务终结点如何为 Azure Database for MySQL 服务器工作。
 services: mysql
 author: mbolz
 ms.author: mbolz
@@ -8,13 +8,13 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 5/29/2018
-ms.openlocfilehash: 652657c8891f2320c026251ffa32e4787028ee18
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 08/20/2018
+ms.openlocfilehash: f18f52fc409df769d164607a128caaf02ead5e4b
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658994"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42145351"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>对 Azure Database for MySQL 使用虚拟网络服务终结点和规则
 
@@ -25,7 +25,7 @@ ms.locfileid: "34658994"
 ![VNet 服务终结点的工作原理示例](media/concepts-data-access-and-security-vnet/vnet-concept.png)
 
 > [!NOTE]
-> 对于 Azure Database for MySQL 来说，此功能在所有部署了 Azure Database for MySQL 的 Azure 公有云区域中都以公共预览版提供。
+> Azure 中的所有区域均提供此功能，其中 Azure Database for MySQL 部署用于常规用途和内存优化服务器。
 
 <a name="anch-terminology-and-description-82f" />
 
@@ -33,7 +33,7 @@ ms.locfileid: "34658994"
 
 虚拟网络：可以让虚拟网络与 Azure 订阅相关联。
 
-**子网:** 虚拟网络包含子网。 你所拥有的任何 Azure 虚拟机 (VM) 都会分配到子网。 一个子网可能包含多个 VM 或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
+子网：虚拟网络包含子网。 你所拥有的任何 Azure 虚拟机 (VM) 都会分配到子网。 一个子网可能包含多个 VM 或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
 
 虚拟网络服务终结点：[虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d]是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 本文介绍 **Microsoft.Sql** 的类型名称，即名为“SQL 数据库”的 Azure 服务。 此服务标记也适用于 Azure Database for MySQL 和 PostgreSQL 服务。 务必要注意的一点是，将 **Microsoft.Sql** 服务标记应用到 VNet 服务终结点时，它将为子网上的所有 Azure SQL 数据库、Azure Database for MySQL 和 Azure Database for PostgreSQL 服务器配置服务终结点流量。 
 
@@ -69,7 +69,7 @@ ms.locfileid: "34658994"
 
 如果 **Microsoft.Sql** 服务器是虚拟网络子网上的一个节点，则该虚拟网络中的所有节点都可以与 Azure Database for MySQL 服务器通信。 在这种情况下，VM 可以与 Azure Database for MySQL 通信，而不需要任何虚拟网络规则或 IP 规则。
 
-但截至 2018 年 5 月，Azure Database for MySQL 服务仍然无法直接分配给子网。
+但截至 2018 年 8 月，Azure Database for MySQL 服务仍然无法直接分配给子网。
 
 <a name="anch-details-about-vnet-rules-38q" />
 
@@ -117,8 +117,6 @@ RBAC 备用：
 
 - 使用 **Microsoft.Sql** 服务标记为 Azure Database for MySQL 启用虚拟网络服务终结点也会为所有 Azure 数据库服务（Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL 数据库和 Azure SQL 数据仓库）启用终结点。
 
-- 在公共预览版期间，不支持 VNet 移动操作。 若要移动虚拟网络规则，请删除并重新创建它。
-
 - 只有常规用途和内存优化服务器才支持 VNet 服务终结点。
 
 - 在防火墙上，IP 地址范围适用于以下网络项，但虚拟网络规则并不适用：
@@ -130,6 +128,12 @@ RBAC 备用：
 如果网络通过使用 [ ExpressRoute ][expressroute-indexmd-744v] 连接到 Azure 网络，则每个线路在 Microsoft Edge 配置有两个公共 IP 地址。 这两个 IP 地址用于通过使用 Azure 公共对等互连连接到 Azure 存储等 Microsoft 服务。
 
 若要允许从线路到 Azure Database for MySQL 的通信，必须为线路的公共 IP 地址创建 IP 网络规则。 为查找 ExpressRoute 线路的公共 IP 地址，请使用 Azure 门户开具 ExpressRoute 支持票证。
+
+## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>在未打开 VNET 服务终结点的情况下，将 VNET 防火墙规则添加到服务器
+
+仅设置防火墙规则无助于保护连接到 VNet 的服务器。 还必须打开 VNet 服务终结点才能确保安全。 打开服务终结点后，VNet 子网会出现停机，直到它从“关”的状态变成了“开”。 这在大型 VNet 的上下文中尤其如此。 可以使用 **IgnoreMissingServiceEndpoint** 标志，减少或消除转换期间的停机时间。
+
+可使用 Azure CLI 或门户设置 IgnoreMissingServiceEndpoint 标志。
 
 ## <a name="related-articles"></a>相关文章
 - [Azure 虚拟网络][vm-virtual-network-overview]

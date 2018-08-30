@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fdf5685ad8072175bdabf8938ef293bed6f5cc13
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: e7ad93cbfd096cacadaef8666b0ea5b31d7fd992
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39075195"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918795"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>部署适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 的注意事项
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -49,7 +49,7 @@ ms.locfileid: "39075195"
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-本指南是介绍如何在 Microsoft Azure 上实施和部署 SAP 软件的文档的一部分。 阅读本指南之前，请先阅读[规划和实施指南][planning-guide]。 本文介绍使用 Azure 服务架构 (IaaS) 功能在 Microsoft Azure 虚拟机 (VM) 上部署 SAP 相关 DBMS 系统时通用的各方面内容。
+本指南是介绍如何在 Microsoft Azure 上实施和部署 SAP 软件的文档的一部分。 阅读本指南之前，请先阅读[规划和实施指南][planning-guide]。 本文介绍使用 Azure 基础结构即服务 (IaaS) 功能在 Microsoft Azure 虚拟机 (VM) 上部署 SAP 相关 DBMS 系统时通用的各方面内容。
 
 本文是对 SAP 安装文档和 SAP 说明的补充，这些文档代表在给定平台上安装和部署 SAP 软件的主要资源。
 
@@ -58,7 +58,7 @@ ms.locfileid: "39075195"
 ## <a name="definitions-upfront"></a>定义预释
 整个文档使用以下术语：
 
-* IaaS：服务架构。
+* IaaS：基础结构即服务。
 * PaaS：平台即服务。
 * SaaS：软件即服务。
 * SAP 组件：单个 SAP 应用程序，例如 ECC、BW、Solution Manager 或 EP。  SAP 组件可以基于传统的 ABAP 或 Java 技术，也可以是不基于 NetWeaver 的应用程序，例如业务对象。
@@ -263,7 +263,7 @@ Azure 平台提供 VM 的不同 SLA。 有关详细信息，可在[虚拟机的 
 
 
 ## <a name="azure-network-considerations"></a>Azure 网络注意事项 
-在大型 SAP 部署中，建议使用 [Azure 虚拟数据中心](https://docs.microsoft.com/azure/networking/networking-virtual-datacenter)的蓝图用于 VNet 配置以及向其组织的不同部分分配权限和角色。
+在大型 SAP 部署中，建议使用 [Azure 虚拟数据中心](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter)的蓝图用于 VNet 配置以及向其组织的不同部分分配权限和角色。
 
 数百个客户部署产生了一系列最佳做法：
 

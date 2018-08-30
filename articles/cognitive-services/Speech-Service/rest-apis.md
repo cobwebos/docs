@@ -8,12 +8,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 9991e0a1fc54e6aa4a99b8bfbd93abdfe974b01b
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 64dce26303c0e700da54d371af5cb275b1613d70
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283063"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122097"
 ---
 # <a name="speech-service-rest-apis"></a>语音服务 REST API
 
@@ -23,7 +23,7 @@ ms.locfileid: "39283063"
 
 在语音转文本 API 中，只有所用的终结点与旧版语音服务语音识别 API 不同。 新的终结点如下表所示。 使用与订阅区域匹配的终结点。
 
-[!include[](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
 除此以外，语音转文本 API 与旧版语音 API 的 [REST API](https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedrest) 非常类似。
 
@@ -54,7 +54,7 @@ en-US  | 美式英语 | 男   | “Microsoft 服务器语音的文本转语音�
 
 下面是统一语音服务文本转语音 API 的 REST 终结点。 请使用与订阅区域匹配的终结点。
 
-[!include[](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
 在参考介绍旧版语音 API 的 [REST API 文档](https://docs.microsoft.com/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput)时，请牢记这些差异。
 
@@ -62,7 +62,7 @@ en-US  | 美式英语 | 男   | “Microsoft 服务器语音的文本转语音�
 
 需具备访问令牌才能请求语音服务的 REST API。 可通过向区域语音服务 `issueToken` 终结点提供订阅密钥获取令牌，如下表所示。 请使用与订阅区域匹配的终结点。
 
-[!include[](../../../includes/cognitive-services-speech-service-endpoints-token-service.md)]
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-token-service.md)]
 
 每个访问令牌的有效期为 10 分钟。 可随时获取新令牌，包括在每个语音 REST API 请求之前获取（如果需要）。 但是，为了最大限度地减少流量和延迟，建议同一个令牌使用 9 分钟。
 

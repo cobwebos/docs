@@ -4,18 +4,17 @@ description: 了解如何使用针对 Visual Studio 的 Azure Data Lake 工具�
 services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 11/27/2017
-ms.openlocfilehash: 1dbcf9b88af7777a1103876a429ccc26450e2f58
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e4eea3cb4b16460c7e17bb6575c4e6cf8dda5a0a
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623404"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047248"
 ---
 # <a name="export-a-u-sql-database"></a>导出 U-SQL 数据库
 
@@ -52,7 +51,7 @@ ms.locfileid: "34623404"
 
 还可以配置导出目标的其他设置。 下表列出了配置说明：
 
-|配置|说明|
+|配置|Description|
 |-------------|-----------|
 |目标名称|此名称指示要将导出的数据库资源保存到的位置。 这些资源的示例包括程序集、附加文件和示例数据。 将在本地数据根文件夹下创建使用此名称的文件夹。|
 |项目目录|此路径定义要将导出的 U-SQL 脚本保存到的位置。 所有数据库对象定义都保存在此位置。|

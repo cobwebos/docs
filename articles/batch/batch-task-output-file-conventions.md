@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4d86a8fcd1dc85ccacea91afe36cb39dabe10464
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 0b4ff1799f77581452859d1dbc0e6e9cc47062e4
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39117157"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128043"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>使用适用于 .NET 的 Batch 文件约定库将作业和任务数据保存到 Azure 存储 
 
@@ -49,7 +49,7 @@ Azure Batch 提供多种方式来保存任务输出。 文件约定最适合以�
 
 ## <a name="what-is-the-batch-file-conventions-standard"></a>什么是 Batch 文件约定标准？
 
-[Batch 文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions)为输出文件要写入到的目标容器和 Blob 路径提供命名方案。 可在 Azure 门户中查看 Azure 存储中保存的、遵守文件约定标准的文件。 门户可以识别命名约定，因此可以显示遵守该约定的文件。
+[Batch 文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)为输出文件要写入到的目标容器和 Blob 路径提供命名方案。 可在 Azure 门户中查看 Azure 存储中保存的、遵守文件约定标准的文件。 门户可以识别命名约定，因此可以显示遵守该约定的文件。
 
 适用于 .NET 的文件约定库根据文件约定标准，自动为存储容器和任务输出文件命名。 文件约定库还提供根据作业 ID、任务 ID 或用途在 Azure 存储中查询输出文件的方法。   
 
@@ -201,7 +201,7 @@ foreach (CloudTask task in myJob.ListTasks())
 
 ## <a name="view-output-files-in-the-azure-portal"></a>在 Azure 门户中查看输出文件
 
-Azure 门户将显示使用 [Batch 文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions)保存到链接的 Azure 存储帐户的任务输出文件和日志。 可以使用所选的语言自行实现这些约定，或者在 .NET 应用程序中使用文件约定库。
+Azure 门户将显示使用 [Batch 文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)保存到链接的 Azure 存储帐户的任务输出文件和日志。 可以使用所选的语言自行实现这些约定，或者在 .NET 应用程序中使用文件约定库。
 
 若要在门户中显示输出文件，必须满足以下要求：
 

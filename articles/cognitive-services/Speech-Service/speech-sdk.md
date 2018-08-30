@@ -9,20 +9,20 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 6b5796bf4d049579dbdede2251f2ca67cc9c4bfd
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: c26aeb1d29c3b2c8b5b43d1a1face818295e9d2f
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41929961"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122076"
 ---
 # <a name="about-the-cognitive-services-speech-sdk"></a>关于认知服务语音 SDK
 
 使用认知服务语音软件开发工具包 (SDK)，应用程序可以直接访问语音服务的功能，这使得软件开发工作更为容易。 当前，该 SDK 提供了对**语音到文本**、**语音翻译**和**意向识别**功能的访问。
 
-[!include[Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
+[!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
-[!include[License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
+[!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
 ## <a name="get-the-sdk"></a>获取 SDK
 
@@ -61,7 +61,7 @@ sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2
 
 * C++：将 SDK 下载为 [.tar 包](https://aka.ms/csspeech/linuxbinary)并将文件解压缩到你选择的一个目录中。 下表显示了 SDK 文件夹结构。
 
-  |路径|说明|
+  |路径|Description|
   |-|-|
   |`license.md`|许可|
   |`ThirdPartyNotices.md`|第三方声明|
@@ -91,7 +91,7 @@ sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2
 
 Java SDK 也是[语音设备 SDK](speech-devices-sdk.md) 的一部分。
 
-[!include[Get the samples](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+[!INCLUDE [Get the samples](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

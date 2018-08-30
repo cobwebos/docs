@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: b15d4980875b805b49f7dc1cdb941e607232f3cb
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: e17a9275792e3a7fdbea6e3b95e596eaa15f4359
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34258033"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43105805"
 ---
 # <a name="using-applications-in-azure-blockchain-workbench"></a>在 Azure Blockchain Workbench 中使用应用程序
 
@@ -24,7 +24,7 @@ ms.locfileid: "34258033"
 ## <a name="prerequisites"></a>先决条件
 
 * Blockchain Workbench 部署。 有关部署的详细信息，请参阅 [Azure Blockchain Workbench 部署](blockchain-workbench-deploy.md)
-* Blockchain Workbench 中部署的区块链应用程序。 请参阅 [在 Azure Blockchain Workbench 中创建区块链应用程序]()
+* Blockchain Workbench 中部署的区块链应用程序。 请参阅 [在 Azure Blockchain Workbench 中创建区块链应用程序](blockchain-workbench-create-app.md)
 
 在浏览器中[打开 Blockchain Workbench](blockchain-workbench-deploy.md#blockchain-workbench-web-url)。
 
@@ -59,7 +59,7 @@ ms.locfileid: "34258033"
 
     ![合同详细信息](media/blockchain-workbench-use/contract-details.png)
 
-    | 部分  | 说明  |
+    | 部分  | Description  |
     |---------|---------|
     | 状态 | 列出合同各阶段的当前进度 |
     | 详细信息 | 合同的当前值 |

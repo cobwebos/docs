@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/22/2018
 ms.author: raynew
-ms.openlocfilehash: 23cf9430f82be860cb9acbfac42163f9243b2d0f
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: a734999f0fa473b5f1ee8ed55c4b73950566490d
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42141027"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188767"
 ---
 # <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>使用 SQL Server 灾难恢复和 Azure Site Recovery 来保护 SQL Server
 
@@ -83,7 +83,6 @@ Site Recovery 可与表中汇总的本机 SQL Server BCDR 技术集成，以提�
 
 * 运行受支持 SQL Server 版本的本地 SQL Server 部署。 通常还需要为 SQL Server 安装 Active Directory。
 * 要部署的方案所要满足的要求。 详细了解有关[复制到 Azure](site-recovery-support-matrix-to-azure.md) 和[本地](site-recovery-support-matrix.md)的支持要求以及[部署先决条件](site-recovery-prereq.md)。
-* 若要在 Azure 中设置恢复，请在 SQL Server 虚拟机上运行 [Azure 虚拟机准备情况评估](http://www.microsoft.com/download/details.aspx?id=40898)工具，确保虚拟机与 Azure 和 Site Recovery 兼容。
 
 ## <a name="set-up-active-directory"></a>设置 Active Directory
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: b84de7475c54d2bc35dcc10b0bbfb0c1839c5631
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 261f8dfe41ece0cd56a4a71972e3142ef8440afb
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522129"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918103"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 文件同步
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -25,7 +25,7 @@ ms.locfileid: "39522129"
     - Azure 文件同步的[适用地区](storage-sync-files-planning.md#region-availability)。
     - [创建存储帐户](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)，了解创建存储帐户的分步说明。
     - [创建文件共享](storage-how-to-create-file-share.md)，了解创建文件共享的分步说明。
-* 至少一个支持与 Azure 文件同步进行同步的 Windows Server 实例或 Windows Server 群集。有关支持的 Windows Server 版本的详细信息，请参阅 [Windows Server 的互操作性](storage-sync-files-planning.md#azure-file-sync-interoperability)。
+* 至少一个支持与 Azure 文件同步进行同步的 Windows Server 实例或 Windows Server 群集。有关支持的 Windows Server 版本的详细信息，请参阅 [Windows Server 的互操作性](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability)。
 * 确保已在 Windows Server 上安装 PowerShell 5.1。 如果使用的是 Windows Server 2012 R2，请确保至少运行 PowerShell 5.1.\*。 由于 PowerShell 5.1 是现成的默认版本，因此你可以在 Windows Server 2016 上安全地跳过此检查。 在 Windows Server 2012 R2 上，可通过查看 $PSVersionTable 对象的“PSVersion”属性值来验证是否正在运行 PowerShell 5.1.\*：
 
     ```PowerShell

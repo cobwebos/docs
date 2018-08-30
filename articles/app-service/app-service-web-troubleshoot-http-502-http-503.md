@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 397a6aaf7dc27adfa0fc0e722b8a2be5cc1d75f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b1ffc80994244fc44e3cd23cbb05b14e6f878ddb
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22986252"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125796"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-your-azure-web-apps"></a>排查 Azure Web 应用中的“502 错误的网关”和“503 服务不可用”HTTP 错误
 [Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)中托管的 Web 应用经常出现“502 错误的网关”和“503 服务不可用”错误。 本文将帮助你排查这些错误。
@@ -45,7 +45,7 @@ ms.locfileid: "22986252"
 2. [收集数据](#collect)
 3. [缓解问题](#mitigate)
 
-[应用服务 Web 应用](/services/app-service/web/)为每个步骤提供了多种选项。
+[应用服务 Web 应用](app-service-web-overview.md)为每个步骤提供了多种选项。
 
 <a name="observe" />
 
@@ -62,7 +62,7 @@ ms.locfileid: "22986252"
 * 平均响应时间
 * CPU 时间
 * 内存工作集
-* 请求
+* Requests
 
 ![监视 Web 应用以解决 HTTP 错误“502 错误的网关”和“503 服务不可用”](./media/app-service-web-troubleshoot-HTTP-502-503/1-monitor-metrics.png)
 
@@ -129,5 +129,5 @@ AutoHeal 会根据所选设置（例如配置更改、请求、基于内存的�
 
  ![重新启动应用以解决 HTTP 错误“502 错误的网关”和“503 服务不可用”](./media/app-service-web-troubleshoot-HTTP-502-503/2-restart.png)
 
-还可以使用 Azure Powershell 管理 Web 应用。 有关详细信息，请参阅[将 Azure PowerShell 与 Azure Resource Manager 配合使用](../powershell-azure-resource-manager.md)。
+还可以使用 Azure Powershell 管理 Web 应用。 有关详细信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../powershell-azure-resource-manager.md)。
 

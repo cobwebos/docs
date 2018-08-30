@@ -5,17 +5,17 @@ keywords: hiveql,什么是 hive,hadoop hiveql,如何使用 hive,了解 hive,hive
 services: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 0ca968c0412396852e531af3b37f6675e0b519db
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 446bb23e15d908c8afe189a33e4d8a70faad284a
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39596654"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126631"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？
 
@@ -222,7 +222,7 @@ HDInsight 在交互式查询群集类型中提供 LLAP。 有关详细信息，�
 
 ### <a name="azure-data-factory"></a>Azure 数据工厂
 
-Azure 数据工厂允许将 HDInsight 用作数据工厂管道的一部分。 有关通过管道使用 Hive 的详细信息，请参阅[在 Azure 数据工厂中使用 Hive 活动转换数据](/data-factory/transform-data-using-hadoop-hive.md)文档。
+Azure 数据工厂允许将 HDInsight 用作数据工厂管道的一部分。 有关通过管道使用 Hive 的详细信息，请参阅[在 Azure 数据工厂中使用 Hive 活动转换数据](../../data-factory/transform-data-using-hadoop-hive.md)文档。
 
 ### <a name="hive-jobs-and-sql-server-integration-services"></a>Hive 作业和 SQL Server Integration Services
 

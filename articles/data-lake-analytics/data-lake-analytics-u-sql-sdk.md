@@ -5,16 +5,15 @@ services: data-lake-analytics
 ms.service: data-lake-analytics
 author: yanacai
 ms.author: yanacai
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
-ms.openlocfilehash: 11a2bfdcda09a071667cc034ef1ff42794b73a33
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: ae5334dcb93e34569131ab51dca99c310831082d
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737065"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43052081"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>使用 Azure Data Lake U-SQL SDK 运行和测试 U-SQL
 
@@ -64,7 +63,7 @@ Data Lake U-SQL SDK 需要以下依赖项：
 
 本地运行 U-SQL 脚本时，在编译期间，会在当前运行目录下创建一个工作目录。 除编译输出外，本地执行所需的运行时文件也以卷影形式复制到此工作目录。 工作目录根文件夹名为“ScopeWorkDir”，该工作目录下的文件如下所示：
 
-|目录/文件|目录/文件|目录/文件|定义|说明|
+|目录/文件|目录/文件|目录/文件|定义|Description|
 |--------------|--------------|--------------|----------|-----------|
 |C6A101DDCB470506| | |运行时版本的哈希字符串|本地执行所需的运行时文件卷影副本|
 | |Script_66AE4909AA0ED06C| |脚本名称 + 脚本路径的哈希字符串|编译输出和执行步骤日志记录|
@@ -138,7 +137,7 @@ U-SQL 本地运行需要指定的数据根作为本地存储帐户，还需要�
 以下是 **run** 的可选参数：
 
 
-|参数|默认值|说明|
+|参数|默认值|Description|
 |--------|-------------|-----------|
 |-CodeBehind|False|该脚本具有 .cs 代码隐藏|
 |-CppSDK| |CppSDK 目录|
@@ -170,7 +169,7 @@ U-SQL 本地运行需要指定的数据根作为本地存储帐户，还需要�
 以下是用于 **compile** 的可选参数：
 
 
-|参数|说明|
+|参数|Description|
 |--------|-----------|
 | -CodeBehind [default value 'False']|该脚本具有 .cs 代码隐藏|
 | -CppSDK [default value '']|CppSDK 目录|
@@ -208,7 +207,7 @@ U-SQL 本地运行需要指定的数据根作为本地存储帐户，还需要�
 
 以下是用于 **execute** 的可选参数：
 
-|参数|默认值|说明|
+|参数|默认值|Description|
 |--------|-------------|-----------|
 |-DataRoot | '' |元数据执行的数据根。 默认为 **LOCALRUN_DATAROOT** 环境变量。|
 |-MessageOut | '' |将控制台上的消息转储到文件。|
@@ -333,13 +332,13 @@ LocalRunHelper.exe 为 U-SQL 本地编译和运行等提供编程接口。以下
 
 public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 
-|参数|Type|说明|
+|参数|Type|Description|
 |---------|----|-----------|
 |messageOutput|System.IO.TextWriter|对于输出消息，设置为 null 以使用控制台|
 
 **属性**
 
-|属性|Type|说明|
+|属性|Type|Description|
 |--------|----|-----------|
 |AlgebraPath|字符串|代数文件的路径（代数文件是某个编译结果）|
 |CodeBehindReferences|字符串|如果脚本有额外的代码隐藏引用，请指定用“;”分隔的路径|
@@ -365,7 +364,7 @@ public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 
 **方法**
 
-|方法|说明|返回|参数|
+|方法|Description|返回|参数|
 |------|-----------|------|---------|
 |public bool DoCompile()|编译 U-SQL 脚本|如果成功，则返回 true| |
 |public bool DoExec()|执行编译结果|如果成功，则返回 true| |

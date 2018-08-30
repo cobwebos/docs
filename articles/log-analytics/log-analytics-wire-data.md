@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 1cf67b61d330363690aea1da706e8cce4700ddcd
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 32e76d1593f8bda0ebf745e76373908970aeb181
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618676"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124163"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Log Analytics 中的 Wire Data 2.0（预览版）解决方案
 
@@ -386,8 +386,6 @@ rpm -e dependency-agent dependency-agent-connector
 | 正在捕获网络流量的代理 | 显示正在捕获网络流量的代理数，并列出正在捕获流量的排名前 10 的计算机。 单击数字可以针对 <code>Type:WireData &#124; measure Sum(TotalBytes) by Computer &#124; top 500000</code> 运行日志搜索。 单击列表中的某台计算机可运行日志搜索，将返回已捕获的总字节数。 |
 | 本地子网 | 显示代理已发现的本地子网数。  单击数字可以针对 <code>Type:WireData &#124; Measure Sum(TotalBytes) by LocalSubnet</code> 运行日志搜索，这将列出所有子网以及通过每个子网发送的字节数。 单击列表中的某个子网可运行日志搜索，将返回通过该子网发送的总字节数。 |
 | 应用程序级协议 | 显示代理发现的使用中的应用程序级协议的数目。 单击数字可以针对 <code>Type:WireData &#124; Measure Sum(TotalBytes) by ApplicationProtocol</code> 运行日志搜索。 单击某个协议可运行日志搜索，将返回使用该协议发送的总字节数。 |
-
-[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![Wire Data 仪表板](./media/log-analytics-wire-data/wire-data-dash.png)
 

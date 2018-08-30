@@ -3,18 +3,18 @@ title: 通过查询 Azure Log Analytics 监视 Azure HDInsight 群集
 description: 了解如何在 Azure Log Analytics 上运行查询，以监视在 HDInsight 群集中运行的作业。
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jasonh
-ms.openlocfilehash: 2d2de3c2e2b291ec1f5ad170350f19e9e0582eaa
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 9550468e8bc9b93216fd4c1ecf144415badfc7dc
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39609308"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43103651"
 ---
 # <a name="query-azure-log-analytics-to-monitor-hdinsight-clusters"></a>通过查询 Azure Log Analytics 监视 Azure HDInsight 群集
 

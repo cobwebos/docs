@@ -4,17 +4,17 @@ description: 使用 Microsoft Power BI 来可视化存储在 HDInsight 群集中
 services: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.openlocfilehash: 0b8024d8e5f239ff1bae2fe09f8cbe0a1b03a416
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: b8f952f27b5971704c8202fe80a95026e513b373
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618720"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43045816"
 ---
 # <a name="tutorial-analyze-spark-data-using-power-bi-in-hdinsight"></a>教程：使用 Power BI 在 HDInsight 中分析 Spark 数据 
 
@@ -140,7 +140,7 @@ Power BI 服务允许在整个组织中共享报表和仪表板。 在本部分�
 
 5. 单击“编辑凭据”。
 
-    ![在 Power BI 服务中编辑凭据] (./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png "在 Power BI 服务中编辑凭据")
+    ![在 Power BI 服务中编辑凭据](./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png "在 Power BI 服务中编辑凭据")
 
 6. 输入 HDInsight 登录帐户信息，然后单击“登录”。 默认帐户名为 admin。
 

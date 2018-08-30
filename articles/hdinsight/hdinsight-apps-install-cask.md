@@ -3,18 +3,18 @@ title: 安装已发布的应用程序 - Datameer - Azure HDInsight
 description: 安装并使用 Datameer 第三方 Hadoop 应用程序。
 services: hdinsight
 author: ashishthaps
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: a8961da0a62815ce60a6ee694d57f3172b81718b
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 377dbadd7b696e62d8464258d22d0dd5ed926208
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592170"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43106097"
 ---
 # <a name="install-published-application---cask-data-application-platform-cdap"></a>安装已发布的应用程序 - Cask Data Application Platform (CDAP)
 
@@ -128,8 +128,7 @@ CDAP 还提供名为 [Cask Tracker](http://cask.co/products/tracker/) 的扩展�
 
 * [Cask 文档](http://cask.co/resources/documentation/)。
 * [安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)：了解如何将未发布的 HDInsight 应用程序部署到 HDInsight。
-* 
-  [发布 HDInsight 应用程序](hdinsight-apps-publish-applications.md)：了解如何将自定义 HDInsight 应用程序发布到 Azure 市场。
+* [发布 HDInsight 应用程序](hdinsight-apps-publish-applications.md)：了解如何将自定义 HDInsight 应用程序发布到 Azure 市场。
 * [MSDN：安装 HDInsight 应用程序](https://msdn.microsoft.com/library/mt706515.aspx)：了解如何定义 HDInsight 应用程序。
 * [使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)：了解如何使用脚本操作安装其他应用程序。
 * [在 HDInsight 中使用空边缘节点](hdinsight-apps-use-edge-node.md)：了解如何使用空边缘节点访问 HDInsight 群集、测试和托管 HDInsight 应用程序。

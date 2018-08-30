@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: nini
 ms.component: na
-ms.openlocfilehash: 9bc1f7d9eab73a086e664dcc520ecf26befbbf0e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7c86c1006d7139356426c0cfb8fc5e684a4c9be6
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432885"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125672"
 ---
 # <a name="assess-service-fabric-applications-and-micro-services-with-the-azure-portal"></a>使用 Azure 门户评估 Service Fabric 应用程序和微服务
 
@@ -80,8 +80,6 @@ Service Fabric 解决方案通过从 Azure WAD 表中收集相关数据来使用
 
 若要从节点查看性能数据：
 
-
-[!INCLUDE [log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 - 从 Azure 门户启动 Log Analytics 工作区。
   ![Service Fabric](./media/log-analytics-service-fabric/6.png)

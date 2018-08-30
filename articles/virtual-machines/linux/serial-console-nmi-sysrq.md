@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 14bf68355550d756bd3f4da1a367133d83ddbf07
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 110bdcacf7433c1e0ab0cb31e1a04734137f9596
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42141446"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885233"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>使用串行控制台发出 SysRq 和 NMI 调用
 
@@ -84,13 +84,17 @@ echo "1" >/proc/sys/kernel/sysrq
 
 ### <a name="distribution-specific-documentation"></a>特定于分发版的文档 ###
 有关 SysRq 的特定于分发版的文档，以及配置 Linux 以便在收到 SysRq“Crash”命令时创建故障转储的步骤，请参阅以下链接：
+
 #### <a name="ubuntu"></a>Ubuntu ####
  - [内核故障转储](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
+
 #### <a name="red-hat"></a>Red Hat ####
 - [SysRq 工具是什么，如何使用它？](https://access.redhat.com/articles/231663)
 - [如何使用 SysRq 工具从 RHEL 服务器收集信息](https://access.redhat.com/solutions/2023)
+
 #### <a name="suse"></a>SUSE ####
 - [配置内核核心转储捕获](https://www.suse.com/support/kb/doc/?id=3374462)
+
 #### <a name="coreos"></a>CoreOS ####
 - [收集崩溃日志](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
@@ -109,16 +113,17 @@ echo "1" >/proc/sys/kernel/sysrq
 
 有关 Linux 内核配置的详细信息，包括 `unknown_nmi_panic`、`panic_on_io_nmi` 和 `panic_on_unrecovered_nmi`，请参阅：[/proc/sys/kernel/* 的文档](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt)。 有关 NMI 的特定于分发版的文档，以及配置 Linux 以便在收到 NMI 时创建故障转储的步骤，请参阅以下链接：
  
- ### <a name="ubuntu"></a>Ubuntu 
+### <a name="ubuntu"></a>Ubuntu 
  - [内核故障转储](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
 
- ### <a name="red-hat"></a>Red Hat 
+### <a name="red-hat"></a>Red Hat 
  - [NMI 是什么，它有什么用途？](https://access.redhat.com/solutions/4127)
  - [如何将系统配置为在按下 NMI 开关时发生崩溃？](https://access.redhat.com/solutions/125103)
  - [故障转储管理员指南](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/pdf/kernel_crash_dump_guide/kernel-crash-dump-guide.pdf)
 
 ### <a name="suse"></a>SUSE 
 - [配置内核核心转储捕获](https://www.suse.com/support/kb/doc/?id=3374462)
+
 ### <a name="coreos"></a>CoreOS 
 - [收集崩溃日志](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 

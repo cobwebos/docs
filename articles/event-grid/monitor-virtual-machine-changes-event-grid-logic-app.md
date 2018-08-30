@@ -1,22 +1,20 @@
 ---
 title: 监视虚拟机更改 - Azure 事件网格和逻辑应用 | Microsoft 文档
 description: 通过使用 Azure 事件网格和逻辑应用检查虚拟机 (VM) 中的配置更改
-keywords: 逻辑应用、事件网格、虚拟机、VM
 services: logic-apps
-author: ecfan
-manager: anneta
-ms.assetid: ''
-ms.workload: logic-apps
 ms.service: logic-apps
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.date: 11/30/2017
-ms.author: LADocs; estfan
-ms.openlocfilehash: ea3063b5c445dab85a7ef1e5663c40efc34f961e
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 29b28b0d81314d062c1b334092979cc9bccbeb31
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303107"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127653"
 ---
 # <a name="monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>通过 Azure 事件网格和逻辑应用监视虚拟机更改
 
@@ -98,7 +96,7 @@ ms.locfileid: "34303107"
 
    ![提供事件订阅的详细信息](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger-details-generic.png)
 
-   | 设置 | 建议的值 | 说明 | 
+   | 设置 | 建议的值 | Description | 
    | ------- | --------------- | ----------- | 
    | **订阅** | *{virtual-machine-Azure-subscription}* | 选择事件发布者的 Azure 订阅。 对于本教程，请选择用于虚拟机的 Azure 订阅。 | 
    | **资源类型** | Microsoft.Resources.resourceGroups | 选择事件发布者的资源类型。 对于本教程，请选择相应的指定值，以便逻辑应用仅监视资源组。 | 
@@ -181,9 +179,9 @@ ms.locfileid: "34303107"
    > [!TIP]
    > 若要选择工作流中可用的字段，请单击“编辑”框，以便打开“动态内容”列表，或选择“添加动态内容”。 对于多个字段，请选择列表中每个部分的“查看更多”。 若要关闭“动态内容”列表，请选择“添加动态内容”。
 
-   | 设置 | 建议的值 | 说明 | 
+   | 设置 | 建议的值 | Description | 
    | ------- | --------------- | ----------- | 
-   | **To** | *{recipient-email-address}* |输入收件人的电子邮件地址。 为进行测试，可以使用自己的电子邮件地址。 | 
+   | **收件人** | *{recipient-email-address}* |输入收件人的电子邮件地址。 为进行测试，可以使用自己的电子邮件地址。 | 
    | **主题** | 更新资源：主题| 输入电子邮件的主题内容。 对于本教程，请输入建议的文本并选择该事件的“主题”字段。 此处，电子邮件主题包含更新资源（虚拟机）的名称。 | 
    | **正文** | 资源组：主题 <p>事件类型：事件类型<p>事件 ID：ID<p>时间：事件时间 | 输入电子邮件的正文内容。 对于本课程，请输入建议的文本并选择事件的“主题”、“事件类型”和“ID”和“事件时间”字段，以便电子邮件包括资源组名称、事件类型、事件时间戳和用于更新的事件 ID。 <p>若要在内容中添加空行，请按 Shift + Enter。 | 
    | | | 

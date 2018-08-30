@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: 93ced2d0c79d80a631ad90aa3f5d2dc9f8c79c7e
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: a266055c7685dca87d985775584a9ea7a4bda883
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390188"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128514"
 ---
 # <a name="language-understanding-faq"></a>语言理解常见问题解答
 
@@ -149,9 +149,9 @@ LUIS 根据[区域性](luis-supported-languages.md#tokenization)将表述[标记
 
 ### <a name="does-microsoft-access-my-luis-app-data-for-its-own-purposes-for-example-to-enhance-luis-or-microsoft-in-general"></a>Microsoft 是否会访问我的 LUIS 应用数据来供其自己使用？例如，用来增强 LUIS 或一般 Microsoft 产品的功能？ 
 
-不会。 LUIS 不会使用 LUIS 应用的数据模型来增强作为平台的 LUIS，Microsoft 也不会以任何方式使用该数据模型。 每个应用的数据都是独立的并且仅由用户和协作者拥有。 
+不是。 LUIS 不会使用 LUIS 应用的数据模型来增强作为平台的 LUIS，Microsoft 也不会以任何方式使用该数据模型。 每个应用的数据都是独立的并且仅由用户和协作者拥有。 
 
-详细了解[用户隐私](luis-reference-gdpr.md)、[附加安全符合性](luis-concept-security.md#security-compliance)和[数据存储](luis-concept-data-storage.md)。
+详细了解[用户隐私](luis-user-privacy.md)、[附加安全符合性](luis-concept-security.md#security-compliance)和[数据存储](luis-concept-data-storage.md)。
 
 ## <a name="language-and-translation-support"></a>语言和翻译支持 
 

@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 9ba7d8c403a7778a52b858a41ad41bca405cb199
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: ec594a4ba3a794ca1b4c52962ff190b86dce5a81
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38586915"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43051351"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>创建由 Azure Cosmos DB 触发的函数
 
@@ -34,6 +34,9 @@ ms.locfileid: "38586915"
 完成本教程：
 
 + 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+> [!NOTE]
+> [!INCLUDE [SQL API support only](../../includes/functions-cosmosdb-sqlapi-note.md)]
 
 ## <a name="create-an-azure-function-app"></a>创建 Azure Function App
 
@@ -70,7 +73,7 @@ ms.locfileid: "38586915"
 
 6. 创建新的 Cosmos DB 帐户时，请按照表中的指定使用“新帐户”设置。
 
-    | 设置      | 建议的值  | 说明                                |
+    | 设置      | 建议的值  | Description                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **ID** | 数据库的名称 | Azure Cosmos DB 数据库的唯一 ID  |
     | **API** | SQL | 本主题使用 SQL API。  |
@@ -106,7 +109,7 @@ ms.locfileid: "38586915"
  
     ![定义 taskCollection](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection2.png)
  
-    | 设置|建议的值|说明 |
+    | 设置|建议的值|Description |
     | ---|---|--- |
     | **数据库 ID** | 任务 |新数据库的名称。 它必须匹配函数绑定中定义的名称。 |
     | **集合 ID** | Items | 新集合的名称。 它必须匹配函数绑定中定义的名称。  |

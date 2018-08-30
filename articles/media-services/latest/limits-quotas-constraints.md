@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 08/26/2018
 ms.author: juliako
-ms.openlocfilehash: b50ba825f675c84f551f9a1d191aa93eaed9a628
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 49b834325ce819f20978e06d85ee308955510ac1
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070840"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43051103"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Azure 媒体服务 v3 中的配额和限制
 
@@ -36,7 +36,6 @@ ms.locfileid: "39070840"
 | 每个媒体服务帐户的 LiveEvents |5|
 | 单个订阅中的媒体服务帐户数 | 25（固定） |
 | 每个 LiveEvent 处于运行状态的 LiveOutputs |3|
-| 每个 LiveEvent 处于已停止状态的 LiveOutputs |50|
 | 存储帐户 | 100<sup>(4)</sup>（固定） |
 | 每个媒体服务帐户处于运行状态的流式处理终结点数|2|
 | StreamingPolicies | 100 <sup>(3)</sup> |

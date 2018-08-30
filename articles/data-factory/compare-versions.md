@@ -9,15 +9,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: 4821ce5911508cc90c3a784d617a4528ecdeb384
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: ca00a414402c1cfdef55cfbde9291688f091bf77
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053290"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43095913"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Azure 数据工厂与数据工厂版本 1 之对比
 本文将数据工厂与数据工厂版本 1 进行了比较。 有关数据工厂的简介，请参阅[数据工厂简介](introduction.md)。有关数据工厂版本 1 的简介，请参阅 [Azure 数据工厂简介](v1/data-factory-introduction.md)。 
@@ -73,7 +73,7 @@ ms.locfileid: "37053290"
 ### <a name="other-control-flow-activities"></a>其他控制流活动
 下面是数据工厂的当前版本支持的其他控制流活动。 
 
-控制活动 | 说明
+控制活动 | Description
 ---------------- | -----------
 [ForEach 活动](control-flow-for-each-activity.md) | 在管道中定义重复的控制流。 此活动用于循环访问集合，并在循环中运行指定的活动。 此活动的循环实现类似于采用编程语言的 Foreach 循环结构。
 [Web 活动](control-flow-web-activity.md) | 从数据工厂管道调用自定义的 REST 终结点。 可以传递数据集和链接服务以供活动使用和访问。 

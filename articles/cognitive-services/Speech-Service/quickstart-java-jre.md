@@ -9,16 +9,16 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: fmegen
-ms.openlocfilehash: 11aba1ae6f49d6c00fabd928ae3aefedcbea8ed8
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 923ab3378d5e2d833e11c5111d4dd9964fea6dc4
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234253"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126607"
 ---
 # <a name="quickstart-recognize-speech-in-java-windows-or-linux"></a>快速入门：识别 Java 中的语音（Windows 或 Linux）
 
-[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
+[!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 本文档介绍如何为利用语音 SDK 的 Java 运行时环境 (JRE) 创建基于 Java 的控制台应用程序。
 该应用程序基于Microsoft 认知服务 SDK Maven 包。
@@ -107,7 +107,7 @@ ms.locfileid: "40234253"
 
 ![成功识别后的控制台输出](media/sdk/qs-java-jre-07-console-output.png)
 
-[!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 在 `quickstart/java-jre` 文件夹中查找此示例。
 
 ## <a name="next-steps"></a>后续步骤

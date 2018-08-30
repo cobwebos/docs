@@ -2,26 +2,20 @@
 title: 连接到 Power BI 工作区集合中的数据源 | Microsoft Docs
 description: 了解如何连接到 Power BI 工作区集合内的数据源。
 services: power-bi-embedded
-documentationcenter: ''
 author: markingmyname
-manager: kfile
-editor: ''
-tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 2a4caeb3-255d-4215-9554-0ca8e3568c13
 ms.service: power-bi-embedded
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 5a154c4899db974645bb7ade028d8bd8f267aad7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c626601d9eae7732779020b153c624f80605b56a
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31409850"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43051869"
 ---
 # <a name="connect-to-a-data-source"></a>连接到数据源
 

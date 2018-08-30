@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/03/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 03d4ad081a788299bab563ca6b956edc347732da
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f659c424f7d5e705343c113d2ba0971164ca622a
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447952"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43108800"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Linux 虚拟机
 
@@ -53,7 +53,7 @@ ssh-keygen -t rsa -b 2048
 
 3. 提供 VM 名称，例如 *myVM*，将磁盘类型保留为 *SSD*，然后提供用户名，例如 *azureuser*。
 
-4. 。 对于“身份验证类型”，选择“SSH 公钥”，然后将你的公钥粘贴到文本框中。 请务必删除公钥中的所有前导或尾随空格。
+4. 对于“身份验证类型”，选择“SSH 公钥”，然后将你的公钥粘贴到文本框中。 请务必删除公钥中的所有前导或尾随空格。
 
     ![在门户边栏选项卡中输入 VM 的基本信息](./media/quick-create-portal/create-vm-portal-basic-blade.png)
 

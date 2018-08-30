@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 04/13/2018
 ms.author: mtillman
-ms.openlocfilehash: 218de4388c88161d3277c94fcb859e6ee3dc04e9
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 5acb697d5c830db1301fbe7b3ca3d8aebcdb823d
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224776"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887951"
 ---
 # <a name="azure-active-directory-documentation"></a>Azure Active Directory 文档
 
@@ -115,8 +115,8 @@ Azure Active Directory (Azure AD) 是多租户、基于云的目录和标识管�
                         <h3>设备</h3>
                         <p>
                         <a href="/azure/active-directory/device-management-introduction">设备管理</a><br/>
-                        <a href="/azure/active-directory/device-management-azuread-registered-devices-windows10-setup">Windows 10 设备</a><br/>
-                        <a href="/azure/active-directory/device-management-azuread-joined-devices-setup">已加入的设备</a>
+                        <a href="/azure/active-directory/user-help/device-management-azuread-registered-devices-windows10-setup">Windows 10 设备</a><br/>
+                        <a href="/azure/active-directory/user-help/device-management-azuread-joined-devices-setup">已加入的设备</a>
                         </p>
                     </div>
                 </div>

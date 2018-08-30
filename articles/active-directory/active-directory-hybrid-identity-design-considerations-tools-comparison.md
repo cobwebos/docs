@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/31/2018
+ms.date: 08/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 10774e7ca1168a58e8c8d47e6a7295ff727fa1cd
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 80cbe09eca2e5aacd46325e9add35f3ec8aae407
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801443"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143268"
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>混合标识目录集成工具比较
 过去数年以来，集成工具已得到发展和演进。  本文档旨在帮助提供这些工具的合并视图，并比较每个工具提供的功能。
@@ -45,14 +45,20 @@ PP = 公开预览版
 | 连接到单个本地 AD 林 |● |● |● |● |● |
 | 连接到多个本地 AD 林 |● |● | |● |● |
 | 连接到多个本地 Exchange 组织 |● | | | | |
-| 连接到单个在本地 LDAP 目录 | | | |● |● |
-| 连接到多个本地 LDAP 目录 |  | | |● |● |
-| 连接到本地 AD 和本地 LDAP 目录 | | | |● |● |
+| 连接到单个在本地 LDAP 目录 |●* | | |● |● | 
+| 连接到多个本地 LDAP 目录 |●*  | | |● |● | 
+| 连接到本地 AD 和本地 LDAP 目录 |●* | | |● |● | 
 | 连接到自定义系统（例如 SQL、Oracle、MySQL 等） |FR | | |● |● |
 | 同步客户定义的属性（目录扩展） |● | | | | |
 | 连接到本地 HR（即 SAP、Oracle eBusiness、PeopleSoft） |FR | | |● |● |
 | 支持用于预配到本地系统的 FIM 同步规则和连接器。 | | | |● |● |
 
+ 
+&#42; 目前，这有两个支持的选项。  它们是： 
+
+   1. 可以使用泛型 LDAP 连接器，在 Azure AD Connect 外部将其启用。  这很复杂，需要一位负责载入的合作伙伴，并签署关于维护的顶级支持协议。  此选项可以处理单个和多个 LDAP 目录。 
+
+   2. 可以开发自己的解决方案，将对象从 LDAP 移至 Active Directory。  然后使用 Azure AD Connect 来同步对象。  可以将 MIM 或 FIM 用作移动这些对象的可能解决方案。 
 
 ## <a name="cloud-to-on-premises-synchronization"></a>云到本地的同步
 | 功能 | Azure Active Directory Connect | Azure Active Directory 同步服务 - 不再支持  | Azure Active Directory 同步工具 (DirSync) - 不再支持  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft 标识管理器 2016 (MIM) |

@@ -9,12 +9,12 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: zhouwang
-ms.openlocfilehash: f4b6a97260c6dc176600af8844001e4de819ff7c
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 6fb490def6807204943a1ce3ba3c53186055102b
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42357504"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048451"
 ---
 # <a name="get-started-with-bing-speech-service-client-libraries"></a>必应语音服务客户端库入门
 
@@ -33,7 +33,7 @@ ms.locfileid: "42357504"
 - [适用于 iOS 的 Objective-C 库](Get-Started-ObjectiveC-iOS.md)
 
 > [!NOTE] 
-在 2018 年 5 月，我们还以公共预览版形式发布了新的[语音服务](/speech-service/overview.md)。 我们建议你[免费试用](/speech-service/get-started.md)。 
+在 2018 年 5 月，我们还以公共预览版形式发布了新的[语音服务](../../speech-service/index.yml)。 我们建议你[免费试用](../../speech-service/get-started.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 

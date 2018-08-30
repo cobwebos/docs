@@ -5,16 +5,15 @@ services: data-lake-analytics
 ms.service: data-lake-analytics
 author: jasonwhowell
 ms.author: jasonh
-manager: kfile
 ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
 ms.topic: conceptual
 ms.date: 02/12/2018
-ms.openlocfilehash: e65c6396d859a128777c66cad6a44bb033b50d50
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0bade9f393d879123b7b1485052f70924d9c9b9c
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623479"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43045475"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Accessing diagnostic logs for Azure Data Lake Analytics（访问 Azure Data Lake Analytics 的诊断日志）
 
@@ -47,7 +46,7 @@ ms.locfileid: "34623479"
 
    * 对于“存档到存储帐户”，指定数据将保留的天数。
 
-   * 单击“保存” 。
+   * 单击“保存”。
 
         > [!NOTE]
         > 单击“保存”按钮之前，必须选择“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。
@@ -126,7 +125,7 @@ ms.locfileid: "34623479"
 
 #### <a name="request-log-schema"></a>请求日志架构
 
-| 名称 | Type | 说明 |
+| 名称 | Type | Description |
 | --- | --- | --- |
 | time |String |日志时间戳（采用 UTC） |
 | resourceId |String |操作发生所在的资源的标识符 |
@@ -140,7 +139,7 @@ ms.locfileid: "34623479"
 
 #### <a name="request-log-properties-schema"></a>请求日志属性架构
 
-| 名称 | Type | 说明 |
+| 名称 | Type | Description |
 | --- | --- | --- |
 | HttpMethod |String |用于此操作的 HTTP 方法。 例如 GET。 |
 | 路径 |String |操作执行所在的路径 |
@@ -178,7 +177,7 @@ ms.locfileid: "34623479"
 
 #### <a name="audit-log-schema"></a>审核日志架构
 
-| 名称 | Type | 说明 |
+| 名称 | Type | Description |
 | --- | --- | --- |
 | time |String |日志时间戳（采用 UTC） |
 | resourceId |String |操作发生所在的资源的标识符 |
@@ -196,7 +195,7 @@ ms.locfileid: "34623479"
 
 #### <a name="audit-log-properties-schema"></a>审核日志属性架构
 
-| 名称 | Type | 说明 |
+| 名称 | Type | Description |
 | --- | --- | --- |
 | JobId |String |分配给作业的 ID |
 | JobName |String |提供给作业的名称 |

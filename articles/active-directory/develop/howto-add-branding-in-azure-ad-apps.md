@@ -17,12 +17,12 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 78a0b9bf7f49cc41c8d78287bcbe54c5c88f0809
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 92990a71a0b138f08c515450ecd71692fa57f297
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "39597899"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43185414"
 ---
 # <a name="branding-guidelines-for-applications"></a>适用于应用程序的品牌准则
 
@@ -72,7 +72,7 @@ Microsoft 不会向最终用户显示 Azure 或 Active Directory 品牌名称，
 
 | 资产                                | PNG 格式 | SVG 格式 |
 | ------------------------------------ | ---------- | ---------- |
-| Microsoft 徽标  | ![Microsoft 徽标 PNG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_MSSymbol_19.png) | ![Microsoft 徽标 SVG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_MSSymbol_19.svg) |
+| Microsoft 徽标  | ![Microsoft 徽标 PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.png) | ![Microsoft 徽标 SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.svg) |
 
 ## <a name="visual-guidance-for-sign-in"></a>有关登录的可视指南
 
@@ -84,16 +84,16 @@ Microsoft 徽标和“通过 Microsoft 登录”词语的关联可唯一地将 A
 
 下图显示在使用应用资产时，Microsoft 建议的红线。 红线适用于“Microsoft 登录”或更短的“登录”版本。
 
-![Microsoft 登录红线](./media/howto-add-branding-in-azure-ad-apps/Sign-in-with-Microsoft-redlines.png)
+![Microsoft 登录红线](./media/howto-add-branding-in-azure-ad-apps/sign-in-with-microsoft-redlines.png)
 
 若要下载官方图像以在应用中使用，请右键单击要使用的图像，然后将其保存到计算机。
 
 | 资产                                | PNG 格式 | SVG 格式 |
 | ------------------------------------ | ---------- | ---------- |
-| Microsoft 登录（深色主题）  | ![登录按钮深色主题 PNG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_dark.png) | ![Microsoft 登录按钮深色主题 SVG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_dark.svg) |
-| Microsoft 登录（浅色主题） | ![登录按钮浅色主题 PNG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_light.png) | ![Microsoft 登录按钮浅色主题 SVG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_light.svg) |
-| 登录（深色主题）                 | ![登录短按钮深色主题 PNG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_dark_short.png) | ![登录短按钮深色主题 SVG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_dark_short.svg) |
-| 登录（浅色主题）                | ![登录短按钮浅色主题 PNG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_light_short.png) | ![登录短按钮浅色主题 SVG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_light_short.svg) |
+| Microsoft 登录（深色主题）  | ![登录按钮深色主题 PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.png) | ![Microsoft 登录按钮深色主题 SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.svg) |
+| Microsoft 登录（浅色主题） | ![登录按钮浅色主题 PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.png) | ![Microsoft 登录按钮浅色主题 SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.svg) |
+| 登录（深色主题）                 | ![登录短按钮深色主题 PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.png) | ![登录短按钮深色主题 SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.svg) |
+| 登录（浅色主题）                | ![登录短按钮浅色主题 PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.png) | ![登录短按钮浅色主题 SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.svg) |
 
 
 ## <a name="branding-dos-and-donts"></a>品牌注意事项

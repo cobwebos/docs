@@ -11,16 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 019a5a041d5581ee49eab7e1644f081aa7a52f2d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d5256b2053d75569f9fce71d002aaede9b9e4aa6
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38237701"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43096065"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>教程：使用 REST API 创建用于复制数据的 Azure 数据工厂管道 
 > [!div class="op_single_selector"]
@@ -177,7 +177,7 @@ ms.locfileid: "38237701"
 
 下表提供了代码片段中使用的 JSON 属性的描述：
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--- |:--- |
 | type | type 属性设置为 **AzureBlob**，因为数据驻留在 Azure Blob 存储中。 |
 | linkedServiceName | 表示前面创建的 **AzureStorageLinkedService**。 |
@@ -220,7 +220,7 @@ ms.locfileid: "38237701"
 ```
 下表提供了代码片段中使用的 JSON 属性的描述：
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--- |:--- |
 | type | type 属性设置为 **AzureSqlTable**，因为数据复制到 Azure SQL 数据库中的表。 |
 | linkedServiceName | 表示前面创建的 **AzureSqlLinkedService**。 |

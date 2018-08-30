@@ -2,18 +2,18 @@
 title: 使用 Ambari 优化群集配置 - Azure HDInsight
 description: 使用 Ambari Web UI 来配置和优化 HDInsight 群集。
 author: ashishthaps
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: ashish
-ms.openlocfilehash: a516f1a22f4bb802d1b0c93b38dd36b56e2b5e0e
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 73fdd3f221e35bc1e0b0904bdbbaa63525ba4be3
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716172"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43105467"
 ---
 # <a name="use-ambari-to-optimize-hdinsight-cluster-configurations"></a>使用 Ambari 优化 HDInsight 群集配置
 

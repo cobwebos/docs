@@ -3,18 +3,18 @@ title: 使用 Azure 门户管理 HDInsight 中的 Hadoop 群集
 description: 了解如何使用 Azure 门户创建和管理 HDInsight 群集。
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: jasonh
-ms.openlocfilehash: 20a48dcd4a9c3dd4c89390c1048ec4fd5f5783ae
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 0e584343e568c5cd0d91a1e6ff51dc899c5434d7
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597202"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43106523"
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Hadoop 群集
 
@@ -34,7 +34,7 @@ ms.locfileid: "39597202"
 
        ![新建 HDInsight 群集按钮](./media/hdinsight-administer-use-portal-linux/azure-portal-new-button.png)
 
-       在“在市场中搜索”中输入 HDInsight，单击 HDInsight，然后单击“创建”。
+       在“在市场中搜索”中输入 HDInsight ，单击 HDInsight，然后单击“创建”。
 
    * 在左侧菜单中单击“HDInsight 群集”以列出现有群集：
 

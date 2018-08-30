@@ -3,18 +3,18 @@ title: 使用 Ambari API 在 HDInsight 中监视 Hadoop 群集 - Azure
 description: 使用 Apache Ambari API 创建、管理和监视 Hadoop 群集。 直观的操作员工具和 API 消除了 Hadoop 的复杂性。
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: f55ee02ada5bb53d4634d119311fb9230ff15105
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 23da477fc24eaea4a6f987f13ad055022d2ba032
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592816"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43108631"
 ---
 # <a name="monitor-hadoop-clusters-in-hdinsight-using-the-ambari-api"></a>使用 Ambari API 在 HDInsight 中监视 Hadoop 群集
 学习如何使用 Ambari API 监视 HDInsight 群集。

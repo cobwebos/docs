@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 2312b0ed51be7079da3e53b27c269adfb761044d
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 4d2837a99c10f1600eb457e20cd7473f9f931302
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131620"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125981"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights 连接器管理解决方案（预览版）
 
@@ -42,7 +42,7 @@ ms.locfileid: "37131620"
 
 与其他大多数 Log Analytics 解决方案不同，代理不会收集 Application Insights 连接器的数据。 该解决方案使用的全部数据都直接来自于 Azure。
 
-| 连接的源 | 支持 | 说明 |
+| 连接的源 | 支持 | Description |
 | --- | --- | --- |
 | [Windows 代理](log-analytics-windows-agent.md) | 否 | 解决方案不会从 Windows 代理收集信息。 |
 | [Linux 代理](log-analytics-linux-agents.md) | 否 | 解决方案不会从 Linux 代理收集信息。 |
@@ -89,7 +89,6 @@ ms.locfileid: "37131620"
 
 该仪表板包含下表中所示的边栏选项卡。 每个边栏选项卡按照指定范围和时间范围列出了匹配该边栏选项卡条件的最多 10 个项。 单击边栏选项卡底部的“查看全部”或单击边栏选项卡标题时，可运行返回所有记录的日志搜索。
 
-[!INCLUDE [log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 | **列** | **说明** |
 | --- | --- |
@@ -175,7 +174,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="generic-fields"></a>泛型字段
 
-| 属性 | 说明 |
+| 属性 | Description |
 | --- | --- |
 | Type | ApplicationInsights |
 | ClientIP |   |
@@ -201,7 +200,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="availability-specific-fields"></a>可用性特定的字段
 
-| 属性 | 说明 |
+| 属性 | Description |
 | --- | --- |
 | TelemetryType | 可用性 |
 | AvailabilityTestName | Web 测试的名称 |
@@ -243,7 +242,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="request-specific-fields"></a>请求特定的字段
 
-| 属性 | 说明 |
+| 属性 | Description |
 | --- | --- |
 | Type | ApplicationInsights |
 | TelemetryType | 请求 |

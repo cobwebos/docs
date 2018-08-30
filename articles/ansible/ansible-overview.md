@@ -4,16 +4,16 @@ description: 介绍如何使用 Ansible 自动执行云预配、配置管理和�
 ms.service: ansible
 keywords: ansible, azure, devops, 概述, 云预配, 配置管理, 应用程序部署, ansible 模块, ansible playbook
 author: tomarcher
-manager: routlaw
+manager: jeconnoc
 ms.author: tarcher
 ms.date: 01/19/2018
 ms.topic: article
-ms.openlocfilehash: a7ce3c239a50462a9af137eb958268f72dbf79d1
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: e710770131c844598762feebe09ba50dc120de0c
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
-ms.locfileid: "28209583"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43106894"
 ---
 # <a name="ansible-with-azure"></a>Ansible 与 Azure
 
@@ -42,8 +42,8 @@ Ansible 包括一组 [Ansible 模块](http://docs.ansible.com/ansible/latest/mod
 ## <a name="manage-deployments-with-dynamic-inventory"></a>使用动态清单管理部署
 Ansible 通过其[动态清单](http://docs.ansible.com/ansible/intro_dynamic_inventory.html)功能，提供从 Azure 资源拉取清单的功能。 然后，可以通过 Ansible 标记现有 Azure 部署和管理 这些标记的部署。
 
-## <a name="additional-azure-marketplace-options"></a>其他 Azure Marketplace 选项
-[Ansible Tower](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.ansible-tower) 是 Red Hat 提供的 Azure Marketplace 映像，可帮助组织缩放 IT 自动化，以及跨物理、虚拟和云基础结构管理复杂部署。 Ansible Tower 包括的功能提供当今的企业所需的附加可见性、控制、安全性和效率级别。 Ansible Tower 对 Azure 和 SSH 密钥等凭据进行加密，以便你可以将作业委派给经验较少的员工，而不会有泄露凭据的风险。
+## <a name="additional-azure-marketplace-options"></a>其他 Azure 市场选项
+[Ansible Tower](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.ansible-tower) 是 Red Hat 提供的 Azure 市场映像，可帮助组织缩放 IT 自动化，以及跨物理、虚拟和云基础结构管理复杂部署。 Ansible Tower 包括的功能提供当今的企业所需的附加可见性、控制、安全性和效率级别。 Ansible Tower 对 Azure 和 SSH 密钥等凭据进行加密，以便你可以将作业委派给经验较少的员工，而不会有泄露凭据的风险。
 
 ## <a name="next-steps"></a>后续步骤
 - [配置 Ansible](/azure/virtual-machines/linux/ansible-install-configure?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)

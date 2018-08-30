@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b578abfa6fc0a10edc5daab40f8a0eea5e6653d9
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: c0fdcdbf838a0bc283db05f36b900641016211b7
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115056"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43121908"
 ---
 # <a name="persist-job-and-task-output"></a>持久性作业和任务输出
 
@@ -34,7 +34,7 @@ ms.locfileid: "39115056"
 
 ## <a name="about-the-batch-file-conventions-standard"></a>关于批处理文件约定标准
 
-批处理定义了用于为 Azure 存储中的任务输出文件命名的一组可选的约定。 [批处理文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions)介绍了这些约定。 文件约定标准根据作业和任务的名称确定 Azure 存储中用于给定输出文件的目标容器和 blob 路径的名称。
+批处理定义了用于为 Azure 存储中的任务输出文件命名的一组可选的约定。 [批处理文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)介绍了这些约定。 文件约定标准根据作业和任务的名称确定 Azure 存储中用于给定输出文件的目标容器和 blob 路径的名称。
 
 是否要使用文件约定标准为输出数据文件命名由你决定。 也可以根据自己的需要为目标容器和 blob 命名。 如果使用文件约定标准为输出文件命名，则输出文件可在 [Azure 门户][portal]中进行查看。
 
@@ -71,13 +71,13 @@ ms.locfileid: "39115056"
 
 在 2017 年 5 月 1 日的版本中，批处理服务添加了在[向作业添加任务](https://docs.microsoft.com/rest/api/batchservice/add-a-task-to-a-job)或在[向作业添加任务集合](https://docs.microsoft.com/rest/api/batchservice/add-a-collection-of-tasks-to-a-job)时指定任务数据在 Azure 存储中的输出文件的支持。
 
-批处理服务 API 支持将使用虚拟机配置创建的池中的任务数据保存到 Azure 存储帐户。 借助批处理服务 API，无需修改任务运行的应用程序即可保存任务数据。 或者，可以选择遵守[批处理文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions)，为保存到 Azure 存储的文件命名。 
+批处理服务 API 支持将使用虚拟机配置创建的池中的任务数据保存到 Azure 存储帐户。 借助批处理服务 API，无需修改任务运行的应用程序即可保存任务数据。 或者，可以选择遵守[批处理文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)，为保存到 Azure 存储的文件命名。 
 
 在以下情况下使用批处理服务 API 保存任务输出：
 
 - 想要保存使用虚拟机配置创建的池中的批处理任务和作业管理器任务的数据。
 - 想要将数据保存到具有任意名称的 Azure 存储容器。
-- 想要将数据保存到按照[批处理文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions)命名的 Azure 存储容器。 
+- 想要将数据保存到按照[批处理文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)命名的 Azure 存储容器。 
 
 > [!NOTE]
 > 批处理服务 API 不支持保存使用云服务配置创建的池中运行的任务数据。 有关保存运行云服务配置的池的任务输出的信息，请参阅[使用适用于 .NET 的批处理文件约定库将作业和任务数据保存到 Azure 存储](batch-task-output-file-conventions.md)
@@ -88,7 +88,7 @@ ms.locfileid: "39115056"
 
 ### <a name="use-the-batch-file-conventions-library-for-net"></a>使用适用于 .NET 的批处理文件约定库
 
-使用 C# 和 .NET 生成批处理解决方案的开发人员可以使用[适用于 .NET 的文件约定库][nuget_package]，按照[批处理文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions)将任务数据保存到 Azure 存储帐户。 文件约定库以众所周知的方法处理将输出文件移动到 Azure 存储并为目标容器和 blob 命名的过程。
+使用 C# 和 .NET 生成批处理解决方案的开发人员可以使用[适用于 .NET 的文件约定库][nuget_package]，按照[批处理文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)将任务数据保存到 Azure 存储帐户。 文件约定库以众所周知的方法处理将输出文件移动到 Azure 存储并为目标容器和 blob 命名的过程。
 
 文件约定库支持根据 ID 或用途查询输出文件，方便轻松进行查找，而无需完整的文件 URI。 
 
@@ -106,7 +106,7 @@ GitHub 上的 [PersistOutputs][github_persistoutputs] 示例项目演示了如�
 
 ### <a name="implement-the-batch-file-conventions-standard"></a>实现批处理文件约定标准
 
-如果使用的是除 .NET 之外的语言，则可以在自己的应用程序中实现[批处理文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions)。 
+如果使用的是除 .NET 之外的语言，则可以在自己的应用程序中实现[批处理文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)。 
 
 在需要经认证的命名方案或想要在 Azure 门户中查看任务输出时，可能需要自行实现文件约定命名标准。
 

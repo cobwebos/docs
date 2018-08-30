@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 21157af9ad6361234ffa9b927da64baab505f624
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: d19b71542f032111bbd3d9c7f3fe246110377b5d
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281508"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127580"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>使用语音服务中的“文本转语音”功能
 
@@ -24,7 +24,7 @@ ms.locfileid: "39281508"
 
 区域性的“文本转语音”终结点显示如下。 请使用适合你的订阅的终结点。
 
-[!include[](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
 ## <a name="specify-a-voice"></a>指定语音
 

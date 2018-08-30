@@ -2,18 +2,18 @@
 title: 使用 PowerShell 执行 Azure 表存储操作 | Microsoft 文档
 description: 使用 PowerShell 执行 Azure 表存储操作。
 services: cosmos-db
-author: robinsh
+author: roygara
 ms.service: cosmos-db
 ms.topic: article
 ms.date: 03/14/2018
-ms.author: robinsh
+ms.author: rogarana
 ms.component: cosmosdb-table
-ms.openlocfilehash: 577e6db0caeebb465025da033051dc2bbc9cb804
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 219b5aa3c1f280ce02d2579f3fe2cc7ca7da490d
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42140028"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125779"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>使用 Azure PowerShell 执行 Azure 表存储操作 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 86c301748b58e7642df9a738c70b4fe70be3310b
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 5f7477671e7be4e6e8fd736ab94fa7e7b1e99a6e
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39400002"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43184476"
 ---
 区域冗余存储 (ZRS) 以同步方式在单个区域中的三个存储群集之间复制数据。 各个存储群集以物理方式相互隔离，并驻留在自身的可用性区域 (AZ) 中。 每个可用性区域及其中的 ZRS 群集是自主性的，具有独立的实用工具和网络功能。
 
@@ -28,6 +28,7 @@ ZRS 目前支持标准的[常规用途 v2 (GPv2)](../articles/storage/common/sto
 
 ZRS 在以下区域推出了正式版：
 
+- 美国东部
 - 美国东部 2
 - 美国西部 2
 - 美国中部

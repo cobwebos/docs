@@ -1,26 +1,18 @@
 ---
 title: 预配置解决方案入门 | Microsoft Docs
 description: 遵循本教程，了解如何部署 Azure IoT 套件预配置解决方案。
-services: ''
-suite: iot-suite
-documentationcenter: ''
-author: dominicbetts
-manager: timlt
-editor: ''
-ms.assetid: 6ab38d1a-b564-469e-8a87-e597aa51d0f7
+services: iot-suite
 ms.service: iot-suite
-ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: na
+author: dominicbetts
+ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: dobett
-ms.openlocfilehash: 12eb858f0be4220419300019497070a081e58249
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0c499d5f4d1d6256294e25921cef1fb0dfed0c05
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723011"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43185600"
 ---
 # <a name="get-started-with-the-preconfigured-solutions"></a>预配置的解决方案入门
 

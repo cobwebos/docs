@@ -1,26 +1,18 @@
 ---
 title: 远程监视预配置解决方案演练 | Microsoft Docs
 description: 介绍 Azure IoT 预配置解决方案远程监视及其体系结构。
-services: ''
-suite: iot-suite
-documentationcenter: ''
 author: dominicbetts
-manager: timlt
-editor: ''
-ms.assetid: 31fe13af-0482-47be-b4c8-e98e36625855
 ms.service: iot-suite
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-suite
+ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: dobett
-ms.openlocfilehash: d35052087899925e0e8119ce104345f718cc12bd
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 8cb6c3087bac460069a689f7b109a20aa9125ae9
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37858507"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43184907"
 ---
 # <a name="remote-monitoring-preconfigured-solution-walkthrough"></a>远程监视预配置解决方案演练
 
@@ -56,7 +48,7 @@ IoT 套件远程监视[预配置解决方案][lnk-preconfigured-solutions]是适
 
 每个模拟设备可将以下消息类型发送到 IoT 中心：
 
-| 消息 | 说明 |
+| 消息 | Description |
 | --- | --- |
 | 启动 |当设备启动时，它会发送包含自身相关信息的 **设备信息** 消息到后端。 此数据包括设备 ID，以及设备支持的命令和方法列表。 |
 | 状态 |设备定期发送 **状态** 消息，以报告该设备是否可以感应到传感器的状态。 |
@@ -103,7 +95,7 @@ IoT 套件远程监视[预配置解决方案][lnk-preconfigured-solutions]是适
 
 模拟设备可以处理通过 IoT 中心从解决方案门户调用的以下方法（[直接方法][lnk-direct-methods]）：
 
-| 方法 | 说明 |
+| 方法 | Description |
 | --- | --- |
 | InitiateFirmwareUpdate |指示设备执行固件更新 |
 | 重新启动 |指示设备重新启动 |
@@ -115,7 +107,7 @@ IoT 套件远程监视[预配置解决方案][lnk-preconfigured-solutions]是适
 
 模拟设备可以处理通过 IoT 中心从解决方案门户发送的以下命令（云到设备的消息）：
 
-| 命令 | 说明 |
+| 命令 | Description |
 | --- | --- |
 | PingDevice |向设备发送 *ping* 以检查其是否处于活动状态 |
 | StartTelemetry |使设备开始发送遥测 |

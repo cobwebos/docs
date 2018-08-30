@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 5c133c61c989bf19be3e84287cb76a7d110dccc8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6bfe6f9b76693ded79aa9b9d21ddcac4e1a0733e
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440467"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43110298"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster"></a>创建 Azure Kubernetes 服务 (AKS) 群集
 
@@ -48,7 +48,7 @@ az aks create --resource-group myResourceGroup --name myAKSCluster
 | `--enable-rbac` `-r` | 启用 Kubernetes 基于角色的访问控制。 | 否 |
 | `--generate-ssh-keys` | 生成 SSH 公钥和私钥文件（如果缺少）。 | 否 |
 | `--kubernetes-version` `-k` | 要用于创建群集的 Kubernetes 版本，如“1.7.9”或“1.9.6”。 | 否 |
-| `--locaton` `-l` | 自动创建的资源组的位置 | 否 |
+| `--location` `-l` | 自动创建的资源组的位置 | 否 |
 | `--max-pods` `-m` | 可部署到节点的最大 Pod 数。 | 否 |
 | `--network-plugin` | 要使用的 Kubernetes 网络插件。 | 否 |
 | `--no-ssh-key` `-x` | 不要使用或创建本地 SSH 密钥。 | 否 |

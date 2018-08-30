@@ -3,18 +3,18 @@ title: 安装或更新 Mono on HDInsight - Azure
 description: 了解如何将特定版本的 Mono 用于 HDInsight 群集。 Mono 用于在基于 Linux 的 HDInsight 群集上运行 .NET 应用程序。
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: jasonh
 ms.custom: hdinsightactive
-ms.openlocfilehash: 5f15d199ac60421340ad844c0964c39a8bfe705a
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: db460c6ebe934fa9ca9b6b42d517f39acbecf0c9
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39598292"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43105307"
 ---
 # <a name="install-or-update-mono-on-hdinsight"></a>在 HDInsight 上安装或更新 Mono
 

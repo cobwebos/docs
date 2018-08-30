@@ -4,18 +4,18 @@ description: 按照此 Apache HBase 示例，开始在 HDInsight 上使用 Hadoo
 keywords: hbasecommand，hbase 示例
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: jasonh
-ms.openlocfilehash: 4baee16d3a28a77700f7e134a55f6ebfd607869a
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: e31d42cc8ec117e00d83a076d1690cd37c2fc4ef
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39595260"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43042405"
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>HDInsight 中的 Apache HBase 入门示例
 

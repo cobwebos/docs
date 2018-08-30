@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: overview
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/17/2018
+ms.date: 08/28/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: 22211f52f6b9a16f785cacb9364ebe5b74617453
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: f2e1a59584507b52d0a834af1869e3e9f2db5f07
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126620"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127358"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>什么是 Azure Data Box 磁盘？ （预览版）
 
@@ -94,7 +94,7 @@ Data Box 磁盘旨在将大量数据移到 Azure，且不影响网络。 该解�
 | 每笔订单的存储容量                              | 40 TB（可用容量大约为 35 TB）|
 | 磁盘存储容量                                   | 8 TB（可用容量大约为 7 TB）|
 | 数据接口                                          | USB   |
-| “安全”                                                | 使用 BitLocker 和安全更新预先加密 <br> 通过支持密钥保护的磁盘 <br> 数据始终加密  |
+| 安全                                                | 使用 BitLocker 和安全更新预先加密 <br> 通过支持密钥保护的磁盘 <br> 数据始终加密  |
 | 数据传输率                                      | 最高 430 MBps，具体取决于文件大小      |
 |管理                                               | Azure 门户 |
 
@@ -106,11 +106,13 @@ Data Box 磁盘旨在将大量数据移到 Azure，且不影响网络。 该解�
 
 |Azure 区域  |Azure 区域  |
 |---------|---------|
-|美国中西部     |美国中北部         |        
-|美国西部 2     | 美国东部          |     
-|美国西部     | 美国东部 2           |      
-|美国中南部   | 西欧       |         
-|美国中部     | 北欧 |
+|美国中西部     |美国东部        |        
+|美国西部 2     |美国东部 2          |     
+|美国西部     | 西欧        |      
+|美国中南部   |北欧     |         
+|美国中部     |加拿大东部|
+|美国中北部  |加拿大中部    |
+
 
 
 

@@ -4,18 +4,18 @@ description: 了解如何在 HDInsight 群集上安装 Hue，并使用隧道将�
 keywords: hue hadoop
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: jasonh
-ms.openlocfilehash: cfeedfbe113ce47c46b574447d2ae36fe7023f30
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 7e8f4900143372f9030e157cfd71dd7d84eabd80
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39594903"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43093835"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 群集上安装并使用 Hue
 
@@ -63,7 +63,7 @@ https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-h
     ![为 Hue 提供脚本操作参数](./media/hdinsight-hadoop-hue-linux/hue-script-action.png "为 Hue 提供脚本操作参数")
 
    * **名称**：输入脚本操作的友好名称。
-   * **脚本 URI**：https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
+   * **脚本 URI**： https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
    * **标头**：选中此选项
    * **辅助角色**：将此选项留空。
    * **ZOOKEEPER**：将此选项留空。

@@ -9,12 +9,12 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: v-jansko
-ms.openlocfilehash: 5542c1c0eee5e4c7c85c566908dc8999b118f06e
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: f5b916ba3b6b044f12b84958b2eb69f44e2f8136
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37032430"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888135"
 ---
 # <a name="supported-languages-in-the-microsoft-translator-text-api"></a>Microsoft 文本翻译 API 中支持的语言
 
@@ -125,7 +125,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 南非荷兰语      | `af`          |
 | 阿拉伯语       | `ar`          |
 | Bangla      | `bn`          |
-| 波斯尼亚语(拉丁语)      | `bs`          |
+| 波斯尼亚语(拉丁语系)      | `bs`          |
 | 保加利亚语      | `bg`          |
 | 加泰罗尼亚语      | `ca`          |
 | 中文(简体)      | `zh-Hans`          | 
@@ -187,8 +187,8 @@ Detect 方法可检测到以下语言。 Detect 可能会检测到 Microsoft Tra
 | 保加利亚语 |
 | 加泰罗尼亚语 |
 | 中文 |
-| 中文_简体 |
-| 中文_繁体 |
+| 中文(简体) |
+| 中文(繁体) |
 | 克罗地亚语 |
 | 捷克语 |
 | 丹麦语 |
@@ -201,7 +201,7 @@ Detect 方法可检测到以下语言。 Detect 可能会检测到 Microsoft Tra
 | 加利西亚语 |
 | 德语 |
 | 希腊语 |
-| 海地语_克里奥尔语 |
+| 海地克里奥尔语 |
 | 希伯来语 |
 | 印地语 |
 | 匈牙利语 |
@@ -211,8 +211,8 @@ Detect 方法可检测到以下语言。 Detect 可能会检测到 Microsoft Tra
 | 意大利语 |
 | 日语 |
 | 韩语 |
-| 库尔德语_阿拉伯语 |
-| 库尔德语_拉丁语 |
+| 库尔德语(阿拉伯语) |
+| 库尔德语(拉丁语) |
 | 拉丁语 |
 | 拉脱维亚语 |
 | 立陶宛语 |
@@ -220,15 +220,15 @@ Detect 方法可检测到以下语言。 Detect 可能会检测到 Microsoft Tra
 | 马来语 |
 | 马耳他语 |
 | 挪威语 |
-| 挪威语_尼诺斯克语 |
+| 挪威语(尼诺斯克语) |
 | 普什图语 |
 | 波斯语 |
 | 波兰语 |
 | 葡萄牙语 |
 | 罗马尼亚语 |
 | 俄语 |
-| 塞尔维亚语_西里尔文 |
-| 塞尔维亚语_拉丁语 |
+| 塞尔维亚语(西里尔文) |
+| 塞尔维亚语(拉丁语系) |
 | 斯洛伐克语 |
 | 斯洛文尼亚语 |
 | 索马里语 |
@@ -240,8 +240,8 @@ Detect 方法可检测到以下语言。 Detect 可能会检测到 Microsoft Tra
 | 土耳其语 |
 | 乌克兰语 |
 | 乌尔都语 |
-| 乌兹别克语_西里尔文 |
-| 乌兹别克语_拉丁语 |
+| 乌兹别克语(西里尔文) |
+| 乌兹别克语(拉丁语) |
 | 越南语 |
 | 威尔士语 |
 | 意第绪语 |

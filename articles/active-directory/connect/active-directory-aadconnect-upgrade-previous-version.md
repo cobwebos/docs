@@ -15,12 +15,12 @@ ms.workload: Identity
 ms.date: 07/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 20c43669b9da24cea4b0b552a86ec7d5a77dc5a7
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: b730f80faa031b1866d3c11d8a2c885ec67f965e
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264505"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144314"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect：从旧版升级到最新版本
 本主题介绍可将 Azure Active Directory (Azure AD) Connect 安装升级到最新版本的不同方法。 建议使用最新版本的 Azure AD Connect。 进行重大配置更改时，也可以使用[交叉迁移](#swing-migration)部分所述的步骤。
@@ -67,7 +67,7 @@ ms.locfileid: "39264505"
 
 ### <a name="use-a-swing-migration-to-upgrade"></a>使用交叉迁移来升级
 1. 如果在两台服务器上使用 Azure AD Connect 并且只打算执行配置更改，请确保活动服务器和过渡服务器使用相同的版本。 这会有助于稍后比较差异。 如果要从 Azure AD Sync 升级，这些服务器将使用不同的版本。 如果要从旧版 Azure AD Connect 升级，建议使用相同的版本在两台服务器上开始升级，但不一定要这样做。
-2. 如果创建了自定义配置，但过渡服务器没有该配置，请执行[将自定义配置从活动服务器移到过渡服务器](#move-custom-configuration-from-active-to-staging-server)部分的步骤。
+2. 如果创建了自定义配置，但过渡服务器没有该配置，请执行[将自定义配置从活动服务器移到过渡服务器](#move-a-custom-configuration-from-the-active-server-to-the-staging-server)部分的步骤。
 3. 如果要从旧版 Azure AD Connect 升级，请将过渡服务器升级到最新版本。 如果要从 Azure AD Sync 迁移，请在过渡服务器上安装 Azure AD Connect。
 4. 让同步引擎在过渡服务器上运行完全导入和完全同步。
 5. 使用[验证服务器的配置](active-directory-aadconnectsync-operations.md#verify-the-configuration-of-a-server)部分“验证”下面列出的步骤，验证新配置是否不会造成任何意外的更改。 如果出现异常，请按照相关步骤进行纠正，运行导入和同步，并对数据进行验证，直到一切正常。

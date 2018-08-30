@@ -4,17 +4,17 @@ description: 有关如何使用 Jupyter Notebook 在 HDInsight Spark 群集中�
 services: hdinsight
 ms.service: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: jasonh
-ms.openlocfilehash: 397b622e4d58687dcd893cd448295192d7a2e407
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 4da8b0ddd8f8197d9aa8a79e5b63ac8fd90b4172
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39623096"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43043331"
 ---
 # <a name="tutorial-build-a-spark-machine-learning-application-in-hdinsight"></a>教程：在 HDInsight 中生成 Spark 机器学习应用程序 
 

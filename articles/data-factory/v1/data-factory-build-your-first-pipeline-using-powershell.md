@@ -11,16 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d8e4108e4c79a0920d7ff193e4751e1c71191488
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: f3c68fefc5cff2eafc969d11353e78eac8980e7f
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050397"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43096342"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>教程：使用 Azure PowerShell 构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.locfileid: "37050397"
 
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1。 如果你使用的是数据工厂服务的当前版本，请参阅[快速入门：使用 Azure 数据工厂创建数据工厂](../quickstart-create-data-factory-powershell.md)。
+> 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[快速入门：使用 Azure 数据工厂创建数据工厂](../quickstart-create-data-factory-powershell.md)。
 
 本教程介绍如何使用 Azure PowerShell 创建第一个 Azure 数据工厂。 若要使用其他工具/SDK 来完成教程，请从下拉列表中选择一个选项。
 
@@ -160,7 +160,7 @@ ms.locfileid: "37050397"
     ```
     下表提供了代码片段中使用的 JSON 属性的描述：
 
-   | 属性 | 说明 |
+   | 属性 | Description |
    |:--- |:--- |
    | ClusterSize |指定 HDInsight 群集的大小。 |
    | TimeToLive |指定 HDInsight 群集在被删除之前的空闲时间。 |
@@ -214,7 +214,7 @@ ms.locfileid: "37050397"
 
     下表提供了代码片段中使用的 JSON 属性的描述：
 
-   | 属性 | 说明 |
+   | 属性 | Description |
    |:--- |:--- |
    | type |type 属性设置为 AzureBlob，因为数据位于 Azure Blob 存储中。 |
    | linkedServiceName |引用前面创建的 StorageLinkedService。 |
@@ -414,7 +414,7 @@ ms.locfileid: "37050397"
 本文创建了可在按需 Azure HDInsight 群集上运行 Hive 脚本、包含转换活动（HDInsight 活动）的管道。 要了解如何使用复制活动将数据从 Azure Blob 复制到 Azure SQL，请参阅 [Tutorial: Copy data from an Azure Blob to Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)（教程：将数据从 Azure Blob 复制到 Azure SQL）。
 
 ## <a name="see-also"></a>另请参阅
-| 主题 | 说明 |
+| 主题 | Description |
 |:--- |:--- |
 | [Data Factory Cmdlet Reference](/powershell/module/azurerm.datafactories) |参阅有关数据工厂 cmdlet 的综合文档 |
 | [管道](data-factory-create-pipelines.md) |帮助你了解 Azure 数据工厂中的管道和活动，以及如何利用它们为方案或业务构造端对端数据驱动工作流。 |

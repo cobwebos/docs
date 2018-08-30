@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
-ms.openlocfilehash: bd86e44c21ca3c0b9c061f9a5c24bd19c4b207f9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0acff1eb4cee441187205b11a7e07cc718072cbf
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636437"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43248183"
 ---
 # <a name="use-powershell-to-add-an-external-user-to-a-lab-in-azure-devtest-labs"></a>使用 PowerShell 将外部用户添加到 Azure 开发测试实验室中的实验室
 
@@ -39,7 +39,7 @@ ms.locfileid: "34636437"
 | 命令 | 说明 |
 |---|---|
 | [Get-AzureRmADUser](/powershell/module/azurerm.resources/get-azurermaduser) | 从 Azure active directory 重试用户对象。 |
-| [New-AzureRmRoleAssignment](/module/azurerm.resources/new-azurermroleassignment) | 在指定范围内将指定的角色分配给指定的主体。 |
+| [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) | 在指定范围内将指定的角色分配给指定的主体。 |
 
 ## <a name="next-steps"></a>后续步骤
 
