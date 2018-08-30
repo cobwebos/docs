@@ -10,16 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: overview
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 1b0838bb3d4fa1f47d906294ce42c318d1f4a0cd
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0cdf10f4898ba103f9b6f65179300a10c9e33cdf
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38623546"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43087165"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure 数据工厂简介 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -143,7 +143,7 @@ Azure 数据工厂本身不存储任何数据。 它可以用于创建数据驱�
 
 若要了解如何构建包含数据管道的数据工厂，请遵循以下教程中的分步说明：
 
-| 教程 | 说明 |
+| 教程 | Description |
 | --- | --- |
 | [在两个云数据存储之间移动数据](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |创建一个包含管道的数据工厂，将数据从 Blob 存储移到 SQL 数据库。 |
 | [使用 Hadoop 群集转换数据](data-factory-build-your-first-pipeline.md) |构建第一个包含数据管道的 Azure 数据工厂，该数据管道可以通过在 Azure HDInsight (Hadoop) 群集上运行 Hive 脚本来处理数据。 |
