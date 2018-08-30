@@ -24,9 +24,8 @@ items:
   items:
   - name: 直观显示事件中心数据流的数据异常
     href: event-hubs-tutorial-visualize-anomalies.md
-  - name: 将大数据流式传输到数据仓库
-    href: ../event-grid/event-grid-event-hubs-integration.md
-    maintainContext: true
+  - name: 将捕获的数据存储在 SQL 数据仓库中
+    href: store-captured-data-data-warehouse.md
   - name: 使用事件中心将数据流式传输到 Azure Databricks
     href: ../azure-databricks/databricks-stream-from-eventhubs.md
     maintainContext: true
@@ -175,9 +174,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-eventhub
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=event-hubs
-ms.openlocfilehash: b04ddd9ede0fce2881789b8e4610f1a4d6f05311
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 4717ec9db2aaf904fe639b6b2d3add1b8602d96f
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41927185"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144015"

@@ -1,0 +1,87 @@
+items:
+- name: 服务总线中继文档
+  href: index.yml
+- name: 概述
+  items:
+  - name: 什么是中继？
+    href: relay-what-is-it.md
+  - name: 常见问题解答
+    href: relay-faq.md
+- name: 快速入门
+  items:
+  - name: 创建本地/云混合应用程序
+    href: service-bus-dotnet-hybrid-app-using-service-bus-relay.md
+  - name: 混合连接
+    items:
+    - name: .NET Websocket
+      href: relay-hybrid-connections-dotnet-get-started.md
+    - name: .NET HTTP
+      href: relay-hybrid-connections-http-requests-dotnet-get-started.md
+    - name: Node Websocket
+      href: relay-hybrid-connections-node-get-started.md
+    - name: Node HTTP
+      href: relay-hybrid-connections-http-requests-node-get-started.md
+  - name: WCF 中继教程
+    href: service-bus-relay-tutorial.md
+  - name: WCF 中继 REST 教程
+    href: service-bus-relay-rest-tutorial.md
+- name: 如何
+  items:
+  - name: 规划和设计
+    items:
+    - name: 身份验证和安全性
+      href: relay-authentication-and-authorization.md
+      items:
+      - name: 从 ACS 迁移到 SAS
+        href: relay-migrate-acs-sas.md
+    - name: 混合连接协议
+      href: relay-hybrid-connections-protocol.md
+  - name: 开发
+    items:
+    - name: 创建命名空间
+      href: relay-create-namespace-portal.md
+    - name: 使用 WCF 中继向外部客户端公开 WCF 服务
+      href: relay-wcf-dotnet-get-started.md
+    - name: 可用 API
+      href: relay-api-overview.md
+      items:
+      - name: .NET
+        href: relay-hybrid-connections-dotnet-api-overview.md
+      - name: 节点
+        href: relay-hybrid-connections-node-ws-api-overview.md
+  - name: 管理
+    items:
+    - name: 使用 Azure 监视来监视 Azure 中继
+      href: relay-metrics-azure-monitor.md
+- name: 引用
+  items:
+  - name: .NET
+    items:
+    - name: Microsoft.Azure.Relay
+      href: /dotnet/api/microsoft.azure.relay
+    - name: Microsoft.ServiceBus
+      href: /dotnet/api/Microsoft.ServiceBus
+  - name: 例外
+    href: relay-exceptions.md
+  - name: 端口设置
+    href: relay-port-settings.md
+- name: 资源
+  items:
+  - name: Azure 路线图
+    href: https://azure.microsoft.com/roadmap/?category=enterprise-integration
+  - name: 博客
+    href: https://blogs.msdn.microsoft.com/servicebus/
+  - name: 定价
+    href: https://azure.microsoft.com/pricing/details/service-bus/
+  - name: 定价计算器
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: 示例
+    href: https://github.com/azure/azure-relay/tree/master/samples
+  - name: 堆栈溢出
+    href: http://stackoverflow.com/questions/tagged/azure-servicebusrelay
+ms.openlocfilehash: 1c15d984e19f0585f386620f1e6e12667c69da5e
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144799"

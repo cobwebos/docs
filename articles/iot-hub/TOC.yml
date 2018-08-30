@@ -149,6 +149,8 @@ items:
         href: iot-hub-reliability-features-in-sdks.md
     - name: 查询中心路由中的 Avro 数据
       href: iot-hub-query-avro-data.md
+    - name: 订阅来自事件网格的设备连接状态事件
+      href: iot-hub-how-to-order-connection-state-events.md
     - name: 发送“云到设备”消息
       items:
       - name: .NET
@@ -421,9 +423,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 62cf58c35513a1f31a6601a6bf9543441f0beb81
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: f9ec05dade065966d6ea1b3aa2a63598ca7c859c
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046075"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143400"
