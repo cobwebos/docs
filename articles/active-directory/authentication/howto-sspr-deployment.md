@@ -1,6 +1,6 @@
 ---
 title: 自助密码重置部署指南 - Azure Active Directory
-description: 提示：如何成功推出 Azure AD 自助密码重置
+description: 提示：如何成功推出 Azure AD 自助密码重置功能
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
@@ -17,7 +17,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 08/08/2018
 ms.locfileid: "39622314"
 ---
-# <a name="how-to-successfully-roll-out-self-service-password-reset"></a>如何成功推出自助密码重置
+# <a name="how-to-successfully-roll-out-self-service-password-reset"></a>如何成功推出自助密码重置功能
 
 为了确保顺利推出 Azure Active directory (Azure AD) 自助密码重置 (SSPR) 功能，大多数客户会完成以下步骤：
 
@@ -39,20 +39,20 @@ ms.locfileid: "39622314"
 
 ## <a name="sample-communication"></a>示例通信
 
-许多客户发现，若要让用户使用 SSPR，最简单的方法是开展电子邮件促销活动，为用户提供易用的说明。 [我们创建了简单的电子邮件和其他宣传材料，你可以将其用作模板以帮助你进行推广](https://www.microsoft.com/download/details.aspx?id=56768)：
+许多客户发现，若要让用户使用 SSPR，最简单的方法是通过电子邮件，为用户提供易用的说明。 [我们创建了简单的电子邮件和其他宣传材料，你可以将其用作模板以帮助你进行推广](https://www.microsoft.com/download/details.aspx?id=56768)：
 
-* **即将推出**：一种电子邮件模板，在推出之前的数周或数天使用，目的是让用户了解他们需要做哪些准备。
-* **现已推出**：一种”电子邮件模板，在项目启动当天使用，目的是促使用户注册并确认其身份验证数据。 如果现在就注册，用户可以在需要 SSPR 时使用它。
-* **注册提醒**：一种电子邮件模板，在部署后的数天或数周使用，目的是提醒用户注册并确认其身份验证数据。
-* **SSPR 海报**：你可以自定义的海报并在推出之前和之后的几天和几周内将其显示在你组织周围。
+* **即将推出**：一种电子邮件模板，在推出之前的一段时间内使用，目的是让用户了解他们需要做哪些准备。
+* **现已推出**：一种电子邮件模板，在项目启动当天使用，目的是促使用户注册并确认其身份验证数据。如果现在就注册，用户可以在需要 SSPR 时使用它。
+* **注册提醒**：一种电子邮件模板，在部署后的一段时间内使用，目的是提醒用户注册并确认其身份验证数据。
+* **SSPR 海报**：可以自定义的海报，并在推出之前和之后的一段时间内将其布置在你的组织周围。
 * **SSPR 桌面帐篷**：可以放在午餐室、会议室或办公桌上的桌卡，以鼓励用户完成注册。
-* **SSPR 贴纸**：可以自定义并打印的贴纸模板，用于放置笔记本电脑、显示器、键盘或手机，以记住如何访问 SSPR。
+* **SSPR 贴纸**：可以自定义并打印的贴纸模板，可以放置在笔记本电脑、显示器、键盘或手机上，以记住如何访问 SSPR。
 
 ![SSPR 电子邮件示例][Email]
 
 ## <a name="create-your-own-password-portal"></a>创建自己的密码门户
 
-许多客户选择托管网页并创建根 DNS 条目，例如 https://passwords.contoso.com。 他们在此页中填充以下信息的链接：
+许多客户选择托管网页并创建根 DNS 条目，例如 https://passwords.contoso.com 。他们在此页中填充以下信息的链接：
 
 * [Azure AD 密码重置门户 - https://aka.ms/sspr](https://aka.ms/sspr)
 * [Azure AD 密码重置注册门户 - https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)
