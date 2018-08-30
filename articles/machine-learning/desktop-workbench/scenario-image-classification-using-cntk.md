@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
 ms.openlocfilehash: 48c21638fe5756e6527288ed0fdc73dd9e331afd
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2018
+ms.lasthandoff: 08/28/2018
 ms.locfileid: "35631911"
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>使用 Azure 机器学习 Workbench 进行图像分类
@@ -82,7 +82,7 @@ DNN 不仅使得图像分类领域取得了巨大进步，而且在其他计算�
 
 执行这些步骤将创建如下所示的项目结构。 项目目录限制为小于 25 MB，因为 Azure 机器学习 Workbench 会在每次运行之后创建此文件夹的副本（以启用运行历史记录）。 因此，所有图像和临时文件都将保存到目录 ~/Desktop/imgClassificationUsingCntk_data 下（本文档中称为 DATA_DIR）。
 
-  文件夹| 说明
+  文件夹| Description
   ---|---
   aml_config/|                           包含 Azure 机器学习 Workbench 配置文件的目录
   libraries/|                              包含所有 Python 和 Jupyter 帮助程序函数的目录

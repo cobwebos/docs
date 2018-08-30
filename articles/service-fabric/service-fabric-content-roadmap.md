@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: 9f37a7665521b69634329078258b00cb9f53c407
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 644089cea4dccc79e67b9117187b553eb4616d9f
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358712"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818208"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>想要了解 Service Fabric 吗？
 Azure Service Fabric 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。  不过，Service Fabric 的外围应用领域广泛，有很多东西需要学习。  本文简要说明了 Service Fabric，并介绍了核心概念、编程模型、应用程序生命周期、测试、群集和运行状况监视。 请参阅[概述](service-fabric-overview.md)和[什么是微服务？](service-fabric-overview-microservices.md)，概览相关信息，并了解如何使用 Service Fabric 创建微服务。 本文包含的内容列表虽不完整，但确实提供了 Service Fabric 每个应用领域的概述和入门文章链接。 
@@ -146,7 +146,7 @@ Service Fabric 与 [ASP.NET Core](service-fabric-reliable-services-communication
 ### <a name="standalone-clusters"></a>独立群集
 Service Fabric 提供一个安装包，用于在本地或者任何云提供程序上创建独立的 Service Fabric 群集。 独立群集可让你随时随地托管群集。 如果数据受符合性或法规约束，或者需要将数据保留在本地，可以托管自己的群集和应用程序。 Service Fabric 应用程序可在多个托管环境中运行，而不发生任何变化。因此，在应用程序生成方面的知识在各个托管环境中都适用。 
 
-[创建第一个独立的 Service Fabric 群集](service-fabric-get-started-standalone-cluster.md)
+[创建第一个独立的 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)
 
 尚不支持 Linux 独立群集。
 

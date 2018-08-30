@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: c6c5e27dad7f80a329edbd8fbcb95647dc4cd15a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8cb3cae396016545c5d78a2ff7ccde4a053c4cf1
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626713"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746973"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>配置连接的工厂解决方案加速器
 
@@ -265,7 +265,7 @@ ms.locfileid: "34626713"
 此类别中的属性定义连接的工厂仪表板的可视外观。 示例包括：
 
 * 名称
-* 说明
+* Description
 * 映像
 * 位置
 * 单位
@@ -282,7 +282,7 @@ WebApp 维护包含所有拓扑节点信息的内部数据字典。 Guid 和 Opc
 * 要包括在计算中的 OPC UA 节点值。
 * 从遥测值计算图表数据的方式。
 
-连接的工厂使用 http://oeeindustrystandard.oeefoundation.org 上发布的 OEE 公式。
+连接的工厂使用 http://www.oeefoundation.org 上发布的 OEE 公式。
 
 工作站中的 OPC UA 节点对象支持在 OEE/KPI 计算中使用标记。 Relevance 属性指示 OPC UA 节点值应用于的 OEE/KPI 图表数据。 OpCode 属性定义如何在计算中包含值。
 

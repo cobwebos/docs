@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/26/2018
+ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 4907004f4bb88cf0fe9fb799cab236ebf98bba7a
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: ede76e8161cc15d6a87041ef5ef9525570fec794
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37133214"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745875"
 ---
 # <a name="azure-event-hubs-event-processor-host-overview"></a>Azure 事件中心事件处理程序主机概述
 
@@ -162,5 +162,5 @@ public class SimpleEventProcessor : IEventProcessor
 * 使用 [事件中心教程](event-hubs-dotnet-standard-getstarted-send.md)
 * [事件中心编程指南](event-hubs-programming-guide.md)
 * [事件中心中的可用性和一致性](event-hubs-availability-and-consistency.md)
-* [事件中心常见问题](event-hubs-faq.md)
+* [事件中心常见问题解答](event-hubs-faq.md)
 * [GitHub 上的事件中心示例](https://github.com/Azure/azure-event-hubs/tree/master/samples)

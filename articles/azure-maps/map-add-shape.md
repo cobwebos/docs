@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: dec9b7289927365faa9c58522df2571db99f0494
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b1fe17adc80fc7f93f1511d577b1dc363e36e2e3
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34599365"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745995"
 ---
 # <a name="add-a-shape-to-a-map"></a>向地图添加形状
 
@@ -29,9 +29,9 @@ ms.locfileid: "34599365"
 
 在上面的代码中，第一个代码块构造地图对象。 有关说明，可以参阅[创建地图](./map-create.md)。
 
-第二个代码块创建一个线条。 线条是 LineString 的一项[功能](https://docs.microsoft.com/javascript/api/azure-maps-javascript/feature?view=azure-iot-typescript-latest)，使用 LineStringProperties 作为其 Feature 属性。 请使用 `new atlas.data.Feature(new atlas.data.LineString())` 创建线条并定义其属性。 
+第二个代码块创建一个线条。 线条是 LineString 的一项[功能](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.atlas.data.feature?view=azure-iot-typescript-latest)，使用 LineStringProperties 作为其 Feature 属性。 请使用 `new atlas.data.Feature(new atlas.data.LineString())` 创建线条并定义其属性。 
 
-线条层是一个线条数组。 最后一个代码块使用 map 类的 [addLineStrings](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addlinestrings) 函数向地图添加线条层并定义线条层的属性。 请参阅 [LinestringLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-javascript/linestringlayeroptions?view=azure-iot-typescript-latest) 中介绍的线条层属性。
+线条层是一个线条数组。 最后一个代码块使用 map 类的 [addLineStrings](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addlinestrings) 函数向地图添加线条层并定义线条层的属性。 请参阅 [LinestringLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.linestringlayeroptions?view=azure-iot-typescript-latest) 中介绍的线条层属性。
 
 <a id="addACircle"></a>
 
@@ -42,9 +42,9 @@ ms.locfileid: "34599365"
 
 在上面的代码中，第一个代码块构造地图对象。 有关说明，可以参阅[创建地图](./map-create.md)。
 
-第二个代码块创建一个圆圈。 圆圈是[点](https://docs.microsoft.com/javascript/api/azure-maps-javascript/point?view=azure-iot-typescript-latest)的一项[功能](https://docs.microsoft.com/javascript/api/azure-maps-javascript/feature?view=azure-iot-typescript-latest)，使用 [CircleProperties](https://docs.microsoft.com/javascript/api/azure-maps-javascript/circleproperties?view=azure-iot-typescript-latest) 作为其 Feature 属性。 请使用 `new atlas.data.Feature(new atlas.data.Point())` 创建圆圈并定义其属性。
+第二个代码块创建一个圆圈。 圆圈是[点](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.atlas.data.point?view=azure-iot-typescript-latest)的一项[功能](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.atlas.data.feature?view=azure-iot-typescript-latest)，使用 [CircleProperties](https://docs.microsoft.com/javascript/api/azure-maps-control/modelscircleproperties?view=azure-iot-typescript-latest) 作为其 Feature 属性。 请使用 `new atlas.data.Feature(new atlas.data.Point())` 创建圆圈并定义其属性。
 
-圆圈层是一个圆圈数组。 最后一个代码块使用 map 类的 [addCircle](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addcircles) 函数向地图添加圆圈层并定义圆圈层的属性。 请参阅 [CircleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-javascript/circlelayeroptions?view=azure-iot-typescript-latest) 中介绍的圆圈层属性。
+圆圈层是一个圆圈数组。 最后一个代码块使用 map 类的 [addCircle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcircles) 函数向地图添加圆圈层并定义圆圈层的属性。 请参阅 [CircleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.circlelayeroptions?view=azure-iot-typescript-latest) 中介绍的圆圈层属性。
 
 <a id="addAPolygon"></a>
 
@@ -54,9 +54,9 @@ ms.locfileid: "34599365"
 
 在上面的代码中，第一个代码块构造地图对象。 有关说明，可以参阅[创建地图](./map-create.md)。
 
-第二个代码块创建一个多边形。 多边形是[多边形](https://docs.microsoft.com/javascript/api/azure-maps-javascript/polygon?view=azure-iot-typescript-latest)的一项[功能](https://docs.microsoft.com/javascript/api/azure-maps-javascript/feature?view=azure-iot-typescript-latest)，使用 [PolygonProperties](https://docs.microsoft.com/javascript/api/azure-maps-javascript/polygonproperties?view=azure-iot-typescript-latest) 作为其 Feature 属性。 请使用 `new atlas.data.Feature(new atlas.data.Polygon())` 创建多边形并定义其属性。 请在多边形构造函数中提供多边形路径的有序坐标。
+第二个代码块创建一个多边形。 多边形是[多边形](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.atlas.data.polygon?view=azure-iot-typescript-latest)的一项[功能](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.atlas.data.feature?view=azure-iot-typescript-latest)，使用 [PolygonProperties](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.atlas.data.polygonproperties?view=azure-iot-typescript-latest) 作为其 Feature 属性。 请使用 `new atlas.data.Feature(new atlas.data.Polygon())` 创建多边形并定义其属性。 请在多边形构造函数中提供多边形路径的有序坐标。
 
-多边形层是一个多边形数组。 最后一个代码块使用 map 类的 [addPolygons](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addpolygons) 函数向地图添加多边形层并定义其属性。 请参阅 [PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-javascript/polygonlayeroptions?view=azure-iot-typescript-latest) 中介绍的多边形层属性。 
+多边形层是一个多边形数组。 最后一个代码块使用 map 类的 [addPolygons](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addpolygons) 函数向地图添加多边形层并定义其属性。 请参阅 [PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.polygonlayeroptions?view=azure-iot-typescript-latest) 中介绍的多边形层属性。 
 
 ## <a name="next-steps"></a>后续步骤
 有关可向地图添加的更多代码示例，请参阅以下文章：

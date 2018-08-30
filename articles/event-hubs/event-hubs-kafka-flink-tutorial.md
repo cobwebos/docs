@@ -8,14 +8,14 @@ manager: timlt
 ms.service: event-hubs
 ms.topic: article
 ms.custom: mvc
-ms.date: 06/06/2018
+ms.date: 08/06/2018
 ms.author: bahariri
-ms.openlocfilehash: f0d581ade0b09015bca1c8aee58170ef7aee11eb
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: b724ddfc1214ac17c2138dc9875896cf3353f0c7
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42142270"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746620"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>将 Apache Flink 与适用于 Apache Kafka 的 Azure 事件中心配合使用
 本教程演示如何在不更改协议客户端或运行自己的群集的情况下，将 Apache Flink 连接到已启用 Kafka 的事件中心。 Azure 事件中心支持 [Apache Kafka 版本 1.0](https://kafka.apache.org/10/documentation.html)。
@@ -26,7 +26,7 @@ ms.locfileid: "42142270"
 > [!div class="checklist"]
 > * 创建事件中心命名空间
 > * 克隆示例项目
-> * 运行 Flink 生产者 
+> * 运行 Flink 制造者 
 > * 运行 Flink 使用者
 
 ## <a name="prerequisites"></a>先决条件
@@ -56,7 +56,7 @@ git clone https://github.com/Azure/azure-event-hubs.git
 cd azure-event-hubs/samples/kafka/flink
 ```
 
-## <a name="run-flink-producer"></a>运行 Flink 生产者
+## <a name="run-flink-producer"></a>运行 Flink 制造者
 
 使用提供的 Flink 制造者事例，将消息发送到事件中心服务。
 
@@ -126,7 +126,7 @@ mvn exec:java -Dexec.mainClass="FlinkTestConsumer"
 > [!div class="checklist"]
 > * 创建事件中心命名空间
 > * 克隆示例项目
-> * 运行 Flink 生产者 
+> * 运行 Flink 制造者 
 > * 运行 Flink 使用者
 
 请继续学习下一篇文章，以详细了解适用于Apache Kafka 的事件中心：

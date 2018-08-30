@@ -1,3 +1,16 @@
+---
+author: conceptdev
+ms.author: crdun
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 08/23/2018
+ms.openlocfilehash: 0a74079677a084b2d4e8221cf5a74b356126811d
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42816214"
+---
 Azure 应用服务的移动应用功能使用 [Azure 通知中心]发送推送内容，因此用户需为移动应用配置通知中心。
 
 1. 在 [Azure 门户]中，转到“应用服务”，并选择应用后端。 在“设置”下，选择“推送”。

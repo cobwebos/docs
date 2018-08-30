@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 6ff7a0270509c244fc97bd04d8ba648fd262dc58
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2499822db587dbf47dccedf6039d0fb5823c58b5
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34600113"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746072"
 ---
 # <a name="show-traffic-on-the-map"></a>在地图上显示交通信息
 
@@ -27,13 +27,13 @@ ms.locfileid: "34600113"
 
 在上面的代码中，第一个代码块构造地图对象。 有关说明，可以参阅[创建地图](map-create.md)。
 
-第二个代码块使用 map 类的 [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#settraffic) 函数在地图上呈现交通流量和事件。
+第二个代码块使用 map 类的 [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#settraffic) 函数在地图上呈现交通流量和事件。
 
 ## <a name="next-steps"></a>后续步骤
 
 详细了解本文中使用的类和方法： 
-* [Map](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest)
-    * [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#settraffic)
+* [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+    * [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#settraffic)
 
 有关可向地图添加的更多代码示例，请参阅以下文章： 
 * [与地图交互 - 鼠标事件](./map-events.md)

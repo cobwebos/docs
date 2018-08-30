@@ -3,8 +3,7 @@ title: 如何使用适用于 Azure 移动应用的 iOS SDK
 description: 如何使用适用于 Azure 移动应用的 iOS SDK
 services: app-service\mobile
 documentationcenter: ios
-author: ysxu
-manager: yochayk
+author: conceptdev
 editor: ''
 ms.assetid: 4e8e45df-c36a-4a60-9ad4-393ec10b7eb9
 ms.service: app-service-mobile
@@ -13,69 +12,74 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: yuaxu
-ms.openlocfilehash: 683261ce9ecaa15f5849142cd25aa9b7c77a6867
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: crdun
+ms.openlocfilehash: 0de561b177a1474b0ce4f0f203803e8265db5e7a
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505791"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818340"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 iOS 客户端库
+
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 本指南介绍如何使用最新的 [Azure 移动应用 iOS SDK][1] 执行常见任务。 对于 Azure 移动应用的新手，请先完成 [Azure 移动应用快速入门]，创建后端、创建表并下载预先生成的 iOS Xcode 项目。 本指南侧重于客户端 iOS SDK。 有关用于后端的服务器端 SDK，请参阅 Server SDK 操作方法。
 
 ## <a name="reference-documentation"></a>参考文档
+
 iOS 客户端 SDK 的参考文档位于：[Azure 移动应用 iOS 客户端参考][2]。
 
 ## <a name="supported-platforms"></a>支持的平台
+
 对于 iOS 8.0 版本或更高版本，iOS SDK 支持 Objective-C 项目、Swift 2.2 项目和 Swift 2.3 项目。
 
 “服务器流”身份验证使用 WebView 显示 UI。  如果设备无法显示 WebView UI，则需要产品范围以外的另一种身份验证方法。  
 因此，此 SDK 不适用于手表类型或类似的受限设备。
 
 ## <a name="Setup"></a>安装与先决条件
+
 本指南假设已创建了包含表的后端。 本指南假设该表的架构与这些教程中的表相同。 本指南还假设在代码中引用了 `MicrosoftAzureMobile.framework` 并导入了 `MicrosoftAzureMobile/MicrosoftAzureMobile.h`。
 
 ## <a name="create-client"></a>如何创建客户端
+
 若要在项目中访问 Azure 移动应用后端，请创建 `MSClient`。 将 `AppUrl` 替换为应用 URL。 可以将 `gatewayURLString` 和 `applicationKey` 留空。 如果设置了用于身份验证的网关，请使用网关 URL 填充 `gatewayURLString`。
 
 **Objective-C**：
 
-```
+```objc
 MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl"];
 ```
 
 **Swift**：
 
-```
+```swift
 let client = MSClient(applicationURLString: "AppUrl")
 ```
 
-
 ## <a name="table-reference"></a>如何创建表引用
+
 若要访问或更新数据，请创建到后端表的引用。 将 `TodoItem` 替换为表名称
 
 **Objective-C**：
 
-```
+```objc
 MSTable *table = [client tableWithName:@"TodoItem"];
 ```
 
 **Swift**：
 
-```
+```swift
 let table = client.tableWithName("TodoItem")
 ```
 
-
 ## <a name="querying"></a>如何查询数据
+
 若要创建数据库查询，请查询 `MSTable` 对象。 以下查询将获取 `TodoItem` 中的所有项，并记录每个项的文本。
 
 **Objective-C**：
 
-```
+```objc
 [table readWithCompletion:^(MSQueryResult *result, NSError *error) {
         if(error) { // error is nil if no error occured
                 NSLog(@"ERROR %@", error);
@@ -89,7 +93,7 @@ let table = client.tableWithName("TodoItem")
 
 **Swift**：
 
-```
+```swift
 table.readWithCompletion { (result, error) in
     if let err = error {
         print("ERROR ", err)
@@ -102,13 +106,14 @@ table.readWithCompletion { (result, error) in
 ```
 
 ## <a name="filtering"></a>如何筛选返回的数据
+
 可以使用许多可用选项来筛选结果。
 
 若要使用谓词进行筛选，请使用 `NSPredicate` 和 `readWithPredicate`。 以下筛选器返回的数据只用于查找未完成的待办事项。
 
 **Objective-C**：
 
-```
+```objc
 // Create a predicate that finds items where complete is false
 NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
 // Query the TodoItem table
@@ -125,7 +130,7 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
 
 **Swift**：
 
-```
+```swift
 // Create a predicate that finds items where complete is false
 let predicate =  NSPredicate(format: "complete == NO")
 // Query the TodoItem table
@@ -141,18 +146,19 @@ table.readWithPredicate(predicate) { (result, error) in
 ```
 
 ## <a name="query-object"></a>如何使用 MSQuery
+
 若要执行复杂查询（包括排序和分页），请使用谓词直接创建 `MSQuery` 对象：
 
 **Objective-C**：
 
-```
+```objc
 MSQuery *query = [table query];
 MSQuery *query = [table queryWithPredicate: [NSPredicate predicateWithFormat:@"complete == NO"]];
 ```
 
 **Swift**：
 
-```
+```swift
 let query = table.query()
 let query = table.queryWithPredicate(NSPredicate(format: "complete == NO"))
 ```
@@ -169,11 +175,12 @@ let query = table.queryWithPredicate(NSPredicate(format: "complete == NO"))
 通过对对象调用 `readWithCompletion` 来执行 `MSQuery` 查询。
 
 ## <a name="sorting"></a>如何使用 MSQuery 对数据排序
+
 让我们先看一个示例，来了解如何对结果排序。 若要先按“文本”字段升序排列，再按“完成”降序排列，请调用 `MSQuery`，如下所示：
 
 **Objective-C**：
 
-```
+```objc
 [query orderByAscending:@"text"];
 [query orderByDescending:@"complete"];
 [query readWithCompletion:^(MSQueryResult *result, NSError *error) {
@@ -189,7 +196,7 @@ let query = table.queryWithPredicate(NSPredicate(format: "complete == NO"))
 
 **Swift**：
 
-```
+```swift
 query.orderByAscending("text")
 query.orderByDescending("complete")
 query.readWithCompletion { (result, error) in
@@ -203,19 +210,19 @@ query.readWithCompletion { (result, error) in
 }
 ```
 
-
 ## <a name="selecting"></a><a name="parameters"></a>如何使用 MSQuery 限制字段和展开查询字符串参数
+
 若要限制在查询中返回的字段，请在 **selectFields** 属性中指定字段的名称。 此示例仅返回文本和已完成的字段：
 
 **Objective-C**：
 
-```
+```objc
 query.selectFields = @[@"text", @"complete"];
 ```
 
 **Swift**：
 
-```
+```swift
 query.selectFields = ["text", "complete"]
 ```
 
@@ -223,7 +230,7 @@ query.selectFields = ["text", "complete"]
 
 **Objective-C**：
 
-```
+```objc
 query.parameters = @{
     @"myKey1" : @"value1",
     @"myKey2" : @"value2",
@@ -232,11 +239,12 @@ query.parameters = @{
 
 **Swift**：
 
-```
+```swift
 query.parameters = ["myKey1": "value1", "myKey2": "value2"]
 ```
 
 ## <a name="paging"></a>如何配置页面大小
+
 凭借 Azure 移动应用，页面大小可以控制从后端表中一次所拉取的记录数量。 对 `pull` 数据的调用随之会根据此页面大小来批处理数据，直到没有记录可拉取为止。
 
 可以使用 **MSPullSettings** 配置页面大小，如下所示。 默认页面大小为 50，以下示例中则改为 3。
@@ -251,7 +259,7 @@ query.parameters = ["myKey1": "value1", "myKey2": "value2"]
 
 **Objective-C**：
 
-```
+```objc
   MSPullSettings *pullSettings = [[MSPullSettings alloc] initWithPageSize:3];
   [table  pullWithQuery:query queryId:@nil settings:pullSettings
                         completion:^(NSError * _Nullable error) {
@@ -261,10 +269,9 @@ query.parameters = ["myKey1": "value1", "myKey2": "value2"]
                            }];
 ```
 
-
 **Swift**：
 
-```
+```swift
 let pullSettings = MSPullSettings(pageSize: 3)
 table.pullWithQuery(query, queryId:nil, settings: pullSettings) { (error) in
     if let err = error {
@@ -274,6 +281,7 @@ table.pullWithQuery(query, queryId:nil, settings: pullSettings) { (error) in
 ```
 
 ## <a name="inserting"></a>如何插入数据
+
 若要插入新的表行，请创建 `NSDictionary` 并调用 `table insert`。 如果启用[动态架构]，Azure 应用服务移动后端会根据 `NSDictionary` 自动生成新列。
 
 如果未提供 `id`，后端会自动生成新的唯一 ID。 提供自己的 `id`，以使用电子邮件地址、用户名或自己的自定义值作为 ID。 提供自己的 ID 可以让联接和业务导向型数据库逻辑变得更容易。
@@ -282,7 +290,7 @@ table.pullWithQuery(query, queryId:nil, settings: pullSettings) { (error) in
 
 **Objective-C**：
 
-```
+```objc
 NSDictionary *newItem = @{@"id": @"custom-id", @"text": @"my new item", @"complete" : @NO};
 [table insert:newItem completion:^(NSDictionary *result, NSError *error) {
     if(error) {
@@ -295,7 +303,7 @@ NSDictionary *newItem = @{@"id": @"custom-id", @"text": @"my new item", @"comple
 
 **Swift**：
 
-```
+```swift
 let newItem = ["id": "custom-id", "text": "my new item", "complete": false]
 table.insert(newItem) { (result, error) in
     if let err = error {
@@ -307,11 +315,12 @@ table.insert(newItem) { (result, error) in
 ```
 
 ## <a name="modifying"></a>如何修改数据
+
 若要更新现有的行，请修改项并调用 `update`：
 
 **Objective-C**：
 
-```
+```objc
 NSMutableDictionary *newItem = [oldItem mutableCopy]; // oldItem is NSDictionary
 [newItem setValue:@"Updated text" forKey:@"text"];
 [table update:newItem completion:^(NSDictionary *result, NSError *error) {
@@ -325,7 +334,7 @@ NSMutableDictionary *newItem = [oldItem mutableCopy]; // oldItem is NSDictionary
 
 **Swift**：
 
-```
+```swift
 if let newItem = oldItem.mutableCopy() as? NSMutableDictionary {
     newItem["text"] = "Updated text"
     table2.update(newItem as [NSObject: AnyObject], completion: { (result, error) -> Void in
@@ -342,7 +351,7 @@ if let newItem = oldItem.mutableCopy() as? NSMutableDictionary {
 
 **Objective-C**：
 
-```
+```objc
 [table update:@{@"id":@"custom-id", @"text":"my EDITED item"} completion:^(NSDictionary *result, NSError *error) {
     if(error) {
         NSLog(@"ERROR %@", error);
@@ -354,7 +363,7 @@ if let newItem = oldItem.mutableCopy() as? NSMutableDictionary {
 
 **Swift**：
 
-```
+```swift
 table.update(["id": "custom-id", "text": "my EDITED item"]) { (result, error) in
     if let err = error {
         print("ERROR ", err)
@@ -367,11 +376,12 @@ table.update(["id": "custom-id", "text": "my EDITED item"]) { (result, error) in
 进行更新时，至少必须设置 `id` 属性。
 
 ## <a name="deleting"></a>如何删除数据
+
 若要删除某个项，请对该项调用 `delete`：
 
 **Objective-C**：
 
-```
+```objc
 [table delete:item completion:^(id itemId, NSError *error) {
     if(error) {
         NSLog(@"ERROR %@", error);
@@ -383,7 +393,7 @@ table.update(["id": "custom-id", "text": "my EDITED item"]) { (result, error) in
 
 **Swift**：
 
-```
+```swift
 table.delete(newItem as [NSObject: AnyObject]) { (itemId, error) in
     if let err = error {
         print("ERROR ", err)
@@ -397,7 +407,7 @@ table.delete(newItem as [NSObject: AnyObject]) { (itemId, error) in
 
 **Objective-C**：
 
-```
+```objc
 [table deleteWithId:@"37BBF396-11F0-4B39-85C8-B319C729AF6D" completion:^(id itemId, NSError *error) {
     if(error) {
         NSLog(@"ERROR %@", error);
@@ -409,7 +419,7 @@ table.delete(newItem as [NSObject: AnyObject]) { (itemId, error) in
 
 **Swift**：
 
-```
+```swift
 table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) in
     if let err = error {
         print("ERROR ", err)
@@ -422,13 +432,14 @@ table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) in
 进行删除时，至少必须设置 `id` 属性。
 
 ## <a name="customapi"></a>如何调用自定义 API
+
 使用自定义 API 可以公开任何后端功能。 无需映射到表操作。 不仅能进一步控制消息，甚至还可以读取或设置标头，并更改响应正文格式。 若要了解如何在后端上创建自定义 API，请阅读[自定义 API](app-service-mobile-node-backend-how-to-use-server-sdk.md#work-easy-apis)
 
 若要调用自定义 API，请调用 `MSClient.invokeAPI`。 请求和响应内容被视为 JSON。 若要使用其他媒体类型，[请使用 `invokeAPI` 的其他重载][5]。  要发出 `GET` 请求而不是 `POST` 请求，请将参数 `HTTPMethod` 设置为 `"GET"`，将参数 `body` 设置为 `nil`（因为 GET 请求没有消息正文）。如果自定义 API 支持其他 HTTP 谓词，请相应地更改 `HTTPMethod`。
 
 **Objective-C**：
 
-```
+```objc
 [self.client invokeAPI:@"sendEmail"
                   body:@{ @"contents": @"Hello world!" }
             HTTPMethod:@"POST"
@@ -445,7 +456,7 @@ table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) in
 
 **Swift**：
 
-```
+```swift
 client.invokeAPI("sendEmail",
             body: [ "contents": "Hello World" ],
             HTTPMethod: "POST",
@@ -462,11 +473,12 @@ client.invokeAPI("sendEmail",
 ```
 
 ## <a name="templates"></a>如何注册推送模板以发送跨平台通知
+
 若要注册模板，请在客户端应用中使用 **client.push registerDeviceToken** 方法传递模板。
 
 **Objective-C**：
 
-```
+```objc
 [client.push registerDeviceToken:deviceToken template:iOSTemplate completion:^(NSError *error) {
     if(error) {
         NSLog(@"ERROR %@", error);
@@ -476,44 +488,45 @@ client.invokeAPI("sendEmail",
 
 **Swift**：
 
-```
-    client.push?.registerDeviceToken(NSData(), template: iOSTemplate, completion: { (error) in
-        if let err = error {
-            print("ERROR ", err)
-        }
-    })
+```swift
+client.push?.registerDeviceToken(NSData(), template: iOSTemplate, completion: { (error) in
+    if let err = error {
+        print("ERROR ", err)
+    }
+})
 ```
 
 模板类型为 NSDictionary，并且可以包含以下格式的多个模板：
 
 **Objective-C**：
 
-```
+```objc
 NSDictionary *iOSTemplate = @{ @"templateName": @{ @"body": @{ @"aps": @{ @"alert": @"$(message)" } } } };
 ```
 
 **Swift**：
 
-```
+```swift
 let iOSTemplate = ["templateName": ["body": ["aps": ["alert": "$(message)"]]]]
 ```
 
 出于安全性考虑，将去除所有请求的标记。  要将标记添加到安装或安装中的模板，请参阅[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK][4]。  若要使用这些注册的模板发送通知，请参阅[通知中心 API][3]。
 
 ## <a name="errors"></a>如何处理错误
+
 在调用 Azure 应用服务移动后端时，完成块包含 `NSError` 参数。 如果出错，此参数为非 nil 值。 在代码中，应检查此参数，并根据需要处理错误，如上面代码片段中所示。
 
 文件 [`<WindowsAzureMobileServices/MSError.h>`][6] 定义常量 `MSErrorResponseKey`、`MSErrorRequestKey` 和 `MSErrorServerItemKey`。 获取更多与错误相关的数据：
 
 **Objective-C**：
 
-```
+```objc
 NSDictionary *serverItem = [error.userInfo objectForKey:MSErrorServerItemKey];
 ```
 
 **Swift**：
 
-```
+```swift
 let serverItem = error.userInfo[MSErrorServerItemKey]
 ```
 
@@ -521,17 +534,18 @@ let serverItem = error.userInfo[MSErrorServerItemKey]
 
 **Objective-C**：
 
-```
+```objc
 if (error.code == MSErrorPreconditionFailed) {
 ```
 
 **Swift**：
 
-```
+```swift
 if (error.code == MSErrorPreconditionFailed) {
 ```
 
 ## <a name="adal"></a>如何使用 Active Directory 身份验证库对用户进行身份验证
+
 可以借助 Active Directory 身份验证库 (ADAL) 使用 Azure Active Directory 将用户登录到应用程序。 使用标识提供者 SDK 的客户端流身份验证会首选使用 `loginWithProvider:completion:` 方法。  客户端流身份验证提供更直观的 UX 风格，并允许进行其他自定义。
 
 1. 根据[如何为 Active Directory 登录配置应用服务][7]教程的说明，为 AAD 登录配置移动应用。 请务必完成注册本机客户端应用程序的可选步骤。 对于 iOS，我们推荐重定向 URI 的格式为 `<app-scheme>://<bundle-id>`。 有关详细信息，请参阅 [ADAL iOS 快速入门][8]。
@@ -544,6 +558,7 @@ if (error.code == MSErrorPreconditionFailed) {
    Pod：
 
         pod 'ADALiOS'
+
 3. 使用终端，从包含项目的目录运行 `pod install`，并打开生成的 Xcode 工作区（而不是项目）。
 4. 根据使用的语言，将以下代码添加到应用程序。 在每个应用程序中，进行以下替换：
 
@@ -554,117 +569,126 @@ if (error.code == MSErrorPreconditionFailed) {
 
 **Objective-C**：
 
-    #import <ADALiOS/ADAuthenticationContext.h>
-    #import <ADALiOS/ADAuthenticationSettings.h>
-    // ...
-    - (void) authenticate:(UIViewController*) parent
-               completion:(void (^) (MSUser*, NSError*))completionBlock;
-    {
-        NSString *authority = @"INSERT-AUTHORITY-HERE";
-        NSString *resourceId = @"INSERT-RESOURCE-ID-HERE";
-        NSString *clientId = @"INSERT-CLIENT-ID-HERE";
-        NSURL *redirectUri = [[NSURL alloc]initWithString:@"INSERT-REDIRECT-URI-HERE"];
-        ADAuthenticationError *error;
-        ADAuthenticationContext *authContext = [ADAuthenticationContext authenticationContextWithAuthority:authority error:&error];
-        authContext.parentController = parent;
-        [ADAuthenticationSettings sharedInstance].enableFullScreen = YES;
-        [authContext acquireTokenWithResource:resourceId
-                                     clientId:clientId
-                                  redirectUri:redirectUri
-                              completionBlock:^(ADAuthenticationResult *result) {
-                                  if (result.status != AD_SUCCEEDED)
-                                  {
-                                      completionBlock(nil, result.error);;
-                                  }
-                                  else
-                                  {
-                                      NSDictionary *payload = @{
-                                                                @"access_token" : result.tokenCacheStoreItem.accessToken
-                                                                };
-                                      [client loginWithProvider:@"aad" token:payload completion:completionBlock];
-                                  }
-                              }];
-    }
-
+```objc
+#import <ADALiOS/ADAuthenticationContext.h>
+#import <ADALiOS/ADAuthenticationSettings.h>
+// ...
+- (void) authenticate:(UIViewController*) parent
+            completion:(void (^) (MSUser*, NSError*))completionBlock;
+{
+    NSString *authority = @"INSERT-AUTHORITY-HERE";
+    NSString *resourceId = @"INSERT-RESOURCE-ID-HERE";
+    NSString *clientId = @"INSERT-CLIENT-ID-HERE";
+    NSURL *redirectUri = [[NSURL alloc]initWithString:@"INSERT-REDIRECT-URI-HERE"];
+    ADAuthenticationError *error;
+    ADAuthenticationContext *authContext = [ADAuthenticationContext authenticationContextWithAuthority:authority error:&error];
+    authContext.parentController = parent;
+    [ADAuthenticationSettings sharedInstance].enableFullScreen = YES;
+    [authContext acquireTokenWithResource:resourceId
+                                    clientId:clientId
+                                redirectUri:redirectUri
+                            completionBlock:^(ADAuthenticationResult *result) {
+                                if (result.status != AD_SUCCEEDED)
+                                {
+                                    completionBlock(nil, result.error);;
+                                }
+                                else
+                                {
+                                    NSDictionary *payload = @{
+                                                            @"access_token" : result.tokenCacheStoreItem.accessToken
+                                                            };
+                                    [client loginWithProvider:@"aad" token:payload completion:completionBlock];
+                                }
+                            }];
+}
+```
 
 **Swift**：
 
-    // add the following imports to your bridging header:
-    //        #import <ADALiOS/ADAuthenticationContext.h>
-    //        #import <ADALiOS/ADAuthenticationSettings.h>
+```swift
+// add the following imports to your bridging header:
+//        #import <ADALiOS/ADAuthenticationContext.h>
+//        #import <ADALiOS/ADAuthenticationSettings.h>
 
-    func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> Void) {
-        let authority = "INSERT-AUTHORITY-HERE"
-        let resourceId = "INSERT-RESOURCE-ID-HERE"
-        let clientId = "INSERT-CLIENT-ID-HERE"
-        let redirectUri = NSURL(string: "INSERT-REDIRECT-URI-HERE")
-        var error: AutoreleasingUnsafeMutablePointer<ADAuthenticationError?> = nil
-        let authContext = ADAuthenticationContext(authority: authority, error: error)
-        authContext.parentController = parent
-        ADAuthenticationSettings.sharedInstance().enableFullScreen = true
-        authContext.acquireTokenWithResource(resourceId, clientId: clientId, redirectUri: redirectUri) { (result) in
-                if result.status != AD_SUCCEEDED {
-                    completion(nil, result.error)
-                }
-                else {
-                    let payload: [String: String] = ["access_token": result.tokenCacheStoreItem.accessToken]
-                    client.loginWithProvider("aad", token: payload, completion: completion)
-                }
+func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> Void) {
+    let authority = "INSERT-AUTHORITY-HERE"
+    let resourceId = "INSERT-RESOURCE-ID-HERE"
+    let clientId = "INSERT-CLIENT-ID-HERE"
+    let redirectUri = NSURL(string: "INSERT-REDIRECT-URI-HERE")
+    var error: AutoreleasingUnsafeMutablePointer<ADAuthenticationError?> = nil
+    let authContext = ADAuthenticationContext(authority: authority, error: error)
+    authContext.parentController = parent
+    ADAuthenticationSettings.sharedInstance().enableFullScreen = true
+    authContext.acquireTokenWithResource(resourceId, clientId: clientId, redirectUri: redirectUri) { (result) in
+            if result.status != AD_SUCCEEDED {
+                completion(nil, result.error)
             }
-    }
+            else {
+                let payload: [String: String] = ["access_token": result.tokenCacheStoreItem.accessToken]
+                client.loginWithProvider("aad", token: payload, completion: completion)
+            }
+        }
+}
+```
 
 ## <a name="facebook-sdk"></a>如何使用 Facebook SDK for iOS 对用户进行身份验证
+
 可以使用 Facebook SDK for iOS 以用户的身份登录到使用 Facebook 的应用程序。  使用客户端流身份验证会优先使用 `loginWithProvider:completion:` 方法。  客户端流身份验证提供更直观的 UX 风格，并允许进行其他自定义。
 
 1. 根据[如何为 Facebook 登录配置应用服务][9] 教程的说明，为 Facebook 登录配置移动应用后端。
 2. 根据 [Facebook SDK for iOS - 入门][10] 文档中的说明，安装 Facebook SDK for iOS。 不需创建应用，可以将 iOS 平台添加到现有注册。
 3. Facebook 的文档包括 App Delegate 中的一些 Objective-C 代码。 如果使用 **Swift**，则可以使用以下 AppDelegate.swift 的转换：
 
-        // Add the following import to your bridging header:
-        //        #import <FBSDKCoreKit/FBSDKCoreKit.h>
+    ```swift
+    // Add the following import to your bridging header:
+    //        #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
-        func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
-            FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-            // Add any custom logic here.
-            return true
-        }
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        // Add any custom logic here.
+        return true
+    }
 
-        func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-            let handled = FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
-            // Add any custom logic here.
-            return handled
-        }
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        let handled = FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+        // Add any custom logic here.
+        return handled
+    }
+    ```
 4. 除了将 `FBSDKCoreKit.framework` 添加到项目之外，也可以以相同方式向 `FBSDKLoginKit.framework` 添加引用。
 5. 根据使用的语言，将以下代码添加到应用程序。
 
-**Objective-C**：
+    **Objective-C**：
 
+    ```objc
     #import <FBSDKLoginKit/FBSDKLoginKit.h>
     #import <FBSDKCoreKit/FBSDKAccessToken.h>
     // ...
     - (void) authenticate:(UIViewController*) parent
-               completion:(void (^) (MSUser*, NSError*)) completionBlock;
-    {        
+                completion:(void (^) (MSUser*, NSError*)) completionBlock;
+    {
         FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
         [loginManager
-         logInWithReadPermissions: @[@"public_profile"]
-         fromViewController:parent
-         handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
-             if (error) {
-                 completionBlock(nil, error);
-             } else if (result.isCancelled) {
-                 completionBlock(nil, error);
-             } else {
-                 NSDictionary *payload = @{
-                                           @"access_token":result.token.tokenString
-                                           };
-                 [client loginWithProvider:@"facebook" token:payload completion:completionBlock];
-             }
-         }];
+            logInWithReadPermissions: @[@"public_profile"]
+            fromViewController:parent
+            handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+                if (error) {
+                    completionBlock(nil, error);
+                } else if (result.isCancelled) {
+                    completionBlock(nil, error);
+                } else {
+                    NSDictionary *payload = @{
+                                            @"access_token":result.token.tokenString
+                                            };
+                    [client loginWithProvider:@"facebook" token:payload completion:completionBlock];
+                }
+            }];
     }
+    ```
 
-**Swift**：
+    **Swift**：
 
+    ```swift
     // Add the following imports to your bridging header:
     //        #import <FBSDKLoginKit/FBSDKLoginKit.h>
     //        #import <FBSDKCoreKit/FBSDKAccessToken.h>
@@ -684,8 +708,10 @@ if (error.code == MSErrorPreconditionFailed) {
             }
         }
     }
+    ```
 
 ## <a name="twitter-fabric"></a>如何使用 Twitter Fabric for iOS 对用户进行身份验证
+
 可以使用 Fabric for iOS 将用户登录到使用 Twitter 的应用程序。 客户端流身份验证会首选使用 `loginWithProvider:completion:` 方法，因为它提供更直观的 UX 风格，并允许进行其他自定义。
 
 1. 根据[如何为 Twitter 登录配置应用服务](../app-service/app-service-mobile-how-to-configure-twitter-authentication.md)教程的说明，为 Twitter 登录配置移动应用后端。
@@ -693,39 +719,43 @@ if (error.code == MSErrorPreconditionFailed) {
 
    > [!NOTE]
    > 默认情况下，Fabric 会创建 Twitter 应用程序。 可以通过注册之前使用以下代码片段创建的使用者密钥和使用者机密来避免创建应用程序。    此外，还可以将提供给应用服务的使用者密钥和使用者机密值替换为 [Fabric 仪表板] 中所见的值。 如果选择此选项，请确保将回调 URL 设置为占位符值，如 `https://<yoursitename>.azurewebsites.net/.auth/login/twitter/callback`。
-   >
-   >
 
     如果选择使用之前创建的机密，请将以下代码添加到应用委托中：
 
     **Objective-C**：
 
-        #import <Fabric/Fabric.h>
-        #import <TwitterKit/TwitterKit.h>
-        // ...
-        - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-        {
-            [[Twitter sharedInstance] startWithConsumerKey:@"your_key" consumerSecret:@"your_secret"];
-            [Fabric with:@[[Twitter class]]];
-            // Add any custom logic here.
-            return YES;
-        }
+    ```objc
+    #import <Fabric/Fabric.h>
+    #import <TwitterKit/TwitterKit.h>
+    // ...
+    - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+    {
+        [[Twitter sharedInstance] startWithConsumerKey:@"your_key" consumerSecret:@"your_secret"];
+        [Fabric with:@[[Twitter class]]];
+        // Add any custom logic here.
+        return YES;
+    }
+    ```
 
     **Swift**：
 
-        import Fabric
-        import TwitterKit
-        // ...
-        func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
-            Twitter.sharedInstance().startWithConsumerKey("your_key", consumerSecret: "your_secret")
-            Fabric.with([Twitter.self])
-            // Add any custom logic here.
-            return true
-        }
+    ```swift
+    import Fabric
+    import TwitterKit
+    // ...
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+        Twitter.sharedInstance().startWithConsumerKey("your_key", consumerSecret: "your_secret")
+        Fabric.with([Twitter.self])
+        // Add any custom logic here.
+        return true
+    }
+    ```
+
 3. 根据使用的语言，将以下代码添加到应用程序。
 
-**Objective-C**：
+    **Objective-C**：
 
+    ```objc
     #import <TwitterKit/TwitterKit.h>
     // ...
     - (void)authenticate:(UIViewController*)parent completion:(void (^) (MSUser*, NSError*))completionBlock
@@ -742,9 +772,11 @@ if (error.code == MSErrorPreconditionFailed) {
             }
         }];
     }
+    ```
 
-**Swift**：
+    **Swift**：
 
+    ```swift
     import TwitterKit
     // ...
     func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> Void) {
@@ -758,64 +790,76 @@ if (error.code == MSErrorPreconditionFailed) {
             }
         }
     }
+    ```
 
 ## <a name="google-sdk"></a>如何使用 Google Sign-In SDK for iOS 对用户进行身份验证
+
 可以使用 Google Sign-In SDK for iOS 将用户登录到使用 Google 帐户的应用程序。  Google 最近已宣布要对 OAuth 安全策略进行更改。  将来这些策略更改将要求使用 Google SDK。
 
 1. 根据[如何为 Google 登录配置应用服务](../app-service/app-service-mobile-how-to-configure-google-authentication.md)教程的说明，为 Google 登录配置移动应用后端。
 2. 按照 [Google Sign-In for iOS - 开始集成](https://developers.google.com/identity/sign-in/ios/start-integrating)文档中的说明，安装 Google SDK for iOS。 可以跳过“使用后端服务器进行身份验证”部分。
 3. 根据使用的语言，将以下内容添加到委派的 `signIn:didSignInForUser:withError:` 方法。
 
-**Objective-C**：
+    **Objective-C**：
+    ```objc
+    NSDictionary *payload = @{
+                                @"id_token":user.authentication.idToken,
+                                @"authorization_code":user.serverAuthCode
+                                };
 
-        NSDictionary *payload = @{
-                                  @"id_token":user.authentication.idToken,
-                                  @"authorization_code":user.serverAuthCode
-                                  };
+    [client loginWithProvider:@"google" token:payload completion:^(MSUser *user, NSError *error) {
+        // ...
+    }];
+    ```
 
-        [client loginWithProvider:@"google" token:payload completion:^(MSUser *user, NSError *error) {
-            // ...
-        }];
+    **Swift**：
 
-**Swift**：
+    ```swift
+    let payload: [String: String] = ["id_token": user.authentication.idToken, "authorization_code": user.serverAuthCode]
+    client.loginWithProvider("google", token: payload) { (user, error) in
+        // ...
+    }
+    ```
 
-        let payload: [String: String] = ["id_token": user.authentication.idToken, "authorization_code": user.serverAuthCode]
-        client.loginWithProvider("google", token: payload) { (user, error) in
-            // ...
-        }
+4. 请确保也将以下内容添加到应用委托中的 `application:didFinishLaunchingWithOptions:`，将“SERVER_CLIENT_ID”替换为在步骤 1 中用于配置应用服务的同一 ID。
 
-1. 请确保也将以下内容添加到应用委托中的 `application:didFinishLaunchingWithOptions:`，将“SERVER_CLIENT_ID”替换为在步骤 1 中用于配置应用服务的同一 ID。
+    **Objective-C**：
 
-**Objective-C**：
+    ```objc
+    [GIDSignIn sharedInstance].serverClientID = @"SERVER_CLIENT_ID";
+    ```
 
-         [GIDSignIn sharedInstance].serverClientID = @"SERVER_CLIENT_ID";
+     **Swift**：
 
- **Swift**：
+    ```swift
+    GIDSignIn.sharedInstance().serverClientID = "SERVER_CLIENT_ID"
+    ```
 
-        GIDSignIn.sharedInstance().serverClientID = "SERVER_CLIENT_ID"
-
-
-1. 根据使用的语言，将以下代码添加到 UIViewController 中实现 `GIDSignInUIDelegate` 协议的应用程序。  再次登录之前需要注销，虽然不需要再次输入凭据，但还是会看到同意对话框。  仅当会话令牌过期时调用此方法。
+5. 根据使用的语言，将以下代码添加到 UIViewController 中实现 `GIDSignInUIDelegate` 协议的应用程序。  再次登录之前需要注销，虽然不需要再次输入凭据，但还是会看到同意对话框。  仅当会话令牌过期时调用此方法。
 
    **Objective-C**：
 
-       #import <Google/SignIn.h>
-       // ...
-       - (void)authenticate
-       {
-               [GIDSignIn sharedInstance].uiDelegate = self;
-               [[GIDSignIn sharedInstance] signOut];
-               [[GIDSignIn sharedInstance] signIn];
-        }
+    ```objc
+    #import <Google/SignIn.h>
+    // ...
+    - (void)authenticate
+    {
+            [GIDSignIn sharedInstance].uiDelegate = self;
+            [[GIDSignIn sharedInstance] signOut];
+            [[GIDSignIn sharedInstance] signIn];
+    }
+    ```
 
    **Swift**：
 
-       // ...
-       func authenticate() {
-           GIDSignIn.sharedInstance().uiDelegate = self
-           GIDSignIn.sharedInstance().signOut()
-           GIDSignIn.sharedInstance().signIn()
-       }
+    ```swift
+    // ...
+    func authenticate() {
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().signOut()
+        GIDSignIn.sharedInstance().signIn()
+    }
+    ```
 
 <!-- Anchors. -->
 

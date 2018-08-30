@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 6b673b415b4e93fc7ceb4288b88d6d72740f0259
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d8b17affb34ddf31fc2016e0c297b293b4a260c2
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34600191"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745679"
 ---
 # <a name="interacting-with-the-map--mouse-events"></a>与地图交互 - 鼠标事件 
 
@@ -31,8 +31,8 @@ ms.locfileid: "34600191"
 
 详细了解本文中使用的类和方法： 
 
-* [Map](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest)
-    * [addEventListener](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addeventlistener)
+* [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+    * [addEventListener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addeventlistener)
 
 有关可向地图添加的更多代码示例，请参阅以下文章： 
 * [显示搜索结果](./map-search-location.md)

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: d0ec146d276f72abf4cbbe3da4d11c0d5539df6d
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 803e82a294b64452ffd788880097b9d86ac1065b
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144187"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745284"
 ---
 # <a name="what-is-azure-maps"></a>什么是 Azure Maps？
 Azure Maps 是以全新地图数据支撑的一系列地理空间服务，可让你在 Web 和移动应用程序中提供准确的地理上下文。 它包含用于在定位服务中呈现地图以及搜索兴趣点、兴趣点路线、交通状况、时区和 IP 的 REST API。 可以结合熟悉的工具使用这些 API，快速开发和缩放将位置信息集成到 Azure 解决方案中的解决方案。 除 REST API 以外，Azure Maps 还提供一个基于 Web 的 JavaScript 控件，实现简单、灵活且可移植的跨媒体开发。 
@@ -98,7 +98,7 @@ Azure Maps 包含以下六个可在 Azure 应用程序中提供地理上下文�
 
 Azure Maps 针对移动设备设计，可为跨平台应用程序提供支持。 它使用语言无关的编程模型，支持通过 [REST API](https://docs.microsoft.com/rest/api/maps/) 返回 JSON 输出。 
 
-此外，Azure Maps 还提供一个简单的编程模型和方便的 [JavaScript 地图控件](https://docs.microsoft.com/javascript/api/azure-maps-javascript/?view=azure-iot-typescript-latest)，用于快速轻松地开发 Web 和移动应用程序。 
+此外，Azure Maps 还提供一个简单的编程模型和方便的 [JavaScript 地图控件](https://docs.microsoft.com/javascript/api/azure-maps-control/models?view=azure-iot-typescript-latest)，用于快速轻松地开发 Web 和移动应用程序。 
 
 
 ## <a name="usage"></a>使用情况

@@ -52,7 +52,7 @@ ms.locfileid: "39622314"
 
 ## <a name="create-your-own-password-portal"></a>创建自己的密码门户
 
-许多客户选择托管网页并创建根 DNS 条目，例如 https://passwords.contoso.com。 他们在此页中填充以下信息的链接：
+许多客户选择托管网页并创建根 DNS 条目，例如 https://passwords.contoso.com 。 他们在此页中填充以下信息的链接：
 
 * [Azure AD 密码重置门户 - https://aka.ms/sspr](https://aka.ms/sspr)
 * [Azure AD 密码重置注册门户 - https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)

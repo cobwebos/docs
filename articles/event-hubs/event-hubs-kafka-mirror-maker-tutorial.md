@@ -8,14 +8,14 @@ manager: timlt
 ms.service: event-hubs
 ms.topic: mirror-maker
 ms.custom: mvc
-ms.date: 05/07/2018
+ms.date: 08/07/2018
 ms.author: bahariri
-ms.openlocfilehash: d9ac8137e1e86edcdfe824ae29c1a8d46126900c
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: f3881d4448f44d44515ddb25072401d775d69b90
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42144188"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42747182"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>将 Kafka MirrorMaker 与适用于 Apache Kafka 的事件中心配合使用
 
