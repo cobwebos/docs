@@ -1,0 +1,99 @@
+items:
+- name: Privileged Identity Management 文档
+- name: 概述
+  items:
+  - name: 什么是 Azure AD PIM？
+    href: pim-configure.md
+- name: 概念
+  items:
+  - name: 订阅要求
+    href: subscription-requirements.md
+  - name: 可以管理的目录角色
+    href: pim-roles.md
+  - name: 保护特权访问
+    href: ../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
+  - name: 仪表板概述
+    href: pim-resource-roles-overview-dashboards.md
+  - name: 电子邮件通知
+    href: pim-email-notifications.md
+  - name: 分配类型
+    href: pim-resource-roles-eligible-visibility.md
+  - name: 安全向导
+    href: pim-security-wizard.md
+- name: 操作指南
+  items:
+  - name: 开始使用 PIM
+    href: pim-getting-started.md
+  - name: 激活角色
+    items:
+    - name: 激活我的目录角色
+      href: pim-how-to-activate-role.md
+    - name: 激活我的资源角色
+      href: pim-resource-roles-activate-your-roles.md
+  - name: 配置 PIM
+    items:
+    - name: 发现 Azure 资源
+      href: pim-resource-roles-discover-resources.md
+    - name: 将访问权限授予其他人以管理 PIM
+      href: pim-how-to-give-access-to-pim.md
+    - name: 启用订阅管理
+      href: pim-resource-roles-enable-subscription-management.md
+  - name: 管理目录角色
+    items:
+    - name: 分配角色
+      href: pim-how-to-add-role-to-user.md
+    - name: 配置角色设置
+      href: pim-how-to-change-default-settings.md
+    - name: 要求 MFA
+      href: pim-how-to-require-mfa.md
+    - name: 配置警报
+      href: pim-how-to-configure-security-alerts.md
+    - name: 审批请求
+      href: azure-ad-pim-approval-workflow.md
+    - name: 查看审核历史记录
+      href: pim-how-to-use-audit-log.md
+  - name: 管理资源角色
+    items:
+    - name: 查看谁具有访问权限
+      href: azure-pim-resource-rbac.md
+    - name: 分配角色
+      href: pim-resource-roles-assign-roles.md
+    - name: 配置角色设置
+      href: pim-resource-roles-configure-role-settings.md
+    - name: 要求 MFA
+      href: pim-resource-roles-require-mfa.md
+    - name: 配置警报
+      href: pim-resource-roles-configure-alerts.md
+    - name: 审批请求
+      href: pim-resource-roles-approval-workflow.md
+    - name: 扩展或续订角色
+      href: pim-resource-roles-renew-extend.md
+    - name: 查看审核历史记录
+      href: pim-resource-roles-use-the-audit-log.md
+    - name: 使用自定义角色
+      href: pim-resource-roles-custom-role-policy.md
+  - name: 评审访问权限
+    items:
+    - name: 目录角色
+      items:
+      - name: 评审我的目录角色
+        href: pim-how-to-perform-security-review.md
+      - name: 开始访问审阅
+        href: pim-how-to-start-security-review.md
+      - name: 完成访问评审
+        href: pim-how-to-complete-review.md
+    - name: 资源角色
+      items:
+      - name: 评审我的资源角色
+        href: pim-resource-roles-perform-access-review.md
+      - name: 开始访问审阅
+        href: pim-resource-roles-start-access-review.md
+      - name: 完成访问评审
+        href: pim-resource-roles-complete-access-review.md
+  expanded: true
+ms.openlocfilehash: 7a8fafb4782a02da5b1fbe189cba8cadf7c22bfe
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43191233"

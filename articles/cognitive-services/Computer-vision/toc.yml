@@ -6,101 +6,91 @@ items:
   - name: 什么是计算机视觉？
     href: Home.md
   expanded: true
-- name: API 快速入门
+- name: 快速入门
   items:
-  - name: 摘要
-    href: QuickStarts/quickstart-summary.md
-  - name: C#
-    items:
-    - name: 分析图像
-      href: QuickStarts/CSharp-analyze.md
-    - name: 生成缩略图
-      href: QuickStarts/CSharp-thumb.md
-    - name: 提取打印的文本
-      href: QuickStarts/CSharp-print-text.md
-    - name: 提取手写的文本
-      href: QuickStarts/CSharp-hand-text.md
-  - name: cURL
+  - name: 使用 REST API
     items:
     - name: 分析远程图像
-      href: QuickStarts/curl-analyze.md
+      items:
+      - name: cURL
+        href: QuickStarts/curl-analyze.md
+      - name: Go
+        href: QuickStarts/go-analyze.md
+      - name: Java
+        href: QuickStarts/java-analyze.md
+      - name: JavaScript
+        href: QuickStarts/javascript-analyze.md
+      - name: Node.js
+        href: QuickStarts/node-analyze.md
+      - name: PHP
+        href: QuickStarts/php-analyze.md
+      - name: Python
+        href: QuickStarts/python-analyze.md
+      - name: Ruby
+        href: QuickStarts/ruby-analyze.md
     - name: 分析本地图像
-      href: QuickStarts/curl-disk.md
+      items:
+      - name: C#
+        href: QuickStarts/CSharp-analyze.md
+      - name: Python
+        href: QuickStarts/python-disk.md
     - name: 生成缩略图
-      href: QuickStarts/curl-thumb.md
+      items:
+      - name: C#
+        href: QuickStarts/CSharp-thumb.md
+      - name: cURL
+        href: QuickStarts/curl-thumb.md
+      - name: Go
+        href: QuickStarts/go-thumb.md
+      - name: Java
+        href: QuickStarts/java-thumb.md
+      - name: JavaScript
+        href: QuickStarts/javascript-thumb.md
+      - name: Node.js
+        href: QuickStarts/node-thumb.md
+      - name: PHP
+        href: QuickStarts/php-thumb.md
+      - name: Python
+        href: QuickStarts/python-thumb.md
+      - name: Ruby
+        href: QuickStarts/ruby-thumb.md
     - name: 提取打印的文本
-      href: QuickStarts/curl-print-text.md
-  - name: Go
-    items:
-    - name: 分析图像
-      href: QuickStarts/go-analyze.md
-    - name: 生成缩略图
-      href: QuickStarts/go-thumb.md
-    - name: 提取打印的文本
-      href: QuickStarts/go-print-text.md
-  - name: Java
-    items:
-    - name: 分析图像
-      href: QuickStarts/java-analyze.md
-    - name: 生成缩略图
-      href: QuickStarts/java-thumb.md
-    - name: 提取打印的文本
-      href: QuickStarts/java-print-text.md
+      items:
+      - name: C#
+        href: QuickStarts/CSharp-print-text.md
+      - name: cURL
+        href: QuickStarts/curl-print-text.md
+      - name: Go
+        href: QuickStarts/go-print-text.md
+      - name: Java
+        href: QuickStarts/java-print-text.md
+      - name: JavaScript
+        href: QuickStarts/javascript-print-text.md
+      - name: Node.js
+        href: QuickStarts/node-print-text.md
+      - name: PHP
+        href: QuickStarts/php-print-text.md
+      - name: Python
+        href: QuickStarts/python-print-text.md
+      - name: Ruby
+        href: QuickStarts/ruby-print-text.md
     - name: 提取手写的文本
-      href: QuickStarts/java-hand-text.md
-  - name: JavaScript
-    items:
-    - name: 分析图像
-      href: QuickStarts/javascript-analyze.md
-    - name: 生成缩略图
-      href: QuickStarts/javascript-thumb.md
-    - name: 提取打印的文本
-      href: QuickStarts/javascript-print-text.md
-    - name: 提取手写的文本
-      href: QuickStarts/javascript-hand-text.md
-  - name: Node.js
-    items:
-    - name: 分析图像
-      href: QuickStarts/node-analyze.md
-    - name: 生成缩略图
-      href: QuickStarts/node-thumb.md
-    - name: 提取打印的文本
-      href: QuickStarts/node-print-text.md
-  - name: PHP
-    items:
-    - name: 分析图像
-      href: QuickStarts/php-analyze.md
+      items:
+      - name: C#
+        href: QuickStarts/CSharp-hand-text.md
+      - name: Java
+        href: QuickStarts/java-hand-text.md
+      - name: JavaScript
+        href: QuickStarts/javascript-hand-text.md
+      - name: Python
+        href: QuickStarts/python-hand-text.md
     - name: 使用域模型
-      href: QuickStarts/php-domain.md
-    - name: 生成缩略图
-      href: QuickStarts/php-thumb.md
-    - name: 提取打印的文本
-      href: QuickStarts/php-print-text.md
-  - name: Python
-    items:
-    - name: 分析远程图像
-      href: QuickStarts/python-analyze.md
-    - name: 分析本地图像
-      href: QuickStarts/python-disk.md
-    - name: 使用域模型
-      href: QuickStarts/python-domain.md
-    - name: 生成缩略图
-      href: QuickStarts/python-thumb.md
-    - name: 提取打印的文本
-      href: QuickStarts/python-print-text.md
-    - name: 提取手写的文本
-      href: QuickStarts/python-hand-text.md
-  - name: Ruby
-    items:
-    - name: 分析图像
-      href: QuickStarts/ruby-analyze.md
-    - name: 生成缩略图
-      href: QuickStarts/ruby-thumb.md
-    - name: 提取打印的文本
-      href: QuickStarts/ruby-print-text.md
-- name: SDK 快速入门
-  items:
-  - name: C#
+      items:
+      - name: PHP
+        href: QuickStarts/php-domain.md
+      - name: Python
+        href: QuickStarts/python-domain.md
+  - name: 使用 .NET SDK
     items:
     - name: 分析图像
       href: quickstarts-sdk/csharp-analyze-sdk.md
@@ -172,9 +162,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: 类别分类
     href: Category-Taxonomy.md
-ms.openlocfilehash: 9fc95708365458dcebcf40a759db3f8267fa0c96
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: b432d958b5ce8f31f6f4487d986f2c793a782e2d
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43086745"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43246117"

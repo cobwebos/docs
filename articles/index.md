@@ -6,12 +6,12 @@ description: 了解如何使用 Microsoft Azure 云服务构建和管理功能�
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 8aff1d1c499ff9b53ca2adf47553b07c7ae71c45
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 0c5c400ec19423c697e194956b8d445350f37d7b
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41927184"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43186976"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -53,7 +53,7 @@ ms.locfileid: "41927184"
                 </a>
             </li>
             <li>
-                <a href="https://azure.microsoft.com/community/training/">
+                <a href="https://go.microsoft.com/fwlink/?linkid=2012831">
                     <div class="cardSize">
                         <div class="cardPadding">
                             <div class="card">
@@ -114,8 +114,7 @@ ms.locfileid: "41927184"
                                                     <li><a class="barLink" href="/azure/backup/">Azure 备份</a></li>
                                                     <li><a class="barLink" href="/azure/site-recovery/">Azure Site Recovery</a></li>
                                                     <li><a class="barLink" href="/azure/migrate/">Azure Migrate</a></li>
-                                                    <li>
-  <a class="barLink" href="/azure/azure-policy/">Azure Policy</a></li>
+                                                    <li><a class="barLink" href="/azure/azure-policy/">Azure Policy</a></li>
                                                 </ul>
                                             </div>
                                         </div>
