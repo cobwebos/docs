@@ -2,18 +2,18 @@
 title: 将 Windows IoT Core 设备连接到 Azure IoT Central 应用程序 | Microsoft Docs
 description: 了解如何以设备开发人员的身份将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序。
 author: miriambrus
-ms.author: mriamb
+ms.author: miriamb
 ms.date: 04/09/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 39eb6f137750f7f741c88dcdf9a55f34d24eaa59
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 73a23ace23d2373e238c6887c4a41c6037d233de
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205742"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188998"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>将 Windows IoT Core 设备连接到 Azure IoT Central 应用程序
 
@@ -44,7 +44,7 @@ ms.locfileid: "39205742"
 
 ### <a name="prepare-the-windows-iot-core-device"></a>准备 Windows IoT Core 设备
 
-若要设置 Windows IoT Core 设备，请按 [Set up a Windows IoT Core device] (https://github.com/Microsoft/microsoft-iot-central-firmware/tree/master/WindowsIoT#setup-a-physical-device)（设置 Windows IoT Core 设备）中的分步指南操作。
+若要设置 Windows IoT Core 设备，请按 [Set up a Windows IoT Core device] (https://github.com/Azure/iot-central-firmware/tree/master/WindowsIoT#setup-a-physical-device)（设置 Windows IoT Core 设备）中的分步指南操作。
 
 ### <a name="add-a-real-device"></a>添加真实设备
 

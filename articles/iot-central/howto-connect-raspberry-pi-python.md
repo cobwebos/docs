@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: a3d6ad9f2f442481908bc02252fcc8ab1a74419e
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: aa2d8f50d8fb4ba356af20a290976b8b32601ebf
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205582"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188785"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>将 Raspberry Pi 连接到 Azure IoT Central 应用程序 (Python)
 
@@ -33,7 +33,7 @@ ms.locfileid: "39205582"
 
 从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 **Raspberry Pi** 设备模板： 
 
-- 包含设备的度量值的遥测数据：**湿度**、**温度**、**压力**、**磁力计**（沿 X、Y、Z 轴度量）、**加速计**（沿 X、Y、Z 轴度量）和**陀螺仪**（沿 X、Y、Z 轴度量）。
+- 包含设备**湿度**、**温度**、**压力**、**磁力计**（沿 X、Y、Z 轴度量）、**加速计**（沿 X、Y、Z 轴度量）和**陀螺仪**（沿 X、Y、Z 轴度量）度量值的遥测数据。
 - 显示**电压**、**电流**、**风扇速度**和 **IR** 切换的设置。
 - 包含设备属性**模具编号**和**位置**云属性的属性。
 
@@ -53,9 +53,9 @@ ms.locfileid: "39205582"
 * 响应在 Azure IoT Central 中做的设置更改。
 
 > [!NOTE]
-> 有关 Raspberry Pi Python 示例的详细信息，请参阅 GitHub 上的[自述](https://github.com/Microsoft/microsoft-iot-central-firmware/blob/master/RaspberryPi/README.md)文件。
+> 有关 Raspberry Pi Python 示例的详细信息，请参阅 GitHub 上的[自述](https://github.com/Azure/iot-central-firmware/blob/master/RaspberryPi/README.md)文件。
 
-1. 在 Raspberry Pi 桌面上使用 Web 浏览器导航到 [Azure IoT Central 固件版本](https://github.com/Microsoft/microsoft-iot-central-firmware/releases)页面。
+1. 在 Raspberry Pi 桌面上使用 Web 浏览器导航到 [Azure IoT Central 固件版本](https://github.com/Azure/iot-central-firmware/releases)页面。
 
 1. 将包含最新固件的 zip 文件下载到 Raspberry Pi 上的主文件夹。 文件名类似于 `RaspberryPi-IoTCentral-X.X.X.zip`。
 

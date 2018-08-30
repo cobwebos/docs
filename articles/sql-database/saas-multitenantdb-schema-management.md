@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/03/2018
 ms.reviewers: billgib
 ms.author: genemi
-ms.openlocfilehash: 816cde31e84eeda8110c042f4e0640f12fb4cc53
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 026f3450535e4bed6a636fc5ae6ee9d821dbbb72
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645984"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247660"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>在使用分片多租户 SQL 数据库的 SaaS 应用程序中管理架构
 
@@ -92,7 +92,7 @@ Demo-SchemaManagement.ps1 脚本调用 Deploy-SchemaManagement.ps1 脚本，目�
 
 
 
-#### <a name="steps"></a>步骤
+#### <a name="steps"></a>Steps
 
 现在请创建一个作业，以通过添加两个新的地点类型来更新每个租户数据库中的 **VenueTypes** 表。
 
@@ -168,7 +168,6 @@ Demo-SchemaManagement.ps1 脚本调用 Deploy-SchemaManagement.ps1 脚本，目�
 本教程介绍了如何：
 
 > [!div class="checklist"]
-。
 > * 创建作业代理跨多个数据库运行 T-SQL 作业
 > * 更新所有租户数据库中的引用数据
 > * 在所有租户数据库中的表上创建索引

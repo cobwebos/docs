@@ -1,32 +1,26 @@
 ---
-title: "数据目录入门 | Microsoft Docs"
-description: "演示 Azure 数据目录方案和功能的端到端教程。"
-documentationcenter: 
+title: Azure 数据目录入门
+description: 演示 Azure 数据目录方案和功能的端到端教程。
 services: data-catalog
 author: steelanddata
-manager: jhubbard
-editor: 
-tags: 
+ms.author: spelluru
 ms.assetid: 03332872-8d84-44a0-8a78-04fd30e14b18
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: spelluru
-ms.openlocfilehash: d67f8871bbdd87e8a67057e6e8c5d4d770e5cad6
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: c65f5c2ca3f162c17d036198c4285f9c965bbd53
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053186"
 ---
 # <a name="get-started-with-azure-data-catalog"></a>Azure 数据目录入门
 Azure 数据目录是一个完全托管的云服务，具有企业数据资产的注册系统和发现系统的功能。 有关详细的概述，请参阅 [What is Azure Data Catalog](data-catalog-what-is-data-catalog.md)（什么是 Azure 数据目录）。
 
 本教程帮助用户开始使用 Azure 数据目录。 将在本教程中执行以下过程：
 
-| 过程 | 说明 |
+| 过程 | Description |
 |:--- |:--- |
 | [预配数据目录](#provision-data-catalog) |在此过程中预配或设置 Azure 数据目录。 仅当以前尚未设置目录时才执行此步骤。 即使有多个订阅与 Azure 帐户关联，每个组织也只能有一个数据目录（Microsoft Azure Active Directory 域）。 |
 | [注册数据资产](#register-data-assets) |在此过程中，将 AdventureWorks2014 示例数据库中的数据资产注册到数据目录。 注册是从数据源提取关键结构元数据（例如名称、类型和位置）并将该元数据复制到目录的过程。 数据源与数据资产保留在原地，但目录使用元数据，使数据源及其数据更容易发现和识别。 |
@@ -40,14 +34,14 @@ Azure 数据目录是一个完全托管的云服务，具有企业数据资产�
 ### <a name="azure-subscription"></a>Azure 订阅
 只有 Azure 订阅的所有者或共同所有者才可以设置 Azure 数据目录。
 
-Azure 订阅可帮助组织云服务资源的访问权限，例如 Azure 数据目录。 它们还可帮助控制如何根据资源使用量生成报告、计费及付费。 每一个订阅可以有不同的计费和付款设置，因此，根据部门、项目、区域办事处等，可以有不同的订阅和不同的计划。 每个云服务属于某个订阅，在设置 Azure 数据目录之前，必须先有订阅。 有关详细信息，请参阅 [Manage accounts, subscriptions, and administrative roles](../active-directory/active-directory-how-subscriptions-associated-directory.md)（管理帐户、订阅和管理角色）。
+Azure 订阅可帮助组织云服务资源的访问权限，例如 Azure 数据目录。 它们还可帮助控制如何根据资源使用量生成报告、计费及付费。 每一个订阅可以有不同的计费和付款设置，因此，根据部门、项目、区域办事处等，可以有不同的订阅和不同的计划。 每个云服务属于某个订阅，在设置 Azure 数据目录之前，必须先有订阅。 有关详细信息，请参阅 [Manage accounts, subscriptions, and administrative roles](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)（管理帐户、订阅和管理角色）。
 
 如果没有订阅，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Free Trial](https://azure.microsoft.com/pricing/free-trial/) （免费试用）。
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 若要设置 Azure 数据目录，必须使用 Azure Active Directory (Azure AD) 用户帐户登录。 必须是 Azure 订阅的所有者或共同所有者。  
 
-Azure AD 为企业提供在云中和本地轻松管理标识与访问权限的方式。 可以使用单个公司帐户或学校帐户登录到任何云或本地 Web 应用程序。 Azure 数据目录使用 Azure AD 对登录进行身份验证。 有关详细信息，请参阅 [What is Azure Active Directory](../active-directory/active-directory-whatis.md)（什么是 Azure Active Directory）。
+Azure AD 为企业提供在云中和本地轻松管理标识与访问权限的方式。 可以使用单个公司帐户或学校帐户登录到任何云或本地 Web 应用程序。 Azure 数据目录使用 Azure AD 对登录进行身份验证。 有关详细信息，请参阅 [What is Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)（什么是 Azure Active Directory）。
 
 ### <a name="azure-active-directory-policy-configuration"></a>Azure Active Directory 策略配置
 可能会遇到这种情况：可以登录 Azure 数据目录门户，但在尝试登录数据源注册工具时出现错误消息，导致无法登录。 在公司网络中操作或者从公司网络外部连接时，可能会发生这种情况。

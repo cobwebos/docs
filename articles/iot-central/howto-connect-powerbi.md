@@ -2,18 +2,17 @@
 title: 在 Power BI 仪表板中可视化 Azure IoT Central 数据 | Microsoft Docs
 description: 使用 Azure IoT Central Analytics Power BI 解决方案模板来可视化和分析 IoT Central 数据。
 ms.service: iot-central
+services: iot-central
 author: viv-liu
 ms.author: viviali
 ms.date: 07/16/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: peterpr
-ms.openlocfilehash: 85c0432bceef3e94b32fa9b4a2803276b3efee17
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.topic: conceptual
+ms.openlocfilehash: 5cb55e73b379b909811bde728d2ab39e29635bf5
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39324317"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190693"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>在 Power BI 仪表板中可视化和分析 Azure IoT Central 数据
 
