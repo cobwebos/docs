@@ -142,6 +142,8 @@ items:
       href: memory-and-concurrency-limits.md
   - name: 可管理性和监视
     items:
+    - name: 概述
+      href: sql-data-warehouse-overview-manageability-monitoring.md
     - name: 缩放, 暂停, 恢复
       href: sql-data-warehouse-manage-compute-overview.md
     - name: 资源利用率和查询活动
@@ -274,9 +276,9 @@ items:
       href: sql-data-warehouse-partner-data-integration.md
     - name: 数据管理
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: ee3b0510fc8232606395845b1c12e3109a435f60
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: c3a93265649dac47bac113415209f29f60de15b4
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43185999"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43284611"

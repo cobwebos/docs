@@ -12,32 +12,32 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/13/2018
+ms.date: 08/24/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: e2411a91174fd0b52227b4cfe8783c8c74c4039e
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 58c8568da0a818f87a5bb3d6966d2d4a6c977fd9
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42139352"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247817"
 ---
 # <a name="register-azure-stack-with-azure"></a>将 Azure Stack 注册到 Azure
 
-Azure Stack 注册到 Azure，可以从 Azure 下载 marketplace 项并设置向 Microsoft 报告商业数据。 注册 Azure Stack 之后，使用情况会报告给 Azure 商业组件，然后你就可以在用于注册的订阅下查看它。
+将 Azure Stack 注册到 Azure 即可从 Azure 下载市场项，并设置向 Microsoft 报告商业数据的功能。 注册 Azure Stack 之后，使用情况会报告给 Azure 商业组件，然后你就可以在用于注册的订阅下查看它。
 
 > [!IMPORTANT]  
-> 支持完整的 Azure Stack 功能，包括产品/服务在 marketplace 中的项需要注册。 此外，如果你在使用即用即付计费模式时未注册，则将违反 Azure Stack 许可条款。 若要了解有关 Azure Stack 授权模型的详细信息，请参阅[“如何购买”页](https://azure.microsoft.com/overview/azure-stack/how-to-buy/)。
+> 需要注册才能支持完整的 Azure Stack 功能，包括在市场中提供商品。 此外，如果你在使用即用即付计费模式时未注册，则将违反 Azure Stack 许可条款。 若要了解有关 Azure Stack 授权模型的详细信息，请参阅[“如何购买”页](https://azure.microsoft.com/overview/azure-stack/how-to-buy/)。
 
 ## <a name="prerequisites"></a>必备组件
 
-注册之前，您将需要在以下位置中：
+在注册之前，需将以下项准备就绪：
 
  - 验证凭据
- - PowerShell 语言模式设置
+ - 设置 PowerShell 语言模式
  - 安装适用于 Azure Stack 的 PowerShell
  - 下载 Azure Stack 工具
- - 确定你的注册方案
+ - 确定注册方案
 
 ### <a name="verify-your-credentials"></a>验证凭据
 
@@ -50,7 +50,7 @@ Azure Stack 注册到 Azure，可以从 Azure 下载 marketplace 项并设置向
 
 - 订阅所有者的帐户用户名和密码（支持 MSA/2FA 帐户）。
 
-- 用户帐户必须是 Azure Stack 注册到，例如，Azure AD 租户中的管理员`yourazurestacktenant.onmicrosoft.com`。
+- 用户帐户需要是 Azure Stack 注册到的 Azure AD 租户中的管理员，例如 `yourazurestacktenant.onmicrosoft.com`。
 
 - 已注册 Azure Stack 资源提供程序（请参阅下面的“注册 Azure Stack 资源提供程序”部分以了解详细信息）。
 
@@ -58,7 +58,7 @@ Azure Stack 注册到 Azure，可以从 Azure 下载 marketplace 项并设置向
 
 ### <a name="powershell-language-mode"></a>PowerShell 语言模式
 
-若要成功注册 Azure Stack，必须将 PowerShell 语言模式设置为 **FullLanguageMode**。  若要验证当前语言模式设置为 full，打开提升的 PowerShell 窗口并运行以下 PowerShell cmdlt:
+若要成功注册 Azure Stack，必须将 PowerShell 语言模式设置为 **FullLanguageMode**。  若要验证当前的语言模式是否设置为 Full，请打开权限提升的 PowerShell 窗口，并运行以下 PowerShell cmdlet：
 
 ```PowerShell  
 $ExecutionContext.SessionState.LanguageMode
@@ -70,38 +70,37 @@ $ExecutionContext.SessionState.LanguageMode
 
 需要使用适用于 Azure Stack 的最新 PowerShell 来注册到 Azure。
 
-如果尚未安装不是最新版本，请参阅[安装适用于 Azure Stack PowerShell](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install)。
+如果最新版本尚未安装，请参阅[安装适用于 Azure Stack 的 PowerShell](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install)。
 
 ### <a name="download-the-azure-stack-tools"></a>下载 Azure Stack 工具
 
-Azure Stack 工具 GitHub 存储库包含支持 Azure Stack 功能（包括注册功能）的 PowerShell 模块。 在注册过程中，需要导入并使用**RegisterWithAzure.psm1** PowerShell 模块，Azure Stack 工具存储库中，若要将 Azure Stack 实例注册到 Azure。
+Azure Stack 工具 GitHub 存储库包含支持 Azure Stack 功能（包括注册功能）的 PowerShell 模块。 在注册过程中，需要导入并使用 Azure Stack 工具存储库中的 **RegisterWithAzure.psm1** PowerShell 模块，将 Azure Stack 实例注册到 Azure。
 
 若要确保使用最新版本，应在注册到 Azure 之前删除 Azure Stack 工具的任何现有版本，然后[从 GitHub 下载最新版本](azure-stack-powershell-download.md)。
 
-### <a name="determine-your-registration-scenario"></a>确定你的注册方案
+### <a name="determine-your-registration-scenario"></a>确定注册方案
 
-Azure Stack 部署可能会*连接*或*断开连接*。
+Azure Stack 部署可能处于“已连接”或“已断开连接”状态。
 
  - **已连接**  
- 连接方式，以便它可以连接到 Internet 和 Azure 部署 Azure Stack。 你具有 Azure Active Directory (Azure AD) 或用于标识存储 Active Directory 联合身份验证服务 (AD FS)。 使用连接型部署时，可以选择从两种计费模型： 为你的使用付费或基于容量的。
-    - [使用 Azure 中使用注册已连接的 Azure Stack**作为你的使用付费**计费模型](#register-a-connected-azure-stack-with-azure-using-the-pay-as-you-use-billing-model)
-    - [使用 Azure 中使用注册已连接的 Azure Stack**容量**计费模型](#register-a-connected-azure-stack-with-azure-using-the-capacity-billing-model)
+ “已连接”意味着 Azure Stack 已部署，因此可以连接到 Internet 和 Azure。 可以将 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 用于标识存储。 对于已连接的部署，可供选择的有两种计费模型：即用即付或基于容量。
+    - [使用**即用即付**计费模型将连接的 Azure Stack 注册到 Azure](#register-connected-with-pay-as-you-go-billing)
+    - [使用**容量**计费模型将连接的 Azure Stack 注册到 Azure](#register-connected-with-capacity-billing)
 
- - **断开连接**  
+ - **已断开连接**  
  使用从 Azure 部署断开连接选项，可以在没有 Internet 连接的情况下部署和使用 Azure Stack。 但是，使用断开连接部署，你将受限于一个 AD FS 标识存储和基于容量的计费模型。
-    - [断开连接的 Azure Stack 使用注册**容量**计费模型 ](#register-a-disconnected-Azure-Stack-using-the-capacity-billing-model
-)
+    - [断开连接的 Azure Stack 使用注册**容量**计费模型 ](#register-disconnected-with-capacity-billing)
 
-## <a name="register-connected-with-pay-as-you-go-billing"></a>注册即用即付计费随时候命
+## <a name="register-connected-with-pay-as-you-go-billing"></a>使用即用即付计费模型注册连接的 Azure Stack
 
 执行以下步骤，使用即用即付计费模式将 Azure Stack 注册到 Azure。
 
 > [!Note]  
-> 必须有权访问特权终结点 (PEP) 的计算机运行所有这些步骤。 有关 PEP 的详细信息，请参阅[在 Azure Stack 中使用特权终结点](azure-stack-privileged-endpoint.md)。
+> 所有这些步骤必须在可以访问特权终结点 (PEP) 的计算机上运行。 有关 PEP 的详细信息，请参阅[使用 Azure Stack 中的特权终结点](azure-stack-privileged-endpoint.md)。
 
 连接的环境可以访问 Internet 和 Azure。 对于这些环境，需将 Azure Stack 资源提供程序注册到 Azure，然后配置计费模式。
 
-1. 若要将 Azure Stack 资源提供程序注册到 Azure，以管理员身份启动 PowerShell ISE，并使用与下面的 PowerShell cmdlt **EnvironmentName**参数设置为相应的 Azure 订阅类型 （请参阅下面的参数）。
+1. 若要向 Azure 注册 Azure Stack 资源提供程序，请以管理员身份启动 PowerShell ISE，然后使用以下 PowerShell cmdlet，并将 **EnvironmentName** 参数设置为相应的 Azure 订阅类型（请参阅下面的“参数”）。
 
 2. 添加用于注册 Azure Stack 的 Azure 帐户。 若要添加该帐户，请运行 **Add-AzureRmAccount** cmdlet。 系统会提示输入 Azure 全局管理员帐户凭据。可能必须使用双重身份验证，具体取决于帐户的配置。
 
@@ -148,20 +147,20 @@ Azure Stack 部署可能会*连接*或*断开连接*。
       -BillingModel PayAsYouUse `
       -RegistrationName $RegistrationName
    ```
-   Set-azsregistration cmdlet 的详细信息，请参阅[注册参考](#registration-reference)。
+   有关 Set-AzsRegistration cmdlet 的详细信息，请参阅[注册参考](#registration-reference)。
 
   该过程需要花费 10 到 15 分钟。 命令完成后，会显示以下消息：“现已使用提供的参数注册并激活环境”。
 
-## <a name="register-connected-with-capacity-billing"></a>注册容量计费随时候命
+## <a name="register-connected-with-capacity-billing"></a>使用容量计费模型注册连接的 Azure Stack
 
 执行以下步骤，使用即用即付计费模式将 Azure Stack 注册到 Azure。
 
 > [!Note]  
-> 必须有权访问特权终结点 (PEP) 的计算机运行所有这些步骤。 有关 PEP 的详细信息，请参阅[在 Azure Stack 中使用特权终结点](azure-stack-privileged-endpoint.md)。
+> 所有这些步骤必须在可以访问特权终结点 (PEP) 的计算机上运行。 有关 PEP 的详细信息，请参阅[使用 Azure Stack 中的特权终结点](azure-stack-privileged-endpoint.md)。
 
 连接的环境可以访问 Internet 和 Azure。 对于这些环境，需将 Azure Stack 资源提供程序注册到 Azure，然后配置计费模式。
 
-1. 若要将 Azure Stack 资源提供程序注册到 Azure，以管理员身份启动 PowerShell ISE，并使用与下面的 PowerShell cmdlt **EnvironmentName**参数设置为相应的 Azure 订阅类型 （请参阅下面的参数）。
+1. 若要向 Azure 注册 Azure Stack 资源提供程序，请以管理员身份启动 PowerShell ISE，然后使用以下 PowerShell cmdlet，并将 **EnvironmentName** 参数设置为相应的 Azure 订阅类型（请参阅下面的“参数”）。
 
 2. 添加用于注册 Azure Stack 的 Azure 帐户。 若要添加该帐户，请运行 **Add-AzureRmAccount** cmdlet。 系统会提示输入 Azure 全局管理员帐户凭据。可能必须使用双重身份验证，具体取决于帐户的配置。
 
@@ -198,11 +197,11 @@ Azure Stack 部署可能会*连接*或*断开连接*。
       -RegistrationName $RegistrationName
   ```
    > [!Note]  
-   > 您可以禁用使用情况报告 UsageReportingEnabled 参数对于**Set-azsregistration** cmdlet。 将参数设置为 false。 例如: UsageReportingEnabled
+   > 可以通过 **Set-AzsRegistration** cmdlet 的 UsageReportingEnabled 参数禁用使用情况报告。 将此参数设置为 false。 例如：`UsageReportingEnabled
    
-  Set-azsregistration cmdlet 的详细信息，请参阅[注册参考](#registration-reference)。
+  有关 Set-AzsRegistration cmdlet 的详细信息，请参阅[注册参考](#registration-reference)。
 
-## <a name="register-disconnected-with-capacity-billing"></a>注册使用容量计费断开连接
+## <a name="register-disconnected-with-capacity-billing"></a>使用容量计费模型注册断开连接的 Azure Stack
 
 若要在离线环境（未建立 Internet 连接）中注册 Azure Stack，需要从 Azure Stack 环境获取注册令牌，然后在可连接到 Azure 并已[安装适用于 Azure Stack 的 PowerShell](#bkmk_powershell) 的计算机上使用该令牌。  
 
@@ -214,13 +213,13 @@ Azure Stack 部署可能会*连接*或*断开连接*。
    Import-Module .\RegisterWithAzure.psm1
    ```
 
-2. 若要获取注册令牌，请运行以下 PowerShell cmdlt:  
+2. 若要获取注册令牌，请运行以下 PowerShell cmdlet：  
 
    ```Powershell
    $FilePathForRegistrationToken = $env:SystemDrive\RegistrationToken.txt
-   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential -EnableUsageReporting False $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
+   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential -UsageReportingEnabled:$False $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
    ```
-   Get AzsRegistrationToken cmdlet 的详细信息，请参阅[注册参考](#registration-reference)。
+   有关 Get-AzsRegistrationToken cmdlet 的详细信息，请参阅[注册参考](#registration-reference)。
 
    > [!Tip]  
    > 注册令牌保存在为 *$FilePathForRegistrationToken* 指定的文件中。 可以自行更改文件路径或文件名。
@@ -229,7 +228,7 @@ Azure Stack 部署可能会*连接*或*断开连接*。
 
 ### <a name="connect-to-azure-and-register"></a>连接到 Azure 并注册
 
-在连接到 Internet 的计算机，执行相同的步骤来导入 RegisterWithAzure.psm1 模块，并登录到正确的 Azure Powershell 上下文。 然后调用 Register-azsenvironment。 指定要注册到 Azure 的注册令牌。 如果要在注册 Azure Stack 使用相同的 Azure 订阅 ID 的多个实例，指定唯一注册名称。 运行以下 cmdlet：
+在连接到 Internet 的计算机上，执行相同的步骤以导入 RegisterWithAzure.psm1 模块，并登录到正确的 Azure Powershell 上下文。 然后调用 Register-AzsEnvironment。 指定可注册到 Azure 的注册令牌。 如果使用同一 Azure 订阅 ID 注册多个 Azure Stack 实例，请指定唯一的注册名称。 运行以下 cmdlet：
 
   ```PowerShell  
   $registrationToken = "<Your Registration Token>"
@@ -251,7 +250,7 @@ Azure Stack 部署可能会*连接*或*断开连接*。
 
 接下来，需要在执行 Register-AzsEnvironment 期间，从 Azure 中创建的注册资源检索激活密钥。
 
-若要获取激活密钥，请运行以下 PowerShell cmdlt:  
+若要获取激活密钥，请运行以下 PowerShell cmdlet：  
 
   ```Powershell
   $RegistrationResourceName = "AzureStack-<Cloud Id for the Environment to register>"
@@ -264,7 +263,7 @@ Azure Stack 部署可能会*连接*或*断开连接*。
 
 ### <a name="create-an-activation-resource-in-azure-stack"></a>在 Azure Stack 中创建激活资源
 
-使用 Get-AzsActivationKey 从创建的激活密钥中获取文件或文本后，返回到 Azure Stack 环境。 接下来，使用该激活密钥在 Azure Stack 中创建激活资源。 若要创建激活资源，请运行以下 PowerShell cmdlt:  
+使用 Get-AzsActivationKey 从创建的激活密钥中获取文件或文本后，返回到 Azure Stack 环境。 接下来，使用该激活密钥在 Azure Stack 中创建激活资源。 若要创建激活资源，请运行以下 PowerShell cmdlet：  
 
   ```Powershell
   $ActivationKey = "<activation key>"
@@ -310,9 +309,9 @@ Azure Stack 部署可能会*连接*或*断开连接*。
   Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel PayAsYouUse -RegistrationName $RegistrationName
   ```
 
-#### <a name="change-the-billing-model-or-how-to-offer-features"></a>更改计费模型或如何提供功能
+#### <a name="change-the-billing-model-or-how-to-offer-features"></a>更改计费模型或功能提供方式
 
-如果你想要更改计费模型或如何提供为您的安装的功能，可以调用注册函数来设置新值。 不需要先删除当前注册：
+若要更改安装的计费模型或功能提供方式，可以调用注册函数来设置新值。 不需要先删除当前注册：
 
   ```PowerShell  
   Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel PayAsYouUse -RegistrationName $RegistrationName
@@ -330,13 +329,13 @@ Azure Stack 部署可能会*连接*或*断开连接*。
 
 首先需要从 Azure Stack 中删除激活资源，然后再删除 Azure 中的注册资源。  
 
-若要在 Azure Stack 中删除激活资源，请在 Azure Stack 环境中运行以下 PowerShell cmdlt:  
+若要删除 Azure Stack 中的激活资源，请在 Azure Stack 环境中运行以下 PowerShell cmdlet：  
 
   ```Powershell
   Remove-AzsActivationResource -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint
   ```
 
-接下来，若要在 Azure 中删除注册资源，请确保位于 Azure 连接计算机，登录到正确的 Azure PowerShell 上下文，并运行相应的 PowerShell cmdlt，如下所述。
+接下来，若要删除 Azure 中的注册资源，请确保计算机已连接到 Azure，登录到正确的 Azure PowerShell 上下文，并运行相应的 PowerShell cmdlet，如下所示。
 
 可以使用用于创建资源的注册令牌：  
 
@@ -358,9 +357,9 @@ Azure Stack 部署可能会*连接*或*断开连接*。
 
 ### <a name="disable-or-enable-usage-reporting"></a>禁用或启用使用情况报告
 
-对于使用容量计费模型的 Azure Stack 环境，将使用情况报告与关闭**EnableUsageReporting**使用的参数**Set-azsregistration**或**Get AzsRegistrationToken** cmdlet。 默认情况下，azure Stack 报告使用情况指标。 容量使用或支持连接断开的环境的运算符将需要关闭功能使用情况报告。
+对于使用容量计费模型的 Azure Stack 环境，将使用情况报告与关闭**UsageReportingEnabled**使用的参数**Set-azsregistration**或**Get AzsRegistrationToken** cmdlet。 默认情况下，Azure Stack 报告使用情况指标。 使用容量或支持断开连接的环境的操作员需关闭使用情况报告功能。
 
-#### <a name="with-a-connected-azure-stack"></a>使用已连接的 Azure Stack
+#### <a name="with-a-connected-azure-stack"></a>使用连接的 Azure Stack
 
    ```PowerShell  
    $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
@@ -374,11 +373,11 @@ Azure Stack 部署可能会*连接*或*断开连接*。
 
 #### <a name="with-a-disconnected-azure-stack"></a>使用断开连接的 Azure Stack
 
-1. 若要更改的注册令牌，请运行以下 PowerShell cmdlet:  
+1. 若要更改注册令牌，请运行以下 PowerShell cmdlet：  
 
    ```Powershell
    $FilePathForRegistrationToken = $env:SystemDrive\RegistrationToken.txt
-   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential -EnableUsageReporting False
+   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential -UsageReportingEnabled:$False
    $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
    ```
 
@@ -390,13 +389,13 @@ Azure Stack 部署可能会*连接*或*断开连接*。
 
 ## <a name="registration-reference"></a>注册参考
 
-### <a name="set-azsregistration"></a>Set-azsregistration
+### <a name="set-azsregistration"></a>Set-AzsRegistration
 
-Set-azsregistration 可用于 Azure Stack 注册到 Azure，启用或禁用 marketplace 和使用情况报告中的项的产品/服务。
+可以使用 Set-AzsRegistration 将 Azure Stack 注册到 Azure，并启用或禁用在市场中提供商品的功能和使用情况报告功能。
 
-若要运行此 cmdlet，需要：
-- 全局 Azure 订阅中的任何类型。
-- 您必须还登录到 Azure PowerShell 是所有者或参与者的订阅的帐户。
+若要运行此 cmdlet，需具备：
+- 任何类型的全球 Azure 订阅。
+- 此外还必须在登录到 Azure PowerShell 时，使用其身份为该订阅的所有者或参与者的帐户。
 
 ```PowerShell
     Set-AzsRegistration [-PrivilegedEndpointCredential] <PSCredential> [-PrivilegedEndpoint] <String> [[-AzureContext]
@@ -414,13 +413,13 @@ Set-azsregistration 可用于 Azure Stack 注册到 Azure，启用或禁用 mark
 | ResourceGroupLocation | String |  |
 | BillingModel | String | 订阅使用的计费模型。 此参数允许的值：Capacity、PayAsYouUse 和 Development。 |
 | MarketplaceSyndicationEnabled |  |  |
-| UsageReportingEnabled | True/False | 默认情况下，azure Stack 报告使用情况指标。 容量使用或支持连接断开的环境的运算符将需要关闭功能使用情况报告。 允许此参数的值为： True、 False。 |
+| UsageReportingEnabled | True/False | 默认情况下，Azure Stack 报告使用情况指标。 使用容量或支持断开连接的环境的操作员需关闭使用情况报告功能。 此参数的允许值：True、False。 |
 | AgreementNumber | String |  |
-| registrationName | String | 设置注册的唯一名称，如果正在注册脚本的 Azure Stack 的多个实例上使用同一个 Azure 订阅 id。 参数具有默认值为**AzureStackRegistration**。 但是，如果在多个实例的 Azure Stack 上使用相同的名称，该脚本将失败。 |
+| RegistrationName | String | 如果在多个使用同一 Azure 订阅 ID 的 Azure Stack 实例上运行注册脚本，请为注册设置唯一名称。 参数的默认值为 **AzureStackRegistration**。 但是，如果在多个 Azure Stack 实例上使用同一名称，脚本会失败。 |
 
-### <a name="get-azsregistrationtoken"></a>Get AzsRegistrationToken
+### <a name="get-azsregistrationtoken"></a>Get-AzsRegistrationToken
 
-从输入参数，get AzsRegistrationToken 将生成的注册令牌。
+Get-AzsRegistrationToken 会根据输入参数生成注册令牌。
 
 ```PowerShell  
     Get-AzsRegistrationToken [-PrivilegedEndpointCredential] <PSCredential> [-PrivilegedEndpoint] <String>
@@ -436,11 +435,10 @@ Set-azsregistration 可用于 Azure Stack 注册到 Azure，启用或禁用 mark
 | ResourceGroupLocation | String |  |
 | BillingModel | String | 订阅使用的计费模型。 此参数允许的值：Capacity、PayAsYouUse 和 Development。 |
 | MarketplaceSyndicationEnabled | True/False |  |
-| UsageReportingEnabled | True/False | 默认情况下，azure Stack 报告使用情况指标。 容量使用或支持连接断开的环境的运算符将需要关闭功能使用情况报告。 允许此参数的值为： True、 False。 |
+| UsageReportingEnabled | True/False | 默认情况下，Azure Stack 报告使用情况指标。 使用容量或支持断开连接的环境的操作员需关闭使用情况报告功能。 此参数的允许值：True、False。 |
 | AgreementNumber | String |  |
 
 
 ## <a name="next-steps"></a>后续步骤
 
-
-  [从 Azure 下载市场项](azure-stack-download-azure-marketplace-item.md)
+[从 Azure 下载市场项](azure-stack-download-azure-marketplace-item.md)

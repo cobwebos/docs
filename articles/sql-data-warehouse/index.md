@@ -3,7 +3,7 @@ title: Azure SQL 数据仓库文档 - 教程和概念 | Microsoft Docs
 description: 了解如何使用将 SQL 关系数据库与大规模并行处理相结合的 Azure SQL 数据仓库。 教程和其他文档介绍了如何使用数据仓库设计、加载、管理和分析数据。
 services: sql-data-warehouse
 author: hirokib
-manager: craigg-msft
+manager: craigg
 layout: LandingPage
 ms.service: sql-data-warehouse
 ms.topic: overview
@@ -11,12 +11,12 @@ ms.component: design
 ms.date: 04/11/2018
 ms.author: elbutter
 ms.reviewer: igorstan
-ms.openlocfilehash: 4c716999d082d33536d70465a23e336ee989d065
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 4e6f8cd6bd1a84e7c2a6024bf6bcdb1b6b61620c
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143382"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287261"
 ---
 # <a name="sql-data-warehouse-documentation"></a>SQL 数据仓库文档
 
