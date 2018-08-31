@@ -72,16 +72,18 @@ items:
       items:
       - name: VMware 到 Azure 复制的常见问题
         href: vmware-azure-common-questions.md
-      - name: VMware/物理服务器到 Azure 支持矩阵
+      - name: 支持矩阵
         href: vmware-physical-azure-support-matrix.md
       - name: VMware 到 Azure 体系结构
         href: vmware-azure-architecture.md
       - name: 物理机到 Azure 体系结构
         href: physical-azure-architecture.md
-      - name: 用于将 VMware 复制到 Azure 的多租户支持
-        href: vmware-azure-multi-tenant-overview.md
-      - name: 故障回复位置选项
+      - name: 关于灾难恢复
+        href: vmware-azure-about-disaster-recovery.md
+      - name: 关于故障回复位置选项
         href: concepts-types-of-failback.md
+      - name: 关于 VMware 的多租户支持
+        href: vmware-azure-multi-tenant-overview.md
     - name: 复制到辅助站点
       items:
       - name: VMware/物理服务器到辅助站点支持矩阵
@@ -388,9 +390,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: 服务更新
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: f0469d554b25565411bb8c484f3d3937bb9a87f6
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 63d404406e3b33d4022974246a227cad1e6535a6
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126064"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43285100"
