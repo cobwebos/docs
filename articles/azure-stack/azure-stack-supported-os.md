@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: Brenduns
 ms.reviewer: JeffGoldner
-ms.openlocfilehash: 8d9337053c8905886ed4429d64f8ef5b4e2c7d14
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: d6e9531edf8915e4b6c2636372b756002fca10fd
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060441"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382393"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Azure Stack 支持的来宾操作系统
 
@@ -40,7 +40,7 @@ Azure Stack 支持下表中列出的 Windows 来宾操作系统：
 | Windows Server 2008 SP2 | 64 位 |  自带映像 |
 | Windows 10 *（请参见注释 1）* | 64 位，Pro 和 Enterprise | 自带映像 |
 
-***注释 1:*** *要部署 Azure 堆栈上的 Windows 10 客户端操作系统，必须拥有[每用户许可 Windows](https://www.microsoft.com/en-us/Licensing/product-licensing/windows10.aspx)或购买一个限定的多租户托管商通过 ([QMTH](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)).*
+***注释 1：****若要在 Azure Stack 上部署 Windows 10 客户端操作系统，必须具备 [Windows 每用户授权](https://www.microsoft.com/en-us/Licensing/product-licensing/windows10.aspx)，或者通过合格多租户托管商 ([QMTH](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)) 购买。*
 
 市场映像可用于即用即付或 BYOL (EA/SPLA) 授权。 不支持在单个 Azure Stack 实例上同时使用这两者。 在部署期间，Azure Stack 会将适当版本的来宾代理注入到映像中。
 
@@ -48,7 +48,7 @@ Azure Stack 支持下表中列出的 Windows 来宾操作系统：
 
 ## <a name="linux"></a>Linux
 
-在应用商店中列出为可用的 Linux 分发版包括必要 Windows Azure Linux 代理 (WALA)。 如果将自己的映像带到 Azure Stack，请遵循[将 Linux 映像添加到 Azure Stack](azure-stack-linux.md) 中的指导。
+在 Marketplace 中列出为可用的 Linux 发行版包括必要 Windows Azure Linux 代理 (WALA)。 如果将自己的映像带到 Azure Stack，请遵循[将 Linux 映像添加到 Azure Stack](azure-stack-linux.md) 中的指导。
 
 > [!NOTE]
 > 应使用最新的公共 WALA 版本生成自定义映像。 低于 2.2.18 的版本在 Azure Stack 上可能无法正常运行。

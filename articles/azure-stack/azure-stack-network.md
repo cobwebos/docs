@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2018
+ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 48e2f85488adfb776da5f52c154028f8aafb167a
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 9b1eb6878dcafba68c230255f3b3f43e005421ab
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617015"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340182"
 ---
 # <a name="network-connectivity"></a>网络连接
 本文提供 Azure Stack 网络基础架构信息，可帮助你确定如何以最佳方式将 Azure Stack 集成到现有的网络环境。 
@@ -45,7 +45,7 @@ Azure Stack 解决方案需有弹性且高度可用的物理基础结构才能�
 | 交换机基础结构 | 用于路由的专用交换机管理接口的点到点 IP 地址，以及分配给交换机的环回地址。 | /26 | 
 | 基础结构 | 用于通信的 Azure Stack 内部组件。 | /24 |
 | 专用 | 用于存储网络和专用 VIP。 | /24 | 
-| BMC | 用于与物理主机上的 BMC 通信。 | /27 | 
+| BMC | 用于与物理主机上的 BMC 通信。 | /26 | 
 | | | |
 
 ## <a name="network-infrastructure"></a>网络基础结构
@@ -85,7 +85,7 @@ HLH 也托管部署 VM (DVM)。 此 DVM 在 Azure Stack 部署期间使用，在
 ### <a name="ports-and-urls"></a>端口和 URL
 若要使 Azure Stack 服务（例如门户、Azure 资源管理器、DNS 等）可供外部网络使用，必须允许特定 URL、端口和协议的入站流量发往这些终结点。
  
-如果部署中的透明代理上行链接到传统的代理服务器，则必须允许特定的端口和 URL，以便能够进行[入站](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-protocols-inbound)和[出站](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-urls-outbound)通信。 其中包括标识、 marketplace、 修补和更新、 注册和使用情况数据的端口和 Url。
+如果部署中的透明代理上行链接到传统的代理服务器，则必须允许特定的端口和 URL，以便能够进行[入站](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-protocols-inbound)和[出站](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-urls-outbound)通信。 这包括用于标识、市场、修补和更新、注册和使用情况数据的端口与 URL。
 
 ## <a name="next-steps"></a>后续步骤
 [边界连接](azure-stack-border-connectivity.md)

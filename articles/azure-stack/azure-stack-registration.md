@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/24/2018
+ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 58c8568da0a818f87a5bb3d6966d2d4a6c977fd9
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: ebf10c7f0fb90d976062300854f69369dba946fa
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247817"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340160"
 ---
 # <a name="register-azure-stack-with-azure"></a>将 Azure Stack 注册到 Azure
 
@@ -58,7 +58,7 @@ ms.locfileid: "43247817"
 
 ### <a name="powershell-language-mode"></a>PowerShell 语言模式
 
-若要成功注册 Azure Stack，必须将 PowerShell 语言模式设置为 **FullLanguageMode**。  若要验证当前的语言模式是否设置为 Full，请打开权限提升的 PowerShell 窗口，并运行以下 PowerShell cmdlet：
+若要成功注册 Azure Stack，必须将 PowerShell 语言模式设置为 **FullLanguageMode**。  若要验证当前语言模式设置为 full，打开提升的 PowerShell 窗口并运行以下 PowerShell cmdlet:
 
 ```PowerShell  
 $ExecutionContext.SessionState.LanguageMode
@@ -100,7 +100,7 @@ Azure Stack 部署可能处于“已连接”或“已断开连接”状态。
 
 连接的环境可以访问 Internet 和 Azure。 对于这些环境，需将 Azure Stack 资源提供程序注册到 Azure，然后配置计费模式。
 
-1. 若要向 Azure 注册 Azure Stack 资源提供程序，请以管理员身份启动 PowerShell ISE，然后使用以下 PowerShell cmdlet，并将 **EnvironmentName** 参数设置为相应的 Azure 订阅类型（请参阅下面的“参数”）。
+1. 若要将 Azure Stack 资源提供程序注册到 Azure，以管理员身份启动 PowerShell ISE，并使用以下 PowerShell cmdlet 并结合**EnvironmentName**参数设置为相应的 Azure 订阅类型 （请参阅下面的参数）。
 
 2. 添加用于注册 Azure Stack 的 Azure 帐户。 若要添加该帐户，请运行 **Add-AzureRmAccount** cmdlet。 系统会提示输入 Azure 全局管理员帐户凭据。可能必须使用双重身份验证，具体取决于帐户的配置。
 
@@ -160,7 +160,7 @@ Azure Stack 部署可能处于“已连接”或“已断开连接”状态。
 
 连接的环境可以访问 Internet 和 Azure。 对于这些环境，需将 Azure Stack 资源提供程序注册到 Azure，然后配置计费模式。
 
-1. 若要向 Azure 注册 Azure Stack 资源提供程序，请以管理员身份启动 PowerShell ISE，然后使用以下 PowerShell cmdlet，并将 **EnvironmentName** 参数设置为相应的 Azure 订阅类型（请参阅下面的“参数”）。
+1. 若要将 Azure Stack 资源提供程序注册到 Azure，以管理员身份启动 PowerShell ISE，并使用以下 PowerShell cmdlet 并结合**EnvironmentName**参数设置为相应的 Azure 订阅类型 （请参阅下面的参数）。
 
 2. 添加用于注册 Azure Stack 的 Azure 帐户。 若要添加该帐户，请运行 **Add-AzureRmAccount** cmdlet。 系统会提示输入 Azure 全局管理员帐户凭据。可能必须使用双重身份验证，具体取决于帐户的配置。
 
@@ -213,7 +213,7 @@ Azure Stack 部署可能处于“已连接”或“已断开连接”状态。
    Import-Module .\RegisterWithAzure.psm1
    ```
 
-2. 若要获取注册令牌，请运行以下 PowerShell cmdlet：  
+2. 若要获取注册令牌，请运行以下 PowerShell cmdlet:  
 
    ```Powershell
    $FilePathForRegistrationToken = $env:SystemDrive\RegistrationToken.txt
@@ -250,7 +250,7 @@ Azure Stack 部署可能处于“已连接”或“已断开连接”状态。
 
 接下来，需要在执行 Register-AzsEnvironment 期间，从 Azure 中创建的注册资源检索激活密钥。
 
-若要获取激活密钥，请运行以下 PowerShell cmdlet：  
+若要获取激活密钥，请运行以下 PowerShell cmdlet:  
 
   ```Powershell
   $RegistrationResourceName = "AzureStack-<Cloud Id for the Environment to register>"
@@ -263,7 +263,7 @@ Azure Stack 部署可能处于“已连接”或“已断开连接”状态。
 
 ### <a name="create-an-activation-resource-in-azure-stack"></a>在 Azure Stack 中创建激活资源
 
-使用 Get-AzsActivationKey 从创建的激活密钥中获取文件或文本后，返回到 Azure Stack 环境。 接下来，使用该激活密钥在 Azure Stack 中创建激活资源。 若要创建激活资源，请运行以下 PowerShell cmdlet：  
+使用 Get-AzsActivationKey 从创建的激活密钥中获取文件或文本后，返回到 Azure Stack 环境。 接下来，使用该激活密钥在 Azure Stack 中创建激活资源。 若要创建激活资源，请运行以下 PowerShell cmdlet:  
 
   ```Powershell
   $ActivationKey = "<activation key>"
@@ -329,13 +329,13 @@ Azure Stack 部署可能处于“已连接”或“已断开连接”状态。
 
 首先需要从 Azure Stack 中删除激活资源，然后再删除 Azure 中的注册资源。  
 
-若要删除 Azure Stack 中的激活资源，请在 Azure Stack 环境中运行以下 PowerShell cmdlet：  
+若要在 Azure Stack 中删除激活资源，请在 Azure Stack 环境中运行以下 PowerShell cmdlet:  
 
   ```Powershell
   Remove-AzsActivationResource -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint
   ```
 
-接下来，若要删除 Azure 中的注册资源，请确保计算机已连接到 Azure，登录到正确的 Azure PowerShell 上下文，并运行相应的 PowerShell cmdlet，如下所示。
+接下来，若要在 Azure 中删除注册资源，请确保位于 Azure 连接计算机，登录到正确的 Azure PowerShell 上下文，并运行相应的 PowerShell cmdlet，如下所述。
 
 可以使用用于创建资源的注册令牌：  
 
@@ -386,6 +386,8 @@ Azure Stack 部署可能处于“已连接”或“已断开连接”状态。
 
 2. 保存此注册令牌，以便在连接 Azure 的计算机上使用。 可以从 $FilePathForRegistrationToken 复制文件或文本。
 
+## <a name="move-a-registration-resource"></a>移动注册资源
+在同一订阅下的资源组之间移动注册资源**是**支持对所有环境。 但是，订阅之间移动注册资源时才支持的 Csp 订阅这两个解析为相同的合作伙伴 id。 有关将资源移到新的资源组的详细信息，请参阅[将资源移到新的资源组或订阅](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)。
 
 ## <a name="registration-reference"></a>注册参考
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/08/2018
 ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: bb46881425398618df54288a9d2e6d65bb03dad4
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: ce226bb34c5ff8a7ea7dc44d8428da2bb09e25e5
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139607"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382376"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>在 Azure Stack 中管理租户注册
 
@@ -37,9 +37,9 @@ ms.locfileid: "42139607"
 
 ### <a name="use-api-profiles"></a>使用 API 配置文件
 
-这篇文章中的 cmdlet 需要运行 PowerShell 时指定的 API 配置文件。 API 配置文件代表一组 Azure 资源提供程序和其 API 版本。 它们可帮助您使用正确版本的 API，例如与多个 Azure 云交互时使用全局 Azure 和 Azure Stack 时。 通过其发行日期匹配的名称指定配置文件。 使用本文中，你将需要使用**2017年-09-03**配置文件。
+本文中的 cmdlet 要求你在运行 PowerShell 时指定一个 API 配置文件。 API 配置文件表示一组 Azure 资源提供程序及其 API 版本。 当与多个 Azure 云进行交互时（例如使用全局 Azure 和 Azure Stack 时），它们可帮助你使用 API 的正确版本。 配置文件是通过与其发行日期匹配的名称指定的。 对于本文，需要使用 **2017-09-03** 配置文件。
 
-有关 Azure Stack 和 API 配置文件的详细信息，请参阅[在 Azure Stack 中的管理 API 版本配置文件](user/azure-stack-version-profiles.md)。 有关启动和运行与通过 PowerShell API 配置文件的说明，请参阅[使用 API 版本配置文件适用于 Azure Stack 中的 PowerShell](user/azure-stack-version-profiles-powershell.md)。
+有关 Azure Stack 和 API 配置文件的详细信息，请参阅[在 Azure Stack 中管理 API 版本配置文件](user/azure-stack-version-profiles.md)。 有关通过 PowerShell 启动和运行 API 配置文件的说明，请参阅[在 Azure Stack 中使用适用于 PowerShell 的 API 版本配置文件](user/azure-stack-version-profiles-powershell.md)。
 
 ### <a name="parameters"></a>parameters
 
@@ -154,4 +154,4 @@ api-version=2017-06-01 HTTP/1.1`
 
 ## <a name="next-steps"></a>后续步骤
 
- - 若要详细了解如何从 Azure Stack 检索资源使用情况信息，请参阅 [Azure Stack 中的使用情况和计费](/azure-stack-billing-and-chargeback.md)。
+ - 若要详细了解如何从 Azure Stack 检索资源使用情况信息，请参阅 [Azure Stack 中的使用情况和计费](azure-stack-billing-and-chargeback.md)。

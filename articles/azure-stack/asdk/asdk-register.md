@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 95ab06685452f647884bf92f110e3ab56f3c2714
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: c4fb8e1972286776a5fc7a13c5e9a8c91e370dd3
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42139652"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338613"
 ---
 # <a name="azure-stack-registration"></a>Azure Stack 注册
 可将 Azure Stack 开发工具包 (ASDK) 安装注册到 Azure，以便从 Azure 下载市场项，并设置向 Microsoft 报告商务数据的功能。 需要注册才能支持完整的 Azure Stack 功能，包括市场联合。 之所以建议注册，是因为这样可以测试重要的 Azure Stack 功能，例如市场联合和使用情况报告。 注册 Azure Stack 之后，使用情况将报告给 Azure 商业组件。 用于注册的订阅下会显示此信息。 但是，ASDK 用户无需付费，不管他们报告的用量是多少。
@@ -45,9 +45,9 @@ $ExecutionContext.SessionState.LanguageMode
 
 1. 以管理员身份打开 PowerShell 控制台。  
 
-2. 运行以下 PowerShell 命令，将 ASDK 安装注册到 Azure。 你将需要登录到你的 Azure 订阅和本地 ASDK 安装。 如果还没有 Azure 订阅，你可以[创建免费的 Azure 帐户此处](https://azure.microsoft.com/free/?b=17.06)。 注册 Azure Stack 不会对 Azure 订阅收取任何费用。  
+2. 运行以下 PowerShell 命令，将 ASDK 安装注册到 Azure。 需要同时登录到 Azure 订阅和本地 ASDK 安装。 如果还没有 Azure 订阅，你可以[创建免费的 Azure 帐户此处](https://azure.microsoft.com/free/?b=17.06)。 注册 Azure Stack 不会对 Azure 订阅收取任何费用。  
 
-如果正在注册脚本的 Azure Stack 的多个实例上使用相同的 Azure 订阅 ID，设置注册的唯一名称，在运行时**Set-azsregistration** cmdlet。 **RegistrationName**参数具有默认值为**AzureStackRegistration**。 但是，如果在多个实例的 Azure Stack 上使用相同的名称，该脚本将失败。
+如果使用同一 Azure 订阅 ID 在 Azure Stack 的多个实例上运行注册脚本，请在运行 **Set-AzsRegistration** cmdlet 时为注册设置唯一的名称。 **RegistrationName** 参数的默认值为 **AzureStackRegistration**。 但是，如果在多个 Azure Stack 实例上使用同一名称，该脚本会失败。
 
   ```PowerShell  
     # Add the Azure cloud subscription environment name. Supported environment names are AzureCloud or, if using a China Azure Subscription, AzureChinaCloud.
@@ -68,23 +68,26 @@ $ExecutionContext.SessionState.LanguageMode
     -BillingModel Development `
     -RegistrationName "<Unique-name>"
   ```
-3. 完成脚本后，应会看到此消息：**环境现在已注册和激活使用提供的参数。**
+3. 该脚本完成后，会显示以下消息：“现已使用提供的参数注册并激活环境”。
 
-    ![现在注册你的环境](media/asdk-register/1.PNG)
+    ![环境现已注册](media/asdk-register/1.PNG)
 
-## <a name="verify-the-registration-was-successful"></a>验证注册成功
-请按照下列步骤以验证与 Azure 的 ASDK 注册成功。
+## <a name="verify-the-registration-was-successful"></a>验证注册是否成功
+遵循以下步骤来验证 ASDK 是否已成功注册到 Azure。
 
-1. 登录到[Azure Stack 管理门户](https://adminportal.local.azurestack.external)。
+1. 登录到 [Azure Stack 管理门户](https://adminportal.local.azurestack.external)。
 
-2. 单击**Marketplace 管理** > **从 Azure 添加**。
+2. 单击“市场管理” > “从 Azure 添加”。
 
     ![](media/asdk-register/2.PNG)
 
-3. 请参阅 Azure 上提供的项的列表，如果你激活已成功。
+3. 如果看到 Azure 提供的项列表，则表示激活成功。
 
     ![](media/asdk-register/3.PNG)
 
-## <a name="next-steps"></a>后续步骤
+## <a name="move-a-registration-resource"></a>移动注册资源
+在同一订阅下的资源组之间移动注册资源**是**支持。 有关将资源移到新的资源组的详细信息，请参阅[将资源移到新的资源组或订阅](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)。
 
-  [添加 Azure Stack 市场项](.\.\azure-stack-marketplace.md)
+
+## <a name="next-steps"></a>后续步骤
+[添加 Azure Stack 市场项](.\.\azure-stack-marketplace.md)

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/08/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 3fcede7f813e97885d8fc3d7e0bc04776f2d0d12
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 5fbce0c20e66eec0e7d7023344051fcf302af677
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39582132"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382606"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>教程：将应用部署到 Azure 和 Azure Stack
 
@@ -108,7 +108,10 @@ Visual Studio Team Services (VSTS) 使用服务主体对 Azure 资源管理器�
 
 ### <a name="create-a-service-principal"></a>创建服务主体
 
-请按照[创建服务主体](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)中的说明来创建服务主体，然后选择“Web 应用/API”作为“应用程序类型”。
+请参阅[服务主体创建](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)说明进行操作以创建服务主体，然后选择**Web 应用 /API**应用程序类型或[使用此 PowerShell 脚本](https://github.com/Microsoft/vsts-rm-extensions/blob/master/TaskModules/powershell/Azure/SPNCreation.ps1#L5)如下所述[此处](https://docs.microsoft.com/en-us/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal)。
+
+ > [!Note]
+ > 如果将使用该脚本创建 Azure Stack Azure 资源管理器终结点，你需要传入`-azureStackManagementURL`并`-environmentName`参数，即 https://management.local.azurestack.external/并*AzureStack*。
 
 ### <a name="create-an-access-key"></a>创建访问密钥
 
@@ -261,7 +264,19 @@ Visual Studio Team Services (VSTS) 使用服务主体对 Azure 资源管理器�
 9. 在“添加用户和组”中输入用户名，然后从用户列表中选择该用户。
 10. 选择“保存更改”。
 
-有了终结点信息以后，就可以使用 VSTS 到 Azure Stack 的连接了。 Azure Stack 中的生成代理会从 VSTS 获取指令，然后，此代理会传达与 Azure Stack 通信所需的终结点信息。
+## <a name="create-azure-stack-endpoint"></a>创建 Azure Stack 终结点
+
+检查[这](https://docs.microsoft.com/en-us/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal)文档，以使用现有服务主体创建的服务连接并使用以下映射：
+
+- 环境： AzureStack
+- 环境 URL： 类似于 `https://management.local.azurestack.external`
+- 从 Azure Stack 的订阅 ID： 用户订阅 ID
+- 订阅名称： 从 Azure Stack 用户订阅名称
+- 服务主体客户端 ID： 中的主体 ID[这](https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal)这篇文章中的部分。
+- 服务主体键： 来自同一篇文章 （或者如果使用脚本的密码） 的密钥。
+- 租户 ID： 租户 ID 获取[此处](https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id)。
+
+现在，创建端点时，Azure Stack 连接到 VSTS 是可供使用。 Azure Stack 中的生成代理会从 VSTS 获取指令，然后，此代理会传达与 Azure Stack 通信所需的终结点信息。
 
 ![生成代理](media\azure-stack-solution-hybrid-pipeline\016_save_changes.png)
 
