@@ -1,6 +1,6 @@
 ---
 title: 使用 Visual Studio Code 创建 Azure 资源管理器模板 | Microsoft Docs
-description: 使用可在资源管理器模板上运行的 Azure 资源管理器工具扩展。
+description: 使用 Visual Studio Code 和可在资源管理器模板上运行的 Azure 资源管理器工具扩展。
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 07/17/2018
+ms.date: 08/24/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: d50b84ac61210fc89665341ae0c2de3fc4ce0c11
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 540aabc9164e43776d2166926430f4512dd23f49
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42022814"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43106043"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板
 
@@ -89,32 +89,49 @@ ms.locfileid: "42022814"
 
 ## <a name="deploy-the-template"></a>部署模板
 
-可通过多种方法来部署模板。  本快速入门从 Azure 门户使用 Cloud Shell。 Cloud shell 支持 Azure CLI 和 Azure PowerShell。 本文中的说明使用 CLI。
+可通过多种方法来部署模板。  本快速入门从 Azure 门户使用 Azure Cloud Shell。 Cloud Shell 支持 Azure CLI 和 Azure PowerShell。 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)
 2. 如下图所示，选择右上角的“Cloud Shell”：
 
     ![Azure 门户 - Cloud Shell](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell.png)
 
-3. 选择向下箭头，然后选择“Bash”从 PowerShell 切换到 CLI。
+    Cloud Shell 在屏幕底部打开。
+
+3. 在 Cloud Shell 的左上角，它会显示 **PowerShell** 或 **Bash**。 若要使用 CLI，需打开一个 Bash 会话。 若要运行 PowerShell，需打开一个 PowerShell 会话。 若要进行切换，请选择向下箭头，然后选择解释器。 下图显示如何从 PowerShell 切换到 Bash。
 
     ![Azure 门户 - Cloud Shell - CLI](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
-4. 选择“重启”以重启 Shell。
-5. 依次选择“上传/下载文件”、“上传”。
+
+    进行切换时，需重启 shell。
+4. 依次选择“上传/下载文件”、“上传”。
 
     ![Azure 门户 - Cloud Shell - 上传文件](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
-4. 选择前面在本快速入门中保存的文件。 默认名称为 **azuredeploy.json**。
-5. 在 Cloud Shell 中，运行 **ls** 命令来验证是否已成功上传文件。 还可以使用 **cat** 命令来验证模板内容。
+
+    必须先上传模板文件，然后才能通过 shell 来部署它。
+5. 选择前面在本快速入门中保存的文件。 默认名称为 **azuredeploy.json**。
+6. 在 Cloud Shell 中，运行 **ls** 命令来验证是否已成功上传文件。 还可以使用 **cat** 命令来验证模板内容。 下图显示如何从 Bash 运行命令。  使用的命令与 PowerShell 会话中的命令相同。
 
     ![Azure 门户 - Cloud Shell - 列出文件](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
-6. 在 Cloud Shell 中运行以下命令：
+7. 在 Cloud Shell 中运行以下命令。 选择用于显示 PowerShell 代码或 CLI 代码的选项卡。
 
+    # <a name="clitabcli"></a>[CLI](#tab/CLI)
     ```cli
     az group create --name <ResourceGroupName> --location <AzureLocation>
 
     az group deployment create --name <DeploymentName> --resource-group <ResourceGroupName> --template-file <TemplateFileName>
     ```
-    下面是示例部署的屏幕截图：
+   
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    
+    ```powershell
+    New-AzureRmResourceGroup -Name <ResourceGroupName> -Location <AzureLocation>
+
+    New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroupName> -TemplateFile <TemplateFileName>
+    ```
+    
+    ---
+
+    以下屏幕截图显示了示例 CLI 部署：
 
     ![Azure 门户 - Cloud Shell - 部署模板](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
 
@@ -127,11 +144,20 @@ ms.locfileid: "42022814"
 
     在屏幕截图上的输出中，存储帐户名称为 *3tqebj3slyfyestandardsa*。 
 
-7. 运行以下 CLI 命令列出新建的存储帐户：
+7. 运行以下 CLI 或 PowerShell 命令，列出新建的存储帐户：
 
+    # <a name="clitabcli"></a>[CLI](#tab/CLI)
     ```cli
     az storage account show --resource-group <ResourceGroupName> --name <StorageAccountName>
     ```
+   
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    
+    ```powershell
+    Get-AzureRmStorageAccount -ResourceGroupName <ResourceGroupName> -Name <StorageAccountName>
+    ```
+    
+    ---
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -144,7 +170,7 @@ ms.locfileid: "42022814"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程已介绍如何使用 Visual Studio Code 创建模板，以及如何使用 Azure 门户 Cloud Shell 部署模板。 在下一教程中，你将详细了解如何开发模板，以及如何使用模板引用。
+本教程的主要关注点是如何使用 Visual Studio Code 来编辑 Azure 快速入门模板中的现有模板。 此外还介绍了如何使用 Azure Cloud Shell 中的 CLI 或 PowerShell 来部署模板。 Azure 快速入门模板中的模板可能并未提供你所需的一切。 下一教程介绍如何从模板参考中查找信息，以便创建加密的 Azure 存储帐户。
 
 > [!div class="nextstepaction"]
 > [创建加密的存储帐户](./resource-manager-tutorial-create-encrypted-storage-accounts.md)

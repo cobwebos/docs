@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 中创建 ASP.NET Framework Web 应用 | Microsoft Docs
-description: 了解如何通过部署默认的 ASP.NET Web 应用，在 Azure 应用服务中运行 Web 应用。
+title: 在 Azure 中创建 C# ASP.NET Framework Web 应用 | Microsoft Docs
+description: 了解如何通过部署默认的 C# ASP.NET Web 应用，在 Azure 应用服务中运行 Web 应用。
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -12,22 +12,21 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 11/30/2017
+ms.date: 08/29/2018
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 125377b91514b1615cfbb488f7ddfe59fbc016f5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f6f443dfe637e68b0e1e13f7c3b9e718ae48a85d
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43191308"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>在 Azure 中创建 ASP.NET Framework Web 应用
 
 [Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。  本快速入门演示如何将第一个 ASP.NET Web 应用部署到 Azure Web 应用中。 完成后，便拥有了一个资源组，该资源组包含一个应用服务计划和一个具有已部署的 Web 应用程序的 Azure Web 应用。
 
-观看视频，动态了解此快速入门教程，然后自行按步骤将你的第一个 .NET 应用发布到 Azure。
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-for-NET-Developers/Create-a-NET-app-in-Azure-Quickstart/player]
+![](./media/app-service-web-get-started-dotnet-framework/published-azure-web-app.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -35,11 +34,7 @@ ms.lasthandoff: 04/05/2018
 
 完成本教程：
 
-* 使用以下工作负荷安装 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a>：
-    - **ASP.NET 和 Web 开发**
-    - **Azure 开发**
-
-    ![ASP.NET 和 Web 开发以及 Azure 开发（在 Web 和云下）](media/app-service-web-tutorial-dotnet-sqldatabase/workloads.png)
+安装带有 ASP.NET 和 Web 开发工作负荷的 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a>。
 
 如果已安装 Visual Studio，请单击“工具” > **Get Tools and Features**“获取工具和功能”，以便在 Visual Studio 中添加工作负荷。
 
@@ -104,10 +99,10 @@ ms.lasthandoff: 04/05/2018
 
 ![创建应用服务计划](./media/app-service-web-get-started-dotnet-framework/configure-app-service-plan.png)
 
-| 设置 | 建议的值 | 说明 |
+| 设置 | 建议的值 | Description |
 |-|-|-|
 |应用服务计划| myAppServicePlan | 应用服务计划的名称。 |
-| Location | 欧洲西部 | 托管 Web 应用的数据中心。 |
+| 位置 | 西欧 | 托管 Web 应用的数据中心。 |
 | 大小 | 免费 | [定价层](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)确定托管功能。 |
 
 选择“确定”。
@@ -143,7 +138,8 @@ ms.lasthandoff: 04/05/2018
 
 若要重新部署到 Azure，请在“解决方案资源管理器”中右键单击“myFirstAzureWebApp”项目，然后选择“发布”。
 
-在发布页中选择“发布”。
+在发布页上选择“发布”。
+![Visual Studio“发布摘要”页](./media/app-service-web-get-started-dotnet-framework/publish-summary-page.png)
 
 发布完成后，Visual Studio 将启动浏览器并转到 Web 应用的 URL。
 
@@ -162,6 +158,12 @@ ms.lasthandoff: 04/05/2018
 ![Azure 门户中的应用服务边栏选项卡](./media/app-service-web-get-started-dotnet-framework/web-app-blade.png)
 
 左侧菜单提供用于配置应用的不同页面。 
+
+## <a name="video"></a>视频
+
+观看视频，动态了解此快速入门教程，然后自行按步骤将你的第一个 .NET 应用发布到 Azure。
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-for-NET-Developers/Create-a-NET-app-in-Azure-Quickstart/player]
 
 [!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 

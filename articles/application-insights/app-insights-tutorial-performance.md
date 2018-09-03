@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 8489992303425cc00c15994b55ade958d77549e4
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 4ce4c9e2479c8d570766169ce5094dcc2b4bc511
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
-ms.locfileid: "29969128"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42812865"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>使用 Azure Application Insights 查找和诊断性能问题
 
@@ -53,27 +53,20 @@ Application Insights 收集应用程序中不同操作的性能详细信息。 �
 
     ![“性能”面板](media/app-insights-tutorial-performance/performance-blade.png)
 
-3. 此图正显示一段时间内所有操作的平均持续时间。  将要调查的操作固定到图中以添加该操作。  此图显示，存在值得调查的峰值。  在图上缩短时间窗口，进一步隔离出这些峰值。
+3. 此图正显示一段时间内所选操作的平均持续时间。 可以切换到第 95 个百分点值，以便查找性能问题。 将要调查的操作固定到图中以添加该操作。  此图显示，存在值得调查的峰值。  在图上缩短时间窗口，进一步隔离出这些峰值。
 
     ![“固定”操作](media/app-insights-tutorial-performance/pin-operations.png)
 
-4.  单击要在右侧查看其性能面板的操作。 这将显示不同请求的持续时间分布。  用户通常会注意到半秒左右的响应时间，并将其判定为性能缓慢，因此请缩小 500 毫秒以上的请求时间窗口。  
+4.  右侧的性能面板显示所选操作的不同请求的持续时间的分布情况。  缩小窗口，从大约第 95 个百分点值开始。 “前 3 个依赖项”见解卡大致说明了外部依赖项可能是造成事务速度慢的原因。  单击带示例数的按钮即可查看示例列表。 然后即可选择任意示例来查看事务详细信息。
 
     ![持续时间分布](media/app-insights-tutorial-performance/duration-distribution.png)
 
-5.  在此示例中，可以看到大量请求超过一秒才得到处理。 单击“操作详细信息”可查看此操作的详细信息。
+5.  可以大致看到，调用 Fabrikamaccount Azure 表所花的时间占了事务总持续时间的大部分。 也可看到有一个异常导致其失败。 可以单击列表中的任意项，然后就可以在右侧查看其详细信息。 [详细了解事务诊断体验](app-insights-transaction-diagnostics.md)
 
     ![操作详细信息](media/app-insights-tutorial-performance/operation-details.png)
+    
 
-    > [!NOTE]
-    启用“统一详细信息: E2E 事务诊断”[预览体验](app-insights-previews.md)可在单个全屏视图中查看所有相关的服务器端遥测数据，如请求、依赖项、异常、跟踪、事件等。 
-
-    启用预览后，可以查看依赖项调用所用的时间，以及统一体验中的任何失败或异常。 对于跨组件事务，甘特图以及详细信息窗格可以帮助你快速诊断根本原因组件、依赖项或异常。 可以展开下半部分，以查看针对所选组件操作收集的任何跟踪或事件的时间序列。 [详细了解此新体验](app-insights-transaction-diagnostics.md)  
-
-    ![事务诊断](media/app-insights-tutorial-performance/e2e-transaction-preview.png)
-
-
-6.  目前收集到的信息只能确定存在性能缓慢，但很难确定根本原因。  “探查器”可显示操作所运行的实际代码和每步所需的时间，从而帮助确定根本原因。 由于探查器周期性运行，所以可能未记录到某些操作。  随着时间推移，应可记录到更多操作。  若要对操作启用探查器，请单击“探查器跟踪”。
+6.  “探查器”可显示操作所运行的实际代码和每步所需的时间，因而可以更深入地进行代码级别的诊断。 由于探查器周期性运行，所以可能未记录到某些操作。  随着时间推移，应可记录到更多操作。  若要对操作启用探查器，请单击“探查器跟踪”。
 5.  跟踪显示每个操作的单个事件，以便诊断整个操作持续时间的根本原因。  单击持续时间最长的示例。
 6.  单击“显示热路径”，以突出显示对操作总持续时间贡献最大的一系列特定事件。  在此示例中，可以看到最慢的调用来自 *FabrikamFiberAzureStorage.GetStorageTableData* 方法。 最耗时的部分是 *CloudTable.CreateIfNotExist* 方法。 如果每次调用该函数时都执行这行代码，则将使用不必要的网络调用和 CPU 资源。 修复该代码的最佳方式是将此行放入仅执行一次的某个启动方法中。 
 

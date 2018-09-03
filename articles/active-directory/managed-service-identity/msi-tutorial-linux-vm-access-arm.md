@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: d1e4d8dd7201935ef1dbdc83224f905c812f9cca
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 98be87d62861295536a75201ff93e809c9ba120b
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447469"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886846"
 ---
 # <a name="tutorial-use-a-user-assigned-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>教程：使用 Linux VM 上的用户分配标识访问 Azure 资源管理器
 
@@ -40,29 +40,15 @@ ms.locfileid: "39447469"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果不熟悉托管服务标识，请查阅[概述](overview.md)部分。 请务必了解[系统分配标识与用户分配标识之间的差异](overview.md#how-does-it-work)。
-- 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
-- 若要执行本教程中必需的资源创建和角色管理步骤，你的帐户需要在相应范围（订阅或资源组）具有“所有者”权限。 如果需要有关角色分配的帮助，请参阅[使用基于角色的访问控制管理对 Azure 订阅资源的访问权限](/azure/role-based-access-control/role-assignments-portal)。
+[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
+
+[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+
+[登录到 Azure 门户](https://portal.azure.com)
+
+[创建 Linux 虚拟机](/azure/virtual-machines/linux/quick-create-portal)
 
 如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
-
-## <a name="sign-in-to-azure"></a>登录 Azure
-
-在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
-
-## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>在新的资源组中创建 Linux 虚拟机
-
-在本教程中，首先新建一个 Linux VM。 也可以使用现有 VM。
-
-1. 单击 Azure 门户左上角的“创建资源”。
-2. 选择“计算”，然后选择“Ubuntu Server 16.04 LTS”。
-3. 输入虚拟机信息。 对于“身份验证类型”，选择“SSH 公钥”或“密码”。 使用创建的凭据可以登录 VM。
-
-    ![创建 Linux VM](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
-
-4. 在“订阅”下拉列表中，选择虚拟机对应的订阅。
-5. 若要在新资源组中创建虚拟机，请选择“资源组”中的“新建”。 完成后，单击“确定”。
-6. 选择 VM 大小。 若要查看更多大小，请选择“全部查看”或更改“支持的磁盘类型”筛选器。 在设置边栏选项卡中保留默认值，然后单击“确定”。
 
 ## <a name="create-a-user-assigned-identity"></a>创建用户分配的标识
 

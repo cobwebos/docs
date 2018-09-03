@@ -1,6 +1,6 @@
 ---
-title: 配置 Azure AD Privileged Identity Management | Microsoft 文档
-description: 本主题介绍什么是 Azure AD Privileged Identity Management，以及如何使用 PIM 来提升云安全性。
+title: 什么是 Azure AD Privileged Identity Management？ | Microsoft Docs
+description: 概述 Azure Active Directory Privileged Identity Management (PIM)。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 03/07/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8ac1dad9413d9e2710722127c2e837223a5b6f7f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: ff4e5322ac9ccc0bbfd0706ca9f4863670bbf1b5
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618846"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43186205"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>什么是 Azure AD Privileged Identity Management？
 
@@ -51,6 +51,35 @@ Azure AD Privileged Identity Management 可帮助组织实现以下目的：
 ## <a name="just-in-time-administrator-access"></a>实时管理员访问
 
 一直以来，都可以通过 Azure 门户、其他 Microsoft Online Services 门户或 Windows PowerShell 中的 Azure AD cmdlet 将用户分配到管理员角色。 因此，该用户将成为**永久管理员**，始终以分配的角色工作。 Azure AD Privileged Identity Management 引入了**有资格管理员**的概念。有资格管理员应是不时（但不是整天或每天）需要特权访问的用户。 该角色处于非活动状态，直到用户需要访问权限，然后他们完成激活过程，并在预定的时间内成为活动管理员。 越来越多的组织选择使用这种方法来减少或消除对特权角色的“长期管理访问”。
+
+
+## <a name="terminology"></a>术语
+
+有资格的角色用户 - 有资格的角色用户是指组织内已分配到 Azure AD 角色的有资格用户（角色需要激活）。
+
+*委托的审批者* - 委托的审批者是 Azure AD 内负责审批角色激活请求的一个或多个用户或组。
+
+## <a name="scenarios"></a>方案
+
+Privileged Identity Management 支持以下方案：
+
+**特权角色管理员可以：**
+
+- 启用对特定角色的审批
+- 指定要审批请求的审批者用户和/或组
+- 查看所有特权角色的请求和审批历史记录
+
+指定的审批者可以：
+
+- 查看挂起的审批（请求）
+- 批准或拒绝角色提升请求（单个和/或批量）
+- 提供批准/拒绝的理由 
+
+**有资格的用户角色可以：**
+
+- 请求激活需要审批的角色
+- 查看要激活的请求的状态
+- 批准激活后，在 Azure AD 中完成任务
 
 ## <a name="enable-privileged-identity-management-for-your-directory"></a>为目录启用 Privileged Identity Management
 
@@ -157,4 +186,6 @@ Azure 资源角色（预览版）的角色设置可让管理员配置“实时�
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
+- [使用 PIM 的订阅要求](subscription-requirements.md)
+- [可以在 PIM 中管理的 Azure AD 目录角色](pim-roles.md)
+- [确保 Azure AD 中混合部署和云部署的特权访问安全性](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)

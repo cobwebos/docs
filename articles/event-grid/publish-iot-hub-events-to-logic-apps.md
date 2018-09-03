@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2018
 ms.author: kgremban
-ms.openlocfilehash: aab674f16fcc3fd4869f24f72f66878a8751d892
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 43b317cd9d1c9384a58e9d525fdd15d18eb63968
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34301478"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43246630"
 ---
 # <a name="send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>使用逻辑应用发送有关 Azure IoT 中心事件的电子邮件
 
@@ -29,7 +29,7 @@ ms.locfileid: "34301478"
 
 * 受 Azure 逻辑应用支持的任何电子邮件提供程序（例如 Office 365 Outlook、Outlook.com 或 Gmail）中的电子邮件帐户。 此电子邮件帐户用于发送事件通知。 有关支持的逻辑应用连接器的完整列表，请参阅[连接器概述](https://docs.microsoft.com/connectors/)
 * 有效的 Azure 帐户。 如果没有帐户，可以[创建一个免费帐户](http://azure.microsoft.com/pricing/free-trial/)。
-* Azure 中的 Iot 中心。 如果尚未创建 Iot 中心，请参阅 [IoT 中心入门](../iot-hub/iot-hub-csharp-csharp-getstarted.md)中的演练。 
+* Azure 中的 IoT 中心。 如果尚未创建 Iot 中心，请参阅 [IoT 中心入门](../iot-hub/iot-hub-csharp-csharp-getstarted.md)中的演练。 
 
 ## <a name="create-a-logic-app"></a>创建逻辑应用
 
@@ -37,8 +37,7 @@ ms.locfileid: "34301478"
 
 ### <a name="create-a-logic-app-resource"></a>创建逻辑应用资源
 
-
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“新建” > “企业集成” > “逻辑应用”。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“新建” > “集成” > “逻辑应用”。
 
    ![创建逻辑应用](./media/publish-iot-hub-events-to-logic-apps/select-logic-app.png)
 
@@ -52,7 +51,7 @@ ms.locfileid: "34301478"
 
 4. 在逻辑应用设计器中的“模板”下选择“空白逻辑应用”，以便从头开始生成逻辑应用。
 
-## <a name="select-a-trigger"></a>选择触发器
+### <a name="select-a-trigger"></a>选择触发器
 
 触发器是启动逻辑应用的特定事件。 在本教程中，触发工作流的触发器通过 HTTP 接收请求。  
 
@@ -67,64 +66,60 @@ ms.locfileid: "34301478"
 
 4. 在文本框中粘贴以下示例 JSON 代码，然后选择“完成”：
 
-   ```json
-   [{
-     "id": "56afc886-767b-d359-d59e-0da7877166b2",
-     "topic": "/SUBSCRIPTIONS/<Subscription ID>/RESOURCEGROUPS/<Resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<IoT hub name>",
-     "subject": "devices/LogicAppTestDevice",
-     "eventType": "Microsoft.Devices.DeviceCreated",
-     "eventTime": "2018-01-02T19:17:44.4383997Z",
-     "data": {
-       "twin": {
-         "deviceId": "LogicAppTestDevice",
-         "etag": "AAAAAAAAAAE=",
-         "status": "enabled",
-         "statusUpdateTime": "0001-01-01T00:00:00",
-         "connectionState": "Disconnected",
-         "lastActivityTime": "0001-01-01T00:00:00",
-         "cloudToDeviceMessageCount": 0,
-         "authenticationType": "sas",
-         "x509Thumbprint": {
-           "primaryThumbprint": null,
-           "secondaryThumbprint": null
-         },
-         "version": 2,
-         "properties": {
-           "desired": {
-             "$metadata": {
-               "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
-             },
-             "$version": 1
-           },
-           "reported": {
-             "$metadata": {
-               "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
-             },
-             "$version": 1
-           }
-         }
-       },
-       "hubName": "egtesthub1",
-       "deviceId": "LogicAppTestDevice",
-       "operationTimestamp": "2018-01-02T19:17:44.4383997Z",
-       "opType": "DeviceCreated"
-     },
-     "dataVersion": "",
-     "metadataVersion": "1"
-   }]
-   ```
-5. 可能会收到一条弹出通知，其中指出，“请记住要在请求中包含设为 application/json 的内容类型标头”。 可以放心忽略此建议，并转到下一部分。 
+```json
+[{
+  "id": "56afc886-767b-d359-d59e-0da7877166b2",
+  "topic": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<hub name>",
+  "subject": "devices/LogicAppTestDevice",
+  "eventType": "Microsoft.Devices.DeviceCreated",
+  "eventTime": "2018-01-02T19:17:44.4383997Z",
+  "data": {
+    "twin": {
+      "deviceId": "LogicAppTestDevice",
+      "etag": "AAAAAAAAAAE=",
+      "deviceEtag": "null",
+      "status": "enabled",
+      "statusUpdateTime": "0001-01-01T00:00:00",
+      "connectionState": "Disconnected",
+      "lastActivityTime": "0001-01-01T00:00:00",
+      "cloudToDeviceMessageCount": 0,
+      "authenticationType": "sas",
+      "x509Thumbprint": {
+        "primaryThumbprint": null,
+        "secondaryThumbprint": null
+      },
+      "version": 2,
+      "properties": {
+        "desired": {
+          "$metadata": {
+            "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
+          },
+          "$version": 1
+        },
+        "reported": {
+          "$metadata": {
+            "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
+          },
+          "$version": 1
+        }
+      }
+    },
+    "hubName": "egtesthub1",
+    "deviceId": "LogicAppTestDevice"
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1"
+}]
+```
 
+5. 可能会收到一条弹出通知，其中指出，“请记住要在请求中包含设为 application/json 的内容类型标头”。 可以放心忽略此建议，并转到下一部分。 
 
 ### <a name="create-an-action"></a>创建操作
 
 操作是在触发器启动逻辑应用工作流之后发生的任何步骤。 在本教程中，操作是从电子邮件提供程序发送电子邮件通知。 
 
-1. 依次选择“新建步骤”、“添加操作”。 
-
-   ![“新建步骤”、“添加操作”](./media/publish-iot-hub-events-to-logic-apps/new-step.png)
-
-2. 搜索“电子邮件”。 
+1. 选择“新建步骤”。 此时会打开一个窗口，供用户“选择操作”。
+2. 搜索“电子邮件”。
 3. 根据你的电子邮件提供程序，找到并选择匹配的连接器。 本教程使用 **Office 365 Outlook**。 使用其他电子邮件提供程序时执行的步骤类似。 
 
    ![选择电子邮件提供程序连接器](./media/publish-iot-hub-events-to-logic-apps/o365-outlook.png)
@@ -152,7 +147,7 @@ ms.locfileid: "34301478"
 
 3. 保存此 URL，以便在下一部分可以引用它。 
 
-## <a name="publish-an-event-from-iot-hub"></a>从 IoT 中心发布事件
+## <a name="configure-subscription-for-iot-hub-events"></a>为 IoT 中心事件配置订阅
 
 本部分将 IoT 中心配置为在发生事件时发布事件。 
 
@@ -166,21 +161,22 @@ ms.locfileid: "34301478"
    ![创建新的事件订阅](./media/publish-iot-hub-events-to-logic-apps/event-subscription.png)
 
 4. 使用以下值创建事件订阅： 
-   * **名称**：提供描述性的名称。
-   * **订阅所有事件类型**：取消选中该复选框。
-   * **事件类型**：选择“DeviceCreated”。
-   * **订阅方类型**：选择“Webhook”。
-   * **订阅方终结点**：粘贴已从逻辑应用复制的 URL。 
+    * **事件类型**：取消选中“订阅所有事件类型”，然后从菜单中选择“已创建的设备”。
+    * **终结点详细信息**：选择“Webhook”作为“终结点类型”，然后单击所选终结点并粘贴从逻辑应用中复制的 URL，然后确认所做的选择。
 
-   可在此处保存事件订阅，并接收针对 IoT 中心内创建的每个设备发送的通知。 不过，在本教程中，我们将使用可选字段来筛选特定的设备： 
+    ![选择终结点 URL](./media/publish-iot-hub-events-to-logic-apps/endpoint-url.png)
 
-   * **前缀筛选器**：输入 `devices/Building1_`，筛选建筑物 1 中的设备事件。
-   * **后缀筛选器**：输入 `_Temperature`，筛选与温度相关的设备事件。
+    * **事件订阅详细信息**：提供一个说明性的名称，然后选择“事件网格架构”。
 
-   完成后，窗体应如以下示例所示： 
+  可在此处保存事件订阅，并接收针对 IoT 中心内创建的每个设备发送的通知。 不过，在本教程中，我们将使用可选字段来筛选特定的设备： 
 
-   ![示例事件订阅窗体](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
+  * **主题开头**：输入 `devices/Building1_`，以便筛选建筑物 1 中的设备事件。
+  * **主题结尾**：输入 `_Temperature`，以便筛选与温度相关的设备事件。
 
+  完成后，窗体应如以下示例所示： 
+
+    ![示例事件订阅窗体](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
+    
 5. 选择“创建”保存事件订阅。
 
 ## <a name="create-a-new-device"></a>创建新设备
@@ -201,7 +197,7 @@ ms.locfileid: "34301478"
 
 ## <a name="use-the-azure-cli"></a>使用 Azure CLI
 
-如果不使用 Azure 门户，也可以使用 Azure CLI 来完成 IoT 中心相关的步骤。 有关详细信息，请参阅有关使用 Azure CLI [创建事件订阅](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription)和[创建 IoT 设备](https://docs.microsoft.com/cli/azure/iot/device)的网页
+如果不使用 Azure 门户，也可以使用 Azure CLI 来完成 IoT 中心相关的步骤。 有关详细信息，请参阅有关使用 Azure CLI [创建事件订阅](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription)和[创建 IoT 设备](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity)的网页
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -225,8 +221,8 @@ ms.locfileid: "34301478"
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解如何[通过使用事件网格触发操作来对 IoT 中心事件做出反应](../iot-hub/iot-hub-event-grid.md)。
-
-了解[事件网格](overview.md)的其他作用。
+* 详细了解如何[通过使用事件网格触发操作来对 IoT 中心事件做出反应](../iot-hub/iot-hub-event-grid.md)。
+* [了解如何订阅设备已连接和已断开连接事件](../iot-hub/iot-hub-how-to-order-connection-state-events.md)
+* 了解[事件网格](overview.md)的其他作用。
 
 

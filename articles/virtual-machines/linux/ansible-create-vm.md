@@ -7,13 +7,13 @@ author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
-ms.date: 08/21/2018
-ms.openlocfilehash: a60ba863dbbd308219f4229319fb98c72180114d
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.date: 08/22/2018
+ms.openlocfilehash: ff9929d8f2da66b8aa24160c321c9158c832dbc0
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40250626"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42815179"
 ---
 # <a name="use-ansible-to-create-a-linux-virtual-machine-in-azure"></a>使用 Ansible 在 Azure 中创建 Linux 虚拟机
 Ansible 使用声明性语言，适用于通过 Ansible *playbook* 来自动完成 Azure 资源的创建、配置和部署。 本文的各个部分介绍该部分中用于创建和配置 Linux 虚拟机不同部分的 Ansible playbook 的外观。 [完整的 Ansible playbook](#complete-sample-ansible-playbook) 列在本文末尾。
@@ -22,19 +22,7 @@ Ansible 使用声明性语言，适用于通过 Ansible *playbook* 来自动完�
 
 - **Azure 订阅** - 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-- **配置 Azure Cloud Shell** 或**在 Linux 虚拟机上安装和配置 Ansible**
-
-  **配置 Azure Cloud Shell**
-
-  1. **配置 Azure Cloud Shell** - 如果不熟悉 Azure Cloud Shell，请参阅 [Bash in Azure Cloud Shell 快速入门](/azure/cloud-shell/quickstart)一文，了解如何启动和配置 Cloud Shell。 
-
-  **--或者--**
-
-  **在 Linux 虚拟机上安装和配置 Ansible**
-
-  1. **安装 Ansible** - 在[支持的 Linux 平台](/azure/virtual-machines/linux/ansible-install-configure#install-ansible-on-an-azure-linux-virtual-machine)上安装 Ansible。
-
-  1. **配置 Ansible** - [创建 Azure 凭据并配置 Ansible](/azure/virtual-machines/linux/ansible-install-configure#create-azure-credentials)
+- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)]
 
 ## <a name="create-a-resource-group"></a>创建资源组
 Ansible 需要一个在其中部署了资源的资源组。 以下示例 Ansible playbook 部分在 `eastus` 位置创建名为 `myResourceGroup` 的资源组：

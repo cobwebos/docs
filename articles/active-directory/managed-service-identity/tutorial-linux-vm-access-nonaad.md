@@ -14,23 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 54a763a768a57692cf0298c07f23fb4ed84f758f
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 9a4aaa17c8ab325f93002d55e301363fd9f2d4e5
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258144"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885038"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-key-vault"></a>教程：使用 Linux VM 托管服务标识访问 Azure Key Vault 
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-本教程介绍如何为 Linux 虚拟机启用托管服务标识，然后使用该标识访问 Azure Key Vault。 作为引导，Key Vault 随后可让客户端应用程序使用机密访问未受 Azure Active Directory (AD) 保护的资源。 托管服务标识由 Azure 自动管理，可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中插入凭据了。 
+本教程介绍如何使用 Linux 虚拟机 (VM) 的系统分配标识访问 Azure Key Vault。 作为引导，Key Vault 随后可让客户端应用程序使用机密访问未受 Azure Active Directory (AD) 保护的资源。 托管服务标识由 Azure 自动管理，可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中插入凭据了。 
 
 学习如何：
 
 > [!div class="checklist"]
-> * 在 Linux 虚拟机上启用托管服务标识 
 > * 授予 VM 对 Key Vault 中存储的密钥的访问权限 
 > * 使用 VM 标识获取访问令牌，并使用它来检索 Key Vault 中的密钥 
  
@@ -40,33 +39,11 @@ ms.locfileid: "39258144"
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="sign-in-to-azure"></a>登录 Azure
-在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。 
+- [登录到 Azure 门户](https://portal.azure.com)
 
-## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>在新的资源组中创建 Linux 虚拟机
+- [创建 Linux 虚拟机](/azure/virtual-machines/linux/quick-create-portal)
 
-本教程将新建一个 Linux VM。 还可以在现有 Azure VM 上启用托管服务标识。
-
-1. 单击 Azure 门户左上角的“创建资源”按钮。
-2. 选择“计算”，然后选择“Ubuntu Server 16.04 LTS”。
-3. 输入虚拟机信息。 对于“身份验证类型”，选择“SSH 公钥”或“密码”。 使用创建的凭据可以登录 VM。
-
-    ![Alt 图像文本](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
-
-4. 在“订阅”下拉列表中，选择虚拟机对应的订阅。
-5. 若要在新资源组中创建虚拟机，请选择“资源组”中的“新建”。 完成后，单击“确定”。
-6. 选择 VM 大小。 若要查看更多大小，请选择“全部查看”或更改“支持的磁盘类型”筛选器。 在“设置”页中保留默认值，然后单击“确定”。
-
-## <a name="enable-managed-service-identity-on-your-vm"></a>在 VM 上启用托管服务标识
-
-可以通过虚拟机托管服务标识从 Azure AD 中获取访问令牌，无需在代码中插入凭据。 在 VM 上启用托管服务标识会执行两项操作：向 Azure Active Directory 注册 VM 以创建其托管标识，以及在 VM 上配置标识。
-
-1. 对于“虚拟机”，请选择要在其上启用托管标识的虚拟机。
-2. 单击左侧导航栏中的“配置”。
-3. 此时，将会看到托管服务标识。 若要注册并启用托管服务标识，请选择“是”，若要禁用，请选择“否”。
-4. 务必单击“保存”，以保存配置。
-
-    ![Alt 图像文本](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+- [在虚拟机上启用系统分配的标识](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>授予 VM 对 Key Vault 中存储的密钥的访问权限  
 

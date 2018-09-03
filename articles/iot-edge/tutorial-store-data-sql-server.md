@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/26/2018
+ms.date: 08/22/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 1bd6f048682b93e3dfa1e19f6b3c50bff2ed232e
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 7e02caf9706a5127d3729256fcc238f467eb2991
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "41920951"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143494"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>教程：使用 SQL Server 数据库在边缘存储数据
 
@@ -73,7 +73,7 @@ Azure IoT Edge 设备：
 以下步骤将介绍如何使用 Visual Studio Code 和 Azure IoT Edge 扩展来创建 IoT Edge 函数。
 
 1. 打开 Visual Studio Code。
-2. 打开 VS Code 集成终端，方法是选择“视图” > “集成终端”。
+2. 打开 VS Code 集成终端，方法是选择“视图” > “终端”。
 3. 打开 VS Code 命令面板，方法是选择“视图” > “命令面板”。
 4. 在命令面板中，键入并运行“Azure: 登录”命令，然后按说明登录 Azure 帐户。 如果已登录，则可跳过此步骤。
 3. 在命令面板中，键入并运行“Azure IoT Edge: 新建 IoT Edge 解决方案”命令。 在命令面板中提供以下信息，以便创建解决方案： 
@@ -253,15 +253,15 @@ Azure IoT Edge 设备：
 2. 根据提示登录到 Azure 帐户。 
 3. 在命令面板中选择 Azure 订阅，然后选择 IoT 中心。 
 4. 在 VS Code 资源管理器中，展开“Azure IoT 中心设备”部分。 
-5. 右键单击要将其作为部署目标的设备，然后选择“为 IoT Edge 设备创建部署”。 
+5. 右键单击要将其作为部署目标的设备，然后选择“为单个设备创建部署”。 
 6. 在文件资源管理器中导航到解决方案中的 **config** 文件夹，然后选择 **deployment.json**。 单击“选择 Edge 部署清单”。 
 
 如果部署成功，则会在 VS Code 输出中列显确认消息。 也可查看设备上的所有模块是否都已启动并运行。 
 
 在 IoT Edge 设备上运行以下命令，以便查看模块的状态。 可能需要几分钟时间。
 
-   ```bash
-   sudo iotedge list
+   ```PowerShell
+   iotedge list
    ```
 
 ## <a name="create-the-sql-database"></a>创建 SQL 数据库

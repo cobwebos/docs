@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/07/2018
+ms.date: 08/29/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 4a5e613169bf3173b7585b49803fc7ac7f5186ce
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: ec56f9fdf21459857c8115222da921b6681a3ac5
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297965"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247230"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>使用 Azure 成本管理激活 Azure 订阅和帐户
 
@@ -69,7 +69,7 @@ ms.locfileid: "35297965"
     1. 在 Azure 门户的右上角，单击自己的用户信息，然后单击“查看我的帐单”。
     2. 在“计费帐户”下，单击“订阅”。
     3. 在“我的订阅”下选择订阅。
-    4. 费率 ID 显示在“产品/服务 ID”下。 复制订阅的产品/服务 ID。
+    4. 费率 ID 显示在“套餐 ID”下。 复制订阅的套餐 ID。
 4. 在“添加新帐户”（或“编辑订阅”）框中，单击“保存”（或“下一步”）。 随后将重定向到 Azure 门户。
 5. 登录到门户。 单击“接受”授权 Azure 成本管理收集器访问你的 Azure 帐户。
 
@@ -103,7 +103,7 @@ ms.locfileid: "35297965"
 
 可能还需要向部门管理员、帐户所有者和企业管理员授予使用计费 API 查看费用的权限。
 
-只有 Azure 服务管理员可以启用成本管理。 协同管理员的权限不足。 但是，你可以绕过管理员要求。 你可以使用 PowerShell 脚本请求 Azure Active Directory 管理员授予对 **CloudynAzureCollector** 进行授权所需的权限。 以下脚本授予注册 Azure Active Directory 服务主体 **CloudynAzureCollector** 所需的权限。
+只有 Azure 服务管理员可以启用成本管理。 协同管理员的权限不足。 但是，你可以绕过管理员要求。 你可以使用 PowerShell 脚本请求 Azure Active Directory 管理员授予对 **CloudynAzureCollector** 进行授权所需的权限。 以下脚本授予注册 Azure Active Directory 服务主体 **CloudynAzureCollector** 所需的权限。 成功运行后，操作结束，浏览器显示 URL http://localhost:8080/CloudynJava。
 
 ```
 #THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

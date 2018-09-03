@@ -3,7 +3,7 @@ title: 使用 Azure 门户手动添加 API | Microsoft Docs
 description: 本教程介绍如何使用 API 管理 (APIM) 手动添加 API。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -11,16 +11,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 08/27/2018
 ms.author: apimpm
-ms.openlocfilehash: ef7cfa0f30eaaa426c312b21ce0a73aa4409d2ec
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 35b4777c7de4db1f8514b24e7b1e4d11775d0ca0
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307442"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247896"
 ---
-# <a name="add-an-api-manually"></a>手动添加 API 
+# <a name="add-an-api-manually"></a>手动添加 API
 
 本文中的步骤说明如何使用 Azure 门户手动将 API 添加到 API 管理 (APIM) 实例。 想要模拟某个 API 时，就往往需要创建一个空白 API 并手动对其进行定义。 有关模拟 API 的详细信息，请参阅[模拟 API 响应](mock-api-responses.md)。
 
@@ -54,25 +54,24 @@ ms.locfileid: "38307442"
     |**产品**|“无限制” |通过关联 API 与产品来发布 API。 如果想要发布 API 并使其对开发人员可用，请将其添加到产品中。 可在 API 创建期间执行此操作，或稍后进行设置。<br/><br/>产品是一个或多个 API 的关联。 可以包含多个 API，并通过开发人员门户将其提供给开发人员。 <br/>开发人员必须先订阅产品才能访问 API。 订阅时，他们会得到一个订阅密钥，此密钥对该产品中的任何 API 都有效。 如果创建了 APIM 实例，那么你已是管理员，因此默认情况下订阅了每个产品。<br/><br/> 每个 API 管理实例默认附带两个示例产品：“入门”和“无限制”。| 
 5. 选择**创建**。
 
-此时，APIM 中没有任何操作映射到后端 API 中的操作。 如果调用通过后端而不是通过 APIM 公开的操作，将收到 **404** 错误。 
+此时，APIM 中没有任何操作映射到后端 API 中的操作。 如果调用通过后端而不是通过 APIM 公开的操作，将收到 **404** 错误。
 
 >[!NOTE] 
 > 默认情况下，在添加某个 API 时，除非已将某些操作列入白名单，否则即使该 API 已连接到某个后端服务，APIM 也不会公开任何操作。 若要将后端服务的某个操作列入白名单，请创建一个映射到后端操作的 APIM 操作。
->
 
 ## <a name="add-and-test-an-operation"></a>添加并测试操作
 
 本部分介绍如何添加“/get”操作，以将其映射到后端“http://httpbin.org/get”操作。
 
-### <a name="add-the-operation"></a>添加操作
+### <a name="add-an-operation"></a>添加操作
 
-1. 选择在上一步骤中创建的 API。
+1. 选择上一步中创建的 API。
 2. 单击“+ 添加操作”。
 3. 在“URL”中，选择“GET”，并在资源中输入“/get”。
 4. 输入“FetchData”作为“显示名称”。
 5. 选择“保存”。
 
-### <a name="test-the-operation"></a>测试操作
+### <a name="test-an-operation"></a>测试操作
 
 在 Azure 门户中测试操作。 或者，可以在**开发人员门户**中测试操作。
 

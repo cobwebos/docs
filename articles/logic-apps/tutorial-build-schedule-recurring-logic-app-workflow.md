@@ -1,28 +1,23 @@
 ---
-title: 生成基于计划程序的自动化工作流 - Azure 逻辑应用 | Microsoft Docs
-description: 本教程介绍如何使用 Azure 逻辑应用创建基于计划程序的重复自动化工作流
-author: ecfan
-manager: jeconnoc
-editor: ''
+title: 生成基于计划的自动化工作流 - Azure 逻辑应用 | Microsoft Docs
+description: 教程 - 如何使用 Azure 逻辑应用创建基于计划的重复自动化工作流
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: 84779d3e56b089c34e6556368008d794e634d535
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 43f826414ae7f279c23f6e9e2e39d4d21267e158
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300763"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124012"
 ---
-# <a name="check-traffic-with-a-scheduler-based-logic-app"></a>使用基于计划程序的逻辑应用检查流量
+# <a name="check-traffic-with-a-schedule-based-logic-app"></a>使用基于计划的逻辑应用检查流量
 
 可以通过 Azure 逻辑应用自动完成按计划运行的工作流。 本教程介绍如何通过计划程序触发器生成[逻辑应用](../logic-apps/logic-apps-overview.md)。该触发器每个工作日早晨运行，用于检查两个地点之间的行程时间，包括交通情况。 如果该时间超过特定的限制，逻辑应用会发送一封电子邮件，其中包括到达目的地所需的行程时间和额外时间。
 
@@ -64,7 +59,7 @@ ms.locfileid: "35300763"
 
    | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
-   | **名称** | LA-TravelTime | 逻辑应用的名称 | 
+   | **Name** | LA-TravelTime | 逻辑应用的名称 | 
    | **订阅** | <*your-Azure-subscription-name*> | Azure 订阅的名称 | 
    | **资源组** | LA-TravelTime-RG | 用于组织相关资源的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称 | 
    | **位置** | 美国东部 2 | 用于存储逻辑应用信息的区域 | 
@@ -93,9 +88,9 @@ ms.locfileid: "35300763"
 
    ![提供计划和定期触发详细信息](./media/tutorial-build-scheduled-recurring-logic-app-workflow/schedule-recurrence-trigger-settings.png)
 
-   | 设置 | 值 | 说明 | 
+   | 设置 | 值 | Description | 
    | ------- | ----- | ----------- | 
-   | **间隔** | 1 | 在两次检查之间需等待的时间间隔数 | 
+   | 间隔 | 1 | 在两次检查之间需等待的时间间隔数 | 
    | **频率** | 周次 | 用于定期触发的时间单位 | 
    | **时区** | 无 | 仅在指定开始时间的情况下适用。 用于指定非本地时区。 | 
    | **开始时间** | 无 | 将定期触发延迟到指定的日期和时间。 有关详细信息，请参阅[计划定期运行的任务和工作流](../connectors/connectors-native-recurrence.md)。 | 
@@ -128,7 +123,7 @@ ms.locfileid: "35300763"
 
    ![选择“必应地图 - 获取路线”操作](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
 
-   | 设置 | 值 | 说明 |
+   | 设置 | 值 | Description |
    | ------- | ----- | ----------- |
    | **连接名称** | BingMapsConnection | 提供连接的名称。 | 
    | **API 密钥** | <*your-Bing-Maps-key*> | 输入以前接收的必应地图密钥。 如果没有必应地图密钥，请了解<a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">如何获取密钥</a>。 | 
@@ -140,7 +135,7 @@ ms.locfileid: "35300763"
 
    ![提供“必应地图 - 获取路线”操作的信息](./media/tutorial-build-scheduled-recurring-logic-app-workflow/get-route-action-settings.png) 
 
-   | 设置 | 值 | 说明 |
+   | 设置 | 值 | Description |
    | ------- | ----- | ----------- |
    | **路标 1** | <*start-location*> | 路线起点 | 
    | **路标 2** | <*end-location*> | 路由终点 | 
@@ -176,8 +171,8 @@ ms.locfileid: "35300763"
 
    | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
-   | **名称** | travelTime | 变量的名称 | 
-   | **类型** | Integer | 变量的数据类型 | 
+   | **Name** | travelTime | 变量的名称 | 
+   | 类型 | Integer | 变量的数据类型 | 
    | **值** | 一个表达式，可将当前的行程时间从秒转换为分钟（参见此表下面的步骤）。 | 变量的初始值 | 
    |||| 
 

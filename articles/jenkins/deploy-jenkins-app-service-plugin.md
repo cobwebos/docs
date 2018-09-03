@@ -1,19 +1,19 @@
 ---
 title: 使用 Jenkins 插件部署到 Azure App Service
 description: 了解如何在 Jenkins 中使用 Azure App Service Jenkins 插件将 Java Web 应用部署到 Azure
-ms.topic: article
-ms.author: tarcher
+ms.service: jenkins
+keywords: jenkins, azure, devops, 应用服务
 author: tomarcher
-manager: jpconnock
-ms.service: devops
-ms.custom: jenkins
+manager: jeconnoc
+ms.author: tarcher
+ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: f54e4e8f64fe444f264b547d5af475c533c5723f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b364dfb033c3af640892bb305d7df3c916dd3fef
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441674"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43095761"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>使用 Jenkins 插件部署到 Azure App Service 
 
@@ -39,7 +39,7 @@ Jenkins 插件可用于通过 Web 应用支持的所有语言（例如 C#、PHP�
 > [!NOTE]
 > Java JDK 和 Maven 为生成 Java 项目所必需。 在 Jenkins Master 上安装这些组件，或若将代理用于持续集成，则在 VM 代理中安装组件。 
 
-要安装组件，请使用 SSH 登录到 Jenkins 实例，并运行以下命令：
+若要安装组件，请使用 SSH 登录到 Jenkins 实例，并运行以下命令：
 
 ```bash
 sudo apt-get install -y openjdk-7-jdk
@@ -119,7 +119,7 @@ Azure App Service Jenkins 插件中管道已就绪。 可参考 GitHub 存储库
 2. 为该作业提供一个名称并选择“Pipeline”（管道）。 选择“确定”。
 3. 选择“管道”选项卡。
 4. 对于“定义”值，请选择“来自 SCM 的管道脚本”。
-5. 对于“SCM”值，请选择“Git”。 输入分叉存储库的 GitHub URL。 例如：https://&lt;your_forked_repo>.git。
+5. 对于“SCM”值，请选择“Git”。 输入分叉存储库的 GitHub URL。 例如： https://&lt;your_forked_repo>.git。
 6. 将“脚本路径”值更新为“Jenkinsfile_ftp_plugin”。
 7. 选择“保存”并运行作业。
 
@@ -137,7 +137,7 @@ Linux 版 Web 应用还支持 Git 和 FTP 等传统部署方法，但仅限内�
 ### <a name="set-up-the-jenkins-job-for-docker"></a>设置适用于 Docker 的 Jenkins 作业
 
 1. 在 Jenkins 仪表板上创建新的自由式项目。
-2. 配置“源代码管理”字段，以使用[适用于 Azure 的简单 Java Web 应用](https://github.com/azure-devops/javawebappsample)的本地分支。 提供“存储库 URL”值。 例如：http://github.com/&lt;your_ID>/javawebappsample。
+2. 配置“源代码管理”字段，以使用[适用于 Azure 的简单 Java Web 应用](https://github.com/azure-devops/javawebappsample)的本地分支。 提供“存储库 URL”值。 例如： http://github.com/&lt;your_ID>/javawebappsample。
 3. 添加步骤以使用 Maven 生成项目，可通过添加 Execute shell 命令实现该操作。 在命令中包括以下行：
     ```bash
     mvn clean package
@@ -187,7 +187,7 @@ Linux 版 Web 应用还支持 Git 和 FTP 等传统部署方法，但仅限内�
 2. 为该作业提供一个名称并选择“Pipeline”（管道）。 选择“确定”。
 3. 选择“管道”选项卡。
 4. 对于“定义”值，请选择“来自 SCM 的管道脚本”。
-5. 对于“SCM”值，请选择“Git”。 输入分叉存储库的 GitHub URL。 例如：https://&lt;your_forked_repo>.git。
+5. 对于“SCM”值，请选择“Git”。 输入分叉存储库的 GitHub URL。 例如： https://&lt;your_forked_repo>.git。
 7. 将“脚本路径”值更新为“Jenkinsfile_container_plugin”。
 8. 选择“保存”并运行作业。
 

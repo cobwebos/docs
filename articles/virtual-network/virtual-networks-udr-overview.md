@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 7ff4c6ce5e42154b3ded9c05ef1437d30f9477f0
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: b206d93d7c72f5d8ff3dd3baa277cd0db33ba583
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41918887"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42811907"
 ---
 # <a name="virtual-network-traffic-routing"></a>虚拟网络流量路由
 
@@ -167,7 +167,7 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
         - 能够进行网络地址转换和转发，或者能够对流向子网中目标资源的流量进行代理，以及能够让流量返回 Internet。 
     - **虚拟网关**：如果网关为 ExpressRoute 虚拟网关，则连接了 Internet 的本地设备可以进行网络地址转换和转发，或者通过 ExpressRoute 的[专用对等互连](../expressroute/expressroute-circuit-peerings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-private-peering)对流向子网中目标资源的流量进行代理。 
 
-如果虚拟网络已连接到 Azure VPN 网关，请不要将路由表与包含目标为 0.0.0.0/0 的路由的[网关子网](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)相关联。 这样做可能会阻止网关正常工作。
+如果虚拟网络已连接到 Azure VPN 网关，请不要将路由表与包含目标为 0.0.0.0/0 的路由的[网关子网](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)相关联。 这样做可能会阻止网关正常工作。 有关详细信息，请参阅 [VPN 网关常见问题解答](../vpn-gateway/vpn-gateway-vpn-faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#why-are-certain-ports-opened-on-my-vpn-gateway)中的“我的 VPN 网关上的某些端口为何处于打开状态？”问题。
 
 请参阅 [Azure 与本地数据中心之间的外围网络](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json)和 [Azure 与 Internet 之间的外围网络](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json)，了解在 Internet 和 Azure 之间使用虚拟网关和虚拟设备时的实施详情。
 

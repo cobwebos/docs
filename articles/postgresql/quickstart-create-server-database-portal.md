@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 03/20/2018
-ms.openlocfilehash: b34fd81532e27960d0dd92f172790aee3cd82ca5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 002ec2f99e488af76654c2391416e4b90e16e4c0
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639412"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050221"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure Database for PostgreSQL 服务器
 
@@ -41,7 +41,7 @@ ms.locfileid: "34639412"
 
     ![创建服务器](./media/quickstart-create-database-portal/3-create.png)
 
-    设置|建议的值|说明
+    设置|建议的值|Description
     ---|---|---
     服务器名称 |*mydemoserver*|用于标识用于 PostgreSQL 的 Azure 数据库服务器的唯一名称。 域名 *postgres.database.azure.com* 附加到提供的服务器名称。 服务器名称只能包含小写字母、数字和连字符 (-) 字符。 该名称必须至少包含 3 到 63 个字符。
     订阅|订阅名称|要用于服务器的 Azure 订阅。 如果有多个订阅，请选择要计费的资源所在的订阅。
@@ -85,6 +85,10 @@ ms.locfileid: "34639412"
     AllowAllIps | 0.0.0.0 | 255.255.255.255
 
      ![设置防火墙规则](./media/quickstart-create-database-portal/5-firewall-2.png)
+     
+      > [!NOTE]
+      > 对于生产实例，只能将防火墙规则设置为接受已知 IP 地址的传入请求。  这些设置仅作示例用。
+      >
 
 4. 在“连接安全性”页的上部工具栏中，选择“保存”。 等到指示连接安全性更新已成功完成的通知出现后，再继续操作。
 
@@ -125,7 +129,7 @@ ms.locfileid: "34639412"
     psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
     ```
 
-    psql 参数 |值|说明
+    psql 参数 |值|Description
     ---|---|---
     --host | 服务器名称 | 此前在创建用于 PostgreSQL 的 Azure 数据库服务器时使用过的服务器名称值。 显示的示例服务器为 mydemoserver.postgres.database.azure.com。 请使用完全限定的域名 (**\*.postgres.database.azure.com**)，如示例中所示。 如果不记得服务器名称，请按上一部分的步骤操作，以便获取连接信息。 
     --port | 5432 | 连接到用于 PostgreSQL 的 Azure 数据库服务器时使用的端口。 
@@ -134,7 +138,7 @@ ms.locfileid: "34639412"
 
     使用自己的参数值运行 psql 命令以后，系统会提示输入服务器管理员密码。 此密码是在创建服务器时提供的密码。 
 
-    psql 参数 |建议的值|说明
+    psql 参数 |建议的值|Description
     ---|---|---
     password | 管理员密码 | 键入的密码字符不会显示在 bash 提示符处。 键入所有字符后，请按 Enter 键以便进行身份验证和连接。
 
@@ -189,7 +193,7 @@ pgAdmin 是用于 PostgreSQL 的开源工具。 可以从 [pgAdmin 网站](http:
 
    ![“连接”选项卡](./media/quickstart-create-database-portal/10-pgadmin-create-server.png)
 
-    pgAdmin 参数 |值|说明
+    pgAdmin 参数 |值|Description
     ---|---|---
     主机名/地址 | 服务器名称 | 此前在创建用于 PostgreSQL 的 Azure 数据库服务器时使用过的服务器名称值。 示例服务器为 mydemoserver.postgres.database.azure.com。 请使用完全限定的域名 (**\*.postgres.database.azure.com**)，如示例中所示。 如果不记得服务器名称，请按上一部分的步骤操作，以便获取连接信息。 
     端口 | 5432 | 连接到用于 PostgreSQL 的 Azure 数据库服务器时使用的端口。 

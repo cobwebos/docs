@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: ceb7d64ddd1923cdd22428df6cbc86676b685b4f
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 1e56d3160e42e3f722f3f9ccb8a6de82ac3bfb83
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42147087"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43186052"
 ---
 # <a name="use-net-c-with-visual-studio-to-connect-and-query-an-azure-sql-database"></a>使用 .NET (C#) 和 Visual Studio 来连接和查询 Azure SQL 数据库
 
@@ -55,7 +55,7 @@ ms.locfileid: "42147087"
 3. 选择“控制台应用”，然后输入“sqltest”作为项目名称。
 4. 单击“确定”，在 Visual Studio 中创建并打开新项目
 4. 在“解决方案资源管理器”中，右键单击“sqltest”，然后单击“管理 NuGet 包”。 
-5. 转到“浏览”，搜索 ```System.Data.SqlClient```，找到后将其选中。
+5. 转到“浏览”选项卡，搜索 ```System.Data.SqlClient```，找到后将其选中。
 6. 在“System.Data.SqlClient”页中单击“安装”。
 7. 安装完成后，查看所做的更改，然后单击“确定”以关闭“预览”窗口。 
 8. 如果显示“接受许可证”窗口，则单击“我接受”。

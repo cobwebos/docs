@@ -12,18 +12,18 @@ ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/15/2018
+ms.topic: tutorial
+ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 1376f011d056aac33333f6ac31ee2eaadaf3ef4a
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: eaf0b3e3b607145598660dbb64cadd5a277360cb
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39415790"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046316"
 ---
-# <a name="join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>首次运行期间使用 Azure AD 加入新的 Windows 10 设备
+# <a name="tutorial-join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>教程：首次运行期间使用 Azure AD 加入新的 Windows 10 设备
 
 使用 Azure Active Directory (Azure AD) 中的设备管理，可以确保用户从满足安全性和符合性标准的设备访问资源。 有关详细信息，请参阅 [Azure Active Directory 中的设备管理简介](overview.md)。
 
@@ -34,9 +34,13 @@ ms.locfileid: "39415790"
 
 Windows 全新体验中不支持加入本地 Active Directory (AD) 域。 如果打算将计算机加入 AD 域，在设置期间就应选择链接“使用本地帐户设置 Windows”。 然后可通过计算机上的设置加入域。
  
+本教程介绍如何在 FRX 期间将设备加入 Azure AD：
+ > [!div class="checklist"]
+> * 先决条件
+> * 加入设备
+> * 验证
 
-
-## <a name="before-you-begin"></a>开始之前
+## <a name="prerequisites"></a>先决条件
 
 若要加入 Windows 10 设备，必须配置设备注册服务以允许注册设备。 除具有在 Azure AD 租户中加入设备的权限外，注册设备的数量必须少于所配置的最大数。 有关详细信息，请参阅[配置设备设置](device-management-azure-portal.md#configure-device-settings)。
 

@@ -9,12 +9,12 @@ ms.date: 05/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 42f0781de5412310ecb5326f0384268aba9c53dd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 81d538c0324f8fa89a7ce86ceaf2b0a2a76b4d51
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651299"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43120678"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>教程：使用 CLI 和主题/订阅更新库存
 
@@ -48,9 +48,9 @@ Microsoft Azure 服务总线是一种多租户云消息传送服务，可以在�
 
 ## <a name="service-bus-topics-and-subscriptions"></a>服务总线主题和订阅
 
-每个[对主题的订阅](service-bus-messaging-overview.md#topics)都可以接收每条消息的副本。 主题在协议和语义方面与服务总线队列完全兼容。 服务总线主题支持一系列选择规则，这些规则具有筛选条件和用来设置或修改消息属性的可选操作。 规则每次匹配时，它都会生成一条消息。 若要深入了解规则、筛选器和操作，请单击此[链接](topic-filters.md)。
+每个[对主题的订阅](service-bus-messaging-overview.md#topics)都可以接收每条消息的副本。 主题在协议和语义方面与服务总线队列完全兼容。 服务总线主题支持一系列选择规则，这些规则具有筛选条件和用来设置或修改消息属性的可选操作。 规则每次匹配时，都会生成一条消息。 若要深入了解规则、筛选器和操作，请单击此[链接](topic-filters.md)。
 
-## <a name="log-in-to-azure"></a>登录 Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
 安装 CLI 后，打开一个命令提示符并发出以下命令来登录到 Azure。 如果使用的是 Cloud Shell，则这些步骤不是必需的：
 
@@ -126,7 +126,7 @@ connectionString=$(az servicebus namespace authorization-rule keys list \
 
 ## <a name="create-filter-rules-on-subscriptions"></a>在订阅上创建筛选规则
 
-预配命名空间和主题/订阅并且拥有所需的凭据后，便可以在订阅上创建筛选规则，然后发送和接收消息。 可以观察[此 GitHub 示例文件夹](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/quickstarts-and-tutorials/tutorial-topics-subscriptions-filters-java/src/main/java/com/microsoft/azure/)中的代码。
+预配命名空间和主题/订阅并且拥有所需的凭据后，便可以在订阅上创建筛选规则，然后发送和接收消息。 可以在[此 GitHub 示例文件夹](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/quickstarts-and-tutorials/tutorial-topics-subscriptions-filters-java/src/main/java/com/microsoft/azure/)中检查代码。
 
 ## <a name="send-and-receive-messages"></a>发送和接收消息
 
@@ -165,7 +165,7 @@ az group delete --resource-group my-resourcegroup
 
 ## <a name="understand-the-sample-code"></a>了解示例代码
 
-本部分包含有关示例代码功能的更多详细信息。
+此部分包含有关示例代码功能的更多详细信息。
 
 ### <a name="get-connection-string-and-queue"></a>获取连接字符串和队列
 
@@ -336,9 +336,9 @@ public CompletableFuture<Void> receiveAllMessageFromSubscription(String subscrip
 > * 发送消息并验证它们是否已到达预期的订阅
 > * 从订阅接收消息
 
-若要了解有关发送和接收消息的更多示例，请开始使用 [GitHub 上的服务总线示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted)。
+若要通过更多示例来了解如何发送和接收消息，请从 [GitHub 上的服务总线示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted)着手。
 
-请前进到下一教程来了解有关使用服务总线的发布/订阅功能的更多信息。
+若要详细了解如何使用服务总线的发布/订阅功能，请转到下一教程。
 
 > [!div class="nextstepaction"]
 > [使用 PowerShell 和主题/订阅更新库存](service-bus-tutorial-topics-subscriptions-portal.md)

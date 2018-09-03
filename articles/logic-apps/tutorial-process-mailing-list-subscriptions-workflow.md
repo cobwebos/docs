@@ -1,26 +1,21 @@
 ---
 title: 生成处理邮件列表请求所需的审批工作流 - Azure 逻辑应用 | Microsoft Docs
-description: 本教程介绍如何使用 Azure 逻辑应用来创建自动化审批工作流，以便处理邮件列表订阅
-author: ecfan
-manager: jeconnoc
-editor: ''
+description: 教程 - 如何使用 Azure 逻辑应用来创建自动化审批工作流，以便处理邮件列表订阅
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: e31be6ac24b7b194ab77856cb7376f9431a79f24
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 4ac5861dabbc473099886b4f099824cde60f38b9
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300668"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122863"
 ---
 # <a name="manage-mailing-list-requests-with-a-logic-app"></a>使用逻辑应用管理邮件列表请求
 
@@ -66,7 +61,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
-   | **名称** | LA-MailingList | 逻辑应用的名称 | 
+   | **Name** | LA-MailingList | 逻辑应用的名称 | 
    | **订阅** | <*your-Azure-subscription-name*> | Azure 订阅的名称 | 
    | **资源组** | LA-MailingList-RG | 用于组织相关资源的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称 | 
    | **位置** | 美国东部 2 | 用于存储逻辑应用信息的区域 | 
@@ -97,10 +92,10 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
       ![指定用于检查邮件的文件夹、时间间隔和频率](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-set-up-email.png)
 
-      | 设置 | 值 | 说明 | 
+      | 设置 | 值 | Description | 
       | ------- | ----- | ----------- | 
       | **文件夹** | Inbox | 要监视的电子邮件文件夹 | 
-      | **间隔** | 1 | 在两次检查之间需等待的时间间隔数 | 
+      | 间隔 | 1 | 在两次检查之间需等待的时间间隔数 | 
       | **频率** | 小时 | 两次检查的间隔的时间单位  | 
       |  |  |  | 
 
@@ -198,7 +193,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    ![为“将成员添加到列表”提供信息](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member-settings.png)
 
-   | 设置 | 值 | 说明 | 
+   | 设置 | 值 | Description | 
    | ------- | ----- | ----------- | 
    | **列表 ID** | test-members-ML | MailChimp 邮件列表的名称 | 
    | **Status** | subscribed | 新成员的订阅状态。 有关详细信息，请参阅 <a href="https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/" target="_blank">Manage subscribers with the MailChimp API</a>（使用 MailChimp API 管理订户）。 | 

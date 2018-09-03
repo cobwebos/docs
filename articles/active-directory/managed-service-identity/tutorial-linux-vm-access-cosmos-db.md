@@ -14,22 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
 ms.author: daveba
-ms.openlocfilehash: c2c138e7064ae5f8bfb11d2f8d4c6b8e9e45760d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b38804a4450bfc76f5048f8049a7369d7ebebc30
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441997"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886229"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-cosmos-db"></a>教程：使用 Linux VM 托管服务标识访问 Azure Cosmos DB 
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 
-本教程展示了如何创建和使用 Linux VM 托管服务标识。 学习如何：
+本教程介绍如何使用 Linux 虚拟机 (VM) 的系统分配标识访问 Azure Cosmos DB。 学习如何：
 
 > [!div class="checklist"]
-> * 创建启用了托管服务标识的 Linux VM
 > * 创建 Cosmos DB 帐户
 > * 在 Cosmos DB 帐户中创建集合
 > * 向托管服务标识授予对 Azure Cosmos DB 实例的访问权限
@@ -39,42 +38,20 @@ ms.locfileid: "39441997"
 
 ## <a name="prerequisites"></a>先决条件
 
-如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com)。
+[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-[!INCLUDE [msi-tut-prereqs](~/includes/active-directory-msi-tut-prereqs.md)]
+[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+
+- [登录到 Azure 门户](https://portal.azure.com)
+
+- [创建 Linux 虚拟机](/azure/virtual-machines/linux/quick-create-portal)
+
+- [在虚拟机上启用系统分配的标识](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 若要运行本教程中的 CLI 脚本示例，你有两种选择：
 
 - 通过 Azure 门户或每个代码块右上角的“试用”按钮使用 [Azure Cloud Shell](~/articles/cloud-shell/overview.md)。
 - 如果喜欢使用本地 CLI 控制台，请[安装最新版 CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)（2.0.23 或更高版本）。
-
-## <a name="sign-in-to-azure"></a>登录 Azure
-
-在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
-
-## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>在新的资源组中创建 Linux 虚拟机
-
-对于本教程，新建一台启用了托管服务标识的 Linux VM。
-
-若要创建启用了托管服务标识的 VM，请执行以下操作：
-
-1. 如果在本地控制台中使用 Azure CLI，首先请使用 [az login](/cli/azure/reference-index#az-login) 登录到 Azure。 使用与要在其下部署 VM 的 Azure 订阅关联的帐户：
-
-   ```azurecli-interactive
-   az login
-   ```
-
-2. 运行 [az group create](/cli/azure/group/#az-group-create)，创建用于容纳和部署 VM 及其相关资源的[资源组](../../azure-resource-manager/resource-group-overview.md#terminology)。 如果已有要改用的资源组，可以跳过这一步：
-
-   ```azurecli-interactive 
-   az group create --name myResourceGroup --location westus
-   ```
-
-3. 运行 [az vm create](/cli/azure/vm/#az-vm-create) 创建 VM。 下面的示例创建名为 *myVM* 且具有托管服务标识（应 `--assign-identity` 参数的要求）的 VM。 `--admin-username` 和 `--admin-password` 参数指定用于登录虚拟机的管理用户名和密码帐户。 针对自己的环境相应地更新这些值： 
-
-   ```azurecli-interactive 
-   az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter --generate-ssh-keys --assign-identity --admin-username azureuser --admin-password myPassword12
-   ```
 
 ## <a name="create-a-cosmos-db-account"></a>创建 Cosmos DB 帐户 
 

@@ -1,19 +1,19 @@
 ---
 title: 使用 Jenkins 将 Web 应用部署到 Azure
 description: 使用 Jenkins 和 Docker 设置 Java Web 应用从 GitHub 到 Azure 应用服务的持续集成。
-ms.topic: tutorial
-ms.author: tarcher
+ms.service: jenkins
+keywords: jenkins, azure, devops, 应用服务, 持续集成, ci, 持续部署, cd
 author: tomarcher
-manager: jpconnock
-ms.service: devops
-ms.custom: jenkins
+manager: jeconnoc
+ms.author: tarcher
+ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: e880d84c3ae0fd23c11bb9b30733544bd5f28872
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: b1af82060d316a18cd6427f70695ca4fa982064d
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389936"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43106791"
 ---
 # <a name="set-up-continuous-integration-and-deployment-to-azure-app-service-with-jenkins"></a>使用 Jenkins 设置 Azure 应用服务的持续集成和部署
 
@@ -33,7 +33,7 @@ ms.locfileid: "39389936"
 
 要完成本教程，需要：
 
-* 使用 JDK 和 Maven 工具配置的 [Jenkins](https://jenkins.io/)。 如果没有 Jenkins 系统，请立即在 Azure 中使用 [Jenkins 解决方案模板](/azure/jenkins/install-jenkins-solution-template)创建一个。
+* 配置了 JDK 和 Maven 工具的 [Jenkins](https://jenkins.io/)。 如果没有 Jenkins 系统，请立即在 Azure 中使用 [Jenkins 解决方案模板](/azure/jenkins/install-jenkins-solution-template)创建一个。
 * 一个 [GitHub](https://github.com) 帐户。
 * [Azure CLI 2.0](/cli/azure)（来自本地命令行或位于 [Azure Cloud Shell](/azure/cloud-shell/overview) 中）
 

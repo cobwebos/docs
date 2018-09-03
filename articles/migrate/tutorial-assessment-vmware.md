@@ -4,21 +4,21 @@ description: 介绍如何发现和评估要使用 Azure Migrate 迁移到 Azure 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/20/2018
+ms.date: 08/20/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: fab8e4f09062f671714dabd1dae86a1979e356d2
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 65f1d6b448e6c0f16d51e1a4b8b897f52052ff15
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172341"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127623"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>发现和评估要迁移到 Azure 的本地 VMware VM
 
 [Azure Migrate](migrate-overview.md) 服务会评估要迁移到 Azure 的本地工作负荷。
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建一个可供 Azure Migrate 用来发现本地 VM 的帐户
@@ -151,7 +151,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
     - 如果 VM 通过代理访问 Internet，请单击“代理设置”，并指定代理地址和侦听端口。 如果代理需要身份验证，请指定凭据。 [详细了解](https://docs.microsoft.com/azure/migrate/concepts-collector#internet-connectivity) Internet 连接要求和收集器访问的 URL 列表。
 
     > [!NOTE]
-    > 需以 http://ProxyIPAddress 或 http://ProxyFQDN 的形式输入代理地址。 仅支持 HTTP 代理。
+    > 需以 http://ProxyIPAddress 或 http://ProxyFQDN 的形式输入代理地址。 仅支持 HTTP 代理。 如果有拦截代理，则如果没有导入代理证书，Internet 连接一开始可能会失败；[详细了解](https://docs.microsoft.com/azure/migrate/concepts-collector#internet-connectivity-with-intercepting-proxy)如何在收集器 VM 上将代理证书作为受信任的证书导入，以便修复此问题。
 
     - 收集器将检查 collectorservice 是否正在运行。 该服务默认安装在收集器 VM 上。
     - 下载并安装 VMware PowerCLI。
@@ -219,7 +219,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 此视图显示在 Azure 中运行 VM 的总计算和存储成本以及每台计算机的详细信息。 估算成本时，会考虑 Azure Migrate 针对计算机及其磁盘和评估属性提供的大小建议。
 
 > [!NOTE]
-> Azure Migrate 提供的成本估算适用于将本地 VM 作为 Azure 服务架构 (IaaS) VM 运行。 Azure Migrate 不考虑任何平台即服务 (PaaS) 或服务型软件 (SaaS) 成本。
+> Azure Migrate 提供的成本估算适用于将本地 VM 作为 Azure 基础结构即服务 (IaaS) VM 运行。 Azure Migrate 不考虑任何平台即服务 (PaaS) 或服务型软件 (SaaS) 成本。
 
 将会对于组中的所有 VM 合计计算和存储的每月估算费用。
 
@@ -227,7 +227,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 
 #### <a name="confidence-rating"></a>置信度分级
 
-在 Azure Migrate 中进行的每个基于性能的评估都会与置信度分级相关联。置信度分为 1 星到 5 星，1 星表示置信度最低，5 星表示置信度最高。 为评估分配置信度时，会考虑到进行评估计算时所需数据点的可用性。 对评估的置信度分级可以用来评估 Azure Migrate 提供的大小建议的可靠性。 置信度分级不适用于本地评估。
+在 Azure Migrate 中进行的每个基于性能的评估都会与置信度分级相关联。置信度分级分为 1 星到 5 星（1 星表示置信度最低，5 星表示置信度最高）。 为评估分配置信度时，会考虑到进行评估计算时所需数据点的可用性。 对评估的置信度分级可以用来评估 Azure Migrate 提供的大小建议的可靠性。 置信度分级不适用于本地评估。
 
 对于基于性能的大小调整，Azure Migrate 需要 VM 的 CPU 和内存的利用率数据。 此外，对于每个附加到 VM 的磁盘，它需要磁盘 IOPS 和吞吐量数据。 同样，对于每个附加到 VM 的网络适配器，Azure Migrate 需要网络流入/流出量才能执行基于性能的大小调整。 如果上述利用率数据在 vCenter Server 中均不可用，则 Azure Migrate 提供的大小建议可能不可靠。 根据可用数据点的百分比，提供评估的置信度分级，如下所示：
 

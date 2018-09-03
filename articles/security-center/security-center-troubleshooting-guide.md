@@ -3,7 +3,7 @@ title: Azure 安全中心故障排除指南 | Microsoft Docs
 description: 本文档可以帮助排除 Azure 安全中心中的问题。
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 44462de6-2cc5-4672-b1d3-dbb4749a28cd
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2018
-ms.author: yurid
-ms.openlocfilehash: 0cbc0db7e982ad85dd1e3514def8cf13be595f24
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.date: 08/26/2018
+ms.author: rkarlin
+ms.openlocfilehash: eebdff338454b1fb50b27d5b3d8c1c37d28f6b6f
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779220"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43121196"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure 安全中心故障排除指南
 本指南适用于信息技术 (IT) 专业人员、信息安全分析人员，以及那些组织中正在使用 Azure 安全中心并需要进行排除安全中心相关问题的云管理员。
@@ -64,10 +64,10 @@ ms.locfileid: "32779220"
 > 若要避免第二个方案中所述的行为，请确保下载最新版本的代理。
 >
 
-## <a name="monitoring-agent-health-issues"></a>监视代理运行状况问题
+## 监视代理运行状况问题 <a name="mon-agent"></a>
 “监视状态”定义安全中心无法成功监视那些已针对自动预配初始化的 VM 和计算机的原因。 下表显示了“监视状态”的值、说明和解决步骤。
 
-| 监视状态 | 说明 | 解决步骤 |
+| 监视状态 | Description | 解决步骤 |
 |---|---|---|
 | 代理待安装 | Microsoft Monitoring Agent 安装仍在运行。  安装可能需要长达数小时的时间。 | 等待自动安装完成。 |
 | 电源状态为关闭 | VM 已停止。  Microsoft Monitoring Agent 只能安装在正在运行的 VM 上。 | 重启 VM。 |
@@ -81,7 +81,7 @@ ms.locfileid: "32779220"
 | 未安装代理 | 数据收集已禁用。 | 在安全策略中启用数据收集，或者手动安装 Microsoft Monitoring Agent。 |
 
 
-## <a name="troubleshooting-monitoring-agent-network-requirements"></a>监视代理网络要求故障排除
+## 监视代理网络要求故障排除 <a name="mon-network-req"></a>
 若要让代理连接和注册到安全中心，必须允许其访问包括端口号和域 URL 在内的网络资源。
 
 - 对于代理服务器，需确保在代理设置中配置适当的代理服务器资源。 阅读本文，详细了解[如何更改代理设置](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents#configure-proxy-settings)。

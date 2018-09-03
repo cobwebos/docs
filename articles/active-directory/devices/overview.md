@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 中的设备管理简介 | Microsoft Docs
+title: 什么是 Azure Active Directory 中的设备管理？ | Microsoft Docs
 description: 了解设备管理如何有助于控制访问环境中的资源的设备。
 services: active-directory
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/21/2018
+ms.topic: overview
+ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 7e71ff5f5da17165d5127f3547d8eb0756411b8c
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 456b28c50bd5e7d69c3f16dd3e76a9ced20112f9
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597687"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048856"
 ---
-# <a name="introduction-to-device-management-in-azure-active-directory"></a>Azure Active Directory 中的设备管理简介
+# <a name="what-is-device-management-in-azure-active-directory"></a>什么是 Azure Active Directory 中的设备管理？
 
 在移动优先、云优先的世界中，使用 Azure Active Directory (Azure AD) 可以实现从任意位置单一登录到设备、应用和服务。 随着自带设备 (BYOD) 等设备的普及，IT 专业人员面临着两个对立的目标：
 

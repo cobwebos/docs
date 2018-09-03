@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: govindk
 ms.custom: mvc
-ms.openlocfilehash: b53328875f2242faba369dea0df655bc78117009
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 55a6fec1b6ac018b4b24c0d27dcfdd5812455800
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41919861"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189670"
 ---
-# <a name="azure-cosmos-db-import-cassandra-data"></a>Azure Cosmos DB：导入 Cassandra 数据
+# <a name="migrate-your-data-to-azure-cosmos-db-cassandra-api-account"></a>将数据迁移到 Azure Cosmos DB Cassandra API 帐户
 
 本教程说明如何使用 Cassandra 查询语言 (CQL) COPY 命令将 Cassandra 数据导入到 Azure Cosmos DB。 
 
@@ -31,11 +31,13 @@ ms.locfileid: "41919861"
 
 # <a name="prerequisites"></a>先决条件
 
-* 安装 [Apache Cassandra](http://cassandra.apache.org/download/) 并特别确保 cqlsh 存在。
-* 增加吞吐量：数据迁移的持续时间取决于为表预配的吞吐量。 请确保对于较大的数据迁移增加吞吐量。 完成迁移后，减少吞吐量以节约成本。 有关在 [Azure 门户](https://portal.azure.com)中增加吞吐量的详细信息，请参阅[设置 Azure Cosmos DB 容器的吞吐量](set-throughput.md)。
+* 安装 [Apache Cassandra](http://cassandra.apache.org/download/) 并特别确保 cqlsh 存在。  
+
+* 增加吞吐量：数据迁移的持续时间取决于为表预配的吞吐量。 请确保对于较大的数据迁移增加吞吐量。 完成迁移后，减少吞吐量以节约成本。 有关在 [Azure 门户](https://portal.azure.com)中增加吞吐量的详细信息，请参阅[设置 Azure Cosmos DB 容器的吞吐量](set-throughput.md)。  
+
 * 启用 SSL：Azure Cosmos DB 具有严格的安全要求和标准。 请确保在与帐户进行交互时启用 SSL。 当你将 CQL 与 SSH 配合使用时，可以选择提供 SSL 信息。 
 
-## <a name="find-your-connection-string"></a>查找连接字符串
+## <a name="get-your-connection-string"></a>获取连接字符串
 
 1. 在 [Azure 门户](https://portal.azure.com)的最左侧，单击“Azure Cosmos DB”。
 
@@ -45,14 +47,14 @@ ms.locfileid: "41919861"
 
     ![“连接字符串”页](./media/cassandra-import-data/keys.png)
 
-## <a name="use-cqlsh-copy"></a>使用 cqlsh COPY
+## <a name="migrate-data-by-using-cqlsh-copy"></a>使用 cqlsh COPY 迁移数据
 
 若要将 Cassandra 数据导入到 Azure Cosmos DB，以与 Cassandra API 一起使用，请使用以下指南：
 
 1. 使用门户中的连接信息登录到 cqhsh。
 2. 使用 [CQL COPY命令](http://cassandra.apache.org/doc/latest/tools/cqlsh.html#cqlsh)将本地数据复制到 Apache Cassandra API 终结点。 确保源和目标位于同一数据中心，以最大程度减少延迟问题。
 
-### <a name="guide-for-moving-data-with-cqlsh"></a>有关通过 cqlsh 移动数据的指南
+### <a name="steps-to-move-data-with-cqlsh"></a>使用 cqlsh 移动数据的步骤
 
 1. 预创建和缩放表：
     * 默认情况下，Azure Cosmos DB 会预配一个新的 Cassandra API 表，每秒钟有 1,000 个请求单元 (RU/s)（基于 CQL 的创建预配有 400 RU/s）。 通过使用 cqlsh 开始迁移之前，从 [Azure 门户](https://portal.azure.com)或 cqlsh 预先创建所有表。 
@@ -80,11 +82,11 @@ ms.locfileid: "41919861"
 
 5. 运行最终迁移命令。 运行此命令假定你已使用连接字符串信息启动 cqlsh。
 
-   ```
+   ```bash
    COPY exampleks.tablename FROM filefolderx/*.csv 
    ```
 
-## <a name="use-spark-to-import-data"></a>使用 Spark 导入数据
+## <a name="migrate-data-by-using-spark"></a>使用 Spark 迁移数据
 
 对于驻留在 Azure 虚拟机的现有群集中的数据，也可以使用 Spark 导入数据。 这就需要将 Spark 一次性设置为中介，或者定期引入。 
 

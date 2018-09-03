@@ -1,24 +1,24 @@
 ---
-title: 使用 Azure 策略来创建和管理策略以强制实施组织符合性
-description: 使用 Azure 策略强制执行标准、满足法规遵从性、审核需求、控制成本、维护安全和性能的一致性，并实施企业范围的设计原则。
+title: 使用 Azure Policy 来创建和管理策略以强制实施组织符合性
+description: 使用 Azure Policy 强制执行标准、满足法规遵从性、审核需求、控制成本、维护安全和性能的一致性，并实施企业范围的设计原则。
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 07/13/2018
+ms.date: 08/22/2018
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: b8ac93da2f0dd4099ab1aa2df93e5d979ecdd285
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 68ee6b64baf4284bbd0977e82fc473a58a59874c
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049738"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42813418"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>创建和管理策略以强制实施符合性
 
-了解如何在 Azure 中创建和管理策略对于保持与公司标准和服务级别协议的符合性来说非常重要。 本教程介绍如何使用 Azure 策略来执行某些与在组织中创建、分配和管理策略相关的常见任务，例如：
+了解如何在 Azure 中创建和管理策略对于保持与公司标准和服务级别协议的符合性来说非常重要。 本教程介绍如何使用 Azure Policy 来执行某些与在组织中创建、分配和管理策略相关的常见任务，例如：
 
 > [!div class="checklist"]
 > - 分配策略，对将来创建的资源强制执行条件
@@ -30,43 +30,43 @@ ms.locfileid: "39049738"
 
 ## <a name="assign-a-policy"></a>分配策略
 
-使用 Azure 策略强制实施符合性的第一步是分配策略定义。 策略定义用于定义实施策略的条件，以及要达到的效果。 在本示例中，我们将分配名为“需要 SQL Server 版本 12.0”的内置策略定义，强制执行“所有 SQL Server 数据库都必须是 v12.0 才视为符合”的条件。
+使用 Azure Policy 强制实施符合性的第一步是分配策略定义。 策略定义用于定义实施策略的条件，以及要达到的效果。 在本示例中，我们将分配名为“需要 SQL Server 版本 12.0”的内置策略定义，强制执行“所有 SQL Server 数据库都必须是 v12.0 才视为符合”的条件。
 
-1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure 策略服务。
+1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。
 
    ![搜索策略](media/create-manage-policy/search-policy.png)
 
-2. 选择“Azure 策略”页左侧的“分配”。 分配即为在特定范围内分配策略以供执行。
-3. 在“策略 - 分配”页的顶部选择“分配策略”。
+1. 选择“Azure Policy”页左侧的“分配”。 分配即为在特定范围内分配策略以供执行。
+1. 在“策略 - 分配”页的顶部选择“分配策略”。
 
    ![分配策略定义](media/create-manage-policy/select-assign-policy.png)
 
-4. 在“分配策略”页上，单击省略号并选择订阅（必需）和资源组（可选），然后选择“范围”。 范围用于确定对其强制执行策略分配的资源或资源组。  然后在“范围”页的底部单击“选择”。
+1. 在“分配策略”页上，单击省略号并选择订阅（必需）和资源组（可选），然后选择“范围”。 范围用于确定对其强制执行策略分配的资源或资源组。  然后在“范围”页的底部单击“选择”。
 
    此示例使用 **Contoso 订阅**。 你的订阅将有所不同。
 
-5. 若要排除一个或多个资源组（如果只是以某个订阅作为范围）或者某个资源组中的特定资源（使用任一范围），可以配置策略分配中的“排除项”。 暂时将此字段留空。
+1. 若要排除一个或多个资源组（如果只是以某个订阅作为范围）或者某个资源组中的特定资源（使用任一范围），可以配置策略分配中的“排除项”。 暂时将此字段留空。
 
-6. 选择“策略定义”旁边的省略号打开可用定义的列表。 可以使用“内置”来筛选策略定义的**类型**，以查看所有相关策略定义及其说明。
+1. 选择“策略定义”旁边的省略号打开可用定义的列表。 可以使用“内置”来筛选策略定义的**类型**，以查看所有相关策略定义及其说明。
 
-7. 选择“需要 SQL Server 版本 12.0”。 如果不能立即找到它，请在搜索框中键入“需要 SQL Server”，然后按 ENTER 或者单击搜索框的外部。 找到并选择策略定义后，单击“可用定义”页底部的“选择”。
+1. 选择“需要 SQL Server 版本 12.0”。 如果不能立即找到它，请在搜索框中键入“需要 SQL Server”，然后按 ENTER 或者单击搜索框的外部。 找到并选择策略定义后，单击“可用定义”页底部的“选择”。
 
    ![查找策略](media/create-manage-policy/select-available-definition.png)
 
-8. “分配名称”中自动填充了所选的策略名称，但可以更改它。 对于本示例，请保留“需要 SQL Server 版本 12.0”。 还可根据需要添加“说明”。 该说明提供有关此策略分配的详细信息。
+1. “分配名称”中自动填充了所选的策略名称，但可以更改它。 对于本示例，请保留“需要 SQL Server 版本 12.0”。 还可根据需要添加“说明”。 该说明提供有关此策略分配的详细信息。
 
-9. 单击“分配”。
+1. 单击“分配”。
 
 ## <a name="implement-a-new-custom-policy"></a>实施新的自定义策略
 
-分配内置的策略定义后，可以使用 Azure 策略执行其他操作。 接下来创建一个新的自定义策略，确保在环境中创建的 VM 不能处于 G 系列，从而节省成本。 这样，当组织中的用户每次尝试创建 G 系列的 VM 时，请求将被拒绝。
+分配内置的策略定义后，可以使用 Azure Policy 执行其他操作。 接下来创建一个新的自定义策略，确保在环境中创建的 VM 不能处于 G 系列，从而节省成本。 这样，当组织中的用户每次尝试创建 G 系列的 VM 时，请求将被拒绝。
 
-1. 选择“Azure 策略”页左侧“创作”下的“定义”。
+1. 选择“Azure Policy”页左侧“创作”下的“定义”。
 
    ![创作下的定义](media/create-manage-policy/definition-under-authoring.png)
 
-2. 选择页面顶部的“+ 策略定义”。 此时会打开“策略定义”页。
-3. 输入以下内容：
+1. 选择页面顶部的“+ 策略定义”。 此时会打开“策略定义”页。
+1. 输入以下内容：
 
    - 策略定义保存到的管理组或订阅。 使用“定义位置”旁边的省略号进行选择。
 
@@ -106,9 +106,9 @@ ms.locfileid: "39049738"
 
     策略规则中字段属性的值必须是下列其中一项：“名称”、“类型”、“位置”、“标记”或别名。 例如，别名为 `"Microsoft.Compute/VirtualMachines/Size"`。
 
-    若要查看其他 Azure 策略示例，请参阅 [Azure 策略的模板](json-samples.md)。
+    若要查看其他 Azure Policy 示例，请参阅 [Azure Policy 的模板](json-samples.md)。
 
-4. 选择“保存”。
+1. 选择“保存”。
 
 ## <a name="create-a-policy-definition-with-rest-api"></a>使用 REST API 创建策略定义
 
@@ -247,7 +247,7 @@ Get-AzureRmPolicyDefinition
 
 此命令可返回所有可用的策略定义，包括内置策略。 返回的每个策略的格式如下：
 
-```
+```output
 Name               : e56962a6-4747-49cd-b67b-bf8b01975c4c
 ResourceId         : /providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c
 ResourceName       : e56962a6-4747-49cd-b67b-bf8b01975c4c
@@ -319,27 +319,27 @@ az policy definition list
 
 ## <a name="create-and-assign-an-initiative-definition"></a>创建并分配计划定义
 
-通过计划定义，可以组合某些策略定义以实现首要目标。 创建计划定义，确保定义范围内的资源符合构成计划定义的策略定义。  有关计划定义的详细信息，请参阅 [Azure 策略概述](azure-policy-introduction.md)。
+通过计划定义，可以组合某些策略定义以实现首要目标。 创建计划定义，确保定义范围内的资源符合构成计划定义的策略定义。  有关计划定义的详细信息，请参阅 [Azure Policy 概述](azure-policy-introduction.md)。
 
 ### <a name="create-an-initiative-definition"></a>创建计划定义
 
-1. 选择“Azure 策略”页左侧“创作”下的“定义”。
+1. 选择“Azure Policy”页左侧“创作”下的“定义”。
 
    ![选择定义](media/create-manage-policy/select-definitions.png)
 
-2. 选择页面顶部的“+ 计划定义”打开“计划定义”页。
+1. 选择页面顶部的“+ 计划定义”打开“计划定义”页。
 
    ![计划定义](media/create-manage-policy/initiative-definition.png)
 
-3. 使用“定义位置”旁边的省略号选择用于存储定义的订阅。
+1. 使用“定义位置”旁边的省略号选择用于存储定义的管理组或订阅。
 
-4. 输入计划的“名称”和“说明”。
+1. 输入计划的“名称”和“说明”。
 
    本示例将确保资源符合有关安全性的策略定义。 因此，计划的名称为“保证安全”，说明为：“创建此计划的目的是处理所有与保护资源相关的策略定义”。
 
-5. 对于“类别”，请从现有的选项中选择，或者创建新类别。
+1. 对于“类别”，请从现有的选项中选择，或者创建新类别。
 
-6. 浏览“可用定义”的列表（在“计划定义”页的右半部分），然后选择要添加到此计划的策略定义。 对于“保证安全”计划，请单击策略定义信息旁边的 **+**，或单击策略定义行并选择详细信息页中的“+ 添加”选项，来添加以下内置策略定义：
+1. 浏览“可用定义”的列表（在“计划定义”页的右半部分），然后选择要添加到此计划的策略定义。 对于“保证安全”计划，请单击策略定义信息旁边的 **+**，或单击策略定义行并选择详细信息页中的“+ 添加”选项，来添加以下内置策略定义：
    - 需要 SQL Server 版本 12.0
    - [Preview]: Monitor unprotected web applications in Security Center.
    - [Preview]: Monitor permissive network across in Security Center.
@@ -350,13 +350,20 @@ az policy definition list
 
    ![计划定义](media/create-manage-policy/initiative-definition-2.png)
 
-7. 单击“ **保存**”。
+1. 如果要添加到计划的策略定义有参数，则这些参数会显示在“策略和参数”区域的策略名称下。 _value_ 可以设置为“设置值”（针对此计划的所有分配进行硬编码）或“使用计划参数”（在每个计划分配期间设置）。 如果选择了“设置值”，则下拉到 _Values_ 的右侧即可输入或选择所需值。 如果选择了“使用计划参数”，则会显示新的“计划参数”部分，用于定义将要在计划分配期间设置的参数。 此计划参数的允许值可能会进一步限制能够在计划分配期间设置的内容。
+
+   ![计划定义参数](media/create-manage-policy/initiative-definition-3.png)
+
+   > [!NOTE]
+   > 在使用某些 `strongType` 参数时，不能自动确定值的列表。 在这种情况下，会在参数行的右侧显示省略号。 单击它会打开“参数范围(&lt;参数名称&gt;)”页。 在此页中，选择用于提供值选项的订阅。 此参数范围仅在创建计划定义过程中使用，对策略评估或分配后的计划范围没有影响。
+
+1. 单击“ **保存**”。
 
 ### <a name="assign-an-initiative-definition"></a>分配计划定义
 
-1. 选择“Azure 策略”页左侧“创作”下的“定义”。
-2. 找到前面创建的“保证安全”计划定义并选择它。
-3. 选择页面顶部的“分配”，打开“保证安全: 分配计划”页。
+1. 选择“Azure Policy”页左侧“创作”下的“定义”。
+1. 找到前面创建的“保证安全”计划定义并选择它。
+1. 选择页面顶部的“分配”，打开“保证安全: 分配计划”页。
 
    ![分配定义](media/create-manage-policy/assign-definition.png)
 
@@ -364,14 +371,14 @@ az policy definition list
 
    ![右键单击某个行](media/create-manage-policy/select-right-click.png)
 
-4. 输入以下示例信息，填充“保证安全: 分配计划”页。 可以使用自己的信息。
+1. 输入以下示例信息，填充“保证安全: 分配计划”页。 可以使用自己的信息。
 
    - 范围：将计划保存到的订阅将是默认值。  可以更改范围，以将计划分配到订阅保存位置中的某个资源组。
    - 排除项：配置上述范围内的任何资源，以防止向其应用计划分配。
    - 计划定义和分配名称：“保证安全”（预先填充了所分配计划的名称）。
    - 说明：此计划分配旨在实施这组策略定义。
 
-5. 单击“分配”。
+1. 单击“分配”。
 
 ## <a name="exempt-a-non-compliant-or-denied-resource-using-exclusion"></a>使用“排除”豁免不符合或遭拒绝的资源
 
@@ -383,7 +390,7 @@ az policy definition list
 
    ![策略分配拒绝的部署](media/create-manage-policy/rg-deployment-denied.png)
 
-- 在“Azure 策略”页上：选择页面左侧的“符合性”，然后单击“需要 SQL Server 版本 12.0”策略。 在打开的页面上，会看到“拒绝”计数已递增。 在“事件”选项卡下，还会看到谁尝试执行了被策略拒绝的部署。
+- 在“Azure Policy”页上：选择页面左侧的“符合性”，然后单击“需要 SQL Server 版本 12.0”策略。 在打开的页面上，会看到“拒绝”计数已递增。 在“事件”选项卡下，还会看到谁尝试执行了被策略拒绝的部署。
 
    ![分配策略的符合性概述](media/create-manage-policy/compliance-overview.png)
 
@@ -391,16 +398,16 @@ az policy definition list
 
 ### <a name="update-assignment-with-exclusion"></a>使用排除项更新分配
 
-1. 在“Azure 策略”页左侧的“创作”下选择“分配”。
-2. 浏览所有策略分配并打开“需要 SQL Server 版本 12.0”分配。
-3. 设置“排除项”：单击省略号并选择要排除的资源组（在本示例中为 *SQLServers_Excluded*）。
+1. 在“Azure Policy”页左侧的“创作”下选择“分配”。
+1. 浏览所有策略分配并打开“需要 SQL Server 版本 12.0”分配。
+1. 设置“排除项”：单击省略号并选择要排除的资源组（在本示例中为 *SQLServers_Excluded*）。
 
    ![请求排除](media/create-manage-policy/request-exclusion.png)
 
    > [!NOTE]
    > 根据策略及其效果，也可以将排除项指定为分配范围内某个资源组中的特定资源。 由于本教程使用了“拒绝”效果，对已存在的特定资源设置排除项没有意义。
 
-4. 单击“选择”，并单击“保存”。
+1. 单击“选择”，并单击“保存”。
 
 在本部分，我们通过对单个资源组创建排除项，解决了拒绝尝试创建受禁 SQL Server 版本的问题。
 
@@ -408,9 +415,9 @@ az policy definition list
 
 如果今后不再使用本教程中的资源，请使用以下步骤删除前面创建的所有分配或定义：
 
-1. 在“Azure 策略”页左侧的“创作”下选择“定义”（如果尝试删除分配，则选择“分配”）。
-2. 搜索要删除的新计划或策略定义（或分配）。
-3. 右键单击定义（或分配）对应的行或选择其末尾的省略号，然后选择“删除定义”（或“删除分配”）。
+1. 在“Azure Policy”页左侧的“创作”下选择“定义”（如果尝试删除分配，则选择“分配”）。
+1. 搜索要删除的新计划或策略定义（或分配）。
+1. 右键单击定义（或分配）对应的行或选择其末尾的省略号，然后选择“删除定义”（或“删除分配”）。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -425,4 +432,4 @@ az policy definition list
 若要了解有关策略定义结构的详细信息，请查看以下文章：
 
 > [!div class="nextstepaction"]
-> [Azure 策略定义结构](policy-definition.md)
+> [Azure Policy 定义结构](policy-definition.md)

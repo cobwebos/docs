@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 06/21/2018
+ms.date: 08/27/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 07768dbc8beb7a851d442e9e0c3e7538bf12b766
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: ae2d312feb0fcefab85bcbbd2db7ac46c328213f
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937931"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43104976"
 ---
 # <a name="what-is-azure-analysis-services"></a>什么是 Azure Analysis Services？
 
@@ -81,13 +81,13 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 |巴西南部     |    B1、B2、S0、S1、S2、S4、D1     |     1    |
 |加拿大中部    |     B1、B2、S0、S1、S2、S4、D1    |     1    |
 |美国东部     |     B1、B2、S0、S1、S2、S4、D1    |    1     |
-|美国东部 2     |     B1、B2、S0、S1、S2、S4、S8\*、S9\*、D1     |    7     |
+|美国东部 2     |     B1、B2、S0、S1、S2、S4、D1  <br>S8、S9   |    7<br>1    |
 |美国中北部     |     B1、B2、S0、S1、S2、S4、D1     |    1     |
 |美国中部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 |美国中南部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 |美国中西部   |     B1、B2、S0、S1、S2、S4、D1    |    3     |
-|美国西部     |    B1、B2、S0、S1、S2、S4、S8\*、S9\*、D1     |    7     |
-|美国西部 2    |    B1、B2、S0、S1、S2、S4、S8\*、S9\*、D1     |    3     |
+|美国西部     |    B1、B2、S0、S1、S2、S4、D1  <br>S8、S9   |    7<br>2  |
+|美国西部 2    |    B1、B2、S0、S1、S2、S4、D1   <br>S8、S9  |    3<br>1     |
 
 ### <a name="europe"></a>欧洲
 
@@ -95,7 +95,7 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 |---------|---------|:---------:|
 |北欧     |    B1、B2、S0、S1、S2、S4、D1      |    7     |
 |英国南部   |    B1、B2、S0、S1、S2、S4、D1      |     1    |
-|西欧     |    B1、B2、S0、S1、S2、S4、S8\*、S9\*、D1      |    7     |
+|西欧     |    B1、B2、S0、S1、S2、S4、D1   <br>S8、S9    |    7<br>1     |
 
 ### <a name="asia-pacific"></a>亚太区 
 
@@ -103,10 +103,8 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 |---------|---------|:---------:|
 |澳大利亚东南部     | B1、B2、S0、S1、S2、S4、D1       |    1     |
 |日本东部  |   B1、B2、S0、S1、S2、S4、D1       |    1     |
-|东南亚     |     B1、B2、S0、S1、S2、S4、S8\*、S9\*、D1     |   1      |
+|东南亚     |     B1、B2、S0、S1、S2、S4、S8、S9、D1     |   1      |
 |印度西部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
-
-\* 标准层中的 S8、S9 计划仅支持一个查询副本。
 
 ## <a name="scale-to-your-needs"></a>按需求缩放
 

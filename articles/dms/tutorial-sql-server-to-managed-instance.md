@@ -10,15 +10,15 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 08/15/2018
-ms.openlocfilehash: 4d2714305f1852a91614ce29ec5e74f489487c5a
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.date: 08/24/2018
+ms.openlocfilehash: dbf71b1fcc15743f4670c4072921f1a167a90e97
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41918868"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887296"
 ---
-# <a name="migrate-sql-server-to-azure-sql-database-managed-instance-using-dms"></a>使用 DMS 将 SQL Server 迁移到 Azure SQL 数据库托管实例
+# <a name="migrate-sql-server-to-azure-sql-database-managed-instance-offline-using-dms"></a>使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库托管实例
 可使用 Azure 数据库迁移服务将数据库从本地 SQL Server 实例迁移到 [Azure SQL 数据库托管实例](../sql-database/sql-database-managed-instance.md)。 有关需要一些手动工作量的其他方法，请参阅[将 SQL Server 实例迁移到 Azure SQL 数据库托管实例](../sql-database/sql-database-managed-instance-migrate.md)。
 
 > [!IMPORTANT]
@@ -52,7 +52,7 @@ ms.locfileid: "41918868"
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>注册 Microsoft.DataMigration 资源提供程序
 
-1. 登录到 Azure 门户，依次选择“所有服务”和“订阅”。
+1. 登录到 Azure 门户，选择“所有服务”，然后选择“订阅”。
 
     ![显示门户订阅](media\tutorial-sql-server-to-managed-instance\portal-select-subscriptions.png)        
 
@@ -100,7 +100,7 @@ ms.locfileid: "41918868"
 
 1. 在 Azure 门户中，选择“所有服务”，搜索 Azure 数据库迁移服务，然后选择“Azure 数据库迁移服务”。
 
-    ![查找 Azure 数据库迁移服务的所有实例](media\tutorial-sql-server-to-azure-sql\dms-search.png)
+    ![查找 Azure 数据库迁移服务的所有实例](media\tutorial-sql-server-to-managed-instance\dms-search.png)
 
 2. 在“Azure 数据库迁移服务”屏幕上，搜索你创建的实例名称，然后选择该实例。
  
@@ -135,7 +135,7 @@ ms.locfileid: "41918868"
 
 ## <a name="specify-target-details"></a>指定目标详细信息
 
-1.  在“迁移目标详细信息”屏幕上，指定目标的连接详细信息，该目标是“AdventureWorks2012”数据库要迁移到的已预配的 Azure SQL 数据库托管实例。
+1.  在“迁移目标详细信息”屏幕上，指定目标的连接详细信息，该目标是要将“AdventureWorks2012”数据库迁移到其中的已提前预配的 Azure SQL 数据库托管实例。
 
     如果尚未预配 Azure SQL 数据库托管实例，请选择“否”以获取帮助预配实例的链接。 仍可继续进行项目创建，然后在 Azure SQL 数据库托管实例准备就绪后返回到此特定项目以执行迁移。   
  
@@ -170,7 +170,7 @@ ms.locfileid: "41918868"
     |--------|---------|
     |**选择源备份选项** | 如果已经有一个完整备份文件供 DMS 用于数据库迁移，请选择选项“我将提供最新备份文件”。 如果希望 DMS 先进行源数据库完整备份，然后用它来进行迁移，请选择选项“我将让 Azure 数据库迁移服务创建备份文件”。 |
     |**网络位置共享** | 可让 Azure 数据库迁移服务备份源数据库的本地 SMB 网络共享。 运行源 SQL Server 实例的服务帐户必须在此网络共享中拥有写入特权。 在网络共享中提供服务器的 FQDN 或 IP 地址，例如“'\\\servername.domainname.com\backupfolder”或“\\\IP address\backupfolder”。|
-    |**用户名** | 确保 Windows 用户具有对上面提供的网络共享的完全控制权限。 Azure 数据库迁移服务将模拟用户凭据，将备份文件上传到 Azure 存储容器，以执行还原操作。 如果选择已启用 TDE 的数据库进行迁移，则上述 Windows 用户必须是内置的管理员帐户，且必须对 Azure 数据库迁移服务禁用[用户帐户控制](https://docs.microsoft.com/en-us/windows/security/identity-protection/user-account-control/user-account-control-overview)，才能上传和删除证书文件。 |
+    |**用户名** | 确保 Windows 用户具有对上面提供的网络共享的完全控制权限。 Azure 数据库迁移服务将模拟用户凭据，将备份文件上传到 Azure 存储容器，以执行还原操作。 如果选择已启用 TDE 的数据库进行迁移，则上述 Windows 用户必须是内置的管理员帐户，且必须对 Azure 数据库迁移服务禁用[用户帐户控制](https://docs.microsoft.com/windows/security/identity-protection/user-account-control/user-account-control-overview)，才能上传和删除证书文件。 |
     |**密码** | 用户密码。 |
     |**存储帐户设置** | SAS URI 为 Azure 数据库迁移服务提供你的存储帐户容器的访问权限，服务可将备份文件上传到此容器，并用于将数据库迁移到 Azure SQL 数据库托管实例。 [了解如何获取 Blob 容器的 SAS URI](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)。|
     |**TDE 设置** | 若要迁移启用了透明数据加密 (TDE) 的源数据库，必须拥有目标 Azure SQL DB 托管实例的写入权限。  从下拉菜单中选择其中的 Azure SQL DB 托管实例已预配的订阅。  在下拉菜单中选择目标 Azure SQL DB 托管实例。 |

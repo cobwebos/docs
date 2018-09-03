@@ -14,21 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: f5d4a5e26ecf4bde286a5163bf5ec7da492e474d
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: a472a0f1fe052b0bc8130f5d81c91692c7723377
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247907"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885882"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-data-lake-store"></a>教程：使用 Windows VM 托管服务标识访问 Azure Data Lake Store
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-本教程介绍如何使用 Windows 虚拟机 (VM) 的托管服务标识访问 Azure Data Lake Store。 托管服务标识由 Azure 自动管理，可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中插入凭据了。 学习如何：
+本教程介绍如何使用 Windows 虚拟机 (VM) 的系统分配标识访问 Azure Data Lake Store。 托管服务标识由 Azure 自动管理，可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中插入凭据了。 学习如何：
 
 > [!div class="checklist"]
-> * 在 Windows VM 上启用托管服务标识 
 > * 授予 VM 对 Azure Data Lake Store 的访问权限
 > * 使用 VM 标识获取访问令牌，并使用它访问 Azure Data Lake Store
 
@@ -38,36 +37,11 @@ ms.locfileid: "39247907"
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="sign-in-to-azure"></a>登录 Azure
+- [登录到 Azure 门户](https://portal.azure.com)
 
-在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
+- [创建 Windows 虚拟机](/azure/virtual-machines/windows/quick-create-portal)
 
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>在新的资源组中创建 Windows 虚拟机
-
-本教程将新建 Windows VM。  还可以在现有 Azure VM 上启用托管服务标识。
-
-1. 单击 Azure 门户左上角的“创建资源”按钮。
-2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”。 
-3. 输入虚拟机信息。 此处创建的用户名和密码是用于登录虚拟机的凭据。
-4. 在下拉列表中为虚拟机选择正确的订阅。
-5. 要选择在其中创建虚拟机的新资源组，请选择“新建”。 完成后，单击“确定”。
-6. 选择 VM 大小。 若要查看更多的大小，请选择“全部查看”或更改“支持的磁盘类型”筛选器。 在“设置”页中保留默认值，然后单击“确定”。
-
-   ![Alt 图像文本](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
-
-## <a name="enable-managed-service-identity-on-your-vm"></a>在 VM 上启用托管服务标识 
-
-可以通过虚拟机托管标识从 Azure AD 中获取访问令牌，无需在代码中插入凭据。 启用托管服务标识会告诉 Azure 为 VM 创建托管标识。 在表面下，在 VM 上启用托管服务标识会执行两项操作：向 Azure Active Directory 注册 VM 以创建其托管标识，以及在 VM 上配置标识。
-
-1. 对于“虚拟机”，请选择要在其上启用托管标识的虚拟机。  
-2. 单击左侧导航栏中的“配置”。 
-3. 此时，将会看到托管服务标识。 若要注册并启用托管服务标识，请选择“是”，若要禁用，请选择“否”。 
-4. 务必单击“保存”，以保存配置。  
-   ![Alt 图像文本](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
-
-5. 若要查看并确认在此 VM 上安装了哪些扩展，请单击“扩展”。 如果托管服务标识已启用，则列表中会显示 **ManagedIdentityExtensionforWindows**。
-
-   ![Alt 图像文本](media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
+- [在虚拟机上启用系统分配的标识](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>授予 VM 对 Azure Data Lake Store 的访问权限
 

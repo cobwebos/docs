@@ -12,15 +12,15 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 04/06/2018
+ms.date: 08/22/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d404e3a300a953ccc1cfb691cbde6f6d7ee54b26
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: f1c933c9dcb3e3e2c2cb267073386d4b9c4e2022
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216302"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746012"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>使用 Batch 开发大规模并行计算解决方案
 
@@ -288,7 +288,7 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 如果添加或更新现有池的启动任务，必须重启其计算节点，启动任务才应用到节点。
 
 >[!NOTE]
-> 启动任务的总大小必须小于或等于 32768 个字符，其中包括资源文件和环境变量。 若要确保启动任务满足该要求，可使用两种方法中的一种：
+> Batch 限制启动任务的总大小，其中包括资源文件和环境变量。 如需缩小启动任务，可使用下述两种方法中的一种：
 >
 > 1. 可以使用应用程序包，将应用程序或数据分发到 Batch 池中的每个节点。 有关应用程序包的详细信息，请参阅[使用 Batch 应用程序包将应用程序部署到计算节点](batch-application-packages.md)。
 > 2. 可以手动创建压缩的存档，其中包含应用程序文件。 将压缩的存档作为 Blob 上传到 Azure 存储。 将压缩的存档指定为启动任务的资源文件。 为启动任务运行命令行之前，请在命令行中将存档解压缩。 

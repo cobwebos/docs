@@ -6,19 +6,19 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 08/24/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ee38fe542ca6e2e4e1f8e09b54717d4390b453d0
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 48714d71edcf54726eb362c7f56950a1350fd52b
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37922651"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885319"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>将 Amazon Web Services (AWS) VM 迁移到 Azure
 
-本教程介绍如何使用 Azure Site Recovery 将 Amazon Web Services (AWS) 虚拟机 (VM) 迁移到 Azure VM。 将 AWS EC2 实例迁移到 Azure 时，VM 会被视作本地物理计算机。 本教程介绍如何执行以下操作：
+本教程介绍如何使用 Azure Site Recovery 将 Amazon Web Services (AWS) 虚拟机 (VM) 迁移到 Azure VM。 将 AWS EC2 实例迁移到 Azure 时，VM 会被视作本地物理计算机。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 验证先决条件
@@ -33,10 +33,12 @@ ms.locfileid: "37922651"
 
 ## <a name="prerequisites"></a>先决条件
 - 确保要迁移的 VM 运行的是支持的 OS 版本。 支持的版本包括： 
-    - Windows Server 2016
-    - Red Hat Enterprise Linux 6.7（仅限 HVM 虚拟化实例），且必须仅使用 Citrix PV 或 AWS PV 驱动程序。 **不**支持运行 Red Hat PV 驱动程序的实例。
-
-- 必须在要复制的每个 VM 上安装移动服务。 
+  - Windows Server 2016 
+  - Windows Server 2012 R2
+  - Windows Server 2012 
+  - 64 位版本的 Windows Server 2008 R2 SP1 或更高版本
+  - Red Hat Enterprise Linux 6.7（仅限 HVM 虚拟化实例），使用 Citrix PV 或 AWS PV 驱动程序。 *不*支持运行 RedHat PV 驱动程序的实例。
+ - 必须在要复制的每个 VM 上安装移动服务。 
 
     > [!IMPORTANT]
     > 为 VM 启用复制后，Site Recovery 会自动安装此服务。 若要进行自动安装，必须在 EC2 实例上准备一个帐户，Site Recovery 将使用该帐户访问 VM。 可以使用域帐户或本地帐户。 

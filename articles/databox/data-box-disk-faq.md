@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/17/2018
+ms.date: 08/28/2018
 ms.author: alkohli
-ms.openlocfilehash: 5288e9900c75eae7601b84f7366edf9ac739d5da
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 931b3fd4730ed9ca3a901b423d6c804dfa7e5305
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125797"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143536"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>什么是 Azure Data Box 磁盘？ （预览版）
 
@@ -60,10 +60,10 @@ A.  若要获取 Azure Data Box 磁盘，请先注册 [Data Box 磁盘预览版]
 A. 如果使用 5 个磁盘，并且磁盘具有 8 TB 容量（7 TB 可用容量），则最大可用容量为 35 TB。 因此，可在一个实例中传输 35 TB 数据。  若要传输更多数据，需订购更多的磁盘。
 
 ### <a name="q-how-can-i-check-if-data-box-disks-are-available-in-my-region"></a>问： 如何检查 Data Box 磁盘是否在我的区域中可用？ 
-A.  在预览阶段，Data Box 磁盘在美国和欧盟的所有国家/地区可用。  
+A.  在预览阶段，Data Box 磁盘在美国、加拿大和欧盟的所有国家/地区可用。  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>问： 使用 Data Box 磁盘可在哪些区域存储数据？
-A. 美国、西欧和北欧的所有区域支持 Data Box 磁盘预览版。 仅支持 Azure 公有云区域。 不支持 Azure 政府版或其他主权云。
+A. 美国、加拿大、西欧和北欧的所有区域支持 Data Box 磁盘预览版。 仅支持 Azure 公有云区域。 不支持 Azure 政府版或其他主权云。
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>问： 如果 Data Box 磁盘出现任何问题，我应该与谁联系？
 A. 如果遇到 Data Box 磁盘相关的任何问题，请联系 [Data Box 磁盘支持](mailto:expresspodsupport@microsoft.com)。
@@ -102,7 +102,7 @@ A.  Data Box 磁盘解决方案最多提供 5 个磁盘，最大可用容量为 
 A.  最大大小受制于 Azure 存储限制。 最大块 Blob 大致为 4.768 TiB，最大页 Blob 大小为 8 TiB。 有关详细信息，请转到 [Azure 存储可伸缩性和性能目标](../storage/common/storage-scalability-targets.md)。 
 
 ### <a name="q-what-is-the-data-transfer-speed-for-data-box-disks"></a>问： Data Box 磁盘的数据传输速度是多少？
-A. 对通过 USB 3.0 连接的磁盘进行测试时，磁盘性能最高为 430 MB/秒。 实际数字根据所用的文件大小而异。 传输小型文件时，性能可能会下降。
+A. 对通过 USB 3.0 连接的磁盘进行测试时，磁盘性能最高为 430 MB/秒。 实际数字根据所用的文件大小而异。 传输较小的文件时，性能可能会下降。
 
 ### <a name="q-how-do-i-know-that-my-data-is-secure-during-transit"></a>问： 如何知道我的数据在传输过程中是否安全？ 
 A.  Data Box 磁盘已使用 BitLocker AES-128 位加密进行加密，支持密钥只在 Azure 门户中提供。 使用帐户凭据登录到 Azure 门户即可获取支持密钥。 运行 Data Box 磁盘解锁工具时，请提供此支持密钥。

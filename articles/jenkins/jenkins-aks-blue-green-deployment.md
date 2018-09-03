@@ -1,26 +1,19 @@
 ---
 title: 使用 Jenkins 和蓝/绿部署模式部署到 Azure Kubernetes 服务 (AKS)
 description: 了解如何使用 Jenkins 和蓝/绿部署模式部署到 Azure Kubernetes 服务 (AKS)。
-services: app-service\web
-documentationcenter: ''
+ms.service: jenkins
+keywords: jenkins, azure, devops, kubernetes, k8s, aks, 蓝绿部署, 持续交付, cd
 author: tomarcher
-manager: jpconnock
-editor: ''
-ms.assetid: ''
-ms.service: multiple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: web
-ms.date: 07/23/2018
+manager: jeconnoc
 ms.author: tarcher
-ms.custom: jenkins
-ms.openlocfilehash: 384681ae0ba212b485022ac81743528f96075ec8
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.topic: tutorial
+ms.date: 07/23/2018
+ms.openlocfilehash: d3d3ed8aaac16bc0a8cf817f4972ed3b771ed8d0
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716451"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43093548"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>使用 Jenkins 和蓝/绿部署模式部署到 Azure Kubernetes 服务 (AKS)
 

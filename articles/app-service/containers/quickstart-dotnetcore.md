@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 04/11/2018
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 89973581d7c6aa99ab671d5bd04f258898e9235e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 1345d4c4d349ed2fa5bb95ee35299c77fb391359
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38306831"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42884979"
 ---
 # <a name="create-a-net-core-web-app-in-app-service-on-linux"></a>在 Linux 应用服务中创建 .NET Core Web 应用
 
@@ -60,6 +60,8 @@ dotnet new web
 ```
 
 ## <a name="run-the-app-locally"></a>在本地运行应用
+
+在本地运行应用程序，这样就能了解将它部署到 Azure 时它的外观应该是什么样的。 
 
 还原 NuGet 包并运行该应用。
 

@@ -14,23 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 6854b0a6c72b44bcd3f778e0c46cb109b34ce826
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 4a9d147d1605f4efa638ff258df2667b6b95230e
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258824"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885152"
 ---
 # <a name="tutorial-use-managed-service-identity-for-a-linux-vm-to-access-azure-data-lake-store"></a>教程：使用 Linux VM 的托管服务标识访问 Azure Data Lake Store
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-本教程介绍如何使用 Linux 虚拟机 (VM) 的托管服务标识访问 Azure Data Lake Store。 Azure 会自动管理通过托管服务标识创建的标识。 可以使用托管服务标识在支持 Azure Active Directory (Azure AD) 身份验证的服务中进行身份验证，而无需在代码中插入凭据。 
+本教程介绍如何使用 Linux 虚拟机 (VM) 的系统分配标识访问 Azure Data Lake Store。 Azure 会自动管理通过托管服务标识创建的标识。 可以使用托管服务标识在支持 Azure Active Directory (Azure AD) 身份验证的服务中进行身份验证，而无需在代码中插入凭据。 
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 在 Linux VM 上启用托管服务标识。 
 > * 授予 VM 对 Azure Data Lake Store 的访问权限。
 > * 使用 VM 标识获取访问令牌，并使用它访问 Azure Data Lake Store。
 
@@ -40,33 +39,11 @@ ms.locfileid: "39258824"
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="sign-in-to-azure"></a>登录 Azure
+- [登录到 Azure 门户](https://portal.azure.com)
 
-登录到 [Azure 门户](https://portal.azure.com)。
+- [创建 Linux 虚拟机](/azure/virtual-machines/linux/quick-create-portal)
 
-## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>在新的资源组中创建 Linux 虚拟机
-
-本教程将新建一个 Linux VM。 另外，还可以在现有 VM 上启用 MSI。
-
-1. 选择 Azure 门户左上角的“新建”按钮。
-2. 选择“计算”，然后选择“Ubuntu Server 16.04 LTS”。
-3. 输入虚拟机信息。 对于“身份验证类型”，选择“SSH 公钥”或“密码”。 使用创建的凭据可以登录 VM。
-
-   ![用于创建虚拟机的“基本信息”窗格](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
-
-4. 在“订阅”列表中，选择虚拟机的订阅。
-5. 若要选择要在其中创建虚拟机的新资源组，请选择“资源组” > “新建”。 完成后，选择“确定”。
-6. 选择 VM 大小。 若要查看更多的大小，请选择“全部查看”或更改“支持的磁盘类型”筛选器。 在设置窗格中保留默认值，然后选择“确定”。
-
-## <a name="enable-managed-service-identity-on-your-vm"></a>在 VM 上启用托管服务标识
-
-可以通过虚拟机托管标识从 Azure AD 中获取访问令牌，无需在代码中插入凭据。 在 VM 上启用托管服务标识会执行两项操作：向 Azure Active Directory 注册 VM 以创建其托管标识，以及在 VM 上配置标识。
-
-1. 对于“虚拟机”，请选择要在其上启用托管服务标识的虚拟机。
-2. 在左窗格中，选择“配置”。
-3. 此时会显示“托管服务标识”。 若要注册并启用托管服务标识，请选择“是”。 若要禁用 MSI，请选择“否”。
-   ![“注册到 Azure Active Directory”选项](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
-4. 选择“保存”。
+- [在虚拟机上启用系统分配的标识](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>授予 VM 对 Azure Data Lake Store 的访问权限
 

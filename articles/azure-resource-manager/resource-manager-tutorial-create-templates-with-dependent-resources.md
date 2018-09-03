@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 07/20/2018
+ms.date: 08/27/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: bd559cb9f0140706a4b9735c642367e03616a14d
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 7509ed46ba07cd8250f82f8eb258d18e3f4a1ee6
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188159"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43107099"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>教程：使用依赖的资源创建 Azure 资源管理器模板
 
@@ -56,12 +56,27 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 
 ## <a name="explore-the-template"></a>浏览模板
 
+浏览此部分的模板时，请尝试回答以下问题：
+
+- 在此模板中定义了多少 Azure 资源？
+- 其中一个资源是 Azure 存储帐户。  该定义是否与上一教程中使用的定义类似？
+- 对于此模板中定义的资源，能否找到模板参考？
+- 能否找到资源的依赖项？
+
 1. 在 Visual Studio Code 中折叠元素，直到只能在 **resources** 中看到第一级元素和第二级元素：
 
     ![Visual Studio Code Azure 资源管理器模板](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
 
     有五个通过此模板定义的资源。
-2. 展开第四个元素：
+2. 展开第一个资源。 它是一个存储帐户。 此定义应该与上一教程开头使用的定义相同。
+
+    ![Visual Studio Code Azure 资源管理器模板存储帐户定义](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
+
+3. 展开第二个资源。 资源类型为 **Microsoft.Network/publicIPAddresses**。 若要查找模板参考，请浏览到[模板参考](https://docs.microsoft.com/azure/templates/)，在“按标题筛选”字段中输入“单个公共 IP 地址”或“多个公共 IP 地址”。 将资源定义和模板参考进行比较。
+
+    ![Visual Studio Code Azure 资源管理器模板公共 IP 地址定义](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
+4. 重复上一步，找到在此模板中定义的其他资源的模板参考。  将资源定义和参考进行比较。
+5. 展开第四个资源：
 
     ![Visual Studio Code Azure 资源管理器模板 dependsOn](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependson.png)
 
@@ -70,7 +85,7 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
     * publicIPAddress
     * virtualNetwork
 
-3. 展开第五个元素。 此资源为虚拟机。 它依赖于两个其他的资源：
+6. 展开第五个资源。 此资源为虚拟机。 它依赖于两个其他的资源：
 
     * storageAccount
     * networkInterface

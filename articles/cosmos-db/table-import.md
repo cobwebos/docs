@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/28/2017
 ms.author: sngun
-ms.openlocfilehash: e4e783d131c4ceee9315b3442ee504e662157d8c
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 905815259707116759e0b980690fac108ab81c7b
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856801"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43186824"
 ---
-# <a name="import-data-for-use-with-the-azure-cosmos-db-table-api"></a>导入要在 Azure Cosmos DB 表 API 中使用的数据
+# <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>将数据迁移到 Azure Cosmos DB 表 API 帐户
 
-本教程说明如何导入要在 Azure Cosmos DB [表 API](table-introduction.md) 中使用的数据。 如果已将数据存储在 Azure 表存储中，可以使用数据迁移工具或 AzCopy 来导入数据。 如果已将数据存储在 Azure Cosmos DB 表 API（预览版）帐户中，则必须使用数据迁移工具来迁移数据。 导入数据后，便可以利用 Azure Cosmos DB 提供的高级功能，例如统包式全局分发、专用吞吐量、99% 的情况下低至个位数的毫秒级延迟、有保障的高可用性，以及自动辅助索引。
+本教程说明如何导入要在 Azure Cosmos DB [表 API](table-introduction.md) 中使用的数据。 如果已将数据存储在 Azure 表存储中，可以使用数据迁移工具或 AzCopy 将数据导入 Azure Cosmos DB 表 API。 如果已将数据存储在 Azure Cosmos DB 表 API（预览版）帐户中，则必须使用数据迁移工具来迁移数据。 
 
 本教程涵盖以下任务：
 
@@ -39,11 +39,11 @@ ms.locfileid: "37856801"
 若要执行表数据迁移，请完成以下任务：
 
 1. 从 [GitHub](https://github.com/azure/azure-documentdb-datamigrationtool) 下载迁移工具。
-2. 使用适用于你的方案的命令行参数运行 `dt.exe`。
+2. 使用适用于你的方案的命令行参数运行 `dt.exe`。 `dt.exe` 采用以下格式的命令：
 
-dt.exe 采用以下格式的命令：
-
+   ```bash
     dt.exe [/<option>:<value>] /s:<source-name> [/s.<source-option>:<value>] /t:<target-name> [/t.<target-option>:<value>] 
+```
 
 该命令的选项包括：
 
@@ -105,7 +105,7 @@ dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=
 dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Table API preview account name>;AccountKey=<Table API preview account key>;TableEndpoint=https://<Account Name>.documents.azure.com; /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
 ```
 
-## <a name="azcopy-command"></a>AzCopy 命令
+## <a name="migrate-data-by-using-azcopy"></a>使用 AzCopy 迁移数据
 
 使用 AzCopy 命令行实用工具是将数据从 Azure 表存储迁移到 Azure Cosmos DB 表 API 的另一个选项。 若要使用 AzCopy，首先需要根据[从表存储导出数据](../storage/common/storage-use-azcopy.md#export-data-from-table-storage)中所述导出数据，然后根据 [Azure Cosmos DB 表 API](../storage/common/storage-use-azcopy.md#import-data-into-table-storage) 中所述将数据导入到 Azure Cosmos DB。
 

@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 07/20/2018
+ms.date: 08/27/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7c78636a210ae90c5bfe1d0bfd35e4e05633f5cd
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 57d5f7039831c9fd617926f20f3ff001b22ef314
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188193"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43097879"
 ---
 # <a name="tutorial-create-an-azure-resource-manager-template-for-deploying-an-encrypted-storage-account"></a>教程：创建用于部署已加密存储帐户的 Azure 资源管理器模板
 
@@ -30,9 +30,7 @@ ms.locfileid: "39188193"
 
 > [!div class="checklist"]
 > * 打开快速入门模板
-> * 了解模板格式
-> * 使用模板中的参数
-> * 使用模板中的变量
+> * 了解模板
 > * 编辑模板
 > * 部署模板
 
@@ -111,10 +109,10 @@ resourceGroup() 函数返回表示当前资源组的对象。 有关模板函数
 
 ## <a name="edit-the-template"></a>编辑模板
 
-若要查找与存储帐户加密相关的配置，可以使用 Azure 存储帐户的模板参考。
+本教程的目标是定义一个模板，以便创建加密的存储帐户。  示例模板仅创建基本的非加密型存储帐户。 若要查找与加密相关的配置，可以使用 Azure 存储帐户的模板参考。
 
 1. 浏览到 [Azure 模板](https://docs.microsoft.com/azure/templates/)。
-2. 在左侧的 TOC 中，选择“参考”->“存储”->“存储帐户”。 此页包含的信息用于定义存储帐户信息。
+2. 在左侧的 TOC 中，选择“参考”->“存储”->“存储帐户”。 也可在“按标题筛选”字段中输入“存储”。  此页包含的架构用于定义存储帐户信息。
 3. 了解与加密相关的信息。  
 4. 在存储帐户资源定义的 properties 元素中，添加以下 json：
 
@@ -130,59 +128,17 @@ resourceGroup() 函数返回表示当前资源组的对象。 有关模板函数
     ```
     此部分启用 Blob 存储服务的加密功能。
 
-最终的 resources 元素类似于：
+在 Visual Studio Code 中修改模板，使最终的资源元素如下所示：
 
 ![资源管理器模板加密的存储帐户资源](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resources.png)
 
 ## <a name="deploy-the-template"></a>部署模板
 
-可通过多种方法来部署模板。  本教程从 Azure 门户使用 Cloud Shell。 Cloud shell 支持 Azure CLI 和 Azure PowerShell。 本文中的说明使用 CLI。
+有关部署过程，请参阅 Visual Studio Code 快速入门中的[部署模板](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#deploy-the-template)部分。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)
-2. 如下图所示，选择右上角的“Cloud Shell”：
+以下屏幕快照显示的 CLI 命令用于列出新创建的存储帐户，该命令指示已为 Blob 存储启用加密。
 
-    ![Azure 门户 - Cloud Shell](./media/resource-manager-tutorial-create-encrypted-storage-accounts/azure-portal-cloud-shell.png)
-
-3. 选择向下箭头，然后选择“Bash”（如果不是 Bash）。 在本教程中，请使用 Azure CLI。
-
-    ![Azure 门户 - Cloud Shell - CLI](./media/resource-manager-tutorial-create-encrypted-storage-accounts/azure-portal-cloud-shell-choose-cli.png)
-4. 选择“重启”以重启 Shell。
-5. 依次选择“上传/下载文件”、“上传”。
-
-    ![Azure 门户 - Cloud Shell - 上传文件](./media/resource-manager-tutorial-create-encrypted-storage-accounts/azure-portal-cloud-shell-upload-file.png)
-6. 选择前面在本教程中保存的文件。 默认名称为 **azuredeploy.json**。
-7. 在 Cloud Shell 中，运行 **ls** 命令来验证是否已成功上传文件。 还可以使用 **cat** 命令来验证模板内容。
-
-    ![Azure 门户 - Cloud Shell - 列出文件](./media/resource-manager-tutorial-create-encrypted-storage-accounts/azure-portal-cloud-shell-list-file.png)
-8. 在 Cloud Shell 中运行以下命令：
-
-    ```cli
-    az group create --name <ResourceGroupName> --location <AzureLocation>
-
-    az group deployment create --name <DeploymentName> --resource-group <ResourceGroupName> --template-file azuredeploy.json
-    ```
-    下面是示例部署的屏幕截图：
-
-    ![Azure 门户 - Cloud Shell - 部署模板](./media/resource-manager-tutorial-create-encrypted-storage-accounts/azure-portal-cloud-shell-deploy-template.png)
-
-    屏幕截图中使用了以下值：
-
-    * **&lt;ResourceGroupName>**：myresourcegroup0719。 参数有两种形式。  请确保使用相同的值。
-    * **&lt;AzureLocation>**：eastus2
-    * **&lt;DeployName>**：mydeployment0719
-    * **&lt;TemplateFile>**：azuredeploy.json
-
-    在屏幕截图上的输出中，存储帐户名称为 *fhqbfslikdqdsstandardsa*。 
-
-9. 运行以下 PowerShell 命令列出新建的存储帐户：
-
-    ```cli
-    az storage account show --resource-group <ResourceGroupName> --name <StorageAccountName>
-    ```
-
-    此时会看到一个类似于以下屏幕截图的输出，指示已为 Blob 存储启用加密。
-
-    ![Azure 资源管理器加密的存储帐户](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-account.png)
+![Azure 资源管理器加密的存储帐户](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-account.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -195,7 +151,7 @@ resourceGroup() 函数返回表示当前资源组的对象。 有关模板函数
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何使用模板参考来自定义现有的模板。 本教程中使用的模板仅包含一个 Azure 资源。  在下一篇教程中，我们将开发包含多个资源的模板。  某些资源具有依赖的资源。
+本教程介绍了如何使用模板参考来自定义现有的模板。 本教程中使用的模板仅包含一个 Azure 资源。  在下一篇教程中，我们将开发包含多个资源的模板。 某些资源具有依赖的资源。
 
 > [!div class="nextstepaction"]
 > [创建多个资源](./resource-manager-tutorial-create-templates-with-dependent-resources.md)

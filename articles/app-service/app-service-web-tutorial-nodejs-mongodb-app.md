@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 7a3e91e8f928f6e7e2df7a26f52bd44b3b3a81b2
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 70b7af1701c13e6a5d7644f04e4502f76ef7743a
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618948"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43187839"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-web-app-in-azure"></a>教程：在 Azure 中生成 Node.js 和 MongoDB Web 应用
 
@@ -117,6 +117,9 @@ MEAN.js 示例应用程序将用户数据存储在数据库中。 如果创建�
 选择“管理员”>“管理文章”，添加一些文章。
 
 在终端按 `Ctrl+C`，随时停止 Node.js。 
+
+> [!NOTE]
+> [Node.js 快速入门](app-service-web-get-started-nodejs.md)提到需将 web.config 置于根应用目录中。 但在本教程中，此 web.config 文件会在你使用[本地 Git 部署](app-service-deploy-local-git.md)而非 ZIP 文件部署来部署文件时自动由应用服务生成。 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

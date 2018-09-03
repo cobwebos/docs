@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 115611c5d4eeffb0f0600dd0a792ee9f80247e36
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 7c2e67605cd2489f2c8d9da5ac80386056464afa
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
-ms.locfileid: "27998043"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42815107"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>使用 Azure Application Insights 查找并诊断运行时异常
 
@@ -43,7 +43,7 @@ Azure Application Insights 从应用程序收集遥测数据，帮助确定和�
 - 本教程跟踪应用程序中异常的标识，以便在开发或测试环境中修改代码来生成异常。 
 
 ## <a name="log-in-to-azure"></a>登录 Azure
-登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。
+通过 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户。
 
 
 ## <a name="analyze-failures"></a>分析故障
@@ -62,20 +62,17 @@ Application Insights 收集应用程序中出现的所有故障，让用户能�
 
     ![“失败的请求”窗口](media/app-insights-tutorial-runtime-exceptions/failed-requests-window.png)
 
-5. 单击“查看详细信息”，查看操作的详细信息。  其中包括显示两个失败的依赖项的甘特图，该图共计需要约半秒钟完成。  完成[使用 Azure Application Insights 查找和诊断性能问题](app-insights-tutorial-performance.md)教程，详细了解如何分析性能问题。
+5. 单击包含所筛选结果数目的按钮即可查看相关的示例。 “建议的”示例有来自所有组件的相关遥测数据，即使采用实际上是在其中随机完成的。 单击搜索结果即可查看有关失败的详细信息。
 
-    ![失败的请求详细信息](media/app-insights-tutorial-runtime-exceptions/failed-requests-details.png)
+    ![失败请求示例](media/app-insights-tutorial-runtime-exceptions/failed-requests-search.png)
 
-6. 操作详细信息还显示可能是故障原因的 FormatException。  单击异常或“排名前 3 的异常类型”计数，查看其详细信息。  此时，可发现这是无效邮政编码导致的。
+6. 失败请求的详细信息显示了甘特图，该图显示此事务中有两个依赖项失败，这两个失败所用时间占事务总持续时间的 50% 以上。 此体验提供的所有遥测跨分布式应用程序的多个组件，这些组件与此操作 ID 相关。 [详细了解此新体验](app-insights-transaction-diagnostics.md)。 可以选择任意项，然后即可在右侧查看其详细信息。 
+
+    ![失败请求的详细信息](media/app-insights-tutorial-runtime-exceptions/failed-request-details.png)
+
+7. 操作详细信息还显示可能是故障原因的 FormatException。  此时，可发现这是无效邮政编码导致的。 可以打开调试快照，然后即可在 Visual Studio 中查看代码级别的调试信息。
 
     ![异常详细信息](media/app-insights-tutorial-runtime-exceptions/failed-requests-exception.png)
-
-> [!NOTE]
-启用“统一详细信息: E2E 事务诊断”[预览体验](app-insights-previews.md)可在单个全屏视图中查看所有相关的服务器端遥测数据，如请求、依赖项、异常、跟踪、事件等。 
-
-启用预览后，可以查看依赖项调用所用的时间，以及统一体验中的任何失败或异常。 对于跨组件事务，甘特图以及详细信息窗格可以帮助你快速诊断根本原因组件、依赖项或异常。 可以展开下半部分，以查看针对所选组件操作收集的任何跟踪或事件的时间序列。 [详细了解此新体验](app-insights-transaction-diagnostics.md)  
-
-![事务诊断](media/app-insights-tutorial-runtime-exceptions/e2e-transaction-preview.png)
 
 ## <a name="identify-failing-code"></a>确定故障代码
 Snapshot Debugger 收集应用程序中最频繁出现的异常的快照，帮助在生产中诊断其根本原因。  可在门户中查看调试快照，查看调用堆栈并检查每个调用堆栈帧中的变量。 随后可通过下载快照并在 Visual Studio 2017 中打开，对源代码进行调试。
@@ -104,15 +101,6 @@ Application Insights 收集的所有数据都存储在 Azure Log Analytics 中�
     ![代码](media/app-insights-tutorial-runtime-exceptions/codelens.png)
 
 9. 单击“分析影响”，打开 Application Insights Analytics。  它使用多个提供失败请求详细信息（比如受影响的用户、浏览器和区域）的查询填充。<br><br>![分析](media/app-insights-tutorial-runtime-exceptions/analytics.png)<br>
-
-## <a name="add-work-item"></a>添加工作项
-如果将 Application Insights 连接到跟踪系统（比如 Visual Studio Team Services 或 GitHub），可直接通过 Application Insights 创建工作项。
-
-1. 返回 Application Insights 中的“异常属性”面板。
-2. 单击“新建工作项”。
-3. “新建工作项”面板将打开，其中已填充有关异常的详细信息。  可在保存前添加任何其他信息。
-
-    ![新建工作项](media/app-insights-tutorial-runtime-exceptions/new-work-item.png)
 
 ## <a name="next-steps"></a>后续步骤
 现在，你已学会如何确定运行时异常，请继续完成下一教程，学习如何确定和诊断性能问题。

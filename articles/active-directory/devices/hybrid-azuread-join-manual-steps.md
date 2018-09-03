@@ -12,27 +12,38 @@ ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/08/2018
+ms.topic: tutorial
+ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: ba47223f86005809189214f26a63b75b21449e3a
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 4155ea7c24746f9d3381f2d1e4a1e08a7a56206a
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630613"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049931"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>教程：手动配置加入到混合 Azure Active Directory 的设备 
 
 使用 Azure Active Directory (Azure AD) 中的设备管理，可以确保用户从满足安全性和符合性标准的设备访问资源。 有关更多详细信息，请参阅 [Azure Active Directory 中的设备管理简介](overview.md)。
 
-如果你有本地 Active Directory 环境，并且想要将已加入域的设备联接到 Azure AD，则可以通过配置联接到混合 Azure AD 的设备来实现。 本文介绍了相关步骤。 
-
-
 
 > [!TIP]
 > 如果使用 Azure AD Connect 是合适的选项，请参阅[选择方案](hybrid-azuread-join-plan.md#select-your-scenario)。 使用 Azure AD Connect，可以大大简化混合 Azure AD 加入配置。
+
+
+
+如果你有本地 Active Directory 环境，并且想要将已加入域的设备联接到 Azure AD，则可以通过配置联接到混合 Azure AD 的设备来实现。 本教程介绍如何手动为设备配置混合 Azure AD 加入。
+
+> [!div class="checklist"]
+> * 先决条件
+> * 配置步骤
+> * 配置服务连接点
+> * 设置声明颁发
+> * 启用 Windows 下层设备
+> * 验证联接的设备
+> * 对实现进行故障排除
+ 
 
 
 

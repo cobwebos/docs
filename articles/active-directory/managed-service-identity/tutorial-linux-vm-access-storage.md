@@ -14,23 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
 ms.author: daveba
-ms.openlocfilehash: d4daccfdcb2bc11831e960aa20533e32801db946
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 5117444b6312d96f87f9e1edf8ce26d0360417ef
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049331"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885745"
 ---
 # <a name="tutorial-use-a-linux-vms-managed-identity-to-access-azure-storage"></a>教程：使用 Linux VM 托管标识访问 Azure 存储 
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-
-本教程介绍如何创建并使用 Linux VM 托管标识来访问 Azure 存储。 学习如何：
+本教程介绍如何使用 Linux 虚拟机 (VM) 的系统分配标识访问 Azure 存储。 学习如何：
 
 > [!div class="checklist"]
-> * 在新的资源组中创建 Linux 虚拟机
-> * 在 Linux 虚拟机 (VM) 上启用托管标识
+> * 创建存储帐户
 > * 在存储帐户中创建 Blob 容器
 > * 向 Linux VM 的托管标识授予对 Azure 存储容器的访问权限
 > * 获取访问令牌并使用它来调用 Azure 存储
@@ -40,41 +38,20 @@ ms.locfileid: "39049331"
 
 ## <a name="prerequisites"></a>先决条件
 
-如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com)。
+[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-[!INCLUDE [msi-tut-prereqs](~/includes/active-directory-msi-tut-prereqs.md)]
+[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+
+- [登录到 Azure 门户](https://portal.azure.com)
+
+- [创建 Linux 虚拟机](/azure/virtual-machines/linux/quick-create-portal)
+
+- [在虚拟机上启用系统分配的标识](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 若要运行本教程中的 CLI 脚本示例，你有两种选择：
 
 - 通过 Azure 门户或每个代码块右上角的“试用”按钮使用 [Azure Cloud Shell](~/articles/cloud-shell/overview.md)。
 - 如果喜欢使用本地 CLI 控制台，请[安装最新版 CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)（2.0.23 或更高版本）。
-
-## <a name="sign-in-to-azure"></a>登录 Azure
-
-在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
-
-## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>在新的资源组中创建 Linux 虚拟机
-
-在本部分，请创建一台 Linux VM，稍后将向其授予一个托管标识。
-
-1. 选择 Azure 门户左上角的“新建”按钮。
-2. 选择“计算”，然后选择“Ubuntu Server 16.04 LTS”。
-3. 输入虚拟机信息。 对于“身份验证类型”，选择“SSH 公钥”或“密码”。 使用创建的凭据可以登录 VM。
-
-   ![用于创建虚拟机的“基本信息”窗格](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
-
-4. 在“订阅”列表中，选择虚拟机的订阅。
-5. 若要选择要在其中创建虚拟机的新资源组，请选择“资源组” > “新建”。 完成后，选择“确定”。
-6. 选择 VM 大小。 若要查看更多的大小，请选择“全部查看”或更改“支持的磁盘类型”筛选器。 在设置窗格中保留默认值，然后选择“确定”。
-
-## <a name="enable-managed-identity-on-your-vm"></a>在 VM 上启用托管标识
-
-可以通过虚拟机托管标识从 Azure AD 中获取访问令牌，无需在代码中插入凭据。 事实上，通过 Azure 门户在虚拟机上启用托管标识会执行两项操作：向 Azure AD 注册 VM 以创建托管标识，以及在 VM 上配置标识。
-
-1. 导航到新虚拟机的资源组，并选择已在上一步中创建的虚拟机。
-2. 在“设置”类别下，单击“配置”。
-3. 若要启用托管标识，请选择“是”。
-4. 单击“保存”以应用配置。 
 
 ## <a name="create-a-storage-account"></a>创建存储帐户 
 

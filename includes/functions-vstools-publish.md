@@ -5,21 +5,23 @@ services: functions
 author: ggailey777
 ms.service: functions
 ms.topic: include
-ms.date: 07/17/2018
+ms.date: 08/26/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: e8cb5dadb7eed5eb33c15d7a4d1d4640a10099c9
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: f0bcb2e7f99689d31be610f1523d2c57e332deb7
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40245779"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049811"
 ---
 1. **在“解决方案资源管理器”** 中，右键单击该项目并选择“发布”。
 
 2. 依次选择“Azure Function App”、“新建”、“发布”。
 
     ![选取发布目标](./media/functions-vstools-publish/functions-vstools-create-new-function-app.png)
+
+    启用“从 Zip 运行”后，Azure 中的函数应用会直接从部署包运行。 有关详细信息，请参阅[从包文件运行 Azure Functions](../articles/azure-functions/run-functions-from-deployment-package.md)。
 
 3. 如果尚未将 Visual Studio 连接到 Azure 帐户，请选择“添加帐户...”。
 

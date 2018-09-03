@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET
 ms.workload: tbd
 ms.date: 06/13/2018
 ms.author: wesmc
-ms.openlocfilehash: 4c34bd10768ab7acf4700b29386d3a71532490db
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: cf47b2d6bd17fa5a9f7cbe98ab7db2799f6e8287
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38674846"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42916294"
 ---
 # <a name="quickstart-create-a-chat-room-with-signalr-service"></a>快速入门：使用 SignalR 服务创建聊天室
 
@@ -93,15 +93,20 @@ Azure SignalR 服务是一项 Azure 服务，可帮助开发者轻松生成具�
 
         dotnet restore
 
-3. 向机密管理器添加名为 *Azure__SignalR__ConnectionString* 的机密。 此机密是分层的配置值，冒号 (:) 可能不适用于所有平台。 此机密使用的双下划线 (__) 在所有平台上都受支持。  此机密将包含用于访问 SignalR 服务资源的连接字符串。 *Azure__SignalR__ConnectionString* 是 SignalR 查找的用于建立连接的默认配置密钥。 将以下命令中的值替换为 SignalR 服务资源的连接字符串。
+3. 向机密管理器添加名为“Azure: SignalR:ConnectionString”的机密。 
+
+    此机密将包含用于访问 SignalR 服务资源的连接字符串。 Azure: SignalR:ConnectionString 是 SignalR 为建立连接而查找的默认配置密钥。 将以下命令中的值替换为 SignalR 服务资源的连接字符串。
 
     必须在 .csproj 文件所在的同一目录中执行此命令。
 
     ```
-    dotnet user-secrets set Azure__SignalR__ConnectionString "Endpoint=<Your endpoint>;AccessKey=<Your access key>;"    
+    dotnet user-secrets set Azure:SignalR:ConnectionString "Endpoint=<Your endpoint>;AccessKey=<Your access key>;"    
     ```
 
     机密管理器将仅用于在本地托管 Web 应用时对其进行测试。 以后的教程中会将聊天 Web 应用部署到 Azure。 将 Web 应用部署到 Azure 后，将使用应用程序设置，而不是使用机密管理器存储连接字符串。
+
+    此机密使用配置 API 进行访问。 在所有支持的平台上，冒号 (:) 可以在配置 API 的配置名称中使用。请参阅[按环境进行的配置](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0#configuration-by-environment)。 
+
 
 4. 打开 Startup.cs，并通过调用 `services.AddSignalR().AddAzureSignalR()` 方法更新 `ConfigureServices` 方法，从而使用 Azure SignalR 服务：
 
@@ -113,7 +118,7 @@ Azure SignalR 服务是一项 Azure 服务，可帮助开发者轻松生成具�
     }
     ```
 
-    由于不向 `AddAzureSignalR()` 传递参数，此代码使用默认配置密钥（即 *Azure__SignalR__ConnectionString*）作为 SignalR 服务资源连接字符串。
+    通过不向 `AddAzureSignalR()` 传递参数，此代码使用默认配置密钥（即 Azure: SignalR:ConnectionString），作为 SignalR 服务资源连接字符串。
 
 5. 另外，在 Startup.cs 中，通过将 `app.UseStaticFiles()` 的调用替换为以下代码，更新 `Configure` 方法并保存该文件。
 

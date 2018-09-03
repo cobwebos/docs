@@ -6,15 +6,15 @@ author: zjalexander
 ms.service: automation
 ms.component: update-management
 ms.topic: tutorial
-ms.date: 02/28/2018
+ms.date: 08/29/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 4d5222889d5e840bd03bf77a56584dac48bb740c
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 8458aaee9f8d328d959fb47fb3e32af176d545b1
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41917657"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247362"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>使用 Azure 自动化管理 Windows 更新
 
@@ -82,9 +82,19 @@ ms.locfileid: "41917657"
 
 ## <a name="configure-alerts"></a>配置警报
 
-在此步骤中，请设置一个警报，使其在更新成功部署时发出通知。 创建的该警报基于 Log Analytics 查询。 可以编写一个自定义查询来提供其他警报，以涵盖许多不同的方案。 在 Azure 门户中转到“监视器”，然后选择“创建警报”。 
+此步骤介绍如何设置一个警报，使其在更新成功部署时通过 Log Analytics 查询来发出通知，或者在部署失败时通过跟踪更新管理的主 runbook 来发出通知。
 
-在“创建规则”的“1.定义警报条件”下，选择“选择目标”。 在“按资源类型筛选”下，选择“Log Analytics”。 选择 Log Analytics 工作区，然后选择“完成”。
+### <a name="alert-conditions"></a>警报条件
+
+对于每种类型的警报，需要定义不同的警报条件。
+
+#### <a name="log-analytics-query-alert"></a>Log Analytics 查询警报
+
+如果部署成功，则可根据 Log Analytics 查询来创建警报。 如果部署失败，则可使用 [Runbook 警报](#runbook-alert)步骤在协调更新部署的主 runbook 失败时发出警报。 可以编写一个自定义查询来提供其他警报，以涵盖许多不同的方案。
+
+在 Azure 门户中转到“监视器”，然后选择“创建警报”。
+
+在“1. 定义警报条件”下，单击“选择目标”。 在“按资源类型筛选”下，选择“Log Analytics”。 选择 Log Analytics 工作区，然后选择“完成”。
 
 ![创建警报](./media/automation-tutorial-update-management/create-alert.png)
 
@@ -104,7 +114,21 @@ UpdateRunProgress
 
 ![配置信号逻辑](./media/automation-tutorial-update-management/signal-logic.png)
 
-在“2. 定义警报详细信息“下，下，输入警报的名称和说明。 将“严重性”设置为“参考(严重性 2)”，因为此警报针对的是成功的运行。
+#### <a name="runbook-alert"></a>Runbook 警报
+
+对于失败的部署，必须警告主运行已失败 在 Azure 门户中转到“监视器”，然后选择“创建警报”。
+
+在“1. 定义警报条件”下，单击“选择目标”。 在“按资源类型筛选”下选择“自动化帐户”。 选择你的自动化帐户，然后选择“完成”。
+
+对于“Runbook 名称”，请单击 **\+** 号，然后输入 **Patch-MicrosoftOMSComputers** 作为自定义名称。 对于“状态”，请选择“已失败”，或者单击 **\+** 号，以便输入“已失败”。
+
+![配置 Runbook 的信号逻辑](./media/automation-tutorial-update-management/signal-logic-runbook.png)
+
+在“警报逻辑”下，输入 **1** 作为“阈值”。 完成后，选择“完成”。
+
+### <a name="alert-details"></a>警报详细信息
+
+在“2. 定义警报详细信息“下，下，输入警报的名称和说明。 对于成功的运行，请将“严重性”设置为“参考(严重性 2)”；对于失败的运行，请将其设置为“参考(严重性 1)”。
 
 ![配置信号逻辑](./media/automation-tutorial-update-management/define-alert-details.png)
 
@@ -134,7 +158,7 @@ UpdateRunProgress
 
 * **操作系统**：选择更新部署的目标 OS。
 
-* **要更新的计算机**：选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的准备情况将显示在“更新代理准备”列中。若要了解在 Log Analytics 中创建计算机组的不同方法，请参阅 [Log Analytics 中的计算机组](../log-analytics/log-analytics-computer-groups.md)
+* **要更新的计算机**：选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示。 要了解在 Log Analytics 中创建计算机组的不同方法，请参阅 [Log Analytics 中的计算机组](../log-analytics/log-analytics-computer-groups.md)
 
 * **更新分类**：选择更新部署包含在部署中的软件类型。 对于本教程，请保留所有选定的类型。
 
@@ -153,11 +177,11 @@ UpdateRunProgress
 
 * **维护时段(分钟)**：保留默认值。 可以设置要进行更新部署的时间段。 此设置有助于确保在定义的服务时段内执行更改。
 
-* **重新启动选项**：此设置确定应如何处理重新启动。 可用选项包括：
+* **重启选项**：此设置决定应如何处理重启。 可用选项包括：
   * 需要时重新启动(默认)
   * 始终重新启动
   * 从不重新启动
-  * 仅重新启动 - 不会安装更新
+  * 仅重启 - 不安装更新
 
 配置完计划以后，选择“创建”。
 

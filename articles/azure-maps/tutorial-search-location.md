@@ -3,22 +3,22 @@ title: 使用 Azure Maps 进行搜索 | Microsoft Docs
 description: 使用 Azure Maps 搜索附近兴趣点
 author: dsk-2015
 ms.author: dkshir
-ms.date: 05/07/2018
+ms.date: 08/23/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ffc4b7625a6c43f8e2801313c61f14c785a3ec5f
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: e30d84c70f786a5bea25073c70a29b63c9a00ae9
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988868"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42917656"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>使用 Azure Maps 搜索附近兴趣点
 
-本教程演示如何为 Azure Maps 设置帐户，然后使用 Maps API 搜索兴趣点。 本教程介绍如何执行以下操作：
+本教程演示如何为 Azure Maps 设置帐户，然后使用 Maps API 搜索兴趣点。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建 Azure Maps 帐户
@@ -81,8 +81,9 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
         <meta name="viewport" content="width=device-width, user-scalable=no" />
         <title>Map Search</title>
 
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1.0" type="text/css" />
-        <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1.0"></script>
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1" type="text/css" /> 
+        <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1"></script> 
+        <script src="https://atlas.microsoft.com/sdk/js/atlas-service.min.js?api-version=1"></script> 
 
         <style>
             html,
@@ -131,10 +132,12 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
 
 ## <a name="add-search-capabilities"></a>添加搜索功能
 
-本部分演示如何使用 Maps Search API 在地图上查找兴趣点。 这是一个 RESTful API，可让开发人员搜索地址、兴趣点和其他地理信息。 搜索服务会将纬度和经度信息分配到指定的地址。 
+本部分演示如何使用 Maps Search API 在地图上查找兴趣点。 这是一个 RESTful API，可让开发人员搜索地址、兴趣点和其他地理信息。 搜索服务会将纬度和经度信息分配到指定的地址。 下面介绍的“服务模块”可以用来通过地图搜索 API 搜索位置。
+
+### <a name="service-module"></a>服务模块
 
 1. 为地图添加新层以显示搜索结果。 将以下 Javascript 代码添加到脚本块，在初始化地图的代码后。 
-
+    
     ```JavaScript
     // Initialize the pin layer for search results to the map
     var searchLayerName = "search-results";
@@ -145,69 +148,50 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
     });
     ```
 
-2. 创建 [XMLHttpRequest](https://xhr.spec.whatwg.org/) 并添加事件处理程序分析 Maps 搜索服务发送的 JSON 响应。 此代码片段生成事件处理程序，为 `searchPins` 变量中返回的每个位置收集地址、名称和经纬度信息。 最后，它会将此位置点集合添加到图钉形式的 `map` 控件。 
+2. 若要实例化客户端服务，请将以下 Javascript 代码添加到脚本块，在初始化地图的代码后。
 
     ```JavaScript
-    // Perform a request to the search service and create a pin on the map for each result
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        var searchPins = [];
-
-        if (this.readyState === 4 && this.status === 200) {
-            var response = JSON.parse(this.responseText);
-
-            var poiResults = response.results.filter((result) => { return result.type === "POI" }) || [];
-
-            searchPins = poiResults.map((poiResult) => {
-                var poiPosition = [poiResult.position.lon, poiResult.position.lat];
-                return new atlas.data.Feature(new atlas.data.Point(poiPosition), {
-                    name: poiResult.poi.name,
-                    address: poiResult.address.freeformAddress,
-                    position: poiResult.position.lat + ", " + poiResult.position.lon
-                });
-            });
-
-            map.addPins(searchPins, {
-                name: searchLayerName
-            });
-
-            var lons = searchPins.map((pin) => { return pin.geometry.coordinates[0] });
-            var lats = searchPins.map((pin) => { return pin.geometry.coordinates[1] });
-
-            var swLon = Math.min.apply(null, lons);
-            var swLat = Math.min.apply(null, lats);
-            var neLon = Math.max.apply(null, lons);
-            var neLat = Math.max.apply(null, lats);
-
-            map.setCameraBounds({
-                bounds: [swLon, swLat, neLon, neLat],
-                padding: 50
-            });
-        }
-    };
+    var client = new atlas.service.Client(subscriptionKey);
     ```
 
-3. 将以下代码添加到脚本块生成查询并将 XMLHttpRequest 发送到 Maps Search 服务：
+3. 添加以下脚本块，以便生成查询。 它使用模糊搜索服务，这是搜索服务的基本搜索 API。 模糊搜索服务可处理最模糊的输入，例如地址和兴趣点 (POI) 标记的任意组合。 它在指定半径内搜索邻近的加油站。 然后，响应会解析成 GeoJSON 格式并转换为点特征，作为图钉添加到地图中。 脚本的最后一部分使用地图的 [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) 属性为地图添加照相机边界。
 
     ```JavaScript
-    var url = "https://atlas.microsoft.com/search/fuzzy/json?";
-    url += "api-version=1.0";
-    url += "&query=gasoline%20station";
-    url += "&subscription-key=" + MapsAccountKey;
-    url += "&lat=47.6292";
-    url += "&lon=-122.2337";
-    url += "&radius=100000";
-
-    xhttp.open("GET", url, true);
-    xhttp.send();
-    ``` 
-    此代码片段使用搜索服务的基本搜索 API，即**模糊搜索**。 该 API 可处理最模糊的输入，包括地址或兴趣点 (POI) 标记的任意组合。 它在给定经纬度坐标的指定半径内搜索邻近的加油站。 它使用前面在示例文件中提供的帐户主密钥向 Maps 发出调用。 对于找到的位置，它以纬度/经度对的形式返回结果。 
-    
+    client.search.getSearchFuzzy("gasoline station", {
+     lat: 47.6292,
+     lon: -122.2337,
+     radius: 100000
+    }).then(response => {
+       // Parse the response into GeoJSON 
+       var geojsonResponse = new atlas.service.geojson.GeoJsonSearchResponse(response); 
+ 
+       // Create the point features that will be added to the map as pins 
+       var searchPins = geojsonResponse.getGeoJsonResults().features.map(poiResult => { 
+           var poiPosition = [poiResult.properties.position.lon, poiResult.properties.position.lat]; 
+           return new atlas.data.Feature(new atlas.data.Point(poiPosition), { 
+                name: poiResult.properties.poi.name, 
+                address: poiResult.properties.address.freeformAddress, 
+                position: poiPosition[1] + ", " + poiPosition[0] 
+           }); 
+       }); 
+ 
+       // Add pins to the map for each POI 
+       map.addPins(searchPins, { 
+           name: searchLayerName 
+       }); 
+ 
+       // Set the camera bounds 
+       map.setCameraBounds({ 
+           bounds: geojsonResponse.getGeoJsonResults().bbox, 
+           padding: 50 
+       ); 
+    }); 
+    ```
 4. 保存“MapSearch.html”文件并刷新浏览器。 现在应看到地图焦点位于西雅图，蓝色的图钉标记区域内的加油站位置。 
 
    ![查看包含搜索结果的地图](./media/tutorial-search-location/pins-map.png)
 
-5. 使用在文件中生成的 XMLHTTPRequest 并在浏览器中输入它，可以看到地图呈现的原始数据。 使用主要密钥替换帐户密钥\<\>。 
+5. 在浏览器中输入以下 HTTPRequest，即可看到地图呈现的原始数据。 使用主要密钥替换帐户密钥\<\>。 
 
    ```http
    https://atlas.microsoft.com/search/fuzzy/json?api-version=1.0&query=gasoline%20station&subscription-key=<your account key>&lat=47.6292&lon=-122.2337&radius=100000
@@ -237,7 +221,7 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
         popupContentElement.appendChild(popupAddressElement);
 
         var popupPositionElement = document.createElement("div");
-        popupPositionElement.innerText = e.features[0].properties.name;
+        popupPositionElement.innerText = e.features[0].properties.position;
         popupContentElement.appendChild(popupPositionElement);
 
         popup.setPopupOptions({

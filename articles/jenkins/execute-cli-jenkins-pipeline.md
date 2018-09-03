@@ -1,26 +1,19 @@
 ---
-title: 使用 Jenkins 执行 Azure CLI | Microsoft Docs
+title: 使用 Jenkins 执行 Azure CLI
 description: 了解如何使用 Azure CLI 通过 Jenkins 管道将 Java Web 应用部署到 Azure
-services: app-service\web
-documentationcenter: ''
-author: mlearned
-manager: douge
-editor: ''
-ms.assetid: ''
 ms.service: jenkins
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: web
+keywords: jenkins, azure, devops, 应用服务, cli
+author: tomarcher
+manager: jeconnoc
+ms.author: tarcher
+ms.topic: tutorial
 ms.date: 6/7/2017
-ms.author: mlearned
-ms.custom: Jenkins
-ms.openlocfilehash: 1796e9f76e39334c8bbdd03463a0f91e9b47cb17
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7d9565db8fe46ee26fafa7bd021d771e728e9a77
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421298"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43101606"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>使用 Jenkins 和 Azure CLI 部署到 Azure 应用服务
 若要将 Java Web 应用部署到 Azure，可以通过 [Jenkins 管道](https://jenkins.io/doc/book/pipeline/)使用 Azure CLI。 本教程介绍如何在 Azure VM 上创建 CI/CD 管道，包括如何：
@@ -122,7 +115,7 @@ az webapp create \
 
 ### <a name="configure-java"></a>配置 Java 
 
-使用 [az appservice web config update](/cli/azure/appservice/web/config#az-appservice-web-config-update) 命令，设置应用所需的 Java 运行时配置。
+使用 [az appservice web config update](/cli/azure/webapp/config#az-appservice-web-config-update) 命令，设置应用所需的 Java 运行时配置。
 
 以下命令配置的 Web 应用可在最新的 Java 8 JDK 和 [Apache Tomcat](http://tomcat.apache.org/) 8.0 上运行。
 

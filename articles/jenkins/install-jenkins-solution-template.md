@@ -1,19 +1,19 @@
 ---
 title: 在 Azure 上创建 Jenkins 服务器
 description: 通过 Jenkins 解决方案模板在 Azure Linux 虚拟机上安装 Jenkins，然后生成示例 Java 应用程序。
-ms.topic: quickstart
-ms.author: tarcher
+ms.service: jenkins
+keywords: jenkins, azure, devops, 门户, 虚拟机, 解决方案模板
 author: tomarcher
-manager: jpconnock
-ms.service: devops
-ms.custom: jenkins
-ms.date: 07/31/2018
-ms.openlocfilehash: af1082d9b7b350f1845d6c8e22108b9238a40f28
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+manager: jeconnoc
+ms.author: tarcher
+ms.topic: quickstart
+ms.date: 6/7/2017
+ms.openlocfilehash: 92a0583ad01c4dc9263988f6ef48c95c380c9289
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390422"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43086568"
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>通过 Azure 门户在 Azure Linux VM 上创建 Jenkins 服务器
 
@@ -75,7 +75,7 @@ Jenkins 服务器现在已就绪，可以生成代码了。
 
 ![使用要生成的 Gradle 包装器](./media/install-jenkins-solution-template/jenkins-job-gradle-config.png) 
 
-选择“高级...”， 然后在“根生成脚本”字段中输入 `complete`。 选择“保存”。
+选择“高级”，然后在“根生成脚本”字段中输入 `complete`。 选择“保存”。
 
 ![在 Gradle 包装器生成步骤中设置高级设置](./media/install-jenkins-solution-template/jenkins-job-gradle-advances.png) 
 

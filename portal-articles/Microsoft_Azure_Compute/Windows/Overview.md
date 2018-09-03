@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: 03b204d9970a3831543a03dfa08e2a4d8b274034
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ebaa72f87a64484dd8687a0ec7548e67b0df9510
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23073854"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190669"
 ---
 # <a name="windows-virtual-machines-documentation"></a>Windows 虚拟机文档
 
@@ -23,7 +23,7 @@ Azure Windows 虚拟机使用 Windows Server 按需提供具有高可伸缩性�
 
 了解如何在运行 Windows Server 2016 的虚拟机中部署 IIS Web 服务器：
 
-- [在 Azure 应用服务中创建 Java Web 应用](/azure/virtual-machines/virtual-machines-windows-quick-create-portal?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+- [Azure 门户](/azure/virtual-machines/virtual-machines-windows-quick-create-portal?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 - [Azure PowerShell](/azure/virtual-machines/virtual-machines-windows-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 - [Azure CLI](/azure/virtual-machines/virtual-machines-windows-quick-create-cli?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
@@ -33,7 +33,7 @@ Azure Windows 虚拟机使用 Windows Server 按需提供具有高可伸缩性�
 
 - [创建和管理 Windows VM](/azure/virtual-machines/windows/tutorial-manage-vm)
 - [创建和管理 VM 磁盘](/azure/virtual-machines/windows/tutorial-manage-data-disk)
-- [自动执行 VM 配置](/azure/virtual-machines/windows/tutorial-automate-vm-deployment)
+- [自动配置 VM](/azure/virtual-machines/windows/tutorial-automate-vm-deployment)
 - [创建自定义 VM 映像](/azure/virtual-machines/windows/tutorial-custom-images)
 - [创建高度可用的 VM](/azure/virtual-machines/windows/tutorial-availability-sets)
 - [创建 VM 规模集](/azure/virtual-machines/windows/tutorial-create-vmss)
@@ -46,9 +46,7 @@ Azure Windows 虚拟机使用 Windows Server 按需提供具有高可伸缩性�
 
 ## <a name="free-pluralsight-video-training"></a>免费 Pluralsight 视频培训
 
-- [管理基础结构](https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02)
-- [虚拟机入门](https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02)
-- [IaaS 监视入门](https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02")
+- [Azure 管理员](https://go.microsoft.com/fwlink/?linkid=2012827)
 
 ## <a name="samples"></a>示例
 

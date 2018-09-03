@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/12/2018
+ms.date: 08/28/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 20dc414c5cdd309434ba53acf2d7f6716d3edfe5
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 596c4b15ea6ef76d4471bca6994377bf4d5ddc01
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009920"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143417"
 ---
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal-preview"></a>快速入门：使用 Azure 门户部署 Azure Data Box 磁盘（预览版）
 
@@ -54,7 +54,6 @@ ms.locfileid: "39009920"
 
 创建订单后，Microsoft 会准备磁盘发货。 
 
-
 ## <a name="unpack"></a>打开包装
 
 此步骤大约需要 5 分钟。
@@ -64,7 +63,6 @@ Data Box 磁盘通过 UPS Express Box 寄送。 请打开包装，检查其中�
 - 1 到 5 个以气泡膜包装的 USB 磁盘。
 - 每个磁盘有一根连接线。 
 - 用于退件的发货标签。
- 
 
 ## <a name="connect-and-unlock"></a>连接和解锁
 
@@ -75,10 +73,8 @@ Data Box 磁盘通过 UPS Express Box 寄送。 请打开包装，检查其中�
 
     1. 在 Azure 门户中，转到“常规”>“设备详细信息”并获取支持密钥。
     2. 在计算机上下载并提取用于将数据复制到磁盘的 Data Box 磁盘解锁工具。 
-    3. 运行 *DataBoxDiskUnlock.exe* 并提供支持密钥。 每次重新插入磁盘都要重复此步骤。
+    3. 运行 *DataBoxDiskUnlock.exe* 并提供支持密钥。 每次重新插入磁盘时，请再次运行解锁工具并提供密钥。 **请勿使用 BitLocker 对话框或 BitLocker 密钥来解锁磁盘。** 
     4. 工具会显示分配给磁盘的驱动器号。 请记下磁盘驱动器号， 后续步骤中需要用到。
-
-
 
 ## <a name="copy-data-and-verify"></a>复制数据和验证
 
@@ -92,7 +88,7 @@ Data Box 磁盘通过 UPS Express Box 寄送。 请打开包装，检查其中�
     > - 所有容器和 Blob 应符合 [Azure 命名约定](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions)。 如果不遵循这些规则，则无法将数据上传到 Azure。
     > - 确保块 Blob 的文件不超过大约 4.7 TiB，页 Blob 的文件不超过大约 8 TiB。
 
-2. （可选）复制完成后，我们建议运行 *AzureImportExport* 文件夹中提供的 `AzureExpressDiskService.ps1` 来生成校验和，以用于验证。 根据具体的数据大小，此步骤可能需要一段时间。 
+2. （可选）复制完成后，我们建议运行 *AzureImportExport* 文件夹中提供的 `AzureExpressDiskService.cmd` 来生成校验和，以用于验证。 根据具体的数据大小，此步骤可能需要一段时间。 
 3. 拔下驱动器。 
 
 
@@ -116,7 +112,6 @@ Data Box 磁盘服务将发送一封电子邮件通知，并在 Azure 门户上�
     1. 检查错误日志中是否包含任何错误，如有则采取相应的措施。
     2. 从源中删除数据之前，请确认数据已存储在存储帐户中。
 
-
 ## <a name="clean-up-resources"></a>清理资源
 
 此步骤需要 2-3 分钟才能完成。
@@ -131,7 +126,7 @@ Data Box 磁盘服务将发送一封电子邮件通知，并在 Azure 门户上�
 
     若要删除订单，请转到“概况”，然后在命令栏中单击“删除”。
 
-## <a name="next-step"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 
 在本快速入门中，我们已部署 Azure Data Box 磁盘来帮助将数据导入 Azure。 若要详细了解 Azure Data Box 磁盘的管理，请转到以下教程： 
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/14/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 7bf3b5f8eb066428b382b9b2e742b919595bdffc
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: b2bb187e5ad55b466da0b9b06ffbb047ac539717
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41918576"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43104993"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>教程：准备用于 Azure Kubernetes 服务 (AKS) 的应用程序
 
@@ -96,7 +96,7 @@ b68fed4b66b6        redis             "docker-entrypoint..."   57 seconds ago   
 
 ## <a name="clean-up-resources"></a>清理资源
 
-现已验证应用程序功能，可停止并删除正在运行的容器。 请勿删除容器映像 - 在下一教程中，会将 *azure-vote-front* 映像上传到 Azure 容器注册表实例。
+现已验证应用程序的功能，可停止并删除正在运行的容器。 请勿删除容器映像 - 在下一教程中，会将 *azure-vote-front* 映像上传到 Azure 容器注册表实例。
 
 使用 [docker-compose down][docker-compose-down] 命令停止并删除容器实例和资源：
 

@@ -14,22 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/12/2018
 ms.author: daveba
-ms.openlocfilehash: e001907b9df77eff1455043a3fd7ce5533838fcc
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 0781bf3fe9806c2c8aaa911433c4d6eddcafe04c
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056168"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885487"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-identity-to-access-azure-storage"></a>教程：使用 Windows VM 托管标识访问 Azure 存储
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-本教程展示了如何为 Windows 虚拟机启用托管标识，以及使用该标识访问 Azure 存储。  学习如何：
+本教程介绍如何使用 Windows 虚拟机 (VM) 的系统分配标识来访问 Azure 存储。 学习如何：
 
 > [!div class="checklist"]
-> * 在新的资源组中创建 Windows 虚拟机 
-> * 在 Windows 虚拟机 (VM) 上启用托管标识
 > * 在存储帐户中创建 Blob 容器
 > * 向你的 Windows VM 的托管标识授予对存储帐户的访问权限 
 > * 获取访问令牌并使用它来调用 Azure 存储 
@@ -43,31 +41,11 @@ ms.locfileid: "39056168"
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="sign-in-to-azure"></a>登录 Azure
+- [登录到 Azure 门户](https://portal.azure.com)
 
-在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
+- [创建 Windows 虚拟机](/azure/virtual-machines/windows/quick-create-portal)
 
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>在新的资源组中创建 Windows 虚拟机
-
-在本部分中，你将创建一台 Windows VM，稍后将向其授予一个托管标识。
-
-1.  单击 Azure 门户左上角的“+/创建新服务”按钮。
-2.  选择“计算”，然后选择“Windows Server 2016 Datacenter”。 
-3.  输入虚拟机信息。 此处创建的用户名和密码是用于登录虚拟机的凭据。
-4.  在下拉列表中为虚拟机选择正确的订阅。
-5.  若要在新资源组中创建虚拟机，请选择“资源组”中的“新建”。 完成后，单击“确定”。
-6.  选择 VM 大小。 若要查看更多的大小，请选择“全部查看”或更改“支持的磁盘类型”筛选器。 在设置边栏选项卡中保留默认值，然后单击“确定”。
-
-    ![Alt 图像文本](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
-
-## <a name="enable-managed-identity-on-your-vm"></a>在 VM 上启用托管标识
-
-可以通过虚拟机托管标识从 Azure AD 中获取访问令牌，无需在代码中插入凭据。 事实上，通过 Azure 门户在虚拟机上启用托管标识会执行两项操作：向 Azure AD 注册 VM 以创建托管标识，以及在 VM 上配置标识。 
-
-1. 导航到新虚拟机的资源组，并选择已在上一步中创建的虚拟机。
-2. 在“设置”类别下，单击“配置”。
-3. 若要启用托管标识，请选择“是”。
-4. 单击“保存”以应用配置。 
+- [在虚拟机上启用系统分配的标识](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="create-a-storage-account"></a>创建存储帐户 
 

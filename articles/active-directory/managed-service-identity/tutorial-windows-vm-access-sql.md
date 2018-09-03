@@ -14,22 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: ca920a93d754254390a5c5c5a066be3144b47fc7
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: b6b2985bf72d9ecb2041d51852b5a4230e11d8be
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41919866"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886047"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-sql"></a>教程：使用 Windows VM 托管服务标识访问 Azure SQL
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-本教程介绍如何使用 Windows 虚拟机 (VM) 的托管服务标识来访问 Azure SQL 服务器。 托管服务标识由 Azure 自动管理，可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中插入凭据了。 学习如何：
+本教程介绍如何使用 Windows 虚拟机 (VM) 的系统分配标识访问 Azure SQL Server。 托管服务标识由 Azure 自动管理，可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中插入凭据了。 学习如何：
 
 > [!div class="checklist"]
-> * 在 Windows VM 上启用托管服务标识 
 > * 授予 VM 对 Azure SQL 服务器的访问权限
+> * 在 Azure AD 中创建一个组，并使 VM 托管服务标识成为该组的成员
+> * 为 SQL 服务器启用 Azure AD 身份验证
+> * 在数据库中创建一个代表 Azure AD 组的包含的用户
 > * 使用 VM 标识获取访问令牌，并使用它查询 Azure SQL 服务器
 
 ## <a name="prerequisites"></a>先决条件
@@ -38,32 +40,11 @@ ms.locfileid: "41919866"
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="sign-in-to-azure"></a>登录 Azure
+- [登录到 Azure 门户](https://portal.azure.com)
 
-在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
+- [创建 Windows 虚拟机](/azure/virtual-machines/windows/quick-create-portal)
 
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>在新的资源组中创建 Windows 虚拟机
-
-本教程将新建 Windows VM。  还可以在现有 Azure VM 上启用托管服务标识。
-
-1.  单击 Azure 门户左上角的“创建资源”按钮。
-2.  选择“计算”，然后选择“Windows Server 2016 Datacenter”。 
-3.  输入虚拟机信息。 此处创建的用户名和密码是用于登录虚拟机的凭据。
-4.  在下拉列表中为虚拟机选择正确的订阅。
-5.  要选择在其中创建虚拟机的新资源组，请选择“新建”。 完成后，单击“确定”。
-6.  选择 VM 大小。 若要查看更多的大小，请选择“全部查看”或更改“支持的磁盘类型”筛选器。 在“设置”页中保留默认值，然后单击“确定”。
-
-    ![Alt 图像文本](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
-
-## <a name="enable-managed-service-identity-on-your-vm"></a>在 VM 上启用托管服务标识 
-
-可以通过虚拟机托管标识从 Azure AD 中获取访问令牌，无需在代码中插入凭据。 启用托管服务标识会告诉 Azure 为 VM 创建托管标识。 在表面下，在 VM 上启用托管服务标识会执行两项操作：向 Azure Active Directory 注册 VM 以创建其托管标识，以及在 VM 上配置标识。
-
-1.  对于“虚拟机”，请选择要在其上启用托管标识的虚拟机。  
-2.  单击左侧导航栏中的“配置”。 
-3.  此时，将会看到托管服务标识。 若要注册并启用托管服务标识，请选择“是”，若要禁用，请选择“否”。 
-4.  务必单击“保存”，以保存配置。  
-    ![Alt 图像文本](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+- [在虚拟机上启用系统分配的标识](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="grant-your-vm-access-to-a-database-in-an-azure-sql-server"></a>授予 VM 对 Azure SQL 服务器中的数据库的访问权限
 
@@ -78,7 +59,7 @@ ms.locfileid: "41919866"
 > 通常，会创建一个直接映射到 VM 的托管服务标识的包含的用户。  目前，Azure SQL 不允许将代表 VM 托管服务标识的 Azure AD 服务主体映射到包含的用户。  支持的解决方法是，使 VM 托管服务标识成为 Azure AD 组的成员，然后在数据库中创建一个代表该组的包含的用户。
 
 
-### <a name="create-a-group-in-azure-ad-and-make-the-vm-managed-service-identity-a-member-of-the-group"></a>在 Azure AD 中创建一个组，并使 VM 托管服务标识成为该组的成员
+## <a name="create-a-group-in-azure-ad-and-make-the-vm-managed-service-identity-a-member-of-the-group"></a>在 Azure AD 中创建一个组，并使 VM 托管服务标识成为该组的成员
 
 可以使用现有的 Azure AD 组，使用 Azure AD PowerShell 创建新组。  
 
@@ -132,7 +113,7 @@ ObjectId                             AppId                                Displa
 b83305de-f496-49ca-9427-e77512f6cc64 0b67a6d6-6090-4ab4-b423-d6edda8e5d9f DevTestWinVM
 ```
 
-### <a name="enable-azure-ad-authentication-for-the-sql-server"></a>为 SQL 服务器启用 Azure AD 身份验证
+## <a name="enable-azure-ad-authentication-for-the-sql-server"></a>为 SQL 服务器启用 Azure AD 身份验证
 
 创建组并将 VM 托管服务标识添加到成员身份后，可使用以下步骤[配置 SQL 服务器的 Azure AD 身份验证](/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-azure-sql-server)：
 
@@ -143,7 +124,7 @@ b83305de-f496-49ca-9427-e77512f6cc64 0b67a6d6-6090-4ab4-b423-d6edda8e5d9f DevTes
 5.  选择要设为服务器管理员的 Azure AD 用户帐户，单击“选择”。
 6.  在命令栏中，单击“保存”。
 
-### <a name="create-a-contained-user-in-the-database-that-represents-the-azure-ad-group"></a>在数据库中创建一个代表 Azure AD 组的包含的用户
+## <a name="create-a-contained-user-in-the-database-that-represents-the-azure-ad-group"></a>在数据库中创建一个代表 Azure AD 组的包含的用户
 
 在下一步骤中，需要使用 [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。 在开始之前，查看以下文章了解有关 Azure AD 集成的背景知识可能也有帮助：
 

@@ -14,21 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: bd314dd1543280cf2533e45f156ca634d15d1d2a
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 5dc4f498c416142977c5570cddf8b380a8c02ab4
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247238"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885135"
 ---
 # <a name="use-a-windows-vm-managed-service-identity-to-access-resource-manager"></a>使用 Windows VM 托管服务标识访问资源管理器
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-本教程演示了如何启用 Windows 虚拟机 (VM) 的托管服务标识的过程。 然后，可以使用该标识访问 Azure 资源管理器 API。 托管服务标识由 Azure 自动管理，可用于通过支持 Azure AD 身份验证的服务的身份验证，这样就无需在代码中插入凭据了。 学习如何：
+本快速入门介绍如何使用支持系统分配标识的 Windows 虚拟机来访问 Azure 资源管理器 API。 托管服务标识由 Azure 自动管理，可用于通过支持 Azure AD 身份验证的服务的身份验证，这样就无需在代码中插入凭据了。 学习如何：
 
-> [!div class="checklist"]
-> * 在 Windows VM 上启用托管服务标识 
+> [!div class="checklist"] 
 > * 授予 VM 对 Azure 资源管理器中资源组的访问权限 
 > * 使用 VM 标识获取访问令牌，并使用它调用 Azure 资源管理器
 
@@ -38,31 +37,11 @@ ms.locfileid: "39247238"
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="sign-in-to-azure"></a>登录 Azure
-在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
+- [登录到 Azure 门户](https://portal.azure.com)
 
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>在新的资源组中创建 Windows 虚拟机
+- [创建 Windows 虚拟机](/azure/virtual-machines/windows/quick-create-portal)
 
-本教程将新建 Windows VM。  还可以在现有 Azure VM 上启用托管服务标识。
-
-1.  单击 Azure 门户左上角的“创建资源”按钮。
-2.  选择“计算”，然后选择“Windows Server 2016 Datacenter”。 
-3.  输入虚拟机信息。 此处创建的用户名和密码是用于登录虚拟机的凭据。
-4.  在下拉列表中为虚拟机选择正确的订阅。
-5.  要选择在其中创建虚拟机的新资源组，请选择“新建”。 完成后，单击“确定”。
-6.  选择 VM 大小。 若要查看更多的大小，请选择“全部查看”或更改“支持的磁盘类型”筛选器。 在“设置”页中保留默认值，然后单击“确定”。
-
-    ![Alt 图像文本](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
-
-## <a name="enable-managed-service-identity-on-your-vm"></a>在 VM 上启用托管服务标识 
-
-可以通过虚拟机托管标识从 Azure AD 中获取访问令牌，无需在代码中插入凭据。 在 VM 上启用托管服务标识会执行两项操作：向 Azure Active Directory 注册 VM 以创建其托管标识，以及在 VM 上配置标识。
-
-1.  对于“虚拟机”，请选择要在其上启用托管标识的虚拟机。  
-2.  单击左侧导航栏中的“配置”。 
-3.  此时，将会看到托管服务标识。 若要注册并启用托管服务标识，请选择“是”，若要禁用，请选择“否”。 
-4.  务必单击“保存”，以保存配置。  
-    ![Alt 图像文本](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+- [在虚拟机上启用系统分配的标识](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="grant-your-vm-access-to-a-resource-group-in-resource-manager"></a>授予 VM 对资源管理器中资源组的访问权限
 使用托管服务标识，代码可以获取访问令牌，对支持 Azure AD 身份验证的资源进行身份验证。  Azure 资源管理器支持 Azure AD 身份验证。  首先，需要授予此 VM 标识对资源管理器中资源（在此示例中，为包含 VM 的资源组）的访问权限。  
