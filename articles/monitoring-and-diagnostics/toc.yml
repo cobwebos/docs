@@ -1,216 +1,225 @@
+items:
 - name: Azure Monitor 文档
   href: index.yml
 - name: 概述
   items:
-    - name: 在 Azure 中进行监视
-      href: monitoring-overview.md
+  - name: 在 Azure 中进行监视
+    href: monitoring-overview.md
 - name: 快速入门
-  expanded: true
   items:
-    - name: 根据指标状况发出警报（经典）
-      href: monitor-quick-resource-metric-alert-portal.md
-    - name: 根据订阅活动发出警报
-      href: monitor-quick-audit-notify-action-in-subscription.md
+  - name: 根据指标状况发出警报（经典）
+    href: monitor-quick-resource-metric-alert-portal.md
+  - name: 根据订阅活动发出警报
+    href: monitor-quick-audit-notify-action-in-subscription.md
+  expanded: true
 - name: 教程
   items:
-    - name: 根据性能和计划自动缩放
-      href: monitor-tutorial-autoscale-performance-schedule.md
-    - name: 存档监视数据
-      href: monitor-tutorial-archive-monitoring-data.md
+  - name: 根据性能和计划自动缩放
+    href: monitor-tutorial-autoscale-performance-schedule.md
+  - name: 存档监视数据
+    href: monitor-tutorial-archive-monitoring-data.md
 - name: 概念
   items:
-    - name: 监视数据源
-      href: monitoring-data-sources.md
-    - name: Azure Monitor
-      href: monitoring-overview-azure-monitor.md
-    - name: 代理
-      href: ../monitoring/monitoring-overview-azure-agents.md
-    - name: 度量值
-      href: monitoring-overview-metrics.md
-    - name: 自动缩放
-      href: monitoring-overview-autoscale.md
-    - name: 诊断日志
-      href: monitoring-overview-of-diagnostic-logs.md
-    - name: 活动日志
-      href: monitoring-overview-activity-logs.md
-    - name: 警报
-      href: monitoring-overview-unified-alerts.md
-    - name: 警报（经典）
-      href: monitoring-overview-alerts.md
-    - name: 日志警报
-      href: monitor-alerts-unified-log.md
-    - name: 活动日志警报（预览版）
-      href: monitoring-activity-log-alerts-new-experience.md
-    - name: 将警报从 Log Analytics 扩展到 Azure
-      href: monitoring-alerts-extend.md
-    - name: 操作组
-      href: monitoring-action-groups.md
-    - name: Azure 诊断扩展
-      href: azure-diagnostics.md
-    - name: 角色权限和安全
-      href: monitoring-roles-permissions-security.md
-    - name: 合作伙伴集成
-      href: monitoring-partners.md
+  - name: 监视数据源
+    href: monitoring-data-sources.md
+  - name: Azure Monitor
+    href: monitoring-overview-azure-monitor.md
+  - name: 代理
+    href: ../monitoring/monitoring-overview-azure-agents.md
+  - name: 度量值
+    href: monitoring-overview-metrics.md
+  - name: 自动缩放
+    href: monitoring-overview-autoscale.md
+  - name: 诊断日志
+    href: monitoring-overview-of-diagnostic-logs.md
+  - name: 活动日志
+    href: monitoring-overview-activity-logs.md
+  - name: 警报
+    href: monitoring-overview-unified-alerts.md
+  - name: 警报（经典）
+    href: monitoring-overview-alerts.md
+  - name: 日志警报
+    href: monitor-alerts-unified-log.md
+  - name: 活动日志警报（预览版）
+    href: monitoring-activity-log-alerts-new-experience.md
+  - name: 将警报从 Log Analytics 扩展到 Azure
+    href: monitoring-alerts-extend.md
+  - name: 操作组
+    href: monitoring-action-groups.md
+  - name: Azure 诊断扩展
+    href: azure-diagnostics.md
+  - name: 资源组见解
+    href: resource-group-insights.md
+  - name: 角色权限和安全
+    href: monitoring-roles-permissions-security.md
+  - name: 合作伙伴集成
+    href: monitoring-partners.md
 - name: 操作指南
   items:
-    - name: Azure Monitor 演练
-      href: monitoring-get-started.md
-    - name: 在指标资源管理器中创建指标图表
-      href: monitoring-metric-charts.md
-    - name: 使用警报
-      items:
-        - name: 在 Azure 门户中配置新指标或日志警报
-          href: monitor-alerts-unified-usage.md
-        - name: 在 Azure 门户中配置经典警报
-          href: insights-alerts-portal.md
-        - name: 使用 CLI 配置经典警报
-          href: insights-alerts-command-line-interface.md
-        - name: 使用 Azure PowerShell 配置经典警报
-          href: insights-alerts-powershell.md
-        - name: 让经典指标警报调用 Webhook
-          href: insights-webhooks-alerts.md
-        - name: 用于日志警报的 Webhook 操作
-          href: monitor-alerts-unified-log-webhook.md
-        - name: 使用资源管理器模板创建日志警报
-          href: monitor-alerts-unified-log-template.md
-        - name: 使用资源管理器模板创建更新的指标警报
-          href: monitoring-create-metric-alerts-with-templates.md
-        - name: 使用资源管理器模板创建经典指标警报
-          href: monitoring-enable-alerts-using-template.md
-        - name: 将警报从 OMS 门户复制到 Azure 门户
-          href: monitoring-alerts-extend-tool.md
-        - name: 使用动态阈值的警报
-          href: monitoring-alerts-dynamic-thresholds.md
-    - name: 将操作组与警报配合使用
-      items:
-        - name: 了解 webhook 架构
-          href: monitoring-activity-log-alerts-webhook.md
-        - name: 短信警报行为
-          href: monitoring-sms-alert-behavior.md
-        - name: 警报速率限制
-          href: monitoring-alerts-rate-limiting.md
-        - name: 使用资源管理器创建操作组
-          href: monitoring-create-action-group-with-resource-manager-template.md
-        - name: 实现逻辑应用操作
-          href: monitoring-action-groups-logic-app.md
-    - name: 使用诊断日志
-      items:
-        - name: 存档
-          href: monitoring-archive-diagnostic-logs.md
-        - name: 发送到 Log Analytics
-          href: monitor-stream-diagnostic-logs-log-analytics.md
-        - name: 流式传输到事件中心
-          href: monitoring-stream-diagnostic-logs-to-event-hubs.md
-        - name: 使用资源管理器模板启用诊断设置
-          href: monitoring-enable-diagnostic-logs-using-template.md
-        - name: 准备 JSON Lines 诊断日志格式
-          href: monitor-diagnostic-logs-append-blobs.md
-    - name: 使用活动日志
-      items:
-        - name: 在活动日志中查看事件
-          href: ../azure-resource-manager/resource-group-audit.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json
-        - name: 针对活动日志事件配置警报
-          href: monitoring-activity-log-alerts.md
-        - name: 存档活动日志
-          href: monitoring-archive-activity-log.md
-        - name: 将活动日志流式传输到事件中心
-          href: monitoring-stream-activity-logs-event-hubs.md
-        - name: 使用 Resource Manager 执行审核操作
-          href: ../azure-resource-manager/resource-group-audit.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json
-        - name: 使用资源管理器创建活动日志警报
-          href: monitoring-create-activity-log-alerts-with-resource-manager-template.md
-        - name: 迁移到活动日志警报
-          href: monitoring-migrate-management-alerts.md
-    - name: 使用服务通知
-      items:
-        - name: 查看服务通知
-          href: monitoring-service-notifications.md
-        - name: 针对服务通知配置警报
-          href: monitoring-activity-log-alerts-on-service-notifications.md
-    - name: 以编程方式访问
-      items:
-        - name: REST API 用法演练
-          href: monitoring-rest-api-walkthrough.md
-        - name: Azure PowerShell 示例
-          href: insights-powershell-samples.md
-        - name: Azure CLI 示例
-          href: insights-cli-samples.md
-    - name: 使用 Azure 诊断扩展
-      items:
-        - name: 发送到 Azure 存储
-          href: azure-diagnostics-storage.md
-        - name: 发送到 Application Insights
-          href: azure-diagnostics-configure-application-insights.md
-        - name: 发送到事件中心
-          href: azure-diagnostics-streaming-event-hubs.md
-        - name: 故障排除
-          href: azure-diagnostics-troubleshooting.md
-    - name: 使用自动缩放
-      items:
-        - name: 自动缩放演练
-          href: monitoring-autoscale-get-started.md
-        - name: 了解自动缩放设置
-          href: monitoring-understanding-autoscale-settings.md
-        - name: 最佳实践
-          href: insights-autoscale-best-practices.md
-        - name: 常见指标
-          href: insights-autoscale-common-metrics.md
-        - name: 常见模式
-          href: monitoring-autoscale-common-scale-patterns.md
-        - name: 使用自定义指标自动缩放
-          href: monitoring-autoscale-scale-by-custom-metric.md
-        - name: 使用资源管理器模板自动缩放 VM 规模集
-          href: insights-advanced-autoscale-virtual-machine-scale-sets.md
-        - name: 在 VM 规模集中自动缩放计算机
-          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json
-        - name: 针对自动缩放配置 webhook 和电子邮件通知
-          href: insights-autoscale-to-webhook-email.md
-    - name: 路由到其他位置
-      items:
-        - name: 向 Grafana 发送指标
-          href: monitor-send-to-grafana.md
-        - name: 将监视数据发送到事件中心
-          href: monitor-stream-monitoring-data-event-hubs.md
+  - name: Azure Monitor 演练
+    href: monitoring-get-started.md
+  - name: 在指标资源管理器中创建指标图表
+    href: monitoring-metric-charts.md
+  - name: 使用警报
+    items:
+    - name: 在 Azure 门户中配置新指标或日志警报
+      href: monitor-alerts-unified-usage.md
+    - name: 在 Azure 门户中配置经典警报
+      href: insights-alerts-portal.md
+    - name: 使用 CLI 配置经典警报
+      href: insights-alerts-command-line-interface.md
+    - name: 使用 Azure PowerShell 配置经典警报
+      href: insights-alerts-powershell.md
+    - name: 让经典指标警报调用 Webhook
+      href: insights-webhooks-alerts.md
+    - name: 用于日志警报的 Webhook 操作
+      href: monitor-alerts-unified-log-webhook.md
+    - name: 使用资源管理器模板创建日志警报
+      href: monitor-alerts-unified-log-template.md
+    - name: 使用资源管理器模板创建更新的指标警报
+      href: monitoring-create-metric-alerts-with-templates.md
+    - name: 使用资源管理器模板创建经典指标警报
+      href: monitoring-enable-alerts-using-template.md
+    - name: 将警报从 OMS 门户复制到 Azure 门户
+      href: monitoring-alerts-extend-tool.md
+    - name: 使用动态阈值的警报
+      href: monitoring-alerts-dynamic-thresholds.md
+  - name: 将操作组与警报配合使用
+    items:
+    - name: 了解 webhook 架构
+      href: monitoring-activity-log-alerts-webhook.md
+    - name: 短信警报行为
+      href: monitoring-sms-alert-behavior.md
+    - name: 警报速率限制
+      href: monitoring-alerts-rate-limiting.md
+    - name: 使用资源管理器创建操作组
+      href: monitoring-create-action-group-with-resource-manager-template.md
+    - name: 实现逻辑应用操作
+      href: monitoring-action-groups-logic-app.md
+  - name: 使用诊断日志
+    items:
+    - name: 存档
+      href: monitoring-archive-diagnostic-logs.md
+    - name: 发送到 Log Analytics
+      href: monitor-stream-diagnostic-logs-log-analytics.md
+    - name: 流式传输到事件中心
+      href: monitoring-stream-diagnostic-logs-to-event-hubs.md
+    - name: 使用资源管理器模板启用诊断设置
+      href: monitoring-enable-diagnostic-logs-using-template.md
+    - name: 准备 JSON Lines 诊断日志格式
+      href: monitor-diagnostic-logs-append-blobs.md
+  - name: 使用活动日志
+    items:
+    - name: 在活动日志中查看事件
+      href: ../azure-resource-manager/resource-group-audit.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json
+    - name: 针对活动日志事件配置警报
+      href: monitoring-activity-log-alerts.md
+    - name: 存档活动日志
+      href: monitoring-archive-activity-log.md
+    - name: 将活动日志流式传输到事件中心
+      href: monitoring-stream-activity-logs-event-hubs.md
+    - name: 使用 Resource Manager 执行审核操作
+      href: ../azure-resource-manager/resource-group-audit.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json
+    - name: 使用资源管理器创建活动日志警报
+      href: monitoring-create-activity-log-alerts-with-resource-manager-template.md
+    - name: 迁移到活动日志警报
+      href: monitoring-migrate-management-alerts.md
+  - name: 使用服务通知
+    items:
+    - name: 查看服务通知
+      href: monitoring-service-notifications.md
+    - name: 针对服务通知配置警报
+      href: monitoring-activity-log-alerts-on-service-notifications.md
+  - name: 以编程方式访问
+    items:
+    - name: REST API 用法演练
+      href: monitoring-rest-api-walkthrough.md
+    - name: Azure PowerShell 示例
+      href: insights-powershell-samples.md
+    - name: Azure CLI 示例
+      href: insights-cli-samples.md
+  - name: 使用 Azure 诊断扩展
+    items:
+    - name: 发送到 Azure 存储
+      href: azure-diagnostics-storage.md
+    - name: 发送到 Application Insights
+      href: azure-diagnostics-configure-application-insights.md
+    - name: 发送到事件中心
+      href: azure-diagnostics-streaming-event-hubs.md
+    - name: 故障排除
+      href: azure-diagnostics-troubleshooting.md
+  - name: 使用自动缩放
+    items:
+    - name: 自动缩放演练
+      href: monitoring-autoscale-get-started.md
+    - name: 了解自动缩放设置
+      href: monitoring-understanding-autoscale-settings.md
+    - name: 最佳实践
+      href: insights-autoscale-best-practices.md
+    - name: 常见指标
+      href: insights-autoscale-common-metrics.md
+    - name: 常见模式
+      href: monitoring-autoscale-common-scale-patterns.md
+    - name: 使用自定义指标自动缩放
+      href: monitoring-autoscale-scale-by-custom-metric.md
+    - name: 使用资源管理器模板自动缩放 VM 规模集
+      href: insights-advanced-autoscale-virtual-machine-scale-sets.md
+    - name: 在 VM 规模集中自动缩放计算机
+      href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json
+    - name: 针对自动缩放配置 webhook 和电子邮件通知
+      href: insights-autoscale-to-webhook-email.md
+  - name: 路由到其他位置
+    items:
+    - name: 向 Grafana 发送指标
+      href: monitor-send-to-grafana.md
+    - name: 将监视数据发送到事件中心
+      href: monitor-stream-monitoring-data-event-hubs.md
 - name: 引用
   items:
-    - name: Azure CLI
-      href: /cli/azure/monitor?view=azure-cli-latest
-    - name: Azure PowerShell
-      href: /powershell/module/azurerm.insights
-    - name: REST
-      href: /rest/api/monitor/
-    - name: 支持的指标
-      href: monitoring-supported-metrics.md
-    - name: 较新的警报支持的指标
-      href: monitoring-near-real-time-metric-alerts.md
-    - name: 诊断日志服务、类别和架构
-      href: monitoring-diagnostic-logs-schema.md
-    - name: 活动日志事件架构
-      href: monitoring-activity-log-schema.md
-    - name: Azure 诊断扩展架构
-      href: azure-diagnostics-schema.md
-      items:
-        - name: 1.3 和更高版本
-          href: azure-diagnostics-schema-1dot3-and-later.md
-        - name: 1.2
-          href: azure-diagnostics-schema-1dot2.md
-        - name: 1
-          href: azure-diagnostics-schema-1dot0.md
+  - name: Azure CLI
+    href: /cli/azure/monitor?view=azure-cli-latest
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.insights
+  - name: REST
+    href: /rest/api/monitor/
+  - name: 支持的指标
+    href: monitoring-supported-metrics.md
+  - name: 较新的警报支持的指标
+    href: monitoring-near-real-time-metric-alerts.md
+  - name: 诊断日志服务、类别和架构
+    href: monitoring-diagnostic-logs-schema.md
+  - name: 活动日志事件架构
+    href: monitoring-activity-log-schema.md
+  - name: Azure 诊断扩展架构
+    href: azure-diagnostics-schema.md
+    items:
+    - name: 1.3 和更高版本
+      href: azure-diagnostics-schema-1dot3-and-later.md
+    - name: "1.2"
+      href: azure-diagnostics-schema-1dot2.md
+    - name: "1"
+      href: azure-diagnostics-schema-1dot0.md
 - name: 资源
   items:
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
-    - name: 定价计算器
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: 区域可用性
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: 视频
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=monitor'
-    - name: 快速入门模板
-      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Insights'
-    - name: 堆栈溢出
-      href: 'https://stackoverflow.com/search?q=monitoring'
-    - name: 代码示例
-      href: 'https://azure.microsoft.com/resources/samples/?service=monitor'
-    - name: 使用情况和预估成本
-      href: monitoring-usage-and-estimated-costs.md
+  - name: Azure 路线图
+    href: https://azure.microsoft.com/roadmap/?category=monitoring-management
+  - name: 定价计算器
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: 区域可用性
+    href: https://azure.microsoft.com/regions/services/
+  - name: 视频
+    href: https://azure.microsoft.com/resources/videos/index/?services=monitor
+  - name: 快速入门模板
+    href: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Insights
+  - name: 堆栈溢出
+    href: https://stackoverflow.com/search?q=monitoring
+  - name: 代码示例
+    href: https://azure.microsoft.com/resources/samples/?service=monitor
+  - name: 使用情况和预估成本
+    href: monitoring-usage-and-estimated-costs.md
+ms.openlocfilehash: 92b69fd2e3d299f88a3f08a42bfe4667bce59da0
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43336553"

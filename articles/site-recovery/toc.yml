@@ -196,20 +196,22 @@ items:
         href: vmware-azure-deploy-configuration-server.md
       - name: 设置 VMware VM 的目标环境
         href: vmware-azure-set-up-target.md
-      - name: 配置复制设置
+      - name: 配置 VMware VM 的复制设置
         href: vmware-azure-set-up-replication.md
-      - name: 启用 VMware VM 复制
+      - name: 为 VMware VM 启用复制
         href: vmware-azure-enable-replication.md
-      - name: 从复制中排除磁盘
+      - name: 从 VMware VM 复制中排除磁盘
         href: vmware-azure-exclude-disk.md
-      - name: 使用 CSP 且适用于 VMWare VM 的多租户
+      - name: 为 VMWare VM 设置使用多租户和 CSP 进行复制
         href: vmware-azure-multi-tenant-csp-disaster-recovery.md
-      - name: 设置物理服务器的源环境
-        href: physical-azure-set-up-source.md
-      - name: 设置物理服务器的目标环境
-        href: physical-azure-set-up-target.md
-      - name: 物理服务器到 Azure 的灾难恢复
+      - name: 设置物理服务器到 Azure 的灾难恢复
         href: physical-azure-disaster-recovery.md
+      - name: 设置物理服务器复制的源环境
+        href: physical-azure-set-up-source.md
+      - name: 设置物理服务器复制的目标环境
+        href: physical-azure-set-up-target.md
+      - name: 为 Azure Stack VM 设置灾难恢复
+        href: azure-stack-site-recovery.md
     - name: 部署移动服务
       items:
       - name: 移动服务概述
@@ -390,9 +392,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: 服务更新
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: 63d404406e3b33d4022974246a227cad1e6535a6
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 01f369aede31d44ff404c1ff5e7d2d1e9bb92950
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43285100"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43343967"
