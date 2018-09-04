@@ -1,6 +1,6 @@
 ---
 title: Azure 负载均衡器概述 | Microsoft 文档
-description: Azure 负载均衡器功能、体系结构和实现概述。 了解负载均衡器工作原理，在云中对其进行利用。
+description: Azure 负载均衡器功能、体系结构和实现概述。 了解负载均衡器工作原理，并在云中对其进行利用。
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 47509cd0a9208f41a52bf1a07c460bcdda2cb479
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 618b00906a799e1b8cfcfac5ee6bcc3a714c2f87
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42145563"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918736"
 ---
 # <a name="what-is-azure-load-balancer"></a>什么是 Azure 负载均衡器？
 
@@ -38,7 +38,7 @@ Azure 负载均衡器以两种 SKU 提供：“基本”和“标准”。 规�
 使用 Azure 负载均衡器可以：
 
 * 对传入到 VM 的 Internet 流量进行负载均衡。 此配置称为[公共负载均衡器](#publicloadbalancer)。
-* 对虚拟网络中 VM 之间的流量进行负载均衡。 还可以在混合场景中从本地网络访问负载均衡器前端。 这两种方案都使用称作[内部负载均衡器](#internalloadbalancer)的配置。
+* 对虚拟网络中 VM 之间的流量进行负载均衡。 还可以在混合方案中从本地网络访问负载均衡器前端。 这两种方案都使用称作[内部负载均衡器](#internalloadbalancer)的配置。
 * 使用入站网络地址转换 (NAT) 规则通过端口转发将流量转发到特定 VM 上的特定端口。
 * 使用公共负载均衡器为虚拟网络中的 VM 提供[出站连接](load-balancer-outbound-connections.md)。
 
@@ -127,7 +127,7 @@ _最佳做法是显式指定 SKU，尽管目前不强制要求这样做。_  目
 
 ### <a name = "publicloadbalancer"></a>公共负载均衡器
 
-公共负载均衡器将传入流量的公用 IP 地址和端口号映射到 VM 的专用 IP 地址和端口号，对于来自 VM 的响应流量，则进行反向的映射。 应用负载均衡规则，可在多个 VM 或服务之间分配特定类型的流量。 例如，可将 Web 请求流量负载分配到多个 Web 服务器。
+公共负载均衡器将传入流量的公共 IP 地址和端口号映射到 VM 的专用 IP 地址和端口号，对于来自 VM 的响应流量，则进行反向的映射。 应用负载均衡规则，可在多个 VM 或服务之间分配特定类型的流量。 例如，可将 Web 请求流量负载分配到多个 Web 服务器。
 
 下图显示了公用 TCP 端口 80 的 Web 流量的负载均衡终结点，由三个 VM 共享。 三个 VM 位于负载均衡集中。
 
@@ -139,7 +139,7 @@ _最佳做法是显式指定 SKU，尽管目前不强制要求这样做。_  目
 
 默认情况下，Azure 负载均衡器在多个 VM 实例之间平均分发网络流量。 还可以配置会话关联。 有关详细信息，请参阅[负载均衡器分配模式](load-balancer-distribution-mode.md)。
 
-### <a name = "internalloadbalancer"></a>内部负载均衡器
+### <a name = "internalloadbalancer"></a>内部负载均衡器。
 
 内部负载均衡器仅将流量定向到虚拟网络中的资源，或定向到使用 VPN 访问 Azure 基础结构的资源。 在此方面，内部负载均衡器不同于公共负载均衡器。 Azure 基础结构会限制对虚拟网络的负载均衡前端 IP 地址的访问。 前端 IP 地址和虚拟网络不会直接在 Internet 终结点上公开。 内部业务线应用程序可在 Azure 中运行，并可从 Azure 内或从本地资源访问这些应用程序。
 

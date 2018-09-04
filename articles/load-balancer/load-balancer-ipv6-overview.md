@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 08/24/2018
 ms.author: kumud
-ms.openlocfilehash: 9622ad4922aa98efe093e7f809a490a8797eb1fd
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fc7cda30beaea8a9e15794c9330832e9ca651eb7
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30189658"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918682"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure 负载均衡器的 IPv6 概述
 
@@ -79,6 +79,7 @@ ms.locfileid: "30189658"
 * **当前不支持**更改 IPv6 的 IdleTimeout 参数。 该参数默认为 4 分钟。
 * **当前不支持**更改 IPv6 的 loadDistributionMethod 参数。
 * **当前不支持**保留 IPv6 IP（其中 IPAllocationMethod = static）。
+* 不支持 NAT64（将 IPv6 转换为 IPv4）。
 
 ## <a name="next-steps"></a>后续步骤
 

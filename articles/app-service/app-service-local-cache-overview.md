@@ -16,17 +16,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
-ms.openlocfilehash: 59fe70e4d2a710160751ab8e7a83c9f86310dc24
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 4959e4e3a0692837a7775eaf813a8fcff925312d
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597724"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918010"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure 应用服务本地缓存概述
 
 > [!NOTE]
-> 在容器化的应用服务应用中（例如在 [Linux 上的应用服务](containers/app-service-linux-intro.md)上）不支持本地缓存。
+> 在函数应用或容器化的应用服务应用中（例如在 [Linux 上的应用服务](containers/app-service-linux-intro.md)上）不支持本地缓存。
+
 
 Azure Web 应用内容存储在 Azure 存储中，作为内容共享持续提供。 此设计旨在兼容各种应用，具有以下特点：  
 

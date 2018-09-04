@@ -7,20 +7,22 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 08/06/2018
+ms.date: 08/27/2018
 ms.author: kgremban
-ms.openlocfilehash: ea576c0d434d4db7077fc41bc1f5bbbc89e7779e
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: d6852b5b1fe3d0b3c248fc1948fa4c3a9428de89
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576641"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125402"
 ---
 # <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-linux-containers"></a>在 Windows 上安装 Azure IoT Edge 运行时，使其与 Linux 容器一起使用
 
-所有 IoT Edge 设备均部署有 Azure IoT Edge 运行时。 它有三个组件。 **IoT Edge 安全守护程序**提供和维护 Edge 设备上的安全标准。 守护程序在每次开机时启动，并通过启动 IoT Edge 代理来启动设备。 **IoT Edge 代理**协助部署和监视 Edge 设备（包括 IoT Edge 中心）上的模块。 IoT Edge 中心管理 IoT Edge 设备模块之间以及设备和 Azure IoT 中心之间的通信。
+使用 Azure IoT Edge 运行时可将设备转变为 IoT Edge 设备。 该运行时可以部署在像 Raspberry Pi 一样小的设备上，也可以部署在像工业服务器一样大的设备上。 使用 IoT Edge 运行时配置设备后，即可开始从云中部署业务逻辑。 
 
-本文列出了在 Windows x64 (AMD/Intel) 系统上安装 Azure IoT Edge 运行时的步骤。 Windows 支持目前处于预览状态。
+若要了解有关 IoT Edge 运行时如何工作以及包含哪些组件的详细信息，请参阅[了解 Azure IoT Edge 运行时及其体系结构](iot-edge-runtime.md)。
+
+本文列出了在 Windows x64 (AMD/Intel) 系统上使用 Linux 容器安装 Azure IoT Edge 运行时的步骤。 Windows 支持目前为预览版。
 
 >[!NOTE]
 不推荐或支持在 Windows 系统上使用 Linux 容器作为 Azure IoT Edge 的生产配置。 但可将其用于开发和测试。
@@ -29,6 +31,8 @@ ms.locfileid: "39576641"
 使用 Linux 容器时，可在以下版本的 Windows 上使用 Azure IoT Edge 进行开发和测试：
   * Windows 10 或更高版本的桌面操作系统。
   * Windows Server 2016 或更高版本的服务器操作系统。
+
+有关当前支持哪些操作系统的详细信息，请参阅 [Azure IoT Edge 支持](support.md#operating-systems)。 
 
 ## <a name="install-the-container-runtime"></a>安装容器运行时 
 
@@ -43,7 +47,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的][lnk-oci]容器运行时（例如 Docker
 
 可以使用 IoT 中心提供的设备连接字符串手动预配单个 IoT Edge 设备。 或者，可以使用设备预配服务自动预配设备，当需要预配多个设备时这会非常有用。 根据预配选项，选择合适的安装脚本。 
 
-### <a name="install-and-manually-provision"></a>安装和手动预配
+### <a name="option-1-install-and-manually-provision"></a>选项 1：安装和手动预配
 
 1. 按照[注册新的 Azure IoT Edge 设备][lnk-dcs]中的步骤注册设备并检索设备连接字符串。 
 
@@ -58,7 +62,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的][lnk-oci]容器运行时（例如 Docker
 
 4. 当系统提示输入 DeviceConnectionString 时，请提供从 IoT 中心检索的连接字符串。 请勿对连接字符串使用引号。 
 
-### <a name="install-and-automatically-provision"></a>安装和自动预配
+### <a name="option-2-install-and-automatically-provision"></a>选项 2：安装和自动预配
 
 1. 按照[在 Windows上创建和预配模拟 TPM Edge 设备][lnk-dps]中的步骤，设置设备预配服务并检索其范围 ID，模拟 TPM 设备并检索其注册 ID，然后创建个人注册。 在 IoT 中心注册设备后，继续安装。  
 

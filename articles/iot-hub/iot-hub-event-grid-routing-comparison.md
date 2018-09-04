@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2018
 ms.author: kgremban
-ms.openlocfilehash: 320320687e441a1296065eb9d0b7b12771036459
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: af03f737c082a7fda90104303e018f7b417729b9
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636165"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143787"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>比较 IoT 中心的消息路由和事件网格
 
@@ -29,11 +29,11 @@ Azure IoT 中心可以从已连接的设备流式传输数据并将该数据集�
 | 功能 | IoT 中心消息路由 | IoT 中心与事件网格的集成 |
 | ------- | --------------- | ---------- |
 | **设备消息** | 是，消息路由可用于遥测数据。 | 否，事件网格仅可用于非遥测 IoT 中心事件。 |
-| **事件类型** | 是，消息路由可报告双向更改和设备生命周期事件。 | 是，事件网格可报告设备注册到 IoT 中心的时间，以及删除设备的时间。 |
+| **事件类型** | 是，消息路由可报告双向更改和设备生命周期事件。 | 是，事件网格可以报告设备何时创建、删除、连接以及何时与 IoT 中心断开连接 |
 | **排序** | 是，事件顺序保持不变。  | 否，无法保证事件顺序。 | 
 | **最大消息大小** | 256 KB，设备到云 | 64 KB |
 | **筛选** | 通过类似 SQL 的语言进行充分筛选，支持对消息标头和正文进行筛选。 有关示例，请参阅 [IoT 中心查询语言](iot-hub-devguide-query-language.md)。 | 根据设备 ID 的后缀/前缀进行筛选，适用于存储等分层服务。 |
-| **EndPoints** | <ul><li>事件中心</li> <li>存储 blob</li> <li>服务总线队列</li> <li>服务总线主题</li></ul><br>付费 IoT 中心 SKU（S1、S2 和 S3）限制为 10 个自定义终结点。 每个 IoT 中心都可创建 100 个路由。 | <ul><li>Azure Functions</li> <li>Azure 自动化</li> <li>事件中心</li> <li>逻辑应用</li> <li>Microsoft Flow</li> <li>通过 Webhook 的第三方服务</li></ul><br>有关最新的终结点列表，请参阅[事件网格事件处理程序](../event-grid/overview.md#event-handlers)。 |
+| **EndPoints** | <ul><li>事件中心</li> <li>存储 blob</li> <li>服务总线队列</li> <li>服务总线主题</li></ul><br>付费 IoT 中心 SKU（S1、S2 和 S3）限制为 10 个自定义终结点。 每个 IoT 中心都可创建 100 个路由。 | <ul><li>Azure Functions</li> <li>Azure 自动化</li> <li>事件中心</li> <li>逻辑应用</li> <li>存储 Blob</li> <li>自定义主题</li> <li>通过 Webhook 的第三方服务</li></ul><br>有关最新的终结点列表，请参阅[事件网格事件处理程序](../event-grid/overview.md#event-handlers)。 |
 | **成本** | 不会针对消息路由单独收费。 仅针对 IoT 中心的遥测数据入口收费。 例如，如果将一条消息路由到三个不同终结点，则只收取一条消息的费用。 | 不收取 IoT 中心费用。 事件网格每月免费提供前 100,000 次操作，之后每百万次操作收取 0.60 美元。 |
 
 IoT 中心消息路由和事件网格也具有相似之处，其中一些详细信息如下表所示：
@@ -54,7 +54,7 @@ IoT 中心消息路由和 IoT 中心与事件网格的集成通过执行不同�
 
    必须将遥测数据发送到其他服务时，请使用 IoT 中心消息路由。 消息路由还可查询消息标头和消息正文。 
 
-   IoT 中心与事件网格的集成可与 IoT 中心服务中发生的事件一起使用。 这些 IoT 中心事件包括设备的创建和删除。 
+   IoT 中心与事件网格的集成可与 IoT 中心服务中发生的事件一起使用。 这些 IoT 中心事件包括设备已创建、已删除、已连接和已断开连接。 
 
 * **哪些终结点需要接收此信息？**
 

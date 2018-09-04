@@ -14,24 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 983cecdcdb95dca398f728dbdbe5feac69075d6a
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 7f6049e874f329c1e3a4f72417dd9a7eebc42628
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248364"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887057"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>教程：使用 Windows VM 托管服务标识通过 SAS 凭据访问 Azure 存储
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-本教程介绍如何为 Windows 虚拟机启用托管服务标识，然后使用托管服务标识来获取存储共享访问签名 (SAS) 凭据。 具体而言，是[服务 SAS 凭据](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures)。 
+本教程介绍如何使用系统分配的标识为 Windows 虚拟机 (VM) 获取存储共享访问签名 (SAS) 凭据。 具体而言，是[服务 SAS 凭据](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures)。 
 
 服务 SAS 提供了在不公开帐户访问密钥的情况下授权特定的服务（在我们的示例中为 blob 服务）在有限时间内访问存储帐户中对象的权限。 可以像平常在执行存储操作时一样使用 SAS 凭据，例如使用存储 SDK 时。 对于本教程，我们将演示使用 Azure 存储 PowerShell 上传和下载 blob。 将了解如何执行以下操作：
 
-
 > [!div class="checklist"]
-> * 在 Windows 虚拟机上启用托管服务标识 
+> * 创建存储帐户
 > * 向 VM 授予对资源管理器中的存储帐户 SAS 的访问权限 
 > * 使用 VM 的标识获取一个访问令牌，并使用它从资源管理器检索 SAS 
 
@@ -41,33 +40,12 @@ ms.locfileid: "39248364"
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="sign-in-to-azure"></a>登录 Azure
+- [登录到 Azure 门户](https://portal.azure.com)
 
-在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
+- [创建 Windows 虚拟机](/azure/virtual-machines/windows/quick-create-portal)
 
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>在新的资源组中创建 Windows 虚拟机
+- [在虚拟机上启用系统分配的标识](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
-本教程将新建 Windows VM。 还可以在现有 Azure VM 上启用托管服务标识。
-
-1.  单击 Azure 门户左上角的“+/创建新服务”按钮。
-2.  选择“计算”，然后选择“Windows Server 2016 Datacenter”。 
-3.  输入虚拟机信息。 此处创建的用户名和密码是用于登录虚拟机的凭据。
-4.  在下拉列表中为虚拟机选择正确的订阅。
-5.  若要在新资源组中创建虚拟机，请选择“资源组”中的“新建”。 完成后，单击“确定”。
-6.  选择 VM 大小。 若要查看更多的大小，请选择“全部查看”或更改“支持的磁盘类型”筛选器。 在设置边栏选项卡中保留默认值，然后单击“确定”。
-
-    ![Alt 图像文本](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
-
-## <a name="enable-managed-service-identity-on-your-vm"></a>在 VM 上启用托管服务标识
-
-可以通过虚拟机托管服务标识从 Azure AD 中获取访问令牌，无需在代码中插入凭据。 在内部，启用托管服务标识会执行两项操作：向 Azure Active Directory 注册 VM 以创建其托管标识，以及在 VM 上配置标识。
-
-1. 导航到新虚拟机的资源组，并选择已在上一步中创建的虚拟机。
-2. 在左侧面板上，在 VM“设置”下，单击“配置”。
-3. 若要注册并启用托管服务标识，请选择“是”，若要禁用，请选择“否”。
-4. 务必单击“保存”，以保存配置。
-
-    ![Alt 图像文本](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="create-a-storage-account"></a>创建存储帐户 
 

@@ -13,25 +13,28 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2018
+ms.date: 08/28/2018
 ms.author: celested
 ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: 9d38f6e6d6b9fa47b1cd1497820f7ff887954ad5
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: bebabad4c7beb27022e12e5d48b77d88fc054fc2
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156181"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190109"
 ---
 # <a name="app-registration-reference"></a>应用注册参考
-本文档提供可在 Microsoft 应用注册门户 [https://apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/) 中找到的各种功能的上下文和说明。
+本文档提供可在[应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/)中找到的各种功能的上下文和说明。
 
-## <a name="my-applications"></a>我的应用程序
+## <a name="my-applications-or-converged-applications"></a>我的应用程序或聚合应用程序
 此列表包含所有已注册且可与 Azure AD v2.0 终结点搭配使用的应用程序。 这些应用程序能够让用户使用个人 Microsoft 帐户和工作/学校帐户从 Azure Active Directory 登录。 若要了解有关 Azure AD v2.0 终结点的详细信息，请参阅 [v2.0 概述](active-directory-appmodel-v2-overview.md)。 这些应用程序也可以用来与 Microsoft 帐户身份验证终结点 `https://login.live.com` 集成。
 
+## <a name="azure-ad-only-applications"></a>Azure AD 专用应用程序
+此列表包含所有已注册且可与 Azure AD v1.0 终结点搭配使用的应用程序。 这些应用程序只能让用户使用工作/学校帐户从 Azure Active Directory 登录。 此列表包括使用 [Azure 门户](https://portal.azure.com)中的**应用注册**体验注册的应用程序。
+
 ## <a name="live-sdk-applications"></a>Live SDK 应用程序
-此列表包含所有已注册且只能与 Microsoft 帐户搭配使用的应用程序。 它们不能与 Azure Active Directory 搭配使用。 可以在此处找到之前已向 MSA 开发人员门户 (`https://account.live.com/developers/applications`) 注册的所有应用程序。 之前曾在 `https://account.live.com/developers/applications` 执行的所有功能现在均可在此新门户 `https://apps.dev.microsoft.com` 中执行。 如果对 Microsoft 帐户应用程序还有别的疑问，请与我们联系。
+此列表包含所有已注册且只能与 Microsoft 帐户搭配使用的应用程序。 它们不能与 Azure Active Directory 搭配使用。 可以在此处找到之前已向 MSA 开发人员门户 (`https://account.live.com/developers/applications`) 注册的所有应用程序。 之前曾在 `https://account.live.com/developers/applications` 执行的所有功能现在均可在此新门户 `https://apps.dev.microsoft.com` 中执行。
 
 ## <a name="application-secrets"></a>应用程序密码
 应用程序密码是允许应用程序利用 Azure AD 执行可靠的[客户端身份验证](http://tools.ietf.org/html/rfc6749#section-2.3)的凭据。 在 OAuth 和 OpenID Connect 中，应用程序密码通常称为 `client_secret`。 在 v2.0 协议中，任何在 Web 可寻址位置（使用 `https` 方案）接收安全令牌的应用程序都必须使用应用程序密码，通过兑换该安全令牌向 Azure AD 标识自己。 此外，设备上接收令牌的任何本机客户端都将禁止使用应用程序密码来执行客户端身份验证。 这样可防止在不安全的环境中存储密码。

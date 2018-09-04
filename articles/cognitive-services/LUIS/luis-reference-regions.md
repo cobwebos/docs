@@ -1,21 +1,21 @@
 ---
-title: 语言理解 (LUIS) 区域 | Microsoft Docs
+title: 语言理解 (LUIS) 区域和终结点 - Azure 认知服务 LUIS | Microsoft Docs
 titleSuffix: Azure
-description: 本文包含 LUIS 网站的 LUIS 区域、Azure 订阅和世界区域的列表。
+description: 发布 LUIS 应用的区域对应于创建 Azure LUIS 终结点密钥时在 Azure 门户中指定的区域或位置。 发布应用时，LUIS 会自动为与密钥关联的区域生成终结点 URL。 若要将 LUIS 应用发布到多个区域，每个区域至少需要一个密钥。
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 08/23/2018
 ms.author: diberry
-ms.openlocfilehash: 1f6090bf1ac588585a16f93d2ac091e8950ca45f
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 7812ce37cb22c8774c785f5f645b8fef90b02a3e
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238924"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42815497"
 ---
 # <a name="regions-and-keys"></a>区域和密钥
 
@@ -59,6 +59,24 @@ https://www.luis.ai 上创建的 LUIS 应用可以发布到除[欧洲](#publishi
 ## <a name="publishing-to-australia"></a>发布到澳大利亚
 
 若要发布到澳大利亚区域，请仅在 https://au.luis.ai 创建 LUIS 应用。 如果尝试使用澳大利亚区域中的密钥将应用发布到其他区域，LUIS 会显示警告消息。 请改用 https://au.luis.ai。 在 [https://au.luis.ai][au.luis.ai] 中创建的 LUIS 应用不会自动迁移到其他区域。 要实现迁移，请导出然后再导入 LUIS 应用。
+
+## <a name="endpoints"></a>终结点
+
+LUIS 当前具有 2 个终结点：一个用于创作，一个用于文本分析。
+
+|目的|代码|
+|--|--|
+|创作|`https://{region}.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appID}/`|
+|文本分析（查询预测）|`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
+
+下表说明了上表中用大括号 `{}` 表示的参数。
+
+|参数|目的|
+|--|--|
+|region|Azure 区域 - 创作和发布具有不同的区域|
+|appID|在 URL 路由中使用的 LUIS 应用 ID，可在应用仪表板上找到|
+|q|从客户端应用程序（如聊天机器人）发送的话语文本|
+
 
 ## <a name="next-steps"></a>后续步骤
 

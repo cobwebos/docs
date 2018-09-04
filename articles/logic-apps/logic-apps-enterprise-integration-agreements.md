@@ -1,25 +1,21 @@
 ---
 title: B2B 通信协议 - Azure 逻辑应用 | Microsoft Docs
-description: 创建协议，以便合作伙伴可以在 Azure 逻辑应用和 Enterprise Integration Pack 的 B2B 方案中进行通信
+description: 为 Azure 逻辑应用和 Enterprise Integration Pack 的 B2B 贸易合作伙伴通信创建协议
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: msftman
-manager: jeconnoc
-editor: cgronlun
-ms.assetid: 447ffb8e-3e91-4403-872b-2f496495899d
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 447ffb8e-3e91-4403-872b-2f496495899d
 ms.date: 06/29/2016
-ms.author: LADocs
-ms.openlocfilehash: df41a57b5b6e364ff537a28c939f362b4d399e7a
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 09bee10649e2bc0d745e42b8aa13ae9c21df35aa
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298719"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128821"
 ---
 # <a name="partner-agreements-for-b2b-communication-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure 逻辑应用和 Enterprise Integration Pack 的 B2B 通信的合作伙伴协议
 

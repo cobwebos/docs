@@ -1,5 +1,5 @@
 ---
-title: Azure 上的必应 Web 搜索 API 支持的国家/地区和语言 | Microsoft Docs
+title: 必应 Web 搜索 API 支持的国家、地区和语言
 description: 查找必应 Web 搜索 API 支持的国家/地区和语言。
 services: cognitive-services
 author: v-jerkin
@@ -7,24 +7,24 @@ manager: jhubbard
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: article
-ms.date: 10/06/2017
-ms.author: v-jerkin
-ms.openlocfilehash: e1994ddf3bf71d01adeac4ff8688bdd1e6eac660
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.date: 8/16/2018
+ms.author: erhopf
+ms.openlocfilehash: 87384a8aeabfe0c4a178344235debcc586cdf3de
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001712"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888465"
 ---
-# <a name="bing-web-search-countriesregions-and-languages"></a>提供必应 Web 搜索的国家/地区和语言
+# <a name="countries-regions-and-languages-supported-by-the-bing-web-search-api"></a>必应 Web 搜索 API 支持的国家、地区和语言
 
-必应 Web 搜索 API 支持超过 36 个国家/地区，其中很多具有多种语言。 使用查询指定国家/地区主要用于根据对该国家/地区的兴趣来优化搜索结果。 此外，结果可能包含指向必应的链接，这些链接可能会根据指定的国家/地区或语言本地化必应用户体验。
+必应 Web 搜索 API 支持超过 36 个国家或地区，其中很多具有多种语言。 使用查询指定国家或地区有助于根据对该国家或地区的兴趣来优化搜索结果。 结果可能包含指向必应的链接，这些链接可能会根据指定的国家/地区或语言本地化必应用户体验。
 
-可以使用 `cc` 查询参数指定国家/地区。 如果指定了国家/地区，还必须使用 `Accept-Language` HTTP 标头指定一个或多个语言代码。 支持的语言因国家/地区而异；“市场”表中提供了每个国家/地区适用的语言。
+可以使用 `cc` 查询参数指定国家或地区。 指定国家或地区后，必须使用[`Accept-Language` 标头](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#headers)指定一个或多个语言代码。 使用[市场表](#Markets)获取每个市场支持的语言列表。
 
-或者，可以使用 `mkt` 查询参数和市场表中的代码指定市场。 指定市场的同时指定国家/地区和首选语言。 在这种情况下，`setLang` 查询参数可能设置为一个语言代码，通常这与 `mkt` 所指定的语言相同，除非用户希望以另一种语言查看必应。
+或者，可以使用 `mkt` 查询参数和市场表中的代码指定市场。 指定市场的同时指定国家或地区和首选语言。 可以显式使用 `setLang` 查询参数设置语言。
 
-## <a name="countries"></a>国家/地区
+## <a name="countriesregions"></a>国家/地区
 
 |国家/地区|代码|
 |-------|----|
@@ -64,7 +64,6 @@ ms.locfileid: "39001712"
 |土耳其|TR|
 |英国|GB|
 |美国|美国|
-
 
 ## <a name="markets"></a>市场
 

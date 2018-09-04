@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 07/19/2018
 ms.author: bsiva
-ms.openlocfilehash: 96f4ecb433277c747ddb1d1dc977bd609f93d5ff
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 89270a0bd1914a2486c8cc634563bdded743adaa
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578579"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746467"
 ---
 # <a name="monitor-and-troubleshoot-site-recovery"></a>监视和排查 Site Recovery 问题
 
@@ -153,13 +153,14 @@ Healthy | 复制正常进行。 未检测到任何错误或警告症状。
 3.  单击“列”可显示其他列，例如，显示 RPO、目标配置问题和复制错误。
 4. 单击“筛选器”可以根据复制运行状况或特定复制策略等特定参数来查看信息。
 5. 右键单击某个计算机可以启动操作，例如，执行测试故障转移，或查看与它关联的特定错误详细信息。
-6. 单击某个计算机可以深入查看其更多详细信息。 详细信息包括：- **复制信息**：计算机的当前状态和运行状况。
-        - **RPO**（恢复点目标）：虚拟机的当前 RPO，以及上次计算 RPO 的时间。
-        - **恢复点**：计算机的最新可用恢复点。
-        - **故障转移就绪性**：指示是否对该计算机运行了测试故障转移、计算机上运行的代理版本（适用于运行移动服务的计算机）和任何配置问题。
-        - **错误**：列出当前在计算机上观察到的复制错误症状，以及可能的原因/措施。
-        - **事件**：影响计算机的最近事件列表，按时间顺序列出。 错误详细信息显示当前可观测到的错误症状，而事件是影响了计算机的问题的历史记录。
-        - **基础结构视图**：显示将计算机复制到 Azure 时的基础结构状态。
+6. 单击某个计算机可以深入查看其更多详细信息。 详细信息包括：
+      - **复制信息**：计算机的当前状态和运行状况。
+      - **RPO**（恢复点目标）：虚拟机的当前 RPO，以及上次计算 RPO 的时间。
+      - **恢复点**：计算机的最新可用恢复点。
+      - **故障转移就绪性**：指示是否对该计算机运行了测试故障转移、计算机上运行的代理版本（适用于运行移动服务的计算机）和任何配置问题。
+      - **错误**：列出当前在计算机上观察到的复制错误症状，以及可能的原因/措施。
+      - **事件**：影响计算机的最近事件列表，按时间顺序列出。 错误详细信息显示当前可观测到的错误症状，而事件是影响了计算机的问题的历史记录。
+      - **基础结构视图**：显示将计算机复制到 Azure 时方案的基础结构状态。
 
     ![Azure Site Recovery 中复制的项详细信息/概述](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-details.png)
 

@@ -8,12 +8,12 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f54001c26938ea508111542b930b189342303633
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: f8ac885444c0ba52802024be9a78dfc0737e2673
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186856"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247677"
 ---
 # <a name="create-a-linux-iot-edge-device-that-acts-as-a-transparent-gateway"></a>创建充当透明网关的 Linux IoT Edge 设备
 
@@ -80,9 +80,9 @@ ms.locfileid: "39186856"
    >[!NOTE]
    > 不要使用与网关的 DNS 主机名相同的名称。 这样做会导致客户端对这些证书的认证失败。
 
-      ```cmd
-      ./certGen.sh create_edge_device_certificate "<gateway device name>"
-      ```
+   ```cmd
+   ./certGen.sh create_edge_device_certificate "<gateway device name>"
+   ```
 
    脚本执行的输出是以下证书和密钥：
    * `$WRKDIR/certs/new-edge-device.*`
@@ -101,15 +101,21 @@ ms.locfileid: "39186856"
    * 设备 CA 证书 - `$WRKDIR/certs/new-edge-device-full-chain.cert.pem`
    * 设备 CA 私钥 - `$WRKDIR/private/new-edge-device.key.pem`
    * 所有者 CA - `$WRKDIR/certs/azure-iot-test-only.root.ca.cert.pem`
+   
+2. 打开 IoT Edge 配置文件。 它是一个受保护的文件，因此可能需要使用提升的权限才能访问它。
+   
+   ```bash
+   sudo nano /etc/iotedge/config.yaml
+   ```
 
-2.  将安全守护程序配置 yaml 文件中的 `certificate` 属性设置为放置证书和密钥文件的路径。
+3.  将 IoT Edge 守护程序配置 yaml 文件中的 `certificate` 属性设置为放置证书和密钥文件的路径。
 
-```yaml
-certificates:
-  device_ca_cert: "$CERTDIR/certs/new-edge-device-full-chain.cert.pem"
-  device_ca_pk: "$CERTDIR/private/new-edge-device.key.pem"
-  trusted_ca_certs: "$CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem"
-```
+   ```yaml
+   certificates:
+     device_ca_cert: "$CERTDIR/certs/new-edge-device-full-chain.cert.pem"
+     device_ca_pk: "$CERTDIR/private/new-edge-device.key.pem"
+     trusted_ca_certs: "$CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem"
+   ```
 
 ## <a name="deploy-edgehub-to-the-gateway"></a>将 EdgeHub 部署到网关
 Azure IoT Edge 的主要功能之一是能够从云中将模块部署到 IoT Edge 设备。 本节创建了一个看似为空的部署；但是，即使没有其他模块，Edge 中心也会自动添加到所有部署中。 Edge 中心是 Edge 设备上唯一需要充当透明网关的模块，因此创建空的部署就已足够。 

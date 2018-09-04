@@ -1,25 +1,21 @@
 ---
-title: 在本地计算机上运行 Azure Data Lake U-SQL 脚本 | Microsoft Docs
+title: 在本地计算机上运行 Azure Data Lake U-SQL 脚本
 description: 了解如何使用针对 Visual Studio 的 Azure Data Lake 工具在本地计算机上运行 U-SQL 作业。
 services: data-lake-analytics
-documentationcenter: ''
 author: yanancai
-manager: ''
-editor: ''
+ms.author: yanacai
+ms.reviewer: jasonwhowell
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.author: yanacai
-ms.openlocfilehash: 892147f3668ee811e3c43044478c650d2f37587a
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 8f110a88558b4479d8fdadb2967c7dedeca60ce9
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630309"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43043551"
 ---
 # <a name="run-u-sql-scripts-on-your-local-machine"></a>在本地计算机上运行 U-SQL 脚本
 

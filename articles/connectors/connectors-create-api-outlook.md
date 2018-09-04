@@ -1,47 +1,58 @@
 ---
-title: 在 Azure 逻辑应用中使用 Outlook.com 连接器 | Microsoft Docs
-description: 使用 Azure 应用服务创建逻辑应用。 Outlook.com 连接器允许管理邮件、日历和联系人。 可以执行各种操作，例如发送邮件、安排会议、添加联系人等。
+title: 连接到 Outlook.com - Azure 逻辑应用 | Microsoft Docs
+description: 使用 Outlook.com REST API 和 Azure 逻辑应用管理电子邮件、日历和联系人
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: 87113c85-d158-4dd5-9ed5-5748130003d6
 ms.service: logic-apps
-ms.devlang: multiple
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
+ms.assetid: 87113c85-d158-4dd5-9ed5-5748130003d6
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
 ms.date: 08/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 1338b7ce8f72a57cb65f9389e630fd7ebd0417b1
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 8030ab9d317c1deefaf441008b9022c4a26bb17c
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295578"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746156"
 ---
-# <a name="get-started-with-the-outlookcom-connector"></a>Outlook.com 连接器入门
-Outlook.com 连接器允许管理邮件、日历和联系人。 可以执行各种操作，例如发送邮件、安排会议、添加联系人等。
+# <a name="manage-email-calendars-and-contacts-in-outlookcom-with-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Outlook.com 中的电子邮件、日历和联系人
 
-若要立即开始创建逻辑应用，请参阅[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+本文介绍如何使用 Box 连接器在逻辑应用内创建和管理 Outlook.com 帐户。 这样，你就可以创建逻辑应用以自动执行 Outlook.com 帐户的任务和工作流程，例如：
 
-## <a name="create-a-connection-to-outlookcom"></a>创建到 Outlook.com 的连接
-要使用 Outlook.com 创建逻辑应用，必须先创建**连接**，然后提供以下属性的详细信息：
+* 发送电子邮件。 
+* 安排会议。
+* 添加联系人。 
 
-| 属性 | 必选 | 说明 |
-| --- | --- | --- |
-| 令牌 |是 |提供 Outlook.com 凭据 |
+如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)。
 
-创建连接后，可使用它执行操作并侦听触发器，如本文所述。
+## <a name="prerequisites"></a>先决条件
 
-> [!INCLUDE [Steps to create a connection to Outlook.com](../../includes/connectors-create-api-outlook.md)]
->
+* 一个 [Outlook.com 帐户](https://outlook.live.com/owa/)
 
-## <a name="connector-specific-details"></a>特定于连接器的详细信息
+* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
 
-在[连接器详细信息](/connectors/outlook/)中查看在 Swagger 中定义的触发器和操作，并查看限制。
+* 你要在其中访问 Outlook.com 帐户的逻辑应用。 若要通过 Outlook 触发器启动逻辑应用，需要一个[空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 
 
-## <a name="more-connectors"></a>更多连接器
-返回到 [API 列表](apis-list.md)。
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识。
+
+## <a name="connect-to-outlookcom"></a>连接到 Outlook.com
+
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+
+[!INCLUDE [Connect to Outlook.com](../../includes/connectors-create-api-outlook.md)]
+
+## <a name="connector-reference"></a>连接器参考
+
+如需技术详细信息（例如触发器、操作和限制，如连接器的 Swagger 文件所述），请查看[连接器的参考页](/connectors/outlook/)。 
+
+## <a name="get-support"></a>获取支持
+
+* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](http://aka.ms/logicapps-wish)。
+
+## <a name="next-steps"></a>后续步骤
+
+* 了解其他[逻辑应用连接器](../connectors/apis-list.md)

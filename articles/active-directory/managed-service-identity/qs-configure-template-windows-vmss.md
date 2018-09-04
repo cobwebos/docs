@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 68304b3e5eea50aba28f46344abcbd7ad060c5c8
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 69b88b5aabbadadea3b04f96d9a21f266c85a52f
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42144174"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125378"
 ---
 # <a name="configure-managed-service-identity-on-virtual-machine-scale-using-a-template"></a>使用模板在虚拟机规模集上配置托管服务标识
 
@@ -322,7 +322,7 @@ ms.locfileid: "42144174"
 
 1. 无论是在本地登录到 Azure 还是通过 Azure 门户登录，请使用与包含虚拟机规模集的 Azure 订阅关联的帐户。
 
-2. 将模板加载到[编辑器](#azure-resource-manager-templates)，并在 `resources` 部分找到相关的 `Microsoft.Compute/virtualMachineScaleSets` 资源。 如果虚拟机规模集只有用户分配标识，则可以将标识类型更改为 `None` 来禁用它。
+2. 将模板加载到[编辑器](#azure-resource-manager-templates)，并在 `resources` 部分找到相关的 `Microsoft.Compute/virtualMachineScaleSets` 资源。 如果虚拟机规模集只有用户分配标识，则可以通过将标识类型更改为 `None` 来禁用它。
 
    以下示例演示如何从没有系统分配标识的 VM 中删除所有用户分配标识：
 
@@ -339,7 +339,7 @@ ms.locfileid: "42144174"
    
    **Microsoft.Compute/virtualMachineScaleSets API 版本 2018-06-01**
     
-   若要从虚拟机规模集中删除单个用户分配的标识，请将其从 `userAssignedIdentities` 字典中删除。
+   若要从虚拟机规模集中删除单个用户分配标识，请将其从 `userAssignedIdentities` 字典中删除。
 
    如果你具有系统分配的标识，请将其保持在 `identity` 值下的 `type` 值中。
 

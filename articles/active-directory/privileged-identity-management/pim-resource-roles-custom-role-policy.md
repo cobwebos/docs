@@ -1,6 +1,6 @@
 ---
-title: 使用自定义角色来决定 Azure 资源的 Privileged Identity Management 针对的目标 | Microsoft Docs
-description: 介绍如何对使用 PIM 的 Azure 资源使用自定义角色。
+title: 在 PIM 中为 Azure 资源使用自定义角色 | Microsoft Docs
+description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中为 Azure 资源使用自定义角色。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.component: pim
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 03091b50eb4fb368ae0277344317b261991c4bd1
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: b01e785ac85c71b2982561e8b5e118775750fc69
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622681"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189867"
 ---
-# <a name="use-custom-roles-to-target-privileged-identity-management-settings"></a>使用自定义角色来决定 Privileged Identity Management 针对的目标
+# <a name="use-custom-roles-for-azure-resources-in-pim"></a>在 PIM 中为 Azure 资源使用自定义角色
 
 有时可能需要向某个角色的某些成员应用严格的 Privileged Identity Management (PIM) 设置，同时为其他人提供更大的自主权。 假设你的组织招聘了几名合同工来帮助开发将在 Azure 订阅中运行的应用程序。
 
@@ -49,4 +49,5 @@ ms.locfileid: "39622681"
 
 ## <a name="next-steps"></a>后续步骤
 
-[查看订阅所有者和访问](pim-resource-roles-perform-access-review.md)
+- [在 PIM 中配置 Azure 资源角色设置](pim-resource-roles-configure-role-settings.md)
+- [Azure 中的自定义角色](../../role-based-access-control/custom-roles.md)

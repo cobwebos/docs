@@ -1,27 +1,23 @@
 ---
 title: 用于 B2B 企业集成的 AS2 消息 - Azure 逻辑应用 | Microsoft 文档
-description: 使用 Azure 逻辑应用交换 AS2 消息以实现 B2B 企业集成
+description: 在带有 Enterprise Integration Pack 的 Azure 逻辑应用中交换 AS2 消息以实现 B2B 企业集成
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: divyaswarnkar
-manager: jeconnoc
-editor: ''
-ms.assetid: c9b7e1a9-4791-474c-855f-988bd7bf4b7f
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: c9b7e1a9-4791-474c-855f-988bd7bf4b7f
 ms.date: 06/08/2017
-ms.author: LADocs; divswa
-ms.openlocfilehash: 8984b76c68ebd562ce9e5af9bded859b38d498da
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 2604cdd6bf758858328c2d30fc4cde535f0a7148
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298233"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124656"
 ---
-# <a name="exchange-as2-messages-for-enterprise-integration-with-logic-apps"></a>使用逻辑应用交换 AS2 消息以实现企业集成
+# <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中交换 AS2 消息以实现 B2B 企业集成
 
 在交换 Azure 逻辑应用的 AS2 消息之前，必须先创建 AS2 协议并将它存储在集成帐户中。 下面是创建 AS2 协议的步骤。
 
@@ -64,7 +60,7 @@ ms.locfileid: "35298233"
 
     ![提供协议详细信息](./media/logic-apps-enterprise-integration-as2/agreement-3.png)  
 
-    | 属性 | 说明 |
+    | 属性 | Description |
     | --- | --- |
     | 名称 |协议的名称 |
     | 协议类型 | 应为 AS2 |
@@ -102,7 +98,7 @@ ms.locfileid: "35298233"
 
 协议现已准备就绪，可以处理符合所选设置的传入消息。
 
-| 属性 | 说明 |
+| 属性 | Description |
 | --- | --- |
 | 替代消息属性 |表示可替代接收消息中的属性。 |
 | 对消息进行签名 |要求对消息进行数字签名。 配置来宾合作伙伴公共证书以进行签名验证。  |
@@ -147,7 +143,7 @@ ms.locfileid: "35298233"
 
 协议现已准备就绪，可以处理符合所选设置的传出消息。
 
-| 属性 | 说明 |
+| 属性 | Description |
 | --- | --- |
 | 启用消息签名 |要求对所有发送自此协议的消息进行签名。 |
 | MIC 算法 |用于消息签名的算法。 配置主机合作伙伴私有证书 MIC 算法以对消息进行签名。 |

@@ -1,26 +1,29 @@
 ---
 title: Azure 逻辑应用的连接器 | Microsoft Docs
-description: 使用 Azure 逻辑应用的内置托管 API、本地集成帐户和企业连接器将工作流自动化
+description: 使用 Azure 逻辑应用的连接器（包括内置、托管、本地集成帐户和企业连接器）自动执行工作流
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.topic: article
-ms.date: 06/29/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 2bb3e2ce29037372395aa0b30e9f76f3e712667d
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.topic: article
+ms.date: 08/23/2018
+ms.openlocfilehash: 6b31882ec3916e60ac7dc7b8117328176abef1b4
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096605"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818528"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure 逻辑应用的连接器
 
-使用 Azure 逻辑应用创建自动化工作流时，连接器的作用不可或缺。 使用逻辑应用中连接器，可以扩展本地和云应用的功能，以便对创建的数据和现有的数据执行任务。 逻辑应用提供 200 多个连接器，但本文只介绍一些流行的和较常用的连接器，数千个应用和数百万次执行已成功使用这些连接器来处理数据与信息。
-连接器以内置操作或托管连接器的形式提供。 
+使用 Azure 逻辑应用创建自动化工作流时，连接器的作用不可或缺。 使用逻辑应用中连接器，可以扩展本地和云应用的功能，以便对创建的数据和现有的数据执行任务。 
+
+虽然逻辑应用提供[约 200 多个连接器](https://docs.microsoft.com/connectors)，但本文只介绍一些流行的和较常用的连接器，数千个应用和数百万次执行已成功使用这些连接器来处理数据与信息。 连接器以内置操作或托管连接器的形式提供。 
+
+> [!NOTE]
+> 有关连接器的完整列表以及每个连接器的参考信息（例如操作、任何触发器和限制），可以在[连接器概述](https://docs.microsoft.com/connectors)下找到完整列表。
 
 * [**内置操作**](#built-ins)：这些内置操作和触发器可帮助创建按自定义计划运行的逻辑应用、与其他终结点通信、接收和响应请求，以及调用 Azure 函数、Azure API 应用（Web 应用）、通过 Azure API 管理进行管理和发布的自有 API，和可以接收请求的嵌套逻辑应用。 还可以使用内置操作来帮助组织和控制逻辑应用工作流及处理数据。
 
@@ -34,10 +37,11 @@ ms.locfileid: "37096605"
   | [**企业连接器**](#enterprise-connectors) | 提供对 SAP 和 IBM MQ 等企业系统的访问，但会产生额外的费用。 |
   ||| 
 
-  例如，如果你使用 Microsoft BizTalk 服务器，则逻辑应用可以使用 [BizTalk 服务器连接器](#on-premises-connectors)连接到 BizTalk 服务器并与其通信。 
+  例如，如果你使用 Microsoft BizTalk Server，则逻辑应用可以使用 [BizTalk Server 连接器](#on-premises-connectors)连接到 BizTalk Server 并与其通信。 
   然后，可以使用[集成帐户连接器](#integration-account-connectors)在逻辑应用中扩展或执行类似于 BizTalk 的操作。 
 
-有关每个连接器的触发器和操作（在 Swagger 说明中定义）的技术信息及任何限制，请参阅[连接器详细信息](/connectors/)。 有关费用信息，请参阅[逻辑应用定价详细信息](https://azure.microsoft.com/pricing/details/logic-apps/)和[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md)。 
+> [!NOTE] 
+> 有关连接器的完整列表以及每个连接器的参考信息（例如由 Swagger 说明定义的操作和任何触发器以及任何限制），可以在[连接器概述](/connectors/)下找到完整列表。 有关定价信息，请参阅[逻辑应用定价详细信息](https://azure.microsoft.com/pricing/details/logic-apps/)和[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md)。 
 
 <a name="built-ins"></a>
 
@@ -107,7 +111,7 @@ ms.locfileid: "37096605"
 
 ## <a name="integration-account-connectors"></a>集成帐户连接器 
 
-创建和付费购买[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)（通过 Azure 中的 Enterprise Integration Pack (EIP) 提供）时，可以使用以下连接器在逻辑应用中生成企业到企业 (B2B) 解决方案。 使用此帐户可以创建和存储 B2B 项目，例如贸易合作伙伴、协议、映射、架构、证书，等等。 若要使用这些项目，请将逻辑应用与集成帐户相关联。 如果你当前使用的是 BizTalk 服务器，则可能已熟悉这些连接器的用法。
+创建和付费购买[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)（通过 Azure 中的 Enterprise Integration Pack (EIP) 提供）时，可以使用以下连接器在逻辑应用中生成企业到企业 (B2B) 解决方案。 使用此帐户可以创建和存储 B2B 项目，例如贸易合作伙伴、协议、映射、架构、证书，等等。 若要使用这些项目，请将逻辑应用与集成帐户相关联。 如果你当前使用的是 BizTalk Server，则可能已熟悉这些连接器的用法。
 
 |   |   |   |   | 
 |---|---|---|---| 
@@ -160,6 +164,7 @@ ms.locfileid: "37096605"
 
 ## <a name="next-steps"></a>后续步骤
 
+* 查找[连接器的完整列表](https://docs.microsoft.com/connectors)
 * [创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [为逻辑应用创建自定义连接器](https://docs.microsoft.com/connectors/custom-connectors/)
 * [为逻辑应用创建自定义 API](../logic-apps/logic-apps-create-api-app.md)

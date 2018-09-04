@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/21/2018
+ms.date: 08/27/2018
 ms.author: Kumud
-ms.openlocfilehash: 9d5d596254f673b86650e8d9754dacdb70be0666
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 43945dc8810151eb701aa9e1aa1be47d4fbb0491
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32179788"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125638"
 ---
 # <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>标准负载均衡器的指标和运行状况诊断
 
@@ -37,7 +37,7 @@ Azure 负载均衡器通过 Azure 门户中的新 Azure 指标（预览版）来
 
 各种标准负载均衡器配置提供以下指标：
 
-| 指标 | 资源类型 | 说明 | 建议的聚合 |
+| 指标 | 资源类型 | Description | 建议的聚合 |
 | --- | --- | --- | --- |
 | VIP 可用性（数据路径可用性） | 公共负载均衡器 | 标准负载均衡器持续运用从区域内部到负载均衡器前端，直到支持 VM 的 SDN 堆栈的数据路径。 只要保留正常实例，这种度量就会遵循应用程序负载均衡的流量所用的相同路径。 此外，还会验证客户使用的数据路径。 度量对于应用程序不可见，且不会干扰其他操作。| 平均值 |
 | DIP 可用性（运行状况探测状态） |  公共和内部负载均衡器 | 标准负载均衡器使用分布式运行状况探测服务，根据配置设置监视应用程序终结点的运行状况。 此指标提供负载均衡器池中每个实例终结点的聚合视图或按终结点筛选的视图。 可以查看负载均衡器如何根据运行状况探测配置的指示了解应用程序的运行状况。 |  平均值 |
@@ -209,7 +209,7 @@ VIP 可用性目前仅适用于公共前端。
  
 下表列出了各种资源运行状况及其说明： 
 
-| 资源运行状况 | 说明 |
+| 资源运行状况 | Description |
 | --- | --- |
 | 可用 | 公共标准负载均衡器资源正常且可用。 |
 | 不可用 | 公共标准负载均衡器资源不正常。 选择“Azure Monitor” > “指标”来诊断运行状况。<br>（状态为“不可用”可能还意味着资源没有与公共标准负载均衡器连接。） |
@@ -219,5 +219,6 @@ VIP 可用性目前仅适用于公共前端。
 
 - 详细了解[标准负载均衡器](load-balancer-standard-overview.md)。
 - 详细了解[负载均衡器出站连接](https://aka.ms/lboutbound)。
+- 了解 [Azure Monitor 指标 REST API](https://docs.microsoft.com/rest/api/monitor/metrics/)。
 
 

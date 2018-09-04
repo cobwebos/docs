@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: b6078ac326fe51f4198137eec2de728b6036c271
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 7cb78647b8ae17e066f05acc32668d5c0c8b4ff5
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42140623"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127671"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Log Analytics 中的 VMware 监视（预览版）解决方案
 
@@ -153,8 +153,6 @@ VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高
 
 #### <a name="common-search-queries"></a>常用的搜索查询
 该解决方案包括可帮助你管理 ESXi 主机的其他有用查询，如高存储空间、存储延迟和路径故障。
-
-[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![查询](./media/log-analytics-vmware/queries.png)
 

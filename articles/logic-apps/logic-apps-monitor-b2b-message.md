@@ -1,30 +1,25 @@
 ---
-title: 监视 B2B 事务并设置日志记录 - Azure 逻辑应用 | Microsoft Docs
-description: 监视 AS2、X12 和 EDIFACT 消息，启动集成帐户的诊断日志记录
-author: padmavc
-manager: jeconnoc
-editor: ''
+title: 监视 B2B 消息并设置日志记录 - Azure 逻辑应用 | Microsoft Docs
+description: 监视 AS2、X12 和 EDIFACT 消息。 在 Azure 逻辑应用中为集成帐户设置诊断日志记录。
 services: logic-apps
-documentationcenter: ''
-ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.custom: H1Hack27Feb2017
+ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 07/21/2017
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 399c7b91949a854f3a152e9a3788d9163c565934
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: decc0271ae0e7c359f72648d7c4d0076892285da
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299311"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125169"
 ---
-# <a name="monitor-and-set-up-diagnostics-logging-for-b2b-communication-in-integration-accounts"></a>监视和设置用于在集成帐户中进行 B2B 通信的诊断日志记录
+# <a name="monitor-b2b-messages-and-set-up-logging-for-integration-accounts-in-azure-logic-apps"></a>在 Azure 逻辑应用中监视 B2B 消息并为集成帐户设置日志记录
 
-在你通过集成帐户在两个运行的业务流程或应用程序之间设置 B2B 通信之后，这些实体可以彼此交换消息。 要确认此通信是否按预期方式工作，可通过 [Azure Log Analytics](../log-analytics/log-analytics-overview.md) 服务设置对 AS2、X12 和 EDIFACT 消息的监视以及对集成帐户的诊断日志记录。 此服务可监视云和本地环境，有助于保持其可用性和性能，还可以收集运行时详细信息和事件以进行更丰富的调试。 此外，还可以[将诊断数据用于其他服务](#extend-diagnostic-data)，如 Azure 存储和 Azure 事件中心。
+通过集成帐户设置两个运行的业务流程或应用程序的 B2B 通信后，这些实体可以彼此交换消息。 要确认此通信是否按预期方式工作，可通过 [Azure Log Analytics](../log-analytics/log-analytics-overview.md) 服务设置对 AS2、X12 和 EDIFACT 消息的监视以及对集成帐户的诊断日志记录。 此服务可监视云和本地环境，有助于保持其可用性和性能，还可以收集运行时详细信息和事件以进行更丰富的调试。 此外，还可以[将诊断数据用于其他服务](#extend-diagnostic-data)，如 Azure 存储和 Azure 事件中心。
 
 ## <a name="requirements"></a>要求
 

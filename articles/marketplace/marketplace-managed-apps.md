@@ -14,16 +14,16 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 674e91a7c1de026a26cf9a3bf1eaead7f5e86144
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: c8ead3dc34faefce0f113dee2074960fddfa11a1
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059189"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144585"
 ---
 # <a name="azure-applications-managed-application-offer-publishing-guide"></a>Azure 应用程序：“托管应用程序”产品/服务发布指南
 
-解决方案模板是在市场中发布解决方案的主要方式之一。 使用本指南了解此产品/服务的要求。 
+托管应用程序是在市场中发布解决方案的主要方式之一。 使用本指南了解此产品/服务的要求。 
 
 以下是通过市场部署和计费的事务产品/服务。 用户看到的号召性用语是“立即获取”。
 

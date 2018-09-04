@@ -1,27 +1,23 @@
 ---
-title: 在 Azure 逻辑应用中进行平面文件的编解码操作 | Microsoft 文档
-description: 如何在逻辑应用中使用 Enterprise Integration Pack 中的文件编码器或解码器
+title: 对平面文件进行编码或解码 - Azure 逻辑应用 | Microsoft Docs
+description: 使用 Azure 逻辑应用和 Enterprise Integration Pack 对企业集成的平面文件进行编码或解码
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: divyaswarnkar
-manager: jeconnoc
-editor: ''
-ms.assetid: 82152dab-c7ad-43df-b721-596559703be8
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 82152dab-c7ad-43df-b721-596559703be8
 ms.date: 07/08/2016
-ms.author: LADocs; divswa
-ms.openlocfilehash: b13e8da04c984456027f152f5af63cfa6604ddc4
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: d0ef61b94d7bd604b6c0062341224510f3048c57
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40037908"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123922"
 ---
-# <a name="overview-of-enterprise-integration-with-flat-files"></a>企业集成与平面文件概述
+# <a name="encode-or-decode-flat-files-with-azure-logic-apps-and-enterprise-integration-pack"></a>使用 Azure 逻辑应用和 Enterprise Integration Pack 对平面文件进行编码或解码
 
 在企业到企业 (B2B) 方案中将 XML 内容发送给业务合作伙伴之前，可能要对该内容进行编码。 在逻辑应用中，可以使用平面文件编码连接器进行此操作。 创建的逻辑应用可以从各种源获取其 XML 内容，包括从 HTTP 请求触发器、从其他应用程序、甚至是从许多[连接器](../connectors/apis-list.md)中的一个。 有关逻辑应用的详细信息，请参阅[逻辑应用文档](logic-apps-overview.md "了解有关逻辑应用的详细信息")。  
 

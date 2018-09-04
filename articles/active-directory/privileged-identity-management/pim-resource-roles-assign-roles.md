@@ -1,6 +1,6 @@
 ---
-title: 使用 Privileged Identity Management 为 Azure 资源分配角色 | Microsoft Docs
-description: 介绍如何在 PIM 中分配角色。
+title: 在 PIM 中分配 Azure 资源角色 | Microsoft Docs
+description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中分配 Azure 资源角色。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,25 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 52320fe160fc1df2997dd419b406fce24f43b786
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 7019a6f97a9590d3b652584015f3077f4ed075af
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622970"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188914"
 ---
-# <a name="assign-roles-for-azure-resources-by-using-privileged-identity-management"></a>使用 Privileged Identity Management 为 Azure 资源分配角色
+# <a name="assign-azure-resource-roles-in-pim"></a>在 PIM 中分配 Azure 资源角色
+
+Azure AD PIM 可以管理内置的 Azure 资源角色以及自定义角色，包括但不限于：
+
+- 所有者
+- 用户访问管理员
+- 参与者
+- 安全管理员
+- 安全管理器等等
+
+>[!NOTE]
+已分配到“所有者”或“用户访问管理员”角色的用户或组成员，以及在 Azure AD 中启用订阅管理的全局管理员都属于资源管理员。 这些管理员可以使用适用于 Azure 资源的 PIM 来分配角色、配置角色设置，以及审查访问权限。 查看 [Azure 资源的内置角色](../../role-based-access-control/built-in-roles.md)列表。
 
 ## <a name="assign-roles"></a>分配角色
 
@@ -76,3 +87,8 @@ ms.locfileid: "39622970"
 若要通过用户/组详细信息视图修改现有分配，请选择操作栏中的“更改设置”。 将分配类型更改为“实时”或“直接”。
 
 ![显示“更改设置”按钮的“用户详细信息”窗格](media/azure-pim-resource-rbac/rbac-assign-role-manage.png)
+
+## <a name="next-steps"></a>后续步骤
+
+- [在 PIM 中配置 Azure 资源角色设置](pim-resource-roles-configure-role-settings.md)
+- [在 PIM 中分配 Azure AD 目录角色](pim-how-to-add-role-to-user.md)

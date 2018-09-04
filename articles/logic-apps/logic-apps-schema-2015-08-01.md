@@ -1,26 +1,21 @@
 ---
-title: 架构更新（2015 年 8 月 1 日预览版）- Azure 逻辑应用 | Microsoft 文档
-description: 为架构版本为 2015-08-01-preview 的 Azure 逻辑应用创建 JSON 定义
-author: stepsic-microsoft-com
-manager: jeconnoc
-editor: ''
+title: 适用于 2015 年 8 月 1 日预览版的架构更新 - Azure 逻辑应用 | Microsoft Docs
+description: 针对 Azure 逻辑应用中的逻辑应用定义更新了架构版本 2015 年 8 月 1 日预览版
 services: logic-apps
-documentationcenter: ''
-ms.assetid: 0d03a4d4-e8a8-4c81-aed5-bfd2a28c7f0c
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.suite: integration
+author: stepsic-microsoft-com
+ms.author: stepsic
+ms.reviewer: klam, estfan, LADocs
+ms.assetid: 0d03a4d4-e8a8-4c81-aed5-bfd2a28c7f0c
 ms.topic: article
-ms.custom: H1Hack27Feb2017
 ms.date: 05/31/2016
-ms.author: stepsic; LADocs
-ms.openlocfilehash: 736a7cf03c7fe1e9fe976c3bcc80393bff2bada5
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: dd05543c2a727f010432ecb54c2dc3e77a245de4
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299862"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122771"
 ---
 # <a name="schema-updates-for-azure-logic-apps---august-1-2015-preview"></a>Azure 逻辑应用的架构更新 - 2015 年 8 月 1 日预览版
 
@@ -291,7 +286,7 @@ PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceG
 
 逐个演练这些属性：
 
-| 操作属性 | 说明 |
+| 操作属性 | Description |
 | --- | --- |
 | `type` | 是 `Http` 而不是 `APIapp` |
 | `metadata.apiDefinitionUrl` | 若要在逻辑应用设计器中使用此操作，请包括元数据终结点，该终结点是通过以下方式构造的：`{api app host.gateway}/api/service/apidef/{last segment of the api app host.id}/?api-version=2015-01-14&format=swagger-2.0-standard`。 |

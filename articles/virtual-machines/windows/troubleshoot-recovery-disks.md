@@ -1,5 +1,5 @@
 ---
-title: 将 Windows 故障排除 VM 与 Azure PowerShell 配合使用 | Microsoft 文档
+title: 将 Windows 故障排除 VM 与 Azure PowerShell 联合使用 | Microsoft 文档
 description: 了解如何使用 Azure PowerShell 将 OS 磁盘连接到恢复 VM，以便排查 Azure 中的 Windows VM 问题。
 services: virtual-machines-windows
 documentationCenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 9845476e23396eecc4149f3e856c40b0f80f13cb
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: f099eefbc6d196f25c2b09669cdc1c3cdec68a12
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004760"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050008"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>通过使用 Azure PowerShell 将 OS 磁盘附加到恢复 VM 来对 Windows VM 进行故障排除
 如果 Windows 虚拟机 (VM) 在 Azure 中遇到启动或磁盘错误，可能需要对磁盘本身执行故障排除步骤。 一个常见示例是应用程序更新失败，使 VM 无法成功启动。 本文详细介绍如何使用 Azure PowerShell 将磁盘连接到另一个 Windows VM 来修复所有错误，然后修复原始 VM。 
@@ -39,6 +39,8 @@ ms.locfileid: "40004760"
 5. 连接到恢复 VM。 编辑文件或运行任何工具，以修复复制的 OS 磁盘上的问题。
 6. 从恢复 VM 卸载并分离磁盘。
 7. 更改受影响 VM 的 OS 磁盘。
+
+可以使用 VM 恢复脚本自动执行步骤 1、2、3、4、6 和 7。 有关更多文档和说明，请参阅[资源管理器 VM 的 VM 恢复脚本](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager)。
 
 确保已安装[最新 Azure PowerShell](/powershell/azure/overview) 并登录到订阅：
 

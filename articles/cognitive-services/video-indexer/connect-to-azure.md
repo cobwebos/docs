@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 08/05/2018
 ms.author: juliako
-ms.openlocfilehash: 66ba79926a949371cb2280de408835862dd1a099
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 64a38ba617a1cc5fe1fdb3473e3cb88a49d89bb0
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41937521"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42744746"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>创建连接到 Azure 的视频索引器帐户
 
@@ -46,7 +46,7 @@ ms.locfileid: "41937521"
 
 * 使用 Azure 门户注册 EventGrid 资源提供程序。
 
-    在 Azure 门户中，转到“订阅”>“[订阅]”>“ResourceProviders” > “Microsoft.EventGrid”。 如果该提供程序不是处于“已注册”状态，请单击“注册”。 注册需要花费几分钟时间。 
+    在 [Azure 门户](https://portal.azure.com/)中，转到“订阅”>“[订阅]”>“ResourceProviders” > “Microsoft.EventGrid”。 如果该提供程序不是处于“已注册”状态，请单击“注册”。 注册需要花费几分钟时间。 
 
     ![EventGrid](./media/create-account/event-grid.png)
 
@@ -96,19 +96,16 @@ ms.locfileid: "41937521"
 
     可能需要根据计划的负载调整媒体**预留单位**的类型和数量。 请记住，如果负载较高，并且没有足够的单位或速度，则视频处理可能导致超时失败。
 
-* 如果已连接到新的媒体服务帐户，视频索引器会自动在其中启动**流式处理终结点**：
+* 如果已连接到新的媒体服务帐户，视频索引器会自动在其中启动默认**流式处理终结点**：
 
     ![媒体服务流式处理终结点](./media/create-account/ams-streaming-endpoint.png)
 
-* 如果已连接到现有的媒体服务帐户，视频索引器不会更改流式处理终结点配置。 如果未运行任何**流式处理终结点**，将无法从此媒体服务帐户或者在视频索引器中观看视频。
+* 如果已连接到现有的媒体服务帐户，视频索引器不会更改默认流式处理终结点配置。 如果未运行任何**流式处理终结点**，将无法从此媒体服务帐户或者在视频索引器中观看视频。
 
-## <a name="use-video-indexer-apis-v2"></a>使用视频索引器 API v2
+## <a name="next-steps"></a>后续步骤
 
 可以遵照[使用 API](video-indexer-use-apis.md) 中的说明，以编程方式来与试用帐户和/或连接到 Azure 的视频索引器帐户进行交互。
 
 应使用连接到 Azure 时所用的同一 Azure AD 用户。
 
-## <a name="next-steps"></a>后续步骤
-
-[检查输出 JSON 的详细信息](video-indexer-output-json-v2.md)。
 

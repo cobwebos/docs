@@ -1,28 +1,24 @@
 ---
-title: 使用 HTTP + Swagger 连接器为 Azure 逻辑应用调用 REST 终结点 | Microsoft Docs
-description: 使用 HTTP + Swagger 连接器通过 Swagger 从逻辑应用连接到 REST 终结点
+title: 从 Azure 逻辑应用调用 REST 终结点 | Microsoft Docs
+description: 在 Azure 逻辑应用中使用 HTTP + Swagger 连接器，自动执行与 REST 终结点通信的任务和工作流
 services: logic-apps
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-tags: connectors
-ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, jehollan, LADocs
+ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
+tags: connectors
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/18/2016
-ms.author: jehollan; LADocs
-ms.openlocfilehash: 4e4421b0dfe0f29c3d50764b9ca04471c73a1450
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e96e271fbb50a2485a22fab061ea160dc00cf3d6
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296513"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123166"
 ---
-# <a name="get-started-with-the-http--swagger-action"></a>HTTP + Swagger 操作入门
+# <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 HTTP + Swagger 连接器调用 REST 终结点
 
 在逻辑应用工作流中使用 HTTP + Swagger 操作时，可以通过 [Swagger 文档](https://swagger.io)向任意 REST 终结点创建一流连接器。 还可以扩展逻辑应用以调用任何带有一流逻辑应用设计器体验的 REST 终结点。
 
@@ -78,14 +74,14 @@ HTTP + Swagger 触发器和操作与 [HTTP 操作](connectors-native-http.md)功
 ## <a name="http--swagger-triggers"></a>HTTP + Swagger 触发器
 触发器是用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](connectors-overview.md)。 HTTP + Swagger 连接器具有一个触发器。
 
-| 触发器 | 说明 |
+| 触发器 | Description |
 | --- | --- |
 | HTTP + Swagger |进行 HTTP 调用并返回响应内容 |
 
 ## <a name="http--swagger-actions"></a>HTTP + Swagger 操作
 操作是由在逻辑应用中定义的工作流执行的操作。 [了解有关操作的详细信息。](connectors-overview.md) HTTP + Swagger 连接器具有一个可能的操作。
 
-| 操作 | 说明 |
+| 操作 | Description |
 | --- | --- |
 | HTTP + Swagger |进行 HTTP 调用并返回响应内容 |
 
@@ -96,7 +92,7 @@ HTTP + Swagger 连接器附带一个可能的操作。 下面是每个操作的�
 在 Swagger 元数据的协助下发出 HTTP 出站请求。
 星号 (*) 表示必填字段。
 
-| 显示名称 | 属性名称 | 说明 |
+| 显示名称 | 属性名称 | Description |
 | --- | --- | --- |
 | 方法* |方法 |要使用的 HTTP 谓词。 |
 | URI* |uri |HTTP 请求的 URI。 |
@@ -108,7 +104,7 @@ HTTP + Swagger 连接器附带一个可能的操作。 下面是每个操作的�
 
 HTTP 响应
 
-| 属性名称 | 数据类型 | 说明 |
+| 属性名称 | 数据类型 | Description |
 | --- | --- | --- |
 | 标头 |对象 |响应标头 |
 | Body |对象 |响应对象 |
@@ -117,7 +113,7 @@ HTTP 响应
 ### <a name="http-responses"></a>HTTP 响应
 对各种操作进行调用时，可能得到特定响应。 下表概述对应的响应和说明。
 
-| 名称 | 说明 |
+| 名称 | Description |
 | --- | --- |
 | 200 |OK |
 | 202 |已接受 |

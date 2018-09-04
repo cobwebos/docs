@@ -1,28 +1,23 @@
 ---
-title: 在工作流中使用 XML 消息 - Azure 逻辑应用 | Microsoft 文档
-description: 使用 Enterprise Integration Pack 处理、验证、转换和扩展逻辑应用和业务方案中的 XML 消息
+title: 用于 B2B 企业集成的 XML 消息 - Azure 逻辑应用 | Microsoft Docs
+description: 在带有 Enterprise Integration Pack 的 Azure 逻辑应用中针对 B2B 解决方案处理、验证、转换和扩展 XML 消息
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: divyaswarnkar
-manager: jeconnoc
-editor: ''
-ms.assetid: 47672dc4-1caa-44e5-b8cb-68ec3a76b7dc
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.custom: H1Hack27Feb2017
+ms.assetid: 47672dc4-1caa-44e5-b8cb-68ec3a76b7dc
 ms.date: 02/27/2017
-ms.author: LADocs; divswa
-ms.openlocfilehash: 85bdaff5cb88bbadaed778458b66c0cce7bce9de
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 5f804bf656b423d6dbe8f5c2ed73ba54d8361000
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298968"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124529"
 ---
-# <a name="validate-and-transform-xml-encode-and-decode-flat-files-and-enrich-messages-features-in-logic-apps"></a>在逻辑应用中验证和转换 XML、编码和解码平面文件，以及扩展消息功能
+# <a name="xml-messages-and-flat-files-in-azure-logic-apps-with-enterprise-integration-pack"></a>带有 Enterprise Integration Pack 的 Azure 逻辑应用中的 XML 消息和平面文件
 
 使用逻辑应用可以处理发送和接收的 XML 消息。 此功能是 Enterprise Integration Pack 随附的。 对于那些具有 BizTalk Server 使用背景的用户来说，Enterprise Integration Pack 提供的功能是类似的，可以转换和验证消息、使用平面文件，甚至可以使用 XPath 扩展或提取消息中的特定属性。 
 

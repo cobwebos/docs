@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/15/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: e97bab36a9a1a18cab1d45abfa451139323b2320
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 532df20a7639f42d8ba1c840a5fd19f0ad0e4042
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42140639"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43246327"
 ---
 # <a name="create-log-searches-in-azure-log-analytics-using-the-log-search-portal"></a>在 Azure Log Analytics 中使用日志搜索门户创建日志搜索
 
@@ -38,9 +38,8 @@ ms.locfileid: "42140639"
 
 1. 打开 Azure 门户。
 2. 导航到 Log Analytics 并选择工作区。
-3. 选择 **“日志搜索”**。
+3. 选择“日志”。
 
-![日志搜索按钮](media/log-analytics-log-search-log-search-portal/log-search-button.png)
 
 ## <a name="create-a-simple-search"></a>创建简单的搜索
 用于检索某些要使用的数据的最快方法是使用一个简单查询，它可返回表中的所有记录。  如果将任何 Windows 或 Linux 客户端连接到自己的工作区，将具有 Event（事件）(Windows) 或 Syslog (Linux) 表中的数据。

@@ -4,14 +4,14 @@ description: 概述 Azure Migrate 服务中的已知问题，并针对常见错�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 08/25/2018
 ms.author: raynew
-ms.openlocfilehash: 896e918f6031f3bc6b925a2ecdfa2a5c82f00e0b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ca34f27e1d22c6235ec0d6b965d49ec5266f17f6
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228248"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126355"
 ---
 # <a name="troubleshoot-azure-migrate"></a>排查 Azure Migrate 问题
 
@@ -50,6 +50,10 @@ ms.locfileid: "36228248"
 --- | ---
 *.portal.azure.com | 需检查与 Azure 服务的连接并验证时间同步问题。
 *.oneget.org | 需下载基于 PowerShell 的 vCenter PowerCLI 模块。
+
+**由于证书验证失败，收集器而无法连接到 Internet**
+
+如果使用拦截代理连接到 Internet，并且尚未将代理证书导入收集器 VM，则可能会发生这种情况。 可以使用[此处](https://docs.microsoft.com/azure/migrate/concepts-collector#internet-connectivity)详述的步骤导入代理证书。
 
 收集器不能使用从门户复制的项目 ID 和密钥连接到项目。
 

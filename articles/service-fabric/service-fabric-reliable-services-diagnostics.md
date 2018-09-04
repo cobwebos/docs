@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 6/28/2018
+ms.date: 8/24/2018
 ms.author: dekapur
-ms.openlocfilehash: 51895731efd466a314877e963a5fd2c6d868ec02
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: a7ba92d871bb440b7b8c8a12c1e90f9aa10df3be
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110866"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43105335"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>有状态 Reliable Services 的诊断功能
 Azure Service Fabri 有状态 Reliable Services StatefulServiceBase 类会发出 [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) 事件，这些事件可用于调试服务、提供对运行时运行方式的深入了解，以及帮助进行故障排除。
@@ -50,7 +50,7 @@ StatefulRunAsyncInvocation、StatefulRunAsyncCompletion 和 StatefulRunAsyncCanc
 ## <a name="performance-counters"></a>性能计数器
 Reliable Services 运行时定义以下性能计数器类别：
 
-| 类别 | 说明 |
+| 类别 | Description |
 | --- | --- |
 | Service Fabric 事务性复制器 |特定于 Azure Service Fabric 事务性复制器的计数器 |
 | Service Fabric TStore |特定于 Azure Service Fabric TStore 的计数器 |
@@ -102,7 +102,7 @@ Windows 操作系统中默认可用的 [Windows 性能监视器](https://technet
 
 Reliable Services 运行时发出的以下事件属于 `Service Fabric Transactional Replicator`类别
 
- 计数器名称 | 说明 |
+ 计数器名称 | Description |
 | --- | --- |
 | 启动事务操作数/秒 | 每秒创建的新写入事务数。|
 | 事务操作数/秒 | 每秒在 Reliable Collections 上执行的添加/更新/删除操作的数目。|
@@ -115,9 +115,12 @@ Reliable Services 运行时发出的以下事件属于 `Service Fabric Transacti
 
 Reliable Services 运行时发出的以下事件属于 `Service Fabric TStore`类别
 
- 计数器名称 | 说明 |
+ 计数器名称 | Description |
 | --- | --- |
-| 项计数 | 存储中的密钥数。|
+| 项计数 | 存储中的项数。|
+| 磁盘大小 | 存储检查点文件的磁盘总大小（以字节为单位）。|
+| 检查点文件写入字节数/秒 | 最近检查点文件每秒写入的字节数。|
+| 副本磁盘传输字节数/秒 | 在存储副本期间每秒（在主要副本上）读取或（在次要副本上）写入的磁盘字节数。|
 
 ## <a name="next-steps"></a>后续步骤
 [PerfView 中的 EventSource 提供程序](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

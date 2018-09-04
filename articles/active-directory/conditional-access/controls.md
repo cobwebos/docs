@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 08/28/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: ba770415d7371463f1370d982f179c2a6f41ee65
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 050ccff8501a22526e9382a620258b0f846efe5c
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629552"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128715"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的访问控制是什么？ 
 
@@ -119,9 +119,12 @@ ms.locfileid: "39629552"
 
 - [Duo Security](https://duo.com/docs/azure-ca)
 
+- [Entrust Datacard](https://www.entrustdatacard.com/products/authentication/intellitrust)
+
 - RSA
 
 - [Trusona](https://www.trusona.com/docs/azure-ad-integration-guide)
+
 
 有关这些服务的详细信息，请直接与提供商联系。
 

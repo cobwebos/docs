@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: bryanla
-ms.openlocfilehash: 962f9be53ce0b2022e8e5490bdeb04b2eefb4d7c
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: f36e0e3ddc605d960ed764252308cbf09578832c
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42140213"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126136"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>关于密钥、机密和证书
 用户通过 Azure Key Vault 可以在 Microsoft Azure 环境中存储和使用加密密钥。 Key Vault 支持多种密钥类型和算法，可以对高价值的密钥使用硬件安全模块 (HSM)。 此外，用户还可以使用 Key Vault 安全地存储机密。 机密是有限大小的八位组对象，无任何特定语义。 Key Vault 还支持基于密钥和机密并且添加了自动续订功能的证书。

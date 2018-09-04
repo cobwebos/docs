@@ -1,35 +1,31 @@
 ---
 title: 保护对 Azure 逻辑应用的访问 | Microsoft 文档
-description: 添加安全机制来保护对 Azure 逻辑应用中工作流使用的触发器、输入和输出、操作参数以及服务的访问。
+description: 保护对 Azure 逻辑应用工作流中的触发器、输入和输出、操作参数和服务的访问
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.service: logic-apps
-ms.devlang: multiple
+ms.suite: integration
+author: kevinlam1
+ms.author: klam
+ms.reviewer: estfan, LADocs
+ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
 ms.date: 11/22/2016
-ms.author: LADocs; jehollan
-ms.openlocfilehash: 2052e58dab7241836409fb013778f9702004021c
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: fc4fdff5080e6ebe13850157e8d560a1d31e7719
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299903"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127473"
 ---
-# <a name="secure-access-to-your-logic-apps"></a>安全访问逻辑应用
+# <a name="secure-access-in-azure-logic-apps"></a>保护 Azure 逻辑应用中的访问
 
-可以借助许多工具来保护逻辑应用。
+可以通过以下方式保护对逻辑应用中不同组件的访问：
 
-* 保护触发逻辑应用（HTTP 请求触发器）的访问
-* 保护管理、编辑或读取逻辑应用的访问
-* 保护对运行应用时的输入和输出内容的访问
-* 保护工作流中的操作的参数或输入
-* 保护对从工作流接收请求的服务的访问
+* 保护使用 HTTP 请求触发器触发逻辑应用工作流的访问。
+* 保护管理、编辑或读取逻辑应用的访问。
+* 保护对逻辑应用运行的输入和输出以外内容的访问。
+* 保护逻辑应用工作流中的操作的参数或输入。
+* 保护对从逻辑应用工作流接收请求的服务的访问。
 
 ## <a name="secure-access-to-trigger"></a>保护对触发器的访问
 

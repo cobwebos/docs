@@ -1,27 +1,23 @@
 ---
 title: 为 X12 消息解码 - Azure 逻辑应用 | Microsoft 文档
-description: 使用 Enterprise Integration Pack 中的 X12 消息解码器为 Azure 逻辑应用验证 EDI 并生成确认
+description: 在带有 Enterprise Integration Pack 的 Azure 逻辑应用中使用 X12 消息解码器验证 EDI 并生成确认
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: padmavc
-manager: jeconnoc
-editor: ''
-ms.assetid: 4fd48d2d-2008-4080-b6a1-8ae183b48131
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 4fd48d2d-2008-4080-b6a1-8ae183b48131
 ms.date: 01/27/2017
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 14e9f0eefb705eea59a00390494871f5668b0a01
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e3d2a458c2cece5e3f01fdb9e3d403b3fb78dd2b
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298655"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43121639"
 ---
-# <a name="decode-x12-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 为 Azure 逻辑应用解码 X12 消息
+# <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中解码 X12 消息
 
 使用解码 X12 消息连接器，可针对贸易合作伙伴协议验证信封、EDI 和特定于合作伙伴的属性，将交换拆分为交易集或保留整个交换，以及为已处理的交易生成确认。 要使用此连接器，必须将此连接器添加到逻辑应用中的现有触发器。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 00e5f5a73973a34a8611143719c91a2b1ad0c8eb
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 0aadb5964b5fe08b02397588dd9b2695fb4db4ce
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971260"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746711"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>在 Service Fabric 群集中修补 Linux 操作系统
 
@@ -121,7 +121,7 @@ Linux 版修补业务流程应用使用特定的运行时功能，这些功能�
 
 可以从[存档链接](https://go.microsoft.com/fwlink/?linkid=867984)下载应用程序和安装脚本。
 
-可以从 [sfpkg 链接](https://go.microsoft.com/fwlink/?linkid=867984&pc=sfpkg)下载 sfpkg 格式的应用程序。 这对[基于 Azure 资源管理器的应用程序部署](service-fabric-application-arm-resource.md)非常有用。
+可以从 [sfpkg 链接](https://aka.ms/POA/POA_v2.0.2.sfpkg)下载 sfpkg 格式的应用程序。 这对[基于 Azure 资源管理器的应用程序部署](service-fabric-application-arm-resource.md)非常有用。
 
 ## <a name="configure-the-app"></a>配置应用
 
@@ -232,7 +232,7 @@ RejectedList | 默认值为 "" | 此更新拒绝的修补程序列表
 
 如果尚未计划更新，JSON 结果将为空。
 
-登录到群集以查询更新结果。 然后找出协调器服务的主副本地址，并在浏览器中点击此 URL：http://&lt;REPLICA-IP&gt;:&lt;ApplicationPort&gt;/PatchOrchestrationApplication/v1/GetResults。
+登录到群集以查询更新结果。 然后找出协调器服务的主副本地址，并在浏览器中点击此 URL： http://&lt;REPLICA-IP&gt;:&lt;ApplicationPort&gt;/PatchOrchestrationApplication/v1/GetResults。
 
 协调器服务的 REST 终结点有一个动态端口。 若要检查确切的 URL，请参考 Service Fabric Explorer。 例如，可在 `http://10.0.0.7:20000/PatchOrchestrationApplication/v1/GetResults` 处获取结果。
 
@@ -370,5 +370,8 @@ A. 否，修补业务流程应用不能用来修补单节点群集。 此限制�
 ### <a name="version-200"></a>版本 2.0.0
 - 公开发布的版本
 
-### <a name="version-201-latest"></a>版本 2.0.1（最新）
+### <a name="version-201"></a>版本 2.0.1
 - 使用最新 Service Fabric SDK 重新编译应用
+
+### <a name="version-202-latest"></a>版本 2.0.2（最新版本）
+- 修复了在重启过程中未带运行状况警告的问题。

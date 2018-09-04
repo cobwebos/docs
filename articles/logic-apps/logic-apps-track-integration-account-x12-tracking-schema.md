@@ -1,29 +1,25 @@
 ---
-title: 用于 B2B 监视的 X12 跟踪架构 - Azure 逻辑应用 | Microsoft 文档
-description: 使用 X12 跟踪架构通过 Azure 集成帐户中的事务监视 B2B 消息。
-author: padmavc
-manager: jeconnoc
-editor: ''
+title: 用于 B2B 消息的 X12 跟踪架构 - Azure 逻辑应用 | Microsoft Docs
+description: 为带有 Enterprise Integration Pack 的 Azure 逻辑应用创建用于监视集成帐户中的 B2B 消息的 X12 跟踪架构
 services: logic-apps
-documentationcenter: ''
-ms.assetid: a5413f80-eaad-4bcf-b371-2ad0ef629c3d
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: a5413f80-eaad-4bcf-b371-2ad0ef629c3d
 ms.date: 01/27/2017
-ms.author: LADocs; padmavc
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 385ff73d780f62f19af2face591cd0b2291ef396
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: cfd195f2f812c8b2e09058d325d0dbb6f7a60d59
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300967"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125595"
 ---
-# <a name="start-or-enable-tracking-of-x12-messages-to-monitor-success-errors-and-message-properties"></a>启动或启用对 X12 消息的跟踪，监视成功、错误和消息属性
-可以在 Azure 集成帐户中使用这些 X12 跟踪架构来帮助监视企业到企业 (B2B) 的事务：
+# <a name="create-schemas-for-tracking-x12-messages-in-integration-accounts-for-azure-logic-apps"></a>为 Azure 逻辑应用创建用于跟踪集成帐户中的 X12 消息的架构
+
+若要帮助你监视企业到企业 (B2B) 事务的成功、错误和消息属性，可以在集成帐户中使用以下 X12 跟踪架构：
 
 * X12 事务集跟踪架构
 * X12 事务集确认跟踪架构
@@ -33,35 +29,35 @@ ms.locfileid: "35300967"
 * X12 功能组确认跟踪架构
 
 ## <a name="x12-transaction-set-tracking-schema"></a>X12 事务集跟踪架构
-````java
 
-    {
-            "agreementProperties": {
-                "senderPartnerName": "",
-                "receiverPartnerName": "",
-                "senderQualifier": "",
-                "senderIdentifier": "",
-                "receiverQualifier": "",
-                "receiverIdentifier": "",
-                "agreementName": ""
-            },
-            "messageProperties": {
-                "direction": "",
-                "interchangeControlNumber": "",
-                "functionalGroupControlNumber": "",
-                "transactionSetControlNumber": "",
-                "CorrelationMessageId": "",
-                "messageType": "",
-                "isMessageFailed": "",
-                "isTechnicalAcknowledgmentExpected": "",
-                "isFunctionalAcknowledgmentExpected": "",
-                "needAk2LoopForValidMessages":  "",
-                "segmentsCount": ""
-            }
-    }
-````
+```json
+{
+   "agreementProperties": {
+      "senderPartnerName": "",
+      "receiverPartnerName": "",
+      "senderQualifier": "",
+      "senderIdentifier": "",
+      "receiverQualifier": "",
+      "receiverIdentifier": "",
+      "agreementName": ""
+   },
+   "messageProperties": {
+      "direction": "",
+      "interchangeControlNumber": "",
+      "functionalGroupControlNumber": "",
+      "transactionSetControlNumber": "",
+      "CorrelationMessageId": "",
+      "messageType": "",
+      "isMessageFailed": "",
+      "isTechnicalAcknowledgmentExpected": "",
+      "isFunctionalAcknowledgmentExpected": "",
+      "needAk2LoopForValidMessages":  "",
+      "segmentsCount": ""
+   }
+}
+```
 
-| 属性 | Type | 说明 |
+| 属性 | Type | Description |
 | --- | --- | --- |
 | senderPartnerName | String | X12 消息发送者的合作伙伴名称。 (可选) |
 | receiverPartnerName | String | X12 消息接收者的合作伙伴名称。 (可选) |
@@ -81,42 +77,43 @@ ms.locfileid: "35300967"
 | isFunctionalAcknowledgmentExpected | 布尔 | 是否已在 X12 协议中配置了功能确认。 （必需） |
 | needAk2LoopForValidMessages | 布尔 | 有效的消息是否需要 AK2 循环。 （必需） |
 | segmentsCount | Integer | X12 事务集中的段数。 (可选) |
+||||
 
 ## <a name="x12-transaction-set-acknowledgement-tracking-schema"></a>X12 事务集确认跟踪架构
-````java
 
-    {
-            "agreementProperties": {
-                "senderPartnerName": "",
-                "receiverPartnerName": "",
-                "senderQualifier": "",
-                "senderIdentifier": "",
-                "receiverQualifier": "",
-                "receiverIdentifier": "",
-                "agreementName": ""
-            },
-            "messageProperties": {
-                "direction": "",
-                "interchangeControlNumber": "",
-                "functionalGroupControlNumber": "",
-                "isaSegment": "",
-                "gsSegment": "",
-                "respondingfunctionalGroupControlNumber": "",
-                "respondingFunctionalGroupId": "",
-                "respondingtransactionSetControlNumber": "",
-                "respondingTransactionSetId": "",
-                "statusCode": "",
-                "processingStatus": "",
-                "CorrelationMessageId": ""
-                "isMessageFailed": "",
-                "ak2Segment": "",
-                "ak3Segment": "",
-                "ak5Segment": ""
-            }
-    }
-````
+```json
+{
+   "agreementProperties": {
+      "senderPartnerName": "",
+      "receiverPartnerName": "",
+      "senderQualifier": "",
+      "senderIdentifier": "",
+      "receiverQualifier": "",
+      "receiverIdentifier": "",
+      "agreementName": ""
+   },
+   "messageProperties": {
+      "direction": "",
+      "interchangeControlNumber": "",
+      "functionalGroupControlNumber": "",
+      "isaSegment": "",
+      "gsSegment": "",
+      "respondingfunctionalGroupControlNumber": "",
+      "respondingFunctionalGroupId": "",
+      "respondingtransactionSetControlNumber": "",
+      "respondingTransactionSetId": "",
+      "statusCode": "",
+      "processingStatus": "",
+      "CorrelationMessageId": "",
+      "isMessageFailed": "",
+      "ak2Segment": "",
+      "ak3Segment": "",
+      "ak5Segment": ""
+   }
+}
+```
 
-| 属性 | Type | 说明 |
+| 属性 | Type | Description |
 | --- | --- | --- |
 | senderPartnerName | String | X12 消息发送者的合作伙伴名称。 (可选) |
 | receiverPartnerName | String | X12 消息接收者的合作伙伴名称。 (可选) |
@@ -142,38 +139,39 @@ ms.locfileid: "35300967"
 | ak2Segment | String | 对接收的功能组内的事务集的确认。 (可选) |
 | ak3Segment | String | 报告数据段中的错误。 (可选) |
 | ak5Segment | String | 报告是否接受或拒绝 AK2 段中标识的事务集及其原因。 (可选) |
+||||
 
 ## <a name="x12-interchange-tracking-schema"></a>X12 交换跟踪架构
-````java
 
-    {
-            "agreementProperties": {
-                "senderPartnerName": "",
-                "receiverPartnerName": "",
-                "senderQualifier": "",
-                "senderIdentifier": "",
-                "receiverQualifier": "",
-                "receiverIdentifier": "",
-                "agreementName": ""
-            },
-            "messageProperties": {
-                "direction": "",
-                "interchangeControlNumber": "",
-                "isaSegment": "",
-                "isTechnicalAcknowledgmentExpected": "",
-                "isMessageFailed": "",
-                "isa09": "",
-                "isa10": "",
-                "isa11": "",
-                "isa12": "",
-                "isa14": "",
-                "isa15": "",
-                "isa16": ""
-            }
-    }
-````
+```json
+{
+   "agreementProperties": {
+      "senderPartnerName": "",
+      "receiverPartnerName": "",
+      "senderQualifier": "",
+      "senderIdentifier": "",
+      "receiverQualifier": "",
+      "receiverIdentifier": "",
+      "agreementName": ""
+   },
+   "messageProperties": {
+      "direction": "",
+      "interchangeControlNumber": "",
+      "isaSegment": "",
+      "isTechnicalAcknowledgmentExpected": "",
+      "isMessageFailed": "",
+      "isa09": "",
+      "isa10": "",
+      "isa11": "",
+      "isa12": "",
+      "isa14": "",
+      "isa15": "",
+      "isa16": ""
+   }
+}
+```
 
-| 属性 | Type | 说明 |
+| 属性 | Type | Description |
 | --- | --- | --- |
 | senderPartnerName | String | X12 消息发送者的合作伙伴名称。 (可选) |
 | receiverPartnerName | String | X12 消息接收者的合作伙伴名称。 (可选) |
@@ -194,35 +192,37 @@ ms.locfileid: "35300967"
 | isa14 | String | 请求了 X12 确认。 (可选) |
 | isa15 | String | 表示测试或生产的指示符。 (可选) |
 | isa16 | String | 元素分隔符。 (可选) |
+||||
 
 ## <a name="x12-interchange-acknowledgement-tracking-schema"></a>X12 交换确认跟踪架构
-````java
-    {
-            "agreementProperties": {
-                "senderPartnerName": "",
-                "receiverPartnerName": "",
-                "senderQualifier": "",
-                "senderIdentifier": "",
-                "receiverQualifier": "",
-                "receiverIdentifier": "",
-                "agreementName": ""
-            },
-            "messageProperties": {
-                "direction": "",
-                "interchangeControlNumber": "",
-                "isaSegment": "",
-                "respondingInterchangeControlNumber": "",
-                "isMessageFailed": "",
-                "statusCode": "",
-                "processingStatus": "",
-                "ta102": "",
-                "ta103": "",
-                "ta105": ""
-            }
-    }
-````
 
-| 属性 | Type | 说明 |
+```json
+{
+   "agreementProperties": {
+      "senderPartnerName": "",
+      "receiverPartnerName": "",
+      "senderQualifier": "",
+      "senderIdentifier": "",
+      "receiverQualifier": "",
+      "receiverIdentifier": "",
+      "agreementName": ""
+   },
+   "messageProperties": {
+      "direction": "",
+      "interchangeControlNumber": "",
+      "isaSegment": "",
+      "respondingInterchangeControlNumber": "",
+      "isMessageFailed": "",
+      "statusCode": "",
+      "processingStatus": "",
+      "ta102": "",
+      "ta103": "",
+      "ta105": ""
+   }
+}
+```
+
+| 属性 | Type | Description |
 | --- | --- | --- |
 | senderPartnerName | String | X12 消息发送者的合作伙伴名称。 (可选) |
 | receiverPartnerName | String | X12 消息接收者的合作伙伴名称。 (可选) |
@@ -241,40 +241,41 @@ ms.locfileid: "35300967"
 | ta102 | String | 交换日期。 (可选) |
 | ta103 | String | 交换时间。 (可选) |
 | ta105 | String | 交换注释代码。 (可选) |
+||||
 
 ## <a name="x12-functional-group-tracking-schema"></a>X12 功能组跟踪架构
-````java
 
-    {
-            "agreementProperties": {
-                "senderPartnerName": "",
-                "receiverPartnerName": "",
-                "senderQualifier": "",
-                "senderIdentifier": "",
-                "receiverQualifier": "",
-                "receiverIdentifier": "",
-                "agreementName": ""
-            },
-            "messageProperties": {
-                "direction": "",
-                "interchangeControlNumber": "",
-                "functionalGroupControlNumber": "",
-                "gsSegment": "",
-                "isTechnicalAcknowledgmentExpected": "",
-                "isFunctionalAcknowledgmentExpected": "",
-                "isMessageFailed": "",
-                "gs01": "",
-                "gs02": "",
-                "gs03": "",
-                "gs04": "",
-                "gs05": "",
-                "gs07": "",
-                "gs08": ""
-            }
-    }
-````
+```json
+{
+   "agreementProperties": {
+      "senderPartnerName": "",
+      "receiverPartnerName": "",
+      "senderQualifier": "",
+      "senderIdentifier": "",
+      "receiverQualifier": "",
+      "receiverIdentifier": "",
+      "agreementName": ""
+   },
+   "messageProperties": {
+      "direction": "",
+      "interchangeControlNumber": "",
+      "functionalGroupControlNumber": "",
+      "gsSegment": "",
+      "isTechnicalAcknowledgmentExpected": "",
+      "isFunctionalAcknowledgmentExpected": "",
+      "isMessageFailed": "",
+      "gs01": "",
+      "gs02": "",
+      "gs03": "",
+      "gs04": "",
+      "gs05": "",
+      "gs07": "",
+      "gs08": ""
+   }
+}
+```
 
-| 属性 | Type | 说明 |
+| 属性 | Type | Description |
 | --- | --- | --- |
 | senderPartnerName | String | X12 消息发送者的合作伙伴名称。 (可选) |
 | receiverPartnerName | String | X12 消息接收者的合作伙伴名称。 (可选) |
@@ -297,38 +298,40 @@ ms.locfileid: "35300967"
 | gs05 | String | 功能组时间。 (可选) |
 | gs07 | String | 责任代理代码。 (可选) |
 | gs08 | String | 版本/发行版/行业标识符代码。 (可选) |
+||||
 
 ## <a name="x12-functional-group-acknowledgement-tracking-schema"></a>X12 功能组确认跟踪架构
-````java
-    {
-            "agreementProperties": {
-                "senderPartnerName": "",
-                "receiverPartnerName": "",
-                "senderQualifier": "",
-                "senderIdentifier": "",
-                "receiverQualifier": "",
-                "receiverIdentifier": "",
-                "agreementName": ""
-            },
-            "messageProperties": {
-                "direction": "",
-                "interchangeControlNumber": "",
-                "functionalGroupControlNumber": "",
-                "isaSegment": "",
-                "gsSegment": "",
-                "respondingfunctionalGroupControlNumber": "",
-                "respondingFunctionalGroupId": "",
-                "isMessageFailed": "",
-                "statusCode": "",
-                "processingStatus": "",
-                "ak903": "",
-                "ak904": "",
-                "ak9Segment": ""
-            }
-    }
-````
 
-| 属性 | Type | 说明 |
+```json
+{
+   "agreementProperties": {
+      "senderPartnerName": "",
+      "receiverPartnerName": "",
+      "senderQualifier": "",
+      "senderIdentifier": "",
+      "receiverQualifier": "",
+      "receiverIdentifier": "",
+      "agreementName": ""
+   },
+   "messageProperties": {
+      "direction": "",
+      "interchangeControlNumber": "",
+      "functionalGroupControlNumber": "",
+      "isaSegment": "",
+      "gsSegment": "",
+      "respondingfunctionalGroupControlNumber": "",
+      "respondingFunctionalGroupId": "",
+      "isMessageFailed": "",
+      "statusCode": "",
+      "processingStatus": "",
+      "ak903": "",
+      "ak904": "",
+      "ak9Segment": ""
+   }
+}
+```
+
+| 属性 | Type | Description |
 | --- | --- | --- |
 | senderPartnerName | String | X12 消息发送者的合作伙伴名称。 (可选) |
 | receiverPartnerName | String | X12 消息接收者的合作伙伴名称。 (可选) |
@@ -350,10 +353,16 @@ ms.locfileid: "35300967"
 | ak903 | String | 收到的事务集的数量。 (可选) |
 | ak904 | String | 在标识的功能组中接受的事务集的数量。 (可选) |
 | ak9Segment | String | 是接受还是拒绝 AK1 段中标识的功能组，以及原因是什么。 (可选) |
+|||| 
+
+## <a name="b2b-protocol-tracking-schemas"></a>B2B 协议跟踪架构
+
+有关 B2B 协议跟踪架构的信息，请参阅：
+
+* [AS2 跟踪架构](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)   
+* [B2B 自定义跟踪架构](logic-apps-track-integration-account-custom-tracking-schema.md)
 
 ## <a name="next-steps"></a>后续步骤
+
 * 了解有关[监视 B2B 消息](logic-apps-monitor-b2b-message.md)的详细信息。
-* 了解有关 [AS2 跟踪架构](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)的详细信息。
-* 了解有关 [B2B 自定义跟踪架构](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md)的详细信息。
 * 了解[在 Log Analytics 中跟踪 B2B 消息](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)。
-* 了解有关 [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) 的详细信息。  

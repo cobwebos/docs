@@ -2,18 +2,18 @@
 title: 在 Azure 中将大量数据移入/移出云存储 | Microsoft Docs
 description: 将数据移入和移出 Azure 存储的不同方法概述。
 services: storage
-author: JarrettRenshaw
+author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 01/30/2017
-ms.author: jarrettr
+ms.date: 08/26/2018
+ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 81d7b5cf03e56ecc54db71b09af335d6cb794806
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 1df237a65a8b5312b20de19a99399b3a3dd075ff
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525529"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049604"
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>将数据移动到和移出 Azure 存储
 如果想将本地数据移动到 Azure 存储（或执行相反的操作），有许多种方式可以执行此操作。 最适合方法将取决于方案。 本文会提供不同方案以及针对每个方案的适当产品/服务的快速概述。
@@ -21,7 +21,7 @@ ms.locfileid: "39525529"
 ## <a name="building-applications"></a>构建应用程序
 如果正在构建应用程序，针对 REST API 或我们的许多客户端库之一进行开发是将数据移动到和移出 Azure 存储的一个好办法。
 
-Azure 存储为 .NET、iOS、Java、Android、通用 Windows 平台 (UWP)、Xamarin、C++、Node.JS、PHP、Ruby 和 Python 提供了丰富的客户端库。 客户端库提供高级功能，如重试逻辑、日志记录和并行上传。 也可以直接针对可以由发出 HTTP/HTTPS 请求的任何语言调用的 REST API 进行开发。
+Azure 存储器为许多常用语言（包括 .NET、Java、Android、Go、Xamarin、C++、Node.JS、PHP、Ruby、Python 和 iOS）提供丰富的客户端库。 客户端库提供高级功能，如重试逻辑、日志记录和并行上传。 也可以直接针对可以由发出 HTTP/HTTPS 请求的任何语言调用的 REST API 进行开发。
 
 请参阅[ Azure Blob 存储入门](../blobs/storage-dotnet-how-to-use-blobs.md)了解详细信息。
 

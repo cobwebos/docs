@@ -6,14 +6,14 @@ author: meladie
 ms.assetid: 708aa129-b226-4e02-85c6-1f86e54564e4
 ms.service: security
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: a8d2eca785ad166aa4cff26bce876e41770a3427
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 7d200cfa6a529c33555a18cd6598183fedbfd2fc
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246202"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818267"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-australia-protected"></a>Azure 安全性与合规性蓝图 - 符合 Australia PROTECTED 的 PaaS Web 应用程序
 
@@ -36,7 +36,7 @@ ms.locfileid: "40246202"
 
 该解决方案使用 Azure 存储帐户。客户可将存储帐户配置为使用存储服务加密，以维持静态数据的机密性。 Azure 在客户选择的区域存储三个数据副本，以提供复原能力。 Azure 区域部署在可复原的区域对中，地理冗余的存储可确保将数据复制到同样包含三个副本的第二个区域。 这可以防止客户主要数据位置发生的不利事件导致数据丢失。
 
-为了增强安全性，将通过 Azure 资源管理器以资源组的形式管理此解决方案中的所有 Azure 资源。 Azure Active Directory 基于角色的访问控制用于控制对 Azure Key Vault 中部署的资源和密钥的访问。 通过 Azure 安全中心和 Azure Monitor 监视系统运行状况。 客户配置两个监视服务捕获日志并在单独的、可轻松导航的仪表板中显示系统运行状况。 Azure 应用程序网关配置为防护模式的防火墙，它会禁止非 TLSv1.2 或更高版本的流量。 该解决方案利用 Azure 应用程序服务环境 v2 来隔离非多租户环境中的 Web 层。
+为了增强安全性，将通过 Azure 资源管理器以资源组的形式管理此解决方案中的所有 Azure 资源。 Azure Active Directory 基于角色的访问控制用于控制对 Azure Key Vault 中部署的资源和密钥的访问。 通过 Azure 安全中心和 Azure Monitor 监视系统运行状况。 客户配置两个监视服务捕获日志并在单独的、可轻松导航的仪表板中显示系统运行状况。 Azure 应用程序网关配置为防护模式的防火墙，它会禁止非 TLS v1.2 或更高版本的流量。 该解决方案利用 Azure 应用程序服务环境 v2 来隔离非多租户环境中的 Web 层。
 
 ![符合 AU-PROTECTED 的 PaaS Web 应用程序参考体系结构](images/au-protected-paaswa-architecture.png?raw=true "符合 AU-PROTECTED 的 PaaS Web 应用程序参考体系结构示意图")
 
@@ -95,7 +95,7 @@ ms.locfileid: "40246202"
 - 托管在受保护的 Azure 虚拟网络中并受网络安全规则保护
 - 使用自签名内部负载均衡器证书配置的、用于 HTTPS 通信的应用服务环境。 作为最佳做法，Microsoft 建议使用受信任的证书颁发机构来增强安全性。
 - [内部负载均衡模式](https://docs.microsoft.com/azure/app-service-web/app-service-environment-with-internal-load-balancer)（模式 3）
-- 禁用 [TLS 1.0](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings)
+- 禁用 [TLS v1.0 和 v1.1](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings)
 - 更改 [TLS 密码](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings)
 - 控制[入站流量 N/W 端口](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-control-inbound-traffic)
 - [Web 应用程序防火墙 - 限制数据](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-web-application-firewall)
@@ -128,11 +128,9 @@ ms.locfileid: "40246202"
 
 对于从客户自有网络传输的“受保护”数据，该体系结构将使用 Internet，或者将 ExpressRoute 与配置有 IPSEC 的 VPN 网关配合使用。
 
-此外，通过 Azure 管理门户发送到 Azure 的所有事务将使用 TLS 1.2 通过 HTTPS 进行。
-静态数据
+此外，通过 Azure 管理门户发送到 Azure 的所有事务将使用 TLS v1.2 通过 HTTPS 进行。
 
 ### <a name="data-at-rest"></a>静态数据
-
 该体系结构通过加密、数据库审核和其他措施保护静态数据。
 
 **Azure 存储**：为了满足静态数据加密要求，所有 [Azure 存储](https://azure.microsoft.com/services/storage/)均使用[存储服务加密](https://docs.microsoft.com/azure/storage/storage-service-encryption)。 这有助于保护数据，以支持澳大利亚政府 ISM 规定的组织安全承诺与合规性要求。
@@ -204,7 +202,7 @@ Azure 服务广泛记录系统和用户活动以及系统运行状况：
 
 **Azure Monitor**：[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) 通过使组织能够审核、创建警报和存档数据（包括在用户的 Azure 资源中跟踪 API 调用），帮助用户跟踪性能、维护安全性和确定趋势。
 
-Azure 网络观察程序： [Azure 网络观察程序]9https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview) 提供所需的工具用于监视、诊断 Azure 虚拟网络中的资源、查看其指标，以及为其启用或禁用日志。  英联邦实体应为 NSG 和虚拟机实施网络观察程序流日志。 这些日志只能存储在专门用于存储安全日志的存储帐户中，对该存储帐户的访问应受基于角色的访问控制的保护。
+Azure 网络观察程序： [Azure 网络观察程序]9 https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview) 提供所需的工具用于监视、诊断 Azure 虚拟网络中的资源、查看其指标，以及为其启用或禁用日志。  英联邦实体应为 NSG 和虚拟机实施网络观察程序流日志。 这些日志只能存储在专门用于存储安全日志的存储帐户中，对该存储帐户的访问应受基于角色的访问控制的保护。
 
 ## <a name="threat-model"></a>威胁模型
 

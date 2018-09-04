@@ -1,25 +1,21 @@
 ---
-title: 如何为 Azure Data Lake Analytics 设置 CI/CD 管道 | Microsoft Docs
+title: 如何为 Azure Data Lake Analytics 设置 CI/CD 管道
 description: 了解如何为 Azure Data Lake Analytics 设置持续集成和持续部署。
 services: data-lake-analytics
-documentationcenter: ''
 author: yanancai
-manager: ''
-editor: ''
+ms.author: yanacai
+ms.reviewer: jasonwhowell
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.author: yanacai
-ms.openlocfilehash: c114f190ae05f5ea4788c3785a713a6365938ded
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 49ac9f9603a1b8043b19c327d5a66015959b9dd1
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630698"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43045868"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>如何为 Azure Data Lake Analytics 设置 CI/CD 管道  
 
@@ -443,13 +439,13 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称�
     * 使用**机密**身份验证将 U-SQL 数据库部署到 Azure Data Lake Analytics 帐户：
 
         ```
-        PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secret <secret>
+        PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secrete <secrete>
         ```
 
     * 使用 **certFile** 身份验证将 U-SQL 数据库部署到 Azure Data Lake Analytics 帐户：
 
         ```
-        PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secret <secret> -CertFile <certFile>
+        PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secrete <secrete> -CertFile <certFile>
         ```
 
 ### <a name="packagedeploymenttoolexe-parameter-descriptions"></a>PackageDeploymentTool.exe 参数说明
@@ -480,8 +476,8 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称�
 |AzureSDKPath|要在 Azure SDK 中搜索依赖程序集的路径。|Null|是|
 |交互|是否使用交互模式进行身份验证。|false|false|
 |ClientId|非交互式身份验证所需的 Azure AD 应用程序 ID。|Null|非交互式身份验证需要此参数。|
-|密钥|用于非交互式身份验证的机密或密码。 仅应在受信任和安全的环境中使用。|Null|非交互式身份验证需要此参数，或使用 SecretFile。|
-|SecretFile|该文件保存用于非交互式身份验证的机密或密码。 请确保只有当前用户可以读取它。|Null|非交互式身份验证需要此参数，或使用 Secret。|
+|机密|用于非交互式身份验证的机密或密码。 仅应在受信任和安全的环境中使用。|Null|非交互式身份验证需要此参数，或使用 SecreteFile。|
+|SecreteFile|该文件保存用于非交互式身份验证的机密或密码。 请确保只有当前用户可以读取它。|Null|非交互式身份验证需要此参数，或使用机密。|
 |CertFile|该文件保存用于非交互式身份验证的 X.509 证书。 默认使用客户端机密身份验证。|Null|false|
 | JobPrefix | U-SQL DDL 作业的数据库部署前缀。 | Deploy_ + DateTime.Now | false |
 

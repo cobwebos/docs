@@ -4,12 +4,12 @@ ms.author: yashar
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 08-07-2018
-ms.openlocfilehash: 19a153a5cdc9d5f878494984313baebd12dbcbb5
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 764470bbf47c18a2ec66dc91d433f8dd14b99a8f
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39631157"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43039254"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>通过 Azure 虚拟机预留实例为虚拟机预付费
 
@@ -30,6 +30,9 @@ ms.locfileid: "39631157"
 
 虚拟机预留实例适用于大多数 VM 大小，只有一些例外：
 
+- 经典 VM 和云服务无法获得预留折扣。
+- 已禁止的核心 VM 无法获得预留折扣。
+- 以下 VM 系列无法获得预留折扣：A 系列、Av2 系列或 G 系列。
 - 预览版 VM：以预览版形式提供的任何 VM 系列或大小都不适用于预留购买。
 - 云：不能在 Azure 美国政府、德国或中国区域进行预留购买。
 - 配额不足：其范围仅限单个订阅的预留必须在订阅中具有可用的 vCPU 配额才能获得新的 RI。 例如，如果目标订阅的配额限制为 10 个 vCPU（适用于 D 系列），则不能为 11 个 Standard_D1 实例购买预留。 虚拟机预留实例的配额检查包括已在订阅中部署的 VM。 例如，如果该订阅的配额为针对 D 系列购买 10 个 vCPU，并且已部署两个 Standard_D1 实例，则可在该订阅中为 10 个 Standard_D1 实例购买预留。 
@@ -71,7 +74,7 @@ ms.locfileid: "39631157"
 
 - [什么是 Azure 预留？](../articles/billing/billing-save-compute-costs-reservations.md)
 - [管理 Azure 中的预留](../articles/billing/billing-manage-reserved-vm-instance.md)
-- [了解如何应用预留折扣](../articles/billing/billing-understand-vm-reservation-charges.md)
+- [了解预留折扣的应用方式](../articles/billing/billing-understand-vm-reservation-charges.md)
 - [了解即用即付订阅的预留使用情况](../articles/billing/billing-understand-reserved-instance-usage.md)
 - [了解企业合约的预留使用情况](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
 - [预留未包含的 Windows 软件成本](../articles/billing/billing-reserved-instance-windows-software-costs.md)

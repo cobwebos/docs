@@ -1,27 +1,23 @@
 ---
 title: 为 AS2 消息编码 - Azure 逻辑应用 | Microsoft 文档
-description: 如何为 Azure 逻辑应用使用 Enterprise Integration Pack 中的 AS2 编码器
+description: 使用 Azure 逻辑应用和 Enterprise Integration Pack 编码 AS 消息
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: padmavc
-manager: jeconnoc
-editor: ''
-ms.assetid: 332fb9e3-576c-4683-bd10-d177a0ebe9a3
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 332fb9e3-576c-4683-bd10-d177a0ebe9a3
 ms.date: 08/08/2018
-ms.author: LADocs; padmavc
-ms.openlocfilehash: b3b57b2505c4185f3a81530cbc9eeb464dcfa518
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 6bb19199929a004ee5668a3a6e057a69c24dd752
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42140001"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122707"
 ---
-# <a name="encode-as2-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 为 Azure 逻辑应用编码 AS2 消息
+# <a name="encode-as2-messages-with-azure-logic-apps-and-enterprise-integration-pack"></a>使用 Azure 逻辑应用和 Enterprise Integration Pack 编码 AS2 消息
 
 若要在传输消息时建立安全性和可靠性，请使用编码 AS2 消息连接器。 此连接器通过邮件处置通知 (MDN) 提供数字签名、解密和确认等功能，这还会实现对不可否认性的支持。
 

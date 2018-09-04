@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: kgremban
-ms.openlocfilehash: f187aa81ca519f2597657f01c2d7a630740b5348
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 068e9a3379bd2762455aade1761592fa70a09a20
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634305"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144372"
 ---
-# <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions---preview"></a>通过使用事件网格触发操作来响应 IoT 中心事件 - 预览版
+# <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>通过使用事件网格触发操作来响应 IoT 中心事件
 
 通过将 Azure IoT 中心与 Azure 事件网格进行集成，使你可以向其他服务发送事件通知，并触发下游流程。 配置商业应用程序来侦听 IoT 中心事件，以便安全可靠地以可缩放方式响应关键事件。 例如生成应用程序以执行各种操作，如更新数据库、创建票证等，并在每当有新的 IoT 设备注册到 IoT 中心时，发送一封电子邮件通知。 
 
@@ -31,16 +31,44 @@ ms.locfileid: "34634305"
 
 IoT 中心将发布以下事件类型： 
 
-| 事件类型 | 说明 |
+| 事件类型 | Description |
 | ---------- | ----------- |
 | Microsoft.Devices.DeviceCreated | 当设备注册到 IoT 中心时发布。 |
 | Microsoft.Devices.DeviceDeleted | 当设备从 IoT 中心删除时发布。 | 
+| Microsoft.Devices.DeviceConnected | 当设备连接到 IoT 中心时发布。 | 
+| Microsoft.Devices.DeviceDisconnected | 当设备与 IoT 中心断开连接时发布。 | 
+请注意，很快将为“加拿大东部”和“美国东部”区域启用设备已连接和设备已断开连接事件。
 
 使用 Azure 门户或 Azure CLI 配置从每个 IoT 中心发布的事件。 例如，请尝试学习教程[使用逻辑应用发送关于 Azure IoT 中心事件的电子邮件通知](../event-grid/publish-iot-hub-events-to-logic-apps.md)。 
 
 ## <a name="event-schema"></a>事件架构
 
 IoT 中心事件包含响应设备生命周期中更改所需的全部信息。 可通过检查 eventType 属性是否以“Microsoft.Devices”开头来标识 IoT 中心事件。 有关如何使用事件网格事件属性的详细信息，请参阅[事件网格事件架构](../event-grid/event-schema.md)。
+
+### <a name="device-connected-schema"></a>设备已连接架构
+
+以下示例显示了设备已连接事件的架构： 
+
+```json
+[{  
+  "id": "f6bbf8f4-d365-520d-a878-17bf7238abd8", 
+  "topic": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<hub name>", 
+  "subject": "devices/LogicAppTestDevice", 
+  "eventType": "Microsoft.Devices.DeviceConnected", 
+  "eventTime": "2018-06-02T19:17:44.4383997Z", 
+  "data": {
+      "deviceConnectionStateEventInfo": {
+        "sequenceNumber":
+          "000000000000000001D4132452F67CE200000002000000000000000000000001"
+      },
+    "hubName": "egtesthub1",
+    "deviceId": "LogicAppTestDevice",
+    "moduleId" : "DeviceModuleID",
+  }, 
+  "dataVersion": "1", 
+  "metadataVersion": "1" 
+}]
+```
 
 ### <a name="device-created-schema"></a>设备创建架构
 
@@ -57,6 +85,7 @@ IoT 中心事件包含响应设备生命周期中更改所需的全部信息。 
     "twin": {
       "deviceId": "LogicAppTestDevice",
       "etag": "AAAAAAAAAAE=",
+      "deviceEtag":"null",
       "status": "enabled",
       "statusUpdateTime": "0001-01-01T00:00:00",
       "connectionState": "Disconnected",
@@ -84,11 +113,9 @@ IoT 中心事件包含响应设备生命周期中更改所需的全部信息。 
       }
     },
     "hubName": "egtesthub1",
-    "deviceId": "LogicAppTestDevice",
-    "operationTimestamp": "2018-01-02T19:17:44.4383997Z",
-    "opType": "DeviceCreated"
+    "deviceId": "LogicAppTestDevice"
   },
-  "dataVersion": "",
+  "dataVersion": "1",
   "metadataVersion": "1"
 }]
 ```
@@ -97,15 +124,18 @@ IoT 中心事件包含响应设备生命周期中更改所需的全部信息。 
 
 ## <a name="filter-events"></a>筛选事件
 
-IoT 中心事件订阅可根据事件类型和设备名筛选事件。 事件网格中的使用者筛选器基于“前缀”和“后缀”的匹配进行筛选。 该筛选器使用 `AND` 运算符，以便将含有与前缀和后缀都匹配的使用者的事件传送给订阅方。 
+IoT 中心事件订阅可根据事件类型和设备名筛选事件。 事件网格中的使用者筛选器基于“开头为”（前缀）和“结尾为”（后缀）匹配进行筛选。 该筛选器使用 `AND` 运算符，以便将含有与前缀和后缀都匹配的使用者的事件传送给订阅方。 
 
 IoT 事件使用者使用的格式：
 
 ```json
 devices/{deviceId}
 ```
+## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>设备已连接和设备已断开连接事件的限制
 
-### <a name="tips-for-consuming-events"></a>使用事件的提示
+若要接收设备已连接和设备已断开连接事件，必须为设备打开 D2C 链路或 C2D 链路。 如果设备使用的是 MQTT 协议，IoT 中心将保持 C2D 链路打开。 对于 AMQP，可以通过调用[接收异步 API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet) 来打开 C2D 链路。 如果正在发送遥测数据，则 D2C 链路是打开的。 如果设备连接闪烁（即设备频繁连接和断开连接），我们将不会发送每个连接状态，而是发布每分钟创建快照的连接状态。 如果 IoT 中心发生服务中断，我们将在服务中断结束后立即发布设备连接状态。 如果设备在服务中断期间断开连接，则设备已断开连接事件将在 10 分钟内发布。
+
+## <a name="tips-for-consuming-events"></a>使用事件的提示
 
 处理 IoT 中心事件的应用程序应遵循以下建议的操作：
 
@@ -113,11 +143,10 @@ devices/{deviceId}
 * 请勿假定所接收的事件均为预期的类型。 在处理消息前，总是先检查 eventType。
 * 消息可能不按顺序到达，或者延迟达到。 使用 ETag 字段来了解对象的信息是否是最新的。
 
-
-
 ## <a name="next-steps"></a>后续步骤
 
 * [请尝试学习 IoT 中心事件教程](../event-grid/publish-iot-hub-events-to-logic-apps.md)
+* [了解如何订阅设备已连接和已断开连接事件](../iot-hub/iot-hub-how-to-order-connection-state-events.md)
 * [了解事件网格的详细信息][lnk-eg-overview]
 * [比较路由 IoT 中心事件和消息之间的区别][lnk-eg-compare]
 

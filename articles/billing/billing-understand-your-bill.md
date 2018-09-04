@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/14/2018
 ms.author: tonguyen
-ms.openlocfilehash: 689ea9e0d029bb65bc579fc914c6ed3073b4a96b
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: c782cadadb0250e6c3ca4912dbf8f81e19cb88c5
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064292"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42919048"
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>了解 Microsoft Azure 帐单
 要了解 Azure 帐单，请在 Azure 门户中将发票与每日使用情况明细文件和成本管理报表进行比较。
@@ -33,6 +33,9 @@ ms.locfileid: "37064292"
 有关发票和每日使用情况明细文件的详细条款和说明，请参阅[了解 Microsoft Azure 发票的相关条款](billing-understand-your-invoice.md)和[了解 Microsoft Azure 使用情况明细的相关条款](billing-understand-your-usage.md)。 
 
 有关成本管理报表的详细信息，请参阅 [Azure 门户成本管理](https://docs.microsoft.com/azure/billing/billing-getting-started)。
+
+> [!div class="nextstepaction"]
+> [帮助改进 Azure 计费文档](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="charges"></a>如何确定发票中的费用是正确的？
 

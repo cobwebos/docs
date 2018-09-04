@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: conceptual
-ms.date: 08/21/2018
+ms.date: 08/27/2018
 ms.author: carlrab
-ms.openlocfilehash: 03e24679ea01dabb78a0d7028d49b624b2e3bf64
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 7f784689e8437d92cf4fc4974983d3ae1455f11b
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246446"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43091818"
 ---
 # <a name="sql-database-faq"></a>SQL 数据库常见问题
 
@@ -155,7 +155,7 @@ SQL 数据库根据[购买模型](sql-database-service-tiers-dtu.md)按可预测
 - 如果在“常规用途”层中创建一个具有 8 个 vCore 的托管实例，并立即将其升级为 16 个 vCore，则第一个小时按 16 个 vCore 收费。
 
 > [!NOTE]
-> 在 2018 年 6 月 30 日之前的有限期内，将不收取备份费用和 IO 费用。
+> 在有限期内，将不收取备份费用和 IO 费用。
 
 ## <a name="how-does-the-use-of-active-geo-replication-in-an-elastic-pool-show-up-on-my-bill"></a>如何在我的帐单上体现弹性池中活动异地复制的使用？
 与单一数据库不同的是，对弹性数据库使用[活动异地复制](sql-database-geo-replication-overview.md)对计费没有直接的影响。  只需支付对每个池（主池和辅助池）预配的资源费用

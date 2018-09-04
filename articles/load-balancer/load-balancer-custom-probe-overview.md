@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/10/2018
+ms.date: 08/28/2018
 ms.author: kumud
-ms.openlocfilehash: 91c7d16296653aea2381793f2e52f2b33b831185
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 5ceddb1bcd6ce89f7014e034b56c873f02cc2007
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42143962"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190727"
 ---
 # <a name="load-balancer-health-probes"></a>负载均衡器运行状况探测
 
@@ -181,7 +181,12 @@ UDP 是无连接的，并且系统不会跟踪 UDP 的流状态。 如果后端�
 
 ## <a name="probesource"></a>探测源 IP 地址
 
-所有负载均衡器运行状况探测源自 IP 地址 168.63.129.16（源）。  将自己的 IP 地址放入 Azure 虚拟网络时，可以保证此运行状况探测源 IP 地址是唯一的，因为 Microsoft 会全局保留此地址。  此地址在所有区域中相同，并且不会更改。 不应将它视为安全风险，因为只有内部 Azure 平台可以从此 IP 地址获取数据包源。 
+负载均衡器对其内部运行状况模型使用分布式探测服务。 可以对 VM 所在的每个主机进行编程，以根据客户的配置生成运行状况探测。 运行状况探测流量直接位于生成运行状况探测的基础结构组件和客户 VM 之间。 所有负载均衡器运行状况探测源自 IP 地址 168.63.129.16（源）。  将自己的 IP 地址放入 Azure 虚拟网络时，可以保证此运行状况探测源 IP 地址是唯一的，因为 Microsoft 会全局保留此地址。  此地址在所有区域中相同，并且不会更改。 不应将它视为安全风险，因为只有内部 Azure 平台可以从此 IP 地址获取数据包源。 
+
+除了负载均衡器运行状况探测外，以下操作也使用此 IP 地址：
+
+- 使 VM 代理能够与平台通信，以表明它处于“就绪”状态
+- 启用与 DNS 虚拟服务器的通信，以便为未定义自定义 DNS 服务器的客户提供筛选的名称解析。  此筛选可确保客户只能解析其部署的主机名。
 
 要使负载均衡器的运行状况探测将实例标记为运行，**必须**在任何 Azure [安全组](../virtual-network/security-overview.md)和本地防火墙策略中允许此 IP 地址。
 

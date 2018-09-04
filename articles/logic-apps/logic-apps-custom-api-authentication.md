@@ -1,27 +1,22 @@
 ---
 title: 将身份验证添加到自定义 API - Azure 逻辑应用 | Microsoft Docs
-description: 通过逻辑应用为对自定义 API 的调用设置身份验证
-author: ecfan
-manager: jeconnoc
-editor: ''
+description: 通过 Azure 逻辑应用为调用自定义 API 设置身份验证
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
-ms.author: LADocs; estfan
-ms.openlocfilehash: 705abb2a3cc25c965bdce364eb169b4e3a814bff
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: b329fb1416d28b0732e7b9ea4612f5bac8580b3a
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298543"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43132757"
 ---
-# <a name="secure-calls-to-your-custom-apis-from-logic-apps"></a>通过逻辑应用保护对自定义 API 的调用
+# <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>通过 Azure 逻辑应用保护对自定义 API 的调用
 
 要保护对 API 的调用，可通过 Azure 门户设置 Azure Active Directory (Azure AD) 身份验证，这样便无需更新代码。 或者，还可利用 API 代码要求并强制执行身份验证。
 
@@ -29,7 +24,7 @@ ms.locfileid: "35298543"
 
 通过以下方式可以保护对自定义 API 的调用：
 
-* [无需更改代码](#no-code)：通过 Azure 门户使用 [Azure Active Directory (Azure AD)](../active-directory/active-directory-whatis.md) 保护 API，以便无需更新代码或重新部署 API。
+* [无需更改代码](#no-code)：通过 Azure 门户使用 [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) 保护 API，以便无需更新代码或重新部署 API。
 
   > [!NOTE]
   > 默认情况下，在 Azure 门户中开启的 Azure AD 身份验证不提供细化的授权。 例如，此身份验证将 API 锁定到特定租户，而不是特定用户或应用。 
@@ -191,7 +186,7 @@ ms.locfileid: "35298543"
 
 `{"tenant": "{tenant-ID}", "audience": "{client-ID-from-Part-2-web-app-or-API app}", "clientId": "{client-ID-from-Part-1-logic-app}", "secret": "{key-from-Part-1-logic-app}", "type": "ActiveDirectoryOAuth" }`
 
-| 元素 | 必选 | 说明 | 
+| 元素 | 必选 | Description | 
 | ------- | -------- | ----------- | 
 | tenant | 是 | Azure AD 租户的 GUID | 
 | audience | 是 | 想要访问的目标资源的 GUID - Web 应用或 API 应用的应用程序标识中的客户端 ID | 
@@ -237,7 +232,7 @@ ms.locfileid: "35298543"
 
 `{"type": "clientcertificate", "password": "password", "pfx": "long-pfx-key"}`
 
-| 元素 | 必选 | 说明 | 
+| 元素 | 必选 | Description | 
 | ------- | -------- | ----------- | 
 | type | 是 | 身份验证类型。 对于 SSL 客户端证书，该值必须为 `ClientCertificate`。 | 
 | password | 是 | 用于访问客户端证书（PFX 文件）的密码 | 
@@ -254,7 +249,7 @@ ms.locfileid: "35298543"
 
 `{"type": "basic", "username": "username", "password": "password"}`。
 
-| 元素 | 必选 | 说明 | 
+| 元素 | 必选 | Description | 
 | ------- | -------- | ----------- | 
 | type | 是 | 要使用的身份验证类型。 对于基本身份验证，该值必须是 `Basic`。 | 
 | username | 是 | 要用于身份验证的用户名 | 

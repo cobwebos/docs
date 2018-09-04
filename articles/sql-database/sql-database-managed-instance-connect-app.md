@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: c9d656908d265aeb6143e857b0ea4f635203bdd9
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 82e8836892b033ccbb3c3ad9806257348afe3702
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258722"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818396"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>将应用程序连接到 Azure SQL 数据库托管实例
 
@@ -75,9 +75,23 @@ ms.locfileid: "39258722"
 
 只能通过专用 IP 地址访问托管实例，因此，若要从开发人员工具箱访问托管实例，首先需要在开发人员工具箱与托管实例 VNet 之间建立连接。  
  
-参考有关本机 Azure 证书身份验证的文章中的详细说明，配置与 VNet 的点到站点连接（[Azure 门户](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)、[PowerShell](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)、[Azure CLI](../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md)）。  
+参考有关本机 Azure 证书身份验证的文章中的详细说明，配置与 VNet 的点到站点连接（[Azure 门户](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)、[PowerShell](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)、[Azure CLI](../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md)）。 
+
+## <a name="required-versions-of-drivers-and-tools"></a>所需的驱动程序和工具版本
+
+如果要连接到托管实例，建议使用以下最低版本的工具和驱动程序：
+
+| 驱动程序/工具 | 版本 |
+| --- | --- |
+|.NET framework | 4.6.1（或 .NET Core） | 
+|ODBC 驱动程序    | v17 |
+|PHP 驱动程序 | 5.2.0 |
+|JDBC 驱动程序    | 6.4.0 |
+|Node.js 驱动程序 | 2.1.1 |
+|OLEDB 驱动程序   | 18.0.2.0 |
+|SSMS   | 17.8.1 或[更高版本](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) |
 
 ## <a name="next-steps"></a>后续步骤
 
 - 有关托管实例的信息，请参阅[什么是托管实例](sql-database-managed-instance.md)。
-- 有关演示如何新建托管实例的教程，请参阅[创建托管实例](sql-database-managed-instance-create-tutorial-portal.md)。
+- 有关演示如何新建托管实例的教程，请参阅[创建托管实例](sql-database-managed-instance-get-started.md)。

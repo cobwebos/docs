@@ -1,6 +1,6 @@
 ---
-title: 使用 Privileged Identity Management 执行 Azure 资源的访问评审 | Microsoft Docs
-description: 说明如何在 Privileged Identity Management 中为 Azure 资源启动访问评审
+title: 在 PIM 中启动 Azure 资源角色的访问评审 | Microsoft Docs
+description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中启动 Azure 资源角色的访问评审。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: f88c4a2f7e6eb569c9c0de33ab86e8b484a923e3
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 9a35d32d89931a03b33f232ba4f79226fc3f57e5
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622875"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189168"
 ---
-# <a name="perform-access-reviews-in-azure-resources-by-using-privileged-identity-management"></a>使用 Privileged Identity Management 执行 Azure 资源的访问评审
+# <a name="start-an-access-review-for-azure-resource-roles-in-pim"></a>在 PIM 中启动 Azure 资源角色的访问评审
 当用户有不再需要的特权访问时，角色分配将变为“过时”。 为了降低与这些过时角色分配相关联的风险，特权角色管理员应定期审阅角色。 本文档包含在 Privileged Identity Management (PIM) 中为 Azure 资源启动访问评审的相关步骤。
 
 从 PIM 应用程序主页转至：
@@ -71,3 +71,8 @@ ms.locfileid: "39622875"
 
 在审阅期限结束之前，都可以提醒用户完成其审阅，或者从访问审阅部分提前结束审阅。
 
+## <a name="next-steps"></a>后续步骤
+
+- [在 PIM 中完成 Azure 资源角色的访问评审](pim-resource-roles-complete-access-review.md)
+- [在 PIM 中对 Azure 资源角色执行访问评审](pim-resource-roles-perform-access-review.md)
+- [在 PIM 中启动 Azure AD 目录角色的访问评审](pim-how-to-start-security-review.md)

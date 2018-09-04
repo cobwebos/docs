@@ -5,15 +5,15 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 08/22/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: e0c9708107139ec899cd5902a68ff90b57b741f7
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 4434b67393d34c3418e44e82681a586c268a37e5
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005913"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746990"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -438,14 +438,15 @@ PerItemErrorCount: 1006.
 1. 打开“证书”MMC 管理单元，选择“计算机帐户”，然后导航到“证书(本地计算机)”\“个人”\“证书”。
 2. 删除客户端身份验证证书（如果已过期），并关闭“证书”MMC 管理单元。
 3. 打开注册表编辑器，删除注册表中的 ServerSetting 项：HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync\ServerSetting
-4. 在服务器上运行以下 PowerShell 命令：
+4. 在 Azure 门户中，导航到存储同步服务的“已注册服务器”部分。 右键单击具有过期证书的服务器，然后单击“取消注册服务器”。
+5. 在服务器上运行以下 PowerShell 命令：
 
     ```PowerShell
     Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
     Reset-StorageSyncServer
     ```
 
-5. 运行 ServerRegistration.exe（默认位置为 C:\Program Files\Azure\StorageSyncAgent）以重新注册服务器。
+6. 运行 ServerRegistration.exe（默认位置为 C:\Program Files\Azure\StorageSyncAgent）以重新注册服务器。
 
 <a id="-1906441711"></a><a id="-2134375654"></a><a id="doesnt-have-enough-free-space"></a>**服务器终结点所在卷的磁盘空间不足。**  
 | | |

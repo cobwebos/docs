@@ -1,6 +1,6 @@
 ---
-title: 概述：在 Privileged Identity Management 中对 Azure 资源执行访问评审 | Microsoft 文档
-description: 本文档介绍如何在 PIM 中对 Azure 资源执行访问评审。
+title: 使用资源仪表板执行访问评审 - Azure | Microsoft Docs
+description: 介绍如何使用资源仪表板在 Azure AD Privileged Identity Management (PIM) 中执行访问评审。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,12 +15,12 @@ ms.component: pim
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 40fe6a4b0bec2540afee635b16ee3482a182a2df
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 20172cf7413397aedc4b3c32d0f1419531a2588a
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621482"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188491"
 ---
 # <a name="use-a-resource-dashboard-to-perform-an-access-review"></a>使用资源仪表板执行访问评审
 
@@ -40,4 +40,6 @@ ms.locfileid: "39621482"
 
 在图表下方，可以看到在过去 30 天获得了新角色分配的用户和组数，以及按分配总数排序的角色列表（以降序排序）。
 
+## <a name="next-steps"></a>后续步骤
 
+- [在 PIM 中启动 Azure 资源角色的访问评审](pim-resource-roles-start-access-review.md) 

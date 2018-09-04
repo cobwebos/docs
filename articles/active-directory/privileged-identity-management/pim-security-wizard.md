@@ -1,6 +1,6 @@
 ---
-title: Azure AD Privileged Identity Management 安全向导
-description: 首次使用 Azure Active Directory Privileged Identity Management 扩展时，会看到一个安全向导。 本文介绍如何使用该向导。
+title: PIM 中的安全向导 - Azure | Microsoft Docs
+description: 介绍首次使用 Azure AD Privileged Identity Management (PIM) 时出现的安全向导。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.component: pim
 ms.date: 02/27/2017
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017
-ms.openlocfilehash: 19eb2b36b217dc67fabcc3c2c4721fb13b2224ec
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 178a4c5e978075f2a59b22a1cccf462138527964
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617000"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189073"
 ---
-# <a name="using-the-security-wizard-in-azure-ad-privileged-identity-management"></a>使用 Azure AD Privileged Identity Management 中的安全向导 
+# <a name="security-wizard-in-pim"></a>PIM 中的安全向导
 如果是第一个在组织中运行 Azure Privileged Identity Management (PIM) 的人，就会看到一个向导。 该向导可帮助你了解特权标识的安全风险，以及如何使用 PIM 来降低这些风险。 如果希望以后再对现有的角色分配进行任何更改，则暂时不需要在向导中进行这些更改。
 
 ## <a name="what-to-expect"></a>期望
@@ -40,5 +40,7 @@ ms.locfileid: "39617000"
 * 如果想要向更多用户授予 PIM 管理访问权限，请参阅[如何授予 PIM 的管理访问权限](pim-how-to-give-access-to-pim.md)。
 
 ## <a name="next-steps"></a>后续步骤
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
 
+- [开始使用 PIM](pim-getting-started.md)
+- [在 PIM 中分配 Azure AD 目录角色](pim-how-to-add-role-to-user.md)
+- [授予其他管理员访问权限以管理 PIM](pim-how-to-give-access-to-pim.md)

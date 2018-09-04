@@ -9,12 +9,12 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: zhouwang
-ms.openlocfilehash: ee328145419aaf8962c08bca2fb9cf1a42daae0c
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: d58642b95a60d4f1c83dfd969d0c76511dca4653
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41929933"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43097389"
 ---
 # <a name="microsoft-bing-speech-api-overview"></a>Microsoft 必应语音 API 概述
 
@@ -24,7 +24,7 @@ ms.locfileid: "41929933"
 - 文本转语音 API 将文本转换为可向应用程序用户播放的音频流。
 
 > [!NOTE] 
-> 在 2018 年 5 月，我们以公共预览版形式发布了新的[语音服务](/speech-service/overview.md)。 我们建议你[免费试用](/speech-service/get-started.md)。
+> 在 2018 年 5 月，我们以公共预览版形式发布了新的[语音服务](../speech-service/overview.md)。 我们建议你[免费试用](../speech-service/get-started.md)。
 
 ## <a name="speech-to-text-speech-recognition"></a>语音转文本（语音识别）
 

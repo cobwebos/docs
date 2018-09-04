@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2018
+ms.date: 08/28/2018
 ms.author: celested
 ms.custom: aaddev
-ms.reviewer: luleon
-ms.openlocfilehash: 90b8a9bd45d2c6a8551e3af84a5bfa915f4c3cea
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.reviewer: celested
+ms.openlocfilehash: c9db5169a978875cf639f6c534ce7920909c896e
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592197"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188234"
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>将应用程序与 Azure Active Directory 集成
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -95,7 +95,7 @@ ms.locfileid: "39592197"
 
 5. 用户授予许可后，授权代码会返回到应用程序，应用程序可凭此获取访问令牌和刷新令牌。 有关此流程的详细信息，请参阅[“Azure AD 的身份验证方案”中的“从 Web 应用程序到 Web API”部分](authentication-scenarios.md#web-application-to-web-api)。
 
-6. 作为管理员，还可以代表租户中的所有用户同意应用程序的委派权限。 管理许可可防止针对租户中的每个用户显示许可对话框，可通过具有管理员角色的用户在 [Azure 门户](https://portal.azure.com)中执行。 在应用程序的“设置”页，单击“所需权限”，再单击“授予权限”按钮。 
+6. 作为管理员，还可以代表租户中的所有用户同意应用程序的委派权限。 管理许可可防止针对租户中的每个用户显示许可对话框，可通过具有管理员角色的用户在 [Azure 门户](https://portal.azure.com)中执行。 在应用程序的“设置”页中，单击“所需权限”，再单击“授予权限”按钮。 
 
   ![授予显式管理许可权限](./media/quickstart-v1-integrate-apps-with-azure-ad/grantpermissions.png)
     
@@ -112,7 +112,7 @@ ms.locfileid: "39592197"
 - 委托的权限：客户端应用程序需要以登录用户的身份访问 Web API，但访问权限受所选权限的限制。 除非权限需要管理员许可，否则用户可以授予此类型的权限。 
 
   > [!NOTE]
-  > 将委托权限添加到应用程序不会自动向租户中的用户授予许可。 在运行时，用户仍必须手动许可添加的委托权限，除非管理员在 Azure 门户的应用程序页的“所需权限”部分中单击“授予权限”按钮。 
+  > 将委托权限添加到应用程序不会自动向租户中的用户授予许可。 除非管理员代表所有用户授予许可，否则用户仍必须在运行时手动同意添加的委派权限。
 
 #### <a name="to-add-application-credentials-or-permissions-to-access-web-apis"></a>添加用于访问 Web API 的应用程序凭据或权限
 1. 登录到 [Azure 门户](https://portal.azure.com)。
@@ -121,13 +121,15 @@ ms.locfileid: "39592197"
 
    ![更新应用程序的注册](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration.png)
 
-4. 随后会转到应用程序的注册主页，并打开应用程序的“设置”页。 若要添加 Web 应用程序凭据的机密密钥，请执行以下操作：
+4. 随后会转到应用程序的注册主页，并打开应用程序的“设置”页。 若要为 Web 应用程序添加凭据，请执行以下操作：
   - 在“设置”页上单击“密钥”部分。 
-  - 添加密钥的说明。
-  - 选择一年或两年持续时间。
-  - 单击“ **保存**”。 保存配置更改后，最右边的列将包含密钥值。 **请务必复制密钥**以便在客户端应用程序代码中使用，因为退出此页后无可访问此密钥。
-
-  ![更新应用程序的注册 - 密钥](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-keys.png)
+  - 若要添加证书，请执行以下操作：
+    - 选择“上传公钥”。
+    - 选择要上传的文件。 它必须是以下文件类型之一：.cer、.pem、.crt。
+  - 若要添加密码，请执行以下操作：
+    - 添加密钥的说明。
+    - 选择持续时间。
+    - 单击“ **保存**”。 保存配置更改后，最右边的列将包含密钥值。 **请务必复制密钥**以便在客户端应用程序代码中使用，因为退出此页后无可访问此密钥。
 
 5. 添加从客户端访问资源 API 的权限
   - 在“设置”页上单击“所需权限”部分。 
@@ -141,11 +143,6 @@ ms.locfileid: "39592197"
   ![更新应用程序的注册 - 权限 perms](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms.png)
 
 6. 完成后，在“启用访问权限”页上单击“选择”按钮，并在“添加 API 访问权限”页上单击“完成”按钮。 随后会返回到“所需权限”页，其中的新资源已添加到 API 列表。
-
-  > [!NOTE]
-  > 单击“完成”按钮还会基于配置的“对其他应用程序的权限”自动为目录中的应用程序设置权限。 可以在应用程序“设置”页上查看这些应用程序权限。
-  > 
-  > 
 
 ### <a name="configuring-a-resource-application-to-expose-web-apis"></a>将资源应用程序配置为公开 Web API
 

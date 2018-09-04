@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 0900588f818855d72e415678338c96fb6505318d
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: bbf3c5930de2ec6c709b6b527ae3eac107382420
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41937516"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047793"
 ---
 # <a name="release-notes"></a>发行说明
 
@@ -78,7 +78,7 @@ ms.locfileid: "41937516"
 
 * 修复了 `RecognizeAsync()` 超时时结果中的错误返回值。
 * 删除了 Windows 上媒体基础库的依赖项。 SDK 现使用 Core Audio API。
-* 文档修复：添加了一个区域页来描述支持的区域。
+* 文档修复：添加了一个[区域](regions.md)页来描述支持的区域。
 
 **已知问题**
 

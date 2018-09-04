@@ -1,27 +1,23 @@
 ---
 title: 为 AS2 消息解码 - Azure 逻辑应用 | Microsoft 文档
-description: 如何对 Azure 逻辑应用使用 Enterprise Integration Pack 中的 AS2 解码器
+description: 使用 Azure 逻辑应用和 Enterprise Integration Pack 解码 AS 消息
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: padmavc
-manager: jeconnoc
-editor: ''
-ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.date: 08/08/2018
-ms.author: LADocs; padmavc
-ms.openlocfilehash: a1b2d68a4a9433dc5c68d65552bf6bd509463958
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 06ffa6bddc1340ad548f9baf30eba65ba503bf73
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42141209"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128275"
 ---
-# <a name="decode-as2-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 为 Azure 逻辑应用的 AS2 消息解码 
+# <a name="decode-as2-messages-with-azure-logic-apps-and-enterprise-integration-pack"></a>使用 Azure 逻辑应用和 Enterprise Integration Pack 解码 AS2 消息 
 
 若要在传输消息时建立安全性和可靠性，请使用解码 AS2 消息连接器。 此连接器通过消息处置通知 (MDN) 提供数字签名、解密和确认等功能。
 

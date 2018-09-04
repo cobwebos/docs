@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 20bd2d61671d89a5c2a13525ea119595cf0b7c93
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: d4ca44268740f48702594d9c87aa568d4f8eecb6
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246407"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122399"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>虚拟机串行控制台（预览版） 
 
@@ -35,12 +35,20 @@ ms.locfileid: "40246407"
 ## <a name="prerequisites"></a>先决条件 
 
 * 必须使用资源管理部署模型。 不支持经典部署。 
-* 虚拟机上必须已启用[启动诊断](boot-diagnostics.md) 
-* 使用串行控制台的帐户必须对 VM 和[启动诊断](boot-diagnostics.md)存储帐户拥有[参与者角色](../../role-based-access-control/built-in-roles.md)。 
+* 虚拟机必须已启用[启动诊断](boot-diagnostics.md) - 请参阅下面的屏幕截图。
+
+    ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
+    
+* 使用串行控制台的 Azure 帐户必须对 VM 和[启动诊断](boot-diagnostics.md)存储帐户拥有[参与者角色](../../role-based-access-control/built-in-roles.md)。 
+* 你要针对其访问串行控制台的虚拟机必须也具有基于密码的帐户。 可以使用 VM 访问扩展的[重置密码](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)功能创建一个 - 请参阅下面的屏幕截图。
+
+    ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-reset-password.png)
+
 * 有关特定于 Linux 分发版的设置，请参阅[访问适用于 Linux 的串行控制台](#access-serial-console-for-linux)
 
 
-## <a name="open-the-serial-console"></a>打开串行控制台
+
+## <a name="get-started-with-serial-console"></a>开始使用串行控制台
 只能通过 [Azure 门户](https://portal.azure.com)访问虚拟机的串行控制台。 下面是通过门户访问虚拟机串行控制台的步骤 
 
   1. 打开 Azure 门户
@@ -65,7 +73,7 @@ ms.locfileid: "40246407"
 另外，可以在 Cloud Shell 中使用以下命令集（显示的 bash 命令）来为订阅禁用、启用和查看串行控制台的状态。 
 
 * 若要为订阅获取串行控制台的禁用状态，请使用以下命令：
-    ```
+    ```azurecli-interactive
     $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
 
     $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
@@ -73,7 +81,7 @@ ms.locfileid: "40246407"
     $ curl "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s | jq .properties
     ```
 * 若要为订阅禁用串行控制台，请使用以下命令：
-    ```
+    ```azurecli-interactive
     $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
 
     $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
@@ -81,7 +89,7 @@ ms.locfileid: "40246407"
     $ curl -X POST "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default/disableConsole?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s -H "Content-Length: 0"
     ```
 * 若要为订阅启用串行控制台，请使用以下命令：
-    ```
+    ```azurecli-interactive
     $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
 
     $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
@@ -139,7 +147,7 @@ Oracle Linux        | Azure 中提供的 Oracle Linux 映像默认已启用控�
 自定义 Linux 映像     | 若要为自定义 Linux VM 映像启用串行控制台，请在 /etc/inittab 中启用控制台访问，以便在 ttyS0 上运行终端。 下面是在 inittab 文件中添加此条目的示例：`S0:12345:respawn:/sbin/agetty -L 115200 console vt102`。 有关正确创建自定义映像的详细信息，请参阅[在 Azure 中创建和上传 Linux VHD](https://aka.ms/createuploadvhd)。
 
 ## <a name="errors"></a>Errors
-大多数错误都是暂时性的，重试串行控制台连接往往可以解决。 下表显示了错误和缓解措施的列表 
+大多数错误都是暂时性的，重试串行控制台连接往往可以解决。 下表显示了错误和缓解措施的列表
 
 错误                            |   缓解措施 
 :---------------------------------|:--------------------------------------------|
@@ -154,7 +162,7 @@ Web 套接字已关闭或无法打开。 | 你可能需要将 `*.console.azure.c
 问题                           |   缓解措施 
 :---------------------------------|:--------------------------------------------|
 没有相应的选项用于访问虚拟机规模集实例的串行控制台 |  在预览期，不支持访问虚拟机规模集实例的串行控制台。
-在出现连接标题后按 Enter 不会显示登录提示 | [按 Enter 不起任何作用](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)
+在出现连接标题后按 Enter 不会显示登录提示 | 请参阅此页：[按 Enter 不执行任何操作](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)。 如果你运行的自定义 VM、强化设备或 GRUB 配置导致 Linux 无法正确连接到串行端口，则可能会发生这种情况。
 访问此 VM 的启动诊断存储帐户时遇到“已禁止”响应。 | 请确保启动诊断没有帐户防火墙。 若要使串行控制台正常运行，需要一个可访问的启动诊断存储帐户。
 
 

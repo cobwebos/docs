@@ -1,6 +1,6 @@
 ---
-title: 如何配置安全警报 | Microsoft 文档
-description: 了解如何为 Azure Privileged Identity Management 扩展配置安全警报。
+title: 在 PIM 中为 Azure AD 目录角色配置安全警报 | Microsoft Docs
+description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中为 Azure AD 目录角色配置安全警报。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.component: pim
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8df9bc7c332a83e9761ea71dddfbfbfaa3ae5154
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: fc39b6ad2dd63d45995b76011f4ebbe0228b4c2d
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622147"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190385"
 ---
-# <a name="how-to-configure-security-alerts-in-azure-ad-privileged-identity-management"></a>如何在 Azure AD Privileged Identity Management 中配置安全警报
+# <a name="configure-security-alerts-for-azure-ad-directory-roles-in-pim"></a>在 PIM 中为 Azure AD 目录角色配置安全警报
 ## <a name="security-alerts"></a>安全警报
 如果环境中有可疑活动或不安全活动，Azure Privileged Identity Management (PIM) 将生成警报。 触发警报时，它显示在 PIM 仪表板上。 选择警报以查看列出了已触发该警报的用户或角色的报告。
 
@@ -65,4 +65,6 @@ ms.locfileid: "39622147"
 * **天数**：指定用户不激活角色的天数（范围介于 0 到 100）.
 
 ## <a name="next-steps"></a>后续步骤
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
+
+- [在 PIM 中配置 Azure AD 目录角色设置](pim-how-to-change-default-settings.md)
+- [在 PIM 中要求 Azure AD 目录角色进行多重身份验证](pim-how-to-require-mfa.md)

@@ -11,30 +11,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/30/2018
+ms.date: 08/24/2018
 ms.author: mstewart
-ms.openlocfilehash: e669fb5da0e3fd3c6a14ffed5cbdf80b8a4d9590
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: e63d798c24159777711c9cdd765e40b44826a530
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390715"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888723"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure 磁盘加密故障排除指南
 
-本指南面向使用 Azure 磁盘加密的组织中的 IT 专业人员、信息安全分析人员和云管理员。 本文旨在提供磁盘加密相关问题的排查指南。
+本指南面向使用 Azure 磁盘加密的组织中的 IT 专业人员、信息安全分析人员和云管理员。 本文旨在帮助排查与磁盘加密相关的问题。
 
 ## <a name="troubleshooting-linux-os-disk-encryption"></a>Linux OS 磁盘加密故障排除
 
 在通过全盘加密过程运行 Linux 操作系统 (OS) 磁盘加密之前，Linux 操作系统 (OS) 磁盘加密必须卸载 OS 驱动器。 如果无法卸载驱动器，则可能会出现错误消息“在发生以下情况后，卸载失败...”。
 
-在通过受支持的储备库映像更改的目标 VM 环境上尝试加密 OS 磁盘时，会发生此错误。 如果与支持的映像存在偏差，则可能妨碍扩展卸载 OS 驱动器，这种情况由下述原因导致：
+在通过受支持的储备库映像更改的目标 VM 环境上尝试加密 OS 磁盘时，会发生此错误。 与支持的映像的偏差可能会影响扩展卸载 OS 驱动器的能力。 偏差的示例可包括以下项：
 - 自定义映像不再与受支持文件系统或分区方案匹配。
-- 加密之前在 OS 中安装并运行了 SAP、MongoDB、Apache Cassandra 和 Docker 等大型应用程序时，将不支持这些应用程序。 “Azure 磁盘加密”在准备用于磁盘加密的 OS 驱动器时无法根据需要安全地关闭这些进程。 如果仍有活动的进程具备对 OS 驱动器打开的文件句柄，则 OS 驱动器无法卸载，这将导致 OS 驱动器加密失败。 
+- 加密之前在 OS 中安装并运行 SAP、MongoDB、Apache Cassandra 和 Docker 等大型应用程序时，将不支持这些应用程序。 “Azure 磁盘加密”在准备用于磁盘加密的 OS 驱动器时无法根据需要安全地关闭这些进程。 如果仍有活动的进程具备对 OS 驱动器打开的文件句柄，则 OS 驱动器无法卸载，这将导致 OS 驱动器加密失败。 
 - 在启用加密的几乎同一时间内运行自定义脚本，或者在加密过程中在 VM 上进行其他任何更改。 如果 Azure 资源管理器模板定义了多个同时执行的扩展，或者在执行磁盘加密的同时运行自定义脚本扩展或其他操作，则可能会发生此冲突。 序列化并隔离此类步骤可能会解决问题。
-- 在启用加密之前未禁用安全性增强的 Linux (SELinux)，卸载步骤将会失败。 完成加密后，可以重新启用 SELinux。
-- OS 磁盘使用逻辑卷管理器 (LVM) 方案。 尽管此时可以使用有限的 LVM 数据磁盘支持，但无法使用 LVM OS 磁盘支持。
-- 不满足最低内存要求（建议为 OS 磁盘加密提供 7GB）。
+- 在启用加密之前未禁用安全性增强的 Linux (SELinux)，因此卸载步骤将会失败。 完成加密后，可以重新启用 SELinux。
+- OS 磁盘使用逻辑卷管理器 (LVM) 方案。 尽管可以使用有限的 LVM 数据磁盘支持，但无法使用 LVM OS 磁盘支持。
+- 不满足最低内存要求（建议为 OS 磁盘加密提供 7 GB）。
 - 数据驱动器以递归方式装载在 /mnt/ 目录下，或者相互装载（例如 /mnt/data1、/mnt/data2、/data3 + /data3/data4）。
 - 不满足 Linux 的其他 Azure 磁盘加密[先决条件](azure-security-disk-encryption-prerequisites.md)。
 
@@ -117,14 +117,14 @@ DISKPART> list vol
   Volume 1                      NTFS   Partition    550 MB  Healthy    System
   Volume 2     D   Temporary S  NTFS   Partition     13 GB  Healthy    Pagefile
 ```
-## <a name="troubleshooting-encryption-status"></a>加密状态故障排除
+<!-- ## Troubleshooting encryption status
 
-如果预期的加密状态与门户中报告的内容不匹配，请参阅以下支持文章：[Azure 管理门户上显示的加密状态有误](https://support.microsoft.com/en-us/help/4058377/encryption-status-is-displayed-incorrectly-on-the-azure-management-por)
+If the expected encryption state does not match what is being reported in the portal, see the following support article:
+[Encryption status is displayed incorrectly on the Azure Management Portal](https://support.microsoft.com/en-us/help/4058377/encryption-status-is-displayed-incorrectly-on-the-azure-management-por) --> 
 
 ## <a name="next-steps"></a>后续步骤
 
 本文档已详细描述有关 Azure 磁盘加密的一些常见问题和解决这些问题的方法。 有关此服务及其功能的详细信息，请参阅以下文章：
 
 - [在 Azure 安全中心应用磁盘加密](../security-center/security-center-apply-disk-encryption.md)
-- [加密 Azure 虚拟机](../security-center/security-center-disk-encryption.md)
 - [Azure 静态数据加密](azure-security-encryption-atrest.md)

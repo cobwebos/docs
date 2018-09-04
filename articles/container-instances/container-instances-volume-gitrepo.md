@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 04/16/2018
+ms.date: 06/15/2018
 ms.author: marsma
-ms.openlocfilehash: e40d841c07534c9c0074c038d1e3c6e435265564
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 34036c5ec9ccd8c502104ce862e4749c59be62b9
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32166773"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43105192"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>在 Azure 容器实例中装载 gitRepo 卷
 
@@ -28,7 +28,7 @@ ms.locfileid: "32166773"
 
 装载 *gitRepo* 卷时，可以设置三个属性以对卷进行配置：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 必选 | Description |
 | -------- | -------- | ----------- |
 | `repository` | 是 | 要克隆的 Git 存储库的完整 URL，包括 `http://` 或 `https://`。|
 | `directory` | 否 | 存储库应克隆到的目录。 路径不得包含“`..`”，也不能以其开头。  如果指定“`.`”，存储库将克隆到卷的目录。 否则，Git 存储库将克隆到卷目录中给定名称的子目录。 |
@@ -69,8 +69,7 @@ drwxr-xr-x    2 root     root          4096 Apr 16 16:35 app
 
 例如，以下资源管理器模板创建了一个包含单个容器的容器组。 该容器克隆由 *gitRepo* 卷块指定的两个 GitHub 存储库。 第二个卷包括其他属性以指定要克隆到的目录和要克隆的特定修订的提交哈希。
 
-<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-gitrepo.json -->
-[!code-json[volume-gitrepo](~/azure-docs-json-samples/container-instances/aci-deploy-volume-gitrepo.json)]
+<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-gitrepo.json --> [!code-json[volume-gitrepo](~/azure-docs-json-samples/container-instances/aci-deploy-volume-gitrepo.json)]
 
 前面的模板中定义的两个克隆存储库的生成目录结构如下：
 
@@ -80,6 +79,28 @@ drwxr-xr-x    2 root     root          4096 Apr 16 16:35 app
 ```
 
 若要查看使用 Azure 资源管理器模板进行的容器实例部署示例，请参阅[在 Azure 容器实例中部署多容器组](container-instances-multi-container-group.md)。
+
+## <a name="private-git-repo-authentication"></a>专用 Git 存储库身份验证
+
+若要为专用 Git 存储库装载 gitRepo 卷，请在存储库 URL 中指定凭据。 通常，凭据采用用户名和个人访问令牌 (PAT) 的形式，授予对存储库的范围访问权限。
+
+例如，专用 GitHub 存储库的 Azure CLI `--gitrepo-url` 参数将类似于以下内容（其中“gituser”是 GitHub 用户名，“abcdef1234fdsa4321abcdef”是用户的个人访问令牌）：
+
+```azurecli
+--gitrepo-url https://gituser:abcdef1234fdsa4321abcdef@github.com/GitUser/some-private-repository
+```
+
+对于 VSTS Git 存储库，请指定任何用户名（可以使用“vstsuser”，如下例所示）并结合有效的 PAT：
+
+```azurecli
+--gitrepo-url https://vstsuser:abcdef1234fdsa4321abcdef@vstsaccountname.visualstudio.com/_git/some-private-repository
+```
+
+有关 GitHub 和 VSTS 的个人访问令牌的详细信息，请参阅以下内容：
+
+GitHub：[创建命令行的个人访问令牌][pat-github]
+
+VSTS：[创建个人访问令牌以对访问进行身份验证][pat-vsts]
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -91,6 +112,8 @@ drwxr-xr-x    2 root     root          4096 Apr 16 16:35 app
 
 <!-- LINKS - External -->
 [aci-helloworld]: https://github.com/Azure-Samples/aci-helloworld
+[pat-github]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
+[pat-vsts]: https://docs.microsoft.com/vsts/organizations/accounts/use-personal-access-tokens-to-authenticate
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create

@@ -1,28 +1,23 @@
 ---
-title: Azure 无服务器产品/服务概述 | Microsoft Docs
-description: 在云中创建功能强大的解决方案，而无需考虑基础结构。
-keywords: ''
+title: Azure 无服务器概述 | Microsoft Docs
+description: 了解如何在云中创建功能强大的解决方案，而无需担心基础结构
 services: logic-apps
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: jeffhollan
+ms.author: jehollan
+ms.reviewer: klam, estfan, LADocs
+ms.custom: vs-azure
 ms.topic: article
 ms.date: 03/30/2017
-ms.author: LADocs; jehollan
-ms.openlocfilehash: 84ff855676215e6b69ec97a1527d14366e763b07
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 97c928c34a18a5d4f3549c348a273df268ee1db0
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299920"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123302"
 ---
-# <a name="overview-of-azure-serverless-with-functions-and-logic-apps"></a>Azure 无服务器产品/服务以及 Functions 和逻辑应用的概述
+# <a name="overview-azure-serverless-with-azure-logic-apps-and-azure-functions"></a>概述：使用 Azure 逻辑应用和 Azure Functions 的 Azure 无服务器
 
 无服务器应用程序提供了以下优势：部署速度快、减少了所需的代码，并且缩放简单。  本文将探讨无服务器解决方案的各种属性以及 Azure 无服务器产品/服务。
 

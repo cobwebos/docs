@@ -1,27 +1,23 @@
 ---
 title: 使用 XSLT 映射转换 XML - Azure 逻辑应用 | Microsoft 文档
-description: 添加 XSLT 映射以使用 Azure 逻辑应用和 Enterprise Integration Pack 转换 XML 数据
+description: 在带有 Enterprise Integration Pack 的 Azure 逻辑应用中添加用于转换 XML 的 XSLT 映射
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: msftman
-manager: jeconnoc
-editor: cgronlun
-ms.assetid: 90f5cfc4-46b2-4ef7-8ac4-486bb0e3f289
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 90f5cfc4-46b2-4ef7-8ac4-486bb0e3f289
 ms.date: 07/08/2016
-ms.author: LADocs; padmavc
-ms.openlocfilehash: e0a8e5dfd42d447b4e049574b346c41fe0067c9f
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: c5e5e0a0a3f8bd5feedc00d5bbfb76a1453ccc84
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299131"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123550"
 ---
-# <a name="add-maps-for-xml-data-transform"></a>添加映射以进行 XML 数据转换
+# <a name="add-maps-for-xml-transformation-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中添加用于 XML 转换的映射
 
 企业集成使用映射将 XML 数据在格式之间转换。 映射是一个 XML 文档，用于定义文档中应转换为另一种格式的数据。 
 

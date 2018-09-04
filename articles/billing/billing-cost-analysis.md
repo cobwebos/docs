@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: billing
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: eeaf02853f8ffe9ca67dbf31afc687afb7dee242
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: db06956e01ed38ce1f8ee0ce92526be16733fd73
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40180421"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818118"
 ---
 # <a name="explore-and-analyze-costs-with-cost-analysis"></a>通过成本分析了解和分析成本
 

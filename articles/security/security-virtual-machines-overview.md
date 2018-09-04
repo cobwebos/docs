@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 5ffba386ae6b1e1e5d18f92803bc8cb74b2ff89e
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: fb6a984ff838305b4ce411538465c0b9b5c152da
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061293"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886908"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 虚拟机安全概述
 可使用 Azure 虚拟机灵活地部署各种计算解决方案。 该服务支持 Microsoft Windows、Linux、Microsoft SQL Server、Oracle、IBM、SAP 和 Azure BizTalk Services。 因此，几乎可在任何操作系统上部署任何工作负载和任何语言。
@@ -62,8 +62,7 @@ Azure 虚拟机可用于灵活地进行虚拟化，而无需购买和维护运�
 * [在 Azure 虚拟机上部署反恶意软件解决方案](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 * [如何在 Windows VM 上安装和配置服务型 Trend Micro Deep Security](../virtual-machines/windows/classic/install-trend.md)
 * [如何在 Windows VM 上安装和配置 Symantec Endpoint Protection](../virtual-machines/windows/classic/install-symantec.md)
-* 
-  [Azure 市场中的安全解决方案](https://azure.microsoft.com/marketplace/?term=security)
+* [Azure 市场中的安全解决方案](https://azure.microsoft.com/marketplace/?term=security)
 
 ## <a name="hardware-security-module"></a>硬件安全模块
 提高密钥安全性可增强加密和身份验证保护。 通过将关键密码和密钥存储在 Azure 密钥保管库中，可以简化此类密码和密钥的管理和保护。 
@@ -83,9 +82,8 @@ Azure 磁盘加密是用于加密 Windows 和 Linux 虚拟机磁盘的新功能�
 
 了解更多：
 
-* [Azure Disk Encryption for Windows and Linux IaaS VMs](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)（适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密）
-* [Azure Disk Encryption for Linux and Windows Virtual Machines](https://blogs.msdn.microsoft.com/azuresecurity/2015/11/16/azure-disk-encryption-for-linux-and-windows-virtual-machines-public-preview-now-available/)（适用于 Linux 和 Windows 虚拟机的 Azure 磁盘加密）
-* [加密虚拟机](../security-center/security-center-disk-encryption.md)
+* [适用于 IaaS VM 的 Azure 磁盘加密](../security/azure-security-disk-encryption-overview.md)
+* [快速入门：使用 Azure PowerShell 加密 Windows IaaS VM](../security/quick-encrypt-vm-powershell.md)
 
 ## <a name="virtual-machine-backup"></a>虚拟机备份
 Azure 备份是一种可缩放的解决方案，无需资本投资便可帮助保护应用程序数据，从而最大限度降低运营成本。 应用程序错误可能损坏数据，人为错误可能将 bug 引入应用程序。 借助 Azure 备份，可以保护运行 Windows 和 Linux 的虚拟机。

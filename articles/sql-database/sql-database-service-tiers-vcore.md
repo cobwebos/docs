@@ -6,15 +6,15 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/15/2018
+ms.date: 08/27/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: e833cb0e7f98933fd106a92a9aac6c4c2677d50d
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 3d0eca6e1c680dd703f4dceac6abcb70144bac37
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42443576"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124991"
 ---
 # <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>选择 vCore 服务层、计算、内存、存储和 IO 资源
 
@@ -35,8 +35,8 @@ vCore 模型提供了两个服务层：常规用途和业务关键。 服务层�
 |最适用于|大多数业务工作负荷。 提供预算导向的、均衡且可缩放的计算和存储选项。|IO 要求高的业务应用程序。 使用多个独立副本，提供最高级别的故障恢复能力。|
 |计算|第 4 代：1 到 24 个 vCore<br/>第 5 代：1 到 80 个 vCore|第 4 代：1 到 24 个 vCore<br/>第 5 代：1 到 80 个 vCore|
 |内存|Gen4：每个核心 7 GB<br>Gen5：每个核心 5.5 GB | Gen4：每个核心 7 GB<br>Gen5：每个核心 5.5 GB |
-|存储|[高级远程存储](../virtual-machines/windows/premium-storage.md)，<br/>单一实例数据库：5 GB – 4 TB<br/>托管实例：32 GB - 8 TB |本地 SSD 存储，<br/>单一数据库：5 GB – 4 TB<br/>托管实例：32 GB - 4 TB |
-|IO 吞吐量（近似）|单一实例数据库：每个 vCore 提供 500 IOPS，最大 7000 IOPS</br>托管实例：取决于[文件大小](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|每个 vCore 提供 5000 IOPS，最大 200000 IOPS|
+|存储|[高级远程存储](../virtual-machines/windows/premium-storage.md)，<br/>单一数据库：5 GB – 4 TB<br/>托管实例：32 GB - 8 TB |本地 SSD 存储，<br/>单一数据库：5 GB - 1 TB<br/>托管实例：32 GB - 4 TB |
+|IO 吞吐量（近似）|单一数据库：每个 vCore 提供 500 IOPS，最大 7000 IOPS</br>托管实例：取决于[文件大小](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|每个 vCore 提供 5000 IOPS，最大 200000 IOPS|
 |可用性|1 个副本，无读取缩放组|3 个副本，1 个[读取缩放副本](sql-database-read-scale-out.md)，<br/>区域冗余 HA|
 |备份|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md)，7-35 天（默认为 7 天）|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md)，7-35 天（默认为 7 天）|
 |内存中|不适用|支持|
@@ -54,7 +54,7 @@ vCore 模型提供了两个服务层：常规用途和业务关键。 服务层�
 请注意以下几点：
 - 分配的存储由数据文件 (MDF) 和日志文件 (LDF) 使用。
 - 每个单一实例数据库性能级别支持一个最大数据库大小，默认最大大小为 32 GB。
-- 配置所需的单一实例数据库大小（MDF 大小）时，系统会自动额外添加 30% 的存储来支持 LDF
+- 配置所需的单一数据库大小（MDF 大小）时，系统会自动额外添加 30% 的存储来支持 LDF
 - 托管实例中的存储大小必须指定为 32 GB 的倍数。
 - 可以选择介于 10 GB 与受支持最大值之间的任何单一实例数据库大小
  - 对于标准存储，可以按 10 GB 的增量增大或减小大小

@@ -1,28 +1,24 @@
 ---
-title: 计划任务和定期运行的工作流 - Azure 逻辑应用 | Microsoft Docs
-description: 使用逻辑应用创建和计划定期运行的任务、操作、工作流、过程和工作负荷
+title: 使用 Azure 逻辑应用创建定期运行的任务和工作流 | Microsoft Docs
+description: 在 Azure 逻辑应用中使用“定期”连接器自动执行按计划运行的任务和工作流
 services: logic-apps
-documentationcenter: ''
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: 51dd4f22-7dc5-41af-a0a9-e7148378cd50
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: 51dd4f22-7dc5-41af-a0a9-e7148378cd50
+tags: connectors
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/25/2017
-ms.author: LADocs; estfan
-ms.openlocfilehash: 3bd396355681cdde486cfbea7004c9c1aece09da
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 905157ab530ae042318de520f9d6fe24cb9d59ce
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296781"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127048"
 ---
-# <a name="create-and-schedule-regularly-running-tasks-with-azure-logic-apps"></a>使用 Azure 逻辑应用创建和计划定期运行的任务
+# <a name="create-and-run-recurring-tasks-and-workflows-with-azure-logic-apps"></a>使用 Azure 逻辑应用创建和运行重复任务和工作流
 
 若要计划定期运行的任务、操作、工作负荷或过程，可以创建一个能够通过“计划 - 定期”[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)启动的逻辑应用工作流。 使用此触发器，可以设置定期计划的开始日期和时间，以及一个用于执行任务的定期计划，部分示例如下：
 
@@ -97,10 +93,10 @@ ms.locfileid: "35296781"
 
 可为定期触发器配置以下属性。
 
-| 名称 | 必选 | 属性名称 | Type | 说明 | 
+| 名称 | 必选 | 属性名称 | Type | Description | 
 |----- | -------- | ------------- | ---- | ----------- | 
 | **频率** | 是 | 频率 | String | 定期计划的时间单位：“秒”、“分钟”、“小时”、“天”、“周”或“月” | 
-| **间隔** | 是 | interval | Integer | 一个正整数，描述工作流基于频率运行的频繁度。 <p>默认间隔为 1。 下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 | 
+| 间隔 | 是 | interval | Integer | 一个正整数，描述工作流基于频率运行的频繁度。 <p>默认间隔为 1。 下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 | 
 | **时区** | 否 | timezone | String | 仅当指定启动时间时才适用，因为此触发器不接受 [UTC 时差](https://en.wikipedia.org/wiki/UTC_offset)。 选择要应用的时区。 | 
 | **开始时间** | 否 | startTime | String | 按以下格式提供开始时间： <p>如果选择了时区，则格式为 YYYY-MM-DDThh:mm:ss <p>-或- <p>如果未选择时区，则格式为 YYYY-MM-DDThh:mm:ssZ <p>例如，如果希望开始时间为 2017 年 9 月 18 日 2:00 PM，请指定“2017-09-18T14:00:00”并选择时区（例如“太平洋时间”）。 或者指定“2017-09-18T14:00:00Z”且不选择时区。 <p>**注意：** 此开始时间必须遵循 [UTC 日期时间格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)中的 [ISO 8601 日期时间规范](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)，但没有 [UTC 时差](https://en.wikipedia.org/wiki/UTC_offset)。 如果未选择时区，必须在末尾添加字母“Z”（无空格）。 这个“Z”指等效的[航海时间](https://en.wikipedia.org/wiki/Nautical_time)。 <p>对于简单计划，开始时间指首次运行时间；对于复杂计划，触发器的激发时间不会早于开始时间。 [*可通过哪些方式使用开始日期和时间？*](#start-time) | 
 | **在这些日期** | 否 | 工作日 | 字符串或字符串数组 | 如果选择了“周”，则可以选择一个或多个星期日期作为运行工作流的时间：“星期一”、“星期二”、“星期三”、“星期四”、“星期五”、“星期六”和“星期日” | 
@@ -141,7 +137,7 @@ ms.locfileid: "35296781"
 }
 ```
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 <a name="example-recurrences"></a>
 

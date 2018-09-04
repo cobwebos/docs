@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: b05eef79e94cff74b1e02243cd7c8d94e5acbb3c
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: c9cebd16d34758550144a50b6ff26da84924a964
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493964"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745662"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure 数据工厂中数据移动的安全注意事项
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -58,6 +58,11 @@ ms.locfileid: "39493964"
 
 > [!NOTE]
 > 在与数据库相互传输数据时，与 Azure SQL 数据库和 Azure SQL 数据仓库的所有连接需要经过加密 (SSL/TLS)。 在使用 JSON 创作管道时，请在连接字符串中添加 encryption 属性并将其设置为 **true**。 对于 Azure 存储，可以在连接字符串中使用 **HTTPS**。
+
+> [!NOTE]
+> 若要在从 Oracle 移动数据时启用传输加密，请遵循以下选项之一：
+> 1. 在 Oracle 服务器中，转到“Oracle 高级安全性(OAS)”并配置加密设置，该设置支持三重 DES 加密 (3DES) 和高级加密标准 (AES)，请参阅[此处](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759)了解详细信息。 ADF 会自动协商加密方法，以便在与 Oracle 建立连接时使用在 OAS 中配置的加密方法。
+> 2. 在 ADF 中，可以在连接字符串中添加 EncryptionMethod=1（在链接服务中）。 这将使用 SSL/TLS 作为加密方法。 若要使用此功能，需要在 Oracle 服务器端的 OAS 中禁用非 SSL 加密设置，以避免加密冲突。
 
 > [!NOTE]
 > 使用的 TLS 版本为 1.2。

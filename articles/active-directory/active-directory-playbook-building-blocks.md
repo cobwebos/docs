@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 3ae2e883e3e27adc167b7e831ca53d3cd1572257
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 4618c8a0298afdac28e7511e9521cf1e26238734
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038092"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189032"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念证明操作手册：构建基块
 
@@ -209,8 +209,7 @@ ms.locfileid: "40038092"
 
 | 先决条件 | 资源 |
 | --- | --- |
-| 提前准备应用程序列表和确切的登录 URL。 可以使用 Twitter 作为示例。 | 
-  [Microsoft Azure 市场上的 Twitter](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[注册 Twitter](https://twitter.com/signup?lang=en) |
+| 提前准备应用程序列表和确切的登录 URL。 可以使用 Twitter 作为示例。 | [Microsoft Azure 市场上的 Twitter](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[注册 Twitter](https://twitter.com/signup?lang=en) |
 | 此 SaaS 应用程序的共享凭据。 | [使用 Azure AD 共享帐户](active-directory-sharing-accounts.md)<br/>[适用于 Facebook、Twitter 和 LinkedIn 的 Azure AD 自动密码滚动更新现在提供预览版！ -“企业移动性 + 安全性”博客] (https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/ ) |
 | 至少两位将访问同一帐户的团队成员的凭据。 两位成员必须都属于安全组。 | [在 Azure Active Directory 中向企业应用分配用户或组](manage-apps/assign-user-or-group-access-portal.md) |
 | 对计算机的本地管理员访问权限，以便为 Internet Explorer、Chrome 或 Firefox 部署访问面板扩展 | [适用于 IE 的访问面板扩展](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[适用于 Chrome 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[适用于 Firefox 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
@@ -481,7 +480,7 @@ ms.locfileid: "40038092"
 | 以全局管理员 (GA) 身份登录 https://portal.azure.com 并启动“PIM”边栏选项卡。 执行此步骤的全局管理员会生成安全管理员。  我们将此参与者称为 GA1 | [使用 Azure AD Privileged Identity Management 中的安全向导](privileged-identity-management/pim-security-wizard.md) |
 | 标识全局管理员，并将其从固定管理员移至符合条件的管理员。 为清楚起见，该管理员应该是除步骤 1 中使用的管理员之外的独立管理员。 我们将此参与者称为 GA2 | [Azure AD Privileged Identity Management：如何添加或删除用户角色](privileged-identity-management/pim-how-to-add-role-to-user.md)<br/>[什么是 Azure AD Privileged Identity Management？：配置角色激活设置](privileged-identity-management/pim-configure.md#configure-the-role-activation-settings)  |
 | 现在，以 GA2 身份登录 https://portal.azure.com 并尝试更改“用户设置”。 请注意，某些选项为灰显。 | |
-| 现在，在新的选项卡中，在与步骤 3 相同的会话中，导航到 https://portal.azure.com 并将“PIM”边栏选项卡添加到仪表板。 | [如何在 Azure AD Privileged Identity Management 中激活或停用角色：添加 Privileged Identity Management 应用程序](privileged-identity-management/pim-how-to-activate-role.md#add-the-privileged-identity-management-application) |
+| 现在，在新的选项卡中，在与步骤 3 相同的会话中，导航到 https://portal.azure.com 并将“PIM”边栏选项卡添加到仪表板。 | [开始使用 PIM](privileged-identity-management/pim-getting-started.md) |
 | 请求激活全局管理员角色 | [如何在 Azure AD Privileged Identity Management 中激活或停用角色：激活角色](privileged-identity-management/pim-how-to-activate-role.md#activate-a-role) |
 | 请注意，如果 GA2 之前从未注册过 MFA，则需要注册 Azure MFA |  |
 | 返回步骤 3 中的原始选项卡，并单击浏览器中的刷新按钮。 请注意，现在已经有权更改“用户设置”了 | |

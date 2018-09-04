@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 08/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 6b42098786396cf8bb4a27d688b086a49558e7d1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4afe11d6d241e86b57ebb40d54e4c2dceb63a46c
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445144"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123050"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-klue"></a>教程：Azure Active Directory 与 Klue 集成
 
@@ -49,12 +49,14 @@ ms.locfileid: "39445144"
 - 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 
 ## <a name="scenario-description"></a>方案描述
+
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Klue
-1. 配置和测试 Azure AD 单一登录
+2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-klue-from-the-gallery"></a>从库中添加 Klue
+
 若要配置 Klue 与 Azure AD 的集成，需要将库中的 Klue 添加到托管 SaaS 应用列表。
 
 若要从库中添加 Klue，请执行以下步骤：
@@ -63,23 +65,24 @@ ms.locfileid: "39445144"
 
     ![Active Directory][1]
 
-1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
-    
-1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
-1. 在搜索框中，键入“Klue”。
+4. 在搜索框中，键入“Klue”。
 
     ![创建 Azure AD 测试用户](./media/klue-tutorial/tutorial_klue_search.png)
 
-1. 在结果面板中，选择“Klue”，并单击“添加”按钮添加该应用程序。
+5. 在结果面板中，选择“Klue”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/klue-tutorial/tutorial_klue_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+
 在本部分中，基于一个名为“Britta Simon”的测试用户使用 Klue 配置和测试 Azure AD 单一登录。
 
 为使单一登录能正常工作，Azure AD 需要知道 Klue 中与 Azure AD 用户对应的用户。 换句话说，需要建立 Azure AD 用户与 Klue 中相关用户之间的链接关系。
@@ -89,10 +92,10 @@ ms.locfileid: "39445144"
 若要配置和测试 Klue 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-1. [创建 Klue 测试用户](#creating-a-klue-test-user) - 在 Klue 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 身份。
-1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+3. [创建 Klue 测试用户](#creating-a-klue-test-user) - 在 Klue 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 身份。
+4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -104,11 +107,11 @@ ms.locfileid: "39445144"
 
     ![配置单一登录][4]
 
-1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
+2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+
     ![配置单一登录](./media/klue-tutorial/tutorial_klue_samlbase.png)
 
-1. 在“Klue 域和 URL”部分中，如果要在“IDP”发起的模式下配置应用程序，请执行以下步骤：
+3. 在“Klue 域和 URL”部分中，如果要在“IDP”发起的模式下配置应用程序，请执行以下步骤：
 
     ![配置单一登录](./media/klue-tutorial/tutorial_klue_url1.png)
 
@@ -116,27 +119,27 @@ ms.locfileid: "39445144"
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://app.klue.com/account/auth/saml/<Customer UUID>/callback`
 
-1. 选中“显示高级 URL 设置”。 如果要在“SP”发起的模式下配置应用程序：
+4. 选中“显示高级 URL 设置”。 如果要在“SP”发起的模式下配置应用程序：
 
     ![配置单一登录](./media/klue-tutorial/tutorial_klue_url2.png)
 
     在“登录 URL”文本框中，使用以下模式键入 URL： `https://app.klue.com/account/auth/saml/<Customer UUID>/`
-     
-    > [!NOTE] 
+
+    > [!NOTE]
     > 这些不是实际值。 使用实际回复 URL、标识符和登录 URL 更新这些值。 请联系 [Klue 客户端支持团队](mailto:support@klue.com)获取这些值。
 
-1. Klue 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 
+5. Klue 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。
 
     ![配置单一登录](./media/klue-tutorial/attribute.png)
 
-1. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，再执行以下步骤：
-    
+6. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，再执行以下步骤：
+
     | 属性名称      | 属性值      |
     | ------------------- | -------------------- |
     | first_name          | user.givenname |
     | last_name           | user.surname |
     | 电子邮件               | user.userprincipalname|
-    
+
     a. 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录](./media/klue-tutorial/tutorial_attribute_04.png)
@@ -146,27 +149,28 @@ ms.locfileid: "39445144"
     b. 在“名称”文本框中，键入为该行显示的属性名称。
 
     c. 在“值”列表中，选择为该行显示的属性值。
-    
+
     d. 单击“确定” 。
 
-1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+    > [!NOTE]
+    > 请将“命名空间”值保留空白。
+
+7. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/klue-tutorial/tutorial_klue_certificate.png) 
 
-1. 单击“保存”按钮。
+8. 单击“保存”按钮。
 
     ![配置单一登录](./media/klue-tutorial/tutorial_general_400.png)
-    
-1. 在“Klue 配置”部分，单击“配置 Klue”，打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 实体 ID 和 SAML 单一登录服务 URL”。
+
+9. 在“Klue 配置”部分，单击“配置 Klue”，打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 实体 ID 和 SAML 单一登录服务 URL”。
 
     ![配置单一登录](./media/klue-tutorial/tutorial_klue_configure.png) 
 
-1. 若要在“Klue”端配置单一登录，需要将下载的“证书 (Base64)、SAML 单一登录服务 URL 和 SAML 实体 ID”发送给 [Klue 支持团队](mailto:support@klue.com)。
-
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+10. 若要在“Klue”端配置单一登录，需要将下载的“证书 (Base64)、SAML 单一登录服务 URL 和 SAML 实体 ID”发送给 [Klue 支持团队](mailto:support@klue.com)。
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
 ![创建 Azure AD 用户][100]
@@ -175,18 +179,18 @@ ms.locfileid: "39445144"
 
 1. 在 **Azure 门户**的左侧导航窗格中，单击“Azure Active Directory”图标。
 
-    ![创建 Azure AD 测试用户](./media/klue-tutorial/create_aaduser_01.png) 
+    ![创建 Azure AD 测试用户](./media/klue-tutorial/create_aaduser_01.png)
 
-1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
-    
-    ![创建 Azure AD 测试用户](./media/klue-tutorial/create_aaduser_02.png) 
+2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
 
-1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
- 
-    ![创建 Azure AD 测试用户](./media/klue-tutorial/create_aaduser_03.png) 
+    ![创建 Azure AD 测试用户](./media/klue-tutorial/create_aaduser_02.png)
 
-1. 在“用户”对话框页上，执行以下步骤：
- 
+3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+
+    ![创建 Azure AD 测试用户](./media/klue-tutorial/create_aaduser_03.png)
+
+4. 在“用户”对话框页上，执行以下步骤：
+
     ![创建 Azure AD 测试用户](./media/klue-tutorial/create_aaduser_04.png) 
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
@@ -196,13 +200,13 @@ ms.locfileid: "39445144"
     c. 选择“显示密码”并记下“密码”的值。
 
     d. 单击“创建”。
- 
+
 ### <a name="creating-a-klue-test-user"></a>创建 Klue 测试用户
 
 本部分的目的是在 Klue 中创建名为 Britta Simon 的用户。 Klue 支持在默认情况下启用的实时预配。 此部分不存在任何操作项。 如果尚不存在用户，则在尝试访问 Klue 期间创建新用户。
 
->[!Note]
->如果需要手动创建用户，请联系 [Klue 支持团队](mailto:support@klue.com)。
+> [!Note]
+> 如果需要手动创建用户，请联系 [Klue 支持团队](mailto:support@klue.com)。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -216,24 +220,24 @@ ms.locfileid: "39445144"
 
     ![分配用户][201] 
 
-1. 在应用程序列表中，选择“Klue”。
+2. 在应用程序列表中，选择“Klue”。
 
     ![配置单一登录](./media/klue-tutorial/tutorial_klue_app.png) 
 
-1. 在左侧菜单中，单击“用户和组”。
+3. 在左侧菜单中，单击“用户和组”。
 
-    ![分配用户][202] 
+    ![分配用户][202]
 
-1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-1. 在“用户和组”对话框中单击“选择”按钮。
+6. 在“用户和组”对话框中单击“选择”按钮。
 
-1. 在“添加分配”对话框中单击“分配”按钮。
-    
+7. 在“添加分配”对话框中单击“分配”按钮。
+
 ### <a name="testing-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
@@ -245,8 +249,6 @@ ms.locfileid: "39445144"
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
 * [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
-
-
 
 <!--Image references-->
 
@@ -261,4 +263,3 @@ ms.locfileid: "39445144"
 [201]: ./media/klue-tutorial/tutorial_general_201.png
 [202]: ./media/klue-tutorial/tutorial_general_202.png
 [203]: ./media/klue-tutorial/tutorial_general_203.png
-

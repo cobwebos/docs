@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: spelluru
-ms.openlocfilehash: a6f6beedfc6c23be70693428388f6d0e585260bc
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 143d0d4b66fc8e6e62364090e3d3187c4aa7bb51
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433164"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42919000"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建多 VM 环境和 PaaS 资源
 
@@ -37,10 +37,11 @@ ms.locfileid: "39433164"
 > [!NOTE]
 > 基于 Resource Manager 模板创建更多实验室 VM 时，无论正创建多 VM 还是单 VM，都需注意某些差异。 [使用虚拟机的 Azure 资源管理器模板](devtest-lab-use-resource-manager-template.md)更加详细地阐述了这些差异。
 >
->
 
-## <a name="configure-azure-resource-manager-template-repositories"></a>配置 Azure 资源管理器模板存储库
+## <a name="devtest-labs-public-environments"></a>开发测试实验室公共环境
+Azure 开发测试实验室包含 [Azure 资源管理器模板的公共存储库](https://github.com/Azure/azure-devtestlab/tree/master/Environments)，可以使用此存储库来创建环境，而无需自行连接到外部 GitHub 源。 此存储库包含常用的模板，例如 Azure Web 应用、Service Fabric 群集和 SharePoint 场开发环境。 此功能类似于针对所创建的每个实验室包含的项目的公共存储库。 借助环境存储库，只需提供极少量的输入参数，即可快速开始使用预先编写的环境模板，在实验室中获得 PaaS 资源的顺畅入门体验。 有关详细信息，请参阅[在开发测试实验室中配置和使用公共环境](devtest-lab-configure-use-public-environments.md)。
 
+## <a name="configure-your-own-template-repositories"></a>配置自己的模板存储库
 在基础结构即代码和配置即代码方面，最佳做法之一是在源代码管理中管理环境模板。 Azure 开发测试实验室遵循这种做法，它直接从 GitHub 或 VSTS Git 存储库加载所有 Azure 资源管理器模板。 因此，从测试环境到生产环境，Resource Manager 模板可用于整个发布周期。
 
 查看[公共 GitHub 存储库](https://github.com/Azure/azure-devtestlab/tree/master/Environments)中由开发测试实验室团队创建的模板。 在此公共存储库中，可以查看他人共享的模板，可以直接使用或自定义它们来满足你的需求。 创建模板后，将其存储在此存储库中以将其与他人共享。 还可以使用可以用来在云中设置环境的模板设置你自己的 Git 存储库。 
@@ -56,12 +57,9 @@ ms.locfileid: "39433164"
 - 可以定义元数据来指定模板显示名称和说明。 此元数据必须在名为 `metadata.json` 的文件中。 以下示例元数据文件演示如何指定显示名称和说明： 
 
     ```json
-    {
- 
-        "itemDisplayName": "<your template name>",
- 
-        "description": "<description of the template>"
- 
+    { 
+        "itemDisplayName": "<your template name>", 
+        "description": "<description of the template>" 
     }
     ```
 

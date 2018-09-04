@@ -1,39 +1,67 @@
 ---
-title: Azure 逻辑应用中的 RSS 连接器 | Microsoft Docs
-description: 使用 Azure 应用服务创建逻辑应用。 RSS 连接器允许用户发布和检索摘要项。 它还允许用户在将新项发布到摘要时触发操作。
+title: 从 Azure 逻辑应用连接到 RSS 源 | Microsoft Docs
+description: 使用 Azure 逻辑应用自动执行监视和管理 RSS 源的任务和工作流
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: a10a6277-ed29-4e68-a881-ccdad6fd0ad8
 ms.service: logic-apps
-ms.devlang: multiple
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.suite: integration
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 08/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 268fa6d260f1107659208ea07ce3e43c27eca2d3
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.assetid: a10a6277-ed29-4e68-a881-ccdad6fd0ad8
+tags: connectors
+ms.date: 08/24/2018
+ms.openlocfilehash: c8d1122572764dda1fc550a06ae254109e3bf033
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295721"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885792"
 ---
-# <a name="get-started-with-the-rss-connector"></a>RSS 连接器入门
-RSS 是一种流行的 Web 联合格式，用于发布频繁更新的内容，如博客文章和新闻标题。  许多内容发布者提供 RSS 源，允许用户订阅它。  当 RSS 源中发布新项时，使用 RSS 连接器检索源信息并触发流。
+# <a name="manage-rss-feeds-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用管理 RSS 源
 
-若要立即开始创建逻辑应用，请参阅[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+使用 Azure 逻辑应用和 RSS 连接器，可以为任何 RSS 源创建自动化任务和工作流，例如：
 
-## <a name="create-a-connection-to-rss"></a>创建到 RSS 的连接
-> [!INCLUDE [Steps to create a connection to an RSS feed](../../includes/connectors-create-api-rss.md)]
-> 
+* 监视何时发布 RSS 源项。
+* 列出所有 RSS 源项。
 
-## <a name="connector-specific-details"></a>特定于连接器的详细信息
+RSS（极具特色的网站摘要），也称为“真正简单的整合”，是一种流行的 Web 联合格式，用于发布经常更新的内容，例如博客文章和新闻标题。 许多内容发布者都提供 RSS 源，以便用户可以订阅该内容。 
 
-在[连接器详细信息](/connectors/rss/)中查看在 Swagger 中定义的触发器和操作，并查看限制。
+可以使用 RSS 触发器从 RSS 源获取响应，并使输出可用于其他操作。 可以在逻辑应用中使用 RSS 操作来执行 RSS 源的任务。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="more-connectors"></a>更多连接器
-返回到 [API 列表](apis-list.md)。
+## <a name="prerequisites"></a>先决条件
+
+* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
+
+* RSS 源的 URL
+
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
+
+* 要在其中访问 RSS 源的逻辑应用。 若要从 RSS 触发器开始，请[创建空白的逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 RSS 操作，请使用其他触发器（例如**定期**触发器）启动逻辑应用。
+
+## <a name="connect-to-an-rss-feed"></a>连接到 RSS 源
+
+1. 登录 [Azure门户](https://portal.azure.com)，然后在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
+
+1. 选择路径： 
+
+   * 对于空白逻辑应用，请在搜索框中输入“rss”作为筛选器。 在触发器列表下，选择所需的触发器。 
+
+     -或-
+
+   * 对于现有逻辑应用，请在要添加操作的步骤下，选择“新建步骤”。 在搜索框中，输入“rss”作为筛选器。 在操作列表下，选择所需的操作。
+
+1. 为所选触发器或操作提供必要详细信息，并继续构建逻辑应用的工作流。
+
+## <a name="connector-reference"></a>连接器参考
+
+有关触发器、操作和限制（请参阅连接器的 OpenAPI（以前称为 Swagger）说明）的技术详细信息，请查看连接器的[参考页](/connectors/rss/)。
+
+## <a name="get-support"></a>获取支持
+
+* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](http://aka.ms/logicapps-wish)。
+
+## <a name="next-steps"></a>后续步骤
+
+* 了解其他[逻辑应用连接器](../connectors/apis-list.md)

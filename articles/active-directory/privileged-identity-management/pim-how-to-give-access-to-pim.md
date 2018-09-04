@@ -1,6 +1,6 @@
 ---
-title: 如何授予对 Privileged Identity Management 的访问权限 - Azure | Microsoft 文档
-description: 了解如何使用 Azure Active Directory Privileged Identity Management 扩展将角色添加到用户，使其能够管理 PIM。
+title: 授予其他管理员访问权限以管理 PIM - Azure | Microsoft Docs
+description: 了解如何授予其他管理员访问权限以管理 Azure AD Privileged Identity Management (PIM)。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.component: pim
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: ade3939057669e7f9979001db4376fe61c2f4ad9
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: d6b2d9f43ce9bb86f4557c92887689c83beb49fa
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39623062"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189549"
 ---
-# <a name="giving-access-to-manage-azure-ad-privileged-identity-management"></a>授予 Azure AD Privileged Identity Management 的管理访问权限
+# <a name="grant-access-to-other-administrators-to-manage-pim"></a>授予其他管理员访问权限以管理 PIM
 为组织启用 Azure AD Privileged Identity Management (PIM) 的全局管理员会自动获得角色分配和 PIM 的访问权限。 但是，默认情况下，没有任何其他人会获得写入访问权限，包括其他全局管理员。 其他全局管理员、安全管理员和安全读者拥有 Azure AD PIM 的只读访问权限。 要授予对 PIM 的访问权限，第一位用户可以将其他用户分配到“特权角色管理员”角色。
 
 > [!NOTE]
@@ -54,4 +54,5 @@ ms.locfileid: "39623062"
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>后续步骤
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
+
+- [在租户中启用订阅管理](pim-resource-roles-enable-subscription-management.md)

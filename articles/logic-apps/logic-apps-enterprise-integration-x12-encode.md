@@ -1,27 +1,23 @@
 ---
 title: 为 X12 消息编码 - Azure 逻辑应用 | Microsoft 文档
-description: 使用 Enterprise Integration Pack 中的 X12 消息编码器为 Azure 逻辑应用验证 EDI 并转换 XML 编码的消息
+description: 在带有 Enterprise Integration Pack 的 Azure 逻辑应用中使用 X12 消息编码器验证 EDI 并转换 XML 编码的消息
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: padmavc
-manager: jeconnoc
-editor: ''
-ms.assetid: a01e9ca9-816b-479e-ab11-4a984f10f62d
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: a01e9ca9-816b-479e-ab11-4a984f10f62d
 ms.date: 01/27/2017
-ms.author: LADocs; padmavc
-ms.openlocfilehash: ec350560f4aca4e9a0b4f00892b690012c9f08dd
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 3ed5cb61fef5f07913f11c4e4df309d720d5b901
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298997"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123499"
 ---
-# <a name="encode-x12-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 为 Azure 逻辑应用编码 X12 消息
+# <a name="encode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中编码 X12 消息
 
 使用编码 X12 消息连接器，可以验证 EDI 和特定于合作伙伴的属性，将 XML 编码的消息转换为交换中的 EDI 事务集并请求技术确认和/或功能确认。
 要使用此连接器，必须将此连接器添加到逻辑应用中的现有触发器。

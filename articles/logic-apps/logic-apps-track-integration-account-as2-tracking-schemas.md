@@ -1,66 +1,62 @@
 ---
-title: 用于 B2B 监视的 AS2 跟踪架构 - Azure 逻辑应用 | Microsoft 文档
-description: 使用 AS2 跟踪架构通过 Azure 集成帐户中的事务监视 B2B 消息。
-author: padmavc
-manager: jeconnoc
-editor: ''
+title: 用于 B2B 消息的 AS2 跟踪架构 - Azure 逻辑应用 | Microsoft Docs
+description: 为带有 Enterprise Integration Pack 的 Azure 逻辑应用创建用于监视集成帐户中的 B2B 消息的 AS2 跟踪架构
 services: logic-apps
-documentationcenter: ''
-ms.assetid: f169c411-1bd7-4554-80c1-84351247bf94
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: f169c411-1bd7-4554-80c1-84351247bf94
 ms.date: 01/27/2017
-ms.author: LADocs; padmavc
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 48e39fd20716e962c4a3e367fdff18e0b4fba32d
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 6c4144d26042729684e507b1afaa5e3006d8a34e
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300875"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125924"
 ---
-# <a name="start-or-enable-tracking-of-as2-messages-and-mdns-to-monitor-success-errors-and-message-properties"></a>启动或启用对 AS2 消息和 MDN 的跟踪，监视成功、错误和消息属性
-可以在 Azure 集成帐户中使用这些 AS2 跟踪架构来帮助监视企业到企业 (B2B) 的事务：
+# <a name="create-schemas-for-tracking-as2-messages-and-mdns-in-integration-accounts-for-azure-logic-apps"></a>为 Azure 逻辑应用创建用于跟踪集成帐户中的 AS2 消息和 MDN 的架构
+
+若要帮助你监视企业到企业 (B2B) 事务的成功、错误和消息属性，可以在集成帐户中使用以下 AS2 跟踪架构：
 
 * AS2 消息跟踪架构
 * AS2 MDN 跟踪架构
 
 ## <a name="as2-message-tracking-schema"></a>AS2 消息跟踪架构
-````java
 
-    {
-       "agreementProperties": {  
-            "senderPartnerName": "",  
-            "receiverPartnerName": "",  
-            "as2To": "",  
-            "as2From": "",  
-            "agreementName": ""  
-        },  
-        "messageProperties": {
-            "direction": "",
-            "messageId": "",
-            "dispositionType": "",
-            "fileName": "",
-            "isMessageFailed": "",
-            "isMessageSigned": "",
-            "isMessageEncrypted": "",
-            "isMessageCompressed": "",
-            "correlationMessageId": "",
-            "incomingHeaders": {
-            },
-            "outgoingHeaders": {
-            },
-        "isNrrEnabled": "",
-        "isMdnExpected": "",
-        "mdnType": ""
-        }
+```json
+{
+   "agreementProperties": {  
+      "senderPartnerName": "",  
+      "receiverPartnerName": "",  
+      "as2To": "",  
+      "as2From": "",  
+      "agreementName": ""  
+   },  
+   "messageProperties": {
+      "direction": "",
+      "messageId": "",
+      "dispositionType": "",
+      "fileName": "",
+      "isMessageFailed": "",
+      "isMessageSigned": "",
+      "isMessageEncrypted": "",
+      "isMessageCompressed": "",
+      "correlationMessageId": "",
+      "incomingHeaders": {
+       },
+      "outgoingHeaders": {
+       },
+      "isNrrEnabled": "",
+      "isMdnExpected": "",
+      "mdnType": ""
     }
-````
+}
+```
 
-| 属性 | Type | 说明 |
+| 属性 | Type | Description |
 | --- | --- | --- |
 | senderPartnerName | String | AS2 消息发送者的合作伙伴名称。 (可选) |
 | receiverPartnerName | String | AS2 消息接收者的合作伙伴名称。 (可选) |
@@ -81,38 +77,39 @@ ms.locfileid: "35300875"
 | isNrrEnabled | 布尔 | 如果值未知，请使用默认值。 （必需） |
 | isMdnExpected | 布尔 | 如果值未知，请使用默认值。 （必需） |
 | mdnType | 枚举 | 允许的值为 **NotConfigured**、**Sync** 和 **Async**。 （必需） |
+||||
 
 ## <a name="as2-mdn-tracking-schema"></a>AS2 MDN 跟踪架构
-````java
 
-    {
-        "agreementProperties": {
-                "senderPartnerName": "",
-                "receiverPartnerName": "",
-                "as2To": "",
-                "as2From": "",
-                "agreementName": "g"
-            },
-            "messageProperties": {
-                "direction": "",
-                "messageId": "",
-                "originalMessageId": "",
-                "dispositionType": "",
-                "isMessageFailed": "",
-                "isMessageSigned": "",
-                "isNrrEnabled": "",
-                "statusCode": "",
-                "micVerificationStatus": "",
-                "correlationMessageId": "",
-                "incomingHeaders": {
-                },
-                "outgoingHeaders": {
-                }
-            }
-    }
-````
+```json
+{
+   "agreementProperties": {
+      "senderPartnerName": "",
+      "receiverPartnerName": "",
+      "as2To": "",
+      "as2From": "",
+      "agreementName": "g"
+   },
+   "messageProperties": {
+      "direction": "",
+      "messageId": "",
+      "originalMessageId": "",
+      "dispositionType": "",
+      "isMessageFailed": "",
+      "isMessageSigned": "",
+      "isNrrEnabled": "",
+      "statusCode": "",
+      "micVerificationStatus": "",
+      "correlationMessageId": "",
+      "incomingHeaders": {
+      },
+      "outgoingHeaders": {
+      }
+   }
+}
+```
 
-| 属性 | Type | 说明 |
+| 属性 | Type | Description |
 | --- | --- | --- |
 | senderPartnerName | String | AS2 消息发送者的合作伙伴名称。 (可选) |
 | receiverPartnerName | String | AS2 消息接收者的合作伙伴名称。 (可选) |
@@ -131,10 +128,16 @@ ms.locfileid: "35300875"
 | correlationMessageId | String | 相关性 ID。 原始消息 ID（为其配置 MDN 的消息的消息 ID）。 (可选) |
 | incomingHeaders | JToken 字典 | 指示传入消息标头的详细信息。 (可选) |
 | outgoingHeaders |JToken 字典 | 指示传出消息标头的详细信息。 (可选) |
+||||
+
+## <a name="b2b-protocol-tracking-schemas"></a>B2B 协议跟踪架构
+
+有关 B2B 协议跟踪架构的信息，请参阅：
+
+* [X12 跟踪架构](logic-apps-track-integration-account-x12-tracking-schema.md)
+* [B2B 自定义跟踪架构](logic-apps-track-integration-account-custom-tracking-schema.md)
 
 ## <a name="next-steps"></a>后续步骤
-* 了解有关 [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) 的详细信息。    
-* 了解有关[监视 B2B 消息](logic-apps-monitor-b2b-message.md)的详细信息。   
-* 了解有关 [B2B 自定义跟踪架构](logic-apps-track-integration-account-custom-tracking-schema.md)的详细信息。   
-* 了解有关 [X12 跟踪架构](logic-apps-track-integration-account-x12-tracking-schema.md)的详细信息。   
-* 了解[在 Log Analytics 中跟踪 B2B 消息](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)。
+
+* 了解如何[监视 B2B 消息](logic-apps-monitor-b2b-message.md)
+* 了解如何[在 Log Analytics 中跟踪 B2B 消息](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)

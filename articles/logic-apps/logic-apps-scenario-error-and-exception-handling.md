@@ -1,27 +1,21 @@
 ---
 title: 异常处理和错误日志记录方案 — Azure 逻辑应用 | Microsoft Docs
-description: 介绍 Azure 逻辑应用的高级异常处理和错误日志记录的实际用例
-keywords: ''
+description: 下面是一个关于 Azure 逻辑应用中高级异常处理和错误日志记录的实际用例
 services: logic-apps
-author: hedidin
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
 ms.service: logic-apps
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: hedidin
+ms.author: b-hoedid
+ms.reviewer: estfan, LADocs
+ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
 ms.topic: article
-ms.custom: H1Hack27Feb2017
 ms.date: 07/29/2016
-ms.author: LADocs; b-hoedid
-ms.openlocfilehash: c4114e32053410689c0482816a46376947023972
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 0c6062fb9e9708b0fa6aef7a6d7390287cbf69d4
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930267"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124029"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>方案：逻辑应用的异常处理和错误日志记录
 
@@ -99,7 +93,7 @@ ms.locfileid: "37930267"
 ````
 
 
-## <a name="steps"></a>步骤
+## <a name="steps"></a>Steps
 
 必须对来自 Dynamics CRM Online 门户的患者记录的源（请求）进行日志记录。
 

@@ -3,19 +3,19 @@ title: 分析工作负荷 - Azure SQL 数据仓库 | Microsoft Docs
 description: 分析针对 Azure SQL 数据仓库中工作负荷的查询优化的技巧。
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 6b0d39b81b72615a9522e95558a59007b10bf109
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 4ce84e9714b580bcc243285dc1da5ae24a27e8e5
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795351"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43248087"
 ---
 # <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>分析 Azure SQL 数据仓库中的工作负荷
 分析针对 Azure SQL 数据仓库中工作负荷的查询优化的技巧。
@@ -39,8 +39,7 @@ SQL 数据仓库通过使用工作负荷组来实现资源类。 总共有八个
 | SloDWGroupC07   | 128                      | 12,800                         | 32,000                      | 高               |
 | SloDWGroupC08   | 256                      | 25,600                         | 64,000                      | 高               |
 
-<!-- where are the allocation and consumption of concurrency slots charts? -->
-**并发槽的分配和使用**图表表明，对于 smallrc、mediumrc、largerc 和 xlargerc，DW500 分别使用 1、4、8 和 16 个并发槽。 若要查明每个资源类的重要性，可以在上面的图表中查找这些值。
+<!-- where are the allocation and consumption of concurrency slots charts? -->**并发槽的分配和使用**图表表明，对于 smallrc、mediumrc、largerc 和 xlargerc，DW500 分别使用 1、4、8 和 16 个并发槽。 若要查明每个资源类的重要性，可以在上面的图表中查找这些值。
 
 ### <a name="dw500-mapping-of-resource-classes-to-importance"></a>DW500 的资源类到重要性的映射
 | 资源类 | 工作负荷组 | 使用的并发槽数 | MB / 分布区 | Importance |

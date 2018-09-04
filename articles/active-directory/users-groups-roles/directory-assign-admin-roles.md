@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 08/21/2018
+ms.date: 08/27/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 6c97d7c2f901110421f9fc5d0a1d4468d832c472
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 9b56f540af2b8d35258a4db79502c9edf83cdb45
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42141931"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128460"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>在 Azure Active Directory 中分配管理员角色
 
@@ -75,6 +75,8 @@ ms.locfileid: "42141931"
 * **[信息保护管理员](#information-protection-administrator)**：具有此角色的用户拥有 Azure 信息保护服务中的所有权限。 此角色可以配置 Azure 信息保护策略的标签、管理保护模板，以及激活保护。 此角色不会授予 Identity Protection Center、Privileged Identity Management、监视 Office 365 服务运行状况或 Office 365 安全与合规中心的权限。
 
 * **[Intune 服务管理员](#intune-service-administrator)**：具有此角色的用户在 Microsoft Intune Online（如果存在此服务）中拥有全局权限。 此外，此角色包含管理以关联策略，以及创建和管理组的用户和设备的能力。 有关详细信息，请参阅[使用 Microsoft Intune 进行基于角色的管理控制 (RBAC)](https://docs.microsoft.com/intune/role-based-access-control)
+
+* **[许可证管理员](#license-administrator)**：具有此角色的用户可以添加、删除和更新用户、组（使用基于组的许可）的许可分配，以及管理用户的使用位置。 该角色不授予在使用位置之外购买或管理订阅、创建或管理组，或者创建或管理用户的权限。
 
 * **[消息中心读取者](#message-center-reader)**：具有此角色的用户可以在其组织的 [Office 365 消息中心](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093)内，监视 Exchange、Intune 和 Microsoft Teams 等已配置服务的通知和公告运行状况更新。 消息中心读者会收到包含帖子和最新动态的每周电子邮件摘要，并能在 Office 365 内共享消息中心帖子。 在 Azure AD 中，分配到此角色的用户对 Azure AD 服务只拥有只读访问权限，如用户和组。 
 
@@ -610,6 +612,23 @@ ms.locfileid: "42141931"
 | microsoft.aad.directory/User/Update/Manager | 更新 Azure Active Directory 中的 Users.Manager 属性。 |
 | microsoft.aad.supporttickets/AllEntities/AllActions | 创建和管理 Office 365 支持票证。 |
 | microsoft.intune/AllEntities/AllActions | 管理 Intune 的各个方面。 |
+
+
+### <a name="license-administrator"></a>许可证管理员
+可以管理用户和组的产品许可证。
+ 
+  > [!NOTE]
+  > 此角色从“目录读取者”角色继承其他权限。
+  >
+  >
+ 
+| **操作** | **说明** |
+| --- | --- |
+| microsoft.aad.directory/users/assignLicense | 管理 Azure Active Directory 中用户的许可证。 |
+| microsoft.aad.directory/users/usageLocation/update | 更新 Azure Active Directory 中的 users.usageLocation 属性。 |
+| microsoft.azure.accessService/allEntities/allTasks | 管理 Azure 访问服务的所有方面。 |
+| microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
+| microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 
 ### <a name="lync-service-administrator"></a>Lync 服务管理员
 可以管理 Skype for Business 产品的所有方面。

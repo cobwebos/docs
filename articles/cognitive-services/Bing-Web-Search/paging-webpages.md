@@ -1,6 +1,6 @@
 ---
-title: 如何逐页浏览可访问网页 | Microsoft Docs
-description: 介绍了如何逐页浏览必应可以返回的所有网页。
+title: 如何分页列出必应 Web 搜索 API 结果 | Microsoft Docs
+description: 了解如何分页列出必应 Web 搜索 API 结果。
 services: cognitive-services
 author: swhite-msft
 manager: ehansen
@@ -8,22 +8,22 @@ ms.assetid: 26CA595B-0866-43E8-93A2-F2B5E09D1F3B
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: article
-ms.date: 04/15/2017
-ms.author: scottwhi
-ms.openlocfilehash: bf29783246c603270d59b20b63027fccdbd45b89
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 08/20/2018
+ms.author: erhopf
+ms.openlocfilehash: cd03b3af08746674dd2ba2d4af593e19e066efca
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365443"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888235"
 ---
-# <a name="paging-webpages"></a>分页网页 
+# <a name="how-to-page-through-bing-web-search-api-results"></a>如何分页列出必应 Web 搜索 API 结果
 
 如果调用 Web 搜索 API，必应会返回结果列表。 此列表是与查询相关的所有结果的一部分。 若要获取可访问结果的总估计数，请访问答案对象的 [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#totalestimatedmatches) 字段。  
   
 下面的示例展示了 Web 答案对象包含的 `totalEstimatedMatches` 字段。  
   
-```  
+```
 {
     "_type" : "SearchResponse",
     "webPages" : {
@@ -32,9 +32,9 @@ ms.locfileid: "35365443"
         "value" : [...]
     }
 }  
-```  
+```
   
-若要逐页浏览可访问网页，请使用 [count](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#count) 和 [offset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#offset) 查询参数。  
+若要翻页浏览可用网页，请使用 [count](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#count) 和 [offset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#offset) 查询参数。  
   
 `count` 参数指定要在响应中返回的结果数。 最多可以请求在响应中获取 50 个结果。 默认值为 10。 提供的实际结果数可能小于请求获取的结果数。
 

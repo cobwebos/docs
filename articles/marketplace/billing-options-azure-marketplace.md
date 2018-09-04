@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: d0dbf603c600639679e121723556a7f3ceb17e37
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 67806563dcd67876d4d922c7f2c76379f7ad7222
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158975"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125507"
 ---
 # <a name="billing-options-in-the-azure-marketplace"></a>Azure 市场的计费选项
 
@@ -70,7 +70,7 @@ ms.locfileid: "39158975"
 在这种情况下，Microsoft 会以你的名义开账单并收集。 Microsoft 计费不需要你与你的客户建立自己的采购关系。 单独计费可以节省你的时间和资源。 它还可以帮助你专注于经营销售而不是收取账款。 
 
 ## <a name="enterprise-agreement"></a>企业协议  
-如果你是 Microsoft 企业协议客户，则可以使用企业协议来支付 Microsoft 产品。 你可能会因使用产品（包括因 Azure 使用情况）而被收取费用。 使用企业协议进行支付适用于希望三年或更长时间获得软件和云服务许可的组织。 你可以分期付款，而非预先一次 付清。 如果使用“即用即付”发布选项，则软件许可成本计费将采用按季度计算的企业协议超额计费周期。  
+如果你是 Microsoft 企业协议客户，则可以使用企业协议来支付 Microsoft 产品。 你可能会因使用产品（包括因 Azure 使用情况）而被收取费用。 使用企业协议进行支付适用于希望三年或更长时间获得软件和云服务许可的组织。 你可以分期付款，而非预先一次付清。 如果使用“即用即付”发布选项，则软件许可成本计费将采用按季度计算的企业协议超额计费周期。  
 
 ### <a name="monetary-commitment"></a>货币承诺
 如果你是企业协议客户，可以将 Azure 添加到你的协议。 通过向 Azure 做出前期货币承诺，将 Azure 添加到协议中。 货币承诺在一整年内有效。 你的承诺包括使用 Azure 服务的任何组合。

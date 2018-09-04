@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 5508b5943e116545297d91e85621d2a11a635299
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b8caeab7f08ffeee81492b01750cbb255e172872
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39058069"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144516"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>“虚拟机”产品/服务发布指南
 
@@ -42,7 +42,7 @@ ms.locfileid: "39058069"
 
 通过基础结构即服务 (IaaS) 或 SaaS 应用部署一个或多个虚拟机。 “体验版”发布选项的优点是可以根据合作伙伴托管的指导教程，实现对虚拟机或整个解决方案环境的自动预配。 体验版提供评估，且不向客户收取额外的费用。 客户无需是现有 Azure 客户，即可参与试用体验。 
 
-向 amp-testdrive@microsoft.com 发送电子邮件即可开始使用。 
+若要开始，请通过 [amp-testdrive](mailto:amp-testdrive@microsoft.com) 与我们联系。 
 
 |要求  |详细信息 |
 |---------|---------|

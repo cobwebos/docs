@@ -6,14 +6,14 @@ author: jj09
 manager: jlembicz
 ms.service: search
 ms.topic: conceptual
-ms.date: 07/14/2016
+ms.date: 08/26/2018
 ms.author: jjed
-ms.openlocfilehash: 2f52ed0ab302d1c3dad699258287f6edd7197cef
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 6fed5a8afe6030038752d540bfabbc446c57db2c
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525614"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124145"
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Java 中的 Azure 搜索入门
 > [!div class="op_single_selector"]
@@ -28,9 +28,9 @@ ms.locfileid: "39525614"
 
 使用以下软件构建和测试此示例：
 
-* [Eclipse IDE for Java EE Developers](https://eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunar)。 请务必下载 EE 版本。 一个验证步骤需要的功能只能在此版本中找到。
-* [JDK 8u40](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-* [Apache Tomcat 8.0](http://tomcat.apache.org/download-80.cgi)
+* [Eclipse IDE for Java EE Developers](https://www.eclipse.org/downloads/packages/release/photon/r/eclipse-ide-java-ee-developers)。 请务必下载 EE 版本。 一个验证步骤需要的功能只能在此版本中找到。
+* [JDK 8u181](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [Apache Tomcat 8.5.33](https://tomcat.apache.org/download-80.cgi#8.5.33)
 
 ## <a name="about-the-data"></a>关于数据
 此示例应用程序使用的数据来自 [美国地质调查局 (USGS)](http://geonames.usgs.gov/domestic/download_data.htm)，对罗得岛州进行了筛选以减小数据集大小。 使用此数据生成搜索应用程序，该应用程序返回医院、学校等地标性建筑，以及河流、湖泊和山峰等地质特征。
@@ -51,7 +51,7 @@ ms.locfileid: "39525614"
 * SearchServiceHelper.java：一个提供静态方法的帮助器类
 * Document.java：提供数据模型
 * config.properties：设置搜索服务 URL 和 API 密钥
-* Pom.xml：Maven 依赖关系
+* pom.xml：Maven 依赖关系
 
 <a id="sub-2"></a>
 

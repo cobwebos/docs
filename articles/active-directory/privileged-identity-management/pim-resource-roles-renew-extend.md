@@ -1,6 +1,6 @@
 ---
-title: 使用 Privileged Identity Management 延期和评审 Azure 资源中的角色 | Microsoft Docs
-description: 本文档介绍如何延期和续订 PIM 资源的 Azure 资源角色。
+title: 在 PIM 中扩展或续订 Azure 资源角色 | Microsoft Docs
+description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中扩展或续订 Azure 资源角色。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 7eb30f895214ff7d5a1607fc7e477d3d876a6fc1
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 2c85c5bbbd4c152113108e0fdb717d23f85f9fde
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617517"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189644"
 ---
-# <a name="extend-and-review-roles-in-azure-resources-by-using-privileged-identity-management"></a>使用 Privileged Identity Management 延期和评审 Azure 资源中的角色
+# <a name="extend-or-renew-azure-resource-roles-in-pim"></a>在 PIM 中扩展或续订 Azure 资源角色
 
 Azure 资源的 Privileged Identity Management (PIM) 引入了新控件用于管理 Azure 资源的访问和分配生命周期。 管理员可以使用开始和结束日期时间属性分配成员身份。 当分配结束时间即将到来时，PIM 会向受影响的用户或组发送电子邮件通知。 此外，它还向资源管理员发送电子邮件通知，确保能够保持相应的访问权限。 即使访问权限未延期，分配也可以续订，并在长达 30 天内以过期状态保持可见。
 
@@ -131,8 +131,5 @@ Azure 资源的 Privileged Identity Management (PIM) 引入了新控件用于管
 
 ## <a name="next-steps"></a>后续步骤
 
-[需要批准才能激活](pim-resource-roles-approval-workflow.md)
-
-[激活角色](pim-resource-roles-use-the-audit-log.md)
-
-
+- [在 PIM 中批准或拒绝 Azure 资源角色的请求](pim-resource-roles-approval-workflow.md)
+- [在 PIM 中配置 Azure 资源角色设置](pim-resource-roles-configure-role-settings.md)

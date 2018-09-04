@@ -1,28 +1,23 @@
 ---
-title: 无服务器场景 - 使用 Azure 创建客户见解仪表板 | Microsoft Docs
-description: 了解如何使用 Azure 逻辑应用和 Azure Functions 构建客户仪表板，以便管理客户反馈、社交数据等
-keywords: ''
+title: 无服务器方案 - 使用 Azure 服务创建客户见解仪表板 | Microsoft Docs
+description: 使用 Azure 逻辑应用和 Azure Functions 构建客户仪表板，以便管理客户反馈、社交媒体数据等
 services: logic-apps
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: jeffhollan
+ms.author: jehollan
+ms.reviewer: estfan, LADocs
+ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 03/15/2018
-ms.author: jehollan; LADocs
-ms.openlocfilehash: 3ee3ec3107cf8aad834e8201405c9aa833d838af
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 9d6d74c4afb4d1cd62e5946b7e6f8c401e7ef2aa
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299954"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124638"
 ---
-# <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>使用 Azure 逻辑应用和 Azure Functions 创建流式处理客户见解仪表板
+# <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>使用 Azure 逻辑应用和 Azure Functions 创建流式处理客户见解仪表板
 
 Azure 提供无服务器工具，可帮助在云中快速构建和托管应用程序，而无需考虑基础结构问题。 在本教程中，我们将创建一个仪表板，以便针对客户反馈触发相关操作、通过机器学习分析反馈，以及通过 Power BI 或 Azure Data Lake 之类的源发布见解。
 

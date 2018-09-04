@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: iainfou
-ms.openlocfilehash: a64ada61b2edd0a5c5d2314125b7e2a23444a398
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: faffd919e1c57f2dff21c42c2294a06eb82a2c0a
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42140424"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43092604"
 ---
 # <a name="use-draft-with-azure-kubernetes-service-aks"></a>结合使用 Draft 与 Azure Kubernetes 服务 (AKS)
 
-Draft 是一种开源工具，有助于在 Kubernetes 群集中打包和部署应用程序容器，让用户专注于开发周期 -- 专注开发的“内部循环”。 在开发代码期间，但尚未将代码提交到版本控制之前，Draft 将会运行。 借助 Draft，可在代码发生更改时快速将应用程序重新部署到 Kubernetes。 有关 Draft 的详细信息，请参阅 [GitHub 上的 Draft 文档][draft-documentation]。
+Draft 是一种开源工具，有助于在 Kubernetes 群集中打包和部署应用程序容器，让你专注于开发周期 - 专注开发的“内部循环”。 在开发代码期间，但尚未将代码提交到版本控制之前，Draft 将会运行。 借助 Draft，可在代码发生更改时快速将应用程序重新部署到 Kubernetes。 有关 Draft 的详细信息，请参阅 [GitHub 上的 Draft 文档][draft-documentation]。
 
 本文介绍如何对 AKS 上的 Kubernetes 群集使用 Draft。
 

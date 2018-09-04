@@ -1,25 +1,19 @@
 ---
-title: "如何批注数据源 | Microsoft Docs"
-description: "操作方法文章强调如何在 Azure 数据目录中批注数据资产，包括友好名称、标记、说明和专家。"
+title: 如何在 Azure 数据目录中批注数据源
+description: 操作方法文章强调如何在 Azure 数据目录中批注数据资产，包括友好名称、标记、说明和专家。
 services: data-catalog
-documentationcenter: 
 author: steelanddata
-manager: NA
-editor: 
-tags: 
+ms.author: maroche
 ms.assetid: 5a7e6bb2-863c-4eca-b614-1c814920d9ed
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: maroche
-ms.openlocfilehash: f9dd68380773e3cdb93cf1033ccd1b55d9f69305
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: a6751a2cbb2a12d0d0ffe1eb0707ad4e8bc45ed8
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053185"
 ---
 # <a name="how-to-annotate-data-sources"></a>如何批注数据源
 ## <a name="introduction"></a>介绍
@@ -43,7 +37,7 @@ ms.lasthandoff: 01/19/2018
 | 批注 | 说明 |
 | --- | --- |
 | 友好名称 |可在数据资产级别提供友好名称让数据资产更易于理解。 基础对象名称有隐晦的含义、缩写形式或对于用户来说无意义时，友好名称会非常有用。 |
-| 说明 |可在数据资产和属性/列级别中提供说明。 说明可为任意格式的简短文本批注，说明用户在数据资产及其用法方面的观点。 |
+| Description |可在数据资产和属性/列级别中提供说明。 说明可为任意格式的简短文本批注，说明用户在数据资产及其用法方面的观点。 |
 | 标记（用户标记） |可在数据资产和属性/列级别中提供标记。 用户标记是用户定义的标签，用于对数据资产或属性进行分类。 |
 | 标记（术语表标记） |可在数据资产和属性/列级别中提供标记。 术语表标记是集中定义的术语表术语，可用于通过常见业务分类对数据资产或属性进行分类。 有关详细信息，请参阅[如何设置受管标记的业务术语表](data-catalog-how-to-business-glossary.md) |
 | 专家 |可在数据资产级别提供专家。 专家会使用数据方面的专业观点来标识用户或用户组，还可作为发现已注册数据源和具有现有批注未解问题的用户的联系点。 |

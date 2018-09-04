@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5867012e0322e520b4ef234599fa25a2ec08138d
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: d5b43f81cbb3bbebb231a8a9738f6138b62ef7f6
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325762"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046023"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>通过 Visual Studio Code 部署 Azure IoT Edge 模块
 
@@ -130,7 +130,7 @@ ms.locfileid: "39325762"
 
 2. 右键单击想使用部署清单配置的设备。 
 
-3. 选择“创建 IoT Edge 设备的部署”。 
+3. 选择“为单个设备创建部署”。 
 
 4. 导航至要使用的部署清单 JSON 文件，然后单击“选择 Edge 部署清单”。 
 

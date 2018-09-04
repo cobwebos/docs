@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 08/03/2018
 ms.author: diberry
-ms.openlocfilehash: 2fd473226dca2576be79b90bc05d66599f759713
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 633bf16790437ba83e9a2a99f33a23fef9255364
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524138"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43090520"
 ---
 # <a name="tutorial-improve-app-with-pattern-roles"></a>教程：使用模式角色来改进应用
 
@@ -52,7 +52,7 @@ ms.locfileid: "39524138"
 |[分层（无角色）](luis-quickstart-intent-and-hier-entity.md)|将 Jill Jones 从“a-2349”调到“b-1298”|a-2349、b-1298|
 |本教程（含角色）|将 Billy Patterson 从“Yuma”调到“Denver”。|Yuma、Denver|
 
-无法在模式中使用分层实体，因为分层父级只能在父级中使用。 若要返回命名的原位置和目的地，必须使用模式。
+无法在模式中使用分层实体，因为在模式中只使用分层父级。 若要返回命名的原位置和目的地，必须使用模式。
 
 ### <a name="simple-entity-for-new-employee-name"></a>新员工名称的简单实体
 新员工 Billy Patterson 的名称还不是“员工”列表实体的一部分。 首先需提取新员工名称，才能将名称发送到外部系统以创建公司凭据。 创建公司凭据后，会将员工凭据添加到“员工”列表实体。

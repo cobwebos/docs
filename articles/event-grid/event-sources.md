@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: efc71e02cc02574973f0b6b428b5b670cd9cfd5b
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 15fe97e39fbc1c669762ddb7523cfd043638d3de
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617346"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144223"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure 事件网格中的事件源
 
@@ -74,13 +74,14 @@ ms.locfileid: "42617346"
 
 ## <a name="iot-hub"></a>IoT 中心
 
-订阅 IoT 中心事件即可响应创建的设备和删除的事件。
+订阅 IoT 中心事件以响应设备已创建、已删除、已连接和已断开连接事件。
 
 |标题  |Description  |
 |---------|---------|
-| [教程：使用逻辑应用发送有关 Azure IoT 中心事件的电子邮件](publish-iot-hub-events-to-logic-apps.md) | 每次将设备添加到 IoT 中心时，逻辑应用就会发送一封通知电子邮件。 |
-| [概述：通过使用事件网格触发操作来响应 IoT 中心事件](../iot-hub/iot-hub-event-grid.md) | 概述 IoT 中心与事件网格的集成。 |
+| [使用逻辑应用发送有关 Azure IoT 中心事件的电子邮件](publish-iot-hub-events-to-logic-apps.md) | 每次将设备添加到 IoT 中心时，逻辑应用就会发送一封通知电子邮件。 |
+| [使用事件网格来触发操作，对 IoT 中心事件进行响应](../iot-hub/iot-hub-event-grid.md) | 概述 IoT 中心与事件网格的集成。 |
 | [事件架构](event-schema-iot-hub.md) | 说明 IoT 中心事件中的字段。 |
+| [订阅设备已连接和设备已断开连接事件](../iot-hub/iot-hub-how-to-order-connection-state-events.md) | 显示如何订阅设备连接状态事件。 |
 
 ## <a name="media-services"></a>媒体服务
 

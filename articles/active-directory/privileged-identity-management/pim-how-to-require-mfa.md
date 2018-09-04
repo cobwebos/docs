@@ -1,6 +1,6 @@
 ---
-title: 如何请求多重身份验证 | Microsoft 文档
-description: 了解如何使用 Azure Active Directory Privileged Identity Management 扩展请求多重身份验证 (MFA) 用于特权标识。
+title: 在 PIM 中要求 Azure AD 目录角色进行多重身份验证 | Microsoft Docs
+description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中要求 Azure AD 目录角色进行用多重身份验证 (MFA)。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.component: pim
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8e1c0fa212b31c05fcc4559f9f8d42b627f0da0e
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 9777a7d2ed07ea2edf4bea661a5065c808de9f2b
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622841"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188347"
 ---
-# <a name="how-to-require-mfa-in-azure-ad-privileged-identity-management"></a>如何在 Azure AD Privileged Identity Management 中要求 MFA
+# <a name="require-multi-factor-authentication-for-azure-ad-directory-roles-in-pim"></a>在 PIM 中要求 Azure AD 目录角色进行多重身份验证
 我们建议为所有管理员请求多重身份验证 (MFA)。 这可降低因密码泄露而受到攻击的风险。
 
 可以请求用户在登录后完成 MFA 质询。 博客文章[用于 Office 365 的 MFA 和用于 Azure 的 MFA](https://blogs.technet.microsoft.com/ad/2014/02/11/mfa-for-office-365-and-mfa-for-azure/) 比较 Office 和 Azure 订阅中包含的内容，以及包含在 Microsoft Azure 多重身份验证产品/服务中的功能。
@@ -46,5 +46,6 @@ ms.locfileid: "39622841"
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>后续步骤
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
 
+- [在 PIM 中配置 Azure AD 目录角色设置](pim-how-to-change-default-settings.md)
+- [在 PIM 中为 Azure AD 目录角色配置安全警报](pim-how-to-configure-security-alerts.md)

@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/27/2018
+ms.date: 08/27/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3918096a977cfd48e2128646d7c552e842ab8834
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 9d28b6ea5612a3db539c51d2603c3f12282ca519
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063674"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43090410"
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>Azure 上的 SAP HANA（大型实例）概述和体系结构
 
@@ -54,7 +54,7 @@ HANA 大型实例指南的不同文档涵盖以下几个方面：
 
 体系结构和技术部署指南中广泛使用了几个常见定义。 注意以下术语及其含义：
 
-- **IaaS**：服务型基础结构
+- **IaaS**：基础结构即服务。
 - **PaaS**：服务型平台
 - **SaaS**：服务型软件
 - **SAP 组件**：单个 SAP 应用程序，例如 ERP Central Component (ECC)、Business Warehouse (BW)、Solution Manager 或 Enterprise Portal (EP)。 SAP 组件可以基于传统的 ABAP 或 Java 技术，也可以是不基于 NetWeaver 的应用程序，例如业务对象。
@@ -325,6 +325,10 @@ HANA 的内存需求将随数据量增长而增加。 请注意当前的内存�
 有关不同 Linux 版本的不同 SAP HANA 版本的支持矩阵，请参阅 [SAP 说明 #2235581](https://launchpad.support.sap.com/#/notes/2235581)。
 
 有关操作系统和 HLI 固件/驱动程序版本的兼容性矩阵，请参阅 [HLI 的 OS 升级](os-upgrade-hana-large-instance.md)。
+
+
+> [!IMPORTANT] 
+> 对于类型 II 设备，目前仅支持 SLES 12 SP2 OS 版本。 
 
 
 **数据库**

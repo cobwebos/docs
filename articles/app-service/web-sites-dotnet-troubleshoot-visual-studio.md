@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
-ms.openlocfilehash: 1c56f705c07e2001e1ef8f5f9f05c264c33c2c3f
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: ba84d297420ca5a9b75b4cfa432373d3070e0d01
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42146123"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125238"
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>使用 Visual Studio 对 Azure 应用服务中的 Web 应用进行故障排除
 ## <a name="overview"></a>概述
@@ -623,7 +623,7 @@ Azure Web 应用使用 IIS 7.0 及更高版本中提供的相同失败请求跟�
 ### <a name="azure-web-app-troubleshooting"></a>Azure Web 应用故障排除
 有关对 Azure 应用服务中的 Web 应用进行故障排除的详细信息，请参阅以下资源：
 
-* [如何监视 Web 应用](/manage/services/web-sites/how-to-monitor-websites/)
+* [如何监视 Web 应用](web-sites-monitor.md)
 * [使用 Visual Studio 2013 在 Azure Web 应用中调查内存泄漏](http://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx)。 有关用于分析托管内存问题的 Visual Studio 功能的 Microsoft ALM 博客文章。
 * [应该了解的 Azure Web 应用联机工具](https://azure.microsoft.com/blog/2014/03/28/windows-azure-websites-online-tools-you-should-know-about-2/)。 Amit Apple 发表的博客文章。
 
@@ -674,7 +674,7 @@ catch (Exception ex)
 
 * [从 Azure 命令行流式传输诊断跟踪日志记录（加上 Glimpse！）](http://www.hanselman.com/blog/StreamingDiagnosticsTraceLoggingFromTheAzureCommandLinePlusGlimpse.aspx)<br/>
   如何使用命令行实现本教程中通过 Visual Studio 完成的任务。 [Glimpse](http://www.hanselman.com/blog/IfYoureNotUsingGlimpseWithASPNETForDebuggingAndProfilingYoureMissingOut.aspx) 是一个用于调试 ASP.NET 应用程序的工具。
-* [使用 Web 应用日志记录和诊断 - 与 David Ebbo 协作完成](/documentation/videos/azure-web-site-logging-and-diagnostics/)和[从 Azure Web 应用流式传输日志 - 与 David Ebbo 协作完成](/documentation/videos/log-streaming-with-azure-web-sites/)<br>
+* [使用 Web 应用日志记录和诊断 - 与 David Ebbo 协作完成](https://azure.microsoft.com/documentation/videos/azure-web-site-logging-and-diagnostics/)和[从 Azure Web 应用流式传输日志 - 与 David Ebbo 协作完成](https://azure.microsoft.com/documentation/videos/log-streaming-with-azure-web-sites/)<br>
   由 Scott Hanselman 和 David Ebbo 提供的视频。
 
 对于错误日志记录，若不想编写自己的跟踪代码，可以使用开源日志记录框架，如 [ELMAH](http://nuget.org/packages/elmah/)。 有关详细信息，请参阅 [Scott Hanselman 有关 ELMAH 的博客文章](http://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx)。

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: 14cdb2d3e433da38913ffa29b3b150bdb264278b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1948fb927c00e928a46c347bc6f1a01a43e155df
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658700"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43112133"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>快速入门：在 Azure VM 上手动安装单实例 SAP HANA
 ## <a name="introduction"></a>介绍
@@ -41,7 +41,7 @@ ms.locfileid: "34658700"
 * 下面的概念和过程关于：
    * 规划 Azure 上的 SAP 部署，包括 Azure 虚拟网络规划和 Azure 存储使用。 请参阅 [Azure 虚拟机 (VM) 上的 SAP NetWeaver - 规划和实施指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)。
    * Azure 中的部署原则以及部署 VM 的方法。 请参阅[适用于 SAP 的 Azure 虚拟机部署](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)。
-   * Azure 上 SAP NetWeaver ASCS（ABAP SAP 中心服务）、SCS（SAP 中心服务）和 ERS（估计的收货结算）的高可用性。 请参阅 [Azure VM 上 SAP NetWeaver 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide)。
+   * Azure 上 SAP NetWeaver ASCS（ABAP SAP 中心服务）、SCS（SAP 中心服务）和 ERS（入队复制服务器）的高可用性。 请参阅 [Azure VM 上 SAP NetWeaver 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide)。
    * 有关如何提高 Azure 上 ASCS/SCS 多 SID 安装的利用效率的详细信息。 请参阅[创建 SAP NetWeaver 多 SID 配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-multi-sid)。 
    * 在 Azure 中运行 SAP NetWeaver（基于 Linux 驱动的 VM）的原则。 请参阅[在 Microsoft Azure SUSE Linux VM 上运行 SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/suse-quickstart)。 本指南介绍 Azure VM 中适用于 Linux 的具体设置，还将详细介绍如何正确地将 Azure 存储磁盘附加到 Linux VM。
 

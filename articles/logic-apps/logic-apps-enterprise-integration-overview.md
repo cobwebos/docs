@@ -1,27 +1,23 @@
 ---
-title: B2B 企业集成 - Azure 逻辑应用 | Microsoft 文档
-description: 使用 Enterprise Integration Pack 构建 B2B 工作流，并支持将企业集成方案用于逻辑应用
+title: B2B 企业集成概述 - Azure 逻辑应用 | Microsoft Docs
+description: 使用 Azure 逻辑应用和 Enterprise Integration Pack 为企业集成解决方案构建自动化 B2B 工作流
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: msftman
-manager: jeconnoc
-editor: cgronlun
-ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
 ms.date: 09/08/2016
-ms.author: LADocs; padmavc
-ms.openlocfilehash: c4f83d2bf082b5f1358b4eee6468d470b5cb8088
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: b2e2c81914e8c0440b358d59c7f0248db46b6c50
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42141852"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124286"
 ---
-# <a name="overview-b2b-scenarios-and-communication-with-the-enterprise-integration-pack"></a>概述：使用 Enterprise Integration Pack 实现 B2B 方案和通信
+# <a name="overview-b2b-enterprise-integration-scenarios-in-azure-logic-apps-with-enterprise-integration-pack"></a>概述：带有 Enterprise Integration Pack 的 Azure 逻辑应用中的 B2B 企业集成方案
 
 为了实现企业到企业 (B2B) 工作流和与 Azure 逻辑应用的无缝通信，可以使用 Microsoft 的基于云的解决方案（Enterprise Integration Pack）启用企业集成方案。 组织可以电子方式交换消息，即使它们使用不同的协议和格式，也是如此。 该包将不同的格式转换为组织的系统可以解释和处理的格式。 组织可以通过行业标准协议（包括 [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md) 和 [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md)）交换消息。 还可以使用加密和数字签名保护消息。
 

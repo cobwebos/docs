@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 9e013e237a996d722d958920a1310e3aaea36c52
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: fb9193066c9501341efb779b9f9e2ccace02cccf
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170902"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888198"
 ---
 # <a name="how-to-use-the-expected-entity-property-of-actions"></a>如何使用操作的“预期实体”属性
 
@@ -50,7 +50,7 @@ ms.locfileid: "39170902"
 
 1. 依次单击“实体”和“新建实体”。
 2. 在“实体名称”中，输入名称。
-3. 单击创建
+3. 单击“法律条款” 
 
 > [!NOTE]
 > 实体类型为“自定义”。 此值表示可以对该实体进行定型。  此外，还有预构建实体，这意味着其行为无法调整。  这些实体会在[预构建实体教程](./7-built-in-entities.md)中进行介绍。
@@ -59,14 +59,14 @@ ms.locfileid: "39170902"
 
 ### <a name="create-two-actions"></a>创建两个操作
 
-1. 依次单击“操作”和“新建操作”
+1. 依次单击“操作”和“新建操作”。
 2. 在“响应”中，键入“What's your name?”。
 3. 在“预期实体”中，输入 $name。 单击“保存”。
     - 此值意味着，如果询问此问题，并且用户响应没有检测到任何实体，则机器人应假设整个用户的响应就是该实体。
 2. 依次单击“操作”和“新建操作”以创建第二个操作。
 3. 在“响应”中，键入“Hello $name”。
-    - 实体自动添加为不合格实体。 
-4. 点击“保存”(Save)
+    - 实体自动添加为所需实体。 
+4. 单击“保存”。
 
 现在已有两个操作。
 
@@ -95,9 +95,9 @@ ms.locfileid: "39170902"
 3. 选择“Hello $name”。
 4. 输入“my name is susan”。
     - 它将 susan 识别为名称，因为它已见过此模式。
-2. 单击“对操作打分”。
+2. 单击“Score Actions”。
 2. 选择“Hello susan”。
-3. 单击“完成教学”。
+3. 单击“Done Teaching”。
 
 在以下示例中，触发了“预期实体”启发学习法会触发，但不正确。 这些示例随后会演示如何进行更正。
 
@@ -115,7 +115,7 @@ ms.locfileid: "39170902"
 3. 单击以选择“frank”，然后单击“name”。
 2. 单击“对操作打分”
 3. 选择“Hello $name”。
-4. 单击“完成教学”。
+4. 单击“Done Teaching”。
 
 ![](../media/tutorial4_dialogs.PNG)
 

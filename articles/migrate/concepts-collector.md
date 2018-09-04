@@ -4,15 +4,15 @@ description: 概述了收集器设备及其配置方法。
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/27/2018
+ms.date: 08/25/2018
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: c99d0f74dbb8cc28cabebae60fe10645f4bdb3b6
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 551276f88f5c27cd860a400a5769c95f4d94cbbb
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308453"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122881"
 ---
 # <a name="collector-appliance"></a>收集器设备
 
@@ -58,6 +58,30 @@ Azure Migrate 收集器是一种轻量设备，可以用来发现本地 vCenter 
 
 > [!NOTE]
 > 收集器不支持基于 HTTPS 的代理服务器。
+
+#### <a name="internet-connectivity-with-intercepting-proxy"></a>具有拦截代理的 Internet 连接
+
+如果用于连接到 Internet 的代理服务器是拦截代理，则需要将代理证书导入收集器 VM。 以下是如何将证书导入收集器 VM 的步骤。
+
+1. 在收集器 VM 中，转到“开始菜单”，找到并打开“管理计算机证书”。
+2. 在“证书”工具的左窗格中，在“证书 - 本地计算机”下，找到“受信任的发布者”。 在“受信任的发布者”下，单击“证书”以查看右侧窗格中的证书列表。
+
+    ![“证书”工具](./media/concepts-intercepting-proxy/certificates-tool.png)
+
+3. 将代理证书复制到收集器 VM。 可能需要联系组织中的网络管理员团队以获取此证书。
+4. 双击证书将其打开。 单击“安装证书”。 这将带你进入“证书导入”向导。
+5. 在“证书导入”向导中，对于“存储位置”，选择“本地计算机”。 单击“下一步”。
+
+    ![证书存储位置](./media/concepts-intercepting-proxy/certificate-store-location.png)
+
+6. 选择“将所有证书放入下列存储”选项。 单击“浏览”，然后从出现的证书列表中选择“受信任的发布者”。 单击“下一步”。
+
+    ![证书存储](./media/concepts-intercepting-proxy/certificate-store.png)
+    
+7. 单击“完成”。 这将导入证书。 
+8. （可选）可以通过打开“证书”工具来验证是否已导入证书，如上面的步骤 1 和步骤 2 所示。
+9. 在 Azure Migrate 收集器应用上，验证 Internet 连接先决条件检查是否成功。
+
 
 #### <a name="whitelisting-urls-for-internet-connection"></a>Internet 连接的允许列表 URL
 

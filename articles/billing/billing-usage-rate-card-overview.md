@@ -15,15 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 5/10/2018
 ms.author: mobandyo
-ms.openlocfilehash: e26d8ad1f08eb711dc22b45d48f8dc326d8c17c7
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 650fac6208adf8f904384454b2e66e26e45893f1
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164969"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918846"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>使用 Azure 计费 API 以编程方式洞察 Azure 用量
 使用 Azure 计费 API 将用量和资源数据提取到偏好的数据分析工具。 Azure 资源用量和 RateCard API 可以帮助你准确预测及管理成本。 这些 API 作为资源提供程序实现，属于 Azure 资源管理器公开的 API 系列。  
+
+> [!div class="nextstepaction"]
+> [帮助改进 Azure 计费文档](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="azure-invoice-download-api-preview"></a>Azure 发票下载 API（预览版）
 [完成选择加入](billing-manage-access.md#opt-in)后，请使用[发票 API](/rest/api/billing) 预览版下载发票。 具体功能包括：
@@ -32,7 +35,7 @@ ms.locfileid: "34164969"
 * 日期筛选 - 使用 `$filter` 参数，在发票周期结束日期前按倒序顺序获取所有发票。 
 
 > [!NOTE]
-> 此功能在初始预览版中推出，可能需进行无法向后兼容的更改。 目前，它不适用于某些订阅产品/服务（不支持 EA、CSP、AIO）和 Azure Germany。
+> 此功能在初始预览版中推出，可能需进行无法向后兼容的更改。 目前，它不适用于某些订阅套餐（不支持 EA、CSP、AIO）和 Azure Germany。
 
 ## <a name="azure-resource-usage-api-preview"></a>Azure 资源使用状况 API（预览）
 使用 Azure [资源用量 API](https://msdn.microsoft.com/library/azure/mt219003) 获取预估的 Azure 耗用数据量。 该 API 包括：
@@ -59,7 +62,7 @@ ms.locfileid: "34164969"
 * **假设分析** -
   
   * 可以确定在其他区域或 Azure 资源的其他配置上运行工作负荷是否会更具成本效益。 Azure 资源费用根据所用的 Azure 区域而异。
-  * 还可以确定其他 Azure 产品/服务类型是否提供更优惠的 Azure 资源费率。
+  * 还可以确定其他 Azure 套餐类型是否提供更优惠的 Azure 资源费率。
   
 ## <a name="partner-solutions"></a>合作伙伴解决方案
 [Cloud Cruiser 和 Microsoft Azure 计费 API 集成](billing-usage-rate-card-partner-solution-cloudcruiser.md)介绍了 [Cloud Cruiser 的 Express for Azure Pack](http://www.cloudcruiser.com/partners/microsoft/) 如何直接从 Windows Azure Pack (WAP) 门户运行。 可以顺畅地在一个用户界面中管理 Microsoft Azure 私有云或托管公有云的运营和财务方面。   

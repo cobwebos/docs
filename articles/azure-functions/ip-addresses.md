@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2018
 ms.author: glenga
-ms.openlocfilehash: c2e066ddf444cb81d7f0033641a300d18b266f62
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: ce520c5972bf27c30ecb175d58b6b6071bf804db
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397841"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818286"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions 中的 IP 地址
 
@@ -39,7 +39,7 @@ IP 地址与函数应用而不是单个函数相关联。 传入的 HTTP 请求�
 3. 选择“平台功能”。
 4. 选择“属性”，然后选择“虚拟 IP 地址”下面显示的入站 IP 地址。
 
-## <a name="function-app-outbound-ip-addresses"></a>函数应用的出站 IP 地址
+## <a name="find-outbound-ip-addresses"></a>函数应用的出站 IP 地址
 
 每个函数应用具有一组可用的出站 IP 地址。 从某个函数发起的任何出站连接（例如，与后端数据库的连接）使用某个可用的出站 IP 地址作为源 IP 地址。 无法事先知道给定的连接要使用哪个 IP 地址。 因此，后端服务必须向函数应用的所有出站 IP 地址开放其防火墙。
 

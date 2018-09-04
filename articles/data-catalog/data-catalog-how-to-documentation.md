@@ -1,25 +1,19 @@
 ---
-title: "如何记录数据源 | Microsoft Docs"
-description: "操作指南文章重点说明如何在 Azure 数据目录中记录数据资产。"
+title: 如何在 Azure 数据目录中记录数据源
+description: 操作指南文章重点说明如何在 Azure 数据目录中记录数据资产。
 services: data-catalog
-documentationcenter: 
 author: spelluru
-manager: NA
-editor: 
-tags: 
+ms.author: spelluru
 ms.assetid: 053b1701-b848-4ada-b726-6f485caa9961
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: spelluru
-ms.openlocfilehash: 1901ac534c46e4de0446543de4a40de040b8d51e
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 4d3dfac425caf36e9ca9a4d3593bba336b18b7a3
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053134"
 ---
 # <a name="document-data-sources"></a>记录数据源
 ## <a name="introduction"></a>介绍

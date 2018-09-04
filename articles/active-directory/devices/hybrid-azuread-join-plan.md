@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: fbc40d0768a7cf1cb83a3e78dd524fac26254bea
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 12d3b358be8bb90b63e5e7310123f8ae7093994c
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42140221"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190266"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何规划混合 Azure Active Directory 加入实现
 
@@ -128,9 +128,10 @@ ms.locfileid: "42140221"
 
 - 使用无缝单一登录 (SSO) 的密码哈希同步 (PHS) 
 
-从版本 1.1.819.0 开始，Azure AD Connect 提供一个向导用于配置混合 Azure AD 加入。 该向导可让你显著简化配置过程。 有关详细信息，请参阅：
+自版本 1.1.819.0 起，Azure AD Connect 提供了混合 Azure AD 联接的配置向导。 该向导可让你显著简化配置过程。 有关详细信息，请参阅：
 
 - [为联盟域配置混合 Azure Active Directory 加入](hybrid-azuread-join-federated-domains.md)
+
 
 - [为托管域配置混合 Azure Active Directory 加入](hybrid-azuread-join-managed-domains.md)
 

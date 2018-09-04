@@ -1,28 +1,23 @@
 ---
 title: 从 Azure 逻辑应用部署和调用 Web API 与 REST API | Microsoft Docs
 description: 在 Azure 逻辑应用中为系统集成工作流部署和调用 Web API 与 REST API
-keywords: Web API, REST API, 连接器, 工作流, 系统集成, 身份验证
 services: logic-apps
-author: stepsic-microsoft-com
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: f113005d-0ba6-496b-8230-c1eadbd6dbb9
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, stepsic, LADocs
 ms.topic: article
+ms.assetid: f113005d-0ba6-496b-8230-c1eadbd6dbb9
 ms.date: 05/26/2017
-ms.author: LADocs; stepsic
-ms.openlocfilehash: e808a463beb312df6ee2f8fc4378f72755dcdf33
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 0d53c8355fadf53c81676a1fe3c71f8e0b046630
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298996"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126562"
 ---
-# <a name="deploy-and-call-custom-apis-from-logic-app-workflows"></a>从逻辑应用工作流部署和调用自定义 API
+# <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>从 Azure 逻辑应用中的工作流部署和调用自定义 API
 
 [创建自定义 API](./logic-apps-create-api-app.md) 以供逻辑应用工作流使用后，必须先部署 API 才能调用它们。 虽然可以将 API 部署为 [Web 应用](../app-service/app-service-web-overview.md)，但请考虑将 API 部署为 [API 应用](../app-service/app-service-web-tutorial-rest-api.md)，便于更加轻松地在云端和本地生成、托管和使用 API。 不必更改 API 中的任何代码 - 可直接将代码部署到 API 应用。 可在 [Azure App Service](../app-service/app-service-web-overview.md) 上托管API，它是一款平台即服务 (PaaS) 产品，可提供简单的高缩放性 API 托管。
 

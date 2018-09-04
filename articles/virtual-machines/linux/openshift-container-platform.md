@@ -15,20 +15,20 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: f1ba6a3d3b9e576d513b55beac4e9365102433e9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: a275df4567053149688694315ff24ac1ad7f711f
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29125735"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43186908"
 ---
 # <a name="deploy-openshift-container-platform-in-azure"></a>在 Azure 中部署 OpenShift 容器平台
 
 可以使用多种方法之一在 Azure 中部署 OpenShift 容器平台：
 
-- 可以手动部署必要的 Azure 基础结构组件，然后按照 OpenShift 容器平台[文档](https://docs.openshift.com/container-platform/3.6/welcome/index.html)进行操作。
+- 可以手动部署必要的 Azure 基础结构组件，然后按照 OpenShift 容器平台[文档](https://docs.openshift.com/container-platform/3.10/welcome/index.html)进行操作。
 - 也可使用现有的[资源管理器模板](https://github.com/Microsoft/openshift-container-platform/)，该模板可简化 OpenShift 容器平台群集的部署流程。
-- 另一种做法是使用 [Azure Marketplace 产品](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview)。
+- 另一种做法是使用 [Azure 市场产品](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview)。
 
 所有选项均需要 Red Hat 订阅。 在部署期间，会将 Red Hat Enterprise Linux 实例注册到 Red Hat 订阅并附加到包含 OpenShift 容器平台权利的池 ID。
 确保具有有效的 Red Hat 订阅管理员 (RHSM) 用户名、密码和池 ID。 可通过登录 https://access.redhat.com 验证此信息。
@@ -158,9 +158,9 @@ az group deployment create -g myResourceGroup --name myOpenShiftCluster \
 }
 ```
 
-## <a name="deploy-by-using-the-openshift-container-platform-azure-marketplace-offer"></a>使用 OpenShift 容器平台 Azure Marketplace 产品进行部署
+## <a name="deploy-by-using-the-openshift-container-platform-azure-marketplace-offer"></a>使用 OpenShift Container Platform Azure 市场产品进行部署
 
-使用 [Azure Marketplace 产品](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview)是将 OpenShift 容器平台部署到 Azure 中最简单的方式。
+使用 [Azure 市场产品/服务](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview)是将 OpenShift Container Platform 部署到 Azure 中的最简单方式。
 
 此方法虽然最为简单，但自定义功能有限。 产品/服务包括 3 个配置选项：
 

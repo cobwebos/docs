@@ -1,26 +1,21 @@
 ---
 title: 从模板创建工作流 - Azure 逻辑应用 | Microsoft Docs
-description: 使用逻辑应用模板构建工作流更快
-author: kevinlam1
-manager: jeconnoc
-editor: ''
+description: 使用 Azure 逻辑应用中的逻辑应用模板，可以更快地构建工作流
 services: logic-apps
-documentationcenter: ''
-ms.assetid: 3656acfb-eefd-4e75-b5d2-73da56c424c9
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: kevinlam1
+ms.author: klam
+ms.reviewer: estfan, LADocs
 ms.topic: article
+ms.assetid: 3656acfb-eefd-4e75-b5d2-73da56c424c9
 ms.date: 10/15/2017
-ms.author: LADocs; klam
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 72aca1420d76a34f8f43f05b25d146eb743b3233
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 10191a4fbab325dcd5134b082f050188c6798079
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298682"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122114"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>从预构建的模板创建逻辑应用工作流
 
@@ -28,7 +23,7 @@ ms.locfileid: "35298682"
 
 此处有一些模板类别：
 
-| 模板类型 | 说明 | 
+| 模板类型 | Description | 
 | ------------- | ----------- | 
 | 企业云模板 | 用于集成 Azure Blob、Dynamics CRM、Salesforce、Box 以及其他连接器来满足企业云需求。 例如，可以使用这些模板组织业务领导方式或备份公司文件数据。 | 
 | 个人工作效率模板 | 通过设置日常提醒、将重要工作项目添加为待办事项，以及通过自动化将耗时较长的任务缩减为单个用户同意的步骤，有助于提高个人工作效率。 | 
@@ -53,7 +48,7 @@ ms.locfileid: "35298682"
 
    | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
-   | **名称** | your-logic-app-name | 提供一个唯一的逻辑应用名称。 | 
+   | **Name** | your-logic-app-name | 提供一个唯一的逻辑应用名称。 | 
    | **订阅** | your-Azure-subscription-name | 选择要使用的 Azure 订阅。 | 
    | **资源组** | your-Azure-resource-group-name | 创建或选择一个用于此逻辑应用的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)，以便组织与此应用相关联的所有资源。 | 
    | **位置** | your-Azure-datacenter-region | 选择用于部署逻辑应用的数据中心区域，例如“美国西部”。 | 

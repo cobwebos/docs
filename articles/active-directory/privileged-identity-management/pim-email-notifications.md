@@ -1,6 +1,6 @@
 ---
-title: Azure AD PIM 中的电子邮件通知 | Microsoft Docs
-description: 介绍 Azure AD Privileged Identity Management (PIM) 中的电子邮件通知
+title: PIM 中的电子邮件通知 - Azure | Microsoft Docs
+description: 介绍 Azure AD Privileged Identity Management (PIM) 中的电子邮件通知。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.date: 07/24/2018
 ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
-ms.openlocfilehash: 7943b4fb8c2027b50ce04c30d21f1b0a58f98ace
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 1a1635e0ba16bdc0fa6dc90aa0e1a417f43e04ac
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621576"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190170"
 ---
-# <a name="email-notifications-in-azure-ad-pim"></a>Azure AD PIM 中的电子邮件通知
+# <a name="email-notifications-in-pim"></a>PIM 中的电子邮件通知
 
 当 Azure AD Privileged Identity Management (PIM) 中发生关键事件时，电子邮件通知将发送给相关管理员或用户。 例如，PIM 会针对以下事件发送电子邮件：
 
@@ -74,5 +74,5 @@ ms.locfileid: "39621576"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [如何在 Azure AD PIM 中管理角色激活设置](pim-how-to-change-default-settings.md)
-- [Azure AD PIM 中的审批](azure-ad-pim-approval-workflow.md)
+- [在 PIM 中配置 Azure AD 目录角色设置](pim-how-to-change-default-settings.md)
+- [在 PIM 中批准或拒绝 Azure AD 目录角色的请求](azure-ad-pim-approval-workflow.md)

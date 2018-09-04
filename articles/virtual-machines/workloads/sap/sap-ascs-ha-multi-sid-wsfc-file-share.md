@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 604179ec856d21dce51101fdafa5d51eed08f89f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1e21357eeb795a26874cddb90b4d3a6303b83ac0
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657207"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189627"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -227,6 +227,7 @@ _图 1：在两个群集中部署的 SAP ASCS/SCS 实例和 SOFS_
 > [!IMPORTANT]
 > 该设置必须满足以下条件：
 > * SAP ASCS/SCS 实例必须共享同一个 WSFC 群集。
+> * 属于不同 SAP SID 的不同 SAP 全局主机文件共享必须共享相同的 SOFS 群集。
 > * 每个数据库管理系统 (DBMS) SID 都必须有自己专用的 WSFC 群集。
 > * 属于一个 SAP 系统 SID 的 SAP 应用程序服务器必须有自身的专用 VM。
 
@@ -271,7 +272,7 @@ _图 3：多 SID SOFS 使用相同的 SAP 全局主机名_
 ><SID2> 全局主机的文件路径是 C:\ClusterStorage\\Volume1\usr\sap\<SID2>\SYS\.
 >
 
-对于 \<SID2> 系统，必须准备 SAP 全局主机 ..\SYS\. SOFS 群集上的文件夹。
+对于 \<SID2> 系统，必须准备 SAP 全局主机 ..\SYS\.。 SOFS 群集上的文件夹。
 
 若要为 \<SID2> 实例准备 SAP 全局主机，请执行下面的 PowerShell 脚本：
 

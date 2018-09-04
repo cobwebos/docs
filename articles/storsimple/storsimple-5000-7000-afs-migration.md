@@ -11,16 +11,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/15/2018
+ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 6a52db27491ef707b813a7645d275b371b11368c
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: d54394a8dc74d04f1922a78826b10a4a421d193b
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42140017"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42814584"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>将数据从 StorSimple 5000-7000 系列迁移到 Azure 文件同步
+
+> [!IMPORTANT]
+> 在 2019 年 7 月 31 日，StorSimple 5000/7000 系列将达到支持终止 (EOS) 状态。 我们建议 StorSimple 5000/7000 系列客户迁移到本文档中所述的替代方案之一。
 
 数据迁移是将数据从一个存储位置转移到另一个位置的过程。 这需要在组织中的一台设备上，创建另一台设备上的当前数据的完全相同的副本 — 最好能够避免中断或禁用活动的应用程序 — 然后将所有输入/输出 (I/O) 活动重定向到新设备。 
 

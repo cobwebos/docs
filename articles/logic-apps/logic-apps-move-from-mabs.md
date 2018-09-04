@@ -1,27 +1,22 @@
 ---
 title: 将应用从 BizTalk 服务移动到 Azure 逻辑应用 | Microsoft Docs
-description: 将 Azure BizTalk 服务 (MABS) 移动或迁移到 Azure 逻辑应用
+description: 从 Azure BizTalk 服务 (MABS) 移动迁移到 Azure 逻辑应用
 services: logic-apps
-documentationcenter: ''
-author: jonfancey
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: jonfancey
+ms.author: jonfan
+ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.date: 05/30/2017
-ms.author: jonfan; LADocs
-ms.openlocfilehash: 846386172c0221c217430e62c8560484f799fa7f
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: f27e82e780917e00625ef6a14ab8317d1f5b8ae8
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299539"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124793"
 ---
-# <a name="move-from-biztalk-services-to-azure-logic-apps"></a>从 BizTalk 服务移动到 Azure 逻辑应用
+# <a name="migrate-from-biztalk-services-to-azure-logic-apps"></a>从 BizTalk 服务迁移到 Azure 逻辑应用
 
 Microsoft Azure BizTalk 服务 (MABS) 即将停用。 若要将 MABS 集成解决方案移动到 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)，请使用本文中的指南。 
 
@@ -91,7 +86,7 @@ BizTalk 服务连接器帮助网桥发送和接收数据，包括启用了基于
 
 ### <a name="transform-messages"></a>转换消息
 
-在 BizTalk 服务中，转换阶段将一种基于 XML 的消息格式转换为另一种格式。 此工作是通过使用基于 TRFM 的映射程序来应用映射完成的。 在逻辑应用中，过程与此类似。 转换操作会从集成帐户执行映射。 主要区别是，逻辑应用中的映射是 XSLT 格式。 XSLT 能够重复使用现有 XSLT，包括为 BizTalk 服务器创建的包含 functoid 的映射。 
+在 BizTalk 服务中，转换阶段将一种基于 XML 的消息格式转换为另一种格式。 此工作是通过使用基于 TRFM 的映射程序来应用映射完成的。 在逻辑应用中，过程与此类似。 转换操作会从集成帐户执行映射。 主要区别是，逻辑应用中的映射是 XSLT 格式。 XSLT 能够重复使用现有 XSLT，包括为 BizTalk Server 创建的包含 functoid 的映射。 
 
 ### <a name="routing-rules"></a>路由规则
 

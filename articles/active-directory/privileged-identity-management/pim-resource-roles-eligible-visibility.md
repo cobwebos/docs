@@ -1,6 +1,6 @@
 ---
-title: Privileged Identity Management 中针对 Azure 的合格分配和资源可见性 | Microsoft Docs
-description: 介绍如何在使用 PIM 时将成员分配为资源角色的合格成员。
+title: PIM 中的合格分配和资源可见性 - Azure | Microsoft Docs
+description: 介绍如何在 Azure AD Privileged Identity Management (PIM) 中将成员分配为 Azure 资源角色的合格成员。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 336453c1ef6ef8d0295d00f31afc6a5e7e42e8b6
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 3551c3231a94f8a844d26a713cbf171ca7653815
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621542"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189208"
 ---
-# <a name="eligible-assignments-and-resource-visibility-with-privileged-identity-management"></a>使用 Privileged Identity Management 实现合格分配和资源可见性
+# <a name="eligible-assignments-and-resource-visibility-in-pim"></a>PIM 中的合格分配和资源可见性
 
 Azure 资源角色的 Privileged Identity Management (PIM) 可使具有重要 Azure 资源的组织更为安全。 资源管理员可使用 PIM 将成员分配为资源角色的合格成员。 阅读以下各部分，详细了解 Azure 资源角色的不同分配类型和分配状态。 
 
@@ -70,4 +70,4 @@ Azure 资源的 PIM 有两种不同的分配状态，它们显示在 PIM 的“�
 
 ## <a name="next-steps"></a>后续步骤
 
-[在 Privileged Identity Manager 中分配角色](pim-resource-roles-assign-roles.md)
+- [在 PIM 中分配 Azure 资源角色](pim-resource-roles-assign-roles.md)

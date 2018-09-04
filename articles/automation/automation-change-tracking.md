@@ -6,16 +6,16 @@ ms.service: automation
 ms.component: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/15/2018
+ms.date: 08/27/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86b8f76bd221be9f30a5b9336af858359ae0af8f
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 8066612db20d1569920835a67d84b27d1b852e6e
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238873"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128120"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>使用更改跟踪解决方案跟踪环境中的更改
 
@@ -94,8 +94,18 @@ Windows 代理正式支持以下版本的 Windows 操作系统：
 |已启用     | 确定是否应用了设置。        |
 |项目名称     | 要跟踪的文件的友好名称。        |
 |组     | 一个组名，用于对文件进行逻辑分组。        |
-|输入路径     | 用于查看文件的路径，例如“c:\temp\myfile.txt”       |
+|输入路径     | 用于查看文件的路径，例如：“c:\temp\\\*.txt”<br>还可以使用环境变量，例如“%winDir%\System32\\\*.*”       |
+|递归     | 确定在查找要跟踪的项时是否使用递归。        |
 |上传所有设置的文件内容| 针对已跟踪的更改启用或关闭文件内容上传功能。 可用选项：“True”或“False”。|
+
+## <a name="wildcard-recursion-and-environment-settings"></a>通配符、递归和环境设置
+
+递归允许你指定通配符以简化跨目录的跟踪，以及指定环境变量以允许你在具有多个或动态驱动器名称的环境中跟踪文件。 以下是配置递归时应了解的常用信息列表：
+
+* 跟踪多个文件需要使用通配符
+* 如果使用通配符，则只能在路径的最后一段中使用它们。 （例如 C:\folder\\**file** 或 /etc/*.conf）
+* 如果环境变量具有无效路径，验证将成功，但运行清单时，该路径将失败。
+* 设置路径时，请避免使用 `c:\*.*` 等常规路径，因为这会导致遍历过多的文件夹。
 
 ## <a name="configure-file-content-tracking"></a>配置文件内容跟踪
 
@@ -122,13 +132,8 @@ Windows 代理正式支持以下版本的 Windows 操作系统：
 
 更改跟踪解决方案当前不支持以下项：
 
-* 用于 Windows 文件跟踪的文件夹（目录）
-* Windows 文件跟踪递归
-* Windows 文件跟踪通配符
 * Windows 注册表跟踪递归
-* 路径变量
 * 网络文件系统
-* 文件内容
 
 其他限制：
 

@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/16/2018
+ms.date: 08/29/2018
 ms.author: douglasl
-ms.openlocfilehash: 2dab0adb0728a1fb5e8ac9bebe01f861ed8c7c3a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: f4a88c5495fc3297699110d8a12a22ff7d6c2bbb
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055262"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144348"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -108,6 +108,10 @@ ms.locfileid: "37055262"
 | folderPath            | 自定义应用程序及其所有依赖项所在的文件夹的路径 | 否       |
 | referenceObjects      | 现有链接服务和数据集的数组。 所引用的链接服务和数据集采用 JSON 格式传递到自定义应用程序，因此，自定义代码可以引用数据工厂的资源 | 否       |
 | extendedProperties    | 可以采用 JSON 格式传递到自定义应用程序的用户定义属性，以便自定义代码可以引用更多属性 | 否       |
+
+## <a name="custom-activity-permissions"></a>自定义活动权限
+
+自定义活动将 Azure Batch 自动用户帐户设置为“任务范围内非管理员访问权限”（默认自动用户规范）。 无论更改自动用户帐户的权限级别。 有关详细信息，请参阅[在 Batch 中的用户帐户下运行任务 | 自动用户帐户](../batch/batch-user-accounts.md#auto-user-accounts)。
 
 ## <a name="executing-commands"></a>执行命令
 

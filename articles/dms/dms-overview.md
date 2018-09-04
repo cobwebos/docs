@@ -9,13 +9,13 @@ ms.reviewer: douglasl
 ms.service: database-migration
 ms.workload: data-services
 ms.topic: article
-ms.date: 08/20/2018
-ms.openlocfilehash: 4bfa6ef778f51446146de4c10575ac7a287c68dc
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.date: 08/27/2018
+ms.openlocfilehash: 443edcaf1d087028120f4996ba5abef00b1d2c94
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246455"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43041331"
 ---
 # <a name="what-is-the-azure-database-migration-service"></a>什么是 Azure 数据库迁移服务？
 Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多个数据库源到 Azure 数据平台的无缝迁移，并且最小化停机时间。
@@ -25,6 +25,12 @@ Azure 数据库迁移服务集成了一些现有工具和服务的功能。 它�
 
 ## <a name="regional-availability"></a>区域可用性
 有关可以使用数据库迁移服务的区域的最新信息，请参阅[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。
+
+> [!NOTE]
+> 联机迁移和 SKU 建议功能目前仅在以下区域中提供：
+> - 美国中部
+> - 美国东部 2
+> - 西欧
 
 ## <a name="next-steps"></a>后续步骤
 - [使用 Azure 门户创建 Azure 数据库迁移服务的实例](quickstart-create-data-migration-service-portal.md)。

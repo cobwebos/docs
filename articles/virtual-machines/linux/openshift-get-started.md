@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: c8e740a66271c88b3abb036867d1760cc9e77607
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e3ab060c1cea28f83c18dc89aeea7716ec86572a
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33944495"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190337"
 ---
 # <a name="openshift-in-azure"></a>Azure 中的 OpenShift
 
@@ -34,16 +34,16 @@ OpenShift 包括用于容器业务流程和管理的 Kubernetes 容器。 它增
 
 有多个可用的 OpenShift 版本：
 
-- OpenShift Origin
+- OKD（以前称为 OpenShift Origin）
 - OpenShift 容器平台
 - OpenShift Online
 - OpenShift Dedicated
 
 在本文所述的四个版本中，只有两种（OpenShift Origin 和 OpenShift 容器平台）可供客户部署到 Azure 中。
 
-## <a name="openshift-origin"></a>OpenShift Origin
+## <a name="okd-formerly-openshift-origin"></a>OKD（以前称为 OpenShift Origin）
 
-Origin 是社区支持的 OpenShift 的[开放源](https://www.openshift.org/)上游项目。 可在 CentOS 或 Red Hat Enterprise Linux (RHEL) 上安装 Origin。
+OKD 是社区支持的 OpenShift 的[开源](https://www.okd.io/)上游项目。 可在 CentOS 或 Red Hat Enterprise Linux (RHEL) 上安装 OKD。
 
 ## <a name="openshift-container-platform"></a>OpenShift 容器平台
 

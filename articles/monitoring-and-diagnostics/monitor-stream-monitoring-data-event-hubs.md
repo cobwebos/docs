@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 7/31/2018
+ms.date: 8/21/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 2990ba290dfdaf45d8a341138ea515bad16d5b30
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: e4bbf86c6cb7e827672fe279e86c8d3fd76e8e8b
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628165"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049118"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>将 Azure 监视数据流式传输到事件中心以便外部工具使用
 
@@ -48,26 +48,26 @@ Azure Monitor 提供了获取 Azure 环境中所有监视数据访问权限的�
 
 另请参阅 [Azure 事件中心常见问题解答](../event-hubs/event-hubs-faq.md)。
 
-## <a name="how-do-i-set-up-azure-tenant-monitoring-data-to-be-streamed-to-an-event-hub"></a>如何将 Azure 租户监视数据设置为流式传输到事件中心？
+## <a name="azure-tenant-monitoring-data"></a>Azure 租户监视数据
 
 Azure 租户监视数据目前仅适用于 Azure Active Directory。 可以使用 [Azure Active Directory 报告](../active-directory/reports-monitoring/overview-reports.md)中的数据，其中包含特定租户中的登录活动历史记录和更改审核跟踪。
 
-### <a name="stream-azure-active-directory-data-into-an-event-hub"></a>将 Azure Active Directory 数据流式传输到事件中心
+### <a name="azure-active-directory-data"></a>Azure Active Directory 数据
 
 若要将 Azure Active Directory 日志中的数据发送到事件中心命名空间，请在 AAD 租户上设置租户诊断设置。 请[按照此指南](../active-directory/reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md)设置租户诊断设置。
 
-## <a name="how-do-i-set-up-azure-subscription-monitoring-data-to-be-streamed-to-an-event-hub"></a>如何将 Azure 订阅监视数据设置为流式传输到事件中心？
+## <a name="azure-subscription-monitoring-data"></a>Azure 订阅监视数据
 
 Azure 订阅监视数据可以在 [Azure 活动日志](./monitoring-overview-activity-logs.md)中找到。 此日志包含来自资源管理器的创建、更新和删除操作；[Azure 服务运行状况](../service-health/service-health-overview.md)中可能影响订阅中资源的更改；[资源运行状况](../service-health/resource-health-overview.md)状态转换；以及若干其他类型的订阅级别事件。 [本文详细介绍了 Azure 活动日志中显示的所有事件类别](./monitoring-activity-log-schema.md)。
 
-### <a name="stream-azure-activity-log-data-into-an-event-hub"></a>将 Azure 活动日志数据流式传输到事件中心
+### <a name="activity-log-data"></a>活动日志数据
 
 若要将数据从 Azure 活动日志发送到事件中心命名空间，请在订阅上设置日志配置文件。 [按照本指南](./monitoring-stream-activity-logs-event-hubs.md)在订阅上设置日志配置文件。 对要监视每个订阅执行一次此操作。
 
 > [!TIP]
 > 日志配置当前仅允许选择一个事件中心命名空间，并将在其中创建名为“insights-operational-logs”的事件日志。 尚不可在日志配置文件中指定自己的事件中心名称。
 
-## <a name="how-do-i-set-up-azure-resource-monitoring-data-to-be-streamed-to-an-event-hub"></a>如何将 Azure 资源监视数据设置为流式传输到事件中心？
+## <a name="azure-resource-metrics-and-diagnostics-logs"></a>Azure 资源指标和诊断日志
 
 Azure 资源将发出两种类型的监视数据：
 1. [资源诊断日志](./monitoring-overview-of-diagnostic-logs.md)
@@ -78,25 +78,25 @@ Azure 资源将发出两种类型的监视数据：
 > [!TIP]
 > 可使用 Azure Policy，[在策略规则中使用 DeployIfNotExists 效果](../azure-policy/policy-definition.md#policy-rule)，确保特定范围内的每个资源始终设置了诊断设置。 DeployIfNotExists 现仅支持内置策略。
 
-## <a name="how-do-i-set-up-guest-os-monitoring-data-to-be-streamed-to-an-event-hub"></a>如何将来宾 OS 监视数据设置为流式传输到事件中心？
+## <a name="guest-os-data"></a>来宾 OS 数据
 
 需要安装代理以将来宾 OS 监视数据发送到事件中心。 对于 Windows 或 Linux，请在配置文件中指定要发送到事件中心的数据，以及应将数据发送到的事件中心，并将该配置文件传递给在 VM 上运行的代理。
 
-### <a name="stream-linux-data-to-an-event-hub"></a>将 Linux 数据流式传输到事件中心
+### <a name="linux-data"></a>Linux 数据
 
 [Linux Azure 诊断代理](../virtual-machines/extensions/diagnostics-linux.md)用于将来自 Linux 计算机的监视数据发送到事件中心。 在 LAD 配置文件保护的设置 JSON 中添加事件中心作为接收器，即可完成此操作。 [参阅此文章，详细了解如何向 Linux Azure 诊断代理添加事件中心接收器](../virtual-machines/extensions/diagnostics-linux.md#protected-settings)。
 
 > [!NOTE]
 > 不能在门户中将来宾 OS 监视数据设置为流式传输到事件中心。 相反，必须手动编辑配置文件。
 
-### <a name="stream-windows-data-to-an-event-hub"></a>将 Windows 数据流式传输到事件中心
+### <a name="windows-data"></a>Windows 数据
 
 [Windows Azure 诊断代理](./azure-diagnostics.md)用于将来自 Windows 计算机的监视数据发送到事件中心。 在 WAD 配置文件的 privateConfig 部分添加事件中心作为接收器，即可完成此操作。 [参阅此文章，详细了解如何向 Windows Azure 诊断代理添加事件中心接收器](./azure-diagnostics-streaming-event-hubs.md)。
 
 > [!NOTE]
 > 不能在门户中将来宾 OS 监视数据设置为流式传输到事件中心。 相反，必须手动编辑配置文件。
 
-## <a name="how-do-i-set-up-application-monitoring-data-to-be-streamed-to-event-hub"></a>如何将应用程序监视数据设置为流式传输到事件中心？
+## <a name="application-monitoring-data"></a>应用程序监视数据
 
 应用程序监视数据要求代码经过 SDK 检测，因此没有将应用程序监视数据路由到 Azure 中事件中心的通用解决方案。 但是，[Azure Application Insights](../application-insights/app-insights-overview.md) 是一项可用于收集 Azure 应用程序级数据的服务。 如果使用 Application Insights，可通过执行以下操作，将监视数据流式传输到事件中心：
 

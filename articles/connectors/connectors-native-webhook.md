@@ -1,28 +1,24 @@
 ---
-title: Azure 逻辑应用的 Webhook 连接器 | Microsoft Docs
-description: 如何使用 webhook 操作和触发器执行操作，如逻辑应用的筛选数组操作
+title: 创建基于事件的工作流或操作 - Azure 逻辑应用 | Microsoft Docs
+description: 使用 Webhook 和 Azure 逻辑应用自动执行基于事件的工作流或操作
 services: logic-apps
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-tags: connectors
-ms.assetid: 71775384-6c3a-482c-a484-6624cbe4fcc7
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, jehollan, LADocs
+ms.assetid: 71775384-6c3a-482c-a484-6624cbe4fcc7
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+tags: connectors
 ms.date: 07/21/2016
-ms.author: jehollan; LADocs
-ms.openlocfilehash: 647dcebdd8d66ca49e14b51633e6a4a3ce6cb32b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 7b1886321ca4afd4b4710bd9fddf16d2d5eb224b
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296554"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126581"
 ---
-# <a name="get-started-with-the-webhook-connector"></a>Webhook 连接器入门
+# <a name="create-event-based-workflows-or-actions-by-using-webhooks-and-azure-logic-apps"></a>使用 Webhook 和 Azure 逻辑应用创建基于事件的工作流或操作
 
 借助 Webhook 操作和触发器，可启动、暂停和恢复流以执行以下任务：
 
@@ -80,7 +76,7 @@ ms.locfileid: "35296554"
 
 ## <a name="webhook-triggers"></a>Webhook 触发器
 
-| 操作 | 说明 |
+| 操作 | Description |
 | --- | --- |
 | HTTP Webhook |将回调 URL 订阅到可调用该 URL 的服务以按需触发逻辑应用。 |
 
@@ -91,7 +87,7 @@ ms.locfileid: "35296554"
 将回调 URL 订阅到可调用该 URL 的服务以按需触发逻辑应用。
 \* 表示必填字段。
 
-| 显示名称 | 属性名称 | 说明 |
+| 显示名称 | 属性名称 | Description |
 | --- | --- | --- |
 | 订阅方法* |方法 |要用于订阅请求的 HTTP 方法 |
 | 订阅 URI* |uri |要用于订阅请求的 HTTP URI |
@@ -108,7 +104,7 @@ ms.locfileid: "35296554"
 
 Webhook 请求
 
-| 属性名称 | 数据类型 | 说明 |
+| 属性名称 | 数据类型 | Description |
 | --- | --- | --- |
 | 标头 |对象 |Webhook 请求标头 |
 | Body |对象 |Webhook 请求对象 |
@@ -116,7 +112,7 @@ Webhook 请求
 
 ## <a name="webhook-actions"></a>Webhook 操作
 
-| 操作 | 说明 |
+| 操作 | Description |
 | --- | --- |
 | HTTP Webhook |将回调 URL 订阅到可调用该 URL 的服务以按需恢复工作流步骤。 |
 
@@ -127,7 +123,7 @@ Webhook 请求
 将回调 URL 订阅到可调用该 URL 的服务以按需恢复工作流步骤。
 \* 表示必填字段。
 
-| 显示名称 | 属性名称 | 说明 |
+| 显示名称 | 属性名称 | Description |
 | --- | --- | --- |
 | 订阅方法* |方法 |要用于订阅请求的 HTTP 方法 |
 | 订阅 URI* |uri |要用于订阅请求的 HTTP URI |
@@ -144,7 +140,7 @@ Webhook 请求
 
 Webhook 请求
 
-| 属性名称 | 数据类型 | 说明 |
+| 属性名称 | 数据类型 | Description |
 | --- | --- | --- |
 | 标头 |对象 |Webhook 请求标头 |
 | Body |对象 |Webhook 请求对象 |

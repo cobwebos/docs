@@ -8,16 +8,15 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 85a2f0c13d483df40b6de2a158cf5fa43c45b5eb
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: b4905c8bcf3c14c7f1dfa752a930f57ccbfd8fd7
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39529103"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818480"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
-
-  [Azure 文件](storage-files-introduction.md)在云中提供完全托管的文件共享，这些共享项可通过行业标准 SMB 协议进行访问。 由于 Azure 文件是完全托管的，因此在生产方案中对其进行部署比部署和管理文件服务器或 NAS 设备简单得多。 本文介绍在组织内部署 Azure 文件共享以供生产使用时应考虑的主题。
+[Azure 文件](storage-files-introduction.md)在云中提供完全托管的文件共享，这些共享项可通过行业标准 SMB 协议进行访问。 由于 Azure 文件是完全托管的，因此在生产方案中对其进行部署比部署和管理文件服务器或 NAS 设备简单得多。 本文介绍在组织内部署 Azure 文件共享以供生产使用时应考虑的主题。
 
 ## <a name="management-concepts"></a>管理概念
  下图说明了 Azure 文件管理构造：
@@ -82,7 +81,7 @@ Azure 文件支持三个数据冗余选项：本地冗余存储 (LRS)、区域�
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-GRS.md)]
 
 ## <a name="data-growth-pattern"></a>数据增长模式
-现在，Azure 文件共享的最大大小为 5 TiB，包括共享快照。 鉴于此当前限制，必须考虑部署 Azure 文件共享时的预期数据增长。 请注意，一个 Azure 存储帐户可以存储多个共享，存储的所有共享总容量为 500 TiB。
+目前，Azure 文件共享的最大大小是 5 TiB。 鉴于此当前限制，必须考虑部署 Azure 文件共享时的预期数据增长。 请注意，一个 Azure 存储帐户可以存储多个共享，存储的所有共享总容量为 500 TiB。
 
 可使用 Azure 文件同步将多个 Azure 文件共享同步到单个 Windows 文件服务器。这可确保本地的较旧、超大文件共享能够导入 Azure 文件同步。有关详细信息，请参阅[规划 Azure 文件同步部署](storage-files-planning.md)。
 

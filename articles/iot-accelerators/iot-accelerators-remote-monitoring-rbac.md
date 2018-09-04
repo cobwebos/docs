@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8886c08e88c1dd46d2b325b9ba8e9e0b8ae104f9
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 956cb80ddbf96f23585dd52f3dc1013c7a665113
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40007158"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886304"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>在远程监视解决方案加速器中配置基于角色的访问控制
 
@@ -51,7 +51,7 @@ ms.locfileid: "40007158"
 
 1. 检查[用户是否在所用的目录中](../active-directory/fundamentals/add-users-azure-active-directory.md)。 登录到 [Microsoft Azure IoT 解决方案加速器](https://www.azureiotsolutions.com/Accelerators)站点时，已选择要使用的目录。 目录名称显示在[页面](https://www.azureiotsolutions.com/Accelerators)的右上角。
 
-1. 在 Azure 门户中找到解决方案的“企业应用程序”。 应用程序名称即是远程监视解决方案的名称。 在以下屏幕截图中，解决方案和应用程序显示名称为 **contoso-rm4**。
+1. 在 Azure 门户中找到解决方案的“企业应用程序”。 在那里，通过将“应用程序类型”设置为“所有应用程序”来筛选列表。 按应用程序名称搜索应用程序。 应用程序名称即是远程监视解决方案的名称。 在以下屏幕截图中，解决方案和应用程序显示名称为 **contoso-rm4**。
 
     ![企业应用程序](media/iot-accelerators-remote-monitoring-rbac/appregistration.png)
 

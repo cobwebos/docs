@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 2039b7760704de35c688dda41e3b75425e5ec0e8
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 4e23b70c8dc5fdacfd609fb4664a78293b9e2362
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186265"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247639"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>了解 IoT 中心的标识注册表
 
@@ -85,10 +85,9 @@ IoT 解决方案通常具有不同的解决方案特定存储，其中包含应�
 
 ## <a name="device-heartbeat"></a>设备检测信号
 
-IoT 中心标识注册表包含名为 **connectionState** 的字段。 开发和调试期间仅使用 **connectionState** 字段。 IoT 解决方案不应在运行时查询字段。 例如，不要在发送云到设备的消息或 SMS 之前查询 **connectionState** 字段以检查设备是否已连接。
+IoT 中心标识注册表包含名为 **connectionState** 的字段。 开发和调试期间仅使用 **connectionState** 字段。 IoT 解决方案不应在运行时查询字段。 例如，不要在发送云到设备的消息或 SMS 之前查询 **connectionState** 字段以检查设备是否已连接。 我们建议订阅事件网格上的[**设备已断开连接**事件](https://docs.microsoft.com/azure/iot-hub/iot-hub-event-grid#event-types)以获取警报并监视设备连接状态。 使用此[教程](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps)了解如何在 IoT 解决方案中集成 IoT 中心的事件。
 
-如果 IoT 解决方案需要知道设备是否已连接，则应实现*检测信号模式*。
-
+如果 IoT 解决方案需要知道设备是否已连接，则可实现*检测信号模式*。
 在检测信号模式下，设备每隔固定时间至少发送一次设备到云的消息（例如，每小时至少一次）。 因此，即使设备没有任何要发送的数据，仍会发送空的设备到云消息（通常具有可将其识别为检测信号的属性）。 在服务端上，该解决方案利用每台设备收到的最后一个检测信号来维护映射。 如果解决方案未在预计时间内从设备收到检测信号消息，则它假定设备存在问题。
 
 更复杂的实现可包含来自[操作监视][lnk-devguide-opmon]的信息，以便识别尝试连接或通信但失败的设备。 实施检测信号模式时，请务必查看 [IoT 中心配额与限制][lnk-quotas]。

@@ -1,27 +1,23 @@
 ---
 title: 排查和诊断故障 - Azure 逻辑应用 | Microsoft Docs
-description: 了解逻辑应用发生故障的原因
+description: 了解如何在 Azure 逻辑应用中排查和诊断工作流故障
 services: logic-apps
-documentationcenter: ''
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-ms.assetid: a6727ebd-39bd-4298-9e68-2ae98738576e
 ms.service: logic-apps
-ms.devlang: ''
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: logic-apps
+ms.assetid: a6727ebd-39bd-4298-9e68-2ae98738576e
 ms.date: 10/15/2017
-ms.author: LADocs; jehollan
-ms.openlocfilehash: b0bf6cd747860d938f80787d9bef6634a6a22d09
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 994e7945a7107815029bd415f4cc0d45bb68e335
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441526"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123681"
 ---
-# <a name="troubleshoot-and-diagnose-logic-app-failures"></a>排查和诊断逻辑应用故障
+# <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>在 Azure 逻辑应用中排查和诊断工作流故障
 
 逻辑应用生成的信息有助于诊断和调试应用中的问题。 可以在 Azure 门户中通过查看工作流中的每个步骤来诊断逻辑应用。 或者，可以在工作流中增加一些步骤，进行运行时调试。
 
@@ -42,7 +38,7 @@ ms.locfileid: "37441526"
 
    触发器尝试可能的状态如下：
 
-   | 状态 | 说明 | 
+   | 状态 | Description | 
    | ------ | ----------- | 
    | 成功 | 触发器已检查终结点并找到可用数据。 通常，此状态还会伴随出现“已触发”状态。 如果没有，触发器定义可能未满足某一条件或 `SplitOn` 命令。 <p>此状态可应用于手动触发器、定期触发器或轮询触发器。 如果操作生成未处理的错误，尽管可以成功运行触发器，但运行本身可能仍会失败。 | 
    | 已跳过 | 触发器已检查终结点，但未找到任何数据。 | 
@@ -83,7 +79,7 @@ ms.locfileid: "37441526"
 
    运行可能的状态如下：
 
-   | 状态 | 说明 | 
+   | 状态 | Description | 
    | ------ | ----------- | 
    | 成功 | 所有操作成功。 <p>如果特定操作发生故障，工作流中下面的操作将处理该故障。 | 
    | 失败 | 至少一个操作失败，并且工作流中未设置任何后续操作来处理该故障。 | 

@@ -6,22 +6,26 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 08/28/2018
 ms.author: marsma
-ms.openlocfilehash: 562bd8da54605986e95d8105782ce7ebb9b359ea
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7a377c607639f5c044e689b11380e9778f9c72c8
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432382"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189015"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>升级经典容器注册表
 
-Azure 容器注册表 (ACR) 分为多个服务层（[称为“SKU”](container-registry-skus.md)）。 ACR 的初始版本提供的单一 SKU（即经典 SKU）缺乏基本 SKU、标准 SKU 和高级 SKU（统称托管注册表）固有的多项功能。 本文详述了如何将非托管的经典注册表迁移到某个托管的 SKU，以便利用其增强的功能集。
+Azure 容器注册表 (ACR) 分为多个服务层（[称为“SKU”](container-registry-skus.md)）。 ACR 的初始版本提供的单一 SKU（即经典 SKU）缺乏基本 SKU、标准 SKU 和高级 SKU（统称托管注册表）固有的多项功能。
+
+经典 SKU 已弃用，2019 年 3 月后将无法使用。 本文详述了如何将非托管的经典注册表迁移到某个托管的 SKU，以便利用其增强的功能集。
 
 ## <a name="why-upgrade"></a>为什么升级？
 
-由于经典的非托管注册表的功能有限，因此建议将所有经典注册表升级为基本、标准或高级托管注册表。 这些更高级 SKU 将注册表更深入地集成到 Azure 功能中。
+经典注册表 SKU 已**弃用**，从 **2019 年 3 月**起将无法使用。 所有现有的经典注册表应在 2019 年 3 月之前升级。
+
+由于经典非托管注册表的计划弃用和有限功能，所有经典注册表都将升级到基本、标准或高级托管注册表。 这些更高级 SKU 将注册表更深入地集成到 Azure 功能中。
 
 托管的注册表提供：
 
@@ -30,7 +34,7 @@ Azure 容器注册表 (ACR) 分为多个服务层（[称为“SKU”](container-
 * [异地复制](container-registry-geo-replication.md)
 * [Webhook](container-registry-webhook.md)
 
-最重要的是，经典注册表依赖 Azure 在用户创建注册表时在 Azure 订阅中自动预配的存储帐户。 相比之下，基本、标准和高级 SKU 通过以透明方式处理映像的存储来利用 Azure 的[高级存储功能](container-registry-storage.md)。 不在自己的订阅中创建单独的存储帐户。
+经典注册表依赖 Azure 在你创建注册表时在 Azure 订阅中自动预配的存储帐户。 相比之下，基本、标准和高级 SKU 通过以透明方式处理映像的存储来利用 Azure 的[高级存储功能](container-registry-storage.md)。 不在自己的订阅中创建单独的存储帐户。
 
 托管注册表存储有以下优点：
 

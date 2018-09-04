@@ -1,25 +1,19 @@
 ---
-title: "数据目录开发人员概念 | Microsoft Docs"
-description: "Azure 数据目录概念模型中关键概念的简介，如目录 REST API 中所示。"
+title: Azure 数据目录开发人员概念
+description: Azure 数据目录概念模型中关键概念的简介，如目录 REST API 中所示。
 services: data-catalog
-documentationcenter: 
 author: spelluru
-manager: jhubbard
-editor: 
-tags: 
+ms.author: spelluru
 ms.assetid: 89de9137-a0a4-40d1-9f8d-625acad31619
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: spelluru
-ms.openlocfilehash: 48d4a33f7667786f2eb8851ed69dedc206e777ae
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 753b4660c8ca47f12aace87a254b93a88db8aaa7
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053259"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure 数据目录开发人员概念
 Microsoft **Azure 数据目录** 是一种完全托管的云服务，提供了数据源发现和众包数据源元数据的功能。 开发人员可通过其 REST API 使用此服务。 了解在服务中实现的概念对于开发人员能成功与 **Azure 数据目录**集成非常重要。
@@ -98,7 +92,7 @@ Azure 数据目录的一个重要方面是它如何在系统中支持元数据�
 <p>
 这些属性适用于所有根资产类型。
 
-<table><tr><td><b>属性名称</b></td><td>数据类型<b></b></td><td><b>注释</b></td></tr><tr><td>name</td><td>String</td><td>派生自数据源位置信息的名称</td></tr><tr><td>dsl</td><td>DataSourceLocation</td><td>对数据源进行唯一描述且为资产的标识符之一。 （请参阅双标识部分）。  dsl 的结构因协议和源类型而异。</td></tr><tr><td>dataSource</td><td>DataSourceInfo</td><td>资产类型的详细信息。</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>描述最新注册此资产的用户。  包含用户的唯一 id（upn）和显示名称（lastName 和 firstName）。</td></tr><tr><td>containerId</td><td>String</td><td>数据源容器资产的 Id。 此容器类型不支持此属性。</td></tr></table>
+<table><tr><td><b>属性名称</b></td><td>数据类型<b></b></td><td><b>注释</b></td></tr><tr><td>名称</td><td>String</td><td>派生自数据源位置信息的名称</td></tr><tr><td>dsl</td><td>DataSourceLocation</td><td>对数据源进行唯一描述且为资产的标识符之一。 （请参阅双标识部分）。  dsl 的结构因协议和源类型而异。</td></tr><tr><td>dataSource</td><td>DataSourceInfo</td><td>资产类型的详细信息。</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>描述最新注册此资产的用户。  包含用户的唯一 id（upn）和显示名称（lastName 和 firstName）。</td></tr><tr><td>containerId</td><td>String</td><td>数据源容器资产的 Id。 此容器类型不支持此属性。</td></tr></table>
 
 ### <a name="common-non-singleton-annotation-properties"></a>常见非单一批注属性
 这些属性适用于所有非单一批注类型（每个资产可允许具有多个这样的批注）。
@@ -111,8 +105,8 @@ Azure 数据目录的一个重要方面是它如何在系统中支持元数据�
 ### <a name="root-asset-types"></a>根资产类型
 根资产类型表示可在目录中注册的数据资产的各种类型。 对于每个根类型，都存在一个视图，该视图描述包括在其中的资产和批注。 视图名称可在使用 REST API 发布资产时用于对应 {view_name} url 段。
 
-<table><tr><td>资产类型（视图名称）<b></b></td><td>附加属性<b></b></td><td>数据类型<b></b></td><td>允许的注释<b></b></td><td><b>注释</b></td></tr><tr><td>表</td><td></td><td></td><td>说明<p>FriendlyName<p>标记<p>架构<p>ColumnDescription<p>ColumnTag<p> 专家<p>预览<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>文档<p></td><td>表示任意表格数据的表。  例如：SQL 表、SQL 视图、Analysis Services 表格表、Analysis Services 多维维度、Oracle 表等。   </td></tr><tr><td>度量值（“度量值”）</td><td></td><td></td><td>说明<p>FriendlyName<p>标记<p>专家<p>AccessInstruction<p>文档<p></td><td>此类型表示 Analysis Services 度量值。</td></tr><tr><td></td><td>度量值</td><td>列</td><td></td><td>描述该度量值的元数据</td></tr><tr><td></td><td>isCalculated </td><td>布尔</td><td></td><td>指定是否计算度量值。</td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>度量值的物理容器</td></tr><td>KPI（“kpis”）</td><td></td><td></td><td>说明<p>FriendlyName<p>标记<p>专家<p>AccessInstruction<p>文档</td><td></td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>度量值的物理容器</td></tr><tr><td></td><td>goalExpression</td><td>String</td><td></td><td>返回 KPI 的目标值的 MDX 数值表达式或计算。</td></tr><tr><td></td><td>valueExpression</td><td>String</td><td></td><td>返回 KPI 的实际值的 MDX 数值表达式。</td></tr><tr><td></td><td>statusExpression</td><td>String</td><td></td><td>表示特定时间点 KPI 状态的 MDX 表达式。</td></tr><tr><td></td><td>trendExpression</td><td>String</td><td></td><td>评估一段时间内 KPI 值的 MDX 表达式。 趋势可为任意基于时间的条件，其可用于特定业务上下文中。</td>
-<tr><td>报表</td><td></td><td></td><td>说明<p>FriendlyName<p>标记<p>专家<p>AccessInstruction<p>文档<p></td><td>此类型表示 SQL Server Reporting Services 报表 </td></tr><tr><td></td><td>assetCreatedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>String</td><td></td><td></td></tr><tr><td>容器</td><td></td><td></td><td>说明<p>FriendlyName<p>标记<p>专家<p>AccessInstruction<p>文档<p></td><td>此类型表示其他资产的容器，例如 SQL 数据库、Azure Blob 容器或 Analysis Services 模型。</td></tr></table>
+<table><tr><td>资产类型（视图名称）<b></b></td><td>附加属性<b></b></td><td>数据类型<b></b></td><td>允许的注释<b></b></td><td><b>注释</b></td></tr><tr><td>表</td><td></td><td></td><td>Description<p>FriendlyName<p>标记<p>架构<p>ColumnDescription<p>ColumnTag<p> 专家<p>预览<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>文档<p></td><td>表示任意表格数据的表。  例如：SQL 表、SQL 视图、Analysis Services 表格表、Analysis Services 多维维度、Oracle 表等。   </td></tr><tr><td>度量值（“度量值”）</td><td></td><td></td><td>Description<p>FriendlyName<p>标记<p>专家<p>AccessInstruction<p>文档<p></td><td>此类型表示 Analysis Services 度量值。</td></tr><tr><td></td><td>度量值</td><td>列</td><td></td><td>描述该度量值的元数据</td></tr><tr><td></td><td>isCalculated </td><td>布尔</td><td></td><td>指定是否计算度量值。</td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>度量值的物理容器</td></tr><td>KPI（“kpis”）</td><td></td><td></td><td>Description<p>FriendlyName<p>标记<p>专家<p>AccessInstruction<p>文档</td><td></td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>度量值的物理容器</td></tr><tr><td></td><td>goalExpression</td><td>String</td><td></td><td>返回 KPI 的目标值的 MDX 数值表达式或计算。</td></tr><tr><td></td><td>valueExpression</td><td>String</td><td></td><td>返回 KPI 的实际值的 MDX 数值表达式。</td></tr><tr><td></td><td>statusExpression</td><td>String</td><td></td><td>表示特定时间点 KPI 状态的 MDX 表达式。</td></tr><tr><td></td><td>trendExpression</td><td>String</td><td></td><td>评估一段时间内 KPI 值的 MDX 表达式。 趋势可为任意基于时间的条件，其可用于特定业务上下文中。</td>
+<tr><td>报表</td><td></td><td></td><td>Description<p>FriendlyName<p>标记<p>专家<p>AccessInstruction<p>文档<p></td><td>此类型表示 SQL Server Reporting Services 报表 </td></tr><tr><td></td><td>assetCreatedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>String</td><td></td><td></td></tr><tr><td>容器</td><td></td><td></td><td>Description<p>FriendlyName<p>标记<p>专家<p>AccessInstruction<p>文档<p></td><td>此类型表示其他资产的容器，例如 SQL 数据库、Azure Blob 容器或 Analysis Services 模型。</td></tr></table>
 
 ### <a name="annotation-types"></a>批注类型
 批注类型表示可分配给目录中其他类型的元数据类型。
@@ -191,7 +185,7 @@ Azure 数据目录的一个重要方面是它如何在系统中支持元数据�
 <tr><td></td><td>lastName</td><td>字符串</td><td>用户的姓氏（用于显示）。 可选。 仅在“lastRegisteredBy”属性的上下文中有效。 为“角色”、“权限”和“专家”提供安全主体。</td></tr>
 
 <tr><td>列</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>name</td><td>字符串</td><td>列或属性的名称。</td></tr>
+<tr><td></td><td>名称</td><td>字符串</td><td>列或属性的名称。</td></tr>
 <tr><td></td><td>type</td><td>字符串</td><td>列或属性的数据类型。 允许的类型取决于资产的数据源类型。  仅支持类型的子集。</td></tr>
 <tr><td></td><td>maxLength</td><td>int</td><td>列或属性允许的最大长度。 派生自数据源。 仅适用于某些源类型。</td></tr>
 <tr><td></td><td>精度</td><td>字节</td><td>列或属性的精度。 派生自数据源。 仅适用于某些源类型。</td></tr>
@@ -219,22 +213,22 @@ Azure 数据目录提供了多个内置数据源协议，其列于[数据源引�
 
 ### <a name="custom-data-source-protocol-specification"></a>自定义数据源协议规范
 <table>
-<tr><td><b>类型</b></td><td><b>属性</b></td><td>数据类型<b></b></td><td><b>注释</b></td></tr>
+<tr><td>类型<b></b></td><td><b>属性</b></td><td>数据类型<b></b></td><td><b>注释</b></td></tr>
 
 <tr><td>DataSourceProtocol</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>命名空间</td><td>字符串</td><td>协议的命名空间。 命名空间的字符长度必须介于 1 到 255 个字符之间，包括由点 (.) 分隔的一个或多个非空部分。 每个部分的长度必须介于 1 到 255 个字符之间，以字母开始且只能包括字母和数字。</td></tr>
-<tr><td></td><td>name</td><td>字符串</td><td>协议的名称。 名称的字符长度必须介于 1 到 255 之间，以字母开始且只能包含字母、数字和短划线 (-) 字符。</td></tr>
+<tr><td></td><td>名称</td><td>字符串</td><td>协议的名称。 名称的字符长度必须介于 1 到 255 之间，以字母开始且只能包含字母、数字和短划线 (-) 字符。</td></tr>
 <tr><td></td><td>identityProperties</td><td>DataSourceProtocolIdentityProperty[]</td><td>标识属性列表必须包含至少 1 个且不超过 20 个属性。 例如：“服务器”、“数据库”、“架构”和“对象”为“tds”协议的标识属性。</td></tr>
 <tr><td></td><td>identitySets</td><td>DataSourceProtocolIdentitySet[]</td><td>标识集列表。 定义标识属性集，其表示有效资产标识。 必须包含至少 1 个且不超过 20 个集。 例如：{“server”、“数据库”、“架构”和“对象”}是“tds”协议的标识集，其定义 Sql Server 表资产的标识。</td></tr>
 
 <tr><td>DataSourceProtocolIdentityProperty</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>name</td><td>字符串</td><td>属性的名称。 名称的长度必须介于 1 到 100 个字符之间，以字母开始且只能包括字母和数字。</td></tr>
+<tr><td></td><td>名称</td><td>字符串</td><td>属性的名称。 名称的长度必须介于 1 到 100 个字符之间，以字母开始且只能包括字母和数字。</td></tr>
 <tr><td></td><td>type</td><td>字符串</td><td>属性类型。 支持的值：“bool”、“Boolean”、“字节”、“guid”、“int”、“整数”、“long”、“字符串”、“url”</td></tr>
 <tr><td></td><td>ignoreCase</td><td>bool</td><td>指示使用属性的值时是否应忽略大小写。 只能为具有“字符串”类型的属性指定。 默认值为 false。</td></tr>
 <tr><td></td><td>urlPathSegmentsIgnoreCase</td><td>bool[]</td><td>指示是否应忽略 url 路径每个段的大小写。 只能为具有“url”类型的属性指定。 默认值为 [false]。</td></tr>
 
 <tr><td>DataSourceProtocolIdentitySet</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>name</td><td>字符串</td><td>标识集的名称。</td></tr>
+<tr><td></td><td>名称</td><td>字符串</td><td>标识集的名称。</td></tr>
 <tr><td></td><td>属性</td><td>string[]</td><td>包括在此标识集的标识属性列表。 它不能包含重复项。 由标识集引用的每个属性必须在协议的“identityProperties”列表中定义。</td></tr>
 
 </table>
@@ -308,7 +302,7 @@ ChangeOwnership、ChangeVisibility、ViewPermissions</td></tr><tr><td>参与者<
         ]
     }
 
-  **为现有根项分配所有者和限制可见性**：**PUT** https://api.azuredatacatalog.com/catalogs/default/views/tables/042297b0...1be45ecd462a?api-version=2016-03-30
+  **分配所有者并限制现有根项的可见性**：**PUT** https://api.azuredatacatalog.com/catalogs/default/views/tables/042297b0...1be45ecd462a?api-version=2016-03-30
 
     {
         "roles": [

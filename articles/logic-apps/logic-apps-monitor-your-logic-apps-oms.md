@@ -1,25 +1,20 @@
 ---
-title: 使用 Log Analytics 监视并获取有关逻辑应用运行的见解 - Azure 逻辑应用 | Microsoft Docs
-description: 使用 Log Analytics 监视逻辑应用运行并获取用于故障排除和诊断的见解以及更丰富的调试详细信息
-author: divyaswarnkar
-manager: jeconnoc
-editor: ''
+title: 使用 Log Analytics 监视逻辑应用运行 - Azure 逻辑应用 | Microsoft Docs
+description: 使用 Log Analytics 获取有关逻辑应用运行的见解和调试数据，以进行故障排除和诊断
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/19/2018
-ms.author: LADocs; divswa
-ms.openlocfilehash: 0dc7f28ebe3816ba317eb3a4e28fc640c8a12a4e
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 1aa55728b222c2838026cf5b06175736c5c84194
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294568"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123284"
 ---
 # <a name="monitor-and-get-insights-about-logic-app-runs-with-log-analytics"></a>使用 Log Analytics 监视并获取有关逻辑应用运行的见解
 

@@ -1,25 +1,19 @@
 ---
-title: "数据配置文件数据源操作指南"
-description: "操作指南文章重点说明在“Azure 数据目录”中注册数据源时如何包括表和列级数据配置文件，以及如何使用数据配置文件来了解数据源。"
+title: 如何在 Azure 数据目录中使用数据分析数据源
+description: 操作指南文章重点说明在“Azure 数据目录”中注册数据源时如何包括表和列级数据配置文件，以及如何使用数据配置文件来了解数据源。
 services: data-catalog
-documentationcenter: 
 author: spelluru
-manager: NA
-editor: 
-tags: 
+ms.author: spelluru
 ms.assetid: 94a8274b-5c9c-4962-a4b1-2fed38a3d919
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: spelluru
-ms.openlocfilehash: 80181b729ffa6d6cbc2d17fe8a5ae8ee4e3d41ab
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 2f628367e2e5b0e6a4481a6212ff201b11a7105a
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053187"
 ---
 # <a name="data-profile-data-sources"></a>数据配置文件数据源
 ## <a name="introduction"></a>介绍

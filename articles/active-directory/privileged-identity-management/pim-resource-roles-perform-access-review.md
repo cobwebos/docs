@@ -1,6 +1,6 @@
 ---
-title: 在 Privileged Identity Management 中对 Azure 资源执行访问评审 | Microsoft Docs
-description: 本文档介绍如何根据资源角色在 PIM 中对 Azure 资源执行访问评审。
+title: 在 PIM 中对 Azure 资源角色执行访问评审 | Microsoft Docs
+description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中对 Azure 资源角色执行访问评审。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.component: pim
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 336ad1d7eff8eee0f2370e206eb98f20b4efb45b
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: a96a1de7828797f1124280fca95a3358210b55b7
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617218"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189712"
 ---
-# <a name="perform-an-access-review-in-pim-according-to-resource-role"></a>根据资源角色，在 PIM 中执行访问评审
+# <a name="perform-an-access-review-of-my-azure-resource-roles-in-pim"></a>在 PIM 中对 Azure 资源角色执行访问评审
 Azure 资源的 Privileged Identity Management (PIM) 简化了企业对 Azure 中的资源的特权访问管理。 
 
 如果已被分配到某个管理角色，组织中的特权角色管理员可能要求定期确认仍然需要使用该角色来完成工作。 可以通过你所收到的电子邮件中的链接，或者直接转到 [Azure 门户](https://portal.azure.com)来执行此操作。 请遵循本文中的步骤对分配的角色执行自我审查。
@@ -50,3 +50,7 @@ Azure 资源的 Privileged Identity Management (PIM) 简化了企业对 Azure �
 4. 选择“批准”或“拒绝”。 可能需要在“提供原因”文本框中提供做出该决定的原因。
 
    ![“审阅详细信息”页的屏幕截图](media/azure-pim-resource-rbac/rbac-access-review-choice.png)
+
+## <a name="next-steps"></a>后续步骤
+
+- [在 PIM 中对 Azure AD 目录角色执行访问评审](pim-how-to-perform-security-review.md)

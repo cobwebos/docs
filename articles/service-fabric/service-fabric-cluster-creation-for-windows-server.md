@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: dekapur
-ms.openlocfilehash: efa48aa90806b45c99237404af24cb8aba762d15
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 3ce47d631e8a2ec7daf96ef95200001e5d4f8327
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209148"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818575"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>创建在 Windows Server 上运行的独立群集
 可以使用 Azure Service Fabric 在运行 Windows Server 的任何虚拟机或计算机上创建 Service Fabric 群集。 这意味着可以在包含一组相互连接的 Windows Server 计算机的任何环境（无论是本地环境还是任何云提供商所提供的环境）中部署和运行 Service Fabric 应用程序。 Service Fabric 提供了一个安装程序包，用于创建名为“Windows Server 独立包”的 Service Fabric 群集。
@@ -57,10 +57,15 @@ ms.locfileid: "34209148"
 <a id="createcluster"></a>
 
 ## <a name="create-the-cluster"></a>创建群集
+可以通过安装包安装多个示例性的群集配置文件。 *ClusterConfig.Unsecure.DevCluster.json* 是最简单的群集配置：在单台计算机上运行一个不受保护的三节点群集。  其他配置文件描述的是受 X.509 证书或 Windows 安全措施保护的单机或多机群集。  就本教程来说，无需修改任何默认的配置设置，但仍请查看配置文件，熟悉一下这些设置。  **nodes** 节描述了群集中的三个节点：名称、IP 地址、[节点类型、容错域和升级域](service-fabric-cluster-manifest.md#nodes-on-the-cluster)。  **properties** 节定义群集的[安全性、可靠级别、诊断集合和节点类型](service-fabric-cluster-manifest.md#cluster-properties)。
+
+本文中创建的群集是不安全的。  任何人都可以进行匿名连接并执行管理操作，因此生产型群集应始终使用 X.509 证书或 Windows 安全措施来确保安全性。  安全性只能在群集创建时配置，不能在创建群集以后启用安全性。 更新配置文件以启用[证书安全性](service-fabric-windows-cluster-x509-security.md)或 [Windows 安全性](service-fabric-windows-cluster-windows-security.md)。 请阅读[保护群集](service-fabric-cluster-security.md)，详细了解 Service Fabric 群集安全性。
+
+### <a name="step-1a-create-an-unsecured-local-development-cluster"></a>步骤 1A：创建不受保护的本地开发群集
 可以使用[示例](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)中包含的 *ClusterConfig.Unsecure.DevCluster.json* 文件将 Service Fabric 部署到一个计算机开发群集。
 
-将独立包解压缩到你的计算机，将示例配置文件复制到本地计算机，并通过管理员 PowerShell 会话从独立包文件夹中运行 *CreateServiceFabricCluster.ps1* 脚本：
-### <a name="step-1a-create-an-unsecured-local-development-cluster"></a>步骤 1A：创建不受保护的本地开发群集
+将独立包解压缩到计算机，将示例配置文件复制到本地计算机，然后通过管理员 PowerShell 会话从独立包文件夹中运行 *CreateServiceFabricCluster.ps1* 脚本。
+
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json -AcceptEULA
 ```
@@ -70,18 +75,19 @@ ms.locfileid: "34209148"
 如果已完成运行开发方案，则可以引用“[删除群集](#removecluster_anchor)”部分的步骤，从计算机中删除 Service Fabric 群集。 
 
 ### <a name="step-1b-create-a-multi-machine-cluster"></a>步骤 1B：创建多台计算机的群集
-在完成下面链接中详述的计划和准备步骤后，就可以使用群集配置文件创建生产群集。 <br>
-[计划和准备群集部署](service-fabric-cluster-standalone-deployment-preparation.md)
+在完成[计划和准备群集部署](service-fabric-cluster-standalone-deployment-preparation.md)中详述的计划和准备步骤后，就可以使用群集配置文件创建生产群集。
 
-1. 从独立包文件夹中运行 *TestConfiguration.ps1* 脚本，以验证写入的配置文件：  
+部署和配置群集的群集管理员必须拥有计算机的管理员权限。 不能在域控制器上安装 Service Fabric。
+
+1. 独立包中的 *TestConfiguration.ps1* 脚本可以用作最佳做法分析器，验证群集能否在给定环境中部署。 [部署准备](service-fabric-cluster-standalone-deployment-preparation.md)列出了先决条件和环境要求。 请运行以下脚本，验证你能否创建开发群集：  
 
     ```powershell
     .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.json
     ```
 
-    可看到如下输出： 如果底部字段“Passed”的返回值为“True”，那么已通过完整性检查，并且根据输入配置群集看似可以部署。
+    应该会看到与下面类似的输出。 如果底部字段“Passed”的返回值为“True”，那么已通过完整性检查，并且根据输入配置群集看似可以部署。
 
-    ```
+    ```powershell
     Trace folder already exists. Traces will be written to existing trace folder: C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer\DeploymentTraces
     Running Best Practices Analyzer...
     Best Practices Analyzer completed successfully.
@@ -110,28 +116,46 @@ ms.locfileid: "34209148"
 
 ### <a name="step-1c-create-an-offline-internet-disconnected-cluster"></a>步骤 1C：创建脱机（Internet 断开）群集
 创建群集时自动下载 Service Fabric 运行时包。 将群集部署到未连接 Internet 的计算机时，需要单独下载 Service Fabric 运行时包，并在创建群集时提供指向它的路径。
-运行时包可从另一台连接到 Internet 的计算机单独下载：[下载链接 - Service Fabric 运行时 - Windows Server](https://go.microsoft.com/fwlink/?linkid=839354)。 将运行时包复制到部署脱机群集的位置，并通过运行 `CreateServiceFabricCluster.ps1` 与 `-FabricRuntimePackagePath` 参数创建群集，如下所示： 
+运行时包可从另一台连接到 Internet 的计算机单独下载：[下载链接 - Service Fabric 运行时 - Windows Server](https://go.microsoft.com/fwlink/?linkid=839354)。 将运行时包复制到从中部署脱机群集的位置，并通过运行包含 `-FabricRuntimePackagePath` 参数的 `CreateServiceFabricCluster.ps1` 创建群集，如此示例所示： 
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -FabricRuntimePackagePath .\MicrosoftAzureServiceFabric.cab
 ```
-其中 `.\ClusterConfig.json` 和 `.\MicrosoftAzureServiceFabric.cab` 分别是群集配置和运行时 .cab 文件的路径。
 
+*.\ClusterConfig.json* 和 *.\MicrosoftAzureServiceFabric.cab* 分别是群集配置和运行时 .cab 文件的路径。
 
 ### <a name="step-2-connect-to-the-cluster"></a>步骤 2：连接到群集
-若要连接到安全群集，请参阅 [Service Fabric 连接到安全群集](service-fabric-connect-to-secure-cluster.md)。
+连接到群集以验证群集是否正在运行且可用。 ServiceFabric PowerShell 模块与运行时一起安装。  可以从其中一个群集节点或使用 Service Fabric 运行时从远程计算机连接到群集。  [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 可建立到群集的连接。
 
 若要连接到不安全的群集，请运行以下 PowerShell 命令：
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client connection end point port>
 ```
-示例：
+
+例如：
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 ```
-### <a name="step-3-bring-up-service-fabric-explorer"></a>步骤 3：打开 Service Fabric Explorer
-现在可以通过 Service Fabric Explorer 连接到群集，既可以直接从装有 http://localhost:19080/Explorer/index.html 的某台计算机进行连接，也可以通过 http://<*IPAddressofaMachine*>:19080/Explorer/index.html 进行远程连接。
+
+有关如何连接到群集的其他示例，请参阅[连接到安全群集](service-fabric-connect-to-secure-cluster.md)。 连接到群集以后，请使用 [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) cmdlet 显示群集中节点的列表，以及每个节点的状态信息。 每个节点的 **HealthState** 应该为“正常”。
+
+```powershell
+PS C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer> Get-ServiceFabricNode |Format-Table
+
+NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersion NodeStatus NodeUpTime NodeDownTime HealthState
+-------------------- -------- --------------- --------  -----------  ------------- ---------- ---------- ------------ -----------
+                     vm2      localhost       NodeType2 5.6.220.9494 0                     Up 00:03:38   00:00:00              OK
+                     vm1      localhost       NodeType1 5.6.220.9494 0                     Up 00:03:38   00:00:00              OK
+                     vm0      localhost       NodeType0 5.6.220.9494 0                     Up 00:02:43   00:00:00              OK
+```
+
+### <a name="step-3-visualize-the-cluster-using-service-fabric-explorer"></a>步骤 3：使用 Service Fabric Explorer 直观显示群集
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 是一项很好的工具，适用于可视化群集和管理应用程序。  Service Fabric Explorer 是一项在群集中运行的服务，使用浏览器导航到 [http://localhost:19080/Explorer](http://localhost:19080/Explorer) 即可访问该服务。
+
+群集仪表板提供了群集的概览，包括应用程序和节点运行状况的摘要。 节点视图显示群集的物理布局。 对于给定的节点，可以检查已在该节点上部署代码的应用程序。
+
+![Service Fabric Explorer][service-fabric-explorer]
 
 ## <a name="add-and-remove-nodes"></a>添加和删除节点
 当业务需要改变时，可以向独立 Service Fabric 群集添加或删除节点。 参阅[向 Service Fabric 独立群集添加或删节点](service-fabric-cluster-windows-server-add-remove-nodes.md)以了解详细步骤。
@@ -142,12 +166,12 @@ Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 
 可以在对群集配置文件中列为节点的所有计算机具有管理员访问权限的任何计算机上运行此脚本。 运行此脚本的计算机不一定是群集的一部分。
 
-```
+```powershell
 # Removes Service Fabric from each machine in the configuration
 .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -Force
 ```
 
-```
+```powershell
 # Removes Service Fabric from the current machine
 .\CleanFabric.ps1
 ```
@@ -205,3 +229,4 @@ Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 
 <!--Image references-->
 [Trusted Zone]: ./media/service-fabric-cluster-creation-for-windows-server/TrustedZone.png
+[service-fabric-explorer]: ./media/service-fabric-cluster-creation-for-windows-server/sfx.png

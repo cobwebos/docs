@@ -1,27 +1,22 @@
 ---
-title: 在 Log Analytics 中查询 B2B 消息 - Azure 逻辑应用 | Microsoft Docs
-description: 创建查询来跟踪 Log Analytics 中的 AS2、X12 和 EDIFACT 消息
-author: padmavc
-manager: jeconnoc
-editor: ''
+title: 在 Log Analytics 中针对 B2B 消息创建查询 - Azure 逻辑应用 | Microsoft Docs
+description: 使用 Log Analytics 为 Azure 逻辑应用创建用于跟踪 AS2、X12 和 EDIFACT 消息的查询
 services: logic-apps
-documentationcenter: ''
-ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/19/2018
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 48cca9919bd09906bdcc3faaaef186ec109c9169
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: baccd255fc2812eae0de3a98dfcef3dcbc7e1b46
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294303"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124264"
 ---
-# <a name="query-for-as2-x12-and-edifact-messages-in-log-analytics"></a>查询 Log Analytics 中的 AS2、X12 和 EDIFACT 消息
+# <a name="create-queries-for-tracking-as2-x12-and-edifact-messages-in-log-analytics-for-azure-logic-apps"></a>在 Log Analytics 中为 Azure 逻辑应用创建用于跟踪 AS2、X12 和 EDIFACT 消息的查询
 
 若要查找使用 [Azure Log Analytics](../log-analytics/log-analytics-overview.md) 跟踪的 AS2、X12 或 EDIFACT 消息，可以创建基于具体情况筛选操作的查询。 例如，你可以根据特定的交换控制编号查找消息。
 

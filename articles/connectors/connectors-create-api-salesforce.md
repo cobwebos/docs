@@ -1,63 +1,72 @@
 ---
-title: 了解如何在逻辑应用中使用 Salesforce 连接器 | Microsoft Docs
-description: 使用 Azure 应用服务创建逻辑应用。 Salesforce Connector 提供使用 Salesforce 对象的 API。
+title: 从 Azure 逻辑应用连接到 Salesforce | Microsoft Docs
+description: 使用 Azure 逻辑应用自动执行监视、创建和管理 Salesforce 记录和作业的任务和工作流
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: 54fe5af8-7d2a-4da8-94e7-15d029e029bf
 ms.service: logic-apps
-ms.devlang: multiple
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: 54fe5af8-7d2a-4da8-94e7-15d029e029bf
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 10/05/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 4278837bb5653b66223374aa728bdc81b279fff7
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+tags: connectors
+ms.date: 08/24/2018
+ms.openlocfilehash: 03c250f153402c68889c2e3ac187ccab3e2d858b
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38237295"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887479"
 ---
-# <a name="get-started-with-the-salesforce-connector"></a>Salesforce 连接器入门
-Salesforce Connector 提供使用 Salesforce 对象的 API。
+# <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用监视、创建和管理 Salesforce 资源
 
-若要使用[任何连接器](apis-list.md)，首先需要创建逻辑应用。 可通过 [立即创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md) 开始操作。
+借助 Azure 逻辑应用和 Salesforce 连接器，可以为 Salesforce 资源（如记录、作业和对象）创建自动化任务和工作流，例如：
 
-## <a name="connect-to-salesforce-connector"></a>连接到 Salesforce 连接器
-在逻辑应用访问任何服务之前，必须先创建到该服务的*连接*。 [连接](connectors-overview.md)提供逻辑应用和其他服务之间的连接性。  
+* 监视何时创建或更改记录。 
+* 创建、获取和管理作业和记录，包括插入、更新和删除操作。
 
-### <a name="create-a-connection-to-salesforce-connector"></a>创建到 Salesforce 连接器的连接
-> [!INCLUDE [Steps to create a connection to Salesforce Connector](../../includes/connectors-create-api-salesforce.md)]
-> 
-> 
+可以使用 Salesforce 触发器从 Salesforce 获取响应，并使输出可用于其他操作。 可以使用逻辑应用中的操作来执行 Salesforce 资源的任务。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="use-a-salesforce-connector-trigger"></a>使用 Salesforce 连接器触发器
-触发器是用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](../logic-apps/logic-apps-overview.md#logic-app-concepts)。
+## <a name="prerequisites"></a>先决条件
 
-> [!INCLUDE [Steps to create a Salesforce trigger](../../includes/connectors-create-api-salesforce-trigger.md)]
-> 
-> 
+* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
 
-## <a name="add-a-condition"></a>添加条件
-> [!INCLUDE [Steps to create a Salesforce condition](../../includes/connectors-create-api-salesforce-condition.md)]
-> 
-> 
+* 一个 [Salesforce 帐户](https://salesforce.com/)
 
-## <a name="use-a-salesforce-connector-action"></a>使用 Salesforce 连接器操作
-操作是指在逻辑应用中定义的工作流所执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-overview.md#logic-app-concepts)。
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
-> [!INCLUDE [Steps to create a Salesforce action](../../includes/connectors-create-api-salesforce-action.md)]
-> 
-> 
+* 要在其中访问 Salesforce 帐户的逻辑应用。 若要从 Salesforce 触发器开始，请[创建空白的逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 Salesforce 操作，请使用其他触发器（例如**定期**触发器）启动逻辑应用。
 
-## <a name="connector-specific-details"></a>特定于连接器的详细信息
+## <a name="connect-to-salesforce"></a>连接到 Salesforce
 
-在[连接器详细信息](/connectors/salesforce/)中查看在 Swagger 中定义的触发器和操作，并查看限制。 
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+
+1. 登录 [Azure门户](https://portal.azure.com)，然后在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
+
+1. 选择路径： 
+
+   * 对于空白逻辑应用，请在搜索框中输入“salesforce”作为筛选器。 
+   在触发器列表下，选择所需的触发器。 
+
+     -或-
+
+   * 对于现有逻辑应用，请在要添加操作的步骤下，选择“新建步骤”。 在搜索框中，输入“salesforce”作为筛选器。 在操作列表下，选择所需的操作。
+
+1. 如果系统提示你登录 Salesforce，请立即登录并允许访问。
+
+   你的凭据授权逻辑应用创建与 Salesforce 的连接并访问你的数据。
+
+1. 为所选触发器或操作提供必要详细信息，并继续构建逻辑应用的工作流。
+
+## <a name="connector-reference"></a>连接器参考
+
+有关触发器、操作和限制（请参阅连接器的 OpenAPI（以前称为 Swagger）说明）的技术详细信息，请查看连接器的[参考页](/connectors/salesforce/)。
+
+## <a name="get-support"></a>获取支持
+
+* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](http://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
+* 了解其他[逻辑应用连接器](../connectors/apis-list.md)
