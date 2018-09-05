@@ -1,99 +1,99 @@
 ---
 title: 连接到本地文件系统 - Azure 逻辑应用 | Microsoft Docs
-description: 通过本地数据网关和文件系统连接器从逻辑应用工作流连接到本地文件系统
-keywords: 文件系统, 本地
+description: 通过 Azure 逻辑应用中的本地数据网关，使用文件系统连接器将连接到本地文件系统的任务和工作流自动化
 services: logic-apps
-author: derek1ee
-manager: jeconnoc
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: derek1ee
+ms.author: deli
+ms.reviewer: klam, estfan, LADocs
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/18/2017
-ms.author: LADocs; deli
-ms.openlocfilehash: 019b5fcd218ddd471c5f02d0332b8f5b5bf0edb3
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.date: 08/25/2018
+ms.openlocfilehash: 41dd8ad721329c4c4d2761c9e4a37c640251dac3
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300814"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125272"
 ---
-# <a name="connect-to-on-premises-file-systems-from-logic-apps-with-the-file-system-connector"></a>使用文件系统连接器从逻辑应用连接到本地文件系统
+# <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>使用 Azure 逻辑应用连接到本地文件系统
 
-为了管理数据并安全访问本地资源，逻辑应用可使用本地数据网关。 本文介绍如何通过基本示例方案连接到本地文件系统：将上传至 Dropbox 的文件复制到文件共享，然后发送一封电子邮件。
+使用文件系统连接器和 Azure 逻辑应用，可以创建能够在本地文件共享中创建和管理文件的自动化任务与工作流，例如：  
+
+- 创建、获取、追加、更新和删除文件
+- 列出文件夹或根文件夹中的文件。
+- 获取文件内容和元数据。
+
+本文介绍如何根据本示例方案所述连接到本地文件系统：将上传至 Dropbox 的文件复制到文件共享，然后发送一封电子邮件。 为了安全连接和访问本地系统，逻辑应用将使用[本地数据网关](../logic-apps/logic-apps-gateway-connection.md)。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>先决条件
 
-* 下载最新的[本地数据网关](https://www.microsoft.com/download/details.aspx?id=53127)。
+* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
 
-* 安装和设置最新的本地数据网关（版本 1.15.6150.1 或更高版本）。 有关步骤，请参阅[连接到本地数据源](http://aka.ms/logicapps-gateway)。 必须先在本地计算机上安装网关，才能继续执行这些步骤。
+* 将逻辑应用连接到本地系统（例如文件系统服务器）之前，需要[安装并设置本地数据网关](../logic-apps/logic-apps-gateway-install.md)。 这样，便可以指定在从逻辑应用创建文件系统连接时要使用网关安装。
 
-* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
+* [Drobox 帐户](https://www.dropbox.com/)和用户凭据
 
-## <a name="add-trigger-and-actions-for-connecting-to-your-file-system"></a>添加用于连接到文件系统的触发器和操作
+  你的凭据授权逻辑应用创建连接并访问你的 Drobox 帐户。 
 
-1. 创建空白逻辑应用。 将此触发器添加为第一步：“Dropbox - 创建文件后” 
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识。 对于本示例，需要一个空白逻辑应用。
 
-2. 在该触发器下，选择“+ 下一步” > “添加操作”。 
+## <a name="add-trigger"></a>添加触发器
 
-3. 在搜索框中，输入“文件系统”作为筛选器。 看到文件系统连接器的所有操作时，选择“文件系统 - 创建文件”操作。 
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-   ![搜索“文件连接器”](media/logic-apps-using-file-connector/search-file-connector.png)
+1. 登录到 [Azure 门户](https://portal.azure.com)，在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
 
-4. 如果还没有到文件系统的连接，系统会提示创建连接。 
+1. 在搜索框中，输入“dropbox”作为筛选器。 在触发器列表中选择以下触发器：“创建文件时” 
 
-5. 选择“通过本地数据网关连接”。 显示连接属性时，请按表中所示设置连接。
+   ![选择 Dropbox 触发器](media/logic-apps-using-file-connector/select-dropbox-trigger.png)
 
-   ![配置连接](media/logic-apps-using-file-connector/create-file.png)
+1. 使用 Dropbox 帐户凭据登录，并授权 Azure 逻辑应用访问你的 Dropbox 数据。 
 
-   | 设置 | 说明 |
-   | ------- | ----------- |
-   | **根文件夹** | 指定文件系统的根文件夹。 可以在安装了本地数据网关的计算机上指定本地文件夹，或者该文件夹可以是计算机可访问的网络共享。 <p>提示：根文件夹是主要的父文件夹，用作所有与文件有关的操作的相对路径。 | 
-   | **身份验证类型** | 文件系统所用的身份验证类型 | 
-   | **用户名** | 提供之前安装的网关的用户名 {domain\\username}。 | 
-   | **密码** | 提供之前安装的网关的密码。 | 
-   | **网关** | 选择之前安装的网关。 | 
+1. 提供触发器的所需信息。
+
+   ![Dropbox 触发器](media/logic-apps-using-file-connector/dropbox-trigger.png)
+
+## <a name="add-actions"></a>添加操作
+
+1. 在触发器下，选择“下一步”。 在搜索框中，输入“文件系统”作为筛选器。 在操作列表中选择以下操作：“创建文件 - 文件系统”
+
+   ![查找文件系统连接器](media/logic-apps-using-file-connector/find-file-system-action.png)
+
+1. 如果还没有到文件系统的连接，系统会提示创建连接。
+
+   ![创建连接](media/logic-apps-using-file-connector/file-system-connection.png)
+
+   | 属性 | 必选 | 值 | Description | 
+   | -------- | -------- | ----- | ----------- | 
+   | **连接名称** | 是 | <connection-name> | 连接使用的名称 | 
+   | **根文件夹** | 是 | <*root-folder-name*> | 文件系统的根文件夹，例如，安装本地数据网关的计算机上的某个本地文件夹，或者计算机可访问的网络共享的文件夹。 <p>例如： `\\PublicShare\\DropboxFiles` <p>根文件夹是主要的父文件夹，用作所有与文件有关的操作的相对路径。 | 
+   | **身份验证类型** | 否 | <*auth-type*> | 文件系统使用的身份验证类型，例如 **Windows** | 
+   | **用户名** | 是 | <*domain*>\\<*username*> | 以前安装的数据网关的用户名 | 
+   | **密码** | 是 | <*your-password*> | 以前安装的数据网关的密码 | 
+   | **gateway** | 是 | <*installed-gateway-name*> | 以前安装的网关的名称 | 
    ||| 
 
-6. 提供所有连接详细信息后，选择“创建”。 
+1. 完成后，选择“创建”。 
 
    逻辑应用会配置和测试连接，以确保连接正常运行。 
    如果正确建立连接，会显示用于之前所选操作的选项。 
-   现在，文件系统连接器可供使用。
 
-7. 设置“创建文件”操作，用于将文件从 Dropbox 复制到本地文件共享的根文件夹。
+1. 在“创建文件”操作中，提供用于将文件从 Dropbox 复制到本地文件共享中的根文件夹的详细信息。 若要添加前面步骤的输出，请在框中单击，然后在显示动态内容列表时从可用字段中进行选择。
 
    ![创建文件操作](media/logic-apps-using-file-connector/create-file-filled.png)
 
-8. 使用此操作复制文件后，请添加一个 Outlook 操作，该操作发送一封电子邮件，以便相关用户知晓此新文件。 输入收件人、标题和电子邮件正文。 
-
-   在“动态内容”列表中，可从文件连接器选择数据输出，以便向电子邮件添加更多详细信息。
+1. 现在添加一个发送电子邮件的 Outlook 操作，使相应的用户知道已创建新文件。 输入收件人、标题和电子邮件正文。 若要测试，可以使用自己的电子邮件地址。
 
    ![发送电子邮件操作](media/logic-apps-using-file-connector/send-email.png)
 
-9. 保存逻辑应用。 通过将文件上传到 Dropbox 来测试应用。 该文件应复制到本地文件共享，并且应该会收到有关该操作的电子邮件。
+1. 保存逻辑应用。 通过将文件上传到 Dropbox 来测试应用。 
 
-恭喜，现在已具有一个可连接到本地文件系统的正在运行的逻辑应用。 
+   逻辑应用应会将该文件复制到本地文件共享，并向收件人发送一封有关已复制的文件的电子邮件。
 
-请尝试探索连接器提供的其他功能，例如：
+## <a name="connector-reference"></a>连接器参考
 
-- 创建文件
-- 列出文件夹中的文件
-- 附加文件
-- 删除文件
-- 获取文件内容
-- 使用路径获取文件内容
-- 获取文件元数据
-- 使用路径获取文件元数据
-- 列出根文件夹中的文件
-- 更新文件
-
-## <a name="view-the-swagger"></a>查看 Swagger
-
-请参阅 [Swagger 详细信息](/connectors/fileconnector/)。 
+有关触发器、操作和限制（请参阅连接器的 OpenAPI（以前称为 Swagger）说明）的技术详细信息，请查看连接器的[参考页](/connectors/fileconnector/)。
 
 ## <a name="get-support"></a>获取支持
 
@@ -103,6 +103,5 @@ ms.locfileid: "35300814"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [连接到本地数据](../logic-apps/logic-apps-gateway-connection.md) 
-* [监视逻辑应用](../logic-apps/logic-apps-monitor-your-logic-apps.md)
-* [适用于 B2B 方案的企业集成](../logic-apps/logic-apps-enterprise-integration-overview.md)
+* 了解如何[连接到本地数据](../logic-apps/logic-apps-gateway-connection.md) 
+* 了解其他[逻辑应用连接器](../connectors/apis-list.md)

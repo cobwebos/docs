@@ -37,7 +37,7 @@ items:
       href: create-mongodb-golang.md
   - name: Gremlin
     items:
-    - name: 使用 Gremlin 控制台
+    - name: Gremlin 控制台
       href: create-graph-gremlin-console.md
     - name: .NET
       href: create-graph-dotnet.md
@@ -78,6 +78,9 @@ items:
     href: distribute-data-globally.md
   - name: Throughput
     href: request-units.md
+    items:
+    - name: 获取和设置吞吐量
+      href: set-throughput.md
   - name: 分区
     href: partition-data.md
   - name: 索引
@@ -86,11 +89,11 @@ items:
     href: consistency-levels.md
   - name: 多主
     href: multi-region-writers.md
+    items:
+    - name: 多主设置
+      href: multi-master-workaround.md
   - name: 更改源
     href: change-feed.md
-    items:
-    - name: 更改源电子商务解决方案
-      href: changefeed-ecommerce-solution.md
   - name: 生存时间
     href: time-to-live.md
   - name: 唯一键
@@ -104,18 +107,16 @@ items:
       href: secure-access-to-data.md
     - name: 防火墙支持
       href: firewall-support.md
-    - name: 设置虚拟网络服务终结点
+    - name: 设置 VNet 终结点
       href: vnet-service-endpoint.md
-    - name: 使用 Key Vault 存储机密
+    - name: Key Vault 支持
       href: access-secrets-from-keyvault.md
 - name: 多模型 API
   items:
   - name: SQL API 文档
     items:
     - name: 概述
-      items:
-      - name: 关于 SQL API
-        href: sql-api-introduction.md
+      href: sql-api-introduction.md
     - name: 教程
       items:
       - name: 1 - 创建帐户
@@ -172,22 +173,16 @@ items:
         href: powershell-samples.md
       - name: Azure CLI
         href: cli-samples.md
-    - name: 概念
-      items:
-      - name: 模型文档数据
-        href: modeling-data.md
     - name: 操作指南
       items:
-      - name: 使用批量执行程序 - .NET 库
+      - name: 批量执行程序 - .NET 库
         href: bulk-executor-dot-net.md
-      - name: 使用批量执行程序 - Java 库
+      - name: 批量执行程序 - Java 库
         href: bulk-executor-java.md
       - name: 编写 SQL 查询
         href: sql-api-sql-query.md
       - name: 调整查询性能
         href: sql-api-sql-query-metrics.md
-      - name: SQL 数据分区
-        href: sql-api-partition-data.md
       - name: 数据类型
         items:
         - name: DateTime
@@ -220,16 +215,11 @@ items:
         href: /rest/api/cosmos-db-resource-provider/
       - name: SQL 语言语法
         href: sql-api-sql-query-reference.md
-    - name: 资源
-      items:
-      - name: SQL 演练
-        href: https://aka.ms/cosmos-db-playground
   - name: MongoDB API 文档
     items:
     - name: 概述
+      href: mongodb-introduction.md
       items:
-      - name: 关于 MongoDB API
-        href: mongodb-introduction.md
       - name: MongoDB 支持
         href: mongodb-feature-support.md
     - name: 教程
@@ -276,16 +266,11 @@ items:
         href: mongodb-time-to-live.md
       - name: 管理数据索引编制
         href: mongodb-indexing.md
-    - name: 资源
-      items:
-      - name: Visual Studio Code 扩展
-        href: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb
   - name: Gremlin API 文档
     items:
     - name: 概述
+      href: graph-introduction.md
       items:
-      - name: 关于 Gremlin API
-        href: graph-introduction.md
       - name: Gremlin 支持
         href: gremlin-support.md
     - name: 教程
@@ -296,14 +281,10 @@ items:
       items:
       - name: 导入关系图数据
         href: bulk-executor-graph-dotnet.md
-      - name: 关系图数据分区
-        href: graph-partitioning.md
   - name: Cassandra API 文档
     items:
     - name: 概述
-      items:
-      - name: 关于 Cassandra API
-        href: cassandra-introduction.md
+      href: cassandra-introduction.md
     - name: 教程
       items:
       - name: 1 - 创建帐户
@@ -313,9 +294,7 @@ items:
   - name: 表 API 文档
     items:
     - name: 概述
-      items:
-      - name: 关于表 API
-        href: table-introduction.md
+      href: table-introduction.md
     - name: 教程
       items:
       - name: 1 - 创建帐户
@@ -373,10 +352,8 @@ items:
       href: storage-explorer.md
     - name: 使用数据资源管理器进行管理
       href: data-explorer.md
-    - name: 管理密钥和一致性级别
+    - name: 管理帐户
       href: manage-account.md
-    - name: 获取和设置吞吐量
-      href: set-throughput.md
   - name: 日志记录
     items:
     - name: 诊断日志记录
@@ -407,6 +384,14 @@ items:
       href: performance-tips-async-java.md
     - name: 性能测试 - 示例应用
       href: performance-testing.md
+  - name: 最佳实践
+    items:
+    - name: 模型文档数据
+      href: modeling-data.md
+    - name: SQL 数据分区
+      href: sql-api-partition-data.md
+    - name: 关系图数据分区
+      href: graph-partitioning.md
   - name: 大数据和分析
     items:
     - name: Lambda 架构
@@ -415,9 +400,11 @@ items:
       href: spark-connector.md
     - name: Spark、Kafka 和 Azure Cosmos DB
       href: https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json
+    - name: 更改源电子商务解决方案
+      href: changefeed-ecommerce-solution.md
   - name: 与其他 Azure 服务集成
     items:
-    - name: 使用 Azure 应用服务部署网站
+    - name: Azure 应用服务
       href: create-website.md
     - name: Azure 搜索索引器
       href: https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json
@@ -427,7 +414,7 @@ items:
         href: serverless-computing-database.md
       - name: Azure Function 绑定
         href: https://docs.microsoft.com/azure/azure-functions/functions-bindings-cosmosdb?toc=/azure/cosmos-db/toc.json
-    - name: 使用 Azure 数据工厂移动数据
+    - name: Azure 数据工厂
       href: https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db?toc=/azure/cosmos-db/toc.json
     - name: Azure 流分析
       href: ../stream-analytics/stream-analytics-define-outputs.md#azure-cosmos-db
@@ -449,8 +436,6 @@ items:
     href: regional-failover.md
   - name: 存储过程、触发器和 UDF
     href: programming.md
-  - name: 多主设置
-    href: multi-master-workaround.md
   - name: 关于批量执行程序库
     href: bulk-executor-overview.md
   - name: 以经济高效的方式读取和写入
@@ -459,8 +444,8 @@ items:
   items:
   - name: 查询备忘单
     href: query-cheat-sheet.md
-  - name: 20 天的提示
-    href: 20-days-of-tips.md
+  - name: SQL 演练
+    href: https://aka.ms/cosmos-db-playground
   - name: 常见问题解答
     href: faq.md
   - name: 白皮书
@@ -478,9 +463,9 @@ items:
     href: http://research.microsoft.com/apps/pubs/default.aspx?id=206913
   - name: 社交媒体应用
     href: social-media-apps.md
-ms.openlocfilehash: 882b7d69a8282beb2fcbbce0ed788810210236ca
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 8837d9bc6cf492a146d96d917d9157e51bffa0f5
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43184889"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43695976"

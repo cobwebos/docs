@@ -103,6 +103,7 @@
 #### [将活动日志路由到 Azure 事件中心](reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md)
 #### [将活动日志存档到 Azure 存储帐户](reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)
 #### [使用 Azure Monitor 将活动日志与 Splunk 集成](reports-monitoring/tutorial-integrate-activity-logs-with-splunk.md)
+#### [使用 Azure Monitor 将活动日志与 SumoLogic 集成](reports-monitoring/howto-integrate-activity-logs-with-sumologic.md)
 
 ### 引用
 #### [保留](reports-monitoring/reference-reports-data-retention.md)
@@ -332,6 +333,8 @@
 ### [通过评审管理用于访问](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)
 ### [管理计划和控件](active-directory-azure-ad-controls-manage-programs-controls.md)
 ### [检索访问评审结果](active-directory-azure-ad-controls-retrieve-access-review.md)
+
+## [使用条款](active-directory-tou.md)
 
 ## 保护标识
 

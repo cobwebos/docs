@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/30/2018
+ms.date: 08/24/2018
 ms.author: mstewart
-ms.openlocfilehash: cf3e9ce055219bccb44c19fd8e77fe39c938c968
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 9efd8730af292e6f720c3bacd5707c48f0eab7ac
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39392594"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887927"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>有关 Azure 磁盘加密的附录 
 本文是[适用于 IaaS VM 的 Azure 磁盘加密](azure-security-disk-encryption-overview.md)的附录。 请务必先阅读“适用于 IaaS VM 的 Azure 磁盘加密”一文，以理解上下文。 本文介绍如何准备预加密的 VHD 和其他任务。
 
 ## <a name="connect-to-your-subscription"></a>连接到订阅
-在继续之前，请查看[先决条件](azure-security-disk-encryption-prerequisites.md)一文。 确保满足所有先决条件后，请运行以下 cmdlet 连接到订阅：
+在开始之前，请查看[先决条件](azure-security-disk-encryption-prerequisites.md)一文。 满足所有先决条件后，请运行以下 cmdlet 连接到订阅：
 
 ### <a name="bkmk_ConnectPSH"></a>使用 PowerShell 连接到订阅
 
@@ -106,33 +106,77 @@ ms.locfileid: "39392594"
      Get-AzureKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
      ```
 
+### <a name="bkmk_prereq-script"></a>使用 Azure 磁盘加密先决条件 PowerShell 脚本
+如果你已熟悉进行 Azure 磁盘加密的先决条件，则可以使用 [Azure 磁盘加密先决条件 PowerShell 脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )。 有关此 PowerShell 脚本的用法示例，请参阅[有关加密 VM 的快速入门](quick-encrypt-vm-powershell.md)。 可以删除脚本的某个部分中的注释（从第 211 行开始），以加密现有资源组中现有 VM 的所有磁盘。 
+
+下表显示了可在 PowerShell 脚本中使用的参数： 
+
+
+|参数|Description|必需|
+|------|------|------|
+|$resourceGroupName| KeyVault 所属的资源组的名称。  如果不存在具有此名称的资源组，则会新建一个资源组。| True|
+|$keyVaultName|要将加密密钥放到的 KeyVault 的名称。 如果不存在具有此名称的保管库，则会新建一个保管库。| True|
+|$location|KeyVault 的位置。 请确保 KeyVault 和要加密的 VM 位于同一位置。 使用 `Get-AzureRMLocation` 获取位置列表。|True|
+|$subscriptionId|要使用的 Azure 订阅的标识符。  可以使用 `Get-AzureRMSubscription` 获取订阅 ID。|True|
+|$aadAppName|用于将机密写入 KeyVault 的 Azure AD 应用程序的名称。 如果该应用程序不存在，则会使用此名称创建新的应用程序。 如果此应用已存在，则将 aadClientSecret 参数传递给脚本。|False|
+|$aadClientSecret|之前创建的 Azure AD 应用程序的客户端机密。|False|
+|$keyEncryptionKeyName|KeyVault 中的可选密钥加密密钥的名称。 如果不存在具有此名称的密钥，则会新建一个密钥。|False|
+
+
 ## <a name="resource-manager-templates"></a>资源管理器模板
 
-- [创建密钥保管库](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create) 
+<!--   - [Create a key vault](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create) -->
+
+### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>在不使用 Azure AD 应用的情况下加密或解密 VM
+
+
+- [在现有或正在运行的 IaaS Windows VM 上启用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad)
+- [在现有或正在运行的 IaaS Windows VM 上禁用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm-without-aad)
+- [在现有或正在运行的 IaaS Linux VM 上启用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad)  
+ -  [在正在运行的 Linux VM 上禁用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
+    - 只允许对 Linux VM 的数据卷禁用加密。  
+
+### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>使用 Azure AD 应用加密或解密 VM（以前的版本） 
  
-- [在市场中的新 IaaS Windows VM 上启用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image)
-    - 此模板使用 Windows Server 2012 库映像创建新的加密 Windows VM。
-
-- [部署使用全磁盘加密的 RHEL 7.2](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel)
-    - 此模板在 Azure 中创建一个完全加密的 RHEL 7.2 VM，该 VM 在 /mnt/raidencrypted 位置装载一个 30 GB 的已加密 OS 驱动器和 200 GB 的 RAID-0 阵列。 有关支持的 Linux 服务器分发版，请参阅[常见问题解答](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport)一文。 
-
-- [在适用于 Windows 或 Linux 的预加密 VHD 上启用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-pre-encrypted-vm)
-
 - [在现有或正在运行的 IaaS Windows VM 上启用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)
 
-- [在现有或正在运行的 IaaS Linux VM 上启用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrt-running-linux-vm)    
+- [在现有或正在运行的 IaaS Linux VM 上启用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm)    
 
 - [在正在运行的 Windows IaaS 上禁用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm) 
 
--  [在正在运行的 Linux VM 上禁用加密](https://aka.ms/decrypt-linuxvm) 
+-  [在正在运行的 Linux VM 上禁用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm) 
     - 只允许对 Linux VM 的数据卷禁用加密。 
+
+- [在市场中的新 IaaS Windows VM 上启用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image)
+    - 此模板使用 Windows Server 2012 库映像创建新的加密 Windows VM。
+
+- [从库映像创建新的加密 Windows IaaS 托管磁盘 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image-managed-disks)
+    - 此模板使用 Windows Server 2012 库映像新建包含托管磁盘的加密 Windows VM。
+
+- [使用托管磁盘部署支持全盘加密的 RHEL 7.2](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel)
+    - 此模板使用托管磁盘在 Azure 中创建一个完全加密的 RHEL 7.2 VM。 该 VM 包含已加密的 30-GB OS 驱动器，以及装载在 /mnt/raidencrypted 位置的已加密 200-GB 阵列 (RAID-0)。 有关支持的 Linux 服务器分发版，请参阅[常见问题解答](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport)一文。 
+
+- [使用非托管磁盘部署支持全盘加密的 RHEL 7.2](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel-unmanaged)
+    - 此模板在 Azure 中创建一个完全加密的 RHEL 7.2 VM，该 VM 包含已加密的 30-GB OS 驱动器，以及装载在 /mnt/raidencrypted 位置的已加密 200-GB 阵列 (RAID-0)。 有关支持的 Linux 服务器分发版，请参阅[常见问题解答](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport)一文。 
+
+- [在适用于 Windows 或 Linux 的预加密 VHD 上启用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-pre-encrypted-vm)
 
 - [从预加密的 VHD/存储 Blob 创建新的加密托管磁盘](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
     - 在提供预加密 VHD 及其对应加密设置的情况下创建新的加密托管磁盘
 
-- [从库映像创建新的加密 Windows IaaS 托管磁盘 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image-managed-disks)
-    - 此模板使用 Windows Server 2012 库映像新建包含托管磁盘的加密 Windows VM。
+- [使用 Azure AD 客户端证书指纹在运行的 Windows VM 上启用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-aad-client-cert)
     
+- [在运行的 Linux 虚拟机规模集上启用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
+
+- [在运行的 Windows 虚拟机规模集上启用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
+
+ - [使用 jumpbox 部署 Linux VM 的 VM 规模集，并在 Linux VMSS 上启用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
+
+ - [使用 jumpbox 部署 Windows VM 的 VM 规模集，并在 Windows VMSS 上启用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
+
+- [在运行的 Linux 虚拟机规模集上禁用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
+
+- [在运行的 Windows 虚拟机规模集上禁用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
 
 ## <a name="bkmk_preWin"></a>准备预加密的 Windows VHD
 以下部分介绍了必要操作，让你在 Azure IaaS 中准备将预加密的 Windows VHD 部署为加密 VHD。 使用该信息在 Azure Site Recovery 或 Azure 上准备和启动全新的 Windows VM (VHD)。 有关如何准备和上传 VHD 的详细信息，请参阅[上传通用化 VHD 并使用它在 Azure 中创建新的 VM](../virtual-machines/windows/upload-generalized-managed.md)。
@@ -157,7 +201,7 @@ ms.locfileid: "39392594"
 
 
 ### <a name="protect-the-os-volume-by-using-bitlocker"></a>使用 BitLocker 保护 OS 卷
-使用 [`manage-bde`](https://technet.microsoft.com/library/ff829849.aspx) 命令在使用外部密钥保护程序的引导卷上启用加密。 此外将外部密钥（.bek 文件）放在外部驱动器或卷上。 下次重启后，会在系统/引导卷上启用加密。
+使用 [`manage-bde` ](https://technet.microsoft.com/library/ff829849.aspx) 命令在使用外部密钥保护程序的引导卷上启用加密。 此外将外部密钥（.bek 文件）放在外部驱动器或卷上。 下次重启后，会在系统/引导卷上启用加密。
 
     manage-bde -on %systemdrive% -sk [ExternalDriveOrVolume]
     reboot
@@ -183,7 +227,7 @@ ms.locfileid: "39392594"
  ```powershell
     Set-AzureRmVMSourceImage -VM $VirtualMachine -PublisherName "OpenLogic" -Offer "CentOS" -Skus "7.2n" -Version "latest"
  ```
-2. 根据需要配置 VM。 如果打算加密所有（OS + 数据）驱动器，需要指定数据驱动器且可从 /etc/fstab 处装载数据驱动器。
+2. 根据需要配置 VM。 如果打算加密所有（OS + 数据）驱动器，则需要指定数据驱动器且可从 /etc/fstab 处装载数据驱动器。
 
  > [!NOTE]
  > 使用 UUID =... 在 /etc/fstab 中指定数据驱动器（而不是指定 /dev/sdb1 等块设备名称）。 在加密过程中，驱动器的顺序会在 VM 上有所改变。 如果 VM 依赖于特定块设备顺序，加密后将无法装载。
@@ -197,7 +241,7 @@ ms.locfileid: "39392594"
 
 5. 使用[下一部分](#monitoring-os-encryption-progress)中的说明，定期监视加密进度。
 
-6. Get-AzureRmVmDiskEncryptionStatus 显示“VMRestartPending”后，通过登录 VM 或通过 Portal/PowerShell/CLI 重启 VM。
+6. Get-AzureRmVmDiskEncryptionStatus 显示“VMRestartPending”后，通过登录到 VM 或者使用门户、PowerShell 或 CLI 来重启 VM。
     ```powershell
     C:\> Get-AzureRmVmDiskEncryptionStatus  -ResourceGroupName $ResourceGroupName -VMName $VMName
     -ExtensionName $ExtensionName
@@ -253,7 +297,7 @@ ms.locfileid: "39392594"
 预加密 VHD 的准备过程根据分发版的不同而异。 我们提供了有关准备 [Ubuntu 16](#bkmk_Ubuntu)、[openSUSE 13.2](#bkmk_openSUSE) 和 [CentOS 7](#bkmk_CentOS) 的示例。 
 
 ### <a name="bkmk_Ubuntu"></a>Ubuntu 16
-通过执行以下步骤在分发安装过程中配置加密：
+通过执行以下步骤在分发版安装过程中配置加密：
 
 1. 对磁盘进行分区时选择“配置加密卷”。
 
@@ -275,11 +319,11 @@ ms.locfileid: "39392594"
 
  ![Ubuntu 16.04 安装](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig5.png)
 
-6. 使用[这些说明](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/)准备 VM 以上传到 Azure。 不要运行最后一步（解除配置 VM）。
+6. 使用[这些说明](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/)准备 VM 以上传到 Azure。 暂时不要运行最后一个步骤（取消预配 VM）。
 
 执行以下步骤，配置适用于 Azure 的加密：
 
-1. 在 /usr/local/sbin/azure_crypt_key.sh 下创建一个包含以下脚本的文件。 请注意 KeyFileName，因为它是 Azure 使用的密码文件名。
+1. 在 /usr/local/sbin/azure_crypt_key.sh 下创建一个包含以下脚本的文件。 请注意 KeyFileName，因为它是 Azure 使用的通行短语文件名。
 
     ```
     #!/bin/sh
@@ -321,7 +365,7 @@ ms.locfileid: "39392594"
     xxx_crypt uuid=xxxxxxxxxxxxxxxxxxxxx none luks,discard,keyscript=/usr/local/sbin/azure_crypt_key.sh
     ```
 
-3. 如果要在 Windows 中编辑 *azure_crypt_key.sh*，但将其复制到了 Linux，请运行 `dos2unix /usr/local/sbin/azure_crypt_key.sh`。
+3. 如果在 Windows 中编辑了 *azure_crypt_key.sh*，但将其复制到了 Linux，请运行 `dos2unix /usr/local/sbin/azure_crypt_key.sh`。
 
 4. 将可执行文件的权限添加到脚本：
  ```
@@ -345,7 +389,7 @@ ms.locfileid: "39392594"
 
 ### <a name="bkmk_openSUSE"></a>openSUSE 13.2
 若要在分发版安装期间配置加密，请执行以下步骤：
-1. 对磁盘进行分区时，选择“加密卷组”，并输入密码。 这是将上传到 Key Vault 的密码。
+1. 对磁盘进行分区时，选择“加密卷组”，并输入密码。 这是要上传到 Key Vault 的密码。
 
  ![openSUSE 13.2 安装](./media/azure-security-disk-encryption/opensuse-encrypt-fig1.png)
 
@@ -353,7 +397,7 @@ ms.locfileid: "39392594"
 
  ![openSUSE 13.2 安装](./media/azure-security-disk-encryption/opensuse-encrypt-fig2.png)
 
-3. 遵循 [Prepare a SLES or openSUSE virtual machine for Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131)（为 Azure 准备 SLES 或 openSUSE 虚拟机）中的说明准备 VM，以上传到 Azure。 不要运行最后一步（解除配置 VM）。
+3. 遵循 [Prepare a SLES or openSUSE virtual machine for Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131)（为 Azure 准备 SLES 或 openSUSE 虚拟机）中的说明准备 VM，以上传到 Azure。 暂时不要运行最后一个步骤（取消预配 VM）。
 
 若要配置适用于 Azure 的加密，请执行以下步骤：
 1. 编辑 /etc/dracut.conf 并添加以下行：
@@ -429,7 +473,7 @@ ms.locfileid: "39392594"
 
  ![CentOS 7 安装](./media/azure-security-disk-encryption/centos-encrypt-fig4.png)
 
-5. 通过 [Prepare a CentOS-based virtual machine for Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70)（为 Azure 准备基于 CentOS 的虚拟机）中的“CentOS 7.0+”说明准备 VM 以上传到 Azure。 不要运行最后一步（解除配置 VM）。
+5. 通过 [Prepare a CentOS-based virtual machine for Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70)（为 Azure 准备基于 CentOS 的虚拟机）中的“CentOS 7.0+”说明准备 VM 以上传到 Azure。 暂时不要运行最后一个步骤（取消预配 VM）。
 
 6. 现在可以解除配置 VM，并将 VHD 上传到 Azure 中。
 
@@ -465,7 +509,7 @@ to
 ```
     if [ 1 ]; then
 ```
-4. 编辑 /usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh 并将其附加在“# Open LUKS device”的后面：
+4. 编辑 /usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh，并在“# Open LUKS device”的后面追加以下内容：
     ```
     MountPoint=/tmp-keydisk-mount
     KeyFileName=LinuxPassPhraseFileName
@@ -496,7 +540,7 @@ to
     Add-AzureRmVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo> [[-NumberOfUploaderThreads] <Int32> ] [[-BaseImageUriToPatch] <Uri> ] [[-OverWrite]] [ <CommonParameters>]
 ```
 ## <a name="bkmk_UploadSecret"></a>将预加密 VM 的机密上传到 Key Vault
-需要将前面获取的磁盘加密机密作为机密上传到 Key Vault 中。 Key Vault 需要具有对 Azure AD 客户端启用的磁盘加密等权限。
+使用 Azure AD 应用（以前的版本）加密时，必须上传前面获取的磁盘加密机密作为 Key Vault 中的机密。 Key Vault 需要具有对 Azure AD 客户端启用的磁盘加密等权限。
 
 ```powershell 
  $AadClientId = "My-AAD-Client-Id"

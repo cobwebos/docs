@@ -1,282 +1,368 @@
 ---
-title: 连接到 DB2 - Azure 逻辑应用 | Microsoft Docs
-description: 使用 DB2 REST API 和 Azure 逻辑应用管理资源
-author: gplarsen
-manager: jeconnoc
-ms.author: plarsen
-ms.date: 09/26/2016
-ms.topic: article
-ms.service: logic-apps
+title: 连接到 IBM DB2 - Azure 逻辑应用 | Microsoft Docs
+description: 使用 IBM DB2 REST API 和 Azure 逻辑应用管理资源
 services: logic-apps
-ms.reviewer: klam, estfan
+ms.service: logic-apps
+author: ecfan
+ms.author: estfan
+ms.reviewer: plarsen, LADocs
 ms.suite: integration
+ms.topic: article
+ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 507bc48b6b775d6a6fb5f855210d33520e187a74
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 354e67183a36f511811d74a0685dea2e23d6c0e2
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295085"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818869"
 ---
-# <a name="get-started-with-the-db2-connector"></a>DB2 连接器入门
-Microsoft DB2 连接器可将逻辑应用连接到在 IBM DB2 数据库中存储的资源。 此连接器包括要在 TCP/IP 网络上与远程 DB2 服务器计算机通信的 Microsoft 客户端。 这包括云数据库（如在 Azure 虚拟化中运行的 Windows IBM Bluemix dashDB 或 IBM DB2）和使用本地数据网关的本地数据库。 请参阅 IBM DB2 平台和版本（在本主题中）的[受支持列表](connectors-create-api-db2.md#supported-db2-platforms-and-versions)。
+# <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>使用 Azure 逻辑应用管理 IBM DB2 资源
 
-DB2 连接器支持以下数据库操作：
+使用 Azure 逻辑应用和 IBM DB2 连接器，可以基于 DB2 数据库中存储的资源创建自动化的任务和工作流。 工作流可以连接到数据库中的资源、读取和列出数据库表、添加行、更改行、删除行，以及执行其他操作。 可在逻辑应用中包含操作，用于从数据库获取响应，并使输出可供其他操作使用。 
 
-* 列出数据库表
-* 使用 SELECT 读取一行
-* 使用 SELECT 读取全部行
-* 使用 INSERT 添加一行
-* 使用 UPDATE 更改一行
-* 使用 DELETE 删除一行
+本文介绍如何创建一个可执行各种数据库操作的逻辑应用。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)。
 
-本主题介绍了如何在逻辑应用中使用连接器来处理数据库操作。
+## <a name="supported-platforms-and-versions"></a>支持的平台和版本
 
-若要了解有关逻辑应用的详细信息，请参阅[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+DB2 连接器包含一个可以通过 TCP/IP 网络来与远程 DB2 服务器通信的 Microsoft 客户端。 可以使用此连接器访问云数据库，例如，Azure 虚拟化中运行的 IBM Bluemix dashDB 或 IBM DB2 for Windows。 此外，可在[安装并设置本地数据网关](../logic-apps/logic-apps-gateway-connection.md)之后访问本地 DB2 数据库。 
 
-## <a name="available-actions"></a>可用操作
-DB2 连接器支持以下逻辑应用操作：
+IBM DB2 连接器支持以下 IBM DB2 平台和版本，以及支持分布式关系数据库结构 (DRDA) SQL 访问管理器 (SQLAM) 版本 10 和 11 的 IBM DB2 兼容产品（例如 IBM Bluemix dashDB）：
 
-* GetTables
-* GetRow
-* GetRows
-* InsertRow
-* UpdateRow
-* DeleteRow
+| 平台 | 版本 | 
+|----------|---------|
+| IBM DB2 for z/OS | 11.1、10.1 |
+| IBM DB2 for i | 7.3、7.2、7.1 |
+| IBM DB2 for LUW | 11、10.5 |
+|||
 
-## <a name="list-tables"></a>列出表
-为任何操作创建逻辑应用包含通过 Microsoft Azure 门户执行的许多步骤。
+## <a name="supported-database-operations"></a>支持的数据库操作
 
-在逻辑应用内，可添加在 DB2 数据库中列出表的操作。 该操作指示连接器处理 DB2 架构语句（如 `CALL SYSIBM.SQLTABLES`）。
+IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中的相应操作：
 
-### <a name="create-a-logic-app"></a>创建逻辑应用
-1. 在 **Azure 开始面板**中，依次选择“+”（加号）、“Web + 移动”和“逻辑应用”。
-2. 输入“名称”（例如 `Db2getTables`）、“订阅”、“资源组”、“位置”和“应用服务计划”。 选择“固定到仪表板”，并选择“创建”。
+| 数据库操作 | 连接器操作 | 
+|--------------------|------------------|
+| 列出数据库表 | 获取表 | 
+| 使用 SELECT 读取一行 | 获取行 | 
+| 使用 SELECT 读取全部行 | 获取行 | 
+| 使用 INSERT 添加一行 | 插入行 | 
+| 使用 UPDATE 编辑一行 | 更新行 | 
+| 使用 DELETE 删除一行 | 删除行 | 
+|||
 
-### <a name="add-a-trigger-and-action"></a>添加触发器和操作
-1. 在“逻辑应用设计器”中的“模板”列表中，选择“空白逻辑应用”。
-2. 在“触发器”列表中，选择“定期”。 
-3. 在“定期”触发器中，选择“编辑”、选择“频率”下拉列表以选择“天”，并设置“间隔”以键入“7”。  
-4. 选择“+ 新步骤”框，并选择“添加操作”。
-5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 `db2`，并选择“DB2 - 获取表(预览)”。
+## <a name="prerequisites"></a>先决条件
+
+* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
+
+* 基于云或本地的 IBM DB2 数据库
+
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
+
+* 要在其中访问 DB2 数据库的逻辑应用。 此连接器仅提供操作，因此，若要启动逻辑应用，请选择单独的触发器（例如“重复”触发器）。
+本文中的示例使用“重复”触发器。
+
+<a name="add-db2-action"></a>
+
+## <a name="add-db2-action---get-tables"></a>添加 DB2 操作 - 获取表
+
+1. 在 [Azure 门户](https://portal.azure.com)上的逻辑应用设计器中打开逻辑应用（如果尚未打开）。
+
+1. 在触发器下，选择“新建步骤”。
+
+1. 在搜索框中，输入“db2”作为筛选器。 对于本示例，请在操作列表中选择以下操作：“获取表(预览)”
    
-   ![](./media/connectors-create-api-db2/Db2connectorActions.png)  
-6. 在“DB2 - 获取表”配置窗格中，选中“复选框”以启用“通过本地数据网关连接”。 请注意，这些设置从云更改到本地。
+   ![选择操作](./media/connectors-create-api-db2/select-db2-action.png)
+
+   此时，系统会提示你提供 DB2 数据库的连接详细信息。 
+
+1. 请遵循为[云数据库](#cloud-connection)或[本地数据库](#on-premises-connection)创建连接的步骤。
+
+<a name="cloud-connection"></a>
+
+## <a name="connect-to-cloud-db2"></a>连接到云 DB2
+
+若要设置连接，请按提示提供以下连接详细信息，选择“创建”，然后保存逻辑应用：
+
+| 属性 | 必选 | Description | 
+|----------|----------|-------------| 
+| **通过本地网关连接** | 否 | 仅适用于本地连接。 | 
+| **连接名称** | 是 | 连接的名称，例如“MyLogicApp-DB2-connection” |
+| **服务器** | 是 | DB2 服务器的地址或冒号分隔的别名端口号，例如“myDB2server.cloudapp.net:50000” <p><p>**注意**：此值是表示 TCP/IP 地址或别名的字符串，采用 IPv4 或 IPv6 格式，后接冒号和 TCP/IP 端口号。 |
+| **数据库** | 是 | 数据库的名称 <p><p>**注意**：此值是表示 DRDA 关系数据库名称 (RDBNAM) 的字符串。 <p>- DB2 for z/OS 接受 16 字节字符串，其中的数据库称为“IBM DB2 for z/OS”位置。 <br>- DB2 for i 接受 18 字节字符串，其中的数据库称为“IBM DB2 for i”关系数据库。 <br>- DB2 for LUW 接受 8 字节字符串。 |
+| **用户名** | 是 | 数据库的用户名 <p><p>**注意**：此值是一个字符串，其长度基于特定的数据库： <p><p>- DB2 for z/OS 接受 8 字节字符串。 <br>- DB2 for i 接受 10 字节字符串。 <br>- DB2 for Linux/UNIX 接受 8 字节字符串。 <br>- DB2 for Windows 接受 30 字节字符串。 | 
+| **密码** | 是 | 数据库的密码 | 
+|||| 
+
+例如：
+
+![基于云的数据库的连接详细信息](./media/connectors-create-api-db2/create-db2-cloud-connection.png)
+
+<a name="on-premises-connection"></a>
+
+## <a name="connect-to-on-premises-db2"></a>连接到本地 DB2
+
+在创建连接之前，必须已安装本地数据网关。 否则无法完成连接设置。 如果已安装网关，请继续提供这些连接详细信息，然后选择“创建”。
+
+| 属性 | 必选 | Description | 
+|----------|----------|-------------| 
+| **通过本地网关连接** | 是 | 适用于创建本地连接，将显示本地连接属性。 | 
+| **连接名称** | 是 | 连接的名称，例如“MyLogicApp-DB2-connection” | 
+| **服务器** | 是 | DB2 服务器的地址或冒号分隔的别名端口号，例如“myDB2server:50000” <p><p>**注意**：此值是表示 TCP/IP 地址或别名的字符串，采用 IPv4 或 IPv6 格式，后接冒号和 TCP/IP 端口号。 | 
+| **数据库** | 是 | 数据库的名称 <p><p>**注意**：此值是表示 DRDA 关系数据库名称 (RDBNAM) 的字符串。 <p>- DB2 for z/OS 接受 16 字节字符串，其中的数据库称为“IBM DB2 for z/OS”位置。 <br>- DB2 for i 接受 18 字节字符串，其中的数据库称为“IBM DB2 for i”关系数据库。 <br>- DB2 for LUW 接受 8 字节字符串。 | 
+| **身份验证** | 是 | 连接的身份验证类型，例如“Basic” <p><p>**注意**：从列表中选择此值，包括“Basic”或“Windows (Kerberos)”。 | 
+| **用户名** | 是 | 数据库的用户名 <p><p>**注意**：此值是一个字符串，其长度基于特定的数据库： <p><p>- DB2 for z/OS 接受 8 字节字符串。 <br>- DB2 for i 接受 10 字节字符串。 <br>- DB2 for Linux/UNIX 接受 8 字节字符串。 <br>- DB2 for Windows 接受 30 字节字符串。 | 
+| **密码** | 是 | 数据库的密码 | 
+| **网关** | 是 | 安装的本地数据网关的名称 <p><p>**注意**：从列表中选择此值，包括 Azure 订阅和资源组中所有已安装的数据网关。 | 
+|||| 
+
+例如：
+
+![本地数据库的连接详细信息](./media/connectors-create-api-db2/create-db2-on-premises-connection.png)
+
+### <a name="view-output-tables"></a>查看输出表
+
+若要手动运行逻辑应用，请在设计器工具栏上选择“运行”。 完成运行逻辑应用后，可以查看运行后的输出。
+
+1. 在逻辑应用菜单中，选择“概述”。 
+
+1. 在“运行历史记录”部分中的“摘要”下，选择最近的运行，即列表中的第一项。 
+
+   ![查看运行历史记录](./media/connectors-create-api-db2/run-history.png)
+
+1. 在“逻辑应用运行”下，现在可以查看逻辑应用中每个步骤的状态、输入和输出。 展开“获取表”操作。
+
+   ![展开操作](./media/connectors-create-api-db2/expand-action-step.png)
+
+1. 若要查看输入，请选择“显示原始输入”。 
+
+1. 若要查看输出，请选择“显示原始输出”。 
+
+   输出包括一个表列表。 
    
-   * 以地址或别名冒号端口号的形式键入“服务器”的值。 例如，键入 `ibmserver01:50000`。
-   * 键入“数据库”的值。 例如，键入 `nwind`。
-   * 选择“身份验证”的值。 例如，选择“Basic”。
-   * 键入“用户名”的值。 例如，键入 `db2admin`。
-   * 键入“密码”的值。 例如，键入 `Password1`。
-   * 选择“网关”的值。 例如，选择“datagateway01”。
-7. 选择“创建”，并选择“保存”。 
+   ![查看输出表](./media/connectors-create-api-db2/db2-connector-get-tables-outputs.png)
+
+## <a name="get-row"></a>获取行
+
+若要提取 DB2 数据库表中的一条记录，请在逻辑应用中使用“获取一行”操作。 此操作运行 DB2 `SELECT WHERE` 语句，例如 `SELECT FROM AREA WHERE AREAID = '99999'`。
+
+1. 如果以前从未在逻辑应用中用过 DB2 操作，请查看[添加 DB2 操作 - 获取表](#add-db2-action)部分中的步骤，但应该添加“获取一行”操作，然后返回此处以继续。 
+
+   添加“获取一行”操作后，示例逻辑应用如下所示：
+
+   ![“获取一行”操作](./media/connectors-create-api-db2/db2-get-row-action.png)
+
+1. 指定所有必需属性 (*) 的值。 选择一个表后，该操作会显示特定于该表中的记录的相关属性。
+
+   | 属性 | 必选 | Description | 
+   |----------|----------|-------------| 
+   | **表名称** | 是 | 包含所需记录的表，在本示例中为“AREA” | 
+   | **地区 ID** | 是 | 所需记录的 ID，在本示例中为“99999” | 
+   |||| 
+
+   ![选择表](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
+
+1. 完成后，请在设计器工具栏上选择“保存”。 
+
+### <a name="view-output-row"></a>查看输出行
+
+若要手动运行逻辑应用，请在设计器工具栏上选择“运行”。 完成运行逻辑应用后，可以查看运行后的输出。
+
+1. 在逻辑应用菜单中，选择“概述”。 
+
+1. 在“运行历史记录”部分中的“摘要”下，选择最近的运行，即列表中的第一项。 
+
+1. 在“逻辑应用运行”下，现在可以查看逻辑应用中每个步骤的状态、输入和输出。 展开“获取一行”操作。
+
+1. 若要查看输入，请选择“显示原始输入”。 
+
+1. 若要查看输出，请选择“显示原始输出”。 
+
+   输出包括指定的行。 
    
-    ![](./media/connectors-create-api-db2/Db2connectorOnPremisesDataGatewayConnection.png)
-8. 在“Db2getTables”边栏选项卡中，在“摘要”下面的“所有运行”列表中，选择第一个列出项（最近运行）。
-9. 在“逻辑应用运行”边栏选项卡中，选择“运行详细信息”。 在“操作”列表内，选择“Get_tables”。 设置“状态”的值，该值应为 **Succeeded**。 选择“输入链接”查看输入。 选择“输出链接”并查看输出；其中应包括表列表。
+   ![查看输出行](./media/connectors-create-api-db2/db2-connector-get-row-outputs.png)
+
+## <a name="get-rows"></a>获取行
+
+若要提取 DB2 数据库表中的所有记录，请在逻辑应用中使用“获取多行”操作。 此操作运行 DB2 `SELECT` 语句，例如 `SELECT * FROM AREA`。
+
+1. 如果以前从未在逻辑应用中用过 DB2 操作，请查看[添加 DB2 操作 - 获取表](#add-db2-action)部分中的步骤，但应该添加“获取多行”操作，然后返回此处以继续。 
+
+   添加“获取多行”操作后，示例逻辑应用如下所示：
+
+   ![“获取多行”操作](./media/connectors-create-api-db2/db2-get-rows-action.png)
+
+1. 打开“表名称”列表，然后选择所需的表，在本示例中为“AREA”： 
+
+   ![选择表](./media/connectors-create-api-db2/db2-get-rows-action-select-table.png)
+
+1. 若要指定筛选器或查询结果，请选择“显示高级选项”。
+
+1. 完成后，请在设计器工具栏上选择“保存”。 
+
+### <a name="view-output-rows"></a>查看输出行
+
+若要手动运行逻辑应用，请在设计器工具栏上选择“运行”。 完成运行逻辑应用后，可以查看运行后的输出。
+
+1. 在逻辑应用菜单中，选择“概述”。 
+
+1. 在“运行历史记录”部分中的“摘要”下，选择最近的运行，即列表中的第一项。 
+
+1. 在“逻辑应用运行”下，现在可以查看逻辑应用中每个步骤的状态、输入和输出。 展开“获取多行”操作。
+
+1. 若要查看输入，请选择“显示原始输入”。 
+
+1. 若要查看输出，请选择“显示原始输出”。 
+
+   输出包括指定表中的所有记录。
    
-   ![](./media/connectors-create-api-db2/Db2connectorGetTablesLogicAppRunOutputs.png)
+   ![查看输出行](./media/connectors-create-api-db2/db2-connector-get-rows-outputs.png)
 
-## <a name="create-the-connections"></a>创建连接
-此连接器支持使用以下连接属性连接到本地托管的数据库和云中。 
+## <a name="insert-row"></a>插入行
 
-| 属性 | 说明 |
-| --- | --- |
-| server |必需。 接受表示 TCP/IP 地址或别名的字符串值，该地址或别名采用 IPv4 或 IPv6 格式，后跟（冒号分隔）TCP/IP 端口号。 |
-| database |必需。 接受表示 DRDA 相关数据库名称 (RDBNAM) 的字符串值。 DB2 for z/OS 接受 16 个字节字符串（数据库也称为 IBM DB2 for z/OS 位置）。 DB2 for i5/OS 接受 18 个字节字符串（数据库也称为 IBM DB2 for i 相关数据库）。 DB2 for LUW 接受 8 个字节字符串。 |
-| authentication |可选。 接受 Basic 或 Windows (kerberos) 列表项值。 |
-| username |必需。 接受字符串值。 DB2 for z/OS 接受 8 个字节字符串。 DB2 for i 接受 10 个字节字符串。 DB2 for Linux 或 UNIX 接受 8 个字节字符串。 DB2 for Windows 接受 30 个字节字符串。 |
-| password |必需。 接受字符串值。 |
-| gateway |必需。 接受列表项值，表示已在存储组内定义为逻辑应用的本地数据网关。 |
+若要将一条记录添加到 DB2 数据库表，请在逻辑应用中使用“插入行”操作。 此操作运行 DB2 `INSERT` 语句，例如 `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`。
 
-## <a name="create-the-on-premises-gateway-connection"></a>创建本地网关连接
-此连接器可以使用本地网关访问本地 DB2 数据库。 有关详细信息，请参阅网关主题。 
+1. 如果以前从未在逻辑应用中用过 DB2 操作，请查看[添加 DB2 操作 - 获取表](#add-db2-action)部分中的步骤，但应该添加“插入行”操作，然后返回此处以继续。 
 
-1. 在“网关”配置窗格中，选中“复选框”以启用“通过网关连接”。 请注意，这些设置从云更改到本地。
-2. 以地址或别名冒号端口号的形式键入“服务器”的值。 例如，键入 `ibmserver01:50000`。
-3. 键入“数据库”的值。 例如，键入 `nwind`。
-4. 选择“身份验证”的值。 例如，选择“Basic”。
-5. 键入“用户名”的值。 例如，键入 `db2admin`。
-6. 键入“密码”的值。 例如，键入 `Password1`。
-7. 选择“网关”的值。 例如，选择“datagateway01”。
-8. 选择“创建”继续操作。 
+   添加“插入行”操作后，示例逻辑应用如下所示：
+
+   ![“插入行”操作](./media/connectors-create-api-db2/db2-insert-row-action.png)
+
+1. 指定所有必需属性 (*) 的值。 选择一个表后，该操作会显示特定于该表中的记录的相关属性。 
+
+   本示例的属性如下：
+
+   | 属性 | 必选 | Description | 
+   |----------|----------|-------------| 
+   | **表名称** | 是 | 要将记录添加到的表，例如“AREA” | 
+   | **地区 ID** | 是 | 要添加的地区的 ID，例如“99999” | 
+   | **地区说明** | 是 | 要添加的地区的说明，例如“地区 99999” | 
+   | **区域 ID** | 是 | 要添加的区域的 ID，例如“102” | 
+   |||| 
+
+   例如：
+
+   ![选择表](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
+
+1. 完成后，请在设计器工具栏上选择“保存”。 
+
+### <a name="view-insert-row-outputs"></a>查看“插入行”的输出
+
+若要手动运行逻辑应用，请在设计器工具栏上选择“运行”。 完成运行逻辑应用后，可以查看运行后的输出。
+
+1. 在逻辑应用菜单中，选择“概述”。 
+
+1. 在“运行历史记录”部分中的“摘要”下，选择最近的运行，即列表中的第一项。 
+
+1. 在“逻辑应用运行”下，现在可以查看逻辑应用中每个步骤的状态、输入和输出。 展开“插入行”操作。
+
+1. 若要查看输入，请选择“显示原始输入”。 
+
+1. 若要查看输出，请选择“显示原始输出”。 
+
+   输出包括已添加到指定表中的记录。
    
-    ![](./media/connectors-create-api-db2/Db2connectorOnPremisesDataGatewayConnection.png)
+   ![查看输出和插入的行](./media/connectors-create-api-db2/db2-connector-insert-row-outputs.png)
 
-## <a name="create-the-cloud-connection"></a>创建云连接
-此连接器可访问云 DB2 数据库。 
+## <a name="update-row"></a>更新行
 
-1. 在“网关”配置窗格中，使“复选框”保持禁用（未单击）“通过网关连接”状态。 
-2. 键入“连接名称”的值。 例如，键入 `hisdemo2`。
-3. 以地址或别名冒号端口号的形式键入“DB2 服务器名称”的值。 例如，键入 `hisdemo2.cloudapp.net:50000`。
-4. 键入“DB2 数据库名称”的值。 例如，键入 `nwind`。
-5. 键入“用户名”的值。 例如，键入 `db2admin`。
-6. 键入“密码”的值。 例如，键入 `Password1`。
-7. 选择“创建”继续操作。 
+若要更新 DB2 数据库表中的一条记录，请在逻辑应用中使用“更新行”操作。 此操作运行 DB2 `UPDATE` 语句，例如 `UPDATE AREA SET AREAID = '99999', AREADESC = 'Updated 99999', REGIONID = 102)`。
+
+1. 如果以前从未在逻辑应用中用过 DB2 操作，请查看[添加 DB2 操作 - 获取表](#add-db2-action)部分中的步骤，但应该添加“更新行”操作，然后返回此处以继续。 
+
+   添加“更新行”操作后，示例逻辑应用如下所示：
+
+   ![“更新行”操作](./media/connectors-create-api-db2/db2-update-row-action.png)
+
+1. 指定所有必需属性 (*) 的值。 选择一个表后，该操作会显示特定于该表中的记录的相关属性。 
+
+   本示例的属性如下：
+
+   | 属性 | 必选 | Description | 
+   |----------|----------|-------------| 
+   | **表名称** | 是 | 要在其中更新记录的表，例如“AREA” | 
+   | **行 ID** | 是 | 要更新的记录的 ID，例如“99999” | 
+   | **地区 ID** | 是 | 新地区 ID，例如“99999” | 
+   | **地区说明** | 是 | 新地区说明，例如“已更新 99999” | 
+   | **区域 ID** | 是 | 新区域 ID，例如“102” | 
+   |||| 
+
+   例如：
+
+   ![选择表](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
+
+1. 完成后，请在设计器工具栏上选择“保存”。 
+
+### <a name="view-update-row-outputs"></a>查看“更新行”的输出
+
+若要手动运行逻辑应用，请在设计器工具栏上选择“运行”。 完成运行逻辑应用后，可以查看运行后的输出。
+
+1. 在逻辑应用菜单中，选择“概述”。 
+
+1. 在“运行历史记录”部分中的“摘要”下，选择最近的运行，即列表中的第一项。 
+
+1. 在“逻辑应用运行”下，现在可以查看逻辑应用中每个步骤的状态、输入和输出。 展开“更新行”操作。
+
+1. 若要查看输入，请选择“显示原始输入”。 
+
+1. 若要查看输出，请选择“显示原始输出”。 
+
+   输出包括已在指定表中更新的记录。
    
-    ![](./media/connectors-create-api-db2/Db2connectorCloudConnection.png)
+   ![查看输出和更新的行](./media/connectors-create-api-db2/db2-connector-update-row-outputs.png)
 
-## <a name="fetch-all-rows-using-select"></a>使用 SELECT 获取全部行
-可定义逻辑应用操作，获取 DB2 表中的全部行。 该操作指示连接器处理 DB2 SELECT 语句（如 `SELECT * FROM AREA`）。
+## <a name="delete-row"></a>删除行
 
-### <a name="create-a-logic-app"></a>创建逻辑应用
-1. 在 **Azure 开始面板**中，依次选择“+”（加号）、“Web + 移动”和“逻辑应用”。
-2. 输入“名称”（例如 `Db2getRows`）、“订阅”、“资源组”、“位置”和“应用服务计划”。 选择“固定到仪表板”，并选择“创建”。
+若要删除 DB2 数据库表中的一条记录，请在逻辑应用中使用“删除行”操作。 此操作运行 DB2 `DELETE` 语句，例如 `DELETE FROM AREA WHERE AREAID = '99999'`。
 
-### <a name="add-a-trigger-and-action"></a>添加触发器和操作
-1. 在“逻辑应用设计器”中的“模板”列表中，选择“空白逻辑应用”。
-2. 在“触发器”列表中，选择“定期”。 
-3. 在“定期”触发器中，选择“编辑”，再选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。 
-4. 选择“+ 新步骤”框，并选择“添加操作”。
-5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 `db2`，并选择“DB2 - 获取行(预览)”。
-6. 在“获取行(预览)”操作中，选择“更改连接”。
-7. 在“连接”配置窗格中，选择“新建”。 
+1. 如果以前从未在逻辑应用中用过 DB2 操作，请查看[添加 DB2 操作 - 获取表](#add-db2-action)部分中的步骤，但应该添加“删除行”操作，然后返回此处以继续。 
+
+   添加“删除行”操作后，示例逻辑应用如下所示：
+
+   ![“删除行”操作](./media/connectors-create-api-db2/db2-delete-row-action.png)
+
+1. 指定所有必需属性 (*) 的值。 选择一个表后，该操作会显示特定于该表中的记录的相关属性。 
+
+   本示例的属性如下：
+
+   | 属性 | 必选 | Description | 
+   |----------|----------|-------------| 
+   | **表名称** | 是 | 要在其中删除记录的表，例如“AREA” | 
+   | **行 ID** | 是 | 要删除的记录的 ID，例如“99999” | 
+   |||| 
+
+   例如：
+
+   ![选择表](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
+
+1. 完成后，请在设计器工具栏上选择“保存”。 
+
+### <a name="view-delete-row-outputs"></a>查看“删除行”的输出
+
+若要手动运行逻辑应用，请在设计器工具栏上选择“运行”。 完成运行逻辑应用后，可以查看运行后的输出。
+
+1. 在逻辑应用菜单中，选择“概述”。 
+
+1. 在“运行历史记录”部分中的“摘要”下，选择最近的运行，即列表中的第一项。 
+
+1. 在“逻辑应用运行”下，现在可以查看逻辑应用中每个步骤的状态、输入和输出。 展开“删除行”操作。
+
+1. 若要查看输入，请选择“显示原始输入”。 
+
+1. 若要查看输出，请选择“显示原始输出”。 
+
+   输出不再包括已从指定表中删除的记录。
    
-    ![](./media/connectors-create-api-db2/Db2connectorNewConnection.png)
-8. 在“网关”配置窗格中，使“复选框”保持禁用（未单击）“通过网关连接”状态。
-   
-   * 键入“连接名称”的值。 例如，键入 `HISDEMO2`。
-   * 以地址或别名冒号端口号的形式键入“DB2 服务器名称”的值。 例如，键入 `HISDEMO2.cloudapp.net:50000`。
-   * 键入“DB2 数据库名称”的值。 例如，键入 `NWIND`。
-   * 键入“用户名”的值。 例如，键入 `db2admin`。
-   * 键入“密码”的值。 例如，键入 `Password1`。
-9. 选择“创建”继续操作。
-   
-    ![](./media/connectors-create-api-db2/Db2connectorCloudConnection.png)
-10. 在“表单名称”列表中，选择“下拉箭头”，并选择“AREA”。
-11. 可以选择“显示高级选项”指定查询选项。
-12. 选择“保存”。 
-    
-    ![](./media/connectors-create-api-db2/Db2connectorGetRowsTableName.png)
-13. 在“Db2getRows”边栏选项卡中，在“摘要”下面的“所有运行”列表中，选择第一个列出项（最近运行）。
-14. 在“逻辑应用运行”边栏选项卡中，选择“运行详细信息”。 在“操作”列表内，选择“Get_rows”。 设置“状态”的值，该值应为 **Succeeded**。 选择“输入链接”查看输入。 选择“输出链接”并查看输出；其中应包括行列表。
-    
-    ![](./media/connectors-create-api-db2/Db2connectorGetRowsOutputs.png)
+   ![查看不包括已删除行的输出](./media/connectors-create-api-db2/db2-connector-delete-row-outputs.png)
 
-## <a name="add-one-row-using-insert"></a>使用 INSERT 添加一行
-可定义逻辑应用操作，在 DB2 表中添加一行。 该操作指示连接器处理 DB2 INSERT 语句（如 `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`）。
+## <a name="connector-reference"></a>连接器参考
 
-### <a name="create-a-logic-app"></a>创建逻辑应用
-1. 在 **Azure 开始面板**中，依次选择“+”（加号）、“Web + 移动”和“逻辑应用”。
-2. 输入“名称”（例如 `Db2insertRow`）、“订阅”、“资源组”、“位置”和“应用服务计划”。 选择“固定到仪表板”，并选择“创建”。
+如需技术详细信息（例如触发器、操作和限制，如连接器的 Swagger 文件所述），请查看[连接器的参考页](/connectors/db2/)。 
 
-### <a name="add-a-trigger-and-action"></a>添加触发器和操作
-1. 在“逻辑应用设计器”中的“模板”列表中，选择“空白逻辑应用”。
-2. 在“触发器”列表中，选择“定期”。 
-3. 在“定期”触发器中，选择“编辑”，再选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。 
-4. 选择“+ 新步骤”框，并选择“添加操作”。
-5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 **db2**，并选择“DB2 - 插入行(预览)”。
-6. 在“DB2 - 插入行(预览)”操作中，选择“更改连接”。 
-7. 在“连接”配置窗格中，选择一个连接。 例如，选择“hisdemo2”。
-   
-    ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
-8. 在“表单名称”列表中，选择“下拉箭头”，并选择“AREA”。
-9. 输入所有所需列的值（查看红色星号）。 例如，键入“AREAID”的 `99999`、键入 `Area 99999` 并键入“REGIONID”的 `102`。 
-10. 选择“保存”。
-    
-    ![](./media/connectors-create-api-db2/Db2connectorInsertRowValues.png)
-11. 在“Db2insertRow”边栏选项卡中，在“摘要”下面的“所有运行”列表中，选择第一个列出项（最近运行）。
-12. 在“逻辑应用运行”边栏选项卡中，选择“运行详细信息”。 在“操作”列表内，选择“Get_rows”。 设置“状态”的值，该值应为 **Succeeded**。 选择“输入链接”查看输入。 选择“输出链接”并查看输出；其中应包括新行。
-    
-    ![](./media/connectors-create-api-db2/Db2connectorInsertRowOutputs.png)
+## <a name="get-support"></a>获取支持
 
-## <a name="fetch-one-row-using-select"></a>使用 SELECT 获取一行
-可定义逻辑应用操作，在 DB2 表中获取一行。 该操作指示连接器处理 DB2 SELECT WHERE 语句（如 `SELECT FROM AREA WHERE AREAID = '99999'`）。
-
-### <a name="create-a-logic-app"></a>创建逻辑应用
-1. 在 **Azure 开始面板**中，依次选择“+”（加号）、“Web + 移动”和“逻辑应用”。
-2. 输入“名称”（例如“**Db2getRow**”）、“订阅”、“资源组”、“位置”和“应用服务计划”。 选择“固定到仪表板”，并选择“创建”。
-
-### <a name="add-a-trigger-and-action"></a>添加触发器和操作
-1. 在“逻辑应用设计器”中的“模板”列表中，选择“空白逻辑应用”。 
-2. 在“触发器”列表中，选择“定期”。 
-3. 在“定期”触发器中，选择“编辑”，再选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。 
-4. 选择“+ 新步骤”框，并选择“添加操作”。
-5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 **db2**，并选择“DB2 - 获取行(预览)”。
-6. 在“获取行(预览)”操作中，选择“更改连接”。 
-7. 在“连接”配置窗格中，选择一个现有连接。 例如，选择“hisdemo2”。
-   
-    ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
-8. 在“表单名称”列表中，选择“下拉箭头”，并选择“AREA”。
-9. 输入所有所需列的值（查看红色星号）。 例如，键入“AREAID”的 `99999`。 
-10. 可以选择“显示高级选项”指定查询选项。
-11. 选择“保存”。 
-    
-    ![](./media/connectors-create-api-db2/Db2connectorGetRowValues.png)
-12. 在“Db2getRow”边栏选项卡中，在“摘要”下面的“所有运行”列表中，选择第一个列出项（最近运行）。
-13. 在“逻辑应用运行”边栏选项卡中，选择“运行详细信息”。 在“操作”列表内，选择“Get_rows”。 设置“状态”的值，该值应为 **Succeeded**。 选择“输入链接”查看输入。 选择“输出链接”并查看输出；其中应包括行。
-    
-    ![](./media/connectors-create-api-db2/Db2connectorGetRowOutputs.png)
-
-## <a name="change-one-row-using-update"></a>使用 UPDATE 更改一行
-可定义逻辑应用操作，在 DB2 表中更改一行。 该操作指示连接器处理 DB2 UPDATE 语句（如 `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`）。
-
-### <a name="create-a-logic-app"></a>创建逻辑应用
-1. 在 **Azure 开始面板**中，依次选择“+”（加号）、“Web + 移动”和“逻辑应用”。
-2. 输入“名称”（例如 `Db2updateRow`）、“订阅”、“资源组”、“位置”和“应用服务计划”。 选择“固定到仪表板”，并选择“创建”。
-
-### <a name="add-a-trigger-and-action"></a>添加触发器和操作
-1. 在“逻辑应用设计器”中的“模板”列表中，选择“空白逻辑应用”。
-2. 在“触发器”列表中，选择“定期”。 
-3. 在“定期”触发器中，选择“编辑”，再选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。 
-4. 选择“+ 新步骤”框，并选择“添加操作”。
-5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 **db2**，并选择“DB2 - 更新行(预览)”。
-6. 在“DB2 - 更新行(预览)”操作中，选择“更改连接”。 
-7. 在“连接”配置窗格中，选择一个现有连接。 例如，选择“hisdemo2”。
-   
-    ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
-8. 在“表单名称”列表中，选择“下拉箭头”，并选择“AREA”。
-9. 输入所有所需列的值（查看红色星号）。 例如，键入“AREAID”的 `99999`、键入 `Updated 99999` 并键入“REGIONID”的 `102`。 
-10. 选择“保存”。 
-    
-    ![](./media/connectors-create-api-db2/Db2connectorUpdateRowValues.png)
-11. 在“Db2updateRow”边栏选项卡中，在“摘要”下面的“所有运行”列表中，选择第一个列出项（最近运行）。
-12. 在“逻辑应用运行”边栏选项卡中，选择“运行详细信息”。 在“操作”列表内，选择“Get_rows”。 设置“状态”的值，该值应为 **Succeeded**。 选择“输入链接”查看输入。 选择“输出链接”并查看输出；其中应包括新行。
-    
-    ![](./media/connectors-create-api-db2/Db2connectorUpdateRowOutputs.png)
-
-## <a name="remove-one-row-using-delete"></a>使用 DELETE 删除一行
-可定义逻辑应用操作，在 DB2 表中删除一行。 该操作指示连接器处理 DB2 DELETE 语句（如 `DELETE FROM AREA WHERE AREAID = '99999'`）。
-
-### <a name="create-a-logic-app"></a>创建逻辑应用
-1. 在 **Azure 开始面板**中，依次选择“+”（加号）、“Web + 移动”和“逻辑应用”。
-2. 输入“名称”（例如 `Db2deleteRow`）、“订阅”、“资源组”、“位置”和“应用服务计划”。 选择“固定到仪表板”，并选择“创建”。
-
-### <a name="add-a-trigger-and-action"></a>添加触发器和操作
-1. 在“逻辑应用设计器”中的“模板”列表中，选择“空白逻辑应用”。 
-2. 在“触发器”列表中，选择“定期”。 
-3. 在“定期”触发器中，选择“编辑”，再选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。 
-4. 选择“+ 新步骤”框，并选择“添加操作”。
-5. 在“操作”列表中，在“搜索更多操作”编辑框中选择 **db2**，并选择“DB2 - 删除行(预览)”。
-6. 在“DB2 - 删除行(预览)”操作中，选择“更改连接”。 
-7. 在“连接”配置窗格中，选择一个现有连接。 例如，选择“hisdemo2”。
-   
-    ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
-8. 在“表单名称”列表中，选择“下拉箭头”，并选择“AREA”。
-9. 输入所有所需列的值（查看红色星号）。 例如，键入“AREAID”的 `99999`。 
-10. 选择“保存”。 
-    
-    ![](./media/connectors-create-api-db2/Db2connectorDeleteRowValues.png)
-11. 在“Db2deleteRow”边栏选项卡中，在“摘要”下面的“所有运行”列表中，选择第一个列出项（最近运行）。
-12. 在“逻辑应用运行”边栏选项卡中，选择“运行详细信息”。 在“操作”列表内，选择“Get_rows”。 设置“状态”的值，该值应为 **Succeeded**。 选择“输入链接”查看输入。 选择“输出链接”并查看输出；其中应包括删除的行。
-    
-    ![](./media/connectors-create-api-db2/Db2connectorDeleteRowOutputs.png)
-
-## <a name="supported-db2-platforms-and-versions"></a>支持的 DB2 平台和版本
-此连接器支持以下 IBM DB2 平台和版本，以及支持分布式关系数据库结构 (DRDA) SQL 访问管理器 (SQLAM) 版本 10 和 11 的 IBM DB2 兼容产品（例如 IBM Bluemix dashDB）：
-
-* IBM DB2 for z/OS 11.1
-* IBM DB2 for z/OS 10.1
-* IBM DB2 for i 7.3
-* IBM DB2 for i 7.2
-* IBM DB2 for i 7.1
-* IBM DB2 for LUW 11
-* IBM DB2 for LUW 10.5
-
-## <a name="connector-specific-details"></a>特定于连接器的详细信息
-
-在[连接器详细信息](/connectors/db2/)中查看在 Swagger 中定义的触发器和操作，并查看限制。 
+* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](http://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 在我们的 [API 列表](apis-list.md)中了解逻辑应用中的其他可用连接器。
 
+* 了解其他[逻辑应用连接器](../connectors/apis-list.md)

@@ -2,170 +2,198 @@
 title: 连接到 Dynamics 365 - Azure 逻辑应用 | Microsoft Docs
 description: 使用 Dynamics 365（联机）REST API 和 Azure 逻辑应用创建和管理记录
 author: Mattp123
-manager: jeconnoc
 ms.author: matp
-ms.date: 02/10/2017
-ms.topic: article
 ms.service: logic-apps
 services: logic-apps
-ms.reviewer: klam, LADocs
+ms.reviewer: estfan, LADocs
 ms.suite: integration
+ms.topic: article
+ms.date: 08/18/2018
 tags: connectors
-ms.openlocfilehash: 6ac45d45ed1df0e89eb27657a064a8c95ad4be79
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: b1ff93f1e03e047ad5ac00259c1aa53afda0c76d
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294837"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818934"
 ---
-# <a name="connect-to-dynamics-365-from-logic-app-workflows"></a>从逻辑应用工作流连接到 Dynamics 365
+# <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Dynamics 365 记录
 
-通过逻辑应用，可以连接到 Dynamics 365（联机），并可以创建有用的业务流，用于创建记录、更新项或返回记录列表。 借助 Dynamics 365 连接器，可以：
+使用 Azure 逻辑应用和 Dynamics 365 连接器，可以基于 Dynamics 365 中的记录创建自动化的任务和工作流。 工作流可在 Dynamics 365 帐户中创建记录、更新项、返回记录以及执行其他操作。 可在逻辑应用中包含操作，用于从 Dynamics 365 获取响应，并使输出可供其他操作使用。 例如，在 Dynamics 365 中更新项后，可以使用 Office 365 发送一封电子邮件。
 
-* 根据从 Dynamics 365（联机）中获取的数据生成业务流。
-* 使用可获得响应的操作，并使输出可用于其他操作。 例如，在 Dynamics 365（联机）中更新项后，可以使用 Office 365 发送一封电子邮件。
-
-本主题介绍如何创建逻辑应用，每当在 Dynamics 365 中创建一个新潜在客户时，逻辑应用会在 Dynamics 365 中创建任务。
+本文介绍如何生成一个逻辑应用，每当在 Dynamics 365 中创建新的潜在顾客记录时，该逻辑应用就会在 Dynamics 365 中创建一个任务。
+如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)。
 
 ## <a name="prerequisites"></a>先决条件
-* 一个 Azure 帐户。
-* 一个 Dynamics 365（联机）帐户。
 
-## <a name="create-a-task-when-a-new-lead-is-created-in-dynamics-365"></a>在 Dynamics 365 中创建一个新潜在客户时创建任务
+* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
 
-1.  [登录 Azure](https://portal.azure.com)。
+* 一个 [Dynamics 365 帐户](https://dynamics.microsoft.com)
 
-2.  在 Azure 搜索框中，键入“`Logic apps`”，并按 Enter。
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
-      ![查找逻辑应用](./media/connectors-create-api-crmonline/find-logic-apps.png)
+* 要在其中访问 Dynamics 365 帐户的逻辑应用。 若要通过 Dynamics 365 触发器启动逻辑应用，需要一个[空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 
 
-3.  在“逻辑应用”下，单击“添加”。
+## <a name="add-dynamics-365-trigger"></a>添加 Dynamics 365 触发器
 
-      ![添加逻辑应用](./media/connectors-create-api-crmonline/add-logic-app.png)
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-4.  要创建逻辑应用，完成“名称”、“订阅”、“资源组”和“位置”字段，并单击“创建”。
+首先添加一个 Dynamics 365 触发器，当 Dynamics 365 中出现新的潜在顾客记录时，该触发器将会激发。
 
-5.  选择新的逻辑应用。 收到“部署成功”通知后，请单击“刷新”。
+1. 在 [Azure 门户](https://portal.azure.com)上的逻辑应用设计器中打开空白逻辑应用（如果尚未打开）。
 
-6.  在“开发工具”下，单击“逻辑应用设计器”。 在模板列表中，单击“空白逻辑应用”。
+1. 在搜索框中，输入“Dynamics 365”作为筛选器。 对于本示例，请在触发器列表中选择以下触发器：“创建记录时”
 
-7.  在搜索框中，键入“`Dynamics 365`”。 从 Dynamics 365 触发器列表中选择“Dynamics 365 – 创建记录时”。
+   ![选择触发器](./media/connectors-create-api-crmonline/select-dynamics-365-trigger.png)
 
-8.  如果系统提示登录 Dynamics 365，请立即登录。
+1. 如果系统提示登录到 Dynamics 365，请立即登录。
 
-9.  在触发器详细信息中，输入以下信息：
+1. 提供以下触发器详细信息：
 
-  * **组织名称**。 选择要让逻辑应用侦听的 Dynamics 365 实例。
+   | 属性 | 必选 | Description | 
+   |----------|----------|-------------| 
+   | **组织名称** | 是 | 要监视的组织 Dynamics 365 实例的名称，例如“Contoso” |
+   | **实体名称** | 是 | 要监视的实体的名称，例如“Leads” | 
+   | **频率** | 是 | 检查触发器相关的更新时，对时间间隔使用的时间单位 |
+   | 间隔 | 是 | 下一次检查之前所要经过的秒数、分钟数、小时数、天数、周数或月数。 |
+   ||| 
 
-  * **实体名称**。 选择要侦听的实体。 此事件充当触发器，用于启动逻辑应用。 
-  本演练中选择“潜在客户”。
+   ![触发器详细信息](./media/connectors-create-api-crmonline/trigger-details.png)
 
-  * **你想多久检查一次项？** 这些值设置逻辑应用检查触发器相关更新的频率。 默认设置为每 3 分钟检查一次更新。
+## <a name="add-dynamics-365-action"></a>添加 Dynamics 365 操作
 
-    * **频率**。 选择秒、分钟、小时或天。
+现在添加 Dynamics 365 操作，用于创建新潜在顾客记录的任务记录。
 
-    * **时间间隔**。 输入在下次检查前的秒数、分钟数、小时数或天数。
+1. 在触发器下，选择“新建步骤”。
 
-      ![逻辑应用触发器详细信息](./media/connectors-create-api-crmonline/trigger-details.png)
+1. 在搜索框中，输入“Dynamics 365”作为筛选器。 在操作列表中选择以下操作：“创建新记录”
 
-10. 单击“新建步骤”，并单击“添加操作”。
+   ![选择操作](./media/connectors-create-api-crmonline/select-action.png)
 
-11. 在搜索框中，键入“`Dynamics 365`”。 从操作列表中选择“Dynamics 365 – 创建新记录”。
+1. 提供以下操作详细信息：
 
-12. 输入以下信息：
+   | 属性 | 必选 | Description | 
+   |----------|----------|-------------| 
+   | **组织名称** | 是 | 要在其中创建记录的 Dynamics 365 实例，不一定是触发器中的同一实例；在本示例中为“Contoso” |
+   | **实体名称** | 是 | 要在其中创建记录的实体，例如“Tasks” | 
+   | | |
 
-    * **组织名称**。 选择要让流在其中创建记录的 Dynamics 365 实例。 
-    请注意，此实例可与从中触发事件的实例不同。
+   ![操作详细信息](./media/connectors-create-api-crmonline/action-details.png)
 
-    * **实体名称**。 选择在触发事件时要创建记录的实体。 
-    本演练将选择“任务”。
+1. 操作中显示“主题”框后，请在“主题”框中单击，以显示动态内容列表。 在此列表中，选择要包含在与新潜在顾客记录关联的任务记录中的字段值：
 
-13. 单击显示的“使用者”框。 从显示的动态内容列表中选择以下任一字段：
+   | 字段 | Description | 
+   |-------|-------------| 
+   | **姓氏** | 记录中的潜在顾客（主要联系人）的姓氏 |
+   | **主题** | 记录中的潜在顾客的描述性名称 | 
+   | | | 
 
-    * **姓氏**。 创建任务记录后，选择此字段会将潜在客户的姓氏插入到任务的“使用者”字段中。
-    * **主题**。 创建任务记录后，选择此字段会将潜在客户的“主题”字段插入到任务的“使用者”字段中。 
-    单击“主题”以将其添加到“使用者”框。
+   ![任务记录详细信息](./media/connectors-create-api-crmonline/create-record-details.png)
 
-      ![逻辑应用创建新记录详细信息](./media/connectors-create-api-crmonline/create-record-details.png)
+1. 在设计器工具栏上，选择逻辑应用旁边的“保存”。 
 
-14. 在“逻辑应用设计器”工具栏上，单击“保存”。
+1. 若要手动启动逻辑应用，请在设计器工具栏上选择“运行”。
 
-    ![“逻辑应用设计器”工具栏的“保存”按钮](./media/connectors-create-api-crmonline/designer-toolbar-save.png)
+   ![运行逻辑应用](./media/connectors-create-api-crmonline/designer-toolbar-run.png)
 
-15. 若要启动逻辑应用，请单击“运行”。
+1. 现在，请在 Dynamics 365 中创建潜在顾客记录，以便可以触发逻辑应用的工作流。
 
-    ![“逻辑应用设计器”工具栏的“保存”按钮](./media/connectors-create-api-crmonline/designer-toolbar-run.png)
+## <a name="add-filter-or-query"></a>添加筛选器或查询
 
-16. 立即在 Dynamics 365 for Sales 中创建潜在客户记录并查看正在运行的流！
+若要指定如何在 Dynamics 365 操作中筛选数据，请在该操作中选择“显示高级选项”。 然后可以添加筛选器，或按查询排序。
+例如，可以使用筛选器查询来只获取活动帐户，并按帐户名将这些记录排序。 对于此任务，请执行以下步骤：
 
-## <a name="set-advanced-options-for-a-logic-app-step"></a>设置逻辑应用步骤的高级选项
+1. 在“筛选器查询”下，输入以下 OData 筛选器查询：`statuscode eq 1`
 
-要指定如何在逻辑应用步骤中筛选数据，单击该步骤中的“显示高级选项”，并添加筛选查询或顺序查询。
+2. 显示动态内容列表时，请在“排序依据”下选择“帐户名”。 
 
-例如，可以使用筛选查询只获取活动帐户并按帐户名称排序。 要执行此任务，请输入 OData 筛选查询 `statuscode eq 1`，并从动态内容列表选择“帐户名称”。 详细信息：[MSDN：$filter](https://msdn.microsoft.com/library/gg309461.aspx#Anchor_1) 和 [$orderby](https://msdn.microsoft.com/library/gg309461.aspx#Anchor_2)。
+   ![指定筛选器和顺序](./media/connectors-create-api-crmonline/advanced-options.png)
 
-![逻辑应用高级选项](./media/connectors-create-api-crmonline/advanced-options.png)
+有关详细信息，请参阅以下 Dynamics 365 客户参与 Web API 的系统查询选项： 
 
-### <a name="best-practices-when-using-advanced-options"></a>使用高级选项的最佳做法
+* [$filter](https://docs.microsoft.com/dynamics365/customer-engagement/developer/webapi/query-data-web-api#filter-results)
+* [$orderby](https://docs.microsoft.com/dynamics365/customer-engagement/developer/webapi/query-data-web-api#order-results)
 
-向字段添加值时，无论是键入一个值还是从动态内容列表中选择一个值，该值都必须与字段类型匹配。
+### <a name="best-practices-for-advanced-options"></a>高级选项的最佳做法
 
-字段类型  |如何使用  |查找位置  |名称  |数据类型  
----------|---------|---------|---------|---------
-文本字段|文本字段需要单个文本行或类型为文本字段的动态内容。 示例包括“类别”和“子类别”字段。|“设置”>“自定义”>“自定义系统”>“实体”>“任务”>“字段” |category |单个文本行        
-整数字段 | 有些字段需要整数或类型为整数字段的动态内容。 示例包括“完成百分比”和“持续时间”。 |“设置”>“自定义”>“自定义系统”>“实体”>“任务”>“字段” |完成百分比 |整数         
-数据字段 | 有些字段需要输入格式为 mm/dd/yyyy 的数据或类型为数据字段的动态内容。 示例包括“创建时间”、“开始日期”、“实际开始时间”、“上一暂候时间”、“实际结束时间”和“截止日期”。 | “设置”>“自定义”>“自定义系统”>“实体”>“任务”>“字段” |创建时间 |日期和时间
-需要记录 ID 和查找类型的字段 |一些引用另一实体记录的字段需要记录 ID 和查找类型。 |“设置”>“自定义”>“自定义系统”>“实体”>“帐户”>“字段”  | 帐户 ID  | 主密钥
+为操作或触发器中的字段指定值时，不管是手动输入值，还是从动态内容列表中选择值，该值的数据类型都必须与字段类型相匹配。
 
-### <a name="more-examples-of-fields-that-require-both-a-record-id-and-lookup-type"></a>需要记录 ID 和查找类型的字段的更多示例
-以下是未使用从动态内容列表选择的值的字段的更多示例，进一步介绍了上表的内容。 相反，这些字段需要在 PowerApps 的字段中输入的记录 ID 和查找类型。  
-* 所有者和所有者类型。 “所有者”字段必须是有效的用户或团队记录 ID。 “所有者类型”必须是“系统用户”或“团队”。
-* 客户和客户类型。 “客户”字段必须是有效的帐户或联系人记录 ID。 “客户类型”必须是“帐户”或“联系人”。
-* 相关和相关类型。 “相关”字段必须是有效的记录 ID，如帐户或联系人记录 ID。 “相关类型”必须是记录的查找类型，如“帐户”或“联系人”。
+下表描述了一些字段类型及其值的所需数据类型。
 
-下面的任务创建操作示例添加了一个帐户记录，该记录与将其添加到任务相关字段的记录 ID 相对应。
+| 字段类型 | 所需数据类型 | Description | 
+|------------|--------------------|-------------|
+| 文本字段 | 单个文本行 | 这些字段需要单行文本，或者文本类型的动态内容。 <p><p>示例字段：“说明”和“类别” | 
+| 整数字段 | 整数 | 某些字段需要整数，或者整数类型的动态内容。 <p><p>示例字段：“完成百分比”和“持续时间” | 
+| 数据字段 | 日期和时间 | 某些字段需要 mm/dd/yyyy 格式的日期，或者日期类型的动态内容。 <p><p>示例字段：“创建日期”、“开始日期”、“实际开始日期”、“实际结束日期”和“截止日期” | 
+| 需要记录 ID 和查找类型的字段 | 主密钥 | 某些引用另一实体记录的字段需要记录 ID 和查找类型。 | 
+||||
 
-![流记录 ID 和类型帐户](./media/connectors-create-api-crmonline/recordid-type-account.png)
+下面是 Dynamics 365 触发器和操作中的一些示例字段，它们在上述字段类型的基础上有所延伸，需要记录 ID 和查找类型。 此项要求意味着，从动态列表中选择的值不起作用。 
 
-此示例还根据用户的记录 ID 将任务分配给指定用户。
+| 字段 | Description | 
+|-------|-------------|
+| **所有者** | 必须是有效的用户 ID 或团队记录 ID。 | 
+| **所有者类型** | 必须是 **systemusers** 或 **teams**。 | 
+| **相关** | 必须是有效的记录 ID，例如帐户 ID 或联系人记录 ID。 | 
+| **相关类型** | 必须是查找类型，例如 **accounts** 或 **contacts**。 | 
+| **客户** | 必须是有效的记录 ID，例如帐户 ID 或联系人记录 ID。 | 
+| **客户类型** | 必须是查找类型，例如 **accounts** 或 **contacts**。 | 
+|||
 
-![流记录 ID 和类型帐户](./media/connectors-create-api-crmonline/recordid-type-user.png)
+在本示例中，名为“创建新记录”的操作将创建新的任务记录： 
 
-若要查找记录 ID，请参阅以下部分：查找记录 ID
+![创建具有记录 ID 和查找类型的任务记录](./media/connectors-create-api-crmonline/create-record-advanced.png)
 
-## <a name="find-the-record-id"></a>查找记录 ID
+此操作基于“所有者”字段中的记录 ID 以及“所有者类型”字段中的查找类型，将任务记录分配到特定的用户 ID 或团队记录 ID：
 
-1. 打开一个记录，如帐户记录。
+![所有者记录 ID 和查找类型](./media/connectors-create-api-crmonline/owner-record-id-and-lookup-type.png)
 
-2. 在操作工具栏上，单击“弹出”![弹出记录](./media/connectors-create-api-crmonline/popout-record.png)。
-或者，在操作工具栏上，单击“通过电子邮件发送链接”，将完整 URL 复制到默认电子邮件程序。
+此操作还会添加与“相关”字段中的记录 ID 以及“相关类型”字段中的查找类型相关联的帐户记录： 
 
-   记录 ID 会显示在 URL 的 %7b 和 %7d 编码字符之间。
+![相关记录 ID 和查找类型](./media/connectors-create-api-crmonline/regarding-record-id-lookup-type-account.png)
 
-   ![流记录 ID 和类型帐户](./media/connectors-create-api-crmonline/recordid.png)
+## <a name="find-record-id"></a>查找记录 ID
 
-## <a name="troubleshooting"></a>故障排除
-若要解决逻辑应用中的失败步骤，请查看事件状态的详细信息。
+若要查找记录 ID，请执行以下步骤： 
 
-1. 在“逻辑应用”下，选择你的逻辑应用，并单击“概述”。 
+1. 在 Dynamics 365 中打开一条记录，例如帐户记录。
 
-   显示“摘要”区域，该区域会提供逻辑应用的运行状态。 
+2. 在操作工具栏上选择以下步骤之一：
 
-   ![逻辑应用运行状态](./media/connectors-create-api-crmonline/tshoot1.png)
+   * 选择“弹出”。![弹出记录](./media/connectors-create-api-crmonline/popout-record.png) 
+   * 选择“通过电子邮件发送链接”，以便将完整的 URL 复制到默认的电子邮件程序中。
 
-2. 若要查看任何有关失败的运行的详细信息，请单击失败事件。 若要展开失败的步骤，请单击该步骤。
+   记录 ID 显示在 URL 中的 `%7b` 与 `%7d` 编码字符之间：
 
-   ![展开失败的步骤](./media/connectors-create-api-crmonline/tshoot2.png)
+   ![查找记录 ID](./media/connectors-create-api-crmonline/find-record-ID.png)
 
-   显示步骤的详细信息，这些信息有助于找到失败的原因。
+## <a name="troubleshoot-failed-runs"></a>排查运行失败的问题
 
-   ![失败步骤的详细信息](./media/connectors-create-api-crmonline/tshoot3.png)
+若要查找并检查逻辑应用中失败的步骤，可以查看逻辑应用的运行历史记录、状态、输入、输出等等。
+
+1. 在 Azure 门户上的逻辑应用主菜单中，选择“概述”。 在显示了逻辑应用的所有运行状态的“运行历史记录”部分，选择一个失败的运行以查看详细信息。
+
+   ![逻辑应用运行状态](./media/connectors-create-api-crmonline/run-history.png)
+
+1. 展开失败的步骤，以便查看更多详细信息。 
+
+   ![展开失败的步骤](./media/connectors-create-api-crmonline/expand-failed-step.png)
+
+1. 查看步骤详细信息，例如输入和输出，以帮助找出失败的原因。
+
+   ![失败的步骤 - 输入和输出](./media/connectors-create-api-crmonline/expand-failed-step-inputs-outputs.png)
 
 若要深入了解如何解决逻辑应用的故障，请参阅[诊断逻辑应用的故障](../logic-apps/logic-apps-diagnosing-failures.md)。
 
-## <a name="connector-specific-details"></a>特定于连接器的详细信息
+## <a name="connector-reference"></a>连接器参考
 
-在[连接器详细信息](/connectors/crm/)中查看在 Swagger 中定义的触发器和操作，并查看限制。 
+如需技术详细信息（例如触发器、操作和限制，如连接器的 Swagger 文件所述），请查看[连接器的参考页](/connectors/crm/)。 
+
+## <a name="get-support"></a>获取支持
+
+* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](http://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤
-在我们的 [API 列表](apis-list.md)中了解逻辑应用中的其他可用连接器。
+
+* 了解其他[逻辑应用连接器](../connectors/apis-list.md)

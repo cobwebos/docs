@@ -1,125 +1,141 @@
 ---
-title: 使用 Azure 服务总线为 Azure 逻辑应用设置消息传送 | Microsoft Docs
-description: 通过逻辑应用使用 Azure 服务总线发送和接收消息
+title: 使用 Azure 服务总线发送和接收消息 - Azure 逻辑应用 | Microsoft Docs
+description: 在 Azure 逻辑应用中使用 Azure 服务总线设置企业云消息传送
 services: logic-apps
-documentationcenter: ''
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: d6d14f5f-2126-4e33-808e-41de08e6721f
 ms.service: logic-apps
-ms.devlang: multiple
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: d6d14f5f-2126-4e33-808e-41de08e6721f
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: logic-apps
-ms.date: 02/06/2018
-ms.author: ladocs
-ms.openlocfilehash: aa6ab10dded541b352bdb7c8c3a47dbbbfe6a15c
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+tags: connectors
+ms.date: 08/25/2018
+ms.openlocfilehash: 813df5b4ef37ad1264df48863aa8f0ed5a4d4789
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295462"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048768"
 ---
-# <a name="send-and-receive-messages-with-the-azure-service-bus-connector"></a>使用 Azure 服务总线连接器发送和接收消息
+# <a name="exchange-messages-in-the-cloud-with-azure-service-bus-and-azure-logic-apps"></a>使用 Azure 服务总线和 Azure 逻辑应用在云中交换消息
 
-要通过逻辑应用发送和接收消息，请连接到 [Azure 服务总线](https://azure.microsoft.com/services/service-bus/)。 你可以执行发送到队列、发送到主题、从队列接收和从订阅接收等操作。 详细了解 [Azure 服务总线](../service-bus-messaging/service-bus-messaging-overview.md)以及[逻辑应用触发器的定价机制](../logic-apps/logic-apps-pricing.md)。
+使用 Azure 逻辑应用和 Azure 服务总线连接器，可以创建自动化的任务和工作流用于传输数据，例如，销售和采购订单、日记帐，以及组织应用之间的库存转移信息。 连接器不仅会监视、发送和管理消息，而且还能对队列、会话、主题、订阅等执行操作，例如：
+
+* 监视消息何时抵达（自动完成），或者在队列、主题和主题订阅中接收（扫视-锁定）。 
+* 发送消息。
+* 创建和删除主题订阅。
+* 管理队列和主题订阅中的消息，例如，获取、获取延期消息、完成、延期、丢弃和加入死信。
+* 续订队列和主题订阅中的消息和会话上的锁。
+* 关闭队列和主题中的会话。
+
+可以使用触发器从服务总线获取响应，并使输出可供逻辑应用中的其他操作使用。 还可以让其他操作使用服务总线操作的输出。 如果你不太熟悉服务总线和逻辑应用，请查看[什么是 Azure 服务总线？](../service-bus-messaging/service-bus-messaging-overview.md) 和[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-必须具有下列项，然后才能使用服务总线连接器，这些项必须存在于同一 Azure 订阅中以便它们可以发现彼此：
+* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
 
-* [服务总线命名空间和消息传送实体，例如队列](../service-bus-messaging/service-bus-create-namespace-portal.md)
-* [逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* 服务总线命名空间和消息传送实体，例如队列。 如果没有这些项，请了解如何[创建服务总线命名空间和队列](../service-bus-messaging/service-bus-create-namespace-portal.md)。 
+
+  这些项必须位于使用它们的逻辑应用所在的同一 Azure 订阅中。
+
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
+
+* 要在其中使用服务总线的逻辑应用。 逻辑应用必须位于服务总线所在的同一 Azure 订阅中。 若要从服务总线触发器开始，请[创建空白的逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用服务总线操作，请使用另一个触发器（例如“重复”触发器）启动逻辑应用。
 
 <a name="permissions-connection-string"></a>
 
-## <a name="connect-to-azure-service-bus"></a>连接到 Azure 服务总线
+## <a name="check-permissions"></a>检查权限
 
-要使逻辑应用能够访问某个服务，必须在逻辑应用与该服务之间创建[连接](./connectors-overview.md)（如果尚未创建）。 该连接授权逻辑应用访问数据。 要使逻辑应用能够访问服务总线帐户，请检查你的权限。
+确认逻辑应用有权访问服务总线命名空间。 
 
-1. 登录 [Azure 门户](https://portal.azure.com "Azure portal")。 
+1. 登录到 [Azure 门户](https://portal.azure.com)。 
 
-2. 转到你的服务总线“命名空间”，而非特定的“消息传送实体”。 在命名空间页上，在“设置”下，选择“共享访问策略”。 在“声明”下，检查你是否有该命名空间的“管理”权限。
+2. 转到服务总线的命名空间。 在命名空间页上的“设置”下，选择“共享访问策略”。 在“声明”下，检查你是否对该命名空间拥有“管理”权限。
 
    ![管理服务总线命名空间的权限](./media/connectors-create-api-azure-service-bus/azure-service-bus-namespace.png)
 
-3. 如果希望在以后手动输入连接信息，请获取你的服务总线命名空间的连接字符串。 选择“RootManageSharedAccessKey”。 在主密钥连接字符串旁边选择复制按钮。 保存连接字符串供以后使用。
+3. 获取服务总线命名空间的连接字符串。 在逻辑应用中输入连接信息时需要此字符串。
 
-   ![复制服务总线命名空间连接字符串](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
+   1. 选择“RootManageSharedAccessKey”。 
+   
+   1. 在主连接字符串的旁边，选择“复制”按钮。 保存连接字符串供以后使用。
+
+      ![复制服务总线命名空间连接字符串](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
 
    > [!TIP]
-   > 若要确认连接字符串是与服务总线命名空间关联，还是与特定的实体关联，请检查该连接字符串中是否存在 `EntityPath` 参数。 如果找到了该参数，则说明连接字符串适用于特定实体，不是适用于逻辑应用的正确字符串。
+   > 若要确认连接字符串是与服务总线命名空间关联还是与消息传送实体（例如队列）关联，请在该连接字符串中搜索 `EntityPath` 参数。 如果找到了该参数，则表示连接字符串适用于特定的实体，不是适用于逻辑应用的正确字符串。
 
-## <a name="trigger-workflow-when-your-service-bus-gets-new-messages"></a>在服务总线收到新消息时触发工作流
+## <a name="add-trigger-or-action"></a>添加触发器或操作
 
-[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)是一个事件，在逻辑应用中启动工作流。 若要在有新消息发送到服务总线时启动工作流，请执行以下步骤来添加用于检测这些消息的触发器。
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. 在 [Azure 门户](https://portal.azure.com "Azure 门户")中转到现有的逻辑应用，或者创建一个空白逻辑应用。
+1. 登录到 [Azure 门户](https://portal.azure.com)，在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
 
-2. 在逻辑应用设计器中，在搜索框中输入“服务总线”作为筛选器。 选择“服务总线”连接器。 
+1. 若要将触发器添加到空白逻辑应用，请在搜索框中输入“Azure 服务总线”作为筛选器。 在触发器列表下，选择所需的触发器。 
 
-   ![选择“服务总线”连接器](./media/connectors-create-api-azure-service-bus/select-service-bus-connector.png) 
-
-3. 选择要使用的触发器。 例如，若要在有新项发送到服务总线队列时运行某个逻辑应用，请选择以下触发器：“服务总线 - 队列中收到邮件时(自动完成)”。
+   例如，若要在有新项发送到服务总线队列时触发逻辑应用，请选择以下触发器：“队列中收到消息时(自动完成)”。
 
    ![选择服务总线触发器](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
 
    > [!NOTE]
-   > 某些触发器会返回一条或多条消息，例如 *Service Bus - When one or more messages arrive in a queue (auto-complete)* 触发器。
-   > 当这些触发器触发时，它们会返回一定数目的消息，消息数介于 1 和由触发器的**最大消息计数**属性指定的数目之间。
+   > 某些触发器会返回一条或多条消息，例如“一条或多条消息抵达队列时(自动完成)”触发器。 当这些触发器触发时，它们会返回一定数目的消息，消息数介于 1 和由触发器的**最大消息计数**属性指定的数目之间。
 
-   1. 如果还没有到服务总线命名空间的连接，则会提示你立即创建该连接。 为连接提供一个名称，然后选择要使用的服务总线命名空间。
+   所有服务总线触发器都是长轮询触发器，这意味着，当触发器激发时，触发器将处理所有消息，然后等待 30 秒，让更多的消息出现在队列或主题订阅中。 
+   如果在 30 秒内未显示任何消息，则会跳过触发器运行。 
+   否则，该触发器将继续读取消息，直到队列或主题订阅为空。 下一次触发器轮询将基于在触发器的属性中指定的重复周期间隔。
 
-      ![创建服务总线连接](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-1.png)
+1. 若要将操作添加到现有逻辑应用，请执行以下步骤： 
 
-      或者，若要手动输入连接字符串，请选择“手动输入连接信息”。 
-      了解[如何查找连接字符串](#permissions-connection-string)。
-      
+   1. 在要添加操作的最后一个步骤下，选择“新建步骤”。 
 
-   2. 现在，选择要使用的服务总线策略，然后选择“创建”。
+      若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 
+      选择出现的加号 (**+**)，然后选择“添加操作”。
+
+   1. 在搜索框中，输入“Azure 服务总线”作为筛选器。 
+   在操作列表下，选择所需的操作。 
+ 
+      例如，选择以下操作：“发送消息”
+
+      ![选择服务总线操作](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
+
+1. 如果你是首次将逻辑应用连接到服务总线命名空间，则逻辑应用设计器现在会提示你输入连接信息。 
+
+   1. 请提供连接名称，并选择服务总线命名空间。
+
+      ![创建服务总线连接 - 第 1 部分](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-1.png)
+
+      若要手动输入连接字符串，请选择“手动输入连接信息”。 
+      如果没有连接字符串，请了解[如何查找连接字符串](#permissions-connection-string)。
+
+   1. 现在选择服务总线策略，然后选择“创建”。
 
       ![创建服务总线连接第 2 部分](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-2.png)
 
-4. 选择要使用的服务总线队列，并针对何时检查队列设置间隔和频率。
+1. 对于本示例，请选择所需的消息传送实体，例如某个队列或主题。 在本示例中，请选择服务总线队列。 
+   
+   ![选择服务总线队列](./media/connectors-create-api-azure-service-bus/service-bus-select-queue.png)
 
-   ![选择服务总线队列，设置轮询间隔](./media/connectors-create-api-azure-service-bus/select-service-bus-queue.png)
+1. 提供触发器或操作的所需详细信息。 对于本示例，请遵循触发器或操作的相关步骤： 
 
-   > [!NOTE]
-   > 所有服务总线触发器都是**长轮询**触发器，这意味着当触发器触发时，触发器将处理所有消息，然后等待 30 秒，以等待更多消息出现在队列或主题订阅中。
-   > 如果在 30 秒内未收到消息，则会跳过触发器运行。 否则，该触发器将继续读取消息，直到队列或主题订阅为空。
-   > 下一次触发器轮询将基于在触发器的属性中指定的重复周期间隔。
+   * **对于示例触发器**：设置轮询间隔和检查队列的频率。
 
-5. 保存逻辑应用。 在设计器工具栏上，选择“保存”。
+     ![设置轮询间隔](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
 
-现在，当逻辑应用检索所选队列并找到新消息时，触发器将针对找到的消息在逻辑应用中运行操作。
+     完成后，通过添加所需的操作继续生成逻辑应用的工作流。 例如，可以添加一个可在收到新消息时发送电子邮件的操作。
+     当触发器检查队列并找到新消息时，逻辑应用会针对找到的消息运行选定的操作。
 
-## <a name="send-messages-from-your-logic-app-to-your-service-bus"></a>从逻辑应用向服务总线发送消息
+   * **对于示例操作**：输入消息内容和其他任何详细信息。 
 
-[*操作*](../logic-apps/logic-apps-overview.md#logic-app-concepts)是逻辑应用工作流执行的任务。 将触发器添加到逻辑应用后，可以添加一个操作，以便使用该触发器生成的数据执行操作。 若要从逻辑应用向服务总线消息传送实体发送消息，请执行以下步骤。
+     ![提供消息内容和详细信息](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
 
-1. 在逻辑应用设计器中，在你的触发器下，选择“+ 新建步骤” > “添加操作”。
+     完成后，通过添加所需的其他任何操作继续生成逻辑应用的工作流。 例如，可以添加一个操作来发送电子邮件，确认消息已发送。
 
-2. 在搜索框中，输入“服务总线”作为筛选器。 选择以下连接器：“服务总线”
+1. 保存逻辑应用。 在设计器工具栏上，选择“保存”。
 
-   ![选择“服务总线”连接器](./media/connectors-create-api-azure-service-bus/select-service-bus-connector-for-action.png) 
+## <a name="connector-reference"></a>连接器参考
 
-3. 选择以下操作：“服务总线 - 发送消息”
-
-   ![选择“服务总线 - 发送消息”](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png)
-
-4. 选择消息传送实体，这是要为其发送消息的队列或主题名称。 然后，输入消息内容和任何其他详细信息。
-
-   ![选择消息传送实体并提供消息详细信息](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)    
-
-5. 保存逻辑应用。 
-
-现在，你已设置了一个用于从逻辑应用发送消息的操作。 
-
-## <a name="connector-specific-details"></a>特定于连接器的详细信息
-
-若要详细了解由 Swagger 文件和任何限制定义的触发器和操作，请查看[连接器详细信息](/connectors/servicebus/)。
+有关触发器、操作和限制（请参阅连接器的 OpenAPI（以前称为 Swagger）说明）的技术详细信息，请查看连接器的[参考页](/connectors/servicebus/)。
 
 ## <a name="get-support"></a>获取支持
 
@@ -128,4 +144,4 @@ ms.locfileid: "35295462"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解[适用于 Azure 逻辑应用的其他连接器](../connectors/apis-list.md)
+* 了解其他[逻辑应用连接器](../connectors/apis-list.md)

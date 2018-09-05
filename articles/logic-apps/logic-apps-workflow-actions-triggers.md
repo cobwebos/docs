@@ -5,17 +5,16 @@ services: logic-apps
 ms.service: logic-apps
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.topic: reference
-ms.date: 06/22/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 427964a6651dd4ab71d0029f89e40afdd34d162a
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.topic: reference
+ms.date: 06/22/2018
+ms.openlocfilehash: 8adfd0b3d6d87834441ab87af194de141b77af34
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390698"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43093612"
 ---
 # <a name="trigger-and-action-types-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Azure 逻辑应用中工作流定义语言的触发器和操作类型引用
 
@@ -158,6 +157,7 @@ ms.locfileid: "39390698"
 |---------|------|-------------| 
 | headers | JSON 对象 | 响应的标头 | 
 | body | JSON 对象 | 响应的正文 | 
+| 状态代码 | Integer | 响应中的状态代码 | 
 |||| 
 
 *示例*
@@ -330,6 +330,7 @@ ms.locfileid: "39390698"
 |---------|------|-------------| 
 | headers | JSON 对象 | 响应的标头 | 
 | body | JSON 对象 | 响应的正文 | 
+| 状态代码 | Integer | 响应中的状态代码 | 
 |||| 
 
 传入请求的要求
@@ -337,7 +338,7 @@ ms.locfileid: "39390698"
 为很好地配合逻辑应用进行工作，终结点必须符合特定触发器模式或协定，并识别以下属性：  
   
 | 响应 | 必选 | Description | 
-|----------|----------|-------------|  
+|----------|----------|-------------| 
 | 状态代码 | 是 | “200 OK”状态代码启动运行。 其他任何状态代码均不会启动运行。 | 
 | 重试间隔标头 | 否 | 逻辑应用再次轮询终结点之前所要经过的秒数 | 
 | Location 标头 | 否 | 在下一个轮询间隔要调用的 URL。 如果未指定，将使用原始 URL。 | 
@@ -424,6 +425,7 @@ ms.locfileid: "39390698"
 |---------|------|-------------| 
 | headers | JSON 对象 | 响应的标头 | 
 | body | JSON 对象 | 响应的正文 | 
+| 状态代码 | Integer | 响应中的状态代码 | 
 |||| 
 
 *示例*
@@ -2552,6 +2554,159 @@ ID,Product_Name
    "runAfter": {}
 }
 ```
+
+<a name="connector-authentication"></a>
+
+## <a name="authenticate-triggers-or-actions"></a>对触发器或操作进行身份验证
+
+HTTP 终结点支持不同类型的身份验证。 可为以下 HTTP 触发器和操作设置身份验证：
+
+* [HTTP](../connectors/connectors-native-http.md)
+* [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)
+* [HTTP Webhook](../connectors/connectors-native-webhook.md)
+
+下面是可以设置的身份验证类型：
+
+* [基本身份验证](#basic-authentication)
+* [客户端证书身份验证](#client-certificate-authentication)
+* [Azure Active Directory (Azure AD) OAuth 身份验证](#azure-active-directory-oauth-authentication)
+
+<a name="basic-authentication"></a>
+
+### <a name="basic-authentication"></a>基本身份验证
+
+对于这种身份验证，触发器或操作定义可以包含具有以下属性的 `authentication` JSON 对象：
+
+| 属性 | 必选 | 值 | Description | 
+|----------|----------|-------|-------------| 
+| type | 是 | "Basic" | 要使用的身份验证类型，此处为“Basic” | 
+| **username** | 是 | "@parameters('userNameParam')" | 一个参数，它传递用于身份验证的用户名，以访问目标服务终结点 |
+| **password** | 是 | "@parameters('passwordParam')" | 一个参数，它传递用于身份验证的密码，以访问目标服务终结点 |
+||||| 
+
+例如，下面是触发器或操作定义中 `authentication` 对象的格式。 有关保护参数的详细信息，请参阅[保护敏感信息](#secure-info)。 
+
+```javascript
+"HTTP": {
+   "type": "Http",
+   "inputs": {
+      "method": "GET",
+      "uri": "http://www.microsoft.com",
+      "authentication": {
+         "type": "Basic",
+         "username": "@parameters('userNameParam')",
+         "password": "@parameters('passwordParam')"
+      }
+  },
+  "runAfter": {}
+}
+```
+
+<a name="client-certificate-authentication"></a>
+
+### <a name="client-certificate-authentication"></a>客户端证书身份验证
+
+对于这种身份验证，触发器或操作定义可以包含具有以下属性的 `authentication` JSON 对象：
+
+| 属性 | 必选 | 值 | Description | 
+|----------|----------|-------|-------------| 
+| type | 是 | "ClientCertificate" | 安全套接字层 (SSL) 客户端证书使用的身份验证类型 | 
+| **pfx** | 是 | <*base64-encoded-pfx-file*> | 个人信息交换 (PFX) 文件中的 base64 编码内容 |
+| **password** | 是 | "@parameters('passwordParam')" | 包含用于访问 PFX 文件的密码的参数 |
+||||| 
+
+例如，下面是触发器或操作定义中 `authentication` 对象的格式。 有关保护参数的详细信息，请参阅[保护敏感信息](#secure-info)。 
+
+```javascript
+"authentication": {
+   "password": "@parameters('passwordParam')",
+   "pfx": "aGVsbG8g...d29ybGQ=",
+   "type": "ClientCertificate"
+}
+```
+
+<a name="azure-active-directory-oauth-authentication"></a>
+
+### <a name="azure-active-directory-ad-oauth-authentication"></a>Azure Active Directory (AD) OAuth 身份验证
+
+对于这种身份验证，触发器或操作定义可以包含具有以下属性的 `authentication` JSON 对象：
+
+| 属性 | 必选 | 值 | Description | 
+|----------|----------|-------|-------------| 
+| type | 是 | `ActiveDirectoryOAuth` | 要使用的身份验证类型，即“ActiveDirectoryOAuth”（代表 Azure AD OAuth） | 
+| **authority** | 否 | <*URL-for-authority-token-issuer*> | 提供身份验证令牌的颁发机构的 URL |  
+| **tenant** | 是 | <*tenant-ID*> | Azure AD 租户的租户 ID | 
+| **audience** | 是 | <*resource-to-authorize*> | 需要授权使用的资源，例如 `https://management.core.windows.net/` | 
+| **clientId** | 是 | <*client-ID*> | 请求授权的应用的客户端 ID | 
+| **credentialType** | 是 | "Secret" 或 "Certificate" | 客户端用来请求授权的凭据类型。 此属性和值不会显示在基础定义中，但确定了凭据类型的所需参数。 | 
+| **password** | 是（仅适用于 "Certificate" 凭据类型） | "@parameters('passwordParam')" | 包含用于访问 PFX 文件的密码的参数 | 
+| **pfx** | 是（仅适用于 "Certificate" 凭据类型） | <*base64-encoded-pfx-file*> | 个人信息交换 (PFX) 文件中的 base64 编码内容 |
+| **secret** | 是（仅适用于 "Secret" 凭据类型） | <*secret-for-authentication*> | 客户端用来请求授权的 base64 编码机密 |
+||||| 
+
+例如，下面是当触发器或操作使用 "Secret" 凭据类型时 `authentication` 对象的格式：有关保护参数的详细信息，请参阅[保护敏感信息](#secure-info)。 
+
+```javascript
+"authentication": {
+   "audience": "https://management.core.windows.net/",
+   "clientId": "34750e0b-72d1-4e4f-bbbe-664f6d04d411",
+   "secret": "hcqgkYc9ebgNLA5c+GDg7xl9ZJMD88TmTJiJBgZ8dFo="
+   "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+   "type": "ActiveDirectoryOAuth"
+}
+```
+
+<a name="secure-info"></a>
+
+## <a name="secure-sensitive-information"></a>保护敏感信息
+
+若要保护触发器和操作定义中用于身份验证的敏感信息（例如用户名和密码），可以使用参数和 `@parameters()` 表达式，以便在保存逻辑应用后隐藏这些信息。 
+
+例如，假设你在触发器或操作定义中使用了 "Basic" 身份验证。 下面是指定用户名和密码的示例 `authentication` 对象：
+
+```javascript
+"HTTP": {
+   "type": "Http",
+   "inputs": {
+      "method": "GET",
+      "uri": "http://www.microsoft.com",
+      "authentication": {
+         "type": "Basic",
+         "username": "@parameters('userNameParam')",
+         "password": "@parameters('passwordParam')"
+      }
+  },
+  "runAfter": {}
+}
+```
+
+在逻辑应用定义的 `parameters` 节中，定义触发器或操作定义中使用的参数：
+
+```javascript
+"definition": {
+   "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+   "actions": {
+      "HTTP": {
+      }
+   },
+   "parameters": {
+      "passwordParam": {
+         "type": "securestring"
+      },
+      "userNameParam": {
+         "type": "securestring"
+      }
+   },
+   "triggers": {
+      "HTTP": {
+      }
+   },
+   "contentVersion": "1.0.0.0",
+   "outputs": {}
+},
+```
+
+若要创建或使用 Azure 资源管理器部署模板，则还必须为模板定义包含一个外部 `parameters` 节。 有关保护参数的详细信息，请参阅[安全访问逻辑应用](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-and-inputs-within-a-workflow)。 
 
 ## <a name="next-steps"></a>后续步骤
 

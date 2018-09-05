@@ -12,28 +12,38 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2018
+ms.date: 08/23/2018
 ms.author: rkarlin
-ms.openlocfilehash: a5151d1f9498b29c79638445a58a8337abff8961
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 92e0b485f51ebeb2b743c8c01372e9056af4b6eb
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281916"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124861"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 安全中心中的数据收集
-安全中心从 Azure 虚拟机 (VM) 和非 Azure 计算机收集数据以监视安全漏洞和威胁。 数据是使用 Microsoft Monitoring Agent 收集的，它从计算机中读取各种安全相关的配置和事件日志，然后将数据复制到工作区以进行分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址、已登录用户、AppLocker 事件以及租户 ID。 Microsoft Monitoring Agent 还将故障转储文件复制到工作区。
+安全中心从 Azure 虚拟机 (VM) 和非 Azure 计算机收集数据以监视安全漏洞和威胁。 数据是使用 Microsoft Monitoring Agent 收集的，它从计算机中读取各种安全相关的配置和事件日志，然后将数据复制到工作区以进行分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。 Microsoft Monitoring Agent 还将故障转储文件复制到工作区。
+
+必须收集数据才能深入了解缺少的更新、配置不当的 OS 安全设置、终结点保护启用情况，以及运行状况和威胁检测结果。 
+
+本文提供有关如何安装 Microsoft Monitoring Agent，以及设置用于存储所收集数据的 Log Analytics 工作区的指导。 这两项操作都需要启用数据收集。 
 
 > [!NOTE]
-> 若要为[自适应应用程序控件](security-center-adaptive-application.md)启用数据收集，安全中心会在审核模式下配置本地 AppLocker 策略以允许所有应用程序。 这将导致 AppLocker 生成事件，然后由安全中心收集和利用这些事件。 请务必注意，不会在已配置 AppLocker 策略的任何计算机上配置此策略。 
->
+> - 只需对计算资源（VM 和非 Azure 计算机）启用数据收集。 即使未预配代理，也能从 Azure 安全中心受益；但是，安全性会受到限制，并且上面列出的功能不受支持。  
+> - 有关支持的平台列表，请参阅 [Azure 安全中心支持的平台](security-center-os-coverage.md)。
+> - 目前不支持虚拟机规模集的数据收集。
+
 
 ## <a name="enable-automatic-provisioning-of-microsoft-monitoring-agent"></a>启用 Microsoft Monitoring Agent 的自动设置     
-默认情况下自动设置处于关闭状态。 启动自动设置后，安全中心可在所有受支持的 Azure VM 以及任何新建的 Azure VM 中预配 Microsoft Monitoring Agent。 强烈建议进行自动预配，但也可以手动代理安装。 [了解如何安装 Microsoft Monitoring Agent 扩展](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)。
+若要从计算机收集数据，应安装 Microsoft Monitoring Agent。  可以自动安装该代理（建议），也可以选择手动安装。  
 
-> [!NOTE]
-> - 禁用自动设置会限制对资源的安全监视。 若要了解详细信息，请参阅本文中的[禁用自动设置](security-center-enable-data-collection.md#disable-automatic-provisioning)。 即使禁用了自动设置，也仍可以启用 VM 磁盘快照和项目收集。
+>[!NOTE]
+> 默认情况下自动设置处于关闭状态。 若要将安全中心设置为默认安装自动预配，请将自动预配设置为“打开”。
 >
+
+打开自动预配后，安全中心会在所有受支持的 Azure VM 以及任何新建的 Azure VM 上预配 Microsoft Monitoring Agent。 强烈建议进行自动预配，但也可以手动代理安装。 [了解如何安装 Microsoft Monitoring Agent 扩展](#manualagent)。
+
+
 
 启用 Microsoft Monitoring Agent 自动设置的步骤：
 1. 在“安全中心”主菜单下，选择“安全策略”。
@@ -47,12 +57,50 @@ ms.locfileid: "39281916"
 
   ![启用自动设置][1]
 
-## <a name="default-workspace-configuration"></a>默认工作区配置
-安全中心收集的数据存储在 Log Analytics 工作区中。  可以选择从存储在安全中心创建的工作区或创建的现有工作区中的 Azure VM 收集数据。
+>[!NOTE]
+> - 有关如何预配现有安装的说明，请参阅[对现有的代理安装进行自动预配](#preexisting)。
+> - 有关手动预配的说明，请参阅[手动安装 Microsoft Monitoring Agent 扩展](#manualagent)。
+> - 有关关闭自动预配的说明，请参阅[关闭自动预配](#offprovisioning)。
+>
 
-使用现有 Log Analytics 工作区的步骤：
-- 工作区必须与选定 Azure 订阅相关联。
-- 至少必须拥有读取权限，才能访问工作区。
+
+## <a name="workspace-configuration"></a>工作区配置
+安全中心收集的数据存储在 Log Analytics 工作区中。  可以选择从存储在安全中心创建的工作区或创建的现有工作区中的 Azure VM 收集数据。 
+
+工作区配置是按订阅设置的，多个订阅可以使用同一个工作区。
+
+### <a name="using-a-workspace-created-by-security-center"></a>使用安全中心创建的工作区
+
+安全中心可以自动创建用于存储数据的默认工作区。 
+
+选择安全中心创建的工作区：
+
+1.  在“默认工作区配置”下，选择“使用安全中心创建的工作区”。
+   ![选择定价层][10] 
+
+2. 单击“ **保存**”。<br>
+    安全中心会在该地理位置创建新的资源组和默认工作区，并将代理连接到该工作区。 工作区和资源组的命名约定是：<br>
+**工作区：DefaultWorkspace-[subscription-ID]-[geo]<br>资源组：DefaultResouceGroup-[geo]**
+
+   如果订阅包含多个地理位置中的 VM，则安全中心会创建多个工作区。 创建多个工作区的目的是维护数据隐私规则。
+-   安全中心将会根据针对订阅设置的定价层，在工作区中自动启用安全中心解决方案。 
+
+> [!NOTE]
+> 安全中心创建的工作区不会产生 Log Analytics 费用。 安全中心创建的工作区的 Log Analytics 定价层不会影响安全中心计费。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案。 对于“免费层”，安全中心将在默认工作区中启用 *SecurityCenterFree* 解决方案。 对于“标准层”，安全中心将在默认工作区中启用 *Security* 解决方案。
+
+有关详细信息，请参阅[安全中心 定价](https://azure.microsoft.com/pricing/details/security-center/)。
+
+有关现有 Log Analytics 帐户的详细信息，请参阅[现有 Log Analytics 客户](security-center-faq.md#existingloganalyticscust)。
+
+### <a name="using-an-existing-workspace"></a>使用现有工作区
+
+如果已有一个 Log Analytics 工作区，可以使用该工作区。
+
+若要使用现有 Log Analytics 工作区，必须对该工作区拥有读取和写入权限。
+
+> [!NOTE]
+> 在现有工作区中启用的解决方案将应用到与该工作区相连接的 Azure VM。 对于付费的解决方案，这可能会产生额外的费用。 出于数据隐私的考虑，请确保所选工作区位于适当的地理区域。
+>
 
 选择现有 Log Analytics 工作区的具体步骤：
 
@@ -63,12 +111,12 @@ ms.locfileid: "39281916"
 2. 从下拉菜单中，选择一个工作区，用于存储所收集的数据。
 
   > [!NOTE]
-  > 下拉菜单提供跨所有订阅的所有工作区。 请参阅[跨订阅工作区选择](security-center-enable-data-collection.md#cross-subscription-workspace-selection)以获取详细信息。
+  > 下拉菜单提供跨所有订阅的所有工作区。 请参阅[跨订阅工作区选择](security-center-enable-data-collection.md#cross-subscription-workspace-selection)以获取详细信息。 必须有权访问该工作区。
   >
   >
 
 3. 选择“保存”。
-4. 选择“保存”后，系统就会询问是否要重新配置受监视的 VM。
+4. 选择“保存”后，系统会询问是否要重新配置以前已连接到默认工作区的受监视 VM。
 
    - 如果只希望在新 VM 上应用新的工作区设置，请选择“否”。 新的工作区设置只会应用于新的代理安装；新发现的 VM 没有安装 Microsoft Monitoring Agent。
    - 如果希望在所有 VM 上应用新的工作区设置，请选择“是”。 此外，所有连接到安全中心创建的工作区的 VM 也都会重新连接到新的目标工作区。
@@ -82,13 +130,20 @@ ms.locfileid: "39281916"
 
      ![选择现有工作区][3]
 
-## <a name="cross-subscription-workspace-selection"></a>跨订阅工作区选择
-选择工作区来存储数据时，跨所有订阅的所有工作区可用。 通过跨订阅工作区选择，可以从不同订阅中运行的虚拟机收集数据并将其存储在选择的工作区中。 此功能适用于 Linux 和 Windows 上运行的虚拟机。
+5. 选择要在其中设置 Microsoft Monitoring Agent 的所需工作区的定价层。 <br>若要使用现有工作区，请设置该工作区的定价层。 这会在该工作区中安装一个安全中心解决方案（如果尚不存在）。
 
-> [!NOTE]
-> 跨订阅工作区选择是 Azure 安全中心免费层的一部分。 若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。
->
->
+    a.  在安全中心主菜单中，选择“安全策略”。
+     
+    b.  选择要在其中连接代理的所需工作区。
+        ![选择工作区][8] c. 设置定价层。
+        ![选择定价层][9] 
+   
+   >[!NOTE]
+   >如果工作区中已启用 **Security** 或 **SecurityCenterFree** 解决方案，则会自动设置定价层。 
+
+## <a name="cross-subscription-workspace-selection"></a>跨订阅工作区选择
+选择用于存储数据的工作区时，跨所有订阅的所有工作区可用。 通过跨订阅工作区选择，可以从不同订阅中运行的虚拟机收集数据并将其存储在所选的工作区中。 如果在组织中使用集中式工作区，并想要使用该工作区来收集安全数据，则这种选择非常有用。 有关如何管理工作区的详细信息，请参阅[管理工作区访问权限](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access)。
+
 
 ## <a name="data-collection-tier"></a>数据收集层
 安全中心可以减少事件数量，同时保留足够数量的事件用于调查、审核和威胁检测。 可以从代理要收集的四个事件集中为订阅和工作区选择权限筛选策略。
@@ -128,6 +183,7 @@ ms.locfileid: "39281916"
 > [!NOTE]
 > - 如果使用组策略对象 (GPO)，建议启用审核策略过程创建事件 4688 以及事件 4688 内的 CommandLine 字段。 有关过程创建事件 4688 的详细信息，请参阅安全中心的[常见问题解答](security-center-faq.md#what-happens-when-data-collection-is-enabled)。 有关这些审核策略的详细信息，请参阅[审核策略建议](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations)。
 > -  若要为[自适应应用程序控件](security-center-adaptive-application.md)启用数据收集，安全中心会在审核模式下配置本地 AppLocker 策略以允许所有应用程序。 这将导致 AppLocker 生成事件，然后由安全中心收集和利用这些事件。 请务必注意，不会在已配置 AppLocker 策略的任何计算机上配置此策略。 
+> - 若要收集 Windows 筛选平台[事件 ID 5156](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=5156)，需要启用[审核筛选平台连接](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-connection) (Auditpol /set /subcategory:"Filtering Platform Connection" /Success:Enable)
 >
 
 选择筛选策略的具体步骤：
@@ -136,13 +192,26 @@ ms.locfileid: "39281916"
 
    ![选择筛选策略][5]
 
-## <a name="disable-automatic-provisioning"></a>禁用自动设置
-可以随时禁用安全策略中的此设置，禁用资源的自动设置。 强烈建议使用自动设置，以获取有关系统更新、OS 漏洞和终结点保护的安全警报和建议。
+### 对现有的代理安装进行自动预配 <a name="preexisting"></a> 
+
+以下用例指定在已安装代理或扩展的情况下如何进行自动预配。 
+
+- 已在计算机上安装 Microsoft Monitoring Agent，但不是作为扩展安装的<br>
+如果 Microsoft Monitoring Agent 是直接安装到 VM 上（而不是作为 Azure 扩展安装的），则安全中心不会安装 Microsoft Monitoring Agent。 可在安全中心的自动预配配置中打开自动预配并选择相关的用户工作区。 如果选择相同的工作区，将使用 Microsoft Monitoring Agent 扩展来包装已连接到现有代理的 VM。 
 
 > [!NOTE]
-> 禁用自动设置不会从已预配代理的 Azure VM 中删除 Microsoft Monitoring Agent。
->
->
+> 如果已安装 SCOM 代理版本 2012，则**不会**打开自动预配。 
+
+有关详细信息，请参阅[如果已在 VM 上安装 SCOM 或 OMS 直接代理，会发生什么情况？](security-center-faq.md#scomomsinstalled)
+
+-   存在现有的 VM 扩展<br>
+    - 安全中心支持现有的扩展安装，但不会替代现有连接。 安全中心将 VM 中的安全数据存储在已连接的工作区中，并基于工作区中启用的解决方案提供保护。   
+    - 若要查看现有扩展将数据发送到哪个工作区，请运行测试来[验证与 Azure 安全中心的连接](https://blogs.technet.microsoft.com/yuridiogenes/2017/10/13/validating-connectivity-with-azure-security-center/)。 或者，可以打开 Log Analytics，选择一个工作区，选择 VM，然后查看 Microsoft Monitoring Agent 连接。 
+    - 如果环境中的 Microsoft Monitoring Agent 安装在客户端工作站上并向现有的 Log Analytics 工作区报告，请查看 [Azure 安全中心支持的操作系统](security-center-os-coverage.md)列表以确保操作系统受支持，并参阅[现有 Log Analytics 客户](security-center-faq.md#existingloganalyticscust)了解详细信息。
+ 
+### 关闭自动预配 <a name="offprovisioning"></a>
+随时可以关闭资源的自动预配，在安全策略中关闭此设置即可。 
+
 
 1. 返回到“安全中心”主菜单，选择“安全策略”。
 2. 选择希望禁用自动设置的订阅。
@@ -151,19 +220,93 @@ ms.locfileid: "39281916"
 
   ![禁用自动预配][6]
 
-自动预配处于禁用状态（关闭）时，不显示默认工作区配置部分。
+自动预配处于禁用状态（关闭）时，不会显示默认的工作区配置部分。
+
+如果关闭以前已打开的自动预配：
+-   不会在新 VM 上预配代理。
+-   安全中心会停止从默认工作区收集数据。
+ 
+> [!NOTE]
+>  禁用自动设置不会从预配代理的 Azure VM 中删除 Microsoft Monitoring Agent。 有关删除 OMS 扩展的信息，请参阅[如何删除安全中心安装的 OMS 扩展](security-center-faq.md#remove-oms)。
+>
+    
+## 手动代理预配 <a name="manualagent"></a>
+ 
+可通过多种方法手动安装 Microsoft Monitoring Agent。 手动安装时，请务必禁用自动预配。
+
+### <a name="operations-management-suite-vm-extension-deployment"></a>Operations Management Suite VM 扩展部署 
+
+可以手动安装 Microsoft Monitoring Agent，使安全中心能够从 VM 收集安全数据并提供建议和警报。
+1.  选择自动预配 - 关闭。
+2.  创建工作区，并指定要在其中设置 Microsoft Monitoring Agent 的工作区的定价层：
+
+    a.  在安全中心主菜单中，选择“安全策略”。
+     
+    b.  选择要在其中连接代理的工作区。 确保该工作区位于安全中心内所用的同一个订阅中，并且你对该工作区拥有读/写权限。
+        ![选择工作区][8]
+3. 设置定价层。
+   ![选择定价层][9] 
+   >[!NOTE]
+   >如果工作区中已启用 **Security** 或 **SecurityCenterFree** 解决方案，则会自动设置定价层。 
+   > 
+
+4.  若要使用资源管理器模板在新 VM 上部署代理，请安装 OMS 虚拟机扩展：
+
+    a.  [安装适用于 Windows 的 OMS 虚拟机扩展](../virtual-machines/extensions/oms-windows.md)
+    
+    b.  [安装适用于 Linux 的 OMS 虚拟机扩展](../virtual-machines/extensions/oms-linux.md)
+5.  若要在现有 VM 上部署扩展，请遵照[收集有关 Azure 虚拟机的数据](../log-analytics/log-analytics-quick-collect-azurevm.md)中的说明。
+
+  > [!NOTE]
+  > “收集事件和性能数据”部分是可选的。
+  >
+6. 若要使用 PowerShell 部署扩展：请使用以下 PowerShell 示例：
+    1.  转到“Log Analytics”并单击“高级设置”。
+    
+        ![设置 Log Analytics][11]
+
+    2. 复制“工作区 ID”和“主密钥”的值。
+  
+       ![复制值][12]
+
+    3. 在公共配置和专用配置中填充以下值：
+     
+            $PublicConf = '{
+                "workspaceId": "WorkspaceID value",
+                "MultipleConnectistopOnons": true
+            }' 
+ 
+            $PrivateConf = '{
+                "workspaceKey": "<Primary key value>”
+            }' 
+
+      - 在 Windows VM 上安装时：
+        
+             Set-AzureRmVMExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Name "MicrosoftMonitoringAgent" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "MicrosoftMonitoringAgent" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True 
+    
+       - 在 Linux VM 上安装时：
+        
+             Set-AzureRmVMExtension -ResourceGroupName $vm1.ResourceGroupName -VMName $vm1.Name -Name "OmsAgentForLinux" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "OmsAgentForLinux" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True`
+
+
+
+
+## <a name="troubleshooting"></a>故障排除
+
+-   若要识别自动预配安装问题，请参阅[监视代理运行状况问题](security-center-troubleshooting-guide.md#mon-agent)。
+
+-  若要确定监视代理网络要求，请参阅[监视代理网络要求故障排除](security-center-troubleshooting-guide.md#mon-network-req)。
+-   若要识别手动加入问题，请参阅[如何排查 Operations Management Suite 加入问题](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues)
+
+- 若要识别未监视的 VM 和计算机问题，请参阅[未监视的 VM 和计算机](security-center-virtual-machine-protection.md#unmonitored-vms-and-computers)
 
 ## <a name="next-steps"></a>后续步骤
 本文介绍了数据收集和自动设置在安全中心中的工作方式。 若要了解有关安全中心的详细信息，请参阅以下文章：
 
-* [在 Azure 安全中心中设置安全策略](security-center-policies.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
-* [在 Azure 安全中心中管理安全建议](security-center-recommendations.md) -- 了解建议如何帮助保护 Azure 资源。
-* [Azure 安全中心的安全性运行状况监视](security-center-monitoring.md) - 了解如何监视 Azure 资源的运行状况。
-* [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) - 了解如何管理和响应安全警报。
-* [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md) -- 了解如何监视合作伙伴解决方案的运行状态。
-- [Azure 安全中心的数据安全](security-center-data-security.md) - 了解如何在安全中心管理数据和确保数据安全性。
 * [Azure 安全中心常见问题解答](security-center-faq.md)-- 查找有关使用服务的常见问题。
-* [Azure 安全博客](http://blogs.msdn.com/b/azuresecurity/) - 获取最新的 Azure 安全新闻和信息。
+* [Azure 安全中心的安全性运行状况监视](security-center-monitoring.md) - 了解如何监视 Azure 资源的运行状况。
+
+
 
 <!--Image references-->
 [1]: ./media/security-center-enable-data-collection/enable-automatic-provisioning.png
@@ -172,3 +315,8 @@ ms.locfileid: "39281916"
 [5]: ./media/security-center-enable-data-collection/data-collection-tiers.png
 [6]: ./media/security-center-enable-data-collection/disable-data-collection.png
 [7]: ./media/security-center-enable-data-collection/select-subscription.png
+[8]: ./media/security-center-enable-data-collection/manual-provision.png
+[9]: ./media/security-center-enable-data-collection/pricing-tier.png
+[10]: ./media/security-center-enable-data-collection/workspace-selection.png
+[11]: ./media/security-center-enable-data-collection/log-analytics.png
+[12]: ./media/security-center-enable-data-collection/log-analytics2.png

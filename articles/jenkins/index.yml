@@ -1,14 +1,14 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 6502db6c9f19799298e4442a5b0e29e1d09b1a63
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: cd539e1ba1b740155a22960645c3947d7c4d8176
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43086524"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666519"
 documentType: LandingData
 title: Azure 上的 Jenkins
 metadata:
-  title: “Azure 中的 Jenkins”文档 - 教程、示例、参考和资源
+  title: “Azure 上的 Jenkins”文档 - 教程、示例、参考和资源
   description: 在 Azure 上部署 Jenkins 并将其与 Azure 集成
   ms.service: jenkins
   keywords: jenkins, azure, devops, 教程, 示例, 参考
