@@ -1,45 +1,74 @@
 ---
-title: 在 Azure 逻辑应用中使用 ProjectOnline 连接器 | Microsoft Docs
-description: 使用 Azure 应用服务创建逻辑应用。 Project Online 是用于项目组合管理 (PPM) 和 Microsoft 日常工作的灵活联机解决方案。 通过 Office 365 交付的 Project Online 允许组织快速开始使用强大的项目管理功能，以便在几乎所有设备上随时随地规划、管理项目和项目组合投资，并设置优先顺序。
+title: 从 Azure 逻辑应用连接到 Project Online | Microsoft Docs
+description: 使用 Azure 逻辑应用自动执行任务和工作流，用以监视、创建和管理 Project Online 项目、任务和资源
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: 40ce621e-4925-4653-93bb-71ab9abcbdf1
 ms.service: logic-apps
-ms.devlang: multiple
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.suite: integration
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 08/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: aaf357b1fe2c0b9b5874ee296c9141cf757e2300
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.assetid: 40ce621e-4925-4653-93bb-71ab9abcbdf1
+tags: connectors
+ms.date: 08/24/2018
+ms.openlocfilehash: cfcb53b6e95250a1ccbebfdfcfbff5ec8479504b
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295350"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886947"
 ---
-# <a name="get-started-with-the-projectonline-connector"></a>ProjectOnline 连接器入门
-Project Online 是用于项目组合管理 (PPM) 和 Microsoft 日常工作的灵活联机解决方案。 通过 Office 365 交付的 Project Online 允许组织快速开始使用强大的项目管理功能，以便在几乎所有设备上随时随地规划、管理项目和项目组合投资，并设置优先顺序。
+# <a name="manage-project-online-projects-tasks-and-resources-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Project Online 项目、任务和资源
 
-若要立即开始创建逻辑应用，请参阅[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+使用 Azure 逻辑应用和 Project Online 连接器，可以通过 Office 365 为 Project Online 中的项目、任务和资源创建自动化任务和工作流。 例如，你的工作流可以执行以下操作和其他操作：
 
-## <a name="create-a-connection-to-projectonline"></a>创建到 ProjectOnline 的连接
-要使用 ProjectOnline 创建逻辑应用，必须先创建**连接**，然后提供以下属性的详细信息： 
+* 监视何时创建了新项目、任务或资源。 或者，监视何时发布了新项目。
+* 创建新项目、任务或资源。
+* 列出现有的项目或任务。
+* 签出、签入或发布项目
 
-| 属性 | 必选 | 说明 |
-| --- | --- | --- |
-| 令牌 |是 |提供 ProjectOnline 凭据 |
+Project Online 提供了强大的项目管理功能，可以帮助你规划、管理项目和项目组合投资以及设置其优先级，这几乎可以从任何位置在任何设备上进行。 可以使用 Project Online 触发器从 Project Online 获取响应，并使输出可用于其他操作。 可以使用逻辑应用中的操作在 Project Online 中执行各种任务。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-> [!INCLUDE [Steps to create a connection to ProjectOnline](../../includes/connectors-create-api-projectonline.md)]
-> 
+## <a name="prerequisites"></a>先决条件
 
-## <a name="connector-specific-details"></a>特定于连接器的详细信息
+* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
 
-在[连接器详细信息](/connectors/projectonline/)中查看在 Swagger 中定义的触发器和操作，并查看限制。
+* Project Online，可通过 [Office 365 帐户](https://www.office.com/)获得 
 
-## <a name="more-connectors"></a>更多连接器
-返回到 [API 列表](apis-list.md)。
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
+
+* 要在其中访问 Project Online 数据的逻辑应用。 若要使用 Project Online 触发器启动，请[创建空白的逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 Project Online 操作，请使用其他触发器（例如**定期**触发器）启动逻辑应用。
+
+## <a name="connect-to-project-online"></a>连接到 Project Online
+
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+
+1. 登录到 [Azure门户](https://portal.azure.com)，然后在逻辑应用设计器中打开你的逻辑应用（如果尚未打开）。
+
+1. 选择一个路径： 
+
+   * 对于空白逻辑应用，请在搜索框中输入“Project Online”作为筛选器。 
+   在触发器列表下，选择所需的触发器。 
+
+     -或-
+
+   * 对于现有逻辑应用，请在要添加操作的步骤下，选择“新建步骤”。 在搜索框中输入“Project Online”作为筛选器。 在操作列表下，选择所需的操作。
+
+1. 如果系统提示登录到 Project Online，请立即登录。
+
+   你的凭据授权逻辑应用创建与 Project Online 的连接并访问你的数据。
+
+1. 为所选触发器或操作提供必要的详细信息，并继续构建逻辑应用的工作流。
+
+## <a name="connector-reference"></a>连接器参考
+
+有关触发器、操作和限制（请参阅连接器的 OpenAPI（以前称为 Swagger）说明）的技术详细信息，请查看连接器的[参考页](/connectors/projectonline/)。
+
+## <a name="get-support"></a>获取支持
+
+* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](http://aka.ms/logicapps-wish)。
+
+## <a name="next-steps"></a>后续步骤
+
+* 了解其他[逻辑应用连接器](../connectors/apis-list.md)

@@ -1,49 +1,83 @@
 ---
-title: 在 Azure 逻辑应用中添加 Yammer 连接器 | Microsoft Docs
-description: 使用 REST API 参数的 Yammer 连接器概述
+title: 从 Azure 逻辑应用连接到 Yammer | Microsoft Docs
+description: 使用 Azure 逻辑应用自动执行任务和工作流，用以在 Yammer 中监视、发布和管理消息、源及其他内容
 services: logic-apps
-documentationcenter: ''
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: b5ae0827-fbb3-45ec-8f45-ad1cc2e7eccc
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: b5ae0827-fbb3-45ec-8f45-ad1cc2e7eccc
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 63f7b341b456d51cbde523684275a99632a672ed
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+tags: connectors
+ms.date: 08/25/2018
+ms.openlocfilehash: 41855d6e562ddbb78df5d1d8794127e1064cc2ca
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296469"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918289"
 ---
-# <a name="get-started-with-the-yammer-connector"></a>Yammer 连接器入门
-连接到 Yammer 以在企业网络中访问对话。 借助 Yammer，可以：
+# <a name="monitor-and-manage-your-yammer-account-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 Yammer 帐户
 
-* 根据从 Yammer 中获取的数据生成业务流。 
-* 针对组或关注的源中有新消息的情况使用触发器。
-* 使用操作发布消息、获取所有消息等。 这些操作可获得响应，并使输出可用于其他操作。 例如，出现新消息时，可使用 Office 365 发送电子邮件。
+使用 Azure 逻辑应用和 Yammer 连接器，可以创建用于监视和管理 Yammer 帐户中的消息、源和其他内容以及执行其他操作的自动化任务和工作流，例如：
 
-若要立即开始创建逻辑应用，请参阅[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+* 监视新消息何时出现在所关注的源和组中。
+* 获取消息、组、网络、用户详细信息以及其他内容。
+* 发布消息以及为消息点赞。
 
-## <a name="create-a-connection-to-yammer"></a>创建到 Yammer 的连接
-要使用 Yammer 连接器，首先创建**连接**，然后为以下属性提供详细信息： 
+可以使用触发器从 Yammer 帐户获取响应，并使输出可用于其他操作。 可以使用通过 Yammer 帐户执行任务的操作。 还可以让其他操作使用来自 Yammer 操作的输出。 例如，当有新消息出现在源或组中时，你可以使用 Slack 连接器共享这些消息。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-| 属性 | 必选 | 说明 |
-| --- | --- | --- |
-| 令牌 |是 |提供 Yammer 凭据 |
+## <a name="prerequisites"></a>先决条件
 
-> [!INCLUDE [Steps to create a connection to Yammer](../../includes/connectors-create-api-yammer.md)]
-> 
+* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
 
-## <a name="connector-specific-details"></a>特定于连接器的详细信息
+* Yammer 帐户和用户凭据
 
-在[连接器详细信息](/connectors/yammer/)中查看在 Swagger 中定义的触发器和操作，并查看限制。
+   你的凭据授权逻辑应用创建连接并访问你的 Yammer 帐户。
 
-## <a name="more-connectors"></a>更多连接器
-返回到 [API 列表](apis-list.md)。
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
+
+* 要在其中访问 Yammer 帐户的逻辑应用。 若要使用 Yammer 触发器启动，请[创建空白的逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 Yammer 操作，请使用其他触发器（例如**定期**触发器）启动逻辑应用。
+
+## <a name="connect-to-yammer"></a>连接到 Yammer
+
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+
+1. 登录到 [Azure门户](https://portal.azure.com)，然后在逻辑应用设计器中打开你的逻辑应用（如果尚未打开）。
+
+1. 选择一个路径： 
+
+   * 对于空白逻辑应用，请在搜索框中输入“yammer”作为筛选器。 
+   在触发器列表下，选择所需的触发器。 
+
+     -或-
+
+   * 对于现有逻辑应用： 
+   
+     * 在要添加操作的最后一个步骤下，选择“新建步骤”。 
+
+       -或-
+
+     * 在要在其中添加操作的两个步骤之间，将鼠标指针移到步骤之间的箭头上。 
+     选择出现的加号 (**+**)，然后选择“添加操作”。
+     
+       在搜索框中，输入“yammer”作为筛选器。 
+       在操作列表下，选择所需的操作。
+
+1. 如果提示你登录到 Yammer，请立即登录以便你可以允许访问。
+
+1. 为所选触发器或操作提供必要的详细信息，并继续构建逻辑应用的工作流。
+
+## <a name="connector-reference"></a>连接器参考
+
+有关触发器、操作和限制（请参阅连接器的 OpenAPI（以前称为 Swagger）说明）的技术详细信息，请查看连接器的[参考页](/connectors/yammer/)。
+
+## <a name="get-support"></a>获取支持
+
+* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](http://aka.ms/logicapps-wish)。
+
+## <a name="next-steps"></a>后续步骤
+
+* 了解其他[逻辑应用连接器](../connectors/apis-list.md)

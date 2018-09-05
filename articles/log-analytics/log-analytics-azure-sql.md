@@ -3,9 +3,9 @@ title: Log Analytics 中的 Azure SQL Analytics 解决方案 | Microsoft 文档
 description: Azure SQL Analytics 解决方案可帮助你管理 Azure SQL 数据库
 services: log-analytics
 documentationcenter: ''
-author: mgoedtel
+author: danimir
 manager: carmonm
-editor: ''
+ms.reviewer: carlrab
 ms.assetid: b2712749-1ded-40c4-b211-abc51cc65171
 ms.service: log-analytics
 ms.workload: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/03/2018
-ms.author: magoedte
+ms.author: v-daljep
 ms.component: na
-ms.openlocfilehash: 440e16416b8567178c61c3d6ce2155e0e331521c
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 47069f0af7409d87cb2d4fbbbce9dda0b1c2056e
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216319"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886554"
 ---
 # <a name="monitor-azure-sql-databases-using-azure-sql-analytics-preview"></a>使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
 
@@ -44,9 +44,9 @@ Azure SQL Analytics 是一种云监视解决方案，它支持流式传输 Azure
 | 连接的源 | 支持 | Description |
 | --- | --- | --- |
 | **[Azure 诊断](log-analytics-azure-storage.md)** | **是** | Azure 指标和日志数据由 Azure 直接发送到 Log Analytics。 |
-| [Azure 存储帐户](log-analytics-azure-storage.md) | 否 | Log Analytics 不会从存储帐户中读取数据。 |
+| [Azure 存储帐户](log-analytics-azure-storage.md) | 否 | Log Analytics 不从存储帐户中读取数据。 |
 | [Windows 代理](log-analytics-windows-agent.md) | 否 | 该解决方案不使用直接 Windows 代理。 |
-| [Linux 代理](log-analytics-linux-agents.md) | 否 | 该解决方案不使用直接 Linux 代理。 |
+| [Linux 代理](log-analytics-linux-agents.md) | 否 | 该解决方案不使用直接Linux 代理。 |
 | [SCOM 管理组](log-analytics-om-agents.md) | 否 | 该解决方案不使用从 SCOM 代理到 Log Analytics 的直接连接。 |
 
 ## <a name="configuration"></a>配置
@@ -135,27 +135,77 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 
 可以使用来自 Azure SQL 数据库资源的数据轻松[创建警报](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)。 以下是部分有用的可用于日志警报的[日志搜索](log-analytics-log-searches.md)查询：
 
-
-
-*Azure SQL 数据库上的高 DTU*
+*Azure SQL 数据库上的高 CPU*
 
 ```
 AzureMetrics 
-| where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "/DATABASES/" and MetricName=="dtu_consumption_percent" 
+| where ResourceProvider=="MICROSOFT.SQL"
+| where ResourceId contains "/DATABASES/"
+| where MetricName=="cpu_percent" 
 | summarize AggregatedValue = max(Maximum) by bin(TimeGenerated, 5m)
 | render timechart
 ```
 
-*Azure SQL 数据库弹性池上的高 DTU*
+> [!NOTE]
+> - 设置此警报的前提要求是受监视的数据库将诊断指标（“所有指标”选项）流式传输到解决方案。
+> - 若要改为获取高 DTU 结果，请将 MetricName 值 cpu_percent 替换为 dtu_consumption_percent。
+
+*Azure SQL 数据库弹性池上的高 CPU*
 
 ```
 AzureMetrics 
-| where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "/ELASTICPOOLS/" and MetricName=="dtu_consumption_percent" 
+| where ResourceProvider=="MICROSOFT.SQL"
+| where ResourceId contains "/ELASTICPOOLS/"
+| where MetricName=="cpu_percent" 
 | summarize AggregatedValue = max(Maximum) by bin(TimeGenerated, 5m)
 | render timechart
 ```
 
+> [!NOTE]
+> - 设置此警报的前提要求是受监视的数据库将诊断指标（“所有指标”选项）流式传输到解决方案。
+> - 若要改为获取高 DTU 结果，请将 MetricName 值 cpu_percent 替换为 dtu_consumption_percent。
 
+*Azure SQL 数据库存储在过去 1小时的平均值超过 95%*
+
+```
+let time_range = 1h;
+let storage_threshold = 95;
+AzureMetrics
+| where ResourceId contains "/DATABASES/"
+| where MetricName == "storage_percent"
+| summarize max_storage = max(Average) by ResourceId, bin(TimeGenerated, time_range)
+| where max_storage > storage_threshold
+| distinct ResourceId
+```
+
+> [!NOTE]
+> - 设置此警报的前提要求是受监视的数据库将诊断指标（“所有指标”选项）流式传输到解决方案。
+> - 此查询要求将警报规则设置为当存在来自查询的结果时（> 0 个结果，表示某些数据库上存在此条件）触发。 输出是在所定义的 time_range 内高于 storage_threshold 的数据库资源的列表。
+> - 输出是在所定义的 time_range 内高于 storage_threshold 的数据库资源的列表。
+
+*Intelligent insights 上的警报*
+
+```
+let alert_run_interval = 1h;
+let insights_string = "hitting its CPU limits";
+AzureDiagnostics
+| where Category == "SQLInsights" and status_s == "Active" 
+| where TimeGenerated > ago(alert_run_interval)
+| where rootCauseAnalysis_s contains insights_string
+| distinct ResourceId
+```
+
+> [!NOTE]
+> - 设置此警报的前提要求是受监视的数据库将 SQLInsights 诊断日志流式传输到解决方案。
+> - 此查询要求将警报规则设置为以与 alert_run_interval 相同的频率运行以避免重复的结果。 此规则应当设置为当存在来自查询的结果时（> 0 个结果）触发。
+> - 请自定义 alert_run_interval 来指定时间范围以检查在配置为将 SQLInsights 日志流式传输到解决方案的数据库上是否发生了此条件。
+> - 请自定义 insights_string 来捕获 Insights 根本原因分析文本的输出。 这是可以从现有见解使用的解决方案的 UI 中显示的同一文本。 另外，还可以使用下面的查询来查看在你的订阅上生成的所有见解的文本。 可以使用查询的输出来获取用于在 Insights 上设置警报的不同字符串。
+
+```
+AzureDiagnostics
+| where Category == "SQLInsights" and status_s == "Active" 
+| distinct rootCauseAnalysis_s
+```
 
 ## <a name="next-steps"></a>后续步骤
 

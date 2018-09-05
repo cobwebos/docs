@@ -1,67 +1,82 @@
 ---
-title: 在 Azure 逻辑应用中使用 Slack 连接器 | Microsoft Docs
-description: 在逻辑应用中连接到 Slack
+title: 从 Azure 逻辑应用连接到 Slack | Microsoft Docs
+description: 使用 Azure 逻辑应用自动执行任务和工作流，用以监视文件以及管理你的 Slack 帐户中的通道、组和消息
 services: logic-apps
-documentationcenter: ''
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: 234cad64-b13d-4494-ae78-18b17119ba24
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: 234cad64-b13d-4494-ae78-18b17119ba24
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 88b134a90ac385ad957d76f420fe85dc2dbbf751
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+tags: connectors
+ms.date: 08/25/2018
+ms.openlocfilehash: 7af2db528866d687064e854e00e43e81d2601b2b
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296217"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43042319"
 ---
-# <a name="get-started-with-the-slack-connector"></a>Slack 连接器入门
-Slack 是一款团队通信工具，可将所有团队通信归于一处，可即时搜索，并且随时随地可用。 
+# <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 Slack
 
-若要立即开始创建逻辑应用，请参阅[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+使用 Azure 逻辑应用和 Slack 连接器，可以创建用于监视 Slack 文件以及管理 Slack 通道、消息和组等等的自动化任务和工作流，例如：
 
-## <a name="create-a-connection-to-slack"></a>创建到 Slack 的连接
-要使用 Slack 连接，首先创建**连接**，然后为以下属性提供详细信息： 
+* 监视何时创建了新文件。
+* 创建、列出和加入通道 
+* 发布消息。
+* 创建组并设置“请勿打扰”。
 
-| 属性 | 必选 | 说明 |
-| --- | --- | --- |
-| 令牌 |是 |提供 Slack 凭据 |
+可以使用触发器从 Slack 帐户获取响应，并使输出可用于其他操作。 可以使用通过 Slack 帐户执行任务的操作。 还可以让其他操作使用来自 Slack 操作的输出。 例如，当创建了新文件时，你可以使用 Office 365 Outlook 连接器发送电子邮件。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-按照以下步骤登录 Slack 并在逻辑应用中完成 Slack **连接**配置：
+## <a name="prerequisites"></a>先决条件
 
-1. 选择“重复周期”
-2. 选择“频率”并输入“间隔”
-3. 选择“添加操作”  
-   ![配置 Slack][1]  
-4. 在搜索框中输入“Slack”，并等待搜索返回在名称中带有 Slack 的所有项
-5. 选择“Slack - 发布消息”
-6. 选择“登录到 Slack”：  
-   ![配置 Slack][2]
-7. 提供用于登录的 Slack 凭据以向应用程序授权    
-   ![配置 Slack][3]  
-8. 将重定向到组织的登录页面。 **授权** Slack 与逻辑应用交互：      
-   ![配置 Slack][5] 
-9. 授权完成后，将重定向到逻辑应用，通过配置“Slack - 获取所有消息”部分完成它。 添加所需的其他触发器和操作。  
-   ![配置 Slack][6]
-10. 通过选择菜单（在顶部）中的“保存”保存工作。
+* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
 
-## <a name="connector-specific-details"></a>特定于连接器的详细信息
+* [Slack](https://slack.com/) 帐户和用户凭据
 
-在[连接器详细信息](/connectors/slack/)中查看在 Swagger 中定义的触发器和操作，并查看限制。
+  你的凭据授权逻辑应用创建连接并访问你的 Slack 帐户。
 
-## <a name="more-connectors"></a>更多连接器
-返回到 [API 列表](apis-list.md)。
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
-[1]: ./media/connectors-create-api-slack/connectionconfig1.png
-[2]: ./media/connectors-create-api-slack/connectionconfig2.png 
-[3]: ./media/connectors-create-api-slack/connectionconfig3.png
-[4]: ./media/connectors-create-api-slack/connectionconfig4.png
-[5]: ./media/connectors-create-api-slack/connectionconfig5.png
-[6]: ./media/connectors-create-api-slack/connectionconfig6.png
+* 要在其中访问 Slack 帐户的逻辑应用。 若要使用 Slack 触发器启动，请[创建空白的逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 Slack 操作，请使用一个触发器启动逻辑应用，例如 Slack 触发器或其他个触发器（例如**定期**触发器）。
+
+## <a name="connect-to-slack"></a>连接到 Slack
+
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+
+1. 登录到 [Azure门户](https://portal.azure.com)，然后在逻辑应用设计器中打开你的逻辑应用（如果尚未打开）。
+
+1. 对于空白逻辑应用，请在搜索框中输入“slack”作为筛选器。 在触发器列表下，选择所需的触发器。 
+
+   -或-
+
+   对于现有逻辑应用，请在要添加操作的最后一个步骤下，选择“新建步骤”。 
+   在搜索框中，输入“slack”作为筛选器。 
+   在操作列表下，选择所需的操作。
+
+   若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 
+   选择出现的加号 (**+**)，然后选择“添加操作”。
+
+1. 如果提示你登录到 Slack，请登录到你的 Slack 工作区。 
+
+   ![登录到 Slack 工作区](./media/connectors-create-api-slack/slack-sign-in-workspace.png)
+
+1. 授权你的逻辑应用进行访问。
+
+   ![授权访问 Slack](./media/connectors-create-api-slack/slack-authorize-access.png)
+
+1. 为所选触发器或操作提供必要的详细信息。 若要继续构建逻辑应用的工作流，请添加更多操作。
+
+## <a name="connector-reference"></a>连接器参考
+
+有关触发器、操作和限制（请参阅连接器的 OpenAPI（以前称为 Swagger）说明）的技术详细信息，请查看连接器的[参考页](/connectors/slack/)。
+
+## <a name="get-support"></a>获取支持
+
+* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](http://aka.ms/logicapps-wish)。
+
+## <a name="next-steps"></a>后续步骤
+
+* 了解其他[逻辑应用连接器](../connectors/apis-list.md)

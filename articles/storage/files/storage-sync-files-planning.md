@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: a98c8ac65de930eabcedea2a009769ed6d245216
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: a7d62531492695be6ec148c3bf7b9786b2a428cf
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617186"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247389"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -67,18 +67,66 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 > [!Important]  
 > Windows 系统卷上不支持对服务器终结点进行云分层。
 
-## <a name="azure-file-sync-interoperability"></a>Azure 文件同步互操作性 
-本部分介绍 Azure 文件同步与 Windows Server 功能和角色以及第三方解决方案的互操作性。
+## <a name="azure-file-sync-system-requirements-and-interoperability"></a>Azure 文件同步系统要求和互操作性 
+本部分介绍了 Azure 文件同步代理的系统要求以及与 Windows Server 功能和角色以及第三方解决方案的互操作性。
 
-### <a name="supported-versions-of-windows-server"></a>支持的 Windows Server 版本
-目前，Azure 文件同步支持的 Windows Server 版本为：
+### <a name="evaluation-tool"></a>评估工具
+在部署 Azure 文件同步之前，应当使用 Azure 文件同步评估工具评估它是否与你的系统兼容。 此工具是一个 AzureRM PowerShell cmdlet，它检查你的文件系统和数据集的潜在问题，例如不受支持的字符或不受支持的 OS 版本。 请注意，其检查涵盖了下面提到的大多数但并非全部功能；建议你仔细读完本部分的剩余内容，以确保你的部署顺利进行。 
 
-| 版本 | 支持的 SKU | 支持的部署选项 |
-|---------|----------------|------------------------------|
-| Windows Server 2016 | 数据中心和标准版 | 完全（带 UI 的服务器） |
-| Windows Server 2012 R2 | 数据中心和标准版 | 完全（带 UI 的服务器） |
+#### <a name="download-instructions"></a>下载说明
+1. 请确保已安装了最新版本的 PackageManagement 和 PowerShellGet（这允许你安装预览版模块）
+    
+    ```PowerShell
+        Install-Module -Name PackageManagement -Repository PSGallery -Force
+        Install-Module -Name PowerShellGet -Repository PSGallery -Force
+    ```
+ 
+2. 重启 PowerShell
+3. 安装模块
+    
+    ```PowerShell
+        Install-Module -Name AzureRM.StorageSync -AllowPrerelease
+    ```
 
-将来的 Windows Server 版本将在发布后添加。 Windows 旧版本可能根据用户的反馈添加。
+#### <a name="usage"></a>使用情况  
+可以采用以下多种不同的方式调用评估工具：可以执行系统检查、数据集检查或者同时执行这两种检查。 若要同时执行系统和数据集检查，请使用以下命令： 
+
+```PowerShell
+    Invoke-AzureRmStorageSyncCompatibilityCheck -Path <path>
+```
+
+若要仅测试数据集，请使用以下命令：
+```PowerShell
+    Invoke-AzureRmStorageSyncCompatibilityCheck -Path <path> -SkipSystemChecks
+```
+ 
+若要仅测试系统要求，请使用以下命令：
+```PowerShell
+    Invoke-AzureRmStorageSyncCompatibilityCheck -ComputerName <computer name>
+```
+ 
+若要以 CSV 格式显示结果，请使用以下命令：
+```PowerShell
+    $errors = Invoke-AzureRmStorageSyncCompatibilityCheck […]
+    $errors | Select-Object -Property Type, Path, Level, Description | Export-Csv -Path <csv path>
+```
+
+### <a name="system-requirements"></a>系统要求
+- 运行 Windows Server 2012 R2 或 Windows Server 2016 的服务器 
+
+    | 版本 | 支持的 SKU | 支持的部署选项 |
+    |---------|----------------|------------------------------|
+    | Windows Server 2016 | 数据中心和标准版 | 完全（带 UI 的服务器） |
+    | Windows Server 2012 R2 | 数据中心和标准版 | 完全（带 UI 的服务器） |
+
+    将来的 Windows Server 版本将在发布后添加。 Windows 旧版本可能根据用户的反馈添加。
+
+- 最少具有 2GB 内存的服务器
+
+    > [!Important]  
+    > 如果服务器在启用了动态内存的虚拟机中运行，则至少应当为该 VM 配置 2048MB 内存。
+    
+- 使用 NTFS 文件系统进行了格式化的本地附加卷
 
 > [!Important]  
 > 我们建议使用 Windows 更新提供的最新更新，将用于 Azure 文件同步的所有服务器保持最新。 

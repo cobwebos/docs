@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/08/2018
 ms.reviewer: pharring
 ms.author: mbullwin
-ms.openlocfilehash: b180c7e8d26acc86aa1d1982ace92efafa85f9ef
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: d4c27c8297fb5a2ad13a245279a206d00fc4f8b1
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37115285"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144119"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET 应用中发生异常时的调试快照
 
@@ -251,7 +251,8 @@ Azure 订阅的所有者可以检查快照。 其他用户必须获得所有者�
 ## <a name="current-limitations"></a>当前限制
 
 ### <a name="publish-symbols"></a>发布符号
-快照调试程序要求符号文件位于生产服务器上，这样它才能在 Visual Studio 中解码变量并提供调试体验。 默认情况下，在发布到应用服务时，Visual Studio 2017 版本 15.2 会发布适用于发行版本的符号。 在以前的版本中，需要将以下代码行添加到发布配置文件 `.pubxml`，以便在发布模式下发布符号：
+快照调试程序要求符号文件位于生产服务器上，这样它才能在 Visual Studio 中解码变量并提供调试体验。
+默认情况下，在发布到应用服务时，Visual Studio 2017 版本 15.2（或更高版本）会发布适用于发行版本的符号。 在以前的版本中，需要将以下代码行添加到发布配置文件 `.pubxml`，以便在发布模式下发布符号：
 
 ```xml
     <ExcludeGeneratedDebugSymbol>False</ExcludeGeneratedDebugSymbol>
@@ -348,14 +349,14 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
     DateTime=2018-03-09T01:47:19.4614027Z
 ```
 
-对于未托管于应用服务的应用程序，上传程序日志与小型转储位于同一文件夹：`%TEMP%\Dumps\<ikey>`（其中 `<ikey>` 是检测密钥）。
+对于未托管于应用服务中的应用程序，上传程序日志与小型转储位于同一文件夹：`%TEMP%\Dumps\<ikey>`（其中 `<ikey>` 是检测密钥）。
 
 ### <a name="troubleshooting-cloud-services"></a>云服务故障排除
 对于云服务中的角色而言，默认临时文件夹可能太小，无法容纳小型转储文件，从而导致丢失快照。
 所需的空间取决于应用程序的总工作集量和并发快照数。
 32 位 ASP.NET Web 角色的工作集通常在 200 MB 到 500 MB 之间。
 允许存在至少两个并发快照。
-例如，如果应用程序使用 1 GB 的总工作集，则应确保是否至少有 2 GB 的磁盘空间来存储快照。
+例如，如果应用程序使用 1 GB 的总工作集，则应确保是否至少有 2 GB 的磁盘空间可用来存储快照。
 按照这些步骤为云服务角色配置快照的专用本地资源。
 
 1. 通过编辑云服务定义 (.csdef) 文件将新的本地资源添加到云服务中。 以下示例使用 5 GB 大小定义名为 `SnapshotStore` 的资源。
@@ -400,6 +401,49 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
       <!-- Other SnapshotCollector configuration options -->
     </Add>
    </TelemetryProcessors>
+   ```
+
+### <a name="overriding-the-shadow-copy-folder"></a>重写影子副本文件夹
+
+当快照收集器启动时，它会尝试在磁盘上查找适合用于运行快照上传程序进程的文件夹。 所选的文件夹称为影子副本文件夹。
+
+快照收集器检查几个已知位置，并确保它有权复制快照上传程序二进制文件。 使用了以下环境变量：
+- Fabric_Folder_App_Temp
+- LOCALAPPDATA
+- APPDATA
+- TEMP
+
+如果找不到合适的文件夹，则快照收集器将报告一个错误，指出“找不到合适的影子副本文件夹。”
+
+如果复制失败，则快照收集器会报告一个 `ShadowCopyFailed` 错误。
+
+如果无法启动上传程序，则快照收集器会报告一个 `UploaderCannotStartFromShadowCopy` 错误。 消息的正文通常包含 `System.UnauthorizedAccessException`。 发生此错误通常是因为应用程序正在权限降低的帐户下运行。 此帐户有权向影子副本文件夹进行写入，但无权执行代码。
+
+因为这些错误通常发生在启动期间，所以它们后面通常会跟有一个 `ExceptionDuringConnect` 错误，指出“上传程序无法启动。”
+
+若要解决这些错误，可以通过 `ShadowCopyFolder` 配置选项手动指定影子副本文件夹。 例如，使用 ApplicationInsights.config：
+
+   ```xml
+   <TelemetryProcessors>
+    <Add Type="Microsoft.ApplicationInsights.SnapshotCollector.SnapshotCollectorTelemetryProcessor, Microsoft.ApplicationInsights.SnapshotCollector">
+      <!-- Override the default shadow copy folder. -->
+      <ShadowCopyFolder>D:\SnapshotUploader</ShadowCopyFolder>
+      <!-- Other SnapshotCollector configuration options -->
+    </Add>
+   </TelemetryProcessors>
+   ```
+
+或者，如果将 appsettings.json 用于 .NET Core 应用程序，则使用：
+
+   ```json
+   {
+     "ApplicationInsights": {
+       "InstrumentationKey": "<your instrumentation key>"
+     },
+     "SnapshotCollectorConfiguration": {
+       "ShadowCopyFolder": "D:\\SnapshotUploader"
+     }
+   }
    ```
 
 ### <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>使用 Application Insights 搜索查找附带快照的异常

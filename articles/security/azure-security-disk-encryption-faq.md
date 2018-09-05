@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/30/2018
+ms.date: 08/24/2018
 ms.author: mstewart
-ms.openlocfilehash: 98b8883a5ab0096102ab7daf90b5b2791a6f7e41
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: b93ad4d6d4637b3060d92fb5e17747294c7e6211
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389569"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885986"
 ---
 # <a name="azure-disk-encryption-faq"></a>Azure 磁盘加密 FAQ
 
@@ -39,7 +39,7 @@ Azure 磁盘加密正式版支持 Azure 资源管理器模板、Azure PowerShell
 
 ## <a name="which-virtual-machine-tiers-does-azure-disk-encryption-support"></a>Azure 磁盘加密支持哪些虚拟机层？
 
-Azure 磁盘加密可在标准层 VM 上使用，包括 [A、D、DS、G、GS 和 F](https://azure.microsoft.com/pricing/details/virtual-machines/) 系列 IaaS VM。 还可用于使用高级存储的 VM。 它不适用于基本层 VM。
+Azure 磁盘加密可在标准层 VM 上使用，包括 [A、D、DS、G、GS 和 F](https://azure.microsoft.com/pricing/details/virtual-machines/) 系列 IaaS VM。 在具有高级存储的 VM 上也可用。 它在基本层 VM 上不可用。
 
 ## <a name="bkmk_LinuxOSSupport"></a>Azure 磁盘加密支持哪些 Linux 分发版？
 
@@ -66,9 +66,9 @@ Azure 磁盘加密可在标准层 VM 上使用，包括 [A、D、DS、G、GS 和
 | CentOS | 6.5 | 数据磁盘 |
 | openSUSE | 13.2 | 数据磁盘 |
 | SLES | 12 SP1 | 数据磁盘 |
-| SLES | Priority:12-SP1 | 数据磁盘 |
+| SLES | 优先级：12-SP1 | 数据磁盘 |
 | SLES | HPC 12 | 数据磁盘 |
-| SLES | Priority:11-SP4 | 数据磁盘 |
+| SLES | 优先级：11-SP4 | 数据磁盘 |
 | SLES | 11 SP4 | 数据磁盘 |
 
 
@@ -96,11 +96,17 @@ Azure 磁盘加密可在标准层 VM 上使用，包括 [A、D、DS、G、GS 和
 
 ## <a name="what-are-the-prerequisites-to-configure-azure-disk-encryption"></a>配置 Azure 磁盘加密的先决条件是什么？
 
-Azure 磁盘加密具有先决条件。 请参阅 [Azure 磁盘加密先决条件](azure-security-disk-encryption-prerequisites.md)一文，创建 Azure Active Directory 应用程序、创建新的 Key Vault 或设置现有 Key Vault 进行磁盘加密访问，以启用加密并保护机密和密钥。 有关密钥加密密钥支持方案的详细信息，请参阅 [Azure 磁盘加密概述](azure-security-disk-encryption-overview.md)。
+Azure 磁盘加密具有先决条件。 若要创建新的 Key Vault 或设置现有 Key Vault 进行磁盘加密访问，以启用加密并保护机密和密钥，请参阅 [Azure 磁盘加密先决条件](azure-security-disk-encryption-prerequisites.md)一文。 有关密钥加密密钥支持方案的详细信息，请参阅 [Azure 磁盘加密概述](azure-security-disk-encryption-overview.md)。
 
-## <a name="where-can-i-get-more-information-on-how-to-use-powershell-for-configuring-azure-disk-encryption"></a>在哪里可以获得有关如何使用 PowerShell 配置 Azure 磁盘加密的详细信息？
+## <a name="what-are-the-prerequisites-to-configure-azure-disk-encryption-with-an-azure-ad-app-previous-release"></a>使用 Azure AD 应用（早期版本）配置 Azure 磁盘加密的先决条件是什么？
 
-我们发布了一些不错的文章来介绍如何执行基本的 Azure 磁盘加密任务以及更高级的方案。 对于基本任务，请参阅[探讨如何使用 Azure PowerShell 启用 Azure 磁盘加密 – 第 1 部分](https://blogs.msdn.microsoft.com/azuresecurity/2015/11/16/explore-azure-disk-encryption-with-azure-powershell/)。 对于更高级的方案，请参阅[探讨如何使用 Azure PowerShell 启用 Azure 磁盘加密 – 第 2 部分](https://blogs.msdn.microsoft.com/azuresecurity/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2/)。
+Azure 磁盘加密具有先决条件。 请参阅 [Azure 磁盘加密先决条件](azure-security-disk-encryption-prerequisites-aad.md)一文，创建 Azure Active Directory 应用程序、创建新的 Key Vault 或设置现有 Key Vault 进行磁盘加密访问，以启用加密并保护机密和密钥。 有关密钥加密密钥支持方案的详细信息，请参阅 [Azure 磁盘加密概述](azure-security-disk-encryption-overview.md)。
+
+## <a name="is-azure-disk-encryption-using-an-azure-ad-app-previous-release-still-supported"></a>是否仍然支持使用 Azure AD 应用（早期版本）进行 Azure 磁盘加密？
+是的。 仍然支持使用 Azure AD 应用进行磁盘加密。 不过，当加密新的 VM 时，建议使用新方法而不是使用 Azure AD 应用进行加密。 
+
+## <a name="can-i-migrate-vms-that-were-encrypted-with-an-azure-ad-app-to-encryption-without-an-azure-ad-app"></a>是否可以在不使用 Azure AD 应用的情况下将通过 Azure AD 应用加密的 VM 迁移到此加密？
+当前，对于通过 Azure AD 应用加密的计算机，没有直接迁移路径可用来在不使用 Azure AD 应用的情况下迁移到此加密。 此外，也没有直接路径用来将未使用 Azure AD 应用的加密迁移到使用 AD 应用的加密。 
 
 ## <a name="what-version-of-azure-powershell-does-azure-disk-encryption-support"></a>Azure 磁盘加密支持哪些 Azure PowerShell 版本？
 
@@ -121,7 +127,7 @@ Azure 磁盘加密具有先决条件。 请参阅 [Azure 磁盘加密先决条�
 
 为在 Linux 上获得最佳结果，建议使用以下工作流：
 * 从与所需的 OS 发行版和版本相对应的未修改存储库映像启动
-* 备份要加密的任何已装载的驱动器。  这是为了可在失败时进行恢复，例如 VM 在加密完成前重启。
+* 备份要加密的任何已装载的驱动器。  这是为了在失败时能够进行恢复，例如当 VM 在加密完成前重启时。
 * 加密（可能需要多个小时或甚至几天时间，具体取决于 VM 的特征和任何附加数据磁盘的大小）
 * 根据需要自定义软件，并将其添加到映像。
 
@@ -140,6 +146,6 @@ Azure 磁盘加密具有先决条件。 请参阅 [Azure 磁盘加密先决条�
 ## <a name="next-steps"></a>后续步骤
 本文档详细描述了有关 Azure 磁盘加密的最常见问题。 有关此服务及其功能的详细信息，请参阅以下文章：
 
+- [Azure 磁盘加密概述](azure-security-disk-encryption-overview.md)
 - [在 Azure 安全中心应用磁盘加密](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
-- [加密 Azure 虚拟机](https://docs.microsoft.com/azure/security-center/security-center-disk-encryption)
 - [Azure 静态数据加密](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)

@@ -1,73 +1,81 @@
 ---
-title: 在 Azure 逻辑应用中使用 SMTP 连接器 | Microsoft Docs
-description: 使用 Azure 应用服务创建逻辑应用。 连接到 SMTP 以发送电子邮件。
+title: 从 Azure 逻辑应用连接到 SMTP | Microsoft Docs
+description: 使用 Azure 逻辑应用自动执行任务和工作流，用以通过 SMTP（简单邮件传输协议）帐户发送电子邮件
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: d4141c08-88d7-4e59-a757-c06d0dc74300
 ms.service: logic-apps
-ms.devlang: multiple
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: d4141c08-88d7-4e59-a757-c06d0dc74300
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 07/15/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 516110abc1786d99bc719d47d61475cdc2ebcc4b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+tags: connectors
+ms.date: 08/25/2018
+ms.openlocfilehash: 90af33574093cfbe529093c7091ee6988f043aa6
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296061"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43052016"
 ---
-# <a name="get-started-with-the-smtp-connector"></a>SMTP 连接器入门
-连接到 SMTP 以发送电子邮件。
+# <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>使用 Azure 逻辑应用从 SMTP 帐户发送电子邮件
 
-若要使用[任何连接器](apis-list.md)，首先需要创建逻辑应用。 可通过 [立即创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md) 开始操作。
+使用 Azure 逻辑应用和简单邮件传输协议 (SMTP) 连接器，可以创建从 SMTP 帐户发送电子邮件的自动化任务和工作流。 还可以让其他操作使用来自 SMTP 操作的输出。 例如，在 SMTP 发送电子邮件后，你可以通过 Slack 连接器通知你在 Slack 中的团队。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+
+## <a name="prerequisites"></a>先决条件
+
+* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
+
+* SMTP 帐户和用户凭据
+
+  你的凭据授权逻辑应用创建连接并访问你的 SMTP 帐户。
+
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
+
+* 要在其中访问 SMTP 帐户的逻辑应用。 若要使用 SMTP 操作，请使用触发器启动逻辑应用，例如，如果你有 Salesforce 帐户，则可使用 Salesforce 触发器。
+
+  例如，可以使用 Salesforce 触发器**当创建了记录时**来启动逻辑应用。 
+  每当在 Salesforce 中创建了新记录（例如潜在顾客）时，此触发器都会触发。 
+  在此触发器后，可以跟随执行 SMTP **发送电子邮件**操作。 这样一来，当创建了新记录时，逻辑应用都会从你的 SMTP 帐户发送一封关于新记录的电子邮件。
 
 ## <a name="connect-to-smtp"></a>连接到 SMTP
-在逻辑应用访问任何服务之前，必须先创建到该服务的*连接*。 [连接](connectors-overview.md)提供逻辑应用和其他服务之间的连接性。 例如，若要连接到 SMTP，首先需要 SMTP 连接。 若要创建连接，请输入通常用于访问要连接到的服务的凭据。 因此在 SMTP 示例中，输入连接名称、SMTP 服务器地址和用户登录信息的凭据，以便创建到 SMTP 的连接。  
 
-### <a name="create-a-connection-to-smtp"></a>创建到 SMTP 的连接
-> [!INCLUDE [Steps to create a connection to SMTP](../../includes/connectors-create-api-smtp.md)]
-> 
-> 
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-## <a name="use-an-smtp-trigger"></a>使用 SMTP 触发器
-触发器是用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](../logic-apps/logic-apps-overview.md#logic-app-concepts)。
+1. 登录到 [Azure门户](https://portal.azure.com)，然后在逻辑应用设计器中打开你的逻辑应用（如果尚未打开）。
 
-在此示例中，SMTP 没有自己的触发器。 因此，使用“Salesforce - 创建对象时”触发器。 此触发器在 Salesforce 中新建对象时激活。 对于此示例，我们将设置为每次在 Salesforce 中新建潜在客户时，都使用 SMTP 连接器进行“发送电子邮件”操作，并附带所创建的新潜在客户的通知。
+1. 在要添加 SMTP 操作的最后一个步骤下，选择“新建步骤”。 
 
-1. 在逻辑应用设计器上的搜索框中输入“salesforce”，并选择“Salesforce - 创建对象时”触发器。  
-   ![](../../includes/media/connectors-create-api-salesforce/trigger-1.png)  
-2. 显示“创建对象时”控件。
-   ![](../../includes/media/connectors-create-api-salesforce/trigger-2.png)  
-3. 选择“对象类型”，并从对象列表中选择“潜在客户”。 在此步骤中，将创建一个触发器，每当在 Salesforce 中新建潜在客户时，该触发器都将通知逻辑应用。  
-   ![](../../includes/media/connectors-create-api-salesforce/trigger3.png)  
-4. 已创建触发器。  
-   ![](../../includes/media/connectors-create-api-salesforce/trigger-4.png)  
+   若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 
+   选择出现的加号 (**+**)，然后选择“添加操作”。
 
-## <a name="use-an-smtp-action"></a>使用 SMTP 操作
-操作是指在逻辑应用中定义的工作流所执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-overview.md#logic-app-concepts)。
+1. 在搜索框中，输入“smtp”作为筛选器。 在操作列表下，选择所需的操作。
 
-现在已添加触发器，请按照以下步骤添加 SMTP 操作，该操作会在 Salesforce 中新建潜在客户时发生。
+1. 出现提示时，提供此连接信息：
 
-1. 选择“+ 新步骤”，添加要在新建潜在客户时采取的操作。  
-   ![](../../includes/media/connectors-create-api-salesforce/trigger4.png)  
-2. 选择“添加操作”。 这会打开可搜索要采取的任何操作的搜索框。  
-   ![](../../includes/media/connectors-create-api-smtp/using-smtp-action-2.png)  
-3. 输入“smtp”搜索与 SMTP 相关的操作。  
-4. 选择“SMTP - 发送电子邮件”作为新建潜在客户时要采取的操作。 操作控制块打开。 如果之前未在设计器块中建立 SMTP 连接，必须执行此操作。  
-   ![](../../includes/media/connectors-create-api-smtp/smtp-2.png)    
-5. 在 **SMTP - 发送电子邮件**块中输入所需的电子邮件信息。  
-   ![](../../includes/media/connectors-create-api-smtp/using-smtp-action-4.PNG)  
-6. 保存工作，以便激活工作流。  
+   | 属性 | 必需 | 说明 |
+   |----------|----------|-------------|
+   | **连接名称** | 是 | 到 SMTP 服务器的连接的名称 | 
+   | **SMTP 服务器地址** | 是 | SMTP 服务器的地址 | 
+   | **用户名** | 是 | SMTP 帐户的用户名 | 
+   | **密码** | 是 | SMTP 帐户的密码 | 
+   | **SMTP 服务器端口** | 否 | SMTP 服务器上你要使用的特定端口 | 
+   | **启用 SSL?** | 否 | 启用或禁用 SSL 加密。 | 
+   |||| 
 
-## <a name="connector-specific-details"></a>特定于连接器的详细信息
+1. 为所选操作提供必要的详细信息。 
 
-在[连接器详细信息](/connectors/smtpconnector/)中查看在 Swagger 中定义的触发器和操作，并查看限制。
+1. 保存逻辑应用，或继续构建逻辑应用的工作流。
 
-## <a name="more-connectors"></a>更多连接器
-返回到 [API 列表](apis-list.md)。
+## <a name="connector-reference"></a>连接器参考
+
+有关触发器、操作和限制（请参阅连接器的 OpenAPI（以前称为 Swagger）说明）的技术详细信息，请查看连接器的[参考页](/connectors/smtpconnector/)。
+
+## <a name="get-support"></a>获取支持
+
+* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](http://aka.ms/logicapps-wish)。
+
+## <a name="next-steps"></a>后续步骤
+
+* 了解其他[逻辑应用连接器](../connectors/apis-list.md)

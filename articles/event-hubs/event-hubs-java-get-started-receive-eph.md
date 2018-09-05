@@ -7,14 +7,14 @@ manager: timlt
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 06/12/2018
+ms.date: 08/26/2018
 ms.author: shvija
-ms.openlocfilehash: 1472dd6917b241ee60da316a7f7aeb09e5db646b
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: ee1339d02fb23282d3589a80385f982eae2865fe
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40007041"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128160"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-java"></a>使用 Java 从 Azure 事件中心接收事件
 
@@ -54,18 +54,18 @@ EventProcessorHost 是一个 Java 类，通过在这些事件中心管理持久�
 
 ### <a name="create-a-java-project-using-the-eventprocessor-host"></a>EventProcessor Host 创建一个 Java 项目
 
-事件中心的 Java 客户端库可用于 [Maven 中央存储库][Maven Package]中的 Maven 项目，并且可以使用 Maven 项目文件中的以下依赖项声明进行引用。 当前版本为 1.0.0：    
+事件中心的 Java 客户端库可用于 [Maven 中央存储库][Maven Package]中的 Maven 项目，并且可以使用 Maven 项目文件中的以下依赖项声明进行引用。 项目 azure-eventhubs-eph 的当前版本为 2.0.1，项目 azure-eventhubs 的当前版本为 1.0.2：    
 
 ```xml
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-eventhubs</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.2</version>
 </dependency>
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-eventhubs-eph</artifactId>
-    <version>1.0.0</version>
+    <version>2.0.1</version>
 </dependency>
 ```
 
@@ -242,6 +242,46 @@ EventProcessorHost 是一个 Java 类，通过在这些事件中心管理持久�
     ```
 
 本教程使用了一个 EventProcessorHost 实例。 若要增加吞吐量，建议运行多个 EventProcessorHost 实例，最好是在单独的计算机上运行。  这也会提供冗余。 在那些情况下，为了对接收到的事件进行负载均衡，各个不同实例会自动相互协调。 如果希望多个接收方都各自处理 *全部* 事件，则必须使用 **ConsumerGroup** 概念。 在从不同计算机中接收事件时，根据部署 EventProcessorHost 实例的计算机（或角色）来指定该实例的名称可能会很有用。
+
+## <a name="publishing-messages-to-eventhub"></a>将消息发布到 EventHub
+
+在使用者检索消息之前，必须先由发布者将消息发布到分区。 值得注意的是，当使用 com.microsoft.azure.eventhubs.EventHubClient 对象上的 sendSync() 方法同步将消息发布到事件中心时，可以将消息发送到特定分区或以循环方式分发到所有可用分区，具体取决于 是否指定了分区键。
+
+当指定了表示分区键的字符串时，将对该键进行哈希处理以确定要将事件发送到哪个分区。
+
+如果未设置分区键，则消息将循环分发到所有可用分区
+
+```java
+// Serialize the event into bytes
+byte[] payloadBytes = gson.toJson(messagePayload).getBytes(Charset.defaultCharset());
+
+// Use the bytes to construct an {@link EventData} object
+EventData sendEvent = EventData.create(payloadBytes);
+
+// Transmits the event to event hub without a partition key
+// If a partition key is not set, then we will round-robin to all topic partitions
+eventHubClient.sendSync(sendEvent);
+
+//  the partitionKey will be hash'ed to determine the partitionId to send the eventData to.
+eventHubClient.sendSync(sendEvent, partitionKey);
+
+```
+
+## <a name="implementing-a-custom-checkpointmanager-for-eventprocessorhost-eph"></a>为 EventProcessorHost (EPH) 实现自定义 CheckpointManager
+
+对于默认实现与你的用例不兼容的情况，此 API 提供了一种机制来实现自定义检查点管理器。
+
+默认检查点管理器使用 blob 存储，但是，如果你使用自己的实现替代了 EPH 使用的检查点管理器，则可以使用所需的任何存储来为你的检查点管理器实现提供支持。
+
+你必须创建一个实现了接口 com.microsoft.azure.eventprocessorhost.ICheckpointManager 的类
+
+使用检查点管理器的自定义实现 (com.microsoft.azure.eventprocessorhost.ICheckpointManager)
+
+在你的实现中，你可以替代默认检查点机制并根据你自己的数据存储（SQL Server、CosmosDB、Redis 缓存，等等）实现我们自己的检查点。 对于为你的检查点管理器实现提供支持的存储，建议使其可供为使用者组处理事件的所有 EPH 实例访问。
+
+你可以使用你的环境中将提供的任何数据存储。
+
+com.microsoft.azure.eventprocessorhost.EventProcessorHost 类提供了 2 个构造函数，可以使用它们来替代你的 EventProcessorHost 的检查点管理器。
 
 ## <a name="next-steps"></a>后续步骤
 

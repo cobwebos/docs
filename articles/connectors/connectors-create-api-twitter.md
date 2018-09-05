@@ -1,105 +1,96 @@
 ---
-title: 了解如何在逻辑应用中使用 Twitter 连接器 | Microsoft Docs
-description: 使用 REST API 参数的 Twitter 连接器概述
-services: ''
-documentationcenter: ''
+title: 从 Azure 逻辑应用连接到 Twitter | Microsoft Docs
+description: 使用 Azure 逻辑应用自动执行任务和工作流，用以从你的 Twitter 帐户监视和管理推文，获取关于关注者、你关注的用户、其他用户、时间线和其他内容的数据
+services: logic-apps
+ms.service: logic-apps
+ms.suite: integration
 author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
+ms.author: estfan
+ms.reviewer: klam, LADocs
 ms.assetid: 8bce2183-544d-4668-a2dc-9a62c152d9fa
-ms.service: multiple
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 07/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: b44a973a94043f71f2fd9803abca47652363d8a1
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+tags: connectors
+ms.date: 08/25/2018
+ms.openlocfilehash: eea70d979a69a4855b6eeb892d1705ecadaa8434
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296537"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918639"
 ---
-# <a name="get-started-with-the-twitter-connector"></a>Twitter 连接器入门
-借助 Twitter 连接器，可以：
+# <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 Twitter
 
-* 发布推文和获取推文
-* 访问时间线、好友和关注者
-* 执行本文中所述的任何其他操作和触发器
+使用 Azure 逻辑应用和 Twitter 连接器，可以创建用于监视和管理 Twitter 中你关心的数据（例如推文、用户和关注的用户、时间线和其他内容）以及执行其他操作的自动化任务和工作流，例如：
 
-若要使用[任何连接器](apis-list.md)，首先需要创建逻辑应用。 可通过 [立即创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md) 开始操作。  
+* 监视、发布和搜索推文。
+* 获取诸如关注者、关注的用户、时间线之类的数据和其他数据。
+
+可以使用触发器从 Twitter 帐户获取响应，并使输出可用于其他操作。 可以使用通过 Twitter 帐户执行任务的操作。 还可以让其他操作使用来自 Twitter 操作的输出。 例如，当出现具有特定井号标签的新推文时，你可以使用 Slack 连接器发送消息。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+
+## <a name="prerequisites"></a>先决条件
+
+* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
+
+* Twitter 帐户和用户凭据
+
+   你的凭据授权逻辑应用创建连接并访问你的 Twitter 帐户。
+
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
+
+* 要在其中访问 Twitter 帐户的逻辑应用。 若要使用 Twitter 触发器启动，请[创建空白的逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 Twitter 操作，请使用其他触发器（例如**定期**触发器）启动逻辑应用。
 
 ## <a name="connect-to-twitter"></a>连接到 Twitter
-在逻辑应用访问任何服务之前，必须先创建到该服务的*连接*。 [连接](connectors-overview.md)提供逻辑应用和其他服务之间的连接性。  
 
-### <a name="create-a-connection-to-twitter"></a>创建到 Twitter 的连接
-> [!INCLUDE [Steps to create a connection to Twitter](../../includes/connectors-create-api-twitter.md)]
-> 
-> 
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-## <a name="use-a-twitter-trigger"></a>使用 Twitter 触发器
-触发器是用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](../logic-apps/logic-apps-overview.md#logic-app-concepts)。
+1. 登录到 [Azure门户](https://portal.azure.com)，然后在逻辑应用设计器中打开你的逻辑应用（如果尚未打开）。
 
-在此示例中，使用“发布新推文时”触发器搜索 #Seattle。 如果找到 #Seattle，则使用推文中的文本更新 Dropbox 中的文件。 在企业示例中，可搜索公司名称并使用推文中的文本更新 SQL 数据库。
+1. 选择一个路径： 
 
-1. 在逻辑应用设计器上的搜索框中输入“twitter”，并选择“Twitter - 发布新推文时”触发器   
-   ![Twitter 触发器图 1](./media/connectors-create-api-twitter/trigger-1.png)  
-2. 在“搜索文本”控件中输入“#Seattle”  
-   ![Twitter 触发器图 2](./media/connectors-create-api-twitter/trigger-2.png) 
+   * 对于空白逻辑应用，请在搜索框中输入“twitter”作为筛选器。 
+   在触发器列表下，选择所需的触发器。 
 
-此时，已使用将开始运行工作流中的其他触发器和操作的触发器配置了逻辑应用。 
+     -或-
 
-> [!NOTE]
-> 若要使逻辑应用正常工作，必须包含至少一个触发器和一个操作。 按照下一部分中的步骤添加操作。
+   * 对于现有逻辑应用： 
+   
+     * 在要添加操作的最后一个步骤下，选择“新建步骤”。 
 
-## <a name="add-a-condition"></a>添加条件
-我们只关注用户超过 50 个的用户的推文。 因此，先将确认关注者数的条件添加到逻辑应用。  
+       -或-
 
-1. 选择“+ 新步骤”，添加要在新推文中找到 #Seattle 时采取的操作  
-   ![Twitter 操作图 1](../../includes/media/connectors-create-api-twitter/action-1.png)  
-2. 选择**添加条件**链接。  
-   ![Twitter 条件图 1](../../includes/media/connectors-create-api-twitter/condition-1.png)   
-   这会打开“条件”控件，可在该控件中检查*等于*、*小于*、*大于*、*包含*等条件。  
-   ![Twitter 条件图 2](../../includes/media/connectors-create-api-twitter/condition-2.png)   
-3. 选择“选择值”控件。 在此控件中，可从任何之前操作或触发器中选择一个或多个属性。 此属性值条件的计算结果为 true 或 false。
-   ![Twitter 条件图 3](../../includes/media/connectors-create-api-twitter/condition-3.png)   
-4. 选择“...”展开属性列表，以便看到所有可用属性。        
-   ![Twitter 条件图 4](../../includes/media/connectors-create-api-twitter/condition-4.png)   
-5. 选择“关注者计数”属性。    
-   ![Twitter 条件图 5](../../includes/media/connectors-create-api-twitter/condition-5.png)   
-6. 请注意，关注者计数属性现在在值控件中。    
-   ![Twitter 条件图 6](../../includes/media/connectors-create-api-twitter/condition-6.png)   
-7. 从运算符列表中选择“大于”。    
-   ![Twitter 条件图 7](../../includes/media/connectors-create-api-twitter/condition-7.png)   
-8. 输入 50 作为*大于*运算符的操作数。  
-   现在添加条件。 使用菜单中的“保存”链接保存工作。    
-   ![Twitter 条件图 8](../../includes/media/connectors-create-api-twitter/condition-8.png)   
+     * 在要在其中添加操作的两个步骤之间，将鼠标指针移到步骤之间的箭头上。 
+     选择出现的加号 (**+**)，然后选择“添加操作”。
+     
+       在搜索框中，输入“twitter”作为筛选器。 
+       在操作列表下，选择所需的操作。
 
-## <a name="use-a-twitter-action"></a>使用 Twitter 操作
-操作是指在逻辑应用中定义的工作流所执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-overview.md#logic-app-concepts)。  
+1. 如果提示你登录到 Twitter，请立即登录以便授权你的逻辑应用进行访问。
 
-现在已有触发器，请添加一个使用该触发器找到的推文内容发布新推文的操作。 在本演练中，仅发布关注者超过 50 个的用户的推文。  
+1. 为所选触发器或操作提供必要的详细信息，并继续构建逻辑应用的工作流。
 
-在下一步中，添加一个 Twitter 操作，该操作使用具有多于 50 个关注者的用户所发布的每条推文的某些属性发布推文。  
+## <a name="examples"></a>示例
 
-1. 选择“添加操作”。 此步骤会打开搜索控件，可在该控件中搜索其他操作和触发器。  
-   ![Twitter 条件图 9](../../includes/media/connectors-create-api-twitter/condition-9.png)   
-2. 在搜索框中输入“twitter”，并选择“Twitter - 发布推文”操作。 此步骤会打开“发布推文”控件，可在该控件中输入要发布的推文的所有详细信息。      
-   ![Twitter 操作图 1-5](../../includes/media/connectors-create-api-twitter/action-1-5.png)   
-3. 选择“推文文本”控件。 来自逻辑应用中的之前操作和触发器的所有输出现在都可见。 可选择其中任何输出，并将它们用作新推文的推文文本的一部分。     
-   ![Twitter 操作图 2](../../includes/media/connectors-create-api-twitter/action-2.png)   
-4. 选择“用户名”   
-5. 紧跟在“用户名”后，在推文文本控件中输入“说:”。
-6. 选择“推文文本”。       
-   ![Twitter 操作图 3](../../includes/media/connectors-create-api-twitter/action-3.png)   
-7. 若要激活工作流，请保存工作，并发送带有 #Seattle 井号标签的推文。
+### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Twitter 触发器：发布新推文时
 
+当触发器检测到新推文（例如带有井号标签 #Seattle）时，触发器会启动一个逻辑应用工作流。 因此，例如，当发现这些推文时，你可以向存储中添加一个包含推文内容的文件，例如使用 Dropbox 连接器添加到 Dropbox 帐户中。 
 
-## <a name="connector-specific-details"></a>特定于连接器的详细信息
+（可选）可以包括一个条件来规定合格的推文必须来自至少具有指定数量的关注者的用户。
 
-在[连接器详细信息](/connectors/twitterconnector/)中查看在 Swagger 中定义的触发器和操作，并查看限制。 
+**企业示例**：可以使用此触发器监视有关你的公司的推文并将推文的内容上传到 SQL 数据库。
+
+### <a name="twitter-action-post-a-tweet"></a>Twitter 操作：发布推文
+
+此操作发布一篇推文，但你可以设置操作，使该推文包含前面所述的触发器发现的推文中的内容。 
+
+## <a name="connector-reference"></a>连接器参考
+
+有关触发器、操作和限制（请参阅连接器的 OpenAPI（以前称为 Swagger）说明）的技术详细信息，请查看连接器的[参考页](/connectors/twitterconnector/)。
+
+## <a name="get-support"></a>获取支持
+
+* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](http://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+
+* 了解其他[逻辑应用连接器](../connectors/apis-list.md)

@@ -1,6 +1,6 @@
 ---
-title: 教程：Azure Active Directory 与 Lesson.ly 的集成 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 和 Lesson.ly 之间配置单一登录。
+title: 教程：Azure Active Directory 与 Lessonly.com 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 与 Lessonly.com 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 13c053b41782fbf1a64d93b500938680f464cf0f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 050e8efed38c40d8c7da292c0d6865869a07c9f9
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438512"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43121703"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-lessonly"></a>教程：Azure Active Directory 与 Lesson.ly 的集成
+# <a name="tutorial-azure-active-directory-integration-with-lessonlycom"></a>教程：Azure Active Directory 与 Lessonly.com 的集成
 
-本教程介绍如何将 Lesson.ly 与 Azure Active Directory (Azure AD) 集成。
+本教程将介绍如何将 Lessonly.com 与 Azure Active Directory (Azure AD) 进行集成。
 
-将 Lesson.ly 与 Azure AD 集成可提供以下优势：
+将 Lessonly.com 与 Azure AD 集成可提供以下优势：
 
-- 可以在 Azure AD 中控制谁有权访问 Lesson.ly
-- 可以让用户使用其 Azure AD 帐户自动登录到 Lesson.ly（单一登录）
+- 可以在 Azure AD 中控制谁有权访问 Lessonly.com
+- 可以让用户使用其 Azure AD 帐户自动登录到 Lessonly.com（单一登录）
 - 可以在一个中心位置（即 Azure 门户）管理帐户
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要配置 Azure AD 与 Lesson.ly 的集成，需要具有以下项：
+若要配置 Azure AD 与 Lessonly.com 的集成，需要具有以下项：
 
 - Azure AD 订阅
-- 启用了 Lesson.ly 单一登录的订阅
+- 启用了单一登录的 Lessonly.com 订阅
 
 > [!NOTE]
 > 为了测试本教程中的步骤，我们不建议使用生产环境。
@@ -51,13 +51,13 @@ ms.locfileid: "39438512"
 ## <a name="scenario-description"></a>方案描述
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
-1. 从库中添加 Lesson.ly
+1. 从库中添加 Lessonly.com
 1. 配置和测试 Azure AD 单一登录
 
-## <a name="adding-lessonly-from-the-gallery"></a>从库中添加 Lesson.ly
-要配置 Lesson.ly 与 Azure AD 的集成，需要从库中将 Lesson.ly 添加到托管 SaaS 应用列表。
+## <a name="adding-lessonlycom-from-the-gallery"></a>从库中添加 Lessonly.com
+若要配置 Lessonly.com 与 Azure AD 的集成，需要从库中将 Lessonly.com 添加到托管 SaaS 应用列表。
 
-**若要从库中添加 Lesson.ly，请执行以下步骤：**
+**若要从库中添加 Lessonly.com，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
@@ -71,51 +71,50 @@ ms.locfileid: "39438512"
 
     ![应用程序][3]
 
-1. 在搜索框中，键入“Lesson.ly”。
+1. 在搜索框中，键入“Lessonly.com”。
 
-    ![创建 Azure AD 测试用户](./media/lessonly-tutorial/tutorial_lesson.ly_search.png)
+    ![创建 Azure AD 测试用户](./media/lessonly-tutorial/tutorial_lessonly.com_search.png)
 
-1. 在结果窗格中，选择“Lesson.ly”，然后单击“添加”按钮添加该应用程序。
+1. 在结果窗格中，选择“Lessonly.com”，并单击“添加”按钮添加该应用程序。
 
-    ![创建 Azure AD 测试用户](./media/lessonly-tutorial/tutorial_lesson.ly_addfromgallery.png)
+    ![创建 Azure AD 测试用户](./media/lessonly-tutorial/tutorial_lessonly.com_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
-在本部分中，将基于名为“Britta Simon”的测试用户配置并测试 Lesson.ly 的 Azure AD 单一登录。
+在本部分中，将基于名为 Britta Simon 的测试用户配置和测试 Lessonly.com 的 Azure AD 单一登录。
 
-若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Lesson.ly 用户。 换句话说，需要在 Azure AD 用户与 Lesson.ly 中的相关用户之间建立链接关系。
+若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Lessonly.com 用户。 换句话说，需要在 Azure AD 用户与 Lessonly.com 中相关用户之间建立链接关系。
 
-可通过将 Azure AD 中“用户名”的值指定为 Lesson.ly 中“用户名”的值来建立此链接关系。
+通过将 Azure AD 中“用户名”的值指定为 Lessonly.com 中“用户名”的值来建立此链接关系。
 
-若要配置并测试 Lesson.ly 的 Azure AD 单一登录，需要完成以下构建基块：
+若要配置和测试 Lessonly.com 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-1. [创建 Lesson.ly 测试用户](#creating-a-lessonly-test-user) - 在 Lesson.ly 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式。
+1. **[创建 Lessonly.com 测试用户](#creating-a-lessonly-test-user)** - 在 Lessonly.com 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 Lesson.ly 应用程序中配置单一登录。
+在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 Lessonly.com 应用程序中配置单一登录。
 
-**若要配置 Lesson.ly 的 Azure AD 单一登录，请执行以下步骤：**
+**若要配置 Lessonly.com 的 Azure AD 单一登录，请执行以下步骤：**
 
-1. 在 Azure 门户中的“Lesson.ly”应用程序集成页上，单击“单一登录”。
+1. 在 Azure 门户中，在 **Lessonly.com** 应用程序集成页上，单击“单一登录”。
 
     ![配置单一登录][4]
 
 1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
-    ![配置单一登录](./media/lessonly-tutorial/tutorial_lesson.ly_samlbase.png)
+    ![配置单一登录](./media/lessonly-tutorial/tutorial_lessonly.com_samlbase.png)
 
-1. 在“Lesson.ly 域和 URL”部分中，请执行以下步骤：
+1. 在“Lessonly.com 域和 URL”部分中，执行以下步骤：
 
-    ![配置单一登录](./media/lessonly-tutorial/tutorial_lesson.ly_url.png)
+    ![配置单一登录](./media/lessonly-tutorial/tutorial_lessonly.com_url.png)
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：
     | |
     |--|
-    | `https://<companyname>.lesson.ly/signin`|
     | `https://<companyname>.lessonly.com/signin`|
 
     >[!NOTE]
@@ -124,17 +123,16 @@ ms.locfileid: "39438512"
     b. 在“标识符”文本框中，使用以下模式键入 URL：
     | |
     |--|
-    | `https://<companyname>.lesson.ly/auth/saml/metadata`|
     | `https://<companyname>.lessonly.com/auth/saml/metadata`|
 
     > [!NOTE] 
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Lesson.ly 客户端支持团队](mailto:dev@lessonly.com)获取这些值。 
+    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Lessonly.com 客户端支持团队](mailto:dev@lessonly.com)来获取这些值。 
 
 1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
-    ![配置单一登录](./media/lessonly-tutorial/tutorial_lesson.ly_certificate.png)
+    ![配置单一登录](./media/lessonly-tutorial/tutorial_lessonly.com_certificate.png)
 
-1. Lesson.ly 应用程序需要特定格式的 SAML 断言，这要求向“SAML 令牌属性”配置添加自定义属性映射。以下屏幕截图显示一个示例。
+1. Lessonly.com 应用程序需要特定格式的 SAML 断言，这要求向“SAML 令牌属性”配置添加自定义属性映射。以下屏幕截图显示了一个示例。
 
     ![配置单一登录](./media/lessonly-tutorial/tutorial_lessonly_06.png)
            
@@ -163,11 +161,11 @@ ms.locfileid: "39438512"
 
     ![配置单一登录](./media/lessonly-tutorial/tutorial_general_400.png)
 
-1. 在“Lesson.ly 配置”部分，单击“配置 Lesson.ly”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+1. 在“Lessonly.com 配置”部分中，单击“配置 Lessonly.com”以打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
 
-    ![配置单一登录](./media/lessonly-tutorial/tutorial_lesson.ly_configure.png)
+    ![配置单一登录](./media/lessonly-tutorial/tutorial_lessonly.com_configure.png)
 
-1. 若要在“Lesson.ly”端配置单一登录，需要将下载的“证书 (Base64)”和“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”发送给 [Lesson.ly 支持团队](mailto:dev@lessonly.com)。
+1. 若要在 **Lessonly.com** 端配置单一登录，需要将下载的**证书(Base64)** 和**注销 URL、SAML 实体 ID 以及 SAML 单一登录服务 URL** 发送给 [Lessonly.com 支持团队](mailto:dev@lessonly.com)。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -203,30 +201,30 @@ ms.locfileid: "39438512"
 
     d. 单击“创建”。
  
-### <a name="creating-a-lessonly-test-user"></a>创建 Lesson.ly 测试用户
+### <a name="creating-a-lessonlycom-test-user"></a>创建 Lessonly.com 测试用户
 
-本部分的目的是在 Lesson.ly 中创建名为 Britta Simon 的用户。 Novatus 支持在默认情况下启用的实时预配。
+本部分的目的是在 Lessonly.com 中创建名为 Britta Simon 的用户。 Lessonly.com 支持在默认情况下启用的实时预配。
 
-此部分不存在任何操作项。 如果尚不存在用户，则在尝试访问 Lesson.ly 期间会创建一个新用户。
+此部分不存在任何操作项。 如果尚不存在用户，则在尝试访问 Lessonly.com 期间会创建一个新用户。
 
 > [!NOTE]
-> 如果需要手动创建用户，则需联系 [Lesson.ly 支持团队](mailto:dev@lessonly.com)。
+> 如果需要手动创建用户，则需联系 [Lessonly.com 支持团队](mailto:dev@lessonly.com)。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，通过授予 Britta Simon 访问 Lesson.ly 的权限，允许她使用 Azure 单一登录。
+在本部分中，通过向 Britta Simon 授予对 Lessonly.com 的访问权限使她能够使用 Azure 单一登录。
 
 ![分配用户][200] 
 
-**要将 Britta Simon 分配到 Lesson.ly，请执行以下步骤：**
+**若要将 Britta Simon 分配到 Lessonly.com，请执行以下步骤：**
 
 1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
-1. 在应用程序列表中，选择“Lesson.ly”。
+1. 在应用程序列表中，选择“Lessonly.com”。
 
-    ![配置单一登录](./media/lessonly-tutorial/tutorial_lesson.ly_app.png) 
+    ![配置单一登录](./media/lessonly-tutorial/tutorial_lessonly.com_app.png)
 
 1. 在左侧菜单中，单击“用户和组”。
 
@@ -246,7 +244,7 @@ ms.locfileid: "39438512"
 
 本部分旨在使用“访问面板”测试 Azure AD 单一登录配置。
 
-当在访问面板中单击 Lesson.ly 磁贴时，应当会自动登录到 Lesson.ly 应用程序。
+单击访问面板中的 Lessonly.com 磁贴时，应当会自动登录到 Lessonly.com 应用程序。
 
 ## <a name="additional-resources"></a>其他资源
 

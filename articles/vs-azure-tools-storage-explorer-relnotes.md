@@ -14,44 +14,50 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 94ade24f1761700b93ab79d497e273c64c51bddf
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: e3efb19010f36a6ef1fa0a191695a0e2c9f39d19
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990891"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190515"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure 存储资源管理器发行说明
 
-本文包含 Azure 存储资源管理器 1.2.0 发行版及以前版本的发行说明。
+本文包含 Azure 存储资源管理器 1.4.1 发行版及以前版本的发行说明。
 
 [Microsoft Azure 存储资源管理器](./vs-azure-tools-storage-manage-with-storage-explorer.md)是一款独立应用，可用于在 Windows、macOS 和 Linux 上轻松处理 Azure 存储数据。
 
-## <a name="version-130"></a>版本 1.3.0
-2018/07/09
+## <a name="version-141"></a>版本 1.4.1
+2018/08/28
 
-### <a name="download-azure-storage-explorer-130"></a>下载 Azure 存储资源管理器 1.3.0
-- [适用于 Windows 的 Azure 存储资源管理器 1.3.0](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [适用于 Mac 的 Azure 存储资源管理器 1.3.0](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [适用于 Linux 的 Azure 存储资源管理器 1.3.0](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-141"></a>下载 Azure 存储资源管理器 1.4.1
+- [适用于 Windows 的 Azure 存储资源管理器 1.4.1](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [适用于 Mac 的 Azure 存储资源管理器 1.4.1](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [适用于 Linux 的 Azure 存储资源管理器 1.4.1](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="hotfixes"></a>修补程序
+* 首次启动时，存储资源管理器无法生成用来加密敏感数据的密钥。 当使用“快速访问”以及附加资源时，这将导致出现问题。 [#535](https://github.com/Microsoft/AzureStorageExplorer/issues/535)
+* 如果你的帐户不要求其主租户进行 MFA 但要求其他一些租户进行 MFA，则存储资源管理器将无法列出订阅。 现在，在使用此类帐户登录后，存储资源管理器将要求你重新输入凭据并执行 MFA。 [#74](https://github.com/Microsoft/AzureStorageExplorer/issues/74)
+* 存储资源管理器无法从“Azure 德国”和“Azure 美国政府”附加资源。 [#572](https://github.com/Microsoft/AzureStorageExplorer/issues/572)
+* 如果登录到具有相同电子邮件地址的两个帐户，则存储资源管理器有时无法在树视图中显示你的资源。 [#580](https://github.com/Microsoft/AzureStorageExplorer/issues/580)
+* 在较慢的 Windows 计算机上，初始屏幕有时需要很长时间才会显示。 [#586](https://github.com/Microsoft/AzureStorageExplorer/issues/586)
+* 即使已存在附加的帐户或服务，连接对话框也会显示。 [#588](https://github.com/Microsoft/AzureStorageExplorer/issues/588)
 
 ### <a name="new"></a>新建
-* 现在支持访问静态网站使用的 $web 容器。 这使你可以轻松上传和管理网站使用的文件和文件夹。 [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
-* macOS 上的应用栏已经重新组织。 更改包括“文件”菜单、一些快捷键更改以及应用菜单下的几个新命令。 [#99](https://github.com/Microsoft/AzureStorageExplorer/issues/99)
-* 用于登录到 Azure 美国政府的颁发机构终结点已更改为 https://login.microsoftonline.us/
-* 可访问性：当屏幕阅读器处于活动状态时，键盘导航现在可以与用于在右侧显示项目的表格配合使用。 可以使用箭头键在行和列中导航，使用 Enter 调用默认操作，使用上下文菜单键打开项目的上下文菜单，使用 Shift 或 Control 进行多选。 [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
+* 外部资源附加（例如 SAS 连接和模拟器）已显著改进。 现在你可以：
+   * 自定义要附加的资源的显示名称。 [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
+   * 附加到使用不同端口的多个本地模拟器。 [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
+   * 将附加的资源添加到“快速访问”。 [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
+* 存储资源管理器现在支持软删除。 可以：
+   * 通过右键单击你的存储帐户的“Blob 容器”节点来配置软删除策略。
+   * 通过在导航栏旁边的下拉列表中选择“活动的和已删除的 Blob”在 Blob 编辑器中查看软删除的 Blob。
+   * 撤消删除已删除的 Blob。
 
 ### <a name="fixes"></a>修复项
-*  在某些计算机上，子进程需要很长时间才能启动。 当发生这种情况时，会出现“子进程无法及时启动”错误。 分配给子进程用于启动的时间现在已经从 20 秒增加到 90 秒。 如果仍然受此问题影响，请对链接的 GitHub 问题发表评论。 [#281](https://github.com/Microsoft/AzureStorageExplorer/issues/281)
-* 使用没有读取权限的 SAS 时，无法上传大型 blob。 已修改上传逻辑以在这种情况下正常工作。 [#305](https://github.com/Microsoft/AzureStorageExplorer/issues/305)
-* 为容器设置公共访问级别将删除所有访问策略，反之亦然。 现在，在设置两者中的任何一个时，都会保留公共访问级别和访问策略。 [#197](https://github.com/Microsoft/AzureStorageExplorer/issues/197)
-* “AccessTierChangeTime”在“属性”对话框中被截断。 此问题已解决。 [#145](https://github.com/Microsoft/AzureStorageExplorer/issues/145)
-* “创建新目录”对话框中缺少“Microsoft Azure 存储资源管理器 -”前缀。 此问题已解决。 [#299](https://github.com/Microsoft/AzureStorageExplorer/issues/299)
-* 可访问性：使用 VoiceOver 时很难在“添加实体”对话框中导航。 已进行改进。 [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
-* 可访问性：“操作和属性”窗格的“折叠/展开”按钮的背景颜色与“高对比度黑色”主题中的类似 UI 控件不一致。 颜色已更改。 [#123](https://github.com/Microsoft/AzureStorageExplorer/issues/123)
-* 可访问性：在“高对比度黑色”主题中，“属性”对话框中“X”按钮的焦点样式不可见。 此问题已解决。 [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
-* 可访问性：“操作”和“属性”选项卡缺少几个 aria 值，这导致了低于标准的屏幕阅读器体验。 现在已经添加了缺失的 aria 值。 [#316](https://github.com/Microsoft/AzureStorageExplorer/issues/316)
-* 可访问性：左侧的折叠树节点未被赋予 aria 扩展值 false。 此问题已解决。 [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
+* “配置 CORS 设置”操作在高级存储帐户中不再可用，因为高级存储帐户不支持 CORS。 [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
+* SAS 附加的服务现在有一个“共享访问签名”属性。 [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
+* 对于已固定到“快速访问”的 Blob 和 GPV2 存储帐户，现在可使用“设置默认访问层级”操作。 [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
+* 有时候，存储资源管理器无法显示经典存储帐户。 [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
 
 ### <a name="known-issues"></a>已知问题
 * 使用 Azure 存储仿真器或 Azurite 等仿真器时，需要让它们在默认端口上侦听连接。 否则，存储资源管理器无法连接到这些仿真器。
@@ -88,6 +94,7 @@ ms.locfileid: "38990891"
 
 ## <a name="previous-releases"></a>以前的版本
 
+* [版本 1.3.0](#version-130)
 * [版本 1.2.0](#version-120)
 * [版本 1.1.0](#version-110)
 * [版本 1.0.0](#version-100)
@@ -113,6 +120,63 @@ ms.locfileid: "38990891"
 * [版本 0.7.20160129.1](#version-07201601291)
 * [版本 0.7.20160105.0](#version-07201601050)
 * [版本 0.7.20151116.0](#version-07201511160)
+
+## <a name="version-130"></a>版本 1.3.0
+2018/07/09
+
+### <a name="new"></a>新建
+* 现在支持访问静态网站使用的 $web 容器。 这使你可以轻松上传和管理网站使用的文件和文件夹。 [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
+* macOS 上的应用栏已经重新组织。 更改包括“文件”菜单、一些快捷键更改以及应用菜单下的几个新命令。 [#99](https://github.com/Microsoft/AzureStorageExplorer/issues/99)
+* 用于登录到 Azure 美国政府的颁发机构终结点已更改为 https://login.microsoftonline.us/
+* 可访问性：当屏幕阅读器处于活动状态时，键盘导航现在可以与用于在右侧显示项目的表格配合使用。 可以使用箭头键在行和列中导航，使用 Enter 调用默认操作，使用上下文菜单键打开项目的上下文菜单，使用 Shift 或 Control 进行多选。 [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
+
+### <a name="fixes"></a>修复项
+*  在某些计算机上，子进程需要很长时间才能启动。 当发生这种情况时，会出现“子进程无法及时启动”错误。 分配给子进程用于启动的时间现在已经从 20 秒增加到 90 秒。 如果仍然受此问题影响，请对链接的 GitHub 问题发表评论。 [#281](https://github.com/Microsoft/AzureStorageExplorer/issues/281)
+* 使用没有读取权限的 SAS 时，无法上传大型 blob。 已修改上传逻辑以在这种情况下正常工作。 [#305](https://github.com/Microsoft/AzureStorageExplorer/issues/305)
+* 为容器设置公共访问级别将删除所有访问策略，反之亦然。 现在，在设置两者中的任何一个时，都会保留公共访问级别和访问策略。 [#197](https://github.com/Microsoft/AzureStorageExplorer/issues/197)
+* “AccessTierChangeTime”在“属性”对话框中被截断。 此问题已解决。 [#145](https://github.com/Microsoft/AzureStorageExplorer/issues/145)
+* “创建新目录”对话框中缺少“Microsoft Azure 存储资源管理器 -”前缀。 此问题已解决。 [#299](https://github.com/Microsoft/AzureStorageExplorer/issues/299)
+* 可访问性：使用 VoiceOver 时很难在“添加实体”对话框中导航。 已进行改进。 [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
+* 可访问性：“操作和属性”窗格的“折叠/展开”按钮的背景颜色与“高对比度黑色”主题中的类似 UI 控件不一致。 颜色已更改。 [#123](https://github.com/Microsoft/AzureStorageExplorer/issues/123)
+* 可访问性：在“高对比度黑色”主题中，“属性”对话框中“X”按钮的焦点样式不可见。 此问题已解决。 [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
+* 可访问性：“操作”和“属性”选项卡缺少几个 aria 值，这导致了低于标准的屏幕阅读器体验。 现在已经添加了缺失的 aria 值。 [#316](https://github.com/Microsoft/AzureStorageExplorer/issues/316)
+* 可访问性：左侧的折叠树节点未被赋予 aria 扩展值 false。 此问题已解决。 [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
+
+### <a name="known-issues"></a>已知问题
+* 从通过 SAS URI 附加的资源（例如 Blob 容器）进行分离可能会导致一个错误，该错误会阻止其他附件正确显示。 若要解决此问题，只需刷新组节点。 有关详细信息，请参阅[此问题](https://github.com/Microsoft/AzureStorageExplorer/issues/537)。
+* 如果使用用于 Mac 的 VS 并曾经创建过自定义 AAD 配置，可能无法登录。 若要解决此问题，请删除 ~/.IdentityService/AadConfigurations 的内容。 如果这样做不能取消阻止你，请对[此问题](https://github.com/Microsoft/AzureStorageExplorer/issues/97)发表评论。
+* Azurite 还没有完全实现所有存储 API。 因此，在使用 Azurite 进行开发存储时可能会出现意外的错误或行为。
+* 在极少数情况下，树焦点可能会停滞在“快速访问”上。 要使焦点取消停滞，可以单击“全部刷新”。
+* 由于 NodeJS 中的 bug，从 OneDrive 文件夹上传不正常工作。 该 bug 已修复，但尚未集成到 Electron 中。
+* 当以 Azure Stack 为目标时，将某些文件作为追加 blob 进行上传可能会失败。
+* 对任务单击“取消”后，可能需要一段时间才能取消该任务。 这是因为我们使用的是[此处](https://github.com/Azure/azure-storage-node/issues/317)介绍的“取消筛选”解决办法。
+* 如果选择错误的 PIN/智能卡证书，需要重启存储资源管理器使其忘记该选择。
+* 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
+* Azure Stack 不支持以下功能，在使用 Azure Stack 时尝试使用这些功能可能会导致出现意外错误：
+   * 文件共享
+   * 访问层级
+   * 软删除
+* 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x)。
+* 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* 对于 Ubuntu 17.04 用户，需要安装 GConf - 通过运行以下命令，然后重启计算机即可完成：
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
 
 ## <a name="version-120"></a>版本 1.2.0
 06/12/2018
