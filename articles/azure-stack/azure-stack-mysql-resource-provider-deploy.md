@@ -11,21 +11,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2018
+ms.date: 09/04/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 2f5661ddac16a3024335bd633623f7ada2fc5870
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 6d6ee22bd1691f1af6956330b3299a1483c588f7
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42139533"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696625"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>在 Azure Stack 上部署 MySQL 资源提供程序
 
 可以使用 MySQL Server 资源提供程序将 MySQL 数据库公开为 Azure Stack 服务。 MySQL 资源提供程序以服务的形式在 Windows Server 2016 Server Core 虚拟机 (VM) 上运行。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必要條件
 
 需要先实施几个先决条件，然后才能部署 Azure Stack MySQL 资源提供程序。 若要满足这些要求，请在可访问特权终结点 VM 的计算机上完成本文中的步骤。
 
@@ -38,21 +38,20 @@ ms.locfileid: "42139533"
   >[!NOTE]
   >若要在无法访问 Internet 的系统上部署 MySQL 提供程序，请将 [mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) 文件复制到本地路径。 使用 **DependencyFilesLocalPath** 参数提供路径名称。
 
-* 资源提供程序有一个相应的 Azure Stack 最低内部版本。 请务必下载适用于你运行的 Azure Stack 版本的正确二进制文件：
+* 资源提供程序有一个相应的 Azure Stack 最低内部版本。
 
-    | Azure Stack 版本 | MySQL RP 版本|
+    | Azure Stack 的最低版本 | MySQL RP 版本|
     | --- | --- |
     | 版本 1804 (1.0.180513.1)|[MySQL RP 版本 1.1.24.0](https://aka.ms/azurestackmysqlrp1804) |
-    | 版本 1802 (1.0.180302.1) | [MySQL RP 版本 1.1.18.0](https://aka.ms/azurestackmysqlrp1802)|
     |     |     |
 
-- 请确保满足数据中心集成先决条件：
+* 请确保满足数据中心集成先决条件：
 
     |先决条件|参考|
     |-----|-----|
     |正确设置了条件性 DNS 转发。|[Azure Stack 数据中心集成 - DNS](azure-stack-integrate-dns.md)|
     |资源提供程序的入站端口处于打开状态。|[Azure Stack 数据中心集成 - 发布终结点](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound)|
-    |正确设置了 PKI 证书使用者和 SAN。|[Azure Stack 部署必备 PKI 先决条件](azure-stack-pki-certs.md#mandatory-certificates)<br>[Azure Stack 部署 PaaS 证书先决条件](azure-stack-pki-certs.md#optional-paas-certificates)|
+    |正确设置了 PKI 证书使用者和 SAN。|[Azure Stack 部署必需 PKI 先决条件](azure-stack-pki-certs.md#mandatory-certificates)[Azure Stack 部署 PaaS 证书先决条件](azure-stack-pki-certs.md#optional-paas-certificates)|
     |     |     |
 
 ### <a name="certificates"></a>证书
@@ -81,12 +80,13 @@ _仅适用于集成系统安装_。 必须提供 [Azure Stack 部署 PKI 要求]
 
 可以在命令行中指定这些参数。 如果未指定参数或任何参数验证失败，系统会提示提供所需的参数。
 
-| 参数名称 | 说明 | 注释或默认值 |
+| 参数名称 | Description | 注释或默认值 |
 | --- | --- | --- |
 | **CloudAdminCredential** | 访问特权终结点时所需的云管理员凭据。 | _必需_ |
 | **AzCredential** | Azure Stack 服务管理员帐户的凭据。 使用部署 Azure Stack 时所用的相同凭据。 | _必需_ |
 | **VMLocalCredential** | MySQL 资源提供程序 VM 的本地管理员帐户的凭据。 | _必需_ |
 | **PrivilegedEndpoint** | 特权终结点的 IP 地址或 DNS 名称。 |  _必需_ |
+| **AzureEnvironment** | 用于部署 Azure Stack 的服务管理员帐户在 azure 环境。 如果它不是 ADFS，则需要仅。 受支持的环境名称**AzureCloud**， **AzureUSGovernment**，或使用中国 Azure Active Directory，如果**AzureChinaCloud**。 | AzureCloud |
 | **DependencyFilesLocalPath** | 对于集成系统，必须将证书 .pfx 文件放在此目录中。 对于已断开连接的环境，请将 [mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) 下载到此目录。 还可以在此处复制一个 Windows Update MSU 包。 | 可选（对于集成系统或断开连接的系统，则为强制） |
 | **DefaultSSLCertificatePassword** | .pfx 证书的密码。 | _必需_ |
 | **MaxRetryCount** | 操作失败时，想要重试每个操作的次数。| 2 |

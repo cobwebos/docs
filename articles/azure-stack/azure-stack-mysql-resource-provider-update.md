@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2018
+ms.date: 09/04/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 4e894eaee6bb151b480204905d0a98324f5c353b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 86e72787347cddd399fbdde4cd943b86ba48375f
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049589"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697826"
 ---
 # <a name="update-the-mysql-resource-provider"></a>更新 MySQL 资源提供程序 
 
@@ -28,9 +28,10 @@ ms.locfileid: "39049589"
 更新 Azure Stack 内部版本时，可能会发布新的 SQL 资源提供程序适配器。 虽然现有的适配器可以继续使用，但仍建议尽快更新到最新的内部版本。 
 
 >[!IMPORTANT]
->发布时的顺序，必须安装更新。 不能跳过版本。 到中的版本列表，请参阅[部署的资源提供程序先决条件](.\azure-stack-mysql-resource-provider-deploy.md#prerequisites)。
+>必须按更新的发布顺序安装更新。 不能跳过版本。 请参阅[部署资源提供程序的先决条件](.\azure-stack-mysql-resource-provider-deploy.md#prerequisites)中的版本列表。
 
 ## <a name="update-the-mysql-resource-provider-adapter-integrated-systems-only"></a>更新 MySQL 资源提供程序适配器（仅限已集成的系统）
+
 更新 Azure Stack 内部版本时，可能会发布新的 SQL 资源提供程序适配器。 虽然现有的适配器可以继续使用，但仍建议尽快更新到最新的内部版本。  
  
 若要更新资源提供程序，请使用 **UpdateMySQLProvider.ps1** 脚本。 此过程类似于安装资源提供程序时所使用的过程，如本文[部署资源提供程序](#deploy-the-resource-provider)部分所述。 资源提供程序的下载包中提供此脚本。 
@@ -38,7 +39,7 @@ ms.locfileid: "39049589"
 **UpdateMySQLProvider.ps1** 脚本可使用最新的资源提供程序代码创建新的 VM，并可将设置从旧 VM 迁移到新 VM。 迁移的设置包括数据库和宿主服务器信息，以及必需的 DNS 记录。 
 
 >[!NOTE]
->建议从市场管理下载最新的 Windows Server 2016 Core 映像。 如果需要安装更新，您可以放置**单个**MSU 包本地依赖项路径中的。 如果在此位置有多个 MSU 文件，该脚本将失败。
+>建议从市场管理下载最新的 Windows Server 2016 Core 映像。 如需安装更新，可以将**单个** MSU 包放置在本地依赖项路径中。 如果此位置中有多个 MSU 文件，则脚本将失败。
 
 此脚本需要使用的参数正是针对 DeployMySqlProvider.ps1 脚本进行描述的参数。 请同样在此处提供证书。  
 
@@ -91,12 +92,13 @@ $tempDir\UpdateMySQLProvider.ps1 -AzCredential $AdminCreds `
 ### <a name="updatemysqlproviderps1-parameters"></a>UpdateMySQLProvider.ps1 参数 
 可以在命令行中指定这些参数。 如果未指定参数或任何参数验证失败，系统会提示提供所需的参数。 
 
-| 参数名称 | 说明 | 注释或默认值 | 
+| 参数名称 | Description | 注释或默认值 | 
 | --- | --- | --- | 
 | **CloudAdminCredential** | 访问特权终结点时所需的云管理员凭据。 | _必需_ | 
 | **AzCredential** | Azure Stack 服务管理员帐户的凭据。 使用部署 Azure Stack 时所用的相同凭据。 | _必需_ | 
 | **VMLocalCredential** |SQL 资源提供程序 VM 的本地管理员帐户的凭据。 | _必需_ | 
 | **PrivilegedEndpoint** | 特权终结点的 IP 地址或 DNS 名称。 |  _必需_ | 
+| **AzureEnvironment** | 用于部署 Azure Stack 的服务管理员帐户在 azure 环境。 如果它不是 ADFS，则需要仅。 受支持的环境名称**AzureCloud**， **AzureUSGovernment**，或使用中国 Azure Active Directory，如果**AzureChinaCloud**。 | AzureCloud |
 | **DependencyFilesLocalPath** | 同样必须将证书 .pfx 文件放在此目录中。 | _可选_（对于多节点部署是_必需_的） | 
 | **DefaultSSLCertificatePassword** | .pfx 证书的密码。 | _必需_ | 
 | **MaxRetryCount** | 操作失败时，想要重试每个操作的次数。| 2 | 

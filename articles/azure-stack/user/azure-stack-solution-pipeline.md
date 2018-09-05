@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/08/2018
+ms.date: 09/04/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 5fbce0c20e66eec0e7d7023344051fcf302af677
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 391cc4ca4b34149aeda54a60bfe6f6949e5a379b
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382606"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697741"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>教程：将应用部署到 Azure 和 Azure Stack
 
@@ -48,7 +48,7 @@ ms.locfileid: "43382606"
 * [什么是持续集成？](https://www.visualstudio.com/learn/what-is-continuous-integration/)
 * [什么是持续交付？](https://www.visualstudio.com/learn/what-is-continuous-delivery/)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必要條件
 
 需要准备好组件才能生成混合 CI/CD 管道。 以下组件的准备需要一定的时间：
 
@@ -95,7 +95,7 @@ ms.locfileid: "43382606"
 
 ## <a name="prepare-the-private-build-and-release-agent-for-visual-studio-team-services-integration"></a>准备用于 Visual Studio Team Services 集成的专用生成和发布代理
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>必要條件
 
 Visual Studio Team Services (VSTS) 使用服务主体对 Azure 资源管理器进行身份验证。 VSTS 必须使用“参与者”角色在 Azure Stack 订阅中预配资源。
 
@@ -108,10 +108,11 @@ Visual Studio Team Services (VSTS) 使用服务主体对 Azure 资源管理器�
 
 ### <a name="create-a-service-principal"></a>创建服务主体
 
-请参阅[服务主体创建](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)说明进行操作以创建服务主体，然后选择**Web 应用 /API**应用程序类型或[使用此 PowerShell 脚本](https://github.com/Microsoft/vsts-rm-extensions/blob/master/TaskModules/powershell/Azure/SPNCreation.ps1#L5)如下所述[此处](https://docs.microsoft.com/en-us/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal)。
+请参阅[服务主体创建](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)说明创建服务主体。 选择**Web 应用 /API**为应用程序类型或[使用 PowerShell 脚本](https://github.com/Microsoft/vsts-rm-extensions/blob/master/TaskModules/powershell/Azure/SPNCreation.ps1#L5)文章中所述[创建与现有服务的 Azure 资源管理器服务连接主体](https://docs.microsoft.com/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal)。
 
- > [!Note]
- > 如果将使用该脚本创建 Azure Stack Azure 资源管理器终结点，你需要传入`-azureStackManagementURL`并`-environmentName`参数，即 https://management.local.azurestack.external/并*AzureStack*。
+ > [!Note]  
+ > 如果使用脚本创建 Azure Stack Azure 资源管理器终结点，则需要传递 **-azureStackManagementURL**参数和 **-environmentName**参数。 例如：  
+> `-azureStackManagementURL https://management.local.azurestack.external -environmentName AzureStack`
 
 ### <a name="create-an-access-key"></a>创建访问密钥
 
@@ -264,17 +265,17 @@ Visual Studio Team Services (VSTS) 使用服务主体对 Azure 资源管理器�
 9. 在“添加用户和组”中输入用户名，然后从用户列表中选择该用户。
 10. 选择“保存更改”。
 
-## <a name="create-azure-stack-endpoint"></a>创建 Azure Stack 终结点
+## <a name="create-an-azure-stack-endpoint"></a>创建 Azure Stack 终结点
 
-检查[这](https://docs.microsoft.com/en-us/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal)文档，以使用现有服务主体创建的服务连接并使用以下映射：
+可以按照中的说明[创建 Azure 资源管理器服务连接的现有服务主体](https://docs.microsoft.com/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal)文章以使用现有服务主体创建的服务连接并使用以下映射：
 
 - 环境： AzureStack
 - 环境 URL： 类似于 `https://management.local.azurestack.external`
 - 从 Azure Stack 的订阅 ID： 用户订阅 ID
 - 订阅名称： 从 Azure Stack 用户订阅名称
-- 服务主体客户端 ID： 中的主体 ID[这](https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal)这篇文章中的部分。
+- 服务主体客户端 ID： 中的主体 ID[这](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal)这篇文章中的部分。
 - 服务主体键： 来自同一篇文章 （或者如果使用脚本的密码） 的密钥。
-- 租户 ID： 租户 ID 获取[此处](https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id)。
+- 租户 ID： 租户 ID 检索以下处的指令[获取租户 ID](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id)。
 
 现在，创建端点时，Azure Stack 连接到 VSTS 是可供使用。 Azure Stack 中的生成代理会从 VSTS 获取指令，然后，此代理会传达与 Azure Stack 通信所需的终结点信息。
 
@@ -316,7 +317,7 @@ Visual Studio Team Services (VSTS) 使用服务主体对 Azure 资源管理器�
 ### <a name="create-the-build-definition"></a>创建生成定义
 
 1. 使用可以创建生成定义的帐户登录到 VSTS。
-2. 导航到项目的“生成 Web 应用程序”页。
+2. 导航到**生成 Web 应用程序**项目页。
 
 3. 在“参数”中，添加 **-r win10-x64** 代码。 在 .Net Core 中触发独立部署时需要此代码。
 
@@ -454,7 +455,7 @@ Visual Studio Team Services (VSTS) 和 Team Foundation Server (TFS) 提供高度
 
     可以选择部署前或部署后审批活动的“操作”列中的人员图标，查看部署批准者（或拒绝者）及其提供的消息。
 
-2. 部署完成后，整个日志文件会显示在右窗格中。 选择左窗格中的任何**步骤**即可查看单个步骤（例如“初始化作业”）的日志文件。 有了查看单个日志的功能，就可以更轻松地跟踪和调试整体部署的部件。 也可**保存**某个步骤的日志文件，或者**以 Zip 格式下载所有日志**。
+2. 部署完成后，整个日志文件会显示在右窗格中。 可以选择任意**步骤**若要查看的日志文件的一个步骤中，如"初始化作业"的左窗格中。 有了查看单个日志的功能，就可以更轻松地跟踪和调试整体部署的部件。 也可**保存**某个步骤的日志文件，或者**以 Zip 格式下载所有日志**。
 
     ![发布日志](media\azure-stack-solution-hybrid-pipeline\203.png)
 
