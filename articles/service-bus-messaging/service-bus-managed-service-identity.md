@@ -3,7 +3,7 @@ title: Azure 服务总线的托管服务标识预览版 | Microsoft Docs
 description: 将托管服务标识与 Azure 服务总线配合使用
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2018
-ms.author: sethm
-ms.openlocfilehash: 30df312e349bd6f6ebd1f38141075382be2522a2
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.author: spelluru
+ms.openlocfilehash: e886089bbceff5fc1963044c4c1f2f7a012ea2a2
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397978"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697724"
 ---
 # <a name="managed-service-identity-preview"></a>托管服务标识（预览）
 

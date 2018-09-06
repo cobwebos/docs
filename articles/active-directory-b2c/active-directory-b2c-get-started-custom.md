@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e25103d2fcbfc70be7f96f5c0e5fa6abe13fe393
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 36fad697758273246d567dfa1010f0e6bfc68939
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446735"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344556"
 ---
 # <a name="azure-active-directory-b2c-get-started-with-custom-policies"></a>Azure Active Directory B2C：自定义策略入门
 
@@ -77,7 +77,7 @@ Azure AD B2C 要求注册两个额外的应用程序，引擎使用这些应用�
 4. 选择“新建应用程序注册”。
    * 使用 `IdentityExperienceFramework` 作为“名称”。
    * 对于“应用程序类型”，使用“Web 应用/API”。
-   * 对于“登录 URL”，使用 `https://login.microsoftonline.com/yourtenant.onmicrosoft.com`，其中 `yourtenant` 是你的 Azure AD B2C 租户域名。
+   * 对于“登录 URL”，使用 `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com`，其中 `yourtenant` 是你的 Azure AD B2C 租户域名。
 5. 选择**创建**。
 6. 创建后，选择新创建的应用程序 IdentityExperienceFramework。<br>
    * 选择“属性”。<br>
@@ -89,7 +89,7 @@ Azure AD B2C 要求注册两个额外的应用程序，引擎使用这些应用�
 1. 选择“新建应用程序注册”。
    * 使用 `ProxyIdentityExperienceFramework` 作为“名称”。
    * 对于“应用程序类型”，使用“本机”。
-   * 对于“重定向 URI”，使用 `https://login.microsoftonline.com/yourtenant.onmicrosoft.com`，其中 `yourtenant` 是你的 Azure AD B2C 租户。
+   * 对于“重定向 URI”，使用 `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com`，其中 `yourtenant` 是你的 Azure AD B2C 租户。
 1. 选择**创建**。
 1. 创建后，选择应用程序 ProxyIdentityExperienceFramework。<br>
    * 选择“属性”。 <br>

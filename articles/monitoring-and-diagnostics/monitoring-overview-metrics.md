@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 3501c8d35968ecf8e32c806dfb05ccfebc7f4386
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: d61ac48aa7c51bc4b215a7d56b1bbedfdc613f9f
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264211"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287550"
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Microsoft Azure 中的指标概述
 本文介绍 Microsoft Azure 中的指标及其优点，以及如何开始使用它们。  
@@ -107,7 +107,7 @@ Azure Monitor 预览版还提供全新的指标制图体验。 通过这种体�
 
  ![Azure 监视器中的指标和警报规则](./media/monitoring-overview-metrics/MetricsOverview4.png)
 
-较新的指标警报能够监视资源的多个指标和阈值，然后通过[操作组](/monitoring-action-groups.md)通知用户。 可以[从此处](https://aka.ms/azuremonitor/near-real-time-alerts)了解有关较新警报的详细信息。
+较新的指标警报能够监视资源的多个指标和阈值，然后通过[操作组](monitoring-action-groups.md)通知用户。 可以[从此处](https://aka.ms/azuremonitor/near-real-time-alerts)了解有关较新警报的详细信息。
 
 
 ### <a name="autoscale-your-azure-resources"></a>自动缩放 Azure 资源

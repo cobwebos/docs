@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: jeedes
-ms.openlocfilehash: ca5bf7ae49cf120c0566419ccadeff92433c6467
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: ea2b32b43fedacba7b8a60db29762c32fda65aa5
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42819227"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306336"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>教程：Azure Active Directory 与 ArcGIS Enterprise 的集成
 
@@ -120,7 +120,7 @@ ms.locfileid: "42819227"
     在“登录 URL”文本框中，使用以下模式键入 URL： `https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [ArcGIS Enterprise 客户端支持团队](mailto:nshampur@esri.com)获取这些值。 可从“设置标识提供者”部分获取“标识符”值，本教程稍后会提供相关说明。
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [ArcGIS Enterprise 客户端支持团队](mailto:support@esri.com)获取这些值。 可从“设置标识提供者”部分获取“标识符”值，本教程稍后会提供相关说明。
 
 5. 在“SAML 签名证书”部分上，单击”复制”按钮来复制**应用联合元数据 URL**，并将其粘贴到记事本。
 
@@ -195,7 +195,7 @@ ms.locfileid: "42819227"
 本部分的目的是在 ArcGIS Enterprise 中创建名为 Britta Simon 的用户。 ArcGIS Enterprise 支持在默认情况下启用的实时预配。 此部分不存在任何操作项。 如果用户尚不存在，则在尝试访问 ArcGIS Enterprise 期间会创建一个新用户。
 
 > [!Note]
-> 如果需要手动创建用户，请联系 [ArcGIS Enterprise 支持团队](mailto:nshampur@esri.com)。
+> 如果需要手动创建用户，请联系 [ArcGIS Enterprise 支持团队](mailto:support@esri.com)。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

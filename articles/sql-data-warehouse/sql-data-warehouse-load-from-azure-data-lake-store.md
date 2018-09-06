@@ -3,19 +3,19 @@ title: 教程：从 Azure Data Lake Store 加载到 Azure SQL 数据仓库 | Mic
 description: 使用 PolyBase 外部表将数据从 Azure Data Lake Store 加载到 Azure SQL 数据仓库中。
 services: sql-data-warehouse
 author: ckarst
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: c6030d1951c22dddfe6df01225c63cf503a370ac
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 04676db3048cf747e9a20d91a404f29c6cfc6853
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32188372"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306387"
 ---
 # <a name="load-data-from-azure-data-lake-store-to-sql-data-warehouse"></a>将数据从 Azure Data Lake Store 加载到 SQL 数据仓库
 使用 PolyBase 外部表将数据从 Azure Data Lake Store 加载到 Azure SQL 数据仓库中。 虽然可以对存储在 ADLS 中的数据运行 即席查询，但我们建议将数据导入 SQL 数据仓库以获取最佳性能。

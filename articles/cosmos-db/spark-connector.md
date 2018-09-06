@@ -10,20 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: ramkris
-ms.openlocfilehash: 57ad621006a79148aaa6e9435d6ede446539c648
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: e7ed0049e64a7740063f2fab7bdfddff38d45ed9
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714747"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287704"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>使用 Apache Spark 到 Azure Cosmos DB 的连接器加速大数据分析
  
 通过 Apache Spark 到 Azure Cosmos DB 的连接器，Azure Cosmos DB 可充当 Apache Spark 作业的输入源或输出接收器。 将 [Spark](http://spark.apache.org/) 连接到 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 后，可以解决瞬息万变的数据科学问题。 可以使用 Azure Cosmos DB 快速保存和查询数据。 该连接器有效利用本机 Azure Cosmos DB 托管的索引。 针对快速变化的多区域分布式数据执行分析和向下推送谓词筛选时，这些索引可以实现可更新的列。 此类数据的范围包括物联网 (IoT)、数据科学和分析方案，等等。
-
-通过以下视频详细了解该连接器：
-
-> [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T135/player] 
 
 ## <a name="connector-components"></a>连接器组件
 

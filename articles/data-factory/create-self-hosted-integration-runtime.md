@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: e708ae741c6835395e8eb35f6835c2d8c7002780
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: af7d4253b4e631295f8c04c96601e932595af9c1
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044724"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697758"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>如何创建和配置自承载的集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的计算基础结构。 有关 IR 的详细信息，请参阅[集成运行时概述](concepts-integration-runtime.md)。
@@ -219,7 +219,7 @@ ms.locfileid: "43044724"
 
 域名 | 端口 | Description
 ------------ | ----- | ------------
-*.servicebus.windows.net | 443, 80 | 用于与数据移动服务后端进行通信
+* .servicebus.windows.net | 443 | 用于与数据移动服务后端进行通信
 *.core.windows.net | 443 | 用于使用 Azure Blob 的暂存复制（如果已配置）
 *.frontend.clouddatahub.net | 443 | 用于与数据移动服务后端进行通信
 download.microsoft.com | 443 | 用于下载更新

@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/31/2018
 ms.author: mbullwin
-ms.openlocfilehash: cf7c151121ddf8b2dc57d5db66a62f4d46e463de
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 313be519662570debdd7c78a43bbfe7c27e63296
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970966"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344624"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights 概述仪表板
 
@@ -50,7 +50,7 @@ Application Insights 一直都有一个总览窗格，可让用户快速、直�
 
 如果这是你第一次访问仪表板，它将启动默认视图：
 
-![仪表板视图](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-06.png)
+![仪表板视图](.\media\app-insights-overview-dashboard\0001-dashboard.png)
 
 如果你喜欢，可以保留默认视图。 或者，可以在仪表板中执行添加或删除操作，让仪表板契合团队的需求。
 

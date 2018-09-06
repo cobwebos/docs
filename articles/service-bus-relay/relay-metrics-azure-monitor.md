@@ -3,7 +3,7 @@ title: Azure Monitor 中的 Azure 中继指标（预览版）| Microsoft Docs
 description: 使用 Azure 监视来监视 Azure 中继
 services: service-bus-relay
 documentationcenter: .NET
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
-ms.author: sethm
-ms.openlocfilehash: 3bcea7ee15bea137fecc55f1e641b84e2e72d3ff
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.author: spelluru
+ms.openlocfilehash: 6d9c154e4942e39d68c30ac52dee0f743e428b9e
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247432"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696881"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor-preview"></a>Azure Monitor 中的 Azure 中继指标（预览版）
 
