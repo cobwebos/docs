@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: e057d7a649397083240e9f67080808a3057c7f50
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: d3bfe2c472d48a68bd818ac06874db136528b470
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139558"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43840263"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>安装 ASDK 后的配置任务
 
@@ -140,16 +140,6 @@ Set-PSRepository `
 ![test-azurestack](media/asdk-post-deploy/test-azurestack.png)
 
 如果失败，请遵循故障排除步骤来获取帮助。
-
-## <a name="activate-the-administrator-and-tenant-portals"></a>激活管理员门户和租户门户
-在完成使用 Azure AD 的部署以后，必须激活 Azure Stack 管理员门户和租户门户。 对于目录的所有用户来说，此激活是指同意为 Azure Stack 门户和 Azure 资源管理器提供正确的权限（已在同意页上列出）。
-
-- 如果在管理员门户中操作，请导航到 https://adminportal.local.azurestack.external/guest/signup，阅读信息，然后单击“接受”。 接受后即可添加服务管理员，但这些管理员不能也是目录租户管理员。
-
-- 如果在租户门户中操作，请导航到 https://portal.local.azurestack.external/guest/signup，阅读信息，然后单击“接受”。 接受后，目录中的用户即可登录到租户门户。 
-
-> [!NOTE] 
-> 如果门户未激活，则只有目录管理员可以登录并使用门户。 其他用户在登录时会看到错误，指出管理员尚未授予其他用户权限。 如果管理员原本不属于 Azure Stack 注册到的目录，则必须将 Azure Stack 目录追加到激活 URL。 例如，如果 Azure Stack 注册到 fabrikam.onmicrosoft.com 和管理员用户是admin@contoso.com，导航到https://portal.local.azurestack.external/guest/signup/fabrikam.onmicrosoft.com来激活门户。 
 
 ## <a name="reset-the-password-expiration-policy"></a>重置密码过期策略 
 若要确保开发工具包主机的密码不在评估期结束之前过期，请在部署 ASDK 之后执行以下步骤。
