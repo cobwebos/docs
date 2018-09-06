@@ -40,7 +40,7 @@ ms.locfileid: "40190708"
 print "this is a 'string' literal in double \" quotes"
 ```
 
-为了防止“\\”用作转义字符，请添加“@”作为字符串的前缀：
+为了防止“\\”用作转义字符，请添加 \"\@\" 作为字符串的前缀：
 
 ```OQL
 print @"C:\backslash\not\escaped\with @ prefix"

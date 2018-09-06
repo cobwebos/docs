@@ -8,20 +8,20 @@ ms.technology: project-url-preview
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 9041a88a292fb2dabead69195ebc3074e2ecf486
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: dda6f7c105dfbadc3c22f0c008aa8759fe12fa03
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366275"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301346"
 ---
 # <a name="url-preview-in-javascript"></a>JavaScript 中的 URL 预览 
 
-以下单页应用程序使用 JavaScript 创建 SwiftKey 站点的 URL 预览：https://swiftkey.com/en。 
+以下单页应用程序使用 JavaScript 创建 SwiftKey 站点的 URL 预览： https://swiftkey.com/en。 
 
 ## <a name="prerequisites"></a>先决条件
 
-获取[认知服务实验室](https://aka.ms/answersearchsubscription)免费试用版的访问密钥
+获取[认知服务实验室](https://labs.cognitive.microsoft.com/en-us/project-url-preview)免费试用版的访问密钥
 
 ## <a name="code-scenario"></a>代码方案
 下面的 javascript 示例包括用户在其中输入 URL 以进行预览的文本框输入对象。  当用户单击“预览”按钮时，onclick 方法会路由到 `getPreview`，代码在其中会生成对 UrlPreview 终结点的 Web 请求。

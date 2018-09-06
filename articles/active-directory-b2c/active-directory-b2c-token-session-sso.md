@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 35210a8e93b8437ea4d8c3b5f002c81c549d3afe
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 061e2257200b6d660a421a86c540f43597112c5e
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444809"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337879"
 ---
 # <a name="azure-active-directory-b2c-token-session-and-single-sign-on-configuration"></a>Azure Active Directory B2C：令牌、会话和单一登录配置
 
@@ -69,8 +69,8 @@ Azure AD B2C 支持 [OAuth 2.0 授权协议](active-directory-b2c-reference-prot
 我们对 Azure AD B2C 发出的安全令牌中的重要声明做出了格式更改。 这样做是为了改善标准协议支持以及与第三方标识库的互操作性。 但是，为了避免破坏现有应用，我们创建了以下属性，使客户能够根据需要选择格式：
 
 * **颁发者 (iss) 声明**：标识颁发令牌的 Azure AD B2C 租户。
-  * `https://login.microsoftonline.com/{B2C tenant GUID}/v2.0/`：默认值。
-  * `https://login.microsoftonline.com/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/`：此值包含令牌请求中使用的 B2C 租户和策略的 ID。 如果应用或库需要 Azure AD B2C 才能符合 [OpenID Connect Discovery 1.0 规范](http://openid.net/specs/openid-connect-discovery-1_0.html)，请使用此值。
+  * `https://<domain>/{B2C tenant GUID}/v2.0/`：默认值。
+  * `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/`：此值包含令牌请求中使用的 B2C 租户和策略的 ID。 如果应用或库需要 Azure AD B2C 才能符合 [OpenID Connect Discovery 1.0 规范](http://openid.net/specs/openid-connect-discovery-1_0.html)，请使用此值。
 * **使用者 (sub) 声明**：标识实体，即令牌断言其信息的用户。
   * **ObjectID**：默认值。 将在令牌的 `sub` 声明中填充目录中用户的对象 ID。
   * **不支持**：此项只是为了向后兼容而提供的，我们建议尽快改用 **ObjectID**。

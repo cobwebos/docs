@@ -3,18 +3,19 @@ title: 在 Azure SQL 数据仓库中使用 T-SQL 循环 | Microsoft Docs
 description: 有关在开发解决方案时在 Azure SQL 数据仓库中使用 T-SQL 循环和替换游标的技巧。
 services: sql-data-warehouse
 author: ckarst
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 8d51c8f18d7c00d21fcc057efcda73e2a6b46cc7
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: b7c21566916c9728900e69dc6480098fadae7622
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301202"
 ---
 # <a name="using-t-sql-loops-in-sql-data-warehouse"></a>在 SQL 数据仓库中使用 T-SQL 循环
 有关在开发解决方案时在 Azure SQL 数据仓库中使用 T-SQL 循环和替换游标的技巧。

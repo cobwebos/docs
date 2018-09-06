@@ -3,22 +3,22 @@ title: 使用 Azure 服务总线提高性能的最佳做法 | Microsoft 文档
 description: 介绍如何使用服务总线在交换中转消息时优化性能。
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 06/14/2018
-ms.author: sethm
-ms.openlocfilehash: e168dcab182f9eb30291b58bdde252ec66d18e8c
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.author: spelluru
+ms.openlocfilehash: 9dd9150411b465d210c7e02dc52d6851f670845f
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301795"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697629"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>使用服务总线消息传递改进性能的最佳实践
 
-本文介绍如何使用 Azure 服务总线在交换中转消息时优化性能。 本文的第一部分介绍有助于提高性能的各种不同机制。 第二部分则指导用户如何针对给定方案以能够提供最佳性能的方式使用服务总线。
+本文介绍如何使用 Azure 服务总线在交换中转消息时优化性能。 本文的第一部分介绍有助于提高性能的各种不同机制。 第二部分指导用户如何针对给定方案以能够提供最佳性能的方式使用服务总线。
 
 在本文中，术语“客户端”是指任何访问服务总线的实体。 客户端可以充当发送方或接收方的角色。 术语“发件人”用于将消息发送到服务总线队列或主题订阅的服务总线队列或主题客户端。 术语“接收方”是指从服务总线队列或订阅接收消息的服务总线队列或订阅客户端。
 

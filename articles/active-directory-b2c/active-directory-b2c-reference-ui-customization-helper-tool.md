@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 18f921fb718aeb7ae4add2836fbb6ffabd66668f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 1a37a37dbed3b5ef9733f1105444529b4d255bcf
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445052"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43336775"
 ---
 # <a name="azure-active-directory-b2c-a-helper-tool-used-to-demonstrate-the-page-user-interface-ui-customization-feature"></a>Azure Active Directory B2C：用于演示页面用户界面 (UI) 自定义功能的帮助程序工具
 本文是 Azure Active Directory (Azure AD) B2C 中[主 UI 自定义文章](active-directory-b2c-reference-ui-customization.md)的一篇配套文章。 以下步骤介绍了如何使用我们提供的示例 HTML 和 CSS 内容来演练页面 UI 自定义功能。
@@ -74,7 +74,7 @@ ms.locfileid: "37445052"
 git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 ```
 
-此存储库包含 `sample_templates\wingtip` 目录，其中包含示例 HTML、CSS 和映像。 若要使这些模板引用自己的 Azure Blob 存储帐户，需要编辑 HTML 文件。 打开 `unified.html` 和 `selfasserted.html`，并使用自己容器的 URL（之前步骤中记录的 URL）替换 `https://localhost` 的所有实例。 必须使用 HTML 文件的绝对路径，因为在此情况下，HTML 由 Azure AD 在 `https://login.microsoftonline.com` 域下提供。
+此存储库包含 `sample_templates\wingtip` 目录，其中包含示例 HTML、CSS 和映像。 若要使这些模板引用自己的 Azure Blob 存储帐户，需要编辑 HTML 文件。 打开 `unified.html` 和 `selfasserted.html`，并使用自己容器的 URL（之前步骤中记录的 URL）替换 `https://localhost` 的所有实例。 必须使用 HTML 文件的绝对路径，因为在此情况下，HTML 由 Azure AD 在 `tenantname.b2clogin.com` 域下提供。
 
 ### <a name="upload-the-sample-files"></a>上传示例文件
 在同一存储库中，解压缩 `B2CAzureStorageClient.zip` 并在其中运行 `B2CAzureStorageClient.exe` 文件。 此程序会直接将指定目录中的所有文件上传到存储帐户，并启用对这些文件的 CORS 访问。 如果按照上述步骤操作，则 HTML 和 CSS 文件现在将指向存储帐户。 请注意，存储帐户名称是 `blob.core.windows.net` 之前的部分；例如 `contoso`。 通过在浏览器上访问 `https://{storage-account-name}.blob.core.windows.net/{container-name}/wingtip/unified.html`，可以验证是否已正确上传内容。 还可以使用 [http://test-cors.org/](http://test-cors.org/) 确保内容是否现已启用 CORS。 （在结果中查找“XHR 状态: 200”。）

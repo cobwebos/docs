@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: rimman
-ms.openlocfilehash: 160ff4e09f70036fd261c07fa59e13772bc00660
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 66beeb2cc724f75d17a4c155f1cdb888153e8fbf
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053321"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286759"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB 中的请求单位数
 
@@ -40,12 +40,6 @@ Azure Cosmos DB 的货币是*请求单位 (RU)*。 借助请求单位，无需�
 Azure Cosmos DB 通过保留资源提供了快速且可预测的性能，以满足应用程序的吞吐量需求。 应用程序加载和访问模式会随着时间推移而更改。 借助 Azure Cosmos DB，可以轻松增加或减少保留供应用程序使用的吞吐量。
 
 通过 Azure Cosmos DB，可根据每秒处理的请求单位指定保留的吞吐量。 可将请求单位视为吞吐量货币。 可以保留每秒可用于应用程序的定量有保障请求单位。 Azure Cosmos DB 中的每个操作（包括编写文档、执行查询、更新文档）都会消耗 CPU、内存和 IOPS。 也就是说，每个操作都会产生请求费用（用请求单位表示）。 了解影响请求单位费用的因素，以及应用程序吞吐量要求时，可以尽量有效地运行应用程序。 
-
-为帮助你入门，Azure Cosmos DB 项目经理 Andrew Liu 在以下视频中介绍了请求单位（视频的请求单位示例中存在较小的拼写错误。 当使用具有 100,000 条记录的 1KB 数据时，总存储为 100MB 而不是 100GB）： <br /><br />
-
-> [!VIDEO https://www.youtube.com/embed/stk5WSp5uX0]
-> 
-> 
 
 ## <a name="throughput-isolation-in-globally-distributed-databases"></a>全局分布式数据库中的吞吐量隔离
 

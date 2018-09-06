@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 12/20/2017
 ms.author: mahender
-ms.openlocfilehash: af748f234a27ed9b37ac50438d7497fd680bc193
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 06ee959d7b38f21684280a35cf770fdcc590b102
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085566"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287981"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions 的 Microsoft Graph 绑定
 
@@ -210,7 +210,7 @@ module.exports = function (context, req) {
 
 下表解释了在 function.json 文件和 `Token` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |说明|
+|function.json 属性 | Attribute 属性 |Description|
 |---------|---------|----------------------|
 |name||必需 - 在身份验证令牌的函数代码中使用的变量名称。 请参阅[在代码中使用身份验证令牌输入绑定](#token-input-code)。|
 |type||必需 - 必须设置为 `token`。|
@@ -343,7 +343,7 @@ module.exports = function (context, req) {
 
 下表解释了在 function.json 文件和 `Excel` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |说明|
+|function.json 属性 | Attribute 属性 |Description|
 |---------|---------|----------------------|
 |name||必需 - 在 Excel 表的函数代码中使用的变量名称。 请参阅[在代码中使用 Excel 表输入绑定](#excel-input-code)。|
 |type||必需 - 必须设置为 `excel`。|
@@ -503,7 +503,7 @@ module.exports = function (context, req) {
 
 下表解释了在 function.json 文件和 `Excel` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |说明|
+|function.json 属性 | Attribute 属性 |Description|
 |---------|---------|----------------------|
 |name||必需 - 在身份验证令牌的函数代码中使用的变量名称。 请参阅[在代码中使用 Excel 表输出绑定](#excel-output-code)。|
 |type||必需 - 必须设置为 `excel`。|
@@ -647,7 +647,7 @@ module.exports = function (context, req) {
 
 下表解释了在 function.json 文件和 `OneDrive` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |说明|
+|function.json 属性 | Attribute 属性 |Description|
 |---------|---------|----------------------|
 |name||必需 - 在文件的函数代码中使用的变量名称。 请参阅[在代码中使用 OneDrive 文件输入绑定](#onedrive-input-code)。|
 |type||必需 - 必须设置为 `onedrive`。|
@@ -792,7 +792,7 @@ module.exports = function (context, req) {
 
 下表解释了在 function.json 文件和 `OneDrive` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |说明|
+|function.json 属性 | Attribute 属性 |Description|
 |---------|---------|----------------------|
 |name||必需 - 在文件的函数代码中使用的变量名称。 请参阅[在代码中使用 OneDrive 文件输出绑定](#onedrive-output-code)。|
 |type||必需 - 必须设置为 `onedrive`。|
@@ -941,7 +941,7 @@ module.exports = function (context, req) {
 
 下表解释了在 function.json 文件和 `Outlook` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |说明|
+|function.json 属性 | Attribute 属性 |Description|
 |---------|---------|----------------------|
 |name||必需 - 在邮件的函数代码中使用的变量名称。 请参阅[在代码中使用 Outlook 邮件输出绑定](#outlook-output-code)。|
 |type||必需 - 必须设置为 `outlook`。|
@@ -1082,7 +1082,7 @@ module.exports = function (context) {
 
 下表解释了在 function.json 文件和 `GraphWebHookTrigger` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |说明|
+|function.json 属性 | Attribute 属性 |Description|
 |---------|---------|----------------------|
 |name||必需 - 在邮件的函数代码中使用的变量名称。 请参阅[在代码中使用 Outlook 邮件输出绑定](#outlook-output-code)。|
 |type||必需 - 必须设置为 `graphWebhook`。|
@@ -1233,7 +1233,7 @@ module.exports = function (context, req) {
 
 下表解释了在 function.json 文件和 `GraphWebHookSubscription` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |说明|
+|function.json 属性 | Attribute 属性 |Description|
 |---------|---------|----------------------|
 |name||必需 - 在邮件的函数代码中使用的变量名称。 请参阅[在代码中使用 Outlook 邮件输出绑定](#outlook-output-code)。|
 |type||必需 - 必须设置为 `graphWebhookSubscription`。|
@@ -1373,7 +1373,7 @@ module.exports = function (context, req) {
 
 下表解释了在 function.json 文件和 `GraphWebHookSubscription` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |说明|
+|function.json 属性 | Attribute 属性 |Description|
 |---------|---------|----------------------|
 |name||必需 - 在邮件的函数代码中使用的变量名称。 请参阅[在代码中使用 Outlook 邮件输出绑定](#outlook-output-code)。|
 |type||必需 - 必须设置为 `graphWebhookSubscription`。|
@@ -1506,8 +1506,8 @@ module.exports = function (context) {
     const existing = context.bindings.existingSubscriptions;
     var toRefresh = [];
     for (var i = 0; i < existing.length; i++) {
-        context.log(`Deleting subscription ${existing[i]}`);
-        todelete.push(existing[i]);
+        context.log(`Refreshing subscription ${existing[i]}`);
+        toRefresh.push(existing[i]);
     }
     context.bindings.subscriptionsToRefresh = toRefresh;
     context.done();

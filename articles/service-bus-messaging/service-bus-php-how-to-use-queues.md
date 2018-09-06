@@ -3,7 +3,7 @@ title: 如何通过 PHP 使用服务总线队列 | Microsoft 文档
 description: 了解如何在 Azure 中使用服务总线队列。 采用 PHP 编写的代码示例。
 services: service-bus-messaging
 documentationcenter: php
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: e29c829b-44c5-4350-8f2e-39e0c380a9f2
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
 ms.date: 08/10/2017
-ms.author: sethm
-ms.openlocfilehash: b2bf67ac6943c80e5bf6ae94eca346fe964f95e6
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.author: spelluru
+ms.openlocfilehash: 4c299e06f7cf1df29cd6790df8a005ee694db3b5
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42146322"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700758"
 ---
 # <a name="how-to-use-service-bus-queues-with-php"></a>如何通过 PHP 使用服务总线队列
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]

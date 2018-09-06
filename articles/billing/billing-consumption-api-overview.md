@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/07/2018
 ms.author: erikre
-ms.openlocfilehash: c37ff7e2f81b3dbca42193777287dae873768e24
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 88b7909e78f8bd36ce456eee60587acbbb94b6cd
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630494"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286742"
 ---
 # <a name="azure-consumption-api-overview"></a>Azure 使用情况 API 概述 
 
@@ -81,7 +81,7 @@ Azure 使用情况 API 允许访问以下内容：
 -   **仅企业客户** - 此 API 只供 EA 客户使用。 
     - 客户必须具有企业管理员权限才能调用此 API 
 
-有关详细信息，请参阅[余额 API](https://docs.microsoft.com/rest/api/consumption/getbalancesbybillingaccount) 的技术规范。
+有关详细信息，请参阅[余额 API](https://docs.microsoft.com/rest/api/consumption/balances) 的技术规范。
 
 ## <a name="budgets-api"></a>预算 API
 

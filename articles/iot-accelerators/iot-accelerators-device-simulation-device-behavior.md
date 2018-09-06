@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: b68550bce1f4e3fbe3845c21598720083c8e384c
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 43edbc653ddbd55aab5e722071de1f2cf4bcd1c4
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39295170"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344510"
 ---
 # <a name="implement-the-device-model-behavior"></a>实现设备模型的行为
 
@@ -41,6 +41,6 @@ ms.locfileid: "39295170"
 > * 定义模拟设备如何响应来自它连接到的 IoT 中心的方法调用
 > * 调试脚本
 
-了解如何指定模拟设备的行为后，建议接下来继续学习如何[创建模拟设备](iot-accelerators-remote-monitoring-test.md)。
+了解如何指定模拟设备的行为后，建议接下来继续学习如何[创建模拟设备](iot-accelerators-device-simulation-create-simulated-device.md)。
 
 有关设备模拟解决方案的更多开发人员信息，请参阅[开发人员参考指南](https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide)。
