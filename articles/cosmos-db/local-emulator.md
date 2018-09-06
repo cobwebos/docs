@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: danoble
-ms.openlocfilehash: 368caa063ea0487923af8a29f67aa73cae7ed75e
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 355f80479ba7c6d6399bb25f7ba1511c6b18599b
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952886"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43285221"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>将 Azure Cosmos DB 模拟器用于本地开发和测试
 
@@ -51,12 +51,6 @@ ms.locfileid: "37952886"
 > * 在 Docker for Windows 上运行模拟器
 > * 收集跟踪文件
 > * 故障排除
-
-建议通过观看以下视频来入门，Kirill Gavrylyuk 在视频中演示了如何开始使用 Azure Cosmos DB 模拟器。 视频中将模拟器称为 DocumentDB 模拟器，但自视频录制后，该工具本身已重命名为 Azure Cosmos DB 模拟器。 视频中的所有信息对于 Azure Cosmos DB 模拟器仍然准确。 
-
-> [!VIDEO https://channel9.msdn.com/Events/Connect/2016/192/player]
-> 
-> 
 
 ## <a name="how-the-emulator-works"></a>模拟器的工作原理
 

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 11/20/2017
 ms.author: govindk
-ms.openlocfilehash: 6ec0feeac9364b416709b45af09c79773a87d0e1
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: f2f2257d3ddc22a80600882d2078210ac27cb15d
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42022517"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43284916"
 ---
 # <a name="introduction-to-azure-cosmos-db-apache-cassandra-api"></a>Azure Cosmos DB 简介：Apache Cassandra API
 
@@ -34,10 +34,7 @@ Azure Cosmos DB 提供的 Cassandra API（预览版）适用于为 Apache Cassan
 
 ![Azure Cosmos DB Cassandra API](./media/cassandra-introduction/cosmosdb-cassandra.png)
 
-通过 Cassandra API 可以使用基于 Cassandra 查询语言的工具（如 CQLSH）和熟悉的 Cassandra 客户端驱动程序与 Azure Cosmos DB 中存储的数据交互。 有关其更多的详细说明，可观看由首席工程经理 Kirill Gavrylyuk 主讲的 Microsoft Mechanics 视频。
-
-> [!VIDEO https://www.youtube.com/embed/1Sf4McGN1AQ]
->
+通过 Cassandra API 可以使用基于 Cassandra 查询语言的工具（如 CQLSH）和熟悉的 Cassandra 客户端驱动程序与 Azure Cosmos DB 中存储的数据交互。 
 
 ## <a name="what-is-the-benefit-of-using-apache-cassandra-api-for-azure-cosmos-db"></a>使用 Azure Cosmos DB Cassandra API 的优势是什么？
 

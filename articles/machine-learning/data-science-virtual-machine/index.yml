@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: fd2a030d3529857b5a68aeaf28494e76d416e6fd
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781033"
 documentType: LandingData
 title: Azure 数据科学虚拟机文档
 metadata:
@@ -14,12 +20,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/18/2018
   ms.author: gokuma
-  ms.openlocfilehash: 2378c8bcca2ac97c6045a9e573192087d03b4b61
-  ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-  ms.translationtype: HT
-  ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/19/2018
-  ms.locfileid: "31590779"
 abstract:
   description: “数据科学和深入学习虚拟机”是 Azure 上的自定义 VM 映像，带有用于生成智能应用程序以进行高级分析的数据科学工具。
 sections:
@@ -41,8 +41,8 @@ sections:
     style: ordered
     items:
     - html: <a href="provision-vm">预配 Windows DSVM</a>
-    - html: <a href="vm-do-ten-thing">使用 Windows DSVM</a>
-    - html: <a href:"linux-dsvm-intro">预配 Linux CentOS DSVM</a>
+    - html: <a href="vm-do-ten-things">使用 Windows DSVM</a>
+    - html: <a href="linux-dsvm-intro">预配 Linux CentOS DSVM</a>
     - html: <a href="dsvm-ubuntu-intro">预配 Linux Ubuntu DSVM</a>
     - html: <a href="linux-dsvm-walkthrough">使用 Linux DSVM</a>
 - title: 更多 Azure 机器学习技术

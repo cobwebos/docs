@@ -3,7 +3,7 @@ title: Azure WCF 中继本地/云混合应用程序 (.NET) | Microsoft Docs
 description: 了解如何使用 Azure WCF 中继创建 .NET 本地/云混合应用程序。
 services: service-bus-relay
 documentationcenter: .net
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: 9ed02f7c-ebfb-4f39-9c97-b7dc15bcb4c1
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 11/02/2017
-ms.author: sethm
-ms.openlocfilehash: fe13de5f83fe18a85f8d46d0eee039159e1a60e9
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.author: spelluru
+ms.openlocfilehash: 23e0e487914b6e8810d8db00462c353c99955665
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
-ms.locfileid: "29346435"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697462"
 ---
 # <a name="net-on-premisescloud-hybrid-application-using-azure-wcf-relay"></a>使用 Azure WCF 中继创建 .NET 本地/云混合应用程序
 
@@ -84,7 +84,7 @@ ms.locfileid: "29346435"
 
    请注意，现已引用所需的客户端程序集。
 8. 为产品协定添加新类。 在“解决方案资源管理器”中，右键单击“ProductsServer”项目，单击“添加”，并单击“类”。
-9. 在“名称”框中，键入名称 **ProductsContract.cs**。 然后，单击“添加”。
+9. 在“名称”框中，键入名称 **ProductsContract.cs**。 然后单击“添加”。
 10. 在“ProductsContract.cs”中，将命名空间定义替换为以下代码，以定义服务的协定。
 
     ```csharp
@@ -233,7 +233,7 @@ ms.locfileid: "29346435"
 
 7. 回到“新建 ASP.NET Web 应用程序”对话框，单击“确定”创建 MVC 应用。
 8. 现在必须配置新 Web 应用的 Azure 资源。 按照[本文“发布到 Azure”部分](../app-service/app-service-web-get-started-dotnet-framework.md#publish-to-azure)的步骤操作。 然后，返回到本教程并继续执行下一步。
-10. 在解决方案资源管理器中，右键单击“模型”，并依次单击“添加”和“类”。 在“名称”框中，键入名称“Product.cs”。 然后，单击“添加”。
+10. 在解决方案资源管理器中，右键单击“模型”，并依次单击“添加”和“类”。 在“名称”框中，键入名称“Product.cs”。 然后单击“添加”。
 
     ![][17]
 

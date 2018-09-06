@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 06/11/2018
 ms.author: rolyon
-ms.openlocfilehash: 4eeae864721040bda18409b48abf5d33b81ca609
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: cac585b36c3b5969a18c941215b623443850cd4c
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295892"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301722"
 ---
 # <a name="tutorial-grant-access-for-a-user-using-rbac-and-azure-powershell"></a>教程：使用 RBAC 和 Azure PowerShell 授予用户的访问权限
 
@@ -31,7 +31,7 @@ ms.locfileid: "36295892"
 > * 列出访问权限
 > * 删除访问权限
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -46,7 +46,7 @@ ms.locfileid: "36295892"
 
 | 安全主体 | 角色定义 | 范围 |
 | --- | --- | --- |
-| 用户<br>（RBAC 教程用户） | [读者](built-in-roles.md#reader) | 订阅 |
+| 用户<br>（RBAC 教程用户） | [读取者](built-in-roles.md#reader) | 订阅 |
 | 用户<br>（RBAC 教程用户）| [参与者](built-in-roles.md#contributor) | 资源组<br>(rbac-tutorial-resource-group) |
 
    ![用户的角色分配](./media/tutorial-role-assignments-user-powershell/rbac-role-assignments-user.png)
@@ -109,7 +109,7 @@ ms.locfileid: "36295892"
 
 若要为用户授予访问权限，请使用 [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) 命令分配一个角色。 必须指定安全主体、角色定义和范围。
 
-1. 使用 [Get-AzureRmSubscription](/powershell/module/azurerm.resources/get-azurermsubscription) 命令获取订阅的 ID。
+1. 使用 [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription) 命令获取订阅的 ID。
 
     ```azurepowershell
     Get-AzureRmSubscription

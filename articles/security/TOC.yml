@@ -12,8 +12,10 @@ items:
     href: abstract-azure-network-security.md
   - name: Azure 无服务器平台安全
     href: abstract-serverless-platform-security.md
+  - name: Azure 中的容器安全性
+    href: abstract-container-security-microsoft-azure.md
   - name: 实现运营安全
-    href: azure-operational-security.md
+    href: abstract-azure-operational-security.md
   - name: Azure 中的监管
     href: governance-in-azure.md
   - name: Azure 云中的隔离
@@ -316,9 +318,9 @@ items:
         href: azure-security-threat-modeling-tool-sensitive-data.md
       - name: 会话管理
         href: azure-security-threat-modeling-tool-session-management.md
-ms.openlocfilehash: cb321a012d89f87022d66f50c3bc8fdcc921d6d6
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 2e0bdab31a721c5b55488ac21579f0cb9ac45151
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887827"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841558"

@@ -3,7 +3,7 @@ title: Azure SignalR 服务客户端身份验证教程 | Microsoft Docs
 description: 本教程介绍如何对 Azure SignalR 服务客户端进行身份验证
 services: signalr
 documentationcenter: ''
-author: wesmc7777
+author: sffamily
 manager: cfowler
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2018
-ms.author: wesmc
-ms.openlocfilehash: c24e3045640471ed6ee7052f877850acd8e8cf00
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.author: zhshang
+ms.openlocfilehash: 4856f4cdba7618884a42341f16d4828cb062e75c
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100931"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43667644"
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>教程：Azure SignalR 服务身份验证
 
@@ -43,7 +43,7 @@ Microsoft Azure SignalR 服务目前提供[公共预览版](https://azure.micros
 ![托管在 Azure 中的 OAuth 完成](media/signalr-authenticate-oauth/signalr-oauth-complete-azure.png)
 
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 使用 GitHub 帐户注册新的 OAuth 应用
@@ -54,7 +54,7 @@ Microsoft Azure SignalR 服务目前提供[公共预览版](https://azure.micros
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本教程，必须具备以下先决条件：
+若要完成本教程，必须满意以下先决条件：
 
 * 在 [GitHub](https://github.com/) 上创建的帐户
 * [Git](https://git-scm.com/)
@@ -603,7 +603,7 @@ az webapp deployment source config-local-git --name $WebAppName \
 
 系统会要求确认是否删除资源组。 键入资源组的名称进行确认，然后单击“删除”。
    
-几分钟后，将删除该资源组及其包含的所有资源。
+片刻之后，将会删除该资源组及其包含的所有资源。
 
 ## <a name="next-steps"></a>后续步骤
 
