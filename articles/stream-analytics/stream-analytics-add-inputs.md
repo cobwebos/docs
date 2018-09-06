@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/25/2018
-ms.openlocfilehash: 62e928525c8bd63258ea079830585db0f0ffc358
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 4a84e8f7460d3a339be783be6a12353770ced1b8
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716485"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665817"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>理解 Azure 流分析的输入
 
@@ -42,7 +42,7 @@ Azure 流分析作业连接到一个或多个数据输入。 每个输入定义�
 
 有关引用数据输入的详细信息，请参阅[在流分析中使用引用数据进行查找](stream-analytics-use-reference-data.md)
 
-本文是[流分析学习路径](/documentation/learning-paths/stream-analytics/)中的一个步骤。
+本文是[流分析学习路径](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/)中的一个步骤。
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]

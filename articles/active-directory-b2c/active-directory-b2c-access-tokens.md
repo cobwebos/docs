@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/09/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 58a0a1e8be7ad5a119204b52b5263943dcef0192
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 9cd5789cd2ee6e167f3d3ed05c2fde077f7ec9a3
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441220"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344935"
 ---
 # <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C：请求访问令牌
 
@@ -79,7 +79,7 @@ ms.locfileid: "37441220"
 > 目前，不支持将自定义域与访问令牌一起使用。 必须使用请求 URL 中的 tenantName.onmicrosoft.com 域。
 
 ```
-https://login.microsoftonline.com/tfp/<tenantName>.onmicrosoft.com/<yourPolicyId>/oauth2/v2.0/authorize?client_id=<appID_of_your_client_application>&nonce=anyRandomValue&redirect_uri=<redirect_uri_of_your_client_application>&scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fnotes%2Fread&response_type=code 
+https://<tenantName>.b2clogin.com/tfp/<tenantName>.onmicrosoft.com/<yourPolicyId>/oauth2/v2.0/authorize?client_id=<appID_of_your_client_application>&nonce=anyRandomValue&redirect_uri=<redirect_uri_of_your_client_application>&scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fnotes%2Fread&response_type=code 
 ```
 
 若要在同一请求中获取多个权限，可在单个 **scope** 参数中添加多个条目并用空格分隔。 例如：
@@ -114,7 +114,7 @@ OpenID Connect 标准指定了多个特殊的“scope”值。 以下特殊范�
 
 成功构建的 **access\_token**（通过 `/authorize` 或 `/token` 终结点）包含以下声明：
 
-| 名称 | 声明 | 说明 |
+| 名称 | 声明 | Description |
 | --- | --- | --- |
 |目标受众 |`aud` |令牌授权访问的单个资源的**应用程序 ID**。 |
 |范围 |`scp` |授予资源的权限。 多个授予的权限以空格分隔。 |

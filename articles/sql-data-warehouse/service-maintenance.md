@@ -3,19 +3,19 @@ title: 计划内维护 - Azure SQL 数据仓库 | Microsoft Docs
 description: 了解如何为针对 Azure SQL 数据仓库执行计划内维护事件做准备。
 services: sql-data-warehouse
 author: antvgski
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 04/19/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: a273ad4c256267865d3af324f0ef755a6cb75c5c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 8b5b94c959ae9820cab338f3ee3317fb3ee166d6
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799888"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286595"
 ---
 # <a name="planning-for-maintenance-on-your-azure-sql-data-warehouse"></a>计划对 Azure SQL 数据仓库的维护
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2016
 ms.author: cephalin
-ms.openlocfilehash: 01c20e7f43c11a077d3870ee32c1d8be98a95696
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 79450cdd0928304c3b98cf13f8aaca7a1bf11d33
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38306427"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43381929"
 ---
 # <a name="scale-up-an-app-in-azure"></a>向上缩放 Azure 中的应用
 
@@ -106,7 +106,7 @@ ms.locfileid: "38306427"
   * [How Azure Websites Scale](https://azure.microsoft.com/resources/videos/how-azure-web-sites-scale/)（Azure 网站如何缩放）- 主讲人：Stefan Schackow
 
 <!-- LINKS -->
-[vmsizes]:/pricing/details/app-service/
+[vmsizes]:https://azure.microsoft.com/pricing/details/app-service/
 [SQLaccountsbilling]:http://go.microsoft.com/fwlink/?LinkId=234930
 [azuresubscriptions]:https://account.windowsazure.com/subscriptions
 [portal]: https://portal.azure.com/

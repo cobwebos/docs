@@ -16,11 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: f2a0af65af068f3a78a08e46e0e42caefd87d7b1
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: d75bb780a17653aaacbc74413fb4240a8052a983
+ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43371479"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>完成用于在 Azure 虚拟机中创建 Alwayson 可用性组的必备组件配置
 
@@ -38,7 +39,7 @@ ms.lasthandoff: 04/03/2018
 
 
 ## <a name="create-an-azure-account"></a>创建 Azure 帐户
-需要一个 Azure 帐户。 可[建立免费的 Azure 帐户](/pricing/free-trial/?WT.mc_id=A261C142F)或[激活 Visual Studio 订阅者权益](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。
+需要一个 Azure 帐户。 可[建立免费的 Azure 帐户](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic&redirectURL=https:%2F%2Fazure.microsoft.com%2Fget-started%2Fwelcome-to-azure%2F&correlationId=24f9d452-1909-40d7-b609-2245aa7351a6&l=en-US)或[激活 Visual Studio 订阅者权益](https://docs.microsoft.com/visualstudio/subscriptions/subscriber-benefits)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 1. 登录到 [Azure 门户](http://portal.azure.com)。
@@ -46,7 +47,7 @@ ms.lasthandoff: 04/03/2018
 
    ![新建对象](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-portalplus.png)
 
-3. 在“Marketplace”搜索窗口中键入“资源组”。
+3. 在“市场”搜索窗口中键入“资源组”。
 
    ![资源组](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroupsymbol.png)
 4. 单击“资源组”。
@@ -185,7 +186,7 @@ Azure 会将返回到门户仪表板，并在创建新网络时发出通知。
 | **大小** |DS1_V2 |
 | **存储** | **使用托管磁盘** - **是** |
 | **虚拟网络** |autoHAVNET |
-| **子网** |admin |
+| 子网 |admin |
 | **公共 IP 地址** |*与 VM 同名* |
 | **网络安全组** |*与 VM 同名* |
 | **可用性集** |adavailabilityset </br>**容错域**:2</br>**更新域**:2|
@@ -383,7 +384,7 @@ Azure 将创建虚拟机。
 
 ### <a name="joinDomain"></a>将服务器加入域
 
-现可将这些 VM 加入 corp.contoso.com。针对 SQL Server VM 和文件共享见证服务器执行以下步骤：
+现可将这些 VM 加入 corp.contoso.com。 针对 SQL Server VM 和文件共享见证服务器执行以下步骤：
 
 1. 使用 **BUILTIN\DomainAdmin** 远程连接到虚拟机。
 2. 在“服务器管理器”中，单击“本地服务器”。
@@ -486,7 +487,7 @@ Azure 将创建虚拟机。
 
    ![SQL 防火墙](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/35-tcpports.png)
 
-5. 单击“资源组名称” 的 Azure 数据工厂。
+5. 单击“下一步”。
 6. 在“操作”页上，保持选中“允许连接”，并单击“下一步”。
 7. 在“配置文件”页上，接受默认设置，并单击“下一步”。
 8. 在“名称”页的“名称”文本框中指定一个规则名称（如 Azure LB Probe），并单击“完成”。

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
-ms.openlocfilehash: 78487061dd49c057e8f569fd2ccdaa6408443fd2
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 40fdd22bdbb3fc0676688430069d58c0422a7ca2
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42885864"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382110"
 ---
 # <a name="security-in-azure-app-service-and-azure-functions"></a>Azure 应用服务和 Azure Functions 中的安全性
 
@@ -29,7 +29,7 @@ ms.locfileid: "42885864"
 
 - 你的应用资源与其他客户的 Azure 资源隔离开来，从而[受到保护](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)。
 - [定期更新 VM 实例和运行时软件](app-service-patch-os-runtime.md)，以解决新发现的漏洞。 
-- 你的应用与其他 Azure 资源（例如 [SQL 数据库](/services/sql-database/)）之间的密钥（例如连接字符串）通信一直在 Azure 中进行，不跨越任何网络边界。 存储密钥时始终对其加密。
+- 你的应用与其他 Azure 资源（例如 [SQL 数据库](https://azure.microsoft.com/services/sql-database/)）之间的密钥（例如连接字符串）通信一直在 Azure 中进行，不跨越任何网络边界。 存储密钥时始终对其加密。
 - 通过应用服务连接功能（例如[混合连接](app-service-hybrid-connections.md)）进行的所有通信均已加密。 
 - 与 Azure PowerShell、Azure CLI、Azure SDK、REST API 等远程管理工具的连接均已加密。
 - 24 小时威胁管理可保护基础结构和平台免受恶意软件、分布式拒绝服务 (DDoS)、中间人 (MITM) 和其他威胁的危害。
@@ -84,7 +84,7 @@ Azure 应用服务提供用户或客户端应用的统包身份验证和授权�
 
 ### <a name="azure-resources"></a>Azure 资源
 
-当应用连接到 Azure 资源（例如 [SQL 数据库](/services/sql-database/)和 [Azure 存储](/azure/storage/)）时，连接一直保持在 Azure 中，不会跨越任何网络边界。 但是，连接经过 Azure 中的共享网络，因此请务必确保连接已加密。 
+当应用连接到 Azure 资源（例如 [SQL 数据库](https://azure.microsoft.com/services/sql-database/)和 [Azure 存储](/azure/storage/)）时，连接一直保持在 Azure 中，不会跨越任何网络边界。 但是，连接经过 Azure 中的共享网络，因此请务必确保连接已加密。 
 
 如果应用托管在[应用服务环境](environment/intro.md)中，则应该[使用虚拟网络服务终结点连接到受支持的 Azure 服务](../virtual-network/virtual-network-service-endpoints-overview.md)。
 
@@ -117,4 +117,4 @@ Azure 应用服务提供用户或客户端应用的统包身份验证和授权�
 - 使用内部负载均衡器 (ILB) 为内部应用程序提供服务，该内部负载均衡器仅允许从 Azure 虚拟网络内部进行访问。 ILB 有一个来自专用子网的 IP 地址，它可以让应用与 Internet 完全隔离。
 - [在 Web 应用程序防火墙 (WAF) 后面使用 ILB](environment/integrate-with-application-gateway.md)。 WAF 为面向公众的应用程序提供企业级保护，例如 DDoS 防护、URI 筛选和 SQL 注入防护。
 
-有关详细信息，请参阅 [Azure 应用服务环境简介](environment/intro.md)。
+有关详细信息，请参阅 [Azure 应用服务环境简介](environment/intro.md)。 

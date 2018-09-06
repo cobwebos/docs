@@ -3,25 +3,27 @@ title: 升级到最新一代的 Azure SQL 数据仓库 | Microsoft Docs
 description: 将 Azure SQL 数据仓库升级到最新一代 Azure 硬件和存储体系结构。
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 08/22/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 1e2993e1f4d28fd5d281ea510121686d3bc37a8c
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: b7765182a89e08a2b2b8fcdbdfed82c64893fc27
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746956"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306974"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>通过升级 SQL 数据仓库优化性能
 将 Azure SQL 数据仓库升级到最新一代 Azure 硬件和存储体系结构。
 
 ## <a name="why-upgrade"></a>为什么升级？
 你现在可以在 Azure 门户中无缝地升级到 SQL 数据仓库“计算优化第 2 代”层级。 如果你已有“计算优化第 1 代”层级数据仓库，建议进行升级。 升级后，可使用最新一代的 Azure 硬件和增强的存储体系结构。 可利用更快的性能、更高的可伸缩性和不受限制的列式存储。 
+
+> [!VIDEO https://www.youtube.com/embed/9B2F0gLoyss]
 
 ## <a name="applies-to"></a>适用于
 此升级适用于“计算优化第 1 代”层级数据仓库。

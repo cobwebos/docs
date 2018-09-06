@@ -16,16 +16,16 @@ ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: ede8fab67c04eb7ce8d26280de2d1563b6cc8ad2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: defc871caed429eeda1f8672323b48a9c0007c8e
+ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38678734"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43371731"
 ---
 # <a name="create-a-windows-virtual-machine-with-the-simplified-new-azurermvm-cmdlet-in-cloud-shell"></a>在 Cloud Shell 中使用简化 New-AzureRMVM cmdlet 创建 Windows 虚拟机 
 
-[New-AzureRMVM](/powershell/module/azurerm.resources/new-azurermvm) cmdlet 已添加一组简化的参数，用于使用 PowerShell 创建新的 VM。 本主题演示如何通过 Azure Cloud Shell 中的 PowerShell，使用预安装的最新版本 New-AzureVM cmdlet 创建新的 VM。 我们将使用简化的参数集，以使用智能默认设置自动创建所有必需的资源。 
+[New-AzureRMVM](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm?view=azurermps-6.8.1) cmdlet 已添加一组简化的参数，用于使用 PowerShell 创建新的 VM。 本主题演示如何通过 Azure Cloud Shell 中的 PowerShell，使用预安装的最新版本 New-AzureVM cmdlet 创建新的 VM。 我们将使用简化的参数集，以使用智能默认设置自动创建所有必需的资源。 
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -36,7 +36,7 @@ ms.locfileid: "38678734"
 
 ## <a name="create-the-vm"></a>创建 VM
 
-可以使用 [New-AzureRMVM](/powershell/module/azurerm.resources/new-azurermvm) cmdlet 创建具有智能默认设置（包括使用 Azure 市场中的 Windows Server 2016 Datacenter 映像）的 VM。 可以将 New-AzureRMVM 仅与 **-Name** 参数配合使用，它会将该值用于所有资源名称。 在本示例中，我们将设置 **-Name** 参数设置为 *myVM*。 
+可以使用 [New-AzureRMVM](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm?view=azurermps-6.8.1) cmdlet 创建具有智能默认设置（包括使用 Azure 市场中的 Windows Server 2016 Datacenter 映像）的 VM。 可以将 New-AzureRMVM 仅与 **-Name** 参数配合使用，它会将该值用于所有资源名称。 在本示例中，我们将设置 **-Name** 参数设置为 *myVM*。 
 
 请确保在 Cloud Shell 中选择 **PowerShell** 并键入：
 

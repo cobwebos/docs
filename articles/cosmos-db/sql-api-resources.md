@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 21b1e69573d2ddd31979e6c23dd7f3bd130cadbe
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 3ba02e7760d7400b5168a902415f16c4b276b3a7
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798010"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287947"
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Azure Cosmos DB 分层资源模型和核心概念
 
@@ -30,12 +30,6 @@ Azure Cosmos DB 管理的数据库实体被称为**资源**。 每个资源都�
 * 如何对资源进行寻址？
 * 如何使用集合？
 * 如何使用存储过程、触发器和用户定义的函数 (UDF)？
-
-在下面的视频中，Azure Cosmos DB 计划经理 Andrew Liu 演示了 Azure Cosmos DB 资源模型。 
-
-> [!VIDEO https://www.youtube.com/embed/luWFgTP0IL4]
->
->
 
 ## <a name="hierarchical-resource-model"></a>分层资源模型
 如下面的关系图所示，Azure Cosmos DB 分层资源模型由一个数据库帐户下的多组资源构成，每个资源可通过一个稳定的逻辑 URI 进行寻址。 本文将一组资源称为一个源。 
@@ -50,7 +44,7 @@ Azure Cosmos DB 管理的数据库实体被称为**资源**。 每个资源都�
 
 若要开始使用资源，必须使用 Azure 订阅[创建数据库帐户](create-sql-api-dotnet.md)。 数据库帐户可以包含一组数据库，每个数据库都包含多个集合，每个集合又包含存储过程、触发器、UDF、文档及相关附件。 数据库也有关联的用户，每个用户都有一组权限，用于访问集合、存储过程、触发器、UDF、文档或附件。 而数据库、用户、权限和集合就是系统定义的资源，其中已知的架构、文档和附件包含用户定义的任意 JSON 内容。  
 
-| 资源 | 说明 |
+| 资源 | Description |
 | --- | --- |
 | 数据库帐户 |每个数据库帐户都与一组数据库和一个固定大小的附件 blob 存储相关联。 可以使用 Microsoft Azure 订阅创建一个或多个数据库帐户。 有关详细信息，请访问[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)。 |
 | 数据库 |数据库是跨集合分区的文档存储的逻辑容器。 它也是一个用户容器。 |
@@ -112,7 +106,7 @@ Cosmos DB 不强制对 JSON 标准或特殊编码进行任何专有扩展；它�
 ### <a name="addressing-a-resource"></a>对资源进行寻址
 所有资源都可通过 URI 寻址。 资源的 **_self** 属性的值表示资源的相对 URI。 URI 的格式由 /\<feed\>{_rid} 路径段构成：  
 
-| _self 的值 | 说明 |
+| _self 的值 | Description |
 | --- | --- |
 | /dbs |数据库帐户下的数据库的源 |
 | /dbs/{dbName} |其 ID 与值 {dbName} 匹配的数据库 |

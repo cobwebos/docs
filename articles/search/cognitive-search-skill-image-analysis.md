@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: ad1946436b2b5bab55ff53dcce09446ef1220829
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 7f7d447edd0d73084a46aeff81f27b3ab0f072d3
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39011525"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286228"
 ---
 #   <a name="image-analysis-cognitive-skill"></a>图像分析认知技能
 
@@ -37,7 +37,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 ## <a name="skill-inputs"></a>技能输入
 
-| 输入名称      | Description                                          |
+| 输入名称      | 说明                                          |
 |---------------|------------------------------------------------------|
 | 图像         | 复杂类型。 当前仅适用于“/document/normalized_images”字段，当 ```imageAction``` 设置为 ```generateNormalizedImages``` 时由 Azure Blob 索引器生成。 请参阅[此示例](#sample-output)获取详细信息。|
 
@@ -134,7 +134,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
                             "celebrities": [
                                 {
                                     "name": "Satya Nadella",
-                                    "faceRectangle": {
+                                    "faceBoundingBox": {
                                         "left": 597,
                                         "top": 162,
                                         "width": 248,
@@ -201,7 +201,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
                     {
                         "age": 44,
                         "gender": "Male",
-                    "faceRectangle": {
+                    "faceBoundingBox": {
                             "left": 593,
                             "top": 160,
                             "width": 250,
@@ -245,6 +245,6 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 ## <a name="see-also"></a>另请参阅
 
-+ [预定义技能](cognitive-search-predefined-skills.md)
++ [预定义的技能](cognitive-search-predefined-skills.md)
 + [如何定义技能组合](cognitive-search-defining-skillset.md)
 + [创建索引器 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

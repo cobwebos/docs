@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 41d0d3826acdd374a86588fbd8e7a23d03810fda
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 5513e0ff434862ea7eee42cb94ff2a0f67f6d390
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113774"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338738"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C：在自定义配置文件编辑策略中使用自定义属性
 
@@ -55,7 +55,7 @@ Azure AD B2C 扩展存储在每个用户帐户中的属性集。 还可以使用
 4. 提供了以下条目：
     * Web 应用的名称：WebApp-GraphAPI-DirectoryExtensions。
     * 应用程序类型：Web 应用/API。
-    * 登录 URL：https://{tenantName}.onmicrosoft.com/WebApp-GraphAPI-DirectoryExtensions。
+    * 登录 URL： https://{tenantName}.onmicrosoft.com/WebApp-GraphAPI-DirectoryExtensions。
 5. 选择**创建**。
 6. 选择新建的 Web 应用程序。
 7. 选择“设置” > “所需权限”。
@@ -247,7 +247,7 @@ Azure AD B2C 扩展存储在每个用户帐户中的属性集。 还可以使用
   "exp": 1493585187,
   "nbf": 1493581587,
   "ver": "1.0",
-  "iss": "https://login.microsoftonline.com/f06c2fe8-709f-4030-85dc-38a4bfd9e82d/v2.0/",
+  "iss": "https://contoso.b2clogin.com/f06c2fe8-709f-4030-85dc-38a4bfd9e82d/v2.0/",
   "sub": "a58e7c6c-7535-4074-93da-b0023fbaf3ac",
   "aud": "4e87c1dd-e5f5-4ac8-8368-bc6a98751b8b",
   "acr": "b2c_1a_trustframeworkprofileedit",
@@ -271,7 +271,7 @@ Azure AD B2C 扩展存储在每个用户帐户中的属性集。 还可以使用
 
 2. 在内置策略和自定义策略之间使用相同的扩展属性。 通过门户体验添加扩展属性或自定义属性时，使用每个 B2C 租户中都存在的 b2c-extensions-app 注册这些属性。 按照以下步骤在自定义策略中使用扩展属性：
 
-  a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 portal.azure.com 的 B2C 租户中，导航到 Azure Active Directory 并选择“应用注册”。  
+  a. 在 portal.azure.com 的 B2C 租户中，导航到 Azure Active Directory 并选择“应用注册”。  
   b. 找到 b2c-extensions-app，然后选择它。  
   c. 在“概要”下，输入“应用程序 ID”和“对象 ID”。  
   d. 将这些信息包含在 AAD-Common TechnicalProfile 元数据中：  

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2017
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: ed47a5d1449ba634f90e93a82f15daf6e44a553e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 57ad5541bb7b61f8d26002168bb069fad3058965
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31793855"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43339068"
 ---
 # <a name="configure-a-virtual-network-classic-using-a-network-configuration-file"></a>使用网络配置文件配置虚拟网络（经典）
 > [!IMPORTANT]
@@ -37,7 +37,7 @@ ms.locfileid: "31793855"
 
 ### <a name="powershell"></a>PowerShell
  
-1. [安装 Azure PowerShell 并登录到 Azure](/powershell/azure/install-azure-ps?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+1. [安装 Azure PowerShell 并登录到 Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install)。
 2. 在以下命令中根据需要更改目录（并确保它存在）和文件名，然后运行该命令导出网络配置文件：
 
     ```powershell
@@ -125,7 +125,7 @@ ms.locfileid: "31793855"
 
 ### <a name="powershell"></a>PowerShell
  
-1. [安装 Azure PowerShell 并登录到 Azure](/powershell/azure/install-azure-ps?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+1. [安装 Azure PowerShell 并登录到 Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install)。
 2. 在以下命令中根据需要更改目录和文件名，然后运行该命令导入网络配置文件：
  
     ```powershell

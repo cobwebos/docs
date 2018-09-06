@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4ad7a6fb032c805072fd9608fb8058a70aa12914
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f56c9f916e0bbbf380347af2ec3f17645063494d
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441825"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340344"
 ---
 # <a name="azure-active-directory-b2c-web-sign-in-with-openid-connect"></a>Azure Active Directory B2C：使用 OpenID Connect 进行 Web 登录
 OpenID Connect 是构建在 OAuth 2.0 基础之上的身份验证协议，可用于将用户安全登录到 Web 应用程序。 通过使用 OpenID Connect 的 Azure Active Directory B2C (Azure AD B2C) 实现，可以将 Web 应用程序中的注册、登录和其他标识管理体验转移到 Azure Active Directory (Azure AD) 中。 本指南演示如何使用与语言无关的方式执行此操作。 介绍在不使用我们的任何开放源代码库的情况下，如何发送和接收 HTTP 消息。
@@ -36,7 +36,7 @@ Azure AD B2C 扩展了标准 OpenID Connect 协议，使其功能远远超出了
 
 #### <a name="use-a-sign-in-policy"></a>使用登录策略
 ```
-GET https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
+GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &response_type=code+id_token
 &redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
@@ -49,7 +49,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 #### <a name="use-a-sign-up-policy"></a>使用注册策略
 ```
-GET https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
+GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &response_type=code+id_token
 &redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
@@ -62,7 +62,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 #### <a name="use-an-edit-profile-policy"></a>使用编辑配置文件策略
 ```
-GET https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
+GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &response_type=code+id_token
 &redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
@@ -73,7 +73,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_edit_profile
 ```
 
-| 参数 | 必需？ | 说明 |
+| 参数 | 必需？ | Description |
 | --- | --- | --- |
 | client_id |必选 |Azure 门户分配给应用的[应用程序 ID](https://portal.azure.com/) 。 |
 | response_type |必选 |响应类型，其中必须包括用于 OpenID Connect 的 ID 令牌。 如果 Web 应用还需要使用令牌来调用 Web API，则可以使用 `code+id_token`，正如我们在此处操作的一样。 |
@@ -98,7 +98,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| 参数 | 说明 |
+| 参数 | Description |
 | --- | --- |
 | id_token |应用请求的 ID 令牌。 可以使用 ID 令牌验证用户的身份，并开始与用户的会话。 有关 ID 令牌及其内容的更多详细信息，请参阅 [Azure AD B2C 令牌参考](active-directory-b2c-reference-tokens.md)。 |
 | 代码 |应用请求的授权代码（如果使用 `response_type=code+id_token`）。 应用可以使用授权代码请求目标资源的访问令牌。 授权代码的生存期非常短。 通常，它们在约 10 分钟后过期。 |
@@ -113,7 +113,7 @@ error=access_denied
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| 参数 | 说明 |
+| 参数 | Description |
 | --- | --- |
 | error |用于分类发生的错误类型和响应错误的错误代码字符串。 |
 | error_description |帮助开发人员识别身份验证错误根本原因的特定错误消息。 |
@@ -126,11 +126,11 @@ error=access_denied
 
 Azure AD B2C 具有 OpenID Connect 元数据终结点，允许应用程序在运行时提取有关 Azure AD B2C 的信息。 此信息包括终结点、令牌内容和令牌签名密钥。 B2C 租户中的每个策略都有一个 JSON 元数据文档。 例如，`fabrikamb2c.onmicrosoft.com` 中 `b2c_1_sign_in` 策略的元数据文档位于：
 
-`https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_sign_in`
+`https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_sign_in`
 
 此配置文档的一个属性为 `jwks_uri`，对于相同策略，该属性的值为：
 
-`https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in`。
+`https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in`。
 
 若要确定对 ID 令牌进行签名所使用的策略（以及从何处获取元数据），可以使用两种方法。 首先，策略名称包含在 ID 令牌的 `acr` 声明中。 有关如何从 ID 令牌中解析声明的信息，请参阅 [Azure AD B2C 令牌参考](active-directory-b2c-reference-tokens.md)。 另一个方法是在发出请求时在 `state` 参数的值中对策略进行编码，并对其进行解码以确定使用的策略。 任意一种方法均有效。
 
@@ -160,14 +160,14 @@ Azure AD B2C 具有 OpenID Connect 元数据终结点，允许应用程序在运
 
 ```
 POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
-Host: https://login.microsoftonline.com
+Host: https://fabrikamb2c.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&client_secret=<your-application-secret>
 
 ```
 
-| 参数 | 必需？ | 说明 |
+| 参数 | 必需？ | Description |
 | --- | --- | --- |
 | p |必选 |用于获取授权代码的策略。 无法在此请求中使用不同的策略。 请注意，将此参数添加到查询字符串中，而不是添加到 `POST` 正文中。 |
 | client_id |必选 |Azure 门户分配给应用的[应用程序 ID](https://portal.azure.com/) 。 |
@@ -189,7 +189,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| 参数 | 说明 |
+| 参数 | Description |
 | --- | --- |
 | not_before |epoch 时间中令牌被视为有效的时间。 |
 | token_type |令牌类型值。 Azure AD 支持的唯一类型是 `Bearer`。 |
@@ -207,7 +207,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 }
 ```
 
-| 参数 | 说明 |
+| 参数 | Description |
 | --- | --- |
 | error |用于分类发生的错误类型和响应错误的错误代码字符串。 |
 | error_description |帮助开发人员识别身份验证错误根本原因的特定错误消息。 |
@@ -226,13 +226,13 @@ ID 令牌的生存期较短。 必须在它们过期后将其刷新才能继续�
 
 ```
 POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
-Host: https://login.microsoftonline.com
+Host: https://fabrikamb2c.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&client_secret=<your-application-secret>
 ```
 
-| 参数 | 必选 | 说明 |
+| 参数 | 必选 | Description |
 | --- | --- | --- |
 | p |必选 |用于获取原始刷新令牌的策略。 无法在此请求中使用不同的策略。 请注意，将此参数添加到查询字符串中，而不是添加到 POST 正文中。 |
 | client_id |必选 |Azure 门户分配给应用的[应用程序 ID](https://portal.azure.com/) 。 |
@@ -254,7 +254,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| 参数 | 说明 |
+| 参数 | Description |
 | --- | --- |
 | not_before |epoch 时间中令牌被视为有效的时间。 |
 | token_type |令牌类型值。 Azure AD 支持的唯一类型是 `Bearer`。 |
@@ -272,7 +272,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 }
 ```
 
-| 参数 | 说明 |
+| 参数 | Description |
 | --- | --- |
 | error |用于分类发生的错误类型和响应错误的错误代码字符串。 |
 | error_description |帮助开发人员识别身份验证错误根本原因的特定错误消息。 |
@@ -283,12 +283,12 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 只需将用户重定向到前面章节“验证 ID 令牌”中所述的 OpenID Connect 元数据文档中列出的 `end_session` 终结点：
 
 ```
-GET https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/logout?
+GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/logout?
 p=b2c_1_sign_in
 &post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 
-| 参数 | 必需？ | 说明 |
+| 参数 | 必需？ | Description |
 | --- | --- | --- |
 | p |必选 |想要用于从应用程序中注销用户的策略。 |
 | post_logout_redirect_uri |建议 |用户在成功注销后应重定向到的 URL。如果未包含此参数，Azure AD B2C 会向用户显示一条常规消息。 |

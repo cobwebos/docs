@@ -10,19 +10,20 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 43d7f147a64e55359e43ba793e3fc57efa63c30c
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: afb28488fc47f018b6d192eb1b65a54499ac8ff9
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159900"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666357"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>将 Azure 多重身份验证与 AD FS 配合使用来保护云资源
+
 如果组织已与 Azure Active Directory 联合，则使用 Azure 多重身份验证或 Active Directory 联合身份验证服务 (AD FS) 来保护通过 Azure AD 访问的资源。 使用以下过程可通过 Azure 多重身份验证或 Active Directory 联合身份验证服务保护 Azure Active Directory 资源。
 
 ## <a name="secure-azure-ad-resources-using-ad-fs"></a>使用 AD FS 保护 Azure AD 资源
-若要保护云资源，请设置声明规则，以便在用户成功执行双重验证之后，Active Directory 联合身份验证服务能够发出多重身份验证声明。 此声明将传递到 Azure AD。 按照以下过程完成各步骤：
 
+若要保护云资源，请设置声明规则，以便在用户成功执行双重验证之后，Active Directory 联合身份验证服务能够发出多重身份验证声明。 此声明将传递到 Azure AD。 按照以下过程完成各步骤：
 
 1. 打开“AD FS 管理”。
 2. 在左侧选择“信赖方信任”。
@@ -45,11 +46,13 @@ ms.locfileid: "39159900"
 9. 单击“完成”。 关闭 AD FS 管理控制台。
 
 ## <a name="trusted-ips-for-federated-users"></a>联合用户的受信任 IP
+
 受信任的 IP 可让管理员针对特定的 IP 地址或针对从他们自己的 Intranet 发出请求的联合用户，跳过两步验证。 以下部分介绍当请求是来自联合用户的 Intranet 时，如何配置联合用户的 Azure 多重身份验证受信任 IP，以及跳过两步验证。 这是通过将 AD FS 配置为使用“传递或筛选传入声明”模板与“公司网络内部”声明类别来实现的。
 
 此示例使用 Office 365 作为信赖方信任。
 
 ### <a name="configure-the-ad-fs-claims-rules"></a>配置 AD FS 声明规则
+
 我们要做的第一件事是配置 AD FS 声明。 创建两个声明规则，一个用于“公司网络内部”声明类型，另一个用于保持用户登录。
 
 1. 打开“AD FS 管理”。
@@ -78,6 +81,7 @@ ms.locfileid: "39159900"
 16. 关闭“AD FS 管理”。
 
 ### <a name="configure-azure-multi-factor-authentication-trusted-ips-with-federated-users"></a>配置联合用户的 Azure 多重身份验证受信任 IP
+
 创建声明后，可以开始配置受信任的 IP。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。

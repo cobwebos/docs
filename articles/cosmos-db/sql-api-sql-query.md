@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: laviswa
-ms.openlocfilehash: 26928e36b09ef0dfe5576a8a8039ffac2dd3fb4a
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: a3a1f376c36004851d6e64f2fa037bebfc24665b
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42140842"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287752"
 ---
 # <a name="query-azure-cosmos-db-data-with-sql-queries"></a>使用 SQL 查询来查询 Azure Cosmos DB 数据
 
@@ -27,17 +27,7 @@ Microsoft Azure Cosmos DB 通过将 SQL（结构化查询语言）用作 JSON �
 
 * Azure Cosmos DB 使用 JavaScript 的编程模型作为查询语言的基础。 SQL API 植根于 JavaScript 的类型系统、表达式计算和函数调用中。 而这反过来为关系投影、跨 JSON 文档的分层导航、自联接、空间查询以及调用完全采用 JavaScript 编写的用户定义的函数 (UDF) 和其他功能提供了自然编程模型。 
 
-本文使用简单的 JSON 文档来逐步讲解一些示例 SQL 查询。 若要了解 Azure Cosmos DB SQL 语言语法，请参阅 [SQL 语法参考](sql-api-sql-query-reference.md)一文。 也可以从以下视频着手，其中介绍了 Azure Cosmos DB 的查询功能，并在线演示了[查询演练](http://www.documentdb.com/sql/demo)。
-
-> [!VIDEO https://www.youtube.com/embed/1LqUQRpHfFI]
->
->
-
-以下视频演示了更高级的查询技术：
-
-> [!VIDEO https://www.youtube.com/embed/kASU9NOIR90]
->
->
+本文使用简单的 JSON 文档来逐步讲解一些示例 SQL 查询。 若要了解 Azure Cosmos DB SQL 语言语法，请参阅 [SQL 语法参考](sql-api-sql-query-reference.md)一文。 
 
 ## <a id="GettingStarted"></a>SQL 命令入门
 让我们创建两个简单的 JSON 文档，并针对它们执行查询。 假设有两个涉及到家庭的 JSON 文档。请将这些 JSON 文档插入集合，然后查询数据。 此处有一个涉及到 Andersen 和 Wakefield 家庭、父母、子女（及其宠物）、地址和注册信息的简单 JSON 文档。 该文档拥有字符串、数字、布尔、数组和嵌套属性。 

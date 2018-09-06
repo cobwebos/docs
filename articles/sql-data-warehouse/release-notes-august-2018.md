@@ -3,19 +3,19 @@ title: Azure SQL 数据仓库发行说明（2018 年 8 月）| Microsoft Docs
 description: Azure SQL 数据仓库发行说明。
 services: sql-data-warehouse
 author: twounder
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 08/13/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 27030256b88f429d080c7a7ce69ed3c83eca337c
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: c52fcd544e22c274d0e9053da93d2b9dee0df695
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42145076"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286626"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-august-2018"></a>Azure SQL 数据仓库中的新增功能 2018 年 8 月
 Azure SQL 数据仓库持续得到改进。 本文介绍了 2018 年 8 月发行的版本中所引入的新功能和所做的更改。
@@ -28,9 +28,9 @@ Microsoft 引入了[自动化智能见解](https://azure.microsoft.com/blog/auto
 可以钻取到每个类别来查看针对特定警报的建议：![适用于 Azure SQL 数据仓库的 Azure 顾问门户建议详细信息](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/3c42426e-6969-46e3-9025-c34c0755a302.png)
 
 
-## <a name="bug-fixes"></a>Bug 修补程序
+## <a name="bug-fixes"></a>Bug 修复
 
-| 标题 | 说明 |
+| 标题 | Description |
 |:---|:---|
 | **当拆分计数超过最大限制时，潜在查询失败** |当超过文件拆分数上限（即 100 万个）时，出现未经处理的异常，它导致 SQL 引擎转储且所有查询均失败。 该修补程序解决了此问题，它正确地处理了异常并在不导致查询失败的情况下返回一个错误。 |
 | **已将 ExternalMoveReadersPerNode 默认值调高以提高负载性能** |此问题是由 ExternalMoveReadersPerNode 属性设置与服务结构设置不同步引起的。 此回归导致 Gen2 负载性能降级。 该修补程序将 Gen2 负载性能恢复到了优化后的设计参数范围内。|

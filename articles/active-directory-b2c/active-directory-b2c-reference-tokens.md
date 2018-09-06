@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 46e4956aa145aa082de86191ede4adaf9a43fca9
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 5ff4ddee3d8af15caf082be56a51b1aa0d36f02a
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39309020"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43339971"
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C：令牌参考
 
@@ -73,7 +73,7 @@ CQhoFA
 | 名称 | 声明 | 示例值 | Description |
 | --- | --- | --- | --- |
 | 目标受众 |`aud` |`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` |受众声明标识令牌的目标接收方。 对于 Azure AD B2C，受众是在应用注册门户中分配给应用的应用程序 ID。 应用应该验证此值并拒绝不匹配的令牌。 受众是资源的同义词。 |
-| 颁发者 |`iss` |`https://login.microsoftonline.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` |此声明标识构造并返回令牌的安全令牌服务 (STS)。 它还标识在其中进行用户身份验证的 Azure AD 目录。 应用应该验证颁发者声明，以确保令牌来自 Azure Active Directory v2.0 终结点。 |
+| 颁发者 |`iss` |`https://{tenantname}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` |此声明标识构造并返回令牌的安全令牌服务 (STS)。 它还标识在其中进行用户身份验证的 Azure AD 目录。 应用应该验证颁发者声明，以确保令牌来自 Azure Active Directory v2.0 终结点。 |
 | 颁发时间 |`iat` |`1438535543` |此声明表示颁发令牌的时间，以新纪元时间表示。 |
 | 过期时间 |`exp` |`1438539443` |此过期时间声明表示令牌失效的时间，以纪元时间表示。 应用应该使用此声明来验证令牌生存期的有效性。 |
 | 生效时间 |`nbf` |`1438535543` |此声明表示令牌生效的时间，以新纪元时间表示。 这通常与颁发令牌的时间相同。 应用应该使用此声明来验证令牌生存期的有效性。 |
@@ -120,7 +120,7 @@ Azure AD B2C 令牌使用行业标准非对称式加密算法（例如 RSA 256�
 Azure AD B2C 具有 OpenID Connect 元数据终结点。 这允许应用在运行时提取 Azure AD B2C 的相关信息。 此信息包括终结点、令牌内容和令牌签名密钥。 B2C 目录针对每个策略都有一个 JSON 元数据文档。 例如，`fabrikamb2c.onmicrosoft.com` 中 `b2c_1_sign_in` 策略的元数据文档位于：
 
 ```
-https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_sign_in
+https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_sign_in
 ```
 
 `fabrikamb2c.onmicrosoft.com` 是用于对用户进行身份验证的 B2C 目录，`b2c_1_sign_in` 是用来获取令牌的策略。 要确定对令牌签名所用的策略（以及提取元数据的位置），有两个选择。 首先，策略名称包含在令牌的 `acr` 声明中。 可以通过对主体进行 Base-64 解码，并反序列化生成的 JSON 字符串，从而分析 JWT 主体中的声明。 `acr` 声明将成为用于颁发令牌的策略名称。  另一个方法是在发出请求时在 `state` 参数的值中对策略进行编码，并对其进行解码以确定使用的策略。 任意一种方法均有效。
@@ -128,7 +128,7 @@ https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/o
 元数据文档是包含多条有用信息的 JSON 对象。 其中包括执行 OpenID Connect 身份验证所需的终结点的位置。 还包括 `jwks_uri`，它提供用于对令牌签名的公钥集位置。 在此处提供该位置，但最好使用元数据文档并分析 `jwks_uri` 来动态提取位置：
 
 ```
-https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in
+https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in
 ```
 
 位于此 URL 的 JSON 文档包含将在特定时间点使用的所有公钥信息。 应用可以使用 JWT 标头中的 `kid` 声明，选择用于签名特定令牌的 JSON 文档中的公钥。 然后，可以使用正确的公钥和指定的算法来执行签名验证。

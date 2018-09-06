@@ -10,7 +10,7 @@ Azure Monitor 的自动缩放功能仅以横向方式调整资源的规模，即
 
 ## <a name="create-a-virtual-machine-scale-set"></a>创建虚拟机规模集
 
-使用规模集可以轻松地将相同的 VM 作为集来进行部署和管理。 可以使用 [Azure 门户](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md)、[Azure PowerShell](../articles/virtual-machines/windows/tutorial-create-vmss.md) 或 [Azure CLI](../articles/virtual-machines/linux/tutorial-create-vmss.md) 创建 Linux 或 Windows 规模集。 还可以使用 SDK（如 [Python](/develop/python) 或 [Node.js](/nodejs/azure)）或直接使用 [REST API](/rest/api/compute/virtualmachinescalesets) 创建和管理规模集。 VM 的自动缩放通过将指标和规则应用于规模集来完成。
+使用规模集可以轻松地将相同的 VM 作为集来进行部署和管理。 可以使用 [Azure 门户](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md)、[Azure PowerShell](../articles/virtual-machines/windows/tutorial-create-vmss.md) 或 [Azure CLI](../articles/virtual-machines/linux/tutorial-create-vmss.md) 创建 Linux 或 Windows 规模集。 还可以使用 SDK（如 [Python](https://azure.microsoft.com/develop/python/) 或 [Node.js](/nodejs/azure)）或直接使用 [REST API](/rest/api/compute/virtualmachinescalesets) 创建和管理规模集。 VM 的自动缩放通过将指标和规则应用于规模集来完成。
 
 ## <a name="configure-autoscale-for-a-scale-set"></a>为规模集配置自动缩放
 

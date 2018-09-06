@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 3ee1f394536061cecaa5d775650149b30098560e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5060839be244f55700b40735e598964a0b7b6709
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34600215"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382039"
 ---
 # <a name="add-custom-html-to-the-map"></a>向地图添加自定义 HTML
 
@@ -29,13 +29,13 @@ ms.locfileid: "34600215"
 
 第二个代码块基于一个图像创建 HTML 元素。
 
-最后一个代码块使用 map 类的 [addHtml](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addhtml) 函数将图像添加到地图的指定位置。
+最后一个代码块使用 map 类的 [addHtml](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addhtml) 函数将图像添加到地图的指定位置。
 
 ## <a name="next-steps"></a>后续步骤
 
 详细了解本文中使用的类和方法： 
-* [Map](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest)
-    * [addHtml](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addhtml)
+* [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+    * [addHtml](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addhtml)
     
 有关可向地图添加的更多代码示例，请参阅以下文章： 
 * [显示搜索结果](./map-search-location.md)
