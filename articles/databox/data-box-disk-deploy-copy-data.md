@@ -12,21 +12,21 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/12/2018
+ms.date: 09/05/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: b0769ba70f495728df5c38b43bae4059b27de88b
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f25d0b3522658d5fcd4b34110cb03b624dd9e7b1
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39010814"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841499"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>教程：将数据复制到 Azure Data Box 磁盘并验证
 
 本教程介绍如何从主机复制数据，然后生成校验和来验证数据完整性。
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 将数据复制到 Data Box 磁盘
@@ -62,7 +62,7 @@ ms.locfileid: "39010814"
     |实体   |约定  |
     |---------|---------|
     |容器名称：块 Blob 和页 Blob     |必须以字母或数字开头，只能包含小写字母、数字和连字符 (-)。 每个连字符 (-) 字符的前后必须紧接字母或数字。 名称中不允许连续的连字符。 <br>必须是有效的 DNS 名称，长度为 3 到 63 个字符。          |
-    |块 Blob 和页 Blob 的 Blob 名称    |Blob 名称区分大小写，只能包含字符的任意组合。 <br>Blob 名称的长度必须为 1 到 1,024 个字符。<br>必须正确转义保留的 URL 字符。<br>构成 Blob 名称的路径段数目不能超过 254 个。 路径段是指对应于虚拟目录名称的相邻分隔符（例如，正斜杠“/”）之间的字符串。         |
+    |块 Blob 和页 Blob 的 Blob 名称    |Blob 名称区分大小写，只能包含字符的任意组合。 <br>Blob 名称的长度必须为 1 到 1,024 个字符。<br>必须正确地对保留的 URL 字符进行转义。<br>构成 Blob 名称的路径段数目不能超过 254 个。 路径段是指对应于虚拟目录名称的相邻分隔符（例如，正斜杠“/”）之间的字符串。         |
 
     > [!IMPORTANT] 
     > 所有容器和 Blob 应符合 [Azure 命名约定](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions)。 如果不遵循这些规则，则无法将数据上传到 Azure。
@@ -76,8 +76,8 @@ ms.locfileid: "39010814"
     
     |参数/选项  |Description |
     |--------------------|------------|
-    |<Source>            | 指定源目录的路径。        |
-    |<Destination>       | 指定目标目录的路径。        |
+    |Source            | 指定源目录的路径。        |
+    |目标       | 指定目标目录的路径。        |
     |/E                  | 复制包括空目录的子目录。 |
     |/MT[:N]             | 使用 N 个线程创建多线程副本，其中 N 是介于 1 和 128 之间的整数。 <br>N 的默认值为 8。        |
     |/R: <N>             | 指定复制失败时的重试次数。 N 的默认值为 1,000,000（100 万次重试）。        |

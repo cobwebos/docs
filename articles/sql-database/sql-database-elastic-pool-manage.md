@@ -11,12 +11,12 @@ ms.date: 08/01/2018
 ms.author: ninarn
 ms.topic: conceptual
 ms.reviewer: carlrab
-ms.openlocfilehash: 96ea965ac383ae449afffa62c5e9950c6fd4e4da
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: cbfbe02926907ca3ca5b6c13932c8b67862c8456
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39411927"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842017"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>在 Azure SQL 数据库中创建和管理弹性池
 
@@ -104,17 +104,11 @@ ms.locfileid: "39411927"
 |[弹性池 - 获取](/rest/api/sql/elasticpools/get)|获取弹性池。|
 |[弹性池 - 按服务器列出](/rest/api/sql/elasticpools/listbyserver)|返回服务器中弹性池的列表。|
 |[弹性池 - 更新](/rest/api/sql/elasticpools/update)|更新现有的弹性池。|
-|[推荐的弹性池 - 获取](/rest/api/sql/recommendedelasticpools/get)|获取推荐的弹性池。|
-|[推荐的弹性池 - 按服务器列出](/rest/api/sql/recommendedelasticpools/listbyserver)|返回推荐的弹性池。|
-|[推荐的弹性池 - 列出指标](/rest/api/sql/recommendedelasticpools/listmetrics)|返回推荐的弹性池指标。|
 |[弹性池活动](/rest/api/sql/elasticpoolactivities)|返回弹性池活动。|
 |[弹性池数据库活动](/rest/api/sql/elasticpooldatabaseactivities)|返回弹性池内数据库上的活动。|
 |[数据库 - 创建或更新](/rest/api/sql/databases/createorupdate)|创建新数据库或更新现有数据库。|
 |[数据库 - 获取](/rest/api/sql/databases/get)|获取数据库。|
-|[数据库 - 按弹性池获取](/rest/api/sql/databases/getbyelasticpool)|获取弹性池内的数据库。|
-|[数据库 - 按推荐的弹性池获取](/rest/api/sql/databases/getbyrecommendedelasticpool)|获取推荐弹性池内的数据库。|
 |[数据库 - 按弹性池列出](/rest/api/sql/databases/listbyelasticpool)|返回弹性池中数据库的列表。|
-|[数据库 - 按推荐的弹性池列出](/rest/api/sql/databases/listbyrecommendedelasticpool)|返回推荐的弹性池内的数据库列表。|
 |[数据库 - 按服务器列出](/rest/api/sql/databases/listbyserver)|返回服务器中的数据库列表。|
 |[数据库 - 更新](/rest/api/sql/databases/update)|更新现有的数据库。|
 

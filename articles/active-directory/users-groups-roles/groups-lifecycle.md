@@ -14,12 +14,12 @@ ms.date: 03/09/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 656577211a992432366033326362c9892f7ba6ef
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 29a53101bff8c384d01f952c4498e09d9d970ee3
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861020"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841728"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>为 Office 365 组配置过期策略
 
@@ -43,7 +43,7 @@ ms.locfileid: "37861020"
 全局管理员或用户帐户管理员 | 可以创建、读取、更新或删除 Office 365 组到期策略设置<br>可以续订任何 Office 365 组
 用户 | 可以续订他们拥有的 Office 365 组<br>可以还原他们拥有的 Office 365 组<br>可以读取过期策略设置
 
-有关还原已删除组的权限的详细信息，请参阅[在 Azure Active Directory 中还原已删除的 Office 365 组](../fundamentals/active-directory-groups-restore-azure-portal.md)。
+有关还原已删除组的权限的详细信息，请参阅[在 Azure Active Directory 中还原已删除的 Office 365 组](groups-restore-deleted.md)。
 
 ## <a name="set-group-expiration"></a>设置组过期
 
@@ -71,7 +71,7 @@ ms.locfileid: "37861020"
 
 ![组删除电子邮件通知](./media/groups-lifecycle/deletion-notification.png)
 
-可以通过选择“还原组”或使用 PowerShell cmdlet 在删除组后的 30 天内还原组，如[在 Azure Active Directory 中还原已删除的 Office 365 组](../fundamentals/active-directory-groups-restore-azure-portal.md)中所述。
+可以通过选择“还原组”或使用 PowerShell cmdlet 在删除组后的 30 天内还原组，如[在 Azure Active Directory 中还原已删除的 Office 365 组](groups-restore-deleted.md)中所述。
     
 如果所还原的组包含文档、SharePoint 站点或其他持久对象，可能需要最多 24 小时才能完全还原该组及其内容。
 

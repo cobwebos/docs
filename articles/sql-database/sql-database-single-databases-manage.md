@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: a94c3a4c4b8ffb22b1d75ca064bd3e48a2e50141
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 483ac248619a6d8a0f403592b1b4e55ad5e973da
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005672"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841836"
 ---
 # <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>在 Azure SQL 数据库中创建和管理逻辑服务器和单一数据库 
 
@@ -156,10 +156,7 @@ ms.locfileid: "40005672"
 |[Servers - Update](/rest/api/sql/servers/update)|更新现有服务器。|
 |[数据库 - 创建或更新](/rest/api/sql/databases/createorupdate)|创建新数据库或更新现有数据库。|
 |[数据库 - 获取](/rest/api/sql/databases/get)|获取数据库。|
-|[数据库 - 按弹性池获取](/rest/api/sql/databases/getbyelasticpool)|获取弹性池内的数据库。|
-|[数据库 - 按推荐的弹性池获取](/rest/api/sql/databases/getbyrecommendedelasticpool)|获取推荐弹性池内的数据库。|
 |[数据库 - 按弹性池列出](/rest/api/sql/databases/listbyelasticpool)|返回弹性池中数据库的列表。|
-|[数据库 - 按推荐的弹性池列出](/rest/api/sql/databases/listbyrecommendedelasticpool)|返回推荐的弹性池内的数据库列表。|
 |[数据库 - 按服务器列出](/rest/api/sql/databases/listbyserver)|返回服务器中的数据库列表。|
 |[数据库 - 更新](/rest/api/sql/databases/update)|更新现有的数据库。|
 |[Firewall Rules - Create Or Update](/rest/api/sql/firewallrules/createorupdate)|创建或更新防火墙规则。|

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/05/2018
 ms.author: jingwang
-ms.openlocfilehash: ce3a3d28a25c8e904eeebbfc4cf68003fdda07a5
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: afb4cbafeb29800b1f5b1c837da301e2944d678b
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42443626"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842526"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure SQL 数据库复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
@@ -153,15 +153,15 @@ Azure SQL 数据库链接服务支持以下属性：
 要使用基于 MSI 的 Azure AD 应用程序令牌身份验证，请执行以下步骤：
 
 1. 在 Azure AD 中创建组。 使工厂 MSI 成为该组的成员。
-
-    a. 从 Azure 门户中找到数据工厂服务标识。 转到数据工厂的“属性”。 复制服务标识 ID。
-
-    b. 安装 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) 模块。 使用 `Connect-AzureAD` 命令登录。 运行以下命令，创建组并将数据工厂 MSI 添加为组成员。
+    
+    1. 从 Azure 门户中找到数据工厂服务标识。 转到数据工厂的“属性”。 复制服务标识 ID。
+    
+    1. 安装 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) 模块。 使用 `Connect-AzureAD` 命令登录。 运行以下命令，创建组并将数据工厂 MSI 添加为组成员。
     ```powershell
     $Group = New-AzureADGroup -DisplayName "<your group name>" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory service identity ID>"
     ```
-
+    
 1. 为 Azure 门户上的 Azure SQL Server [预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)（如果尚未这样做）。 Azure AD 管理员可以是 Azure AD 用户，也可以是 Azure AD 组。 如果授予包含 MSI 的组管理员角色，则可跳过步骤 3 和 4。 管理员拥有对数据库的完全访问权限。
 
 1. 为 Azure AD 组[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)。 使用 SSMS 等工具和至少具有 ALTER ANY USER 权限的 Azure AD 标识连接到要向其/从中复制数据的数据库。 运行以下 T-SQL： 

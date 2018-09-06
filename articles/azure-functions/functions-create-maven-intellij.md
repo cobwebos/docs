@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 5e265543e2ce5feeed095d89cdb47ede9817bad1
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 317d8bf40ef152e5b7dae6406be29330feaaa8d3
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40002672"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842460"
 ---
 # <a name="create-your-first-function-with-java-and-intellij-preview"></a>使用 Java 和 IntelliJ 创建你的第一个函数（预览版）
 
