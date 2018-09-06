@@ -2,18 +2,18 @@
 title: 创建分区的 Azure 服务总线队列和主题 | Microsoft 文档
 description: 介绍如何使用多个消息中转站对服务总线队列和主题进行分区。
 services: service-bus-messaging
-author: sethmanheim
+author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 06/06/2018
-ms.author: sethm
-ms.openlocfilehash: f9fb5f53496ea3f98a9d3341e77db283a3e3b570
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.author: spelluru
+ms.openlocfilehash: 821d9bf3c844da030d1d351e895704a81678fb4e
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824364"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699465"
 ---
 # <a name="partitioned-queues-and-topics"></a>分区的队列和主题
 

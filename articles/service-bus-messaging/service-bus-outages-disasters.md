@@ -2,18 +2,18 @@
 title: 使 Azure 服务总线应用程序免受服务总线中断和灾难影响 | Microsoft Docs
 description: 保护应用程序免受潜在服务总线故障影响的技术。
 services: service-bus-messaging
-author: sethmanheim
+author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 06/14/2018
-ms.author: sethm
-ms.openlocfilehash: 1d960349b50e2618365fd085cba7b3e55fa53874
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.author: spelluru
+ms.openlocfilehash: 5401d43f11c8afc02f48dd643fd4ff2f9611e06e
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301710"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696711"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>使应用程序免受服务总线中断和灾难影响的最佳实践
 
@@ -85,7 +85,7 @@ ms.locfileid: "36301710"
 > [!NOTE]
 > 仅在美国中部、美国东部 2 和法国中部区域支持可用性区域预览版。
 
-可以使用 Azure 门户仅在新的命名空间上启用可用性区域。 服务总线不支持现有命名空间的迁移。 在命名空间上启用区域冗余之后，不能将其禁用。
+可以使用 Azure 门户仅在新的命名空间上启用可用性区域。 服务总线不支持迁移现有命名空间。 在命名空间上启用区域冗余之后，不能将其禁用。
 
 ![1][]
 

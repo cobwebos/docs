@@ -3,7 +3,7 @@ title: Azure 服务总线到事件网格集成示例 | Microsoft Docs
 description: 本文提供的示例涉及服务总线消息传送和事件网格集成。
 services: service-bus-messaging
 documentationcenter: .net
-author: ChristianWolf42
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: f99766cb-8f4b-4baf-b061-4b1e2ae570e4
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 02/15/2018
-ms.author: chwolf
-ms.openlocfilehash: 72a9cc905adda5146cf943d8f0ed2789c3088422
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.author: spelluru
+ms.openlocfilehash: ca4a6bfcc0f1041e76c07b3b240d7c641ef8f587
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447384"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699856"
 ---
 # <a name="azure-service-bus-to-azure-event-grid-integration-examples"></a>Azure 服务总线到 Azure 事件网格集成示例
 

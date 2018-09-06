@@ -3,7 +3,7 @@ title: Azure 服务总线队列入门 | Microsoft Docs
 description: 编写一个 C# 控制台应用程序，以便使用服务总线消息传递队列。
 services: service-bus-messaging
 documentationcenter: .net
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: 68a34c00-5600-43f6-bbcc-fea599d500da
@@ -13,13 +13,13 @@ ms.topic: hero-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 12/7/2017
-ms.author: sethm
-ms.openlocfilehash: 6af7e4d238c10c0fed3443db58644e3557525993
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: spelluru
+ms.openlocfilehash: d75d1937ca0450f3eedd2c5ba4e91caf3b473a9b
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38308359"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698004"
 ---
 # <a name="get-started-with-service-bus-queues"></a>服务总线队列入门
 
@@ -35,7 +35,7 @@ ms.locfileid: "38308359"
 ## <a name="prerequisites"></a>先决条件
 
 1. [Visual Studio 2017 Update 3（版本 15.3 (26730.01)）](http://www.visualstudio.com/vs)或更高版本。
-2. [.NET Core SDK](https://www.microsoft.com/net/download/windows) 2.0 或更高版本。
+2. [NET Core SDK](https://www.microsoft.com/net/download/windows) 2.0 或更高版本。
 2. Azure 订阅。
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]

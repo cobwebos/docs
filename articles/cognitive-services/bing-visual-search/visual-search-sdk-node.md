@@ -10,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: v-gedod
-ms.openlocfilehash: 51797f4b674224b4348f3f51518a5b087fd2329a
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: bb245f9eab0f367a0e1b69af88352c54132ea29d
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36961887"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782434"
 ---
 # <a name="visual-search-sdk-node-quickstart"></a>视觉搜索 SDK Node 快速入门
 
@@ -24,11 +24,11 @@ Git Hub 上提供 [Node 视觉搜索 SDK 示例的源代码](https://github.com/
 
 代码方案记录在下列标题之下：
 * [视觉搜索客户端](#client)
-* [完成控制台应用程序](#complete)
+* [完整的控制台应用程序](#complete)
 
 ## <a name="prerequisites"></a>先决条件
 
-* 验证 SDK 调用需要认知服务 API 密钥。 注册[免费试用密钥]((https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7))。 试用密钥有效期为七天且每秒调用一次。 对于生产方案，[请购买访问密钥](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)。 另请参阅[定价信息](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/)。
+* 必须有认知服务 API 密钥，才能验证 SDK 调用。 可以注册申请[免费试用密钥](https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7)。 试用密钥有效期为七天且每秒调用一次。 对于生产方案，[请购买访问密钥](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)。 另请参阅[定价信息](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/)。
 
 ## <a name="application-dependencies"></a>应用程序依赖项
 
@@ -65,7 +65,7 @@ try {
 }
 
 ```
-分析以前查询的结果：
+分析以前的查询的结果：
 ```
 // Visual Search results
 if (visualSearchResults.image.imageInsightsToken) {

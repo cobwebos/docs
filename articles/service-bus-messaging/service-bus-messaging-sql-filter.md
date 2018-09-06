@@ -3,7 +3,7 @@ title: Azure 服务总线 SQLFilter 语法参考 | Microsoft Docs
 description: 有关 SQLFilter 语法的详细信息。
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/05/2018
-ms.author: sethm
-ms.openlocfilehash: ec9d728eb31eb979e82bfb53cf619f823750e65c
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: spelluru
+ms.openlocfilehash: c94ffed753ebf8fddbd553977c5d733f2306971d
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29132161"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698326"
 ---
 # <a name="sqlfilter-syntax"></a>SQLFilter 语法
 
@@ -282,5 +282,5 @@ SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.s
 ## <a name="next-steps"></a>后续步骤
 
 - [SQLFilter 类 (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
-- [SQLFilter 类 (.NET Framework)](/dotnet/api/microsoft.azure.servicebus.filters.sqlfilter)
+- [SQLFilter 类 (.NET Framework)](/dotnet/api/microsoft.azure.servicebus.sqlfilter)
 - [SQLRuleAction 类](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)

@@ -3,7 +3,7 @@ title: 使用 PowerShell 管理 Azure 服务总线资源 | Microsoft Docs
 description: 使用 PowerShell 模块创建和管理服务总线资源
 services: service-bus-messaging
 documentationcenter: .NET
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/21/2017
-ms.author: sethm
-ms.openlocfilehash: 962134c0c71ac0a251f8adf1f0f067d6067cb808
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.author: spelluru
+ms.openlocfilehash: 66475d9d59c8825eef7eb16e826d9813e819aa8a
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018615"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699621"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>使用 PowerShell 管理服务总线资源
 
@@ -31,7 +31,7 @@ Microsoft Azure PowerShell 是一个脚本编写环境，可用于控制和自�
 
 在开始之前，需要符合以下先决条件：
 
-* Azure 订阅。 有关获取订阅的详细信息，请参阅[购买选项][purchase options]、[成员优惠][member offers]或[免费帐户][free account]。
+* Azure 订阅。 有关获取订阅的详细信息，请参阅[购买选项][purchase options]、[会员套餐][member offers]或[免费帐户][free account]。
 * 配备 Azure PowerShell 的计算机。 有关说明，请参阅 [Azure PowerShell cmdlet 入门](/powershell/azure/get-started-azureps)。
 * 大致了解 PowerShell 脚本、NuGet 包和 .NET Framework。
 

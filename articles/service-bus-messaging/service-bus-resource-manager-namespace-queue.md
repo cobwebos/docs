@@ -3,7 +3,7 @@ title: 使用 Azure 资源管理器模板创建 Azure 服务总线命名空间�
 description: 使用 Azure 资源管理器模板创建服务总线命名空间和队列
 services: service-bus-messaging
 documentationcenter: .net
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: a6bfb5fd-7b98-4588-8aa1-9d5f91b599b6
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 04/11/2018
-ms.author: sethm
-ms.openlocfilehash: 47e29050ca78ee116f3c4dee0ecb53a6a71a866b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: spelluru
+ms.openlocfilehash: 2078d2526dbbc84bb1602b33badd521843838550
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38232096"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700384"
 ---
 # <a name="create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建服务总线命名空间和队列
 
@@ -45,8 +45,7 @@ ms.locfileid: "38232096"
 
 使用此模板，将部署包含队列的服务总线命名空间。
 
-
-  [服务总线队列](service-bus-queues-topics-subscriptions.md#queues)为一个或多个竞争使用方提供先入先出 (FIFO) 消息传送方式。
+[服务总线队列](service-bus-queues-topics-subscriptions.md#queues)为一个或多个竞争使用方提供先入先出 (FIFO) 消息传送方式。
 
 若要自动运行部署，请单击以下按钮：
 

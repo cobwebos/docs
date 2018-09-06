@@ -3,7 +3,7 @@ title: 服务总线死信队列 | Microsoft 文档
 description: Azure 服务总线死信队列概述
 services: service-bus-messaging
 documentationcenter: .net
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: 68b2aa38-dba7-491a-9c26-0289bc15d397
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/31/2018
-ms.author: sethm
-ms.openlocfilehash: a82d70e7bf776bf470d14e7f061774ccbb136316
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: spelluru
+ms.openlocfilehash: fcdda123ff63c0d350945d3e4929d2a39a38fcb3
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28925656"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699858"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>服务总线死信队列概述
 

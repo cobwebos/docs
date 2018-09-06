@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: 4fdc37eac071660b1af0fc85001dd157c286c283
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: c71e0d221e4605d95dc754127ec44c62a64472f1
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41920273"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702276"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-3-build-the-ui-with-angular"></a>通过 Angular 和 Azure Cosmos DB 创建 MongoDB 应用 - 第 3 部分：通过 Angular 生成 UI
 

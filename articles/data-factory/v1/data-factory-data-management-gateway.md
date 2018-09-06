@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 7ca0e8eb2d496bdcd8eff7dbee2af2e549f123dd
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 988c264ef6052b4b41de493944ac8d39a197a083
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626849"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698751"
 ---
 # <a name="data-management-gateway"></a>数据管理网关
 > [!NOTE]
@@ -142,7 +142,7 @@ ms.locfileid: "39626849"
 
 | 域名 | 端口 | Description |
 | --- | --- | --- |
-| *.servicebus.windows.net |443, 80 |用于与数据移动服务后端进行通信 |
+| * .servicebus.windows.net |443 |用于与数据移动服务后端进行通信 |
 | *.core.windows.net |443 |用于使用 Azure Blob 的暂存复制（如果已配置）|
 | *.frontend.clouddatahub.net |443 |用于与数据移动服务后端进行通信 |
 | * .servicebus.windows.net |9350-9354, 5671 |复制向导使用的通过 TCP 的可选服务总线中继 |

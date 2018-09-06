@@ -2,18 +2,18 @@
 title: Azure 服务总线常见问题解答 (FAQ) | Microsoft Docs
 description: 回答了一些关于 Azure 服务总线的常见问题。
 services: service-bus-messaging
-author: sethmanheim
+author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 06/05/2018
-ms.author: sethm
-ms.openlocfilehash: b3171ca264afdbdbddeb26eff8744ee67f336dfe
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.author: spelluru
+ms.openlocfilehash: e86471936ccf164bb1fd23450239be85e39dd60b
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109512"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696653"
 ---
 # <a name="service-bus-faq"></a>服务总线常见问题解答
 

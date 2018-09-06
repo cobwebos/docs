@@ -3,7 +3,7 @@ title: 使用 Azure 中继的 REST 教程 | Microsoft 文档
 description: 生成一个简单的 Azure 服务总线中继主机应用程序，该应用程序公开基于 REST 的接口。
 services: service-bus-relay
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: 1312b2db-94c4-4a48-b815-c5deb5b77a6a
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2017
-ms.author: sethm
-ms.openlocfilehash: 7a5a2916514a125d0b7443ced42e5ec600c68857
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.author: spelluru
+ms.openlocfilehash: fa5b4ba02eda75d16243c9aebbf38dfb30afe53d
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
-ms.locfileid: "24008030"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43695402"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Azure WCF 中继 REST 教程
 
@@ -73,7 +73,7 @@ WCF 协定和 REST 样式的协定的主要区别在于是否向 [OperationContr
     {
     }
     ```
-9. 在 `IImageContract` 接口中，为 `IImageContract` 约定在接口中公开的单个操作声明一个方法，然后将 `OperationContractAttribute` 属性应用到希望将其作为公共服务总线约定的一部分进行公开的方法中。
+9. 在 `IImageContract` 接口中，为 `IImageContract` 约定在接口中公开的单个操作声明一个方法，并将 `OperationContractAttribute` 属性应用到希望将其作为公共服务总线约定的一部分进行公开的方法中。
    
     ```csharp
     public interface IImageContract

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 08/29/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e0d92cc52b34e1e04f13e03ec2196d13961fb7de
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 62a7bb9bf63e8ebf97f9aeb5b08bf08ef06da43b
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247930"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782784"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -119,7 +119,7 @@ Windows 代理必须配置为与 WSUS 服务器通信或必须有权访问 Micro
 有关如何更新解决方案管理包的详细信息，请参阅[将 Operations Manager 连接到 Log Analytics](../log-analytics/log-analytics-om-agents.md)。
 
 > [!NOTE]
-> 对于使用 Operations Manger 代理的系统，若要能够由更新管理完全托管，需要将代理更新为 Microsoft Monitoring Agent。 若要了解如何更新代理，请参阅[如何升级 Operations Manager 代理](/system-center/scom/deploy-upgrade-agents.md)。
+> 对于使用 Operations Manger 代理的系统，若要能够由更新管理完全托管，需要将代理更新为 Microsoft Monitoring Agent。 若要了解如何更新代理，请参阅[如何升级 Operations Manager 代理](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents)。
 
 ### <a name="confirm-that-non-azure-machines-are-onboarded"></a>确认非 Azure 计算机已加入
 

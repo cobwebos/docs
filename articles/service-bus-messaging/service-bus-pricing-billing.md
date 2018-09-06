@@ -3,7 +3,7 @@ title: 服务总线定价和计费|Microsoft 文档
 description: 服务总线定价结构概述。
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: 7c45b112-e911-45ab-9203-a2e5abccd6e0
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/21/2017
-ms.author: sethm
-ms.openlocfilehash: 4faf37394b8e4f6c4e463acb11aea898a29fef80
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.author: spelluru
+ms.openlocfilehash: 9f899afef175afa2509dc60e0920dc387f8a7c5e
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448401"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702555"
 ---
 # <a name="service-bus-pricing-and-billing"></a>服务总线定价和计费
 
@@ -50,7 +50,7 @@ Azure 服务总线推出标准和[高级](service-bus-premium-messaging.md)两�
 
 队列和主题/订阅按每个“操作”而不是每条消息计费。 操作是指对队列或主题/订阅服务终结点发出的任何 API 调用。 这包括管理、发送/接收和会话状态操作。
 
-| 操作类型 | 说明 |
+| 操作类型 | Description |
 | --- | --- |
 | 管理 |对队列或主题/订阅进行创建、读取、更新、删除 (CRUD) 操作。 |
 | 消息传递 |通过队列或主题/订阅发送和接收消息。 |
@@ -82,7 +82,7 @@ Azure 服务总线推出标准和[高级](service-bus-premium-messaging.md)两�
 
 在“高级”层中，中转连接不计费。
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 ### <a name="what-are-brokered-connections-and-how-do-i-get-charged-for-them"></a>什么是中转连接，它的计费方式是怎样的？
 

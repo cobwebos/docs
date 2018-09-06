@@ -3,7 +3,7 @@ title: Azure 服务总线身份验证和授权 | Microsoft Docs
 description: 使用共享访问签名 (SAS) 身份验证向服务总线验证应用程序。
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: 18bad0ed-1cee-4a5c-a377-facc4785c8c9
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/14/2017
-ms.author: sethm
-ms.openlocfilehash: b8b5887f2003dd793ae7a50f066b893f685002a0
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.author: spelluru
+ms.openlocfilehash: e98d980747edfb9987430a635ff3118cdd455828
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
-ms.locfileid: "24813923"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702306"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>服务总线身份验证和授权
 

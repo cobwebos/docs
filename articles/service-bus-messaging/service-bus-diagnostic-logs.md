@@ -4,7 +4,7 @@ description: 了解如何为 Azure 中的服务总线设置诊断日志。
 keywords: ''
 documentationcenter: .net
 services: service-bus-messaging
-author: banisadr
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 02/05/2018
-ms.author: sethm
-ms.openlocfilehash: 4ce724adc9ca167634be9a0b7137b6a3d54211bf
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: spelluru
+ms.openlocfilehash: 3c2528634dea5c75e4a0e35b7e1a6a30de8d96c1
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29122166"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696150"
 ---
 # <a name="service-bus-diagnostic-logs"></a>服务总线诊断日志
 
@@ -64,7 +64,7 @@ ms.locfileid: "29122166"
 
 运行日志 JSON 字符串包括下表中列出的元素：
 
-名称 | 说明
+名称 | Description
 ------- | -------
 ActivityId | 用于跟踪的内部 ID
 EventName | 操作名称           

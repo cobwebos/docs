@@ -13,12 +13,12 @@ ms.component: pim
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: fc39b6ad2dd63d45995b76011f4ebbe0228b4c2d
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 4e1cb47989011f179c54061bd29ae55b4ff86d80
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190385"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669405"
 ---
 # <a name="configure-security-alerts-for-azure-ad-directory-roles-in-pim"></a>在 PIM 中为 Azure AD 目录角色配置安全警报
 ## <a name="security-alerts"></a>安全警报
@@ -67,4 +67,3 @@ ms.locfileid: "43190385"
 ## <a name="next-steps"></a>后续步骤
 
 - [在 PIM 中配置 Azure AD 目录角色设置](pim-how-to-change-default-settings.md)
-- [在 PIM 中要求 Azure AD 目录角色进行多重身份验证](pim-how-to-require-mfa.md)

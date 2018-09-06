@@ -9,12 +9,12 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: v-jansko
-ms.openlocfilehash: f5b916ba3b6b044f12b84958b2eb69f44e2f8136
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 15e01dd55a0fe297eab69417074dc58a15b469c4
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888135"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43783206"
 ---
 # <a name="supported-languages-in-the-microsoft-translator-text-api"></a>Microsoft 文本翻译 API 中支持的语言
 
@@ -80,6 +80,7 @@ Microsoft 文本翻译 API 支持对以下语言进行文本到文本翻译。 �
 | 瑞典语        |  神经 |`sv`          |
 | 塔希提语      | 统计 |`ty`          |
 | 泰米尔语      | 统计 |`ta`          |
+| 泰卢固语   | 神经   | `te` |
 | 泰语      | 神经 |`th`          |
 | 汤加语      | 统计 |`to`          |
 | 土耳其语       |  神经 |`tr`          |
@@ -236,6 +237,7 @@ Detect 方法可检测到以下语言。 Detect 可能会检测到 Microsoft Tra
 | 斯瓦希里语 |
 | 瑞典语 |
 | 他加禄语 |
+| 泰卢固语 |
 | 泰语 |
 | 土耳其语 |
 | 乌克兰语 |

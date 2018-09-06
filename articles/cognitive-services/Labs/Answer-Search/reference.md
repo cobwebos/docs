@@ -9,12 +9,12 @@ ms.technology: project-answer-search
 ms.topic: article
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: a12761c2d913cd7ffaa2cbc2cd42576c6bc96434
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 28a73918b50d7b13248fe5b6a17f2c95287a1ba4
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866978"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666282"
 ---
 # <a name="project-answer-search-v7-reference"></a>项目答案搜索 v7 参考
 
@@ -61,7 +61,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 ## <a name="headers"></a>标头  
 下面是请求和响应可能包含的标头。  
   
-|标头|说明|  
+|标头|Description|  
 |------------|-----------------|  
 |Accept|可选请求标头。<br /><br /> 默认的媒体类型为“application/json”。 若要指定响应使用 [JSON-LD](http://json-ld.org/)，请将 Accept 标头设置为“application/ld+json”。|  
 |<a name="acceptlanguage" />Accept-Language|可选请求标头。<br /><br /> 以逗号分隔的语言列表，用于用户界面字符串。 此列表以降序方式显示首选项。 有关详细信息，包括预期格式，请参阅 [RFC2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)。<br /><br /> 此标头和 [setLang](#setlang) 查询参数相互排斥&mdash;不可同时指定两者。<br /><br /> 如果设置此标头，则还必须指定 [cc](#cc) 查询参数。 为了确定针对哪个市场返回结果，必应使用从列表中找到的第一个受支持语言并将其与 `cc` 参数值相结合。 如果列表不包括支持的语言，必应会查找最接近的语言和支持请求的市场，或将聚合或默认市场用于结果。 若要确定必应使用的市场，请查看 BingAPIs-Market 标头。<br /><br /> 仅当指定多个语言时，才可使用此标头和 `cc` 查询参数。 否则，请使用 [mkt](#mkt) 和 [setLang](#setlang) 查询参数。<br /><br /> 用户界面字符串是用作用户界面中标签的字符串。 JSON 响应对象中有几个用户界面字符串。 响应对象中 Bing.com 属性的任何链接均将应用指定的语言。|  
@@ -95,7 +95,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 就像在 Web 搜索 API 中一样，响应架构为 [WebPage] 或 ErrorResponse。 如果请求失败，则顶级对象为 [ErrorResponse](#errorresponse) 对象。
 
 
-|对象|说明|  
+|对象|Description|  
 |------------|-----------------|  
 |[WebPage]|包含预览属性的顶级 JSON 对象。|  
 |[Fact]|包含事实的顶级 JSON 对象。| 
@@ -105,7 +105,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 ### <a name="error"></a>错误  
 定义已发生的错误。  
   
-|元素|说明|Type|  
+|元素|Description|Type|  
 |-------------|-----------------|----------|  
 |<a name="error-code" />code|用于标识错误类别的错误代码。 如需可能的代码的列表，请参阅[错误代码](#error-codes)。|String|  
 |<a name="error-message" />message|对错误的说明。|String|  
@@ -121,11 +121,11 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 |名称|值|Type|  
 |----------|-----------|----------|  
 |_type|类型提示。|String|  
-|<a name="errors" />errors|错误的列表，用于说明请求失败原因。|[Error](#error)[]|  
+|<a name="errors" />errors|错误的列表，用于说明请求失败原因。|[错误](#error)|  
 
   
   
-### <a name="license"></a>许可证  
+### <a name="license"></a>许可  
 定义文本或照片的使用许可证。  
   
 |名称|值|Type|  
@@ -207,7 +207,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 ### <a name="querycontext"></a>QueryContext  
 定义必应用于请求的查询上下文。  
   
-|元素|说明|Type|  
+|元素|Description|Type|  
 |-------------|-----------------|----------|  
 |adultIntent|一个布尔值，表示指定的查询是否有成人意向。 如果查询有成人意向，则此值为 **true**，否则为 **false**。|布尔|  
 |alterationOverrideQuery|一个查询字符串，用于强制必应使用原始字符串。 例如，如果查询字符串为 *saling downwind*，则替代查询字符串为 *+saling downwind*。 记住将查询字符串编码，编码后的字符串为 *%2Bsaling+downwind*。<br /><br /> 只有在原始查询字符串包含拼写错误的情况下，才会包含此字段。|String|  
@@ -269,7 +269,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 
 下面是请求可能返回的 HTTP 状态代码。  
   
-|状态代码|说明|  
+|状态代码|Description|  
 |-----------------|-----------------|  
 |200|成功。|  
 |400|查询参数之一缺失或无效。|  
@@ -309,13 +309,13 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 
 下面是可能的错误代码和子错误代码值。
 
-|代码|子代码|说明
+|代码|SubCode|Description
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|HTTP 状态代码为 500。
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>已阻止|只要请求的任何部分无效，必应就会返回 InvalidRequest。 例如，缺少必需参数或参数值无效。<br/><br/>如果错误是 ParameterMissing 或 ParameterInvalidValue，则 HTTP 状态代码为 400。<br/><br/>如果使用 HTTP 协议而不是 HTTPS 协议，则必应会返回 HttpNotAllowed，且 HTTP 状态代码为 410。
 |RateLimitExceeded|无子代码|每当超过每秒查询数 (QPS) 或每月查询数 (QPM) 配额时，必应都会返回 RateLimitExceeded。<br/><br/>如果超过 QPS，则必应会回 HTTP 状态代码 429；如果超过 QPM，则必应会返回 403。
-|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|在必应无法对调用方进行身份验证时，必应会返回 InvalidAuthorization。 例如，缺少 `Ocp-Apim-Subscription-Key` 标头或订阅密钥无效。<br/><br/>如果指定了多个身份验证方法，则会发生冗余。<br/><br/>如果错误是 InvalidAuthorization，则 HTTP 状态代码为 401。
-|InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|当调用方没有权限访问资源时，必应会返回 InsufficientAuthorization。 如果订阅密钥已禁用或过期，也会发生此情况。 <br/><br/>如果错误是 InsufficientAuthorization，则 HTTP 状态代码为 403。
+|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|当必应无法验证调用方身份时，必应会返回 InvalidAuthorization。 例如，缺少 `Ocp-Apim-Subscription-Key` 头或订阅密钥无效。<br/><br/>如果指定多个身份验证方法，便会发生冗余。<br/><br/>如果错误是 InvalidAuthorization，HTTP 状态代码为 401。
+|InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|当调用方无权访问资源时，必应会返回 InsufficientAuthorization。 如果订阅密钥已遭禁用或到期，就会发生此类错误。 <br/><br/>如果错误是 InsufficientAuthorization，HTTP 状态代码为 403。
 
 ## <a name="next-steps"></a>后续步骤
 - [C# 快速入门](c-sharp-quickstart.md)

@@ -2,28 +2,28 @@
 title: 快速入门 - 向/从 Azure 服务总线发送和接收消息 | Microsoft Docs
 description: 此快速入门介绍如何使用 PowerShell 和 .NET Standard 客户端发送和接收服务总线消息
 services: service-bus-messaging
-author: sethmanheim
+author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/22/2018
-ms.author: sethm
-ms.openlocfilehash: b22bf2acc83f46eda1aa74981377e66261d13394
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: spelluru
+ms.openlocfilehash: 5652069e7a81f54936a41ddb563b49fe6131e7e0
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660485"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696830"
 ---
 # <a name="quickstart-send-and-receive-messages-using-azure-powershell-and-net"></a>快速入门：使用 Azure PowerShell 和 .NET 发送和接收消息
 
-Microsoft Azure 服务总线是一种提供安全消息传递和绝对可靠性的企业集成消息中转站。 典型的服务总线方案通常涉及将两个或更多应用程序、服务或进程彼此解耦以及传输状态或数据更改。 此类方案可能涉及在其他应用程序或服务中计划多个批处理作业，或触发订单履行。 例如，零售公司可能会将其销售点数据发送到后端办公系统或区域配送中心，以便进行补货和库存更新。 在此场景中，客户端应用会将消息发送到服务总线队列并从中接收消息。
+Microsoft Azure 服务总线是一种提供安全消息传递和绝对可靠性的企业集成消息中转站。 典型的服务总线方案通常涉及将两个或更多应用程序、服务或进程彼此解耦以及传输状态或数据更改。 此类方案可能涉及在其他应用程序或服务中计划多个批处理作业，或触发订单履行。 例如，零售公司可能会将其销售点数据发送到后端办公系统或区域配送中心，以便进行补货和库存更新。 在这种情况下，客户端应用会将消息发送到服务总线队列并从中接收消息。
 
 ![队列](./media/service-bus-quickstart-powershell/quick-start-queue.png)
 
-本快速入门介绍如何使用 PowerShell 创建消息命名空间并在该命名空间中创建队列，以及如何获取该命名空间上的授权凭据，以便将消息发送到服务总线队列及从中接收消息。 然后该过程显示如何使用 [.NET Standard 库](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)从此队列收发消息。
+本快速入门介绍如何使用 PowerShell 创建消息命名空间并在该命名空间中创建队列，以及如何获取该命名空间上的授权凭据，以便将消息发送到服务总线队列及从中接收消息。 然后该过程展示了如何使用 [.NET Standard 库](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)从此队列发送和接收消息。
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户][]。
 
@@ -79,7 +79,7 @@ Get-AzureRmServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespac
 
 ## <a name="send-and-receive-messages"></a>发送和接收消息
 
-创建命名空间和队列且拥有必要的凭据后，即可发送和接收消息。 可以在[此 GitHub 示例文件夹](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveQuickStart)中检查代码。
+创建命名空间和队列并且拥有所需的凭据后，便可以发送和接收消息。 可以观察[此 GitHub 示例文件夹](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveQuickStart)中的代码。
 
 若要运行此代码，请执行以下操作：
 
@@ -91,7 +91,7 @@ Get-AzureRmServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespac
 
 3. 导航到示例文件夹 `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveQuickStart\BasicSendReceiveQuickStart`。
 
-4. 如果你尚未这样做，请使用以下 PowerShell cmdlet 获取连接字符串。 请务必将 `my-resourcegroup` 和 `namespace-name` 替换为特定的值： 
+4. 如果尚未这样做，请使用以下 PowerShell cmdlet 获取连接字符串。 请务必将 `my-resourcegroup` 和 `namespace-name` 替换为具体值： 
 
    ```azurepowershell-interactive
    Get-AzureRmServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespace-name -Name RootManageSharedAccessKey
@@ -105,13 +105,13 @@ Get-AzureRmServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespac
 
 6.  导航到 `bin\Debug\netcoreapp2.0` 文件夹。
 
-7.  键入以下命令以运行程序。 请务必将 `myConnectionString` 替换为先前获得的值，将 `myQueueName` 替换为所创建的队列的名称：
+7.  键入以下命令以运行程序。 请务必将 `myConnectionString` 替换为先前获取的值，将 `myQueueName` 替换为所创建队列的名称：
 
    ```shell
    dotnet BasicSendReceiveQuickStart.dll -ConnectionString "myConnectionString" -QueueName "myQueueName"
    ``` 
 
-8. 观察有 10 条消息发送到队列，并随后从队列中接收这些消息：
+8. 观察发送到队列并随后从队列中接收的 10 条消息：
 
    ![程序输出](./media/service-bus-quickstart-powershell/dotnet.png)
 
@@ -125,11 +125,11 @@ Remove-AzureRmResourceGroup -Name my-resourcegroup
 
 ## <a name="understand-the-sample-code"></a>了解示例代码
 
-本部分包含有关示例代码功能的更多详细信息。 
+此部分包含有关示例代码功能的更多详细信息。 
 
 ### <a name="get-connection-string-and-queue"></a>获取连接字符串和队列
 
-连接字符串和队列名称作为命令行参数传递给 `Main()` 方法。 `Main()` 声明两个字符串变量来保存这些值：
+连接字符串和队列名称作为命令行参数传递给 `Main()` 方法。 `Main()` 声明了两个字符串变量来保存这些值：
 
 ```csharp
 static void Main(string[] args)
@@ -162,7 +162,7 @@ static void Main(string[] args)
 }
 ```
  
-然后 `Main()` 方法启动异步消息循环 `MainAsync()`。
+然后，`Main()` 方法启动异步消息循环 `MainAsync()`。
 
 ### <a name="message-loop"></a>消息循环
 
@@ -258,7 +258,7 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你创建了一个服务总线命名空间以及从队列发送和接收消息所需的其他资源。 若要了解有关如何编写收发消息的代码的详细信息，请继续阅读下面的服务总线教程：
+本文介绍了如何创建一个服务总线命名空间并从队列发送和接收消息所需的其他资源。 若要了解有关如何编写收发消息的代码的详细信息，请继续阅读下面的服务总线教程：
 
 > [!div class="nextstepaction"]
 > [使用 Azure PowerShell 更新库存](./service-bus-tutorial-topics-subscriptions-powershell.md)

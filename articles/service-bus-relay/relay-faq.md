@@ -3,7 +3,7 @@ title: Azure 中继常见问题 | Microsoft Docs
 description: 获取 Azure 中继的某些常见问题的解答。
 services: service-bus-relay
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: 886d2c7f-838f-4938-bd23-466662fb1c8e
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2018
-ms.author: sethm
-ms.openlocfilehash: 1795c1ec0b4129e3c99fff3fc893148e191ce83e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: spelluru
+ms.openlocfilehash: e30e8c94547ac0f9106a69f1e99cf9a7c03abea5
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641486"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43695891"
 ---
 # <a name="azure-relay-faqs"></a>Azure 中继常见问题
 

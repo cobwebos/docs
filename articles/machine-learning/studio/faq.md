@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/02/2017
-ms.openlocfilehash: 01635b184903b88fa12e23c370caa65bb1eb377c
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 31676ea43acc495bf0cb6a249901e5b64ef217b7
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37024656"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782924"
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Azure 机器学习常见问题：计费、功能、限制和支持
 下面提供了一些有关 Azure 机器学习的常见问题 (FAQ) 和相应解答。Azure 机器学习是适合通过 Web 服务开发预测模型和操作解决方案的云服务。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。
@@ -312,7 +312,7 @@ Azure 机器学习有两种类型的 Web 服务：
 
 **如何获取 Azure 机器学习的支持？**
 
-若要获取 Azure 机器学习的技术支持，请转到 [Azure 支持](/support/options/)并选择“机器学习”。
+若要获取 Azure 机器学习的技术支持，请转到 [Azure 支持](https://azure.microsoft.com/support/options/)并选择“机器学习”。
 
 Azure 机器学习还在 MSDN 上设有社区论坛，可以在那里咨询有关 Azure 机器学习的问题。 Azure 机器学习团队负责监管该论坛。 访问 [Azure 论坛](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning)。
 

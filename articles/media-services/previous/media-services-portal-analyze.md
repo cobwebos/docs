@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: juliako
-ms.openlocfilehash: 60da24b5b0bb7d83414539f07936c61a196e0b62
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d8c3bb07c88dc96b7ca779ca0f4dfe09052ab290
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783686"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666164"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>使用 Azure 门户分析媒体
 > [!NOTE]
@@ -35,7 +35,7 @@ Azure 媒体服务分析是一系列语音和影像组件（具企业规模、�
 ## <a name="choose-an-asset-that-you-want-to-analyze"></a>选择要分析的资产
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择 Azure 媒体服务帐户。
 2. 在“设置”窗口中，选择“资产”。  
-   。
+   
     ![分析视频](./media/media-services-portal-analyze/media-services-portal-analyze001.png)
 3. 选择要分析的资产，按“分析”按钮。
    

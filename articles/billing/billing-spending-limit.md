@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/11/2018
+ms.date: 06/15/2018
 ms.author: genli
-ms.openlocfilehash: 6049e3614b63bfabee6721dcaa83008eb3306493
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 448622f0406eb709c8d94d60722edb4ef00f42de
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43670056"
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>了解 Azure 支出限制以及移除方式
 
@@ -32,7 +33,7 @@ Azure 中的支出限制是为了防止支出超过信用额度。 如果注册�
 
 例如，用完订阅中所含信用额度后，部署的云服务会从生产中移除，Azure 虚拟机会被停止并取消分配。 你的存储帐户和数据库中的数据将只能通过只读方式访问。
 
-在下一计费周期开始时，如果订阅产品/服务包含多个月的额度，则将自动重新启用订阅。 然后就可重新部署云服务，并可完全访问存储帐户和数据库。
+在下一计费周期开始时，如果订阅套餐包含多个月的额度，则将自动重新启用订阅。 然后就可重新部署云服务，并可完全访问存储帐户和数据库。
 
 达到订阅的支出限制时，我们会发送电子邮件通知。 登录到[帐户中心](https://account.windowsazure.com/Subscriptions)，会看到已达到支出限制的订阅的相关通知。
 
@@ -47,8 +48,7 @@ Azure 中的支出限制是为了防止支出超过信用额度。 如果注册�
 若要移除支出限制，请按照以下步骤操作：
 
 1. 登录到[帐户中心](https://account.windowsazure.com/Subscriptions)。
-1. 选择一个订阅。
-。 如果订阅因达到支出限制而被禁用，请单击此通知：“订阅达到了支出限制，且已被禁用以免产生费用。” 否则，请单击“订阅状态”区域中的“移除支出限制”。
+1. 选择一个订阅。 如果订阅因达到支出限制而被禁用，请单击此通知：“订阅达到了支出限制，且已被禁用以免产生费用。” 否则，请单击“订阅状态”区域中的“移除支出限制”。
 1. 选择适合选项。
 
 ![选择删除支出限制的选项](./media/billing-spending-limit/remove-spending-limit.PNG)
@@ -82,9 +82,9 @@ Azure 中的支出限制是为了防止支出超过信用额度。 如果注册�
 
 ### <a name="does-the-spending-limit-prevent-all-charges-from-azure"></a>支出限制是否可防止产生任何 Azure 费用？
 
-[已在 Azure Marketplace 中发布的一些外部服务](billing-understand-your-azure-marketplace-charges.md)不能与订阅信用额度一起使用，即使设置了支出限制，这些服务也会产生单独的费用。 例如，Visual Studio 许可证、Azure Active Directory Premium、支持计划以及大多数第三方品牌服务。 预配新的外部服务时，将显示一条提示此服务会单独计费的警告：
+[已在 Azure 市场中发布的一些外部服务](billing-understand-your-azure-marketplace-charges.md)不能与订阅信用额度一起使用，即使设置了支出限制，这些服务也会产生单独的费用。 例如，Visual Studio 许可证、Azure Active Directory Premium、支持计划以及大多数第三方品牌服务。 预配新的外部服务时，将显示一条提示此服务会单独计费的警告：
 
-![Marketplace 购买警告](./media/billing-understand-your-azure-marketplace-charges/marketplace-warning.PNG)
+![市场购买警告](./media/billing-understand-your-azure-marketplace-charges/marketplace-warning.PNG)
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 

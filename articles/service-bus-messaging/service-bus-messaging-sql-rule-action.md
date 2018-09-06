@@ -3,7 +3,7 @@ title: Azure 中的 SQLRuleAction 语法参考 | Microsoft Docs
 description: 有关 SQLRuleAction 语法的详细信息。
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/05/2018
-ms.author: sethm
-ms.openlocfilehash: 9ac9a2968adfdd8e1fb229ad744bc99914cdcd08
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: spelluru
+ms.openlocfilehash: 01833a51425f6a02c5ed781f4b10b22dc292f45d
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29125813"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696391"
 ---
 # <a name="sqlruleaction-syntax"></a>SQLRuleAction 语法
 

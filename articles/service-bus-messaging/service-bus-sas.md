@@ -3,7 +3,7 @@ title: 使用共享访问签名进行 Azure 服务总线访问控制 | Microsoft
 description: 根据如何使用共享访问签名进行服务总线访问控制，并详细介绍如何使用 Azure 服务总线进行 SAS 授权。
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/14/2018
-ms.author: sethm
-ms.openlocfilehash: 420f4573fbe8b5139a4e1e5fa4dea3404c4e099d
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.author: spelluru
+ms.openlocfilehash: 2905bff56c5ab49c91f85e0816b84018b27bbb57
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32312519"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700233"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>使用共享访问签名进行服务总线访问控制
 

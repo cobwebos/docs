@@ -3,7 +3,7 @@ title: 开始在 .NET 中使用 Azure 中继混合连接 Websocket | Microsoft D
 description: 为 Azure 中继混合连接 Websocket 编写 C# 控制台应用程序。
 services: service-bus-relay
 documentationcenter: .net
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: d1386900-b942-4abf-acfc-38d2ef826253
@@ -13,13 +13,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 12/15/2017
-ms.author: sethm
-ms.openlocfilehash: 5b900f70721f8642e27daf242295fbda77d7df6f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: spelluru
+ms.openlocfilehash: 1ed401f6175d7ebea83a888898221d345791bc34
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38680827"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697952"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>开始在 .NET 中使用中继混合连接 Websocket
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]

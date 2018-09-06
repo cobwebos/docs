@@ -3,7 +3,7 @@ title: Azure 服务总线主题和订阅入门 | Microsoft Docs
 description: 编写一个 C# .NET Core 控制台应用程序，以便使用服务总线消息传递主题和订阅。
 services: service-bus-messaging
 documentationcenter: .net
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: hero-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 07/03/2018
-ms.author: sethm
-ms.openlocfilehash: 8916ccb430da6bea66de3894201a11a70bb45df9
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: spelluru
+ms.openlocfilehash: c53e0c16f6b1fd8a79f864651f5aae97af886b96
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38298956"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699594"
 ---
 # <a name="get-started-with-service-bus-topics"></a>服务总线主题入门
 
@@ -36,7 +36,7 @@ ms.locfileid: "38298956"
 ## <a name="prerequisites"></a>先决条件
 
 1. [Visual Studio 2017 Update 3（版本 15.3 (26730.01)）](http://www.visualstudio.com/vs)或更高版本。
-2. [.NET Core SDK](https://www.microsoft.com/net/download/windows) 2.0 或更高版本。
+2. [NET Core SDK](https://www.microsoft.com/net/download/windows) 2.0 或更高版本。
 2. Azure 订阅。
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]

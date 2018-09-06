@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
-ms.author: sethm
-ms.openlocfilehash: 9ac7e71002a375961b8d06b44bbccce2919129e4
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: spelluru
+ms.openlocfilehash: 100559f86a72cd5a5148d1db99764e5b04f3e3b1
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
-ms.locfileid: "28200057"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702470"
 ---
 # <a name="messages-payloads-and-serialization"></a>消息、有效负载和序列化
 
@@ -32,7 +32,7 @@ Microsoft Azure 服务总线负责处理消息。 消息传递键值对属性形
  
 括号内列出的是在 AMQP 协议一级使用的等效名称。 
 
-| 属性名称                         | 说明                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| 属性名称                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |---------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |  [ContentType](/dotnet/api/microsoft.azure.servicebus.message.contenttype) (content-type)           | 视需要描述消息的有效负载，采用符合 RFC2045 第 5 部分格式的描述符；例如，`application/json`。                                                                                                                                                                                                                                                                                             |
 |  [CorrelationId](/dotnet/api/microsoft.azure.servicebus.message.correlationid#Microsoft_Azure_ServiceBus_Message_CorrelationId) (correlation-id)       | 使应用程序可出于关联目的指定消息的上下文。例如，反映正在答复的消息的 MessageId。                                                                                                                                                                                                                                                                  |
