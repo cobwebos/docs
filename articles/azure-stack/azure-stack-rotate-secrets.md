@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2018
+ms.date: 09/06/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 8ac151a70a81f78dab5ed1f30df51a1121a42cbd
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: dacfa738a99eb2d580d825957d09b2b1a3111e93
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029010"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051385"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>在 Azure Stack 中轮换机密
 
@@ -42,7 +42,7 @@ Azure Stack 使用各种机密来维持 Azure Stack 基础结构资源与服务�
     - ADFS<sup>*</sup>
     - Graph<sup>*</sup>
 
-    > <sup>*</sup> 仅当环境的标识提供者是 Active Directory 联合身份验证服务 (AD FS) 时才适用。
+   <sup>*</sup> 仅当环境的标识提供者是 Active Directory 联合身份验证服务 (AD FS) 时才适用。
 
 > [!NOTE]
 > 其他所有安全密钥和字符串（包括 BMC 和交换密码以及用户和管理员帐户密码）仍然由管理员手动更新。 
@@ -54,7 +54,7 @@ Azure Stack 使用各种机密来维持 Azure Stack 基础结构资源与服务�
 在以下上下文中，Azure Stack 支持使用新证书颁发机构 (CA) 颁发的外部证书进行机密轮换：
 
 |已安装的证书 CA|要轮换到的 CA|支持|支持的 Azure Stack 版本|
-|-----|-----|-----|-----|-----|
+|-----|-----|-----|-----|
 |从自签名|到企业|不支持||
 |从自签名|到自签名|不支持||
 |从自签名|到公共<sup>*</sup>|支持|1803 和更高版本|
@@ -79,12 +79,11 @@ Azure Stack 使用各种机密来维持 Azure Stack 基础结构资源与服务�
 
 ## <a name="pre-steps-for-secret-rotation"></a>机密轮换前的步骤
 
+   > [!IMPORTANT]  
+   > 请确保机密轮换尚未成功执行在你的环境。 如果已执行了机密轮换，更新到版本 1807年或更高版本才能执行机密轮换 Azure Stack。 
 1.  在执行任何维护操作之前通知用户。 将普通的维护时间段尽量安排在非营业时间。 维护操作可能会同时影响用户工作负荷和门户操作。
-
     > [!note]  
     > 后续步骤仅适用于轮换 Azure Stack 外部机密。
-
-2. 确保密钥旋转尚未已成功执行你的环境在过去一个月内。 在此时间点 Azure 堆栈仅支持一次每月的机密旋转。 
 3. 准备新的替换外部证书集。 新集与 [Azure Stack PKI 证书要求](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs)中所述的证书规范匹配。
 4.  将用于轮换的证书备份存储在安全的备份位置。 如果运行轮换时发生失败，请使用备份副本替换文件共享中的证书，然后重新运行轮换。 请记得将备份副本保存在安全的备份位置。
 5.  创建可从 ERCS VM 访问的文件共享。 该文件共享必须可供 **CloudAdmin** 标识读取和写入。
@@ -158,9 +157,10 @@ Start-SecretRotation cmdlet 轮换 Azure Stack 系统的基础结构机密。 �
 
 | 参数 | Type | 需要 | 位置 | 默认 | 说明 |
 | -- | -- | -- | -- | -- | -- |
-| PfxFilesPath | String  | False  | 名为  | 无  | 包含所有外部网络终结点证书的 **\Certificates** 目录的文件共享路径。 仅当轮换内部和外部机密时才需要。 结尾目录必须是 **\Certificates**。 |
+| PfxFilesPath | String  | False  | 名为  | 无  | 包含所有外部网络终结点证书的 **\Certificates** 目录的文件共享路径。 仅在需要时轮换外部机密或所有机密。 结尾目录必须是 **\Certificates**。 |
 | CertificatePassword | SecureString | False  | 名为  | 无  | -PfXFilesPath 中提供的所有证书的密码。 如果在轮换内部和外部密码时提供了 PfxFilesPath，则是必需的值。 |
-|
+| PathAccessCredential | PSCredential | False  | 名为  | 无  | 文件共享的 PowerShell 凭据**\Certificates**目录，其中包含所有外部网络终结点证书。 仅在需要时轮换外部机密或所有机密。  |
+| 重新运行 | SwitchParameter | False  | 名为  | 无  | 每当机密轮换时重试尝试失败后，必须使用重新运行。 |
 
 ### <a name="examples"></a>示例
  

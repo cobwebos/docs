@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 5a6dcddce3337989a7a34515570ac3277aa1edd5
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 52d0706177482e162d1f4bc038c967a4596fd3b3
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841924"
+ms.locfileid: "44024852"
 ---
 # <a name="register-azure-stack-with-azure"></a>将 Azure Stack 注册到 Azure
 
@@ -45,7 +45,7 @@ ms.locfileid: "43841924"
 
 将 Azure Stack 注册到 Azure 之前，必须准备好：
 
-- Azure 订阅的订阅 ID。 若要获取该 ID，请登录到 Azure，单击“更多服务” > “订阅”，单击要使用的订阅，然后，在“概要”下可以找到订阅 ID。
+- Azure 订阅的订阅 ID。 若要获取的 ID，登录到 Azure 中，单击**所有服务**。 然后，在**常规**类别中，选择**订阅**，单击所需的订阅并在**Essentials**可以找到订阅 id。
 
   > [!Note]  
   > 当前不支持德国云订阅。
@@ -284,7 +284,7 @@ Azure Stack 部署可能处于“已连接”或“已断开连接”状态。
 使用以下步骤来验证 Azure Stack 是否已成功注册到 Azure。
 
 1. 登录到 Azure Stack [管理员门户](https://docs.microsoft.com/azure/azure-stack/azure-stack-manage-portals#access-the-administrator-portal)：https&#58;//adminportal.*&lt;区域>.&lt;fqdn>*。
-2. 选择“更多服务” > “市场管理” > “从 Azure 添加”。
+2. 选择**所有服务**，然后在**管理**类别中，选择**Marketplace 管理** > **从 Azure添加**.
 
 如果看到 Azure 提供的项列表（例如 WordPress），则表示激活成功。 但是，在离线环境中，Azure Stack 市场不会显示 Azure 市场项。
 

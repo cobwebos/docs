@@ -6,15 +6,15 @@ author: sethmanheim
 manager: femila
 ms.service: azure-stack
 ms.topic: get-started-article
-ms.date: 08/15/2018
+ms.date: 09/05/2018
 ms.author: sethm
 ms.reviewer: kivenkat
-ms.openlocfilehash: d478ccd0895ad067657bce56469a3a61d4ea0e17
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 143e6c2856485e33022254abfcf0cf3806b30cef
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139654"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025767"
 ---
 # <a name="introduction-to-azure-stack-virtual-machines"></a>Azure Stack 虚拟机简介
 
@@ -73,8 +73,7 @@ Azure Stack 提供一个市场，适用于各种版本和类型的操作系统�
 |---------|---------|
 |Azure Stack 门户|选择要使用的映像时，系统会自动指定值。|
 |Azure Stack PowerShell|`Get-AzureRMVMImagePublisher -Location "location"`<br>`Get-AzureRMVMImageOffer -Location "location" -Publisher "publisherName"`<br>`Get-AzureRMVMImageSku -Location "location" -Publisher "publisherName" -Offer "offerName"`|
-|REST API     |[列出映像发布者](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<br>
-  [列出映像产品](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<br>[列出映像 SKU](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus)|
+|REST API     |[列出映像发布者](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<br>[列出映像产品](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<br>[列出映像 SKU](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus)|
 
 可以选择上传并使用自己的映像。 如果这样做，则不会使用发布者名称、产品/服务和 SKU。
 
@@ -100,7 +99,7 @@ VM 扩展通过部署后配置和自动化任务来增加 VM 的功能。
 |资源|需要|说明|
 |---------|---------|---------|
 |资源组|是|VM 必须包含在资源组中。|
-|存储帐户|是|VM 需要使用存储帐户来存储其虚拟硬盘。|
+|存储帐户|否|VM does does 不需要的存储帐户来存储其虚拟硬盘，如果使用托管磁盘。 <br>VM 需要的存储帐户来存储其虚拟硬盘，如果使用非托管的磁盘。|
 |虚拟网络|是|VM 必须是虚拟网络的成员。|
 |公共 IP 地址|否|可以向 VM 分配一个公共 IP 地址，以便远程访问它。|
 |网络接口|是|VM 需要使用网络接口在网络中通信。|

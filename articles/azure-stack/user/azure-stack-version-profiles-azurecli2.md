@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/15/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: f57a7f1cc255f9c4553384a7568beee1c2ed1752
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: af7c0f9d7e02e4a3074f2fddbdf8a6e0ab52d423
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139445"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024318"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-20-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Azure CLI 2.0 配合使用
 
@@ -94,7 +94,7 @@ $subjectEntry = [string]::Format("# Subject: {0}", $root.Subject)
 $labelEntry   = [string]::Format("# Label: {0}", $root.Subject.Split('=')[-1])
 $serialEntry  = [string]::Format("# Serial: {0}", $root.GetSerialNumberString().ToLower())
 $md5Entry     = [string]::Format("# MD5 Fingerprint: {0}", $md5Hash)
-$sha1Entry    = [string]::Format("# SHA1 Finterprint: {0}", $sha1Hash)
+$sha1Entry    = [string]::Format("# SHA1 Fingerprint: {0}", $sha1Hash)
 $sha256Entry  = [string]::Format("# SHA256 Fingerprint: {0}", $sha256Hash)
 $certText = (Get-Content -Path $pemFile -Raw).ToString().Replace("`r`n","`n")
 
@@ -109,7 +109,7 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
 
 ## <a name="get-the-virtual-machine-aliases-endpoint"></a>获取虚拟机别名终结点
 
-在使用 CLI 创建虚拟机之前，用户必须联系 Azure Stack 运营商，并获取虚拟机别名终结点 URI。 例如，Azure 使用以下 URI：https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json。 云管理员应使用 Azure Stack 市场中提供的映像，为 Azure Stack 设置类似的终结点。 用户需将终结点 URI 传递给 `az cloud register` 命令的 `endpoint-vm-image-alias-doc` 参数，如以下部分所示。 
+在使用 CLI 创建虚拟机之前，用户必须联系 Azure Stack 运营商，并获取虚拟机别名终结点 URI。 例如，Azure 使用以下 URI： https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json。 云管理员应使用 Azure Stack 市场中提供的映像，为 Azure Stack 设置类似的终结点。 用户需将终结点 URI 传递给 `az cloud register` 命令的 `endpoint-vm-image-alias-doc` 参数，如以下部分所示。 
    
 
 ## <a name="connect-to-azure-stack"></a>连接到 Azure Stack

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/15/2018
+ms.date: 09/05/2018
 ms.author: mabrigg
 ms.reviewer: jiahan
-ms.openlocfilehash: fc17ce0ebd13fb7e89405fcf4d6633551f340a27
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: bdf31c72fbcd8941161e6b9df0a490df7f6a16e0
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139353"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026512"
 ---
 # <a name="provision-virtual-machine-disk-storage-in-azure-stack"></a>在 Azure Stack 中预配虚拟机磁盘存储
 
@@ -30,9 +30,13 @@ ms.locfileid: "42139353"
 
 ## <a name="overview"></a>概述
 
-Azure Stack 支持在虚拟机中使用[非托管磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks)作为操作系统 (OS) 磁盘和数据磁盘。
+从版本 1808年，Azure Stack 支持的操作系统 (OS) 和数据磁盘作为虚拟机上使用托管的磁盘和非托管的磁盘。 之前的版本 1808年，支持仅非托管的磁盘。 
 
-若要使用非托管磁盘，可以创建一个[存储帐户](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)来存储磁盘。 你创建的磁盘称为 VM 磁盘并且存储在存储帐户中的容器中。
+**[托管磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#managed-disks)** 通过管理与 VM 磁盘关联的存储帐户来简化 Azure IaaS Vm 的磁盘管理。 只需指定大小所需的磁盘，以及 Azure Stack 创建并管理磁盘。
+
+**[非托管磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks)**，要求您在创建[存储帐户](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)存储的磁盘。 你创建的磁盘称为 VM 磁盘并且存储在存储帐户中的容器中。
+
+ 
 
 ### <a name="best-practice-guidelines"></a>最佳做法准则
 
@@ -114,7 +118,7 @@ Azure Stack 支持在虚拟机中使用[非托管磁盘](https://docs.microsoft.
   ![示例：附加 VHD 文件](media/azure-stack-manage-vm-disks/attach-vhd.png)
 
 8.  在 Azure Stack 创建磁盘并将磁盘附加到虚拟机之后，新磁盘列在“数据磁盘”下的虚拟机磁盘设置中。   
-  ![示例： 完成磁盘附加](media/azure-stack-manage-vm-disks/complete-disk-attach.png)
+  ![示例：完成磁盘附加操作](media/azure-stack-manage-vm-disks/complete-disk-attach.png)
 
 
 ## <a name="use-powershell-to-add-multiple-unmanaged-disks-to-a-vm"></a>使用 PowerShell 将多个非托管磁盘添加到 VM

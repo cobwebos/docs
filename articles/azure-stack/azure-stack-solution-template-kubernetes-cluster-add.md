@@ -11,22 +11,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2018
+ms.date: 09/06/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: bff0140d173fc3393ac56ec3d709c3c067842a2a
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 9287eb0925556d382410f95caf16a9ca478ca2da
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42139531"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054411"
 ---
 # <a name="add-a-kubernetes-cluster-to-the-azure-stack-marketplace"></a>将 Kubernetes 群集添加到 Azure Stack 市场
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 > [!note]  
-> Azure Stack 上的 Azure Kubernetes 服务 (AKS) Kubernetes 处于个人预览状态。 若要请求访问根据本文中的说明进行操作所需的 Kubernetes 市场项，请[提交请求来获取访问权限](https://aka.ms/azsk8)。
+> Azure Stack 上的 AKS （Azure Kubernetes 服务） 引擎处于个人预览状态。 若要请求访问根据本文中的说明进行操作所需的 Kubernetes 市场项，请[提交请求来获取访问权限](https://aka.ms/azsk8)。
 
 可以将 Kubernetes 群集作为市场项提供给用户。 用户可以通过单个协调的操作部署 Kubernetes。
 
@@ -66,7 +66,7 @@ ms.locfileid: "42139531"
 
 1. 登录到[管理门户](https://adminportal.local.azurestack.external)。
 
-1. 选择“更多服务” > “Marketplace 管理”。
+1. 选择**所有服务**，然后在**管理**类别中，选择**Marketplace 管理**。
 
 1. 选择“+ 从 Azure 添加”。
 
@@ -89,7 +89,7 @@ ms.locfileid: "42139531"
 
 1. 打开[管理门户](https://adminportal.local.azurestack.external)。
 
-1. 选择“更多服务” > “Marketplace 管理”。
+1. 选择**所有服务**，然后在**管理**类别中，选择**Marketplace 管理**。
 
 1. 选择“+ 从 Azure 添加”。
 
@@ -110,7 +110,7 @@ ms.locfileid: "42139531"
 
 1. 打开[管理门户](https://adminportal.local.azurestack.external)。
 
-1. 选择“更多服务” > “Marketplace 管理”。
+1. 选择**A; 服务**，然后在**管理**类别中，选择**Marketplace 管理**。
 
 1. 选择“+ 从 Azure 添加”。
 
@@ -149,5 +149,4 @@ ms.locfileid: "42139531"
 
 
 
-
-  [在 Azure Stack 中提供服务概述](azure-stack-offer-services-overview.md)
+[在 Azure Stack 中提供服务概述](azure-stack-offer-services-overview.md)

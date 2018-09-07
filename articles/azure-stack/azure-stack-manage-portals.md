@@ -12,20 +12,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 09/05/2018
 ms.author: mabrigg
-ms.openlocfilehash: 673b1144fe927e0619f5f8638d7e8ce9a181f48c
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: cea59d061dadfa3e10330cbce7b6005a286524cc
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248514"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024160"
 ---
 # <a name="using-the-administrator-portal-in-azure-stack"></a>在 Azure Stack 中使用管理员门户
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-Azure 堆栈; 中有两个门户管理员门户和用户门户 (有时称为*租户*门户。)Azure Stack 操作员可以使用管理员门户进行日常的 Azure Stack 管理和操作。
+在 Azure Stack; 中有两个门户管理员门户和用户门户 (有时称为*租户*门户。)Azure Stack 操作员可以使用管理员门户进行日常的 Azure Stack 管理和操作。
 
 ## <a name="access-the-administrator-portal"></a>访问管理员门户
 
@@ -36,51 +36,51 @@ Azure 堆栈; 中有两个门户管理员门户和用户门户 (有时称为*租
 | 环境 | 管理员门户 URL |   
 | -- | -- | 
 | 开发工具包| https://adminportal.local.azurestack.external  |
-| 集成系统 | https://adminportal.&lt;*区域*&gt;。&lt;*FQDN*&gt; | 
+| 集成系统 | https://adminportal.&lt;*region*&gt;.&lt;*FQDN*&gt; | 
 | | |
 
- ![管理员门户](media/azure-stack-manage-portals/image1.png)
+ ![管理员门户](media/azure-stack-manage-portals/admin-portal.png)
 
 在管理员门户中，可以执行如下所述的操作：
 
-* 管理基础结构 （包括系统运行状况、 更新、 容量、 等）。
-* 充实 Marketplace
+* 管理基础结构（包括系统运行状况、更新、容量等）
+* 充实市场
 * 为用户创建订阅
-* 创建计划和提供
+* 创建计划和套餐
 
-**快速入门教程**磁贴提供指向联机文档的最常见的任务。
+“快速入门教程”磁贴提供最常见任务的联机文档链接。
 
-尽管运算符具有可以创建资源如虚拟机、 虚拟网络和管理员门户中的存储帐户，你应该[登录到用户门户](user/azure-stack-use-portal.md)来创建和测试资源。
+尽管操作员可在管理员门户中创建虚拟机、虚拟网络和存储帐户等资源，但应该[登录到用户门户](user/azure-stack-use-portal.md)来创建和测试资源。
 
 >[!NOTE]
->**创建虚拟机**快速入门教程磁贴中的链接具有你在管理员门户中，创建虚拟机，但这仅用于在首次部署后，验证 Azure 堆栈。
+>使用“快速入门教程”磁贴中的“创建虚拟机”链接可在管理员门户中创建虚拟机，但这只是用于在完成初始部署后验证 Azure Stack。
 
-## <a name="understand-subscription-behavior"></a>要了解订阅的行为
+## <a name="understand-subscription-behavior"></a>了解订阅行为
 
-没有可用于从管理员门户中使用只有一个订阅。 此订阅是默认提供商订阅。 无法添加任何其他订阅，并在管理员门户中使用它们。
+管理员门户中只提供一个可用订阅。 此订阅是默认提供商订阅。 无法添加其他订阅并在管理员门户中使用它们。
 
-Azure Stack 操作员可在管理员门户中为用户（包括自己）添加订阅。 （包括您自己） 的用户可以访问并使用这些订阅从**用户**门户。 但是，用户门户不提供对任何管理员门户的管理或操作功能的访问。
+Azure Stack 操作员可在管理员门户中为用户（包括自己）添加订阅。 用户（包括你自己）可以通过**用户**门户访问并使用这些订阅。 但是，在用户门户中无法访问管理员门户的任何管理或操作功能。
 
-管理员门户和用户门户基于 Azure 资源管理器的独立实例。 由于此资源管理器分隔，订阅不能跨越门户。 例如，如果你，作为 Azure 堆栈操作员，登录到用户门户，你不能访问*默认提供程序订阅*。 尽管你无权访问任何管理功能，你可以从可用的公共服务来创建自己的订阅。 只要你已登录到用户门户被视为租户用户。
+管理员门户和用户门户基于 Azure 资源管理器的独立实例。 由于资源管理器的分隔性，订阅不会跨门户。 例如，如果以 Azure Stack 操作员的身份登录到用户门户，则无法访问默认提供商订阅。 虽然无法访问任何管理功能，但你可以通过提供的公共套餐为自己创建订阅。 只要你登录到用户门户，系统就会将你视为租户用户。
 
   >[!NOTE]
-  >在开发工具包环境中，如果某个用户与 Azure Stack 操作员属于同一个租户目录，则系统不会阻止他们登录到管理员门户。 但是，他们无法访问任何管理功能。 此外，在管理员门户中，它们不能添加订阅或访问提供，可供它们在用户门户中。
+  >在开发工具包环境中，如果某个用户与 Azure Stack 操作员属于同一个租户目录，则系统不会阻止他们登录到管理员门户。 但是，他们无法访问任何管理功能。 此外，他们无法通过管理员门户添加订阅，或者在用户门户中访问可供他们使用的产品/服务。
 
 ## <a name="administrator-portal-tips"></a>管理员门户提示
 
 ### <a name="customize-the-dashboard"></a>自定义仪表板
 
-仪表板包含一组默认磁贴。 你可以选择**编辑仪表板**修改默认的仪表板，或选择**新仪表板**添加自定义仪表板。 你可以轻松添加到仪表板的磁贴。 例如，你可以选择**新建**，右键单击**提供 + 计划**，然后选择**固定到仪表板**。
+仪表板包含一组默认磁贴。 可以选择“编辑仪表板”来修改默认仪表板，或者选择“新建仪表板”来添加自定义仪表板。 可以轻松地将磁贴添加到仪表板中。 例如，可以选择“新建”，右键单击“套餐 + 计划”，然后选择“固定到仪表板”。
 
 ### <a name="quick-access-to-online-documentation"></a>快速访问联机文档
 
-若要访问 Azure 堆栈运算符文档，使用的帮助和支持中的管理员门户的右上角的图标 （问号）。 将光标移到图标，，然后选择**帮助 + 支持**。
+若要访问 Azure Stack 操作员文档，请使用管理员门户右上角的“帮助和支持”图标（问号）。 将鼠标移至该图标，然后选择“帮助 + 支持”。
 
 ### <a name="quick-access-to-help-and-support"></a>快速访问帮助和支持内容
 
-如果您的管理员门户中，右上角选择 （问号） 中的帮助和支持图标，然后选择**新建支持请求**，发生以下结果之一：
+如果选择管理员门户右上角的“帮助和支持”图标（问号），然后选择“新建支持请求”，则会出现以下结果之一：
 
-- 如果使用的是集成系统，此操作会打开一个站点，可在其中直接向 Microsoft 客户支持服务 (CSS) 创建支持票证。 请参阅[从何处获得支持](azure-stack-manage-basics.md#where-to-get-support)了解何时应转通过 Microsoft 支持或通过你的原始设备制造商 (OEM) 硬件供应商支持。
+- 如果使用的是集成系统，此操作会打开一个站点，可在其中直接向 Microsoft 客户支持服务 (CSS) 创建支持票证。 若要了解何时应该获取 Microsoft 支持或原始设备制造商 (OEM) 硬件供应商支持，请参阅[在何处获取支持](azure-stack-manage-basics.md#where-to-get-support)。
 - 如果使用的是开发工具包，则此操作会直接打开 Azure Stack 论坛站点。 我们会持续留意这些论坛。 由于开发工具包是一个评估环境，因此我们不会通过 Microsoft CSS 提供官方支持。
 
 ## <a name="next-steps"></a>后续步骤

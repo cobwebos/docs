@@ -9,14 +9,23 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: b70a16c2f4c17a8cee008bee342a9c3693d1eb4b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0bd3a00e643965a7bc2e79e1af4712705940ecfd
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34614486"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698819"
 ---
 # <a name="build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>使用 Xamarin 和 Azure Cosmos DB 构建移动应用程序
+
+> [!div class="op_single_selector"]
+> * [.NET](sql-api-dotnet-application.md)
+> * [Java](sql-api-java-application.md)
+> * [Node.js](sql-api-nodejs-application.md)
+> * [Node.js- v2](sql-api-nodejs-application-preview.md)
+> * [Python](sql-api-python-application.md)
+> * [Xamarin](mobile-apps-with-xamarin.md)
+> 
 
 大多数移动应用需要在云中存储数据，而 Azure Cosmos DB 正是适用于移动应用的云数据库。 该产品提供移动开发人员所需的一切功能。 它是一个完全托管的数据库即服务，可按需缩放。 它能够以应用程序完全可见的方式存放全球各地用户的数据。 使用 [Azure Cosmos DB .NET Core SDK](sql-api-sdk-dotnet-core.md)，可让 Xamarin 移动应用直接与 Azure Cosmos DB 交互，而无需任何中间层。
 
@@ -71,7 +80,7 @@ Azure Cosmos DB 为移动应用开发人员提供以下重要功能：
 
   1. 使用 Facebook、Active Directory 或其他任何提供程序将登录名添加到应用。
 
-  2. 创建使用 **/userId** 作为分区键的 Azure Cosmos DB UserItems 集合。 为集合指定分区键可让 Azure Cosmos DB 随着应用用户的增多而无限缩放，同时可持续提高查询速度。
+  2. 创建使用 **/userId** 作为分区键的 Azure Cosmos DB UserItems 集合。 为集合指定分区键可让 Azure Cosmos DB 随着应用用户的增多而无限缩放，同时可持续提供快速查询。
 
   3. 添加 Azure Cosmos DB 资源令牌中转站。 这是一个简单的 Web API，可对用户进行身份验证，并向只有权访问其自己分区中的文档的已登录用户颁发短期生存的令牌。 在此示例中，资源令牌代理托管在应用服务中。
 

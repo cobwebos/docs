@@ -11,23 +11,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/15/2018
+ms.date: 09/05/2018
 ms.author: mabrigg
 ms.reviwer: xiaofmao
-ms.openlocfilehash: 6c0c42763ec3d124850555500c3a322073af2479
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 89f6a0c1adaded724f159ffbf33aae98969ab9fe
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139410"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027163"
 ---
-# <a name="azure-stack-storage-differences-and-considerations"></a>Azure Stack 存储：差异和注意事项
+# <a name="azure-stack-storage-differences-and-considerations"></a>Azure Stack 存储： 差异和注意事项
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-Azure stack 存储是存储在 Microsoft Azure Stack 中的云服务的组。 Azure Stack 存储使用与 Azure 一致的语义来提供 Blob、表、队列和帐户管理功能。
+Azure Stack 存储是存储在 Microsoft Azure Stack 中的云服务的组。 Azure Stack 存储提供 blob、 表、 队列和帐户管理功能与 Azure 一致的语义。
 
-本文汇总了 Azure Stack 存储与 Azure 存储服务之间的已知差异。 它还列出了部署 Azure Stack 时要考虑的事项。 有关 Azure 公有云与 Azure Stack 之间大致差异的详细信息，请参阅[重要注意事项](azure-stack-considerations.md)主题。
+本文汇总了 Azure Stack 存储与 Azure 存储服务之间的已知差异。 它还列出了部署 Azure Stack 时要考虑的事项。 若要了解有关全局 Azure 与 Azure Stack 之间大致差异信息，请参阅[重要注意事项](azure-stack-considerations.md)一文。
 
 ## <a name="cheat-sheet-storage-differences"></a>速查表：存储差异
 
@@ -38,7 +38,7 @@ Azure stack 存储是存储在 Microsoft Azure Stack 中的云服务的组。 Az
 |存储帐户类型|常规用途和 Azure Blob 存储帐户|仅限常规用途。
 |复制选项|本地冗余存储、异地冗余存储、读取访问异地冗余存储和区域冗余存储|本地冗余存储。
 |高级存储|完全支持|可预配，但无性能限制或保证。
-|托管磁盘|支持高级和标准版|尚不支持。
+|托管磁盘|支持高级和标准版|当你使用 1808年或更高版本支持。
 |Blob 名称|1,024 个字符（2,048 字节）|880 个字符（1,760 字节）
 |块 Blob 大小上限|4.75 TB（100 MB X 50,000 块）|4.75 TB（100 MB x 50,000 块），适用于 1802 更新或更高版本。 50,000 X 4 MB（约 195 GB），适用于以前的版本。
 |页 Blob 快照复制|支持备份已附加到运行中 VM 的 Azure 非托管 VM 磁盘|尚不支持。
@@ -91,7 +91,7 @@ Azure Stack 存储支持以下客户端库：
 | C++            | 从 2.4.0 到 3.1.0           | Nuget 包：<br>https://www.nuget.org/packages/wastorage.v140/<br> <br>GitHub 版本：<br>https://github.com/Azure/azure-storage-cpp/releases                                                                                                                                                                                          | 连接字符串设置      |
 | PHP            | 从 0.15.0 到 1.0.0          | GitHub 版本：<br>https://github.com/Azure/azure-storage-php/releases<br> <br>通过编辑器安装（请参阅下面的详细信息）                                                                                                                                                                                                                  | 连接字符串设置      |
 | Python         | 从 0.30.0 到 1.0.0          | GitHub 版本：<br>https://github.com/Azure/azure-storage-python/releases                                                                                                                                                                                                                                                                | 服务实例声明 |
-| Ruby           | 从 0.12.1 到 1.0.1          | RubyGems 包：<br>常见：<br>https://rubygems.org/gems/azure-storage-common/<br>Blob：https://rubygems.org/gems/azure-storage-blob/<br>队列：https://rubygems.org/gems/azure-storage-queue/<br>表：https://rubygems.org/gems/azure-storage-table/<br> <br>GitHub 版本：<br>https://github.com/Azure/azure-storage-ruby/releases | 连接字符串设置      |
+| Ruby           | 从 0.12.1 到 1.0.1          | RubyGems 包：<br>常见：<br>https://rubygems.org/gems/azure-storage-common/<br>Blob： https://rubygems.org/gems/azure-storage-blob/<br>队列： https://rubygems.org/gems/azure-storage-queue/<br>表： https://rubygems.org/gems/azure-storage-table/<br> <br>GitHub 版本：<br>https://github.com/Azure/azure-storage-ruby/releases | 连接字符串设置      |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Stack 中订阅产品/服务 | Microsoft Docs
-description: 在 Azure Stack 中创建产品/服务的订阅
+title: 在 Azure Stack 中订阅套餐 | Microsoft Docs
+description: 在 Azure Stack 中创建套餐的订阅
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -12,90 +12,90 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/11/2018
+ms.date: 09/05/2018
 ms.author: brenduns
-ms.openlocfilehash: 9153649774a67533649fb62da83a3f50abd592da
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: b35e75d7cfcaa46da46d2edcb80fe37c112a66a3
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295204"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025565"
 ---
-# <a name="create-subscriptions-to-offers-in-azure-stack"></a>在 Azure Stack 中创建产品/服务的订阅
+# <a name="create-subscriptions-to-offers-in-azure-stack"></a>在 Azure Stack 中创建套餐的订阅
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-[创建某个产品/服务](azure-stack-create-offer.md)后，用户需要订阅此产品/服务才能使用此产品/服务。 有两种方法，用户可以获取订阅到产品/服务：
+[创建某个套餐](azure-stack-create-offer.md)后，用户需要订阅此套餐才能使用此套餐。 用户可通过两种方式订阅套餐：
 
-- 云操作员可以从管理员门户内部为用户创建订阅。 创建的订阅可用于公共和专用产品/服务。
-- 租户用户可以在使用用户门户时订阅公共产品/服务。  
+- 云操作员可以从管理员门户内部为用户创建订阅。 创建的订阅可用于公共和专用套餐。
+- 租户用户可以在使用用户门户时订阅公共套餐。  
 
 ## <a name="create-a-subscription-as-a-cloud-operator"></a>以云操作员的身份创建订阅
 
-云操作员可使用管理员门户为用户创建产品/服务订阅。  你可以为自己的目录租户成员创建订阅。  如果已启用[多租户](azure-stack-enable-multitenancy.md)，则还可以为其他目录租户中的用户创建订阅。
+云操作员可使用管理员门户为用户创建套餐订阅。  你可以为自己的目录租户成员创建订阅。  如果已启用[多租户](azure-stack-enable-multitenancy.md)，则还可以为其他目录租户中的用户创建订阅。
 
-如果不希望你的租户能够创建自己的订阅，将您提供设为私有，，然后创建你的租户订阅。 将 Azure Stack 与外部计帐系统或服务目录系统集成时，通常会使用此方法。
+如果不希望租户创建他们自己的订阅，请将所有套餐设置为私有，然后为租户创建订阅。 将 Azure Stack 与外部计帐系统或服务目录系统集成时，通常会使用此方法。
 
-创建用户的订阅后，他们可以登录到用户门户并查看它们已订阅的提议。  
+为某个用户创建订阅后，该用户可以登录到用户门户，然后会发现他（她）已订阅套餐。  
 
-### <a name="to-create-a-subscription-for-a-user"></a>若要为用户创建订阅
+### <a name="to-create-a-subscription-for-a-user"></a>为用户创建订阅
 
 1. 在管理门户中，转到“用户订阅”。
-2. 选择 **添加** 。 下**新用户订阅**，输入以下信息：  
+2. 选择 **添加** 。 在“新建用户订阅”下，输入以下信息：  
 
-   - **显示名称**– 标识显示为该订阅的友好名称*用户订阅名称*。
-   - **用户**– 指定此订阅可用的目录租户中的用户。 用户名显示为“所有者”。  用户名的格式取决于标识解决方案。 例如：
+   - **显示名称**– 用于标识将显示为订阅的友好名称*用户订阅名称*。
+   - **用户**– 指定此订阅的可用目录租户中的用户。 用户名显示为“所有者”。  用户名的格式取决于标识解决方案。 例如：
 
-     - **Azure AD:***&lt;user1 > @&lt;contoso.onmicrosoft.com >* 
+     - **Azure AD:** `<user1>@<contoso.onmicrosoft.com>`
 
-     - **AD FS：***&lt;user1>@&lt;azurestack.local>*
+     - **AD FS:** `<user1>@<azurestack.local>` 
 
-   - **目录租户**– 选择其中的用户帐户所属的目录租户。 如果尚未启用多租户，将用你的本地目录租户。
+   - **目录租户**– 选择其中的用户帐户所属的目录租户。 如果未启用多租户，则只能使用本地目录租户。
 
-3. 选择“套餐”。 下**提供**，选择**提供**此订阅。 由于你要创建用户的订阅，请选择**私有**为可访问性状态。
+3. 选择“套餐”。 在“套餐”下，选择此订阅的**套餐**。 由于要为用户创建订阅，因此请选择“私有”作为访问性状态。
 
-4. 选择“创建”以创建订阅。 你将看到新的订阅下**用户订阅**。 当用户登录到用户门户时则可以查看订阅详细信息。
+4. 选择“创建”以创建订阅。 “用户订阅”下面会显示新订阅。 当用户登录到用户门户时，可以看到订阅详细信息。
 
 ### <a name="to-make-an-add-on-plan-available"></a>提供附加计划
 
 云操作员随时可将附加计划添加到以前创建的订阅：
 
-1. 在管理门户中，选择**更服务** > **用户订阅**。 选择想要更改的订阅。
+1. 在管理门户中，选择**所有服务**，然后在**管理资源**类别中，选择**用户订阅**。 选择想要更改的订阅。
 
-2. 选择**外接程序**，然后选择 **+ 添加**。  
+2. 依次选择“附加计划”、“+添加”。  
 
-3. 下**添加计划**，作为外接程序中选择所需的计划。
+3. 在“添加计划”下，选择要添加为附加计划的计划。
 
 ## <a name="create-a-subscription-as-a-user"></a>以用户的身份创建订阅
 
-作为用户，你可以登录到用户门户，以便查找并订阅到公共产品/服务和外接程序计划为你的目录租户 （组织）。
+以用户身份登录到用户门户，查找并订阅目录租户（组织）的公共套餐和附加计划。
 
 >[!NOTE]
->如果你的 Azure 堆栈环境支持[多租户](azure-stack-enable-multitenancy.md)还可以从远程目录租户订阅到产品/服务。
+>如果 Azure Stack 环境支持[多租户](azure-stack-enable-multitenancy.md)，则也可以从远程目录租户订阅套餐。
 
-### <a name="to-subscribe-to-an-offer"></a>订阅产品/服务
+### <a name="to-subscribe-to-an-offer"></a>订阅套餐
 
-1. [登录](azure-stack-connect-azure-stack.md)到用户门户，Azure 堆栈 (https://portal.local.azurestack.external)和选择**获取订阅**。
+1. [登录](azure-stack-connect-azure-stack.md)到 Azure Stack 用户门户 (https://portal.local.azurestack.external)，并选择“获取订阅”。
 
    ![获取订阅](media/azure-stack-subscribe-plan-provision-vm/image01.png)
   
-2. 下**获取订阅**，输入中的订阅的友好名称**显示名称**。 选择**提供**并在列表视图**选择提议**，选取提议。 选择“创建”以创建订阅。
+2. 在“获取订阅”下的“显示名称”中输入订阅的友好名称。 选择“套餐”，然后在“选择套餐”下选择套餐。 选择“创建”以创建订阅。
 
    ![创建产品](media/azure-stack-subscribe-plan-provision-vm/image02.png)
   
-3. 订阅产品/服务之后，请刷新门户以查看哪些服务是新订阅的一部分。
-4. 若要查看你创建的订阅，选择**更多的服务**，然后选择**订阅**。 选择要查看订阅详细信息的订阅。  
+3. 订阅套餐之后，请刷新门户以查看哪些服务是新订阅的一部分。
+4. 若要查看创建的订阅，请选择**所有服务**，然后在**常规**类别中，选择**订阅**。 选择订阅以查看其详细信息。  
 
 ### <a name="to-subscribe-to-an-add-on-plan"></a>订阅附加计划
 
-如果产品/服务有附加计划，随时可将该计划添加到订阅。  
+如果套餐有附加计划，随时可将该计划添加到订阅。  
 
-1. 在用户门户中，选择“更多服务” > “订阅”，然后选择要更改的订阅。 如果有可用的所有外接程序计划， **+ 添加计划**处于活动状态，并且没有为磁贴**外接程序计划**。
+1. 在用户门户中，选择**所有服务**。 接下来，在**常规**类别中，选择**订阅**，然后选择想要更改的订阅。 如果有任何可用的附加计划，则“+添加计划”将处于活动状态，并且会出现“附加计划”的磁贴。
 
    >[!NOTE]
-   >如果 **+ 添加计划**不活动状态，则与该订阅关联的提议任何外接程序计划不存在。
+   >如果“+添加计划”处于非活动状态，则表示与此订阅关联的套餐没有任何附加计划。
 
-1. 选择 **+ 添加计划**或**外接程序计划**磁贴。 下**外接程序计划**，选择你想要添加的计划。
+1. 选择“+添加计划”或“附加计划”磁贴。 在“附加计划”下，选择想要添加的计划。
 
 ## <a name="next-steps"></a>后续步骤
 

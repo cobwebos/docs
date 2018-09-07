@@ -1,18 +1,20 @@
 ---
 title: Terraform 和 Azure 提供程序部署槽位
 description: 有关使用 Terraform 和 Azure 提供程序部署槽位的教程
+services: terraform
+ms.service: terraform
 keywords: terraform, devops, 虚拟机, Azure, 部署槽位
 author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
+ms.topic: tutorial
 ms.date: 4/05/2018
-ms.topic: article
-ms.openlocfilehash: 3a018dbaf90801604b13efcf8bd7afb6dbc68659
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bbd06ae8927e6c21607ac1c997f1e5cf37f092bf
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31416857"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43667230"
 ---
 # <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>结合 Azure 部署槽位使用 Terraform 来预配基础结构
 
@@ -217,7 +219,7 @@ ms.locfileid: "31416857"
 
 在前面的部分中，我们设置了要从 GitHub 中不同分支部署的两个槽位 - **slotAppService** 和 **slotAppServiceSlotOne**。 让我们预览 Web 应用，以验证是否已成功部署这些应用。
 
-执行以下步骤两次。 执行步骤 3 时，第一次请选择“slotAppService”，第二次请选择“slotAppServiceSlotOne”。
+执行以下步骤 2 次。 执行步骤 3 时，第一次请选择“slotAppService”，第二次请选择“slotAppServiceSlotOne”。
 
 1. 在 Azure 门户的主菜单中，选择“资源组”。
 

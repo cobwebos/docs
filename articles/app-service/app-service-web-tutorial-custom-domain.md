@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 5c0aa042f97e10f90787b1cdf8e03cd6d849441e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 30199005db93f9a43a37d2c72bb34dd772265419
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38461633"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43664881"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-web-apps"></a>教程：将现有的自定义 DNS 名称映射到 Azure Web 应用
 
@@ -29,7 +29,7 @@ ms.locfileid: "38461633"
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 使用 CNAME 记录映射子域（例如 `www.contoso.com`）
@@ -37,8 +37,6 @@ ms.locfileid: "38461633"
 > * 使用 CNAME 记录映射通配符域（例如 `*.contoso.com`）
 > * 将默认 URL 重定向到自定义目录
 > * 使用脚本自动执行域映射
-
-若要将实时站点及其 DNS 域名迁移到应用服务，请参阅[将活动 DNS 名称迁移到 Azure 应用服务](app-service-custom-domain-name-migrate.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -305,6 +303,10 @@ ms.locfileid: "38461633"
 
 <a name="virtualdir"></a>
 
+## <a name="migrate-an-active-domain"></a>迁移活动域
+
+若要将实时站点及其 DNS 域名迁移到应用服务而不停机，请参阅[将活动 DNS 名称迁移到 Azure 应用服务](app-service-custom-domain-name-migrate.md)。
+
 ## <a name="redirect-to-a-custom-directory"></a>重定向到自定义目录
 
 默认情况下，应用服务将 Web 请求定向到应用代码的根目录下。 但是，某些 Web 框架不在根目录下启动。 例如，[Laravel](https://laravel.com/) 在 `public` 子目录中启动。 若要继续 `contoso.com` DNS 示例，此类应用应可在 `http://contoso.com/public` 中访问，但你实际上想要将 `http://contoso.com` 直接定向到 `public` 目录。 此步骤不涉及 DNS 解析，但涉及到自定义虚拟目录。
@@ -315,7 +317,7 @@ ms.locfileid: "38461633"
 
 ![自定义虚拟目录](./media/app-service-web-tutorial-custom-domain/customize-virtual-directory.png)
 
-操作完成后，应用会返回根路径的正确页面（例如，http://contoso.com)。
+操作完成后，应用会返回根路径的正确页面（例如， http://contoso.com)。
 
 ## <a name="automate-with-scripts"></a>使用脚本自动化
 

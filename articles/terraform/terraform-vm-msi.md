@@ -1,24 +1,26 @@
 ---
-title: 结合托管服务标识使用 Azure Marketplace 映像创建 Terraform Linux 虚拟机
-description: 结合托管服务标识和远程状态管理使用 Marketplace 映像创建 Terraform Linux 虚拟机，以便轻松地将资源部署到 Azure。
+title: 结合托管服务标识使用 Azure 市场映像创建 Terraform Linux 虚拟机
+description: 结合托管服务标识和远程状态管理使用市场映像创建 Terraform Linux 虚拟机，以便轻松地将资源部署到 Azure。
+services: terraform
+ms.service: terraform
 keywords: terraform, devops, MSI, 虚拟机, 远程状态, azure
-author: VaijanathB
-manager: rloutlaw
+author: tomarcher
+manager: jeconnoc
 ms.author: tarcher
+ms.topic: tutorial
 ms.date: 3/12/2018
-ms.topic: article
-ms.openlocfilehash: 5f0ee2904c1072a5ad8c5f7ae1c90e649cc4813c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0136966576e3fbb22855d74cc1866e48b4ac24c9
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31413790"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669381"
 ---
-# <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-service-identity"></a>结合托管服务标识使用 Azure Marketplace 映像创建 Terraform Linux 虚拟机
+# <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-service-identity"></a>结合托管服务标识使用 Azure 市场映像创建 Terraform Linux 虚拟机
 
-本文介绍如何使用 [Terraform Marketplace 映像](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.terraform?tab=Overview)来创建装有最新 [Terraform](https://www.terraform.io/intro/index.html) 版本、且使用[托管服务标识 (MSI)](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) 进行配置的 Ubuntu Linux VM (16.04 LTS)。 此映像还会配置远程后端，以使用 Terraform 启用[远程状态](https://www.terraform.io/docs/state/remote.html)管理。 
+本文介绍如何使用 [Terraform 市场映像](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.terraform?tab=Overview)来创建装有最新 [Terraform](https://www.terraform.io/intro/index.html) 版本、且使用[托管服务标识 (MSI)](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) 进行配置的 Ubuntu Linux VM (16.04 LTS)。 此映像还会配置远程后端，以使用 Terraform 启用[远程状态](https://www.terraform.io/docs/state/remote.html)管理。 
 
-借助 Terraform Marketplace 映像，可以轻松开始在 Azure 上使用 Terraform，无需手动安装和配置 Terraform。 
+借助 Terraform 市场映像，可以轻松开始在 Azure 上使用 Terraform，无需手动安装和配置 Terraform。 
 
 不需要对此 Terraform VM 映像进行软件更改。 只需根据预配的虚拟机大小，支付相应的 Azure 硬件使用费。 有关计算费用的详细信息，请参阅 [Linux 虚拟机定价页](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)。
 
@@ -31,7 +33,7 @@ ms.locfileid: "31413790"
 
 1. 在 Azure 门户中，转到[创建资源](https://ms.portal.azure.com/#create/hub)列表。
 
-2. 在**搜索 Marketplace**搜索栏中搜索 **Terraform**。 选择 **Terraform** 模板。 
+2. 在“在市场中搜索”搜索栏中搜索 **Terraform**。 选择 **Terraform** 模板。 
 
 3. 在 Terraform 详细信息选项卡的右下角选择“创建”按钮。
 

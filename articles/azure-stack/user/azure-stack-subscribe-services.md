@@ -1,6 +1,6 @@
 ---
 title: 在本教程中，你学习 璹綷 Azure 堆栈优惠 |Microsoft 文档
-description: 本教程介绍如何创建 Azure Stack 服务的新订阅，并通过创建测试虚拟机来测试产品/服务。
+description: 本教程介绍如何创建 Azure Stack 服务的新订阅，并通过创建测试虚拟机来测试套餐。
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -13,23 +13,23 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 06/07/2018
+ms.date: 09/05/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 96b82ede71e7957105dce25096d7873ee876211f
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 0e2fa9b01d27d68c1eab9097a20b6e350ba47f99
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35238365"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44028793"
 ---
 # <a name="tutorial-create-and-test-a-subscription"></a>教程：创建和测试订阅
-本教程介绍如何创建包含产品/服务的订阅，然后对其进行测试。 为了使测试，你将登录到 Azure 堆栈用户门户的云管理员联系，订阅产品，，然后创建虚拟机。
+本教程介绍如何创建包含套餐的订阅，然后对其进行测试。 测试时，需要以云管理员身份登录到 Azure Stack 用户门户，订阅套餐，然后创建虚拟机。
 
 > [!TIP]
 > 若要获得更高级的评估体验，可[为特定用户创建订阅](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm#create-a-subscription-as-a-cloud-operator)，然后在用户门户中以该用户的身份登录。 
 
-本教程演示如何订阅 Azure 堆栈产品。
+本教程介绍如何订阅 Azure Stack 套餐。
 
 要学习的知识：
 
@@ -38,9 +38,9 @@ ms.locfileid: "35238365"
 > * 测试产品/服务
 
 ## <a name="subscribe-to-an-offer"></a>订阅产品
-若要以用户身份订阅产品/服务，需要登录到 Azure Stack 用户门户，以发现 Azure Stack 操作员提供的服务。
+若要以用户身份订阅套餐，需要登录到 Azure Stack 用户门户，以发现 Azure Stack 操作员提供的服务。
 
-1. 登录到用户门户并单击**获取订阅**。
+1. 登录到用户门户，并单击“获取订阅”。
 
    ![获取订阅](media/azure-stack-subscribe-services/get-subscription.png)
 
@@ -51,16 +51,16 @@ ms.locfileid: "35238365"
    > [!TIP]
    > 现在，必须刷新用户门户以开始使用该订阅。
 
-3. 若要查看刚刚创建的订阅，请依次单击“更多服务”、“订阅”和新的订阅。 订阅产品/服务之后，请刷新门户，以查看新服务是否已包含为新订阅的一部分。 在本示例中，我们已添加**虚拟机**。
+3. 若要查看创建的订阅，请单击**所有服务**。  然后，在**常规**类别中，选择**订阅**，然后选择你的新订阅。 订阅套餐之后，请刷新门户，以查看新服务是否已包含为新订阅的一部分。 在本示例中，我们已添加**虚拟机**。
 
    ![查看订阅](media/azure-stack-subscribe-services/view-subscription.png)
 
 
 ## <a name="test-the-offer"></a>测试产品/服务
-在登录到用户门户，你可以通过设置使用新的订阅功能的虚拟机来测试产品/服务。 
+登录到用户门户后，可以使用新订阅功能预配虚拟机，以测试套餐。 
 
 > [!NOTE]
-> 此测试需要到 Azure 堆栈 marketplace 第一次添加一个 Windows Server 2016 数据中心虚拟机。 
+> 此项测试需要用到事先已添加到 Azure Stack 市场的 Windows Server 2016 Datacenter VM。 
 
 1. 登录到用户门户。
 

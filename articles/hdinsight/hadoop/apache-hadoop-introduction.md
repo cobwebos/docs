@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017, mvc
 ms.topic: overview
 ms.date: 05/07/2018
-ms.openlocfilehash: 3bf1b4c9ea0db3a51f2455edf3e1e70aaa3dcdab
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 634abb107ce3578de4baccdfdec2c5bdde166f11
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39595726"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43668286"
 ---
 # <a name="what-is-azure-hdinsight-and-the-hadoop-technology-stack"></a>什么是 Azure HDInsight 和 Hadoop 技术堆栈
 
@@ -113,6 +113,17 @@ HDInsight 群集包括 Spark、HBase、Kafka、Hadoop 和其他群集，支持�
 |Java 虚拟机 (JVM) 语言     | 除 Java 之外的许多语言都可以在 Java 虚拟机 (JVM) 上运行。 但是，运行这其中的部分语言时，可能必须在群集上安装其他组件。 HDInsight 群集支持以下基于 JVM 的语言： <ul><li>Clojure</li><li>Jython (Python for Java)</li><li>Scala</li></ul>     |
 |Hadoop 特定的语言     | HDInsight 群集支持以下特定于 Hadoop 技术堆栈的语言： <ul><li>用于 Pig 作业的 Pig Latin</li><li>用于 Hive 作业的 HiveQL 和 SparkSQL</li></ul>        |
  
+
+## <a name="development-tools-for-hdinsight"></a>适用于 HDInsight 的开发工具 
+可以使用 HDInsight 开发工具（包括 IntelliJ、Eclipse、Visual Studio Code 和 Visual Studio）通过与 Azure 的无缝集成来创作和提交 HDInsight 数据查询和作业。
+
+* [用于 IntelliJ 的 Azure 工具包](https://docs.microsoft.com/en-us/azure/hdinsight/spark/apache-spark-intellij-tool-plugin)
+
+* [用于 Eclipse 的 Azure 工具包](https://docs.microsoft.com/en-us/azure/hdinsight/spark/apache-spark-eclipse-tool-plugin)
+
+* [用于 VS Code 的 Azure HDInsight 工具](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-for-vscode?branch=pr-en-us-22999)
+
+* [用于 Visual Studio 的 Azure Data Lake 工具](https://docs.microsoft.com/en-us/azure/hdinsight/hadoop/apache-hadoop-visual-studio-tools-get-started)
 
 ## <a name="business-intelligence-on-hdinsight"></a>HDInsight 上的商业智能
 大家熟悉的商业智能 (BI) 工具使用 Power Query 外接程序或 Microsoft Hive ODBC 驱动程序来检索、分析和报告与 HDInsight 集成的数据：

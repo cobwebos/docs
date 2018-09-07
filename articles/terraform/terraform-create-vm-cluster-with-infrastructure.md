@@ -1,26 +1,26 @@
 ---
 title: 使用 Terraform 和 HCL 创建 VM 群集
 description: 在 Azure 中使用 Terraform 和 HashiCorp 配置语言 (HCL) 创建 Linux 虚拟机群集与负载均衡器
+services: terraform
+ms.service: terraform
 keywords: terraform, devops, 虚拟机, 网络, 模块
 author: tomarcher
-manager: routlaw
-ms.service: virtual-machines-linux
-ms.custom: devops
-ms.topic: article
-ms.date: 11/13/2017
+manager: jeconnoc
 ms.author: tarcher
-ms.openlocfilehash: 2435d694e6a1671a234d02f90860e5cafe98c2df
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.topic: tutorial
+ms.date: 11/13/2017
+ms.openlocfilehash: fffaf275a98791885b87ee8ffdc275e911b26341
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
-ms.locfileid: "24518794"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43667594"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>使用 Terraform 和 HCL 创建 VM 群集
 
 本教程演示如何使用 [HashiCorp 配置语言](https://www.terraform.io/docs/configuration/syntax.html) (HCL) 创建小型计算群集。 此配置会在[可用性集](/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)中创建一个负载均衡器、两个 Linux VM，以及所有必要的网络资源。
 
-在本教程中：
+本教程介绍以下操作：
 
 > [!div class="checklist"]
 > * 设置 Azure 身份验证
@@ -220,7 +220,7 @@ ms.locfileid: "24518794"
 
 ## <a name="3-initialize-terraform"></a>3.初始化 Terraform 
 
-使用 [terraform init command](https://www.terraform.io/docs/commands/init.html) 初始化包含 Terraform 配置文件（前一部分创建的文件）的目录。 写入新的 Terraform 配置后，应始终运行 `terraform init` 命令。 
+使用 [terraform init command](https://www.terraform.io/docs/commands/init.html) 初始化包含 Terraform 配置文件（前一部分创建的文件）的目录。 在写入新的 Terraform 配置后始终运行 `terraform init` 命令是一个好的做法。 
 
 > [!TIP]
 > `terraform init` 命令是幂等的，这意味着可以在生成相同结果时重复调用。 所以，如果在协作环境中工作，并认为配置文件可能已经更改，那最好在执行或应用计划前调用 `terraform init` 命令。

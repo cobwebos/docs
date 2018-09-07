@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB 图形 API 简介 | Microsoft Docs
+title: Azure Cosmos DB Gremlin API 简介 | Microsoft Docs
 description: 了解如何在 Azure Cosmos DB 中通过使用 Apache TinkerPop 的 Gremlin 图形查询语言以较低的延迟存储、查询和遍历大量图形。
 services: cosmos-db
 author: LuisBosquez
@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 01/05/2017
 ms.author: lbosq
-ms.openlocfilehash: 333bb4074ac741e854ff56c7c397b0e3be247f1b
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: a0eec8aec315eefcbcc859828fa68ea0ccee6190
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857144"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43695344"
 ---
-# <a name="introduction-to-azure-cosmos-db-graph-api"></a>Azure Cosmos DB 简介：图形 API
+# <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB 简介：Gremlin API
 
 [Azure Cosmos DB](introduction.md) 是 Microsoft 针对任务关键型应用程序提供的全局分布式多模型数据库服务。 Azure Cosmos DB 提供以下功能，全部由[业内领先 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) 提供支持：
 
@@ -29,13 +29,7 @@ ms.locfileid: "37857144"
 
 Azure Cosmos DB [自动为数据编制索引](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)，无需客户管理架构和索引。 它是多模型的，支持文档、键-值、图形和纵栏表数据模型。
 
-建议观看以下视频，Kirill Gavrylyuk 在视频中说明了如何开始使用 Azure Cosmos DB 上的图：
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Graphs-with-Azure-Cosmos-DB-Gremlin-API/player]
-> 
-> 
-
-Azure Cosmos DB 图形 API 可提供：
+Azure Cosmos DB Gremlin API 可提供：
 
 - 图形建模。
 - 遍历 API。
@@ -47,7 +41,7 @@ Azure Cosmos DB 图形 API 可提供：
 
 若要查询 Azure Cosmos DB，可以使用 [Apache TinkerPop](http://tinkerpop.apache.org) 图形遍历语言或 [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps)。
 
-本文提供 Azure Cosmos DB 图形 API 概述，并说明如何使用它存储具有数十亿顶点和边缘的大量图形。 可以使用毫秒级延迟的情况下查询图形，并轻松扩展图形结构和架构。
+本文提供 Azure Cosmos DB Gremlin API 概述，并说明如何使用它存储具有数十亿顶点和边缘的大量图形。 可以使用毫秒级延迟的情况下查询图形，并轻松扩展图形结构和架构。
 
 ## <a name="graph-database"></a>图形数据库
 现实世界中的数据存在必然的联系。 传统数据建模以实体为重心。 对于许多应用程序，还需要进行建模，或是自然地为实体和关系建模。
@@ -102,7 +96,7 @@ Azure Cosmos DB 是一个完全托管的图形数据库，提供全局分发、�
 Azure Cosmos DB 还可以在相同的容器/数据库中使用多个模型（例如文档和图形）。 可以使用文档容器将图形数据与文档一起存储。 可以使用 JSON 上的 SQL 查询和 Gremlin 查询来查询与图形相同的数据。
 
 ## <a name="get-started"></a>入门
-可以使用支持图形 API 的 Azure 命令行接口 (CLI)、Azure PowerShell 或 Azure 门户创建 Azure Cosmos DB 帐户。 创建帐户后，Azure 门户将提供类似于 `https://<youraccount>.gremlin.cosmosdb.azure.com` 的、充当 Gremlin 的 WebSocket 前端的服务终结点。 可以将 TinkerPop 兼容的工具（例如 [Gremlin 控制台](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console)）配置为连接到此终结点，并在 Java、Node.js 或任何 Gremlin 客户端驱动程序中生成应用程序。
+可以使用支持 Gremlin API 的 Azure 命令行接口 (CLI)、Azure PowerShell 或 Azure 门户创建 Azure Cosmos DB 帐户。 创建帐户后，Azure 门户将提供类似于 `https://<youraccount>.gremlin.cosmosdb.azure.com` 的、充当 Gremlin 的 WebSocket 前端的服务终结点。 可以将 TinkerPop 兼容的工具（例如 [Gremlin 控制台](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console)）配置为连接到此终结点，并在 Java、Node.js 或任何 Gremlin 客户端驱动程序中生成应用程序。
 
 下表显示可以对 Azure Cosmos DB 使用的常用 Gremlin 驱动程序：
 

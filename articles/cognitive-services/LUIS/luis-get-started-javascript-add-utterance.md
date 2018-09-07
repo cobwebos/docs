@@ -1,53 +1,48 @@
 ---
-title: 教程：了解如何使用 JavaScript 将陈述添加到 LUIS 应用 | Microsoft Docs
-description: 本教程介绍如何使用 JavaScript 调用 LUIS 应用。
+title: 快速入门：了解如何使用 JavaScript 将话语添加到 LUIS 应用 - Azure 认知服务 | Microsoft Docs
+description: 本快速入门介绍如何使用 JavaScript 调用 LUIS 应用。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: tutorial
-ms.date: 12/18/2017
-ms.author: v-geberr
-ms.openlocfilehash: b6d021dcfdddb5449aa989c6aa06d7faf326befb
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.topic: quickstart
+ms.date: 08/24/2018
+ms.author: diberry
+ms.openlocfilehash: ffc19d12c1d3fbb24c514ac87f298d1a52d23eb8
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265453"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43768816"
 ---
-# <a name="tutorial-add-utterances-to-app-using-javascript"></a>教程：使用 JavaScript 将陈述添加到应用
-在本教程中，我们将编写一个程序，以使用 JavaScript 中的创作 API 将陈述添加到意向。
+# <a name="quickstart-change-model-using-javascript"></a>快速入门：使用 JavaScript 更改模型
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * 创建 Visual Studio 控制台项目 
-> * 添加方法以调用 LUIS API 来添加陈述和训练应用
-> * 添加包含 BookFlight 意向的示例陈述的 JSON 文件
-> * 运行控制台并查看陈述的训练状态
-
-有关详细信息，请参阅[将示例陈述添加到意向](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08)、[训练](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45)和[训练状态](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46) API 的技术文档。
-
-本文需要一个免费的 [LUIS][LUIS] 帐户，以便能够创作 LUIS 应用程序。
+[!include[Quickstart introduction for change model](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
 ## <a name="prerequisites"></a>先决条件
-* LUIS [**创作密钥**](luis-concept-keys.md#authoring-key)。 
-* 现有的 LUIS **应用程序 ID** 和**版本 ID**。 
-* VSCode 中名为 `add-utterances.html` 的新文件项目。
 
-> [!NOTE] 
-> [**LUIS-Samples** Github 存储库](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/authoring-api-samples/javascript/add-utterance.html)中提供了完整的 `add-utterances.html` 文件。
+[!include[Quickstart prerequisites for changing model](../../../includes/cognitive-services-luis-qs-change-model-prereq.md)]
+* [Visual Studio Code](https://code.visualstudio.com/)。
+
+[!include[Code is available in LUIS-Samples Github repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
+
+## <a name="example-utterances-json-file"></a>示例话语 JSON 文件
+
+[!include[Quickstart explanation of example utterance JSON file](../../../includes/cognitive-services-luis-qs-change-model-json-ex-utt.md)]
 
 
-## <a name="write-the-code"></a>编写代码
+## <a name="create-quickstart-code"></a>创建快速入门代码
+
 创建 `add-utterances.html` 并添加以下代码：
 
-   [!code-javascript[Java Dependencies](~/samples-luis/documentation-samples/authoring-api-samples/javascript/add-utterance.html "Java Dependencies")]
+   [!code-html[Html code](~/samples-luis/documentation-samples/quickstarts/change-model/javascript/add-utterance.html "Javascript code")]
 
-## <a name="view-in-browser"></a>在浏览器中查看
+## <a name="run-code"></a>运行代码
+
 1. 在浏览器中打开该文件。
 
-2. 添加 LUIS 创作 ID、LUIS 应用程序 ID，并且更改版本（如果不是 `0.1`）
+2. 添加 LUIS 创作 ID、LUIS 应用程序 ID。
 
 3. 修改要添加到应用程序的**陈述数组**。 该数组存储在 utteranceJSON 变量中。 根据自己在域和陈述方面的需要，更改这些值。 
 
@@ -80,13 +75,11 @@ ms.locfileid: "36265453"
 
 6. 选择 `Train Status` 按钮查看训练状态。 
 
-![Add-utterances.html](./media/luis-quickstart-javascript-add-utterance/add-utterance.png)
+    ![Add-utterances.html](./media/luis-quickstart-javascript-add-utterance/add-utterance.png)
 
 ## <a name="clean-up-resources"></a>清理资源
-完成本教程后，如果不再需要 Visual Studio 和控制台应用程序，请将其删除。 
+完成此快速入门后，删除此快速入门中创建的所有文件。 
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
 > [将 LUIS 与机器人集成](luis-csharp-tutorial-build-bot-framework-sample.md)
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

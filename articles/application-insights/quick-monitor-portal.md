@@ -5,23 +5,23 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 09/14/2017
+ms.date: 06/13/2018
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 110d1a0fe52f50f057f7ea7ccbc426706473306d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: db8aa2d1bb5d79b5d2c9b04789b4ac18fbec5897
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
-ms.locfileid: "23660545"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43664584"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>开始监视 ASP.NET Web 应用程序
 
 使用 Azure Application Insights，可轻松监视 Web 应用程序的可用性、性能和使用情况。  还可以快速确定并诊断应用程序中的错误，而无需等待用户报告这些错误。  使用从 Application Insights 收集的有关应用的性能和效率的信息，可在维护和改进应用程序时做出明智的选择。
 
-本快速入门演示如何将 Application Insights 添加到现有 ASP.NET Web 应用程序并开始分析实时统计信息，这只是可用来分析应用程序的各种方法之一。 如果没有 ASP.NET Web 应用程序，则可以按照[创建 ASP.NET Web 应用快速入门](../app-service/app-service-web-get-started-dotnet.md)创建一个。
+本快速入门演示如何将 Application Insights 添加到现有 ASP.NET Web 应用程序并开始分析实时统计信息，这只是可用来分析应用程序的各种方法之一。 如果没有 ASP.NET Web 应用程序，则可以按照[创建 ASP.NET Web 应用快速入门](../app-service/app-service-web-get-started-dotnet-framework.md)创建一个。
 
 ## <a name="prerequisites"></a>先决条件
 完成本快速入门教程：
@@ -31,23 +31,29 @@ ms.locfileid: "23660545"
     - Azure 开发
 
 
-如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="enable-application-insights"></a>启用 Application Insights
 
 1. 在 Visual Studio 2017 中打开项目。
 2. 从“项目”菜单中选择“配置 Application Insights”。 Visual Studio 会将 Application Insights SDK 添加到应用程序。
-3. 单击“免费开始”，选择首选计费计划，然后单击“注册”。
 
-    ![将 Application Insights 添加到 Visual Studio](./media/quick-monitor-portal/add-application-insights.png)
+    > [!IMPORTANT]
+    > 添加 Application Insights 的过程因 ASP.NET 模板类型而异。 若要使用“空”或“Azure 移动应用”模板，请选择“项目” > “添加 Application Insights 遥测”。 有关所有其他 ASP.NET 模板，请参阅上述步骤中的说明。 
 
-4. 通过从“调试”菜单中选择“启动调试”或通过按 F5 键来运行应用程序。
+3. 单击“开始使用”（早期版本的 Visual Studio 会改为使用“免费开始”按钮）。
+
+    ![将 Application Insights 添加到 Visual Studio](./media/quick-monitor-portal/add-application-insights-b.png)
+
+4. 选择订阅并单击“注册”。
+
+5. 通过从“调试”菜单中选择“启动调试”或通过按 F5 键来运行应用程序。
 
 ## <a name="confirm-app-configuration"></a>确认应用配置
 
 Application Insights 收集应用程序的遥测数据，而不考虑应用程序在何处运行。 按照以下步骤开始查看此数据。
 
-1. 通过单击“项目” -> “Application Insights” -> “搜索调试会话遥测”打开 Application Insights。  从当前会话查看遥测数据。<BR><br>![Visual Studio 中的遥测](./media/quick-monitor-portal/telemetry-in-vs.png)
+1. 通过单击“查看” -> “其他 Windows” -> “Application Insights 搜索”打开 Application Insights。  从当前会话查看遥测数据。<BR><br>![Visual Studio 中的遥测](./media/quick-monitor-portal/telemetry-in-vs.png)
 
 2. 单击列表中的第一个请求（在此示例中为“获取主页/索引”）查看请求详细信息。 请注意，包含状态代码和响应时间以及有关请求的其他重要信息。<br><br>![Visual Studio 中的响应详细信息](media/quick-monitor-portal/request-details.png)
 
@@ -57,11 +63,11 @@ Application Insights 收集应用程序的遥测数据，而不考虑应用程�
 
 1. 在解决方案资源管理器中右键单击“连接的服务 Application Insights”文件夹，然后单击“打开 Application Insights 门户”。  可以看到有关应用程序的一些信息和各种选项。
 
-    ![应用程序地图](media/quick-monitor-portal/001.png)
+    ![应用程序地图](media/quick-monitor-portal/overview-001.png)
 
-2. 单击“应用映射”以获取应用程序组件之间依赖关系的可视布局。  每个组件均显示 KPI，如负载、性能、失败和警报。
+2. 单击“应用程序映射”以获取应用程序组件之间依赖关系的可视布局。  每个组件均显示 KPI，如负载、性能、失败和警报。
 
-    ![应用程序地图](media/quick-monitor-portal/application-map.png)
+    ![应用程序地图](media/quick-monitor-portal/application-map-001.png)
 
 3. 单击应用程序组件之一上的“应用分析”图标 ![应用程序映射](media/quick-monitor-portal/app-analytics-icon.png)。  这将打开“Application Insights Analytics”，该软件提供丰富的查询语言，可用于分析 Application Insights 收集的所有数据。  在本示例中，将生成以图表形式呈现请求计数的查询。  可以编写自己的查询来分析其他数据。
 

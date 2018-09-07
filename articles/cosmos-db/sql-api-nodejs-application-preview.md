@@ -11,21 +11,22 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 07/31/2018
 ms.author: sngun
-ms.openlocfilehash: 43c5b8beef523684a405f1396ad0a9d862c123e8
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 8e788207e99a87e9635fbf668ad99c21ca101ecf
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41918891"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697109"
 ---
 # <a name="_Toc395783175"></a>使用 Azure Cosmos DB 和 Node.js SDK（预览版）生成 Node.js Web 应用程序
+
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
-> * [Node.js](sql-api-nodejs-application.md)
-> * [Node.js - v2.0 预览版](sql-api-nodejs-application-preview.md)
 > * [Java](sql-api-java-application.md)
+> * [Node.js](sql-api-nodejs-application.md)
+> * [Node.js- v2](sql-api-nodejs-application-preview.md)
 > * [Python](sql-api-python-application.md)
-> 
+> * [Xamarin](mobile-apps-with-xamarin.md)
 > 
 
 本 Node.js 教程介绍了如何使用 Azure Cosmos DB SQL API 帐户，通过在 Azure 网站上托管的 Node.js Express 应用程序存储和访问数据。 在本教程中，需生成一个简单的基于 Web 的应用程序（待办事项应用），用于创建、检索和完成任务。 任务存储为 Azure Cosmos DB 中的 JSON 文档。 下图显示待办事项应用程序的屏幕快照：

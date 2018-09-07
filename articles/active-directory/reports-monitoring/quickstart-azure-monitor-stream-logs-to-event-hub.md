@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 07/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f6f3d9625e5469823a9c0c6eb6b549a6eaaeb0e9
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 1a7f91a0d15dd67d86f83485b4aad01a3bae37b3
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41920665"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699063"
 ---
 # <a name="tutorial-stream-azure-ad-logs-to-an-azure-event-hub-preview"></a>教程：将 Azure AD 日志流式传输到 Azure 事件中心（预览版）
 
@@ -34,7 +34,7 @@ ms.locfileid: "41920665"
 * Azure 订阅。 如果没有 Azure 订阅，可以[注册免费试用版](https://azure.microsoft.com/free/)。
 * Azure AD 租户。
 * 一个是 Azure AD 租户的全局管理员或安全管理员的用户。
-* 在 Azure 订阅中有事件中心命名空间和事件中心。 了解如何[创建事件中心](https://docs.microsoft.com/azure/event-hubs/event-hubs-create.md)。
+* 在 Azure 订阅中有事件中心命名空间和事件中心。 了解如何[创建事件中心](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)。
 
 ## <a name="archive-logs-to-an-event-hub"></a>将日志存档到事件中心
 
@@ -87,6 +87,6 @@ ms.locfileid: "41920665"
 ## <a name="next-steps"></a>后续步骤
 
 * [使用 Azure Monitor 将 Azure AD 日志与 Splunk 集成](tutorial-integrate-activity-logs-with-splunk.md)
-* [安装 Azure AD Sumo Logic 应用并查看仪表板](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards)
+* [使用 Azure Monitor 将 Azure AD 日志与 SumoLogic 集成](howto-integrate-activity-logs-with-sumologic.md)
 * [解释 Azure Monitor 中的审核日志架构](reference-azure-monitor-audit-log-schema.md)
 * [解释 Azure Monitor 中的登录日志架构](reference-azure-monitor-sign-ins-log-schema.md)

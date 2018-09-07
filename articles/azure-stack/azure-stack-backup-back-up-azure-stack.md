@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 578bb864f56b788db77d1201533e73d3b9616669
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: a11de2a4580515f6a358438a706e5be3f5543e28
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42139747"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025304"
 ---
 # <a name="back-up-azure-stack"></a>备份 Azure Stack
 
@@ -30,15 +30,15 @@ ms.locfileid: "42139747"
 
 ## <a name="start-azure-stack-backup"></a>启动 Azure Stack 备份
 
-### <a name="start-a-new-backup-without-job-progress-tracking"></a>启动新的备份，而无需跟踪作业进度
-使用 Start-azsbackup 立即开始新的备份跟踪没有作业进度。
+### <a name="start-a-new-backup-without-job-progress-tracking"></a>启动新备份，而不进行作业进度跟踪
+使用 Start-AzSBackup 立即启动新备份，而不进行作业进度跟踪。
 
 ```powershell
    Start-AzsBackup -Force
 ```
 
-### <a name="start-azure-stack-backup-with-job-progress-tracking"></a>Azure Stack 备份开始跟踪作业进度
-使用 Start-azsbackup 与要跟踪备份作业进度的-AsJob 变量启动新的备份。
+### <a name="start-azure-stack-backup-with-job-progress-tracking"></a>启动 Azure Stack 备份，并进行作业进度跟踪
+使用 Start-AzSBackup 启动新备份并使用 -AsJob 变量跟踪备份作业进度。
 
 ```powershell
     $backupjob = Start-AzsBackup -Force -AsJob 
@@ -51,8 +51,8 @@ ms.locfileid: "42139747"
 
 ## <a name="confirm-backup-has-completed"></a>确认备份已完成
 
-### <a name="confirm-backup-has-completed-using-powershell"></a>确认备份已完成使用 PowerShell
-使用以下 PowerShell 命令以确保该备份已成功完成：
+### <a name="confirm-backup-has-completed-using-powershell"></a>使用 PowerShell 确认备份已完成
+使用以下 PowerShell 命令确保备份已成功完成：
 
 ```powershell
    Get-AzsBackup
@@ -77,11 +77,11 @@ ms.locfileid: "42139747"
     Tags              : {}
 ```
 
-### <a name="confirm-backup-has-completed-in-the-administration-portal"></a>确认备份已完成在管理门户中
-使用 Azure Stack 管理门户以验证该备份已成功完成通过执行以下步骤：
+### <a name="confirm-backup-has-completed-in-the-administration-portal"></a>在管理门户中确认备份已完成
+使用 Azure Stack 管理门户按照以下步骤验证备份是否已成功完成：
 
-1. 打开[Azure Stack 管理门户](azure-stack-manage-portals.md)。
-2. 选择“更多服务” > “基础结构备份”。 在“基础结构备份”边栏选项卡中选择“配置”。
+1. 打开 [Azure Stack 管理门户](azure-stack-manage-portals.md)。
+2. 选择**所有服务**，然后在**管理**类别中，选择 >**基础结构备份**。 在“基础结构备份”边栏选项卡中选择“配置”。
 3. 在“可用备份”列表中查找备份的**名称**和**完成日期**。
 4. 验证**状态**是否为“成功”。
 

@@ -12,24 +12,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 09/05/2018
 ms.author: mabrigg
-ms.openlocfilehash: da8261d27ae7fad3c5ff30e4e1cce3f1bca2b70a
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: ca07c3aca106f6c92187fea5a3ebf7bf172cddcc
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035327"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026196"
 ---
 # <a name="apply-updates-in-azure-stack"></a>在 Azure Stack 中应用更新
 
 *适用于：Azure Stack 集成系统*
 
-Azure Stack 操作员，可以将应用 Microsoft 或 OEM 更新包适用于 Azure Stack 通过使用更新磁贴在管理员门户中。 你必须下载更新包、 包文件导入到 Azure Stack，然后安装更新包。 
+作为 Azure Stack 操作员，可以使用管理员门户中的“更新”磁贴为 Azure Stack 应用 Microsoft 或 OEM 更新包。 必须下载更新包，将包文件导入到 Azure Stack，然后安装更新包。 
 
 ## <a name="download-the-update-package"></a>下载更新包
 
-适用于 Azure Stack 的 Microsoft 或 OEM 更新包可用时，到可从 Azure Stack 访问的位置下载包并查看包的内容。 更新包通常包含以下文件：
+当适用于 Azure Stack 的 Microsoft 或 OEM 更新包可用时，将该包下载到可从 Azure Stack 访问的位置，并查看包内容。 更新包通常包含以下文件：
 
 - 自解压 *PackageName*.exe 文件。 此文件包含更新的有效负载，例如，Windows Server 的最新累积更新。   
 - 相应的 *PackageName*.bin 文件。 这些文件为与 *PackageName*.exe 文件关联的有效负载提供压缩。 
@@ -42,7 +42,7 @@ Azure Stack 操作员，可以将应用 Microsoft 或 OEM 更新包适用于 Azu
 > [!IMPORTANT]
 > 我们强烈建议你向用户通知任何维护操作，并尽可能将正常维护时段安排在非工作时间。 维护操作可能会同时影响用户工作负荷和门户操作。
 
-1. 在管理员门户中，选择“更多服务”。 然后，在“数据 + 存储”类别下，选择“存储帐户”。 （或者，在筛选框中开始键入“存储帐户”，然后选择它。）
+1. 在管理员门户中，选择**所有服务**。 然后，在**数据 + 存储**类别中，选择**存储帐户**。 （或者，在筛选框中开始键入“存储帐户”，然后选择它。）
 
     ![显示在门户中查找存储帐户的位置](media/azure-stack-apply-updates/ApplyUpdates1.png)
 
