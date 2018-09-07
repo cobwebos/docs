@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/28/2018
+ms.date: 09/04/2018
 ms.author: alkohli
-ms.openlocfilehash: 931b3fd4730ed9ca3a901b423d6c804dfa7e5305
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 26f8f59d940c1e4a25e24229c2a3df75052e63e4
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143536"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43783273"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>什么是 Azure Data Box 磁盘？ （预览版）
 
@@ -48,7 +48,7 @@ A. 使用 Azure Data Box 磁盘能够快速、经济、安全地将 TB 量级的
 磁盘已使用 Microsoft BitLocker 驱动器加密进行加密，可在 Azure 门户中管理加密密钥。 然后，从客户的服务器复制数据。 在数据中心，Microsoft 会使用高速专用网络上传链路将数据从驱动器迁移到云中，然后将其上传到 Azure。
 
 ### <a name="q-when-should-i-use-data-box-disks"></a>问： 何时应使用 Data Box 磁盘？
-A. 如果需要将 35 TB（或更少）的数据传输到 Azure，则使用 Data Box 磁盘会很有利。
+A. 如果需要将 40 TB（或更少）的数据传输到 Azure，则使用 Data Box Disk 会很有利。
 
 ### <a name="q-what-is-the-price-of-data-box-disks"></a>问： Data Box 磁盘的价格是多少？
 A. 在预览期，Data Box 磁盘免费提供使用。 寄送也是免费的，但是，Azure 存储会产生收费。
@@ -60,10 +60,10 @@ A.  若要获取 Azure Data Box 磁盘，请先注册 [Data Box 磁盘预览版]
 A. 如果使用 5 个磁盘，并且磁盘具有 8 TB 容量（7 TB 可用容量），则最大可用容量为 35 TB。 因此，可在一个实例中传输 35 TB 数据。  若要传输更多数据，需订购更多的磁盘。
 
 ### <a name="q-how-can-i-check-if-data-box-disks-are-available-in-my-region"></a>问： 如何检查 Data Box 磁盘是否在我的区域中可用？ 
-A.  在预览阶段，Data Box 磁盘在美国、加拿大和欧盟的所有国家/地区可用。  
+A.  在预览阶段，Data Box Disk 在美国、加拿大、澳大利亚和欧盟的所有国家/地区可用。  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>问： 使用 Data Box 磁盘可在哪些区域存储数据？
-A. 美国、加拿大、西欧和北欧的所有区域支持 Data Box 磁盘预览版。 仅支持 Azure 公有云区域。 不支持 Azure 政府版或其他主权云。
+A. 美国、加拿大、澳大利亚、西欧和北欧的所有区域支持 Data Box Disk 预览版。 仅支持 Azure 公有云区域。 不支持 Azure 政府版或其他主权云。
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>问： 如果 Data Box 磁盘出现任何问题，我应该与谁联系？
 A. 如果遇到 Data Box 磁盘相关的任何问题，请联系 [Data Box 磁盘支持](mailto:expresspodsupport@microsoft.com)。

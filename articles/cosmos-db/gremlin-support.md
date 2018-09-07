@@ -10,19 +10,19 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: c675f37e50f5b8a259048d9a92fcdbe5b947068c
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 593b7ac636b92db5c72cfad8f73fc2c418639358
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34797611"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700206"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB Gremlin 图形支持
-Azure Cosmos DB 支持 [Apache Tinkerpop](http://tinkerpop.apache.org) 的图形遍历语言 [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps)，该语言是一种图形 API，用于创建图形实体以及执行图形查询操作。 可以使用 Gremlin 语言创建图形实体（顶点和边缘）、修改这些实体内部的属性、执行查询和遍历，以及删除实体。 
+Azure Cosmos DB 支持 [Apache Tinkerpop](http://tinkerpop.apache.org) 的图形遍历语言 [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps)，该语言是一种 Gremlin API，用于创建图形实体以及执行图形查询操作。 可以使用 Gremlin 语言创建图形实体（顶点和边缘）、修改这些实体内部的属性、执行查询和遍历，以及删除实体。 
 
 Azure Cosmos DB 为图形数据库提供企业级的功能。 这些功能包括全局分布、存储和吞吐量独立缩放、低至个位数的可预测延迟、自动编制索引、SLA、跨越两个或更多 Azure 区域的数据库帐户的读取可用性。 由于 Azure Cosmos DB 支持 TinkerPop/Gremlin，因此可以轻松迁移使用其他图形数据库编写的应用程序，而无需更改代码。 此外，由于具有 Gremlin 支持，Azure Cosmos DB 可与支持 TinkerPop 的分析框架（例如 [Apache Spark GraphX](http://spark.apache.org/graphx/)）无缝集成。 
 
-本文提供 Gremlin 的快速演练，并列举图形 API 支持的 Gremlin 功能和步骤。
+本文提供 Gremlin 的快速演练，并列举 Gremlin API 支持的 Gremlin 功能和步骤。
 
 ## <a name="gremlin-by-example"></a>举例介绍 Gremlin
 我们使用一个示例图形来了解如何在 Gremlin 中表示查询。 下图显示了一个商业应用程序，该应用程序管理以图形形式呈现的有关用户、兴趣和设备的数据。  
@@ -128,7 +128,7 @@ TinkerPop 是涵盖多种图形技术的标准。 因此，它使用标准的术
 
 GraphSON 为顶点使用的属性如下：
 
-| 属性 | 说明 |
+| 属性 | Description |
 | --- | --- |
 | id | 顶点的 ID。 必须唯一（在适用的情况下，可与 _partition 的值合并） |
 | label | 顶点的标签。 这是用于描述实体类型的可选属性。 |
@@ -139,7 +139,7 @@ GraphSON 为顶点使用的属性如下：
 
 边缘包含以下信息，以方便导航到图形的其他部件。
 
-| 属性 | 说明 |
+| 属性 | Description |
 | --- | --- |
 | id | 边缘的 ID。 必须唯一（在适用的情况下，可与 _partition 的值合并） |
 | label | 边缘的标签。 此属性是可选的，用于描述关系类型。 |
@@ -148,14 +148,14 @@ GraphSON 为顶点使用的属性如下：
 
 每个属性可在一个数组中存储多个值。 
 
-| 属性 | 说明 |
+| 属性 | Description |
 | --- | --- |
 | 值 | 属性的值
 
 ## <a name="gremlin-steps"></a>Gremlin 的步骤
 现在，让我们了解 Azure Cosmos DB 支持的 Gremlin 步骤。 有关 Gremlin 的完整参考信息，请参阅 [TinkerPop 参考](http://tinkerpop.apache.org/docs/current/reference)。
 
-| 步骤 | 说明 | TinkerPop 3.2 文档 |
+| 步骤 | Description | TinkerPop 3.2 文档 |
 | --- | --- | --- |
 | `addE` | 在两个顶点之间添加边缘 | [addE 步骤](http://tinkerpop.apache.org/docs/current/reference/#addedge-step) |
 | `addV` | 将顶点添加到图形 | [addV 步骤](http://tinkerpop.apache.org/docs/current/reference/#addvertex-step) |

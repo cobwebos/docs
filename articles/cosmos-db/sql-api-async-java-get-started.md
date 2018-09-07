@@ -11,23 +11,22 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 06/29/2018
 ms.author: sngun
-ms.openlocfilehash: 2ea09b8f138f9cb6729af0e0aff1500caccde10f
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: faa213caf415f98c230af741822e17a511b6fe43
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163251"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696289"
 ---
 # <a name="build-a-java-application-by-using-azure-cosmos-db-async-java-sdk"></a>使用 Azure Cosmos DB 异步 Java SDK 构建 Java 应用程序 
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
-> * [用于 MongoDB 的 Node.js](mongodb-samples.md)
-> * [Node.js](sql-api-nodejs-get-started.md)
 > * [Java](sql-api-java-get-started.md)
 > * [异步 Java](sql-api-async-java-get-started.md)
->  
+> * [Node.js](sql-api-nodejs-get-started.md)
+> * [Node.js- v2](sql-api-nodejs-get-started-preview.md) 
 > 
 
 Azure Cosmos DB 是一种全球分布式多模型数据库。 本教程展示了如何通过异步 Java 应用程序使用 Azure Cosmos DB SQL API 帐户来存储和访问数据。 

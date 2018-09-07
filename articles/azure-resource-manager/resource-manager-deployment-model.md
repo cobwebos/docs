@@ -13,14 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 2fd128ce04ac883396948e6114582dd15288390a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 704bbe5cc566833ef1279e84f0fab9f363dfaa11
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359734"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841620"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure 资源管理器与经典部署：了解部署模型和资源状态
+
+> [!NOTE]
+> 仅当从经典部署迁移到 Azure 资源管理器部署时，才会使用本文中提供的信息。
+
 本文介绍 Azure 资源管理器和经典部署模型。 Resource Manager 和经典部署模型表示部署和管理 Azure 解决方案的两种不同方式。 通过两个不同的 API 集来处理它们，且部署的资源可能包含重要差异。 这两个模型相互不兼容。 本文介绍这些差异。
 
 若要简化资源部署和管理，Microsoft 建议为所有新资源使用 Resource Manager。 如果可能，Microsoft 建议通过 Resource Manager 重新部署现有资源。

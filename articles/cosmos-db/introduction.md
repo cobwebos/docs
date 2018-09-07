@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 488ec66eb485761d484e305c298dfb9117745a42
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: b9c4c2595bb7d5347397bff95c90fbdc91902bcd
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145275"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696442"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>欢迎使用 Azure Cosmos DB
 
@@ -40,7 +40,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布式多模型数据库。 �
         * [SQL API](sql-api-introduction.md)：使用丰富的 SQL 查询功能的无架构 JSON 数据库引擎。
         * [MongoDB API](mongodb-introduction.md)：一种可大规模缩放的服务型 MongoDB，由 Azure Cosmos DB 平台提供支持。 与现有 MongoDB 库、驱动程序、工具和应用程序兼容。
         * [Cassandra API](cassandra-introduction.md)：一种可全局分发的服务型 Cassandra，由 Azure Cosmos DB 平台提供支持。 与现有 [Apache Cassandra](https://cassandra.apache.org/) 库、驱动程序、工具和应用程序兼容。
-        * [Gremlin API](graph-introduction.md)：一种完全托管的、可横向缩放的图形数据库服务，可以轻松地用于生成和运行特定的应用程序，这些应用程序适用于支持开放式图形 API（基于 [Apache TinkerPop 规范](http://tinkerpop.apache.org/)：Apache Gremlin）的高度连接数据集。
+        * [Gremlin API](graph-introduction.md)：一种完全托管的、可横向缩放的图形数据库服务，可以轻松地用于生成和运行特定的应用程序，这些应用程序适用于支持开放式 Gremlin API（基于 [Apache TinkerPop 规范](http://tinkerpop.apache.org/)：Apache Gremlin）的高度连接数据集。
         * [表 API](table-introduction.md)：一种键值对型数据库服务，可以在不进行应用更改的情况下，为现有的 Azure 表存储应用程序提供高级功能（例如，自动索引、低延迟保证、全局分发）。
         * 即将推出其他数据模型和 API！
 

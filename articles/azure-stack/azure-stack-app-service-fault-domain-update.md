@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2018
+ms.date: 09/05/2018
 ms.author: anwestg
-ms.openlocfilehash: 53766099f283f802482fe8e84144502d386b1d69
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: acadd1adec93d10d64712a2fbedb89e098998294
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440145"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025956"
 ---
 # <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>如何跨容错域在 Azure Stack 上重新分配 Azure 应用服务
 
@@ -48,8 +48,8 @@ ms.locfileid: "39440145"
 若要扩大规模集，请执行以下步骤：
 
 1. 登录到 Azure Stack 管理员门户。
-1. 选择“更多服务”。
-1. 在“计算”下选择“虚拟机规模集”。 部署为应用服务部署一部分的现有规模集将连同实例计数信息一起列出。 以下屏幕截图显示了规模集的示例。
+1. 选择“所有服务”。
+2. 在中**计算**类别中，选择**虚拟机规模集**。 部署为应用服务部署一部分的现有规模集将连同实例计数信息一起列出。 以下屏幕截图显示了规模集的示例。
 
       ![列在虚拟机规模集 UX 中的 Azure 应用服务规模集][1]
 
