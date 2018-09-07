@@ -2,7 +2,19 @@
 ## [入门](get-started.md)
 ## [认证](sap-certifications.md)
 # Azure 上的 SAP HANA（大型实例）
-## [概述和体系结构](hana-overview-architecture.md)
+## 概述
+### [什么是 Azure 上的 SAP HANA（大型实例）？](hana-overview-architecture.md)
+### [了解术语](hana-know-terms.md)
+### [认证](hana-certification.md)
+### [对 HLI 可用的 SKU](hana-available-skus.md)
+### [大小调整](hana-sizing.md)
+### [加入要求](hana-onboarding-requirements.md)
+### [SAP HANA 数据分层和扩展节点](hana-data-tiering-extension-nodes.md)
+### [操作模型和责任](hana-operations-model.md)
+## 体系结构
+### [一般体系结构](hana-architecture.md)
+### [网络体系结构](hana-network-architecture.md)
+### [存储体系结构](hana-storage-architecture.md)
 ### [支持 HLI 的方案](hana-supported-scenario.md)
 ## [基础结构和连接](hana-overview-infrastructure-connectivity.md)
 ## [安装 SAP HANA](hana-installation.md)

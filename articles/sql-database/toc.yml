@@ -9,15 +9,27 @@ items:
     href: sql-database-paas-vs-sql-server-iaas.md
 - name: 快速入门
   items:
-  - name: 创建 DB - 门户
-    href: sql-database-get-started-portal.md
-  - name: 创建 DB - Azure CLI
-    href: sql-database-get-started-cli.md
-  - name: 创建 DB - Azure PowerShell
-    href: sql-database-get-started-powershell.md
-  - name: 创建托管实例
-    href: sql-database-managed-instance-get-started.md
-  - name: 连接和查询
+  - name: 创建
+    items:
+    - name: 单一数据库
+      href: sql-database-get-started-portal.md
+    - name: 托管实例
+      href: sql-database-managed-instance-get-started.md
+  - name: 配置
+    items:
+    - name: 逻辑服务器防火墙规则
+      href: sql-database-get-started-portal-firewall.md
+    - name: 客户端 VM 与托管实例的连接
+      href: sql-database-managed-instance-configure-vm.md
+    - name: 与托管实例的点到站点连接
+      href: sql-database-managed-instance-configure-p2s.md
+  - name: 加载数据
+    items:
+    - name: 将 BACPAC 导入到单个数据库
+      href: sql-database-import.md
+    - name: 将数据库备份还原到托管实例
+      href: sql-database-managed-instance-get-started-restore.md
+  - name: 查询
     href: sql-database-connect-query.md
     items:
     - name: SSMS
@@ -59,13 +71,9 @@ items:
     href: sql-database-security-tutorial.md
   - name: 5 - 实现地理分散的数据库
     href: sql-database-implement-geo-distributed-database.md
-  - name: 6 - 创建托管实例
-    href: sql-database-managed-instance-create-tutorial-portal.md
-  - name: 7 - 将备份还原到托管实例
-    href: sql-database-managed-instance-restore-from-backup-tutorial.md
-  - name: 8 - 使用 DMS 迁移到托管实例
+  - name: 6 - 使用 DMS 迁移到托管实例
     href: ../dms/tutorial-sql-server-to-managed-instance.md
-  - name: 9 - 设置 Azure SQL 数据同步
+  - name: 7 - 设置 Azure SQL 数据同步
     href: sql-database-get-started-sql-data-sync.md
 - name: 示例
   items:
@@ -606,9 +614,9 @@ items:
     href: /azure/architecture/
   - name: 客户案例
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 1cd65f1f3ee3907324bdb17be61dcfb5d0a747f1
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: e44c2d461f35098e20e50c776ca37b932566c4a0
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43245905"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050473"

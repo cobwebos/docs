@@ -35,6 +35,8 @@ items:
   - name: 升级到高级安全
     href: security-center-onboarding.md
   - name: 设置安全策略
+    href: security-center-azure-policy.md
+  - name: 安全策略设置
     href: security-center-policies-overview.md
     items:
     - name: 数据收集
@@ -47,8 +49,6 @@ items:
       href: security-center-pricing.md
     - name: 安全配置
       href: security-center-customize-os-security-config.md
-    - name: 使用 Azure Policy 的安全策略
-      href: security-center-azure-policy.md
     - name: 租户范围可见性
       href: security-center-management-groups.md
   - name: 实施安全建议
@@ -207,9 +207,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=security-center
   - name: 区域可用性
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 62f713d5e0412eef2cb4dbb176e355371cbc924a
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: dc9c41fa829e26e4f77a9ef8a2baad423f02ffca
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126396"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026354"

@@ -23,15 +23,15 @@ items:
   items:
   - name: 缩放级别和磁贴网格
     href: zoom-levels-and-tile-grid.md
-  - name: 服务覆盖范围
+  - name: 覆盖率
     items:
-    - name: 地理编码
+    - name: 地理编码覆盖区域
       href: geocoding-coverage.md
-    - name: 交通
+    - name: 交通覆盖区域
       href: traffic-coverage.md
-    - name: 呈现
+    - name: 呈现覆盖区域
       href: render-coverage.md
-    - name: 路由
+    - name: 路由覆盖区域
       href: routing-coverage.md
   - name: 支持的语言
     href: supported-languages.md
@@ -67,12 +67,14 @@ items:
       href: map-add-shape.md
     - name: 添加自定义 HTML
       href: map-add-custom-html.md
-    - name: 显示搜索结果
-      href: map-search-location.md
-    - name: 从坐标获取信息
-      href: map-get-information-from-coordinate.md
-    - name: 显示从 A 到 B 的路线
-      href: map-route.md
+    - name: 服务
+      items:
+      - name: 显示搜索结果
+        href: map-search-location.md
+      - name: 从坐标获取信息
+        href: map-get-information-from-coordinate.md
+      - name: 显示从 A 到 B 的路线
+        href: map-route.md
     - name: 显示交通情况
       href: map-show-traffic.md
     - name: 与鼠标事件交互
@@ -157,9 +159,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: 视频
     href: https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo
-ms.openlocfilehash: 9ff456a752ffecc3f4fa67fc8b85540833451fb5
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 0cf84e9b73831c1ead82f7cd01efb94ac312883d
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339125"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022809"
