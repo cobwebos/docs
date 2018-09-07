@@ -49,7 +49,6 @@
 ### [重置用户密码](fundamentals/active-directory-users-reset-password-azure-portal.md)
 ### [共享帐户](active-directory-sharing-accounts.md)
 ### [将用户分配到管理员角色](fundamentals/active-directory-users-assign-role-azure-portal.md)
-### [还原已删除的用户](fundamentals/active-directory-users-restore.md)
 ### [添加另一个目录中的来宾用户 (B2B)](b2b/what-is-b2b.md)
 #### [管理员添加 B2B 用户](b2b/add-users-administrator.md)
 #### [信息工作者添加 B2B 用户](b2b/add-users-information-worker.md)
@@ -163,7 +162,7 @@
 ##### [无提示安装](manage-apps/application-proxy-register-connector-powershell.md)
 ##### [自定义主页](manage-apps/application-proxy-configure-custom-home-page.md)
 ##### [转换内联链接](manage-apps/application-proxy-configure-hard-coded-link-translation.md)
-##### [通配符](active-directory-application-proxy-wildcard.md)
+##### [通配符](manage-apps/application-proxy-wildcard.md)
 ##### [删除个人数据](manage-apps/application-proxy-remove-personal-data.md)
 
 
@@ -172,7 +171,7 @@
 ##### [SharePoint](manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 ##### [Microsoft Teams](manage-apps/application-proxy-integrate-with-teams.md)
 ##### [Tableau](manage-apps/application-proxy-integrate-with-tableau.md)
-##### [Qlik](active-directory-application-proxy-qlik.md)
+##### [Qlik](manage-apps/application-proxy-qlik.md)
 #### [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management) 
 
 #### [故障排除](manage-apps/application-proxy-troubleshoot.md)
