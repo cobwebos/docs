@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/07/2018
 ms.author: mabrigg
-ms.openlocfilehash: ca07c3aca106f6c92187fea5a3ebf7bf172cddcc
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 8e4c86a3c9ff40f23a2a758b450d685b81dabc1a
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44026196"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44091894"
 ---
 # <a name="apply-updates-in-azure-stack"></a>在 Azure Stack 中应用更新
 
@@ -65,7 +65,7 @@ ms.locfileid: "44026196"
 6. 在“上传 blob”下，单击文件夹图标，浏览到更新包的 .exe 文件，然后在文件资源管理器窗口中单击“打开”。
   
 7. 在“上传 blob”下，单击“上传”。 
- 
+  
     ![显示上传每个包文件的位置](media/azure-stack-apply-updates/ApplyUpdates6.png)
 
 8. 对于 *PackageName*.bin 和 Metadata.xml 文件，重复步骤 6 和步骤 7。 不要导入 Supplemental Notice.txt 文件（如果已包含）。
@@ -74,6 +74,8 @@ ms.locfileid: "44026196"
 11. 若要安装更新，请选择标记为“就绪”的包，然后右键单击该包并选择“立即更新”，或者单击顶部附近的“立即更新”操作。
 12. 单击正在安装的更新包时，可以在“更新运行详细信息”区域中查看状态。 还可以在此处单击“下载完整日志”以下载日志文件。
 13. 完成更新后，“更新”磁贴将显示更新后的 Azure Stack 版本。
+
+安装 Azure Stack 上后，你可以手动删除从存储帐户更新。 Azure Stack 会定期检查较旧的更新包，并从存储中删除它们。 可能需要 Azure Stack 两周，以删除旧的包。
 
 ## <a name="next-steps"></a>后续步骤
 

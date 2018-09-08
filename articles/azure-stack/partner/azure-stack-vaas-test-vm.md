@@ -1,6 +1,6 @@
 ---
 title: 部署本地代理和测试映像的虚拟机作为服务的 Azure Stack 验证 |Microsoft Docs
-description: 部署本地代理和测试映像虚拟机作为服务的 Azure Stack 验证。
+description: 为 Azure Stack 验证即服务部署本地代理并测试映像虚拟机。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -13,49 +13,49 @@ ms.topic: quickstart
 ms.date: 07/24/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 9d32c23f66563988d023df3bf6a33efa30237e57
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 78136ab00dcba2f8a99df36ba99d384b49995882
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40235281"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159208"
 ---
-# <a name="deploy-the-local-agent-and-test-virtual-machines"></a>部署本地代理和测试虚拟机
+# <a name="deploy-the-local-agent-and-test-virtual-machines"></a>部署本地代理并测试虚拟机
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-了解如何使用服务 (VaaS) 本地代理作为验证检查您的硬件。 本地代理必须运行验证测试之前正在验证 Azure Stack 解决方案上进行部署。
+了解如何使用验证即服务 (VaaS) 本地代理来检查硬件。 在运行验证测试之前，必须在 Azure Stack 解决方案上部署本地代理。
 
 > [!Note]  
-> 必须确保运行本地代理，计算机不会失去对 Internet 的访问权限。 机仅必须可供有权使用 Azure Stack VaaS 的用户访问。
+> 必须确保运行本地代理的计算机不会无法访问 Internet。 计算机只能供有权使用 Azure Stack VaaS 的用户访问。
 
-若要测试你的虚拟机：
+若要测试虚拟机，请执行以下操作：
 
 1. 安装本地代理
-2. 将故障注入到你的系统
+2. 将故障注入系统
 3. 运行本地代理
 
 ## <a name="download-and-start-the-local-agent"></a>下载并启动本地代理
 
-将代理下载到满足你不是 Azure Stack 系统中，但一个有权访问所有 Azure Stack 终结点的一部分的数据中心中的先决条件的计算机。
+将代理下载到数据中心的符合先决条件的计算机，该数据中心不是 Azure Stack 系统的一部分，但是能够访问所有 Azure Stack 终结点。
 
 ### <a name="machine-prerequisites"></a>计算机先决条件
 
-检查你的计算机满足以下条件：
+检查计算机是否符合以下条件：
 
-- 访问所有 Azure Stack 终结点
-- .NET 4.6 和安装 PowerShell 5.0
-- 至少 8 GB RAM
-- 最小值 8 核处理器
-- 最小 200 GB 磁盘空间
-- 稳定的网络连接到 internet
+- 能够访问所有 Azure Stack 终结点
+- 已安装 .NET 4.6 和 PowerShell 5.0
+- 至少 8 GB 的 RAM
+- 至少为 8 核处理器
+- 至少 200 GB 的磁盘空间
+- 能够稳定地连接到 Internet
 
-Azure Stack 是待测试系统。 计算机不应属于 Azure Stack 或 Azure Stack 云中托管。
+Azure Stack 是接受测试的系统。 计算机不应是 Azure Stack 的一部分，也不应托管在 Azure Stack 云中。
 
 ### <a name="download-and-install-the-agent"></a>下载并安装代理
 
-1. 在将用于运行测试的计算机上提升的提示符打开 Windows PowerShell。
-2. 运行以下命令以下载本地代理：
+1. 在将要用来运行测试的计算机的提升权限的提示符窗口中打开 Windows PowerShell。
+2. 运行以下命令来下载本地代理：
 
     ```PowerShell  
         Invoke-WebRequest -Uri "https://storage.azurestackvalidation.com/packages/Microsoft.VaaSOnPrem.TaskEngineHost.3.2.0.nupkg" -outfile "OnPremAgent.zip"
@@ -63,7 +63,7 @@ Azure Stack 是待测试系统。 计算机不应属于 Azure Stack 或 Azure St
         Set-Location VaaSOnPremAgent.3.2.0\lib\net46
     ````
 
-3. 运行以下命令以安装本地代理的依赖项：
+3. 运行以下命令安装本地代理依赖项：
 
     ```PowerShell  
         $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
@@ -78,26 +78,26 @@ Azure Stack 是待测试系统。 计算机不应属于 Azure Stack 或 Azure St
 
     | 参数 | 说明 |
     | --- | --- |
-    | aadServiceAdminUser | Azure AD 租户全局管理员用户。 例如它可能是， vaasadmin@contoso.onmicrosoft.com。 |
+    | aadServiceAdminUser | Azure AD 租户的全局管理员用户。 例如，它可以是 vaasadmin@contoso.onmicrosoft.com。 |
     | aadServiceAdminPassword | 全局管理员用户的密码。 |
-    | AadTenantId | Azure 帐户的 azure AD 租户 ID 注册为服务的验证。 |
-    | ExternalFqdn | 可以从配置文件获取完全限定的域名。 有关说明，请参阅[测试验证作为 Azure Stack 的服务的参数](azure-stack-vaas-parameters-test.md)。 |
+    | AadTenantId | 注册到验证即服务的 Azure 帐户的 Azure AD 租户 ID。 |
+    | ExternalFqdn | 可以从配置文件获取完全限定的域名。 有关说明，请参阅[验证即服务 Azure Stack 的测试参数](azure-stack-vaas-parameters-test.md)。 |
     | 区域 | Azure AD 租户的区域。 |
 
-命令从 Azure blob 存储下载一个公共映像存储库 (PIR) 映像 (OS VHD) 并复制到 Azure Stack 存储。 
+此命令下载公共映像存储库 (PIR) 映像 (OS VHD) 并将其从 Azure Blob 存储复制到 Azure Stack 存储。 
 
-![下载系统必备组件](media/installingprereqs.png)
+![下载必备组件](media/installingprereqs.png)
 
 > [!Note]  
-> 如果您遇到慢速网络速度下载这些映像时，请单独下载到本地共享，并指定参数 **-LocalPackagePath** *FileShareOrLocalPath*。 可以在部分 PIR 下载上找到更多指导[句柄慢速网络连接](azure-stack-vaas-troubleshoot.md#handle-slow-network-connectivity)的[验证作为服务进行故障排除](azure-stack-vaas-troubleshoot.md)。
+> 如果在下载这些映像时遇到网络速度过慢的问题，请将其分开下载到本地共享并指定参数 **-LocalPackagePath** *FileShareOrLocalPath*。 有关 PIR 下载的更多指南，请参阅[对验证即服务进行故障排除](azure-stack-vaas-troubleshoot.md)的[处理网络连接过慢的问题](azure-stack-vaas-troubleshoot.md#handle-slow-network-connectivity)部分。
 
-## <a name="fault-injection"></a>错误注入
+## <a name="fault-injection"></a>故障注入
 
-Microsoft 设计 Azure Stack 的复原能力并允许多个类型的软件和硬件故障。 错误注入系统中增加的错误的频率。 这种提高可帮助你发现问题之前，以便可以减少使系统停机的事件数。
+Microsoft 设计 Azure Stack 的复原能力并允许多个类型的软件和硬件故障。 故障注入可以提高系统的故障率。 这样有助于尽早发现问题，减少会导致系统故障的事件数。
 
-运行以下命令以将故障注入到你的系统。
+运行以下命令，将故障注入系统。
 
-1. 在提升的提示符打开 Windows PowerShell。
+1. 在提升权限的提示符窗口中打开 Windows PowerShell。
 
 2. 运行以下命令：
 
@@ -108,7 +108,7 @@ Microsoft 设计 Azure Stack 的复原能力并允许多个类型的软件和硬
 
 ## <a name="run-the-agent"></a>运行代理
 
-1. 在提升的提示符打开 Windows PowerShell。
+1. 在提升权限的提示符窗口中打开 Windows PowerShell。
 
 2. 运行以下命令：
 
@@ -120,22 +120,22 @@ Microsoft 设计 Azure Stack 的复原能力并允许多个类型的软件和硬
     
     | 参数 | 说明 |
     | --- | --- |
-    | VaaSUserId | 使用用户 ID 登录到 VaaS 门户 (例如， UserName@Contoso.com) |
-    | VaaSTenantId | Azure 帐户的 azure AD 租户 ID 注册为服务的验证。 |
+    | VaaSUserId | 用于登录到 VaaS 门户的用户 ID（例如 UserName@Contoso.com） |
+    | VaaSTenantId | 注册到验证即服务的 Azure 帐户的 Azure AD 租户 ID。 |
 
     > [!Note]  
-    > 当前工作目录运行代理时，必须为任务引擎宿主可执行文件的位置**Microsoft.VaaSOnPrem.TaskEngineHost.exe。**
+    > 运行代理时，当前工作目录必须是任务引擎主机可执行文件 **Microsoft.VaaSOnPrem.TaskEngineHost.exe** 的位置。
 
-如果看不到报告任何错误，然后本地代理已成功完成。 下面的示例文本将显示在控制台窗口。
+如果没有看到系统报告任何错误，则本地代理已成功。 以下示例文本显示在控制台窗口中。
 
 `Heartbeat Callback at 11/8/2016 4:45:38 PM`
 
 ![启动的代理](media/startedagent.png)
 
-其名称唯一标识代理。 默认情况下，它使用起始位置的计算机的完全限定的域名 (fqdn) 名称。 必须最小化窗口，以避免对窗口中，根据任何意外的单击更改焦点暂停所有其他操作。
+代理可以通过名称进行唯一标识。 默认情况下，它使用启动时所在计算机的完全限定的域名 (FQDN)。 若要避免在窗口中意外单击，必须将窗口最小化，因为更改焦点会暂停所有其他操作。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [验证新的 Azure Stack 解决方案](azure-stack-vaas-validate-solution-new.md)  
-- 如果您具有慢速或断续 Internet 连接，可以下载 PIR 映像。 有关详细信息，请参阅[句柄慢速网络连接](azure-stack-vaas-troubleshoot.md#handle-slow-network-connectivity)。
-- 若要详细了解[作为服务的 Azure Stack 验证](https://docs.microsoft.com/azure/azure-stack/partner)。
+- 如果 Internet 连接过慢或时断时续，可以下载 PIR 映像。 有关详细信息，请参阅[处理网络连接过慢的问题](azure-stack-vaas-troubleshoot.md#handle-slow-network-connectivity)。
+- 详细了解 [Azure Stack 验证即服务](https://docs.microsoft.com/azure/azure-stack/partner)。

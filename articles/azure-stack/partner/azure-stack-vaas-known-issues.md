@@ -1,6 +1,6 @@
 ---
-title: Azure Stack 验证作为服务的已知问题。 | Microsoft Docs
-description: Azure Stack 验证作为服务的已知问题。
+title: Azure Stack 验证即服务已知问题。 | Microsoft Docs
+description: Azure Stack 验证即服务已知问题。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -13,19 +13,19 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: c15478597103d28635d4d54e48039f72a2878495
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 4a1d900f41b590497a8c114668c136c9cf6ac4ee
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40235211"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44156488"
 ---
-# <a name="known-issues-for-validation-as-a-service"></a>作为一项服务验证的已知的问题
+# <a name="known-issues-for-validation-as-a-service"></a>验证即服务的已知问题
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-这些是作为服务的 Azure Stack 验证的已知的问题。
+以下是 Azure Stack 验证即服务的已知问题。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要详细了解[作为服务的 Azure Stack 验证](https://docs.microsoft.com/azure/azure-stack/partner)。
+- 详细了解 [Azure Stack 验证即服务](https://docs.microsoft.com/azure/azure-stack/partner)。

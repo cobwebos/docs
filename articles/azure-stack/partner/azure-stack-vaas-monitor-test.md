@@ -13,16 +13,16 @@ ms.topic: tutorial
 ms.date: 07/24/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 553d2a0e4bf6b23f5d8ab200f533d9245bf72d36
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 2dc4d3f2855864ff80648b5b9635ff28c0dacbb7
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286578"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44163313"
 ---
 # <a name="monitor-a-test-with-azure-stack-validation-as-a-service"></a>使用 Azure Stack 验证即服务监视测试
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 可以通过查看正在进行的或已完成的测试套件的“操作”页面来监视测试的执行。 该页详细说明了测试的状态及其操作。
 

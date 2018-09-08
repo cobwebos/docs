@@ -1,6 +1,6 @@
 ---
-title: 配置 Azure Stack PowerShell 环境 | Microsoft Docs
-description: 了解如何配置 Azure Stack PowerShell 环境。
+title: 使用连接到 Azure Stack 操作员的 PowerShell |Microsoft Docs
+description: 了解如何使用连接到 Azure Stack 操作员的 PowerShell
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,32 +11,32 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 06/22/2018
+ms.date: 09/07/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: 74a5a9408a78dd0da12fb3f8ed721774030cc438
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: e6e1ffdf4384080649a769b2fdf6877ea744ec51
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36749855"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162166"
 ---
-# <a name="configure-the-azure-stack-powershell-environment"></a>配置 Azure Stack PowerShell 环境
+# <a name="connect-to-azure-stack-with-powershell-as-an-operator"></a>连接到使用 PowerShell 的 Azure Stack 操作员
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-可以将 Azure Stack 配置为使用 PowerShell 来管理资源，例如创建产品/服务、计划、配额以及警报。 本主题有助于配置操作员环境
+可以将 Azure Stack 配置为使用 PowerShell 来管理资源，例如创建套餐、计划、配额以及警报。 本主题有助于配置操作员环境
 
 ## <a name="prerequisites"></a>必备组件
 
-从运行以下先决条件[开发工具包](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop)，或从基于 Windows 的外部客户端如果你是[通过 VPN 连接](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)。 
+如果已[通过 VPN 建立连接](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)，请通过[开发工具包](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop)或基于 Windows 的外部客户端运行以下先决条件操作。 
 
  - 安装 [Azure Stack 兼容的 Azure PowerShell 模块](azure-stack-powershell-install.md)。  
  - 下载[使用 Azure Stack 所需的工具](azure-stack-powershell-download.md)。  
 
 ## <a name="configure-the-operator-environment-and-sign-in-to-azure-stack"></a>配置操作员环境并登录到 Azure Stack
 
-使用 PowerShell 配置 Azure Stack 操作员环境。 运行以下脚本之一： 将 Azure AD tenantName、 GraphAudience 终结点和 ArmEndpoint 值替换为你自己的环境配置。
+使用 PowerShell 配置 Azure Stack 操作员环境。 运行以下脚本之一：将 Azure AD tenantName、GraphAudience 终结点和 ArmEndpoint 的值替换为你自己的环境配置。
 
 ````PowerShell  
     # For Azure Stack development kit, this value is set to https://adminmanagement.local.azurestack.external.
@@ -54,7 +54,7 @@ ms.locfileid: "36749855"
 
 ## <a name="test-the-connectivity"></a>测试连接
 
-现在，你具有的所有内容设置，使用 PowerShell 创建 Azure 堆栈中的资源。 例如，可以为应用程序创建资源组并添加虚拟机。 使用以下命令创建名为的资源组**MyResourceGroup**。
+完成所有设置后，请使用 PowerShell 在 Azure Stack 中创建资源。 例如，可以为应用程序创建资源组并添加虚拟机。 使用以下命令创建名为“MyResourceGroup”的资源组。
 
 ```powershell
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"

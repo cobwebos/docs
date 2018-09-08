@@ -1,6 +1,6 @@
 ---
 title: 验证用作 Azure Stack 的服务的概述 |Microsoft Docs
-description: Azure Stack 验证作为服务的已知问题的概述。
+description: 概述了 Azure Stack 验证即服务的常见问题。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -13,48 +13,48 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: c96e7385356354d398108ad69492603d38667e46
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 56251245a23df031f3bc8fe3d36de43e194fbcc7
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40235210"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159667"
 ---
-# <a name="what-is-validation-as-a-service-for-azure-stack"></a>验证用作 Azure Stack 的服务是什么？
+# <a name="what-is-validation-as-a-service-for-azure-stack"></a>什么是适用于 Azure Stack 的验证即服务？
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 作为一项服务 (VaaS) 验证是设计为解决方案合作伙伴共同工程与 Microsoft Azure Stack 产品/服务的本机 Azure 服务。 解决方案合作伙伴可以使用该服务检查其解决方案符合 Microsoft 的要求以及按预期方式使用 Azure Stack 工作。
 
-VaaS 的主要用途是：
+VaaS 的主要用途如下：
 
 - 验证新的 Azure Stack 解决方案
-- 验证对 Azure Stack 软件更改
-- 获取包部署过程中使用的数字签名的解决方案合作伙伴
-- 预览 Azure Stack 验证辅助资料
+- 验证对 Azure Stack 软件所做的更改
+- 获取在部署期间使用的进行了数字签名的解决方案合作伙伴程序包
+- 预览 Azure Stack 验证辅助材料
 
 ## <a name="validate-new-azure-stack-solution"></a>验证新的 Azure Stack 解决方案
 
-合作伙伴使用解决方案验证工作流来检查新的 Azure Stack 解决方案。 该解决方案必须通过所需的硬件实验室工具包 (HKL) Azure Stack 测试组件测试。 只需运行两次每个新的解决方案的工作流： 一次的最小和最大配置。
+合作伙伴使用解决方案验证工作流来检查新的 Azure Stack 解决方案。 解决方案必须通过必需的硬件实验室工具包 (HKL) Azure Stack 测试组件测试。 你只需要为每个新解决方案运行两次工作流：针对最低配置和最高配置各运行一次。
 
 有关详细信息，请参阅[验证新的 Azure Stack 解决方案](azure-stack-vaas-validate-solution-new.md)。
 
-## <a name="validate-changes-to-the-azure-stack-software"></a>验证对 Azure Stack 软件更改
+## <a name="validate-changes-to-the-azure-stack-software"></a>验证对 Azure Stack 软件所做的更改
 
-合作伙伴使用包验证工作流检查他们的解决方案，适用于最新的 Azure Stack 软件更新。 最小值，包验证工作流必须在运行 Microsoft，推荐的硬件环境和上一个解决方案，修补和更新 (& U) 用于应用更新。 应在基线版本上运行包验证。
+合作伙伴使用程序包验证工作流检查他们的解决方案是否可以与最新的 Azure Stack 软件更新配合工作。 最小值，包验证工作流必须在运行 Microsoft，推荐的硬件环境和上一个解决方案，修补和更新 (& U) 用于应用更新。 应当在基线内部版本中运行程序包验证。
 
-有关详细信息，请参阅[来自 Microsoft 的软件更新进行验证](azure-stack-vaas-validate-microsoft-updates.md)。
+有关详细信息，请参阅[验证来自 Microsoft 的软件更新](azure-stack-vaas-validate-microsoft-updates.md)。
 
-## <a name="get-digitally-signed-solution-partner-packages"></a>获取合作伙伴的包的数字签名的解决方案
+## <a name="get-digitally-signed-solution-partner-packages"></a>获取进行了数字签名的解决方案合作伙伴程序包
 
-除了验证 Azure Stack 的更新，你可以使用包验证工作流检查对 OEM 自定义包，其中包括 Azure Stack 特定于合作伙伴的驱动程序、 固件和其他 Azure Stack 的部署过程中使用的软件更新软件。 部署要检查当前版本的最少的最小大小解决方案将支持在使用 Azure Stack 软件的包。 必须将更新后的包上载到服务之前启动测试。 如果测试成功，通知vaashelp@microsoft.com。 包已完成测试，应使用 Azure Stack 数字签名进行数字签名，请告知 Azure Stack 合作伙伴。 Microsoft 对包进行签名，并通知 Azure Stack 合作伙伴包是可供下载的门户。
+除了验证 Azure Stack 更新之外，还可以使用程序包验证工作流检查对 OEM 自定义程序包的更新，这包括在部署 Azure Stack 软件期间使用的 Azure Stack 合作伙伴特定驱动程序、固件以及其他软件。 至少使用将受支持的最小规模的解决方案部署你在当前版本的 Azure Stack 软件上检查的程序包。 在开始测试之前，必须将更新后的程序包上传到服务。 如果测试成功，则通知 vaashelp@microsoft.com。 告诉 Azure Stack 合作伙伴，程序包已完成测试并且应当通过 Azure Stack 数字签名进行数字签名。 Microsoft 对包进行签名，并通知 Azure Stack 合作伙伴包是可供下载的门户。
 
-有关详细信息，请参阅[验证 OEM 包](azure-stack-vaas-validate-oem-package.md)。
+有关详细信息，请参阅[验证 OEM 程序包](azure-stack-vaas-validate-oem-package.md)。
 
-## <a name="preview-azure-stack-validation-collateral"></a>预览 Azure Stack 验证辅助资料
+## <a name="preview-azure-stack-validation-collateral"></a>预览 Azure Stack 验证辅助材料
 
-Microsoft 定期对新功能在 Azure Stack 中可用。 作为向市场提供这些功能的开发过程的一部分，新的测试附件可测试通过工作流中。 测试通过工作流包括从其他工作流以允许非官方测试执行的测试附件。 不使用测试通过工作流提交以供审核的结果。 使用解决方案验证和包验证工作流以获取官方批准你的解决方案。
+Microsoft 定期对新功能在 Azure Stack 中可用。 作为向市场提供这些功能的开发流程的一部分，在测试轮次工作流中将提供新的测试辅助材料。 测试轮次工作流包括了来自其他工作流的测试辅助材料，可用于执行非正式的测试。 不要使用测试轮次工作流来提交结果供审批。 请使用解决方案验证和程序包验证工作流来使你的解决方案获得正式批准。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 首先，和[设置您的验证作为服务帐户](azure-stack-vaas-validate-solution-new.md)
+- 首先[设置验证即服务帐户](azure-stack-vaas-validate-solution-new.md)

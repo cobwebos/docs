@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: brenduns
 ms.reviewer: jiahan
-ms.openlocfilehash: 4fd2a26d9119e52fc75918abc1ca97e6f9888169
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: a2ad07809963560b1225ff07b095509c93618996
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028797"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160415"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Stack 托管磁盘： 差异和注意事项
 本文汇总了 Azure Stack 托管磁盘和 azure 托管磁盘的已知的差异。 有关 Azure Stack 与 Azure 之间的大致差异的详细信息，请参阅[重要注意事项](azure-stack-considerations.md)一文。
@@ -28,7 +28,7 @@ ms.locfileid: "44028797"
 托管的磁盘通过管理简化了 IaaS Vm 的磁盘管理[存储帐户](/azure/azure-stack/azure-stack-manage-storage-accounts)与 VM 磁盘关联。
   
 
-## <a name="cheat-sheet-virtual-machine-differences"></a>速查表：虚拟机的差异
+## <a name="cheat-sheet-managed-disk-differences"></a>备忘单： 托管磁盘的差异
 
 | 功能 | Azure（公有云） | Azure Stack |
 | --- | --- | --- |

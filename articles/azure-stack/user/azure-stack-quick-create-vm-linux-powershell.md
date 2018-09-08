@@ -12,17 +12,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 04/24/2018
+ms.date: 09/07/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 9d3c063dab11f31b10762e8399a1f11f2c28c3cd
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: bb356a8b485817daae803d14b30832e7b1322f29
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226990"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158902"
 ---
-# <a name="quickstart-create-a-linux-server-virtual-machine-by-using-powershell-in-azure-stack"></a>快速入门：在 Azure Stack 中使用 PowerShell 创建 Linux 服务器虚拟机
+# <a name="quickstart-create-a-linux-server-virtual-machine-by-using-powershell-in-azure-stack"></a>快速入门： 在 Azure Stack 中使用 PowerShell 创建 Linux server 虚拟机
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
@@ -34,12 +34,13 @@ ms.locfileid: "36226990"
 
 ## <a name="prerequisites"></a>必备组件
 
-* 
-  **Azure Stack 市场中的 Linux 映像**
+* **Azure Stack 市场中的 Linux 映像**
 
    默认情况下，Azure Stack 市场不包含 Linux 映像。 让 Azure Stack 操作员提供你需要的 **Ubuntu Server 16.04 LTS** 映像。 操作员可以使用[将市场项从 Azure 下载到 Azure Stack](../azure-stack-download-azure-marketplace-item.md) 一文中介绍的步骤。
 
-* Azure Stack 需要使用特定版本的 Azure PowerShell 来创建和管理资源。 如果尚未针对 Azure Stack 配置 PowerShell，请登录到[开发工具包](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop)，或登录到基于 Windows 的外部客户端（如果[通过 VPN 建立了连接](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)），遵循相应的步骤[安装](azure-stack-powershell-install.md)并[配置](azure-stack-powershell-configure-user.md) PowerShell。
+* Azure Stack 需要使用特定版本的 Azure PowerShell 来创建和管理资源。 如果没有针对 Azure Stack 配置 PowerShell，请按照步骤[安装](azure-stack-powershell-install.md)PowerShell。
+
+* 使用 Azure Stack PowerShell 设置，你将需要连接到 Azure Stack 环境。 有关说明，请参阅[连接到 Azure Stack 使用 PowerShell 以用户身份](azure-stack-powershell-configure-user.md)。
 
 * Windows 用户配置文件的 .ssh 目录中保存的名为 id_rsa.pub 的 SSH 公钥。 有关创建 SSH 密钥的详细信息，请参阅[在 Windows 上创建 SSH 密钥](../../virtual-machines/linux/ssh-from-windows.md)。
 
@@ -212,10 +213,10 @@ New-AzureRmVM `
   -VM $VirtualMachine
 ```
 
-## <a name="quick-create-virtual-machine---full-script"></a>快速创建虚拟机的完整脚本
+## <a name="quick-create-virtual-machine---full-script"></a>快速创建虚拟机 - 完整脚本
 
 > [!NOTE]
-> 很多或少合并，上面的代码，但使用密码，而不是 SSH 密钥进行身份验证。
+> 它或多或少是上面合并的代码，但使用密码而不是 SSH 密钥进行身份验证。
 
 ```powershell
 ## Create a resource group

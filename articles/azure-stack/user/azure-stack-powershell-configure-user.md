@@ -1,6 +1,6 @@
 ---
-title: 配置 Azure Stack 用户的 PowerShell 环境 | Microsoft Docs
-description: 配置 Azure Stack 用户的 PowerShell 环境
+title: 使用连接到 Azure Stack PowerShell 以用户身份 |Microsoft Docs
+description: 若要连接到用户的 Azure Stack 实例的步骤。
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -12,25 +12,25 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2018
+ms.date: 09/07/2018
 ms.author: sethm
 ms.reviewer: Balsu.G
-ms.openlocfilehash: d8b245666989552208f8cbcf0dddfdfc310f65e0
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: acdad9788737f4f552cedc1b5f42e03e2288dba8
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42139493"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159073"
 ---
-# <a name="configure-the-azure-stack-users-powershell-environment"></a>配置 Azure Stack 用户的 PowerShell 环境
+# <a name="connect-to-azure-stack-with-powershell-as-a-user"></a>以用户身份连接到使用 PowerShell 的 Azure Stack
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-本文为您提供用于连接到 Azure Stack 实例的步骤。 必须连接到 Azure Stack 使用 PowerShell 管理资源。 例如，可以使用 PowerShell 来订阅套餐、创建虚拟机和部署 Azure 资源管理器模板。 若要执行 PowerShell cmdlet。
+本文提供了连接到 Azure Stack 实例的步骤。 必须使用 PowerShell 连接以管理 Azure Stack 资源。 例如，可以使用 PowerShell 来订阅套餐、创建虚拟机和部署 Azure 资源管理器模板。 以便执行 PowerShell cmdlet。
 
 若要获取设置：
-  - 请确保您有要求。
-  - 连接与 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS)。 
+  - 确保满足要求。
+  - 与 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 连接。 
   - 注册资源提供程序。
   - 测试连接。
 
@@ -46,7 +46,7 @@ ms.locfileid: "42139493"
 - **Azure AD 租户名称**  
   用于管理 Azure Stack 中，例如，yourdirectory.onmicrosoft.com Azure AD 租户的名称。
 - **Azure 资源管理器终结点**  
-  对于 Azure Stack 开发工具包，此值设置为https://management.local.azurestack.external。 若要获取此值对于 Azure Stack 集成系统，请联系服务提供商。
+  对于 Azure Stack 开发工具包，此值设置为 https://management.local.azurestack.external。 若要为 Azure Stack 集成系统获取此值，请与服务提供商联系。
 
 ## <a name="connect-with-azure-ad"></a>与 Azure AD 连接
 
@@ -68,7 +68,7 @@ ms.locfileid: "42139493"
     -TenantId $TenantId
    ```
 
-## <a name="connect-with-ad-fs"></a>连接使用 AD FS
+## <a name="connect-with-ad-fs"></a>与 AD FS 连接
 
   ```PowerShell  
   $ArmEndpoint = "https://management.local.azurestack.external"
