@@ -301,8 +301,6 @@ items:
         href: iot-hub-arduino-iot-devkit-az3166-door-monitor.md
     - name: 扩展的 IoT 方案
       items:
-      - name: 使用 iothub-explorer 管理云设备消息传送
-        href: iot-hub-explorer-cloud-device-messaging.md
       - name: 使用用于 VS Code 的 Azure IoT 工具包管理云设备消息传送
         href: iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
       - name: 将 IoT 中心消息保存到 Azure Blob 存储
@@ -315,8 +313,6 @@ items:
         href: iot-hub-weather-forecast-machine-learning.md
       - name: 使用用于 VS Code 的 Azure IoT 工具包进行设备管理
         href: iot-hub-device-management-iot-toolkit.md
-      - name: 使用 iothub-explorer 进行设备管理
-        href: iot-hub-device-management-iothub-explorer.md
       - name: 使用适用于 Azure CLI 2.0 的 IoT 扩展进行设备管理
         href: iot-hub-device-management-iot-extension-azure-cli-2-0.md
       - name: 使用逻辑应用执行远程监视和发送通知
@@ -405,8 +401,6 @@ items:
     href: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer
   - name: iothub-diagnostics 工具
     href: https://github.com/Azure/iothub-diagnostics
-  - name: iothub-explorer 工具
-    href: https://github.com/Azure/iothub-explorer
   - name: 学习路径
     href: https://azure.microsoft.com/documentation/learning-paths/iot-hub/
   - name: MSDN 论坛
@@ -423,9 +417,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: f9ec05dade065966d6ea1b3aa2a63598ca7c859c
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 2e2057fc75b808bf5989d263ce561d3cec4b8e2c
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143400"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160977"
