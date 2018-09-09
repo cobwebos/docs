@@ -1,6 +1,6 @@
 ---
-title: 计算机视觉 API Go 快速入门 OCR | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
+title: 快速入门：提取打印的文本 (OCR) - REST、Go - 计算机视觉
+titleSuffix: Azure Cognitive Services
 description: 本快速入门将在认知服务中使用计算机视觉和 Go 从图像中提取打印的文本。
 services: cognitive-services
 author: noellelacharite
@@ -10,14 +10,14 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: b0de66e31c3537198831dd0f31590dbaf3fda89b
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 58deba95b8a6569d74659c3bf649f258962b8117
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43769304"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43840897"
 ---
-# <a name="quickstart-extract-printed-text-ocr---rest-go"></a>快速入门：提取打印的文本 (OCR) - REST、Go
+# <a name="quickstart-extract-printed-text-ocr---rest-go---computer-vision"></a>快速入门：提取打印的文本 (OCR) - REST、Go - 计算机视觉
 
 本快速入门使用计算机视觉从图像中提取打印的文本，也称为光学字符识别 (OCR)。
 

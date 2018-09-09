@@ -1,6 +1,6 @@
 ---
-title: 计算机视觉 API Ruby 快速入门 - 分析图像 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
+title: 快速入门：分析远程图像 - REST、Ruby - 计算机视觉
+titleSuffix: Azure Cognitive Services
 description: 本快速入门将在认知服务中使用计算机视觉和 Ruby 分析图像。
 services: cognitive-services
 author: noellelacharite
@@ -10,14 +10,14 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 3ce89bf29cc7f1f436e54d398e458f559b79a425
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 261c862156f9d25f40e90baa31890ecd7544d8e5
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43768831"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841462"
 ---
-# <a name="quickstart-analyze-a-remote-image---rest-ruby"></a>快速入门：分析远程图像 - REST、Ruby
+# <a name="quickstart-analyze-a-remote-image---rest-ruby---computer-vision"></a>快速入门：分析远程图像 - REST、Ruby - 计算机视觉
 
 本快速入门将使用计算机视觉分析图像以提取视觉特征。
 

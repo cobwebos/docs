@@ -1,6 +1,6 @@
 ---
-title: 计算机视觉 API Java 快速入门 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
+title: 快速入门：分析远程图像 - REST、Java - 计算机视觉
+titleSuffix: Azure Cognitive Services
 description: 本快速入门将在认知服务中使用计算机视觉和 Java 分析图像。
 services: cognitive-services
 author: noellelacharite
@@ -10,14 +10,14 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 9faa8d05a747855ceb0a468845c3d3a82aa71337
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 675efa80bd32fa841713f7aecd249bd6d457d9a5
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43769292"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43840450"
 ---
-# <a name="quickstart-analyze-a-remote-image---rest-java"></a>快速入门：分析远程图像 - REST、Java
+# <a name="quickstart-analyze-a-remote-image---rest-java---computer-vision"></a>快速入门：分析远程图像 - REST、Java - 计算机视觉
 
 本快速入门将使用计算机视觉分析图像以提取视觉特征。
 

@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: quickstart
-ms.date: 08/13/2018
+ms.date: 08/31/2018
 ms.author: jovanpop-msft
-ms.openlocfilehash: cb378c2d2773096992ef688653fd77b2625f8754
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 4271f0cef31b0e028ed1f9408166c37d4cbbe109
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42023726"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43381992"
 ---
 # <a name="create-an-azure-sql-managed-instance"></a>创建 Azure SQL 托管实例
 
@@ -60,7 +60,7 @@ SQL 托管实例是一种安全的服务，放置在你自己的 Azure 虚拟网
 2. 找到“托管实例”，然后选择“Azure SQL 数据库托管实例(预览版)”。
 3. 单击“创建”。
 
-   ![创建托管实例](./media/sql-database-managed-instance-tutorial/managed-instance-create.png)
+   ![创建托管实例](./media/sql-database-managed-instance-get-started/managed-instance-create.png)
 
 4. 选择订阅，并验证预览版条款是否显示“已接受”。
 
@@ -77,26 +77,21 @@ SQL 托管实例是一种安全的服务，放置在你自己的 Azure 虚拟网
    |**位置**|以前选择的位置|有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。|
    |**虚拟网络**|此前创建的虚拟网络| 如果尚未更改上一步的名称，请选择 **MyNewVNet/ManagedInstances** 项。 否则，请选择在上一步输入的 VNet 名称和托管实例子网。 **请勿使用默认子网，因为该子网尚未进行配置，无法承载托管实例**。 |
 
-   ![托管实例“创建”窗体](./media/sql-database-managed-instance-tutorial/managed-instance-create-form.png)
+   ![托管实例“创建”窗体](./media/sql-database-managed-instance-get-started/managed-instance-create-form.png)
 
 6. 单击“定价层”，设置计算和存储资源的大小并查看定价层选项。 默认情况下，实例获得 32 GB 的免费存储空间，**这对应用程序来说可能不够**。
 7. 使用滑块或文本框指定存储量和虚拟核心数。 
-   ![托管实例定价层](./media/sql-database-managed-instance-tutorial/managed-instance-pricing-tier.png)
+   ![托管实例定价层](./media/sql-database-managed-instance-get-started/managed-instance-pricing-tier.png)
 
 8. 完成后单击“应用”，保存选择的内容。  
 9. 单击“创建”，部署托管实例。
 10. 单击“通知”图标，查看部署的状态。
- 
-   ![部署进度](./media/sql-database-managed-instance-tutorial/deployment-progress.png)
-
 11. 单击“正在进行的部署”以打开“托管实例”窗口，进一步监视部署进度。
- 
-   ![部署进度 2](./media/sql-database-managed-instance-tutorial/managed-instance.png)
 
 进行部署后，请继续下一过程。
 
 > [!IMPORTANT]
-> 子网中第一个实例的部署时间通常远超后续实例的部署时间 - 有时候需要 24 小时以上才能完成。 请勿因持续时间超出预期而取消部署操作。 第一个实例需要如此长的部署时间，但这只是暂时的。 在公共预览版发布后不久，部署时间预期会显著缩短。 在子网中创建第二个托管实例需数分钟。
+> 子网中第一个实例的部署时间通常远超后续实例的部署时间。 请勿因持续时间超出预期而取消部署操作。 在子网中创建第二个托管实例需数分钟。
 
 ## <a name="prepare-client-machine"></a>准备客户端计算机
 

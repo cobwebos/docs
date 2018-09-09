@@ -1,6 +1,6 @@
 ---
-title: 计算机视觉 API PHP 快速入门 - 创建缩略图 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
+title: 快速入门：生成缩略图 - REST、PHP - 计算机视觉
+titleSuffix: Azure Cognitive Services
 description: 本快速入门将在认知服务中使用计算机视觉和 PHP 从图像生成缩略图。
 services: cognitive-services
 author: noellelacharite
@@ -10,14 +10,14 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 7170e469d042c4406a555fddaa25bff53236f365
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: dc2d5c4e5a1a9a098ad8b70b6b7a280c4dd02299
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43769324"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841890"
 ---
-# <a name="quickstart-generate-a-thumbnail---rest-php"></a>快速入门：生成缩略图 - REST、PHP
+# <a name="quickstart-generate-a-thumbnail---rest-php---computer-vision"></a>快速入门：生成缩略图 - REST、PHP - 计算机视觉
 
 本快速入门使用计算机视觉从图像生成缩略图。
 

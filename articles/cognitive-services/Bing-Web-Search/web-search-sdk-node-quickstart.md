@@ -1,45 +1,85 @@
 ---
-title: Web 搜索 SDK Node 快速入门 | Microsoft Docs
-description: 设置 Web 搜索 SDK 控制台应用程序。
-titleSuffix: Azure cognitive services
+title: 快速入门：使用用于 Node.js 的必应 Web 搜索 SDK
+description: 了解如何使用用于 Node.js 的必应 Web 搜索 SDK。
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
-ms.date: 02/12/2018
-ms.author: v-gedod
-ms.openlocfilehash: 44f7f97f6c442df3fbb1e5e08189b8db7d4b9db0
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.topic: quickstart
+ms.date: 08/16/2018
+ms.author: erhopf
+ms.openlocfilehash: 7c3003ab4ba40a9d0212e7c94b6dd3bfbc8f0ca2
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366700"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43186625"
 ---
-# <a name="web-search-sdk-node-quickstart"></a>Web 搜索 SDK Node 快速入门
+# <a name="quickstart-use-the-bing-web-search-sdk-for-nodejs"></a>快速入门：使用用于 Node.js 的必应 Web 搜索 SDK
 
-必应 Web 搜索 SDK 包含用于 Web 查询以及对结果进行分析的 REST API 功能。
+可以使用必应 Web 搜索 SDK 轻松地将必应 Web 搜索集成到 Node.js 应用程序中。 本快速入门介绍如何实例化客户端、发送请求和输出响应。
 
-Git Hub 上提供了 [Node 必应 Web 搜索 SDK 示例的源代码](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/webSearch.js)。
+想要马上查看代码？ GitHub 上提供了[适用于 Node.js 示例的必应 Web 搜索 SDK](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)。
 
-## <a name="application-dependencies"></a>应用程序依赖项
+[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
-若要使用必应 Web 搜索 SDK 设置控制台应用程序，请在开发环境中运行 `npm install azure-cognitiveservices-websearch`。
+## <a name="prerequisites"></a>先决条件
 
-## <a name="web-search-client"></a>Web 搜索客户端
-在“搜索”下获取[认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/)。 创建 `CognitiveServicesCredentials` 的实例：
-```
+下面是在开始本快速入门之前需要准备好的项目：
+
+* [Node.js 6](https://nodejs.org/en/download/) 或更高版本
+* 订阅密钥  
+
+## <a name="set-up-your-development-environment"></a>设置开发环境
+
+让我们从设置 Node.js 项目的开发环境开始。
+
+1. 为项目新建一个目录：
+
+    ```console
+    mkdir YOUR_PROJECT
+    ```
+
+2. 创建新的包文件：
+
+    ```console
+    cd YOUR_PROJECT
+    npm init
+    ```
+
+3. 现在，让我们安装一些 Azure 模块并将它们添加到 `package.json`：
+
+    ```console
+    npm install --save azure-cognitiveservices-websearch
+    npm install --save ms-rest-azure
+    ```
+
+## <a name="create-a-project-and-declare-required-modules"></a>创建一个项目并声明必需的模块
+
+在 `package.json` 所在的目录中，使用喜欢的 IDE 或编辑器新建一个 Node.js 项目。 例如：`sample.js`。
+
+接下来，将以下代码复制到项目中。 它会加载在上一部分安装的模块。
+
+```javascript
 const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
-let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
-```
-然后对该客户端进行实例化：
-```
 const WebSearchAPIClient = require('azure-cognitiveservices-websearch');
+```
+
+## <a name="instantiate-the-client"></a>对客户端进行实例化
+
+以下代码实例化一个客户端并使用 `azure-cognitiveservices-websearch` 模块。 请确保为 Azure 帐户输入有效的订阅密钥，然后再继续。
+
+```javascript
+let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
 let webSearchApiClient = new WebSearchAPIClient(credentials);
 ```
-搜索结果：
-```
+
+## <a name="make-a-request-and-print-the-results"></a>发出请求并输出结果
+
+使用客户端向必应 Web 搜索发送搜索查询。 如果响应包含 `properties` 数组中任何项的结果，则会将 `result.value` 输出到控制台。
+
+```javascript
 webSearchApiClient.web.search('seahawks').then((result) => {
     let properties = ["images", "webPages", "news", "videos"];
     for (let i = 0; i < properties.length; i++) {
@@ -52,18 +92,21 @@ webSearchApiClient.web.search('seahawks').then((result) => {
 }).catch((err) => {
     throw err;
 })
-
 ```
-代码会将 `result.value` 项输出至控制台，并且不会分析任何文本。  结果（如果每个类别都有结果）将包括：
-- _type: 'ImageObject'
-- _type: 'NewsArticle'
-- _type: 'WebPage'
-- _type: 'VideoObjectElementType'
 
-<!-- Remove until this can be replaced with a sanitized version.
-![Video results](media/web-search-sdk-node-results.png)
--->
+## <a name="run-the-program"></a>运行该程序
+
+最后一步是运行程序！
+
+## <a name="clean-up-resources"></a>清理资源
+
+完成本项目以后，请务必从程序代码中删除订阅密钥。
 
 ## <a name="next-steps"></a>后续步骤
 
-[认知服务 Node.js SDK 示例](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+> [!div class="nextstepaction"]
+> [认知服务 Node.js SDK 示例](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+
+## <a name="see-also"></a>另请参阅
+
+* [Azure Node SDK 参考](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-websearch/)

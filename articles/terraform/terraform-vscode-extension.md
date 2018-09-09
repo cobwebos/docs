@@ -1,43 +1,38 @@
 ---
-title: Azure Terraform VS Code 扩展 | Microsoft Docs
-description: 本文将介绍如何在 Visual Studio Code 中安装和使用 Terraform 扩展。
-keywords: terraform, devops, 虚拟机, azure
-author: v-mavick
-ms.author: v-mavick
-ms.date: 08/14/2018
-ms.topic: article
-ms.prod: vs-code
-ms.openlocfilehash: 0c88879faae100372055479ad4edb8c36d8f557d
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+title: 安装并使用 Azure Terraform Visual Studio Code 扩展
+description: 了解如何在 Visual Studio Code 中安装和使用 Azure Terraform 扩展。
+services: terraform
+ms.service: terraform
+keywords: terraform, azure, devops, visual studio code, 扩展
+author: tomarcher
+manager: jeconnoc
+ms.author: tarcher
+ms.topic: tutorial
+ms.date: 08/31/2018
+ms.openlocfilehash: ad042525ead23959be57a5dd2d5735bcedfedb1b
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190710"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43668319"
 ---
-# <a name="azure-terraform-vs-code-extension"></a>Azure Terraform VS Code 扩展
+# <a name="install-and-use-the-azure-terraform-visual-studio-code-extension"></a>安装并使用 Azure Terraform Visual Studio Code 扩展
 
-Microsoft Azure Terraform Visual Studio Code (VS Code) 扩展旨在让开发人员在创作、测试 Terraform 和结合 Azure 使用它时更加高效。 VS Code 中的扩展提供了 Terraform 命令支持、资源图可视化和 CloudShell 集成。
+Microsoft Azure Terraform Visual Studio Code 扩展旨在让开发人员在创作、测试 Terraform 和结合 Azure 使用它时更加高效。 Visual Studio Code 中的扩展提供了 Terraform 命令支持、资源图可视化和 CloudShell 集成。
 
-## <a name="what-you-do"></a>准备工作
+在本文中，学习如何：
+> [!div class="checklist"]
+> * 使用 Terraform 自动执行和简化 Azure 服务的预配。
+> * 安装和使用 Azure 服务的 Microsoft Terraform Visual Studio Code 扩展。
+> * 使用 Visual Studio Code 编写、规划和执行 Terraform 计划。
 
-- 在计算机上安装开源 HashiCorp Terraform 可执行文件。
-- 在本地 VS Code 安装项上安装 Terraform VS Code Extension for Azure。
+## <a name="prerequisites"></a>先决条件
+- **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-## <a name="what-you-learn"></a>学习内容
+- **Terraform**：[安装和配置 Terraform](/azure/virtual-machines/linux/terraform-install-configure)。
 
-在本教程中，学习以下内容：
+- **Visual Studio Code**：安装适合环境的 [Visual Studio Code](https://code.visualstudio.com/download) 版本。
 
-- Terraform 如何自动执行和简化 Azure 服务的预配。
-- 如何安装和使用 Azure 服务的 Microsoft Terraform VS Code 扩展。
-- 如何使用 VS Code 编写、规划和执行 Terraform 计划。
-
-## <a name="what-you-need"></a>所需条件
-
-- 运行 Windows 10、Linux、macOS 10.10 或更高版本的计算机。
-- [Visual Studio Code](https://www.bing.com/search?q=visual+studio+code+download&form=EDGSPH&mkt=en-us&httpsmsn=1&refig=dffc817cbc4f4cb4b132a8e702cc19a3&sp=3&ghc=1&qs=LS&pq=visual+studio+code&sk=LS1&sc=8-18&cvid=dffc817cbc4f4cb4b132a8e702cc19a3&cc=US&setlang=en-US)。
-- 一个有效的 Azure 订阅。 [激活 30 天免费试用版 Microsoft Azure 帐户](https://azure.microsoft.com/free/)。
-- 在本地计算机上安装 [Terraform](https://www.terraform.io/) 开源工具。
-  
 ## <a name="prepare-your-dev-environment"></a>准备开发环境
 
 ### <a name="install-git"></a>安装 Git
@@ -60,35 +55,37 @@ Microsoft Azure Terraform Visual Studio Code (VS Code) 扩展旨在让开发人�
 要在 Cloud Shell 中使用 Terraform，需要[安装 Node.js](https://nodejs.org/) 6.0 或更高版本。
 
 >[!NOTE]
->要验证是否已安装 Node.js，请打开终端窗口并键入：`node -v`
+>若要验证是否已安装 Node.js，请打开终端窗口并输入 `node -v`。
 
 ### <a name="install-graphviz"></a>安装 GraphViz
 
 要使用 Terraform 可视化函数，需要[安装 GraphViz](http://graphviz.org/)。
 
 >[!NOTE]
->要验证是否已安装 GraphViz，请打开终端窗口并键入：`dot -V`
+>若要验证是否已安装 GraphViz，请打开终端窗口并输入 `dot -V`。
 
-### <a name="install-the-azure-terraform-vs-code-extension"></a>安装 Azure Terraform VS Code 扩展：
+### <a name="install-the-azure-terraform-visual-studio-code-extension"></a>安装 Azure Terraform Visual Studio Code 扩展
 
-1. 启动 VS Code。
-2. 单击“扩展”图标。
+1. 启动 Visual Studio Code。
+
+1. 选择“扩展”。
 
     ![“扩展”按钮](media/terraform-vscode-extension/tf-vscode-extensions-button.png)
 
-3. 使用“在市场中搜索扩展”文本框搜索 Azure Terraform 扩展：
+1. 使用“在市场中搜索扩展”文本框搜索 Azure Terraform 扩展：
 
-    ![在市场中搜索 VS Code 扩展](media/terraform-vscode-extension/tf-search-extensions.png)
+    ![在市场中搜索 Visual Studio Code 扩展](media/terraform-vscode-extension/tf-search-extensions.png)
 
-4. 单击“安装”。
+1. 选择“安装”。
 
     >[!NOTE]
-    >单击“安装”以安装 Azure Terraform 扩展时，VS Code 将自动安装 Azure 帐户扩展。 Azure 帐户是 Azure Terraform 扩展的依赖项文件，用于执行 Azure 订阅身份验证以及与 Azure 相关的代码扩展。
+    >选择“安装”以安装 Azure Terraform 扩展时，Visual Studio Code 会自动安装 Azure 帐户扩展。 Azure 帐户是 Azure Terraform 扩展的依赖项文件，用于执行 Azure 订阅身份验证以及与 Azure 相关的代码扩展。
 
 #### <a name="verify-the-terraform-extension-is-installed-in-visual-studio-code"></a>验证 Visual Studio Code 中是否已安装 Terraform 扩展
 
-1. 单击“扩展”图标。
-2. 在搜索文本框中键入 `@installed`。
+1. 选择“扩展”。
+
+1. 在搜索文本框中输入 `@installed`。
 
     ![已安装的扩展](media/terraform-vscode-extension/tf-installed-extensions.png)
 
@@ -96,7 +93,7 @@ Microsoft Azure Terraform Visual Studio Code (VS Code) 扩展旨在让开发人�
 
 ![已安装的 Terraform 扩展](media/terraform-vscode-extension/tf-installed-terraform-extension-button.png)
 
-现即可在 VS Code 内的 Cloud Shell 环境中运行所有受支持的 Terraform 命令。
+现即可在 Visual Studio Code 内的 Cloud Shell 环境中运行所有受支持的 Terraform 命令。
 
 ## <a name="exercise-1-basic-terraform-commands-walk-through"></a>练习 1：Terraform 命令基本演练
 
@@ -104,53 +101,59 @@ Microsoft Azure Terraform Visual Studio Code (VS Code) 扩展旨在让开发人�
 
 ### <a name="prepare-a-test-plan-file"></a>准备测试计划文件
 
-1. 在 VS Code 中，从菜单栏中选择“文件”>“新建文件”。
-2. 导航到 [azurerm_resource_group](https://www.terraform.io/docs/providers/azurerm/r/resource_group.html#)，并复制**用法示例**代码块中的代码：
-3. 将复制的代码粘贴到在 VS Code 中创建的新文件中。
+1. 在 Visual Studio Code 中，从菜单栏中选择“文件”>“新建文件”。
+
+1. 导航到 [azurerm_resource_group](https://www.terraform.io/docs/providers/azurerm/r/resource_group.html#)，并复制**用法示例**代码块中的代码：
+
+1. 将复制的代码粘贴到在 Visual Studio Code 中创建的新文件中。
 
     ![粘贴“用法示例”代码](media/terraform-vscode-extension/tf-paste-example-usage-code.png)
 
     >[!NOTE]
     >可更改资源组的名称值，但它必须对 Azure 订阅唯一。
 
-4. 从菜单栏中选择“文件”>“另存为”。
-5. 在“另存为”对话框中，导航到所选位置并单击“新建文件夹”。 （将新文件夹的名称更改为比“新建文件夹”更具描述性的名称。）
+1. 从菜单栏中选择“文件”>“另存为”。
+
+1. 在“另存为”对话框中，导航到所选位置并选择“新建文件夹”。 （将新文件夹的名称更改为比“新建文件夹”更具描述性的名称。）
 
     >[!NOTE]
     >在本例中，文件夹名为 TERRAFORM-TEST-PLAN。
 
-6. 请确保突出显示（选中）新文件夹，然后单击“打开”。
-7. 在“另存为”对话框中，将文件的默认名称更改为 main.tf。
+1. 请确保突出显示（选中）新文件夹，然后选择“打开”。
+
+1. 在“另存为”对话框中，将文件的默认名称更改为 main.tf。
 
     ![另存为 main.tf](media/terraform-vscode-extension/tf-save-as-main.png)
 
-8. 单击“保存”。
-- 从菜单栏中，选择“文件”>“打开文件夹”。 导航到并选择所创建的新文件夹。
+1. 选择“保存”。
+- 在菜单栏中，选择“文件”>“打开文件夹”。 导航到并选择所创建的新文件夹。
 
 ### <a name="run-terraform-init-command"></a>运行 Terraform init 命令
 
 1. 启动 Visual Studio Code。
-2. 从 VS Code 菜单栏中，选择“文件”>“打开文件夹...”，再找到并选择 main.tf 文件。
+
+1. 从 Visual Studio Code 菜单栏中，选择“文件”>“打开文件夹...”，再找到并选择 main.tf 文件。
 
     ![main.tf 文件](media/terraform-vscode-extension/tf-main-tf.png)
 
-3. 从菜单栏中，选择“视图”>“命令面板...”>“Azure Terraform: Init”。
-4. 几分钟后，当系统询问“是否要打开 Cloud Shell?”时 单击“确定”。
+1. 从菜单栏中，选择“视图”>“命令面板...”>“Azure Terraform: Init”。
+
+1. 当确认对话框出现时，请选择“确定”。
 
     ![是否要打开 Cloud Shell?](media/terraform-vscode-extension/tf-do-you-want-to-open-cloud-shell.png)
 
-5. 首次从新文件夹启动 Cloud Shell 时，需要设置 Web 应用程序。 单击“打开”。
+1. 首次从新文件夹启动 Cloud Shell 时，需要设置 Web 应用程序。 选择“打开”。
 
     ![首次启动 Cloud Shell](media/terraform-vscode-extension/tf-first-launch-of-cloud-shell.png)
 
-6. 欢迎使用 Azure Cloud Shell。 选择 Bash 或 PowerShell。
+1. 欢迎使用 Azure Cloud Shell。 选择 Bash 或 PowerShell。
 
     ![欢迎使用 Azure Cloud Shell](media/terraform-vscode-extension/tf-welcome-to-azure-cloud-shell.png)
 
     >[!NOTE]
     >在此示例中，选择了 Bash (Linux)。
 
-7. 如果尚未设置 Azure 存储帐户，则显示以下屏幕。 单击“创建存储”。
+1. 如果尚未设置 Azure 存储帐户，则显示以下屏幕。 选择“创建存储”。
 
     ![尚未装载任何存储](media/terraform-vscode-extension/tf-you-have-no-storage-mounted.png)
 
@@ -158,16 +161,17 @@ Microsoft Azure Terraform Visual Studio Code (VS Code) 扩展旨在让开发人�
 
     ![已创建云驱动器](media/terraform-vscode-extension/tf-your-cloud-drive-has-been-created-in.png)
 
-9. 现可退出 Cloud Shell
-10. 从菜单栏中，选择“视图” > “命令面板” > “Azure Terraform: init”。
+1. 现可退出 Cloud Shell
+
+1. 从菜单栏中，选择“视图” > “命令面板” > “Azure Terraform: init”。
 
     ![已成功初始化 Terraform](media/terraform-vscode-extension/tf-terraform-has-been-successfully-initialized.png)
 
 ### <a name="visualize-the-plan"></a>直观呈现计划
 
-在本教程的前面部分，你已安装 GraphViz。 Terraform 可使用 GraphViz 来生成配置或执行计划的视觉对象表示形式。 Azure Terraform VS Code 扩展通过 visualize 命令实现此功能。
+在本教程的前面部分，你已安装 GraphViz。 Terraform 可使用 GraphViz 来生成配置或执行计划的视觉对象表示形式。 Azure Terraform Visual Studio Code 扩展通过 visualize 命令实现此功能。
 
-- 从菜单栏中，选择“视图”>“命令面板...”>“Azure Terraform: 可视化”。
+- 从菜单栏中，选择“视图”>“命令面板”>“Azure Terraform: 可视化”。
 
     ![直观呈现计划](media/terraform-vscode-extension/tf-graph.png)
 
@@ -180,7 +184,7 @@ Terraform plan 命令用于检查一组更改的执行计划是否按预期执�
 
 - 从菜单栏中，选择“视图” > “命令面板” > “Azure Terraform: 计划”。
 
-    ![Terraform plan](media/terraform-vscode-extension/tf-terraform-plan.png)
+    ![Terraform 计划](media/terraform-vscode-extension/tf-terraform-plan.png)
 
 ### <a name="run-terraform-apply-command"></a>运行 Terraform apply 命令
 
@@ -190,7 +194,7 @@ Terraform plan 命令用于检查一组更改的执行计划是否按预期执�
 
     ![Terraform apply](media/terraform-vscode-extension/tf-terraform-apply.png)
 
-2. 键入“是”。
+1. 输入 `yes`。
 
     ![Terraform apply 是](media/terraform-vscode-extension/tf-terraform-apply-yes.png)
 
@@ -199,7 +203,8 @@ Terraform plan 命令用于检查一组更改的执行计划是否按预期执�
 要查看是否已成功创建新的 Azure 资源组，请执行以下操作：
 
 1. 打开 Azure 门户。
-2. 在左侧导航窗格中，选择“资源组”。
+
+1. 在左侧导航窗格中，选择“资源组”。
 
     ![验证新的资源](media/terraform-vscode-extension/tf-verify-resource-group-created.png)
 
@@ -214,7 +219,7 @@ Terraform plan 命令用于检查一组更改的执行计划是否按预期执�
 
     ![Terraform destroy](media/terraform-vscode-extension/tf-terraform-destroy.png)
 
-2. 键入“是”。
+1. 输入“yes”。
 
     ![Terraform destroy 是](media/terraform-vscode-extension/tf-terraform-destroy-yes.png)
 
@@ -222,50 +227,54 @@ Terraform plan 命令用于检查一组更改的执行计划是否按预期执�
 
 要确认 Terraform 已成功销毁新的资源组，请执行以下操作：
 
-1. 在 Azure 门户的资源组页面上单击“刷新”。
-2. 资源组将不再列出。
+1. 在 Azure 门户的“资源组”页面上选择“刷新”。
+
+1. 资源组将不再列出。
 
     ![验证是否已销毁资源组](media/terraform-vscode-extension/tf-refresh-resource-groups-button.png)
 
 ## <a name="exercise-2-terraform-compute-module"></a>练习 2：Terraform 计算模块
 
-在本练习中，了解如何将 Terraform 计算模块加载到 VS Code 环境中。
+在本练习中，了解如何将 Terraform *compute* 模块加载到 Visual Studio Code 环境中。
 
 ### <a name="clone-the-terraform-azurerm-compute-module"></a>克隆 terraform-azurerm-compute 模块
 
 1. 请通过[此链接](https://github.com/Azure/terraform-azurerm-compute)访问 GitHub 上的 Terraform Azure Rm 计算模块。
-2. 单击“克隆或下载”。
+
+1. 选择“克隆或下载”。
 
     ![克隆或下载](media/terraform-vscode-extension/tf-clone-with-https.png)
 
     >[!NOTE]
     >在本例中，我们的文件夹名为 terraform-azurerm-compute。
 
-### <a name="open-the-folder-in-vs-code"></a>在 VS Code 中打开文件夹
+### <a name="open-the-folder-in-visual-studio-code"></a>在 Visual Studio Code 中打开此文件夹
 
 1. 启动 Visual Studio Code。
-2. 从“菜单栏”，选择“文件”>“打开文件夹”，然后导航到并选择在上一步骤中创建的文件夹。
+
+1. 在菜单栏中选择“文件”>“打开文件夹”，然后导航到在上一步创建的文件夹并将其选中。
 
     ![terraform-azurerm-compute 文件夹](media/terraform-vscode-extension/tf-terraform-azurerm-compute-folder.png)
 
 ### <a name="initialize-terraform"></a>初始化 Terraform
 
-在开始从 VS Code 中使用 Terraform 命令之前，要下载 random 和 azurerm 这两个 Azure 提供程序的插件。
+在开始从 Visual Studio Code 中使用 Terraform 命令之前，请下载 random 和 azurerm 这两个 Azure 提供程序的插件。
 
-1. 在 VS Code IDE 的终端窗格中，键入 `terraform init`
+1. 在 Visual Studio Code IDE 的“终端”窗格中，输入 `terraform init`。
 
     ![Terraform init 命令](media/terraform-vscode-extension/tf-terraform-init-command.png)
 
-2. 键入 `az login` 并按照屏幕上的说明操作。
+1. 输入 `az login`，按 **<Enter**，然后根据屏幕说明操作。
 
 ### <a name="module-test-lint"></a>模块测试：lint
 
-1. 从“菜单栏”中，选择“视图”>“命令面板...”>“Azure Terraform: 执行测试”。
-2. 从测试类型选项列表中选择“lint”。
+1. 从菜单栏中，选择“视图”>“命令面板”>“Azure Terraform: 执行测试”。
+
+1. 从测试类型选项列表中选择“lint”。
 
     ![选择测试类型](media/terraform-vscode-extension/tf-select-type-of-test-lint.png)
 
-3. 当系统询问“是否要打开 CloudShell?”时，请单击“确定”并按照屏幕上的说明操作。
+1. 当确认对话框出现时，选择“确定”，然后按屏幕说明操作。
 
     ![是否要打开 CloudShell?](media/terraform-vscode-extension/tf-do-you-want-to-open-cloudshell-small.png)
 
@@ -278,12 +287,13 @@ Terraform plan 命令用于检查一组更改的执行计划是否按预期执�
 
 ### <a name="module-test-end-to-end"></a>模块测试：端到端
 
-1. 从“菜单栏”中，选择“视图”>“命令面板...”>“Azure Terraform: 执行测试”。
-2. 从测试类型选项列表中选择“端到端”。
+1. 从菜单栏中，选择“视图”>“命令面板”>“Azure Terraform: 执行测试”。
+
+1. 从测试类型选项列表中选择“端到端”。
 
     ![选择测试类型](media/terraform-vscode-extension/tf-select-type-of-test-end-to-end.png)
 
-3. 如果系统询问“是否要打开 CloudShell?”，请单击“确定”并按照屏幕上的说明操作。
+1. 当确认对话框出现时，选择“确定”，然后按屏幕说明操作。
 
     ![是否要打开 CloudShell?](media/terraform-vscode-extension/tf-do-you-want-to-open-cloudshell-small.png)
 
@@ -295,13 +305,5 @@ Terraform plan 命令用于检查一组更改的执行计划是否按预期执�
 ![端到端试结果](media/terraform-vscode-extension/tf-end-to-end-test-results.png)
 
 ## <a name="next-steps"></a>后续步骤
-
-你已了解了 Terraform 可简化从 Visual Studio Code 中预配 Azure 服务的一些方法。 现在，你可能想要查看下述资源之一：
-- [Terraform 模块注册表](https://registry.terraform.io/)列出了可供 Azure 及其他受支持的提供程序使用的所有 Terraform 模块。
-
-对于其中的每个模块，提供了以下信息：
-
-- 模块的常规功能及其特性的说明
-- 用法示例
-- 测试配置，它展示了如何在本地开发计算机上生成、运行和测试每个模块
-- Dockerfile，它可用于在本地生成和运行模块开发环境。
+> [!div class="nextstepaction"]
+> [可供 Azure（及其他受支持的提供程序）使用的 Terraform 模块的列表](https://registry.terraform.io/)

@@ -1,6 +1,6 @@
 ---
-title: 计算机视觉 API JavaScript 快速入门 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
+title: 快速入门：分析远程图像 - REST、JavaScript - 计算机视觉
+titleSuffix: Azure Cognitive Services
 description: 本快速入门将在认知服务中使用计算机视觉和 JavaScript 分析图像。
 services: cognitive-services
 author: noellelacharite
@@ -10,14 +10,14 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 5ae39743a812bca9716e8022c192d6a0d06b6fd4
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 9fa9d55aca1c368b734ea74a4eee193ffa0dc4f2
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43769312"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43840914"
 ---
-# <a name="quickstart-analyze-a-remote-image---rest-javascript"></a>快速入门：分析远程图像 - REST、JavaScript
+# <a name="quickstart-analyze-a-remote-image---rest-javascript---computer-vision"></a>快速入门：分析远程图像 - REST、JavaScript - 计算机视觉
 
 本快速入门使用计算机视觉分析图像。
 

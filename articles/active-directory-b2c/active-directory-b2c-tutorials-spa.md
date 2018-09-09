@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: fffffbf7ce654c263976378da01f032599145a94
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 4953cb0db428de19268cdd90661f7818b06b6945
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591561"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43343856"
 ---
 # <a name="tutorial-enable-single-page-app-authentication-with-accounts-using-azure-active-directory-b2c"></a>教程：使单页应用能够使用帐户通过 Azure Active Directory B2C 进行身份验证
 
@@ -24,24 +24,24 @@ ms.locfileid: "39591561"
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 在 Azure AD B2C 租户中注册示例单页应用程序。
+> * 在 Azure AD B2C 目录中注册示例单页应用程序。
 > * 创建适用于用户注册、登录、配置文件编辑和密码重置的策略。
-> * 将示例应用程序配置为使用你的 Azure AD B2C 租户。
+> * 将示例应用程序配置为使用 Azure AD B2C 目录。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
-* 创建自己的 [Azure AD B2C 租户](active-directory-b2c-get-started.md)
+* 创建自己的 [Azure AD B2C 目录](active-directory-b2c-get-started.md)
 * 安装带有 ASP.NET 和 Web 开发工作负荷的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
 * [.NET Core 2.0.0 SDK](https://www.microsoft.com/net/core) 或更高版本
 * 安装 [Node.js](https://nodejs.org/en/download/)
 
 ## <a name="register-single-page-app"></a>注册单页应用
 
-应用程序需要先在租户中[注册](../active-directory/develop/developer-glossary.md#application-registration)，然后才能从 Azure Active Directory 接收[访问令牌](../active-directory/develop/developer-glossary.md#access-token)。 应用注册可以为租户中的应用创建一个[应用程序 ID](../active-directory/develop/developer-glossary.md#application-id-client-id)。 
+应用程序需要先在目录中[注册](../active-directory/develop/developer-glossary.md#application-registration)，然后才能从 Azure Active Directory 接收[访问令牌](../active-directory/develop/developer-glossary.md#access-token)。 应用注册可以为目录中的应用创建一个[应用程序 ID](../active-directory/develop/developer-glossary.md#application-id-client-id)。 
 
-以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
+以 Azure AD B2C 目录的全局管理员的身份登录 [Azure 门户](https://portal.azure.com/)。
 
 [!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
 
@@ -49,7 +49,7 @@ ms.locfileid: "39591561"
 
 2. 在 B2C 设置中，单击“应用程序”，然后单击“添加”。 
 
-    若要在租户中注册示例 Web 应用，请使用以下设置：
+    若要在目录中注册示例 Web 应用，请使用以下设置：
     
     ![添加新应用](media/active-directory-b2c-tutorials-spa/spa-registration.png)
     
@@ -63,7 +63,7 @@ ms.locfileid: "39591561"
     
 3. 单击“创建”以注册应用。
 
-注册的应用显示在 Azure AD B2C 租户的应用程序列表中。 从列表中选择你的单页应用。 此时将显示已注册的单页应用的属性窗格。
+注册的应用显示在 Azure AD B2C 目录的应用程序列表中。 从列表中选择你的单页应用。 此时将显示已注册的单页应用的属性窗格。
 
 ![单页应用属性](./media/active-directory-b2c-tutorials-spa/b2c-spa-properties.png)
 
@@ -127,25 +127,25 @@ Azure AD B2C 策略定义用户工作流。 例如，登录、注册、更改密
 
 ## <a name="update-single-page-app-code"></a>更新单页应用代码
 
-现在，你已注册了一个应用并创建了策略，接下来需要将该应用配置为使用你的 Azure AD B2C 租户。 在本教程中，将配置一个可从 GitHub 下载的示例 SPA JavaScript 应用。 
+现在，你已注册了一个应用并创建了策略，接下来需要将该应用配置为使用你的 Azure AD B2C 目录。 在本教程中，将配置一个可从 GitHub 下载的示例 SPA JavaScript 应用。 
 
 从 GitHub [下载 zip 文件](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip)或克隆示例 Web 应用。
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
 ```
-该示例应用演示了单页应用可以如何使用 Azure AD B2C 执行用户注册、登录，以及如何调用受保护的 Web API。 你需要更改应用来使用你的租户中的应用注册并配置您创建的策略。 
+该示例应用演示了单页应用可以如何使用 Azure AD B2C 执行用户注册、登录，以及如何调用受保护的 Web API。 需要更改应用，以便使用目录中的应用注册并配置已创建的策略。 
 
 若要更改应用设置，请执行以下操作：
 
 1. 打开 Node.js 单页应用示例中的 `index.html` 文件。
-2. 使用 Azure AD B2C 租户注册信息来配置示例。 更改以下代码行：
+2. 使用 Azure AD B2C 目录注册信息来配置示例。 更改以下代码行（确保将值替换为你的目录和 API 的名称）：
 
     ```javascript
-    // The current application coordinates were pre-registered in a B2C tenant.
+    // The current application coordinates were pre-registered in a B2C directory.
     var applicationConfig = {
         clientID: '<Application ID for your SPA obtained from portal app registration>',
-        authority: "https://login.microsoftonline.com/tfp/<your-tenant-name>.onmicrosoft.com/B2C_1_SiUpIn",
+        authority: "https://fabrikamb2c.b2clogin.com/tfp/fabrikamb2c.onmicrosoft.com/B2C_1_SiUpIn",
         b2cScopes: ["https://fabrikamb2c.onmicrosoft.com/demoapi/demo.read"],
         webApi: 'https://fabrikamb2chello.azurewebsites.net/hello',
     };
@@ -185,20 +185,20 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
     ![注册工作流](media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.png)
 
-4. 单击“创建”，在 Azure AD B2C 租户中创建本地帐户。
+4. 单击“创建”，在 Azure AD B2C 目录中创建本地帐户。
 
 现在，用户可以使用其电子邮件地址登录并使用 SPA 应用了。
 
 > [!NOTE]
-> 登录后，应用会显示“权限不足”错误。 收到此错误是因为你正在尝试从演示租户访问资源。 因为你的访问令牌仅对你的 Azure AD 租户有效，所以该 API 调用未经授权。 请继续学习下一教程来为你的租户创建受保护的 Web API。 
+> 登录后，应用会显示“权限不足”错误。 收到此错误是因为你正在尝试从演示目录访问资源。 因为你的访问令牌仅对你的 Azure AD 目录有效，所以该 API 调用未经授权。 请继续学习下一教程，了解如何为目录创建受保护的 Web API。 
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果打算尝试其他 Azure AD B2C 教程，可以使用 Azure AD B2C 租户。 可以在不再需要时[删除 Azure AD B2C 租户](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant)。
+如果打算尝试其他 Azure AD B2C 教程，可以使用 Azure AD B2C 目录。 可以在不再需要时[删除 Azure AD B2C 目录](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant)。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已学习了如何创建 Azure AD B2C 租户、如何创建策略，以及如何更新示例单页应用来使用你的 Azure AD B2C 租户。 请继续学习下一教程来学习如何从桌面应用注册、配置和调用受保护的 Web API。
+本教程介绍了如何创建 Azure AD B2C 目录、如何创建策略，以及如何更新示例单页应用来使用 Azure AD B2C 目录。 请继续学习下一教程来学习如何从桌面应用注册、配置和调用受保护的 Web API。
 
 > [!div class="nextstepaction"]
 > 

@@ -1,147 +1,172 @@
 ---
-title: 调用和响应 - 适用于 Azure 认知服务中的必应 Web 搜索 API 的 Java 快速入门 | Microsoft Docs
-description: 获取信息和代码示例，帮助你快速开始使用 Azure 上 Microsoft 认知服务中的必应 Web 搜索 API。
+title: 快速入门：使用 Java 调用必应 Web 搜索 API
+description: 本快速入门介绍如何使用 Java 进行你的第一次必应 Web 搜索 API 调用并接收 JSON 响应。
 services: cognitive-services
-documentationcenter: ''
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
-ms.date: 9/18/2017
-ms.author: v-jerkin
-ms.openlocfilehash: 275c21738b563f9408115f88eafde92695f72fa7
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.topic: quickstart
+ms.date: 8/16/2018
+ms.author: erhopf
+ms.openlocfilehash: 8d3e01aef8efdf1503ad7056220e0cba9fb38ed3
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365738"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888218"
 ---
-# <a name="call-and-response-your-first-bing-web-search-query-in-java"></a>调用和响应：Java 中的第一个必应 Web 搜索查询
+# <a name="quickstart-use-java-to-call-the-bing-web-search-api"></a>快速入门：使用 Java 调用必应 Web 搜索 API  
 
-必应 Web 搜索 API 通过返回必应确定与用户查询相关的搜索结果，提供与 Bing.com/搜索相似的体验。 结果可能包括网页、图像、视频、新闻和实体，以及相关的搜索查询、拼写更正、时区、单位换算、翻译和计算。 所获得的结果类型取决于它们的相关性以及订阅的必应搜索 API 的层级。
+使用本快速入门进行你的第一次必应 Web 搜索 API 并接收 JSON 响应。  
 
-本文包括一个简单的控制台应用程序，它执行必应 Web 搜索 API 查询并显示返回的原始搜索结果，这些结果采用 JSON 格式。 虽然此应用程序是用 Java 编写的，但 API 是一种 RESTful Web 服务，与任何可以发出 HTTP 请求并分析 JSON 的编程语言兼容。 
+[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
-需要 [JDK 7 或 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 来编译和运行此代码。 如果你有喜欢的 Java IDE，可以使用它，但文本编辑器足以满足要求。
+下面是在开始本快速入门之前需要准备好的项目：
 
-必须拥有包含**必应搜索 API** 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 需要激活免费试用版时提供的访问密钥，或使用 Azure 仪表板中的付费订阅密钥。
+* [JDK 7 或 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [Gson 库](https://github.com/google/gson)
+* 订阅密钥
 
-## <a name="running-the-application"></a>运行应用程序
+## <a name="create-a-project-and-import-dependencies"></a>创建项目并导入依赖项
 
-若要运行此应用程序，请执行以下步骤。
-
-1. 下载或安装 [gson 库](https://github.com/google/gson)。 也可以通过 Maven 获得。
-2. 在你喜欢使用的 IDE 或编辑器中新建一个 Java 项目。
-3. 将提供的代码添加到名为 `BingWebSearch.java` 的文件中。
-4. 使用对订阅有效的访问密钥替换 `subscriptionKey` 值。
-5. 运行该程序。
+在最喜爱的 IDE 或编辑器中新建一个 Java 项目，并导入以下库。 需要 Gson 才能将 Java 对象转换成 JSON。
 
 ```java
 import java.net.*;
 import java.util.*;
 import java.io.*;
 import javax.net.ssl.HttpsURLConnection;
-
-/*
- * Gson: https://github.com/google/gson
- * Maven info:
- *     groupId: com.google.code.gson
- *     artifactId: gson
- *     version: 2.8.1
- *
- * Once you have compiled or downloaded gson-2.8.1.jar, assuming you have placed it in the
- * same folder as this file (BingWebSearch.java), you can compile and run this program at
- * the command line as follows.
- *
- * javac BingWebSearch.java -classpath .;gson-2.8.1.jar -encoding UTF-8
- * java -cp .;gson-2.8.1.jar BingWebSearch
- */
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+```
 
+### <a name="declare-gson-in-the-maven-pom-file"></a>在 Maven POM 文件中声明 Gson
+
+如果使用 Maven，请在 `POM.xml` 中声明 Gson。 如果已在本地安装 Gson，请跳过此步骤。
+
+```xml
+<dependency>
+    <groupId>com.google.code.gson</groupId>
+    <artifactId>gson</artifactId>
+    <version>2.8.1</version>
+</dependency>
+```
+
+## <a name="declare-the-bingwebsearch-class"></a>声明 BingWebSearch 类
+
+声明 `BingWebSearch` 类。 它将包括我们在本快速入门中查看的大多数代码，包括 `main` 方法。  
+
+```java
 public class BingWebSearch {
 
-// ***********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+// The code in the following sections goes here.
 
-    // Replace the subscriptionKey string value with your valid subscription key.
-    static String subscriptionKey = "enter key here";
+}
+```
 
-    // Verify the endpoint URI.  At this writing, only one endpoint is used for Bing
-    // search APIs.  In the future, regional endpoints may be available.  If you
-    // encounter unexpected authorization errors, double-check this value against
-    // the endpoint for your Bing Web search instance in your Azure dashboard.
-    static String host = "https://api.cognitive.microsoft.com";
-    static String path = "/bing/v7.0/search";
+## <a name="define-variables"></a>定义变量
 
-    static String searchTerm = "Microsoft Cognitive Services";
+以下代码设置 `subscriptionKey`、`host`、`path`、`searchTerm`。 确认终结点正确并将 `subscriptionKey` 值替换为来自你的 Azure 帐户的有效订阅密钥。 可以通过替换 `searchTerm` 的值随意自定义搜索查询。
 
-    public static SearchResults SearchWeb (String searchQuery) throws Exception {
-        // construct URL of search request (endpoint + query string)
-        URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8"));
-        HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
+```java
+// Enter a valid subscription key.
+static String subscriptionKey = "enter key here";
 
-        // receive JSON body
-        InputStream stream = connection.getInputStream();
-        String response = new Scanner(stream).useDelimiter("\\A").next();
+/*
+ * If you encounter unexpected authorization errors, double-check these values
+ * against the endpoint for your Bing Web search instance in your Azure
+ * dashboard.
+ */
+static String host = "https://api.cognitive.microsoft.com";
+static String path = "/bing/v7.0/search";
+static String searchTerm = "Microsoft Cognitive Services";
+```
 
-        // construct result object for return
-        SearchResults results = new SearchResults(new HashMap<String, String>(), response);
+## <a name="construct-a-request"></a>构造请求
 
-        // extract Bing-related HTTP headers
-        Map<String, List<String>> headers = connection.getHeaderFields();
-        for (String header : headers.keySet()) {
-            if (header == null) continue;      // may have null key
-            if (header.startsWith("BingAPIs-") || header.startsWith("X-MSEdge-")) {
-                results.relevantHeaders.put(header, headers.get(header).get(0));
-            }
+`BingWebSearch` 类中的此方法可构造 `url`、接收和分析响应，以及提取与必应相关的 HTTP 标头。  
+
+```java
+public static SearchResults SearchWeb (String searchQuery) throws Exception {
+    // Construct the URL.
+    URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8"));
+
+    // Open the connection.
+    HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
+    connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
+
+    // Receive the JSON response body.
+    InputStream stream = connection.getInputStream();
+    String response = new Scanner(stream).useDelimiter("\\A").next();
+
+    // Construct the result object.
+    SearchResults results = new SearchResults(new HashMap<String, String>(), response);
+
+    // Extract Bing-related HTTP headers.
+    Map<String, List<String>> headers = connection.getHeaderFields();
+    for (String header : headers.keySet()) {
+        if (header == null) continue;      // may have null key
+        if (header.startsWith("BingAPIs-") || header.startsWith("X-MSEdge-")){
+            results.relevantHeaders.put(header, headers.get(header).get(0));
         }
+    }
+    stream.close();
+    return results;
+}
+```
 
-        stream.close();
-        return results;
+## <a name="handle-the-response"></a>处理响应
+
+使用 Gson 分析响应并将其重新序列化。
+
+```java
+public static String prettify(String json_text) {
+    JsonParser parser = new JsonParser();
+    JsonObject json = parser.parse(json_text).getAsJsonObject();
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    return gson.toJson(json);
+}
+```
+
+## <a name="declare-the-main-method"></a>声明 main 方法
+
+此方法是必需的，是启动程序时调用的第一个方法。 在此应用程序中，它包含的代码会验证 `subscriptionKey`，发出一个请求，然后输出 JSON 响应。
+
+```java
+public static void main (String[] args) {
+    // Confirm the subscriptionKey is valid.
+    if (subscriptionKey.length() != 32) {
+        System.out.println("Invalid Bing Search API subscription key!");
+        System.out.println("Please paste yours into the source code.");
+        System.exit(1);
     }
 
-    // pretty-printer for JSON; uses GSON parser to parse and re-serialize
-    public static String prettify(String json_text) {
-        JsonParser parser = new JsonParser();
-        JsonObject json = parser.parse(json_text).getAsJsonObject();
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(json);
+    // Call the SearchWeb method and print the response.
+    try {
+        System.out.println("Searching the Web for: " + searchTerm);
+        SearchResults result = SearchWeb(searchTerm);
+        System.out.println("\nRelevant HTTP Headers:\n");
+        for (String header : result.relevantHeaders.keySet())
+        System.out.println(header + ": " + result.relevantHeaders.get(header));
+        System.out.println("\nJSON Response:\n");
+        System.out.println(prettify(result.jsonResponse));
     }
-
-    public static void main (String[] args) {
-        if (subscriptionKey.length() != 32) {
-            System.out.println("Invalid Bing Search API subscription key!");
-            System.out.println("Please paste yours into the source code.");
-            System.exit(1);
-        }
-
-        try {
-            System.out.println("Searching the Web for: " + searchTerm);
-
-            SearchResults result = SearchWeb(searchTerm);
-
-            System.out.println("\nRelevant HTTP Headers:\n");
-            for (String header : result.relevantHeaders.keySet())
-                System.out.println(header + ": " + result.relevantHeaders.get(header));
-
-            System.out.println("\nJSON Response:\n");
-            System.out.println(prettify(result.jsonResponse));
-        }
-        catch (Exception e) {
-            e.printStackTrace(System.out);
-            System.exit(1);
-        }
+    catch (Exception e) {
+        e.printStackTrace(System.out);
+        System.exit(1);
     }
 }
+```
 
-// Container class for search results encapsulates relevant headers and JSON data
+## <a name="create-a-container-class-for-search-results"></a>创建一个适用于搜索结果的容器类
+
+`SearchResults` 容器类位于 `BingWebSearch` 类外面。 它包含响应的相关标头和 JSON 数据。
+
+```java
 class SearchResults{
     HashMap<String, String> relevantHeaders;
     String jsonResponse;
@@ -152,9 +177,20 @@ class SearchResults{
 }
 ```
 
-## <a name="json-response"></a>JSON 响应
+## <a name="put-it-all-together"></a>将其放在一起
 
-示例响应如下。 为了限制 JSON 的长度，系统仅显示一个结果，并截断了响应的其他部分。 
+最后一步是编译代码并运行它！ 命令如下：
+
+```powershell
+javac BingWebSearch.java -classpath ./gson-2.8.1.jar -encoding UTF-8
+java -cp ./gson-2.8.1.jar BingWebSearch
+```
+
+如果希望将你的代码与我们的进行比较，请查看 [GitHub 上提供的示例代码](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingWebSearchv7.java)。
+
+## <a name="sample-response"></a>示例响应
+
+来自必应 Web 搜索 API 的响应以 JSON 形式返回。 此示例响应已截断，仅显示了单个结果。
 
 ```json
 {
@@ -283,9 +319,4 @@ class SearchResults{
 > [!div class="nextstepaction"]
 > [必应 Web 搜索单页应用教程](../tutorial-bing-web-search-single-page-app.md)
 
-## <a name="see-also"></a>另请参阅 
-
-[必应 Web 搜索概述](../overview.md)  
-[试用](https://azure.microsoft.com/services/cognitive-services/bing-web-search-api/)  
-[获取免费试用版访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)  
-[必应 Web 搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)
+[!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]  
