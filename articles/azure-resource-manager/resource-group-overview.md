@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/16/2018
+ms.date: 08/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9b8f87f3cf09fef020ceed0166dd1652617ef605
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: d04625fe78c423c995460afa29a81d96c6ce9cfb
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126603"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337967"
 ---
 # <a name="azure-resource-manager-overview"></a>Azure 资源管理器概述
 应用程序的基础结构通常由许多组件构成，其中可能包括虚拟机、存储帐户、虚拟网络、Web 应用、数据库、数据库服务器和第三方服务。 这些组件不作为独立的实体出现，而是作为单个实体的相关部件和依赖部件出现。 如果希望以组的方式部署、管理和监视这些这些组件， 那么，可以使用 Azure 资源管理器以组的方式处理解决方案中的资源。 可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 Resource Manager 提供安全、审核和标记功能，以帮助你在部署后管理资源。 
@@ -52,8 +52,6 @@ ms.locfileid: "39126603"
 * 可以将访问控制应用到资源组中的所有服务，因为基于角色的访问控制 (RBAC) 已在本机集成到管理平台。
 * 可以将标记应用到资源，以逻辑方式组织订阅中的所有资源。
 * 可以通过查看一组共享相同标记的资源的成本来理清组织的帐单。  
-
-Resource Manager 提供了一种新方法来部署和管理解决方案。 如果使用早期的部署模型并想要了解这些更改，请参阅[了解 Resource Manager 部署和经典部署](resource-manager-deployment-model.md)。
 
 ## <a name="guidance"></a>指南
 以下建议将帮助你在使用解决方案时充分利用 Resource Manager。
@@ -88,9 +86,9 @@ Resource Manager 提供了一种新方法来部署和管理解决方案。 如�
 开始部署资源之前，应了解可用的资源提供程序。 了解资源提供程序和资源的名称可帮助确定要部署到 Azure 的资源。 此外，还需要知道每种资源类型的有效位置和 API 版本。 有关详细信息，请参阅[资源提供程序和类型](resource-manager-supported-services.md)。
 
 ## <a name="template-deployment"></a>模板部署
-使用 Resource Manager 可以创建（JSON 格式的）模板，用于定义 Azure 解决方案的基础结构和配置。 使用模板，可以在解决方案的整个生命周期内重复部署该解决方案，确保以一致的状态部署资源。 从门户创建解决方案时，该解决方案会自动包含部署模板。 无需从头开始创建模板，因为可以从解决方案的模板着手，并根据特定需求自定义该模板。 可以通过导出资源组的当前状态或查看特定部署所用的模板，来检索现有资源组的模板。 查看[导出的模板](resource-manager-export-template.md)是了解模板语法的有用方法。
+使用 Resource Manager 可以创建（JSON 格式的）模板，用于定义 Azure 解决方案的基础结构和配置。 使用模板，可以在解决方案的整个生命周期内重复部署该解决方案，确保以一致的状态部署资源。 从门户创建解决方案时，该解决方案会自动包含部署模板。 无需从头开始创建模板，因为可以从解决方案的模板着手，并根据特定需求自定义该模板。 有关示例，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](./resource-manager-quickstart-create-templates-use-the-portal.md)。 还可以通过导出资源组的当前状态或查看特定部署所用的模板来检索现有资源组的模板。 查看[导出的模板](resource-manager-export-template.md)是了解模板语法的有用方法。
 
-若要了解模板的格式及其构造方法，请参阅[创建第一个 Azure 资源管理器模板](resource-manager-create-first-template.md)。 若要查看资源类型的 JSON 语法，请参阅[定义 Azure 资源管理器模板中的资源](/azure/templates/)。
+若要了解模板的格式以及如何构造模板，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](./resource-manager-quickstart-create-templates-use-the-portal.md)。 若要查看资源类型的 JSON 语法，请参阅[定义 Azure 资源管理器模板中的资源](/azure/templates/)。
 
 Resource Manager 像处理其他任何请求一样处理模板（请参阅[一致的管理层](#consistent-management-layer)图像）。 它解析模板，并将其语法转换为相应资源提供程序的 REST API 操作。 例如，当 Resource Manager 收到具有以下资源定义的模板：
 
@@ -254,7 +252,7 @@ Resource Manager 将记录创建、修改或删除资源的所有操作。 活�
 }
 ```
 
-可创建许多其他类型的策略。 有关详细信息，请参阅[什么是 Azure 策略？](../azure-policy/azure-policy-introduction.md)。
+可创建许多其他类型的策略。 有关详细信息，请参阅[什么是 Azure Policy？](../azure-policy/azure-policy-introduction.md)。
 
 ## <a name="sdks"></a>SDK
 Azure SDK 适用于多种语言和平台。 每种语言实现可通过其生态系统包管理器和 GitHub 来使用。
@@ -277,19 +275,11 @@ Azure SDK 适用于多种语言和平台。 每种语言实现可通过其生态
 
 > [!NOTE]
 > 如果 SDK 未提供所需的功能，也可以直接调用 [Azure REST API](https://docs.microsoft.com/rest/api/resources/) 。
-> 
-> 
+
 
 ## <a name="next-steps"></a>后续步骤
-* 有关使用模板的简单介绍，请参阅[从现有资源导出 Azure 资源管理器模板](resource-manager-export-template.md)。
-* 有关如何创建模板的更全面演练，请参阅[创建第一个 Azure 资源管理器模板](resource-manager-create-first-template.md)。
-* 若要了解可以在模板中使用的函数，请参阅[模板函数](resource-group-template-functions.md)
-* 有关将 Visual Studio 与 Resource Manager 配合使用的信息，请参阅[通过 Visual Studio 创建和部署 Azure 资源组](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)。
-* 有关将资源从经典部署迁移到 ARM 的信息，请参阅[从经典部署迁移到 Azure 资源管理器](resource-manager-deployment-model.md#migrate-from-classic-to-resource-manager)
 
-下面是本概述主题的演示视频：
+在本文中，你已学习了如何使用 Azure 资源管理器在 Azure 上部署和管理资源以及对其进行访问控制。 请前进到下一文章来学习如何部署你的第一个 Azure 资源管理器模板。
 
->[!VIDEO https://channel9.msdn.com/Blogs/Azure-Documentation-Shorts/Azure-Resource-Manager-Overview/player]
-
-
-[powershellref]: https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.2.0/azurerm.resources
+> [!div class="nextstepaction"]
+> [快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](./resource-manager-quickstart-create-templates-use-the-portal.md)

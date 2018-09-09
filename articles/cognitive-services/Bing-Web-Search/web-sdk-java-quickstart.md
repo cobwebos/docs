@@ -1,336 +1,300 @@
 ---
-title: Web 搜索 SDK Java 快速入门 | Microsoft Docs
-description: 设置 Web 搜索 SDK 控制台应用程序。
-titleSuffix: Azure Cognitive Services
+title: 快速入门：使用用于 Java 的必应 Web 搜索 SDK
+description: 了解如何使用用于 Java 的必应 Web 搜索 SDK。
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
-ms.date: 02/16/2018
-ms.author: v-gedod
-ms.openlocfilehash: 73af92ca0d6ed1a270eaea26e79c7341680dce17
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.topic: quickstart
+ms.date: 08/22/2018
+ms.author: erhopf
+ms.openlocfilehash: cc7335b9f8b5596edef895ff5a42a1018b06a381
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366715"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43186721"
 ---
-# <a name="web-search-sdk-java-quickstart"></a>Web 搜索 SDK Java 快速入门
+# <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>快速入门：使用用于 Java 的必应 Web 搜索 SDK
 
-必应 Web 搜索 SDK 包含用于 Web 查询以及对结果进行分析的 REST API 功能。 
+可以使用必应 Web 搜索 SDK 轻松地将必应 Web 搜索集成到 Java 应用程序中。 本快速入门介绍了如何发送请求、接收 JSON 响应以及筛选和分析结果。
 
-Git Hub 上提供了 [Java 必应 Web 搜索 SDK 示例的源代码](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingWebSearch)。
+想要马上查看代码？ GitHub 上提供了[适用于 Java 的必应 Web 搜索 SDK 示例](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/)。
 
-## <a name="application-dependencies"></a>应用程序依赖项
-在“搜索”下获取[认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/)。 通过使用 Maven、Gradle 或其他依赖项管理系统安装必应 Web 搜索 SDK 依赖项。 Maven POM 文件需要：
-```
+[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
+
+## <a name="prerequisites"></a>先决条件
+
+下面是在开始本快速入门之前需要准备好的项目：
+
+* [JDK 7 或 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [Apache Maven](https://maven.apache.org/download.cgi) 或你喜欢使用的生成自动化工具
+* 订阅密钥
+
+## <a name="create-a-project-and-configure-your-pom-file"></a>创建一个项目并配置 POM 文件
+
+使用 Maven 或你喜欢使用的生成自动化工具新建一个 Java 项目。 假设你使用 Maven，请将以下行添加到 POM 文件。 将 `mainClass` 的所有实例替换为你的应用程序。
+
+```xml
+<build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.4.0</version>
+        <configuration>
+          <!--Your comment
+            Replace the mainClass with the path to your java application.
+            It should begin with com and doesn't require the .java extension.
+            For example: com.bingwebsearch.app.BingWebSearchSample. This maps to
+            The following directory structure:
+            src/main/java/com/bingwebsearch/app/BingWebSearchSample.java.
+          -->
+          <mainClass>com.path.to.your.app.APP_NAME</mainClass>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.0</version>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>attached</goal>
+            </goals>
+            <configuration>
+              <descriptorRefs>
+                <descriptorRef>jar-with-dependencies</descriptorRef>
+              </descriptorRefs>
+              <archive>
+                <manifest>
+                  <!--Your comment
+                    Replace the mainClass with the path to your java application.
+                    For example: com.bingwebsearch.app.BingWebSearchSample.java.
+                    This maps to the following directory structure:
+                    src/main/java/com/bingwebsearch/app/BingWebSearchSample.java.
+                  -->
+                  <mainClass>com.path.to.your.app.APP_NAME.java</mainClass>
+                </manifest>
+              </archive>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
   <dependencies>
     <dependency>
-        <groupId>com.microsoft.azure.cognitiveservices</groupId>
-        <artifactId>azure-cognitiveservices-websearch</artifactId>
-        <version>0.0.1-beta-SNAPSHOT</version>
+      <groupId>com.microsoft.azure</groupId>
+      <artifactId>azure</artifactId>
+      <version>1.9.0</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-net</groupId>
+      <artifactId>commons-net</artifactId>
+      <version>3.3</version>
+    </dependency>
+    <dependency>
+      <groupId>com.microsoft.azure.cognitiveservices</groupId>
+      <artifactId>azure-cognitiveservices-websearch</artifactId>
+      <version>1.0.1</version>
     </dependency>
   </dependencies>
 ```
-## <a name="web-search-client"></a>Web 搜索客户端
-向类实现中添加以下导入：
+
+## <a name="declare-dependencies"></a>声明依赖项
+
+在你喜欢使用的 IDE 或编辑器中打开你的项目，并导入以下依赖项：
+
+```java
+import com.microsoft.azure.cognitiveservices.search.websearch.BingWebSearchAPI;
+import com.microsoft.azure.cognitiveservices.search.websearch.BingWebSearchManager;
+import com.microsoft.azure.cognitiveservices.search.websearch.models.ImageObject;
+import com.microsoft.azure.cognitiveservices.search.websearch.models.NewsArticle;
+import com.microsoft.azure.cognitiveservices.search.websearch.models.SearchResponse;
+import com.microsoft.azure.cognitiveservices.search.websearch.models.VideoObject;
+import com.microsoft.azure.cognitiveservices.search.websearch.models.WebPage;
 ```
-import com.microsoft.azure.cognitiveservices.websearch.*;
-import com.microsoft.azure.cognitiveservices.websearch.implementation.SearchResponseInner;
-import com.microsoft.azure.cognitiveservices.websearch.implementation.WebSearchAPIImpl;
-import com.microsoft.rest.credentials.ServiceClientCredentials;
-import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+如果项目是使用 Maven 创建的，则应当已经声明了此程序包。 否则，现在请声明此程序包。 例如：
+
+```java
+package com.bingwebsearch.app
 ```
-实现 `WebSearchAPIImpl` 客户端，它需要 `ServiceClientCredentials` 的一个实例：
-```
-public static WebSearchAPIImpl getClient(final String subscriptionKey) {
-    return new WebSearchAPIImpl("https://api.cognitive.microsoft.com/bing/v7.0/",
-            new ServiceClientCredentials() {
-                @Override
-                public void applyCredentialsFilter(OkHttpClient.Builder builder) {
-                    builder.addNetworkInterceptor(
-                            new Interceptor() {
-                                @Override
-                                public Response intercept(Chain chain) throws IOException {
-                                    Request request = null;
-                                    Request original = chain.request();
-                                    // Request customization: add request headers
-                                    Request.Builder requestBuilder = original.newBuilder()
-                                            .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-                                    request = requestBuilder.build();
-                                    return chain.proceed(request);
-                                }
-                            });
-                }
-            });
-}
 
-```
-搜索结果。  以下方法使用单一查询“Xbox”进行搜索，并输出第一个网页、图像、新闻和视频结果的 `name` 和 `URL`。
-```
-public static void WebSearchResultTypesLookup(String subscriptionKey)
-{
-    WebSearchAPIImpl client = getClient(subscriptionKey);
+## <a name="declare-the-bingwebsearchsample-class"></a>声明 BingWebSearchSample 类
 
-    try
-    {
-        SearchResponseInner webData = client.webs().search("Yosemite");
-        System.out.println("\r\nSearched for Query# \" Yosemite \"");
+声明 `BingWebSearchSample` 类。 它将包括我们的大多数代码，包括 `main` 方法。  
 
-        //WebPages
-        if (webData.webPages().value().size() > 0)
-        {
-            // find the first web page
-            WebPage firstWebPagesResult = webData.webPages().value().get(0);
+```java
+public class BingWebSearchSample {
 
-            if (firstWebPagesResult != null)
-            {
-                System.out.println(String.format("Webpage Results#%d", webData.webPages().value().size()));
-                System.out.println(String.format("First web page name: %s ", firstWebPagesResult.name()));
-                System.out.println(String.format("First web page URL: %s ", firstWebPagesResult.url()));
-            }
-            else
-            {
-                System.out.println("Couldn't find web results!");
-            }
-        }
-        else
-        {
-            System.out.println("Didn't see any Web data..");
-        }
-
-        //Images
-        if (webData.images().value().size() > 0)
-        {
-            // find the first image result
-            ImageObject firstImageResult = webData.images().value().get(0);
-
-            if (firstImageResult != null)
-            {
-                System.out.println(String.format("Image Results#%d", webData.images().value().size()));
-                System.out.println(String.format("First Image result name: %s ", firstImageResult.name()));
-                System.out.println(String.format("First Image result URL: %s ", firstImageResult.contentUrl()));
-            }
-            else
-            {
-                System.out.println("Couldn't find first image results!");
-            }
-        }
-        else
-        {
-            System.out.println("Didn't see any image data..");
-        }
-
-        //News
-        if (webData.news().value().size() > 0)
-        {
-            // find the first news result
-            NewsArticle firstNewsResult = webData.news().value().get(0);
-
-            if (firstNewsResult != null)
-            {
-                System.out.println(String.format("News Results#%d", webData.news().value().size()));
-                System.out.println(String.format("First news result name: %s ", firstNewsResult.name()));
-                System.out.println(String.format("First news result URL: %s ", firstNewsResult.url()));
-            }
-            else
-            {
-                System.out.println("Couldn't find any News results!");
-            }
-        }
-        else
-        {
-            System.out.println("Didn't see first news data..");
-        }
-
-        //Videos
-        if (webData.videos() != null && webData.videos().value().size() > 0)
-        {
-            // find the first video result
-            VideoObject firstVideoResult = webData.videos().value().get(0);
-
-            if (firstVideoResult != null)
-            {
-                System.out.println(String.format("Video Results#%s", webData.videos().value().size()));
-                System.out.println(String.format("First Video result name: %s ", firstVideoResult.name()));
-                System.out.println(String.format("First Video result URL: %s ", firstVideoResult.contentUrl()));
-            }
-            else
-            {
-                System.out.println("Couldn't find first video results!");
-            }
-        }
-        else
-        {
-            System.out.println("Didn't see any video data..");
-        }
-    }
-
-    catch (ErrorResponseException ex)
-    {
-        System.out.println("Encountered exception. " + ex.getLocalizedMessage());
-    }
+// The code in the following sections goes here.
 
 }
-
 ```
-搜索“Best restaurants in Seattle”，验证结果数，并输出第一个结果的 `name` 和 `URL`。
+
+## <a name="construct-a-request"></a>构造请求
+
+`runSample` 方法（位于 `BingWebSearchSample` 类中）构造请求。 将以下代码复制到你的应用程序中：
+
+```java
+public static boolean runSample(BingWebSearchAPI client) {
+    /*
+     * This function performs the search.
+     *
+     * @param client instance of the Bing Web Search API client
+     * @return true if sample runs successfully
+     */
+    try {
+        /*
+         * Performs a search based on the .withQuery and prints the name and
+         * url for the first web pages, image, news, and video result
+         * included in the response.
+         */
+        System.out.println("Searched Web for \"Xbox\"");
+        // Construct the request.
+        SearchResponse webData = client.bingWebs().search()
+            .withQuery("Xbox")
+            .withMarket("en-us")
+            .withCount(10)
+            .execute();
+
+// Code continues in the next section...
 ```
-public static void WebResultsWithCountAndOffset(String subscriptionKey)
-{
-    WebSearchAPIImpl client = getClient(subscriptionKey);
 
-    try
-    {
-        SearchResponseInner webData = client.webs().search(
-                "Best restaurants in Seattle", null, null, null, null, null, 10, null, 20, null, "en-us", null,
-                        null, null, SafeSearch.STRICT, null, null, null);
-        System.out.println("\r\nSearched for Query# \" Best restaurants in Seattle \"");
+## <a name="handle-the-response"></a>处理响应
 
-        if (webData.webPages().value().size() > 0)
-        {
-            // find the first web page
-            WebPage firstWebPagesResult = webData.webPages().value().get(0);
+接下来，让我们添加一些对响应进行分析并输出结果的代码。 将会输出第一个网页、图像、新闻文章和视频的 `name` 和 `url`（如果它们包括在响应对象中）。
 
-            if (firstWebPagesResult != null)
-            {
-                System.out.println(String.format("Web Results#%d", webData.webPages().value().size()));
-                System.out.println(String.format("First web page name: %s ", firstWebPagesResult.name()));
-                System.out.println(String.format("First web page URL: %s ", firstWebPagesResult.url()));
-            }
-            else
-            {
-                System.out.println("Couldn't find first web result!");
-            }
-        }
-        else
-        {
-            System.out.println("Didn't see any Web data..");
-        }
+```java
+/*
+* WebPages
+* If the search response contains web pages, the first result's name
+* and url are printed.
+*/
+if (webData != null && webData.webPages() != null && webData.webPages().value() != null &&
+        webData.webPages().value().size() > 0) {
+    // find the first web page
+    WebPage firstWebPagesResult = webData.webPages().value().get(0);
+
+    if (firstWebPagesResult != null) {
+        System.out.println(String.format("Webpage Results#%d", webData.webPages().value().size()));
+        System.out.println(String.format("First web page name: %s ", firstWebPagesResult.name()));
+        System.out.println(String.format("First web page URL: %s ", firstWebPagesResult.url()));
+    } else {
+        System.out.println("Couldn't find the first web result!");
     }
-    catch (ErrorResponseException ex)
-    {
-        System.out.println("Encountered exception. " + ex.getLocalizedMessage());
+} else {
+    System.out.println("Didn't find any web pages...");
+}
+/*
+ * Images
+ * If the search response contains images, the first result's name
+ * and url are printed.
+ */
+if (webData != null && webData.images() != null && webData.images().value() != null &&
+        webData.images().value().size() > 0) {
+    // find the first image result
+    ImageObject firstImageResult = webData.images().value().get(0);
+
+    if (firstImageResult != null) {
+        System.out.println(String.format("Image Results#%d", webData.images().value().size()));
+        System.out.println(String.format("First Image result name: %s ", firstImageResult.name()));
+        System.out.println(String.format("First Image result URL: %s ", firstImageResult.contentUrl()));
+    } else {
+        System.out.println("Couldn't find the first image result!");
     }
+} else {
+    System.out.println("Didn't find any images...");
+}
+/*
+ * News
+ * If the search response contains news articles, the first result's name
+ * and url are printed.
+ */
+if (webData != null && webData.news() != null && webData.news().value() != null &&
+        webData.news().value().size() > 0) {
+    // find the first news result
+    NewsArticle firstNewsResult = webData.news().value().get(0);
+    if (firstNewsResult != null) {
+        System.out.println(String.format("News Results#%d", webData.news().value().size()));
+        System.out.println(String.format("First news result name: %s ", firstNewsResult.name()));
+        System.out.println(String.format("First news result URL: %s ", firstNewsResult.url()));
+    } else {
+        System.out.println("Couldn't find the first news result!");
+    }
+} else {
+    System.out.println("Didn't find any news articles...");
 }
 
-```
-使用分配给 `news` 的响应筛选器搜索“Microsoft”。 输出第一个新闻项的详细信息。
-```
-public static void WebSearchWithResponseFilter(String subscriptionKey)
-{
-    WebSearchAPIImpl client = getClient(subscriptionKey);
+/*
+ * Videos
+ * If the search response contains videos, the first result's name
+ * and url are printed.
+ */
+if (webData != null && webData.videos() != null && webData.videos().value() != null &&
+        webData.videos().value().size() > 0) {
+    // find the first video result
+    VideoObject firstVideoResult = webData.videos().value().get(0);
 
-    try
-    {
-        List<AnswerType> responseFilterstrings = new ArrayList<AnswerType>();
-        responseFilterstrings.add(AnswerType.NEWS);
-        SearchResponseInner webData = client.webs().search(
-        "Best restaurants in Seattle", null, null, null, null, null, 10, null, 20, null, "en-us", null,
-                null, responseFilterstrings, SafeSearch.STRICT, null, null, null);
-
-        System.out.println("\\r\\nSearched for Query# \" Microsoft \" with response filters \"news\"");
-
-        //News
-        if (webData.news() != null && webData.news().value().size() > 0)
-        {
-            // find the first news result
-            NewsArticle firstNewsResult = webData.news().value().get(0);
-
-            if (firstNewsResult != null)
-            {
-                System.out.println(String.format("News Results#%d", webData.news().value().size()));
-                System.out.println(String.format("First news result name: %s ", firstNewsResult.name()));
-                System.out.println(String.format("First news result URL: %s ", firstNewsResult.url()));
-            }
-            else
-            {
-                System.out.println("Couldn't find first News results!");
-            }
-        }
-        else
-        {
-            System.out.println("Didn't see any News data..");
-        }
-
+    if (firstVideoResult != null) {
+        System.out.println(String.format("Video Results#%s", webData.videos().value().size()));
+        System.out.println(String.format("First Video result name: %s ", firstVideoResult.name()));
+        System.out.println(String.format("First Video result URL: %s ", firstVideoResult.contentUrl()));
+    } else {
+        System.out.println("Couldn't find the first video result!");
     }
-    catch (ErrorResponseException ex)
-    {
-        System.out.println("Encountered exception. " + ex.getLocalizedMessage());
-    }
-}
-
-```
-使用查询“Niagara Falls”以及 `answerCount` 和 `promote` 参数进行搜索。 输出结果的详细信息。
-```
-public static void WebSearchWithAnswerCountPromoteAndSafeSearch(String subscriptionKey)
-{
-    WebSearchAPIImpl client = getClient(subscriptionKey);
-
-    try
-    {
-        List<AnswerType> promoteAnswertypeStrings = new ArrayList<AnswerType>();
-        promoteAnswertypeStrings.add(AnswerType.VIDEOS);
-        SearchResponseInner webData = client.webs().search(
-            "Niagara Falls", null, null, null, null, null, 10, null, 20, null, "en-us", null,
-            promoteAnswertypeStrings, null, SafeSearch.STRICT, null, null, null);
-        System.out.println("\r\nSearched for Query# \" Niagara Falls \"");
-
-        if (webData.videos().value().size() > 0)
-        {
-            VideoObject firstVideosResult = webData.videos().value().get(0);
-
-            if (firstVideosResult != null)
-            {
-                System.out.println(String.format("Video Results#%d", webData.videos().value().size()));
-                System.out.println(String.format("First Video result name: %s ", firstVideosResult.name()));
-                System.out.println(String.format("First Video result URL: %s ", firstVideosResult.contentUrl()));
-            }
-            else
-            {
-                System.out.println("Couldn't find videos results!");
-            }
-        }
-        else
-        {
-            System.out.println("Didn't see any data..");
-        }
-    }
-    catch (ErrorResponseException ex)
-    {
-        System.out.println("Encountered exception. " + ex.getLocalizedMessage());
-    }
-}
-
-```
-将上述方法添加到一个类中，并为该类添加一个用于执行代码的主函数：
-```
-package javaWebSDK;
-import com.microsoft.azure.cognitiveservices.websearch.*;
-public class webSDK{
-    
-    public static void main(String [ ] args) {
-        
-        WebSearchResultTypesLookup("YOUR-SUBSCRIPTION-KEY");
-        WebResultsWithCountAndOffset("YOUR-SUBSCRIPTION-KEY");
-        WebSearchWithResponseFilter("YOUR-SUBSCRIPTION-KEY");
-        WebSearchWithAnswerCountPromoteAndSafeSearch("YOUR-SUBSCRIPTION-KEY");
-        
-    }
-    // Add methods previoiusly documented.
+} else {
+    System.out.println("Didn't find any videos...");
 }
 ```
+
+## <a name="declare-the-main-method"></a>声明 main 方法
+
+在此应用程序中，main 方法包括了用来实例化客户端、验证 `subscriptionKey` 和调用 `runSample` 的代码。 请确保输入你的 Azure 帐户的有效订阅密钥，然后再继续。
+
+```java
+public static void main(String[] args) {
+    try {
+        // Enter a valid subscription key for your account.
+        final String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
+        // Instantiate the client.
+        BingWebSearchAPI client = BingWebSearchManager.authenticate(subscriptionKey);
+        // Make a call to the Bing Web Search API.
+        runSample(client);
+    } catch (Exception e) {
+        System.out.println(e.getMessage());
+        e.printStackTrace();
+    }
+}
+```
+
+## <a name="run-the-program"></a>运行程序
+
+最后一步是运行程序！
+
+```console
+mvn compile exec:java
+```
+
+## <a name="clean-up-resources"></a>清理资源
+
+完成本项目以后，请务必从程序代码中删除订阅密钥。
+
 ## <a name="next-steps"></a>后续步骤
 
-[认知服务 Java SDK 示例](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+> [!div class="nextstepaction"]
+> [认知服务 Java SDK 示例](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingWebSearch)
 
+## <a name="see-also"></a>另请参阅
 
+* [Azure Java SDK 参考](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/websearch)

@@ -1,104 +1,193 @@
 ---
-title: 适用于 Azure 认知服务、必应 Web 搜索 API 的 Go 快速入门 | Microsoft Docs
-description: 快速开始使用 Go 语言查询 Azure 上的 Microsoft 认知服务中的必应 Web 搜索 API。
+title: 快速入门：使用 Go 调用必应 Web 搜索 API
+description: 本快速入门介绍了如何使用 Go 进行你的第一次必应 Web 搜索 API 调用并接收 JSON 响应。
 services: cognitive-services
-author: Nhoya
+author: erhopf
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
-ms.date: 03/09/2018
-ms.author: rosh
-ms.reviewer: nhoyadx@gmail.com, v-gedod
-ms.openlocfilehash: 86cb67d46bca40c83c2f175ab7fdf6fbf52cb02f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.topic: quickstart
+ms.date: 8/16/2018
+ms.author: erhopf
+ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
+ms.openlocfilehash: 3f5fc8461103b2f4ee04750ceba35e05eaa5515c
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365833"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886616"
 ---
-# <a name="call-and-response-your-first-bing-web-search-query-in-go"></a>调用和响应：Go 中的第一个必应 Web 搜索查询
+# <a name="quickstart-use-go-to-call-the-bing-web-search-api"></a>快速入门：使用 Go 调用必应 Web 搜索 API  
 
-必应 Web 搜索 API 类似于 Bing.com，它返回与用户查询相关的搜索结果。 结果可能包含网页、图像、视频、新闻和实体，以及相关搜索查询、拼写更正、时区、单位转换、翻译和计算。 这些结果基于它们的相关性以及订阅的必应搜索 API 的层级。
+使用本快速入门在不到 10 分钟时间内进行你的第一次必应 Web 搜索 API 调用并接收 JSON 响应。  
 
-有关 API 的详细信息，请参阅 [API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)。
+[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]  
 
 ## <a name="prerequisites"></a>先决条件
-必须拥有包含必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 需要激活免费试用版时提供的访问密钥，或使用 Azure 仪表板中的付费订阅密钥。
 
-安装 [Go 二进制文件](https://golang.org/dl/)。
- 
-本教程仅使用核心库，因此没有外部依赖关系。
+下面是在开始本快速入门之前需要准备好的项目：
 
-## <a name="core-libraries"></a>核心库
+* [Go 二进制文件](https://golang.org/dl/)
+* 订阅密钥
 
-使用 `http` 将请求发送到终结点，使用 `ioutil` 读取答案，使用 `time` 和 `json` 来处理 json 并使用 `fmt` 来打印输出
+本快速入门仅需要**核心**库，不需要外部依赖项。  
 
-```
+## <a name="create-a-project-and-import-core-libraries"></a>创建一个项目并导入核心库
+
+在你喜欢使用的 IDE 或编辑器中新建一个 Go 项目。 然后，导入用于请求的 `net/http`，导入 `ioutil` 来读取响应，导入 `time` 和 `encoding/json` 来处理 JSON，并导入 `fmt` 来打印输出。
+
+```go
 package main
-
 import (
     "fmt"
     "net/http"
-    "io/iutil"
+    "io/ioutil"
     "time"
     "encoding/json"
 )
 ```
 
-## <a name="define-variables"></a>定义变量
-设置 API 终结点和搜索词。
+## <a name="create-a-struct-to-format-the-search-results"></a>创建一个结构来格式化搜索结果
 
-```
-//This is the valid endpoint at the time of the writing
-const endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/search"
-//API token
-token := "YOUR-ACCESS-KEY"
-searchTerm := "Microsoft Cognitive Services"
+`BingAnswer` 结构对在响应中提供的数据进行格式化。
+
+```go
+// This struct formats the answers provided by the Bing Web Search API.
+type BingAnswer struct {
+        Type         string `json:"_type"`
+        QueryContext struct {
+                OriginalQuery string `json:"originalQuery"`
+        } `json:"queryContext"`
+        WebPages struct {
+                WebSearchURL          string `json:"webSearchUrl"`
+                TotalEstimatedMatches int    `json:"totalEstimatedMatches"`
+                Value                 []struct {
+                        ID               string    `json:"id"`
+                        Name             string    `json:"name"`
+                        URL              string    `json:"url"`
+                        IsFamilyFriendly bool      `json:"isFamilyFriendly"`
+                        DisplayURL       string    `json:"displayUrl"`
+                        Snippet          string    `json:"snippet"`
+                        DateLastCrawled  time.Time `json:"dateLastCrawled"`
+                        SearchTags       []struct {
+                                Name    string `json:"name"`
+                                Content string `json:"content"`
+                        } `json:"searchTags,omitempty"`
+                        About []struct {
+                                Name string `json:"name"`
+                        } `json:"about,omitempty"`
+                } `json:"value"`
+        } `json:"webPages"`
+        RelatedSearches struct {
+                ID    string `json:"id"`
+                Value []struct {
+                        Text         string `json:"text"`
+                        DisplayText  string `json:"displayText"`
+                        WebSearchURL string `json:"webSearchUrl"`
+                } `json:"value"`
+        } `json:"relatedSearches"`
+        RankingResponse struct {
+                Mainline struct {
+                        Items []struct {
+                                AnswerType  string `json:"answerType"`
+                                ResultIndex int    `json:"resultIndex"`
+                                Value       struct {
+                                        ID string `json:"id"`
+                                } `json:"value"`
+                        } `json:"items"`
+                } `json:"mainline"`
+                Sidebar struct {
+                        Items []struct {
+                                AnswerType string `json:"answerType"`
+                                Value      struct {
+                                        ID string `json:"id"`
+                                } `json:"value"`
+                        } `json:"items"`
+                } `json:"sidebar"`
+        } `json:"rankingResponse"`
+}
 ```
 
-## <a name="building-and-sending-the-request"></a>生成和发送请求
+## <a name="declare-the-main-function-and-define-variables"></a>声明主函数并定义变量  
 
+以下代码声明了主函数，并设置了必需的变量。 确认终结点正确并将 `token` 值替换为来自你的 Azure 帐户的有效订阅密钥。 可以通过替换 `searchTerm` 的值随意自定义搜索查询。
+
+```go
+// Declare the main function. This is required for all Go programs.
+func main() {
+// Verify the endpoint URI and replace the token string with a valid subscription key.  
+    const endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/search"
+    token := "YOUR-ACCESS-KEY"
+    searchTerm := "Microsoft Cognitive Services"
+
+// The remaining code in this quickstart goes in the main function.
+
+}
 ```
-//Declare a new GET request
+
+## <a name="construct-a-request"></a>构造请求
+
+以下代码声明了 HTTP 请求，插入了标头和有效负载，并实例化了客户端。
+
+```go
+// Declare a new GET request.
 req, err := http.NewRequest("GET", endpoint, nil)
 if err != nil {
     panic(err)
 }
-//Add the payload to the request
+
+// Add the payload to the request.  
 param := req.URL.Query()
 param.Add("q", searchTerm)
-//Encoding the payload
 req.URL.RawQuery = param.Encode()
 
-//Insert the API token in the request header
+// Insert the request header.  
 req.Header.Add("Ocp-Apim-Subscription-Key", token)
 
-//create new client
+// Instantiate a client.  
 client := new(http.Client)
-//Send the request
+```
+
+## <a name="make-a-request"></a>发出请求
+
+使用以下代码调用必应 Web 搜索 API 并在返回响应后关闭连接。
+
+```go
+// Send the request to Bing.  
 resp, err := client.Do(req)
 if err != nil {
     panic(err)
 }
-//Close the response body at the function exit
-defer resp.Body.Close() 
-```
 
-## <a name="printing-the-answer"></a>打印答案
-搜索结果在 `resp` 变量中。 从变量中打印答案正文。
-
-```
+// Close the connection.
+defer resp.Body.Close()
 body, err := ioutil.ReadAll(resp.Body)
 if err != nil {
     panic(err)
 }
-//Convert body from byte to string.
-fmt.Println(string(body))
 ```
 
-## <a name="put-everything-together"></a>将所有内容放在一起
+## <a name="handle-the-response"></a>处理响应
 
+还记得我们之前创建的结构吗？ 我们将使用它来格式化响应并输出搜索结果。
+
+```go
+// Create a new answer.  
+ans := new(BingAnswer)
+err = json.Unmarshal(body, &ans)
+if err != nil {
+    fmt.Println(err)
+}
+// Iterate over search results and print the result name and URL.
+for _, result := range ans.WebPages.Value {
+    fmt.Println(result.Name, "||", result.URL)
+}
 ```
+
+## <a name="put-it-all-together"></a>将其放在一起
+
+最后一步是验证代码并运行它！ 如果希望将你的代码与我们的进行比较，下面是完整的程序：
+
+```go
 package main
 import (
     "fmt"
@@ -108,7 +197,7 @@ import (
     "encoding/json"
 )
 
-//The struct that will contain the answer
+// The is the struct for the data returned by Bing.
 type BingAnswer struct {
         Type         string `json:"_type"`
         QueryContext struct {
@@ -163,51 +252,76 @@ type BingAnswer struct {
         } `json:"rankingResponse"`
 }
 
+// Verify the endpoint URI and replace the token string with a valid subscription key.  
 func main() {
     const endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/search"
     token := "YOUR-ACCESS-KEY"
     searchTerm := "Microsoft Cognitive Services"
-    
+
+    // Declare a new GET request.
     req, err := http.NewRequest("GET", endpoint, nil)
     if err != nil {
         panic(err)
     }
-    
+
+    // Add the payload to the request.  
     param := req.URL.Query()
     param.Add("q", searchTerm)
     req.URL.RawQuery = param.Encode()
 
+    // Insert the request header.  
     req.Header.Add("Ocp-Apim-Subscription-Key", token)
-    
+
+    // Create a new client.  
     client := new(http.Client)
+
+    // Send the request to Bing.  
     resp, err := client.Do(req)
     if err != nil {
         panic(err)
     }
-    defer resp.Body.Close() 
+
+    // Close the response.
+    defer resp.Body.Close()
     body, err := ioutil.ReadAll(resp.Body)
     if err != nil {
         panic(err)
     }
-    //creating a new answer struct
+
+    // Create a new answer.  
     ans := new(BingAnswer)
     err = json.Unmarshal(body, &ans)
     if err != nil {
          fmt.Println(err)
     }
-    //Iterate over search results
+
+    // Iterate over search results and print the result name and URL.
     for _, result := range ans.WebPages.Value {
-         //Printing result name and URL
          fmt.Println(result.Name, "||", result.URL)
     }
 
 }
 ```
 
+## <a name="sample-response"></a>示例响应  
+
+来自必应 Web 搜索 API 的响应以 JSON 形式返回。 此示例响应已使用 `BingAnswer` 结构进行了格式化并显示了 `result.Name` 和 `result.URL`。
+
+```go
+Microsoft Cognitive Services || https://www.microsoft.com/cognitive-services
+Cognitive Services | Microsoft Azure || https://azure.microsoft.com/services/cognitive-services/
+Cognitive Service Try experience | Microsoft Azure || https://azure.microsoft.com/en-us/try/cognitive-services/
+What is Microsoft Cognitive Services? | Microsoft Docs || https://docs.microsoft.com/en-us/azure/cognitive-services/Welcome
+Microsoft Cognitive Toolkit || https://www.microsoft.com/en-us/cognitive-toolkit/
+Microsoft Customers || https://customers.microsoft.com/en-us/search?sq=%22Microsoft%20Cognitive%20Services%22&ff=&p=0&so=story_publish_date%20desc
+Microsoft Enterprise Services - Microsoft Enterprise || https://enterprise.microsoft.com/en-us/services/
+Microsoft Cognitive Services || https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236
+Cognitive Services - msdn.microsoft.com || https://msdn.microsoft.com/en-us/magazine/mt742868.aspx  
+```
+
 ## <a name="next-steps"></a>后续步骤
 
-[必应 Web 搜索概述](../overview.md)  
-[试用](https://azure.microsoft.com/services/cognitive-services/bing-web-search-api/)  
-[获取免费试用版访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)
-[必应 Web 搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)
+> [!div class="nextstepaction"]
+> [必应 Web 搜索单页应用教程](../tutorial-bing-web-search-single-page-app.md)
 
+[!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]
