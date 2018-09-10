@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: de295a93d395cee4c4dfbea4f2e7f7338036feb8
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 3f23ade2b0256c72c344e2a619227a79e3c79a47
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494367"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160109"
 ---
 # <a name="tutorial-1-build-app-with-custom-domain"></a>教程：1. 使用自定义域生成应用
 在本教程中，我们将创建一个应用，用于演示如何使用**意向**，根据用户提交到应用的陈述（文本），来确定该用户的_意向_。 完成本教程后，会在云中运行一个 LUIS 终结点。
@@ -32,7 +32,7 @@ ms.locfileid: "39494367"
 > * 将示例陈述添加到 ApplyForJob 意向 
 > * 再次训练、发布并查询终结点 
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="purpose-of-the-app"></a>应用的用途
 此应用具有多个意向。 第一个意向 **`GetJobInformation`** 识别用户何时需要公司内部提供的作业的信息。 第二个意向 **`None`** 识别其他每种类型的陈述。 本快速入门稍后会添加第三个意向 `ApplyForJob`。 
@@ -85,15 +85,15 @@ ms.locfileid: "39494367"
 
 ## <a name="train-and-publish-the-app"></a>训练并发布应用
 
-[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-app-to-endpoint"></a>将应用发布到终结点
 
-[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
+[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
 
 ## <a name="query-endpoint-for-getjobinformation-intent"></a>查询 GetJobInformation 意向的终结点
 
-1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. 将光标定位到地址中 URL 的末尾，并输入 `I'm looking for a job with Natual Language Processing`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 此陈述不同于步骤 4 中的任何示例陈述，因此，它非常适合用于测试，测试结果应返回 `GetJobInformation` 意向（评分最高的意向）。 
 
@@ -147,7 +147,7 @@ ms.locfileid: "39494367"
 
 ## <a name="query-endpoint-for-applyforjob-intent"></a>查询 ApplyForJob 意向的终结点
 
-1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. 在新浏览器窗口中，在 URL 的末尾输入 `Can I submit my resume for job 235986`。 
 
@@ -186,7 +186,7 @@ LUIS 已完成此请求。 调用方应用程序（例如聊天机器人）可�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

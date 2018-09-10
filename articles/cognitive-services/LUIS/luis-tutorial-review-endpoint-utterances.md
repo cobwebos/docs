@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 08/03/2018
 ms.author: diberry
-ms.openlocfilehash: 5ce08861934305cccca9933a822fccf642746a59
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: db44bfad5ece59ed3373699c10d6134201bf1879
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527698"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160075"
 ---
 # <a name="tutorial-review-endpoint-utterances"></a>教程：审核终结点表述
 本教程会验证或纠正通过 LUIS HTTP 终结点收到的表述，以便改进应用预测。 
@@ -27,7 +27,7 @@ ms.locfileid: "39527698"
 > * 训练并发布应用
 > * 查询应用终结点以查看 LUIS JSON 响应
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>开始之前
 如果没有[情绪](luis-quickstart-intent-and-sentiment-analysis.md)教程中提供的人力资源应用，请从 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-sentiment-HumanResources.json) Github 存储库导入该应用。 如果将本教程作为新导入的应用使用，则还需训练和发布表述，然后通过[脚本](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js)或浏览器中的终结点将其添加到终结点。 要添加的表述如下：
@@ -104,19 +104,19 @@ ms.locfileid: "39527698"
 
 在训练之前，LUIS 并不知道这些更改。 
 
-[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>发布应用以获取终结点 URL
 
 如果已导入此应用，则需选择“情绪分析”。
 
-[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-an-utterance"></a>使用陈述查询终结点
 
 尝试一个与纠正的表述相近的表述。 
 
-1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. 将光标定位到地址中 URL 的末尾，并输入 `Are there any natural language processing jobs in my department right now?`。 最后一个查询字符串参数为 `q`，表示陈述**查询**。 
 
@@ -230,7 +230,7 @@ ms.locfileid: "39527698"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

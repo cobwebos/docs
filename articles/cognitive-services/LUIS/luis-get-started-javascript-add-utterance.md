@@ -9,27 +9,27 @@ ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 08/24/2018
 ms.author: diberry
-ms.openlocfilehash: ffc19d12c1d3fbb24c514ac87f298d1a52d23eb8
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 0920a194d3e9c93883b88b7131f7e81dc8fb3302
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43768816"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159684"
 ---
 # <a name="quickstart-change-model-using-javascript"></a>快速入门：使用 JavaScript 更改模型
 
-[!include[Quickstart introduction for change model](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
+[!INCLUDE [Quickstart introduction for change model](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
-[!include[Quickstart prerequisites for changing model](../../../includes/cognitive-services-luis-qs-change-model-prereq.md)]
+[!INCLUDE [Quickstart prerequisites for changing model](../../../includes/cognitive-services-luis-qs-change-model-prereq.md)]
 * [Visual Studio Code](https://code.visualstudio.com/)。
 
-[!include[Code is available in LUIS-Samples Github repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
+[!INCLUDE [Code is available in LUIS-Samples Github repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
 
 ## <a name="example-utterances-json-file"></a>示例话语 JSON 文件
 
-[!include[Quickstart explanation of example utterance JSON file](../../../includes/cognitive-services-luis-qs-change-model-json-ex-utt.md)]
+[!INCLUDE [Quickstart explanation of example utterance JSON file](../../../includes/cognitive-services-luis-qs-change-model-json-ex-utt.md)]
 
 
 ## <a name="create-quickstart-code"></a>创建快速入门代码
@@ -78,7 +78,7 @@ ms.locfileid: "43768816"
     ![Add-utterances.html](./media/luis-quickstart-javascript-add-utterance/add-utterance.png)
 
 ## <a name="clean-up-resources"></a>清理资源
-完成此快速入门后，删除此快速入门中创建的所有文件。 
+完成本快速入门后，删除在本快速入门中创建的所有文件。 
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]

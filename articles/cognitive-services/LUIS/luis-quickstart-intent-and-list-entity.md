@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: afad3fe725fddd0748cc206517a7274815cf1653
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 04411f415b7cfe07d893c43e758bd2a4a226472a
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495258"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162192"
 ---
 # <a name="tutorial-4-add-list-entity"></a>教程：4. 添加列表实体
 在本教程中，我们将创建一个应用，用于演示如何获取与预定义列表匹配的数据。 
@@ -27,7 +27,7 @@ ms.locfileid: "39495258"
 > * 训练并发布应用
 > * 查询应用终结点以查看 LUIS JSON 响应
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>开始之前
 如果尚未获得 [regex 实体](luis-quickstart-intents-regex-entity.md)教程中所述的人力资源应用，请将 JSON [导入](luis-how-to-start-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。 要导入的应用位于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-regex-HumanResources.json) Github 存储库中。
@@ -135,15 +135,15 @@ mv john.w.smith@mycompany from office b-1234 to office h-4452
 
 ## <a name="train-the-luis-app"></a>训练 LUIS 应用
 
-[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>发布应用以获取终结点 URL
 
-[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-a-different-utterance"></a>使用不同的话语查询终结点
 
-1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
+1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
 2. 将光标定位到地址中 URL 的末尾，并输入 `shift 123-45-6789 from Z-1242 to T-54672`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 此陈述不同于标记的任何陈述，因此，它非常适合用于测试，测试结果应返回提取了 `Employee` 的 `MoveEmployee` 意向。
 
@@ -272,7 +272,7 @@ LUIS 已完成此请求。 调用方应用程序（例如聊天机器人）可�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

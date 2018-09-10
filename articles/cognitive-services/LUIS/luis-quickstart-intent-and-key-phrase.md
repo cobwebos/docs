@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: d5b92681b9677db085b3c271c37490154d781d84
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: ef7a1c81f453a8d4ff9526a4844518782e152c4f
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494304"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159480"
 ---
 # <a name="tutorial-8-add-keyphrase-entity"></a>教程：8. 添加 keyPhrase 实体 
 在本教程中，我们将使用一个应用，它演示了如何从陈述中提取关键主题。
@@ -27,7 +27,7 @@ ms.locfileid: "39494304"
 > * 训练并发布应用
 > * 查询应用的终结点以查看包含关键段落的 LUIS JSON 响应
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>开始之前
 如果尚未获得[简单实体](luis-quickstart-primary-and-secondary-data.md)教程中所述的人力资源应用，请将 JSON [导入](luis-how-to-start-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。 要导入的应用位于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-simple-HumanResources.json) Github 存储库中。
@@ -72,16 +72,16 @@ ms.locfileid: "39494304"
 
 ## <a name="train-the-luis-app"></a>训练 LUIS 应用
 
-[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-app-to-endpoint"></a>将应用发布到终结点
 
-[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 
 ## <a name="query-the-endpoint-with-an-utterance"></a>使用陈述查询终结点
 
-1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. 将光标定位到地址中 URL 的末尾，并输入 `does form hrf-123456 cover the new dental benefits and medical plan`。 最后一个查询字符串参数为 `q`，表示陈述**查询**。 
 
@@ -184,7 +184,7 @@ LUIS 已完成此请求。 调用方应用程序（例如聊天机器人）可�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

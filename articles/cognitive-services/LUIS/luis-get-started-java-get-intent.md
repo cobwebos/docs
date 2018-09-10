@@ -8,16 +8,16 @@ ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.author: diberry
-ms.openlocfilehash: 559c0e5832249b095b923fe88467f8f4c5ffa5e1
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 4dd5437940994a2f264b5a11baebcd67fdddb43d
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "43768799"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44163084"
 ---
 # <a name="quickstart-analyze-text-using-java"></a>快速入门：使用 Java 分析文本
 
-[!include[Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
+[!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
 <a name="create-luis-subscription-key"></a>
 
@@ -28,15 +28,15 @@ ms.locfileid: "43768799"
 * 公共应用 ID：df67dcdb-c37d-46af-88e1-8b97951ca1c2
 
 
-[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-luis-repo-note.md)]
+[!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-luis-repo-note.md)]
 
 ## <a name="get-luis-key"></a>获取 LUIS 密钥
 
-[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
+[!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
 
 ## <a name="analyze-text-with-browser"></a>使用浏览器分析文本
 
-[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
+[!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
 
 ## <a name="analyze-text-with-java"></a>使用 Java 分析文本 
 
@@ -56,7 +56,7 @@ ms.locfileid: "43768799"
     
 ## <a name="luis-keys"></a>LUIS 密钥
 
-[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-key-usage-para.md)]
+[!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-key-usage-para.md)]
 
 ## <a name="clean-up-resources"></a>清理资源
 
