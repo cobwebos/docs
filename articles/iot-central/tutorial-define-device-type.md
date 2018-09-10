@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 4c850cd98280940c53a07c70c9c478f9e20e2963
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: a2601f55bbc7e99321689afdafcab3135b94bd5b
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41919874"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702538"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>教程：在 Azure IoT Central 应用程序中定义新设备类型
 
@@ -280,22 +280,22 @@ ms.locfileid: "41919874"
 
 ## <a name="use-properties--device-properties"></a>使用属性/设备属性
 
-使用“属性”可以存储有关应用程序中设备的信息。 在本部分，请将设备属性添加到“连接的空调”设备模板，以便存储设备序列号和固件版本。 请注意，这两个都是设备报告的只读属性 -- 不能向其分配值。 可以使用的并且能够向其分配值的属性包括：设备的位置、所有权信息、设备的上次服务日期/时间。
+使用“属性”可以存储有关应用程序中设备的信息。 在本部分中，向“连接的空调”设备模板中添加云属性，以便存储设备的位置和最后维修日期。 请注意，这两者都是设备的可编辑属性。 还有由设备报告的无法更改的只读属性，例如设备序列号和固件版本。
  
 1. 导航到“连接的空调”设备模板的“属性”页：
 
     ![准备添加属性](./media/tutorial-define-device-type/deviceaddproperty.png)
 
-    可以创建不同类型（例如数字或文本）的设备属性。 若要将序列号属性添加到设备模板，请选择“文本”。
+    可以创建不同类型（例如数字或文本）的设备属性。 若要向设备模板添加位置属性，请选择“位置”。
 
-2. 若要配置序列号属性，请使用下表中的信息：
+2. 若要配置位置属性，请使用下表中的信息：
 
     | 字段                | 值                |
     | -------------------- | -------------------- |
-    | 显示名称         | 序列号        |
-    | 字段名称           | serialNumber         |
-    | 初始值        | cac00001             |
-    | Description          | 设备序列号 |
+    | 显示名称         | 位置             |
+    | 字段名称           | location             |
+    | 初始值        | 华盛顿州西雅图          |
+    | 说明          | 设备位置      |
 
     在其他字段中保留默认值。
 
@@ -303,16 +303,16 @@ ms.locfileid: "41919874"
 
     选择“保存”。
 
-3. 若要将固件版本添加到设备模板的设备属性，请选择“文本”。
+3. 若要向设备模板添加最后维修日期属性，请选择“日期”。
 
-4. 若要配置固件版本设备属性，请使用下表中的信息：
+4. 若要配置最后维修日期属性，请使用下表中的信息：
 
     | 字段                | 值                   |
     | -------------------- | ----------------------- |
-    | 显示名称         | 固件版本        |
-    | 字段名称           | firmwareVersion         |
-    | 初始值        | 0.1                     |
-    | Description          | 设备固件版本 |
+    | 显示名称         | 最后维修日期       |
+    | 字段名称           | serviceDate             |
+    | 初始值        | 2018/1/1                |
+    | 说明          | 最后维修日期           |
 
     ![配置设备属性](./media/tutorial-define-device-type/configureproperties2.png)
 

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 08/21/2018
-ms.openlocfilehash: fcb2da93a39bd4e1a81f7767dc40b3a24fd7d213
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 9ad18397a3463fc845692c79b5e1f817d0912a8e
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40250627"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43663661"
 ---
 # <a name="install-ansible-on-azure-virtual-machines"></a>在 Azure 虚拟机上安装 Ansible
 
@@ -23,7 +23,7 @@ ms.locfileid: "40250627"
 
 - **Azure 订阅** - 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-- **Linux 或 Linux 虚拟机的访问权限** - 如果没有 Linux 计算机，请创建 [Linux 虚拟机](/virtual-machines/linux/quick-create-cli.md)。
+- **对 Linux 或 Linux 虚拟机的访问权限** - 如果没有 Linux 计算机，请创建 [Linux 虚拟机](https://docs.microsoft.com/azure/virtual-network/quick-create-cli)。
 
 - **Azure 服务主体**：遵循[使用 Azure CLI 2.0 创建 Azure 服务主体](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal)一文的“创建服务主体”部分中的指导。 记下 **appId**、**displayName**、**password** 和 **tenant** 的值。
 
@@ -48,7 +48,7 @@ sudo yum install -y python-pip python-wheel
 sudo pip install ansible[azure]
 ```
 
-按[创建 Azure 凭据](#create-azure-credentials)部分概述的说明操作。
+按[创建 Azure 凭据](#create-azure-credentials)部分概述的说明进行操作。
 
 ### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
 
@@ -63,7 +63,7 @@ sudo apt-get update && sudo apt-get install -y libssl-dev libffi-dev python-dev 
 sudo pip install ansible[azure]
 ```
 
-按[创建 Azure 凭据](#create-azure-credentials)部分概述的说明操作。
+按[创建 Azure 凭据](#create-azure-credentials)部分概述的说明进行操作。
 
 ### <a name="sles-12-sp2"></a>SLES 12 SP2
 
@@ -81,7 +81,7 @@ sudo pip install ansible[azure]
 sudo pip uninstall -y cryptography
 ```
 
-按[创建 Azure 凭据](#create-azure-credentials)部分概述的说明操作。
+按[创建 Azure 凭据](#create-azure-credentials)部分概述的说明进行操作。
 
 ## <a name="create-azure-credentials"></a>创建 Azure 凭据
 
@@ -92,9 +92,9 @@ sudo pip uninstall -y cryptography
 
 如果要使用 Ansible Tower 或 Jenkins 等工具，则需使用将服务主体值声明为环境变量的选项。
 
-### <a name="span-idfile-credentials-create-ansible-credentials-file"></a><span id="file-credentials"/> 创建 Ansible 凭据文件
+### <a name="span-idfile-credentials-create-ansible-credentials-file"></a><span id="file-credentials"/>创建 Ansible 凭据文件
 
-此部分介绍如何创建本地凭据文件，以便向 Ansible 提供凭据。 有关如何定义 Ansible 凭据的详细信息，请参阅[为 Azure 模块提供凭据](https://docs.ansible.com/ansible/guide_azure.html#providing-credentials-to-azure-modules)。
+本部分介绍了如何创建本地凭据文件，以便向 Ansible 提供凭据。 有关如何定义 Ansible 凭据的详细信息，请参阅[为 Azure 模块提供凭据](https://docs.ansible.com/ansible/guide_azure.html#providing-credentials-to-azure-modules)。
 
 对于开发环境，请按以下步骤在主机虚拟机上创建 Ansible 的凭据文件：
 
@@ -117,7 +117,7 @@ tenant=<security-principal-tenant>
 
 ### <a name="span-idenv-credentialsuse-ansible-environment-variables"></a><span id="env-credentials"/>使用 Ansible 环境变量
 
-此部分介绍如何通过将 Ansible 凭据导出为环境变量来配置它们。
+本部分介绍了如何通过将 Ansible 凭据导出为环境变量来配置它们。
 
 在终端或 Bash 窗口中，输入以下命令：
 

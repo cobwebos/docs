@@ -17,12 +17,12 @@ ms.date: 07/17/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f2ebe6c7a70e4e574ea4953ca9ed01801190f80e
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 924269e16ab09cfd144955d3bd462cab7b37aaaf
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917129"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43381748"
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>在 Azure 中部署 Active Directory 联合身份验证服务
 AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。 与 Azure AD 或 O365 联合可让用户使用本地凭据进行身份验证，并访问云中的所有资源。 这样，就必须建立高可用性的 AD FS 基础结构来确保能够访问本地和云中的资源。 在 Azure 中部署 AD FS 有助于以最少量的工作实现所需的高可用性。
@@ -187,12 +187,14 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。 �
 
 **6.3.配置探测**
 
-在 ILB 设置面板中选择“探测”。
+在“ILB 设置”面板中，选择“运行状况探测”。
 
 1. 单击“添加”
-2. 提供探测详细信息 a. **名称**：探测名称 b. **协议**：TCP c. **端口**：443 (HTTPS) d. **间隔**：5（默认值）– 这是 ILB 在后端池中探测计算机的间隔 e. **不正常阈值限制**：2（默认值）– 这是连续探测失败次数阈值，达到此阈值后，ILB 会将后端池中的计算机声明为无响应，并停止向它发送流量。
+2. 提供探测详细信息 a. **名称**：探测名称 b. **协议**：HTTP c. **端口**：80 (HTTP) d. **路径**：/adfs/probe e. **间隔**：5（默认值）– 这是 ILB 在后端池中探测计算机的间隔 f. **不正常阈值限制**：2（默认值）– 这是连续探测失败次数阈值，达到此阈值后，ILB 会将后端池中的计算机声明为无响应，并停止向它发送流量。
 
 ![配置 ILB 探测](./media/active-directory-aadconnect-azure-adfs/ilbdeployment4.png)
+
+我们使用为在 AD FS 环境中进行运行状况检查而显式创建的 /adfs/probe 终结点，在该环境中无法进行完整的 HTTPS 路径检查。  这比基本的端口 443 检查好很多，端口 443 检查不能准确反映现代 AD FS 部署的状态。  可以在 https://blogs.technet.microsoft.com/applicationproxyblog/2014/10/17/hardware-load-balancer-health-checks-and-web-application-proxy-ad-fs-2012-r2/ 找到这方面的更多信息。
 
 **6.4.创建负载均衡规则**
 
@@ -269,7 +271,7 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。 �
 
 总体而言，需要创建以下规则来有效保护内部子网（按如下所列的顺序）
 
-| 规则 | 说明 | 流向 |
+| 规则 | Description | 流向 |
 |:--- |:--- |:---:|
 | AllowHTTPSFromDMZ |允许与外围网络进行 HTTPS 通信 |入站 |
 | DenyInternetOutbound |不允许访问 Internet |出站 |
@@ -283,7 +285,7 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。 �
 
 **9.2.保护外围网络子网**
 
-| 规则 | 说明 | 流向 |
+| 规则 | Description | 流向 |
 |:--- |:--- |:---:|
 | AllowHTTPSFromInternet |允许从 Internet 到外围网络的 HTTPS 流量 |入站 |
 | DenyInternetOutbound |阻止流向 Internet 的所有非 HTTPS 流量 |出站 |
@@ -321,7 +323,7 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。 �
 
 部署此模板时，可以使用现有的虚拟网络或者新建一个 VNET。 下面列出了可用于自定义部署的各种参数，以及部署过程中的参数用法说明。 
 
-| 参数 | 说明 |
+| 参数 | Description |
 |:--- |:--- |
 | 位置 |要将资源部署到的区域，例如“美国东部”。 |
 | StorageAccountType |创建的存储帐户的类型 |
