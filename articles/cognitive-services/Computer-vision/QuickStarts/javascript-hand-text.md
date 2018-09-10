@@ -1,6 +1,6 @@
 ---
-title: 计算机视觉 API JavaScript 快速入门 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
+title: 快速入门：提取手写文本 - REST、JavaScript - 计算机视觉
+titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将在认知服务中使用计算机视觉和 JavaScript 从图像中提取手写文本。
 services: cognitive-services
 author: noellelacharite
@@ -10,14 +10,14 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: c6b52bfdf1c42499772da1e5f72897baa65a4786
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 2771e4c0540692cec71340a27fd8d606e3ec3994
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43768822"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43840311"
 ---
-# <a name="quickstart-extract-handwritten-text---rest-javascript"></a>快速入门：提取手写文本 - REST、JavaScript
+# <a name="quickstart-extract-handwritten-text---rest-javascript---computer-vision"></a>快速入门：提取手写文本 - REST、JavaScript - 计算机视觉
 
 在本快速入门中，你将使用计算机视觉从图像中提取手写文本。
 

@@ -7,14 +7,14 @@ manager: nolachar
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: quickstart
-ms.date: 07/09/2018
+ms.date: 08/30/2018
 ms.author: nolachar
-ms.openlocfilehash: 0969700434e3f848aebfa833f0816c6f9f019560
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 312bc2e885c2cba42855e907bdcfb0f09ea6f67e
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "43768751"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841705"
 ---
 # <a name="quickstart-for-text-analytics-api-with-go"></a>将文本分析 API 与 Go 配合使用快速入门 
 <a name="HOLTop"></a>
@@ -58,7 +58,7 @@ import (
 
 func main() {
     // Replace the subscriptionKey string value with your valid subscription key
-    const subscriptionKey = "<Subscription Key>"
+    const subscriptionKey = "ENTER KEY HERE"
 
     /*
     Replace or verify the region.
@@ -70,10 +70,13 @@ func main() {
     NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
     a free trial access key, you should not need to change this region.
     */
-    const uriBase =    "https://westcentralus.api.cognitive.microsoft.com"
-    const uriPath = "/text/analytics/v2.0/languages"
+    const uriBase = "https://westcentralus.api.cognitive.microsoft.com"
+    const uriPath = "/text/analytics/v2.0/"
 
-    const uri = uriBase + uriPath
+    // Detect language.
+    fmt.Println("===== DETECT LANGUAGE ======")
+
+    uri := uriBase + uriPath + "languages"
 
     data := []map[string]string{
         {"id": "1", "text": "This is a document written in English."},
@@ -124,12 +127,11 @@ func main() {
         return
     }
     fmt.Println(string(jsonFormatted))
-}
 ```
 
 ## <a name="detect-language-response"></a>检测语言响应
 
-成功的响应以 JSON 格式返回，如以下示例所示：
+在 JSON 中返回成功的响应，如以下示例所示：
 
 ```json
 
@@ -178,64 +180,32 @@ func main() {
 
 情绪分析 API 使用 [Sentiment 方法](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)检测一组文本记录的情绪。 以下示例为两个文档打分，一个是英文文档，另一个是西班牙文文档。
 
-1. 在你喜欢使用的代码编辑器中新建一个 Go 项目。
-1. 添加以下提供的代码。
-1. 将 `subscriptionKey` 值替换为对你的订阅有效的访问密钥。
-1. 将 `uriBase` 中的位置（当前为 `westcentralus`）替换为进行注册的区域。
-1. 使用“.go”扩展名保存文件。
-1. 在安装了 Go 的计算机上打开命令提示符。
-1. 生成文件，例如：“go build quickstart.go”。
-1. 运行文件，例如：“quickstart”。
+将以下代码添加到[上一部分](#Detect)的代码中。
 
 ```golang
-package main
+    // Detect sentiment.
+    fmt.Println("===== DETECT SENTIMENT ======")
 
-import (
-    "encoding/json"
-    "fmt"
-    "io/ioutil"
-    "net/http"
-    "strings"
-    "time"
-)
+    uri = uriBase + uriPath + "sentiment"
 
-func main() {
-    // Replace the subscriptionKey string value with your valid subscription key
-    const subscriptionKey = "<Subscription Key>"
-
-    /*
-    Replace or verify the region.
-
-    You must use the same region in your REST API call as you used to obtain your access keys.
-    For example, if you obtained your access keys from the westus region, replace 
-    "westcentralus" in the URI below with "westus".
-
-    NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-    a free trial access key, you should not need to change this region.
-    */
-    const uriBase =    "https://westcentralus.api.cognitive.microsoft.com"
-    const uriPath = "/text/analytics/v2.0/sentiment"
-
-    const uri = uriBase + uriPath
-
-    data := []map[string]string{
+    data = []map[string]string{
         {"id": "1", "language": "en", "text": "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable."},
         {"id": "2", "language": "es", "text": "Este ha sido un dia terrible, llegué tarde al trabajo debido a un accidente automobilistico."},
     }
 
-    documents, err := json.Marshal(&data)
+    documents, err = json.Marshal(&data)
     if err != nil {
         fmt.Printf("Error marshaling data: %v\n", err)
         return
     }
 
-    r := strings.NewReader("{\"documents\": " + string(documents) + "}")
+    r = strings.NewReader("{\"documents\": " + string(documents) + "}")
 
-    client := &http.Client{
+    client = &http.Client{
         Timeout: time.Second * 2,
     }
 
-    req, err := http.NewRequest("POST", uri, r)
+    req, err = http.NewRequest("POST", uri, r)
     if err != nil {
         fmt.Printf("Error creating request: %v\n", err)
         return
@@ -244,34 +214,32 @@ func main() {
     req.Header.Add("Content-Type", "application/json")
     req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
 
-    resp, err := client.Do(req)
+    resp, err = client.Do(req)
     if err != nil {
         fmt.Printf("Error on request: %v\n", err)
         return
     }
     defer resp.Body.Close()
 
-    body, err := ioutil.ReadAll(resp.Body)
+    body, err = ioutil.ReadAll(resp.Body)
     if err != nil {
         fmt.Printf("Error reading response body: %v\n", err)
         return
     }
 
-    var f interface{}
     json.Unmarshal(body, &f)
 
-    jsonFormatted, err := json.MarshalIndent(f, "", "  ")
+    jsonFormatted, err = json.MarshalIndent(f, "", "  ")
     if err != nil {
         fmt.Printf("Error producing JSON: %v\n", err)
         return
     }
     fmt.Println(string(jsonFormatted))
-}
 ```
 
 ## <a name="analyze-sentiment-response"></a>分析情绪响应
 
-成功的响应以 JSON 格式返回，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -295,65 +263,33 @@ func main() {
 
 关键短语提取 API 使用[关键短语方法](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)从文本文档中提取关键短语。 以下示例为英文和西班牙文文档提取关键短语。
 
-1. 在你喜欢使用的代码编辑器中新建一个 Go 项目。
-1. 添加以下提供的代码。
-1. 将 `subscriptionKey` 值替换为对你的订阅有效的访问密钥。
-1. 将 `uriBase` 中的位置（当前为 `westcentralus`）替换为进行注册的区域。
-1. 使用“.go”扩展名保存文件。
-1. 在安装了 Go 的计算机上打开命令提示符。
-1. 生成文件，例如：“go build quickstart.go”。
-1. 运行文件，例如：“quickstart”。
+将以下代码添加到[上一部分](#SentimentAnalysis)的代码中。
 
 ```golang
-package main
+    // Extract key phrases.
+    fmt.Println("===== EXTRACT KEY PHRASES ======")
 
-import (
-    "encoding/json"
-    "fmt"
-    "io/ioutil"
-    "net/http"
-    "strings"
-    "time"
-)
+    uri = uriBase + uriPath + "keyPhrases"
 
-func main() {
-    // Replace the subscriptionKey string value with your valid subscription key
-    const subscriptionKey = "<Subscription Key>"
-
-    /*
-    Replace or verify the region.
-
-    You must use the same region in your REST API call as you used to obtain your access keys.
-    For example, if you obtained your access keys from the westus region, replace 
-    "westcentralus" in the URI below with "westus".
-
-    NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-    a free trial access key, you should not need to change this region.
-    */
-    const uriBase =    "https://westcentralus.api.cognitive.microsoft.com"
-    const uriPath = "/text/analytics/v2.0/keyPhrases"
-
-    const uri = uriBase + uriPath
-
-    data := []map[string]string{
+    data = []map[string]string{
         {"id": "1", "language": "en", "text": "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable."},
         {"id": "2", "language": "es", "text": "Si usted quiere comunicarse con Carlos, usted debe de llamarlo a su telefono movil. Carlos es muy responsable, pero necesita recibir una notificacion si hay algun problema."},
         {"id": "3", "language": "en", "text": "The Grand Hotel is a new hotel in the center of Seattle. It earned 5 stars in my review, and has the classiest decor I've ever seen."},
     }
 
-    documents, err := json.Marshal(&data)
+    documents, err = json.Marshal(&data)
     if err != nil {
         fmt.Printf("Error marshaling data: %v\n", err)
         return
     }
 
-    r := strings.NewReader("{\"documents\": " + string(documents) + "}")
+    r = strings.NewReader("{\"documents\": " + string(documents) + "}")
 
-    client := &http.Client{
+    client = &http.Client{
         Timeout: time.Second * 2,
     }
 
-    req, err := http.NewRequest("POST", uri, r)
+    req, err = http.NewRequest("POST", uri, r)
     if err != nil {
         fmt.Printf("Error creating request: %v\n", err)
         return
@@ -362,34 +298,32 @@ func main() {
     req.Header.Add("Content-Type", "application/json")
     req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
 
-    resp, err := client.Do(req)
+    resp, err = client.Do(req)
     if err != nil {
         fmt.Printf("Error on request: %v\n", err)
         return
     }
     defer resp.Body.Close()
 
-    body, err := ioutil.ReadAll(resp.Body)
+    body, err = ioutil.ReadAll(resp.Body)
     if err != nil {
         fmt.Printf("Error reading response body: %v\n", err)
         return
     }
 
-    var f interface{}
     json.Unmarshal(body, &f)
 
-    jsonFormatted, err := json.MarshalIndent(f, "", "  ")
+    jsonFormatted, err = json.MarshalIndent(f, "", "  ")
     if err != nil {
         fmt.Printf("Error producing JSON: %v\n", err)
         return
     }
     fmt.Println(string(jsonFormatted))
-}
 ```
 
 ## <a name="extract-key-phrases-response"></a>提取关键短语响应
 
-成功的响应以 JSON 格式返回，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -433,64 +367,32 @@ func main() {
 
 实体链接 API 使用[实体链接方法](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)识别文本文档中的已知实体。 以下示例识别英文文档的实体。
 
-1. 在你喜欢使用的代码编辑器中新建一个 Go 项目。
-1. 添加以下提供的代码。
-1. 将 `subscriptionKey` 值替换为对你的订阅有效的访问密钥。
-1. 将 `uriBase` 中的位置（当前为 `westcentralus`）替换为进行注册的区域。
-1. 使用“.go”扩展名保存文件。
-1. 在安装了 Go 的计算机上打开命令提示符。
-1. 生成文件，例如：“go build quickstart.go”。
-1. 运行文件，例如：“quickstart”。
+将以下代码添加到[上一部分](#KeyPhraseExtraction)的代码中。
 
 ```golang
-package main
+    // Detect linked entities.
+    fmt.Println("===== DETECT LINKED ENTITIES ======")
 
-import (
-    "encoding/json"
-    "fmt"
-    "io/ioutil"
-    "net/http"
-    "strings"
-    "time"
-)
+    uri = uriBase + uriPath + "entities"
 
-func main() {
-    // Replace the subscriptionKey string value with your valid subscription key
-    const subscriptionKey = "<Subscription Key>"
-
-    /*
-    Replace or verify the region.
-
-    You must use the same region in your REST API call as you used to obtain your access keys.
-    For example, if you obtained your access keys from the westus region, replace 
-    "westcentralus" in the URI below with "westus".
-
-    NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-    a free trial access key, you should not need to change this region.
-    */
-    const uriBase =    "https://westcentralus.api.cognitive.microsoft.com"
-    const uriPath = "/text/analytics/v2.0/entities"
-
-    const uri = uriBase + uriPath
-
-    data := []map[string]string{
+    data = []map[string]string{
         {"id": "1", "language": "en", "text": "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable."},
         {"id": "2", "language": "en", "text": "The Seattle Seahawks won the Super Bowl in 2014."},
     }
 
-    documents, err := json.Marshal(&data)
+    documents, err = json.Marshal(&data)
     if err != nil {
         fmt.Printf("Error marshaling data: %v\n", err)
         return
     }
 
-    r := strings.NewReader("{\"documents\": " + string(documents) + "}")
+    r = strings.NewReader("{\"documents\": " + string(documents) + "}")
 
-    client := &http.Client{
+    client = &http.Client{
         Timeout: time.Second * 2,
     }
 
-    req, err := http.NewRequest("POST", uri, r)
+    req, err = http.NewRequest("POST", uri, r)
     if err != nil {
         fmt.Printf("Error creating request: %v\n", err)
         return
@@ -499,23 +401,22 @@ func main() {
     req.Header.Add("Content-Type", "application/json")
     req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
 
-    resp, err := client.Do(req)
+    resp, err = client.Do(req)
     if err != nil {
         fmt.Printf("Error on request: %v\n", err)
         return
     }
     defer resp.Body.Close()
 
-    body, err := ioutil.ReadAll(resp.Body)
+    body, err = ioutil.ReadAll(resp.Body)
     if err != nil {
         fmt.Printf("Error reading response body: %v\n", err)
         return
     }
 
-    var f interface{}
     json.Unmarshal(body, &f)
 
-    jsonFormatted, err := json.MarshalIndent(f, "", "  ")
+    jsonFormatted, err = json.MarshalIndent(f, "", "  ")
     if err != nil {
         fmt.Printf("Error producing JSON: %v\n", err)
         return
@@ -526,7 +427,7 @@ func main() {
 
 ## <a name="identify-linked-entities-response"></a>识别链接的实体响应
 
-成功的响应以 JSON 格式返回，如以下示例所示：
+在 JSON 中返回成功的响应，如以下示例所示：
 
 ```json
 {

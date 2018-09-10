@@ -1,6 +1,6 @@
 ---
-title: 计算机视觉 Python 快速入门 OCR | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
+title: 快速入门：提取印刷文本 (OCR) - REST、Python - 计算机视觉
+titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将在认知服务中使用计算机视觉和 Python 从图像中提取打印的文本。
 services: cognitive-services
 author: noellelacharite
@@ -10,14 +10,14 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 60d0435083bdb38b3aee4ff8a8f022e76d06407f
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: f14f58113ae7709fd7f88f7663dfe7aee50416cd
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43768819"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43840131"
 ---
-# <a name="quickstart-extract-printed-text-ocr---rest-python"></a>快速入门：提取打印的文本 (OCR) - REST、Python
+# <a name="quickstart-extract-printed-text-ocr---rest-python---computer-vision"></a>快速入门：提取印刷文本 (OCR) - REST、Python - 计算机视觉
 
 在本快速入门中，你将使用计算机视觉从图像中提取打印的文本，也称为光学字符识别 (OCR)。
 

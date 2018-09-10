@@ -1,6 +1,6 @@
 ---
-title: 计算机视觉 API C# 快速入门 - 手写文本 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
+title: 快速入门：提取手写文本 - REST、C# - 计算机视觉
+titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将在认知服务中使用计算机视觉和 C# 从图像中提取手写文本。
 services: cognitive-services
 author: noellelacharite
@@ -10,14 +10,14 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 22836f3406f85a68322c7a8bae2a15cd897294e2
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 9b3234c1b4ca6c7e1d91efcd45b065d3850ec010
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43769356"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841907"
 ---
-# <a name="quickstart-extract-handwritten-text---rest-c35"></a>快速入门：提取手写文本 - REST、C&#35;
+# <a name="quickstart-extract-handwritten-text---rest-c35---computer-vision"></a>快速入门：提取手写文本 - REST、C&#35; - 计算机视觉
 
 在本快速入门中，你将使用计算机视觉从图像中提取手写文本。
 

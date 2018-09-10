@@ -1,6 +1,6 @@
 ---
-title: 计算机视觉 Python 快速入门 - 域模型 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
+title: 快速入门：使用域模型 - REST、Python - 计算机视觉
+titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，请使用认知服务中的计算机视觉和 Python，通过域模型来标识图像中的名人和特征点。
 services: cognitive-services
 author: noellelacharite
@@ -10,14 +10,14 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 357cab72c0a6c9a2254350c84cda91c366ac685a
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: abe0040b7d6a045506d883957ad900fdda83ab97
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43768823"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43840786"
 ---
-# <a name="quickstart-use-a-domain-model---rest-python"></a>快速入门：使用域模型 - REST、Python
+# <a name="quickstart-use-a-domain-model---rest-python---computer-vision"></a>快速入门：使用域模型 - REST、Python - 计算机视觉
 
 在本快速入门中，请使用计算机视觉通过域模型来标识图像中的名人和特征点。
 

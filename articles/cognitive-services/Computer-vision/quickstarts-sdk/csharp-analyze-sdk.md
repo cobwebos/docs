@@ -1,6 +1,6 @@
 ---
-title: 计算机视觉 API C# 快速入门 SDK - 分析图像 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
+title: 快速入门：分析图像 - SDK、C# - 计算机视觉
+titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将在认知服务中使用计算机视觉 Windows C# 客户端库分析图像。
 services: cognitive-services
 author: noellelacharite
@@ -10,14 +10,14 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 3ff3a4702ab0b1fb663ee896f268065caf043809
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: ad0b6bfc1c576e54c819937d0af4ff6cc4b38b06
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43769343"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841482"
 ---
-# <a name="quickstart-analyze-an-image---sdk-c35"></a>快速入门：分析图像 - SDK、C&#35;
+# <a name="quickstart-analyze-an-image---sdk-c35---computer-vision"></a>快速入门：分析图像 - SDK、C&#35; - 计算机视觉
 
 在本快速入门中，你将使用计算机视觉 Windows 客户端库分析本地和远程图像来提取视觉特征。
 

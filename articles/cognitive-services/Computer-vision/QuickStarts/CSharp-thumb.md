@@ -1,6 +1,6 @@
 ---
-title: 计算机视觉 API C# 快速入门 - 创建缩略图 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
+title: 快速入门：生成缩略图 - REST、C# - 计算机视觉
+titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将在认知服务中使用计算机视觉和 C# 基于图像生成缩略图。
 services: cognitive-services
 author: noellelacharite
@@ -10,14 +10,14 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 0f5e3be75ce34d10c223e6a157a89fca12b9c3dc
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 8436d626f0472c488bd4edb7906204ebacc08eae
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43769284"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43840469"
 ---
-# <a name="quickstart-generate-a-thumbnail---rest-c35"></a>快速入门：生成缩略图 - REST、C&#35;
+# <a name="quickstart-generate-a-thumbnail---rest-c35---computer-vision"></a>快速入门：生成缩略图 - REST、C&#35; - 计算机视觉
 
 在本快速入门中，你将使用计算机视觉基于图像生成缩略图。
 

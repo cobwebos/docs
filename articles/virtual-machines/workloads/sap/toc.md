@@ -16,14 +16,21 @@
 ### [网络体系结构](hana-network-architecture.md)
 ### [存储体系结构](hana-storage-architecture.md)
 ### [支持 HLI 的方案](hana-supported-scenario.md)
-## [基础结构和连接](hana-overview-infrastructure-connectivity.md)
-## [安装 SAP HANA](hana-installation.md)
+## 基础结构和连接
+### [HLI 部署](hana-overview-infrastructure-connectivity.md)
+### [将 Azure VM 连接到 HANA 大型实例](hana-connect-azure-vm-large-instances.md)
+### [将 VNet 连接到 HANA 大型实例 ExpressRoute](hana-connect-vnet-express-route.md)
+### [其他网络要求](hana-additional-network-requirements.md)
+## 安装 SAP HANA
+### [验证配置](hana-installation.md)
+### [示例 HANA 安装](hana-example-installation.md)
 ## [高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md)
 ## [故障排除和监视](troubleshooting-monitoring.md)
 ## 如何
 ### [设置使用 STONITH 的 HA](ha-setup-with-stonith.md)
 ### [类型 II SKU 的 OS 备份](os-backup-type-ii-skus.md)
 ### [HANA 大型实例的操作系统升级](os-upgrade-hana-large-instance.md)
+### [为 SUSE Linux 安装 SMT 服务器](hana-setup-smt.md)
 # Azure 虚拟机上的 SAP HANA
 ## [单实例 SAP HANA 安装](hana-get-started.md)
 ## [S/4 HANA 或 BW/4 HANA SAP CAL 部署指南](cal-s4h.md)

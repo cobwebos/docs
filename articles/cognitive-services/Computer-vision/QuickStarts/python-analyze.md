@@ -1,6 +1,6 @@
 ---
-title: 计算机视觉 Python 快速入门 - 分析远程图像 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
+title: 快速入门：分析远程图像 - REST、Python - 计算机视觉
+titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将在认知服务中使用计算机视觉和 Python 分析远程图像。
 services: cognitive-services
 author: noellelacharite
@@ -10,14 +10,14 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 65f9b0d4fb007a6a9b8ef489ca59f384e047a0dd
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 4c0b88ea6da81e9732d58d2d0a24e7832d0ca28c
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43769347"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43840294"
 ---
-# <a name="quickstart-analyze-a-remote-image---rest-python"></a>快速入门：分析远程图像 - REST、Python
+# <a name="quickstart-analyze-a-remote-image---rest-python---computer-vision"></a>快速入门：分析远程图像 - REST、Python - 计算机视觉
 
 在本快速入门中，你将使用计算机视觉分析远程图像。 若要分析本地图像，请参阅[使用 Python 分析本地图像](python-disk.md)。
 
