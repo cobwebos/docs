@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/08/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: af7c0f9d7e02e4a3074f2fddbdf8a6e0ab52d423
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: ec3b1f43c7b89a545ee5bb26c4cc0d068a993021
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024318"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44295847"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-20-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Azure CLI 2.0 配合使用
 
@@ -160,8 +160,11 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
 
    ```azurecli
    az cloud update \
-     --profile 2017-03-09-profile
+     --profile 2018-03-01-hybrid
    ```
+
+    >[!NOTE]  
+    >如果正在运行的 Azure Stack 1808 生成前的版本，你将需要使用 API 版本配置文件**2017年-03-09-profile**而不是 API 版本配置文件**2018年-03-01-混合**。
 
 1. 使用 `az login` 命令登录到 Azure Stack 环境。 可以用户身份或以[服务主体](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects)的形式登录到 Azure Stack 环境。 
 

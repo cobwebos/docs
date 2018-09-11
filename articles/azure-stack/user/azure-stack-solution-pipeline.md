@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/04/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 391cc4ca4b34149aeda54a60bfe6f6949e5a379b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 773acd3a22244403548ef4ce35164291f5c0be7d
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697741"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300829"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>教程：将应用部署到 Azure 和 Azure Stack
 
@@ -30,7 +30,7 @@ ms.locfileid: "43697741"
 在本教程中，需创建一个示例环境来完成以下任务：
 
 > [!div class="checklist"]
-> * 根据 Visual Studio Team Services (VSTS) 存储库的代码提交启动新的生成。
+> * 启动基于 Azure DevOps 服务存储库的代码提交的新生成。
 > * 自动将应用部署到 Azure 公有云进行用户验收测试。
 > * 代码通过测试后，可自动将应用部署到 Azure Stack。
 
@@ -48,7 +48,7 @@ ms.locfileid: "43697741"
 * [什么是持续集成？](https://www.visualstudio.com/learn/what-is-continuous-integration/)
 * [什么是持续交付？](https://www.visualstudio.com/learn/what-is-continuous-delivery/)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>必备组件
 
 需要准备好组件才能生成混合 CI/CD 管道。 以下组件的准备需要一定的时间：
 
@@ -81,30 +81,30 @@ ms.locfileid: "43697741"
  * 在 Azure Stack 中创建[计划/套餐](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview)。
  * 在 Azure Stack 中创建[租户订阅](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm)。
  * 在租户订阅中创建 Web 应用。 记下新 Web 应用的 URL，供稍后使用。
- * 在租户订阅中部署 VSTS 虚拟机。
+ * 租户订阅中部署 Azure DevOps 服务虚拟机。
 * 提供一个 Windows Server 2016 映像，其中包含用于虚拟机 (VM) 的 .NET 3.5。 将在 Azure Stack 上生成此 VM，作为专用的生成代理。
 
 ### <a name="developer-tool-requirements"></a>开发人员工具要求
 
-* 创建 [VSTS 工作区](https://docs.microsoft.com/vsts/repos/tfvc/create-work-workspaces)。 注册过程将创建名为 **MyFirstProject** 的项目。
-* [安装 Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio) 并[登录到 VSTS](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services)。
+* 创建[工作区中 Azure DevOps 服务](https://docs.microsoft.com/azure/devops/repos/tfvc/create-work-workspaces)。 注册过程将创建名为 **MyFirstProject** 的项目。
+* [安装 Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio)并[登录到 Azure DevOps 服务](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services)。
 * 连接到项目并[将其克隆到本地](https://www.visualstudio.com/docs/git/gitquickstart)。
 
  > [!Note]
  > Azure Stack 环境需要联合正确的映像才能运行 Windows Server 和 SQL Server。 它还必须部署应用服务。
 
-## <a name="prepare-the-private-build-and-release-agent-for-visual-studio-team-services-integration"></a>准备用于 Visual Studio Team Services 集成的专用生成和发布代理
+## <a name="prepare-the-private-azure-pipelines-agent-for-azure-devops-services-integration"></a>准备 Azure DevOps 服务集成的专用 Azure 管道代理
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>必备组件
 
-Visual Studio Team Services (VSTS) 使用服务主体对 Azure 资源管理器进行身份验证。 VSTS 必须使用“参与者”角色在 Azure Stack 订阅中预配资源。
+Azure DevOps 服务进行身份验证针对 Azure 资源管理器使用服务主体。 Azure DevOps 服务必须具有**参与者**Azure Stack 订阅中预配资源的角色。
 
 以下步骤介绍了配置身份验证的具体要求：
 
 1. 创建一个服务主体，或者使用现有的服务主体。
 2. 创建服务主体的身份验证密钥。
 3. 通过基于角色的访问控制来验证 Azure Stack 订阅，使服务主体名称 (SPN) 成为“参与者”角色的一部分。
-4. 使用 Azure Stack 终结点和 SPN 信息在 VSTS 中创建新的服务定义。
+4. 在使用 Azure Stack 终结点和 SPN 的信息的 Azure DevOps 服务中创建新的服务定义。
 
 ### <a name="create-a-service-principal"></a>创建服务主体
 
@@ -122,7 +122,7 @@ Visual Studio Team Services (VSTS) 使用服务主体对 Azure 资源管理器�
 
     ![选择应用程序](media\azure-stack-solution-hybrid-pipeline\000_01.png)
 
-2. 记下“应用程序 ID”的值。 在 VSTS 中配置服务终结点时，将要使用该值。
+2. 记下“应用程序 ID”的值。 Azure DevOps 服务中配置服务终结点时，将使用该值。
 
     ![应用程序 ID](media\azure-stack-solution-hybrid-pipeline\000_02.png)
 
@@ -144,7 +144,7 @@ Visual Studio Team Services (VSTS) 使用服务主体对 Azure 资源管理器�
 
 ### <a name="get-the-tenant-id"></a>获取租户 ID
 
-在配置服务终结点的过程中，VSTS 要求提供与 Azure Stack 戳所部署到的 AAD 目录相对应的**租户 ID**。 按以下步骤获取租户 ID。
+Azure DevOps 服务作为服务终结点配置的一部分，需要**租户 ID** ，对应于 Azure Stack 戳部署到的 AAD 目录。 按以下步骤获取租户 ID。
 
 1. 选择“Azure Active Directory”。
 
@@ -194,20 +194,21 @@ Visual Studio Team Services (VSTS) 使用服务主体对 Azure 资源管理器�
 
 ‎Azure 基于角色的访问控制 (RBAC) 为 Azure 提供精细的访问管理。 使用 RBAC，可以控制用户执行其作业所需的访问权限级别。 有关基于角色的访问控制的详细信息，请参阅[管理对 Azure 订阅资源的访问](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal?toc=%252fazure%252factive-directory%252ftoc.json)。
 
-### <a name="vsts-agent-pools"></a>VSTS 代理池
+### <a name="azure-devops-services-agent-pools"></a>Azure DevOps 服务代理池
 
-可在代理池中组织代理，无需单独管理每个代理。 代理池定义该池中所有代理的共享边界。 在 VSTS 中，代理池的范围限定为 VSTS 帐户，这意味着可在团队项目之间共享一个代理池。 若要详细了解代理池，请参阅[创建代理池和队列](https://docs.microsoft.com/vsts/build-release/concepts/agents/pools-queues?view=vsts)。
+可在代理池中组织代理，无需单独管理每个代理。 代理池定义该池中所有代理的共享边界。 在 Azure DevOps 服务中，代理池的作用域为 Azure DevOps 服务组织，这意味着您可以在项目间共享代理池。 若要详细了解代理池，请参阅[创建代理池和队列](https://docs.microsoft.com/azure/devops/pipelines/agents/pools-queues?view=vsts)。
 
 ### <a name="add-a-personal-access-token-pat-for-azure-stack"></a>添加 Azure Stack 的个人访问令牌 (PAT)
 
-创建访问 VSTS 所需的个人访问令牌。
+创建个人访问令牌访问 Azure DevOps 服务。
 
-1. 登录到 VSTS 帐户，并选择帐户配置文件名称。
+1. 登录到你的 Azure DevOps 服务组织，然后选择你的组织配置文件名称。
+
 2. 选择“管理安全性”以访问令牌创建页。
 
     ![用户登录](media\azure-stack-solution-hybrid-pipeline\000_17.png)
 
-    ![选择团队项目](media\azure-stack-solution-hybrid-pipeline\000_18.png)
+    ![选择一个项目](media\azure-stack-solution-hybrid-pipeline\000_18.png)
 
     ![添加个人访问令牌](media\azure-stack-solution-hybrid-pipeline\000_18a.png)
 
@@ -220,7 +221,7 @@ Visual Studio Team Services (VSTS) 使用服务主体对 Azure 资源管理器�
 
     ![个人访问令牌](media\azure-stack-solution-hybrid-pipeline\000_19.png)
 
-### <a name="install-the-vsts-build-agent-on-the-azure-stack-hosted-build-server"></a>在 Azure Stack 托管的生成服务器上安装 VSTS 生成代理
+### <a name="install-the-azure-devops-services-build-agent-on-the-azure-stack-hosted-build-server"></a>Azure DevOps 服务生成代理在 Azure Stack 安装托管生成服务器
 
 1. 连接到 Azure Stack 主机上部署的生成服务器。
 2. 下载生成代理，并使用个人访问令牌 (PAT) 将其部署为服务，然后以 VM 管理员帐户运行。
@@ -237,17 +238,17 @@ Visual Studio Team Services (VSTS) 使用服务主体对 Azure 资源管理器�
 
     ![生成代理文件夹更新](media\azure-stack-solution-hybrid-pipeline\009_token_file.png)
 
-    可以在 VSTS 文件夹中看到该代理。
+    您可以看到 Azure DevOps 服务文件夹中的代理。
 
 ## <a name="endpoint-creation-permissions"></a>终结点创建权限
 
-通过创建终结点，Visual Studio Online (VSTO) 生成可以将 Azure 服务应用部署到 Azure Stack。 VSTS 会连接到生成代理，而后者会连接到 Azure Stack。
+通过创建终结点，Visual Studio Online (VSTO) 生成可以将 Azure 服务应用部署到 Azure Stack。 Azure DevOps 服务连接到生成代理，连接到 Azure Stack。
 
 ![VSTO 中的 NorthwindCloud 示例应用](media\azure-stack-solution-hybrid-pipeline\012_securityendpoints.png)
 
 1. 登录到 VSTO，然后导航到应用设置页。
 2. 在“设置”中，选择“安全性”。
-3. 在“VSTS 组”中，选择“终结点创建者”。
+3. 在中**Azure DevOps 服务组**，选择**终结点创建者**。
 
     ![NorthwindCloud 终结点创建者](media\azure-stack-solution-hybrid-pipeline\013_endpoint_creators.png)
 
@@ -257,7 +258,7 @@ Visual Studio Team Services (VSTS) 使用服务主体对 Azure 资源管理器�
 
 5. 在“添加用户和组”中输入用户名，然后从用户列表中选择该用户。
 6. 选择“保存更改”。
-7. 在“VSTS 组”列表中，选择“终结点管理员”。
+7. 在中**Azure DevOps 服务组**列表中，选择**终结点管理员**。
 
     ![NorthwindCloud 终结点管理员](media\azure-stack-solution-hybrid-pipeline\015_save_endpoint.png)
 
@@ -265,6 +266,7 @@ Visual Studio Team Services (VSTS) 使用服务主体对 Azure 资源管理器�
 9. 在“添加用户和组”中输入用户名，然后从用户列表中选择该用户。
 10. 选择“保存更改”。
 
+现在，已存在的终结点信息，Azure Stack 连接到 Azure DevOps 服务是可供使用。 在 Azure Stack 中的生成代理从 Azure DevOps 服务获取的说明和代理然后传达与 Azure Stack 进行通信的终结点信息。
 ## <a name="create-an-azure-stack-endpoint"></a>创建 Azure Stack 终结点
 
 可以按照中的说明[创建 Azure 资源管理器服务连接的现有服务主体](https://docs.microsoft.com/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal)文章以使用现有服务主体创建的服务连接并使用以下映射：
@@ -285,18 +287,18 @@ Visual Studio Team Services (VSTS) 使用服务主体对 Azure 资源管理器�
 
 本教程的此部分介绍以下操作：
 
-* 将代码添加到 VSTS 项目。
+* 将代码添加到 Azure DevOps 服务项目。
 * 创建独立的 Web 应用部署。
 * 配置持续部署过程
 
 > [!Note]
  > Azure Stack 环境需要联合正确的映像才能运行 Windows Server 和 SQL Server。 它还必须部署应用服务。 查看应用服务文档的“先决条件”部分，了解 Azure Stack 操作员的要求。
 
-混合 CI/CD 可同时应用到应用程序代码和基础结构代码。 使用要部署到两个云的 [Azure 资源管理器模板](https://azure.microsoft.com/resources/templates/)（例如 VSTS 中的 Web 应用代码）。
+混合 CI/CD 可同时应用到应用程序代码和基础结构代码。 使用[Azure 资源管理器模板，如 web](https://azure.microsoft.com/resources/templates/)从 Azure DevOps 服务将部署到两个云应用程序代码。
 
-### <a name="add-code-to-a-vsts-project"></a>将代码添加到 VSTS 项目
+### <a name="add-code-to-an-azure-devops-services-project"></a>将代码添加到 Azure DevOps 服务项目
 
-1. 使用在 Azure Stack 上拥有项目创建权限的帐户登录到 VSTS。 下一屏幕捕获显示如何连接到 HybridCICD 项目。
+1. 使用 Azure Stack 拥有项目创建权限的组织的登录到 Azure DevOps 服务。 下一屏幕捕获显示如何连接到 HybridCICD 项目。
 
     ![连接到项目](media\azure-stack-solution-hybrid-pipeline\017_connect_to_project.png)
 
@@ -310,37 +312,38 @@ Visual Studio Team Services (VSTS) 使用服务主体对 Azure 资源管理器�
 
     ![配置 Runtimeidentifier](media\azure-stack-solution-hybrid-pipeline\019_runtimeidentifer.png)
 
-2. 使用团队资源管理器将代码签入 VSTS。
+2. 使用团队资源管理器将代码签入 Azure DevOps 服务。
 
-3. 确认应用程序代码已签入 Visual Studio Team Services。
+3. 确认应用程序代码已签入到 Azure DevOps 服务。
 
-### <a name="create-the-build-definition"></a>创建生成定义
+### <a name="create-the-build-pipeline"></a>创建生成管道
 
-1. 使用可以创建生成定义的帐户登录到 VSTS。
-2. 导航到**生成 Web 应用程序**项目页。
+1. 可以创建的生成管道的组织使用登录到 Azure DevOps 服务。
+
+2. 导航到项目的“生成 Web 应用程序”页。
 
 3. 在“参数”中，添加 **-r win10-x64** 代码。 在 .Net Core 中触发独立部署时需要此代码。
 
-    ![添加参数生成定义](media\azure-stack-solution-hybrid-pipeline\020_publish_additions.png)
+    ![添加参数生成管道](media\azure-stack-solution-hybrid-pipeline\020_publish_additions.png)
 
 4. 运行生成。 [独立部署生成](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)过程将发布可在 Azure 和 Azure Stack 上运行的项目。
 
 ### <a name="use-an-azure-hosted-build-agent"></a>使用 Azure 托管生成代理
 
-在 VSTS 中使用托管生成代理是生成并部署 Web 应用的便捷做法。 Microsoft Azure，从而使连续和不间断地开发周期自动执行代理维护和升级。
+使用 Azure DevOps 服务中的托管的生成代理是一个方便的选项，用于构建和部署 web 应用。 Microsoft Azure，从而使连续和不间断地开发周期自动执行代理维护和升级。
 
 ### <a name="configure-the-continuous-deployment-cd-process"></a>配置持续部署 (CD) 过程
 
-Visual Studio Team Services (VSTS) 和 Team Foundation Server (TFS) 提供高度可配置、可管理的管道，用于将内容发布到多个环境（例如开发、过渡、质量保证 (QA) 和生产）。 此过程可能包括要求在应用程序生命周期的特定阶段进行审批。
+Azure DevOps 服务和 Team Foundation Server (TFS) 到多个环境，如开发、 过渡、 质量保证 (QA) 和生产版本提供高度可配置和可管理管道。 此过程可能包括要求在应用程序生命周期的特定阶段进行审批。
 
-### <a name="create-release-definition"></a>创建发布定义
+### <a name="create-release-pipeline"></a>创建发布管道
 
-创建发布定义是应用程序生成过程中的最后一步。 此发布定义用于创建一个发布并部署一个生成。
+创建发布管道是在应用程序中的最后一步生成过程。 此发布管道用于创建发布和部署的版本。
 
-1. 登录到 VSTS，然后导航到项目的“生成和发布”。
+1. 登录到 Azure DevOps 服务，并导航到**Azure 管道**为你的项目。
 2. 在“发布”选项卡上选择“\[ + ]”，然后单击“创建发布定义”。
 
-   ![创建发布定义](media\azure-stack-solution-hybrid-pipeline\021a_releasedef.png)
+   ![创建发布管道](media\azure-stack-solution-hybrid-pipeline\021a_releasedef.png)
 
 3. 在“选择模板”上选择“Azure 应用服务部署”，然后选择“应用”。
 
@@ -427,11 +430,11 @@ Visual Studio Team Services (VSTS) 和 Team Foundation Server (TFS) 提供高度
 23. 保存所有更改。
 
 > [!Note]
-> 发布任务的某些设置可能已在从模板创建发布定义时自动定义为[环境变量](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables)。 这些设置不能在任务设置中修改。 但是，可以在父环境项中编辑这些设置。
+> 发布任务的某些设置可能会自动被定义为[环境变量](https://docs.microsoft.com/azure/devops/pipelines/release/variables?view=vsts#custom-variables)从模板创建发布管道时。 这些设置不能在任务设置中修改。 但是，可以在父环境项中编辑这些设置。
 
 ## <a name="create-a-release"></a>创建发布
 
-完成对发布定义的修改后，可以开始部署。 为此，请从发布定义创建发布。 可以自动创建发布；例如，发布定义中已设置持续部署触发器。 这意味着，修改源代码会启动新的生成，继而生成新的发布。 但在本部分，我们将手动创建新发布。
+现在，已完成对发布管道的修改，就可以开始部署。 若要执行此操作，您创建发布从发布管道。 可能会自动保存功能。 创建发布例如，在发布管道设置持续部署触发器。 这意味着，修改源代码会启动新的生成，继而生成新的发布。 但在本部分，我们将手动创建新发布。
 
 1. 在“管道”选项卡上打开“发布”下拉列表，然后选择“创建发布”。
 

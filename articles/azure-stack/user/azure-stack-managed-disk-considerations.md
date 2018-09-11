@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: brenduns
 ms.reviewer: jiahan
-ms.openlocfilehash: a2ad07809963560b1225ff07b095509c93618996
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 26f8880d01da00780317ee2a6f66ee5007576a50
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160415"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347658"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Stack 托管磁盘： 差异和注意事项
 本文汇总了 Azure Stack 托管磁盘和 azure 托管磁盘的已知的差异。 有关 Azure Stack 与 Azure 之间的大致差异的详细信息，请参阅[重要注意事项](azure-stack-considerations.md)一文。
@@ -38,7 +38,7 @@ ms.locfileid: "44160415"
 |灾难恢复选项 |支持 Azure Site Recovery |尚不支持|
 |磁盘类型     |高级 SSD、 标准 SSD （预览版） 和标准 HDD |高级 SSD，标准 HDD |
 |高级磁盘  |完全支持 |可部署，但无性能限制或保证  |
-|高级磁盘  |IOPs  |取决于磁盘大小 2300 IOPs，每个磁盘 |
+|高级磁盘 IOPs  |取决于磁盘大小  |每个磁盘 2300 IOPs |
 |高级磁盘吞吐量 |取决于磁盘大小 |每个磁盘 145 MB/秒 |
 |磁盘最大大小  |4 TB       |1 TB       |
 |磁盘性能分析 |聚合的度量值和每个磁盘支持的指标 |尚不支持 |

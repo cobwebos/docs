@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 4dfeff0e22a541a39a59c37c869af41a7e444fa6
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: c33d1fe1385619420215ec0f0fa3b0a2f90dddc0
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842492"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299451"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>为 SQL 资源提供程序添加托管服务器
 
@@ -38,13 +38,16 @@ ms.locfileid: "43842492"
 
 * 专门指定资源提供程序和用户工作负荷使用的 SQL 实例。 不能使用其他任何使用者正在使用的 SQL 实例。 此限制同样适用于应用服务。
 * 为资源提供程序配置具有相应特权级别的帐户（如下所述）。
-* 你要负责管理 SQL 实例及其主机。  例如，资源提供程序不会应用更新、处理备份或处理凭据轮换。
+* 你负责管理 SQL 实例和其主机。  例如，资源提供程序不会应用更新、处理备份或处理凭据轮换。
 
 ### <a name="sql-server-virtual-machine-images"></a>SQL Server 虚拟机映像
 
 可通过市场管理功能获取 SQL IaaS 虚拟机映像。 这些映像与 Azure 中提供的 SQL VM 相同。
 
 在使用市场项部署 SQL VM 之前，请确保始终下载最新版本的 **SQL IaaS 扩展**。 IaaS 扩展和相应的门户增强功能可提供自动修补和备份等附加功能。 有关此扩展的详细信息，请参阅[使用 SQL Server 代理扩展在 Azure 虚拟机上自动完成管理任务](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)。
+
+> [!NOTE]
+> SQL IaaS 扩展_需_对于 marketplace; 中的 Windows 映像上的所有 SQL VM 将无法部署如果你未下载扩展。 与基于 Linux 的 SQL 虚拟机映像不使用它。
 
 可以使用其他选项部署 SQL VM，包括 [Azure Stack 快速入门库](https://github.com/Azure/AzureStack-QuickStart-Templates)中的模板。
 
@@ -125,7 +128,7 @@ ms.locfileid: "43842492"
   GO
   ```
 
-请注意，可用性组必须括在方括号中。
+可用性组必须括在方括号中。
 
 在辅助节点上运行以下 SQL 命令：
 
