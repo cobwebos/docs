@@ -1,5 +1,5 @@
 # Azure Dev Spaces
-## [概述](azure-dev-spaces.md)
+## [概述](index.yml)
 
 ## 快速入门
 ### [Java（VS Code 和 CLI）](quickstart-java.md)
