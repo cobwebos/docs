@@ -73,12 +73,21 @@ items:
       href: static-ip.md
     - name: 内部负载均衡器
       href: internal-lb.md
-    - name: 入口和 TLS
-      href: ingress.md
+    - name: 流入量
+      items:
+      - name: 创建基本控制器
+        href: ingress-basic.md
+      - name: 使用 HTTP 应用程序路由
+        href: http-application-routing.md
+      - name: 使用内部网络
+        href: ingress-internal-ip.md
+      - name: 将 TLS 与Let's Encrypt 配合使用
+        href: ingress-tls.md
+        items:
+        - name: 使用静态公共 IP
+          href: ingress-static-ip.md
     - name: 出口流量
       href: egress.md
-    - name: HTTP 应用程序路由
-      href: http-application-routing.md
   - name: 安全性和身份验证
     items:
     - name: 创建服务主体
@@ -162,9 +171,9 @@ items:
     href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
   - name: 常见问题解答
     href: faq.md
-ms.openlocfilehash: be17978b91f1664ea4917f7d9fcb0da5657d4832
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: d62907e0c9332975cb8361fc96698f75aa0f751d
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "41944096"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44345330"

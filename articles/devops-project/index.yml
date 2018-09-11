@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: dd941fcb57c358e33abe0da54ab8f76f2dccae28
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44295220"
 documentType: LandingData
 title: Azure DevOps 项目
 metadata:
@@ -14,12 +20,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 07/06/2018
   ms.author: mlearned
-  ms.openlocfilehash: f9137634c6b2ec07364939cb965b4cabaf5bad3a
-  ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
-  ms.translationtype: HT
-  ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/10/2018
-  ms.locfileid: "37951917"
 abstract:
   description: Azure DevOps 项目提供简化的体验，既可使用现有的代码和 Git 存储库，也可选择一个示例应用程序，以便创建连接到 Azure 的持续集成 (CI) 和持续交付 (CD) 管道。
   aside:
@@ -70,7 +70,7 @@ sections:
 - title: 分步教程
   items:
   - type: paragraph
-    text: 了解如何使用 Azure DevOps 项目创建 VSTS 发布管道
+    text: 了解如何使用 Azure DevOps 项目创建 Azure 发布管道
   - type: list
     style: ordered
     items:

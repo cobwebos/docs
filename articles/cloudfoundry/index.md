@@ -11,12 +11,12 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: carolz
-ms.openlocfilehash: 307f9988246f94c26e63bf8a26052890867aabbc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 850ed1418a8880e30273f62aec3b3420c41b2ef6
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608978"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44294511"
 ---
 <div class="content">
     <h1>Azure 上的 Cloud Foundry</h1>
@@ -38,7 +38,7 @@ Cloud Foundry 是一种开源平台即服务 (PaaS)，用于生成、部署和�
 <a href="https://pivotal.io/partners/microsoft">Azure 上的 Pivotal Cloud Foundry</a><br/>
 <a href="/azure/cloudfoundry/how-cloud-foundry-integrates-with-azure">将 Cloud Foundry 与 Azure 集成</a><br/>
 <a href="https://docs.pivotal.io/pivotalcf/1-11/customizing/pcf_azure.html">在 Azure 上安装 Cloud Foundry</a><br/>
-<a href="https://github.com/Microsoft/vsts-cloudfoundry">用于 Cloud Foundry 的 Visual Studio Team Services 插件</a><br/>
+<a href="https://github.com/Microsoft/vsts-cloudfoundry">用于 Cloud Foundry 的 Azure DevOps 插件</a><br/>
 <a href="https://github.com/Azure/oms-log-analytics-firehose-nozzle">用于 Cloud Foundry 的 Microsoft Log Analytics Nozzle</a><br/>
 <a href="https://docs.cloudfoundry.org/">了解 Cloud Foundry</a><br/>
 </div>

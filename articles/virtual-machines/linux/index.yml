@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c1bb364bfedb24349f2b0bc92f99d482027f709d
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 078da85f8ad4addd23a35b456a49d5a8248fc59b
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43185343"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44294368"
 documentType: LandingData
 title: Linux 虚拟机
 metadata:
@@ -71,7 +71,7 @@ sections:
     - html: <a href="/azure/virtual-machines/linux/tutorial-monitoring">监视和更新 VM</a>
     - html: <a href="/azure/virtual-machines/linux/tutorial-azure-security">管理 VM 上的安全性</a>
     - html: <a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">使用 Jenkins、Docker 和 GitHub 创建 CI/CD 基础结构</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-build-deploy-jenkins">将 CI/CD 与 Team Services 配合使用</a>
+    - html: <a href="/azure/virtual-machines/linux/tutorial-build-deploy-jenkins">将 CI/CD 与 Azure Pipelines 配合使用</a>
     - html: 使用 <a href="/azure/virtual-machines/linux/tutorial-lamp-stack">LAMP</a>、<a href="/azure/virtual-machines/linux/tutorial-lemp-stack">LEMP</a> 或 <a href="/azure/virtual-machines/linux/tutorial-mean-stack">MEAN</a> 创建 Web 服务器堆栈
     - html: <a href="/azure/virtual-machines/linux/tutorial-secure-web-server">使用 SSL 保护 Web 服务器</a>
 - title: 免费 Pluralsight 视频培训

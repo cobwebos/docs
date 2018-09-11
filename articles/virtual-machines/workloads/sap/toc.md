@@ -25,7 +25,9 @@
 ### [验证配置](hana-installation.md)
 ### [示例 HANA 安装](hana-example-installation.md)
 ## [高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md)
-## [故障排除和监视](troubleshooting-monitoring.md)
+## 故障排除和监视
+### [监视 HLI](troubleshooting-monitoring.md)
+### [HANA 端的监视和故障排除](hana-monitor-troubleshoot.md)
 ## 如何
 ### [设置使用 STONITH 的 HA](ha-setup-with-stonith.md)
 ### [类型 II SKU 的 OS 备份](os-backup-type-ii-skus.md)

@@ -11,18 +11,19 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: carolz
-ms.openlocfilehash: e34f6bc4de95c72083e67f9e8481a93ea3b6f239
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9ae73659ee8fbf9099e7e8fab65e020a170126e3
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23069097"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304163"
 ---
 <div class="content">
    <h1>Azure 上的 Docker</h1>   
     <div class="introHolder" style="justify-content: space-between;">
     <div class="intro" style="min-width: 200px">
-     <img src="media/Docker.png" align="right" alt="Docker Logo">Docker 是一种常用的容器管理和映像处理平台，用于在 Linux 和 Windows 上快速操作容器。  使用我们的快速入门和教程，了解如何在 Azure 上利用 Docker。
+     <img src="media/Docker.png" align="right" alt="Docker Logo">
+Docker 是一种常用的容器管理和映像处理平台，用于在 Linux 和 Windows 上快速操作容器。  使用我们的快速入门和教程，了解如何在 Azure 上利用 Docker。
     </div>
     </div>
 <h2>5 分钟快速入门</h2>
@@ -32,7 +33,7 @@ ms.locfileid: "23069097"
 <p>了解如何在应用程序中使用 Docker，以及如何将 Docker 用作 CI/CD 管道的一部分：</p>
 <ol>
   <li><a href="/azure/app-service-web/app-service-web-tutorial-docker-python-postgresql-app">使用 Docker 生成 Python 和 PostgreSQL 应用</a></li>
-  <li><a href="/azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine">将 CI/CD 与 Docker Swarm 和 Visual Studio Team Services 配合使用</a></li>
+  <li><a href="/azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine">将 CI/CD 与 Docker Swarm 和 Azure DevOps Services 配合使用</a></li>
   <li><a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">集成 Docker、Jenkins 和 Linux VM</a></li>
 </ol>
 <h2>资源</h2>
