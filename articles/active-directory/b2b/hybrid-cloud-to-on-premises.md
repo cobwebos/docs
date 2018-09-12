@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 9c9cde23f8f8dc557b99d2f1508c923aaa2dce91
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: b7b1279dbb1256269705da3f8be6f6d2c1151368
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42141042"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346332"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>向 Azure AD 中的 B2B 用户授予对本地应用程序的访问权限
 
@@ -27,7 +27,7 @@ ms.locfileid: "42141042"
 
 必须执行以下两个操作：
 
-- 根据[针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录](../active-directory-saas-custom-apps.md)中所述，使用非库应用程序模板集成 SAML 应用。 请务必记下所用的“登录 URL”值。
+- 根据[针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录](../manage-apps/configure-single-sign-on-non-gallery-applications.md)中所述，使用非库应用程序模板集成 SAML 应用。 请务必记下所用的“登录 URL”值。
 -  在将 **Azure Active Directory** 配置为身份验证源的情况下，使用 Azure AD 应用程序代理发布本地应用。 有关说明，请参阅[使用 Azure AD 应用程序代理发布应用程序](../manage-apps/application-proxy-publish-azure-portal.md)。 
 
    配置“内部 URL”设置时，请使用非库应用程序模板中指定的登录 URL。 这样，用户便可以从组织边界以外访问该应用。 应用程序代理对本地应用执行 SAML 单一登录。

@@ -15,18 +15,18 @@ ms.workload: NA
 ms.date: 06/08/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: b013627c5a0dc596c9897d7fa2c5bf2b2a79ee40
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 9eea0cabebb67095d4c6c813e7d13c885a447db4
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114000"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378884"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>教程：使用 Log Analytics 监视 Service Fabric 上的 Windows 容器
 
-这是教程的第二部分，将详细介绍如何设置 Log Analytics，以监视 Service Fabric 上安排的 Windows 容器。
+这是教程的第三部分，将详细介绍如何设置 Log Analytics，以监视 Service Fabric 上安排的 Windows 容器。
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 为 Service Fabric 群集配置 Log Analytics

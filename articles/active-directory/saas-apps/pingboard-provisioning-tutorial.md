@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/19/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 93c3b0cbc3ce063aaeb086d089631a8810293bbe
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: e96ea7d212f1a34bb6d10f8c49a15e1b34bfc469
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382527"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348950"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>教程：为 Pingboard 配置自动用户预配
 
@@ -89,7 +89,7 @@ Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所�
 
 1. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Pingboard”。
 
-1. 在“属性映射”部分中，查看将从 Azure AD 同步到 Pingboard 的用户属性。 选为“匹配”属性的特性用于匹配 Pingboard 中的用户帐户以执行更新操作。 选择“保存”，提交所有更改。 有关详细信息，请参阅[自定义用户预配属性映射](../active-directory-saas-customizing-attribute-mappings.md)。
+1. 在“属性映射”部分中，查看将从 Azure AD 同步到 Pingboard 的用户属性。 选为“匹配”属性的特性用于匹配 Pingboard 中的用户帐户以执行更新操作。 选择“保存”，提交所有更改。 有关详细信息，请参阅[自定义用户预配属性映射](../manage-apps/customize-application-attributes.md)。
 
 1. 若要为 Pingboard 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”。
 
@@ -97,7 +97,7 @@ Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所�
 
 初始同步运行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接。 这些日志描述了预配服务对 Pingboard 应用所采取的所有操作。
 
-若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../active-directory-saas-provisioning-reporting.md)。
+若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
 
 ## <a name="additional-resources"></a>其他资源
 

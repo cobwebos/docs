@@ -6,14 +6,14 @@ author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
-ms.date: 08/23/2018
+ms.date: 09/07/2018
 ms.author: danlep
-ms.openlocfilehash: 0ef3cc373b3b87bbd1dde5682fbc076e6b77d6a0
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: e1d6f2d6181e70fde75907191664dcf6cd0b7252
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698377"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391753"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>通过按状态对任务和节点计数来监视 Batch 解决方案
 
@@ -53,11 +53,9 @@ Console.WriteLine("Failed task count: {0}", taskCounts.Failed);
 
 可以对 REST 和支持的其他语言使用类似的模式获取作业的任务计数。 
 
-### <a name="counts-for-large-numbers-of-tasks"></a>大量任务计数
-
-Get Task Counts 操作返回系统中某个时间点的任务状态计数。 如果作业包含大量任务，Get Task Counts 返回的计数可能会滞后于实际任务状态达几秒钟。 批处理可确保 Get Task Counts 的结果与实际任务状态（可以通过 List Tasks API 查询）之间的最终一致性。 但是，如果作业包含大量任务 (> 200,000)，建议改为使用 List Tasks API 和[筛选的查询](batch-efficient-list-queries.md)，以提供更多最新信息。 
-
-2018-08-01.7.0 之前的 Batch Service API 也会在 Get Task Counts 响应中返回一个 `validationStatus` 属性。 此属性表示 Batch 是否已检查状态计数是否与 List Tasks API 中报告的状态一致。 `validated` 的值表示 Batch 至少为作业检查了一次一致性。 `validationStatus` 属性的值不表示 Get Task Counts 返回的计数当前是否是最新的。
+> [!NOTE]
+> 2018-08-01.7.0 之前的 Batch Service API 也会在 Get Task Counts 响应中返回一个 `validationStatus` 属性。 此属性表示 Batch 是否已检查状态计数是否与 List Tasks API 中报告的状态一致。 `validated` 的值表示 Batch 至少为作业检查了一次一致性。 `validationStatus` 属性的值不表示 Get Task Counts 返回的计数当前是否是最新的。
+>
 
 ## <a name="node-state-counts"></a>节点状态计数
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 41d495e38a8360609afe924bb49ccf2f6aea086e
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 4c8f2966df9c33ec227b14c00996f84f39043cdb
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43340033"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44349222"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念证明操作手册：构建基块
 
@@ -340,7 +340,7 @@ ms.locfileid: "43340033"
 | 步骤 | 资源 |
 | --- | --- |
 | 从向其分配应用的组中删除用户 | [在 Azure Active Directory 租户中管理用户的组成员身份](fundamentals/active-directory-groups-members-azure-portal.md) |
-| 请稍等几分钟等待取消预配 | [Azure AD 中的自动化 SaaS 应用用户预配：自动化预配的工作原理](active-directory-saas-app-provisioning.md#how-does-automatic-provisioning-work) |
+| 请稍等几分钟等待取消预配 | [Azure AD 中的自动化 SaaS 应用用户预配：自动化预配的工作原理](manage-apps/user-provisioning.md#how-does-automatic-provisioning-work) |
 | 在单独的浏览器会话中，以信息辅助角色身份登录到“我的应用”门户，并确认磁贴缺失 | http://myapps.microsoft.com |
 
 

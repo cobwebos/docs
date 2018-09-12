@@ -17,12 +17,12 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 4d7c9246b694fc1b5623ecd198e4ced330e78dde
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 2405f1a8ab5ef03e5ed2992b7a089571077ce59b
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579412"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348497"
 ---
 # <a name="customizing-claims-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>在 Azure Active Directory 中为企业应用程序自定义 SAML 令牌中颁发的声明
 目前，Azure Active Directory 支持使用大多数企业应用程序进行单一登录，包括 Azure AD 应用库中预集成的两个应用程序以及自定义应用程序。 当用户通过 Azure AD 使用 SAML 2.0 协议向应用程序进行身份验证时，Azure AD 会将令牌发送到应用程序（通过 HTTP POST）。 然后，应用程序验证并使用该令牌将用户登录，而不是提示输入用户名和密码。 这些 SAML 令牌包含有关用户的信息片段（称为“声明”）。
@@ -130,7 +130,7 @@ SAML 中有一些受限声明。 如果添加此类声明，Azure AD 不会发�
 
 ## <a name="next-steps"></a>后续步骤
 * [有关 Azure Active Directory 中应用程序管理的文章索引](../active-directory-apps-index.md)
-* [针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)
+* [针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
 * [排查基于 SAML 的单一登录问题](howto-v1-debug-saml-sso-issues.md)
 
 <!--Image references-->

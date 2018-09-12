@@ -15,23 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/04/2018
 ms.author: cherylmc
-ms.openlocfilehash: 550f655f6eac5a114636978255578eb3753e0d4b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: fe05ab36f971105cf72342b8df5e2a82de7fc2b8
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30918126"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391787"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>使用 Azure 门户创建基于路由的 VPN 网关
 
 本文可帮助你使用 Azure 门户快速创建基于路由的 Azure VPN 网关。  创建与本地网络的 VPN 连接时使用 VPN 网关。 还可以使用 VPN 网关连接 VNet。 
 
-本文中的步骤将创建 VNet、子网、网关子网和基于路由的 VPN 网关（虚拟网络网关）。 完成网关创建后，可以创建连接。 执行这些步骤需要 Azure 订阅。 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+本文中的步骤将创建 VNet、子网、网关子网和基于路由的 VPN 网关（虚拟网络网关）。 完成网关创建后，可以创建连接。 执行这些步骤需要 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="vnet"></a>创建虚拟网络
 
 1. 从浏览器导航到 [Azure 门户](http://portal.azure.com)并使用 Azure 帐户登录。
-2. 单击“创建资源”。 在“搜索 Marketplace”字段中，键入“虚拟网络”。 从返回的列表中找到“虚拟网络”，单击打开“虚拟网络”页。
+2. 单击“创建资源”。 在“在市场中搜索”字段中，键入“虚拟网络”。 从返回的列表中找到“虚拟网络”，单击打开“虚拟网络”页。
 3. 从靠近“虚拟网络”页底部的“选择部署模型”列表中，确认已从下拉列表中选择“资源管理器”，然后单击“创建”。 这会打开“创建虚拟网络”页。
 4. 在“创建虚拟网络”页上，配置 VNet 设置。 填写字段时，如果在字段中输入的字符有效，红色感叹号标记会变成绿色对钩标记。 使用以下值：
 
@@ -54,12 +54,12 @@ ms.locfileid: "30918126"
 2. 在“虚拟网络”页上，单击“子网”以展开“VNet1 - 子网”页。
 3. 单击顶部的“+网关子网”打开“添加子网”页。
 
-  ![添加网关子网](./media/create-routebased-vpn-gateway-portal/add-gateway-subnet.png "添加网关子网")
+  ![添加网关子网](./media/create-routebased-vpn-gateway-portal/gateway-subnet.png "添加网关子网")
 4. 子网的“名称”会自动填充为所需值“GatewaySubnet”。 调整自动填充的**地址范围**值，使其匹配以下值：
 
   **地址范围(CIDR 块)**：10.1.255.0/27
 
-  ![添加网关子网](./media/create-routebased-vpn-gateway-portal/gateway-subnet.png "添加网关子网")
+  ![添加网关子网](./media/create-routebased-vpn-gateway-portal/add-gateway-subnet.png "添加网关子网")
 5. 若要创建网关子网，请单击页底部的“确定”。
 
 ## <a name="gwvalues"></a>配置网关设置

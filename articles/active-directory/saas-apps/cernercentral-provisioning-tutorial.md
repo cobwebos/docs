@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: 694274abb9a762bc6ca6309cbd56b0eb65bb5a5e
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: bc215061d5f2f139c5912f29f709346cb681ee86
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228775"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346625"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>教程：为 Cerner Central 配置自动用户预配
 
@@ -29,7 +29,7 @@ ms.locfileid: "36228775"
 
 ## <a name="prerequisites"></a>先决条件
 
-在本教程中概述的方案假定您已具有以下各项：
+在本教程中概述的方案假定已有以下各项：
 
 *   一个 Azure Active Directory 租户
 *   Cerner Central 租户 
@@ -69,27 +69,27 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 1.  第一步是确保管理 Cerner 和 Azure AD 集成的人员具有 CernerCare 帐户，需要此帐户才可访问完成此说明所必需的文档。 如有必要，请使用以下 URL 在每个适用的环境中创建 CernerCare 帐户。
 
-   * 沙盒：https://sandboxcernercare.com/accounts/create
+   * 沙盒： https://sandboxcernercare.com/accounts/create
 
-   * 生产：https://cernercare.com/accounts/create  
+   * 生产： https://cernercare.com/accounts/create  
 
 2.  接下来，必须为 Azure AD 创建系统帐户。 使用下面的说明为沙盒和生产环境请求一个系统帐户。
 
-   * 说明：https://wiki.ucern.com/display/CernerCentral/Requesting+A+System+Account
+   * 说明： https://wiki.ucern.com/display/CernerCentral/Requesting+A+System+Account
 
-   * 沙盒：https://sandboxcernercentral.com/system-accounts/
+   * 沙盒： https://sandboxcernercentral.com/system-accounts/
 
-   * 生产：https://cernercentral.com/system-accounts/
+   * 生产： https://cernercentral.com/system-accounts/
 
 3.  接下来，为每个系统帐户生成 OAuth 持有者令牌。 为此，请根据以下说明进行操作。
 
-   * 说明：https://wiki.ucern.com/display/public/reference/Accessing+Cerner%27s+Web+Services+Using+A+System+Account+Bearer+Token
+   * 说明： https://wiki.ucern.com/display/public/reference/Accessing+Cerner%27s+Web+Services+Using+A+System+Account+Bearer+Token
 
-   * 沙盒：https://sandboxcernercentral.com/system-accounts/
+   * 沙盒： https://sandboxcernercentral.com/system-accounts/
 
-   * 生产：https://cernercentral.com/system-accounts/
+   * 生产： https://cernercentral.com/system-accounts/
 
-4. 最后，需要获取 Cerner 中沙盒与生产环境的用户名单领域 ID，以完成配置。 有关如何获取此项的信息，请参阅：https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM。 
+4. 最后，需要获取 Cerner 中沙盒与生产环境的用户名单领域 ID，以完成配置。 有关如何获取此项的信息，请参阅： https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM。 
 
 5. 现可以配置 Azure AD 向 Cerner 预配用户帐户。 登录到[Azure 门户](https://portal.azure.com)，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”部分。
 
@@ -105,9 +105,9 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
    * 在“租户 URL”字段中，输入以下格式的 URL，将“User-Roster-Realm-ID”替换为在第 4 步中获取的领域 ID。
 
-> 沙盒：https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+> 沙盒： https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
-> 生产：https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+> 生产： https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
    * 在“密钥标记”字段中，输入在第 3 步中生成的 OAuth 持有者令牌并单击“测试连接”。
 
@@ -125,7 +125,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 这将开始对在“用户和组”部分中分配给 Cerner Central 的任何用户和/或组进行初始同步。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 Cerner Central 应用执行的所有操作。
 
-若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../active-directory-saas-provisioning-reporting.md)。
+若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
 
 ## <a name="additional-resources"></a>其他资源
 

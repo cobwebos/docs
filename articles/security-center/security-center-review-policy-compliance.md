@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 82D50B98-40F2-44B1-A445-4391EA9EBBAA
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/05/2017
 ms.author: alleonar
-ms.openlocfilehash: 6c6764eec59633f0bdd0fa396c1581117a0c1e1d
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 1443486590859aac5591aff2ab0551bed9228d7b
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34077762"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301743"
 ---
 # <a name="review-security-center-policy-compliance-using-rest-apis"></a>使用 REST API 查看安全中心策略符合性
 
@@ -42,7 +42,7 @@ Authorization: Bearer
 
 以下标头是必需的： 
 
-|请求标头|说明|  
+|请求标头|Description|  
 |--------------------|-----------------|  
 |Content-Type：|必需。 设置为 `application/json`。|  
 |Authorization：|必需。 设置为有效的 `Bearer` [访问令牌](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
@@ -71,7 +71,7 @@ Authorization: Bearer
 
 **value** 中的每一项都代表一个建议：
 
-|响应属性|说明|
+|响应属性|Description|
 |----------------|----------|
 |**state** | 指示建议是 `active` 还是 `resolved`。 |
 |**creationTimeUtc** | 以 UTC 表示的日期和时间，显示创建建议的时间。 |

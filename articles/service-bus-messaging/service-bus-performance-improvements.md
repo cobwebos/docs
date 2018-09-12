@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 06/14/2018
 ms.author: spelluru
-ms.openlocfilehash: 9dd9150411b465d210c7e02dc52d6851f670845f
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 18e2cc9457252dbd931b03fc08382287fd3a3c1e
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697629"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304639"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>使用服务总线消息传递改进性能的最佳实践
 
@@ -66,7 +66,7 @@ AMQP 和 SBMP 更有效，因为只要消息工厂存在，它们便会维护与
   var receiver = new MessageReceiver(connectionString, queueName, ReceiveMode.PeekLock);
   var doneReceiving = new TaskCompletionSource<bool>();
 
-  receiver.RegisterMessageHandler(
+  receiver.RegisterMessageHandler(...);
   ```
 
 ## <a name="receive-mode"></a>接收模式

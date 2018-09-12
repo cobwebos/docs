@@ -14,12 +14,12 @@ ms.component: fundamentals
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: 118f8258673c8a19d5f06e5fc62ff56d0fb44ea1
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: ec84cdb4e226eea4d16d28d63acd7be59241b973
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398358"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346910"
 ---
 # <a name="understand-azure-identity-solutions"></a>了解 Azure 标识解决方案
 Microsoft Azure Active Directory (Azure AD) 是一个标识和访问管理云解决方案，提供目录服务、标识监管和应用程序访问管理。 Azure AD 可以在 [Azure AD 应用程序库](https://azure.microsoft.com/marketplace/active-directory/all/)中数千个预先集成的商用和自定义应用上快速[实现单一登录 (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso)。 你也许已经在使用其中的许多应用，例如 Office 365、Salesforce.com、Box、ServiceNow 和 Workday。
@@ -110,10 +110,10 @@ Microsoft Azure 允许以多种方式管理用户的标识，不管这些标识�
 
 * [使用 Azure AD Connect 启用目录的混合管理](../connect/active-directory-aadconnect.md)
 * [在互联世界中提高安全性](../authentication/multi-factor-authentication.md)
-* [Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配](../active-directory-saas-app-provisioning.md)
+* [Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配](../manage-apps/user-provisioning.md)
 * [从任意位置管理密码](../user-help/active-directory-passwords-update-your-own-password.md)
 * [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
-* [Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配](../active-directory-saas-app-provisioning.md)
+* [Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配](../manage-apps/user-provisioning.md)
 * [如何提供对本地应用程序的安全远程访问](../manage-apps/application-proxy.md)
 * [使用 Azure Active Directory 组管理对资源的访问](active-directory-manage-groups.md)
 * [什么是 Microsoft Azure Active Directory 许可？](active-directory-licensing-whatis-azure-portal.md)

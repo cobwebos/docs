@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: meladie
-ms.openlocfilehash: 4a124299b8f70ce5c5b1518d923efb2f8e75097f
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: f31bb6fe713514b7b34f5b16693cf7ea31db757f
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37906353"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302420"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-for-ffiec-financial-services"></a>Azure 安全性和符合性蓝图：符合 FFIEC 金融服务要求的 PaaS Web 应用程序
 
@@ -27,7 +27,7 @@ ms.locfileid: "37906353"
 - 本体系结构提供一个基线，帮助客户按符合 FFIEC 要求的方式使用 Azure。
 - 客户负责针对使用本体系结构构建的任何解决方案开展相应的安全与合规评估；具体要求根据客户的每种实施方式具体情况而异。
 
-合格的审核员必须就一个生产客户解决方案进行证实，这样才能符合 FFIEC 的要求。 审核由 FFIEC 成员机构中的检查员进行监督，这些机构包括联邦储备系统理事会 (FRB)、联邦存款保险公司 (FDIC)、国家信用合作社管理局 (NCUA)、货币监理署 (OCC) 和消费者金融保护局 (CFPB)。 上述检查员就审核是否由独立于被审机构的评审员实施进行证实。 客户负责针对使用本体系结构构建的任何解决方案开展相应的安全性与符合性评估；具体要求根据客户的每种实施方式具体情况而异。
+合格的审核员必须就一个生产客户解决方案进行证实，这样才能符合 FFIEC 的要求。 审核由 FFIEC 成员机构中的检查员进行监督，这些机构包括联邦储备系统理事会 (FRB)、联邦存款保险公司 (FDIC)、国家信用合作社管理局 (NCUA)、货币监理署 (OCC) 和消费者金融保护局 (CFPB)。 上述检查员就审核是否由独立于被审机构的评审员实施进行证实。 客户有责任对使用本体系结构构建的任何解决方案进行相应的安全性与符合性评估，因为具体要求可能会因客户的具体实施情况而异。
 
 单击[此处](https://aka.ms/ffiec-paaswa-repo)获取部署说明。
 
@@ -35,7 +35,7 @@ ms.locfileid: "37906353"
 
 本文中的 Azure 安全性和符合性蓝图自动化可针对具有 Azure SQL 数据库后端的 PaaS Web 应用程序部署一个参考体系结构。 该 Web 应用程序托管在独立的 Azure 应用服务环境中，该环境是 Azure 数据中心内的私有专用环境。 该环境针对 Azure 管理的虚拟机上的 Web 应用程序流量进行负载均衡。 此体系结构还包括网络安全组、应用程序网关、Azure DNS 和负载均衡器。
 
-对于增强的分析和报告，可以通过列存储索引配置 Azure SQL 数据库。 Azure SQL 数据库可完全按照客户的使用情况进行扩展、缩小或关闭。 所有 SQL 流量都通过包含自签名证书使用 SSL 加密。 作为最佳做法，Azure 建议使用受信任的证书颁发机构来增强安全性。
+对于增强的分析和报告，可以通过列存储索引配置 Azure SQL 数据库。 Azure SQL 数据库可完全按照客户的使用情况进行扩展、缩小或关闭。 所有 SQL 流量都通过包含自签名证书使用 SSL 加密。 Azure 建议使用受信任的证书颁发机构来增强安全性，这是最佳做法。
 
 该解决方案使用 Azure 存储帐户。客户可将存储帐户配置为使用存储服务加密，以维持静态数据的机密性。 Azure 在客户选择的数据中心存储三个数据副本，以提供复原能力。 地理冗余的存储确保将数据复制到数百英里以外的辅助数据中心，并同样在该数据中心存储三个副本，防止客户主要数据中心的不利事件导致数据丢失。
 
@@ -103,7 +103,7 @@ Azure SQL 数据库通常通过 SQL Server Management Studio 进行管理，后�
 - [Web 应用程序防火墙 - 限制数据](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-web-application-firewall)
 - 允许 [Azure SQL 数据库流量](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-network-architecture-overview)
 
-**Azure Web 应用**：客户使用 [Azure Web 应用](https://docs.microsoft.com/azure/app-service/)可以采用所选编程语言构建和托管 Web 应用程序，而无需管理基础结构。 它提供自动缩放和高可用性，支持 Windows 和 Linux，并允许从 GitHub、Team Services 或任何 Git 存储库进行自动部署。
+**Azure Web 应用**：客户使用 [Azure Web 应用](https://docs.microsoft.com/azure/app-service/)可以采用所选编程语言构建和托管 Web 应用程序，而无需管理基础结构。 它提供自动缩放和高可用性，支持 Windows 和 Linux，并支持从 GitHub、Azure DevOps 或任何 Git 存储库进行自动部署。
 
 ### <a name="virtual-network"></a>虚拟网络
 
@@ -159,9 +159,9 @@ Azure SQL 数据库通常通过 SQL Server Management Studio 进行管理，后�
 - [Azure Active Directory Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-getting-started) 使客户能够最大限度地减少有权访问特定信息的用户数量。 管理员可以使用 Azure Active Directory Privileged Identity Management 来发现、限制和监视特权标识及其对资源的访问。 还可以根据需要，使用此功能来实施按需、实时的管理访问。
 - [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) 可以检测会影响组织标识的潜在漏洞，配置自动化的措施来应对所检测到的与组织标识相关的可疑操作，调查可疑的事件以采取相应的措施予以解决。
 
-### <a name="security"></a>“安全”
+### <a name="security"></a>安全
 
-**机密管理**：此解决方案使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 管理密钥和机密。 Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 以下 Azure Key Vault 功能可帮助客户保护和访问此类数据：
+**机密管理**：解决方案使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 管理密钥和机密。 Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 以下 Azure Key Vault 功能可帮助客户保护和访问此类数据：
 
 - 根据需要配置高级访问权限策略。
 - 使用对密钥和机密所需的最低权限来定义 Key Vault 访问策略。
@@ -173,7 +173,7 @@ Azure SQL 数据库通常通过 SQL Server Management Studio 进行管理，后�
 
 **Azure 安全中心**：借助 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)，客户可在工作负荷中集中应用和管理安全策略、限制威胁曝露，以及检测和应对攻击。 此外，Azure 安全中心会访问 Azure 服务的现有配置，以提供配置与服务建议来帮助改善安全状况和保护数据。
 
-Azure 安全中心使用各种检测功能，提醒客户针对其环境的潜在攻击。 这些警报包含有关触发警报的内容、目标资源以及攻击源的重要信息。 Azure 安全中心有一组预定义的[安全警报](https://docs.microsoft.com/en-us/azure/security-center/security-center-alerts-type)，这些警报在出现威胁或可疑活动时触发。 客户可以使用 Azure 安全中心的[自定义警报规则](https://docs.microsoft.com/en-us/azure/security-center/security-center-custom-alert)，根据从环境中收集到的数据定义新的安全警报。
+Azure 安全中心使用各种检测功能，提醒客户针对其环境的潜在攻击。 这些警报包含有关触发警报的内容、目标资源以及攻击源的重要信息。 Azure 安全中心有一组[预定义的安全警报](https://docs.microsoft.com/en-us/azure/security-center/security-center-alerts-type)，这些警报在出现威胁或可疑活动时触发。 客户可以使用 Azure 安全中心的[自定义警报规则](https://docs.microsoft.com/en-us/azure/security-center/security-center-custom-alert)，根据从环境中收集到的数据定义新的安全警报。
 
 Azure 安全中心提供区分优先级的安全警报和事件，让客户更轻松地发现和解决潜在安全问题。 针对检测到的每种威胁生成[威胁智能报告](https://docs.microsoft.com/azure/security-center/security-center-threat-report)，帮助事件响应团队调查和解决威胁。
 

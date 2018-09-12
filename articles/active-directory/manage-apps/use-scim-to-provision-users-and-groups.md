@@ -16,12 +16,12 @@ ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: b696325c19d4e1d9c9fe6b85a3c46add756340ea
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4247ef1ffd1b8d5c5ec393e3ebff20c3e04e32b3
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443505"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347692"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>使用跨域标识管理系统 (SCIM) 将用户和组从 Azure Active Directory 自动预配到应用程序
 
@@ -84,7 +84,7 @@ Azure AD 可配置为自动将已分配的用户和组预配到实现[跨域标�
 13. 单击“保存”以启用 Azure AD 预配服务。 
 14. 如果仅同步分配的用户和组（推荐），请确保选择“用户和组”选项卡，并分配要同步的用户和/或组。
 
-一旦启动初始同步，即可使用“审核日志”选项卡来监视进程，它将显示由应用中预配服务所执行的所有操作。 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../active-directory-saas-provisioning-reporting.md)。
+一旦启动初始同步，即可使用“审核日志”选项卡来监视进程，它将显示由应用中预配服务所执行的所有操作。 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](check-status-user-account-provisioning.md)。
 
 >[!NOTE]
 >初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 
@@ -152,7 +152,7 @@ Azure AD 可配置为自动将已分配的用户和组预配到实现[跨域标�
 13. 单击“保存”以启用 Azure AD 预配服务。 
 14. 如果仅同步分配的用户和组（推荐），请确保选择“用户和组”选项卡，并分配要同步的用户和/或组。
 
-一旦启动初始同步，即可使用“审核日志”选项卡来监视进程，它将显示由应用中预配服务所执行的所有操作。 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../active-directory-saas-provisioning-reporting.md)。
+一旦启动初始同步，即可使用“审核日志”选项卡来监视进程，它将显示由应用中预配服务所执行的所有操作。 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](check-status-user-account-provisioning.md)。
 
 验证此示例的最后一步是打开 Windows 计算机上 \AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug 文件夹中的 TargetFile.csv 文件。 运行预配过程后，此文件会显示所有已分配和预配的用户与组的详细信息。
 
@@ -692,11 +692,11 @@ Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。  
 
 ## <a name="related-articles"></a>相关文章
 * [有关 Azure Active Directory 中应用程序管理的文章索引](../active-directory-apps-index.md)
-* [在 SaaS 应用中自动预配和取消预配用户](../active-directory-saas-app-provisioning.md)
-* [为用户预配自定义属性映射](../active-directory-saas-customizing-attribute-mappings.md)
-* [为属性映射编写表达式](../active-directory-saas-writing-expressions-for-attribute-mappings.md)
-* [用于用户预配的作用域筛选器](../active-directory-saas-scoping-filters.md)
-* [帐户预配通知](../active-directory-saas-app-provisioning.md)
+* [在 SaaS 应用中自动预配和取消预配用户](user-provisioning.md)
+* [为用户预配自定义属性映射](customize-application-attributes.md)
+* [为属性映射编写表达式](functions-for-customizing-application-data.md)
+* [用于用户预配的作用域筛选器](define-conditional-rules-for-provisioning-user-accounts.md)
+* [帐户预配通知](user-provisioning.md)
 * [有关如何集成 SaaS 应用的教程列表](../saas-apps/tutorial-list.md)
 
 <!--Image references-->

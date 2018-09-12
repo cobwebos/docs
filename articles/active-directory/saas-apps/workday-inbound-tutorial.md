@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: asmalser
-ms.openlocfilehash: 0df23d50fa208482e45d2d35555ec79c587cc80a
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 930ca49a63e34214ec197d8dd37f38361b34fe90
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42445654"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347029"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning-preview"></a>教程：为 Workday 配置自动用户预配（预览版）
 
@@ -27,7 +27,7 @@ ms.locfileid: "42445654"
 
 ## <a name="overview"></a>概述
 
-[Azure Active Directory 用户预配服务](../active-directory-saas-app-provisioning.md)与 [Workday Human Resources API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) 集成，以便能够预配用户帐户。 Azure AD 使用此连接启用以下用户预配工作流：
+[Azure Active Directory 用户预配服务](../manage-apps/user-provisioning.md)与 [Workday Human Resources API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) 集成，以便能够预配用户帐户。 Azure AD 使用此连接启用以下用户预配工作流：
 
 * **将用户预配到 Active Directory** - 将 Workday 的选定用户集同步到一个或多个 Active Directory 林中。
 
@@ -39,13 +39,13 @@ ms.locfileid: "42445654"
 
 Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下人力资源和标识生命周期管理方案自动化：
 
-* **招聘新员工** - 将新员工添加到 Workday 后，Active Directory、Azure Active Directory、（可选）Office 365 和 [Azure AD 支持的其他 SaaS 应用程序](../active-directory-saas-app-provisioning.md)中会自动创建一个用户帐户，并将电子邮件地址写回到 Workday。
+* **招聘新员工** - 将新员工添加到 Workday 后，Active Directory、Azure Active Directory、（可选）Office 365 和 [Azure AD 支持的其他 SaaS 应用程序](../manage-apps/user-provisioning.md)中会自动创建一个用户帐户，并将电子邮件地址写回到 Workday。
 
-* **员工属性和个人资料更新** - 在 Workday 中更新员工记录（例如其姓名、职称或上司）后，Active Directory、Azure Active Directory、（可选）Office 365 和 [Azure AD 支持的其他 SaaS 应用程序](../active-directory-saas-app-provisioning.md)中会自动更新相应员工的用户帐户。
+* **员工属性和个人资料更新** - 在 Workday 中更新员工记录（例如其姓名、职称或上司）后，Active Directory、Azure Active Directory、（可选）Office 365 和 [Azure AD 支持的其他 SaaS 应用程序](../manage-apps/user-provisioning.md)中会自动更新相应员工的用户帐户。
 
-* **员工离职** - 当某个员工在 Workday 离职时，Active Directory、Azure Active Directory、（可选）Office 365 和 [Azure AD 支持的其他 SaaS 应用程序](../active-directory-saas-app-provisioning.md)中会自动禁用其用户帐户。
+* **员工离职** - 当某个员工在 Workday 离职时，Active Directory、Azure Active Directory、（可选）Office 365 和 [Azure AD 支持的其他 SaaS 应用程序](../manage-apps/user-provisioning.md)中会自动禁用其用户帐户。
 
-* **再次雇用员工** - 当 Workday 再次雇用某个员工时，Active Directory、Azure Active Directory、（可选）Office 365 和 [Azure AD 支持的其他 SaaS 应用程序](../active-directory-saas-app-provisioning.md)中可以自动重新激活或重新预配（取决于你的偏好）该员工的旧帐户。
+* **再次雇用员工** - 当 Workday 再次雇用某个员工时，Active Directory、Azure Active Directory、（可选）Office 365 和 [Azure AD 支持的其他 SaaS 应用程序](../manage-apps/user-provisioning.md)中可以自动重新激活或重新预配（取决于你的偏好）该员工的旧帐户。
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>此用户预配解决方案最适合哪些对象？
 
@@ -281,7 +281,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
    * **管理员密码** – 输入 Workday 集成系统帐户的密码
 
-   * **租户 URL –** 输入租户的 Workday Web 服务终结点的 URL。 此值应类似于：https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources，其中，contoso4 需替换为正确的租户名，wd3-impl 需替换为正确的环境字符串。
+   * **租户 URL –** 输入租户的 Workday Web 服务终结点的 URL。 此值应类似于： https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources，其中，contoso4 需替换为正确的租户名，wd3-impl 需替换为正确的环境字符串。
 
    * **Active Directory 林** – Get-ADForest PowerShell cmdlet 返回的 Active Directory 林“名称”。 这通常是如下所示的字符串：*contoso.com*
 
@@ -327,7 +327,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
          * **常量** – 将静态常量字符串值写入 AD 属性
 
-         * **表达式** – 可以基于一个或多个 Workday 属性将自定义值写入 AD 属性。 [有关详细信息，请参阅这篇有关表达式的文章](../active-directory-saas-writing-expressions-for-attribute-mappings.md)。
+         * **表达式** – 可以基于一个或多个 Workday 属性将自定义值写入 AD 属性。 [有关详细信息，请参阅这篇有关表达式的文章](../manage-apps/functions-for-customizing-application-data.md)。
 
       * **源属性** – Workday 中的用户属性。 如果你查找的属性不存在，请参阅[自定义 Workday 用户属性列表](#customizing-the-list-of-workday-user-attributes)。
 
@@ -356,7 +356,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
 -   Active Directory 中的 userPrincipalName 属性是通过将 Workday 用户 ID 与域后缀相串联来生成的
 
--   [此处提供了有关编写表达式的文档](../active-directory-saas-writing-expressions-for-attribute-mappings.md)。 其中包括有关如何删除特殊字符的示例。
+-   [此处提供了有关编写表达式的文档](../manage-apps/functions-for-customizing-application-data.md)。 其中包括有关如何删除特殊字符的示例。
 
   
 | WORKDAY 属性 | ACTIVE DIRECTORY 属性 |  匹配 ID？ | 创建/更新 |
@@ -490,7 +490,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
 3. 随后将启动初始同步。根据 Workday 中的用户数，此过程花费的时间可能有所不同。
 
-4. 无论何时，检查 Azure 门户中的“审核日志”选项卡都可以查看预配服务执行的操作。 审核日志列出预配服务执行的所有同步事件，例如，正在从 Workday 中读出哪些用户，随后将其添加或更新到 Active Directory。 **[有关如何读取审核日志的详细说明，请参阅预配报告指南](../active-directory-saas-provisioning-reporting.md)**
+4. 无论何时，检查 Azure 门户中的“审核日志”选项卡都可以查看预配服务执行的操作。 审核日志列出预配服务执行的所有同步事件，例如，正在从 Workday 中读出哪些用户，随后将其添加或更新到 Active Directory。 **[有关如何读取审核日志的详细说明，请参阅预配报告指南](../manage-apps/check-status-user-account-provisioning.md)**
 
 1.  在托管代理的 Windows Server 计算机上的 [Windows 事件日志](https://technet.microsoft.com/library/cc722404(v=ws.11).aspx)中查看任何新的错误或警告。 在服务器上启动“Eventvwr.msc”并选择“Windows 日志”>“应用程序”即可查看这些事件。 所有与预配相关的消息记录在 **AADSyncAgent** 源下面。
 
@@ -539,7 +539,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
    * **管理员密码** – 输入 Workday 集成系统帐户的密码
 
-   * **租户 URL –** 输入租户的 Workday Web 服务终结点的 URL。 此值应类似于：https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources，其中，contoso4 需替换为正确的租户名，wd3-impl 需替换为正确的环境字符串。 如果不知道此 URL，请咨询 Workday 集成合作伙伴或支持代表，确定要使用的正确 URL。
+   * **租户 URL –** 输入租户的 Workday Web 服务终结点的 URL。 此值应类似于： https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources，其中，contoso4 需替换为正确的租户名，wd3-impl 需替换为正确的环境字符串。 如果不知道此 URL，请咨询 Workday 集成合作伙伴或支持代表，确定要使用的正确 URL。
 
    * **通知电子邮件** – 输入电子邮件地址，然后选中“如果失败，则发送电子邮件”复选框。
 
@@ -581,7 +581,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
       * **常量** – 将静态常量字符串值写入 AD 属性
 
-      * **表达式** – 可以基于一个或多个 Workday 属性将自定义值写入 AD 属性。 [有关详细信息，请参阅这篇有关表达式的文章](../active-directory-saas-writing-expressions-for-attribute-mappings.md)。
+      * **表达式** – 可以基于一个或多个 Workday 属性将自定义值写入 AD 属性。 [有关详细信息，请参阅这篇有关表达式的文章](../manage-apps/functions-for-customizing-application-data.md)。
 
    * **源属性** – Workday 中的用户属性。 如果你查找的属性不存在，请参阅[自定义 Workday 用户属性列表](#customizing-the-list-of-workday-user-attributes)。
 
@@ -611,7 +611,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
 3. 随后将启动初始同步。根据 Workday 中的用户数，此过程花费的时间可能有所不同。
 
-4. 可在“审核日志”选项卡中查看单个同步事件。**[有关如何读取审核日志的详细说明，请参阅预配报告指南](../active-directory-saas-provisioning-reporting.md)**
+4. 可在“审核日志”选项卡中查看单个同步事件。**[有关如何读取审核日志的详细说明，请参阅预配报告指南](../manage-apps/check-status-user-account-provisioning.md)**
 
 5. 完成某项操作后，系统会在“预配”选项卡中写入一份审核摘要报告，如下所示。
 
@@ -642,7 +642,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
    * **管理员密码** – 输入 Workday 集成系统帐户的密码
 
-   * **租户 URL –** 输入租户的 Workday Web 服务终结点的 URL。 此值应类似于：https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources，其中，contoso4 需替换为正确的租户名，wd3-impl 需替换为正确的环境字符串（如果需要）。
+   * **租户 URL –** 输入租户的 Workday Web 服务终结点的 URL。 此值应类似于： https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources，其中，contoso4 需替换为正确的租户名，wd3-impl 需替换为正确的环境字符串（如果需要）。
 
    * **通知电子邮件** – 输入电子邮件地址，然后选中“如果失败，则发送电子邮件”复选框。
 
@@ -669,7 +669,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
 3. 随后将启动初始同步。根据 Workday 中的用户数，此过程花费的时间可能有所不同。
 
-4. 可在“审核日志”选项卡中查看单个同步事件。**[有关如何读取审核日志的详细说明，请参阅预配报告指南](../active-directory-saas-provisioning-reporting.md)**
+4. 可在“审核日志”选项卡中查看单个同步事件。**[有关如何读取审核日志的详细说明，请参阅预配报告指南](../manage-apps/check-status-user-account-provisioning.md)**
 
 5. 完成某项操作后，系统会在“预配”选项卡中写入一份审核摘要报告，如下所示。
 
@@ -680,11 +680,11 @@ Azure AD 预配服务支持自定义列表或 Workday 属性，以包含人力�
 
 为此，必须使用 [Workday Studio](https://community.workday.com/studio-download) 来提取表示要使用的属性的 XPath 表达式，然后在 Azure 门户中使用高级属性编辑器将其添加到预配配置。
 
-**检索 Workday 用户属性的 XPath 表达式：** 
+**检索 Workday 用户属性的 XPath 表达式：**
 
 1. 下载并安装 [Workday Studio](https://community.workday.com/studio-download)。 需要使用 Workday 社区帐户来访问安装程序。
 
-2. 从此 URL 中下载 Workday Human_Resources WDSL 文件：https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Human_Resources.wsdl
+2. 从此 URL 中下载 Workday Human_Resources WDSL 文件： https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Human_Resources.wsdl
 
 3. 启动 Workday Studio。
 
@@ -808,7 +808,7 @@ Active Directory 的 Workday 预配解决方案需要在已加入域的服务器
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解如何查看日志并获取有关预配活动的报告](../active-directory-saas-provisioning-reporting.md)
+* [了解如何查看日志并获取有关预配活动的报告](../manage-apps/check-status-user-account-provisioning.md)
 * [了解如何在 Workday 和 Azure Active Directory 之间配置单一登录](workday-tutorial.md)
 * [了解如何将其他 SaaS 应用程序与 Azure Active Directory 进行集成](tutorial-list.md)
 

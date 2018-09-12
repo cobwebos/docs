@@ -15,12 +15,12 @@ ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: 4ce76f1156d4d8d85f5e10bb750b012f93ba7afb
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 1178d85f295c6ac01f367db8adc2c9b855cdc829
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366674"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347814"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>使用应用程序代理通过 Kerberos 约束委派单一登录到应用程序
 
@@ -135,12 +135,12 @@ Azure AD 应用程序代理的 Kerberos 委托流程从 Azure AD 在云中验证
    * 本地 SAM 帐户名（取决于域控制器配置）
 
 ### <a name="troubleshooting-sso-for-different-identities"></a>排查不同标识的 SSO 问题
-如果在 SSO 过程中发生错误，连接器计算机事件日志中会显示该错误，如[故障排除](../application-proxy-back-end-kerberos-constrained-delegation-how-to.md)中所述。
+如果在 SSO 过程中发生错误，连接器计算机事件日志中会显示该错误，如[故障排除](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)中所述。
 但在某些情况下，请求将成功发送到后端应用程序，同时此应用程序以其他各种 HTTP 响应做出回复。 排查这些问题时，应该先检查连接器计算机上应用程序代理会话事件日志中的事件编号 24029。 用于委托的用户标识出现在事件详细信息的“user”字段中。 若要打开会话记录，请在事件查看器视图菜单中选择“显示分析和调试日志”。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [如何配置应用程序代理应用程序以使用 Kerberos 约束委派](../application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
+* [如何配置应用程序代理应用程序以使用 Kerberos 约束委派](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 * [解决使用应用程序代理时遇到的问题](application-proxy-troubleshoot.md)
 
 

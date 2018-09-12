@@ -5,21 +5,17 @@ services: functions
 documentationcenter: na
 author: ggailey777
 manager: jeconnoc
-editor: ''
-tags: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 08/12/2018
 ms.author: glenga
-ms.openlocfilehash: 06124a0a0db47d76552ddf2172a7f656c6d869cf
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: d7396ddb94017048247050726f83b0302e946633
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818461"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347114"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure Functions 的 Zip 部署
 
@@ -97,7 +93,7 @@ az functionapp deployment source config-zip  -g myResourceGroup -n \
 > [!NOTE]
 > 从部署包运行函数应用的功能目前为预览版。
 
-Zip 部署集成了此功能，可以通过将函数应用设置 `WEBSITE_RUN_FROM_ZIP` 设置为 `1` 值来启用此功能。 有关详细信息，请参阅[从部署包文件运行函数](run-functions-from-deployment-package.md)。
+Zip 部署集成了此功能，可以通过将函数应用设置 `WEBSITE_RUN_FROM_PACKAGE` 设置为 `1` 值来启用此功能。 有关详细信息，请参阅[从部署包文件运行函数](run-functions-from-deployment-package.md)。
 
 [!INCLUDE [app-service-deploy-zip-push-custom](../../includes/app-service-deploy-zip-push-custom.md)]
 

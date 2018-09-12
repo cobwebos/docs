@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: spelluru
-ms.openlocfilehash: ff0e3124168927d03816079a4f5ab322663459ac
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: e6dd30fc8da919995849ba818f608604a57a0b37
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702446"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346820"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>预提取 Azure 服务总线消息
 
@@ -44,7 +44,7 @@ ms.locfileid: "43702446"
 
 在 [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) 接收模式下，提取到预提取缓存区的消息将以锁定状态进入缓存区，并且将超时时钟用于锁定计时。 如果预提取缓存区很大，且处理所需时间过长，以致消息锁定在驻留于预提取缓存区，甚至应用程序还在处理消息时就到期，可能出现一些令人困惑的事件要应用程序处理。
 
-应用程序可能收到包含到期或即将到期的锁定的消息。 如果是这样，应用程序可能处理该消息，但随后发现，因锁定到期而无法完成处理。 应用程序可查看 [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.lockeduntilutc#Microsoft_Azure_ServiceBus_Core_MessageReceiver_LockedUntilUtc) 属性（受代理时钟和本地计算机时钟之间的时钟偏差约束）。 如果消息锁定已到期，则应用程序必须忽略该消息，不应对该消息或通过该消息调用任何 API。 如果消息未到期但即将到期，可通过调用 [message.RenewLock()](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_) 延续和扩展又一默认锁定时间段
+应用程序可能收到包含到期或即将到期的锁定的消息。 如果是这样，应用程序可能处理该消息，但随后发现，因锁定到期而无法完成处理。 应用程序可查看 [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.lockeduntilutc) 属性（受代理时钟和本地计算机时钟之间的时钟偏差约束）。 如果消息锁定已到期，则应用程序必须忽略该消息，不应对该消息或通过该消息调用任何 API。 如果消息未到期但即将到期，可通过调用 [message.RenewLock()](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_) 延续和扩展又一默认锁定时间段
 
 如果锁定在预提取缓冲区静默地到期，则视为已放弃该消息，且可再次将消息用于从队列进行检索。 这可能导致将消息提取到预提取缓冲区，并置于末尾。 如果在消息过期期间往往无法使用预提取缓存区，这将导致重复预提取消息，但始终无法将其以可用（有效锁定）状态有效送达，并最终在超出最大传送数后移动到死信队列。
 
