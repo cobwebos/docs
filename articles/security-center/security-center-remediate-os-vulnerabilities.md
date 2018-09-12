@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 991d41f5-1d17-468d-a66d-83ec1308ab79
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2018
 ms.author: terrylan
-ms.openlocfilehash: 3c56abcec37bb6abcb77ec8cc443b0656bd69932
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 74bfc3435ad6d247dabd3a7cbf2910ede5f8c8ca
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990789"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296226"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>在 Azure 安全中心中修正安全配置
 Azure 安全中心每天分析虚拟机 (VM) 和计算机操作系统 (OS)，检查是否存在可能使 VM 和计算机更易受到攻击的配置。 当 OS 配置与建议的安全配置规则不匹配时，安全中心建议解决漏洞，并建议修复这些漏洞所需的配置更改。

@@ -7,14 +7,14 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.topic: overview
-ms.date: 08/01/2018
+ms.date: 09/07/2018
 ms.author: carlrab
-ms.openlocfilehash: f7a314b3de112ad1fa7a5a356c2325846e9371b1
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 6e793c0227300b836c0a14b4252eeaf63c1bc949
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413376"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054574"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>什么是 Azure SQL 数据库服务？ 
 
@@ -177,8 +177,8 @@ SQL 数据库支持在 MacOS、Linux 和 Windows 上使用 Python、Java、Node.
 - 请参阅这些快速入门，以便尽快入门：
 
   - [在 Azure 门户中创建 SQL 数据库](sql-database-get-started-portal.md)  
-  - [使用 Azure CLI 创建 SQL 数据库](sql-database-get-started-cli.md)
-  - [使用 PowerShell 创建 SQL 数据库](sql-database-get-started-powershell.md)
+  - [使用 Azure CLI 创建 SQL 数据库](sql-database-cli-samples.md)
+  - [使用 PowerShell 创建 SQL 数据库](sql-database-powershell-samples.md)
 
 - 如需一组 Azure CLI 和 PowerShell 的示例，请参阅：
   - [适用于 SQL 数据库的 Azure CLI 示例](sql-database-cli-samples.md)

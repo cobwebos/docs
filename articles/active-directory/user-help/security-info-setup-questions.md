@@ -11,18 +11,18 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: f1905e66bbe823f6c7c9c35d6540f3c8ca1d6ccd
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: b4913d55ee3d254f197512d9251ae750d8896f53
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389627"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160432"
 ---
 # <a name="set-up-security-info-to-use-pre-defined-security-questions-preview"></a>设置安全信息以使用预定义的安全性问题（预览）
 
-[!INCLUDE[preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+[!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
-设置安全信息需要登录到工作或学校帐户，然后完成注册过程。 如果从未设置过安全信息，则需要立即进行此操作。
+设置安全信息需要登录到工作或学校帐户，然后完成注册过程。 如果从未设置过安全信息，将提示你立即设置。
 
 ## <a name="set-up-security-questions"></a>设置安全问题
 
@@ -47,7 +47,7 @@ ms.locfileid: "39389627"
 
 根据要执行的操作，可选择组织如何联系你来验证你的身份。 选项包括：
 
-- **Authenticator 应用。** 下载并使用验证器应用，获取双重验证或密码重置的审批通知或随机生成的审核代码。 有关如何设置和使用 Microsoft Authenticator 应用的分步说明，请参阅[设置安全信息，以使用验证器应用](security-info-setup-auth-app.md)。
+- **Authenticator 应用。** 下载并使用验证器应用，获取双重验证或密码重置的审批通知或随机生成的审核代码。 有关如何设置和使用 Microsoft Authenticator 应用的分步说明，请参阅[设置安全信息以使用验证器应用](security-info-setup-auth-app.md)。
 
 - **移动设备短信。** 输入移动设备号码，获取将用于双重验证或密码重置的短信或代码。 有关如何通过短信 (SMS) 验证身份的分步说明，请参阅[设置安全信息以使用短信 (SMS)](security-info-setup-text-msg.md)。
 
@@ -60,7 +60,7 @@ ms.locfileid: "39389627"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果需要更新安全信息，请按照[管理安全信息](security-info-manage-settings.md)一文中的说明进行操作。
+- 如需更新安全信息，请遵照[管理安全信息](security-info-manage-settings.md)一文中的说明。
 
 - 如果丢失或忘记密码，请通过[密码重置门户](https://passwordreset.microsoftonline.com/)或遵循[重置工作或学校帐户密码](user-help-reset-password.md)一文中的步骤重置密码。
 

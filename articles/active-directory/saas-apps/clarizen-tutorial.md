@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 510bf383848725f3864c40af02c2b309370237f0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 855f147b0622ecc0831f2bc464e83d245af9e574
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438080"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158665"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>教程：Azure Active Directory 与 Clarizen 的集成
 
@@ -188,7 +188,7 @@ ms.locfileid: "39438080"
 
 ### <a name="create-a-clarizen-test-user"></a>创建 Clarizen 测试用户
 
-本部分的目的是在 Clarizen 中创建名为“Britta Simon”的用户。 Clarizen 支持在默认情况下启用的自动用户预配。 有关如何配置自动用户预配的更多详细信息，请参见[此处](clarizen-provisioning-tutorial.md)。
+本部分的目的是在 Clarizen 中创建名为“Britta Simon”的用户。
 
 如果需要手动创建用户，请执行以下步骤：
 
@@ -196,11 +196,11 @@ ms.locfileid: "39438080"
 
 1. 以管理员身份登录到 Clarizen 公司站点。
 
-1. 单击“人员”。
+2. 单击“人员”。
 
     ![单击“人员”](./media/clarizen-tutorial/create_aaduser_001.png "人员")
 
-1. 单击“邀请用户”。
+3. 单击“邀请用户”。
 
     ![“邀请用户”按钮](./media/clarizen-tutorial/create_aaduser_002.png "邀请用户")
 
@@ -251,7 +251,6 @@ ms.locfileid: "39438080"
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
 * [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
-* [配置用户预配](clarizen-provisioning-tutorial.md)
 
 <!--Image references-->
 

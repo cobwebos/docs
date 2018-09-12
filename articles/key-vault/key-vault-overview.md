@@ -14,22 +14,21 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 07/17/2018
 ms.author: barclayn
-ms.openlocfilehash: a55c99764cf9d77ab3ee269e3f5b0c2a13ec1ac7
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: b509bf9575c3fdeedd1673d4ffe1395d46e3d919
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42022373"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051606"
 ---
 # <a name="what-is-azure-key-vault"></a>什么是 Azure 密钥保管库？
 
-Azure Key Vault 是一项云服务，用作安全的机密存储。
+Azure Key Vault 有助于解决以下问题
+- Azure Key Vault 可以用来安全地存储令牌、密码、证书、API 密钥和其他机密，并对其访问进行严格控制。
+- Azure Key Vault 也可用作密钥管理解决方案。 可以通过 Azure Key Vault 轻松创建和控制用于加密数据的加密密钥。 
+- Azure Key Vault 也是一项服务，可以用来轻松地预配、管理和部署公用和专用安全套接字层/传输层安全性 (SSL/TLS) 证书，这些证书可以与 Azure 以及你的内部连接资源配合使用。 
+- 这些机密和密钥可以通过软件或 FIPS 140-2 级别 2 验证 HSM 进行保护
 
-密码、连接字符串和其他信息是保持应用程序正常运行所必需的。 在确保这些信息可用的同时，还需确保其安全。 因此，需要使用 Azure Key Vault。 Azure Key Vault 可以用来安全地存储和管理应用程序机密。
-
-可以通过 Key Vault 创建多个安全的称为保管库的容器。 这些保管库受硬件安全模块 (HSM) 的支持。 保管库可以集中存储应用程序机密，降低安全信息意外丢失的可能性。 Key Vault 还控制并记录外界对其所存储内容的访问。 Azure Key Vault 负责处理传输层安全性 (TLS) 证书的请求和续订事宜，其提供的功能是可靠的证书生命周期管理解决方案所必需的。
-
- Azure Key Vault 旨在支持任何类型的机密。 这意味着 Key Vault 可用于存储密码、数据库凭据、API 密钥和证书，这些内容可以受软件保护或受 HSM 保护
 ## <a name="why-use-azure-key-vault"></a>为何使用 Azure Key Vault？
 
 ### <a name="centralize-application-secrets"></a>集中管理应用程序机密

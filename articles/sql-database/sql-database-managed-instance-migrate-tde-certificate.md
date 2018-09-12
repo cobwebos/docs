@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 08/09/2018
 ms.author: mlandzic
 manager: craigg
-ms.openlocfilehash: afecd69cdf9832e1c6dc294ca01968ee50a3eabd
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 73990d6feeed56114bc3c66164bbb53c093bbe21
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41919483"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050605"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-managed-instance"></a>将 TDE 保护的数据库的证书迁移到 Azure SQL 托管实例
 
@@ -141,4 +141,4 @@ ms.locfileid: "41919483"
 
 本文已介绍如何将用于通过透明数据加密保护数据库加密密钥的证书从本地或 IaaS SQL Server 迁移到 Azure SQL 托管实例。
 
-请参阅[将数据库备份还原到 Azure SQL 数据库托管实例](sql-database-managed-instance-restore-from-backup-tutorial.md)，了解如何将数据库备份还原到 Azure SQL 数据库托管实例。
+请参阅[将数据库备份还原到 Azure SQL 数据库托管实例](sql-database-managed-instance-get-started-restore.md)，了解如何将数据库备份还原到 Azure SQL 数据库托管实例。

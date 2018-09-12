@@ -11,18 +11,18 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 34696802735fd2a145cd6383dcdc7e4a4b6368e2
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 3f98b4e34c4c76efc33395530ef016b26e1ad523
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391403"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44163033"
 ---
 # <a name="set-up-security-info-to-use-email-preview"></a>设置安全信息以使用电子邮件（预览）
 
-[!INCLUDE[preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+[!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
-设置安全信息需要登录到工作或学校帐户，然后完成注册过程。 如果从未设置过安全信息，则需要立即进行此操作。
+设置安全信息需要登录到工作或学校帐户，然后完成注册过程。 如果从未设置过安全信息，将提示你立即设置。
 
 ## <a name="set-up-email"></a>设置电子邮件
 
@@ -65,7 +65,7 @@ ms.locfileid: "39391403"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果需要更新安全信息，请按照[管理安全信息](security-info-manage-settings.md)一文中的说明进行操作。
+- 如需更新安全信息，请遵照[管理安全信息](security-info-manage-settings.md)一文中的说明。
 
 - 如果丢失或忘记密码，请通过[密码重置门户](https://passwordreset.microsoftonline.com/)或遵循[重置工作或学校帐户密码](user-help-reset-password.md)一文中的步骤重置密码。
 

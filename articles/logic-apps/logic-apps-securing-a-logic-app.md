@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
 ms.date: 11/22/2016
-ms.openlocfilehash: fc4fdff5080e6ebe13850157e8d560a1d31e7719
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 1307b6df22c51af9710d44abb23178d65e3507aa
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127473"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377388"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>保护 Azure 逻辑应用中的访问
 
@@ -77,7 +77,7 @@ POST
 1. 单击“设置”下的“工作流设置”菜单项
 1. 指定触发器接受的 IP 地址范围列表
 
-有效的 IP 范围采用 `192.168.1.1/255` 格式。 如果希望逻辑应用只作为嵌套逻辑应用触发，请选择“仅限其他逻辑应用”选项。 此选项将一个空数组写入资源，意味着只有来自服务本身（父逻辑应用）的调用才能成功触发。
+有效的 IP 范围采用 `192.168.1.1/32` 格式。 如果希望逻辑应用只作为嵌套逻辑应用触发，请选择“仅限其他逻辑应用”选项。 此选项将一个空数组写入资源，意味着只有来自服务本身（父逻辑应用）的调用才能成功触发。
 
 > [!NOTE]
 > 不管 IP 是什么，仍可通过 REST API/管理 `/triggers/{triggerName}/run` 运行包含请求触发器的逻辑应用。 在此情况下需要针对 Azure REST API 执行身份验证，所有事件会显示在 Azure 审核日志中。 请相应地设置访问控制策略。

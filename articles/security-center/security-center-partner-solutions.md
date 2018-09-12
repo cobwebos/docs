@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/20/2018
 ms.author: terrylan
-ms.openlocfilehash: 3d4c9c79ff90ee816719f0179fbb5096b0035854
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 3174f2d6562030702b14ef1fa3708a1a4e8e373b
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42141924"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301943"
 ---
 # <a name="managing-connected-partner-solutions-with-azure-security-center"></a>在 Azure 安全中心内管理已连接的合作伙伴解决方案
 本文介绍了如何在 Azure 安全中心内管理和监视已连接的安全解决方案。

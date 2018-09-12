@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 1599ad5f-d810-421d-aafc-892e831b403f
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/23/2017
 ms.author: terrylan
-ms.openlocfilehash: abbcb0a8e0206d78ca94520dfa81ab92506c47af
-ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
+ms.openlocfilehash: a3ac23f3874b85da9c0641264ca6f9c55a7b0515
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
-ms.locfileid: "23497345"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299997"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>使用 Azure 安全中心管理 Endpoint Protection 问题
 Azure 安全中心监视反恶意软件保护状态，并在“Endpoint Protection 问题”边栏选项卡下报告此状态。 安全中心会突出显示此类问题，如检测到威胁和保护不充分，这可能会导致虚拟机 (VM) 和计算机容易受到反恶意软件威胁的攻击。 参考“Endpoint Protection 问题”下的信息，可以制定计划来解决发现的任何问题。
@@ -76,7 +76,7 @@ Endpoint Protection 问题在安全中心内显示为建议。  如果环境容�
 
 4. “未在 Azure VM 上安装 Endpoint Protection”下列出了没有安装反恶意软件的 Azure VM。  可以选择在列出的所有 VM 上安装反恶意软件，也可以逐个选择要安装反恶意软件的 VM，具体方法为单击特定的 VM。
 5. 在“选择 Endpoint Protection”下，选择要使用的 Endpoint Protection 解决方案。 在此示例中，选择“Microsoft 反恶意软件”。
-6. 将显示有关 Endpoint Protection 解决方案的其他信息。 选择“创建” 。
+6. 将显示有关 Endpoint Protection 解决方案的其他信息。 选择**创建**。
 
 ## <a name="install-antimalware-on-non-azure-computers"></a>在非 Azure 计算机上安装反恶意软件
 

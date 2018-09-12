@@ -9,12 +9,12 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: v-brapel
-ms.openlocfilehash: c1431ec852cab943e00d3933ef4f0500a4fdb151
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1f9b689ac6127bc2f7d1e810356ae9a23b8e0996
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365899"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162387"
 ---
 # <a name="build-a-custom-search-web-page"></a>构建自定义搜索网页
 借助必应自定义搜索，可以为关注的主题创建定制的搜索体验。 例如，如果拥有提供搜索体验的武术网站，则可以指定供必应搜索的域、子网站和网页。 用户会看到根据他们关注的内容定制的搜索结果，而不必浏览可能会包含不相关内容的常规搜索结果。 
@@ -31,7 +31,7 @@ ms.locfileid: "35365899"
 > - 将自定义搜索集成到网页中
 
 ## <a name="prerequisites"></a>先决条件
-- 要继续学习本教程，需要 Bing 自定义搜索 API 的订阅密钥。  要获取密钥，请参阅[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)。
+- 要继续学习本教程，需要 Bing 自定义搜索 API 的订阅密钥。  若要获取密钥，请参阅[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)。
 - 如果尚未安装 Visual Studio 2017，可以下载并使用**免费的** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。
 
 ## <a name="create-a-custom-search-instance"></a>创建自定义搜索实例
@@ -96,7 +96,7 @@ ms.locfileid: "35365899"
 
     ![在“托管 UI”中选择其他配置这一步骤的屏幕截图](./media/custom-search-hosted-ui-subscription-key.png)
 
-[!INCLUDE[publish or revert](../includes/publish-revert.md)]
+[!INCLUDE [publish or revert](../includes/publish-revert.md)]
 
 <a name="consuminghostedui"></a>
 ## <a name="consuming-hosted-ui"></a>使用托管 UI

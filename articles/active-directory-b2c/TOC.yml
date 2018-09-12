@@ -238,12 +238,79 @@ items:
       items:
       - name: 发行说明
         href: active-directory-b2c-developer-notes-custom.md
-      - name: SSO 会话提供程序
-        href: active-directory-b2c-reference-sso-custom.md
-      - name: 语言自定义
-        href: active-directory-b2c-language-customization-custom.md
       - name: 信任框架定义
         href: active-directory-b2c-reference-trustframeworks-defined-ief-custom.md
+      - name: 标识体验框架架构
+        items:
+        - name: TrustFrameworkPolicy
+          href: trustframeworkpolicy.md
+        - name: BuildingBlocks
+          href: buildingblocks.md
+          items:
+          - name: ClaimsSchema
+            href: claimsschema.md
+          - name: ClaimsTransformations
+            href: claimstransformations.md
+            items:
+            - name: 布尔
+              href: boolean-transformations.md
+            - name: 日期
+              href: date-transformations.md
+            - name: 常规
+              href: general-transformations.md
+            - name: Integer
+              href: integer-transformations.md
+            - name: JSON
+              href: json-transformations.md
+            - name: 社交帐户
+              href: social-transformations.md
+            - name: StringCollection
+              href: stringcollection-transformations.md
+            - name: String
+              href: string-transformations.md
+          - name: 谓词
+            href: predicates.md
+          - name: ContentDefinitions
+            href: contentdefinitions.md
+          - name: 本地化
+            href: localization.md
+            items:
+            - name: 本地化字符串 Id
+              href: localization-string-ids.md
+        - name: ClaimsProviders
+          href: claimsproviders.md
+          items:
+          - name: TechnicalProfiles
+            href: technicalprofiles.md
+            items:
+            - name: 关于技术配置文件
+              href: technical-profiles-overview.md
+            - name: Azure Active Directory
+              href: active-directory-technical-profile.md
+            - name: 声明转换
+              href: claims-transformation-technical-profile.md
+            - name: JWT 令牌颁发者
+              href: jwt-issuer-technical-profile.md
+            - name: OAuth1
+              href: oauth1-technical-profile.md
+            - name: OAuth2
+              href: oauth2-technical-profile.md
+            - name: OpenId Connect
+              href: openid-connect-technical-profile.md
+            - name: REST
+              href: restful-technical-profile.md
+            - name: SAML
+              href: saml-technical-profile.md
+            - name: 自断言
+              href: self-asserted-technical-profile.md
+            - name: SSO 会话
+              href: active-directory-b2c-reference-sso-custom.md
+            - name: 验证
+              href: validation-technical-profile.md
+        - name: UserJourneys
+          href: userjourneys.md
+        - name: RelyingParty
+          href: relyingparty.md
   - name: 引用
     items:
     - name: 代码示例
@@ -280,9 +347,9 @@ items:
     href: active-directory-b2c-support.md
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: 485e7c5bbcfb1bde0b6626cab45eb2ad533f229d
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 322272a48d228e102981b4e7f194704f39443953
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44090619"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378680"

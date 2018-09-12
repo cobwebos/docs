@@ -11,15 +11,15 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/29/2016
 ms.author: magoedte
-ms.openlocfilehash: 6484c8c9ae1ad109820c3b3912c3a7ea8d49c2a2
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: be7829c35f299381a5e82621412feb13cc2e8bb2
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42145281"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299230"
 ---
 # <a name="managing-azure-key-vault-using-azure-automation"></a>使用 Azure 自动化管理 Azure 密钥保管库
 本指南介绍 Azure 自动化服务，以及如何使用它来简化 Azure 密钥保管库的管理。

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 727d88c9-163b-4ea0-a4ce-3be43686599f
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2017
 ms.author: terrylan
-ms.openlocfilehash: 92906d31f4db21f37094f192dadd080e28cc6e8e
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 0b7de1f63f765705a78535ae04c1b844e06c029c
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34363047"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301151"
 ---
 # <a name="restrict-access-through-internet-facing-endpoints-in-azure-security-center"></a>在 Azure 安全中心中通过面向 Internet 的终结点限制访问
 如果任何网络安全组 (NSG) 具有一个或多个允许从“任何”源 IP 地址进行访问的入站规则，Azure 安全中心将建议通过面向 Internet 的终结点限制访问。 将访问权限打开到“任何”，攻击者能够访问资源。 安全中心将建议编辑这些入站规则，以限制对实际需要访问的源 IP 地址的访问。

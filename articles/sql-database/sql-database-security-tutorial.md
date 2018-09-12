@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,security
 ms.topic: tutorial
-ms.date: 04/24/2018
+ms.date: 09/07/2018
 ms.author: daredis
-ms.openlocfilehash: 54ec3c1386d6ce2023106367a6af1915e754948f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6d805a39831ce2eea204689a4daa069d10b757e8
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32193455"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054064"
 ---
 # <a name="secure-your-azure-sql-database"></a>保护 Azure SQL 数据库
 
@@ -46,7 +46,7 @@ SQL 数据库还有复杂的监视、审核和威胁检测功能。
 
 - 已安装最新版 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。 
 - 已安装 Microsoft Excel
-- 已创建 Azure SQL 服务器和数据库。请参阅[在 Azure 门户中创建 Azure SQL 数据库](sql-database-get-started-portal.md)、[使用 Azure CLI 创建单一 Azure SQL 数据库](sql-database-get-started-cli.md)和[使用 PowerShell 创建单一 Azure SQL 数据库](sql-database-get-started-powershell.md)。 
+- 已创建 Azure SQL 服务器和数据库。请参阅[在 Azure 门户中创建 Azure SQL 数据库](sql-database-get-started-portal.md)、[使用 Azure CLI 创建单一 Azure SQL 数据库](sql-database-cli-samples.md)和[使用 PowerShell 创建单一 Azure SQL 数据库](sql-database-powershell-samples.md)。 
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 

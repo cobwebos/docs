@@ -5,24 +5,20 @@ services: functions
 documentationcenter: na
 author: ggailey777
 manager: jeconnoc
-editor: ''
-tags: ''
 keywords: Azure Functions, Functions, 消耗量计划, 应用服务计划, 事件处理, webhook, 动态计算, 无服务体系结构
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 08/09/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 341756c91693bf9e53538aa8e284c79d289da293
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: b562b10be8add02d0a3c6eb95e8df8eb0711a208
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42140006"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093526"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
@@ -41,18 +37,18 @@ Azure Functions 以两种不同的模式运行：消耗量计划和 Azure 应用
 > [!IMPORTANT]
 > 创建函数应用时必须选择托管计划的类型。 之后不能再进行更改。
 
-在应用服务计划中，可在不同的层之间进行缩放，从而分配不同数量的资源。 对于消耗量计划，Azure Functions 会自动处理所有资源分配。 
+在应用服务计划中，可在不同的层之间进行缩放，从而分配不同数量的资源。 对于消耗计划，Azure Functions 会自动处理所有资源分配。 
 
 ## <a name="consumption-plan"></a>消耗量计划
 
-使用消耗量计划时，会根据传入事件数自动添加和删除 Azure Functions 主机实例。 这个无服务器计划会自动缩放，仅在函数运行时，才会产生计算资源费用。 在消耗量计划中，函数执行在可配置的时间段后超时。
+使用消耗计划时，会根据传入事件数自动添加和删除 Azure Functions 主机实例。 这个无服务器计划会自动缩放，仅在函数运行时，才会产生计算资源费用。 在消费计划中，函数执行在可配置的时间段后超时。
 
 > [!NOTE]
 > 对于消耗量计划，函数的默认超时时间为 5 分钟。 可通过更改 [host.json](functions-host-json.md#functiontimeout) 项目文件中的属性 `functionTimeout`，将函数应用的该值最多增加到最大值 10 分钟。
 
 账单将基于执行数量、执行时间和所用内存。 账单是基于函数应用内的所有函数聚合而生成的。 有关详细信息，请参阅 [Azure Functions 定价页]。
 
-消耗量计划是默认的宿主计划，它提供了以下优势：
+消耗计划是默认的宿主计划，它提供了以下优势：
 
 * 仅当函数运行时才产生费用。
 * 即使是在负载较高期间也可自动扩展。

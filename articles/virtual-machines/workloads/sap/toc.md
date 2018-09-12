@@ -24,7 +24,11 @@
 ## 安装 SAP HANA
 ### [验证配置](hana-installation.md)
 ### [示例 HANA 安装](hana-example-installation.md)
-## [高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md)
+## 高可用性和灾难恢复
+### [选项和注意事项](hana-overview-high-availability-disaster-recovery.md)
+### [备份和还原](hana-backup-restore.md)
+### [原则和准备工作](hana-concept-preparation.md)
+### [灾难恢复故障转移过程](hana-failover-procedure.md)
 ## 故障排除和监视
 ### [监视 HLI](troubleshooting-monitoring.md)
 ### [HANA 端的监视和故障排除](hana-monitor-troubleshoot.md)

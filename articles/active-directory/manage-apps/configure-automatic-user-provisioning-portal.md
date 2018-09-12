@@ -15,15 +15,15 @@ ms.workload: identity
 ms.date: 07/26/2017
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 2b2b44deacf8278b8e8c2554cc873c5d0b75f6f9
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 95d2f65e99b37b38f99ec5a750d74828661fe7ee
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366182"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44349137"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>在 Azure 门户中管理企业应用的用户帐户预配
-本文介绍如何使用 [Azure 门户](https://portal.azure.com)为支持用户帐户自动预配和取消预配功能的应用程序（尤其是已从 [Azure Active Directory 应用程序库](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)的“特色”类别添加的应用程序）管理该功能。 若要了解有关用户帐户自动预配及其工作原理的详细信息，请参阅 [Azure Active Directory SaaS 应用程序的自动化用户设置和取消设置](../active-directory-saas-app-provisioning.md)。
+本文介绍如何使用 [Azure 门户](https://portal.azure.com)为支持用户帐户自动预配和取消预配功能的应用程序（尤其是已从 [Azure Active Directory 应用程序库](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)的“特色”类别添加的应用程序）管理该功能。 若要了解有关用户帐户自动预配及其工作原理的详细信息，请参阅 [Azure Active Directory SaaS 应用程序的自动化用户设置和取消设置](user-provisioning.md)。
 
 ## <a name="finding-your-apps-in-the-portal"></a>在门户中查找应用
 所有由目录管理员在目录中使用 [Azure Active Directory 应用程序库](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)进行过单一登录配置的应用程序均可在 [Azure 门户](https://portal.azure.com)中查看和管理。 这些应用程序可在门户的“所有服务”&gt;“企业应用程序”部分中找到。 企业应用是在组织内部署和使用的应用。
@@ -46,7 +46,7 @@ ms.locfileid: "39366182"
 选择“自动”选项会显示一个分为四部分的屏幕：
 
 ### <a name="admin-credentials"></a>管理员凭据
-在此部分输入的凭据是 Azure AD 连接到应用程序的用户管理 API 所必需的。 所需输入取决于应用程序。 若要了解凭据类型以及具体应用程序的要求，请参阅[具体应用程序的配置教程](../active-directory-saas-app-provisioning.md)。
+在此部分输入的凭据是 Azure AD 连接到应用程序的用户管理 API 所必需的。 所需输入取决于应用程序。 若要了解凭据类型以及具体应用程序的要求，请参阅[具体应用程序的配置教程](user-provisioning.md)。
 
 选择“测试连接”按钮后，即可让 Azure AD 尝试使用提供的凭据连接到该应用的预配应用，对凭据进行测试。
 
@@ -60,7 +60,7 @@ ms.locfileid: "39366182"
 支持的自定义项包括：
 
 * 启用和禁用特定对象的映射（例如从 Azure AD 用户对象映射到 SaaS 应用的用户对象）。
-* 编辑从 Azure AD 用户对象转移到应用的用户对象的属性。 有关属性映射的详细信息，请参阅[了解属性映射类型](../active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-types)。
+* 编辑从 Azure AD 用户对象转移到应用的用户对象的属性。 有关属性映射的详细信息，请参阅[了解属性映射类型](customize-application-attributes.md#understanding-attribute-mapping-types)。
 * 筛选 Azure AD 对目标应用程序执行的预配操作。 可以限制所执行的操作，而不必让 Azure AD 完全同步对象。 例如，如果只选择“更新”，Azure AD 就只会更新应用程序中的现有用户帐户，而不会创建新的。 如果只选择“创建”，Azure 就只会创建新用户帐户，而不会更新现有的。 有了此功能，管理员就可以创建不同的映射来创建帐户，并更新工作流。
 
 ### <a name="settings"></a>设置

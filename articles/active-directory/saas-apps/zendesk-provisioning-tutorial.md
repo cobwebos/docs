@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
-ms.openlocfilehash: 6ba2fd9ee81b8551cc2a267cdc9767f47fe27456
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 2dc965547511d27ed43a88c1f45b50593b30a937
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229047"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347930"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>教程：配置 Zendesk 实现自动用户预配
 
 本教程的目的是演示要将 Azure AD 配置为自动将用户和/或组预配到 Zendesk 以及取消其预配需在 Zendesk 和 Azure Active Directory (Azure AD) 中执行的步骤。 
 
 > [!NOTE]
-> 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](./../active-directory-saas-app-provisioning.md)。
+> 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -143,7 +143,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
     ![Zendesk 预配](./media/zendesk-provisioning-tutorial/ZenDesk13.png)
 
-14. 若要配置范围筛选器，请参阅[范围筛选器教程](./../active-directory-saas-scoping-filters.md)中提供的以下说明。
+14. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
 15. 若要为 Zendesk 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”。
 
@@ -160,7 +160,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 此操作会对“设置”部分的“范围”中定义的所有用户和/或组启动初始同步。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 可使用“同步详细信息”部分监视进度并跟踪指向预配活动报告的链接，这些报告描述了 Azure AD 预配服务对 Zendesk 执行的所有操作。
 
-若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../active-directory-saas-provisioning-reporting.md)。
+若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
 
 ## <a name="connector-limitations"></a>连接器限制
 * Zendesk 仅支持对“代理”角色的用户使用组。 有关详细信息，请参阅 [Zendesk 的文档](https://support.zendesk.com/hc/en-us/articles/203661966-Creating-managing-and-using-groups)。
@@ -172,7 +172,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解如何查看日志并获取有关预配活动的报告](../active-directory-saas-provisioning-reporting.md)
+* [了解如何查看日志并获取有关预配活动的报告](../manage-apps/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/zendesk-tutorial/tutorial_general_01.png

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: df1cf093a154b4f7adf59fae93f90fbc70459788
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 57cfa44a0eb114503b89733b2c3e309b65d5b7e5
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038047"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023318"
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>通过 Azure PowerShell 使用证书创建服务主体
 
@@ -29,7 +29,7 @@ ms.locfileid: "40038047"
 * 执行无人参与的脚本时，使用证书进行身份验证。
 
 > [!IMPORTANT]
-> 请考虑使用 Azure AD 托管服务标识作为应用程序标识，而不是创建服务主体。 Azure AD MSI 是 Azure Active Directory 的公共预览版功能，它简化了创建代码标识的操作。 如果代码在支持 Azure AD MSI 的服务上运行并访问支持 Azure Active Directory 身份验证的资源，则 Azure AD MSI 是更好的选择。 若要详细了解 Azure AD MSI（包括哪些服务当前支持它），请参阅 [Azure 资源的托管服务标识](../active-directory/managed-service-identity/overview.md)。
+> 请考虑使用 Azure AD 托管服务标识作为应用程序标识，而不是创建服务主体。 Azure AD MSI 是 Azure Active Directory 的公共预览版功能，它简化了创建代码标识的操作。 如果代码在支持 Azure AD MSI 的服务上运行并访问支持 Azure Active Directory 身份验证的资源，则 Azure AD MSI 是更好的选择。 若要详细了解 Azure AD MSI（包括哪些服务当前支持它），请参阅 [Azure 资源的托管服务标识](../active-directory/managed-identities-azure-resources/overview.md)。
 
 本文演示如何创建使用证书进行身份验证的服务主体。 若要使用密码设置服务主体，请参阅[使用 Azure PowerShell 创建 Azure 服务主体](/powershell/azure/create-azure-service-principal-azureps)。
 

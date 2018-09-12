@@ -1,24 +1,21 @@
 ---
-title: "Azure Functions 的外部表绑定（实验性）"
-description: "在 Azure Functions 中使用外部表绑定"
+title: Azure Functions 的外部表绑定（实验性）
+description: 在 Azure Functions 中使用外部表绑定
 services: functions
-documentationcenter: 
 author: alexkarcher-msft
-manager: cfowler
-editor: 
-ms.assetid: 
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: na
+manager: jeconnoc
+ms.assetid: ''
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: alkarche
-ms.openlocfilehash: 8a4358fa67e45d0b7a2df1519d649099b5ef5850
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 24728414747d8ad8a8d7ee0d8a21be2177a15ddd
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093806"
 ---
 # <a name="external-table-binding-for-azure-functions-experimental"></a>Azure Functions 的外部表绑定（实验性）
 
@@ -83,7 +80,7 @@ ms.lasthandoff: 01/05/2018
 
 此示例连接到具有 Id、LastName 和 FirstName 列的名为“Contact”的表。 此代码列出了表中的 Contact 实体，并记录名字和姓氏。
 
-*function.json* 文件如下所示：
+function.json 文件如下所示：
 
 ```json
 {
@@ -177,13 +174,13 @@ GO
 
 ## <a name="configuration"></a>配置
 
-下表解释了在 *function.json* 文件中设置的绑定配置属性。
+下表解释了在 function.json 文件中设置的绑定配置属性。
 
-|function.json 属性 | 说明|
+|function.json 属性 | Description|
 |---------|----------------------|
-|**类型** | 必须设置为 `apiHubTable`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
-|**direction** | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|**name** | 在函数代码中表示事件项的变量的名称。 | 
+|type | 必须设置为 `apiHubTable`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|direction | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
+|name | 在函数代码中表示事件项的变量的名称。 | 
 |**连接**| 标识存储 API 连接字符串的应用设置。 在集成 UI 中添加 API 连接时，会自动创建应用设置。|
 |**dataSetName**|包含要读取的表的数据集的名称。|
 |**tableName**|表的名称|

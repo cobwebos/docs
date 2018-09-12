@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: d140cbdb0548de869c7aab6ba5da281046a215f9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a235b85887e64e0a5ca35aae8f31734250a78bb5
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434106"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160228"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>教程：Azure Active Directory 与 xMatters OnDemand 集成
 
@@ -202,7 +202,7 @@ ms.locfileid: "39434106"
 
 ### <a name="creating-a-xmatters-ondemand-test-user"></a>创建 xMatters OnDemand 测试用户
 
-本部分的目的是在 xMatters OnDemand 中创建名为“Britta Simon”的用户。 xMatters OnDemand 支持在默认情况下启用的自动用户预配。 有关如何配置自动用户预配的更多详细信息，请参见[此处](xmatters-ondemand-provisioning-tutorial.md)。
+本部分的目的是在 xMatters OnDemand 中创建名为“Britta Simon”的用户。
 
 如果需要手动创建用户，请执行以下步骤：
 
@@ -269,7 +269,6 @@ ms.locfileid: "39434106"
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
 * [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
-* [配置用户预配](xmatters-ondemand-provisioning-tutorial.md)
 
 <!--Image references-->
 

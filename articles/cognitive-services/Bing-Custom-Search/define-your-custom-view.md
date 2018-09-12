@@ -9,12 +9,12 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: 8ffe3087df398d6310828e41d0c6992199fafbed
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8ef8aabc7363db88317a6428301512b0a0d4c055
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365902"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158766"
 ---
 # <a name="configure-your-custom-search-experience"></a>配置自定义搜索体验
 可使用自定义搜索实例定制搜索体验，使其仅包含用户关心的网站上的内容。 必应不执行 Web 范围内的搜索，而只搜索你感兴趣的 Web 切片。
@@ -113,7 +113,7 @@ ms.locfileid: "35365902"
 5.  单击要包含的结果旁边的“添加站点”。
 6.  单击“确定”按钮。
 
-[!INCLUDE[publish or revert](./includes/publish-revert.md)]
+[!INCLUDE [publish or revert](./includes/publish-revert.md)]
 
 ## <a name="view-statistics"></a>查看统计信息
 如果在适当级别订阅了自定义搜索（请参阅[定价页](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)），则会在生产实例中添加“统计信息”选项卡。 “统计信息”选项卡显示有关如何使用自定义搜索终结点的详细信息，包括调用量、热门查询、地理分布、响应代码和安全搜索。 可以使用提供的控件筛选详细信息。

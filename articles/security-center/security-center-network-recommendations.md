@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 96c55a02-afd6-478b-9c1f-039528f3dea0
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/16/2016
 ms.author: terrylan
-ms.openlocfilehash: 00b715507a7c3a4d784b800e7bf0c700f6ea6ff1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 12c00d6dfac6c9c2a377a8c142118ff6fd0af751
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23040592"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302266"
 ---
 # <a name="protecting-your-network-in-azure-security-center"></a>保护 Azure 安全中心中的网络
 Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别潜在的安全漏洞时，它会创建一些建议，这些建议会指导完成配置所需控件的过程。  适用于 Azure 资源类型的建议：虚拟机 (VM)、网络、SQL，以及应用程序。
@@ -27,7 +27,7 @@ Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别
 本文介绍适用于网络的建议。  网络建议以下一代防火墙、网络安全组、配置入站流量规则和其他为中心。  使用下表作为参考，以便了解可用的网络建议，以及应用建议后，每个建议的做法。
 
 ## <a name="available-network-recommendations"></a>可用的网络建议
-| 建议 | 说明 |
+| 建议 | Description |
 | --- | --- |
 | [添加下一代防火墙](security-center-add-next-generation-firewall.md) |建议从 Microsoft 合作伙伴添加下一代防火墙 (NGFW)，以增强安全保护。 |
 | [仅通过 NGFW 路由流量](security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only) |建议配置通过 NGFW 强制将流量入站到 VM 的网络安全组 (NSG) 规则。 |

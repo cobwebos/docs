@@ -3,25 +3,20 @@ title: 创建与 Azure 逻辑应用集成的函数 | Microsoft Docs
 description: 创建一个与 Azure 逻辑应用和 Azure 认知服务集成的函数，对推文情绪进行分类，并在情绪较差时发送通知。
 services: functions, logic-apps, cognitive-services
 keywords: 工作流, 云应用, 云服务, 业务流程, 系统集成, 企业应用程序集成, EAI
-documentationcenter: ''
 author: ggailey777
-manager: cfowler
-editor: ''
+manager: jeconnoc
 ms.assetid: 60495cc5-1638-4bf0-8174-52786d227734
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 12/12/2017
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 16a46b4c49687186e25c399dcc2c5c168e7c5004
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 23db8d307892b100f291a1f32c9b77c73a60f23e
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38586867"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44090756"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>创建与 Azure 逻辑应用集成的函数
 
@@ -31,7 +26,7 @@ Azure Functions 在逻辑应用设计器中与 Azure 逻辑应用集成。 借�
 
 ![逻辑应用设计器中应用的前两个步骤的示意图](media/functions-twitter-email/designer1.png)
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建认知服务 API 资源。
@@ -164,7 +159,7 @@ Azure 中以单个资源的形式提供了认知服务 API。 使用文本分析
 
     ![Twitter 连接器设置](media/functions-twitter-email/azure_tweet.png)
 
-    | 设置      |  建议的值   | 说明                                        |
+    | 设置      |  建议的值   | Description                                        |
     | ----------------- | ------------ | ------------- |
     | **搜索文本** | #Azure | 使用足够热门的井号标签按所选的间隔生成新的推文。 如果使用免费层并且井号标签过于热门，可能很快就会用完认知服务 API 中的事务配额。 |
     | **频率** | 分钟 | 用于轮询 Twitter 的频率单位。  |
@@ -227,7 +222,7 @@ Azure 中以单个资源的形式提供了认知服务 API。 使用文本分析
 
     ![为“发送电子邮件”操作配置电子邮件。](media/functions-twitter-email/send_email.png)
 
-    | 设置      |  建议的值   | 说明  |
+    | 设置      |  建议的值   | Description  |
     | ----------------- | ------------ | ------------- |
     | **收件人** | 键入电子邮件地址 | 接收通知的电子邮件地址。 |
     | **主题** | 检测到消极的推文情感  | 电子邮件通知的主题行。  |

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 9f04e730-4cfa-4078-8eec-905a443133da
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: rkarlin
-ms.openlocfilehash: 4a934bd69e63605fd624d06533c4e411bc94b531
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 17fd9907a5e3e3f4485b35c8e74d6e46fecb7fda
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630912"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303500"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>在 Azure 安全中心监视标识和访问（预览版）
 本文介绍如何使用 Azure 安全中心监视用户的标识和访问活动。
@@ -124,7 +124,7 @@ ms.locfileid: "39630912"
 若要了解有关适用于其他 Azure 资源类型的建议的详细信息，请参阅以下内容：
 
 - [在 Azure 安全中心保护计算机和应用程序](security-center-virtual-machine-recommendations.md)
-- [在 Azure 安全中心保护网络](security-center-network-recommendations.md)
+- [保护 Azure 安全中心中的网络](security-center-network-recommendations.md)
 - [在 Azure 安全中心保护 Azure SQL 服务和数据](security-center-sql-service-recommendations.md)
 
 若要了解有关安全中心的详细信息，请参阅以下文章：

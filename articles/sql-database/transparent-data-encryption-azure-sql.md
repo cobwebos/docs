@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: aliceku
 monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: 0ed05fd2d55f1c4c80bec9f64925be2eddddc067
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: afc53fc1abce74b247ec2e25bc3e4845bc870860
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40043282"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380193"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>SQL 数据库和数据仓库的透明数据加密
 
@@ -128,7 +128,7 @@ Microsoft 还可按需无缝移动和管理密钥，以实现异地复制和还�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关透明数据加密的一般说明，请参阅 [透明数据加密]((https://docs.microsoft.com/sql/relational-databases/security/transparent-data-encryption)。
+- 有关透明数据加密的一般说明，请参阅[透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption)。
 - 有关 SQL 数据库和数据仓库的支持“创建自己的密钥”的透明数据加密的详细信息，请参阅[支持“创建自己的密钥”的透明数据加密](transparent-data-encryption-byok-azure-sql.md)。
 - 若要开始使用支持“创建自己的密钥”的透明数据加密，请参阅操作方法指南[通过 PowerShell 使用 Key Vault 中的自有密钥启用透明数据加密](transparent-data-encryption-byok-azure-sql-configure.md)。
 - 有关 Key Vault 的详细信息，请参阅 [Key Vault 文档页](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)。

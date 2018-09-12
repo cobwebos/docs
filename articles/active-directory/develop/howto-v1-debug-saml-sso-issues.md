@@ -15,12 +15,12 @@ ms.date: 06/15/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin, dastrock, smalser
-ms.openlocfilehash: 5895e918fbd3b67074069ccc81bd794a75725c9a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 388337fa80d174cb17dae12fa9d5f2fbdfe7e737
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620930"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347777"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>在 Azure Active Directory 中调试应用程序的基于 SAML 的单一登录
 
@@ -96,11 +96,11 @@ ms.locfileid: "39620930"
     - 在令牌中颁发的声明
     - 用于令牌签名的证书。 有关如何查看 SAML 响应的信息，请参阅[单一登录 SAML 协议](single-sign-on-saml-protocol.md)。
 4. 有关 SAML 响应的详细信息，请参阅[单一登录 SAML 协议](single-sign-on-saml-protocol.md)。
-5. 查看 SAML 响应后，请参阅[登录后应用程序页上出现错误](../application-sign-in-problem-application-error.md)来获取有关解决问题的指导。 
+5. 查看 SAML 响应后，请参阅[登录后应用程序页上出现错误](../manage-apps/application-sign-in-problem-application-error.md)来获取有关解决问题的指导。 
 6. 如果仍然无法成功登录，可以咨询应用程序供应商，以确定 SAML 响应中缺少哪些信息。
 
 
 ## <a name="next-steps"></a>后续步骤
-在应用程序中正常执行单一登录后，可以[在 SaaS 应用程序中自动完成用户预配和取消预配](../active-directory-saas-app-provisioning.md)，或[开始使用条件访问](../conditional-access/app-based-conditional-access.md)。
+在应用程序中正常执行单一登录后，可以[在 SaaS 应用程序中自动完成用户预配和取消预配](../manage-apps/user-provisioning.md)，或[开始使用条件访问](../conditional-access/app-based-conditional-access.md)。
 
 

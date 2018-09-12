@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2018
 ms.author: terrylan
-ms.openlocfilehash: b82b152ae4f44e475b5c3e9bda9d604f405503e0
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 54d173caa0e3eb4bbd8bda7c924e56d546a99662
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123725"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297496"
 ---
 # <a name="supported-platforms-in-azure-security-center"></a>Azure 安全中心支持的平台
 使用经典部署模式和资源管理器部署模式创建的虚拟机 (VM) 和计算机支持安全状态监视和建议。

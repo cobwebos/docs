@@ -4,20 +4,18 @@ description: Azure Functions SendGrid 绑定参考。
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
-ms.service: functions
+manager: jeconnoc
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: glenga
-ms.openlocfilehash: 2796a7d9fb44a05e1873e2fcbde82c837db202be
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 212f8b0dacf5fa56e48df99fb10b11da54df57ac
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346447"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44091214"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid 绑定
 

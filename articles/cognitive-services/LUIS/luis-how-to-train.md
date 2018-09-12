@@ -1,20 +1,21 @@
 ---
-title: 训练 LUIS 应用 - Azure | Microsoft Docs
-description: 使用语言理解 (LUIS) 来训练模型。
+title: 训练 LUIS 应用
+titleSuffix: Azure Cognitive Services
+description: 训练是向语言理解 (LUIS) 应用进行教学以提高其自然语言理解能力的过程。 对模型进行更新（例如添加、编辑、标记或删除实体、意向或陈述）后，请对 LUIS 应用进行训练。
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: e947df20141b0b9870f318f410488aea23bafcf5
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 42cff3dd8237598da5aa71ed1a4d6462c5b4c25d
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223178"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049125"
 ---
 # <a name="train-your-luis-app"></a>训练 LUIS 应用
 
@@ -32,11 +33,7 @@ When you train a LUIS app by example, LUIS generalizes from the examples you hav
 
 2. 在应用中，在顶部的面板中选择“训练”。 
 
-    ![“训练”按钮](./media/luis-how-to-train/train-button.png)
-
 3. 训练完成后，浏览器顶部会显示一个绿色的通知栏。
-
-    ![“训练和测试应用”页面](./media/luis-how-to-train/train-success.png)
 
 <!-- The following note refers to what might cause the error message "Training failed: FewLabels for model: <ModelName>" -->
 

@@ -3,31 +3,26 @@ title: 监视 Azure Functions
 description: 了解如何将 Azure Application Insights 和 Azure Functions 结合使用来监视函数执行。
 services: functions
 author: ggailey777
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: glenga
-ms.openlocfilehash: ba820c594b5afb34c050c74de30300b0dfc8c3a6
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 9c39d621bfc8df338a4556fd412ae54489982074
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344049"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092761"
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
 ## <a name="overview"></a>概述 
 
-
-  [Azure Functions](functions-overview.md) 提供与 [Azure Application Insights](../application-insights/app-insights-overview.md) 的内置集成来监视函数。 本文演示如何配置 Functions 来将遥测数据发送到 Application Insights。
+[Azure Functions](functions-overview.md) 提供与 [Azure Application Insights](../application-insights/app-insights-overview.md) 的内置集成来监视函数。 本文演示如何配置 Functions 来将遥测数据发送到 Application Insights。
 
 ![Application Insights 指标资源管理器](media/functions-monitoring/metrics-explorer.png)
 

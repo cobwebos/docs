@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 07/30/2018
 ms.author: diberry
-ms.openlocfilehash: 355c1edd4fa7433e68a9c0e903f4f782203326fe
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 9c14f2121cd83cec802f4fd4a92661d58eb7efb3
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365872"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159565"
 ---
 # <a name="tutorial-improve-app-with-patterns"></a>教程：使用模式来改进应用
 
@@ -26,7 +26,7 @@ ms.locfileid: "39365872"
 * 如何创建模式
 * 如何验证模式预测改进
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -34,18 +34,18 @@ ms.locfileid: "39365872"
 
 若要保留原始人力资源应用，请在[设置](luis-how-to-manage-versions.md#clone-a-version)页上克隆版本，并将其命名为 `patterns`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 
 
-## <a name="patterns-teach-luis-common-utterances-with-fewer-examples"></a>模式通过较少实例对 LUIS 进行常见话语的训练
+## <a name="patterns-teach-luis-common-utterances-with-fewer-examples"></a>模式通过较少实例对 LUIS 进行常见陈述的训练
 
 由于人力资源域的性质，可通过几种常见方式询问组织中的员工关系。 例如：
 
-|话语|
+|陈述|
 |--|
 |Jill Jones 向谁报告？|
 |谁向 Jill Jones 报告？|
 
-在未提供许多话语示例的情况下，这些话语过于相近而无法确定每个话语的上下文唯一性。 通过为意向添加模式，LUIS 可了解意向的常见话语模式，而无需提供许多话语示例。 
+在未提供许多陈述示例的情况下，这些陈述过于相近而无法确定每个陈述的上下文唯一性。 通过为意向添加模式，LUIS 可了解意向的常见陈述模式，而无需提供许多陈述示例。 
 
-此意向的示例模板话语包括：
+此意向的示例模板陈述包括：
 
 |示例模板话语|
 |--|
@@ -78,9 +78,9 @@ OrgChart-Manager(employee){
 
     ![创建新消息弹出窗口](media/luis-tutorial-pattern/hr-create-new-intent-popup.png)
 
-4. 将示例话语添加到意向。
+4. 将示例陈述添加到意向。
 
-    |示例话语|
+    |示例陈述|
     |--|
     |John W. Smith 是谁的下属？|
     |John W. Smith 向谁报告？|
@@ -98,9 +98,9 @@ OrgChart-Manager(employee){
 
 7. 在弹出对话框中输入 `OrgChart-Reports`，然后选择“完成”。
 
-8. 将示例话语添加到意向。
+8. 将示例陈述添加到意向。
 
-    |示例话语|
+    |示例陈述|
     |--|
     |John W. Smith 的下属是谁？|
     |谁向 John W. Smith 报告？|
@@ -114,17 +114,17 @@ OrgChart-Manager(employee){
 
 ## <a name="train-the-luis-app"></a>训练 LUIS 应用
 
-[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>发布应用以获取终结点 URL
 
-[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-a-different-utterance"></a>使用不同的话语查询终结点
 
-1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. 将光标定位到地址中 URL 的末尾，并输入 `Who is the boss of Jill Jones?`。 最后一个查询字符串参数为 `q`，表示话语**查询**。 
+2. 将光标定位到地址中 URL 的末尾，并输入 `Who is the boss of Jill Jones?`。 最后一个查询字符串参数为 `q`，表示陈述**查询**。 
 
     ```JSON
     {
@@ -215,7 +215,7 @@ OrgChart-Manager(employee){
 
 使此第二个浏览器窗口保持打开。 本教程稍后将使用该窗口。 
 
-## <a name="add-the-template-utterances"></a>添加模板话语
+## <a name="add-the-template-utterances"></a>添加模板陈述
 
 1. 选择顶部菜单中的“生成”。
 
@@ -232,7 +232,7 @@ OrgChart-Manager(employee){
     |{Employee} 的主管是谁[?]|
     |{Employee} 的老板是谁[?]|
 
-    `{Employee}` 语法可标记模板话语中的实体位置以及它是哪个实体。 
+    `{Employee}` 语法可标记模板陈述中的实体位置以及它是哪个实体。 
 
     具有角色的实体使用包含角色名称的语法，并在[单独的角色教程](luis-tutorial-pattern-roles.md)中介绍。 
 
@@ -259,7 +259,7 @@ OrgChart-Manager(employee){
 
 2. 将浏览器选项卡切换回终结点 URL 选项卡。
 
-3. 将光标定位到地址中 URL 的末尾，并输入 `Who is the boss of Jill Jones?` 作为话语。 最后一个查询字符串参数为 `q`，表示话语**查询**。 
+3. 将光标定位到地址中 URL 的末尾，并输入 `Who is the boss of Jill Jones?` 作为话语。 最后一个查询字符串参数为 `q`，表示陈述**查询**。 
 
     ```JSON
     {
@@ -424,7 +424,7 @@ OrgChart-Manager(employee){
 
 ## <a name="clean-up-resources"></a>清理资源
 
-[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 856673d2a5465f9646172a1436ed75c0d73692cb
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 57fef112186834ead76f6223e32cb358e4d6d053
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003166"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024067"
 ---
 # <a name="what-is-baseline-protection-preview"></a>何为基线保护（预览）？  
 
@@ -86,7 +86,7 @@ ms.locfileid: "40003166"
 
 基线策略中包含的目录角色是特权最高的 Azure AD 角色。 
 
-如果脚本中使用了特权帐户，则应将这些帐户替换为[托管服务标识 (MSI)](../managed-service-identity/overview.md) 或[带证书的服务主体](../../azure-resource-manager/resource-group-authenticate-service-principal.md)。 作为临时解决方法，可以从基线策略中排除特定的用户帐户。 
+如果脚本中使用了特权帐户，则应将这些帐户替换为[托管服务标识 (MSI)](../managed-identities-azure-resources/overview.md) 或[带证书的服务主体](../../azure-resource-manager/resource-group-authenticate-service-principal.md)。 作为临时解决方法，可以从基线策略中排除特定的用户帐户。 
 
 基线策略应用于旧式身份验证流，如 POP、IMAP、较旧的 Office 桌面客户端。 
 

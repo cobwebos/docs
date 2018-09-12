@@ -5,21 +5,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 09/07/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: be3fd304e04a66e6564141b6a20efea88cf62553
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 2a85277c72b63f248fa6d2b06cc1daa1ccbf5ce5
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42145286"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298669"
 ---
 # <a name="manage-access-rights-to-azure-storage-data-with-rbac-preview"></a>使用 RBAC 管理对 Azure 存储数据的访问权限（预览版）
 
 Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) 授权访问受保护的资源。 Azure 存储定义了一组内置的 RBAC 角色，它们包含用于访问容器或队列的通用权限集。 在向 Azure AD 标识分配 RBAC 角色时，系统会根据指定的作用域，向该标识授予对这些资源的访问权限。 可以将访问权限限定于订阅、资源组、存储帐户、单个容器或队列级别。 可以使用 Azure 门户、Azure 命令行工具及 Azure 管理 API 分配对 Azure 存储资源的访问权限。 
 
-Azure AD 标识可以是用户、组或应用程序服务主体，也可以是*托管服务标识*。 安全主体可以是用户、组或应用程序服务主体。 [托管服务标识](../../active-directory/managed-service-identity/overview.md)是一种自动托管标识，用于从 Azure 虚拟机、函数应用、虚拟机规模集等中运行的应用程序进行身份验证。 有关 Azure AD 中标识的概述，请参阅[了解 Azure 标识解决方案](https://docs.microsoft.com/azure/active-directory/understand-azure-identity-solutions)。
+Azure AD 标识可以是用户、组或应用程序服务主体，也可以是*托管服务标识*。 安全主体可以是用户、组或应用程序服务主体。 [托管服务标识](../../active-directory/managed-identities-azure-resources/overview.md)是一种自动托管标识，用于从 Azure 虚拟机、函数应用、虚拟机规模集等中运行的应用程序进行身份验证。 有关 Azure AD 中标识的概述，请参阅[了解 Azure 标识解决方案](https://docs.microsoft.com/azure/active-directory/understand-azure-identity-solutions)。
 
 ## <a name="rbac-roles-for-azure-storage"></a>Azure 存储的 RBAC 角色
 
@@ -34,10 +34,7 @@ Azure 存储同时支持内置和自定义 RBAC 角色。 Azure 存储提供以�
 
 还可以定义用于容器和队列的自定义角色。 有关详细信息，请参阅[针对 Azure 基于角色的访问控制创建自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)。 
 
-> [!IMPORTANT]
-> 此预览版仅用于非生产用途。 适用于 Azure 存储的 Azure AD 集成正式发布后，生产服务级别协议 (SLA) 方可使用。 如果你的方案尚不支持 Azure AD 集成，请继续使用应用程序中的共享密钥授权或 SAS 令牌。 有关该预览版的其他信息，请参阅[使用 Azure Active Directory进行 Azure 存储访问权限身份验证（预览版）](storage-auth-aad.md)。
->
-> 预览期间，RBAC 角色分配可能需要长达五分钟的时间进行传播。
+[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
 
 ## <a name="assign-a-role-to-a-security-principal"></a>向安全主体分配角色
 

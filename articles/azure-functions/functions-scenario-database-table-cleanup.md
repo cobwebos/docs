@@ -4,23 +4,19 @@ description: 使用 Azure Functions 计划连接到 Azure SQL 数据库的任务
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 05/22/2017
 ms.author: glenga
-ms.openlocfilehash: 2947fc6da0c4559e81cf97255b8375b020e0b657
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a257948c97437d6045f705acb02054928d22ff89
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30231270"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092863"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>使用 Azure Functions 连接 Azure SQL 数据库
 本主题介绍了如何使用 Azure Functions 创建计划作业，以清理 Azure SQL 数据库中的表的行。 根据 Azure 门户中预定义的计时器触发器模板新建 C# 脚本函数。 若要支持这种情况，还必须设置数据库连接字符串，使其成为函数应用中的应用设置。 该方案使用针对数据库的大容量操作。 
@@ -63,7 +59,7 @@ Function App 在 Azure 中托管函数的执行。 它是在 Function App 设置
     | ------------ | ------------------ | --------------------- | 
     | **Name**  |  sqldb_connection  | 用于访问函数代码中存储的连接字符串。    |
     | **值** | 复制的字符串  | 粘贴在上一部分复制的连接字符串，并将 `{your_username}` 和 `{your_password}` 占位符替换为实际值。 |
-    | **类型** | SQL 数据库 | 使用默认的 SQL 数据库连接。 |   
+    | 类型 | SQL 数据库 | 使用默认的 SQL 数据库连接。 |   
 
 3. 单击“ **保存**”。
 

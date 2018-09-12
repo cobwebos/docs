@@ -11,15 +11,15 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: barclayn
-ms.openlocfilehash: e7dcb3778de31258f4aa3c946ffa214d87cb858a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e86d68107278641e40346327fa3a8cb7059b7d71
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32178817"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159579"
 ---
 # <a name="azure-key-vault-logging"></a>Azure 密钥保管库日志记录
 在大多数区域中提供了 Azure 密钥保管库。 有关详细信息，请参阅 [密钥保管库定价页](https://azure.microsoft.com/pricing/details/key-vault/)。
@@ -134,7 +134,7 @@ ms.locfileid: "32178817"
     Get-AzureStorageBlob -Container $container -Context $sa.Context
 输出如下所示：
 
-**容器 URI：https://contosokeyvaultlogs.blob.core.windows.net/insights-logs-auditevent**
+**容器 URI： https://contosokeyvaultlogs.blob.core.windows.net/insights-logs-auditevent**
 
 **Name**
 
@@ -209,7 +209,7 @@ ms.locfileid: "32178817"
 
 下表列出了字段的名称和描述。
 
-| 字段名称 | 说明 |
+| 字段名称 | Description |
 | --- | --- |
 | time |日期和时间 (UTC)。 |
 | resourceId |Azure 资源管理器资源 ID。 对于密钥保管库日志，这始终是密钥保管库资源 ID。 |

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 10f4749524c4d4b35b83e5637d35f4ef9a8f9ab6
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 7edfe5a115caf4ee6e4677e5fd7f324b8f3873ee
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041324"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159038"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-replicon"></a>教程：Azure Active Directory 与 Replicon 集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "39041324"
 
     ![Replicon 域和 URL 单一登录信息](./media/replicon-tutorial/tutorial_replicon_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://na2.replicon.com/<companyname>/saml2/sp-sso/post`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://na2.replicon.com/<companyname>/saml2/sp-sso/post`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://global.replicon.com/<companyname>`
 
@@ -133,7 +133,7 @@ ms.locfileid: "39041324"
 
     ![启用 SAML 身份验证](./media/replicon-tutorial/ic777805.png "启用 SAML 身份验证")
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 要显示 **EnableSAML Authentication2** 对话框，请将以下内容追加到 URL 中的公司密钥后面：`/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
+    a. 要显示 **EnableSAML Authentication2** 对话框，请将以下内容追加到 URL 中的公司密钥后面：`/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
     * 下面显示完整 URL 的架构：`https://na2.replicon.com/\<YourCompanyKey\>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
@@ -167,7 +167,7 @@ ms.locfileid: "39041324"
 
     ![“用户”对话框](./media/replicon-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -177,7 +177,7 @@ ms.locfileid: "39041324"
 
 ### <a name="create-a-replicon-test-user"></a>创建一个 Replicon 测试用户
 
-本部分的目的是在 Replicon 中创建名为“Britta Simon”的用户。 Replicon 支持在默认情况下启用的自动用户预配。 有关如何配置自动用户预配的更多详细信息，请参见[此处](replicon-provisioning-tutorial.md)。
+本部分的目的是在 Replicon 中创建名为“Britta Simon”的用户。
 
 如果需要手动创建用户，请执行以下步骤：
 
@@ -195,7 +195,7 @@ ms.locfileid: "39041324"
 
     ![用户配置文件](./media/replicon-tutorial/ic777808.png "用户配置文件")
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录名”文本框中，键入要预配的 Azure AD 用户的 Azure AD 电子邮件地址，如 **BrittaSimon@contoso.com**。
+    a. 在“登录名”文本框中，键入要预配的 Azure AD 用户的 Azure AD 电子邮件地址，如 **BrittaSimon@contoso.com**。
 
     b. 对于“身份验证类型”，选择“SSO”。
 
@@ -249,7 +249,6 @@ ms.locfileid: "39041324"
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
 * [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
-* [配置用户预配](replicon-provisioning-tutorial.md)
 
 <!--Image references-->
 

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
 ms.author: terrylan
-ms.openlocfilehash: 0616f5e501324bfd821c1455ce234602f1fcf1bd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d5689e6b9b4d808c24bc4952f65904654b5e99f8
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23040972"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297360"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>使用 Azure 安全中心建议增强安全性
 可以通过配置安全策略，并实施 Azure 安全中心提供的建议，降低发生重大安全事件的可能性。 本文说明了如何使用安全中心内的安全策略和建议来帮助减少安全攻击。
@@ -49,7 +49,7 @@ ms.locfileid: "23040972"
 
 安全中心内的当前策略建议聚焦于系统更新、操作系统配置、有关子网和虚拟机 (VM) 的网络安全组、SQL 数据库审核、SQL 数据库 TDE，以及 Web 应用程序防火墙。 有关安全中心建议的最新覆盖范围，请参阅[管理安全中心内的安全建议](security-center-recommendations.md)。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 此方案显示如何通过监视安全中心建议并采取措施，来使用安全中心帮助降低发生重大安全事件的可能性。 本方案使用虚构的公司 Contoso，以及安全中心[规划和操作指南](security-center-planning-and-operations-guide.md#security-roles-and-access-controls)中提供的角色。 这些角色代表了可以使用安全中心执行不同的安全相关任务的个人和团队。 这些角色为：
 
 ![方案角色][2]

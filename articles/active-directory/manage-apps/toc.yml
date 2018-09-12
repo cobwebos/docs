@@ -1,0 +1,126 @@
+items:
+- name: Azure AD 应用程序管理文档
+  href: index.yml
+- name: 概述
+  items:
+  - name: 关于应用程序管理
+    href: what-is-application-management.md
+- name: 快速入门
+  items:
+  - name: 添加应用程序 - 门户
+    href: add-application-portal.md
+  - name: 查看租户应用 - 门户
+    href: view-applications-portal.md
+  expanded: true
+- name: 教程
+  items:
+  - name: 配置单一登录 - 门户
+    href: configure-single-sign-on-portal.md
+- name: 概念
+  items:
+  - name: 计划云应用集成
+    items:
+    - name: 添加应用时发生的情况
+      href: plan-an-application-integration.md
+  - name: 计划本地应用集成
+    items:
+    - name: 应用程序代理
+      href: application-proxy.md
+    - name: 连接器
+      href: application-proxy-connectors.md
+    - name: 连接器组
+      href: application-proxy-connector-groups.md
+    - name: 安全
+      href: application-proxy-security.md
+    - name: 网络拓扑
+      href: application-proxy-network-topology.md
+    - name: 比较远程访问解决方案
+      href: application-proxy-migration.md
+  - name: 预配用户和组
+    items:
+    - name: 自动用户预配
+      href: configure-automatic-user-provisioning-portal.md
+    - name: 启用 SCIM 的应用
+      href: use-scim-to-provision-users-and-groups.md
+  - name: 应用程序安全性
+    items:
+    - name: 应用访问选项
+      href: what-is-access-management.md
+    - name: 证书签名选项
+      href: certificate-signing-options.md
+    - name: 管理证书
+      href: manage-certificates-for-federated-single-sign-on.md
+  - name: 单一登录
+    items:
+    - name: SSO 方法
+      href: application-proxy-single-sign-on.md
+    - name: 主领域发现
+      href: configure-authentication-for-federated-users-portal.md
+    - name: Kerberos 约束委派 (KCD)
+      href: application-proxy-configure-single-sign-on-with-kcd.md
+    - name: 密码保管
+      href: application-proxy-configure-single-sign-on-password-vaulting.md
+    - name: Ping 访问
+      href: application-proxy-configure-single-sign-on-with-ping-access.md
+- name: 操作指南
+  items:
+  - name: 云应用集成
+    items:
+    - name: 更改名称或徽标
+      href: change-name-or-logo-portal.md
+  - name: 本地应用集成
+    items:
+    - name: 启用应用程序代理
+      href: application-proxy-enable.md
+    - name: 发布用于远程访问的应用
+      href: application-proxy-publish-azure-portal.md
+    - name: 配置连接器
+      href: application-proxy-configure-connectors-with-proxy-servers.md
+    - name: 配置声明感知应用
+      href: application-proxy-configure-for-claims-aware-applications.md
+    - name: 注册连接器 - 无提示安装
+      href: application-proxy-register-connector-powershell.md
+    - name: 配置本机客户端应用
+      href: application-proxy-configure-native-client-application.md
+    - name: 配置自定义主页
+      href: application-proxy-configure-custom-home-page.md
+    - name: 转换内联链接
+      href: application-proxy-configure-hard-coded-link-translation.md
+    - name: 使用通配符发布
+      href: application-proxy-wildcard.md
+    - name: 删除个人数据
+      href: application-proxy-remove-personal-data.md
+    - name: 配置自定义域
+      href: application-proxy-configure-custom-domain.md
+    - name: 与远程桌面集成
+      href: application-proxy-integrate-with-remote-desktop-services.md
+    - name: 与 Sharepoint 集成
+      href: application-proxy-integrate-with-sharepoint-server.md
+    - name: 与 Teams 集成
+      href: application-proxy-integrate-with-teams.md
+    - name: 与 Tableau 集成
+      href: application-proxy-integrate-with-tableau.md
+    - name: 与 Qlik 集成
+      href: application-proxy-qlik.md
+    - name: 配置错误
+      href: application-proxy-troubleshoot.md
+  - name: 应用程序访问
+    items:
+    - name: 将用户分配到应用
+      href: assign-user-or-group-access-portal.md
+    - name: 删除用户或组访问权限
+      href: remove-user-or-group-access-portal.md
+    - name: 对用户隐藏应用
+      href: hide-application-from-user-portal.md
+    - name: 禁用用户登录
+      href: disable-user-sign-in-portal.md
+  - name: 迁移
+    items:
+    - name: 将 ADFS 应用迁移到 Azure
+      href: migrate-adfs-apps-to-azure.md
+ms.openlocfilehash: 57a377c56764272b70814bc78b31f718d3d902b7
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44381785"

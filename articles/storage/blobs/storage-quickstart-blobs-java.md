@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: rogarana
-ms.openlocfilehash: 7fc5b164792907644a0a41615436806f998a8b1e
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 2f5396826da88fd2efdd3588babdbdfdeb42252a
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398703"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026137"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-java-sdk-v7"></a>快速入门：使用 Java SDK V7 上传、下载和列出 Blob
 
@@ -208,7 +208,7 @@ sourceFile.deleteOnExit();
 
 > [!div class="nextstepaction"]
 > [用于 Java 的 Azure 存储 SDK](https://github.com/azure/azure-storage-java) 
-> [API 参考](https://docs.microsoft.com/en-us/java/api/storage/client?view=azure-java-stable)
+> [API 参考](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
 > [用于 Java 的代码示例](../common/storage-samples-java.md)
 
 * 若要详细了解存储资源管理器和 Blob，请参阅[使用存储资源管理器管理 Azure Blob 存储资源](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。

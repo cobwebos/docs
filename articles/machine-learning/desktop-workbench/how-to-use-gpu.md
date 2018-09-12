@@ -11,12 +11,12 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: f3b6c4f6af14615511400650662fe7a350c172ba
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 09d8e3da543cdf4433d986b321697abcad88eb22
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42141458"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44157984"
 ---
 # <a name="how-to-use-gpu-in-azure-machine-learning"></a>如何在 Azure 机器学习中使用 GPU
 图形处理单元 (GPU) 广泛用于处理通常在训练某些深度神经网络模型时发生的计算密集型任务。 使用 GPU 可以显著减少模型的训练时间。 在本文档中，可了解如何配置 Azure ML 工作台，以使用配备 GPU（作为执行目标）的 [DSVM（数据科学虚拟机）](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview)。 
@@ -86,7 +86,7 @@ C:\MyProj> az ml computetarget attach remotedocker --name "my_dsvm" --address "m
 ### <a name="configure-azure-ml-workbench-to-access-gpu"></a>配置 Azure ML 工作台以访问 GPU
 返回项目，打开“文件视图”，然后点击“刷新”按钮。 此时可以看到两个新配置文件 `my_dsvm.compute` 和 `my_dsvm.runconfig`。
  
-打开 `my_dsvm.compute`。 将 `baseDockerImage` 更改为 `microsoft/mmlspark:plus-gpu-0.7.9`，并添加新行 `nvidiaDocker: true`。 如此，该文件应拥具有以下两行：
+打开 `my_dsvm.compute`。 将 `baseDockerImage` 更改为 `microsoft/mmlspark:plus-gpu-0.9.9`，并添加新行 `nvidiaDocker: true`。 如此，该文件应拥具有以下两行：
  
 ```yaml
 ...

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: cde70518164c386697127b079979b5b3b76ae088
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: cd95a1f1e0631340fa9844fd31c3d8c0af1168dd
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42142060"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347046"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>有关 Azure Active Directory 中应用程序管理的文章索引
 本页提供了一份完整列表，列出编写的 Azure Active Directory (Azure AD) 中各种应用程序相关功能的所有文章。
@@ -42,7 +42,7 @@ ms.locfileid: "42142060"
 | 功能区 |  |
 |:---:| --- |
 | 联合单一登录 |[排查基于 SAML 的单一登录问题](develop/howto-v1-debug-saml-sso-issues.md) |
-| 基于密码的单一登录 |[Internet Explorer 访问面板扩展故障排除](active-directory-saas-ie-troubleshooting.md) |
+| 基于密码的单一登录 |[Internet Explorer 访问面板扩展故障排除](manage-apps/manage-access-panel-browser-extension.md) |
 | 应用程序代理 |[应用代理故障排除指南](manage-apps/application-proxy-troubleshoot.md) |
 | 本地 AD 与 Azure AD 之间的单一登录 |[排查密码哈希同步问题](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md#troubleshoot-password-hash-synchronization)<br /><br />[排查密码写回问题](authentication/active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | 动态组成员身份 |[动态组成员身份疑难解答](users-groups-roles/groups-troubleshooting.md) |
@@ -56,7 +56,7 @@ ms.locfileid: "42142060"
 | 联合身份验证和其他登录类型简介 |[使用 Azure AD 进行单一登录](manage-apps/what-is-single-sign-on.md) |
 | 通过已简化的单一登录配置步骤与 Azure AD 预先集成的数千个 SaaS 应用程序 |[Azure AD 应用程序库入门](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[支持联合身份验证的预先集成应用完整列表](saas-apps/tutorial-list.md)<br /><br />[如何将应用程序添加到 Azure AD 应用库](develop/howto-app-gallery-listing.md) |
 | 超过 150 个应用教程，讲解如何为 [Salesforce](saas-apps/salesforce-tutorial.md)、[ServiceNow](saas-apps/servicenow-tutorial.md)、[Google Apps](saas-apps/google-apps-tutorial.md)、[Workday](saas-apps/workday-tutorial.md) 等应用配置单一登录 |[有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](saas-apps/tutorial-list.md) |
-| 如何手动设置和自定义单一登录配置 |[如何为不在 Azure Active Directory 应用程序库中的应用配置联合单一登录](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[如何为预先集成的应用自定义 SAML 令牌中颁发的声明](active-directory-saml-claims-customization.md) |
+| 如何手动设置和自定义单一登录配置 |[如何为不在 Azure Active Directory 应用程序库中的应用配置联合单一登录](manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)<br /><br />[如何为预先集成的应用自定义 SAML 令牌中颁发的声明](active-directory-saml-claims-customization.md) |
 | 使用 SAML 协议的联合应用的故障排除指南 |[排查基于 SAML 的单一登录问题](develop/howto-v1-debug-saml-sso-issues.md) |
 | 如何设置应用的证书过期日期，以及如何续订证书 |[在 Azure Active Directory 中管理用于联合单一登录的证书](manage-apps/manage-certificates-for-federated-single-sign-on.md) |
 
@@ -70,7 +70,7 @@ ms.locfileid: "42142060"
 | 基于密码的 SSO 工作原理简介以及简要的技术概述 |[使用 Azure AD 进行基于密码的单一登录](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on) |
 | 与共享帐户相关的方案以及 Azure AD 如何解决这些问题的摘要 |[使用 Azure AD 共享帐户](active-directory-sharing-accounts.md) |
 | 自动定期更改特定应用的密码 |[自动密码滚动更新（预览版）](https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/) |
-| Internet Explorer 版本的 Azure AD 密码管理扩展功能的部署和故障排除指南 |[如何使用组策略部署 Internet Explorer 的访问面板扩展](active-directory-saas-ie-group-policy.md)<br /><br />[Internet Explorer 访问面板扩展故障排除](active-directory-saas-ie-troubleshooting.md) |
+| Internet Explorer 版本的 Azure AD 密码管理扩展功能的部署和故障排除指南 |[如何使用组策略部署 Internet Explorer 的访问面板扩展](manage-apps/deploy-access-panel-browser-extension.md)<br /><br />[Internet Explorer 访问面板扩展故障排除](manage-apps/manage-access-panel-browser-extension.md) |
 
 基于密码的单一登录适用于所有版本的 Azure AD，每个用户最多十个应用。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) 支持无限数目的应用程序。 如果组织拥有 [Azure AD 基本版](https://azure.microsoft.com/pricing/details/active-directory/)或 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)，则可以[使用组来分配对应用程序的访问权限](#managing-access-to-applications)。 自动密码滚动更新是一项 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)功能。
 
@@ -130,11 +130,11 @@ Cloud Discovery 根据 Microsoft Cloud App Security 的云应用目录分析你�
 
 | 文章指南 |  |
 |:---:| --- |
-| 了解其工作原理，并查找常见问题的解答 |[在 SaaS 应用中自动预配和取消预配用户](active-directory-saas-app-provisioning.md) |
-| 配置如何在 Azure AD 与 SaaS 应用程序之间映射信息 |[自定义属性映射](active-directory-saas-customizing-attribute-mappings.md)<br><br>[为属性映射编写表达式](active-directory-saas-writing-expressions-for-attribute-mappings.md) |
+| 了解其工作原理，并查找常见问题的解答 |[在 SaaS 应用中自动预配和取消预配用户](manage-apps/user-provisioning.md) |
+| 配置如何在 Azure AD 与 SaaS 应用程序之间映射信息 |[自定义属性映射](manage-apps/customize-application-attributes.md)<br><br>[为属性映射编写表达式](manage-apps/functions-for-customizing-application-data.md) |
 | 如何对支持 SCIM 协议的任何应用启用自动化预配 |[对启用 SCIM 的任何应用设置自动化用户预配](manage-apps/use-scim-to-provision-users-and-groups.md) |
-| 如何针对用户预配进行报告和故障排除 |[针对自动用户预配进行报告](active-directory-saas-provisioning-reporting.md)<br><br>[对用户预配进行故障排除](active-directory-application-provisioning-content-map.md) |
-| 根据应用程序的属性值限制可以预配应用程序的人员 |[范围筛选器](active-directory-saas-scoping-filters.md) |
+| 如何针对用户预配进行报告和故障排除 |[针对自动用户预配进行报告](manage-apps/check-status-user-account-provisioning.md)<br><br>[对用户预配进行故障排除](active-directory-application-provisioning-content-map.md) |
+| 根据应用程序的属性值限制可以预配应用程序的人员 |[范围筛选器](manage-apps/define-conditional-rules-for-provisioning-user-accounts.md) |
 
 自动化用户预配适用于所有版本的 Azure AD，每个用户最多十个应用程序。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) 支持无限数目的应用程序。 如果组织拥有 [Azure AD 基本版](https://azure.microsoft.com/pricing/details/active-directory/)或 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)，则可以[使用组来管理要预配哪些用户](#managing-access-to-applications)。
 

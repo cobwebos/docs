@@ -9,12 +9,12 @@ ms.technology: bing-custom-search
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: a41b4e5b6c268ec68488c6764d4192cf8d2345a4
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e7a62a79bdc2e486fb6bfca34eb4addeba2bde0e
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365883"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158307"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>配置自定义自动建议体验
 如果已订阅相应级别的自定义搜索（请参阅[定价页](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)），则可以自定义在自定义搜索体验中显示的搜索建议。 自定义自动建议根据用户提供的部分查询字符串返回建议查询的列表。 借助自定义自动建议，可以提供与搜索体验相关的自定义搜索建议。 指定只返回自定义建议还是包括必应建议。 如果包括必应建议，则自定义建议在必应建议之前显示。 必应建议仅限于自定义搜索实例的上下文。
@@ -38,7 +38,7 @@ ms.locfileid: "35365883"
 ## <a name="remove-suggestions"></a>删除建议
 若要删除建议，请单击要删除的建议旁的删除图标。
 
-[!INCLUDE[publish or revert](./includes/publish-revert.md)]
+[!INCLUDE [publish or revert](./includes/publish-revert.md)]
 
   >[!NOTE]  
   >自定义自动建议配置更改最多可能需要 24 小时才能生效。

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: bcae6987-05d0-4208-bca8-6a6ce7c9a1e3
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2017
 ms.author: terrylan
-ms.openlocfilehash: 0c3a11e9a86767641533b16de1b96b4c59bfdf51
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0b3b8082412b12a0fffbaea04409a8bbb3f4ac15
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23040232"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44295371"
 ---
 # <a name="protecting-azure-sql-service-and-data-in-azure-security-center"></a>在 Azure 安全中心保护 Azure SQL 服务和数据
 Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别潜在的安全漏洞时，它会创建一些建议，这些建议会指导完成配置所需控件的过程。  适用于 Azure 资源类型的建议：虚拟机 (VM)、网络、SQL 和数据，以及应用程序。
@@ -27,7 +27,7 @@ Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别
 本文介绍适用于 Azure SQL 服务和数据的建议。 启用 Azure SQL 服务器和数据库审核、启用 SQL 数据库加密和启用 Azure 存储帐户加密的建议中心。  使用下表作为参考，以便了解可用的 SQL 服务和数据的建议，以及应用建议后每个建议的做法。
 
 ## <a name="available-sql-service-and-data-recommendations"></a>可用的 SQL 服务和数据的建议
-| 建议 | 说明 |
+| 建议 | Description |
 | --- | --- |
 | [在 SQL 服务器上启用审核与威胁检测](security-center-enable-auditing-on-sql-servers.md) |建议启用 Azure SQL 服务器审核和威胁检测（仅限 Azure SQL 服务；不包括虚拟机上运行的 SQL）。 |
 | [在 SQL 数据库上启用审核与威胁检测](security-center-enable-auditing-on-sql-databases.md) |建议启用 Azure SQL 数据库审核和威胁检测（仅限 Azure SQL 服务；不包括虚拟机上运行的 SQL）。 |

@@ -2,25 +2,21 @@
 title: 将 Azure 托管的 API 导出到 PowerApps 和 Microsoft Flow | Microsoft Docs
 description: 有关如何将应用服务中托管的 API 向 PowerApps 和 Microsoft Flow 公开的概述
 services: app-service
-documentationcenter: ''
 author: ggailey777
-manager: cfowler
-editor: ''
+manager: jeconnoc
 ms.assetid: ''
 ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
-ms.openlocfilehash: ef3fe5002a28c66478a10909a7e9556449cd9712
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: ceb0b1ce0d04c15a5b949519caad65d2c33b40ed
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234761"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092439"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>将 Azure 托管的 API 导出到 PowerApps 和 Microsoft Flow
 
@@ -70,7 +66,7 @@ ms.locfileid: "35234761"
 
 2. 使用表中指定的设置。
 
-    |设置|说明|
+    |设置|Description|
     |--------|------------|
     |**环境**|选择自定义连接器应保存到的环境。 有关详细信息，请参阅[环境概述](https://powerapps.microsoft.com/tutorials/environments-overview/)。|
     |**自定义 API 名称**|输入名称，PowerApps 和 Microsoft Flow 生成器将在其连接器列表中看到。|

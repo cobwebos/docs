@@ -3,26 +3,21 @@ title: 从 PowerApps 调用函数 | Microsoft Docs
 description: 创建一个自定义连接器，然后使用此连接器调用函数。
 services: functions
 keywords: 云应用, 云服务, PowerApps, 商业流程, 商业应用程序
-documentationcenter: ''
 author: ggailey777
-manager: cfowler
-editor: ''
+manager: jeconnoc
 ms.assetid: ''
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.service: azure-functions
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: 3693b167f196b82c520703fa50ffabb27b555050
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 55de3cd8830834a2af512661d5389952d927ef9f
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38586970"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094309"
 ---
 # <a name="call-a-function-from-powerapps"></a>从 PowerApps 调用函数
 [PowerApps](https://powerapps.microsoft.com) 平台专为商业专家设计，无需写入传统的应用程序代码即可生成应用。 专业开发人员可以使用 Azure Functions 扩展 PowerApps 的功能，同时使 PowerApps 应用构建者摆脱技术细节。
@@ -212,7 +207,7 @@ ms.locfileid: "38586970"
 ## <a name="run-the-app"></a>运行应用
 已有一个完整的应用了！ 现在可以运行应用并观察操作中的函数调用。
 
-1. 在 PowerApps Studio 的右上角，单击“运行”按钮： ![运行应用按钮](media/functions-powerapps-scenario/f5-arrow-sm.png)。
+1. 在 PowerApps Studio 的右上角，单击“运行”按钮： ![运行应用按钮](media/functions-powerapps-scenario/f5-arrow-sm.png).
 
 1. 选择“ServiceRequired”为 `Yes` 值的涡轮机，然后单击“计算成本”按钮。 应看到类似于下图的结果。
 

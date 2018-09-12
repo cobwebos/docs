@@ -9,12 +9,12 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: 593ea4d23f8ddcec8efc4be632afa2aab1a5210f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 7f2b97479ffcdb7ec8b3a1a635562d1fe68c3269
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365893"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158396"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>配置托管 UI 体验
 配置自定义搜索实例后，可调用自定义搜索 API 来获取搜索结果并将其显示在应用中。 如果应用是 Web 应用，则可选择使用自定义搜索提供的托管 UI。   
@@ -58,7 +58,7 @@ ms.locfileid: "35365893"
 > [!NOTE]
 > 在更改自定义托管 UI 配置时，右侧窗格会就所做更改提供可视参考。 显示的搜索结果不是实例的实际结果
 
-[!INCLUDE[publish or revert](./includes/publish-revert.md)]
+[!INCLUDE [publish or revert](./includes/publish-revert.md)]
 
 ## <a name="consume-custom-ui"></a>使用自定义 UI
 要使用托管 UI，请执行以下任一操作： 

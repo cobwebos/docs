@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 03623c64aad875ed46e7f578350e77cbd17c7c3b
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 4e65801a59a0c3d8aa6f0c654d6396bb2e86eb60
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42142257"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023488"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 
@@ -442,7 +442,7 @@ o- / ...........................................................................
      <b>token:          30000
      token_retransmits_before_loss_const: 10
      join:           60
-     consensus:      6000
+     consensus:      36000
      max_messages:   20</b>
      
      interface { 

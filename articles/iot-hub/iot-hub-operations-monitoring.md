@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/10/2017
 ms.author: nberdy
-ms.openlocfilehash: 0f4d5105b7266ba24fc5efa9af887b4458c05d5e
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 3aa452cd178bd0d064726c5be7dbdf65c6ef8d92
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186190"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160042"
 ---
 # <a name="iot-hub-operations-monitoring"></a>IoT 中心操作监视
 
@@ -186,26 +186,6 @@ IoT 中心监视 6 种类别的事件：
 }
 ```
 
-## <a name="view-events"></a>查看事件
-
-可以使用 *iothub-explorer* 工具快速测试 IoT 中心是否正在生成监视事件。 若要安装该工具，请参阅 [iothub-explorer][lnk-iothub-explorer] GitHub 存储库中的说明。
-
-1. 请确保门户中的“连接”监视类别设置为“详细”。
-
-1. 在命令提示符下，运行以下命令以读取监视终结点：
-
-    ```
-    iothub-explorer monitor-ops --login {your iothubowner connection string}
-    ```
-
-1. 在另一个命令提示符下，运行以下命令以模拟发送设备到云消息的设备：
-
-    ```
-    iothub-explorer simulate-device {your device name} --send "My test message" --login {your iothubowner connection string}
-    ```
-
-1. 当模拟设备连接到 IoT 中心时，第一个命令提示符显示监视事件。
-
 ## <a name="connect-to-the-monitoring-endpoint"></a>连接到监视终结点
 
 IoT 中心上的监视终结点是与事件中心兼容的终结点。 可使用任何适用于事件中心的机制从此终结点读取监视消息。 以下示例创建的基本读取器不适用于高吞吐量部署。 若要深入了解如何处理来自事件中心的消息，请参阅[事件中心入门][lnk-eventhubs-tutorial]教程。
@@ -303,5 +283,4 @@ class Program
 
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-iothub-explorer]: https://github.com/azure/iothub-explorer
 [lnk-eventhubs-tutorial]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md

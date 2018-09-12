@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/17/2017
 ms.author: suhuruli
-ms.openlocfilehash: 618180f9cbd1c65863e3e039bac40d1cc493bc37
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 8473b2e202dd408cce6658f3ca349d884a28dc3a
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918494"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160467"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>在 Mac OS X 上设置开发环境
 > [!div class="op_single_selector"]
@@ -157,14 +157,16 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
     ```bash
     npm install -g yo
     ```
-3. 请按入门[文档](service-fabric-get-started-linux.md)中的步骤，安装首选的 Yeoman 生成器。 若要使用 Yeoman 来创建 Service Fabric 应用程序，请执行以下步骤：
+3. 请按入门[文档](service-fabric-get-started-linux.md#set-up-yeoman-generators-for-containers-and-guest-executables)中的步骤，安装首选的 Yeoman 生成器。 若要使用 Yeoman 来创建 Service Fabric 应用程序，请执行以下步骤：
 
     ```bash
     npm install -g generator-azuresfjava       # for Service Fabric Java Applications
     npm install -g generator-azuresfguest      # for Service Fabric Guest executables
     npm install -g generator-azuresfcontainer  # for Service Fabric Container Applications
     ```
-4. 若要在 Mac 上生成 Service Fabric Java 应用程序，必须在主机上安装 JDK 1.8 和 Gradle。 此软件可以使用 [HomeBrew](https://brew.sh/) 进行安装，如下所示： 
+4. 安装生成器后，可通过运行 `yo azuresfguest` 或 `yo azuresfcontainer` 分别创建来宾可执行文件或容器服务。
+
+5. 若要在 Mac 上生成 Service Fabric Java 应用程序，必须在主机上安装 JDK 1.8 和 Gradle。 此软件可以使用 [HomeBrew](https://brew.sh/) 进行安装，如下所示： 
 
     ```bash
     brew update

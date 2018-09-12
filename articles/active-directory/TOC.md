@@ -197,6 +197,7 @@
 #### [租户限制](manage-apps/tenant-restrictions.md)
 #### [使用 SCIM 预配用户](manage-apps/use-scim-to-provision-users-and-groups.md)
 
+### [了解 Azure AD 应用程序许可体验](application-consent-experience.md)
 
 ### 故障排除
 

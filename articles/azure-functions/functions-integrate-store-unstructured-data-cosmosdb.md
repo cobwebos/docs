@@ -4,25 +4,21 @@ description: 使用 Azure Functions 和 Cosmos DB 存储非结构化数据
 services: functions
 documentationcenter: functions
 author: ggailey777
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: Azure Functions, Functions, 事件处理, Cosmos DB, 动态计算, 无服务器体系结构
 ms.assetid: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: csharp
 ms.topic: quickstart
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: b9bb71adf85490fe68bf6b73133017c5e9c377e1
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: ddd9a3186e86b1b5bd24c0c99f5fcb18c456119a
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
-ms.locfileid: "27767547"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44091622"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>使用 Azure Functions 和 Azure Cosmos DB 存储非结构化数据
 
@@ -53,7 +49,7 @@ ms.locfileid: "27767547"
 
     ![配置 Cosmos DB 输出绑定](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-integrate-tab-configure-cosmosdb-binding.png)
 
-    | 设置      | 建议的值  | 说明                                |
+    | 设置      | 建议的值  | Description                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | 文档参数名称 | taskDocument | 引用代码中的 Cosmos DB 对象的名称。 |
     | **数据库名称** | taskDatabase | 用于保存文档的数据库的名称。 |
@@ -66,7 +62,7 @@ ms.locfileid: "27767547"
 
     ![配置 Cosmos DB 连接](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-create-CosmosDB.png)
 
-    | 设置      | 建议的值  | 说明                                |
+    | 设置      | 建议的值  | Description                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **ID** | 数据库的名称 | Azure Cosmos DB 数据库的唯一 ID  |
     | **API** | SQL | 选择 SQL API。 此时，Azure Cosmos DB 触发器、输入绑定和输出绑定仅可与 SQL API 和图形 API 帐户一起使用。 |
