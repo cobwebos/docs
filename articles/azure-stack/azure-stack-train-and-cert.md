@@ -6,15 +6,14 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 09/10/2018
 ms.author: mabrigg
-keywords: ''
-ms.openlocfilehash: 19dba180d19967dcd6a01a6b2851d746ad1f9831
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2b9a769abb1e704dce0bd6924372be62bb85d68d
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32154505"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44376861"
 ---
 # <a name="azure-stack-training-and-certification"></a>Azure Stack 培训和认证
 
@@ -24,11 +23,12 @@ ms.locfileid: "32154505"
 
 ## <a name="training"></a>培训
 
-- [课程 20537A： 配置和运行具有 Microsoft Azure 堆栈的混合云](https://www.microsoft.com/en-us/learning/course.aspx?cid=20537)
+- [课程 20537A： 配置和运行使用 Microsoft Azure Stack 的混合云](https://www.microsoft.com/en-us/learning/course.aspx?cid=20537)
 - [edX：Azure Stack 在线培训](https://aka.ms/AzureStackMOOC)
 - [作业角色和学习路径](https://azure.microsoft.com/training/learning-paths/)
 
 ## <a name="certification"></a>认证
+
 Azure Stack 认证目前正在开发中。 请不时回来查看最新的信息。
 
 ## <a name="next-steps"></a>后续步骤

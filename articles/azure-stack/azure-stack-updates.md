@@ -12,24 +12,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
+ms.date: 09/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: 484f04dc2ed523d3f979b0ba857c92f90d9d32ad
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 4d8a79862dac53429acda14f81818f92a96df529
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215804"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44376844"
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>在 Azure Stack 中管理更新概述
 
 *适用于：Azure Stack 集成系统*
 
-Microsoft 更新包的 Azure Stack 集成系统通常发布围绕每个月的第四个星期二。 有关特定通知过程，以确保更新通知达到你的组织的信息，请咨询 OEM。 您还可以在此文档库中检查**概述** > **发行说明**有关处于活动状态的支持的版本信息。 
+Azure Stack 集成系统的 Microsoft 更新包通常大约在每月的第四个星期二发布。 请向你的 OEM 咨询具体的通知流程以确保更新能够到达你的组织。 还可以查看位于“概述” > “发行说明”下的此文档库来了解有关处于有效支持状态的发行版的信息。 
 
-每次发布的 Microsoft 软件更新均打包为单个更新包。 Azure Stack 操作员，可以导入、 安装和监视安装进度的这些更新在管理员门户中的包。 
+每次发布的 Microsoft 软件更新均打包为单个更新包。 Azure Stack 操作员可以从管理员门户导入和安装这些更新包，并监视这些更新包的安装进度。 
 
-原始设备制造商 (OEM) 硬件供应商也会发布更新，例如驱动程序和固件更新。 而 OEM 硬件供应商的情况下，这些更新传送作为单独的包，它们将被导入、 安装，并且从 Microsoft 更新包导入、 安装和管理管理相同的方式更新包。
+原始设备制造商 (OEM) 硬件供应商也会发布更新，例如驱动程序和固件更新。 虽然这些更新是由 OEM 硬件供应商作为单独的包提供的，但它们采用与来自 Microsoft 更新的更新包相同的方式进行导入、安装和管理。
 
 若要保持系统受支持，必须始终将 Azure Stack 更新为特定版本级别。 请务必查看 [Azure Stack 服务策略](azure-stack-servicing-policy.md)。
 
@@ -40,14 +40,14 @@ Microsoft 更新包的 Azure Stack 集成系统通常发布围绕每个月的第
 
 Azure Stack 包含协调 Microsoft 软件更新应用的更新资源提供程序。 此资源提供程序可确保在所有物理主机、Service Fabric 应用程序和运行时以及所有基础结构虚拟机及其关联的服务上应用更新。
 
-当更新安装，你可以作为更新过程目标 （例如，物理主机和基础结构虚拟机） 的 Azure Stack 中的各种子系统查看高级状态。
+当更新安装时，由于更新进程以 Azure Stack 中的各种子系统（例如，物理主机和基础结构虚拟机）为目标，因此你可以查看高级状态。
 
 ## <a name="plan-for-updates"></a>规划更新
 
-我们强烈建议通知用户任何维护操作，并且，在正常维护时段安排在非工作时间在可能的情况。 维护操作会影响租户工作负荷和门户操作。
+我们强烈建议你向用户通知任何维护操作，并尽可能将正常维护时段安排在非工作时间。 维护操作可能会同时影响租户工作负荷和门户操作。
 
 ## <a name="using-the-update-tile-to-manage-updates"></a>使用“更新”磁贴管理更新
-在管理员门户中管理更新。 Azure Stack 操作员可以到仪表板中使用更新磁贴：
+从管理员门户中管理更新。 Azure Stack 操作员可以使用仪表板中的“更新”磁贴执行以下操作：
 
 - 查看重要信息，例如当前版本。
 - 安装更新，并监视进度。

@@ -6,20 +6,19 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 6996DFC1-5E05-423A-968F-A9427C24317C
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 09/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: 70c1fd72df437ade3bc12cd23db923f6d449e7fb
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5d988e8a8a32924b8424a07cf20c75f0e8f8cf4d
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38465737"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391068"
 ---
 # <a name="get-up-and-running-with-powershell-in-azure-stack"></a>在 Azure Stack 中使用 PowerShell 启动并运行
 
@@ -27,12 +26,14 @@ ms.locfileid: "38465737"
 
 本快速入门帮助你使用 PowerShell 来安装和配置 Azure Stack 环境。 本文中提供的脚本仅面向 **Azure Stack 操作员**。
 
-本文是[安装 PowerShell]( azure-stack-powershell-install.md)、[下载工具]( azure-stack-powershell-download.md)和[配置 Azure Stack 操作员的 PowerShell 环境]( azure-stack-powershell-configure-admin.md)文章中所述步骤的精简版本。 使用本主题中的脚本，可以设置连同 Azure Active Directory 或 Active Directory 联合身份验证服务 (AD FS) 一起部署的 Azure Stack PowerShell 环境。  
+本文是[安装 PowerShell]( azure-stack-powershell-install.md)、[下载工具]( azure-stack-powershell-download.md)和[配置 Azure Stack 操作员的 PowerShell 环境]( azure-stack-powershell-configure-admin.md)文章中所述步骤的精简版本。 在本文中使用的脚本，您可以设置 PowerShell 与 Azure Active Directory 或 Active Directory 联合身份验证服务 (AD FS) 部署的 Azure Stack 环境。  
 
 
 ## <a name="set-up-powershell-for-azure-active-directory-based-deployments"></a>设置 PowerShell 进行基于 Azure Active Directory 的部署
 
-登录到 Azure Stack 开发工具包；如果已通过 VPN 建立连接，请登录到基于 Windows 的外部客户端。 打开权限提升的 PowerShell ISE 会话，然后运行以下脚本。 确保根据需要更新环境配置的 **TenantName**、**ArmEndpoint** 和 **GraphAudience** 变量：
+<a name="sign-in-to-your-azure-stack-development-kit-or-a-windows-based-external-client-if-you-are-connected-through-vpn-open-an-elevated-powershell-ise-session-and-then-run-the-following-script"></a>登录到 Azure Stack 开发工具包；如果已通过 VPN 建立连接，请登录到基于 Windows 的外部客户端。 打开权限提升的 PowerShell ISE 会话，然后运行以下脚本。 
+-  
+- 确保根据需要更新环境配置的 **TenantName**、**ArmEndpoint** 和 **GraphAudience** 变量：
 
 ```powershell
 # Specify Azure Active Directory tenant name.

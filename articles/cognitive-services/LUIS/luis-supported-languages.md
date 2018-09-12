@@ -27,7 +27,7 @@ LUIS 在服务中具有多种功能。 并非所有功能都会同等地以各�
 LUIS 理解以下语言：
 
 
-| 语言 |区域设置  |  预生成域 | 预生成实体 | 短语建议 | **[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>（情绪和<br>关键字）| 
+| 语言 |区域设置  |  预生成域 | 预生成实体 | 短语建议 | \**[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>（情绪和<br>关键字）| 
 |--|--|:--:|:--:|:--:|:--:|
 | 美国英语 |`en-US` | ✔ | ✔  |✔|✔|
 | 加拿大法语 |`fr-CA` |-|   -   |-|✔|
@@ -58,7 +58,7 @@ LUIS 理解以下语言：
      - でございます 与 です 不同。 
      - です 与 だ 不同。 
 
-### <a name="text-analytics-support-notes"></a>**文本分析支持说明
+### <a name="text-analytics-support-notes"></a>\*\*文本分析支持说明
 文本分析包含 keyPhrase 预生成的实体和情绪分析。 仅葡萄牙语支持亚区域性：`pt-PT` 和 `pt-BR`。 主区域性级别支持所有其他区域性。 详细了解文本分析[支持的语言](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)。 
 
 ### <a name="speech-api-supported-languages"></a>语音 API 支持的语言

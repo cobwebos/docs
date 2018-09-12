@@ -15,11 +15,11 @@ ms.author: sethm
 ms.reviewer: sijuman
 <!-- dev: viananth -->
 ms.openlocfilehash: c55dcf0736642690f245f680db5cb1620c2175e7
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139662"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44390956"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Python 配合使用
 
@@ -53,8 +53,7 @@ Python SDK 支持 API 版本配置文件将不同的云平台（例如 Azure Sta
 |---------------------------|-----------------------|-------------------------------------------------------------------------------------------------------------------------|
 | 租户 ID | AZURE_TENANT_ID | Azure Stack [租户 ID](../azure-stack-identity-overview.md) 的值。 |
 | 客户端 ID | AZURE_CLIENT_ID | 在本文档上一部分创建服务主体时保存的服务主体应用程序 ID。 |
-| 订阅 ID | AZURE_SUBSCRIPTION_ID | 
-  [订阅 ID](../azure-stack-plan-offer-quota-overview.md#subscriptions) 用于访问 Azure Stack 中的套餐。 |
+| 订阅 ID | AZURE_SUBSCRIPTION_ID | [订阅 ID](../azure-stack-plan-offer-quota-overview.md#subscriptions) 用于访问 Azure Stack 中的套餐。 |
 | 客户端机密 | AZURE_CLIENT_SECRET | 创建服务主体时保存的服务主体应用程序机密。 |
 | 资源管理器终结点 | ARM_ENDPOINT | 参阅 [Azure Stack 资源管理器终结点](azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint)。 |
 
@@ -130,7 +129,7 @@ Python SDK 支持 API 版本配置文件将不同的云平台（例如 Azure Sta
     export ARM_ENDPOINT={your AzureStack Resource Manager Endpoint}
     ```
 
-7.  为了运行此示例，必须在 Azure Stack 市场中存在 Ubuntu 16.04-LTS 和 windows Server 2012 R2 Datacenter 映像。 可以[从 Azure 下载](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item)这些映像或者将其[添加到平台映像存储库](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image)。
+7.  若要运行此示例，Ubuntu 16.04-LTS 和 WindowsServer 2012-R2-Datacenter 映像必须存在于 Azure Stack 市场中。 可以[从 Azure 下载](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item)这些映像或者将其[添加到平台映像存储库](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image)。
 
 8. 运行示例。
 

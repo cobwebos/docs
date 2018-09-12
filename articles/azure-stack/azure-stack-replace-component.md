@@ -1,77 +1,76 @@
 ---
-title: 替换的 Azure 堆栈缩放单元节点上的硬件组件 |Microsoft 文档
-description: 了解如何将在集成的 Azure 堆栈的系统上的硬件组件。
+title: 更换 Azure Stack 缩放单元节点上的硬件组件 | Microsoft Docs
+description: 了解如何更换 Azure Stack 集成系统上的硬件组件。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: c6e036bf-8c80-48b5-b2d2-aa7390c1b7c9
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/29/2018
+ms.date: 09/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: 7018f0122ab1ef11d64cce8a9adf58419d0e9ba7
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: df9470813f3f9c3bff58882879c06e7b7b0fc15b
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28919706"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44379595"
 ---
-# <a name="replace-a-hardware-component-on-an-azure-stack-scale-unit-node"></a>替换的 Azure 堆栈缩放单元节点上的硬件组件
+# <a name="replace-a-hardware-component-on-an-azure-stack-scale-unit-node"></a>更换 Azure Stack 缩放单元节点上的硬件组件
 
-*适用范围： Azure 堆栈集成系统*
+*适用于：Azure Stack 集成系统*
 
-本文介绍将替换为非热插拔的硬件组件的一般过程。 步骤会有所不同的实际替换基于原始设备制造商 (OEM) 硬件供应商联系。 请参阅特定于 Azure 堆栈集成系统的详细步骤的供应商的字段可更换部件 (FRU) 文档。
+本文介绍更换非热插拔硬件组件的一般过程。 实际的更换步骤将因原始设备制造商 (OEM) 硬件供应商而异。 有关 Azure Stack 集成系统特有的详细步骤，请参阅供应商的现场可更换部件 (FRU) 文档。
 
-非热插拔组件包括：
+非热插拔组件包括以下项：
 
 - CPU*
-- 内存 *
-- 母板/基板管理控制器 (BMC) / 视频卡
-- 磁盘控制器/主机总线适配器 (HBA) / 底板
+- 内存*
+- 母板/基板管理控制器 (BMC)/视频卡
+- 磁盘控制器/主机总线适配器 (HBA)/底板
 - 网络适配器 (NIC)
-- 操作系统磁盘 *
-- 数据驱动器 （不支持热插拔，例如 PCI e 外接卡的驱动器） *
+- 操作系统磁盘*
+- 数据驱动器（不支持热插拔的驱动器，例如 PCI-e 外接卡）*
 
-* 这些组件可能支持热插拔，但供应商实施情况而有所不同。 请参阅 OEM 供应商的 FRU 文档有关的详细步骤。
+*这些组件可能支持热插拔，但因供应商实施情况而有所不同。 有关详细步骤，请参阅 OEM 供应商的 FRU 文档。
 
-以下流程图显示常规的 FRU 进程，以替换非热插拔的硬件组件。
+以下流程图显示更换非热插拔硬件组件的一般 FRU 过程。
 
-![显示组件替换数据流的流关系图](media/azure-stack-replace-component/replacecomponentflow.PNG)
+![显示组件更换流程的流程图](media/azure-stack-replace-component/replacecomponentflow.PNG)
 
-* 此操作可能不需要基于硬件的物理条件。
+*根据硬件的物理条件，可能不需要此操作。
 
-* * OEM 硬件供应商是否执行组件更换和固件可能会有所不同的更新基于您的支持合同。
+**无论 OEM 硬件供应商是否执行组件更换和更新，固件都可能会根据支持合同而有所不同。
 
 ## <a name="review-alert-information"></a>查看警报信息
 
-Azure 堆栈运行状况和监视系统跟踪网络适配器和由存储空间直通控制的数据驱动器的运行状况。 它不跟踪其他硬件组件。 对于所有其他硬件组件，在监视硬件生命周期主机运行的解决方案的特定于供应商的硬件中引发警报。  
+Azure Stack 运行状况和监视系统会跟踪存储空间直通所控制的网络适配器和数据驱动器的运行状况。 它不会跟踪其他硬件组件。 针对所有其他硬件组件，在硬件生命周期主机上运行的供应商特定硬件监视解决方案中引发警报。  
 
 ## <a name="component-replacement-process"></a>组件更换过程
 
-以下步骤提供组件更换过程的高级概述。 不用按照这些步骤而不会引用你的 OEM 提供 FRU 文档。
+以下步骤提供组件更换过程的高级概述。 请勿在未参考 OEM 提供的 FRU 文档的情况下按照这些步骤操作。
 
-1. 使用[排出](azure-stack-node-actions.md#scale-unit-node-actions)操作将缩放单元节点置于维护模式。 此操作可能不需要基于硬件的物理条件。
-
-   > [!NOTE]
-   > 可以在任何情况下，将断开而且而不会破坏 S2D 关机在同一时间只有一个节点 (Storage Spaces Direct)。
-
-2. 缩放单元节点处于维护模式后，使用[关闭电源](azure-stack-node-actions.md#scale-unit-node-actions)操作。 此操作可能不需要基于硬件的物理条件。
+1. 使用[清空](azure-stack-node-actions.md#scale-unit-node-actions)操作使缩放单元节点进入维护模式。 根据硬件的物理条件，可能不需要此操作。
 
    > [!NOTE]
-   > 在关闭操作不起作用不大可能情况下，改用基板管理控制器 (BMC) 的 web 界面。
+   > 在任何情况下，只能同时清空一个节点并关机，而不中断 S2D（存储空间直通）。
 
-3. 替换损坏的硬件组件。 OEM 硬件供应商是否执行组件更换无法取决于您的支持合同。  
-4. 更新固件。 按照你使用硬件生命周期主机用于确保被替换的硬件组件具有批准的固件级别应用的特定于供应商固件更新过程。 OEM 硬件供应商是否执行此步骤可能取决于您的支持合同。  
-5. 使用[修复](azure-stack-node-actions.md#scale-unit-node-actions)操作以将缩放单元节点恢复到的缩放单位。
-6. 使用到特权的终结点[检查虚拟磁盘修复的状态](azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair)。 与新的数据驱动器，完整存储修复作业可能需要数小时，具体取决于系统负载，且使用空间。
-7. 修复操作已完成后，验证已自动关闭所有活动警报。
+2. 缩放单元节点处于维护模式后，请使用[关闭电源](azure-stack-node-actions.md#scale-unit-node-actions)操作。 根据硬件的物理条件，可能不需要此操作。
+
+   > [!NOTE]
+   > 在关闭电源操作不起作用的罕见情况下，请改用基板管理控制器 (BMC) Web 界面。
+
+3. 更换损坏的硬件组件。 OEM 硬件供应商是否执行组件更换可能会根据支持合同而有所不同。  
+4. 更新固件。 请使用硬件生命周期主机按照供应商特定的固件更新过程进行操作，以确保替换的硬件组件已应用批准的固件级别。 OEM 硬件供应商是否执行此步骤可能会根据支持合同而有所不同。  
+5. 使用[修复](azure-stack-node-actions.md#scale-unit-node-actions)操作将缩放单元节点恢复到缩放单元。
+6. 使用到特权终结点[检查虚拟磁盘修复状态](azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair)。 利用新的数据驱动器，完整的存储修复作业可能需要数小时的时间，具体取决于系统负载和已使用的空间。
+7. 修复操作完成后，验证是否已自动关闭所有活动警报。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关替换的热插拔的物理磁盘的信息，请参阅[替换的磁盘](azure-stack-replace-disk.md)。
-- 有关替换物理节点的信息，请参阅[替换缩放单元节点](azure-stack-replace-node.md)。
+- 有关更换热插拔物理磁盘的信息，请参阅[更换磁盘](azure-stack-replace-disk.md)。
+- 有关更换物理节点的信息，请参阅[更换缩放单元节点](azure-stack-replace-node.md)。

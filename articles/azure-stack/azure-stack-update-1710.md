@@ -3,7 +3,7 @@ title: Azure Stack 1710 更新（内部版本 20171020.1）| Microsoft Docs
 description: 了解 Azure Stack 集成系统 1710 版的新增功能、已知问题和更新下载位置。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: brenduns
 manager: femila
 editor: ''
 ms.assetid: 135314fd-7add-4c8c-b02a-b03de93ee196
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: mabrigg
-ms.openlocfilehash: 8c7c39ecdc332c994e5c00f8415462f208e7d20b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: brenduns
+ms.reviewer: justini
+ms.openlocfilehash: cf870551a3dbd9b5ea0ef6f886dc6451e43b2c25
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30311917"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377184"
 ---
 # <a name="azure-stack-1710-update-build-201710201"></a>Azure Stack 1710 更新（内部版本 20171020.1）
 
@@ -36,7 +37,7 @@ ms.locfileid: "30311917"
  
 ### <a name="windows-server-2016-improvements-and-fixes"></a>Windows Server 2016 的改进和修复
 
-- 适用于 Windows Server 2016 的更新：2017 年 10 月 10 日 — KB4041691（OS 内部版本 14393.1770）。 请参阅[ https://support.microsoft.com/help/4041691 ](https://support.microsoft.com/help/4041691)有关详细信息。
+- 适用于 Windows Server 2016 的更新：2017 年 10 月 10 日 — KB4041691（OS 内部版本 14393.1770）。 有关详细信息，请参阅 [https://support.microsoft.com/help/4041691](https://support.microsoft.com/help/4041691)。
 
 ### <a name="additional-quality-improvements-and-fixes"></a>其他质量改进和修复
 
@@ -86,7 +87,7 @@ ms.locfileid: "30311917"
    若要解决后两个问题，可以输入订阅或资源组的名称（如果知道），或者可以改用 PowerShell。
 - 删除用户订阅生成孤立的资源。 解决方法是先删除用户资源或整个资源组，然后再删除用户订阅。
 - 无法使用 Azure Stack 门户查看订阅的权限。 解决方法是使用 PowerShell 验证权限。
-- **服务运行状况**边栏选项卡无法加载。 当你打开的服务运行状况边栏选项卡在管理员或用户门户中，Azure 堆栈会显示错误并不会加载信息。 这是预期的行为。 尽管你可以选择并打开服务运行状况，但此功能尚不可用，但将实现 Azure 堆栈的未来版本中。
+- “服务运行状况”边栏选项卡无法加载。 在管理员或用户门户中打开“服务运行状况”边栏选项卡时，Azure Stack 显示错误且不加载信息。 这是预期的行为。 尽管可以选择并打开“服务运行状况”，但此功能目前不可用，将来的 Azure Stack 版本中会实现此功能。
  
 
 ### <a name="backup"></a>备份
@@ -97,14 +98,14 @@ ms.locfileid: "30311917"
 
 - 如果重新启动基础结构角色实例，可能会收到一条消息，指出重新启动失败。 但实际上重新启动已成功。
 
-### <a name="marketplace"></a>Marketplace
-- 尝试使用“从 Azure 添加”选项将项添加到 Azure Stack Marketplace 时，可能无法看到所有可供下载的项。
-- 用户无需订阅就能浏览整个 Marketplace，并且将会看到计划和产品/服务等管理项。 对用户而言，这些项是非功能性的。
+### <a name="marketplace"></a>市场
+- 尝试使用“从 Azure 添加”选项将项添加到 Azure Stack 市场时，可能无法看到所有可供下载的项。
+- 用户无需订阅就能浏览整个市场，并且将会看到计划和套餐等管理项。 对用户而言，这些项是非功能性的。
 
 ### <a name="compute"></a>计算
 - 用户可以使用相应的选项创建包含异地冗余存储的虚拟机。 此配置会导致虚拟机创建失败。
 - 可以配置只包含一个容错域和一个更新域的虚拟机可用性集。
-- 没有任何可用于创建虚拟机规模集的 Marketplace 体验。 可以使用模板来创建规模集。
+- 没有任何可用于创建虚拟机规模集的市场体验。 可以使用模板来创建规模集。
 - 无法在门户中使用虚拟机规模集的缩放设置。 解决方法是使用 [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set)。 由于 PowerShell 版本差异，必须使用 `-Name` 参数，而不是 `-VMScaleSetName`。
  
 ### <a name="networking"></a>网络
@@ -121,7 +122,7 @@ ms.locfileid: "30311917"
  
 ### <a name="field-replaceable-unit-fru-procedures"></a>现场可更换单元 (FRU) 过程
 
-- 在更新运行期间，无法修补脱机映像。 如果需要更换缩放单位节点，请咨询 OEM 硬件供应商，确保更换的节点具有最新修补级别。
+- 在更新运行期间，无法修补脱机映像。 如果需要更换缩放单元节点，请咨询 OEM 硬件供应商，确保更换的节点具有最新修补级别。
 
 ## <a name="download-the-update"></a>下载更新
 

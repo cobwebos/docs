@@ -6,21 +6,20 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: e94775d5-d473-4c03-9f4e-ae2eada67c6c
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 09/10/2018
 ms.author: mabrigg
 ms.reviewer: fiseraci
-ms.openlocfilehash: 9fb928b7cb8e1a83734b64a8b9c19bc3cf3203ba
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d91ad42d4d84802c4579a4d228a35030970da8e4
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32153178"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377235"
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>使用 Azure Stack 中的特权终结点
 
@@ -47,18 +46,18 @@ PEP 记录你在 PowerShell 会话中执行的每项操作（及其相应的输�
 
 
 > [!NOTE]
-> 出于安全原因，我们要求您连接到 PEP 只能从在硬件生命周期主机上, 强制写入的虚拟机正在运行或从一台专用、 安全计算机，如[特权访问工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)。 从其原始的配置，包括安装新的软件，不能修改原始配置的硬件生命周期主机也不应该用于连接到 PEP。
+> 出于安全原因，我们要求只从硬件生命周期主机顶层运行的强化虚拟机或者从专用的安全计算机（例如[特权访问工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)）连接到 PEP。 不得修改硬件生命周期主机的原始配置（包括安装新软件），也不能使用该主机来连接 PEP。
 
-1. 建立信任关系。
+1. 建立信任。
 
-    - 在集成的系统中，从提升的 Windows PowerShell 会话将 PEP 添加为受信任的主机强化硬件生命周期主机或特权访问工作站上运行的虚拟机上运行以下命令。
+    - 在集成系统中，从权限提升的 Windows PowerShell 会话运行以下命令，将 PEP 添加为硬件生命周期主机或特权访问工作站上运行的强化虚拟机的受信任主机。
 
       ````PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ````
     - 如果运行的是 ADSK，请登录到开发工具包主机。
 
-2. 在硬件生命周期主机或特权访问工作站上运行的镜像虚拟机，打开 Windows PowerShell 会话。 运行以下命令，在托管 PEP 的虚拟机上建立远程会话：
+2. 在硬件生命周期主机或特权工作站上运行的强化虚拟机中，打开 Windows PowerShell 会话。 运行以下命令，在托管 PEP 的虚拟机上建立远程会话：
  
     - 在集成系统上：
       ````PowerShell
@@ -82,7 +81,7 @@ PEP 记录你在 PowerShell 会话中执行的每项操作（及其相应的输�
       - **密码**：输入安装 AzureStackAdmin 域管理员帐户期间提供的相同密码。
 
     > [!NOTE]
-    > 如果无法连接到 ERCS 终结点，请尝试再次使用到尚未已尝试连接 ERCS VM 的 IP 地址的步骤 1 和 2。
+    > 如果无法连接到 ERCS 终结点，请使用尚未尝试连接到的 ERCS VM 的 IP 地址重试步骤 1 和 2。
 
 3.  连接后，系统会根据环境将提示符更改为 **[*IP 地址或 ERCS VM 名称*]: PS>** 或 **[azs-ercs01]: PS>**。 在此处运行 `Get-Command` 可查看可用的 cmdlet 列表。
 
@@ -121,16 +120,16 @@ PEP 记录你在 PowerShell 会话中执行的每项操作（及其相应的输�
 
 若要在本地计算机上导入 PEP 会话，请执行以下步骤：
 
-1. 建立信任关系。
+1. 建立信任。
 
-    上一个集成系统，从提升的 Windows PowerShell 会话将 PEP 添加为受信任的主机强化硬件生命周期主机或特权访问工作站上运行的虚拟机上运行以下命令。
+    在集成系统中，从权限提升的 Windows PowerShell 会话运行以下命令，将 PEP 添加为硬件生命周期主机或特权访问工作站上运行的强化虚拟机的受信任主机。
 
       ````PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ````
     - 如果运行的是 ADSK，请登录到开发工具包主机。
 
-2. 在硬件生命周期主机或特权访问工作站上运行的镜像虚拟机，打开 Windows PowerShell 会话。 运行以下命令，在托管 PEP 的虚拟机上建立远程会话：
+2. 在硬件生命周期主机或特权工作站上运行的强化虚拟机中，打开 Windows PowerShell 会话。 运行以下命令，在托管 PEP 的虚拟机上建立远程会话：
  
     - 在集成系统上：
       ````PowerShell
@@ -162,7 +161,7 @@ PEP 记录你在 PowerShell 会话中执行的每项操作（及其相应的输�
 
 ## <a name="close-the-privileged-endpoint-session"></a>关闭特权终结点会话
 
- 如前所述，PEP 会记录你在 PowerShell 会话中执行的每项操作（及其相应的输出）。 您必须使用来关闭会话`Close-PrivilegedEndpoint`cmdlet。 此 cmdlet 会正常关闭终结点，并将日志文件传送到外部文件共享进行保留。
+ 如前所述，PEP 会记录你在 PowerShell 会话中执行的每项操作（及其相应的输出）。 必须使用 `Close-PrivilegedEndpoint` cmdlet 关闭会话。 此 cmdlet 会正常关闭终结点，并将日志文件传送到外部文件共享进行保留。
 
 关闭终结点会话：
 
@@ -175,7 +174,7 @@ PEP 记录你在 PowerShell 会话中执行的每项操作（及其相应的输�
 将脚本日志文件成功传送到文件共享后，它们会自动从 PEP 中删除。 
 
 > [!NOTE]
-> 如果使用 `Exit-PSSession` 或 `Exit` cmdlet 关闭 PEP 会话或只是关闭 PowerShell 控制台，则脚本日志不会传送到文件共享。 它们会保留在 PEP 中。 下次运行 `Close-PrivilegedEndpoint` 并包含文件共享时，也将传送前面会话中的脚本日志。 不要使用`Exit-PSSession`或`Exit`关闭 PEP 会话; 使用`Close-PrivilegedEndpoint`相反。
+> 如果使用 `Exit-PSSession` 或 `Exit` cmdlet 关闭 PEP 会话或只是关闭 PowerShell 控制台，则脚本日志不会传送到文件共享。 它们会保留在 PEP 中。 下次运行 `Close-PrivilegedEndpoint` 并包含文件共享时，也将传送前面会话中的脚本日志。 不要使用 `Exit-PSSession` 或 `Exit` 关闭 PEP 会话；请改用 `Close-PrivilegedEndpoint`。
 
 
 ## <a name="next-steps"></a>后续步骤

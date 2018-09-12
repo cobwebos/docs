@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 9d33ccf9262d4432ac7255121e97f318d00b5145
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: bc57d445c334baeb32dbffda814cb10a35956d03
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050643"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380210"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Azure Stack 中的配置文件支持的资源提供程序 API 版本
 
@@ -54,9 +54,9 @@ API 配置文件使用三个命名约定：
 | Resources_Locks | 2016-10-01 |
 | 订阅 | 2016-10-01 |
 
-有关 api 配置文件中提供程序的每种资源类型的更多版本列表，请参阅 [2018-03-01-hybrid 配置文件的详细信息](#details-for-the-2018-03-01-hybrid)。
+有关更多的提供程序 API 配置文件中每种资源类型的版本的列表，请参阅[2018年-03-01-混合的详细信息](#details-for-the-2018-03-01-hybrid)配置文件。
 
-## <a name="overview-of-2017-03-09-profile"></a>2017-03-09-profile 的概述
+## <a name="overview-of-2018-03-01-hybrid"></a>2018-03-01-混合的概述
 
 | 资源提供程序 | Api-version |
 |------------------------------------------------|------------------------------|
@@ -76,7 +76,7 @@ API 配置文件使用三个命名约定：
 | Resources_Locks | 2016-09-01 |
 | 订阅 | 2016-06-1 |
 
-有关 api 配置文件中提供程序的每种资源类型的更多版本列表，请参阅 [2017-03-09-profile 的详细信息](#details-for-the-2017-03-09-profile)
+有关更多的提供程序 api 配置文件中每种资源类型的版本的列表，请参阅[2018年-03-01-混合的详细信息](#details-for-the-2018-03-01-hybrid)
 
 ## <a name="details-for-the-2018-03-01-hybrid"></a>2018-03-01-hybrid 的详细信息
 
@@ -231,7 +231,7 @@ API 配置文件使用三个命名约定：
 | 存储帐户 | 2016-01-01 |
 | 用途 | 2016-01-01 |
 
-## <a name="details-for-the-2017-03-09-profile"></a>2017-03-09-profile 的详细信息
+## <a name="details-for-the-2018-03-01-hybrid"></a>2018-03-01-hybrid 的详细信息
 
 ### <a name="microsoft-authorization"></a>Microsoft 授权
 

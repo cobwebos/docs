@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/04/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 86e72787347cddd399fbdde4cd943b86ba48375f
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: fb9f022f0af821d81e5b61b99ecb52b7f7151b5f
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697826"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391549"
 ---
 # <a name="update-the-mysql-resource-provider"></a>更新 MySQL 资源提供程序 
 
@@ -40,6 +40,9 @@ ms.locfileid: "43697826"
 
 >[!NOTE]
 >建议从市场管理下载最新的 Windows Server 2016 Core 映像。 如需安装更新，可以将**单个** MSU 包放置在本地依赖项路径中。 如果此位置中有多个 MSU 文件，则脚本将失败。
+
+>[!NOTE]  
+> 
 
 此脚本需要使用的参数正是针对 DeployMySqlProvider.ps1 脚本进行描述的参数。 请同样在此处提供证书。  
 
@@ -92,7 +95,7 @@ $tempDir\UpdateMySQLProvider.ps1 -AzCredential $AdminCreds `
 ### <a name="updatemysqlproviderps1-parameters"></a>UpdateMySQLProvider.ps1 参数 
 可以在命令行中指定这些参数。 如果未指定参数或任何参数验证失败，系统会提示提供所需的参数。 
 
-| 参数名称 | Description | 注释或默认值 | 
+| 参数名称 | 说明 | 注释或默认值 | 
 | --- | --- | --- | 
 | **CloudAdminCredential** | 访问特权终结点时所需的云管理员凭据。 | _必需_ | 
 | **AzCredential** | Azure Stack 服务管理员帐户的凭据。 使用部署 Azure Stack 时所用的相同凭据。 | _必需_ | 

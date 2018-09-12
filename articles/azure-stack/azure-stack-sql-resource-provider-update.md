@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/04/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 017ac3214046b812ce003ab7a190f2f2b3f4f2e2
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 3517114d5bc267aa32cea49161d0d34156a2ed1e
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697935"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44390903"
 ---
 # <a name="update-the-sql-resource-provider"></a>更新 SQL 资源提供程序
 
@@ -49,7 +49,9 @@ ms.locfileid: "43697935"
 
 ### <a name="update-script-powershell-example"></a>更新脚本 PowerShell 示例
 
-可以在权限提升的 PowerShell ISE 中编辑并运行以下脚本。 记住按环境需要更改帐户信息和密码。
+<a name="you-can-edit-and-run-the-following-script-from-an-elevated-powershell-ise"></a>可以在权限提升的 PowerShell ISE 中编辑并运行以下脚本。 
+-  
+- 记住按环境需要更改帐户信息和密码。
 
 > [!NOTE]
 > 此更新过程仅适用于 Azure Stack 集成系统。
@@ -99,7 +101,7 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 
 运行脚本时，可在命令行中指定以下参数。 如果未指定参数或任何参数验证失败，系统会提示提供所需的参数。
 
-| 参数名称 | Description | 注释或默认值 |
+| 参数名称 | 说明 | 注释或默认值 |
 | --- | --- | --- |
 | **CloudAdminCredential** | 访问特权终结点时所需的云管理员凭据。 | _必需_ |
 | **AzCredential** | Azure Stack 服务管理员帐户的凭据。 使用部署 Azure Stack 时所用的相同凭据。 | _必需_ |

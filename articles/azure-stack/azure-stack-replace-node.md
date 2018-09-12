@@ -1,6 +1,6 @@
 ---
-title: 将在集成的 Azure 堆栈的系统上的缩放单元节点 |Microsoft 文档
-description: 了解如何将在集成的 Azure 堆栈的系统上的物理缩放单元节点。
+title: 更换 Azure Stack 集成系统上的缩放单元节点 | Microsoft Docs
+description: 了解如何更换 Azure Stack 集成系统上的物理缩放单元节点。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,61 +12,61 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 09/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: 468af385833395963ef8acad905b99a9b7e6b8fa
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 1b37b150dad4951a4ade81f226b515ce9cae9053
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
-ms.locfileid: "27598767"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377048"
 ---
-# <a name="replace-a-scale-unit-node-on-an-azure-stack-integrated-system"></a>将在集成的 Azure 堆栈的系统上的缩放单元节点
+# <a name="replace-a-scale-unit-node-on-an-azure-stack-integrated-system"></a>更换 Azure Stack 集成系统上的缩放单元节点
 
-*适用范围： Azure 堆栈集成系统*
+*适用于：Azure Stack 集成系统*
 
-本指南介绍了常规进程以替换物理计算机 (也称为*缩放单元节点*) 在 Azure 堆栈上集成系统。 实际的缩放单元节点替换的步骤不同基于原始设备制造商 (OEM) 硬件供应商联系。 请参阅特定于你的系统的详细步骤的供应商的字段可更换部件 (FRU) 文档。
+本文介绍更换 Azure Stack 集成系统上的物理计算机（也称为*缩放单元节点*）的一般过程。 实际的缩放单元节点更换步骤将因原始设备制造商 (OEM) 硬件供应商而异。 有关你系统特有的详细步骤，请参阅供应商的现场可更换部件 (FRU) 文档。
 
-以下流程图显示常规的 FRU 进程，以替换整个缩放单元节点。
+以下流程图显示更换整个缩放单元节点的一般 FRU 过程。
 
-![替换节点过程的流程图](media/azure-stack-replace-node/replacenodeflow.png)
+![更换节点过程的流程图](media/azure-stack-replace-node/replacenodeflow.png)
 
-* 此操作可能不需要基于硬件的物理条件。
+*根据硬件的物理条件，可能不需要此操作。
 
 ## <a name="review-alert-information"></a>查看警报信息
 
-如果缩放单元节点已关闭，你将收到以下严重警报：
+如果缩放单元节点已关闭，你会收到以下严重警报：
 
-- 未连接到网络控制器的节点
-- 无法访问虚拟机放置的节点
-- 缩放单元节点处于脱机状态
+- 节点未连接到网络控制器
+- 无法访问节点以供虚拟机放置
+- 缩放单元节点已脱机
 
-![向下缩放单位的警报的列表](media/azure-stack-replace-node/nodedownalerts.png)
+![缩放单元节点关闭的警报列表](media/azure-stack-replace-node/nodedownalerts.png)
 
-如果你打开**缩放单元节点处于脱机状态**警报，警报描述包含不可访问的缩放单元节点。 硬件生命周期主机正在运行的特定于 OEM 监视解决方案中，你还可能会收到其他警报。
+如果开启“缩放单元节点已脱机”警报，警报说明会包含不可访问的缩放单元节点。 也可能会在硬件生命周期主机上运行的 OEM 特定的监视解决方案中收到其他警报。
 
 ![节点脱机警报的详细信息](media/azure-stack-replace-node/nodeoffline.png)
 
 ## <a name="scale-unit-node-replacement-process"></a>缩放单元节点更换过程
 
-以下步骤提供作为缩放单元节点更换过程的高级概述。 请参阅特定于你的系统的详细步骤的 OEM 硬件供应商的 FRU 文档。 不用按照这些步骤而不会引用您 OEM 提供的文档。
+提供以下步骤作为缩放单元节点更换过程的高级概述。 有关你系统特有的详细步骤，请参阅 OEM 硬件供应商的 FRU 文档。 请勿在未参考 OEM 提供的文档的情况下按照这些步骤操作。
 
-1. 使用[排出](azure-stack-node-actions.md#scale-unit-node-actions)操作将缩放单元节点置于维护模式。 此操作可能不需要基于硬件的物理条件。
+1. 使用[清空](azure-stack-node-actions.md#scale-unit-node-actions)操作使缩放单元节点进入维护模式。 根据硬件的物理条件，可能不需要此操作。
 
    > [!NOTE]
-   > 可以在任何情况下，将断开而且而不会破坏 S2D 关机在同一时间只有一个节点 (Storage Spaces Direct)。
+   > 在任何情况下，只能同时清空一个节点并关机，而不中断 S2D（存储空间直通）。
 
-2. 如果节点仍打开，使用[关闭电源](azure-stack-node-actions.md#scale-unit-node-actions)操作。 此操作可能不需要基于硬件的物理条件。
+2. 如果节点的电源仍然开启，请使用[关闭电源](azure-stack-node-actions.md#scale-unit-node-actions)操作。 根据硬件的物理条件，可能不需要此操作。
  
    > [!NOTE]
-   > 在关闭操作不起作用不大可能情况下，改用基板管理控制器 (BMC) 的 web 界面。
+   > 在关闭电源操作不起作用的罕见情况下，请改用基板管理控制器 (BMC) Web 界面。
 
-1. 将物理计算机。 通常情况下，这是通过 OEM 硬件供应商联系。
-2. 使用[修复](azure-stack-node-actions.md#scale-unit-node-actions)操作将新的物理计算机添加到缩放单位。
-3. 使用到特权的终结点[检查虚拟磁盘修复的状态](azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair)。 与新的数据驱动器，完整存储修复作业可能需要数小时，具体取决于系统负载，且使用空间。
-4. 修复操作已完成后，验证已自动关闭所有活动警报。
+1. 更换物理计算机。 通常，这由 OEM 硬件供应商来完成。
+2. 使用[修复](azure-stack-node-actions.md#scale-unit-node-actions)操作将新的物理计算机添加到缩放单元。
+3. 使用到特权终结点[检查虚拟磁盘修复状态](azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair)。 利用新的数据驱动器，完整的存储修复作业可能需要数小时的时间，具体取决于系统负载和已使用的空间。
+4. 修复操作完成后，验证是否已自动关闭所有活动警报。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关替换的热插拔的物理磁盘的信息，请参阅[替换的磁盘](azure-stack-replace-disk.md)。 
+- 有关更换热插拔物理磁盘的信息，请参阅[更换磁盘](azure-stack-replace-disk.md)。 
 - 有关更换非热插拔的硬件组件的信息，请参阅[更换硬件组件](azure-stack-replace-component.md)。
