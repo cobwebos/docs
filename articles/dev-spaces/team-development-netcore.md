@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
 manager: douge
-ms.openlocfilehash: 818d11e49b0223d42179b4d409f946776dcb73aa
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 602e2a691dfa150c2e8332cb6dca070dbdd57901
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43185710"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162081"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>使用 Azure Dev Spaces 进行团队开发
 
@@ -82,7 +82,7 @@ ms.locfileid: "43185710"
 
 ## <a name="learn-about-team-development"></a>了解团队开发
 
-[!INCLUDE[](includes/team-development-1.md)]
+[!INCLUDE [](includes/team-development-1.md)]
 
 让我们看看该项目的运行情况。 转到 `mywebapi` 的 VS Code 窗口，并对 `string Get(int id)` 方法进行代码编辑，例如：
 
@@ -95,8 +95,8 @@ public string Get(int id)
 ```
 
 
-[!INCLUDE[](includes/team-development-2.md)]
+[!INCLUDE [](includes/team-development-2.md)]
 
-[!INCLUDE[](includes/well-done.md)]
+[!INCLUDE [](includes/well-done.md)]
 
-[!INCLUDE[](includes/clean-up.md)]
+[!INCLUDE [](includes/clean-up.md)]

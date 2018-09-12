@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/13/2018
-ms.openlocfilehash: cfdfa1493857a1731da74c52a616293b482f811a
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 5dc90a1334b525c02be3eae2985900ab07cf2e05
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030686"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696242"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>使用 Visual Studio 工具开发流分析 Edge 作业
 
@@ -101,9 +101,9 @@ FROM EdgeInput
 
 ## <a name="submit-the-job-to-azure"></a>将作业提交到 Azure
 
-1. 在将作业提交到 Azure 之前，必须连接到 Azure 订阅。 打开“服务器资源管理器”，右键单击“Azure”并选择“连接到 Microsoft Azure 订阅”，其后登录到 Azure 订阅。  
+1. 在将作业提交到 Azure 之前，必须连接到 Azure 订阅。 打开 **服务器资源管理器** ，右键单击 **Azure** > **并选择“连接到 Microsoft Azure 订阅** ，其后登录到 Azure 订阅。  
 
-2. 若要将作业提交到 Azure，请导航到查询编辑器并选择“提交到 Azure”。  
+2. 若要将作业提交到 Azure，请导航到查询编辑器并选择 **提交到 Azure**。  
 
 3. 此时会打开一个弹出窗口，可在其中选择更新现有的或创建新的 Edge 作业。 更新现有作业时，会替换所有作业配置，在这种情况下，需要发布新作业。 选择“创建新的 Azure 流分析作业”，为作业输入类似于 **MyASAEdgeJob** 的名称，选择所需的**订阅**、**资源组**和**位置**，然后选择“提交”。
 

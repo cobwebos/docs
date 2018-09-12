@@ -1,6 +1,6 @@
 ---
-title: 什么是 Azure 预留？ | Microsoft Docs
-description: 了解 Azure 预留和定价，以节省虚拟机、SQL 数据库和其他资源成本。
+title: 什么是 Azure 预留项？ | Microsoft Docs
+description: 了解 Azure 预留和定价以节省虚拟机、SQL 数据库和其他资源的成本。
 services: billing
 documentationcenter: ''
 author: yashesvi
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: yashar
-ms.openlocfilehash: 93c11852a11e0bb57a0b92090368298fc14b8c2a
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 82b23f46acc94fefccc871583657200b90a33f05
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626298"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43303556"
 ---
-# <a name="what-are-azure-reservations"></a>什么是 Azure 预留？
+# <a name="what-are-azure-reservations"></a>什么是 Azure 预留项？
 
-Azure 预留通过预付一年或三年的虚拟机或 SQL 数据库计算能力来帮助节省资金。 通过预付，能够以折扣价购买所用资源。 Azure 预留可大幅度减少虚拟机或 SQL 数据库计算成本，最多可以降低 72% 的即用即付价格，但需提前一年或三年预留。 预留提供计费折扣，且不影响虚拟机或 SQL 数据库的运行时状态。
+通过预付一年或三年的虚拟机、SQL 数据库计算容量或其他 Azure 资源的费用，Azure 预订可帮助节省资金。 通过预付，能够以折扣价购买所用资源。 预订可显著将虚拟机、SQL 数据库计算或其他资源的成本减少至即用即付价格的 72%。 预订提供计费折扣，并且不会影响资源的运行时状态。
 
 可在 [Azure 门户](https://aka.ms/reservations)中购买预留。 相关详细信息，请参阅以下主题：
 
@@ -42,14 +42,13 @@ Azure 预留通过预付一年或三年的虚拟机或 SQL 数据库计算能力
 
 ## <a name="whos-eligible-to-purchase-a-reservation"></a>谁有资格购买预留？
 
-使用以下订阅类型的 Azure 客户可购买预留：
+使用以下订阅类型的 Azure 客户可购买预订：
 
 - 企业协议订阅套餐类型 (MS-AZR-0017P)。
-- 
-  [即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)订阅套餐类型 (MS-AZR-003P)。 订阅必须具有“所有者”角色才能购买预留。 若要以企业合约方式购买预留，企业管理员必须在 EA 门户中启用预留购买。 此设置默认已启用。
-- 云解决方案提供商 (CSP) 合作伙伴可使用 Azure 门户或[合作伙伴中心](https://docs.microsoft.com/partner-center/azure-reservations)购买 Azure 预留。 
+- [即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)订阅套餐类型 (MS-AZR-003P)。 订阅必须具有“所有者”角色才能购买预留。
+- 云解决方案提供商 (CSP) 合作伙伴可使用 Azure 门户或[合作伙伴中心](https://docs.microsoft.com/partner-center/azure-reservations)购买 Azure 预订。
 
-Azure 预留折扣仅适用于与企业、即用即付或 CSP 订阅类型关联的虚拟机或 SQL 数据库。
+预订折扣仅适用于与企业、即用即付或 CSP 订阅类型相关联的资源。
 
 ## <a name="how-is-a-reservation-billed"></a>预留如何计费？
 
@@ -57,28 +56,31 @@ Azure 预留折扣仅适用于与企业、即用即付或 CSP 订阅类型关联
 
 ## <a name="how-is-the-reservation-discount-applied"></a>如何应用预留折扣？
 
-预留折扣适用于与购买预留时选择的特性相匹配的资源使用情况。 这些特性包括匹配的 VM、SQL 数据库或其他资源的运行范围。 例如，如果需要“美国西部”区域四个标准 D2 虚拟机的预留折扣，请选择正在运行的 VM 所在的订阅。 如果虚拟机是在注册/帐户的不同订阅中运行，则请选择作为共享的范围。 共享范围允许跨订阅应用预留折扣。 可在购买预留后更改范围。 有关详细信息，请参阅[在 Azure 中管理预留](billing-manage-reserved-vm-instance.md)。
+预留折扣适用于与购买预留时选择的特性相匹配的资源使用情况。 这些特性包括匹配的 VM、SQL 数据库或其他资源的运行范围。 例如，如果需要“美国西部”区域四个标准 D2 虚拟机的预留折扣，请选择正在运行的 VM 所在的订阅。 如果虚拟机是在注册/帐户的不同订阅中运行，则请选择作为共享的范围。 共享范围允许跨订阅应用预留折扣。 可在购买预留后更改范围。 有关详细信息，请参阅[管理 Azure 预订](billing-manage-reserved-vm-instance.md)。
 
-预留折扣仅适用于与企业或即用即付订阅类型关联的虚拟机或 SQL 数据库。 订阅中运行的其他产品/服务类型的虚拟机或 SQL 数据库无法获得预留折扣。 对于企业合约，企业开发/测试订阅没有资格获得预留权益。
+预订折扣仅适用于与企业、即用即付或 CSP 订阅类型相关联的资源。 订阅中运行的其他产品/服务类型的资源无法获得预订折扣。 对于企业合约，企业开发/测试订阅没有资格获得预留权益。
 
-若要更好地了解预留如何影响虚拟机或 SQL 数据库计费，请参阅[了解如何应用预留折扣](billing-understand-vm-reservation-charges.md)。
+若要更好地了解预订如何对计费产生影响，请参阅以下主题：
+
+-  [了解 Azure 虚拟机预订实例折扣](billing-understand-vm-reservation-charges.md)
+- [了解 Azure 预订折扣](billing-understand-vm-reservation-charges.md)
+- 了解 Azure 预订折扣和 SUSE 的使用情况
 
 ## <a name="what-happens-when-the-reservation-term-expires"></a>预留期限过期时，会发生什么情况？
 
-预留期限结束时，计费折扣随即过期，虚拟机、SQL 数据库或其他资源价格按即用即付价格计费。 Azure 预留不会自动续订。 若要继续获得计费折扣，必须为符合预留条件的服务购买新的预留。
+预订期限结束时，计费折扣随即过期，并且虚拟机、SQL 数据库或其他资源将按即用即付的价格计费。 Azure 预订不会自动续订。 若要继续获得计费折扣，必须为符合条件的服务和软件购买新的预订。
 
 ## <a name="next-steps"></a>后续步骤
 
 购买[虚拟机预留实例](../virtual-machines/windows/prepay-reserved-vm-instances.md)或 [SQL 数据库保留容量](../sql-database/sql-database-reserved-capacity.md)，开始节省虚拟机费用。
 
-若要了解有关预留的详细信息，请参阅以下文章：
+若要了解有关 Azure 预订的详细信息，请参阅以下文章：
 
-- [管理 Azure 预留](billing-manage-reserved-vm-instance.md)
-- [了解如何应用预留折扣](billing-understand-vm-reservation-charges.md)
+- [管理 Azure 预留项](billing-manage-reserved-vm-instance.md)
 - [了解即用即付订阅的预留使用情况](billing-understand-reserved-instance-usage.md)
 - [了解企业合约的预留使用情况](billing-understand-reserved-instance-usage-ea.md)
 - [预留未包含的 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)
-- [合作伙伴中心云解决方案提供商 (CSP) 计划中的 Azure 预留](https://docs.microsoft.com/partner-center/azure-reservations)
+- [合作伙伴中心云解决方案提供商 (CSP) 计划中的 Azure 预订](https://docs.microsoft.com/partner-center/azure-reservations)
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 

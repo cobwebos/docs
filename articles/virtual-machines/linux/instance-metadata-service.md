@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 8a7a58581133d98738403bee2e659fae056e1a7f
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: f2b6ba4b7faaeb7092c24d964d32c69946264906
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782475"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023287"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
@@ -299,7 +299,7 @@ subscriptionId | 虚拟机的 Azure 订阅 | 2017-08-01
 标记 | 虚拟机的[标记](../../azure-resource-manager/resource-group-using-tags.md)  | 2017-08-01
 resourceGroupName | 虚拟机的[资源组](../../azure-resource-manager/resource-group-overview.md) | 2017-08-01
 placementGroupId | 虚拟机规模集的[放置组](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
-计划 | [计划] 适用于其中的 VM 的 (https://docs.microsoft.com/en-us/rest/api/compute/virtualmachines/createorupdate#plan)，为 Azure 市场映像，包含名称、产品和发行商 | 2017-04-02
+计划 | [计划] VM 的 (https://docs.microsoft.com/en-us/rest/api/compute/virtualmachines/createorupdate#plan)，Azure 市场映像，包含名称、产品和发行商 | 2017-04-02
 publicKeys | 公钥的集合 [https://docs.microsoft.com/en-us/rest/api/compute/virtualmachines/createorupdate#sshpublickey]，已分配给 VM 和路径 | 2017-04-02
 vmScaleSetName | 虚拟机规模集的 [Virtual Machine ScaleSet Name] (../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
 区域 | 虚拟机的[可用性区域](../../availability-zones/az-overview.md) | 2017-12-01 
@@ -310,7 +310,7 @@ subnet/prefix | 子网前缀，例如 24 | 2017-04-02
 ipv6/ipaddress | VM 的本地 IPv6 地址 | 2017-04-02 
 macAddress | VM mac 地址 | 2017-04-02 
 scheduledevents | 请参阅[计划事件](scheduled-events.md) | 2017-08-01
-identity | （预览版）托管服务标识。 请参阅[获取访问令牌](../../active-directory/managed-service-identity/how-to-use-vm-token.md) | 2018-02-01 
+identity | （预览版）托管服务标识。 请参阅[获取访问令牌](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01 
 
 ## <a name="example-scenarios-for-usage"></a>用法的示例方案  
 
@@ -380,9 +380,9 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 }
 ```
 
-### <a name="getting-azure-environment-where-the-vm-is-running"></a>获取 VM 正在其中运行的 Azure 环境 
+### <a name="getting-azure-environment-where-the-vm-is-running"></a>获取 VM 所在的 Azure 环境 
 
-Azure 具有各种主权云，如 [Azure 政府](https://azure.microsoft.com/overview/clouds/government/)，有时需要 Azure 环境，以进行运行时决策。 下面的示例将演示如何实现此目的
+Azure 具有各种主权云，如 [Azure 政府](https://azure.microsoft.com/overview/clouds/government/)，有时需要 Azure 环境来制定运行时决策。 下面的示例演示如何实现此目的
 
 **请求**
 
@@ -445,10 +445,10 @@ Puppet | https://github.com/keirans/azuremetadata
    * 适用，元数据服务可用于规模集实例。 
 8. 如何获取服务支持？
    * 若要获取该服务的支持，请针对长时间重试后仍无法获取元数据响应的 VM，在 Azure 门户中创建相关支持问题 
-9. 调用服务请求超时？
-   * 必须从分配给 VM 的网卡的主 IP 地址进行元数据调用，此外，在已更改路由的情况下，网卡外必须存在地址为 169.254.0.0/16 的路由。
+9. 调用服务时请求超时？
+   * 必须从分配给 VM 的网卡的主 IP 地址进行元数据调用，此外，在已更改路由的情况下，网卡外必须存在地址 169.254.0.0/16 的路由。
 10. 我更新了虚拟机规模集中的标记，但它们未显示在与 VM 不同的实例中，这是怎么回事？
-   * 目前，对于 ScaleSets 标记，仅向 VM 显示对实例的重启/重置映像/或磁盘更改。 
+   * 目前，对于规模集，仅在重启/重置映像/或对实例的磁盘更改时，向 VM 显示标记。 
 
    ![实例元数据支持](./media/instance-metadata-service/InstanceMetadata-support.png)
     

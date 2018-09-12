@@ -3,17 +3,17 @@ title: 如何使用 Azure Maps Map Control | Microsoft Docs
 description: 了解如何使用 Azure Maps Map Control 客户端 Javascript 库。
 author: dsk-2015
 ms.author: dkshir
-ms.date: 05/07/2018
+ms.date: 09/05/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 619dda44b5ad74ba1dcb62cfb3318687aa6ec4d5
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 5b8703c218790549a0cf5a319345132a0eca66ce
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43340129"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025183"
 ---
 # <a name="how-to-use-the-azure-maps-map-control"></a>如何使用 Azure Maps Map Control
 可通过 Map Control 客户端 Javascript 库呈现地图，并将 Azure Maps 功能嵌入到 Web 或移动应用中。 
@@ -27,8 +27,8 @@ ms.locfileid: "43340129"
 2. 向该文件的 `<head>` 元素添加 Azure Maps 样式表和脚本源引用：
 
     ```html
-    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1.0" type="text/css" />
-    <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1.0"></script>
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1" type="text/css" />
+    <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1"></script>
     ```
     
 3. 若要在浏览器中呈现新地图，请在 `<style>` 元素中添加 #map 引用。

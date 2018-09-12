@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: d64233883d2dd6fb174c55467fcfcd276b452775
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: ccaa6e79d9a24409b8c905561b265c70ea781dc2
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782984"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022569"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
@@ -37,7 +37,7 @@ Azure 的实例元数据服务是一个 REST 终结点，可供通过 [Azure 资
 
 区域                                        | 可用性？                                 | 支持的版本
 -----------------------------------------------|-----------------------------------------------|-----------------
-[全球所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/)     | 正式版   | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02
+[全球所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/)     | 正式版   | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | 正式版 | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
 [Azure 中国：](https://www.azure.cn/)                                                           | 正式版 | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
 [Azure 德国](https://azure.microsoft.com/overview/clouds/germany/)                    | 正式版 | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
@@ -310,7 +310,7 @@ subnet/prefix | 子网前缀，例如 24 | 2017-04-02
 ipv6/ipaddress | VM 的本地 IPv6 地址 | 2017-04-02 
 macAddress | VM mac 地址 | 2017-04-02 
 scheduledevents | 请参阅[计划事件](scheduled-events.md) | 2017-08-01
-identity | （预览版）托管服务标识。 请参阅[获取访问令牌](../../active-directory/managed-service-identity/how-to-use-vm-token.md) | 2018-02-01
+identity | （预览版）托管服务标识。 请参阅[获取访问令牌](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
 
 ## <a name="example-scenarios-for-usage"></a>用法的示例方案  
 
@@ -451,7 +451,7 @@ Puppet | https://github.com/keirans/azuremetadata
    * 若要获取该服务的支持，请针对长时间重试后仍无法获取元数据响应的 VM，在 Azure 门户中创建相关支持问题 
 9. 调用服务时请求超时？
    * 必须从分配给 VM 的网卡的主 IP 地址进行元数据调用，此外，在已更改路由的情况下，网卡外必须存在地址 169.254.0.0/16 的路由。
-10. 我更新了我在虚拟机规模集中的标记，但它们未显示在与 VM 不同的实例中？
+10. 我更新了虚拟机规模集中的标记，但它们未显示在与 VM 不同的实例中，这是怎么回事？
    * 目前，对于规模集，仅在重启/重置映像/或对实例的磁盘更改时，向 VM 显示标记。 
 
    ![实例元数据支持](./media/instance-metadata-service/InstanceMetadata-support.png)

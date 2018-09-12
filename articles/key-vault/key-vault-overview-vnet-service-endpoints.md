@@ -9,13 +9,13 @@ manager: mbaldwin
 ms.date: 08/31/2018
 ms.service: key-vault
 ms.workload: identity
-ms.topic: article
-ms.openlocfilehash: fd3a16841e9d3c9b8bfd9b0f53c42ad1e08b3d80
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.topic: conceptual
+ms.openlocfilehash: c2696d5eb22443b565c48ef4f96d6e4a25827606
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43346411"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44294998"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虚拟网络服务终结点
 
