@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Active Directory 中访问和使用“我的应用”门户时获得帮助 | Microsoft Docs
+title: 在 Azure Active Directory 中访问和使用 MyApps 门户时获得帮助 | Microsoft Docs
 description: 获得有关在访问面板中登录和执行常见任务的帮助。
 services: active-directory
 author: eross-msft
@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: lizross
 ms.reviewer: japere
-ms.openlocfilehash: a6ac780625f6a109797cbdab78dc555e21e18bee
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 5503681b051066f6601be97bda246128763e7bc7
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343604"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306404"
 ---
-# <a name="troubleshoot-issues-with-accessing-and-using-the-my-apps-portal"></a>排查有关访问和使用“我的应用”门户的问题
+# <a name="troubleshoot-issues-with-accessing-and-using-the-myapps-portal"></a>排查有关访问和使用 MyApps 门户的问题
 
-如果在登录或使用“我的应用”门户时遇到问题，请尝试运用本文所述的故障排除提示，然后再向支持人员或管理员求助。
+如果在登录或使用 MyApps 门户时遇到问题，请尝试运用本文所述的故障排除提示，然后再向支持人员或管理员求助。
 
-## <a name="i-am-having-trouble-signing-into-the-my-apps-portal"></a>登录到“我的应用”门户时遇到问题
+## <a name="i-am-having-trouble-signing-into-the-myapps-portal"></a>登录到 MyApps 门户时遇到问题
 
 请尝试运用以下一般提示：
 
@@ -45,7 +45,7 @@ ms.locfileid: "39343604"
 
 ## <a name="i-am-having-trouble-installing-the-my-apps-secure-sign-in-extension"></a>安装“我的应用安全登录扩展”时遇到问题
 
-“我的应用”门户要求浏览器支持 JavaScript 并且已启用 CSS。 如果使用基于密码的单一登录应用，还必须安装随附的扩展。 启动为基于密码的单一登录应用配置的应用程序时，会自动下载此扩展。
+MyApps 门户要求浏览器支持 JavaScript 并且已启用 CSS。 如果使用基于密码的单一登录应用，还必须安装随附的扩展。 启动为基于密码的单一登录应用配置的应用程序时，会自动下载此扩展。
 
 确保符合以下浏览器要求：
 
@@ -63,8 +63,8 @@ ms.locfileid: "39343604"
 如果已安装扩展但仍遇到问题，请尝试以下解决方法：
 
 - 检查浏览器扩展设置，确保已启用扩展。
-- 重启浏览器，并登录到“我的应用”门户。
-- 清除浏览器 Cookie，并登录到“我的应用”门户。
+- 重启浏览器，并登录到 MyApps 门户。
+- 清除浏览器 Cookie，并登录到 MyApps 门户。
 - 若要访问诊断工具并获取有关为 Internet Explorer 配置扩展的分步说明，请参阅[排查 Internet Explorer 的访问面板扩展问题](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-troubleshooting)。
 
 ## <a name="use-the-my-apps-secure-sign-in-extension"></a>使用“我的应用”安全登录扩展
@@ -85,7 +85,7 @@ ms.locfileid: "39343604"
 * 若要从扩展启动应用，请执行以下操作：
    1. 安装该扩展后，通过选择“登录以开始使用”登录到该扩展。
    2. 选择扩展图标打开其菜单。
-   3. 在“我的应用”门户中搜索可用的应用。
+   3. 在 MyApps 门户中搜索可用的应用。
    4. 在搜索结果列表中，选择应用。  
        最近使用的三个应用会显示在“最近使用”快捷方式列表中。
 

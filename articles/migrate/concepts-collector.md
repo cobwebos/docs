@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/25/2018
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: 551276f88f5c27cd860a400a5769c95f4d94cbbb
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 74caf0ab052e1f6558dc20d15d84c01177b3f9cb
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122881"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665574"
 ---
 # <a name="collector-appliance"></a>收集器设备
 
@@ -212,17 +212,27 @@ Azure Migrate 收集器服务应该正在计算机上运行。 此服务在计�
 
 无需再次下载 OVA，即可将收集器升级到最新版本。
 
-1. 下载最新[升级包](https://aka.ms/migrate/col/upgrade_9_13)（版本 1.0.9.13）。
+1. 下载最新[升级包](https://aka.ms/migrate/col/upgrade_9_14)（版本 1.0.9.14）。
 2. 若要确保下载的修补程序安全，请打开管理员命令窗口并运行以下命令生成 ZIP 文件的哈希。 生成的哈希应与针对特定版本提到的哈希匹配：
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
 
-    （用法示例 C:\>CertUtil -HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.7.zip SHA256）
+    （用法示例 C:\>CertUtil -HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.14.zip SHA256）
 3. 将 zip 文件复制到 Azure Migrate 收集器虚拟机（收集器设备）。
 4. 右键单击 zip 文件并选择“全部提取”。
 5. 右键单击 Setup.ps1 并选择“使用 PowerShell 运行”，然后按照屏幕上的说明来安装更新。
 
 ### <a name="list-of-updates"></a>更新列表
+
+#### <a name="upgrade-to-version-10914"></a>升级到版本 1.0.9.14
+
+升级[包 1.0.9.14](https://aka.ms/migrate/col/upgrade_9_14) 的哈希值
+
+**算法** | **哈希值**
+--- | ---
+MD5 | c5bf029e9fac682c6b85078a61c5c79c
+SHA1 | af66656951105e42680dfcc3ec3abd3f4da8fdec
+SHA256 | 58b685b2707f273aa76f2e1d45f97b0543a8c4d017cd27f0bdb220e6984cc90e
 
 #### <a name="upgrade-to-version-10913"></a>升级到版本 1.0.9.13
 

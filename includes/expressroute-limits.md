@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/12/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 6e0d2b881e00acc6b1fccd3196187309fc36cba2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c681e5f68299c03685dd7722f8dc671e49026f78
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38755468"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43303842"
 ---
 #### <a name="expressroute-limits"></a>ExpressRoute 限制
 下列限制适用于每个订阅的 ExpressRoute 资源。
@@ -21,11 +21,9 @@ ms.locfileid: "38755468"
 | 资源 | 默认限制 |
 | --- | --- |
 | 每个订阅的 ExpressRoute 线路数 |10 |
-| ARM 的每个订阅每个区域的 ExpressRoute 线路数 |10 |
+| 每个订阅每个区域的 ExpressRoute 线路数（Azure 资源管理器） |10 |
 | 具有 ExpressRoute Standard 的 Azure 私用对等互连的最大路由数 |4,000 |
 | 具有 ExpressRoute Premium 附加设备的 Azure 私用对等互连的最大路由数 |10,000 |
-| 具有 ExpressRoute Standard 的 Azure 公共对等互连的最大路由数 |200 |
-| 具有 ExpressRoute Premium 附加设备的 Azure 公共对等互连的最大路由数 |200 |
 | 具有 ExpressRoute Standard 的 Azure Microsoft 对等互连的最大路由数 |200 |
 | 具有 ExpressRoute Premium 附加设备的 Azure Microsoft 对等互连的最大路由数 |200 |
 | 链接到不同对等互连位置中相同虚拟网络的最大 ExpressRoute 线路数 |4 |

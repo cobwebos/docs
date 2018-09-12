@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 08/08/2018
+ms.date: 08/31/2018
 ms.author: marsma
-ms.openlocfilehash: 051402a319e1dc26145b5a1602a4caeffa7fba19
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: e78be76d68cf75cf9d59f5b5dff86c65524275a9
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42445501"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697225"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的网络配置
 
@@ -47,30 +47,28 @@ ms.locfileid: "42445501"
 
 ## <a name="advanced-networking-prerequisites"></a>高级网络先决条件
 
-* AKS 群集的 VNet 必须允许出站 Internet 连接。
+* AKS 群集的虚拟网络必须允许出站 Internet 连接。
 * 不要在同一子网中创建多个 AKS 群集。
 * AKS 群集可能不会使用 Kubernetes 服务地址范围的 `169.254.0.0/16`、`172.30.0.0/16` 或 `172.31.0.0/16`。
-* AKS 群集使用的服务主体在 VNet 中的子网上必须至少具有[网络参与者](../role-based-access-control/built-in-roles.md#network-contributor)权限。 如果希望定义[自定义角色](../role-based-access-control/custom-roles.md)而不是使用内置的网络参与者角色，则需要以下权限：
+* AKS 群集使用的服务主体在虚拟网络中的子网上必须至少具有[网络参与者](../role-based-access-control/built-in-roles.md#network-contributor)权限。 如果希望定义[自定义角色](../role-based-access-control/custom-roles.md)而不是使用内置的网络参与者角色，则需要以下权限：
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
 ## <a name="plan-ip-addressing-for-your-cluster"></a>规划群集的 IP 地址
 
-使用高级网络配置的群集需要额外的规划。 VNet 及其子网的大小必须适应你计划运行的 Pod 数以及群集的节点数。
+使用高级网络配置的群集需要额外的规划。 虚拟网络及其子网的大小必须适应计划运行的 Pod 数以及群集的节点数。
 
-Pod 和群集节点的 IP 地址是从 VNet 中指定的子网分配的。 为每个节点配置一个主要 IP（即节点的 IP），以及 Azure CNI 预配置的 30 个附加 IP 地址，这些附加 IP 地址将分配给节点上安排的 Pod。 横向扩展群集时，将使用子网中的 IP 地址以类似方式配置每个节点。
+Pod 和群集节点的 IP 地址是从虚拟网络中指定的子网分配的。 为每个节点配置一个主要 IP（即节点的 IP），以及 Azure CNI 预配置的 30 个附加 IP 地址，这些附加 IP 地址将分配给节点上安排的 Pod。 横向扩展群集时，将使用子网中的 IP 地址以类似方式配置每个节点。
 
-AKS 群集 IP 地址计划包括 VNet、至少一个节点和 Pod 子网以及 Kubernetes 服务地址范围。
+AKS 群集 IP 地址计划包括虚拟网络、至少一个节点和 Pod 子网以及 Kubernetes 服务地址范围。
 
 | 地址范围 / Azure 资源 | 限制和调整大小 |
 | --------- | ------------- |
-| 虚拟网络 | Azure VNet 最大可以为 /8，但可能只有 16,000 个配置的 IP 地址。 |
+| 虚拟网络 | Azure 虚拟网络的大小可以为 /8，但仅限于 65,536 个已配置的 IP 地址。 |
 | 子网 | 大小必须足以容纳群集中可能预配的节点、Pod 以及所有 Kubernetes 和 Azure 资源。 例如，如果部署内部 Azure 负载均衡器，其前端 IP 分配自群集子网（而不是公共 IP）。 <p/>计算最小子网大小：`(number of nodes) + (number of nodes * pods per node)` <p/>50 个节点群集的示例：`(50) + (50 * 30) = 1,550`（/21 或更大） |
-| Kubernetes 服务地址范围 | 此范围不应由此 VNet 上或连接到此 VNet 的任何网络元素使用。 服务地址 CIDR 必须小于 /12。 |
+| Kubernetes 服务地址范围 | 此范围不应由此虚拟网络上或连接到此虚拟网络的任何网络元素使用。 服务地址 CIDR 必须小于 /12。 |
 | Kubernetes DNS 服务 IP 地址 | Kubernetes 服务地址范围内的 IP 地址将由群集服务发现 (kube-dns) 使用。 |
 | Docker 桥地址 | IP 地址（采用 CIDR 表示法）用作节点上的 Docker 桥 IP 地址。 默认地址为 172.17.0.1/16。 |
-
-预配用于 Azure CNI 插件的每个 VNet 限制为 16,000 个配置的 IP 地址。
 
 ## <a name="maximum-pods-per-node"></a>每个节点的最大 Pod 数
 
@@ -78,37 +76,46 @@ AKS 群集中每个节点的默认最大 Pod 数因基础网络和高级网络�
 
 ### <a name="default-maximum"></a>默认最大值
 
-* 基础网络：每个节点 110 个 Pod
-* 高级网络：每个节点 30 个 Pod
+部署 AKS 群集而无需在部署时间指定最大 Pod 数时，这些是默认最大值：
 
-### <a name="configure-maximum"></a>配置最大值
+| 部署方法 | 基本 | 高级 | 可在部署时配置 |
+| -- | :--: | :--: | -- |
+| Azure CLI | 110 | 30 | 是 |
+| 资源管理器模板 | 110 | 30 | 是 |
+| 门户 | 110 | 30 | 否 |
 
-根据部署方法，可能能够修改 AKS 群集中每个节点的最大 Pod 数。
+### <a name="configure-maximum---new-clusters"></a>配置最大值 - 新群集
+
+要在部署 AKS 群集时指定每个节点的不同最大 Pod 数，请执行以下操作：
 
 * **Azure CLI**：使用 [az aks create][az-aks-create] 命令部署群集时，指定 `--max-pods` 参数。
 * **资源管理器模板**：使用资源管理器模板部署群集时，在 [ManagedClusterAgentPoolProfile] 对象中指定 `maxPods` 属性。
 * **Azure 门户**：使用 Azure 门户部署群集时，不能修改每个节点的最大 Pod 数。 在 Azure 门户中部署高级网络群集时，每个节点的 Pod 数限制为 30 个。
 
+### <a name="configure-maximum---existing-clusters"></a>配置最大值 - 现有群集
+
+无法在现有 AKS 群集上更改每个节点的最大 Pod 数。 只能在最初部署群集时调整数量。
+
 ## <a name="deployment-parameters"></a>部署参数
 
 创建 AKS 群集时，可为高级网络配置以下参数：
 
-**虚拟网络**：要将 Kubernetes 群集部署到的 VNet。 若要为群集创建新的 VNet，请选择“新建”，并遵循“创建虚拟网络”部分中的步骤。 VNet 限制为 16,000 个配置的 IP 地址。
+**虚拟网络**：要将 Kubernetes 群集部署到的虚拟网络。 要为群集创建新的虚拟网络，请选择“新建”，并按照“创建虚拟网络”部分中的步骤操作。 有关 Azure 虚拟网络的限制和配额的信息，请参阅 [Azure 订阅和服务限制、配额和约束](../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits)。
 
-**子网**：要将群集部署到的 VNet 中的子网。 若要在 VNet 中为群集创建新的子网，请选择“新建”，并遵循“创建子网”部分中的步骤。
+**子网**：要将群集部署到的虚拟网络中的子网。 若要在虚拟网络中为群集创建新的子网，请选择“新建”，并按照“创建子网”部分中的步骤操作。
 
 **Kubernetes 服务地址范围**：这是一组虚拟 IP，是 Kubernetes 分配给群集中的[服务][services]的。 可以使用任何专用地址范围，只要其符合以下要求即可：
 
-* 不得在群集的 VNet IP 地址范围内
-* 不得与群集 VNet 对等的任何其他 VNet 重叠
+* 不得在群集的虚拟网络 IP 地址范围内
+* 不得与群集虚拟网络对等互连的任何其他虚拟网络重叠
 * 不得与任何本地 IP 重叠
 * 不得在范围 `169.254.0.0/16`、`172.30.0.0/16` 或 `172.31.0.0/16` 中
 
-虽然从技术上来说可以在群集所在的 VNet 中指定一个服务地址范围，但建议不要这样做。 如果使用重叠的 IP 范围，则可能导致不可预测的行为。 有关详细信息，请参阅本文中的[常见问题解答](#frequently-asked-questions)部分。 有关 Kubernetes 服务的详细信息，请参阅 Kubernetes 文档中的[服务][services]。
+虽然从技术上来说可以在群集所在的虚拟网络中指定一个服务地址范围，但建议不要这样做。 如果使用重叠的 IP 范围，则可能导致不可预测的行为。 有关详细信息，请参阅本文中的[常见问题解答](#frequently-asked-questions)部分。 有关 Kubernetes 服务的详细信息，请参阅 Kubernetes 文档中的[服务][services]。
 
 **Kubernetes DNS 服务 IP 地址**：群集 DNS 服务的 IP 地址。 此地址必须在 Kubernetes 服务地址范围内。
 
-**Docker 网桥地址**：分配给 Docker 网桥的 IP 地址和子网掩码。 此 IP 地址不得在群集的 VNet IP 地址范围内。
+**Docker 网桥地址**：分配给 Docker 网桥的 IP 地址和子网掩码。 此 IP 地址不得在群集的虚拟网络 IP 地址范围内。
 
 ## <a name="configure-networking---cli"></a>配置网络 - CLI
 
@@ -140,7 +147,7 @@ az aks create --resource-group myAKSCluster --name myAKSCluster --network-plugin
 
 * 是否可以在群集子网中部署 VM？
 
-  不是。 不支持在 Kubernetes 群集使用的子网中部署 VM。 可将 VM 部署在同一 VNet 中，但必须部署在不同的子网中。
+  不是。 不支持在 Kubernetes 群集使用的子网中部署 VM。 可将 VM 部署在同一虚拟网络中，但必须部署在不同的子网中。
 
 * *是否可以配置基于 Pod 的网络策略？*
 
@@ -150,13 +157,15 @@ az aks create --resource-group myAKSCluster --name myAKSCluster --network-plugin
 
   是的，使用 Azure CLI 或资源管理器模板部署群集时可配置。 请参阅[每个节点的最大 Pod 数](#maximum-pods-per-node)。
 
+  无法在现有群集上更改每个节点的最大 Pod 数。
+
 * 如何配置创建 AKS 群集期间创建的子网的其他属性？例如服务终结点。
 
-  可以在 Azure 门户的标准 VNet 配置页中，配置创建 AKS 群集期间创建的 VNet 和子网的完整属性列表。
+  可以在 Azure 门户的标准虚拟网络配置页中，配置创建 AKS 群集期间创建的虚拟网络和子网的完整属性列表。
 
-* 是否可以在我的群集 VNet 中将另一子网用于 **Kubernetes 服务地址范围**？
+* 是否可以在我的群集虚拟网络中将另一子网用于 Kubernetes 服务地址范围？
 
-  此配置是可以的，但建议不要这样做。 服务地址范围是一组虚拟 IP (VIP)，是 Kubernetes 分配给群集中的服务的。 Azure 网络无法查看 Kubernetes 群集的服务 IP 范围。 由于无法查看群集的服务地址范围，因此有可能以后会在群集 VNet 中创建新的子网，该子网与服务地址范围重叠。 如果出现这种形式的重叠，则 Kubernetes 为服务分配的 IP 可能是子网中另一资源正在使用的，导致不可预测的行为或故障。 如果能够确保所用地址范围不在群集的 VNet 中，则可避免这种重叠风险。
+  此配置是可以的，但建议不要这样做。 服务地址范围是一组虚拟 IP (VIP)，是 Kubernetes 分配给群集中的服务的。 Azure 网络无法查看 Kubernetes 群集的服务 IP 范围。 由于无法查看群集的服务地址范围，因此有可能以后会在群集虚拟网络中创建新的子网，该子网与服务地址范围重叠。 如果出现这种形式的重叠，则 Kubernetes 为服务分配的 IP 可能是子网中另一资源正在使用的，导致不可预测的行为或故障。 如果能够确保所用地址范围不在群集的虚拟网络中，则可避免这种重叠风险。
 
 ## <a name="next-steps"></a>后续步骤
 

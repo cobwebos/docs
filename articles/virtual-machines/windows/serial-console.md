@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: ddd30729aa2bcb616efab814dc4046d2817c64fa
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 4e93e455e309771ed3e33382ee49cdc144036fb1
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128671"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782407"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>虚拟机串行控制台（预览版） 
 
 
-使用 Azure 上的虚拟机串行控制台可以访问适用于 Linux 和 Windows 虚拟机的基于文本的控制台。 此控制台与虚拟机的 COM1 串行端口建立串行连接，可用于访问虚拟机，且不与虚拟机的网络/操作系统状态相关。 目前，只能通过 Azure 门户访问虚拟机的串行控制台，并且只允许对虚拟机拥有 VM 参与者或更高访问权限的用户执行此操作。 
+使用 Azure 上的虚拟机串行控制台可以访问适用于Windows 虚拟机的基于文本的控制台。 此控制台与虚拟机的 COM1 串行端口建立串行连接，可用于访问独立于虚拟机的网络或操作系统状态的虚拟机。 目前，只能通过 Azure 门户访问虚拟机的串行控制台，并且只允许对虚拟机拥有 VM 参与者或更高访问权限的用户执行此操作。 
 
 有关适用于 Linux VM 的串行控制台文档，请[单击此处](../linux/serial-console.md)。
 
@@ -39,14 +39,14 @@ ms.locfileid: "43128671"
 * 虚拟机上必须已启用[启动诊断](boot-diagnostics.md) 
 
     ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
-    
+
 * 使用串行控制台的帐户必须对 VM 和[启动诊断](boot-diagnostics.md)存储帐户拥有[参与者角色](../../role-based-access-control/built-in-roles.md)。 
 * 你要针对其访问串行控制台的虚拟机必须也具有基于密码的帐户。 可以使用 VM 访问扩展的[重置密码](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)功能创建一个 - 请参阅下面的屏幕截图。
 
     ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-reset-password.png)
 
 ## <a name="get-started-with-serial-console"></a>开始使用串行控制台
-只能通过 [Azure 门户](https://portal.azure.com)访问虚拟机的串行控制台。 下面是通过门户访问虚拟机串行控制台的步骤 
+只能通过 [Azure 门户](https://portal.azure.com)访问虚拟机的串行控制台。 下面是通过门户访问虚拟机串行控制台的步骤。
 
   1. 打开 Azure 门户
   2. 在左侧菜单中选择虚拟机。
@@ -55,8 +55,8 @@ ms.locfileid: "43128671"
 
 ![](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect.gif)
 
-## <a name="configure-serial-console-for-windows"></a>配置适用于 Windows 的串行控制台 
-Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控制台](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC)。 SAC 在服务器版本的 Windows 上受支持，但在客户端版本（例如 Windows 10、Windows 8 或 Windows 7）上不可用。 若要为使用 Feb2018 或更低版本的映像创建的 Windows 虚拟机启用串行控制台，请执行以下步骤： 
+## <a name="enable-serial-console-in-custom-or-older-images"></a>在自定义或更低版本的映像中启用串行控制台
+Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控制台](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC)。 SAC 在服务器版本的 Windows 上受支持，但在客户端版本（例如 Windows 10、Windows 8 或 Windows 7）上不可用。 若要为 2018 年 2 月之前创建的 Windows 虚拟机启用串行控制台，请执行以下步骤： 
 
 1. 通过远程桌面连接到 Windows 虚拟机
 2. 从管理命令提示符运行以下命令 
@@ -73,13 +73,13 @@ Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控
 * `bcdedit /store <mountedvolume>\boot\bcd /ems {default} on`
 * `bcdedit /store <mountedvolume>\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 
-### <a name="how-do-i-know-if-sac-is-enabled-or-not"></a>如何知道是否已启用 SAC 
+### <a name="how-do-i-know-if-sac-is-enabled"></a>如何知道是否已启用 SAC？
 
-如果未启用 [SAC] (https://technet.microsoft.com/library/cc787940(v=ws.10).aspx)，串行控制台将不会显示 SAC 提示符。 在某些情况下它可能会显示 VM 运行状况信息，或者会为空。  
+如果未启用 [SAC] (https://technet.microsoft.com/library/cc787940(v=ws.10).aspx)，串行控制台将不会显示 SAC 提示符。 在某些情况下，将显示 VM 运行状况信息，在其他情况下，它将为空白。  
 
-### <a name="enabling-boot-menu-to-show-in-the-serial-console"></a>让启动菜单显示在串行控制台中 
+## <a name="enable-the-windows-boot-menu-in-serial-console"></a>在串行控制台中启用 Windows 启动菜单 
 
-如果需要让 Windows 启动加载程序提示符显示在串行控制台中，可以将以下附加选项添加到 Windows 启动加载程序。
+如果需要让 Windows 启动加载程序提示显示在串行控制台中，可以将以下附加选项添加到启动配置数据中。 请参阅 [bcdedit](https://docs.microsoft.com/windows-hardware/drivers/devtest/bcdedit--set)，了解更多详细信息
 
 1. 通过远程桌面连接到 Windows 虚拟机
 2. 从管理命令提示符运行以下命令 
@@ -88,8 +88,14 @@ Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控
 * `bcdedit /set {bootmgr} bootems yes`
 3. 重新启动系统以启用启动菜单
 
-> [!NOTE] 
-> 就目前而言，对功能键的支持未启用，如果需要高级启动选项，请使用 use bcdedit /set {current} onetimeadvancedoptions on，有关详细信息，请参阅 [bcdedit](https://docs.microsoft.com/windows-hardware/drivers/devtest/bcdedit--set)
+## <a name="use-serial-console-for-nmi-calls-in-windows-vms"></a>在 Windows VM 中使用串行控制台进行 NMI 调用
+不可屏蔽的中断 (NMI) 旨在创建虚拟机上的软件不会忽略的信号。 过去，NMI 用来监视要求实现特定响应时间的系统上的硬件问题。  现在，程序员和系统管理员通常使用 NMI 作为用来对挂起的系统进行调试或故障排除的机制。
+
+可以使用下面显示的命令栏上的键盘图标通过串行控制台向 Azure 虚拟机发送 NMI。 传送 NMI 后，虚拟机配置将控制系统的响应方式。 可以将 Windows 配置为在收到 NMI 时崩溃并创建内存转储。
+
+![](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-nmi.png) <br>
+
+有关配置 Windows 在收到 NMI 时创建故障转储的信息，请参阅：[如何在基于 Windows 上的系统上使用 NMI 生成完整的故障转储文件或内核故障转储文件](https://support.microsoft.com/en-us/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file)
 
 ## <a name="disable-serial-console"></a>禁用串行控制台
 默认情况下，所有订阅为所有 VM 启用了串行控制台访问。 可以在订阅级别或 VM 级别禁用串行控制台。
@@ -149,15 +155,23 @@ Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控
 >[!CAUTION] 
 这意味着，断开连接的用户并未注销！ 断开连接后强制注销（通过 SIGHUP 或类似机制）的功能目前仍在规划中。 对于 Windows，SAC 中会启用自动超时；但对于 Linux，可以配置终端超时设置。 
 
-## <a name="using-serial-console-for-nmi-calls-in-windows-vms"></a>在 Windows VM 中使用串行控制台进行 NMI 调用
-不可屏蔽的中断 (NMI) 设计用来创建虚拟机上的软件不会忽略的信号。 过去，NMI 用来监视要求实现特定响应时间的系统上的硬件问题。  现在，程序员和系统管理员通常使用 NMI 作为用来对挂起的系统进行调试或故障排除的机制。
+## <a name="common-scenarios-for-accessing-serial-console"></a>访问串行控制台的常见场景 
+场景          | 串行控制台中的操作                
+:------------------|:-----------------------------------------
+错误的防火墙规则 | 访问串行控制台，并修复 Windows 防火墙规则。 
+文件系统损坏/检查 | 访问串行控制台并恢复文件系统。 
+RDP 配置问题 | 访问串行控制台并更改设置。 若要开始，请转到 [RDP 文档](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access)。
+网络锁定系统| 通过门户访问串行控制台以管理系统。 [串行控制台 CMD 和 PowerShell 文档](./serial-console-cmd-ps-commands.md)中列出了一些网络命令。 
+与引导加载程序交互 | 通过串行控制台访问 BCD。 若要开始，请转到[让启动菜单显示在串行控制台中](#enabling-boot-menu-to-show-in-the-serial-console)。 
 
-可以使用下面显示的命令栏上的键盘图标通过串行控制台向 Azure 虚拟机发送 NMI。 在 NMI 送达后，虚拟机配置将控制系统如何响应。 可以将 Windows 配置为在收到 NMI 时崩溃并创建内存转储。
+## <a name="accessibility"></a>可访问性
+可访问性是 Azure 串行控制台的重点。 为此，我们已确保向视觉和听觉障碍者，以及可能无法使用鼠标的人群提供串行控制台。
 
-![](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-nmi.png) <br>
+### <a name="keyboard-navigation"></a>键盘导航
+使用键盘上的 `tab` 键在 Aure 门户中的串行控制台界面上导航。 将在屏幕上突出显示你的位置。 若要使焦点离开串行控制台边栏选项卡，请在键盘上按 `Ctrl + F6`。
 
-有关配置 Windows 在收到 NMI 时创建故障转储的信息，请参阅：[如何在基于 Windows 上的系统上使用 NMI 生成完整的故障转储文件或内核故障转储文件](https://support.microsoft.com/en-us/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file)
-
+### <a name="use-serial-console-with-a-screen-reader"></a>结合使用串行控制台与屏幕阅读器
+串行控制台附带内置屏幕阅读器支持。 在打开屏幕阅读器时导航将允许屏幕阅读器大声读出当前所选按钮的替换文字。
 
 ## <a name="errors"></a>Errors
 大多数错误都是暂时性的，重试连接即可解决。 下表显示了错误和缓解措施的列表

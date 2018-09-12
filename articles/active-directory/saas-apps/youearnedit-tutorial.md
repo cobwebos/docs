@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: jeedes
-ms.openlocfilehash: f860036f1a69b2d1ab6ac8de763a49380f8fe4bf
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 3a394c13092547991bf7f8ae98e5c69e92077701
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42140819"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344778"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-youearnedit"></a>教程：Azure Active Directory 与 YouEarnedIt 集成
 
@@ -139,7 +139,7 @@ ms.locfileid: "42140819"
 
     ![YouEarnedIt 配置](./media/youearnedit-tutorial/tutorial_youearnedit_configure.png) 
 
-7. 若要在 **YouEarnedIt** 端配置单一登录，需要将下载的**证书(Base64)** 和 **SAML 单一登录服务 URL** 发送给分配给你的 YouEarnedIt 客户成功经理。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+7. 若要在 YouEarnedIt 端配置单一登录，需要将下载的证书(Base64) 和 SAML 单一登录服务 URL 发送给分配给你的 YouEarnedIt 客户成功经理。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 

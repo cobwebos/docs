@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/22/2017
 ms.author: mikeray
-ms.openlocfilehash: 11aecd9b2bc1bc1521a0e27fc3cd06fe7426a26d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: b4641c847db817df905f056847a26d003ac25fd1
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307980"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43381789"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>配置一个或多个 Always On 可用性组侦听器 - Resource Manager
 本主题说明如何：
@@ -42,6 +42,8 @@ ms.locfileid: "38307980"
 
 ## <a name="configure-the-windows-firewall"></a>配置 Windows 防火墙
 配置 Windows 防火墙以允许 SQL Server 访问。 防火墙规则允许通过 TCP 连接到 SQL Server 实例和侦听器探测程序使用的端口。 有关详细的说明，请参阅[为数据库引擎访问配置 Windows 防火墙](http://msdn.microsoft.com/library/ms175043.aspx#Anchor_1)。 为 SQL Server 端口和探测端口创建入站规则。
+
+如果要限制 Azure 网络安全组的访问，请务必允许规则包含后端 SQL Server VM IP 地址、AG 侦听器的负载均衡器浮动 IP 地址以及群集核心 IP 地址（如果适用）。
 
 ## <a name="example-script-create-an-internal-load-balancer-with-powershell"></a>示例脚本：使用 PowerShell 创建内部负载均衡器
 > [!NOTE]
@@ -195,6 +197,7 @@ SQLCMD 连接会自动连接到托管主副本的 SQL Server 实例。
 
 * 使用内部负载均衡器只能从同一个虚拟网络中访问侦听器。
 
+* 如果要限制 Azure 网络安全组的访问，请务必允许规则包含后端 SQL Server VM IP 地址、AG 侦听器的负载均衡器浮动 IP 地址以及群集核心 IP 地址（如果适用）。
 
 ## <a name="for-more-information"></a>更多信息
 有关详细信息，请参阅[在 Azure VM 中手动配置 Always On 可用性组](virtual-machines-windows-portal-sql-availability-group-tutorial.md)。

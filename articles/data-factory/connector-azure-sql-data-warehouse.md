@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 3c447a37b1dfbdac2c6e2a4eaa61d0e0e08a2176
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: ef1bd613943543f78d358064f4abefc6fa31b63e
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442233"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842329"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure SQL 数据仓库或从 Azure SQL 数据仓库复制数据 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -163,9 +163,9 @@ Azure SQL 数据仓库链接服务支持以下属性：
 
 1. 在 Azure AD 中创建组。 使工厂 MSI 成为该组的成员。
 
-    a. 从 Azure 门户中找到数据工厂服务标识。 转到数据工厂的“属性”。 复制服务标识 ID。
+    1. 从 Azure 门户中找到数据工厂服务标识。 转到数据工厂的“属性”。 复制服务标识 ID。
 
-    b. 安装 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) 模块。 使用 `Connect-AzureAD` 命令登录。 运行以下命令，创建组并将数据工厂 MSI 添加为组成员。
+    1. 安装 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) 模块。 使用 `Connect-AzureAD` 命令登录。 运行以下命令，创建组并将数据工厂 MSI 添加为组成员。
     ```powershell
     $Group = New-AzureADGroup -DisplayName "<your group name>" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory service identity ID>"
@@ -400,14 +400,15 @@ SQL 数据仓库 PolyBase 直接支持 Azure Blob 和 Azure Data Lake Store。 �
 
 如果不满足要求，Azure 数据工厂会检查设置，并自动回退到 BULKINSERT 机制以进行数据移动。
 
-1. **源链接服务**类型是具有帐户密钥身份验证的 Azure Blob 存储 (**AzureBLobStorage**/**AzureStorage**)，或具有服务主体身份验证的 Azure Data Lake Storage Gen1 (**AzureDataLakeStore**)。
-1. **输入数据集**类型为 **AzureBlob** 或 **AzureDataLakeStoreFile**。 `type` 属性下的格式类型为 **OrcFormat**、**ParquetFormat** 或 **TextFormat**，其配置如下：
+1. 源链接服务类型是具有帐户密钥身份验证的 Azure Blob 存储 (AzureBLobStorage/AzureStorage)，或具有服务主体身份验证的 Azure Data Lake Storage Gen1 (AzureDataLakeStore)。
+2. **输入数据集**类型为 **AzureBlob** 或 **AzureDataLakeStoreFile**。 `type` 属性下的格式类型为 **OrcFormat**、**ParquetFormat** 或 **TextFormat**，其配置如下：
 
-   1. `rowDelimiter` 必须是 **\n**。
-   1. `nullValue` 设置为**空字符串**（""）或保留为默认值，`treatEmptyAsNull` 未设置为 false。
-   1. `encodingName` 设置为 **utf-8**（默认值）。
-   1. `escapeChar`、`quoteChar` 和 `skipLineCount` 未指定。 PolyBase 支持跳过可以在 ADF 中配置为 `firstRowAsHeader` 的标头行。
-   1. `compression` 可为**无压缩**、**GZip** 或 **Deflate**。
+   1. `fileName` 不包含通配符筛选器。
+   2. `rowDelimiter` 必须是 **\n**。
+   3. `nullValue` 设置为**空字符串**（""）或保留为默认值，`treatEmptyAsNull` 未设置为 false。
+   4. `encodingName` 设置为 **utf-8**（默认值）。
+   5. `escapeChar`、`quoteChar` 和 `skipLineCount` 未指定。 PolyBase 支持跳过可以在 ADF 中配置为 `firstRowAsHeader` 的标头行。
+   6. `compression` 可为**无压缩**、**GZip** 或 **Deflate**。
 
     ```json
     "typeProperties": {

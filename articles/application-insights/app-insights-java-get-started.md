@@ -10,21 +10,22 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: a1212befd1cc6aaf74bc596459aa5be1ef689813
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 89f486a00f80ba4b9f4c9f38a0637e88e5bf1ad6
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43703329"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web 项目中的 Application Insights 入门
 
 
 [Application Insights](https://azure.microsoft.com/services/application-insights/) 是为 Web 开发人员提供的可扩展分析服务，可帮助你了解实时应用程序的性能和使用情况。 使用它可以[检测和诊断性能问题与异常](app-insights-detect-triage-diagnose.md)，以及[编写代码][api]来跟踪用户对应用执行的操作。
 
-![示例数据](./media/app-insights-java-get-started/5-results.png)
+![概述示例数据的屏幕截图](./media/app-insights-java-get-started/overview-graphs.png)
 
 Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 
@@ -34,6 +35,8 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 * [Microsoft Azure](https://azure.microsoft.com/) 订阅。
 
 *如果有活动的 Web 应用，可以遵循替代过程[在运行时将 SDK 添加到 Web 服务器](app-insights-java-live.md)。这种替代方法可以避免重新生成代码，但没有任何选项可以编写代码来跟踪用户活动。*
+
+如果你更喜欢 Spring 框架，请尝试[配置 Spring Boot 初始值设定程序以使用 Application Insights 指南](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)
 
 ## <a name="1-get-an-application-insights-instrumentation-key"></a>1.获取 Application Insights 检测密钥
 1. 登录到 [Microsoft Azure 门户](https://portal.azure.com)。
@@ -219,7 +222,9 @@ package devCamp.WebApp.configurations;
     }
 ```
 
-[!NOTE] 如果使用的是 Spring Boot 1.3.8 或更旧版本，请将 FilterRegistrationBean 替换为下面的行
+> [!NOTE]
+> 如果使用的是 Spring Boot 1.3.8 或更旧版本，请将 FilterRegistrationBean 替换为下面的行
+
 ```Java
     import org.springframework.boot.context.embedded.FilterRegistrationBean;
 ```

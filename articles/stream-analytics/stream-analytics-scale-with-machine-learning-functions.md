@@ -9,18 +9,18 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 015312ab95d6dd5615a5f5bc62d270d46b795ffa
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 115273086eeb88064c4b179f67d2d400d9f84692
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30909269"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696092"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>使用 Azure 机器学习函数缩放流分析作业
 设置流分析作业，并通过它运行某些示例数据，这通常很直接了当。 但当我们需要运行数据量更大的相同作业时，该怎么办？ 需要了解如何配置流分析作业，以便可以缩放它。 本文档关注使用机器学习函数缩放流分析作业的特殊方面。 有关在一般情况下如何缩放流分析作业的信息，请参阅文章[缩放作业](stream-analytics-scale-jobs.md)。
 
 ## <a name="what-is-an-azure-machine-learning-function-in-stream-analytics"></a>流分析中的 Azure 机器学习函数是什么？
-流分析中的机器学习函数可像流分析查询语言中的常规函数调用那样使用。 但是在后台，函数调数用实际上是 Azure 机器学习 Web 服务请求数。 机器学习 Web 服务支持在相同的 Web 服务 API 调用中“批处理”多个行（这称为“微批处理”），从而提高整体吞吐量。 请参阅以下文章，了解详细信息：[流分析中的 Azure 机器学习函数](https://blogs.technet.microsoft.com/machinelearning/2015/12/10/azure-ml-now-available-as-a-function-in-azure-stream-analytics/)和 [Azure 机器学习 Web 服务](../machine-learning/studio/consume-web-services.md)。
+流分析中的机器学习函数可像流分析查询语言中的常规函数调用那样使用。 但是在后台，函数调数用实际上是 Azure 机器学习 Web 服务请求数。 机器学习 Web 服务支持在相同的 Web 服务 API 调用中“批处理”多个行（这称为“微批处理”），从而提高整体吞吐量。 有关更多信息，请参阅[流分析中的 Azure 机器学习函数](https://blogs.technet.microsoft.com/machinelearning/2015/12/10/azure-ml-now-available-as-a-function-in-azure-stream-analytics/)和 [Azure 机器学习 Web 服务](../machine-learning/studio/consume-web-services.md)。
 
 ## <a name="configure-a-stream-analytics-job-with-machine-learning-functions"></a>使用机器学习函数配置流分析作业
 在配置流分析作业的机器学习函数时，需要考虑两个参数：机器学习函数调用数的批大小和为流分析作业预配的流式处理单位 (SU)。 若要确定这些参数的相应值，请首先确定延迟和吞吐量，即流分析作业延迟和每个 SU 的吞吐量。 虽然额外的 SU 会增加运行作业的成本，但可能会始终将 SU 添加到某个作业，以增加分区良好的流分析查询吞吐量。
@@ -56,7 +56,7 @@ ms.locfileid: "30909269"
 
 请考虑以下方案：若要每秒内产生 10000 条推文的吞吐量，则必须创建执行推文（事件）情绪分析的流分析作业。 如果使用 1 个 SU，此流分析作业可以处理该流量吗？ 如果使用默认值 1000 的批大小，作业应该能够与输入保持一致。 进一步而言，添加的机器学习函数应生成不大于一秒的延迟，这是情绪分析机器学习 Web 服务（默认批大小为 1000）的常规默认延迟。 流分析作业的**整体**或端到端延迟通常是几秒钟。 请仔细了解此流分析作业，*特别是*机器学习函数调用数。 如果批大小为 1000，则 10,000 个事件的吞吐量将向 Web 服务发送大约 10 个请求。 即使使用 1 个 SU，也有足够的并发连接可以容纳此输入流量。
 
-但如果输入事件率增加 100 倍，而流分析作业需要每秒处理 1000000 条推文，这该怎么办？ 有两个选项：
+如果输入事件率增加 100 倍，而流分析作业需要每秒处理 1000000 条推文。 有两个选项来完成增加的规模：
 
 1. 增加批大小，或者
 2. 为输入流分区，平行处理事件
@@ -67,7 +67,7 @@ ms.locfileid: "30909269"
 
 假定具有 1000 个事件的批的情绪分析机器学习 Web 服务的延迟小于或等于 200 毫秒、具有 5,000 个事件的批的延迟是 250 毫秒、具有 10,000 个事件的批的延迟是 300 毫秒，或者具有 25,000 个事件的批的延迟是 500 毫秒。
 
-1. 如果使用第一个选项，（**并非**预配更多 SU），批大小可能会增加到 **25000**。 这反过来支持作业处理 1,000,000 个事件，并且机器学习 Web 服务具有 20 个并发连接（每个调用的延迟为 500 毫秒）。 所以，由于要向机器学习 Web 服务发出情绪函数请求，流分析作业的额外延迟将从 200 毫秒增加到 500 毫秒。 然而，批大小不得无限制增加，因为机器学习 Web 服务要求 Web 服务请求在 100 秒操作超时后，请求的有效负载大小为 4 MB 或更小。
+1. 使用第一个选项（不预配更多的 SU）。 批大小可能会增加到 25000。 这反过来支持作业处理 1,000,000 个事件，并且机器学习 Web 服务具有 20 个并发连接（每个调用的延迟为 500 毫秒）。 所以，由于要向机器学习 Web 服务发出情绪函数请求，流分析作业的额外延迟将从 200 毫秒增加到 500 毫秒。 然而，批大小不得无限制增加，因为机器学习 Web 服务要求 Web 服务请求在 100 秒操作超时后，请求的有效负载大小为 4 MB 或更小。
 2. 如果使用第二个选项，批大小仍为 1000，Web 服务延迟为 200 毫秒，每 20 个 Web 服务的并发连接每秒能够处理 1000 * 20 * 5 个事件，即 100,000 个事件。 因此，若要每秒处理 1000000 个事件，作业需要 60 个 SU。 与第一个选项相比，流分析作业将产生更多 Web 服务批处理请求，从而增加成本。
 
 下表介绍了不同 SU 和批大小（以每秒事件数为单位）的流分析作业的吞吐量。

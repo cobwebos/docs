@@ -1,25 +1,24 @@
 ---
 title: 安装本地数据网关 - Azure 逻辑应用 | Microsoft 文档
-description: 在从逻辑应用访问本地数据之前如何下载并安装本地数据网关
+description: 在从 Azure 逻辑应用访问本地数据之前，下载并安装本地数据网关
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
+ms.reviewer: yshoukry, LADocs
 ms.topic: article
 ms.date: 07/20/2018
-ms.reviewer: yshoukry, LADocs
-ms.suite: integration
-ms.openlocfilehash: 616e3d81d577fd30e65117ec15c65250d3b3e27e
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: d4fbbcb81433876e4c57763b8a90b3ff1168a699
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503642"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842441"
 ---
-# <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>为 Azure 逻辑应用安装本地数据网关
+# <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>为 Azure 逻辑应用安装本地数据网关
 
-在将逻辑应用连接到本地数据源之前，请在本地计算机上下载并安装本地数据网关。 该网关充当一个桥梁，在本地（而不是云中）数据源与逻辑应用之间进行快速的数据传输和加密。 本文介绍如何下载、安装和设置本地数据网关。 
+在从 Azure 逻辑应用连接到本地数据源之前，请在本地计算机上下载并安装本地数据网关。 该网关充当一个桥梁，在本地（而不是云中）数据源与逻辑应用之间进行快速的数据传输和加密。 本文介绍如何下载、安装和设置本地数据网关。 
 
 可对其他服务（例如 Power BI、Microsoft Flow、PowerApps 和 Azure Analysis Services）使用相同的网关安装过程。 详细了解[数据网关的工作原理](#gateway-cloud-service)。
 
@@ -52,7 +51,11 @@ ms.locfileid: "39503642"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 具有[Azure 订阅](https://docs.microsoft.com/azure/architecture/cloud-adoption-guide/adoption-intro/subscription-explainer)的[工作或学校帐户](../active-directory/fundamentals/sign-up-organization.md)。 在安装网关期间，需登录到此帐户，以便将网关安装与 Azure 订阅相关联。 稍后在 Azure 门户中为网关安装创建 Azure 资源时，也要使用此帐户。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。
+* 具有[Azure 订阅](https://docs.microsoft.com/azure/architecture/cloud-adoption-guide/adoption-intro/subscription-explainer)的[工作或学校帐户](../active-directory/fundamentals/sign-up-organization.md) 
+
+  在安装网关期间，需登录到此帐户，以便将网关安装与 Azure 订阅相关联。 
+  稍后在 Azure 门户中为网关安装创建 Azure 资源时，也要使用此帐户。 
+  如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。
 
 * 下面是本地计算机的要求：
 
@@ -72,8 +75,7 @@ ms.locfileid: "39503642"
     > [!TIP]
     > 为了尽量降低延迟，可将网关安装在尽可能靠近数据源的位置或同一台计算机上（假设你有相应的权限）。
 
-  * 在不会关机、休眠或连接到 Internet 的计算机上安装网关。 网关无法在这些条件下运行。 
-  此外，在通过无线网络工作时，网关性能可能会下降。
+  * 在连接到 Internet 的计算机上安装网关，始终打开，并且不进入休眠状态。 否则，网关不能运行。 此外，在通过无线网络工作时，性能可能会下降。
 
   * 安装期间，只能使用由 Azure Active Directory (Azure AD) 托管的[工作或学校帐户](../active-directory/sign-up-organization.md)（而不是 Microsoft 帐户）登录。 
   此外，请确保此帐户不是 Azure B2B（来宾）帐户。 

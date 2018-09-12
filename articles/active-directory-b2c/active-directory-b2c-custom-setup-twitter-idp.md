@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 786f0dfd0cf3cf2e9ab0d16e26811fabd6bfc17c
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 28679ef07c2625908f7b08f808ff49c48ddb625b
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37440934"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43339862"
 ---
 # <a name="azure-active-directory-b2c-add-twitter-as-an-oauth1-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略添加 Twitter 作为 OAuth1 标识提供者
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -36,9 +36,9 @@ ms.locfileid: "37440934"
  
     a. 为新应用键入**名称**和**说明**。 
 
-    b. 在“网站”框中，粘贴 https://login.microsoftonline.com。 
+    b. 在“网站”框中，粘贴 https://{tenant}.b2clogin.com。 其中 {tenant} 是租户的名称（例如， https://contosob2c.b2clogin.com)）。
 
-    c. 4. 对于“回调 URL”，输入 `https://login.microsoftonline.com/te/{tenant}/{policyId}/oauth1/authresp`。 确保将 **{tenant}** 替换为租户名称（例如 contosob2c.onmicrosoft.com），将 **{policyId}** 替换为策略 ID（例如 b2c_1_policy）。  **回调 URL 必须采用全小写形式。** 你应该为使用 Twitter 登录的所有策略添加回调 URL。 如果在应用程序中使用它，请确保使用 `b2clogin.com` 而不是 ` login.microsoftonline.com`。
+    c. 4. 对于“回调 URL”，输入 `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/{policyId}/oauth1/authresp`。 确保将 {tenant} 替换为租户名称（例如 contosob2c），将 {policyId} 替换为策略 ID（例如 b2c_1_policy）。  **回调 URL 必须采用全小写形式。** 你应该为使用 Twitter 登录的所有策略添加回调 URL。 如果在应用程序中使用它，请确保使用 `b2clogin.com` 而不是 ` login.microsoftonline.com`。
 
     d. 在页面底部，阅读并接受条款，然后选择“创建 Twitter 应用程序”。
 

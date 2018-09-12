@@ -6,25 +6,25 @@ documentationcenter: ''
 keywords: WAD2AI, Azure 诊断
 author: mrbullwinkle
 manager: carmonm
-editor: alancameronwills
 ms.assetid: 5c7a5b34-329e-42b7-9330-9dcbb9ff1f88
 ms.service: application-insights
 ms.devlang: na
 ms.tgt_pltfrm: ibiza
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.workload: tbd
-ms.date: 05/05/2017
+ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: f36a9e21478d2629d705d90179a6db5175c78299
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 3b06ec3b10edc39d770e5a724125e70afd5e5477
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43783490"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>适用于 Azure 云服务的 Application Insights
 可以通过 [Application Insights][start] 来监视 [Microsoft Azure 云服务应用](https://azure.microsoft.com/services/cloud-services/)的可用性、性能、故障情况和使用情况，只需将 Application Insights 的 SDK 提供的数据与云服务提供的 [Azure 诊断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)数据进行组合分析即可。 通过收到的有关应用在现实中的性能和有效性的反馈，可以针对每个开发生命周期确定合理的设计方向。
 
-![示例](./media/app-insights-cloudservices/sample.png)
+![概述仪表板的屏幕截图](./media/app-insights-cloudservices/overview-graphs.png)
 
 ## <a name="before-you-start"></a>开始之前
 需要：
@@ -81,9 +81,8 @@ ms.lasthandoff: 05/01/2018
 1. 在 [Azure 门户][portal]中，创建新的 Application Insights 资源。 对于应用程序类型，选择 ASP.NET 应用。 
 
     ![依次单击“新建”、“Application Insights”](./media/app-insights-cloudservices/01-new.png)
-2. 请注意，每个资源都由检测密钥标识。 以后若要手动配置或验证 SDK 的配置，可能需要使用该检测密钥。
+2. 每个资源都由检测密钥标识。 以后若要手动配置或验证 SDK 的配置，可能需要使用该检测密钥。
 
-    ![单击“属性”，选择密钥，并按 Ctrl+C](./media/app-insights-cloudservices/02-props.png) 
 
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>为每个角色设置 Azure 诊断
 设置此选项可以使用 Application Insights 监视应用。 对于 Web 角色，此选项可提供性能监视、警报、诊断以及使用情况分析。 对于其他角色，可以搜索和监视 Azure 诊断信息，例如重新启动、性能计数器和对 System.Diagnostics.Trace 的调用。 
@@ -107,14 +106,14 @@ ms.lasthandoff: 05/01/2018
 1. **Web 角色**：右键单击项目，并选择“配置 Application Insights”或“添加”>“Application Insights 遥测”。
 
 2. **辅助角色**： 
- * 右键单击项目，并选择“管理 Nuget 包”。
+ * 右键单击项目，并选择“管理 NuGet 包”。
  * 添加[适用于 Windows Server 的 Application Insights](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)。
 
     ![搜索“Application Insights”](./media/app-insights-cloudservices/04-ai-nuget.png)
 
 3. 将 SDK 配置为向 Application Insights 资源发送数据。
 
-    在适当的启动函数中，通过 .cscfg 文件中的配置设置指定检测密钥：
+    在适当的启动函数中，通过 ``.cscfg file`` 中的配置设置指定检测密钥：
  
     ```csharp
    
@@ -128,7 +127,7 @@ ms.lasthandoff: 05/01/2018
    * [网页](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
 4. 将 ApplicationInsights.config 文件设置为始终复制到输出目录。 
    
-    （在 .config 文件中，可以看到消息询问将检测密钥放到该处。 但是，对于云应用程序，最好是通过 .cscfg 文件设置检测密钥。 这可以确保在门户中正确识别角色。）
+    （在 .config 文件中，可以看到消息询问将检测密钥放到该处。 但是，对于云应用程序，最好是通过 ``.cscfg file`` 设置检测密钥。 这可以确保在门户中正确识别角色。）
 
 #### <a name="run-and-publish-the-app"></a>运行并发布应用
 运行应用并登录到 Azure。 打开创建的 Application Insights 资源，此时可以看到[搜索](app-insights-diagnostic-search.md)中显示了每个数据点，并且[指标资源管理器](app-insights-metrics-explorer.md)中显示了聚合数据。 
@@ -197,7 +196,7 @@ ms.lasthandoff: 05/01/2018
 
 可通过编辑 ApplicationInsights.config 指定其他自定义或其他 windows 性能计数器，[如此示例中所示](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14)。
 
-  ![性能计数器](./media/app-insights-cloudservices/OLfMo2f.png)
+  ![性能计数器](./media/app-insights-cloudservices/002-servers.png)
 
 ## <a name="correlated-telemetry-for-worker-roles"></a>辅助角色的关联遥测数据
 Application Insights 提供丰富的诊断体验，可让用户查明请求失败或请求长时间延迟的原因。 使用 Web 角色，SDK 可在相关遥测数据之间自动设置关联。 对于辅助角色，使用自定义遥测初始值设定项为所有遥测设置一个通用的 Operation.Id 上下文属性即可实现此目的。 这样，延迟/失败问题是否由依赖项或代码造成便一目了然！ 
@@ -206,11 +205,7 @@ Application Insights 提供丰富的诊断体验，可让用户查明请求失�
 
 * 如[此处](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36)所示，将关联 ID 设置到 CallContext 中。 在本例中，我们使用了请求 ID 作为关联 ID
 * 添加自定义 TelemetryInitializer 实现，将 Operation.Id 设置为先前所设的 correlationId。 相关示例请参见 [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13)
-* 添加自定义遥测初始值设定项。 可以在 ApplicationInsights.config 文件或代码中执行该操作，如[此处](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233)所示
-
-就这么简单！ 门户中的体验随时可以提供，帮助你一目了然地查看所有关联的遥测数据：
-
-![关联的遥测数据](./media/app-insights-cloudservices/bHxuUhd.png)
+* 添加自定义遥测初始值设定项。 可以在 ApplicationInsights.config 文件或代码中执行该操作，如[此处](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233)所示。
 
 ## <a name="client-telemetry"></a>客户端遥测数据
 [将 JavaScript SDK 添加到网页][client]，以获取基于浏览器的遥测数据（例如页面视图计数、页面加载时间、脚本异常），并允许在页面脚本中编写自定义遥测。

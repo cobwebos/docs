@@ -11,41 +11,74 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: pim
-ms.date: 04/02/2018
+ms.date: 08/31/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: e5cda31af5ac95e7ebe2b858b1d7355ea3f2a6bb
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: c661f2662f48c5aaece142cb4a2223ab8a6d0853
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189798"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666585"
 ---
 # <a name="approve-or-deny-requests-for-azure-resource-roles-in-pim"></a>在 PIM 中批准或拒绝 Azure 资源角色的请求
 
-只有审批者列表的成员才能批准或拒绝请求。 
+利用 Azure AD Privileged Identity Management (PIM)，可以将角色配置为需要审批才可激活，还可选择一个或多个用户或组作为委派的审批者。 按照本文中的步骤，审批或拒绝 Azure 资源角色的请求。
 
-1. 在 PIM 中，选择左侧菜单上的“审批请求”选项卡，并找到该请求。
+## <a name="view-pending-requests"></a>查看待处理请求
 
-   ![“审批请求”窗格](media/azure-pim-resource-rbac/aadpim_rbac_approve_requests_list.png)
+有 Azure 资源角色请求正在等待审批时，委派的审批者将收到电子邮件通知。 可在 PIM 中查看这些待处理的请求。
 
-2. 选择该请求，提供做出该决定的理由，选择“批准”或“拒绝”。 请求随即被取消。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-   ![所选请求及其详细信息](media/azure-pim-resource-rbac/aadpim_rbac_approve_request_approved.png)
+1. 打开“Azure AD Privileged Identity Management”。
+
+1. 单击“审批请求”。
+
+    ![Azure 资源 - 审批请求](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
+
+    在“请求激活角色”部分，将看到等待审批的请求列表。
+
+## <a name="approve-requests"></a>审批请求
+
+1. 找到并单击要审批的请求。 此时显示审批窗格。
+
+    ![“审批请求”窗格](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+
+1. 在“理由”框中，键入一个原因。
+
+1. 单击“批准”。
+
+    审批后会出现一个通知。
+
+    ![批准通知](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
+
+## <a name="deny-requests"></a>拒绝请求
+
+1. 找到并单击要拒绝的请求。 此时显示审批窗格。
+
+    ![“审批请求”窗格](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+
+1. 在“理由”框中，键入一个原因。
+
+1. 单击“拒绝”。
+
+    拒绝后会出现一个通知。
 
 ## <a name="workflow-notifications"></a>工作流通知
 
-下面是一些有关工作流通知的事项：
+下面是一些有关工作流通知的信息：
 
 - 当角色请求正在等待其审查时，审批者列表的所有成员会收到电子邮件通知。 电子邮件通知包含请求的直接链接，审批者可通过此链接批准或拒绝请求。
-- 请求将由列表中第一个做出批准或拒绝决定的成员来解决。 
-- 当审批者响应请求时，审批者列表的所有成员都会收到操作通知。 
-- 获批准的成员激活其角色后，资源管理员会收到通知。 
+- 请求将由列表中第一个做出批准或拒绝决定的成员来解决。
+- 当审批者响应请求时，审批者列表的所有成员都会收到操作通知。
+- 获批准的成员激活其角色后，资源管理员会收到通知。
 
 >[!Note]
 >如果资源管理员认为获批准的成员不应被激活，则可在 PIM 中删除已激活的角色分配。 尽管资源管理员不会收到等待处理请求的通知（除非他们是审批者列表的成员），但他们可通过在 PIM 中查看等待处理的请求，来查看和取消所有用户等待处理的请求。 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 PIM 中批准或拒绝 Azure AD 目录角色的请求](azure-ad-pim-approval-workflow.md)
+- [在 PIM 中扩展或续订 Azure 资源角色](pim-resource-roles-renew-extend.md)
 - [PIM 中的电子邮件通知](pim-email-notifications.md)
+- [在 PIM 中批准或拒绝 Azure AD 目录角色的请求](azure-ad-pim-approval-workflow.md)

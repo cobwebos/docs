@@ -1,25 +1,18 @@
 ---
-title: ExpressRoute 线路配置工作流 | Microsoft Docs
+title: Azure ExpressRoute 线路配置工作流 | Microsoft Docs
 description: 本页指导完成配置 ExpressRoute 线路和对等互连的工作流
-documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: carmonm
-editor: ''
-ms.assetid: 55e0418c-e0bf-44a7-9aa1-720076df9297
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/12/2017
+ms.topic: conceptual
+ms.date: 08/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: cba1b2cfee379e7d2b079bcb3089981ef1044d66
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 765050c9c21c7ba752535fc391cc9bb7d8ac4083
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23013122"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301032"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>ExpressRoute 线路预配工作流和线路状态
 本页从较高层面引导完成服务预配和路由配置工作流。
@@ -31,11 +24,11 @@ ms.locfileid: "23013122"
 1. 使用 PowerShell 配置 ExpressRoute 线路。 有关更多详细信息，请遵循[创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md)一文中的说明。
 2. 从服务提供商订购连接。 此过程根据情况而有所不同。 有关如何订购连接的详细信息，请联系连接服务提供商。
 3. 通过 PowerShell 验证 ExpressRoute 线路预配状态，以确保线路预配成功。 
-4. 配置路由域 如果连接服务提供商管理第 3 层，则他们将为线路配置路由。 如果连接服务提供商只提供第 2 层服务，则必须根据[路由要求](expressroute-routing.md)和[路由配置](expressroute-howto-routing-classic.md)页中所述的指导原则来配置路由。
+4. 配置路由域 如果连接服务提供商管理第 3 层，则他们将为线路配置路由。 如果连接服务提供商只提供第 2 层服务，必须根据[路由要求](expressroute-routing.md)和[路由配置](expressroute-howto-routing-classic.md)页中所述的每条指导原则来配置路由。
    
-   * 启用 Azure 专用对等互连 - 只有启用此对等互连才能连接到部署在虚拟网络中的 VM/云服务。
-   * 启用 Azure 公共对等互连 - 如果想要连接到托管在公共 IP 地址上的 Azure 服务，则必须启用 Azure 公共对等互连。 如果已选择为 Azure 专用对等互连启用默认路由并想要访问 Azure 资源，则必须执行上述操作。
-   * 启用 Microsoft 对等互连 - 必须启用此对等互连才能访问 Office 365 和 Dynamics 365。 
+   * 启用 Azure 专用对等互连 - 启用此对等互连以连接到部署在虚拟网络中的 VM/云服务。
+
+   * 启用 Microsoft 对等互连 - 启用此对等互连以访问 Office 365 和 Dynamics 365。 此外，所有的 Azure PaaS 服务也可通过 Microsoft 对等互连访问。
      
      > [!IMPORTANT]
      > 必须确保使用独立的代理/边缘，而不是用于 Internet 的 代理/边缘来连接 Microsoft。 对 ExpressRoute 和 Internet 使用相同的边缘会导致路由不对称，并造成网络连接中断。

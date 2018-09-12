@@ -5,17 +5,17 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 09/01/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 8ecb2008b85bb6a7ac35b5f95deaf0fb321ce155
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: e5915157c1ff2c1f58779e5c3b1d784241464b32
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42145089"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669040"
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>如何获取 Azure 多重身份验证
 
@@ -32,7 +32,10 @@ ms.locfileid: "42145089"
 | --- | --- |
 | 适用于 Office 365 的多重身份验证 |此版本专门与 Office 365 应用程序配合使用，可以从 Office 365 门户进行管理。 管理员可以[使用双重验证来保护 Office 365 资源](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6)。 此版本是 Office 365 订阅的一部分。 |
 | 面向 Azure AD 管理员的多重身份验证 | Azure AD 租户中被分配了 Azure AD 全局管理员角色的用户可以免费启用双重验证。|
-| Azure 多重身份验证 | Azure 多重身份验证（通常称为“完整”版本）提供了最丰富的功能集。 它通过 [Azure 门户](https://portal.azure.com)、高级报告及支持一系列本地和云应用程序来提供其他配置选项。 Azure 多重身份验证已随附在 [Azure Active Directory Premium 计划](https://www.microsoft.com/cloud-platform/azure-active-directory-features)中，并可在云中或本地部署。 |
+| Azure 多重身份验证 | Azure 多重身份验证（通常称为“完整”版本）提供了最丰富的功能集。 它通过 [Azure 门户](https://portal.azure.com)、高级报告及支持一系列本地和云应用程序来提供其他配置选项。 Azure 多重身份验证是 [Azure Active Directory Premium](https://www.microsoft.com/cloud-platform/azure-active-directory-features) 的一个功能，并可在云中或本地部署。 |
+
+> [!NOTE]
+> 自 2018 年 9 月 1 日起，新客户无法再将 Azure 多重身份验证作为独立产品进行购买。 多重身份验证将继续成为 Azure AD Premium 许可证中的可用功能。
 
 ## <a name="feature-comparison-of-versions"></a>版本功能比较
 
@@ -77,9 +80,12 @@ Azure AD 租户中被分配了全局管理员角色的用户可以免费为其 A
 
 ### <a name="option-2---mfa-consumption-based-model"></a>选项 2 - 基于 MFA 使用量的模型
 
+> [!NOTE]
+> 自 2018 年 9 月 1 日起，可能无法再创建新的身份验证提供程序。 可以继续使用和更新现有的身份验证提供程序。 多重身份验证将继续成为 Azure AD Premium 许可证中的可用功能。
+
 在 Azure 订阅中创建 Azure 多重身份验证提供程序。 与其他所有 Azure 资源一样，Azure MFA 提供程序是根据企业协议、Azure 资金承诺或信用卡收费的 Azure 资源。 只能在完整 Azure 订阅中创建这些提供程序，而不能在支出限制为 $0 的受限 Azure 订阅中创建。 与选项 1 一样，受限的订阅是在激活许可证时创建的。
 
-使用 Azure 多重身份验证提供程序时，有两种使用模式（通过 Azure 订阅计费）可用： 
+使用 Azure 多重身份验证提供程序时，有两种使用模式（通过 Azure 订阅计费）可用：
 
 1. **按启用的用户** - 适用于想要为人数固定、需要定期进行身份验证的员工启用双重验证的企业。 按用户计费基于 Azure AD 租户和 Azure MFA 服务器中启用了 MFA 的用户数。 如果同时在 Azure AD 和 Azure MFA 服务器中为用户启用 MFA 并启用域同步 (Azure AD Connect)，我们会根据更多的用户计费。 如果未启用域同步，我们会根据 Azure AD 和 Azure MFA 服务器中启用 MFA 的所有用户总人数计费。 费用按比例计算，每日在商务系统中报告。
 
@@ -93,7 +99,7 @@ Azure AD 租户中被分配了全局管理员角色的用户可以免费为其 A
   > [!NOTE]
   > 计费示例 3：Azure MFA 服务今天收到了 3,105 个双重验证请求。 将按 310.5 次身份验证计收 Azure 订阅费用。
 
-请务必注意，即使有 Azure MFA 许可证，也仍要基于使用量支付配置费用。 如果设置了按身份验证计费的 Azure MFA 提供程序，需要支付每次双重验证请求的费用，即使这些请求是持有许可证的用户发出的。 如果在未链接到 Azure AD 租户的域中设置了按用户计费的 Azure MFA 提供程序，则需要为每个启用 MFA 的用户付费，即使这些用户在 Azure AD 中持有许可证。
+请务必注意，即使有许可证，也仍要基于使用量支付配置费用。 如果设置了按身份验证计费的 Azure MFA 提供程序，需要支付每次双重验证请求的费用，即使这些请求是持有许可证的用户发出的。 如果在未链接到 Azure AD 租户的域中设置了按用户计费的 Azure MFA 提供程序，则需要为每个启用 MFA 的用户付费，即使这些用户在 Azure AD 中持有许可证。
 
 ## <a name="next-steps"></a>后续步骤
 

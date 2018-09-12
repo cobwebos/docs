@@ -11,12 +11,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 04/15/2018
 ms.author: ghogen
-ms.openlocfilehash: 5b3cea87e7762e492432722c54a1a8aaa342b84a
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: d2ab34b3737ec00e4adc464f6d2255203fb6ae08
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42145090"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43840613"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>使用 Visual Studio 连接服务将 Key Vault 添加到 Web 应用程序
 
@@ -74,6 +74,10 @@ ms.locfileid: "42145090"
 
 ## <a name="access-your-secrets-in-code-aspnet-core-projects"></a>在代码中访问机密（ASP.NET Core 项目）
 
+与密钥保管库的连接在启动时由一个实现 [Microsoft.AspNetCore.Hosting.IHostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup?view=aspnetcore-2.1) 的类设置，该类使用一种扩展[在 ASP.NET Core 中通过 IHostingStartup 增强来自外部程序集的应用](/aspnet/core/fundamentals/host/platform-specific-configuration)中所述启动行为的方法。 Startup 类使用两个包含密钥保管库连接信息的环境变量：ASPNETCORE_HOSTINGSTARTUP__KEYVAULT__CONFIGURATIONENABLED，设置为 true，以及 ASPNETCORE_HOSTINGSTARTUP__KEYVAULT__CONFIGURATIONVAULT，设置为你的密钥保管库 URL。 当运行“添加连接的服务”进程时，这些会添加到 launchsettings.json 文件中。
+
+若要访问机密：
+
 1. 在 Visual Studio 中的 ASP.NET Core 项目内，现在可以通过在代码中使用以下表达式来引用这些机密：
  
    ```csharp
@@ -99,6 +103,10 @@ ms.locfileid: "42145090"
 1. 生成并运行 Web 应用程序，导航到 About 页面，并查看“secret”值。
 
 ## <a name="access-your-secrets-in-code-aspnet-471-projects"></a>在代码中访问机密（ASP.NET 4.7.1 项目）
+
+当运行“添加连接的服务”进程时，与密钥保管库的连接由 ConfigurationBuilder 类使用添加到 web.config 文件的信息设置。
+
+若要访问机密：
 
 1. 按如下所示修改 web.config。 这些键是占位符，AzureKeyVault ConfigurationBuilder 会将其替换为 Key Vault 中的机密值。
 

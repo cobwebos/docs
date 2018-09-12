@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: iainfou
-ms.openlocfilehash: ea77244d4b2e078c5eda716e94a97291350228f5
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: dfc9171f54effe3da7a0f13695ab233d561357d4
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42146126"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43285679"
 ---
 # <a name="persistent-volumes-with-azure-files"></a>含 Azure 文件的持久卷
 
@@ -71,9 +71,9 @@ kubectl apply -f azure-file-sc.yaml
 
 ## <a name="create-a-cluster-role-and-binding"></a>创建群集角色和绑定
 
-AKS 群集使用 Kubernetes 基于角色的访问控制 (RBAC) 来限制可执行的操作。 “角色”定义要授予的权限，“绑定”将其应用到目标用户。 这些分配可应用到特定命名空间或整个群集。 有关详细信息，请参阅[使用 RBAC 授权][kubernetes-rbac]。
+AKS 群集使用 Kubernetes 基于角色的访问控制 (RBAC) 来限制可执行的操作。 “角色”定义要授予的权限，“绑定”将其应用到目标用户。 这些分配可应用于特定命名空间或整个群集。 有关详细信息，请参阅[使用 RBAC 授权][kubernetes-rbac]。
 
-若要允许 Azure 平台创建所需的存储资源，请创建 *clusterrole* 和 *clusterrolebinding*。 创建名为 `azure-pvc-roles.yaml` 的文件，并将其复制到以下 YAML 中：
+要允许 Azure 平台创建所需的存储资源，请创建 ClusterRole 和 ClusterRoleBinding。 创建名为 `azure-pvc-roles.yaml` 的文件，并将其复制到以下 YAML 中：
 
 ```yaml
 ---

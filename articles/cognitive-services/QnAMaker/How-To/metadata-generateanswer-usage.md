@@ -9,16 +9,16 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: pchoudh
-ms.openlocfilehash: 82e3ee460309f293c9bd7eadebe139f85e241f71
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: e1b7c82e6998705bdc7e1c1a5d279bda7793667a
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113345"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43305193"
 ---
 # <a name="using-metadata-and-the-generateanswer-api"></a>配合使用元数据与 GenerateAnswer API
 
-通过 QnA Maker，可将键值对形式的元数据添加到问/答集。 可通过各种方式使用此信息，例如筛选用户查询的结果、增强特定结果以及存储可用于后续对话的其他信息。 有关详细信息，请参阅[知识库](../Concepts/knowledge-base.md)。
+通过 QnA Maker，可将键值对形式的元数据添加到问/答集。 此信息可用于筛选用户查询的结果，以及存储可用于后续对话的其他信息。 有关详细信息，请参阅[知识库](../Concepts/knowledge-base.md)。
 
 ## <a name="qna-entity"></a>QnA 实体
 
@@ -50,7 +50,7 @@ ms.locfileid: "39113345"
 
 通过 HTTP POST 请求调用 GenerateAnswer。 有关演示如何调用 GenerateAnswer 的示例代码，请参阅[快速入门](../quickstarts/csharp.md)。
 
-- **请求 URL**：https://{QnA Maker endpoint}/knowledgebases/{knowledge base ID}/generateAnswer
+- **请求 URL**： https://{QnA Maker endpoint}/knowledgebases/{knowledge base ID}/generateAnswer
 
 - **请求参数**： 
     - **Knowledge base ID**（字符串）：知识库的 GUID。

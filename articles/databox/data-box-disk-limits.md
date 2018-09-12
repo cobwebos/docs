@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/12/2018
+ms.date: 09/04/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: 358f81498d8caad7c0a67519bbb776efa153249f
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 3b26c5f9a6d75725fb102d89192e77988b295dea
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42144756"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782019"
 ---
 # <a name="azure-data-box-disk-limits-preview"></a>Azure Data Box 磁盘限制（预览版）
 
@@ -33,7 +33,7 @@ ms.locfileid: "42144756"
 
 ## <a name="data-box-service-limits"></a>Data Box 服务限制
 
- - Data Box 目前仅在美国和欧洲在 Azure 公有云的所有 Azure 区域中可用。
+ - 在 Azure 公有云的所有 Azure 区域中，Data Box 目前仅在美国、欧洲、加拿大和澳大利亚可用。
  - Data Box 磁盘支持单个存储帐户。
 
 ## <a name="data-box-disk-performance"></a>Data Box 磁盘性能

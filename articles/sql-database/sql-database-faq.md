@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 08/29/2018
 ms.author: carlrab
-ms.openlocfilehash: 7f784689e8437d92cf4fc4974983d3ae1455f11b
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a7837ac6af82b5c67ea5779340aedc16cb78d156
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43091818"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286326"
 ---
 # <a name="sql-database-faq"></a>SQL 数据库常见问题
 
@@ -22,8 +22,10 @@ ms.locfileid: "43091818"
 SQL 数据库的当前版本是 V12。 V11 版本已停用。
 
 ## <a name="what-is-the-sla-for-sql-database"></a>什么是 SQL 数据库的 SLA？
-我们保证至少在 99.99% 的时间内，不管使用哪个服务层，都能在 Microsoft Azure SQL 数据库与我们的 Internet 网关之间保持连接。 有关详细信息，请参阅 [SLA](http://azure.microsoft.com/support/legal/sla/)。
+我们保证至少在 99.99% 的时间内，不管使用哪个服务层，都能在 Microsoft Azure SQL 数据库与我们的 Internet 网关之间保持连接。 剩余 0.01% 的时间用于修补程序、升级和故障转移。 有关详细信息，请参阅 [SLA](http://azure.microsoft.com/support/legal/sla/)。 有关 Azure SQL 数据库的可用性体系结构的信息，请参阅[高可用性和 Azure SQL 数据库](sql-database-high-availability.md)。 
 
+## <a name="can-i-control-when-patching-downtime-occurs"></a>我可以控制修补故障的时间吗
+不是。 如果在应用中[使用重试逻辑](sql-database-develop-overview.md#resiliency)，则修补通常不会产生明显影响。
 ## <a name="what-is-the-new-vcore-based-purchasing-model-for-azure-sql-database"></a>Azure SQL 数据库的基于 vCore 的新购买模型是什么？
 
 新购买模型是对现有基于 DTU 的模型的补充。 基于 vCore 的购买模型旨在让客户以灵活、可控、透明且直接的方式将本地工作负载要求转换到云。 它还允许客户根据其工作负载需求缩放其计算和存储资源。 此外，借助[面向 SQL Server 的 Azure 混合使用权益](../virtual-machines/windows/hybrid-use-benefit-licensing.md)，使用 vCore 模型的单一数据库和弹性池选项最大能够实现 30% 的节省。 有关详细信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。 

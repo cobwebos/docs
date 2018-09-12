@@ -4,7 +4,7 @@ description: 了解如何在 Azure Functions 中使用 Azure Blob 存储触发�
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 tags: ''
 keywords: Azure Functions，函数，事件处理，动态计算，无服务体系结构
@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 02/12/2018
+ms.date: 09/03/2018
 ms.author: glenga
-ms.openlocfilehash: 4a5a0634e371e4a762b3877b0c3e45682924a27d
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: b9dcc4d7edd24d545722dde85e682a658d5ef2bc
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42144189"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43667939"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure Blob 存储绑定
 
@@ -41,13 +41,13 @@ ms.locfileid: "42144189"
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
+[!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
+
 ## <a name="packages---functions-2x"></a>包 - Functions 2.x
 
-[Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet 包 3.x 版中提供了 Blob 存储绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Storage/Blob) GitHub 存储库中提供了此包的源代码。
+[Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet 包 3.x 版中提供了 Blob 存储绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs) GitHub 存储库中提供了此包的源代码。
 
-[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
-
-[!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
+[!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="trigger"></a>触发器
 
@@ -59,7 +59,7 @@ ms.locfileid: "42144189"
 
 * 仅限 Blob 的存储帐户
 * 大规模
-* 冷启动延迟
+* 最大程度减少冷启动延迟
 
 ### <a name="blob-only-storage-accounts"></a>仅限 Blob 的存储帐户
 
@@ -185,7 +185,7 @@ module.exports = function(context) {
 
 ### <a name="trigger---java-example"></a>触发器 - Java 示例
 
-以下示例显示了 *function.json* 文件中的一个 Blob 触发器绑定以及使用该绑定的 [Java 代码](functions-reference-java.md)。 在 `myblob` 容器中添加或更新 Blob 时，该函数会写入日志。
+以下示例显示了 function.json 文件中的一个 Blob 触发器绑定以及使用该绑定的 [Java 代码](functions-reference-java.md)。 在 `myblob` 容器中添加或更新 Blob 时，该函数会写入日志。
 
 function.json 文件如下所示：
 
@@ -548,7 +548,7 @@ module.exports = function(context) {
 
 ### <a name="input---java-example"></a>输入 - Java 示例
 
-以下示例演示使用一个队列触发器和一个 blob 输入绑定的 Java 函数。 队列消息包含该 blob 的名称，函数记录该 blob 的大小。
+以下示例演示了使用一个队列触发器和一个 Blob 输入绑定的 Java 函数。 队列消息包含该 blob 的名称，函数记录该 blob 的大小。
 
 ```java
 @FunctionName("getBlobSize")
@@ -560,7 +560,7 @@ public void blobSize(@QueueTrigger(name = "filename",  queueName = "myqueue-item
  }
  ```
 
-  在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自 blob 的参数使用 `@BlobInput` 注释。  可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。 
+  在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自 Blob 的参数使用 `@BlobInput` 注释。  可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。 
 
 
 ## <a name="input---attributes"></a>输入 - 特性
@@ -780,7 +780,7 @@ module.exports = function(context) {
 
 ### <a name="output---java-example"></a>输出 - Java 示例
 
-以下示例显示 Java 函数中的 blob 输入和输出绑定。 此函数创建文本 blob 的副本。 该函数由包含要复制的 Blob 名称的队列消息触发。 新 Blob 名为 {originalblobname}-Copy
+以下示例显示 Java 函数中的 Blob 输入和输出绑定。 此函数创建文本 blob 的副本。 该函数由包含要复制的 Blob 名称的队列消息触发。 新 Blob 名为 {originalblobname}-Copy
 
 ```java
 @FunctionName("copyTextBlob")
@@ -793,7 +793,7 @@ public String blobCopy(
  }
  ```
 
- 在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将写入 blob 存储中对象的函数参数使用 `@BlobOutput` 注释。  参数类型应为 `OutputBinding<T>`，其中 T 是 POJO 的任何本机 Java 类型。
+ 在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将写入 Blob 存储中对象的函数参数使用 `@BlobOutput` 注释。  参数类型应为 `OutputBinding<T>`，其中 T 是 POJO 的任何本机 Java 类型。
 
 
 ## <a name="output---attributes"></a>输出 - 特性

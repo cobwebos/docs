@@ -3,24 +3,26 @@ title: Azure SQL 数据仓库列级别安全性 | Microsoft Docs
 description: 借助列级别安全性 (CLS)，客户可以根据用户的执行上下文或其组成员身份，控制对数据库表列的访问。 CLS 简化了应用程序中的安全性设计和编程。 借助 CLS，可以实现列访问限制。
 services: sql-data-warehouse
 author: KavithaJonnakuti
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 06/15/2018
 ms.author: kavithaj
 ms.reviewer: igorstan, carlrab
-ms.openlocfilehash: 5a916132f705f3c517ee6789b61a3972b2445b62
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 1765c92ad10fa35af98e7c7314eb44c3a119f422
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939761"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301049"
 ---
 # <a name="column-level-security"></a>列级别安全性 
 借助列级别安全性 (CLS)，客户可以根据用户的执行上下文或其组成员身份，控制对数据库表列的访问。  
 
-CLS 简化了应用程序中的安全性设计和编程。 借助 CLS，可以实现列访问限制，从而保护敏感数据。 例如，确保具体用户只能访问表中与其部门相关的特定列。 访问限制逻辑位于数据库层，而不会脱离另一应用程序层中的数据。 每当有任何一层的数据访问请求，数据库就会应用访问限制。 这样就会减少整个安全系统的外围应用，从而提高安全系统的可靠性。 此外，还无需出于限制用户访问考虑，引入用于筛选掉列的视图。 
+> [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
+
+CLS 简化了应用程序中的安全性设计和编程。 借助 CLS，可以实现列访问限制，从而保护敏感数据。 例如，确保具体用户只能访问表中与其部门相关的特定列。 访问限制逻辑位于数据库层，而不会脱离另一应用程序层中的数据。 每当有任何一层的数据访问请求，数据库就会应用访问限制。 此限制会减少整个安全系统的外围应用，从而提高安全系统的可靠性。 此外，使用 CLS 还无需引入用于筛选掉列的视图以限制用户访问。 
 
 可以使用 [GRANT](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) T-SQL 语句实现 CLS。 借助此机制，SQL 和 Azure Active Directory (AAD) 身份验证同时受支持。
 

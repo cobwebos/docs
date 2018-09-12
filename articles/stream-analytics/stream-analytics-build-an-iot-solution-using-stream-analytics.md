@@ -9,13 +9,14 @@ ms.reviewer: jasonh, sngun
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/21/2018
-ms.openlocfilehash: 80e287d09fdc5ab7157b9ee46bc830fd2db4d501
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 1610e8173d90be3c0b50f05e64d0e84e1c21ad0e
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698037"
 ---
-# <a name="build-an-iot-solution-by-using-stream-analytics"></a>使用流分析生成 IoT 解决方案
+# <a name="build-an-iot-solution-by-using-stream-analytics"></a>使用流分析构建 IoT 解决方案
 
 ## <a name="introduction"></a>介绍
 本解决方案演示如何使用 Azure 流分析从数据获得实时见解。 开发人员可以轻松将数据流（例如点击流、日志和设备生成的时间）与历史记录或引用数据结合起来，获取业务信息。 由 Microsoft Azure 托管的 Azure 流分析是可完全管理的实时流计算服务，它提供内置冗余、低延迟及伸缩性，可让用户在几分钟之内就立刻上手。
@@ -43,7 +44,7 @@ ms.lasthandoff: 04/06/2018
 ### <a name="entry-data-stream"></a>入口数据流
 入口数据流包含汽车进入收费站时的相关信息。 出口数据事件从示例应用中包含的 Web 应用实时流式传输到事件中心队列。
 
-| TollID | EntryTime | LicensePlate | State | 制造商 | 模型 | VehicleType | VehicleWeight | 收费站 | 标记 |
+| TollID | EntryTime | LicensePlate | 省/直辖市/自治区 | 制造商 | 模型 | VehicleType | VehicleWeight | 收费站 | 标记 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -54,12 +55,12 @@ ms.lasthandoff: 04/06/2018
 
 下面是每个列的简短说明：
 
-| 列 | 说明 |
+| 列 | Description |
 | --- | --- |
 | TollID |唯一标识收费亭的收费亭 ID |
 | EntryTime |汽车进入收费亭的日期和时间（世界协调时） |
 | LicensePlate |汽车的牌照号码 |
-| State |美国的某个州 |
+| 省/直辖市/自治区 |美国的某个州 |
 | 制造商 |汽车制造商 |
 | 模型 |汽车型号 |
 | VehicleType |1（客车）或 2（商用车） |
@@ -81,7 +82,7 @@ ms.lasthandoff: 04/06/2018
 
 下面是每个列的简短说明：
 
-| 列 | 说明 |
+| 列 | Description |
 | --- | --- |
 | TollID |唯一标识收费亭的收费亭 ID |
 | ExitTime |汽车离开收费亭的日期和时间（世界协调时） |
@@ -101,7 +102,7 @@ ms.lasthandoff: 04/06/2018
 
 下面是每个列的简短说明：
 
-| 列 | 说明 |
+| 列 | Description |
 | --- | --- |
 | LicensePlate |汽车的牌照号码 |
 | RegistrationId |汽车的注册 ID |
@@ -110,7 +111,7 @@ ms.lasthandoff: 04/06/2018
 ## <a name="set-up-the-environment-for-azure-stream-analytics"></a>设置 Azure 流分析的环境
 若要完成本解决方案，需要一个 Microsoft Azure 订阅。 如果没有 Azure 帐户，可以[请求免费试用版](http://azure.microsoft.com/pricing/free-trial/)。
 
-请务必按照本文末尾的“清理 Azure 帐户”部分中的步骤操作，以便充分利用 Azure 信用额度。
+请务必按照本文末尾的“清理 Azure 帐户”部分中的步骤操作，以便充分利用 Azure 额度。
 
 ## <a name="deploy-the-sample"></a>部署示例 
 只需单击几下鼠标，就能轻松将多个资源一起部署在某个资源组中。 解决方案定义托管在 [https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp) 上的 github 存储库中。

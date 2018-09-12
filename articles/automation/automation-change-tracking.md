@@ -6,16 +6,16 @@ ms.service: automation
 ms.component: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/27/2018
+ms.date: 08/31/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8066612db20d1569920835a67d84b27d1b852e6e
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 0707726ec86b0a0c69d1ec752ebd6761327f3f0f
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128120"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669477"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>使用更改跟踪解决方案跟踪环境中的更改
 
@@ -27,8 +27,7 @@ ms.locfileid: "43128120"
 
 Windows 代理正式支持以下版本的 Windows 操作系统：
 
-* Windows Server 2008 Service Pack 1 (SP1) 或更高版本
-* Windows 7 SP1 及更高版本。
+* Windows Server 2008 R2 或更高版本
 
 ## <a name="supported-linux-operating-systems"></a>支持的 Linux 操作系统
 
@@ -47,8 +46,8 @@ Windows 代理正式支持以下版本的 Windows 操作系统：
 若要开始跟踪更改，需要为自动化帐户中启用更改跟踪和清单解决方案。
 
 1. 在 Azure 门户中，导航到自动化帐户。
-1. 选择**更改跟踪**下的**配置**。
-1. 选择现有的 Log Analytics 工作区，或创建一个工作区。
+2. 选择**更改跟踪**下的**配置**。
+3. 选择现有的 Log Analytics 工作区，或创建一个工作区。
 
 这会启用自动化帐户的解决方案。 启用解决方案最多可能需要 15 分钟。 启用解决方案后，蓝色横幅会通知你。 导航回到“更改跟踪”页以管理解决方案。
 

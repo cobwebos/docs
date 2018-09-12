@@ -10,12 +10,12 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 04/21/2018
 ms.author: saneppal
-ms.openlocfilehash: b888846056fd60f37cdb1da85904fa14ffe79a39
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 698f96b15a9387cd30d26e684ed03ff4cc3346a7
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366301"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697894"
 ---
 # <a name="data-sources"></a>数据源 
 QnA Maker 可以从常见的半结构化内容格式（例如常见问题解答和产品手册）中自动提取问答对。 也可以从结构化文件将内容添加到知识库中。
@@ -53,7 +53,7 @@ QnA Maker 可以从常见的半结构化内容格式（例如常见问题解答�
 
 | 问题  | Answer  | 元数据                |
 |-----------|---------|-------------------------|
-| 问题 1 | 答案 1 | `Key1:Value1\|Key2:Value2` |
+| 问题 1 | 答案 1 | `Key1:Value1|Key2:Value2` |
 | 问题 2 | 答案 2 |      `Key:Value`           |
 将忽略源文件中的任何其他列。
 
@@ -62,7 +62,7 @@ QnA Maker 可以从常见的半结构化内容格式（例如常见问题解答�
 
 | 问题  | Answer  | Source| 元数据                |
 |-----------|---------|----|---------------------|
-| 问题 1 | 答案 1 | Url1|`Key1:Value1\|Key2:Value2` |
+| 问题 1 | 答案 1 | Url1|`Key1:Value1|Key2:Value2` |
 | 问题 2 | 答案 2 | 编辑|    `Key:Value`       |
 
 ## <a name="editorial"></a>编辑

@@ -12,47 +12,67 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: pim
-ms.date: 04/28/2017
+ms.date: 08/29/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 7bf1e437e97fdb4d929af23bd7b2a9abb49268df
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 9402824540f965cb89aa00791d093bd87712a89a
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189152"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665836"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-directory-roles-in-pim"></a>在 PIM 中批准或拒绝 Azure AD 目录角色的请求
 
-利用 Privileged Identity Management，可以将角色配置为需要审批才可激活，还可选择一个或多个用户或组作为委派的审批者。
+利用 Azure AD Privileged Identity Management (PIM)，可以将角色配置为需要审批才可激活，还可选择一个或多个用户或组作为委派的审批者。 按照本文中的步骤，审批或拒绝有关 Azure AD 目录角色的请求。
 
-## <a name="view-pending-approvals-requests"></a>查看挂起的审批（请求）
+## <a name="view-pending-requests"></a>查看待处理请求
 
-有请求等待审批时，委派的审批者将收到电子邮件通知。 若要在 PIM 门户中查看这些请求，请从左侧导航栏的仪表板（在新导航窗格中）中选择“挂起的审批请求”选项卡。
+有 Azure AD 目录角色请求等待审批时，委派的审批者将收到电子邮件通知。 可在 PIM 中查看这些待处理的请求。
 
-![](media/azure-ad-pim-approval-workflow/image023.png)
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-将在这里看到待审批的请求列表：
+1. 打开“Azure AD Privileged Identity Management”。
 
-![](media/azure-ad-pim-approval-workflow/image024.png)
+1. 单击“Azure AD 目录角色”。
 
-## <a name="approve-or-deny-requests-for-role-elevation-single-andor-bulk"></a>批准或拒绝角色提升请求（单个和/或批量）
+1. 单击“审批请求”。
 
-选择想要批准或拒绝的请求，并在“操作”栏中单击与所做决策对应的按钮：
+    ![PIM Azure AD 目录角色 - 角色](./media/azure-ad-pim-approval-workflow/pim-directory-roles-approve-requests.png)
 
-![](media/azure-ad-pim-approval-workflow/image025.png)
+    将看到待审批的请求列表。
 
-## <a name="provide-justification-for-my-approvaldenial"></a>提供批准/拒绝的理由
+## <a name="approve-requests"></a>审批请求
 
-这会打开新边栏选项卡，以便一次性批准或拒绝多个请求。 输入决策理由，并在底部或边栏选项卡上单击“批准”或“拒绝”：
+1. 选中要审批的请求，然后单击“审批”以打开审批所选请求窗格。
 
-![](media/azure-ad-pim-approval-workflow/image029.png)
+    ![PIM 审批请求列表](./media/azure-ad-pim-approval-workflow/pim-approve-requests-list.png)
 
-完成请求过程后，状态符号将反映所做的决策（在此示例中，决策是批准）：
+1. 在“审批原因”框中，键入原因。
 
-![](media/azure-ad-pim-approval-workflow/image031.png)
+    ![PIM 审批所选请求](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
+
+1. 单击“批准”。
+
+    状态符号将随审批操作更新。
+
+    ![PIM 审批所选请求](./media/azure-ad-pim-approval-workflow/pim-approve-status.png)
+
+## <a name="deny-requests"></a>拒绝请求
+
+1. 选中要拒绝的请求，然后单击“拒绝”以打开拒绝所选请求窗格。
+
+    ![PIM 审批请求列表](./media/azure-ad-pim-approval-workflow/pim-deny-requests-list.png)
+
+1. 在“拒绝原因”框中，键入原因。
+
+    ![PIM 拒绝所选请求](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
+
+1. 单击“拒绝”。
+
+    状态符号将随拒绝操作更新。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 PIM 中批准或拒绝 Azure 资源角色的请求](pim-resource-roles-approval-workflow.md)
 - [PIM 中的电子邮件通知](pim-email-notifications.md)
+- [在 PIM 中批准或拒绝 Azure 资源角色的请求](pim-resource-roles-approval-workflow.md)

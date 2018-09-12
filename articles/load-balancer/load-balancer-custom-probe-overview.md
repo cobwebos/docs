@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/28/2018
+ms.date: 09/04/2018
 ms.author: kumud
-ms.openlocfilehash: 5ceddb1bcd6ce89f7014e034b56c873f02cc2007
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: ecc33fc6078dac4affe3942f1be7e039ae9e9e70
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190727"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43695419"
 ---
 # <a name="load-balancer-health-probes"></a>负载均衡器运行状况探测
 
@@ -36,7 +36,7 @@ Azure 负载均衡器使用运行状况探测来确定要接收新流的后端�
 > [!IMPORTANT]
 > 负载均衡器运行状况探测源自 IP 地址 168.63.129.16，要使探测将实例标记为运行，不得阻止这些探测。  有关详细信息，请查看[探测源 IP 地址](#probesource)。
 
-## <a name="types"></a>运行状况探测类型
+## <a name="types"></a>探测类型
 
 运行状况探测可以观测后端实例上的任何端口，包括提供实际服务的端口。 可为三种不同类型的运行状况探测配置运行状况探测协议：
 

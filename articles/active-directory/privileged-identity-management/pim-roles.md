@@ -13,12 +13,12 @@ ms.component: pim
 ms.date: 07/23/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: c8870e4da63dc52d5926bdfd5f7c9b3218e5f53a
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: fc45cde1a5f0f287274302541ac0115569e2239d
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188980"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666330"
 ---
 # <a name="azure-ad-directory-roles-you-can-manage-in-pim"></a>可以在 PIM 中管理的 Azure AD 目录角色
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
@@ -76,13 +76,36 @@ Azure 订阅和资源组也不会出现在 Azure AD 中。 若要管理 Azure �
 此外，在访问 Microsoft Online Services 时，用户可能需要获得许可证才能打开服务的门户或执行管理任务。
 
 ## <a name="assign-a-license-to-a-user-in-azure-ad"></a>将许可证分配到 Azure AD 中的用户
+
 1. 使用全局管理员帐户或共同管理员帐户登录到 [Azure 门户](http://portal.azure.com)。
-3. 选择要使用的、包含关联许可证的 Azure AD 和目录。
-4. 选择左侧的“许可证”。 此时会显示可用的许可证列表。
-5. 选择包含要分发的许可证的许可证计划。
-6. 选择“分配用户”。
-7. 选择要将许可证分配到的用户。
-8. 单击“分配”按钮。  现在，该用户可登录到 Azure。
+
+1. 选择要使用的、包含关联许可证的 Azure AD 目录。
+
+1. 在左侧导航中，单击“Azure Active Directory”。
+
+1. 单击“许可证”。 此时会显示可用的许可证列表。
+
+    ![Azure Active Directory 许可证](./media/pim-roles/licenses-overview.png)
+
+1. 单击你的产品。
+
+1. 单击包含要分发的许可证的许可证计划。
+
+    ![许可证产品](./media/pim-roles/licenses-products.png)
+
+1. 单击“分配”以打开“分配许可证”窗格。
+
+    ![许可用户](./media/pim-roles/licenses-licensed-users.png)
+
+1. 选择要将许可证分配到的用户或组。
+
+    ![分配许可证](./media/pim-roles/licenses-assign-license.png)
+
+1. 单击“分配选项”以配置分配选项。
+
+    ![分配选项](./media/pim-roles/licenses-assignment-options.png)
+
+1. 单击“分配”以分配许可证。 用户现在拥有许可证。
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>后续步骤

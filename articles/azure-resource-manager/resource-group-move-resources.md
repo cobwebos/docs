@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/22/2018
+ms.date: 09/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7ddab3717626df14f491662849d01cb85658791c
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 35bd895636bcedf0fd3fad073819d238c7850326
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617284"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43783332"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -57,8 +57,7 @@ ms.locfileid: "42617284"
   * [将 Azure 订阅所有权转让给其他帐户](../billing/billing-subscription-transfer.md)
   * [如何将 Azure 订阅关联或添加到 Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-2. 该服务必须支持移动资源的功能。 本文列出了支持对资源进行移动的服务和不支持对资源进行移动的服务。
-3. 必须针对要移动的资源的资源提供程序注册目标订阅。 否则会出现错误“未针对资源类型注册订阅”。 将资源移到新的订阅时，可能会遇到此问题，但该订阅从未配合该资源类型使用。
+1. 必须针对要移动的资源的资源提供程序注册目标订阅。 否则会出现错误“未针对资源类型注册订阅”。 将资源移到新的订阅时，可能会遇到此问题，但该订阅从未配合该资源类型使用。
 
   对于 PowerShell，请使用以下命令来获取注册状态：
 
@@ -86,14 +85,16 @@ ms.locfileid: "42617284"
   az provider register --namespace Microsoft.Batch
   ```
 
-4. 移动资源的帐户至少需要具备下列权限：
+1. 移动资源的帐户至少需要具备下列权限：
 
    * 源资源组上的 Microsoft.Resources/subscriptions/resourceGroups/moveResources/action 权限。
    * 目标资源组上的 Microsoft.Resources/subscriptions/resourceGroups/write 权限。
 
-5. 在移动资源之前，请检查要将资源移动到的订阅的订阅配额。 如果移动资源意味着订阅将超出其限制，则需要检查是否可以请求增加配额。 有关限制的列表及如何请求增加配额的信息，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-subscription-service-limits.md)。
+1. 在移动资源之前，请检查要将资源移动到的订阅的订阅配额。 如果移动资源意味着订阅将超出其限制，则需要检查是否可以请求增加配额。 有关限制的列表及如何请求增加配额的信息，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-subscription-service-limits.md)。
 
-5. 在可能的情况下，将大型移动分为单独的移动操作。 在一次操作中尝试移动超过 800 项资源，资源管理器将立即失败。 但是，移动 800 项以下的资源也可能因超时而失败。
+1. 在可能的情况下，将大型移动分为单独的移动操作。 在一次操作中尝试移动超过 800 项资源，资源管理器将立即失败。 但是，移动 800 项以下的资源也可能因超时而失败。
+
+1. 该服务必须支持移动资源的功能。 若要确定移动是否会成功，[验证你的移动请求](#validate-move)。 请参阅本文中的以下部分，了解[支持对资源进行移动的服务](#services-that-can-be-moved)和[不支持对资源进行移动的服务](#services-that-cannot-be-moved)。
 
 ## <a name="when-to-call-support"></a>何时致电支持人员
 
@@ -106,6 +107,59 @@ ms.locfileid: "42617284"
 
 * 将资源移到新的 Azure 帐户（和 Azure Active Directory 租户），并且对于上一部分中的说明需要帮助。
 * 移动经典资源时遇到限制方面的问题。
+
+## <a name="validate-move"></a>验证移动
+
+[验证移动操作](/rest/api/resources/resources/validatemoveresources)可以测试你的移动方案而无需实际移动资源。 使用此操作来确定移动是否会成功。 若要运行此操作，需要：
+
+* 源资源组的名称
+* 目标资源组的资源 ID
+* 要移动的每个资源的资源 ID
+* 你的帐户的[访问令牌](/rest/api/azure/#acquire-an-access-token)
+
+发送以下请求：
+
+```
+POST https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<source-group>/validateMoveResources?api-version=2018-02-01
+Authorization: Bearer <access-token>
+Content-type: application/json
+```
+
+包含请求正文：
+
+```json
+{
+ "resources": ['<resource-id-1>', '<resource-id-2>'],
+ "targetResourceGroup": "/subscriptions/<subscription-id>/resourceGroups/<target-group>"
+}
+```
+
+如果请求格式正确，则操作将返回：
+
+```
+Response Code: 202
+cache-control: no-cache
+pragma: no-cache
+expires: -1
+location: https://management.azure.com/subscriptions/<subscription-id>/operationresults/<operation-id>?api-version=2018-02-01
+retry-after: 15
+...
+```
+
+202 状态代码指示已接受验证请求，但尚未确定移动操作是否会成功。 `location` 值包含用于检查长时间运行操作的状态的 URL。  
+
+若要检查状态，请发送以下请求：
+
+```
+GET <location-url>
+Authorization: Bearer <access-token>
+```
+
+操作仍在运行时，会继续收到 202 状态代码。 请等待 `retry-after` 值中所示的秒数，然后重试。 如果移动操作验证成功，则会收到 204 状态代码。 如果移动验证失败，则会收到错误消息，例如：
+
+```json
+{"error":{"code":"ResourceMoveProviderValidationFailed","message":"<message>"...}}
+```
 
 ## <a name="services-that-can-be-moved"></a>可以移动的服务
 
@@ -122,7 +176,6 @@ ms.locfileid: "42617284"
 * Azure Maps
 * Azure 中继
 * Azure Stack - 注册
-* Azure Migrate
 * Batch
 * BizTalk 服务
 * Bot 服务
@@ -188,6 +241,7 @@ ms.locfileid: "42617284"
 * Azure Database for PostgreSQL
 * Azure 数据库迁移
 * Azure Databricks
+* Azure Migrate
 * Batch AI
 * 证书 - 应用服务证书可以移动，但上传的证书存在[限制](#app-service-limitations)。
 * 容器实例
@@ -237,8 +291,6 @@ ms.locfileid: "42617284"
 若要移动对等的虚拟网络，必须首先禁用虚拟网络对等互连。 在禁用后，可以移动虚拟网络。 在移动后，重新启用虚拟网络对等互连。
 
 如果虚拟网络的任何子网包含资源导航链接，则无法将虚拟网络移动到其他订阅。 例如，如果 Redis 缓存资源部署到某个子网，则该子网具有资源导航链接。
-
-如果虚拟网络包含自定义 DNS 服务器，则无法将虚拟网络移动到其他订阅。 若要移动虚拟网络，请将它设置为默认的（Azure 提供的）DNS 服务器。 移动以后，请重新配置自定义 DNS 服务器。
 
 ## <a name="app-service-limitations"></a>应用服务限制
 

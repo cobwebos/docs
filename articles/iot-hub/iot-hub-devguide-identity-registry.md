@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
+ms.date: 08/29/2018
 ms.author: dobett
-ms.openlocfilehash: 4e23b70c8dc5fdacfd609fb4664a78293b9e2362
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 78956c8e9d9248708ec326fc07d46f48e51e0f83
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247639"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43341254"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>了解 IoT 中心的标识注册表
 
@@ -85,12 +85,12 @@ IoT 解决方案通常具有不同的解决方案特定存储，其中包含应�
 
 ## <a name="device-heartbeat"></a>设备检测信号
 
-IoT 中心标识注册表包含名为 **connectionState** 的字段。 开发和调试期间仅使用 **connectionState** 字段。 IoT 解决方案不应在运行时查询字段。 例如，不要在发送云到设备的消息或 SMS 之前查询 **connectionState** 字段以检查设备是否已连接。 我们建议订阅事件网格上的[**设备已断开连接**事件](https://docs.microsoft.com/azure/iot-hub/iot-hub-event-grid#event-types)以获取警报并监视设备连接状态。 使用此[教程](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps)了解如何在 IoT 解决方案中集成 IoT 中心的事件。
+IoT 中心标识注册表包含名为 **connectionState** 的字段。 开发和调试期间仅使用 **connectionState** 字段。 IoT 解决方案不应在运行时查询字段。 例如，不要在发送云到设备的消息或 SMS 之前查询 **connectionState** 字段以检查设备是否已连接。 我们建议订阅事件网格上的[]设备已断开连接事件[lnk-devguide-evgrid-evtype]以获取警报并监视设备连接状态。 使用此[教程][lnk-howto-evgrid-connstate]了解如何在 IoT 解决方案中集成 IoT 中心的设备已连接和设备已断开连接事件。
 
 如果 IoT 解决方案需要知道设备是否已连接，则可实现*检测信号模式*。
 在检测信号模式下，设备每隔固定时间至少发送一次设备到云的消息（例如，每小时至少一次）。 因此，即使设备没有任何要发送的数据，仍会发送空的设备到云消息（通常具有可将其识别为检测信号的属性）。 在服务端上，该解决方案利用每台设备收到的最后一个检测信号来维护映射。 如果解决方案未在预计时间内从设备收到检测信号消息，则它假定设备存在问题。
 
-更复杂的实现可包含来自[操作监视][lnk-devguide-opmon]的信息，以便识别尝试连接或通信但失败的设备。 实施检测信号模式时，请务必查看 [IoT 中心配额与限制][lnk-quotas]。
+更复杂的实现可包含来自 [Azure Monitor][lnk-AM] 和 [Azure 资源运行状况][lnk-ARH]的信息，以便识别尝试连接或通信但失败的设备，请查阅[使用诊断进行监视][lnk-devguide-mon]指南。 实施检测信号模式时，请务必查看 [IoT 中心配额与限制][lnk-quotas]。
 
 > [!NOTE]
 > 如果 IoT 解决方案只使用连接状态来决定是否发送云到设备的消息，并且没有把消息广播到大量设备，则考虑使用更简单的较短到期时间模式。 此模式达到的效果与使用检测信号模式维护设备连接状态注册表达到的效果一样，而且更加有效。 如果请求消息确认，则 IoT 中心可以通知你哪些设备可以接收消息以及哪些设备不能接收。
@@ -256,7 +256,7 @@ IoT 中心开发人员指南中的其他参考主题包括：
 [lnk-rfc7232]: https://tools.ietf.org/html/rfc7232
 [lnk-bulk-identity]: iot-hub-bulk-identity-mgmt.md
 [lnk-export]: iot-hub-devguide-identity-registry.md#import-and-export-device-identities
-[lnk-devguide-opmon]: iot-hub-operations-monitoring.md
+[lnk-devguide-mon]: iot-hub-monitor-resource-health.md
 
 [lnk-devguide-security]: iot-hub-devguide-security.md
 [lnk-devguide-device-twins]: iot-hub-devguide-device-twins.md
@@ -265,3 +265,8 @@ IoT 中心开发人员指南中的其他参考主题包括：
 
 [lnk-getstarted-tutorial]: quickstart-send-telemetry-dotnet.md
 [lnk-dps]: https://azure.microsoft.com/documentation/services/iot-dps
+
+[lnk-AM]: ../monitoring-and-diagnostics/index.yml
+[lnk-ARH]: ../service-health/resource-health-overview.md
+[lnk-devguide-evgrid-evtype]: iot-hub-event-grid.md#event-types
+[lnk-howto-evgrid-connstate]: iot-hub-how-to-order-connection-state-events.md

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 7/25/2018
 ms.author: saurse
-ms.openlocfilehash: e7a63167285c06fdfe632e7d45d9fddd3cca7842
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 2c8978cfba8fc56d4dbc565cb3a91c75d9d54679
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248516"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700189"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent-issues"></a>排查 Microsoft Azure 恢复服务 (MARS) 代理问题
 ## <a name="recommended-steps"></a>建议的步骤
@@ -66,7 +66,10 @@ ms.locfileid: "39248516"
 <li>双击“Microsoft-OnlineBackup”任务，然后转到“触发器”选项卡。
 <li>确保该任务的“状态”设置为“已启用”。 否则，请单击“编辑”并选中“已启用”复选框
 <li>导航到“常规”选项卡的“安全选项”部分
-<li>确保选择用于运行任务的用户帐户是 *SYSTEM* 或服务器上的本地管理员组 > [!TIP] 建议在执行上述步骤后重新启动服务器，以确保一致性地应用所做的更改
+<li>确保为运行任务而选择的用户帐户是服务器上的 SYSTEM 或本地管理员组
+
+> [!TIP]
+> 建议在执行上述步骤后重启服务器，以确保一致地应用所做的更改
 
 
 ## <a name="troubleshooting-restore-issues"></a>排查还原问题

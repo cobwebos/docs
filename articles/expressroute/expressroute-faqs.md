@@ -1,25 +1,18 @@
 ---
 title: Azure ExpressRoute 常见问题解答 | Microsoft 文档
 description: ExpressRoute 常见问题包含有关支持的 Azure 服务、费用、数据和连接、SLA、提供程序和位置、带宽的信息和其他技术详细信息。
-documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: jeconnoc
-editor: ''
-ms.assetid: 09b17bc4-d0b3-4ab0-8c14-eed730e1446e
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/14/2018
+ms.topic: conceptual
+ms.date: 08/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: 2e332b361a1531eb5f6a8a1d3c46c2f258035258
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 5f40b4c9fff57b105b7d96de69780fea83871032
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818787"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302290"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
 
@@ -53,7 +46,7 @@ ExpressRoute 连接不通过公共 Internet 。 与通过 Internet 的典型连�
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>能否同时与虚拟网络和其他 Azure 服务使用同一专用网络连接？
 
-是的。 设置 ExpressRoute 线路后，可以同时访问虚拟网络中的服务和其他 Azure 服务。 可通过专用对等路径连接到虚拟网络，通过公用对等路径连接到其他服务。
+是的。 设置 ExpressRoute 线路后，可以同时访问虚拟网络中的服务和其他 Azure 服务。 通过专用对等路径可连接到虚拟网络，通过 Microsoft 对等路径可连接到其他服务。
 
 ### <a name="does-expressroute-offer-a-service-level-agreement-sla"></a>ExpressRoute 是否提供服务级别协议 (SLA)？
 
@@ -70,33 +63,18 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 ### <a name="public-peering"></a>公共对等互连
 
 >[!NOTE]
->Microsoft 对等互连是访问 Azure 上托管的所有服务的首选方式。
+>在新的 ExpressRoute 线路上已禁用公共对等互连。 Azure 服务在 Microsoft 对等互连上可用。
 >
-
-* Power BI
-* Dynamics 365 for Finance and Operations（以前称为 Dynamics AX Online）
-* 支持大多数 Azure 服务。 请直接对要使用的服务进行确认来验证是否支持。<br>
-  不支持以下服务：
-    * CDN
-    * Visual Studio Team Services 负载测试
-    * 多重身份验证
-    * 流量管理器
 
 ### <a name="microsoft-peering"></a>Microsoft 对等互连
 
 * [Office 365](http://aka.ms/ExpressRouteOffice365)
-* Dynamics 365 Customer Engagement 应用程序（以前称为 CRM Online）
-  * Dynamics 365 for Sales
-  * Dynamics 365 for Customer Service
-  * Dynamics 365 for Field Service
-  * Dynamics 365 for Project Service
-* 使用[路由筛选器](#route-filters-for-microsoft-peering)，可以访问与使用 Microsoft 对等互连时相同的公共服务：
-  * Power BI
-  * Dynamics 365 for Finance and Operations
-  * 支持大多数 Azure 服务。 请直接对要使用的服务进行确认来验证是否支持。<br>
-  不支持以下服务：
+* Dynamics 365 
+* Power BI
+* Azure Active Directory
+* Visual Studio Team Services 负载测试
+* 支持大多数 Azure 服务。 请直接对要使用的服务进行确认来验证是否支持。<br>不支持以下服务：
     * CDN
-    * Visual Studio Team Services 负载测试
     * 多重身份验证
     * 流量管理器
 
@@ -132,7 +110,7 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>如何确保连接到 ExpressRoute 的虚拟网络上的高可用性？
 
-可以通过将不同的对等位置（如新加坡、新加坡 2）中的 ExpressRoute 线路连接到虚拟网络来实现高可用性。 如果一条 ExpressRoute 线路出现故障，连接会故障转移到另一条 ExpressRoute 线路。 默认情况下，将基于等成本多路径路由 (ECMP) 对离开虚拟网络的流量进行路由。 可以使用连接权重来使一条线路优先于另一条线路。 有关连接权重的更多详细信息，请参阅[优化 ExpressRoute 路由](expressroute-optimize-routing.md)。
+通过将不同的对等互连位置（例如，新加坡、新加坡 2）中的 ExpressRoute 线路连接到虚拟网络可以实现高可用性。 如果一条 ExpressRoute 线路出现故障，连接会故障转移到另一条 ExpressRoute 线路。 默认情况下，将基于等成本多路径路由 (ECMP) 对离开虚拟网络的流量进行路由。 可以使用连接权重来使一条线路优先于另一条线路。 有关详细信息，请参阅[优化 ExpressRoute 路由](expressroute-optimize-routing.md)。
 
 ### <a name="onep2plink"></a>如果我不在云交换中共置，而我的服务提供商提供点到点连接，我需要在本地网络与 Microsoft 之间订购两个物理连接吗？
 
@@ -152,7 +130,7 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 
 是的。 可以使用许多服务提供商的 ExpressRoute 线路。 每条 ExpressRoute 线路只与一个服务提供商相关联。 
 
-### <a name="i-see-two-expressroute-peering-locations-in-the-same-metro-eg-singapore-and-singapore2-which-peering-location-should-i-choose-to-create-my-expressroute-circuit"></a>我在同一城市内看到两个 ExpressRoute 对等位置（如新加坡和新加坡 2）。 我应选择哪个对等位置来创建我的 ExpressRoute 线路？
+### <a name="i-see-two-expressroute-peering-locations-in-the-same-metro-for-example-singapore-and-singapore2-which-peering-location-should-i-choose-to-create-my-expressroute-circuit"></a>我在同一城市内看到两个 ExpressRoute 对等互连位置（例如，新加坡和新加坡 2）。 我应选择哪个对等位置来创建我的 ExpressRoute 线路？
 如果服务提供商在两个站点均提供 ExpressRoute，则可以与提供商协作，选择任意一个站点来设置 ExpressRoute。 
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>在相同市内是否可以有多条 ExpressRoute 线路？ 是否可以将这些线路链接到同一虚拟网络？
@@ -205,7 +183,7 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 
 是的。 可以播发默认路由 (0.0.0.0/0) 以阻止与虚拟网络内部署的虚拟机建立所有 Internet 连接，并通过 ExpressRoute 线路路由出所有流量。
 
-请注意，如果播发默认路由，我们会强制将传送到通过公共对等互连提供的服务（如 Azure 存储和 SQL DB）的流量传回本地。 必须将路由器配置为通过公共对等路径或通过 Internet 将流量传回 Azure。 如果已启用了该服务的一个服务终结点（预览版），则不会强制将发送到该服务的流量传回本地。 流量将保持在 Azure 主干网络中。 若要详细了解服务终结点，请参阅[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md?toc=%2fazure%2fexpressroute%2ftoc.json)
+请注意，如果播发默认路由，我们会强制将传送到通过 Microsoft 对等互连提供的服务（如 Azure 存储和 SQL DB）的流量传回本地。 必须将路由器配置为通过 Microsoft 对等互连路径或通过 Internet 将流量传回 Azure。 如果已启用了该服务的一个服务终结点，则不会强制将发送到该服务的流量传回本地。 流量将保持在 Azure 主干网络中。 若要详细了解服务终结点，请参阅[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md?toc=%2fazure%2fexpressroute%2ftoc.json)
 
 ### <a name="can-virtual-networks-linked-to-the-same-expressroute-circuit-talk-to-each-other"></a>连接到同一 ExpressRoute 线路的虚拟网络能否互相对话？
 
@@ -223,17 +201,13 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 
 此公共 IP 地址仅用于内部管理，不会给虚拟网络带来安全隐患。
 
-### <a name="what-do-i-need-to-connect-to-azure-storage-over-expressroute"></a>通过 ExpressRoute 连接到 Azure 存储需要执行哪些操作？
-
-必须建立一条 ExpressRoute 线路并为公共对等互连配置路由。
-
 ### <a name="are-there-limits-on-the-number-of-routes-i-can-advertise"></a>对于我可以公布的路由数有限制吗？
 
-是的。 对于专用对等互连，我们最多接受 4000 个路由前缀；对于公共对等互连和 Microsoft 对等互连，各接受 200 个。 如果启用 ExpressRoute 高级功能，可以将专用对等互连的此限制提高为 10,000 个路由。
+是的。 对于专用对等互连，我们最多接受 4000 个路由前缀；对于 Microsoft 对等互连，接受 200 个。 如果启用 ExpressRoute 高级功能，可以将专用对等互连的此限制提高为 10,000 个路由。
 
 ### <a name="are-there-restrictions-on-ip-ranges-i-can-advertise-over-the-bgp-session"></a>对于我可以通过 BGP 会话公布的 IP 范围有限制吗？
 
-在公共和 Microsoft 对等 BGP 会话中，不接受私有前缀 (RFC1918)。
+对于 Microsoft 对等 BGP 会话中，不接受私有前缀 (RFC1918)。
 
 ### <a name="what-happens-if-i-exceed-the-bgp-limits"></a>如果超过 BGP 限制，会发生什么情况？
 
@@ -242,18 +216,6 @@ BGP 会话会被删除。 当前缀计数低于限制后，将重置这些会话
 ### <a name="what-is-the-expressroute-bgp-hold-time-can-it-be-adjusted"></a>ExpressRoute BGP 保持时间是多少？ 是否可以调整它？
 
 保持时间为 180。 Keep-Alive（保持活动）消息每隔 60 秒发送一次。 这些是 Microsoft 端的固定设置，不能更改。 可以配置不同的计时器，BGP 会话参数会相应地协商。
-
-### <a name="after-i-advertise-the-default-route-00000-to-my-virtual-networks-i-cant-activate-windows-running-on-my-azure-vms-how-to-i-fix-this"></a>将默认路由 (0.0.0.0/0) 播发到虚拟网络后，我无法激活 Azure VM 上运行的 Windows。 我如何解决此问题？
-
-以下步骤帮助 Azure 识别激活请求：
-
-1. 为 ExpressRoute 线路建立公共对等互连。
-2. 执行 DNS 查找，找到 **kms.core.windows.net** 的 IP 地址
-3. 密钥管理服务必须识别来自 Azure 的激活请求并遵循该请求。 执行以下三个任务之一：
-
-   * 在本地网络上，通过公共对等互连将发往步骤 2 中获取的 IP 地址的流量路由回到 Azure。
-   * 让 NSP 提供商通过公共对等互连将流量路由回到 Azure。
-   * 创建用户定义的路由，该路由指明具有 Internet 的 IP 作为下一跃点，然后将其应用于这些虚拟机所在的子网。
 
 ### <a name="can-i-change-the-bandwidth-of-an-expressroute-circuit"></a>是否可以更改 ExpressRoute 线路的带宽？
 
@@ -280,7 +242,7 @@ ExpressRoute 高级版是以下功能的集合：
     **示例：**
 
     *  可将欧洲西部创建的 VNet 链接到硅谷创建的 ExpressRoute 线路。 
-    *  在公共对等互连中，会播发来自其他地缘政治区域的前缀，以便可以进行连接，例如，通过硅谷的线路连接到欧洲西部地区的 SQL Azure。
+    *  在 Microsoft 对等互连中，会播发来自其他地缘政治区域的前缀，以便可以进行连接，例如，通过硅谷的线路连接到欧洲西部地区的 SQL Azure。
 
 
 ### <a name="limits"></a>如果启用了 ExpressRoute 高级版，可将多少个 VNet 链接到一条 ExpressRoute 线路？
@@ -309,11 +271,11 @@ ExpressRoute 高级版是以下功能的集合：
 
 是的。 ExpressRoute 高级版的费用是在 ExpressRoute 线路费用以及连接提供商所收费用的基础之上收取的。
 
-## <a name="expressroute-for-office-365-and-dynamics-365"></a>用于 Office 365 和 Dynamics 365 的 ExpressRoute
+## <a name="expressroute-for-office-365"></a>适用于 Office 365 的 ExpressRoute
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-### <a name="how-do-i-create-an-expressroute-circuit-to-connect-to-office-365-services-and-dynamics-365"></a>如何创建 ExpressRoute 线路，以便连接到 Office 365 服务和 Dynamics 365？
+### <a name="how-do-i-create-an-expressroute-circuit-to-connect-to-office-365-services"></a>如何创建 ExpressRoute 线路，以便连接到 Office 365 服务？
 
 1. 请查看 [ExpressRoute 先决条件页](expressroute-prerequisites.md)，以确保满足要求。
 2. 为确保满足连接需求，请查看 [ExpressRoute 合作伙伴和位置](expressroute-locations.md)一文中的服务提供商和位置列表。
@@ -321,13 +283,9 @@ ExpressRoute 高级版是以下功能的集合：
 4. 遵循工作流中列出的步骤来设置连接：[ExpressRoute 线路预配工作流和线路状态](expressroute-workflows.md)。
 
 > [!IMPORTANT]
-> 确保在配置与 Office 365 服务和 Dynamics 365 的连接时已启用 ExpressRoute 高级版外接程序。
+> 确保在配置与 Office 365 服务的连接时已启用 ExpressRoute 高级版外接程序。
 > 
 > 
-
-### <a name="do-i-need-to-enable-azure-public-peering-to-connect-to-office-365-services-and-dynamics-365"></a>是否需要启用 Azure 公共对等互连才能连接到 Office 365 服务和 Dynamics 365？
-
-否，只需启用 Microsoft 对等互连。 通过 Microsoft 对等互连发送到 Azure AD 的身份验证流量。 
 
 ### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services-and-dynamics-365"></a>现有 ExpressRoute 线路是否支持连接到 Office 365 服务和 Dynamics 365？
 
@@ -337,9 +295,9 @@ ExpressRoute 高级版是以下功能的集合：
 
 如需可以通过 ExpressRoute 使用的服务的最新列表，请参阅 [Office 365 URL 和 IP 地址范围](http://aka.ms/o365endpoints)页。
 
-### <a name="how-much-does-expressroute-for-office-365-services-and-dynamics-365-cost"></a>用于 Office 365 服务和 Dynamics 365 的 ExpressRoute 的费用是多少？
+### <a name="how-much-does-expressroute-for-office-365-services-cost"></a>用于 Office 365 服务的 ExpressRoute 的费用是多少？
 
-Office 365 服务和 Dynamics 365 要求启用高级版外接程序。 有关费用，请参阅[定价详细信息页](https://azure.microsoft.com/pricing/details/expressroute/)。
+Office 365 服务要求启用高级版外接程序。 有关费用，请参阅[定价详细信息页](https://azure.microsoft.com/pricing/details/expressroute/)。
 
 ### <a name="what-regions-is-expressroute-for-office-365-supported-in"></a>哪些区域支持适用于 Office 365 的 ExpressRoute？
 
@@ -356,10 +314,6 @@ Office 365 服务和 Dynamics 365 要求启用高级版外接程序。 有关费
 
 是的。 可以通过 Azure 美国政府版 ExpressRoute 访问 Office 365 GCC 服务终结点。 但是，首先需要在 Azure 门户上开具支持票证，向 Microsoft 提供要播发的前缀。 解决支持票证后，将建立到 Office 365 GCC 服务的连接。 
 
-### <a name="can-dynamics-365-for-operations-formerly-known-as-dynamics-ax-online-be-accessed-over-an-expressroute-connection"></a>是否可以通过 ExpressRoute 连接访问 Dynamics 365 for Operations（以前称为 Dynamics AX Online）？
-
-是的。 [Dynamics 365 for Operations](https://www.microsoft.com/dynamics365/operations) 托管在 Azure 上。 可以启用 ExpressRoute 线路上的 Azure 公共对等互连来连接到它。
-
 ## <a name="route-filters-for-microsoft-peering"></a>用于 Microsoft 对等互连的路由筛选器
 
 ### <a name="i-am-turning-on-microsoft-peering-for-the-first-time-what-routes-will-i-see"></a>首次启用 Microsoft 对等互连时，会看到哪些路由？
@@ -374,7 +328,7 @@ Office 365 服务和 Dynamics 365 要求启用高级版外接程序。 有关费
 
 否，不需要获得 Dynamics 365 的授权。 可以创建一个规则并选择 Dynamics 365 社区版，而无需获得授权。
 
-### <a name="i-enabled-microsoft-peering-prior-to-august-1st-2017-how-can-i-take-advantage-of-route-filters"></a>我在 2017 年 8 月 1 日前已启用了 Microsoft 对等互连，如何利用路由筛选器？
+### <a name="i-enabled-microsoft-peering-prior-to-august-1-2017-how-can-i-take-advantage-of-route-filters"></a>我在 2017 年 8 月 1 日前已启用了 Microsoft 对等互连，如何利用路由筛选器？
 
 现有线路将继续为 Office 365 和 Dynamics 365 播发前缀。 如果希望添加基于同一 Microsoft 对等互连的 Azure 公共前缀播发，可以创建一个路由筛选器，选择需要播发的服务（包括你需要的 Office 365 服务和 Dynamics 365），并将筛选器附加到你的 Microsoft 对等互连。 有关说明，请参阅[配置用于 Microsoft 对等互连的路由筛选器](how-to-routefilter-powershell.md)。
 

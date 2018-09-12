@@ -15,22 +15,22 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: na
-ms.openlocfilehash: 47069f0af7409d87cb2d4fbbbce9dda0b1c2056e
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 82845f475857f9a911febd496e86eb2a60f69c25
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886554"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782220"
 ---
 # <a name="monitor-azure-sql-databases-using-azure-sql-analytics-preview"></a>使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
 
 ![Azure SQL Analytics 符号](./media/log-analytics-azure-sql/azure-sql-symbol.png)
 
-Azure SQL Analytics 是一种云监视解决方案，用于跨多个弹性池和订阅大规模监视 Azure SQL 数据库的性能。 它通过内置智能来收集和直观显示重要的 Azure SQL 数据库性能指标，以便成功进行性能故障排除。 
+Azure SQL Analytics 是一种云监视解决方案，用于跨多个订阅大规模监视 Azure SQL 数据库、弹性池和托管实例的性能。 它通过内置智能来收集和直观显示重要的 Azure SQL 数据库性能指标，以便进行性能故障排除。
 
-使用解决方案收集指标后，即可利用这些指标创建自定义监视规则和警报。 该解决方案可以帮助你确定应用程序堆栈的每个层的问题。 它使用 Azure 诊断指标和 Log Analytics 视图，在单个 Log Analytics 工作区中呈现有关所有 Azure SQL 数据库和弹性池的数据。 Log Analytics 可帮助用户收集、关联和可视化结构化和非结构化数据。
+使用解决方案收集指标后，即可利用这些指标创建自定义监视规则和警报。 该解决方案可以帮助你确定应用程序堆栈的每个层的问题。 它使用 Azure 诊断指标和 Log Analytics 视图，在单个 Log Analytics 工作区中呈现有关所有 Azure SQL 数据库和弹性池和托管实例中的数据库的数据。 Log Analytics 可帮助用户收集、关联和可视化结构化和非结构化数据。
 
-此预览版解决方案目前支持每个工作区使用多达 150,000 个 Azure SQL 数据库和 5,000 个 SQL 弹性池。
+此预览版解决方案目前支持每个工作区使用多达 200,000 个 Azure SQL 数据库和 5,000 个 SQL 弹性池。
 
 有关使用 Azure SQL Analytics 解决方案的实践概述和典型使用方案，请观看嵌入视频：
 
@@ -39,7 +39,7 @@ Azure SQL Analytics 是一种云监视解决方案，用于跨多个弹性池和
 
 ## <a name="connected-sources"></a>连接的源
 
-Azure SQL Analytics 是一种云监视解决方案，它支持流式传输 Azure SQL 数据库和弹性池的诊断遥测数据。 由于该解决方案不使用代理连接到 Log Analytics 服务，因此它不支持与 Windows、Linux 或 SCOM 资源的连接，请参阅下面的兼容性表。
+Azure SQL Analytics 是一种仅云监视解决方案，它支持流式传输 Azure SQL 数据库、弹性池和托管实例的诊断遥测。 由于该解决方案不使用代理连接到 Log Analytics 服务，因此它不支持监视本地 SQL Server 或 VM，请参阅下面的兼容性表。
 
 | 连接的源 | 支持 | Description |
 | --- | --- | --- |

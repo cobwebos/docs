@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/17/2018
 ms.author: tomsh
-ms.openlocfilehash: 933d0f60b902ae2cb0abcde2ca39a58e59457c6b
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: cc922762f84b3a0658d503c4bfa6eb0079173e4e
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42140023"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841541"
 ---
 # <a name="azure-security-white-papers"></a>Azure 安全性白皮书
 | | |
@@ -30,7 +30,8 @@ ms.locfileid: "42140023"
 |[Azure 日志记录和审核](azure-log-audit.md)|介绍了如何生成、收集和分析 Azure 上托管的服务的安全日志。 这些日志可以帮助你获得 Azure 部署的安全见解。 |
 |[Azure 网络安全](abstract-azure-network-security.md)|介绍各种网络控件，通过配置这些控件可增强 Azure 中部署的解决方案的安全性。 重点介绍面向客户的网络安全控件。|
 |[Azure Functions 和无服务器平台安全性](https://gallery.technet.microsoft.com/Azure-Functions-and-c6449f8d/file/202175/1/Microsoft%20Serverless%20Platform.pdf)|这篇可下载的白皮书介绍了无服务器计算的优势，同时提供了 Azure 上下文中的安全注意事项和缓解措施。 |
-|[Azure 操作安全性](azure-operational-security.md)|全面介绍了 Azure 所提供的面向客户的操作安全技术和服务。|
+|[Microsoft Azure 中的容器安全性](abstract-container-security-microsoft-azure.md)|介绍容器、容器部署和管理，以及本机平台服务。 它还介绍 Azure 平台上使用容器出现的运行时安全问题。 |
+|[Azure 操作安全性](abstract-azure-operational-security.md)|全面介绍了 Azure 所提供的面向客户的操作安全技术和服务。|
 |[Azure 安全技术功能](azure-security-technical-capabilities.md)|重点介绍安全功能和支持 Azure 存储、Azure SQL 数据库、Azure 虚拟机模型的功能，以及管理所有这些功能的工具和基础结构。|
 |[Azure 存储安全指南](https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=%2fazure%2fsecurity%2ftoc.json) |概述了每项可与 Azure 存储配合使用的安全功能。 涵盖了管理平面安全性、数据平面安全性、静态加密、动态加密和存储分析。|
 |[云数据分类准备就绪](https://gallery.technet.microsoft.com/Data-Classification-for-51252f03/file/172083/1/Data%20Classification%20for%20Cloud%20Readiness%20(2017-04-11).pdf)  |本可下载的白皮书介绍了数据分类及其在云计算上下文中的价值的基础知识。 评估云计算以备将来使用的组织或当前正在使用云服务并想方设法优化数据管理的组织将从本白皮书获益最多。|

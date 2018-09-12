@@ -11,14 +11,14 @@ ms.component: data-science-vm
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 08/30/2018
 ms.author: gokuma
-ms.openlocfilehash: f0fe2bde039cd209514d0cbc4842b20cd4b5fb99
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 8131122f78f743d04e332bfc8dfeba87a8c34236
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444036"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782648"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>在 Azure 上预配 Windows 数据科学虚拟机
 Microsoft Data Science Virtual Machine (DSVM) 是一个 Windows Azure 虚拟机 (VM) 映像。 它是使用几种用于数据分析和机器学习的工具进行预安装和配置的。 包括以下工具：
@@ -66,7 +66,7 @@ Microsoft 数据科研虚拟机可快速启动分析项目。 可以处理各种
 ## <a name="create-your-microsoft-data-science-virtual-machine"></a>创建 Microsoft 数据科研虚拟机
 若要创建 Microsoft 数据科学虚拟机实例，请执行以下步骤：
 
-1. 导航到 [Azure 门户](https://portal.azure.com/#create/microsoft-ads.windows-data-science-vmwindows2016)上的虚拟机列表。
+1. 导航到 [Azure 门户](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016)上的虚拟机列表。 如果尚未登录 Azure 帐户，系统会提示登录。
 1. 选择底部的“创建”按钮来进入向导。
 
   ![configure-data-science-vm](./media/provision-vm/configure-data-science-virtual-machine.png) 
@@ -126,7 +126,7 @@ Machine Learning Server 具有数据并行处理和区块式处理能力，可�
 > 
 > 
 
-Anaconda Python 3.6 安装在 **C:\Anaconda** 下。 Anaconda Python 2.7 安装在 **C:\Anaconda\envs\python2** 下。 有关详细步骤，请参阅 [PTVS 文档](/visualstudio/python/installing-python-interpreters.md)。 
+Anaconda Python 3.6 安装在 **C:\Anaconda** 下。 Anaconda Python 2.7 安装在 **C:\Anaconda\envs\python2** 下。 有关详细步骤，请参阅 [PTVS 文档](https://docs.microsoft.com/visualstudio/python/installing-python-interpreters)。 
 
 ### <a name="the-jupyter-notebook"></a>Jupyter Notebook
 Anaconda 分发版还附带 Jupyter Notebook - 用于共享代码和分析的环境。 Jupyter Notebook 服务器上已预先配置 Python 2.7、Python 3.x、PySpark、Julia 和 R 内核。 可通过名为“Jupyter Notebook”的桌面图标来启动 Jupyter 服务器，并启动浏览器来访问 Notebook 服务器。 

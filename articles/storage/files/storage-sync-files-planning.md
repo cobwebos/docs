@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: a7d62531492695be6ec148c3bf7b9786b2a428cf
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: d5b01566f672309837f738e185820a0f13eda1c1
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247389"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382240"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -112,7 +112,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 ```
 
 ### <a name="system-requirements"></a>系统要求
-- 运行 Windows Server 2012 R2 或 Windows Server 2016 的服务器 
+- 运行 Windows Server 2012 R2 或 Windows Server 2016 的服务器：
 
     | 版本 | 支持的 SKU | 支持的部署选项 |
     |---------|----------------|------------------------------|
@@ -121,15 +121,15 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 
     将来的 Windows Server 版本将在发布后添加。 Windows 旧版本可能根据用户的反馈添加。
 
-- 最少具有 2GB 内存的服务器
+    > [!Important]  
+    > 我们建议使用 Windows 更新提供的最新更新，将用于 Azure 文件同步的所有服务器保持最新。 
+
+- 最少具有 2 GiB 内存的服务器。
 
     > [!Important]  
-    > 如果服务器在启用了动态内存的虚拟机中运行，则至少应当为该 VM 配置 2048MB 内存。
+    > 如果服务器在启用了动态内存的虚拟机中运行，则至少应当为该 VM 配置 2048 MiB 内存。
     
-- 使用 NTFS 文件系统进行了格式化的本地附加卷
-
-> [!Important]  
-> 我们建议使用 Windows 更新提供的最新更新，将用于 Azure 文件同步的所有服务器保持最新。 
+- 使用 NTFS 文件系统进行了格式化的本地附加卷。
 
 ### <a name="file-system-features"></a>文件系统功能
 | 功能 | 支持状态 | 说明 |

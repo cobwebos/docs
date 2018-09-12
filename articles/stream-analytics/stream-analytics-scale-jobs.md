@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: 61ee84ccfccfa49ff2e106e7036d072c1b21ca03
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 4da97d708f8db2dcee406645a0eee409fa111012
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "34652536"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696796"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>扩展 Azure 流分析作业以增加吞吐量
 本文介绍如何优化流分析查询，增加流分析作业的吞吐量。 可以使用以下指南来扩展作业，以便处理较高负载并充分利用更多的系统资源（如更多带宽、更多 CPU 资源、更多内存）。
@@ -70,7 +70,7 @@ ms.locfileid: "34652536"
 2.  如果使用事件中心，则将输入分区计数减少到可能的最低值 2。
 3.  使用 6 SU 运行查询。 通过每个子查询的预期负载，尽可能多地添加此类子查询，直到作业达到系统资源上限。 有关发生这种情况时的症状，请参阅[案例 1](#case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions)。
 4.  一旦达到以上度量的子查询上限，可开始向新作业添加子查询。 作为独立查询数量的函数运行的作业数应是标准线性的，前提是你没有任何负载偏移。 然后，可以预测你需要多少个 6 SU 作业，作为你想要提供的租户数的函数运行。
-5.  将引用数据联接与此类查询结合使用时，应在使用相同引用数据进行联接之前将输入合并在一起，然后再根据需要拆分事件。 否则，每个引用数据联接会在内存中保留一份引用数据，可能导致不必要的内存使用。
+5.  将引用数据联接与此类查询结合使用时，应在使用相同引用数据进行联接之前将输入合并在一起。 然后再根据需要拆分事件。 否则，每个引用数据联接会在内存中保留一份引用数据，可能导致不必要的内存使用。
 
 > [!Note] 
 > 每个作业中要放置多少租户？

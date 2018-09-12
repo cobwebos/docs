@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05c88c8938580666ce99f7cae46dc69cda3c3776
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: a57d5f8d857a8cfcdc81e86650466aec740f41e3
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344692"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286803"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>在 Azure Functions 中测试代码的策略
 
@@ -34,9 +34,9 @@ ms.locfileid: "39344692"
 + 计时器触发的函数
 + 测试应用程序或框架
 
-上述所有测试方法都使用一个 HTTP 触发器函数，该函数可通过查询字符串参数或请求正文接受输入。 将在第一部分中创建此函数。
+上述所有测试方法都使用一个 HTTP 触发器函数，该函数可通过查询字符串参数或请求正文接受输入。 第一部分将使用 Azure 门户创建此函数。
 
-## <a name="create-a-function-for-testing"></a>创建用于测试的函数
+## <a name="create-a-simple-function-for-testing-using-the-azure-portal"></a>使用 Azure 门户创建一个简单的测试用函数
 此教程的大部分内容都使用 HttpTrigger JavaScript 函数模板的略加修改的版本，创建函数时可使用该模板。 如果在创建函数时需要帮助，请查看此[教程](functions-create-first-azure-function.md)。 在 [Azure 门户]中创建测试函数时请选择 **HttpTrigger- JavaScript** 模板。
 
 默认函数模板基本上是一个“hello world”函数，它从请求正文或查询字符串 `name=<your name>` 回显名称。  我们将更新代码，以允许提供名称和地址作为请求正文中的 JSON 内容。 然后，该函数会在提供了这些内容时将其回显到客户端。   

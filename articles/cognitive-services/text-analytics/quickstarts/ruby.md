@@ -7,38 +7,38 @@ author: ashmaka
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 08/30/2018
 ms.author: ashmaka
-ms.openlocfilehash: 7563a967ed23f98d8626092d58b5a0f5d4d1834c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 75c6476e86ee4a742e32ae0e7ffd27842f591843
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365819"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841722"
 ---
 # <a name="quickstart-for-text-analytics-api-with-ruby"></a>通过 Ruby 使用文本分析 API 快速入门 
 <a name="HOLTop"></a>
 
 本文介绍了如何通过 Ruby 使用[文本分析 API](//go.microsoft.com/fwlink/?LinkID=759711) 来[检测语言](#Detect)、[分析情绪](#SentimentAnalysis)、[提取关键短语](#KeyPhraseExtraction)和[识别链接的实体](#Entities)。
 
-请参阅 [API 定义](//go.microsoft.com/fwlink/?LinkID=759346)以获取 API 的技术文档。
+有关 API 的技术文档，请参阅 [API 定义](//go.microsoft.com/fwlink/?LinkID=759346)。
 
 ## <a name="prerequisites"></a>先决条件
 
-必须创建一个具有“文本分析 API”的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 可使用“每月 5,000 笔交易的免费层”完成此快速入门。
+必须拥有包含**文本分析 API** 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 可使用“每月 5,000 笔交易的免费层”完成此快速入门。
 
-还必须拥有在注册期间为你生成的[终结点和访问密钥](../How-tos/text-analytics-how-to-access-key.md)。 
+还必须拥有在注册期间生成的[终结点和访问密钥](../How-tos/text-analytics-how-to-access-key.md)。 
 
 <a name="Detect"></a>
 
 ## <a name="detect-language"></a>检测语言
 
-语言检测 API 通过使用[检测语言方法](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)检测文本文档的语言。
+语言检测 API 使用[检测语言方法](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)检测文本文档的语言。
 
 1. 在最喜爱的 IDE 中新建 Ruby 项目。
 2. 添加以下提供的代码。
-3. 使用对订阅有效的访问密钥替换 `accessKey` 值。
-4. 将 `uri`（当前为 `westus`）中的位置替换为注册的区域。
+3. 将 `accessKey` 值替换为对你的订阅有效的访问密钥。
+4. 将 `uri` 中的位置（当前为 `westus`）替换为进行注册的区域。
 5. 运行该程序。
 
 ```ruby
@@ -51,7 +51,7 @@ require 'json'
 # **********************************************
 
 # Replace the accessKey string value with your valid access key.
-accessKey = 'enter key here'
+accessKey = 'ENTER KEY HERE'
 
 # Replace or verify the region.
 #
@@ -62,9 +62,9 @@ accessKey = 'enter key here'
 # NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
 # a free trial access key, you should not need to change this region.
 uri = 'https://westus.api.cognitive.microsoft.com'
-path = '/text/analytics/v2.0/languages'
+path = '/text/analytics/v2.0/'
 
-uri = URI(uri + path)
+uri = URI(uri + path + 'languages')
 
 documents = { 'documents': [
     { 'id' => '1', 'text' => 'This is a document written in English.' },
@@ -136,38 +136,12 @@ puts JSON::pretty_generate (JSON (response.body))
 
 ## <a name="analyze-sentiment"></a>分析情绪
 
-情绪分析 API 通过使用[情绪方法](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)检测一组文本记录的情绪。 下列示例为两个文档打分，一个是英文文档，另一个是西班牙文文档。
+情绪分析 API 使用[情绪方法](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)检测一组文本记录的情绪。 以下示例为两个文档打分，一个是英文文档，另一个是西班牙文文档。
 
-1. 在最喜爱的 IDE 中新建 Ruby 项目。
-2. 添加以下提供的代码。
-3. 使用对订阅有效的访问密钥替换 `accessKey` 值。
-4. 将 `uri`（当前为 `westus`）中的位置替换为注册的区域。
-5. 运行该程序。
+将以下代码添加到[上一节](#Detect)的代码中。
 
 ```ruby
-require 'net/https'
-require 'uri'
-require 'json'
-
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
-
-# Replace the accessKey string value with your valid access key.
-accessKey = 'enter key here'
-
-# Replace or verify the region.
-#
-# You must use the same region in your REST API call as you used to obtain your access keys.
-# For example, if you obtained your access keys from the westus region, replace 
-# "westcentralus" in the URI below with "westus".
-#
-# NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-# a free trial access key, you should not need to change this region.
-uri = 'https://westus.api.cognitive.microsoft.com'
-path = '/text/analytics/v2.0/sentiment'
-
-uri = URI(uri + path)
+uri = URI(uri + path + 'sentiment')
 
 documents = { 'documents': [
     { 'id' => '1', 'language' => 'en', 'text' => 'I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.' },
@@ -212,39 +186,12 @@ puts JSON::pretty_generate (JSON (response.body))
 
 ## <a name="extract-key-phrases"></a>提取关键短语
 
-关键短语提取 API 通过使用[关键短语方法](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)从文本文档中提取关键短语。 下列示例为英文和西班牙文文档提取关键短语。
+关键短语提取 API 使用[关键短语方法](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)从文本文档中提取关键短语。 以下示例为英文和西班牙文文档提取关键短语。
 
-1. 在最喜爱的 IDE 中新建 Ruby 项目。
-2. 添加以下提供的代码。
-3. 使用对订阅有效的访问密钥替换 `accessKey` 值。
-4. 将 `uri`（当前为 `westus`）中的位置替换为注册的区域。
-5. 运行该程序。
-
+将以下代码添加到[上一节](#SentimentAnalysis)的代码中。
 
 ```ruby
-require 'net/https'
-require 'uri'
-require 'json'
-
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
-
-# Replace the accessKey string value with your valid access key.
-accessKey = 'enter key here'
-
-# Replace or verify the region.
-#
-# You must use the same region in your REST API call as you used to obtain your access keys.
-# For example, if you obtained your access keys from the westus region, replace 
-# "westcentralus" in the URI below with "westus".
-#
-# NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-# a free trial access key, you should not need to change this region.
-uri = 'https://westus.api.cognitive.microsoft.com'
-path = '/text/analytics/v2.0/keyPhrases'
-
-uri = URI(uri + path)
+uri = URI(uri + path + 'keyPhrases')
 
 documents = { 'documents': [
     { 'id' => '1', 'language' => 'en', 'text' => 'I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.' },
@@ -307,41 +254,14 @@ puts JSON::pretty_generate (JSON (response.body))
 ```
 <a name="Entities"></a>
 
-## <a name="identify-linked-entities"></a>识别链接的实体
+## <a name="identify-linked-entities"></a>识别链接实体
 
-实体连接 API 通过使用[实体连接方法](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)识别已知的实体。 下列示例识别英文文档的实体。
+实体链接 API 使用[实体链接方法](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)识别文本文档中的已知实体。 以下示例识别英文文档的实体。
 
-1. 在最喜爱的 IDE 中新建 Ruby 项目。
-2. 添加以下提供的代码。
-3. 使用对订阅有效的访问密钥替换 `accessKey` 值。
-4. 将 `uri`（当前为 `westus`）中的位置替换为注册的区域。
-5. 运行该程序。
-
+将以下代码添加到[上一节](#KeyPhraseExtraction)的代码中。
 
 ```ruby
-require 'net/https'
-require 'uri'
-require 'json'
-
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
-
-# Replace the accessKey string value with your valid access key.
-accessKey = 'enter key here'
-
-# Replace or verify the region.
-#
-# You must use the same region in your REST API call as you used to obtain your access keys.
-# For example, if you obtained your access keys from the westus region, replace 
-# "westcentralus" in the URI below with "westus".
-#
-# NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-# a free trial access key, you should not need to change this region.
-uri = 'https://westus.api.cognitive.microsoft.com'
-path = '/text/analytics/v2.0/entities'
-
-uri = URI(uri + path)
+uri = URI(uri + path + 'entities')
 
 documents = { 'documents': [
     { 'id' => '1', 'language' => 'en', 'text' => 'I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.' },
@@ -434,4 +354,4 @@ puts JSON::pretty_generate (JSON (response.body))
 ## <a name="see-also"></a>另请参阅 
 
  [文本分析概述](../overview.md)  
- [常见问题 (FAQ)](../text-analytics-resource-faq.md)
+ [常见问题解答 (FAQ)](../text-analytics-resource-faq.md)

@@ -9,14 +9,14 @@ ms.service: sql-database
 ms.subservice: managed-instance
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/14/2018
+ms.date: 08/30/2018
 ms.author: bonova
-ms.openlocfilehash: 2c6cdcd5d8d50a54a87e3dabd2aa09eccc646738
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 2e1fd7c87931f804433708b6ac30a5960e6006ae
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42140435"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287657"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>什么是托管实例（预览版）？
 
@@ -71,7 +71,7 @@ Azure SQL 数据库托管实例结合了 Azure SQL 数据库和 SQL Server 数�
 - **常规用途**：适用于具有典型性能和 IO 延迟要求的应用程序。
 - **业务关键**：适用于具有低 IO 延迟要求，对工作负荷中基础维护操作影响最低的应用程序。
 
-这两个服务层保证 99.99% 的可用性，可让你独立选择存储大小和计算容量。 
+这两个服务层保证 99.99% 的可用性，可让你独立选择存储大小和计算容量。 有关 Azure SQL 数据库高可用性体系结构的详细信息，请参阅[高可用性和 Azure SQL 数据库](sql-database-high-availability.md)。
 
 > [!IMPORTANT]
 > 在公共预览版中，不支持在常规用途和业务关键服务层之间切换。 如果想要将数据库迁移到不同服务层中的实例，可以创建新实例，从原始实例对数据库进行时间点还原，然后删除不再需要的原始实例。 
@@ -97,7 +97,7 @@ Azure SQL 数据库托管实例结合了 Azure SQL 数据库和 SQL Server 数�
 | 每个数据库的数据文件 (ROWS) 数目 | 多个 | 
 | 每个数据库的日志文件 (LOG) 数目 | 1 | 
 | 受管理的自动备份 | 是 |
-| 高可用性 | 基于远程存储和 [Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
+| 高可用性 | 存储在 Azure 存储和 [Azure Service Fabric ](../service-fabric/service-fabric-overview.md) 中的数据 |
 | 内置的实例和数据库监视与指标 | 是 |
 | 自动软件修补 | 是 |
 | VNet - Azure 资源管理器部署 | 是 |
@@ -105,8 +105,7 @@ Azure SQL 数据库托管实例结合了 Azure SQL 数据库和 SQL Server 数�
 | 门户支持 | 是|
 |||
 
-
-  \* 虚拟核心表示逻辑 CPU，提供不同代的硬件供客户选择。 第 4 代逻辑 CPU 基于 Intel E5-2673 v3 (Haswell) 2.4 GHz 处理器，第 5 代逻辑 CPU 基于 Intel E5-2673 v4 (Broadwell) 2.3 GHz 处理器。 
+\* 虚拟核心表示逻辑 CPU，提供不同代的硬件供客户选择。 第 4 代逻辑 CPU 基于 Intel E5-2673 v3 (Haswell) 2.4 GHz 处理器，第 5 代逻辑 CPU 基于 Intel E5-2673 v4 (Broadwell) 2.3 GHz 处理器。 
 
 有关详细信息，请参阅 [Azure SQL 数据库中的标准/常规用途可用性和体系结构](sql-database-high-availability.md#standardgeneral-purpose-availability)。
 
@@ -132,7 +131,7 @@ Azure SQL 数据库托管实例结合了 Azure SQL 数据库和 SQL Server 数�
 | 每个数据库的数据文件 (ROWS) 数目 | 多个 | 
 | 每个数据库的日志文件 (LOG) 数目 | 1 | 
 | 受管理的自动备份 | 是 |
-| 高可用性 | 基于 [Always On 可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)和 [Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
+| 高可用性 | 数据存储在本地 SSD 中并使用 [Always On 可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)和 [Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
 | 内置的实例和数据库监视与指标 | 是 |
 | 自动软件修补 | 是 |
 | VNet - Azure 资源管理器部署 | 是 |

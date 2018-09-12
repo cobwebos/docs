@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/01/2018
 ms.author: lakasa
 ms.component: common
-ms.openlocfilehash: 0e1ebd8868cfe5ef69a09219ffc82092fb85a4c8
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: f14ffc7bfbdabdd93e7743c7932dae1af7730e60
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527080"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781558"
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault 中使用客户托管密钥的存储服务加密
 Microsoft Azure 致力于帮助保护数据，使组织能够信守在安全性与合规性方面所做的承诺。 Azure 存储平台保护数据的方法之一是使用存储服务加密 (SSE)，此功能可以在将数据写入存储时加密数据，在检索数据时解密数据。 加密和解密是自动且透明的，它使用 256 位 [AES 加密](https://wikipedia.org/wiki/Advanced_Encryption_Standard)，这是行业中最强的分组加密法之一。
@@ -34,7 +34,7 @@ Azure Blob 存储和 Azure 文件存储的 SSE 与 Azure Key Vault 集成，因�
 首先，如果还没有存储帐户，请创建存储帐户。 有关详细信息，请参阅[创建新的存储帐户](storage-quickstart-create-account.md)。
 
 ### <a name="step-2-enable-sse-for-blob-and-file-storage"></a>步骤 2：为 Blob 和文件存储启用 SSE
-若要启用使用客户托管密钥的 SSE，还必须启用两个密钥保护功能：软删除和不清除。 这些设置可确保密钥不被意外或有意地删除。 密钥的最大保持期设置为 90 天，保护用户免受恶意执行组件或勒索软件攻击。
+若要启用使用客户托管密钥的 SSE，还必须在 Azure Key Vault 中启用两个密钥保护功能：软删除和不清除。 这些设置可确保密钥不被意外或有意地删除。 密钥的最大保持期设置为 90 天，保护用户免受恶意执行组件或勒索软件攻击。
 
 如果想要以编程方式启用使用客户托管密钥的 SSE，可以使用 [Azure 存储资源提供程序 REST API](https://docs.microsoft.com/rest/api/storagerp)、[.NET 存储资源提供程序客户端库](https://docs.microsoft.com/dotnet/api)、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 或 [Azure CLI](https://docs.microsoft.com/azure/storage/storage-azure-cli)。
 

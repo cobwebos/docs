@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: dd0bf50d73b70e37195e8e5e45336b68e4e883e7
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 477bd6047da639dcf21592a7ec0c1b80844e031e
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915633"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337728"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 Google 帐户注册与登录
 
@@ -30,7 +30,7 @@ ms.locfileid: "37915633"
 4. 选择“配置许可屏幕”。
 5. 选择或指定一个有效的电子邮件地址，提供向用户显示的产品名称，并单击“保存”。
 6. 在“应用程序类型”下，选择“Web 应用程序”。
-7. 输入应用程序的名称，在已授权 JavaScript 来源中输入 `https://login.microsoftonline.com`，并在已授权重定向 URI 中输入 `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`。 将 {tenant} 替换为租户名称（例如 contosob2c.onmicrosoft.com）。
+7. 输入应用程序的名称，在已授权 JavaScript 来源中输入 `https://{tenant}.b2clogin.com`，并在已授权重定向 URI 中输入 `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp`。 将 {tenant} 替换为租户名称（例如 contosob2c）。
 8. 单击“创建”。
 9. 复制“客户端 ID”和“客户端密码”的值。 将 Google 配置为租户中的标识提供者时需要这两项。 **客户端密码**是一个重要的安全凭据。
 

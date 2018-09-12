@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: f45bb3b47209bd6b02cea49c23b0a59ad75fc2e2
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: d9008956d3a5542d71438ee13050a3951230e101
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42141920"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338801"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>在 Azure 上预配适用于 Linux (Ubuntu) 的数据科学虚拟机
 
@@ -81,13 +81,14 @@ ms.locfileid: "42141920"
 ## <a name="create-your-data-science-virtual-machine-for-linux"></a>创建适用于 Linux 的数据科学虚拟机
 以下步骤用于创建适用于 Linux 的数据科学虚拟机的实例：
 
-1. 导航到 [Azure 门户](https://portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu)上的虚拟机列表。
+1. 导航到 [Azure 门户](https://portal.azure.com/#create/microsoft-dsvm.linux-data-science-vm-ubuntulinuxdsvmubuntu)上的虚拟机列表。 如果尚未登录 Azure 帐户，系统会提示登录。 
 1. 单击底部的“创建”打开向导。![configure-data-science-vm](./media/dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
 1. 以下部分提供用于创建 Microsoft 数据科学虚拟机的向导中每个步骤的输入（在上一图片的右侧枚举）。 以下是配置每个步骤所需的输入：
    
    a. **基本信息**：
    
    * **名称**：待创建的数据科学服务器的名称。
+   * VM 磁盘类型：如果喜欢固态硬盘 (SSD)，请选择“高级 SSD”。 否则，请选择“标准 HDD”。 
    * **用户名称**：第一个帐户登录 ID。
    * **密码**：第一个帐户密码（可以使用 SSH 公钥代替密码）。
    * **订阅**：如果有多个订阅，请选择要在其上创建虚拟机并对其计费的订阅。 必须具有此订阅的资源创建权限。
@@ -96,23 +97,17 @@ ms.locfileid: "42141920"
    
    b. **大小**：
    
-   * 选择能满足功能需求和成本约束的服务器类型。 选择“查看全部”查看 VM 大小的更多选择。 选择用于 GPU 训练的 NC 类或 ND 类 VM。 [可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/) 页列出了具有 GPU 的区域。
+   * 选择能满足功能需求和成本约束的服务器类型。 选择基于 GPU VM 实例的 NC 类或 ND 类 VM。 [可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/) 页列出了具有 GPU 的区域。
    
    c. **设置**：
    
-   * 磁盘类型：如果喜欢固态硬盘 (SSD)，请选择“高级”。 否则，请选择“标准”。 GPU VM 要求使用一个标准磁盘。
-   * **存储帐户**：可以在订阅中创建新的 Azure 存储帐户，或者使用位于与向导的**基本信息**步骤中选择的相同位置的现有帐户。
-   * **其他参数**：大多数情况下，只需使用默认值。 若考虑使用非默认值，请将鼠标悬停在信息链接上获取特定字段的帮助。
+   * 大多数情况下，只需使用默认值。 若考虑使用非默认值，请将鼠标悬停在信息链接上获取特定字段的帮助。
    
    d. **汇总**：
    
-   * 验证输入的所有信息是否正确。
+   * 验证输入的所有信息是否正确。 此时会显示使用条款的链接。 除计算**大小**步骤中选择的服务器大小所产生的费用外，VM 没有任何其他费用。 若要开始预配，请单击“创建”。 
    
-   e. **购买**：
-   
-   * 若要开始预配，请单击“购买”。 提供交易条款的链接。 除计算**大小**步骤中选择的服务器大小所产生的费用外，VM 没有任何其他费用。
-
-预配大约需要 5 到 10 分钟。 预配的状态在 Azure 门户上显示。
+预配大约需要 5 分钟。 预配的状态在 Azure 门户上显示。
 
 ## <a name="how-to-access-the-data-science-virtual-machine-for-linux"></a>如何访问适用于 Linux 的数据科学虚拟机
 
@@ -434,6 +429,6 @@ Rattle (**R** **A**nalytical **T**ool **T**o **L**earn **E**asily) 使用基于 
 
 * [适用于 Linux 的数据科学虚拟机上的数据科学](linux-dsvm-walkthrough.md)演练展示了如何使用此处预配的 Linux 数据科学 VM 执行数个常见的数据科学任务。 
 * 通过尝试本文中介绍的工具，探索数据科学 VM 上的各种数据科学工具。 还可以在虚拟机内的 shell 上运行 *dsvm-more-info*，获取有关 VM 上安装的工具的基本介绍和详细信息。  
-* 通过使用 [Team Data Science Process](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)，了解如何系统地构建端到端分析解决方案。
-* 若要了解使用 Cortana Analytics 套件的机器学习和数据分析示例，请访问 [Cortana Analytics 库](http://gallery.cortanaanalytics.com)。
+* 通过使用 [Team Data Science Process](http://aka.ms/tdsp)，了解如何系统地构建端到端分析解决方案。
+* 访问 [Azure AI 库](https://gallery.azure.ai/)，获取使用 Azure AI 服务的机器学习和数据分析示例。
 

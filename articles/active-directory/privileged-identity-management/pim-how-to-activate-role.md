@@ -13,12 +13,12 @@ ms.component: pim
 ms.date: 08/27/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 7c990fc0d385af9527bf55339b2fa617e589ec0e
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 59dab4651366c3ad6579e0da660baee0c653d1a3
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190580"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665996"
 ---
 # <a name="activate-my-azure-ad-directory-roles-in-pim"></a>在 PIM 中激活 Azure AD 目录角色
 
@@ -26,11 +26,11 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 
 如果符合管理角色的资格，即表示可以在需要执行特权操作时激活该角色。 例如，如果偶尔管理 Office 365 功能，则组织的特权角色管理员可能不会让你成为永久全局管理员，因为该角色也影响其他服务。 他们会让你符合 Azure AD 角色（例如“Exchange Online 管理员”）的资格。 可以在需要权限时，请求暂时分配该角色，并将在预定的时段内拥有管理员控制权。
 
-本文面向需要在 PIM 中激活其角色的管理员。
+本文面向需要在 PIM 中激活其 Azure AD 目录角色的管理员。
 
 ## <a name="activate-a-role"></a>激活角色
 
-需要充当某个角色时，可在 PIM 中使用“我的角色”导航选项请求激活。
+需要充当某个 Azure AD 目录角色时，可在 PIM 中使用“我的角色”导航选项来请求激活。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 

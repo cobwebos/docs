@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: dfca26f36287cfd856beb98edeb2b2362f36bc4b
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: b54a302c022a8af84c1964c13ffadc52b45c4ca4
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37858800"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696813"
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB：使用 Azure Functions 的无服务器数据库计算
 
@@ -31,7 +31,7 @@ Azure Cosmos DB 和 Azure Functions 支持采用以下方式集成数据库和�
 * 使用“输出绑定”将函数绑定到 Azure Cosmos DB 容器。 当函数执行完成时，输出绑定会将数据写入容器。
 
 > [!NOTE]
-> 此时，Azure Cosmos DB 触发器、输入绑定和输出绑定仅可与 SQL API 和图形 API 帐户一起使用。
+> 此时，Azure Cosmos DB 触发器、输入绑定和输出绑定仅可与 SQL API 和 Gremlin API 帐户一起使用。
 
 下图介绍了所有这三种集成： 
 
@@ -82,7 +82,7 @@ Azure Cosmos DB 触发器、输入绑定和输出绑定可在以下组合中使�
 
 ### <a name="gaming-use-case---azure-cosmos-db-trigger-and-output-binding"></a>游戏用例 - Azure Cosmos DB 触发器和输出绑定
 
-在游戏中，当新用户创建时，可以使用 [Azure Cosmos DB 图形 API](graph-introduction.md) 搜索可能知道新用户的其他用户。 然后，将结果写入 [Azure Cosmos DB SQL 数据库]以便于检索。
+在游戏中，创建新用户时，可以使用 [Azure Cosmos DB Gremlin API](graph-introduction.md) 搜索可能知道新用户的其他用户。 然后，将结果写入 [Azure Cosmos DB SQL 数据库]以便于检索。
 
 **实现：** 使用 Azure Cosmos DB 触发器和输出绑定
 

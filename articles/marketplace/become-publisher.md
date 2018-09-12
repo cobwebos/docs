@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 4d37aba665fd9b6de89f683ce2785a14b1b6f60b
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: c6f074b84b099f6ea5023967fdae7e44d5e9d545
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412009"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666378"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>成为云市场发布者
 
@@ -74,7 +74,8 @@ Microsoft 帐户（例如 *@outlook.com 或 @live.com*）用于访问多个 Micr
 
 ---  
 ## <a name="4-sign-into-cloud-partner-portal"></a>4.登录到云合作伙伴门户
-| 1-3 天 | 我们的市场上架团队会审核并验证你在步骤 3 提供的市场注册详细信息。 获得批准后，你会收到一封欢迎电子邮件，其中包含帐户凭据以及登录[云合作伙伴门户](https://cloudpartner.azure.com)的指南。
+| 1-3 天 | <br>
+我们的市场上架团队会审核并验证你在步骤 3 提供的市场注册详细信息。 获得批准后，你会收到一封欢迎电子邮件，其中包含帐户凭据以及登录[云合作伙伴门户](https://cloudpartner.azure.com)的指南。
 
 请使用[云合作伙伴门户](https://cloudpartner.azure.com)来创建、发布和管理市场套餐。 收到表示批准的欢迎电子邮件以后，即可立即使用 Microsoft 帐户登录[云合作伙伴门户](https://cloudpartner.azure.com)，以便访问其他技术信息，了解如何将内容发布到市场以及如何创建套餐。 
 *   有关如何使用云合作伙伴门户的详细信息，请[访问“学习”部分的“入门”文章](https://cloudpartner.azure.com/#documentation/getting-started-with-the-cloud-partner-portal)。 必须登录云合作伙伴门户才能访问这些详细信息。

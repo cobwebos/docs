@@ -1,6 +1,6 @@
 ---
-title: 配置“向内复制数据”以将数据复制到 Azure Database for MySQL。
-description: 本文介绍如何为 Azure Database for MySQL 设置“向内复制数据”。
+title: 配置复制中数据以将数据复制到 Azure Database for MySQL。
+description: 本文介绍如何为 Azure Database for MySQL 设置复制中数据。
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -8,17 +8,17 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 06/20/2018
-ms.openlocfilehash: e099597eae419653a2a40c7f01ee7abbbc4657f0
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.date: 08/31/2018
+ms.openlocfilehash: 83d970cf41dde4141fcba84c39b9b750783e54e0
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294415"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43667151"
 ---
-# <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>如何配置 Azure Database for MySQL 的“向内复制数据”
+# <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>如何配置 Azure Database for MySQL 的复制中数据
 
-本文介绍如何通过配置主服务器和副本服务器，在 Azure Database for MySQL 服务中设置“向内复制数据”。 借助“向内复制数据”，可以将本地或虚拟机中运行的主 MySQL 服务器或其他云提供程序托管的数据库服务中的数据同步到 Azure Database for MySQL 服务中的副本。 
+本文介绍如何通过配置主服务器和副本服务器在 Azure Database for MySQL 服务中设置“数据传入复制”。 凭借“数据传入复制”，可以将在本地或虚拟机中运行的主 MySQL 服务器或其他云提供程序托管的数据库服务中的数据同步到 Azure Database for MySQL 服务中的副本。 
 
 本文假设读者在 MySQL 服务器和数据库方面有一定的经验。
 
@@ -26,7 +26,7 @@ ms.locfileid: "36294415"
 
 1. 创建新的 Azure Database for MySQL 服务器
 
-   创建新的 MySQL 服务器（例如 “replica.mysql.database.azure.com”）。 参阅[使用 Azure 门户创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)了解如何创建服务器。 此服务器是“向内复制数据”中的“副本”服务器。
+   创建新的 MySQL 服务器（例如 “replica.mysql.database.azure.com”）。 参阅[使用 Azure 门户创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)了解如何创建服务器。 此服务器是复制中数据中的“副本”服务器。
 
    > [!IMPORTANT]
    > 必须在“常规用途”或“内存优化”定价层中创建 Azure Database for MySQL 服务器。
@@ -36,12 +36,12 @@ ms.locfileid: "36294415"
 
    用户帐户不会从主服务器复制到副本服务器。 如果打算为用户提供副本服务器的访问权限，需要在此新建的 Azure Database for MySQL 服务器上创建所有帐户和对应的特权。
 
-## <a name="configure-the-primary-server"></a>配置主服务器
-以下步骤准备并配置本地或虚拟机中托管的 MySQL 服务器或其他云提供程序托管的数据库服务，以便向内复制数据。 此服务器是“向内复制数据”中的“主”服务器。 
+## <a name="configure-the-master-server"></a>配置主服务器
+以下步骤准备并配置本地或虚拟机中托管的 MySQL 服务器或其他云提供程序托管的数据库服务，以便向内复制数据。 此服务器是“数据传入复制”中的“主”服务器。 
 
 1. 启用二进制日志记录
 
-   运行以下命令，检查是否已在主服务器上启用二进制日志记录： 
+   运行以下命令以检查是否已在主服务器上启用了二进制日志记录： 
 
    ```sql
    SHOW VARIABLES LIKE 'log_bin';
@@ -53,7 +53,7 @@ ms.locfileid: "36294415"
 
 2. 主服务器设置
 
-   “向内复制数据”要求参数 `lower_case_table_names` 在主服务器与副本服务器之间保持一致。 在 Azure Database for MySQL 中，此参数默认为 1。 
+   “数据传入复制”要求参数 `lower_case_table_names` 在主服务器与副本服务器之间保持一致。 在 Azure Database for MySQL 中，此参数默认为 1。 
 
    ```sql
    SET GLOBAL lower_case_table_names = 1;
@@ -61,9 +61,9 @@ ms.locfileid: "36294415"
 
 3. 创建新的复制角色并设置权限
 
-   在主服务器上创建一个配置有复制特权的用户帐户。 可以通过 SQL 命令或 MySQL Workbench 等工具实现此目的。 考虑是否打算使用 SSL 进行复制，因为这需要在创建用户时指定。 请参阅 MySQL 文档，了解如何在主服务器上[添加用户帐户](https://dev.mysql.com/doc/refman/5.7/en/adding-users.html)。 
+   在主服务器上创建一个配置有复制特权的用户帐户。 可以通过 SQL 命令或 MySQL Workbench 等工具实现此目的。 考虑是否打算使用 SSL 进行复制，因为这需要在创建用户时指定。 请参阅 MySQL 文档以了解如何在主服务器上[添加用户帐户](https://dev.mysql.com/doc/refman/5.7/en/adding-users.html)。 
 
-   在以下命令中，创建的新复制角色能够从任何计算机访问主服务器，而不仅仅是托管主服务器本身的计算机访问主服务器。 可以通过在 create user 命令中指定“syncuser \@\ '%”来实现此目的。 请参阅 MySQL 文档，详细了解如何[指定帐户名称](https://dev.mysql.com/doc/refman/5.7/en/account-names.html)。
+   在以下命令中，创建的新复制角色能够从任何计算机访问主服务器，而不仅仅是从本身托管主服务器的计算机访问主服务器。 可以通过在 create user 命令中指定“syncuser \@\ '%”来实现此目的。 请参阅 MySQL 文档，详细了解如何[指定帐户名称](https://dev.mysql.com/doc/refman/5.7/en/account-names.html)。
 
    **SQL 命令**
 
@@ -120,7 +120,7 @@ ms.locfileid: "36294415"
 
    ![主机状态结果](./media/howto-data-in-replication/masterstatus.png)
  
-## <a name="dump-and-restore-primary-server"></a>转储并还原主服务器
+## <a name="dump-and-restore-master-server"></a>转储并还原主服务器
 
 1. 从主服务器转储所有数据库
 
@@ -139,16 +139,16 @@ ms.locfileid: "36294415"
 
    将转储文件还原到 Azure Database for MySQL 服务中创建的服务器。 请参阅[转储和还原](concepts-migrate-dump-restore.md)，了解如何将转储文件还原到 MySQL 服务器。 如果转储文件较大，请将其上传到 Azure 中副本服务器所在的同一区域内的某个虚拟机。 将转储文件从虚拟机还原到 Azure Database for MySQL 服务器。
 
-## <a name="link-primary-and-replica-servers-to-start-data-in-replication"></a>链接主服务器和副本服务器以开始向内复制数据
+## <a name="link-master-and-replica-servers-to-start-data-in-replication"></a>链接主服务器和副本服务器以启动“数据传入复制”
 
 1. 设置主服务器
 
-   所有“向内复制数据”函数均由存储过程执行。 可以在[“向内复制数据”存储过程](reference-data-in-stored-procedures.md)中找到所有过程。 可以在 MySQL shell 或 MySQL Workbench 中运行存储过程。 
+   所有复制中数据函数均由存储过程执行。 可以在[复制中数据存储过程](reference-data-in-stored-procedures.md)中找到所有过程。 可以在 MySQL shell 或 MySQL Workbench 中运行存储过程。 
 
-   若要链接两个服务器并启动复制，请在 Azure DB for MySQL 服务中登录到目标副本服务器，并将外部实例设置为主服务器。 为此，可在 Azure DB for MySQL 服务器上使用 `mysql.az_replication_change_primary` 存储过程。
+   若要链接两个服务器并启动复制，请在 Azure DB for MySQL 服务中登录到目标副本服务器，并将外部实例设置为主服务器。 为此，可在 Azure DB for MySQL 服务器上使用 `mysql.az_replication_change_master` 存储过程。
 
    ```sql
-   CALL mysql.az_replication_change_primary('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
+   CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
    ```
 
    - master_host：主服务器的主机名
@@ -174,14 +174,14 @@ ms.locfileid: "36294415"
    在域“companya.com”中托管的主服务器与 Azure Database for MySQL 中托管的副本服务器之间设置了使用 SSL 进行复制。 将在副本上运行此存储过程。 
 
    ```sql
-   CALL mysql.az_replication_change_primary('primary.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, @cert);
+   CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, @cert);
    ```
    *不使用 SSL 复制*
 
    在域“companya.com”中托管的主服务器与 Azure Database for MySQL 中托管的副本服务器之间设置了不使用 SSL 进行复制。 将在副本上运行此存储过程。
 
    ```sql
-   CALL mysql.az_replication_change_primary('primary.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
+   CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
    ```
 
 2. 启动复制
@@ -217,7 +217,7 @@ CALL mysql.az_replication_stop;
 若要删除主服务器与副本服务器之间的关系，请使用以下存储过程：
 
 ```sql
-CALL mysql.az_replication_remove_primary;
+CALL mysql.az_replication_remove_master;
 ```
 
 ### <a name="skip-replication-error"></a>跳过复制错误

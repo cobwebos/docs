@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 08/22/2018
+ms.date: 09/04/2018
 ms.author: rolyon
-ms.openlocfilehash: 69313adea1719324e2b22b45c6a45535ea65097f
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: fbed0f5fb213a18f4450ee3aa96c3b8485b16e8b
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125036"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781320"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory 使用条款功能
 组织可以通过 Azure AD 使用条款这种简单的方法向最终用户显示信息。 可以通过这样的呈现方式确保用户看到法律要求或符合性要求的相关免责声明。 本文介绍如何开始使用 Azure AD 使用条款。
@@ -223,7 +223,7 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 答：该 PDF 默认呈现为 JPEG，因此无法单击超链接。 用户可以选择“查看时遇到问题? 请单击此处”**，以本机方式呈现该 PDF（支持超链接）**。
 
 **问：使用条款是否支持多种语言？**</br>
-答：是的。  目前，管理员可以为单个使用条款配置 18 种不同的语言。 
+答：是的。 目前，管理员可以为单个使用条款配置 108 种不同的语言。
 
 **问：什么时候会触发使用条款？**</br>
 答：在登录体验期间触发使用条款。

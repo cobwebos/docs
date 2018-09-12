@@ -6,18 +6,18 @@ author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
-ms.date: 06/29/2018
+ms.date: 08/23/2018
 ms.author: danlep
-ms.openlocfilehash: f4bad3d7058e82a246afce9502d275c7d485cb88
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 0ef3cc373b3b87bbd1dde5682fbc076e6b77d6a0
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39011945"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698377"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>通过按状态对任务和节点计数来监视 Batch 解决方案
 
-若要监视和管理大规模的 Azure Batch 解决方案，需对各种状态的资源进行准确的计数。 Azure Batch 提供有效的操作来获取 Batch 任务和计算节点的这些计数。 请使用以下操作而不是耗时的 API 调用来返回大型任务或节点集的详细信息。
+若要监视和管理大规模的 Azure Batch 解决方案，需对各种状态的资源进行准确的计数。 Azure Batch 提供有效的操作来获取 Batch 任务和计算节点的这些计数。 请使用以下操作而不是可能非常耗时的列表查询来返回大型任务或节点集合的详细信息。
 
 * [获取任务计数][rest_get_task_counts]可以获取一个作业中处于“活动”、“正在运行”和“已完成”状态的任务以及处于“已成功”或“已失败”状态的任务的聚合计数。 
 
@@ -49,19 +49,15 @@ Console.WriteLine("Task count in preparing or running state: {0}", taskCounts.Ru
 Console.WriteLine("Task count in completed state: {0}", taskCounts.Completed);
 Console.WriteLine("Succeeded task count: {0}", taskCounts.Succeeded);
 Console.WriteLine("Failed task count: {0}", taskCounts.Failed);
-Console.WriteLine("ValidationStatus: {0}", taskCounts.ValidationStatus);
 ```
 
 可以对 REST 和支持的其他语言使用类似的模式获取作业的任务计数。 
- 
 
-### <a name="consistency-checking-for-task-counts"></a>任务计数的一致性检查
+### <a name="counts-for-large-numbers-of-tasks"></a>大量任务计数
 
-Batch 通过对系统的多个组件执行一致性检查，为任务状态计数提供额外验证。 极少数情况下，一致性检查会发现错误，此时 Batch 根据一致性检查的结果更正“获取任务计数”操作的结果。
+Get Task Counts 操作返回系统中某个时间点的任务状态计数。 如果作业包含大量任务，Get Task Counts 返回的计数可能会滞后于实际任务状态达几秒钟。 批处理可确保 Get Task Counts 的结果与实际任务状态（可以通过 List Tasks API 查询）之间的最终一致性。 但是，如果作业包含大量任务 (> 200,000)，建议改为使用 List Tasks API 和[筛选的查询](batch-efficient-list-queries.md)，以提供更多最新信息。 
 
-响应中的 `validationStatus` 属性表示 Batch 是否已执行一致性检查。 如果 Batch 尚未检查系统保留的实际状态的状态计数，则将 `validationStatus` 属性设置为 `unvalidated`。 出于性能原因，当作业包含的任务数超过 200,000 项时，Batch 不执行一致性检查，所以在此情况下，将 `validationStatus` 属性设置为 `unvalidated`。 （此情况中的任务计数并不一定错误，因为发生数据丢失（即使是少量数据丢失）的可能性根本没有。） 
-
-任务更改状态时，聚合管道在几秒内处理该更改。 “获取任务计数”操作在该期间体现更新后的任务计数。 然而，如果聚合管道错过任务状态更改，则直到下一次验证通过才会记录该更改。 在此期间，由于错过的事件，任务计数可能不太准确，但将在下一次验证通过时更正计数。
+2018-08-01.7.0 之前的 Batch Service API 也会在 Get Task Counts 响应中返回一个 `validationStatus` 属性。 此属性表示 Batch 是否已检查状态计数是否与 List Tasks API 中报告的状态一致。 `validated` 的值表示 Batch 至少为作业检查了一次一致性。 `validationStatus` 属性的值不表示 Get Task Counts 返回的计数当前是否是最新的。
 
 ## <a name="node-state-counts"></a>节点状态计数
 

@@ -3,7 +3,7 @@ title: 如何通过 Node.js 使用 Azure 服务总线主题和订阅 | Microsoft
 description: 了解如何在来自 Node.js 应用的 Azure 中使用服务总线主题和订阅。
 services: service-bus-messaging
 documentationcenter: nodejs
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: b9f5db85-7b6c-4cc7-bd2c-bd3087c99875
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/10/2017
-ms.author: sethm
-ms.openlocfilehash: d3a7ebd135f705a6a3ea91feb4e037a9ed6d0c79
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: spelluru
+ms.openlocfilehash: daabf711e923e1c4ff3132c5e4765bdbff206948
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38704990"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782905"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>如何通过 Node.js 使用服务总线主题和订阅
 
@@ -95,7 +95,7 @@ serviceBusService.createTopicIfNotExists('MyTopic',function(error){
 });
 ```
 
-`createServiceBusService` 方法还支持其他选项，通过这些选项可以替代默认主题设置，例如消息生存时间或最大主题大小。 
+`createTopicIfNotExists` 方法还支持其他选项，通过这些选项可以替代默认主题设置，例如消息生存时间或最大主题大小。 
 
 以下示例将最大主题大小设置为 5GB，将生存时间设置为 1 分钟：
 
@@ -268,7 +268,7 @@ for (i = 0;i < 5;i++) {
 ## <a name="receive-messages-from-a-subscription"></a>从订阅接收消息
 对 ServiceBusService 对象使用 `receiveSubscriptionMessage` 方法可从订阅接收消息。 默认情况下，会在读取消息后将其从订阅删除。 但是，可以将可选参数 `isPeekLock` 设置为“true”以读取（速览）并锁定消息，而不将其从订阅中删除。
 
-在接收过程中读取并删除消息的默认行为是最简单的模式，并且最适合在发生故障时应用程序可以容忍不处理消息的情况。 为了理解此行为，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线会将消息标记为“将使用”，因此当应用程序重启并重新开始使用消息时，它会丢失在发生崩溃前使用的消息。
+在接收过程中读取并删除消息的默认行为是最简单的模式，并且最适合在发生故障时应用程序可以容忍不处理消息的情况。 为了理解此行为，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线已将消息标记为“已使用”，因此当应用程序重启并重新开始使用消息时，它就漏掉了在发生故障前使用的消息。
 
 如果将 `isPeekLock` 参数设置为“true”，则接收会变成一个两阶段操作，从而可支持无法容忍遗漏消息的应用程序。 服务总线收到请求时，它会找到要使用的下一个消息，将其锁定以防其他使用者接收它，并将该消息返回给应用程序。
 应用程序处理该消息（或将它可靠地存储起来留待将来处理）后，通过调用 deleteMessage 方法来完成接收过程的第二阶段，并将要删除的消息作为参数传递。 deleteMessage 方法会将消息标记为已使用，并将其从订阅中删除。

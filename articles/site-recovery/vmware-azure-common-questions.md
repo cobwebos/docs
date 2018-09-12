@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 07/19/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: e8d30ae6cde7c787f1aa950506e0eb74bac0c12d
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: fe20cae4c316462e3af3f0a5e7e6052f6ba5719d
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238802"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344417"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>常见问题 - VMware 到 Azure 的复制
 
@@ -45,7 +45,7 @@ ms.locfileid: "39238802"
 
 
 
-## <a name="on-premises"></a>本地 
+## <a name="on-premises"></a>本地
 
 ### <a name="what-do-i-need-on-premises"></a>需要在本地做好哪些准备？
 在本地，需要在单个 VMware VM 上安装 Site Recovery 组件。 还需要至少包含一台 ESXi 主机的 VMware 基础结构。我们建议使用 vCenter 服务器。 此外，需要提供一个或多个可供复制的 VMware VM。 [详细了解](vmware-azure-architecture.md) VMware 到 Azure 复制体系结构。
@@ -72,7 +72,7 @@ Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将�
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>为何不能通过 VPN 复制？
 
-复制到 Azure 时，复制流量会到达 Azure 存储帐户的公共终结点，因此，只能使用 ExpressRoute（公共对等互连）通过公共 Internet 进行复制，而不能使用 VPN。 
+复制到 Azure 时，复制流量会到达 Azure 存储帐户的公共终结点，因此，只能使用 ExpressRoute（公共对等互连）通过公共 Internet 进行复制，而不能使用 VPN。
 
 
 
@@ -90,7 +90,7 @@ Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将�
 不支持此操作。 请在[反馈论坛](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from)中请求此功能。
 
 ### <a name="can-i-exclude-disks"></a>是否可以排除磁盘？
-可以从复制中排除磁盘。 
+可以从复制中排除磁盘。
 
 ### <a name="can-i-replicate-vms-with-dynamic-disks"></a>是否可以复制包含动态磁盘的 VM？
 可以复制动态磁盘。 操作系统磁盘必须为基本磁盘。
@@ -105,7 +105,7 @@ Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将�
 ## <a name="configuration-server"></a>配置服务器
 
 ### <a name="what-does-the-configuration-server-do"></a>配置服务器的作用是什么？
-配置服务器运行本地 Site Recovery 组件，包括： 
+配置服务器运行本地 Site Recovery 组件，包括：
 - 在本地与 Azure 之间协调通信和管理数据复制的配置服务器。
 - 充当复制网关的进程服务器。 该服务器接收复制数据；使用缓存、压缩和加密来优化数据；将数据发送到 Azure 存储。进程服务器还在要复制的 VM 上安装移动服务，并执行本地 VMware VM 的自动发现。
 - 处理从 Azure 进行故障回复期间生成的复制数据的主目标服务器。
@@ -118,13 +118,13 @@ Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将�
 请查看[先决条件](vmware-azure-deploy-configuration-server.md#prerequisites)。
 
 ### <a name="can-i-manually-set-up-the-configuration-server-instead-of-using-a-template"></a>是否可以手动设置配置服务器，而不使用模板进行设置？
-我们建议使用最新版本的 OVF 模板来[创建配置服务器 VM](vmware-azure-deploy-configuration-server.md)。 如果出于某种原因无法使用该模板（例如，无法访问 VMware 服务器），可以从门户[下载统一安装程序文件](physical-azure-set-up-source.md)，并在 VM 上运行此程序。 
+我们建议使用最新版本的 OVF 模板来[创建配置服务器 VM](vmware-azure-deploy-configuration-server.md)。 如果出于某种原因无法使用该模板（例如，无法访问 VMware 服务器），可以从门户[下载统一安装程序文件](physical-azure-set-up-source.md)，并在 VM 上运行此程序。
 
 ### <a name="can-a-configuration-server-replicate-to-more-than-one-region"></a>是否可将配置服务器复制到多个区域？
 不是。 若要执行此操作，需在每个区域中设置一个配置服务器。
 
 ### <a name="can-i-host-a-configuration-server-in-azure"></a>是否可以在 Azure 中托管配置服务器？
-虽然可以这样做，但运行配置服务器的 Azure VM 需要与本地的 VMware 基础结构和 VM 通信。 产生的开销可能导致这种做法不切实际。
+虽然可以这样做，但运行配置服务器的 Azure VM 需要与本地的 VMware 基础结构和 VM 通信。 这可能会增加延迟并影响正在进行的复制。
 
 
 ### <a name="where-can-i-get-the-latest-version-of-the-configuration-server-template"></a>在哪里可以获取最新版本的配置服务器模板？
@@ -132,6 +132,9 @@ Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将�
 
 ### <a name="how-do-i-update-the-configuration-server"></a>如何更新配置服务器？
 请安装更新汇总。 可以在 [wiki 更新页](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx)中找到最新的更新信息。
+
+### <a name="should-i-backup-the-deployed-configuration-server"></a>是否应该备份部署的配置服务器？
+建议定期备份配置服务器。 若想成功进行故障回复，进行故障回复的虚拟机必须存在于配置服务器数据库中，并且配置服务器必须正在运行且处于已连接状态。 可以在[此处](vmware-azure-manage-configuration-server.md)了解有关常见配置服务器管理任务的详细信息。
 
 ## <a name="mobility-service"></a>移动服务
 
@@ -143,7 +146,7 @@ Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将�
 
 
 
-## <a name="security"></a>“安全”
+## <a name="security"></a>安全
 
 ### <a name="what-access-does-site-recovery-need-to-vmware-servers"></a>Site Recovery 需要对 VMware 服务器拥有哪些访问权限？
 Site Recovery 需要访问 VMware 服务器，才能够：
@@ -191,7 +194,7 @@ Azure 具有复原能力。 Site Recovery 能够根据 Azure SLA 故障转移到
 
 ### <a name="why-do-i-need-a-vpn-or-expressroute-to-fail-back"></a>为何需要使用 VPN 或 ExpressRoute 进行故障回复？
 
-从 Azure 故障回复时，Azure 中的数据将复制回到本地 VM，这需要提供私人访问权限。 
+从 Azure 故障回复时，Azure 中的数据将复制回到本地 VM，这需要提供私人访问权限。
 
 
 

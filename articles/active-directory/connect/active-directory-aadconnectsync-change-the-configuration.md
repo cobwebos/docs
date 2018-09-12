@@ -12,18 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 08/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: bad1cbe0b142e146ada28f2af5d152973100e919
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4795e21c4279b6d313ba56296bafc49daf7bbb48
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595098"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288166"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect 同步：如何更改默认配置
 本文旨在介绍如何对 Azure Active Directory (Azure AD) Connect 同步中的默认配置进行更改。其中提供了一些常见方案的步骤。 了解这些知识后，用户应该能够根据自己的业务规则对自己的配置进行简单的更改。
+
+> [!WARNING]
+> 如果更改默认同步规则，则下次更新 Azure AD Connect 时将覆盖这些更改，从而导致意外且可能无用的同步结果。
+>
+> 现成的同步规则具有指纹。 如果更改这些规则，指纹不再匹配。 今后尝试应用 Azure AD Connect 的新版本时可能会遇到问题。 只能根据本文所述的方式进行更改。
 
 ## <a name="synchronization-rules-editor"></a>同步规则编辑器
 同步规则编辑器用于查看和更改默认配置。 可以在“Azure AD Connect”组下的“开始”菜单中找到它。  
@@ -263,7 +268,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
     | 属性 | 值 | 详细信息 |
     | --- | --- | --- |
     | 名称 | *提供名称* | 例如 *In from AD – User UserType* |
-    | 说明 | *提供说明* |  |
+    | Description | *提供说明* |  |
     | 连接的系统 | *选择本地 AD 连接器* |  |
     | 连接的系统对象类型 | **User** |  |
     | Metaverse 对象类型 | **Person** |  |
@@ -305,7 +310,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
     | 属性 | 值 | 详细信息 |
     | ----- | ------ | --- |
     | 名称 | *提供名称* | 例如 *Out to AAD – User UserType* |
-    | 说明 | *提供说明* ||
+    | Description | *提供说明* ||
     | 连接的系统 | *选择 AAD 连接器* ||
     | 连接的系统对象类型 | **User** ||
     | Metaverse 对象类型 | **Person** ||

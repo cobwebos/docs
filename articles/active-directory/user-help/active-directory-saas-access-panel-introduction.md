@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory 中的访问面板是什么？ | Microsoft Docs
-description: 了解如何使用各种形式的访问面板（Web 浏览器、Android 应用、iPhone 和 iPad 应用）来访问 SaaS 应用。
+title: Azure Active Directory 中的 MyApps 门户是什么？ | Microsoft Docs
+description: 了解如何使用各种形式的 MyApps 门户（Web 浏览器、Android 应用、iPhone 和 iPad 应用）访问 SaaS 应用程序。
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.date: 05/11/18
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: f69830deb4d2c74b5fe1c85ad8c9452097dd2a1e
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: e382f53678806aa3442151703277c3a57bb30830
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42141903"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302271"
 ---
-# <a name="what-is-the-access-panel"></a>访问面板是什么？
+# <a name="what-is-the-myapps-portal"></a>什么是 MyApps 门户？
 
-访问面板是一个基于 Web 的门户。 如果在Azure Active Directory (Azure AD) 中拥有工作或学校帐户，可以使用访问面板来查看和启动 Azure AD 管理员已授权你访问的基于云的应用程序。 还可以通过访问面板使用自助服务组和应用管理功能。
+如果在 Azure Active Directory (Azure AD) 中拥有工作或学校帐户，则可以使用基于“我的应用”Web 的门户来查看和启动 Azure AD 管理员已授权你访问的基于云的应用程序。 还可以通过 MyApps 门户使用自助服务组和应用管理功能。
 
-访问面板与 Azure 门户不同， 它不需要你拥有 Azure 订阅。
+MyApps 门户与 Azure 门户不同。 它不需要你拥有 Azure 订阅。
 
-![访问面板][1]使用访问面板可以编辑一些配置文件设置，并执行以下操作：
+![MyApps 门户][1]使用 MyApps 门户可以编辑一些配置文件设置，并执行以下操作：
 
 - 更改工作或学校帐户关联的密码。
 
@@ -39,12 +39,9 @@ ms.locfileid: "42141903"
 
 - 自我管理组。 管理员可以在 Azure AD 中创建和管理安全组，并请求安全组成员身份。 有关详细信息，请参阅 [Self-service group management for users in Azure AD](../users-groups-roles/groups-self-service-management.md)（面向 Azure AD 中用户的自助组管理）和 [Manage your groups](../fundamentals/active-directory-manage-groups.md)（管理组）。
 
+## <a name="access-the-myapps-portal"></a>访问 MyApps 门户
 
-
-
-## <a name="access-the-access-panel"></a>访问访问面板
-
-可以转到 `http://myapps.microsoft.com` 来访问访问面板。
+可以通过转到 `http://myapps.microsoft.com` 访问 MyApps 门户。
 
 如果为登录页配置了自定义商标，则可以将组织的域追加到 URL 来加载此商标（例如 `http://myapps.microsoft.com/<your domain>.com`）。
 
@@ -54,7 +51,7 @@ ms.locfileid: "42141903"
 
 ## <a name="authentication"></a>身份验证
 
-若要访问访问面板，必须通过 Azure AD 中的工作或学校帐户进行身份验证。 可以直接在 Azure AD 中进行身份验证。 或者，如果组织已使用 Active Directory 联合身份验证服务 (AD FS) 或其他技术配置联合，则可以通过 Windows Server Active Directory 进行身份验证。
+要访问 MyApps 门户，必须通过 Azure AD 中的工作或学校帐户进行身份验证。 可以直接在 Azure AD 中进行身份验证。 或者，如果组织已使用 Active Directory 联合身份验证服务 (AD FS) 或其他技术配置联合，则可以通过 Windows Server Active Directory 进行身份验证。
 
 如果拥有 Azure 或 Office 365 订阅并一直在使用 Azure 门户或 Office 365 应用程序，则可以看到应用程序列表，而无需再次登录。 如果未执行身份验证，系统会提示使用 Azure AD 中的帐户用户名和密码登录。 如果组织已配置联合，只需键入用户名即可。
 
@@ -62,12 +59,12 @@ ms.locfileid: "42141903"
 
 ## <a name="web-browser-requirements"></a>Web 浏览器要求
 
-访问面板的最低要求是使用支持 JavaScript 且已启用 CSS 的浏览器。 为了让用户通过基于密码的单一登录 (SSO) 登录到应用程序，必须在浏览器中安装“访问面板”扩展。 选择某个已配置基于密码的 SSO 的应用程序时，会自动下载此扩展。
+MyApps 门户至少要求使用支持 JavaScript 且已启用 CSS 的浏览器。 为了让用户通过基于密码的单一登录 (SSO) 登录到应用程序，必须在浏览器中安装 MyApps 门户扩展。 选择某个已配置基于密码的 SSO 的应用程序时，会自动下载此扩展。
 
 安装程序特定于体系结构。 如果单击下载链接，则仅获取适用于当前正在运行的 OS 体系结构的安装程序。 如果你是应用程序部署管理员，请确保从 64 位和 32 位设备访问下载链接以同时获取这两个安装程序。
 
 
-访问面板扩展插件当前适用于：
+MyApps 门户扩展当前适用于：
 - **Edge**：Windows 10 周年纪念版或更高版本上。 
 - **Chrome**：在 Windows 7 或更高版本上，以及在 MacOS X 或更高版本上。
 - **Firefox 26.0 或更高版本**：在 Windows XP SP2 或更高版本上，以及在 Mac OS X 10.6 或更高版本上。
@@ -77,7 +74,7 @@ ms.locfileid: "42141903"
 此扩展插件要求用户使用密码进行单一登录。 安装后，用户还可通过单击“登录以开始使用”登录该扩展插件，启用附加功能。 
 
 - 可通过访问应用的“登录 URL”直接登录应用。 导航到应用的登录 URL 时，该扩展插件会检测操作并提供从该扩展插件进行登录的选项。
-- 可使用该扩展插件的“快速搜索”功能，从访问面板启动其任何应用。 
+- 使用该扩展的“快速搜索”功能，可以从 MyApps 门户启动其任何应用。 
 - 该扩展插件还会在“最近使用的应用”部分显示最近启动的三个应用程序。
 - 通过[应用程序代理](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started)进行远程操作时，可以使用内部公司 URL
 
@@ -111,7 +108,7 @@ ms.locfileid: "42141903"
 Azure Active Directory 团队发布了“我的应用”移动应用。 安装此应用后，可以在 iOS 和 Android 设备上登录到基于密码的 SSO 应用程序。
 
 > [!NOTE]
-> 几乎可以在任何设备上的任何 Web 浏览器中登录到支持与 Azure AD 联合的应用程序（包括 Salesforce、Google Apps、Dropbox、Box、Concur、Workday、Office 365 和其他 70 种以上的应用程序），无需安装任何插件或移动应用。 此外，无需在移动设备上使用“我的应用”移动应用，就能[体验访问面板](https://myapps.microsoft.com/)的所有其他功能。
+> 几乎可以在任何设备上的任何 Web 浏览器中登录到支持与 Azure AD 联合的应用程序（包括 Salesforce、Google Apps、Dropbox、Box、Concur、Workday、Office 365 和其他 70 种以上的应用程序），无需安装任何插件或移动应用。 此外，无需在移动设备上使用“我的应用”移动应用，就能[体验 MyApps 门户](https://myapps.microsoft.com/)的所有其他功能。
 >
 >
 
@@ -145,22 +142,22 @@ Managed Browser 主页和书签中提供了“我的应用”的快速访问链�
 
 ## <a name="tips-for-testing-the-user-experience"></a>有关测试用户体验的提示
 
-如果你是 Azure 管理员并已使用目录中的帐户登录到 Azure 门户，则会以当前帐户的身份自动登录到访问面板。 此视图显示所有已分配给你的应用程序。
+如果你是 Azure 管理员并已使用目录中的帐户登录到 Azure 门户，则会以当前帐户的身份自动登录到 MyApps 门户。 此视图显示所有已分配给你的应用程序。
 
 若要以不同的用户帐户测试，请执行以下操作：
 
-1. 在 Azure 门户或访问面板的右上角，选择“注销”。 
-2. 转到[访问面板](http://myapps.microsoft.com)。
+1. 在 Azure 门户或 MyApps 门户的右上角，选择“注销”。 
+2. 转到 [MyApps 门户](http://myapps.microsoft.com)。
 3. 在登录页中，键入目录中想要测试的帐户的用户名和密码。
 
 
 ## <a name="starting-applications"></a>启动应用程序
 
-本部分介绍访问面板上可能会出现有多种类型的应用程序。
+本部分介绍 MyApps 门户上可能会出现的多种类型的应用程序。
 
 ### <a name="office-365-applications"></a>Office 365 应用程序
 
-如果组织正在使用 Office 365 应用程序并且拥有相应的许可证，Office 365 应用程序会显示在访问面板上。
+如果组织正在使用 Office 365 应用程序并且拥有相应的许可证，Office 365 应用程序会显示在 MyApps 门户上。
 
 选择 Office 365 应用程序的应用程序磁贴时，会重定向到该应用程序并自动登录。
 
@@ -174,7 +171,7 @@ Managed Browser 主页和书签中提供了“我的应用”的快速访问链�
 
 管理员可以在 SSO 模式设置为“基于密码的单一登录”的情况下，将应用程序添加到 Azure 门户的“Active Directory”部分中。 目录中的所有用户都可看到在此模式下配置的所有应用程序。
 
-首次选择其中一个应用程序的磁贴时，系统会提示安装适用于 Internet Explorer 或 Chrome 的密码 SSO 插件。 安装后可能需要重启 Web 浏览器。 返回访问面板并再次选择应用程序磁贴时，系统会提示输入应用程序的用户名和密码。 输入用户名和密码后，这些凭据会安全存储在 Azure AD 中并链接到 Azure AD 中的帐户。
+首次选择其中一个应用程序的磁贴时，系统会提示安装适用于 Internet Explorer 或 Chrome 的密码 SSO 插件。 安装后可能需要重启 Web 浏览器。 返回 MyApps 门户并再次选择应用程序磁贴时，系统会提示输入应用程序的用户名和密码。 输入用户名和密码后，这些凭据会安全存储在 Azure AD 中并链接到 Azure AD 中的帐户。
 
 下次选择应用程序磁贴时，会自动登录到该应用程序。  
 
@@ -194,7 +191,7 @@ Managed Browser 主页和书签中提供了“我的应用”的快速访问链�
 
 首次选择其中一个应用程序的磁贴时，系统会提示安装适用于 Internet Explorer 或 Chrome 的密码 SSO 插件。 安装后可能需要重启 Web 浏览器。  
 
-返回访问面板并选择应用程序磁贴时，会自动登录到应用程序。
+返回 MyApps 门户并选择应用程序磁贴时，会自动登录到应用程序。
 
 某些应用程序可能要求在首次登录时更改密码。 如果凭据在第三方目标应用程序中已更改，则也必须更新 Azure AD 中存储的相应凭据。 
 
@@ -206,9 +203,9 @@ Managed Browser 主页和书签中提供了“我的应用”的快速访问链�
 
 ### <a name="application-with-existing-sso-solutions"></a>包含现有 SSO 解决方案的应用程序
 
-Azure 门户提供了第三个选项（名为“现有的单一登录”）用于配置应用程序的 SSO。 管理员可以使用此选项创建应用程序的链接，并将其放置在所选用户的访问面板上。
+Azure 门户提供了第三个选项（名为“现有的单一登录”）用于配置应用程序的 SSO。 管理员可以使用此选项创建应用程序的链接，并将其放置在所选用户的 MyApps 门户上。
 
-例如，如果某个应用程序配置为使用 AD FS 2.0 验证用户身份，则管理员可以使用“现有的单一登录”选项在访问面板上创建该应用程序的链接。 访问该链接时，会通过 AD FS 2.0 或者由该应用程序提供的任何现有 SSO 解决方案进行身份验证。
+例如，如果某个应用程序配置为使用 AD FS 2.0 验证用户身份，则管理员可以使用“现有的单一登录”选项在 MyApps 门户上创建该应用程序的链接。 访问该链接时，会通过 AD FS 2.0 或者由该应用程序提供的任何现有 SSO 解决方案进行身份验证。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -8,19 +8,19 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 7bbcaa82b1072b8cbdea015195a8da03ceb3a25f
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: bd456e0f881f606f36f2b4d80e704ce138f7db0f
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056753"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666426"
 ---
 # <a name="deploy-a-configuration-server"></a>部署配置服务器
 
 使用 [Azure Site Recovery](site-recovery-overview.md) 进行 VMware VM 和物理服务器到 Azure 的灾难恢复时，需要部署本地配置服务器。 配置服务器协调本地 VMware 与 Azure 之间的通信。 它还管理数据复制。 将 VMware VM 复制到 Azure 时，本文可引导你完成部署配置服务器所需的步骤。 如果需要为物理服务器复制设置配置服务器，[请按此文中的说明进行操作](physical-azure-set-up-source.md)。
 
 >[!TIP]
-可以在[此处](vmware-azure-architecture.md)了解配置服务器角色作为 Azure Site Recovery 体系结构的一部分。
+可以在[此处](vmware-azure-architecture.md)了解配置服务器角色，它是 Azure Site Recovery 体系结构的一部分。
 
 ## <a name="deployment-of-configuration-server-through-ova-template"></a>通过 OVA 模板进行的配置服务器部署
 
@@ -42,7 +42,7 @@ ms.locfileid: "39056753"
 | 12 个 vCPU（2 个插槽 * 6 个核心 \@ 2.5 GHz） |18 GB |600 GB |500 GB 到 1 TB |复制 100-150 台计算机。 |
 | 16 个 vCPU（2 个插槽 * 8 个核心 \@ 2.5 GHz） |32 GB |1 TB |1 TB 到 2 TB |复制 150-200 台计算机。 |
 
-如果要复制多个 VMware VM，请阅读[容量规划注意事项](/site-recovery-plan-capacity-vmware.md)。 为 VMWare 复制运行 [Deployment Planner 工具](site-recovery-deployment-planner.md)。
+如果要复制多个 VMware VM，请阅读[容量规划注意事项](https://docs.microsoft.com/azure/site-recovery/site-recovery-plan-capacity-vmware)。 为 VMWare 复制运行 [Deployment Planner 工具](site-recovery-deployment-planner.md)。
 
 ## <a name="download-the-template"></a>下载模板
 
@@ -81,7 +81,7 @@ ms.locfileid: "39056753"
 
 1. 在 vSphere 客户端库存中，右键单击 VM 并选择“编辑设置”。
 2. 在“硬件”中，选择“添加” > “以太网适配器”。 然后，选择“下一步”。
-3. 选择适配器类型和网络。 
+3. 选择适配器类型和网络。
 4. 若要在打开 VM 时连接虚拟 NIC，请选择“上电时连接”。 然后，选择“下一步” > “完成” > “确定”。
 
 ## <a name="register-the-configuration-server-with-azure-site-recovery-services"></a>将配置服务器注册到 Azure Site Recovery 服务
@@ -102,7 +102,7 @@ ms.locfileid: "39056753"
 
     > [!NOTE]
     > 注册后，不能随意更改恢复服务保管库。
-    
+
 3. 在“安装第三方软件”中，
 
     |场景   |执行的步骤  |
@@ -144,6 +144,10 @@ ms.locfileid: "39056753"
 ## <a name="upgrade-the-configuration-server"></a>升级配置服务器
 
 要将配置服务器升级到最新版本，请阅读[此处](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)提供的步骤
+
+## <a name="manage-the-configuration-server"></a>管理配置服务器
+
+为避免正在进行的复制中断，请确保在配置服务器注册到保管库后配置服务器的 IP 地址不会更改。 可以在[此处](vmware-azure-manage-configuration-server.md)了解有关常见配置服务器管理任务的详细信息。
 
 ## <a name="troubleshoot-deployment-issues"></a>排查部署问题
 

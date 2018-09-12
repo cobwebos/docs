@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 228d2d3331b510a0f07dbd3ca278715466d747af
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 619dda44b5ad74ba1dcb62cfb3318687aa6ec4d5
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988885"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340129"
 ---
 # <a name="how-to-use-the-azure-maps-map-control"></a>如何使用 Azure Maps Map Control
 可通过 Map Control 客户端 Javascript 库呈现地图，并将 Azure Maps 功能嵌入到 Web 或移动应用中。 
@@ -62,4 +62,4 @@ ms.locfileid: "38988885"
 本文已展示了如何使用 Azure Maps 密钥创建基本地图。 有关可向地图添加的更多代码示例，请参阅以下文章： 
 
 * [创建地图](map-create.md)
-* [添加图钉](map-add-pin.md)
+* [选择地图样式](choose-map-style.md)

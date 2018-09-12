@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: article
 ms.date: 06/14/2018
 ms.author: jaredmoo
-ms.openlocfilehash: ca21355c836a58591bbbd09874d0c5d0b5c17435
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: ae5dafcebd50ecd22309a7771b0edf01a97fd7a7
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126419"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842578"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>使用 Transact-SQL (T-SQL) 创建和管理弹性数据库作业
 
@@ -184,7 +184,13 @@ CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
 
 ## <a name="monitor-database-performance"></a>监视数据库性能
 
-以下示例创建一个新作业，以便从多个数据库收集性能数据。  
+以下示例创建一个新作业，以便从多个数据库收集性能数据。
+
+默认情况下，作业代理将查找创建表以存储返回的结果。 因此，与用于输出凭据的凭据相关联的登录将需要具有足够的权限来执行此操作。 如果要提前手动创建表，则需要具有以下属性：
+1. 具有结果集的正确名称和数据类型的列。
+2. 数据类型为 uniqueidentifier 的 internal_execution_id 的其他列。
+3. internal_execution_id 列上名为“IX_<TableName>_Internal_Execution_ID”的非聚集索引。
+
 连接到[作业数据库](elastic-jobs-overview.md#job-database)，然后运行以下命令：
 
 ```sql

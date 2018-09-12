@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 11/01/2017
+ms.date: 08/29/2018
 ms.author: vturecek
-ms.openlocfilehash: 7786e08e04d2ebce757b4c47b8ed599036c95958
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: afd682625d7bb74f9a4b726a534508b805562e7f
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207853"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701528"
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>Service Fabric Reliable Services 中的 ASP.NET Core
 
@@ -33,9 +33,7 @@ ASP.NET Core 是新的开源跨平台框架，用于构建现代基于云的连�
 
 ## <a name="aspnet-core-in-the-service-fabric-environment"></a>Service Fabric 环境中的 ASP.NET Core
 
-虽然 ASP.NET Core 应用可在 .NET Core 或完整的 .NET Framework 上运行，但 Service Fabric 服务当前只能在完整的 .NET Framework 上运行。 这意味着在构建 ASP.NET Core Service Fabric 服务时，仍必须以完整的 .NET Framework 为目标。
-
-在 Service Fabric 中可通过两种不同方法使用 ASP.NET Core：
+ASP.NET Core 和 Service Fabric 应用都可以在 .NET Core 和完整的 .NET Framework 上运行。 在 Service Fabric 中可通过两种不同方法使用 ASP.NET Core：
  - **作为来宾可执行文件托管**。 这主要用于在 Service Fabric 上运行现有 ASP.NET Core 应用程序，无需更改代码。
  - **在 Reliable Service 内部运行**。 这可改善与 Service Fabric 运行时的集成，实现有状态的 ASP.NET Core 服务。
 
@@ -96,12 +94,15 @@ Reliable Service 实例由派生自 `StatelessService` 或 `StatefulService` 的
 
 ![Service Fabric ASP.NET Core 集成][2]
 
-Kestrel 和 HttpSys `ICommunicationListener` 实现以完全相同的方式使用此机制。 尽管 HttpSys 可使用基本“http.sys”端口共享功能基于唯一 URL 路径内部区分请求，但 HttpSys `ICommunicationListener` 实现不使用此功能，因为它会导致上述方案中出现 HTTP 503 和 HTTP 404 错误状态代码。 这进而使客户端很难确定错误原因，因为 HTTP 503 和 HTTP 404 通常用于指示其他错误。 因此，Kestrel 和 HttpSys `ICommunicationListener` 实现会在 `UseServiceFabricIntegration` 扩展方法提供的中间件上执行标准化，使客户端只需对 HTTP 410 响应执行服务终结点重新解析操作。
+Kestrel 和 HttpSys `ICommunicationListener` 实现以完全相同的方式使用此机制。 尽管 HttpSys 可使用基本“http.sys”端口共享功能基于唯一 URL 路径内部区分请求，但 HttpSys `ICommunicationListener` 实现不使用此功能，因为它会导致上述方案中出现 HTTP 503 和 HTTP 404 错误状态代码。 这进而使客户端难以确定错误原因，因为 HTTP 503 和 HTTP 404 通常用于指示其他错误。 因此，Kestrel 和 HttpSys `ICommunicationListener` 实现会在 `UseServiceFabricIntegration` 扩展方法提供的中间件上执行标准化，使客户端只需对 HTTP 410 响应执行服务终结点重新解析操作。
 
 ## <a name="httpsys-in-reliable-services"></a>Reliable Services 中的 HttpSys
 通过导入“Microsoft.ServiceFabric.AspNetCore.HttpSys”NuGet 包，可在 Reliable Service 中使用 HttpSys。 此包内附 `HttpSysCommunicationListener` - `ICommunicationListener` 的实现，此实现允许使用 HttpSys 作为 Web 服务器在 Reliable Service 内部创建 ASP.NET Core WebHost。
 
 在 [Windows HTTP Server API](https://msdn.microsoft.com/library/windows/desktop/aa364510(v=vs.85).aspx) 上构建 HttpSys。 这会使用 IIS 所用的 *http.sys* 内核驱动程序处理 HTTP 请求，并将其路由到运行 Web 应用程序的进程。 这可允许同一物理计算机或虚拟机上的多个进程在同一端口上托管 Web 应用程序，通过唯一 URL 路径或主机名来消除歧义。 Service Fabric 在同一群集中托管多个网站时，这些功能非常有用。
+
+>[!NOTE]
+>HttpSys 实现仅适用于 Windows 平台。
 
 下图说明了 HttpSys 如何在 Windows 上使用“http.sys”内核驱动程序进行端口共享：
 
@@ -188,7 +189,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
   </Resources>
 ```
 
-请注意，`Endpoint` 配置分配的动态端口仅为*每个主机进程*提供一个端口。 当前的 Service Fabric 托管模型允许在同一进程中托管多个服务实例和/或副本，这意味着当通过 `Endpoint` 配置分配时，每个实例/副本将共享相同的端口。 多个 HttpSys 实例可使用基本“http.sys”端口共享功能共享一个端口，但 `HttpSysCommunicationListener` 不支持此做法，因为这会增加客户端请求的复杂性。 对于使用动态端口，建议使用 Kestrel Web 服务器。
+`Endpoint` 配置分配的动态端口仅为每个主机进程提供一个端口。 当前的 Service Fabric 托管模型允许在同一进程中托管多个服务实例和/或副本，这意味着当通过 `Endpoint` 配置分配时，每个实例/副本将共享相同的端口。 多个 HttpSys 实例可使用基本“http.sys”端口共享功能共享一个端口，但 `HttpSysCommunicationListener` 不支持此做法，因为这会增加客户端请求的复杂性。 对于使用动态端口，建议使用 Kestrel Web 服务器。
 
 ## <a name="kestrel-in-reliable-services"></a>Reliable Services 中的 Kestrel
 通过导入 **Microsoft.ServiceFabric.AspNetCore.Kestrel** NuGet 包，可在 Reliable Service 中使用 Kestrel。 此包包含 `KestrelCommunicationListener` - `ICommunicationListener` 的实现，此实现允许使用 Kestrel Web 服务器在 Reliable Service 内部创建 ASP.NET Core WebHost。
@@ -250,7 +251,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 此示例中为 WebHost 依赖关系注入容器提供 `IReliableStateManager` 的单一实例。 这不是必需的，但通过此操作，可在 MVC 控制器操作方法中使用 `IReliableStateManager` 和 Reliable Collections。
 
-请注意，有状态服务中**不会**为 `KestrelCommunicationListener` 提供`Endpoint` 配置名称。 后续部分会对此进行详细说明。
+有状态服务中不会为 `KestrelCommunicationListener` 提供`Endpoint` 配置名称。 后续部分会对此进行详细说明。
 
 ### <a name="endpoint-configuration"></a>终结点配置
 使用 Kestrel 时不需要 `Endpoint` 配置。 
@@ -281,7 +282,7 @@ new KestrelCommunicationListener(serviceContext, "ServiceEndpoint", (url, listen
 #### <a name="use-kestrel-with-a-dynamic-port"></a>将 Kestrel 和动态端口配合使用
 Kestrel 无法使用 ServiceManifest.xml 中 `Endpoint` 配置的自动端口分配，因为 `Endpoint` 配置中的自动端口分配会为每个*主机进程*分配唯一端口，并且单个主机进程可能包含多个 Kestrel 实例。 由于 Kestrel 不支持端口共享，并且每个 Kestrel 实例必须在唯一端口上打开，因此此方案不可行。
 
-要将 Kestrel 和动态端口分配配合使用，只需完全省略ServiceManifest.xml 中的 `Endpoint` 配置，并且不要将终结点名称传递到 `KestrelCommunicationListener` 构造函数：
+要将 Kestrel 和动态端口分配配合使用，请全省略 ServiceManifest.xml 中的 `Endpoint` 配置，并且不要将终结点名称传递到 `KestrelCommunicationListener` 构造函数：
 
 ```csharp
 new KestrelCommunicationListener(serviceContext, (url, listener) => ...

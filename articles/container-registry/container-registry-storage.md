@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: marsma
-ms.openlocfilehash: 92e60b4213cb80d193a7c35f68b8f9fd099481d7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 65ff60be992440c69e50a084b467a8efbb19574e
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32165089"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307143"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Azure 容器注册表中的容器映像存储
 
@@ -43,7 +43,7 @@ Azure 使用异地冗余存储方案来防止容器映像丢失。 Azure 容器�
 | 标记 | 无限制|
 | 存储 | 5 TB |
 
-大量的存储库和标记可能会影响注册表的性能。 应将定期使用 [Azure CLI](/cli/azure/acr)、ACR [REST API](/rest/api/containerregistry/) 或 [Azure 门户][portal] 删除未使用的存储库、标记和映像作为注册表维护程序的一部分。 已删除的注册表资源（如存储库、映像和标记）在删除后*无法*恢复。
+大量的存储库和标记可能会影响注册表的性能。 作为注册表维护例程的一部分，定期删除未使用的存储库、标记和图像。 已删除的注册表资源（如存储库、映像和标记）在删除后*无法*恢复。 有关删除注册表资源的详细信息，请参阅[删除 Azure 容器注册表中的容器映像](container-registry-delete.md)。
 
 ## <a name="storage-cost"></a>存储成本
 

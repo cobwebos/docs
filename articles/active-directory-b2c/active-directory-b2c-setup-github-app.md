@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 88fffd28319101c112f848eebc6e8ee27f7f863e
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 11f3f190c0f55e45c549a8bd1de35f78eb7b752d
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952012"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337423"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 GitHub 帐户注册与登录
 
@@ -30,7 +30,7 @@ ms.locfileid: "37952012"
 1. 使用 GitHub 凭据登录 [GitHub 开发人员](https://github.com/settings/developers)网站。
 2. 选择“OAuth 应用”，然后选择“注册新应用程序”。
 3. 输入**应用程序名称**和**主页 URL**。
-4. 在“授权回调 URL”中输入 `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`。 将 {tenant} 替换为 Azure AD B2C 租户名称（例如 contosob2c.onmicrosoft.com）。
+4. 在“授权回调 URL”中输入 `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp`。 将 {tenant} 替换为 Azure AD B2C 租户名称（例如 contosob2c）。
 5. 单击“注册应用程序”。
 6. 复制“客户端 ID”和“客户端密钥”的值。 将标识提供者添加到租户时需要这两个值。
 

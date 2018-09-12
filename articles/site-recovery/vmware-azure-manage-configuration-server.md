@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: df5b2ecce2a5c9d7c263ee0acc3a49b859b93f7f
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 0935867e835fe88568f1cdce1ea8dfcea14a451a
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346114"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669309"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>为 VMware VM 管理配置服务器
 
@@ -24,7 +24,7 @@ ms.locfileid: "39346114"
 可以访问配置服务器，如下所示：
     - 登录到部署它的 VM，然后从桌面快捷方式启动 Azure Site Recovery 配置管理器。
     - 或者，可以从 **https://*ConfigurationServerName*/:44315/** 远程访问配置服务器。 使用管理员凭据登录。
-   
+
 ### <a name="modify-vmware-server-settings"></a>修改 VMware 服务器设置
 
 1. 要将不同 VMware 服务器与配置服务器相关联，请在登录后选择“添加 vCenter Server/vSphere ESXi 服务器”。
@@ -80,103 +80,114 @@ ms.locfileid: "39346114"
       Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
    ```
 
-      >[!NOTE] 
+      >[!NOTE]
       >为了从配置服务器**拉取最新的证书**来横向扩展流程服务器，请执行命令 *“<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe>" --registermt*
 
   8. 最后，通过执行以下命令重启 obengine。
   ```
           net stop obengine
           net start obengine
+  ```
+  
+## <a name="upgrade-the-configuration-server"></a>升级配置服务器
 
-## Upgrade the configuration server
+运行更新汇总来更新配置服务器。 最多可以为 N-4 版本应用更新。 例如：
 
-You run update rollups to update the configuration server. Updates can be applied for up to N-4 versions. For example:
+- 如果运行的是 9.7、9.8、9.9 或 9.10 版，可以直接升级到 9.11 版。
+- 如果运行的是 9.6 版或更早版本并且想要升级到 9.11 版，则必须先升级到 9.7 版， 然后再升级到 9.11 版。
 
-- If you run 9.7, 9.8, 9.9, or 9.10, you can upgrade directly to 9.11.
-- If you run 9.6 or earlier and you want to upgrade to 9.11, you must first upgrade to version 9.7. before 9.11.
+[wiki 更新页](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx)中提供了用于升级到配置服务器的所有版本的更新汇总的链接。
 
-Links to update rollups for upgrading to all versions of the configuration server are available in the [wiki updates page](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx).
+按如下所示升级服务器：
 
-Upgrade the server as follows:
+1. 在保管库中，转到“管理” > “Site Recovery 基础结构” > “配置服务器”。
+2. 如果有可用的更新，链接将显示在“代理版本”> 列中。
+    ![更新](./media/vmware-azure-manage-configuration-server/update2.png)
+3. 将更新安装程序文件下载到配置服务器上。
 
-1. In the vault, go to **Manage** > **Site Recovery Infrastructure** > **Configuration Servers**.
-2. If an update is available, a link appears in the **Agent Version** > column.
-    ![Update](./media/vmware-azure-manage-configuration-server/update2.png)
-3. Download the update installer file to the configuration server.
+    ![更新](./media/vmware-azure-manage-configuration-server/update1.png)
 
-    ![Update](./media/vmware-azure-manage-configuration-server/update1.png)
+4. 双击以运行安装程序。
+5. 安装程序检测计算机上运行的当前版本。 单击“是”开始升级。
+6. 升级完成时，验证服务器配置。
 
-4. Double-click to run the installer.
-5. The installer detects the current version running on the machine. Click **Yes** to start the upgrade.
-6. When the upgrade completes the server configuration validates.
+    ![更新](./media/vmware-azure-manage-configuration-server/update3.png)
 
-    ![Update](./media/vmware-azure-manage-configuration-server/update3.png)
-    
-7. Click **Finish** to close the installer.
+7. 单击“完成”关闭安装程序。
 
-## Delete or unregister a configuration server
+## <a name="delete-or-unregister-a-configuration-server"></a>删除或取消注册配置服务器
 
-1. [Disable protection](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) for all VMs under the configuration server.
-2. [Disassociate](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) and [delete](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) all replication policies from the configuration server.
-3. [Delete](vmware-azure-manage-vcenter.md#delete-a-vcenter-server) all vCenter servers/vSphere hosts that are associated with the configuration server.
-4. In the vault, open **Site Recovery Infrastructure** > **Configuration Servers**.
-5. Select the configuration server that you want to remove. Then, on the **Details** page, select **Delete**.
+1. 对配置服务器下的所有 VM [禁用保护](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure)。
+2. 从配置服务器中[取消关联](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy)和[删除](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy)所有复制策略。
+3. [删除](vmware-azure-manage-vcenter.md#delete-a-vcenter-server)与配置服务器关联的所有 vCenters 服务器/vSphere 主机。
+4. 在保管库中，打开“Site Recovery 基础结构” > “配置服务器”。
+5. 选择要删除的配置服务器。 然后，在“详细信息”页上，选择“删除”。
 
-    ![Delete configuration server](./media/vmware-azure-manage-configuration-server/delete-configuration-server.png)
-   
+    ![删除配置服务器](./media/vmware-azure-manage-configuration-server/delete-configuration-server.png)
 
-### Delete with PowerShell
 
-You can optionally delete the configuration server by using PowerShell.
+### <a name="delete-with-powershell"></a>使用 PowerShell 进行删除
 
-1. [Install](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0) the Azure PowerShell module.
-2. Sign in to your Azure account by using this command:
-    
+还可以选择使用 PowerShell 删除配置服务器。
+
+1. [安装](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0) Azure PowerShell 模块。
+2. 使用以下命令登录到你的 Azure 帐户：
+
     `Connect-AzureRmAccount`
-3. Select the vault subscription.
+3. 选择保管库订阅。
 
      `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`
-3.  Set the vault context.
-    
+3.  设置保管库上下文。
+
     ```
-    $vault = Get-AzureRmRecoveryServicesVault -Name <name of your vault> Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
+    $vault = Get-AzureRmRecoveryServicesVault -Name <name of your vault>
+    Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
     ```
-4. Retrieve the configuration server.
+4. 检索配置服务器。
 
     `$fabric = Get-AzureRmSiteRecoveryFabric -FriendlyName <name of your configuration server>`
-6. Delete the configuration server.
+6. 删除配置服务器。
 
     `Remove-AzureRmSiteRecoveryFabric -Fabric $fabric [-Force] `
 
 > [!NOTE]
-> You can use the **-Force** option in Remove-AzureRmSiteRecoveryFabric for forced deletion of the configuration server.
- 
-## Generate configuration server Passphrase
+> 可使用 Remove-AzureRmSiteRecoveryFabric 中的 -Force 选项强制执行删除配置服务器。
 
-1. Sign in to your configuration server, and then open a command prompt window as an administrator.
-2. To change the directory to the bin folder, execute the command **cd %ProgramData%\ASR\home\svsystems\bin**
-3. To generate the passphrase file, execute **genpassphrase.exe -v > MobSvc.passphrase**.
-4. Your passphrase will be stored in the file located at **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase**.
+## <a name="generate-configuration-server-passphrase"></a>生成配置服务器通行短语
 
-## Renew SSL certificates
+1. 登录配置服务器，并以管理员身份打开“命令提示符”窗口。
+2. 要将目录更改到 bin 文件夹，请执行命令 cd %ProgramData%\ASR\home\svsystems\bin
+3. 要生成通行短语文件，请执行 genpassphrase.exe v > MobSvc.passphrase。
+4. 你的通行短语将存储在 %ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase 中。
 
-The configuration server has an inbuilt web server, which orchestrates activities of the Mobility Service, process servers, and master target servers connected to it. The web server uses an SSL certificate to authenticate clients. The certificate expires after three years and can be renewed at any time.
+## <a name="renew-ssl-certificates"></a>续订 SSL 证书
 
-### Check expiry
+配置服务器具有一个内置的 Web 服务器，该服务器协调连接到配置服务器的移动服务、进程服务器和主目标服务器的活动。 Web 服务器使用 SSL 证书对客户端进行身份验证。 该证书在三年后到期，并可随时续订。
 
-For configuration server deployments before May 2016, certificate expiry was set to one year. If you have a certificate that is going to expire, the following occurs:
+### <a name="check-expiry"></a>检查有效期
 
-- When the expiry date is two months or less, the service starts sending notifications in the portal, and by email (if you subscribed to Site Recovery notifications).
-- A notification banner appears on the vault resource page. For more information, select the banner.
-- If you see an **Upgrade Now** button, it indicates that some components in your environment haven't been upgraded to 9.4.xxxx.x or higher versions. Upgrade the components before you renew the certificate. You can't renew on older versions.
+对于 2016 年 5 月之前的配置服务器部署，证书有效期设置为一年。 如果证书即将到期，将出现以下情况：
 
-### Renew the certificate
+- 如果离到期日期有两个月或不到两个月，服务将开始在门户中发送通知以及通过电子邮件发送（如果订阅了 Site Recovery 通知）。
+- 保管库资源页上将显示通知横幅。 若要了解详细信息，请选择横幅。
+- 如果看到了“立即升级”按钮，则表示环境中有些组件尚未升级到 9.4.xxxx.x 或更高版本。 请在续订证书之前升级组件。 无法在旧版本中进行续订。
 
-1. In the vault, open **Site Recovery Infrastructure** > **Configuration Server**. Select the required configuration server.
-2. The expiry date appears under **Configuration Server health**.
-3. Select **Renew Certificates**. 
+### <a name="renew-the-certificate"></a>续订证书
 
+1. 在保管库中，打开“Site Recovery 基础结构” > “配置服务器”。 选择所需的配置服务器。
+2. 到期日期显示在“配置服务器运行状况”下。
+3. 选择“续订证书”。
 
-## Next steps
+## <a name="update-windows-licence"></a>更新 Windows 许可证
 
-Review the tutorials for setting up disaster recovery of [VMware VMs](vmware-azure-tutorial.md) to Azure.
+通过 OVF 模板提供的许可证是有效期为 180 天的评估许可证。 为了不间断的使用，必须使用已采购的许可证来激活 Windows。
+
+## <a name="failback-requirements"></a>故障回复要求
+
+在重新保护和故障回复期间，本地配置服务器必须运行且处于连接状态。 要成功进行故障回复，要故障回复的虚拟机必须位于配置服务器数据库中。
+
+确保定期计划配置服务器备份。 如果发生灾难且配置服务器丢失，则必须首先从备份副本还原配置服务器，并确保已还原的配置服务器具有与其注册到保管库的 IP 地址相同的 IP 地址。 如果为还原的配置服务器使用不同的 IP 地址，则故障回复将不起作用。
+
+## <a name="next-steps"></a>后续步骤
+
+查看有关设置 [VMware VM](vmware-azure-tutorial.md) 到 Azure 的灾难恢复的教程。

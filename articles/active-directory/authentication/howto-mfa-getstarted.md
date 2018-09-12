@@ -5,17 +5,17 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 09/01/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: c2d0f14bca2b9ab062c61407479ab45a0104ff0a
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 0408b26e687dd31c408dbccc68f56e8198016c8f
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716257"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43664782"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>部署基于云的 Azure 多重身份验证
 
@@ -23,7 +23,7 @@ Azure 多重身份验证 (Azure MFA) 入门是一个直截了当的过程。
 
 在开始之前，请确保满足以下先决条件：
 
-* Azure AD 租户中的全局管理员帐户。 在完成此步骤时如需帮助，请参阅 [Azure AD 入门](../get-started-azure-ad.md)一文
+* Azure AD 租户中的全局管理员帐户。 在完成此步骤时如需帮助，请参阅 [Azure AD 入门](../get-started-azure-ad.md)一文。
 * 分配给用户的正确许可证。 如需详细信息，请参阅主题[如何获取 Azure 多重身份验证](concept-mfa-licensing.md)。
 
 ## <a name="choose-how-to-enable"></a>选择启用方法
@@ -32,7 +32,7 @@ Azure 多重身份验证 (Azure MFA) 入门是一个直截了当的过程。
 
 通过 Azure AD Identity Protection 启用 - 此方法使用 Azure AD Identity Protection 风险策略，要求仅基于所有云应用程序的登录风险进行双重验证。 此方法需要 Azure Active Directory P2 授权。 有关此方法的详细信息，请参阅 [Azure Active Directory Identity Protection](../identity-protection/overview.md#risky-sign-ins)。
 
-通过更改用户状态启用 - 这是需要进行双重验证的传统方法。 它适用于云中的 Azure MFA 以及 Azure MFA 服务器。 使用此方法要求用户**每次**登录时都执行双重验证并重写条件访问策略。 可在[如何要求对用户进行双重验证](howto-mfa-userstates.md)中找到有关此方法的详细信息
+通过更改用户状态启用 - 这是需要进行双重验证的传统方法。 它适用于云中的 Azure MFA 以及 Azure MFA 服务器。 使用此方法要求用户**每次**登录时都执行双重验证并重写条件访问策略。 可在[如何要求对用户进行双重验证](howto-mfa-userstates.md)中找到有关此方法的详细信息。
 
 > [!Note]
 > 有关许可和定价的详细信息，请参见 [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/

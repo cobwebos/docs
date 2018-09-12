@@ -10,12 +10,12 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 04/21/2018
 ms.author: saneppal
-ms.openlocfilehash: 0a0eeb3815b793ed81f60b2b239bc459e5574788
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 18eae69867dc9774f63b11c762b22df4595bdce6
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366304"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781741"
 ---
 # <a name="integrate-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>集成 QnA Maker 和 LUIS 以分发知识库
 随着 QnA Maker 知识库变得越来越大，将其作为单个整体集进行维护变得困难，并且需要将知识库分成更小的逻辑块。
@@ -32,8 +32,8 @@ ms.locfileid: "35366304"
 - 登录 [LUIS](https://www.luis.ai/) 门户并[创建应用](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/create-new-app)。
 - 根据方案[添加意向](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/add-intents)。
 - [训练](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-how-to-train)并[发布](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/publishapp) LUIS 应用。
-- 登录 [QnA Maker](https://qnamaker.ai)，并根据方案[创建知识库]()。
-- [测试]()并[发布]()知识库。
+- 登录 [QnA Maker](https://qnamaker.ai)，并根据方案[创建知识库](https://www.qnamaker.ai/Create)。
+- 测试并发布知识库。
 
 ## <a name="qna-maker--luis-bot"></a>QnA Maker + LUIS 机器人
 1. 首先使用 LUIS 模板创建 Web 应用机器人，将其与前面创建的 LUIS 应用链接，然后修改意向。 请参阅[此处](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-csharp-tutorial-build-bot-framework-sample)的详细步骤。

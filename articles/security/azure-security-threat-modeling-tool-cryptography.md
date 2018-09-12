@@ -3,23 +3,23 @@ title: 加密 - Microsoft 威胁建模工具 - Azure | Microsoft 文档
 description: 针对威胁建模工具中暴露的威胁采取的缓解措施
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: 5e5d487c4c793a49ce1d4ac17f6fcd672e09bb90
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 02/07/2017
+ms.author: jegeib
+ms.openlocfilehash: 4128d113535c67c0b440dc3fb275af05b5c1c1ae
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30911652"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306139"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>安全框架：加密 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -36,7 +36,7 @@ ms.locfileid: "30911652"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -47,7 +47,7 @@ ms.locfileid: "30911652"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -58,7 +58,7 @@ ms.locfileid: "30911652"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -69,7 +69,7 @@ ms.locfileid: "30911652"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -80,7 +80,7 @@ ms.locfileid: "30911652"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -91,7 +91,7 @@ ms.locfileid: "30911652"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -102,18 +102,18 @@ ms.locfileid: "30911652"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
-| **步骤** | <p>产品必须使用 SHA-2 系列的哈希算法（SHA256、SHA384 和 SHA512）。 如果需要更短的哈希（例如 128 位输出长度）来适应出于缩短 MD5 哈希目的而设计的数据结构，产品团队可以截断 SHA2 哈希之一（通常为 SHA256）。 请注意，SHA384 是 SHA512 的截断版本。 不允许出于安全目的将加密哈希截断至 128 位以下。 新代码必须使用 MD2、MD4、MD5、SHA-0、 SHA-1 或 RIPEMD 哈希算法。 对于这些算法，哈希冲突在计算上是可行的，这会有效地破解这些算法。</p><p>为使加密灵活可控而允许的 .NET 哈希算法（按优先顺序列出）：</p><ul><li>SHA512Cng（符合 FIPS）</li><li>SHA384Cng（符合 FIPS）</li><li>SHA256Cng（符合 FIPS）</li><li>SHA512Managed（不符合 FIPS）（在 HashAlgorithm.Create 或 CryptoConfig.CreateFromName 调用中使用 SHA512 作为算法名称）</li><li>SHA384Managed（不符合 FIPS）（在 HashAlgorithm.Create 或 CryptoConfig.CreateFromName 调用中使用 SHA384 作为算法名称）</li><li>SHA256Managed（不符合 FIPS）（在 HashAlgorithm.Create 或 CryptoConfig.CreateFromName 调用中使用 SHA256 作为算法名称）</li><li>SHA512CryptoServiceProvider（符合 FIPS）</li><li>SHA256CryptoServiceProvider（符合 FIPS）</li><li>SHA384CryptoServiceProvider（符合 FIPS）</li></ul>| 
+| **步骤** | <p>产品必须使用 SHA-2 系列的哈希算法（SHA256、SHA384 和 SHA512）。 如果需要更短的哈希（例如 128 位输出长度）来适应出于缩短 MD5 哈希目的而设计的数据结构，产品团队可以截断 SHA2 哈希之一（通常为 SHA256）。 请注意，SHA384 是 SHA512 的截断版本。 不允许出于安全目的将加密哈希截断至 128 位以下。 新代码必须使用 MD2、MD4、MD5、SHA-0、 SHA-1 或 RIPEMD 哈希算法。 对于这些算法，哈希冲突在计算上是可行的，这会有效地破解这些算法。</p><p>为使加密灵活可控而允许的 .NET 哈希算法（按优先顺序列出）：</p><ul><li>SHA512Cng（符合 FIPS）</li><li>SHA384Cng（符合 FIPS）</li><li>SHA256Cng（符合 FIPS）</li><li>SHA512Managed（不符合 FIPS）（在对 HashAlgorithm.Create 或 CryptoConfig.CreateFromName 的调用中使用 SHA512 作为算法名称）</li><li>SHA384Managed（不符合 FIPS）（在对 HashAlgorithm.Create 或 CryptoConfig.CreateFromName 的调用中使用 SHA384 作为算法名称）</li><li>SHA256Managed（不符合 FIPS）（在对 HashAlgorithm.Create 或 CryptoConfig.CreateFromName 的调用中使用 SHA256 作为算法名称）</li><li>SHA512CryptoServiceProvider（符合 FIPS）</li><li>SHA256CryptoServiceProvider（符合 FIPS）</li><li>SHA384CryptoServiceProvider（符合 FIPS）</li></ul>| 
 
 ## <a id="strong-db"></a>使用强加密算法加密数据库中的数据
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 数据库 | 
+| 组件               | 数据库 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -124,7 +124,7 @@ ms.locfileid: "30911652"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 数据库 | 
+| 组件               | 数据库 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -135,7 +135,7 @@ ms.locfileid: "30911652"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 数据库 | 
+| 组件               | 数据库 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -146,7 +146,7 @@ ms.locfileid: "30911652"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 数据库 | 
+| 组件               | 数据库 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -157,7 +157,7 @@ ms.locfileid: "30911652"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 数据库 | 
+| 组件               | 数据库 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | SQL Azure、OnPrem |
 | **属性**              | SQL 版本 - V12、MsSQL2016 |
@@ -168,12 +168,12 @@ ms.locfileid: "30911652"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | IoT 设备 | 
+| 组件               | IoT 设备 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 设备 OS - Windows IoT Core、设备连接、Azure IoT 设备 SDK |
 | **参考**              | [Windows IoT Core 上的 TPM](https://developer.microsoft.com/windows/iot/docs/tpm)、[设置 Windows IoT Core 上的 TPM](https://developer.microsoft.com/windows/iot/win10/setuptpm)、[Azure IoT 设备 SDK TPM](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
-| **步骤** | 对称或证书私钥安全存储在受硬件保护的存储（如 TPM 或智能卡芯片）中。 Windows 10 IoT Core 支持 TPM 用户，另外还可以使用多个兼容的 TPM：https://developer.microsoft.com/windows/iot/win10/tpm。 建议使用固件或离散 TPM。 软件 TPM 只应该用于开发和测试目的。 获取 TPM 并在其中预配密钥后，应该编写生成令牌的代码，但不要对令牌中的任何敏感信息进行硬编码。 | 
+| **步骤** | 对称或证书私钥安全存储在受硬件保护的存储（如 TPM 或智能卡芯片）中。 Windows 10 IoT Core 支持 TPM 用户，另外还可以使用多个兼容的 TPM： https://developer.microsoft.com/windows/iot/win10/tpm。 建议使用固件或离散 TPM。 软件 TPM 只应该用于开发和测试目的。 获取 TPM 并在其中预配密钥后，应该编写生成令牌的代码，但不要对令牌中的任何敏感信息进行硬编码。 | 
 
 ### <a name="example"></a>示例
 ```
@@ -191,7 +191,7 @@ var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. Cre
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | IoT 云网关 | 
+| 组件               | IoT 云网关 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 网关选项 - Azure IoT 中心 |
@@ -202,7 +202,7 @@ var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. Cre
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Dynamics CRM 移动客户端 | 
+| 组件               | Dynamics CRM 移动客户端 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -213,7 +213,7 @@ var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. Cre
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Dynamics CRM Outlook 客户端 | 
+| 组件               | Dynamics CRM Outlook 客户端 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -224,7 +224,7 @@ var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. Cre
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 标识服务器 | 
+| 组件               | 标识服务器 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -235,7 +235,7 @@ var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. Cre
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 标识服务器 | 
+| 组件               | 标识服务器 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 9b4cbc7224c29d97f235fcc409ce27ee6eea9f01
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: f47e85b47f262e30e9160f11604220aa8055be5d
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049190"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701711"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>使用 Azure 数据工厂从 HBase 复制数据 
 
@@ -43,9 +43,9 @@ HBase 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**HBase** | 是 |
-| host | HBase 服务器的 IP 地址或主机名。 （即 192.168.222.160，[clustername].azurehdinsight.net）  | 是 |
+| host | HBase 服务器的 IP 地址或主机名。 （即 `[clustername].azurehdinsight.net` `192.168.222.160）  | 是 |
 | port | HBase 实例用来侦听客户端连接的 TCP 端口。 默认值为 9090。 如果连接到 Azure HDInsights，请指定端口 443。 | 否 |
-| httpPath | 对应于 HBase 服务器的部分 URL。 （即 /gateway/sandbox/hbase/version）  | 否 |
+| httpPath | 对应于 HBase 服务器的部分 URL。 （即 `/hbaserest0`）  | 否 |
 | authenticationType | 用于连接到 HBase 服务器的身份验证机制。 <br/>允许的值为：Anonymous、Basic | 是 |
 | username | 用于连接到 HBase 实例的用户名。  | 否 |
 | password | 用户名所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
@@ -54,6 +54,9 @@ HBase 链接服务支持以下属性：
 | allowHostNameCNMismatch | 指定通过 SSL 进行连接时是否要求 CA 颁发的 SSL 证书的名称与服务器的主机名相匹配。 默认值为 false。  | 否 |
 | allowSelfSignedServerCert | 指定是否允许来自服务器的自签名证书。 默认值为 false。  | 否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
+
+>[!NOTE]
+>如果群集不支持 HDInsight 等粘性会话，请在 http 路径设置的末尾显式添加节点索引，例如，指定 `/hbaserest0` 而不是 `/hbaserest`。
 
 **HDInsights HBase 的示例：**
 
@@ -65,7 +68,7 @@ HBase 链接服务支持以下属性：
         "typeProperties": {
             "host" : "<cluster name>.azurehdinsight.net",
             "port" : "443",
-            "httpPath" : "<e.g. hbaserest>",
+            "httpPath" : "/hbaserest0",
             "authenticationType" : "Basic",
             "username" : "<username>",
             "password": {

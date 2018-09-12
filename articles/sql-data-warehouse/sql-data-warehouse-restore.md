@@ -3,22 +3,22 @@ title: 还原 Azure SQL 数据仓库 | Microsoft Docs
 description: 用于还原 SQL 数据仓库的操作指南。
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 08/29/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 583346f2297f590d8e9484c0a3c19c947de7f740
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 6eba50fbe7c2a7a40b08e37a96adac66583b8251
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43191595"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781854"
 ---
 # <a name="restoring-azure-sql-data-warehouse"></a>还原 Azure SQL 数据仓库 
-在本文中，你将学习如何执行以下操作：
+本文介绍如何在 Azure 门户和 PowerShell 中执行以下操作：
 
 - 创建还原点
 - 从自动还原点或用户定义的还原点进行还原
@@ -26,15 +26,19 @@ ms.locfileid: "43191595"
 - 从异地备份进行还原
 - 从用户定义的还原点创建数据仓库的副本
 
+> [!NOTE]
+> 截至 8 月 27 日，由于已知的回归，已禁用跨服务器还原。 我们将此问题视为需要解决的首要问题，正在努力进行修复。 由此产生的不便，我们深表歉意。 在此期间，可利用[异地备份](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore#restore-from-an-azure-geographical-region)跨服务器进行还原。  
+>
+
 ## <a name="before-you-begin"></a>开始之前
 **验证 DTU 容量。** 每个 SQL 数据仓库都由一个具有默认 DTU 配额的 SQL 服务器（例如 myserver.database.windows.net）托管。  在还原 SQL 数据仓库之前，请确保 SQL Server 的剩余 DTU 配额足够进行数据库还原。 若要了解如何计算所需 DTU 或请求更多的 DTU，请参阅[请求 DTU 配额更改][Request a DTU quota change]。
 
-# <a name="restore-through-powershell"></a>通过 Powershell 进行还原
+## <a name="restore-through-powershell"></a>通过 Powershell 进行还原
 
 ## <a name="install-powershell"></a>安装 PowerShell
 若要对 SQL 数据仓库使用 Azure PowerShell，需要安装 Azure PowerShell 1.0 或更高版本。  可通过运行 **Get-Module -ListAvailable -Name AzureRM** 来检查版本。  可通过 [Microsoft Web 平台安装程序][Microsoft Web Platform Installer]安装最新版本。  有关安装最新版本的详细信息，请参阅[如何安装和配置 Azure PowerShell][How to install and configure Azure PowerShell]。
 
-## <a name="restore-an-active-or-paused-database"></a>还原活动或暂停的数据库
+## <a name="restore-an-active-or-paused-database-using-powershell"></a>使用 PowerShell 还原活动或暂停的数据库
 若要从还原点还原数据库，请使用 [Restore-AzureRmSqlDatabase][Restore-AzureRmSqlDatabase] PowerShell cmdlet。
 
 1. 打开 Windows PowerShell。
@@ -90,7 +94,7 @@ $RestoredDatabase.status
 > 完成还原后，即可按[在恢复后配置数据库][Configure your database after recovery]中的说明配置恢复的数据库。
 >
 
-## <a name="copy-your-data-warehouse-with-user-defined-restore-points"></a>使用用户定义的还原点复制数据仓库
+## <a name="copy-your-data-warehouse-with-user-defined-restore-points-using-powershell"></a>使用 PowerShell 通过用户定义的还原点复制数据仓库
 若要从用户定义的还原点还原数据库，请使用 [Restore-AzureRmSqlDatabase][Restore-AzureRmSqlDatabase] PowerShell cmdlet。
 
 1. 打开 Windows PowerShell。
@@ -98,10 +102,10 @@ $RestoredDatabase.status
 3. 选择包含要还原的数据库的订阅。
 4. 为数据库的即时复制创建还原点
 5. 将数据库重命名为一个临时名称。
-5. 根据指定的 RestorePointLabel 检索最新还原点。
-6. 获取用于启动还原的数据库的资源 ID
-6. 将数据库还原到所需的还原点。
-7. 验证已还原的数据库是否处于联机状态。
+6. 根据指定的 RestorePointLabel 检索最新还原点。
+7. 获取用于启动还原的数据库的资源 ID
+8. 将数据库还原到所需的还原点。
+9. 验证已还原的数据库是否处于联机状态。
 
 ```Powershell
 
@@ -138,7 +142,7 @@ $RestoredDatabase.status
 
 ```
 
-## <a name="restore-a-deleted-database"></a>还原已删除的数据库
+## <a name="restore-a-deleted-database-using-powershell"></a>使用 PowerShell 还原删除的数据库
 若要还原已删除的数据库，请使用 [Restore-AzureRmSqlDatabase][Restore-AzureRmSqlDatabase] cmdlet。
 
 1. 打开 Windows PowerShell。
@@ -173,7 +177,7 @@ $RestoredDatabase.status
 > 完成还原后，即可按[在恢复后配置数据库][Configure your database after recovery]中的说明配置恢复的数据库。
 >
 
-## <a name="restore-from-an-azure-geographical-region"></a>从 Azure 地理区域还原
+## <a name="restore-from-an-azure-geographical-region-using-powershell"></a>使用 PowerShell 从 Azure 地理区域还原
 若要恢复数据库，请使用 [Restore-AzureRmSqlDatabase][Restore-AzureRmSqlDatabase] cmdlet。
 
 > [!NOTE]
@@ -208,9 +212,9 @@ $GeoRestoredDatabase.status
 
 如果源数据库启用了 TDE，则已恢复的数据库将启用 TDE。
 
-# <a name="restore-through-the-azure-portal"></a>通过 Azure 门户进行还原
+## <a name="restore-through-the-azure-portal"></a>通过 Azure 门户进行还原
 
-## <a name="create-a-user-defined-restore-point"></a>创建用户定义的还原点
+## <a name="create-a-user-defined-restore-point-using-the-azure-portal"></a>使用 Azure 门户创建用户定义的还原点
 1. 登录到 [Azure 门户][Azure portal]。
 
 2. 导航到要为其创建还原点的 SQL 数据仓库。
@@ -218,37 +222,37 @@ $GeoRestoredDatabase.status
 3. 在“概览”边栏选项卡顶部，选择“+ 新建还原点”。
 
     ![新建还原点](./media/sql-data-warehouse-restore-database-portal/creating_restore_point_0.png)
-    
+
 4. 为还原点指定一个名称。
 
     ![还原点的名称](./media/sql-data-warehouse-restore-database-portal/creating_restore_point_1.png)
 
-## <a name="restore-an-active-or-paused-database"></a>还原活动或暂停的数据库
+## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>使用 Azure 门户还原活动或暂停的数据库
 1. 登录到 [Azure 门户][Azure portal]。
 2. 导航到要从中进行还原的 SQL 数据仓库。
 3. 在“概览”边栏选项卡顶部，选择“还原”。
 
     ![ 还原概述](./media/sql-data-warehouse-restore-database-portal/restoring_0.png)
-    
+
 4. 选择“自动还原点”或“用户定义的还原点”。
 
     ![自动还原点](./media/sql-data-warehouse-restore-database-portal/restoring_1.png)
-    
+
 5. 对于用户定义的还原点，请**选择还原点**或**新建用户定义的还原点**。
 
     ![用户定义的还原点](./media/sql-data-warehouse-restore-database-portal/restoring_2_udrp.png)
 
-## <a name="restore-a-deleted-database"></a>还原已删除的数据库
+## <a name="restore-a-deleted-database-using-the-azure-portal"></a>通过 Azure 门户还原已删除的数据库
 1. 登录到 [Azure 门户][Azure portal]。
 2. 导航到承载着已删除数据库的 SQL Server。
 3. 在目录中选择“已删除的数据库”图标。
 
     ![已删除的数据库](./media/sql-data-warehouse-restore-database-portal/restoring_deleted_0.png)
-    
+
 4. 选择要还原的已删除数据库。
 
     ![选择“已删除的数据库”](./media/sql-data-warehouse-restore-database-portal/restoring_deleted_1.png)
-    
+
 5. 指定一个新的数据库名称。
 
     ![指定数据库名称](./media/sql-data-warehouse-restore-database-portal/restoring_deleted_2.png)

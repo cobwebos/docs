@@ -12,12 +12,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 86cc98721681750617e374679c38ad29cf5a2362
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 836f426be950e33031ff74276218d1ba59f1f2f7
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42140224"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43300907"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>管理双重验证的应用密码
 
@@ -38,11 +38,46 @@ ms.locfileid: "42140224"
 
 在最初注册双重验证期间，系统会提供一个应用密码。 如果需要多个密码，可以根据双重验证的使用方式创建更多的密码：
 
-- **对 Microsoft Azure 帐户使用双重验证。** 使用 [Azure 门户](https://portal.azure.com)创建和删除应用密码。 有关详细信息，请参阅[应用密码和双重验证](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification)一文。
+- **对工作或学校帐户以及 MyApps 门户使用双重验证。** 遵照本文的[使用 MyApps 门户创建和删除应用密码](#create-and-delete-app-passwords-using-the-myapps-portal)部分中的说明创建和删除应用密码。 有关 MyApps 门户以及如何使用该门户的详细信息，请参阅[什么是 Azure Active Directory 中的 MyApps 门户？](active-directory-saas-access-panel-introduction.md)。
 
-- **对个人 Microsoft 帐户使用双重验证。** 使用 Microsoft 帐户的[安全基本信息](https://account.microsoft.com/account/)页创建和删除应用密码。 有关详细信息，请参阅[应用密码和双重验证](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification)一文。
+- **对工作或学校帐户以及 Office 365 门户使用双重验证。** 遵照本文的[使用 Office 365 门户创建和删除应用密码](#create-and-delete-app-passwords-using-the-office-365-portal)部分中的说明创建和删除应用密码。
 
-- **对工作或学校帐户以及 Office 365 应用使用双重验证。** 遵照本文的[使用 Office 365 门户创建和删除应用密码](#create-and-delete-app-passwords-using-the-office-365-portal)部分中的说明创建和删除应用密码。
+- **对个人 Microsoft 帐户使用双重验证。** 使用个人 Microsoft 帐户的[安全基本信息](https://account.microsoft.com/account/)页创建和删除应用密码。 有关详细信息，请参阅[应用密码和双重验证](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification)一文。
+
+## <a name="create-and-delete-app-passwords-using-the-myapps-portal"></a>使用 MyApps 门户创建和删除应用密码
+可以通过 MyApps 门户创建和删除应用密码。
+
+### <a name="to-create-an-app-password-using-the-myapps-portal"></a>使用 MyApps 门户创建应用密码
+
+1. 登录到 [https://myapps.microsoft.com](https://myapps.microsoft.com)。
+
+2. 选择右上角的姓名，然后选择“个人资料”。
+
+3. 选择“其他安全性验证”。
+
+   ![选择“其他安全性验证”- 屏幕截图](./media/multi-factor-authentication-end-user-app-passwords/myapps1.png)
+
+4. 选择“应用密码”。
+
+   ![选择“应用密码”- 屏幕截图](./media/multi-factor-authentication-end-user-app-passwords/apppass2.png)
+
+5. 单击“创建”。
+
+6. 键入应用密码的名称，然后选择“下一步”。
+
+7. 将应用密码复制到剪贴板，并将它粘贴到你的应用。
+   
+    ![创建应用密码](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
+
+### <a name="to-delete-an-app-password-using-the-myapps-portal"></a>使用 MyApps 门户删除应用密码
+
+1. 转到个人资料，并选择“其他安全性验证”。
+
+2. 选择“应用密码”，然后选择要删除的应用密码旁边的“删除”。
+
+   ![删除应用密码](./media/multi-factor-authentication-end-user-app-passwords/delete1.png)
+
+3. 选择“是”确认要删除该密码，然后选择“关闭”。
 
 ## <a name="create-and-delete-app-passwords-using-the-office-365-portal"></a>使用 Office 365 门户创建和删除应用密码
 
@@ -77,46 +112,6 @@ ms.locfileid: "42140224"
     应用密码现已成功删除。
 
 5. 遵循创建应用密码的步骤来创建新的应用密码。
-
-## <a name="manage-app-passwords-in-the-azure-portal"></a>在 Azure 门户中管理应用密码
-
-如果在 Azure 中使用双重验证，则需要通过 Azure 门户创建应用密码。
-
-## <a name="manage-app-passwords-with-the-myapps-portal"></a>使用“我的应用”门户管理应用密码
-
-也可以通过“我的应用”门户创建和删除应用密码。
-
-### <a name="to-create-an-app-password-using-the-my-apps-portal"></a>使用“我的应用”门户创建应用密码
-
-1. 登录到 [https://myapps.microsoft.com](https://myapps.microsoft.com)。
-
-2. 选择右上角的姓名，然后选择“个人资料”。
-
-3. 选择“其他安全性验证”。
-
-   ![选择“其他安全性验证”- 屏幕截图](./media/multi-factor-authentication-end-user-app-passwords/myapps1.png)
-
-4. 选择“应用密码”。
-
-   ![选择“应用密码”- 屏幕截图](./media/multi-factor-authentication-end-user-app-passwords/apppass2.png)
-
-5. 单击“创建”。
-
-6. 键入应用密码的名称，然后选择“下一步”。
-
-7. 将应用密码复制到剪贴板，并将它粘贴到你的应用。
-   
-    ![创建应用密码](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
-
-### <a name="to-delete-an-app-password-using-the-my-apps-portal"></a>使用“我的应用”门户删除应用密码
-
-1. 转到个人资料，并选择“其他安全性验证”。
-
-2. 选择“应用密码”，然后选择要删除的应用密码旁边的“删除”。
-
-   ![删除应用密码](./media/multi-factor-authentication-end-user-app-passwords/delete1.png)
-
-3. 选择“是”确认要删除该密码，然后选择“关闭”。
 
 ## <a name="if-your-app-passwords-arent-working-properly"></a>如果应用密码不正常工作
 

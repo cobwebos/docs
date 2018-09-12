@@ -7,14 +7,14 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 08/05/2018
+ms.date: 09/05/2018
 ms.author: juliako
-ms.openlocfilehash: 64a38ba617a1cc5fe1fdb3473e3cb88a49d89bb0
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: c598fdae40b4552e1d4dc29b8558d82d0830160a
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42744746"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841826"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>创建连接到 Azure 的视频索引器帐户
 
@@ -52,7 +52,7 @@ ms.locfileid: "42744746"
 
 ## <a name="connect-to-azure"></a>连接到 Azure
 
-1. 以该用户的身份登录，然后单击“连接到 Azure”按钮：
+1. 登录到 [https://www.videoindexer.ai/](https://www.videoindexer.ai/)，然后单击“连接到 Azure”按钮：
 
     ![连接到 Azure](./media/create-account/connect-to-azure.png)
 
@@ -69,9 +69,21 @@ ms.locfileid: "42744746"
     * 若要使用现有的媒体服务帐户，请选择“使用现有资源”。 从帐户列表中选择自己的帐户。
 
         媒体服务帐户必须与视频索引器帐户位于同一区域。 为了尽量减少索引持续时间和降低吞吐量，请在媒体服务帐户中将预留单位的类型和数量调整为“10 个 S3 预留单位”。
-    * 若要手动配置连接，请单击“切换到手动配置”链接，并提供所需的信息：
+    * 若要手动配置连接，请单击“切换到手动配置”。 
+    
+        如果出于某种原因自动选项无法完成，或如果你的设置和配置不同于常见情况，或者要对设置拥有完全可见性和控制，则可能要手动配置连接。 
+        
+        在“将视频索引器连接到 Azure 订阅”中，提供以下信息。
 
-    ![将视频索引器连接到 Azure](./media/create-account/connect-vi-to-azure-subscription-2.png)
+        |设置|Description|
+        |---|---|
+        |视频索引器帐户区域|视频索引器帐户区域的名称。 为了提高性能和降低成本，强烈建议指定 Azure 媒体服务资源和 Azure 存储帐户所在区域的名称。 |
+        |Azure Active Directory (AAD) 租户|Azure AD 租户的名称，例如“contoso.onmicrosoft.com”。 可以在 Azure 门户中检索租户信息。 将光标悬停在右上角的登录用户名之上。|
+        |订阅 ID|应在其下创建此连接的 Azure 订阅。 可以从 Azure 门户中检索订阅 ID。 单击左侧面板中的“所有服务”，然后搜索“订阅”。 选择“订阅”并从订阅列表中选择所需的 ID。|
+        |Azure 媒体服务资源组名称|存在媒体服务帐户的资源组的名称。|
+        |媒体服务资源名称|Azure 媒体服务资源的名称。|
+        |应用程序 ID|具有指定媒体服务帐户的权限的 Azure AD 应用程序 ID。 有关更多信息，请参阅[使用服务主体身份验证](../../media-services/previous/media-services-portal-get-started-with-aad.md#service-principal-authentication)。|
+        |应用程序密钥|有关更多信息，请参阅[使用服务主体身份验证](../../media-services/previous/media-services-portal-get-started-with-aad.md#service-principal-authentication)。|
 
 5. 完成后，选择“连接”。 此操作可能需要长达数分钟时间才能完成。 
 

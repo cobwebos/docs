@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: govindk
-ms.openlocfilehash: 7c9367cccf8d59d60dfa474f02567d59b9c8c8c2
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: b21debdd6baa0a6587318ad861a821840ec6879c
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40037919"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666691"
 ---
 # <a name="azure-cosmos-db-firewall-support"></a>Azure Cosmos DB 防火墙支持
 为保护存储在 Azure Cosmos DB 数据库帐户的数据，Azure Cosmos DB 已提供对基于机密的[授权模型](https://msdn.microsoft.com/library/azure/dn783368.aspx)的支持，该模型利用强大的基于哈希的消息验证代码 (HMAC)。 现在，除了基于机密的授权模型以外，Azure Cosmos DB 还支持针对入站防火墙支持的基于 IP 的策略驱动访问控制。 此模型与传统数据库系统的防火墙规则类似，并且对 Azure Cosmos DB 数据库帐户提供了额外级别的安全性。 利用此模型，现可将 Azure Cosmos DB 数据库帐户配置为仅可从一组已批准的计算机和/或云服务进行访问。 从这些已批准的计算机和服务访问 Azure Cosmos DB 资源仍要求调用方提供有效的授权令牌。
@@ -57,7 +57,12 @@ ms.locfileid: "40037919"
 ![此屏幕截图显示了如何启用对 Azure 门户的访问](./media/firewall-support/enable-azure-portal.png)
 
 ## <a name="connections-from-global-azure-datacenters-or-azure-paas-services"></a>来自全球 Azure 数据中心或 Azure PaaS 服务的连接
-在 Azure 中，PaaS 服务（如 Azure 流分析、Azure Functions、Azure 应用服务）都是与 Azure Cosmos DB 结合使用的。 要从此类 IP 地址不可用的服务中启用对 Azure Cosmos DB 数据库帐户的访问，请以编程方式将 IP 地址 0.0.0.0 添加到与 Azure Cosmos DB 数据库帐户关联的允许 IP 地址列表中。 
+
+Azure PaaS 服务（如 Azure 流分析、Azure Functions 等）都是与 Azure Cosmos DB 结合使用的。 要允许来自其他 Azure PaaS 服务的应用程序连接到 Azure Cosmos DB 资源，则必须启用防火墙设置。 要启用此防火墙设置，请将 IP 地址 - 0.0.0.0 添加到允许的 IP 地址列表。 0.0.0.0 仅限从 Azure 数据中心 IP 范围连接到 Azure Cosmos DB 帐户。 此设置不允许任何其他 IP 范围访问 Azure Cosmos DB 帐户。
+
+> [!IMPORTANT]
+> 该选项将防火墙配置为允许来自 Azure 的所有连接，包括来自其他客户的订阅的连接。 选择该选项时，请确保登录名和用户权限将访问权限限制为仅已授权用户使用。
+> 
 
 在 Azure 门户中将“防火墙”设置更改为“选定的网络”时，默认已启用对来自全球 Azure 数据中心的连接的访问。 
 

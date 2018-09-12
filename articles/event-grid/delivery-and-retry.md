@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/08/2018
+ms.date: 09/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: b34386a7b416d6f7d8b008a9cb5ef142948a370f
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 2a9ff23e5182c8cb7c91ad93e368f61f258c84f8
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005389"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841586"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>事件网格消息传送和重试 
 
@@ -35,19 +35,20 @@ ms.locfileid: "40005389"
 
 ### <a name="failure-codes"></a>失败代码
 
-以下 HTTP 响应代码表示事件传送尝试失败。 
+以下 HTTP 响应代码表示事件传送尝试失败。
 
 - 400 错误请求
 - 401 未授权
 - 404 未找到
 - 408 请求超时
+- 413 请求实体太大
 - 414 URI 太长
 - 429 请求过多
 - 500 内部服务器错误
 - 503 服务不可用
 - 504 网关超时
 
-如果事件网格收到的错误指出终结点暂时不可用或将来的请求可能会成功，则它将尝试重新发送事件。 如果事件网格收到一个指示传递永远不会成功且[已配置死信终结点](manage-event-delivery.md)的错误，则会将事件发送到死信终结点。 
+如果[配置了死信终结点](manage-event-delivery.md)且事件网格收到 400 或 413 响应代码，则事件网格会立即将事件发送到死信终结点。 否则，事件网格会重试所有错误。
 
 ## <a name="retry-intervals-and-duration"></a>重试间隔和持续时间
 

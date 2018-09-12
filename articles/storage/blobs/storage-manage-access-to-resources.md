@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: tamram
-ms.openlocfilehash: 7270ec7c5129352b0e801808e5c7720e5021ac9d
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: bf7dabc1c3765d86e7a0f87acaa6f06a68d3d530
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398812"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782002"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>管理对容器和 blob 的匿名读取访问
 可以启用对 Azure Blob 存储中的容器及其 Blob 的匿名公共读取访问。 这样做可以授予对这些资源的只读访问权限，无需共享帐户密钥，也无需共享访问签名 (SAS)。
@@ -39,7 +39,7 @@ ms.locfileid: "39398812"
 若要在 [Azure 门户](https://portal.azure.com)中设置容器权限，请按以下步骤操作：
 
 1. 在门户中打开“存储帐户”边栏选项卡。 通过在主门户菜单边栏选项卡中选择“存储帐户”，可以查找存储帐户。
-1. 在“菜单”边栏选项卡的“BLOB 服务”下，选择“容器”。
+1. 在“菜单”边栏选项卡的“BLOB 服务”下，选择“Blob”。
 1. 在容器行上右键单击或选择省略号，打开容器的“上下文菜单”。
 1. 在上下文菜单中选择“访问策略”。
 1. 从下拉菜单中选择“访问类型”。

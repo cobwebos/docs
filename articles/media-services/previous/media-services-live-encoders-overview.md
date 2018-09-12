@@ -14,18 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.openlocfilehash: 129364c4ee5924413ed0bccb81d53b905f13d208
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b1166c34f1a0ce3f3e9be932eb6d7fb9d76389ec
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33782716"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665751"
 ---
 # <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>如何在使用 Azure 媒体服务时配置本地编码器以创建多比特率流
 本主题列出的本地实时编码器可用于捕获实时事件，并将单比特率实时流发送到 AMS 通道（已启用实时编码）以供进一步处理。 本主题还列出了演示如何配置所列编码器的教程链接。
-
-## <a name="elemental-live"></a>Elemental Live
-有关如何配置 [Elemental Live](http://www.elementaltechnologies.com/products/elemental-live) 编码器以将单比特率实时流发送到 AMS 通道的信息，请参阅[配置 Elemental Live](media-services-configure-elemental-live-encoder.md)。
 
 ## <a name="flash-media-live-encoder"></a>Flash 媒体实时编码器
 有关如何配置 [Flash 媒体实时编码器](http://www.adobe.com/products/flash-media-encoder.html) (FMLE) 以将单比特率实时流发送到 AMS 通道的信息，请参阅[配置 FMLE](media-services-configure-fmle-live-encoder.md)。
@@ -38,6 +35,9 @@ ms.locfileid: "33782716"
 
 ## <a name="newtek-tricaster"></a>NewTek TriCaster
 有关如何配置 [Tricaster](http://newtek.com/products/tricaster-40.html) 编码器以将单比特率实时流发送到 AMS 通道的信息，请参阅[配置 Tricaster](media-services-configure-tricaster-live-encoder.md)。
+
+## <a name="elemental-live"></a>Elemental Live
+有关详细信息，请参阅 [Elemental Live](http://www.elementaltechnologies.com/products/elemental-live)。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

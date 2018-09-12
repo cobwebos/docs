@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: a1296565384e60117d883a1f1407362482ba1a3e
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 7c08848698f07d64bbbff429682c18525659f7bf
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125007"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286511"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>创建和读取 IoT 中心消息
 
@@ -23,7 +23,7 @@ ms.locfileid: "39125007"
 
 [IoT 中心消息][lnk-messaging]由以下部分组成：
 
-* 一组*系统属性*。 IoT 中心解释或设置的属性。 此集合是预先确定的。
+* 一组预先确定的“系统属性”如下所示。
 * 一组*应用程序属性*。 应用程序可以定义的字符串属性字典，而不需将消息正文反序列化即可进行访问。 IoT 中心永不修改这些属性。
 * 不透明的二进制正文。
 
@@ -36,20 +36,20 @@ ms.locfileid: "39125007"
 
 下表列出 IoT 中心消息中的系统属性集。
 
-| 属性 | Description |
-| --- | --- |
-| MessageId |用户可设置的，用于请求-答复模式的消息标识符。 格式：ASCII 7 位字母数字字符 + `{'-', ':',’.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` 的区分大小写字符串（最长为 128 个字符）。 |
-| 序列号 |IoT 中心分配给每条云到设备消息的编号（对每个设备队列是唯一的）。 |
-| 目标 |[从云到设备][lnk-c2d]的消息中指定的目标。 |
-| ExpiryTimeUtc |消息过期的日期和时间。 |
-| EnqueuedTime |IoT 中心收到[云到设备][lnk-c2d]消息的日期和时间。 |
-| CorrelationId |响应消息中的字符串属性，通常包含采用“请求-答复”模式的请求的 MessageId。 |
-| UserId |用于指定消息的源的 ID。 如果消息是由 IoT 中心生成的，则设置为 `{iot hub name}`。 |
-| Ack |反馈消息生成器。 此属性在云到设备的消息中用于请求 IoT 中心因为设备使用消息而生成反馈消息。 可能的值：**none**（默认值）：不生成任何反馈消息；**positive**：如果消息已完成，则接收反馈消息；**negative**：如果消息未由设备完成就过期（或已达到最大传送计数），则收到反馈消息；**full**：positive 和 negative。 有关详细信息，请参阅[消息反馈][lnk-feedback]。 |
-| ConnectionDeviceId |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的 **deviceId**。 |
-| ConnectionDeviceGenerationId |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的 **generationId**（根据[设备标识属性][lnk-device-properties]）。 |
-| ConnectionAuthMethod |由 IoT 中心对设备到云的消息设置的身份验证方法。 此属性包含用于验证发送消息的设备的身份验证方法的相关信息。 有关详细信息，请参阅[从设备到云的反欺骗技术][lnk-antispoofing]。 |
-| CreationTimeUtc | 在设备上创建消息的日期和时间。 设备必须显式设置此值。 |
+| 属性 | Description | 用户可设置吗？ |
+| --- | --- | --- |
+| MessageId |用户可设置的，用于请求-答复模式的消息标识符。 格式：ASCII 7 位字母数字字符 + `{'-', ':',’.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` 的区分大小写字符串（最长为 128 个字符）。 | 是 |
+| 序列号 |IoT 中心分配给每条云到设备消息的编号（对每个设备队列是唯一的）。 | 对于 C2D 消息为否；对于其他情况则为是。 |
+| 目标 |[从云到设备][lnk-c2d]的消息中指定的目标。 | 对于 C2D 消息为否；对于其他情况则为是。 |
+| ExpiryTimeUtc |消息过期的日期和时间。 | 是 |
+| EnqueuedTime |IoT 中心收到[云到设备][lnk-c2d]消息的日期和时间。 | 对于 C2D 消息为否；对于其他情况则为是。 |
+| CorrelationId |响应消息中的字符串属性，通常包含采用“请求-答复”模式的请求的 MessageId。 | 是 |
+| UserId |用于指定消息的源的 ID。 如果消息是由 IoT 中心生成的，则设置为 `{iot hub name}`。 | 否 |
+| Ack |反馈消息生成器。 此属性在云到设备的消息中用于请求 IoT 中心因为设备使用消息而生成反馈消息。 可能的值：**none**（默认值）：不生成任何反馈消息；**positive**：如果消息已完成，则接收反馈消息；**negative**：如果消息未由设备完成就过期（或已达到最大传送计数），则收到反馈消息；**full**：positive 和 negative。 有关详细信息，请参阅[消息反馈][lnk-feedback]。 | 是 |
+| ConnectionDeviceId |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的 **deviceId**。 | 对于 D2C 消息为否；对于其他情况则为是。 |
+| ConnectionDeviceGenerationId |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的 **generationId**（根据[设备标识属性][lnk-device-properties]）。 | 对于 D2C 消息为否；对于其他情况则为是。 |
+| ConnectionAuthMethod |由 IoT 中心对设备到云的消息设置的身份验证方法。 此属性包含用于验证发送消息的设备的身份验证方法的相关信息。 有关详细信息，请参阅[从设备到云的反欺骗技术][lnk-antispoofing]。 | 对于 D2C 消息为否；对于其他情况则为是。 |
+| CreationTimeUtc | 在设备上创建消息的日期和时间。 设备必须显式设置此值。 | 是 |
 
 ## <a name="message-size"></a>消息大小
 

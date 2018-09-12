@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 614930fb11e65404416e604c94351e2754b8e941
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 9f082c5f198ebd7123058bd250d3fef55494d553
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190707"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287533"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 在创建或管理 AKS 群集时，可能偶尔会遇到问题。 本文详细介绍了一些常见问题及其排查步骤。
@@ -24,16 +24,16 @@ ms.locfileid: "40190707"
 
 ### <a name="i-am-getting-a-quota-exceeded-error-during-create-or-upgrade-what-should-i-do"></a>在创建或升级期间遇到超出配额的错误。 我该怎么办？ 
 
-你将需要在[此处](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)请求内核
+你需要在[此处](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)请求内核。
 
 ### <a name="what-is-the-max-pods-per-node-setting-for-aks"></a>对 AKS 而言，每个节点设置的最大 Pod 是多少？
 
 如果是在 Azure 门户中部署 AKS 群集，则每个节点的最大 Pod 均默认设置为 30。
 如果是在 Azure CLI 中部署 AKS 群集，则每个节点的最大 Pod 均默认设置为 110。 （确保使用的是最新版本的 Azure CLI）。 可在 az aks create 命令中使用 –max-nodes-per-pod 标记来更改此默认设置。
 
-### <a name="i-am-getting--insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>在使用高级网络部署 AKS 群集时收到“insufficientSubnetSize”错误。 我该怎么办？
+### <a name="i-am-getting-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>在使用高级网络部署 AKS 群集时收到“insufficientSubnetSize”错误。 我该怎么办？
 
-在 AKS 创建期间为网络选择的自定义 VNET 选项中，Azure CNI 用于 IPAM。 AKS 群集中的节点数可介于 1 和 100 之间的任意位置。 基于 2）上方的子网大小应为大于产品的节点数和每个节点的子网大小的最大 Pod 数 > 群集中没有节点 * 每个节点的最大 Pod
+在 AKS 创建期间为网络选择的自定义 VNET 选项中，Azure CNI 用于 IPAM。 AKS 群集中的节点数可介于 1 和 100 之间的任意位置。 基于 2) 上方的子网大小应为大于产品的节点数和每个节点的子网大小的最大 Pod 数 > 群集中没有节点 * 每个节点的最大 Pod。
 
 ### <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>我的 Pod 停滞在“CrashLoopBackOff”模式。 我该怎么办？
 
@@ -51,7 +51,7 @@ ms.locfileid: "40190707"
 
 ### <a name="i-cant-seem-to-connect-to-the-dashboard-what-should-i-do"></a>我似乎无法连接到仪表板。 我该怎么办？
 
-要访问群集外的服务，最简单的方法是运行 kubectl 代理，它将代理对 Kubernetes API 服务器使用 localhost 端口 8001 的请求。 然后，apiserver 可代理你的服务：http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default
+要访问群集外的服务，最简单的方法是运行 kubectl 代理，它将代理对 Kubernetes API 服务器使用 localhost 端口 8001 的请求。 然后，apiserver 可代理你的服务： http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default
 
 如果看不到 kubernetes 仪表板，请检查 kube-proxy pod 是否正在 kube-system 命名空间中运行。 如果未处于运行状态，请删除 Pod，它会重启。
 

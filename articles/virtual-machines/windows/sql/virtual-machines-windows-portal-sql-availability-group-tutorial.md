@@ -14,14 +14,14 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 05/09/2017
+ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: a3bba4e8fd83b160472a2dc6a9425192b4bbd301
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7dbbfb2d97b7015118edca3db3ae050ad07c51ee
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38531573"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43667441"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>在 Azure VM 中手动配置 Always On 可用性组
 
@@ -45,7 +45,7 @@ ms.locfileid: "38531573"
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | 群集的文件共享见证 |  
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server 服务帐户 | 域帐户 |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server 代理服务帐户 | 域帐户 |  
-|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|防火墙端口已打开 | - SQL Server：默认实例使用 1433 <br/> - 数据库镜像终结点：5022 或任何可用端口 <br/> - Azure 负载均衡器探测：59999 或任何可用端口 |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|防火墙端口已打开 | - SQL Server：默认实例使用 1433 <br/> - 数据库镜像终结点：5022 或任何可用端口 <br/> - 可用性组负载均衡器 IP 地址运行状况探测：59999 或任何可用端口 <br/> - 群集核心负载均衡器 IP 地址运行状况探测：58888 或任何可用端口 |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|添加故障转移群集功能 | 两个 SQL Server 都需要此功能 |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|安装域帐户 | - 每个 SQL Server 上的本地管理员 <br/> - 每个 SQL Server 实例的 SQL Server sysadmin 固定服务器角色的成员  |
 
@@ -78,7 +78,7 @@ ms.locfileid: "38531573"
    | 用于管理群集的访问点 |在“群集名称”中键入群集名称，例如“SQLAGCluster1”。|
    | 确认 |除非使用的是存储空间，否则请使用默认值。 请参阅此表后面的备注。 |
 
-### <a name="set-the-cluster-ip-address"></a>设置群集 IP 地址
+### <a name="set-the-windows-server-failover-cluster-ip-address"></a>设置 Windows Server 故障转移群集 IP 地址
 
 1. 在“故障转移群集管理器”中，向下滚动到“群集核心资源”，并展开群集详细信息。 应会看到“名称”和“IP 地址”资源都处于“已失败”状态。 不能将 IP 地址资源联机，因为向该群集分配的 IP 地址与计算机本身的地址相同，因此该地址为重复地址。
 
@@ -343,13 +343,15 @@ Repeat these steps on the second SQL Server.
 
 SQL Server 可用性组在 Azure 虚拟机上需要负载均衡器。 负载均衡器保留可用性组侦听程序和 Windows Server 故障转移群集的 IP 地址。 本部分概述如何在 Azure 门户中创建负载均衡器。
 
+Azure 负载均衡器可以是标准负载均衡器或基本负载均衡器。 标准负载均衡器的功能比基本负载均衡器的功能更多。 对于可用性组，如果使用可用性区域（而不是可用性集），则需要标准负载均衡器。 有关负载均衡器类型之间的差异的详细信息，请参阅[负载均衡器 SKU 比较](../../../load-balancer/load-balancer-overview.md#skus)。
+
 1. 在 Azure 门户中，转到 SQL Server 所在的资源组，并单击“+ 添加”。
-2. 搜索“负载均衡器”。 选择 Microsoft 发布的负载均衡器。
+1. 搜索“负载均衡器”。 选择 Microsoft 发布的负载均衡器。
 
    ![故障转移群集管理器中的可用性组](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/82-azureloadbalancer.png)
 
-1.  单击“创建”。
-3. 配置负载均衡器的以下参数。
+1. 单击“创建”。
+1. 配置负载均衡器的以下参数。
 
    | 设置 | 字段 |
    | --- | --- |
@@ -358,8 +360,8 @@ SQL Server 可用性组在 Azure 虚拟机上需要负载均衡器。 负载均�
    | 虚拟网络 |使用 Azure 虚拟网络的名称。 |
    | 子网 |使用虚拟机所在的子网的名称。  |
    | IP 地址分配 |静态 |
-   | IP 地址 |使用子网中的可用地址。 请注意，这不同于群集 IP 地址 |
-   | 订阅 |使用与虚拟机相同的订阅。 |
+   | IP 地址 |使用子网中的可用地址。 将该地址用于可用性组侦听程序。 请注意，这不同于群集 IP 地址。  |
+   | **订阅** |使用与虚拟机相同的订阅。 |
    | 位置 |使用与虚拟机相同的位置。 |
 
    Azure 门户边栏选项卡应如下所示：
@@ -376,7 +378,9 @@ SQL Server 可用性组在 Azure 虚拟机上需要负载均衡器。 负载均�
 
    ![在资源组中找到负载均衡器](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/86-findloadbalancer.png)
 
-1. 单击负载均衡器，单击“后端池”，并单击“+ 添加”。 
+1. 单击负载均衡器，单击“后端池”，并单击“+ 添加”。
+
+1. 键入后端池的名称。
 
 1. 将该后端池与包含 VM 的可用性集进行关联。
 
@@ -391,7 +395,7 @@ SQL Server 可用性组在 Azure 虚拟机上需要负载均衡器。 负载均�
 
 1. 单击负载均衡器，单击“运行状况探测”，并单击“+ 添加”。
 
-1. 对运行状况探测进行如下设置：
+1. 对侦听器运行状况探测进行如下设置：
 
    | 设置 | 说明 | 示例
    | --- | --- |---
@@ -407,14 +411,14 @@ SQL Server 可用性组在 Azure 虚拟机上需要负载均衡器。 负载均�
 
 1. 单击负载均衡器，单击“负载均衡规则”，并单击“+添加”。
 
-1. 对负载均衡器规则进行如下设置。
+1. 对侦听器负载均衡器规则进行如下设置。
    | 设置 | 说明 | 示例
    | --- | --- |---
    | 名称 | 文本 | SQLAlwaysOnEndPointListener |
    | “前端 IP 地址” | 选择一个地址 |使用创建负载均衡器时所创建的地址。 |
    | 协议 | 选择 TCP |TCP |
-   | 端口 | 使用可用性组侦听程序的端口 | 1435 |
-   | 后端端口 | 当直接服务器返回设置为浮动 IP时，不使用此字段 | 1435 |
+   | 端口 | 使用可用性组侦听程序的端口 | 1433 |
+   | 后端端口 | 当直接服务器返回设置为浮动 IP时，不使用此字段 | 1433 |
    | 探测 |为探测指定的名称 | SQLAlwaysOnEndPointProbe |
    | “会话暂留” | 下拉列表 | 无 |
    | “空闲超时” | 使 TCP 连接保持打开所需的分钟数 | 4 |
@@ -423,17 +427,17 @@ SQL Server 可用性组在 Azure 虚拟机上需要负载均衡器。 负载均�
    > [!WARNING]
    > 创建过程中已设置直接服务器返回。 无法进行更改。
 
-1. 单击“确定”以设置负载均衡规则。
+1. 单击“确定”以设置侦听器负载均衡规则。
 
-### <a name="add-the-front-end-ip-address-for-the-wsfc"></a>为 WSFC 添加前端 IP 地址
+### <a name="add-the-cluster-core-ip-address-for-the-windows-server-failover-cluster-wsfc"></a>添加 Windows Server 故障转移群集 (WSFC) 的群集核心 IP 地址
 
-WSFC IP 地址也必须在负载均衡器上。 
+WSFC IP 地址也必须在负载均衡器上。
 
-1. 在门户中，为 WSFC 添加新的前端 IP 配置。 请使用在群集核心资源中为 WSFC 配置的 IP 地址。 将 IP 地址设置为静态。 
+1. 在门户的同一 Azure 负载均衡器上，单击“前端 IP 配置”，再单击“+添加”。 请使用在群集核心资源中为 WSFC 配置的 IP 地址。 将 IP 地址设置为静态。
 
-1. 单击负载均衡器，单击“运行状况探测”，并单击“+ 添加”。
+1. 在负载均衡器上单击“运行状况探测”，并单击“+添加”。
 
-1. 对运行状况探测进行如下设置：
+1. 对 WSFC 群集核心 IP 地址运行状况探测进行如下设置：
 
    | 设置 | 说明 | 示例
    | --- | --- |---
@@ -447,13 +451,13 @@ WSFC IP 地址也必须在负载均衡器上。
 
 1. 设置负载均衡规则。 单击“负载均衡规则”，并单击“+添加”。
 
-1. 对负载均衡器规则进行如下设置。
+1. 将群集核心 IP 地址负载均衡规则进行如下设置。
    | 设置 | 说明 | 示例
    | --- | --- |---
-   | 名称 | 文本 | WSFCPointListener |
-   | “前端 IP 地址” | 选择一个地址 |使用配置 WSFC IP 地址时所创建的地址。 |
+   | 名称 | 文本 | WSFCEndPoint |
+   | “前端 IP 地址” | 选择一个地址 |使用配置 WSFC IP 地址时所创建的地址。 这不同于侦听器 IP 地址 |
    | 协议 | 选择 TCP |TCP |
-   | 端口 | 使用可用性组侦听程序的端口 | 58888 |
+   | 端口 | 使用群集 IP 地址的端口。 这是可用的端口，不用于侦听器探测端口。 | 58888 |
    | 后端端口 | 当直接服务器返回设置为浮动 IP时，不使用此字段 | 58888 |
    | 探测 |为探测指定的名称 | WSFCEndPointProbe |
    | “会话暂留” | 下拉列表 | 无 |
@@ -486,7 +490,7 @@ WSFC IP 地址也必须在负载均衡器上。
 
 1. 现在应看到在故障转移群集管理器中创建的侦听器名称。 右键单击侦听器名称，并单击“属性”。
 
-1. 在“端口”框中，通过使用先前使用过的 $EndpointPort 为可用性组侦听器指定端口号（默认值为 1433），并单击“确定”。
+1. 在“端口”框中，指定可用性组侦听程序的端口号。 1433 是默认值，然后单击“确定”。
 
 现在，在资源管理器模式下运行的 Azure 虚拟机中有了一个 SQL Server 可用性组。
 
@@ -498,38 +502,20 @@ WSFC IP 地址也必须在负载均衡器上。
 
 1. 使用 sqlcmd 实用工具测试连接。 例如，以下脚本通过侦听器与 Windows 身份验证来与主副本建立 sqlcmd 连接：
 
-    ```
-    sqlcmd -S <listenerName> -E
-    ```
+  ```cmd
+  sqlcmd -S <listenerName> -E
+  ```
 
-    如果侦听器使用的端口不是默认端口 (1433)，请在连接字符串中指定该端口。 例如，以下 sqlcmd 命令连接到位于端口 1435 的侦听器：
+  如果侦听器使用的端口不是默认端口 (1433)，请在连接字符串中指定该端口。 例如，以下 sqlcmd 命令连接到位于端口 1435 的侦听器：
 
-    ```
-    sqlcmd -S <listenerName>,1435 -E
-    ```
+  ```cmd
+  sqlcmd -S <listenerName>,1435 -E
+  ```
 
 SQLCMD 连接会自动连接到托管主副本的 SQL Server 实例。
 
 > [!TIP]
 > 确保指定的端口已在两个 SQL Server 的防火墙上打开。 这两个服务器需要所用 TCP 端口的入站规则。 有关详细信息，请参阅[添加或编辑防火墙规则](http://technet.microsoft.com/library/cc753558.aspx)。
->
->
-
-
-
-<!--**Notes**: *Notes provide just-in-time info: A Note is “by the way” info, an Important is info users need to complete a task, Tip is for shortcuts. Don’t overdo*.-->
-
-
-<!--**Procedures**: *This is the second “step." They often include substeps. Again, use a short title that tells users what they’ll do*. *("Configure a new web project.")*-->
-
-<!--**UI**: *Note the format for documenting the UI: bold for UI elements and arrow keys for sequence. (Ex. Click **File > New > Project**.)*-->
-
-<!--**Screenshot**: *Screenshots really help users. But don’t include too many since they’re difficult to maintain. Highlight areas you are referring to in red.*-->
-
-<!--**No. of steps**: *Make sure the number of steps within a procedure is 10 or fewer. Seven steps is ideal. Break up long procedure logically.*-->
-
-
-<!--**Next steps**: *Reiterate what users have done, and give them interesting and useful next steps so they want to go on.*-->
 
 ## <a name="next-steps"></a>后续步骤
 

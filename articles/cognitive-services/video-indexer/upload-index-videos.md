@@ -9,19 +9,32 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: juliako
-ms.openlocfilehash: 8a9409c46cac8397bc449c586374729a4d864036
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: ac9d3f8fd10a3b65a2af2999b8c7ade7965de912
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41929879"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43664440"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
 
-本文介绍如何通过 Azure 视频索引器使用[上传视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API 来上传视频和编制视频索引， 同时还介绍可以在 API 上设置的用于更改 API 过程和输出的某些参数。
+本文介绍如何使用 Azure 视频索引器上传视频。 视频索引器 API 提供了两个上传选项： 
+
+* 从 URL 上传视频（首选），
+* 作为请求正文中的字节数组发送视频文件。
+
+本文介绍如何基于 URL 使用[上传视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API 来上传视频和编制视频索引。 本文中的代码示例包括注释掉的代码，该代码显示了如何上传字节数组。  
+
+本文还介绍可以在 API 上设置的用于更改 API 过程和输出的某些参数。
 
 > [!Note]
-> 创建视频索引器帐户时，可以选择免费试用帐户（提供特定分钟数的免费索引时间）或付费选项（不受配额的限制）。 <br/>使用免费试用版时，视频索引器为网站用户提供最多 600 分钟的免费索引，为 API 用户提供最多 2400 分钟的免费索引。 <br/>使用付费选项时，可以创建[连接到 Azure 订阅和 Azure 媒体服务帐户](connect-to-azure.md)的视频索引器帐户。 需要为编制索引的分钟数付费，此外还需要支付媒体帐户相关的费用。 
+> 创建视频索引器帐户时，可以选择免费试用帐户（提供特定分钟数的免费索引时间）或付费选项（不受配额的限制）。 <br/>使用免费试用版时，视频索引器为网站用户提供最多 600 分钟的免费索引，为 API 用户提供最多 2400 分钟的免费索引。 使用付费选项时，可以创建[连接到 Azure 订阅和 Azure 媒体服务帐户](connect-to-azure.md)的视频索引器帐户。 需要为编制索引的分钟数付费，此外还需要支付媒体帐户相关的费用。 
+
+## <a name="uploading-considerations"></a>上传注意事项
+    
+- 根据 URL（首选方式）上传视频时，必须使用 TLS 1.2（或更高版本）保护终结点
+- 字节数组选项限制为 4 GB，并且在 30 分钟后超时
+- 需要对 `videoURL` 参数中提供的 URL 进行编码
 
 ## <a name="configurations-and-params"></a>配置和参数
 
@@ -45,7 +58,7 @@ ms.locfileid: "41929879"
 
 一个 POST URL，用于通知索引编制何时完成。 视频索引器向其添加两个查询字符串参数：id 和 state。 例如，如果回调 URL 为“https://test.com/notifyme?projectName=MyProject”，则通知会和其他参数一起发送至“https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed”。
 
-也可在 POST 对视频索引器的调用之前将更多参数添加到 URL，然后这些参数就会包括在回调中。 随后即可在代码中分析查询字符串，并取回查询字符串中的所有指定参数（最初追加到 URL 的数据以及视频索引器提供的信息）。 
+也可在 POST 对视频索引器的调用之前将更多参数添加到 URL，然后这些参数就会包括在回调中。 随后即可在代码中分析查询字符串，并取回查询字符串中的所有指定参数（最初追加到 URL 的数据以及视频索引器提供的信息）。需要对 URL 进行编码。
 
 ### <a name="streamingpreset"></a>streamingPreset
 
@@ -56,6 +69,12 @@ ms.locfileid: "41929879"
 为了运行索引编制和编码作业，[连接到视频索引器帐户的 Azure 媒体服务帐户](connect-to-azure.md)需要预留单位。 有关详细信息，请参阅[缩放媒体处理](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview)。 由于这些是计算密集型作业，因此强烈建议使用 S3 单位类型。 RU 数定义可以并行运行的最大作业数。 基线建议是 10 个 S3 RU。 
 
 如果只需对视频进行索引，但不需对其进行编码，请将 `streamingPreset` 设置为 `NoStreaming`。
+
+### <a name="videourl"></a>videoUrl
+
+要编制索引的视频/音频文件的 URL。 该 URL 必须指向媒体文件（不支持 HTML 页面）。 该文件可以通过作为 URI 的一部分提供的访问令牌进行保护，并且为该文件提供服务的终结点必须使用 TLS 1.2 或更高版本进行保护。 需要对 URL 进行编码。 
+
+如果未指定 `videoUrl`，则视频索引器希望你将文件作为多部分/表单正文内容传递。
 
 ## <a name="code-sample"></a>代码示例
 

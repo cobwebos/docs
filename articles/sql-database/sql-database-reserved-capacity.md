@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/08/2018
 ms.author: carlrab
-ms.openlocfilehash: 1d1cad4b614eb35be9235a721368db8048be050a
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: fcb7f2c1bb3e1653b9f8112abc0effaddc45fa54
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39631938"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306463"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>通过 Azure SQL 数据库预留容量预付 SQL 数据库计算资源费用
 
@@ -65,13 +65,14 @@ vCore 预留折扣自动应用到与 SQL 数据库预留容量预订范围和属
 
 若要了解如何管理 SQL 数据库预留容量的预订，请参阅[管理 SQL 数据库预留容量](../billing/billing-manage-reserved-vm-instance.md)。
 
-若要详细了解 Azure 预留，请参阅以下文章：
+若要了解有关 Azure 预订的详细信息，请参阅以下文章：
 
-- [什么是 Azure 预留？](../billing/billing-save-compute-costs-reservations.md)
+- [什么是 Azure 预订？](../billing/billing-save-compute-costs-reservations.md)
 - [管理 Azure 预留项](../billing/billing-manage-reserved-vm-instance.md)
+- [了解 Azure 预留折扣](../billing/billing-understand-reservation-charges.md)
 - [了解即用即付订阅的预留使用情况](../billing/billing-understand-reserved-instance-usage.md)
 - [了解企业合约的预留使用情况](../billing/billing-understand-reserved-instance-usage-ea.md)
-- [合作伙伴中心云解决方案提供商 (CSP) 计划中的 Azure 预留](https://docs.microsoft.com/partner-center/azure-reservations)
+- [合作伙伴中心云解决方案提供商 (CSP) 计划中的 Azure 预订](https://docs.microsoft.com/partner-center/azure-reservations)
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 

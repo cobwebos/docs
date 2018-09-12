@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 03/09/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cd460d92430f8ab011e90b969495972b744162df
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: d25f46804c3320b7d941a945f3c4d9a5dfb6970c
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798706"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702123"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK for SQL API：下载和发行说明
 > [!div class="op_single_selector"]
@@ -50,6 +50,18 @@ ms.locfileid: "34798706"
 </table></br>
 
 ## <a name="release-notes"></a>发行说明
+### <a name="a-name200-preview2200-preview2"></a><a name="2.0.0-preview2"/>2.0.0-preview2
+
+* 添加了请求取消支持。
+* 将 SetCurrentLocation 添加到 ConnectionPolicy，它会根据区域自动填充首选位置。
+* 修复了具有 Min/Max 以及在单个分区上没有文档匹配的筛选的跨分区查询中的 Bug。
+
+### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-preview
+
+* DocumentClient 方法现在与 IDocumentClient 具有奇偶校验。
+* 更新了直接 TCP 传输堆栈以减少建立的连接数。
+* 为非 Windows 客户端添加了对 Direct Mode TCP 的支持。
+
 ### <a name="a-name12201220"></a><a name="1.22.0"/>1.22.0
 
 * 将 ConsistencyLevel 属性添加到了 FeedOptions。
@@ -297,6 +309,8 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.0.0-preview2](#2.0.0-preview2) |2018 年 7 月 26 日 |--- |
+| [2.0.0-preview](#2.0.0-preview) |2018 年 5 月 11 日 |--- |
 | [1.22.0](#1.22.0) |2018 年 4 月 19 日 |--- |
 | [1.21.1](#1.20.1) |2018 年 3 月 9 日 |--- |
 | [1.20.2](#1.20.1) |2018 年 2 月 21 日 |--- |
@@ -345,7 +359,7 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 | [1.0.0](#1.0.0) |2015 年 4 月 8 日 |--- |
 
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>另请参阅

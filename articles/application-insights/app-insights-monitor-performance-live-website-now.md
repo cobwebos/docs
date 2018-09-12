@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Application Insights 监视实时 ASP.NET Web 应用 | Microsoft 文档"
-description: "在不重新部署网站的情况下监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。"
+title: 使用 Azure Application Insights 监视实时 ASP.NET Web 应用 | Microsoft 文档
+description: 在不重新部署网站的情况下监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -10,27 +10,27 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 05/05/2017
+ms.topic: conceptual
+ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 869ea96072b1492db929c16cfb1e22b0c96bca7d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 54a335cf1386ab29c0e0214bccf1f53a076da02b
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43783477"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>在运行时使用 Application Insights 检测 Web 应用
 
-
 无需修改或重新部署代码，即可使用 Azure Application Insights 检测实时 Web 应用。 如果应用由本地 IIS 服务器托管，请安装状态监视器。 如果这些应用是 Azure Web 应用或者在 Azure VM 中运行，则可通过 Azure 控制面板打开 Application Insights 监视。 （我们还单独提供了有关检测[实时 J2EE Web 应用](app-insights-java-live.md)和 [Azure 云服务](app-insights-cloudservices.md)的文章。）需要 [Microsoft Azure](http://azure.com) 订阅。
 
-![示例图表](./media/app-insights-monitor-performance-live-website-now/10-intro.png)
+![包含失败请求、服务器响应时间和服务器请求信息的 App Insights 概览图屏幕截图](./media/app-insights-monitor-performance-live-website-now/overview-graphs.png)
 
 可以选择三种途径将 Application Insights 应用到 .NET Web 应用程序：
 
-* **生成时：**[将 Application Insights SDK 添加][greenbrown]到 Web 应用代码。
+* 生成时：[将 Application Insights SDK 添加][greenbrown]到 Web 应用代码。
 * **运行时：** 如下所述检测服务器上的 Web 应用，无需重建并重新部署代码。
-* **结合两种方法：**将 SDK 构建到 Web 应用代码中，同时应用运行时扩展。 这样就充分利用了两种方法的优势。
+* **结合两种方法：** 将 SDK 构建到 Web 应用代码中，同时应用运行时扩展。 这样就充分利用了两种方法的优势。
 
 下面是每种途径的优势摘要：
 
@@ -68,7 +68,7 @@ ms.lasthandoff: 11/01/2017
    
     键：`APPINSIGHTS_JAVASCRIPT_ENABLED` 
     
-    值：`true`
+    值： `true`
 3. **保存**设置并**重新启动**应用。
 
 Application Insights JavaScript SDK 现已注入到每个网页中。
@@ -234,7 +234,7 @@ IIS 支持：IIS 7、7.5、8、8.5（必须有 IIS）
 
 * HTTP 请求
 * 对依赖项的调用
-* 异常
+* 例外
 * 性能计数器
 
 对于已在编译时进行检测的应用程序：

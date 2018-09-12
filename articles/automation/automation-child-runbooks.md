@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 08/14/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2060239b27ef05c34ea6f5b388b4c4086a44a826
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 037c2714d146bd59b30573df874794342d743e03
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42140620"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782226"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Azure 自动化中的子 Runbook
 
@@ -42,7 +42,7 @@ ms.locfileid: "42140620"
 
 * Runbook 的发布顺序仅对于 PowerShell 工作流和图形 PowerShell 工作流 Runbook 重要。
 
-在通过内联执行调用图形或 PowerShell 工作流子 Runbook 时，只需使用 Runbook 的名称。  调用 PowerShell 子 runbook 时，必须在其名称前面添加 *.\\*，以指定脚本位于本地目录中。
+在通过内联执行调用图形或 PowerShell 工作流子 Runbook 时，只需使用 Runbook 的名称。  调用 PowerShell 子 runbook 时，必须在其名称前面添加 .\\，以指定脚本位于本地目录中。
 
 ### <a name="example"></a>示例
 
@@ -72,7 +72,9 @@ $output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 
 使用 cmdlet 启动的子 Runbook 的参数以哈希表形式提供，如 [Runbook 参数](automation-starting-a-runbook.md#runbook-parameters)中所述。 只能使用简单数据类型。 如果 Runbook 的参数使用复杂数据类型，则必须内联调用该 Runbook。
 
-如果使用多个订阅，则在调用子 Runbook 时可能会丢失订阅上下文。 若要确保将订阅上下文传递给子 Runbook，请将 `DefaultProfile` 参数添加到 cmdlet 并将上下文传递给它。
+将子 runbook 作为单独作业调用时，可能会丢失订阅上下文。 为了使子 runbook 针对所需的 Azure 订阅调用 Azure RM cmdlet，子 runbook 必须独立于父 runbook 对此订阅进行身份验证。
+
+如果同一自动化帐户中的作业使用多个订阅，则选择一个作业中的订阅可能也会更改当前所选的其他作业的订阅上下文，这通常是不希望看到的。 为了避免此问题，请保存 `Select-AzureRmSubscription` cmdlet 调用的结果，并将此对象传递给所有后续 Azure RM cmdlet 调用的 `DefaultProfile` 参数。 必须始终将此模式应用于在此自动化帐户中运行的所有 runbook。
 
 ### <a name="example"></a>示例
 

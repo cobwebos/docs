@@ -9,12 +9,12 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 105da0219efd7bf7c9a105a018dda7ea5b084cfd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 048647f1657a5674bcb508b20b7c57a8a6ed5ed9
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366047"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665016"
 ---
 # <a name="use-the-anomaly-finder-api-with-javascript"></a>将异常查找器 API 与 Javascript 配合使用
 
@@ -30,7 +30,9 @@ ms.locfileid: "35366047"
 
 ### <a name="example-of-time-series-data"></a>时序数据示例
 
-时序数据点示例如下：[!INCLUDE [Request](../includes/request.md)]
+时序数据点示例如下：
+
+[!INCLUDE [Request](../includes/request.md)]
 
 ### <a name="analyze-data-and-get-anomaly-points-javascript-example"></a>分析数据，并获取异常点 Javascript 示例
 
@@ -304,7 +306,7 @@ ms.locfileid: "35366047"
 
 ### <a name="example-response"></a>示例响应
 
-JSON 中返回了成功的响应。 示例响应如下。
+JSON 中返回成功响应。 示例响应如下。
 [!INCLUDE [Response](../includes/response.md)]
 
 ## <a name="next-steps"></a>后续步骤

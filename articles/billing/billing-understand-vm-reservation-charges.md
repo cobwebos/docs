@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: yashar
-ms.openlocfilehash: bce4e05cbc4ecc8a44f2929eecbeee4093d39652
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: de4a771672b45f930385c2c923b3935c65b6c045
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628352"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301640"
 ---
 # <a name="understand-how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>了解如何将 Azure 预留折扣应用于虚拟机
 
@@ -47,24 +47,24 @@ ms.locfileid: "39628352"
 3. 在第 2 个小时和第 3 个小时内，这两个实例都各运行了 1 小时。 一个实例的费用由预订费用涵盖，按即用即付费率对另一个实例收费。
 4. 在第 4 个小时内，实例 1 运行了 0.5 小时，实例 2 运行了 1 小时。 预订费用完全涵盖了实例 1 的费用，并涵盖了实例 2 的 0.5 小时费用。 将按即用即付费率收取剩余 0.5 小时的费用。
 
-若要了解 Azure 预留应用情况并在计费使用情况报告中查看该信息，请参阅[了解预留使用情况](https://go.microsoft.com/fwlink/?linkid=862757)。
+要了解 Azure 预留应用情况并在计费使用情况报告中查看该信息，请参阅[了解预留使用情况](https://go.microsoft.com/fwlink/?linkid=862757)。
 
 ## <a name="application-of-reservation-discount-to-windows-vms"></a>将预订折扣应用于 Windows VM
 
-正在运行 Windows VM 实例时，将应用预留以涵盖基础结构成本。 对 Windows VM 的 VM 基础结构成本应用预订与对非 Windows VM 的 VM 基础结构成本应用预订相同。 将按 vCPU 对 Windows 软件单独收费。 请参阅 [Windows 软件的预订费用](https://go.microsoft.com/fwlink/?linkid=862756)。 可以利用 [Windows Server 的 Azure 混合权益] (https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)) 来涵盖 Windows 许可费用。
+正在运行 Windows VM 实例时，将应用预留以涵盖基础结构成本。 对 Windows VM 的 VM 基础结构成本应用预订与对非 Windows VM 的 VM 基础结构成本应用预订相同。 将按 vCPU 对 Windows 软件单独收费。 请参阅 [Windows 软件的预留成本](https://go.microsoft.com/fwlink/?linkid=862756)。 可以利用 [Windows Server 的 Azure 混合权益] (https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)) 来涵盖 Windows 许可费用。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关预留的详细信息，请参阅以下文章：
+若要了解有关 Azure 预订的详细信息，请参阅以下文章：
 
-- [什么是 Azure 预留？](billing-save-compute-costs-reservations.md)
+- [什么是 Azure 预订？](billing-save-compute-costs-reservations.md)
 - [通过 Azure 虚拟机预留实例为虚拟机预付费](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../sql-database/sql-database-reserved-capacity.md)
-- [管理 Azure 预留](billing-manage-reserved-vm-instance.md)
+- [管理 Azure 预留项](billing-manage-reserved-vm-instance.md)
 - [了解即用即付订阅的预留使用情况](billing-understand-reserved-instance-usage.md)
 - [了解企业合约的预留使用情况](billing-understand-reserved-instance-usage-ea.md)
 - [了解 CSP 订阅的预留使用情况](https://docs.microsoft.com/partner-center/azure-reservations)
-- [预留未包含的 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)
+- [预订未包含的 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 

@@ -1,5 +1,5 @@
 ---
-title: 了解企业的 Azure 预留使用情况 | Microsoft Docs
+title: 了解企业的 Azure 预订使用情况 | Microsoft Docs
 description: 了解如何读取使用情况，以了解如何应用适用于企业合约的 Azure 预留。
 services: billing
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: manshuk
-ms.openlocfilehash: 5ce0103315f297996ed3f3bd88b5e53558e22e14
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 334271139b791ab60f2bc89ae695ba9bf06b7d12
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628226"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301014"
 ---
 # <a name="understand-azure-reservation-usage-for-your-enterprise-enrollment"></a>了解适用于企业合约的 Azure 预留使用情况
 
@@ -53,13 +53,13 @@ ms.locfileid: "39628226"
 
 ## <a name="usage-for-sql-database-reserved-capacity-reservations"></a>SQL 数据库预留容量预留的使用情况
 
-在以下部分，假定在美国东部区域运行 SQL 数据库第 4 代，则预留信息如下表所示：
+以下部分假设在美国东部区域运行 SQL 数据库第 4 代，并且预留信息如下表中所示：
 
 | 字段 | 值 |
 |---| --- |
 |预订 ID |8244e673-83e9-45ad-b54b-3f5295d37cae|
 |数量 |2|
-|产品| SQL 数据库第 4 代（2 核）|
+|产品| SQL 数据库第 4 代（双核）|
 |区域 | eastus |
 
 ### <a name="usage-in-csv-file-for-sql-database-reserved-capacity"></a>CSV 文件中 SQL 数据库预留容量的使用情况
@@ -81,15 +81,15 @@ Azure 预留使用情况也会出现在企业门户的使用情况摘要部分�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 Azure 预留的详细信息，请参阅以下文章：
+若要了解有关 Azure 预订的详细信息，请参阅以下文章：
 
-- [什么是 Azure 预留？](billing-save-compute-costs-reservations.md)
+- [什么是 Azure 预订？](billing-save-compute-costs-reservations.md)
 - [通过 Azure 虚拟机预留实例为虚拟机预付费](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [通过 Azure SQL 数据库预留容量预付 SQL 数据库计算资源费用](../sql-database/sql-database-reserved-capacity.md) 
+- [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../sql-database/sql-database-reserved-capacity.md) 
 - [管理 Azure 预留项](billing-manage-reserved-vm-instance.md)
-- [了解如何应用预留折扣](billing-understand-vm-reservation-charges.md)
+- [了解预留折扣的应用方式](billing-understand-vm-reservation-charges.md)
 - [了解即用即付订阅的预留使用情况](billing-understand-reserved-instance-usage.md)
-- [预留未包含的 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)
+- [预订未包含的 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 

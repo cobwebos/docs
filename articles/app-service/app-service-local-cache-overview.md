@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
-ms.openlocfilehash: 4959e4e3a0692837a7775eaf813a8fcff925312d
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 6729c87dcc9a85e2e3ccb6b4822213d38e2ba6f7
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918010"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666108"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure 应用服务本地缓存概述
 
@@ -44,13 +44,15 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
 * 不受计划内升级/计划外停机以及 Azure 存储出现的任何其他中断事件（发生在提供内容共享服务的服务器上）的影响。
 * 因存储共享更改而需要重新启动应用的次数较少。
 
-## <a name="how-local-cache-changes-the-behavior-of-app-service"></a>本地缓存如何改变应用服务的行为
-* 本地缓存是 Web 应用的 /site 和 /siteextensions 文件夹的副本。 它是在 Web 应用启动后在本地 VM 实例上创建的。 默认情况下，每个 Web 应用的本地缓存的大小仅限 300 MB，但最高可增至 2 GB。
-* 本地缓存是可以读写的。 不过，如果 Web 应用移动了虚拟机，或者系统重启了 Web 应用，则会放弃所做的任何修改。 如果应用在内容存储中存储了任务关键型数据，请不要使用本地缓存。
-* Web 应用可以像目前一样继续写入日志文件和诊断数据。 不过，日志文件和数据是以本地方式存储在 VM 上的。 然后，这些文件和数据会定期复制到共享内容存储中。 复制到共享内容存储时，不得出任何差错 -- VM 实例突然崩溃可能会导致写回信息丢失。
-* 对于使用本地缓存的 Web 应用来说，LogFiles 和数据文件夹的文件夹结构会发生变化。 存储 LogFiles 和数据文件夹中现在出现了子文件夹，其遵循的命名模式为“唯一标识符”+ 时间戳。 每个子文件夹对应于一个 VM 实例，其中的 Web 应用正在运行或已运行。  
-* 通过任何发布机制发布对 Web 应用的更改时，会将内容发布到持久性共享内容存储中。 若要刷新 Web 应用的本地缓存，需重新启动该应用。 若要确保无缝的生命周期，请参阅本文后面提供的信息。
-* D:\Home 指向本地缓存。 D:\local 继续指向特定于临时 VM 的存储。
+## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>本地缓存如何改变应用服务的行为
+* D:\home 指向本地缓存，它是应用启动时在 VM 实例上创建的。 D:\local 继续指向特定于临时 VM 的存储。
+* 本地缓存包含共享内容存储的 /site 和 /siteextensions 文件夹的一次性副本，分别位于 D:\home\site 和 D:\home\siteextensions。 应用启动时，文件会复制到本地缓存。 默认情况下，每个应用的这两个文件夹的大小限制为 300 MB，但最高可增至 2 GB。
+* 本地缓存是可以读写的。 不过，如果应用移动了虚拟机，或者系统重启了应用，则会放弃所做的任何修改。 如果应用在内容存储中存储了任务关键型数据，请不要使用本地缓存。
+* D:\home\LogFiles 和 D:\home\Data 包含日志文件和应用数据。 两个子文件夹本地存储在 VM 实例上，并定期复制到共享内容存储。 应用可以通过将日志文件和数据写入到这些文件夹来保留它们。 但是，复制到共享内容存储是最大努力，因此由于 VM 实例的突然崩溃，日志文件和数据可能会丢失。
+* [日志流式处理](web-sites-enable-diagnostic-log.md#streamlogs)受最大努力副本的影响。 可以在流式处理的日志中观察到最多一分钟的延迟。
+* 在共享内容存储中，对于使用本地缓存的应用，LogFiles 和数据文件夹的文件夹结构会发生变化。 它们之中现在出现了子文件夹，其遵循的命名模式为“唯一标识符”+ 时间戳。 每个子文件夹对应于一个 VM 实例，其中的应用正在运行或已运行。
+* D:\home 中的其他文件夹保留在本地缓存中，不会复制到共享内容存储。
+* 通过任何支持的方法进行的应用部署都将直接发布到持久共享内容存储。 若要刷新本地缓存中的 D:\home\site 和 D:\home\siteextensions 文件夹，需要重新启动应用。 若要确保无缝的生命周期，请参阅本文后面提供的信息。
 * SCM 站点的默认内容视图仍是共享内容存储的视图。
 
 ## <a name="enable-local-cache-in-app-service"></a>在应用服务中启用本地缓存

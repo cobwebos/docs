@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: byvinyal
-ms.openlocfilehash: 6b6e713c0da11a3d2c8cfbf388b84940a4542e95
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 00955d5de314e6efb0e491e33708495fbdd14f3b
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42141442"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782584"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间的推移，此列表将得以展开并更新，以便涵盖更多平台。
@@ -52,8 +52,7 @@ ms.locfileid: "42141442"
 * [Azure Database for PostgreSQL](#azure-database-for-postgresql)
 * [Azure 事件网格](#azure-event-grid-limits)
 * [Azure Maps](#azure-maps-limits)
-* 
-  [Azure Policy](#azure-policy-limits)
+* [Azure Policy](#azure-policy-limits)
 * [Azure Redis 缓存](#azure-redis-cache-limits)
 * [备份](#backup-limits)
 * [批处理](#batch-limits)
@@ -202,7 +201,7 @@ ms.locfileid: "42141442"
 [!INCLUDE [azure-cloud-services-limits](../includes/azure-cloud-services-limits.md)]
 
 ### <a name="app-service-limits"></a>应用服务限制
-以下应用服务限制包括 Web 应用、移动应用、API 应用和逻辑应用的限制。
+以下应用服务限制包括 Web 应用、移动应用、API 应用的限制。
 
 [!INCLUDE [azure-websites-limits](../includes/azure-websites-limits.md)]
 

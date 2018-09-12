@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: pim
-ms.date: 04/02/2018
+ms.date: 08/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 7019a6f97a9590d3b652584015f3077f4ed075af
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 7b82be6cdc8b64595c11eef84e8071fad9c07191
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188914"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665457"
 ---
 # <a name="assign-azure-resource-roles-in-pim"></a>在 PIM 中分配 Azure 资源角色
 
@@ -34,61 +34,98 @@ Azure AD PIM 可以管理内置的 Azure 资源角色以及自定义角色，包
 >[!NOTE]
 已分配到“所有者”或“用户访问管理员”角色的用户或组成员，以及在 Azure AD 中启用订阅管理的全局管理员都属于资源管理员。 这些管理员可以使用适用于 Azure 资源的 PIM 来分配角色、配置角色设置，以及审查访问权限。 查看 [Azure 资源的内置角色](../../role-based-access-control/built-in-roles.md)列表。
 
-## <a name="assign-roles"></a>分配角色
+## <a name="assign-a-role"></a>分配角色
 
-若要在查看“角色”窗格时为用户或组分配角色，请选择该角色，然后选择“添加用户”。 
+遵循以下步骤可使用户符合 Azure 资源角色的条件。
 
-![显示“添加用户”按钮的“角色”窗格](media/azure-pim-resource-rbac/rbac-assign-roles-1.png)
+1. 使用[特权角色管理员](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色成员用户的身份登录到 [Azure 门户](https://portal.azure.com/)。
 
-也可从“成员”窗格选择“添加用户”。
+    有关如何授予其他管理员访问权限以管理 PIM 的信息，请参阅[授予其他管理员访问权限以管理 PIM](pim-how-to-give-access-to-pim.md)。
 
-![显示“添加用户”按钮的“成员”窗格](media/azure-pim-resource-rbac/rbac-assign-roles-2.png)
+1. 打开“Azure AD Privileged Identity Management”。
 
+    如果尚未在 Azure 门户中启动 PIM，请转到[开始使用 PIM](pim-getting-started.md)。
 
-如果从“成员”窗格添加用户或组，则需要： 
+1. 单击“Azure 资源”。
 
-1. 从“选择角色”窗格中选择某个角色，然后才能选择用户或组。
+1. 使用资源筛选器对托管资源的列表进行筛选。
 
-   ![“选择角色”窗格](media/azure-pim-resource-rbac/rbac-assign-roles-select-role.png)
+    ![要管理的 Azure 资源的列表](./media/pim-resource-roles-assign-roles/resources-list.png)
 
-2. 从目录中选择用户或组。
+1. 单击要管理的资源，如订阅或管理组。
 
-3. 从下拉菜单中选择相应的分配类型： 
+1. 在“管理”下，单击“角色”以查看 Azure 资源的角色列表。
 
-   - **实时**：将拥有访问资格但没有永久访问权限的用户或组成员分配到角色，时效为指定的时段或无限期（如果已在角色设置中进行配置）。 
-   - **直接**：不需要用户或组成员激活角色分配（称为永久性访问）。 对于短期使用，建议采用直接分配，因为在任务完成时不需要访问权限。 例如值班交班和具有时效性的活动。
+    ![Azure 资源角色](./media/pim-resource-roles-assign-roles/resources-roles.png)
 
-4. 如果为永久性分配（永远有资格接受实时分配，或直接分配永久有效），请选择“分配类型”框下的复选框。
+1. 单击“添加成员”以打开“新建分配”窗格。
 
-   ![显示“分配类型”框以及相关复选框的“成员资格设置”窗格](media/azure-pim-resource-rbac/rbac-assign-roles-settings.png)
+1. 单击“选择角色”以打开“选择角色”窗格。
 
-   >[!NOTE]
-   >如果其他管理员在角色设置中为每个分配类型指定了最长分配持续时间，则该复选框不可修改。
+    ![“新建分配”窗格](./media/pim-resource-roles-assign-roles/resources-select-role.png)
 
-   若要指定特定分配持续时间，请取消选中该复选框，并修改开始和/或结束日期与时间框。
+1. 单击要分配的角色，然后单击“选择”。
 
-   ![显示开始日期、开始时间、结束日期和结束时间的“成员资格设置”窗格](media/azure-pim-resource-rbac/rbac-assign-roles-duration.png)
+    随即将打开“选择成员或组”窗格。
 
+1. 单击要向角色分配的成员或组，然后单击“选择”。
 
-## <a name="manage-role-assignments"></a>管理角色分配
+    ![“选择成员或组”窗格](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
 
-管理员可从左侧窗格选择“角色”或“成员”来管理角色分配。 选择“角色”，管理员可将其管理任务限定为针对特定角色。 选择“成员”即显示资源的所有用户和组角色分配。
+    随即将打开“成员身份设置”窗格。
 
-![“角色”窗格](media/azure-pim-resource-rbac/rbac-assign-roles-roles.png)
+1. 在“分配类型”列表中，选择“合格”或“活动”。
 
-![“成员”窗格](media/azure-pim-resource-rbac/rbac-assign-roles-members.png)
+    ![“成员身份设置”窗格](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
 
->[!NOTE]
-如果有等待激活的角色，在查看成员身份时，窗格顶部会显示通知横幅。
+    Azure 资源的 PIM 提供了两种不同的分配类型：
 
+    - “合格”分配要求该角色的成员执行某个操作才能使用该角色。 操作可能包括执行多重身份验证 (MFA) 检查、提供业务理由或请求获得指定审批者的批准。
 
-## <a name="modify-existing-assignments"></a>修改现有分配
+    - “活动”分配不要求成员执行任何操作便可使用该角色。 分配为“活动”的成员始终具有分配给该角色的权限。
 
-若要通过用户/组详细信息视图修改现有分配，请选择操作栏中的“更改设置”。 将分配类型更改为“实时”或“直接”。
+1. 如果分配应该是永久性的（永久合格或永久分配），请选中“永久”复选框。
 
-![显示“更改设置”按钮的“用户详细信息”窗格](media/azure-pim-resource-rbac/rbac-assign-role-manage.png)
+    根据角色设置，复选框可能不会显示或可能无法修改。
+
+1. 若要指定特定分配持续时间，请取消选中该复选框，并修改开始和/或结束日期与时间框。
+
+    ![成员身份设置 - 日期和时间](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
+
+1. 完成后，单击“完成”。
+
+    ![新建分配 - 添加](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
+
+1. 若要创建新的角色分配，请单击“添加”。 显示状态通知。
+
+    ![新建分配 - 通知](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
+
+## <a name="update-or-remove-an-existing-role-assignment"></a>更新或删除现有的角色分配
+
+按照以下步骤更新或删除现有的角色分配。
+
+1. 打开“Azure AD Privileged Identity Management”。
+
+1. 单击“Azure 资源”。
+
+1. 单击要管理的资源，如订阅或管理组。
+
+1. 在“管理”下，单击“角色”以查看 Azure 资源的角色列表。
+
+    ![Azure 资源角色 - 选择角色](./media/pim-resource-roles-assign-roles/resources-update-select-role.png)
+
+1. 单击要更新或删除的角色。
+
+1. 在“合格角色”或“活动角色”选项卡上查找角色分配。
+
+    ![更新或删除角色分配](./media/pim-resource-roles-assign-roles/resources-update-remove.png)
+
+1. 单击“更新”或“删除”以更新或删除角色分配。
+
+    有关扩展角色分配的信息，请参阅[在 PIM 中扩展或续订 Azure 资源角色](pim-resource-roles-renew-extend.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
+- [在 PIM 中扩展或续订 Azure 资源角色](pim-resource-roles-renew-extend.md)
 - [在 PIM 中配置 Azure 资源角色设置](pim-resource-roles-configure-role-settings.md)
 - [在 PIM 中分配 Azure AD 目录角色](pim-how-to-add-role-to-user.md)

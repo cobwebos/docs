@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/04/2018
 ms.author: glenga
-ms.openlocfilehash: 1a4b970b07514619b2d81a0483546ac64d07927f
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 6099a818651cf75a75159f43748720b3eb01e4de
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005469"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287815"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 
@@ -30,27 +30,28 @@ Azure Functions 的 JavaScript 体验可以轻松导出一个函数，可以将�
 本文假定已阅读 [Azure Functions 开发人员参考](functions-reference.md)。
 
 ## <a name="exporting-a-function"></a>导出函数
-所有 JavaScript 函数都必须通过 `module.exports` 导出单个 `function`，以便运行时能找到该函数并运行。 此函数必须始终包含 `context` 对象。
+每个 JavaScript 函数都必须通过 `module.exports` 导出单个 `function`，以便运行时能找到该函数并运行。 此函数必须始终将 `context` 对象作为第一参数。
 
 ```javascript
-// You must include a context, but other arguments are optional
-module.exports = function(context) {
-    // Additional inputs can be accessed by the arguments property
-    if(arguments.length === 4) {
-        context.log('This function has 4 inputs');
-    }
-};
-// or you can include additional inputs in your arguments
+// You must include a context, other arguments are optional
 module.exports = function(context, myTrigger, myInput, myOtherInput) {
     // function logic goes here :)
+    context.done();
+};
+// You can also use 'arguments' to dynamically handle inputs
+module.exports = function(context) {
+    context.log('Number of inputs: ' + arguments.length);
+    // Iterates through trigger and input binding data
+    for (i = 1; i < arguments.length; i++){
+        context.log(arguments[i]);
+    }
+    context.done();
 };
 ```
 
-`direction === "in"` 的绑定作为函数参数传递，这意味着可以使用 [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) 动态处理新输入（例如，通过使用 `arguments.length` 循环访问所有输入）。 如果只有一个触发器并且没有其他输入，则此功能非常方便，因为可以在不引用 `context` 对象的情况下可预见地访问触发器数据。
+输入和触发器绑定（`direction === "in"` 的绑定）可以作为参数传递给函数。 它们以与 function.json 中定义的顺序相同的顺序传递给函数。 可以使用 JavaScript [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) 对象动态处理输入。 例如，如果具有 `function(context, a, b)` 并将其更改为 `function(context, a)`，仍然可以通过参考 `arguments[2]` 获取函数代码中的值 `b`。
 
-参数总是以其在 function.json 中出现的顺序传递给函数，即使没有在 exports 语句中指定它们。 例如，如果具有 `function(context, a, b)` 并将其更改为 `function(context, a)`，仍然可以通过参考 `arguments[2]` 获取函数代码中的值 `b`。
-
-所有绑定，无论方向如何，也在 `context` 对象上传递（请参阅下面的脚本）。 
+所有绑定，无论方向如何，也都使用 `context.bindings` 属性在 `context` 对象上传递。
 
 ## <a name="context-object"></a>上下文对象
 运行时使用 `context` 对象将数据传入和传出函数，并能与其进行通信。
@@ -61,6 +62,7 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
 // You must include a context, but other arguments are optional
 module.exports = function(context) {
     // function logic goes here :)
+    context.done();
 };
 ```
 

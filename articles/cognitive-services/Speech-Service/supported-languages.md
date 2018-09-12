@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 7e2634db33d760207e9190b9955bd1f2ead179be
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: de9abac2839341e1744a694daaaa0befdff4e7fa
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123148"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43668574"
 ---
 # <a name="supported-languages-for-speech-service"></a>语音服务支持的语言
 
@@ -39,7 +39,7 @@ Microsoft 语音识别 API 支持以下语言。
 
 ## <a name="text-to-speech"></a>文本到语音转换
 
-**文本转语音** API 提供以下语音，每种语音支持区域设置标识的特定语言和方言。
+语音合成 API 提供以下语音，每种语音支持区域设置标识的特定语言和方言。
 
 区域设置 | 语言 | 性别 | 服务名称映射
 -------|----------|---------|--------------------
@@ -128,13 +128,16 @@ zh-TW | 中文(中国台湾)|女 | “Microsoft 服务器语音的文本转语�
 
 ### <a name="customization"></a>自定义
 
-自定义**文本转语音**语音字体支持美国英语 (en-US) 和中文 (zh-CN)。
+语音自定义功能适用于美国英语 (en-US)、中国大陆的普通话 (zh-CN) 和意大利语 (it-IT)。
+
+> [!NOTE]
+> 意大利语语音培训从包含 2,000 多句话语的数据集开始。 包含 2,000 多句话语的初始数据集也支持中英双语模型。
 
 ## <a name="speech-translation"></a>语音翻译
 
 **语音翻译** API 支持使用不同的语言进行语音转语音和语音转文本的翻译。 源语言必须始终来自以下“语音语言”表。 可用的目标语言取决于翻译目标是语音还是文本。
 
-可以编程方式或使用 REST API 的“语言”终结点获取语言列表。 此列表提供了每个语言代码，并以英语或任何其他受支持语言提供语言名称。 每当支持新的语言时，Microsoft Translator 服务都会更新此列表。
+可采用编程方式使用 REST API 的“语言”终结点获取语言列表。 此列表提供了每个语言代码，并以英语或任何其他受支持语言提供语言名称。 每当支持新的语言时，Microsoft Translator 服务都会更新此列表。
 
 ### <a name="speech-languages"></a>语音语言
 

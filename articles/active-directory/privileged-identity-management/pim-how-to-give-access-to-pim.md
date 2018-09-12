@@ -10,49 +10,81 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 06/06/2017
+ms.date: 08/29/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: d6b2d9f43ce9bb86f4557c92887689c83beb49fa
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 9d5fce5a80ac1f281fdbe6afe7f9a97816807ccc
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189549"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287081"
 ---
 # <a name="grant-access-to-other-administrators-to-manage-pim"></a>授予其他管理员访问权限以管理 PIM
-为组织启用 Azure AD Privileged Identity Management (PIM) 的全局管理员会自动获得角色分配和 PIM 的访问权限。 但是，默认情况下，没有任何其他人会获得写入访问权限，包括其他全局管理员。 其他全局管理员、安全管理员和安全读者拥有 Azure AD PIM 的只读访问权限。 要授予对 PIM 的访问权限，第一位用户可以将其他用户分配到“特权角色管理员”角色。
+
+为组织启用 Azure AD Privileged Identity Management (PIM) 的全局管理员会自动获得角色分配和 PIM 的访问权限。 但是，默认情况下，没有任何其他人会获得写入访问权限，包括其他全局管理员。 其他全局管理员、安全管理员和安全读者拥有 PIM 的只读访问权限。 要授予对 PIM 的访问权限，第一位用户可以将其他用户分配到“特权角色管理员”角色。
 
 > [!NOTE]
-> 管理 Azure AD PIM 需要 Azure MFA。 由于 Microsoft 帐户无法注册 Azure MFA，因此使用 Microsoft 帐户登录的用户无法访问 Azure AD PIM。
-> 
-> 
+> 管理 PIM 需要 Azure MFA。 由于 Microsoft 帐户无法注册 Azure MFA，因此使用 Microsoft 帐户登录的用户无法访问 PIM。
 
 请确保特权角色管理员角色中始终至少有两位用户，以防其中一位用户被锁定或帐户被删除。
 
-## <a name="give-another-user-access-to-manage-pim"></a>向另一位用户授予 PIM 的管理访问权限
-1. 登录到 [Azure 门户](https://portal.azure.com/)，并在仪表板上选择 **Azure AD Privileged Identity Management** 应用。
-2. 选择“管理特权角色” > “特权角色管理员” > “添加”。
-   
-    ![添加特权角色管理员 - 屏幕截图](./media/pim-how-to-give-access-to-pim/PIM_add_PRA.png)
-3. 在“添加托管用户”边栏选项卡上，步骤 1 已完成。 请选择步骤 2“选择用户”，并搜索要添加的用户。
-   
-    ![选择用户 - 屏幕截图](./media/pim-how-to-give-access-to-pim/PIM_select_users.png)
-4. 从搜索结果中选择该用户，并单击“完成”。
-5. 单击“确定”保存选择内容。 选定的用户将出现在“特权角色管理员”列表中。
-   
-   * 每当向某位用户分配新角色时，系统会自动将其设置有资格激活该角色。 如果想要让这些用户永久充当该角色，请在列表中单击该用户。 在用户信息菜单中，选择“设为永久”。
-6. 将 [Azure AD Privileged Identity Management 入门](pim-getting-started.md) 链接发送给用户。
+## <a name="grant-access-to-manage-pim"></a>授予用于管理 PIM 的访问权限
 
-## <a name="remove-another-users-access-rights-for-managing-pim"></a>删除另一位用户的 PIM 管理访问权限
-从特权角色管理员角色中删除某人之前，请确保仍有两位用户分配有该角色。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 在 PIM 仪表板中，单击“特权角色管理员”角色。  此时会显示当前充当该角色的用户列表。
-2. 在用户列表中单击该用户。
-3. 单击“删除”。  此时会显示一条确认消息。
-4. 单击“是”即可从角色中删除该用户。
+1. 打开“Azure AD Privileged Identity Management”。
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
+1. 单击“Azure AD 目录角色”。
+
+1. 单击“角色”。
+
+    ![PIM Azure AD 目录角色 - 角色](./media/pim-how-to-give-access-to-pim/pim-directory-roles-roles.png)
+
+1. 单击“特权角色管理员”角色，打开成员页。
+
+    ![特权角色管理员 - 成员](./media/pim-how-to-give-access-to-pim/pim-pra-members.png)
+
+1. 单击“添加成员”打开“添加受管理成员”窗格。
+
+1. 单击“选择成员”，打开“选择成员”窗格。
+
+    ![特权角色管理员 - 选择成员](./media/pim-how-to-give-access-to-pim/pim-pra-select-members.png)
+
+1. 选择一个成员，然后单击“选择”。
+
+1. 单击“确定”，使该成员有资格获得“特权角色管理员”角色。
+
+    向 PIM 中的某位用户分配新角色时，系统会自动将其配置为“有资格”激活该角色。
+
+1. 若要使该成员成为永久成员，请单击“特权角色管理员”成员列表中的该用户。
+
+1. 单击“更多”，然后单击“永久保留”，使其成为永久成员。
+
+    ![特权角色管理员 - 成为永久成员](./media/pim-how-to-give-access-to-pim/pim-pra-make-permanent.png)
+
+1. 向用户发送指向[开始使用 PIM](pim-getting-started.md) 的链接。
+
+## <a name="remove-access-to-manage-pim"></a>删除用于管理 PIM 的访问权限
+
+从特权角色管理员角色中删除某人之前，请确保至少仍有两位用户分配有该角色。
+
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
+
+1. 打开“Azure AD Privileged Identity Management”。
+
+1. 单击“Azure AD 目录角色”。
+
+1. 单击“角色”。
+
+1. 单击“特权角色管理员”角色，打开成员页。
+
+1. 在要删除的用户旁添加复选标记，然后单击“删除成员”。
+
+    ![特权角色管理员 - 删除成员](./media/pim-how-to-give-access-to-pim/pim-pra-remove-member.png)
+
+1. 在出现的询问是否需要从角色删除成员的消息中，单击“是”。
+
 ## <a name="next-steps"></a>后续步骤
 
-- [在租户中启用订阅管理](pim-resource-roles-enable-subscription-management.md)
+- [开始使用 PIM](pim-getting-started.md)

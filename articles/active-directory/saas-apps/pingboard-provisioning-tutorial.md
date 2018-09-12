@@ -16,16 +16,16 @@ ms.topic: article
 ms.date: 10/19/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: c5cc20b4f20e3a4f746ab15aa5f139c8e7201a2c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 93c3b0cbc3ce063aaeb086d089631a8810293bbe
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447160"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382527"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>教程：为 Pingboard 配置自动用户预配
 
-本教程旨在介绍将用户帐户从 Azure Active Directory (Azure AD) 自动预配到 Pingboard 和取消其预配时所要执行的步骤。
+本教程的目的在于介绍将用户帐户从 Azure Active Directory (Azure AD) 自动预配到 Pingboard 和取消其预配时所要遵循的步骤。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -36,7 +36,7 @@ ms.locfileid: "39447160"
 *   Pingboard 中具有管理员权限的用户帐户 
 
 > [!NOTE] 
-> Azure AD 预配集成依赖于帐户可用的 [Pingboard API](`https://your_domain.pingboard.com/scim/v2`)。
+> Azure AD 预配集成依赖于帐户可用的 [Pingboard API](https://pingboard.docs.apiary.io/#)。
 
 ## <a name="assign-users-to-pingboard"></a>将用户分配到 Pingboard
 
@@ -69,7 +69,7 @@ Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所�
 
     ![Pingboard 预配](./media/pingboard-provisioning-tutorial/pingboardazureprovisioning.png)
     
-1. 在“管理员凭据”部分中，执行以下步骤：
+1. 在“管理员凭据”部分中，使用以下步骤：
 
     a. 在“租户 URL”中，输入 `https://your_domain.pingboard.com/scim/v2` 并将 your_domain 替换为实际的域
 
@@ -81,7 +81,7 @@ Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所�
 
     e. 复制中的令牌**OAuth 持有者令牌**，并在输入中**机密令牌**。
 
-1. 在 Azure 门户中，选择“测试连接”确保 Azure AD 可连接到 Pingboard 应用。 如果连接失败，请确保 Pingboard 帐户具有管理员权限，并重试“测试连接”步骤。
+1. 在 Azure 门户中，选择“测试连接”以测试 Azure AD 可连接到 Pingboard 应用。 如果连接失败，请测试 Pingboard 帐户具有管理员权限，并重试“测试连接”步骤。
 
 1. 在“通知电子邮件”字段中输入应接收预配错误通知的人员或组的电子邮件地址。 然后选中复选框。
 
@@ -95,7 +95,7 @@ Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所�
 
 1. 单击“保存”，开始对分配到 Pingboard 的用户执行初始同步。
 
-初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接。 这些日志描述了预配服务对 Pingboard 应用执行的所有操作。
+初始同步运行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接。 这些日志描述了预配服务对 Pingboard 应用所采取的所有操作。
 
 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../active-directory-saas-provisioning-reporting.md)。
 

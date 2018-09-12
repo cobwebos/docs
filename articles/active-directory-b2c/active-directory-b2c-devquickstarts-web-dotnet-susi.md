@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/17/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 66cd3644611c1d837de717661a3515a0c0d3956f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 838717aa8f426ea54f4736453aac8c6fcf9a0099
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38308025"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344491"
 ---
 # <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>使用 Azure Active Directory B2C 注册、登录、配置文件编辑和密码重置创建 ASP.NET Web 应用
 
@@ -95,7 +95,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 * 将 `ida:ResetPasswordPolicyId` 的值替换为“重置密码”策略名称
 
 ## <a name="launch-the-app"></a>启动应用
-从 Visual Studio 内部启动应用。 导航到“待办事项列表”选项卡，注意 URl 为：https://login.microsoftonline.com/*YourTenantName*/oauth2/v2.0/authorize?p=*YourSignUpPolicyName*&client_id=*YourclientID*.....
+从 Visual Studio 内部启动应用。 导航到“待办事项列表”选项卡，注意 URI 为： https://YourTenantName.b2clogin.com/YourTenantName/oauth2/v2.0/authorize?p=YourSignUpPolicyName&client_id=YourclientID.....
 
 使用电子邮件地址或用户名注册应用。 注销，然后重新登录并编辑配置文件或重置密码。 注销并以其他用户身份登录。 
 

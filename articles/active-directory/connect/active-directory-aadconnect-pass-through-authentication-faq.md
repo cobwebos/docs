@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2018
+ms.date: 09/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8b5f62daf2b43453aadb0373171bc98f96494688
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 58a33b2d3f06deab4f31c76e04d45f8bd0bbba4c
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215061"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841947"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory 传递身份验证：常见问题
 
@@ -48,7 +48,7 @@ ms.locfileid: "39215061"
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>密码哈希同步是否可以充当直通身份验证的回退？
 
-不是。 直通身份验证不自动故障转移到密码哈希同步。 它仅可充当[传递身份验证尚不支持的方案](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios)的回滚。 为避免用户登录失败，应配置传递身份验证以实现[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability)。
+不是。 直通身份验证不自动故障转移到密码哈希同步。 为避免用户登录失败，应配置传递身份验证以实现[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability)。
 
 ## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>能否在传递身份验证代理所在的同一台服务器上安装 [Azure AD 应用程序代理](../manage-apps/application-proxy.md)连接器？
 
@@ -56,17 +56,17 @@ ms.locfileid: "39215061"
 
 ## <a name="what-versions-of-azure-ad-connect-and-pass-through-authentication-agent-do-you-need"></a>需要哪些版本的 Azure AD Connect 和传递身份验证代理？
 
-使用该功能需要 Azure AD Connect 1.1.486.0 或更高版本、直通身份验证 1.5.58.0 或更高版本。 所有软件都应安装在 Windows Server 2012 R2 或更高版本的服务器上。
+使用该功能需要 Azure AD Connect 1.1.750.0 或更高版本、直通身份验证 1.5.193.0 或更高版本。 所有软件都应安装在 Windows Server 2012 R2 或更高版本的服务器上。
 
 ## <a name="what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication"></a>如果用户的密码已过期，但仍尝试使用直通身份验证登录，会发生什么情况？
 
-如果已针对特定的用户配置[密码写回](../user-help/active-directory-passwords-update-your-own-password.md)，则当用户使用直通身份验证进行登录时，可更改或重置其密码。 密码会按预期写回到本地 Active Directory。
+如果已针对特定的用户配置[密码写回](../authentication/concept-sspr-writeback.md)，则当用户使用直通身份验证进行登录时，可更改或重置其密码。 密码会按预期写回到本地 Active Directory。
 
 若没有为特定用户配置密码写回，或者没有为用户分配有效的 Azure AD 许可证，则用户不能在云中更新其密码。 即使密码过期也不能更新。 用户会看到此消息：“组织不允许更新此站点上的密码。 请根据组织建议的方法更新密码，或者请求管理员提供帮助。” 用户或管理员必须在本地 Active Directory 中重置其密码。
 
 ## <a name="how-does-pass-through-authentication-protect-you-against-brute-force-password-attacks"></a>直通身份验证如何防止不受密码搜索攻击？
 
-请参阅 [Azure Active Directory 直通身份验证：智能锁定](../authentication/howto-password-smart-lockout.md)以了解详细信息。
+[阅读有关智能锁定的信息](../authentication/howto-password-smart-lockout.md)。
 
 ## <a name="what-do-pass-through-authentication-agents-communicate-over-ports-80-and-443"></a>传递身份验证通过端口 80 和 443 传递什么内容？
 
@@ -82,7 +82,7 @@ ms.locfileid: "39215061"
 
 ## <a name="can-i-install-two-or-more-pass-through-authentication-agents-on-the-same-server"></a>能否在同一台服务器上安装两个或更多传递身份验证代理？
 
-否。在一台服务器上只能安装一个传递身份验证代理。 若要配置直通身份验证实现高可用性，请遵循 [Azure Active Directory 直通身份验证：快速入门](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability)中的说明。
+否。在一台服务器上只能安装一个传递身份验证代理。 若要配置传递身份验证实现高可用性，请[遵循此处的说明](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability)。
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>如何删除直通身份验证代理？
 
@@ -116,6 +116,10 @@ ms.locfileid: "39215061"
 ## <a name="can-i-install-the-first-pass-through-authentication-agent-on-a-server-other-than-the-one-that-runs-azure-ad-connect"></a>能否在未运行 Azure AD Connect 的服务器上安装第一个传递身份验证代理？
 
 否。不支持该方案。
+
+## <a name="why-do-i-need-a-cloud-only-global-administrator-account-to-enable-pass-through-authentication"></a>为什么需要仅限云的全局管理员帐户才能启用传递身份验证？
+
+建议使用仅限云的全局管理员帐户启用或禁用传递身份验证。 了解如何[添加仅限云的全局管理员帐户](../active-directory-users-create-azure-portal.md)。 这样做可确保你不被锁定在租户之外。
 
 ## <a name="how-can-i-disable-pass-through-authentication"></a>如何禁用传递身份验证？
 

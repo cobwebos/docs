@@ -5,25 +5,28 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 09/01/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 4a6ce07bfe641d9efdbe0eac841bb4f27f468b34
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: b601a3d23b23faa16925881a54e2ceba85c800f8
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161458"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669059"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>何时使用 Azure 多重身份验证提供程序
 
 双重验证对于具有 Azure Active Directory 和 Office 365 用户的全局管理员默认可用。 但是，如果想充分利用[高级功能](howto-mfa-mfasettings.md)，则应购买完整版的 Azure 多重身份验证 (MFA)。
 
-Azure 多重身份验证提供程序用于利用 Azure MFA 完整版提供的功能。 它适用于没有通过 Azure MFA、Azure AD Premium 或包含 Azure AD Premium 或 Azure MFA 的捆绑包获得许可的用户。 默认情况下，Azure MFA 和 Azure AD Premium 包括 Azure MFA 完整版。
+使用 Azure 多重身份验证提供程序以便利用 Azure 多重身份验证为**没有许可证的用户**提供的功能。 
 
 如果你拥有涵盖组织中所有用户的许可证，则不需要 Azure 多重身份验证提供程序。 仅当你还需要为没有许可证的某些用户提供双重验证时，才需要创建 Azure 多重身份验证提供程序。
+
+> [!NOTE]
+> 自 2018 年 9 月 1 日起，可能无法再创建新的身份验证提供程序。 可以继续使用和更新现有的身份验证提供程序。 多重身份验证将继续成为 Azure AD Premium 许可证中的可用功能。
 
 ## <a name="caveats-related-to-the-azure-mfa-sdk"></a>与 Azure MFA SDK 相关的注意事项
 
@@ -62,7 +65,7 @@ Azure 多重身份验证提供程序用于利用 Azure MFA 完整版提供的功
 
 创建 MFA 提供程序以后，不能更改使用模型（按启用的用户或按身份验证）。 不过，可以删除 MFA 提供程序，再创建采用不同使用模型的新提供程序。
 
-如果当前多重身份验证提供程序已与 Azure AD 目录（也称 Azure AD 租户）相关联，可以安全地删除该 MFA 提供程序，再创建与同一 Azure AD 租户关联的新 MFA 提供程序。 或者，如果你购买了足够的 MFA、Azure AD Premium 或包含 Azure AD Premium 或 Azure MFA 许可证的捆绑包，以涵盖已启用 MFA 的所有用户，则可以完全删除 MFA 提供程序。
+如果当前多重身份验证提供程序已与 Azure AD 目录（也称 Azure AD 租户）相关联，可以安全地删除该 MFA 提供程序，再创建与同一 Azure AD 租户关联的新 MFA 提供程序。 或者，如果购买了足够多的许可证，可以覆盖启用 MFA 的所有用户，则可以删除整个 MFA 提供程序。
 
 如果 MFA 提供程序未与 Azure AD 租户相关联，或者你将新的 MFA 提供程序与其他 Azure AD 租户相关联，则用户设置和配置选项不会进行转移。 此外，需要使用通过新 MFA 提供程序生成的激活凭据，重新激活现有 Azure MFA 服务器。 重新激活 MFA 服务器并将其链接到新 MFA 提供程序不会影响电话和短信身份验证，但所有用户将不再会收到移动应用通知，除非他们重新激活移动应用。
 

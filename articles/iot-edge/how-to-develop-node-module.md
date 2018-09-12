@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 06/26/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 78e952b5b1eedc1757cfe636eb13e411044dce54
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 6976314929ac2e0e099e8c2f07da32970bc57509
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42141847"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382501"
 ---
 # <a name="develop-and-debug-nodejs-modules-with-azure-iot-edge-for-visual-studio-code"></a>使用 Visual Studio Code 开发和调试用于 Azure IoT Edge 的 Node.js 模块
 
@@ -35,9 +35,7 @@ ms.locfileid: "42141847"
 * [Node.js](https://nodejs.org)
 * [Docker](https://docs.docker.com/engine/installation/)
 * [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)或 [Docker 中心](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
-
-   >[!TIP]
-   >对于原型和测试用途，可以使用本地 Docker 注册表，而不使用云注册表。 
+   * 对于原型和测试用途，可以使用本地 Docker 注册表，而不使用云注册表。 
 
 若要在设备上测试模块，你至少需要一个 IoT Edge 设备和一个活动的 IoT 中心。 如果想要将计算机用作 IoT Edge 设备，可以按照适用于 [Windows](quickstart.md) 或 [Linux](quickstart-linux.md) 的教程中的步骤进行操作。 
 
@@ -60,7 +58,9 @@ ms.locfileid: "42141847"
 6. 为解决方案提供一个名称。 
 7. 选择“Node.js 模块”作为解决方案中第一个模块的模板。
 8. 为模块提供一个名称。 选择一个在容器注册表中唯一的名称。 
-9. 为模块提供映像存储库。 VS Code 会自动填充模块名称，因此，只需将 **localhost:5000** 替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，那么可以使用 localhost。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器如下所示：\<registry name\>.azurecr.io。
+9. 为模块提供映像存储库。 VS Code 会自动填充模块名称，因此，只需将 **localhost:5000** 替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，那么可以使用 localhost。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器如下所示：\<registry name\>.azurecr.io。 仅替换字符串的 localhost 部分，不要删除模块名称。
+
+   ![提供 Docker 映像存储库](./media/how-to-develop-node-module/repository.png)
 
 VS Code 采用你提供的信息，创建一个 IoT Edge 解决方案，然后在新窗口中加载它。
 
@@ -76,7 +76,7 @@ VS Code 采用你提供的信息，创建一个 IoT Edge 解决方案，然后�
 
 ## <a name="develop-your-module"></a>开发模块
 
-解决方案附带的默认 Node.js 代码位于**模块** > **\<你的模块名称\>** > **app.js** 中。 设置模块和 deployment.template.json 文件，以便可以生成解决方案，将其推送到容器注册表，然后将其部署到设备以开始测试而无需触及任何代码。 该模块构建为只需从源（在此示例中，为模拟数据的 tempSensor 模块）获取输入并通过管道将其传送到 IoT Hub。 
+解决方案附带的默认 Node.js 代码位于模块 > [你的模块名称] > app.js。 设置模块和 deployment.template.json 文件，以便可以生成解决方案，将其推送到容器注册表，然后将其部署到设备以开始测试而无需触及任何代码。 该模块构建为只需从源（在此示例中，为模拟数据的 tempSensor 模块）获取输入并通过管道将其传送到 IoT Hub。 
 
 当你准备使用自己的代码自定义 Node.js 模板时，请使用 [Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md) 生成模块，以满足 IoT 解决方案的关键需求（例如安全性、设备管理和可靠性）。 
 
@@ -92,7 +92,7 @@ VS Code 采用你提供的信息，创建一个 IoT Edge 解决方案，然后�
 
 2. 在 VS Code 命令面板中，键入并运行命令“Azure IoT Edge: Build IoT Edge solution”。
 3. 从命令面板中，选择你的解决方案的 `deployment.template.json` 文件。 
-4. 在 Azure IoT 中心设备资源管理器中，右键单击 IoT Edge 设备 ID，然后选择“为 IoT Edge 设备创建部署”。 
+4. 在 Azure IoT 中心设备资源管理器中，右键单击 IoT Edge 设备 ID，然后选择“为单个设备创建部署”。 
 5. 打开解决方案的 **config** 文件夹，然后选择 `deployment.json` 文件。 单击“选择 Edge 部署清单”。 
 
 然后可以在 VS Code 集成终端中看到部署已成功创建且具有一个部署 ID。

@@ -11,16 +11,24 @@ ms.topic: article
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
 manager: douge
-ms.openlocfilehash: 001d58aa22d4fc52acebfc88ba07d2467c1be08e
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: b66e43c0f40f184bfb2c62327f5742346ff8b187
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42140423"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841603"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
 
 本指南介绍使用 Azure Dev Spaces 时可能会碰到的常见问题。
+
+## <a name="enabling-detailed-logging"></a>启用详细日志记录
+
+为了更有效地解决问题，它可能有助于创建更详细的日志以供查看。
+
+对于 Visual Studio 扩展，可以通过将 `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` 环境变量设置为 1 来执行此操作。 请务必重新启动 Visual Studio 以使环境变量生效。 启用后，详细的日志将写入 `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` 目录。
+
+在 CLI 中，可以通过使用 `--verbose` 切换在命令执行过程中输出更多信息。
 
 ## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>错误“无法创建 Azure Dev Spaces 控制器”
 
@@ -106,6 +114,16 @@ kubectl delete pod -n kube-system -l app=addon-http-application-routing-nginx-in
     ```cmd
     az aks use-dev-spaces -n <cluster-name> -g <resource-group>
     ```
+
+## <a name="warning-dockerfile-could-not-be-generated-due-to-unsupported-language"></a>警告“由于语言不受支持，无法生成 Dockerfile”
+Azure Dev Spaces 为 C# 和 Node.js 提供本机支持。 在包含以下列语言之一编写的代码的目录中运行 azds prep 时，Azure Dev Spaces 将自动为你创建相应的 Dockerfile。
+
+你仍可以将 Azure Dev Spaces 与其他语言编写的代码一起使用，但需要在第一次运行 azds up 之前自行创建 Dockerfile。
+
+### <a name="try"></a>请尝试：
+如果你的应用程序使用 Azure Dev Spaces 本身不支持的语言编写，你将需要提供相应的 Dockerfile 以生成运行代码的容器映像。 Docker 提供一个[用于编写 Dockerfile 的最佳做法列表](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)以及一个 [Dockerfile 参考](https://docs.docker.com/engine/reference/builder/)，可帮助你执行此操作。
+
+一旦有了相应的 Dockerfile，就可以继续运行 azds up 以在 Azure Dev Spaces 中运行应用程序。
 
 ## <a name="error-upstream-connect-error-or-disconnectreset-before-headers"></a>“上游连接错误或者在标头之前存在断开连接/重置设置”错误
 可能会在尝试访问服务时看到此错误。 例如，可能会在浏览器中访问服务的 URL 时看到此错误。 

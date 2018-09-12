@@ -11,15 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 7401355c7920729933d0fcc3dd4cc8ce610c399e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: b51f0c1e0c6ef713bf8d3ff0a124300f446a9373
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306802"
 ---
 # <a name="disaster-recovery-guidance-for-data-in-data-lake-store"></a>Data Lake Store 数据灾难恢复指南
 
-Azure Data Lake Store 提供本地冗余存储 (LRS)。 所以从现在开始，Azure Data Lake Store 帐户中的数据可通过自动化副本灵活应对区域中的暂时性硬件故障。 这可以确保持久性和高可用性，满足 Azure Data Lake Store SLA。 本文提供有关如何进一步保护数据，防范极其少见的全区域服务中断或意外删除行为的一些指导。
+Azure Data Lake Store 提供本地冗余存储 (LRS)。 所以从现在开始，Azure Data Lake Store 帐户中的数据可通过自动化副本灵活应对数据中心中的暂时性硬件故障。 这可以确保持久性和高可用性，满足 Azure Data Lake Store SLA。 本文提供有关如何进一步保护数据，防范极其少见的全区域服务中断或意外删除行为的一些指导。
 
 ## <a name="disaster-recovery-guidance"></a>灾难恢复指南
 每个客户都应准备好自己的灾难恢复计划，这很重要。 阅读本文中的信息以生成你的灾难恢复计划。 下面是可以帮助自行创建计划的一些资源。

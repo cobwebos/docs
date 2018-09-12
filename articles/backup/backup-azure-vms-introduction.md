@@ -7,14 +7,14 @@ manager: carmonm
 keywords: 备份 vm, 备份虚拟机
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/31/2018
+ms.date: 8/29/2018
 ms.author: markgal
-ms.openlocfilehash: 438c1130486fe1ba2ee484ae01655a2fb115de27
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 9e2ef16cffb044409b6f7f8e7785010097bcda87
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390749"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286646"
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>在 Azure 中计划 VM 备份基础结构
 本文提供性能和资源建议，帮助规划 VM 备份基础结构。 文中还定义了备份服务的主要方面；这些方面对于决定体系结构、容量规划和计划安排至关重要。 如果已[准备好环境](backup-azure-arm-vms-prepare.md)，请首先进行此规划，再开始[备份 VM](backup-azure-arm-vms.md)。 如需有关 Azure 虚拟机的详细信息，请参阅[虚拟机文档](https://azure.microsoft.com/documentation/services/virtual-machines/)。 
@@ -50,17 +50,18 @@ Azure 备份会在 Windows VM 上创建 VSS 完整备份（深入了解 [VSS 完
 ```
 
 #### <a name="linux-vms"></a>Linux VM
-Azure 备份提供脚本框架。 若要确保备份 Linux VM 时的应用程序一致性，请创建自定义操作前脚本和操作后脚本，用于控制备份工作流和环境。 Azure 备份会在创建 VM 快照前调用操作前脚本，而在 VM 快照创建作业完成后调用操作后脚本。 有关更多详细信息，请参阅[使用操作前脚本和操作后脚本的应用程序一致性 VM 备份](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)。
+
+Azure 备份提供一个脚本框架，用于控制备份工作流和环境。 若要确保进行与应用程序一致的 Linux VM 备份，请使用此脚本框架来创建自定义操作前脚本和操作后脚本。 在创建 VM 快照前调用操作前脚本，然后在 VM 快照创建作业完成后调用操作后脚本。 有关详细信息，请参阅 [Linux VM 的应用程序一致性备份](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)一文。
+
 > [!NOTE]
 > Azure 备份只调用客户编写的操作前脚本和操作后脚本。 如果操作前脚本和操作后脚本成功执行，Azure 备份会将恢复点标记为应用程序一致。 但是，客户最终为使用自定义脚本时的应用程序一致性负责。
 >
 
-
-此表介绍了一致性类型，以及在 Azure VM 备份和还原过程中，这些一致性类型会在何种条件下出现。
+下表说明一致性的类型和发生的条件。
 
 | 一致性 | 基于 VSS | 解释和详细信息 |
 | --- | --- | --- |
-| 应用程序一致性 |是（对于 Windows）|应用程序一致性非常适合工作负荷，因为它可确保：<ol><li> VM *启动*。 <li>无数据损坏。 <li>无数据丢失。<li> 对于使用数据的应用程序，数据将保持一致，因为备份时会使用 VSS 或前/后脚本将应用程序纳入考虑。</ol> <li>*Windows VM* - 大多数 Microsoft 工作负荷都有 VSS 写入器，负责执行与数据一致性相关的工作负荷特定操作。 例如，Microsoft SQL Server 的 VSS 编写器可确保正确写入事务日志文件和数据库。 对于 Azure Windows VM 备份，若要创建应用程序一致恢复点，备份扩展必须调用 VSS 工作流且需在创建 VM 快照前完成调用。 若要确保 Azure VM 快照准确性，则也必须完成所有 Azure VM 应用程序的 VSS 编写器。 （了解 [VSS 基本信息](http://blogs.technet.com/b/josebda/archive/2007/10/10/the-basics-of-the-volume-shadow-copy-service-vss.aspx)，并深入了解其[工作原理](https://technet.microsoft.com/library/cc785914%28v=ws.10%29.aspx)详细信息）。 </li> <li> *Linux VM* - 客户可以执行[自定义操作前脚本和操作后脚本，以确保应用程序一致性](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)。 </li> |
+| 应用程序一致性 |是（对于 Windows）|应用程序一致性非常适合工作负荷，因为它可确保：<ol><li> VM *启动*。 <li>无数据损坏。 <li>无数据丢失。<li> 对于使用数据的应用程序，数据将保持一致，因为备份时会使用 VSS 或前/后脚本将应用程序纳入考虑。</ol> <li>*Windows VM* - 大多数 Microsoft 工作负载都有 VSS 编写器，负责执行与数据一致性相关的工作负载特定操作。 例如，SQL Server VSS 编写器可确保正确写入事务日志文件和数据库。 对于 IaaS Windows VM 备份，若要创建与应用程序一致的恢复点，备份扩展必须调用 VSS 工作流并且需要在创建 VM 快照前完成调用。 若要确保 Azure VM 快照准确性，则也必须完成所有 Azure VM 应用程序的 VSS 编写器。 （了解 [VSS 基本信息](http://blogs.technet.com/b/josebda/archive/2007/10/10/the-basics-of-the-volume-shadow-copy-service-vss.aspx)，并深入了解其[工作原理](https://technet.microsoft.com/library/cc785914%28v=ws.10%29.aspx)详细信息）。 </li> <li> *Linux VM* - 客户可以执行[自定义操作前脚本和操作后脚本，以确保应用程序一致性](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)。 </li> |
 | 文件系统一致性 |是 - 对于基于 Windows 的计算机 |在两种情况下，恢复点可做到文件系统一致：<ul><li>在没有前脚本/后脚本或前脚本/后脚本失败时，Azure 中 Linux VM 的备份。 <li>在 Azure 中备份 Windows VM 时出现 VSS 故障。</li></ul> 在这两种情况下，最佳做法是确保： <ol><li> VM *启动*。 <li>无数据损坏。<li>无数据丢失。</ol> 应用程序需要对还原的数据实施自己的“修复”机制。 |
 | 崩溃一致性 |否 |这种情况相当于虚拟机“崩溃”（通过软重置或硬重置）。 崩溃一致性通常出现在 Azure 虚拟机在备份期间关闭时。 无论是从操作系统还是应用程序角度而言，崩溃一致性恢复点皆无法保证存储媒体上数据的一致性。 仅会捕获和备份备份时磁盘上已存在的数据。 <br/> <br/> 尽管并无保证，但通常情况下，会启动操作系统，并在之后进行 chkdsk 等磁盘检查过程来修复任何损坏错误。 任何未传输到磁盘的内存中数据或写入都将丢失。 如果需要执行数据回滚，应用程序通常会接着执行其自身的验证机制。 <br><br>例如，如果事务日志中有条目不在数据库中，则数据库软件将执行回滚，直到数据一致。 当数据分散在多个虚拟磁盘上时（例如跨区卷），崩溃一致恢复点不保证数据的正确性。 |
 
@@ -104,19 +105,22 @@ Azure 备份提供脚本框架。 若要确保备份 Linux VM 时的应用程序
 * 数据复制时间 - 将数据从保管库复制到客户存储帐户。 还原时间取决于 Azure 备份服务在所选客户存储帐户上获取的 IOPS 和吞吐量。 若要减少还原过程期间的复制时间，请选择一个未加载其他应用程序写入和读取的存储帐户。
 
 ## <a name="best-practices"></a>最佳实践
-使用非托管磁盘为虚拟机配置备份时，建议遵循以下做法：
 
-> [!Note]
-> 建议更改或管理存储帐户的以下做法，仅适用于具有非托管磁盘的 VM。 如果使用托管磁盘，Azure 将处理涉及存储的所有管理活动。
-> 
+在为所有虚拟机配置备份时，建议遵循以下做法：
 
-* 请勿计划同时备份同一云服务中的 10 个以上经典 VM。 如果要备份同一云服务中的多个 VM，建议将备份开始时间错开一小时。
-* 请勿计划同时在一个保管库中备份 100 个以上 VM。 
+* 请勿计划同时在同一云服务中备份 10 台以上的经典 VM。 如果要备份同一云服务中的多台 VM，建议将备份开始时间按小时错开。
+* 请勿计划同时在一个保管库中备份 100 台以上的 VM。
 * 将 VM 备份安排在非高峰时间进行。 这样备份服务会使用 IOPS 将数据从客户存储帐户传输到保管库。
-* 确保策略在分布于不同存储帐户的 VM 上应用。 同一个备份计划所保护的来自单个存储帐户的磁盘总数不应超过 20 个。 如果一个存储帐户中有超过 20 个磁盘，请将这些 VM 分配到多个策略，以获取备份过程传输阶段所需的 IOPS。
-* 请勿将高级存储上运行的 VM 还原到同一存储帐户。 如果还原操作过程和备份操作同时进行，将减少备份的可用 IOPS。
-* 针对 VM 备份堆栈 V1 上的高级 VM 备份，建议仅分配总存储帐户空间的 50%，以便 Azure 备份服务可以将快照复制到存储帐户，并将数据从存储帐户中的复制位置传输到保管库。
 * 请确保 Linux VM 为备份启用的 Python 是 2.7 版或更高版本。
+
+### <a name="best-practices-for-vms-with-unmanaged-disks"></a>适用于非托管磁盘的 VM 的最佳做法
+
+以下建议仅适用于使用非托管磁盘的 VM。 如果 VM 使用的是托管磁盘，则备份服务将处理所有存储管理活动。
+
+* 确保将备份策略应用于多个存储帐户中的 VM。 同一个备份计划所保护的来自单个存储帐户的磁盘总数不应超过 20 个。 如果一个存储帐户中有超过 20 个磁盘，请将这些 VM 分配到多个策略，以获取备份过程传输阶段所需的 IOPS。
+* 请勿将高级存储上运行的 VM 还原到同一存储帐户。 如果还原操作过程和备份操作同时进行，将减少备份的可用 IOPS。
+* 针对 VM 备份堆栈 V1 上的高级 VM 备份，应仅分配总存储帐户空间的 50%，这样使备份服务能够将快照复制到存储帐户，并将数据从存储帐户传输到保管库。
+
 
 ## <a name="data-encryption"></a>数据加密
 在备份过程中，Azure 备份不会加密数据。 但是，可以在 VM 中加密数据，并无缝备份保护的数据（阅读有关[加密数据备份](backup-azure-vms-encryption.md)的详细信息）。

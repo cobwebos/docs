@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: cd843f1826ad65098a7c0f6d30383113ccd28f6a
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 97953779f1132d89c7ad07abdb4e08c0f476f4b9
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306433"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841807"
 ---
-# <a name="security-frame-session-management--articles"></a>安全框架：会话管理 | 文章 
+# <a name="security-frame-session-management"></a>安全框架：会话管理
 | 产品/服务 | 文章 |
 | --------------- | ------- |
 | **Azure AD**    | <ul><li>[使用 Azure AD 时借助 ADAL 方法实现适当的注销](#logout-adal)</li></ul> |
@@ -380,36 +380,42 @@ void Page_Init (object sender, EventArgs e) {
 | **步骤** | 会话超时是指由于用户在某个间隔时间（由 Web 服务器定义）内未在网站上执行任何操作而发生的事件。 服务器端发生该事件时，会将用户会话的状态更改为“invalid”（即，“不再使用”），并指示 Web 服务器销毁该会话（删除其中包含的所有数据）。 以下代码示例在 Web.config 文件中将超时会话特性设置为 15 分钟。|
 
 ### <a name="example"></a>示例
-```XML 代码 <configuration> <system.web> <sessionState mode="InProc" cookieless="true" timeout="15" /> </system.web> </configuration>
+```XML 
+<configuration>
+  <system.web>
+    <sessionState mode="InProc" cookieless="true" timeout="15" />
+  </system.web>
+</configuration>
 ```
 
-## <a id="threat-detection"></a>Enable Threat detection on Azure SQL
-```
-
-| 标题                   | 详细信息      |
-| ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
-| **适用的技术** | Web 窗体 |
-| **属性**              | 不适用  |
-| **参考**              | [用于身份验证的窗体元素（ASP.NET 设置架构）](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
-| **步骤** | 将窗体身份验证票证 Cookie 超时设置为 15 分钟|
-
-### <a name="example"></a>示例
-```XML 代码 <forms  name=".ASPXAUTH" loginUrl="login.aspx"  defaultUrl="default.aspx" protection="All" timeout="15" path="/" requireSSL="true" slidingExpiration="true"/>
-</forms>
+## <a id="threat-detection"></a>在 Azure SQL 中启用威胁检测
 ```
 
 | Title                   | Details      |
 | ----------------------- | ------------ |
 | **Component**               | Web Application | 
 | **SDL Phase**               | Build |  
-| **Applicable Technologies** | Web Forms, MVC5 |
-| **Attributes**              | EnvironmentType - OnPrem |
-| **References**              | [asdeqa](https://skf.azurewebsites.net/Mitigations/Details/wefr) |
-| **Steps** | When the web application is Relying Party and ADFS is the STS, the lifetime of the authentication cookies - FedAuth tokens - can be set by the following configuration in web.config:|
+| **Applicable Technologies** | Web Forms |
+| **Attributes**              | N/A  |
+| **References**              | [forms Element for authentication (ASP.NET Settings Schema)](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
+| **Steps** | Set the Forms Authentication Ticket cookie timeout to 15 minutes|
 
 ### Example
+```XML
+<forms  name=".ASPXAUTH" loginUrl="login.aspx"  defaultUrl="default.aspx" protection="All" timeout="15" path="/" requireSSL="true" slidingExpiration="true"/>
+</forms>
+```
+
+| 标题                   | 详细信息      |
+| ----------------------- | ------------ |
+| 组件               | Web 应用程序 | 
+| **SDL 阶段**               | 构建 |  
+| **适用的技术** | Web 窗体、MVC5 |
+| **属性**              | EnvironmentType - OnPrem |
+| **参考**              | [asdeqa](https://skf.azurewebsites.net/Mitigations/Details/wefr) |
+| **步骤** | 当 Web 应用程序是信赖方且 ADFS 是 STS 时，可以通过 web.config 中的以下配置设置身份验证 cookie FedAuth 令牌的生存期：|
+
+### <a name="example"></a>示例
 ```XML
   <system.identityModel.services>
     <federationConfiguration>

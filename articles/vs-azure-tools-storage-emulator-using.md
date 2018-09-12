@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 8/17/2017
 ms.author: ghogen
-ms.openlocfilehash: e4a72729cfe69a810e0eec0a0ac6ddb87a468932
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 4b14fa44f484735f2a5efee4d631a6f48e6a8bf6
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42141248"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382630"
 ---
 # <a name="configuring-and-using-the-storage-emulator-with-visual-studio"></a>在 Visual Studio 中配置和使用存储模拟器
 [!INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]
@@ -33,7 +33,7 @@ Azure SDK 开发环境包含存储模拟器，这是一个用于模拟本地开�
 > 
 
 ## <a name="configuring-a-connection-string-for-the-storage-emulator"></a>为存储模拟器配置连接字符串
-若要从角色内的代码访问存储模拟器，需要配置指向存储模拟器并且以后可以更改为指向 Azure 存储帐户的连接字符串。 连接字符串是一个配置设置，角色可在运行时读取该设置以连接到存储帐户。 有关创建连接字符串的详细信息，请参阅 [Configuring the Azure Application](https://msdn.microsoft.com/library/azure/2da5d6ce-f74d-45a9-bf6b-b3a60c5ef74e#BK_SettingsPage)（配置 Azure 应用程序）。
+若要从角色内的代码访问存储模拟器，需要配置指向存储模拟器并且以后可以更改为指向 Azure 存储帐户的连接字符串。 连接字符串是一个配置设置，角色可在运行时读取该设置以连接到存储帐户。 有关如何创建连接字符串的详细信息，请参阅[配置 Azure 存储连接字符串](/azure/storage/common/storage-configure-connection-string)。
 
 > [!NOTE]
 > 可以通过在代码中使用 **DevelopmentStorageAccount** 属性返回对存储模拟器帐户的引用。 如果要通过代码访问存储模拟器，此方法能正常工作；但是如果计划将应用程序发布到 Azure，则需创建连接字符串来访问 Azure 存储帐户并修改代码（将其发布前）以便使用该连接字符串。 如果要在存储模拟器帐户与 Azure 存储帐户之间进行频繁切换，使用连接字符串可以简化此过程。

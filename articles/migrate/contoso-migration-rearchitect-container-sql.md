@@ -5,18 +5,18 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/26/2018
+ms.date: 09/05/2018
 ms.author: raynew
-ms.openlocfilehash: 3c8ff204ffc604c6b61a217f36c7fc4ba9a5e74b
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: eacad4acbae0565cbd894d3f51665d751eb9a6e2
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105088"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43783128"
 ---
 # <a name="contoso-migration-rearchitect-an-on-premises-app-to-an-azure-container-and-azure-sql-database"></a>Contoso 迁移：将本地应用重新架构到 Azure 容器和 Azure SQL 数据库
 
-本文演示 Contoso 如何在 Azure 中迁移并重新架构其 SmartHotel 应用。 Contoso 将应用前端 VM 迁移到 Azure Windows 容器，将应用数据库迁移到 Azure SQL 数据库。
+本文演示 Contoso 如何将其 SmartHotel360 应用迁移到 Azure 中并重新架构。 Contoso 将应用前端 VM 迁移到 Azure Windows 容器，将应用数据库迁移到 Azure SQL 数据库。
 
 本文档是系列文章中的其中一篇，目的是展示虚拟公司 Contoso 如何将本地资源迁移到 Microsoft Azure 云。 该系列介绍了背景信息，同时提供了很多应用场景来描述如何设置迁移基础结构、评估本地资源是否适合迁移以及如何运行不同类型的迁移。 应用场景越来越复杂。 我们会不断添加更多的文章。
 
@@ -24,19 +24,19 @@ ms.locfileid: "43105088"
 --- | --- | ---
 [文章 1：概述](contoso-migration-overview.md) | 概述文章系列、Contoso 的迁移策略和该系列所用的示例应用。 | 可用
 [文章 2：部署 Azure 基础结构](contoso-migration-infrastructure.md) | Contoso 准备其本地和 Azure 基础结构进行迁移。 该系列的所有迁移文章共用同一个基础结构。 | 可用
-[文章 3：评估要迁移到 Azure 的本地资源](contoso-migration-assessment.md)  | Contoso 评估 VMware 上运行的本地 SmartHotel 应用。 Contoso 使用 Azure Migrate 服务评估应用 VM，并使用数据迁移助手评估应用 SQL Server 数据库。 | 可用
-[文章 4：在 Azure VM 和 SQL 数据库托管实例上重新托管应用](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso 将其本地 SmartHotel 应用直接迁移到 Azure。 Contoso 使用 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) 迁移应用前端 VM。 Contoso 使用 [Azure 数据库迁移服务](https://docs.microsoft.com/azure/dms/dms-overview)将应用数据库迁移到 Azure SQL 数据库托管实例。 | 可用  
-[文章 5：在 Azure VM 上重新托管应用](contoso-migration-rehost-vm.md) | Contoso 使用 Site Recovery 服务将其 SmartHotel 应用 VM 迁移到 Azure VM。 | 可用
-[文章 6：在 Azure VM 和 SQL Server AlwaysOn 可用性组中重新托管应用](contoso-migration-rehost-vm-sql-ag.md) | Contoso 迁移 SmartHotel 应用。 Contoso 使用 Site Recovery 迁移应用 VM。 它使用数据库迁移服务将应用数据库迁移到受 AlwaysOn 可用性组保护的 SQL Server 群集。 | 可用    
+[文章 3：评估要迁移到 Azure 的本地资源](contoso-migration-assessment.md)  | Contoso 评估 VMware 上运行的本地 SmartHotel360 应用。 Contoso 使用 Azure Migrate 服务评估应用 VM，并使用数据迁移助手评估应用 SQL Server 数据库。 | 可用
+[文章 4：在 Azure VM 和 SQL 数据库托管实例上重新托管应用](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso 将其本地 SmartHotel360 应用直接迁移到 Azure。 Contoso 使用 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) 迁移应用前端 VM。 Contoso 使用 [Azure 数据库迁移服务](https://docs.microsoft.com/azure/dms/dms-overview)将应用数据库迁移到 Azure SQL 数据库托管实例。 | 可用   
+[文章 5：在 Azure VM 上重新托管应用](contoso-migration-rehost-vm.md) | Contoso 使用 Site Recovery 服务将其 SmartHotel360 应用 VM 迁移到 Azure VM。 | 可用
+[文章 6：在 Azure VM 和 SQL Server AlwaysOn 可用性组中重新托管应用](contoso-migration-rehost-vm-sql-ag.md) | Contoso 迁移 SmartHotel360 应用。 Contoso 使用 Site Recovery 迁移应用 VM。 它使用数据库迁移服务将应用数据库迁移到受 AlwaysOn 可用性组保护的 SQL Server 群集。 | 可用 
 [文章 7：将 Linux 应用重新托管到 Azure VM](contoso-migration-rehost-linux-vm.md) | Contoso 使用 Azure Site Recovery 将 Linux osTicket 应用直接迁移到 Azure VM | 可用
 [文章 8：在 Azure VM 和 Azure MySQL 上重新托管 Linux 应用](contoso-migration-rehost-linux-vm-mysql.md) | Contoso 使用 Azure Site Recovery 将 Linux osTicket 应用迁移到 Azure VM，并使用 MySQL 工作台将应用数据库迁移到 Azure MySQL 服务器实例。 | 可用
-[文章 9：基于 Azure Web 应用和 Azure SQL 数据库重构应用](contoso-migration-refactor-web-app-sql.md) | Contoso 将 SmartHotel 应用迁移到 Azure Web 应用，并使用数据库迁移助手将应用数据库迁移到 Azure SQL Server 实例。 | 可用
+[文章 9：基于 Azure Web 应用和 Azure SQL 数据库重构应用](contoso-migration-refactor-web-app-sql.md) | Contoso 将 SmartHotel360 应用迁移到 Azure Web 应用，并使用数据库迁移助手将应用数据库迁移到 Azure SQL Server 实例 | 可用
 [文章 10：基于 Azure Web 应用和 Azure MySQL 重构 Linux 应用](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso 使用 Azure 流量管理器将其 Linux osTicket 应用迁移到多个 Azure 区域上的 Azure Web 应用，并与 GitHub 集成以实现持续交付。 Contoso 将应用数据库迁移到 Azure Database for MySQL 实例。 | 可用 
 [文章 11：基于 VSTS 重构 TFS](contoso-migration-tfs-vsts.md) | Contoso 将其本地 Team Foundation Server 部署迁移到 Azure 中的 Visual Studio Team Services。 | 可用
-文章 12：在 Azure 容器和 Azure SQL 数据库上重构应用 | Contoso 将其 SmartHotel 应用迁移到 Azure。 然后，它将应用 Web 层重新架构为 Azure Service Fabric 中运行的 Windows 容器，以及具有 Azure SQL 数据库的数据库。 | 本文
-[文章 13：在 Azure 中重新生成应用](contoso-migration-rebuild.md) | Contoso 使用一系列 Azure 功能和服务（包括 Azure 应用服务、Azure Kubernetes 服务 (AKS)、Azure Functions、Azure 认知服务和 Azure Cosmos DB）重新生成其 SmartHotel 应用。 | 可用    
+文章 12：在 Azure 容器和 Azure SQL 数据库上重构应用 | Contoso 将其 SmartHotel360 应用迁移到 Azure。 然后，它将应用 Web 层重新架构为 Azure Service Fabric 中运行的 Windows 容器，以及具有 Azure SQL 数据库的数据库。 | 本文
+[文章 13：在 Azure 中重新生成应用](contoso-migration-rebuild.md) | Contoso 使用一系列 Azure 功能和服务（包括 Azure 应用服务、Azure Kubernetes 服务 (AKS)、Azure Functions、Azure 认知服务和 Azure Cosmos DB）重新生成其 SmartHotel360 应用。 | 可用  
 
-在本文中，Contoso 将 VMware VM 上运行的双层 Windows. NET SmartHotel 应用迁移到 Azure。 此应用作为开源应用提供，可在 [github](https://github.com/Microsoft/SmartHotel360) 上下载。
+在本文中，Contoso 将 VMware VM 上运行的双层 Windows. NET SmartHotel360 应用迁移到 Azure。 此应用作为开源应用提供，可在 [github](https://github.com/Microsoft/SmartHotel360) 上下载。
 
 ## <a name="business-drivers"></a>业务驱动因素
 
@@ -65,7 +65,7 @@ Contoso 云团队制定了本次迁移的目标。 这些目标用于确定最�
 
 ### <a name="current-app"></a>当前应用
 
-- SmartHotel 本地应用跨两个 VM（WEBVM 和 SQLVM）进行分层。
+- SmartHotel360 本地应用跨两个 VM（WEBVM 和 SQLVM）进行分层。
 - 这两个 VM 位于 VMware ESXi 主机 contosohost1.contoso.com（6.5 版）上
 - VMware 环境由 VM 上运行的 vCenter Server 6.5 (**vcenter.contoso.com**) 托管。
 - Contoso 有一个本地数据中心 (contoso-datacenter)，其中包含一个本地域控制器 (**contosodc1**)。
@@ -92,7 +92,7 @@ Contoso 通过将利弊清单放置在一起来评估其建议的设计。
 
 **注意事项** | **详细信息**
 --- | ---
-**优点** | 要想迁移到 Azure Service Fabric，需要对 SmartHotel 应用代码进行更改。 但是，工作量很小，可以使用 Service Fabric SDK 工具进行更改。<br/><br/> 迁移到 Service Fabric 后，Contoso 今后能够快速开始开发可添加到应用程序中的微服务，且不会给原始代码库带来风险。<br/><br/> Windows 容器提供了与一般容器相同的优点。 它们提高了敏捷性、可移植性和控制能力。<br/><br/> Contoso 可以利用适用于 SQL Server 和 Windows Server 的 Azure 混合权益利用其在软件保障方面的投资。<br/><br/> 迁移后，不再需要支持 Windows Server 2008 R2。 [了解详细信息](https://support.microsoft.com/lifecycle)。<br/><br/> Contoso 可为应用的 Web 层配置多个实例，使其不再是单一故障点。<br/><br/> 他们不再依赖于老化的 SQL Server 2008 R2。<br/><br/> SQL 数据库支持 Contoso 的技术要求。 Contoso 管理员使用数据库迁移助手对本地数据库进行了评估，发现它是兼容的。<br/><br/> SQL 数据库具有内置的容错功能，Contoso 不需要设置此功能。 这将确保数据层不再是单一故障转移点。
+**优点** | 要想迁移到 Azure Service Fabric，需要对 SmartHotel360 应用代码进行更改。 但是，工作量很小，可以使用 Service Fabric SDK 工具进行更改。<br/><br/> 迁移到 Service Fabric 后，Contoso 今后能够快速开始开发可添加到应用程序中的微服务，且不会给原始代码库带来风险。<br/><br/> Windows 容器提供了与一般容器相同的优点。 它们提高了敏捷性、可移植性和控制能力。<br/><br/> Contoso 可以利用适用于 SQL Server 和 Windows Server 的 Azure 混合权益利用其在软件保障方面的投资。<br/><br/> 迁移后，不再需要支持 Windows Server 2008 R2。 [了解详细信息](https://support.microsoft.com/lifecycle)。<br/><br/> Contoso 可为应用的 Web 层配置多个实例，使其不再是单一故障点。<br/><br/> 他们不再依赖于老化的 SQL Server 2008 R2。<br/><br/> SQL 数据库支持 Contoso 的技术要求。 Contoso 管理员使用数据库迁移助手对本地数据库进行了评估，发现它是兼容的。<br/><br/> SQL 数据库具有内置的容错功能，Contoso 不需要设置此功能。 这将确保数据层不再是单一故障转移点。
 **缺点** | 容器比其他迁移选项更加复杂。 容器的学习曲线对于 Contoso 来说可能是一个问题。  它们引入了新一级的复杂性以提供更大的价值（而无论该曲线如何）。<br/><br/> Contoso 的运营团队需要努力理解用于应用的 Azure、容器和微服务并为其提供支持。<br/><br/> 如果 Contoso 使用数据迁移助手而非数据迁移服务来迁移其数据库，则没有随时可用于大规模迁移数据库的基础结构。
 
 
@@ -100,7 +100,7 @@ Contoso 通过将利弊清单放置在一起来评估其建议的设计。
 ### <a name="migration-process"></a>迁移过程
 
 1. Contoso 预配用于 Windows 的 Azure Service Fabric 群集。
-2. 他们预配了一个 Azure SQL 实例，并将 SmartHotel 数据库迁移到它。
+2. 它将预配一个 Azure SQL 实例，并将 SmartHotel360 数据库迁移到其中。
 3. Contoso 使用 Service Fabric SDK 工具将 Web 层 VM 转换为 Docker 容器。
 4. 连接 Service Fabric 群集和 ACR，并使用 Azure Service Fabric 部署应用。
 
@@ -197,7 +197,7 @@ Azure 容器是从 Web VM 使用导出的文件创建的。 容器存放在 Azur
 
 ## <a name="step-3-provision-azure-service-fabric"></a>步骤 3：预配 Azure Service Fabric
 
-SmartHotel 容器将在 Azure Service Fabric 群集中运行。 Contoso 管理员按如下所述创建 Service Fabric 群集：
+SmartHotel360 容器将在 Azure Service Fabric 群集中运行。 Contoso 管理员按如下所述创建 Service Fabric 群集：
 
 1. 从 Azure 市场创建一个 Service Fabric 资源
 
@@ -296,7 +296,7 @@ Contoso 需要提供群集证书，使 VSTS 能够访问群集。 Contoso 管理
 
 ## <a name="step-5-migrate-the-database-with-dma"></a>步骤 5：使用 DMA 迁移数据库
 
-现在，Contoso 管理员可以使用 DMA 迁移 SmartHotel 数据库。
+现在，Contoso 管理员可以使用 DMA 迁移 SmartHotel360 数据库。
 
 ### <a name="install-dma"></a>安装 DMA
 
@@ -495,7 +495,7 @@ Contoso 管理员现在配置 VSTS 来执行生成和发布过程，以实施 De
 
     ![发布](./media/contoso-migration-rearchitect-container-sql/pipeline15.png)
 
-18. 部署完成后，SmartHotel 现在将运行 Service Fabric。
+18. 部署完成后，SmartHotel360 现在将运行 Service Fabric。
 
     ![发布](./media/contoso-migration-rearchitect-container-sql/publish4.png)
 
@@ -505,7 +505,7 @@ Contoso 管理员现在配置 VSTS 来执行生成和发布过程，以实施 De
 
 ## <a name="step-9-extend-the-app-and-republish"></a>步骤 9：扩展应用并重新发布
 
-当 SmartHotel 应用和数据库在 Azure 中运行后，Contoso 希望扩展应用。
+当 SmartHotel360 应用和数据库在 Azure 中运行后，Contoso 希望扩展应用。
 
 - Contoso 的开发人员在开发将在 Service Fabric 群集上运行的新 .NET Core 应用程序的原型。
 - 该应用将用来从 CosmosDB 拉取情绪数据。
@@ -539,7 +539,7 @@ Contoso 管理员首先预配 Azure Cosmos 数据库。
             "userName": "CoreySandersWA",
             "userAlias": "@CoreySandersWA",
             "userPictureUrl": "",
-            "text": "This is a tweet about #SmartHotel",
+            "text": "This is a tweet about #SmartHotel360",
             "language": "en",
             "sentiment": 0.5,
             "retweet_count": 1,
@@ -582,7 +582,7 @@ Contoso 管理员首先预配 Azure Cosmos 数据库。
 
 1. 将代码提交并推送到 VSTS。 这会启动生成和发布管道。
 
-2. 完成生成和部署后，SmartHotel 将运行 Service Fabric。 Servie Fabric 管理控制台现在显示了三个服务。
+2. 完成生成和部署后，SmartHotel360 现在将运行 Service Fabric。 Servie Fabric 管理控制台现在显示了三个服务。
 
     ![重新发布](./media/contoso-migration-rearchitect-container-sql/republish3.png)
 
@@ -596,7 +596,7 @@ Contoso 管理员首先预配 Azure Cosmos 数据库。
 
 - 从 vCenter 清单中删除本地 VM。
 - 从本地备份作业中删除 VM。
-- 更新内部文档以显示 SmartHotel 应用的新位置。 以在 Azure SQL 数据库中运行的形式显示数据库，以在 Service Fabric 中运行的形式显示前端。
+- 更新内部文档以显示 SmartHotel360 应用的新位置。 以在 Azure SQL 数据库中运行的形式显示数据库，以在 Service Fabric 中运行的形式显示前端。
 - 查看与已停用的 VM 交互的所有资源，并更新所有相关设置或文档以反映新配置。
 
 
@@ -626,7 +626,7 @@ Azure 显示已迁移的资源后，Contoso 需要积极行动、全面保护新
 
 ## <a name="conclusion"></a>结束语
 
-在本文中，Contoso 通过将应用前端 VM 迁移到 Service Fabric 在 Azure 中重构了 SmartHotel 应用。 应用数据库已迁移到 Azure SQL 数据库。
+在本文中，Contoso 通过将应用前端 VM 迁移到 Service Fabric 在 Azure 中重构了 SmartHotel360 应用。 应用数据库已迁移到 Azure SQL 数据库。
 
 
 
