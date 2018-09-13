@@ -138,8 +138,6 @@ items:
         href: directory-emergency-access.md
     - name: 管理单元
       href: directory-administrative-units.md
-    - name: 配置令牌生存期
-      href: /azure/active-directory/active-directory-configurable-token-lifetimes?context=azure/active-directory/users-groups-roles/context/ugr-context
   - name: 将服务与 Azure AD 集成
     items:
     - name: 将 LinkedIn 与 Azure AD 集成
@@ -163,9 +161,9 @@ items:
     href: https://docs.microsoft.com/cli/azure/ad
   - name: 用于 Graph 的 Azure AD PowerShell
     href: https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0
-ms.openlocfilehash: a198f2293add373d8b530a5ad3fe12fd50f1e2ab
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: b11e6bfd24a8046352e53028031c0bfbfc6b1360
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391379"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717193"

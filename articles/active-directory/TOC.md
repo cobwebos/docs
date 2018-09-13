@@ -232,11 +232,11 @@
 
 
 #### 应用程序注册
-##### [为应用程序对象填写字段](application-dev-registration-config-specific-application-property-how-to.md)
-##### [更改令牌生存期默认值](application-dev-registration-config-change-token-lifetime-how-to.md)
+##### [为应用程序对象填写字段](develop/registration-config-specific-application-property-how-to.md)
+##### [更改令牌生存期默认值](develop/registration-config-change-token-lifetime-how-to.md)
 
 #### 身份验证
-##### [配置终结点](application-dev-registration-config-how-to.md)
+##### [配置终结点](develop/registration-config-how-to.md)
 
 #### 条件性访问
 ##### [客户不符合设备注册先决条件](active-directory-conditional-access.md)
@@ -248,7 +248,7 @@
 ##### [哪些应用程序支持条件访问？](active-directory-conditional-access-supported-apps.md)
 
 #### 查找 API
-##### [查找 API](application-dev-api-find-an-api-how-to.md)
+##### [查找 API](develop/api-find-an-api-how-to.md)
 
 #### 管理访问权限
 ##### [为应用分配用户和组](manage-apps/methods-for-assigning-users-and-groups.md)
@@ -258,14 +258,14 @@
 ##### [应用程序列表中的意外应用](manage-apps/application-types.md)
 
 #### 多租户应用
-##### [配置新应用](application-dev-setup-multi-tenant-app.md)
-##### [添加到应用库](application-dev-registration-config-multi-tenant-application-add-to-gallery-how-to.md)
+##### [配置新应用](develop/setup-multi-tenant-app.md)
+##### [添加到应用库](develop/registration-config-multi-tenant-application-add-to-gallery-how-to.md)
 
 #### 权限
-##### [选择 API 的权限](application-dev-perms-for-given-api.md)
-##### [为应用授予权限](application-dev-registration-config-grant-permissions-how-to.md)
-##### [委派权限与应用程序权限](application-dev-delegated-and-app-perms.md)
-##### [应用程序许可](application-dev-consent-framework.md)
+##### [选择 API 的权限](develop/perms-for-given-api.md)
+##### [为应用授予权限](develop/registration-config-grant-permissions-how-to.md)
+##### [委派权限与应用程序权限](develop/delegated-and-app-perms.md)
+##### [应用程序许可](develop/consent-framework.md)
 
 #### 设置
 ##### [花费多长时间](manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)
@@ -278,7 +278,7 @@
 
 #### 单一登录
 ##### [选择方法](manage-apps/single-sign-on-modes.md)
-##### [配置](application-dev-registration-config-sso-how-to.md)
+##### [配置](develop/registration-config-sso-how-to.md)
 ##### [配置联合单一登录 - 库应用](manage-apps/configure-federated-single-sign-on-gallery-applications.md)
 ##### [配置联合单一登录时常见的问题 - 库应用](manage-apps/configure-federated-single-sign-on-gallery-applications-problems.md)
 ##### [配置联合单一登录 - 非库应用](manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
@@ -303,7 +303,7 @@
 ##### [登录本地应用时出现的问题 - 应用程序代理](manage-apps/application-sign-in-problem-on-premises-application-proxy.md)
 
 ### [开发应用](active-directory-applications-guiding-developers-for-lob-applications.md)
-### [文档库](active-directory-apps-index.md)
+
 
 ## 管理目录
 ### [Azure AD Connect](./connect/active-directory-aadconnect.md)
