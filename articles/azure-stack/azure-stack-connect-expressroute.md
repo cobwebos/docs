@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/14/2018
+ms.date: 09/12/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 878b7952938c7ec534bc09e27ee8b859c1aaeefb
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: db9f19154668fa33bb94e59a4da6735b1a6d3d49
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139408"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720491"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>使用 Azure ExpressRoute 将 Azure Stack 连接到 Azure
 
@@ -98,7 +98,7 @@ Azure ExpressRoute，可将本地网络扩展到 Microsoft 云，通过连接提
 #### <a name="create-the-virtual-network-and-vm-subnet"></a>创建虚拟网络和 VM 子网
 
 1. 使用用户（租户）帐户登录到用户门户。
-1. 在门户中，选择“新建”。
+1. 在门户中，选择 **+ 创建资源**。
 
 1. 在“Azure 市场”下，选择“网络”。
 
@@ -131,7 +131,7 @@ Azure ExpressRoute，可将本地网络扩展到 Microsoft 云，通过连接提
 
 #### <a name="create-the-virtual-network-gateway"></a>创建虚拟网络网关
 
-1. 在 Azure Stack 用户门户中，选择“新建”。
+1. 在 Azure Stack 用户门户中，选择 **+ 创建资源**。
 1. 在“Azure 市场”下，选择“网络”。
 1. 从网络资源列表中选择“虚拟网关”。
 1. 在“名称”字段中，输入 **GW1**。
@@ -146,7 +146,7 @@ Azure ExpressRoute，可将本地网络扩展到 Microsoft 云，通过连接提
 
 本地网络网关资源识别位于 VPN 连接另一端的远程网关。 在本示例中，连接的远程端是 ExpressRoute 路由器的 LAN 子接口。 对于*图 2* 中所示的租户 1，远程地址为 10.60.3.255。
 
-1. 使用用户帐户登录到 Azure Stack 用户门户，然后选择“新建”。
+1. 登录到 Azure Stack 用户门户与你的用户帐户，然后选择 **+ 创建资源**。
 1. 在“Azure 市场”下，选择“网络”。
 1. 从资源列表中选择“本地网关”。
 1. 在“名称”字段中，输入 **ER-Router-GW**。
@@ -163,7 +163,7 @@ Azure ExpressRoute，可将本地网络扩展到 Microsoft 云，通过连接提
 
 #### <a name="create-the-connection"></a>创建连接
 
-1. 在 Azure Stack 用户门户中，选择“新建”。
+1. 在 Azure Stack 用户门户中，选择 **+ 创建资源**。
 1. 在“Azure 市场”下，选择“网络”。
 1. 从资源列表中选择“连接”。
 1. 在“基本设置”下，选择“站点到站点(IPSec)”作为“连接类型”。
@@ -187,7 +187,7 @@ Azure ExpressRoute，可将本地网络扩展到 Microsoft 云，通过连接提
 
 若要通过 VPN 连接测试数据流量，需要使用虚拟机在 Azure Stack VNet 中发送和接收数据。 请创建一个虚拟机，并将其部署到虚拟网络的 VM 子网。
 
-1. 在 Azure Stack 用户门户中，选择“新建”。
+1. 在 Azure Stack 用户门户中，选择 **+ 创建资源**。
 1. 在“Azure 市场”下，选择“计算”。
 1. 在虚拟机映像列表中，选择“Windows Server 2016 Datacenter Eval”映像。
 
@@ -360,7 +360,7 @@ Azure Stack 开发工具包是自主性的，与部署物理主机的网络相�
 
 ## <a name="configure-the-router"></a>配置路由器
 
-可以使用以下 ExpressRoute 路由器配置示意图作为指导来配置 ExpressRoute 路由器。 下图显示了两个租户 （租户 1 和租户 2） 提供其各自的 ExpressRoute 线路。 每个租户链接到各自在 ExpressRoute 路由器的 LAN 和 WAN 端的 VRF（虚拟路由和转发）。 此配置可确保在两个租户之间保持端到端隔离。 在学习示例配置的过程中，请记下路由器接口中使用的 IP 地址。
+可以使用以下 ExpressRoute 路由器配置示意图作为指导来配置 ExpressRoute 路由器。 此图显示了两个租户（租户 1 和租户 2）及其各自的 ExpressRoute 线路。 每个租户链接到各自在 ExpressRoute 路由器的 LAN 和 WAN 端的 VRF（虚拟路由和转发）。 此配置可确保在两个租户之间保持端到端隔离。 在学习示例配置的过程中，请记下路由器接口中使用的 IP 地址。
 
 *图 4.ExpressRoute 路由器配置*
 
@@ -368,7 +368,7 @@ Azure Stack 开发工具包是自主性的，与部署物理主机的网络相�
 
 可以使用任何支持 IKEv2 VPN 和 BGP 的路由器，来终止 Azure Stack 的站点到站点 VPN 连接。 同一路由器用于通过 ExpressRoute 线路连接到 Azure。
 
-下面的 Cisco ASR 1000 系列聚合服务路由器配置示例支持网络基础结构中所示*ExpressRoute 路由器配置*关系图。
+以下 Cisco ASR 1000 系列聚合服务路由器配置示例支持  *ExpressRoute 路由器配置*图中所示的网络基础结构。
 
 **Cisco ASR 1000 配置示例**
 

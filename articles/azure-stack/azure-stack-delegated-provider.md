@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/12/2018
 ms.author: brenduns
 ms.reviewer: alfredop
-ms.openlocfilehash: b58118a3ed4fba5017e0eb630d822ec59f04aa16
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: d3e3bcc9f637ed0a93091c0b0b8797d667459f11
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024770"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716175"
 ---
 # <a name="delegate-offers-in-azure-stack"></a>在 Azure Stack 中委托套餐
 
@@ -113,7 +113,7 @@ Azure Stack 操作员经常需要委托他人来注册用户和创建订阅。 �
 
 以委托的提供商身份登录到用户门户，然后使用委托的套餐作为模板来创建新的产品/服务。
 
-1. 选择“新建” > “租户套餐 + 计划” > “套餐”。
+1. 选择 **+ 创建资源** > **租户产品/服务 + 计划** > **提供**。
 
     ![创建新的产品/服务](media/azure-stack-delegated-provider/image5.png)
 

@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/11/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 24f237a04d19d03ab7357db6fb9c7ab60036f3d2
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 4eadbe38eede505a3339d4b6090d0a34c12a5fc2
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44390987"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721953"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>安装 ASDK 后的配置任务
 
@@ -162,6 +162,11 @@ Set-ADDefaultDomainPasswordPolicy -MaxPasswordAge 180.00:00:00 -Identity azurest
 
 ![组策略管理控制台](media/asdk-post-deploy/gpmc.png)
 
+## <a name="enable-multi-tenancy"></a>启用多租户
+对于使用 Azure AD 部署，你需要[启用多租户](.\.\azure-stack-enable-multitenancy.md#enable-multi-tenancy)用于 ASDK 安装。
+
+> [!NOTE]
+> 当用于注册 Azure Stack 之外的域中的管理员或用户帐户用于登录到 Azure Stack 门户中时，用来注册 Azure Stack 的域名必须追加到门户 url。 例如，如果 Azure Stack 注册 fabrikam.onmicrosoft.com 和中的日志记录的用户帐户是admin@contoso.com，用于登录到用户门户的 url 是： https://portal.local.azurestack.external/fabrikam.onmicrosoft.com。
 
 ## <a name="next-steps"></a>后续步骤
 [将 ASDK 注册到 Azure](asdk-register.md)

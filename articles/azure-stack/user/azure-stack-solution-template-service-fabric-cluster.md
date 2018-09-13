@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/08/2018
+ms.date: 09/12/2018
 ms.author: mattbriggs
 ms.reviewer: shnatara
-ms.openlocfilehash: 9feb2e538d3578fe259aa3fbc693a1e953f2f894
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3d3701c670236d67697f4109a59fa31900037a0d
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440345"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720916"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>在 Azure Stack 中部署 Service Fabric 群集
 
@@ -41,8 +41,7 @@ ms.locfileid: "39440345"
 
 1.  **管理客户端证书**这是客户端用于在 Service Fabric 群集中进行身份验证的证书，可以是自签名的证书。 请参阅创建此客户端证书所要满足的[要求](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)。
 
-1.  
-  **必须在 Azure Stack 市场中提供以下各项：**
+1.  **必须在 Azure Stack 市场中提供以下各项：**
      - **Windows Server 2016** – 模板使用 Windows Server 2016 映像来创建群集。  
      - **客户脚本扩展** - Microsoft 提供的虚拟机扩展。  
      - **PowerShell Desired Stage Configuration** - Microsoft 提供的虚拟机扩展。
@@ -121,7 +120,7 @@ ms.locfileid: "39440345"
 
 ## <a name="deploy-the-marketplace-item"></a>部署市场项
 
-1. 在用户门户中，转到“新建” > “计算” > “Service Fabric 群集”。 
+1. 在用户门户中，转到 **+ 创建资源** > **计算** > **Service Fabric 群集**。 
 
    ![选择“Service Fabric 群集”](./media/azure-stack-solution-template-service-fabric-cluster/image2.png)
 

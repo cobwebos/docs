@@ -1,6 +1,6 @@
 ---
 title: Azure Stack 添加缩放节点 |Microsoft Docs
-description: 将节点添加到 Azure Stack 中的缩放单位。
+description: 在 Azure Stack 中将节点添加到缩放单元。
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -12,74 +12,74 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2018
+ms.date: 09/12/2018
 ms.author: brenduns
 ms.reviewer: thoroet
-ms.openlocfilehash: 02602243bcb4e426ebf4984e387da8e8c148232e
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 0899b1784c796e5f6265dda842ca8955615a1584
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42139411"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718081"
 ---
-# <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>在 Azure Stack 中添加其他缩放单位节点
+# <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>在 Azure Stack 中添加更多的缩放单元节点
 
-Azure Stack 操作员可以通过添加更多的物理计算机增加总容量的现有的缩放单位。 物理计算机也称为缩放单位节点。 您将添加每个新的缩放单位节点必须是同构中 CPU 类型、 内存和磁盘数和大小的节点的缩放单位中已存在。
+Azure Stack 操作员可以通过添加更多的物理计算机来提高现有缩放单元的总容量。 物理计算机也称为缩放单元节点。 添加的每个新缩放单元节点在 CPU 类型、内存以及磁盘数目和大小方面必须与缩放单元中现有的节点同源。
 
 > [!NOTE]  
-您必须运行 Azure Stack 1807 或更高版本将添加其他缩放单位节点。
+必须运行 Azure Stack 1807 或更高版本才能添加更多的缩放单元节点。
 
-若要添加的缩放单位节点，你在 Azure Stack 采取行动，并运行工具从您的硬件设备制造商 (OEM)。 在硬件生命周期主机 (HLH) 以确保新的物理计算机与现有节点相同的固件级别上运行的 OEM 工具。
+若要添加某个缩放单元节点，请在 Azure Stack 中操作并运行硬件设备制造商 (OEM) 提供的工具。 OEM 工具在硬件生命周期主机 (HLH) 上运行，目的是确保新的物理计算机与现有节点的固件级别匹配。
 
-以下流程图显示添加的缩放单位节点的一般过程。
+以下流程图显示添加缩放单元节点的一般过程。
 
-![添加规模单位流](media/azure-stack-add-scale-node/add-node-flow.png) &#42; *OEM 硬件供应商是否会制定物理服务器机架放置和更新固件变化根据支持合同。*
+![添加缩放单元流](media/azure-stack-add-scale-node/add-node-flow.png) &#42; *固件因支持合同而异，而不管 OEM 硬件供应商是否制定物理服务器机架放置和更新规则。*
 
-要添加新节点的操作可能需要几个小时或数天才能完成。
+添加新节点的操作可能需要数小时或数天才能完成。
 
 > [!Note]  
-> 添加缩放单位节点操作已正在进行时，不要尝试任何以下操作：
+> 在添加缩放单元节点的操作正在进行时，请勿尝试任何下述操作：
 >
 >  - 更新 Azure Stack
->  - 旋转证书
+>  - 轮换证书
 >  - 停止 Azure Stack
->  - 修复缩放单位节点
+>  - 修复缩放单元节点
 
 
-## <a name="add-scale-unit-nodes"></a>添加缩放单位节点
+## <a name="add-scale-unit-nodes"></a>添加缩放单元节点
 
-以下步骤，如何将节点添加的高级概述。 不，第一个参考 OEM 提供容量扩展文档的情况下，请执行以下步骤。
+以下步骤大致概述了如何添加节点。 请勿在未先参考 OEM 提供的容量扩展文档的情况下按照这些步骤操作。
 
-1. 新的物理服务器机架放在正确布线。 
-2. 启用物理交换机端口，并根据适用调整访问控制列表 (Acl)。
-3. 基板管理控制器 (BMC) 中配置正确的 IP 地址并将应用所有的 BIOS 设置每个 OEM 提供的文档。
-4. 使用 HLH 上运行的硬件制造商提供的工具将当前固件基线应用于所有组件。
-5. 运行 Azure Stack 管理员门户中添加节点操作。
-6. 验证添加节点操作成功。 若要执行此操作，请检查[**状态**的缩放单位](#monitor-add-node-operations)。 
+1. 将新的物理服务器置于机架中并进行正确的布线。 
+2. 启用物理交换机端口，并根据情况调整访问控制列表 (ACL)。
+3. 根据 OEM 提供的文档，在基础板管理控制器 (BMC) 中配置正确的 IP 地址，并应用所有 BIOS 设置。
+4. 使用硬件制造商提供的在 HLH 上运行的工具，将当前的固件基线应用于所有组件。
+5. 在 Azure Stack 管理员门户中运行“添加节点”操作。
+6. 验证“添加节点”操作是否成功。 为此，请查看[缩放单元的“状态”](#monitor-add-node-operations)。 
 
 ## <a name="add-the-node"></a>添加节点
 
-可以使用管理门户或 PowerShell 来添加新节点。 添加节点操作首先将新的缩放单位节点添加为可用的计算容量，然后自动将扩展的存储容量。 由于 Azure Stack 是超聚合系统自动扩展容量其中*计算*并*存储*进行整体缩放。
+可以使用管理员门户或 PowerShell 来添加新节点。 “添加节点”操作首先将新的缩放单元节点添加为可用计算容量，然后自动扩展存储容量。 容量之所以可以自动扩展，是因为 Azure Stack 是一个超聚合的系统，其中的计算和存储是一起缩放的。
 
-### <a name="use-the-admin-portal"></a>使用管理门户
+### <a name="use-the-admin-portal"></a>使用管理员门户
 
 1. 以 Azure Stack 操作员身份登录到 Azure Stack 管理员门户。
-2. 导航到**新** > **容量** > **缩放单位节点**。
-   ![缩放单位节点](media/azure-stack-add-scale-node/select-node1.png)
-3. 上**添加节点**窗格中，选择*区域*，然后选择*缩放单位*你想要添加到节点。 此外指定*BMC IP 地址*为要添加的缩放单位节点。 一次只能添加一个节点。
-   ![添加节点的详细信息](media/azure-stack-add-scale-node/select-node2.png)
+2. 导航到 **+ 创建资源** > **容量** > **缩放单位节点**。
+   ![缩放单元节点](media/azure-stack-add-scale-node/select-node1.png)
+3. 在“添加节点”窗格中选择“区域”，然后选择要向其添加节点的“缩放单元”。 另请指定要添加的缩放单元节点的“BMC IP 地址”。 一次只能添加一个节点。
+   ![添加节点详细信息](media/azure-stack-add-scale-node/select-node2.png)
  
 
 ### <a name="use-powershell"></a>使用 PowerShell
 
-使用**新建 AzsScaleUnitNodeObject** cmdlet 将添加一个节点。  
+使用 **New-AzsScaleUnitNodeObject** cmdlet 添加一个节点。  
 
-使用下面的示例 PowerShell 脚本的任何一个之前, 的值替换为*节点名称*并*IP 地址*与 Azure Stack 环境中的值。
+在使用下述某个示例 PowerShell 脚本之前，请将 *node names* 和 *IP addresses* 的值替换为你的 Azure Stack 环境的值。
 
   > [!Note]  
-  > 命名节点时，必须保留的名称为的长度不超过 15 个字符。 您还不能使用包含空格或包含任何以下字符的名称： `\`， `/`， `:`， `*`， `?`， `"`， `<`， `>`， `|`，`\`, `~`, `!`, `@`, `#`, `$`, `%`, `^`, `&`, `(`, `)`, `{`,` }`, `_`.
+  > 为节点命名时，必须确保名称的长度不到 15 个字符。 另外，不能使用包含空格或下述任何字符的名称：`\`、`/`、`:`、`*`、`?`、`"`、`<`、`>`、`|`、`\`、`~`、`!`、`@`、`#`、`$`、`%`、`^`、`&`、`(`、`)`、`{`、` }`、`_`。
 
-**将节点添加：**
+**添加节点：**
   ```powershell
   ## Add a single Node 
   $NewNode=New-AzsScaleUnitNodeObject -computername "<name_of_new_node>" -BMCIPv4Address "<BMCIP_address_of_new_node>" 
@@ -87,14 +87,14 @@ Azure Stack 操作员可以通过添加更多的物理计算机增加总容量�
   Add-AzsScaleUnitNode -NodeList $NewNode -ScaleUnit "<name_of_scale_unit_cluster>" 
   ```  
 
-## <a name="monitor-add-node-operations"></a>监视器添加节点操作 
-可以使用管理门户或 PowerShell 来获取添加节点操作的状态。 添加节点操作可能需要数天才能完成几个小时。
+## <a name="monitor-add-node-operations"></a>监视“添加节点”操作 
+可以使用管理员门户或 PowerShell 来获取“添加节点”操作的状态。 “添加节点”操作可能需要数小时或数天来完成。
 
-### <a name="use-the-admin-portal"></a>使用管理门户 
-若要监视添加新节点，在管理门户中查看缩放单位，或缩放单位节点对象。 若要执行此操作，请转到**区域管理** > **缩放单位**。 接下来，选择您想要查看缩放单位节点的缩放单位。 
+### <a name="use-the-admin-portal"></a>使用管理员门户 
+若要监视添加新节点的操作，请在管理员门户中查看缩放单元或缩放单元节点对象。 为此，请转到“区域管理” > “缩放单元”。 接下来，选择要查看的缩放单元或缩放单元节点。 
 
 ### <a name="use-powershell"></a>使用 PowerShell
-可以按如下所示使用 PowerShell 检索缩放单位和缩放单位节点的状态：
+缩放单元和缩放单元节点的状态可以使用 PowerShell 来检索，如下所示：
   ```powershell
   #Retrieve Status for the Scale Unit
   Get-AzsScaleUnit|select name,state
@@ -103,42 +103,42 @@ Azure Stack 操作员可以通过添加更多的物理计算机增加总容量�
   Get-AzsScaleUnitNode |Select Name, ScaleUnitNodeStatus
 ```
 
-### <a name="status-for-the-add-node-operation"></a>添加节点操作的状态 
-**缩放单位：**
+### <a name="status-for-the-add-node-operation"></a>“添加节点”操作的状态 
+**对于缩放单元：**
 |状态               |说明  |
 |---------------------|---------|
-|正在运行              |所有节点积极都参与的缩放单位。|
-|已停止              |缩放单位节点已关闭或不可访问。|
-|扩展            |一个或多个缩放单位节点当前正在添加为计算容量。|
-|配置存储  |已扩展的计算容量和存储配置正在运行。|
-|需要修正 |检测到需要在要修复的一个或多个缩放单位节点的错误。|
+|正在运行              |所有节点都积极参与缩放单元。|
+|已停止              |缩放单元节点已停机或不可访问。|
+|正在扩展            |当前正在将一个或多个缩放单元节点添加为计算容量。|
+|正在配置存储  |计算容量已扩展，存储配置正在运行。|
+|需要修正 |检测到错误，需要修复一个或多个缩放单元节点。|
 
 
-**有关缩放单位节点：**
+**对于缩放单元节点：**
 |状态                |说明  |
 |----------------------|---------|
-|正在运行               |节点方正在参与的缩放单位。|
-|已停止               |该节点是不可用。|
-|正在添加                |主动正在添加到缩放单位节点。|
-|正在修复             |正在修复节点。|
-|维护           |该节点将暂停，并且没有任何活动的用户工作负荷运行。 |
-|需要修正  |检测到需要的节点要修复错误。|
+|正在运行               |节点都积极参与缩放单元。|
+|已停止               |节点不可用。|
+|正在添加                |正在主动将节点添加到缩放单元。|
+|正在修复             |正在主动修复节点。|
+|维护           |节点已暂停，没有处于运行状态的活动用户工作负荷。 |
+|需要修正  |检测到错误，需要修复节点。|
 
 
 ## <a name="troubleshooting"></a>故障排除
-以下是所示添加节点时的常见问题。 
+下面是添加节点时的常见问题。 
 
-**方案 1:** 添加缩放单位节点操作将失败，但一个或多个节点列出且状态为已停止。  
-- 修正： 使用修复操作修复一个或多个节点。 仅在单个修复操作可以运行一次。
+**场景 1：**“添加缩放单元节点”操作失败，但一个或多个节点在列出时，其状态为“已停止”。  
+- 修正：使用修复操作来修复一个或多个节点。 一次只能运行一个修复操作。
 
-**方案 2:** 已添加一个或多个缩放单位节点，但存储扩展失败。 在此方案中，缩放单位节点对象报告的运行状态，但未启动配置的存储任务。  
-- 修正： 使用特权终结点来查看存储运行状况，通过运行以下 PowerShell cmdlet:
+**场景 2：** 添加了一个或多个缩放单元节点，但存储扩展失败。 在这种情况下，缩放单元节点对象报告的状态为“正在运行”，但“配置存储”任务未启动。  
+- 修正：通过运行以下 PowerShell cmdlet，使用特权终结点来查看存储运行状况：
   ```powershell
      Get-VirtualDisk -CimSession s-cluster | Get-StorageJob
   ```
  
-**方案 3:** 收到警报，指示存储向外缩放作业失败。  
-- 补救措施： 在这种情况下，存储配置任务失败。 此问题，需要联系支持人员。
+**场景 3：** 收到一个警报，指出存储横向扩展作业失败。  
+- 修正：在这种情况下，存储配置任务已失败。 此问题需要联系支持部门。
 
 
 ## <a name="next-steps"></a>后续步骤 

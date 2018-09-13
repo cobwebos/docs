@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: dacfa738a99eb2d580d825957d09b2b1a3111e93
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: b0fe9acc187aab87e8ee0528cf998e2ef923f897
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051385"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44722004"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>在 Azure Stack 中轮换机密
 
@@ -110,6 +110,8 @@ Azure Stack 使用各种机密来维持 Azure Stack 基础结构资源与服务�
     创建的所有 pfx 证书文件使用的密码安全字符串。
 4. 等待机密完成轮换。  
 机密轮换成功完成后，控制台会显示“总体操作状态: 成功”。 
+    > [!note]  
+    > 如果机密轮换失败，请按照错误消息中的说明，然后重新运行开始 secretrotation 与 **-请重新运行**参数。 如果你遇到与支持人员联系重复机密轮换失败。 
 5. 成功完成机密轮换后，请从前期步骤创建的共享中删除证书，并将其存储在安全的备份位置。 
 
 ## <a name="walkthrough-of-secret-rotation"></a>机密轮换的演练
@@ -136,6 +138,10 @@ Remove-PSSession -Session $PEPSession
 
 1. 创建具有[特权终结点](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint)的 PowerShell 会话。
 2. 在特权终结点会话中，不结合任何参数运行 **Start-SecretRotation**。
+3. 等待机密完成轮换。  
+机密轮换成功完成后，控制台会显示“总体操作状态: 成功”。 
+    > [!note]  
+    > 如果机密轮换失败，请按照错误消息中的说明，然后重新运行开始 secretrotation 与 **-重新运行**参数。 如果你遇到与支持人员联系重复机密轮换失败。 
 
 ## <a name="start-secretrotation-reference"></a>Start-SecretRotation 参考
 

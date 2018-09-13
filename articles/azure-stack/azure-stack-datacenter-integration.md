@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 09/12/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 0c43b66a9d6210ea951af3fae5eca8bc6d47c3d9
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 9e5a8cf59d4f1dc47495c5889f8ed4aae64f7ff7
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261202"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720440"
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>有关 Azure Stack 集成系统的数据中心集成注意事项
 如果你对 Azure Stack 集成系统感兴趣，应了解一些有关部署的重要规划注意事项，及系统如何融入数据中心。 本文提供这些注意事项的综合概述，帮助你在 Azure Stack 多节点系统方面做出重要的基础结构决策。 配合 OEM 硬件供应商将 Azure Stack 部署到数据中心时，了解这些注意事项会有所帮助。  
@@ -35,7 +35,7 @@ ms.locfileid: "35261202"
 ## <a name="capacity-planning-considerations"></a>容量规划注意事项
 评估 Azure Stack 解决方案的采购时，必须在硬件配置方面做出选择，因为它直接影响到 Azure Stack 解决方案的总体容量。 考虑因素包括 CPU、内存密度、存储配置和总体解决方案规模（例如服务器的数目）的一般选择。 不同于传统的虚拟化解决方案，简单地评估这些组件并不能很好地确定可用的容量。 第一个原因是 Azure Stack 构建为在解决方案自身内部托管基础结构或管理组件。 第二个原因是解决方案的某些容量保留用于支持复原；更新解决方案的软件时，必须将租户工作负荷的中断降到最低程度。 
 
-[Azure Stack 容量规划程序电子表格](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822)通过两种方法帮助你在规划容量时做出明智的决策：选择硬件产品/服务并尝试符合资源组合，或定义 Azure Stack 要运行的工作负荷，以查看可支持此操作的可用硬件 SKU。 最后，可以参考该电子表格做出 Azure Stack 规划和配置方面的决策。 
+[Azure Stack 容量规划程序电子表格](https://aka.ms/azstackcapacityplanner)通过两种方法帮助你在规划容量时做出明智的决策：选择硬件产品/服务并尝试符合资源组合，或定义 Azure Stack 要运行的工作负荷，以查看可支持此操作的可用硬件 SKU。 最后，可以参考该电子表格做出 Azure Stack 规划和配置方面的决策。 
 
 该电子表格不能取代你自己的调查和分析。  Microsoft 对于该电子表格中提供的信息不做任何明示或暗示的声明或保证。
 
@@ -72,7 +72,7 @@ Azure Stack 是一个密封的系统，从权限和网络角度来看，其基�
 - 对于[连接的部署](azure-stack-connected-deployment.md)，可以选择即用即付或基于容量的许可模式。 即用即付模式需要连接到 Azure 来报告用量，并通过 Azure 商务系统计费。 
 - 如果部署与 Internet [断开连接](azure-stack-disconnected-deployment.md)的 Azure Stack，只能使用基于容量的许可模式。 
 
-有关授权模型的详细信息，请参阅[打包和定价的 Microsoft Azure 堆栈](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf)。
+有关许可模式的详细信息，请参阅[Microsoft Azure Stack 打包和定价](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf)。
 
 
 ## <a name="naming-decisions"></a>命名决策
@@ -89,7 +89,7 @@ Azure Stack 是一个密封的系统，从权限和网络角度来看，其基�
 
 | 名称 | 说明 | 
 | -------- | ------------- | 
-|区域名称 | 第一个 Azure Stack 区域名称。 此名称用作 Azure Stack 管理的公共虚拟 IP 地址 (VIP) 的 FQDN 的一部分。 通常，区域名称是一个物理位置标识符，例如数据中心位置。 | 
+|区域名称 | 第一个 Azure Stack 区域名称。 此名称用作 Azure Stack 管理的公共虚拟 IP 地址 (VIP) 的 FQDN 的一部分。 通常，区域名称是一个物理位置标识符，例如数据中心位置。<br><br>区域名称必须包含字母和数字 0-9 之间。 没有特殊字符如"-"或允许使用"#"，等等。| 
 | 外部域名 | 包含面向外部的 VIP 的终结点的域名系统 (DNS) 区域名称。 在这些公共 VIP 的 FQDN 中使用。 | 
 | 专用（内部）域名 | 在 Azure Stack 中为基础结构管理创建的域（和内部 DNS 区域）的名称。 
 | | |
@@ -135,9 +135,9 @@ Azure Stack 是一个密封的系统，从权限和网络角度来看，其基�
 
 | 场景 | 连接方法 | 优点 | 缺点 | 适用范围 |
 | -- | -- | --| -- | --|
-| 单租户 Azure Stack、Intranet 部署 | 出站 NAT | 提供更快的带宽用于提高传输速度。 易于实施；不需要网关。 | 通信未加密;无隔离或堆栈外部的加密。 | 同等信任所有租户的企业部署。<br><br>与 Azure 之间建立了 Azure ExpressRoute 线路的企业。 |
+| 单租户 Azure Stack、Intranet 部署 | 出站 NAT | 提供更快的带宽用于提高传输速度。 易于实施；不需要网关。 | 不加密流量；堆栈外部无隔离或加密。 | 同等信任所有租户的企业部署。<br><br>与 Azure 之间建立了 Azure ExpressRoute 线路的企业。 |
 | 多租户 Azure Stack、Intranet 部署 | 站点到站点 VPN | 从租户 VNet 到目标的流量是安全的。 | 带宽受限于站点到站点 VPN 隧道。<br><br>需要在虚拟网络中部署网关，在目标网络中部署 VPN 设备。 | 必须避免其他租户访问其部分租户流量的企业部署。 |
-| 单租户 Azure Stack、Internet 部署 | 出站 NAT | 提供更快的带宽用于提高传输速度。 | 通信未加密;无隔离或堆栈外部的加密。 | 托管方案，其中的租户获取自身的 Azure Stack 部署，并与 Azure Stack 环境之间建立专用线路。 例如，ExpressRoute 和多重协议标签交换 (MPLS)。
+| 单租户 Azure Stack、Internet 部署 | 出站 NAT | 提供更快的带宽用于提高传输速度。 | 不加密流量；堆栈外部无隔离或加密。 | 托管方案，其中的租户获取自身的 Azure Stack 部署，并与 Azure Stack 环境之间建立专用线路。 例如，ExpressRoute 和多重协议标签交换 (MPLS)。
 | 多租户 Azure Stack、Internet 部署 | 站点到站点 VPN | 从租户 VNet 到目标的流量是安全的。 | 带宽受限于站点到站点 VPN 隧道。<br><br>需要在虚拟网络中部署网关，在目标网络中部署 VPN 设备。 | 托管方案，其中的提供商需要提供多租户云，使租户彼此不信任且必须加密流量。
 |  |  |  |  |  |
 
@@ -165,7 +165,7 @@ Azure Stack 解决方案随附的硬件生命周期主机是 Azure Stack 外部�
 | Azure Stack 软件 | [适用于 Operations Manager 的 Azure Stack 管理包](https://azure.microsoft.com/blog/management-pack-for-microsoft-azure-stack-now-available/)<br>[Nagios 插件](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details)<br>基于 REST 的 API 调用 | 
 | 物理服务器（通过 IPMI 的 BMC） | OEM 硬件 - Operations Manager 供应商管理包<br>OEM 硬件供应商提供的解决方案<br>硬件供应商 Nagios 插件 | OEM 合作伙伴支持的监视解决方案（随附） | 
 | 网络设备 (SNMP) | Operations Manager 网络设备发现<br>OEM 硬件供应商提供的解决方案<br>Nagios 交换机插件 |
-| 租户订阅运行状况监视 | [System Center Management Pack for Windows Azure](https://www.microsoft.com/download/details.aspx?id=50013) | 
+| 租户订阅运行状况监视 | [适用于 Windows Azure 的 system Center 管理包](https://www.microsoft.com/download/details.aspx?id=50013) | 
 |  |  | 
 
 请注意以下要求：
@@ -183,7 +183,7 @@ Azure Stack 解决方案随附的硬件生命周期主机是 Azure Stack 外部�
 - 在现有的基于 Windows 的文件服务器或第三方设备上需有外部 SMB 文件共享。
 - 应将此同一共享用于网络交换机与硬件生命周期主机的备份。 OEM 硬件供应商会帮助提供这些组件的备份和还原指导，因为这些操作在 Azure Stack 外部进行。 你要负责根据 OEM 供应商的建议来运行备份工作流。
 
-如果发生重大数据丢失，可以使用基础结构备份来重新植入部署数据，例如部署输入和标识符、服务帐户、CA 根证书、联合资源（在断开连接部署中）、计划、产品、订阅、配额、RBAC 策略与角色分配，以及 Key Vault 机密。
+如果发生重大数据丢失，可以使用基础结构备份来重新植入部署数据，例如部署输入和标识符、服务帐户、CA 根证书、联合资源（在断开连接部署中）、计划、套餐、订阅、配额、RBAC 策略与角色分配，以及 Key Vault 机密。
  
 ### <a name="protect-tenant-applications-on-iaas-virtual-machines"></a>保护 IaaS 虚拟机上的租户应用程序
 
@@ -191,10 +191,7 @@ Azure Stack 不备份租户应用程序和数据。 必须针对 Azure Stack 的
 
 若要备份 Linux 或 Windows IaaS 虚拟机，必须使用有权访问来宾操作系统的备份产品来保护文件、文件夹、操作系统状态和应用程序数据。 可以使用 Azure 备份、System Center Data Center Protection Manager 或支持的第三方产品。
 
-在发生灾难时，若要将数据复制到辅助位置并协调应用程序故障转移，可以使用 Azure Site Recovery 或支持的第三方产品。 （在初始版本的集成系统中，Azure Site Recovery 不支持故障回复。 但是，可以通过手动过程实现故障回复。）此外，支持本机复制的应用程序（例如 Microsoft SQL Server）可将数据复制到正在运行应用程序的另一个位置。
-
-> [!IMPORTANT]
-> 初始版本的集成系统支持在 IaaS 虚拟机的来宾级别工作的保护技术。 不能在底层基础结构服务器上安装代理。
+在发生灾难时，若要将数据复制到辅助位置并协调应用程序故障转移，可以使用 Azure Site Recovery 或支持的第三方产品。 此外，支持本机复制，例如 Microsoft SQL Server 的应用程序可以将数据复制到运行该应用程序的另一个位置。
 
 ## <a name="learn-more"></a>了解详细信息
 

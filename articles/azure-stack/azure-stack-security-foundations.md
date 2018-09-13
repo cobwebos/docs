@@ -3,23 +3,22 @@ title: 了解 Azure Stack 的安全控制措施 | Microsoft Docs
 description: 向服务管理员介绍应用于 Azure Stack 的安全控制措施
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: PatAltimore
 manager: femila
 editor: ''
-ms.assetid: cccac19a-e1bf-4e36-8ac8-2228e8487646
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
-ms.author: mabrigg
-ms.openlocfilehash: a3bd314a1df3c45c76b2e3a5acb31c1474d0fdf5
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.date: 09/12/2018
+ms.author: patricka
+ms.openlocfilehash: 048a2e8204b3b8776b5a7e0e425dbc5fdf3d504c
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009474"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719012"
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Azure Stack 基础结构安全局势
 
@@ -27,16 +26,16 @@ ms.locfileid: "39009474"
 
 安全考虑因素与合规性是使用混合云的主要推动因素。 Azure Stack 针对这些方案而设计。因此，在采用 Azure Stack 时，必须知道现有的控制措施。
 
-两个安全局势层在 Azure Stack 中共存。 第一层是 Azure Stack 基础结构，其中包含 Azure 资源管理器最多的硬件组件。 第一层包括管理员门户和租户门户。 第二个层包含的工作负荷创建、 部署和管理的租户。 第二层包括虚拟机和应用服务网站等项。
+两个安全局势层在 Azure Stack 中共存。 第一层是 Azure Stack 基础结构，其中包括 Azure 资源管理器之前的硬件组件。 第一层包括管理员门户和租户门户。 第二层由租户创建、部署和管理的工作负荷组成。 第二层包括虚拟机和应用程序服务网站等项。
 
 ## <a name="security-approach"></a>安全方法
 
-Azure Stack 的安全状况旨在防范新式威胁，并符合主要合规标准的要求。 因此，Azure Stack 基础结构的安全局势构建在两个支柱之上：
+Azure Stack 的安全局势功能旨在防范新式威胁，为符合主要合规标准的要求而构建。 因此，Azure Stack 基础结构的安全局势构建在两个支柱之上：
 
- - **假设性违规**  
+ - **假想入侵**  
 我们从假设系统已被入侵的情况出发，将重点放在检测入侵并限制其影响上，而不只是尽量防止攻击。 
- - **默认情况下强制写入**  
-由于基础结构在定义完善的硬件和软件，Azure Stack 上运行*启用、 配置和验证所有的安全功能*默认情况下。
+ - **默认强化**  
+由于基础结构在妥善定义的硬件和软件中运行，因此 Azure Stack 会在默认情况下启用、配置和验证所有安全功能。
 
 由于 Azure Stack 是以集成系统的形式交付的，因此 Azure Stack 基础结构的安全局势由 Microsoft 定义。 如同在 Azure 中一样，租户需负责定义其租户工作负荷的安全局势。 本文档提供有关 Azure Stack 基础结构安全局势的基础知识。
 
@@ -86,4 +85,6 @@ Azure Stack 基础结构随附多个网络访问控制列表 (ACL) 层。 ACL �
 
 ## <a name="next-steps"></a>后续步骤
 
-- [了解如何轮换 Azure Stack 中的应用机密](azure-stack-rotate-secrets.md)
+- [了解如何在 Azure Stack 中轮换机密](azure-stack-rotate-secrets.md)
+- [PCI DSS 和 Azure Stack 的 CSA CCM 文档](https://servicetrust.microsoft.com/ViewPage/TrustDocuments)
+- [适用于 Azure Stack 的 DoD 和 NIST 文档](https://servicetrust.microsoft.com/ViewPage/Blueprint)

@@ -5,17 +5,17 @@ services: azure-stack
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 07/03/2018
+ms.date: 09/12/2018
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: d3c89e2028986e05d5d3957c9805d22f07a840b3
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: b4c8ff113ff76586cc4a91adfe568b07327a2d94
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298102"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721971"
 ---
 # <a name="azure-stack-ethereum-blockchain-solution-templates"></a>Azure Stack Ethereum 区块链解决方案模板
 
@@ -50,7 +50,7 @@ Ethereum 解决方案模板旨在利用最少的 Azure 和 Ethereum 知识，使
 联盟领导者模板在网络中配置第一个成员的足迹。 
 
 1. [从 GitHub 下载领导者模板](https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain/marketplace/ConsortiumLeader/mainTemplate.json)
-2. 在 Azure Stack 管理门户中，选择“新建”>“模板部署”，以从自定义模板进行部署。
+2. 在 Azure Stack 管理门户中，选择 **+ 创建资源 > 模板部署**从自定义模板进行部署。
 3. 选择“编辑模板”以编辑新的自定义模板。
 4. 在右侧的编辑窗格中，复制并粘贴前面下载的领导者模板 JSON。
     
@@ -105,7 +105,7 @@ Ethereum 解决方案模板旨在利用最少的 Azure 和 Ethereum 知识，使
 ### <a name="joining-consortium-member-deployment"></a>加入联盟成员部署
 
 1. [从 GitHub 下载联盟成员模板](https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain/marketplace/JoiningMember/mainTemplate.json)
-2. 在 Azure Stack 管理门户中，选择“新建”>“模板部署”，以从自定义模板进行部署。
+2. 在 Azure Stack 管理门户中，选择 **+ 创建资源 > 模板部署**从自定义模板进行部署。
 3. 选择“编辑模板”以编辑新的自定义模板。
 4. 在右侧的编辑窗格中，复制并粘贴前面下载的领导者模板 JSON。
 5. 选择“保存”。
@@ -157,7 +157,7 @@ Ethereum 解决方案模板旨在利用最少的 Azure 和 Ethereum 知识，使
 此模板创建从领导者到远程成员的连接。 
 
 1. [从 GitHub 下载连接成员和领导者的模板](https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain/marketplace/Connection/mainTemplate.json)
-2. 在 Azure Stack 管理门户中，选择“新建”>“模板部署”，以从自定义模板进行部署。
+2. 在 Azure Stack 管理门户中，选择 **+ 创建资源 > 模板部署**从自定义模板进行部署。
 3. 选择“编辑模板”以编辑新的自定义模板。
 4. 在右侧的编辑窗格中，复制并粘贴前面下载的领导者模板 JSON。
     

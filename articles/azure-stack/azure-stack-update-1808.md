@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 09/12/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 8574eeb54d3695eff5bca43b24e90e45a36b1a70
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
-ms.translationtype: MT
+ms.openlocfilehash: e6127ce37e2aba4c0c68bcc0a1712501c0b92ff0
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391651"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715087"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 更新
 
@@ -53,6 +53,11 @@ Azure Stack 1808 更新内部版本号是**1.1808.0.97**。
 
 - <!-- 2489570 | IS ASDK--> **对自定义 IPSec/IKE 策略配置的支持**有关[在 Azure Stack 中的 VPN 网关](/azure/azure-stack/azure-stack-vpn-gateway-about-vpn-gateways)。
 
+- <!-- | IS ASDK--> **Kubernetes marketplace 项**。 现在，你可以部署使用的 Kubernetes 群集[Kubernetes Marketplace 项](azure-stack-solution-template-kubernetes-cluster-add.md)。 用户可以选择 Kubernetes 项，并填写要部署到 Azure Stack 的 Kubernetes 群集的几个参数。 模板的目的是使用户在几个步骤中设置开发/测试 Kubernetes 部署更简单。
+
+- <!-- | IS ASDK--> **区块链模板**。 现在可以执行[以太坊联盟部署](azure-stack-ethereum.md)Azure Stack 上。 您可以找到三个新模板中的[Azure Stack 快速启动模板](https://github.com/Azure/AzureStack-QuickStart-Templates)。 它们允许用户部署和配置多成员联盟以太坊网络具有最小的 Azure 和以太坊知识。 模板的目的是使用户在几个步骤中的安装程序开发/测试区块链部署更简单。
+
+
 
  ### <a name="fixed-issues"></a>修复的问题
 - <!-- IS ASDK--> 我们解决了用于创建可用性集在门户中从而产生了一组具有一个容错域和更新域 1 的问题。 
@@ -70,8 +75,6 @@ Azure Stack 1808 更新内部版本号是**1.1808.0.97**。
 - <!-- 1697698  | IS, ASDK --> *快速入门教程*在用户门户仪表板现在链接到联机 Azure Stack 文档中的相关文章。
 
 - <!-- 2515955   | IS ,ASDK--> *所有服务*取代*更多服务*在 Azure Stack 管理员和用户门户。 现在，您可以使用*所有服务*作为要在 Azure Stack 门户中导航的方法与在 Azure 门户中执行相同的替代方法。
-
-- <!-- TBD | IS, ASDK --> **+ 创建资源**取代 **+ 新建**在 Azure Stack 管理员和用户门户。  现在，您可以使用 *+ 创建资源*作为要在 Azure Stack 门户中导航的方法与在 Azure 门户中执行相同的替代方法。 
 
 - <!--  TBD – IS, ASDK --> *基本 A*虚拟机大小的已停用[创建虚拟机规模集](azure-stack-compute-add-scalesets.md)(VMSS) 通过门户。 若要使用此大小创建 VMSS，请使用 PowerShell 或模板。  
 
@@ -107,17 +110,14 @@ Azure Stack 1808 更新内部版本号是**1.1808.0.97**。
 
 - 安装 Azure Stack [1807年更新](azure-stack-update-1807.md)应用 Azure Stack 1808 更新之前。 
 
+- 安装最新发布的 [1805 版更新或修补程序](azure-stack-update-1805.md#post-update-steps)。  
   > [!TIP]  
   > 订阅下述 *RRS* 或 *Atom* 源，了解 Azure Stack 修补程序的最新更新：
   > - RRS： https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss … 
   > - Atom： https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom …
 
 
-- 在开始安装此更新之前，请运行[Test-azurestack](azure-stack-diagnostic-test.md)具有以下参数来验证 Azure Stack 的状态并解决发现的任何操作问题，包括所有警告和失败。 另外，请查看活动警报，并解决所有需要采取措施的警报。  
-
-  ```PowerShell
-  Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary
-  ``` 
+- 在开始安装此更新之前，请运行[Test-azurestack](azure-stack-diagnostic-test.md)验证 Azure Stack 的状态并解决发现的任何操作问题，包括所有警告和失败。 另外，请查看活动警报，并解决所有需要采取措施的警报。
 
 ### <a name="known-issues-with-the-update-process"></a>更新过程的已知问题
 
@@ -140,6 +140,8 @@ Azure Stack 1808 更新内部版本号是**1.1808.0.97**。
 下面是此内部版本的安装后已知问题。
 
 ### <a name="portal"></a>门户
+- <!-- 2967387 – IS, ASDK --> 用于登录到 Azure Stack 管理员或用户门户的帐户将显示为**无法识别的用户**。 发生这种情况是，如果帐户不具有任一*第一个*或*最后一个*指定名称。 若要解决此问题，请编辑用户帐户提供的第一个或最后一个名称。 您必须然后注销，然后重新登录到门户。 
+
 -  <!--  2873083 - IS ASDK --> 当你使用门户创建虚拟机规模集 (VMSS)、*实例大小*下拉列表中不使用 Internet Explorer 时正确加载。 若要解决此问题，请使用门户创建 VMSS 时使用另一个浏览器。  
 
 - <!-- 2931230 – IS  ASDK --> 无法删除加载项计划，即使在用户订阅中删除该计划时都会添加到用户订阅的计划。 该计划将保留，直到引用加载项计划的订阅也会被删除。 
@@ -147,8 +149,6 @@ Azure Stack 1808 更新内部版本号是**1.1808.0.97**。
 - <!--2760466 – IS  ASDK --> 安装运行此版本的新 Azure Stack 环境时，指示“需要激活”的警报可能不显示。 必须先[激活](azure-stack-registration.md)，然后才能使用市场联合。  
 
 - <!-- TBD - IS ASDK --> [版本 1804 中引入](azure-stack-update-1804.md#new-features)的两种管理订阅类型不应使用。 这两种订阅类型为“计量订阅”和“消耗订阅”。 从版本 1804 开始，这些订阅类型会在新的 Azure Stack 环境中显示，但尚不可用。 请继续使用“默认提供程序”订阅类型。
-
-- <!-- TBD - IS --> 无法在管理员门户中查看计算或存储资源。 此问题的原因是更新安装过程中出错，导致系统错误地将更新报告为成功。 如果发生此问题，请联系 Microsoft 客户支持服务部门以寻求帮助。
 
 - <!-- TBD - IS --> 可能会在门户中看到空白的仪表板。 若要恢复仪表板，请选择门户右上角的齿轮图标，然后选择“还原默认设置”。
 

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2018
+ms.date: 09/11/2018
 ms.author: patricka
-ms.openlocfilehash: e61b4457cd88c236145ce7595ee7db4340538465
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 0a10662e359379356ecc8d82af1b7d6331c41a65
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39331128"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720049"
 ---
 # <a name="multi-tenancy-in-azure-stack"></a>Azure Stack 中的多租户
 
@@ -51,7 +51,7 @@ ms.locfileid: "39331128"
 
 在本部分中，将配置 Azure Stack 以允许从 Fabrikam Azure AD 目录租户登录。
 
-加入来宾目录租户 (Fabrikam) 到 Azure Stack 通过配置以接受用户和服务主体从来宾目录租户的 Azure 资源管理器。
+通过将 Azure 资源管理器配置为接受来自来宾目录租户的用户和服务主体，将来宾目录租户 (Fabrikam) 加入到 Azure Stack。
 
 ````PowerShell  
 ## The following Azure Resource Manager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
@@ -98,21 +98,33 @@ Register-AzSWithMyDirectoryTenant `
 ````
 
 > [!IMPORTANT]
-> 如果你的 Azure Stack 管理员安装新的服务或更新以后，可能需要再次运行此脚本。
+> 如果你的 Azure Stack 管理员将来安装新服务或更新，则你可能需要再次运行此脚本。
 >
-> 在任何时间来检查你的目录中的 Azure Stack 应用程序的状态再次运行此脚本。
+> 随时可以再次运行此脚本来检查目录中的 Azure Stack 应用程序的状态。
+
+
+### <a name="activate-the-administrator-and-tenant-portals"></a>激活管理员门户和租户门户
+在完成使用 Azure AD 的部署以后，必须激活 Azure Stack 管理员门户和租户门户。 对于目录的所有用户来说，此激活是指同意为 Azure Stack 门户和 Azure 资源管理器提供正确的权限（已在同意页上列出）。
+
+- 管理员门户中，导航到 https://adminportal.local.azurestack.external/guest/signup，阅读信息，然后单击接受。 接受后即可添加服务管理员，但这些管理员不能也是目录租户管理员。
+- 租户门户中，导航到 https://portal.local.azurestack.external/guest/signup，阅读信息，然后单击接受。 接受后，目录中的用户即可登录到租户门户。 
+ 
+> [!NOTE] 
+> 如果门户未激活，则只有目录管理员可以登录并使用门户。 其他用户在登录时会看到错误，指出管理员尚未授予其他用户权限。 如果管理员原本不属于 Azure Stack 注册到的目录，则必须将 Azure Stack 目录追加到激活 URL。 例如，如果 Azure Stack 注册到 fabrikam.onmicrosoft.com 和管理员用户是admin@contoso.com，导航到 https://portal.local.azurestack.external/guest/signup/fabrikam.onmicrosoft.com来激活门户。
+
+
 
 ### <a name="direct-users-to-sign-in"></a>指导用户登录
 
-现在，你和 Mary 已完成到加入 Mary 目录的步骤，Mary 可以指导 Fabrikam 用户登录。  Fabrikam 用户 （即，具有 fabrikam.onmicrosoft.com 后缀的用户） 登录，请访问https://portal.local.azurestack.external。  
+现在，你和 Mary 已完成到加入 Mary 目录的步骤，Mary 可以指导 Fabrikam 用户登录。  Fabrikam 用户 （即，具有 fabrikam.onmicrosoft.com 后缀的用户） 登录，请访问 https://portal.local.azurestack.external。  
 
-Mary 将指导任何[外部主体](../role-based-access-control/rbac-and-directory-admin-roles.md)Fabrikam 目录 （即，如果没有 fabrikam.onmicrosoft.com 后缀，Fabrikam 目录中的用户） 中使用登录https://portal.local.azurestack.external/fabrikam.onmicrosoft.com。  如果他们不使用此 URL，则将被发送到其默认目录 (Fabrikam)，并收到一个错误，指出其管理员未许可。
+Mary 将指导任何[外部主体](../role-based-access-control/rbac-and-directory-admin-roles.md)Fabrikam 目录 （即，如果没有 fabrikam.onmicrosoft.com 后缀，Fabrikam 目录中的用户） 中使用登录 https://portal.local.azurestack.external/fabrikam.onmicrosoft.com。  如果他们不使用此 URL，则将被发送到其默认目录 (Fabrikam)，并收到一个错误，指出其管理员未许可。
 
 ## <a name="disable-multi-tenancy"></a>禁用多租户
 
-如果你不希望再在 Azure Stack 中的多个租户，可以通过执行以下步骤顺序禁用多租户：
+如果 Azure Stack 中不再需要有多个租户，可以按顺序执行以下步骤来禁用多租户：
 
-1. 以管理员身份的来宾目录 (在此方案中为 Mary)，运行*注销 AzsWithMyDirectoryTenant*。 Cmdlet 卸载所有 Azure Stack 应用程序中的新目录。
+1. 以来宾目录的管理员身份（在此场景中为 Mary）运行 *Unregister-AzsWithMyDirectoryTenant*。 该 cmdlet 从新目录中卸载所有 Azure Stack 应用程序。
 
     ``` PowerShell
     ## The following Azure Resource Manager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
@@ -127,7 +139,7 @@ Mary 将指导任何[外部主体](../role-based-access-control/rbac-and-directo
      -Verbose 
     ```
 
-2. 作为运行 （在此方案中您），Azure Stack 的服务管理员*注销 AzSGuestDirectoryTenant*。 
+2. 以 Azure Stack 的服务管理员身份（在此场景中是你）运行 *Unregister-AzSGuestDirectoryTenant*。 
 
     ``` PowerShell  
     ## The following Azure Resource Manaager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
@@ -149,7 +161,7 @@ Mary 将指导任何[外部主体](../role-based-access-control/rbac-and-directo
     ```
 
     > [!WARNING]
-    > 禁用多租户步骤必须按顺序执行。 步骤 #1 失败，如果第一次完成步骤 #2。
+    > 禁用多租户步骤必须按顺序执行。 如果首先完成步骤 1，则步骤 2 将失败。
 
 ## <a name="next-steps"></a>后续步骤
 

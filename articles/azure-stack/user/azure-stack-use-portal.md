@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/01/2018
+ms.date: 09/12/2018
 ms.author: mabrigg
 ms.reviewer: efemmano
-ms.openlocfilehash: 7ca29ee359349f69c3d5ff21bd9db3f93358206a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 7ccf746cfd9645b63c2810bff83cfb0c4fa55d65
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724306"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44713726"
 ---
 # <a name="use-the-azure-stack-portal"></a>使用 Azure Stack 门户
 
@@ -33,19 +33,19 @@ Azure Stack 操作员（服务提供商或组织中的管理员）将会告知�
 - 对于集成系统，URL 根据操作员所在的区域和外部域名的不同而异，格式为 https://portal.&lt;*region*&gt;.&lt;*FQDN*&gt;。
 - 如果使用的是 Azure Stack 开发工具包，则门户地址为 https://portal.local.azurestack.external。
 
-![Azure 堆栈用户门户的屏幕捕获](media/azure-stack-use-portal/UserPortal.png)
+![Azure Stack 用户门户的屏幕截图](media/azure-stack-use-portal/UserPortal.png)
 
 ## <a name="customize-the-dashboard"></a>自定义仪表板
 
-仪表板包含一组默认磁贴。 你可以选择**编辑仪表板**修改默认的仪表板，或选择**新仪表板**创建自定义仪表板。 通过添加或删除磁贴来轻松自定义仪表板。 例如，若要添加计算磁贴，请选择**新建**。 右键单击**计算**，然后选择**固定到仪表板**。
+仪表板包含一组默认磁贴。 可以选择“编辑仪表板”来修改默认仪表板，或者选择“新建仪表板”来创建自定义仪表板。 通过添加或删除磁贴来轻松自定义仪表板。 例如，若要添加的计算磁贴，请选择 **+ 创建资源**。 右键单击“计算”，然后选择“固定到仪表板”。
 
 ## <a name="create-subscription-and-browse-available-resources"></a>创建订阅和浏览可用资源
 
 如果没有订阅，则首先需要订阅某个套餐。 之后，可以浏览可用的资源。 若要浏览和创建资源，请使用以下任一方法：
 
-- 选择**Marketplace**仪表板磁贴。
-- 上**的所有资源**磁贴中，选择**创建资源**。
-- 在左侧的导航窗格中，选择**新建**。
+- 选择仪表板上的“市场”磁贴。
+- 在“所有资源”磁贴上，选择“创建资源”。
+- 在左侧的导航窗格中，选择 **+ 创建资源**。
 
 ## <a name="learn-how-to-use-available-services"></a>了解如何使用可用服务
 
@@ -53,9 +53,9 @@ Azure Stack 操作员（服务提供商或组织中的管理员）将会告知�
 
 - 你的组织或服务提供商可能提供了其自己的文档，如果他们提供了自定义的服务或应用，则通常是这种情况。
 - 第三方应用提供自身的文档。
-- 为保持服务的 Azure 一致性，我们强烈建议先查看 Azure Stack 文档。 若要访问 Azure 堆栈用户文档，请选择帮助图标，然后选择**帮助 + 支持**。
+- 为保持服务的 Azure 一致性，我们强烈建议先查看 Azure Stack 文档。 若要访问 Azure Stack 用户文档，请选择“帮助”图标，然后选择“帮助 + 支持”。
 
-    ![帮助和支持在 UI 中的选项](media/azure-stack-use-portal/HelpAndSupport.png)
+    ![UI 中“帮助 + 支持”选项](media/azure-stack-use-portal/HelpAndSupport.png)
 
     具体而言，我们建议查看以下入门文章：
 

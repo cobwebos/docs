@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/05/2018
+ms.date: 09/12/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 290b3daf73e323b3f5a7e1ef81299e72bf1c5f1d
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
-ms.translationtype: MT
+ms.openlocfilehash: ddb1fcd91ff0c0018bcab9988a5ab063b882cf36
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024794"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714650"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>将市场项从 Azure 下载到 Azure Stack
 
@@ -66,7 +66,7 @@ Azure Stack 部署必须已建立 Internet 连接，并且[已注册到 Azure](a
 
     下载完成后，可以 Azure Stack 操作员或用户的身份部署新市场项。
 
-5. 若要部署下载的项，请选择“+新建”，在类别中搜索该新市场项。 接下来，选择该项以开始部署过程。 该过程根据市场项的不同而异。 
+5. 若要部署下载的项目，选择 **+ 创建资源**，然后搜索新的 marketplace 项在类别。 接下来，选择该项以开始部署过程。 该过程根据市场项的不同而异。 
 
 ## <a name="disconnected-or-a-partially-connected-scenario"></a>离线场景或部分联网场景
 

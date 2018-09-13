@@ -12,15 +12,15 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 06/08/2018
 ms.author: brenduns
 ms.reviewer: anwestg
-ms.openlocfilehash: 4ee333fcc50937679c4bc25b83c2d6aa389ba194
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 4945ab0b8da961fc5739388d83f7c645f40e510d
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359588"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35998352"
 ---
 # <a name="configure-deployment-sources"></a>配置部署源
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
@@ -49,9 +49,9 @@ Azure Stack 上的应用服务支持从多个源代码管理提供程序执行�
 1. 登录到 GitHub，浏览到 https://www.github.com/settings/developers 并单击“注册新应用程序”。
     ![GitHub - 注册新应用程序][3]
 2. 输入**应用程序名称**，例如：Azure Stack 上的应用服务。
-3. 输入“主页 URL”。 主页 URL 必须是 Azure Stack 门户地址。 例如，https://portal.local.azurestack.external。
+3. 输入“主页 URL”。 主页 URL 必须是 Azure Stack 门户地址。 例如， https://portal.local.azurestack.external。
 4. 输入**应用程序说明**。
-5. 输入“授权回调 URL”。  在默认 Azure 堆栈部署中，该 Url 采用窗体https://portal.local.azurestack.external/TokenAuthorize，如果你使用的运行不同的域替代在域中的查找 local.azurestack.external
+5. 输入“授权回调 URL”。  在默认的 Azure Stack 部署中，URL 采用 https://portal.local.azurestack.external/TokenAuthorize 格式。如果在不同的域下运行，请将 local.azurestack.external 替换为你的域
 6. 单击“注册应用程序”。  此时会出现一个页面，其中列出了应用程序的“客户端 ID”和“客户端机密”。
     ![GitHub - 已完成应用程序注册][5]
 7.  在新的浏览器标签页或窗口中，以服务管理员身份登录到 Azure Stack 管理员门户 (https://adminportal.local.azurestack.external))。
@@ -97,7 +97,7 @@ Azure Stack 上的应用服务支持从多个源代码管理提供程序执行�
 3. 输入新应用程序注册的**名称**，输入“Azure Stack 上的应用服务”，并单击“创建应用程序”
 4. 以下屏幕列出了新应用程序的属性。 记下**应用程序 ID**。
 ![OneDrive 应用程序属性][11]
-5. 在“应用程序机密”下，单击“生成新密码”。 记下**生成的新密码**。 这是应用程序机密，在此阶段单击“确定”后将不可检索。
+5. 在“应用程序密码”下，单击“生成新密码”。 记下**生成的新密码**。 这是应用程序机密，在此阶段单击“确定”后将不可检索。
 6. 在“平台”下，单击“添加平台”，然后选择“Web”。
 7. 输入“重定向 URI”。  在默认的 Azure Stack 部署中，重定向 URI 采用 https://portal.local.azurestack.external/TokenAuthorize 格式。如果在不同的域下运行，请将 azurestack.local 替换为你的域。![OneDrive 应用程序 - 添加 Web 平台][12]
 8. 添加“Microsoft Graph 权限 - 委派权限”

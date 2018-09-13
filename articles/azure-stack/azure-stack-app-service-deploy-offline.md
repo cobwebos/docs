@@ -12,21 +12,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/12/2018
 ms.author: anwestg
-ms.openlocfilehash: 9e36e470c3516c55089ce1e44540b6b1eacbb6b2
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 4b6ad2e237d73d5d8ca414bffc3a679ee552105f
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139392"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718723"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>将应用服务资源提供程序添加到受 AD FS 保护且已断开连接的 Azure Stack 环境
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 > [!IMPORTANT]
-> 适用于 Azure Stack 集成系统的 1807年更新或部署 Azure 应用服务 1.3 之前部署最新的 Azure Stack 开发工具包。
+> 请将 1807 更新应用于 Azure Stack 集成系统，或部署最新的 Azure Stack 开发工具包，然后部署 Azure 应用服务 1.3。
 >
 >
 
@@ -138,7 +138,7 @@ ms.locfileid: "42139392"
     > [!NOTE]
     > 在继续下一步之前，安装程序会尝试测试与 SQL Server 的连接。  但是，如果前面已选择部署到现有虚拟网络，则安装程序可能无法连接到 SQL Server，并显示警告来询问是否继续。  请检查 SQL Server 信息，如果正确，则继续。
     >
-    > 从 Azure Stack 1.3 及更高版本上的 Azure 应用服务，安装程序将检查 SQL Server 已在 SQL Server 级别启用的数据库包含关系。  如果不是这样，系统将提示您出现以下异常：
+    > 从 Azure Stack 1.3 上的 Azure 应用服务开始，安装程序将检查 SQL Server 是否在 SQL Server 级别启用了数据库包含。  如果未启用，则会出现以下异常提示：
     > ```sql
     >    Enable contained database authentication for SQL server by running below command on SQL server (Ctrl+C to copy)
     >    ***********************************************************
@@ -148,7 +148,7 @@ ms.locfileid: "42139392"
     >    GO
     >    ***********************************************************
     > ```
-    > 请参阅[Azure 应用服务在 Azure Stack 1.3 的发行说明](azure-stack-app-service-release-notes-update-three.md)的更多详细信息。
+    > 有关更多详细信息，请参阅 [Azure Stack 1.3 上的 Azure 应用服务的发行说明](azure-stack-app-service-release-notes-update-three.md)。
    
    ![应用服务安装程序][12]
 
@@ -170,7 +170,7 @@ ms.locfileid: "42139392"
     ![应用服务安装程序][14]
 
     > [!NOTE]
-    > **不支持将 Windows Server 2016 Core 平台映像与 Azure Stack 上的 Azure 应用服务配合使用。请不要将评估映像用于生产部署。Azure Stack 上的 azure 应用服务需要 microsoft.net 3.5.1 SP1 已激活用于部署的映像上。 Marketplace 联合 Windows Server 2016 映像没有启用此功能。**
+    > **不支持将 Windows Server 2016 Core 平台映像与 Azure Stack 上的 Azure 应用服务配合使用。请勿将评估映像用于生产部署。Azure Stack上的 Azure 应用服务要求在用于部署的映像上激活 Microsoft.Net 3.5.1 SP1。 通过“市场”发布的 Windows Server 2016 映像未启用此功能。**
 
 14. 在“选择平台映像”框中选择部署型 Windows Server 2016 虚拟机映像，该映像由应用服务云的计算资源提供程序提供。 单击“下一步”。
 
@@ -226,7 +226,7 @@ ms.locfileid: "42139392"
 >
 至于第三个技术预览版，若要创建 Web 应用、API 应用和 Azure Functions 应用，必须使用租户门户并有租户订阅。
 
-1. 在 Azure Stack 租户门户中，单击“新建” > “Web + 移动” > “Web 应用”。
+1. 在 Azure Stack 租户门户中，单击 **+ 创建资源** > **Web + 移动** > **Web 应用**。
 
 2. 在“Web 应用”边栏选项卡上的“Web 应用”框中键入名称。
 

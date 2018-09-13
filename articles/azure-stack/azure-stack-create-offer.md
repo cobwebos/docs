@@ -11,21 +11,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/20/2018
+ms.date: 09/12/2018
 ms.author: brenduns
 ms.reviewer: efemmano
-ms.openlocfilehash: 66a89c3cb14dd642ae993cbf3c45885635f59759
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 7b26afa99e9ab14db83aee5c0487c1c405243962
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42139710"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719760"
 ---
 # <a name="create-an-offer-in-azure-stack"></a>在 Azure Stack 中创建套餐
 
 [套餐](azure-stack-key-features.md)是提供者提供给用户购买或订阅的一个或多个计划的组合。 本文档介绍如何创建包含[创建的计划](azure-stack-create-plan.md)的套餐。 订阅方可以使用此套餐设置虚拟机。
 
-1. 登录到 Azure Stack 管理员门户 (https://adminportal.local.azurestack.external)，选择“新建” > “租户套餐 + 计划” > “套餐”。
+1. 登录到 Azure Stack 管理员门户 (https://adminportal.local.azurestack.external) ，然后选择 **+ 创建资源** > **租户产品/服务 + 计划** > **提供**.
 
    ![创建产品](media/azure-stack-create-offer/image01.png)
   
@@ -50,12 +50,12 @@ ms.locfileid: "42139710"
  
      ![选择状态](media/azure-stack-create-offer/change-stage-1807.png)
 
-     或者，选择**更改状态**，然后选择一种状态。
+     或者，选择“更改状态”，然后选择状态。
 
     ![选择辅助功能状态](media/azure-stack-create-offer/change-stage-select-1807.png)
 
    > [!NOTE]
-   > 还可以使用 PowerShell 来创建默认套餐、计划和配额。 有关详细信息，请参阅[Azure Stack PowerShell 模块 1.4.0](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.4.0)。
+   > 还可以使用 PowerShell 来创建默认套餐、计划和配额。 有关详细信息，请参阅 [Azure Stack PowerShell 模块 1.4.0](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.4.0)。
 
 ## <a name="next-steps"></a>后续步骤
 

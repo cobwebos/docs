@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 09/12/2018
 git ms.author: brenduns
 ms.reviewer: misainat
-ms.openlocfilehash: c1b88518f9e27093ff00ad020e470fa5670dfcd6
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
-ms.translationtype: MT
+ms.openlocfilehash: 1d3e4724820f7109eb9b695fe06d221a2796c26f
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391940"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44722191"
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Azure Stack 开发工具包发行说明  
 本文提供了有关改进、 修复程序和 Azure Stack 开发工具包中的已知的问题的信息。 如果不确定所运行的版本，可以[使用门户检查版本](.\.\azure-stack-updates.md#determine-the-current-version)。
@@ -42,6 +42,10 @@ ms.locfileid: "44391940"
 - <!-- IS, ASDK --> **虚拟机规模集缩放**。  可以使用门户，转到[缩放虚拟机规模集](/azure/azure-stack/azure-stack-compute-add-scalesets.md#scale-a-virtual-machine-scale-set)(VMSS)。   
 
 - <!-- 2489570 | IS ASDK--> **对自定义 IPSec/IKE 策略配置的支持**有关[在 Azure Stack 中的 VPN 网关](/azure/azure-stack/azure-stack-vpn-gateway-about-vpn-gateways)。
+
+- <!-- | IS ASDK--> **Kubernetes marketplace 项**。 现在，你可以部署使用的 Kubernetes 群集[Kubernetes Marketplace 项](/azure/azure-stack/azure-stack-solution-template-kubernetes-cluster-add)。 用户可以选择 Kubernetes 项，并填写要部署到 Azure Stack 的 Kubernetes 群集的几个参数。 模板的目的是使用户在几个步骤中设置开发/测试 Kubernetes 部署更简单。
+
+- <!-- | IS ASDK--> **区块链模板**。 现在可以执行[以太坊联盟部署](/azure/azure-stack/azure-stack-ethereum)Azure Stack 上。 您可以找到三个新模板中的[Azure Stack 快速启动模板](https://github.com/Azure/AzureStack-QuickStart-Templates)。 它们允许用户部署和配置多成员联盟以太坊网络具有最小的 Azure 和以太坊知识。 模板的目的是使用户在几个步骤中的安装程序开发/测试区块链部署更简单。
 
 
 ### <a name="fixed-issues"></a>修复的问题
@@ -68,6 +72,8 @@ ms.locfileid: "44391940"
 ### <a name="known-issues"></a>已知问题
 
 #### <a name="portal"></a>门户  
+- <!-- 2967387 – IS, ASDK --> 用于登录到 Azure Stack 管理员或用户门户的帐户将显示为**无法识别的用户**。 发生这种情况是，如果帐户不具有任一*第一个*或*最后一个*指定名称。 若要解决此问题，请编辑用户帐户提供的第一个或最后一个名称。 您必须然后注销，然后重新登录到门户。 
+
 -  <!--  2873083 - IS ASDK --> 当你使用门户创建虚拟机规模集 (VMSS)、*实例大小*下拉列表中不使用 Internet Explorer 时正确加载。 若要解决此问题，请使用门户创建 VMSS 时使用另一个浏览器。  
 
 - <!-- TBD  ASDK --> 所有 Azure Stack 部署默认时区现在设置为协调世界时 (UTC)。 但是，它会自动恢复到 UTC 为默认值在安装过程中，可以安装 Azure Stack 时选择时区。

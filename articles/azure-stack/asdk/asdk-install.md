@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 74a81901c8ad38a84357a9f3c2e1d948aa81e8bc
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 2bdda273a32167f70633096d463be59884eca033
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37084325"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718213"
 ---
 # <a name="install-the-azure-stack-development-kit-asdk"></a>安装 Azure Stack 开发工具包 (ASDK)
 [准备 ASDK 主机](asdk-prepare-host.md)后，可以使用本文中的以下步骤将 ASDK 部署到 CloudBuilder.vhdx 映像中。
@@ -38,7 +38,7 @@ ms.locfileid: "37084325"
     ![](media/asdk-install/1.PNG) 
 
 3. 在标识提供者的“类型”下拉框中，选择“Azure 云”或“AD FS”。 在“本地管理员密码”下的“密码”框中，键入本地管理员密码（必须与当前配置的本地管理员密码相符），然后单击“下一步”。
-    - **Azure 云**：将 Azure Active Directory (Azure AD) 配置为标识提供者。 若要使用此选项，你需要 internet 连接，Azure AD 的完整名称的窗体中的目录租户*domainname*。 onmicrosoft.com 或 Azure AD 验证自定义域名，并且指定的全局管理员凭据目录。 
+    - **Azure 云**：将 Azure Active Directory (Azure AD) 配置为标识提供者。 若要使用此选项，需要建立 internet 连接，Azure AD 的完整名称的窗体中的目录租户*domainname*。 onmicrosoft.com 或 Azure AD 验证的自定义域名，并为指定的全局管理员凭据目录。 在部署后，不需要进行 Azure Active Directory 全局管理员权限。 但是，某些操作可能需要全局管理员凭据。 例如，资源提供程序安装程序脚本或需要要向其授予权限的新功能。 你可以暂时重新使用该帐户的全局管理员权限或使用单独的全局管理员帐户的所有者*默认提供商订阅*。
     - **AD FS**：将默认的戳记目录服务用作标识提供者。 登录时使用的默认帐户是 azurestackadmin@azurestack.local，要使用的密码是在设置过程中提供的。
 
     ![](media/asdk-install/2.PNG) 

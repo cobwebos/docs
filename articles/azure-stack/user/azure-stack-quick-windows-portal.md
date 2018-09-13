@@ -6,16 +6,16 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 09/05/2018
+ms.date: 09/12/2018
 ms.author: mabrigg
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: 7277aeb97409815e2e218da8f233cd836bccc72b
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: e4e3fdbdd3bc9eb982f993a9be60ba0812c68a9d
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022410"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44713727"
 ---
 # <a name="quickstart-create-a-windows-server-virtual-machine-with-the-azure-stack-portal"></a>快速入门：使用 Azure Stack 门户创建 Windows Server 虚拟机
 
@@ -36,7 +36,7 @@ ms.locfileid: "44022410"
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
 
-1. 单击**新** > **计算** > **Windows Server 2016 数据中心-为您的使用付费** > **创建**. 如果没有看到**Windows Server 2016 Datacenter – 作为您的使用付费**条目，请联系 Azure Stack 操作员。 根据[将 Windows Server 2016 VM 映像添加到 Azure Stack 市场](../azure-stack-add-default-image.md)一文中所述，请求运营商将此映像添加到市场。
+1. 单击 **+ 创建资源** > **计算** > **Windows Server 2016 Datacenter – 作为您的使用付费** >  **创建**。 如果没有看到**Windows Server 2016 Datacenter – 作为您的使用付费**条目，请联系 Azure Stack 操作员。 根据[将 Windows Server 2016 VM 映像添加到 Azure Stack 市场](../azure-stack-add-default-image.md)一文中所述，请求运营商将此映像添加到市场。
 
     ![在门户中创建 Windows 虚拟机的步骤](media/azure-stack-quick-windows-portal/image01.png)
 2. 在“基本信息”下，键入**名称**、**用户名**和**密码**。 选择“订阅”。 创建一个**资源组**或选择现有资源组，选择一个**位置**，然后单击“确定”。

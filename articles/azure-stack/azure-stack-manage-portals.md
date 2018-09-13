@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/12/2018
 ms.author: mabrigg
-ms.openlocfilehash: cea59d061dadfa3e10330cbce7b6005a286524cc
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 975c5c2c5f0da7a6db946c6d1032b485947134d2
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024160"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717688"
 ---
 # <a name="using-the-administrator-portal-in-azure-stack"></a>在 Azure Stack 中使用管理员门户
 
@@ -70,7 +70,7 @@ Azure Stack 操作员可在管理员门户中为用户（包括自己）添加�
 
 ### <a name="customize-the-dashboard"></a>自定义仪表板
 
-仪表板包含一组默认磁贴。 可以选择“编辑仪表板”来修改默认仪表板，或者选择“新建仪表板”来添加自定义仪表板。 可以轻松地将磁贴添加到仪表板中。 例如，可以选择“新建”，右键单击“套餐 + 计划”，然后选择“固定到仪表板”。
+仪表板包含一组默认磁贴。 可以选择“编辑仪表板”来修改默认仪表板，或者选择“新建仪表板”来添加自定义仪表板。 可以轻松地将磁贴添加到仪表板中。 例如，可以选择 **+ 创建资源**，右键单击**产品/服务 + 计划**，然后选择**固定到仪表板**。
 
 ### <a name="quick-access-to-online-documentation"></a>快速访问联机文档
 

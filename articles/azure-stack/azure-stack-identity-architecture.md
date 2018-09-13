@@ -3,7 +3,7 @@ title: Azure Stack 的标识体系结构 | Microsoft Docs
 description: 了解可与 Azure Stack 配合使用的标识体系结构。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: PatAltimore
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/01/2018
-ms.author: brenduns
+ms.author: patricka
 ms.reviewer: ''
-ms.openlocfilehash: bf69c71a8b361e4a147263bc60324573c710818f
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: f2d843b343fa830adf41352ae692ea98bed52ecc
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412690"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44713640"
 ---
 # <a name="identity-architecture-for-azure-stack"></a>Azure Stack 的标识体系结构
 在选择要与 Azure Stack 配合使用的标识提供者之前，请了解 Azure Active Directory (Azure AD) 的选项与 Active Directory 联合身份验证服务 (AD FS) 的选项之间的重要区别。 
@@ -34,7 +34,7 @@ ms.locfileid: "39412690"
 |------------------------------|----------|-------|
 |连接到 Internet     |是       |可选|
 |对多租户的支持     |是       |否      |
-|产品/服务在 Marketplace 中的项 |是       |是的。 需要使用[脱机市场联合](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario)工具。|
+|在市场中提供商品 |是       |是的。 需要使用[脱机市场联合](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario)工具。|
 |对 Active Directory 身份验证库 (ADAL) 的支持 |是 |是|
 |支持 Azure CLI、Visual Studio 和 PowerShell 等工具  |是 |是|
 |通过 Azure 门户创建服务主体     |是 |否|

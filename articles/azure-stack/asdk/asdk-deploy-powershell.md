@@ -1,6 +1,6 @@
 ---
 title: 部署 Azure Stack - PowerShell | Microsoft Docs
-description: 在本文中，你可以从命令行使用 PowerShell 安装 ASDK。
+description: 本文介绍如何使用 PowerShell 从命令行安装 ASDK。
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -13,17 +13,17 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.custom: ''
-ms.date: 06/07/2018
+ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: f0d7daa479f6e6ea345e010962488c1ecad5b7e2
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: c6b2387360973cd4e65b5a1e4ba483abf5ea9070
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34849951"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716020"
 ---
-# <a name="deploy-the-asdk-from-the-command-line"></a>部署从命令行 ASDK
+# <a name="deploy-the-asdk-from-the-command-line"></a>从命令行部署 ASDK
 ASDK 是一个测试和开发环境，可以在部署后用来评估和演示 Azure Stack 功能和服务。 若要启动并运行该工具包，需要准备环境硬件并运行一些脚本（这将需要几个小时）。 之后便可以登录到管理员门户和用户门户，开始使用 Azure Stack。
 
 ## <a name="prerequisites"></a>必备组件 
@@ -52,7 +52,7 @@ ASDK 是一个测试和开发环境，可以在部署后用来评估和演示 Az
 
   1. 以管理员身份启动命令提示符。
   2. 运行 `bcdedit /copy {current} /d "Azure Stack"`
-  3. 副本 (CTRL + C) CLSID 值返回，包括所需{}s。 该值称为 {CLSID}，需要在余下的步骤中粘贴进去（CTRL+V 或右键单击）。
+  3. 复制 (CTRL+C) 返回的 CLSID 值，包括必需的 {}。 该值称为 {CLSID}，需要在余下的步骤中粘贴进去（CTRL+V 或右键单击）。
   4. 运行 `bcdedit /set {CLSID} device vhd=[C:]\CloudBuilder.vhdx` 
   5. 运行 `bcdedit /set {CLSID} osdevice vhd=[C:]\CloudBuilder.vhdx` 
   6. 运行 `bcdedit /set {CLSID} detecthal on` 
@@ -91,6 +91,8 @@ ASDK 是一个测试和开发环境，可以在部署后用来评估和演示 Az
   ```
 
 进行 ASDK 安装后数分钟，系统会提示输入 Azure AD 凭据。 必须提供 Azure AD 租户的全局管理员凭据。 
+
+在部署后，不需要进行 Azure Active Directory 全局管理员权限。 但是，某些操作可能需要全局管理员凭据。 例如，资源提供程序安装程序脚本或需要要向其授予权限的新功能。 你可以暂时重新使用该帐户的全局管理员权限或使用单独的全局管理员帐户的所有者*默认提供商订阅*。
 
 ### <a name="deploy-azure-stack-using-ad-fs"></a>使用 AD FS 部署 Azure Stack 
 若要**使用 AD FS 作为标识提供者**来部署开发工具包，请运行以下 PowerShell 命令（只需添加 -UseADFS 参数）： 
@@ -135,11 +137,11 @@ $aadcred = Get-Credential "<Azure AD global administrator account name>" #Exampl
 ```
 
 ### <a name="asdk-installazurestackpocps1-optional-parameters"></a>ASDK InstallAzureStackPOC.ps1 可选参数
-|参数|必需/可选|描述|
+|参数|必需/可选|说明|
 |-----|-----|-----|
-|AdminPassword|必需|在所有虚拟机（在开发工具包部署过程中创建）上设置本地管理员帐户和所有其他的用户帐户。 此密码必须与当前主机上的本地管理员密码匹配。|
-|InfraAzureDirectoryTenantName|必需|设置租户目录。 使用此参数指定一个具体的目录，使 AAD 帐户有权在其中管理多个目录。 完整的 AAD 目录租户中的格式的名称。 onmicrosoft.com 或 Azure AD 验证自定义域名。|
-|TimeServer|必需|使用此参数指定具体的时间服务器。 必须以有效的时间服务器 IP 地址的形式提供此参数。 服务器名称不受支持。|
+|AdminPassword|需要|在所有虚拟机（在开发工具包部署过程中创建）上设置本地管理员帐户和所有其他的用户帐户。 此密码必须与当前主机上的本地管理员密码匹配。|
+|InfraAzureDirectoryTenantName|需要|设置租户目录。 使用此参数指定一个具体的目录，使 AAD 帐户有权在其中管理多个目录。 AAD Directory 租户中的格式的完整。 onmicrosoft.com 或 Azure AD 验证的自定义域名。|
+|TimeServer|需要|使用此参数指定具体的时间服务器。 必须以有效的时间服务器 IP 地址的形式提供此参数。 服务器名称不受支持。|
 |InfraAzureDirectoryTenantAdminCredential|可选|设置 Azure Active Directory 用户名和密码。 这些 Azure 凭据必须是组织 ID。|
 |InfraAzureEnvironment|可选|选择 Azure 环境，以便将此 Azure Stack 部署注册到其中。 选项包括“公共 Azure”、“Azure - 中国”、“Azure - 美国政府”。|
 |DNSForwarder|可选|在 Azure Stack 部署过程中会创建 DNS 服务器。 若要允许解决方案中的计算机解析标记外部的名称，请提供现有的基础结构 DNS 服务器。 标记内 DNS 服务器将未知的名称解析请求转发至此服务器。|
@@ -160,12 +162,12 @@ $aadcred = Get-Credential "<Azure AD global administrator account name>" #Exampl
 **[ASDK 后部署任务](asdk-post-deploy.md)**
 
 ## <a name="register-with-azure"></a>注册到 Azure
-必须将 Azure Stack 注册到 Azure，以便[将 Azure Marketplace 项下载](asdk-marketplace-item.md)到 Azure Stack。
+必须将 Azure Stack 注册到 Azure，以便[将 Azure 市场项下载](asdk-marketplace-item.md)到 Azure Stack。
 
 **[将 Azure Stack 注册到 Azure](asdk-register.md)**
 
-## <a name="next-steps"></a>接下来的步骤
-祝贺您! 完成这些步骤后，便具备了包含[管理员](https://adminportal.local.azurestack.external)门户和[用户](https://portal.local.azurestack.external)门户的开发工具包环境。 
+## <a name="next-steps"></a>后续步骤
+祝贺你！ 完成这些步骤后，便具备了包含[管理员](https://adminportal.local.azurestack.external)门户和[用户](https://portal.local.azurestack.external)门户的开发工具包环境。 
 
-[ASDK 安装后配置任务](asdk-post-deploy.md)
+[安装 ASDK 后的配置任务](asdk-post-deploy.md)
 

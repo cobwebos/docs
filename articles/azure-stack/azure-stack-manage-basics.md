@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 06/08/2018
 ms.author: mabrigg
-ms.openlocfilehash: 283d1c2a7ef3484cb4fd4d9a53b543a093e9baf8
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 39dc48b1357b07932efbccaf002f54ca58edae24
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850297"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35998347"
 ---
 # <a name="azure-stack-administration-basics"></a>Azure Stack 管理基础知识
 如果不熟悉 Azure Stack 管理，则需要了解几项事情。 本指南概述了 Azure Stack 操作员角色，以及需要告知用户哪些东西才能让他们快速提高工作效率。
@@ -32,7 +32,7 @@ ms.locfileid: "34850297"
  
 ### <a name="development-kit"></a>开发工具包
 
-如果使用 Azure Stack 开发工具包，请参阅[什么是 Azure Stack？](.\asdk\asdk-what-is.md)一文，确保了解该开发工具包的用途和限制。 应该将开发工具包作为“沙盒”使用，在其中对 Azure Stack 进行评估，并在非生产环境中开发和测试应用。 (有关部署信息，请参阅[Azure 堆栈开发工具包部署](.\asdk\asdk-install.md)文章。)
+如果使用 Azure Stack 开发工具包，请参阅[什么是 Azure Stack？](.\asdk\asdk-what-is.md)一文，确保了解该开发工具包的用途和限制。 应该将开发工具包作为“沙盒”使用，在其中对 Azure Stack 进行评估，并在非生产环境中开发和测试应用。 （有关部署信息，请参阅 [Azure Stack 开发工具包部署](.\asdk\asdk-install.md)一文。）
 
 正如 Azure 一样，我们的创新速度很快。 我们会定期发布新版本。 如果开发包正在运行，但需要更新到最新版本，则必须[重新部署 Azure Stack](.\asdk\asdk-redeploy.md)。 不能应用更新包。 此过程需要一定的时间，但好处是可以尝试最新功能。 我们网站上的开发工具包文档反映了最新的发行版。
 
@@ -55,7 +55,7 @@ ms.locfileid: "34850297"
 
 目前，我们支持下述额外的平台即服务 (PaaS) 服务：
 
-- App Service
+- 应用服务
 - Azure Functions
 - SQL 和 MySQL 数据库
 
@@ -85,12 +85,12 @@ Azure Stack 使用 Azure 资源管理器作为其基础的部署、管理和组�
 
 ## <a name="your-typical-responsibilities"></a>典型责任
 
-用户需要使用服务， 从其角度来看，你的主要角色是向他们提供这些服务。 你必须通过创建计划、产品/服务和配额来确定要提供的具体服务并将这些服务提供给用户。 有关详细信息，请参阅[概述：如何在 Azure Stack 中提供服务](azure-stack-offer-services-overview.md)。 
+用户需要使用服务， 从其角度来看，你的主要角色是向他们提供这些服务。 你必须通过创建计划、套餐和配额来确定要提供的具体服务并将这些服务提供给用户。 有关详细信息，请参阅[概述：如何在 Azure Stack 中提供服务](azure-stack-offer-services-overview.md)。 
 
-此外还需向 [Marketplace](azure-stack-marketplace.md) 添加项，例如虚拟机映像。 最简单的方式是[将 Marketplace 项从 Azure 下载到 Azure Stack](azure-stack-download-azure-marketplace-item.md)。
+此外还需向[市场](azure-stack-marketplace.md)添加项，例如虚拟机映像。 最简单的方式是[将市场项从 Azure 下载到 Azure Stack](azure-stack-download-azure-marketplace-item.md)。
 
 > [!NOTE]
-> 如需测试计划、产品和服务，应使用[用户门户](azure-stack-manage-portals.md)而不是管理员门户。
+> 如需测试计划、套餐和服务，应使用[用户门户](azure-stack-manage-portals.md)而不是管理员门户。
 
 除了提供服务，还必须执行操作员的所有常规任务，使 Azure Stack 始终能够启动并运行。 这些任务包括以下内容：
 
@@ -102,7 +102,7 @@ Azure Stack 使用 Azure 资源管理器作为其基础的部署、管理和组�
 
 ## <a name="what-to-tell-your-users"></a>需要告知用户的内容
 
-需要让用户知道如何使用 Azure Stack 中的服务、如何连接到环境，以及如何订阅产品/服务。 除了根据需要提供用户自定义文档，还可以引导用户访问 Azure Stack 用户文档站点。
+需要让用户知道如何使用 Azure Stack 中的服务、如何连接到环境，以及如何订阅套餐。 除了根据需要提供用户自定义文档，还可以引导用户访问 Azure Stack 用户文档站点。
 
 **了解如何使用 Azure Stack 中的服务**
 
@@ -122,9 +122,9 @@ Azure Stack 使用 Azure 资源管理器作为其基础的部署、管理和组�
 
 如果使用 PowerShell，用户可能需要先注册资源提供程序，然后才能使用服务。 （资源提供程序用于管理服务。 例如，网络资源提供程序用于管理虚拟网络、网络接口和负载均衡器之类的资源。）用户必须[安装](user/azure-stack-powershell-install.md) PowerShell，[下载](user/azure-stack-powershell-download.md)更多的模块，然后[配置](user/azure-stack-powershell-configure-user.md) PowerShell（包括资源提供程序注册）。
 
-**订阅产品/服务**
+**订阅套餐**
 
-在访问服务之前，用户必须[订阅产品/服务](azure-stack-subscribe-plan-provision-vm.md)，该产品/服务是你以操作员身份创建的。
+在访问服务之前，用户必须[订阅套餐](azure-stack-subscribe-plan-provision-vm.md)，该产品/服务是你以操作员身份创建的。
 
 ## <a name="where-to-get-support"></a>从何处获取支持
 
@@ -142,7 +142,7 @@ Azure Stack 使用 Azure 资源管理器作为其基础的部署、管理和组�
 
 至于开发工具包，可以在 [Microsoft 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)中提出与支持相关的问题。 单击管理员门户右上角的“帮助和支持”图标（问号），然后单击“新建支持请求”，则会直接打开论坛网站。 我们会定期关注这些论坛。 由于开发工具包是一个评估环境，因此我们不会通过 Microsoft CSS 提供官方支持。
 
-## <a name="next-steps"></a>接下来的步骤
+## <a name="next-steps"></a>后续步骤
 
 - [Azure Stack 中的区域管理](azure-stack-region-management.md)
 

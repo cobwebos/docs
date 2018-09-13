@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/12/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 931c3d8beb9f2ed12228c74f09f84bbdee1798b8
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: b2f4fbca2dcbdd537302746c7b6109e467ea31d7
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42139575"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720219"
 ---
 # <a name="deploy-templates-using-the-azure-stack-portal"></a>使用 Azure Stack 门户部署模板
 
@@ -30,7 +30,7 @@ ms.locfileid: "42139575"
 
 ## <a name="to-deploy-a-template"></a>部署模板
 
-1. 登录到门户中，依次选择“新建”、“自定义”。
+1. 登录到门户，选择 **+ 创建资源**，然后选择**自定义**。
 2. 选择“模板部署”。
 3. 选择“编辑模板”，然后将 JSON 模板代码粘贴到代码窗口中。 选择“保存”。
 4. 选择“编辑参数”，为显示的参数提供值，然后选择“确定”。

@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Active Directory 中添加新的 Azure 堆栈租户帐户 |Microsoft 文档
-description: 部署 Microsoft Azure 堆栈开发工具包之后, 你将需要创建至少一个租户用户帐户，以便您可以查看租户门户。
+title: 在 Azure Active Directory 中添加新的 Azure Stack 租户帐户 | Microsoft Docs
+description: 部署 Microsoft Azure Stack 开发工具包之后, 将需要创建至少一个租户用户帐户，以便浏览租户门户。
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -15,47 +15,47 @@ ms.topic: article
 ms.date: 02/21/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
-ms.openlocfilehash: 590426563936c66b1353f769be138759bb53f58c
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: c312658750c1e9ef024a837ccc16e5cd5be8a5ef
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
-ms.locfileid: "29553199"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35998403"
 ---
-# <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>在 Azure Active Directory 中添加新的 Azure 堆栈租户帐户
-后[部署 Azure 堆栈开发工具包](azure-stack-run-powershell-script.md)，你将需要租户用户帐户，因此你可以浏览租户门户和测试你的产品/服务和计划。 你可以创建的租户帐户通过[使用 Azure 门户](#create-an-azure-stack-tenant-account-using-the-azure-portal)或[使用 PowerShell](#create-an-azure-stack-tenant-account-using-powershell)。
+# <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>在 Azure Active Directory 中添加新的 Azure Stack 租户帐户
+[部署 Azure Stack 开发工具包](azure-stack-run-powershell-script.md)后，需要租户用户帐户，以便浏览租户门户并测试套餐和计划。 可以[使用 Azure 门户](#create-an-azure-stack-tenant-account-using-the-azure-portal)或[使用 PowerShell](#create-an-azure-stack-tenant-account-using-powershell) 创建租户帐户。
 
-## <a name="create-an-azure-stack-tenant-account-using-the-azure-portal"></a>创建 Azure 堆栈租户帐户使用 Azure 门户
-你必须具有一个 Azure 订阅来使用 Azure 门户。
+## <a name="create-an-azure-stack-tenant-account-using-the-azure-portal"></a>使用 Azure 门户创建 Azure Stack 租户帐户
+必须具有 Azure 订阅才能使用 Azure 门户。
 
-1. 登录到[Azure](https://portal.azure.com)。
+1. 登录到 [Azure](https://portal.azure.com)。
 2. 在 Microsoft Azure 左侧的导航栏中，单击**Active Directory**。
-3. 在目录列表中，单击你想要用于 Azure 堆栈的目录或创建一个新。
-4. 在此目录页上，单击**用户**。
+3. 在目录列表中，单击要用于 Azure Stack 的目录或创建一个新目录。
+4. 在此目录页上，单击“用户”。
 5. 单击“添加用户”。
-6. 在**添加用户**向导，在**用户类型**列表中，选择**你的组织中的新用户**。
-7. 在**用户名**框中，键入用户的名称。
+6. 在“添加用户”向导的“用户类型”列表中，选择“组织中的新用户”。
+7. 在“用户名”框中，键入用户的名称。
 8. 在 **@** 框中，选择适当的条目。
 9. 单击“下一步”箭头。
-10. 在**用户配置文件**页的向导中，键入一个**名字**，**姓氏**，和**显示名称**。
-11. 在**角色**列表中，选择**用户**。
+10. 在向导的“用户配置文件”页中，键入**名字**、**姓氏**和**显示名称**。
+11. 在“角色”列表中，选择“用户”。
 12. 单击“下一步”箭头。
-13. 上**获取临时密码**页上，单击**创建**。
+13. 在“获取临时密码”页上，单击“创建”。
 14. 复制**新密码**。
-15. 使用新的帐户登录到 Microsoft Azure。 更改出现提示时的密码。
-16. 登录到`https://portal.local.azurestack.external`与新的帐户，以查看租户门户。
+15. 使用新的帐户登录到 Microsoft Azure。 出现提示时更改密码。
+16. 使用新帐户登录到 `https://portal.local.azurestack.external`，以查看租户门户。
 
-## <a name="create-an-azure-stack-tenant-account-using-powershell"></a>创建使用 PowerShell 对 Azure 堆栈租户帐户
-如果你没有 Azure 订阅，你无法使用 Azure 门户添加租户用户帐户。 在这种情况下，你可以改为使用 Azure PowerShell 的 Active Directory 模块的 Windows。
+## <a name="create-an-azure-stack-tenant-account-using-powershell"></a>使用 PowerShell 创建 Azure Stack 租户帐户
+如果没有 Azure 订阅，则无法使用 Azure 门户添加租户用户帐户。 在这种情况下，可以改用适用于 Windows PowerShell 的 Azure Active Directory 模块。
 
 > [!NOTE]
-> 如果使用 Microsoft 帐户 (Live ID) 来部署 Azure 堆栈开发工具包，你无法使用 AAD PowerShell 创建的租户帐户。 
+> 如果使用 Microsoft 帐户 (Live ID) 部署 Azure Stack 开发工具包，则无法使用 AAD PowerShell 创建租户帐户。 
 > 
 > 
 
-1. 安装[Microsoft Online Services 登录助手面向 IT 专业人员 RTW](https://www.microsoft.com/en-us/download/details.aspx?id=41950)。
-2. 安装[Azure Active Directory 的 Windows PowerShell 模块 （64 位版本）](http://go.microsoft.com/fwlink/p/?linkid=236297)并将其打开。
-3. 运行以下 cmdlet:
+1. 安装[适用于 IT 专业人员 RTW 的 Microsoft Online Services 登录助手](https://www.microsoft.com/en-us/download/details.aspx?id=41950)。
+2. 安装[适用于 Windows PowerShell 的 Azure Active Directory 模块（64 位版本）](http://go.microsoft.com/fwlink/p/?linkid=236297)并将其打开。
+3. 运行以下 cmdlet：
 
     ```powershell
     # Provide the AAD credential you use to deploy Azure Stack Development Kit
@@ -70,6 +70,6 @@ ms.locfileid: "29553199"
 
     ```
 
-1. 使用新的帐户登录到 Microsoft Azure。 更改出现提示时的密码。
-2. 登录到`https://portal.local.azurestack.external`与新的帐户，以查看租户门户。
+1. 使用新的帐户登录到 Microsoft Azure。 出现提示时更改密码。
+2. 使用新帐户登录到 `https://portal.local.azurestack.external`，以查看租户门户。
 

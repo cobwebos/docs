@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Stack 中发布自定义的 Marketplace 项（面向云操作员）| Microsoft Docs
-description: 向 Azure Stack 操作员介绍了解如何在 Azure Stack 中发布自定义的 Marketplace 项。
+title: 在 Azure Stack 中发布自定义的市场项（面向云操作员）| Microsoft Docs
+description: 向 Azure Stack 操作员介绍了解如何在 Azure Stack 中发布自定义的市场项。
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -12,45 +12,45 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/23/2018
+ms.date: 09/12/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 4ea23ed01e6432f24024d7e8cc07c2dfe42ac639
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: c16d8a282d489e7a2b5ee9908f52224aea6118d6
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605563"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44713385"
 ---
-# <a name="the-azure-stack-marketplace-overview"></a>Azure Stack Marketplace 概述
+# <a name="the-azure-stack-marketplace-overview"></a>Azure Stack 市场概述
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-Marketplace 是一组针对 Azure Stack 自定义的服务、应用程序和资源集合。 资源包括网络、虚拟机、存储，等等。 用户可在此位置创建新资源和部署新应用程序。 可将 Marketplace 视为购物目录，用户可在此处浏览并选择所需的商品。 若要使用某个 Marketplace 项，用户必须订阅一个可让他们访问该项的产品/服务。
+市场是一组针对 Azure Stack 自定义的服务、应用程序和资源集合。 资源包括网络、虚拟机、存储，等等。 用户可在此位置创建新资源和部署新应用程序。 可将 Marketplace 视为购物目录，用户可在此处浏览并选择所需的商品。 若要使用某个市场项，用户必须订阅一个可让他们访问该项的产品/服务。
 
-Azure Stack 操作员可以确定要添加（发布）到 Marketplace 的项。 可以发布数据库、应用服务等项。 发布项可让所有用户看到它们。 可以发布创建的自定义项。 还可以从不断扩充的 [Azure Marketplace 项列表](azure-stack-marketplace-azure-items.md)发布项。 将某个项发布到 Marketplace 后，用户在五分钟内就能看到它。
+Azure Stack 操作员可以确定要添加（发布）到市场的项。 可以发布数据库、应用服务等项。 发布项可让所有用户看到它们。 可以发布创建的自定义项。 还可以从不断扩充的 [Azure 市场项列表](azure-stack-marketplace-azure-items.md)发布项。 将某个项发布到市场后，用户在五分钟内就能看到它。
 
 > [!Caution]  
-> 名为图像和 json 文件的所有库项项目都都可以访问无需后使其 Azure 堆栈应用商店中可用的身份验证。 有关更多注意事项发布自定义应用商店项时，请参阅[创建和发布的应用商店项](azure-stack-create-and-publish-marketplace-item.md)。
+> 将所有库项项目（称作映像和 json 文件）发布到 Azure Stack 市场后，无需身份验证即可访问这些项目。 有关发布自定义市场项时的其他注意事项，请参阅[创建和发布市场项](azure-stack-create-and-publish-marketplace-item.md)。
 
-若要打开 Marketplace，请在管理控制台中选择“新建”。
+若要打开 Marketplace，请在管理控制台中选择 **+ 创建资源**。
 
 ![](media/azure-stack-publish-custom-marketplace-item/image1.png)
 
-## <a name="marketplace-items"></a>Marketplace 项
-Azure Stack Marketplace 项是用户可下载并使用的服务、应用程序或资源。 所有用户都可以看到所有 Azure Stack Marketplace 项，包括计划和产品/服务等管理项。 无需订阅即可查看这些项，但对于用户而言，这些项不具有功能性。
+## <a name="marketplace-items"></a>市场项
+Azure Stack 市场项是用户可下载并使用的服务、应用程序或资源。 所有用户都可以看到所有 Azure Stack 市场项，包括计划和套餐等管理项。 无需订阅即可查看这些项，但对于用户而言，这些项不具有功能性。
 
-每个 Marketplace 项具有：
+每个市场项具有：
 
 * 用于资源预配的 Azure 资源管理器模板
 * 元数据，例如字符串、图标和其他营销材料
 * 有关在门户中显示该项的格式信息
 
-发布到 Marketplace 的每个项使用 Azure 库包 (.azpkg) 格式。 请单独地将部署或运行时资源（例如代码、包含软件的 zip 文件或虚拟机映像）添加到 Azure Stack，而不要将其作为 Marketplace 项的一部分添加。 
+发布到市场的每个项使用 Azure 库包 (.azpkg) 格式。 请单独地将部署或运行时资源（例如代码、包含软件的 zip 文件或虚拟机映像）添加到 Azure Stack，而不要将其作为市场项的一部分添加。 
 
 在 1803 和更高版本中，从 Azure 下载映像或上传自定义映像时，Azure Stack 会将映像转换为稀疏文件。 此过程会在添加映像时延长时间，但可节省空间并加速这些映像的部署。 转换仅适用于新映像。  现有映像不会更改。 
 
 ## <a name="next-steps"></a>后续步骤
-[下载 Marketplace 项](azure-stack-download-azure-marketplace-item.md)  
-[创建和发布 Marketplace 项](azure-stack-create-and-publish-marketplace-item.md)
+[下载市场项](azure-stack-download-azure-marketplace-item.md)  
+[创建和发布市场项](azure-stack-create-and-publish-marketplace-item.md)
 
