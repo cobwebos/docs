@@ -34,7 +34,7 @@ items:
   items:
   - name: 升级到高级安全
     href: security-center-onboarding.md
-  - name: 与 WATP（预览版）集成的服务器保护
+  - name: 使用 Windows Defender ATP（预览版）进行服务器保护
     href: security-center-wdatp.md
   - name: 设置安全策略
   - name: 设置安全策略
@@ -150,12 +150,14 @@ items:
       href: security-center-alert-validation.md
     - name: 警报置信度分数
       href: security-center-confidence-score.md
-    - name: 威胁智能地图
+    - name: 安全警报地图和威胁智能
       href: security-center-threat-intel.md
     - name: 调查
       href: security-center-investigation.md
     - name: 管理调查用户数据
       href: security-center-investigation-user-data.md
+    - name: 用于 Azure 资源和用户的 UEBA
+      href: security-center-ueba-mcas.md
   - name: 自动执行安全工作流
     items:
     - name: 逻辑应用演练手册
@@ -210,9 +212,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=security-center
   - name: 区域可用性
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 2d35c25f9afb743b7c0d2d466bc7943d1cab1419
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 12f463c36edef411f42ff17f2126284a0c89983e
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053734"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716886"

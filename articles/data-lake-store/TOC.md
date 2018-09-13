@@ -6,7 +6,7 @@
 ## [Data Lake Storage Gen1 与 Azure 存储的比较](data-lake-store-comparison-with-blob-storage.md)
 ## [使用 Data Lake Storage Gen1 处理大数据](data-lake-store-data-scenarios.md)
 ## [使用 Data Lake Storage Gen1 的开源应用程序](data-lake-store-compatible-oss-other-applications.md)
-## [使用 Data Lake Storage Gen1 的最佳做法](data-lake-store-best-practices.md)
+## [最佳实践](data-lake-store-best-practices.md)
 
 # 入门
 ## [使用门户](data-lake-store-get-started-portal.md)
@@ -26,8 +26,8 @@
 
 ## 保护数据
 ### [安全性概述](data-lake-store-security-overview.md)
-### [Data Lake Storage Gen1 中的访问控制](data-lake-store-access-control.md)
-### [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
+### [访问控制](data-lake-store-access-control.md)
+### [保护存储的数据](data-lake-store-secure-data.md)
 ### [加密](data-lake-store-encryption.md)
 
 ## 使用 Data Lake Storage Gen1 进行身份验证
@@ -55,12 +55,12 @@
 #### [使用 Python](data-lake-store-data-operations-python.md)
 
 ## 性能
-### [Azure Data Lake Storage Gen1 性能优化指南](data-lake-store-performance-tuning-guidance.md)
-### [将 PowerShell 与 Data Lake Storage Gen1 配合使用的性能优化指南](data-lake-store-performance-tuning-powershell.md)
-### [Spark on HDInsight 和 Data Lake Storage Gen1 性能优化指南](data-lake-store-performance-tuning-spark.md)
-### [Hive on HDInsight 和 Data Lake Storage Gen1 性能优化指南](data-lake-store-performance-tuning-hive.md)
-### [MapReduce on HDInsight 和 Data Lake Storage Gen1 性能优化指南](data-lake-store-performance-tuning-mapreduce.md)
-### [Storm on HDInsight 和 Data Lake Storage Gen1 性能优化指南](data-lake-store-performance-tuning-storm.md)
+### [概述](data-lake-store-performance-tuning-guidance.md)
+### [使用 Azure PowerShell](data-lake-store-performance-tuning-powershell.md)
+### [在 HDInsight 上使用 Spark](data-lake-store-performance-tuning-spark.md)
+### [在 HDInsight 上使用 Hive](data-lake-store-performance-tuning-hive.md)
+### [在 HDInsight 上使用](data-lake-store-performance-tuning-mapreduce.md)
+### [在 HDInsight 上使用 Storm](data-lake-store-performance-tuning-storm.md)
 
 ## 与 Azure 服务集成
 ### 与 HDInsight 配合使用
