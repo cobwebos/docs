@@ -115,10 +115,10 @@ SQL数据库自动评估现有 SQL 数据库服务器中数据库的历史资源
 1. 通过如下方式来估算池所需的 eDTU 或 vCore：
 
    对于基于 DTU 的购买模型：MAX(<数据库的总数目 X 每一数据库的平均 DTU 使用率>、<br>
-   < *并发高峰数据库的数目* X *每一数据库的高峰 DTU 使用率* ）
+   <并发高峰数据库的数目** X 每一数据库的高峰 DTU 使用率** ）
 
    对于基于 vCore 的购买模型：MAX(<数据库的总数目 X 每一数据库的平均 vCore 使用率>、<br>
-   <*并发高峰数据库的数目* X *每一数据库的高峰 vCore 使用率*)
+   <并发高峰数据库的数目** X 每一数据库的高峰 vCore 使用率** )
 
 2. 通过将池内所有的数据库所需的字节数相加来估算池所需要的存储空间。 然后，确定提供此存储量的 eDTU 池的大小。
 3. 对于基于 DTU 的购买模型，请取步骤 1 和步骤 2 中 eDTU 估算值中较大的那个。 对于基于 vCore 的购买模型，请取步骤 1 中的 vCore 估算值。
@@ -140,8 +140,7 @@ SQL数据库自动评估现有 SQL 数据库服务器中数据库的历史资源
 
 - **异地还原**：当数据库因其所在的区域发生事故而不可用时，异地还原会提供默认的恢复选项。 请参阅[还原 Azure SQL 数据库或故障转移到辅助数据库](sql-database-disaster-recovery.md)
 
-- 
-  **活动异地复制**：对于具有异地还原无法提供的更强烈的恢复要求的应用程序，请配置[活动异地复制](sql-database-geo-replication-overview.md)。
+- **活动异地复制**：对于具有异地还原无法提供的更强烈的恢复要求的应用程序，请配置[活动异地复制](sql-database-geo-replication-overview.md)。
 
 ## <a name="creating-a-new-sql-database-elastic-pool-using-the-azure-portal"></a>使用 Azure 门户创建新的 SQL 数据库弹性池
 
