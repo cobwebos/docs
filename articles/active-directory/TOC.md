@@ -83,6 +83,7 @@
 
 ## [管理组和成员](fundamentals/active-directory-manage-groups.md)
 ### [管理组](fundamentals/active-directory-groups-create-azure-portal.md)
+### [删除组及其成员](fundamentals/active-directory-groups-delete-group.md)
 ### [管理组设置](fundamentals/active-directory-groups-settings-azure-portal.md)
 ## [管理报表](reports-monitoring/overview-reports.md)
 ### [登录活动](reports-monitoring/concept-sign-ins.md)
@@ -346,6 +347,7 @@
 #### [登录体验](identity-protection/flows.md)
 #### [模拟风险事件](identity-protection/playbook.md)
 #### [取消阻止用户](identity-protection/howto-unblock-user.md)
+#### [检测到会话风险时阻止访问](identity-protection/quickstart-sign-in-risk-policy.md)
 #### [常见问题](identity-protection/faqs.md)
 #### [术语表](identity-protection/glossary.md)
 #### [Microsoft Graph](identity-protection/graph-get-started.md)

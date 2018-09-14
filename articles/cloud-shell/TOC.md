@@ -7,16 +7,19 @@
 # 功能和工具
 ## [功能和工具](features.md)
 
-# 操作说明
+# 教程
+## Ansible
+### [运行 Ansible playbook](/azure/ansible/ansible-run-playbook-in-cloudshell?toc=/azure/cloud-shell/toc.json&bc=/azure/bread/toc.json)
+### [管理 Azure 动态库存](/azure/ansible/ansible-manage-azure-dynamic-inventories?toc=/azure/cloud-shell/toc.json&bc=/azure/bread/toc.json)
+## Terraform
+### [创建执行计划](example-terraform-bash.md)
+
+# 操作指南
 ## [适用于 Windows 用户的 PowerShell Cloud Shell](cloud-shell-windows-users.md)
 ## [在存储中持久保存文件](persisting-shell-storage.md)
 ## [使用窗口](using-the-shell-window.md)
 ## [在 Cloud Shell 中使用 MSI](msi-authorization.md)
 ## [嵌入 Cloud Shell](embed-cloud-shell.md)
-
-# 示例
-## [Bash - 使用 Terraform 创建资源](example-terraform-bash.md)
-## [Bash - 运行 Ansible playbook](../ansible/ansible-run-playbook-in-cloudshell.md)
 
 # [使用 Cloud Shell 编辑器](using-cloud-shell-editor.md)
 

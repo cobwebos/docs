@@ -54,6 +54,19 @@
 ## [Windows/SQL Server SAP CAL 上的 SAP IDES 部署指南](cal-ides-erp6-erp7-sp3-sql.md)
 ## [Azure Linux VM 上的 SAP NetWeaver](suse-quickstart.md)
 ## [在 Azure 上规划和实施 SAP NetWeaver](planning-guide.md)
+## [SAP NetWeaver 部署指南](deployment-guide.md)
+## [适用于 Azure 的 SAP LaMa 连接器](lama-installation.md)
+## 适用于 SAP 工作负荷的 DBMS 部署指南
+### [适用于 SAP 工作负荷的常规 Azure 虚拟机 DBMS 部署](dbms_guide_general.md)
+### [适用于 SAP 工作负荷的 SQL Server Azure 虚拟机 DBMS 部署](dbms_guide_sqlserver.md)
+### [适用于 SAP 工作负荷的 Oracle Azure 虚拟机 DBMS 部署](dbms_guide_oracle.md)
+### [适用于 SAP 工作负荷的 IBM DB2 Azure 虚拟机 DBMS 部署](dbms_guide_ibm.md)
+### [适用于 SAP 工作负荷的 SAP ASE Azure 虚拟机 DBMS 部署](dbms_guide_sapase.md)
+### [Azure 上的 SAP MaxDB、liveCache 和内容服务器部署](dbms_guide_maxdb.md)
+### Azure 虚拟机中的 SAP HANA 可用性
+### [Azure 上的 SAP HANA 可用性概述](sap-hana-availability-overview.md)
+### [一个 Azure 区域内的 Azure 上的 SAP HANA 可用性](sap-hana-availability-one-region.md)
+### [跨 Azure 区域的 Azure 上的 SAP HANA 可用性](sap-hana-availability-across-regions.md)
 ## Windows 和 Linux 上的高可用性 (HA)
 ### [概述](sap-high-availability-guide-start.md)
 ### 高可用性体系结构
@@ -74,21 +87,7 @@
 ### SAP 多 SID
 #### [Windows 以及用于 (A)SCS 实例的共享磁盘](sap-ascs-ha-multi-sid-wsfc-shared-disk.md)
 #### [Windows 以及用于 (A)SCS 实例的 SOFS 文件共享](sap-ascs-ha-multi-sid-wsfc-file-share.md)
-## [SAP NetWeaver 部署指南](deployment-guide.md)
-## 适用于 SAP 工作负荷的 DBMS 部署指南
-### [适用于 SAP 工作负荷的常规 Azure 虚拟机 DBMS 部署](dbms_guide_general.md)
-### [适用于 SAP 工作负荷的 SQL Server Azure 虚拟机 DBMS 部署](dbms_guide_sqlserver.md)
-### [适用于 SAP 工作负荷的 Oracle Azure 虚拟机 DBMS 部署](dbms_guide_oracle.md)
-### [适用于 SAP 工作负荷的 IBM DB2 Azure 虚拟机 DBMS 部署](dbms_guide_ibm.md)
-### [适用于 SAP 工作负荷的 SAP ASE Azure 虚拟机 DBMS 部署](dbms_guide_sapase.md)
-### [Azure 上的 SAP MaxDB、liveCache 和内容服务器部署](dbms_guide_maxdb.md)
-### [Azure 上的 SAP HANA 操作指南](hana-vm-operations.md)
-#### Azure 虚拟机中的 SAP HANA 可用性
-##### [Azure 上的 SAP HANA 可用性概述](sap-hana-availability-overview.md)
-##### [一个 Azure 区域内的 Azure 上的 SAP HANA 可用性](sap-hana-availability-one-region.md)
-##### [跨 Azure 区域的 Azure 上的 SAP HANA 可用性](sap-hana-availability-across-regions.md)
-## [使用 Azure Site Recovery 进行 SAP 灾难恢复](../../../site-recovery/site-recovery-workload.md#protect-sap)
-## [适用于 Azure 的 SAP LaMa 连接器](lama-installation.md)
+##  [使用 Azure Site Recovery 进行 SAP 灾难恢复](../../../site-recovery/site-recovery-workload.md#protect-sap)
 # AAD SAP 标识集成和单一登录
 ## [与 SAP 云集成](../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ## [AAD 与 SAP Cloud Platform Identity Authentication 集成](../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
@@ -97,5 +96,10 @@
 ## [AAD 与 SAP Business ByDesign 集成](../../../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ## [AAD 与 SAP HANA DBMS 集成](../../../active-directory/saas-apps/saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ##[通过 Azure AD 执行的 SAP Fiori Launchpad SAML 单一登录](https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad)
+# 将 Azure 服务集成到 SAP 中
+## [在 Power BI Desktop 中使用 SAP HANA](https://docs.microsoft.com/power-bi/desktop-sap-hana)
+## [DirectQuery 和 SAP HANA](https://docs.microsoft.com/power-bi/desktop-directquery-sap-hana)
+## [在 Power BI Desktop 中使用 SAP BW 连接器](https://docs.microsoft.com/power-bi/desktop-sap-bw-connector)
+## [Azure 数据工厂提供 SAP HANA 和业务数据仓库数据集成](https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration)
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)

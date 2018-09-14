@@ -3,14 +3,14 @@
 
 # 概述
 ## [Data Lake Storage Gen1 概述](data-lake-store-overview.md)
-## [Data Lake Storage Gen1 与 Azure 存储的比较](data-lake-store-comparison-with-blob-storage.md)
-## [使用 Data Lake Storage Gen1 处理大数据](data-lake-store-data-scenarios.md)
-## [使用 Data Lake Storage Gen1 的开源应用程序](data-lake-store-compatible-oss-other-applications.md)
+## [与 Azure 存储进行比较](data-lake-store-comparison-with-blob-storage.md)
+## [处理大数据](data-lake-store-data-scenarios.md)
+## [使用开放源代码应用程序](data-lake-store-compatible-oss-other-applications.md)
 ## [最佳实践](data-lake-store-best-practices.md)
 
 # 入门
-## [使用门户](data-lake-store-get-started-portal.md)
-## [使用 PowerShell](data-lake-store-get-started-powershell.md)
+## [使用 Azure 门户](data-lake-store-get-started-portal.md)
+## [使用 Azure PowerShell](data-lake-store-get-started-powershell.md)
 ## [使用 Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
 
 
