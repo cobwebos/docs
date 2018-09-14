@@ -95,7 +95,7 @@ items:
     - name: 更改名称或徽标
       href: change-name-or-logo-portal.md
     - name: SaaS 应用教程
-      href: ../saas-apps/tutorial-list.md
+      href: /azure/active-directory/saas-apps/tutorial-list?context=azure/active-directory/manage-apps/context/manage-apps-context
   - name: 本地应用集成
     items:
     - name: 启用应用程序代理
@@ -265,7 +265,7 @@ items:
 - name: 资源
   items:
   - name: Azure AD 部署计划
-    href: ../fundamentals/active-directory-deployment-plans.md
+    href: /azure/active-directory/fundamentals/active-directory-deployment-plans?context=azure/active-directory/manage-apps/context/manage-apps-context
   - name: Azure 反馈论坛
     href: https://feedback.azure.com/forums/169401-azure-active-directory
   - name: Azure 路线图
@@ -282,9 +282,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-active-directory
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: de8f961b5f39751aac95c7fcde47a73c848ef96e
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 24452d3c2d5991f9dc81b9d740ec9473e2b8a1e0
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721783"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579882"

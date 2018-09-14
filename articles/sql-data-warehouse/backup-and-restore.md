@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 08/24/2018
+ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e9b5005fad1eeb13314e1fb6a5708bb02b96cbf9
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: bdcc0510503e48caf70f4f0d91d7602d767ca9ab
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248641"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092472"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中的备份和还原
 了解 Azure SQL 数据仓库中备份和还原的工作方式。 使用数据仓库快照可将数据仓库恢复或复制到主要区域中以前的某个还原点。 使用数据仓库异地冗余备份可还原到不同的地理区域。 
@@ -40,19 +40,20 @@ order by run_id desc
 ```
 
 ## <a name="user-defined-restore-points"></a>用户定义的还原点
-使用此功能可以手动触发快照，以便在进行大规模修改之前和之后创建数据仓库的还原点。 此功能确保还原点保持逻辑一致性，可在发生任何工作负荷中断或用户错误时提供额外的数据保护，并加快恢复速度。 用户定义的还原点可用 7 天，7 天后系统会自动将其删除。 无法更改用户定义的还原点的保留期。 无论何时，仅支持 42 个用户定义还原点，因此，在创建另一个还原点之前，必须将其[删除](https://go.microsoft.com/fwlink/?linkid=875299)。 可以触发快照来通过 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaserestorepoint?view=azurermps-6.2.0#examples) 或 Azure 门户创建用户定义的还原点。
+使用此功能可以手动触发快照，以便在进行大规模修改之前和之后创建数据仓库的还原点。 此功能确保还原点保持逻辑一致性，可在发生任何工作负荷中断或用户错误时提供额外的数据保护，并加快恢复速度。 用户定义的还原点可用 7 天，7 天后系统会自动将其删除。 无法更改用户定义的还原点的保留期。 无论在任何时间点，均会保证 **42 个用户定义的还原点**，因此，它们必须在创建另一个还原点之前[删除](https://go.microsoft.com/fwlink/?linkid=875299)。 可以通过 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaserestorepoint?view=azurermps-6.2.0#examples) 或 Azure 门户触发快照来创建用户定义的还原点。
 
 
 > [!NOTE]
 > 如需将还原点保留 7 天以上，请在[此处](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/35114410-user-defined-retention-periods-for-restore-points)为此功能投票。 此外，可以创建用户定义的还原点，然后从新建的还原点还原到新数据仓库。 还原后，数据仓库将会联机，可以无限期将其暂停，以节省计算成本。 暂停的数据库按 Azure 高级存储费率收取存储费用。 如需已还原数据仓库的活动副本，可以执行恢复，只需花费几分钟时间。
 >
 
-### <a name="snapshot-retention-when-a-data-warehouse-is-paused"></a>数据仓库被暂停时的快照保留期
-暂停某个数据仓库后，SQL 数据仓库不会创建快照，也不会使还原点过期。 数据仓库暂停时，还原点不会更改。 还原点保留期取决于数据仓库联机的天数，而不是日历日期。
-
-例如，如果快照的启动时间是 10 月 1 日下午 4 点，而数据仓库在 10 月 3 日下午 4 点暂停，则还原点的保留期最多为 2 天。 当数据仓库重新联机时，还原点已保留了 2 天。 如果数据仓库在 10 月 5 日下午 4 点联机，则还原点已保留 2 天，因此保留期还剩 5 天。
-
-当数据仓库重新联机时，SQL 数据仓库会继续创建新的还原点，并且在还原点中的数据超过 7 天时使还原点过期。
+### <a name="restore-point-retention"></a>还原点保留期
+下面介绍有关还原点保留期的详细信息：
+1. SQL 数据仓库会在达到 7 天保留期**并且**总共至少有 42 个还原点（包括用户定义的还原点和自动还原点）时删除还原点
+2. 数据仓库暂停时不会创建快照
+3. 还原点的存在时长是从创建还原点的时间算起的绝对日历天数（包括数据仓库暂停的时间）
+4. 在任何时间点，数据仓库均保证能够存储最多 42 个用户定义的还原点和 42 个自动还原点，只要这些还原点尚未达到 7 天保留期
+5. 如果创建了快照，然后数据仓库暂停 7 天以上的时间，然后进行了恢复，那么还原点可能持续存在，直到总共有 42 个还原点（包括用户定义的还原点和自动还原点）
 
 ### <a name="snapshot-retention-when-a-data-warehouse-is-dropped"></a>删除数据仓库时的快照保留期
 删除数据仓库时，SQL 数据仓库将创建一个最终快照并保存七天。 可以将数据仓库还原至删除时所创建的最终还原点。 
