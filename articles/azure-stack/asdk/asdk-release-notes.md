@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/12/2018
 git ms.author: brenduns
 ms.reviewer: misainat
-ms.openlocfilehash: 1d3e4724820f7109eb9b695fe06d221a2796c26f
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
-ms.translationtype: HT
+ms.openlocfilehash: 9c9b93b5e7877d853a2f27678af61774171c01cb
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44722191"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543320"
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Azure Stack 开发工具包发行说明  
 本文提供了有关改进、 修复程序和 Azure Stack 开发工具包中的已知的问题的信息。 如果不确定所运行的版本，可以[使用门户检查版本](.\.\azure-stack-updates.md#determine-the-current-version)。
@@ -65,7 +65,7 @@ ms.locfileid: "44722191"
 
 - <!-- 2515955   | IS ,ASDK--> *所有服务*取代*更多服务*在 Azure Stack 管理员和用户门户。 现在，您可以使用*所有服务*作为要在 Azure Stack 门户中导航的方法与在 Azure 门户中执行相同的替代方法。
 
-- <!-- TBD | IS, ASDK --> **+ 创建资源**取代 **+ 新建**在 Azure Stack 管理员和用户门户。  现在，您可以使用 *+ 创建资源*作为要在 Azure Stack 门户中导航的方法与在 Azure 门户中执行相同的替代方法。 
+- <!-- TBD | IS, ASDK --> *+ 创建资源*取代 *+ 新建*在 Azure Stack 管理员和用户门户。  现在，您可以使用 *+ 创建资源*作为要在 Azure Stack 门户中导航的方法与在 Azure 门户中执行相同的替代方法。 
 
 - <!--  TBD – IS, ASDK --> *基本 A*虚拟机大小的已停用[创建虚拟机规模集](.\.\azure-stack-compute-add-scalesets.md)(VMSS) 通过门户。 若要使用此大小创建 VMSS，请使用 PowerShell 或模板。 
 

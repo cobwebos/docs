@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/04/2018
+ms.date: 09/12/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 773acd3a22244403548ef4ce35164291f5c0be7d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: ad40f3efc123d313b2fd759889b0aa2621b3d7aa
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300829"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542493"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>教程：将应用部署到 Azure 和 Azure Stack
 
@@ -81,7 +81,7 @@ ms.locfileid: "44300829"
  * 在 Azure Stack 中创建[计划/套餐](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview)。
  * 在 Azure Stack 中创建[租户订阅](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm)。
  * 在租户订阅中创建 Web 应用。 记下新 Web 应用的 URL，供稍后使用。
- * 租户订阅中部署 Azure DevOps 服务虚拟机。
+ * 部署 Windows Server 2012 虚拟机租户订阅中。 将使用此服务器作为您的生成服务器并运行 Azure DevOps 服务。
 * 提供一个 Windows Server 2016 映像，其中包含用于虚拟机 (VM) 的 .NET 3.5。 将在 Azure Stack 上生成此 VM，作为专用的生成代理。
 
 ### <a name="developer-tool-requirements"></a>开发人员工具要求

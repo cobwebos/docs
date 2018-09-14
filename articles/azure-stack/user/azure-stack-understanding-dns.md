@@ -14,18 +14,18 @@ ms.topic: get-started-article
 ms.date: 05/21/2018
 ms.author: mabrigg
 ms.reviewer: scottnap
-ms.openlocfilehash: 9123160f42adea57c28dff265bd5b5dbbcbb7918
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 100c444fb5b3109c197fff69062586f9facb0932
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724252"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580576"
 ---
 # <a name="introducing-idns-for-azure-stack"></a>适用于 Azure Stack 的 iDNS 简介
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-iDNS 是一种 Azure Stack 网络功能，可用于解析外部 DNS 名称（例如，http://www.bing.com.)），它还允许你注册内部虚拟网络名称。 如此一来，就可按名称（而非 IP 地址）解析同一虚拟网络上的 VM。 使用此方法，不再需要提供自定义 DNS 服务器条目。 有关 DNS 的详细信息，请参阅[Azure DNS 概述](https://docs.microsoft.com/en-us/azure/dns/dns-overview)。
+iDNS 是一种 Azure Stack 网络功能，可用于解析外部 DNS 名称（例如， http://www.bing.com.)），它还允许你注册内部虚拟网络名称。 如此一来，就可按名称（而非 IP 地址）解析同一虚拟网络上的 VM。 使用此方法，不再需要提供自定义 DNS 服务器条目。 有关 DNS 的详细信息，请参阅[Azure DNS 概述](https://docs.microsoft.com/azure/dns/dns-overview)。
 
 ## <a name="what-does-idns-do"></a>iDNS 有什么作用？
 
@@ -45,7 +45,7 @@ iDNS 不允许针对可以从虚拟网络外部解析的名称创建 DNS 记录�
 
 ![DNS 名称标签示例](media/azure-stack-understanding-dns-in-tp2/image3.png)
 
-如上图所示，Azure 将创建一个"A"记录在 DNS 中为在该区域下指定的 DNS 名称标签**westus.cloudapp.azure.com**。 前缀和后缀组合起来构成[完全限定域名](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN)，此域名可以从公共 Internet 上的任何位置解析。
+如上图所示，Azure 将创建一个"A"记录在 DNS 中为该区域下指定的 DNS 名称标签**westus.cloudapp.azure.com**。 前缀和后缀组合起来构成[完全限定域名](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN)，此域名可以从公共 Internet 上的任何位置解析。
 
 Azure Stack 仅支持用于内部名称注册的 iDNS，因此它无法执行以下操作：
 

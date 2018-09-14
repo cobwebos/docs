@@ -1,27 +1,34 @@
 ---
 title: Azure Stack Ethereum 区块链解决方案模板
-description: 使用自定义解决方案模板在 Azure Stack 上部署和配置联盟 Ethereum 区块链网络
+description: 使用自定义解决方案模板来部署和配置 Azure Stack 上的联盟以太坊区块链网络教程
 services: azure-stack
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/12/2018
-ms.topic: article
+ms.date: 09/13/2018
+ms.topic: tutorial
 ms.service: azure-stack
-ms.reviewer: coborn
+ms.reviewer: seyadava
+ms.custom: mvc
 manager: femila
-ms.openlocfilehash: b4c8ff113ff76586cc4a91adfe568b07327a2d94
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: b21a9ca58fc29a3da62ea08e81e628368fe5385f
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721971"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580763"
 ---
-# <a name="azure-stack-ethereum-blockchain-solution-templates"></a>Azure Stack Ethereum 区块链解决方案模板
+# <a name="tutorial-use-the-azure-stack-ethereum-blockchain-solution-template"></a>教程： 使用 Azure Stack 以太坊区块链解决方案模板
 
 Ethereum 解决方案模板旨在利用最少的 Azure 和 Ethereum 知识，使多成员联盟 Ethereum 区块链网络的部署和配置变得更加轻松快捷。
 
 凭借少量的用户输入以及 Azure Stack 租户门户中的一键式部署，每个成员就能预配他们的网络足迹。 每个成员的网络足迹包含的一组负载平衡事务节点与该应用程序或用户可以进行交互以提交事务、 一组记录的事务，到挖掘节点和网络虚拟设备 (NVA)。 后续的连接步骤将连接 NVA 以创建完全配置的多成员区块链网络。
+
+若要设置此功能，需要：
+
+> [!div class="checklist"]
+> * 选择部署体系结构
+> * 部署独立、 联盟领导或联盟成员网络
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -198,5 +205,13 @@ Ethereum 解决方案模板旨在利用最少的 Azure 和 Ethereum 知识，使
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解有关以太坊和 Azure 的详细信息，请参阅[区块链技术和应用程序 |Microsoft Azure](https://azure.microsoft.com/solutions/blockchain/)。
-- 在 Azure 上区块链方案的详细信息，请参阅[以太坊证明工作联盟解决方案模板](../blockchain-workbench/ethereum-deployment-guide.md)。
+本教程介绍了如何：
+
+> [!div class="checklist"]
+> * 选择部署体系结构
+> * 部署独立、 联盟领导或联盟成员网络
+
+若要了解有关以太坊和 Azure 的详细信息，请参阅：
+
+> [!div class="nextstepaction"]
+> [区块链技术和应用程序](https://azure.microsoft.com/solutions/blockchain/)

@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 09/05/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: ba4c53f03350995544eb95917102bd7123a077d2
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 7a5c6875f080655e69f549e45ec474958128754f
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022758"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575807"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>在 Azure Stack 中提供虚拟机映像
 
@@ -75,7 +75,7 @@ ms.locfileid: "44022758"
 ## <a name="add-a-vm-image-to-the-marketplace-by-using-powershell"></a>使用 PowerShell 将 VM 映像添加到市场
 
 > [!Note]  
-> 添加映像时，它仅适用于基于 Azure 资源管理器的模板和 PowerShell 部署。 若要将映像作为市场项提供给用户，请使用[创建和发布市场项](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-and-publish-marketplace-item)一文中的步骤发布市场项
+> 添加映像时，它仅适用于基于 Azure 资源管理器的模板和 PowerShell 部署。 若要将映像作为市场项提供给用户，请使用[创建和发布市场项](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-and-publish-marketplace-item)一文中的步骤发布市场项
 
 1. [安装适用于 Azure Stack 的 PowerShell](azure-stack-powershell-install.md)。  
 
