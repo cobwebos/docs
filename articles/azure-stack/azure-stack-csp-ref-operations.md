@@ -3,7 +3,7 @@ title: 在 Azure Stack 中注册租户以便进行使用情况跟踪 | Microsoft
 description: 详细介绍用于管理租户注册的操作，以及如何在 Azure Stack 中跟踪租户使用情况。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -12,14 +12,14 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: alfredo
-ms.openlocfilehash: ce226bb34c5ff8a7ea7dc44d8428da2bb09e25e5
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 93830933115b19c6dc6b2981dca142f72a133fc0
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382376"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629655"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>在 Azure Stack 中管理租户注册
 

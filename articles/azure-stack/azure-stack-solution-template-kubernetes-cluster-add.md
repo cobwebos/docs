@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/12/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: c9429f5909e5ba3fd66681fa62cf16125922d075
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: ded2aa17fe9b8de2d8c8f662f5d99b1ce33a2b25
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721766"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634194"
 ---
 # <a name="add-a-kubernetes-cluster-to-the-azure-stack-marketplace"></a>将 Kubernetes 群集添加到 Azure Stack 市场
 
@@ -110,7 +110,7 @@ ms.locfileid: "44721766"
 
 1. 打开[管理门户](https://adminportal.local.azurestack.external)。
 
-1. 选择**A; 服务**，然后在**管理**类别中，选择**Marketplace 管理**。
+1. 选择**将服务添加**，然后在**管理**类别中，选择**Marketplace 管理**。
 
 1. 选择“+ 从 Azure 添加”。
 

@@ -3,7 +3,7 @@ title: Azure Stack 中的客户计费和退款 | Microsoft Docs
 description: 了解如何从 Azure Stack 中检索资源使用情况信息。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -12,29 +12,29 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: alfredop
-ms.openlocfilehash: f055837711b52fc32cb387fb86c623d3502f47ab
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: fcfd5d4e9e2f30d769818df29cf8a76bd9113d4f
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090133"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632398"
 ---
 # <a name="usage-and-billing-in-azure-stack"></a>Azure Stack 中的使用情况和计费
 
-此文介绍向 Azure Stack 用户计收资源使用费的方式。 您可以了解如何分析和费用回访问计费信息。
+此文介绍向 Azure Stack 用户计收资源使用费的方式。 可在其中了解如何访问计费信息，以分析费用和申请退款。
 
-Azure Stack 收集，并使用的资源的使用情况数据进行分组。 然后 Azure Stack 将此数据转发到 Azure Commerce。 Azure Commerce 计收 Azure Stack 使用费的方式与计收 Azure 使用费相同。
+Azure Stack 收集已使用资源的使用情况数据并对其进行分组。 然后 Azure Stack 将此数据转发到 Azure Commerce。 Azure Commerce 计收 Azure Stack 使用费的方式与计收 Azure 使用费相同。
 
 此外可以获取使用情况数据和导出到您自己的计费或费用使用计费适配器备份系统或将其导出到 Microsoft Power BI 等的商业智能工具。
 
 
 ## <a name="usage-pipeline"></a>使用情况管道
 
-在 Azure Stack 中的每个资源提供程序将发布每个资源使用情况的使用情况数据。 使用情况服务定期（每小时或每天）聚合使用情况数据并将其存储在使用情况数据库中。 Azure Stack 操作员和用户可以通过 Azure Stack 资源使用情况 API 来访问存储的使用情况数据。 
+Azure Stack 中的每个资源提供程序会根据资源使用情况发布使用情况数据。 使用情况服务定期（每小时或每天）聚合使用情况数据并将其存储在使用情况数据库中。 Azure Stack 操作员和用户可以通过 Azure Stack 资源使用情况 API 来访问存储的使用情况数据。 
 
-如果已[将 Azure Stack 实例注册到 Azure](azure-stack-register.md)，则 Azure Stack 会配置为将使用情况数据发送到 Azure Commerce。 将数据上传到 Azure 后，可以通过计费门户或使用 Azure 资源使用情况 API 访问该数据。 请参阅[用量数据报告](azure-stack-usage-reporting.md)文章，详细了解哪些使用情况数据报告到 Azure。  
+如果已[将 Azure Stack 实例注册到 Azure](azure-stack-register.md)，则 Azure Stack 会配置为将使用情况数据发送到 Azure Commerce。 将数据上传到 Azure 后，可以通过计费门户或使用 Azure 资源使用情况 API 访问该数据。 若要详细了解哪些使用情况数据会报告到 Azure，请参阅[使用情况数据报告](azure-stack-usage-reporting.md)一文。  
 
 下图显示了使用情况管道中的关键组件： 
 
@@ -42,7 +42,7 @@ Azure Stack 收集，并使用的资源的使用情况数据进行分组。 然�
 
 ## <a name="what-usage-information-can-i-find-and-how"></a>可以找到哪些使用情况信息，如何查找？
 
-Azure Stack 资源提供程序 （例如计算、 存储和网络） 生成使用情况数据以小时为间隔为每个订阅。 使用情况数据包含有关所用资源的信息，例如资源名称、所用订阅和所用数量。 若要了解计量 ID 资源，请参阅[使用情况 API 常见问题解答](azure-stack-usage-related-faq.md)一文。
+Azure Stack 资源提供程序（例如计算、存储和网络）每隔一小时为每个订阅生成使用情况数据。 使用情况数据包含有关所用资源的信息，例如资源名称、所用订阅和所用数量。 若要了解计量 ID 资源，请参阅[使用情况 API 常见问题解答](azure-stack-usage-related-faq.md)一文。
 
 在收集使用情况数据后，它将[报告给 Azure](azure-stack-usage-reporting.md)来生成帐单，可以通过 Azure 计费门户查看账单。 
 

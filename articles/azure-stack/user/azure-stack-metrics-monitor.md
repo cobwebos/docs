@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/14/2018
 ms.author: mabrigg
-ms.openlocfilehash: 3d856f4fad845dfdd4d9a30fa176a4c0bfbc875b
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: b6196ec434d00a6fbc6714095fa4182ede98ce91
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024336"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633429"
 ---
 # <a name="how-to-consume-monitoring-data-from-azure-stack"></a>如何使用 Azure Stack 中的监视数据
 
@@ -35,7 +35,7 @@ ms.locfileid: "44024336"
 | 存储度量值 | 度量值 | Azure 存储 | 存储表：<br>存储分析 |
 | 活动日志 | 活动 | 所有 Azure 服务 | REST API：<br>Azure Monitor 事件 API |
 | 计算来宾 OS 日志 (例如，IIS、 ETW、 syslog) | 活动 | Windows 和 Linux 虚拟机 | 存储表或 blob:<br>Windows 或 Linux Azure 诊断 <br>事件中心：<br>Windows Azure 诊断 |
-| 存储日志 | 活动 | Azure 存储 | 存储表：<br>存储分析<br>`Vita: how about hybrid OMS/AppInsights, shall we mention?` |
+| 存储日志 | 活动 | Azure 存储 | 存储表：<br>存储分析 |
 
 ## <a name="next-steps"></a>后续步骤
 

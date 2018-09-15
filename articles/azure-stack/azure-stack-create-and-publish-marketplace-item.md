@@ -3,7 +3,7 @@ title: 在 Azure Stack 中创建和发布市场项 | Microsoft Docs
 description: 在 Azure Stack 中创建和发布市场项。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -12,22 +12,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: da1619c5dc536ee143a8cc5ed17e995bc2d1eab7
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 9e579123124615df83483e244ef11810ca590844
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42139435"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633957"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>创建和发布市场项目
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 ## <a name="create-a-marketplace-item"></a>创建市场项
-1. 
-  [下载](http://www.aka.ms/azurestackmarketplaceitem) Azure Gallery Packager 工具和示例 Azure Stack 市场项。
+1. [下载](http://www.aka.ms/azurestackmarketplaceitem) Azure Gallery Packager 工具和示例 Azure Stack 市场项。
 2. 打开示例市场项并重命名 **SimpleVMTemplate** 文件夹。 （使用与市场项相同的名称，例如 **Contoso.TodoList**。）此文件夹包含：
    
        /Contoso.TodoList/

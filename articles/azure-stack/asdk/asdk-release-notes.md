@@ -3,7 +3,7 @@ title: Microsoft Azure Stack 开发工具包发行说明 |Microsoft Docs
 description: Azure Stack 开发工具包的改进、修复和已知问题。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 ms.assetid: ''
 ms.service: azure-stack
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2018
-git ms.author: brenduns
+git ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: 9c9b93b5e7877d853a2f27678af61774171c01cb
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: ad596e2f63d3ef5fb82fe52699fef3a79e835274
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543320"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634806"
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Azure Stack 开发工具包发行说明  
 本文提供了有关改进、 修复程序和 Azure Stack 开发工具包中的已知的问题的信息。 如果不确定所运行的版本，可以[使用门户检查版本](.\.\azure-stack-updates.md#determine-the-current-version)。

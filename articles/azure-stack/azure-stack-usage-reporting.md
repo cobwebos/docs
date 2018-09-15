@@ -3,7 +3,7 @@ title: 向 Azure 报告 Azure Stack 用量数据 | Microsoft Docs
 description: 了解如何在 Azure Stack 中设置用量数据报告。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -12,14 +12,14 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: alfredop
-ms.openlocfilehash: daaaf6c574c4b169c19ebec42ad68e2d818ca1cb
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 54a81e6c5c6e1fe5c37b985e40174dc369edfe6d
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603696"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630403"
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>向 Azure 报告 Azure Stack 用量数据 
 
@@ -39,11 +39,11 @@ ms.locfileid: "34603696"
 
 若要设置用量数据报告，必须[将 Azure Stack 实例注册到 Azure](azure-stack-register.md)。 在注册过程中，将配置 Azure Stack 的 Azure Bridge 组件，以便将 Azure Stack 连接到 Azure 并发送用量数据。 会将以下用量数据从 Azure Stack 发送到 Azure：
 
-- **计数 ID** – 已耗用的资源的唯一 ID。
-- **数量**– 指定的资源使用量。
-- **位置**– 其中部署当前 Azure 堆栈资源的位置。
-- **资源 URI** – 完全限定的用法报告的资源 URI。
-- **订阅 ID** – Azure 堆栈用户，这就是本地的 （Azure 堆栈） 订阅的订阅 ID。
+- **计量 ID** – 已耗用的资源的唯一 ID。
+- **数量**-资源使用情况的量。
+- **位置**– 部署当前的 Azure Stack 资源的位置。
+- **资源 URI** – 完全限定的资源使用情况报告的 URI。
+- **订阅 ID** – Azure Stack 用户，这就是本地 (Azure Stack) 订阅的订阅 ID。
 - **时间**– 的使用情况数据的开始和结束时间。 在 Azure Stack 中使用这些资源的时间与向商务系统报告用量数据的时间存在一定的延迟。 Azure Stack 每隔 24 小时聚合一次用量数据，而向 Azure 中的商务管道报告用量数据则需要额外的好几个小时。 因此，在午夜之前短暂发生的用量可能要在第二天才显示在 Azure 中。
 
 ## <a name="generate-usage-data-reporting"></a>生成用量数据报告
@@ -59,11 +59,11 @@ ms.locfileid: "34603696"
    ![合作伙伴中心](media/azure-stack-usage-reporting/partner-center.png)
 
 
-## <a name="view-usage--enterprise-agreement-subscriptions"></a>查看使用情况 – 企业协议订阅
+## <a name="view-usage--enterprise-agreement-subscriptions"></a>查看用量-企业协议订阅
 
 如果已使用企业协议订阅注册 Azure Stack，则可以在 [EA 门户](https://ea.azure.com/)中查看用量和费用。 Azure Stack 用量包含在高级下载内容中，Azure 用量包含在 EA 门户的报告部分下。 
 
-## <a name="view-usage--other-subscriptions"></a>查看使用情况 – 其他订阅
+## <a name="view-usage--other-subscriptions"></a>查看用量-其他订阅
 
 如果已使用其他任何订阅类型（例如，即用即付订阅）注册 Azure Stack，则可以在 Azure 帐户中心查看用量和费用。 以 Azure 帐户管理员身份登录到 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)，选择用于注册 Azure Stack 的 Azure 订阅。 可以查看 Azure Stack 用量数据，以及针对使用的每个资源收取的费用，如下图所示：
 
@@ -77,13 +77,13 @@ ms.locfileid: "34603696"
 
 ## <a name="are-users-charged-for-the-infrastructure-vms"></a>使用基础结构 VM 是否需要付费？
 
-不会。 某些 Azure Stack 资源提供程序 VM 的用量数据将报告给 Azure，但这些 VM 以及在部署期间为了启用 Azure Stack 基础结构所创建的 VM 不产生费用。  
+不是。 某些 Azure Stack 资源提供程序 VM 的用量数据将报告给 Azure，但这些 VM 以及在部署期间为了启用 Azure Stack 基础结构所创建的 VM 不产生费用。  
 
 用户只需为租户订阅下运行的 VM 付费。 必须将所有工作负荷部署在租户订阅之下，才符合 Azure Stack 的许可条款。
 
 ## <a name="i-have-a-windows-server-license-i-want-to-use-on-azure-stack-how-do-i-do-it"></a>我有 Windows Server 的许可证，如何在 Azure Stack 上使用它？
 
-使用现有许可证可避免生成用量计量值。 可以根据 [Azure Stack 许可指南](https://go.microsoft.com/fwlink/?LinkId=851536&clcid=0x409)的“在 Azure Stack 中使用现有软件”部分所述，在 Azure Stack 中使用现有的 Windows Server 许可证。 客户需要将其 Windows Server 虚拟机部署中所述[的 Windows Server 许可证的混合权益](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)才能使用其现有的许可证的文章。
+使用现有许可证可避免生成用量计量值。 可以根据 [Azure Stack 许可指南](https://go.microsoft.com/fwlink/?LinkId=851536&clcid=0x409)的“在 Azure Stack 中使用现有软件”部分所述，在 Azure Stack 中使用现有的 Windows Server 许可证。 客户需要根据 [Windows Server 许可证的混合权益](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)一文中所述部署其 Windows Server 虚拟机，才能使用其现有许可证。
 
 ## <a name="which-subscription-is-charged-for-the-resources-consumed"></a>从哪个订阅中收取消耗的资源费用？
 从[将 Azure Stack 注册到 Azure](azure-stack-register.md) 时提供的订阅收费。
@@ -102,7 +102,7 @@ ms.locfileid: "34603696"
 
 ## <a name="why-doesnt-the-usage-reported-in-azure-stack-match-the-report-generated-from-azure-account-center"></a>为何 Azure Stack 中报告的用量与从 Azure 帐户中心生成的报告不匹配？
 
-始终是报告的 Azure 堆栈使用 Api 的使用情况数据和报告的 Azure 帐户中心的使用情况数据之间的延迟。 之所以发生这种延迟，是因为需要将用量数据从 Azure Stack 上传到 Azure 商务系统。 由于这种延迟，在午夜之前短暂发生的用量可能要在第二天才显示在 Azure 中。 如果使用 [Azure Stack 用量 API](azure-stack-provider-resource-api.md) 并将结果与 Azure 计费门户中报告的用量相比较，则可能会看到差异。
+Azure Stack 用量 API 报告用量数据的时间与 Azure 帐户中心报告用量数据的时间始终存在延迟。 之所以发生这种延迟，是因为需要将用量数据从 Azure Stack 上传到 Azure 商务系统。 由于这种延迟，在午夜之前短暂发生的用量可能要在第二天才显示在 Azure 中。 如果使用 [Azure Stack 用量 API](azure-stack-provider-resource-api.md) 并将结果与 Azure 计费门户中报告的用量相比较，则可能会看到差异。
 
 ## <a name="next-steps"></a>后续步骤
 

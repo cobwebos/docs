@@ -3,7 +3,7 @@ title: Azure Stack 1805 更新 | Microsoft Docs
 description: 了解 Azure Stack 集成系统 1805 更新的新增功能，包括已知问题和更新下载位置。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/27/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 4db0ce5e877f3054cc41e8940e8d9e672f7632c6
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 60b4658d18d39797d30055e86cb21689cfb661fa
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43110342"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631646"
 ---
 # <a name="azure-stack-1805-update"></a>Azure Stack 1805 更新
 
@@ -73,7 +73,7 @@ Azure Stack 1805 更新内部版本号为 **1.1805.1.47**。
 
 ### <a name="prerequisites"></a>必备组件
 - 在应用 Azure Stack 1805 更新之前安装 Azure Stack [1804 更新](azure-stack-update-1804.md)。  
-- 安装最新可用[更新或修补程序版本 1804年](azure-stack-update-1804.md#post-update-steps)。   
+- 安装最新可用的 [1804 版更新或修补程序](azure-stack-update-1804.md#post-update-steps)。   
 - 开始安装更新 1805 之前，请先运行 [Test-AzureStack](azure-stack-diagnostic-test.md) 来验证 Azure Stack 的状态，并解决出现的所有操作问题。 另外，请查看活动警报，并解决所有需要采取措施的警报。 
 
 ### <a name="known-issues-with-the-update-process"></a>更新过程的已知问题   
@@ -93,7 +93,7 @@ Azure Stack 1805 更新内部版本号为 **1.1805.1.47**。
 ### <a name="portal"></a>门户  
 - <!-- 2931230 – IS  ASDK --> 无法删除加载项计划，即使在用户订阅中删除该计划时都会添加到用户订阅的计划。 该计划将保留，直到引用加载项计划的订阅也会被删除。 
 
-- <!-- TBD - IS ASDK --> 不能将驱动程序更新应用与此版本的 Azure Stack 使用 OEM 扩展包。  没有针对此问题的解决方法。
+- <!-- TBD - IS ASDK --> 不能通过将 OEM 扩展包用于此版本的 Azure Stack 来应用驱动程序更新。  对于此问题，目前没有解决方法。
 
 - <!-- 2551834 - IS, ASDK --> 在管理员门户或用户门户中选择存储帐户的“概述”时，“概要”窗格中的信息不会显示。  “概要”窗格显示有关帐户的信息，例如其资源组、位置和订阅 ID。  可以访问“概述”中的其他选项，例如“服务”和“监视”，以及“在资源管理器中打开”或“删除存储帐户”。 
 

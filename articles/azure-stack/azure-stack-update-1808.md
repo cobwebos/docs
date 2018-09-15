@@ -3,7 +3,7 @@ title: Azure Stack 1808 更新 |Microsoft Docs
 description: 了解什么是 1808年更新中的新的 Azure Stack 集成系统，包括已知的问题和下载更新的位置。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: cb8f88721495376ba1bf31ac5781e4037cc3d16a
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 921e9df11cd79e9d2558d9ca6a490a8da064deb8
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544254"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630335"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 更新
 
