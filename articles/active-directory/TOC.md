@@ -323,37 +323,8 @@
 
 ### [配置令牌生存期](active-directory-configurable-token-lifetimes.md)
 
-## 访问评审
-### [访问评审概述](active-directory-azure-ad-controls-access-reviews-overview.md)
-### [完成访问评审](active-directory-azure-ad-controls-complete-access-review.md)
-### [创建访问评审](active-directory-azure-ad-controls-create-access-review.md)
-### [如何执行访问审阅](active-directory-azure-ad-controls-perform-access-review.md)
-### [如何评审访问权限](active-directory-azure-ad-controls-how-to-review-your-access.md)
-### [使用访问评审的来宾访问](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)
-### [通过评审管理用于访问](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)
-### [管理计划和控件](active-directory-azure-ad-controls-manage-programs-controls.md)
-### [检索访问评审结果](active-directory-azure-ad-controls-retrieve-access-review.md)
-
-## [使用条款](active-directory-tou.md)
-
 ## 保护标识
 
-### Azure AD Identity Protection
-#### [概述](identity-protection/overview.md)
-#### [启用](identity-protection/enable.md)
-#### [检测漏洞](identity-protection/vulnerabilities.md)
-#### [风险事件](active-directory-identity-protection-risk-events.md)
-#### [通知](identity-protection/notifications.md)
-#### [登录体验](identity-protection/flows.md)
-#### [模拟风险事件](identity-protection/playbook.md)
-#### [取消阻止用户](identity-protection/howto-unblock-user.md)
-#### [配置多重身份验证注册策略](identity-protection/howto-mfa-policy.md)
-#### [配置登录风险策略](identity-protection/howto-sign-in-risk-policy.md)
-#### [配置用户风险策略](identity-protection/howto-user-risk-policy.md)
-#### [检测到会话风险时阻止访问](identity-protection/quickstart-sign-in-risk-policy.md)
-#### [常见问题](identity-protection/faqs.md)
-#### [术语表](identity-protection/glossary.md)
-#### [Microsoft Graph](identity-protection/graph-get-started.md)
 ### [Privileged Identity Management](privileged-identity-management/pim-configure.md?toc=%2fazure%2factive-directory%2ftoc.json)
 
 ## [在 Azure 中部署 AD FS](active-directory-aadconnect-azure-adfs.md)
