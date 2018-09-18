@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 09/17/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: c55667e61e35186f63f49082db0c3adadd66ff68
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: b46e365ea3903a8f2c805717df13d361c823148d
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45633375"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985590"
 ---
 # <a name="azure-stack-1807-update"></a>Azure Stack 1807 更新
 
@@ -172,6 +172,9 @@ Azure Stack 使用 Windows Server 2016 的 Server Core 安装来托管重要基�
 下面是此内部版本的安装后已知问题。
 
 ### <a name="portal"></a>门户
+
+- 能够[从下拉列表中打开新的支持请求](azure-stack-manage-portals.md#quick-access-to-help-and-support)内管理员门户不可用。 相反，对于 Azure Stack 集成的系统，使用以下链接： [ https://aka.ms/newsupportrequest ](https://aka.ms/newsupportrequest)。
+
 - <!-- 2931230 – IS  ASDK --> 无法删除加载项计划，即使在用户订阅中删除该计划时都会添加到用户订阅的计划。 该计划将保留，直到引用加载项计划的订阅也会被删除。 
 
 - <!--2760466 – IS  ASDK --> 安装运行此版本的新 Azure Stack 环境时，指示“需要激活”的警报可能不显示。 必须先[激活](azure-stack-registration.md)，然后才能使用市场联合。  

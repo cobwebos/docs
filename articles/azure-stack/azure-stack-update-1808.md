@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 09/17/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 921e9df11cd79e9d2558d9ca6a490a8da064deb8
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 877ea4c143d74414c3d733c446da57060322b11d
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630335"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982072"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 更新
 
@@ -57,7 +57,7 @@ Azure Stack 1808 更新内部版本号是**1.1808.0.97**。
 
 - <!-- | IS ASDK--> **区块链模板**。 现在可以执行[以太坊联盟部署](azure-stack-ethereum.md)Azure Stack 上。 您可以找到三个新模板中的[Azure Stack 快速启动模板](https://github.com/Azure/AzureStack-QuickStart-Templates)。 它们允许用户部署和配置多成员联盟以太坊网络具有最小的 Azure 和以太坊知识。 模板的目的是使用户在几个步骤中的安装程序开发/测试区块链部署更简单。
 
-
+- <!-- | IS ASDK--> **API 版本配置文件 2017年-03-09-配置文件已更新为 2018年-03-01-混合**。 API 配置文件指定 Azure 资源提供程序和 Azure REST 终结点的 API 版本。 有关配置文件的详细信息，请参阅[在 Azure Stack 中的管理 API 版本配置文件](/azure/azure-stack/user/azure-stack-version-profiles)。
 
  ### <a name="fixed-issues"></a>修复的问题
 - <!-- IS ASDK--> 我们解决了用于创建可用性集在门户中从而产生了一组具有一个容错域和更新域 1 的问题。 
@@ -142,6 +142,17 @@ Azure Stack 1808 更新内部版本号是**1.1808.0.97**。
 下面是此内部版本的安装后已知问题。
 
 ### <a name="portal"></a>门户
+
+- <!-- TBD - IS ASDK --> 可能会在门户中看到空白的仪表板。 若要恢复仪表板，单击**编辑仪表板**，然后右键单击并选择**重置为默认状态**。
+
+- <!-- 2930718 - IS ASDK --> 在管理员门户中，访问任何用户订阅的详细信息后关闭该边栏选项卡，并单击时**最近**，未显示用户订阅名称。
+
+- <!-- 3060156 - IS ASDK --> 在管理员和用户门户，单击门户设置并选择**删除所有设置和专用仪表板**未按预期运行。 显示错误通知。 
+
+- <!-- 2930799 - IS ASDK --> 管理员和用户门户网站中下**所有服务**，该资产**DDoS 防护计划**错误地列出。 不在 Azure Stack 中实际可用。 如果您尝试创建它，被显示错误，指出在门户中无法创建 marketplace 项。 
+
+- <!-- 2930820 - IS ASDK --> 门户管理员和用户门户，如果搜索"Docker"，返回此项不正确。 不在 Azure Stack 中实际可用。 如果尝试创建它，会显示一个错误指示的边栏选项卡。 
+
 - <!-- 2967387 – IS, ASDK --> 用于登录到 Azure Stack 管理员或用户门户的帐户将显示为**无法识别的用户**。 发生这种情况是，如果帐户不具有任一*第一个*或*最后一个*指定名称。 若要解决此问题，请编辑用户帐户提供的第一个或最后一个名称。 您必须然后注销，然后重新登录到门户。 
 
 -  <!--  2873083 - IS ASDK --> 当你使用门户创建虚拟机规模集 (VMSS)、*实例大小*下拉列表中不使用 Internet Explorer 时正确加载。 若要解决此问题，请使用门户创建 VMSS 时使用另一个浏览器。  
@@ -151,8 +162,6 @@ Azure Stack 1808 更新内部版本号是**1.1808.0.97**。
 - <!--2760466 – IS  ASDK --> 安装运行此版本的新 Azure Stack 环境时，指示“需要激活”的警报可能不显示。 必须先[激活](azure-stack-registration.md)，然后才能使用市场联合。  
 
 - <!-- TBD - IS ASDK --> [版本 1804 中引入](azure-stack-update-1804.md#new-features)的两种管理订阅类型不应使用。 这两种订阅类型为“计量订阅”和“消耗订阅”。 从版本 1804 开始，这些订阅类型会在新的 Azure Stack 环境中显示，但尚不可用。 请继续使用“默认提供程序”订阅类型。
-
-- <!-- TBD - IS --> 可能会在门户中看到空白的仪表板。 若要恢复仪表板，请选择门户右上角的齿轮图标，然后选择“还原默认设置”。
 
 - <!-- TBD - IS ASDK --> 删除用户订阅会形成孤立的资源。 解决方法是先删除用户资源或整个资源组，然后再删除用户订阅。
 

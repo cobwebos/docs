@@ -3,7 +3,7 @@ title: Azure Stack 添加缩放节点 |Microsoft Docs
 description: 在 Azure Stack 中将节点添加到缩放单元。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
-ms.author: brenduns
+ms.date: 09/17/2018
+ms.author: jeffgilb
 ms.reviewer: thoroet
-ms.openlocfilehash: 0899b1784c796e5f6265dda842ca8955615a1584
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 3ce74cdb610f2902133459b913f53bb7809cb4b7
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718081"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982991"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>在 Azure Stack 中添加更多的缩放单元节点
 
@@ -142,4 +142,4 @@ Azure Stack 操作员可以通过添加更多的物理计算机来提高现有�
 
 
 ## <a name="next-steps"></a>后续步骤 
-查看[节点操作](azure-stack-node-actions.md) 
+[添加公共 IP 地址](azure-stack-add-ips.md) 

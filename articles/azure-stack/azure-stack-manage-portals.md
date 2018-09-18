@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: mabrigg
-ms.openlocfilehash: 975c5c2c5f0da7a6db946c6d1032b485947134d2
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 058e1f9abbf094fb49a21191f60195df53615451
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717688"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985288"
 ---
 # <a name="using-the-administrator-portal-in-azure-stack"></a>在 Azure Stack 中使用管理员门户
 
@@ -71,6 +71,8 @@ Azure Stack 操作员可在管理员门户中为用户（包括自己）添加�
 ### <a name="customize-the-dashboard"></a>自定义仪表板
 
 仪表板包含一组默认磁贴。 可以选择“编辑仪表板”来修改默认仪表板，或者选择“新建仪表板”来添加自定义仪表板。 可以轻松地将磁贴添加到仪表板中。 例如，可以选择 **+ 创建资源**，右键单击**产品/服务 + 计划**，然后选择**固定到仪表板**。
+
+有时，可能会看到在门户中的空白仪表板。 若要恢复仪表板，单击**编辑仪表板**，然后右键单击并选择**重置为默认状态**。
 
 ### <a name="quick-access-to-online-documentation"></a>快速访问联机文档
 

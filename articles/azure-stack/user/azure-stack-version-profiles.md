@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/17/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: db60aaacfb2ba60dbe73663cb415e2a3baea5400
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 270587f484216d130848ee3c7bdc8ae1c1df0afc
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745793"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982111"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>管理 Azure Stack 中的 API 版本配置文件
 
@@ -46,7 +46,7 @@ API 配置文件指定 Azure 资源提供程序和 Azure REST 终结点的 API �
     每两年发布一次，此版本注重于跨多个云的一致性和稳定性。 此配置文件以实现最佳 Azure Stack 兼容性为目标。
     - **yyyy-mm-dd-profile** 介于最佳稳定性与最新功能之间。
 
-### <a name="azure-api-profiles-and-azure-stack-compatibility"></a>Azure API 配置文件和 Azure Stack 兼容性
+## <a name="azure-api-profiles-and-azure-stack-compatibility"></a>Azure API 配置文件和 Azure Stack 兼容性
 
 最新 Azure API 配置文件与 Azure Stack 不兼容。 可以使用以下命名约定来标识要将哪些配置文件用于 Azure Stack 解决方案。
 
