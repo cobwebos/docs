@@ -12,7 +12,6 @@
 
 
 # 入门
-## [Azure AD 入门](fundamentals/get-started-azure-ad.md)
 ## [注册 Azure AD Premium](fundamentals/active-directory-get-started-premium.md)
 ## [添加自定义域名](fundamentals/add-custom-domain.md)
 ## [配置公司品牌](fundamentals/customize-branding.md)
@@ -20,6 +19,7 @@
 ## [将许可证分配给用户](fundamentals/license-users-groups.md)
 ## [配置自助服务密码重置](authentication/quickstart-sspr.md)
 ## [在 Azure AD 中添加组织的隐私信息](active-directory-properties-area.md)
+## [访问 Azure Active Directory 以创建新租户](fundamentals/active-directory-access-create-new-tenant.md)
 
 
 # 如何
@@ -91,11 +91,13 @@
 ### [有风险的用户](reports-monitoring/concept-user-at-risk.md)
 ### [有风险的登录](reports-monitoring/concept-risky-sign-ins.md)
 ### [风险事件](reports-monitoring/concept-risk-events.md)
-### [使用 Azure Monitor 监视日志](reports-monitoring/overview-activity-logs-in-azure-monitor.md)
+### [使用 Azure Monitor 监视日志](reports-monitoring/concept-activity-logs-in-azure-monitor.md)
 ### [常见问题](reports-monitoring/reports-faq.md)
 
 ### 任务
-#### [配置命名位置](active-directory-named-locations.md)
+#### [下载登录报表](reports-monitoring/quickstart-download-sign-in-report.md)
+#### [下载审核报表](reports-monitoring/quickstart-download-audit-report.md)
+#### [配置命名位置](reports-monitoring/quickstart-configure-named-locations.md)
 #### [查找活动报表](reports-monitoring/howto-find-activity-reports.md)
 #### [使用 Azure AD Power BI 内容包](reports-monitoring/howto-power-bi-content-pack.md)
 #### [修复已标记为存在风险的用户](reports-monitoring/howto-remediate-users-flagged-for-risk.md)

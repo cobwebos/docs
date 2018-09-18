@@ -652,6 +652,12 @@ items:
     - name: 防火墙规则
       href: /azure/templates/Microsoft.DBforMySQL/servers/firewallRules
       maintainContext: true
+    - name: 安全警报策略
+      href: /azure/templates/Microsoft.DBforMySQL/servers/securityAlertPolicies
+      maintainContext: true
+    - name: 虚拟网络规则
+      href: /azure/templates/Microsoft.DBforMySQL/servers/virtualNetworkRules
+      maintainContext: true
     maintainContext: true
 - name: 网络
   items:
@@ -661,8 +667,14 @@ items:
   - name: 应用程序安全组
     href: /azure/templates/Microsoft.Network/applicationSecurityGroups
     maintainContext: true
+  - name: Azure 防火墙
+    href: /azure/templates/Microsoft.Network/azureFirewalls
+    maintainContext: true
   - name: 连接
     href: /azure/templates/Microsoft.Network/connections
+    maintainContext: true
+  - name: DDoS 防护计划
+    href: /azure/templates/Microsoft.Network/ddosProtectionPlans
     maintainContext: true
   - name: DNS 区域
     href: /azure/templates/Microsoft.Network/dnsZones
@@ -706,6 +718,17 @@ items:
       maintainContext: true
     - name: 对等互连
       href: /azure/templates/Microsoft.Network/expressRouteCircuits/peerings
+      items:
+      - name: 连接
+        href: /azure/templates/Microsoft.Network/expressRouteCircuits/peerings/connections
+        maintainContext: true
+      maintainContext: true
+    maintainContext: true
+  - name: 快速路由交叉连接
+    href: /azure/templates/Microsoft.Network/expressRouteCircuits
+    items:
+    - name: 对等互连
+      href: /azure/templates/Microsoft.Network/expressRouteCircuits/peerings
       maintainContext: true
     maintainContext: true
   - name: 负载均衡器
@@ -731,12 +754,18 @@ items:
   - name: 网络观察程序
     href: /azure/templates/Microsoft.Network/networkWatchers
     items:
+    - name: 连接监视器
+      href: /azure/templates/Microsoft.Network/networkWatchers/connectionMonitors
+      maintainContext: true
     - name: 数据包捕获
       href: /azure/templates/Microsoft.Network/networkWatchers/packetCaptures
       maintainContext: true
     maintainContext: true
   - name: 公共 IP 地址
     href: /azure/templates/Microsoft.Network/publicIPAddresses
+    maintainContext: true
+  - name: 公共 IP 前缀
+    href: /azure/templates/Microsoft.Network/publicIPPrefixes
     maintainContext: true
   - name: 路由筛选器
     href: /azure/templates/Microsoft.Network/routeFilters
@@ -752,8 +781,18 @@ items:
       href: /azure/templates/Microsoft.Network/routeTables/routes
       maintainContext: true
     maintainContext: true
+  - name: 服务终结点策略
+    href: /azure/templates/Microsoft.Network/serviceEndpointPolicies
+    items:
+    - name: 服务终结点策略定义
+      href: /azure/templates/microsoft.Network/serviceendpointpolicies/serviceendpointpolicydefinitions
+      maintainContext: true
+    maintainContext: true
   - name: 流量管理器配置文件
     href: /azure/templates/Microsoft.Network/trafficmanagerprofiles
+    maintainContext: true
+  - name: 虚拟中心
+    href: /azure/templates/Microsoft.Network/virtualHubs
     maintainContext: true
   - name: 虚拟网络网关
     href: /azure/templates/Microsoft.Network/virtualNetworkGateways
@@ -767,6 +806,19 @@ items:
     - name: 虚拟网络对等互连
       href: /azure/templates/Microsoft.Network/virtualNetworks/virtualNetworkPeerings
       maintainContext: true
+    maintainContext: true
+  - name: 虚拟 WAN
+    href: /azure/templates/Microsoft.Network/virtualWans
+    maintainContext: true
+  - name: VPN 网关
+    href: /azure/templates/Microsoft.Network/vpnGateways
+    items:
+    - name: VPN 连接
+      href: /azure/templates/Microsoft.Network/vpnGateways/vpnconnections
+      maintainContext: true
+    maintainContext: true
+  - name: VPN 站点
+    href: /azure/templates/Microsoft.Network/vpnSites
     maintainContext: true
 - name: 通知中心
   items:
@@ -818,6 +870,12 @@ items:
       maintainContext: true
     - name: 防火墙规则
       href: /azure/templates/Microsoft.DBforPostgreSQL/servers/firewallRules
+      maintainContext: true
+    - name: 安全警报策略
+      href: /azure/templates/Microsoft.DBforPostgreSQL/servers/securityAlertPolicies
+      maintainContext: true
+    - name: 虚拟网络规则
+      href: /azure/templates/Microsoft.DBforPostgreSQL/servers/virtualNetworkRules
       maintainContext: true
     maintainContext: true
 - name: Power BI
@@ -1174,9 +1232,9 @@ items:
         maintainContext: true
       maintainContext: true
     maintainContext: true
-ms.openlocfilehash: d4d1828eff777d27fe750906c1bee0d436d89ce5
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: f54d4b1a72752571605a894a3be94025e8fce451
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41927076"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984418"

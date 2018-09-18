@@ -1,0 +1,59 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 45ce7413a3974ec8018db3c5287aa922a76f072b
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45986675"
+documentType: LandingData
+title: Azure Active Directory B2B 文档
+metadata:
+  document_id: 
+  title: Azure Active Directory B2B 文档 - 教程、快速入门、概念和参考 | Microsoft Docs
+  description: 了解如何使用 B2B 来宾用户访问权限，以便安全地与外部合作伙伴共享资源和协作。
+  services: active-directory
+  ms.component: authentication
+  author: msmimart
+  manager: mtillman
+  ms.service: active-directory
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 09/10/2018
+  ms.author: mimart
+abstract:
+  description: 了解如何使用 Azure AD 企业到企业 (B2B) 协作以安全地将公司的应用程序和服务与来自任何组织的来宾用户和外部合作伙伴共享，同时保持对自己公司数据的控制。  以下是一些主要功能：<ul><li>通过简单的邀请和兑换过程，来宾用户可以开始在你希望他们访问的资源上进行协作。</li><li>来宾用户和外部合作伙伴通过 Azure AD、社交电子邮件帐户或任何标识提供者管理自己的标识。</li><li>可以使用 Azure AD 功能（如多重身份验证）保护公司资源。</li><li>可以使用 API 来自定义体验，例如，通过自助注册门户。</li></ul>以下资源可帮助你快速入门。
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: ./media/index/video.png
+      width: 246
+    title: Azure AD B2B 说明
+    href: https://www.youtube.com/watch?v=AhwrweCBdsc
+    width: 246
+sections:
+- title: 5 分钟快速入门
+  items:
+  - type: paragraph
+    text: 了解如何邀请来宾用户并开始使用 B2B 协作。
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: ./media/index/i_security-management.png
+      text: 在 Azure 门户中添加来宾用户
+      href: b2b-quickstart-add-guest-users-portal.md
+    - image:
+        src: ./media/index/i_security-management.png
+      text: 使用 PowerShell 添加来宾用户
+      href: b2b-quickstart-invite-powershell.md
+- title: 分步教程
+  items:
+  - type: paragraph
+    text: 了解有关设置 B2B 协作和保护公司资源的详细信息。
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/b2b/tutorial-bulk-invite">使用 PowerShell 批量邀请 B2B 来宾用户</a>
+    - html: <a href="/azure/active-directory/b2b/b2b-tutorial-require-mfa">对 B2B 用户强制执行多重身份验证</a>

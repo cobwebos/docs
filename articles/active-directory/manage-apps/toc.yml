@@ -1,5 +1,5 @@
 items:
-- name: Azure AD 应用程序管理文档
+- name: 应用程序管理文档
   href: index.yml
 - name: 概述
   items:
@@ -236,6 +236,8 @@ items:
       href: access-panel-troubleshoot-self-service-access.md
   - name: 迁移
     items:
+    - name: 迁移资源
+      href: migration-resources.md
     - name: 将 ADFS 应用迁移到 Azure
       href: migrate-adfs-apps-to-azure.md
   - name: 排查用户登录问题
@@ -282,9 +284,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-active-directory
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: 24452d3c2d5991f9dc81b9d740ec9473e2b8a1e0
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 8bd998373a65aa1ef171c665f3b9fbd38acadfa2
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579882"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737067"

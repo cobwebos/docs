@@ -1,0 +1,54 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 2217adbbb9e5222e6c33bfcdce41c30396c7f231
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45740314"
+documentType: LandingData
+title: Azure AD 报表和监视
+metadata:
+  document_id: 
+  title: Azure Active Directory 报表和监视文档 - 教程、快速入门和概念 | Microsoft Docs
+  description: 了解如何配置并测试 Azure Active Directory 报表和监视解决方案
+  services: active-directory
+  ms.component: report-monitor
+  author: priyamohanram
+  manager: mtillman
+  ms.service: active-directory
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 08/14/2018
+  ms.author: priyamo
+abstract:
+  description: 了解如何查看你的环境的安全性和审核报表，或者如何在一段时间内监视它们以深入了解使用模式。 使用 Azure AD 报表，可以深入了解你的环境中的安全性和使用模式。 例如，可以回答以下问题：<ul><li>用户如何利用应用程序或服务？</li><li>什么是影响环境运行状况的潜在风险</li><li>如何排查妨碍用户完成其工作的问题</li>
+sections:
+- title: 5 分钟快速入门
+  items:
+  - type: paragraph
+    text: 了解如何下载活动报表并将日志路由到 Azure 存储帐户
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/reports-monitoring/quickstart-download-sign-in-report">下载登录报表</a>
+    - html: <a href="/azure/active-directory/reports-monitoring/quickstart-download-audit-report">下载审核报表</a>
+    - html: <a href="/azure/active-directory/reports-monitoring/quickstart-install-power-bi-content-pack">安装用于报表的 Power BI 内容包</a>
+    - html: <a href="/azure/active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account">将日志路由到存储帐户</a>
+- title: 分步教程
+  items:
+  - type: paragraph
+    text: 了解如何访问报表以及将活动日志流式传输到所选监视系统
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates">使用证书以编程方式访问报告 API</a>
+    - html: <a href="/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub">将活动日志流式传输到事件中心</a>
+- title: 引用
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/reports-monitoring/reference-sign-ins-error-codes">登录错误代码</a>
+    - html: <a href="/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema">Azure Monitor 中的 Azure AD 审核日志架构</a>
+    - html: <a href="/azure/active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema">Azure Monitor 中的 Azure AD 登录架构</a>

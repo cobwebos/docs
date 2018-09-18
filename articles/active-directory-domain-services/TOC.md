@@ -43,6 +43,7 @@
 ### [在托管域上创建 OU](active-directory-ds-admin-guide-create-ou.md)
 ### [在托管域上创建组托管服务帐户](active-directory-ds-create-gmsa.md)
 ### [管理托管域中的组策略](active-directory-ds-admin-guide-administer-group-policy.md)
+### [配置托管域上的密码策略](active-directory-ds-password-policy.md)
 ## [选择虚拟网络](active-directory-ds-networking.md)
 ## 部署应用程序
 ### [为 SharePoint Server 配置对配置文件同步的支持](active-directory-ds-enable-sharepoint-profile-sync.md)
