@@ -6,12 +6,12 @@ description: 了解如何使用 Microsoft Azure 云服务构建和管理功能�
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: beb993150dca5d6a5b0d4701af8149cf9000e79e
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 9b9bbb9f584cf5fb071e75ea731c2325e334d10d
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391957"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605957"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -1405,6 +1405,12 @@ Azure DevOps Project </a>
                                                 <p>API 应用</p>
                                             </a>
                                         </li>
+                                        <li>
+                                            <a href="/azure/azure-signalr/">
+                                                <img src="media/index/azure-signalr.svg" alt="" />
+                                                <p>Azure SignalR 服务</p>
+                                            </a>
+                                        </li>
                                     </ul>
                                     <h3>移动型</h3>
                                     <ul>
@@ -2553,6 +2559,25 @@ Azure DevOps Project </a>
                                                 <div class="cardText">
                                                     <h3>API 应用</h3>
                                                     <p>轻松生成和使用云 API</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/azure-signalr">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/azure-signalr.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure SignalR 服务</h3>
+                                                    <p>轻松添加实时 Web 功能</p>
                                                 </div>
                                             </div>
                                         </div>
