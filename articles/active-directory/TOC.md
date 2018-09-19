@@ -26,22 +26,22 @@
 ## 规划和设计
 ### [了解 Azure AD 体系结构](fundamentals/active-directory-architecture.md)
 ### [Azure Active Directory 中的声明映射](active-directory-claims-mapping.md)
-### [部署混合标识解决方案](active-directory-hybrid-identity-design-considerations-overview.md)
+### [部署混合标识解决方案](hybrid/plan-hybrid-identity-design-considerations-overview.md)
 #### 确定要求
-##### [标识](active-directory-hybrid-identity-design-considerations-business-needs.md)
-##### [目录同步](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)
-##### [多重身份验证](active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
-##### [标识生命周期策略](active-directory-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
-#### [数据安全性规划](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)
-##### [数据保护](active-directory-hybrid-identity-design-considerations-dataprotection-requirements.md)
-##### [内容管理](active-directory-hybrid-identity-design-considerations-contentmgt-requirements.md)
-##### [访问控制](active-directory-hybrid-identity-design-considerations-accesscontrol-requirements.md)
-##### [事件响应](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md)
+##### [标识](hybrid/plan-hybrid-identity-design-considerations-business-needs.md)
+##### [目录同步](hybrid/plan-hybrid-identity-design-considerations-directory-sync-requirements.md)
+##### [多重身份验证](hybrid/plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
+##### [标识生命周期策略](hybrid/plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
+#### [数据安全性规划](hybrid/plan-hybrid-identity-design-considerations-data-protection-strategy.md)
+##### [数据保护](hybrid/plan-hybrid-identity-design-considerations-dataprotection-requirements.md)
+##### [内容管理](hybrid/plan-hybrid-identity-design-considerations-contentmgt-requirements.md)
+##### [访问控制](hybrid/plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)
+##### [事件响应](hybrid/plan-hybrid-identity-design-considerations-incident-response-requirements.md)
 #### 规划标识生命周期
-##### [任务](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)
-##### [采用策略](active-directory-hybrid-identity-design-considerations-identity-adoption-strategy.md)
-#### [后续步骤](active-directory-hybrid-identity-design-considerations-nextsteps.md)
-#### [工具比较](active-directory-hybrid-identity-design-considerations-tools-comparison.md)
+##### [任务](hybrid/plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)
+##### [采用策略](hybrid/plan-hybrid-identity-design-considerations-identity-adoption-strategy.md)
+#### [后续步骤](hybrid/plan-hybrid-identity-design-considerations-nextsteps.md)
+#### [工具比较](hybrid/plan-hybrid-identity-design-considerations-tools-comparison.md)
 
 ## 管理用户
 ### [将新用户添加到 Azure AD](fundamentals/add-users-azure-active-directory.md)
@@ -309,7 +309,7 @@
 
 
 ## 管理目录
-### [Azure AD Connect](./connect/active-directory-aadconnect.md)
+### [Azure AD Connect](hybrid/whatis-hybrid-identity.md)
 ### 自定义域名
 #### [快速入门](fundamentals/add-custom-domain.md)
 ### [管理目录](fundamentals/active-directory-administer.md)
@@ -321,7 +321,7 @@
 #### [故障排除](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
 
 
-### [使用 Azure AD Connect 集成本地标识](./connect/active-directory-aadconnect.md)
+### [使用 Azure AD Connect 集成本地标识](hybrid/whatis-hybrid-identity.md)
 
 ### [配置令牌生存期](active-directory-configurable-token-lifetimes.md)
 
@@ -329,7 +329,7 @@
 
 ### [Privileged Identity Management](privileged-identity-management/pim-configure.md?toc=%2fazure%2factive-directory%2ftoc.json)
 
-## [在 Azure 中部署 AD FS](active-directory-aadconnect-azure-adfs.md)
+## [在 Azure 中部署 AD FS](hybrid/how-to-connect-fed-azure-adfs.md)
 ### [高可用性](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
 ### [更改签名哈希算法](active-directory-federation-sha256-guidance.md)
 
@@ -349,8 +349,8 @@
 
 # 相关内容
 ## [多重身份验证](/azure/multi-factor-authentication/)
-## [Azure AD Connect](./connect/active-directory-aadconnect.md)
-## [Azure AD Connect Health](./connect-health/active-directory-aadconnect-health.md)
+## [Azure AD Connect](hybrid/whatis-hybrid-identity.md)
+## [Azure AD Connect Health](hybrid/whatis-hybrid-identity-health.md)
 ## [适用于开发人员的 Azure AD](./develop/active-directory-how-to-integrate.md)
 ## [Azure AD Privileged Identity Management](./privileged-identity-management/pim-configure.md)
 
