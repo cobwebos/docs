@@ -3,7 +3,7 @@ title: 在 Azure Stack 中提供服务 | Microsoft Docs
 description: 作为云操作员，可以向用户提供服务。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,38 +12,47 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2018
-ms.author: brenduns
+ms.date: 09/17/2018
+ms.author: jeffgilb
 ms.reviewer: ''
-ms.openlocfilehash: 042e65cfe350cb61124ed8920ae3616502e6553d
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: e4e1701a145a36fce93db3812b67c307b342da5c
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248837"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127476"
 ---
 # <a name="overview-of-offering-services-in-azure-stack"></a>在 Azure Stack 中提供服务概述
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-[Microsoft Azure 堆栈](azure-stack-poc.md)是混合云平台，可让你从数据中心提供服务。 作为服务提供商，可以向租户提供服务。 在企业或政府机构中，你可以向员工提供本地服务。 你可以提供服务包括但不限于：
+[Microsoft Azure Stack](azure-stack-poc.md)是一种混合云平台，让你从数据中心提供服务。 作为服务提供商，可以向租户提供服务。 在企业或政府机构中，你可以向员工提供本地服务。 
 
-- 如平台即服务 (PaaS) 服务的应用程序服务、 API Apps、 API 函数、 SQL 和 MySQL。
+你可以提供[基础结构即服务](https://azure.microsoft.com/overview/what-is-iaas/)(IaaS) 服务，可让用户构建按需计算基础结构，预配和管理从 Azure Stack 用户门户。
+
+您还可以部署[平台即服务](https://azure.microsoft.com/overview/what-is-paas/)(PaaS) 服务从 Microsoft 和其他第三方提供商为 Azure Stack。 可以提供的服务包括但不限于：
+
+- [将应用服务资源提供程序添加到 Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-overview)
+
+- [将 SQL Server 资源提供程序添加到 Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-sql-resource-provider-deploy)
+
+- [将 MySQL Server 资源提供程序添加到 Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-mysql-resource-provider-deploy)
+
 
 你甚至可以合并服务为不同用户集成和构建复杂解决方案。
 
-若要向用户提供这些服务，必须创建[计划、产品/服务和配额](azure-stack-plan-offer-quota-overview.md)。 然后用户可以订阅产品/服务以使用这些服务。
+若要向用户提供这些服务，必须创建[计划、套餐和配额](azure-stack-plan-offer-quota-overview.md)。 然后用户可以订阅套餐以使用这些服务。
 
-## <a name="plan-your-service-offers"></a>计划服务产品
+## <a name="plan-your-service-offers"></a>计划服务套餐
 
-计划产品/服务时，请记住以下几点：
+计划套餐时，请记住以下几点：
 
-**试用版产品/服务**：可以使用试用版产品/服务吸引新用户，然后这些用户可以再升级到其他服务。 若要创建试用版产品/服务，请创建一个较小的[基本计划](azure-stack-plan-offer-quota-overview.md#base-plan)，其中包含一个可选的更大加载项计划。
+**试用版产品/服务**：可以使用试用版产品/服务吸引新用户，然后这些用户可以再升级到其他服务。 若要创建试用版套餐，请创建一个较小的[基本计划](azure-stack-plan-offer-quota-overview.md#base-plan)，其中包含一个可选的更大加载项计划。
 
 **容量规划**：你可能会担心用户占用大量资源，阻塞所有用户使用的系统。 若要帮助提高性能，可以[配置带有配额的计划](azure-stack-plan-offer-quota-overview.md#plans)以限定使用量上限。
 
-**授权供应商**：可以授权其他人在你的环境中创建产品/服务。 例如，如果你是服务提供商，可以将此功能[委托](azure-stack-delegated-provider.md)给经销商。 或者，如果你是组织，则可以委托给其他部门/子公司。
+**授权供应商**：可以授权其他人在你的环境中创建套餐。 例如，如果你是服务提供商，可以将此功能[委托](azure-stack-delegated-provider.md)给经销商。 或者，如果你是组织，则可以委托给其他部门/子公司。
 
 ## <a name="next-steps"></a>后续步骤
 
-[在 Azure Stack 中创建产品/服务](azure-stack-create-offer.md)
+[在 Azure Stack 中创建套餐](azure-stack-create-offer.md)

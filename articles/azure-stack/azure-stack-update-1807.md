@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 09/18/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: b46e365ea3903a8f2c805717df13d361c823148d
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 53f01ad6e8a801c69ea93c54e805807cb8eed34d
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985590"
+ms.locfileid: "46127812"
 ---
 # <a name="azure-stack-1807-update"></a>Azure Stack 1807 更新
 
@@ -158,14 +158,10 @@ Azure Stack 使用 Windows Server 2016 的 Server Core 安装来托管重要基�
 - <!-- 2830461 - IS --> 在某些情况下，当某个更新需要关注时，相应的警报可能没有生成。 准确的状态仍会反映在门户中，不受影响。
 
 ### <a name="post-update-steps"></a>更新后步骤
+此更新的安装之后, 安装任何适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。 
+- [KB 4464231 – Azure Stack 修补程序 Azure Stack 修补程序 1.1807.1.78]( https://support.microsoft.com/help/4464231)
 
-- <!-- 2933866 – IS --> **改进了对于失败的更新安装的状态。** 此版本引入了两个新的状态类别，以提供有关失败的更新安装的更多详细信息的运算符。 两个类别都*PreparationFailed*，并*InstallationFailed*。 安装此版本后，可能会看到以前更新安装失败进行了修订以反映这些新类别的信息。 
-
-<!-- *There are no post-update steps for update 1807.* -->
-
-<!-- After the installation of this update, install any applicable Hotfixes. For more information view the following knowledge base articles, as well as our [Servicing Policy](azure-stack-servicing-policy.md).  
- - Link to KB  
- -->
+ <!-- 2933866 – IS --> 此更新的安装后，可以看到**改进了对于失败的更新安装状态。** 这可能包括上一个修订以反映新的两个状态类别的更新安装失败的相关信息。 新的状态类别*PreparationFailed*，并*InstallationFailed*。  
 
 ## <a name="known-issues-post-installation"></a>已知问题（安装后）
 

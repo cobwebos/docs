@@ -223,8 +223,6 @@ items:
       href: azure-stack-solution-template-kubernetes-cluster-add.md
   - name: 提供服务
     href: azure-stack-offer-services-overview.md
-  - name: PaaS 服务概述
-    href: azure-stack-tools-paas-services.md
   - name: 提供 SQL 作为 PaaS
     href: azure-stack-sql-resource-provider.md
     items:
@@ -373,9 +371,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: 培训和认证
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: c6032eb4482dafaebcc376f3f22102a15f6f4cf4
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: df99e56ff7df96a917005f918f224ca9ae7df4b3
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985607"
+ms.locfileid: "46129805"

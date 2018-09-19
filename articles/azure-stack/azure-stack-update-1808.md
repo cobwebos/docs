@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 09/18/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 877ea4c143d74414c3d733c446da57060322b11d
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 1e2a3221b6db5becbea49aa6ec5fee7b145e8e03
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982072"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295378"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 更新
 
@@ -112,16 +112,18 @@ Azure Stack 1808 更新内部版本号是**1.1808.0.97**。
 
 - 安装 Azure Stack [1807年更新](azure-stack-update-1807.md)应用 Azure Stack 1808 更新之前。 
 
-- 安装最新发布的 [1805 版更新或修补程序](azure-stack-update-1805.md#post-update-steps)。  
+- 安装最新可用[更新或修补程序版本 1807年](azure-stack-update-1807.md#post-update-steps)。  
   > [!TIP]  
   > 订阅下述 *RRS* 或 *Atom* 源，了解 Azure Stack 修补程序的最新更新：
   > - RRS： https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss … 
   > - Atom： https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom …
 
 
-- 在开始安装此更新之前，请运行[Test-azurestack](azure-stack-diagnostic-test.md)验证 Azure Stack 的状态并解决发现的任何操作问题，包括所有警告和失败。 另外，请查看活动警报，并解决所有需要采取措施的警报。
+- 在开始安装此更新之前，请运行[Test-azurestack](azure-stack-diagnostic-test.md)验证 Azure Stack 的状态并解决发现的任何操作问题，包括所有警告和失败。 另外，请查看活动警报，并解决所有需要采取措施的警报。  
 
 ### <a name="known-issues-with-the-update-process"></a>更新过程的已知问题
+
+- 在运行时[Test-azurestack](azure-stack-diagnostic-test.md) 1808年更新后，将显示警告消息从基板管理控制器 (BMC)。 您可以放心地忽略此警告。
 
 - <!-- 2468613 - IS --> 在安装此更新期间，可能会出现标题如下的警报：“错误 - 缺少 FaultType UserAccounts.New 的模板”。  可以放心地忽略这些警报。 完成此更新的安装后，这些警报会自动关闭。
 
@@ -130,12 +132,9 @@ Azure Stack 1808 更新内部版本号是**1.1808.0.97**。
 - <!-- 2830461 - IS --> 在某些情况下，当某个更新需要关注时，相应的警报可能没有生成。 准确的状态仍会反映在门户中，不受影响。
 
 ### <a name="post-update-steps"></a>更新后步骤
+此更新的安装之后, 安装任何适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。 
+- [KB 4464226 – Azure Stack 修补程序 Azure Stack 修补程序 1.1808.1.99]( https://support.microsoft.com/help/4464226)
 
-*没有更新 1808年更新后步骤。*
-
-<!-- After the installation of this update, install any applicable Hotfixes. For more information view the following knowledge base articles, as well as our [Servicing Policy](azure-stack-servicing-policy.md).  
- - [Link to KB]()  
- -->
 
 ## <a name="known-issues-post-installation"></a>已知问题（安装后）
 
