@@ -32,6 +32,8 @@ items:
     href: security-center-data-security.md
 - name: 操作指南
   items:
+  - name: 提高安全分数
+    href: security-center-secure-score.md
   - name: 升级到高级安全
     href: security-center-onboarding.md
   - name: 使用 Windows Defender ATP（预览版）进行服务器保护
@@ -39,6 +41,8 @@ items:
   - name: 设置安全策略
   - name: 设置安全策略
     href: security-center-azure-policy.md
+  - name: 自定义信息保护策略
+    href: security-center-info-protection-policy.md
   - name: 安全策略设置
     href: security-center-policies-overview.md
     items:
@@ -62,30 +66,36 @@ items:
     - name: 计算和应用安全
       href: security-center-virtual-machine-protection.md
       items:
-      - name: 虚拟机建议
+      - name: VM 和计算机建议
         href: security-center-virtual-machine-recommendations.md
-      - name: 应用磁盘加密
-        href: security-center-apply-disk-encryption.md
-      - name: 应用系统更新
-        href: security-center-apply-system-updates.md
-      - name: 为存储帐户启用加密
-        href: security-center-enable-encryption-for-storage-account.md
-      - name: 启用 VM 代理
-        href: security-center-enable-vm-agent.md
-      - name: 安装终结点保护
-        href: security-center-install-endpoint-protection.md
-      - name: 在系统更新后重启
-        href: security-center-apply-system-updates.md#reboot-after-system-updates
-      - name: 修正安全配置
-        href: security-center-remediate-os-vulnerabilities.md
-      - name: 更新 OS 版本
-        href: security-center-update-os-version.md
-      - name: 未安装漏洞评估
-        href: security-center-vulnerability-assessment-recommendations.md
-      - name: 添加 Web 应用程序防火墙
+        items:
+        - name: 应用磁盘加密
+          href: security-center-apply-disk-encryption.md
+        - name: 应用系统更新
+          href: security-center-apply-system-updates.md
+        - name: 为存储帐户启用加密
+          href: security-center-enable-encryption-for-storage-account.md
+        - name: 启用 VM 代理
+          href: security-center-enable-vm-agent.md
+        - name: 安装终结点保护
+          href: security-center-install-endpoint-protection.md
+        - name: 在系统更新后重启
+          href: security-center-apply-system-updates.md#reboot-after-system-updates
+        - name: 修正安全配置
+          href: security-center-remediate-os-vulnerabilities.md
+        - name: 更新 OS 版本
+          href: security-center-update-os-version.md
+        - name: 未安装漏洞评估
+          href: security-center-vulnerability-assessment-recommendations.md
+      - name: 应用建议
         href: security-center-add-web-application-firewall.md
-      - name: 完成应用程序保护
-        href: security-center-add-web-application-firewall.md#finalize-application-protection
+        items:
+        - name: 添加 Web 应用程序防火墙
+          href: security-center-add-web-application-firewall.md
+        - name: 完成应用程序保护
+          href: security-center-add-web-application-firewall.md#finalize-application-protection
+      - name: 容器建议
+        href: security-center-container-recommendations.md
     - name: 网络安全
       href: security-center-network-recommendations.md
       items:
@@ -97,7 +107,7 @@ items:
         href: security-center-restrict-access-through-internet-facing-endpoints.md
       - name: 仅通过 NGFW 路由流量
         href: security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only
-    - name: 存储和数据安全
+    - name: 数据与存储安全
       href: security-center-sql-service-recommendations.md
       items:
       - name: 在 SQL 数据库上启用审核与威胁检测
@@ -106,12 +116,12 @@ items:
         href: security-center-enable-auditing-on-sql-servers.md
       - name: 启用透明数据加密
         href: security-center-enable-transparent-data-encryption.md
-    - name: 标识和访问
+    - name: 监视标识和访问
       href: security-center-identity-access.md
+    - name: 管理恰时访问
+      href: security-center-just-in-time.md
   - name: 应用云防御措施
     items:
-    - name: 实时访问
-      href: security-center-just-in-time.md
     - name: 自适应应用程序控制
       href: security-center-adaptive-application.md
     - name: 文件完整性监视
@@ -170,6 +180,8 @@ items:
       href: security-center-review-policy-compliance.md
     - name: 评估订阅 (REST)
       href: security-center-compliance-rest-api.md
+    - name: 使用 PowerShell 自动加入
+      href: security-center-powershell-onboarding.md
   - name: 方案
     items:
     - name: 事件响应
@@ -212,9 +224,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=security-center
   - name: 区域可用性
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 12f463c36edef411f42ff17f2126284a0c89983e
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: ca2bf44ebb7e5c6752daa75963ff06119d0815d7
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716886"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124722"

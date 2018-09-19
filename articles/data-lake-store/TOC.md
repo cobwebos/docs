@@ -22,7 +22,7 @@
 ### [使用 DistCp](data-lake-store-copy-data-wasb-distcp.md)
 ### [使用 Sqoop](data-lake-store-data-transfer-sql-sqoop.md)
 ### [从脱机源上传数据](data-lake-store-offline-bulk-data-upload.md)
-### [跨区域迁移 Data Lake Store](data-lake-store-migration-cross-region.md)
+### [跨区域迁移 Data Lake Store Gen1](data-lake-store-migration-cross-region.md)
 
 ## 保护数据
 ### [安全性概述](data-lake-store-security-overview.md)
