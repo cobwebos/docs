@@ -1,12 +1,12 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2217adbbb9e5222e6c33bfcdce41c30396c7f231
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 95341f318a9902a82ecb0366400ec34d159f0225
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45740314"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363677"
 documentType: LandingData
-title: Azure AD 报表和监视
+title: Azure Active Directory 报表和监视
 metadata:
   document_id: 
   title: Azure Active Directory 报表和监视文档 - 教程、快速入门和概念 | Microsoft Docs
@@ -22,7 +22,7 @@ metadata:
   ms.date: 08/14/2018
   ms.author: priyamo
 abstract:
-  description: 了解如何查看你的环境的安全性和审核报表，或者如何在一段时间内监视它们以深入了解使用模式。 使用 Azure AD 报表，可以深入了解你的环境中的安全性和使用模式。 例如，可以回答以下问题：<ul><li>用户如何利用应用程序或服务？</li><li>什么是影响环境运行状况的潜在风险</li><li>如何排查妨碍用户完成其工作的问题</li>
+  description: 了解如何查看你的环境的安全性和审核报表，或者如何在一段时间内监视它们以深入了解使用模式。 使用 Azure Active Directory (Azure AD) 报表，可以深入了解环境中的安全性和使用模式。 例如，可以回答以下问题：<ul><li>用户如何利用应用程序或服务？</li><li>什么是影响环境运行状况的潜在风险</li><li>如何排查妨碍用户完成其工作的问题</li>
 sections:
 - title: 5 分钟快速入门
   items:

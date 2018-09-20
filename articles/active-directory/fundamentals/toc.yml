@@ -18,6 +18,8 @@ items:
   items:
   - name: Azure 标识管理
     href: identity-fundamentals.md
+  - name: 标识安全分数
+    href: identity-secure-score.md
   - name: 组和访问管理
     href: active-directory-manage-groups.md
   - name: 基于组的许可
@@ -34,10 +36,10 @@ items:
   items:
   - name: 组织
     items:
-    - name: 注册 Azure AD Premium
-      href: active-directory-get-started-premium.md
     - name: 以组织身份注册 Azure AD
       href: sign-up-organization.md
+    - name: 注册 Azure AD Premium
+      href: active-directory-get-started-premium.md
     - name: 添加自定义域名
       href: add-custom-domain.md
     - name: 添加公司品牌
@@ -85,9 +87,9 @@ items:
     href: active-directory-administer.md
   - name: Azure 标识解决方案
     href: understand-azure-identity-solutions.md
-ms.openlocfilehash: 3a0024bd72138bf48a844bd183ac15abdd90cc22
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: b31baf4a0472afd09343673e2cdf94dc29b4cb12
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297977"
+ms.locfileid: "46465548"

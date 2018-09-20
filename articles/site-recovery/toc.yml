@@ -260,7 +260,7 @@ items:
         href: site-recovery-monitor-and-troubleshoot.md
       - name: 排查 VMware 到 Azure 复制的问题
         href: vmware-azure-troubleshoot-replication.md
-      - name: 排查 VMware 和物理服务器复制中的移动服务问题
+      - name: 排查 VMware 和物理服务器复制中的移动服务/推送安装问题
         href: vmware-azure-troubleshoot-push-install.md
       - name: 排查故障转移到 Azure 的问题
         href: site-recovery-failover-to-azure-troubleshoot.md
@@ -394,9 +394,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: 服务更新
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: f011d95ff726764db664fb5a3c77b7250f2a5e04
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: d05914e528754520f0f752bf72c303875cdb61ef
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297548"
+ms.locfileid: "46364578"

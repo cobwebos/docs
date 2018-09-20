@@ -25,6 +25,8 @@ items:
     href: iot-accelerators-remote-monitoring-automate.md
   - name: 配置和管理设备
     href: iot-accelerators-remote-monitoring-manage.md
+  - name: 对警报执行根本原因分析
+    href: iot-accelerators-remote-monitoring-root-cause-analysis.md
   - name: 使用警报并修复设备问题
     href: iot-accelerators-remote-monitoring-maintain.md
 - name: 概念
@@ -93,6 +95,8 @@ items:
       href: iot-accelerators-integrate-data-lake.md
     - name: 配置基于角色的访问控制
       href: iot-accelerators-remote-monitoring-rbac.md
+    - name: 授予对遥测资源管理器的访问权限
+      href: iot-accelerators-remote-monitoring-rbac-tsi.md
   - name: 远程监视（旧版）
     items:
     - name: 什么是预配置的解决方案？
@@ -252,9 +256,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
   - name: IoT 解决方案加速器学习路径
     href: https://azure.microsoft.com/documentation/learning-paths/iot-suite/
-ms.openlocfilehash: 5612ae6fb91c31afc7305866ea3f99843c692619
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 935b9acf2eeaaee73745426eefb5625f470f62b7
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732900"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365462"

@@ -1,14 +1,14 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f8dcee53aecfcb7468d87c480c68f14715dea035
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: ffb0b9ceeb181e2d9922ab8e257a4df7f3d51ee0
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391566"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364442"
 documentType: LandingData
-title: Azure IoT Central（预览版）文档
+title: Azure IoT Central 文档
 metadata:
-  title: Azure IoT Central（预览版）文档 - 教程和 API 参考 | Microsoft Docs
+  title: Azure IoT Central 文档 - 教程和 API 参考 | Microsoft Docs
   description: Azure IoT Central 是完全托管的 SaaS（软件即服务）解决方案，借助此解决方案可轻松连接、监视以及管理大规模的 IoT 资产。 Azure IoT Central 简化了 IoT 解决方案的初始设置，并减少了典型 IoT 项目的管理负担、运营成本和开销。 通过我们的快速入门和教程了解如何创建、自定义、管理和使用 Azure IoT Central 应用程序。
   author: dominicbetts
   ms.topic: landing-page
@@ -20,10 +20,10 @@ metadata:
 abstract:
   description: Azure IoT Central 是完全托管的 SaaS（软件即服务）解决方案，借助此解决方案可轻松连接、监视以及管理大规模的 IoT 资产。 Azure IoT Central 简化了 IoT 解决方案的初始设置，并减少了典型 IoT 项目的管理负担、运营成本和开销。 通过我们的快速入门和教程了解如何创建、自定义、管理和使用 Azure IoT Central 应用程序。
 sections:
-- title: 即将发生的更改
+- title: 功能警报
   items:
   - type: paragraph
-    text: Azure IoT Central 将在未来几周内过渡到对所有设备连接使用 Azure IoT 中心设备预配服务 (DPS)。 此更改生效后，你将需要更新你的设备代码以使用 DPS SDK 来注册和连接设备。 所有使用连续数据导出功能和/或 Power BI 解决方案模板的应用程序将需要更改目标存储容器并创建新的解决方案模板。 <a href="https://aka.ms/iotcentral-create-technical-support-ticket">请联系技术支持以了解详细信息。</a>
+    text: Azure IoT Central 已过渡到对所有设备连接使用 Azure IoT 中心设备预配服务 (DPS)。 你将需要使用 DPS SDK 注册设备并将设备连接到 Azure IoT Central 应用程序。 <a href="https://docs.microsoft.com/en-us/azure/iot-central/concepts-connectivity">详细了解 Azure IoT Central 中的设备连接。</a> 所有使用连续数据导出功能和/或 Power BI 解决方案模板的应用程序将需要更改目标存储容器并创建新的解决方案模板。
 - title: 5 分钟快速入门
   items:
   - type: paragraph
