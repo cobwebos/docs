@@ -26,6 +26,8 @@ items:
     href: active-directory-architecture.md
   - name: 默认用户权限
     href: users-default-permissions.md
+  - name: 部署 30 天、90 天及之后的时间
+    href: active-directory-deployment-checklist-p2.md
   - name: 用于欧盟的标识数据存储
     href: active-directory-data-storage-eu.md
 - name: 操作指南
@@ -83,9 +85,9 @@ items:
     href: active-directory-administer.md
   - name: Azure 标识解决方案
     href: understand-azure-identity-solutions.md
-ms.openlocfilehash: 70f51f82b34423cdde57109f384dcae851dc0d50
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 3a0024bd72138bf48a844bd183ac15abdd90cc22
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45636285"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297977"

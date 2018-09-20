@@ -1,0 +1,291 @@
+items:
+- name: 混合标识文档
+  href: index.yml
+- name: 概述
+  items:
+  - name: 什么是混合标识？
+    href: whatis-hybrid-identity.md
+    maintainContext: true
+- name: 教程
+  items:
+  - name: 使用 PHS 将单个 AD 林 AD 环境集成到云中
+    href: tutorial-password-hash-sync.md
+  - name: 使用 PTA 将单个 AD 林 AD 环境集成到云中
+    href: tutorial-passthrough-authentication.md
+  - name: 将单个 AD 林环境联合到云中
+    href: tutorial-federation.md
+  expanded: true
+- name: 概念
+  items:
+  - name: Azure AD Connect Sync
+    items:
+    - name: Azure AD Connect 同步技术概念
+      href: how-to-connect-sync-technical-concepts.md
+    - name: 了解 Azure AD Connect 同步体系结构
+      href: concept-azure-ad-connect-sync-architecture.md
+    - name: 了解声明性预配
+      href: concept-azure-ad-connect-sync-declarative-provisioning.md
+    - name: 了解声明性设置表达式
+      href: concept-azure-ad-connect-sync-declarative-provisioning-expressions.md
+    - name: 了解默认配置
+      href: concept-azure-ad-connect-sync-default-configuration.md
+    - name: 了解用户和联系人
+      href: concept-azure-ad-connect-sync-user-and-contacts.md
+    - name: 了解影子属性
+      href: how-to-connect-syncservice-shadow-attributes.md
+  - name: 标识同步和重复属性复原
+    href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
+- name: 操作指南
+  items:
+  - name: 安装和升级
+    items:
+    - name: 安装路线图
+      href: how-to-connect-install-roadmap.md
+    - name: 安装先决条件
+      href: how-to-connect-install-prerequisites.md
+    - name: 选择安装类型
+      href: how-to-connect-install-select-installation.md
+    - name: 使用快速设置（密码哈希同步）安装 Azure AD Connect
+      href: how-to-connect-install-express.md
+    - name: 使用联合身份验证或其他自定义设置安装 Azure AD Connect
+      href: how-to-connect-install-custom.md
+    - name: 使用直通身份验证 (PTA) 安装 Azure AD Connect
+      href: how-to-connect-pta-quick-start.md
+    - name: 安装 Azure AD Connect Health
+      href: how-to-connect-health-agent-install.md
+    - name: 自动升级
+      href: how-to-connect-install-automatic-upgrade.md
+    - name: 再次运行安装向导
+      href: how-to-connect-installation-wizard.md
+    - name: 升级到新版本的 Azure AD Connect
+      href: how-to-upgrade-previous-version.md
+    - name: 从 DirSync 或 Azure AD Sync 升级
+      href: how-to-dirsync-upgrade-get-started.md
+    - name: 使用现有 ADSync 数据库进行安装
+      href: how-to-connect-install-existing-database.md
+    - name: 使用 SQL 委派管理员权限进行安装
+      href: how-to-connect-install-sql-delegation.md
+    - name: 为 PTA 升级预览代理
+      href: how-to-connect-pta-upgrade-preview-authentication-agents.md
+    - name: 将 Azure AD Connect 数据库从 SQL Express 移到 SQL Server
+      href: how-to-connect-install-move-db.md
+    - name: 如果已有 Azure AD
+      href: how-to-connect-install-existing-tenant.md
+    - name: 安装后任务
+      href: how-to-connect-post-installation.md
+  - name: 规划和设计
+    items:
+    - name: 设计概念
+      href: plan-connect-design-concepts.md
+    - name: Azure AD Connect 的拓扑
+      href: plan-connect-topologies.md
+    - name: 用户将如何登录
+      href: plan-connect-user-signin.md
+    - name: 有关实例的特殊注意事项
+      href: reference-connect-instances.md
+    - name: 混合标识设计注意事项
+      items:
+      - name: 混合标识设计注意事项概述
+        href: plan-hybrid-identity-design-considerations-overview.md
+      - name: 确定标识要求
+        href: plan-hybrid-identity-design-considerations-business-needs.md
+      - name: 确定同步要求
+        href: plan-hybrid-identity-design-considerations-directory-sync-requirements.md
+      - name: 确定多重身份验证要求
+        href: plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md
+      - name: 确定生命周期采用策略
+        href: plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md
+      - name: 定义数据保护策略
+        href: plan-hybrid-identity-design-considerations-data-protection-strategy.md
+      - name: 规划数据保护要求
+        href: plan-hybrid-identity-design-considerations-dataprotection-requirements.md
+      - name: 确定内容管理要求
+        href: plan-hybrid-identity-design-considerations-contentmgt-requirements.md
+      - name: 确定访问控制要求
+        href: plan-hybrid-identity-design-considerations-accesscontrol-requirements.md
+      - name: 确定事件响应要求
+        href: plan-hybrid-identity-design-considerations-incident-response-requirements.md
+      - name: 规划混合标识生命周期
+        href: plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md
+      - name: 定义采用策略
+        href: plan-hybrid-identity-design-considerations-identity-adoption-strategy.md
+      - name: 混合标识设计注意事项 - 后续步骤
+        href: plan-hybrid-identity-design-considerations-nextsteps.md
+      - name: 混合标识工具比较
+        href: plan-hybrid-identity-design-considerations-tools-comparison.md
+  - name: 管理 Azure AD Connect
+    items:
+    - name: 什么是密码哈希同步？
+      href: how-to-connect-password-hash-synchronization.md
+    - name: 启用设备写回
+      href: how-to-connect-device-writeback.md
+    - name: 设备选项
+      href: how-to-connect-device-options.md
+    - name: Azure AD Connect 中的其他功能
+      href: how-to-connect-preview.md
+    - name: 防止意外删除
+      href: how-to-connect-sync-feature-prevent-accidental-deletes.md
+    - name: 启用 AD 回收站
+      href: how-to-connect-sync-recycle-bin.md
+    - name: 更改 Azure ADSync 服务帐户密码
+      href: how-to-connect-sync-change-serviceacct-pass.md
+    - name: 更改 Azure AD 连接器帐户
+      href: how-to-connect-azureadaccount.md
+    - name: 更改 AD DS 帐户密码
+      href: how-to-connect-sync-change-addsacct-pass.md
+  - name: 管理联合身份验证服务
+    items:
+    - name: 什么是通过 Azure AD Connect 进行的联合身份验证？
+      href: how-to-connect-fed-whatis.md
+    - name: 使用 Azure AD Connect 管理联合身份验证
+      href: how-to-connect-fed-management.md
+    - name: 对联合身份验证的多域支持
+      href: how-to-connect-install-multiple-domains.md
+    - name: 将 Azure AD 的多个实例与 AD FS 的单个实例联合
+      href: how-to-connect-fed-single-adfs-multitenant-federation.md
+    - name: 续订 O365 和 Azure AD 的联合身份验证证书
+      href: how-to-connect-fed-o365-certs.md
+    - name: 更新用于 AD FS 的 SSL 证书
+      href: how-to-connect-fed-ssl-update.md
+    - name: 使用 Azure AD 管理 AD FS 信任
+      href: how-to-connect-azure-ad-trust.md
+    - name: Azure AD 联合身份验证兼容性列表
+      href: how-to-connect-fed-compatibility.md
+    - name: 使用 SAML 2.0 服务器作为 Idp
+      href: how-to-connect-fed-saml-idp.md
+    - name: 混合 Azure AD 加入所需的配置后任务
+      href: how-to-connect-fed-hybrid-azure-ad-join-post-config-tasks.md
+  - name: 管理直通身份验证
+    items:
+    - name: 什么是直通身份验证？
+      href: how-to-connect-pta.md
+    - name: 直通身份验证入门
+      href: how-to-connect-pta-quick-start.md
+    - name: 直通身份验证工作原理
+      href: how-to-connect-pta-how-it-works.md
+    - name: 针对直通身份验证的安全性深入研究
+      href: how-to-connect-pta-security-deep-dive.md
+    - name: 直通身份验证和用户隐私
+      href: how-to-connect-pta-user-privacy.md
+    - name: 直通身份验证的当前限制
+      href: how-to-connect-pta-security-deep-dive.md
+    - name: 直通身份验证常见问题解答
+      href: how-to-connect-pta-faq.md
+  - name: 管理单一登录
+    items:
+    - name: 什么是单一登录？
+      href: how-to-connect-sso.md
+    - name: 单一登录入门
+      href: how-to-connect-sso-quick-start.md
+    - name: 单一登录工作原理
+      href: how-to-connect-sso-how-it-works.md
+    - name: 单一登录和用户隐私
+      href: how-to-connect-sso-user-privacy.md
+    - name: 单一登录常见问题解答
+      href: how-to-connect-sso-faq.md
+  - name: 管理 Azure AD Connect Health
+    items:
+    - name: Azure AD Connect Health 操作
+      href: how-to-connect-health-operations.md
+    - name: 使用 Azure AD Connect Health 监视 AD FS
+      href: how-to-connect-health-adfs.md
+    - name: 将 Azure AD Connect Health 用于同步
+      href: how-to-connect-health-sync.md
+    - name: 使用 Azure AD Connect Health 监视 AD DS
+      href: how-to-connect-health-adds.md
+    - name: 运行状况服务数据过期
+      href: how-to-connect-health-data-freshness.md
+    - name: 诊断重复属性同步错误
+      href: how-to-connect-health-diagnose-sync-errors.md
+    - name: Azure AD Connect Health 警报目录
+      href: how-to-connect-health-alert-catalog.md
+  - name: 管理 Azure AD Connect Sync
+    items:
+    - name: 什么是 Azure AD Connect Sync？
+      href: how-to-connect-sync-whatis.md
+    - name: Azure AD Connect 同步功能
+      href: how-to-connect-syncservice-features.md
+    - name: 管理操作任务
+      href: how-to-connect-sync-operations.md
+    - name: 更改默认配置的最佳做法
+      href: how-to-connect-sync-best-practices-changing-default-configuration.md
+    - name: 更改默认配置
+      href: how-to-connect-sync-change-the-configuration.md
+    - name: 配置目录扩展
+      href: how-to-connect-sync-feature-directory-extensions.md
+    - name: 配置首选数据位置
+      href: how-to-connect-sync-feature-preferreddatalocation.md
+    - name: 配置筛选
+      href: how-to-connect-sync-configure-filtering.md
+    - name: 管理计划程序
+      href: how-to-connect-sync-feature-scheduler.md
+    - name: Azure AD Connect 同步服务管理器
+      items:
+      - name: 什么是 Azure AD Connect 同步服务管理器？
+        href: how-to-connect-sync-service-manager-ui.md
+      - name: 管理“服务管理器操作”选项卡
+        href: how-to-connect-sync-service-manager-ui-operations.md
+      - name: 将连接器与服务管理器配合使用
+        href: how-to-connect-sync-service-manager-ui-connectors.md
+      - name: Metaverse 设计器
+        href: how-to-connect-sync-service-manager-ui-mvdesigner.md
+      - name: Metaverse 搜索
+        href: how-to-connect-sync-service-manager-ui-mvsearch.md
+  - name: 故障排除
+    items:
+    - name: 连接
+      href: tshoot-connect-connectivity.md
+    - name: 同步过程中出错
+      href: tshoot-connect-sync-errors.md
+    - name: 对象不同步
+      href: tshoot-connect-object-not-syncing.md
+    - name: 使用故障排除任务进行对象同步
+      href: tshoot-connect-objectsync.md
+    - name: 密码哈希同步
+      href: tshoot-connect-password-hash-synchronization.md
+    - name: 直通身份验证
+      href: tshoot-connect-pass-through-authentication.md
+    - name: 单一登录
+      href: tshoot-connect-sso.md
+    - name: userCertificate 导致的 LargeObject 错误
+      href: tshoot-connect-largeobjecterror-usercertificate.md
+    - name: 如何从 LocalDB 10 GB 的限制恢复
+      href: tshoot-connect-recover-from-localdb-10gb-limit.md
+    - name: SQL 连接
+      href: tshoot-connect-tshoot-sql-connectivity.md
+- name: 引用
+  items:
+  - name: 混合标识所需的端口和协议
+    href: reference-connect-ports.md
+  - name: Azure AD Connect 版本历史记录
+    href: reference-connect-version-history.md
+  - name: Azure AD Connect Health 版本历史记录
+    href: reference-connect-health-version-history.md
+  - name: 连接器版本历史记录
+    href: reference-connect-sync-connector-version-history.md
+  - name: 帐户和权限
+    href: reference-connect-accounts-permissions.md
+  - name: Azure AD Connect 常见问题
+    href: reference-connect-faq.md
+  - name: Azure AD Connect Health 常见问题
+    href: reference-connect-health-faq.md
+  - name: Azure AD Connect 用户隐私
+    href: reference-connect-user-privacy.md
+  - name: Azure AD Connect Health 用户隐私
+    href: reference-connect-health-user-privacy.md
+  - name: 德国的 Azure AD Connect
+    href: reference-connect-germany.md
+  - name: DirSync 弃用
+    href: reference-connect-dirsync-deprecated.md
+  - name: 同步的属性
+    href: reference-connect-sync-attributes-synchronized.md
+  - name: 函数引用
+    href: reference-connect-sync-functions-reference.md
+  - name: Azure AD 联合身份验证兼容性列表
+    href: how-to-connect-fed-compatibility.md
+ms.openlocfilehash: e0485c86f365c93362fed792a41ec835680a1ee7
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46300470"
