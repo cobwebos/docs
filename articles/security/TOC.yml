@@ -16,8 +16,6 @@ items:
     href: abstract-container-security-microsoft-azure.md
   - name: 实现运营安全
     href: abstract-azure-operational-security.md
-  - name: Azure 中的监管
-    href: governance-in-azure.md
   - name: Azure 云中的隔离
     href: azure-isolation.md
   - name: 安全混合网络体系结构
@@ -38,6 +36,7 @@ items:
   - name: 磁盘加密
     items:
     - name: 最佳实践
+      displayName: transit
       href: azure-security-data-encryption-best-practices.md
     - name: 静态数据加密
       href: azure-security-encryption-atrest.md
@@ -64,12 +63,16 @@ items:
       - name: 故障排除
         href: azure-security-disk-encryption-tsg.md
       - name: 使用 Azure AD 应用的 Azure 磁盘加密（以前的版本）
+        displayName: active directory
         items:
         - name: 使用 Azure AD 应用的磁盘加密先决条件
+          displayName: active directory
           href: azure-security-disk-encryption-prerequisites-aad.md
         - name: 使用 Azure AD 应用的磁盘加密（用于 Windows VM）
+          displayName: active directory
           href: azure-security-disk-encryption-windows-aad.md
         - name: 使用 Azure AD 应用的磁盘加密（用于 Linux VM）
+          displayName: active directory
           href: azure-security-disk-encryption-linux-aad.md
   - name: Azure 存储安全
     href: security-storage-overview.md
@@ -113,12 +116,16 @@ items:
     href: security-identity-management-overview.md
     items:
     - name: 选择 Azure AD 身份验证
+      displayName: identity, active directory
       href: azure-ad-choose-authn.md
     - name: 安全清单
+      displayName: identity, active directory, password
       href: azure-ad-secure-steps.md
     - name: 最佳实践
+      displayName: password, identity, active directory
       href: azure-security-identity-management-best-practices.md
     - name: 对订阅管理员强制实施 MFA
+      displayName: identity
       href: azure-security-global-admin.md
   - name: 网络安全
     href: security-network-overview.md
@@ -172,10 +179,12 @@ items:
       - name: 入门
         href: security-azure-log-integration-get-started.md
       - name: 集成 Azure AD 审核日志
+        displayName: active directory
         href: security-azure-log-integration-ad.md
       - name: 集成安全中心警报
         href: security-azure-log-integration-security-center.md
       - name: 集成 Key Vault 中的日志
+        displayName: keyvault
         href: security-azure-log-integration-keyvault-eventhub.md
       - name: 常见问题解答
         href: security-azure-log-integration-faq.md
@@ -187,14 +196,17 @@ items:
     - name: 安全清单
       href: azure-operational-security-checklist.md
 - name: 管理和符合性
+  displayName: blueprint
   items:
   - name: 受 AU 保护
+    displayName: blueprint
     items:
     - name: IaaS Web 应用程序
       href: ./blueprints/au-protected-iaaswa-overview.md
     - name: PaaS Web 应用程序
       href: ./blueprints/au-protected-paaswa-overview.md
   - name: FedRAMP
+    displayName: blueprint
     items:
     - name: 数据分析
       href: ./blueprints/fedramp-analytics-overview.md
@@ -205,6 +217,7 @@ items:
     - name: PaaS Web 应用程序
       href: ./blueprints/fedramp-paaswa-overview.md
   - name: FFIEC
+    displayName: blueprint
     items:
     - name: 数据分析
       href: ./blueprints/ffiec-analytics-overview.md
@@ -215,6 +228,7 @@ items:
     - name: PaaS Web 应用程序
       href: ./blueprints/ffiec-paaswa-overview.md
   - name: GDPR
+    displayName: blueprint
     items:
     - name: 数据分析
       href: ./blueprints/gdpr-analytics-overview.md
@@ -225,10 +239,12 @@ items:
     - name: PaaS Web 应用程序
       href: ./blueprints/gdpr-paaswa-overview.md
   - name: HIPAA/HITRUST
+    displayName: blueprint
     items:
     - name: 运行状况数据和 AI
       href: ./blueprints/azure-health.md
   - name: NIST SP 800-171
+    displayName: blueprint
     items:
     - name: 数据分析
       href: ./blueprints/nist171-analytics-overview.md
@@ -239,6 +255,7 @@ items:
     - name: PaaS Web 应用程序
       href: ./blueprints/nist171-paaswa-overview.md
   - name: PCI DSS
+    displayName: blueprint
     items:
     - name: 数据分析
       href: ./blueprints/pcidss-analytics-overview.md
@@ -249,10 +266,12 @@ items:
     - name: PaaS Web 应用程序
       href: ./blueprints/pcidss-paaswa-overview.md
   - name: TIC
+    displayName: blueprint
     items:
     - name: 与 Azure 的受信任 Internet 连接
       href: ./compliance/compliance-tic.md
   - name: UK NHS
+    displayName: blueprint
     items:
     - name: 数据分析
       href: ./blueprints/uknhs-analytics-overview.md
@@ -263,6 +282,7 @@ items:
     - name: PaaS Web 应用程序
       href: ./blueprints/uknhs-paaswa-overview.md
   - name: 英国官方
+    displayName: blueprint
     items:
     - name: IaaS Web 应用程序
       href: ./blueprints/ukofficial-iaaswa-overview.md
@@ -318,9 +338,9 @@ items:
         href: azure-security-threat-modeling-tool-sensitive-data.md
       - name: 会话管理
         href: azure-security-threat-modeling-tool-session-management.md
-ms.openlocfilehash: 2e0bdab31a721c5b55488ac21579f0cb9ac45151
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 99ff7a6ba5a2289855739ce8b269c4b3aae10e61
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841558"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364850"
