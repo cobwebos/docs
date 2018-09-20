@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 09/19/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 92c0ad6dfde4fc83a912b4a3387d8b586e72809c
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 6a929c0226734a95e088e78307f2bbcc0571adef
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630437"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364595"
 ---
 # <a name="register-azure-stack-with-azure"></a>将 Azure Stack 注册到 Azure
 
@@ -45,18 +45,18 @@ ms.locfileid: "45630437"
 
 将 Azure Stack 注册到 Azure 之前，必须准备好：
 
-- Azure 订阅的订阅 ID。 若要获取的 ID，登录到 Azure 中，单击**所有服务**。 然后，在**常规**类别中，选择**订阅**，单击所需的订阅并在**Essentials**可以找到订阅 id。
+- Azure 订阅的订阅 ID。 EA、 CSP 或 CSP 共享的服务注册为支持订阅。 Csp 需要决定是否[使用 CSP 或 CSPSS 订阅](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-cspss-subscription)。<br><br>若要获取的 ID，登录到 Azure 中，单击**所有服务**。 然后，在**常规**类别中，选择**订阅**，单击所需的订阅并在**Essentials**可以找到订阅 id。
 
   > [!Note]  
   > 当前不支持德国云订阅。
 
-- 订阅所有者的帐户用户名和密码（支持 MSA/2FA 帐户）。
+- 用户名和密码的帐户的所有者的订阅。
 
 - 用户帐户必须有权访问 Azure 订阅并且有权在与该订阅相关联的目录中创建标识应用程序和服务主体。
 
 - 已注册 Azure Stack 资源提供程序（请参阅下面的“注册 Azure Stack 资源提供程序”部分以了解详细信息）。
 
-注册后，不需要进行 Azure Active Directory 全局管理员权限。 但是，某些操作可能需要全局管理员凭据。 例如，资源提供程序安装程序脚本或需要要向其授予权限的新功能。 你可以暂时重新使用该帐户的全局管理员权限或使用单独的全局管理员帐户的所有者*默认提供商订阅*。
+注册后，不需要进行 Azure Active Directory 全局管理员权限。 但是，某些操作可能需要全局管理员凭据。 例如，资源提供程序安装程序脚本或需要要向其授予权限的新功能。 你可以暂时恢复该帐户的全局管理员权限或使用单独的全局管理员帐户的所有者*默认提供商订阅*。
 
 如果没有符合这些要求的 Azure 订阅，则可以[创建免费的 Azure 帐户此处](https://azure.microsoft.com/free/?b=17.06)。 注册 Azure Stack 不会对 Azure 订阅收取任何费用。
 

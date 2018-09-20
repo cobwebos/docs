@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/19/2018
 ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: d09dec2f327d8b5911a4e55832ba106838c7ebc3
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 21fd3a33181542d86eccc4292ae68f7ce25e0a05
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42139733"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366720"
 ---
 # <a name="azure-resource-manager-template-considerations"></a>Azure 资源管理器模板注意事项
 
@@ -34,15 +34,17 @@ ms.locfileid: "42139733"
 
 ## <a name="public-namespaces"></a>公共命名空间
 
-由于 Azure Stack 托管在数据中心中，它的服务终结点命名空间与 Azure 公有云不同。 因此，如果尝试将 Azure 资源管理器模板部署到 Azure Stack，这些模板中的硬编码公共终结点会失败。 可以使用 *reference* 和 *concatenate* 函数动态构建服务终结点，以便在部署期间从资源提供程序检索值。 例如，而非硬编码*blob.core.windows.net*在模板中检索[primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-simple-windows-vm/azuredeploy.json#L201)可动态设置*osDisk.URI*终结点：
+由于 Azure Stack 托管在数据中心中，它的服务终结点命名空间与 Azure 公有云不同。 因此，如果尝试将 Azure 资源管理器模板部署到 Azure Stack，这些模板中的硬编码公共终结点会失败。 可以使用 *reference* 和 *concatenate* 函数动态构建服务终结点，以便在部署期间从资源提供程序检索值。 例如，而非硬编码*blob.core.windows.net*在模板中检索[primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-vm-windows-create/azuredeploy.json#L175)可动态设置*osDisk.URI*终结点：
 
-     "osDisk": {"name": "osdisk","vhd": {"uri":
-     "[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2015-06-15').primaryEndpoints.blob, variables('vmStorageAccountContainerName'),
-      '/',variables('OSDiskName'),'.vhd')]"}}
+```json
+"osDisk": {"name": "osdisk","vhd": {"uri":
+"[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2015-06-15').primaryEndpoints.blob, variables('vmStorageAccountContainerName'),
+ '/',variables('OSDiskName'),'.vhd')]"}}
+```
 
 ## <a name="api-versioning"></a>API 版本控制
 
-Azure 服务版本在 Azure 和 Azure Stack 之间可能有所不同。 每个资源都需要有 **apiVersion** 属性，用于定义所提供的功能。 若要确保 API 版本在 Azure Stack 中兼容，以下 API 版本适用于每个资源提供程序：
+Azure 服务版本在 Azure 和 Azure Stack 之间可能有所不同。 每个资源都需要有 **apiVersion** 属性，用于定义所提供的功能。 若要确保 Azure Stack 中的 API 版本兼容，以下 API 版本是为每个资源提供程序有效的：
 
 | 资源提供程序 | apiVersion |
 | --- | --- |
@@ -54,7 +56,7 @@ Azure 服务版本在 Azure 和 Azure Stack 之间可能有所不同。 每个�
 
 ## <a name="template-functions"></a>模板函数
 
-Azure 资源管理器[函数](../../azure-resource-manager/resource-group-template-functions.md)提供生成动态模板所需的功能。 例如，可以对如下任务使用函数：
+Azure 资源管理器[函数](../../azure-resource-manager/resource-group-template-functions.md)提供生成动态模板所需的功能。 例如，您可以使用函数的任务如：
 
 * 连接或修整字符串。
 * 引用其他资源的值。
@@ -67,20 +69,22 @@ Azure 资源管理器[函数](../../azure-resource-manager/resource-group-templa
 
 ## <a name="resource-location"></a>资源位置
 
-在部署过程中，Azure 资源管理器模板使用位置属性来放置资源。 在 Azure 中，位置是指美国西部或南美洲等区域。 在 Azure Stack 中，位置有所不同，因为 Azure Stack 在数据中心内。 若要确保模板可在 Azure 和 Azure Stack 之间转移，在部署单个资源时应引用资源组位置。 可以使用 `[resourceGroup().Location]` 执行此操作，以确保所有资源均继承资源组位置。 以下摘录是在部署存储帐户时使用此函数的示例：
+Azure 资源管理器模板使用`location`属性来将资源放在部署过程。 在 Azure 中，位置是指美国西部或南美洲等区域。 在 Azure Stack 中，位置有所不同，因为 Azure Stack 在数据中心内。 若要确保 Azure 和 Azure Stack 之间转移的模板，应在部署单个资源引用资源组位置。 可以使用 `[resourceGroup().Location]` 执行此操作，以确保所有资源均继承资源组位置。 下面的代码是部署的存储帐户时使用此函数的示例：
 
-    "resources": [
-    {
-      "name": "[variables('storageAccountName')]",
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "[variables('apiVersionStorage')]",
-      "location": "[resourceGroup().location]",
-      "comments": "This storage account is used to store the VM disks",
-      "properties": {
-      "accountType": "Standard_GRS"
-      }
-    }
-    ]
+```json
+"resources": [
+{
+  "name": "[variables('storageAccountName')]",
+  "type": "Microsoft.Storage/storageAccounts",
+  "apiVersion": "[variables('apiVersionStorage')]",
+  "location": "[resourceGroup().location]",
+  "comments": "This storage account is used to store the VM disks",
+  "properties": {
+  "accountType": "Standard_GRS"
+  }
+}
+]
+```
 
 ## <a name="next-steps"></a>后续步骤
 

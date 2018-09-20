@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 09/18/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: b2f4fbca2dcbdd537302746c7b6109e467ea31d7
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 4013b7136fd365b1d37348cfc1f0b46cce787ce2
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720219"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363117"
 ---
 # <a name="deploy-templates-using-the-azure-stack-portal"></a>使用 Azure Stack 门户部署模板
 
@@ -40,4 +40,6 @@ ms.locfileid: "44720219"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [通过 PowerShell 部署模板](azure-stack-deploy-template-powershell.md)
+若要了解有关部署模板的详细信息，请参阅：
+
+[通过 PowerShell 部署模板](azure-stack-deploy-template-powershell.md)
