@@ -15,22 +15,24 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 823e8694b574acdde122f8d5224b04d3872b6820
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: c24d79d6983f7c32f5c563192bcfe412da586ef2
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190735"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603481"
 ---
 # <a name="joins-in-log-analytics-queries"></a>Log Analytics 查询中的联接
 
 > [!NOTE]
 > 在学习本课程之前，需完成 [Analytics 门户入门](get-started-analytics-portal.md)和[查询入门](get-started-queries.md)。
 
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
+
 利用联接，可在同一查询中分析来自多个表的数据。 它们通过匹配指定列的值来合并两个数据集的行。
 
 
-```OQL
+```KQL
 SecurityEvent 
 | where EventID == 4624     // sign-in events
 | project Computer, Account, TargetLogonId, LogonTime=TimeGenerated
@@ -62,7 +64,7 @@ on $left.key1 == $right.key2
 ## <a name="lookup-tables"></a>查找表
 联接的常见用法是通过 `datatable` 静态映射值，这有助于将结果转换为更易呈现的形式。 例如，使用每个事件 ID 的事件名称来丰富安全事件数据。
 
-```OQL
+```KQL
 let DimTable = datatable(EventID:int, eventName:string)
   [
     4625, "Account activity",

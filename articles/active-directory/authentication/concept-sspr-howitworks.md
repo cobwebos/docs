@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 54e6b4f5804e7390b7574aa60b4d3a76df15da11
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 5416c8ada8fcc7f630d68f223b88c50209d14438
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42145481"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296390"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>工作原理：Azure AD 自助密码重置
 
@@ -161,8 +161,8 @@ ms.locfileid: "42145481"
 本页提供了本地写回客户端的快速状态，根据当前配置将显示以下消息之一：
 
 * 已启动并运行本地写回客户端。
-* Azure AD 处于联机状态并连接到本地写回客户端。 但是，似乎 Azure AD Connect 的已安装版本已经过期了。 请考虑[更新 Azure AD Connect](./../connect/active-directory-aadconnect-upgrade-previous-version.md)，确保拥有最新连接功能和重要 bug 修复。
-* 很遗憾，因为 Azure AD Connect 的已安装版本已过期，因此无法查看本地写回客户端状态。 [更新 Azure AD Connect](./../connect/active-directory-aadconnect-upgrade-previous-version.md) 可查看连接状态。
+* Azure AD 处于联机状态并连接到本地写回客户端。 但是，似乎 Azure AD Connect 的已安装版本已经过期了。 请考虑[更新 Azure AD Connect](../hybrid/how-to-upgrade-previous-version.md)，确保拥有最新连接功能和重要 bug 修复。
+* 很遗憾，因为 Azure AD Connect 的已安装版本已过期，因此无法查看本地写回客户端状态。 [更新 Azure AD Connect](../hybrid/how-to-upgrade-previous-version.md) 可查看连接状态。
 * 很遗憾，现在似乎无法连接到本地写回客户端。 [对 Azure AD Connect 进行故障排除](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity)以还原连接。
 * 很遗憾，因为密码写回未正确配置，无法连接到本地写回客户端。 [配置密码写回](howto-sspr-writeback.md)以还原连接。
 * 很遗憾，现在似乎无法连接到本地写回客户端。 这可能是因我们终端的临时问题导致。 如果问题仍然存在，[对 Azure AD Connect 进行故障排除](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity)以还原连接。

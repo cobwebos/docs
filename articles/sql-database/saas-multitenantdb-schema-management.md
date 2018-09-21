@@ -8,18 +8,18 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 01/03/2018
+ms.date: 09/19/2018
 ms.reviewers: billgib
 ms.author: genemi
-ms.openlocfilehash: 026f3450535e4bed6a636fc5ae6ee9d821dbbb72
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 2f22ed862f9b45334a961f80e47ee2b4634e46fb
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247660"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498328"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>在使用分片多租户 SQL 数据库的 SaaS 应用程序中管理架构
-
+ 
 本教程探讨在软件即服务 (SaaS) 应用程序中维护大批量数据库时存在的挑战。 介绍有关跨大批量数据库规划架构更改的解决方案。
 
 与任何应用程序一样，Wingtip Tickets SaaS 应用也会随时间不断改进，并且会不时需要对数据库进行更改。 这些更改可能会影响架构或引用数据，或需要实施数据库维护任务。 如果 SaaS 应用程序使用“每租户一个数据库”模式，则有可能必须在数目庞大的租户数据库中协调更改。 此外，必须将这些更改并入数据库预配过程，以确保新数据库在创建时便包含这些更改。

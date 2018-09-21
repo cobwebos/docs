@@ -15,24 +15,26 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 359e5e671287c4d330deeb2d3573877d9ee5d1c5
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: acf51056a084abc08bda2d7f73b561f442f57784
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190702"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605516"
 ---
 # <a name="creating-charts-and-diagrams-from-log-analytics-queries"></a>通过 Log Analytics 查询创建图表和关系图
 
 > [!NOTE]
 > 在学习本课程之前，需完成 [Log Analytics 查询中的高级聚合](advanced-aggregations.md)。
 
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
+
 本文在 Azure Log Analytics 中以不同的方式显示数据时的各种可视化效果。
 
 ## <a name="charting-the-results"></a>绘制结果图表
 首先查看在过去 1 小时内，每个操作系统占用了多少台计算机：
 
-```OQL
+```KQL
 Heartbeat
 | where TimeGenerated > ago(1h)
 | summarize count(Computer) by OSType  
@@ -50,7 +52,7 @@ Heartbeat
 ## <a name="timecharts"></a>时间图表
 显示处理器时间的平均值、第 50 位百分值和第 95 位百分位值（按 1 小时的箱数计）。 查询将生成多个序列，然后你可选择要在时间图表中显示的序列：
 
-```OQL
+```KQL
 Perf
 | where TimeGenerated > ago(1d) 
 | where CounterName == "% Processor Time" 
@@ -65,7 +67,7 @@ Perf
 
 参考线可帮助你轻松识别指标是否超出特定阈值。 要向图表添加一行，请用常数列扩展数据集：
 
-```OQL
+```KQL
 Perf
 | where TimeGenerated > ago(1d) 
 | where CounterName == "% Processor Time" 
@@ -78,7 +80,7 @@ Perf
 ## <a name="multiple-dimensions"></a>多个维度
 `summarize` 的 `by` 字句中的多个表达式在结果中创建多个行，每个值组合对应一行。
 
-```OQL
+```KQL
 SecurityEvent
 | where TimeGenerated > ago(1d)
 | summarize count() by tostring(EventID), AccountType, bin(TimeGenerated, 1h)

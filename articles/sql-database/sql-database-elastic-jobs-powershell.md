@@ -7,16 +7,20 @@ author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 06/14/2018
 ms.author: sstein
-ms.openlocfilehash: d1869dd689ef090978c3835e0a16fec82dfb5c05
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3efee2f9a4b205b87a65eb473271b0ab5e58046d
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648680"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498413"
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>使用 PowerShell 创建和管理 SQL 数据库弹性作业（预览）
+
+
+[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
+
 
 使用适用于**弹性数据库作业**的 PowerShell API（预览版），可以定义要针对哪组数据库执行哪些脚本。 本文说明如何使用 PowerShell cmdlet 创建和管理**弹性数据库作业**。 请参阅[弹性作业概述](sql-database-elastic-jobs-overview.md)。 
 
@@ -39,7 +43,7 @@ ms.locfileid: "34648680"
 <table style="width:100%">
   <tr>
     <th>对象类型</th>
-    <th>说明</th>
+    <th>Description</th>
     <th>相关的 PowerShell API</th>
   </tr>
   <tr>
@@ -209,7 +213,7 @@ ms.locfileid: "34648680"
 * 凭据应该具有执行作业任务所需的最低权限。  有关详细信息，请参阅这篇 SQL Server MSDN [授权和权限](https://msdn.microsoft.com/library/bb669084.aspx) 文章。
 
 ### <a name="to-create-an-encrypted-credential-for-job-execution-across-databases"></a>跨数据库创建执行作业所需的加密凭据
-创建新的加密凭据时，[**Get-Credential cmdlet**](https://technet.microsoft.com/library/hh849815.aspx) 会提示用户输入可以传递给 [**New-AzureSqlJobCredential cmdlet**](/powershell/module/elasticdatabasejobs/new-azuresqljobcredential) 的用户名和密码。
+创建新的加密凭据时，[**Get-Credential cmdlet**](/powershell/module/microsoft.powershell.security/get-credential) 会提示用户输入可以传递给 [**New-AzureSqlJobCredential cmdlet**](/powershell/module/elasticdatabasejobs/new-azuresqljobcredential) 的用户名和密码。
 
     $credentialName = "{Credential Name}"
     $databaseCredential = Get-Credential

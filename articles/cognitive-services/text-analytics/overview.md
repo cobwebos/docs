@@ -1,20 +1,21 @@
 ---
-title: 文本分析概述 - Azure 认知服务 | Microsoft Docs
+title: 什么是文本分析？
+titleSuffix: Azure Cognitive Services
 description: Azure 认知服务中用于情绪分析、关键短语提取、语言检测和实体链接的文本分析。
 services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
 ms.technology: text-analytics
-ms.topic: article
-ms.date: 8/30/2018
+ms.topic: overview
+ms.date: 09/12/2018
 ms.author: ashmaka
-ms.openlocfilehash: 71af2bcbf58279681bbea66d4f76e951a2efce59
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: ffd528da1e8c94fdf1fe01bfb6820dc36c54824c
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43341480"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604818"
 ---
 # <a name="what-is-text-analytics"></a>什么是文本分析？
 

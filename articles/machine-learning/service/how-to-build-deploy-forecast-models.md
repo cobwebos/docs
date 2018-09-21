@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: mattcon
 author: matthewconners
 ms.date: 07/13/2018
-ms.openlocfilehash: 60eecf134f067d68326fc23ade8ed2a5a7ae7ac4
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 9bdda67f08b9fbee20bdcc11186b97a3d942b778
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070326"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580661"
 ---
 # <a name="build-and-deploy-forecasting-models-with-azure-machine-learning"></a>使用 Azure 机器学习生成和部署预测模型
 
@@ -106,7 +106,7 @@ print('imports done')
 
 ## <a name="load-data-and-explore"></a>加载并探索数据
 
-此代码片段演示开始处理原始数据集（在本例中为 [Dominick's Finer Foods 的数据](https://research.chicagobooth.edu/kilts/marketing-databases/dominicks)）的典型过程。  也可以使用便捷函数 [load_dominicks_oj_data](https://docs.microsoft.com/en-us/python/api/ftk.data.dominicks_oj.load_dominicks_oj_data)。
+此代码片段演示开始处理原始数据集（在本例中为 [Dominick's Finer Foods 的数据](https://research.chicagobooth.edu/kilts/marketing-databases/dominicks)）的典型过程。  也可以使用便捷函数 [load_dominicks_oj_data](https://docs.microsoft.com/python/api/ftk.data.dominicks_oj.load_dominicks_oj_data)。
 
 
 ```python
@@ -337,7 +337,7 @@ print('{} time series in the data frame.'.format(nseries))
 
 数据包含数据帧中店铺和品牌的大约 250 种不同组合。 每种组合定义其自身的销售时序。 
 
-可以结合 _grain_（粒度）使用 [TimeSeriesDataFrame](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest) 类，在单个数据结构中方便地为多个时序建模。 粒度由 `store` 和 `brand` 列指定。
+可以结合 _grain_（粒度）使用 [TimeSeriesDataFrame](https://docs.microsoft.com/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest) 类，在单个数据结构中方便地为多个时序建模。 粒度由 `store` 和 `brand` 列指定。
 
 _grain_ 与 _group_ 之间的差别在于，grain 在现实世界中始终具有实际含义，而 group 则不一定有。 内部包函数使用 group 从多个时序生成单个模型（如果用户认为这种分组有助于提高模型性能）。 默认情况下，group 设置为等于 grain，并且会针对每个粒度生成单个模型。 
 
@@ -499,7 +499,7 @@ whole_tsdf.loc[pd.IndexSlice['1990-06':'1990-09', 2, 'dominicks'], ['Quantity']]
 
 
 
-[TimeSeriesDataFrame.ts_report](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#ts-report) 函数生成时序数据帧的综合报告。 该报告包括一般的数据说明，以及特定于时序数据的统计信息。 
+[TimeSeriesDataFrame.ts_report](https://docs.microsoft.com/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#ts-report) 函数生成时序数据帧的综合报告。 该报告包括一般的数据说明，以及特定于时序数据的统计信息。 
 
 
 ```python
@@ -886,14 +886,14 @@ whole_tsdf.head()
 
 ## <a name="preprocess-data-and-impute-missing-values"></a>预处理数据并插补缺失值
 
-首先，使用 [last_n_periods_split](https://docs.microsoft.com/en-us/python/api/ftk.ts_utils?view=azure-ml-py-latest) 实用工具函数将数据拆分成训练集和测试集。 生成的测试集包含每个时序的最后 40 个观测值。 
+首先，使用 [last_n_periods_split](https://docs.microsoft.com/python/api/ftk.ts_utils?view=azure-ml-py-latest) 实用工具函数将数据拆分成训练集和测试集。 生成的测试集包含每个时序的最后 40 个观测值。 
 
 
 ```python
 train_tsdf, test_tsdf = last_n_periods_split(whole_tsdf, 40)
 ```
 
-基本时序模型需要连续时序。 使用 [check_regularity_by_grain](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#check-regularity-by-grain) 函数检查时序是否规则，即，它们是否包含按固定间隔采样的时间索引。
+基本时序模型需要连续时序。 使用 [check_regularity_by_grain](https://docs.microsoft.com/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#check-regularity-by-grain) 函数检查时序是否规则，即，它们是否包含按固定间隔采样的时间索引。
 
 
 ```python
@@ -968,7 +968,7 @@ print(ts_regularity[ts_regularity['regular'] == False])
     [213 rows x 2 columns]
     
 
-可以看到，大部分时序（249 个中的 213 个）都是不规则的。 需要执行[插补转换](https://docs.microsoft.com/en-us/python/api/ftk.transforms.ts_imputer.timeseriesimputer?view=azure-ml-py-latest)来填入缺少的销量值。 尽管有许多的插补选项可用，但以下示例代码使用的是线性内插。
+可以看到，大部分时序（249 个中的 213 个）都是不规则的。 需要执行[插补转换](https://docs.microsoft.com/python/api/ftk.transforms.ts_imputer.timeseriesimputer?view=azure-ml-py-latest)来填入缺少的销量值。 尽管有许多的插补选项可用，但以下示例代码使用的是线性内插。
 
 
 ```python
@@ -1034,7 +1034,7 @@ arima_model = Arima(oj_series_freq, arima_order)
 
 ### <a name="combine-multiple-models"></a>组合多个模型
 
-使用 [ForecasterUnion](https://docs.microsoft.com/en-us/python/api/ftk.models.forecaster_union?view=azure-ml-py-latest) 估算器可以组合多个估算器，并使用一行代码对其进行拟合/预测。
+使用 [ForecasterUnion](https://docs.microsoft.com/python/api/ftk.models.forecaster_union?view=azure-ml-py-latest) 估算器可以组合多个估算器，并使用一行代码对其进行拟合/预测。
 
 
 ```python
@@ -1248,7 +1248,7 @@ print(train_feature_tsdf.head())
 
  **RegressionForecaster**
 
-[RegressionForecaster](https://docs.microsoft.com/en-us/python/api/ftk.models.regression_forecaster.regressionforecaster?view=azure-ml-py-latest) 函数包装 sklearn 回归估算器，以便能够在 TimeSeriesDataFrame 中训练这些估算器。 包装的预测器还会将每个组（在本例中为店铺）放入同一模型。 预测器可以学习被认为类似的、并可汇集在一起的一组时序的一个模型。 一组时序的一个模型通常使用较长时序中的数据来改善较短时序的预测结果。 可将这些模型替换为库中支持回归的其他任何模型。 
+[RegressionForecaster](https://docs.microsoft.com/python/api/ftk.models.regression_forecaster.regressionforecaster?view=azure-ml-py-latest) 函数包装 sklearn 回归估算器，以便能够在 TimeSeriesDataFrame 中训练这些估算器。 包装的预测器还会将每个组（在本例中为店铺）放入同一模型。 预测器可以学习被认为类似的、并可汇集在一起的一组时序的一个模型。 一组时序的一个模型通常使用较长时序中的数据来改善较短时序的预测结果。 可将这些模型替换为库中支持回归的其他任何模型。 
 
 
 ```python
@@ -1372,7 +1372,7 @@ all_errors.sort_values('MedianAPE')
 ![png](./media/how-to-build-deploy-forecast-models/cv_figure.PNG)
 
 **参数扫描**  
-[TSGridSearchCV](https://docs.microsoft.com/en-us/python/api/ftk.model_selection.search.tsgridsearchcv?view=azure-ml-py-latest) 类详尽地搜索指定的参数值，并使用 `RollingOriginValidator` 评估参数性能，以便找到最佳参数。
+[TSGridSearchCV](https://docs.microsoft.com/python/api/ftk.model_selection.search.tsgridsearchcv?view=azure-ml-py-latest) 类详尽地搜索指定的参数值，并使用 `RollingOriginValidator` 评估参数性能，以便找到最佳参数。
 
 
 ```python

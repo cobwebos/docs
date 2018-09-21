@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: cdce0ae223a637ac30ed472d2bf711aa36958414
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 8d5f31f09d51794f9ad3c126edf2fd935f379221
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346757"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296459"
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>将 AD FS 本地应用迁移到 Azure 
 
@@ -238,4 +238,4 @@ SAML 2.0 应用程序可以通过市场中的 Azure AD 应用程序库与 Azure 
 
 - [使用 Azure Active Directory 管理应用程序](what-is-application-management.md)
 - [管理对应用的访问权限](what-is-access-management.md)
-- [Azure AD Connect 联合身份验证](../active-directory-aadconnectfed-whatis.md)
+- [Azure AD Connect 联合身份验证](../hybrid/how-to-connect-fed-whatis.md)

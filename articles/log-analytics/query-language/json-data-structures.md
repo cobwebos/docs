@@ -15,18 +15,19 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: f027754f26a9063aa5faa548fd01576624811005
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 1b9a8e4a8706dea43e33331cd196fbe2ad877a3a
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190700"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605549"
 ---
 # <a name="working-with-json-and-data-structures-in-log-analytics-queries"></a>在 Log Analytics 查询中配合使用 JSON 和数据结构
 
 > [!NOTE]
 > 在学习本课程之前，需完成 [Analytics 门户入门](get-started-analytics-portal.md)和[查询入门](get-started-queries.md)。
 
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 嵌套的对象是指在键值对的数组或映射中包含其他对象的对象。 这些对象表示为 JSON 字符串。 本文介绍如何使用 JSON 来检索数据和分析嵌套的对象。
 
@@ -39,7 +40,7 @@ ms.locfileid: "40190700"
 
 对索引使用括号，并使用圆点来分隔元素：
 
-```OQL
+```KQL
 let hosts_report='{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}';
 print hosts_report
 | extend status = extractjson("$.hosts[0].status", hosts_report)
@@ -47,7 +48,7 @@ print hosts_report
 
 如果只使用括号表示法，结果是一样的：
 
-```OQL
+```KQL
 let hosts_report='{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}';
 print hosts_report 
 | extend status = extractjson("$['hosts'][0]['status']", hosts_report)
@@ -55,7 +56,7 @@ print hosts_report
 
 如果只有一个元素，则只能使用圆点表示法：
 
-```OQL
+```KQL
 let hosts_report='{"location":"North_DC", "status":"running", "rate":5}';
 print hosts_report 
 | extend status = hosts_report.status
@@ -67,7 +68,7 @@ print hosts_report
 ### <a name="parsejson"></a>parsejson
 要访问 json 结构中的多个元素，将其作为动态对象进行访问更为简单。 使用 `parsejson` 将文本数据强制转换为动态对象。 转换为动态类型后，即可使用其他功能来分析数据。
 
-```OQL
+```KQL
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
 print hosts_object 
 | extend status0=hosts_object.hosts[0].status, rate1=hosts_object.hosts[1].rate
@@ -78,7 +79,7 @@ print hosts_object
 ### <a name="arraylength"></a>arraylength
 使用 `arraylength` 计算数组中元素的数量：
 
-```OQL
+```KQL
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
 print hosts_object 
 | extend hosts_num=arraylength(hosts_object.hosts)
@@ -87,7 +88,7 @@ print hosts_object
 ### <a name="mvexpand"></a>mvexpand
 使用 `mvexpand` 将对象的属性拆分到单独的行中。
 
-```OQL
+```KQL
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
 print hosts_object 
 | mvexpand hosts_object.hosts[0]
@@ -98,7 +99,7 @@ print hosts_object
 ### <a name="buildschema"></a>buildschema
 使用 `buildschema` 获取允许对象的所有值的架构：
 
-```OQL
+```KQL
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
 print hosts_object 
 | summarize buildschema(hosts_object)
@@ -122,7 +123,7 @@ print hosts_object
 
 嵌套的对象可能具有不同架构，如下例所示：
 
-```OQL
+```KQL
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"status":"stopped", "rate":"3", "range":100}]}');
 print hosts_object 
 | summarize buildschema(hosts_object)
