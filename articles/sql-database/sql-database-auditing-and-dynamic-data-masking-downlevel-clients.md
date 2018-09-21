@@ -9,12 +9,13 @@ ms.custom: security
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: giladm
-ms.openlocfilehash: b615e9ff67788c2f02c2fa0c33e0de3331e77885
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: vanto
+ms.openlocfilehash: 9fcb070f41d699cef3ef11ba9b8feb6cdfd83ae5
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645623"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541207"
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL 数据库 - 针对表审核的下层客户端支持和 IP 终结点更改
 
@@ -69,7 +70,7 @@ ms.locfileid: "34645623"
 | 北欧 |104.41.209.221、40.85.139.245、137.116.251.66、40.85.142.176 |
 | 美国中南部 |191.238.184.128、40.84.190.84、23.102.160.153、40.84.186.66 |
 | 东南亚 |104.215.198.156、13.76.252.200、23.97.51.109、13.76.252.113 |
-| 欧洲西部 |104.40.230.120、13.80.23.64、137.117.171.161、13.80.8.37、104.47.167.215、40.118.56.193、104.40.176.73、40.118.56.20 |
+| 西欧 |104.40.230.120、13.80.23.64、137.117.171.161、13.80.8.37、104.47.167.215、40.118.56.193、104.40.176.73、40.118.56.20 |
 | 美国西部 |191.236.123.146、138.91.163.240、168.62.194.148、23.99.6.91 |
 | 美国西部 2 |13.66.224.156, 13.66.227.8 |
 | 美国中西部 |52.161.29.186, 52.161.27.213 |

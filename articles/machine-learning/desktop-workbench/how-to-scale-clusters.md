@@ -7,17 +7,17 @@ ms.author: aashishb
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/04/2017
-ms.openlocfilehash: 1f8dbe5ccae34ab185cbe5105ac793a0d401b48e
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: e547d778ebf34b55c0c18921cf28e2a78fd269cc
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831660"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35631323"
 ---
 # <a name="scaling-the-cluster-to-manage-web-service-throughput"></a>缩放群集以管理 Web 服务吞吐量
 
@@ -85,7 +85,7 @@ az ml service update realtime -i <service id> --autoscale-enabled true --autosca
 例如，将 `autoscale-min-replicas` 设置为 5 将创建 5 个副本。 为了达到最佳 Web 服务数，请将数量设置为值（如 10），然后监视 503 错误消息数。 然后对数量作出相应的调整。
 
 
-| 参数名称 | Type | 说明 |
+| 参数名称 | Type | Description |
 |--------------------|--------------------|--------------------|
 | `autoscale-enabled` | 布尔值 | 指定是否启用自动缩放。 默认值：true |
 | `autoscale-min-replicas` | integer | 指定最小 pod 数。 必须大于或等于 0。 默认值：1 |

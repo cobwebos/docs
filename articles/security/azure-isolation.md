@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: b112eee0e33654657bc6a57eec528c8a93bb077a
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 5710ebc1c52737e27aafa88eef5e9ae402f8e53f
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018397"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579832"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure 公有云中的隔离
 ##  <a name="introduction"></a>介绍
@@ -127,7 +127,7 @@ Microsoft 采取强硬措施保护数据免受不适当的访问或未经授权�
 Microsoft Azure 提供各种基于云的计算服务，包括大量计算实例和服务，它们可根据应用程序或企业的需求自动扩展和缩减。 这些计算实例和服务提供多个级别的隔离来保护数据，且不会降低客户所需配置的灵活性。
 
 ### <a name="isolated-virtual-machine-sizes"></a>独立虚拟机大小
-Azure 计算提供独立于特定硬件类型并专用于单个客户的虚拟机大小。  这些虚拟机大小非常适合于与其他客户的工作负载（涉及符合性和法规要求等元素）高度隔离的工作负载。  客户还可以选择利用[对嵌套虚拟机的 Azure 支持](https://azure.microsoft.com/en-us/blog/nested-virtualization-in-azure/)，对这些独立的虚拟机资源进一步细分。
+Azure 计算提供独立于特定硬件类型并专用于单个客户的虚拟机大小。  这些虚拟机大小非常适合于与其他客户的工作负载（涉及符合性和法规要求等元素）高度隔离的工作负载。  客户还可以选择利用[对嵌套虚拟机的 Azure 支持](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)，对这些独立的虚拟机资源进一步细分。
 
 使用独立大小可保证你的虚拟机将是在特定服务器实例上唯一运行的虚拟机。  当前的独立虚拟机产品/服务包括：
 * Standard_E64is_v3
@@ -138,7 +138,7 @@ Azure 计算提供独立于特定硬件类型并专用于单个客户的虚拟�
 * Standard_DS15_v2
 * Standard_D15_v2
 
-你可以在[此处](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-memory)了解有关每个独立大小。
+你可以在[此处](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)了解有关每个独立大小。
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>根 VM 和来宾 VM 之间的 Hyper-V 和根 OS 隔离
 Azure 的计算平台以计算机虚拟化为基础，这意味着所有客户代码都在 Hyper-V 虚拟机中执行。 在每个 Azure 节点（或网络终结点）上，都有一个虚拟机监控程序在硬件上直接运行，并将节点分为数目不定的来宾虚拟机 (VM)。

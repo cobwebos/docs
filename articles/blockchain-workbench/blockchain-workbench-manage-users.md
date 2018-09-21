@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 80f20e438b1d923e688aeef9e6b353642bd74c27
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: ff2c6a2d9b2aec7abc684a4b189ccf31c454aaeb
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34158929"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35631292"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>在 Azure Blockchain Workbench 中管理用户
 
@@ -40,7 +40,7 @@ Azure Blockchain Workbench 将 Azure Active Directory (Azure AD) 用于身份验
 
 5.  完成新用户的必填字段。 选择**创建**。
 
-若要更详细地了解如何管理 Azure AD 中的用户，请访问 [Azure AD](../active-directory/add-users-azure-active-directory.md) 文档。
+若要更详细地了解如何管理 Azure AD 中的用户，请访问 [Azure AD](../active-directory/fundamentals/add-users-azure-active-directory.md) 文档。
 
 ## <a name="manage-blockchain-workbench-administrators"></a>管理 Blockchain Workbench 管理员
 

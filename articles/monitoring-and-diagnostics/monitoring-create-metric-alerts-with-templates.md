@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 4/26/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 7289259214f90507c5b9cf527f19f0cf7026798c
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: be0ec31a05c0c1454e1af58b4a9c4ca959acbecf
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391447"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577117"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 模板创建指标警报
 本文介绍如何在 Azure Monitor 中使用 [Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)配置[较新的指标警报](monitoring-near-real-time-metric-alerts.md)。 使用资源管理器模板可以通过编程方式在多个环境中设置一致且可重现的警报。 较新的指标警报当前适用于[这套资源类型](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported)。
@@ -184,7 +184,7 @@ ms.locfileid: "44391447"
 }
 ```
 
-[此处提供](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts/createorupdate)了警报规则的架构和属性说明。
+[此处提供](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate)了警报规则的架构和属性说明。
 
 参数的值可以在命令行上设置，也可以通过参数文件设置。 下面提供一个示例参数文件。 
 

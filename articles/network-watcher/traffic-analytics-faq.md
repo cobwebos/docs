@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 9f7fb5009468dccae50190ee40a53d11040d0348
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: debefb329304235818b7b441122b90ae9a2834a9
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903741"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578304"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
 
@@ -58,7 +58,7 @@ ms.locfileid: "37903741"
 
 3. 若要列出分配给特定用户的所有角色，请使用 Get-AzureRmRoleAssignment -SignInName [用户电子邮件] -IncludeClassicAdministrators。 
 
-如果未看到任何输出，请与相应的订阅管理员联系以获取运行命令的权限。 有关详细信息，请参阅[使用 Azure PowerShell 管理基于角色的访问控制](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-powershell)。
+如果未看到任何输出，请与相应的订阅管理员联系以获取运行命令的权限。 有关详细信息，请参阅[使用 Azure PowerShell 管理基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)。
 
 
 ## <a name="in-which-azure-regions-are-traffic-analytics-available"></a>可在哪些 Azure 区域使用流量分析？
@@ -196,7 +196,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 流量分析计量。 该计量的基础是由服务处理流日志数据，并将生成的增强日志存储在 Log Analytics 工作区中。 
 
-例如，根据[定价计划](https://azure.microsoft.com/en-us/pricing/details/network-watcher/)，就美国中西部地区而言，如果流量分析处理的存储帐户中存储的流日志数据为 10 GB，而 Log Analytics 工作区中引入的增强日志为 1 GB 则适用的费用是：10 x 2.3$ + 1 x 2.76$ = 25.76$
+例如，根据[定价计划](https://azure.microsoft.com/pricing/details/network-watcher/)，就美国中西部地区而言，如果流量分析处理的存储帐户中存储的流日志数据为 10 GB，而 Log Analytics 工作区中引入的增强日志为 1 GB 则适用的费用是：10 x 2.3$ + 1 x 2.76$ = 25.76$
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>如何在地图视图中使用键盘导航？
 

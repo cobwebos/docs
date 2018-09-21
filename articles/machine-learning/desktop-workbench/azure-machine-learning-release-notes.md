@@ -6,16 +6,16 @@ author: hning86
 ms.author: haining
 manager: mwinkle
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: reference
 ms.date: 03/28/2018
-ms.openlocfilehash: 6085762f9f3874df8dd90866e387a581915dbbaf
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 9c135c1db557393a26e6e071f92b61fcbf3ae477
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831595"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35631489"
 ---
 # <a name="whats-new-in-azure-machine-learning"></a>Azure 机器学习新增功能
 

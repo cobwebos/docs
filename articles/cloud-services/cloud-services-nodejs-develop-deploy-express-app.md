@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jeconnoc
-ms.openlocfilehash: ac62baae2ececf257d22f8220d472c1bcb5ee082
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 260c63ed55b5cb2535567038f27626aa7a085550
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39012175"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574600"
 ---
 # <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>使用 Express 在 Azure 云服务中生成并部署 Node.js Web 应用程序
 
@@ -119,7 +119,7 @@ Node.js 包含核心运行时中最小的一个功能集。
 ![Web 浏览器中显示 Express 页。 URL 指示它现在托管在 Azure 上。](./media/cloud-services-nodejs-develop-deploy-express-app/node36.png)
 
 ## <a name="next-steps"></a>后续步骤
-有关详细信息，请参阅 [Node.js 开发人员中心](https://docs.microsoft.com/en-us/javascript/azure/?view=azure-node-latest)。
+有关详细信息，请参阅 [Node.js 开发人员中心](https://docs.microsoft.com/javascript/azure/?view=azure-node-latest)。
 
 [Node.js Web Application]: http://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
 [Express]: http://expressjs.com/

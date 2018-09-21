@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d0bb951e7392eb0f818ed0e9b5c17e203f94e753
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 91a85505eda34e11f0db9c5f3c46e33aad992ffe
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43087844"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736693"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>教程：使用数据工厂 REST API 构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
@@ -85,7 +85,7 @@ ms.locfileid: "43087844"
 
 ### <a name="azurestoragelinkedservicejson"></a>azurestoragelinkedservice.json
 > [!IMPORTANT]
-> 将 **accountname** 和 **accountkey** 分别替换为 Azure 存储帐户的名称和密钥。 要了解如何获取存储访问密钥，请在[管理存储帐户](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)中查看有关如何查看、复制和重新生成存储访问密钥的信息。
+> 将 **accountname** 和 **accountkey** 分别替换为 Azure 存储帐户的名称和密钥。 要了解如何获取存储访问密钥，请在[管理存储帐户](../../storage/common/storage-account-manage.md#access-keys)中查看有关如何查看、复制和重新生成存储访问密钥的信息。
 >
 >
 

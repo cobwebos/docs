@@ -4,17 +4,17 @@ description: 教程 - 使用 Azure 自动化状态配置管理服务器配置
 services: automation
 ms.service: automation
 ms.component: dsc
-author: DCtheGeek
-ms.author: dacoulte
+author: bobbytreed
+ms.author: robreed
 manager: carmonm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 3b4ecc7596af52312785ea7acaad18a7af8a5087
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 000875e4e591bcfe94ec99f8b16c8ec40bf52cf4
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005951"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629876"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>将服务器配置到所需状态并管理偏移
 
@@ -34,7 +34,7 @@ ms.locfileid: "40005951"
 - 一个 Azure 自动化帐户。 有关如何创建 Azure 自动化运行方式帐户的说明，请参阅 [Azure 运行方式帐户](automation-sec-configure-azure-runas-account.md)。
 - 一个运行 Windows Server 2008 R2 或更高版本的 Azure 资源管理器 VM（非经典）。 如需创建 VM 的说明，请参阅[在 Azure 门户中创建第一个 Windows 虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
 - Azure PowerShell 模块 3.6 版或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
-- 熟悉所需状态配置 (DSC)。 有关 DSC 文档的信息，请参阅 [Windows PowerShell 所需状态配置概述](https://docs.microsoft.com/powershell/dsc/overview)
+- 熟悉所需状态配置 (DSC)。 有关 DSC 文档的信息，请参阅 [Windows PowerShell Desired State Configuration 概述](https://docs.microsoft.com/powershell/dsc/overview)
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
@@ -148,9 +148,9 @@ $reports[0]
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要开始使用，请参阅 [Azure 自动化状态配置入门](automation-dsc-getting-started.md)
-- 要了解如何登记节点，请参阅[登记由 Azure 自动化状态配置管理的计算机](automation-dsc-onboarding.md)
-- 若要了解如何编译 DSC 配置，以便将它们分配给目标节点，请参阅[在 Azure 自动化状态配置中编译配置](automation-dsc-compile.md)
-- 有关 PowerShell cmdlet 参考，请参阅 [Azure 自动化状态配置 cmdlet](/powershell/module/azurerm.automation/#automation)
-- 有关定价信息，请参阅 [Azure 自动化状态配置定价](https://azure.microsoft.com/pricing/details/automation/)
-- 若要查看在持续部署管道中使用 Azure 自动化状态配置的示例，请参阅[使用 Azure 自动化状态配置和 Chocolatey 进行持续部署](automation-dsc-cd-chocolatey.md)
+- 有关入门信息，请参阅 [Azure Automation State Configuration 入门](automation-dsc-getting-started.md)
+- 要了解如何登记节点，请参阅[登记由 Azure Automation State Configuration 管理的计算机](automation-dsc-onboarding.md)
+- 若要了解如何编译 DSC 配置，以便将它们分配给目标节点，请参阅[在 Azure Automation State Configuration 中编译配置](automation-dsc-compile.md)
+- 有关 PowerShell cmdlet 参考，请参阅 [Azure Automation State Configuration cmdlet](/powershell/module/azurerm.automation/#automation)
+- 有关定价信息，请参阅 [Azure Automation State Configuration 定价](https://azure.microsoft.com/pricing/details/automation/)
+- 若要查看在持续部署管道中使用 Azure Automation State Configuration 的示例，请参阅[使用 Azure Automation State Configuration 和 Chocolatey 进行持续部署](automation-dsc-cd-chocolatey.md)

@@ -7,16 +7,16 @@ ms.author: haining
 manager: cgronlun
 ms.reviewer: mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/10/2018
-ms.openlocfilehash: 4b6ed5c70201b918a5bfa252719b2673303b38e9
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 0e37e1839d2248507a30de08e2ac4c975bd3b859
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830854"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35631599"
 ---
 # <a name="install-and-use-the-machine-learning-cli-for-top-tasks-in-azure-machine-learning"></a>在 Azure 机器学习中为最常见的任务安装和使用机器学习 CLI
 

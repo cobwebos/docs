@@ -1,8 +1,8 @@
 ---
-title: "Application Insights 中的性能计数器 | Microsoft 文档"
-description: "监视 Application Insights 中的系统和自定义的 .NET 性能计数器。"
+title: Application Insights 中的性能计数器 | Microsoft 文档
+description: 监视 Application Insights 中的系统和自定义的 .NET 性能计数器。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 5b816f4c-a77a-4674-ae36-802ee3a2f56d
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: 40821d32c5bdfe51bb3cb205660d6f25b2c3fadc
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 7ac0a5c00e0badf8882010ae0643f8ead98b56e0
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35631879"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 中的系统性能计数器
 Windows 提供了各种[性能计数器](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters)，例如 CPU 占用、内存、磁盘和网络使用情况。 也可以自行定义。 如果应用程序在对其具有管理访问权限的本地主机或虚拟机的 IIS 下运行，[Application Insights](app-insights-overview.md) 可以显示这些性能计数器。 图表指示实时应用程序可用的资源，并有助于确定服务器实例之间的不平衡负载。

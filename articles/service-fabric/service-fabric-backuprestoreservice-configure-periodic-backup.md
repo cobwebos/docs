@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2018
 ms.author: hrushib
-ms.openlocfilehash: 8cfa0e2a5aa1d7f560fe84f4eda18349f5d1d8b4
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 4aeb37d656dcb5ebca1a48253c418186dfca0a7a
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38992125"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575401"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>了解 Azure Service Fabric 中的定期备份配置
 
@@ -182,19 +182,19 @@ ms.locfileid: "38992125"
 ## <a name="suspend--resume-backup"></a>暂停和恢复备份
 某些情况下可能需要临时暂停定期数据备份。 在这种情况下，可以根据需要在“应用程序”、“服务”或“分区”上使用“暂停备份”API。 定期备份暂停将在应用程序层次结构的子树中从应用暂停的点开始向下传递。 
 
-* 当在某个“应用程序”上使用[暂停应用程序备份](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-suspendapplicationbackup) API 应用暂停时，此应用程序下的所有服务和分区都将暂停定期数据备份。
+* 当在某个“应用程序”上使用[暂停应用程序备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendapplicationbackup) API 应用暂停时，此应用程序下的所有服务和分区都将暂停定期数据备份。
 
-* 当在某个“服务”上使用[暂停服务备份](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-suspendservicebackup) API 应用暂停时，此服务下的所有分区都将暂停定期数据备份。
+* 当在某个“服务”上使用[暂停服务备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendservicebackup) API 应用暂停时，此服务下的所有分区都将暂停定期数据备份。
 
-* 当在某个“分区”上使用[暂停分区备份](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-suspendpartitionbackup) API 应用暂停时，此分区将暂停定期数据备份。
+* 当在某个“分区”上使用[暂停分区备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendpartitionbackup) API 应用暂停时，此分区将暂停定期数据备份。
 
 不再需要暂停时，可以使用各自的恢复备份 API 来恢复定期数据备份。 必须在暂停定期备份时所在的同一“应用程序”、“服务”或“分区”上进行恢复。
 
-* 如果暂停是在“应用程序”上应用的，则应当使用[恢复应用程序备份](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-resumeapplicationbackup) API 进行恢复。 
+* 如果暂停是在“应用程序”上应用的，则应当使用[恢复应用程序备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeapplicationbackup) API 进行恢复。 
 
-* 如果暂停是在“服务”上应用的，则应当使用[恢复服务备份](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-resumeservicebackup) API 进行恢复。
+* 如果暂停是在“服务”上应用的，则应当使用[恢复服务备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeservicebackup) API 进行恢复。
 
-* 如果暂停是在“分区”上应用的，则应当使用[恢复分区备份](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-resumepartitionbackup) API 进行恢复。
+* 如果暂停是在“分区”上应用的，则应当使用[恢复分区备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumepartitionbackup) API 进行恢复。
 
 ## <a name="auto-restore-on-data-loss"></a>在数据丢失时自动还原
 服务分区可能会由于意外故障而导致数据丢失。 例如，分区的三个副本中的两个（包括主副本）的磁盘数据已损坏或被擦除。
@@ -202,7 +202,7 @@ ms.locfileid: "38992125"
 当 Service Fabric 检测到分区丢失了数据时，它会对分区调用 `OnDataLossAsync` 接口方法并期望分区采取所需的操作来避免数据丢失。 在这种情况下，如果在分区上生效的备份策略将 `AutoRestoreOnDataLoss` 标志设置为 `true`，则将自动触发还原并使用此分区的最新可用备份。
 
 ## <a name="get-backup-configuration"></a>获取备份配置
-有单独的 API 可用来在“应用程序”、“服务”和“分区”作用域内获取备份配置信息。 这些 API 分别是[获取应用程序备份配置信息](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo)、[获取服务备份配置信息](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo)和[获取分区备份配置信息](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo)。 这些 API 主要返回适用的备份策略、备份策略应用于的作用域以及备份暂停详细信息。 下面是有关这些 API 的返回结果的简要说明。
+有单独的 API 可用来在“应用程序”、“服务”和“分区”作用域内获取备份配置信息。 这些 API 分别是[获取应用程序备份配置信息](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo)、[获取服务备份配置信息](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo)和[获取分区备份配置信息](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo)。 这些 API 主要返回适用的备份策略、备份策略应用于的作用域以及备份暂停详细信息。 下面是有关这些 API 的返回结果的简要说明。
 
 - 应用程序备份配置信息：提供在应用程序上应用的备份策略的详细信息，以及在属于该应用程序的服务和分区上被替代的所有策略。 它还包括应用程序及其服务和分区的暂停信息。
 
@@ -218,11 +218,11 @@ ms.locfileid: "38992125"
 
 下面是有关受支持变体的简要信息。
 
-- [获取应用程序备份列表](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getapplicationbackuplist)：返回属于给定 Service Fabric 应用程序的每个分区的可用备份的列表。
+- [获取应用程序备份列表](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackuplist)：返回属于给定 Service Fabric 应用程序的每个分区的可用备份的列表。
 
-- [获取服务备份列表](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getservicebackuplist)：返回属于给定 Service Fabric 服务的每个分区的可用备份的列表。
+- [获取服务备份列表](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackuplist)：返回属于给定 Service Fabric 服务的每个分区的可用备份的列表。
  
-- [获取分区备份列表](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getpartitionbackuplist)：返回指定分区的可用备份的列表。
+- [获取分区备份列表](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackuplist)：返回指定分区的可用备份的列表。
 
 ## <a name="next-steps"></a>后续步骤
 - [备份还原 REST API 参考](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)

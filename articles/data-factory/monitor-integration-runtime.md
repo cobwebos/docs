@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 8ca7ce2586513373c58552bb1f56b94715f15076
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 59c2f865ae5e056b0fabb360712f6eb622943145
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128443"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574606"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中监视集成运行时  
 **集成运行时**是 Azure 数据工厂用于在不同的网络环境之间提供多种数据集成功能的计算基础结构。 数据工厂提供三种类型的集成运行时：
@@ -87,7 +87,7 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 
 可以通过增加节点数进行横向扩展。 增加节点数时，并发作业限制为所有可用节点的并发作业限制值的总和。  例如，如果一个节点允许运行最多 12 个并发作业，那么再添加三个类似节点将允许运行最多 48 个并发作业（即 4 x 12）。 建议仅在以下情况下提高并发作业限制：在每个节点上使用默认值时，资源使用率较低。
 
-可以在 Azure 门户中覆盖计算得出的默认值。 选择“创建者”>“连接”>“集成运行时”>“编辑”>“节点”>“修改每个节点的并发作业值”。 也可以使用 PowerShell [update-azurermdatafactoryv2integrationruntimenode](https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactoryv2/update-azurermdatafactoryv2integrationruntimenode?view=azurermps-6.4.0#examples) 命令。
+可以在 Azure 门户中覆盖计算得出的默认值。 选择“创建者”>“连接”>“集成运行时”>“编辑”>“节点”>“修改每个节点的并发作业值”。 也可以使用 PowerShell [update-azurermdatafactoryv2integrationruntimenode](https://docs.microsoft.com/powershell/module/azurerm.datafactoryv2/update-azurermdatafactoryv2integrationruntimenode?view=azurermps-6.4.0#examples) 命令。
   
 ### <a name="status-per-node"></a>状态（每个节点）
 下表提供了自承载集成运行时节点的可能状态：

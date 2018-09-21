@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
-ms.openlocfilehash: ebe8745db06113d0508d86554bf031a4235c8e44
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 73bc8b6954470d11d6369bc733bb7c6f794ce892
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045943"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577126"
 ---
 # <a name="azure-data-factory-faq"></a>Azure 数据工厂常见问题解答
 本文提供有关 Azure 数据工厂的常见问题解答。  
@@ -82,11 +82,11 @@ ms.locfileid: "37045943"
 -   具备 VNET 服务终结点的 Azure SQL DB
 -   托管实例 (MI)
 -   弹性池
--   除将要弃用的经典 VNet 外，还支持 Azure 资源管理器虚拟网络 (VNet)。这样用户便可将 Azure-SSIS 集成运行时 (IR) 注入/联接到针对 Azure SQL 数据库配置了 VNet 服务终结点/MI/本地数据访问权限的 VNet，请参阅：https://docs.microsoft.com/en-us/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network 
+-   除将要弃用的经典 VNet 外，还支持 Azure 资源管理器虚拟网络 (VNet)。这样用户便可将 Azure-SSIS 集成运行时 (IR) 注入/联接到针对 Azure SQL 数据库配置了 VNet 服务终结点/MI/本地数据访问权限的 VNet，请参阅： https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network 
 -   在 SQL 身份验证的基础上，增加了 Azure Active Directory (AAD) 身份验证支持，以便连接到 SSISDB。这样用户便可将 AAD 身份验证于 ADF 托管服务标识 (MSI) 结合使用
 -   支持自带本地 SQL Server 许可证，大量节约 Azure 混合权益 (AHB) 选项的成本
--   支持 Azure-SSIS IR 企业版，从而能使用先进/高级功能、自定义附加组件/扩展的安装设置以及使用第三方生态系统，请参阅：https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/ 
--   在 ADF 中更深入地与 SSIS 进行了集成，让用户能在 ADF 管道中调用/触发一流的执行 SSIS 包活动并通过 SSMS 对它们进行计划，请参阅：https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/ 
+-   支持 Azure-SSIS IR 企业版，从而能使用先进/高级功能、自定义附加组件/扩展的安装设置以及使用第三方生态系统，请参阅： https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/ 
+-   在 ADF 中更深入地与 SSIS 进行了集成，让用户能在 ADF 管道中调用/触发一流的执行 SSIS 包活动并通过 SSMS 对它们进行计划，请参阅： https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/ 
 
 
 ## <a name="what-is-integration-runtime"></a>什么是集成运行时？

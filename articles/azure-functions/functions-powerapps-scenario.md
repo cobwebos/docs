@@ -12,12 +12,12 @@ ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: 55de3cd8830834a2af512661d5389952d927ef9f
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 49000d4fd61e7cd061b415d50545a7f5ee56f3fb
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094309"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579117"
 ---
 # <a name="call-a-function-from-powerapps"></a>从 PowerApps 调用函数
 [PowerApps](https://powerapps.microsoft.com) 平台专为商业专家设计，无需写入传统的应用程序代码即可生成应用。 专业开发人员可以使用 Azure Functions 扩展 PowerApps 的功能，同时使 PowerApps 应用构建者摆脱技术细节。
@@ -41,7 +41,7 @@ ms.locfileid: "44094309"
 
 ## <a name="prerequisites"></a>先决条件
 
-+ 一个有效的 [PowerApps 帐户](https://docs.microsoft.com/en-us/powerapps/maker/signup-for-powerapps)，其中登录凭据与 Azure 帐户相同。 
++ 一个有效的 [PowerApps 帐户](https://docs.microsoft.com/powerapps/maker/signup-for-powerapps)，其中登录凭据与 Azure 帐户相同。 
 + Excel 和将用作应用的数据源的 [Excel 示例文件](https://procsi.blob.core.windows.net/docs/turbine-data.xlsx)。
 + 完成[为函数创建 OpenAPI 定义](functions-openapi-definition.md)教程。
 

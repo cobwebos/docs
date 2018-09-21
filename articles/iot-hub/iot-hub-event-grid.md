@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: kgremban
-ms.openlocfilehash: 068e9a3379bd2762455aade1761592fa70a09a20
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 3c12e98137f44ac094adaae282b5d56d30061e60
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144372"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719845"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>通过使用事件网格触发操作来响应 IoT 中心事件
 
@@ -34,12 +34,11 @@ IoT 中心将发布以下事件类型：
 | 事件类型 | Description |
 | ---------- | ----------- |
 | Microsoft.Devices.DeviceCreated | 当设备注册到 IoT 中心时发布。 |
-| Microsoft.Devices.DeviceDeleted | 当设备从 IoT 中心删除时发布。 | 
-| Microsoft.Devices.DeviceConnected | 当设备连接到 IoT 中心时发布。 | 
-| Microsoft.Devices.DeviceDisconnected | 当设备与 IoT 中心断开连接时发布。 | 
-请注意，很快将为“加拿大东部”和“美国东部”区域启用设备已连接和设备已断开连接事件。
+| Microsoft.Devices.DeviceDeleted | 当设备从 IoT 中心删除时发布。 |
+| Microsoft.Devices.DeviceConnected | 当设备连接到 IoT 中心时发布。 |
+| Microsoft.Devices.DeviceDisconnected | 当设备与 IoT 中心断开连接时发布。 |
 
-使用 Azure 门户或 Azure CLI 配置从每个 IoT 中心发布的事件。 例如，请尝试学习教程[使用逻辑应用发送关于 Azure IoT 中心事件的电子邮件通知](../event-grid/publish-iot-hub-events-to-logic-apps.md)。 
+使用 Azure 门户或 Azure CLI 配置从每个 IoT 中心发布的事件。 例如，请尝试学习教程[使用逻辑应用发送关于 Azure IoT 中心事件的电子邮件通知](../event-grid/publish-iot-hub-events-to-logic-apps.md)。
 
 ## <a name="event-schema"></a>事件架构
 

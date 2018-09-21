@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/27/2018
-ms.openlocfilehash: 9fa71c221b276e2173694e2c1e86673e52677e63
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 2da388ef2fc0df8b08658900fe91ecc9d440fd3a
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389817"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579283"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>将数据作为流分析的输入进行流式传输
 
@@ -29,7 +29,7 @@ ms.locfileid: "39389817"
 流分析支持跨所有数据流输入源的压缩功能。 当前支持的引用类型为 None、GZip、和 Deflate 压缩。 对压缩的支持不可用于参考数据。 如果输入格式为压缩的 Avro 数据，则会以透明方式对其进行处理。 不需要通过 Avro 序列化指定压缩类型。 
 
 ## <a name="create-edit-or-test-inputs"></a>创建、编辑或测试输入
-可以使用 [Azure 门户](https://portal.azure.com)来[创建新输入](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-quick-create-portal#configure-input-to-the-job)以及查看或编辑流式处理作业上的现有输入。 还可以通过示例数据测试输入连接以及[测试查询](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-manage-job#test-your-query)。 编写查询时，将在 FROM 子句中列出输入。 可以在门户的“查询”页中获取可用输入的列表。 若要使用多个输入，可以对其执行 `JOIN` 操作，也可以编写多个 `SELECT` 查询。
+可以使用 [Azure 门户](https://portal.azure.com)来[创建新输入](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal#configure-input-to-the-job)以及查看或编辑流式处理作业上的现有输入。 还可以通过示例数据测试输入连接以及[测试查询](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-manage-job#test-your-query)。 编写查询时，将在 FROM 子句中列出输入。 可以在门户的“查询”页中获取可用输入的列表。 若要使用多个输入，可以对其执行 `JOIN` 操作，也可以编写多个 `SELECT` 查询。
 
 
 ## <a name="stream-data-from-event-hubs"></a>从事件中心对数据进行流式传输
@@ -145,7 +145,7 @@ CSV 格式的输入需要标头行来定义数据集的字段，并且所有标�
 | **存储帐户密钥** | 与存储帐户关联的密钥。 此选项会自动进行填充，除非已选择手动提供 Blob 存储设置的选项。 |
 | **容器** | 用于 Blob 输入的容器。 容器对存储在 Microsoft Azure Blob 服务中的 blob 进行逻辑分组。 将 Blob 上传到 Azure Blob 存储服务时，必须为该 Blob 指定一个容器。 可以选择“使用现有”，以便使用现有的容器；也可以选择“新建”，以便创建新的容器。|
 | **路径模式**（可选） | 用于定位指定容器中的 blob 的文件路径。 在路径中，可以指定以下 3 个变量的一个或多个实例：`{date}`、`{time}` 或 `{partition}`<br/><br/>示例 1：`cluster1/logs/{date}/{time}/{partition}`<br/><br/>示例 2：`cluster1/logs/{date}`<br/><br/>`*` 字符不是路径前缀允许使用的值。 仅允许使用有效的 <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure blob 字符</a>。 不包括容器名称或文件名。 |
-| **日期格式**（可选） | 如果在路径中使用日期变量，则为组织文件的日期格式。 示例：`YYYY/MM/DD` |
+| **日期格式**（可选） | 如果在路径中使用日期变量，则为组织文件的日期格式。 示例： `YYYY/MM/DD` |
 | **时间格式**（可选） |  如果在路径中使用时间变量，则为组织文件的时间格式。 目前唯一支持的值是 `HH`，表示小时。 |
 | **事件序列化格式** | 传入数据流的序列化格式（JSON、CSV 或 Avro）。  请确保该 JSON 格式符合规范，对于十进制数字不包括前导 0。 |
 | **编码** | 对于 CSV 和 JSON，目前只支持 UTF-8 这种编码格式。 |

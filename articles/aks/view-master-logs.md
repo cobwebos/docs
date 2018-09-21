@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 04afd71183bcb8001d017b0027f29338b8d67ddb
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 50de43fd6f9ca579b501c47514c9f8fca4f53ae8
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442361"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45540962"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>启用和查看 Azure Kubernetes 服务 (AKS) 中 Kubernetes 主节点的日志
 
@@ -75,8 +75,7 @@ pod/nginx created
 在左侧选择“日志搜索”。 若要查看 *kube-apiserver*，请在文本框中输入以下查询：
 
 ```
-search *
-| where Type == "AzureDiagnostics"
+AzureDiagnostics
 | where Category == "kube-apiserver"
 | project log_s
 ```
@@ -84,8 +83,7 @@ search *
 可能返回了 API 服务器的多个日志。 若要缩小查询范围，以便查看上一步骤中创建的 NGINX pod 的相关日志，请额外添加一个 *where* 语句来搜索 *pod/nginx*，如以下示例查询中所示：
 
 ```
-search *
-| where Type == "AzureDiagnostics"
+AzureDiagnostics
 | where Category == "kube-apiserver"
 | where log_s contains "pods/nginx"
 | project log_s

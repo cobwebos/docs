@@ -1,8 +1,8 @@
 ---
-title: "智能检测 - Azure Application Insights 中异常卷的异常增加 | Microsoft Docs"
-description: "使用 Azure Application Insights 监视应用程序异常，了解异常卷的异常模式。"
+title: 智能检测 - Azure Application Insights 中异常卷的异常增加 | Microsoft Docs
+description: 使用 Azure Application Insights 监视应用程序异常，了解异常卷的异常模式。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8030f3331a03170bb265c417a57725544bdc7d3f
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 898cc0935051f65cb0f2977c7d90e998ec32cdd3
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35631463"
 ---
 # <a name="abnormal-rise-in-exception-volume-preview"></a>异常卷的异常增加（预览）
 
@@ -35,5 +36,5 @@ Application Insights 自动分析应用程序中引发的异常，并对异常�
 ## <a name="how-do-i-fix-it"></a>如何解决问题？
 通知包括诊断信息，以在诊断进程中提供支持：
 1. **会审。** 通知会显示有多少用户或多少请求受到影响。 这可以帮助你对问题分配优先级。
-2. **范围。** 该问题是影响所有流量，还是只影响某些操作？ 可以从通知中获取此信息。
+2. **划分范围。** 该问题是影响所有流量，还是只影响某些操作？ 可以从通知中获取此信息。
 3. **诊断。** 检测包括从中引发异常的方法以及异常类型的相关信息。 还可以使用链接到支持信息的相关项和报告，帮助进一步诊断问题。

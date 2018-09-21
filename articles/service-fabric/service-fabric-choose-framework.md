@@ -1,6 +1,6 @@
 ---
 title: Service Fabric 编程模型概述 | Microsoft 文档
-description: Service Fabric 提供了两个框架用于构建服务：执行组件框架和服务框架。 它们在简单性和控制力方面具有截然不同的取舍。
+description: Service Fabric 提供了两个框架用于生成服务：执行组件框架和服务框架。 它们在简单性和控制力方面具有截然不同的取舍。
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: a03bb3c74d9c776b893b11c3dec8788fe9ac598c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f37e1ed2c7dd720e4a77076c8587fdf540b29ca5
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205964"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44713946"
 ---
 # <a name="service-fabric-programming-model-overview"></a>Service Fabric 编程模型概述
 Service Fabric 提供了多种方法来编写和管理服务。 服务可以选择使用 Service Fabric API 来充分利用平台的功能和应用程序框架。 服务还可以是采用任何语言编写的任意已编译可执行程序，也可以是在 Service Fabric 群集上托管的容器中运行的代码。
@@ -46,7 +46,7 @@ Reliable Services 也可以是有状态的，专门用于 Service Fabric，其�
 ## <a name="aspnet-core"></a>ASP.NET Core
 ASP.NET Core 是新的开源跨平台框架，用于构建现代基于云的连接 Internet 的应用程序，如 Web 应用、IoT 应用和移动后端。 Service Fabric 与 ASP.NET Core 集成，因此你可以编写无状态和有状态的 ASP.NET Core 应用程序，充分利用 Reliable Collections 和 Service Fabric 的高级编排功能。
 
-[了解有关 Service Fabric 中 ASP.NET Core 的详细信息](service-fabric-reliable-services-communication-aspnetcore.md)，或通过[编写第一个 ASP.NET Core Service Fabric 应用程序](service-fabric-reliable-services-communication-aspnetcore.md)开始使用。
+[了解有关 Service Fabric 中 ASP.NET Core 的详细信息](service-fabric-reliable-services-communication-aspnetcore.md)，或通过[编写第一个 ASP.NET Core Service Fabric 应用程序](service-fabric-tutorial-create-dotnet-app.md)开始使用。
 
 ## <a name="reliable-actors"></a>Reliable Actors
 Reliable Actor 框架在 Reliable Services 的基础上构建，是根据执行组件设计模式实现虚拟执行组件模式的应用程序框架。 Reliable Actor 框架使用称为执行组件的单线程执行的独立的计算单元和状态。 Reliable Actor 为执行组件提供内置通信，以及提供预设的状态暂留和扩展配置。

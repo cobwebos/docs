@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 275e71ce054b83c16b9f9cbfe621c6a7e31f79c6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: bbf59a35f420b5bbf292fbdaa5a8bbc173e4ee24
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32162222"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35631947"
 ---
 # <a name="monitor-an-azure-container-service-kubernetes-cluster-using-sysdig"></a>使用 Sysdig 监视 Azure 容器服务 Kubernetes 群集
 
@@ -58,7 +58,7 @@ Sysdig 以服务公司的身份进行外部监视，可监视在 Azure 中运行
 DaemonSets 是 Kubernetes API 对象，在每台计算机上运行一个容器实例。
 非常适合安装 Sysdig 的监视代理等工具。
 
-若要安装 Sysdig daemonset，首先应该从 sysdig 中下载[模板](https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml)。 将文件另存为 `sysdig-daemonset.yaml`。
+若要安装 Sysdig daemonset，首先应该从 sysdig 中下载[模板](https://github.com/draios/sysdig-cloud-scripts/tree/master/agent_deploy/kubernetes)。 将文件另存为 `sysdig-daemonset.yaml`。
 
 在 Linux 和 OS X 上运行：
 

@@ -7,18 +7,18 @@ ms.author: euang
 manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: ee1379995dffd8aebbd71757c06e06ea43561794
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 07b9ac8389a2bf06e0356f65d816d75d49cc0cf5
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830439"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35633960"
 ---
 # <a name="supported-matrix-for-this-release"></a>针对此版本的支持矩阵 
 如果获取任一 Pandas 或 Spark 数据帧，那么当代码使用 Azure 机器学习数据源或 Azure 机器学习数据准备加载数据时，以下试验计算环境和数据位置的组合将受到支持：

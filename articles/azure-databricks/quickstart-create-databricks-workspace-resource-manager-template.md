@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 03/23/2018
 ms.author: nitinme
 ms.custom: mvc
-ms.openlocfilehash: 573d8f6927cbd17c0f095bccf5132674faf94928
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 21f30e5db59f07b6384304f9e64157d312547ad9
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42023415"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731287"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板在 Azure Databricks 上运行 Spark 作业
 
@@ -119,7 +119,7 @@ ms.locfileid: "42023415"
 
           spark.conf.set("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net", "{YOUR STORAGE ACCOUNT ACCESS KEY}")
 
-    有关如何检索存储帐户密钥的说明，请参阅[管理存储访问密钥](../storage/common/storage-create-storage-account.md#manage-your-storage-account)。
+    有关如何检索存储帐户密钥的说明，请参阅[管理存储访问密钥](../storage/common/storage-account-manage.md#access-keys)。
 
     > [!NOTE]
     > 还可以对 Azure Databricks 中的 Spark 群集使用 Azure Data Lake Store。 有关说明，请参阅[对 Azure Databricks 使用 Data Lake Store](https://go.microsoft.com/fwlink/?linkid=864084)。

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 7/11/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 84696b4135570168f8093b15f9a2deb4790eeebe
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 05959143431a2cc11d79a4012f45eb565c1c91f2
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480877"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575980"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>教程：使用 Azure 门户部署和配置 Azure 防火墙
 
@@ -58,7 +58,7 @@ Azure 防火墙文章中的示例假设已启用了Azure 防火墙公共预览�
 
 ![教程网络基础结构](media/tutorial-firewall-rules-portal/Tutorial_network.png)
 
-为便于部署，本教程使用简化的网络配置。 对于生产部署，建议使用[中心辐射模型](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)，其中，防火墙在其自身的 VNet 中，工作负荷服务器在包含一个或多个子网的同一区域中的对等 VNet 内。
+为便于部署，本教程使用简化的网络配置。 对于生产部署，建议使用[中心辐射模型](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)，其中，防火墙在其自身的 VNet 中，工作负荷服务器在包含一个或多个子网的同一区域中的对等 VNet 内。
 
 
 

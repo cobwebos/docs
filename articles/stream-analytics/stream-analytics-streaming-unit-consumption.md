@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2018
-ms.openlocfilehash: 482f0403cfd4bbd6587ba7e3e936cdac7f82b54a
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: b7abbd486e9c357a5bdba093214a3801f88c39ab
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39227723"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575892"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>了解和调整流式处理单元
 
@@ -46,7 +46,7 @@ SU % 利用率指标（范围从 0% 到 100%）描述了工作负载的内存使
 
 为特定作业选择所需的 SU 数量时，需要根据输入的分区配置以及在作业内定义的查询来决定。 可以使用“缩放”页设置正确的 SU 数量。 分配的 SU 数最好超过所需的数量。 流分析处理引擎会针对延迟和吞吐量进行优化，不过，代价是需要分配额外的内存。
 
-通常情况下，最佳做法是一开始为不使用 PARTITION BY 的查询分配 6 个 SU。 然后，在传递了具有代表性的数据量并检查了 SU 利用率指标后，使用修改 SU 数量的试用和错误方法来确定最佳数量。 流分析作业所能使用的最大流单元数取决于为作业定义的查询中的步骤数，以及每一步中的分区数。 可在[此处](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job)了解更多有关限制的信息。
+通常情况下，最佳做法是一开始为不使用 PARTITION BY 的查询分配 6 个 SU。 然后，在传递了具有代表性的数据量并检查了 SU 利用率指标后，使用修改 SU 数量的试用和错误方法来确定最佳数量。 流分析作业所能使用的最大流单元数取决于为作业定义的查询中的步骤数，以及每一步中的分区数。 可在[此处](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job)了解更多有关限制的信息。
 
 有关选择适当数量 SU 的详细信息，请参阅此页：[缩放 Azure 流分析作业以增加吞吐量](stream-analytics-scale-jobs.md)
 
@@ -85,7 +85,7 @@ Azure 流分析作业的独有功能之一是执行有状态的处理，如开�
 
    ```sql
    SELECT count(*) 
-   FROM PARTITION BY PartitionId
+   FROM input PARTITION BY PartitionId
    GROUP BY PartitionId, clusterid, tumblingwindow (minutes, 5)
    ```
 

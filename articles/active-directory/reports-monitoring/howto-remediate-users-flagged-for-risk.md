@@ -14,16 +14,16 @@ ms.component: report-monitor
 ms.date: 05/23/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 385106065322cae9b8e29f66bfd6920d4ebb52f8
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 5fe16ecb2725cf306b5b57c9d45d8601581a3ece
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42143958"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578882"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>修正 Azure Active Directory 门户中“标记为风险用户”的用户
 
-可以通过 Azure Active Directory (Azure AD) 中的安全报告，了解你的环境中用户帐户泄露的可能性。 [“标记为风险用户”的用户](../identity-protection/overview.md#users-flagged-for-risk)是指可能已泄露的用户帐户。
+可以通过 Azure Active Directory (Azure AD) 中的安全报告，了解你的环境中用户帐户泄露的可能性。 已标记为存在风险的用户是指可能已泄露的用户帐户。
 
 Microsoft 致力于保护你的环境的安全。 为此，Microsoft 持续监视那些不正常的活动或符合已知攻击模式的活动。 
 

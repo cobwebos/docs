@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: masoucou
-ms.openlocfilehash: 255f23906bc93ce78b28f4f0806d7076a97b0ef2
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: e002f99cc16721b78d85284105ce22ee7d1eb9a3
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698683"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574821"
 ---
 # <a name="quickstart-build-a-mongodb-api-xamarinforms-app-with-net-and-the-azure-portal"></a>快速入门：使用 .NET 和 Azure 门户生成 MongoDB API Xamarin.Forms 应用
 
@@ -173,7 +173,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 2. 单击“还原所有 NuGet 包”。
 3. 右键单击“TaskList.Android”，并选择“设为启动项目”。
 4. 按 F5 开始调试应用程序。
-5. 如果想要在 iOS 上运行，首先请将计算机连接到 Mac（参阅操作[说明](https://docs.microsoft.com/en-us/xamarin/ios/get-started/installation/windows/introduction-to-xamarin-ios-for-visual-studio)）。
+5. 如果想要在 iOS 上运行，首先请将计算机连接到 Mac（参阅操作[说明](https://docs.microsoft.com/xamarin/ios/get-started/installation/windows/introduction-to-xamarin-ios-for-visual-studio)）。
 6. 右键单击“TaskList.iOS”项目，并选择“设为启动项目”。
 7. 单击 F5 开始调试应用程序。
 

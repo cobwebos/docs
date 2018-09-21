@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: cherylmc
-ms.openlocfilehash: e61e41c41888d8d2ca65961dd5bea73fd9b6bd21
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: d23ed383bee3346cfbb20c6935dd3630e137c179
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37927683"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573888"
 ---
 # <a name="reset-a-vpn-gateway"></a>重置 VPN 网关
 
@@ -75,7 +75,7 @@ Reset-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw
 
 ### <a name="resetclassic"></a>经典部署模型
 
-用于重置网关的 cmdlet 是 Reset-AzureVNetGateway。 进行重置前，请确保拥有最新版本的 [Service Management (SM) PowerShell cmdlet](https://docs.microsoft.com/en-us/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets)。 下面的示例为名为“ContosoVNet”的虚拟网络重置了网关：
+用于重置网关的 cmdlet 是 Reset-AzureVNetGateway。 进行重置前，请确保拥有最新版本的 [Service Management (SM) PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets)。 下面的示例为名为“ContosoVNet”的虚拟网络重置了网关：
 
 ```powershell
 Reset-AzureVNetGateway –VnetName “ContosoVNet”

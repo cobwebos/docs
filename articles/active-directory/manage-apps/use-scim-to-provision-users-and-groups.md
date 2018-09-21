@@ -16,12 +16,12 @@ ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 4247ef1ffd1b8d5c5ec393e3ebff20c3e04e32b3
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: d99996bb4177a11342f0897d2cf69f82a5b81bf7
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347692"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721222"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>使用跨域标识管理系统 (SCIM) 将用户和组从 Azure Active Directory 自动预配到应用程序
 
@@ -691,7 +691,6 @@ Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。  
 *图 6：组预配和取消预配顺序*
 
 ## <a name="related-articles"></a>相关文章
-* [有关 Azure Active Directory 中应用程序管理的文章索引](../active-directory-apps-index.md)
 * [在 SaaS 应用中自动预配和取消预配用户](user-provisioning.md)
 * [为用户预配自定义属性映射](customize-application-attributes.md)
 * [为属性映射编写表达式](functions-for-customizing-application-data.md)

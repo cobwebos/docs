@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5e67c60828467cce7c3b40ba17f15f44ad045920
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: fec075a744b5f47a4be7f1b960cceedfea7b9a2c
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34735664"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35631607"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>将 Azure 资源部署到多个订阅或资源组
 
@@ -127,8 +127,6 @@ ms.locfileid: "34735664"
 
 如果将 `resourceGroup` 设置为不存在的资源组的名称，则部署会失败。
 
-若要部署示例模板，请使用 Azure PowerShell 4.0.0 或更高版本，也可以使用 Azure CLI 2.0.0 或更高版本。
-
 ## <a name="use-the-resourcegroup-and-subscription-functions"></a>使用 resourceGroup() 和 subscription() 函数
 
 对于跨资源组部署，[resourceGroup()](resource-group-template-functions-resource.md#resourcegroup) 和 [subscription()](resource-group-template-functions-resource.md#subscription) 函数根据指定嵌套模板的方式以不同的方式解析。 
@@ -169,7 +167,7 @@ ms.locfileid: "34735664"
 
 以下模板演示多个资源组部署。 部署模板的脚本显示在表格之后。
 
-|模板  |说明  |
+|模板  |Description  |
 |---------|---------|
 |[跨订阅模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crosssubscription.json) |将一个存储帐户部署到一个资源组，将另一个存储帐户部署到第二个资源组。 如果第二个资源组位于其他订阅，请包含该订阅的 ID 值。 |
 |[跨资源组模板属性](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) |演示如何解析 `resourceGroup()` 函数。 此模板不部署任何资源。 |

@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 06/01/2018
-ms.openlocfilehash: 44059de5a0ef0667b4268d9cdc2997162bab474a
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 65bcb92b8e97b09ca961aa02cd5891419c2cddb2
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39295194"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580644"
 ---
 # <a name="build-and-deploy-object-detection-models-with-azure-machine-learning"></a>使用 Azure 机器学习生成和部署对象检测模型
 
@@ -126,7 +126,7 @@ _ = data_train.images[2].visualize_bounding_boxes(image_size = (10,10))
 
 ## <a name="define-a-model"></a>定义模型
 
-在此示例中，使用的是 Faster R-CNN 模型。 定义此模型时，可以提供各种参数。 有关这些参数以及用于训练的参数（见下一部分）的含义，可查看 CVTK 的 API 文档或 [Tensorflow 对象检测网站](https://github.com/tensorflow/models/tree/master/research/object_detection)。 有关 Faster R-CNN 模型的详细信息，可访问[此链接](https://docs.microsoft.com/en-us/cognitive-toolkit/Object-Detection-using-Faster-R-CNN#technical-details)。 此模型基于 Fast R-CNN。有关它的详细信息，可参阅[此文档](https://docs.microsoft.com/en-us/cognitive-toolkit/Object-Detection-using-Fast-R-CNN#algorithm-details)。
+在此示例中，使用的是 Faster R-CNN 模型。 定义此模型时，可以提供各种参数。 有关这些参数以及用于训练的参数（见下一部分）的含义，可查看 CVTK 的 API 文档或 [Tensorflow 对象检测网站](https://github.com/tensorflow/models/tree/master/research/object_detection)。 有关 Faster R-CNN 模型的详细信息，可访问[此链接](https://docs.microsoft.com/cognitive-toolkit/Object-Detection-using-Faster-R-CNN#technical-details)。 此模型基于 Fast R-CNN。有关它的详细信息，可参阅[此文档](https://docs.microsoft.com/cognitive-toolkit/Object-Detection-using-Fast-R-CNN#algorithm-details)。
 
 
 ```python

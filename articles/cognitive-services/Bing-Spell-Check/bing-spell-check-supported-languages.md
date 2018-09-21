@@ -9,25 +9,25 @@ ms.component: bing-spell-check
 ms.topic: conceptual
 ms.date: 05/08/2018
 ms.author: nolachar
-ms.openlocfilehash: 7cab8e0471151cd2ae7c2e31406f2460fdff6a0b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: a62980f563c8fad525696aca73f8c036382fa820
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050380"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573784"
 ---
 # <a name="supported-language-list-and-status"></a>支持的语言列表和状态
 
 必应拼写检查 API 支持以下语言（仅在 `spell` 模式有效）。 
 
-请注意，要以 `en-US` 以外的任何语言工作，应将 `mkt` 设置为 `Accept-Language`或将 `setLang` 设置为 [拼写检查 API v7 参考](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)中所述的值
+请注意，要以 `en-US` 以外的任何语言工作，应将 `mkt` 设置为 `Accept-Language`或将 `setLang` 设置为 [拼写检查 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)中所述的值
 
 | 语言    | 语言代码 |
 |:----------- |:-------------:|
 | 阿拉伯语      | `ar`          |
 | 中文(中华人民共和国)     | `zh-CN`          |
 | 中文(中国香港特别行政区)    | `zh-HK`          |
-| 中文(台湾)     | `zh-TW`          |
+| 中文(中国台湾)     | `zh-TW`          |
 | 丹麦语      | `da`          |
 | 荷兰语(比利时)       | `nl-BE`          |
 | 荷兰语(荷兰)      | `nl-NL`          |
@@ -67,5 +67,5 @@ ms.locfileid: "37050380"
 
 ## <a name="see-also"></a>另请参阅
 
-- [认知服务文档页面](https://docs.microsoft.com/azure/cognitive-services/)
+- [认知服务文档页](https://docs.microsoft.com/azure/cognitive-services/)
 - [认知服务产品页面](https://azure.microsoft.com/services/cognitive-services/)

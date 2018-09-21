@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6ad3b4c1f59f5c46fd31aa24d6d2ceb4d7411abd
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 511a0122b37f5f34097da38a645790d99212ad18
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42140233"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737407"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>使用数据工厂和 Batch 来处理大规模数据集
 > [!NOTE]
@@ -178,7 +178,7 @@ public IDictionary<string, string> Execute(
 #### <a name="procedure-create-the-custom-activity"></a>过程：创建自定义活动
 1. 在 Visual Studio 中创建 .NET 类库项目。
 
-   a. 启动 Visual Studio 2012/2013/2015。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 启动 Visual Studio 2012/2013/2015。
 
    b. 选择“文件” > “新建” > “项目”。
 
@@ -526,7 +526,7 @@ test custom activity Microsoft test custom activity Microsoft
 #### <a name="step-1-create-the-data-factory"></a>步骤 1：创建数据工厂
 1. 登录到 [Azure 门户](https://portal.azure.com/)之后，请执行以下步骤：
 
-   a. 选择左侧菜单上的“新建”。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择左侧菜单上的“新建”。
 
    b. 选择“新建”边栏选项卡中的“数据 + 分析”。
 
@@ -556,7 +556,7 @@ test custom activity Microsoft test custom activity Microsoft
 
    ![新建数据存储](./media/data-factory-data-processing-using-batch/image7.png)
 
-1. 将**帐户名称**替换为存储帐户的名称。 将**帐户密钥**替换为存储帐户的访问密钥。 若要了解如何获取存储访问密钥，请参阅[查看、复制和重新生成存储访问密钥](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)。
+1. 将**帐户名称**替换为存储帐户的名称。 将**帐户密钥**替换为存储帐户的访问密钥。 若要了解如何获取存储访问密钥，请参阅[查看、复制和重新生成存储访问密钥](../../storage/common/storage-account-manage.md#access-keys)。
 
 1. 选择命令栏上的“部署”，部署链接服务。
 
@@ -569,7 +569,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 1. 在 JSON 脚本中：
 
-   a. 将**帐户名称**替换为 Batch 帐户的名称。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将**帐户名称**替换为 Batch 帐户的名称。
 
    b. 将**访问密钥**替换为 Batch 帐户的访问密钥。
 

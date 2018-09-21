@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/14/2018
 ms.author: jomolesk
-ms.openlocfilehash: 02c8d5b40315f5612564b6ae11bd9cf1861708a9
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 26227e1a6766a80bbcef3cfda3f2faee82396fe3
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297871"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577048"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-gdpr"></a>Azure 安全性和符合性蓝图 - 符合 GDPR 的 PaaS Web 应用程序
 
@@ -63,9 +63,9 @@ Microsoft 为 Azure 设计了业界领先的安全措施和隐私策略，以保
 ## <a name="deployment-architecture"></a>部署体系结构
 以下部分详细描述了部署和实施要素。
 
-**Azure 资源管理器**：客户可以使用 [Azure 资源管理器](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)以组的方式处理解决方案中的资源。 客户可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 客户可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 资源管理器提供安全、审核和标记功能，以帮助客户在部署后管理资源。
+**Azure 资源管理器**：客户可以使用 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)以组的方式处理解决方案中的资源。 客户可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 客户可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 资源管理器提供安全、审核和标记功能，以帮助客户在部署后管理资源。
 
-**Azure 应用服务环境 v2**：[Azure 应用服务环境](https://docs.microsoft.com/en-us/azure/app-service/environment/intro)是一项 Azure 应用服务功能，可提供完全隔离和专用的环境，以便高度安全地运行应用服务应用程序。
+**Azure 应用服务环境 v2**：[Azure 应用服务环境](https://docs.microsoft.com/azure/app-service/environment/intro)是一项 Azure 应用服务功能，可提供完全隔离和专用的环境，以便高度安全地运行应用服务应用程序。
 
 ASE 经隔离后只运行单个客户的应用程序，始终可部署到虚拟网络中。 客户对于入站和出站的应用网络流量都有更细微的控制，且应用程序可以通过虚拟网络创建与本地公司资源的高速安全连接。
 
@@ -73,14 +73,14 @@ ASE 经隔离后只运行单个客户的应用程序，始终可部署到虚拟�
 
 - 托管在受保护的 Azure 虚拟网络中并受网络安全规则的保护
 - 在 ASE 中配置自签名 ILB 证书以实现 HTTPS 通信
-- [内部负载均衡模式](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-environment-with-internal-load-balancer)（模式 3）
-- 禁用 [TLS 1.0](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-app-service-environment-custom-settings)
-- 更改 [TLS 密码](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-app-service-environment-custom-settings)
-- 控制[入站流量 N/W 端口](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-app-service-environment-control-inbound-traffic)
-- [WAF – 限制数据](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-app-service-environment-web-application-firewall)
-- 允许 [Azure SQL 数据库流量](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-app-service-environment-network-architecture-overview)
+- [内部负载均衡模式](https://docs.microsoft.com/azure/app-service-web/app-service-environment-with-internal-load-balancer)（模式 3）
+- 禁用 [TLS 1.0](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings)
+- 更改 [TLS 密码](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings)
+- 控制[入站流量 N/W 端口](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-control-inbound-traffic)
+- [WAF – 限制数据](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-web-application-firewall)
+- 允许 [Azure SQL 数据库流量](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-network-architecture-overview)
 
-**Azure Web 应用**：客户使用 [Azure Web 应用](https://docs.microsoft.com/en-us/azure/app-service/)可以采用所选编程语言构建和托管 Web 应用程序，而无需管理基础结构。 它提供自动缩放和高可用性，支持 Windows 和 Linux，并支持从 GitHub、Azure DevOps 或任何 Git 存储库进行自动部署。
+**Azure Web 应用**：客户使用 [Azure Web 应用](https://docs.microsoft.com/azure/app-service/)可以采用所选编程语言构建和托管 Web 应用程序，而无需管理基础结构。 它提供自动缩放和高可用性，支持 Windows 和 Linux，并支持从 GitHub、Azure DevOps 或任何 Git 存储库进行自动部署。
 
 ### <a name="virtual-network"></a>虚拟网络
 此体系结构定义了一个地址空间为 10.200.0.0/16 的专用 VNet。
@@ -91,14 +91,14 @@ ASE 经隔离后只运行单个客户的应用程序，始终可部署到虚拟�
 - 1 个 NSG 用于 Azure SQL 数据库
 
 每个 NSG 都打开了特定的端口和协议，以便解决方案能够安全正确地工作。 此外，为每个 NSG 启用了以下配置：
-  - [诊断日志和事件](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-nsg-manage-log)已启用并存储在存储帐户中
+  - [诊断日志和事件](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)已启用并存储在存储帐户中
   - 已将 OMS Log Analytics 连接到 [NSG 的诊断功能](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
 
 **子网**：每个子网都与其相应的 NSG 相关联。
 
-**Azure DNS**：域名系统或 DNS 负责将网站或服务名称转换（或解析）为它的 IP 地址。 [Azure DNS](https://docs.microsoft.com/en-us/azure/dns/dns-overview) 是 DNS 域的托管服务，它使用 Azure 基础结构提供名称解析。 通过在 Azure 中托管域，用户可以使用与其他 Azure 服务相同的凭据、API、工具和账单来管理 DNS 记录。 Azure DNS 还支持 DNS 专用域。
+**Azure DNS**：域名系统或 DNS 负责将网站或服务名称转换（或解析）为它的 IP 地址。 [Azure DNS](https://docs.microsoft.com/azure/dns/dns-overview) 是 DNS 域的托管服务，它使用 Azure 基础结构提供名称解析。 通过在 Azure 中托管域，用户可以使用与其他 Azure 服务相同的凭据、API、工具和账单来管理 DNS 记录。 Azure DNS 还支持 DNS 专用域。
 
-**Azure 负载均衡器**：使用 [Azure 负载均衡器](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview)，客户可以缩放应用程序，并为服务创建高可用性。 负载均衡器支持入站和出站场景、提供低延迟和高吞吐量，以及为所有 TCP 和 UDP 应用程序纵向扩展到数以百万计的流。
+**Azure 负载均衡器**：使用 [Azure 负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)，客户可以缩放应用程序，并为服务创建高可用性。 负载均衡器支持入站和出站场景、提供低延迟和高吞吐量，以及为所有 TCP 和 UDP 应用程序纵向扩展到数以百万计的流。
 
 ### <a name="data-in-transit"></a>传输中的数据
 默认情况下，Azure 会加密与 Azure 数据中心之间的所有通信。 通过 Azure 门户到 Azure 存储的所有事务均通过 HTTPS 进行。
@@ -141,7 +141,7 @@ ASE 经隔离后只运行单个客户的应用程序，始终可部署到虚拟�
 - 启用 Key Vault 的诊断日志时，保留期设置为至少 365 天。
 - 对密钥进行允许的加密操作时，仅限必需的操作。
 
-**安全警报**：客户可以使用 [Azure 安全中心](https://docs.microsoft.com/en-us/azure/security-center/security-center-intro)监视流量、收集日志和分析数据源是否有威胁。 此外，Azure 安全中心会访问 Azure 服务的现有配置，以提供配置与服务建议来帮助改善安全状况和保护个人数据。 Azure 安全中心针对检测到的每种威胁提供[威胁智能报告](https://docs.microsoft.com/en-us/azure/security-center/security-center-threat-report)，以帮助事件响应团队调查和解决威胁。
+**安全警报**：客户可以使用 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)监视流量、收集日志和分析数据源是否有威胁。 此外，Azure 安全中心会访问 Azure 服务的现有配置，以提供配置与服务建议来帮助改善安全状况和保护个人数据。 Azure 安全中心针对检测到的每种威胁提供[威胁智能报告](https://docs.microsoft.com/azure/security-center/security-center-threat-report)，以帮助事件响应团队调查和解决威胁。
 
 **应用程序网关**：体系结构在启用 Web 应用程序防火墙 (WAF) 和 OWASP 规则集的情况下使用应用程序网关，可降低安全漏洞风险。 其他功能包括：
 
@@ -150,9 +150,9 @@ ASE 经隔离后只运行单个客户的应用程序，始终可部署到虚拟�
 - 禁用 [TLS v1.0 和 v1.1](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)
 - [Web 应用程序防火墙](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview)（WAF 模式）
 - 结合 OWASP 3.0 规则集的[保护模式](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-portal)
-- 启用[诊断日志记录](https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-diagnostics)
-- [自定义运行状况探测](https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-create-gateway-portal)
-- [Azure 安全中心](https://azure.microsoft.com/services/security-center)和 [Azure 顾问](https://docs.microsoft.com/en-us/azure/advisor/advisor-security-recommendations)提供额外的保护和通知。 Azure 安全中心还提供信誉系统。
+- 启用[诊断日志记录](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)
+- [自定义运行状况探测](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-gateway-portal)
+- [Azure 安全中心](https://azure.microsoft.com/services/security-center)和 [Azure 顾问](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations)提供额外的保护和通知。 Azure 安全中心还提供信誉系统。
 
 ### <a name="logging-and-auditing"></a>日志记录和审核
 
@@ -170,13 +170,13 @@ OMS 可广泛记录系统和用户活动以及系统运行状况。 OMS [Log Ana
 -   [更新管理](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management)：“更新管理”解决方案允许客户管理操作系统安全更新，包括可用更新的状态以及安装所需更新的过程。
 -   [代理运行状况](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth)：“代理运行状况”解决方案报告已部署代理的数量及其地理分布，以及无响应的代理数量和提交操作数据的代理数量。
 -   [Azure 活动日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity)：Activity Log Analytics 解决方案可帮助分析客户的所有 Azure 订阅的 Azure 活动日志。
--   [更改跟踪](https://docs.microsoft.com/en-us/azure/automation/automation-change-tracking)：“更改跟踪”解决方案使得客户能够轻松识别环境中的更改。
+-   [更改跟踪](https://docs.microsoft.com/azure/automation/automation-change-tracking)：“更改跟踪”解决方案使得客户能够轻松识别环境中的更改。
 
 **Azure Monitor**
-[Azure Monitor](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/) 通过使组织能够审核、创建警报和存档数据（包括在客户的 Azure 资源中跟踪 API 调用），帮助用户跟踪性能、维护安全性和确定趋势。
+[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) 通过使组织能够审核、创建警报和存档数据（包括在客户的 Azure 资源中跟踪 API 调用），帮助用户跟踪性能、维护安全性和确定趋势。
 
 **Application Insights**
-[Application Insights](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-overview) 是多个平台上面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 Application Insights 可检测性能异常，客户可以使用它来监视实时 Web 应用程序。 它包含强大的分析工具来帮助客户诊断问题，了解用户在应用中实际执行了哪些操作。 它旨在帮助客户持续提高性能和可用性。
+[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) 是多个平台上面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 Application Insights 可检测性能异常，客户可以使用它来监视实时 Web 应用程序。 它包含强大的分析工具来帮助客户诊断问题，了解用户在应用中实际执行了哪些操作。 它旨在帮助客户持续提高性能和可用性。
 
 ## <a name="threat-model"></a>威胁模型
 
@@ -194,11 +194,11 @@ OMS 可广泛记录系统和用户活动以及系统运行状况。 OMS [Log Ana
 ### <a name="vpn-and-expressroute"></a>VPN 和 ExpressRoute
 需要配置安全 VPN 隧道或 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)，以安全地建立与作为此 PaaS Web 应用程序参考体系结构的一部分部署的资源的连接。 通过适当设置 VPN 或 ExpressRoute，客户可以为传输中的数据添加一层保护。
 
-在 Azure 中实施安全 VPN 隧道，可在本地网络与 Azure 虚拟网络之间创建虚拟专用连接。 此连接通过 Internet 进行，可让客户在其网络与 Azure 之间的加密链路内通过“隧道”安全地传输信息。 站点到站点 VPN 是安全且成熟的技术，各种规模的企业已部署该技术数十年。 此选项使用 [IPsec 隧道模式](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10))作为加密机制。
+在 Azure 中实施安全 VPN 隧道，可在本地网络与 Azure 虚拟网络之间创建虚拟专用连接。 此连接通过 Internet 进行，可让客户在其网络与 Azure 之间的加密链路内通过“隧道”安全地传输信息。 站点到站点 VPN 是安全且成熟的技术，各种规模的企业已部署该技术数十年。 此选项使用 [IPsec 隧道模式](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10))作为加密机制。
 
 由于 VPN 隧道中的流量会通过站点到站点 VPN 在 Internet 上遍历，Microsoft 提供了另一个更安全的连接选项。 Azure ExpressRoute 是 Azure 与本地位置或 Exchange 托管提供商之间专用的 WAN 链接。 ExpressRoute 连接并不绕过 Internet，并且与通过 Internet 的典型连接相比，这些连接可靠性更高、速度更快、延迟时间更短且安全性更高。 此外，由于使用的是客户电信提供商的直接连接，数据不会通过 Internet 遍历，因此不会在 Internet 上公开。
 
-我们编写了有关如何实施安全混合网络，以便将本地网络扩展到 Azure 的[最佳做法](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)。
+我们编写了有关如何实施安全混合网络，以便将本地网络扩展到 Azure 的[最佳做法](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)。
 
 ## <a name="disclaimer"></a>免责声明
 

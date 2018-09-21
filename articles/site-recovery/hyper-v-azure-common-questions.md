@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 08/15/2018
+ms.date: 09/12/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 42e8f8bd3f921686c3ba13f4c752d52e3067fbbe
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 16c4ab4601dbe57e014bfcb06ff9b35d02c60cfa
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40177412"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721902"
 ---
 # <a name="common-questions---hyper-v-to-azure-replication"></a>常见问题 - Hyper-V 到 Azure 的复制
 
@@ -64,7 +64,7 @@ ms.locfileid: "40177412"
 
 ### <a name="what-do-i-need-on-premises"></a>需要在本地做好哪些准备？
 
-需要一个或多个在一个或多个独立或群集 Hyper-V 主机上运行的 VM。 还可以复制 System Center Virtual Machine Manager (VMM) 托管的主机上运行的 VM。 还可以复制 System Center Virtual Machine Manager (VMM) 托管的主机上运行的 VM。
+需要一个或多个在一个或多个独立或群集 Hyper-V 主机上运行的 VM。 还可以复制 System Center Virtual Machine Manager (VMM) 托管的主机上运行的 VM。
     - 如果不运行 VMM，则在 Site Recovery 部署期间，将 Hyper-V 主机和群集收集到 Hyper-V 站点中。 在每个 Hyper-V 主机上安装 Site Recovery 代理（Azure Site Recovery 提供程序和 Recovery Services 代理）。
     - 如果 Hyper-V 主机位于 VMM 云中，则在 VMM 中协调复制。 在 VMM 服务器上安装 Site Recovery 提供程序，在每个 Hyper-V 主机上安装恢复服务代理。 在 VMM 逻辑/VM 网络和 Azure VNet 之间进行映射。
     - 
@@ -166,11 +166,6 @@ Site Recovery 需要对 Hyper-V 主机具备访问权限才能复制所选的 VM
 ### <a name="what-does-site-recovery-install-on-hyper-v-vms"></a>Site Recovery 在 Hyper-V VM 上安装什么内容？
 
 Site Recovery 不会在启用复制的 Hyper-V VM 上显式安装任何内容。
-- 在复制期间，VM 将与 Site Recovery 通信，如下所述：
-    - VM 通过 HTTPS 443 端口与配置服务器通信，以进行复制管理。
-    - VM 通过 HTTPS 9443 端口（可修改）将复制数据发送到进程服务器。
-    - 如果启用了多 VM 一致性，则 VM 通过端口 20004 相互通信。
-
 
 
 
@@ -211,7 +206,7 @@ Azure 具有复原能力。 Site Recovery 能够根据 Azure SLA 故障转移到
 5. 在工作负载进行故障回复后，启用反向复制，以便本地 VM 重新复制到 Azure。
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>是否可以故障回复到不同位置？
-可以。故障转移到 Azure 后，如果原始位置不可用，可以故障回复到不同的位置。 [了解详细信息](concepts-types-of-failback.md#alternate-location-recovery-alr)。
+可以。故障转移到 Azure 后，如果原始位置不可用，可以故障回复到不同的位置。 [了解详细信息](hyper-v-azure-failback.md#failback-to-an-alternate-location-in-hyper-v-environment)。
 
 
 

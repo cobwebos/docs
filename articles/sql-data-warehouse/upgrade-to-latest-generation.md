@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 08/22/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: b7765182a89e08a2b2b8fcdbdfed82c64893fc27
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 9b2c5fa38d0ad21a374d3e5acee8534aeb9c0384
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306974"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580542"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>通过升级 SQL 数据仓库优化性能
 将 Azure SQL 数据仓库升级到最新一代 Azure 硬件和存储体系结构。
@@ -34,7 +34,7 @@ ms.locfileid: "43306974"
 
 ## <a name="before-you-begin"></a>开始之前
 > [!NOTE]
-> 如果现有的“计算优化第 1 代”层级数据仓库不在提供了“计算优化第 2 代”层级的区域中，则可以通过 PowerShell [异地还原](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region)到某个受支持的区域。
+> 如果现有的“计算优化第 1 代”层级数据仓库不在提供了“计算优化第 2 代”层级的区域中，则可以通过 PowerShell [异地还原](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region)到某个受支持的区域。
 > 
 >
 

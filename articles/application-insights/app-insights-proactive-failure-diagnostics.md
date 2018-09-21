@@ -10,14 +10,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/09/2017
-ms.author: mbullwin; yossiy
-ms.openlocfilehash: 29ae81551d4bd4be4123c8e7780b8b5ecc259f09
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: yossiy
+ms.author: mbullwin
+ms.openlocfilehash: 1987ebf76f06cb60e8ce1fb5c8215b6520d44d52
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35631918"
 ---
 # <a name="smart-detection---failure-anomalies"></a>智能检测 - 失败异常
 如果 Web 应用的失败请求速率出现异常上升，[Application Insights](app-insights-overview.md) 会几乎实时地自动通知你。 它会对 HTTP 请求速率或报告为失败的依赖项调用的异常上升进行检测。 对于请求而言，失败的请求通常是响应代码为 400 或更高的请求。 为了帮助会审和诊断问题，通知中会提供失败及相关遥测的特征分析。 还提供指向 Application Insights 门户的链接，以供进一步诊断。 该功能不需要任何设置或配置，因为它使用机器学习算法来预测正常的失败率。
@@ -122,11 +124,11 @@ ms.lasthandoff: 05/08/2018
 
 所以你们会查看我的数据？
 
-* 不会。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](app-insights-data-retention-privacy.md)数据。
+* 不是。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](app-insights-data-retention-privacy.md)数据。
 
 *是否需要订阅此警报？*
 
-* 不会。 发送请求遥测的每个应用程序都有智能检测警报规则。
+* 不是。 发送请求遥测的每个应用程序都有智能检测警报规则。
 
 *是否可以取消订阅或者获取已发送至同事的通知？*
 

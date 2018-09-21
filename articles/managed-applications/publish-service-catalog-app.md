@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 06/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 39d2979aad3aee80ba010d5fc3cf83ad486baf2d
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 3b1da6e9068be3c96cce5973f29344fe7e4b4872
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35247874"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35762628"
 ---
 # <a name="publish-a-managed-application-for-internal-consumption"></a>发布托管应用程序供内部使用
 
@@ -171,7 +171,7 @@ Set-AzureStorageBlobContent -File "D:\myapplications\app.zip" `
 
 ### <a name="create-an-azure-active-directory-user-group-or-application"></a>创建 Azure Active Directory 用户组或应用程序
 
-下一步是选择代表客户来管理资源的用户组或应用程序。 根据分配的角色，此用户组或应用程序对托管资源组具有权限。 角色可以是任何基于角色的访问控制 (RBAC) 的内置角色，如 Owner 或 Contributor。 也可以授权个体用户来管理资源，但通常会将此权限分配给用户组。 若要创建新的 Active Directory 用户组，请参阅[在 Azure Active Directory 中创建组并添加成员](../active-directory/active-directory-groups-create-azure-portal.md)。
+下一步是选择代表客户来管理资源的用户组或应用程序。 根据分配的角色，此用户组或应用程序对托管资源组具有权限。 角色可以是任何基于角色的访问控制 (RBAC) 的内置角色，如 Owner 或 Contributor。 也可以授权个体用户来管理资源，但通常会将此权限分配给用户组。 若要创建新的 Active Directory 用户组，请参阅[在 Azure Active Directory 中创建组并添加成员](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
 需要提供用户组的对象 ID 以用于管理资源。 
 

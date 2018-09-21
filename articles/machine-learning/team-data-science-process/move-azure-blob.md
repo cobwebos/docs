@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 40ec20765bf7874f245d3e37800b0b38dcda475d
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 854c671d4db6cdca2b019ed9adb0475e588281b1
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838041"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35622545"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage"></a>将数据移入和移出 Azure Blob 存储
 [!INCLUDE [cap-ingest-data-selector](../../../includes/cap-ingest-data-selector.md)]
@@ -43,7 +43,7 @@ ms.locfileid: "34838041"
 * 接收预测分析结果，然后 
 * 将结果上传到存储。 
 
-有关详细信息，请参阅[使用 Azure 数据工厂和 Azure 机器学习创建预测管道](../../data-factory/v1/data-factory-azure-ml-batch-execution-activity.md)。
+有关详细信息，请参阅[使用 Azure 数据工厂和 Azure 机器学习创建预测管道](../../data-factory/transform-data-using-machine-learning.md)。
 
 ## <a name="prerequisites"></a>先决条件
 本文档假定已有 Azure 订阅、存储帐户，以及该帐户对应的存储密钥。 上传/下载数据之前，必须知道 Azure 存储帐户名和帐户密钥。

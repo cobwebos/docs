@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 7/16/2018
 ms.author: victorh
-ms.openlocfilehash: 3657b619dc57b994158c711c46d4db6924aa2930
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 5e8048dc6b49a0f6c9a465e82a7278e491351034
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089815"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574124"
 ---
 # <a name="what-is-azure-firewall"></a>什么是 Azure 防火墙？
 
@@ -61,8 +61,8 @@ Azure 防火墙公共预览版存在以下已知问题：
 |---------|---------|---------|
 |与 NSG 的互操作性     |如果在防火墙子网中应用了网络安全组 (NSG)，则 NSG 可能会阻止出站 Internet 连接，即使它配置为允许出站 Internet 访问。 出站 Internet 连接标记为来自 VirtualNetwork，目标为 Internet。 默认情况下，NSG 包含允许 VirtualNetwork 到 VirtualNetwork 连接的规则，但如果目标是 Internet，则不允许此类连接。|若要缓解此问题，请将以下入站规则添加到防火墙子网中应用的 NSG：<br><br>源：VirtualNetwork；源端口：任何 <br><br>目标：任何；目标端口：任何 <br><br>协议：所有；访问：允许|
 |与 Azure 安全中心 (ASC) 实时 (JIT) 功能冲突|如果使用 JIT 访问虚拟机，并且虚拟机位于具有用户定义路由的子网中，而该路由指向用作默认网关的 Azure 防火墙，则 ASC JIT 不起作用。 这种结果是非对称路由造成的 – 数据包通过虚拟机公共 IP 传入（JIT 开放了访问权限），但返回路径是通过防火墙形成的，因此丢弃了数据包，因为防火墙上未建立会话。|若要解决此问题，请将 JIT 虚拟机放置在未与防火墙建立用户定义的路由的独立子网中。|
-|使用全局对等互连的中心辐射模型不起作用|不支持中心辐射模型，其中，中心和防火墙部署在一个 Azure 区域，分支部署在另一个 Azure 区域，分支通过全局 VNet 对等互连连接到中心。|有关详细信息，请参阅[创建、更改或删除虚拟网络对等互连](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints)|
-针对 TCP/UDP 协议（例如 ICMP）的网络筛选规则不适用于 Internet 绑定的流量|针对非 TCP/UDP 协议的网络筛选规则不支持公共 IP 地址的 SNAT。 在分支子网与 VNet 之间支持非 TCP/UDP 协议。|Azure 防火墙使用[目前不支持 IP 协议 SNAT](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-standard-overview#limitations) 的标准负载均衡器。 我们正在探索如何在将来的版本中推出支持此方案的选项。
+|使用全局对等互连的中心辐射模型不起作用|不支持中心辐射模型，其中，中心和防火墙部署在一个 Azure 区域，分支部署在另一个 Azure 区域，分支通过全局 VNet 对等互连连接到中心。|有关详细信息，请参阅[创建、更改或删除虚拟网络对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints)|
+针对 TCP/UDP 协议（例如 ICMP）的网络筛选规则不适用于 Internet 绑定的流量|针对非 TCP/UDP 协议的网络筛选规则不支持公共 IP 地址的 SNAT。 在分支子网与 VNet 之间支持非 TCP/UDP 协议。|Azure 防火墙使用[目前不支持 IP 协议 SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#limitations) 的标准负载均衡器。 我们正在探索如何在将来的版本中推出支持此方案的选项。
 
 
 

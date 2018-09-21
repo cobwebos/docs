@@ -3,19 +3,19 @@ title: Always Encrypted：Azure SQL 数据库 - Windows 证书存储 | Microsoft
 description: 本文演示如何使用 SQL Server Management Studio (SSMS) 中的 Always Encrypted 向导，通过数据加密来保护 SQL 数据库中的敏感数据。 它还演示如何将加密密钥存储在 Windows 证书存储中。
 keywords: 加密数据, sql 加密, 数据库加密, 敏感数据, 始终加密
 services: sql-database
-author: stevestein
+author: VanMSFT
 manager: craigg
 ms.service: sql-database
 ms.custom: security
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.author: sstein
-ms.openlocfilehash: 25565f2369bc684525a53889b6cd069af5ce32f0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: vanto
+ms.openlocfilehash: c6656a1ef5e52782461d9b9e7106ff81eb3983ee
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647028"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45544041"
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-the-windows-certificate-store"></a>始终加密：保护 SQL 数据库中的敏感数据并将加密密钥存储在 Windows 证书存储中
 
@@ -102,7 +102,7 @@ SSMS 提供了一个向导，通过设置 CMK、CEK 和已加密列即可轻松�
 
 加密每位患者的“SSN”和“出生日期”信息。 **SSN** 列将使用确定性加密，该加密支持相等性查找、联接和分组方式。 **BirthDate** 列将使用随机加密，该加密不支持操作。
 
-将 **SSN** 列的“加密类型”设置为“确定”，并将 **BirthDate** 列设置为“随机”。 单击“资源组名称” 的 Azure 数据工厂。
+将 **SSN** 列的“加密类型”设置为“确定”，并将 **BirthDate** 列设置为“随机”。 单击“下一步”。
 
 ![加密列](./media/sql-database-always-encrypted/column-selection.png)
 

@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 04/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 685d434affd0561658ae99c50bbe7b1fc27a5572
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8c7dc256b92252793545336ffc45a987054a5509
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195516"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "35631739"
 ---
 # <a name="azure-automation-scenario---automation-source-control-integration-with-github-enterprise"></a>Azure 自动化方案 - 与 GitHub Enterprise 集成的自动化源代码管理
 
@@ -29,14 +29,14 @@ ms.locfileid: "34195516"
 
 ### <a name="runbooks"></a>Runbook
 
-Runbook | 说明|
+Runbook | Description|
 --------|------------|
 Export-RunAsCertificateToHybridWorker | Runbook 会将 RunAs 证书从自动化帐户导出到混合辅助角色，使得辅助角色上的 Runbook 能够通过 Azure 进行身份验证，以便将 Runbook 导入到自动化帐户中。|
 Sync-LocalGitFolderToAutomationAccount | Runbook 会同步混合计算机上的本地 Git 文件夹，并将 Runbook 文件 (*.ps1) 导入到自动化帐户中。|
 
 ### <a name="credentials"></a>凭据
 
-凭据 | 说明|
+凭据 | Description|
 -----------|------------|
 GitHRWCredential | 创建的凭据资产，其中包含具有混合辅助角色权限的用户的用户名和密码。|
 
@@ -59,7 +59,7 @@ GitHRWCredential | 创建的凭据资产，其中包含具有混合辅助角色�
 
 ### <a name="deploy-and-configure-hybrid-runbook-worker"></a>部署和配置混合 Runbook 辅助角色
 
-如果尚未将混合 Runbook 辅助角色部署到数据中心，应查看相关要求，然后按照“Azure 自动化混合 Runbook 辅助角色 - 为 [Windows](automation-windows-hrw-install.md#automated-deployment) 或 [Linux](automation-linux-hrw-install.md#installing-linux-hybrid-runbook-worker) 自动化安装和配置”中的过程执行自动化安装步骤。 在计算机中成功安装混合辅助角色以后，请执行以下步骤，完成支持此方案所需的配置。
+如果尚未将混合 Runbook 辅助角色部署到数据中心，应查看相关要求，然后按照“Azure 自动化混合 Runbook 辅助角色 - 为 [Windows](automation-windows-hrw-install.md#automated-deployment) 或 [Linux](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker) 自动化安装和配置”中的过程执行自动化安装步骤。 在计算机中成功安装混合辅助角色以后，请执行以下步骤，完成支持此方案所需的配置。
 
 1. 使用一个具有本地管理权限的帐户登录到托管混合 Runbook 辅助角色的计算机，并创建一个目录来保存 Git Runbook 文件。 将内部 Git 存储库克隆到该目录。
 1. 如果尚未创建运行方式帐户，或者需要创建一个专用于此目的的新帐户，请从 Azure 门户导航到自动化帐户，选择自动化帐户并创建[凭据资产](automation-credentials.md)，其中包含有权访问混合辅助角色的用户的用户名和密码。

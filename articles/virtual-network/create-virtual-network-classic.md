@@ -13,14 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/31/2017
+ms.date: 06/15/2018
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: a2e2075a735b63588352f3bcdc97e2d6410660fe
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: bede78782154e014d4ffad949f9ebd1a44eb2c4c
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35767165"
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>创建包含多个子网的虚拟网络（经典）
 
@@ -40,7 +41,7 @@ ms.lasthandoff: 05/20/2018
 
 1. 在 Internet 浏览器中，转到 [Azure 门户](https://portal.azure.com)。 使用 [Azure 帐户](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account)登录。 如果没有 Azure 帐户，可以注册[免费试用版](https://azure.microsoft.com/offers/ms-azr-0044p)。
 2. 在门户中，单击“创建资源”。
-3. 在显示的“新建”窗格顶部的“搜索 Marketplace”中输入“虚拟网络”。 单击搜索结果中出现的“虚拟网络”。
+3. 在显示的“新建”窗格顶部的“在市场中搜索”中输入“虚拟网络”。 单击搜索结果中出现的“虚拟网络”。
 4. 在显示的“虚拟网络”窗格的“选择部署模型”框中选择“经典”，然后单击“创建”。 
 5. 在“创建虚拟网络(经典)”窗格中输入以下值，然后单击“创建”：
 

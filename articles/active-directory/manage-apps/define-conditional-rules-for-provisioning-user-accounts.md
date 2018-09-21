@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/09/2018
+ms.date: 09/11/2018
 ms.author: barbkess
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 17e9616b39491aac01427ee34fb23db556c5c9b9
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: b62679332a45127d7c1a45593c162182886a7150
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354626"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719352"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>使用范围筛选器进行基于属性的应用程序预配
 本文的目的是说明如何使用范围筛选器定义基于属性的规则，用于确定哪些用户将预配到应用程序。
@@ -111,7 +111,6 @@ ms.locfileid: "44354626"
 
 
 ## <a name="related-articles"></a>相关文章
-* [有关 Azure Active Directory 中应用程序管理的文章索引](../active-directory-apps-index.md)
 * [在 SaaS 应用程序中自动预配和取消预配用户](user-provisioning.md)
 * [为用户预配自定义属性映射](customize-application-attributes.md)
 * [为属性映射编写表达式](functions-for-customizing-application-data.md)

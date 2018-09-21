@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 06/25/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: c8cff54c67ab2c9c3d09f9261617b6312cc4434a
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: a3f2021a1a1e0a0ff97c5966e151894fd7b6743b
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025111"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574634"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>使用 Azure Application Insights 数据自动化自定义报表
 
@@ -116,7 +116,7 @@ availabilityResults
     * SendGridAPI =SendGrid API Key
 
     > [!NOTE]
-    > 如果没有 SendGrid 帐户，可以创建一个。 [此处](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-sendgrid)提供了适用于 Azure 函数的 SendGrid 文档。 如果只需要有关如何设置 SendGrid 的简单解释并生成一个 API 密钥，则本文末尾提供了一个。 
+    > 如果没有 SendGrid 帐户，可以创建一个。 [此处](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid)提供了适用于 Azure 函数的 SendGrid 文档。 如果只需要有关如何设置 SendGrid 的简单解释并生成一个 API 密钥，则本文末尾提供了一个。 
 
 9. 选择“集成”并在“输出”下单击“SendGrid ($return)”。
 

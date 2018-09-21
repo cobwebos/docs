@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/03/2017
+ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 177438c4d6b416584f1797ec1ce744fc484ef688
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5d60c5f2d759f3329997762270e9a0335ebbe1e9
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32154522"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35765868"
 ---
 # <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>云服务 Web 角色/辅助角色的默认 TEMP 文件夹大小太小
 云服务辅助角色或 Web 角色的默认临时目录的最大大小为 100 MB，可能会导致该目录在某个时候被填满。 本文介绍如何避免临时目录空间不足。

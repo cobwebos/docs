@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/27/2017
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: ee24a055c6a3c53b9753728e13a7687e722c1c91
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: e62023f5aeca73973598430ed357e8e9800a17f8
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526209"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732237"
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>使用 Microsoft Azure 存储数据移动库传输数据
 
@@ -35,10 +35,10 @@ Microsoft Azure 存储数据移动库是一个高性能的跨平台开源库，�
 **准备工作：**
 
 * [Visual Studio Code](https://code.visualstudio.com/)
-* 一个 [Azure 存储帐户](storage-create-storage-account.md#create-a-storage-account)
+* 一个 [Azure 存储帐户](storage-quickstart-create-account.md)
 
 > [!NOTE]
-> 本指南假定已熟悉 [Azure 存储](https://azure.microsoft.com/services/storage/)。 如果不熟悉，最好是阅读 [Azure 存储简介](storage-introduction.md)。 最重要的是，需要[创建一个存储帐户](storage-create-storage-account.md#create-a-storage-account)才能开始使用数据移动库。
+> 本指南假定已熟悉 [Azure 存储](https://azure.microsoft.com/services/storage/)。 如果不熟悉，最好是阅读 [Azure 存储简介](storage-introduction.md)。 最重要的是，需要[创建一个存储帐户](storage-quickstart-create-account.md)才能开始使用数据移动库。
 > 
 > 
 

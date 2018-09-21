@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: cynthn
-ms.openlocfilehash: fc3d72ace6398b69a5efa5543c590bba166baaf0
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 3fb6957cf6af5c09a355b61c7c2440a929d1b837
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30918568"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736660"
 ---
 # <a name="create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>使用 Azure CLI 2.0 从自定义磁盘创建 Linux VM
 
@@ -36,7 +36,7 @@ ms.locfileid: "30918568"
 
 ## <a name="quick-commands"></a>快速命令
 
-使用 [az vm create](/cli/azure/vm#az_vm_create) 从自定义或专用的磁盘创建新 VM 时，请**附加**该磁盘 (--attach-os-disk)，而不要指定自定义映像或 Marketplace 映像 (--image)。 以下示例使用从自定义 VHD 创建的、名为 *myManagedDisk* 的托管磁盘，创建名为 *myVM* 的 VM：
+使用 [az vm create](/cli/azure/vm#az_vm_create) 从自定义或专用的磁盘创建新 VM 时，请**附加**该磁盘 (--attach-os-disk)，而不要指定自定义映像或市场映像 (--image)。 以下示例使用从自定义 VHD 创建的、名为 *myManagedDisk* 的托管磁盘，创建名为 *myVM* 的 VM：
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location eastus --name myVM \
@@ -113,7 +113,7 @@ az storage account create \
 ```
 
 ### <a name="list-storage-account-keys"></a>列出存储帐户密钥
-Azure 将为每个存储帐户生成两个 512 位的访问密钥。 在向存储帐户进行身份验证以执行操作（例如执行写入操作）时，将使用这些访问密钥。 从此处了解有关[管理对存储的访问](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)的详细信息。 可使用 [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) 查看访问密钥。
+Azure 将为每个存储帐户生成两个 512 位的访问密钥。 在向存储帐户进行身份验证以执行操作（例如执行写入操作）时，将使用这些访问密钥。 从此处了解有关[管理对存储的访问](../../storage/common/storage-account-manage.md#access-keys)的详细信息。 可使用 [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) 查看访问密钥。
 
 查看创建的存储帐户的访问密钥：
 

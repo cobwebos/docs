@@ -12,27 +12,27 @@ ms.service: virtual-machines-windows
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: required
-ms.date: 11/03/2017
+ms.date: 06/15/2018
 ms.devlang: na
 ms.author: delhan
-ms.openlocfilehash: bed5da25042d29983bad9a80cd44bdd7df261c2e
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 400b20e474257650a22e04c89ddde581bf0552f4
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "23989288"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35768406"
 ---
 # <a name="troubleshoot-classic-deployment-issues-with-restarting-or-resizing-an-existing-windows-virtual-machine-in-azure"></a>排查在 Azure 中重新启动或调整现有 Windows 虚拟机时遇到的经典部署问题
 > [!div class="op_single_selector"]
 > * [经典](virtual-machines-windows-classic-restart-resize-error-troubleshooting.md)
-> * [Resource Manager](../restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+> * [资源管理器](../restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 > 
 > 
 
 尝试启动已停止的 Azure 虚拟机 (VM)，或调整现有 Azure VM 的大小时，经常遇到的错误是分配失败。 当群集或区域没有可用的资源或无法支持所请求的 VM 大小时，将发生此错误。
 
 > [!IMPORTANT]
-> Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../../../azure-resource-manager/resource-manager-deployment-model.md)。  本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
+> Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../../../azure-resource-manager/resource-manager-deployment-model.md)。  本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 > 
 > 
 

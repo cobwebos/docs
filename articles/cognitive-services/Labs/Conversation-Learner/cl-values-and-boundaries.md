@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: c0ad9f71665e503fe794c68200b90a8474750823
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: b048509f38356b19d52507f4dfb5bfa61122f9f6
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173619"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576419"
 ---
 # <a name="default-values-and-boundaries"></a>默认值和边界
 
@@ -35,8 +35,8 @@ ms.locfileid: "39173619"
 创作 API，每秒的最大 HTTP 调用数 | 25
 会话 API，每月的最大 HTTP 调用数 | 500K
 会话 API，每秒的最大 HTTP 调用数 | 10
-每个模型的最大自定义（非编程）实体数 | 请参阅 [LUIS 边界文档](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-boundaries)；事实上，实际数量可能会略小
-每个模型的最大预构建实体数 | 请参阅 [LUIS 边界文档](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-boundaries)
+每个模型的最大自定义（非编程）实体数 | 请参阅 [LUIS 边界文档](https://docs.microsoft.com/azure/cognitive-services/luis/luis-boundaries)；事实上，实际数量可能会略小
+每个模型的最大预构建实体数 | 请参阅 [LUIS 边界文档](https://docs.microsoft.com/azure/cognitive-services/luis/luis-boundaries)
 每个模型的最大实体数（总计） | 100
 每个模型的最大操作数 | 32
 每个模型的最大定型对话数 | 1000

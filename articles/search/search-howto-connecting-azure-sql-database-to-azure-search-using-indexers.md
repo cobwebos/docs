@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: 5545b2e40777496ab8c808a8c2692b346d3509c5
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 5897740a1b5a183738c08b4dfde571be652aff3e
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778335"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35633924"
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>使用索引器将 Azure SQL 数据库连接到 Azure 搜索
 
@@ -109,7 +109,7 @@ ms.locfileid: "33778335"
 响应应类似于以下形式：
 
     {
-        "@odata.context":"https://myservice.search.windows.net/$metadata#Microsoft.Azure.Search.V2015_02_28.IndexerExecutionInfo",
+        "\@odata.context":"https://myservice.search.windows.net/$metadata#Microsoft.Azure.Search.V2015_02_28.IndexerExecutionInfo",
         "status":"running",
         "lastResult": {
             "status":"success",
@@ -312,7 +312,7 @@ SQL 索引器公开多个配置设置：
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 **问：是否可以将 Azure SQL 索引器与在 Azure 中的 IaaS VM 上运行的 SQL 数据库配合使用？**
 
@@ -324,7 +324,7 @@ SQL 索引器公开多个配置设置：
 
 **问：是否可以将 Azure SQL 索引器与在 Azure 上的 IaaS 中运行的除 SQL Server 之外的其他数据库配合使用？**
 
-不会。 我们不支持此方案，因为我们尚未使用除 SQL Server 以外的任何数据库测试该索引器。  
+不是。 我们不支持此方案，因为我们尚未使用除 SQL Server 以外的任何数据库测试该索引器。  
 
 **问：是否可以创建多个按计划运行的索引器？**
 

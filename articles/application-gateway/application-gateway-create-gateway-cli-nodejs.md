@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: 3d67e896da5e616e443fc4e1edd9aaafb0f0e2f9
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 29eec4ad1883db9d824b416bdfc7e984a5af4fbe
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33201865"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35631804"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>使用 Azure CLI 创建应用程序网关
 
@@ -41,7 +41,7 @@ Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之�
 若要执行本文中的步骤，需要[安装适用于 Mac、Linux 和 Windows 的 Azure 命令行接口 (Azure CLI)](../xplat-cli-install.md)，还需要[登录 Azure](/cli/azure/authenticate-azure-cli)。 
 
 > [!NOTE]
-> 如果没有 Azure 帐户，则需要注册一个。 可以[在此处注册免费试用帐户](../active-directory/sign-up-organization.md)。
+> 如果没有 Azure 帐户，则需要注册一个。 可以[在此处注册免费试用帐户](../active-directory/fundamentals/sign-up-organization.md)。
 
 ## <a name="scenario"></a>场景
 

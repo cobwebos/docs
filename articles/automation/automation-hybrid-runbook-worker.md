@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e834a1cfa7eba3c1ff12523982e6704c73ef8078
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 92ebd399cea88440e0f76ee1f34cb5930d3121d9
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38488502"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578678"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>使用混合 Runbook 辅助角色使数据中心或云端的资源实现自动化
 
@@ -34,7 +34,7 @@ Azure 自动化中的 Runbook 可能无法访问其他云或本地环境中的�
 
 若要安装和配置 Windows 混合 Runbook 辅助角色，可使用两种方法。 建议的方法是使用自动化 Runbook 来彻底实现配置 Windows 计算机过程的自动化。 第二种方法使用分步过程来手动安装和配置角色。 对于 Linux 计算机，运行 Python 脚本，在计算机上安装代理。
 
-|OS  |部署类型  |
+|操作系统  |部署类型  |
 |---------|---------|
 |Windows     | [PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[手动](automation-windows-hrw-install.md#manual-deployment)        |
 |Linux     | [Python](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)        |
@@ -97,14 +97,14 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 
 要使混合 Runbook 辅助角色连接并注册到 Log Analytics，必须让其有权访问此部分所述的端口号和 URL。 除了这些端口和 URL 以外，还需要有权访问 [Microsoft Monitoring Agent 连接到 Log Analytics 时要使用的端口和 URL](../log-analytics/log-analytics-agent-windows.md)。 
 
-如果使用代理服务器在代理与 Log Analytics 服务之间通信，请确保能够访问相应的资源。 如果使用防火墙来限制对 Internet 的访问，则必须将防火墙配置为允许访问。 如果将 OMS 网关用作代理，请确保为混合辅助角色配置 OMS 网关。 有关如何执行此操作的说明，请参阅[为自动化混合辅助角色配置 OMS 网关](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-oms-gateway#configure-for-automation-hybrid-workers)。
+如果使用代理服务器在代理与 Log Analytics 服务之间通信，请确保能够访问相应的资源。 如果使用防火墙来限制对 Internet 的访问，则必须将防火墙配置为允许访问。 如果将 OMS 网关用作代理，请确保为混合辅助角色配置 OMS 网关。 有关如何执行此操作的说明，请参阅[为自动化混合辅助角色配置 OMS 网关](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway#configure-for-automation-hybrid-workers)。
 
 混合 Runbook 辅助角色与自动化通信时需要以下端口和 URL：
 
 * 端口：只需使用 TCP 443 进行出站 Internet 访问。
 * 全局 URL：*.azure-automation.net
 * 美国弗吉尼亚州政府的全局 URL：*.azure-automation.us
-* 代理服务：https://\<workspaceId\>.agentsvc.azure-automation.net
+* 代理服务： https://\<workspaceId\>.agentsvc.azure-automation.net
 
 建议在定义例外时使用列出的地址。 对于 IP 地址，可以下载 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 此文件每周更新一次，反映当前已部署的范围和任何即将对 IP 范围进行的更改。
 

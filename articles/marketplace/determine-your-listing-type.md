@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: a85cd5287f6947ec17dc19291a70d6dd081e1827
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: b64a35f6b7422b1e24812c1041305dab2ebad6c0
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035854"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578491"
 ---
 # <a name="determine-your-publishing-option"></a>确定发布选项
 为套餐选择的发布选项直接关系到资格要求和市场 GTM 权益。 更重要的是，在云合作伙伴门户中选择的发布选项和套餐类型定义了用户如何与市场套餐进行交互。
@@ -80,7 +80,7 @@ ms.locfileid: "39035854"
 
 同一套餐类型可以在云合作伙伴门户中进行不同的配置，因此其发布选项、广告语、预配或定价会有所不同。 套餐类型的发布选项和配置也取决于套餐资格和技术要求。 
 
-在创建套餐之前，请务必查看此[发布指南](https://docs.microsoft.com/en-us/azure/marketplace/marketplace-publishers-guide)中的店面和套餐类型资格要求以及技术方面的发布要求。
+在创建套餐之前，请务必查看此[发布指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)中的店面和套餐类型资格要求以及技术方面的发布要求。
 
 ## <a name="next-steps"></a>后续步骤
 

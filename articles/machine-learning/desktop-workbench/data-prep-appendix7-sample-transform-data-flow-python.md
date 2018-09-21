@@ -7,18 +7,18 @@ ms.author: euang
 manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 655e9d41911fbb008470cf58b2538407933787bd
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: ca780b51973a960caec3b9b7a80c8ba5621b5a0b
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832068"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35633592"
 ---
 # <a name="sample-of-custom-data-flow-transforms-python"></a>自定义数据流转换示例 (Python) 
 菜单中的转换名称为“转换数据流(脚本)”。 阅读本附录前，请先阅读 [Python 扩展性概述](data-prep-python-extensibility-overview.md)。
@@ -47,7 +47,7 @@ ms.locfileid: "34832068"
 
 向下填充需要两个转换。 它假设数据如下表所示：
 
-|State         |城市       |
+|省/直辖市/自治区         |城市       |
 |--------------|-----------|
 |Washington    |Redmond    |
 |              |Bellevue   |
@@ -72,7 +72,7 @@ ms.locfileid: "34832068"
 
 数据现在如下表所示：
 
-|State         |newState         |城市       |
+|省/直辖市/自治区         |newState         |城市       |
 |--------------|--------------|-----------|
 |Washington    |Washington    |Redmond    |
 |              |Washington    |Bellevue   |

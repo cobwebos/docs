@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 21ad417b9b3b8d0354333962c4e811d0eebba4e9
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: efab734cc7d6facf82f622b95c12a1a27e99c5f7
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159327"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575926"
 ---
 # <a name="security-management-in-azure"></a>Azure 中的安全管理
 Azure 订阅者可从多种设备管理其云环境，这些设备包括管理工作站、开发人员电脑，甚至是具有任务特定权限的特权最终用户设备。 在某些情况下，可通过基于 Web 的控制台（例如 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)）来执行管理功能。 有其他情况下，可以从本地系统通过虚拟专用网络 (VPN)、终端服务、客户端应用程序协议或 Azure 服务管理 API (SMAPI)（以编程方式）直接连接到 Azure。 此外，客户端终结点（例如平板电脑或智能手机）可以加入域或者受到隔离且不受管理。
@@ -225,7 +225,7 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 
 * [保护特权访问](https://technet.microsoft.com/library/mt631194.aspx) – 获取有关设计和构建安全管理工作站以管理 Azure 的技术详细信息
 * [Microsoft 信任中心](https://microsoft.com/en-us/trustcenter/cloudservices/azure) - 了解可保护 Azure 结构以及在 Azure 上运行的工作负荷的 Azure 平台功能
-* [Microsoft 安全响应中心](https://technet.microsoft.com/en-us/security/dn440717.aspx) - 可在其中报告 Microsoft 安全漏洞（包括 Azure 问题）或将其通过电子邮件发送到 [secure@microsoft.com](mailto:secure@microsoft.com)
+* [Microsoft 安全响应中心](https://technet.microsoft.com/security/dn440717.aspx) - 可在其中报告 Microsoft 安全漏洞（包括 Azure 问题）或将其通过电子邮件发送到 [secure@microsoft.com](mailto:secure@microsoft.com)
 * [Azure 安全博客](http://blogs.msdn.com/b/azuresecurity/) – 随时掌握 Azure 安全性的最新信息
 
 <!--Image references-->

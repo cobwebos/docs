@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6b3205603b91077ca2c3226dcb78589de37d15cf
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 26899ea62b8caa872b6c99b94976c87f84ba7176
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35631615"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>用于 Java 的 Application Insights 的故障排除与常见问题解答
 使用 [Java 中的 Azure Application Insights][java] 时有疑问或遇到问题？ 请参考下面的提示。
@@ -33,7 +34,7 @@ ms.lasthandoff: 04/03/2018
 * 请稍等片刻，并单击“刷新”。 图表会定期自行刷新，但你也可以手动刷新。 刷新间隔取决于图表的时间范围。
 * 检查是否已在 ApplicationInsights.xml 文件（位于项目的 resources 文件夹）中定义检测密钥或将检测密钥配置为环境变量。
 * 确认 xml 文件中没有 `<DisableTelemetry>true</DisableTelemetry>` 节点。
-* 在防火墙中，可能需要打开 TCP 端口 80 和 443 才能将传出流量发送到 dc.services.visualstudio.com。请参阅 [full list of firewall exceptions](app-insights-ip-addresses.md)（防火墙例外的完整列表）
+* 在防火墙中，可能需要打开 TCP 端口 80 和 443 才能将传出流量发送到 dc.services.visualstudio.com。 请参阅 [full list of firewall exceptions](app-insights-ip-addresses.md)（防火墙例外的完整列表）
 * 在 Microsoft Azure 开始面板中查看服务状态映射。 如果看到警报指示，请等待它们恢复“正常”，关闭再重新打开 Application Insights 应用程序边栏选项卡。
 * 在 ApplicationInsights.xml 文件（位于项目的 resources 文件夹）中的根节点下添加 `<SDKLogger />` 元素，打开 IDE 控制台窗口日志记录功能，并检查条目的前面是否带有 AI: INFO/WARN/ERROR 以发现任何可疑日志。
 * 查看控制台输出消息中是否包含“已成功找到配置文件”语句，确保 Java SDK 成功加载正确的 ApplicationInsights.xml 文件。
@@ -156,7 +157,7 @@ Application Insights 使用 `org.apache.http`。 这将在命名空间 `com.micr
 * [捕获诊断日志][javalogs]
 
 ## <a name="get-help"></a>获取帮助
-* [堆栈溢出](http://stackoverflow.com/questions/tagged/ms-application-insights)
+* [Stack Overflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
 * [在 GitHub 上提出问题](https://github.com/Microsoft/ApplicationInsights-Java/issues)
 
 <!--Link references-->

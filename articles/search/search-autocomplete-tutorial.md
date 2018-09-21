@@ -9,16 +9,16 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: mcarter
-ms.openlocfilehash: 7120080bfdc188c150c7065e1c0639ab8c04f173
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 63f4d9f72b9bf81ea772123d65db0659fd3ffa5c
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989666"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578168"
 ---
 # <a name="tutorial-add-auto-complete-to-your-search-box-using-azure-search"></a>教程：使用 Azure 搜索将自动完成功能添加到搜索框
 
-本教程介绍如何使用 [Azure 搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/) 和 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) 中的[建议](https://docs.microsoft.com/rest/api/searchservice/suggestions)、[自动完成](https://docs.microsoft.com/en-us/rest/api/searchservice/autocomplete)和[分面](search-faceted-navigation.md)生成强大的搜索框。 “建议”根据用户键入的内容提供实际结果的建议。 “自动完成”是 Azure 搜索中[新的预览版功能](search-api-preview.md)，它提供索引中的字词来补全用户当前正在键入的内容。 我们将会比较多种技术，以改善用户工作效率，并在用户键入内容时为他们提供丰富的搜索功能，以此快速轻松地找到他们想要查找的内容。
+本教程介绍如何使用 [Azure 搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/) 和 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) 中的[建议](https://docs.microsoft.com/rest/api/searchservice/suggestions)、[自动完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete)和[分面](search-faceted-navigation.md)生成强大的搜索框。 “建议”根据用户键入的内容提供实际结果的建议。 “自动完成”是 Azure 搜索中[新的预览版功能](search-api-preview.md)，它提供索引中的字词来补全用户当前正在键入的内容。 我们将会比较多种技术，以改善用户工作效率，并在用户键入内容时为他们提供丰富的搜索功能，以此快速轻松地找到他们想要查找的内容。
 
 本教程将演练一个基于 ASP.NET MVC 的应用程序，该应用程序使用 C# 来调用 [Azure 搜索 .NET 客户端库](https://aka.ms/search-sdk)，并使用 JavaScript 直接调用 Azure 搜索 REST API。 本教程中的应用程序以填充 [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) 示例数据的索引为目标。 可以使用 NYC Jobs 演示中已配置的索引，也可以使用 NYCJobs 示例解决方案中的数据加载器填充自己的索引。 该示例使用 [jQuery UI](https://jqueryui.com/autocomplete/) 和 [XDSoft](https://xdsoft.net/jqplugins/autocomplete/) JavaScript 库生成支持自动完成的搜索框。 将这些组件与 Azure 搜索结合使用，可以查看用于演示如何在搜索框中支持自动完成和提前键入的多个示例。
 
@@ -214,7 +214,7 @@ $(function () {
 将建议和自动完成功能集成到搜索体验。  考虑直接使用 .Net SDK 或 REST API 如何在用户键入内容时为其提供 Azure 搜索的强大功能，以帮助提高他们的工作效率。
 
 > [!div class="nextstepaction"]
-> [自动完成 REST API](https://docs.microsoft.com/en-us/rest/api/searchservice/autocomplete)
-> [建议 REST API](https://docs.microsoft.com/en-us/rest/api/searchservice/suggestions)
-> [“创建索引”REST API 中的分面索引属性](https://docs.microsoft.com/en-us/rest/api/searchservice/create-index)
+> [自动完成 REST API](https://docs.microsoft.com/rest/api/searchservice/autocomplete)
+> [建议 REST API](https://docs.microsoft.com/rest/api/searchservice/suggestions)
+> [“创建索引”REST API 中的分面索引属性](https://docs.microsoft.com/rest/api/searchservice/create-index)
 

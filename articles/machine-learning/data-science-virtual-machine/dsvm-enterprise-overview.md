@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 8486b0be1fb5e1385da3c7ad55f6410a1059df93
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: ea8d53ee71e9272167a045e2ea1780828f974d30
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309242"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573585"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>基于数据科学虚拟机的团队分析和 AI 环境 
 [数据科学虚拟机](overview.md) (DSVM) 通过人工智能 (AI) 和数据分析的预建软件在 Azure 平台上提供丰富的环境。 
@@ -51,4 +51,4 @@ ms.locfileid: "36309242"
 * [加密](https://docs.microsoft.com/azure/virtual-machines/windows/encrypt-disks)
 * [数据发现和管理](https://docs.microsoft.com/azure/data-catalog/)
 
-[Azure 体系结构中心](https://docs.microsoft.com/en-us/azure/architecture/)为构建和管理基于云的分析基础结构提供了详细的端到端体系结构和模式。 
+[Azure 体系结构中心](https://docs.microsoft.com/azure/architecture/)为构建和管理基于云的分析基础结构提供了详细的端到端体系结构和模式。 

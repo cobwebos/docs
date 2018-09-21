@@ -4,18 +4,18 @@ description: 说明如何将 Azure AD 动态组与 Azure Active Directory B2B �
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: e91418e2e0620c7ded63150d95cc32e4cc8c34d8
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 287c5a75d1c15a9ebc7a23d263ce7ff5516bcfab
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861202"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45981858"
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>动态组和 Azure Active Directory B2B 协作
 

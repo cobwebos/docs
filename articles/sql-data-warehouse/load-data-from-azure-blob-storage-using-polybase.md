@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/17/2018
+ms.date: 09/12/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 06d889686c673adc3941ac7303ab52a6fff408a8
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: b9c42f5b0fc6fb9468d8fd0a1c34270d1734391a
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288118"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579901"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>教程：将纽约出租车数据加载到 Azure SQL 数据仓库
 
@@ -529,7 +529,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
         s.request_id,
         r.status,
         count(distinct input_name) as nbr_files,
-        sum(s.bytes_processed)/1024/1024/1024 as gb_processed
+        sum(s.bytes_processed)/1024/1024/1024.0 as gb_processed
     FROM 
         sys.dm_pdw_exec_requests r
         INNER JOIN sys.dm_pdw_dms_external_work s
@@ -561,16 +561,6 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 
     ![查看已加载的表](media/load-data-from-azure-blob-storage-using-polybase/view-loaded-tables.png)
 
-## <a name="create-statistics-on-newly-loaded-data"></a>创建新加载的数据的统计信息
-
-SQL 数据仓库不会自动创建或自动更新统计信息。 因此，若要实现较高的查询性能，必须在首次加载后基于每个表的每个列创建统计信息。 此外，在对数据做出重大更改后，必须更新统计信息。
-
-运行以下命令，创建针对可能用于联接的列的统计信息。
-
-    ```sql
-    CREATE STATISTICS [dbo.Date DateID stats] ON dbo.Date (DateID);
-    CREATE STATISTICS [dbo.Trip DateID stats] ON dbo.Trip (DateID);
-    ```
 
 ## <a name="clean-up-resources"></a>清理资源
 

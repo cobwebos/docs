@@ -8,7 +8,7 @@ author: becczhang
 manager: jhubbard
 editor: ''
 ms.prod: ''
-ms.reviewer: carlrab
+ms.reviewer: vanto
 ms.suite: sql
 ms.prod_service: sql-database, sql-data-warehouse
 ms.service: sql-database
@@ -19,12 +19,12 @@ ms.topic: article
 ms.date: 08/07/2017
 ms.author: ryzhang26
 monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: 53ec5a315245537957c7c9eecde862da724b12f1
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: ad4202ffed38438cb2e330d813521bbf4d50d5c5
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40043271"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542013"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector-using-powershell"></a>使用 PowerShell 轮换透明数据加密 (TDE) 保护器 
 
@@ -42,7 +42,7 @@ ms.locfileid: "40043271"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 本操作方法指南假设你已使用 Azure Key Vault 中的密钥作为 Azure SQL 数据库或数据仓库的 TDE 保护器。 请参阅[提供 BYOK 支持的透明数据加密](transparent-data-encryption-byok-azure-sql.md)。
+- 本操作方法指南假设已使用 Azure Key Vault 中的密钥作为 Azure SQL 数据库或数据仓库的 TDE 保护器。 请参阅[提供 BYOK 支持的透明数据加密](transparent-data-encryption-byok-azure-sql.md)。
 - 必须安装并运行 Azure PowerShell 3.7.0 或更高版本。 
 - [推荐但仅为可选] 先在硬件安全模块 (HSM) 或本地密钥存储中创建 TDE 保护器的密钥材料，然后将密钥材料导入到 Azure Key Vault。 按[硬件安全模块 (HSM) 和 Key Vault 的使用说明](https://docs.microsoft.com/azure/key-vault/key-vault-get-started)操作，以便了解详细信息。
 

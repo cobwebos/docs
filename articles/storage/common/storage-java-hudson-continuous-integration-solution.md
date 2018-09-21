@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: c076ae96f8aba648196dc5222db3da3da68673ff
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 86a14d12f6621524ef26e2a869d4be532105dc77
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528385"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732325"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>将 Azure 存储用于 Hudson 持续集成解决方案
 ## <a name="overview"></a>概述
@@ -53,7 +53,7 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
      
       虽然典型 Hudson CI 解决方案将设置为作为一个服务运行，但在本教程中，通过命令行运行 Hudson war 就足够了。
 * 一个 Azure 帐户。 可在 <http://www.azure.com> 注册 Azure 帐户。
-* 一个 Azure 存储帐户。 如果还没有存储帐户，可使用[创建存储帐户](../common/storage-create-storage-account.md#create-a-storage-account)中的步骤创建一个。
+* 一个 Azure 存储帐户。 如果还没有存储帐户，可使用[创建存储帐户](../common/storage-quickstart-create-account.md)中的步骤创建一个。
 * 建议熟悉 Hudson CI 解决方案（但不是必需的），因为以下内容将使用一个基本示例向你演示使用 Blob 服务作为 Hudson CI 生成项目的存储库时所需的步骤。
 
 ## <a name="how-to-use-the-blob-service-with-hudson-ci"></a>如何将 Blob 服务用于 Hudson CI
@@ -73,7 +73,7 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
 2. 在“管理 Hudson”页，单击“配置系统”。
 3. 在“Microsoft Azure 存储帐户配置”部分中：
    
-    a. 输入存储帐户名，该帐户名可从 [Azure 门户](https://portal.azure.com)获取。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 输入存储帐户名，该帐户名可从 [Azure 门户](https://portal.azure.com)获取。
    
     b. 输入存储帐户密钥，该密钥同样可从 [Azure 门户](https://portal.azure.com)获取。
    

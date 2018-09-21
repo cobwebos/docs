@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: d5c1cb22fdfe59bd8409f9595b2fa4c3a0df771e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 41e422d0808cafb45b182c5f0a6bb7176a35516f
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641231"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35758614"
 ---
 # <a name="internet-of-things-security-overview"></a>物联网安全概述
 Azure 物联网 (IoT) 服务提供范围广泛的功能。 这些企业级服务让你能够：
@@ -39,32 +39,32 @@ Azure IoT 解决方案加速器是针对 IoT 需求的强大解决方案。 但�
 ## <a name="security-architecture"></a>安全体系结构
 在设计系统时，我们应了解该系统的潜在威胁并添加适当的防御机制，以妥善设计系统与其体系结构。 在一开始设计产品时就先考虑安全很重要，因为了解攻击者可能如何破坏系统，有助于从一开始就准备好适当的安全防护功能。
 
-可以通过阅读[物联网安全体系结构](../iot-accelerators/iot-security-architecture.md)了解有关 IoT 安全体系结构的信息。
+可以通过阅读[物联网安全体系结构](/azure/iot-fundamentals/iot-security-architecture)了解有关 IoT 安全体系结构的信息。
 
 本文讨论以下主题：
 
-* [安全从威胁模型开始](../iot-accelerators/iot-security-architecture.md#security-starts-with-a-threat-model)
-* [IoT 中的安全性](../iot-accelerators/iot-security-architecture.md#security-in-iot)
-* [对 Azure IoT 参考体系结构进行威胁建模](../iot-accelerators/iot-security-architecture.md#threat-modeling-the-azure-iot-reference-architecture)
+* [安全从威胁模型开始](/azure/iot-fundamentals/iot-security-architecture#security-starts-with-a-threat-model)
+* [IoT 中的安全性](/azure/iot-fundamentals/iot-security-architecture#security-in-iot)
+* [对 Azure IoT 参考体系结构进行威胁建模](/azure/iot-fundamentals/iot-security-architecture#threat-modeling-the-azure-iot-reference-architecture)
 
 ## <a name="security-from-the-ground-up"></a>安全基础知识
 IoT 使全球企业面临独特的安全、隐私权与合规性挑战。 不同于传统网络技术（这些问题是以软件及其实现方式为中心），IoT 在意的是当网络与物理世界融合时会发生什么情况。 保护 IoT 解决方案要求确保安全预配设备，保护这些设备与云之间的连接，以及在处理和存储期间保护云中数据的安全。 但是，针对此类功能运行的是资源受限的设备、根据地理位置分布的部署，以及解决方案中的许多设备。
 
-可以通过阅读[物联网安全基础知识](../iot-accelerators/securing-iot-ground-up.md)了解如何处理这些领域内的安全问题。
+可以通过阅读[物联网安全基础知识](/azure/iot-fundamentals/iot-security-ground-up)了解如何处理这些领域内的安全问题。
 
 本文讨论以下主题：
 
-* [安全基础结构基础知识](../iot-accelerators/securing-iot-ground-up.md#secure-infrastructure-from-the-ground-up)
-* [Microsoft Azure - 适用于企业的安全 IoT 基础结构](../iot-accelerators/securing-iot-ground-up.md#microsoft-azure---secure-iot-infrastructure-for-your-business)
+* [安全基础结构基础知识](/azure/iot-fundamentals/iot-security-ground-up#secure-infrastructure-from-the-ground-up)
+* [Microsoft Azure - 适用于企业的安全 IoT 基础结构](/azure/iot-fundamentals/iot-security-ground-up#microsoft-azure---secure-iot-infrastructure-for-your-business)
 
 ## <a name="best-practices"></a>最佳实践
 保护 IoT 基础结构需要严格的深度安全防御策略。 从保护云数据开始，到保护数据通过公共 Internet 传输时的完整性，再到安全地预配设备，整体基础结构的每一层一步步奠定了强大的安全保障。
 
-可以通过阅读[物联网安全最佳实践](../iot-accelerators/iot-security-best-practices.md)了解有关物联网安全最佳实践的信息。
+可以通过阅读[物联网安全最佳实践](/azure/iot-fundamentals/iot-security-best-practices)了解有关物联网安全最佳实践的信息。
 
 本文讨论以下主题：
 
-* [IoT 硬件制造商/系统集成商](../iot-accelerators/iot-security-best-practices.md#iot-hardware-manufacturerintegrator)
-* [IoT 解决方案开发人员](../iot-accelerators/iot-security-best-practices.md#iot-solution-developer)
-* [IoT 解决方案部署人员](../iot-accelerators/iot-security-best-practices.md#iot-solution-deployer)
-* [IoT 解决方案操作员](../iot-accelerators/iot-security-best-practices.md#iot-solution-operator)
+* [IoT 硬件制造商/系统集成商](/azure/iot-fundamentals/iot-security-best-practices#iot-hardware-manufacturerintegrator)
+* [IoT 解决方案开发人员](/azure/iot-fundamentals/iot-security-best-practices#iot-solution-developer)
+* [IoT 解决方案部署人员](/azure/iot-fundamentals/iot-security-best-practices#iot-solution-deployer)
+* [IoT 解决方案操作员](/azure/iot-fundamentals/iot-security-best-practices#iot-solution-operator)

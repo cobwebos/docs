@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/30/2018
+ms.date: 09/11/2018
 ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b13b5a7d5366a0bce97d8e735dbf3822186d21cb
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 9ebd949460f826c9529b9f392bc4a7f4918ee170
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354610"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715034"
 ---
 # <a name="troubleshooting-the-access-panel-extension-for-internet-explorer"></a>Internet Explorer 访问面板扩展故障排除
 本文将帮助用户解决以下问题：
@@ -91,7 +91,6 @@ ms.locfileid: "44354610"
 如果在卸载扩展时遇到问题，还可以使用 [Microsoft Fix It](https://go.microsoft.com/?linkid=9779673) 工具删除它。
 
 ## <a name="related-articles"></a>相关文章
-* [有关 Azure Active Directory 中应用程序管理的文章索引](../active-directory-apps-index.md)
 * [Azure Active Directory 的应用程序访问与单一登录](what-is-single-sign-on.md)
 * [如何使用组策略部署 Internet Explorer 的访问面板扩展](deploy-access-panel-browser-extension.md)
 

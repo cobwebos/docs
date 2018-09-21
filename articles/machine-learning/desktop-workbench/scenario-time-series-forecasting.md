@@ -9,19 +9,19 @@ editor: anta
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: anta
-ms.openlocfilehash: 19e62364599ec9f1d0571e6f6e35205b0bb93b4b
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 3f32c9048c4b2002e7672b46a4f39e86ffa7b98e
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832527"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35631439"
 ---
 # <a name="energy-demand-time-series-forecasting"></a>能源需求时序预测
 

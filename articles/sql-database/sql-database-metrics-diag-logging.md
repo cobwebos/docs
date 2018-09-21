@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: ba305b66d4b7230f2706136587c4183f81c5e9c3
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: aa031b87df51bd9f7dec40a6c3e56023e2d82d96
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525495"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579490"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录 
 Azure SQL 数据库可发出指标和诊断日志，以便更轻松地进行监视。 可配置 SQL 数据库，将资源使用情况、辅助角色和会话以及连接性存储到以下 Azure 资源之一：
@@ -157,7 +157,7 @@ Azure SQL 数据库可发出指标和诊断日志，以便更轻松地进行监�
 
 ### <a name="rest-api"></a>REST API
 
-阅读有关如何[使用 Azure Monitor REST API 更改诊断设置](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings)的信息。 
+阅读有关如何[使用 Azure Monitor REST API 更改诊断设置](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)的信息。 
 
 ### <a name="resource-manager-template"></a>资源管理器模板
 

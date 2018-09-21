@@ -10,15 +10,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/04/2017
-ms.author: mbullwin; antonfr
-ms.openlocfilehash: 59b88a940e83ed89e8638b62680a57ca1514f8b0
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: antonfr
+ms.author: mbullwin
+ms.openlocfilehash: eef597bf0c9f28cdec5af56c6dfe8bcaaa2415bd
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33868928"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "35633516"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智能检测 - 性能异常
 
@@ -66,10 +67,10 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 
 每天只会针对每个 Application Insights 资源发送一封有关智能检测性能异常的电子邮件。 只有当天至少检测到一个新问题时，才会发送电子邮件。 将不会收到任何重复的消息。 
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 * *那么，Microsoft 员工会查看我的数据？*
-  * 不会。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](app-insights-data-retention-privacy.md)数据。
+  * 不是。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](app-insights-data-retention-privacy.md)数据。
 * *是否分析由 Application Insights 收集的所有数据？*
   * 目前不会。 目前，我们分析请求响应时间、依赖项响应时间和页面加载时间。 其他指标的分析功能正在规划中，今后有望推出。
 
@@ -85,7 +86,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 
   * 我们每天针对前一天（UTC 时区整天）的遥测数据运行分析。
 * *那么这是否会替换[指标警报](app-insights-alerts.md)？*
-  * 不会。  我们不确定检测用户视为异常的每个行为。
+  * 不是。  我们不确定检测用户视为异常的每个行为。
 
 
 * *如果不执行任何操作来响应通知，是否会收到提醒？*

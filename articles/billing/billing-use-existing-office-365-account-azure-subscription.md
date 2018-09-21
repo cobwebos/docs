@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/03/2017
+ms.date: 06/15/2018
 ms.author: cjiang
-ms.openlocfilehash: dfb39b809f9a1082682d269d8bd4c180c8a264ce
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: dd7b9609495cacd324ef5509f57db0384775e0a7
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33204558"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35767545"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>使用 Office 365 帐户注册 Azure 订阅
 如果具有 Office 365 订阅，可以使用 Office 365 帐户创建 Azure 订阅。 使用 Office 365 用户名和密码登录 [Azure 门户](https://portal.azure.com/)。 如果想要设置虚拟机或使用其他 Azure 服务，则必须注册 Azure 订阅。 可以与他人共享 Azure 订阅并[使用基于角色的访问控制来管理对 Azure 订阅和资源的访问](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
@@ -53,7 +53,7 @@ Office 365 和 Azure 使用 Azure AD 服务管理用户和订阅。 Azure 目录
 
 ![显示目录、用户和订阅关系的屏幕截图。](./media/billing-use-existing-office-365-account-azure-subscription/19-background-information.png)
 
-有关详细信息，请参阅 [How Azure subscriptions are associated with Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md)（Azure 订阅与 Azure Active Directory 的关联方式）。
+有关详细信息，请参阅 [How Azure subscriptions are associated with Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)（Azure 订阅与 Azure Active Directory 的关联方式）。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。 

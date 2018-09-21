@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 02/14/2017
 ms.author: wesmc
-ms.openlocfilehash: 81c95949971d54833ca7a15ec5148116c94767f7
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 3cf906830965959709a8c7e8dc7d2acc3f3a6f32
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27909816"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35768244"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-redis-cache"></a>Azure Redis 缓存的 ASP.NET 输出缓存提供程序
 Redis 输出缓存提供程序是用于输出缓存数据的进程外存储机制。 此数据专门用于完整 HTTP 响应（页面输出缓存）。 此提供程序会插入 ASP.NET 4 中引入的新输出缓存提供程序扩展点。
@@ -48,8 +48,11 @@ Redis 输出缓存提供程序 NuGet 包依赖于 StackExchange.Redis.StrongName
 <caching>
   <outputCachedefault Provider="MyRedisOutputCache">
     <providers>
+      <!-- For more details check https://github.com/Azure/aspnet-redis-providers/wiki -->
+      <!-- Either use 'connectionString' OR 'settingsClassName' and 'settingsMethodName' OR use 'host','port','accessKey','ssl','connectionTimeoutInMilliseconds' and 'operationTimeoutInMilliseconds'. -->
+      <!-- 'databaseId' and 'applicationName' can be used with both options. -->
       <!--
-      <add name="MyRedisOutputCache"
+      <add name="MyRedisOutputCache" 
         host = "127.0.0.1" [String]
         port = "" [number]
         accessKey = "" [String]
@@ -57,11 +60,19 @@ Redis 输出缓存提供程序 NuGet 包依赖于 StackExchange.Redis.StrongName
         databaseId = "0" [number]
         applicationName = "" [String]
         connectionTimeoutInMilliseconds = "5000" [number]
-        operationTimeoutInMilliseconds = "5000" [number]
+        operationTimeoutInMilliseconds = "1000" [number]
+        connectionString = "<Valid StackExchange.Redis connection string>" [String]
+        settingsClassName = "<Assembly qualified class name that contains settings method specified below. Which basically return 'connectionString' value>" [String]
+        settingsMethodName = "<Settings method should be defined in settingsClass. It should be public, static, does not take any parameters and should have a return type of 'String', which is basically 'connectionString' value.>" [String]
+        loggingClassName = "<Assembly qualified class name that contains logging method specified below>" [String]
+        loggingMethodName = "<Logging method should be defined in loggingClass. It should be public, static, does not take any parameters and should have a return type of System.IO.TextWriter.>" [String]
+        redisSerializerType = "<Assembly qualified class name that implements Microsoft.Web.Redis.ISerializer>" [String]
       />
       -->
-      <add name="MyRedisOutputCache" type="Microsoft.Web.Redis.RedisOutputCacheProvider" host="127.0.0.1" accessKey="" ssl="false"/>
-    </providers>
+      <add name="MyRedisOutputCache" type="Microsoft.Web.Redis.RedisOutputCacheProvider"
+           host=""
+           accessKey=""
+           ssl="true" />
   </outputCache>
 </caching>
 ```

@@ -1,21 +1,21 @@
 ---
-title: 了解 QnA Maker - Microsoft 认知服务 | Microsoft Docs
-titleSuffix: Azure
+title: 什么是 QnA Maker？
+titleSuffix: Azure Cognitive Services
 description: 使用 QnA Maker，可以根据常见问题解答文档或者 URL 和产品手册等半结构化内容打造一项问题与解答服务。
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: nstulasi
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: overview
-ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: f34cec047c18a6db10b5adda82800c51d44c1155
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.date: 09/12/2018
+ms.author: saneppal
+ms.openlocfilehash: 16cb2d21094e70e7968e5ca45ec2582b7e60a430
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "36295139"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541932"
 ---
 # <a name="what-is-qna-maker"></a>什么是 QnA Maker？
 

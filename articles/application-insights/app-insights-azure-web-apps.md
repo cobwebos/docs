@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 05/05/2017
 ms.author: mbullwin
-ms.openlocfilehash: 9de6ca48db98d7691310199b90bf7414f07547fd
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 0d9001834a33675dc4aab8d78282fb2987419ec3
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35631899"
 ---
 # <a name="monitor-azure-web-app-performance"></a>监视 Azure Web 应用性能
 在 [Azure 门户](https://portal.azure.com)中，可为 [Azure Web 应用](../app-service/app-service-web-overview.md)设置应用程序性能监视。 [Azure Application Insights](app-insights-overview.md) 将检测应用，将其活动的相关遥测数据发送到 Application Insights 服务，以便在其中存储和分析。 此处的指标图表和搜索工具可用于帮助诊断问题、改善性能以及评估使用情况。
@@ -47,7 +48,7 @@ ms.lasthandoff: 05/14/2018
    
     键：`APPINSIGHTS_JAVASCRIPT_ENABLED` 
     
-    值：`true`
+    值： `true`
    * **保存**设置并**重新启动**应用。
 3. **监视应用**。  [浏览数据](#explore-the-data)。
 

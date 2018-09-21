@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 76448f57bf710dcb8b3b220cc06b3833a22a6295
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 236859cca623643b9bc7a4484f6ce4e6aa11aad6
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39058079"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579779"
 ---
 # <a name="office-365-dynamics-365-power-apps-and-power-bi-offer-publishing-guide"></a>Office 365、Dynamics 365、Power Apps 和 Power BI 产品/服务发布指南
 
@@ -31,7 +31,7 @@ AppSource 提供了列表和试用产品/服务，其号召性用语为“与我
 
 ### <a name="office-365"></a>Office 365
 
-查看[发布过程和指导](https://docs.microsoft.com/en-us/office/dev/store/submit-to-the-office-store)
+查看[发布过程和指导](https://docs.microsoft.com/office/dev/store/submit-to-the-office-store)
 
 ### <a name="power-apps"></a>Power Apps
 
@@ -39,15 +39,15 @@ AppSource 提供了列表和试用产品/服务，其号召性用语为“与我
 
 ### <a name="power-bi"></a>Power BI
 
-查看[发布过程和指导](https://docs.microsoft.com/en-us/power-bi/developer/office-store)。
+查看[发布过程和指导](https://docs.microsoft.com/power-bi/developer/office-store)。
 
 ### <a name="dynamics-365"></a>Dynamics 365
 
 #### <a name="dynamics-365-for-finance-and-operations"></a>Dynamics 365 for Finance and Operations
-为 Enterprise Edition 生成项目时，请查看[发布过程和指导](https://docs.microsoft.com/en-us/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source)
+为 Enterprise Edition 生成项目时，请查看[发布过程和指导](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source)
 
 ### <a name="dynamics-365-for-customer-engagement"></a>Dynamics 365 for Customer Engagement
-查看[发布过程和指导](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/publish-app-appsource)
+查看[发布过程和指导](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource)
 
 ## <a name="next-steps"></a>后续步骤
 

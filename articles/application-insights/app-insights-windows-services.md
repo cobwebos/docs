@@ -1,6 +1,6 @@
 ---
-title: "用于 Windows 服务器和辅助角色的 Azure Application Insights | Microsoft Docs"
-description: "手动将 Application Insights SDK 添加到 ASP.NET 应用程序，以分析使用情况、可用性和性能。"
+title: 用于 Windows 服务器和辅助角色的 Azure Application Insights | Microsoft Docs
+description: 手动将 Application Insights SDK 添加到 ASP.NET 应用程序，以分析使用情况、可用性和性能。
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: bf7921926c69fff214e94a2d0edc22b28fb8eac0
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 3f2f0925cf6ec612b84765e42217723d8c8729c6
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "35631192"
 ---
 # <a name="manually-configure-application-insights-for-net-applications"></a>为 .NET 应用程序手动配置 Application Insights
 
@@ -29,7 +30,7 @@ ms.lasthandoff: 11/01/2017
 
 需要：
 
-* [Microsoft Azure](http://azure.com)订阅。 如果团队或组织拥有 Azure 订阅，则所有者可以使用 [Microsoft 帐户](http://live.com)你将加入其中。
+* [Microsoft Azure](http://azure.com) 订阅。 如果团队或组织拥有 Azure 订阅，则所有者可以使用 [Microsoft 帐户](http://live.com)你将加入其中。
 * Visual Studio 2013 或更高版本。
 
 ## <a name="add"></a>1.选择 Application Insights 资源

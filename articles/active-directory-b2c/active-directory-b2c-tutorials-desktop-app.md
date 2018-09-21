@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 18db911782e03d17f0b2e2ace3f8b00ddfdebf70
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 40adcc7280a279e066c9e22f3252972cf07d070d
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39599925"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604070"
 ---
 # <a name="tutorial-enable-desktop-app-authentication-with-accounts-using-azure-active-directory-b2c"></a>教程：使桌面应用能够使用帐户通过 Azure Active Directory B2C 进行身份验证
 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
 manager: douge
-ms.openlocfilehash: 1fa3ddd605ba410093542795c1c805906f98a1f5
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: d17a1c7700f1e0ac9533b7117b50a14431d0e5f1
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43186415"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716615"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-vs-code"></a>快速入门：使用 Azure Dev Spaces 创建 Kubernetes 开发空间（.NET Core 和 VS Code）
 
@@ -56,7 +56,7 @@ Azure CLI 和 Azure Dev Spaces 扩展可以在 Windows、Mac 或 Linux 计算机
 1. 在 AKS 中生成并运行代码。 在终端窗口中，从 **webfrontend 文件夹**中运行以下命令：`azds up`
 1. 扫描控制台输出以获取有关由 `up` 命令创建的 URL 的信息。 它的形式如下： 
 
-   `Service 'webfrontend' port 'http' is available at <url>` 
+   `(pending registration) Service 'webfrontend' port 'http' will be available at <url>\r\nService 'webfrontend' port 80 (TCP) is available at http://localhost:<port>` 
 
    在浏览器窗口中打开此 URL，你应看到 Web 应用加载。 
    
