@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
+ms.date: 09/19/2018
 ms.author: sethm
 ms.reviewer: alfredo
-ms.openlocfilehash: af28bff0a9826bb96451ae944a377ad0ee284d87
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: eef1a2f82dc73a1c53b89bb3c9d145f87212ffcc
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45633990"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498566"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>将租户添加到 Azure Stack 以获取用量和计费信息
 
@@ -69,9 +69,9 @@ CSP 通常向其 Azure Stack 部署中的多个最终客户（租户）提供服
 ### <a name="new-azurermresource-powershell-parameters"></a>New-AzureRmResource PowerShell 参数
 | 参数 | 说明 |
 | --- | --- | 
-|registrationSubscriptionID | 用于 Azure Stack 初始注册的 Azure 订阅。 |
-| customerSubscriptionID | 属于要注册的客户的 Azure 订阅（不是 Azure Stack）。 必须在 CSP 产品中创建；在实践中，这意味着通过合作伙伴中心创建。 如果客户有多个 Azure Active Directory 租户，则必须在用于登录 Azure Stack 的租户中创建此订阅。
-| resourceGroup | Azure 中用于存储注册的资源组。 
+|registrationSubscriptionID | 用于 Azure Stack 初始注册的 Azure 订阅。|
+| customerSubscriptionID | 属于要注册的客户的 Azure 订阅（不是 Azure Stack）。 必须在 CSP 产品中创建；在实践中，这意味着通过合作伙伴中心创建。 如果客户有多个 Azure Active Directory 租户，则必须在用于登录 Azure Stack 的租户中创建此订阅。 客户订阅 ID 必须使用小写字母。 |
+| resourceGroup | Azure 中用于存储注册的资源组。 |
 | registrationName | Azure Stack 的注册名称。 它是 Azure 中存储的对象。 | 
 | 属性 | 指定资源的属性。 使用此参数指定特定于资源类型的属性的值。
 
