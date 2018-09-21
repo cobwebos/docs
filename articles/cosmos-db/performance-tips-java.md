@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: sngun
-ms.openlocfilehash: 0a2bd840c4e93755988cf1638a6c0bdcb6b6207d
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: d8d05335b62d292bf61dbd3f3d565093b21f9253
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696374"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574838"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-java"></a>适用于 Azure Cosmos DB 和 Java 的性能提示
 
@@ -36,8 +36,8 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
     客户端连接到 Azure Cosmos DB 的方式对性能有重大影响（尤其在观测到的客户端延迟方面）。 有一个密钥配置设置可用于配置客户端 [ConnectionPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_policy)：[ConnectionMode](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_mode)。  有两种可用 ConnectionMode：
 
-   1. [网关（默认值）](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.documentdb._connection_mode)
-   2. [DirectHttps](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.documentdb._connection_mode)
+   1. [网关（默认值）](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_mode)
+   2. [DirectHttps](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_mode)
 
     网关模式受所有 SDK 平台的支持并已配置为默认设置。  如果应用程序在有严格防火墙限制的企业网络中运行，则网关是最佳选择，因为它使用标准 HTTPS 端口与单个终结点。 但是，对于性能的影响是每次在 Azure Cosmos DB 中读取或写入数据时，网关模式都涉及到额外的网络跃点。 因此，DirectHttps 模式因为网络跃点较少，可以提供更好的性能。 
 

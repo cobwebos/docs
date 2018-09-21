@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: ccdeb2e57d8e2f8fc7ad2fa5e76726b90c0c8a50
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 4b05c4c7db1e1c1953af2466d2c6a277baa07082
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36936813"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737339"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>使用 Azure CLI 2.0 上传自定义磁盘并从其创建 Linux VM
 本文说明如何使用 Azure CLI 2.0 将虚拟硬盘 (VHD) 上传到 Azure 存储帐户，并从此自定义磁盘创建 Linux VM。 此功能可让你安装并配置 Linux 分发以满足需求，然后使用该 VHD 快速创建 Azure 虚拟机 (VM)。
@@ -141,7 +141,7 @@ az storage account create --resource-group myResourceGroup --location westus \
 ```
 
 ## <a name="list-storage-account-keys"></a>列出存储帐户密钥
-Azure 将为每个存储帐户生成两个 512 位的访问密钥。 在向存储帐户进行身份验证以执行操作（例如执行写入操作）时，将使用这些访问密钥。 从此处了解有关[管理对存储的访问](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)的详细信息。 可使用 [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) 查看访问密钥。
+Azure 将为每个存储帐户生成两个 512 位的访问密钥。 在向存储帐户进行身份验证以执行操作（例如执行写入操作）时，将使用这些访问密钥。 从此处了解有关[管理对存储的访问](../../storage/common/storage-account-manage.md#access-keys)的详细信息。 可使用 [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) 查看访问密钥。
 
 查看创建的存储帐户的访问密钥：
 

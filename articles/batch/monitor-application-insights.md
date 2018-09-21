@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: 9f989ada01a2ffced509b42df9e46aa001386ab6
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 5e0358ebf525c39c09df4268971fa71c02457821
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34077388"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35765799"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>使用 Application Insights 监视和调试 Azure Batch .NET 应用程序
 
@@ -27,7 +27,7 @@ ms.locfileid: "34077388"
 [GitHub](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights) 上提供了一个示例 C# 解决方案，其中随附了本文中演示的代码。 此示例将 Application Insights 检测代码添加到 [TopNWords](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/TopNWords) 示例。 如果你不熟悉该示例，请先尝试生成并运行 TopNWords。 这有助于理解在多个计算节点上并行处理一组输入 Blob 的基本 Batch 工作流。 
 
 ## <a name="prerequisites"></a>先决条件
-* [Visual Studio IDE](https://www.visualstudio.com/vs)（Visual Studio 2015 或更高版本）
+* [Visual Studio 2017](https://www.visualstudio.com/vs)
 
 * [Batch 帐户和链接的存储帐户](batch-account-create-portal.md)
 
@@ -312,8 +312,8 @@ private const string BatchStartTaskTelemetryRunnerAIConfig = "ApplicationInsight
 CloudPool pool = client.PoolOperations.CreatePool(
     topNWordsConfiguration.PoolId,
     targetDedicated: topNWordsConfiguration.PoolNodeCount,
-    virtualMachineSize: "small",
-    cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "4"));
+    virtualMachineSize: "standard_d1_v2",
+    cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));
 ...
 
 // Create a start task which will run a dummy exe in background that simply emits performance

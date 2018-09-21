@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 4c8f2966df9c33ec227b14c00996f84f39043cdb
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: c8517114f51b5aed8f8e31a19b672721b109775e
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44349222"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298296"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念证明操作手册：构建基块
 
@@ -46,7 +46,7 @@ ms.locfileid: "44349222"
 | 已启用 Azure AD Premium 或 EMS 试用版 | [Azure Active Directory Premium 免费使用一个月](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | 已经向 PoC 用户分配了 Azure AD Premium 或 EMS 许可证 | [向你自己以及 Azure Active Directory 中用户分配许可证](active-directory-licensing-get-started-azure-portal.md) |
 | Azure AD 全局管理员凭据 | [在 Azure Active Directory 中分配管理员角色](users-groups-roles/directory-assign-admin-roles.md) |
-| 此项是可选项，但强烈建议执行：将实验室环境并行为回退 | [Azure AD Connect 的先决条件](./connect/active-directory-aadconnect-prerequisites.md) |
+| 此项是可选项，但强烈建议执行：将实验室环境并行为回退 | [Azure AD Connect 的先决条件](hybrid/how-to-connect-install-prerequisites.md) |
 
 ## <a name="directory-synchronization---password-hash-sync-phs---new-installation"></a>目录同步 - 密码哈希同步 (PHS) - 新安装
 
@@ -56,23 +56,23 @@ ms.locfileid: "44349222"
 
 | 先决条件 | 资源 |
 | --- | --- |
-| 运行 Azure AD Connect 的服务器 | [Azure AD Connect 的先决条件](./connect/active-directory-aadconnect-prerequisites.md) |
-| 目标 POC 用户，在同一域中，并且属于安全组和 OU | [Azure AD Connect 的自定义安装](./connect/active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering) |
-| 已标识 POC 所需的 Azure AD Connect 功能 | [将 Active Directory 连接到 Azure Active Directory - 配置同步功能](./connect/active-directory-aadconnect.md#configure-sync-features) |
-| 已具有本地和云环境所需的凭据  | [Azure AD Connect：帐户和权限](./connect/active-directory-aadconnect-accounts-permissions.md) |
+| 运行 Azure AD Connect 的服务器 | [Azure AD Connect 的先决条件](hybrid/how-to-connect-install-prerequisites.md) |
+| 目标 POC 用户，在同一域中，并且属于安全组和 OU | [Azure AD Connect 的自定义安装](hybrid/how-to-connect-install-custom.md#domain-and-ou-filtering) |
+| 已标识 POC 所需的 Azure AD Connect 功能 | [将 Active Directory 连接到 Azure Active Directory - 配置同步功能](hybrid/how-to-connect-install-roadmap.md#configure-sync-features) |
+| 已具有本地和云环境所需的凭据  | [Azure AD Connect：帐户和权限](hybrid/reference-connect-accounts-permissions.md) |
 
 ### <a name="steps"></a>Steps
 
 | 步骤 | 资源 |
 | --- | --- |
 | 下载最新版 Azure AD Connect | [下载 Microsoft Azure Active Directory Connect](https://www.microsoft.com/download/details.aspx?id=47594) |
-| 使用最简单的路径安装 Azure AD Connect，即 Express <br/>1.筛选出目标 OU，以最大限度地缩短同步周期时间<br/>2.在本地组中选择目标用户群。<br/>3.部署其他 POC 主题需要的功能 | [Azure AD Connect：自定义安装：域和 OU 筛选](./connect/active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering) <br/>[Azure AD Connect：自定义安装：根据组进行筛选](./connect/active-directory-aadconnect-get-started-custom.md#sync-filtering-based-on-groups)<br/>[Azure AD Connect：将本地标识与 Azure Active Directory 集成：配置同步功能](./connect/active-directory-aadconnect.md#configure-sync-features) |
-| 打开 Azure AD Connect UI，并查看已完成的运行配置文件（导入、同步和导出） | [Azure AD Connect 同步：计划程序](./connect/active-directory-aadconnectsync-feature-scheduler.md) |
+| 使用最简单的路径安装 Azure AD Connect，即 Express <br/>1.筛选出目标 OU，以最大限度地缩短同步周期时间<br/>2.在本地组中选择目标用户群。<br/>3.部署其他 POC 主题需要的功能 | [Azure AD Connect：自定义安装：域和 OU 筛选](hybrid/how-to-connect-install-custom.md#domain-and-ou-filtering) <br/>[Azure AD Connect：自定义安装：根据组进行筛选](hybrid/how-to-connect-install-custom.md#sync-filtering-based-on-groups)<br/>[Azure AD Connect：将本地标识与 Azure Active Directory 集成：配置同步功能](hybrid/how-to-connect-install-roadmap.md#configure-sync-features) |
+| 打开 Azure AD Connect UI，并查看已完成的运行配置文件（导入、同步和导出） | [Azure AD Connect 同步：计划程序](hybrid/how-to-connect-sync-feature-scheduler.md) |
 | 打开 [Azure AD 管理门户](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/)，转到“所有用户”边栏选项卡，添加“授权来源”列，之后将会显示出用户，再将其正确标记为来源于“Windows Server AD” | [Azure AD 管理门户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) |
 
 ### <a name="considerations"></a>注意事项
 
-1. 请在[此处](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)查看密码哈希同步的安全注意事项。  如果确实不能选择试点生产用户的密码哈希同步，请考虑使用以下替代方法：
+1. 请在[此处](hybrid/how-to-connect-password-hash-synchronization.md)查看密码哈希同步的安全注意事项。  如果确实不能选择试点生产用户的密码哈希同步，请考虑使用以下替代方法：
    * 在生产域中创建测试用户。 确保不会同步任何其他帐户
    * 转到 UAT 环境
 2.  如果想进行联合身份验证，则有必要了解将联合身份验证与本地标识提供程序相关联所产生的费用不包含在 POC 中，并且有必要权衡此费用与你想获得的优势之间的利弊：
@@ -277,7 +277,7 @@ ms.locfileid: "44349222"
 | --- | --- |
 | 已安装并配置 Azure AD Connect | 构建基块：[目录同步 - 密码哈希同步](#directory-synchronization--password-hash-sync-phs--new-installation) |
 | 满足要求的 ADLDS 实例 | [泛型 LDAP 连接器技术参考：泛型 LDAP 连接器概述](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap#overview-of-the-generic-ldap-connector) |
-| 用户使用的工作负荷列表，以及与这些工作负荷关联的属性列表 | [Azure AD Connect 同步：与 Azure Active Directory 同步的属性](./connect/active-directory-aadconnectsync-attributes-synchronized.md) |
+| 用户使用的工作负荷列表，以及与这些工作负荷关联的属性列表 | [Azure AD Connect 同步：与 Azure Active Directory 同步的属性](hybrid/reference-connect-sync-attributes-synchronized.md) |
 
 
 ### <a name="steps"></a>Steps
@@ -285,11 +285,11 @@ ms.locfileid: "44349222"
 | 步骤 | 资源 |
 | --- | --- |
 | 添加泛型 LDAP 连接器 | [泛型 LDAP 连接器技术参考：创建新连接器](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap#create-a-new-connector) |
-| 为已创建的连接器创建运行配置文件（完全导入、增量导入、完全同步、增量同步、导出） | [创建管理代理运行配置文件](https://technet.microsoft.com/library/jj590219(v=ws.10).aspx)<br/> [将连接器与 Azure AD Connect Sync Service Manager 配合使用](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md)|
-| 运行完全导入配置文件，并验证在连接器空间中是否存在对象 | [搜索连接器空间对象](https://technet.microsoft.com/library/jj590287(v=ws.10).aspx)<br/>[将连接器与 Azure AD Connect Sync Service Manager 配合使用：搜索连接器空间](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md#search-connector-space) |
-| 创建同步规则，使 Metaverse 中的对象具有工作负荷的所需属性 | [Azure AD Connect 同步：有关更改默认配置的最佳实践：同步规则的更改](./connect/active-directory-aadconnectsync-best-practices-changing-default-configuration.md#changes-to-synchronization-rules)<br/>[Azure AD Connect 同步：了解声明性预配](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning.md)<br/>[Azure AD Connect Sync：了解声明性预配表达式](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) |
-| 启动完全同步周期 | [Azure AD Connect 同步：计划程序：启动计划程序](./connect/active-directory-aadconnectsync-feature-scheduler.md#start-the-scheduler) |
-| 发生问题时执行故障排除 | [排查对象无法同步到 Azure AD 的问题](./connect/active-directory-aadconnectsync-troubleshoot-object-not-syncing.md) |
+| 为已创建的连接器创建运行配置文件（完全导入、增量导入、完全同步、增量同步、导出） | [创建管理代理运行配置文件](https://technet.microsoft.com/library/jj590219(v=ws.10).aspx)<br/> [将连接器与 Azure AD Connect Sync Service Manager 配合使用](hybrid/how-to-connect-sync-service-manager-ui-connectors.md)|
+| 运行完全导入配置文件，并验证在连接器空间中是否存在对象 | [搜索连接器空间对象](https://technet.microsoft.com/library/jj590287(v=ws.10).aspx)<br/>[将连接器与 Azure AD Connect Sync Service Manager 配合使用：搜索连接器空间](hybrid/how-to-connect-sync-service-manager-ui-connectors.md#search-connector-space) |
+| 创建同步规则，使 Metaverse 中的对象具有工作负荷的所需属性 | [Azure AD Connect 同步：有关更改默认配置的最佳实践：同步规则的更改](hybrid/how-to-connect-sync-best-practices-changing-default-configuration.md#changes-to-synchronization-rules)<br/>[Azure AD Connect 同步：了解声明性预配](hybrid/concept-azure-ad-connect-sync-declarative-provisioning.md)<br/>[Azure AD Connect Sync：了解声明性预配表达式](hybrid/concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) |
+| 启动完全同步周期 | [Azure AD Connect 同步：计划程序：启动计划程序](hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler) |
+| 发生问题时执行故障排除 | [排查对象无法同步到 Azure AD 的问题](hybrid/tshoot-connect-object-not-syncing.md) |
 | 确认 LDAP 用户可以登录并访问应用程序 | https://myapps.microsoft.com |
 
 ### <a name="considerations"></a>注意事项
@@ -552,7 +552,7 @@ ms.locfileid: "44349222"
 | 先决条件 | 资源 |
 | --- | --- |
 | 已从企业 PKI 预配了用户证书的设备（Windows、iOS 或 Android） | [部署用户证书](https://msdn.microsoft.com/library/cc770857.aspx) |
-| 与 ADFS 联合的 Azure AD 域 | [Azure AD Connect 和联合身份验证](./connect/active-directory-aadconnectfed-whatis.md)<br/>[Active Directory 证书服务概述](https://technet.microsoft.com/library/hh831740.aspx)|
+| 与 ADFS 联合的 Azure AD 域 | [Azure AD Connect 和联合身份验证](hybrid/how-to-connect-fed-whatis.md)<br/>[Active Directory 证书服务概述](https://technet.microsoft.com/library/hh831740.aspx)|
 | iOS 设备需要安装 Microsoft Authenticator 应用 | [Microsoft Authenticator 应用入门](user-help/microsoft-authenticator-app-how-to.md) |
 
 ### <a name="steps"></a>Steps

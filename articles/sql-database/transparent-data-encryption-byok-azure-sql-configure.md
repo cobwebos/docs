@@ -8,7 +8,7 @@ author: aliceku
 manager: craigg
 editor: ''
 ms.prod: ''
-ms.reviewer: carlrab
+ms.reviewer: vanto
 ms.suite: sql
 ms.prod_service: sql-database, sql-data-warehouse
 ms.service: sql-database
@@ -18,12 +18,12 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: aliceku
 monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: 0dd0d322bacd807dc0cc59aeeb854c427a745bca
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 11e190e1a4d0309bdbdcb7a578fccaf84fabb8e3
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40043281"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543771"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-using-your-own-key-from-azure-key-vault"></a>PowerShell 和 CLI：使用自己在 Azure Key Vault 中的密钥启用透明数据加密
 
@@ -90,7 +90,7 @@ ms.locfileid: "40043281"
 > 
 
 >[!Tip]
->Key Vault 中的示例 KeyId：https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
+>Key Vault 中的示例 KeyId： https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
 >
 
    ```powershell
@@ -241,7 +241,7 @@ ms.locfileid: "40043281"
 > 
 
 >[!Tip]
->Key Vault 中的示例 KeyId：https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
+>Key Vault 中的示例 KeyId： https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
 >
   
 ## <a name="step-4-turn-on-tde"></a>步骤 4. 启用 TDE 

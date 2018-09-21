@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/12/2016
 ms.author: mbullwin
-ms.openlocfilehash: 8e8e63b053cb5bd504a41da9b537354a1dd42968
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: ebcfe02eb8d969af26f5121bda85e4610302e838
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795554"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35631434"
 ---
 # <a name="get-started-with-application-insights-with-java-in-eclipse"></a>通过 Eclipse 中的 Java 开始使用 Application Insights
 Application Insights SDK 通过 Java Web 应用程序发送遥测数据，使用户能够分析使用情况和性能。 适用于 Application Insights 的 Eclipse 插件自动在项目中安装 SDK，使用户能够获取现成的遥测功能，另外，还可以使用一个 API 来编写自定义遥测。   

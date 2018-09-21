@@ -14,17 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: a4ce2d329d0e1399cffaf886adf2b95e34b9cd7b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d2b6b7a5d2baf9e46cca18aec97f31beda1e2a38
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23111705"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736727"
 ---
 # <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>使用 StorSimple Device Manager 管理 StorSimple 虚拟阵列的存储帐户凭据
 
 ## <a name="overview"></a>概述
-StorSimple 虚拟阵列的 StorSimple Device Manager 服务边栏选项卡的“配置”部分提供了可以在 StorSimple Manager 服务中创建的全局服务参数。 这些参数可应用到所有连接到该服务的设备，包括：
+StorSimple 虚拟阵列的 StorSimple Device Manager 服务边栏选项卡的“配置”部分提供了可以在 StorSimple Manager 服务中创建的全局服务参数。 这些参数可应用到所有连接到该服务的设备。具体参数包括：
 
 * 存储帐户凭据
 * 访问控制记录
@@ -110,7 +110,7 @@ StorSimple 虚拟阵列的 StorSimple Device Manager 服务边栏选项卡的“
 4. 在存储帐户凭据的“属性”边栏选项卡中，执行以下操作：
    
    1. 如果需要，可以修改“启用 SSL 模式”选项。
-   2. 可以选择重新生成存储帐户凭据访问密钥。 有关详细信息，请参阅[重新生成存储帐户密钥](../storage/common/storage-create-storage-account.md#manage-your-storage-access-keys)。 提供新的存储帐户凭据密钥。 对于 Azure 存储帐户，这是主访问密钥。
+   2. 可以选择重新生成存储帐户凭据访问密钥。 有关详细信息，请参阅[重新生成存储帐户密钥](../storage/common/storage-account-manage.md#access-keys)。 提供新的存储帐户凭据密钥。 对于 Azure 存储帐户，这是主访问密钥。
    3. 单击“属性”边栏选项卡顶部的“保存”以保存设置。 “存储帐户凭据”边栏选项卡上将更新设置。
       
       ![编辑存储帐户凭据](./media/storsimple-virtual-array-manage-storage-accounts/ova-edit-storageacct.png)

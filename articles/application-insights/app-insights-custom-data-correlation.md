@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
 ms.author: Evgeny.Ternovsky
-ms.openlocfilehash: 31e37efc1aad3d355bdd8391535f317ec137f5d7
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 6d19c64c74a01a012bac3d867e2d65393ae21cd3
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40161599"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577765"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>将 Application Insights 数据与自定义数据源相关联
 
@@ -51,7 +51,7 @@ Application Insights 收集多种不同的数据类型：异常、跟踪、页�
 
 ## <a name="correlating-data"></a>关联数据
 
-Application Insights 基于 Log Analytics 数据平台。 因此，我们可以使用[跨资源联接](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-cross-workspace-search)将已引入 Log Analytics 中的任何数据与 Application Insights 数据相关联。
+Application Insights 基于 Log Analytics 数据平台。 因此，我们可以使用[跨资源联接](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search)将已引入 Log Analytics 中的任何数据与 Application Insights 数据相关联。
 
 例如，可以将实验室库存和位置引入名为“myLA”的 Log Analytics 工作区的名为“LabLocations_CL”的表中。 然后，如果我们需要查看在名为“myAI”的 Application Insights 应用中跟踪的请求，并将处理请求的计算机名称与存储在前述自定义表中的这些计算机的位置相关联，则可在 Application Insights 或 Log Analytics 上下文中运行以下查询：
 
@@ -66,4 +66,4 @@ app('myAI').requests
 ## <a name="next-steps"></a>后续步骤
 
 - 查看[数据收集器 API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) 参考。
-- 有关[跨资源联接](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-cross-workspace-search)的详细信息。
+- 有关[跨资源联接](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search)的详细信息。

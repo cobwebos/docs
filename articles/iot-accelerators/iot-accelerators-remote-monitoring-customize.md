@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 36e63d26bf7ada2d23fa3cd9fddbb5ba90494527
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 7971a5aeadd2b2edaa43da8bacae9743937ce30e
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126016"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127340"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>自定义远程监视解决方案加速器
 
@@ -35,7 +35,7 @@ ms.locfileid: "43126016"
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
     ```
 
-    仅应在测试和开发期间启用 SSH 访问。 如果启用 SSH，[应尽快再次禁用](../security/azure-security-network-security-best-practices.md#disable-rdpssh-access-to-azure-virtual-machines)。
+    仅应在测试和开发期间启用 SSH 访问。 如果启用 SSH，[应尽快再次禁用](../security/azure-security-network-security-best-practices.md#disable-rdpssh-access-to-virtual-machines)。
 
 1. 使用 Azure 门户或 [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 查找虚拟机的名称和公共 IP 地址。 例如：
 
@@ -454,8 +454,8 @@ See the [Connect an external visualization tool](https://github.com/Azure/azure-
 
 若要进一步修改远程监视解决方案中的呈现和可视化层，可以编辑代码。 相关的 GitHub 存储库包括：
 
-* [Azure IoT 解决方案的配置微服务 (.NET)](https://github.com/Azure/pcs-ui-config-dotnet/)
-* [Azure IoT 解决方案的配置微服务 (Java)](https://github.com/Azure/pcs-ui-config-java/)
+* [Azure IoT 解决方案的配置微服务 (.NET)](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/config)
+* [Azure IoT 解决方案的配置微服务 (Java)](https://github.com/Azure/remote-monitoring-services-java/tree/master/config)
 * [Azure IoT PCS 远程监视 Web UI](https://github.com/Azure/pcs-remote-monitoring-webui)
 
 ## <a name="next-steps"></a>后续步骤

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: c1247dfca6dea638da2113fef940b97ad3348b9a
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 0754b13704810816b1650010a00185031ca41f5d
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160274"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297565"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>使用 Azure 网络策略服务器扩展集成 VPN 基础结构与 Azure MFA
 
@@ -122,7 +122,7 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
 
 要使用 NPS 扩展，本地用户必须与 Azure Active Directory 同步并启用 MFA。 本指南假设本地用户通过 Azure AD Connect 与 Azure Active Directory 同步。 下面提供了有关为用户启用 MFA 的说明。
 
-有关 Azure AD 连接的信息，请参阅[将本地目录与 Azure Active Directory 进行集成](../connect/active-directory-aadconnect.md)。 
+有关 Azure AD 连接的信息，请参阅[将本地目录与 Azure Active Directory 进行集成](../hybrid/whatis-hybrid-identity.md)。 
 
 ### <a name="azure-active-directory-guid-id"></a>Azure Active Directory GUID ID 
 
@@ -453,5 +453,5 @@ NPS 扩展需要安装在安装了网络策略和访问服务角色并在设计�
 
 [使用 RADIUS 的远程桌面网关和 Azure 多重身份验证服务器](howto-mfaserver-nps-rdg.md)
 
-[将本地目录与 Azure Active Directory 进行集成](../connect/active-directory-aadconnect.md)
+[将本地目录与 Azure Active Directory 进行集成](../hybrid/whatis-hybrid-identity.md)
 

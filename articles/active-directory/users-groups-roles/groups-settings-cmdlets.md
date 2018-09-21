@@ -14,12 +14,12 @@ ms.date: 06/13/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 9e065b04083cce958bc42f2efade0038bf137f8a
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: f453afee6bc26c5ddcdb5018405ec69455f8f7e8
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145105"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295132"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>用于配置组设置的 Azure Active Directory cmdlet
 本文包含有关使用 Azure Active Directory (Azure AD) PowerShell cmdlet 创建和更新组的说明。 此内容仅适用于 Office 365 组（有时称为统一组）。 
@@ -222,4 +222,4 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
 ## <a name="additional-reading"></a>其他阅读材料
 
 * [使用 Azure Active Directory 组管理对资源的访问](../fundamentals/active-directory-manage-groups.md)
-* [将本地标识与 Azure Active Directory 集成](../connect/active-directory-aadconnect.md)
+* [将本地标识与 Azure Active Directory 集成](../hybrid/whatis-hybrid-identity.md)

@@ -4,18 +4,18 @@ description: Azure Active Directory B2B 协作的当前限制
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 34713f4bf43f047bdee8d87f2e4410d13ba3492d
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 4e997e33eaccc6938209937d3157498db8bf4781
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39400090"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982334"
 ---
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Azure Active Directory B2B 协作的限制
 Azure Active Directory (Azure AD) B2B 协作当前具有本文中描述的限制。

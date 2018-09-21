@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 52582a6fe3f6c8ccc22c57268e20a94139be9e6f
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 669a436293ddf6f13760db5e6802aaae82ddd74b
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094852"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577507"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions 中的性能和缩放 (Azure Functions)
 
@@ -27,13 +27,13 @@ ms.locfileid: "44094852"
 
 “历史记录”表是一个 Azure 存储表，包含任务中心内所有业务流程实例的历史记录事件。 此表的名称采用 *TaskHubName*History 格式。 当实例运行时，会在此表中添加新行。 此表的分区键派生自业务流程的实例 ID。 实例 ID 在大多数情况下是随机的，确保在 Azure 存储中以最佳方式分配内部分区。
 
-需要运行业务流程实例时，会将“历史记录”表的相应行载入内存。 然后，这些历史记录事件将重播到业务流程协调程序函数代码中，使其恢复到以前的检查点状态。 以这种方式使用执行历史记录来重新生成状态不受[事件溯源模式](https://docs.microsoft.com/en-us/azure/architecture/patterns/event-sourcing)的影响。
+需要运行业务流程实例时，会将“历史记录”表的相应行载入内存。 然后，这些历史记录事件将重播到业务流程协调程序函数代码中，使其恢复到以前的检查点状态。 以这种方式使用执行历史记录来重新生成状态不受[事件溯源模式](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)的影响。
 
 ## <a name="instances-table"></a>实例表
 
 “实例”表是另一个 Azure 存储表，包含任务中心内所有业务流程实例的状态。 创建实例时，会在此表中添加新行。 此表的分区键是业务流程实例 ID，行键是固定的常量。 每个业务流程实例对应一行。
 
-使用此表可以满足来自 [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_System_String_) API 以及[状态查询 HTTP API](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-http-api#get-instance-status) 的实例查询请求。 它与前面所述的“历史记录”表内容保持最终一致。 以这种方式使用单独的 Azure 存储表有效满足实例查询操作不受[命令和查询责任分离 (CQRS) 模式](https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs)的影响。
+使用此表可以满足来自 [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_System_String_) API 以及[状态查询 HTTP API](https://docs.microsoft.com/azure/azure-functions/durable-functions-http-api#get-instance-status) 的实例查询请求。 它与前面所述的“历史记录”表内容保持最终一致。 以这种方式使用单独的 Azure 存储表有效满足实例查询操作不受[命令和查询责任分离 (CQRS) 模式](https://docs.microsoft.com/azure/architecture/patterns/cqrs)的影响。
 
 ## <a name="internal-queue-triggers"></a>内部队列触发器
 

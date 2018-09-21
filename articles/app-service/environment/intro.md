@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: c6ae2aa46ae17c4ef995211b02112e1c05e2ec2f
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 34c041bf96ecc8ce7f4440d7afaa64de775baef7
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344471"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576929"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>应用服务环境简介 #
  
@@ -73,7 +73,7 @@ ASE 既可以是面向 Internet 的（使用公共 IP 地址），也可以是�
 
 [网络安全组][NSGs]将入站网络通信限制为 ASE 所在的子网。 可以在上游设备和服务（例如 WAF 和网络 SaaS 提供程序）后使用 NSG 来运行应用。
 
-应用还经常需要访问公司资源，例如内部数据库和 Web 服务。 如果在包含本地网络的 VPN 连接的虚拟网络中部署 ASE，ASE 中的应用可以访问本地资源。 无论 VPN 是[站点到站点](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-multi-site) VPN，还是 [Azure ExpressRoute](http://azure.microsoft.com/services/expressroute/) VPN，都可以使用此功能。
+应用还经常需要访问公司资源，例如内部数据库和 Web 服务。 如果在包含本地网络的 VPN 连接的虚拟网络中部署 ASE，ASE 中的应用可以访问本地资源。 无论 VPN 是[站点到站点](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site) VPN，还是 [Azure ExpressRoute](http://azure.microsoft.com/services/expressroute/) VPN，都可以使用此功能。
 
 有关如何在虚拟网络和本地网络中使用 ASE 的详细信息，请参阅[应用服务环境网络注意事项][ASENetwork]。
 

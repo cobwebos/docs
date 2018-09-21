@@ -10,18 +10,18 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 5d8fe6282d956d7f399aff9f7aa250c5061dc887
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: eb3c1177f86f4c595280521f4dbcbe8081f68895
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159560"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296238"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>在无需最终用户注册的情况下部署密码重置
 
 若要部署 Azure Active Directory (Azure AD) 自助密码重置 (SSPR)，身份验证数据必须存在。 某些组织让其用户输入其身份验证数据本身。 但是，许多组织倾向于与 Active Directory 中已存在的数据同步。 在以下情况下，无需用户交互已同步的数据就会提供给 Azure AD 和 SSPR：
    * 在本地目录中正确设置数据的格式。
-   * [使用快速设置配置 Azure AD Connect](./../connect/active-directory-aadconnect-get-started-express.md)。
+   * [使用快速设置配置 Azure AD Connect](../hybrid/how-to-connect-install-express.md)。
 
 若要正常工作，电话号码必须采用“+国家/地区代码 电话号码”格式，例如，+1 4255551234。
 

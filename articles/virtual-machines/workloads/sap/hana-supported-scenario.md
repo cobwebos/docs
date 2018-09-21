@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/06/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 412872e607f62f710e013d88822cddc59255992e
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 0e9d57c224150454677a03462368038ed8c63edf
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859946"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576487"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>HANA 大型实例的支持方案
 本文档介绍 HANA 大型实例 (HLI) 的支持方案及其体系结构详细信息。
@@ -198,7 +198,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 
 ### <a name="key-considerations"></a>重要注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
-- 卷大小分配取决于内存中的数据库大小。 请参阅[概述和体系结构](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture)部分，了解多 SID 环境支持的内存中数据库大小。
+- 卷大小分配取决于内存中的数据库大小。 请参阅[概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)部分，了解多 SID 环境支持的内存中数据库大小。
 
 ## <a name="3-single-node-with-dr-normal"></a>3.具有 DR（常规）的单节点
  
@@ -235,9 +235,9 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 
 ### <a name="key-considerations"></a>重要注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
-- 对于 MCOS：卷大小分配取决于内存中的数据库大小。 请参阅[概述和体系结构](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture)部分，了解多 SID 环境支持的内存中数据库大小。
+- 对于 MCOS：卷大小分配取决于内存中的数据库大小。 请参阅[概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)部分，了解多 SID 环境支持的内存中数据库大小。
 - 在 DR：在 DR HLI 单元为生产 HANA 实例安装配置卷和装入点（标记为“HANA 安装所需”）。 
-- 在 DR：通过生产站点的快照复制数据、日志备份和共享卷（标记为“存储复制”）。 这些卷仅在故障转移期间装载。 有关详细信息，请阅读文档[灾难恢复故障转移过程](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)以获取更多详细信息。
+- 在 DR：通过生产站点的快照复制数据、日志备份和共享卷（标记为“存储复制”）。 这些卷仅在故障转移期间装载。 有关详细信息，请阅读文档[灾难恢复故障转移过程](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)以获取更多详细信息。
 - SKU 第 I 类级别的启动卷将复制到 DR 节点。
 
 
@@ -284,9 +284,9 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 
 ### <a name="key-considerations"></a>重要注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
-- 对于 MCOS：卷大小分配取决于内存中的数据库大小。 请参阅[概述和体系结构](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture)部分，了解多 SID 环境支持的内存中数据库大小。
+- 对于 MCOS：卷大小分配取决于内存中的数据库大小。 请参阅[概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)部分，了解多 SID 环境支持的内存中数据库大小。
 - 在 DR：在 DR HLI 单元为生产 HANA 实例安装配置卷和装入点（标记为“HANA 安装所需”）。 
-- 在 DR：通过生产站点的快照复制数据、日志备份和共享卷（标记为“存储复制”）。 这些卷仅在故障转移期间装载。 有关详细信息，请阅读文档[灾难恢复故障转移过程](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)以获取更多详细信息。 
+- 在 DR：通过生产站点的快照复制数据、日志备份和共享卷（标记为“存储复制”）。 这些卷仅在故障转移期间装载。 有关详细信息，请阅读文档[灾难恢复故障转移过程](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)以获取更多详细信息。 
 - 在 DR：为 QA 实例安装配置 QA 的数据、日志备份、日志、共享卷（标记为“QA 实例安装”）。
 - SKU 第 I 类级别的启动卷将复制到 DR 节点。
 
@@ -335,7 +335,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 
 ### <a name="key-considerations"></a>重要注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
-- 对于 MCOS：卷大小分配取决于内存中的数据库大小。 请参阅[概述和体系结构](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture)部分，了解多 SID 环境支持的内存中数据库大小。
+- 对于 MCOS：卷大小分配取决于内存中的数据库大小。 请参阅[概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)部分，了解多 SID 环境支持的内存中数据库大小。
 - STONITH：为 STONITH 设置配置 SBD。 但是，可选择是否使用 STONITH。
 
 
@@ -391,11 +391,11 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 
 ### <a name="key-considerations"></a>重要注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
-- 对于 MCOS：卷大小分配取决于内存中的数据库大小。 请参阅[概述和体系结构](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture)部分，了解多 SID 环境支持的内存中数据库大小。
+- 对于 MCOS：卷大小分配取决于内存中的数据库大小。 请参阅[概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)部分，了解多 SID 环境支持的内存中数据库大小。
 - STONITH：为 STONITH 设置配置 SBD。 但是，可选择是否使用 STONITH。
 - 在 DR：主节点和辅助节点复制需要两组存储卷。
 - 在 DR：在 DR HLI 单元为生产 HANA 实例安装配置卷和装入点（标记为“HANA 安装所需”）。 
-- 在 DR：通过生产站点的快照复制数据、日志备份和共享卷（标记为“存储复制”）。 这些卷仅在故障转移期间装载。 有关详细信息，请阅读文档[灾难恢复故障转移过程](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)以获取更多详细信息。 
+- 在 DR：通过生产站点的快照复制数据、日志备份和共享卷（标记为“存储复制”）。 这些卷仅在故障转移期间装载。 有关详细信息，请阅读文档[灾难恢复故障转移过程](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)以获取更多详细信息。 
 - 在 DR：为 QA 实例安装配置 QA 的数据、日志备份、日志、共享卷（标记为“QA 实例安装”）。
 - SKU 第 I 类级别的启动卷将复制到 DR 节点。
 
@@ -559,10 +559,10 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 ### <a name="key-considerations"></a>重要注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
 -  在 DR：在 DR HLI 单元为生产 HANA 实例安装配置卷和装入点（标记为“HANA 安装所需”）。 
-- 在 DR：通过生产站点的快照复制数据、日志备份和共享卷（标记为“存储复制”）。 这些卷仅在故障转移期间装载。 有关详细信息，请阅读文档[灾难恢复故障转移过程](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)以获取更多详细信息。 
+- 在 DR：通过生产站点的快照复制数据、日志备份和共享卷（标记为“存储复制”）。 这些卷仅在故障转移期间装载。 有关详细信息，请阅读文档[灾难恢复故障转移过程](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)以获取更多详细信息。 
 - SKU 第 I 类级别的启动卷将复制到 DR 节点。
 
 
 ## <a name="next-steps"></a>后续步骤
-- 有关 HLI，请参阅[基础结构和连接](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity)
-- 有关 HLI，请参阅[高可用性和灾难恢复](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)
+- 有关 HLI，请参阅[基础结构和连接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity)
+- 有关 HLI，请参阅[高可用性和灾难恢复](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)

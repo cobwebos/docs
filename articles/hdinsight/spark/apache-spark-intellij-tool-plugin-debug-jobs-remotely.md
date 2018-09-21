@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: bc1f1dd577231f5b22474f6cd3dc622480209dd9
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 1a7fcc11bf1b98d5feaeae07264e556acce2b14b
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042912"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736064"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-spark-applications-remotely-in-hdinsight-through-vpn"></a>使用用于 IntelliJ 的 Azure 工具包通过 VPN 在 HDInsight 中远程调试 Spark 应用程序
 
@@ -62,7 +62,7 @@ ms.locfileid: "43042912"
     ![在 Ambari 中查找 IP 地址](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/headnode-ip-address.png)
 1. 将头节点的 IP 地址和主机名添加到要从中运行和远程调试 Spark 作业的计算机上的 **hosts** 文件中。 这样，便可以使用 IP 地址和主机名来与头节点通信。
 
-   a. 以提升的权限打开一个记事本文件。 在“文件”菜单中选择“打开”，并找到 hosts 文件的位置。 在 Windows 计算机上，该位置为 **C:\Windows\System32\Drivers\etc\hosts**。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 以提升的权限打开一个记事本文件。 在“文件”菜单中选择“打开”，并找到 hosts 文件的位置。 在 Windows 计算机上，该位置为 **C:\Windows\System32\Drivers\etc\hosts**。
 
    b. 将以下信息添加到 **hosts** 文件：
 
@@ -110,7 +110,7 @@ ms.locfileid: "43042912"
 
 1. 将库添加到项目。 若要添加库，请执行以下操作：
 
-    a. 在项目树中右键单击项目名称，并单击“打开模块设置”。 
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在项目树中右键单击项目名称，并单击“打开模块设置”。 
 
     b. 在“项目结构”对话框中选择“库”，选择 (**+**) 符号，并选择“从 Maven”。
 
@@ -132,7 +132,7 @@ ms.locfileid: "43042912"
     若要将这些文件添加到项目，请将这些文件复制到项目树中的 **/src** 文件夹下（例如 `<your project directory>\src`）。
 1. 更新 `core-site.xml` 文件以进行以下更改：
 
-   a. 替换加密的密钥。 `core-site.xml` 文件包含与群集关联的存储帐户的已加密密钥。 在已添加到项目的 `core-site.xml` 文件中，将已加密密钥替换为与默认存储帐户关联的实际存储密钥。 有关详细信息，请参阅[管理存储访问密钥](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)。
+   a. 替换加密的密钥。 `core-site.xml` 文件包含与群集关联的存储帐户的已加密密钥。 在已添加到项目的 `core-site.xml` 文件中，将已加密密钥替换为与默认存储帐户关联的实际存储密钥。 有关详细信息，请参阅[管理存储访问密钥](../../storage/common/storage-account-manage.md#access-keys)。
 
            <property>
                  <name>fs.azure.account.key.hdistoragecentral.blob.core.windows.net</name>

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4839b1aaa56be1ad93fa1dd685ca3176d1cc8a27
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: c59653bf3709f7798fd92a44fa420b99f2cbc6b6
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42141255"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733544"
 ---
 # <a name="configure-azure-backup-reports"></a>配置 Azure 备份报表
 本文逐步介绍了如何使用恢复服务保管库配置 Azure 备份报表，以及如何使用 Power BI 访问这些报表。 执行这些步骤后，可直接转到 Power BI，以便查看所有报表、自定义和创建报表。 
@@ -83,7 +83,7 @@ ms.locfileid: "42141255"
 4. 输入在上面第 5 步中配置的存储帐户名称，再单击“下一步”按钮。
 
     ![输入存储帐户名称](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
-5. 输入此存储帐户的存储帐户密钥。 可以在 Azure 门户中转到存储帐户，[查看并复制存储访问密钥](../storage/common/storage-create-storage-account.md#manage-your-storage-account)。 
+5. 输入此存储帐户的存储帐户密钥。 可以在 Azure 门户中转到存储帐户，[查看并复制存储访问密钥](../storage/common/storage-account-manage.md#access-keys)。 
 
      ![输入存储帐户](./media/backup-azure-configure-reports/content-pack-storage-account-key.png) <br/>
      

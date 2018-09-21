@@ -15,22 +15,24 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 72c151fec0637822411f8cac44f4e13a8df96445
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: f7594b7d1eb7d41508be435cdd0a6203433727c1
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190713"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603050"
 ---
 # <a name="writing-advanced-queries-in-log-analytics"></a>在 Log Analytics 中编写高级查询
 
 > [!NOTE]
 > 在学习本课程之前，需完成 [Analytics 门户入门](get-started-analytics-portal.md)和[查询入门](get-started-queries.md)。
 
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
+
 ## <a name="reusing-code-with-let"></a>通过 let 重用代码
 使用 `let` 将结果分配给变量，并稍后在查询中引用它：
 
-```OQL
+```KQL
 // get all events that have level 2 (indicates warning level)
 let warning_events=
 Event
@@ -42,7 +44,7 @@ warning_events
 
 也可向变量分配常数值。 它支持为每次执行查询时需要更改的字段设置参数。 根据需要修改这些参数。 例如，要在给定的时间段计算可用磁盘空间和可用内存（按百分位数计）：
 
-```OQL
+```KQL
 let startDate = datetime(2018-08-01T12:55:02);
 let endDate = datetime(2018-08-02T13:21:35);
 let FreeDiskSpace =
@@ -63,7 +65,7 @@ union FreeDiskSpace, FreeMemory
 ### <a name="local-functions-and-parameters"></a>本地函数和参数
 使用 `let` 语句创建可在同一查询中使用的函数。 例如，定义一个采用日期/时间字段（按 UTC 格式）并将其转换为标准美国格式的函数。 
 
-```OQL
+```KQL
 let utc_to_us_date_format = (t:datetime)
 {
   strcat(getmonth(t), "/", dayofmonth(t),"/", getyear(t), " ",
@@ -78,7 +80,7 @@ Event
 ## <a name="functions"></a>函数
 可使用函数别名保存查询，以便它可被其他查询引用。 例如，以下标准查询返回昨天报告的所有缺失的安全更新：
 
-```OQL
+```KQL
 Update
 | where TimeGenerated > ago(1d) 
 | where Classification == "Security Updates" 
@@ -87,7 +89,7 @@ Update
 
 可将此查询另存为函数，并为其提供别名（如 security_updates_last_day）。 然后，即可在其他查询中使用它来搜索与 SQL 相关的必需安全更新：
 
-```OQL
+```KQL
 security_updates_last_day | where Title contains "SQL"
 ```
 
@@ -100,7 +102,7 @@ security_updates_last_day | where Title contains "SQL"
 ## <a name="print"></a>Print
 `print` 将返回一个单列单行的表，其中显示计算结果。 这通常用于需要简单计算的情况。 例如，要在 PST 中查找当前时间并添加具有 EST 的列：
 
-```OQL
+```KQL
 print nowPst = now()-8h
 | extend nowEst = nowPst+3h
 ```
@@ -108,7 +110,7 @@ print nowPst = now()-8h
 ## <a name="datatable"></a>Datatable
 `datatable` 可以定义一组数据。 你提供一个架构和一组值，然后将表传输到其他任何查询元素。 例如，要创建 RAM 使用量表并计算每小时的平均值：
 
-```OQL
+```KQL
 datatable (TimeGenerated: datetime, usage_percent: double)
 [
   "2018-06-02T15:15:46.3418323Z", 15.5,
@@ -125,7 +127,7 @@ datatable (TimeGenerated: datetime, usage_percent: double)
 
 创建查找表时，Datatable 构造也非常有用。 例如，要将表数据（如事件 ID）从 SecurityEvent 表映射到其他位置列出的事件类型，请使用 `datatable` 创建包含事件类型的查找表，并将此数据表与 SecurityEvent 数据联接：
 
-```OQL
+```KQL
 let eventCodes = datatable (EventID: int, EventType:string)
 [
     4625, "Account activity",

@@ -1,6 +1,7 @@
 ---
 title: 快速入门：使用用于 C# 的必应 Web 搜索 SDK
-description: 了解如何使用用于 C# 的必应 Web 搜索 SDK。
+titleSuffix: Azure Cognitive Services
+description: 可以使用必应 Web 搜索 SDK 轻松地将必应 Web 搜索集成到 C# 应用程序中。 本快速入门介绍如何实例化客户端、发送请求和输出响应。
 services: cognitive-services
 author: erhopf
 manager: cgronlun
@@ -9,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 08/16/2018
 ms.author: erhopf
-ms.openlocfilehash: ed958f4a691b878cfa7ff9766a0fb72857cce5db
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: cebeab562a54ec68b69eb6422685cc4b596ac223
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43186790"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127868"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>快速入门：使用用于 C# 的必应 Web 搜索 SDK
 
@@ -203,7 +204,7 @@ else
 
 ## <a name="declare-the-main-method"></a>声明 main 方法
 
-在此应用程序中，main 方法包含实例化客户端、验证 `subscriptionKey` 和调用 `WebResults` 的代码。 请确保为 Azure 帐户输入有效的订阅密钥，然后再继续。
+在此应用程序中，main 方法包括了用来实例化客户端、验证 `subscriptionKey` 和调用 `WebResults` 的代码。 请确保输入你的 Azure 帐户的有效订阅密钥，然后再继续。
 
 ```csharp
 static void Main(string[] args)

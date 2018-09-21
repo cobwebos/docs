@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: a24988bb9866dde72769107f1c45fc461c039f9a
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 9873347683fdfabd93083b44d034a8d9d5bcaeef
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161051"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297531"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>将现有 NPS 基础结构与 Azure 多重身份验证集成
 
@@ -105,7 +105,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 2. 依次选择“Azure Active Directory” > “Azure AD Connect”
 3. 确认同步状态是“已启用”，并确认上次同步时间是在不到一小时前。
 
-如果需要启动新一轮的同步，可使用 [Azure AD Connect 同步：计划程序](../connect/active-directory-aadconnectsync-feature-scheduler.md#start-the-scheduler)中的说明。
+如果需要启动新一轮的同步，可使用 [Azure AD Connect 同步：计划程序](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler)中的说明。
 
 ### <a name="determine-which-authentication-methods-your-users-can-use"></a>决定你的用户可以使用哪些身份验证方法
 

@@ -4,18 +4,18 @@ description: 介绍如何使用 Azure Active Directory (Azure AD) B2B 协作将�
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 6dfa1f247a079bf801f28d1083c86d36a74117c5
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: fef4615517da08262cc5845aaa076472c3874b34
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004192"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984282"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>在 Azure 门户中添加 Azure Active Directory B2B 协作用户
 

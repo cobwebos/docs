@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f3c68fefc5cff2eafc969d11353e78eac8980e7f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 3972dd7031e25f20a2ef6bfb66b63fe3f3b0290b
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43096342"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732476"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>教程：使用 Azure PowerShell 构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
@@ -119,7 +119,7 @@ ms.locfileid: "43096342"
         }
     }
     ```
-    将**帐户名**替换为 Azure 存储帐户名，将**帐户密钥**替换为 Azure 存储帐户的访问密钥。 要了解如何获取存储访问密钥，请在[管理存储帐户](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)中查看有关如何查看、复制和重新生成存储访问密钥的信息。
+    将**帐户名**替换为 Azure 存储帐户名，将**帐户密钥**替换为 Azure 存储帐户的访问密钥。 要了解如何获取存储访问密钥，请在[管理存储帐户](../../storage/common/storage-account-manage.md#access-keys)中查看有关如何查看、复制和重新生成存储访问密钥的信息。
 2. 在 Azure PowerShell 中，切换到 ADFGetStarted 文件夹。
 3. 可以使用 **New-AzureRmDataFactoryLinkedService** cmdlet 创建链接服务。 此 cmdlet 以及本教程中使用的其他数据工厂 cmdlet 要求传递 *ResourceGroupName* 和 *DataFactoryName* 参数的值。 或者，可以使用 **Get-AzureRmDataFactory** 获取 **DataFactory** 对象并传递该对象，这样就不需要在每次运行 cmdlet 时键入 *ResourceGroupName* 和 *DataFactoryName*。 运行以下命令，将 **Get-AzureRmDataFactory** cmdlet 的输出分配给 **$df** 变量。
 

@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 06/19/2018
 ms.author: heidist
-ms.openlocfilehash: f7cf471a69395cef0aef7d5dd2e3c77218bf97a3
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 140daf4903c64d734182545cd4dc58db60274852
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715274"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576114"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>选择 Azure 搜索的定价层
 
@@ -104,7 +104,7 @@ ms.locfileid: "39715274"
 
 有些客户更喜欢从可以适应更大采样和处理时间的专用资源开始，然后在开发期间对索引数量、大小和查询量进行现实估计。 最初，服务是根据最佳预计提供的，然后随着开发项目的成熟，团队通常会知道现有服务是否超出或低于预计的生产工作负载的容量。 
 
-1. [检查每个层级的服务限制](https://docs.microsoft.com/en-us/azure/search/search-limits-quotas-capacity#index-limits)以确定较低层级是否可以支持需要的索引数量。 在“基本”-“S1”- “S2”层级中，索引限制分别为 15-50-200。
+1. [检查每个层级的服务限制](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#index-limits)以确定较低层级是否可以支持需要的索引数量。 在“基本”-“S1”- “S2”层级中，索引限制分别为 15-50-200。
 
 1. [在可计费层中创建服务](search-create-service-portal.md)：
 

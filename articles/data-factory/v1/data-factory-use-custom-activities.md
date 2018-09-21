@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 044d47a294df4e218c84a928a63426dde4f8373b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 580dd5bf6a7e905927189f4b1ae42ab49a1cbc80
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053127"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730700"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -445,7 +445,7 @@ test custom activity Microsoft test custom activity Microsoft
 2. 单击命令栏上的“新建数据存储”，并选择“Azure 存储”。 在编辑器中，应会看到用于创建 Azure 存储链接服务的 JSON 脚本。
     
     ![新建数据存储 - Azure 存储](media/data-factory-use-custom-activities/new-data-store-menu.png)
-3. 将 `<accountname>` 替换为 Azure 存储帐户的名称，将 `<accountkey>` 替换为 Azure 存储帐户的访问密钥。 若要了解如何获取存储访问密钥，请参阅 [View, copy and regenerate storage access keys](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)（查看、复制和重新生成存储访问密钥）。
+3. 将 `<accountname>` 替换为 Azure 存储帐户的名称，将 `<accountkey>` 替换为 Azure 存储帐户的访问密钥。 若要了解如何获取存储访问密钥，请参阅 [View, copy and regenerate storage access keys](../../storage/common/storage-account-manage.md#access-keys)（查看、复制和重新生成存储访问密钥）。
 
     ![Azure 存储链接服务](media/data-factory-use-custom-activities/azure-storage-linked-service.png)
 4. 单击命令栏上的“部署”，部署链接服务。

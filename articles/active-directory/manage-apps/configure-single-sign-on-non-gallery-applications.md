@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/09/2018
+ms.date: 09/11/2018
 ms.author: barbkess
 ms.reviewer: asmalser,luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 860ca62e6e5ed544fabb1667d6e63c8221f5683e
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: fc7510fdc635de03ac4dd4f64118bc5be040e969
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354526"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719403"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录
 
@@ -172,8 +172,6 @@ ms.locfileid: "44354526"
 >
 
 ## <a name="related-articles"></a>相关文章
-
-- [有关 Azure Active Directory 中应用程序管理的文章索引](../active-directory-apps-index.md)
 - [如何为预先集成的应用自定义 SAML 令牌中颁发的声明](../develop/active-directory-saml-claims-customization.md)
 - [排查基于 SAML 的单一登录问题](../develop/howto-v1-debug-saml-sso-issues.md)
 

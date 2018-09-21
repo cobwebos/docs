@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 9d4d7633428cd174a31214db2db6b6d9928230bd
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: dde8881fc446eef0dd6ca0735e5e23a5a19328fa
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627910"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578341"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>将 Azure 诊断日志流式传输到事件中心
 可将 **[Azure 诊断日志](monitoring-overview-of-diagnostic-logs.md)** 近实时地流式传输到任何应用程序，方法是使用门户中的内置“导出到事件中心”选项，或者通过 Azure PowerShell Cmdlet 或 Azure CLI 2.0 在诊断设置中启用事件中心授权规则 ID。
@@ -41,7 +41,7 @@ ms.locfileid: "39627910"
 
 ## <a name="enable-streaming-of-diagnostic-logs"></a>启用诊断日志的流式传输
 
-可以通过门户或使用 [Azure Monitor REST API](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings) 以编程方式启用诊断日志的流式传输。 无论采用哪种方式，都可以创建一个诊断设置并在其中指定事件中心命名空间，以及要发送到该命名空间的日志类别和指标。 在该命名空间中针对每个启用的日志类别创建一个事件中心。 诊断**日志类别**是一类可供资源收集的日志。
+可以通过门户或使用 [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings) 以编程方式启用诊断日志的流式传输。 无论采用哪种方式，都可以创建一个诊断设置并在其中指定事件中心命名空间，以及要发送到该命名空间的日志类别和指标。 在该命名空间中针对每个启用的日志类别创建一个事件中心。 诊断**日志类别**是一类可供资源收集的日志。
 
 > [!WARNING]
 > 从计算资源（例如，VM 或 Service Fabric）启用诊断日志并对其进行流式传输[需要另一组步骤](../event-hubs/event-hubs-streaming-azure-diags-data.md)。
@@ -93,7 +93,7 @@ Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -EventHubAuthorizati
 
 ### <a name="via-azure-cli-20"></a>通过 Azure CLI 2.0
 
-若要通过 [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/monitor?view=azure-cli-latest) 启用流式传输，可以使用 [az monitor diagnostic-settings create](https://docs.microsoft.com/en-us/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) 命令。
+若要通过 [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest) 启用流式传输，可以使用 [az monitor diagnostic-settings create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) 命令。
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \

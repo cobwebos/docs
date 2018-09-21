@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 361905b4c1e0c9e596cb7cf1cd5a730268d81bd0
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 706e946e61f7d5f48ce5071e90d724af717449d9
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413403"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575212"
 ---
 # <a name="azure-operational-security-overview"></a>Azure 操作安全性概述
 [Azure 操作安全性](https://docs.microsoft.com/azure/security/azure-operational-security)是指用户可用于在 Microsoft Azure 中保护其数据、应用程序和其他资产的服务、控件和功能。 它是一个结合了从各种 Microsoft 独有功能获取的知识的框架。 这些功能包括 Microsoft 安全开发生命周期 (SDL)、Microsoft 安全响应中心计划以及对网络安全威胁态势的深入感知。
@@ -68,7 +68,7 @@ Azure AD 中还包括了整套[标识管理功能](https://docs.microsoft.com/az
 借助 Azure Active Directory，可使为合作伙伴与客户（企业或消费者）发布的所有应用程序都具有相同标识和访问管理功能。 这可让你大幅降低运营成本。
 
 ## <a name="azure-security-center"></a>Azure 安全中心
-[Azure 安全中心](https://docs.microsoft.com/en-us/azure/security-center/security-center-intro)有助于预防、检测和响应威胁，同时增加 Azure 资源安全的可见性和可控性。 它为订阅提供集成的安全监控和策略管理。 它有助于检测可能会被忽视的威胁，适用于各种安全解决方案生态系统。
+[Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)有助于预防、检测和响应威胁，同时增加 Azure 资源安全的可见性和可控性。 它为订阅提供集成的安全监控和策略管理。 它有助于检测可能会被忽视的威胁，适用于各种安全解决方案生态系统。
 
 通过 Azure 安全中心可查看虚拟机的安全设置和监视威胁，[保护 Azure 中的虚拟机 (VM) 数据](https://docs.microsoft.com/azure/security-center/security-center-linux-virtual-machine)。 安全中心可对虚拟机进行以下监视：
 

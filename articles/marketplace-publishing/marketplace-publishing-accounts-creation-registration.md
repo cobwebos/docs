@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
 ms.author: hascipio
-ms.openlocfilehash: 642e4a2d11ef5a92f5ab46bc4872414966b04c0d
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 24dc50a6c78769877bdc07b9521a9d2e33837937
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715652"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579609"
 ---
 # <a name="create-a-microsoft-developer-account"></a>创建 Microsoft 开发人员帐户
 本文介绍成为 Azure 市场的批准 Microsoft 开发人员的必要帐户创建和注册过程。
@@ -38,7 +38,7 @@ ms.locfileid: "39715652"
 创建公司帐户时，如果多个用户将需要通过使用建立该帐户的 Microsoft 帐户登录来访问该帐户，请遵循以下准则。
 
 > [!Important]
-> 重要信息：要允许多个用户访问开发人员中心帐户，我们建议使用 Azure Active Directory 为单个用户分配角色，这些用户可以通过使用其个人 Azure AD 凭据登录来访问该帐户。 有关详细信息，请参阅[管理帐户用户](https://msdn.microsoft.com/en-us/windows/uwp/publish/manage-account-users)。
+> 重要信息：要允许多个用户访问开发人员中心帐户，我们建议使用 Azure Active Directory 为单个用户分配角色，这些用户可以通过使用其个人 Azure AD 凭据登录来访问该帐户。 有关详细信息，请参阅[管理帐户用户](https://msdn.microsoft.com/windows/uwp/publish/manage-account-users)。
 
 * 使用属于公司的域（而不是属于单个人）的电子邮件地址（例如，windowsapps@fabrikam.com）创建 Microsoft 帐户。
 * 限制只有尽可能最少数量的开发人员可以访问此 Microsoft 帐户。
@@ -50,7 +50,7 @@ ms.locfileid: "39715652"
 
 应主要从受信任的电脑访问开发人员帐户。 这很关键，因为对每个帐户每周生成的代码数有限制。 它还确保提供最无缝的登录体验。
 
-有关其他开发人员帐户准则和安全性的详细信息，请单击[此处](https://msdn.microsoft.com/en-us/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts)。
+有关其他开发人员帐户准则和安全性的详细信息，请单击[此处](https://msdn.microsoft.com/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts)。
 
 ### <a name="instructions"></a>说明
 1. 打开新的 Chrome Incognito 或 Internet Explorer InPrivate 浏览会话，以确保未登录到现有帐户。
@@ -98,8 +98,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
     ![绘制](media/marketplace-publishing-accounts-creation-registration/imgRegisterCo_04.png)
 
    > [!WARNING]
-   > 
-  **“销售自”国家/地区：** 若要在 Azure 市场上销售服务，注册实体必须来自已批准的上述“销售自”国家/地区之一。 此限制是出于付款和税务的原因。 我们正在积极地寻求在不久的将来扩展这一国家/地区列表，敬请关注。 有关详细信息，请参阅[市场参与政策](http://go.microsoft.com/fwlink/?LinkID=526833)。
+   > **“销售自”国家/地区：** 若要在 Azure 市场上销售服务，注册实体必须来自已批准的上述“销售自”国家/地区之一。 此限制是出于付款和税务的原因。 我们正在积极地寻求在不久的将来扩展这一国家/地区列表，敬请关注。 有关详细信息，请参阅[市场参与政策](http://go.microsoft.com/fwlink/?LinkID=526833)。
    >
    >
 5. 将“帐户类型”选择为“公司”，并单击“下一步”按钮。
@@ -190,8 +189,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
     ![绘制](media/marketplace-publishing-accounts-creation-registration/imgAddTax_05.png)
 
 ## <a name="3-register-your-account-in-the-publishing-portal"></a>3.在发布门户中注册帐户
-
-  [发布门户](http://publish.windowsazure.com)用于发布和管理产品/服务。
+[发布门户](http://publish.windowsazure.com)用于发布和管理产品/服务。
 
 1. 打开新的 Chrome Incognito 或 Internet Explorer InPrivate 浏览会话，以确保未登录到个人帐户。
 2. 转到[http://publish.windowsazure.com](http://publish.windowsazure.com)。
@@ -233,8 +231,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
 现在，帐户已完成创建和注册，请确保通过查看[非技术先决条件](marketplace-publishing-pre-requisites.md)，来实现或满足发布产品/服务的所有非技术先决条件。
 
 ## <a name="see-also"></a>另请参阅
-* 
-  [入门：如何将产品/服务发布到 Azure 市场](marketplace-publishing-getting-started.md)
+* [入门：如何将产品/服务发布到 Azure 市场](marketplace-publishing-getting-started.md)
 
 [img-msalive]:media/marketplace-publishing-accounts-creation-registration/creating-msa-account-msa-live.jpg
 [img-email]:media/marketplace-publishing-accounts-creation-registration/creating-msa-account-msa-verifyemail.jpg

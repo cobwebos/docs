@@ -9,19 +9,19 @@ ms.component: bing-visual-search
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: rosh
-ms.openlocfilehash: 9bc3c180f108025f442343d8c5356982a83826a6
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: dd51ed7c710cc51a9fe0e63e55aa0d2c4ea24bee
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36958397"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574482"
 ---
 # <a name="tutorial-bing-visual-search-sdk-image-crop-area-and-results"></a>教程：必应视觉搜索 SDK 图像剪切区域和结果
 视觉搜索 SDK 提供一个选项用于选择图像的区域，以及在线查找类似于大型图像裁剪区域的图像。  本示例指定的裁剪区域显示包含多个人像的某张图像中的一个人像。  代码将发送大型图像的裁剪区域和 URL，并返回包含必应搜索 URL 以及以联机方式找到的类似图像的 URL 的结果。
 
 ## <a name="prerequisites"></a>先决条件
 
-需要安装 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 才能在 Windows 上运行此代码。 （免费的社区版也可以。）
+需要使用 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 才能在 Windows 上运行此代码。 （免费的社区版也可以。）
 
 必须创建一个具有必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 需要激活免费试用版时提供的访问密钥，或使用 Azure 仪表板中的付费订阅密钥。
 
@@ -44,7 +44,7 @@ ms.locfileid: "36958397"
 
 ```
 CropArea CropArea = new CropArea(top: (float)0.01, bottom: (float)0.30, left: (float)0.01, right: (float)0.20);
-string imageURL = "https://docs.microsoft.com/en-us/azure/cognitive-services/bing-visual-search/media/ms_srleaders.jpg;
+string imageURL = "https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/media/ms_srleaders.jpg;
 ImageInfo imageInfo = new ImageInfo(cropArea: CropArea, url: imageURL);
 
 VisualSearchRequest visualSearchRequest = new VisualSearchRequest(imageInfo: imageInfo);
@@ -128,7 +128,7 @@ namespace VisualSearchFeatures
                 CropArea CropArea = new CropArea(top: (float)0.01, bottom: (float)0.30, left: (float)0.01, right: (float)0.20);
                 
                 // The ImageInfo struct specifies the crop area in the image and the URL of the larger image. 
-                string imageURL = "https://docs.microsoft.com/en-us/azure/cognitive-services/bing-visual-search/media/ms_srleaders.jpg";
+                string imageURL = "https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/media/ms_srleaders.jpg";
                 ImageInfo imageInfo = new ImageInfo(cropArea: CropArea, url: imageURL);
                 
                 VisualSearchRequest visualSearchRequest = new VisualSearchRequest(imageInfo: imageInfo);
@@ -182,4 +182,4 @@ namespace VisualSearchFeatures
 
 ```
 ## <a name="next-steps"></a>后续步骤
-[视觉搜索响应](https://docs.microsoft.com/en-us/azure/cognitive-services/bing-visual-search/overview#the-response)
+[视觉搜索响应](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview#the-response)

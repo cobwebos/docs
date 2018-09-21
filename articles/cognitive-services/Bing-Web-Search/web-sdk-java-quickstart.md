@@ -1,6 +1,7 @@
 ---
 title: 快速入门：使用用于 Java 的必应 Web 搜索 SDK
-description: 了解如何使用用于 Java 的必应 Web 搜索 SDK。
+titleSuffix: Azure Cognitive Services
+description: 可以使用必应 Web 搜索 SDK 轻松地将必应 Web 搜索集成到 Java 应用程序中。 本快速入门介绍了如何发送请求、接收 JSON 响应以及筛选和分析结果。
 services: cognitive-services
 author: erhopf
 manager: cgronlun
@@ -9,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 08/22/2018
 ms.author: erhopf
-ms.openlocfilehash: cc7335b9f8b5596edef895ff5a42a1018b06a381
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 8db2f6a67f64216276ccdb0b16bbeb48565f6bc6
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43186721"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127595"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>快速入门：使用用于 Java 的必应 Web 搜索 SDK
 

@@ -4,18 +4,18 @@ description: 获取有关 Azure Active Directory B2B 协作的常见问题的解
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: reference
 ms.date: 05/11/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 1ff2332e2867f99492d3da254282498d1627a5bf
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b4407ac6b7a0d9fdbf52b84fb94223c32868f0c5
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39058259"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983846"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B 协作常见问题解答
 

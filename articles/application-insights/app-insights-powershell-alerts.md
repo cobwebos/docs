@@ -1,8 +1,8 @@
 ---
-title: "使用 Powershell 在 Application Insights 中设置警报 | Microsoft 文档"
-description: "自动配置 Application Insights，以获取有关指标更改的电子邮件。"
+title: 使用 Powershell 在 Application Insights 中设置警报 | Microsoft 文档
+description: 自动配置 Application Insights，以获取有关指标更改的电子邮件。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 05d6a9e0-77a2-4a35-9052-a7768d23a196
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: b90a540afd1c2815db8f5a99ee210ce21ea4d874
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 8e317d44b7fdff1ef244e2e549fbbebf3f829740
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35631432"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>使用 PowerShell 在 Application Insights 中设置警报
 可以在 [Application Insights](app-insights-overview.md) 中自动配置[警报](app-insights-alerts.md)。
@@ -97,7 +98,7 @@ GUID 是订阅 ID（不是应用程序的检测密钥）。
 同一规则可用于通过使用另一跟踪调用（如 TrackEvent 或 trackPageView）的[测量参数](app-insights-api-custom-events-metrics.md#properties)报告的指标。
 
 ## <a name="metric-names"></a>指标名称
-| 指标名称 | 屏幕名称 | 说明 |
+| 指标名称 | 屏幕名称 | Description |
 | --- | --- | --- |
 | `basicExceptionBrowser.count` |浏览器异常 |浏览器中所引发未捕获异常的计数。 |
 | `basicExceptionServer.count` |服务器异常 |应用所引发未经处理的异常的计数 |

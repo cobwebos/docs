@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 7d29cd3801bf997bf5c28ed0845996725aaf1840
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 8b0681165fe84dd54f3b81f610c6698998e881de
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093645"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125487"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse-preview"></a>使用 Java 和 Eclipse 创建第一个函数（预览版）
 

@@ -9,20 +9,21 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 05/17/2017
+ms.topic: conceptual
+ms.date: 09/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 9b03aff140eec5b355383447f0a815220d6408e3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: bf247748415822d5ba1a0e652fdeff384d8e8db1
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982045"
 ---
 # <a name="monitor-multi-component-applications-with-application-insights-preview"></a>使用 Application Insights（预览版）监视多组件应用程序
 
 可以使用 [Azure Application Insights](app-insights-overview.md) 监视由多个服务器组件、角色或服务组成的应用。 组件的运行状况及其之间的关系显示在单个应用程序映射中。 可以使用自动 HTTP 关联通过多个组件跟踪各项操作。 容器诊断可与应用程序遥测集成和关联。 对应用程序的所有组件使用单个 Application Insights 资源。 
 
-![多组件的应用程序映射](./media/app-insights-monitor-multi-role-apps/app-map.png)
+![多组件的应用程序映射](./media/app-insights-monitor-multi-role-apps/application-map-001.png)
 
 此处使用“组件”来表示大型应用程序中的任何正常运行的部分。 例如，典型的商业应用程序可能由在 Web 浏览器中运行的客户端代码构成，与一个或多个 Web 应用服务通信，这样就会使用后端服务。 服务器组件可能会托管在本地或云端，或是 Azure Web 和辅助角色，也可能会在 Docker 或 Service Fabric 等容器中运行。 
 
@@ -32,7 +33,7 @@ ms.lasthandoff: 04/03/2018
 
 若要深入了解如何替代 `cloud_RoleName` 属性，请参阅[添加属性：ITelemetryInitializer](app-insights-api-filtering-sampling.md#add-properties-itelemetryinitializer)。  
 
-在某些情况下，这种方法可能不适用，你可能偏向于对不同的组件组使用不同的资源。 例如，可能需要为管理或计费目的使用不同的资源。 使用不同的资源意味着单个应用程序映射中不会显示所有组件，并且无法在 [Analytics](app-insights-analytics.md) 中跨组件查询。 此外，必须设置不同的资源。
+在某些情况下，这种方法可能不适用，你可能偏向于对不同的组件组使用不同的资源。 例如，可能需要为管理或计费目的使用不同的资源。
 
 考虑到这一点，我们假设在本文档的余下部分中，你要将数据从多个组件发送到一个 Application Insights 资源。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2018
 ms.author: spelluru
-ms.openlocfilehash: a066d2a55f6949eea316eaf0a2956500667a996f
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 8a7346f884a065a21b6f0a822b2236fa7ce5dff0
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43340265"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732551"
 ---
 # <a name="process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>使用 Stream analytics 处理用于事件中心的 Apache Kafka 事件 
 本文介绍如何将数据流式传输到启用了 Kafka 的事件中心，并使用 Azure 流分析对其进行处理。 其中包括以下步骤： 
@@ -38,7 +38,7 @@ ms.locfileid: "43340265"
 * [Java 开发工具包 (JDK) 1.7+](http://www.oracle.com/technetwork/java/javase/downloads/index.html)。
 * [下载](http://maven.apache.org/download.cgi)并[安装](http://maven.apache.org/install.html) Maven 二进制存档。
 * [Git](https://www.git-scm.com/)
-* **Azure 存储帐户**。 如果没有帐户，[先创建一个帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)，然后再继续进行操作。 本演练中的流分析作业将输出数据存储在 Azure Blob 存储中。 
+* **Azure 存储帐户**。 如果没有帐户，[先创建一个帐户](../storage/common/storage-quickstart-create-account.md)，然后再继续进行操作。 本演练中的流分析作业将输出数据存储在 Azure Blob 存储中。 
 
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>创建启用了 Kafka 的事件中心命名空间
@@ -114,7 +114,7 @@ ms.locfileid: "43340265"
     ![事件中心 - 消息](./media/event-hubs-kafka-stream-analytics/confirm-event-hub-messages.png)
 
 ## <a name="process-event-data-using-a-stream-analytics-job"></a>使用流分析作业处理事件数据
-在本部分中，创建 Azure 流分析作业。 Kafka 客户端将事件发送到事件中心。 创建流分析作业，该作业采用事件数据作为输入，并将其输出到 Azure Blob 存储。 如果没有 Azure 存储帐户，[请创建一个帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)。
+在本部分中，创建 Azure 流分析作业。 Kafka 客户端将事件发送到事件中心。 创建流分析作业，该作业采用事件数据作为输入，并将其输出到 Azure Blob 存储。 如果没有 Azure 存储帐户，[请创建一个帐户](../storage/common/storage-quickstart-create-account.md)。
 
 流分析作业中的查询经过数据，而不执行任何分析。 可以创建一个查询，该查询转换输入数据，生成不同格式的或带有见解的输出数据。  
 

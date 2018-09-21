@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 588a0686eda1966582b82a4673a8b6805453c94c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6096833381db7ef0d2f011d517aaad4ae63ce4d6
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441436"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576861"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>使用资源管理器模板创建日志警报
 本文演示如何在 Azure 中通过 [Azure Powershell](../azure-resource-manager/resource-group-template-deploy.md) 和 [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) 使用 [Azure 资源管理器模板](..//azure-resource-manager/resource-group-authoring-templates.md)，以编程方式大规模管理[日志警报](monitor-alerts-unified-log.md)。 目前，Azure 警报支持与来自 [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) 和 [Azure Application Insights](../application-insights/app-insights-analytics-tour.md) 的查询相关的日志警报。
@@ -35,12 +35,12 @@ Log Analytics 警报 REST API 为 RESTful，可通过 Azure 资源管理器 REST
 详细了解[在 Log Analytics 中通过 REST API 创建和管理警报规则](../log-analytics/log-analytics-api-alerts.md)；包括从 Powershell 访问 API 的示例。
 
 ## <a name="managing-log-alert-on-application-insights"></a>在 Application Insights 上管理日志警报
-Azure Application Insights 的日志警报已经引入 Azure Monitor 下的新 Azure 警报中。 因此，它作为 [Scheduled Query Rules](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/)（计划查询规则）REST 操作组在 Azure Monitor API 下运行。
+Azure Application Insights 的日志警报已经引入 Azure Monitor 下的新 Azure 警报中。 因此，它作为 [Scheduled Query Rules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)（计划查询规则）REST 操作组在 Azure Monitor API 下运行。
 
 ### <a name="using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板
-Application Insights 资源的日志警报的一种类型为 `Microsoft.Insights/scheduledQueryRules/`。 有关此资源类型的详细信息，请参阅 [Azure Monitor - 计划查询规则 API 参考](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/)。
+Application Insights 资源的日志警报的一种类型为 `Microsoft.Insights/scheduledQueryRules/`。 有关此资源类型的详细信息，请参阅 [Azure Monitor - 计划查询规则 API 参考](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)。
 
-以下是基于资源模板的[计划查询规则创建](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/createorupdate)结构，其中示例数据集作为变量。
+以下是基于资源模板的[计划查询规则创建](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate)结构，其中示例数据集作为变量。
 
 ```json
 {
@@ -113,7 +113,7 @@ Application Insights 资源的日志警报的一种类型为 `Microsoft.Insights
 }
 ```
 > [!IMPORTANT]
-> 使用 [Scheduled Query Rules ](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/)（计划查询规则）API 调用或资源模板时，必须有包含目标资源隐藏链接的标记字段。 
+> 使用 [Scheduled Query Rules ](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)（计划查询规则）API 调用或资源模板时，必须有包含目标资源隐藏链接的标记字段。 
 
 针对此演练，上面的示例 json 可以保存为（例如）sampleScheduledQueryRule.json，并且可以使用 [Azure 门户中的 Azure 资源管理器](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)进行部署。
 

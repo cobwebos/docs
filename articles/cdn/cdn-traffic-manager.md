@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/28/2018
 ms.author: v-deasim
 ms.custom: ''
-ms.openlocfilehash: b52cad1f32cc3d16cf70bb81640dcb1d9f8614bf
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 88739cb299e453e32c69f5d0d0189da849b345a7
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37133262"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573869"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>使用 Azure 流量管理器跨多个 Azure CDN 终结点设置故障转移
 
@@ -46,7 +46,7 @@ ms.locfileid: "37133262"
 
     对于“路由方法”，请选择“优先级”。
 
-2. 遵循[添加流量管理器终结点](https://docs.microsoft.com/en-us/azure/traffic-manager/traffic-manager-create-profile#add-traffic-manager-endpoints)中的步骤，在流量管理器配置文件中添加 CDN 终结点
+2. 遵循[添加流量管理器终结点](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile#add-traffic-manager-endpoints)中的步骤，在流量管理器配置文件中添加 CDN 终结点
 
     对于“类型”，请选择“外部终结点”。 对于“优先级”，请输入一个数字。
 
@@ -92,7 +92,7 @@ ms.locfileid: "37133262"
 完成这些步骤后，即已使用 Azure 流量管理器设置了具有故障转移功能的多 CDN 服务。 你可以从自定义域访问测试 URL。 若要测试功能，请禁用主要 CDN 终结点，并验证是否能够正确地将请求转移到辅助 CDN 终结点。 
 
 ## <a name="next-steps"></a>后续步骤
-还可以设置其他路由方法（例如地理路由），以便在不同的 CDN 终结点之间进行负载均衡。 有关详细信息，请参阅[使用流量管理器配置地理流量路由方法](https://docs.microsoft.com/en-us/azure/traffic-manager/traffic-manager-configure-geographic-routing-method)。
+还可以设置其他路由方法（例如地理路由），以便在不同的 CDN 终结点之间进行负载均衡。 有关详细信息，请参阅[使用流量管理器配置地理流量路由方法](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-configure-geographic-routing-method)。
 
 
 

@@ -9,12 +9,12 @@ ms.date: 08/30/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 2b393a5b60ba534fba8115ab3ef0f35a26ad3ed4
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 19d2472b526c38880f9241ec448f8a9d4a327f2a
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43300347"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294180"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>教程：使用 SQL Server 数据库在边缘存储数据
 
@@ -175,7 +175,7 @@ Azure IoT Edge 设备：
 [部署清单](module-composition.md)声明将要由 IoT Edge 运行时安装在 IoT Edge 设备上的具体模块。 已在上一部分添加了生成自定义 Functions 模块所需的代码，但 SQL Server 模块已经生成。 只需要求 IoT Edge 运行时包括它，然后在设备上配置它即可。 
 
 1. 在 Visual Studio Code 资源管理器中打开 **deployment.template.json** 文件。 
-2. 找到 **moduleContent.$edgeAgent.properties.desired.modules** 部分。 应该会列出两个模块：**tempSensor** 模块，用于生成模拟数据，以及 **sqlFunction** 模块。
+2. 找到 **moduleContent.$edgeAgent.properties.desired.modules** 节。 应该会列出两个模块：**tempSensor** 模块，用于生成模拟数据，以及 **sqlFunction** 模块。
 3. 如果使用了 Windows 容器，请修改 **sqlFunction.settings.image** 部分。
     ```json
     "image": "${MODULES.sqlFunction.windows-amd64}"
@@ -228,6 +228,7 @@ Azure IoT Edge 设备：
    CONTAINER_REGISTRY_USERNAME_yourContainerReg=<username>
    CONTAINER_REGISTRY_PASSWORD_yourContainerReg=<password>
    ```
+
 2. 保存 .env 文件。
 3. 在 Visual Studio Code 中登录到你的容器注册表，以便将映像推送到你的注册表。 使用你添加到 .env 文件中的凭据。 在集成终端中输入以下命令：
 

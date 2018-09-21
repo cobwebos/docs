@@ -8,12 +8,12 @@ services: devops
 custom: jenkins
 ms.date: 07/31/2018
 ms.component: common
-ms.openlocfilehash: 549150abc630cd247927b4ba7042d0bdf0e8b88a
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: b7ac5c277b45ae5c005a284d5c38e55099c11e33
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524383"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735556"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>将 Azure 存储用于 Jenkins 持续集成解决方案
 
@@ -48,7 +48,7 @@ Jenkins 通过允许开发人员轻松地集成其代码更改以及自动和频
      
       虽然典型 Jenkins CI 解决方案将设置为作为一个服务运行，但在本教程中，通过命令行运行 Jenkins war 就足够了。
 * 一个 Azure 帐户。 可在 <http://www.azure.com> 注册 Azure 帐户。
-* 一个 Azure 存储帐户。 如果还没有存储帐户，可使用[创建存储帐户](../common/storage-create-storage-account.md#create-a-storage-account)中的步骤创建一个。
+* 一个 Azure 存储帐户。 如果还没有存储帐户，可使用[创建存储帐户](../common/storage-quickstart-create-account.md)中的步骤创建一个。
 * 建议熟悉 Jenkins CI 解决方案（但不是必需的），因为以下内容将使用一个基本示例向你演示使用 Blob 服务作为 Jenkins CI 生成项目的存储库时所需的步骤。
 
 ## <a name="how-to-use-the-blob-service-with-jenkins-ci"></a>如何将 Blob 服务用于 Jenkins CI

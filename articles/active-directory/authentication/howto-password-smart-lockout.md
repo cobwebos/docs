@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: b0fded9f5543d151091955c0b0d645bf9db16b7d
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 9ea91f70a72b812803a20244bb4445b76b133b0c
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158577"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296153"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory 智能锁定
 
@@ -27,7 +27,7 @@ ms.locfileid: "39158577"
 
 智能锁定可与混合部署集成，使用密码哈希同步或直通身份验证来避免攻击者锁定本地 Active Directory 帐户。 通过在 Azure AD 中适当地设置智能锁定策略，可在攻击到达本地 Active Directory 之前将其筛选掉。
 
-使用[直通身份验证](../connect/active-directory-aadconnect-pass-through-authentication.md)时，需要确保：
+使用[直通身份验证](../hybrid/how-to-connect-pta.md)时，需要确保：
 
    * Azure AD 的锁定阈值小于 Active Directory 的帐户锁定阈值。 请设置此值，以便使 Active Directory 的帐户锁定阈值至少长于 Azure AD 锁定阈值的二倍或三倍。 
    * Azure AD 的锁定持续时间（以秒计）长于 Active Directory 的“在...后重置帐户锁定计数器”的持续时间（以分钟计）。

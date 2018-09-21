@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7805b238d42201b791e038964985f784fcf8d4ce
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 4bb1542df9001463b245405c40293b6867d4b401
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42141904"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365071"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C：用户迁移
 将标识提供者迁移到 Azure Active Directory B2C (Azure AD B2C)C 时，可能还需要迁移用户帐户。 本文介绍如何将现有用户帐户从任何标识提供者迁移到 Azure AD B2C。 本文并未阐述约定俗成的内容，而只是介绍了几种方案。 开发人员负责判断每种方法是否适用。
@@ -23,11 +23,11 @@ ms.locfileid: "42141904"
 ## <a name="user-migration-flows"></a>用户迁移流
 使用 Azure AD B2C，可通过 [Azure AD 图形 API][B2C-GraphQuickStart] 迁移用户。 用户迁移过程划分为两个流：
 
-* **预迁移**：如果对用户凭据（用户名和密码）拥有明确的访问权限，或者凭据已加密但可将其解密，则适合使用此流。 预迁移过程涉及到从旧的标识提供者读取用户，并在 Azure AD B2C 目录中创建新帐户。
+- **预迁移**：如果对用户凭据（用户名和密码）拥有明确的访问权限，或者凭据已加密但可将其解密，则适合使用此流。 预迁移过程涉及到从旧的标识提供者读取用户，并在 Azure AD B2C 目录中创建新帐户。
 
-* **预迁移和密码重置**：如果无法访问用户的密码，则适合使用此流。 例如：
-    * 密码以 HASH 格式存储。
-    * 密码存储在你无权访问的标识提供者中。 旧标识提供者通过调用 Web 服务来验证用户凭据。
+- **预迁移和密码重置**：如果无法访问用户的密码，则适合使用此流。 例如：
+   - 密码以 HASH 格式存储。
+   - 密码存储在你无权访问的标识提供者中。 旧标识提供者通过调用 Web 服务来验证用户凭据。
 
 在这两个流中，首先需要运行预迁移过程，从旧标识提供者读取用户，并在 Azure AD B2C 目录中创建新帐户。 如果没有密码，可以使用随机生成的密码创建帐户。 然后要求用户更改密码，或者，当用户首次登录时，Azure AD B2C 会要求用户重置密码。
 
@@ -49,45 +49,45 @@ ms.locfileid: "42141904"
 首先，在 Azure AD 中注册迁移应用程序。 然后，创建应用程序密钥（应用程序机密）并使用写入特权设置应用程序。
 
 1. 登录到 [Azure 门户][Portal]。
-
-2. 在窗口右上角选择自己的帐户，以选择 Azure AD **B2C** 租户。
-
-3. 在左窗格中，选择“Azure Active Directory”（不是“Azure AD B2C”）。 若要找到该选项，可能需要选择“更多服务”。
-
-4. 选择“应用注册”。
-
-5. 选择“新建应用程序注册”。
-
-    ![新建应用程序注册](media/active-directory-b2c-user-migration/pre-migration-app-registration.png)
-
-6. 执行以下操作，创建新应用程序：
-    * 对于“名称”，请使用 **B2CUserMigration** 或所需的其他任何名称。
-    * 对于“应用程序类型”，使用“Web 应用/API”。
-    * 在“登录 URL”中填写 https://localhost（因为它与此应用程序无关）。
-    * 选择**创建**。
-
-7. 创建应用程序后，请在“应用程序”列表中选择新建的 **B2CUserMigration** 应用程序。
-
-8. 选择“属性”，复制“应用程序 ID”并保存以备后用。
+   
+1. 在窗口右上角选择自己的帐户，以选择 Azure AD **B2C** 租户。
+   
+1. 在左窗格中，选择“Azure Active Directory”（不是“Azure AD B2C”）。 若要找到该选项，可能需要选择“更多服务”。
+   
+1. 选择“应用注册”。
+   
+1. 选择“新建应用程序注册”。
+   
+   ![新建应用程序注册](media/active-directory-b2c-user-migration/pre-migration-app-registration.png)
+   
+1. 执行以下操作，创建新应用程序：
+   - 对于“名称”，请使用 **B2CUserMigration** 或所需的其他任何名称。
+   - 对于“应用程序类型”，使用“Web 应用/API”。
+   - 在“登录 URL”中填写 https://localhost（因为它与此应用程序无关）。
+   - 选择**创建**。
+   
+1. 创建应用程序后，请在“应用程序”列表中选择新建的 **B2CUserMigration** 应用程序。
+   
+1. 选择“属性”，复制“应用程序 ID”并保存以备后用。
 
 ### <a name="step-12-create-the-application-secret"></a>步骤 1.2：创建应用程序机密
 1. 在 Azure 门户的“已注册应用”窗口中选择“密钥”。
-
-2. 添加新密钥（也称为客户端机密），并复制该密钥以备后用。
-
-    ![应用程序 ID 和密钥](media/active-directory-b2c-user-migration/pre-migration-app-id-and-key.png)
-
+   
+1. 添加新密钥（也称为客户端机密），并复制该密钥以备后用。
+   
+   ![应用程序 ID 和密钥](media/active-directory-b2c-user-migration/pre-migration-app-id-and-key.png)
+   
 ### <a name="step-13-grant-administrative-permission-to-your-application"></a>步骤 1.3：向应用程序授予管理权限
 1. 在 Azure 门户的“已注册应用”窗口中选择“所需权限”。
 
-2. 选择“Windows Azure Active Directory”。
-
-3. 在“启用访问权限”窗格中的“应用程序权限”下面，选择“读取和写入目录数据”权限，再选择“保存”。
-
-4. 在“所需权限”窗格中，选择“授予权限”。
-
-    ![应用程序权限](media/active-directory-b2c-user-migration/pre-migration-app-registration-permissions.png)
-
+1. 选择“Windows Azure Active Directory”。
+   
+1. 在“启用访问权限”窗格中的“应用程序权限”下面，选择“读取和写入目录数据”权限，再选择“保存”。
+   
+1. 在“所需权限”窗格中，选择“授予权限”。
+   
+   ![应用程序权限](media/active-directory-b2c-user-migration/pre-migration-app-registration-permissions.png)
+   
 现已创建一个有权从 Azure AD B2C 租户创建、读取和更新用户的应用程序。
 
 ### <a name="step-14-optional-environment-cleanup"></a>步骤 1.4：（可选）清理环境
@@ -101,9 +101,9 @@ ms.locfileid: "42141904"
 
 在此 PowerShell 脚本中执行以下操作：
 1. 连接到联机服务。 为此，请在 Windows PowerShell 命令提示符下运行 cmdlet `Connect-AzureAD` 并提供凭据。
-
-2. 使用**应用程序 ID** 为应用程序分配用户帐户管理员角色。 这些角色具有已知的标识符，因此，我们要做的就是在脚本中输入自己的**应用程序 ID**。
-
+   
+1. 使用**应用程序 ID** 为应用程序分配用户帐户管理员角色。 这些角色具有已知的标识符，因此，我们要做的就是在脚本中输入自己的**应用程序 ID**。
+   
 ```PowerShell
 Connect-AzureAD
 
@@ -145,11 +145,11 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 ![用户数据文件](media/active-directory-b2c-user-migration/pre-migration-data-file.png)
 
 可以看到，该文件包含用户实体的列表。 每个用户实体包含以下属性：
-* 电子邮件
-* displayName
-* firstName
-* lastName
-* 密码（不能为空）
+- 电子邮件
+- displayName
+- firstName
+- lastName
+- 密码（不能为空）
 
 > [!NOTE]
 > 编译时，Visual Studio 会将该文件复制到 `bin` 目录。
@@ -168,43 +168,42 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 ```
 
 > [!NOTE]
-> * 后续部分会介绍 Azure 表连接字符串的用法。
-> * B2C 租户的名称是在创建租户期间输入的域，已显示在 Azure 门户中。 租户名称通常以后缀 *.onmicrosoft.com* 结尾（例如 *contosob2c.onmicrosoft.com*）。
->
+> - 后续部分会介绍 Azure 表连接字符串的用法。
+> - B2C 租户的名称是在创建租户期间输入的域，已显示在 Azure 门户中。 租户名称通常以后缀 *.onmicrosoft.com* 结尾（例如 *contosob2c.onmicrosoft.com*）。
 
 ### <a name="step-23-run-the-pre-migration-process"></a>步骤 2.3：运行预迁移过程
 右键单击 `AADB2C.UserMigration` 解决方案并重新生成示例。 如果成功，则现在 `AADB2C.UserMigration\bin\Debug\net461` 中应该有一个可执行文件 `UserMigration.exe`。 若要运行迁移过程，请使用以下命令行参数之一：
 
-* 若要**使用密码迁移用户**，请使用 `UserMigration.exe 1` 命令。
+- 若要**使用密码迁移用户**，请使用 `UserMigration.exe 1` 命令。
 
-* 若要**使用随机密码迁移用户**，请使用 `UserMigration.exe 2` 命令。 此操作还会创建 Azure 表实体。 稍后可以配置策略来调用 REST API 服务。 该服务使用 Azure 表来跟踪和管理迁移过程。
+- 若要**使用随机密码迁移用户**，请使用 `UserMigration.exe 2` 命令。 此操作还会创建 Azure 表实体。 稍后可以配置策略来调用 REST API 服务。 该服务使用 Azure 表来跟踪和管理迁移过程。
 
 ![迁移过程演示](media/active-directory-b2c-user-migration/pre-migration-demo.png)
 
 ### <a name="step-24-check-the-pre-migration-process"></a>步骤 2.4：检查预迁移过程
 若要验证迁移，请使用以下两种方法之一：
 
-* 若要按显示名称搜索用户，请使用 Azure 门户：
-
-    a. 打开“Azure AD B2C”，选择“用户和组”。
-
-    b. 在搜索框中，键入用户的显示名称，并查看该用户的配置文件。
-
-* 若要按登录电子邮件地址检索用户，请使用以下示例应用程序：
-
-    a. 运行以下命令：
-
-    ```Console
-        UserMigration.exe 3 {email address}
-    ```
-
-    > [!TIP]
-    > 还可以使用以下命令按显示名称检索用户：`UserMigration.exe 4 "<Display name>"`。
-
-    b. 在 JSON 编辑器中打开 UserProfile.json 文件以查看用户信息。
-
-    ![UserProfile.json 文件](media/active-directory-b2c-user-migration/pre-migration-get-by-email2.png)
-
+- 若要按显示名称搜索用户，请使用 Azure 门户：
+   
+   1. 打开“Azure AD B2C”，选择“用户和组”。
+   
+   1. 在搜索框中，键入用户的显示名称，并查看该用户的配置文件。
+   
+- 若要按登录电子邮件地址检索用户，请使用以下示例应用程序：
+   
+   1. 运行以下命令：
+   
+      ```Console
+          UserMigration.exe 3 {email address}
+      ```
+      
+      > [!TIP]
+      > 还可以使用以下命令按显示名称检索用户：`UserMigration.exe 4 "<Display name>"`。
+      
+   1. 在 JSON 编辑器中打开 UserProfile.json 文件以查看用户信息。
+   
+      ![UserProfile.json 文件](media/active-directory-b2c-user-migration/pre-migration-get-by-email2.png)
+      
 ### <a name="step-25-optional-environment-cleanup"></a>步骤 2.5：（可选）清理环境
 若要清理 Azure AD 租户并从 Azure AD 目录中删除用户，请运行 `UserMigration.exe 5` 命令。
 
@@ -222,14 +221,14 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 
 1. 选择“Azure AD B2C 设置”，再选择“重置密码”策略属性。
 
-2. 选择自己的应用程序。
+1. 选择自己的应用程序。
 
     > [!NOTE]
     > “立即运行”需要在租户中至少预先注册一个应用程序。 若要了解如何注册应用程序，请参阅 Azure AD B2C [入门][B2C-GetStarted]文章或[应用程序注册][B2C-AppRegister]文章。
 
-3. 选择“立即运行”并检查策略。
+1. 选择“立即运行”并检查策略。
 
-4. 在“立即运行终结点”框中，复制 URL 并将其发送给用户。
+1. 在“立即运行终结点”框中，复制 URL 并将其发送给用户。
 
     ![设置诊断日志](media/active-directory-b2c-user-migration/pre-migration-policy-uri.png)
 
@@ -248,9 +247,9 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 
 若要跟踪密码更改，可以使用 Azure 表。 结合命令行参数 `2` 运行预迁移过程时，会在 Azure 表中创建一个用户实体。 服务执行以下操作：
 
-* 登录时，Azure AD B2C 策略会调用 RESTful 迁移服务，并以输入声明的形式发送电子邮件。 服务在 Azure 表中搜索电子邮件地址。 如果存在该地址，服务会引发错误消息：“必须更改密码”。
+- 登录时，Azure AD B2C 策略会调用 RESTful 迁移服务，并以输入声明的形式发送电子邮件。 服务在 Azure 表中搜索电子邮件地址。 如果存在该地址，服务会引发错误消息：“必须更改密码”。
 
-* 在用户成功更改密码后，服务会从 Azure 表中删除该实体。
+- 在用户成功更改密码后，服务会从 Azure 表中删除该实体。
 
 >[!NOTE]
 >让我们使用 Azure 表来简化该示例。 可在任何数据库中存储迁移状态，或将其作为自定义属性存储在 Azure AD B2C 帐户中。
@@ -258,7 +257,7 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 ### <a name="41-update-your-application-setting"></a>步骤 4.1：更新应用程序设置
 1. 若要测试 RESTful API 演示，请在 Visual Studio 中打开 `AADB2C.UserMigration.sln`。
 
-2. 在 `AADB2C.UserMigration.API` 项目中，打开 appsettings.json 文件。 将设置替换为[步骤 2.2](#step-22-configure-the-application-settings) 中配置的设置：
+1. 在 `AADB2C.UserMigration.API` 项目中，打开 appsettings.json 文件。 将设置替换为[步骤 2.2](#step-22-configure-the-application-settings) 中配置的设置：
 
     ```json
     {
@@ -272,9 +271,9 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 
 ### <a name="step-43-add-a-technical-profile-and-technical-profile-validation-to-your-policy"></a>步骤 4.3：将技术配置文件和技术配置文件验证添加到策略
 1. 在解决方案资源管理器中，展开“解决方案项目”，然后打开 TrustFrameworkExtensions.xml 策略文件。
-2. 将 `yourtenant.onmicrosoft.com` 中的 `TenantId`、`PublicPolicyUri` 和 `<TenantId>` 字段更改为租户的名称。
-3. 在 `<TechnicalProfile Id="login-NonInteractive">` 元素下，将 `ProxyIdentityExperienceFrameworkAppId` 和 `IdentityExperienceFrameworkAppId` 的实例都替换为[自定义策略入门][B2C-GetStartedCustom]中配置的应用程序 ID。
-4. 在 `<ClaimsProviders>` 节点下，找到以下 XML 代码片段。 将 `ServiceUrl` 的值更改为指向 Azure 应用服务 URL。
+1. 将 `yourtenant.onmicrosoft.com` 中的 `TenantId`、`PublicPolicyUri` 和 `<TenantId>` 字段更改为租户的名称。
+1. 在 `<TechnicalProfile Id="login-NonInteractive">` 元素下，将 `ProxyIdentityExperienceFrameworkAppId` 和 `IdentityExperienceFrameworkAppId` 的实例都替换为[自定义策略入门][B2C-GetStartedCustom]中配置的应用程序 ID。
+1. 在 `<ClaimsProviders>` 节点下，找到以下 XML 代码片段。 将 `ServiceUrl` 的值更改为指向 Azure 应用服务 URL。
 
     ```XML
     <ClaimsProvider>
@@ -319,22 +318,22 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 ### <a name="step-44-upload-the-policy-to-your-tenant"></a>步骤 4.4：将策略上传到租户
 1. 在 [Azure 门户][Portal]中，切换到 [Azure AD B2C 租户的上下文][B2C-NavContext]，然后选择“Azure AD B2C”。
 
-2. 选择“标识体验框架”。
+1. 选择“标识体验框架”。
 
-3. 选择“所有策略”。
+1. 选择“所有策略”。
 
-4. 选择“上传策略”。
+1. 选择“上传策略”。
 
-5. 选中“覆盖策略(如果存在)”复选框。
+1. 选中“覆盖策略(如果存在)”复选框。
 
-6. 上传 *TrustFrameworkExtensions.xml* 文件，并确保它能够通过验证。
+1. 上传 *TrustFrameworkExtensions.xml* 文件，并确保它能够通过验证。
 
 ### <a name="step-45-test-the-custom-policy-by-using-run-now"></a>步骤 4.5：使用“立即运行”测试自定义策略
 1. 选择“Azure AD B2C 设置”并转到“标识体验框架”。
 
-2. 打开上传的信赖方 (RP) 自定义策略 **B2C_1A_signup_signin**，选择“立即运行”。
+1. 打开上传的信赖方 (RP) 自定义策略 **B2C_1A_signup_signin**，选择“立即运行”。
 
-3. 尝试使用某个已迁移用户的凭据登录，并选择“登录”。 REST API 应会引发以下错误消息：
+1. 尝试使用某个已迁移用户的凭据登录，并选择“登录”。 REST API 应会引发以下错误消息：
 
     ![设置诊断日志](media/active-directory-b2c-user-migration/pre-migration-error-message.png)
 
@@ -343,17 +342,17 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 
 1. 在 RESTful 应用程序的设置菜单中的“监视”下，选择“诊断日志”。
 
-2. 将“应用程序日志记录(文件系统)”设置为“打开”。
+1. 将“应用程序日志记录(文件系统)”设置为“打开”。
 
-3. 将“级别”设置为“详细”。
+1. 将“级别”设置为“详细”。
 
-4. 选择“保存”
+1. 选择“保存”
 
     ![设置诊断日志](media/active-directory-b2c-user-migration/pre-migration-diagnostic-logs.png)
 
-5. 在“设置”菜单中，选择“日志流”。
+1. 在“设置”菜单中，选择“日志流”。
 
-6. 检查 RESTful API 的输出。
+1. 检查 RESTful API 的输出。
 
 > [!IMPORTANT]
 > 只能在开发和测试期间使用诊断日志。 RESTful API 输出可能包含不应在生产环境中公开的机密信息。

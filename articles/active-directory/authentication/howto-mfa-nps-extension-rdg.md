@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 6348a6d003aa3efcd1b9c45e61438e0ac4b4c8d5
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 14607e01c0bd51ca9ae98f969c9cd6e1c8c62bb9
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42141723"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294265"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>使用网络策略服务器 (NPS) 扩展和 Azure AD 集成远程桌面网关基础结构
 
@@ -82,7 +82,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 有关安装 NPS 角色服务 Windows Server 2012或更早版本的信息，请参阅[安装 NAP 健康策略服务器](https://technet.microsoft.com/library/dd296890.aspx)。 有关 NPS 最佳做法的说明，包括在域控制器上安装 NPS 的建议，请参阅 [NPS 最佳做法](https://technet.microsoft.com/library/cc771746)。
 
 ### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>将 Azure Active Directory 与本地 Active Directory 同步
-要使用 NPS 扩展，本地用户必须与 Azure AD 同步并启用 MFA。 本部分内容假设内部部署用户使用 AD Connect 与 Azure AD 同步。 有关 Azure AD 连接的信息，请参阅[将本地目录与 Azure Active Directory 进行集成](../connect/active-directory-aadconnect.md)。 
+要使用 NPS 扩展，本地用户必须与 Azure AD 同步并启用 MFA。 本部分内容假设内部部署用户使用 AD Connect 与 Azure AD 同步。 有关 Azure AD 连接的信息，请参阅[将本地目录与 Azure Active Directory 进行集成](../hybrid/whatis-hybrid-identity.md)。 
 
 ### <a name="azure-active-directory-guid-id"></a>Azure Active Directory GUID ID
 若要安装 NPS 扩展，需要知道 Azure AD 的 GUID。 下面提供了用于查找 Azure AD 的 GUID 的说明。
@@ -374,4 +374,4 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
 [使用 RADIUS 的远程桌面网关和 Azure 多重身份验证服务器](howto-mfaserver-nps-rdg.md)
 
-[将本地目录与 Azure Active Directory 进行集成](../connect/active-directory-aadconnect.md)
+[将本地目录与 Azure Active Directory 进行集成](../hybrid/whatis-hybrid-identity.md)

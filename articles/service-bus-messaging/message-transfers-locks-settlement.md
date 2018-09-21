@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: spelluru
-ms.openlocfilehash: d4f387d484fe895d8b6c5196c3a5527947ee3925
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: de3f23f58ef34bdd5f9769f820d64ed7e00ca7d8
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702055"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715068"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>消息传输、锁定和处置
 
@@ -62,7 +62,7 @@ for (int i = 0; i < 100; i++)
 {
   tasks.Add(client.SendAsync(…));
 }
-await Task.WhenAll(tasks.ToArray());
+await Task.WhenAll(tasks);
 ```
 
 请务必注意，所有异步编程模型都使用某种形式的基于内存的隐藏工作队列来保存挂起的操作。 当 [SendAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.sendasync#Microsoft_Azure_ServiceBus_QueueClient_SendAsync_Microsoft_Azure_ServiceBus_Message_) (C#) 或 **Send** (Java) 返回时，发送任务会在该工作队列中进行排队，但协议操作只会在轮到任务运行之后开始。 对于倾向于推送消息突发并且需要考虑可靠性的代码，应注意不要同时“发送”太多消息，因为所有发送的消息在实际置于线路上之前都会占用内存。
@@ -79,7 +79,7 @@ for (int i = 0; i < 100; i++)
 
   tasks.Add(client.SendAsync(…).ContinueWith((t)=>semaphore.Release()));
 }
-await Task.WhenAll(tasks.ToArray());
+await Task.WhenAll(tasks);
 ```
 
 应用程序**绝不**应采用“发后不理”方式启动异步发送操作，而不检索操作结果。 这样做可以加载内部和不可见任务队列，直到内存耗尽，并阻止应用程序检测发送错误：

@@ -10,12 +10,12 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: 97c9480d6f2b75d83252bfb6410d7b5f946757ef
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 7cb5dc5b170103f98d56abc920f36dd85f855961
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630647"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364801"
 ---
 # <a name="grant-data-access-to-a-time-series-insights-environment-using-azure-portal"></a>使用 Azure 门户授予对时序见解环境的数据访问权限
 
@@ -34,39 +34,10 @@ Time Series Insights 环境有两个独立的访问策略类型：
 
 两类策略都可以清楚地区分环境管理访问权限和环境中数据的访问权限。 例如，可以对环境进行设置，从数据访问权限中删除环境的所有者/创建者。 此外，用户和服务可以读取环境中的数据，但可能无权访问环境的配置。
 
-## <a name="grant-data-access"></a>授予数据访问权限
-遵循以下步骤向用户主体授予数据访问权限：
-
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-
-2. 查找时序见解环境。 在“搜索”框中，键入“时序见解”。 在搜索结果中选择“时序环境”。 
-
-3. 从列表中选择时序见解环境。
-   
-4. 选择“数据访问策略”，然后选择“+ 添加”。
-  ![管理时序见解源 - 环境](media/data-access/getstarted-grant-data-access1.png)
-
-5. 选择“选择用户”。  搜索用户名称或电子邮件地址，查找要添加的用户。 单击“选择”确认选择。 
-
-   ![管理时序见解源 - 添加](media/data-access/getstarted-grant-data-access2.png)
-
-6. 选择“选择角色”。 为用户选择相应的访问角色：
-   - 若要允许用户更改引用数据，以及与环境的其他用户共享保存的查询和透视，请选择“参与者”。 
-   - 否则请选择“读取者”，允许用户查询环境中的数据，以及在环境中保存个人（非共享）查询。
-
-   选择“确定”确认角色选择。
-
-   ![管理时序见解源 - 选择用户](media/data-access/getstarted-grant-data-access3.png)
-
-8. 在“选择用户角色”页中，选择“确定”。
-
-   ![管理时序见解源 - 选择角色](media/data-access/getstarted-grant-data-access4.png)
-
-9. “数据访问策略”页列出了用户和每个用户的角色。
-
-   ![管理时序见解源 - 结果](media/data-access/getstarted-grant-data-access5.png)
+[!INCLUDE [iot-tsi-data-access](../../includes/iot-tsi-data-access.md)]
 
 ## <a name="next-steps"></a>后续步骤
+
 * 了解[如何向 Azure 时序见解环境添加事件中心事件源](time-series-insights-how-to-add-an-event-source-eventhub.md)。
 * [发送事件](time-series-insights-send-events.md)到事件源。
 * 在[时序见解资源管理器](https://insights.timeseries.azure.com)中查看环境。

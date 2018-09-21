@@ -15,12 +15,12 @@ ms.date: 05/04/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 618df9b4bcc4a1b6f44d9cabc29c797a2cabcc80
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 0d139437a069406db2ae0f189480072f8063a327
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366786"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982266"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理重定向已发布应用的硬编码链接
 
@@ -109,7 +109,7 @@ Azure AD 应用程序代理使本地应用对远程或在自己设备上的用�
 2. 转到“Azure Active Directory” > “企业应用程序” > “所有应用程序”选择要管理的应用，再单击“应用程序代理”。
 3. 将“转换应用程序主体中的 URL”改为“是”。
 
-   ![选择“是”可转换应用程序主体中的 URL](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png)。
+   ![选择“是”可转换应用程序主体中的 URL](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png)
 4. 单击“保存”应用所做的更改。
 
 现在，当用户访问此应用程序时，代理将自动扫描租户上通过应用程序代理发布的内部 URL。

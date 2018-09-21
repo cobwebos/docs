@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 846b76bddbc771a924a1d710cd333dfa4623f5ec
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: a629c598c94e44713f8990871c46272dc48b1359
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448762"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296271"
 ---
 # <a name="authentication-and-user-permissions"></a>身份验证和用户权限
 Azure Analysis Services 使用 Azure Active Directory (Azure AD) 进行身份管理和用户身份验证。 在相同订阅中，创建、管理或连接到 Azure Analysis Services 服务器的任何用户均需具备 [Azure AD 租户](../active-directory/fundamentals/active-directory-administer.md)中的有效用户标识。
@@ -33,7 +33,7 @@ Azure Analysis Services 支持 [Azure AD B2B 协作](../active-directory/active-
 
 Power BI Desktop、SSDT 和 SSMS 支持 Active Directory 通用身份验证，该通用身份验证是一种交互式方法，还支持 Azure 多重身份验证 (MFA)。 Azure MFA 可帮助保护对数据和应用程序的访问，同时提供简单的登录过程。 它利用一些验证选项提供强身份验证，这些选项包括电话、短信、含有 PIN 码的智能卡或移动应用通知。 配合使用 Azure AD 和交互式 MFA 时会出现用于验证的弹出式对话框。 建议使用通用身份验证。
 
-如果通过使用 Windows 帐户登录到 Azure，而未选中通用身份验证或通用身份验证不可用 (Excel)，则需要 [Active Directory 联合身份验证服务 (AD FS)](../active-directory/connect/active-directory-aadconnect-azure-adfs.md)。 使用联合身份验证，Azure AD 和 Office 365 用户可使用本地凭据进行身份验证，并且可访问 Azure 资源。
+如果通过使用 Windows 帐户登录到 Azure，而未选中通用身份验证或通用身份验证不可用 (Excel)，则需要 [Active Directory 联合身份验证服务 (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md)。 使用联合身份验证，Azure AD 和 Office 365 用户可使用本地凭据进行身份验证，并且可访问 Azure 资源。
 
 ### <a name="sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS)
 Azure Analysis Services 服务器通过以下方式支持来自 [SSMS V17.1](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 及更高版本的连接：使用 Windows 身份验证、Active Directory 密码验证和 Active Directory 通用身份验证。 通常，建议使用 Active Directory 通用身份验证，原因如下：

@@ -5,17 +5,17 @@ keywords: powershell dsc, 所需状态配置, powershell dsc azure
 services: automation
 ms.service: automation
 ms.component: dsc
-author: DCtheGeek
-ms.author: dacoulte
+author: bobbytreed
+ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d2d46803f81b369f8f24a6f0e3c7f32955503e4a
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: ef55e6ca6fc913710bae68a7423369b33f26c009
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40006055"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45628981"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration 概述
 
@@ -52,7 +52,7 @@ Azure Automation State Configuration 向 [PowerShell Desired State Configuration
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要开始使用，请参阅 [Azure Automation State Configuration 入门](automation-dsc-getting-started.md)
+- 有关入门信息，请参阅 [Azure Automation State Configuration 入门](automation-dsc-getting-started.md)
 - 要了解如何登记节点，请参阅[登记由 Azure Automation State Configuration 管理的计算机](automation-dsc-onboarding.md)
 - 若要了解如何编译 DSC 配置，以便将它们分配给目标节点，请参阅[在 Azure Automation State Configuration 中编译配置](automation-dsc-compile.md)
 - 有关 PowerShell cmdlet 参考，请参阅 [Azure Automation State Configuration cmdlet](/powershell/module/azurerm.automation/#automation)

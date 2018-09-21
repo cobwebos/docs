@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 8001f2d38ac80bb6c67419faa54bf834531f0332
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 9281c5fe04e3f29d1e3425edb4841dfaca1cd9e2
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439396"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294826"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>教程：Azure Active Directory 与 G Suite 集成
 
@@ -70,7 +70,7 @@ ms.locfileid: "39439396"
 
 1. **问：如果用户通过 Windows 登录，他们是否会自动进行 G Suite 身份验证而不会收到输入密码的提示？**
    
-    答：有两种用于启用此方案的选项。 第一种，用户可通过 [Azure Active Directory Join](../device-management-introduction.md) 登录到 Windows 10 设备。 或者，用户可以登录到通过域加入的方式加入到一个本地 Active Directory（已通加 [Active Directory 联合身份验证服务 (AD FS)](../connect/active-directory-aadconnect-user-signin.md) 部署启用 Azure AD 单一登录）的 Windows 设备。 两种选项都要求执行以下教程中的步骤，以在 Azure AD 和 G Suite 之间启用单一登录。
+    答：有两种用于启用此方案的选项。 第一种，用户可通过 [Azure Active Directory Join](../device-management-introduction.md) 登录到 Windows 10 设备。 或者，用户可以登录到通过域加入的方式加入到一个本地 Active Directory（已通加 [Active Directory 联合身份验证服务 (AD FS)](../hybrid/plan-connect-user-signin.md) 部署启用 Azure AD 单一登录）的 Windows 设备。 两种选项都要求执行以下教程中的步骤，以在 Azure AD 和 G Suite 之间启用单一登录。
 
 ## <a name="scenario-description"></a>方案描述
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
@@ -150,7 +150,7 @@ ms.locfileid: "39439396"
 
     ![G Suite 域和 URL 单一登录信息](./media/google-apps-tutorial/tutorial_googleapps_url1.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com `
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com `
 
     b. 在“标识符”文本框中，使用以下模式键入 URL： 
     | |
@@ -189,7 +189,7 @@ ms.locfileid: "39439396"
    
     ![配置 SSO][12]
    
-    a. 选择“使用第三方标识提供者设置 SSO”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“使用第三方标识提供者设置 SSO”。
 
     b. 在 G Suite 中的“登录页 URL”字段中，粘贴从 Azure 门户复制的“单一登录服务 URL”的值。
 

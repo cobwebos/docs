@@ -4,22 +4,22 @@ description: 向管理员介绍如何使用 Azure 门户或 PowerShell 设置访
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/19/2018
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 3b4b57dd2299c6278fe823f59a4f2c7d8721f712
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 563b2d6393533a86305213b6cdec6ca901e53257
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34259482"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985373"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>允许或阻止向特定组织中的 B2B 用户发送邀请
 
-可以使用允许列表或拒绝列表，来允许或阻止向特定组织中的 B2B 用户发送邀请。 例如，如果你要阻止个人电子邮件地址域，可以设置一个拒绝列表，并在其中包含类似于 Gmail.com 和 Outlook.com 的域。或者，如果你的企业与 Contoso.com、Fabrikam.com 和 Litware.com 等其他企业建立了合作关系，并且你希望将邀请限制为这些组织，则可以将 Contoso.com、Fabrikam.com 和 Litware.com 添加到允许列表。
+可以使用允许列表或拒绝列表，来允许或阻止向特定组织中的 B2B 用户发送邀请。 例如，如果你要阻止个人电子邮件地址域，可以设置一个拒绝列表，并在其中包含类似于 Gmail.com 和 Outlook.com 的域。 或者，如果你的企业与 Contoso.com、Fabrikam.com 和 Litware.com 等其他企业建立了合作关系，并且你希望将邀请限制为这些组织，则可以将 Contoso.com、Fabrikam.com 和 Litware.com 添加到允许列表。
   
 ## <a name="important-considerations"></a>重要注意事项
 

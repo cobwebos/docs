@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a499f609e517d880b3a942ac6dc3eb0dc10b69e7
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 93b0a7e382c27cab5f050166ec8fa89fc7cf6b96
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038016"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576096"
 ---
 # <a name="azure-logging-and-auditing"></a>Azure 日志记录和审核
 
@@ -45,7 +45,7 @@ Azure 日志划分为以下类型：
 |[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|Azure 资源管理器资源上的控制平面事件|   提供见解，方便用户了解对订阅中的资源执行的操作。|    Rest API、[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|
 |[Azure 诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|关于订阅中 Azure 资源管理器资源操作频繁生成的数据|    提供见解，以便深入了解资源本身执行的操作。| Azure Monitor，[Stream](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|
 |[Azure AD 报告](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)|日志和报告 | 报告有关用户和组管理的用户登录活动和系统活动信息。|[Graph API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api-quickstart)|
-|[虚拟机和云服务](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-quick-collect-azurevm)|Windows 事件日志服务和 Linux Syslog|    在虚拟机上捕获系统数据和日志记录数据，并将这些数据传输到所选的存储帐户中。|   Azure Monitor 中的 Windows（使用 Windows Azure 诊断 [[WAD](https://docs.microsoft.com/azure/azure-diagnostics)] 存储）和 Linux|
+|[虚拟机和云服务](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-collect-azurevm)|Windows 事件日志服务和 Linux Syslog|  在虚拟机上捕获系统数据和日志记录数据，并将这些数据传输到所选的存储帐户中。|   Azure Monitor 中的 Windows（使用 Windows Azure 诊断 [[WAD](https://docs.microsoft.com/azure/azure-diagnostics)] 存储）和 Linux|
 |[Azure 存储分析](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|存储执行日志记录并为存储帐户提供指标数据|提供相关信息，以便深入了解如何跟踪请求、分析使用情况趋势以及诊断存储帐户的问题。|   REST API 或[客户端库](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
 |[网络安全组 (NSG) 流日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)|采用 JSON 格式，并根据规则显示出站和入站流|显示有关通过网络安全组的入口和出口 IP 流量的信息。|[Azure 网络观察程序](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)|
 |[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview)|日志、异常和自定义诊断|   提供多个平台上面向 Web 开发人员的应用程序性能监视 (APM) 服务。| REST API，[Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|

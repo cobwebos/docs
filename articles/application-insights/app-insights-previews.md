@@ -1,23 +1,24 @@
 ---
-title: "设置 Azure Application Insights 的预览首选项| Microsoft Docs"
-description: "Azure Application Insights 开发团队推出了新体验。 可在 Azure 门户中设置要预览的新体验。"
+title: 设置 Azure Application Insights 的预览首选项| Microsoft Docs
+description: Azure Application Insights 开发团队推出了新体验。 可在 Azure 门户中设置要预览的新体验。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
-ms.assetid: 
+ms.assetid: ''
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/01/2017
 ms.author: mbullwin
-ms.openlocfilehash: f39ed880003c6ead0e720b730e6b70a4287b5f3f
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 4d3e7a28e2a57cfeae4e48719dbc17533a856016
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35633515"
 ---
 # <a name="preview-upcoming-changes-to-azure-application-insights"></a>预览 Azure Application Insights 即将推出的改进 
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 08/31/2018
-ms.openlocfilehash: 2df3f19759229e017ab934082cef46d18816934b
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: c36a771266f595f6d8dc8575d100fa5bb9496584
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338960"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714915"
 ---
 # <a name="migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>使用 DMS 以联机方式将 MySQL 迁移到 Azure Database for MySQL
 可以使用 Azure 数据库迁移服务在尽量缩短停机时间的情况下，将数据库从本地 MySQL 实例迁移到 [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/)。 换句话说，可以在尽量减少应用程序故障时间的情况下进行迁移。 本教程介绍如何在 Azure 数据库迁移服务中使用联机迁移活动将 **Employees** 示例数据库从 MySQL 5.7 的本地实例迁移到 Azure Database for MySQL。
@@ -93,7 +93,7 @@ SET group_concat_max_len = 8192;
     WHERE
       KCU.CONSTRAINT_NAME = RC.CONSTRAINT_NAME
       AND KCU.REFERENCED_TABLE_SCHEMA = RC.UNIQUE_CONSTRAINT_SCHEMA
-  AND KCU.REFERENCED_TABLE_SCHEMA = ['SchemaName') Queries
+  AND KCU.REFERENCED_TABLE_SCHEMA = 'SchemaName') Queries
   GROUP BY SchemaName;
  ```
         

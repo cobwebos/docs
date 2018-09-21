@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
-ms.openlocfilehash: 3715dcceb4330f6eaab01f49aee9d4d19663b62e
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 985010457413c15622f85e8ce8c6955a64ae40e9
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37099649"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985892"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>在航天工业及其它业务中用于预见性维护的 Cortana Intelligence 解决方案模板技术指南
 
@@ -154,7 +154,7 @@ Azure 事件中心支持丰富的格式，可以使用 CSV 或 JSON 格式将数
 1. 某个流分析作业会将原始传入数据写入 Blob 存储。 如果在成功部署解决方案的屏幕中单击解决方案的“Blob 存储”组件，然后在右窗格中单击“打开”，则会转到 [Azure 门户](https://portal.azure.com/)。 进入门户后，单击“Blob”。 在随后出现的面板中，可以看到容器列表。 单击“maintenancesadata”。 随后出现的面板中有 **rawdata** 文件夹。 在 rawdata 文件夹内，可以看到名为 hour=17、hour=18 等的文件夹。 存在这些文件夹表明原始数据正在计算机上生成并存储在 Blob 存储中。 应会在这些文件夹中看到具有有限 MB 大小的 csv 文件。
 2. 管道的最后一个步骤是将数据（例如机器学习的预测数据）写入 SQL 数据库。 最多可能需要 3 个小时，数据才会出现在 SQL 数据库中。 监视 SQL 数据库中有多少数据的方法之一是使用 [Azure 门户](https://portal.azure.com/)。 在左侧面板中找到“SQL 数据库”![SQL 图标](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-SQL-databases.png)并单击它。 然后查找自己的数据库 **pmaintenancedb** 并单击它。 在下一页的底部，单击“管理”
    
-    ![管理图标](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-manage.png)。
+    ![管理图标](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-manage.png)
    
     可在此处单击“新建查询”并查询行数（例如，select count(*) from PMResult）。 表中的行数会随数据库的增长而增加。
 

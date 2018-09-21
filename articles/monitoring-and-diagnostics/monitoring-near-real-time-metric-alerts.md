@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 4d51b099532d3052acc190231ec4be17765a427e
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 019f245a7cc1feedcbd520c336f53a60ed1e9ddc
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971017"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579083"
 ---
-# <a name="introduction"></a>介绍
+# <a name="supported-resources-for-newer-azure-monitor-metric-alerts"></a>新型 Azure Monitor 指标警报支持的资源
 Azure Monitor 现在支持[新型指标警报类型](monitoring-overview-unified-alerts.md)，它比旧式[经典指标警报](insights-alerts-portal.md)具有显著的优势。 指标可用于 [Azure 服务的大型列表](monitoring-supported-metrics.md)。 新型警报支持资源类型的一个（不断增长的）子集。 本文列出了该子集。 
 
 还可在常用 Log Analytics 日志中使用新型指标警报，Log Analytics 日志提取为指标，是日志（预览）中指标的一部分  

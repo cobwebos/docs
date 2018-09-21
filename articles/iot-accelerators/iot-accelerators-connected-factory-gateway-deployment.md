@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: c2805ddf7627ad520f6cc6585baedc7f5194aad6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3a68a4a132302051b04b69cc794f5327a82f7639
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626898"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604045"
 ---
 # <a name="deploy-an-edge-gateway-for-the-connected-factory-solution-accelerator-on-windows-or-linux"></a>在 Windows 或 Linux 上为连接的工厂解决方案加速器部署边缘网关
 
@@ -93,13 +93,13 @@ ms.locfileid: "34626898"
 若要运行 OPC 发布服务器，请在命令提示符处运行以下命令：
 
 ```cmd/sh
-docker run --rm -it -v <SharedFolder>:/docker -v x509certstores:/root/.dotnet/corefx/cryptography/x509stores --network iot_edge --name publisher -h publisher -p 62222:62222 --add-host <OpcServerHostname>:<IpAddressOfOpcServerHostname> microsoft/iot-edge-opc-publisher:2.1.3 publisher "<IoTHubOwnerConnectionString>" --lf /docker/publisher.log.txt --as true --si 1 --ms 0 --tm true --vc true --di 30
+docker run --rm -it -v <SharedFolder>:/docker -v x509certstores:/root/.dotnet/corefx/cryptography/x509stores --network iot_edge --name publisher -h publisher -p 62222:62222 --add-host <OpcServerHostname>:<IpAddressOfOpcServerHostname> microsoft/iot-edge-opc-publisher:2.1.4 publisher "<IoTHubOwnerConnectionString>" --lf /docker/publisher.log.txt --as true --si 1 --ms 0 --tm true --vc true --di 30
 ```
 
 - [OPC 发布服务器 GitHub](https://github.com/Azure/iot-edge-opc-publisher) 和 [docker run reference](https://docs.docker.com/engine/reference/run/)（Docker 运行参考）针对以下内容提供了详细信息：
 
-  - 在容器名称 (`microsoft/iot-edge-opc-publisher:2.1.3`) 前面指定的 Docker 命令行选项。
-  - 在容器名称 (`microsoft/iot-edge-opc-publisher:2.1.3`) 后面指定的 OPC 发布服务器命令行参数的含义。
+  - 在容器名称 (`microsoft/iot-edge-opc-publisher:2.1.4`) 前面指定的 Docker 命令行选项。
+  - 在容器名称 (`microsoft/iot-edge-opc-publisher:2.1.4`) 后面指定的 OPC 发布服务器命令行参数的含义。
 
 - `<IoTHubOwnerConnectionString>` 是来自 Azure 门户的 **iothubowner** 共享访问策略连接字符串。 已在前面步骤中复制此连接字符串。 仅在首次运行 OPC 发布服务器时才需要此连接字符串。 后续运行时，应省略此字符串，因为它会带来安全风险。
 
@@ -123,7 +123,7 @@ docker run --rm -it -v <SharedFolder>:/docker -v x509certstores:/root/.dotnet/co
 若要安装 OPC 代理，请在命令提示符处运行以下命令：
 
 ```cmd/sh
-docker run -it --rm -v <SharedFolder>:/mapped --network iot_edge --name proxy --add-host <OpcServerHostname>:<IpAddressOfOpcServerHostname> microsoft/iot-edge-opc-proxy:1.0.2 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db
+docker run -it --rm -v <SharedFolder>:/mapped --network iot_edge --name proxy --add-host <OpcServerHostname>:<IpAddressOfOpcServerHostname> microsoft/iot-edge-opc-proxy:1.0.4 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db
 ```
 
 只需在系统上运行一次安装。
@@ -131,7 +131,7 @@ docker run -it --rm -v <SharedFolder>:/mapped --network iot_edge --name proxy --
 使用以下命令运行 OPC 代理：
 
 ```cmd/sh
-docker run -it --rm -v <SharedFolder>:/mapped --network iot_edge --name proxy --add-host <OpcServerHostname>:<IpAddressOfOpcServerHostname> microsoft/iot-edge-opc-proxy:1.0.2 -D /mapped/cs.db
+docker run -it --rm -v <SharedFolder>:/mapped --network iot_edge --name proxy --add-host <OpcServerHostname>:<IpAddressOfOpcServerHostname> microsoft/iot-edge-opc-proxy:1.0.4 -D /mapped/cs.db
 ```
 
 OPC 代理会在安装期间保存连接字符串。 后续运行时，应省略此连接字符串，因为它会带来安全风险。

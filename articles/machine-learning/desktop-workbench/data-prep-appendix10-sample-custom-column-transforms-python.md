@@ -7,18 +7,18 @@ ms.author: euang
 manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: babe7b8dd1ea459fd3478d20dd7d69138c9ca163
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: d9f8bb20325ff15b6ba67253de5e66d1d1d8e643
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830089"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35631490"
 ---
 # <a name="sample-of-custom-column-transforms-python"></a>自定义列转换示例 (Python) 
 此转换在菜单中的名称为“添加列(脚本)”。

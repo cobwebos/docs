@@ -5,18 +5,18 @@ services: machine-learning
 author: euangMS
 ms.author: euang
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 05/09/2018
-ms.openlocfilehash: e91d3e4bfb1cba6f45b0106b3fabe5bef7e0e079
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: a713f5fcde31e0e25de080a65b71209011ef551d
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831418"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35633435"
 ---
 # <a name="data-preparations-python-extensions"></a>数据准备 Python 扩展
 作为一种填补内置功能之间功能差距的方法，Azure 机器学习数据准备包含多个级别的扩展性。 在本文档中，我们将通过 Python 脚本概述扩展性。 

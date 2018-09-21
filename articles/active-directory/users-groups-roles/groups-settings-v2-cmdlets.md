@@ -15,12 +15,12 @@ ms.date: 06/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 2ecd65bab478c37f1d3daa3ff86fdfadc788b301
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: d6fb5a97ef573a35f335875beddc7752f580bec1
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448753"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296629"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>用于组管理的 Azure Active Directory 版本 2 cmdlet
 > [!div class="op_single_selector"]
@@ -268,4 +268,4 @@ ObjectId 参数是要将所有者添加到的组的 ObjectID，-RefObjectId 是�
 如需更多 Azure Active Directory PowerShell 文档，可参阅 [Azure Active Directory Cmdlet](/powershell/azure/install-adv2?view=azureadps-2.0)。
 
 * [使用 Azure Active Directory 组管理对资源的访问](../fundamentals/active-directory-manage-groups.md)
-* [将本地标识与 Azure Active Directory 集成](../connect/active-directory-aadconnect.md)
+* [将本地标识与 Azure Active Directory 集成](../hybrid/whatis-hybrid-identity.md)

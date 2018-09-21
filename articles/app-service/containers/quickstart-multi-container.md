@@ -15,16 +15,16 @@ ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 6fa0bab5d2b402c85ea3ee70e7356f8c8c989ab9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1d54d914edb306b89dc6f2604aa5af3d17cb535d
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446776"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576776"
 ---
 # <a name="create-a-multi-container-preview-app-using-web-app-for-containers"></a>使用用于容器的 Web 应用创建多容器（预览版）应用
 
-在[用于容器的 Web 应用](app-service-linux-intro.md)中可以灵活使用 Docker 映像。 本快速入门展示了如何在 [Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) 中使用 Docker Compose 配置将多容器应用部署到用于容器的 Web 应用。 有关 Kubernetes 和使用 Azure DB for MySQL 的完整端到端解决方案，请参阅[多容器教程](tutorial-multi-container-app.md)。
+在[用于容器的 Web 应用](app-service-linux-intro.md)中可以灵活使用 Docker 映像。 本快速入门展示了如何在 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 中使用 Docker Compose 配置将多容器应用部署到用于容器的 Web 应用。 有关 Kubernetes 和使用 Azure DB for MySQL 的完整端到端解决方案，请参阅[多容器教程](tutorial-multi-container-app.md)。
 
 你将在 Cloud Shell 中完成本快速入门，但是也可以使用 [Azure CLI](/cli/azure/install-azure-cli)（2.0.32 或更高版本）在本地运行这些命令。 
 

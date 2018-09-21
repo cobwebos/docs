@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: anandy;billmath
-ms.openlocfilehash: e984d3d590021e3dd9e46d0f12493889b2acc229
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2ed0b551faba68c0956be89277348eeee60d759c
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26604773"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298211"
 ---
 # <a name="high-availability-cross-geographic-ad-fs-deployment-in-azure-with-azure-traffic-manager"></a>使用 Azure 流量管理器在 Azure 中部署高可用性跨地理区域 AD FS
-[AD FS deployment in Azure](active-directory-aadconnect-azure-adfs.md) （Azure 中的 AD FS 部署）提供了有关如何在 Azure 中为组织部署简单 AD FS 基础结构的分步指导。 本文提供后续步骤，使用 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)在 Azure 中创建跨地理区域的 AD FS 部署。 Azure 流量管理器使用各种可用的路由方法来应对基础结构的不同需求，有助于为组织创建分布各地的高可用性和高性能 AD FS 基础结构。
+[AD FS deployment in Azure](hybrid/how-to-connect-fed-azure-adfs.md) （Azure 中的 AD FS 部署）提供了有关如何在 Azure 中为组织部署简单 AD FS 基础结构的分步指导。 本文提供后续步骤，使用 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)在 Azure 中创建跨地理区域的 AD FS 部署。 Azure 流量管理器使用各种可用的路由方法来应对基础结构的不同需求，有助于为组织创建分布各地的高可用性和高性能 AD FS 基础结构。
 
 高可用性的跨地理区域 AD FS 基础结构能够：
 
@@ -45,7 +45,7 @@ ms.locfileid: "26604773"
 
 ## <a name="steps-to-integrate-azure-traffic-manager"></a>集成 Azure 流量管理器的步骤
 ### <a name="deploy-ad-fs-in-the-new-geographical-region"></a>在新地理区域中部署 AD FS
-遵循 [AD FS deployment in Azure](active-directory-aadconnect-azure-adfs.md) （Azure 中的 AD FS 部署）中的步骤和指导，在新地理区域中部署相同的拓朴。
+遵循 [AD FS deployment in Azure](hybrid/how-to-connect-fed-azure-adfs.md) （Azure 中的 AD FS 部署）中的步骤和指导，在新地理区域中部署相同的拓朴。
 
 ### <a name="dns-labels-for-public-ip-addresses-of-the-internet-facing-public-load-balancers"></a>面向 Internet 的（公共）负载均衡器中公共 IP 地址的 DNS 标签
 如前所述，Azure 流量管理器只能通过 DNS 标签引用终结点，因此，请务必为外部负载均衡器的公共 IP 地址创建 DNS 标签。 以下屏幕截图显示如何配置公共 IP 地址的 DNS 标签。 
@@ -116,7 +116,7 @@ ms.locfileid: "26604773"
     ![ADFS 测试 - 身份验证成功](./media/active-directory-adfs-in-azure-with-azure-traffic-manager/adfstest2.png)
 
 ## <a name="related-links"></a>相关链接
-* [Basic AD FS deployment in Azure](active-directory-aadconnect-azure-adfs.md)
+* [Basic AD FS deployment in Azure](hybrid/how-to-connect-fed-azure-adfs.md)
 * [Microsoft Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)
 * [流量管理器流量路由方法](../traffic-manager/traffic-manager-routing-methods.md)
 

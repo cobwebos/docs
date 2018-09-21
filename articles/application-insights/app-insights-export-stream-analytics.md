@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/04/2018
 ms.author: mbullwin
-ms.openlocfilehash: 874a338c27262de29b1806352ec3ade068c188e0
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 86e37a186536a2037d3cc46cb1cc69c1a7a651f6
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294228"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719420"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>使用流分析处理从 Application Insights 导出的数据
 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)是用于处理[从 Application Insights 导出](app-insights-export-telemetry.md)的数据的理想工具。 流分析可以从各种源提取数据。 它可以转换和筛选数据，然后将其路由到各种接收器。
@@ -93,7 +93,7 @@ ms.locfileid: "35294228"
 
 将此位置设置为从连续导出 Blob 接收输入：
 
-![](./media/app-insights-export-stream-analytics/SA005.png)
+![](./media/app-insights-export-stream-analytics/SA0005.png)
 
 现在需要使用存储帐户的主访问密钥（前面已记下此密钥）。 将此密钥设置为存储帐户密钥。
 

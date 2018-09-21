@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: ba12f22a7f0ac26ac2b9f29bb3a33a54d2705df3
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 5b6c0938fce928f2141eac1a03d43005a2247e74
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43089783"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730800"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>教程：使用 Visual Studio 创建数据工厂
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -93,7 +93,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 1. 在解决方案资源管理器中，右键单击“链接服务”，指向“添加”，并单击“新建项”。      
 2. 在“添加新项”对话框中，从列表中选择“Azure 存储链接服务”，并单击“添加”。
     ![Azure 存储链接服务](./media/data-factory-build-your-first-pipeline-using-vs/new-azure-storage-linked-service.png)
-3. 将 `<accountname>` 和 `<accountkey>` 替换为 Azure 存储帐户的名称和密钥。 要了解如何获取存储访问密钥，请在[管理存储帐户](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)中查看有关如何查看、复制和重新生成存储访问密钥的信息。
+3. 将 `<accountname>` 和 `<accountkey>` 替换为 Azure 存储帐户的名称和密钥。 要了解如何获取存储访问密钥，请在[管理存储帐户](../../storage/common/storage-account-manage.md#access-keys)中查看有关如何查看、复制和重新生成存储访问密钥的信息。
     ![Azure 存储链接服务](./media/data-factory-build-your-first-pipeline-using-vs/azure-storage-linked-service.png)
 4. 保存 **AzureStorageLinkedService1.json** 文件。
 

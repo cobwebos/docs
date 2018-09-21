@@ -10,20 +10,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 11/02/2017
 ms.author: tomfitz
-ms.openlocfilehash: 69d31a7199347574e8866b275ec17ba3997d80c2
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: e52acd8587203c4729ac2bcd6e4bbc09620ead86
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34305117"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35765676"
 ---
 # <a name="publish-a-service-catalog-application-through-azure-portal"></a>通过 Azure 门户发布服务目录应用程序
 
-可以使用 Azure 门户发布适用于组织成员的[托管应用程序](overview.md)。 例如，IT 部门可发布确保符合组织标准的托管应用程序。 这些托管应用程序通过服务目录（而不是 Azure Marketplace）提供。
+可以使用 Azure 门户发布适用于组织成员的[托管应用程序](overview.md)。 例如，IT 部门可发布确保符合组织标准的托管应用程序。 这些托管应用程序通过服务目录（而不是 Azure 市场）提供。
 
 ## <a name="prerequisites"></a>先决条件
 
-发布托管应用程序时，请指定用于管理资源的标识。 我们建议你指定 Azure Active Directory 用户组。 若要创建 Azure Active Directory 用户组，请参阅[在 Azure Active Directory 中创建组并添加成员](../active-directory/active-directory-groups-create-azure-portal.md)。 
+发布托管应用程序时，请指定用于管理资源的标识。 我们建议你指定 Azure Active Directory 用户组。 若要创建 Azure Active Directory 用户组，请参阅[在 Azure Active Directory 中创建组并添加成员](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。 
 
 必须通过 URI 获取包含托管应用程序定义的 .zip 文件。 我们建议将 .zip 文件上传到存储 blob。 
 

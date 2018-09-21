@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/5/2018
 ms.author: markgal
-ms.openlocfilehash: eda3e95c1bd8fb7eef97ee9db10c217c2885198f
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 5092a677bcbeac179e26fa0591b6a1cfbc3263d4
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970877"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576691"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>在 Azure Stack 上安装 Azure 备份服务器
 
@@ -310,7 +310,7 @@ Azure 备份服务器与 Data Protection Manager 共享代码。 在 Azure 备�
 
 ## <a name="add-backup-storage"></a>添加备份存储
 
-第一个备份副本保存在已附加到 Azure 备份服务器计算机的存储中。 有关添加磁盘的详细信息，请参阅[添加新式备份存储](https://docs.microsoft.com/en-us/system-center/dpm/add-storage?view=sc-dpm-1801)。
+第一个备份副本保存在已附加到 Azure 备份服务器计算机的存储中。 有关添加磁盘的详细信息，请参阅[添加新式备份存储](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-1801)。
 
 > [!NOTE]
 > 即使你打算将数据发送到 Azure，也需要添加备份存储。 在 Azure 备份服务器体系结构中，恢复服务保管库将保存数据的第二个副本，而本地存储将保存第一个（必需的）备份副本。
@@ -360,10 +360,10 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 
 ## <a name="next-steps"></a>后续步骤
 
-[为 DPM 准备环境](https://docs.microsoft.com/en-us/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1801)一文包含了有关受支持 Azure 备份服务器配置的信息。
+[为 DPM 准备环境](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1801)一文包含了有关受支持 Azure 备份服务器配置的信息。
 
 可以使用以下文章深入了解如何使用 Microsoft Azure 备份服务器来保护工作负荷。
 
-- [SQL Server 备份](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sql-azure-stack)
-- [SharePoint Server 备份](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sharepoint-azure-stack)
+- [SQL Server 备份](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)
+- [SharePoint Server 备份](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
 - [备用服务器备份](backup-azure-alternate-dpm-server.md)

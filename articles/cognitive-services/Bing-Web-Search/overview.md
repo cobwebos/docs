@@ -1,19 +1,21 @@
 ---
-title: 什么是必应 Web 搜索？ | Microsoft Docs
-description: 必应 Web 搜索 API 是一种 RESTful 服务，允许应用程序使用必应的 Web 搜索功能，包括网页、图像、视频、新闻、实体、相关搜索查询、拼写更正、单位转换、翻译和计算。
+title: 什么是必应 Web 搜索？
+titleSuffix: Azure Cognitive Services
+description: 必应 Web 搜索 API 是一项 RESTful 服务，可以针对用户查询提供即时应答。 搜索结果可以轻松地进行配置，可以包括网页、图像、视频、新闻、翻译等。 结果以 JSON 形式提供，并取决于搜索相关性和必应 Web 搜索订阅。
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: overview
 ms.date: 08/14/2018
 ms.author: erhopf
-ms.openlocfilehash: ad1069a836a3ff9291ca8094fe86e19979bf7e32
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 8482afae2889ccf2153e1864e4a65b635b6ab4c7
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42889275"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125232"
 ---
 # <a name="what-is-bing-web-search"></a>什么是必应 Web 搜索？
 

@@ -1,5 +1,6 @@
 ---
 title: Microsoft 语音服务的文本转语音 API | Microsoft Docs
+titlesuffix: Azure Cognitive Services
 description: 使用文本转语音 API，以各种语音和语言提供实时文本转语音转换
 services: cognitive-services
 author: priyaravi20
@@ -7,14 +8,14 @@ manager: yanbo
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 03/16/2017
+ms.date: 09/18/2018
 ms.author: priyar
-ms.openlocfilehash: 6236bf1c4d9ac7ba672939543c16b8d02a79892e
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 1b8e13712d75920573104ba90dfea891b27370db
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41929971"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367927"
 ---
 # <a name="bing-text-to-speech-api"></a>必应文本转语音 API
 

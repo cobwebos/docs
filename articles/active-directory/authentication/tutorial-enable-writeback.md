@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 9512c800a35ad4a819c657b07227d781c63c6399
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: e91ca2ff438e3ae9e9b3f46e5a8db89f17fb1c8e
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163267"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295115"
 ---
 # <a name="tutorial-enabling-password-writeback"></a>教程：启用密码写回
 
@@ -29,7 +29,7 @@ ms.locfileid: "39163267"
 
 * 能够访问至少分配有试用版许可证的有效 Azure AD 租户。
 * 在 Azure AD 租户中具有全局管理员权限的帐户。
-* 已配置的运行 [Azure AD Connect](../connect/active-directory-aadconnect-get-started-express.md) 的当前版本的一台现有服务器。
+* 已配置的运行 [Azure AD Connect](../hybrid/how-to-connect-install-express.md) 的当前版本的一台现有服务器。
 * 已完成了前面的自助服务密码重置 (SSPR) 教程。
 
 ## <a name="enable-password-writeback-option-in-azure-ad-connect"></a>在 Azure AD Connect 中启用密码写回选项

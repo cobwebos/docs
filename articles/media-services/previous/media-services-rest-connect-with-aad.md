@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/26/2017
 ms.author: willzhan;juliako;johndeu
-ms.openlocfilehash: ed78d6c6d4c695b841dbfbf917cd1681adc44ee7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b44c5b29f41f08ac5c1d5e6aa3c37f8c15ae7c54
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785986"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984651"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>通过 Azure AD 身份验证使用 REST 访问 Azure 媒体服务 API
 
@@ -45,7 +45,7 @@ ms.locfileid: "33785986"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [使用 Azure 门户创建 Azure 媒体服务帐户](media-services-portal-create-account.md)。
 - 查看[通过 ADD 身份验证访问 Azure 媒体服务 API 概述](media-services-use-aad-auth-to-access-ams-api.md)一文。
 - 安装 [Postman](https://www.getpostman.com/) REST 客户端以执行本文所示的 REST API。 
@@ -58,9 +58,9 @@ ms.locfileid: "33785986"
 
 若要访问媒体服务 API，需要收集以下数据点。
 
-|设置|示例|说明|
+|设置|示例|Description|
 |---|-------|-----|
-|Azure Active Directory 租户域|microsoft.onmicrosoft.com|作为安全令牌服务 (STS) 终结点的 Azure AD 是使用以下格式创建的：https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token。 Azure AD 颁发用于访问资源的 JWT（访问令牌）。|
+|Azure Active Directory 租户域|microsoft.onmicrosoft.com|作为安全令牌服务 (STS) 终结点的 Azure AD 是使用以下格式创建的： https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token。 Azure AD 颁发用于访问资源的 JWT（访问令牌）。|
 |REST API 终结点|https://amshelloworld.restv2.westus.media.azure.net/api/|这是应用程序中发出的所有媒体服务 REST API 调用所针对的终结点。|
 |客户端 ID（应用程序 ID）|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|Azure AD 应用程序（客户端）ID。 需要客户端 ID 才能获取访问令牌。 |
 |客户端机密|+mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq+Dbim0=|Azure AD 应用程序密钥（客户端密码）。 需要客户端密码才能获取访问令牌。|
@@ -97,7 +97,7 @@ ms.locfileid: "33785986"
     1. 选择应用程序。
     2. 从右侧的窗口获取“客户端 ID”。 
 
-    ![API 访问](./media/connect-with-rest/existing-client-id.png)。
+    ![API 访问](./media/connect-with-rest/existing-client-id.png)
 
 7.  获取应用程序的“密钥”（客户端密码）。 
 
@@ -160,7 +160,7 @@ ms.locfileid: "33785986"
 
 1. 打开 Postman。
 2. 选择“GET” 。
-3. 粘贴 REST API 终结点（例如，https://amshelloworld.restv2.westus.media.azure.net/api/Assets)
+3. 粘贴 REST API 终结点（例如， https://amshelloworld.restv2.westus.media.azure.net/api/Assets)
 4. 选择“授权”选项卡。 
 5. 选择“持有者令牌”。
 6. 粘贴上一部分中创建的令牌。

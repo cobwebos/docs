@@ -4,7 +4,7 @@ description: 借助 Microsoft Azure 媒体服务，可以传送使用 AES 128 �
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 4d2c10af-9ee0-408f-899b-33fa4c1d89b9
 ms.service: media-services
@@ -12,21 +12,21 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2017
+ms.date: 09/18/2018
 ms.author: juliako
-ms.openlocfilehash: 335c080519df48709ebc5c1c3c44d9386d16b790
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9f3fe36eab7dc7fd1921c4e225b5a173fe2e9243
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786066"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364867"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>使用 AES-128 动态加密和密钥传递服务
 > [!div class="op_single_selector"]
 > * [.NET](media-services-protect-with-aes128.md)
 > * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
-> 
+>  
 
 > [!NOTE]
 > 若要获取最新版本的 Java SDK 并开始使用 Java 进行开发，请参阅[用于 Azure 媒体服务的 Java 客户端 SDK 入门](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use)。 <br/>
@@ -173,7 +173,7 @@ ms.locfileid: "33786066"
     QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
     …
 
-如果在文本编辑器中打开某个段文件（例如，http://test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels(514369)/Manifest(video，格式 =m3u8-aapl），它包含 #EXT-X-KEY，指示该文件已加密。
+如果在文本编辑器中打开某个段文件（例如， http://test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels(514369)/Manifest(video，格式 =m3u8-aapl），它包含 #EXT-X-KEY，指示该文件已加密。
 
     #EXTM3U
     #EXT-X-VERSION:4
@@ -247,8 +247,8 @@ ms.locfileid: "33786066"
 2. 将以下元素添加到 app.config 文件中定义的 appSettings：
 
     ```xml
-            <add key="Issuer" value="http://testacs.com"/>
-            <add key="Audience" value="urn:test"/>
+    <add key="Issuer" value="http://testissuer.com"/>
+    <add key="Audience" value="urn:test"/>
     ```
 
 ### <a id="example"></a>示例
@@ -260,13 +260,10 @@ ms.locfileid: "33786066"
 
 请务必将变量更新为指向输入文件所在的文件夹。
 
-```csharp
-    [!code-csharp[Main](../../../samples-mediaservices-encryptionaes/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs)]
-```
+[!code-csharp[Main](../../../samples-mediaservices-encryptionaes/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs)]
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

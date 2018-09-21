@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: b9f0571c88b6ec4aa9e3851d5bf618e5104b0652
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: c39b78995aaa7e6754b180142c03cf3aa25199a5
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716240"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574262"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>如何要求对用户进行双重验证
 
@@ -30,7 +30,7 @@ ms.locfileid: "39716240"
 
 通过条件访问策略启用 - 这是为用户启用双重验证的最灵活方法。 通过条件访问策略启用仅适用于云中的 Azure MFA，并且是 Azure AD 的高级功能。 有关此方法的详细信息，请参阅[部署基于云的 Azure 多重身份验证](howto-mfa-getstarted.md)。
 
-通过 Azure AD Identity Protection 启用 - 此方法使用 Azure AD Identity Protection 风险策略，要求仅基于所有云应用程序的登录风险进行双重验证。 此方法需要 Azure Active Directory P2 授权。 有关此方法的详细信息，请参阅 [Azure Active Directory Identity Protection](../identity-protection/overview.md#risky-sign-ins)
+通过 Azure AD Identity Protection 启用 - 此方法使用 Azure AD Identity Protection 风险策略，要求仅基于所有云应用程序的登录风险进行双重验证。 此方法需要 Azure Active Directory P2 授权。 有关此方法的详细信息，请参阅 [Azure Active Directory Identity Protection](../identity-protection/howto-sign-in-risk-policy.md)
 
 > [!Note]
 > 有关许可和定价的详细信息，请参见 [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/

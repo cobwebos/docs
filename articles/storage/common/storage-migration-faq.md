@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: genli
 ms.component: common
-ms.openlocfilehash: ecc5948c84f7659e950c360c3b19d1985b0ab81c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 3c671fe6dcb1af25bfb0aa09fecf8ad5e5ceb97b
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521483"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732254"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>有关 Azure 存储迁移的常见问题
 
@@ -256,7 +256,7 @@ Azure 文件共享上不允许使用高级存储。
 
 -   使用共享访问签名 (SAS) 令牌提供资源的访问权限。 
 
--   向用户提供存储帐户的主密钥或辅助密钥。 有关详细信息，请参阅[管理存储帐户](storage-create-storage-account.md#manage-your-storage-account)。
+-   向用户提供存储帐户的主密钥或辅助密钥。 有关详细信息，请参阅[管理存储帐户](storage-account-manage.md#access-keys)。
 
 -   更改访问策略以允许匿名访问。 有关详细信息，请参阅[授予对容器和 Blob 的匿名用户权限](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)。
 
