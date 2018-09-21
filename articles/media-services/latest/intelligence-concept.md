@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: juliako
-ms.openlocfilehash: c488060b9db0ba482d12eee2394e5149b918950e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a428f76f1239e7e67b99d05b96d26abd601e89c6
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331514"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498685"
 ---
 # <a name="media-intelligence"></a>媒体智能
 
@@ -47,12 +47,12 @@ Azure 媒体服务 REST v3 API 可帮助分析音频和视频内容。 若要分
 
 ### <a name="transcript"></a>脚本
 
-|名称|说明|
+|名称|Description|
 |---|---|
 |id|行 ID。|
 |text|脚本本身。|
 |语言|脚本语言。 旨在支持每行语言不同的脚本。|
-|instances|出现该行的时间范围列表。 如果实例是一个脚本，则只有 1 个实例。|
+|instances|出现该行的时间范围列表。 如果实例是脚本，则只有 1 个实例。|
 
 示例：
 
@@ -85,7 +85,7 @@ Azure 媒体服务 REST v3 API 可帮助分析音频和视频内容。 若要分
 
 ### <a name="ocr"></a>ocr
 
-|名称|说明|
+|名称|Description|
 |---|---|
 |id|OCR 行 ID。|
 |text|OCR 文本。|
@@ -126,68 +126,20 @@ Azure 媒体服务 REST v3 API 可帮助分析音频和视频内容。 若要分
   ],
 ```
 
-### <a name="keywords"></a>关键字
-
-|名称|说明|
-|---|---|
-|id|关键字 ID。|
-|text|关键字文本。|
-|confidence|关键字的识别置信度。|
-|语言|关键字语言（转换后）。|
-|instances|出现此关键字的时间范围列表（一个关键字可重复多次出现）。|
-
-```json
-"keywords": [
-{
-    "id": 0,
-    "text": "office",
-    "confidence": 1.6666666666666667,
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:00.5100000",
-        "end": "00:00:02.7200000"
-    },
-    {
-        "start": "00:00:03.9600000",
-        "end": "00:00:12.2700000"
-    }
-    ]
-},
-{
-    "id": 1,
-    "text": "icons",
-    "confidence": 1.4,
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:03.9600000",
-        "end": "00:00:12.2700000"
-    },
-    {
-        "start": "00:00:13.9900000",
-        "end": "00:00:15.6100000"
-    }
-    ]
-}
-] 
-
-```
-
 ### <a name="faces"></a>人脸
 
-|名称|说明|
+|名称|Description|
 |---|---|
 |id|人脸 ID。|
 |名称|人脸姓名。 可以为“Unknown #0”、公认的名人或客户训练的人。|
 |confidence|人脸识别置信度。|
 |description|名人的说明。 |
-|thumbnalId|该人脸视频缩略图的 ID。|
-|knownPersonId|已知人员的内部 ID。|
-|referenceId|必应名人的必应 ID。|
+|thumbnalId|该人脸的缩略图 ID。|
+|knownPersonId|如果是已知人员，则为此人的内部 ID。|
+|referenceId|如果是必应名人，则为此人的必应 ID。|
 |referenceType|当前仅限必应。|
-|title|名人的头衔（例如“Microsoft 的 CEO”）。|
-|imageUrl|名人的图像 URL。|
+|title|如果是名人，则为此人的头衔（例如“Microsoft 的 CEO”）。|
+|imageUrl|如果是名人，则为此人的图像 URL。|
 |instances|在给定时间范围内出现该人脸的实例。 每个实例还具有一个 thumbnailsId。 |
 
 ```json
@@ -219,9 +171,114 @@ Azure 媒体服务 REST v3 API 可帮助分析音频和视频内容。 若要分
 }]
 ```
 
+### <a name="shots"></a>截图
+
+|名称|Description|
+|---|---|
+|id|截图 ID。|
+|keyFrames|截图内的关键帧列表（每个关键帧都有一个 ID 和实例时间范围列表）。 关键帧实例具有一个 thumbnailId 字段，该字段包含关键帧的缩略图 ID。|
+|instances|此截图的时间范围列表（截图仅有 1 个实例）。|
+
+```json
+"Shots": [
+    {
+      "id": 0,
+      "keyFrames": [
+        {
+          "id": 0,
+          "instances": [
+            {
+                "thumbnailId": "00000000-0000-0000-0000-000000000000",
+              "start": "00: 00: 00.1670000",
+              "end": "00: 00: 00.2000000"
+            }
+          ]
+        }
+      ],
+      "instances": [
+        {
+            "thumbnailId": "00000000-0000-0000-0000-000000000000",  
+          "start": "00: 00: 00.2000000",
+          "end": "00: 00: 05.0330000"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "keyFrames": [
+        {
+          "id": 1,
+          "instances": [
+            {
+                "thumbnailId": "00000000-0000-0000-0000-000000000000",      
+              "start": "00: 00: 05.2670000",
+              "end": "00: 00: 05.3000000"
+            }
+          ]
+        }
+      ],
+      "instances": [
+        {
+      "thumbnailId": "00000000-0000-0000-0000-000000000000",
+          "start": "00: 00: 05.2670000",
+          "end": "00: 00: 10.3000000"
+        }
+      ]
+    }
+  ]
+```
+
+### <a name="statistics"></a>statistics
+
+|名称|Description|
+|---|---|
+|CorrespondenceCount|视频中对应关系的数目。|
+|WordCount|每个发言人的单词数。|
+|SpeakerNumberOfFragments|发言人在视频中的片段数量。|
+|SpeakerLongestMonolog|发言人的最长独白。 如果发言人在独白中有沉默，则会将沉默期包含在内。 删除独白开头和结尾的沉默期。| 
+|SpeakerTalkToListenRatio|计算方式为将发言人的独白时间（开头和结尾之间没有沉默期）除以视频总时间。 时间将四舍五入为三位小数。|
+
+
+### <a name="sentiments"></a>情绪
+
+情绪依据其 sentimentType 字段得出（积极/中立/消极）。 例如：0-0.1、0.1-0.2。
+
+|名称|Description|
+|---|---|
+|id|情绪 ID。|
+|averageScore |该情绪类型的所有实例的所有分数的均值 - 积极/中立/消极|
+|instances|出现此情绪的时间范围列表。|
+|sentimentType |类型可以是“Positive”、“Neutral”或“Negative”。|
+
+```json
+"sentiments": [
+{
+    "id": 0,
+    "averageScore": 0.87,
+    "sentimentType": "Positive",
+    "instances": [
+    {
+        "start": "00:00:23",
+        "end": "00:00:41"
+    }
+    ]
+}, {
+    "id": 1,
+    "averageScore": 0.11,
+    "sentimentType": "Positive",
+    "instances": [
+    {
+        "start": "00:00:13",
+        "end": "00:00:21"
+    }
+    ]
+}
+]
+```
+
 ### <a name="labels"></a>标签
 
-|名称|说明|
+|名称|Description|
 |---|---|
 |id|标签 ID。|
 |名称|标签名称（例如“计算机”、“电视”）。|
@@ -278,94 +335,92 @@ Azure 媒体服务 REST v3 API 可帮助分析音频和视频内容。 若要分
   ] 
 ```
 
-### <a name="shots"></a>截图
+### <a name="keywords"></a>关键字
 
-|名称|说明|
+|名称|Description|
 |---|---|
-|id|截图 ID。|
-|keyFrames|截图内的关键帧列表（每个关键帧都有一个 ID 和实例时间范围列表）。|
-|instances|此截图的时间范围列表（截图仅有 1 个实例）。|
+|id|关键字 ID。|
+|text|关键字文本。|
+|confidence|关键字的识别置信度。|
+|语言|关键字语言（转换后）。|
+|instances|出现此关键字的时间范围列表（一个关键字可重复多次出现）。|
 
 ```json
-"Shots": [
-    {
-      "id": 0,
-      "keyFrames": [
-        {
-          "id": 0,
-          "instances": [
-            {
-              "start": "00: 00: 00.1670000",
-              "end": "00: 00: 00.2000000"
-            }
-          ]
-        }
-      ],
-      "instances": [
-        {
-          "start": "00: 00: 00.2000000",
-          "end": "00: 00: 05.0330000"
-        }
-      ]
-    },
-    {
-      "id": 1,
-      "keyFrames": [
-        {
-          "id": 1,
-          "instances": [
-            {
-              "start": "00: 00: 05.2670000",
-              "end": "00: 00: 05.3000000"
-            }
-          ]
-        }
-      ],
-      "instances": [
-        {
-          "start": "00: 00: 05.2670000",
-          "end": "00: 00: 10.3000000"
-        }
-      ]
-    }
-  ]
-```
-
-
-### <a name="sentiments"></a>情绪
-
-情绪依据其 sentimentType 字段得出（积极/中立/消极）。 例如：0-0.1、0.1-0.2。
-
-|名称|说明|
-|---|---|
-|id|情绪 ID。|
-|averageScore |该情绪类型的所有实例的所有分数的均值 - 积极/中立/消极|
-|instances|出现此情绪的时间范围列表。|
-
-```json
-"sentiments": [
+"keywords": [
 {
     "id": 0,
-    "averageScore": 0.87,
+    "text": "office",
+    "confidence": 1.6666666666666667,
+    "language": "en-US",
     "instances": [
     {
-        "start": "00:00:23",
-        "end": "00:00:41"
+        "start": "00:00:00.5100000",
+        "end": "00:00:02.7200000"
+    },
+    {
+        "start": "00:00:03.9600000",
+        "end": "00:00:12.2700000"
     }
     ]
-}, {
+},
+{
     "id": 1,
-    "averageScore": 0.11,
+    "text": "icons",
+    "confidence": 1.4,
+    "language": "en-US",
     "instances": [
     {
-        "start": "00:00:13",
-        "end": "00:00:21"
+        "start": "00:00:03.9600000",
+        "end": "00:00:12.2700000"
+    },
+    {
+        "start": "00:00:13.9900000",
+        "end": "00:00:15.6100000"
     }
     ]
 }
-]
+] 
 ```
 
+#### <a name="visualcontentmoderation"></a>visualContentModeration
+
+visualContentModeration 块包含视频索引器找到的、可能具有成人内容的时间范围。 如果 visualContentModeration 为空，则表示未识别到成人内容。
+
+找到的包含成人或猥亵内容的视频可能仅供私人观看。 用户可以选择请求人工审查内容，在这种情况下，IsAdult 属性将包含人工审查的结果。
+
+|名称|Description|
+|---|---|
+|id|视觉内容审核 ID。|
+|adultScore|成人内容评分（由内容审核员提供）。|
+|racyScore|猥亵内容评分（由内容审核员提供）。|
+|instances|显示此视觉内容审核的时间范围列表。|
+
+```json
+"VisualContentModeration": [
+{
+    "id": 0,
+    "adultScore": 0.00069,
+    "racyScore": 0.91129,
+    "instances": [
+    {
+        "start": "00:00:25.4840000",
+        "end": "00:00:25.5260000"
+    }
+    ]
+},
+{
+    "id": 1,
+    "adultScore": 0.99231,
+    "racyScore": 0.99912,
+    "instances": [
+    {
+        "start": "00:00:35.5360000",
+        "end": "00:00:35.5780000"
+    }
+    ]
+}
+] 
+```
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]

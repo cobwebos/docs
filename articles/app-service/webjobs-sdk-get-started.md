@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: 72f7090c285e629149519920ac82f0fe962abc48
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: e2f9bee2adcebfd47ca088a1bbe76b870e285044
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577299"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580424"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>用于事件驱动的后台处理的 Azure WebJobs SDK 入门
 
@@ -102,7 +102,7 @@ public static void Run(
 
 ## <a name="enable-console-logging"></a>启用控制台日志记录
 
-可以使用多个选项在 WebJobs SDK 项目中进行日志记录。 我们建议使用[针对 ASP.NET Core 开发的日志记录框架](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging)。 此框架在存储媒体和筛选方面提供更高的性能和灵活性。 
+可以使用多个选项在 WebJobs SDK 项目中进行日志记录。 我们建议使用[针对 ASP.NET Core 开发的日志记录框架](https://docs.microsoft.com/aspnet/core/fundamentals/logging)。 此框架在存储媒体和筛选方面提供更高的性能和灵活性。 
 
 本部分介绍如何设置使用新框架的控制台日志记录。
 
@@ -491,7 +491,7 @@ WebJobs SDK 在“应用设置”集合中查找存储连接字符串。 在本�
 
 1. 将 *Program.cs* 文件上传到 Blob 容器。 （此处使用的文件用作示例；可以上传任何文本文件，并使用该文件的名称创建队列消息。）
 
-   a. 在“服务器资源管理器”中，双击刚刚创建的容器所在的节点。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“服务器资源管理器”中，双击刚刚创建的容器所在的节点。
 
    b. 在“容器”窗口中，选择“上传”按钮。
 

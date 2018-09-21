@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: c6f074b84b099f6ea5023967fdae7e44d5e9d545
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 7aadb7b89cf1b338a257846882e34ff796df74b2
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666378"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580712"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>成为云市场发布者
 
@@ -28,11 +28,11 @@ ms.locfileid: "43666378"
 
 |  | 注册步骤 | Duration | 详细信息 |  
 |:--- |:--- |:--- |:--- |  
-| 1 | 在 Microsoft 合作伙伴网络中注册 | 15 分钟 | [在 Microsoft 合作伙伴网络中注册](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#1-register-in-microsoft-partner-network) |  
-| 2 | 创建 Microsoft 帐户 <ul>（Azure 市场交易套餐的必需步骤，其他的建议步骤）</ul> | 15 分钟 | [创建 Microsoft ID](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#2-create-a-microsoft-account) |  
-| 3 | 提交市场注册表 | 15 分钟 | [提交市场提名表格](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#3-submit-the-marketplace-registration-form) |  
-| 4 |  登录到云合作伙伴门户 | 1-3 天 | [登录到云合作伙伴门户](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#4-sign-into-cloud-partner-portal) |  
-| 5 | 在 Microsoft 开发人员中心注册（适用于 Azure 市场交易套餐） | 5-10 天 | [在开发人员中心注册](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#5-register-in-dev-center-for-transact-publishing-option-only) |  
+| 1 | 在 Microsoft 合作伙伴网络中注册 | 15 分钟 | [在 Microsoft 合作伙伴网络中注册](https://docs.microsoft.com/azure/marketplace/become-publisher#1-register-in-microsoft-partner-network) |  
+| 2 | 创建 Microsoft 帐户 <ul>（Azure 市场交易套餐的必需步骤，其他的建议步骤）</ul> | 15 分钟 | [创建 Microsoft ID](https://docs.microsoft.com/azure/marketplace/become-publisher#2-create-a-microsoft-account) |  
+| 3 | 提交市场注册表 | 15 分钟 | [提交市场提名表格](https://docs.microsoft.com/azure/marketplace/become-publisher#3-submit-the-marketplace-registration-form) |  
+| 4 |  登录到云合作伙伴门户 | 1-3 天 | [登录到云合作伙伴门户](https://docs.microsoft.com/azure/marketplace/become-publisher#4-sign-into-cloud-partner-portal) |  
+| 5 | 在 Microsoft 开发人员中心注册（适用于 Azure 市场交易套餐） | 5-10 天 | [在开发人员中心注册](https://docs.microsoft.com/azure/marketplace/become-publisher#5-register-in-dev-center-for-transact-publishing-option-only) |  
 
 
 ## <a name="1-register-in-microsoft-partner-network"></a>1.在 Microsoft 合作伙伴网络中注册  
@@ -54,9 +54,9 @@ Microsoft 帐户（例如 *@outlook.com 或 @live.com*）用于访问多个 Micr
 [! IMPORTANT] 请注意，不能使用与工作电子邮件关联的 Microsoft 帐户来访问门户。
 
 >[!Note]
->如果已经有 Microsoft 帐户，请查看[有关创建 Microsoft ID 来管理市场帐户的准则](https://review.docs.microsoft.com/en-us/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account)，以便确定其能否用于市场发布。 
+>如果已经有 Microsoft 帐户，请查看[有关创建 Microsoft ID 来管理市场帐户的准则](https://review.docs.microsoft.com/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account)，以便确定其能否用于市场发布。 
 
->使用 Azure Active Directory 联合公司帐户的用户在尝试创建或使用现有 Microsoft 帐户之前，应该阅读[此文](https://review.docs.microsoft.com/en-us/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain)。
+>使用 Azure Active Directory 联合公司帐户的用户在尝试创建或使用现有 Microsoft 帐户之前，应该阅读[此文](https://review.docs.microsoft.com/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain)。
 
 *   若需创建或管理 Microsoft 帐户的帮助，请访问 [Microsoft 帐户帮助支持页](https://support.microsoft.com/en-us/products/microsoft-account?category=manage-account)。
 
@@ -100,12 +100,12 @@ Microsoft 帐户（例如 *@outlook.com 或 @live.com*）用于访问多个 Micr
 >若要免除 99 美元的开发人员中心注册费，请完成市场注册表，然后就会收到包含促销代码的电子邮件。 
 
 >[!Important]
->在创建 Microsoft 开发人员中心帐户之前，请确认组织尚未创建开发人员中心帐户，以免出现重复帐户。 有关详细信息，请访问[在开发人员中心注册](https://docs.microsoft.com/en-us/azure/marketplace/register-dev-center)部分。
+>在创建 Microsoft 开发人员中心帐户之前，请确认组织尚未创建开发人员中心帐户，以免出现重复帐户。 有关详细信息，请访问[在开发人员中心注册](https://docs.microsoft.com/azure/marketplace/register-dev-center)部分。
 
 
 ## <a name="next-steps"></a>后续步骤
-* 了解市场店面：[比较 AppSource 和 Azure 市场](https://docs.microsoft.com/en-us/azure/marketplace/comparing-appsource-azure-marketplace)
-*   [确定解决方案的列表类型](https://docs.microsoft.com/en-us/azure/marketplace/determine-your-listing-type)
+* 了解市场店面：[比较 AppSource 和 Azure 市场](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)
+*   [确定解决方案的列表类型](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)
 
  
 ---  
