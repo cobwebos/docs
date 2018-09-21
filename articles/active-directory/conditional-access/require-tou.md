@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: a7aeecc84a3629b43f2c1eb40030866a941d0d3b
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 2b06dcfd4bdeb68d114c0c6dd57134fadfef57b5
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627978"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605838"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>快速入门：在访问云应用之前要求接受使用条款 
 
@@ -45,7 +45,7 @@ ms.locfileid: "39627978"
 
 - **对 Azure AD Premium 版本的访问权限**：Azure AD 条件访问是一项 Azure AD Premium 功能。 
 
-- **名为 Isabella Simonsen 的测试帐户**：如果不知道如何创建测试帐户，请参阅[添加基于云的用户](../fundamentals/add-users-azure-active-directory.md#add-cloud-based-users)。
+- **名为 Isabella Simonsen 的测试帐户**：如果不知道如何创建测试帐户，请参阅[添加基于云的用户](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)。
 
 
 ## <a name="test-your-sign-in"></a>测试登录
@@ -161,7 +161,7 @@ ms.locfileid: "39627978"
 
     ![选择云应用](./media/require-tou/26.png)
 
-    a. 单击“选择应用”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“选择应用”。
 
     b. 单击“选择”。
 
@@ -212,7 +212,7 @@ ms.locfileid: "39627978"
 
 **若要评估条件访问策略，请执行以下操作：**
 
-1. 在 [条件访问 - 策略](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) 页上，单击顶部菜单中的“What If”。  
+1. 在[条件访问 - 策略](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)页上，单击顶部菜单中的“What If”。  
  
     ![What If](./media/require-tou/14.png)
 
@@ -250,7 +250,7 @@ ms.locfileid: "39627978"
 
 当不再需要时，删除测试用户和条件访问策略：
 
-- 如果不知道如何删除 Azure AD 用户，请参阅[从 Azure AD 中删除用户](../fundamentals/add-users-azure-active-directory.md#delete-users-from-azure-ad)。
+- 如果不知道如何删除 Azure AD 用户，请参阅[从 Azure AD 中删除用户](../fundamentals/add-users-azure-active-directory.md#delete-a-user)。
 
 - 若要删除策略，请选择该策略，然后在快速访问工具栏中单击“删除”。
 
