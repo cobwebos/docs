@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: andrl
-ms.openlocfilehash: 2c3e4806aef506ef9016699b46eadd5f8a187224
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 2da00f700f5cc234455cc686377e5863f1c35bdd
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40037927"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734465"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>为 Azure Cosmos DB 容器和数据库设置和获取吞吐量
 
@@ -61,7 +61,7 @@ Azure Cosmos DB 会根据预配的吞吐量分配物理分区，以便托管容�
 2. 在左侧导航中选择“所有资源”，找到自己的 Azure Cosmos DB 帐户。  
 3. 可以在创建数据库或更新现有数据库的吞吐量时配置吞吐量。  
 4. 若要在创建数据库时分配吞吐量，请打开“数据资源管理器”边栏选项卡，然后选择“新建数据库”  
-5. 填充“数据库 ID”值，勾选“预配吞吐量”选项，然后配置吞吐量值。 可以使用最小吞吐量值“50,000 RU/秒”来预配数据库。  
+5. 填充“数据库 ID”值，勾选“预配吞吐量”选项，然后配置吞吐量值。  
 
    ![使用新数据库选项设置吞吐量](./media/set-throughput/set-throughput-with-new-database-option.png)
 
@@ -74,7 +74,7 @@ Azure Cosmos DB 会根据预配的吞吐量分配物理分区，以便托管容�
 1. 登录到 [Azure 门户](https://portal.azure.com)。  
 2. 在左侧导航中选择“所有资源”，找到自己的 Azure Cosmos DB 帐户。  
 3. 创建数据库并向其分配吞吐量。 打开“数据资源管理器”边栏选项卡，然后选择“新建数据库”  
-4. 填充“数据库 ID”值，勾选“预配吞吐量”选项，然后配置吞吐量值。 可以使用最小吞吐量值“50,000 RU/秒”来预配数据库。  
+4. 填充“数据库 ID”值，勾选“预配吞吐量”选项，然后配置吞吐量值。  
 
    ![使用新数据库选项设置吞吐量](./media/set-throughput/set-throughput-with-new-database-option.png)
 
@@ -107,33 +107,6 @@ Azure Cosmos DB 会根据预配的吞吐量分配物理分区，以便托管容�
 * Azure Cosmos DB 容器数目较少。  
 
 * 需要在 SLA 所支持的某个给定容器上获取保证的吞吐量。
-
-## <a name="throughput-ranges"></a>吞吐量范围
-
-下表列出了容器可用的吞吐量：
-
-<table border="0" cellspacing="0" cellpadding="0">
-    <tbody>
-        <tr>
-            <td valign="top"><p></p></td>
-            <td valign="top"><p>单分区容器</p></td>
-            <td valign="top"><p>分区容器</p></td>
-            <td valign="top"><p><strong>一组容器</strong></p></td>
-        </tr>
-        <tr>
-            <td valign="top"><p>最小吞吐量</p></td>
-            <td valign="top"><p>400 个请求单位/秒</p></td>
-            <td valign="top"><p>1,000 个请求单位/秒</p></td>
-            <td valign="top"><p>50,000 个请求单位/秒</p></td>
-        </tr>
-        <tr>
-            <td valign="top"><p>最大吞吐量</p></td>
-            <td valign="top"><p>10,000 个请求单位/秒</p></td>
-            <td valign="top"><p>不受限制</p></td>
-            <td valign="top"><p>不受限制</p></td>
-        </tr>
-    </tbody>
-</table>
 
 <a id="set-throughput-sdk"></a>
 

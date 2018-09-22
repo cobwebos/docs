@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/25/2018
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 47cc38226799c5fd3afa2e13e7731a7683b736ba
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 86331f60e1be7d55c39e5d59f85b0f090a322587
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527511"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573852"
 ---
 # <a name="enable-secure-tls-for-azure-storage-client"></a>为 Azure 存储客户端启用安全 TLS
 
@@ -25,7 +25,7 @@ Azure 存储自 2015 年以来已停止使用 SSL 3.0，并在公共 HTTPs 终�
 
 ## <a name="enable-tls-12-in-net-client"></a>在 .NET 客户端中启用 TLS 1.2
 
-为了使客户端可以通过 TLS 1.2 进行协商，操作系统和 .NET Framework 版本都需要支持 TLS 1.2。 请参阅[对 TLS 1.2 的支持](https://docs.microsoft.com/en-us/dotnet/framework/network-programming/tls#support-for-tls-12)中的更多详细信息。
+为了使客户端可以通过 TLS 1.2 进行协商，操作系统和 .NET Framework 版本都需要支持 TLS 1.2。 请参阅[对 TLS 1.2 的支持](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)中的更多详细信息。
 
 下面的示例演示如何在 .NET 客户端中启用 TLS 1.2。
 

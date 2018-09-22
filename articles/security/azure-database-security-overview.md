@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 27f6ccadaa89042ebced759ac3040b5b79e1f8f8
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 398594c37cb01cd337da983307a5f56753e54fd2
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051519"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574753"
 ---
 # <a name="azure-database-security-overview"></a>Azure 数据库安全性概述
 
@@ -69,7 +69,7 @@ SQL 数据库可提供加密功能来帮助保护数据：
 
 一种解决方法是加密数据库中的敏感数据，并使用证书保护用于加密数据的密钥。 此解决方案可防止没有密钥的人使用数据，但这种保护必须经过精心规划。
 
-为解决此问题，SQL Server 和 SQL 数据库支持[透明数据加密](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current&viewFallbackFrom=sql-server-2017)。 透明数据加密可加密 SQL Server 和 SQL 数据库数据文件，这称为静态加密数据。
+为解决此问题，SQL Server 和 SQL 数据库支持[透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current&viewFallbackFrom=sql-server-2017)。 透明数据加密可加密 SQL Server 和 SQL 数据库数据文件，这称为静态加密数据。
 
 透明数据加密有助于防范恶意活动的威胁。 它可执行静态数据库、关联备份和事务日志文件的实时加密和解密，无需更改应用程序。  
 

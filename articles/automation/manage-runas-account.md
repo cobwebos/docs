@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/16/2018
+ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2d6b58c95b918d820e207e801e62e7897c2ee366
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 32a7b7026df1522abe2ca3dc7b212b06e08ff905
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246200"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45544271"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>管理 Azure 自动化运行方式帐户
 
@@ -349,9 +349,8 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 
     ![续订运行方式帐户的证书](media/manage-runas-account/automation-account-renew-runas-certificate.png)
 
-1. 证书续订过程中，可以在菜单的“通知”下面跟踪进度。
+1. 证书续订过程中，可以在菜单的“通知”下面跟踪进度。 
 
-如果无法续订运行方式证书
 ## <a name="limiting-run-as-account-permissions"></a>限制运行方式帐户权限
 
 为了控制针对 Azure 自动化中资源的自动化目标，默认情况下运行方式帐户会被授予订阅中的参与者权限。 如果需要限制运行方式服务主体可以执行的操作，可以从订阅的参与者角色中删除该帐户并将该帐户添加为要指定的资源组的参与者。

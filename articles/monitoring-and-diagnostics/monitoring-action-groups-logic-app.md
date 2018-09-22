@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 034e708b79bbdf15d7fa628f388402998f49c0d9
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 3c1bff98debf426fc02dbd4518c0bb798d7ba96d
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161500"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576011"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>如何使用 Azure Monitor 警报触发复杂操作
 
@@ -129,7 +129,7 @@ ms.locfileid: "39161500"
 
 14. 在“逻辑应用设计器”的顶部，选择“保存”以保存逻辑应用。
 
-15. 打开现有的操作组并添加一个操作，以引用逻辑应用。 如果没有现有的操作组，请参阅[在 Azure 门户中创建和管理操作组](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-action-groups)以创建一个。 切勿忘记保存更改。
+15. 打开现有的操作组并添加一个操作，以引用逻辑应用。 如果没有现有的操作组，请参阅[在 Azure 门户中创建和管理操作组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)以创建一个。 切勿忘记保存更改。
 
     ![更新操作组](media/monitoring-action-groups/update-action-group.png "更新操作组")
 

@@ -3,8 +3,8 @@ title: Azure Desired State Configuration 扩展处理程序 | Microsoft Docs
 description: 使用 DSC 扩展在 Azure VM 中上传和应用 PowerShell DSC 配置
 services: virtual-machines-windows
 documentationcenter: ''
-author: eshaparmar
-manager: jeconnoc
+author: bobbytreed
+manager: carmonm
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
-ms.author: esparmar
-ms.openlocfilehash: b34314951980f7dbe2269119883dec52a90a0587
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: robreed
+ms.openlocfilehash: b9e96473a6f66dcbc675da1553deaed4ad61b249
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33944809"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630915"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC 扩展
 
@@ -107,7 +107,7 @@ Windows Server 2016、Windows Server 2012R2、Windows Server 2012、Windows Serv
 
 ### <a name="settings-property-values"></a>设置属性值
 
-| 名称 | 数据类型 | 说明
+| 名称 | 数据类型 | Description
 | ---- | ---- | ---- |
 | settings.wmfVersion | 字符串 | 指定应在 VM 上安装的 Windows Management Framework 版本。 将此属性设置为“latest”可安装最新版本的 WMF。 目前，此属性的可能值只有“4.0”、“5.0”和“latest”。 这些可能值将来可能会更新。 默认值为“latest”。 |
 | settings.configuration.url | 字符串 | 指定要从中下载 DSC 配置 zip 文件的 URL 位置。 如果提供的 URL 需要 SAS 令牌才能访问，必须将 protectedSettings.configurationUrlSasToken 属性设置为 SAS 令牌的值。 如果已定义 settings.configuration.script 和/或 settings.configuration.function，则需要此属性。
@@ -121,7 +121,7 @@ Windows Server 2016、Windows Server 2012R2、Windows Server 2012、Windows Serv
 
 ### <a name="protected-settings-property-values"></a>受保护设置属性值
 
-| 名称 | 数据类型 | 说明
+| 名称 | 数据类型 | Description
 | ---- | ---- | ---- |
 | protectedSettings.configurationArguments | 字符串 | 定义想要传递到 DSC 配置的任何参数。 将加密此属性。 |
 | protectedSettings.configurationUrlSasToken | 字符串 | 指定用于访问 configuration.url 所定义的 URL 的 SAS 令牌。 将加密此属性。 |

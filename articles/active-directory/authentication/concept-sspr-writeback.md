@@ -10,22 +10,22 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 4f4c2ada08c69b6602ff5a300a15c4ca57090a8e
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 8440d8a492105365417190ad286798e0bdf47a0c
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42816047"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295829"
 ---
 # <a name="what-is-password-writeback"></a>什么是密码写回？
 
-基于云的密码重置实用工具非常好用，但是，大多数公司的用户仍在使用本地目录。 Microsoft 支持部门如何使传统的本地 Active Directory (AD) 与云中的密码更改保持同步？ 密码写回是使用 [Azure AD Connect](./../connect/active-directory-aadconnect.md) 启用的功能，可将云中的密码更改实时写回到现有的本地目录。
+基于云的密码重置实用工具非常好用，但是，大多数公司的用户仍在使用本地目录。 Microsoft 支持部门如何使传统的本地 Active Directory (AD) 与云中的密码更改保持同步？ 密码写回是使用 [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) 启用的功能，可将云中的密码更改实时写回到现有的本地目录。
 
 使用以下功能的环境支持密码写回：
 
-* [Active Directory 联合身份验证服务](../connect/active-directory-aadconnect-federation-management.md)
-* [密码哈希同步](../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)
-* [直通身份验证](../connect/active-directory-aadconnect-pass-through-authentication.md)
+* [Active Directory 联合身份验证服务](../hybrid/how-to-connect-fed-management.md)
+* [密码哈希同步](../hybrid/how-to-connect-password-hash-synchronization.md)
+* [直通身份验证](../hybrid/how-to-connect-pta.md)
 
 密码写回提供：
 

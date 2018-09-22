@@ -4,18 +4,18 @@ description: 什么是 Azure Active Directory B2B 协作的支持体验？
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: reference
 ms.date: 05/26/2017
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 0ae85989f144b790407e4c1dce587f70839417cf
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 1474bf13a6d364fcbd90adee09a1a60bcafc2ccb
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34259484"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985271"
 ---
 # <a name="getting-support-for-b2b-collaboration"></a>获取对 B2B 协作的支持
 

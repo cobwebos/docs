@@ -11,12 +11,12 @@ ms.topic: article
 description: 使用自定义 NuGet 源访问和使用 Azure Dev Space 中的 NuGet 包。
 keywords: Docker, Kubernetes, Azure, AKS, Azure 容器服务, 容器
 manager: ghogen
-ms.openlocfilehash: 3badd15bcfd09c97b43744a20c5df05f4ff57e84
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 04b89f6d12c58e2f4915a84d3e0a7988d0e3192f
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34199103"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579170"
 ---
 #  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>在 Azure Dev Space 中使用自定义 NuGet 源
 
@@ -25,7 +25,7 @@ NuGet 源提供了一种方便方式将包源包含在项目中。 Azure Dev Spa
 ## <a name="set-up-a-nuget-feed"></a>设置 NuGet 源
 
 若要设置 NuGet 源，请执行以下操作：
-1. 在 `PackageReference` 节点下的 `*.csproj` 文件中添加[包引用](https://docs.microsoft.com/en-us/nuget/consume-packages/package-references-in-project-files)。
+1. 在 `PackageReference` 节点下的 `*.csproj` 文件中添加[包引用](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files)。
 
    ```xml
    <ItemGroup>
@@ -35,7 +35,7 @@ NuGet 源提供了一种方便方式将包源包含在项目中。 Azure Dev Spa
    </ItemGroup>
    ```
 
-2. 在项目文件夹中创建一个 [NuGet.Config](https://docs.microsoft.com/en-us/nuget/reference/nuget-config-file) 文件。
+2. 在项目文件夹中创建一个 [NuGet.Config](https://docs.microsoft.com/nuget/reference/nuget-config-file) 文件。
      * 使用 `packageSources` 节引用 NuGet 源位置。 重要说明：NuGet 源必须可公开访问。
      * 使用 `packageSourceCredentials` 节配置用户名和密码凭据。 
 

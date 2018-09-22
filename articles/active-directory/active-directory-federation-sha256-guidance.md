@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2016
 ms.author: anandy
-ms.openlocfilehash: ec7eee36888d825d65335db590731103aabbf5c2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5352c76d2f41adef8fae29d3f60204fb05546ddc
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26598957"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298041"
 ---
 # <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>更改 Office 365 信赖方信任的签名哈希算法
 ## <a name="overview"></a>概述
@@ -37,7 +37,7 @@ Active Directory 联合身份验证服务 (AD FS) 会在 Microsoft Azure Active 
 2. 展开 AD FS 节点，并单击“信赖方信任”。
 3. 右键单击 Office 365/Azure 信赖方信任并选择“属性”。
 4. 选择“高级”选项卡，并选择安全哈希算法 SHA256。
-5. 单击 **“确定”**。
+5. 单击“确定”。
 
 ![SHA256 签名算法--MMC](./media/active-directory-aadconnectfed-sha256guidance/mmc.png)
 
@@ -48,5 +48,5 @@ Active Directory 联合身份验证服务 (AD FS) 会在 Microsoft Azure Active 
    <code>Set-AdfsRelyingPartyTrust -TargetName 'Microsoft Office 365 Identity Platform' -SignatureAlgorithm 'http://www.w3.org/2001/04/xmldsig-more#rsa-sha256'</code>
 
 ## <a name="also-read"></a>另请参阅
-* [Repair Office 365 trust with Azure AD Connect](connect/active-directory-aadconnect-federation-management.md#repairthetrust)（使用 Azure AD Connect 修复 Office 365 信任）
+* [Repair Office 365 trust with Azure AD Connect](hybrid/how-to-connect-fed-management.md#repairthetrust)（使用 Azure AD Connect 修复 Office 365 信任）
 

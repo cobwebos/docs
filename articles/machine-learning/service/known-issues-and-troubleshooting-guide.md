@@ -7,16 +7,16 @@ ms.author: svankam
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: studio
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/12/2018
-ms.openlocfilehash: 05db4e47e5b2931a101a323a0210c080b87c1c42
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: dc57509475634b6a8038179dbb205533c3ea9d99
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832935"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35765536"
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning Workbench - 已知问题和故障排除指南 
 作为使用 Azure Machine Learning Workbench 应用程序的一部分，本文帮助你查找和更正错误或遇到的问题。 
@@ -124,10 +124,10 @@ $ az ml experiment diagnostics -r <run_id> -t <target_name>
 
 ```azure-cli
 # delete a project
-$ az ml project delete -g <resource group name> -a <experimentation account name> -w <worksapce name> -n <project name>
+$ az ml project delete -g <resource group name> -a <experimentation account name> -w <workspace name> -n <project name>
 
 # delete a workspace 
-$ az ml workspace delete -g <resource group name> -a <experimentation account name> -n <worksapce name>
+$ az ml workspace delete -g <resource group name> -a <experimentation account name> -n <workspace name>
 
 # delete an experimentation account
 $ az ml account experimentation delete -g <resource group name> -n <experimentation account name>
@@ -187,7 +187,7 @@ username ALL=(ALL) NOPASSWD:ALL
 
 必须将该行放在 #includedir "/etc/sudoers.d" 的后面，否则其他规则可能会重写它。
 
-如果使用了更复杂的 sudo 配置，可能需要查阅此处提供的适用于 Ubuntu 的 sudo 文档：https://help.ubuntu.com/community/Sudoers
+如果使用了更复杂的 sudo 配置，可能需要查阅此处提供的适用于 Ubuntu 的 sudo 文档： https://help.ubuntu.com/community/Sudoers
 
 如果未在 Azure 中使用基于 Ubuntu 的 Linux VM 作为执行目标，也可能会发生上述错误。 仅支持将基于 Ubuntu 的 Linux VM 用于远程执行。 
 

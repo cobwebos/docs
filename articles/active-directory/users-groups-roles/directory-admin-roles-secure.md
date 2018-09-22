@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: ead6202b0365df770382077618795cd6b6e57cd2
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 55ce6398d89e56f92874d0ec135377d2a08cf075
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346723"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297803"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
@@ -159,7 +159,7 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 #### <a name="turn-on-password-hash-synchronization"></a>启用密码哈希同步
 
-密码哈希同步是一种功能，用于将用户密码哈希的哈希从本地 Active Directory 实例同步到基于云的 Azure AD 实例。 即使决定使用 Active Directory 联合身份验证服务 (AD FS) 或其他标识提供者进行联合身份验证，也可以选择性地设置密码哈希同步，作为在本地基础结构（例如 AD 或 ADFS 服务器）发生故障或变得临时不可用时的备用身份验证方式。 这样用户就可以在登录到该服务时使用登录到本地 AD 实例时使用的密码。 另外，如果用户在其他未连接到 Azure AD 的服务上使用过相同的电子邮件地址和密码，则还可以通过 Identity Protection 将这些密码哈希与已知泄露的密码进行比较，从而检测出那些泄露的凭据。  有关详细信息，请参阅[使用 Azure AD Connect 同步实现密码哈希同步](./../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)。
+密码哈希同步是一种功能，用于将用户密码哈希的哈希从本地 Active Directory 实例同步到基于云的 Azure AD 实例。 即使决定使用 Active Directory 联合身份验证服务 (AD FS) 或其他标识提供者进行联合身份验证，也可以选择性地设置密码哈希同步，作为在本地基础结构（例如 AD 或 ADFS 服务器）发生故障或变得临时不可用时的备用身份验证方式。 这样用户就可以在登录到该服务时使用登录到本地 AD 实例时使用的密码。 另外，如果用户在其他未连接到 Azure AD 的服务上使用过相同的电子邮件地址和密码，则还可以通过 Identity Protection 将这些密码哈希与已知泄露的密码进行比较，从而检测出那些泄露的凭据。  有关详细信息，请参阅[使用 Azure AD Connect 同步实现密码哈希同步](../hybrid/how-to-connect-password-hash-synchronization.md)。
 
 #### <a name="require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users"></a>要求对所有特权角色用户和公开的用户进行多重身份验证 (MFA)
 

@@ -4,18 +4,18 @@ description: 介绍如何使用 Azure AD B2B 协作向云 B2B 用户授予本地
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: b7b1279dbb1256269705da3f8be6f6d2c1151368
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 65f43eb28ef2ef51409469934d59e1add7e83666
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346332"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297208"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>向 Azure AD 中的 B2B 用户授予对本地应用程序的访问权限
 
@@ -63,7 +63,7 @@ ms.locfileid: "44346332"
 可以通过生命周期管理策略管理本地 B2B 用户对象。 例如：
 
 - 可以针对来宾用户设置多重身份验证 (MFA) 策略，以便在应用程序代理身份验证期间使用 MFA。 有关详细信息，请参阅 [B2B 协作用户的条件访问](conditional-access.md)。
-- 针对云 B2B 用户执行的任何赞助、访问评审、帐户验证等操作将应用到本地用户。 例如，如果通过生命周期管理策略删除了云用户，则也会通过 MIM Sync 或 Azure AD Connect Sync 删除本地用户。有关详细信息，请参阅[使用 Azure AD 访问评审管理来宾访问权限](../active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)。
+- 针对云 B2B 用户执行的任何赞助、访问评审、帐户验证等操作将应用到本地用户。 例如，如果通过生命周期管理策略删除了云用户，则也会通过 MIM Sync 或 Azure AD Connect Sync 删除本地用户。有关详细信息，请参阅[使用 Azure AD 访问评审管理来宾访问权限](../governance/manage-guest-access-with-access-reviews.md)。
 
 ### <a name="create-b2b-guest-user-objects-through-mim-preview"></a>通过 MIM 创建 B2B 来宾用户对象（预览版）
 
@@ -85,5 +85,5 @@ ms.locfileid: "44346332"
 
 - [适用于混合组织的 Azure Active Directory B2B 协作](hybrid-organizations.md)
 
-- 有关 Azure AD Connect 的概述，请参阅[将本地目录与 Azure Active Directory 进行集成](../connect/active-directory-aadconnect.md)。
+- 有关 Azure AD Connect 的概述，请参阅[将本地目录与 Azure Active Directory 进行集成](../hybrid/whatis-hybrid-identity.md)。
 

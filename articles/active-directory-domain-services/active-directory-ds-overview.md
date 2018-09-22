@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: maheshu
-ms.openlocfilehash: 4467c193b5ff70a304b4ec5f632276ca14551b08
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: d30d164a3e2896b1a300bf665ca09f57ce97fdf3
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39501985"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295863"
 ---
 # <a name="azure-active-directory-ad-domain-services"></a>Azure Active Directory (AD) 域服务
 ## <a name="overview"></a>概述
@@ -65,7 +65,7 @@ Azure AD 域服务预配的托管域的几个重要方面如下所述：
 ### <a name="azure-ad-domain-services-for-hybrid-organizations"></a>混合型组织的 Azure AD 域服务
 采用混合 IT 基础结构的组织可以混合使用云资源和本地资源。 此类组织将标识信息从其本地目录同步到其 Azure AD 租户。 如果混合型组织想要将更多的本地应用程序（尤其是传统的目录感知应用程序）迁移到云中，Azure AD 域服务可以派上用场。
 
-Litware Corporation 已部署 [Azure AD Connect](../active-directory/active-directory-aadconnect.md)，以便将标识信息从其本地目录同步到其 Azure AD 租户。 同步的标识信息包括用户帐户、用于身份验证的凭据哈希（密码同步）和组成员身份。
+Litware Corporation 已部署 [Azure AD Connect](../active-directory/hybrid/whatis-hybrid-identity.md)，以便将标识信息从其本地目录同步到其 Azure AD 租户。 同步的标识信息包括用户帐户、用于身份验证的凭据哈希（密码同步）和组成员身份。
 
 > [!NOTE]
 > **混合型组织必须通过密码同步使用 Azure AD 域服务**。 这是因为在 Azure AD 域服务提供的托管域中，需要使用用户的凭据才能通过 NTLM 或 Kerberos 身份验证方法来验证这些用户的身份。

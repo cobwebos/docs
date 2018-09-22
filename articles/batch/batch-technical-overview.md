@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 01/19/2018
 ms.author: mscurrell
 ms.custom: mvc
-ms.openlocfilehash: b784e64962569f22cba3bc52b6a4e9443a4587d5
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 36d37c2d18823273b5c0f82ecae0f9420e35768c
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30311985"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35621273"
 ---
 # <a name="what-is-azure-batch"></a>什么是 Azure Batch？
 
@@ -61,7 +61,7 @@ Batch 很适合处理本质并行（也称为“易并行”）的工作负荷�
 * Batch 支持大规模[渲染工作负荷](batch-rendering-service.md)，使用的渲染工具包括 Autodesk Maya、3ds Max、Arnold 和 V-Ray。 
 * R 用户可以安装 [doAzureParallel R 包](https://github.com/Azure/doAzureParallel)，在 Batch 池中轻松地横向扩展 R 算法的执行。
 
-还可以在更大型的 Azure 工作流中运行 Batch 作业，以便转换 [Azure 数据工厂](../data-factory/v1/data-factory-data-processing-using-batch.md)等工具管理的数据。
+还可以在更大型的 Azure 工作流中运行 Batch 作业，以便转换 [Azure 数据工厂](../data-factory/transform-data-using-dotnet-custom-activity.md)等工具管理的数据。
 
 
 ## <a name="how-it-works"></a>工作原理
@@ -72,7 +72,7 @@ Batch 的常用方案涉及在计算节点池中横向扩展本质并行工作�
 ![Batch 解决方案演练](./media/batch-technical-overview/tech_overview_03.png)
 
 
-|步骤  |说明  |
+|步骤  |Description  |
 |---------|---------|
 |1.将**输入文件**和处理这些文件的**应用程序**上传到 Azure 存储帐户。     |输入文件可以是应用程序处理的任何数据，例如财务建模数据或要转码的视频文件。 应用程序文件可以包含处理数据的脚本或应用程序，例如媒体转码器。|
 |2.创建一个包含 Batch 帐户中的计算节点的 Batch **池**、一个用于在池中运行工作负荷的**作业**，以及作业中的**任务**。     | 池节点是执行任务的 VM。 指定属性，例如节点的数目和大小、Windows 或 Linux VM 映像，以及在节点加入池时要安装的应用程序。 管理池的成本和大小，方法是：使用[低优先级 VM](batch-low-pri-vms.md)，或者在工作负荷变化时[自动缩放](batch-automatic-scaling.md)节点数。 <br/><br/>将任务添加到作业时，Batch 服务会自动计划任务在池中的计算节点上执行。 每项任务使用上传的应用程序来处理输入文件。 |

@@ -9,12 +9,12 @@ ms.date: 2/14/2018
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: ecbf583a9b64868004b246bb01e7f174a21496b0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4fb8d45c285ee3c1651039619808b8964c5313cd
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607458"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983074"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>使用 Azure 门户备份多个虚拟机
 
@@ -163,7 +163,7 @@ ms.locfileid: "34607458"
  
 7. 验证备份项（显示勾号）后，“停止备份”按钮处于启用状态。 单击“停止备份”，停用策略并删除还原点。 
 
-    ![单击“停止备份”以删除保管库](./media/tutorial-backup-vm-at-scale/provide-reason-for-delete.png)。
+    ![单击“停止备份”以删除保管库](./media/tutorial-backup-vm-at-scale/provide-reason-for-delete.png)
 
 8. 在“myRecoveryServicesVault”菜单中，单击“删除”。
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 81dbb61d696da84febc89563f946581315fdf527
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 9f0a299fb8221554a3b0c9a19a616d5ba7613a67
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37922745"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574396"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure 到 Azure 复制中的移动服务自动更新
 
@@ -79,8 +79,8 @@ Azure Site Recovery 每月发布一次，增加对现有功能或新功能的增
 
  - **错误**：运行方式帐户没有访问恢复服务资源的权限。
 
-    **推荐的操作**：删除该帐户，然后[重新创建运行方式帐户](https://docs.microsoft.com/en-us/azure/automation/automation-create-runas-account)，或确保自动化运行方式帐户的 Azure Active Directory 应用程序有权访问恢复服务资源。
+    **推荐的操作**：删除该帐户，然后[重新创建运行方式帐户](https://docs.microsoft.com/azure/automation/automation-create-runas-account)，或确保自动化运行方式帐户的 Azure Active Directory 应用程序有权访问恢复服务资源。
 
 - **错误**：找不到运行方式帐户。 以下某一内容已删除或未创建 - Azure Active Directory 应用程序、服务主体、角色、自动化证书资产、自动化连接资产；或者证书和连接的指纹不同。 
 
-    **推荐的操作**：删除该帐户，然后[重新创建运行方式帐户](https://docs.microsoft.com/en-us/azure/automation/automation-create-runas-account)。
+    **推荐的操作**：删除该帐户，然后[重新创建运行方式帐户](https://docs.microsoft.com/azure/automation/automation-create-runas-account)。

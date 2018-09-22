@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 3c3f9a0d0dc40de6c62c21dab0f11a501829ef11
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3d0d468674a2284e9925c1410f2bb8bcbde8f73f
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640959"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575283"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>认知搜索故障排除提示
 
@@ -33,7 +33,7 @@ ms.locfileid: "34640959"
 ## <a name="tip-2-make-sure-your-data-source-credentials-are-correct"></a>提示 2：确保数据源凭据正确
 在定义一个使用数据源连接的索引器之前，数据源连接并未完成验证。 如果看到任何错误提及索引器无法访问数据，请确保：
 - 连接字符串是正确的。 确保使用 Azure 搜索预期的格式，尤其是在创建 SAS 令牌的时候。 若要了解受支持的不同格式，请参阅[如何指定凭据部分](
-https://docs.microsoft.com/en-us/azure/search/search-howto-indexing-azure-blob-storage#how-to-specify-credentials)。
+https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage#how-to-specify-credentials)。
 - 索引器中的容器名称是正确的。
 
 ## <a name="tip-3-see-what-works-even-if-there-are-some-failures"></a>提示 3：了解各种适当的措施，即使是在存在某些故障的情况下

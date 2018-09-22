@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 332ba810aa9da611f998e5865344655c3c87c5d1
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: f3dc27b35f35f3aaa649b03777ff13d385561673
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109415"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732220"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>教程：使用 Azure 门户生成第一个数据工厂
 > [!div class="op_single_selector"]
@@ -112,7 +112,7 @@ ms.locfileid: "43109415"
 
    ![存储链接服务](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
 
-1. 将**帐户名称**替换为存储帐户的名称。 将**帐户密钥**替换为存储帐户的访问密钥。 若要了解如何获取存储访问密钥，请在[管理存储帐户](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)中了解如何查看、复制和重新生成存储访问密钥。
+1. 将**帐户名称**替换为存储帐户的名称。 将**帐户密钥**替换为存储帐户的访问密钥。 若要了解如何获取存储访问密钥，请在[管理存储帐户](../../storage/common/storage-account-manage.md#access-keys)中了解如何查看、复制和重新生成存储访问密钥。
 
 1. 选择命令栏上的“部署”，部署链接服务。
 
@@ -335,7 +335,7 @@ ms.locfileid: "43109415"
    >
 1. 确认符合以下条件：
 
-   a. **input.log** 文件存在于 Blob 存储的 **adfgetstarted** 容器的 **inputdata** 文件夹中。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **input.log** 文件存在于 Blob 存储的 **adfgetstarted** 容器的 **inputdata** 文件夹中。
 
    b. **partitionweblogs.hql** 文件在 Blob 存储的 **adfgetstarted** 容器的 **script** 文件夹中。 如果没有看到这些文件，请执行[教程概述](data-factory-build-your-first-pipeline.md)的“先决条件”部分中的步骤。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: asmalser
-ms.openlocfilehash: 930ca49a63e34214ec197d8dd37f38361b34fe90
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 917baa4b0d983df858c64cd0fa5b697b0fbb316c
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347029"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298262"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning-preview"></a>教程：为 Workday 配置自动用户预配（预览版）
 
@@ -75,7 +75,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 * 用于测试和集成目的的 Workday 实现租户
 * 在 Workday 中拥有管理员权限，可创建系统集成用户，并可做出更改以便出于测试目的测试员工数据
 * 若要将用户预配到 Active Directory，需要使用一台已加入域的、运行 Windows Service 2012 或更高版本的服务器来托管[本地同步代理](https://go.microsoft.com/fwlink/?linkid=847801)
-* 已安装 [Azure AD Connect](../connect/active-directory-aadconnect.md)，用于在 Active Directory 与 Azure AD 之间同步
+* 已安装 [Azure AD Connect](../hybrid/whatis-hybrid-identity.md)，用于在 Active Directory 与 Azure AD 之间同步
 
 ### <a name="solution-architecture"></a>解决方案体系结构
 
@@ -504,11 +504,11 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
 | 场景 | 解决方案 |
 | -------- | -------- |
-| **需要将用户预配到 Active Directory 和 Azure AD** | 使用 **[AAD Connect](../connect/active-directory-aadconnect.md)** |
-| **只需将用户预配到 Active Directory** | 使用 **[AAD Connect](../connect/active-directory-aadconnect.md)** |
+| **需要将用户预配到 Active Directory 和 Azure AD** | 使用 **[AAD Connect](../hybrid/whatis-hybrid-identity.md)** |
+| **只需将用户预配到 Active Directory** | 使用 **[AAD Connect](../hybrid/whatis-hybrid-identity.md)** |
 | **只需将用户预配到 Azure AD（仅限云）** | 使用应用库中的“Workday 到 Azure Active Directory 的预配”应用 |
 
-有关设置 Azure AD Connect 的说明，请参阅 [Azure AD Connect 文档](../connect/active-directory-aadconnect.md)。
+有关设置 Azure AD Connect 的说明，请参阅 [Azure AD Connect 文档](../hybrid/whatis-hybrid-identity.md)。
 
 以下部分介绍如何在 Workday 与 Azure AD 之间设置连接，以预配仅限云的用户。
 

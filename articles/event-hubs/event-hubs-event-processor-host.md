@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: ede76e8161cc15d6a87041ef5ef9525570fec794
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 672e31109b71a8a4238a05851a58a7c83e275b19
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745875"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576301"
 ---
 # <a name="azure-event-hubs-event-processor-host-overview"></a>Azure 事件中心事件处理程序主机概述
 
 Azure 事件中心是强大的遥测引入服务，使用它能以较低的成本流式传输数百万个事件。 本文介绍如何通过*事件处理程序主机* (EPH) 使用引用的事件；EPH 是一个智能使用者代理，可以简化检查点、租用和并行事件读取器的管理。  
 
-缩放事件中心的关键在于分区使用者的思路。 与[竞争性使用者](http://msdn.microsoft.com/en-us/library/dn568101.aspx)模式相比，分区使用者模式能够通过消除争用瓶颈和简化端到端的并行度，来实现较高的缩放度。
+缩放事件中心的关键在于分区使用者的思路。 与[竞争性使用者](http://msdn.microsoft.com/library/dn568101.aspx)模式相比，分区使用者模式能够通过消除争用瓶颈和简化端到端的并行度，来实现较高的缩放度。
 
 ## <a name="home-security-scenario"></a>家庭保安方案
 

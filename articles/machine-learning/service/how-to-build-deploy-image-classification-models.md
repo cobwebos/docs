@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 04/23/2018
-ms.openlocfilehash: 6b7f73573cb1465b89e54e30894b3549153e4acb
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 1188ff040c12fd431cfcef5eea982647df6b9a71
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888426"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576385"
 ---
 # <a name="build-and-deploy-image-classification-models-with-azure-machine-learning"></a>使用 Azure 机器学习生成和部署图像分类模型
 
@@ -174,7 +174,7 @@ display(annotation_ui.ui)
 
 ## <a name="augment-images"></a>增强图像
 
-[`augmentation` 模块](https://docs.microsoft.com/en-us/python/api/cvtk.augmentation)提供使用 [imgaug](https://github.com/aleju/imgaug) 库中所述的所有转换来增强数据集对象的功能。 可将图像转换分组到单个管道中，这样，就会对每张图像同时应用该管道中的所有转换。 
+[`augmentation` 模块](https://docs.microsoft.com/python/api/cvtk.augmentation)提供使用 [imgaug](https://github.com/aleju/imgaug) 库中所述的所有转换来增强数据集对象的功能。 可将图像转换分组到单个管道中，这样，就会对每张图像同时应用该管道中的所有转换。 
 
 如果想要单独应用或者以任何不同的方式应用不同的增强步骤，可以定义多个管道并将其传递给 *augment_dataset* 函数。 有关图像增强的详细信息和示例，请参阅 [imgaug 文档](https://github.com/aleju/imgaug)。
 

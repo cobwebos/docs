@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2018
 ms.author: barclayn
-ms.openlocfilehash: e52cee2cb642de6e54270c597e6ed99f7162d0ed
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0addad1db4d9f897736a7793c5489897bca2cd38
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641452"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35631444"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure 上可用的安全服务和技术
 
@@ -30,7 +30,7 @@ ms.locfileid: "34641452"
 随着时间推移，此列表会像 Azure 那样不断增长变化。 请务必定期检查此页面，掌握我们最新的与安全相关的服务和技术。
 
 ## <a name="general-azure-security"></a>Azure 常规安全性
-|服务|说明|
+|服务|Description|
 |--------|--------|
 |[Azure&nbsp;安全&nbsp;Center](../security-center/security-center-intro.md)| 一个云工作负荷保护解决方案，可跨混合云工作负荷提供安全性管理和高级威胁防护。|
 |[Azure Key Vault](../key-vault/key-vault-overview.md)| 一个安全的机密存储空间，用于存储密码、连接字符串和维持应用正常工作所需的其他信息。 |
@@ -40,7 +40,7 @@ ms.locfileid: "34641452"
 <!---|[Azure&nbsp;Disk&nbsp;Encryption](azure-security-disk-encryption-overview.md)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->
 
 ## <a name="storage-security"></a>存储安全
-|服务|说明|
+|服务|Description|
 |------|--------|
 | [Azure&nbsp;存储&nbsp;服务&nbsp;加密](../storage/common/storage-service-encryption.md)|一项安全功能，会自动加密 Azure 存储中的数据。   |
 |[StorSimple 加密混合存储](../storsimple/storsimple-ova-overview.md)| 一种用于管理本地设备与 Azure 云存储之间的存储任务的集成存储解决方案。|
@@ -53,7 +53,7 @@ ms.locfileid: "34641452"
 <!------>
 
 ## <a name="database-security"></a>数据库安全
-|服务|说明|
+|服务|Description|
 |------|--------|
 | [Azure&nbsp;SQL&nbsp;防火墙](../sql-database/sql-database-firewall-configure.md)|一项网络访问控制功能，对针对数据库的网络攻击进行防护。 |
 |[Azure&nbsp;SQL&nbsp;单元格&nbsp;级别加密](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)| 一种提供粒度级别加密的数据库安全技术。  |
@@ -64,22 +64,22 @@ ms.locfileid: "34641452"
 
 
 ## <a name="identity-and-access-management"></a>标识和访问管理
-|服务|说明|
+|服务|Description|
 |------|--------|
 | [Azure&nbsp;角色&nbsp;基于&nbsp;访问控制](../active-directory/role-based-access-control-configure.md)|一项访问控制功能，它基于用户在组织内的角色，仅允许用户访问其必须访问的内容。  |
-| [Azure Active Directory](../active-directory/active-directory-whatis.md)|一个基于云的身份验证存储库，它支持基于云的多租户目录和 Azure 中的多标识管理服务。  |
+| [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)|一个基于云的身份验证存储库，它支持基于云的多租户目录和 Azure 中的多标识管理服务。  |
 | [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-overview.md)|一项标识管理服务，帮助控制客户使用基于 Azure 的应用程序时如何注册、登录和管理其配置文件。   |
 | [Azure Active Directory 域服务](../active-directory-domain-services/active-directory-ds-overview.md)| Active Directory 域服务基于云的托管版本。 |
 | [Azure 多重身份验证](../active-directory/authentication/multi-factor-authentication.md)| 一项安全性设置，它会采用几种形式的身份验证和验证，再允许访问安全信息。 |
 
 ## <a name="backup-and-disaster-recovery"></a>备份和灾难恢复
-|服务|说明|
+|服务|Description|
 |------|--------|
 | [Azure&nbsp;备份](../backup/backup-introduction-to-azure-backup.md)| 一项基于 Azure 的服务，用于备份和还原 Azure 云中的数据。 |
 | [Azure&nbsp;Site&nbsp;Recovery](../site-recovery/site-recovery-overview.md)|一项联机服务，它可将在物理计算机和虚拟机 (VM) 上运行的工作负荷从主站点复制到辅助位置，以便在出现故障后恢复服务。 |
 
 ## <a name="networking"></a>网络
-|服务|说明|
+|服务|Description|
 |------|--------|
 | [网络&nbsp;安全&nbsp;组](../virtual-network/virtual-networks-nsg.md)| 一项基于网络的访问控制功能，它使用 5 元组进行允许或拒绝决策。  |
 | [Azure VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)| 一种网络设备，用作 VPN 终结点，以允许跨界访问 Azure 虚拟网络。  |

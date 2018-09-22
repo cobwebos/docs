@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 策略以编程方式创建策略和查看符合性数据
-description: 本文逐步讲解如何以编程方式创建和管理适用于 Azure 策略的策略。
+title: 使用 Azure Policy 以编程方式创建策略和查看符合性数据
+description: 本文逐步讲解如何以编程方式创建和管理适用于 Azure Policy 的策略。
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,12 +8,12 @@ ms.date: 05/24/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: a83402316854b23fe85bff813dc9f5665bccd1fb
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 0f188b2c6ff5bbfe7b90a90b9e036089dae1f59e
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34794802"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35631604"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>以编程方式创建策略和查看符合性数据
 
@@ -61,7 +61,7 @@ ms.locfileid: "34794802"
   }
   ```
 
-  有关编写策略定义的详细信息，请参阅 [Azure 策略定义结构](policy-definition.md)。
+  有关编写策略定义的详细信息，请参阅 [Azure Policy 定义结构](policy-definition.md)。
 2. 运行以下命令，使用 AuditStorageAccounts.json 文件创建策略定义。
 
   ```azurepowershell-interactive

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.openlocfilehash: d5132cf2414045ca1343354215b2a4564f696190
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: efdc9cfbbe9a78571e0a56437e512d0cbbc18b3e
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044764"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297260"
 ---
 # <a name="plan-azure-domain-joined-hadoop-clusters-in-hdinsight"></a>在 HDInsight 中计划 Azure 已加入域的 Hadoop 群集
 
@@ -45,7 +45,7 @@ HDInsight 中的虚拟机 (VM) 将加入你提供的域。 因此，在 HDInsigh
 
 以下屏幕截图显示了在 contoso.com 中创建的一个 OU。 其中还显示了一些服务主体和计算机主体。
 
-![用于已加入域的 HDInsight 群集的组织单位](./media/apache-domain-joined-architecture/hdinsight-domain-joined-ou.png)。
+![用于已加入域的 HDInsight 群集的组织单位](./media/apache-domain-joined-architecture/hdinsight-domain-joined-ou.png).
 
 ## <a name="set-up-different-domain-controllers"></a>设置不同的域控制器
 HDInsight 当前仅支持将 Azure AD DS 用作群集用于与 Kerberos 进行通信的主域控制器。 但是，也可以使用其他复杂的 Active Directory 设置，只要该设置能启用 Azure AD DS 进行 HDInsight 访问。
@@ -61,7 +61,7 @@ HDInsight 当前仅支持将 Azure AD DS 用作群集用于与 Kerberos 进行�
 
 如果域具有本地 Active Directory 示例或更复杂的 Active Directory 设置，则可以使用 Azure AD Connect 将这些标识同步到 Azure AD。 然后可在该 Active Directory 租户上启用 Azure AD DS。 
 
-由于 Kerberos 依赖于密码哈希，因此需要[在 Azure AD DS 上启用密码哈希同步](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)。 如果使用 Active Directory 联合身份验证服务 (AD FS) 进行联合身份验证，则可以选择性地设置密码哈希同步，作为在 AD FS 基础结构发生故障时的备用身份验证方式。 有关详细信息，请参阅[使用 Azure AD Connect 同步启用密码哈希同步](../../active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)。 
+由于 Kerberos 依赖于密码哈希，因此需要[在 Azure AD DS 上启用密码哈希同步](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)。 如果使用 Active Directory 联合身份验证服务 (AD FS) 进行联合身份验证，则可以选择性地设置密码哈希同步，作为在 AD FS 基础结构发生故障时的备用身份验证方式。 有关详细信息，请参阅[使用 Azure AD Connect 同步启用密码哈希同步](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)。 
 
 在 IaaS VM 上单独使用本地 Active Directory 或 Active Directory 而不使用 Azure AD 和 Azure AD DS，这是已加入域的 HDInsight 群集不支持的配置。
 

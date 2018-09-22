@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/09/2018
+ms.date: 09/13/2018
 ms.author: jeedes
-ms.openlocfilehash: 3600e83d18f8cabd03c46af2ef47445c588cbdb5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7f24dad3cfefd5ecb0b1c78f4a2b242c99a01239
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38548265"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605821"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>教程：Azure Active Directory 与 AppDynamics 集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "38548265"
 
     ![配置单一登录](./media/appdynamics-tutorial/tutorial_appdynamics_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.saas.appdynamics.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.saas.appdynamics.com?accountName=<companyname>`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<companyname>.saas.appdynamics.com/controller`
 
@@ -178,7 +178,7 @@ ms.locfileid: "38548265"
 
     ![创建 Azure AD 测试用户](./media/appdynamics-tutorial/create_aaduser_04.png)
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -189,6 +189,7 @@ ms.locfileid: "38548265"
 ### <a name="creating-an-appdynamics-test-user"></a>创建 AppDynamics 测试用户
 
 本部分将在 AppDynamics 中创建名为“Britta Simon”的用户。 AppDynamics 支持实时预配（在默认情况下为启用状态）。 此部分不存在任何操作项。 在尝试访问 AppDynamics 期间，如果该用户不存在，则会创建一个新用户。
+
 >[!Note]
 >如果需要手动创建用户，请联系 [AppDynamics 客户端支持团队](https://www.appdynamics.com/support/)。
 
