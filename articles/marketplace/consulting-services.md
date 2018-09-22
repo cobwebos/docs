@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/9/2018
 ms.author: ellacroi
-ms.openlocfilehash: d89fef56a9fdab799170ed1ccd3261470d66bf95
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 104ef98aac3e34e30a86854a0d759cf11106b55b
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414695"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575285"
 ---
 # <a name="azure-marketplace-consulting-services"></a>Azure 市场顾问服务
 Azure 市场中的咨询服务为 Microsoft 合作伙伴提供通过支持和扩展客户对 Azure 的使用来连接客户的目标。 Azure 市场支持来自 Microsoft 系统集成者 (SI) 合作伙伴的咨询服务产品。 
@@ -73,7 +73,7 @@ Azure 市场中的咨询服务为 Microsoft 合作伙伴提供通过支持和扩
 Azure 市场咨询服务的启动将在特定地理区域中进行。 首次启动区域将包括：美国、加拿大、英国和澳大利亚。 由合作伙伴提交且由 Microsoft 批准一定数量的有吸引力服务产品选项后，面向其他国家/地区的目录将会推出。
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace"></a>如何在 Azure 市场中注册咨询服务
-从在 [Azure 市场](https://azuremarketplace.microsoft.com/en-us/sell/signup)中注册咨询服务开始。 发布者可以参考[成为 Marketplace 中的发布者](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher)，获取注册要求的完整清单。 
+从在 [Azure 市场](https://azuremarketplace.microsoft.com/en-us/sell/signup)中注册咨询服务开始。 发布者可以参考[成为 Marketplace 中的发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)，获取注册要求的完整清单。 
 
 **注册后的期望** 实施团队将在 1-3 个工作日内通过欢迎电子邮件与你联系，其中包括你的云合作伙伴门户 (CPP) 登录信息。 [云合作伙伴门户](https://cloudpartner.azure.com)是产品/服务列表门户，发布者可以在其中提交列表信息和提交。 
 
@@ -105,14 +105,12 @@ Azure 市场咨询服务的启动将在特定地理区域中进行。 首次启�
 ## <a name="publishing-process"></a>发布过程
 在 Azure 市场中列出咨询服务产品涉及以下阶段：
 
-1. 
-  **请求**：若要发送请求，请使用 [Azure 市场提名表格](https://azuremarketplace.microsoft.com/en-us/sell/nominate)，并告诉我们有关你的组织的详细信息。 注意：发布者只需提交一次提名进程，以在 Azure 市场或 AppSource 上列出。 提名和载入进程完成后，将创建一个云合作伙伴门户，发布者可以在其中创建和提交其产品列表。
+1. **请求**：若要发送请求，请使用 [Azure 市场提名表格](https://azuremarketplace.microsoft.com/en-us/sell/nominate)，并告诉我们有关你的组织的详细信息。 注意：发布者只需提交一次提名进程，以在 Azure 市场或 AppSource 上列出。 提名和载入进程完成后，将创建一个云合作伙伴门户，发布者可以在其中创建和提交其产品列表。
 2. **验证：** 将评审你的请求，以确保你符合条件。 然后，我们会发送有关列出咨询服务产品的说明。 
 3. **提交：** 提供说明中列出的必需信息。 所有内容和支持材料都必须以英文提交。 
 4. **评审：** 我们的营销和编辑团队将会评审提交内容，并针对内可读性、语法和效果对其进行优化。 
 5. **暂存**：提交内容将暂存以供查阅。 
-6. 
-  **发布：** 在你和 Microsoft 都对暂存内容感到满意后，你的商品便可以在 Azure 市场中推出。 列表推出日期取决于产品/服务中指定的国家/地区。 如果所选国家/地区的目录已在 Azure 市场中推出，则你的商品会在几小时内显示。 否则，该目录一推出，就会显示列表。
+6. **发布：** 在你和 Microsoft 都对暂存内容感到满意后，你的商品便可以在 Azure 市场中推出。 列表推出日期取决于产品/服务中指定的国家/地区。 如果所选国家/地区的目录已在 Azure 市场中推出，则你的商品会在几小时内显示。 否则，该目录一推出，就会显示列表。
 
 ## <a name="offer-listings-and-content-review-criteria"></a>产品列表和内容审核标准
 产品/服务必须属于以下五种服务类型之一（可以列出多个）： 
@@ -152,7 +150,7 @@ Azure 市场咨询服务的启动将在特定地理区域中进行。 首次启�
 |**概念证明**    |    说明客户参加后预期可以获得的工程变化、技术项目或其他项目     | 使用最常用的搜索引擎优化关键字来优化产品/服务摘要        |
 |**研讨会**    |   包括一个详细的每日、每周或每月议程，具体取决于所选择的产品/服务持续时间。 说明研讨会的学习目标或其他可交付结果     |   使用最常用的搜索引擎优化关键字来优化产品/服务摘要      |
 
-在云合作伙伴门户中，可以通过 [Markdown](https://docs.microsoft.com/en-us/contribute/how-to-write-use-markdown) 向商品信息添加格式。 这是一种轻型设计语言，用于优化商品信息。 
+在云合作伙伴门户中，可以通过 [Markdown](https://docs.microsoft.com/contribute/how-to-write-use-markdown) 向商品信息添加格式。 这是一种轻型设计语言，用于优化商品信息。 
 
 **示例 Markdown 说明**
 *   在复制块的开头和结尾添加 *（无空格）以创建斜体（例如：*content*）

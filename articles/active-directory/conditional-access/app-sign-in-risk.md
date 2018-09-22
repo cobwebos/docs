@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 07/17/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 2bd52486a78ca103e0070d94ea423c069f845587
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 65f740e23b68727bdffa4a966518b1581fb5b0a6
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627502"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604359"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>快速入门：使用 Azure Active Directory 条件访问检测到会话风险后阻止访问  
 
@@ -46,7 +46,7 @@ ms.locfileid: "39627502"
 
 - **Tor 浏览器** - [Tor 浏览器](https://www.torproject.org/projects/torbrowser.html.en)可帮助保护你在网络中的隐私。 Identity Protection 将来自 Tor 浏览器的登录检测为“从匿名 IP 地址登录”，这种登录存在中等风险级别。 有关详细信息，请参阅 [Azure Active Directory 风险事件](../reports-monitoring/concept-risk-events.md)。  
 
-- **名为 Alain Charon 的测试帐户**：如果不知道如何创建测试帐户，请参阅[添加基于云的用户](../fundamentals/add-users-azure-active-directory.md#add-cloud-based-users)。
+- **名为 Alain Charon 的测试帐户**：如果不知道如何创建测试帐户，请参阅[添加基于云的用户](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)。
 
 
 ## <a name="test-your-sign-in"></a>测试登录 
@@ -107,7 +107,7 @@ ms.locfileid: "39627502"
 
     ![条件性访问](./media/app-sign-in-risk/107.png)
 
-    a. 单击“选择用户和组”，然后选择“用户和组”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“选择用户和组”，然后选择“用户和组”。
 
     b. 单击“选择”。
 
@@ -155,7 +155,7 @@ ms.locfileid: "39627502"
 
     ![条件性访问](./media/app-sign-in-risk/105.png)
 
-    a. 选择“阻止访问”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“阻止访问”。
 
     b. 单击“选择”。
 
@@ -177,7 +177,7 @@ ms.locfileid: "39627502"
 
 **若要评估条件访问策略，请执行以下操作：**
 
-1. 在 [条件访问 - 策略](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) 页上，单击顶部菜单中的“What If”。  
+1. 在 [条件访问 - 策略](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) 页上，单击顶部菜单中的 What If。  
  
     ![What If](./media/app-sign-in-risk/14.png)
 
@@ -206,7 +206,7 @@ ms.locfileid: "39627502"
 
 不再需要时，请删除测试用户、Tor 浏览器和条件访问策略：
 
-- 如果不知道如何删除 Azure AD 用户，请参阅[从 Azure AD 中删除用户](../fundamentals/add-users-azure-active-directory.md#delete-users-from-azure-ad)。
+- 如果不知道如何删除 Azure AD 用户，请参阅[从 Azure AD 中删除用户](../fundamentals/add-users-azure-active-directory.md#delete-a-user)。
 
 - 若要删除策略，请选择该策略，然后在快速访问工具栏中单击“删除”。
 
