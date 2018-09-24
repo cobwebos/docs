@@ -13,12 +13,12 @@ ms.topic: get-started-article
 ms.date: 07/03/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 91ba9b388566cc72f3024943005af499b7c3f3ec
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
-ms.translationtype: MT
+ms.openlocfilehash: 46bc043681bbba37a2dfb6476e1dd0784e1abf10
+ms.sourcegitcommit: b34df37d1ac36161b377ba56c2f7128ba7327f3f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42139351"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46874010"
 ---
 # <a name="use-data-transfer-tools-for-azure-stack-storage"></a>使用 Azure Stack 存储的数据传输工具
 
@@ -221,9 +221,9 @@ $blobs | Get-AzureStorageBlobContent –Destination $DestinationFolder
 
 ### <a name="powershell-known-issues"></a>PowerShell 已知问题
 
-Azure Stack 的当前兼容 Azure PowerShell 模块版本是 1.2.11 用户操作。 它不同于最新版本的 Azure PowerShell。 这种差异影响存储服务操作：
+目前兼容的 Azure Stack 的 Azure PowerShell 模块版本为 1.2.11，用于用户操作。 它不同于最新版本的 Azure PowerShell。 这种差异影响存储服务操作：
 
-* 返回值格式`Get-AzureRmStorageAccountKey`1.2.11 版本中有两个属性：`Key1`和`Key2`，而当前的 Azure 版本返回一个数组，包含所有的帐户密钥。
+* 在版本 1.2.11 中，`Get-AzureRmStorageAccountKey` 的返回值格式有两个属性：`Key1` 和 `Key2`，而当前的 Azure 版本返回的数组包含所有帐户密钥。
 
    ```
    # This command gets a specific key for a storage account, 
@@ -246,7 +246,7 @@ Azure CLI 是 Azure 的命令行体验，用于管理 Azure 资源。 可以将�
 
 Azure CLI 经过优化，可用于从命令行管理 Azure 资源，以及生成可以针对 Azure 资源管理器运行的自动化脚本。 它提供 Azure Stack 门户所提供的许多功能，包括各种数据访问功能。
 
-Azure Stack 需要 Azure CLI 2.0 版。 若要详细了解如何通过 Azure Stack 来安装和配置 Azure CLI，请参阅[安装和配置 Azure Stack CLI](azure-stack-version-profiles-azurecli2.md)。 若要详细了解如何使用 Azure CLI 2.0 来执行多个可利用 Azure Stack 存储帐户中资源的任务，请参阅[将 Azure CLI2.0 与 Azure 存储配合使用](../../storage/storage-azure-cli.md)
+Azure Stack 需要 Azure CLI 2.0 或更高版本。 若要详细了解如何通过 Azure Stack 来安装和配置 Azure CLI，请参阅[安装和配置 Azure Stack CLI](azure-stack-version-profiles-azurecli2.md)。 有关如何使用 Azure CLI 执行使用 Azure Stack 存储帐户中资源的多个任务的详细信息，请参阅[对 Azure 存储使用 Azure CLI](../../storage/storage-azure-cli.md)
 
 ### <a name="azure-cli-sample-script-for-azure-stack"></a>适用于 Azure Stack 的 Azure CLI 示例脚本
 

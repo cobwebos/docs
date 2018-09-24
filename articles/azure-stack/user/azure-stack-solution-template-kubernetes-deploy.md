@@ -1,6 +1,6 @@
 ---
-title: 将 Kubernetes 群集部署到 Azure Stack | Microsoft Docs
-description: 了解如何将 Kubernetes 群集部署到 Azure Stack。
+title: 将 Kubernetes 部署到 Azure Stack |Microsoft Docs
+description: 了解如何将 Kubernetes 部署到 Azure Stack。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,28 +11,28 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 09/25/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 00c3fd0d1f637575904ebaa8031159344adf7e9f
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
-ms.translationtype: MT
+ms.openlocfilehash: a6e1acf3b9e69f32a8c175310134c534dbf8c561
+ms.sourcegitcommit: b34df37d1ac36161b377ba56c2f7128ba7327f3f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718570"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46876610"
 ---
-# <a name="deploy-a-kubernetes-cluster-to-azure-stack"></a>将 Kubernetes 群集部署到 Azure Stack
+# <a name="deploy-kubernetes-to-azure-stack"></a>将 Kubernetes 部署到 Azure Stack
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 > [!Note]  
-> Azure Stack 上的 AKS （Azure Kubernetes 服务） 引擎处于个人预览状态。 Azure Stack 操作员需请求 Kubernetes 市场项的访问权限，该项是根据本文中的说明进行操作所必需的。
+> Azure Stack 上的 Kubernetes 处于预览状态。 Azure Stack 操作员需要请求访问所需执行本文中说明的 Kubernetes 群集 Marketplace 项。
 
 下面的文章着眼于使用 Azure 资源管理器解决方案模板通过单个协调的操作为 Kubernetes 部署和预配资源。 需收集有关 Azure Stack 安装的必需信息，生成模板，然后再部署到云。 请注意该模板不是相同的托管 AKS 服务提供全局 Azure，但更接近于 ACS 服务。
 
 ## <a name="kubernetes-and-containers"></a>Kubernetes 和容器
 
-可以使用 Azure 资源管理器模板来安装 Kubernetes，该模板由 Azure Stack 上的 Azure Kubernetes 服务 (AKS) 引擎生成。 [Kubernetes](https://kubernetes.io) 是一个开源系统，可以自动部署、缩放和管理容器中的应用程序。 [容器](https://www.docker.com/what-container)受限于映像，与 VM 类似。 与 VM 不同的是，容器映像只包含运行应用程序所需的资源，例如代码、执行代码所需的运行时、特定库以及设置。
+你可以安装 Kubernetes 中通过 Azure 资源管理器模板在 Azure Stack 上的 ACS 引擎生成的。 [Kubernetes](https://kubernetes.io) 是一个开源系统，可以自动部署、缩放和管理容器中的应用程序。 [容器](https://www.docker.com/what-container)受限于映像，与 VM 类似。 与 VM 不同的是，容器映像只包含运行应用程序所需的资源，例如代码、执行代码所需的运行时、特定库以及设置。
 
 可以使用 Kubernetes 执行以下操作：
 
@@ -59,7 +59,11 @@ ms.locfileid: "44718570"
 ## <a name="create-a-service-principal-in-azure-ad"></a>在 Azure AD 中创建服务主体
 
 1. 登录到全球 [Azure 门户](http://portal.azure.com)。
-1. 检查是否已使用与 Azure Stack 实例关联的 Azure AD 租户登录。
+
+1. 检查是否已使用与 Azure Stack 实例关联的 Azure AD 租户登录。 可以通过单击 Azure 工具栏中的筛选器图标切换登录。
+
+    ![选择 AD 租户](media/azure-stack-solution-template-kubernetes-deploy/tenantselector.png)
+
 1. 创建 Azure AD 应用程序。
 
     a. 选择“Azure Active Directory” > “+ 应用注册” > “新建应用程序注册”。
@@ -83,26 +87,25 @@ ms.locfileid: "44718570"
     c. 选择“保存”。 记下密钥字符串。 在创建群集时需要此密钥字符串。 此密钥称为“服务主体客户端机密”。
 
 
-
 ## <a name="give-the-service-principal-access"></a>为服务主体提供访问权限
 
 为服务主体提供对订阅的访问权限，使该主体能够创建资源。
 
 1.  登录到[Azure Stack 门户](https://portal.local.azurestack.external/)。
 
-1. 选择**更多服务** > **订阅**。
+1. 选择**所有服务** > **订阅**。
 
-1. 选择已创建的订阅。
+1. 选择为使用 Kubernetes 群集创建您的运营商的订阅。
 
 1. 选择“访问控制(IAM)”，然后选择“+ 添加”。
 
-1. 选择“所有者”角色。
+1. 选择**参与者**角色。
 
 1. 选择为服务主体创建的应用程序名称。 可能需要在搜索框中键入名称。
 
 1. 单击“ **保存**”。
 
-## <a name="deploy-a-kubernetes-cluster"></a>部署 Kubernetes 群集
+## <a name="deploy-a-kubernetes"></a>部署 Kubernetes
 
 1. 打开 [Azure Stack 门户](https://portal.local.azurestack.external)。
 
@@ -110,7 +113,7 @@ ms.locfileid: "44718570"
 
     ![部署解决方案模板](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
 
-1. 在“创建 Kubernetes 群集”中选择“基本设置”。
+1. 选择**基础知识**中创建 Kubernetes。
 
     ![部署解决方案模板](media/azure-stack-solution-template-kubernetes-deploy/02_kub_config_basic.png)
 
@@ -145,7 +148,6 @@ ms.locfileid: "44718570"
 
 1. 输入**租户 Arm 终结点**。 这是在连接后即可为 Kubernetes 群集创建资源组的 Azure 资源管理器终结点。 需从集成系统的 Azure Stack 操作员处获取此终结点。 对于 Azure Stack 开发工具包 (ASDK)，可以使用 `https://management.local.azurestack.external`。
 
-1. 输入租户的**租户 ID**。 如果不知道如何查找此值，请参阅[获取租户 ID](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id)。 
 
 ## <a name="connect-to-your-cluster"></a>连接到你的群集
 
@@ -155,6 +157,6 @@ ms.locfileid: "44718570"
 
 ## <a name="next-steps"></a>后续步骤
 
-[向市场添加 Kubernetes 群集（适用于 Azure Stack 操作员）](..\azure-stack-solution-template-kubernetes-cluster-add.md)
+[将 Kubernetes （适用于 Azure Stack 操作员） 添加到 Marketplace](..\azure-stack-solution-template-kubernetes-cluster-add.md)
 
 [在 Azure 上的 Kubernetes](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)
