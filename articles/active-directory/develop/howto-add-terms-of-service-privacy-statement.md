@@ -9,19 +9,19 @@ editor: ''
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/23/2018
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: cb05139241f92eb930a99c387e2f06cabac35caf
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 21cd4990e2117cef2d36fa2607a601afd1a4c4e4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579989"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990495"
 ---
 # <a name="terms-of-service-and-privacy-statement-for-registered-azure-active-directory-apps"></a>已注册 Azure Active Directory 应用的服务条款和隐私声明
 
@@ -54,12 +54,14 @@ ms.locfileid: "39579989"
 ## <a name="adding-links-to-the-terms-of-service-and-privacy-statement"></a>添加指向服务条款和隐私声明的链接
 
 服务条款和隐私声明准备就绪后，可以在应用中使用这些方法之一添加指向这些文档的链接：
+
 * [通过 Azure 门户 添加](#registered-in-azure-portal)
 * [在应用程序注册门户或开发人员中心添加](#registered-in-app-reg-portal)
 * [使用应用对象 JSON](#app-object-json)
 * [使用 MSGraph beta REST API](#msgraph-beta-rest-api)
 
 ### <a name="registered-in-azure-portal"></a>已在 Azure 门户中注册应用
+
 如果已在 Azure 门户中注册应用，请按照下列步骤操作。
 
 1. 登录  [Azure 门户](https://portal.azure.com/)。
@@ -68,9 +70,10 @@ ms.locfileid: "39579989"
 4. 填写 **“服务条款 URL”** 和 **“隐私声明 URL”** 字段。
 5. 保存所做更改。
 
-![含有服务条款和隐私声明 URL 的应用属性部分](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
+    ![含有服务条款和隐私声明 URL 的应用属性部分](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
 
 ### <a name="registered-in-app-reg-portal"></a>已在应用注册门户中注册应用
+
 如果已在应用注册门户或开发人员中心中注册应用，请按照下列步骤操作。
 
 1. 登录到 [应用程序注册门户](https://apps.dev.microsoft.com/)。
@@ -78,9 +81,10 @@ ms.locfileid: "39579989"
 3. 填写 **“服务条款 URL”** 和 **“隐私声明 URL”** 字段。
 4. 保存所做更改。
 
-![含有服务条款和隐私声明 URL 的应用配置文件部分](./media/howto-add-terms-of-service-privacy-statement/app-registration-portal-profile-terms-service-privacy-statement-urls.png)
+    ![含有服务条款和隐私声明 URL 的应用配置文件部分](./media/howto-add-terms-of-service-privacy-statement/app-registration-portal-profile-terms-service-privacy-statement-urls.png)
 
 ### <a name="app-object-json"></a>使用应用对象 JSON
+
 如果想要直接修改应用对象 JSON，可以使用 Azure 门户或应用注册门户中的清单编辑器来包含指向应用的服务条款和隐私声明的链接。
 
 ```json
@@ -91,6 +95,7 @@ ms.locfileid: "39579989"
 ```
 
 ### <a name="msgraph-beta-rest-api"></a>使用 MSGraph beta REST API
+
 若要以编程方式更新所有应用，可以使用 MSGraph beta REST API 更新所有应用，以包含指向服务条款和隐私声明文档的链接。
 
 ```

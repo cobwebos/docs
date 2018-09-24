@@ -13,14 +13,17 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: c0f51e47038737d6aa743be718ad6b28c161c766
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 07f8a31244acca48a0bbae8ad26b0c5b509f0c0a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35631938"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959574"
 ---
 # <a name="azure-machine-learning-model-management-account-api-reference"></a>Azure 机器学习模型管理帐户 API 参考
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
 
 有关设置部署环境的信息，请参阅[模型管理帐户设置](deployment-setup-configuration.md)。
 
@@ -34,7 +37,7 @@ Azure 机器学习模型管理帐户 API 实现以下操作：
 可以使用此映像在本地，或者在远程 Azure 容器服务群集或 Docker 支持的另一所选环境中创建 Web 服务。
 
 ## <a name="prerequisites"></a>先决条件
-请确保已完成[安装和创建快速入门](../service/quickstart-installation.md)文档中所述的每个安装步骤。
+请确保已完成[安装和创建快速入门](quickstart-installation.md)文档中所述的每个安装步骤。
 
 在继续下一步之前，需要满足以下条件：
 1. 完成模型管理帐户预配

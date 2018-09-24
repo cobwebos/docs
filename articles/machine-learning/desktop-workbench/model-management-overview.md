@@ -9,14 +9,18 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 041f7147f171514d941555ff2f6144bac2062b06
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ROBOTS: NOINDEX
+ms.openlocfilehash: d3f7e206e7f4aa61a8ec1272ff2670d81bb7a33e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42146196"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974674"
 ---
 # <a name="azure-machine-learning-model-management"></a>Azure 机器学习模型管理
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 
 使用 Azure 机器学习模型管理可以管理和部署机器学习工作流与模型。 
 

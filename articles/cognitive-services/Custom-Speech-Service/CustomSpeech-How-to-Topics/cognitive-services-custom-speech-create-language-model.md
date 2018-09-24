@@ -9,12 +9,13 @@ ms.component: custom-speech
 ms.topic: tutorial
 ms.date: 05/03/2017
 ms.author: panosper
-ms.openlocfilehash: 599302cbf614f800d35a9a8c6a401c9692fc2e39
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ROBOTS: NOINDEX
+ms.openlocfilehash: 29f5c5efb78e85e265b56cba9ba20daa123d334e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268274"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961036"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>教程：创建自定义语言模型
 
@@ -30,7 +31,7 @@ ms.locfileid: "36268274"
 
 ## <a name="prerequisites"></a>先决条件
 
-打开[认知服务订阅](https://cris.ai/Subscriptions)页，确保认知服务帐户连接到某个订阅。
+打开[认知服务订阅](https://cris.ai/Subscriptions)页，确保认知服务帐户已连接到某个订阅。
 
 如果没有列出任何订阅，则可单击“获取免费订阅”按钮，让认知服务为你创建一个帐户。 也可单击“连接现有的订阅”按钮，连接到在 Azure 门户中创建的自定义搜索服务订阅。
 
@@ -38,7 +39,7 @@ ms.locfileid: "36268274"
 
 ## <a name="prepare-the-data"></a>准备数据
 
-若要为应用程序创建自定义语言模型，需为系统提供一系列示例表述，例如：
+若要为应用程序创建自定义语言模型，需为系统提供一系列示例陈述，例如：
 
 *   “他上周患了荨麻疹。”
 *   “病人有一个疝修补术愈合后的疤。”
@@ -54,7 +55,7 @@ ms.locfileid: "36268274"
 | 属性 | 值 |
 |----------|-------|
 | 文本编码 | en-US：US-ACSII 或 UTF-8；zh-CN：UTF-8|
-| 每行的表述数 | 1 |
+| 每行的陈述数 | 1 |
 | 文件大小上限 | 200 MB |
 | 备注 | 避免将字符重复 4 次以上，例如“aaaaa”|
 | 备注 | 不得使用“\t”之类的特殊字符，也不得使用 [Unicode 字符表](http://www.utf8-chartable.de/)中 U+00A1 以上的任何其他 UTF-8 字符|
@@ -80,7 +81,7 @@ ms.locfileid: "36268274"
 
 当语言数据集的状态为“完成”后，即可将它用来创建自定义语言模型。
 
-![try](../../../media/cognitive-services/custom-speech-service/custom-speech-language-datasets.png)
+![尝试](../../../media/cognitive-services/custom-speech-service/custom-speech-language-datasets.png)
 
 ## <a name="create-a-custom-language-model"></a>创建自定义语言模型
 

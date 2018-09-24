@@ -12,14 +12,17 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: 5c1a884ebe6216c4e8099f2ada2182ccff68b63e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ROBOTS: NOINDEX
+ms.openlocfilehash: 435ef29192682f1bf19a9a53923dd043676256ab
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39450327"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954936"
 ---
 # <a name="collect-model-data-by-using-data-collection"></a>使用数据收集来收集模型数据
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
 可使用 Azure 机器学习中的模型数据收集功能对 Web 服务中的模型输入值和预测值进行存档。
 
@@ -94,7 +97,7 @@ ms.locfileid: "39450327"
 1. 在搜索框中键入“存储帐户”，并按“Enter”。
 1. 在“存储帐户”搜索边栏选项卡上，选择“存储帐户”资源。 若要确定存储帐户，请使用以下步骤：
 
-    a. 转到 Azure Machine Learning Workbench，选择正在处理的项目，然后打开“文件”菜单中的命令行提示。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 转到 Azure Machine Learning Workbench，选择正在处理的项目，然后打开“文件”菜单中的命令行提示。
     
     b. 输入 `az ml env show -v` 并查看 storage_account 值。 这是存储帐户的名称。
 
@@ -105,7 +108,7 @@ ms.locfileid: "39450327"
 使用 Microsoft 软件和开源工具，可通过多种方式从 Azure blob 中使用数据。 下面是一些示例：
 - Azure Machine Learning Workbench：通过将 .csv 文件添加为数据源，在 Azure Machine Learning Workbench 中打开 .csv 文件。
 - Excel：将日常 .csv 文件作为电子表格打开。
-- [Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-azure-and-power-bi/)：使用从 Blob 中 .csv 数据提取的数据创建图表。
+- [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)：使用从 Blob 中 .csv 数据提取的数据创建图表。
 - [Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-overview)：使用大部分 .csv 数据创建数据帧。
     ```python
     var df = spark.read.format("com.databricks.spark.csv").option("inferSchema","true").option("header","true").load("wasb://modeldata@<storageaccount>.blob.core.windows.net/<subscription_id>/<resource_group_name>/<model_management_account_name>/<webservice_name>/<model_id>-<model_name>-<model_version>/<identifier>/<year>/<month>/<date>/*")

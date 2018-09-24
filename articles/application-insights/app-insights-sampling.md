@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 03/24/2017
 ms.reviewer: vitalyg
 ms.author: mbullwin
-ms.openlocfilehash: b1dd37c07f3c887005d87e3231f62a4bca2f4a3d
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 893495a5c37495438d9620595719ca6e733df012
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093109"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958112"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -35,7 +35,7 @@ ms.locfileid: "43093109"
 * 还可以在门户中的“使用情况和预估成本”页面、config 文件的 ASP.NET SDK 或 ApplicationInsights.xml 文件的 Java SDK 中手动设置采样，以便同时减少网络流量。
 * 如果记录自定义事件，并且想要确定事件集是一同保留还是丢弃，请确保它们的 OperationId 值相同。
 * 采样除数 *n* 会在每个记录的属性 `itemCount` 中报告，在“搜索”中它出现在友好名称“请求计数”或“事件计数”下。 如果采样不在运行，则 `itemCount==1`。
-* 如果要编写分析查询，应[考虑采样](app-insights-analytics-tour.md#counting-sampled-data)。 特别是，应使用 `summarize sum(itemCount)`，而不是仅对记录进行计数。
+* 如果要编写分析查询，应[考虑采样](../log-analytics/query-language/aggregations.md)。 特别是，应使用 `summarize sum(itemCount)`，而不是仅对记录进行计数。
 
 ## <a name="types-of-sampling"></a>采样类型
 有三种备用采样方法：

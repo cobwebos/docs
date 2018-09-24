@@ -7,14 +7,14 @@ author: v-jerkin
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 09/24/2018
 ms.author: v-jerkin
-ms.openlocfilehash: c26aeb1d29c3b2c8b5b43d1a1face818295e9d2f
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 169d421ddccf33ac239b69ab78ca7dca0f0b8261
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122076"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958403"
 ---
 # <a name="about-the-cognitive-services-speech-sdk"></a>关于认知服务语音 SDK
 
@@ -35,7 +35,7 @@ ms.locfileid: "43122076"
   可以使用 NuGet 在 Visual Studio 中安装该 SDK；只需要搜索 `Microsoft.CognitiveServices.Speech` 即可。
 
 * Java：可以引用和使用语音 SDK Maven 包的最新版本，该包仅支持 Windows x64。
-  在 Maven 项目中，将 `https://csspeechstorage.blob.core.windows.net/maven/` 添加为附加存储库，并将 `com.microsoft.cognitiveservices.speech:client-sdk:0.6.0` 引用为一个依赖项。 
+  在 Maven 项目中，将 `https://csspeechstorage.blob.core.windows.net/maven/` 添加为附加存储库，并将 `com.microsoft.cognitiveservices.speech:client-sdk:1.0.0` 引用为一个依赖项。 
 
 ### <a name="linux"></a>Linux
 
@@ -53,11 +53,11 @@ sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2
   若要引用该 SDK，请向你的项目中添加以下包引用：
 
   ```xml
-  <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="0.6.0" />
+  <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.0.0" />
   ```
 
 * Java：你可以引用和使用语音 SDK Maven 包的最新版本。
-  在 Maven 项目中，将 `https://csspeechstorage.blob.core.windows.net/maven/` 添加为附加存储库，并将 `com.microsoft.cognitiveservices.speech:client-sdk:0.6.0` 引用为一个依赖项。 
+  在 Maven 项目中，将 `https://csspeechstorage.blob.core.windows.net/maven/` 添加为附加存储库，并将 `com.microsoft.cognitiveservices.speech:client-sdk:1.0.0` 引用为一个依赖项。 
 
 * C++：将 SDK 下载为 [.tar 包](https://aka.ms/csspeech/linuxbinary)并将文件解压缩到你选择的一个目录中。 下表显示了 SDK 文件夹结构。
 
@@ -74,7 +74,7 @@ sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2
 ### <a name="android"></a>Android
 
 将 Java SDK for Android 打包为 [AAR（Android 库）](https://developer.android.com/studio/projects/android-library)，其内附必要的库以及使用它所需的 Android 权限。
-它作为包 `com.microsoft.cognitiveservices.speech:client-sdk:0.6.0` 托管在 `https://csspeechstorage.blob.core.windows.net/maven/` 的 Maven 存储库中。
+它作为包 `com.microsoft.cognitiveservices.speech:client-sdk:1.0.0` 托管在 `https://csspeechstorage.blob.core.windows.net/maven/` 的 Maven 存储库中。
 若要从你的 Android Studio 项目中使用该包，请进行以下更改：
 
 * 在项目级 `build.gradle` 文件中，向 `repository` 部分添加以下内容：
@@ -86,7 +86,7 @@ sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2
 * 在模块级 `build.gradle` 文件中，向 `dependencies` 部分添加以下内容：
 
   ```text
-  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:0.6.0'
+  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.0.0'
   ```
 
 Java SDK 也是[语音设备 SDK](speech-devices-sdk.md) 的一部分。

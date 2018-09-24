@@ -16,14 +16,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: anta
-ms.openlocfilehash: 3f32c9048c4b2002e7672b46a4f39e86ffa7b98e
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 934d37783165c2e57dcabd0ff764747e1ab4b65e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35631439"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946846"
 ---
 # <a name="energy-demand-time-series-forecasting"></a>能源需求时序预测
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 
 时序预测是指预测观察时序中未来值的任务。 它是一个常见问题，并且已在许多行业中得到应用。 例如，零售公司需要预测将来的产品销售，从而可以有效安排其供应链来满足需求。 同样，物流公司需要评估其服务需求，以便提前规划劳动力要求和送货路线。 在许多情况下，不准确的预测造成的财务风险可能非常重大。 因此，预测通常是业务关键的活动。
@@ -57,7 +62,7 @@ Azure Machine Learning Workbench 能够为过程建模的每个步骤提供帮�
 ## <a name="prerequisites"></a>先决条件
 
 - [Azure 帐户](https://azure.microsoft.com/free/)（有免费试用版可用）。
-- 遵循[安装快速入门指南](../service/quickstart-installation.md)安装 [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) 的副本，以安装程序并创建工作区。
+- 遵循[安装快速入门指南](quickstart-installation.md)安装 [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) 的副本，以安装程序并创建工作区。
 - 本示例假设在本地装有 [Docker 引擎](https://www.docker.com/)的 Windows 10 上运行 Azure ML Workbench。 如果使用 macOS，操作说明大致相同。
 - 已根据此[指南](./model-management-configuration.md)中所述，设置了装有本地开发环境的 Azure 机器学习操作化，并创建了模型管理帐户。
 - 本示例要求将 Pandas 安装更新到 0.20.3 或更高版本，并安装 matplotlib。 在 Workbench 上的“文件”菜单中单击“打开命令提示符”，运行以下命令安装这些依赖项：

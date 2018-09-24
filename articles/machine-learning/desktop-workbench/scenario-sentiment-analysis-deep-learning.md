@@ -16,14 +16,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2018
 ms.author: miprasad
-ms.openlocfilehash: 97e3a621e291935db2e0c70eb2b596e77c7bffb7
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: e2fbb0b7b0dede198be0e57ffcd2b58a7da7fce7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35633888"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947765"
 ---
 # <a name="sentiment-analysis-using-deep-learning-with-azure-machine-learning"></a>使用深度学习和 Azure 机器学习进行情绪分析
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 情绪分析是自然语言处理领域中的已知任务。 假如有一组文本，目的是确定该文本的情绪。 此解决方案旨在使用深入学习从电影评论中预测情绪。
 
@@ -45,7 +50,7 @@ ms.locfileid: "35633888"
 
 * [Azure 帐户](https://azure.microsoft.com/free/)（有免费试用版可用）。
 
-* 遵循[安装快速入门指南](../service/quickstart-installation.md)安装 [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) 的副本，以安装程序并创建工作区。
+* 遵循[安装快速入门指南](quickstart-installation.md)安装 [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) 的副本，以安装程序并创建工作区。
 
 * 若要进行实施，最好是安装 Docker 引擎并在本地运行。 如果没有，你可以使用群集选项。 但是，运行 Azure 容器服务 (ACS) 可能成本高昂。
 

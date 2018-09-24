@@ -8,19 +8,18 @@ ms.topic: article
 ms.date: 04/26/2018
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: d674b0a6a16e22ed06577f7306ed6f4b9755dd0e
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: d441176c55ceb75c3f44df90224647ded802aeb6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42141432"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986621"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>使用 AzCopy on Linux 传输数据
 
 AzCopy 是一个命令行实用程序，专用于使用旨在实现最佳性能的简单命令将数据复制到 Microsoft Azure Blob 和文件存储以及从这些位置复制数据。 可在文件系统和存储帐户之间或在存储帐户之间复制数据。  
 
-有两种版本的 AzCopy 可供下载。 AzCopy on Linux 面向 Linux 平台，它提供 POSIX 样式的命令行选项。 
-  [AzCopy on Windows](../storage-use-azcopy.md) 提供 Windows 样式的命令行选项。 本文涉及到 AzCopy on Linux。 
+有两种版本的 AzCopy 可供下载。 AzCopy on Linux 面向 Linux 平台，它提供 POSIX 样式的命令行选项。 [AzCopy on Windows](../storage-use-azcopy.md) 提供 Windows 样式的命令行选项。 本文涉及到 AzCopy on Linux。 
 
 > [!NOTE]  
 > 从 AzCopy 7.2 版本开始，.NET Core 依赖项随 AzCopy 包打包在一起。 如果使用的是 7.2 版或更高版本，则安装 .NET Core 不再是先决条件。
@@ -707,7 +706,7 @@ azcopy \
 * [Azure 存储简介](../storage-introduction.md)
 * [创建存储帐户](../storage-create-storage-account.md)
 * [使用存储资源管理器管理 Blob](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs)
-* [将 Azure CLI 2.0 用于 Azure 存储](../storage-azure-cli.md)
+* [将 Azure CLI 用于 Azure 存储](../storage-azure-cli.md)
 * [如何通过 C++ 使用 Blob 存储](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [如何通过 Java 使用 Blob 存储](../blobs/storage-java-how-to-use-blob-storage.md)
 * [如何通过 Node.js 使用 Blob 存储](../blobs/storage-nodejs-how-to-use-blob-storage.md)

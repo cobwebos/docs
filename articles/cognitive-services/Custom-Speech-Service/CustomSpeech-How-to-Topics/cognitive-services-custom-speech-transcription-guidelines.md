@@ -9,12 +9,13 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: 2785a35ac7583ac3d9503cb721d10078d86aa365
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2772665107f94a273731d2147154e546225b22dd
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365544"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999726"
 ---
 # <a name="transcription-guidelines"></a>听录准则
 为确保最大限度地使用文本数据进行声学和语言模型自定义，应遵循下列听录准则。 这些准则是特定于语言的。
@@ -43,8 +44,8 @@ ms.locfileid: "35365544"
 此服务将根据导入为语言数据集的数据或声学数据集的听录执行以下文本规范化。 这包括：
 
 *   所有文本全部小写
-*   删除除单词内撇号外的所有标点
-*   将数字扩展为口头形式，包括美元金额
+*   移除除单词内撇号外的所有标点
+*   将数字扩展为口语形式，包括美元金额
 
 下面是一些示例
 
@@ -101,7 +102,7 @@ ms.locfileid: "35365544"
 *   删除所有标点
 *   将数字扩展为口语形式
 *   将全角字母扩展为半角字母。
-*   所有文本全部大写
+*   所有英语字母大写
 
 下面是一些示例：
 
@@ -170,7 +171,7 @@ ms.locfileid: "35365544"
 
 下面是一些示例
 
-| 原始文本 | After user's normalization | After system normalization
+| 原始文本 | 用户规范化后 | 系统规范化后
 |--------  | ----- | -------- |
 | Es ist 12.23Uhr | Es ist 12:23Uhr | es ist zwölf uhr drei und zwanzig uhr |
 | {12.45} | {12,45} | zwölf komma vier fünf |

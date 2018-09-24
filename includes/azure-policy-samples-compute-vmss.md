@@ -5,21 +5,21 @@ services: azure-policy
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/17/2018
+ms.date: 09/18/2018
 ms.author: dacoulte
 ms.custom: include file
-ms.openlocfilehash: 725d37a6521c874d14291ea7e3c53ea94907eb17
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 75567fd1521c48c1731c8d7756da69dfef153a61
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37138093"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47003588"
 ---
 ### <a name="virtual-machine-scale-sets"></a>虚拟机规模集
 
 |  |  |
 |---------|---------|
-| [在 VM 未使用托管磁盘时审核](../articles/azure-policy/scripts/create-vm-managed-disk.md) | 如果创建了未使用托管磁盘的虚拟机，则进行审核。|
-| [使用托管磁盘创建 VM](../articles/azure-policy/scripts/use-managed-disk-vm.md) | 要求虚拟机使用托管磁盘。|
-| [拒绝混合使用权益](../articles/azure-policy/scripts/deny-hybrid-use.md) | 禁止使用 Azure 混合使用权益 (AHUB)。 在想禁止使用本地许可证时使用。 |
-| [只允许特定 VM 平台映像](../articles/azure-policy/scripts/allow-certain-vm-image.md) | 要求虚拟机使用 UbuntuServer 的特定版本。 |
+| [在 VM 未使用托管磁盘时审核](../articles/governance/policy/samples/create-vm-managed-disk.md) | 如果创建了未使用托管磁盘的虚拟机，则进行审核。|
+| [使用托管磁盘创建 VM](../articles/governance/policy/samples/use-managed-disk-vm.md) | 要求虚拟机使用托管磁盘。|
+| [拒绝混合使用权益](../articles/governance/policy/samples/deny-hybrid-use.md) | 禁止使用 Azure 混合使用权益 (AHUB)。 在想禁止使用本地许可证时使用。 |
+| [只允许特定 VM 平台映像](../articles/governance/policy/samples/allow-certain-vm-image.md) | 要求虚拟机使用 UbuntuServer 的特定版本。 |

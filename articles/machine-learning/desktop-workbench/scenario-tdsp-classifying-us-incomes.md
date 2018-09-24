@@ -16,14 +16,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
-ms.openlocfilehash: edc3fc5e2a625a14bcb48b03f32cd99069a0ad53
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ROBOTS: NOINDEX
+ms.openlocfilehash: 8533023a16cb350828127d0603e6add0876b37a8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42140231"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948843"
 ---
 # <a name="income-classification-with-team-data-science-process-tdsp-project"></a>使用 Team Data Science Process (TDSP) 项目进行收入分类
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 ## <a name="introduction"></a>介绍
 
@@ -55,7 +60,7 @@ ms.locfileid: "42140231"
 1. Azure [订阅](https://azure.microsoft.com)。 也可获取执行此示例所需的[免费订阅](https://azure.microsoft.com/free/?v=17.16&WT.srch=1&WT.mc_id=AID559320_SEM_cZGgGOIg)。
 2. [Azure 数据科学虚拟机 (DSVM) Windows Server 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.windows-data-science-vm)，（VM 大小：[DS3_V2](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)，使用 4 个虚拟 CPU 和 14-Gb RAM）。 虽然是在 Azure DSVM 上进行的测试，但应该也能在任何 Windows 10 计算机上使用。
 3. 查看 Azure 机器学习及其相关服务的文档（链接见下）。
-4. 确保已根据[快速入门安装指南](../service/quickstart-installation.md)正确安装 Azure 机器学习。
+4. 确保已根据[快速入门安装指南](quickstart-installation.md)正确安装 Azure 机器学习。
 
 此示例的数据集来自 UCI ML 存储库 [[链接]](https://archive.ics.uci.edu/ml/datasets/adult)。 该数据集取自 1994 年美国人口普查数据库，包含大约 50,000 人的人口普查和收入信息。 该数据集是具有数字特征和分类特征的结构化数据集，此外还有一个分类目标，包含两个收入类别（“>50 K”或“<=50 K”）。 
 
@@ -65,7 +70,7 @@ ms.locfileid: "42140231"
 ### <a name="informational-about-azure-machine-learning"></a>信息：了解 Azure 机器学习
 * [常见问题解答 - 如何入门](frequently-asked-questions.md)
 * [概述](../service/overview-what-is-azure-ml.md)
-* [安装](../service/quickstart-installation.md)
+* [安装](quickstart-installation.md)
 * [执行](experimentation-service-configuration.md)
 * [使用 TDSP](https://aka.ms/how-to-use-tdsp-in-aml)
 * [读取和写入文件](how-to-read-write-files.md)
@@ -89,7 +94,7 @@ ms.locfileid: "42140231"
 ## <a name="data-description"></a>数据说明
 有关数据的详细信息，请参阅 UCI 存储库中的[说明](https://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.names)。 
 
-该数据取自人口普查局数据库：https://www.census.gov/en.html。 
+该数据取自人口普查局数据库： https://www.census.gov/en.html。 
 
 
 * 总共有 48,842 个实例（筛选之前），混合了连续实例和离散实例（训练=32,561，测试=16,281）

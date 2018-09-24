@@ -9,12 +9,13 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: panosper
-ms.openlocfilehash: 6d92459deb3464cd97c215cbf9a8320628b6da80
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 44411e0c92f4e24e274761821dd99efbe60c5f5d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365743"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964967"
 ---
 # <a name="migrate-deployments-to-the-new-pricing-model"></a>将部署迁移到新的定价模型
 自 2017 年 7 月起，自定义语音服务提供[新的定价模型](https://azure.microsoft.com/pricing/details/cognitive-services/custom-speech-service/)。 新模型*更易于理解*、*更易于计算成本*，且在缩放方面*更灵活*。 为了缩放，Microsoft 引入了缩放单元的概念。 每个缩放单元可处理五个并发请求。 旧模型中并发请求的缩放设置为层 S0 5 个并发请求，并且设置为层 S1 12个并发请求。 我们已经开放了这些限制，以便为你的用例需求提供更大的灵活性。

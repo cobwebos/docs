@@ -8,14 +8,14 @@ author: wolfma61
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: f4b2b1dc84523696d45d143f2c729028026b667b
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: b3df385adbd93cd81637661f4df9a15707170346
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128348"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959438"
 ---
 # <a name="recognize-speech-by-using-the-speech-sdk-for-c"></a>使用适用于 C++ 的语音 SDK 识别语音
 

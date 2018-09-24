@@ -11,14 +11,17 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/12/2018
-ms.openlocfilehash: 654b2559518cd52978153310fbb1e89a91838a8a
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 6167e10219791466ca275ff02cc051e3227634e8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35631946"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46980027"
 ---
 # <a name="how-to-use-microsoft-machine-learning-library-for-apache-spark"></a>如何使用适用于 Apache Spark 的 Microsoft 机器学习库
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
 ## <a name="introduction"></a>介绍
 
@@ -30,7 +33,7 @@ ms.locfileid: "35631946"
 ## <a name="prerequisites"></a>先决条件
 
 若要逐步执行本操作方法指南，需要：
-- [安装 Azure Machine Learning Workbench](../service/quickstart-installation.md)
+- [安装 Azure Machine Learning Workbench](quickstart-installation.md)
 - [设置 Azure HDInsight Spark 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-jupyter-spark-sql)
 
 ## <a name="run-your-experiment-in-docker-container"></a>在 Docker 容器中运行试验

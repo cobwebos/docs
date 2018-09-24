@@ -11,14 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: c74229504a43179673cc99ccff321b65e3f6ed4f
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: a3aeb021d5d3726a31b62d66efc44dc29f3dded0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35633896"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959642"
 ---
 # <a name="data-source-wizard"></a>数据源向导 #
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 借助数据源向导，无需使用代码即可快速轻松地将数据集载入 Azure ML Workbench。 此向导还可用于为每个列的数据集和数据类型选择采样策略。 
 

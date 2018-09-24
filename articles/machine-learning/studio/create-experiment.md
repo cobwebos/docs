@@ -14,14 +14,14 @@ ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: tutorial
 ms.date: 03/20/2017
-ms.openlocfilehash: b85cbc401299621e38802561f4070cc6fadb6b74
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: ac7b208c97ad82d06b8cdc75e04ccd0c787d335f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834029"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951315"
 ---
 # <a name="machine-learning-tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>机器学习教程：在 Azure 机器学习工作室中创建第一个数据科研试验
 
@@ -145,7 +145,7 @@ ms.locfileid: "34834029"
 3. 单击[选择数据集中的列][select-columns] 模块，并单击“属性”窗格中的“启动列选择器”。
 
     - 在左侧单击“使用规则”
-    - 在**开头为**下面，单击**所有列**。 这会指示[选择数据集中的列][select-columns]传递所有列（但要排除的列除外）。
+    - 在**开头为**下面，单击**所有列**。 这会指示[选择数据集中的列][select-columns]”传递所有列（但要排除的列除外）。
     - 在下拉列表中，选择“排除”和“列名称”，并在文本框内部单击。 此时会显示列的列表。 选择“规范化损失”，该列随即添加到文本框中。
     - 单击复选标记（“确定”）按钮，关闭列选择器（右下角）。
 
@@ -293,7 +293,7 @@ ms.locfileid: "34834029"
 3. 最后，我们对结果的质量进行测试。 选择[评估模型][evaluate-model]模块并将其拖放到试验画布上，然后将[评分模型][score-model]模块的输出连接到[评估模型][evaluate-model]的左侧输入。
 
     > [!TIP]
-    > 之所以[评估模型][evaluate-model]模块上有两个输入端口，是因为可将其用于并列比较两个模型。 可在以后向试验添加另一算法，并使用[评估模型][evaluate-model]查看哪一个算法的结果更好。
+    > 之所以[评估模型][evaluate-model]模块上有两个输入端口，是因为可将其用于并列比较两个模型。 可在以后向试验添加另一算法，并使用[评估模型][evaluate-model]”查看哪一个算法的结果更好。
 
 4. 运行试验。
 

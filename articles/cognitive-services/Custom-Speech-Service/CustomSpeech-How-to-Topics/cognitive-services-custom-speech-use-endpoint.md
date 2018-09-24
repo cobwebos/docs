@@ -9,12 +9,13 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: d28065d7962ee660cafd4b3321abdd6a8f94abcb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 55583952df3b83331f1f622a4fce269713ecf2a6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365538"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966514"
 ---
 # <a name="use-a-custom-speech-to-text-endpoint"></a>使用自定义语音转文本终结点
 可以向 Azure 自定义语音服务语音转文本终结点发送请求，方式与向默认认知服务语音终结点发送请求类似。 这些终结点在功能上与语音 API 的默认终结点相同。 因此，通过语音 API 的客户端库或 REST API 提供的功能也适用于自定义终结点。

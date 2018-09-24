@@ -11,14 +11,17 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 43bee297b917143c9014b28049c6dfa28727b757
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: abce80528479ba180783dbab604d4c836ddb7f1e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35633947"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950771"
 ---
 # <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Azure 机器学习试验服务配置文件
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
 在 Azure Machine Learning (Azure ML) Workbench 中运行脚本时，由“aml_config”文件夹中的文件控制执行行为。 此文件夹位于你的项目文件夹根目录下。 请务必了解这些文件的内容，以便以最佳方式实现你期望的执行结果。
 

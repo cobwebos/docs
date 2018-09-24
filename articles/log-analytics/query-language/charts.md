@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: acf51056a084abc08bda2d7f73b561f442f57784
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: e63345c0265d52fdd80fe4542efb7f13324926cf
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605516"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989612"
 ---
 # <a name="creating-charts-and-diagrams-from-log-analytics-queries"></a>通过 Log Analytics 查询创建图表和关系图
 
@@ -34,7 +34,7 @@ ms.locfileid: "45605516"
 ## <a name="charting-the-results"></a>绘制结果图表
 首先查看在过去 1 小时内，每个操作系统占用了多少台计算机：
 
-```KQL
+```Kusto
 Heartbeat
 | where TimeGenerated > ago(1h)
 | summarize count(Computer) by OSType  
@@ -52,7 +52,7 @@ Heartbeat
 ## <a name="timecharts"></a>时间图表
 显示处理器时间的平均值、第 50 位百分值和第 95 位百分位值（按 1 小时的箱数计）。 查询将生成多个序列，然后你可选择要在时间图表中显示的序列：
 
-```KQL
+```Kusto
 Perf
 | where TimeGenerated > ago(1d) 
 | where CounterName == "% Processor Time" 
@@ -67,7 +67,7 @@ Perf
 
 参考线可帮助你轻松识别指标是否超出特定阈值。 要向图表添加一行，请用常数列扩展数据集：
 
-```KQL
+```Kusto
 Perf
 | where TimeGenerated > ago(1d) 
 | where CounterName == "% Processor Time" 
@@ -80,7 +80,7 @@ Perf
 ## <a name="multiple-dimensions"></a>多个维度
 `summarize` 的 `by` 字句中的多个表达式在结果中创建多个行，每个值组合对应一行。
 
-```KQL
+```Kusto
 SecurityEvent
 | where TimeGenerated > ago(1d)
 | summarize count() by tostring(EventID), AccountType, bin(TimeGenerated, 1h)

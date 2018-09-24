@@ -11,14 +11,19 @@ ms.author: dmpechyo
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.openlocfilehash: 920b019640df9d2da174101e2b1b90dfd4da6f56
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ROBOTS: NOINDEX
+ms.openlocfilehash: f74889cdf727bc132723d16df295849769001ce9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578729"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951961"
 ---
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>使用 Azure Machine Learning Workbench 执行超参数的分布式优化
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 此方案展示了如何使用 Azure Machine Learning Workbench 来横向扩展实现了 scikit-learn API 的机器学习算法的超参数的优化。 我们展示了如何配置和使用远程 Docker 容器和 Spark 群集作为执行后端来优化超参数。
 
@@ -38,7 +43,7 @@ ms.locfileid: "45578729"
 ## <a name="prerequisites"></a>先决条件
 
 * [Azure 帐户](https://azure.microsoft.com/free/)（有免费试用版可用）。
-* 按照用于安装 Workbench 并创建帐户的[安装和创建快速入门](../service/quickstart-installation.md)安装的 [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) 副本。
+* 按照用于安装 Workbench 并创建帐户的[安装和创建快速入门](quickstart-installation.md)安装的 [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) 副本。
 * 此方案假设在本地装有 Docker 引擎的 Windows 10 或 MacOS 上运行 Azure ML Workbench。 
 * 若要使用远程 Docker 容器运行此方案，请按照[说明](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-provision-vm)预配 Ubuntu 数据科学虚拟机 (DSVM)。 建议使用至少具有 8 个核心和 28 GB 内存的虚拟机。 虚拟机的 D4 实例具有这样的容量。 
 * 若要使用 Spark 群集运行此方案，请按照这些[说明](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)预配 Spark HDInsight 群集。 我们建议同时在头节点和工作节点中设置具有以下配置的群集：

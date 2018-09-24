@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 548c94ce502da8c6a8d208daafb5b0fb624de1e1
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: b56a75074af239f60b82edbe1d074c6384c4aef1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603919"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982966"
 ---
 # <a name="get-started-with-queries-in-log-analytics"></a>Log Analytics 中的查询入门
 
@@ -50,7 +50,7 @@ ms.locfileid: "45603919"
 ### <a name="table-based-queries"></a>基于表的查询
 Azure Log Analytics 在表中组织数据，每个表由多个列组成。 所有表和列显示在 Analytics 门户中的架构窗格内。 找到所需的表，然后看看其中的一些数据：
 
-```KQL
+```Kusto
 SecurityEvent
 | take 10
 ```
@@ -66,7 +66,7 @@ SecurityEvent
 ### <a name="search-queries"></a>搜索查询
 搜索查询的结构化程度不高，通常更适合用于查找在任何列中包含特定值的记录：
 
-```KQL
+```Kusto
 search in (SecurityEvent) "Cryptographic"
 | take 10
 ```
@@ -79,7 +79,7 @@ search in (SecurityEvent) "Cryptographic"
 ## <a name="sort-and-top"></a>sort 和 top
 虽然 **take** 可用于获取一些记录，但选择和显示的结果不遵循特定的顺序。 若要获取排序的视图，可按首选列**排序**：
 
-```
+```Kusto
 SecurityEvent   
 | sort by TimeGenerated desc
 ```
@@ -88,7 +88,7 @@ SecurityEvent
 
 仅获取最新 10 条记录的最佳方式是使用 **top**，它会在服务器端将整个表排序，然后返回前几条记录：
 
-```KQL
+```Kusto
 SecurityEvent
 | top 10 by TimeGenerated
 ```
@@ -103,7 +103,7 @@ SecurityEvent
 
 若要将筛选器添加到查询，请使用 **where** 运算符，后接一个或多个条件。 例如，以下查询只返回 _Level_ 等于 _8_ 的 *SecurityEvent* 记录：
 
-```KQL
+```Kusto
 SecurityEvent
 | where Level == 8
 ```
@@ -119,14 +119,14 @@ SecurityEvent
 
 若要按多个条件进行筛选，可以使用 **and**：
 
-```KQL
+```Kusto
 SecurityEvent
 | where Level == 8 and EventID == 4672
 ```
 
 或者使用竖线逐个分隔多个 **where** 元素：
 
-```KQL
+```Kusto
 SecurityEvent
 | where Level == 8 
 | where EventID == 4672
@@ -146,7 +146,7 @@ SecurityEvent
 ### <a name="time-filter-in-query"></a>查询中的时间筛选器
 还可以通过将时间筛选器添加到查询来定义自己的时间范围。 最好是紧靠在表名的后面添加时间筛选器： 
 
-```KQL
+```Kusto
 SecurityEvent
 | where TimeGenerated > ago(30m) 
 | where toint(Level) >= 10
@@ -158,7 +158,7 @@ SecurityEvent
 ## <a name="project-and-extend-select-and-compute-columns"></a>投影和扩展：选择和计算列
 使用**投影**可以选择要包含在结果中的特定列：
 
-```KQL
+```Kusto
 SecurityEvent 
 | top 10 by TimeGenerated 
 | project TimeGenerated, Computer, Activity
@@ -175,7 +175,7 @@ SecurityEvent
 * 创建名为 *EventCode* 的新列。 **substring()** 函数用于仅获取 Activity 字段中的前四个字符。
 
 
-```KQL
+```Kusto
 SecurityEvent
 | top 10 by TimeGenerated 
 | project Computer, TimeGenerated, EventDetails=Activity, EventCode=substring(Activity, 0, 4)
@@ -183,7 +183,7 @@ SecurityEvent
 
 **extend** 保留结果集中的所有原始列，并定义其他列。 以下查询使用 **extend** 添加 *localtime* 列，该列包含本地化的 TimeGenerated 值。
 
-```KQL
+```Kusto
 SecurityEvent
 | top 10 by TimeGenerated
 | extend localtime = TimeGenerated-8h
@@ -193,7 +193,7 @@ SecurityEvent
 使用 **summarize** 可以根据一个或多个列标识记录组，并向其应用聚合。 **summarize** 的最常见用途是计数，可以返回每个组中的记录数。
 
 以下查询检查过去一小时的所有 *Perf* 记录，按 *ObjectName* 将其分组，然后统计每个组中的记录数： 
-```KQL
+```Kusto
 Perf
 | where TimeGenerated > ago(1h)
 | summarize count() by ObjectName
@@ -201,7 +201,7 @@ Perf
 
 有时，按多个维度定义组会很有利。 这些值的每个唯一组合定义了一个单独的组：
 
-```KQL
+```Kusto
 Perf
 | where TimeGenerated > ago(1h)
 | summarize count() by ObjectName, CounterName
@@ -209,7 +209,7 @@ Perf
 
 另一个常见用途是对每个组执行数学或统计计算。 例如，以下查询计算每台计算机的平均 *CounterValue*：
 
-```KQL
+```Kusto
 Perf
 | where TimeGenerated > ago(1h)
 | summarize avg(CounterValue) by Computer
@@ -217,7 +217,7 @@ Perf
 
 遗憾的是，此查询的结果没有意义，因为我们混合了不同的性能计数器。 若要使此结果更有意义，应单独针对 *CounterName* 和 *Computer* 的每个组合计算平均值：
 
-```KQL
+```Kusto
 Perf
 | where TimeGenerated > ago(1h)
 | summarize avg(CounterValue) by Computer, CounterName
@@ -228,7 +228,7 @@ Perf
 
 若要创建基于连续值的组，最好是使用 **bin** 将范围划分为可管理的单位。 以下查询分析 *Perf* 记录，这些记录度量特定计算机上的可用内存 (*Available MBytes*)。 它计算过去 2 天内每个 1 小时时段的平均值：
 
-```KQL
+```Kusto
 Perf 
 | where TimeGenerated > ago(2d)
 | where Computer == "ContosoAzADDS2" 

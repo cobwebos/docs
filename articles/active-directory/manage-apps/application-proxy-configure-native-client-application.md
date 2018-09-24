@@ -15,12 +15,12 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 85a7b133655a3b1e4ca60c28e695e3057b293fdc
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 91f75fdbe7bc7c66bbe581e9d4b295467acd4cd5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504509"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989662"
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>如何使本机客户端应用与代理应用程序交互
 
@@ -30,7 +30,7 @@ ms.locfileid: "39504509"
 
 ![最终用户、Azure Active Directory 和已发布应用程序之间的关系](./media/application-proxy-configure-native-client-application/richclientflow.png)
 
-使用 Azure AD 身份验证库（负责处理身份验证并支持许多客户端环境）来发布本机应用程序。 应用程序代理适合[本机应用程序到 Web API 方案](../develop/authentication-scenarios.md#native-application-to-web-api)。 
+使用 Azure AD 身份验证库（负责处理身份验证并支持许多客户端环境）来发布本机应用程序。 应用程序代理适合[本机应用程序到 Web API 方案](../develop/native-app.md)。 
 
 本文引导读者完成使用应用程序代理和 Azure AD 身份验证库发布本机应用程序的四个步骤。 
 
@@ -96,6 +96,6 @@ HttpResponseMessage response = await httpClient.GetAsync("< Proxy App API Url >"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关本机应用程序流的详细信息，请参阅[本机应用程序到 Web API](../develop/authentication-scenarios.md#native-application-to-web-api)
+有关本机应用程序流的详细信息，请参阅[本机应用程序到 Web API](../develop/native-app.md)
 
 了解如何设置[应用程序代理的单一登录](application-proxy-single-sign-on.md)

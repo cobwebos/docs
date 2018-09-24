@@ -9,14 +9,17 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/14/2017
-ms.openlocfilehash: 7938eaa0e06c9a33034a7388d02845d60967774e
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ROBOTS: NOINDEX
+ms.openlocfilehash: 24ed164f4a1dfdb9a3913efa78fe58fab2b53696
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42140642"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991957"
 ---
 # <a name="configure-the-azure-machine-learning-experimentation-service"></a>配置 Azure 机器学习试验服务
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
 ## <a name="overview"></a>概述
 Azure 机器学习试验服务帐户、工作区和项目都是 Azure 资源。 在这种情况下，它们可以使用资源管理器模板部署。 Resource Manager 模板为 JSON 文件，用于定义针对解决方案进行部署时所需的资源。 若要了解与部署和管理 Azure 解决方案相关联的概念，请参阅 [Azure 资源管理器概述](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。
@@ -158,4 +161,4 @@ az group deployment create -n testdeploy -g <resource group name> --template-fil
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* [创建和安装 Azure 机器学习](../service/quickstart-installation.md)
+* [创建和安装 Azure 机器学习](quickstart-installation.md)

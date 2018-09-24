@@ -12,14 +12,19 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
-ms.openlocfilehash: a5531ae256a263f1c34496819ac435ce67156b49
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: c154b0124acb5bee93211adb611356555526d2c0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35631919"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996207"
 ---
 # <a name="predictive-maintenance-for-real-world-scenarios"></a>实际方案的预测性维护
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 计划外设备停机带来的影响对任何企业而言都是极具破坏性的。 保持现场设备正常运行以最大限度提高利用率和性能，以及将开销和计划外停机时间降至最低至关重要。 极早发现问题所在有助于以经济高效的方式分配有限的维护资源，并改进质量和供应链流程。 
 
@@ -41,10 +46,10 @@ PM 教程的 Cortana Intelligence Gallery 是一个公共 GitHub 存储库 ([htt
 ## <a name="prerequisites"></a>先决条件
 
 * [Azure 帐户](https://azure.microsoft.com/free/)（有免费试用版可用）。
-* [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) 的已安装副本。 若要安装此程序并创建工作区，请参阅[快速入门安装指南](../service/quickstart-installation.md)。
+* [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) 的已安装副本。 若要安装此程序并创建工作区，请参阅[快速入门安装指南](quickstart-installation.md)。
 * Azure 机器学习操作化需要一个本地部署环境和 [Azure 机器学习模型管理帐户](model-management-overview.md)。
 
-本示例可在任何 Machine Learning Workbench 计算上下文中运行。 但是，建议在至少有 16 GB 内存的计算机上运行。 此方案已在运行远程 DS4_V2 标准大小的[适用于 Linux (Ubuntu) 的数据科学虚拟机 (DSVM)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) 的 Windows 10 计算机上进行生成和测试。
+本示例可在任何 Machine Learning Workbench 计算上下文中运行。 但是，建议在至少有 16 GB 内存的计算机上运行。 此方案已在运行远程 DS4_V2 标准大小的[适用于 Linux (Ubuntu) 的数据科学虚拟机 (DSVM)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) 的 Windows 10 计算机上进行生成和测试。
 
 模型操作化是使用 Azure 机器学习 CLI 0.1.0a22 版完成的。
 
@@ -71,7 +76,7 @@ az login
 az ml experiment prepare --target docker --run-configuration docker
 ```
 
-考虑到内存和磁盘要求，最好在[用于 Linux (Ubuntu) 的 DSVM](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) 上运行。 配置 DSVM 后，使用以下两个命令准备远程 Docker 环境：
+考虑到内存和磁盘要求，最好在[用于 Linux (Ubuntu) 的 DSVM](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) 上运行。 配置 DSVM 后，使用以下两个命令准备远程 Docker 环境：
 
 ```
 az ml computetarget attach remotedocker --name [Connection_Name] --address [VM_IP_Address] --username [VM_Username] --password [VM_UserPassword]
