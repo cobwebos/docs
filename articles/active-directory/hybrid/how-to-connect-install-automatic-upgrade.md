@@ -36,11 +36,11 @@ ms.locfileid: "46304586"
 
 可以使用 PowerShell cmdlet `Get-ADSyncAutoUpgrade` 来查看当前的自动升级状态。 状态包括：
 
-| 省/直辖市/自治区 | 注释 |
+| 状态 | 注释 |
 | --- | --- |
 | Enabled |自动升级已启用。 |
-| 已挂起 |只能由系统设置。 系统不再能够接收自动升级。 |
-| 已禁用 |自动升级已禁用。 |
+| Suspended |只能由系统设置。 系统不再能够接收自动升级。 |
+| Disabled |自动升级已禁用。 |
 
 可以使用 `Set-ADSyncAutoUpgrade` 在“已启用”与“已禁用”之间切换。 应该只有系统才能设置“暂停”状态。
 
@@ -66,15 +66,15 @@ ms.locfileid: "46304586"
 
 结果代码前面会有包含状态概述的前缀。
 
-| 结果代码前缀 | Description |
+| 结果代码前缀 | 说明 |
 | --- | --- |
-| 成功 |安装已成功升级。 |
+| Success |安装已成功升级。 |
 | UpgradeAborted |某种临时状态停止了升级。 升级会重试，预期稍后会成功。 |
 | UpgradeNotSupported |系统中的某个配置阻止系统自动升级。 升级会重试，以查看状态是否已变化，但预期只能手动升级系统。 |
 
 下面是最常见的消息列表。 该列表并不完整，但结果消息应会明确说明问题所在。
 
-| 结果消息 | Description |
+| 结果消息 | 说明 |
 | --- | --- |
 | **UpgradeAborted** | |
 | UpgradeAbortedCouldNotSetUpgradeMarker |无法写入注册表。 |
