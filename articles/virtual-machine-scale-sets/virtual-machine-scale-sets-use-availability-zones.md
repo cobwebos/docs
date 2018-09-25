@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 7297633b5a8954eb39e0a40bfd45b02d3838a734
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 18d9a2dade271e61fa3db423da610a7f982aa47b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42142056"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949666"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>创建使用可用性区域的虚拟机规模集
 
@@ -45,7 +45,7 @@ ms.locfileid: "42142056"
 
 ### <a name="zone-balancing"></a>区域均衡
 
-最后，对于跨多个区域部署的规模集，还可以选择“尽量实现区域均衡”或“严格执行区域均衡”。 如果每个区域中的 VM 数相同或与规模集的所有其他区域中的 VM 数只相差 1，则可以认为该规模集“已实现均衡”。 例如：
+最后，对于跨多个区域部署的规模集，还可以选择“尽量实现区域均衡”或“严格执行区域均衡”。 如果每个区域中的 VM 数相同或与规模集的所有其他区域中的 VM 数只相差 \\ 1，则可以认为该规模集“已实现均衡”。 例如：
 
 - 某个规模集的区域 1 中有 2 个 VM，区域 2 中有 3 个 VM，区域 3 中有 3 个 VM，则可以认为该规模集已实现均衡。 只有一个区域具有不同的 VM 计数，它只比其他区域少 1 个 VM。 
 - 某个规模集的区域 1 中有 1 个 VM，区域 2 中有 3 个 VM，区域 3 中有 3 个 VM，则可以认为该规模集未实现均衡。 区域 1 比区域 2 和区域 3 少 2 个 VM。
@@ -65,7 +65,7 @@ ms.locfileid: "42142056"
 若要使用可用性区域，必须在[受支持的 Azure 区域](../availability-zones/az-overview.md#regions-that-support-availability-zones)中创建规模集。 可以使用下列方法之一创建使用可用性区域的规模集：
 
 - [Azure 门户](#use-the-azure-portal)
-- [Azure CLI 2.0](#use-the-azure-cli-20)
+- [Azure CLI](#use-the-azure-cli-20)
 - [Azure PowerShell](#use-azure-powershell)
 - [Azure 资源管理器模板](#use-azure-resource-manager-templates)
 
@@ -77,7 +77,7 @@ ms.locfileid: "42142056"
 
 将在你指定的单个区域中创建规模集和支持资源，例如 Azure 负载均衡器和公共 IP 地址。
 
-## <a name="use-the-azure-cli-20"></a>使用 Azure CLI 2.0
+## <a name="use-the-azure-cli"></a>使用 Azure CLI
 
 创建使用可用性区域的规模集的过程与[入门文章](quick-create-cli.md)中详述的过程相同。 若要使用可用性区域，必须在受支持的 Azure 区域中创建规模集。
 
