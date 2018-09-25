@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 72859f68fc1bb76a6c71bbd7b98cd713f1f0fe02
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 8161fda80b5fa498f9321371c9ad2c8a2d97441a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296394"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46962413"
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Application Insights 门户中的导航与仪表板
 [在项目中设置 Application Insights](app-insights-overview.md) 之后，有关应用性能和使用情况的遥测数据将出现在 [Azure 门户](https://portal.azure.com)中项目的 Application Insights 资源内。
@@ -63,7 +63,7 @@ ms.locfileid: "35296394"
 * 时间范围为 24 小时以上：（时间范围）/60。
 
 ### <a name="pin-any-query-in-analytics"></a>固定 Analytics 中的任何查询
-还可以[将 Analytics 图表固定](app-insights-analytics-using.md#pin-to-dashboard)到[共享的](#share-dashboards-with-your-team)仪表板。 这样，便可以添加任意查询以及标准指标的图表。 
+还可以[将 Analytics 图表固定](../log-analytics/query-language/get-started-analytics-portal.md)到[共享的](#share-dashboards-with-your-team)仪表板。 这样，便可以添加任意查询以及标准指标的图表。 
 
 每小时自动重新计算结果。 单击图表上的“刷新”图标可立即重新计算。 （刷新浏览器不会重新计算。）
 

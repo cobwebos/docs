@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: f2ebd2a021d3803b6e3f7d805b9253d181cb16c3
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: f1a1c0bd759a88b2e84584f1d52458ac6f56d97f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293633"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999678"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>设置 Application Insights：依赖项跟踪
 *依赖项*是应用调用的外部组件。 它通常是使用 HTTP、数据库或文件系统调用的服务。 [Application Insights](app-insights-overview.md) 可以度量应用程序等待依赖项的时长以及依赖项调用失败的频率。 可以调查特定的调用，并将其与请求和异常相关联。
@@ -133,7 +133,7 @@ ms.locfileid: "35293633"
 ![单击请求类型、单击实例以访问同一实例的不同视图、单击它以获取异常详细信息。](./media/app-insights-asp-net-dependencies/07-faildetail.png)
 
 ## <a name="analytics"></a>分析
-可以跟踪 [Log Analytics 查询语言](https://docs.loganalytics.io/)中的依赖项。 下面是一些示例。
+可以跟踪 [Log Analytics 查询语言](https://aka.ms/LogAnalyticsLanguage)中的依赖项。 下面是一些示例。
 
 * 查找所有失败的依赖项调用：
 

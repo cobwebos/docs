@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 3a0e2b78de8cea3929ac457bab3d5e07a2b85401
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 9b0c58fdbfb0d55b3b8998f4edfc1222b9a3d4aa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603373"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46988591"
 ---
 # <a name="working-with-date-time-values-in-log-analytics-queries"></a>在 Log Analytics 查询中使用日期时间值
 
@@ -49,33 +49,33 @@ Log Analytics 查询语言主要具有两种与日期和时间相关的数据类
 
 可使用 `todatetime` 运算符强制转换字符串，从而创建日期/时间。 例如，要查看在特定时间范围内发送的 VM 检测信号，可使用便于指定时间范围的 [between 运算符](https://docs.loganalytics.io/docs/Language-Reference/Scalar-operators/between-operator)。
 
-```KQL
+```Kusto
 Heartbeat
 | where TimeGenerated between(datetime("2018-06-30 22:46:42") .. datetime("2018-07-01 00:57:27"))
 ```
 
 还有一个常见的情况是将日期时间与当前时间进行比较。 例如，要查看过去两分钟内的所有检测信号，可结合使用 `now` 运算符和表示两分钟的时间跨度：
 
-```KQL
+```Kusto
 Heartbeat
 | where TimeGenerated > now() - 2m
 ```
 
 还可通过快捷方式使用此函数：
-```KQL
+```Kusto
 Heartbeat
 | where TimeGenerated > now(-2m)
 ```
 
 但是，最简短且可读性最强的方式是使用 `ago` 运算符：
-```KQL
+```Kusto
 Heartbeat
 | where TimeGenerated > ago(2m)
 ```
 
 假设你不知道开始和结束时间，但知道开始时间和持续时间。 可按如下方式重写查询：
 
-```KQL
+```Kusto
 let startDatetime = todatetime("2018-06-30 20:12:42.9");
 let duration = totimespan(25m);
 Heartbeat
@@ -86,7 +86,7 @@ Heartbeat
 ## <a name="converting-time-units"></a>转换时间单位
 按非默认时间单位表示日期/时间或时间跨度时，它非常有用。 例如，假设你要检查过去 30 分钟内的错误事件，且需要一个显示事件发生时间的计算列：
 
-```KQL
+```Kusto
 Event
 | where TimeGenerated > ago(30m)
 | where EventLevelName == "Error"
@@ -95,7 +95,7 @@ Event
 
 你可以看到 timeAgo 列包含一些值，例如“00:09:31.5118992”，这表示其格式为 hh:mm:ss.fffffff。 如果要将这些值的格式设置为自开始时间以来的 numver 分钟数，只需用该值除以“1 分钟”：
 
-```KQL
+```Kusto
 Event
 | where TimeGenerated > ago(30m)
 | where EventLevelName == "Error"
@@ -109,7 +109,7 @@ Event
 
 使用以下查询获取过去半小时内每 5 分钟发生的事件数：
 
-```KQL
+```Kusto
 Event
 | where TimeGenerated > ago(30m)
 | summarize events_count=count() by bin(TimeGenerated, 5m) 
@@ -127,7 +127,7 @@ Event
 
 还可使用函数（例如 `startofday`）来创建结果存储桶：
 
-```KQL
+```Kusto
 Event
 | where TimeGenerated > ago(4d)
 | summarize events_count=count() by startofday(TimeGenerated) 
@@ -147,7 +147,7 @@ Event
 ## <a name="time-zones"></a>时区
 由于所有日期/时间值都以 UTC 表示，因此将这些值转换为本地时区通常很有用。 例如，使用此计算将 UTC 转换为 PST 时间：
 
-```KQL
+```Kusto
 Event
 | extend localTimestamp = TimeGenerated - 8h
 ```

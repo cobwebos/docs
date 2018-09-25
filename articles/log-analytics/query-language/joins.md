@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: c24d79d6983f7c32f5c563192bcfe412da586ef2
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 39a461a27e8d9d6d1b9712449586bfabf6124d22
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603481"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989441"
 ---
 # <a name="joins-in-log-analytics-queries"></a>Log Analytics 查询中的联接
 
@@ -32,7 +32,7 @@ ms.locfileid: "45603481"
 利用联接，可在同一查询中分析来自多个表的数据。 它们通过匹配指定列的值来合并两个数据集的行。
 
 
-```KQL
+```Kusto
 SecurityEvent 
 | where EventID == 4624     // sign-in events
 | project Computer, Account, TargetLogonId, LogonTime=TimeGenerated
@@ -64,7 +64,7 @@ on $left.key1 == $right.key2
 ## <a name="lookup-tables"></a>查找表
 联接的常见用法是通过 `datatable` 静态映射值，这有助于将结果转换为更易呈现的形式。 例如，使用每个事件 ID 的事件名称来丰富安全事件数据。
 
-```KQL
+```Kusto
 let DimTable = datatable(EventID:int, eventName:string)
   [
     4625, "Account activity",
