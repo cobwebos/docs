@@ -1,0 +1,45 @@
+items:
+- name: Azure 蓝图文档
+  href: index.yml
+- name: 概述
+  items:
+  - name: Azure 蓝图概述
+    href: overview.md
+  expanded: true
+- name: 快速入门
+  items:
+  - name: 创建蓝图 - 门户
+    href: create-blueprint-portal.md
+  - name: 创建蓝图 - REST API
+    href: create-blueprint-rest-api.md
+  expanded: true
+- name: 概念
+  items:
+  - name: 蓝图的生命周期
+    href: ./concepts/lifecycle.md
+  - name: 蓝图中的动态参数
+    href: ./concepts/parameters.md
+  - name: 蓝图部署的排序顺序
+    href: ./concepts/sequencing-order.md
+  - name: 蓝图中的资源锁定
+    href: ./concepts/resource-locking.md
+  expanded: true
+- name: 操作指南
+  items:
+  - name: 更新现有分配
+    href: ./how-to/update-existing-assignments.md
+  expanded: true
+- name: 故障排除
+  href: ./troubleshoot/general.md
+- name: 资源
+  items:
+  - name: Azure 路线图
+    href: https://azure.microsoft.com/roadmap/
+  - name: 定价计算器
+    href: https://azure.microsoft.com/pricing/calculator/
+ms.openlocfilehash: 25a4453dc1387d26cdd8c6d3cf6a5da0360df221
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982148"

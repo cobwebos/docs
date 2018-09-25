@@ -1,0 +1,223 @@
+items:
+- name: Azure Policy 文档
+  href: index.yml
+- name: 概述
+  items:
+  - name: Azure Policy 概述
+    href: overview.md
+- name: 快速入门
+  items:
+  - name: 分配策略 - 门户
+    href: assign-policy-portal.md
+  - name: 分配策略 - PowerShell
+    href: assign-policy-powershell.md
+  - name: 分配策略 - Azure CLI
+    href: assign-policy-azurecli.md
+  expanded: true
+- name: 教程
+  items:
+  - name: 创建和管理 Azure Policy
+    href: ./tutorials/create-and-manage.md
+- name: 示例
+  href: ./samples/index.md
+  items:
+  - name: 常规
+    items:
+    - name: 命名
+      items:
+      - name: 允许多名称模式
+        href: samples/allow-multiple-name-patterns.md
+      - name: 需要类似模式
+        href: samples/enforce-like-pattern.md
+      - name: 需要匹配模式
+        href: samples/enforce-match-pattern.md
+      - name: 需要标记匹配模式
+        href: samples/enforce-tag-match-pattern.md
+    - name: 标记
+      items:
+      - name: 应用标记及其默认值
+        href: samples/apply-tag-def-val.md
+      - name: 计费标记策略计划
+        href: samples/billing-tags-policy-init.md
+      - name: 强制实施标记和值
+        href: samples/enforce-tag-val.md
+      - name: 在资源组强制执行标记及其值
+        href: samples/enforce-tag-rg.md
+    - name: 位置
+      items:
+      - name: 允许的位置
+        href: samples/allowed-locs.md
+    - name: 资源类型
+      items:
+      - name: 允许的资源类型
+        href: samples/allowed-res-types.md
+      - name: 不允许的资源类型
+        href: samples/not-allowed-res-type.md
+  - name: 计算
+    items:
+    - name: 虚拟机
+      items:
+      - name: 允许使用来自资源组的自定义 VM 映像
+        href: samples/allow-custom-vm-image.md
+      - name: 允许用于存储帐户和虚拟机的 SKU
+        href: samples/allowed-skus-storage.md
+      - name: 已批准的 VM 映像
+        href: samples/allowed-custom-images.md
+      - name: 如果扩展不存在，则进行审核
+        href: samples/audit-ext-not-exist.md
+      - name: 不允许的 VM 扩展
+        href: samples/not-allowed-vm-ext.md
+    - name: 虚拟机规模集
+      items:
+      - name: 在 VM 未使用托管磁盘时审核
+        href: samples/create-vm-managed-disk.md
+      - name: 使用托管磁盘创建 VM
+        href: samples/use-managed-disk-vm.md
+      - name: 拒绝混合使用权益
+        href: samples/deny-hybrid-use.md
+      - name: 只允许某个特定的 VM 平台映像
+        href: samples/allow-certain-vm-image.md
+  - name: Data Lake
+    items:
+    - name: 强制执行 Data Lake Store 加密
+      href: samples/enforce-datalakestore-encryption.md
+  - name: 监视
+    items:
+    - name: 审核诊断设置
+      href: samples/audit-diag-setting.md
+  - name: 网络
+    items:
+    - name: 网络接口
+      items:
+      - name: 每个 NIC 上的 NSG X
+        href: samples/nsg-on-nic.md
+      - name: 为 VM 网络接口使用已批准的子网
+        href: samples/use-approved-subnet-vm-nics.md
+      - name: 对 VM 网络接口使用已批准的 vNet
+        href: samples/use-approved-vnet-vm-nics.md
+    - name: 虚拟网络
+      items:
+      - name: 允许的应用程序网关 SKU
+        href: samples/allowed-app-gate-sku.md
+      - name: 没有与 ER 网络的网络对等互连
+        href: samples/no-peering-er-net.md
+      - name: 无用户定义的路由表
+        href: samples/no-user-def-route-table.md
+      - name: 每个子网上的 NSG X
+        href: samples/nsg-on-subnet.md
+      - name: 为 VM 网络接口使用已批准的子网
+        href: samples/use-approved-subnet-vm-nics.md
+      - name: 对 VM 网络接口使用已批准的 vNet
+        href: samples/use-approved-vnet-vm-nics.md
+    - name: 网络安全组
+      items:
+      - name: 每个 NIC 上的 NSG X
+        href: samples/nsg-on-nic.md
+      - name: 每个子网上的 NSG X
+        href: samples/nsg-on-subnet.md
+    - name: 快速路由
+      items:
+      - name: 允许的 Express Route 带宽
+        href: samples/allowed-er-band.md
+      - name: 允许的 Express Route SKU
+        href: samples/allowed-er-skus.md
+      - name: 允许的 Express Route 对等位置
+        href: samples/allowed-peering-er.md
+    - name: 网络观察程序
+      items:
+      - name: 如果未对区域启用网络观察程序，则进行审核
+        href: samples/net-watch-not-enabled.md
+    - name: 应用程序网关数
+      items:
+      - name: 允许的应用程序网关 SKU
+        href: samples/allowed-app-gate-sku.md
+  - name: SQL
+    items:
+    - name: SQL Server
+      items:
+      - name: 无 Azure Active Directory 管理员时审核
+        href: samples/audit-no-aad-admin.md
+      - name: 审核服务器级别的威胁检测设置
+        href: samples/audit-sql-ser-threat-det-setting.md
+      - name: 审核 SQL Server 审核设置
+        href: samples/sql-server-audit.md
+      - name: 审核 SQL Server 级别的审核设置
+        href: samples/audit-sql-ser-leve-audit-setting.md
+      - name: 需要 SQL Server 版本 12.0
+        href: samples/req-sql-12.md
+    - name: SQL 数据库
+      items:
+      - name: 允许的 SQL DB SKU
+        href: samples/allowed-sql-db-skus.md
+      - name: 审核 SQL DB 级别的威胁检测设置
+        href: samples/audit-db-threat-det-setting.md
+      - name: 审核 SQL DB 加密
+        href: samples/sql-database-encryption-audit.md
+      - name: 审核 SQL DB 级别审核设置
+        href: samples/audit-sql-db-audit-setting.md
+      - name: 审核透明数据加密状态
+        href: samples/audit-trans-data-enc-status.md
+  - name: 存储
+    items:
+    - name: 允许用于存储帐户和 VM 的 SKU
+      href: samples/allowed-skus-storage.md
+    - name: 允许的存储帐户 SKU
+      href: samples/allowed-stor-acct-skus.md
+    - name: 拒绝对存储帐户使用冷访问层
+      href: samples/deny-cool-access-tiering.md
+    - name: 确保 HTTPS 流量仅用于存储帐户
+      href: samples/ensure-https-stor-acct.md
+    - name: 确保存储文件加密
+      href: samples/ensure-store-file-enc.md
+    - name: 需要存储帐户加密
+      href: samples/req-store-acct-enc.md
+- name: 概念
+  items:
+  - name: Azure Policy 定义结构
+    href: ./concepts/definition-structure.md
+  - name: 了解 Policy 效果
+    href: ./concepts/effects.md
+- name: 操作指南
+  items:
+  - name: 以编程方式创建策略
+    href: ./how-to/programmatically-create.md
+  - name: 获取符合性数据
+    href: ./how-to/getting-compliance-data.md
+  - name: 修正不符合资源
+    href: ./how-to/remediate-resources.md
+- name: 引用
+  items:
+  - name: Azure CLI
+    href: /cli/azure/policy
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.resources/#policies
+  - name: REST API
+    items:
+    - name: 活动
+      href: /rest/api/policy-insights/policyevents
+    - name: States
+      href: /rest/api/policy-insights/policystates
+    - name: 分配
+      href: /rest/api/resources/policyassignments
+    - name: 策略定义
+      href: /rest/api/resources/policydefinitions
+    - name: 计划定义
+      href: /rest/api/resources/policysetdefinitions
+- name: 资源
+  items:
+  - name: GitHub - Azure Policy 示例
+    href: https://github.com/Azure/azure-policy
+  - name: 视频 - Build 2018
+    href: https://channel9.msdn.com/events/Build/2018/THR2030
+  - name: 视频 - Ignite 2017
+    href: https://myignite.microsoft.com/videos/54781
+  - name: Azure 路线图
+    href: https://azure.microsoft.com/roadmap/
+  - name: 定价计算器
+    href: https://azure.microsoft.com/pricing/calculator/
+ms.openlocfilehash: e433ad5418f2c97890332548ae8d05196117bbd4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46962685"

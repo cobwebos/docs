@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: ed1843226d2b131bd4f98a18b2a48af3e7a3f13c
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: d512e4fef83a623604d43aa43115c7b4fd1e1318
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44090535"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946939"
 ---
 # <a name="redis-cache-documentation"></a>Redis 缓存文档
 
@@ -150,6 +150,50 @@ ms.locfileid: "44090535"
         </a>
     </li>
 </ul>
+
+---
+
+## <a name="build-your-skills-with-microsoft-learn"></a>利用 Microsoft Learn 掌握技能
+
+<ul class="panelContent cardsFTitle">
+    <li>
+        <a href="/learn/modules/optimize-your-web-apps-with-redis/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="/learn/achievements/optimize-web-apps-with-redis.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3> 使用 Redis 缓存只读数据，从而优化 Web 应用程序</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li><li>
+        <a href="/learn/modules/work-with-mutable-and-partial-data-in-a-redis-cache/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="/learn/achievements/work-with-mutable-and-partial-data-in-a-redis-cache.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>在 Redis 缓存中处理可变的部分数据</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+</ul>   
+
+**[更多交互式学习...](/learn/browse?products=azure-redis-cache)**
 
 ---
 

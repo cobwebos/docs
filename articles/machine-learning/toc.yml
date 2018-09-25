@@ -1,6 +1,11 @@
+items:
 - name: Azure 机器学习服务（预览版）
   href: service/index.yml
 - name: Azure 机器学习工作室
   href: studio/index.yml
-- name: 数据科学虚拟机
-  href: data-science-virtual-machine/index.yml
+ms.openlocfilehash: b0d8ba12becb24c6cd301a76471d96b415ec4068
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946062"

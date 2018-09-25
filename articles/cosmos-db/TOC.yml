@@ -15,8 +15,6 @@ items:
       href: create-sql-api-java.md
     - name: Node.js
       href: create-sql-api-nodejs.md
-    - name: Node.js - V2 预览版
-      href: create-sql-api-nodejs-preview.md
     - name: Python
       href: create-sql-api-python.md
     - name: Xamarin
@@ -76,6 +74,17 @@ items:
     href: sql-api-resources.md
   - name: 全球分布
     href: distribute-data-globally.md
+    items:
+    - name: 主要优点
+      href: distribute-data-globally-benefits.md
+    - name: 启用全局分发
+      href: distribute-data-globally-turnkey.md
+    - name: 启用多主数据库
+      href: enable-multi-master.md
+    - name: 包含 OSS NoSQL 数据库的多主数据库
+      href: multi-master-oss-nosql.md
+    - name: 冲突解决
+      href: multi-master-conflict-resolution.md
   - name: Throughput
     href: request-units.md
     items:
@@ -87,11 +96,6 @@ items:
     href: indexing-policies.md
   - name: 一致性模型
     href: consistency-levels.md
-  - name: 多主
-    href: multi-region-writers.md
-    items:
-    - name: 多主设置
-      href: multi-master-workaround.md
   - name: 更改源
     href: change-feed.md
   - name: 生存时间
@@ -111,6 +115,8 @@ items:
       href: vnet-service-endpoint.md
     - name: Key Vault 支持
       href: access-secrets-from-keyvault.md
+  - name: 为预留容量预付费
+    href: cosmos-db-reserved-capacity.md
   - name: 备份和还原
     href: online-backup-and-restore.md
   - name: 高可用性
@@ -141,8 +147,6 @@ items:
             href: sql-api-async-java-get-started.md
           - name: Node.js
             href: sql-api-nodejs-get-started.md
-          - name: Node.js - V2 预览版
-            href: sql-api-nodejs-get-started-preview.md
         - name: 构建 Web 应用
           items:
           - name: .NET
@@ -151,8 +155,6 @@ items:
             href: sql-api-java-application.md
           - name: Node.js
             href: sql-api-nodejs-application.md
-          - name: Node.js - V2 预览版
-            href: sql-api-nodejs-application-preview.md
           - name: Python
             href: sql-api-python-application.md
           - name: Xamarin
@@ -173,8 +175,6 @@ items:
         href: sql-api-async-java-samples.md
       - name: Node.js 示例
         href: sql-api-nodejs-samples.md
-      - name: Node.js - V2 预览版示例
-        href: sql-api-nodejs-samples-preview.md
       - name: Python 示例
         href: sql-api-python-samples.md
       - name: PowerShell
@@ -287,12 +287,40 @@ items:
     items:
     - name: 介绍
       href: cassandra-introduction.md
+    - name: Cassandra 支持
+      href: cassandra-support.md
     - name: 教程
       items:
-      - name: 1 - 创建帐户
-        href: tutorial-develop-cassandra-java.md
-      - name: 2 - 迁移数据
+      - name: 1 - 创建帐户和数据库
+        href: create-cassandra-api-account-java.md
+      - name: 2 - 加载数据
+        href: cassandra-api-load-data.md
+      - name: 3 - 查询数据
+        href: cassandra-api-query-data.md
+      - name: 4 - 迁移数据
         href: cassandra-import-data.md
+    - name: Cassandra 和 Spark
+      items:
+      - name: 介绍
+        href: cassandra-spark-generic.md
+      - name: 使用 Databricks 进行连接
+        href: cassandra-spark-databricks.md
+      - name: 使用 HDInsight 进行连接
+        href: cassandra-spark-hdinsight.md
+      - name: 创建密钥空间和表
+        href: cassandra-spark-ddl-ops.md
+      - name: 插入数据
+        href: cassandra-spark-create-ops.md
+      - name: 读取数据
+        href: cassandra-spark-read-ops.md
+      - name: 更新数据
+        href: cassandra-spark-upsert-ops.md
+      - name: 删除数据
+        href: cassandra-spark-delete-ops.md
+      - name: 聚合操作
+        href: cassandra-spark-aggregation-ops.md
+      - name: 复制表数据
+        href: cassandra-spark-table-copy-ops.md
   - name: 表 API 文档
     items:
     - name: 介绍
@@ -438,6 +466,8 @@ items:
       href: bulk-executor-java.md
 - name: 资源
   items:
+  - name: 利用 Microsoft Learn 掌握技能
+    href: /learn/browse/?products=azure-cosmos-db
   - name: 查询备忘单
     href: query-cheat-sheet.md
   - name: SQL 演练
@@ -460,9 +490,9 @@ items:
       href: use-cases.md
     - name: 社交媒体应用
       href: social-media-apps.md
-ms.openlocfilehash: 2bc1fcfab7399cc52500b832721e7ca7509758fd
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: bdb4419b2af399ab28b71e11112e38cfd7a21389
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737271"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956840"

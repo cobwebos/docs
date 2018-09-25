@@ -1,115 +1,124 @@
+items:
 - name: 容器实例
   href: index.yml
 - name: 概述
   items:
-    - name: 关于 Azure 容器实例
-      href: container-instances-overview.md
+  - name: 关于 Azure 容器实例
+    href: container-instances-overview.md
 - name: 快速入门
-  expanded: true
   items:
-    - name: 创建容器 - CLI
-      href: container-instances-quickstart.md
-    - name: 创建容器 - 门户
-      href: container-instances-quickstart-portal.md
-    - name: 创建容器 - PowerShell
-      href: container-instances-quickstart-powershell.md
+  - name: 创建容器 - CLI
+    href: container-instances-quickstart.md
+  - name: 创建容器 - 门户
+    href: container-instances-quickstart-portal.md
+  - name: 创建容器 - PowerShell
+    href: container-instances-quickstart-powershell.md
+  expanded: true
 - name: 教程
   items:
-    - name: 1 - 创建容器映像
-      href: container-instances-tutorial-prepare-app.md
-    - name: 2 - 创建容器注册表
-      href: container-instances-tutorial-prepare-acr.md
-    - name: 3 - 部署应用程序
-      href: container-instances-tutorial-deploy-app.md
+  - name: 1 - 创建容器映像
+    href: container-instances-tutorial-prepare-app.md
+  - name: 2 - 创建容器注册表
+    href: container-instances-tutorial-prepare-acr.md
+  - name: 3 - 部署应用程序
+    href: container-instances-tutorial-deploy-app.md
 - name: 示例
   items:
-    - name: 代码示例
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&term=aci'
-    - name: 资源管理器模板
-      href: container-instances-samples-rm.md
+  - name: 代码示例
+    href: https://azure.microsoft.com/resources/samples/?sort=0&term=aci
+  - name: 资源管理器模板
+    href: container-instances-samples-rm.md
 - name: 概念
   items:
-    - name: 配额和区域限制
-      href: container-instances-quotas.md
-    - name: 与协调器的关系
-      href: container-instances-orchestrator-relationship.md
-    - name: 容器组
-      href: container-instances-container-groups.md
+  - name: 配额和区域限制
+    href: container-instances-quotas.md
+  - name: 与协调器的关系
+    href: container-instances-orchestrator-relationship.md
+  - name: 容器组
+    href: container-instances-container-groups.md
 - name: 操作指南
   items:
-    - name: 部署
-      items:
-        - name: 多容器组 - YAML
-          href: container-instances-multi-container-yaml.md
-        - name: 多容器组 - 资源管理器
-          href: container-instances-multi-container-group.md
-        - name: 从 Azure 容器注册表部署
-          href: container-instances-using-azure-container-registry.md
-        - name: 设置环境变量 (env)
-          href: container-instances-environment-variables.md
-        - name: 配置运行情况探测
-          href: container-instances-liveness-probe.md
-    - name: 管理
-      items:
-        - name: 更新正在运行的容器
-          href: container-instances-update.md
-        - name: 执行命令 (exec)
-          href: container-instances-exec.md
-        - name: 监视 CPU 和内存使用情况
-          href: container-instances-monitor.md
-        - name: 使用 Azure Log Analytics 进行日志记录
-          href: container-instances-log-analytics.md
-    - name: 运行工作负荷
-      items:
-        - name: 使用重启策略运行任务
-          href: container-instances-restart-policy.md
-        - name: ACI 上的 Jenkins 生成代理
-          href: container-instances-jenkins.md
-    - name: 配置数据卷
-      items:
-        - name: Azure 文件
-          href: container-instances-volume-azure-files.md
-        - name: emptyDir
-          href: container-instances-volume-emptydir.md
-        - name: gitRepo
-          href: container-instances-volume-gitrepo.md
-        - name: secret
-          href: container-instances-volume-secret.md
-    - name: 故障排除
-      items:
-        - name: 获取容器日志和事件
-          href: container-instances-get-logs.md
-        - name: 排查常见问题
-          href: container-instances-troubleshooting.md
+  - name: 部署
+    items:
+    - name: 多容器组 - YAML
+      href: container-instances-multi-container-yaml.md
+    - name: 多容器组 - 资源管理器
+      href: container-instances-multi-container-group.md
+    - name: 从 Azure 容器注册表部署
+      href: container-instances-using-azure-container-registry.md
+    - name: 设置环境变量 (env)
+      href: container-instances-environment-variables.md
+    - name: 配置运行情况探测
+      href: container-instances-liveness-probe.md
+  - name: 管理
+    items:
+    - name: 更新正在运行的容器
+      href: container-instances-update.md
+    - name: 执行命令 (exec)
+      href: container-instances-exec.md
+    - name: 监视 CPU 和内存使用情况
+      href: container-instances-monitor.md
+    - name: 使用 Azure Log Analytics 进行日志记录
+      href: container-instances-log-analytics.md
+  - name: 运行工作负荷
+    items:
+    - name: 使用重启策略运行任务
+      href: container-instances-restart-policy.md
+    - name: ACI 上的 Jenkins 生成代理
+      href: container-instances-jenkins.md
+  - name: 配置数据卷
+    items:
+    - name: Azure 文件
+      href: container-instances-volume-azure-files.md
+    - name: emptyDir
+      href: container-instances-volume-emptydir.md
+    - name: gitRepo
+      href: container-instances-volume-gitrepo.md
+    - name: secret
+      href: container-instances-volume-secret.md
+  - name: 故障排除
+    items:
+    - name: 获取容器日志和事件
+      href: container-instances-get-logs.md
+    - name: 排查常见问题
+      href: container-instances-troubleshooting.md
 - name: 引用
   items:
-    - name: Azure CLI
-      href: /cli/azure/container
-    - name: REST
-      href: /rest/api/container-instances
-    - name: PowerShell
-      href: '/powershell/module/azurerm.containerinstance#container_instances'
-    - name: .NET
-      href: /dotnet/api/overview/azure/containerinstance
-    - name: Python
-      href: /python/api/overview/azure/containerinstance
-    - name: Java
-      href: /java/api/overview/azure/containerinstance
-    - name: Node.js
-      href: /javascript/api/overview/azure/containerinstances
-    - name: 资源管理器模板
-      href: /azure/templates/microsoft.containerinstance/containergroups
+  - name: Azure CLI
+    href: /cli/azure/container
+  - name: REST
+    href: /rest/api/container-instances
+  - name: PowerShell
+    href: /powershell/module/azurerm.containerinstance#container_instances
+  - name: .NET
+    href: /dotnet/api/overview/azure/containerinstance
+  - name: Python
+    href: /python/api/overview/azure/containerinstance
+  - name: Java
+    href: /java/api/overview/azure/containerinstance
+  - name: Node.js
+    href: /javascript/api/overview/azure/containerinstances
+  - name: 资源管理器模板
+    href: /azure/templates/microsoft.containerinstance/containergroups
 - name: 资源
   items:
-    - name: 上市区域
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: 定价
-      href: 'https://azure.microsoft.com/pricing/details/container-instances/'
-    - name: 路线图
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: 提供产品反馈
-      href: 'https://feedback.azure.com/forums/602224-azure-container-instances'
-    - name: 堆栈溢出
-      href: 'http://stackoverflow.com/questions/tagged/azure-container-instances'
-    - name: 视频
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest'
+  - name: 利用 Microsoft Learn 掌握技能
+    href: /learn/browse/?products=azure-container-instances
+  - name: 上市区域
+    href: https://azure.microsoft.com/regions/services/
+  - name: 定价
+    href: https://azure.microsoft.com/pricing/details/container-instances/
+  - name: 路线图
+    href: https://azure.microsoft.com/roadmap/
+  - name: 提供产品反馈
+    href: https://feedback.azure.com/forums/602224-azure-container-instances
+  - name: 堆栈溢出
+    href: http://stackoverflow.com/questions/tagged/azure-container-instances
+  - name: 视频
+    href: https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest
+ms.openlocfilehash: 25214a5bc5ec99b6569ee833f23a167d8e301d29
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996581"

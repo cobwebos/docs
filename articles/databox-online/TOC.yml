@@ -1,0 +1,54 @@
+items:
+- name: 文档 - 用于脱机传输的 Azure Data Box
+  href: /azure/databox-online/
+  expanded: true
+- name: Data Box Gateway
+  items:
+  - name: 概述
+    items:
+    - name: 什么是 Data Box Gateway？
+      href: data-box-gateway-overview.md
+  - name: 教程
+    items:
+    - name: 1 - 准备
+      href: data-box-gateway-deploy-prep.md
+    - name: 2A - 在 Hyper-V 中预配
+      href: data-box-gateway-deploy-provision-hyperv.md
+    - name: 2B - 在 VMware 中预配
+      href: data-box-gateway-deploy-provision-vmware.md
+    - name: 3 - 连接、设置、激活
+      href: data-box-gateway-deploy-connect-setup-activate.md
+    - name: 4 - 添加、连接到共享
+      href: data-box-gateway-deploy-add-shares.md
+  - name: 概念
+    items:
+    - name: 审查要求
+      href: data-box-gateway-system-requirements.md
+    - name: 了解限制
+      href: data-box-gateway-limits.md
+  - name: 发行说明
+    items:
+    - name: 预览
+      href: data-box-gateway-release-notes.md
+- name: Data Box Edge
+  items:
+  - name: 概述
+    items:
+    - name: 什么是 Azure Data Box Edge？
+      href: data-box-edge-overview.md
+- name: 资源
+  items:
+  - name: Azure 路线图
+    href: https://azure.microsoft.com/roadmap/?category=storage
+  - name: Azure Data Box 市场营销
+    href: https://azure.microsoft.com/services/storage/databox-online
+  - name: 定价
+    href: https://azure.microsoft.com/pricing/
+  - name: 服务更新
+    href: https://azure.microsoft.com/updates/?product=databox
+ms.openlocfilehash: e4371e6c6d8432dd579116a6b775af482b0e5794
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985752"

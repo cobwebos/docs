@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: e7347b521bf490f1148fb1c7ca7e94d502be9019
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 3425a7b65ce81ca3d45a0ccdfe613ffdfef4f90f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281725"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953597"
 documentType: LandingData
 title: Azure Service Fabric 网格文档
 metadata:
@@ -40,11 +40,11 @@ sections:
 - title: 分步教程
   items:
   - type: paragraph
-    text: 了解如何创建、调试和部署多服务 Azure Service Fabric 网格应用。
+    text: 了解如何使用 Visual Studio 生成和部署网格应用。
   - type: list
     style: unordered
     items:
-    - html: <a href="/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore">创建、调试多服务 Web 应用并将其部署到 Service Fabric 网格</a>
+    - html: <a href="/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore">创建、调试和升级多服务 Web 应用并将其部署到 Service Fabric 网格</a>
 - title: 引用
   items:
   - type: list

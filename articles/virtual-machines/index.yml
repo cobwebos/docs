@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c17d97e708c50d0670288eefdfde1b2d30e9fc19
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 52af3ada5d32a2cd6c3e7edb3ea5b4a693548cf8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43184340"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954426"
 documentType: LandingData
 title: 虚拟机文档
 metadata:
@@ -77,6 +77,29 @@ sections:
         src: https://docs.microsoft.com/azure/virtual-machines/windows/media/index/cli.svg
       text: Azure CLI
       href: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-quick-create-cli?toc=/azure/virtual-machines/windows/toc.json
+- title: 利用 Microsoft Learn 掌握技能
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Azure 计算简介
+      href: /learn/modules/intro-to-azure-compute/
+      image:
+        src: /learn/achievements/intro-to-azure-compute.svg
+        href: /learn/modules/intro-to-azure-compute/
+    - title: Azure 虚拟机简介
+      href: /learn/modules/intro-to-azure-virtual-machines/
+      image:
+        src: /learn/achievements/intro-to-azure-virtual-machines.svg
+        href: /learn/modules/intro-to-azure-virtual-machines/
+    - title: 在 Azure 虚拟机中添加磁盘并调整磁盘大小
+      href: /learn/modules/add-and-size-disks-in-azure-virtual-machines/
+      image:
+        src: /learn/achievements/add-and-size-disks-in-azure-virtual-machines.svg
+        href: /learn/modules/add-and-size-disks-in-azure-virtual-machines/
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-virtual-machines">更多交互式学习...</a>
 - title: 免费 Pluralsight 视频培训
   items:
   - type: list

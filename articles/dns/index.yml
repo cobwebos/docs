@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2ee8284861d62d4405d0f949ee74b1992440b66e
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 701bf7db8304189b9348cad1c920f3e5ec1fecf1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43184554"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991124"
 documentType: LandingData
 title: Azure DNS 文档
 metadata:
@@ -48,11 +48,14 @@ sections:
   - type: paragraph
     text: 了解如何将域托管到 Azure DNS 中，如何使用 Azure DNS 为 Web 应用创建自定义 DNS 记录，以及如何创建专用 DNS 区域和记录。
   - type: list
-    style: ordered
+    style: unordered
     items:
     - html: <a href="/azure/dns/dns-delegate-domain-azure-dns">在 Azure DNS 中托管域</a>
     - html: <a href="/azure/dns/dns-web-sites-custom-domain">为 Web 应用创建自定义 DNS 记录</a>
     - html: <a href="/azure/dns/private-dns-getstarted-powershell">创建专用 DNS 区域和记录</a>
+    - html: <a href="/azure/dns/tutorial-alias-pip">配置表示 Azure 公共 IP 地址的别名记录</a>
+    - html: <a href="/azure/dns/tutorial-alias-tm">使用流量管理器配置支持顶点域名的别名记录</a>
+    - html: <a href="/azure/dns/tutorial-alias-rr">配置区域记录的别名记录</a>
 - title: 免费 Pluralsight 视频培训
   items:
   - type: list

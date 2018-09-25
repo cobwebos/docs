@@ -1,47 +1,57 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: cad92cb36f3e5e038186e9b97f30bed9525e2fea
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978737"
 documentType: LandingData
 title: Azure 成本管理文档
 metadata:
   title: 成本管理文档 - 教程和 API 参考 | Microsoft Docs
-  description: Azure 成本管理是一个多云成本管理解决方案，可帮助你使用 Azure 和其他云资源。 使用快速入门和教程，了解如何查看用量与成本、主动管理成本、预测开支以及优化成本。
+  description: Azure 成本管理是一种成本管理解决方案，可帮助监视和控制 Azure 支出并优化资源使用。 通过我们的快速入门和教程，了解如何分析成本，创建和管理预算，导出数据，以及查看和采纳建议。
   services: cost-management
   author: bandersmsft
-  manager: carmonm
+  manager: dougeby
   ms.service: cost-management
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 02/27/2018
+  ms.date: 09/14/2019
   ms.author: banders
-  ms.openlocfilehash: d6fa2486944fdecab67996bd7a8c7f656ffb2e72
-  ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-  ms.translationtype: HT
-  ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/16/2018
-  ms.locfileid: "29935326"
 abstract:
-  description: Cloudyn（一家 Microsoft 子公司）授权的 Azure 成本管理是一个多云成本管理解决方案，可帮助你最佳地利用并管理 Azure 和其他云资源。 使用快速入门和教程，了解如何查看用量与成本、主动管理成本、预测开支以及优化成本。
+  description: Azure 成本管理是一种成本管理解决方案，可帮助监视和控制 Azure 支出并优化资源使用。 通过我们的快速入门和教程，了解如何分析成本，创建和管理预算，导出数据，以及查看和采纳建议。
 sections:
 - title: 5 分钟快速入门
   items:
   - type: paragraph
-    text: 了解如何将 Azure 协议或订阅信息注册到成本管理并开始查看成本数据。
+    text: 了解如何开始使用 Azure 成本管理来分析组织中的成本。
   - type: list
     style: icon48
     items:
     - image:
         src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: 查看成本数据
-      href: quick-register-azure-sub
+      text: 分析成本
+      href: quick-acm-cost-analysis
 - title: 分步教程
   items:
   - type: paragraph
-    text: 了解如何使用成本管理查看用量与成本、主动管理成本、预测开支以及优化成本。
+    text: 了解如何使用成本管理创建预算，导出数据以及查看和采纳建议。
   - type: list
     style: ordered
     items:
-    - html: <a href="tutorial-review-usage">查看用量和成本以检测异常和效率</a>
-    - html: <a href="tutorial-forecast-spending">预测将来的支出</a>
-    - html: <a href="tutorial-manage-costs">根据成本分配和 Showback 与 Chargeback 报表管理成本</a>
-    - html: <a href="tutorial-optimize-reserved-instances">优化保留实例</a>
-    - html: <a href="tutorial-user-access">分配对成本管理数据的访问权限</a>
+    - html: <a href="tutorial-acm-create-budgets">创建并管理预算</a>
+    - html: <a href="tutorial-export-acm-data">导出数据</a>
+    - html: <a href="tutorial-acm-opt-recommendations">查看并采纳优化建议</a>
+- title: 利用 Microsoft Learn 掌握技能
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: 预测 Azure 的成本并优化支出
+      href: /learn/modules/predict-costs-and-optimize-spending/
+      image:
+        src: /learn/achievements/predict-costs-and-optimize-spending.svg
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-cost-management">更多交互式学习...</a>

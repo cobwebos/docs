@@ -1,175 +1,200 @@
+items:
 - name: 用于 PostgreSQL 的 Azure DB 文档
   href: index.yml
 - name: 概述
   items:
-    - name: 用于 PostgreSQL 的 Azure DB
-      href: overview.md
+  - name: 用于 PostgreSQL 的 Azure DB
+    href: overview.md
 - name: 快速入门
-  expanded: true
   items:
-    - name: 创建 DB - 门户
-      href: quickstart-create-server-database-portal.md
-    - name: 创建 DB - Azure CLI
-      href: quickstart-create-server-database-azure-cli.md
-    - name: 连接和查询
-      items:
-        - name: Python
-          href: connect-python.md
-        - name: Node.js
-          href: connect-nodejs.md
-        - name: Java
-          href: connect-java.md
-        - name: Ruby
-          href: connect-ruby.md
-        - name: PHP
-          href: connect-php.md
-        - name: .NET
-          href: connect-csharp.md
-        - name: Go
-          href: connect-go.md
+  - name: 创建 DB - 门户
+    href: quickstart-create-server-database-portal.md
+  - name: 创建 DB - Azure CLI
+    href: quickstart-create-server-database-azure-cli.md
+  - name: 连接和查询
+    items:
+    - name: Python
+      href: connect-python.md
+    - name: Node.js
+      href: connect-nodejs.md
+    - name: Java
+      href: connect-java.md
+    - name: Ruby
+      href: connect-ruby.md
+    - name: PHP
+      href: connect-php.md
+    - name: .NET
+      href: connect-csharp.md
+    - name: Go
+      href: connect-go.md
+  expanded: true
 - name: 教程
   items:
-    - name: 1 - 设计数据库
-      items:
-        - name: Azure 门户
-          href: tutorial-design-database-using-azure-portal.md
-        - name: Azure CLI
-          href: tutorial-design-database-using-azure-cli.md
-    - name: 2 - 设计 Web 应用 - Python
-      href: ../app-service-web/app-service-web-tutorial-docker-python-postgresql-app.md?toc=%2fazure%2fpostgresql%2ftoc.json
+  - name: 1 - 设计数据库
+    items:
+    - name: Azure 门户
+      href: tutorial-design-database-using-azure-portal.md
+    - name: Azure CLI
+      href: tutorial-design-database-using-azure-cli.md
+  - name: 2 - 设计 Web 应用 - Python
+    href: ../app-service-web/app-service-web-tutorial-docker-python-postgresql-app.md?toc=%2fazure%2fpostgresql%2ftoc.json
+  - name: 3 - 监视和优化
+    href: tutorial-monitor-and-tune.md
 - name: 示例
   items:
-    - name: Azure CLI
-      href: sample-scripts-azure-cli.md
+  - name: Azure CLI
+    href: sample-scripts-azure-cli.md
 - name: 概念
   items:
-    - name: 数据库和服务器
-      items:
-        - name: 服务器
-          href: concepts-servers.md
-        - name: 支持的版本
-          href: concepts-supported-versions.md
-        - name: PostgreSQL 扩展
-          href: concepts-extensions.md
-        - name: 服务器日志
-          href: concepts-server-logs.md
-        - name: 高可用性
-          href: concepts-high-availability.md
-    - name: 资源
-      items:
-        - name: 定价层
-          href: concepts-pricing-tiers.md
-        - name: 限制
-          href: concepts-limits.md
-    - name: 数据访问和安全性
-      items:
-        - name: 防火墙规则
-          href: concepts-firewall-rules.md
-        - name: 配置 SSL
-          href: concepts-ssl-connection-security.md
-        - name: VNet
-          href: concepts-data-access-and-security-vnet.md
-    - name: 业务连续性
-      items:
-        - name: 概述
-          href: concepts-business-continuity.md
-        - name: 备份和还原
-          href: concepts-backup.md
-    - name: 监视
+  - name: 数据库和服务器
+    items:
+    - name: 服务器
+      href: concepts-servers.md
+    - name: 支持的版本
+      href: concepts-supported-versions.md
+    - name: PostgreSQL 扩展
+      href: concepts-extensions.md
+    - name: 服务器日志
+      href: concepts-server-logs.md
+    - name: 高可用性
+      href: concepts-high-availability.md
+  - name: 资源
+    items:
+    - name: 定价层
+      href: concepts-pricing-tiers.md
+    - name: 限制
+      href: concepts-limits.md
+  - name: 数据访问和安全性
+    items:
+    - name: 防火墙规则
+      href: concepts-firewall-rules.md
+    - name: 配置 SSL
+      href: concepts-ssl-connection-security.md
+    - name: VNet
+      href: concepts-data-access-and-security-vnet.md
+  - name: 业务连续性
+    items:
+    - name: 概述
+      href: concepts-business-continuity.md
+    - name: 备份和还原
+      href: concepts-backup.md
+  - name: 监视和优化
+    items:
+    - name: 监视和优化
       href: concepts-monitoring.md
-    - name: 开发
+    - name: 查询存储
       items:
-        - name: 连接库
-          href: concepts-connection-libraries.md
+      - name: 查询存储
+        href: concepts-query-store.md
+      - name: Query Store 使用方案
+        href: concepts-query-store-scenarios.md
+      - name: 查询存储最佳做法
+        href: concepts-query-store-best-practices.md
+    - name: 查询性能见解
+      href: concepts-query-performance-insight.md
+    - name: 性能建议
+      href: concepts-performance-recommendations.md
+  - name: 开发
+    items:
+    - name: 连接库
+      href: concepts-connection-libraries.md
 - name: 操作指南
   items:
-    - name: 创建用户
-      href: howto-create-users.md
-    - name: 管理防火墙
-      items:
-        - name: Azure 门户
-          href: howto-manage-firewall-using-portal.md
-        - name: Azure CLI
-          href: howto-manage-firewall-using-cli.md
-    - name: 还原服务器
-      items:
-        - name: Azure 门户
-          href: howto-restore-server-portal.md
-        - name: Azure CLI
-          href: howto-restore-server-cli.md
-    - name: 迁移数据库
-      items:
-        - name: 转储和还原
-          href: howto-migrate-using-dump-and-restore.md
-        - name: 导入和导出
-          href: howto-migrate-using-export-and-import.md
-        - name: 停机时间最短的迁移
-          href: howto-migrate-online.md
-    - name: 配置服务器参数
-      items:
-        - name: Azure 门户
-          href: howto-configure-server-parameters-using-portal.md
-        - name: Azure CLI
-          href: howto-configure-server-parameters-using-cli.md
-    - name: 访问服务器日志
-      items:
-        - name: Azure 门户
-          href: howto-configure-server-logs-in-portal.md
-        - name: Azure CLI
-          href: howto-configure-server-logs-using-cli.md
-    - name: 监视
-      items:
-        - name: 针对指标创建警报
-          href: howto-alert-on-metric.md
-    - name: 虚拟网络
-      items:
-        - name: Azure 门户
-          href: howto-manage-vnet-using-portal.md
-        - name: Azure CLI
-          href: howto-manage-vnet-using-cli.md
+  - name: 创建用户
+    href: howto-create-users.md
+  - name: 管理防火墙
+    items:
+    - name: Azure 门户
+      href: howto-manage-firewall-using-portal.md
+    - name: Azure CLI
+      href: howto-manage-firewall-using-cli.md
+  - name: 还原服务器
+    items:
+    - name: Azure 门户
+      href: howto-restore-server-portal.md
+    - name: Azure CLI
+      href: howto-restore-server-cli.md
+  - name: 迁移数据库
+    items:
+    - name: 转储和还原
+      href: howto-migrate-using-dump-and-restore.md
+    - name: 导入和导出
+      href: howto-migrate-using-export-and-import.md
+    - name: 停机时间最短的迁移
+      href: howto-migrate-online.md
+  - name: 配置服务器参数
+    items:
+    - name: Azure 门户
+      href: howto-configure-server-parameters-using-portal.md
+    - name: Azure CLI
+      href: howto-configure-server-parameters-using-cli.md
+  - name: 访问服务器日志
+    items:
+    - name: Azure 门户
+      href: howto-configure-server-logs-in-portal.md
+    - name: Azure CLI
+      href: howto-configure-server-logs-using-cli.md
+  - name: 监视
+    items:
+    - name: 针对指标创建警报
+      href: howto-alert-on-metric.md
+  - name: 虚拟网络
+    items:
+    - name: Azure 门户
+      href: howto-manage-vnet-using-portal.md
+    - name: Azure CLI
+      href: howto-manage-vnet-using-cli.md
 - name: 引用
   items:
-    - name: Azure CLI
-      href: /cli/azure/postgres
-    - name: REST API
-      href: /rest/api/postgresql
+  - name: Azure CLI
+    href: /cli/azure/postgres
+  - name: REST API
+    href: /rest/api/postgresql
 - name: 资源
   items:
-    - name: 部署模板
-      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbforpostgresql'
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/?category=databases'
-    - name: 定价
-      href: 'https://azure.microsoft.com/pricing/details/postgresql/'
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDatabaseforPostgreSQL'
-    - name: 堆栈溢出
-      href: 'http://stackoverflow.com/questions/tagged/azure-database-postgresql'
-    - name: 视频
+  - name: 利用 Microsoft Learn 掌握技能
+    href: /learn/browse/
+  - name: 部署模板
+    href: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbforpostgresql
+  - name: Azure 路线图
+    href: https://azure.microsoft.com/roadmap/?category=databases
+  - name: 定价
+    href: https://azure.microsoft.com/pricing/details/postgresql/
+  - name: MSDN 论坛
+    href: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDatabaseforPostgreSQL
+  - name: 堆栈溢出
+    href: http://stackoverflow.com/questions/tagged/azure-database-postgresql
+  - name: 视频
+    items:
+    - name: 产品视频
+      href: videos.md
+    - name: 操作方法视频系列
       items:
-        - name: 产品视频
-          href: videos.md
-        - name: 操作方法视频系列
-          items:
-            - name: 了解产品功能和优势
-              href: 'https://aka.ms/postg-intro-vid'
-            - name: 将 PostgreSQL 应用迁移到 Azure
-              href: 'https://aka.ms/postg-migrate-vid'
-            - name: 生成带有认知服务的智能应用
-              href: 'https://aka.ms/postg-cogsvs-vid'
-            - name: 使用 OSBA 连接容器
-              href: 'https://aka.ms/postg-osba-vid'
-            - name: 将应用的数据连接到 Power BI
-              href: 'https://aka.ms/postg-powerbi-vid'
-    - name: 反馈论坛
-      href: 'https://feedback.azure.com/forums/597976-azure-database-for-postgresql'
-    - name: 上市区域
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: 支持选项
-      href: 'https://azure.microsoft.com/support/options/'
-    - name: 客户案例
-      href: 'https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20PostgreSQL"'
-    - name: 合作伙伴
-      href: partners-migration-postgresql.md
-    - name: 数据库迁移指南
-      href: 'https://datamigration.microsoft.com/'
+      - name: 了解产品功能和优势
+        href: https://aka.ms/postg-intro-vid
+      - name: 将 PostgreSQL 应用迁移到 Azure
+        href: https://aka.ms/postg-migrate-vid
+      - name: 生成带有认知服务的智能应用
+        href: https://aka.ms/postg-cogsvs-vid
+      - name: 使用 OSBA 连接容器
+        href: https://aka.ms/postg-osba-vid
+      - name: 将应用的数据连接到 Power BI
+        href: https://aka.ms/postg-powerbi-vid
+  - name: 反馈论坛
+    href: https://feedback.azure.com/forums/597976-azure-database-for-postgresql
+  - name: 上市区域
+    href: https://azure.microsoft.com/regions/services/
+  - name: 支持选项
+    href: https://azure.microsoft.com/support/options/
+  - name: 客户案例
+    href: https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20PostgreSQL"
+  - name: 合作伙伴
+    href: partners-migration-postgresql.md
+  - name: 数据库迁移指南
+    href: https://datamigration.microsoft.com/
+ms.openlocfilehash: c6e7a97d384fa6f8cbc82ed2c7722f1f93085153
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967823"

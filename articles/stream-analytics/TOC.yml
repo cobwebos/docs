@@ -23,6 +23,8 @@ items:
     href: stream-analytics-javascript-user-defined-functions.md
   - name: 4 - 在 Azure Pipelines 中通过 CI/CD 进行部署
     href: stream-analytics-tools-visual-studio-cicd-vsts.md
+  - name: 5 - 在 Edge 上运行 C# UDF
+    href: stream-analytics-edge-csharp-udf.md
 - name: 示例
   items:
   - name: 代码示例
@@ -122,14 +124,18 @@ items:
     items:
     - name: 安装工具
       href: stream-analytics-tools-for-visual-studio-install.md
-    - name: 在本地测试作业
+    - name: 使用示例数据进行测试
       href: stream-analytics-vs-tools-local-run.md
+    - name: 使用实时数据进行测试
+      href: stream-analytics-live-data-local-testing.md
     - name: 在 Visual Studio 中查看作业
       href: stream-analytics-vs-tools.md
     - name: 开发 Edge 作业
       href: stream-analytics-tools-for-visual-studio-edge-jobs.md
     - name: 设置 CI/CD 管道
       href: stream-analytics-tools-for-visual-studio-cicd.md
+    - name: 编写适用于 Edge 的 .NET UDF
+      href: stream-analytics-edge-csharp-udf-methods.md
   - name: 故障排除
     items:
     - name: 疑难解答步骤
@@ -186,9 +192,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: 白皮书 - 实时事件处理
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: b74d5aafe289ede8478d3e9ddb74e244030d948d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 98167171446822773b6905e8f1dd19d0b2002b9f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296034"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990036"

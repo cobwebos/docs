@@ -1,51 +1,65 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 15863679b42962d414493804f234c9fde46172ea
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: c3120d4fb8fb9377d43cdd2df780810bb4634e52
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781152"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985021"
 documentType: LandingData
 title: Azure 机器学习服务（预览版）文档
 metadata:
-  title: Azure 机器学习服务（预览版）文档
-  meta.description: Learn how to use Azure Machine Learning services (preview).
+  title: Azure 机器学习文档（预览版）- 教程和 API 参考 | Microsoft Docs
+  meta.description: Learn how to build intelligent algorithms into apps and websites. Use Scikit-learn, Tensorflow, Pytorch or any other Python-based framework to build your machine learning model and train it locally or in the cloud. Tutorials, quickstarts, API references, and examples show you how.
   services: machine-learning
-  author: garyericson
+  author: j-martens
   manager: jhubbard
   ms.service: machine-learning
   ms.component: core
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 01/18/2018
-  ms.author: garye
+  ms.date: 09/24/2018
+  ms.author: jmartens
 abstract:
-  description: 借助 Azure 机器学习服务（预览版），可以使用任何 Python 工具和库生成、部署和管理机器学习与 AI 模型。 可以使用 Azure 中的各种数据与计算服务来存储和处理数据。
+  description: 了解如何将智能算法内置到应用和网站中。 使用 Scikit-learn、Tensorflow、Pytorch 或任何其他基于 Python 的框架来生成机器学习模型，并在本地或云中对其进行训练。 教程、快速入门、API 参考和示例演示了操作方法。
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsB
+    columns: 1
+    items:
+    - html: <p>在 Azure 云服务中训练和部署 ML 模型。 <a href="overview-what-is-azure-ml.md">详细了解服务...</a></p>
+      image:
+        src: /azure/machine-learning/media/index/i_machine-learning.svg
+      title: Azure 机器学习服务
 - title: 5 分钟快速入门
   items:
   - type: paragraph
-    text: 创建第一个机器学习项目
+    text: 为 Azure 机器学习服务设置资源。
   - type: list
     style: unordered
     items:
-    - html: <a href="quickstart-installation.md">安装和创建</a>
+    - html: <a href="quickstart-get-started.md">在 Azure 门户中开始</a>
 - title: 分步教程
   items:
   - type: paragraph
-    text: 了解如何准备数据、设置试验和操作模型
+    text: 了解如何设置试验和操作模型。
   - type: list
-    style: ordered
+    style: unordered
     items:
-    - html: <a href="../desktop-workbench/tutorial-classifying-iris-part-1">逐步学习机器学习服务（预览版）的基础知识</a>
-    - html: <a href="../desktop-workbench/tutorial-classifying-iris-part-2">在 Machine Learning Workbench 中使用 Iris 鲜花数据集生成模型</a>
-    - html: <a href="../desktop-workbench/tutorial-classifying-iris-part-3">了解如何部署机器学习模型</a>
-    - html: <a href="../desktop-workbench/tutorial-bikeshare-dataprep">使用 Azure Machine Learning Workbench 进行高级数据准备</a>
-- title: 更多 Azure 机器学习技术
+    - html: <a href="tutorial-train-models-with-aml">训练自己的机器学习模型</a>
+    - html: <a href="tutorial-auto-train-models">让我们为你自动生成和自动优化模型</a>
+    - html: <a href="tutorial-deploy-models-with-aml">将模型部署为 Web 服务</a>
+- title: 引用
   items:
-  - type: paragraph
-    text: Azure 机器学习中可用的其他技术：
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="http://aka.ms/aml-sdk">适用于 Python 的 Azure 机器学习 SDK（主 SDK）</a>
+    - html: <a href="https://docs.microsoft.com/python/api/overview/azure/dataprep?view=azure-dataprep-py">Azure 机器学习数据准备 SDK</a>
+- title: 其他 Azure 机器学习技术
+  items:
   - type: list
     style: cards
     className: cardsFTitle
@@ -60,15 +74,3 @@ sections:
       image:
         src: media/index/virtual-machines.svg
         href: /azure/machine-learning/data-science-virtual-machine/
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: 包
-      html: <p><a href="reference-python-package-overview#amlpcv">计算机视觉</a></p><p><a href="reference-python-package-overview#amlpf">预测</a></p><p><a href="reference-python-package-overview#amlrealtimeai">FPGA 加速</a></p><p><a href="reference-python-package-overview#amlpta">文本分析</a></p>
-    - title: 语言
-      html: <p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>
-    - title: REST
-      html: <p><a href="https://docs.microsoft.com/rest/api/machinelearning/">REST 管理 API</a></p>

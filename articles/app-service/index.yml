@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 5abd2c6246ba04bd5cfa90d1cd549208f4cbf0e8
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 6c8737b353503144094a4e2fb6bc7b5471a377b9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44294385"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989917"
 documentType: LandingData
 title: Web 应用文档
 metadata:
@@ -115,6 +115,19 @@ sections:
     - html: <a href="/azure/app-service/app-service-web-tutorial-custom-domain">将现有自定义域映射到应用程序</a>
     - html: <a href="/azure/app-service/app-service-web-tutorial-custom-SSL">将现有 SSL 证书绑定到应用程序</a>
     - html: <a href="/azure/app-service/app-service-web-tutorial-content-delivery-network">将 CDN 添加到应用程序</a>
+- title: 利用 Microsoft Learn 掌握技能
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: 通过 Azure 应用服务托管 Web 应用程序
+      href: /learn/modules/host-a-web-app-with-azure-app-service/
+      image:
+        src: /learn/achievements/host-a-web-app-with-azure-app-service.svg
+        href: /learn/modules/host-a-web-app-with-azure-app-service/
+  - type: paragraph
+    text: <a href="/learn/browse/">更多交互式学习...</a>
 - title: 免费 Pluralsight 视频培训
   items:
   - type: list

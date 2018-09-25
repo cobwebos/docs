@@ -1,69 +1,90 @@
+items:
 - name: Service Fabric 网格文档
   href: index.yml
 - name: 概述
-  expanded: true
   items:
-    - name: 关于 Service Fabric 网格
-      href: service-fabric-mesh-overview.md
+  - name: 关于 Service Fabric 网格
+    href: service-fabric-mesh-overview.md
+  expanded: true
 - name: 快速入门
   items:
-    - name: 部署 Hello World
-      href: service-fabric-mesh-quickstart-deploy-container.md
-    - name: 创建 Web 应用并将其部署到 Azure Service Fabric 网格
-      href: service-fabric-mesh-quickstart-dotnet-core.md
+  - name: 部署 Hello World
+    href: service-fabric-mesh-quickstart-deploy-container.md
+  - name: 创建 Web 应用并将其部署到 Azure Service Fabric 网格
+    href: service-fabric-mesh-quickstart-dotnet-core.md
 - name: 教程
   items:
-    - name: 创建、调试和部署多服务 Service Fabric 网格 Web 应用
-      items:
-        - name: 1- 生成 Service Fabric 网格 Web 应用
-          href: service-fabric-mesh-tutorial-create-dotnetcore.md
-        - name: 2- 调试 Service Fabric 网格 Web 应用
-          href: service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md
-        - name: 3- 部署 Service Fabric 网格 Web 应用
-          href: service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md
+  - name: 使用 Visual Studio 生成和部署网格应用
+    items:
+    - name: 1- 创建网格应用
+      href: service-fabric-mesh-tutorial-create-dotnetcore.md
+    - name: 2- 调试网格应用
+      href: service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md
+    - name: 3- 部署网格应用
+      href: service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md
+    - name: 4- 升级网格应用
+      href: service-fabric-mesh-tutorial-upgrade.md
+    - name: 5- 清理网格资源
+      href: service-fabric-mesh-tutorial-cleanup-resources.md
+  - name: 使用模板部署、缩放和升级 Service Fabric 网格应用
+    items:
+    - name: 1- 部署 Service Fabric 网格应用
+      href: service-fabric-mesh-tutorial-template-deploy-app.md
+    - name: 2- 缩放应用程序中的服务
+      href: service-fabric-mesh-tutorial-template-scale-services.md
+    - name: 3- 升级应用程序
+      href: service-fabric-mesh-tutorial-template-upgrade-app.md
+    - name: 4- 删除应用程序
+      href: service-fabric-mesh-tutorial-template-remove-app.md
 - name: 概念
   items:
-    - name: 术语
-      href: service-fabric-mesh-terminology.md
-    - name: Service Fabric 资源
-      href: service-fabric-mesh-service-fabric-resources.md
-    - name: 监视和诊断
-      href: service-fabric-mesh-monitoring-diagnostics.md
-    - name: 存储状态
-      href: service-fabric-mesh-storing-state.md
+  - name: 术语
+    href: service-fabric-mesh-terminology.md
+  - name: Service Fabric 资源
+    href: service-fabric-mesh-service-fabric-resources.md
+  - name: 监视和诊断
+    href: service-fabric-mesh-monitoring-diagnostics.md
+  - name: 存储状态
+    href: service-fabric-mesh-storing-state.md
 - name: 操作指南
   items:
-    - name: 设置开发环境
-      href: service-fabric-mesh-howto-setup-developer-environment-sdk.md
-    - name: 设置 Service Fabric 网格 CLI
-      href: service-fabric-mesh-howto-setup-cli.md
-    - name: 部署 .NET Core 微服务应用
-      href: service-fabric-mesh-howto-deploy-app-template.md
-    - name: 从专用注册表部署应用
-      href: service-fabric-mesh-howto-deploy-app-private-registry.md
-    - name: 使用 Azure 文件卷存储状态
-      href: service-fabric-mesh-howto-deploy-app-azurefiles-volume.md
-    - name: 独立缩放应用中的微服务
-      href: service-fabric-mesh-howto-app-scale-out.md
+  - name: 设置开发环境
+    href: service-fabric-mesh-howto-setup-developer-environment-sdk.md
+  - name: 设置 Service Fabric 网格 CLI
+    href: service-fabric-mesh-howto-setup-cli.md
+  - name: 部署 .NET Core 微服务应用
+    href: service-fabric-mesh-howto-deploy-app-template.md
+  - name: 从专用注册表部署应用
+    href: service-fabric-mesh-howto-deploy-app-private-registry.md
+  - name: 使用 Azure 文件卷存储状态
+    href: service-fabric-mesh-howto-deploy-app-azurefiles-volume.md
+  - name: 独立缩放应用中的微服务
+    href: service-fabric-mesh-howto-app-scale-out.md
 - name: 引用
   items:
-    - name: Service Fabric 网格资源提供程序 REST API
-      href: /rest/api/servicefabric/sfmeshrp-index
-    - name: Service Fabric 客户端资源 REST API
-      href: '/rest/api/servicefabric/sfclient-index#service-fabric-resource-model'
+  - name: Service Fabric 网格资源提供程序 REST API
+    href: /rest/api/servicefabric/sfmeshrp-index
+  - name: Service Fabric 客户端资源 REST API
+    href: /rest/api/servicefabric/sfclient-index#service-fabric-resource-model
 - name: 资源
   items:
-    - name: 常见问题
-      href: service-fabric-mesh-faq.md
-    - name: 示例应用程序
-      href: 'https://github.com/Azure-Samples/service-fabric-mesh'
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/?category=service-fabric-mesh'
-    - name: 堆栈溢出
-      href: 'https://stackoverflow.com/search?q=service-fabric-mesh'
-    - name: 视频
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=service-fabric-mesh'
-    - name: 服务更新
-      href: 'https://azure.microsoft.com/updates/?product=service-fabric-mesh'
-    - name: 区域可用性
-      href: 'https://azure.microsoft.com/regions/services/'
+  - name: 常见问题
+    href: service-fabric-mesh-faq.md
+  - name: 示例应用程序
+    href: https://github.com/Azure-Samples/service-fabric-mesh
+  - name: Azure 路线图
+    href: https://azure.microsoft.com/roadmap/?category=service-fabric-mesh
+  - name: 堆栈溢出
+    href: https://stackoverflow.com/search?q=service-fabric-mesh
+  - name: 视频
+    href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric-mesh
+  - name: 服务更新
+    href: https://azure.microsoft.com/updates/?product=service-fabric-mesh
+  - name: 区域可用性
+    href: https://azure.microsoft.com/regions/services/
+ms.openlocfilehash: aeb4b1581f73523927c7cdc087036c55dacb548f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997297"

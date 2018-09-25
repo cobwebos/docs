@@ -1,63 +1,112 @@
+items:
 - name: Azure 成本管理文档
   href: index.yml
-- name: 概述
   items:
+  - name: 概述
+    items:
     - name: 什么是成本管理？
-      href: overview.md
-- name: 快速入门
-  expanded: true
-  items:
-    - name: 查看成本数据
-      href: quick-register-azure-sub.md
-    - name: 查看成本数据 - EA
-      href: quick-register-ea.md
-    - name: 查看成本数据 - CSP
-      href: quick-register-csp.md
-- name: 教程
-  items:
-    - name: 1 - 查看使用情况和成本
-      href: tutorial-review-usage.md
-    - name: 2 - 预测支出
-      href: tutorial-forecast-spending.md
-    - name: 3 - 管理成本
-      href: tutorial-manage-costs.md
-    - name: 4 - 优化预留实例
-      href: tutorial-optimize-reserved-instances.md
-    - name: 5 - 控制对数据的访问
-      href: tutorial-user-access.md
-- name: 概念
-  items:
-    - name: 了解成本报表
-      href: understanding-cost-reports.md
-- name: 操作指南
-  items:
-    - name: 激活 Azure 订阅和帐户
-      href: activate-subs-accounts.md
-    - name: 为 VM 添加扩展的指标
-      href: azure-vm-extended-metrics.md
-    - name: 连接 Google 帐户
-      href: connect-google-account.md
-    - name: 连接 AWS 帐户
-      href: connect-aws-account.md
-    - name: 配置存储帐户
-      href: storage-accounts.md
-    - name: 使用成本管理报表
-      href: use-reports.md
-    - name: 使用仪表板
-      href: dashboards.md
-    - name: 管理预算
-      href: manage-budgets.md
-- name: 资源
-  items:
-    - name: 成本管理视频
-      href: ref-videos.md
+      href: overview-cost-mgt.md
+  - name: 快速入门
+    items:
+    - name: 开始分析成本
+      href: quick-acm-cost-analysis.md
+    expanded: true
+  - name: 教程
+    items:
+    - name: 1 - 创建并管理预算
+      href: tutorial-acm-create-budgets.md
+    - name: 2 - 导出数据
+      href: tutorial-export-acm-data.md
+    - name: 3 - 优化建议
+      href: tutorial-acm-opt-recommendations.md
+  - name: 概念
+    items:
+    - name: Azure 成本管理最佳做法
+      href: cost-mgt-best-practices.md
+  - name: 引用
+    items:
+    - name: Azure 使用情况 API 概述
+      href: ../billing/billing-consumption-api-overview.md
+      items:
+      - name: Azure 使用情况 REST API
+        href: https://docs.microsoft.com/rest/api/consumption
     - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/'
+      href: https://azure.microsoft.com/roadmap/
+  - name: 资源
+    items:
+    - name: 利用 Microsoft Learn 掌握技能
+      href: /learn/browse/?products=azure-cost-management
+    - name: Azure 路线图
+      href: https://azure.microsoft.com/roadmap/
     - name: 定价
-      href: 'https://azure.microsoft.com/pricing/details/cost-management'
+      href: https://azure.microsoft.com/pricing/details/cost-management
     - name: 区域可用性
-      href: 'https://azure.microsoft.com/en-us/regions/services/'
-    - name: 常见问题
-      href: cost-mgt-faq.md
-    - name: 联系支持人员
-      href: support-request-cost-management.md
+      href: https://azure.microsoft.com/regions/services/
+  - name: Cloudyn
+    items:
+    - name: 概述
+      items:
+      - name: 什么是 Cloudyn？
+        href: overview.md
+    - name: 快速入门
+      items:
+      - name: 查看成本数据
+        href: quick-register-azure-sub.md
+      - name: 查看成本数据 - EA
+        href: quick-register-ea.md
+      - name: 查看成本数据 - CSP
+        href: quick-register-csp.md
+    - name: 教程
+      items:
+      - name: 1 - 查看使用情况和成本
+        href: tutorial-review-usage.md
+      - name: 2 - 预测支出
+        href: tutorial-forecast-spending.md
+      - name: 3 - 管理成本
+        href: tutorial-manage-costs.md
+      - name: 4 - 优化预留实例
+        href: tutorial-optimize-reserved-instances.md
+      - name: 5 - 控制对数据的访问
+        href: tutorial-user-access.md
+    - name: 概念
+      items:
+      - name: 了解成本报表
+        href: understanding-cost-reports.md
+    - name: 操作指南
+      items:
+      - name: 激活 Azure 订阅和帐户
+        href: activate-subs-accounts.md
+      - name: 为 VM 添加扩展的指标
+        href: azure-vm-extended-metrics.md
+      - name: 连接 Google 帐户
+        href: connect-google-account.md
+      - name: 连接 AWS 帐户
+        href: connect-aws-account.md
+      - name: 配置存储帐户
+        href: storage-accounts.md
+      - name: 使用 Cloudyn 报表
+        href: use-reports.md
+      - name: 使用仪表板
+        href: dashboards.md
+      - name: 管理预算
+        href: manage-budgets.md
+    - name: 资源
+      items:
+      - name: Cloudyn 视频
+        href: ref-videos.md
+      - name: Azure 路线图
+        href: https://azure.microsoft.com/roadmap/
+      - name: Cloudyn 定价
+        href: https://azure.microsoft.com/pricing/details/cost-management
+      - name: Clouydn 区域可用性
+        href: https://azure.microsoft.com/regions/services/
+      - name: Cloudyn 常见问题解答
+        href: cost-mgt-faq.md
+      - name: 联系 Cloudyn 支持人员
+        href: support-request-cost-management.md
+ms.openlocfilehash: 8bce54dbde8acd8fb8d03479036c934242d434cf
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972447"

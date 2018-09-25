@@ -1,326 +1,351 @@
+items:
 - name: 虚拟网络文档
   href: index.yml
 - name: 概述
   items:
-    - name: 关于虚拟网络
-      href: virtual-networks-overview.md
+  - name: 关于虚拟网络
+    href: virtual-networks-overview.md
 - name: 快速入门
-  expanded: true
   items:
-    - name: 创建虚拟网络 - 门户
-      href: quick-create-portal.md
-    - name: 创建虚拟网络 - PowerShell
-      href: quick-create-powershell.md
-    - name: 创建虚拟网络 - Azure CLI
-      href: quick-create-cli.md
+  - name: 创建虚拟网络 - 门户
+    href: quick-create-portal.md
+  - name: 创建虚拟网络 - PowerShell
+    href: quick-create-powershell.md
+  - name: 创建虚拟网络 - Azure CLI
+    href: quick-create-cli.md
+  expanded: true
 - name: 教程
   items:
-    - name: 筛选网络流量
-      href: tutorial-filter-network-traffic.md
-    - name: 路由网络流量
-      href: tutorial-create-route-table-portal.md
-    - name: 限制对资源的网络访问
-      href: tutorial-restrict-network-access-to-resources.md
-    - name: 连接虚拟网络
-      href: tutorial-connect-virtual-networks-portal.md
+  - name: 筛选网络流量
+    href: tutorial-filter-network-traffic.md
+  - name: 路由网络流量
+    href: tutorial-create-route-table-portal.md
+  - name: 限制对资源的网络访问
+    href: tutorial-restrict-network-access-to-resources.md
+  - name: 连接虚拟网络
+    href: tutorial-connect-virtual-networks-portal.md
 - name: 示例
   items:
-    - name: Azure CLI
-      href: cli-samples.md
-    - name: Azure PowerShell
-      href: powershell-samples.md
-    - name: 资源管理器模板
-      href: template-samples.md
-    - name: Azure Policy 模板
-      href: policy-samples.md
+  - name: Azure CLI
+    href: cli-samples.md
+  - name: Azure PowerShell
+    href: powershell-samples.md
+  - name: 资源管理器模板
+    href: template-samples.md
+  - name: Azure Policy 模板
+    href: policy-samples.md
 - name: 概念
   items:
-    - name: 安全组
-      href: security-overview.md
-    - name: 路由
-      href: virtual-networks-udr-overview.md
-    - name: 服务终结点
-      href: virtual-network-service-endpoints-overview.md
-    - name: 对等互连
-      href: virtual-network-peering-overview.md
-    - name: Azure 服务的虚拟网络
-      href: virtual-network-for-azure-services.md
-    - name: 容器网络
-      href: ../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-    - name: 业务连续性
-      href: virtual-network-disaster-recovery-guidance.md
+  - name: 安全组
+    href: security-overview.md
+  - name: 路由
+    href: virtual-networks-udr-overview.md
+  - name: 服务终结点
+    href: virtual-network-service-endpoints-overview.md
+  - name: 服务终结点策略
+    href: virtual-network-service-endpoint-policies-overview.md
+  - name: 对等互连
+    href: virtual-network-peering-overview.md
+  - name: 虚拟网络 TAP
+    href: virtual-network-tap-overview.md
+  - name: Azure 服务的虚拟网络
+    href: virtual-network-for-azure-services.md
+  - name: 容器网络
+    href: container-networking-overview.md
+  - name: 业务连续性
+    href: virtual-network-disaster-recovery-guidance.md
+  - name: IP 寻址
+    href: virtual-network-ip-addresses-overview-arm.md
+  - name: 公共 IP 前缀
+    href: public-ip-address-prefix.md
+  - name: DDOS 保护
+    href: ddos-protection-overview.md
+  - name: 经典
+    items:
     - name: IP 寻址
-      href: virtual-network-ip-addresses-overview-arm.md
-    - name: DDOS 保护
-      href: ddos-protection-overview.md
-    - name: 经典
-      items:
-        - name: IP 寻址
-          href: virtual-network-ip-addresses-overview-classic.md
-        - name: 访问控制列表
-          href: virtual-networks-acl.md
+      href: virtual-network-ip-addresses-overview-classic.md
+    - name: 访问控制列表
+      href: virtual-networks-acl.md
 - name: 操作指南
   items:
-    - name: 计划
+  - name: 计划
+    items:
+    - name: 虚拟网络
+      href: virtual-network-vnet-plan-design-arm.md
+  - name: 部署
+    items:
+    - name: 网络安全组
       items:
-        - name: 虚拟网络
-          href: virtual-network-vnet-plan-design-arm.md
-    - name: 部署
+      - name: Azure PowerShell
+        href: tutorial-filter-network-traffic-powershell.md
+      - name: Azure CLI
+        href: tutorial-filter-network-traffic-cli.md
+    - name: 路由表
       items:
-        - name: 网络安全组
-          items:
-            - name: Azure PowerShell
-              href: tutorial-filter-network-traffic-powershell.md
-            - name: Azure CLI
-              href: tutorial-filter-network-traffic-cli.md
-        - name: 路由表
-          items:
-            - name: Azure PowerShell
-              href: tutorial-create-route-table-powershell.md
-            - name: Azure CLI
-              href: tutorial-create-route-table-cli.md
-        - name: 服务终结点
-          items:
-            - name: Azure PowerShell
-              href: tutorial-restrict-network-access-to-resources-powershell.md
-            - name: Azure CLI
-              href: tutorial-restrict-network-access-to-resources-cli.md
-        - name: 虚拟网络对等互连
-          items:
-            - name: 同一部署模型 - 同一订阅
-              items:
-                - name: Azure PowerShell
-                  href: tutorial-connect-virtual-networks-powershell.md
-                - name: Azure CLI
-                  href: tutorial-connect-virtual-networks-cli.md
-            - name: 同一部署模型 - 不同订阅
-              href: create-peering-different-subscriptions.md
-            - name: 不同部署模型 - 同一订阅
-              href: create-peering-different-deployment-models.md
-            - name: 不同部署模型 - 不同订阅
-              href: create-peering-different-deployment-models-subscriptions.md
-        - name: 虚拟机
-          items:
-            - name: 创建具有静态公共 IP 地址的 VM
-              items:
-                - name: Azure 门户
-                  href: virtual-network-deploy-static-pip-arm-portal.md
-                - name: Azure PowerShell
-                  href: virtual-network-deploy-static-pip-arm-ps.md
-                - name: Azure CLI
-                  href: virtual-network-deploy-static-pip-arm-cli.md
-            - name: 创建 VM - 静态专用 IP 地址
-              items:
-                - name: Azure 门户
-                  href: virtual-networks-static-private-ip-arm-pportal.md
-                - name: Azure PowerShell
-                  href: virtual-networks-static-private-ip-arm-ps.md
-                - name: Azure CLI
-                  href: virtual-networks-static-private-ip-arm-cli.md
-            - name: 创建 VM - 多个网络接口
-              items:
-                - name: Azure PowerShell
-                  href: ../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-                - name: Azure CLI
-                  href: ../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-            - name: 创建 VM - 多个 IP 地址
-              items:
-                - name: Azure 门户
-                  href: virtual-network-multiple-ip-addresses-portal.md
-                - name: Azure PowerShell
-                  href: virtual-network-multiple-ip-addresses-powershell.md
-                - name: Azure CLI
-                  href: virtual-network-multiple-ip-addresses-cli.md
-            - name: 创建 VM - 加速网络
-              items:
-                - name: Azure PowerShell
-                  href: create-vm-accelerated-networking-powershell.md
-                - name: Azure CLI
-                  href: create-vm-accelerated-networking-cli.md
-                  items:
-                    - name: 设置 DPDK
-                      href: setup-dpdk.md
-            - name: 虚拟机网络吞吐量
-              href: virtual-machine-network-throughput.md
-        - name: 连接方案
-          items:
-            - name: 虚拟网络到虚拟网络
-              href: ../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-            - name: VNet (Resource Manager) 到 VNet（经典）
-              href: ../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-            - name: VNet 到本地网络 (VPN)
-              href: ../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-            - name: VNet 到本地网络 (ExpressRoute)
-              href: ../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-            - name: 高可用性混合网络体系结构
-              href: ../guidance/guidance-hybrid-network-expressroute-vpn-failover.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-        - name: 安全方案
-          items:
-            - name: 使用虚拟设备保护网络
-              href: virtual-network-scenario-udr-gw-nva.md
-            - name: Azure 与 Internet 之间的外围网络
-              href: ../guidance/guidance-iaas-ra-secure-vnet-dmz.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-            - name: 创建使用 NSG 的外围网络
-              href: virtual-networks-dmz-nsg.md
-    - name: 配置
+      - name: Azure PowerShell
+        href: tutorial-create-route-table-powershell.md
+      - name: Azure CLI
+        href: tutorial-create-route-table-cli.md
+    - name: 服务终结点
       items:
-        - name: VM 和云服务的名称解析
-          href: virtual-networks-name-resolution-for-vms-and-role-instances.md
-        - name: 将动态 DNS 用于自己的 DNS 服务器
-          href: virtual-networks-name-resolution-ddns.md
-        - name: 优化网络吞吐量
-          href: virtual-network-optimize-network-bandwidth.md
-        - name: 查看和修改主机名
-          href: virtual-networks-viewing-and-modifying-hostnames.md
-    - name: 管理
+      - name: Azure PowerShell
+        href: tutorial-restrict-network-access-to-resources-powershell.md
+      - name: Azure CLI
+        href: tutorial-restrict-network-access-to-resources-cli.md
+    - name: 服务终结点策略 - 门户
+      href: virtual-network-service-endpoint-policies-portal.md
+    - name: 虚拟网络对等互连
       items:
-        - name: 虚拟网络
-          href: manage-virtual-network.md
-          items:
-            - name: 子网
-              href: virtual-network-manage-subnet.md
-            - name: 对等互连
-              href: virtual-network-manage-peering.md
-            - name: DDOS 保护
-              href: manage-ddos-protection.md
-        - name: 网络安全组
-          href: manage-network-security-group.md
-          items:
-            - name: 日志
-              href: virtual-network-nsg-manage-log.md
-        - name: 路由表
-          href: manage-route-table.md
-        - name: 虚拟机网络
-          items:
-            - name: 创建或删除网络接口
-              href: virtual-network-network-interface.md
-            - name: 添加或删除网络接口
-              href: virtual-network-network-interface-vm.md
-            - name: 添加或删除 IP 地址
-              href: virtual-network-network-interface-addresses.md
-        - name: 公共 IP 地址
-          href: virtual-network-public-ip-address.md
-    - name: 故障排除
+      - name: 同一部署模型 - 同一订阅
+        items:
+        - name: Azure PowerShell
+          href: tutorial-connect-virtual-networks-powershell.md
+        - name: Azure CLI
+          href: tutorial-connect-virtual-networks-cli.md
+      - name: 同一部署模型 - 不同订阅
+        href: create-peering-different-subscriptions.md
+      - name: 不同部署模型 - 同一订阅
+        href: create-peering-different-deployment-models.md
+      - name: 不同部署模型 - 不同订阅
+        href: create-peering-different-deployment-models-subscriptions.md
+    - name: 虚拟网络 TAP
       items:
-        - name: 网络安全组
-          href: diagnose-network-traffic-filter-problem.md
-        - name: 路由
-          href: diagnose-network-routing-problem.md
-        - name: 吞吐量测试
-          href: virtual-network-bandwidth-testing.md
-        - name: 无法删除虚拟网络
-          href: virtual-network-troubleshoot-cannot-delete-vnet.md
-        - name: VM 到 VM 连接问题
-          href: virtual-network-troubleshoot-connectivity-problem-between-vms.md
-        - name: 为 SMTP 标题检查配置 PTR
-          href: create-ptr-for-smtp-service.md
-        - name: 虚拟设备的故障排除清单
-          href: virtual-network-troubleshoot-nva.md
-    - name: 经典
+      - name: Azure CLI
+        href: tutorial-tap-virtual-network-cli.md
+    - name: 容器网络
+      href: deploy-container-networking.md
+    - name: 虚拟机
       items:
-        - name: 创建和管理虚拟网络
+      - name: 创建具有静态公共 IP 地址的 VM
+        items:
+        - name: Azure 门户
+          href: virtual-network-deploy-static-pip-arm-portal.md
+        - name: Azure PowerShell
+          href: virtual-network-deploy-static-pip-arm-ps.md
+        - name: Azure CLI
+          href: virtual-network-deploy-static-pip-arm-cli.md
+      - name: 创建 VM - 静态专用 IP 地址
+        items:
+        - name: Azure 门户
+          href: virtual-networks-static-private-ip-arm-pportal.md
+        - name: Azure PowerShell
+          href: virtual-networks-static-private-ip-arm-ps.md
+        - name: Azure CLI
+          href: virtual-networks-static-private-ip-arm-cli.md
+      - name: 创建 VM - 多个网络接口
+        items:
+        - name: Azure PowerShell
+          href: ../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+        - name: Azure CLI
+          href: ../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+      - name: 创建 VM - 多个 IP 地址
+        items:
+        - name: Azure 门户
+          href: virtual-network-multiple-ip-addresses-portal.md
+        - name: Azure PowerShell
+          href: virtual-network-multiple-ip-addresses-powershell.md
+        - name: Azure CLI
+          href: virtual-network-multiple-ip-addresses-cli.md
+      - name: 创建 VM - 加速网络
+        items:
+        - name: Azure PowerShell
+          href: create-vm-accelerated-networking-powershell.md
+        - name: Azure CLI
+          href: create-vm-accelerated-networking-cli.md
           items:
-            - name: 创建虚拟网络
-              href: create-virtual-network-classic.md
-              items:
-                - name: Azure 门户
-                  href: virtual-networks-create-vnet-classic-pportal.md
-                - name: Azure PowerShell
-                  href: virtual-networks-create-vnet-classic-netcfg-ps.md
-                - name: Azure CLI
-                  href: virtual-networks-create-vnet-classic-cli.md
-            - name: 在虚拟网络配置文件中指定 DNS 设置
-              href: virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md
-            - name: 在服务配置文件中指定 DNS 设置
-              href: virtual-networks-specifying-dns-settings-in-a-service-configuration-file.md
-            - name: 管理
-              items:
-                - name: 网络配置文件
-                  href: virtual-networks-using-network-configuration-file.md
-                - name: 从地缘组迁移到区域
-                  href: virtual-networks-migrate-to-regional-vnet.md
-        - name: 创建网络安全组
+          - name: 设置 DPDK
+            href: setup-dpdk.md
+      - name: 虚拟机网络吞吐量
+        href: virtual-machine-network-throughput.md
+    - name: 连接方案
+      items:
+      - name: 虚拟网络到虚拟网络
+        href: ../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+      - name: VNet (Resource Manager) 到 VNet（经典）
+        href: ../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+      - name: VNet 到本地网络 (VPN)
+        href: ../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+      - name: VNet 到本地网络 (ExpressRoute)
+        href: ../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+      - name: 高可用性混合网络体系结构
+        href: ../guidance/guidance-hybrid-network-expressroute-vpn-failover.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+    - name: 安全方案
+      items:
+      - name: 使用虚拟设备保护网络
+        href: virtual-network-scenario-udr-gw-nva.md
+      - name: Azure 与 Internet 之间的外围网络
+        href: ../guidance/guidance-iaas-ra-secure-vnet-dmz.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+      - name: 创建使用 NSG 的外围网络
+        href: virtual-networks-dmz-nsg.md
+  - name: 配置
+    items:
+    - name: VM 和云服务的名称解析
+      href: virtual-networks-name-resolution-for-vms-and-role-instances.md
+    - name: 将动态 DNS 用于自己的 DNS 服务器
+      href: virtual-networks-name-resolution-ddns.md
+    - name: 优化网络吞吐量
+      href: virtual-network-optimize-network-bandwidth.md
+    - name: 查看和修改主机名
+      href: virtual-networks-viewing-and-modifying-hostnames.md
+  - name: 管理
+    items:
+    - name: 虚拟网络
+      href: manage-virtual-network.md
+      items:
+      - name: 子网
+        href: virtual-network-manage-subnet.md
+      - name: 对等互连
+        href: virtual-network-manage-peering.md
+      - name: DDOS 保护
+        href: manage-ddos-protection.md
+    - name: 网络安全组
+      href: manage-network-security-group.md
+      items:
+      - name: 日志
+        href: virtual-network-nsg-manage-log.md
+    - name: 路由表
+      href: manage-route-table.md
+    - name: 虚拟机网络
+      items:
+      - name: 创建或删除网络接口
+        href: virtual-network-network-interface.md
+      - name: 添加或删除网络接口
+        href: virtual-network-network-interface-vm.md
+      - name: 添加或删除 IP 地址
+        href: virtual-network-network-interface-addresses.md
+    - name: 公共 IP 地址
+      href: virtual-network-public-ip-address.md
+    - name: 公共 IP 前缀
+      href: manage-public-ip-address-prefix.md
+  - name: 故障排除
+    items:
+    - name: 网络安全组
+      href: diagnose-network-traffic-filter-problem.md
+    - name: 路由
+      href: diagnose-network-routing-problem.md
+    - name: 吞吐量测试
+      href: virtual-network-bandwidth-testing.md
+    - name: 无法删除虚拟网络
+      href: virtual-network-troubleshoot-cannot-delete-vnet.md
+    - name: VM 到 VM 连接问题
+      href: virtual-network-troubleshoot-connectivity-problem-between-vms.md
+    - name: 为 SMTP 标题检查配置 PTR
+      href: create-ptr-for-smtp-service.md
+    - name: 虚拟设备的故障排除清单
+      href: virtual-network-troubleshoot-nva.md
+  - name: 经典
+    items:
+    - name: 创建和管理虚拟网络
+      items:
+      - name: 创建虚拟网络
+        href: create-virtual-network-classic.md
+        items:
+        - name: Azure 门户
+          href: virtual-networks-create-vnet-classic-pportal.md
+        - name: Azure PowerShell
+          href: virtual-networks-create-vnet-classic-netcfg-ps.md
+        - name: Azure CLI
+          href: virtual-networks-create-vnet-classic-cli.md
+      - name: 在虚拟网络配置文件中指定 DNS 设置
+        href: virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md
+      - name: 在服务配置文件中指定 DNS 设置
+        href: virtual-networks-specifying-dns-settings-in-a-service-configuration-file.md
+      - name: 管理
+        items:
+        - name: 网络配置文件
+          href: virtual-networks-using-network-configuration-file.md
+        - name: 从地缘组迁移到区域
+          href: virtual-networks-migrate-to-regional-vnet.md
+    - name: 创建网络安全组
+      items:
+      - name: Azure PowerShell
+        href: virtual-networks-create-nsg-classic-ps.md
+      - name: Azure 经典 CLI
+        href: virtual-networks-create-nsg-classic-cli.md
+    - name: 创建路由表
+      items:
+      - name: Azure PowerShell
+        href: virtual-network-create-udr-classic-ps.md
+      - name: Azure CLI
+        href: virtual-network-create-udr-classic-cli.md
+    - name: 虚拟机网络
+      items:
+      - name: 创建 VM - 多个网络接口
+        items:
+        - name: Azure PowerShell
+          href: virtual-network-deploy-multinic-classic-ps.md
+        - name: Azure CLI
+          href: virtual-network-deploy-multinic-classic-cli.md
+      - name: 创建 VM - 静态专用 IP 地址
+        href: virtual-networks-reserved-public-ip.md
+      - name: 管理
+        items:
+        - name: 静态 IP 地址
           items:
-            - name: Azure PowerShell
-              href: virtual-networks-create-nsg-classic-ps.md
-            - name: Azure CLI 1.0
-              href: virtual-networks-create-nsg-classic-cli.md
-        - name: 创建路由表
+          - name: Azure PowerShell
+            href: virtual-networks-reserved-private-ip.md
+          - name: Azure CLI
+            href: virtual-networks-static-private-ip-classic-cli.md
+        - name: 实例层级公共 IP 地址
+          href: virtual-networks-instance-level-public-ip.md
+        - name: 访问控制列表
           items:
-            - name: Azure PowerShell
-              href: virtual-network-create-udr-classic-ps.md
-            - name: Azure CLI
-              href: virtual-network-create-udr-classic-cli.md
-        - name: 虚拟机网络
-          items:
-            - name: 创建 VM - 多个网络接口
-              items:
-                - name: Azure PowerShell
-                  href: virtual-network-deploy-multinic-classic-ps.md
-                - name: Azure CLI
-                  href: virtual-network-deploy-multinic-classic-cli.md
-            - name: 创建 VM - 静态专用 IP 地址
-              href: virtual-networks-reserved-public-ip.md
-            - name: 管理
-              items:
-                - name: 静态 IP 地址
-                  items:
-                    - name: Azure PowerShell
-                      href: virtual-networks-reserved-private-ip.md
-                    - name: Azure CLI
-                      href: virtual-networks-static-private-ip-classic-cli.md
-                - name: 实例层级公共 IP 地址
-                  href: virtual-networks-instance-level-public-ip.md
-                - name: 访问控制列表
-                  items:
-                    - name: Azure 门户
-                      href: ../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-                    - name: Azure PowerShell
-                      href: virtual-networks-acl-powershell.md
-                - name: 将 VM 移到其他子网
-                  href: virtual-networks-move-vm-role-to-subnet.md
-        - name: 云服务和网络安全
-          href: ../best-practices-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-          items:
-            - name: 创建使用 NSG 的外围网络
-              href: virtual-networks-dmz-nsg-asm.md
-            - name: 创建使用防火墙和 NSG 的外围网络
-              href: virtual-networks-dmz-nsg-fw-asm.md
-            - name: 使用防火墙、UDR 和 NSG 的外围网络
-              href: virtual-networks-dmz-nsg-fw-udr-asm.md
-            - name: 示例应用程序
-              href: virtual-networks-sample-app.md
+          - name: Azure 门户
+            href: ../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+          - name: Azure PowerShell
+            href: virtual-networks-acl-powershell.md
+        - name: 将 VM 移到其他子网
+          href: virtual-networks-move-vm-role-to-subnet.md
+    - name: 云服务和网络安全
+      href: ../best-practices-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+      items:
+      - name: 创建使用 NSG 的外围网络
+        href: virtual-networks-dmz-nsg-asm.md
+      - name: 创建使用防火墙和 NSG 的外围网络
+        href: virtual-networks-dmz-nsg-fw-asm.md
+      - name: 使用防火墙、UDR 和 NSG 的外围网络
+        href: virtual-networks-dmz-nsg-fw-udr-asm.md
+      - name: 示例应用程序
+        href: virtual-networks-sample-app.md
 - name: 引用
   items:
-    - name: Azure CLI
-      href: /cli/azure/network
-    - name: Azure PowerShell
-      href: /powershell/module/azurerm.network
-    - name: .NET
-      href: /api/overview/azure/virtual-network
-    - name: Java
-      href: /java/api/
-    - name: Node.js
-      href: 'https://docs.microsoft.com/javascript/azure#azure-sdk'
-    - name: Python
-      href: 'https://azure.microsoft.com/develop/python/'
-    - name: REST
-      href: /rest/api/virtual-network
-    - name: 代码示例
-      href: 'https://azure.microsoft.com/resources/samples/?service=virtual-network'
+  - name: Azure CLI
+    href: /cli/azure/network
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.network
+  - name: .NET
+    href: /api/overview/azure/virtual-network
+  - name: Java
+    href: /java/api/
+  - name: Node.js
+    href: https://docs.microsoft.com/javascript/azure#azure-sdk
+  - name: Python
+    href: https://azure.microsoft.com/develop/python/
+  - name: REST
+    href: /rest/api/virtual-network
+  - name: 代码示例
+    href: https://azure.microsoft.com/resources/samples/?service=virtual-network
 - name: 资源
   items:
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/?category=networking'
-    - name: 网络博客
-      href: 'http://azure.microsoft.com/blog/topics/networking'
-    - name: 网络论坛
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
-    - name: 定价
-      href: 'https://azure.microsoft.com/pricing/details/virtual-network'
-    - name: 定价计算器
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: 堆栈溢出
-      href: 'http://stackoverflow.com/questions/tagged/azure-virtual-network'
-    - name: 常见问题解答
-      href: virtual-networks-faq.md
+  - name: 利用 Microsoft Learn 掌握技能
+    href: /learn/browse/
+  - name: Azure 路线图
+    href: https://azure.microsoft.com/roadmap/?category=networking
+  - name: 网络博客
+    href: http://azure.microsoft.com/blog/topics/networking
+  - name: 网络论坛
+    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork
+  - name: 定价
+    href: https://azure.microsoft.com/pricing/details/virtual-network
+  - name: 定价计算器
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: 堆栈溢出
+    href: http://stackoverflow.com/questions/tagged/azure-virtual-network
+  - name: 常见问题解答
+    href: virtual-networks-faq.md
+ms.openlocfilehash: 7e6f0ac46a45e0b429572b870ca0ab657c2628c6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989883"

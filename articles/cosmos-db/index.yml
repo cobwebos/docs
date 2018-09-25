@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: b00d2c68748372c644a0966d76d5adb8e430e2d5
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: b5fa216c561340402b1b60a65402491c9256ec5e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053595"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965005"
 documentType: LandingData
 title: Azure Cosmos DB 文档
 metadata:
@@ -101,7 +101,7 @@ sections:
       values:
       - href: /azure/cosmos-db/create-sql-api-java
       - href: /azure/cosmos-db/create-sql-api-dotnet
-      - href: /azure/cosmos-db/create-sql-api-nodejs-preview
+      - href: /azure/cosmos-db/create-sql-api-nodejs
       - href: /azure/cosmos-db/create-sql-api-python
       - href: 
       - href: 
@@ -155,6 +155,29 @@ sections:
     - html: 使用 Azure Cosmos DB 进行全球数据库复制：<a href="/azure/cosmos-db/tutorial-global-distribution-sql-api">SQL</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-table">表</a>
     - html: <a href="local-emulator">使用仿真程序本地开发应用程序</a>
     - html: <a href="/azure/cosmos-db/tutorial-functions-http-trigger">使用 Azure Cosmos DB 输入绑定创建 HTTP 触发器</a>
+- title: 利用 Microsoft Learn 掌握技能
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: " 创建按比例构建的 Azure Cosmos DB 数据库"
+      href: /learn/modules/create-cosmos-db-for-scale/
+      image:
+        src: /learn/achievements/create-cosmos-db-for-scale.svg
+        href: /learn/modules/create-cosmos-db-for-scale/
+    - title: 在 Azure Cosmos DB 数据库中插入和查询数据
+      href: /learn/modules/access-data-with-cosmos-db-and-sql-api/
+      image:
+        src: /learn/achievements/access-data-with-cosmos-db-and-sql-api.svg
+        href: /learn/modules/access-data-with-cosmos-db-and-sql-api/
+    - title: 在 Visual Studio Code 中为 Azure Cosmos DB 构建 .NET Core 应用
+      href: /learn/modules/build-cosmos-db-app-with-vscode
+      image:
+        src: /learn/achievements/build-cosmos-db-app-with-vscode.svg
+        href: /learn/modules/build-cosmos-db-app-with-vscode
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-cosmos-db">更多交互式学习...</a>
 - title: 引用
   items:
   - type: list
