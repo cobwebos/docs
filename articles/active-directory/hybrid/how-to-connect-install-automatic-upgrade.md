@@ -36,7 +36,7 @@ ms.locfileid: "46304586"
 
 可以使用 PowerShell cmdlet `Get-ADSyncAutoUpgrade` 来查看当前的自动升级状态。 状态包括：
 
-| 状态 | 说明 |
+| 状态 | 注释 |
 | --- | --- |
 | Enabled |自动升级已启用。 |
 | Suspended |只能由系统设置。 系统不再能够接收自动升级。 |
