@@ -12,14 +12,19 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 5fe292b92557b4786d638ac21c7adb1f50566feb
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3edf49484e5bc05a297b8d8969632fb902aa1714
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35633872"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953729"
 ---
 # <a name="split-column-by-example-transformation"></a>“按示例拆分列”转换
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 此转换预先在有意义的边界拆分列内容，无需用户输入。 拆分算法在分析列内容后选择边界。 可以通过以下项定义这些边界
 * 固定的分隔符，
 * 在特定上下文中出现的多个任意分隔符，或，
@@ -182,4 +187,4 @@ ms.locfileid: "35633872"
 
 ## <a name="technical-notes"></a>技术说明
 
-拆分转换功能基于**预测程序合成**技术。 在这种技术中，基于输入数据自动学习数据转换程序。 这些程序是用特定领域的语言合成的。 DSL 基于特定正则表达式上下文中出现的分隔符和字段。 有关此技术的更多信息，可以在[最近关于此主题的出版物](https://www.microsoft.com/en-us/research/publication/automated-data-extraction-using-predictive-program-synthesis/)中找到。 
+拆分转换功能基于**预测程序合成**技术。 在这种技术中，基于输入数据自动学习数据转换程序。 这些程序是用特定领域的语言合成的。 DSL 基于特定正则表达式上下文中出现的分隔符和字段。 有关此技术的更多信息，可以在[最近关于此主题的出版物](https://www.microsoft.com/research/publication/automated-data-extraction-using-predictive-program-synthesis/)中找到。 

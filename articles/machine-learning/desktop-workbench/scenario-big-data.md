@@ -16,14 +16,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.openlocfilehash: 7a13cafd3dcfb4637a5deae2c678c518019ad168
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ROBOTS: NOINDEX
+ms.openlocfilehash: 8f3bd4e62aa85c69a0bfafeacf13bc3e472136d5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39450667"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964695"
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>基于 TB 量级的数据执行服务器工作负荷预测
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
 
 本文介绍数据科学家如何使用 Azure Machine Learning Workbench 开发需要使用大数据的解决方案。 可以从大型数据集的一个示例开始，反复进行数据准备、特征工程和机器学习操作，然后将该过程扩展到整个大型数据集。 
 
@@ -49,11 +52,11 @@ ms.locfileid: "39450667"
 运行此示例的先决条件如下所示：
 
 * [Azure 帐户](https://azure.microsoft.com/free/)（有免费试用版可用）。
-* [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) 的已安装副本。 若要安装此程序并创建工作区，请参阅[快速入门安装指南](../service/quickstart-installation.md)。 如果有多个订阅，则可以[将所需订阅设置为当前的活动订阅](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set)。
+* [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) 的已安装副本。 若要安装此程序并创建工作区，请参阅[快速入门安装指南](quickstart-installation.md)。 如果有多个订阅，则可以[将所需订阅设置为当前的活动订阅](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az_account_set)。
 * Windows 10（对于 macOS 系统，此示例中的说明通常也一样）。
 * Data Science Virtual Machine (DSVM) for Linux (Ubuntu)，最好位于数据所在的美国东部地区。 可以按照[这些说明](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)预配 Ubuntu DSVM。 也可参阅[此快速入门](https://ms.portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu)。 我们建议使用至少具有 8 个内核和 32 GB 内存的虚拟机。 
 
-按照[说明](../service/known-issues-and-troubleshooting-guide.md#remove-vm-execution-error-no-tty-present)在 VM 上为 AML Workbench 启用无密码 sudoer 访问。  可以选择[在 AML Workbench 中使用基于 SSH 密钥的身份验证来创建和使用 VM](experimentation-service-configuration.md#using-ssh-key-based-authentication-for-creating-and-using-compute-targets)。 在此示例中，我们使用密码来访问 VM。  将下表与 DSVM 信息一起保存，以供在后续步骤中使用：
+按照[说明](../desktop-workbench/known-issues-and-troubleshooting-guide.md#remove-vm-execution-error-no-tty-present)在 VM 上为 AML Workbench 启用无密码 sudoer 访问。  可以选择[在 AML Workbench 中使用基于 SSH 密钥的身份验证来创建和使用 VM](experimentation-service-configuration.md#using-ssh-key-based-authentication-for-creating-and-using-compute-targets)。 在此示例中，我们使用密码来访问 VM。  将下表与 DSVM 信息一起保存，以供在后续步骤中使用：
 
  字段名称| 值 |  
  |------------|------|
