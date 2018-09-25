@@ -7,6 +7,7 @@
 #### [在开发人员中心注册](./register-dev-center.md) 
 #### [Azure 市场的计费选项](./billing-options-azure-marketplace.md)  
 #### [Azure 合作伙伴客户使用情况归因](./azure-partner-customer-usage-attribution.md)
+#### [云市场的的销售线索管理](./lead-management-for-cloud-marketplace.md)
 
 ### [店面](./comparing-appsource-azure-marketplace.md)  
 

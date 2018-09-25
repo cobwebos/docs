@@ -1,37 +1,38 @@
 # [计划程序文档](index.md)
 
 # 概述
-## [计划程序是什么？](scheduler-intro.md)
+## [什么是 Azure 计划程序？](scheduler-intro.md)
 
 # 入门
-## [创建并管理作业](scheduler-get-started-portal.md)
-## [概念和术语](scheduler-concepts-terms.md)
+## [创建和管理作业 - 门户](scheduler-get-started-portal.md)
+## [从计划程序迁移到逻辑应用](migrate-from-scheduler-to-logic-apps.md)
 
-# 如何
+# 概念
+## [概念、术语和实体](scheduler-concepts-terms.md)
+
+# 操作指南
 ## 规划和设计
 ### [计划和计费](scheduler-plans-billing.md)
-### [配额和限制](scheduler-limits-defaults-errors.md)
+### [限制、配额和默认值](scheduler-limits-defaults-errors.md)
 ### [高可用性和可靠性](scheduler-high-availability-reliability.md)
 
 ## 开发
-### [使用 REST API 的复杂计划](scheduler-advanced-complexity.md)
-
+### [构建复杂的计划和高级的重复周期](scheduler-advanced-complexity.md)
+### [创建和管理计划 - Azure PowerShell](scheduler-powershell-reference.md)
 
 ## 安全
-### [出站身份验证](scheduler-outbound-authentication.md)
+### [出站调用身份验证](scheduler-outbound-authentication.md)
 
 # 引用
 ## [Azure PowerShell](/powershell/module/azurerm.scheduler)
-## [REST](/rest/api/scheduler)
+## [REST API](/rest/api/scheduler)
 
 # 资源
-## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=monitoring-management)
+## [Azure 计划程序路线图](https://azure.microsoft.com/updates/?product=scheduler)
+## [Azure 路线图](https://azure.microsoft.com/updates/)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-scheduler)
 ## [定价](https://azure.microsoft.com/pricing/details/scheduler/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=scheduler)
-## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-scheduler)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=scheduler)
-
-
-

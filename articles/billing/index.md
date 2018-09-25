@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 05/24/2018
 ms.author: cwatson
-ms.openlocfilehash: 40070acab5f656cab7f3034e3b35c113c0ff6051
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: e06ee851209d48185b3b20cd6f1169af81b58013
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43300805"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034818"
 ---
 # <a name="azure-billing-and-cost-management-documentation"></a>Azure 计费和成本管理文档
 
@@ -52,9 +52,10 @@ ms.locfileid: "43300805"
                         <h3>管理成本</h3>
                         <p>
                         <a href="/azure/billing/billing-getting-started">防止意外成本</a><br/>
-                        <a href="/azure/billing/billing-set-up-alerts">设置计费警报</a><br/>
-                        <a href="https://azure.microsoft.com/pricing/calculator/">计算定价</a><br/>
-                        <a href="/azure/azure-resource-manager/resource-group-using-tags?toc=/azure/billing/TOC.json">使用资源标记</a>
+                        <a href="/azure/azure-resource-manager/resource-group-using-tags?toc=/azure/billing/TOC.json">使用资源标记</a><br/>
+                        <a href="/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json">开始分析成本 - 仅限 EA</a><br/>
+                        <a href="/azure/cost-management/tutorial-acm-create-budgets?toc=/azure/billing/TOC.json">创建并管理预算 - 仅限 EA</a><br/>
+                        <a href="/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json">优化建议 - 仅限 EA</a>
                         </p>
                     </div>
                 </div>

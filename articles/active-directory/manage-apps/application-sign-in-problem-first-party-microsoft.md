@@ -74,11 +74,11 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
    * 确保已为用户**分配许可证**。 [检查用户的已分配许可证](#check-a-users-assigned-licenses)或[检查组的已分配许可证](#check-a-groups-assigned-licenses)
 
-   * 如果许可证**分配到****静态组**，请确保**用户是该组的成员**。 [检查用户的组成员身份](#check-a-users-group-memberships)
+   * 如果许可证**分配到** **静态组**，请确保**用户是该组的成员**。 [检查用户的组成员身份](#check-a-users-group-memberships)
 
-   * 如果许可证**分配到****动态组**，请确保**动态组规则设置正确**。 [检查动态组的成员身份条件](#check-a-dynamic-groups-membership-criteria)
+   * 如果许可证**分配到** **动态组**，请确保**动态组规则设置正确**。 [检查动态组的成员身份条件](#check-a-dynamic-groups-membership-criteria)
 
-   * 如果许可证**已分配到****动态组**，请确保动态组的成员身份已**处理完毕**，并确保**用户是该组的成员**（这可能需要一些时间）。 [检查用户的组成员身份](#check-a-users-group-memberships)
+   * 如果许可证**已分配到** **动态组**，请确保动态组的成员身份已**处理完毕**，并确保**用户是该组的成员**（这可能需要一些时间）。 [检查用户的组成员身份](#check-a-users-group-memberships)
 
    *  一旦确保已分配许可证，请确保许可证**未过期**。
 

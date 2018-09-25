@@ -1,0 +1,62 @@
+items:
+- name: Azure 数据资源管理器文档
+  href: index.yml
+- name: 概述
+  items:
+  - name: 什么是数据资源管理器？
+    href: data-explorer-overview.md
+- name: 快速入门
+  items:
+  - name: 创建群集 - Azure 门户
+    href: create-cluster-database-portal.md
+  - name: 引入数据
+    items:
+    - name: 流式处理数据 - 事件中心
+      href: ingest-data-event-hub.md
+    - name: 批处理数据 - Python
+      href: python-ingest-data.md
+    expanded: true
+  - name: 查询数据
+    items:
+    - name: Web UI
+      href: web-query-data.md
+    - name: Python
+      href: python-query-data.md
+    expanded: true
+  expanded: true
+- name: 教程
+  items:
+  - name: 可视化数据 - Power BI
+    href: visualize-power-bi.md
+- name: 概念
+  items:
+  - name: 数据引入概述
+    href: ingest-data-overview.md
+- name: 操作指南
+  items:
+  - name: 编写查询
+    href: write-queries.md
+  - name: 引入示例数据
+    href: ingest-sample-data.md
+  - name: 管理数据库权限
+    href: manage-database-permissions.md
+  - name: 检查群集运行状况
+    href: check-cluster-health.md
+  - name: 故障排除
+    items:
+    - name: 创建群集
+      href: troubleshoot-create-cluster.md
+    - name: 连接到群集
+      href: troubleshoot-connect-cluster.md
+    - name: 使用数据库和表
+      href: troubleshoot-database-table.md
+- name: 引用
+  items:
+  - name: 语言参考
+    href: https://aka.ms/kustolangref
+ms.openlocfilehash: 6373afdadf9d3916cb8e10be976d141ba55177cf
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964933"

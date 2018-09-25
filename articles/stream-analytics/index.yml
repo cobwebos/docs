@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 59274dd042c136770d0f4bab5ab69854dbfb3896
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: f4f0c3e21f755dbf431be72ebf7568155ab1bc89
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43663761"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949428"
 documentType: LandingData
 title: 流分析文档
 metadata:
@@ -58,6 +58,8 @@ sections:
     - html: <a href="stream-analytics-manage-job">通过创建流分析作业来分析电话呼叫数据并在 Power BI 仪表板中将结果可视化</a>
     - html: <a href="stream-analytics-with-azure-functions">从 Azure 流分析作业运行 Azure Functions</a>
     - html: <a href="stream-analytics-javascript-user-defined-functions">在 Azure 流分析作业中运行 JavaScript 用户定义函数</a>
+    - html: <a href="stream-analytics-tools-visual-studio-cicd-vsts">使用 Azure 管道通过 CI/CD 部署 Azure 流分析作业</a>
+    - html: <a href="stream-analytics-edge-csharp-udf">为 Azure 流分析 Edge 作业（预览版）编写 C# 用户定义函数</a>
 - title: 引用
   items:
   - type: list

@@ -19,7 +19,7 @@
 # 资源
 ## [已知问题 - 联机迁移到 Azure SQL DB](known-issues-azure-sql-online.md)
 ## [已知问题 - 联机迁移到用于 MySQL 的 Azure DB](known-issues-azure-mysql-online.md)
-## [已知问题 - 联机迁移到用于 PosgreSQL 的 Azure DB](known-issues-azure-postgresql-online.md)
+## [已知问题 - 联机迁移到用于 PostgreSQL 的 Azure DB](known-issues-azure-postgresql-online.md)
 ## [用户语音反馈](https://feedback.azure.com/forums/906100-azure-database-migration-service)
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [数据库迁移指南](https://aka.ms/datamigration)
