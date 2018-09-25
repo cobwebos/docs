@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 08/30/2018
 ms.author: aliceku
 monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: b4ed1c8b5079ad0984879db6f84138bfdb579d49
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: d87747e60c375f844681ed6cfd40dba84f46a9b2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542593"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963603"
 ---
 # <a name="transparent-data-encryption-with-bring-your-own-key-support-for-azure-sql-database-and-data-warehouse"></a>Azure SQL 数据库和数据仓库的支持“创建自己的密钥”的透明数据加密
 
@@ -57,17 +57,17 @@ ms.locfileid: "45542593"
 
 ### <a name="general-guidelines"></a>一般性指导
 - 确保 Azure Key Vault 和 Azure SQL 数据库位于同一租户中。  **不支持** Key Vault 与服务器进行跨租户的交互。
-- 确定要对所需的资源使用哪些订阅 – 以后跨订阅移动服务器需要重新设置支持 BYOK 的 TDE。 详细了解如何[移动资源](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-move-resources)
-- 配置支持 BYOK 的 TDE 时，必须考虑到重复的包装/解包操作在 Key Vault 中施加的负载。 例如，由于与逻辑服务器关联的所有数据库使用相同的 TDE 保护器，因此，该服务器的故障转移将会针对保管库触发密钥操作：服务器中有多少个数据库，就会触发多少次密钥操作。 根据我们的经验以及 [Key Vault 服务限制](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-service-limits)中所述，我们建议将最多 500 个标准/常规用途库或 200 个高级/业务关键型数据库与单个订阅中的 1 个 Azure Key Vault 相关联，以确保在访问保管库中的 TDE 保护器时能够获得一致的高可用性。 
-- 建议：在本地保留 TDE 保护器的副本。  这要求 HSM 设备在本地创建一个 TDE 保护器，并创建一个密钥托管系统来存储 TDE 保护器的本地副本。  了解[如何将密钥从本地 HSM 转移到 Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-hsm-protected-keys)。
+- 确定要对所需的资源使用哪些订阅 – 以后跨订阅移动服务器需要重新设置支持 BYOK 的 TDE。 详细了解如何[移动资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
+- 配置支持 BYOK 的 TDE 时，必须考虑到重复的包装/解包操作在 Key Vault 中施加的负载。 例如，由于与逻辑服务器关联的所有数据库使用相同的 TDE 保护器，因此，该服务器的故障转移将会针对保管库触发密钥操作：服务器中有多少个数据库，就会触发多少次密钥操作。 根据我们的经验以及 [Key Vault 服务限制](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits)中所述，我们建议将最多 500 个标准/常规用途库或 200 个高级/业务关键型数据库与单个订阅中的 1 个 Azure Key Vault 相关联，以确保在访问保管库中的 TDE 保护器时能够获得一致的高可用性。 
+- 建议：在本地保留 TDE 保护器的副本。  这要求 HSM 设备在本地创建一个 TDE 保护器，并创建一个密钥托管系统来存储 TDE 保护器的本地副本。  了解[如何将密钥从本地 HSM 转移到 Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)。
 
 
 ### <a name="guidelines-for-configuring-azure-key-vault"></a>有关配置 Azure Key Vault 的指导
 
-- 创建启用[软删除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)的 Key Vault，以防在意外删除了密钥或 Key Vault 时丢失数据。  必须使用 [PowerShell 在 Key Vault 中启用“软删除”属性](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-soft-delete-powershell)（目前无法从 AKV 门户使用此选项 – 但 SQL 需要此选项）：  
+- 创建启用[软删除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)的 Key Vault，以防在意外删除了密钥或 Key Vault 时丢失数据。  必须使用 [PowerShell 在 Key Vault 中启用“软删除”属性](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell)（目前无法从 AKV 门户使用此选项 – 但 SQL 需要此选项）：  
   - 除非进行恢复或清除，否则软删除的资源将保留设置的一段时间（90 天）。
   - “恢复”和“清除”操作在密钥保管库访问策略中各自具有相关联的权限。 
-- 在 Key Vault 中设置资源锁可以控制谁能删除此关键资源，并帮助防止意外或未经授权的删除。  [详细了解资源锁](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-lock-resources)
+- 在 Key Vault 中设置资源锁可以控制谁能删除此关键资源，并帮助防止意外或未经授权的删除。  [详细了解资源锁](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)
 
 - 使用逻辑服务器的 Azure Active Directory (Azure AD) 标识授予逻辑服务器对 Key Vault 的访问权限。  使用门户 UI 时，会自动创建 Azure AD 标识，并向服务器授予 Key Vault 访问权限。  使用 PowerShell 配置支持 BYOK 的 TDE 时，必须手动创建 Azure AD 标识，且验证完成进度。 有关使用 PowerShell 进行配置的详细分步说明，请参阅[配置支持 BYOK 的 TDE](transparent-data-encryption-byok-azure-sql-configure.md)。
 
@@ -93,11 +93,11 @@ ms.locfileid: "45542593"
     
 - 使用不带过期日期的密钥 – 切勿对已使用的密钥设置过期日期：**密钥过期后，加密的数据库会失去 TDE 保护器的访问权限，并且会在 24 小时内删除**。
 - 确保密钥已启用并有权执行“获取”、“包装密钥”和“解包密钥”操作。
-- 在首次使用 Azure Key Vault 中的密钥之前，请创建 Azure Key Vault 密钥备份。 详细了解 [Backup-AzureKeyVaultKey](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1) 命令。
+- 在首次使用 Azure Key Vault 中的密钥之前，请创建 Azure Key Vault 密钥备份。 详细了解 [Backup-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1) 命令。
 - 每次对密钥进行任何更改后（例如，添加 ACL、添加标记、添加密钥属性），请创建新备份。
 - 轮换密钥时保留 Key Vault 中密钥的**先前版本**，以便可以还原旧数据库备份。 更改数据库的 TDE 保护器后，数据库的旧备份**不会更新**为使用最新的 TDE 保护器。  在还原时，每个备份需要创建该备份时所用的 TDE 保护器。 可以遵照[使用 PowerShell 轮换透明数据加密保护器](transparent-data-encryption-byok-azure-sql-key-rotation.md)中的说明执行密钥轮换。
 - 改回到服务托管的密钥后，请保留 Azure Key Vault 中以前用过的所有密钥。  这可以确保能够使用 Azure Key Vault 中存储的 TDE 保护器还原数据库备份。  通过 Azure Key Vault 创建的 TDE 保护器必须一直保留到使用服务托管的密钥创建所有存储的备份为止。  
-- 使用 [Backup-AzureKeyVaultKey](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1) 创建这些密钥的可恢复备份副本。
+- 使用 [Backup-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1) 创建这些密钥的可恢复备份副本。
 - 若要在出现安全事件期间删除可能已泄露的密钥并避免数据丢失的风险，请遵循[删除可能已泄露的密钥](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md)中所述的步骤。
 
 
@@ -123,14 +123,14 @@ ms.locfileid: "45542593"
 
 ### <a name="azure-key-vault-configuration-steps"></a>Azure Key Vault 配置步骤
 
-- 安装 [PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0) 
-- 使用 [PowerShell 在 Key Vault 中启用“软删除”属性](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-soft-delete-powershell)（目前无法从 AKV 门户使用此选项 – 但 SQL 需要此选项），在两个不同的区域中创建两个 Azure Key Vault。
-- 这两个 Azure Key Vault 必须位于同一 Azure 地理位置中的两个区域，这样才能正常备份和还原密钥。  如果需要将两个 Key Vault 定位在不同的地理位置以满足 SQL 异地灾难恢复的要求，请遵循从本地 HSM 导入密钥的 [BYOK 过程](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-hsm-protected-keys)。
+- 安装 [PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0) 
+- 使用 [PowerShell 在 Key Vault 中启用“软删除”属性](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell)（目前无法从 AKV 门户使用此选项 – 但 SQL 需要此选项），在两个不同的区域中创建两个 Azure Key Vault。
+- 这两个 Azure Key Vault 必须位于同一 Azure 地理位置中的两个区域，这样才能正常备份和还原密钥。  如果需要将两个 Key Vault 定位在不同的地理位置以满足 SQL 异地灾难恢复的要求，请遵循从本地 HSM 导入密钥的 [BYOK 过程](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)。
 - 在第一个 Key Vault 中创建新密钥：  
   - RSA/RSA-HSA 2048 密钥 
   - 无过期日期 
   - 密钥已启用并有权执行“获取”、“包装密钥”和“解包密钥”操作 
-- 备份主密钥，并将密钥还原到第二个 Key Vault。  请参阅 [BackupAzureKeyVaultKey](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1) 和 [Restore-AzureKeyVaultKey](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-5.5.0)。 
+- 备份主密钥，并将密钥还原到第二个 Key Vault。  请参阅 [BackupAzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1) 和 [Restore-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-5.5.0)。 
 
 ### <a name="azure-sql-database-configuration-steps"></a>Azure SQL 数据库配置步骤
 
@@ -141,9 +141,9 @@ ms.locfileid: "45542593"
 - 选择逻辑服务器的 TDE 窗格，然后针对每个逻辑 SQL 服务器：  
    - 选择同一区域中的 AKV 
    - 选择用作 TDE 保护器的密钥 - 每个服务器将使用 TDE 保护器的本地副本。 
-   - 在门户中执行此操作会创建逻辑 SQL 服务器的 [AppID](https://docs.microsoft.com/en-us/azure/active-directory/managed-service-identity/overview)，此标识用于向逻辑 SQL 服务器分配 Key Vault 的访问权限 - 请不要删除此标识。 可以通过在 Azure Key Vault 中删除相应的权限（而不是对逻辑 SQL 服务器执行此类操作），来撤销逻辑 SQL 服务器对 Key Vault 的访问权限。
+   - 在门户中执行此操作会创建逻辑 SQL 服务器的 [AppID](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)，此标识用于向逻辑 SQL 服务器分配 Key Vault 的访问权限 - 请不要删除此标识。 可以通过在 Azure Key Vault 中删除相应的权限（而不是对逻辑 SQL 服务器执行此类操作），来撤销逻辑 SQL 服务器对 Key Vault 的访问权限。
 - 创建主数据库。 
-- 遵循[活动异地复制指导](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-geo-replication-overview)来完成该方案，此步骤会创建辅助数据库。
+- 遵循[活动异地复制指导](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)来完成该方案，此步骤会创建辅助数据库。
 
 ![故障转移组和异地灾难恢复](./media/transparent-data-encryption-byok-azure-sql/Geo_DR_Config.PNG)
 

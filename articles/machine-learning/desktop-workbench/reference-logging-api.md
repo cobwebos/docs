@@ -11,16 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/25/2017
-ms.openlocfilehash: 101c47f4916ca3fab56800eaf012c55150769302
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 7084251102984445e7c2341b78b44f85811ebea7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35633772"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958214"
 ---
 # <a name="logging-api-reference"></a>日志记录 API 参考
 
-Azure 机器学习的日志记录库允许程序发出可由历史记录服务跟踪的指标和文件，供以后进行分析。 目前，支持少量的基本类型的指标和文件，随着将来 Python 包版本的发布，支持的类型集会不断增加。
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+Azure 机器学习的日志记录库允许程序发出可由历史记录服务跟踪的指标和文件，供以后进行分析。 
 
 ## <a name="uploading-metrics"></a>上传指标
 

@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: babanisa
-ms.openlocfilehash: ce0e766a07fd19f523f1f35b9a3cbc865cfb8c71
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 257f7cbd20d21903f4cf7daf68b5f185d0af10bc
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42140209"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965443"
 ---
 # <a name="event-grid-security-and-authentication"></a>事件网格安全和身份验证 
 
@@ -39,7 +39,7 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 
 2. **ValidationURL 握手（手动握手）**：在某些情况下，可能无法控制终结点源代码，以便能够实现基于 ValidationCode 的握手。 如果使用第三方服务（例如 [Zapier](https://zapier.com) 或 [IFTTT](https://ifttt.com/)），可能无法以编程方式使用验证码回应。 因此，从版本 2018-05-01-preview 开始，EventGrid 现在支持手动验证握手。 如果要使用此新的 API 版本 (2018-05-01-preview) 的 SDK/工具创建事件订阅，EventGrid 将发送 `validationUrl` 属性（以及 `validationCode` 属性）作为订阅验证事件数据部分的一部分。 若要完成握手，只需通过 REST 客户端或使用 Web 浏览器对该 URL 执行 GET 请求。 提供的验证 URL 有效时间仅 10 分钟左右。 在该时间内，事件订阅的预配状态为 `AwaitingManualAction`。 如果在 10 分钟内未完成手动验证，则配置状态被设为 `Failed`。 再次尝试手动验证前，必须重新尝试创建此事件订阅。
 
-“手动验证”机制处于预览状态。 若要使用它，必须安装用于 [AZ CLI 2.0](/cli/azure/install-azure-cli) 的[事件网格扩展](/cli/azure/azure-cli-extensions-list)。 可使用 `az extension add --name eventgrid` 进行安装。 如果使用 REST API，请确保使用 `api-version=2018-05-01-preview`。
+“手动验证”机制处于预览状态。 若要使用它，必须安装用于 [Azure CLI](/cli/azure/install-azure-cli) 的[事件网格扩展](/cli/azure/azure-cli-extensions-list)。 可使用 `az extension add --name eventgrid` 进行安装。 如果使用 REST API，请确保使用 `api-version=2018-05-01-preview`。
 
 ### <a name="validation-details"></a>验证详细信息
 

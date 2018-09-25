@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: efd8e93f32020d1ef3695e7fc6b9907374275848
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d1c92c3a7731198b693b797e0794cd4c26eaa4c3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608383"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46976598"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>教程：向 Azure 应用服务 Web 应用添加 Azure CDN
 
@@ -43,7 +43,7 @@ ms.locfileid: "34608383"
 完成本教程：
 
 - [安装 Git](https://git-scm.com/)
-- [安装 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -72,7 +72,7 @@ ms.locfileid: "34608383"
 
 ![在门户中创建配置文件和终结点](media/cdn-add-to-web-app/portal-new-endpoint.png)
 
-| 设置 | 建议的值 | 说明 |
+| 设置 | 建议的值 | Description |
 | ------- | --------------- | ----------- |
 | **CDN 配置文件** | myCDNProfile | CDN 配置文件是具有同一定价层的 CDN 终结点的集合。 |
 | **定价层** | 标准 Akamai | [定价层](cdn-features.md)指定提供商和可用功能。 本教程使用标准 Akamai。 |

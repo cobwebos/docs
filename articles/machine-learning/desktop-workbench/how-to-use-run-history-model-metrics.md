@@ -11,14 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: 34fe72087a3de133d65ea4a4737ab5dba45242f4
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 52b02460d444464211fc74c8982379424abebb5c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35631343"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965482"
 ---
 # <a name="how-to-use-run-history-and-model-metrics-in-azure-machine-learning-workbench"></a>如何使用 Azure 机器学习工作台中的运行历史记录和模型指标
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Azure 机器学习工作台通过其“运行历史记录”和“模型指标”功能支持数据科学试验。
 使用“运行历史记录”可以跟踪机器学习试验的输出，然后可以筛选和比较其结果。
@@ -27,8 +32,8 @@ Azure 机器学习工作台通过其“运行历史记录”和“模型指标�
 
 ## <a name="prerequisites"></a>先决条件
 若要逐步执行本操作方法指南，需要：
-* [创建和安装 Azure 机器学习](../service/quickstart-installation.md)
-- [创建项目](../service/quickstart-installation.md)
+* [创建和安装 Azure 机器学习](quickstart-installation.md)
+- [创建项目](quickstart-installation.md)
 
 
 ## <a name="azure-ml-logging-api-overview"></a>Azure ML 日志记录 API 概述
@@ -51,7 +56,7 @@ logger.log("all values", [5, 6, 7])
 在 Azure ML 工作台项目中使用记录器很容易，本文介绍了如何执行此操作。
 
 ## <a name="create-a-project-in-azure-ml-workbench"></a>在 Azure ML 工作台中创建项目
-如果尚未有项目，可以在[创建和安装快速入门](../service/quickstart-installation.md)中创建一个项目。在“项目仪表板”中，打开 **iris_sklearn.py** 脚本（如下所示）。
+如果尚未有项目，可以在[创建和安装快速入门](quickstart-installation.md)中创建一个项目。在“项目仪表板”中，打开 **iris_sklearn.py** 脚本（如下所示）。
 
 ![从“文件”选项卡中访问脚本](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-01b.png)
 

@@ -9,12 +9,12 @@ ms.author: mattfarm
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 7081c9e4f6e6deee196255f04180a8f2cc792876
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 5ed6fa9f514bae3ea651edba6702714e2680091f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122489"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46955939"
 ---
 # <a name="simple-enterprise-integration-architecture"></a>简单的企业集成体系结构
 
@@ -162,7 +162,7 @@ API 管理使用称作“命名值”或“属性”的对象管理机密。 这
 
 ## <a name="diagnostics-and-monitoring"></a>诊断和监控
 
-可以在 [API 管理](../api-management/api-management-howto-use-azure-monitor.md)和[逻辑应用](../logic-apps/logic-apps-monitor-your-logic-apps.md)中使用 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md) 进行操作监视。 Azure Monitor 根据为每个服务配置的指标提供信息，默认已启用。
+可以在 [API 管理](../api-management/api-management-howto-use-azure-monitor.md)和[逻辑应用](../logic-apps/logic-apps-monitor-your-logic-apps.md)中使用 [Azure Monitor](../azure-monitor/overview.md) 进行操作监视。 Azure Monitor 根据为每个服务配置的指标提供信息，默认已启用。
 
 每个服务还提供以下选项：
 

@@ -1,20 +1,21 @@
 ---
-title: 探讨 v2 API 生成的 Azure 视频索引器输出 | Microsoft Docs
+title: 探讨 v2 API 生成的视频索引器输出
+titlesuffix: Azure Cognitive Services
 description: 本主题探讨 v2 API 生成的视频索引器输出。
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 07/25/2018
+ms.component: video-indexer
+ms.topic: conceptual
+ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: 43cc02417fad8a2fa46bd309235951393cd55b8a
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 76f83e7ad70e3e1906bc1aa90c74d600053aeb6f
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40187363"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985639"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>探讨 v2 API 生成的视频索引器输出
 
@@ -23,7 +24,7 @@ ms.locfileid: "40187363"
 
 调用“获取视频索引”API 时，如果响应状态为 OK，则你会获得详细的 JSON 输出（响应内容）。 JSON 内容包含指定的视频见解的详细信息。 见解包括脚本、ocr、人脸、主题、块等维度。维度包含视频中出现每个维度时显示的时间范围实例。  
 
-此外，可以通过在视频索引器门户中的视频上按“播放”按钮，来直观检查视频的汇总见解。 有关详细信息，请参阅[查看和编辑视频见解](video-indexer-view-edit.md)。
+此外，可以通过在[视频索引器](https://www.videoindexer.ai/)网站中的视频上按“播放”按钮，来直观检查视频的汇总见解。 有关详细信息，请参阅[查看和编辑视频见解](video-indexer-view-edit.md)。
 
 ![洞察力](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
@@ -90,6 +91,8 @@ ms.locfileid: "40187363"
 |标签| 可以包含零个或多个标签。 有关更详细的信息，请参阅 [labels](#labels)。|
 |brands| 可以包含零个或多个品牌。 有关更详细的信息，请参阅 [brands](#brands)。|
 |statistics | 有关更详细的信息，请参阅 [statistics](#statistics)。|
+|情感| 可以包含零个或多个情感。 有关更详细的信息，请参阅 [emotions](#emotions)。|
+|topics|可以包含零个或多个主题。 [topics](#topics) 维度。|
 
 ## <a name="videos"></a>videos
 
@@ -165,6 +168,8 @@ ms.locfileid: "40187363"
 |情绪|[sentiments](#sentiments) 维度。|
 |visualContentModeration|[visualContentModeration](#visualcontentmoderation) 维度。|
 |textualConentModeration|[textualConentModeration](#textualconentmoderation) 维度。|
+|情感| [emotions](#emotions) 维度。|
+|topics|[topics](#topics) 维度。|
 
 示例：
 
@@ -320,7 +325,6 @@ instances|此块的时间范围列表。|
     ]
 }
 ] 
-
 ```
 
 #### <a name="faces"></a>人脸
@@ -444,7 +448,7 @@ instances|此块的时间范围列表。|
           "id": 0,
           "instances": [
             {
-          "thumbnailId": "00000000-0000-0000-0000-000000000000",
+                "thumbnailId": "00000000-0000-0000-0000-000000000000",
               "start": "00: 00: 00.1670000",
               "end": "00: 00: 00.2000000"
             }
@@ -453,7 +457,7 @@ instances|此块的时间范围列表。|
       ],
       "instances": [
         {
-       "thumbnailId": "00000000-0000-0000-0000-000000000000",   
+            "thumbnailId": "00000000-0000-0000-0000-000000000000",  
           "start": "00: 00: 00.2000000",
           "end": "00: 00: 05.0330000"
         }
@@ -466,7 +470,7 @@ instances|此块的时间范围列表。|
           "id": 1,
           "instances": [
             {
-          "thumbnailId": "00000000-0000-0000-0000-000000000000",        
+                "thumbnailId": "00000000-0000-0000-0000-000000000000",      
               "start": "00: 00: 05.2670000",
               "end": "00: 00: 05.3000000"
             }
@@ -667,10 +671,144 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 |bannedWordsCount |受禁单词的数目。|
 |bannedWordsRatio |占单词总数的比。|
 
+#### <a name="emotions"></a>情感
+
+视频索引器基于语音和音频提示识别情感。识别的情感可能是：快乐、悲伤、愤怒或恐惧。
+
+|名称|Description|
+|---|---|
+|id|情感 ID。|
+|type|基于语音和音频提示识别的瞬间情感。情感可能是：快乐、悲伤、愤怒或恐惧。|
+|instances|出现该情感的时间范围列表。|
+
+```json
+"emotions": [{
+    "id": 0,
+    "type": "Fear",
+    "instances": [{
+      "adjustedStart": "0:00:39.47",
+      "adjustedEnd": "0:00:45.56",
+      "start": "0:00:39.47",
+      "end": "0:00:45.56"
+    },
+    {
+      "adjustedStart": "0:07:19.57",
+      "adjustedEnd": "0:07:23.25",
+      "start": "0:07:19.57",
+      "end": "0:07:23.25"
+    }]
+  },
+  {
+    "id": 1,
+    "type": "Anger",
+    "instances": [{
+      "adjustedStart": "0:03:55.99",
+      "adjustedEnd": "0:04:05.06",
+      "start": "0:03:55.99",
+      "end": "0:04:05.06"
+    },
+    {
+      "adjustedStart": "0:04:56.5",
+      "adjustedEnd": "0:05:04.35",
+      "start": "0:04:56.5",
+      "end": "0:05:04.35"
+    }]
+  },
+  {
+    "id": 2,
+    "type": "Joy",
+    "instances": [{
+      "adjustedStart": "0:12:23.68",
+      "adjustedEnd": "0:12:34.76",
+      "start": "0:12:23.68",
+      "end": "0:12:34.76"
+    },
+    {
+      "adjustedStart": "0:12:46.73",
+      "adjustedEnd": "0:12:52.8",
+      "start": "0:12:46.73",
+      "end": "0:12:52.8"
+    },
+    {
+      "adjustedStart": "0:30:11.29",
+      "adjustedEnd": "0:30:16.43",
+      "start": "0:30:11.29",
+      "end": "0:30:16.43"
+    },
+    {
+      "adjustedStart": "0:41:37.23",
+      "adjustedEnd": "0:41:39.85",
+      "start": "0:41:37.23",
+      "end": "0:41:39.85"
+    }]
+  },
+  {
+    "id": 3,
+    "type": "Sad",
+    "instances": [{
+      "adjustedStart": "0:13:38.67",
+      "adjustedEnd": "0:13:41.3",
+      "start": "0:13:38.67",
+      "end": "0:13:41.3"
+    },
+    {
+      "adjustedStart": "0:28:08.88",
+      "adjustedEnd": "0:28:18.16",
+      "start": "0:28:08.88",
+      "end": "0:28:18.16"
+    }]
+  }
+],
+```
+
+#### <a name="topics"></a>topics
+
+视频索引器从脚本中推理主要主题。 在可能的情况下，会包括第一级 [IPTC](https://iptc.org/standards/media-topics/) 分类。 
+
+|名称|Description|
+|---|---|
+|id|主题 ID。|
+|名称|主题名称，例如：“Pharmaceuticals”。|
+|referenceId|反映主题层次结构的痕迹导航。 例如：“健康和福利 / 医疗和保健 / 药品”。|
+|confidence|[0,1] 范围内的置信度评分。 评分越高，则置信度越高。|
+|语言|主题中使用的语言。|
+|iptcName|IPTC 媒体代码名称（如果已检测到）。|
+|instances |目前，视频索引器不会按时间间隔编制主题的索引，因此，整个视频将用作间隔。|
+
+```json
+"topics": [{
+    "id": 0,
+    "name": "INTERNATIONAL RELATIONS",
+    "referenceId": "POLITICS AND GOVERNMENT/FOREIGN POLICY/INTERNATIONAL RELATIONS",
+    "referenceType": "VideoIndexer",
+    "confidence": 1,
+    "language": "en-US",
+    "instances": [{
+        "adjustedStart": "0:00:00",
+        "adjustedEnd": "0:03:36.25",
+        "start": "0:00:00",
+        "end": "0:03:36.25"
+    }]
+}, {
+    "id": 1,
+    "name": "Politics and Government",
+    "referenceType": "VideoIndexer",
+    "iptcName": "Politics",
+    "confidence": 0.9041,
+    "language": "en-US",
+    "instances": [{
+        "adjustedStart": "0:00:00",
+        "adjustedEnd": "0:03:36.25",
+        "start": "0:00:00",
+        "end": "0:03:36.25"
+    }]
+}]
+. . .
+```
 
 ## <a name="next-steps"></a>后续步骤
 
-[视频索引器 API](https://api-portal.videoindexer.ai)
+[视频索引器开发人员门户](https://api-portal.videoindexer.ai)
 
 有关如何在应用程序中嵌入小组件的信息，请参阅[将视频索引器小组件嵌入应用程序](video-indexer-embed-widgets.md)。 
 

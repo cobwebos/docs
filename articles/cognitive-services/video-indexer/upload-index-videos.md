@@ -1,22 +1,23 @@
 ---
-title: 使用 Azure 视频索引器上传视频和编制视频索引 | Microsoft Docs
-description: 本主题演示如何通过 Azure 视频索引器使用 API 来上传视频和编制视频索引
+title: 示例：使用视频索引器上传视频和编制视频索引
+titlesuffix: Azure Cognitive Services
+description: 本主题演示如何通过视频索引器使用 API 来上传视频和编制视频索引。
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: erikre
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 08/17/2018
+ms.component: video-indexer
+ms.topic: sample
+ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: ac9d3f8fd10a3b65a2af2999b8c7ade7965de912
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: e84411535b82b3e4861b529f490bdde0eb25fd42
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43664440"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983880"
 ---
-# <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
+# <a name="example-upload-and-index-your-videos"></a>示例：上传视频和编制视频索引  
 
 本文介绍如何使用 Azure 视频索引器上传视频。 视频索引器 API 提供了两个上传选项： 
 
@@ -33,7 +34,7 @@ ms.locfileid: "43664440"
 ## <a name="uploading-considerations"></a>上传注意事项
     
 - 根据 URL（首选方式）上传视频时，必须使用 TLS 1.2（或更高版本）保护终结点
-- 字节数组选项限制为 4 GB，并且在 30 分钟后超时
+- 字节数组选项限制为 2GB，并且在 30 分钟后超时
 - 需要对 `videoURL` 参数中提供的 URL 进行编码
 
 ## <a name="configurations-and-params"></a>配置和参数

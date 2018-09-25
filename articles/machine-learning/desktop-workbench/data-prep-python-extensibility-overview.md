@@ -11,14 +11,19 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 05/09/2018
-ms.openlocfilehash: a713f5fcde31e0e25de080a65b71209011ef551d
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: eceeeb30331031c51e5208e301441d17096b4a00
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35633435"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972974"
 ---
 # <a name="data-preparations-python-extensions"></a>数据准备 Python 扩展
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 作为一种填补内置功能之间功能差距的方法，Azure 机器学习数据准备包含多个级别的扩展性。 在本文档中，我们将通过 Python 脚本概述扩展性。 
 
 ## <a name="custom-code-steps"></a>自定义代码步骤 

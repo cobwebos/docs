@@ -1,20 +1,21 @@
 ---
-title: 创建连接到 Azure 的视频索引器帐户 | Microsoft Docs
-description: 本文介绍如何创建连接到 Azure 的视频索引器帐户。
+title: 在 Azure 门户中创建视频索引器帐户
+titlesuffix: Azure Cognitive Services
+description: 本文介绍如何在 Azure 门户中创建视频索引器帐户。
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: erikre
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: video-indexer
+ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: juliako
-ms.openlocfilehash: c598fdae40b4552e1d4dc29b8558d82d0830160a
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 8b8aa3e2f7a461c13cc73270863498283f02f740
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841826"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983109"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>创建连接到 Azure 的视频索引器帐户
 
@@ -52,16 +53,18 @@ ms.locfileid: "43841826"
 
 ## <a name="connect-to-azure"></a>连接到 Azure
 
-1. 登录到 [https://www.videoindexer.ai/](https://www.videoindexer.ai/)，然后单击“连接到 Azure”按钮：
+1. 浏览到[视频索引器](https://www.videoindexer.ai/)网站并登录。
+
+2. 单击“连接到 Azure”按钮：
 
     ![连接到 Azure](./media/create-account/connect-to-azure.png)
 
-2. 订阅列表出现时，请选择要使用的订阅。 
+3. 订阅列表出现时，请选择要使用的订阅。 
 
     ![将视频索引器连接到 Azure](./media/create-account/connect-vi-to-azure-subscription.png)
 
-3. 从支持的位置选择一个 Azure 区域：“美国西部 2”、“北欧”或“东亚”。
-4. 在“Azure 媒体服务帐户”下，选择以下选项之一：
+4. 从支持的位置选择一个 Azure 区域：“美国西部 2”、“北欧”或“东亚”。
+5. 在“Azure 媒体服务帐户”下，选择以下选项之一：
 
     * 若要创建新的媒体服务帐户，请选择“创建新资源组”。 提供资源组的名称。
 
@@ -85,13 +88,13 @@ ms.locfileid: "43841826"
         |应用程序 ID|具有指定媒体服务帐户的权限的 Azure AD 应用程序 ID。 有关更多信息，请参阅[使用服务主体身份验证](../../media-services/previous/media-services-portal-get-started-with-aad.md#service-principal-authentication)。|
         |应用程序密钥|有关更多信息，请参阅[使用服务主体身份验证](../../media-services/previous/media-services-portal-get-started-with-aad.md#service-principal-authentication)。|
 
-5. 完成后，选择“连接”。 此操作可能需要长达数分钟时间才能完成。 
+6. 完成后，选择“连接”。 此操作可能需要长达数分钟时间才能完成。 
 
     连接到 Azure 后，新的视频索引器帐户会显示在帐户列表中：
 
     ![新帐户](./media/create-account/new-account.png)
 
-6. 浏览到新帐户： 
+7. 浏览到新帐户： 
 
     ![视频索引器帐户](./media/create-account/vi-account.png)
 

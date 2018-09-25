@@ -1,25 +1,27 @@
 ---
-title: 查看和编辑 Azure 视频索引器见解 | Microsoft Docs
+title: 查看和编辑视频索引器见解
+titlesuffix: Azure Cognitive Services
 description: 本主题演示如何查看和编辑视频索引器见解。
 services: cognitive services
-documentationcenter: ''
 author: juliako
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 07/31/2018
+ms.component: video-indexer
+ms.topic: conceptual
+ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: 797c09d72402cfc1ee2524e7792cc1310a53fb1e
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: c9b229e2fb3297d724ec8de02bf54e9765689ab7
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399471"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984533"
 ---
 # <a name="view-and-edit-video-indexer-insights"></a>查看和编辑视频索引器见解
 
 本主题介绍如何查看和编辑视频的视频索引器见解。
 
-1. 登录到[视频索引器](https://api-portal.videoindexer.ai/)帐户。
+1. 浏览到[视频索引器](https://www.videoindexer.ai/)网站并登录。
 2. 找到需从其创建视频索引器见解的视频。 有关详细信息，请参阅[在视频中查找确切的时刻](video-indexer-search.md)。
 3. 按“播放”。
 
