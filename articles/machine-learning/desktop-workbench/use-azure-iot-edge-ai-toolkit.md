@@ -11,30 +11,20 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 2/1/2018
-ms.openlocfilehash: f5905f9f5e8524e4ae1d330c501d08d774955202
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9b2f4dbf1e87aa5aa035bfd9071fed7be74a9c07
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35631158"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978977"
 ---
 # <a name="use-the-ai-toolkit-for-azure-iot-edge"></a>使用 AI Toolkit for Azure IoT Edge
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
 
 将人工智能、机器学习和高级分析的强大功能应用到边缘。 使用 AI Toolkit for Azure IoT Edge，可以将 AI 和机器学习部署到数据所在的位置。 使用 REST API 将模型作为 Docker 容器运行，然后将模型推送到 Azure IoT 中心的某个边缘设备。 AI Toolkit for Azure IoT Edge 将智能、弹性计算和云的功能引入有着有限连接、间歇性连接或无连接的位置。
 
 AI Toolkit for Azure IoT Edge 是脚本、代码和可部署容器的集合。 示例包括预测性维护、图像分类和语音处理，以及通过 Azure 机器学习和 Azure IoT 中心的自定义模型部署。 包含在工具包中的模型可以按原样使用，但所有源代码和数据都可供开发者根据自己的需求进行自定义。
 
 可以在 [aka.ms/AI-toolkit](http://aka.ms/AI-toolkit) 找到 AI Toolkit for Azure IoT Edge 公共 GitHub 存储库。
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -5,17 +5,17 @@ services: azure-policy
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 08/16/2018
+ms.date: 09/18/2018
 ms.author: dacoulte
 ms.custom: include file
-ms.openlocfilehash: 0e5d1214a8e1af8299cb40d1a3b31ff6eafc8c5c
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: c3365450c90c4fda37884e8998fad70f5d164244
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40185270"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47006466"
 ---
-Azure Policy 的每个对象类型都有一个最大计数。 _作用域_条目是指订阅或[管理组](../articles/azure-resource-manager/management-groups-overview.md)。
+Azure Policy 的每个对象类型都有一个最大计数。 _作用域_条目是指订阅或[管理组](../articles/governance/management-groups/overview.md)。
 
 | 其中 | 对象 | 最大计数 |
 |---|---|---|

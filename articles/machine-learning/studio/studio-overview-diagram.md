@@ -14,14 +14,14 @@ ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: overview
 ms.date: 04/04/2017
-ms.openlocfilehash: c5de91503ce49fd7c3dcbcacda7e39c7672b06a8
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: f1364435d2f7b50c642d1bb5b41708ec52bda533
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835842"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946198"
 ---
 # <a name="overview-diagram-of-azure-machine-learning-studio-capabilities"></a>Azure 机器学习工作室功能的概要示意图
 **Microsoft Azure 机器学习工作室功能概述** 示意图高度概括了如何使用机器学习工作室开发预测分析模型并在 Azure 云中加以实施。

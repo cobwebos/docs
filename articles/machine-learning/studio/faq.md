@@ -14,14 +14,14 @@ ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 06/02/2017
-ms.openlocfilehash: 31676ea43acc495bf0cb6a249901e5b64ef217b7
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 22d060ca38663f21bef977f5d506f215fd947a50
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782924"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998315"
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Azure 机器学习常见问题：计费、功能、限制和支持
 下面提供了一些有关 Azure 机器学习的常见问题 (FAQ) 和相应解答。Azure 机器学习是适合通过 Web 服务开发预测模型和操作解决方案的云服务。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。

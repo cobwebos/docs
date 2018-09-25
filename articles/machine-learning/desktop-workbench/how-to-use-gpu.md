@@ -11,18 +11,22 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 09d8e3da543cdf4433d986b321697abcad88eb22
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ROBOTS: NOINDEX
+ms.openlocfilehash: 8e8944a9bdfa2b75f6442e03d45dfb6977c2a122
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44157984"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974351"
 ---
 # <a name="how-to-use-gpu-in-azure-machine-learning"></a>如何在 Azure 机器学习中使用 GPU
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 图形处理单元 (GPU) 广泛用于处理通常在训练某些深度神经网络模型时发生的计算密集型任务。 使用 GPU 可以显著减少模型的训练时间。 在本文档中，可了解如何配置 Azure ML 工作台，以使用配备 GPU（作为执行目标）的 [DSVM（数据科学虚拟机）](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview)。 
 
 ## <a name="prerequisites"></a>先决条件
-- 若要分步完成此操作方法指南，需要先[安装 Azure ML 工作台](../service/quickstart-installation.md)。
+- 若要分步完成此操作方法指南，需要先[安装 Azure ML 工作台](quickstart-installation.md)。
 - 需要能够访问配备 NVidia GPU 的计算机。
     - 可以在配备 GPU 的本地计算机（Windows 或 macOS）上直接运行脚本。
     - 还可以在配备 GPU 的 Linux 计算机的 Docker 容器中运行脚本。

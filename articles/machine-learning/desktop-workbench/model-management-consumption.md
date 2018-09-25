@@ -11,14 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: 4a49ccff68003cf7b81a7d945176992a2893d1ac
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ROBOTS: NOINDEX
+ms.openlocfilehash: c01198a78a32c460bd147e1e160358271b80eef5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38973169"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950609"
 ---
 # <a name="consuming-web-services"></a>使用 Web 服务
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 将模型部署为实时 Web 服务后，可以从各种平台和应用程序向其发送数据并获取预测数据。 实时 Web 服务公开了一个用于获取预测数据的 REST API。 可以采用单行或多行格式向 Web 服务发送数据，从而一次获取一行或多行预测数据。
 
 使用 [Azure 机器学习 Web 服务](model-management-service-deploy.md)，外部应用程序可通过对服务 URL 进行 HTTP POST 调用以同步与预测模型进行通信。 若要进行 Web 服务调用，客户端应用程序需要指定在部署预测时创建的 API 密钥，并将请求数据置于 POST 请求正文中。

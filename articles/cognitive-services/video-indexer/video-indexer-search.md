@@ -1,26 +1,27 @@
 ---
-title: 使用 Azure 视频索引器在视频中查找确切的时刻 | Microsoft Docs
-description: 本主题演示如何在视频中查找确切的时刻。
+title: 在视频中查找确切的时刻 - 视频索引器
+titlesuffix: Azure Cognitive Services
+description: 本主题演示如何使用视频索引器在视频中查找确切的时刻。
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: erikre
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 07/31/2018
+ms.component: video-indexer
+ms.topic: conceptual
+ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: 1cffa067d8028adab4dbcc82c529f77d980ce6be
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 9806f9c3f22429d61ac765773e4b6971d683a6b1
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397537"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984503"
 ---
 # <a name="find-exact-moments-within-videos"></a>在视频中查找确切的时刻
 
 本主题介绍可以在视频中查找确切时刻的搜索选项。
 
-1. 登录到[视频索引器](https://api-portal.videoindexer.ai/)帐户。
+1. 浏览到[视频索引器](https://www.videoindexer.ai/)网站并登录。
 2. 在帐户的所有视频中搜索。
 
     在以下示例中，我们搜索了 Channel9 创建的包含 Scott Hanselman 的所有视频。

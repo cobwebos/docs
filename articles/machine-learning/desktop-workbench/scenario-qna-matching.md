@@ -12,14 +12,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
-ms.openlocfilehash: 33d95e0c17e8b9b18313cb0854532337ec76cfd1
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ROBOTS: NOINDEX
+ms.openlocfilehash: e0f6148e1fb28838bf99c63fbfbfbfe8cd127c8c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42144838"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46973195"
 ---
 #  <a name="q--a-matching-using-azure-machine-learning-workbench"></a>使用 Azure Machine Learning Workbench 进行问答匹配
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 回答开放式问题很难，通常需要行业专家 (SME) 提供人力帮助。 公司通常会创建常见问题解答 (FAQ) 的列表，作为一种协助用户的手段，同时也可以降低对内部 SME 的需求。 本示例介绍了各种有效的机器学习方法，将开放式查询与预先存在的常见问题解答的问答对进行匹配。 本示例演示了如何通过简单的开发过程，使用 Azure Machine Learning Workbench 生成此类解决方案。 
 
 ## <a name="link-to-the-gallery-github-repository"></a>库 GitHub 存储库的链接
@@ -42,7 +47,7 @@ ms.locfileid: "42144838"
 运行此示例的先决条件如下所示：
 
 1. [Azure 帐户](https://azure.microsoft.com/free/)（有免费试用版可用）。
-2. 遵循[安装快速入门指南](../service/quickstart-installation.md)安装 [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) 的副本，以安装程序并创建工作区。
+2. 遵循[安装快速入门指南](quickstart-installation.md)安装 [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) 的副本，以安装程序并创建工作区。
 3. 本示例可以在任何计算上下文中运行。 但是，建议在内存至少为 16 GB 且磁盘空间至少为 5 GB 的多核计算机中运行本示例。
 
 ## <a name="create-a-new-workbench-project"></a>创建新的 Workbench 项目

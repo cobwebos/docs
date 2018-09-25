@@ -1,45 +1,43 @@
 ---
-title: 使用 Azure 视频索引器 API | Microsoft Docs
+title: 教程：使用视频索引器 API
+titlesuffix: Azure Cognitive Services
 description: 本文介绍如何开始使用视频索引器 API。
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: erikre
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 07/25/2018
+ms.component: video-indexer
+ms.topic: tutorial
+ms.date: 09/09/2018
 ms.author: juliako
-ms.openlocfilehash: 73359955861b88f2bc5ca297c32fa78c2632148c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7bd7ed1b2d2f437ef57598c42ca12ce8bfb174a1
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449456"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985560"
 ---
-# <a name="use-azure-video-indexer-api"></a>使用 Azure 视频索引器 API
+# <a name="tutorial-use-the-video-indexer-api"></a>教程：使用视频索引器 API
 
 > [!Note]
 > 视频索引器 V1 API 已于 2018 年 8 月 1 日弃用。 从现在起，应该使用视频索引器 v2 API。 <br/>若要使用视频索引器 v2 API 进行开发，请参阅[此处](https://api-portal.videoindexer.ai/)的说明。 
 
 视频索引器在一个集成式服务中整合了 Microsoft 提供的多种音频和视频人工智能 (AI) 技术，使开发变得更简单。 API 可让开发人员专注于使用媒体 AI 技术，而无需考虑云平台的规模、全球覆盖度、可用性和可靠性的问题。 可以使用 API 来上传文件、获取详细的视频见解、获取见解和播放器小组件的 URL 以将其嵌入应用程序，以及执行其他任务。
 
-创建视频索引器帐户时，可以选择免费试用帐户（提供特定分钟数的免费索引时间）或付费选项（不受配额的限制）。 使用免费试用版时，视频索引器为网站用户提供最多 600 分钟的免费索引，为 API 用户提供最多 2400 分钟的免费索引。 使用付费选项时，可以创建[连接到 Azure 订阅和 Azure 媒体服务帐户](connect-to-azure.md)的视频索引器帐户。 需要为编制索引的分钟数付费，此外还需要支付媒体帐户相关的费用。 
+创建视频索引器帐户时，可以选择免费试用帐户（提供特定分钟数的免费索引时间）或付费选项（不受配额的限制）。 使用免费试用版时，视频索引器为网站用户提供最多 600 分钟的免费索引，为 API 用户提供最多 2400 分钟的免费索引。 使用付费选项时，可以创建[连接到 Azure 订阅和 Azure 媒体服务帐户](connect-to-azure.md)的视频索引器帐户。 你需要为编制索引的分钟数付费，此外还需要支付 Azure 媒体服务帐户相关的费用。 
 
-本文介绍开发人员可以如何利用[视频索引器 API](https://api-portal.videoindexer.ai/)。 有关视频索引器服务的更详细概述，请参阅[概述](video-indexer-overview.md)文章。
+本文介绍开发人员可以如何利用[视频索引器 API](https://api-portal.videoindexer.ai/)。
 
 ## <a name="subscribe-to-the-api"></a>订阅 API
 
-1. 登录。
-
-    若要开始使用视频索引器进行开发，必须先登录到[视频索引器](https://api-portal.videoindexer.ai/)门户。 
+1. 登录到[视频索引器开发人员门户](https://api-portal.videoindexer.ai/)。
     
-    ![注册](./media/video-indexer-use-apis/video-indexer-api01.png)
+    ![登录](./media/video-indexer-use-apis/video-indexer-api01.png)
 
     > [!Important]
     > * 必须使用注册视频索引器时所用的同一提供程序。
     > * 只能使用 Google 和 Microsoft (Outlook/Live) 个人帐户作为试用帐户。 连接到 Azure 的帐户需要 Azure AD。
     > * 只能为电子邮件地址提供一个活动帐户。 如果用户尝试使用 user@gmail.com 进行 LinkedIn 登录，然后又使用 user@gmail.com 进行 Google 登录，则后一次登录时会显示错误页，指出该用户已存在。
-
 
 2. 订阅。
 
@@ -91,15 +89,15 @@ ms.locfileid: "39449456"
 
 在所有操作 API 调用中都必须指定“帐户 ID”参数。 帐户 ID 是一个 GUID，可通过以下方式之一获取：
 
-* 使用视频索引器门户获取帐户 ID：
+* 使用**视频索引器网站**获取帐户 ID：
 
-    1. 登录到 [videoindexer](https://www.videoindexer.ai/)。
+    1. 浏览到[视频索引器](https://www.videoindexer.ai/)网站并登录。
     2. 浏览到“设置”页。
     3. 复制帐户 ID。
 
         ![帐户 ID](./media/video-indexer-use-apis/account-id.png)
 
-* 使用 API 以编程方式获取帐户 ID。
+* 使用**视频索引器开发人员门户**以编程方式获取帐户 ID。
 
     使用[获取帐户](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Accounts?) API。
     
@@ -225,7 +223,5 @@ Debug.WriteLine(playerWidgetLink);
 ## <a name="next-steps"></a>后续步骤
 
 [检查输出 JSON 的详细信息](video-indexer-output-json.md)。
-
-## <a name="see-also"></a>另请参阅
 
 [视频索引器概述](video-indexer-overview.md)

@@ -13,14 +13,19 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: a960197c89e1d051de0e9b8b73cbab231982cf52
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ROBOTS: NOINDEX
+ms.openlocfilehash: a389007dea344de461b23b96f2942686005aa119
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216684"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982386"
 ---
 # <a name="sample-of-filter-expressions-python"></a>筛选表达式示例 (Python) 
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 阅读本附录前，请先阅读 [Python 扩展性概述](data-prep-python-extensibility-overview.md)。
 
 ## <a name="filter-with-equivalence-test"></a>等效性测试筛选

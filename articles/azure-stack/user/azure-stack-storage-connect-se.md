@@ -14,11 +14,11 @@ ms.date: 06/15/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.openlocfilehash: 2f974b7773e7a4cbc0eda32a267bb5ab939644d8
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35998412"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47095110"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>将存储资源管理器连接到 Azure Stack 订阅或存储帐户
 

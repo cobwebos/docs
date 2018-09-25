@@ -12,14 +12,18 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/21/2017
-ms.openlocfilehash: 2a50350b9ba49d82a20b92804ffb92ec6906186d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ROBOTS: NOINDEX
+ms.openlocfilehash: cae80408a7440136b504647596c84a459a0d679c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439894"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971699"
 ---
 # <a name="tutorial-use-azure-machine-learning-workbench-for-advanced-data-preparation-bike-share-data"></a>教程：使用 Azure Machine Learning Workbench 进行高级数据准备（共享自行车数据）
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 Azure 机器学习（预览版）是一个集成式的端到端数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
 
 在本教程中，将使用机器学习（预览版）来了解如何执行以下操作：
@@ -36,7 +40,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
 ## <a name="prerequisites"></a>先决条件
 
-* 在本地安装 Azure Machine Learning Workbench。 有关详细信息，请参阅[安装快速入门](../service/quickstart-installation.md)。
+* 在本地安装 Azure Machine Learning Workbench。 有关详细信息，请参阅[安装快速入门](quickstart-installation.md)。
 * 如果尚未安装 Azure CLI，请按说明[安装最新的 Azure CLI 版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * 一个在 Azure 中创建的 [HDInsights Spark 群集](how-to-create-dsvm-hdi.md#create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal)。
 * 一个 Azure 存储帐户。
@@ -172,7 +176,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
 1. **数据类型**：查看自动检测到的数据类型。 Machine Learning Workbench 可分析文件中的数据并推断要使用的数据类型。
 
-   a. 对于该数据，请将所有列的“数据类型”更改为“字符串”。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于该数据，请将所有列的“数据类型”更改为“字符串”。
 
    > [!NOTE]
    > 在本教程后面，字符串用来突出显示 Workbench 的功能。 

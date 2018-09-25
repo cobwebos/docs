@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 2/14/2018
 ms.author: markgal
 ms.custom: mvc
-ms.openlocfilehash: 2fd993960d8ae5d1f26939d333e546da760d8f43
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 2bd5e3e022c0e780b1efede6facb8924fa6cde4f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432576"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998179"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>将文件还原到 Azure 中的虚拟机
 Azure 备份可创建恢复点，这些恢复点存储在异地冗余的恢复保管库中。 从恢复点还原时，可以还原整个 VM，也可以还原单个文件。 本文将详细介绍如何还原单个文件。 本教程介绍如何执行下列操作：
@@ -27,7 +27,7 @@ Azure 备份可创建恢复点，这些恢复点存储在异地冗余的恢复�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本教程需要你运行 Azure CLI 2.0.18 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。 
+如果选择在本地安装并使用 CLI，本教程需要你运行 Azure CLI 2.0.18 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
 
 
 ## <a name="prerequisites"></a>先决条件

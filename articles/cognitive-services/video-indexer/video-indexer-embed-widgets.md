@@ -1,47 +1,52 @@
 ---
-title: 将 Azure 视频索引器小组件嵌入应用程序 | Microsoft Docs
-description: ''
+title: 示例：将视频索引器小组件嵌入应用程序
+titlesuffix: Azure Cognitive Services
+description: 了解如何将视频索引器小组件嵌入应用程序。
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: erikre
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 08/25/2018
+ms.component: video-indexer
+ms.topic: sample
+ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: b8de9e8d73ba899fb7f3036d871c5d30daf101de
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 0d75a58ddf0607286d41867828119fdd05e07d22
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049351"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985575"
 ---
-# <a name="embed-video-indexer-widgets-into-your-applications"></a>将视频索引器小组件嵌入应用程序
+# <a name="example-embed-video-indexer-widgets-into-your-applications"></a>示例：将视频索引器小组件嵌入应用程序
 
-视频索引器支持将两类小组件嵌入应用程序：**认知见解**和**播放器**。 
+本文介绍如何将视频索引器小组件嵌入应用程序。 视频索引器支持将两类小组件嵌入应用程序：**认知见解**和**播放器**。 
+## <a name="widget-types"></a>小组件类型
 
-* **认知见解**小组件包括从视频索引过程中提取的所有视觉见解。 
-    见解小组件支持以下可选的 URL 参数：
+### <a name="cognitive-insights-widget"></a>认知见解小组件
 
-    |名称|定义|Description|
-    |---|---|---|
-    |widgets|用逗号分隔的字符串|用于控制要呈现的见解。 <br/>示例：**widgets=people,brands** 将只呈现人物和品牌 UI 见解<br/>可用选项：People、Keywords、Annotations、Brands、Sentiments、Transcript、Search | 
-* **播放器**小组件用于通过自适应比特率来流式传输视频。
+**认知见解**小组件包括从视频索引过程中提取的所有视觉见解。 见解小组件支持以下可选的 URL 参数：
 
-    播放器小组件支持以下可选的 URL 参数：
+|名称|定义|Description|
+|---|---|---|
+|widgets|用逗号分隔的字符串|用于控制要呈现的见解。 <br/>示例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` 只呈现人物和品牌 UI 的见解<br/>可用选项：people、keywords、annotations、brands、sentiments、transcript、search。<br/>使用版本 2 时不支持在 URL 中提供<br/><br/>**注意：** 如果使用 **version=2**，则不支持 **widgets** URL 参数。 |
+|版本|**认知见解**小组件的版本|若要获取最新的见解小组件更新，请将 `?version=2` 查询参数添加到嵌入 URL。 例如： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?version=2` <br/> 若要获取旧版本，只需从 URL 中删除 `version=2`。
 
-    |名称|定义|Description|
-    |---|---|---|
-    |t|距离开始的秒数|让播放器从给定时间点开始播放。<br/>示例：t=60|
-    |captions|语言代码|在小组件加载过程中提取给定语言的字幕，使之在字幕菜单中可用。<br/>示例：captions=en-Us|
-    |showCaptions|布尔值|使播放器与已启用的字幕一起加载。<br/>示例：showCaptions=true|
-    |type||激活音频播放器外观（视频部件已删除）。<br/>示例：type=audio|
-    |autoplay|布尔值|决定播放器是否会在加载后开始播放视频（默认为 true）。<br/>示例：autoplay=false|
-    |语言|语言代码|控制播放器控件本地化（默认为 en-US）<br/>示例：language=de-DE|
+### <a name="player-widget"></a>播放器小组件
+
+**播放器**小组件用于通过自适应比特率来流式传输视频。 播放器小组件支持以下可选的 URL 参数：
+
+|名称|定义|Description|
+|---|---|---|
+|t|距离开始的秒数|让播放器从给定时间点开始播放。<br/>示例：t=60|
+|captions|语言代码|在小组件加载过程中提取给定语言的字幕，使之在字幕菜单中可用。<br/>示例：captions=en-US|
+|showCaptions|布尔值|使播放器与已启用的字幕一起加载。<br/>示例：showCaptions=true|
+|type||激活音频播放器外观（视频部件已删除）。<br/>示例：type=audio|
+|autoplay|布尔值|确定播放器是否会在加载后开始播放视频（默认值为 true）。<br/>示例：autoplay=false|
+|语言|语言代码|控制播放器语言（默认值为 en-US）<br/>示例：language=de-DE|
 
 ## <a name="embedding-public-content"></a>嵌入公共内容
 
-1. 登录到[视频索引器](https://api-portal.videoindexer.ai/)帐户。 
+1. 浏览到[视频索引器](https://www.videoindexer.ai/)网站并登录。
 2. 单击显示在视频下面的“嵌入”按钮。
 
     ![小组件](./media/video-indexer-embed-widgets/video-indexer-widget01.png)
@@ -60,7 +65,7 @@ ms.locfileid: "43049351"
 
 若要嵌入**专用**视频，需在 **iframe** 的 **src** 属性中传入访问令牌：
 
-     https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<VideoId>/?accessToken=<accessToken>
+     https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>
     
 使用[**获取见解小组件**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-insights-widget?) API 获取认知见解小组件内容，或者使用[**获取视频访问令牌**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?)并将其作为查询参数添加到 URL，如上所示。 将此 URL 指定为 **iframe** 的 **src** 值。
 
@@ -216,24 +221,24 @@ ms.locfileid: "43049351"
 
 可用值：people、keywords、sentiments、transcript、search。
 
-例如，如果需要嵌入的小组件仅包含人物和搜索见解，则 iframe 嵌入 URL 将如下所示： https://www.videoindexer.ai/embed/insights/c4c1ad4c9a/?widgets=people,search
+例如，如果需要嵌入的小组件仅包含人物和搜索见解，则 iframe 嵌入 URL 将如下所示： https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search
 
 iframe 窗口的标题也可自定义，只需为 iframe URL 提供 **&title=**<YourTitle> 即可。 （它会自定义 html \<title> 值）。
-例如，如果需要为 iframe 窗口提供标题“MyInsights”，则 URL 将如下所示： https://www.videoindexer.ai/embed/insights/c4c1ad4c9a/?title=MyInsights。 请注意，仅当你需要在新窗口中打开见解时，此选项才适用。
+例如，如果需要为 iframe 窗口提供标题“MyInsights”，则 URL 将如下所示： https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?title=MyInsights。 请注意，仅当你需要在新窗口中打开见解时，此选项才适用。
 
 ### <a name="player-widget"></a>播放器小组件
 如果嵌入视频索引器播放器，则可通过指定 iframe 的大小来选择播放器的大小。
 
 例如：
 
-    <iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/{id}” frameborder="0" allowfullscreen />
+    <iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />
 
 默认情况下，视频索引器播放器会根据从视频提取的视频脚本以及在视频上传时选定的源语言来自动生成隐藏式字幕。
 
 若要在嵌入时使用其他语言，则可向嵌入播放器 URL 添加 **&captions=< Language | ”all” | “false” >**；或者，若要使用所有可用的语言字幕，则可使用“all”作为值。
 如果需要默认显示字幕，则可传递 **&showCaptions=true**
 
-然后，嵌入 URL 将如下所示： https://www.videoindexer.ai/embed/player/9a296c6ec3/?captions=italian。 若要禁用字幕，则可传递“false”作为 captions 参数的值。
+然后，嵌入 URL 将如下所示： https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=italian。 若要禁用字幕，可传递“false”作为 captions 参数的值。
 
 自动播放 - 播放器会按照默认设置开始播放视频。 可以选择不自动播放，只需向上述嵌入 URL 传递 &autoplay=false 即可。
 

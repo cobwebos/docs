@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 14854960aa8db50507b407d4fab7c4113618235c
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 03c6d45cb3a20244ddbb9c0aec693f7802a95b22
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071540"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46976352"
 ---
 # <a name="how-to-monitor-azure-redis-cache"></a>如何监视 Azure Redis 缓存
 Azure Redis 缓存使用 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) 提供用于监视缓存实例的几个选项。 可以查看度量值、将度量值图表固定到启动面板、自定义监视图表的日期和时间范围、在图表中添加和删除度量值，以及设置符合特定条件时发出的警报。 借助这些工具，可以监视 Azure Redis 缓存实例的运行状况，以及管理缓存应用程序。
@@ -61,7 +61,7 @@ Azure Redis 缓存使用 [Azure Monitor](https://docs.microsoft.com/azure/monito
 <a name="how-to-view-metrics-and-customize-chart"></a>
 <a name="enable-cache-diagnostics"></a>
 ## <a name="export-cache-metrics"></a>导出缓存指标
-默认情况下，Azure Monitor 中的缓存指标将被[存储 30 天](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#store-and-archive)，然后将被删除。 若要延长缓存指标的保存时间，使其超过 30 天，可以为缓存指标[指定存储帐户](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)，并指定“保留期（天）”策略。 
+默认情况下，Azure Monitor 中的缓存指标将被[存储 30 天](../monitoring/monitoring-data-collection.md#metrics)，然后将被删除。 若要延长缓存指标的保存时间，使其超过 30 天，可以为缓存指标[指定存储帐户](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)，并指定“保留期（天）”策略。 
 
 若要配置缓存指标的存储帐户：
 
@@ -75,11 +75,11 @@ Azure Redis 缓存使用 [Azure Monitor](https://docs.microsoft.com/azure/monito
 ![Redis 诊断](./media/cache-how-to-monitor/redis-cache-diagnostics.png)
 
 >[!NOTE]
->除了将缓存指标存档至存储区外，还可以[将其流式传输到事件中心或将其发送到 Log Analytics](../monitoring-and-diagnostics/monitoring-overview-metrics.md#export-metrics)。
+>除了将缓存指标存档至存储区外，还可以[将其流式传输到事件中心或将其发送到 Log Analytics](../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md#retrieve-metric-values)。
 >
 >
 
-若要访问指标，可按前文所述在 Azure 门户中查看它们，还可以使用 [Azure Monitor 指标 REST API](../monitoring-and-diagnostics/monitoring-overview-metrics.md#access-metrics-via-the-rest-api) 对其进行访问。
+若要访问指标，可按前文所述在 Azure 门户中查看它们，还可以使用 [Azure Monitor 指标 REST API](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md) 对其进行访问。
 
 > [!NOTE]
 > 如果更改存储帐户，以前配置的存储帐户中的数据仍可供下载，但并不会显示在 Azure 门户中。  

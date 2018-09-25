@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: memccror
-ms.openlocfilehash: 5c0726ea0da288d5306e28b101e4d3b59605b443
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c0b4e3e0a924c1353f7732737670dee7ed45a62a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33894888"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953865"
 ---
 # <a name="low-priority-vms-on-scale-sets-preview"></a>规模集中的低优先级 VM（预览版）
 
@@ -43,7 +43,7 @@ ms.locfileid: "33894888"
 
 若要在规模集中部署低优先级 VM，可将新的 *Priority* 标志设置为 *Low*。 这样，规模集中的所有 VM 将设置为低优先级。 若要创建包含低优先级 VM 的规模集，请使用以下方法之一：
 - [Azure 门户](#use-the-azure-portal)
-- [Azure CLI 2.0](#use-the-azure-cli-20)
+- [Azure CLI](#use-the-azure-cli-20)
 - [Azure PowerShell](#use-azure-powershell)
 - [Azure 资源管理器模板](#use-azure-resource-manager-templates)
 
@@ -51,7 +51,7 @@ ms.locfileid: "33894888"
 
 创建使用低优先级 VM 的规模集的过程与[入门文章](quick-create-portal.md)中详述的过程一样。 如果要部署规模集，可以选择设置低优先级标志和收回策略：![使用低优先级 VM 创建规模集](media/virtual-machine-scale-sets-use-low-priority/vmss-low-priority-portal.png)
 
-## <a name="use-the-azure-cli-20"></a>使用 Azure CLI 2.0
+## <a name="use-the-azure-cli"></a>使用 Azure CLI
 
 创建包含低优先级 VM 的规模集的过程与[入门文章](quick-create-cli.md)中详述的过程相同。 只需将“--Priority”参数添加到 cli 调用并将其设置为 *Low*，如以下示例所示：
 
@@ -126,7 +126,7 @@ $vmssConfig = New-AzureRmVmssConfig `
   }
 }
 ```
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 ### <a name="can-i-convert-existing-scale-sets-to-low-priority-scale-sets"></a>是否可以将现有的规模集转换为低优先级规模集？
 不可以，低优先级标志仅在创建时受支持。

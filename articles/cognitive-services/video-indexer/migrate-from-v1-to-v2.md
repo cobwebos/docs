@@ -1,20 +1,21 @@
 ---
-title: 从 Azure 视频索引器 API v1 迁移到 v2 | Microsoft Docs
+title: 从 Azure 视频索引器 API v1 迁移到 v2
+titlesuffix: Azure Cognitive Services
 description: 本主题介绍如何从 Azure 视频索引器 API v1 迁移到 v2。
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: erikre
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 07/25/2018
+ms.component: video-indexer
+ms.topic: conceptual
+ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: b1737960a4142f5c0d949ce8c2524c34fe9cd79e
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 3c70bbe11d94e6b03d615b8d1394ccdca6bd3790
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40187362"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985624"
 ---
 # <a name="migrate-from-the-video-indexer-api-v1-to-v2"></a>从视频索引器 API v1 迁移到 v2
 
@@ -54,10 +55,10 @@ ms.locfileid: "40187362"
 
 |**Name**|**参数值**|**说明**|
 |---|---|---|
-|试用|试用|表示试用帐户。 例如：https://api.videoindexer.ai/trial/Accounts/{accountId}/Videos/{videoId}/Index?language=English。|
-|美国西部|westus2|表示 Azure 美国西部 2 区域。  例如：https://api.videoindexer.ai/westus2/Accounts/{accountId}/Videos/{videoId}/Index?language=English。|
-|北欧 |northeurope|表示 Azure 北欧区域。 例如：https://api.videoindexer.ai/northeurope/Accounts/{accountId}/Videos/{videoId}/Index?language=English。 |
-|东亚|eastasia|表示 Azure 东亚区域。 例如：https://api.videoindexer.ai/eastasia/Accounts/{accountId}/Videos/{videoId}/Index?language=English。|
+|试用|试用|表示试用帐户。 例如： https://api.videoindexer.ai/trial/Accounts/{accountId}/Videos/{videoId}/Index?language=English。|
+|美国西部|westus2|表示 Azure 美国西部 2 区域。  例如： https://api.videoindexer.ai/westus2/Accounts/{accountId}/Videos/{videoId}/Index?language=English。|
+|北欧 |northeurope|表示 Azure 北欧区域。 例如： https://api.videoindexer.ai/northeurope/Accounts/{accountId}/Videos/{videoId}/Index?language=English。 |
+|东亚|eastasia|表示 Azure 东亚区域。 例如： https://api.videoindexer.ai/eastasia/Accounts/{accountId}/Videos/{videoId}/Index?language=English。|
 
 ### <a name="data-model"></a>数据模型
 
@@ -65,7 +66,7 @@ ms.locfileid: "40187362"
 
 ### <a name="swagger"></a>Swagger
 
-视频索引器 API 定义已进行相应的更新，可以通过 [API 门户](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token)下载。
+视频索引器 API 定义已进行相应的更新，可以通过[视频索引器开发人员门户](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token)下载。
 
 
 ### <a name="v1-vs-v2-examples"></a>V1 和 V2 示例的比较

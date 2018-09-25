@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 288ba14bd10df3512ecea06ca97e036f4352ff3f
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 608d15afaaff15ad960a0fe8b7a56854f41662b6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095005"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993402"
 ---
 # <a name="create-your-first-function-running-on-linux-using-the-azure-cli-preview"></a>使用 Azure CLI 创建第一个在 Linux 上运行的函数（预览版）
 
@@ -36,7 +36,7 @@ ms.locfileid: "44095005"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本主题要求使用 Azure CLI 2.0.21 版或更高版本。 运行 `az --version` 即可确定你拥有的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
+如果选择在本地安装并使用 CLI，本主题要求使用 Azure CLI 2.0.21 版或更高版本。 运行 `az --version` 即可确定你拥有的版本。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
 
 [!INCLUDE [functions-create-resource-group](../../includes/functions-create-resource-group.md)]
 

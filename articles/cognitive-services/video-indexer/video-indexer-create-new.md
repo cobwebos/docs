@@ -1,26 +1,27 @@
 ---
-title: 使用 Azure 视频索引器根据现有视频创建视频见解 | Microsoft Docs
-description: 本主题介绍如何根据一些其他的视频创建和发布视频见解。
+title: 教程：从现有视频创建视频见解
+titlesuffix: Azure Cognitive Services
+description: 本主题介绍如何基于现有的视频文件创建和发布视频见解。
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: erikre
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 07/25/2018
+ms.component: video-indexer
+ms.topic: tutorial
+ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: 161a47f72a0f8038a515c09f25ec2a8e8a520547
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 3a3e5c62d9eb96563d395106db62cc91a8307658
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390834"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983912"
 ---
-# <a name="create-highlights-from-existing-videos"></a>根据现有视频创建突出显示内容
+# <a name="tutorial-create-highlights-from-existing-videos"></a>教程：基于现有视频创建突出显示内容
 
 本主题介绍如何根据一些其他的视频创建和发布视频见解。
 
-1. 登录到[视频索引器](https://api-portal.videoindexer.ai/)帐户。
+1. 浏览到[视频索引器](https://www.videoindexer.ai/)网站并登录。
 2. 找到需从其创建视频见解的视频。
 3. 按“播放”。
 

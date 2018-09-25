@@ -1,20 +1,21 @@
 ---
-title: 管理已连接到 Azure 的视频索引器帐户 | Microsoft Docs
+title: 管理视频索引器帐户
+titlesuffix: Azure Cognitive Services
 description: 本文介绍如何管理已连接到 Azure 的视频索引器帐户。
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: erikre
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: video-indexer
+ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: juliako
-ms.openlocfilehash: 1b794f488da4470aefabb10dbad0a9202f5984e9
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: e29b61d3bfc0ac7f253bc7ac68eb0b946c60e225
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42812891"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983130"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>管理已连接到 Azure 的视频索引器帐户
 

@@ -11,14 +11,17 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
-ms.openlocfilehash: 94a1f3bbba83e8e71cf9440b5ded0784f4616c99
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4785f87515663831b1177c6c0958d3d965351797
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38674149"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996564"
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Azure 机器学习常见问题
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
 
 Azure 机器学习是一种完全托管的 Azure 服务，可供你创建、测试、管理及部署机器学习和 AI 模型。 我们的服务和可下载的应用程序可提供一种代码优先方法，该方法利用云、本地和边缘来提供兼具功效、速度和灵活性的培训模型、部署模型、管理模型和监视模型。 此外，Azure 机器学习工作室还可提供基于浏览器的可视化拖放编写环境，无需进行任何编码。 
 
@@ -31,10 +34,6 @@ Azure 机器学习使用 Azure Blob 存储和 Azure 容器注册表。 此外，
 **Azure 机器学习如何与 SQL Server 2017 中的 Microsoft 机器学习服务相关联？**   
 
 SQL Server 2017 中的机器学习服务是一个可扩展的可缩放平台，可用于将机器学习任务集成到数据库工作流。 非常适合需要本地解决方案的情况，例如数据移动成本高昂或不可维持的情况。 相较之下，云或混合工作负载非常适合我们新的 Azure 服务。 
-
-**是否支持 Python 和 R？其他编程语言呢，例如 C++**
-
-目前仅支持 Python。 我们正在进行 R 集成方面的工作，预计不久即可完成。 
 
 **Azure 机器学习如何与适用于 Spark 的 Microsoft 机器学习相关联？**
 
@@ -117,7 +116,7 @@ Azure Machine Learning Workbench 是为专业数据科学家打造的助手应�
 
 **是否要为使用 Azure Machine Learning Workbench 付费？**
 
-不是。 Azure Machine Learning Workbench 是一个免费的应用程序。 可以在所需的多台计算机上为多位用户下载它。 若要使用 Azure Machine Learning Workbench，必须具有试验帐户。 。  
+不是。 Azure Machine Learning Workbench 是一个免费的应用程序。 可以在所需的多台计算机上为多位用户下载它。 若要使用 Azure Machine Learning Workbench，必须具有试验帐户。 .  
 
 **是否支持命令行功能？**
 
@@ -172,4 +171,4 @@ Workbench 中的数据准备工具当前支持以下格式的引入：
 
 **Azure 机器学习如何与 Microsoft 认知工具包相关联？**
 
-[Microsoft 认知工具包](https://www.microsoft.com/en-us/cognitive-toolkit/)是我们的新工具和服务支持的众多框架之一。 认知工具包是统一的深度学习工具包，可供使用和组合常用的机器学习模型，包括前馈深层神经网络、卷积网络、序列到序列和循环网络。 有关 Microsoft 认知工具包的详细信息，请访问我们的[产品文档](https://docs.microsoft.com/cognitive-toolkit/)。 
+[Microsoft 认知工具包](https://www.microsoft.com/cognitive-toolkit/)是我们的新工具和服务支持的众多框架之一。 认知工具包是统一的深度学习工具包，可供使用和组合常用的机器学习模型，包括前馈深层神经网络、卷积网络、序列到序列和循环网络。 有关 Microsoft 认知工具包的详细信息，请访问我们的[产品文档](https://docs.microsoft.com/cognitive-toolkit/)。 

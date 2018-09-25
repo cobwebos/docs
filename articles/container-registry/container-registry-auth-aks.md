@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: marsma
-ms.openlocfilehash: d2f7769469c9f3ebdbef5fc6ee1f09b1acd573ef
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: c9ade4d61a1b95d5041a13f9436f0d02a7951758
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715823"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981639"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
 
@@ -21,7 +21,7 @@ ms.locfileid: "39715823"
 
 ## <a name="grant-aks-access-to-acr"></a>向 ACR 授予 AKS 访问权限
 
-创建 AKS 群集时，Azure 还会创建一个服务主体以支持与其他 Azure 资源的群集可操作性。 可以使用此自动生成的服务主体向 ACR 注册表进行身份验证。 若要执行此操作，需要创建一个 Azure AD [角色分配](../role-based-access-control/overview.md#role-assignment)，它会授予群集的服务主体访问容器注册表的权限。
+创建 AKS 群集时，Azure 还会创建一个服务主体以支持与其他 Azure 资源的群集可操作性。 可以使用此自动生成的服务主体向 ACR 注册表进行身份验证。 若要执行此操作，需要创建一个 Azure AD [角色分配](../role-based-access-control/overview.md#role-assignments)，它会授予群集的服务主体访问容器注册表的权限。
 
 使用以下脚本授予 AKS 生成的服务主体访问 Azure 容器注册表的权限。 在运行脚本前，修改环境的 `AKS_*` 和 `ACR_*` 变量。
 

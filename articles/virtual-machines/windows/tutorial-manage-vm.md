@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ae29108aad2a538bb90484a048742be0b5c4764a
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: dc3bd6258d2da331c83d0aaa9c6c0e57b44f2930
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094903"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950074"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建和管理 Windows VM
 
@@ -54,7 +54,7 @@ New-AzureRmResourceGroup -ResourceGroupName "myResourceGroupVM" -Location "EastU
 
 创建虚拟机时，可使用多个选项，例如操作系统映像、网络配置和管理凭据。 在此示例中，将创建名为“myVM”的虚拟机，它运行默认的 Windows Server 2016 Datacenter 最新版本。
 
-使用 [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) 设置虚拟机上管理员帐户所需的用户名和密码：
+使用 [Get-Credential](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/get-credential?view=powershell-6) 设置虚拟机上管理员帐户所需的用户名和密码：
 
 ```azurepowershell-interactive
 $cred = Get-Credential

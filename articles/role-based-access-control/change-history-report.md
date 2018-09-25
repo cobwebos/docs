@@ -15,12 +15,12 @@ ms.date: 05/23/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 10e0df78d75763dfcf8636983c9f9092b78b9c3b
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: d5a67cdcef7f39830b747dec5f2c980483e1ab91
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437641"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978329"
 ---
 # <a name="view-activity-logs-for-rbac-changes"></a>查看 RBAC 更改的活动日志
 
@@ -125,7 +125,7 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 
    ![门户中的 Log Analytics 选项](./media/change-history-report/azure-log-analytics-option.png)
 
-1. 可以选择使用[日志搜索](../log-analytics/log-analytics-log-search.md)页面或[高级分析门户](https://docs.loganalytics.io/docs/Learn)来查询并查看日志。 若要详细了解这两种选择，请参阅[日志搜索页面或高级分析门户](../log-analytics/log-analytics-log-search-portals.md)。
+1. 可以选择使用[日志搜索](../log-analytics/log-analytics-log-search.md)页面或[高级分析门户](../log-analytics/query-language/get-started-analytics-portal.md)来查询并查看日志。 若要详细了解这两种选择，请参阅[日志搜索页面或高级分析门户](../log-analytics/log-analytics-log-search-portals.md)。
 
 以下查询返回由目标资源提供程序组织的新角色分配：
 
