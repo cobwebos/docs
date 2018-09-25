@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/14/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: f5b678f9936a6d405c06ff085a802fcd76328ebe
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: bb3df82e66024b49e399ab2f7795a27932f7559e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525648"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953967"
 ---
 #  <a name="migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>使用 AzCopy 将本地数据迁移到云存储
 
@@ -37,7 +37,7 @@ AzCopy 是一个命令行工具，借助该工具，可使用简单命令将数�
 
 要完成本教程，请下载最新版本的 AzCopy on [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux#download-and-install-azcopy) 或 AzCopy on [Windows](http://aka.ms/downloadazcopy)。 
 
-[!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
+[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 >[!NOTE]
 >如果希望能够将 blob 从辅助区域下载到本地存储或反向操作，可将“复制”设置为“读取-访问-异地冗余存储”。 选择此选项会创建一个[异地冗余存储](https://docs.microsoft.com/azure/storage/common/storage-redundancy#geo-redundant-storage)帐户。 

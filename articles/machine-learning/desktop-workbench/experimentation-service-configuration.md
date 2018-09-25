@@ -11,14 +11,17 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: e79817ffad139e0a3bcb0ba32b9bc6e5666319d0
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3c5084e548bbb72fa38aae8b60aa46fb4d462dca
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35631176"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990342"
 ---
 # <a name="configuring-azure-machine-learning-experimentation-service"></a>配置 Azure 机器学习试验服务
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
 ## <a name="overview"></a>概述
 凭借 Azure 机器学习试验服务，数据科学家可使用 Azure 机器学习的执行和运行管理功能来执行其试验。 它通过快速迭代提供敏捷试验的框架。 使用 Azure Machine Learning Workbench，可从计算机上的本地运行开始使用，还可轻松纵向和横向扩展到其他环境，如使用 GPU 的远程数据科学 VM 或运行 Spark 的 HDInsight 群集。
@@ -325,5 +328,5 @@ az ml experiment prepare -c remotevm
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* [创建和安装 Azure 机器学习](../service/quickstart-installation.md)
+* [创建和安装 Azure 机器学习](quickstart-installation.md)
 * [模型管理](model-management-overview.md)

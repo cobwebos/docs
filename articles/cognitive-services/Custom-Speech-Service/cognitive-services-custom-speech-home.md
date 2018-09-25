@@ -9,12 +9,13 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: panosper
-ms.openlocfilehash: a6139283a555f8f97371c02f9d1f3d53dc6f15d3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: da88989753069f7ba8ca2c2e2806a648f3df4e3c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365901"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948360"
 ---
 # <a name="what-is-custom-speech-service"></a>什么是自定义语音服务？
 

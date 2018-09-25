@@ -11,14 +11,17 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: 211f60b9c25b4bd20769f6a4840afaecf8373b9f
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ROBOTS: NOINDEX
+ms.openlocfilehash: 60abe46670353121ad308f8926a7ee178c76e74e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782339"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951655"
 ---
 # <a name="create-dsvm-and-hdi-spark-cluster-as-compute-targets"></a>创建 DSVM 和 HDI Spark 群集作为计算目标
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
 可以通过添加基于 Ubuntu 的 DSVM（数据科学虚拟机）和适用于 Azure HDInsight 群集的 Apache Spark 等附加计算目标，轻松纵向扩展或横向扩展机器学习试验。 本文逐步讲解在 Azure 中创建这些计算目标的步骤。 有关 Azure ML 计算目标的详细信息，请参阅 [Azure 机器学习试验服务概述](experimentation-service-configuration.md)。
 

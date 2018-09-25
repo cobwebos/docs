@@ -84,6 +84,8 @@ items:
       href: howto-connect-powerbi.md
   - name: 管理
     items:
+    - name: 管理应用程序
+      href: howto-administer.md
     - name: 从 Azure 管理门户管理 IoT Central
       href: howto-manage-iot-central-from-portal.md
     - name: 以 CSP 身份创建和管理应用程序
@@ -120,11 +122,9 @@ items:
   items:
   - name: 客户数据请求
     href: iot-central-customer-data-requests.md
-  - name: 堆栈溢出
-    href: https://stackoverflow.com/questions/tagged/azure-iot-central
-ms.openlocfilehash: 3e8292ce6780381f4e8ead009002959fe42a9d02
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 717e84cbbb1865fc442eee7afce23685f76a016f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465668"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031775"

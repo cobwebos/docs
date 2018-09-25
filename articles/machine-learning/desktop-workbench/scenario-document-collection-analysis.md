@@ -11,14 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 29f493449d48df26919a98452fa7f832d653d45e
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ROBOTS: NOINDEX
+ms.openlocfilehash: 762955103aeb48eb8a9b62f4e3ffe193bba71a38
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861028"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947211"
 ---
 # <a name="document-collection-analysis"></a>文档集分析
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 该方案演示如何使用 Azure ML Workbench 总结和分析大型文档集，包括短语学习、主题建模和主题模型分析等技术。 Azure Machine Learning Workbench 可轻松扩展非常大的文档集，并提供了在各种计算环境中定型和调整模型的机制，从本地计算到数据科学虚拟机到 Spark 群集均包含在内。 通过 Jupyter 笔记本在 Azure Machine Learning Workbench 中提供了轻松开发。
 
@@ -60,7 +65,7 @@ ms.locfileid: "37861028"
 
 运行此示例的先决条件如下所示：
 
-* 确保你已经按照[安装和创建快速入门](../service/quickstart-installation.md)中的说明正确安装 [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md)。
+* 确保你已经按照[安装和创建快速入门](quickstart-installation.md)中的说明正确安装 [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md)。
 
 * 本示例可以在任何计算环境中运行。 但是，建议在内存至少为 16 GB 且磁盘空间至少为 5 GB 的多核计算机中运行本示例。
 
@@ -85,7 +90,7 @@ ms.locfileid: "37861028"
 
 数据文件中有 9 个数据字段。 数据字段名称和说明如下所示。
 
-| 字段名称 | Type | 说明 | 包含缺失值 |
+| 字段名称 | Type | Description | 包含缺失值 |
 |------------|------|-------------|---------------|
 | `ID` | String | 法案和决议的 ID。 此字段的格式是 [bill_type][number]-[congress]。 例如，“hconres1-93”表示法案类型为“hconres”（代表众议院共同决议，请参阅[本文档](https://github.com/unitedstates/congress/wiki/bills#basic-information)），法案号为“1”，会议号为“93”。 | 否 |
 | `Text` | String | 法案/决议的内容。 | 否 |
@@ -103,7 +108,7 @@ ms.locfileid: "37861028"
 
 本示例中的文件按如下方式组织。
 
-| 文件名 | Type | 说明 |
+| 文件名 | Type | Description |
 |-----------|------|-------------|
 | `aml_config` | 文件夹 | Azure Machine Learning Workbench 配置文件夹，请参阅[此文档](./experimentation-service-configuration-reference.md)了解详细的试验执行配置 |
 | `Code` | 文件夹 | 用来保存 Python 脚本和 Python 包的代码文件夹 |
