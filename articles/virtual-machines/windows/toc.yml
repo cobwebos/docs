@@ -233,6 +233,14 @@ items:
       href: reserved-vm-instance-size-flexibility.md
   - name: 使用映像
     items:
+    - name: 共享映像（预览版）
+      items:
+      - name: 概述
+        href: shared-image-galleries.md
+      - name: 使用 CLI 创建共享映像
+        href: ../linux/shared-images.md
+      - name: 排查共享映像问题
+        href: troubleshooting-shared-images.md
     - name: 查找和使用映像
       href: cli-ps-findimage.md
     - name: 准备要上传的 VM
@@ -502,9 +510,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: 常见问题解答
     href: faq.md
-ms.openlocfilehash: b992a12ffd232e886638091b84915d146d9e22d8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 84b76400e029c835f3a070fa7bdc80afe3f147d1
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982235"
+ms.locfileid: "47035889"

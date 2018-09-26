@@ -6,12 +6,12 @@ description: 了解如何使用 Microsoft Azure 云服务构建和管理功能�
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: cf8564ed36402a3d42516c6aedb1eded566a7971
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9a1d5378ea5717514a2b247afad2db7d88986fb0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977717"
+ms.locfileid: "47033764"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -248,6 +248,16 @@ Azure PowerShell </a>
                                                 <h3>DevOps</h3>
                                                 <ul class="noBullet">
                                                     <li>
+                                                        <a class="barLink" href="https://docs.microsoft.com/azure/devops">
+                                                            <img src="https://docs.microsoft.com/media/logos/logo_vs-team-services.svg" alt="">
+Azure DevOps</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="barLink" href="https://docs.microsoft.com/azure/devops/pipelines/index">
+                                                            <img src="https://docs.microsoft.com/azure/devops/_img/index/devopsiconpipelines96.svg" alt="">
+Azure Pipelines </a>
+                                                    </li>
+                                                    <li>
                                                         <a class="barLink" href="/azure/ansible/">
                                                             <img src="media/index/ansible.svg" alt="">
 Ansible </a>
@@ -266,16 +276,6 @@ Jenkins </a>
                                                         <a class="barLink" href="/azure/terraform">
                                                             <img src="https://docs.microsoft.com/media/logos/logo_terraform.svg" alt="">
 Terraform </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="barLink" href="https://docs.microsoft.com/azure/devops/">
-                                                            <img src="https://docs.microsoft.com/media/logos/logo_vs-team-services.svg" alt="">
-Azure DevOps</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="barLink" href="https://docs.microsoft.com/azure/devops">
-                                                            <img src="https://docs.microsoft.com/media/logos/logo_vs-team-services.svg" alt="">
-了解如何将 DevOps 与 Azure 配合使用</a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/azure/devops-project/">
@@ -427,6 +427,12 @@ Azure DevOps Project </a>
                                             <a href="/azure/virtual-machines/workloads/sap/hana-overview-architecture">
                                                 <img src="media/index/VirtualMachine.svg" alt="" />
                                                 <p>Azure SAP HANA 大型实例</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/cyclecloud/">
+                                                <img src="media/index/logo_cyclecloud.svg" alt="" />
+                                                <p>CycleCloud</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -2008,6 +2014,25 @@ Azure DevOps Project </a>
                                                 <div class="cardText">
                                                     <h3>Azure SAP HANA 大型实例</h3>
                                                     <p>运行任何超大规模云提供程序的最大 SAP HANA 工作负荷</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/cyclecloud/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/logo_cyclecloud.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>CycleCloud</h3>
+                                                    <p>创建、管理、操作并优化任何规模的 HPC 和大型计算群集</p>
                                                 </div>
                                             </div>
                                         </div>

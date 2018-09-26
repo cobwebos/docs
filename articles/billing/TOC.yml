@@ -18,26 +18,34 @@ items:
   items:
   - name: 防止意外成本
     href: billing-getting-started.md
-  - name: 设置计费警报
-    href: billing-set-up-alerts.md
-  - name: 计算定价
-    href: https://azure.microsoft.com/pricing/calculator/
   - name: 使用资源标记
     href: ../azure-resource-manager/resource-group-using-tags.md?toc=/azure/billing/TOC.json
+  - name: 开始分析成本 - 仅限 EA
+    href: ../cost-management/quick-acm-cost-analysis.md?toc=/azure/billing/TOC.json
+  - name: 创建并管理预算 - 仅限 EA
+    href: ../cost-management/tutorial-acm-create-budgets.md?toc=/azure/billing/TOC.json
+  - name: 优化建议 - 仅限 EA
+    href: ../cost-management/tutorial-acm-opt-recommendations.md?toc=/azure/billing/TOC.json
+  - name: 计算定价
+    href: https://azure.microsoft.com/pricing/calculator/
   - name: 了解支出限制
     href: billing-spending-limit.md
+  - name: 设置计费警报
+    href: billing-set-up-alerts.md
   - name: 通过 Azure 预留项进行保存
     items:
     - name: 什么是 Azure 预留项？
       href: billing-save-compute-costs-reservations.md
     - name: 购买预留项
       items:
-      - name: 虚拟机
-        href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+      - name: Cosmos DB
+        href: ../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/billing/TOC.json
       - name: SQL 数据库
         href: ../sql-database/sql-database-reserved-capacity.md?toc=/azure/billing/TOC.json
       - name: SUSE Linux 软件
         href: ../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/billing/TOC.json
+      - name: 虚拟机
+        href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
     - name: 如何应用折扣
       items:
       - name: 虚拟机预留实例
@@ -172,9 +180,9 @@ items:
     items:
     - name: Enterprise Reporting REST API
       href: https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary
-ms.openlocfilehash: 2ef6d1445b444b7816a7a652f052c169cf0d78ec
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0090b62d3738804877687e2071d96b13f7c9dd13
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969557"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063551"

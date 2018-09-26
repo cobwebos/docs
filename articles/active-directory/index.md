@@ -11,14 +11,14 @@ ms.service: active-directory
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 09/14/2018
+ms.date: 09/20/2018
 ms.author: mtillman
-ms.openlocfilehash: 2d7288356834f4c57465c0043835edc3da86311f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8b28ca8d0aef745600539ab2785e67e3d67e95f9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962436"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063806"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -63,7 +63,6 @@ ms.locfileid: "46962436"
                                                     </div>
                                                 </a>
                                             </li>
-<!--This is the learning section 
                                             <li>
                                                 <a href="">
                                                     <div class="cardSize">
@@ -71,14 +70,14 @@ ms.locfileid: "46962436"
                                                             <div class="card">
                                                                 <div class="cardImageOuter">
                                                                     <div class="cardImage">
-                                                                        <img alt="" src="https://docs.microsoft.com/media/common/i_learn-about.svg" data-linktype="external">
+                                                                        <img alt="" src="/learn/achievements/secure-azure-resources-with-conditional-access.svg" data-linktype="external">
                                                                     </div>
                                                                 </div>
                                                                 <div class="cardText" style="padding-left: 0px">
-                                                                    <h3><a href="">Build your skills with Microsoft Learn</a></h3> 
+                                                                    <h3><a href="">利用 Microsoft Learn 掌握技能</a></h3> 
                                                                     <p>
-                                                                        <a href="https://docs.microsoft.com/learn/modules/secure-azure-resources-with-conditional-access">Secure your Azure resources with conditional access</a><br>
-                                                                        <a href="">More interactive learning ...</a><br>
+                                                                        <a href="/learn/modules/secure-azure-resources-with-conditional-access/">使用条件访问保护 Azure 资源</a><br>
+                                                                        <a href="/learn/browse/?products=azure-active-directory">更多交互式学习...</a><br>
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -86,7 +85,6 @@ ms.locfileid: "46962436"
                                                     </div>
                                                 </a>
                                             </li>
- End of the learning section -->
                                         </ul>
                                     </li>
                                     <li>
@@ -94,14 +92,14 @@ ms.locfileid: "46962436"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3><a href="manage-apps/index.yml">应用管理</a></h3>
+                                                        <h3><a href="manage-apps/index.yml">应用程序管理</a></h3>
                                                         <p>
                                                             <a href="manage-apps/add-application-portal.md">添加应用程序</a><br>
                                                             <a href="manage-apps/configure-single-sign-on-portal.md">配置单一登录 (SSO)</a><br>
                                                             <a href="manage-apps/application-proxy.md">本地应用的应用程序代理</a><br>
                                                         </p>
                                                         <br><br>
-                                                        <h3><a href="authentication/index.yml">身份验证方法</a></h3>
+                                                        <h3><a href="authentication/index.yml">身份验证</a></h3>
                                                         <p>
                                                             <a href="authentication/tutorial-mfa-applications.md">为 Azure 门户启用 MFA</a><br>
                                                             <a href="authentication/quickstart-sspr.md">启用自助服务密码重置</a><br>
@@ -122,11 +120,11 @@ ms.locfileid: "46962436"
                                                             <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-api">授予对 ASP.NET Web API 的访问权限</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3><a href="governance/access-reviews-overview.md">访问评审</a></h3>
+                                                        <h3><a href="conditional-access/index.yml">条件性访问</a></h3>
                                                         <p>
-                                                            <a href="governance/create-access-review.md">创建访问评审</a><br>
-                                                            <a href="governance/perform-access-review.md">执行访问审阅</a><br>
-                                                            <a href="governance/active-directory-tou.md">使用条款</a>
+                                                            <a href="conditional-access/app-based-mfa.md">需要对特定应用执行 MFA</a><br>
+                                                            <a href="conditional-access/require-tou.md">需要接受使用条款</a><br>
+                                                            <a href="conditional-access/app-sign-in-risk.md">检测到会话风险时阻止访问</a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -138,18 +136,11 @@ ms.locfileid: "46962436"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3><a href="conditional-access/index.yml">条件性访问</a></h3>
-                                                        <p>
-                                                            <a href="conditional-access/app-based-mfa.md">需要对特定应用执行 MFA</a><br>
-                                                            <a href="conditional-access/require-tou.md">需要接受使用条款</a><br>
-                                                            <a href="conditional-access/app-sign-in-risk.md">检测到会话风险时阻止访问</a>
-                                                        </p>
-                                                        <br><br>
                                                         <h3><a href="develop/index.yml">开发人员</a></h3>
                                                         <p>
                                                             <a href="develop/about-microsoft-identity-platform.md">关于 Microsoft 标识平台</a><br>
-                                                            <a href="develop/azure-ad-developers-guide.md">v1.0</a><br>
-                                                            <a href="develop/v2-overview.md">v2.0</a>
+                                                            <a href="develop/azure-ad-developers-guide.md">v1.0 平台</a><br>
+                                                            <a href="develop/v2-overview.md">v2.0 平台</a>
                                                         </p>
                                                         <br><br>
                                                         <h3><a href="devices/index.yml">设备管理</a></h3>
@@ -161,9 +152,9 @@ ms.locfileid: "46962436"
                                                         <br><br>
                                                         <h3><a href="/azure/active-directory-domain-services/index">域服务</a></h3>
                                                         <p>
-                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-getting-started.md">启用 Azure AD 域服务</a><br>
-                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal.md">将 Windows Server VM 加入托管域</a><br>
-                                                            <a href="/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md">配置安全 LDAP</a>
+                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-getting-started">启用 Azure AD 域服务</a><br>
+                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal">将 Windows Server VM 加入托管域</a><br>
+                                                            <a href="/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap">配置安全 LDAP</a>
                                                         </p>
                                                         <br><br>
                                                         <h3><a href="users-groups-roles/index.yml">企业用户</a></h3>
@@ -171,6 +162,13 @@ ms.locfileid: "46962436"
                                                             <a href="users-groups-roles/directory-assign-admin-roles.md">分配管理员角色</a><br>
                                                             <a href="users-groups-roles/licensing-groups-assign.md">将许可证分配给组</a><br>
                                                             <a href="users-groups-roles/groups-create-rule.md">创建动态组</a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="hybrid/index.yml">混合标识</a></h3>
+                                                        <p>
+                                                            <a href="hybrid/how-to-connect-install-roadmap.md">安装 Azure AD Connect</a><br>
+                                                            <a href="hybrid/how-to-connect-sso.md">将 Azure AD Connect 用于单一登录</a><br>
+                                                            <a href="hybrid/how-to-connect-fed-whatis.md">Azure AD Connect 和联合身份验证</a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -182,11 +180,11 @@ ms.locfileid: "46962436"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3><a href="hybrid/index.yml">混合标识</a></h3>
+                                                        <h3><a href="governance/access-reviews-overview.md">访问评审</a></h3>
                                                         <p>
-                                                            <a href="hybrid/tutorial-password-hash-sync.md">Azure AD Connect</a><br>
-                                                            <a href="hybrid/tutorial-passthrough-authentication.md">将 AD 林集成到云</a><br>
-                                                            <a href="hybrid/tutorial-federation.md">将 AD 林联合到云</a>
+                                                            <a href="governance/create-access-review.md">创建访问评审</a><br>
+                                                            <a href="governance/perform-access-review.md">执行访问审阅</a><br>
+                                                            <a href="governance/active-directory-tou.md">使用条款</a><br>
                                                         </p>
                                                         <br><br>
                                                         <h3><a href="identity-protection/index.yml">标识保护</a></h3>
@@ -203,14 +201,14 @@ ms.locfileid: "46962436"
                                                             <a href="managed-identities-azure-resources/services-support-msi.md">支持托管标识的服务</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3><a href="privileged-identity-management/index.yml">PIM</a></h3>
+                                                        <h3><a href="privileged-identity-management/index.yml">Privileged Identity Management (PIM)</a></h3>
                                                         <p>
                                                             <a href="privileged-identity-management/pim-getting-started.md">开始使用 PIM</a><br>
                                                             <a href="privileged-identity-management/pim-how-to-activate-role.md">激活我的目录角色</a><br>
                                                             <a href="privileged-identity-management/pim-how-to-add-role-to-user.md">分配目录角色</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3><a href="reports-monitoring/index.yml">报告和监视</a></h3>
+                                                        <h3><a href="reports-monitoring/index.yml">报表和监视</a></h3>
                                                         <p>
                                                             <a href="reports-monitoring/howto-find-activity-reports.md">查找活动报表</a><br>
                                                             <a href="reports-monitoring/concept-activity-logs-in-azure-monitor.md">在 Azure Monitor 中使用 Azure AD 日志</a><br>

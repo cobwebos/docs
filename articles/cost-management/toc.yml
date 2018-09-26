@@ -17,7 +17,7 @@ items:
       href: tutorial-acm-create-budgets.md
     - name: 2 - 导出数据
       href: tutorial-export-acm-data.md
-    - name: 3 - 优化建议
+    - name: 3 - 根据建议执行操作
       href: tutorial-acm-opt-recommendations.md
   - name: 概念
     items:
@@ -25,13 +25,8 @@ items:
       href: cost-mgt-best-practices.md
   - name: 引用
     items:
-    - name: Azure 使用情况 API 概述
-      href: ../billing/billing-consumption-api-overview.md
-      items:
-      - name: Azure 使用情况 REST API
-        href: https://docs.microsoft.com/rest/api/consumption
-    - name: Azure 路线图
-      href: https://azure.microsoft.com/roadmap/
+    - name: Azure 使用情况 REST API
+      href: https://docs.microsoft.com/rest/api/consumption
   - name: 资源
     items:
     - name: 利用 Microsoft Learn 掌握技能
@@ -104,9 +99,9 @@ items:
         href: cost-mgt-faq.md
       - name: 联系 Cloudyn 支持人员
         href: support-request-cost-management.md
-ms.openlocfilehash: 8bce54dbde8acd8fb8d03479036c934242d434cf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1701682e32a7db08a257ef3b0d26c9f88b8f1d03
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972447"
+ms.locfileid: "47033373"

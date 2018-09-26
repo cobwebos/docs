@@ -18,21 +18,15 @@ items:
   expanded: true
 - name: 教程
   items:
-  - name: Azure 容器实例
-    href: ../container-instances/container-instances-tutorial-prepare-app.md
-  - name: Azure Kubernetes 服务 (AKS)
-    href: ../aks/tutorial-kubernetes-prepare-app.md
-  - name: Service Fabric
-    href: ../service-fabric/service-fabric-tutorial-create-container-images.md
-  - name: 生成容器映像（预览版）
+  - name: 生成容器映像
     items:
     - name: 1 - 在 Azure 中生成映像
-      href: container-registry-tutorial-quick-build.md
+      href: container-registry-tutorial-quick-task.md
     - name: 2 - 自动生成映像
       href: container-registry-tutorial-build-task.md
     - name: 3 - 基础映像更新生成
       href: container-registry-tutorial-base-image-update.md
-  - name: 异地复制
+  - name: 异地复制注册表
     items:
     - name: 1 - 准备容器注册表
       href: container-registry-tutorial-prepare-registry.md
@@ -46,26 +40,28 @@ items:
     href: container-registry-skus.md
   - name: 图像存储
     href: container-registry-storage.md
-  - name: 使用 ACR Build 进行生成和修补
-    href: container-registry-build-overview.md
   - name: 异地复制
     href: container-registry-geo-replication.md
   - name: 注册最佳做法
     href: container-registry-best-practices.md
 - name: 操作指南
   items:
-  - name: 推送和拉取映像
-    href: container-registry-get-started-docker-cli.md
-  - name: 查看存储库
-    href: container-registry-repositories.md
-  - name: 删除容器映像
-    href: container-registry-delete.md
-  - name: 内容信任（预览版）
-    href: container-registry-content-trust.md
-  - name: 升级经典注册表
-    href: container-registry-upgrade.md
-  - name: 使用 ACR webhook
-    href: container-registry-webhook.md
+  - name: 注册表操作
+    items:
+    - name: 推送和拉取映像
+      href: container-registry-get-started-docker-cli.md
+    - name: 查看存储库
+      href: container-registry-repositories.md
+    - name: 删除容器映像
+      href: container-registry-delete.md
+    - name: 内容信任（预览版）
+      href: container-registry-content-trust.md
+    - name: 升级经典注册表
+      href: container-registry-upgrade.md
+    - name: 使用 ACR webhook
+      href: container-registry-webhook.md
+    - name: Helm 图表存储库（预览版）
+      href: container-registry-helm-repos.md
   - name: 身份验证
     items:
     - name: 身份验证概述
@@ -76,6 +72,22 @@ items:
       href: container-registry-auth-aci.md
     - name: Azure Kubernetes 服务 (AKS)
       href: container-registry-auth-aks.md
+  - name: 生成并修补
+    items:
+    - name: ACR 任务
+      href: container-registry-tasks-overview.md
+    - name: 多步骤任务（预览版）
+      href: container-registry-tasks-multi-step.md
+    - name: 多步骤任务参考（预览版）
+      href: container-registry-tasks-reference-yaml.md
+  - name: 注册表和其他 Azure 服务
+    items:
+    - name: Azure 容器实例
+      href: ../container-instances/container-instances-tutorial-prepare-app.md
+    - name: Azure Kubernetes 服务 (AKS)
+      href: ../aks/tutorial-kubernetes-prepare-app.md
+    - name: Service Fabric
+      href: ../service-fabric/service-fabric-tutorial-create-container-images.md
 - name: 引用
   items:
   - name: Azure CLI
@@ -115,9 +127,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-container-registry
   - name: 视频
     href: https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest
-ms.openlocfilehash: 979c2864481b25df6534d9f5858d65d02fe498f0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6ea059f7c534b760b0db0c406edb7c34ac73c0dc
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957723"
+ms.locfileid: "47031163"
