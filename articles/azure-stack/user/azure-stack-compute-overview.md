@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 09/05/2018
 ms.author: sethm
 ms.reviewer: kivenkat
-ms.openlocfilehash: 143e6c2856485e33022254abfcf0cf3806b30cef
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: a0d75b13369cff4e99bef6f57a3b01f3d8eee6e4
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025767"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227157"
 ---
 # <a name="introduction-to-azure-stack-virtual-machines"></a>Azure Stack 虚拟机简介
 
@@ -99,7 +99,7 @@ VM 扩展通过部署后配置和自动化任务来增加 VM 的功能。
 |资源|需要|说明|
 |---------|---------|---------|
 |资源组|是|VM 必须包含在资源组中。|
-|存储帐户|否|VM does does 不需要的存储帐户来存储其虚拟硬盘，如果使用托管磁盘。 <br>VM 需要的存储帐户来存储其虚拟硬盘，如果使用非托管的磁盘。|
+|存储帐户|否|VM 不需要的存储帐户来存储其虚拟硬盘，如果使用托管磁盘。 <br>VM 需要的存储帐户来存储其虚拟硬盘，如果使用非托管的磁盘。|
 |虚拟网络|是|VM 必须是虚拟网络的成员。|
 |公共 IP 地址|否|可以向 VM 分配一个公共 IP 地址，以便远程访问它。|
 |网络接口|是|VM 需要使用网络接口在网络中通信。|

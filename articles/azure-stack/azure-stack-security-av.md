@@ -6,29 +6,29 @@ author: PatAltimore
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 06/13/2018
+ms.date: 09/26/2018
 ms.author: patricka
 ms.reviewer: fiseraci
-ms.openlocfilehash: 3c4be228442bf67ccf16236e36cbf015eca6d4e0
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 59c59705e840d3cdd0d3c5310d84d711cd00c96a
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092052"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393992"
 ---
 # <a name="update-windows-defender-antivirus-on-azure-stack"></a>在 Azure Stack上更新 Windows Defender 防病毒
 
-[Windows Defender 防病毒](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)是一种反恶意软件解决方案，可提供安全性和病毒防护功能。 每个 Azure Stack 基础结构组件（Hyper-V 主机和虚拟机）均受到 Windows Defender 防病毒的保护。 为了获得最新的保护，Windows Defender 防病毒定义、引擎和平台需要定期更新。 如何应用更新取决于配置。 
+[Windows Defender 防病毒](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)是一种反恶意软件解决方案，可提供安全性和病毒防护功能。 每个 Azure Stack 基础结构组件（Hyper-V 主机和虚拟机）均受到 Windows Defender 防病毒的保护。 为了获得最新的保护，Windows Defender 防病毒定义、引擎和平台需要定期更新。 如何应用更新取决于配置。
 
 ## <a name="connected-scenario"></a>联网场景
 
-为了获得反恶意软件定义和引擎更新，Azure Stack [更新资源提供程序](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-updates#the-update-resource-provider)每天都会多次下载反恶意软件定义和引擎更新。 每个 Azure Stack 基础结构组件都会从更新资源提供程序获取更新并自动应用更新。
+为了获得反恶意软件定义和引擎更新，Azure Stack [更新资源提供程序](azure-stack-updates.md#the-update-resource-provider)每天都会多次下载反恶意软件定义和引擎更新。 每个 Azure Stack 基础结构组件都会从更新资源提供程序获取更新并自动应用更新。
 
-为了获得反恶意软件平台更新，请应用[每月的 Azure Stack 更新](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-apply-updates)。 每月的 Azure Stack 更新包括该月的 Windows Defender 防病毒平台更新。
+为了获得反恶意软件平台更新，请应用[每月的 Azure Stack 更新](azure-stack-apply-updates.md)。 每月的 Azure Stack 更新包括该月的 Windows Defender 防病毒平台更新。
 
 ## <a name="disconnected-scenario"></a>离线场景
 
- 应用[每月的 Azure Stack 更新](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-apply-updates)。 每月的 Azure Stack 更新包括该月的 Windows Defender 防病毒定义、引擎和平台更新。
+ 应用[每月的 Azure Stack 更新](azure-stack-apply-updates.md)。 每月的 Azure Stack 更新包括该月的 Windows Defender 防病毒定义、引擎和平台更新。
 
 ## <a name="next-steps"></a>后续步骤
 

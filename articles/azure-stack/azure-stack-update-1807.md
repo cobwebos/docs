@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 09/26/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 53f01ad6e8a801c69ea93c54e805807cb8eed34d
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 951c012dd22cf83741211b9601a5e7502de33be6
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127812"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393020"
 ---
 # <a name="azure-stack-1807-update"></a>Azure Stack 1807 更新
 
@@ -168,6 +168,8 @@ Azure Stack 使用 Windows Server 2016 的 Server Core 安装来托管重要基�
 下面是此内部版本的安装后已知问题。
 
 ### <a name="portal"></a>门户
+
+- Azure Stack 技术文档重点介绍最新版本。 由于各版本之间的门户更改，使用 Azure Stack 门户时看到的内容可能不同于文档中看到的内容。 
 
 - 能够[从下拉列表中打开新的支持请求](azure-stack-manage-portals.md#quick-access-to-help-and-support)内管理员门户不可用。 相反，对于 Azure Stack 集成的系统，使用以下链接： [ https://aka.ms/newsupportrequest ](https://aka.ms/newsupportrequest)。
 

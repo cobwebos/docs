@@ -3,7 +3,7 @@ title: Azure Stack 1804 更新 | Microsoft Docs
 description: 了解 Azure Stack 集成系统 1804 更新的功能、已知问题和更新下载位置。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2018
-ms.author: brenduns
+ms.date: 09/26/2018
+ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 0190298cbf6352feeb71e365f5815e174c9e30cc
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 16f12d8119a14e668a7502d99fa2d9c976d23833
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413507"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393513"
 ---
 # <a name="azure-stack-1804-update"></a>Azure Stack 1804 更新
 
@@ -82,7 +82,7 @@ Azure Stack 1804 更新内部版本号为 **20180513.1**。
 ### <a name="prerequisites"></a>必备组件
 - 在应用 Azure Stack 1804 更新之前安装 Azure Stack [1803 更新](azure-stack-update-1803.md)。  
   
-- 安装最新可用[更新或修补程序版本 1803年](azure-stack-update-1803.md#post-update-steps)。 
+- 安装最新可用的 [1803 版更新或修补程序](azure-stack-update-1803.md#post-update-steps)。 
 
 
 ### <a name="known-issues-with-the-update-process"></a>更新过程的已知问题   
@@ -102,7 +102,10 @@ Azure Stack 1804 更新内部版本号为 **20180513.1**。
 下面是内部版本 **20180513.1** 的安装后已知问题。
 
 #### <a name="portal"></a>门户
-- <!-- TBD - IS ASDK --> 不能将驱动程序更新应用与此版本的 Azure Stack 使用 OEM 扩展包。  没有针对此问题的解决方法。
+
+- Azure Stack 技术文档重点介绍最新版本。 由于各版本之间的门户更改，使用 Azure Stack 门户时看到的内容可能不同于文档中看到的内容。 
+
+- <!-- TBD - IS ASDK --> 不能通过将 OEM 扩展包用于此版本的 Azure Stack 来应用驱动程序更新。  对于此问题，目前没有解决方法。
 
 - <!-- 1272111 - IS --> 安装或更新到此 Azure Stack 版本后，可能无法在管理门户中查看 Azure Stack 缩放单元。  
   解决方法：使用 PowerShell 查看有关缩放单元的信息。 有关详细信息，请参阅 Azure Stack 模块 1.3.0 的[帮助](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0)内容。 
