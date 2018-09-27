@@ -130,8 +130,6 @@ items:
       href: create-web-app.md
   - name: 使用 Azure PowerShell 重定向 Web 流量
     href: tutorial-url-redirect-powershell.md
-  - name: 创建区域冗余的应用程序网关
-    href: create-zone-redundant.md
   - name: 自定义探测
     items:
     - name: 门户
@@ -182,9 +180,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-application-gateway
   - name: 常见问题解答
     href: application-gateway-faq.md
-ms.openlocfilehash: b2c5009ee01e4a57021b08e080f3fcbd46135cf5
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 2ba24e8ae2a83175a8099ed3739831a66cedf1f9
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163828"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393124"
