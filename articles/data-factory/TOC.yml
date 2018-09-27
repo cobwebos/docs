@@ -117,6 +117,8 @@ items:
     href: concepts-pipeline-execution-triggers.md
   - name: 集成运行时
     href: concepts-integration-runtime.md
+  - name: 了解定价
+    href: pricing-concepts.md
   - name: 命名规则
     href: naming-rules.md
 - name: 操作指南
@@ -453,9 +455,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: 支持选项
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 80111dc5f2bdb3adee23be7e56bb0341898179ce
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 7f15561fd8539b02e6e08df6c72cc4cd0ff8167d
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47041891"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181866"

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d63ae09bdd9b2423f776335ce625018f03548581
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fdb4247627e5badbbb6b23b0081386b38f2c50cf
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975184"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394975"
 documentType: LandingData
 title: Azure 机器学习文档
 metadata:
@@ -12,7 +12,6 @@ metadata:
   description: 了解如何将智能算法构建到应用、网站和机器人中，从而使它们通过自然的沟通方式观察、倾听、说出和理解用户需求。 教程、快速入门、API 参考和示例演示了操作方法。
   services: machine-learning
   author: j-martens
-  manager: cgronlund
   ms.service: machine-learning
   ms.tgt_pltfrm: na
   ms.devlang: na

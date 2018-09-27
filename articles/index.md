@@ -6,12 +6,12 @@ description: 了解如何使用 Microsoft Azure 云服务构建和管理功能�
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 9a1d5378ea5717514a2b247afad2db7d88986fb0
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: ace2178ac4e1d76d561800d94b07780c3579f1f4
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033764"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166973"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -1107,7 +1107,7 @@ Azure DevOps Project </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/databox/">
+                                            <a href="/azure/databox-family/">
                                                 <img src="media/index/Service-icon.png" alt="" />
                                                 <p>Data Box</p>
                                             </a>
@@ -2487,7 +2487,7 @@ Azure DevOps Project </a>
                                 </a>
                             </li>
                             <li>
-                                <a href="/en-us/azure/databox/" data-linktype="absolute-path">
+                                <a href="/en-us/azure/databox-family/" data-linktype="absolute-path">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2497,8 +2497,8 @@ Azure DevOps Project </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Data Box</h3>
-                                                    <p>在受网络可用性限制的情况下，以低成本且安全的方式传输大量数据</p>
+                                                    <h3>Data Box 系列</h3>
+                                                    <p>用于支持脱机或基于网络的数据传输的存储设备系列</p>
                                                 </div>
                                             </div>
                                         </div>

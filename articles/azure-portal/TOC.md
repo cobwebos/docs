@@ -5,7 +5,7 @@
 # 概念
 ## [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)
 ## [键盘快捷方式](azure-portal-keyboard-shortcuts.md)
-## [支持的浏览器和设备](../azure-preview-portal-supported-browsers-devices.md)
+## [支持的浏览器和设备](azure-portal-supported-browsers-devices.md)
 ## [Azure 仪表板结构](azure-portal-dashboards-structure.md)
 # 操作指南
 ## 部署
@@ -30,7 +30,7 @@
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazuremanagement) 
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
-## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-management-portal)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-management-portal)
 
 
 

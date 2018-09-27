@@ -19,12 +19,14 @@
 #### [Azure 应用程序：托管应用程序](./marketplace-managed-apps.md)
 #### [SaaS 应用](./marketplace-saas-applications-technical-publishing-guide.md) 
 #### [容器](./marketplace-containers.md)
+#### [IoT Edge 模块](./iot-edge-module.md) 
 #### [咨询服务](./consulting-services.md)  
 #### [Office 365、Dynamics 365 和 Power BI 发布指南](./appsource-offer-publishing-guide.md)
 #### [使用 Azure Active Directory 启用 Microsoft AppSource 和 Azure 市场列表](./enable-appsource-marketplace-using-azure-ad.md)
 
 ### [通过市场扩展业务](./grow-your-business-with-azure-marketplace.md)  
 #### [首选解决方案](./preferred-solutions.md) 
+#### [市场内容验证](./marketplace-criteria-content-validation.md)
 
 ### [对 Azure 市场和 AppSource 的支持](./support-azure-marketplace.md)  
 

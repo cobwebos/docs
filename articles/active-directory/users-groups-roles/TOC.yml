@@ -124,10 +124,8 @@ items:
     items:
     - name: 角色和权限参考
       href: directory-assign-admin-roles.md
-    - name: 查看角色成员
+    - name: 查看和分配角色
       href: directory-manage-roles-portal.md
-    - name: 向用户分配角色
-      href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: 管理员角色安全性
       items:
       - name: 角色安全规划
@@ -159,9 +157,9 @@ items:
     href: https://docs.microsoft.com/cli/azure/ad
   - name: 用于 Graph 的 Azure AD PowerShell
     href: https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0
-ms.openlocfilehash: f555d49e0a089e675d161d0a88ee57486d5b8d24
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 2893d985620193302547461c29b4da05450db07b
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465890"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181832"

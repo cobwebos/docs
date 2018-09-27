@@ -8,6 +8,7 @@
 ## [以脱机方式将 SQL Server 迁移到 Azure SQL DB](tutorial-sql-server-to-azure-sql.md)
 ## [以联机方式将 SQL Server 迁移到 Azure SQL DB](tutorial-sql-server-azure-sql-online.md)
 ## [以脱机方式将 SQL Server 迁移到 Azure SQL DB 托管实例](tutorial-sql-server-to-managed-instance.md)
+## [以联机方式将 SQL Server 迁移到 Azure SQL DB 托管实例](tutorial-sql-server-managed-instance-online.md)
 ## [以联机方式将 MySQL 迁移到用于 MySQL 的 Azure DB](tutorial-mysql-azure-mysql-online.md)
 ## [以联机方式将 PostgreSQL 迁移到用于 PostgreSQL 的 Azure DB](tutorial-postgresql-azure-postgresql-online.md)
 

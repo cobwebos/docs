@@ -52,6 +52,8 @@ items:
     href: virtual-network-for-azure-services.md
   - name: 容器网络
     href: container-networking-overview.md
+  - name: Kubernetes 网络策略
+    href: kubernetes-network-policies.md
   - name: 业务连续性
     href: virtual-network-disaster-recovery-guidance.md
   - name: IP 寻址
@@ -343,9 +345,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-virtual-network
   - name: 常见问题解答
     href: virtual-networks-faq.md
-ms.openlocfilehash: 7e6f0ac46a45e0b429572b870ca0ab657c2628c6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a34b2a6356421c6c04f01eb1d316790281e239aa
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989883"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181900"

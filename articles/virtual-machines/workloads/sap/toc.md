@@ -45,8 +45,9 @@
 ### [Azure 上的 SAP HANA 可用性概述](sap-hana-availability-overview.md)
 ### [一个 Azure 区域内的 Azure 上的 SAP HANA 可用性](sap-hana-availability-one-region.md)
 ### [跨 Azure 区域的 Azure 上的 SAP HANA 可用性](sap-hana-availability-across-regions.md)
-## [在 SLES 上设置 SAP HANA 系统复制](sap-hana-high-availability.md)
-## [在 RHEL 上设置 SAP HANA 系统复制](sap-hana-high-availability-rhel.md)
+### [在 SLES 上设置 SAP HANA 系统复制](sap-hana-high-availability.md)
+### [在 RHEL 上设置 SAP HANA 系统复制](sap-hana-high-availability-rhel.md)
+### [排查 SAP HANA 横向扩展和 SLES 上的 Pacemaker 问题](hana-vm-troubleshoot-scale-out-ha-on-sles.md)
 ## [SAP HANA 备份概述](sap-hana-backup-guide.md)
 ## [SAP HANA 文件级备份](sap-hana-backup-file-level.md)
 ## [SAP HANA 存储快照备份](sap-hana-backup-storage-snapshots.md)
@@ -107,3 +108,4 @@
 ## [Azure 数据工厂提供 SAP HANA 和业务数据仓库数据集成](https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration)
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
+

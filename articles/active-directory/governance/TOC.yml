@@ -1,33 +1,41 @@
 items:
-- name: Azure AD 访问评审文档
+- name: Azure AD 标识治理文档
+  href: index.yml
 - name: 概述
   items:
-  - name: 什么是访问评审？
-    href: access-reviews-overview.md
+  - name: 什么是标识治理？
+    href: identity-governance-overview.md
+  expanded: true
 - name: 操作指南
   items:
-  - name: 创建访问评审
-    href: create-access-review.md
-  - name: 完成访问评审
-    href: complete-access-review.md
-  - name: 执行访问评审
-    href: perform-access-review.md
-  - name: 评审访问权限
-    href: review-your-access.md
-  - name: 使用访问评审管理来宾访问
-    href: manage-guest-access-with-access-reviews.md
-  - name: 使用评审管理用户访问
-    href: manage-user-access-with-access-reviews.md
-  - name: 管理程序及其控件
-    href: manage-programs-controls.md
-  - name: 检索访问评审结果
-    href: retrieve-access-review.md
+  - name: 访问评审
+    items:
+    - name: 什么是访问评审？
+      href: access-reviews-overview.md
+    - name: 创建访问评审
+      href: create-access-review.md
+    - name: 完成访问评审
+      href: complete-access-review.md
+    - name: 执行访问评审
+      href: perform-access-review.md
+    - name: 评审访问权限
+      href: review-your-access.md
+    - name: 使用访问评审管理来宾访问
+      href: manage-guest-access-with-access-reviews.md
+    - name: 使用评审管理用户访问
+      href: manage-user-access-with-access-reviews.md
+    - name: 管理程序及其控件
+      href: manage-programs-controls.md
+    - name: 检索访问评审结果
+      href: retrieve-access-review.md
+    - name: 管理排除的用户
+      href: conditional-access-exclusion.md
   - name: 使用条款
     href: active-directory-tou.md
   expanded: true
-ms.openlocfilehash: 302273bc1fe1ed73fff4cb4f5a8bc90f08636340
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: b6280e42839344169ab651cd5d882bb6abfbf388
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45606739"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163131"
