@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: anzaman
-ms.openlocfilehash: a85a68393f3dc946db651791de9efff0694f9989
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 29cbe1686888a87fca6ddde957a1cbd35ba3df26
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "23013192"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46968676"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>配置用于 Microsoft 对等互连的路由筛选器：Azure CLI
 
 > [!div class="op_single_selector"]
-> * [在 Azure 应用服务中创建 Java Web 应用](how-to-routefilter-portal.md)
+> * [Azure 门户](how-to-routefilter-portal.md)
 > * [Azure PowerShell](how-to-routefilter-powershell.md)
 > * [Azure CLI](how-to-routefilter-cli.md)
 > 
@@ -70,7 +70,7 @@ Dynamics 365 服务和 Office 365 服务（例如 Exchange Online、SharePoint O
 
 ## <a name="before-you-begin"></a>开始之前
 
-在开始之前，请安装最新版本的 CLI 命令（2.0 或更高版本）。 有关安装 CLI 命令的信息，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli) 和 [Azure CLI 2.0 入门](/cli/azure/get-started-with-azure-cli)。
+在开始之前，请安装最新版本的 CLI 命令（2.0 或更高版本）。 有关安装 CLI 命令的信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli) 和 [Azure CLI 入门](/cli/azure/get-started-with-azure-cli)。
 
 * 在开始配置之前，请查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。
 

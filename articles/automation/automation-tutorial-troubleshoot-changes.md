@@ -7,16 +7,16 @@ ms.component: change-inventory-management
 keywords: 更改, 跟踪, 自动化
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 08/27/2018
+ms.date: 09/12/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: fd94fd234067f63eab424c7f757d4adf842e7b46
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 16d5a025f0c0ff571298e0f528fb9119e37950f3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43120579"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995241"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>排查环境中的更改错误
 
@@ -32,6 +32,7 @@ ms.locfileid: "43120579"
 > * 启用活动日志连接
 > * 触发事件
 > * 查看更改
+> * 配置警报
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +42,7 @@ ms.locfileid: "43120579"
 * [自动化帐户](automation-offering-get-started.md)，用于保存观察程序、操作 Runbook 和观察程序任务。
 * 要载入的[虚拟机](../virtual-machines/windows/quick-create-portal.md)。
 
-## <a name="log-in-to-azure"></a>登录 Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
 通过 http://portal.azure.com 登录到 Azure 门户。
 
@@ -66,20 +67,22 @@ ms.locfileid: "43120579"
 
 ## <a name="using-change-tracking-in-log-analytics"></a>在 Log Analytics 中使用更改跟踪
 
-更改跟踪生成发送到 Log Analytics 的日志数据。 若要通过运行查询来搜索日志，请选择“更改跟踪”窗口顶部的“Log Analytics”。
-更改跟踪数据存储在 **ConfigurationChange** 类型下。 以下示例 Log Analytics 查询返回所有已停止的 Windows 服务。
+更改跟踪生成发送到 Log Analytics 的日志数据。
+若要通过运行查询来搜索日志，请选择“更改跟踪”窗口顶部的“Log Analytics”。
+更改跟踪数据存储在 **ConfigurationChange** 类型下。
+以下示例 Log Analytics 查询返回所有已停止的 Windows 服务。
 
 ```
 ConfigurationChange
 | where ConfigChangeType == "WindowsServices" and SvcState == "Stopped"
 ```
 
-若要详细了解如何在 Log Analytics 中运行和搜索日志文件，请参阅 [Azure Log Analytics](https://docs.loganalytics.io/index)。
+若要详细了解如何在 Log Analytics 中运行和搜索日志文件，请参阅 [Azure Log Analytics](../log-analytics/log-analytics-queries.md)。
 
 ## <a name="configure-change-tracking"></a>配置更改跟踪
 
 可以使用更改跟踪来跟踪 VM 上的配置更改。 以下步骤演示了如何配置注册表项和文件的跟踪。
- 
+
 若要选择要收集和跟踪的文件和注册表项，请选择“更改跟踪”页顶部的“编辑设置”。
 
 > [!NOTE]
@@ -92,7 +95,7 @@ ConfigurationChange
 1. 在“Windows 注册表”选项卡上，选择“添加”。
     “添加 Windows 注册表以跟踪更改”窗口随即打开。
 
-3. 在“添加用于更改跟踪的 Windows 注册表”中，输入要求该项进行跟踪的信息，然后单击“保存”
+1. 在“添加用于更改跟踪的 Windows 注册表”中，输入要求该项进行跟踪的信息，然后单击“保存”
 
 |属性  |Description  |
 |---------|---------|
@@ -168,6 +171,49 @@ ConfigurationChange
 
 ![在门户中查看更改详细信息](./media/automation-tutorial-troubleshoot-changes/change-details.png)
 
+## <a name="configure-alerts"></a>配置警报
+
+查看 Azure 门户中的更改可能会很有帮助，但能够在发生更改（例如服务停止）时收到警报会更有益。
+
+若要为已停止的服务添加警报，请在 Azure 门户中转至“监视”。 在“共享服务”下，选择“警报”，并单击“+ 新建警报规则”
+
+在“1. 定义警报条件”下，单击“+ 选择目标”。 在“按资源类型筛选”下，选择“Log Analytics”。 选择 Log Analytics 工作区，然后选择“完成”。
+
+![选择资源](./media/automation-tutorial-troubleshoot-changes/select-a-resource.png)
+
+选择“+ 添加条件”。
+在“配置信号逻辑”下的表中选择“自定义日志搜索”。 在“搜索查询”文本框中输入以下查询：
+
+```loganalytics
+ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName == "W3SVC" and SvcState == "Stopped" | summarize by Computer
+```
+
+此查询返回在指定时间范围内已停止 W3SVC 服务的计算机。
+
+在“警报逻辑”下，输入 **0** 作为“阈值”。 完成后，选择“完成”。
+
+![配置信号逻辑](./media/automation-tutorial-troubleshoot-changes/configure-signal-logic.png)
+
+在“2. 定义警报详细信息“下，下，输入警报的名称和说明。 将“严重性”设置为“信息(严重性 2)”、“警告(严重性 1)”或“关键(严重性 0)”。
+
+![定义警报详细信息](./media/automation-tutorial-troubleshoot-changes/define-alert-details.png)
+
+在“3. 定义操作组”下，选择“新建操作组”。 操作组是可以在多个警报中使用的一组操作。 这些操作可能包括但不限于电子邮件通知、Runbook、Webhook 以及其他操作。 若要了解有关操作组的详细信息，请参阅[创建和管理操作组](../monitoring-and-diagnostics/monitoring-action-groups.md)。
+
+在“操作组名称”框中输入警报的名称和一个短名称。 使用此组发送通知时，短名称用来代替完整的操作组名称。
+
+在“操作”下输入操作的名称，例如“电子邮件管理员”。 在“操作类型”下，选择“电子邮件/短信/推送/语音”。 在“详细信息”下，选择“编辑详细信息”。
+
+![添加操作组](./media/automation-tutorial-troubleshoot-changes/add-action-group.png)
+
+在“电子邮件/短信/推送/语音”窗格中，输入一个名称。 选中“电子邮件”复选框，然后输入有效的电子邮件地址。 单击“电子邮件/短信/推送/语音”页上的“确定”，然后单击“添加操作组”页上的“确定”。
+
+若要自定义警报电子邮件的主题，请在“创建规则”下的“自定义操作”下选择“电子邮件主题”。 完成后，请选择“创建警报规则”。 此警报会指出更新部署成功的时间以及哪些计算机是该更新部署运行的一部分。
+
+下图是 W3SVC 服务停止时收到的示例电子邮件。
+
+![电子邮件](./media/automation-tutorial-troubleshoot-changes/email.png)
+
 ## <a name="next-steps"></a>后续步骤
 
 本教程介绍了如何：
@@ -179,6 +225,7 @@ ConfigurationChange
 > * 启用活动日志连接
 > * 触发事件
 > * 查看更改
+> * 配置警报
 
 继续阅读更改跟踪和清单解决方案的概述可以了解其详细信息。
 

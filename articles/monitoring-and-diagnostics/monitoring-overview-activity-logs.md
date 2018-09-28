@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 51cc4c37ba661feb63880c138e98200c981f6054
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 5288dc508c35c72f3c1996ce665ccf83a84a4ea3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918475"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948947"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>使用 Azure 活动日志监视订阅活动
 
@@ -33,8 +33,7 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 可以通过 Azure 门户、CLI、PowerShell cmdlet 和 Azure 监视器 REST API 从活动日志检索事件。
 
 > [!NOTE]
->  
-  [新型警报](monitoring-overview-unified-alerts.md)在创建和管理活动日志警报规则时提供了增强的体验。  [了解详细信息](monitoring-activity-log-alerts-new-experience.md)。
+>  [新型警报](monitoring-overview-unified-alerts.md)在创建和管理活动日志警报规则时提供了增强的体验。  [了解详细信息](monitoring-activity-log-alerts-new-experience.md)。
 
 请观看介绍了活动日志的以下视频。
 > [!VIDEO https://channel9.msdn.com/Blogs/Seth-Juarez/Logs-John-Kemnetz/player]
@@ -44,11 +43,12 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 活动日志包含多个数据类别。 有关这些类别的架构的完整详细信息，请参阅[此文章](monitoring-activity-log-schema.md)。 其中包括：
 * 管理 - 此类别包含通过资源管理器执行的所有创建、更新、删除和行动操作的记录。 此类别中的事件类型的示例包括“创建虚拟机”和“删除网络安全组”。用户或应用程序通过资源管理器所进行的每一个操作都会作为特定资源类型上的操作建模。 如果操作类型为“写入”、“删除”或“操作”，则该操作的开始、成功或失败记录都会记录在管理类别中。 管理类别还包括任何对订阅中基于角色的访问控制进行的更改。
 * 服务运行状况 - 此类别包含 Azure 中发生的任何服务运行状况事件的记录。 此类别的一个事件类型示例是“美国东部的 SQL Azure 正处于故障时间”。 服务运行状况事件分 5 种：必需操作、辅助恢复、事件、维护、信息或安全性，仅当订阅中存在受事件影响的资源时，它们才出现。
+* **资源运行状况** - 此类别包含 Azure 资源发生的任何资源运行状况事件的记录。 你将在此类别中看到的事件类型的示例是“虚拟机运行状况已更改为不可用”。 资源运行状况事件可以表示四种运行状况之一：“可用”、“不可用”、“已降级”和“未知”。 此外，资源运行状况事件可以分为“平台启动”或“用户启动”。
 * 警报 - 此类别包含所有 Azure 警报的激活记录。 可在此类别中看到的事件类型示例如“过去 5 分钟内，myVM 上的 CPU 百分比已超过 80%”。 许多 Azure 系统都具有警报概念 - 可定义某种类型的规则，并在条件匹配该规则时接收通知。 每当支持的 Azure 警报类型“激活”或满足生成通知的条件时，激活记录也会推送到此类别的活动日志中。
 * 此类别包含基于订阅中定义的任何自动缩放设置的自动缩放引擎操作相关的所有事件记录。 可在此类别中看到的事件类型示例如“自动缩放扩展操作失败”。 使用自动缩放，可在支持的资源类型中，通过自动缩放设置基于日期和/或负载（指标）数据来自动增加或减少实例的数量。 满足纵向扩展或缩减条件时，开始、成功或失败的事件会记录到此类别中。
 * **建议** - 此类别包含 Azure 顾问提供的建议事件。
 * **安全性** - 此类别包含 Azure 安全中心生成的任何警报记录。 可在此类别中看到的事件类型示例为“执行了可疑的双扩展名文件”。
-* **策略和资源运行状况** - 这些类别不包含任何事件；保留它们是为了将来使用。
+* **策略** - 此类别不包含任何事件；它预留给将来使用。 
 
 ## <a name="event-schema-per-category"></a>每个类别的事件架构
 [请参阅此文章，了解每个类别的活动日志事件架构。](monitoring-activity-log-schema.md)
@@ -145,7 +145,7 @@ Get-AzureRmLogProfile
 Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
 ```
 
-| 属性 | 必选 | 说明 |
+| 属性 | 必选 | Description |
 | --- | --- | --- |
 | 名称 |是 |日志配置文件的名称。 |
 | StorageAccountId |否 |应该将活动日志保存到其中的存储帐户的资源 ID。 |
@@ -159,7 +159,7 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 Remove-AzureRmLogProfile -name my_log_profile
 ```
 
-### <a name="configure-log-profiles-using-the-azure-cli-20"></a>通过 Azure CLI 2.0 配置日志配置文件
+### <a name="configure-log-profiles-using-the-azure-cli"></a>使用 Azure CLI 配置日志配置文件
 
 #### <a name="get-existing-log-profile"></a>获取现有的日志配置文件
 

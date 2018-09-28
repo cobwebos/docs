@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 97836c4160349b8095ba2095176783ae17b46e82
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 9df587d92b9e35db496c787186ff2945db7965ce
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216193"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987809"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>在 Azure 中根据自定义指标自动缩放入门
 本文介绍如何在 Azure 门户中根据自定义指标缩放资源。
 
-Azure Monitor 自动缩放仅适用于虚拟机规模集 (VMSS)、云服务、应用服务计划和应用服务环境。 
+Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[云服务](https://azure.microsoft.com/services/cloud-services/)、[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)和 [API 管理服务](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)。
 
 # <a name="lets-get-started"></a>入门
 本文假定已有一个配了 Application Insights 的 Web 应用。 如果还没有，则可以[为 ASP.NET 网站设置 Application Insights][1]

@@ -10,18 +10,18 @@ ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: e6bb06d8ae46afbb946754113e1d81a90e3ddc57
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 45df284d29ea2d5eb799697b22deeab03cb66622
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423685"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956638"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>使用 Azure CLI 创建和管理 Azure Database for MySQL 防火墙规则
 使用服务器级防火墙规则，管理员可以管理从指定的 IP 地址或某个范围的 IP 地址对 Azure Database for MySQL 服务器的访问权限。 使用便捷的 Azure CLI 命令，可创建、更新、删除、列出和显示防火墙规则，用于管理服务器。 有关 Azure Database for MySQL 的概述，请参阅 [Azure Database for MySQL server firewall rules](./concepts-firewall-rules.md)（Azure Database for MySQL 服务器防火墙规则）
 
 ## <a name="prerequisites"></a>先决条件
-* [安装 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+* [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 * [Azure Database for MySQL 服务器和数据库](quickstart-create-mysql-server-database-using-azure-cli.md)。
 
 ## <a name="firewall-rule-commands"></a>防火墙规则命令：

@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: rajram
 ms.component: autoscale
-ms.openlocfilehash: b303632c236e492bbf57ee60d5e7b0cc7b2f9e5c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e96e3abc05353aa3ea134b7d11256a29fe64c300
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448962"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989220"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure 中的自动缩放入门
 本文介绍如何在 Microsoft Azure 门户中为资源指定自动缩放设置。
 
-Azure Monitor 自动缩放功能仅适用于虚拟机规模集、云服务、Azure 应用服务计划和应用服务环境。 
+Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[云服务](https://azure.microsoft.com/services/cloud-services/)、[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)和 [API 管理服务](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)。
 
 ## <a name="discover-the-autoscale-settings-in-your-subscription"></a>了解订阅中的自动缩放设置
 可在 Azure Monitor 中查找自动缩放功能适用的所有资源。 按下列步骤进行分步演练：
@@ -47,8 +47,8 @@ Azure Monitor 自动缩放功能仅适用于虚拟机规模集、云服务、Azu
 1. 提供缩放设置的名称，然后单击“添加规则”。 请注意右侧以上下文窗格形式打开的缩放规则选项。 默认情况下，这将选项设置为当资源的 CPU 百分比超过 70% 时，将实例计数缩放 1 个单位。 请将此选项保留默认值，并单击“添加”。
   ![为 Web 应用创建缩放设置][6]
 1. 现已创建第一个缩放规则。 请注意，UX 建议了最佳做法，并指出“建议至少在规则中包含一个缩放设置”。 为此，请执行以下操作：
-  
-    a. 单击“添加规则”。 
+
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加规则”。
 
     b. 将“运算符”设置为“小于”。
 
@@ -62,7 +62,7 @@ Azure Monitor 自动缩放功能仅适用于虚拟机规模集、云服务、Azu
 
 祝贺你！ 现已成功创建第一个缩放设置，用于根据 CPU 使用率自动缩放 Web 应用。
 
-> [!NOTE] 
+> [!NOTE]
 > 若要开始使用虚拟机规模集或云服务角色，才可采用相同步骤操作。
 
 ## <a name="other-considerations"></a>其他注意事项
@@ -105,8 +105,8 @@ Azure Monitor 自动缩放功能仅适用于虚拟机规模集、云服务、Azu
 单击顶部的“禁用自动缩放”按钮。
 ![禁用自动缩放][13]
 
-> [!NOTE] 
-> 此选项将禁用你的配置。 但是，再次启用“自动缩放”后，则可恢复此设置。 
+> [!NOTE]
+> 此选项将禁用你的配置。 但是，再次启用“自动缩放”后，则可恢复此设置。
 
 现在，可手动设置要缩放到的实例数。
 
@@ -133,4 +133,3 @@ Azure Monitor 自动缩放功能仅适用于虚拟机规模集、云服务、Azu
 [12]: ./media/monitoring-autoscale-get-started/scale-definition-json.png
 [13]: ./media/monitoring-autoscale-get-started/disable-autoscale.png
 [14]: ./media/monitoring-autoscale-get-started/set-manualscale.png
-

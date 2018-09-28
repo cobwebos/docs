@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 4/12/2018
 ms.author: dukek
 ms.component: activitylog
-ms.openlocfilehash: 9c1f4699f067ece3108813d28ff834c68f44316d
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: d267ffd5085c27c60e9eb229e2d9026fa83ef848
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003825"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998216"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure 活动日志事件架构
 通过 Azure 活动日志，可以深入了解 Azure 中发生的任何订阅级别事件。 本文介绍了每种数据类别的事件架构。 数据架构各有不同，具体取决于是在门户、PowerShell、CLI，或直接通过 REST API 读取数据，还是[使用日志配置文件将数据流式传输到存储或事件中心](./monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)。 以下示例显示的是通过门户、PowerShell、CLI 和 REST API 获得的架构。 本文末尾提供了这些属性到 [Azure 诊断日志架构](./monitoring-diagnostic-logs-schema.md)的映射。
@@ -192,6 +192,95 @@ ms.locfileid: "40003825"
 }
 ```
 请参阅[服务运行状况通知](./monitoring-service-notifications.md)一文，获取有关属性的值的说明。
+
+## <a name="resource-health"></a>资源运行状况
+此类别包含 Azure 资源发生的任何资源运行状况事件的记录。 你将在此类别中看到的事件类型的示例是“虚拟机运行状况已更改为不可用”。 资源运行状况事件可以表示四种运行状况之一：“可用”、“不可用”、“已降级”和“未知”。 此外，资源运行状况事件可以分为“平台启动”或“用户启动”。
+
+### <a name="sample-event"></a>示例事件
+
+```json
+{
+    "channels": "Admin, Operation",
+    "correlationId": "28f1bfae-56d3-7urb-bff4-194d261248e9",
+    "description": "",
+    "eventDataId": "a80024e1-883d-37ur-8b01-7591a1befccb",
+    "eventName": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "category": {
+        "value": "ResourceHealth",
+        "localizedValue": "Resource Health"
+    },
+    "eventTimestamp": "2018-09-04T15:33:43.65Z",
+    "id": "/subscriptions/<subscription Id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>/events/a80024e1-883d-42a5-8b01-7591a1befccb/ticks/636716720236500000",
+    "level": "Critical",
+    "operationId": "",
+    "operationName": {
+        "value": "Microsoft.Resourcehealth/healthevent/Activated/action",
+        "localizedValue": "Health Event Activated"
+    },
+    "resourceGroupName": "<resource group>",
+    "resourceProviderName": {
+        "value": "Microsoft.Resourcehealth/healthevent/action",
+        "localizedValue": "Microsoft.Resourcehealth/healthevent/action"
+    },
+    "resourceType": {
+        "value": "Microsoft.Compute/virtualMachines",
+        "localizedValue": "Microsoft.Compute/virtualMachines"
+    },
+    "resourceId": "/subscriptions/<subscription Id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>",
+    "status": {
+        "value": "Active",
+        "localizedValue": "Active"
+    },
+    "subStatus": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "submissionTimestamp": "2018-09-04T15:36:24.2240867Z",
+    "subscriptionId": "<subscription Id>",
+    "properties": {
+        "stage": "Active",
+        "title": "Virtual Machine health status changed to unavailable",
+        "details": "Virtual machine has experienced an unexpected event",
+        "healthStatus": "Unavailable",
+        "healthEventType": "Downtime",
+        "healthEventCause": "PlatformInitiated",
+        "healthEventCategory": "Unplanned"
+    },
+    "relatedEvents": []
+}
+```
+
+### <a name="property-descriptions"></a>属性说明
+| 元素名称 | Description |
+| --- | --- |
+| channels | 始终是“Admin, Operation” |
+| correlationId | 字符串格式的 GUID。 |
+| description |警报事件的静态文本说明。 |
+| eventDataId |警报事件的唯一标识符。 |
+| category | 始终为“ResourceHealth” |
+| eventTimestamp |处理与事件对应的请求的 Azure 服务生成事件时的时间戳。 |
+| 级别 |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”、“Informational”和“Verbose” |
+| operationId |在多个事件（对应于单个操作）之间共享的 GUID。 |
+| operationName |操作的名称。 |
+| resourceGroupName |包含资源的资源组的名称。 |
+| resourceProviderName |始终为“Microsoft.Resourcehealth/healthevent/action”。 |
+| resourceType | 受“资源运行状况”事件影响的资源类型。 |
+| resourceId | 受影响资源的资源 ID 的名称。 |
+| status |描述运行状况事件状态的字符串。 值可以是：Active、Resolved、InProgress、Updated。 |
+| subStatus | 对警报而言通常为 NULL。 |
+| submissionTimestamp |事件可供查询的时间戳。 |
+| subscriptionId |Azure 订阅 ID。 |
+| 属性 |`<Key, Value>` 对集合（即字典），描述事件的详细信息。|
+| properties.title | 用于描述资源运行状况的用户友好字符串。 |
+| properties.details | 用于描述有关事件的更多详细信息的用户友好字符串。 |
+| properties.currentHealthStatus | 资源的当前运行状况。 以下值之一：“Available”、“Unavailable”、“Degraded”和“Unknown”。 |
+| properties.previousHealthStatus | 资源的前一运行状况。 以下值之一：“Available”、“Unavailable”、“Degraded”和“Unknown”。 |
+| properties.type | 资源运行状况事件的类型说明。 |
+| properties.cause | 资源运行状况事件的原因说明。 “UserInitiated”和“PlatformInitiated”。 |
+
 
 ## <a name="alert"></a>警报
 此类别包含 Azure 警报的所有激活记录。 可在此类别中看到的事件类型示例如“过去 5 分钟内，myVM 上的 CPU 百分比已超过 80%”。 许多 Azure 系统都具有警报概念 - 可定义某种类型的规则，并在条件匹配该规则时接收通知。 每当支持的 Azure 警报类型“激活”或满足生成通知的条件时，激活记录也会推送到此类别的活动日志中。

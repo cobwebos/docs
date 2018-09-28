@@ -1,100 +1,38 @@
 ---
-title: 教程 - 监视 Azure 防火墙日志
-description: 本教程介绍如何启用和管理 Azure 防火墙日志。
+title: 教程 - 监视 Azure 防火墙日志和指标
+description: 本教程介绍如何启用和管理 Azure 防火墙日志和指标。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.workload: infrastructure-services
-ms.date: 7/11/2018
+ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: a4922fda80b957138a9929090f9d3c349348185d
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 1940fb210481dc75fe48d110776185e90cb3e42f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991839"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991039"
 ---
-# <a name="tutorial-monitor-azure-firewall-logs"></a>教程：监视 Azure 防火墙日志
+# <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>教程：监视 Azure 防火墙日志和指标
 
-[!INCLUDE [firewall-preview-notice](../../includes/firewall-preview-notice.md)]
-
-Azure 防火墙文章中的示例假设已启用了Azure 防火墙公共预览版。 有关详细信息，请参阅[启用 Azure 防火墙公共预览版](public-preview.md)。
-
-可以使用防火墙日志来监视 Azure 防火墙。 此外，可以使用活动日志来审核对 Azure 防火墙资源执行的操作。
+可以使用防火墙日志来监视 Azure 防火墙。 此外，可以使用活动日志来审核对 Azure 防火墙资源执行的操作。 使用指标，可以在门户中查看性能计数器。 
 
 可通过门户访问其中部分日志。 可将日志发送到 [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md)、存储和事件中心，并使用 Log Analytics 或其他工具（例如 Excel 和 Power BI）对其进行分析。
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 通过 Azure 门户启用日志记录
 > * 使用 PowerShell 启用日志记录
 > * 查看和分析活动日志
 > * 查看和分析网络与应用程序规则日志
+> * 查看指标
 
-## <a name="diagnostic-logs"></a>诊断日志
+## <a name="prerequisites"></a>先决条件
 
- 以下诊断日志适用于 Azure 防火墙：
+在开始本教程之前，你应该阅读 [Azure 防火墙日志和指标](logs-and-metrics.md)，以概要了解可用于 Azure 防火墙的诊断日志和指标。
 
-* **应用程序规则日志**
-
-   仅当为每个 Azure 防火墙启用了应用程序规则日志时，才会将此日志保存到存储帐户、流式传输到事件中心，和/或发送到 Log Analytics。 每当建立与某个配置的应用程序规则匹配的新连接，就会为接受/拒绝的连接生成一条日志。 如以下示例中所示，数据以 JSON 格式记录：
-
-   ```
-   Category: access logs are either application or network rule logs.
-   Time: log timestamp.
-   Properties: currently contains the full message. 
-   note: this field will be parsed to specific fields in the future, while maintaining backward compatibility with the existing properties field.
-   ```
-
-   ```json
-   {
-    "category": "AzureFirewallApplicationRule",
-    "time": "2018-04-16T23:45:04.8295030Z",
-    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/AZUREFIREWALLS/{resourceName}",
-    "operationName": "AzureFirewallApplicationRuleLog",
-    "properties": {
-        "msg": "HTTPS request from 10.1.0.5:55640 to mydestination.com:443. Action: Allow. Rule Collection: collection1000. Rule: rule1002"
-    }
-   }
-   ```
-
-* **网络规则日志**
-
-   仅当为每个 Azure 防火墙启用了网络规则日志时，才会将此日志保存到存储帐户、流式传输到事件中心，和/或发送到 Log Analytics。 每当建立与某个配置的网络规则匹配的新连接，就会为接受/拒绝的连接生成一条日志。 如以下示例中所示，数据以 JSON 格式记录：
-
-   ```
-   Category: access logs are either application or network rule logs.
-   Time: log timestamp.
-   Properties: currently contains the full message. 
-   note: this field will be parsed to specific fields in the future, while maintaining backward compatibility with the existing properties field.
-   ```
-
-   ```json
-  {
-    "category": "AzureFirewallNetworkRule",
-    "time": "2018-06-14T23:44:11.0590400Z",
-    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/AZUREFIREWALLS/{resourceName}",
-    "operationName": "AzureFirewallNetworkRuleLog",
-    "properties": {
-        "msg": "TCP request from 111.35.136.173:12518 to 13.78.143.217:2323. Action: Deny"
-    }
-   }
-
-   ```
-
-可通过三种方式存储日志：
-
-* 存储帐户：如果日志存储时间较长并且希望能根据需要随时查看，则最好使用存储帐户。
-* 事件中心：若要集成其他安全信息和事件管理 (SEIM) 工具，获取资源警报，则事件中心是很好的选择。
-* Log analytics：Log analytics 最适合用于应用程序常规实时监视或查看趋势。
-
-## <a name="activity-logs"></a>活动日志
-
-   默认情况下会收集活动日志条目，可在 Azure 门户中查看这些条目。
-
-   可以使用 [Azure 活动日志](../azure-resource-manager/resource-group-audit.md)（以前称为运行日志和审核日志）查看提交到 Azure 订阅的所有操作。
 
 ## <a name="enable-diagnostic-logging-through-the-azure-portal"></a>通过 Azure 门户启用诊断日志记录
 
@@ -105,8 +43,8 @@ Azure 防火墙文章中的示例假设已启用了Azure 防火墙公共预览�
 
    Azure 防火墙有两个特定于服务的日志：
 
-   * 应用程序规则日志
-   * 网络规则日志
+   * AzureFirewallApplicationRule
+   * AzureFirewallNetworkRule
 
 3. 若要开始收集数据，请单击“启用诊断”。
 4. “诊断设置”页提供用于诊断日志的设置。 
@@ -163,10 +101,12 @@ Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.
 > [!TIP]
 > 如果熟悉 Visual Studio 和更改 C# 中的常量和变量值的基本概念，则可以使用 GitHub 提供的[日志转换器工具](https://github.com/Azure-Samples/networking-dotnet-log-converter)。
 
+## <a name="view-metrics"></a>查看指标
+浏览到 Azure 防火墙，并在“监视”下单击“指标”。 若要查看可用值，请选择“指标”下拉列表。
 
 ## <a name="next-steps"></a>后续步骤
 
-将防火墙配置为收集日志后，可以浏览 Log Anaytics 以查看数据。
+将防火墙配置为收集日志后，可以浏览 Log Analytics 以查看数据。
 
 > [!div class="nextstepaction"]
 > [Log Analytics 中的网络监视解决方案](../log-analytics/log-analytics-azure-networking-analytics.md)

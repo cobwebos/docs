@@ -12,27 +12,32 @@ ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/27/2018
+ms.topic: conceptual
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 735c5a3645f5e2e0f31bac4d4b2f61d73dfe069e
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 93bc3db2b7cf3002efc93f1e8006c5362eddab9f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128773"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959965"
 ---
-# <a name="permissions-in-azure-active-directory"></a>Azure Active Directory 中的权限
+# <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Azure Active Directory v1.0 终结点中的权限和许可
 
-Azure Active Directory (Azure AD) 对 OAuth 和 OpenID Connect (OIDC) 流广泛使用权限。 当应用从 Azure AD 接收访问令牌时，访问令牌将包含声明，这些声明描述了应用对特定资源的权限。 利用权限（也称为作用域），资源可以轻松进行授权，因为资源只需要检查令牌是否包含对应用要调用的 API 的合适权限。 
+[!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
+
+Azure Active Directory (Azure AD) 对 OAuth 和 OpenID Connect (OIDC) 流广泛使用权限。 当应用从 Azure AD 接收访问令牌时，访问令牌将包含声明，这些声明描述了应用对特定资源的权限。
+
+利用权限（也称为作用域），资源可以轻松进行授权，因为资源只需要检查令牌是否包含对应用要调用的 API 的合适权限。
 
 ## <a name="types-of-permissions"></a>权限的类型
 
-Azure AD 定义两种权限： 
-* **委托的权限** - 由包含登录用户的应用使用。 对于这些应用，用户或管理员需许可应用请求的权限，并向应用授予委托的权限，以便在对 API 发出调用时，该应用可充当登录的用户。 根据具体的 API，用户可能无法直接许可 API，而是改为[要求管理员提供“管理员许可”。](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)
-* **应用程序权限** - 由无需存在登录用户即可运行的应用使用；例如，以后台服务或守护程序形式运行的应用。 应用程序权限只能[由管理员许可](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant)，因为它们通常非常强大，允许访问跨用户边界的数据，或者访问仅限管理员访问的数据。 
+Azure AD 定义两种权限：
+
+* **委托的权限** - 由包含登录用户的应用使用。 对于这些应用，用户或管理员需许可应用请求的权限，并向应用授予委托的权限，以便在对 API 发出调用时，该应用可充当登录的用户。 根据 API，用户可能无法直接许可 API，而是[要求管理员提供“管理员同意”](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)。
+* **应用程序权限** - 由无需存在登录用户即可运行的应用使用；例如，以后台服务或守护程序形式运行的应用。 应用程序权限只能[由管理员许可](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant)，因为它们通常非常强大，允许访问跨用户边界的数据，或者访问仅限管理员访问的数据。
 
 有效权限是应用在对 API 发出请求时拥有的权限。 
 

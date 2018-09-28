@@ -8,28 +8,28 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 84727ec3694f64d40ad002a248a255df9074d7f4
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: c7084a10aceafcdd1039893b810fcbd8b74b874b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263253"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967398"
 ---
 # <a name="overview-of-common-autoscale-patterns"></a>常见自动缩放模式的概述
 本文介绍一些常见模式，这些模式可在 Azure 中缩放资源。
 
-Azure Monitor 自动缩放仅适用于虚拟机规模集 (VMSS)、云服务、应用服务计划和应用服务环境。 
+Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[云服务](https://azure.microsoft.com/services/cloud-services/)、[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)和 [API 管理服务](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)。
 
-# <a name="lets-get-started"></a>让我们开始
+# <a name="lets-get-started"></a>入门
 
 本文假定使用者熟悉自动缩放。 可以[开始在此处缩放资源][1]。 下面是一些常见缩放模式。
 
 ## <a name="scale-based-on-cpu"></a>基于 CPU 进行缩放
 
-拥有 Web 应用（/VMSS/云服务角色）并且 
+拥有 Web 应用（/VMSS/云服务角色）并且
 
 - 要基于 CPU 进行扩大/缩小。
-- 此外，你希望确保实例数最小。 
+- 此外，你希望确保实例数最小。
 - 同时，希望确保为可以扩展到的实例数设置最大限制。
 
 ![基于 CPU 进行缩放][2]
@@ -45,7 +45,7 @@ Azure Monitor 自动缩放仅适用于虚拟机规模集 (VMSS)、云服务、�
 
 ## <a name="scale-differently-during-holidays"></a>在节假日期间以不同方式缩放
 
-拥有 Web 应用（/VMSS/云服务角色）并且 
+拥有 Web 应用（/VMSS/云服务角色）并且
 
 - 希望在默认情况下基于 CPU 使用率扩展/缩减
 - 但是，在节假日（或对于业务来说非常重要的特定日子）期间你想要覆盖默认值，并希望有更多容量可供支配。
@@ -54,7 +54,7 @@ Azure Monitor 自动缩放仅适用于虚拟机规模集 (VMSS)、云服务、�
 
 ## <a name="scale-based-on-custom-metric"></a>基于自定义指标进行缩放
 
-有一个 Web 前端和一个可与后端通信的 API 层。 
+有一个 Web 前端和一个可与后端通信的 API 层。
 
 - 想要基于前端中的自定义事件缩放 API 层（示例：想要基于购物车中的项目数缩放结账进程）
 

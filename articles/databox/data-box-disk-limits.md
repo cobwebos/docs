@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 09/04/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: 3b26c5f9a6d75725fb102d89192e77988b295dea
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: b7de39ca8723df2d15da7677b7032c98e84ecb1d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782019"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960611"
 ---
 # <a name="azure-data-box-disk-limits-preview"></a>Azure Data Box 磁盘限制（预览版）
 
@@ -87,3 +87,7 @@ ms.locfileid: "43782019"
 |----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 块 Blob 和页 Blob 的容器名称 | 必须是有效的 DNS 名称，长度为 3 到 63 个字符。 <br>  必须以字母或数字开头。 <br> 只能包含小写字母、数字和连字符 (-)。 <br> 每个连字符 (-) 字符的前后必须紧接字母或数字。 <br> 名称中不允许连续的连字符。 |
 | 块 Blob 和页 Blob 的 Blob 名称      | Blob 名称区分大小写，只能包含字符的任意组合。 <br> Blob 名称的长度必须为 1 到 1,024 个字符。 <br> 必须正确地对保留的 URL 字符进行转义。 <br>构成 Blob 名称的路径段数目不能超过 254 个。 路径段是指对应于虚拟目录名称的相邻分隔符（例如，正斜杠“/”）之间的字符串。 |
+
+
+## <a name="next-steps"></a>后续步骤
+* 请查看 [Data Box 系统要求](data-box-system-requirements.md)

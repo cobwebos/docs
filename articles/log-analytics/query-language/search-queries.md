@@ -15,17 +15,19 @@ ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 6a375da3c97790bd6a7a6fa505de82b2fc298385
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 250eddb043ccf9fa0b1bb92a298900f8ad820140
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42141239"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46992263"
 ---
 # <a name="search-queries-in-log-analytics"></a>Log Analytics 中的搜索查询
 
 > [!NOTE]
-> 在完成本教程之前，应先完成 [Log Analytics 中的查询入门](get-started-queries.md)。
+> 在完成本课程之前，应先完成 [Log Analytics 中的查询入门](get-started-queries.md)。
+
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 Azure Log Analytics 查询可以从表名或 search 命令开始。 本教程介绍基于搜索的查询。 每种方法各有优势。
 
@@ -34,7 +36,7 @@ Azure Log Analytics 查询可以从表名或 search 命令开始。 本教程介
 ## <a name="search-a-term"></a>搜索词语
 **search** 命令通常用于搜索特定的词语。 以下示例在所有表的所有列中扫描词语“error”：
 
-```OQL
+```Kusto
 search "error"
 | take 100
 ```
@@ -44,13 +46,13 @@ search "error"
 ### <a name="table-scoping"></a>表范围限定
 若要在特定的表中搜索某个词语，请紧靠在 **search** 运算符的后面添加 `in (table-name)`：
 
-```OQL
+```Kusto
 search in (Event) "error"
 | take 100
 ```
 
 或者在多个表中：
-```OQL
+```Kusto
 search in (Event, SecurityEvent) "error"
 | take 100
 ```
@@ -58,7 +60,7 @@ search in (Event, SecurityEvent) "error"
 ### <a name="table-and-column-scoping"></a>表和列范围限定
 默认情况下，**search** 将评估数据集中的所有列。 如果只想搜索特定的列，请使用以下语法：
 
-```OQL
+```Kusto
 search in (Event) Source:"error"
 | take 100
 ```
@@ -69,7 +71,7 @@ search in (Event) Source:"error"
 ## <a name="case-sensitivity"></a>区分大小写
 默认情况下，词语搜索不区分大小写，因此，搜索“dns”可能会产生“DNS”、“dns”或“Dns”等结果。 若要执行区分大小写的搜索，请使用 `kind` 选项：
 
-```OQL
+```Kusto
 search kind=case_sensitive in (Event) "DNS"
 | take 100
 ```
@@ -78,26 +80,26 @@ search kind=case_sensitive in (Event) "DNS"
 **search** 命令支持在词语的开头、末尾或中间使用通配符。
 
 若要搜索以“win”开头的词语：
-```OQL
+```Kusto
 search in (Event) "win*"
 | take 100
 ```
 
 若要搜索以“.com”结尾的词语：
-```OQL
+```Kusto
 search in (Event) "*.com"
 | take 100
 ```
 
 若要搜索包含“www”的词语：
-```OQL
+```Kusto
 search in (Event) "*www*"
 | take 100
 ```
 
 若要搜索词以“corp”开头、以“.com”结尾的词语（例如“corp.mydomain.com”）
 
-```OQL
+```Kusto
 search in (Event) "corp*.com"
 | take 100
 ```
@@ -110,21 +112,21 @@ search in (Event) "corp*.com"
 ## <a name="add-and--or-to-search-queries"></a>将 *and* / *or* 添加到搜索查询
 使用 **and** 可以搜索包含多个词语的记录：
 
-```OQL
+```Kusto
 search in (Event) "error" and "register"
 | take 100
 ```
 
 使用 **or** 可以获取至少包含一个词语的记录：
 
-```OQL
+```Kusto
 search in (Event) "error" or "register"
 | take 100
 ```
 
 如果有多个搜索条件，可以使用括号将其合并到同一个查询：
 
-```OQL
+```Kusto
 search in (Event) "error" and ("register" or "marshal*")
 | take 100
 ```
@@ -134,7 +136,7 @@ search in (Event) "error" and ("register" or "marshal*")
 ## <a name="pipe-search-queries"></a>使用竖线分隔搜索查询
 与其他任何命令一样，可以使用竖线分隔 **search**，以便可以筛选、排序和聚合搜索结果。 例如，若要获取包含“win”的 *Event* 记录数：
 
-```OQL
+```Kusto
 search in (Event) "win"
 | count
 ```
@@ -144,4 +146,4 @@ search in (Event) "win"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在 [Log Analytics 查询语言站点](https://docs.loganalytics.io)上参阅其他教程
+- 在 [Log Analytics 查询语言站点](https://aka.ms/LogAnalyticsLanguage)上参阅其他教程。

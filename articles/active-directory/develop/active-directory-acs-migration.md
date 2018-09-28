@@ -1,6 +1,6 @@
 ---
 title: 从 Azure 访问控制服务迁移 | Microsoft Docs
-description: 从 Azure 访问控制服务迁移应用和服务的方法
+description: 了解用于从 Azure 访问控制服务 (ACS) 迁移应用和服务的选项。
 services: active-directory
 documentationcenter: dev-center-name
 author: CelesteDG
@@ -13,20 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/14/2017
+ms.date: 09/07/2018
 ms.author: celested
-ms.reviewer: hirsin, dastrock
-ms.openlocfilehash: 41c7de3039634f262efedc1bb3de1b39dda4593a
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.reviewer: jlu, annaba, hirsin
+ms.openlocfilehash: 2c7dc650109ecc3844ee2ae90e50b2267f5716c4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698054"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996513"
 ---
-# <a name="migrate-from-the-azure-access-control-service"></a>从 Azure 访问控制服务迁移
+# <a name="how-to-migrate-from-the-azure-access-control-service"></a>如何：从 Azure 访问控制服务迁移
 
-Azure 访问控制（一种 Azure Active Directory (Azure AD) 服务）将于 2018 年 11 月 7 日停用。 在那之前，当前使用访问控制的应用程序和服务必须全部完整迁移到其他身份验证机制。 本文为打算弃用访问控制的当前客户提供相关建议。 如果当前未使用访问控制，则无需执行任何操作。
-
+Microsoft Azure 访问控制服务 (ACS) 是一种 Azure Active Directory (Azure AD) 服务，将于 2018 年 11 月 7 日停用。 在那之前，当前使用访问控制的应用程序和服务必须全部完整迁移到其他身份验证机制。 本文为打算弃用访问控制的当前客户提供相关建议。 如果当前未使用访问控制，则无需执行任何操作。
 
 ## <a name="overview"></a>概述
 
@@ -38,7 +37,7 @@ Azure 访问控制（一种 Azure Active Directory (Azure AD) 服务）将于 20
 - 向 Web 应用程序添加身份验证，包括自定义和预打包的应用程序（如 SharePoint）。 通过使用访问控制“被动”身份验证，Web 应用程序可支持使用 Microsoft 帐户（以前称为 Live ID）以及 Google、Facebook、Yahoo、Azure AD 和 Active Directory 联合身份验证服务 (AD FS) 的帐户登录。
 - 使用访问控制颁发的令牌保护自定义 Web 服务。 使用“主动”身份验证，Web 服务可确保只允许已通过访问控制验证的已知客户端进行访问。
 
-下面各部分介绍了每个用例及其推荐迁移策略。 
+下面各部分介绍了每个用例及其推荐迁移策略。
 
 > [!WARNING]
 > 在大多数情况下，必须大量更改代码，才能将现有应用和服务迁移到较新的技术。 建议立即开始计划和执行迁移，以避免出现任何潜在的中断或故障时间。
@@ -73,7 +72,6 @@ https://<mynamespace>.accesscontrol.windows.net
 - **2018 年 4 月 2 日**：完全停用 Azure 经典门户，这意味着，不再可以通过任何 URL 管理访问控制命名空间。 此时，不能禁用/启用、删除或枚举访问控制命名空间。 但可通过 `https://\<namespace\>.accesscontrol.windows.net` 访问功能完善的访问控制管理门户。 访问控制的其他所有组件继续正常运行。
 - **2018 年 11 月 7 日**：永久关闭所有访问控制组件。 这包括访问控制管理门户、管理服务、STS 和令牌转换规则引擎。 此时，发送到访问控制（位于 \<命名空间\>.accesscontrol.windows.net）的所有请求都会失败。 应在此之前将所有现有应用和服务迁移到其他技术。
 
-
 ## <a name="migration-strategies"></a>迁移策略
 
 下面各部分简要概述了从访问控制迁移到其他 Microsoft 技术的相关建议。
@@ -98,7 +96,6 @@ https://<mynamespace>.accesscontrol.windows.net
 <!-- Retail federation services are moving, customers don't need to move -->
 <!-- Azure StorSimple: TODO -->
 <!-- Azure SiteRecovery: TODO -->
-
 
 ### <a name="sharepoint-customers"></a>SharePoint 客户
 
@@ -175,26 +172,14 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 - 可以完全灵活地自定义 Azure AD 令牌。 可以自定义 Azure AD 发布的声明，使其与访问控制发布的声明相匹配。 尤其是用户 ID 或名称标识符声明。 若要在更换技术后，仍继续为用户接收一致的用户标识符，需确保 Azure AD 和访问控制颁发的用户 ID 一致。
 - 可以配置应用程序专属令牌签名证书，且由自己控制其生存期。
 
-<!--
-
-Possible nameIdentifiers from Access Control (via AAD or AD FS):
-- AD FS - Whatever AD FS is configured to send (email, UPN, employeeID, what have you)
-- Default from AAD using App Registrations, or Custom Apps before ClaimsIssuance policy: subject/persistent ID
-- Default from AAD using Custom apps nowadays: UPN
-- Kusto can't tell us distribution, it's redacted
-
--->
-
 > [!NOTE]
 > 这种方法需要使用 Azure AD Premium 许可证。 如果你是访问控制客户，并且需要 Premium 许可证来设置应用程序的单一登录，请与我们联系。 我们很乐意为你提供开发人员许可证。
 
 另一种方法是遵循[此代码示例](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation)，其中有关如何设置 WS 联合身份验证的说明略有不同。 此代码示例不使用 WIF，而是使用 ASP.NET 4.5 OWIN 中间件。 不过，应用注册说明也适用于使用 WIF 的应用，但不需要使用 Azure AD Premium 许可证。 
 
-如果采用这种方法，需要了解 [Azure AD 中的签名密钥滚动更新](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover)。 这种方法使用 Azure AD 全局签名密钥来颁发令牌。 默认情况下，WIF 不会自动刷新签名密钥。 如果 Azure AD 轮播全局签名密钥，WIF 实现需要做好接受更改的准备。
+如果采用这种方法，需要了解 [Azure AD 中的签名密钥滚动更新](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover)。 这种方法使用 Azure AD 全局签名密钥来颁发令牌。 默认情况下，WIF 不会自动刷新签名密钥。 如果 Azure AD 轮播全局签名密钥，WIF 实现需要做好接受更改的准备。 有关详细信息，请参阅[有关 Azure AD 中签名密钥滚动更新的重要信息](https://msdn.microsoft.com/en-us/library/azure/dn641920.aspx)。
 
 如果能够通过 OpenID Connect 或 OAuth 协议与 Azure AD 集成，则建议这样做。 [Azure AD 开发人员指南](https://aka.ms/aaddev)中收录了大量有关如何将 Azure AD 集成到 Web 应用程序的文档和指南。
-
-<!-- TODO: If customers ask about authZ, let's put a blurb on role claims here -->
 
 #### <a name="migrate-to-azure-active-directory-b2c"></a>迁移到 Azure Active Directory B2C
 
@@ -237,7 +222,6 @@ Possible nameIdentifiers from Access Control (via AAD or AD FS):
 - [Azure AD B2C 自定义策略](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom)
 - [Azure AD B2C 定价](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
-
 #### <a name="migrate-to-ping-identity-or-auth0"></a>迁移到 Ping 标识或 Auth0
 
 在某些情况下，可能会发现如果不修改主要代码，则在 Web 应用程序中，Azure AD 和 Azure AD B2C 不足以替代访问控制。 一些常见示例可能包括：
@@ -249,8 +233,6 @@ Possible nameIdentifiers from Access Control (via AAD or AD FS):
 - 具有后列特点的多租户 Web 应用程序：使用 ACS 集中管理与多种不同标识提供者的联合
 
 在这些情况下，可能需要考虑将 Web 应用程序迁移到另一个云身份验证服务。 建议了解以下选项。 以下每个选项都提供了与访问控制类似的功能：
-
-
 
 |     |     | 
 | --- | --- |

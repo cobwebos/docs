@@ -5,20 +5,20 @@ author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 03/02/2016
+ms.date: 09/24/2018
 ms.author: robb
 ms.component: autoscale
-ms.openlocfilehash: 4eeca81e08a0ecae9ba41ccdd2bf8a2f395f579c
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: fe63ce931da9fbe94b47d00805820affddfb1bc1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264664"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946980"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Microsoft Azure 虚拟机、云服务和 Web 应用自动缩放概述
 本文介绍了 Microsoft Azure 自动缩放是什么、其对用户的好处，以及如何开始使用它。  
 
-Azure 监视器自动缩放仅适用于[虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[云服务](https://azure.microsoft.com/services/cloud-services/)和[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)。
+Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[云服务](https://azure.microsoft.com/services/cloud-services/)、[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)和 [API 管理服务](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)。
 
 > [!NOTE]
 > Azure 有两个自动缩放方法。 旧版自动缩放适用于虚拟机（可用性集）。 此功能的支持有限。若要获取更快速、更可靠的自动缩放支持，建议迁移到虚拟机规模集。 本文提供了此旧技术的使用方法链接。  
@@ -41,7 +41,7 @@ Azure 监视器自动缩放仅适用于[虚拟机规模集](https://azure.micros
 虚拟机规模集使用 Azure 诊断代理提供的遥测数据，而 Web 应用和云服务的遥测则直接来自 Azure 基础结构。 一些常用的统计信息包括：CPU 使用率、内存使用情况、线程计数、队列长度和磁盘使用情况。 如需可用遥测数据的列表，请参阅[自动缩放常用指标](insights-autoscale-common-metrics.md)。
 
 ## <a name="custom-metrics"></a>自定义指标
-还可以利用应用程序可以发出的自己的自定义指标。 如果已将应用程序配置为向 Application Insights 发送指标，则可以利用这些指标来决定是否要进行缩放。 
+还可以利用应用程序可以发出的自己的自定义指标。 如果已将应用程序配置为向 Application Insights 发送指标，则可以利用这些指标来决定是否要进行缩放。
 
 ## <a name="time"></a>时间
 基于计划的规则以 UTC 为基础。 设置规则时，必须正确设置时区。  
@@ -110,6 +110,7 @@ Azure 监视器自动缩放仅适用于[虚拟机规模集](https://azure.micros
 | 虚拟机：Windows 规模集 |[缩放 Windows 中的虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) |
 | 虚拟机：Linux 规模集 |[缩放 Linux 中的虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) |
 | 虚拟机：Windows 示例 |[通过用于 VM 规模集的 Resource Manager 模板进行的高级自动缩放配置](insights-advanced-autoscale-virtual-machine-scale-sets.md) |
+| API 管理服务|[自动缩放 Azure API 管理实例](https://docs.microsoft.com/azure/api-management/api-management-howto-autoscale)
 
 ## <a name="next-steps"></a>后续步骤
 若要详细了解自动缩放，请使用前面列出的自动缩放演练，或参阅以下资源：

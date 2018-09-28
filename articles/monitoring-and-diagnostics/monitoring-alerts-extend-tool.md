@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 21ba95a7b3efff177afe63d22da3f6ba9848ded2
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d70eecb6a5d6bafbfa6507dbe8b1bcb1cad67191
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301025"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990225"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>将警报从 Log Analytics 扩展为 Azure 警报
 Azure 警报正在取代 Azure Log Analytics 中的警报功能。 在此过渡过程中，最初在 Log Analytics 中配置的警报将扩展到 Azure 中。 如果不想等待它们自动移入 Azure，可以启动该过程：
@@ -22,7 +22,7 @@ Azure 警报正在取代 Azure Log Analytics 中的警报功能。 在此过渡�
 - 使用 AlertsVersion API 以编程方式启动。  
 
 > [!NOTE]
-> 从 2018 年 5 月 14 日开始，Microsoft 会将 Log Analytics 中创建的警报自动扩展到 Azure 警报，此过程会一直重复到完成为止。 Microsoft 计划将警报迁移到 Azure，并且在此过渡过程中，可以从 Operations Management Suite 门户和 Azure 门户管理警报。 此过程不具有破坏性，也不会带来中断。  
+> 从 2018 年 5 月 14 日开始，Microsoft 会将在 Log Analytics 的公有云实例中创建的警报自动扩展到 Azure 警报，此过程会一直重复到完成为止。 如果在创建[操作组](monitoring-action-groups.md)的过程中出现任何问题，请执行[这些修正步骤](monitoring-alerts-extend-tool.md#troubleshooting)，以便自动创建操作组。 在 2018 年 7 月 5 日之前，一直可以使用这些步骤。 *不适用于 Log Analytics 的 Azure 政府云和主权云用户*。 
 
 ## <a name="option-1-initiate-from-the-operations-management-suite-portal"></a>选项 1：从 Operations Management Suite 门户启动
 以下步骤介绍如何从 Operations Management Suite 门户扩展工作区的警报。  
@@ -457,7 +457,7 @@ $response = armclient post "/subscriptions/$subscriptionId/resourceGroups/$resou
 在扩展警报的过程中，问题可以阻止系统创建必要的[操作组](monitoring-action-groups.md)。 在这种情况下，Operations Management Suite 门户“警报”部分的横幅中或在对 API 执行的 GET 调用中可以看到错误消息。
 
 > [!IMPORTANT]
-> 如果在 2018 年 7 月 5 日之前未采取以下补救措施，警报将在 Azure 中运行，但不会触发任何操作或通知。 若要获取警报通知，则必须手动编辑和添加[操作组](monitoring-action-groups.md)，或使用上述[自定义 PowerShell 脚本](#option-3---using-custom-powershell-script)。
+> 如果基于 Azure 公有云的 Log Analytics 用户在 2018 年 7 月 5 日之前未采取以下补救措施，警报将在 Azure 中运行，但不会触发任何操作或通知。 若要获取警报通知，则必须手动编辑和添加[操作组](monitoring-action-groups.md)，或使用上述[自定义 PowerShell 脚本](#option-3---using-custom-powershell-script)。
 
 以下是针对每个错误的修正步骤：
 - **错误：在订阅/资源组级别存在针对写入操作的作用域锁**：![Operations Management Suite 门户“警报设置”页的屏幕截图，其中突出显示了“作用域锁”错误消息](./media/monitor-alerts-extend/ErrorScopeLock.png)
@@ -470,7 +470,7 @@ $response = armclient post "/subscriptions/$subscriptionId/resourceGroups/$resou
 
 - **错误：在订阅/资源组级别存在策略**：![Operations Management Suite 门户“警报设置”页的屏幕截图，其中突出显示了“策略”错误消息](./media/monitor-alerts-extend/ErrorPolicy.png)
 
-    应用 [Azure 策略](../azure-policy/azure-policy-introduction.md)后，它会限制包含 Log Analytics (Operations Management Suite) 工作区的订阅或资源组中的任何新资源。 系统无法将警报扩展到 Azure 并创建必要的操作组。
+    应用 [Azure Policy](../azure-policy/azure-policy-introduction.md) 后，它会限制包含 Log Analytics (Operations Management Suite) 工作区的订阅或资源组中的任何新资源。 系统无法将警报扩展到 Azure 并创建必要的操作组。
     
     若要解决此问题，请编辑导致 *[RequestDisallowedByPolicy](../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md)* 错误的策略，该策略阻止在包含工作区的订阅或资源组中创建新资源。 可以通过 Azure 门户、PowerShell、Azure CLI 或 API 执行此操作。 可以审核操作以找到导致故障的相应策略。 若要了解详细信息，请参阅[查看活动日志以审核操作](../azure-resource-manager/resource-group-audit.md)。 
     

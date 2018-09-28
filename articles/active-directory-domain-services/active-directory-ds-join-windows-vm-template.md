@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 2b94496895c0ab06127b6c556b1240e3279e572f
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 40eb0e8133626e77a1f61ddfc5df69ecf1b958f2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504407"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950788"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain-using-a-resource-manager-template"></a>使用资源管理器模板将 Windows Server 虚拟机加入托管域
 本文介绍如何使用资源管理器模板将 Windows Server 虚拟机加入 Azure AD 域服务托管域。
@@ -39,7 +39,7 @@ ms.locfileid: "39504407"
 ## <a name="install-and-configure-required-tools"></a>安装并配置所需的工具
 可以使用以下选项之一执行本文档中所述的步骤：
 * **Azure PowerShell**：[安装和配置](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)
-* **Azure 跨平台命令行接口**：[安装和配置](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)
+* **Azure CLI**：[安装和配置](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)
 
 
 ## <a name="option-1-provision-a-new-windows-server-vm-and-join-it-to-a-managed-domain"></a>选项 1：预配新的 Windows Server VM 并将其加入托管域

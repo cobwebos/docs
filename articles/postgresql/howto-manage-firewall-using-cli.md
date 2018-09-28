@@ -10,19 +10,19 @@ ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 05/4/2018
-ms.openlocfilehash: ba5533184331b3692882b224b77ad1f38e970661
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f5133b5da055710208390bfe7fd5d6d7d85696df
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778195"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965330"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-azure-cli"></a>使用 Azure CLI 创建和管理 Azure Database for PostgreSQL 防火墙规则
 使用服务器级防火墙规则，管理员可以管理特定 IP 地址或一系列 IP 地址对 Azure Database for PostgreSQL 服务器的访问权限。 使用便捷的 Azure CLI 命令，可创建、更新、删除、列出和显示防火墙规则，用于管理服务器。 有关 Azure Database for PostgreSQL 防火墙规则的概述，请参阅 [Azure Database for PostgreSQL 服务器防火墙规则](concepts-firewall-rules.md)
 
 ## <a name="prerequisites"></a>先决条件
 若要逐步执行本操作方法指南，需要：
-- 安装 [Azure CLI 2.0](/cli/azure/install-azure-cli) 命令行实用工具或使用浏览器中的 Azure Cloud Shell。
+- 安装 [Azure CLI](/cli/azure/install-azure-cli) 命令行实用工具或在浏览器中使用 Azure Cloud Shell。
 - [Azure Database for PostgreSQL 服务器和数据库](quickstart-create-server-database-azure-cli.md)。
 
 ## <a name="configure-firewall-rules-for-azure-database-for-postgresql"></a>配置 Azure Database for PostgreSQL 的防火墙规则

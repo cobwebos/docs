@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor CLI 快速入门示例
-description: Azure Monitor 功能的示例 CLI 2.0 命令。 Azure 监视器是一项 Microsoft Azure 服务，允许用户发送警报通知、基于所配置的遥测数据调用 Web URL 和自动缩放云服务、虚拟机和 Web 应用。
+description: Azure 监视器功能的示例 CLI 命令。 Azure 监视器是一项 Microsoft Azure 服务，允许用户发送警报通知、基于所配置的遥测数据调用 Web URL 和自动缩放云服务、虚拟机和 Web 应用。
 author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: robb
 ms.component: ''
-ms.openlocfilehash: dfc9a65325d25889c9d8d3c10aa0dcda2b5a9980
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 1728511402d48904fa968790f790314fdf57767c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213198"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961512"
 ---
-# <a name="azure-monitor-cli-20-quick-start-samples"></a>Azure Monitor CLI 2.0 快速入门示例
+# <a name="azure-monitor-cli-quick-start-samples"></a>Azure Monitor CLI 快速入门示例
 本文演示有助于访问 Azure 监视器功能的示例命令行接口 (CLI) 命令。 使用 Azure 监视器，可以基于配置的遥测数据值自动缩放云服务、虚拟机和 Web 应用以及发送警报通知或调用 Web URL。
 
 ## <a name="prerequisites"></a>先决条件
 
-如果尚未安装 Azure CLI，请按照[安装 Azure CLI 2.0](/cli/azure/install-azure-cli) 的说明进行操作。 还可以使用 [Azure Cloud Shell](/azure/cloud-shell) 在浏览器中以交互式体验运行 CLI。 请参阅 [Azure Monitor CLI 参考](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest)中的所有可用命令的完整参考。 
+如果尚未安装 Azure CLI，请按照[安装 Azure CLI](/cli/azure/install-azure-cli) 的说明进行操作。 还可以使用 [Azure Cloud Shell](/azure/cloud-shell) 在浏览器中以交互式体验运行 CLI。 请参阅 [Azure Monitor CLI 参考](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest)中的所有可用命令的完整参考。 
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 第一步是登录 Azure 帐户。

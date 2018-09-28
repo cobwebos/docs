@@ -17,29 +17,30 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3fb6cad6243bd6cd0b6a09827d590f7097550e31
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: d94aaa93596a18cf92b745267a6be9966454e36f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42141244"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971531"
 ---
-# <a name="v20-protocols---oauth-20-authorization-code-flow"></a>v2.0 协议 — OAuth 2.0 授权代码流
+# <a name="v20-protocols---oauth-20-authorization-code-flow"></a>v2.0 协议 - OAuth 2.0 授权代码流
+
 OAuth 2.0 授权代码授予可用于设备上所安装的应用中，以访问受保护的资源，例如 Web API。 使用应用模型 v2.0 的 OAuth 2.0 实现，可以将登录名及 API 访问添加到移动应用和桌面应用。 本指南与语言无关，介绍在不使用任何 [Azure 开放源代码身份验证库](active-directory-authentication-libraries.md)的情况下，如何发送和接收 HTTP 消息。
 
 > [!NOTE]
 > v2.0 终结点并不支持所有 Azure Active Directory 方案和功能。 若要确定是否应使用 v2.0 终结点，请阅读 [v2.0 限制](active-directory-v2-limitations.md)。
-> 
-> 
 
 [OAuth 2.0 规范第 4.1 部分](http://tools.ietf.org/html/rfc6749)描述了 OAuth 2.0 授权代码流。 它用于在大部分的应用类型（包括 [Web 应用](v2-app-types.md#web-apps)和[本地安装应用](v2-app-types.md#mobile-and-native-apps)）中执行身份验证与授权。 通过此流，应用能安全地获取 access_tokens，用于访问由 v2.0 终结点保护的资源。 
 
 ## <a name="protocol-diagram"></a>协议图
+
 从较高层面讲，本机/移动应用程序的整个身份验证流有点类似于：
 
 ![OAuth 授权代码流](./media/v2-oauth2-auth-code-flow/convergence_scenarios_native.png)
 
 ## <a name="request-an-authorization-code"></a>请求授权代码
+
 授权代码流始于客户端将用户定向到的 `/authorize` 终结点。 在这项请求中，客户端指示必须向用户获取的权限：
 
 ```
@@ -57,8 +58,6 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > [!TIP]
 > 单击下面的链接以执行此请求！ 登录之后，浏览器应重定向至地址栏中具有 `code` 的 `https://localhost/myapp/`。
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
-> 
-> 
 
 | 参数             |             | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 |-----------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -80,6 +79,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 用户经过身份验证并同意后，v2.0 终结点将使用 `response_mode` 参数中指定的方法，将响应返回到位于所指示的 `redirect_uri` 的应用。
 
 #### <a name="successful-response"></a>成功的响应
+
 使用 `response_mode=query` 的成功响应如下所示：
 
 ```
@@ -94,6 +94,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 | state     | 如果请求中包含状态参数，响应中就应该出现相同的值。 应用程序应该验证请求和响应中的状态值是否完全相同。                                            |
 
 #### <a name="error-response"></a>错误响应
+
 错误响应可能也发送到 `redirect_uri`，让应用可以适当地处理：
 
 ```
@@ -108,6 +109,7 @@ error=access_denied
 | error_description | 帮助开发人员识别身份验证错误根本原因的特定错误消息。          |
 
 #### <a name="error-codes-for-authorization-endpoint-errors"></a>授权终结点错误的错误代码
+
 下表描述了可在错误响应的 `error` 参数中返回的各个错误代码。
 
 | 错误代码                | Description                                                                                                           | 客户端操作                                                                                                                                                                                                                               |
@@ -123,6 +125,7 @@ error=access_denied
 |interaction_required       | 请求需要用户交互。 | 需要额外的身份验证步骤或许可。 请在没有 `prompt=none` 的情况下重试请求。 |
 
 ## <a name="request-an-access-token"></a>请求访问令牌
+
 现在已获取 authorization_code 并获得用户授权，可兑换 `code` 以获取所需资源的 `access_token`。 通过向 `/token` 终结点发送 `POST` 请求来完成此操作：
 
 ```
@@ -142,8 +145,6 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 > [!TIP]
 > 尝试在 Postman 中执行此请求！ （别忘了替换 `code`）[![在 Postman 中运行](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/8f5715ec514865a07e6a)
-> 
-> 
 
 | 参数     |                       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                |
 |---------------|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -155,7 +156,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | redirect_uri  | 必填              | 用于获取 authorization_code 的相同 redirect_uri 值。                                                                                                                                                                                                                                                                                                                                                             |
 | client_secret | Web 应用所需 | 在应用程序注册门户中为应用程序创建的应用程序机密。 其不应用于本机应用程序，因为设备无法可靠地存储 client_secrets。 Web 应用和 Web API 都需要应用程序机密，能够将 client_secret 安全地存储在服务器端。  在发送客户端密码之前必须对其进行 URL 编码。                                                                                                                    |
 | code_verifier | 可选              | 即用于获取 authorization_code 的 code_verifier。 如果在授权码授权请求中使用 PKCE，则需要。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)                                                                                                                                                                                                                                                                                             |
+
 #### <a name="successful-response"></a>成功的响应
+
 成功的令牌响应如下：
 
 ```json
@@ -174,8 +177,8 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | token_type    | 指示令牌类型值。 Azure AD 唯一支持的类型是 Bearer                                                                                                                                                                                                                                                                                                                                                                           |
 | expires_in    | 访问令牌的有效期（以秒为单位）。                                                                                                                                                                                                                                                                                                                                                                                                       |
 | 作用域         | access_token 有效的范围。                                                                                                                                                                                                                                                                                                                                                                                                         |
-| refresh_token | OAuth 2.0 刷新令牌。 应用程序可以使用此令牌，在当前的访问令牌过期之后获取其他访问令牌。 Refresh_tokens 的生存期很长，而且可以用于延长保留资源访问权限的时间。 有关更多详细信息，请参阅 [v2.0 令牌参考](v2-id-and-access-tokens.md)。 <br> **注意：** 仅当已请求 `offline_access` 作用域时提供。                                               |
-| id_token      | 无符号 JSON Web 令牌 (JWT)。 应用程序可以 base64Url 解码此令牌的段，以请求已登录用户的相关信息。 应用可以缓存并显示值，但不应依赖于这些值获取任何授权或安全边界。 有关 id_tokens 的详细信息，请参阅 [v2.0 终结点令牌参考](v2-id-and-access-tokens.md)。 <br> **注意：** 仅当已请求 `openid` 作用域时提供。 |
+| refresh_token | OAuth 2.0 刷新令牌。 应用程序可以使用此令牌，在当前的访问令牌过期之后获取其他访问令牌。 Refresh_tokens 的生存期很长，而且可以用于延长保留资源访问权限的时间。 有关刷新访问令牌的详细信息，请参阅[以下部分](#refresh-the-access-token)。 <br> **注意：** 仅当已请求 `offline_access` 作用域时提供。                                               |
+| id_token      | 无符号 JSON Web 令牌 (JWT)。 应用可以解码此令牌的段，以请求已登录用户的相关信息。 应用可以缓存并显示值，但不应依赖于这些值获取任何授权或安全边界。 有关 id_tokens 的详细信息，请参阅 [`id_token reference`](id-tokens.md)。 <br> **注意：** 仅当已请求 `openid` 作用域时提供。 |
 #### <a name="error-response"></a>错误响应
 错误响应如下所示：
 
@@ -202,6 +205,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | correlation_id    | 帮助跨组件诊断的请求唯一标识符。                             |
 
 #### <a name="error-codes-for-token-endpoint-errors"></a>令牌终结点错误的错误代码
+
 | 错误代码              | Description                                                                                                           | 客户端操作                                                                                                                                                                                                                               |
 |-------------------------|-----------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | invalid_request         | 协议错误，例如，缺少必需的参数。                                                               | 修复并重新提交请求。                                                                                                                                                                                                                |
@@ -214,6 +218,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | temporarily_unavailable | 服务器暂时繁忙，无法处理请求。                                                            | 重试请求。 客户端应用程序可能向用户说明，其响应由于临时状况而延迟。                                                                                                                |
 
 ## <a name="use-the-access-token"></a>使用访问令牌
+
 已经成功获取 `access_token`，现在可以通过在 `Authorization` 标头中包含令牌，在 Web API 的请求中使用令牌。
 
 > [!TIP]
@@ -228,6 +233,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 ```
 
 ## <a name="refresh-the-access-token"></a>刷新访问令牌
+
 Access_token 生存期很短，必须在其过期后刷新，才能继续访问资源。 为此，可以向 `/token` 终结点提交另一个 `POST` 请求，但这次要提供 `refresh_token` 而不是 `code`：
 
 ```
@@ -261,6 +267,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | client_secret | Web 应用所需 | 在应用程序注册门户中为应用程序创建的应用程序机密。 其不应用于本机应用，因为设备无法可靠地存储 client_secrets。 Web 应用和 Web API 都需要应用程序机密，能够将 client_secret 安全地存储在服务器端。                                                                                                                                                    |
 
 #### <a name="successful-response"></a>成功的响应
+
 成功的令牌响应如下：
 
 ```json
@@ -280,7 +287,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | expires_in    | 访问令牌的有效期（以秒为单位）。                                                                                                                                                                                                                                                                                                                                                                                                        |
 | 作用域         | access_token 有效的范围。                                                                                                                                                                                                                                                                                                                                                                                                          |
 | refresh_token | 新的 OAuth 2.0 刷新令牌。 应该将旧刷新令牌替换为新获取的这个刷新令牌，以确保刷新令牌的有效期尽可能地长。 <br> **注意：** 仅当已请求 `offline_access` 作用域时提供。                                                                                                                                                                                                |
-| id_token      | 无符号 JSON Web 令牌 (JWT)。 应用程序可以 base64Url 解码此令牌的段，以请求已登录用户的相关信息。 应用可以缓存并显示值，但不应依赖于这些值获取任何授权或安全边界。 有关 id_tokens 的详细信息，请参阅 [v2.0 终结点令牌参考](v2-id-and-access-tokens.md)。 <br> **注意：** 仅当已请求 `openid` 作用域时提供。 |
+| id_token      | 无符号 JSON Web 令牌 (JWT)。 应用可以解码此令牌的段，以请求已登录用户的相关信息。 应用可以缓存并显示值，但不应依赖于这些值获取任何授权或安全边界。 有关 id_tokens 的详细信息，请参阅 [`id_token reference`](id-tokens.md)。 <br> **注意：** 仅当已请求 `openid` 作用域时提供。 |
 
 #### <a name="error-response"></a>错误响应
 

@@ -12,19 +12,17 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 05/14/2017
+ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: fe6be773988d1889336cdddb54f7886aeb8d4f5f
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: aa9c02e069700ab236c4b9fc78482450b5911e93
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051818"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983865"
 ---
 # <a name="what-is-application-insights"></a>什么是 Application Insights？
-Application Insights 是多个平台上面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 使用它可以监视实时 Web 应用程序。 它会自动检测性能异常。 其中包含强大的分析工具来帮助诊断问题，了解用户在应用中实际执行了哪些操作。  它旨在帮助持续提高性能与可用性。 它适用于本地或云中托管的各种平台（包括 .NET、Node.js 和 J2EE）中的应用。 它与 DevOps 进程集成，并且具有与不同开发工具的连接点。 可以通过与 Visual Studio App Center 和 HockeyApp 集成来监视和分析移动应用的遥测数据。
-
-![将用户活动统计信息绘制成图表，或钻取到特定事件。](./media/app-insights-overview/00-sample.png)
+Application Insights 是多个平台上面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 使用它可以监视实时 Web 应用程序。 它会自动检测性能异常。 其中包含强大的分析工具来帮助诊断问题，了解用户在应用中实际执行了哪些操作。  它旨在帮助持续提高性能与可用性。 它适用于本地或云中托管的各种平台（包括 .NET、Node.js 和 J2EE）中的应用。 它与 DevOps 进程集成，并且具有与不同开发工具的连接点。 可以通过与 Visual Studio App Center 集成来监视和分析移动应用的遥测数据。
 
 [查看简介动画](https://www.youtube.com/watch?v=fX2NtGrh-Y0)。
 
@@ -34,7 +32,6 @@ Application Insights 是多个平台上面向 Web 开发人员的可扩展应用
 不仅可以检测 Web 服务应用程序，还可以检测所有后台组件以及 Web 页面中的 JavaScript。 
 
 ![应用中的 Application Insights 检测将遥测发送到 Application Insights 资源。](./media/app-insights-overview/01-scheme.png)
-
 
 此外，还可以从主机环境（如性能计数器、Azure 诊断或 Docker 日志）中拉取遥测。 还可以对定期向 Web 服务发送综合请求的 Web 测试进行设置。
 
@@ -114,7 +111,7 @@ Application Insights 是 Microsoft Azure 中托管的众多服务之一，遥测
   * [**J2EE**](app-insights-java-live.md)
 * **开发时：将 Application Insights 添加到代码。** 可以编写自定义遥测以及检测后端和桌面应用。
   * [Visual Studio](app-insights-asp-net.md) 2013 update 2 或更高版本。
-  * [Eclipse](app-insights-java-eclipse.md) 或[其他工具](app-insights-java-get-started.md)中的 Java
+  * [Java](app-insights-java-get-started.md)
   * [Node.js](app-insights-nodejs.md)
   * [其他平台](app-insights-platforms.md)
 * 针对页面视图、AJAX 和其他客户端遥测**[检测网页](app-insights-javascript.md)**。

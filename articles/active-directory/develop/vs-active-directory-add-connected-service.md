@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.openlocfilehash: 2e446bad042965e8466e74b9b1abd8661ea88f8b
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 9b61362525962c5e01d7fef6d317cf9861dfd0a3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42141246"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977887"
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>在 Visual Studio 中使用连接服务添加 Azure Active Directory
 
@@ -35,7 +35,7 @@ ms.locfileid: "42141246"
 
 ### <a name="connect-to-azure-active-directory-using-the-connected-services-dialog"></a>使用“连接服务”对话框连接到 Azure Active Directory
 
-1. 在 Visual Studio 中，创建或打开 ASP.NET MVC 项目或 ASP.NET Web API 项目。 可以使用 MVC、Web API、单页面应用程序、Azure API 应用、Azure 移动应用和 Azure 移动服务模板。
+1. 在 Visual Studio 中，创建或打开 ASP.NET MVC 项目或 ASP.NET Web API 项目。 可以使用 MVC、Web API、单页应用程序、Azure API 应用、Azure 移动应用和 Azure 移动服务模板。
 
 1. 选择“项目”>“添加连接服务...”菜单命令，或双击解决方案资源管理器中项目下的“连接的服务”节点。
 

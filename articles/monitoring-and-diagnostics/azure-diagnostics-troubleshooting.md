@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/12/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 8f41605114de296b626418d0a868e3ed778c0640
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 6ea68bce81094f4745616e32c7434d6c833a45ee
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263840"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952573"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure 诊断故障排除
 本文介绍有关使用 Azure 诊断的故障排除信息。 有关 Azure 诊断的详细信息，请参阅 [Azure 诊断概述](azure-diagnostics.md)。
@@ -53,7 +53,7 @@ ms.locfileid: "35263840"
 | **MonAgentHost 日志文件** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>指标数据不显示在 Azure 门户中
-Azure 诊断提供可在 Azure 门户中显示的指标数据。 如果无法查看门户中的这些数据，请检查 Azure 诊断存储帐户中的 WADMetrics\* 表，以查看是否存在相应的指标记录。 
+Azure 诊断提供可在 Azure 门户中显示的指标数据。 如果无法查看门户中的这些数据，请检查 Azure 诊断存储帐户中的 WADMetrics\* 表，以查看是否存在相应的指标记录。
 
 此处，表的 PartitionKey 是资源 ID、虚拟机或虚拟机规模集。 RowKey 是指标名称（也称为性能计数器名称）。
 
@@ -83,7 +83,7 @@ Azure 诊断提供可在 Azure 门户中显示的指标数据。 如果无法查
 
 
 ## <a name="azure-diagnostics-isnt-starting"></a>Azure Diagnostics 不启动
-有关为和 Azure 诊断无法启动的信息，请参阅之前提供的日志文件位置中的 DiagnosticsPluginLauncher.log 和 DiagnosticsPlugin.log 文件。 
+有关为和 Azure 诊断无法启动的信息，请参阅之前提供的日志文件位置中的 DiagnosticsPluginLauncher.log 和 DiagnosticsPlugin.log 文件。
 
 如果这些日志指示 `Monitoring Agent not reporting success after launch`，则表示启动 MonAgentHost.exe 失败。 在之前部分中指示 `MonAgentHost log file` 的位置查看其日志。
 
@@ -105,14 +105,14 @@ DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] Diagnostic
 
 解决方案：更正诊断配置，然后重新安装 Azure 诊断。
 
-如果存储帐户配置正确，远程访问计算机，验证 DiagnosticsPlugin.exe 和 MonAgentCore.exe 是否正在运行。 如果未运行，请按照 [Azure 诊断不启动](#azure-diagnostics-is-not-starting)中的步骤进行操作。 
+如果存储帐户配置正确，远程访问计算机，验证 DiagnosticsPlugin.exe 和 MonAgentCore.exe 是否正在运行。 如果未运行，请按照 [Azure 诊断不启动](#azure-diagnostics-is-not-starting)中的步骤进行操作。
 
 如果进程正在运行，请转到[数据是否是本地捕获的？](#is-data-getting-captured-locally)并按此处的介绍进行操作。
 
 ### <a name="part-of-the-data-is-missing"></a>部分数据丢失
 如果获得了部分数据，则表示数据收集/传输管道设置正确。 请按照此处的子节说明，缩小问题范围。
 
-#### <a name="is-the-collection-configured"></a>是否配置了收集？ 
+#### <a name="is-the-collection-configured"></a>是否配置了收集？
 诊断配置包含要收集的特定类型数据的介绍。 [查看配置](#how-to-check-diagnostics-extension-configuration)以验证是否仅查找已配置进行收集的数据。
 
 #### <a name="is-the-host-generating-data"></a>主机是否生成数据？
@@ -127,16 +127,16 @@ DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] Diagnostic
 
 #### <a name="is-data-getting-captured-locally"></a>数据是否是本地捕获的？
 接下来，请确保本地捕获到了数据。
-数据本地存储在[诊断数据本地存储](#log-artifacts-path)中的 `*.tsf` 文件中。 不同类型的日志被收集在不同的 `.tsf` 文件中。 文件名称与 Azure 存储中的表名相似。 
+数据本地存储在[诊断数据本地存储](#log-artifacts-path)中的 `*.tsf` 文件中。 不同类型的日志被收集在不同的 `.tsf` 文件中。 文件名称与 Azure 存储中的表名相似。
 
 例如，`Performance Counters` 收集在 `PerformanceCountersTable.tsf` 中。 事件日志收集在 `WindowsEventLogsTable.tsf` 中。 使用[本地日志提取](#local-log-extraction)部分中的说明打开本地收集文件，验证它们是否是在磁盘上收集的。
 
-如果没有看到本地收集的日志，并且已验证主机正在生成数据，则可能是有配置问题。 仔细查看配置。 
+如果没有看到本地收集的日志，并且已验证主机正在生成数据，则可能是有配置问题。 仔细查看配置。
 
 还要查看为 MonitoringAgent [ MaConfig.xml](#log-artifacts-path) 生成的配置。 验证是否存在描述相关日志源的部分。 然后验证该部分是否在诊断配置和监视代理配置间的转换中丢失。
 
 #### <a name="is-data-getting-transferred"></a>是否传输了数据？
-如果已验证数据是本地捕获的，但仍未在存储帐户中看到它，请按以下步骤操作： 
+如果已验证数据是本地捕获的，但仍未在存储帐户中看到它，请按以下步骤操作：
 
 - 验证提供存储帐户是否正确，且是否有为给定的存储帐户滚动更新过密钥。 对于 Azure 云服务，有时我们发现人们不更新其 `useDevelopmentStorage=true`。
 
@@ -215,7 +215,7 @@ Azure 存储中保存 ETW 事件的表是使用以下代码命名的：
 
 或者，通过远程桌面连接到计算机并查看[日志项目路径部分](#log-artifacts-path)中所述的 Azure 诊断配置文件。
 
-在任何一种情况下，都请先搜索“Microsoft.Azure.Diagnostics”，再搜索“xmlCfg”或“WadCfg”字段。 
+在任何一种情况下，都请先搜索“Microsoft.Azure.Diagnostics”，再搜索“xmlCfg”或“WadCfg”字段。
 
 如果在虚拟机上进行搜索，且存在 WadCfg 字段，则表示配置为 JSON 格式。 如果存在 xmlCfg 字段，则表示配置在 XML 中，且已进行 base64 编码。 你需要[将其解码](http://www.bing.com/search?q=base64+decoder)才能查看诊断加载的 XML。
 
@@ -224,7 +224,7 @@ Azure 存储中保存 ETW 事件的表是使用以下代码命名的：
 ### <a name="azure-diagnostics-plugin-exit-codes"></a>Azure 诊断插件退出代码
 该插件返回以下退出代码：
 
-| 退出代码 | 说明 |
+| 退出代码 | Description |
 | --- | --- |
 | 0 |成功。 |
 | -1 |常规错误。 |
@@ -247,22 +247,22 @@ Azure 存储中保存 ETW 事件的表是使用以下代码命名的：
 | -112 |常规错误 |
 
 ### <a name="local-log-extraction"></a>本地日志提取
-监视代理将日志和项目收集为 `.tsf` 文件。 `.tsf` 文件不可读，但可以将其转换为 `.csv`，如下所示： 
+监视代理将日志和项目收集为 `.tsf` 文件。 `.tsf` 文件不可读，但可以将其转换为 `.csv`，如下所示：
 
 ```
 <Azure diagnostics extension package>\Monitor\x64\table2csv.exe <relevantLogFile>.tsf
 ```
 将在与相应 `.tsf` 文件相同的路径中创建一个名为 `<relevantLogFile>.csv` 的新文件。
 
->[!NOTE] 
+>[!NOTE]
 > 只需对主 tsf 文件（例如 PerformanceCountersTable.tsf）运行此实用工具。 将自动处理随附的文件（例如 PerformanceCountersTables_\*\*001.tsf、PerformanceCountersTables_\*\*002.tsf 等）。
 
-### <a name="more-about-missing-trace-logs"></a>关于跟踪日志丢失的更多信息 
+### <a name="more-about-missing-trace-logs"></a>关于跟踪日志丢失的更多信息
 
 >[!NOTE]
-> 以下信息主要适用于 Azure 云服务，除非已在于 IaaS VM 上运行的应用程序上配置了 DiagnosticsMonitorTraceListener。 
+> 以下信息主要适用于 Azure 云服务，除非已在于 IaaS VM 上运行的应用程序上配置了 DiagnosticsMonitorTraceListener。
 
-- 确保在 web.config 或 app.config 中配置了 DiagnosticMonitorTraceListener。这是云服务项目中默认配置的。 然而，某些客户将其注释掉了，导致诊断不收集相关跟踪语句。 
+- 确保在 web.config 或 app.config 中配置了 DiagnosticMonitorTraceListener。这是云服务项目中默认配置的。 然而，某些客户将其注释掉了，导致诊断不收集相关跟踪语句。
 
 - 如果没有从 OnStart 或 Run 方法写入日志，请确保 DiagnosticMonitorTraceListener 位于 app.config 中。默认情况下，它位于 web.config 中，但这仅适用于在 w3wp.exe 中运行的代码。 因此需将其置于 app.config 中，以捕获在 WaIISHost.exe 中运行的跟踪。
 
@@ -275,11 +275,11 @@ Azure 存储中保存 ETW 事件的表是使用以下代码命名的：
 
 **1. .NET 4.5 依赖项**
 
-Microsoft Azure 诊断扩展对于 .NET 4.5 框架或更高版本存在运行时依赖关系。 在撰写时，为 Azure 云服务配置的所有计算机以及基于 Azure 虚拟机的所有官方映像都安装了 .NET 4.5 或更高版本。 
+Microsoft Azure 诊断扩展对于 .NET 4.5 框架或更高版本存在运行时依赖关系。 在撰写时，为 Azure 云服务配置的所有计算机以及基于 Azure 虚拟机的所有官方映像都安装了 .NET 4.5 或更高版本。
 
 尝试在未安装 .NET 4.5 或更高版本的计算机上运行 Microsoft Azure 诊断扩展时，仍可能遇到问题。 从旧映像或快照创建计算机或者自带自定义磁盘时，会发生这种情况。
 
-这在运行 DiagnosticsPluginLauncher.exe 时通常显示为退出代码 255。 由以下未经处理的异常引发的故障： 
+这在运行 DiagnosticsPluginLauncher.exe 时通常显示为退出代码 255。 由以下未经处理的异常引发的故障：
 ```
 System.IO.FileLoadException: Could not load file or assembly 'System.Threading.Tasks, Version=1.5.11.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies
 ```
@@ -290,8 +290,6 @@ System.IO.FileLoadException: Could not load file or assembly 'System.Threading.T
 
 默认情况下，虚拟机中的门户体验会显示某些性能计数器。 如果未看到性能计数器，且知道正在生成数据，因为数据在存储中可用，此时进行以下检查：
 
-- 存储中的数据是否有英文计数器名称。 如果计数器名称不是英文，门户指标图表将无法识别它。
+- 存储中的数据是否有英文计数器名称。 如果计数器名称不是英文，门户指标图表将无法识别它。 缓解措施：将系统帐户的计算机语言更改为英语。 要执行此操作，请选择“控制面板” > “区域” > “管理” > “复制设置”。 接下来，取消选择“欢迎界面和系统帐户”，以免将自定义语言应用到系统帐户。
 
-- 如果性能计数器名称中使用了通配符(\*)，门户将无法关联配置和收集的计数器。
-
-缓解措施：将系统帐户的计算机语言更改为英语。 要执行此操作，请选择“控制面板” > “区域” > “管理” > “复制设置”。 接下来，取消选择“欢迎界面和系统帐户”，以免将自定义语言应用到系统帐户。 如果希望门户为主要消费体验，还要确保不使用通配符。
+- 如果在性能计数器名称中使用通配符 (\*)，则在将性能计数器发送到 Azure 存储接收器时，门户将无法关联已配置和已收集的计数器。 **缓解措施**：若要确保可以使用通配符并让门户展开 (\*)，请将性能计数器路由到[“Azure Monitor”接收器](azure-diagnostics-schema.md#diagnostics-extension-111)。

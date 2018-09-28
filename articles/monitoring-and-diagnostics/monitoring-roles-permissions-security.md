@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: a30c6a8d02b46656a0d76cf8438bdf0b3361ae91
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: c99186d73886041d92bea38b0dd4dc17f55001e4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248455"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977853"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Azure Monitor 的角色、权限和安全入门
 很多团队需要严格控制对监视数据和设置的访问。 例如，如果有专门负责监视的团队成员（支持工程师、DevOps 工程师），或者使用托管服务提供程序，则可能希望向他们授予仅访问监视数据的权限，同时限制其创建、修改或删除资源的能力。 本文介绍如何快速地将内置监视 RBAC 角色应用到 Azure 中的用户，或者为需要有限的监视权限的用户构建自己的自定义角色。 然后讨论与 Azure Monitor 相关资源的安全注意事项，以及如何限制对它们所含数据的访问。
@@ -171,6 +171,24 @@ New-AzureRmRoleDefinition -Role $role
    $role.AssignableScopes.Add("/subscriptions/mySubscription/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/mySBNameSpace")
    New-AzureRmRoleDefinition -Role $role 
    ```
+
+## <a name="monitoring-within-a-secured-virtual-network"></a>在受保护的虚拟网络中进行监视
+
+Azure Monitor 需要访问 Azure 资源以提供你启用的服务。 如果你想要监视 Azure 资源，同时仍然保护它们不被公共 Internet 访问，则可以启用以下设置。
+
+### <a name="secured-storage-accounts"></a>安全存储帐户 
+
+监视数据通常会写入到存储帐户。 你可能希望确保未经授权的用户无法访问复制到存储帐户的数据。 为了提高安全性，你可以通过限制存储帐户使用“所选网络”来锁定网络访问权限，以仅允许授权资源和受信任的 Microsoft 服务访问存储帐户。
+![“Azure 存储设置”对话框](./media/monitoring-roles-permissions-security/secured-storage-example.png) Azure Monitor 被视为“受信任的 Microsoft 服务”之一。如果你允许受信任的 Microsoft 服务访问安全存储，则 Azure Monitor 将可以访问安全存储帐户；在这些受保护的条件下，允许将 Azure Monitor 诊断日志、活动日志和指标写入存储帐户。 这还会使 Log Analytics 能够从安全存储中读取日志。   
+
+有关详细信息，请参阅[网络安全性和 Azure 存储](../storage/common/storage-network-security.md)
+ 
+### <a name="secured-virtual-networks-with-service-endpoints"></a>具有服务终结点的安全虚拟网络 
+
+虚拟网络 (VNet) 允许你限制流量，以仅允许指定的流量与 Azure 资源进行通信。 可以指定服务终结点来扩展 VNet 以包括 Azure Monitor；这将使你的资源能够持续从虚拟网络安全地向 Azure Monitor 发送日志记录和指标信息。  
+
+有关详细信息，请参阅[虚拟网络终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。 
+
 
 ## <a name="next-steps"></a>后续步骤
 * [阅读有关 Resource Manager 中的 RBAC 和权限的信息](../role-based-access-control/overview.md)

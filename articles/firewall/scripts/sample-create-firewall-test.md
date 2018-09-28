@@ -8,18 +8,14 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 8/13/2018
 ms.author: victorh
-ms.openlocfilehash: b65a5dec63bdc625dda64e101620f56cd6dd7308
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 23f10280cd34927e2e74cb7c5001850bedc6dd35
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41919865"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967534"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>创建 Azure 防火墙测试环境
-
-[!INCLUDE [firewall-preview-notice](../../../includes/firewall-preview-notice.md)]
-
-Azure 防火墙文章中的示例假设已启用了Azure 防火墙公共预览版。 有关详细信息，请参阅[启用 Azure 防火墙公共预览版](../public-preview.md)。
 
 此脚本示例创建防火墙和测试网络环境。 网络有一个 VNet，其中包含三个子网：*AzureFirewallSubnet*、*ServersSubnet* 和 *JumpboxSubnet*。 ServersSubnet 和 JumpboxSubnet 每个中都有一台 2 核 Windows Server。
 
@@ -29,7 +25,7 @@ Azure 防火墙文章中的示例假设已启用了Azure 防火墙公共预览�
 
 可以通过 Azure [Cloud Shell](https://shell.azure.com/powershell) 或从本地 PowerShell 安装来运行脚本。 
 
-如果在本地运行 PowerShell，则此脚本需要 AzureRM PowerShell 模块 6.4.0 或更高版本。 要查找已安装的版本，请运行 `Get-Module -ListAvailable AzureRM`。 
+如果在本地运行 PowerShell，则此脚本需要最新的 AzureRM PowerShell 模块版本。 要查找已安装的版本，请运行 `Get-Module -ListAvailable AzureRM`。 
 
 如果需要升级，则可以使用 `PowerShellGet`，它内置在 Windows 10 和 Windows Server 2016 中。
 
@@ -39,12 +35,6 @@ Azure 防火墙文章中的示例假设已启用了Azure 防火墙公共预览�
 有关详细信息，请参阅[使用 PowerShellGet 在 Windows 上安装 Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-6.4.0)
 
 使用 Web 平台安装程序执行的任何现有 Azure PowerShell 安装都将与 PowerShellGet 安装冲突并且需要删除。
-
-此外，还必须安装 AzureRM.Network 的预览版本（版本 6.4.0）。 如果具有较旧的模块，请运行 `Uninstall-Module AzureRM.Network -Force` 来将其删除。 然后运行：
-
- `Install-Module -Name AzureRM.Network -Repository PSGallery -RequiredVersion 6.4.0-preview -AllowPrerelease -Force`
-
-来安装版本 6.4.0。
 
 请注意，如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 来创建与 Azure 的连接。
 

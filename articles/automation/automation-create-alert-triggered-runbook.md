@@ -6,19 +6,19 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/15/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e791cddb07d3204f807dbeff98b7fc69419ae23c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ac117994140f96ec993e4fed739626f736ad7efc
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194030"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965273"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>使用警报触发 Azure 自动化 Runbook
 
-可以使用 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md?toc=%2fazure%2fautomation%2ftoc.json) 来监视 Azure 中大多数服务的基本级别指标和日志。 可以使用[操作组](../monitoring-and-diagnostics/monitoring-action-groups.md?toc=%2fazure%2fautomation%2ftoc.json)或经典警报调用 Azure 自动化 Runbook，以便基于警报自动执行任务。 本文介绍如何使用警报来配置和运行 Runbook。
+可以使用 [Azure Monitor](../azure-monitor/overview.md?toc=%2fazure%2fautomation%2ftoc.json) 来监视 Azure 中大多数服务的基本级别指标和日志。 可以使用[操作组](../monitoring-and-diagnostics/monitoring-action-groups.md?toc=%2fazure%2fautomation%2ftoc.json)或经典警报调用 Azure 自动化 Runbook，以便基于警报自动执行任务。 本文介绍如何使用警报来配置和运行 Runbook。
 
 ## <a name="alert-types"></a>警报类型
 
@@ -29,21 +29,21 @@ ms.locfileid: "34194030"
 
 当警报调用 Runbook 时，实际调用是对 Webhook 的 HTTP POST 请求。 该 POST 请求的正文包含一个 JSON 格式的对象，该对象包含与警报相关的有用属性。 下表列出了每种警报类型的有效负载架构的相应链接：
 
-|警报  |说明|负载架构  |
+|警报  |Description|负载架构  |
 |---------|---------|---------|
 |[经典指标警报](../monitoring-and-diagnostics/insights-alerts-portal.md?toc=%2fazure%2fautomation%2ftoc.json)    |任何平台级指标满足特定条件时，就会发送通知。 例如，VM 上的“CPU 百分比”在过去 5 分钟内大于 **90** 时。| [类指标警报有效负载架构](../monitoring-and-diagnostics/insights-webhooks-alerts.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)         |
-|[活动日志警报](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |当 Azure 活动日志中的任何新事件符合特定条件时，就会发送通知。 例如，当 **myProductionResourceGroup** 中出现 `Delete VM` 操作或出现状态为 **Active** 的新 Azure 服务运行状况事件时。| [活动日志警报有效负载架构](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)        |
-|[准实时指标警报](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |当一个或多个平台级指标满足指定条件时，就会以快于指标警报的速度发送通知。 例如，当 VM 的“CPU 百分比”大于 **90** 并且过去 5 分钟“网络传入”大于 **500 MB** 时。| [准实时指标警报有效负载架构](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)          |
+|[活动日志警报](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |当 Azure 活动日志中的任何新事件符合特定条件时，就会发送通知。 例如，当 **myProductionResourceGroup** 中出现 `Delete VM` 操作或出现状态为 **Active** 的新 Azure 服务运行状况事件时。| [活动日志警报有效负载架构](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md)        |
+|[准实时指标警报](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |当一个或多个平台级指标满足指定条件时，就会以快于指标警报的速度发送通知。 例如，当 VM 的“CPU 百分比”大于 **90** 并且过去 5 分钟“网络传入”大于 **500 MB** 时。| [准实时指标警报有效负载架构](../monitoring-and-diagnostics/insights-webhooks-alerts.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)          |
 
 由于每种警报提供的数据不同，因此需要以不同的方式处理每种警报。 下一部分将介绍如何创建 Runbook 来处理不同类型的警报。
 
 ## <a name="create-a-runbook-to-handle-alerts"></a>创建 Runbook 以处理警报
 
-若要对警报使用自动化，需要有一个 Runbook，其中包含用于管理传递到 Runbook 的警报 JSON 有效负载的逻辑。 下面的示例 Runbook 必须从 Azure 警报调用。 
+若要对警报使用自动化，需要有一个 Runbook，其中包含用于管理传递到 Runbook 的警报 JSON 有效负载的逻辑。 下面的示例 Runbook 必须从 Azure 警报调用。
 
-如前面部分所述，每种警报类型都有不同的架构。 该脚本采用警报中 `WebhookData` Runbook 输入参数的 Webhook 数据。 然后，该脚本对 JSON 有效负载进行评估，确定所用的警报类型。 
+如前面部分所述，每种警报类型都有不同的架构。 该脚本采用警报中 `WebhookData` Runbook 输入参数的 Webhook 数据。 然后，该脚本对 JSON 有效负载进行评估，确定所用的警报类型。
 
-此示例使用来自 VM 的警报。 它从有效负载中检索 VM 数据，然后使用该信息停止运行 VM。 必须在运行该 Runbook 的自动化帐户中建立连接。
+此示例使用来自 VM 的警报。 它从有效负载中检索 VM 数据，然后使用该信息停止运行 VM。 必须在运行该 Runbook 的自动化帐户中建立连接。 使用警报触发 Runbook 时，检查触发的 Runbook 中的警报状态非常重要。 每次警报更改状态时，都会触发 Runbook。 警报具有多个状态，最常见的两个状态是 `Activated` 和 `Resolved`。 在 Runbook 逻辑中检查此状态，以确保 Runbook 不会运行多次。 本文中的示例仅演示了如何查找 `Activated` 警报。
 
 该 Runbook 使用 **AzureRunAsConnection** [运行方式帐户](automation-create-runas-account.md)在 Azure 中进行身份验证，以便对 VM 执行管理操作。
 

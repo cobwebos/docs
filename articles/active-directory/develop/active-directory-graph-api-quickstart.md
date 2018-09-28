@@ -1,9 +1,9 @@
 ---
-title: Azure AD 图形 API 快速入门 | Microsoft 文档
-description: Azure Active Directory 图形 API 通过 OData REST API 终结点提供对 Azure AD 的编程访问权限。 应用程序可以使用 Azure AD 图形 API 对目录数据和对象执行创建、读取、更新和删除 (CRUD) 操作。
+title: 如何使用 Azure AD 图形 API
+description: Azure Active Directory (Azure AD) 图形 API 通过 OData REST API 终结点提供对 Azure AD 的编程访问权限。 应用程序可以使用 Azure AD 图形 API 对目录数据和对象执行创建、读取、更新和删除 (CRUD) 操作。
 services: active-directory
 documentationcenter: n/a
-author: mtillman
+author: CelesteDG
 manager: mtillman
 editor: ''
 tags: ''
@@ -11,28 +11,29 @@ ms.assetid: 9dc268a9-32e8-402c-a43f-02b183c295c5
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/02/2018
-ms.author: mtillman
+ms.date: 09/24/2018
+ms.author: celested
+ms.reviewer: sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 3298b39fc92f6e5867900ed151149ff936e2733c
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 7b7f2133634a91b828d7e978c9041b12873fa3a1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492623"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997210"
 ---
-# <a name="quickstart-for-the-azure-ad-graph-api"></a>Azure AD 图形 API 快速入门
-Azure Active Directory (AD) 图形 API 通过 OData REST API 终结点提供对 Azure AD 的编程访问权限。 应用程序可以使用 Azure AD 图形 API 对目录数据和对象执行创建、读取、更新和删除 (CRUD) 操作。 例如，可以使用 Azure AD 图形 API 创建新用户、查看或更新用户的属性、更改用户的密码、检查基于角色的访问的组成员身份、禁用或删除用户。 有关 Azure AD 图形 API 功能和应用方案的详细信息，请参阅 [Azure AD 图形 API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) 和 [Azure AD 图形 API 先决条件](https://msdn.microsoft.com/library/hh974476.aspx)。 
+# <a name="how-to-use-the-azure-ad-graph-api"></a>如何：使用 Azure AD 图形 API
+
+Azure Active Directory (Azure AD) 图形 API 通过 OData REST API 终结点提供对 Azure AD 的编程访问权限。 应用程序可以使用 Azure AD 图形 API 对目录数据和对象执行创建、读取、更新和删除 (CRUD) 操作。 例如，可以使用 Azure AD 图形 API 创建新用户、查看或更新用户的属性、更改用户的密码、检查基于角色的访问的组成员身份、禁用或删除用户。 有关 Azure AD 图形 API 功能和应用方案的详细信息，请参阅 [Azure AD 图形 API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) 和 [Azure AD 图形 API 先决条件](https://msdn.microsoft.com/library/hh974476.aspx)。
 
 > [!IMPORTANT]
 > 强烈建议使用 [Microsoft Graph](https://developer.microsoft.com/graph)（而非 Azure AD Graph API）访问 Azure Active Directory 资源。 目前，我们在集中开发 Microsoft Graph，未计划进一步改进 Azure AD Graph API。 Azure AD Graph API 仍可能适用的方案非常有限；有关详细信息，请参阅 Office 开发人员中心的 [Microsoft Graph or the Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph)（Microsoft Graph 或 Azure AD Graph）博客文章。
-> 
-> 
 
 ## <a name="how-to-construct-a-graph-api-url"></a>如何构造图形 API URL
+
 在图形 API 中，若要访问要对其执行 CRUD 操作的目录数据和对象（即资源或实体），可以使用基于开放数据 (OData) 协议的 URL。 在图形 API 中使用的 URL 包括四个主要部分：服务根、租户标识符、资源路径和查询字符串选项：`https://graph.windows.net/{tenant-identifier}/{resource-path}?[query-parameters]`。 以下面的 URL 为例：`https://graph.windows.net/contoso.com/groups?api-version=1.6`。
 
 * **服务根**：在 Azure AD 图形 API 中，服务根始终是 https://graph.windows.net。
@@ -41,12 +42,15 @@ Azure Active Directory (AD) 图形 API 通过 OData REST API 终结点提供对 
 * **查询参数**：问号 (?) 用于分隔资源路径部分与查询参数部分。 需要对 Azure AD 图形 API 中的所有请求提供“api-version”查询参数。 Azure AD 图形 API 还支持以下 OData 查询选项：**$filter**、**$orderby**、**$expand**、**$top** 和 **$format**。 当前不支持以下查询选项：**$count**、**$inlinecount** 和 **$skip**。 有关详细信息，请参阅 [Azure AD 图形 API 支持的查询、筛选和分页选项](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options)。
 
 ## <a name="graph-api-versions"></a>图形 API 版本
+
 可以在 api-version 查询参数中指定图形 API 请求的版本。 对于版本 1.5 及更高版本，使用数字版本值：api-version=1.6。 对于早期版本，使用遵循 YYYY-MM-DD 格式的日期字符串；例如，api-version=2013-11-08。 对于预览功能，可使用字符串“beta”；例如，api-version=beta。 有关图形 API 版本之间的差异的详细信息，请参阅 [Azure AD 图形 API 版本控制](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-versioning)。
 
 ## <a name="graph-api-metadata"></a>图形 API 元数据
+
 要返回Azure AD 图形 API 元数据文件，请在 URL 中的租户标识符后面添加“$metadata”段。例如，以下 URL 将返回演示公司元数据：`https://graph.windows.net/GraphDir1.OnMicrosoft.com/$metadata?api-version=1.6`。 可以在 Web 浏览器的地址栏中输入此 URL 来查看元数据。 返回的 CSDL 元数据文档描述了实体和复杂类型及其属性，以及请求的图形 API 版本公开的函数和操作。 省略 api-version 参数会返回最新版本的元数据。
 
 ## <a name="common-queries"></a>常见查询
+
 [Azure AD 图形 API 常见查询](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options#CommonQueries)列出了可与 Azure AD Graph 配合使用的常见查询，包括可用于访问目录中的顶层资源的查询，以及用于在目录中执行操作的查询。
 
 例如，`https://graph.windows.net/contoso.com/tenantDetails?api-version=1.6` 将返回目录 contoso.com 的公司信息。
@@ -75,6 +79,7 @@ Azure Active Directory (AD) 图形 API 通过 OData REST API 终结点提供对 
 * 不支持显示或上传缩略图照片。
 
 ## <a name="using-fiddler-to-write-to-the-directory"></a>使用 Fiddler 写入目录
+
 在本快速入门指南中，可以使用 Fiddler Web 调试器来练习对 Azure AD 目录执行“写入”操作。 例如，可以获取和上传用户的个人资料照片（无法使用 Azure AD 图形资源管理器实现此目的）。 有关如何安装 Fiddler 的详细信息，请参阅 [http://www.telerik.com/fiddler](http://www.telerik.com/fiddler)。
 
 以下示例使用 Fiddler Web 调试器在 Azure AD 目录中创建一个新的安全组“MyTestGroup”。
@@ -89,8 +94,7 @@ Azure Active Directory (AD) 图形 API 通过 OData REST API 终结点提供对 
    
    > [!NOTE]
    > 必须将 {mytenantdomain} 替换成自己的 Azure AD 目录的域名。
-   > 
-   > 
+
 4. 在紧靠在“发布”下拉列表下面的字段中，键入以下 HTTP 标头：
    
     ```
@@ -101,8 +105,7 @@ Azure Active Directory (AD) 图形 API 通过 OData REST API 终结点提供对 
    
    > [!NOTE]
    > 将 &lt;your access token&gt; 替换为 Azure AD 目录的访问令牌。
-   > 
-   > 
+
 5. 在“请求正文”字段中键入以下 JSON：
    
     ```
@@ -119,6 +122,6 @@ Azure Active Directory (AD) 图形 API 通过 OData REST API 终结点提供对 
 有关 Graph 公开的 Azure AD 实体和类型的详细信息，以及有关可以使用 Graph 对它们执行的操作的信息，请参阅 [Azure AD Graph REST API 参考](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)。
 
 ## <a name="next-steps"></a>后续步骤
+
 * 了解有关 [Azure AD 图形 API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) 的详细信息
 * 了解有关 [Azure AD 图形 API 权限范围](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)的详细信息
-

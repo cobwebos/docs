@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2017
 ms.author: cherylmc
-ms.openlocfilehash: f4ad959de1425e828ce11fb658f8b5304e9d8775
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: cd7a6c43cb791ed607a763f10e781794ef513500
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30316420"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950397"
 ---
 # <a name="create-and-modify-routing-for-an-expressroute-circuit-using-cli"></a>使用 CLI 为 ExpressRoute 线路创建和修改路由
 
@@ -38,11 +38,11 @@ ms.locfileid: "30316420"
 
 ## <a name="configuration-prerequisites"></a>配置先决条件
 
-* 在开始之前，请安装最新版本的 CLI 命令（2.0 或更高版本）。 有关安装 CLI 命令的信息，请参阅 [Install Azure CLI 2.0](/cli/azure/install-azure-cli)（安装 Azure CLI 2.0）。
+* 在开始之前，请安装最新版本的 CLI 命令（2.0 或更高版本）。 有关安装 CLI 命令的信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 * 在开始配置前，请务必查看[先决条件](expressroute-prerequisites.md)、[路由要求](expressroute-routing.md)和[工作流](expressroute-workflows.md)页面。
 * 必须有一个活动的 ExpressRoute 线路。 在继续下一步之前，请按说明 [创建 ExpressRoute 线路](howto-circuit-cli.md) ，并通过连接提供商启用该线路。 ExpressRoute 线路必须处于已预配和已启用状态，这样你才能运行本文中的命令。
 
-这些说明只适用于由提供第 2 层连接服务的服务提供商创建的线路。 如果服务提供商提供第 3 层托管服务（通常是 IPVPN，如 MPLS），则连接服务提供商将为你配置和管理路由。
+这些说明只适用于由提供第 2 层连接服务的服务提供商创建的线路。 如果服务提供商提供第 3 层托管服务（通常是 IPVPN，如 MPLS），则连接服务提供商会配置和管理路由。
 
 可以为 ExpressRoute 线路配置一到三个对等互连（Azure 专用、Azure 公共和 Microsoft）。 可以按照所选的任意顺序配置对等互连。 但是，必须确保一次只完成一个对等互连的配置。 有关路由域和对等互连的详细信息，请参阅 [ExpressRoute 路由域](expressroute-circuit-peerings.md)。
 

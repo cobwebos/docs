@@ -10,27 +10,28 @@ ms.assetid: 35af95cb-ced3-46ad-b01d-5d2f6fd064a3
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/27/2018
+ms.date: 09/24/2018
 ms.author: celested
-ms.reviewer: elisol
+ms.reviewer: justhu, elisol
 ms.custom: aaddev
-ms.openlocfilehash: d2ed90b0bb1d2ef7b830c9394628872e1a775f9e
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: abca81e0db565c6c84d9be9df07b46c8c338030b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39593394"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960271"
 ---
-# <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>如何使用多租户应用程序模式将任何 Azure Active Directory 用户登录
-如果向许多组织提供软件即服务应用程序，可以将应用程序配置为可接受来自任何 Azure Active Directory (AD) 租户的登录。 此配置称为使应用程序成为多租户应用程序。 任何 Azure AD 租户中的用户在同意配合应用程序使用其帐户之后，便可登录到应用程序。 
+# <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>如何：使用多租户应用程序模式让任何 Azure Active Directory 用户登录
 
-如果现有应用程序具有自己的帐户系统，或者支持来自其他云提供程序的其他类型的登录，则从任何租户添加 Azure AD 登录都非常简单。 只需要注册应用程序，通过 OAuth2、OpenID Connect 或 SAML 添加登录代码，并按应用程序上的[“登录到 Microsoft”按钮][AAD-App-Branding]。
+如果你向许多组织提供软件即服务 (SaaS) 应用程序，则可以将应用程序配置为接受来自任何 Azure Active Directory (Azure AD) 租户的登录。 此配置称为使应用程序成为多租户应用程序。 任何 Azure AD 租户中的用户在同意配合应用程序使用其帐户之后，便可登录到应用程序。 
+
+如果现有应用程序具有自己的帐户系统，或者支持来自其他云提供程序的其他类型的登录，则从任何租户添加 Azure AD 登录都非常简单。 只需要注册应用，通过 OAuth2、OpenID Connect 或 SAML 添加登录代码，并按应用程序中的[“使用 Microsoft 登录”按钮][AAD-App-Branding]。
 
 > [!NOTE] 
-> 本文假设已熟悉如何为 Azure AD 构建单租户应用程序。 如果不是，则应该从[开发人员指南主页][AAD-Dev-Guide]上其中一个快速入门开始。
+> 本文假设已熟悉如何为 Azure AD 构建单租户应用程序。 如果不是，则从[开发人员指南主页][AAD-Dev-Guide]上其中一个快速入门开始。
 
 将应用程序转换成 Azure AD 多租户应用包括四个简单的步骤：
 
@@ -42,19 +43,21 @@ ms.locfileid: "39593394"
 让我们详细了解每个步骤。 也可以直接跳转到[此多租户示例列表][AAD-Samples-MT]。
 
 ## <a name="update-registration-to-be-multi-tenant"></a>将注册更新为多租户
+
 Azure AD 中的 Web 应用/API 注册默认为单租户。 可以将注册转换为多租户，方法是在 [Azure 门户][AZURE-portal]中应用程序注册的“属性”窗格上，找到“多租户”开关并将其设置为“是”。
 
-在将某个应用程序转换为多租户之前，Azure AD 要求该应用程序的应用 ID URI 全局唯一。 应用 ID URI 是在协议消息中标识应用程序的方式之一。 就单租户应用程序而言，应用 ID URI 在该租户中保持唯一便已足够。 就多租户应用程序而言，该 URI 必须全局唯一，以便 Azure AD 能够在所有租户中找到该应用程序。 系统通过要求应用 ID URI 必须具有与已验证 Azure AD 租户域匹配的主机名，来强制实施全局唯一性。 默认情况下，通过 Azure 门户创建的应用在创建应用时设置了一个全局唯一的应用 ID URI，但你可以更改此值。
+在将某个应用程序转换为多租户之前，Azure AD 要求该应用程序的应用 ID URI 全局唯一。 应用 ID URI 是在协议消息中标识应用程序的方式之一。 就单租户应用程序而言，应用 ID URI 在该租户中保持唯一便已足够。 就多租户应用程序而言，该 URI 必须全局唯一，以便 Azure AD 能够在所有租户中找到该应用程序。 系统通过要求应用 ID URI 必须具有与已验证 Azure AD 租户域匹配的主机名，来强制实施全局唯一性。 
 
-例如，如果租户的名称为 contoso.onmicrosoft.com，则有效的应用 ID URI 为 `https://contoso.onmicrosoft.com/myapp`。 如果租户具有已验证的域 `contoso.com`，则有效的应用 ID URI 也是 `https://contoso.com/myapp`。 如果应用程序 ID URI 不遵循此模式，则将应用程序设置为多租户就会失败。
+默认情况下，通过 Azure 门户创建的应用在创建应用时设置了一个全局唯一的应用 ID URI，但你可以更改此值。 例如，如果租户的名称为 contoso.onmicrosoft.com，则有效的应用 ID URI 为 `https://contoso.onmicrosoft.com/myapp`。 如果租户具有已验证的域 `contoso.com`，则有效的应用 ID URI 也是 `https://contoso.com/myapp`。 如果应用程序 ID URI 不遵循此模式，则将应用程序设置为多租户就会失败。
 
 > [!NOTE] 
-> 默认情况下，本机客户端注册以及 [v2 应用程序](./active-directory-appmodel-v2-overview.md)是多租户的。 不需要采取任何措施将这些应用程序注册转换为多租户。
+> 默认情况下，本机客户端注册以及 [v2.0 应用程序](./active-directory-appmodel-v2-overview.md)是多租户的。 不需要采取任何措施将这些应用程序注册转换为多租户。
 
 ## <a name="update-your-code-to-send-requests-to-common"></a>将代码更新为向 /common 发送请求
-在单租户应用程序中，登录请求将发送到租户的登录终结点。 以 contoso.onmicrosoft.com 为例，终结点将是：`https://login.microsoftonline.com/contoso.onmicrosoft.com`
 
-发送到租户终结点的请求可以让该租户中的用户（或来宾）登录该租户中的应用程序。 使用多租户应用程序时，应用程序事先并不知道用户来自哪个租户，因此无法将请求发送到租户的终结点。 取而代之的是，请求将发送到在所有 Azure AD 租户之间多路复用的终结点：`https://login.microsoftonline.com/common`
+在单租户应用程序中，登录请求将发送到租户的登录终结点。 以 contoso.onmicrosoft.com 为例，终结点将是：`https://login.microsoftonline.com/contoso.onmicrosoft.com`。 发送到租户终结点的请求可以让该租户中的用户（或来宾）登录该租户中的应用程序。 
+
+使用多租户应用程序时，应用程序事先并不知道用户来自哪个租户，因此无法将请求发送到租户的终结点。 取而代之的是，请求将发送到在所有 Azure AD 租户之间多路复用的终结点：`https://login.microsoftonline.com/common`
 
 当 Azure AD 在 /common 终结点上收到请求时，会使用户登录，因而可以发现用户来自哪个租户。 /common 终结点可与 Azure AD 支持的所有身份验证协议配合使用：OpenID Connect、OAuth 2.0、SAML 2.0 和 WS 联合身份验证。
 
@@ -64,6 +67,7 @@ Azure AD 中的 Web 应用/API 注册默认为单租户。 可以将注册转换
 > /common 终结点不是租户，也不是颁发者，而只是一个多路复用器。 使用 /common 时，需要更新应用程序中用于验证令牌的逻辑，以便考虑到这一点。 
 
 ## <a name="update-your-code-to-handle-multiple-issuer-values"></a>将代码更新为处理多个颁发者值
+
 Web 应用程序和 Web API 接收并验证来自 Azure AD 的令牌。 
 
 > [!NOTE]
@@ -95,7 +99,8 @@ Web 应用程序和 Web API 接收并验证来自 Azure AD 的令牌。
 
 在[多租户示例][AAD-Samples-MT]中，为了使任何 Azure AD 租户都能登录，已禁用颁发者验证。
 
-## <a name="understanding-user-and-admin-consent"></a>了解用户和管理员同意
+## <a name="understand-user-and-admin-consent"></a>了解用户同意和管理员同意
+
 若要让用户登录 Azuer AD 中的某个应用程序，必须以用户租户的形式表示该应用程序。 这样，组织便可以采取一些措施，例如，当其租户中的用户登录应用程序时应用唯一策略。 对于单租户应用程序，此注册过程相当简单，它与在 [Azure 门户][AZURE-portal]中注册应用程序时的过程相同。
 
 对于多租户应用程序，应用程序的初始注册过程是在开发人员使用的 Azure AD 租户中进行的。 当来自不同租户的用户首次登录应用程序时，Azure AD 将要求他们同意应用程序所请求的权限。 如果他们同意，系统会在用户的租户中创建一个称为“服务主体”的应用程序表示形式，然后登录可继续进行。 系统还会在记录用户对应用程序的同意意向的目录中创建委托。 有关应用程序的 Application 和 ServicePrincipal 对象以及它们之间关系的详细信息，请参阅[应用程序对象和服务主体对象][AAD-App-SP-Objects]。
@@ -110,6 +115,7 @@ Web 应用程序和 Web API 接收并验证来自 Azure AD 的令牌。
 有些权限可由普通用户同意，有些则需要租户管理员同意。 
 
 ### <a name="admin-consent"></a>管理员同意
+
 仅限应用的权限始终需要租户管理员的同意。 如果应用程序请求仅限应用的权限，当用户尝试登录应用程序时，会显示一条错误消息，指出该用户无法同意。
 
 有些委托的权限也需要租户管理员的同意。 例如，若要能够以登录用户身份写回 Azure AD，就需要租户管理员的同意。 与仅限应用的权限一样，如果普通用户尝试登录请求委托权限的应用程序，而该权限需要管理员同意，则应用程序会收到错误。 权限是否需要管理员同意是由发布资源的开发人员决定的，可以在该资源的文档中找到相关信息。 [Azure AD Graph API][AAD-Graph-Perm-Scopes] 和 [Microsoft Graph API][MSFT-Graph-permision-scopes] 的权限文档指示哪些权限需要管理员同意。
@@ -123,9 +129,10 @@ Web 应用程序和 Web API 接收并验证来自 Azure AD 的令牌。
 如果某个应用程序需要管理员同意并且管理员登录而没有发送 `prompt=admin_consent` 参数，则当管理员成功地向该应用程序表示同意时，它**仅适用于其用户帐户**。 普通用户仍然无法登录或同意该应用程序。 如果想要让租户管理员浏览应用程序，然后允许其他用户访问，则此功能就很有用。
 
 > [!NOTE]
-> 某些应用程序想要提供一种体验，让普通用户能够一开始即表示同意，然后应用程序可让管理员参与操作并请求需要管理员同意的权限。 当前 Azure AD 中的 v1 应用程序注册没有办法做到这一点；但是，使用 v2 终结点允许应用程序在运行时（而不是在注册时）请求权限，从而启用此方案。 有关详细信息，请参阅 [v2 终结点][AAD-V2-Dev-Guide]。
+> 某些应用程序想要提供一种体验，让普通用户能够一开始即表示同意，然后应用程序可让管理员参与操作并请求需要管理员同意的权限。 当前 Azure AD 中的 v1.0 应用程序注册没有办法做到这一点；但是，使用 v2.0 终结点允许应用程序在运行时（而不是在注册时）请求权限，从而启用此方案。 有关详细信息，请参阅 [v2.0 终结点][AAD-V2-Dev-Guide]。
 
 ### <a name="consent-and-multi-tier-applications"></a>同意和多层应用程序
+
 应用程序可能有多个层，每一层由其自身在 Azure AD 中的注册来表示。 例如，一个调用 Web API 的本机应用程序，或者一个调用 Web API 的 Web 应用程序。 在这两种情况下，客户端（本机应用或 Web 应用）将请求调用资源 (Web API) 的权限。 要让客户端成功获得客户同意添加到其租户中，请求权限的所有资源必须都已在于客户的租户中。 如果不符合此条件，Azuer AD 将返回错误，指出必须先添加资源。
 
 **单个租户中的多个层**
@@ -146,7 +153,7 @@ Web 应用程序和 Web API 接收并验证来自 Azure AD 的令牌。
 
 1. 根据前面各节的内容确保 API 实现多租户应用程序注册/代码要求。
 2. 除了公开 API 的作用域/角色之外，还需确保注册包括“登录和读取用户配置文件”Azure AD 权限（默认情况下会提供）。
-3. 根据前面讨论的[管理员同意](#admin-consent)指南，在 Web 客户端中实现登录/注册页面。
+3. 在 Web 客户端中实现登录/注册页面，并按照[管理员同意](#admin-consent)指南操作。
 4. 当用户同意应用程序后，会在其租户中创建服务主体和同意委派链接，并且本机应用程序可以获取 API 的令牌。
 
 下图针对在不同租户中注册的多层应用提供了同意概览。
@@ -154,6 +161,7 @@ Web 应用程序和 Web API 接收并验证来自 Azure AD 的令牌。
 ![同意多层多方应用][Consent-Multi-Tier-Multi-Party] 
 
 ### <a name="revoking-consent"></a>撤销同意
+
 用户和管理员可以随时吊销对应用程序的同意：
 
 * 用户可通过将单个应用程序从其[访问面板应用程序][AAD-Access-Panel]列表中删除，来吊销对这些应用程序的访问权限。
@@ -162,12 +170,15 @@ Web 应用程序和 Web API 接收并验证来自 Azure AD 的令牌。
 如果是由管理员代表租户中的所有用户对应用程序行使同意权，用户就不能单独吊销访问权限。 只有管理员才能吊销访问权限，并且只能针对整个应用程序吊销。
 
 ## <a name="multi-tenant-applications-and-caching-access-tokens"></a>多租户应用程序和缓存访问令牌
+
 多租户应用程序也可以获取访问令牌来调用受 Azure AD 保护的 API。 配合多租户应用程序使用 Active Directory 身份验证库 (ADAL) 时经常会出现一个错误，就是一开始即使用 /common 来为用户请求令牌、接收响应，然后同样使用 /common 来为同一用户请求后续令牌。 由于从 Azure AD 返回的响应来自租户而不是 /common，因此 ADAL 缓存令牌时将它视为来自租户。 后续为了为用户获取访问令牌而执行的 /common 调用将错过缓存项，因此系统会再次提示用户登录。 为了避免缓存未命中，请确保后续为登录用户执行的调用是针对租户的终结点发出的。
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍了如何构建可使用户从任何 Azure AD 租户进行登录的应用程序。 在应用与 Azure AD 之间启用单一登录 (SSO) 后，还可以更新应用程序以访问 Microsoft 资源（如 Office 365）公开的 API。 从而可以在应用程序中提供个性化体验，例如向用户显示上下文信息（例如个人资料图片或下一个日历约会）。 若要了解有关对 Azure AD 和 Office 365 服务（如 Exchange、SharePoint、OneDrive、OneNote、Planner、Excel 等）进行 API 调用的详细信息，请访问：[Microsoft Graph API][MSFT-Graph-overview]。
+
+本文介绍了如何构建可使用户从任何 Azure AD 租户进行登录的应用程序。 在应用与 Azure AD 之间启用单一登录 (SSO) 后，还可以更新应用程序以访问 Microsoft 资源（如 Office 365）公开的 API。 从而可以在应用程序中提供个性化体验，例如向用户显示上下文信息（例如个人资料图片或下一个日历约会）。 若要了解有关对 Azure AD 和 Office 365 服务（如 Exchange、SharePoint、OneDrive、OneNote 等）进行 API 调用的详细信息，请访问：[Microsoft Graph API][MSFT-Graph-overview]。
 
 ## <a name="related-content"></a>相关内容
+
 * [多租户应用程序示例][AAD-Samples-MT]
 * [适用于应用程序的品牌准则][AAD-App-Branding]
 * [应用程序对象和服务主体对象][AAD-App-SP-Objects]
@@ -182,7 +193,7 @@ Web 应用程序和 Web API 接收并验证来自 Azure AD 的令牌。
 [AAD-App-Manifest]:reference-azure-ad-app-manifest.md
 [AAD-App-SP-Objects]:app-objects-and-service-principals.md
 [AAD-Auth-Scenarios]:authentication-scenarios.md
-[AAD-Consent-Overview]:quickstart-v1-integrate-apps-with-azure-ad.md#overview-of-the-consent-framework
+[AAD-Consent-Overview]:consent-framework.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
 [AAD-Graph-Overview]: https://azure.microsoft.com/documentation/articles/active-directory-graph-api/
 [AAD-Graph-Perm-Scopes]: https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes
@@ -211,8 +222,8 @@ Web 应用程序和 Web API 接收并验证来自 Azure AD 的令牌。
 [AAD-Graph-User-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md
 [AAD-Security-Token-Claims]: ./active-directory-authentication-scenarios/#claims-in-azure-ad-security-tokens
-[AAD-Tokens-Claims]:v1-id-and-access-tokens.md
-[AAD-V2-Dev-Guide]: ../active-directory-appmodel-v2-overview.md
+[AAD-Tokens-Claims]:access-tokens.md
+[AAD-V2-Dev-Guide]: v2-overview.md
 [AZURE-portal]: https://portal.azure.com
 [Duyshant-Role-Blog]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
@@ -224,17 +235,3 @@ Web 应用程序和 Web API 接收并验证来自 Azure AD 的令牌。
 [OAuth2-Role-Def]: https://tools.ietf.org/html/rfc6749#page-6
 [OpenIDConnect]: http://openid.net/specs/openid-connect-core-1_0.html
 [OpenIDConnect-ID-Token]: http://openid.net/specs/openid-connect-core-1_0.html#IDToken
-
-
-
-
-
-
-
-
-
-
-
-
-
-

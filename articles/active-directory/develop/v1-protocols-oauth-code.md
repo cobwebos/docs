@@ -16,14 +16,15 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6dc156e94ee8b30bef8c25b3dcaa1d70f76e26e5
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: bd9d3a677d9fea54331200258d4b9b8e07a54312
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39580057"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956891"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>使用 OAuth 2.0 代码授权流来授权访问 Azure Active Directory Web 应用程序
+
 Azure Active Directory (Azure AD) 使用 OAuth 2.0，使你能够授权访问 Azure AD 租户中的 Web 应用程序和 Web API。 本指南与语言无关，介绍在不使用我们的[开放源代码库](active-directory-authentication-libraries.md)的情况下，如何发送和接收 HTTP 消息。
 
 [OAuth 2.0 规范第 4.1 部分](https://tools.ietf.org/html/rfc6749#section-4.1)描述了 OAuth 2.0 授权代码流。 它用于在大部分的应用类型（包括 Web 应用和本机安装的应用）中执行身份验证与授权。
@@ -31,11 +32,13 @@ Azure Active Directory (Azure AD) 使用 OAuth 2.0，使你能够授权访问 Az
 [!INCLUDE [active-directory-protocols-getting-started](../../../includes/active-directory-protocols-getting-started.md)]
 
 ## <a name="oauth-20-authorization-flow"></a>OAuth 2.0 授权流
+
 概括而言，应用程序的整个授权流看起来有点类似于：
 
 ![OAuth 授权代码流](./media/v1-protocols-oauth-code/active-directory-oauth-code-flow-native-app.png)
 
 ## <a name="request-an-authorization-code"></a>请求授权代码
+
 授权代码流始于客户端将用户定向到的 `/authorize` 终结点。 在此请求中，客户端指示必须向用户获取的权限。 可以通过在 Azure 门户中选择“应用注册”>“终结点”，获取租户的 OAuth 2.0 授权终结点。
 
 ```
@@ -56,15 +59,15 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | client_id |必填 |将应用注册到 Azure AD 时，分配给应用的应用程序 ID。 可以在 Azure 门户中找到该值。 单击服务边栏中的“Azure Active Directory”，单击“应用注册”，然后选择应用程序。 |
 | response_type |必填 |必须包括授权代码流的 `code`。 |
 | redirect_uri |建议 |应用程序的 redirect_uri，应用程序可在此发送及接收身份验证响应。 其必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 对于本机和移动应用，应使用默认值 `urn:ietf:wg:oauth:2.0:oob`。 |
-| response_mode |建议 |指定将生成的令牌送回到应用程序所应该使用的方法。 可以是 `query`、`fragment` 或 `form_post`。 `query` 在重定向 URI 上提供代码作为查询字符串参数。 如果要使用隐式流请求 ID 令牌，则不能使用 [OpenID 规范](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)中指定的 `query`。如果只是请求代码，则可以使用 `query`、`fragment` 或 `form_post`。 `form_post` 对重定向 URI 执行包含代码的 POST。 |
+| response_mode |可选 |指定将生成的令牌送回到应用程序所应该使用的方法。 可以是 `query`、`fragment` 或 `form_post`。 `query` 在重定向 URI 上提供代码作为查询字符串参数。 如果要使用隐式流请求 ID 令牌，则不能使用 [OpenID 规范](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)中指定的 `query`。如果只是请求代码，则可以使用 `query`、`fragment` 或 `form_post`。 `form_post` 对重定向 URI 执行包含代码的 POST。 代码流的默认值为 `query`。  |
 | state |建议 |同时随令牌响应返回的请求中所包含的值。 随机生成的唯一值通常用于[防止跨站点请求伪造攻击](http://tools.ietf.org/html/rfc6749#section-10.12)。 该状态也用于在身份验证请求出现之前，于应用程序中编码用户的状态信息，例如之前所在的网页或视图。 |
 | resource | 建议 |目标 Web API 的应用 ID URI（受保护的资源）。 要查找应用 ID URI，请在 Azure 门户中，依次单击“Azure Active Directory”和“应用程序注册”，打开应用程序的“设置”页面，然后单击“属性”。 也可能是外部资源，如 `https://graph.microsoft.com`。 这在授权或令牌请求中是必需的。 要确保减少身份验证提示，请将其置于授权请求中以确保获得用户许可。 |
 | 作用域 | **ignored** | 对于 v1 Azure AD 应用，必须在 Azure 门户中的应用程序“设置”、“所需权限”下静态配置作用域。 |
 | prompt |可选 |表示需要的用户交互类型。<p> 有效值是： <p> *login*：应该提示用户重新进行身份验证。 <p> select_account：系统会提示用户选择一个帐户，中断单一登录。 用户可以选择现有已登录帐户，输入已记忆帐户的凭据，或选择使用其他帐户。 <p> *consent*：用户同意已授予，但需要进行更新。 应该提示用户授予同意。 <p> *admin_consent*：应该提示管理员代表组织中的所有用户授予同意。 |
 | login_hint |可选 |如果事先知道其用户名称，可用于预先填充用户登录页面的用户名称/电子邮件地址字段。 通常，应用在重新身份验证期间使用此参数，并且已经使用 `preferred_username` 声明从前次登录提取用户名。 |
 | domain_hint |可选 |提供有关用户应该用于登录的租户或域的提示。 domain_hint 的值是租户的已注册域。 如果该租户与本地目录联合，则 AAD 将重定向到指定的租户联合服务器。 |
-| code_challenge_method | 可选    | 用于为 `code_challenge` 参数编码 `code_verifier` 的方法。 可以是 `plain` 或 `S256` 之一。 如果已排除在外，且包含了 `code_challenge`，则假定 `code_challenge` 为纯文本。 Azure AAD v1.0 同时支持 `plain` 和 `S256`。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
-| code_challenge        | 可选    | 用于通过本机客户端或公共客户端的 Proof Key for Code Exchange (PKCE) 保护授权代码授权。 如果包含 `code_challenge_method`，则需要。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
+| code_challenge_method | 建议    | 用于为 `code_challenge` 参数编码 `code_verifier` 的方法。 可以是 `plain` 或 `S256` 之一。 如果已排除在外，且包含了 `code_challenge`，则假定 `code_challenge` 为纯文本。 Azure AAD v1.0 同时支持 `plain` 和 `S256`。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
+| code_challenge        | 建议    | 用于通过本机客户端或公共客户端的 Proof Key for Code Exchange (PKCE) 保护授权代码授权。 如果包含 `code_challenge_method`，则需要。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
 
 > [!NOTE]
 > 如果用户属于某个组织，则该组织的管理员可以代表该用户许可或拒绝，也可以允许该用户进行许可。 仅当管理员允许时，用户才有权许可。
@@ -149,7 +152,7 @@ grant_type=authorization_code
 要查找应用 ID URI，请在 Azure 门户中，依次单击“Azure Active Directory”和“应用程序注册”，打开应用程序的“设置”页面，然后单击“属性”。
 
 ### <a name="successful-response"></a>成功的响应
-成功响应后，Azure AD 将返回访问令牌。 为了尽量减少来自客户端应用程序的网络调用及其相关延迟，客户端应用程序应该根据 OAuth 2.0 响应中指定的令牌生存期缓存访问令牌。 若要确定令牌生存期，请使用 `expires_in` 或 `expires_on` 参数值。
+成功响应后，Azure AD 将返回[访问令牌](access-tokens.md)。 为了尽量减少来自客户端应用程序的网络调用及其相关延迟，客户端应用程序应该根据 OAuth 2.0 响应中指定的令牌生存期缓存访问令牌。 若要确定令牌生存期，请使用 `expires_in` 或 `expires_on` 参数值。
 
 如果 Web API 资源返回 `invalid_token` 错误代码，则可能表示该资源确定令牌已过期。 如果客户端和资源时钟时间不同（称为“时间偏差”），该资源可能会将令牌视为已过期，随后从客户端缓存中清除。 如果发生这种情况，请从缓存中清除令牌，即使它仍处于其计算生存期内。
 
@@ -171,59 +174,16 @@ grant_type=authorization_code
 
 | 参数 | Description |
 | --- | --- |
-| access_token |作为签名 JSON Web 令牌 (JWT) 的请求访问令牌。 应用可以使用此令牌来验证受保护的资源，例如 Web API。 |
+| access_token |作为签名 JSON Web 令牌 (JWT) 的请求[访问令牌](access-tokens.md)。 应用可以使用此令牌来验证受保护的资源，例如 Web API。 |
 | token_type |指示令牌类型值。 Azure AD 唯一支持的类型是 Bearer。 有关持有者令牌的详细信息，请参阅 [OAuth2.0 授权框架：持有者令牌用法 (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt) |
 | expires_in |访问令牌的有效期（以秒为单位）。 |
 | expires_on |访问令牌的过期时间。 该日期表示为自 1970-01-01T0:0:0Z UTC 至过期时间的秒数。 此值用于确定缓存令牌的生存期。 |
 | resource |Web API 的应用 ID URI（受保护的资源）。 |
 | 作用域 |向客户端应用程序授予的模拟权限。 默认权限为 `user_impersonation`。 受保护资源的所有者可在 Azure AD 中注册其他值。 |
 | refresh_token |OAuth 2.0 刷新令牌。 应用可以使用此令牌，在当前访问令牌过期之后获取其他访问令牌。 刷新令牌的生存期很长，而且可以用于延长保留资源访问权限的时间。 |
-| id_token |无符号 JSON Web 令牌 (JWT)。 应用可以 base64Url 解码此令牌的段，以请求已登录用户的相关信息。 应用可以缓存并显示值，但不应依赖于这些值来获取任何授权或安全边界。 |
+| id_token |表示 [ID 令牌](id-tokens.md)的未签名 JSON Web令牌 (JWT)。 应用可以 base64Url 解码此令牌的段，以请求已登录用户的相关信息。 应用可以缓存并显示值，但不应依赖于这些值来获取任何授权或安全边界。 |
 
-### <a name="jwt-token-claims"></a>JWT 令牌声明
-`id_token` 参数值中的 JWT 令牌可以解码为以下声明：
-
-```
-{
- "typ": "JWT",
- "alg": "none"
-}.
-{
- "aud": "2d4d11a2-f814-46a7-890a-274a72a7309e",
- "iss": "https://sts.windows.net/7fe81447-da57-4385-becb-6de57f21477e/",
- "iat": 1388440863,
- "nbf": 1388440863,
- "exp": 1388444763,
- "ver": "1.0",
- "tid": "7fe81447-da57-4385-becb-6de57f21477e",
- "oid": "68389ae2-62fa-4b18-91fe-53dd109d74f5",
- "upn": "frank@contoso.com",
- "unique_name": "frank@contoso.com",
- "sub": "JWvYdCWPhhlpS1Zsf7yYUxShUwtUm5yzPmw_-jX3fHY",
- "family_name": "Miller",
- "given_name": "Frank"
-}.
-```
-
-有关 JSON Web 令牌的详细信息，请参阅 [JWT IETF 草案规范](http://go.microsoft.com/fwlink/?LinkId=392344)。 有关令牌类型和声明的详细信息，请阅读[支持的令牌和声明类型](v1-id-and-access-tokens.md)
-
-`id_token` 参数包含以下声明类型：
-
-| 声明类型 | Description |
-| --- | --- |
-| aud |令牌的受众。 如果向客户端应用程序颁发令牌，则受众是客户端的 `client_id`。 |
-| exp |过期日期。 令牌的过期时间。 对于要生效的令牌，当前日期/时间必须小于或等于 `exp` 值。 该时间表示为自 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) UTC 至令牌有效期到期的秒数。|
-| family_name |用户的姓氏。 应用程序可以显示此值。 |
-| given_name |用户的名字。 应用程序可以显示此值。 |
-| iat |颁发时间。 颁发 JWT 的时间。 该时间表示为自 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) UTC 至令牌颁发时间的秒数。 |
-| iss |标识令牌颁发者 |
-| nbf |不在此之前的时间。 令牌生效的时间。 若要使令牌生效，当前日期/时间必须大于或等于 Nbf 值。 该时间表示为自 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) UTC 至令牌颁发时间的秒数。 |
-| oid |用户对象在 Azure AD 中的对象标识符 (ID)。 |
-| sub |令牌使用者标识符。 这是令牌描述的用户的持久不可变标识符。 在缓存逻辑中使用此值。 |
-| tid |颁发令牌的 Azure AD 租户的租户标识符 (ID)。 |
-| unique_name |可显示给用户的唯一标识符。 通常，这是用户主体名称 (UPN)。 |
-| upn |用户的用户主体名称。 |
-| ver |版本。 JWT 令牌的版本，通常为 1.0。 |
+有关 JSON Web 令牌的详细信息，请参阅 [JWT IETF 草案规范](http://go.microsoft.com/fwlink/?LinkId=392344)。   若要详细了解 `id_tokens`，请参阅 [v1.0 OpenID Connect 流](v1-protocols-openid-connect-code.md)。
 
 ### <a name="error-response"></a>错误响应
 令牌颁发终结点错误是一些 HTTP 错误代码，因为客户端直接调用令牌颁发终结点。 除了 HTTP 状态代码，Azure AD 令牌颁发终结点还返回 JSON 文档，其中的对象会对错误进行描述。
@@ -313,6 +273,7 @@ RFC 6750 规范为在响应中使用 WWW-Authenticate 标头和持有者方案�
 | 403 |insufficient_access |令牌的使用者没有访问该资源所需的权限。 |提示用户使用其他帐户或请求对指定资源的权限。 |
 
 ## <a name="refreshing-the-access-tokens"></a>刷新访问令牌
+
 访问令牌的生存期很短，必须在其过期后刷新才能继续访问资源。 若要刷新 `access_token`，可以向 `/token` 终结点提交另一个 `POST` 请求，但这次要提供 `refresh_token` 而不是 `code`。
 
 刷新令牌没有指定的生存期。 通常，刷新令牌的生存期相对较长。 但是，在某些情况下，刷新令牌会过期、被吊销，或缺少执行所需操作的足够权限。 应用程序需要正确预期和处理令牌颁发终结点返回的错误。

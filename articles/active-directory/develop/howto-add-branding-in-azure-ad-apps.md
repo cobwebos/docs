@@ -10,30 +10,37 @@ ms.assetid: 72f4e464-1352-4a49-a18f-c37f58e7d5c4
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/27/2017
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 92990a71a0b138f08c515450ecd71692fa57f297
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 6edcd5b3df7c3c58c6568434f82fbc52cb9e28df
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "43185414"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958860"
 ---
 # <a name="branding-guidelines-for-applications"></a>适用于应用程序的品牌准则
 
-本文讨论在使用 Azure Active Directory (Azure AD) 开发应用程序时应使用的品牌准则。 在客户需要使用 Azure AD 中托管的工作或学校帐户，或使用其个人帐户进行注册和登录到应用程序时，这些准则将帮助指导客户进行相关操作。
+使用 Azure Active Directory (Azure AD) 开发应用程序时，如果客户想要使用工作或学校帐户（在 Azure AD 中托管）或其个人帐户进行注册和登录到应用程序，你需要指导客户进行相关操作。
+
+在本文中，你将：
+
+- 了解 Microsoft 管理的两种用户帐户以及如何在应用程序中引用 Azure AD 帐户
+- 了解添加要在应用中使用的 Microsoft 徽标所需执行的操作
+- 下载官方的**登录**或**使用 Microsoft 登录**图像以在应用中使用
+- 了解品牌和导航的注意事项
 
 ## <a name="personal-accounts-vs-work-or-school-accounts-from-microsoft"></a>个人帐户与 Microsoft 中的工作或学校帐户
 
 Microsoft 管理两种类型的用户帐户：
 
-* **个人帐户**（以前称为 Windows Live ID）。 这些帐户表示个人用户与 Microsoft 之间的关系，用于访问使用者的设备和 Microsoft 的服务。 这些帐户专供个人使用。
-* **工作或学校帐户。** 这些帐户由 Microsoft 代表使用 Azure Active Directory 的组织进行管理。 这些帐户用于登录 Office 365 和 Microsoft 的其他业务服务。
+- **个人帐户**（以前称为 Windows Live ID）。 这些帐户表示个人用户与 Microsoft 之间的关系，用于访问使用者的设备和 Microsoft 的服务。 这些帐户专供个人使用。
+- **工作或学校帐户。** 这些帐户由 Microsoft 代表使用 Azure Active Directory 的组织进行管理。 这些帐户用于登录 Office 365 和 Microsoft 的其他业务服务。
 
 Microsoft 工作或学校帐户帐户通常由组织（公司、学校、政府机构）分配给最终用户（员工、学生、联邦雇员）。 这些帐户可以直接在云中（在 Azure AD 平台中）直接控制，也可以从本地目录（如 Windows Server Active Directory）同步到 Azure AD。 Microsoft 是工作或学校帐户的监管员，但这些帐户由组织所有和控制。
 
@@ -41,8 +48,8 @@ Microsoft 工作或学校帐户帐户通常由组织（公司、学校、政府�
 
 Microsoft 不会向最终用户显示 Azure 或 Active Directory 品牌名称，你也应该如此。
 
-* 在用户登录后，应尽量使用组织的名称和徽标。 这比使用“你的组织”等通用词语要好。
-* 如果用户未登录，将他们的帐户称为“工作或学校帐户”，并使用 Microsoft 徽标来表明这些帐户由 Microsoft 管理。 请勿使用“企业帐户”、“业务帐户”或“公司帐户”等词语，这会给用户造成混淆。
+- 在用户登录后，应尽量使用组织的名称和徽标。 这比使用“你的组织”等通用词语要好。
+- 如果用户未登录，将他们的帐户称为“工作或学校帐户”，并使用 Microsoft 徽标来表明这些帐户由 Microsoft 管理。 请勿使用“企业帐户”、“业务帐户”或“公司帐户”等词语，这会给用户造成混淆。
 
 ## <a name="user-account-pictogram"></a>用户帐户象形图
 
@@ -94,7 +101,6 @@ Microsoft 徽标和“通过 Microsoft 登录”词语的关联可唯一地将 A
 | Microsoft 登录（浅色主题） | ![登录按钮浅色主题 PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.png) | ![Microsoft 登录按钮浅色主题 SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.svg) |
 | 登录（深色主题）                 | ![登录短按钮深色主题 PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.png) | ![登录短按钮深色主题 SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.svg) |
 | 登录（浅色主题）                | ![登录短按钮浅色主题 PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.png) | ![登录短按钮浅色主题 SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.svg) |
-
 
 ## <a name="branding-dos-and-donts"></a>品牌注意事项
 

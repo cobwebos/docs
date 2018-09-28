@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: routlaw
 ms.custom: aaddev
-ms.openlocfilehash: eb26101229ad60abae7a8a84f8dfa496488e84ba
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: d77af898d5baef4fa7970132b0eb8deddb8f68cb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578997"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981791"
 ---
 # <a name="request-an-access-token-using-oauth-20-to-access-web-apis-and-applications-secured-by-azure-active-directory"></a>使用 OAuth 2.0 请求访问令牌，以访问受 Azure Active Directory 保护的 Web API 和应用程序
 
@@ -75,12 +75,12 @@ POST https://{tenant}/oauth2/v2.0/token?client_id={client-id}
 ```
 | 参数     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| access_token  | 请求的访问令牌。 应用可以使用此令牌验证受保护的资源，例如 Web API。                                                                                                                                                                                                                                                                                                                                    |
+| access_token  | 请求的[访问令牌](access-tokens.md)。 应用可以使用此令牌验证受保护的资源，例如 Web API。                                                                                                                                                                                                                                                                                                                                    |
 | token_type    | 指示令牌类型值。 Azure AD 唯一支持的类型是 Bearer                                                                                                                                                                                                                                                                                                                                                                           |
 | expires_in    | 访问令牌的有效期（以秒为单位）。                                                                                                                                                                                                                                                                                                                                                                                                       |
 | 作用域         | access_token 有效的范围。                                                                                                                                                                                                                                                                                                                                                                                                         |
-| refresh_token | OAuth 2.0 刷新令牌。 应用程序可以使用此令牌，在当前的访问令牌过期之后获取其他访问令牌。 Refresh_tokens 的生存期很长，而且可以用于延长保留资源访问权限的时间。 有关更多详细信息，请参阅 [v2.0 令牌参考](v2-id-and-access-tokens.md)。 <br> **注意：** 仅当已请求 `offline_access` 作用域时提供。                                               |
-| id_token      | 无符号 JSON Web 令牌 (JWT)。 应用可以解码此令牌的段，以请求已登录用户的相关信息。 应用可以缓存并显示值，但不应依赖于这些值获取任何授权或安全边界。 有关 id_tokens 的详细信息，请参阅 [v2.0 终结点令牌参考](v2-id-and-access-tokens.md)。 <br> **注意：** 仅当已请求 `openid` 作用域时提供。 |
+| refresh_token | OAuth 2.0 刷新令牌。 应用程序可以使用此令牌，在当前的访问令牌过期之后获取其他访问令牌。 Refresh_tokens 的生存期很长，而且可以用于延长保留资源访问权限的时间。 有关更多详细信息，请参阅 [v2.0 代码授予参考](v2-oauth2-auth-code-flow.md#refresh-the-access-token)。 <br> **注意：** 仅当已请求 `offline_access` 作用域时提供。                                               |
+| id_token      | 无符号 JSON Web 令牌 (JWT)。 应用可以解码此令牌的段，以请求已登录用户的相关信息。 应用可以缓存并显示值，但不应依赖于这些值获取任何授权或安全边界。 有关 id_tokens 的详细信息，请参阅 [`id_token reference`](id-tokens.md)。 <br> **注意：** 仅当已请求 `openid` 作用域时提供。 |
 
 
 

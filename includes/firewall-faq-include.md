@@ -5,37 +5,35 @@ services: firewall
 author: vhorne
 ms.service: ''
 ms.topic: include
-ms.date: 8/13/2018
+ms.date: 9/14/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: a63a12658bd0a4b4d018d51824af9814691a3cbf
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 4c6aaea836302732b1af3d22923c965575cfc9d2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40182622"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47020466"
 ---
 ### <a name="what-is-azure-firewall"></a>什么是 Azure 防火墙？
 
-Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。 它是一个服务形式的完全有状态防火墙，具有内置的高可用性和不受限制的云可伸缩性。 可以跨订阅和虚拟网络集中创建、实施和记录应用程序与网络连接策略。 Azure 防火墙目前处于公共预览状态。
+Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。 它是一个服务形式的完全有状态防火墙，具有内置的高可用性和不受限制的云可伸缩性。 可以跨订阅和虚拟网络集中创建、实施和记录应用程序与网络连接策略。
 
-### <a name="which-capabilities-are-supported-in-the-azure-firewall-public-preview-release"></a>Azure 防火墙公共预览版支持哪些功能？  
+### <a name="what-capabilities-are-supported-in-azure-firewall"></a>Azure 防火墙支持哪些功能？  
 
 * 服务形式的有状态防火墙
 * 内置的高可用性以及不受限制的云可伸缩性
-* FQDN 筛选 
+* FQDN 筛选
+* FQDN 标记
 * 网络流量筛选规则
 * 出站 SNAT 支持
-* 可以跨 Azure 订阅和虚拟网络集中创建、实施和记录应用程序与网络连接策略。
+* 入站 DNAT 支持
+* 跨 Azure 订阅和 VNET 集中创建、实施和记录应用程序与网络连接策略
 * 与 Azure Monitor 完全集成，实现记录和分析功能 
-
-### <a name="how-can-i-join-the-azure-firewall-public-preview"></a>如何加入 Azure 防火墙公共预览版？
-
-Azure 防火墙目前是托管的公共预览版，可使用 Register-AzureRmProviderFeature PowerShell 命令加入。 Azure 防火墙公共预览版文档中介绍了此命令。
 
 ### <a name="what-is-the-pricing-for-azure-firewall"></a>Azure 防火墙采用何种定价方式？
 
-Azure 防火墙采用固定和可变成本的定价方式。 具体价格如下，公共预览期间还可在此基础上进一步提供 50% 的折扣。
+Azure 防火墙采用固定成本 + 可变成本的定价方式：
 
 * 固定费用：1.25 美元/防火墙/小时
 * 可变费用：0.03 美元/GB（防火墙处理的入口或出口数据）
@@ -59,7 +57,7 @@ Azure 防火墙支持规则和规则集合。 规则集合是一组共享相同�
 
 ### <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Azure 防火墙是否支持入站流量筛选？
 
-Azure 防火墙公共预览版仅支持出站筛选。 暂定为 Azure 防火墙正式版规划针对非 HTTP/S 协议（例如，RDP、SSH 或 FTP）的入站保护功能。  
+Azure 防火墙支持入站和出站筛选。 入站保护适用于非 HTTP/S 协议。 例如 RDP、SSH 和 FTP 协议。
  
 ### <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Azure 防火墙支持哪些日志记录和分析服务？
 
@@ -110,3 +108,11 @@ Set-AzureRmFirewall -AzureFirewall $azfw
 * 在中心虚拟网络中运行的 Azure 防火墙实例存在虚拟网络对等互连的限制：最多 50 个分支虚拟网络。  
 * Azure 防火墙不能与全球对等互连配合使用，因此应该在每个区域部署至少一个防火墙。
 * Azure 防火墙支持 1 万个应用程序规则和 1 万个网络规则。
+
+### <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>中心虚拟网络中的 Azure 防火墙能否转发并筛选两个分支虚拟网络之间的网络流量？
+
+能，可以在中心虚拟网络中使用 Azure 防火墙来路由和筛选两个分支虚拟网络之间的流量。 每个分支虚拟网络中的子网必须具有指向 Azure 防火墙的 UDR，作为使此方案正常工作的默认网关。
+
+### <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network"></a>Azure 防火墙能否转发并筛选同一虚拟网络中子网之间的网络流量？
+
+即使 UDR 指向作为默认网关的 Azure 防火墙，也会直接路由同一虚拟网络或直接对等互连虚拟网络中的子网之间的流量。 建议的内部网络分段方法是使用网络安全组。 若要在此方案中将子网到子网流量发送到防火墙，UDR 必须在这两个子网上显式地包含目标子网网络前缀。

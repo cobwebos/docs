@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: dde8881fc446eef0dd6ca0735e5e23a5a19328fa
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 19f066bea9de580cf1245aec74fbe563bf8ba449
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578341"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996547"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>将 Azure 诊断日志流式传输到事件中心
-可将 **[Azure 诊断日志](monitoring-overview-of-diagnostic-logs.md)** 近实时地流式传输到任何应用程序，方法是使用门户中的内置“导出到事件中心”选项，或者通过 Azure PowerShell Cmdlet 或 Azure CLI 2.0 在诊断设置中启用事件中心授权规则 ID。
+可将 **[Azure 诊断日志](monitoring-overview-of-diagnostic-logs.md)** 以近实时方式流式传输到任何应用程序，方法是使用门户中的内置“导出到事件中心”选项，或者通过 Azure PowerShell Cmdlet 或 Azure CLI 在诊断设置中启用事件中心授权规则 ID。
 
 ## <a name="what-you-can-do-with-diagnostics-logs-and-event-hubs"></a>可以对诊断日志和事件中心执行的操作
 可以通过下述几种方式将流式传输功能用于诊断日志：
@@ -91,9 +91,9 @@ Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -EventHubAuthorizati
 
 事件中心授权规则 ID 是以下格式的字符串：`{Event Hub namespace resource ID}/authorizationrules/{key name}`，例如 `/subscriptions/{subscription ID}/resourceGroups/{resource group}/providers/Microsoft.EventHub/namespaces/{Event Hub namespace}/authorizationrules/RootManageSharedAccessKey`。 目前无法使用 PowerShell 选择特定事件中心名称。
 
-### <a name="via-azure-cli-20"></a>通过 Azure CLI 2.0
+### <a name="via-azure-cli"></a>通过 Azure CLI
 
-若要通过 [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest) 启用流式传输，可以使用 [az monitor diagnostic-settings create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) 命令。
+若要通过 [Azure CLI](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest) 启用流式传输，可以使用 [az monitor diagnostic-settings create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) 命令。
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \

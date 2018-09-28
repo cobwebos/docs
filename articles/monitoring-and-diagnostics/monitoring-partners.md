@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 8/08/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: b21afecc27f1550cf557305ef069278ed66acaf0
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 3a15cfeb39cea31a24d27fd8b350d7e8a6696f31
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005311"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46955361"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 | 合作伙伴 |  |  |
 | --- | --- | --- |
 | [**AlertLogic**<br/>![合作伙伴徽标][alertlogic-logo]][alertlogic-anchor] | [**AppDynamics**<br/>![合作伙伴徽标][appdynamics-logo]][appdynamics-anchor]  | [**Atlassian**<br/>![合作伙伴徽标][atlassian-logo]][atlassian-anchor] 
 | [**Botmetric**][botmetric-anchor] | [**Circonus**<br/>![合作伙伴徽标][circonus-logo]][circonus-anchor]  | [**CloudHealth**<br/>![合作伙伴徽标][cloudhealth-logo]][cloudhealth-anchor] 
-| [**CloudMonix** <br/> ![合作伙伴徽标][cloudmonix-logo]][cloudmonix-anchor] | [**Cloudyn**<br/>![合作伙伴徽标][cloudyn-logo]][cloudyn-anchor] | [**Datadog**<br/>![合作伙伴徽标][datadog-logo]][datadog-anchor] 
-| [**Dynatrace** <br/> ![合作伙伴徽标][dynatrace-logo]][dynatrace-anchor] | [**Grafana**<br/>![合作伙伴徽标][grafana-logo]][grafana-anchor] | [**Logic Monitor**<br/>![合作伙伴徽标][logicmonitor-logo]][logicmonitor-anchor] 
-| [**Moogsoft**<br/>![合作伙伴徽标][moogsoft-logo]][moogsoft-anchor] | [**NewRelic**<br/>![合作伙伴徽标][newrelic-logo]][newrelic-anchor] | [**OpsGenie**<br/>![合作伙伴徽标][opsgenie-logo]][opsgenie-anchor] 
+| [**CloudMonix**<br/>![合作伙伴徽标][cloudmonix-logo]][cloudmonix-anchor] | [**Cloudyn**<br/>![合作伙伴徽标][cloudyn-logo]][cloudyn-anchor] | [**Datadog**<br/>![合作伙伴徽标][datadog-logo]][datadog-anchor] 
+| [**Dynatrace**<br/>![合作伙伴徽标][dynatrace-logo]][dynatrace-anchor] | [**Grafana**<br/>![合作伙伴徽标][grafana-logo]][grafana-anchor] | [**Influxdata**<br/>![合作伙伴徽标][influxdata-logo]][influxdata-anchor]
+| [**Logic Monitor**<br/>![合作伙伴徽标][logicmonitor-logo]][logicmonitor-anchor] | [**Moogsoft**<br/>![合作伙伴徽标][moogsoft-logo]][moogsoft-anchor] | [**NewRelic**<br/>![合作伙伴徽标][newrelic-logo]][newrelic-anchor] | [**OpsGenie**<br/>![合作伙伴徽标][opsgenie-logo]][opsgenie-anchor] 
 | [**PagerDuty**<br/>![合作伙伴徽标][pagerduty-logo]][pagerduty-anchor] | [**QRadar**<br/>![合作伙伴徽标][qradar-logo]][qradar-anchor] | [**ScienceLogic**<br/>![合作伙伴徽标][sciencelogic-logo]][sciencelogic-anchor] 
 | [**SignalFx**<br/>![合作伙伴徽标][signalfx-logo]<br/>][signalfx-anchor] | [**SIGNL4**<br/>![合作伙伴徽标][signl4-logo]][signl4-anchor] | [**SolarWinds**][solarwinds-anchor] 
-| [**Splunk** <br/> ![合作伙伴徽标][splunk-logo]][splunk-anchor] | [**Sumo Logic**<br/>![合作伙伴徽标][sumologic-logo]][sumologic-anchor] | [**Turbonomic**<br/>![合作伙伴徽标][turbonomic-logo]][turbonomic-anchor] 
+| [**Splunk**<br/>![合作伙伴徽标][splunk-logo]][splunk-anchor] | [**Sumo Logic**<br/>![合作伙伴徽标][sumologic-logo]][sumologic-anchor] | [**Turbonomic**<br/>![合作伙伴徽标][turbonomic-logo]][turbonomic-anchor] 
 
 
 ## <a name="alertlogic-log-manager"></a>AlertLogic Log Manager
@@ -82,6 +82,12 @@ Grafana 是一个开源应用程序，用于可视化时序指标数据。
 
 [查看相关文档。][grafana-doc]
 
+## <a name="influxdata"></a>InfluxData
+InfluxDB 是 InfluxDB 的创建者，它提供了一个从头开始构建的新式开源平台，用于分析 DevOps 和 IoT 应用程序的指标和事件（时间序列数据）。 无论数据来自人类、传感器还是机器，InfluxData 都使开发人员能够更快、更轻松地构建下一代监视应用程序、分析应用程序和 IoT 应用程序，并能够快速地按比例交付实际业务价值。 InfluxData 总部位于旧金山，拥有 420 多家客户，包括 Cisco、eBay、IBM 和 Siemens。
+
+[查看相关文档。][influxdata-doc]
+
+
 ## <a name="logic-monitor"></a>LogicMonitor
 LogicMonitor® 是适用于复杂 IT 基础结构的、基于 SaaS 的领先性能监视平台。 LogicMonitor 集数千种技术于一身，提供基础结构和应用程序性能的精细洞察数据。 LM Cloud 的综合性 Azure 监视功能可让用户通过单个平台来关联 Azure 云、本地资源和混合云资源的性能。 自动资源发现、内置监视模板、预配置的警报阈值和可自定义的仪表板相辅相成，可为 IT 人员带来速度优势、灵活性和可见性，让他们获得成功。
 
@@ -94,7 +100,10 @@ Microsoft Azure 自动化和控制工具可让用户实时观察 Azure 中部署
 
 Moogsoft AIOps 可将“事件引入到补救”工作流自动化，无需更改现有的流程和组织结构。 
 
-Moogsoft 在 Azure 资产中运行并与整个混合构造的监视和自动化工具集成， 可以提前主动检测影响应用程序的事件，动态协调相应的资源，使资源能够适应场合，同时减少补救以及对客户体验造成负面影响的平均时间。 
+Moogsoft 在 Azure 资产中运行并与整个混合构造的监视和自动化工具集成， Moogsoft 
+ - 可以提前主动检测影响应用程序的事件 
+ - 动态协调相应的资源，使资源能够适应场合 
+ - 减少补救以及对客户体验造成负面影响的平均时间。 
 
 [查看相关文档。][moogsoft-doc]
 
@@ -107,7 +116,7 @@ OpsGenie 充当 Azure 所生成的警报的发送器。 OpsGenie 根据值守计
 [查看相关文档。][opsgenie-doc]
 
 ## <a name="pagerduty"></a>PagerDuty
-PagerDuty 是行业领先的事件管理解决方案，为 Azure 指标警报提供一流的支持。 PagerDuty 支持 Azure Monitor 警报通知、自动缩放通知、审核日志事件通知，以及 Azure 服务的平台级指标通知。 可以通过这些增强功能进一步了解核心 Azure 平台。 可以充分利用 PagerDuty 的事件管理功能进行实时响应。 可以通过 Webhook 实现扩展的 Azure 集成。 可以通过 Webhook 轻松快捷地设置和自定义此解决方案。
+PagerDuty 是行业领先的事件管理解决方案，为 Azure 指标警报提供一流的支持。 PagerDuty 支持 Azure Monitor 警报通知、自动缩放通知、活动日志事件通知，以及 Azure 服务的平台级指标通知。 可以通过这些增强功能进一步了解核心 Azure 平台。 可以充分利用 PagerDuty 的事件管理功能进行实时响应。 可以通过 Webhook 实现扩展的 Azure 集成。 可以通过 Webhook 轻松快捷地设置和自定义此解决方案。
 
 [查看相关文档。][pagerduty-doc]
 
@@ -168,6 +177,7 @@ Turbonomic 为混合云提供工作负荷自动化解决方案，同时实时优
 [dynatrace-anchor]: #dynatrace "Dynatrace"
 [newrelic-anchor]: #newrelic "NewRelic"
 [grafana-anchor]: #grafana "Grafana"
+[influxdata-anchor]: #Influxdata "Influxdata"
 [logicmonitor-anchor]: #logic-monitor "Logic Monitor"
 [moogsoft-anchor]: #moogsoft "Moogsoft"
 [opsgenie-anchor]: #opsgenie "OpsGenie"
@@ -193,6 +203,7 @@ Turbonomic 为混合云提供工作负荷自动化解决方案，同时实时优
 [dynatrace-logo]: ./media/partner-logos/dynatrace.png
 [newrelic-logo]: ./media/partner-logos/newrelic.png
 [grafana-logo]: ./media/partner-logos/grafana.png
+[influxdata-logo]: ./media/partner-logos/influxdata.png
 [logicmonitor-logo]: ./media/partner-logos/logicmonitor.png
 [moogsoft-logo]: ./media/partner-logos/moogsoft.png
 [opsgenie-logo]: ./media/partner-logos/opsgenie.png
@@ -217,6 +228,7 @@ Turbonomic 为混合云提供工作负荷自动化解决方案，同时实时优
 [datadog-doc]: http://docs.datadoghq.com/integrations/azure/ "Datadog 文档。"
 [dynatrace-doc]: https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/ "Dynatrace 文档。"
 [grafana-doc]: ./monitor-send-to-grafana.md "Azure Monitor Grafana 集成。"
+[influxdata-doc]: ./metrics-store-custom-linux-telegraf.md "Azure Monitor Influxdata Telegraf 集成。"
 [logicmonitor-doc]: https://www.logicmonitor.com/lmcloud-azure/ "Logic Monitor 文档。"
 [moogsoft-doc]: https://www.moogsoft.com/partners/microsoft-azure "Moogsoft 文档。"
 [newrelic-doc]: https://newrelic.com/azure "NewRelic 文档。"

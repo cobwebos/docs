@@ -13,21 +13,20 @@ ms.workload: identity
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 3479aa8dd319c81f320b6c7ead086c266454acc6
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 8af6846da78d12460b7866297c9802c5dab20a69
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579589"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967517"
 ---
-# <a name="azure-ad-xamarin-getting-started"></a>Azure AD Xamarin 入门
-[!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
+# <a name="quickstart-build-a-xamarin-app-that-integrates-microsoft-sign-in"></a>快速入门：构建集成 Microsoft 登录的 Xamarin 应用
 
-[!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
+[!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
 借助 Xamarin，可以使用 C# 编写可在 iOS、Android 和 Windows（移动设备和电脑）上运行的移动应用。 如果使用 Xamarin 构建应用，可以通过 Azure Active Directory (Azure AD) 轻松使用用户的 Active Directory 帐户对其进行身份验证。 该应用还能安全使用 Azure AD 保护的任何 Web API，例如 Office 365 API 或 Azure API。
 
@@ -37,18 +36,21 @@ ms.locfileid: "39579589"
 * 使用单个可移植类库 (PCL) 对用户进行身份验证，并获取 Azure AD 图形 API 的令牌。
 * 在目录中搜索具有给定 UPN 的用户。
 
-## <a name="before-you-get-started"></a>准备工作
+## <a name="prerequisites"></a>先决条件
+
 * 下载[框架项目](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/skeleton.zip)，或下载[已完成的示例](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/complete.zip)。 每个下载内容都是 Visual Studio 2013 解决方案。
 * 还需要一个可在其中创建用户和注册应用的 Azure AD 租户。 如果还没有租户，请[了解如何获取租户](quickstart-create-new-tenant.md)。
 
 准备好后，请按照以下 4 个部分中的步骤操作。
 
 ## <a name="step-1-set-up-your-xamarin-development-environment"></a>步骤 1：设置 Xamarin 开发环境
+
 由于本教程包含 iOS、Android 和 Windows 的项目，因此需要 Visual Studio 和 Xamarin。 若要创建所需的环境，请完成 MSDN 上[设置和安装 Visual Studio 与 Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) 中的过程。 这些说明包含的材料可供你在等待安装完成时查看，以深入了解 Xamarin。
 
 完成设置后，在 Visual Studio 中打开解决方案。 可以看到六个项目：五个特定于平台的项目，一个要在所有平台之间共享的 PCL，即 DirectorySearcher.cs。
 
 ## <a name="step-2-register-the-directorysearcher-app"></a>步骤 2：注册 DirectorySearcher 应用
+
 若要让应用获取令牌，首先需要在 Azure AD 租户中注册该应用，并授予其访问 Azure AD 图形 API 的权限。 方法如下：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
@@ -63,6 +65,7 @@ ms.locfileid: "39579589"
 8. 选择“Microsoft Graph”作为 API。 在“委派权限”下面，添加“读取目录数据”权限。 此操作可让应用查询用户的图形 API。
 
 ## <a name="step-3-install-and-configure-adal"></a>步骤 3：安装并配置 ADAL
+
 将应用注册到 Azure AD 后，可以安装 ADAL 并编写标识相关的代码。 若要允许 ADAL 与 Azure AD 通信，请向其提供一些有关应用注册的信息。
 
 1. 使用包管理器控制台将 ADAL 添加到 DirectorySearcher 项目。
@@ -96,6 +99,7 @@ ms.locfileid: "39579589"
   * returnUri 是在门户中输入的重定向 URI （例如 http://DirectorySearcher)  。
 
 ## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>步骤 4：使用 ADAL 从 Azure AD 获取令牌
+
 几乎所有的应用的身份验证逻辑都位于 `DirectorySearcher.SearchByAlias(...)`。 在特定于平台的项目中，所要做的一切就是将上下文参数传递到 `DirectorySearcher` PCL。
 
 1. 打开 DirectorySearcher.cs，然后将一个新参数添加到 `SearchByAlias(...)` 方法。 `IPlatformParameters` 是上下文参数，用于封装 ADAL 需要对其执行身份验证的特定于平台的对象。
@@ -154,6 +158,7 @@ ms.locfileid: "39579589"
     ```
 
 ### <a name="windows-desktop"></a>Windows 桌面
+
 在 MainWindow.xaml.cs 中，只需调用 `SearchByAlias(...)`，并在桌面的 `PlatformParameters` 对象中传递 `WindowInteropHelper`：
 
 ```csharp
@@ -180,18 +185,18 @@ List<User> results = await DirectorySearcherLib.DirectorySearcher.SearchByAlias(
 ...
 ```
 
-## <a name="whats-next"></a>后续步骤
 现已创建一个正常运行的 Xamarin 应用，它可以对用户进行身份验证，并使用 OAuth 2.0 在五个不同的平台上安全调用 Web API。
+
+## <a name="step-5-populate-your-tenant"></a>步骤 5：填充租户 
 
 如果尚未在租户中填充用户，现在便可执行此操作。
 
 1. 运行 DirectorySearcher 应用，并使用其中一个用户进行登录。
 2. 根据用户的 UPN 搜索其他用户。
 
+## <a name="next-steps"></a>后续步骤
+
 使用 ADAL 可以方便地将常见标识功能合并到应用中。 它会负责所有的繁琐工作，例如缓存管理、OAuth 协议支持、向用户显示登录 UI，以及刷新过期令牌。 只需知道一个 API 调用，即 `authContext.AcquireToken*(…)`。
 
-有关参考，请下载[已完成的示例](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/complete.zip)（无配置值）。
-
-现在，可以转到其他标识方案。 例如，尝试[使用 Azure AD 保护 .NET Web API](quickstart-v1-dotnet-webapi.md)。
-
-[!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
+* 下载[已完成的示例](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/complete.zip)（无配置值）。
+* 了解如何[使用 Azure AD 保护 .NET Web API](quickstart-v1-dotnet-webapi.md)。

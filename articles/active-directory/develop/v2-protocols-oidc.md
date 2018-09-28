@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4c7b46972a8c07675e1318a900c1f07043beb3de
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 51c7bacbfa30a74aef89abba133e48c483375032
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591929"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971444"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Azure Active Directory v2.0 和 OpenID Connect 协议
 
@@ -139,7 +139,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 
 | 参数 | Description |
 | --- | --- |
-| id_token |应用请求的 ID 令牌。 可以使用 `id_token` 参数验证用户身份，并开始与该用户的会话。 有关 ID 令牌及其内容的详细信息，请参阅 [v2.0 终结点令牌参考](v2-id-and-access-tokens.md)。 |
+| id_token |应用请求的 ID 令牌。 可以使用 `id_token` 参数验证用户身份，并开始与该用户的会话。 有关 ID 令牌及其内容的详细信息，请参阅 [`id_tokens` 参考](id-tokens.md)。 |
 | state |如果请求中包含 `state` 参数，响应中应该出现相同的值。 应用程序应该验证请求和响应中的状态值是否完全相同。 |
 
 ### <a name="error-response"></a>错误响应
@@ -175,20 +175,18 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 ## <a name="validate-the-id-token"></a>验证 ID 令牌
 
-收到一个 ID 令牌并不表示可以对用户进行身份验证。 还必须根据应用要求，验证 ID 令牌的签名和令牌中的声明。 v2.0 终结点使用 [JSON Web Tokens (JWTs)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)（JSON Web 令牌 (JWT)）和公钥加密对令牌进行签名并验证其是否有效。
+仅接收 id_token 不足以验证用户，必须身份验证 id_token 签名，并按照应用的要求验证令牌中的声明。 v2.0 终结点使用 [JSON Web Tokens (JWTs)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)（JSON Web 令牌 (JWT)）和公钥加密对令牌进行签名并验证其是否有效。
 
-可以选择验证客户端代码中的 ID 令牌，但是常见的做法是将 ID 令牌发送到后端服务器，并在那里执行验证。 验证 ID 令牌签名后，需要验证几个声明。 有关详细信息（包括[验证令牌](v2-id-and-access-tokens.md#validating-tokens)的详细信息和[有关签名密钥滚动更新的重要信息](v2-id-and-access-tokens.md#validating-tokens)），请参阅 [v2.0 令牌参考](v2-id-and-access-tokens.md)。 建议使用库来分析和验证令牌。 这些库中至少有一个库可用于大多数语言和平台。
+可以选择验证客户端代码中的 `id_token`，但是常见的做法是将 `id_token` 发送到后端服务器，并在那里执行验证。 验证 id_token 的签名后，就有几项声明需要验证。 有关详细信息，请参阅 [`id_token` 参考](id-tokens.md)，其中包括[验证令牌](id-tokens.md#validating-idtokens)和[有关签名密钥滚动更新的重要信息](active-directory-signing-key-rollover.md)。 我们建议利用库来分析和验证令牌 - 对于大多数语言和平台至少有一个可用。
 <!--TODO: Improve the information on this-->
 
-根据具体情形，可能还需要验证其他声明。 一些常见的验证包括：
+可能还希望根据自己的方案验证其他声明。 一些常见的验证包括：
 
-* 确保用户/组织已注册该应用。
-* 确保用户具有必需的授权或特权。
+* 确保用户/组织已注册应用。
+* 确保用户拥有正确的授权/权限
 * 确保身份验证具有一定的强度，例如多重身份验证。
 
-有关 ID 令牌中声明的详细信息，请参阅 [v2.0 终结点令牌参考](v2-id-and-access-tokens.md)。
-
-验证 ID 令牌后，可以开始与用户的会话。 使用 ID 令牌中的声明来获取应用中用户的相关信息。 可以将此信息用于显示、记录、授权等。
+完全验证 id_token 后，即可开始与用户的会话，并使用 id_token 中的声明来获取应用中的用户相关信息。 此信息可用于显示、记录、个性化等。
 
 ## <a name="send-a-sign-out-request"></a>发送注销请求
 
@@ -257,7 +255,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 
 | 参数 | Description |
 | --- | --- |
-| id_token |应用请求的 ID 令牌。 可以使用 ID 令牌验证用户的身份，并开始与用户的会话。 有关 ID 令牌及其内容的详细信息，请参阅 [v2.0 终结点令牌参考](v2-id-and-access-tokens.md)。 |
+| id_token |应用请求的 ID 令牌。 可以使用 ID 令牌验证用户的身份，并开始与用户的会话。 有关 ID 令牌及其内容的详细信息，请参阅 [`id_tokens` 参考](id-tokens.md)。 |
 | 代码 |应用程序请求的授权代码。 应用程序可以使用授权代码请求目标资源的访问令牌。 授权代码生存期非常短。 通常情况下，授权代码会在约 10 分钟后过期。 |
 | state |如果请求中包含状态参数，响应中就应该出现相同的值。 应用程序应该验证请求和响应中的状态值是否完全相同。 |
 
@@ -280,4 +278,4 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 有关可能的错误代码的描述及建议的客户端响应，请参阅[授权终结点错误的错误代码](#error-codes-for-authorization-endpoint-errors)。
 
-如果拥有授权代码和 ID 令牌，可以登录用户并代表他们获取访问令牌。 若要登录用户，必须[完全按照上面所述](#validate-the-id-token)验证 ID 令牌。 若要获取访问令牌，请遵循 [OAuth 协议文档](v2-oauth2-auth-code-flow.md#request-an-access-token)中所述的步骤。
+如果拥有授权代码和 ID 令牌，可以登录用户并代表他们获取访问令牌。 若要登录用户，必须[完全按照上面所述](id-tokens.md#validating-idtokens)验证 ID 令牌。 若要获取访问令牌，请遵循 [OAuth 代码流文档](v2-oauth2-auth-code-flow.md#request-an-access-token)中所述的步骤。

@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 09/19/2018
 ms.author: mbullwin
-ms.openlocfilehash: 91c097d2ac661aa4ac9b578b7d9060b97ee6f549
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 093124432314472da06065fad3a7cdff0f558d22
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126167"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999811"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web 项目中的 Application Insights 入门
 
@@ -405,6 +405,30 @@ Application Insights 中显示两种类型的数据：聚合数据（存储并�
 ### <a name="unix-performance-counters"></a>Unix 性能计数器
 * [使用 Application Insights 插件安装 collectd](app-insights-java-collectd.md) ，获取各种不同的系统和网络数据。
 
+## <a name="local-forwarder"></a>本地转发器
+
+[本地转发器](https://docs.microsoft.com/azure/application-insights/local-forwarder)是从各种 SDK 和框架中收集 Application Insights 或 [OpenCensus](https://opencensus.io/) 遥测并将其路由到 Application Insights 的代理。 它能够在 Windows 和 Linux 下运行。
+
+```xml
+<Channel type="com.microsoft.applicationinsights.channel.concrete.localforwarder.LocalForwarderTelemetryChannel">
+<DeveloperMode>false</DeveloperMode>
+<EndpointAddress><!-- put the hostname:port of your LocalForwarder instance here --></EndpointAddress>
+<!-- The properties below are optional. The values shown are the defaults for each property -->
+<FlushIntervalInSeconds>5</FlushIntervalInSeconds><!-- must be between [1, 500]. values outside the bound will be rounded to nearest bound -->
+<MaxTelemetryBufferCapacity>500</MaxTelemetryBufferCapacity><!-- units=number of telemetry items; must be between [1, 1000] -->
+</Channel>
+```
+
+如果你使用的是 SpringBoot starter，请将以下内容添加到配置文件 (application.properies) 中：
+
+```yml
+azure.application-insights.channel.local-forwarder.endpoint-address=<!--put the hostname:port of your LocalForwarder instance here-->
+azure.application-insights.channel.local-forwarder.flush-interval-in-seconds=<!--optional-->
+azure.application-insights.channel.local-forwarder.max-telemetry-buffer-capacity=<!--optional-->
+```
+
+SpringBoot application.properties 和 applicationinsights.xml 配置的默认值是相同的。
+
 ## <a name="get-user-and-session-data"></a>获取用户和会话数据
 好了，现在正在从 Web 服务发送遥测数据。 若要获取应用程序的 360 度全方位视图，可以添加更多监视：
 
@@ -453,7 +477,7 @@ Application Insights 可以定期测试网站，检查网站是否正常运行�
 [apiexceptions]: app-insights-api-custom-events-metrics.md#trackexception
 [availability]: app-insights-monitor-web-app-availability.md
 [diagnostic]: app-insights-diagnostic-search.md
-[eclipse]: app-insights-java-eclipse.md
+[eclipse]: /app-insights-java-quick-start.md
 [javalogs]: app-insights-java-trace-logs.md
 [metrics]: app-insights-metrics-explorer.md
 [usage]: app-insights-javascript.md

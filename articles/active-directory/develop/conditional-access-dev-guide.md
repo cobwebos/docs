@@ -5,22 +5,21 @@ services: active-directory
 keywords: ''
 author: CelesteDG
 manager: mtillman
-editor: PatAltimore
 ms.author: celested
 ms.reviewer: dadobali
-ms.date: 07/19/2017
+ms.date: 09/24/2018
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: ab6936d62aac5502d70239bacfbfd15bd6b793ab
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 229f74367262e07128fa9ea6c895d448b854ae0a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42140839"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958248"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问的开发人员指南
 
@@ -40,9 +39,9 @@ ms.locfileid: "42140839"
 
 ### <a name="app-types-impacted"></a>受影响的应用类型
 
-通常，在多数情况下，条件性访问不会更改应用的行为或要求开发人员进行任何更改。 只有在特定情况下（应用以间接方式或无提示的方式请求服务令牌时），应用才需要进行代码更改以处理条件性访问“质询”。 此过程可能与执行交互式登录请求一样简单。 
+通常，在多数情况下，条件性访问不会更改应用的行为或要求开发人员进行任何更改。 只有在特定情况下（应用以间接方式或无提示的方式请求服务令牌时），应用才需要进行代码更改以处理条件性访问“质询”。 此过程可能与执行交互式登录请求一样简单。
 
-具体来说，在以下应用场景下需要代码来处理条件性访问“质询”： 
+具体来说，在以下应用场景下需要代码来处理条件性访问“质询”：
 
 * 访问 Microsoft Graph 的应用
 * 执行代理流的应用
@@ -147,7 +146,7 @@ www-authenticate="Bearer realm="", authorization_uri="https://login.windows.net/
 
 ## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>应用场景：执行代理流的应用
 
-在此应用场景中，我们将演示本机应用调用 Web 服务/API 时的场景。 相反的是，此服务将执行[“代理”流](authentication-scenarios.md#application-types-and-scenarios)来调用下游服务。 在本示例中，我们已向下游服务 (Web API 2) 应用条件性访问策略，并且使用的是本机应用，而非服务器/守护程序应用。 
+在此应用场景中，我们将演示本机应用调用 Web 服务/API 时的场景。 从而，此服务将执行“代理”流来调用下游服务。 在本示例中，我们已向下游服务 (Web API 2) 应用条件性访问策略，并且使用的是本机应用，而非服务器/守护程序应用。 
 
 ![执行代理流的应用示意图](./media/conditional-access-dev-guide/app-performing-on-behalf-of-scenario.png)
 
@@ -192,7 +191,7 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 ## <a name="scenario-single-page-app-spa-using-adaljs"></a>应用场景：使用 ADAL.js 的单页应用 (SPA)
 
-在此应用场景中，我们将演示单页应用 (SPA) 使用 ADAL.js 调用条件性访问保护的 Web API 时的场景。 这是一个简单的体系结构，但围绕条件性访问进行开发时需要注意一些细微差异。
+在此应用场景中，我们将演示单页应用 (SPA) 使用 ADAL.js 调用条件访问保护的 Web API 时的场景。 这是一个简单的体系结构，但围绕条件性访问进行开发时需要注意一些细微差异。
 
 在 ADAL.js 中，有多个获取令牌的函数：`login()`、`acquireToken(...)`、`acquireTokenPopup(…)` 和 `acquireTokenRedirect(…)`。 
 
