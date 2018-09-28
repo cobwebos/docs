@@ -8,12 +8,12 @@ ms.date: 02/15/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9064e0da6dde6c4b30235adf771f06a4f25d709a
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 76b0bab0f2eb34d7283d38eb0442f4f2f2083db3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42141430"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995360"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>了解 Azure IoT Edge 模块
 
@@ -67,7 +67,7 @@ Twin twin = await client.GetTwinAsync();
 
 ## <a name="offline-capabilities"></a>脱机功能
 
-Azure IoT Edge 支持在 IoT Edge 设备上执行脱机操作。 目前，这些功能有限，我们正在开发更多的方案。 
+Azure IoT Edge 支持在 IoT Edge 设备上执行脱机操作。 现在，这些功能受限。 
 
 只要满足以下要求，IoT Edge 模块可以长时间内处于脱机状态： 
 
@@ -75,6 +75,8 @@ Azure IoT Edge 支持在 IoT Edge 设备上执行脱机操作。 目前，这些
 * **当处于脱机状态时，模块不需要通过 IoT Edge 中心重新进行身份验证**。 模块可以仅通过与 IoT 中心之间具有活动连接的 Edge 中心进行身份验证。 如果模块因任何原因而重启，则它们需要重新进行身份验证。 模块的 SAS 令牌过期后，模块仍然可以向 Edge 中心发送消息。 当连接恢复时，Edge 中心会向模块请求一个新令牌，并通过 IoT 中心验证该令牌。 如果成功，Edge 中心会转发它存储的模块消息，即使该消息在模块的令牌过期时已发送过。 
 * **在脱机状态下发送消息的模块在连接恢复时仍然会工作**。 在重新连接到 IoT 中心时，Edge 中心需要对新的模块令牌进行验证（如果以前的令牌已过期），然后才能转发模块消息。 如果模块不可用来提供新令牌，则 Edge 中心无法对模块的已存储消息进行操作。 
 * **Edge 中心利用磁盘空间来存储消息**。 默认情况下，消息存储在 Edge 中心容器的文件系统中。 有一个配置选项可用来指定改为使用装载的卷来存储消息。 在任一情况下，都需要有空间可用来存储延迟传递到 IoT 中心的消息。  
+
+公共预览版中提供了其他脱机功。能。 有关详细信息，请参阅[了解 IoT Edge 设备、模块和子设备的扩展脱机功能](offline-capabilities.md)。
 
 ## <a name="next-steps"></a>后续步骤
  - [了解 Azure IoT Edge 运行时及其体系结构][lnk-runtime]

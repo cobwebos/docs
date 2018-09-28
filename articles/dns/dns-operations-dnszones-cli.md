@@ -1,6 +1,6 @@
 ---
-title: 在 Azure DNS 中管理 DNS 区域 - Azure CLI 2.0 | Microsoft 文档
-description: 可以使用 Azure CLI 2.0 管理 DNS 区域。 本文介绍如何在 Azure DNS 上更新、删除和创建 DNS 区域。
+title: 在 Azure DNS 中管理 DNS 区域 - Azure CLI | Microsoft Docs
+description: 可以使用 Azure CLI 管理 DNS 区域。 本文介绍如何在 Azure DNS 上更新、删除和创建 DNS 区域。
 services: dns
 documentationcenter: na
 author: vhorne
@@ -13,30 +13,30 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: victorh
-ms.openlocfilehash: c81d8add7ae37e03a98da0ad86deaa1d9d7ec8e0
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 7f132c513354a87b4f1bd37db4c6c6ed8e0fd041
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172613"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949955"
 ---
-# <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli-20"></a>如何使用 Azure CLI 2.0 管理 Azure DNS 中的 DNS 区域
+# <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>如何使用 Azure CLI 管理 Azure DNS 中的 DNS 区域
 
 > [!div class="op_single_selector"]
 > * [门户](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
-> * [Azure CLI 2.0](dns-operations-dnszones-cli.md)
+> * [Azure CLI](dns-operations-dnszones-cli.md)
 
 
 本指南介绍如何通过使用适用于 Windows、Mac 和 Linux 的跨平台 Azure CLI 管理 DNS 区域。 也可以使用 [Azure PowerShell](dns-operations-dnszones.md) 或 Azure 门户管理 DNS 记区域。
 
-本指南专门介绍公共 DNS 区域。 有关使用 Azure CLI 管理 Azure DNS 中专用区域的详细信息，请参阅[使用 Azure CLI 2.0 开始使用 Azure DNS 专用区域](private-dns-getstarted-cli.md)。
+本指南专门介绍公共 DNS 区域。 有关使用 Azure CLI 管理 Azure DNS 中专用区域的详细信息，请参阅[使用 Azure CLI 开始使用 Azure DNS 专用区域](private-dns-getstarted-cli.md)。
 
 ## <a name="introduction"></a>介绍
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
-## <a name="set-up-azure-cli-20-for-azure-dns"></a>设置适用于 Azure DNS 的 Azure CLI 2.0
+## <a name="set-up-azure-cli-for-azure-dns"></a>设置适用于 Azure DNS 的 Azure CLI
 
 ### <a name="before-you-begin"></a>开始之前
 
@@ -44,7 +44,7 @@ ms.locfileid: "39172613"
 
 * Azure 订阅。 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
-* 安装最新版本的 Azure CLI 2.0（在 Windows、Linux 或 MAC 中可用）。 有关详细信息，请参阅 [安装 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2)。
+* 安装最新版本的 Azure CLI（在 Windows、Linux 或 MAC 中可用）。 有关详细信息，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2)。
 
 ### <a name="sign-in-to-your-azure-account"></a>登录到 Azure 帐户
 
@@ -86,7 +86,7 @@ az group create --name myresourcegroup --location "West US"
 
 ## <a name="getting-help"></a>获取帮助
 
-与 Azure DNS 相关的所有 CLI 2.0 命令都以 `az network dns` 开头。 可使用 `--help` 选项（缩写形式 `-h`）获取有关每个命令的帮助。  例如：
+与 Azure DNS 相关的所有 Azure CLI 命令都以 `az network dns` 开头。 可使用 `--help` 选项（缩写形式 `-h`）获取有关每个命令的帮助。  例如：
 
 ```azurecli
 az network dns --help

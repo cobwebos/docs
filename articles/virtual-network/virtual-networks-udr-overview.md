@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: b206d93d7c72f5d8ff3dd3baa277cd0db33ba583
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 97e192312619455c0055a917df880cc48eb082dd
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42811907"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978893"
 ---
 # <a name="virtual-network-traffic-routing"></a>虚拟网络流量路由
 
@@ -105,13 +105,13 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
 
 下一跃点类型的显示和引用名称在 Azure 门户和命令行工具以及 Azure 资源管理器部署模型和经典部署模型中并不相同。 下表列出了在不同的工具和[部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)中引用每个下一跃点类型时所使用的名称：
 
-|下一跃点类型                   |Azure CLI 2.0 和 PowerShell（资源管理器） |Azure CLI 1.0 和 PowerShell（经典）|
+|下一跃点类型                   |Azure CLI 和 PowerShell（资源管理器） |Azure 经典 CLI 和 PowerShell（经典）|
 |-------------                   |---------                                       |-----|
 |虚拟网络网关         |VirtualNetworkGateway                           |VPNGateway|
-|虚拟网络                 |VNetLocal                                       |VNETLocal（不适用于 CLI 1.0 的 asm 模式）|
-|Internet                        |Internet                                        |Internet（不适用于 CLI 1.0 的 asm 模式）|
+|虚拟网络                 |VNetLocal                                       |VNETLocal（不适用于 asm 模式下的经典 CLI）|
+|Internet                        |Internet                                        |Internet（不适用于 asm 模式下的经典 CLI）|
 |虚拟设备               |VirtualAppliance                                |VirtualAppliance|
-|无                            |无                                            |Null（不适用于 CLI 1.0 的 asm 模式）|
+|无                            |无                                            |Null（不适用于 asm 模式下的经典 CLI）|
 |虚拟网络对等互连         |VNet 对等互连                                    |不适用|
 |虚拟网络服务终结点|VirtualNetworkServiceEndpoint                   |不适用|
 

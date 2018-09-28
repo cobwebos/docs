@@ -1,6 +1,6 @@
 ---
-title: 自定义 Azure 应用程序网关的 Web 应用程序防火墙规则 - Azure CLI 2.0 | Microsoft Docs
-description: 本文将介绍如何使用 Azure CLI 2.0 自定义应用程序网关的 Web 应用程序防火墙规则。
+title: 自定义 Azure 应用程序网关的 Web 应用程序防火墙规则 - Azure CLI | Microsoft Docs
+description: 本文将介绍如何使用 Azure CLI 自定义应用程序网关的 Web 应用程序防火墙规则。
 documentationcenter: na
 services: application-gateway
 author: vhorne
@@ -14,19 +14,19 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: victorh
-ms.openlocfilehash: b0bd79bb7ce584a9abaffbb6c30d6fbfe64f87c2
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: c02e4edabdcb73bc14c64b42788cddc98d78498c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33204201"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964115"
 ---
-# <a name="customize-web-application-firewall-rules-through-the-azure-cli-20"></a>通过 Azure CLI 2.0 自定义 Web 应用程序防火墙规则
+# <a name="customize-web-application-firewall-rules-through-the-azure-cli"></a>通过 Azure CLI 自定义 Web 应用程序防火墙规则
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](application-gateway-customize-waf-rules-portal.md)
 > * [PowerShell](application-gateway-customize-waf-rules-powershell.md)
-> * [Azure CLI 2.0](application-gateway-customize-waf-rules-cli.md)
+> * [Azure CLI](application-gateway-customize-waf-rules-cli.md)
 
 Azure 应用程序网关 Web 应用程序防火墙 (WAF) 可为 Web 应用程序提供保护。 这些保护通过打开 Web 应用程序安全性项目 (OWASP) 核心规则集 (CRS) 来提供。 某些规则可能会导致误报，并会阻止实际流量。 出于此原因，应用程序网关提供了自定义规则组和规则的功能。 有关特定规则组和规则的详细信息，请参阅 [Web 应用程序防火墙 CRS 规则组和规则列表](application-gateway-crs-rulegroups-rules.md)。
 

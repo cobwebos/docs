@@ -1,6 +1,6 @@
 ---
-title: 使用 CLI 2.0 在 Azure 中捕获 Linux VM 的映像 | Microsoft Docs
-description: 使用 Azure CLI 2.0 捕获 Azure VM 的映像以用于批量部署。
+title: 使用 Azure CLI 在 Azure 中捕获 Linux VM 的映像 | Microsoft 文档
+description: 使用 Azure CLI 捕获 Azure VM 的映像以用于批量部署。
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: cynthn
-ms.openlocfilehash: ea202cad06130cfaaa134cad94ac08bede2f41a9
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 98d98c1337830ce54c7ff96c19812169be129584
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867695"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946810"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>如何创建虚拟机或 VHD 的映像
 
@@ -38,7 +38,7 @@ ms.locfileid: "37867695"
 
 * 需要使用托管磁盘在 Resource Manager 部署模型中创建 Azure VM。 如果尚未创建 Linux VM，则可以使用[门户](quick-create-portal.md)、[Azure CLI](quick-create-cli.md) 或 [Resource Manager 模板](create-ssh-secured-vm-from-template.md)。 根据需要配置 VM。 例如， [添加数据磁盘](add-disk.md)、应用更新和安装应用程序。 
 
-* 还需要安装最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2) 并已使用 [az login](/cli/azure/reference-index#az_login) 登录到 Azure 帐户。
+* 另外，还需要安装最新的 [Azure CLI](/cli/azure/install-az-cli2)，并且已使用 [az login](/cli/azure/reference-index#az_login) 登录到 Azure 帐户。
 
 ## <a name="quick-commands"></a>快速命令
 
@@ -62,7 +62,7 @@ ms.locfileid: "37867695"
 4. 该命令完成后，键入 **exit**。 此步骤将关闭 SSH 客户端。
 
 ## <a name="step-2-create-vm-image"></a>步骤 2：创建 VM 映像
-使用 Azure CLI 2.0 将 VM 标记为通用化并捕获映像。 在以下示例中，请将示例参数名称替换为自己的值。 示例参数名称包括 *myResourceGroup*、*myVnet* 和 *myVM*。
+使用 Azure CLI 将 VM 标记为通用化并捕获映像。 在以下示例中，请将示例参数名称替换为自己的值。 示例参数名称包括 *myResourceGroup*、*myVnet* 和 *myVM*。
 
 1. 对使用 [az vm deallocate](/cli//azure/vm#deallocate) 取消设置的 VM 解除分配。 以下示例在名为 myResourceGroup 的资源组中释放名为 myVM 的 VM：
    
@@ -146,4 +146,4 @@ az vm show \
 - 再次执行相关步骤，对 VM 执行取消预配、解除分配、通用化和创建操作。
 - 将此新映像用于将来的部署。 如果需要，请删除原始映像。
 
-有关使用 CLI 管理 VM 的详细信息，请参阅 [Azure CLI 2.0](/cli/azure)。
+有关使用 CLI 管理 VM 的详细信息，请参阅 [Azure CLI](/cli/azure)。

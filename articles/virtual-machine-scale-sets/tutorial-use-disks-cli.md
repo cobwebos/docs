@@ -1,6 +1,6 @@
 ---
-title: 教程 - 通过 Azure CLI 2.0 创建和使用规模集的磁盘 | Microsoft Docs
-description: 了解如何通过 Azure CLI 2.0 对虚拟机规模集创建和使用托管磁盘，包括如何添加、准备、列出和分离磁盘。
+title: 教程 - 通过 Azure CLI 创建和使用规模集的磁盘 | Microsoft Docs
+description: 了解如何通过 Azure CLI 对虚拟机规模集创建和使用托管磁盘，包括如何添加、准备、列出和分离磁盘。
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3c34ebda3700bb34952fb067bc965069004aee75
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: ae26e851e60f654a502779fe2a8b41e13dc47915
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38719473"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993623"
 ---
-# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli-20"></a>教程：通过 Azure CLI 2.0 对虚拟机规模集创建和使用磁盘
+# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>教程：通过 Azure CLI 对虚拟机规模集创建和使用磁盘
 虚拟机规模集使用磁盘来存储 VM 实例的操作系统、应用程序和数据。 创建和管理规模集时，请务必选择适用于所需工作负荷的磁盘大小和配置。 本教程介绍如何创建和管理 VM 磁盘。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
@@ -37,7 +37,7 @@ ms.locfileid: "38719473"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装和使用 CLI，本教程要求运行 Azure CLI 2.0.29 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
+如果选择在本地安装和使用 CLI，本教程要求运行 Azure CLI 2.0.29 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 
 ## <a name="default-azure-disks"></a>默认 Azure 磁盘
@@ -298,7 +298,7 @@ az group delete --name myResourceGroup --no-wait --yes
 
 
 ## <a name="next-steps"></a>后续步骤
-本教程介绍了如何通过 Azure CLI 2.0 创建和使用规模集的磁盘：
+本教程介绍了如何通过 Azure CLI 创建和使用规模集的磁盘：
 
 > [!div class="checklist"]
 > * OS 磁盘和临时磁盘

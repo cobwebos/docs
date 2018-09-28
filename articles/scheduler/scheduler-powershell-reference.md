@@ -1,35 +1,30 @@
 ---
-title: 计划程序 PowerShell Cmdlet 参考
-description: 计划程序 PowerShell Cmdlet 参考
+title: PowerShell cmdlet 参考 - Azure 计划程序
+description: 了解 Azure 计划程序 PowerShell cmdlet
 services: scheduler
-documentationcenter: .NET
-author: derek1ee
-manager: kevinlam1
-editor: ''
-ms.assetid: 9a26c457-d7a1-4e4a-bc79-f26592155218
 ms.service: scheduler
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+author: derek1ee
+ms.author: deli
+ms.reviewer: klam
+ms.assetid: 9a26c457-d7a1-4e4a-bc79-f26592155218
 ms.topic: article
 ms.date: 08/18/2016
-ms.author: deli
-ms.openlocfilehash: 141919ab4506b3de4c4a69670dcf54c60ee6409c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a06439150ac255e7b436082ecc88702bf0c1dec1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23039832"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991090"
 ---
-# <a name="scheduler-powershell-cmdlets-reference"></a>计划程序 PowerShell Cmdlet 参考
-下表介绍 Azure 计划程序中每个主要 cmdlet 的参考页并链接到该页。
+# <a name="powershell-cmdlets-reference-for-azure-scheduler"></a>Azure 计划程序 PowerShell cmdlet 参考
 
-要安装 Azure PowerShell 并将其与 Azure 订阅相关联，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 
+> [!IMPORTANT]
+> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)正在替换即将停用的 Azure 计划程序。 若要计划作业，请[改用 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
 
-有关 [Azure Resource Manager cmdlet](/powershell/azure/overview) 的详细信息，请参阅[将 Azure PowerShell 与 Azure Resource Manager 配合使用](../powershell-azure-resource-manager.md)。
+若要编写脚本以创建和管理计划程序作业和作业集合，可以使用 PowerShell cmdlet。 本文列出了主要 [ Azure 计划程序 PowerShell cmdlet](/powershell/module/azurerm.scheduler)，以及指向其参考文章的链接。 要为 Azure 订阅安装 Azure PowerShell，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 有关 [Azure 资源管理器 cmdlet](/powershell/azure/overview) 的详细信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../powershell-azure-resource-manager.md)。
 
-| Cmdlet | Cmdlet 说明 |
-| --- | --- |
+| Cmdlet | Description |
+|--------|-------------|
 | [Disable-AzureRmSchedulerJobCollection](/powershell/module/azurerm.scheduler/disable-azurermschedulerjobcollection) |禁用某一作业集合。 |
 | [Enable-AzureRmSchedulerJobCollection](/powershell/module/azurerm.scheduler/enable-azurermschedulerjobcollection) |启用某一作业集合。 |
 | [Get-AzureRmSchedulerJob](/powershell/module/azurerm.scheduler/get-azurermschedulerjob) |获取计划程序作业。 |
@@ -37,7 +32,7 @@ ms.locfileid: "23039832"
 | [Get-AzureRmSchedulerJobHistory](/powershell/module/azurerm.scheduler/get-azurermschedulerjobhistory) |获取作业历史记录。 |
 | [New-AzureRmSchedulerHttpJob](/powershell/module/azurerm.scheduler/new-azurermschedulerhttpjob) |创建 HTTP 作业。 |
 | [New-AzureRmSchedulerJobCollection](/powershell/module/azurerm.scheduler/new-azurermschedulerjobcollection) |创建作业集合。 |
-| [New-AzureRmSchedulerServiceBusQueueJob](/powershell/module/azurerm.scheduler/new-azurermschedulerservicebusqueuejob) |创建服务总线队列作业。 |
+| [New-AzureRmSchedulerServiceBusQueueJob](/powershell/module/azurerm.scheduler/new-azurermschedulerservicebusqueuejob) | 创建服务总线队列作业。 |
 | [New-AzureRmSchedulerServiceBusTopicJob](/powershell/module/azurerm.scheduler/new-azurermschedulerservicebustopicjob) |创建服务总线主题作业。 |
 | [New-AzureRmSchedulerStorageQueueJob](/powershell/module/azurerm.scheduler/new-azurermschedulerstoragequeuejob) |创建存储队列作业。 |
 | [Remove-AzureRmSchedulerJob](/powershell/module/azurerm.scheduler/remove-azurermschedulerjob) |删除计划程序作业。 |
@@ -47,33 +42,19 @@ ms.locfileid: "23039832"
 | [Set-AzureRmSchedulerServiceBusQueueJob](/powershell/module/azurerm.scheduler/set-azurermschedulerservicebusqueuejob) |修改服务总线队列作业。 |
 | [Set-AzureRmSchedulerServiceBusTopicJob](/powershell/module/azurerm.scheduler/set-azurermschedulerservicebustopicjob) |修改服务总线主题作业。 |
 | [Set-AzureRmSchedulerStorageQueueJob](/powershell/module/azurerm.scheduler/set-azurermschedulerstoragequeuejob) |修改存储队列作业。 |
+||| 
 
-若要获取详细信息，可以运行以下任意 cmdlet： 
+有关详细信息，可以运行以下任何 cmdlet： 
 
 ```
 Get-Help <cmdlet name> -Detailed
-```
-```
 Get-Help <cmdlet name> -Examples
-```
-```
 Get-Help <cmdlet name> -Full
 ```
 
 ## <a name="see-also"></a>另请参阅
- [计划程序是什么？](scheduler-intro.md)
 
- [Azure 计划程序的概念、术语和实体层次结构](scheduler-concepts-terms.md)
-
- [开始在 Azure 门户中使用计划程序](scheduler-get-started-portal.md)
-
- [Azure 计划程序中的计划和计费](scheduler-plans-billing.md)
-
- [Azure 计划程序 REST API 参考](https://msdn.microsoft.com/library/mt629143)
-
- [Azure 计划程序的高可用性和可靠性](scheduler-high-availability-reliability.md)
-
- [Azure 计划程序的限制、默认值和错误代码](scheduler-limits-defaults-errors.md)
-
- [Azure 计划程序出站身份验证](scheduler-outbound-authentication.md)
-
+* [什么是 Azure 计划程序？](scheduler-intro.md)
+* [概念、术语和实体层次结构](scheduler-concepts-terms.md)
+* [创建和计划第一个作业 - Azure 门户](scheduler-get-started-portal.md)
+* [Azure 计划程序 REST API 参考](https://msdn.microsoft.com/library/mt629143)

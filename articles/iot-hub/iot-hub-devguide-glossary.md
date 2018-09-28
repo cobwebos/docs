@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 1a5df1081edeb8b8e7520064a71534f70a9a9d33
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 575326ee3bd2cb64b2cb65168f23f7fe97dad029
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344294"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954392"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT 中心术语词汇表
 本文列出了一些在 IoT 中心文章中使用的常用术语。
@@ -27,11 +27,11 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 ## <a name="automatic-device-configuration"></a>自动设备配置
 解决方案后端可以使用[自动设备配置](iot-hub-auto-device-config.md)将所需属性分配到一组[设备孪生](#device-twin)，并使用系统指标和自定义指标来报告状态。 
 
-## <a name="azure-cli"></a>Azure CLI
-[Azure CLI](../cli-install-nodejs.md) 是一个跨平台、开源、基于 shell 的命令工具，适用于在 Microsoft Azure 中创建和管理资源。 此版本的 CLI 通过 Node.js 实现。
+## <a name="azure-classic-cli"></a>Azure 经典 CLI
+[Azure 经典 CLI](../cli-install-nodejs.md) 是一个跨平台、开放源代码、基于 shell 的命令工具，适用于在 Microsoft Azure 中创建和管理资源。 此版本的 CLI 仅应用于经典部署。
 
-## <a name="azure-cli-20"></a>Azure CLI 2.0
-[Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) 是一个跨平台、开源、基于 shell 的命令工具，适用于在 Microsoft Azure 中创建和管理资源。 此预览版的 CLI 通过 Python 实现。
+## <a name="azure-cli"></a>Azure CLI
+[Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2) 是一个跨平台、开源、基于 shell 的命令工具，适用于在 Microsoft Azure 中创建和管理资源。
 
 
 ## <a name="azure-iot-device-sdks"></a>Azure IoT 设备 SDK
@@ -185,8 +185,8 @@ IoT 中心是完全托管的 Azure 服务，用于支持数百万台设备和解
 ## <a name="iot-solution-accelerators"></a>IoT 解决方案加速器
 Azure IoT 解决方案加速器将多个 Azure 服务一起打包到解决方案中。 利用这些解决方案，能够快速开始使用常用 IoT 方案的端到端实现。 有关详细信息，请参阅 [Azure IoT 解决方案加速器是什么？](../iot-accelerators/about-iot-accelerators.md)
 
-## <a name="the-iot-extension-for-azure-cli-20"></a>适用于 Azure CLI 2.0 的 IoT 扩展
-[适用于 Azure CLI 2.0 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)是一个跨平台的命令行工具。 使用该工具可以管理[标识注册表](#identity-registry)中的设备、向设备发送消息和文件和接收来自设备的消息和文件，以及监视 IoT 中心的操作。
+## <a name="the-iot-extension-for-azure-cli"></a>适用于 Azure CLI 的 IoT 扩展 
+[适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)是一个跨平台的命令行工具。 使用该工具可以管理[标识注册表](#identity-registry)中的设备、向设备发送消息和文件和接收来自设备的消息和文件，以及监视 IoT 中心的操作。
 
 ## <a name="job"></a>作业
 解决方案后端可以使用[作业](iot-hub-devguide-jobs.md)来计划和跟踪在 IoT 中心注册的一组设备上的活动。 活动包括更新设备孪生[所需的属性](#desired-properties)、更新设备孪生[标记](#tags)，以及调用[直接方法](#direct-method)。 [IoT 中心](#iot-hub)还用于在[标识注册表](#identity-registry)中[导入和导出](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)内容。

@@ -3,7 +3,6 @@ title: 机器学习算法备忘单 - Azure | Microsoft Docs
 description: 可打印的机器学习算法备忘单可帮助在 Azure 机器学习工作室中为预测模型选择正确的算法。
 keywords: 算法备忘单，备忘单，机器学习算法
 services: machine-learning
-documentationcenter: ''
 author: pakalra
 ms.author: pakalra
 manager: cgronlun
@@ -11,51 +10,39 @@ editor: cgronlun
 ms.assetid: e1dc31ec-1acb-463f-ba77-de565d4ddf4d
 ms.service: machine-learning
 ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: b080a739aa73e3c8ef95c7db9a6358d942e94bba
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 56fadde5694dbd298c812db258105e03b7d23d45
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238380"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996734"
 ---
-# <a name="machine-learning-algorithm-cheat-sheet-for-microsoft-azure-machine-learning-studio"></a>Microsoft Azure 机器学习工作室机器学习算法备忘单
-**Microsoft Azure 机器学习算法备忘单**可帮助为预测分析模型选择正确的算法。
+# <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-studio"></a>Azure 机器学习工作室机器学习算法备忘单
+
+“Azure 机器学习算法备忘单”可帮助为预测分析模型选择正确的算法。
 
 [Azure 机器学习工作室](https://studio.azureml.net/)拥有一个大型算法库，包括回归、分类、聚类分析和异常检测系列。 每一类算法都可用于解决一种类型的机器学习问题。
 
 ## <a name="download-machine-learning-algorithm-cheat-sheet"></a>下载：机器学习算法备忘单
-**在此处下载该备忘单：[机器学习算法备忘单（11x17 英寸）](http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v6.pdf)**
+
+**在此处下载该备忘单：[机器学习算法备忘单（11x17 英寸）](http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v7.pdf)**
 
 ![机器学习算法备忘单：了解如何选择机器学习算法。][cheat-sheet]
 
 [cheat-sheet]: ./media/algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet-small_v_0_6-01.png
 
-下载该机器学习算法备忘单，并将其打印为 Tabloid 大小，既方便携带又可帮助你选择算法。
+下载该机器学习工作室算法备忘单，并将其打印为 Tabloid 大小，既方便携带又可帮助你选择算法。
 
 > [!NOTE]
-> 请参阅 [How to choose algorithms for Microsoft Azure Machine Learning](algorithm-choice.md)（如何选择 Microsoft Azure 机器学习算法），获取有关使用此备忘单的详细指南。
-> 
-> 
+> 如需如何使用此备忘单选择正确算法的帮助，以及不同类型的机器学习算法及其使用方式的深入探讨，请参阅 [How to choose algorithms for Microsoft Azure Machine Learning](algorithm-choice.md)（如何选择 Microsoft Azure 机器学习算法）。
 
-## <a name="more-help-with-algorithms"></a>有关算法的跟多帮助
-* 如需如何使用此备忘单选择正确算法的帮助，以及不同类型的机器学习算法及其使用方式的深入探讨，请参阅 [How to choose algorithms for Microsoft Azure Machine Learning](algorithm-choice.md)（如何选择 Microsoft Azure 机器学习算法）。
-* 有关说明算法并提供示例的可下载信息图，请参阅[可下载的信息图：包含算法示例的机器学习基础知识](basics-infographic-with-algorithm-examples.md)。
-* 有关机器学习工作室中所有可用的机器学习算法的种类列表，请参阅“机器学习工作室算法和模块帮助”中的[初始化模型][initialize-model]。
-* 有关机器学习工作室中算法和模块的完整列表（按字母顺序排列），请参阅“机器学习工作室算法和模块帮助”中的[机器学习工作室模块 A-Z 列表][a-z-list]。
-* 若要下载和打印 Microsoft Azure 机器学习工作室功能概述示意图，请参阅 [Overview diagram of Azure Machine Learning Studio capabilities](studio-overview-diagram.md)（Azure Machine 机器学习工作室功能概述）。
-
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-
-## <a name="notes-and-terminology-definitions-for-the-machine-learning-algorithm-cheat-sheet"></a>机器学习算法备忘单的说明和术语定义
+## <a name="notes-and-terminology-definitions-for-the-machine-learning-studio-algorithm-cheat-sheet"></a>机器学习工作室算法备忘单的说明和术语定义
 
 * 此算法备忘单中提供的建议近似于经验法则。 一些可以不完全照做，一些可以大胆地违反。 它旨在建议一个起点。 不要担心几种算法之间对数据运行正面竞争。 只需了解每种算法的原理和了解生成数据的系统，此外别无选择。
 
-* 每种机器学习算法都有自己的样式或*归纳偏差*。 对于特定问题，可能有几种算法合适，但会有一种算法可能比其他算法更合适。 但并非总是可以预先知道哪种是最合适的。 在这些情况下，会在备忘单中列出几种算法。 适当的策略是尝试一种算法，如果结果尚不令人满意，则尝试其他算法。 下面是 [Azure AI 库](http://gallery.cortanaintelligence.com/)中的一个试验示例。该试验对相同数据尝试多种算法并对结果进行比较：[比较多类分类器：字母识别](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92)。
+* 每种机器学习算法都有自己的样式或*归纳偏差*。 对于特定问题，可能有几种算法合适，但会有一种算法可能比其他算法更合适。 但并非总是可以预先知道哪种是最合适的。 在这些情况下，会在备忘单中列出几种算法。 适当的策略是尝试一种算法，如果结果尚不令人满意，则尝试其他算法。 下面是 [Azure AI 库](http://gallery.azure.ai/)中的一个试验示例。该试验对相同数据尝试多种算法并对结果进行比较：[比较多类分类器：字母识别](http://gallery.azure.ai/Details/a635502fc98b402a890efe21cec65b92)。
 
 * 有三种主要类别的机器学习：**监督式学习**、**非监督式学习**和**强化学习**。
 
@@ -75,15 +62,20 @@ ms.locfileid: "39238380"
 
 * 可以将神经网络与类别变量配合使用，方法是为每个类别创建一个**虚拟变量**，并在类别适用时将该变量设置为 1，不适用时将该变量设置为 0。
 
+## <a name="next-steps"></a>后续步骤
 
-<!-- This is how you can embed a link in an image in HTML. Don't know how to do this in markdown.
-<a href="http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet.pdf">
-<img src="C:\Users\garye\azure-docs-pr\articles\media\machine-learning-algorithm-cheat-sheet\cheat-sheet-small.png">
-</a>
--->
+* 有关说明算法并提供示例的可下载信息图，请参阅[可下载的信息图：包含算法示例的机器学习基础知识](basics-infographic-with-algorithm-examples.md)。
+
+* 有关机器学习工作室中所有可用的机器学习算法的种类列表，请参阅“机器学习工作室算法和模块帮助”中的[初始化模型][initialize-model]。
+
+* 有关机器学习工作室中算法和模块的完整列表（按字母顺序排列），请参阅“机器学习工作室算法和模块帮助”中的[机器学习工作室模块 A-Z 列表][a-z-list]。
+
+* 若要下载和打印 Microsoft Azure 机器学习工作室功能概述示意图，请参阅 [Overview diagram of Azure Machine Learning Studio capabilities](studio-overview-diagram.md)（Azure Machine 机器学习工作室功能概述）。
+
+[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 <!-- Module References -->
-[a-z-list]: https://msdn.microsoft.com/library/azure/dn906033.aspx
-[initialize-model]: https://msdn.microsoft.com/library/azure/0c67013c-bfbc-428b-87f3-f552d8dd41f6/
-[k-means-clustering]: https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/
-[one-vs-all-multiclass]: https://msdn.microsoft.com/library/azure/7191efae-b4b1-4d03-a6f8-7205f87be664/
+[a-z-list]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/a-z-module-list
+[initialize-model]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/machine-learning-initialize-model
+[k-means-clustering]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/k-means-clustering
+[one-vs-all-multiclass]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/one-vs-all-multiclass

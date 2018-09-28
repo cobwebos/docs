@@ -1,23 +1,23 @@
 ---
-title: 创建 Azure 成本管理支持请求 | Microsoft Docs
-description: 本文将指导你完成创建成本管理支持请求所需的步骤。
+title: 在 Azure 中创建 Cloudyn 支持请求 | Microsoft Docs
+description: 本文将指导你完成创建 Cloudyn 支持请求所需的步骤。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/07/2018
+ms.date: 09/18/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 35d3153cb485f11fe17689f1ff1d3d88961878d3
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d074b263d11c6b12a4283d2ff479a5b3dc1d6908
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296685"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952437"
 ---
-# <a name="create-a-support-request-for-cost-management"></a>创建成本管理支持请求
+# <a name="create-a-support-request-for-cloudyn"></a>创建 Cloudyn 支持请求
 
 如果找不到所需信息，可创建支持请求。 或者，如果怀疑问题为服务中断或 bug 时，也可创建支持请求。 创建支持票证时，确保针对每个单一问题进行创建。 执行此操作可帮助快速路由所报告的问题。
 
@@ -48,4 +48,4 @@ ms.locfileid: "35296685"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要详细了解 Azure 成本管理，请继续学习成本管理的[查看使用量和成本](tutorial-review-usage.md)教程。
+- 若要了解有关 Cloudyn 的详细信息，请继续学习 Cloudyn 的[查看使用情况和成本](tutorial-review-usage.md)教程。

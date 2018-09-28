@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: juluk
-ms.openlocfilehash: 1321645d97e7f6ff2faed1e61ddb608afcb7b413
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 5087b8a1d675fb6fb2bbfb2b46a09c215bf5e9ae
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40037903"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998757"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell 的功能和工具
 
@@ -31,7 +31,7 @@ Azure Cloud Shell 在 `Ubuntu 16.04 LTS` 上运行。
 
 ### <a name="secure-automatic-authentication"></a>安全自动身份验证
 
-Cloud Shell 安全并自动地验证帐户对 Azure CLI 2.0 和 Azure PowerShell 的访问权限。
+Cloud Shell 安全、自动地验证帐户对 Azure CLI 和 Azure PowerShell 的访问权限。
 
 ### <a name="home-persistence-across-sessions"></a>$Home 可在不同的会话中持久保存
 
@@ -60,7 +60,7 @@ Cloud Shell 预先配置了开放源代码工具（如 Terraform、Ansible 和 C
 |类别   |名称   |
 |---|---|
 |Linux 工具            |bash<br> zsh<br> sh<br> tmux<br> dig<br>               |
-|Azure 工具            |[Azure CLI 2.0](https://github.com/Azure/azure-cli) 和 [1.0](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) |
+|Azure 工具            |[Azure CLI](https://github.com/Azure/azure-cli) 和 [Azure 经典 CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) |
 |文本编辑器           |vim<br> nano<br> emacs       |
 |源代码管理         |git                    |
 |生成工具            |make<br> maven<br> npm<br> pip         |
@@ -82,5 +82,5 @@ Cloud Shell 预先配置了开放源代码工具（如 Terraform、Ansible 和 C
 ## <a name="next-steps"></a>后续步骤
 [Cloud Shell 中的 Bash 快速入门](quickstart.md) <br>
 [PowerShell in Cloud Shell（预览版）快速入门](quickstart-powershell.md) <br>
-[了解 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/) <br>
+[了解 Azure CLI](https://docs.microsoft.com/cli/azure/) <br>
 [了解 Azure PowerShell](https://docs.microsoft.com/powershell/azure/) <br>

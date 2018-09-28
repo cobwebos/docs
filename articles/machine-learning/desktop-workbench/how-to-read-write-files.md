@@ -1,5 +1,5 @@
 ---
-title: 读取和写入大型数据文件 | Microsoft Docs
+title: 读取和写入大型数据文件 | Microsoft 文档
 description: 在 Azure 机器学习试验中读取和写入大型文件。
 services: machine-learning
 author: hning86
@@ -11,14 +11,18 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/10/2017
-ms.openlocfilehash: 5a772f8792c02139e45977e207b5be4bebc63a9c
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4a2dff4dd57bdb0b010bbb4568d796f1e197a728
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37906323"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971495"
 ---
 # <a name="persisting-changes-and-working-with-large-files"></a>持久保存更改和处理大型文件
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 使用 Azure 机器学习试验服务可以配置各种执行目标。 有些目标是本地目标，例如本地计算机，或本地计算机上的 Docker 容器。 有些则是远程目标，例如远程计算机或 HDInsight 群集上的 Docker 容器。 有关详细信息，请参阅 [Azure 机器学习试验执行服务概述](experimentation-service-configuration.md)。 
 
 在目标上执行之前，必须先将项目文件夹复制到计算目标。 即使为此使用本地临时文件夹进行本地执行，也必须这样做。 
@@ -48,6 +52,9 @@ ms.locfileid: "37906323"
 * 训练模型
 * 创建数据集
 * 在模型训练执行过程中将图形绘制成图像文件 
+
+>[!Note]
+> 运行后 outputs 文件夹中跟踪文件的最大大小为 512 MB。 这意味着，如果脚本在输出文件夹中生成了大于 512 MB 的文件，则不会收集该文件夹中的文件。 
 
 此外，想要比较每次运行后的输出，选择上次运行生成的输出文件（例如模型），然后将其用于后续任务（例如评分）。
 

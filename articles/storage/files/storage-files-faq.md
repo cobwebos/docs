@@ -4,15 +4,15 @@ description: 查看有关 Azure 文件的常见问题解答。
 services: storage
 author: RenaShahMSFT
 ms.service: storage
-ms.date: 07/19/2018
+ms.date: 09/11/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 31f5b2792aa83d15a1478cf201ca674995816430
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 43acff5c4d37c46245566fb2e1d74d3e14d527bb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42145566"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949836"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>有关 Azure 文件的常见问题解答 (FAQ)
 [Azure 文件](storage-files-introduction.md)在云端提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)进行访问。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
@@ -196,44 +196,97 @@ ms.locfileid: "42145566"
 **存储同步服务和/或存储帐户是否可以移动到不同的资源组或订阅？**  
    是的，存储同步服务和/或存储帐户可以移动到不同的资源组或订阅。 如果移动了存储帐户，则需要向混合文件同步服务授予对存储帐户的访问权限（请参阅[确保 Azure 文件同步可以访问存储帐户](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)）。
 
+* <a id="afs-ntfs-acls"></a>
+**Azure 文件同步是否会保留目录/文件级别 NTFS ACL 以及存储在 Azure 文件中的数据？**
+
+    Azure 文件同步将转自本地文件服务器的 NTFS ACL 作为元数据保留。 Azure 文件不支持使用 Azure AD 凭据进行身份验证，以访问由 Azure 文件同步服务管理的文件共享。
+    
 ## <a name="security-authentication-and-access-control"></a>安全性、身份验证和访问控制
 * <a id="ad-support"></a>
 **Azure 文件是否支持基于 Active Directory 的身份验证和访问控制？**  
-    Azure 文件提供了两种方法来管理访问控制：
+    
+    是的，Azure 文件支持使用 Azure Active Directory (Azure AD)（预览版）进行基于标识的身份验证和访问控制。 通过 SMB 为 Azure 文件启用 Azure Active Directory 身份验证，可利用 Azure Active Directory 域服务，让已加入域的 VM 能够使用 Azure AD 凭据访问共享、目录和文件。 有关详细信息，请参阅[通过 SMB 为 Azure 文件启用 Azure Active Directory 身份验证（预览版）概述](storage-files-active-directory-overview.md)。 
+
+    Azure 文件还提供了另外两种方法来管理访问控制：
 
     - 你可以使用共享访问签名 (SAS) 生成在指定时间间隔内有效的具有特定权限的令牌。 例如，可以生成在 10 分钟后到期、对特定文件具有只读访问权限的令牌。 只要拥有此有效令牌，就可以在 10 分钟内拥有对给定文件的只读访问权限。 目前，仅通过 REST API 或客户端库支持共享的访问签名密钥。 你必须使用存储帐户密钥通过 SMB 装载 Azure 文件共享。
 
     - Azure 文件同步会保留所有自定义 ACL 或 DACL（无论基于 Active Directory 或本地目录），并复制到其同步到的所有服务器终结点。 由于 Windows 服务器已经可以使用 Active Directory 进行身份验证，因此，在全面支持基于 Active Directory 的身份验证和实现对 ACL 的支持前，Azure 文件同步是一个有效的临时选择。
 
-    当前，Azure 文件不直接支持 Active Directory。
+* <a id="ad-support-regions"></a>
+**通过 SMB 为 Azure 文件启用 Azure AD 预览版是否可在所有 Azure 区域使用？**
+
+    预览版适用于除以下区域之外的所有其他公共区域：美国西部、美国西部 2、美国中南部、美国东部、美国东部 2、美国中部、美国中北部、澳大利亚东部、西欧、北欧。
+
+* <a id="ad-support-on-premises"></a>
+**通过 SMB 为 Azure 文件启用 Azure AD 身份验证（预览版）是否支持从本地计算机使用 Azure AD 进行身份验证？**
+
+    不支持。Azure 文件不支持在预览版中从本地计算机使用 Azure AD 进行身份验证。
+
+* <a id="ad-support-devices"></a>
+**通过 SMB 为 Azure 文件启用 Azure AD 身份验证（预览版）是否支持使用 Azure AD 凭据从加入的设备或者注册了 Azure AD 的设备进行 SMB 访问？**
+
+    不支持。不支持该方案。
+
+* <a id="ad-support-rest-apis"></a>
+**是否有支持获取/设置/复制目录/文件 NTFS ACL 的 REST API？**
+
+    预览版不支持 REST API 获取、设置或复制针对目录或文件的 NTFS ACL。
+
+* <a id="ad-vm-subscription"></a>
+**我是否可以从不同订阅下的 VM 使用 Azure AD 凭据访问 Azure 文件？**
+
+    如果部署了文件共享的订阅与 VM 所加入到的 Azure AD 域服务部署相同的 Azure AD 租户相关联，则可以使用相同的 Azure AD 凭据访问 Azure 文件。 限制不是针对订阅，而是针对关联的 Azure AD 租户的。    
+    
+* <a id="ad-support-subscription"></a>
+**我是否可以使用与文件共享关联的主租户之外的其他 Azure AD 租户启用通过 SMB 为 Azure 文件启用 Azure AD 身份验证？**
+
+    不可以。Azure 文件仅支持 Azure AD 与文件共享驻留在同一订阅中的 Azure AD 租户集成。 只有一个订阅可以与 Azure AD 租户相关联。
+
+* <a id="ad-linux-vms"></a>
+**通过 SMB 为 Azure 文件启用 Azure AD 身份验证（预览版）是否支持 Linux VM？**
+
+    不支持。预览版不支持从 Linux VM 进行身份验证。
+
+* <a id="ad-aad-smb-afs"></a>
+**我是否可以在 Azure 文件同步管理的文件共享上利用通过 SMB 启用 AD 身份验证功能？**
+
+    不可以。Azure 文件不支持在由 Azure 文件同步管理的文件共享上保留 NTFS ACL。Azure 文件同步将保留转自本地文件服务器的文件 ACL。针对 Azure 文件本机配置的任何 NTFS ACL 都将由 Azure 文件同步服务所覆盖。 此外，Azure 文件不支持使用 Azure AD 凭据进行身份验证，以访问 Azure 文件同步服务管理的文件共享。
 
 * <a id="encryption-at-rest"></a>
 **如何确保已静态加密 Azure 件共享？**  
+
     Azure 存储服务加密默认在所有区域启用。 对于这些区域，你无需执行任何操作来启用加密。 对其他区域，请参阅[服务器端加密](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 * <a id="access-via-browser"></a>
 **如何使用 Web 浏览器提供对特定文件的访问权限？**  
+
     你可以使用共享访问签名生成在指定时间间隔内有效的、具有特定权限的令牌。 例如，可以生成一个在设定时段内对特定文件具有只读访问权限的令牌。 只要拥有此 URL，就可以在令牌有效期间，直接通过任意 Web 浏览器访问文件。 你可以从类似存储资源管理器的 UI 轻松生成共享的访问签名密钥。
 
 * <a id="file-level-permissions"></a>
 **能否对共享中的文件夹指定只读或只写权限？**  
+
     如果使用 SMB 装载文件共享，则不具有文件夹级的控制权限。 但是，如果使用 REST API 或客户端库创建共享访问签名，则可以在共享内的文件夹上指定只读或只写权限。
 
 * <a id="ip-restrictions"></a>
 **是否对 Azure 文件共享实现 IP 限制？**  
+
     是的。 可以在存储帐户级别对 Azure 文件共享的权限进行限制。 有关详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 * <a id="data-compliance-policies"></a>
 **Azure 文件支持哪些数据符合性策略？**  
+
    Azure 文件所依据的存储体系结构与 Azure 存储中的其他存储服务使用的相同。 Azure 文件实施的数据符合性策略也与其他 Azure 存储服务使用的相同。 有关 Azure 存储数据符合性的详细信息，可参阅 [Azure 存储符合性产品/服务](https://docs.microsoft.com/en-us/azure/storage/common/storage-compliance-offerings)和转到 [Microsoft 信任中心](https://microsoft.com/en-us/trustcenter/default.aspx)。
 
 ## <a name="on-premises-access"></a>本地访问
 * <a id="expressroute-not-required"></a>
 **必须使用 Azure ExpressRoute 才能在本地连接到 Azure 文件或使用 Azure 文件同步吗？**  
+
     不是。 ExpressRoute 不是访问 Azure 文件共享的必要条件。 如果要直接在本地装载 Azure 文件共享，则只需打开端口 445（TCP 出站）即可进行 Internet 访问（这是 SMB 用于进行通信的端口）。 如果正在使用 Azure 文件同步，则只需端口 443（TCP 出站）即可进行 HTTPS 访问（无需 SMB）。 但是，你可以将 ExpressRoute 与这些访问选项中任意一项一起使用。
 
 * <a id="mount-locally"></a>
 **如何才能在本地计算机上装载 Azure 文件共享？**  
+
     可以使用 SMB 协议装载文件共享，只要端口 445（TCP 出站）处于打开状态，且客户端支持 SMB 3.0 协议（例如，如果使用的是 Windows 10 或 Windows Server 2016）。 如果端口 445 被组织的策略或 ISP 阻止，则可使用 Azure 文件同步访问 Azure 文件共享。
 
 ## <a name="backup"></a>备份
@@ -242,6 +295,7 @@ ms.locfileid: "42145566"
     可以使用定期[共享快照](storage-snapshots-files.md)来防止意外删除。 此外，也可以使用 AzCopy、RoboCopy 或能够备份已装载文件共享的第三方备份工具。 Azure 备份提供 Azure 文件的备份。 深入了解[通过 Azure 备份服务备份 Azure 文件共享](https://docs.microsoft.com/en-us/azure/backup/backup-azure-files)。
 
 ## <a name="share-snapshots"></a>共享快照
+
 ### <a name="share-snapshots-general"></a>共享快照：常规问题
 * <a id="what-are-snaphots"></a>
 **什么是文件共享快照？**  
@@ -262,10 +316,14 @@ ms.locfileid: "42145566"
 * <a id="snapshot-limits"></a>
 **对我可使用的共享快照数有限制吗？**  
     是的。 Azure 文件可以最多保留 200 张共享快照。 共享快照不计入共享配额，因此，对所有共享快照使用的总空间没有单独的共享限制。 存储帐户限制仍然适用。 在达到 200 个共享快照之后，必须删除旧的共享快照才可创建新的共享快照。
+
 * <a id="snapshot-cost"></a>
 **共享快照的费用是多少？**  
     快照按标准事务和标准存储收费。 快照在本质上是递增的。 基本快照即是共享本身。 所有的后续快照均是递增的，并且只会存储与之前快照的不同之处。 这意味着，如果工作负荷改动极小，则帐单上显示的增量更改也很小。 有关标准 Azure 文件的定价信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/storage/files/)。 目前，查看共享快照已用大小的方法是比较计费的容量与使用的容量。 我们致力于开发改进报告的工具。
 
+* <a id="ntfs-acls-snaphsots"></a>
+**目录和文件上的 NTFS ACL 是否保留在共享快照中？**
+    目录和文件上的 NTFS ACL 会保留在共享快照中。
 
 ### <a name="create-share-snapshots"></a>创建共享快照
 * <a id="file-snaphsots"></a>
@@ -285,7 +343,7 @@ ms.locfileid: "42145566"
 ### <a name="manage-share-snapshots"></a>管理共享快照
 * <a id="browse-snapshots-linux"></a>
 **是否可以在 Linux 中浏览共享快照？**  
-    可以使用 Azure CLI 2.0 在 Linux 上创建、列出、浏览和还原共享快照。
+    可以使用 Azure CLI 在 Linux 中创建、列出、浏览和还原共享快照。
 
 * <a id="copy-snapshots-to-other-storage-account"></a>
 **是否可以将共享快照复制到不同的存储帐户？**  
@@ -325,13 +383,9 @@ ms.locfileid: "42145566"
 **Azure 文件存在哪些缩放限制？**  
     有关 Azure 文件的可伸缩性和性能目标的信息，请参阅 [Azure 文件可伸缩性和性能目标](storage-files-scale-targets.md)。
 
-* 
-  <a id="need-larger-share">
-    </a>
-  
-
-  **我需要大于 Azure 文件目前提供的文件共享的文件共享。我是否可以增加 Azure 文件共享的大小？**  
-  不是。 Azure 文件共享的上限是 5 TiB。 当前，这是硬限制，无法调整。 我们正致力于寻找将共享大小提升至 100 TiB 的解决方案，但当前尚无可供分享的时间表。
+* <a id="need-larger-share"></a>
+**我需要大于 Azure 文件目前提供的文件共享的文件共享。我是否可以增加 Azure 文件共享的大小？**  
+    不是。 Azure 文件共享的上限是 5 TiB。 当前，这是硬限制，无法调整。 我们正致力于寻找将共享大小提升至 100 TiB 的解决方案，但当前尚无可供分享的时间表。
 
 * <a id="open-handles-quota"></a>
 **多少个客户端可以同时访问同一文件？**   

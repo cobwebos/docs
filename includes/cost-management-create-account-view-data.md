@@ -5,15 +5,16 @@ services: cost-management
 author: bandersmsft
 ms.service: cost-management
 ms.topic: include
-ms.date: 04/26/2018
+ms.date: 09/17/2018
 ms.author: banders
 manager: dougeby
 ms.custom: include file
-ms.openlocfilehash: 1b65775ef5ad40ca9e9c1e2c96fe1c2b8d92afdc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4acc3f43f04c51e5303c8eba1d934580802312b5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47017632"
 ---
 ## <a name="view-cost-data"></a>查看成本数据
 
@@ -25,27 +26,27 @@ ms.lasthandoff: 04/28/2018
 
 如果不确定仪表板中报表的用途，将鼠标悬停在 **i** 符号上即可查看说明。 单击仪表板中的任一报表可查看完整报表。
 
-也可以使用门户顶部的报表菜单查看报表。 让我们看看 Contoso 在过去 30 天的 Azure 资源开支。 单击“成本” > “成本分析” > “实际成本分析”。 如果在报表中为标记、组或筛选器设置了任何组，请清除这些值。
+也可以使用门户顶部的报表菜单查看报表。 让我们看看 Contoso 在过去 30 天的 Azure 资源开支。 依次单击“成本” > “成本分析” > “实际成本分析”。 如果在报表中为标记、组或筛选器设置了任何组，请清除这些值。
 
 ![实际成本分析](./media/cost-management-create-account-view-data/actual-cost-01.png)
 
-在本示例中，$75,970 是总成本，预算为 $130000。
+在本示例中，总成本为 $122,273，预算为 $290,000。
 
 现在，让我们修改报表格式，并设置组和筛选器来缩小 Azure 成本的结果范围。 将“日期范围”设置为过去 30 天。 在右上角，单击列符号以设置条形图格式，并在“组”下面选择“提供程序”。 然后，将“提供程序”的某个筛选器设置为“Azure”。
 
 ![实际成本分析已筛选](./media/cost-management-create-account-view-data/actual-cost-02.png)
 
-在本示例中，过去 30 天的 Azure 资源总成本为 $3,839。
+在本示例中，过去 30 天的 Azure 资源总成本为 $3,309。
 
 右键单击“提供程序(Azure)”栏并向下钻取到“资源类型”。
 
 ![向下钻取](./media/cost-management-create-account-view-data/actual-cost-03.png)
 
-下图显示了 Contoso 产生的 Azure 资源成本。 总计为 $3,839。 在本示例中，大约一半的成本花费在本地冗余存储上，另外大约一半的成本花费在各种 VM 实例上。
+下图显示了 Contoso 产生的 Azure 资源成本。 总成本为 $3,309。 在本示例中，大约一半的成本花费在 Standard_A1 VM 上，另外一半成本花费在各种 Azure 服务和 VM 实例上。
 
 ![资源类型](./media/cost-management-create-account-view-data/actual-cost-04.png)
 
-右键单击某个资源类型并选择“成本实体”，查看消耗了资源的成本实体和服务。 在本示例中，DevOps 中的 VM 和辅助角色服务消耗了 $486.60 和 $435.71。 两者的消耗成本总计为 $922。
+右键单击某个资源类型并选择“成本实体”，查看消耗了资源的成本实体和服务。 在下面的示例图中，“本地冗余存储”设置为“资源”类型。 “Contoso|Azure/存储”使用了 $15.65。 “工程|Azure/存储”使用了 $164.25。 “共享基础结构|Azure/存储”使用了 $116.58。 服务总成本为 $296。
 
 ![成本实体和服务](./media/cost-management-create-account-view-data/actual-cost-05.png)
 

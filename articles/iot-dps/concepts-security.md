@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 82548ef8fd3f992eedd77c93be47cb5328a584c7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 92a30f0754decc3052bf53a64da13325ddc4f954
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628634"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946555"
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT 中心设备预配服务安全性概念 
 
@@ -26,9 +26,11 @@ IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务�
 > [!NOTE]
 > IoT 中心将该服务中类似的概念称为“身份验证方案”。
 
-设备预配服务支持两种证明形式：
+设备预配服务支持以下证明形式：
 * 基于标准 X.509 证书身份验证流的 X.509 证书。
-* 基于 nonce 质询的受信任平台模块 (TPM)，使用密钥的 TPM 标准显示已签名的共享访问签名 (SAS) 令牌。 这不需要设备上的物理 TPM，但是服务要求按照 [TPM 规范](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)使用认可密钥来证明。
+* 基于 nonce 质询的受信任平台模块 (TPM)，使用密钥的 TPM 标准显示已签名的共享访问签名 (SAS) 令牌。 此证明形式不需要设备上的物理 TPM，但是服务要求按照 [TPM 规范](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)使用认可密钥来证明。
+* 基于共享访问签名 (SAS) [安全令牌](../iot-hub/iot-hub-devguide-security.md#security-tokens)的对“称密钥”，包括哈希签名和嵌入的过期。 有关详细信息，请参阅[对称密钥证明](concepts-symmetric-key-attestation.md)。
+
 
 ## <a name="hardware-security-module"></a>硬件安全模块
 
@@ -55,7 +57,7 @@ TPM 证明基于 nonce 质询，该质询使用认可和存储根密钥来提供
 
 ## <a name="x509-certificates"></a>X.509 证书
 
-将 X.509 证书用作一种证明机制是扩大生产规模和简化设备设置的极佳途径。 X.509 证书通常是信任证书链中一系列证书中的一个，证书链中的每个证书均通过下一个更高级别证书的私钥进行签名，位于链顶端的证书是自签名的根证书。 这会建立一个委托的信任链，该信任链始于受信任的根证书颁发机构 (CA) 生成的根证书，期间是每个中间 CA，终结于设备上安装的最终实体“叶”证书。 有关详细信息，请参阅[使用 X.509 CA 证书进行设备身份验证](/azure/iot-hub/iot-hub-x509ca-overview)。 
+将 X.509 证书用作一种证明机制是扩大生产规模和简化设备设置的极佳途径。 X.509 证书通常是信任证书链中一系列证书中的一个，证书链中的每个证书均通过下一个更高级别证书的私钥进行签名，位于链顶端的证书是自签名的根证书。 此安排会建立一个委托的信任链，该信任链始于受信任根证书颁发机构 (CA) 生成的根证书，期间是每个中间 CA，终结于设备上安装的最终实体“叶”证书。 有关详细信息，请参阅[使用 X.509 CA 证书进行设备身份验证](/azure/iot-hub/iot-hub-x509ca-overview)。 
 
 证书链通常代表与设备关联一些逻辑或物理层次结构。 例如，制造商可以：
 - 颁发自签名根 CA 证书

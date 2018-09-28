@@ -1,161 +1,106 @@
 ---
-title: 什么是 Azure 机器学习？ | Microsoft Docs
-description: 解释云中机器学习的基本概念，介绍其作用，以及定义机器学习的术语。 Azure 机器学习概述 - 这是一个集成式的端到端数据科学解决方案，可让专业数据科学家以云的规模开发、试验和部署高级分析应用程序。
+title: 什么是 Azure 机器学习服务？
+description: 解释云中机器学习的基本概念，介绍其作用，以及定义机器学习的术语。 Azure 机器学习概述 - 这是一个集成式的端到端数据科学解决方案，能够让专业数据科学家以云规模开发、试验和部署高级分析应用程序。
 services: machine-learning
-author: mwinkle
-ms.author: mwinkle
-manager: cgronlun
 ms.service: machine-learning
 ms.component: core
-ms.workload: data-services
 ms.topic: overview
-ms.date: 09/21/2017
-ms.openlocfilehash: 3e744b0e4a7ccebcdedac5a822ff717bed6b1f72
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.reviewer: jmartens
+author: garyericson
+ms.author: garye
+ms.date: 09/24/2018
+ms.openlocfilehash: dddda5a222bf4e9fd81a3e13987ccdf443302083
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268410"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978890"
 ---
-# <a name="what-is-machine-learning"></a>什么是机器学习？
+# <a name="what-is-azure-machine-learning-service-preview"></a>什么是 Azure 机器学习服务（预览版）？
+
+Azure 机器学习服务（预览版）是一款可用于开发和部署机器学习模型的云服务。 使用 Azure 机器学习服务，你可以在生成、培训、部署和管理模型时对其进行跟踪，所有这些都以云提供的广泛规模完成。
+
+## <a name="what-is-machine-learning"></a>什么是机器学习？
 
 机器学习是一项数据科研技术，可以让计算机根据现有的数据来预测将来的行为、结果和趋势。 使用机器学习，计算机可以在不需显式编程的情况下进行学习。
 
-机器学习的预测可让应用和设备变得更聪明。 在网上购物时，机器学习可根据购买的产品帮助推荐其他产品。 刷信用卡时，机器学习可将这笔交易与交易数据库进行比较，帮助检测诈骗。 当吸尘器机器人打扫房间时，机器学习可帮助它确定作业是否已完成。
+机器学习的预测可让应用和设备变得更聪明。 例如，在网上购物时，机器学习可根据你购买的产品帮助推荐其他产品。 或者，在刷信用卡时，机器学习可将这笔交易与交易数据库进行比较，帮助检测诈骗。 当吸尘器机器人打扫房间时，机器学习可帮助它确定作业是否已完成。
 
 ## <a name="what-is-azure-machine-learning"></a>什么是 Azure 机器学习？
-Azure 机器学习是集成式的端到端数据科学和高级分析解决方案。 它可让数据科学家以云的规模准备数据、开发试验和部署模型。
 
-Azure 机器学习的主要组件包括：
-- Azure Machine Learning Workbench
-- Azure 机器学习试验服务
-- Azure 机器学习模型管理服务
-- 用于 Apache Spark 的 Microsoft 机器学习库（MMLSpark 库）
-- 用于 AI 的 Visual Studio Code 工具
+Azure 机器学习服务提供了一个基于云的环境，你可以使用这一环境来开发、培训、测试、部署、管理和跟踪机器学习模型。
 
-这些应用程序和服务相结合，有助于显著加快数据科学项目的开发和部署进度。 
+[ ![Azure 机器学习服务工作流](./media/overview-what-is-azure-ml/aml.png) ] (./media/overview-what-is-azure-ml/aml.png#lightbox)
 
-![Azure 机器学习的概念](./media/overview-what-is-azure-ml/aml-concepts.png)
+Azure 机器学习服务完全支持开放源代码技术，因此，你可以使用数以万计的开放源代码 Python 包与机器学习组件（如 TensorFlow 和 scikit-learn）。
+借助丰富的工具（如 [Jupyter Notebook](http://jupyter.org) 或 [Visual Studio Code Tools for AI](https://visualstudio.microsoft.com/downloads/ai-tools-vscode/)），可以交互式地轻松探索数据、转换数据，然后开发和测试模型。
+此外，Azure 机器学习服务还包括[自动化模型生成和优化](tutorial-auto-train-models.md)的功能，能够帮助你轻松、高效和准确地创建模型。
 
+使用 Azure 机器学习服务，你可以先在本地计算机上开始培训，然后扩大到云。 通过提供对 [Azure Batch AI](https://azure.microsoft.com/services/batch-ai/) 的本机支持和[高级超参数优化服务](how-to-tune-hyperparameters.md)，你可以使用云的强大功能更快地生成更好的模型。 
 
-## <a name="open-source-compatible"></a>开源兼容
+在拥有合适的模型后，即可轻松地将其部署在 Docker 等的容器中。 这意味着，可以轻松部署到 [Azure 容器实例](how-to-deploy-to-aci.md)或 [Azure Kubernetes 服务](how-to-deploy-to-aks.md)，或者，你可以在自己的部署中使用容器，无论是在本地还是在云中。
+在尝试寻找最佳解决方案时，可以管理已部署的模型并跟踪多个运行。
 
-Azure 机器学习完全支持开源技术。 可以使用几万个开源 Python 包，例如以下机器学习框架：
+[!INCLUDE [aml-preview-note](../../../includes/aml-preview-note.md)]
 
-- [scikit-learn](http://scikit-learn.org/)
-- [TensorFlow](https://www.tensorflow.org/)
-- [Microsoft 认知工具包](https://www.microsoft.com/en-us/cognitive-toolkit/)
-- [Spark ML](https://spark.apache.org/docs/2.1.1/ml-pipeline.html)
+## <a name="what-can-i-do-with-azure-machine-learning-service"></a>通过 Azure 机器学习服务，我可以执行哪些操作？
 
-可以在 Docker 容器和 Spark 群集等托管环境中执行试验。 还可以使用高级硬件（例如 [Azure 中已启用 GPU 的虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu)）来加快执行速度。
+Azure 机器学习服务可以自动生成模型并为你自动优化模型。
+有关示例，请参阅[教程：使用 Azure 自动机器学习自动定型分类模型](tutorial-auto-train-models.md)。
 
-Azure 机器学习构建在以下开源技术的基础之上：
+或者，使用适用于 Python 的 Azure 机器学习 <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a>，以及开放源代码 Python 包，你可以在 Azure 机器学习工作区中自行生成和培训高度准确的机器学习和深度学习模型。
+可以从开放源代码 Python 包中提供的许多机器学习组件中进行选择，例如：
 
-- [Jupyter 笔记本](http://jupyter.org/)
-- [Apache Spark](https://spark.apache.org/)
-- [Docker](https://www.docker.com/)
-- [Kubernetes](https://kubernetes.io/)
-- [Python](https://www.python.org/)
-- [Conda](https://conda.io/docs/)
+- <a href="http://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>
+- <a href="https://www.tensorflow.org" target="_blank">Tensorflow</a>
+- <a href="https://pytorch.org" target="_blank">PyTorch</a>
+- CNTK<a href="https://www.microsoft.com/cognitive-toolkit/" target="_blank"></a>
+- <a href="http://mxnet.io" target="_blank">MXNet</a>
 
-它还包含 Microsoft 自有的开源技术，例如[用于 Apache Spark 的 Microsoft 机器学习库](https://github.com/Azure/mmlspark)和认知工具包。
+拥有模型后，你就可以使用它来创建可以在本地部署以进行测试的容器（如 Docker），然后将其作为 [Azure 容器实例](how-to-deploy-to-aci.md)或 [Azure Kubernetes 服务](how-to-deploy-to-aks.md)中的生产 Web 服务。
 
-此外，我们还可以受益于 Microsoft 开发的、旨在解决大规模问题的一些先进且经过证实的机器学习技术。 这些技术在如下所述的许多 Microsoft 产品中经过实战性的测试：
+然后，可以使用 [Azure 门户](https://portal.azure.com/)或 [Azure 机器学习 CLI 扩展](https://review.docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)来管理已部署的模型。
+你可以在跟踪模型的试验的同时评估模型指标、重新训练和重新部署模型的新版本。
 
-- Windows
-- 必应
-- Xbox
-- Office
-- SQL Server
+要开始使用 Azure 机器学习服务，请参阅下面的[后续步骤](#next-steps)。
 
-下面是 Azure 机器学习随附的一些 Microsoft 机器学习技术：
+## <a name="how-is-azure-machine-learning-service-different-from-studio"></a>Azure 机器学习服务与 Studio 有何不同？
 
-- [PROSE](https://microsoft.github.io/prose/)（使用示例的程序合成）
-- [microsoftml](https://docs.microsoft.com/r-server/r/concept-what-is-the-microsoftml-package)
-- [revoscalepy](https://docs.microsoft.com/r-server/python-reference/revoscalepy/revoscalepy-package)
+Azure 机器学习工作室是一个协作式拖放可视化工作区，无需编写代码即可生成、测试和部署机器学习解决方案。 它使用预构建和预配置的机器学习算法和数据处理模块。
 
-## <a name="azure-machine-learning-workbench"></a>Azure Machine Learning Workbench
-Azure Machine Learning Workbench 是受 Windows 和 macOS 支持的桌面应用程序与命令行工具。 使用该软件可在整个数据科学生命周期内对机器学习解决方案进行管理：
+如果想要快速轻松地试验机器学习模型，请使用机器学习工作室，并且内置的机器学习算法足以供你的解决方案使用。
 
-- 数据引入和准备
-- 模型开发和试验管理
-- 不同目标环境中的模型部署
+如果你在 Python 环境中工作并且希望更好地控制机器学习算法，或者你想使用开放源代码机器学习库，那么机器学习服务将是你的最佳选择。
 
-下面是 Azure Machine Learning Workbench 提供的核心功能：
+> [!NOTE]
+> Azure 机器学习服务无法部署或管理在 Azure 机器学习工作室中创建的模型。
 
-- 可通过示例学习数据转换逻辑的数据准备工具。
-- 可通过 UX 和 Python 代码访问的数据源抽象。
-- 用于直观调用构造数据准备包的 Python SDK。
-- 内置的 Jupyter Notebook 服务和客户端 UX。
-- 通过运行历史记录视图进行试验监视和管理。
-- 可通过 Azure Active Directory 实现共享和协作的基于角色的访问控制。
-- 每个运行的自动项目快照，以及通过 Git 本机集成实现的显式版本控制。 
-- 与流行的 Python IDE 集成。
-
-有关详细信息，请参阅以下文章：
-- [数据准备用户指南](../desktop-workbench/data-prep-user-guide.md)
-- [将 Git 与 Azure 机器学习配合使用](../desktop-workbench/using-git-ml-project.md)
-- [在 Azure 机器学习中使用 Jupyter Notebook](../desktop-workbench/how-to-use-jupyter-notebooks.md)
-- [漫游和共享](../desktop-workbench/roaming-and-collaboration.md)
-- [运行历史记录指南](../desktop-workbench/how-to-use-run-history-model-metrics.md)
-- [IDE 集成](../desktop-workbench/how-to-configure-your-ide.md)
-
-## <a name="azure-machine-learning-experimentation-service"></a>Azure 机器学习试验服务
-试验服务处理机器学习试验的执行。 它还通过提供项目管理、Git 集成、访问控制、漫游和共享来支持 Workbench。 
-
-通过简单的配置，可以跨各种计算环境选项执行试验：
-
-- 本机环境
-- 本地 Docker 容器
-- 远程 VM 上的 Docker 容器
-- 扩展 Azure 中的 Spark 群集
-
-试验服务构造虚拟环境，确保脚本可在隔离环境中执行并生成可重现的结果。 该服务会记录运行历史记录信息，并直观显示历史记录。 可以从试验运行中轻松选择最佳模型。 
-
-有关详细信息，请参阅[试验服务配置](../desktop-workbench/experimentation-service-configuration.md)。
-
-## <a name="azure-machine-learning-model-management-service"></a>Azure 机器学习模型管理服务
-
-模型管理服务可让数据科学家和开发运营团队将预测模型部署到各种环境。 从训练运行到部署，模型版本和沿袭都可受到跟踪。 可在云中存储、注册和管理模型。 
-
-使用简单的 CLI 命令，可在 Docker 映像中将模型、评分脚本和依赖项容器化。 这些映像会注册到托管在 Azure 上你自己的 Docker 注册表（Azure 容器注册表）中。 可将这些映像可靠部署到以下目标：
-
-- 本地计算机
-- 本地服务器
-- 云
-- IoT 边缘设备
-
-Azure 容器服务 (ACS) 中运行的 Kubernetes 用于云中的扩展部署。 在 AppInsights 中捕获模型执行遥测数据，以进行可视分析。 
-
-有关模型管理服务的详细信息，请参阅[模型管理概述](../desktop-workbench/model-management-overview.md)
-
-
-## <a name="microsoft-machine-learning-library-for-apache-spark"></a>用于 Apache Spark 的 Microsoft 机器学习库
-
-[MMLSpark](https://github.com/Azure/mmlspark)（用于 Apache Spark 的 Microsoft 机器学习库）是针对 Apache Spark 提供深度学习和数据科学工具的开源 Spark 包。 它将 [Spark 机器学习管道](https://spark.apache.org/docs/2.1.1/ml-pipeline.html)与 [Microsoft 认知工具包](https://www.microsoft.com/en-us/cognitive-toolkit/)和 [OpenCV](http://opencv.org/) 库相集成。 使用它可为大型映像和文本数据集创建功能强大、高度可缩放的预测模型与分析模型。 部分亮点包括：
-
-- 轻松将映像从 HDFS 引入 Spark 数据帧
-- 使用 OpenCV 中的转换预处理映像数据
-- 使用预先训练的深度神经网络和 Microsoft 认知工具包将映像特征化 
-- 使用 Keras 的预先训练双向 LSTM 进行医疗实体提取
-- 在 Azure 中的 N 系列 GPU VM 上训练基于 DNN 的映像分类模型
-- 通过单个转换器，基于 SparkML 中的基元使用方便的 API 将自由格式文本数据特征化
-- 通过数据的隐式特征化轻松训练分类和回归模型
-- 计算丰富的一组评估指标，包括每个实例的指标
-
-有关详细信息，请参阅[在 Azure 机器学习中使用 MMLSpark](../desktop-workbench/how-to-use-mmlspark.md)。
-
-## <a name="visual-studio-code-tools-for-ai"></a>用于 AI 的 Visual Studio Code 工具
-用于 AI 的 Visual Studio Code 工具是 Visual Studio Code 中的一个扩展，用于生成、测试和部署深度学习与 AI 解决方案。 它提供 Azure 机器学习的多个集成点，包括：
-- 运行历史记录视图，显示训练运行的性能和记录的指标。
-- 库视图，可让用户使用 Microsoft 认知工具包、TensorFlow 及其他许多深度学习框架来浏览和启动新项目。 
-- 资源管理器视图，用于选择脚本要执行的计算目标。
- 
-
-## <a name="what-are-the-machine-learning-options-from-microsoft"></a>Microsoft 提供哪些机器学习选项？
-除了 Azure 机器学习以外，Azure 中还有多种选项可用于生成、部署和管理机器学习模型。 [在此处了解详细信息。](../desktop-workbench/overview-more-machine-learning.md)
-
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+## <a name="free-trial"></a>免费试用
+如果不是订户，可以[免费建立一个 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。 你将获得可用于 Azure 服务的额度。 信用额度用完后，可以保留该帐户并继续使用[免费的 Azure 服务](https://azure.microsoft.com/free/)。 除非显式更改设置并要求付费，否则不会对信用卡收取任何费用。 也可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)：MSDN 订阅每月提供可用于试用付费版 Azure 服务的信用额度。
 
 ## <a name="next-steps"></a>后续步骤
-* [安装和创建 Azure 机器学习](quickstart-installation.md)
+
+- 参阅文章[使用 Azure 门户入门](quickstart-get-started.md)来创建机器学习工作区
+ 
+- 按照完整教程[使用 Azure 机器学习定型图像分类模型](tutorial-train-models-with-aml.md)，了解如何使用 Azure 机器学习服务训练和部署模型
+
+- 有关允许 Azure 机器学习自动生成和自动优化模型的信息，请参阅[教程：使用 Azure 自动机器学习自动定型分类模型](tutorial-auto-train-models.md)
+
+- 有关该服务技术方面的深入探讨，请参阅 [Azure 机器学习服务体系结构和概念](concept-azure-machine-learning-architecture.md)
+
+- 有关 Microsoft 提供的其他机器学习产品的更多信息，请参阅 [Microsoft 的其他机器学习产品](./overview-more-machine-learning.md)
+
+
+<!-- 
+
+An intro to AML or an end-to-end quickstart video could go here.
+
+In this 9-minute video, learn how you can benefit your app. You'll learn about key features and what a typical workflow looks like. 
+
+>[!VIDEO https://channel9.msdn.com/Events/Connect/2016/138/player]
+ 
++ 0-3 minutes covers key features and use-cases.
++ 3-4 minutes covers service provisioning. 
++ 4-6 minutes covers Import Data wizard used to create an index using the built-in real estate dataset.
+
+-->

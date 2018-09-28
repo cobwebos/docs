@@ -5,14 +5,14 @@ author: vhorne
 manager: jeconnoc
 ms.service: dns
 ms.topic: overview
-ms.date: 6/7/2018
+ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: 0812f5e3e23fbf49afec91524b4de2ff0eb7cd9a
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: e3e04bf7e35b22a56465810f476323ed217e047a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574175"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967619"
 ---
 # <a name="what-is-azure-dns"></a>什么是 Azure DNS？
 
@@ -52,6 +52,14 @@ DNS 基于 Azure 中托管的 DNS 区域数并按 DNS 查询数进行计费。 �
 Azure DNS 还支持专用 DNS 区域，此功能当前为公共预览版。 这允许在专用虚拟网络中使用自定义域名而不使用当前可用的由 Azure 提供的名称。
 
 有关详细信息，请参阅[在专用域中使用 Azure DNS](private-dns-overview.md)。
+
+## <a name="alias-records"></a>别名记录
+
+Azure DNS 支持别名记录集。 可以使用别名记录集来引用 Azure 资源，比如Azure 公共 IP 地址或流量管理器配置文件。 如果基础资源的 IP 地址发生更改，别名记录集将在 DNS 解析过程中无缝更新。 别名记录集指向服务实例，而服务实例与 IP 地址相关联。 
+
+此外，现在可以使用别名记录将顶点或裸域（例如，contoso.com）指向流量管理器配置文件。
+
+有关详细信息，请参阅 [Azure DNS 别名记录概述](dns-alias.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

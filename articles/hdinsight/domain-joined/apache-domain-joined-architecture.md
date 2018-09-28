@@ -1,6 +1,6 @@
 ---
-title: 已加入域的 Azure HDInsight 体系结构
-description: 了解如何计划已加入域的 HDInsight。
+title: 使用企业安全性套餐的 Azure HDInsight 体系结构
+description: 了解如何使用企业安全性套餐规划 HDInsight 安全性。
 services: hdinsight
 ms.service: hdinsight
 author: omidm1
@@ -8,15 +8,15 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/30/2018
-ms.openlocfilehash: efdc9cfbbe9a78571e0a56437e512d0cbbc18b3e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.date: 09/24/2018
+ms.openlocfilehash: 975a4f7b15d1e1c13767cd7026e961e9d4227603
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297260"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998912"
 ---
-# <a name="plan-azure-domain-joined-hadoop-clusters-in-hdinsight"></a>在 HDInsight 中计划 Azure 已加入域的 Hadoop 群集
+# <a name="use-enterprise-security-package-in-hdinsight"></a>在 HDInsight 中使用企业安全性套餐
 
 标准 Azure HDInsight 群集是单用户群集。 适用于大多数使用小型应用程序团队来构建大数据工作负荷的公司。 每个用户可以按需创建专用群集，并在不再需要时将其销毁。 
 
@@ -29,7 +29,7 @@ HDInsight 中的虚拟机 (VM) 将加入你提供的域。 因此，在 HDInsigh
 
 ## <a name="integrate-hdinsight-with-active-directory"></a>将 HDInsight 与 Active Directory 集成
 
-开源 Hadoop 依赖于 Kerberos 来提供身份验证和安全性。 因此，HDInsight 群集节点加入到由 Azure AD DS 管理的域。 将为群集上的 Hadoop 组件配置 Kerberos 安全性。 
+开源 Hadoop 依赖于 Kerberos 来提供身份验证和安全性。 因此，使用企业安全性套餐 (ESP) 的 HDInsight 群集节点加入到由 Azure AD DS 管理的域。 将为群集上的 Hadoop 组件配置 Kerberos 安全性。 
 
 针对每个 Hadoop 组件，都会自动创建一个服务主体。 还将为加入到该域的每台计算机创建一个对应的计算机主体。 为了存储这些服务和计算机主体，必须在域控制器 (Azure AD DS) 中提供一个组织单位 (OU)，这些主体将放置在其中。 
 
@@ -45,7 +45,7 @@ HDInsight 中的虚拟机 (VM) 将加入你提供的域。 因此，在 HDInsigh
 
 以下屏幕截图显示了在 contoso.com 中创建的一个 OU。 其中还显示了一些服务主体和计算机主体。
 
-![用于已加入域的 HDInsight 群集的组织单位](./media/apache-domain-joined-architecture/hdinsight-domain-joined-ou.png).
+![用于使用 ESP 的 HDInsight 群集的组织单位](./media/apache-domain-joined-architecture/hdinsight-domain-joined-ou.png).
 
 ## <a name="set-up-different-domain-controllers"></a>设置不同的域控制器
 HDInsight 当前仅支持将 Azure AD DS 用作群集用于与 Kerberos 进行通信的主域控制器。 但是，也可以使用其他复杂的 Active Directory 设置，只要该设置能启用 Azure AD DS 进行 HDInsight 访问。
@@ -55,7 +55,7 @@ HDInsight 当前仅支持将 Azure AD DS 用作群集用于与 Kerberos 进行�
 
 用户、组和密码将从 Azure Active Directory (Azure AD) 同步。 利用从 Azure AD 实例到 Azure AD DS 的单向同步，用户可以使用相同的企业凭据登录到群集。 
 
-有关详细信息，请参阅[使用 Azure AD DS 配置已加入域的 HDInsight 群集](./apache-domain-joined-configure-using-azure-adds.md)。
+有关详细信息，请参阅[使用 Azure AD DS 配置使用 ESP 的 HDInsight 群集](./apache-domain-joined-configure-using-azure-adds.md)。
 
 ### <a name="on-premises-active-directory-or-active-directory-on-iaas-vms"></a>IaaS VM 上的本地 Active Directory 或 Active Directory
 
@@ -63,9 +63,10 @@ HDInsight 当前仅支持将 Azure AD DS 用作群集用于与 Kerberos 进行�
 
 由于 Kerberos 依赖于密码哈希，因此需要[在 Azure AD DS 上启用密码哈希同步](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)。 如果使用 Active Directory 联合身份验证服务 (AD FS) 进行联合身份验证，则可以选择性地设置密码哈希同步，作为在 AD FS 基础结构发生故障时的备用身份验证方式。 有关详细信息，请参阅[使用 Azure AD Connect 同步启用密码哈希同步](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)。 
 
-在 IaaS VM 上单独使用本地 Active Directory 或 Active Directory 而不使用 Azure AD 和 Azure AD DS，这是已加入域的 HDInsight 群集不支持的配置。
+在 IaaS VM 上单独使用本地 Active Directory 或 Active Directory 而不使用 Azure AD 和 Azure AD DS，这是使用 ESP 的 HDInsight 群集不支持的配置。
 
 ## <a name="next-steps"></a>后续步骤
-* [配置已加入域的 HDInsight 群集](apache-domain-joined-configure-using-azure-adds.md)
-* [为已加入域的 HDInsight 群集配置 Hive 策略](apache-domain-joined-run-hive.md)
-* [管理已加入域的 HDInsight 群集](apache-domain-joined-manage.md) 
+
+* [配置使用 ESP 的 HDInsight 群集](apache-domain-joined-configure-using-azure-adds.md)
+* [为使用 ESP 的 HDInsight 群集配置 Hive 策略](apache-domain-joined-run-hive.md)
+* [管理使用 ESP 的 HDInsight 群集](apache-domain-joined-manage.md) 

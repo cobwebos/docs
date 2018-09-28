@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure CLI 管理 Azure Redis 缓存 | Microsoft 文档
-description: 了解如何在任何平台上安装 Azure CLI、如何使用它连接到 Azure 帐户，以及如何从 Azure CLI 创建和管理 Redis 缓存。
+title: 使用 Azure 经典 CLI 管理 Azure Redis 缓存 | Microsoft Docs
+description: 了解如何在任何平台上安装 Azure 经典 CLI、如何使用它连接到 Azure 帐户，以及如何从经典 CLI 创建和管理 Redis 缓存。
 services: redis-cache
 documentationcenter: ''
 author: wesmc7777
@@ -14,41 +14,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: wesmc
-ms.openlocfilehash: fdb0989af2215166b69f10474a0d22aab7b4d593
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 0e8bbaad920f35028c51641779a3272f73f81f37
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27911272"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978397"
 ---
-# <a name="how-to-create-and-manage-azure-redis-cache-using-the-azure-command-line-interface-azure-cli"></a>如何使用 Azure 命令行界面 (Azure CLI) 创建和管理 Azure Redis 缓存
+# <a name="how-to-create-and-manage-azure-redis-cache-using-the-azure-classic-cli"></a>如何使用 Azure 经典 CLI 创建和管理 Azure Redis 缓存
 > [!div class="op_single_selector"]
 > * [PowerShell](cache-howto-manage-redis-cache-powershell.md)
-> * [Azure CLI](cache-manage-cli.md)
->
+> * [Azure 经典 CLI](cache-manage-cli.md)
 >
 
-Azure CLI 是从任何平台管理 Azure 基础结构的好办法。 本文演示了如何使用 Azure CLI 创建和管理 Azure Redis 缓存实例。
+Azure 经典 CLI 是从任何平台管理 Azure 基础结构的好办法。 本文演示了如何使用 Azure 经典 CLI 创建和管理 Azure Redis 缓存实例。
 
+[!INCLUDE [outdated-cli-content](../../includes/contains-classic-cli-content.md)]
 > [!NOTE]
-> 本文适用于以前版本的 Azure CLI。 有关最新的 Azure CLI 2.0 示例脚本，请参阅 [Azure CLI Redis 缓存示例](cli-samples.md)。
-> 
-> 
+> 有关最新的 Azure CLI 示例脚本，请参阅 [Azure CLI Redis 缓存示例](cli-samples.md)。
 
 ## <a name="prerequisites"></a>先决条件
-若要使用 Azure CLI 创建和管理 Azure Redis 缓存实例，必须完成以下步骤。
+若要使用 Azure 经典 CLI 创建和管理 Azure Redis 缓存实例，必须完成以下步骤。
 
 * 必须具有 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
-* [安装 Azure CLI](../cli-install-nodejs.md)。
-* 将 Azure CLI 安装与个人 Azure 帐户或者工作或学校 Azure 帐户关联，然后使用 `azure login` 命令从 Azure CLI 登录。 若要了解差别并进行选择，请参阅[从 Azure 命令行界面 (Azure CLI) 连接到 Azure 订阅](/cli/azure/authenticate-azure-cli)。
-* 在运行以下任何命令之前，通过运行 `azure config mode arm` 命令将 Azure CLI 切换到 Resource Manager 模式下。 有关更多详细信息，请参阅[使用 Azure CLI 管理 Azure 资源和资源组](../xplat-cli-azure-resource-manager.md)。
+* [安装 Azure 经典 CLI](../cli-install-nodejs.md)。
+* 将 Azure CLI 安装与个人 Azure 帐户或者工作或学校 Azure 帐户关联，然后使用 `azure login` 命令从经典 CLI 登录。
+* 在运行以下任何命令之前，通过运行 `azure config mode arm` 命令将经典 CLI 切换到资源管理器模式下。 有关更多详细信息，请参阅[使用 Azure 经典 CLI 管理 Azure 资源和资源组](../xplat-cli-azure-resource-manager.md)。
 
 ## <a name="redis-cache-properties"></a>Redis 缓存属性
 在创建和更新 Redis 缓存实例时使用以下属性。
 
-| 属性 | Switch | 说明 |
+| 属性 | Switch | Description |
 | --- | --- | --- |
-| name |-n, --name |Redis 缓存的名称。 |
+| 名称 |-n, --name |Redis 缓存的名称。 |
 | 资源组 |-g, --resource-group |资源的名称。 |
 | location |-l, --location |要创建缓存的位置。 |
 | size |-z, --size |Redis 缓存的大小。 有效的值: [C0、C1、C2、C3、C4、C5、C6、P1、P2、P3、P4] |

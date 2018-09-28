@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 56223b2ed8e9d9b1a08f5313940920113a650bfe
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: f515ddc58a9f9b434e40f44ca7cc50d738ed69f0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128326"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993099"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>在 Linux 上安装 Azure IoT Edge 运行时 (x64)
 
@@ -117,7 +117,7 @@ sudo apt-get install iotedge
 sudo nano /etc/iotedge/config.yaml
 ```
 
-找到文件的预配部分并取消注释**手动**预配模式。 使用 IoT Edge 设备的连接字符串更新 **device_connection_string** 的值。
+找到文件的 provisioning 节并取消注释 **manual** 预配模式。 使用 IoT Edge 设备的连接字符串更新 **device_connection_string** 的值。
 
    ```yaml
    provisioning:
@@ -143,7 +143,7 @@ sudo systemctl restart iotedge
 
 ### <a name="option-2-automatic-provisioning"></a>选项 2：自动预配
 
-若要自动预配设备，请[设置设备预配服务并检索设备注册 ID][lnk-dps] (DPS)。 自动预配仅适用于具有受信任的平台模块 (TPM) 芯片的设备。 例如，默认情况下，Raspberry Pi 设备不附带 TPM。 
+若要自动预配设备，请[设置设备预配服务并检索设备注册 ID][lnk-dps] (DPS)。 自动预配仅适用于具有受信任的平台模块 (TPM) 芯片的设备。 例如，默认情况下，Raspberry Pi 设备未附带 TPM。 
 
 打开配置文件。 
 
@@ -199,9 +199,11 @@ sudo iotedge list
 
 ## <a name="tips-and-suggestions"></a>提示和建议
 
-需要提升的权限才能运行 `iotedge` 命令。 安装运行时后，请从计算机中注销并重新登录以自动更新权限。 在此之前，请在任何 `iotedge` 命令前使用 **sudo**。
+需要提升的权限才能运行 `iotedge` 命令。 安装运行时后，请从计算机中注销并重新登录以自动更新权限。 在此之前，在任何 `iotedge` 命令前都要使用 **sudo**。
 
 在资源受限设备上，强烈建议按照[故障排除指南][lnk-trouble]中的说明将 *OptimizeForPerformance* 环境变量设置为 *false*。
+
+如果网络具有代理服务器，请按照[配置 IoT Edge 设备以通过代理服务器进行通信](how-to-configure-proxy-support.md)中的步骤进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 

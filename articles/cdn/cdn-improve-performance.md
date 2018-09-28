@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/13/2018
 ms.author: magattus
-ms.openlocfilehash: c3a20bd4fa1cccdca7cba0de52620f09fe01abc5
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 2468462170f970cd597dd1296417d5b93a88c2ec
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42140622"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997261"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>通过在 Azure CDN 中压缩文件来提高性能
 文件压缩是提高文件传输速度和增加页面加载性能的一种简单有效的方法，可通过在从服务器发送文件之前减少其大小来实现。 文件压缩可以减少带宽成本，并为用户提供更快的响应体验。
@@ -68,7 +68,7 @@ ms.locfileid: "42140622"
    > 
    
    > [!NOTE]
-   > Microsoft 的 Azure CDN 标准版目前不支持修改 MIME 类型的默认列表。
+   > Microsoft 提供的 Azure CDN 标准版暂不支持修改 MIME 类型的默认列表。
    > 
  
 5. 进行更改后，请选择“保存”。
@@ -102,13 +102,14 @@ ms.locfileid: "42140622"
 
 ### <a name="azure-cdn-standard-from-microsoft-profiles"></a>Microsoft 的 Azure CDN 标准版配置文件
 
-对于 **Microsoft 的 Azure CDN 标准版**配置文件，所有文件都适合压缩。 但文件必须为已[配置为压缩](#enabling-compression)的 MIME 类型。
+对于“Microsoft 提供的 Azure CDN 标准版”配置文件，只有符合条件的文件才能进行压缩。 为了符合压缩条件，文件必须满足以下条件：- 属于已[配置了压缩](#enabling-compression)的 MIME 类型。
+-大于 1KB -小于 8MB
 
 这些配置文件支持以下压缩编码：
 - gzip (GNU zip)
 - brotli 
  
-如果请求支持多个压缩类型，这些压缩类型优先于 brotli 压缩。
+如果请求支持多个压缩类型，那么 brotli 压缩优先。
 
 如果对资产的请求指定了 gzip 压缩并且请求导致缓存未命中，则 Azure CDN 将直接在 POP 服务器上对资产执行 gzip 压缩。 此后，将从缓存提供压缩的文件。
 

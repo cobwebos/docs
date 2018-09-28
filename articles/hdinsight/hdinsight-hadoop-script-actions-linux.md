@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: jasonh
-ms.openlocfilehash: 0225115fb6c74f736e6a5fba09414dc2ebafd84e
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 9a10620e3a388fa47076afd54e1789607e5ca47e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104817"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986245"
 ---
 # <a name="script-action-development-with-hdinsight"></a>使用 HDInsight 进行脚本操作开发
 
@@ -33,7 +33,7 @@ ms.locfileid: "43104817"
 | --- |:---:|:---:|
 | Azure 门户 |✓ |✓ |
 | Azure PowerShell |✓ |✓ |
-| Azure CLI 1.0 |&nbsp; |✓ |
+| Azure 经典 CLI |&nbsp; |✓ |
 | HDInsight .NET SDK |✓ |✓ |
 | Azure 资源管理器模板 |✓ |&nbsp; |
 

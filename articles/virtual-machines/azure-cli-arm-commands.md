@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: danlep
-ms.openlocfilehash: 8a2bae12fae6a1bf8f5ecbdb2ae01dea5260f3cb
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5aecb218b66c06c87446e35e5c7c9ca8108b956c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30839138"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995544"
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Resource Manager 模式下的 Azure CLI 命令
 本文提供常用于在 Azure 资源管理器部署模型中创建和管理 Azure 资源的 Azure 命令行接口 (CLI) 命令的语法和选项。 通过在 Resource Manager (arm) 模式下运行 CLI 可以访问这些命令。 本参考内容并不完整，CLI 版本可能会显示略微不同的命令或参数。 有关 Azure 资源和资源组的一般概述，请参阅 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md)。  
 
 > [!NOTE]
-> 本文介绍了 Azure CLI（有时被称为 Azure CLI 1.0）中的 Resource Manager 模式命令。 若要在 Resource Manager 模型中工作，还可试用下一代多平台 CLI - [Azure CLI 2.0](/cli/azure/install-az-cli2)。
+> 本文介绍了 Azure CLI（有时亦称为“Azure 经典 CLI”）中的资源管理器模式命令。 若要使用 Resource Manager 模型，还可试用下一代多平台 CLI，即 [Azure CLI](/cli/azure/install-az-cli2)。
 >查找有关[新旧 Azure CLI](/cli/azure/old-and-new-clis)的详细信息。
 >
 
@@ -1707,7 +1707,7 @@ ms.locfileid: "30839138"
     vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password
 
 > [!TIP]
-> 从 CLI 0.10 版开始，可以为某些热门 Marketplace 映像提供“UbuntuLTS”或“Win2012R2Datacenter”之类的简短别名作为 `image-urn`。 针对选项运行 `azure help vm quick-create`。 另外，从 0.10 版开始，`azure vm quick-create` 默认使用高级存储，前提是所选区域提供该存储。
+> 从 CLI 0.10 版开始，可以为某些热门市场映像提供“UbuntuLTS”或“Win2012R2Datacenter”之类的简短别名作为 `image-urn`。 针对选项运行 `azure help vm quick-create`。 另外，从 0.10 版开始，`azure vm quick-create` 默认使用高级存储，前提是所选区域提供该存储。
 > 
 > 
 

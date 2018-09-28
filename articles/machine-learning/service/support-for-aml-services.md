@@ -1,42 +1,41 @@
 ---
 title: 获取 Azure 机器学习服务的支持和培训
-description: 本文介绍如何获取 Azure 机器学习服务和 Azure Machine Learning Workbench 的支持和培训
+description: 本文介绍如何获取 Azure 机器学习服务的支持和培训
 services: machine-learning
-author: j-martens
-ms.author: jmartens
-manager: cgronlund
-ms.reviewer: mldocs
 ms.service: machine-learning
 ms.component: core
-ms.workload: data-services
-ms.topic: article
-ms.date: 03/01/2018
-ms.openlocfilehash: a9529a2b38105274f021483cfce51f30fd38fb62
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.topic: conceptual
+ms.reviewer: jmartens
+author: j-martens
+ms.author: jmartens
+ms.date: 09/24/2018
+ms.openlocfilehash: b5834bfd47cf2ab8462462c43394c8f05e43afa3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35631598"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971393"
 ---
-# <a name="get-support-and-training-for-azure-machine-learning-services"></a>获取 Azure 机器学习服务的支持和培训
+# <a name="get-support-and-training-for-azure-machine-learning-service"></a>获取 Azure 机器学习服务的支持和培训
 
 本文介绍如何了解有关 Azure 机器学习服务的详细信息，以及如何获取相关问题的支持。 
 
 ## <a name="learn-more-about-azure-machine-learning"></a>详细了解 Azure 机器学习
 
-[Azure 机器学习文档中心](../desktop-workbench/overview-what-is-azure-ml.md)提供视频教程和操作指南。 这些分步指南提供服务介绍，并对数据科学生命周期进行了说明。 我们会持续更新机器学习中心的内容。 
-
-此外，还[可以观看视频以了解详细信息](https://azure.microsoft.com/resources/videos/index/?services=machine-learning)
+除了此站点的文档，还会发现：
++ [教程和操作说明文章](../service/index.yml)
++ [体系结构概述](../service/concept-azure-machine-learning-architecture.md)
++ [视频](https://azure.microsoft.com/resources/videos/index/?services=machine-learning)
 
 可以使用本文底部的反馈链接**提交请求**，以获取更多学习资料。
 
-## <a name="get-support-for-azure-machine-learning-services"></a>获取 Azure 机器学习服务的支持
+## <a name="get-support-for-azure-machine-learning-service"></a>获取 Azure 机器学习服务的支持
 
-可以通过以下方式获取 Azure 机器学习服务的支持：
+请查看这些支持资源：
 
-+ **技术支持**：通过访问 [Azure 支持](https://azure.microsoft.com/support/options/)并选择“机器学习”来联系 Azure 技术支持。 
++ 技术支持：访问 [Azure 技术支持](https://azure.microsoft.com/support/options/)，然后选择“机器学习”。 
 
-+ **MSDN 用户论坛**：在 [MSDN 上的 Azure 机器学习服务支持论坛](https://social.msdn.microsoft.com/Forums/windowsdesktop/home?forum=MachineLearning)中提出问题、回答问题并与其他用户交流。
++ 用户论坛：在 [MSDN 上的 Azure 机器学习服务支持论坛](https://social.msdn.microsoft.com/Forums/windowsdesktop/home?forum=MachineLearning)中提出问题、回答问题并与其他用户交流。
 
 + **Stack Overflow**：访问 [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) 上标记为“Azure-Machine-Learning”的 Azure 机器学习社区。
 

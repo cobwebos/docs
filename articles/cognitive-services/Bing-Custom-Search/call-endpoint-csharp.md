@@ -9,44 +9,45 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 32644fe0cf0a6e1666d2d1ee6efb826bf753f001
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: ed00b75fa956d0197d3672d84b097f99ec3c35ec
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42814857"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956366"
 ---
 # <a name="call-bing-custom-search-endpoint-c"></a>调用必应自定义搜索终结点 (C#)
 
-本快速入门演示如何通过使用 C# 调用必应自定义搜索终结点来从自定义搜索实例中请求搜索结果。 
+本快速入门演示如何使用 C# 调用必应自定义搜索终结点来从自定义搜索实例中请求搜索结果。 
 
 ## <a name="prerequisites"></a>先决条件
 
--  现成的自定义搜索实例。 请参阅[创建第一个必应自定义搜索实例](quick-start.md)。
--  已安装 [.Net Core](https://www.microsoft.com/net/download/core)。
-- 具有必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)足以满足此快速入门的要求。 需要激活免费试用版时提供的访问密钥，或使用 Azure 仪表板中的付费订阅密钥。  
+若要完成本快速入门，你需要：
 
-  >[!NOTE]  
-  >如果现有必应自定义搜索客户具有在 2017 年 10 月 15 日当天或之前预配的预览密钥，则可以在 2017 年 11 月 30 日或用尽所允许的最大查询数前使用他们的密钥。 之后，他们需要迁移到 Azure 上的正式发布版本。 
- 
+- 现成的自定义搜索实例。 请参阅[创建第一个必应自定义搜索实例](quick-start.md)。
+- 已安装 [.Net Core](https://www.microsoft.com/net/download/core)。
+- 订阅密钥。 可以在激活[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)时获取订阅密钥，也可以使用 Azure 仪表板中的付费订阅密钥（请参阅[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)）。    
+
+
 ## <a name="run-the-code"></a>运行代码
 
 若要运行该示例，请遵循以下步骤：
 
-1. 为代码创建文件夹。
-2. 从命令提示符或终端导航至刚刚创建的文件夹。
+1. 为代码创建文件夹。  
+  
+2. 从命令提示符或终端导航至刚刚创建的文件夹。  
+  
 3. 运行以下命令：
     ```
     dotnet new console -o BingCustomSearch
     cd BingCustomSearch
     dotnet add package Newtonsoft.Json
     dotnet restore
-   ```
+    ```
+  
+4. 将以下代码复制到 Program.cs。 将“YOUR-SUBSCRIPTION-KEY”和“YOUR-CUSTOM-CONFIG-ID”分别替换为订阅密钥和配置 ID。
 
-4. 将以下代码复制到 Program.cs。
-5. 用密钥和配置 ID 替换“YOUR-SUBSCRIPTION-KEY”和“YOUR-CUSTOM-CONFIG-ID”。
-
-    ``` CSharp
+    ```csharp
     using System;
     using System.Net.Http;
     using System.Web;
@@ -118,13 +119,13 @@ ms.locfileid: "42814857"
         }
     }
     ```
-6. 使用以下命令来生成应用程序。 请注意由命令输出引用的 dll 路径。
+6. 使用以下命令来生成应用程序。 请注意由命令输出引用的 DLL 路径。
 
     <pre>
     dotnet build 
     </pre>
     
-7. 使用下面的命令来运行应用程序，将 **PATH TO OUTPUT** 替换为生成步骤引用的路径。
+7. 使用下面的命令来运行应用程序，将 PATH TO OUTPUT 替换为步骤 6 中引用的 DLL 路径。
 
     <pre>    
     dotnet **PATH TO OUTPUT**

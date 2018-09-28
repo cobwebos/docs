@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 1c6751d980a7bb28e58a3aa00514411959f515d7
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 5f269f074236beef3e213c888e540bcf18238be1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725860"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953695"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>从 Azure 下载 Linux VHD
 
 本文介绍如何使用 Azure CLI 和 Azure 门户从 Azure 下载 [Linux 虚拟硬盘 (VHD)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 文件。 
 
-如果尚未安装 [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2)，请安装。
+如果尚未安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2)，请安装。
 
 ## <a name="stop-the-vm"></a>停止 VM
 
@@ -86,6 +86,6 @@ ms.locfileid: "34725860"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[使用 Azure CLI 2.0 上传自定义磁盘并从其创建 Linux VM](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 
+- 了解如何[通过 Azure CLI 从自定义磁盘上传并创建 Linux VM](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 
 - [使用 Azure CLI 管理 Azure 磁盘](tutorial-manage-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 

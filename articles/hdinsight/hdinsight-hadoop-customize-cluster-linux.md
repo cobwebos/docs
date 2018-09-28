@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: jasonh
-ms.openlocfilehash: e12379dbb63e57ee12e1cebb1761f0b103d50ef1
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: e9662a0a0def91fa2cace1eb47dceffed5ff1ae6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43110521"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978023"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>使用脚本操作自定义基于 Linux 的 HDInsight 群集
 
@@ -89,7 +89,7 @@ HDInsight 提供一个称为**脚本操作**的配置方法，该方法可调用
 
 * 在群集节点上以**根级别权限**运行。
 
-* 可以通过 **Azure 门户**、**Azure PowerShell**、**Azure CLI v1.0** 或 **HDInsight .NET SDK** 使用
+* 可以通过 Azure 门户、Azure PowerShell、Azure 经典 CLI 或 HDInsight .NET SDK 使用
 
 群集保留已运行的所有脚本的历史记录。 需要查找要升级或降级的脚本的 ID 时，历史记录很有用。
 
@@ -147,7 +147,7 @@ HDInsight 提供一个称为**脚本操作**的配置方法，该方法可调用
 
 * Azure 门户
 * Azure PowerShell
-* Azure CLI v1.0
+* Azure 经典 CLI
 * HDInsight .NET SDK
 
 HDInsight 提供了脚本用于在 HDInsight 群集上安装以下组件：
@@ -292,10 +292,9 @@ HDInsight .NET SDK 提供客户端库，可简化从 .NET 应用程序中使用 
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-azure-cli"></a>从 Azure CLI 将脚本操作应用到正在运行的群集
 
-在继续前，确保已安装并配置 Azure CLI。 有关详细信息，请参阅[安装 Azure CLI 1.0](../cli-install-nodejs.md)。
+在继续前，确保已安装并配置 Azure CLI。 有关详细信息，请参阅[安装 Azure 经典 CLI](../cli-install-nodejs.md)。
 
-> [!IMPORTANT]
-> HDInsight 需要 Azure CLI 1.0。 目前 Azure CLI 2.0 未提供针对使用 HDInsight 的命令。
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 1. 要切换到 Azure 资源管理器模式，请在命令行中使用以下命令：
 
@@ -380,7 +379,7 @@ HDInsight .NET SDK 提供客户端库，可简化从 .NET 应用程序中使用 
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/use-script-action/use-script-action.ps1?range=123-140)]
 
-### <a name="using-the-azure-cli"></a>使用 Azure CLI
+### <a name="using-the-azure-classic-cli"></a>使用 Azure 经典 CLI
 
 | 使用以下 cmdlet... | 可以... |
 | --- | --- |

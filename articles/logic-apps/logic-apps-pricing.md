@@ -2,32 +2,39 @@
 title: 定价和计费 - Azure 逻辑应用 | Microsoft Docs
 description: 了解 Azure 逻辑应用的定价和计费原理
 services: logic-apps
-author: kevinlam1
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: ''
-ms.devlang: ''
-ms.topic: article
-ms.date: 05/11/2018
+ms.suite: logic-apps
+author: kevinlam1
 ms.author: klam
-ms.openlocfilehash: e1702de42be8510412a6479b594a198a84d15ae2
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.reviewer: estfan, LADocs
+ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
+ms.topic: article
+ms.date: 09/24/2018
+ms.openlocfilehash: b75fba2ba0e9fa922b1252378e0bab326cada7d2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299250"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974300"
 ---
-# <a name="logic-apps-pricing-model"></a>逻辑应用定价模型
+# <a name="pricing-model-for-azure-logic-apps"></a>Azure 逻辑应用的定价模型
 
 可以在云中使用 Azure 逻辑应用创建和运行可自动缩放的集成工作流。 下面是有关逻辑应用计费和定价方式的详细信息。 
 
+<a name="consumption-pricing"></a>
+
 ## <a name="consumption-pricing-model"></a>消耗量定价模型
 
-使用新建的逻辑应用时，只需为使用的资源付费。 新逻辑应用使用消耗计划和定价模型，这意味着，将会计量逻辑应用实例执行的所有操作。 逻辑应用定义中的每个步骤都是一个操作，包括触发器、控制流步骤、对内置操作的调用，以及对连接器的调用。 有关详细信息，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps)。
+对于通过使用公共或“全局”逻辑应用服务创建的新逻辑应用，只需根据自己的使用量付费即可。 这些逻辑应用使用基于消耗量的计划和定价模型，这意味着，将会计量逻辑应用执行的所有操作。 逻辑应用定义中的每个步骤都是一个操作，包括触发器、控制流步骤、对内置操作的调用，以及对连接器的调用。 有关详细信息，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps)。
+
+<a name="fixed-pricing"></a>
+
+## <a name="fixed-pricing-model"></a>固定定价模型
+
+> [!NOTE]
+> 集成服务环境位于个人预览版中。 若要请求访问权限，[请在此处创建加入请求](https://aka.ms/iseprivatepreview)。
+
+对于使用[*集成服务环境* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 创建的新逻辑应用（使用专用资源的专用独立逻辑应用实例），需为内置操作和标有 ISE 的标准连接器支付固定月度价格。 ISE 包括一个免费的企业连接器，而其他企业连接器基于企业消耗量价格收费。 有关详细信息，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps)。
 
 <a name="triggers"></a>
 

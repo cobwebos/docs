@@ -1,38 +1,38 @@
 ---
-title: 将 Amazon Web Services 帐户连接到 Azure 成本管理 | Microsoft Docs
-description: 连接 Amazon Web Services 帐户以便在成本管理报表中查看成本和用量数据。
+title: 将 Amazon Web Services 帐户连接到 Azure 中的 Cloudyn | Microsoft 文档
+description: 连接 Amazon Web Services 帐户，以在 Cloudyn 报表中查看成本和使用情况数据。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/07/2018
+ms.date: 08/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: c2c7ea043d2da41442829321ac663325f30ff066
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 44bf1d9cd270394720aee71862c1e65118084259
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297322"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978212"
 ---
 # <a name="connect-an-amazon-web-services-account"></a>连接 Amazon Web Services 帐户
 
-可以使用两个选项将 Amazon Web Services (AWS) 帐户连接到 Azure 成本管理。 可以使用 IAM 角色或只读的 IAM 用户帐户进行连接。 建议使用 IAM 角色，因为这样可以将定义的访问权限委托给可信的实体。 IAM 角色不要求共享长期访问密钥。 将 AWS 帐户连接到成本管理后，成本管理报表中会提供成本和用量数据。 本文档将逐步讲解如何使用这两个选项。
+可以使用两个选项将 Amazon Web Services (AWS) 帐户连接到 Cloudyn。 可以使用 IAM 角色或只读的 IAM 用户帐户进行连接。 建议使用 IAM 角色，因为这样可以将定义的访问权限委托给可信的实体。 IAM 角色不要求共享长期访问密钥。 将 AWS 帐户连接到 Cloudyn 后，Cloudyn 报表中会提供成本和使用情况数据。 本文档将逐步讲解如何使用这两个选项。
 
 有关 AWS IAM 标识的详细信息，请参阅[标识（用户、组和角色）](https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html)。
 
-此外，本文还会介绍如何启用详细的 AWS 计费报告，并将信息存储在 AWS 简单存储服务 (S3) 存储桶中。 详细计费报告包括每小时计费以及标记和资源信息。 存储报告可让成本管理从存储桶中检索这些信息，并在其报告中显示信息。
+此外，本文还会介绍如何启用详细的 AWS 计费报告，并将信息存储在 AWS 简单存储服务 (S3) 存储桶中。 详细计费报告包括每小时计费以及标记和资源信息。 通过存储报表，可让 Cloudyn 从存储桶中检索这些信息，并在其报表中显示信息。
 
 
 ## <a name="aws-role-based-access"></a>基于 AWS 角色的访问
 
-以下部分逐步讲解如何创建一个只读的 IAM 角色，以提供对成本管理的访问。
+以下部分逐步讲解如何创建一个只读的 IAM 角色，以提供对 Cloudyn 的访问。
 
-### <a name="get-your-cost-management-account-external-id"></a>获取成本管理帐户外部 ID
+### <a name="get-your-cloudyn-account-external-id"></a>获取 Cloudyn 帐户外部 ID
 
-第一个步骤是从 Azure 成本管理门户中获取唯一的连接通行短语。 该通行短语在 AWS 中用作**外部 ID**。
+第一步是从 Cloudyn 门户中获取唯一的连接通行短语。 该通行短语在 AWS 中用作**外部 ID**。
 
 1. 通过 Azure 门户打开 Cloudyn 门户，或导航到 [https://azure.cloudyn.com](https://azure.cloudyn.com) 并进行登录。
 2. 单击齿轮符号，然后选择“云帐户”。
@@ -44,16 +44,16 @@ ms.locfileid: "35297322"
 
 1. 通过 https://console.aws.amazon.com/iam/home 登录到 AWS 控制台，选择“角色”。
 2. 单击“创建角色”，然后选择“另一个 AWS 帐户”。
-3. 在“帐户 ID”框中粘贴 `432263259397`。 此帐户 ID 是 AWS 分配给 Cloudyn 服务的成本管理数据收集器帐户。 使用与显示内容完全相同的帐户 ID。
-4. 在“选项”旁边，选择“需要外部 ID”。 粘贴前面从成本管理中的“外部 ID”字段复制的唯一值。 然后单击“下一步: 权限”。  
+3. 在“帐户 ID”框中粘贴 `432263259397`。 此帐户 ID 是 AWS 分配给 Cloudyn 服务的 Cloudyn 数据收集器帐户。 使用与显示内容完全相同的帐户 ID。
+4. 在“选项”旁边，选择“需要外部 ID”。 粘贴前面从 Cloudyn 中的“外部 ID”字段复制的唯一值。 然后单击“下一步: 权限”。  
     ![创建角色](./media/connect-aws-account/create-role01.png)
 5. 在“附加权限策略”下面的“策略类型”筛选搜索框中键入 `ReadOnlyAccess`，选择“ReadOnlyAccess”，然后单击“下一步: 查看”。  
     ![只读访问](./media/connect-aws-account/readonlyaccess.png)
-6. 在“查看”页上，确保选择正确无误，然后键入一个**角色名称**。 例如 *Azure-Cost-Mgt*。输入**角色说明**， 例如“Azure 成本管理的角色分配”，然后单击“创建角色”。
-7. 在“角色”列表中单击创建的角色，并复制“摘要”页中显示的“角色 ARN”值。 稍后在 Azure 成本管理中注册配置时，需要使用该“角色 ARN”（Amazon 资源名称）值。  
+6. 在“查看”页上，确保选择正确无误，然后键入一个**角色名称**。 例如 *Azure-Cost-Mgt*。输入**角色说明**， 例如“Cloudyn 的角色分配”，然后单击“创建角色”。
+7. 在“角色”列表中单击创建的角色，并复制“摘要”页中显示的“角色 ARN”值。 稍后在 Cloudyn 中注册配置时，需要使用该“角色 ARN”（Amazon 资源名称）值。  
     ![角色 ARN](./media/connect-aws-account/role-arn.png)
 
-### <a name="configure-aws-iam-role-access-in-cost-management"></a>在成本管理中配置 AWS IAM 角色访问
+### <a name="configure-aws-iam-role-access-in-cloudyn"></a>在 Cloudyn 中配置 AWS IAM 角色访问
 
 1. 通过 Azure 门户打开 Cloudyn 门户，或导航到 https://azure.cloudyn.com/ 并进行登录。
 2. 单击齿轮符号，然后选择“云帐户”。
@@ -64,16 +64,16 @@ ms.locfileid: "35297322"
     ![添加 AWS 帐户框](./media/connect-aws-account/add-aws-account-box.png)
 
 
-AWS 帐户显示在帐户列表中。 列出的“所有者 ID”与“角色 ARN”值匹配。 “帐户状态”应带有一个绿色勾选标记符号，指示成本管理可以访问你的 AWS 帐户。 启用详细 AWS 计费之前，合并状态会显示为“独立”。
+AWS 帐户显示在帐户列表中。 列出的“所有者 ID”与“角色 ARN”值匹配。 “帐户状态”应带有一个绿色对勾符号，指示 Cloudyn 可以访问你的 AWS 帐户。 启用详细 AWS 计费之前，合并状态会显示为“独立”。
 
 ![AWS 帐户状态](./media/connect-aws-account/aws-account-status01.png)
 
-成本管理将开始收集数据并填充报表。 接下来，[启用详细 AWS 计费](#enable-detailed-aws-billing)。
+Cloudyn 将开始收集数据并填充报告。 接下来，[启用详细 AWS 计费](#enable-detailed-aws-billing)。
 
 
 ## <a name="aws-user-based-access"></a>基于 AWS 用户的访问
 
-以下部分逐步讲解如何创建一个只读的用户，以提供对成本管理的访问。
+以下部分逐步讲解如何创建一个只读用户，以提供对 Cloudyn 的访问。
 
 ### <a name="add-aws-read-only-user-based-access"></a>添加基于 AWS 只读用户的访问
 
@@ -86,11 +86,11 @@ AWS 帐户显示在帐户列表中。 列出的“所有者 ID”与“角色 AR
 6. 在“附加权限策略”下面的“策略类型”筛选搜索框中键入 `ReadOnlyAccess`，选择“ReadOnlyAccess”，然后单击“下一步: 查看”。  
     ![设置用户的权限](./media/connect-aws-account/set-permission-for-user.png)
 7. 在“查看”页上，确保选择正确无误，然后单击“创建用户”。
-8. “完成”页上显示了“访问密钥 ID”和“机密访问密钥”。 可以使用这些信息在成本管理中配置注册。
+8. “完成”页上显示了“访问密钥 ID”和“机密访问密钥”。 可以使用此信息在 Cloudyn 中配置注册。
 9. 单击“下载 .csv”，并将 credentials.csv 文件保存到安全的位置。  
     ![下载凭据](./media/connect-aws-account/download-csv.png)
 
-### <a name="configure-aws-iam-user-based-access-in-cost-management"></a>在成本管理中配置基于 AWS IAM 用户的访问
+### <a name="configure-aws-iam-user-based-access-in-cloudyn"></a>在 Cloudyn 中配置基于 AWS IAM 用户的访问
 
 1. 通过 Azure 门户打开 Cloudyn 门户，或导航到 https://azure.cloudyn.com/ 并进行登录。
 2. 单击齿轮符号，然后选择“云帐户”。
@@ -102,7 +102,7 @@ AWS 帐户显示在帐户列表中。 列出的“所有者 ID”与“角色 AR
 
 AWS 帐户显示在帐户列表中。 “帐户状态”应该附带一个绿色的勾选符号。
 
-成本管理将开始收集数据并填充报表。 接下来，[启用详细 AWS 计费](#enable-detailed-aws-billing)。
+Cloudyn 将开始收集数据并填充报告。 接下来，[启用详细 AWS 计费](#enable-detailed-aws-billing)。
 
 ## <a name="enable-detailed-aws-billing"></a>启用详细 AWS 计费
 
@@ -185,7 +185,7 @@ AWS 帐户显示在帐户列表中。 “帐户状态”应该附带一个绿色
 3. 选择所有四个报告粒度选项，然后单击“保存首选项”。  
     ![启用报告](./media/connect-aws-account/enable-reports.png)
 
-启用详细计费后，成本管理将从 S3 存储桶检索详细计费信息并填充报告。 最长可能需要在 24 小时后，详细计费数据才会显示在 Cloudyn 控制台中。 提供详细计费数据后，帐户合并状态将显示为“已合并”。 帐户状态显示为“已完成”。
+启用详细计费后，Cloudyn 将从 S3 存储桶检索详细计费信息并填充报表。 最长可能需要在 24 小时后，详细计费数据才会显示在 Cloudyn 控制台中。 提供详细计费数据后，帐户合并状态将显示为“已合并”。 帐户状态显示为“已完成”。
 
 ![帐户合并状态](./media/connect-aws-account/consolidated-status.png)
 
@@ -193,4 +193,4 @@ AWS 帐户显示在帐户列表中。 “帐户状态”应该附带一个绿色
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要详细了解 Azure 成本管理，请继续学习成本管理的[查看使用量和成本](tutorial-review-usage.md)教程。
+- 若要了解有关 Cloudyn 的详细信息，请继续学习 Cloudyn 的[查看使用情况和成本](tutorial-review-usage.md)教程。

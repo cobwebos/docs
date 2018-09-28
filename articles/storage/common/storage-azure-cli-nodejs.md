@@ -1,6 +1,6 @@
 ---
-title: 将 Azure CLI 1.0 用于 Azure 存储 | Microsoft Docs
-description: 了解如何将 Azure 命令行接口 (Azure CLI) 1.0 用于 Azure 存储，以便创建和管理存储帐户并处理 Azure blob 和文件。 Azure CLI 是一个跨平台工具
+title: 结合使用 Azure 经典 CLI 与 Azure 存储 | Microsoft 文档
+description: 了解如何结合使用 Azure 经典命令行接口 (CLI) 与 Azure 存储，以便创建和管理存储帐户并处理 Azure blob 和文件。
 services: storage
 author: seguler
 ms.service: storage
@@ -8,31 +8,31 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: f406f12b3313670e8e2d89296f7c24478bb58c6c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: e563c7000b600bed917f42d8ffb87df883564ef8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521500"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979322"
 ---
-# <a name="using-the-azure-cli-10-with-azure-storage"></a>将 Azure CLI 1.0 用于 Azure 存储
+# <a name="using-the-azure-classic-cli-with-azure-storage"></a>结合使用 Azure 经典 CLI 与 Azure 存储
 
 ## <a name="overview"></a>概述
 
-Azure CLI 提供了一组开源且跨平台的命令，这些命令可以用于 Azure 平台。 它提供 [Azure 门户](https://portal.azure.com)所提供的很多相同功能，此外还有各种数据访问功能。
+Azure 经典 CLI 提供了一组开源且跨平台的命令，可结合 Azure 平台使用。 它提供 [Azure 门户](https://portal.azure.com)所提供的很多相同功能，此外还有各种数据访问功能。
 
-在本指南中，我们将探讨如何使用 [Azure 命令行接口 (Azure CLI)](../../cli-install-nodejs.md)，以通过 Azure 存储执行各种开发和管理任务。 在使用本指南之前，我们建议下载和安装或者升级到最新版 Azure CLI。
+在本指南中，将探讨如何使用 [Azure 经典 CLI](../../cli-install-nodejs.md)，以通过 Azure 存储执行各种开发和管理任务。 在使用本指南之前，我们建议下载和安装或者升级到最新版的经典 CLI。
 
-本指南假定你了解 Azure 存储的基本概念。 本指南提供了大量的脚本，用于演示 Azure CLI 与 Azure 存储的用法。 在运行每个脚本之前，请确保根据配置更新脚本变量。
+本指南假定你了解 Azure 存储的基本概念。 本指南提供了大量的脚本，用于演示结合使用经典 CLI 与 Azure 存储的用法。 在运行每个脚本之前，请确保根据配置更新脚本变量。
 
 > [!NOTE]
-> 本指南提供经典存储帐户的 Azure CLI 命令和脚本示例。 要了解如何使用适用于 Resource Manager 存储帐户的 Azure CLI 命令，请参阅[将适用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure 资源管理配合使用](../../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects)。
+> 本指南提供了用于经典存储帐户的 Azure 经典 CLI 命令和脚本示例。 若要了解如何使用适用于“资源管理器”存储帐户的 Azure 经典 CLI 命令，请参阅[将适用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure 资源管理配合使用](../../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects)。
 >
 >
 
 [!INCLUDE [storage-cli-versions](../../../includes/storage-cli-versions.md)]
 
-## <a name="get-started-with-azure-storage-and-the-azure-cli-in-5-minutes"></a>在 5 分钟内开始使用 Azure 存储和 Azure CLI
+## <a name="get-started-with-azure-storage-and-the-azure-classic-cli-in-5-minutes"></a>在 5 分钟内开始使用 Azure 存储和 Azure 经典 CLI
 本指南使用 Ubuntu 作为示例，但其他 OS 平台的操作应与此类似。
 
 **Azure 新用户：** 获取一个 Microsoft Azure 订阅以及与该订阅关联的 Microsoft 帐户。 有关 Azure 购买选项的信息，请参阅[免费试用](https://azure.microsoft.com/pricing/free-trial/)、[购买选项](https://azure.microsoft.com/pricing/purchase-options/)和[会员套餐](https://azure.microsoft.com/pricing/member-offers/)（适用于 MSDN、Microsoft 合作伙伴网络和 BizSpark 以及其他 Microsoft 计划的成员）。
@@ -41,12 +41,12 @@ Azure CLI 提供了一组开源且跨平台的命令，这些命令可以用于 
 
 **创建 Microsoft Azure 订阅和帐户之后：**
 
-1. 按照[安装 Azure CLI](../../cli-install-nodejs.md) 中的概要说明，下载和安装 Azure CLI。
-2. 安装了 Azure CLI 之后，将可以从命令行界面（Bash、终端、命令提示符）使用 azure 命令访问 Azure CLI 命令。 键入 _azure_ 命令，可看到以下输出。
+1. 按照[安装 Azure 经典 CLI](../../cli-install-nodejs.md) 中的概要说明，下载和安装 Azure 经典 CLI。
+2. 安装了经典 CLI 之后，将能够从命令行接口（Bash、终端、命令提示符）使用 azure 命令访问经典 CLI 命令。 键入 _azure_ 命令，可看到以下输出。
 
     ![Azure 命令输出](./media/storage-azure-cli/azure_command.png)   
-3. 在命令行接口中，键入 `azure storage` 即可列出所有 Azure 存储命令，并初步了解 Azure CLI 提供的功能。 可以键入带 **-h** 参数的命令名称（例如，`azure storage share create -h`），了解命令语法的详细信息。
-4. 现在，我们将提供一个简单的脚本，演示用于访问 Azure 存储的基本 Azure CLI 命令。 该脚本会首先要求针对存储帐户和密钥设置两个变量。 然后，该脚本会在此新存储帐户中创建新容器，并将现有图像文件 (Blob) 上传到该容器。 脚本在列出该容器中的所有 Blob 后，就会将图像文件下载到本地计算机上的目标目录。
+3. 在命令行接口中，键入 `azure storage` 即可列出所有 Azure 存储命令，并初步了解经典 CLI 提供的功能。 可以键入带 **-h** 参数的命令名称（例如，`azure storage share create -h`），了解命令语法的详细信息。
+4. 现在，我们将提供一个简单的脚本，演示用于访问 Azure 存储的基本经典 CLI 命令。 该脚本会首先要求针对存储帐户和密钥设置两个变量。 然后，该脚本会在此新存储帐户中创建新容器，并将现有图像文件 (Blob) 上传到该容器。 脚本在列出该容器中的所有 Blob 后，就会将图像文件下载到本地计算机上的目标目录。
 
     ```azurecli
     #!/bin/bash
@@ -88,9 +88,9 @@ Azure CLI 提供了一组开源且跨平台的命令，这些命令可以用于 
 
 运行脚本后，应会创建包含已下载图像文件的本地目标文件夹。
 
-## <a name="manage-storage-accounts-with-the-azure-cli"></a>通过 Azure CLI 管理存储帐户
+## <a name="manage-storage-accounts-with-the-azure-classic-cli"></a>通过 Azure 经典 CLI 管理存储帐户
 ### <a name="connect-to-your-azure-subscription"></a>连接到 Azure 订阅
-大多数存储命令没有 Azure 订阅也可以使用，不过仍建议通过 Azure CLI 连接到订阅。 要将 Azure CLI 配置为使用用户的订阅，请执行[从 Azure CLI 连接到 Azure 订阅](/cli/azure/authenticate-azure-cli)中的步骤。
+尽管大多数存储命令没有 Azure 订阅也可以使用，不过仍建议通过经典 CLI 连接到订阅。
 
 ### <a name="create-a-new-storage-account"></a>新建存储帐户
 要使用 Azure 存储，需要一个存储帐户。 可以在将计算机配置为连接到订阅之后，创建新的 Azure 存储帐户。
@@ -102,7 +102,7 @@ azure storage account create <account_name>
 存储帐户名称必须为 3 到 24 个字符，并且只能使用数字和小写字母。
 
 ### <a name="set-a-default-azure-storage-account-in-environment-variables"></a>在环境变量中设置默认的 Azure 存储帐户
-可以在订阅中设置多个存储帐户。 可以选择其中的一个存储帐户，并在环境变量中将其设置为同一会话中所有存储命令的默认存储帐户。 这样，便可以在不显式指定存储帐户和密钥的情况下运行 Azure CLI 存储命令。
+可以在订阅中设置多个存储帐户。 可以选择其中的一个存储帐户，并在环境变量中将其设置为同一会话中所有存储命令的默认存储帐户。 这样，便可以在不显式指定存储帐户和密钥的情况下运行经典 CLI 存储命令。
 
 ```azurecli
 export AZURE_STORAGE_ACCOUNT=<account_name>
@@ -177,7 +177,7 @@ azure storage blob delete mycontainer myBlockBlob2
 ```
 
 ## <a name="create-and-manage-file-shares"></a>创建和管理文件共享
-Azure 文件使用标准 SMB 协议为应用程序提供共享存储。 Microsoft Azure 虚拟机和云服务以及本地应用程序可以通过装载的共享来共享文件数据。 可以通过 Azure CLI 管理文件共享和文件数据。 有关 Azure 文件的详细信息，请参阅 [Azure 文件简介](../files/storage-files-introduction.md)。
+Azure 文件使用标准 SMB 协议为应用程序提供共享存储。 Microsoft Azure 虚拟机和云服务以及本地应用程序可以通过装载的共享来共享文件数据。 你可以通过经典 CLI 管理文件共享和文件数据。 有关 Azure 文件的详细信息，请参阅 [Azure 文件简介](../files/storage-files-introduction.md)。
 
 ### <a name="create-a-file-share"></a>创建文件共享
 Azure 文件共享是 Azure 中的 SMB 文件共享。 所有目录和文件都必须在文件共享中创建。 一个帐户可以包含无限数量的共享，一个共享可以存储无限数量的文件，直到达到存储帐户的容量限制为止。 下面的示例创建名为 **myshare** 的文件共享。
@@ -214,7 +214,7 @@ azure storage file list myshare myDir
 请注意，进行列表操作时，目录名是可选的。 如果省略目录名，该命令会列出共享中根目录的内容。
 
 ### <a name="copy-files"></a>复制文件
-从 Azure CLI 的 0.9.8 版开始，可以将一个文件复制到另一个文件，将一个文件复制到一个 Blob，或将一个 Blob 复制到一个文件。 下面，我们演示如何使用 CLI 命令执行这些复制操作。 要将文件复制到新目录中：
+从经典 CLI 的 0.9.8 版开始，可以将一个文件复制到另一个文件，将一个文件复制到一个 Blob，或将一个 Blob 复制到一个文件。 下面，我们演示如何使用 CLI 命令执行这些复制操作。 要将文件复制到新目录中：
 
 ```azurecli
 azure storage file copy start --source-share srcshare --source-path srcdir/hello.txt --dest-share destshare
@@ -230,9 +230,9 @@ azure storage file copy start --source-container srcctn --source-blob hello2.txt
 
 ## <a name="next-steps"></a>后续步骤
 
-可以在此处查找使用存储资源的 Azure CLI 1.0 命令参考：
+你可以在此处查找使用存储资源的 Azure 经典 CLI 命令参考：
 
-* [Resource Manager 模式下的 Azure CLI 命令](../../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects)
-* [Azure 服务管理模式下的 Azure CLI 命令](../../cli-install-nodejs.md)
+* [Resource Manager 模式下的 Azure 经典 CLI 命令](../../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects)
+* [Azure 服务管理模式下的 Azure 经典 CLI 命令](../../cli-install-nodejs.md)
 
-你可能还想尝试将 [Azure CLI 2.0](../storage-azure-cli.md)（使用 Python 编写的下一代 CLI）与 Resource Manager 部署模型配合使用。
+你可能还想尝试将最新版的 [Azure CLI](../storage-azure-cli.md) 与 Resource Manager 部署模型配合使用。

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: juluk
-ms.openlocfilehash: 4b7e4302bba2efed12e19043da1f592bed12a2fd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0b3616a723e793ab1ce8d7bcca1f53ca10ec4f96
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608876"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46970646"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell 中的 Bash 快速入门
 
@@ -36,7 +36,7 @@ ms.locfileid: "34608876"
 3. 选择“创建存储”
 
 > [!TIP]
-> 在每个会话中会自动针对 Azure CLI 2.0 对你进行身份验证。
+> 在每个会话中会自动针对 Azure CLI 对你进行身份验证。
 
 ### <a name="select-the-bash-environment"></a>选择 Bash 环境
 检查 shell 窗口左侧的环境下拉列表是否显示 `Bash`。 <br>
@@ -63,14 +63,14 @@ az group create --location westus --name MyRG
 ```
 
 ### <a name="create-a-linux-vm"></a>创建 Linux VM
-在新资源组中创建 Ubuntu VM。 Azure CLI 2.0 将创建 SSH 密钥并使用它们设置 VM。 <br>
+在新资源组中创建 Ubuntu VM。 Azure CLI 将创建 SSH 密钥并使用它们设置 VM。 <br>
 
 ```azurecli-interactive
 az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
 ```
 
 > [!NOTE]
-> 使用 `--generate-ssh-keys` 指示 Azure CLI 2.0 在 VM 和 `$Home` 目录中创建并设置公钥和私钥。 默认情况下，密钥放置在 Cloud Shell 中的 `/home/<user>/.ssh/id_rsa` 和 `/home/<user>/.ssh/id_rsa.pub`。 `.ssh` 文件夹保存在附加的文件共享的 5 GB 映像（用于持久保存 `$Home`）中。
+> 使用 `--generate-ssh-keys` 指示 Azure CLI 在 VM 和 `$Home` 目录中创建并设置公钥和私钥。 默认情况下，密钥放置在 Cloud Shell 中的 `/home/<user>/.ssh/id_rsa` 和 `/home/<user>/.ssh/id_rsa.pub`。 `.ssh` 文件夹保存在附加的文件共享的 5 GB 映像（用于持久保存 `$Home`）中。
 
 此 VM 中的用户名将是你在 Cloud Shell 中使用的用户名 ($User@Azure:)。
 
@@ -100,5 +100,5 @@ az group delete -n MyRG
 
 ## <a name="next-steps"></a>后续步骤
 [了解如何为 Cloud Shell 中的 Bash 持久保存文件](persisting-shell-storage.md) <br>
-[了解 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/) <br>
+[了解 Azure CLI](https://docs.microsoft.com/cli/azure/) <br>
 [了解 Azure 文件存储](../storage/files/storage-files-introduction.md) <br>

@@ -7,19 +7,19 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 09/23/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: be32bc4b3f91fbc71305ee9f16fec17ff472cd4c
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 2d1bb7e8522da32dd33933261ea41b578f8afac1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049569"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949479"
 ---
 # <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>为 Azure SQL 数据库托管实例配置自定义 DNS
 
-Azure SQL 数据库托管实例（预览版）必须在 Azure [虚拟网络 (VNet)](../virtual-network/virtual-networks-overview.md) 内部署。 有几个方案（即，将服务器链接到云或混合环境中的其他 SQL 实例）需要从托管实例解析专用主机名。 在这种情况下，需要在 Azure 中配置自定义 DNS。 由于托管实例使用同一 DNS 使其内部工作，因此虚拟网络 DNS 配置必须与托管实例兼容。 
+Azure SQL 数据库托管实例必须在 Azure [虚拟网络 (VNet)](../virtual-network/virtual-networks-overview.md) 中部署。 有几个方案（即，将服务器链接到云或混合环境中的其他 SQL 实例）需要从托管实例解析专用主机名。 在这种情况下，需要在 Azure 中配置自定义 DNS。 由于托管实例使用同一 DNS 使其内部工作，因此虚拟网络 DNS 配置必须与托管实例兼容。 
 
 要使自定义 DNS 配置与托管实例兼容，需要： 
 - 配置自定义 DNS 服务器，以便它能够解析公共域名 

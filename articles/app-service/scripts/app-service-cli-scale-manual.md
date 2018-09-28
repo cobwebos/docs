@@ -1,6 +1,6 @@
 ---
-title: Azure CLI 脚本示例 - 使用 Azure CLI 2.0 手动缩放 Web 应用 | Microsoft 文档
-description: Azure CLI 脚本示例 - 使用 Azure CLI 2.0 手动缩放 Web 应用
+title: Azure CLI 脚本示例 - 使用 Azure CLI 手动缩放 Web 应用 | Microsoft Docs
+description: Azure CLI 脚本示例 - 使用 Azure CLI 手动缩放 Web 应用
 services: appservice
 documentationcenter: appservice
 author: syntaxc4
@@ -16,12 +16,12 @@ ms.workload: web
 ms.date: 12/11/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 844250dce567bac280ae3a9a688cc8e5bc5852c9
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 28ca20d44d18e8fe25153b7f9298d5174412ad79
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30282440"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46988574"
 ---
 # <a name="scale-a-web-app-manually"></a>手动缩放 Web 应用
 
@@ -31,7 +31,7 @@ ms.locfileid: "30282440"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，需要 Azure CLI 2.0 版或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，需要 Azure CLI 2.0 版或更高版本。 若要查找版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="sample-script"></a>示例脚本
 

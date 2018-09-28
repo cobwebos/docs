@@ -1,38 +1,38 @@
 ---
-title: 将 Google Cloud Platform 帐户连接到 Azure 成本管理 | Microsoft Docs
-description: 连接 Google Cloud Platform 帐户以便在成本管理报表中查看成本和用量数据。
+title: 在 Azure 中将 Google Cloud Platform 帐户连接到 Cloudyn | Microsoft Docs
+description: 连接 Google Cloud Platform 帐户即可查看 Cloudyn 报表中的成本和使用情况数据。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/07/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: d4b906bd966da66659d23b935f7dbbd44b33899a
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 09035146fe3211f9fc46d3ad51326a6e76921b7d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296435"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977292"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>连接 Google Cloud Platform 帐户
 
-可将现有的 Google Cloud Platform 帐户连接到 Azure 成本管理。 将帐户连接到成本管理后，成本管理报表中会提供成本和用量数据。 本文帮助你配置和连接 Google 帐户与成本管理。
+可以将现有 Google Cloud Platform 帐户连接到 Cloudyn。 将帐户连接到 Cloudyn 后，即可查看 Cloudyn 报表中的成本和使用情况数据。 本文介绍了如何配置 Google 帐户，并将它连接到 Cloudyn。
 
 ## <a name="collect-project-information"></a>收集项目信息
 
 首先收集有关项目的信息。
 
 1. 通过 [https://console.cloud.google.com](https://console.cloud.google.com) 登录到 Google Cloud Platform 控制台。
-2. 查看要加入成本管理的项目信息，并记下“项目名称”和“项目 ID”。 请保留此信息，以便在后面的步骤中使用。  
+2. 查看要载入到 Cloudyn 的项目信息，并记下“项目名称”和“项目 ID”。 请保留此信息，以便在后面的步骤中使用。  
     ![Google Cloud Platform 控制台](./media/connect-google-account/gcp-console01.png)
 3. 如果计费未启用并链接到项目，请创建计费帐户。 有关详细信息，请参阅[创建新的计费帐户](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create\_a\_new\_billing\_account)。
 
 ## <a name="enable-storage-bucket-billing-export"></a>启用存储桶计费导出
 
-成本管理从存储桶中检索 Google 计费数据。 请保留好“存储桶名称”和“报表前缀”信息，以便稍后在成本管理注册期间使用。
+Cloudyn 从存储桶中检索 Google 计费数据。 请将“存储桶名称”和“报表前缀”信息记在方便查看的地方，因为稍后将在 Cloudyn 注册期间用到此类信息。
 
 使用 Google Cloud Storage 存储用量报表会产生少量的费用。 有关详细信息，请参阅[云存储定价](https://cloud.google.com/storage/pricing)。
 
@@ -42,7 +42,7 @@ ms.locfileid: "35296435"
 
 ## <a name="enable-google-cloud-platform-apis"></a>启用 Google Cloud Platform API
 
-若要收集用量和资产信息，成本管理需要启用以下 Google Cloud Platform API：
+若要收集使用情况和资产信息，Cloudyn 必须启用以下 Google Cloud Platform API：
 
 - BigQuery API
 - Google Cloud SQL
@@ -53,12 +53,12 @@ ms.locfileid: "35296435"
 
 ### <a name="enable-or-verify-apis"></a>启用或验证 API
 
-1. 在 Google Cloud Platform 控制台中，选择要注册到成本管理的项目。
+1. 在 Google Cloud Platform 控制台中，选择要向 Cloudyn 注册的项目。
 2. 导航到“API 和服务” > “库”。
 3. 使用搜索查找前面列出的每个 API。
 4. 对于每个 API，检查是否显示了“已启用 API”。 否则，请单击“启用”。
 
-## <a name="add-a-google-cloud-account-to-cost-management"></a>将 Google Cloud 帐户添加到成本管理
+## <a name="add-a-google-cloud-account-to-cloudyn"></a>将 Google Cloud 帐户添加到 Cloudyn
 
 1. 通过 Azure 门户打开 Cloudyn 门户，或导航到 [https://azure.cloudyn.com](https://azure.cloudyn.com/) 并进行登录。
 2. 单击“设置”（齿轮符号），然后选择“云帐户”。
@@ -70,8 +70,8 @@ ms.locfileid: "35296435"
 
 你的 Google 帐户将显示在帐户列表中，并且应指示“已经过身份验证”。 在帐户下面，应会显示附带绿色勾选标记的 Google 项目名称和 ID。 帐户状态应指示“已完成”。
 
-在几个小时内，成本管理报表会显示 Google 成本和用量信息。
+在几个小时内，Cloudyn 报表就会显示 Google 成本和使用情况信息。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要详细了解 Azure 成本管理，请继续学习成本管理的[查看使用量和成本](./tutorial-review-usage.md)教程。
+- 若要了解有关 Cloudyn 的详细信息，请继续学习 Cloudyn 的[查看使用情况和成本](./tutorial-review-usage.md)教程。

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: da4f06ff4e1478043bc147c2c08083e118bccbe4
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4532355130fff987e25c5c804630fb6bdd7699df
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723113"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959829"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>教程：使用 Azure 模板自动缩放虚拟机规模集
 创建规模集时，可定义想运行的 VM 实例数。 若应用程序需要更改，可自动增加或减少 VM 实例数。 通过自动缩放功能，可随客户需求的改变而进行调整，或在应用的整个生命周期内响应应用程序性能更改。 本教程介绍如何执行下列操作：
@@ -36,7 +36,7 @@ ms.locfileid: "38723113"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装和使用 CLI，本教程要求运行 Azure CLI 2.0.29 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
+如果选择在本地安装和使用 CLI，本教程要求运行 Azure CLI 2.0.29 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
 
 
 ## <a name="define-an-autoscale-profile"></a>定义自动缩放配置文件
@@ -272,7 +272,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 
 ## <a name="next-steps"></a>后续步骤
-本教程介绍了如何使用 Azure CLI 2.0 自动进行规模集的横向缩减或扩展：
+本教程介绍了如何使用 Azure CLI 自动进行规模集的横向缩减或扩展：
 
 > [!div class="checklist"]
 > * 对规模集使用自动缩放
@@ -280,7 +280,7 @@ az group delete --name myResourceGroup --yes --no-wait
 > * 对 VM 实例进行压力测试并触发自动缩放规则
 > * 在需求下降时自动横向缩减
 
-如需更多的虚拟机规模集操作示例，请参阅下面的 Azure CLI 2.0 示例脚本：
+如需更多的虚拟机规模集操作示例，请参阅下面的 Azure CLI 示例脚本：
 
 > [!div class="nextstepaction"]
-> [适用于 Azure CLI 2.0 的规模集脚本示例](cli-samples.md)
+> [适用于 Azure CLI 的规模集脚本示例](cli-samples.md)

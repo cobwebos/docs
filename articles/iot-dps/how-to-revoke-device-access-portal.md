@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: d0720c23e0831b446a92855383fab06b0bfacbc7
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: e66d896a7df48645dad39b5b978c4f7c2f8d8cb9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525461"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954545"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>如何从 Azure IoT 中心设备预配服务取消注册设备
 
@@ -34,9 +34,12 @@ ms.locfileid: "39525461"
 2. 从资源列表中，单击要阻止设备访问的预配服务。
 3. 在预配服务中，选择“管理登记”，然后选择“单独登记”选项卡。
 4. 选择要加入方块列表的设备的登记项。 
-5. 滚动到底部，在“启用项”开关中选择“禁用”，然后选择“保存”。  
 
-   [![在门户中禁用个人注册项](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png#lightbox)  
+    ![选择单个注册](./media/how-to-revoke-device-access-portal/select-individual-enrollment.png)
+
+5. 在注册页上，滚动到底部，为“启用项”开关选择“禁用”，然后选择“保存”。  
+
+   ![在门户中禁用单独注册](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)
 
 若要永久将设备加入方块列表，可删除其登记项。
 
@@ -47,7 +50,8 @@ ms.locfileid: "39525461"
 5. 选择窗口顶部的“删除”，然后选择“是”以确认删除登记。 
 
    ![在门户中删除单独注册](./media/how-to-revoke-device-access-portal/delete-individual-enrollment.png)
-    
+
+
 完成该过程后，会看到该项已从单独登记列表中删除。  
 
 ## <a name="blacklist-an-x509-intermediate-or-root-ca-certificate-by-using-an-enrollment-group"></a>使用登记组将 X.509 中间或根 CA 证书加入方块列表
@@ -91,14 +95,18 @@ X.509 证书通常排列在证书信任链中。 如果链中任何阶段的证�
 1. 登录 Azure 门户，选择左侧菜单中的“所有资源”。
 2. 从资源列表中，选择包含要加入方块列表的设备所对应登记组的预配服务。
 3. 在预配服务中，选择“管理登记”，然后选择“单独登记”选项卡。
-4. 选择顶部的“添加”按钮。 
-5. 选择“X.509”作为设备的证明机制，并上传设备证书。 这是设备上安装的已签名最终实体证书。 设备使用它生成身份验证证书。
-6. 在“IoT 中心设备 ID”中，输入设备的 ID。 
-7. 在“启用项”开关中选择“禁用”，然后选择“保存”。 
+4. 选择顶部的“添加单个注册”按钮。 
+5. 在“添加注册”页上，选择“X.509”作为设备的证明机制。
+
+    上传设备证书，并输入要列入阻止名单的设备 ID。 对于证书，要使用设备上安装的已签名最终实体证书。 设备使用已签名的最终实体证书进行身份验证。
+
+    ![设置已列入阻止名单的设备的设备属性](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group-1.png)
+
+6. 滚动到“添加注册”页底部，对“启用项”开关选择“禁用”，然后选择“保存”。 
 
     [![在门户中使用禁用的个人注册项来从组注册禁用设备](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png#lightbox)
 
-创建成功登记后，“单独登记”选项卡上应会显示设备。
+成功创建注册后，你应该会在“个人注册”选项卡上看到列出的已禁用的设备注册。 
 
 ## <a name="next-steps"></a>后续步骤
 
