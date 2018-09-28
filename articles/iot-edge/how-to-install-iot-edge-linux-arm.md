@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 3f4e914f12feab3c36fca604c1bb37ab1a61b66f
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 9007ee95dc25854a55006284ce6fc574fd8e7968
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127219"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948513"
 ---
 # <a name="install-azure-iot-edge-runtime-on-linux-arm32v7armhf"></a>在 Linux 上安装 Azure IoT Edge 运行时 (ARM32v7/armhf)
 
@@ -145,7 +145,6 @@ sudo nano /etc/iotedge/config.yaml
 sudo systemctl restart iotedge
 ```
 
-
 ## <a name="verify-successful-installation"></a>验证是否成功安装
 
 如果使用了上一部分中的**手动配置**步骤，则应在设备上成功预配并运行 IoT Edge 运行时。 如果使用了**自动配置**步骤，则需要完成一些额外的步骤，以便运行时可以代表你向 IoT 中心注册你的设备。 有关后续步骤，请参阅[在 Linux 虚拟机上创建和预配模拟 TPM Edge 设备](how-to-auto-provision-simulated-device-linux.md#give-iot-edge-access-to-the-tpm)。
@@ -173,6 +172,8 @@ sudo iotedge list
 需要提升的权限才能运行 `iotedge` 命令。 安装运行时后，请从计算机中注销并重新登录以自动更新权限。 在此之前，在任何 `iotedge` 命令前都要使用 **sudo**。
 
 在资源受限设备上，强烈建议按照[故障排除指南][lnk-trouble]中的说明将 *OptimizeForPerformance* 环境变量设置为 *false*。
+
+如果网络具有代理服务器，请按照[配置 IoT Edge 设备以通过代理服务器进行通信](how-to-configure-proxy-support.md)中的步骤进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 

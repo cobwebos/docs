@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/28/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 367528353d5849a64ed1924d1b1e02a9b2c38252
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: d467bc88e1ed3b8dbe42a17095e4f0d14f14fe9a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007927"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950227"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>教程：升级 Azure 中 Service Fabric 群集的运行时
 
@@ -31,7 +31,7 @@ ms.locfileid: "39007927"
 
 如果群集已在运行最新的 Service Fabric 运行时，则不需要执行此步骤。 但是，可以参考本文在 Azure Service Fabric 群集上安装任何受支持的运行时。
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 读取群集版本
@@ -49,7 +49,7 @@ ms.locfileid: "39007927"
 在开始学习本教程之前：
 
 * 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* 安装 [Azure PowerShell 模块 4.1 或更高版本](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)或 [Azure CLI 2.0](/cli/azure/install-azure-cli)。
+* 安装 [Azure Powershell 模块版本 4.1 或更高版本](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)或者 [Azure CLI](/cli/azure/install-azure-cli)。
 * 在 Azure 上创建安全的 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)或 [Linux 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 * 如果部署 Windows 群集，请设置 Windows 开发环境。 安装 [Visual Studio 2017](http://www.visualstudio.com) 和 **Azure 开发**、**ASP.NET 和 Web 开发**以及 **.NET Core 跨平台开发**工作负荷。  然后设置 [.NET 开发环境](service-fabric-get-started.md)。
 * 如果部署 Linux 群集，请在 [Linux](service-fabric-get-started-linux.md) 或 [MacOS](service-fabric-get-started-mac.md) 上设置一个 Java 开发环境。  安装 [Service Fabric CLI](service-fabric-cli.md)。

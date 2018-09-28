@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7b39724c3d382637a048dc4fb9a3436ac1dbeae8
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 130f684b69a9cfa1936c2a9aa5175f3d5a7631ac
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108018"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46970271"
 ---
 # <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中基于 Windows 的 Hadoop 群集
 
@@ -207,7 +207,7 @@ HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件�
 
 * 用户 Azure 数据工厂。 请参阅 [Azure HDInsight 链接服务](../data-factory/compute-linked-services.md)和[使用 Azure 数据工厂进行转换和分析](../data-factory/transform-data.md)，了解按需的和自定义的 HDInsight 链接服务。
 * 使用 Azure PowerShell。  请参阅[分析航班延误数据](hdinsight-analyze-flight-delay-data.md)。
-* 使用 Azure CLI。 请参阅[使用 Azure CLI 管理 HDInsight 群集](hdinsight-administer-use-command-line.md)。
+* 使用 Azure 经典 CLI。 请参阅[使用 Azure 经典 CLI 管理 HDInsight 群集](hdinsight-administer-use-command-line.md)。
 * 使用 HDInsight .NET SDK。 请参阅[提交 Hadoop 作业](hadoop/submit-apache-hadoop-jobs-programmatically.md)。
 
 有关定价信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。 若要从门户中删除群集，请参阅[删除群集](#delete-clusters)
@@ -364,7 +364,7 @@ HDInsight 群集边栏选项卡的“使用情况”部分会显示相关信息�
 在本文中，学习了如何使用门户创建 HDInsight 群集以及如何打开 Hadoop 命令行工具。 若要了解更多信息，请参阅下列文章：
 
 * [使用 Azure PowerShell 管理 HDInsight](hdinsight-administer-use-powershell.md)
-* [使用 Azure CLI 管理 HDInsight](hdinsight-administer-use-command-line.md)
+* [使用 Azure 经典 CLI 管理 HDInsight](hdinsight-administer-use-command-line.md)
 * [创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)
 * [以编程方式提交 Hadoop 作业](hadoop/submit-apache-hadoop-jobs-programmatically.md)
 * [Azure HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)

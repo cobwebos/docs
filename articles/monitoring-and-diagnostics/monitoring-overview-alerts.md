@@ -1,78 +1,184 @@
 ---
-title: Microsoft Azure 和 Azure Monitor 中的经典警报概述
-description: 使用警报可以监视 Azure 资源指标、事件或日志，并在符合指定的条件时接收通知。
+title: Azure 中的警报和通知监视概述
+description: Azure 中的警报概述。 警报、经典警报、警报界面。
 author: rboucher
-services: azure-monitor
+services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/15/2018
+ms.date: 09/24/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: a0abcbdaa7e998413efb717be6e0addc5607ec5c
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 7565c536b5d24c859b164a960f74bd1e2ce97b63
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114005"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960628"
 ---
-# <a name="what-are-classic-alerts-in-microsoft-azure"></a>Microsoft Azure 中的经典警报是什么？
+# <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure 中的警报概述 
 
-> [!NOTE]
-> 本文介绍了如何创建旧式经典指标警报。 Azure Monitor 现支持[较新的准实时指标警报和新的警报体验](monitoring-overview-unified-alerts.md)。 
->
-
-通过警报，可配置数据条件，并在条件与最新监视数据匹配时收到通知。
+本文介绍什么是警报及其优点，以及如何开始使用警报。  
 
 
-## <a name="alerts-on-azure-monitor-data"></a>关于 Azure Monitor 数据的警报
-有两种可用的经典警报类型：指标警报和活动日志警报。
+## <a name="what-are-alerts-in-microsoft-azure"></a>什么是 Microsoft Azure 中的警报？
+在监视数据中发现重要情况时，警报会以前摄性的方式通知你。 有了警报，你就可以在系统的用户注意到问题之前确定和解决这些问题。 
 
-* **经典指标警报**：当指定的指标值越过了分配的阈值时，就会触发此警报。 警报在“激活”时（越过阈值并满足警报条件时）生成通知。 它还会在“已解决”时生成警报（再次越过阈值且不再满足条件时）。 
+本文讨论 Azure Monitor 中的统一警报体验，其现在包括 Log Analytics 和 Application Insights。 [以前的警报体验](monitoring-overview-alerts.md)和警报类型称为“经典警报”。 单击警报页顶部的“查看经典警报”即可查看这个旧的体验和旧的警报类型。 
 
-* **经典活动日志警报**：当生成与已分配筛选器条件匹配的活动日志事件时，就会触发此流式处理日志警报。 这些警报只有“已激活”这一个状态，因为警报引擎只将筛选器条件应用到任何新事件。 出现新的服务运行状况事件时，或用户或应用程序在订阅中执行操作（例如“删除虚拟机”）时，这些警报可发出通知。
 
-若要接收可通过 Azure Monitor 获得的可用诊断日志数据，请将数据路由到 Log Analytics（前身为 Operations Management Suite）并使用 Log Analytics 查询警报。 Log Analytics 现使用[新的警报方法](monitoring-overview-unified-alerts.md)。 
+## <a name="overview"></a>概述
 
-下图总结了 Azure Monitor 中的数据源，并揭示了如何发出此数据的警报。
+下图表示警报的常规术语和流程。 
 
-![警报介绍](./media/monitoring-overview-alerts/Alerts_Overview_Resource_v4.png)
+![警报流](media/monitoring-overview-alerts/Azure-Monitor-Alerts.svg)
 
-## <a name="taxonomy-of-azure-monitor-alerts-classic"></a>Azure Monitor 警报（经典）的分类
-Azure 使用以下术语来描述经典警报和及其功能：
-* **警报**：符合标准（一个或多个规则或条件）时激活的定义。
-* **活动**：满足经典警报定义的标准时出现的状态。
-* **已解决**：在先前满足经典警报定义的标准后不再满足该标准时出现的状态。
-* **通知**：基于经典警报变为活动状态时采取的操作。
-* **操作**：发送给通知接收方的特定调用（例如，发送到 Webhook URL 的电子邮件或帖子）。 通知通常可以触发多个操作。
+警报规则独立于警报，也独立于警报触发时采取的操作。 
 
-## <a name="how-do-i-receive-notifications-from-an-azure-monitor-classic-alert"></a>如何接收来自 Azure Monitor 经典警报的通知？
-从历史上来看，来自不同服务的 Azure 警报使用自己的内置通知方法。 
+- **警报规则** - 警报规则捕获警报的目标和条件。 警报规则可以是“已启用”或“已禁用”状态。 警报只有在启用后才会触发。 警报规则的关键属性包括：
+    - **目标资源** - 目标可以是任何 Azure 资源。 目标资源定义适用于警报的范围和信号。 示例目标：虚拟机、存储帐户、虚拟机规模集、Log Analytics 工作区或 Application Insights 资源。 对于某些资源（例如虚拟机）来说，可以将多个资源指定为警报规则的目标。
+    - **信号** - 信号由目标资源发出，可以有多种类型。 指标、活动日志、Application Insights 和日志。
+    - **条件** - 条件是应用于目标资源的信号和逻辑的组合。 示例： 
+         - CPU 百分比 > 70%
+         - 服务器响应时间 > 4 毫秒 
+         - 日志查询的结果计数 > 100
+- **警报名称** - 用户配置的警报规则的具体名称
+- **警报说明** - 用户配置的警报规则的说明
+- **严重性** - 警报规则中指定的条件符合后确定的警报严重性。 严重性的范围为 0 到 4。
+- **操作** - 触发警报时执行的特定操作。 有关详细信息，请参阅“操作组”。
 
-现在，Azure Monitor 提供了一个名为“操作组”的可重复使用的通知组。 操作组指定一组接收通知的接收方。 当激活引用操作组的警报时，所有接收方都会收到该通知。 通过此功能，可在多个警报对象中重复使用一组接收方（例如，在线工程师列表）。 操作组通过各种方法支持通知。 这些方法包括发布到 Webhook URL、发送电子邮件、短信和许多其他操作。 有关详细信息，请参阅[在 Azure 门户中创建和管理操作组](monitoring-action-groups.md)。 
+## <a name="what-you-can-alert-on"></a>可以报警的内容
 
-旧式经典活动日志警报使用操作组。
+可以按照[监视数据源](monitoring-data-sources.md)中的说明，针对指标和日志发出警报。 这些检查包括但不限于：
+- 指标值
+- 日志搜索查询
+- 活动日志事件
+- 基础 Azure 平台的运行状况
+- 网址可用性测试
 
-但是，旧式指标警报不使用操作组。 可以改为配置以下操作： 
-* 将电子邮件通知发送到服务管理员、共同管理员或指定的其他电子邮件地址。
-* 调用 Webhook，以便用户启动其他自动化操作
 
-Webhook 可启用自动化和修复，例如使用以下服务：
-- Azure 自动化 Runbook
-- Azure Functions
-- Azure 逻辑应用
-- 第三方服务
+
+## <a name="manage-alerts"></a>管理警报
+可以设置警报状态来指定它在解决过程中所处的阶段。 符合警报规则中指定的条件以后，就会创建或触发警报，其状态为“新”。 可以在确认警报和关闭警报时更改状态。 所有状态更改都存储在警报历史记录中。
+
+支持以下警报状态。
+
+| 省/直辖市/自治区 | Description |
+|:---|:---|
+| 新建 | 只是检测到了问题，但尚未审查问题。 |
+| 已确认 | 管理员已审查警报，并已开始进行处理。 |
+| 已关闭 | 问题已解决。 关闭某个警报后，可通过将其更改为另一种状态来重新打开它。 |
+
+警报状态不同于监视条件。 警报状态由用户设置，与监视条件无关。 当触发的警报的潜在条件清除以后，警报的监视条件会设置为“已解决”。 尽管系统能将监视条件设置为“已解决”，但在用户更改警报之前，警报状态不会更改。 了解[如何更改警报和智能组的状态](https://aka.ms/managing-alert-smart-group-states)。
+
+## <a name="smart-groups"></a>智能组 
+智能组为预览版。 
+
+智能组是根据机器学习算法对警报进行的聚合。这些算法有助于降低警报噪音，对故障排除也有帮助。 [详细了解智能组](https://aka.ms/smart-groups)和[如何管理智能组](https://aka.ms/managing-smart-groups)。
+
+
+## <a name="alerts-experience"></a>警报体验 
+默认的“警报”页提供特定时间范围内创建的警报的摘要。 该页显示每种严重性的警报总数，列中会标识处于每种状态的、具有每种严重性的警报总数。 选择任一严重性可打开按该严重性筛选的“[所有警报](#all-alerts-page)”页。
+
+它不显示或跟踪旧的[经典警报](#classic-alerts)。 可以通过更改订阅或筛选器参数来更新页面。 
+
+![“警报”页](media/monitoring-overview-alerts/alerts-page.png)
+
+可以通过选择页面顶部的下拉菜单中的值，来对此视图进行筛选。
+
+| 列 | Description |
+|:---|:---|
+| 订阅 | 最多可选择五个 Azure 订阅。 只有选定订阅中的警报才会包含在视图中。 |
+| 资源组 | 选择单个资源组。 只有包含选定资源组中的目标的警报才会包含在视图中。 |
+| 时间范围 | 只有在选定时间范围内触发的警报才会包含在该视图中。 支持的值为过去 1 小时、过去 24 小时、过去 7 天和过去 30 天。 |
+
+选择“警报”页面顶部的以下值打开另一个页面。
+
+| 值 | Description |
+|:---|:---|
+| 警报总数 | 符合选定条件的警报总数。 选择此值会打开未经筛选的“所有警报”视图。 |
+| 智能组 | 从符合选定条件的警报创建的智能组总数。 选择此值会在“所有警报”视图中打开智能组列表。
+| 警报规则总数 | 选定订阅和资源组中的警报规则总数。 选择此值会打开根据选定订阅和资源组筛选的“规则”视图。
+
+
+## <a name="manage-alert-rules"></a>管理警报规则
+单击“管理警报规则”即可显示“规则”页。 “规则”是用于跨 Azure 订阅管理所有警报规则的一个地方。 此页列出所有警报规则，这些规则可以根据目标资源、资源组、规则名称或状态排序。 还可以在此页中编辑、启用或禁用警报规则。  
+
+ ![警报规则](./media/monitoring-overview-alerts/alerts-preview-rules.png)
+
+
+## <a name="create-an-alert-rule"></a>创建警报规则
+可以通过一致的方式创作警报，而不考虑监视服务或信号类型。 单个页面中提供了所有触发的警报和相关详细信息。
+ 
+使用以下三个步骤创作新警报规则：
+1. 选取警报的目标。
+1. 从目标的可用信号中选择信号。
+1. 指定要应用到信号中数据的逻辑。
+ 
+这个创作过程经过了简化，用户在选择 Azure 资源之前，不再需要知道受支持的监视源或信号。 可用信号列表会根据选定的目标资源自动筛选，并引导你定义警报规则的逻辑。
+
+可以在[使用 Azure Monitor 创建、查看和管理警报](monitor-alerts-unified-usage.md)中详细了解如何创建警报规则。
+
+警报可在多个 Azure 监视服务中使用。 有关如何以及何时使用其中每种服务的信息，请参阅[监视 Azure 应用程序和资源](./monitoring-overview.md)。 下表提供了 Azure 中提供的警报规则类型的列表。 其中还列出了哪个警报体验目前支持哪些类型。
+
+在过去，Azure Monitor、Application Insights、Log Analytics 和服务运行状况都有单独的警报功能。 随着时间推移，Azure 改进并组合了用户界面和不同的警报方法。 此整合仍在进行中。 因此，仍有一些警报功能未出现在新的警报系统中。  
+
+| **监视器源** | **信号类型**  | **说明** | 
+|-------------|----------------|-------------|
+| 服务运行状况 | 活动日志  | 不支持。 请参阅[创建有关服务通知的活动日志警报](monitoring-activity-log-alerts-on-service-notifications.md)。  |
+| Application Insights | Web 可用性测试 | 不支持。 请参阅 [Web 测试警报](../application-insights/app-insights-monitor-web-app-availability.md)。 适用于任何经检测可将数据发送到 Application Insights 的网站。 网站的可用性或响应度低于预期时，就会收到通知。 |
+
+
+## <a name="all-alerts-page"></a>“所有警报”页 
+单击“总警报数”即可查看“所有警报”页。 在这里，可以查看在选定时间范围内创建的警报列表。 可以查看各个警报的列表，或包含这些警报的智能组列表。 选择页面顶部的标题可在视图之间进行切换。
+
+![“所有警报”页](media/monitoring-overview-alerts/all-alerts-page.png)
+
+可以通过选择页面顶部的下拉菜单中的以下值，可以对该视图进行筛选。
+
+| 列 | Description |
+|:---|:---|
+| 订阅 | 最多可选择五个 Azure 订阅。 只有选定订阅中的警报才会包含在视图中。 |
+| 资源组 | 选择单个资源组。 只有包含选定资源组中的目标的警报才会包含在视图中。 |
+| 资源类型 | 选择一个或多个资源类型。 只有包含选定类型中的目标的警报才会包含在视图中。 仅在指定资源组后，才显示此列。 |
+| 资源 | 选择资源。 只有包含该资源（作为目标）的警报才会包含在视图中。 仅在指定资源类型后，才显示此列。 |
+| Severity | 选择警报严重性，或选择“所有”以包含所有严重性的警报。 |
+| 监视条件 | 选择监视条件，或选择“所有”以包括所有条件的警报。 |
+| 警报状态 | 选择警报状态，或选择“所有”以包含所有状态的警报。 |
+| 监视服务 | 选择一个服务，或选择“所有”以包含所有服务。 只会包含使用该服务（作为目标）的规则创建的警报。 |
+| 时间范围 | 只有在选定时间范围内触发的警报才会包含在该视图中。 支持的值为过去 1 小时、过去 24 小时、过去 7 天和过去 30 天。 |
+
+选择页面顶部的“列”可以选择要显示的列。 
+
+## <a name="alert-detail-page"></a>“警报详细信息”页
+选择某个警报时，会显示“警报详细信息”页。 该页提供警报详细信息，并可在其中更改警报的状态。
+
+![警报详细信息](media/monitoring-overview-alerts/alert-detail2.png)
+
+“警报详细信息”页包括以下部分。
+
+| 部分 | Description |
+|:---|:---|
+| 概要 | 显示警报的属性和其他重要信息。 |
+| 历史记录 | 列出警报执行的每个操作，以及对警报进行的任何更改。 目前仅限状态更改。 |
+| 智能组 | 有关包含警报的智能组的信息。 “警报计数”表示包含在智能组中的警报数量。 这包括过去 30 天内创建的、同一智能组中的其他警报。  此计数不考虑警报列表页中的时间筛选器。 选择某个警报以查看其详细信息。 |
+| 更多详细信息 | 显示警报的其他上下文信息，此信息通常特定于创建此警报的源类型。 |
+
+
+## <a name="classic-alerts"></a>经典警报 
+
+2018 年 6 月之前的 Azure Monitor 指标和活动日志警报功能称为“警报（经典）”。 
+
+有关详细信息，请参阅[经典警报](./monitoring-overview-alerts-classic.md)
+
 
 ## <a name="next-steps"></a>后续步骤
-使用以下文档获取有关警报规则以及相关配置的信息：
 
-* 详细了解[指标](monitoring-overview-metrics.md)
-* [通过 Azure 门户配置经典指标警报](insights-alerts-portal.md)
-* [通过 PowerShell 配置经典指标警报](insights-alerts-powershell.md)
-* [通过 Azure CLI 配置经典指标警报](insights-alerts-command-line-interface.md)
-* [通过 Azure Monitor REST API 配置经典指标警报](https://msdn.microsoft.com/library/azure/dn931945.aspx)
-* 详细了解[活动日志](monitoring-overview-activity-logs.md)
-* [通过 Azure 门户配置活动日志警报](monitoring-activity-log-alerts.md)
-* [通过资源管理器配置活动日志警报](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
-* 查看[活动日志警报 webhook 架构](monitoring-activity-log-alerts-webhook.md)
-* 详细了解[操作组](monitoring-action-groups.md)
-* 配置[较新的警报](monitor-alerts-unified-usage.md)
+- [详细了解智能组](https://aka.ms/smart-groups)
+- [了解操作组](monitoring-action-groups.md)
+- [在 Azure 中管理警报实例](https://aka.ms/managing-alert-instances)
+- [Managing Smart Groups](https://aka.ms/managing-smart-groups)（管理智能组）
+
+
+
+
+

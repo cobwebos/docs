@@ -15,24 +15,24 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/25/2017
 ms.author: negat
-ms.openlocfilehash: 4dd13f1feedf53255daa351bd087845ec5cc845a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: cfe49e7f4e3692518c890b48582a2f4a6aa16faa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187816"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952454"
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure 虚拟机规模集和附加数据磁盘
 为了扩展可用存储，Azure [虚拟机规模集](/azure/virtual-machine-scale-sets/)支持包含附加数据磁盘的 VM 实例。 可以在创建规模集时附加数据磁盘，也可以将数据磁盘附加到现有规模集。
 
 > [!NOTE]
->  创建包含附加数据磁盘的规模集时，需要在 VM 中装载并格式化这些磁盘，才能使用（就像标准 Azure VM 一样）。 若要完成此过程，可使用自定义脚本扩展来调用脚本，将 VM 中的所有数据磁盘分区和格式化，这是一种很方便的方法。 有关示例，请参阅 [Azure CLI 2.0](tutorial-use-disks-cli.md#prepare-the-data-disks) [Azure PowerShell](tutorial-use-disks-powershell.md#prepare-the-data-disks)。
+>  创建包含附加数据磁盘的规模集时，需要在 VM 中装载并格式化这些磁盘，才能使用（就像标准 Azure VM 一样）。 若要完成此过程，可使用自定义脚本扩展来调用脚本，将 VM 中的所有数据磁盘分区和格式化，这是一种很方便的方法。 有关示例，请参阅 [Azure CLI](tutorial-use-disks-cli.md#prepare-the-data-disks) [Azure PowerShell](tutorial-use-disks-powershell.md#prepare-the-data-disks)。
 
 
 ## <a name="create-and-manage-disks-in-a-scale-set"></a>在规模集中创建和管理磁盘
 有关如何创建包含附加数据磁盘的规模集、准备和格式化或添加和删除数据磁盘的详细信息，请参阅以下教程之一：
 
-- [Azure CLI 2.0](tutorial-use-disks-cli.md)
+- [Azure CLI](tutorial-use-disks-cli.md)
 - [Azure PowerShell](tutorial-use-disks-powershell.md)
 
 本文的余下内容概述具体的用例，例如，需要数据磁盘的 Service Fabric 群集，或者将包含内容的现有数据磁盘附加到规模集。

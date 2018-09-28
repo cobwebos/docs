@@ -12,12 +12,12 @@ ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: f2f4e7d96c4d8725d9d34314854665440d86ce8d
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: a085d7e25854a928778802d2b4ef50cf9e57eff9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095073"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960917"
 ---
 # <a name="create-an-openapi-definition-for-a-function"></a>为函数创建 OpenAPI 定义
 通常使用 OpenAPI 定义（以前称为 [Swagger](http://swagger.io/) 文件）描述 REST API。 此定义中包含的信息涉及 API 中哪些操作可用，以及 API 的请求和响应数据应采用怎样的结构。
@@ -31,6 +31,9 @@ ms.locfileid: "44095073"
 > * 使用 OpenAPI 工具生成 OpenAPI 定义
 > * 修改定义以提供额外的元数据
 > * 通过调用函数测试定义
+
+> [!IMPORTANT]
+> OpenAPI 预览功能目前仅在 1.x 运行时可用。 要了解如何创建 1.x 功能应用，[可参阅此处](./functions-versions.md#creating-1x-apps)。
 
 ## <a name="create-a-function-app"></a>创建函数应用
 
