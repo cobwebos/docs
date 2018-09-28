@@ -414,7 +414,7 @@ ms.locfileid: "42144177"
 | DiscontinuityCount | integer | 在过去 20 秒观察到的不连续性数目。 |
 | NonIncreasingCount | integer | 在过去 20 秒收到的具有以往时间戳的数据区块数。 |
 | UnexpectedBitrate | bool | 在过去 20 秒，预期和实际比特率之差是否超过了允许的限制。 当且仅当 IncomingBitrate >= 2* 比特率，或者 IncomingBitrate <= 比特率/2，或者 IncomingBitrate = 0 时，此属性的值才为 true。 |
-| 省/直辖市/自治区 | 字符串 | 实时事件的状态。 |
+| State | 字符串 | 实时事件的状态。 |
 | Healthy | bool | 指示引入是否正常（基于计数和标志判断）。 如果 OverlapCount = 0 并且 DiscontinuityCount = 0 并且 NonIncreasingCount = 0 并且 UnexpectedBitrate = false，则 Healthy 为 true。 |
 
 ## <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
