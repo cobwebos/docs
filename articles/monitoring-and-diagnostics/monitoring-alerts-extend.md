@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 6484142eafa8388117c1e96ab31eefeab188e488
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 13a84b7254207a9cfcfff4af43283130a0f6c587
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36750266"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998468"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>将 Log Analytics 警报扩展到 Azure 警报
 Azure Log Analytics 包含自身的警报功能，可以根据 Log Analytics 数据将相关情况主动通知给你，这种情况到最近才有所改变。 过去是在 Microsoft Operations Management Suite 门户中管理预警规则。 新的警报体验现在已在 Microsoft Azure 的各种服务中集成了警报。 该体验在 Azure 门户中通过 Azure Monitor 下的“警报”提供，支持的警报来自活动日志、指标以及 Log Analytics 和 Azure Application Insights 提供的日志。 
@@ -30,7 +30,7 @@ Azure Log Analytics 包含自身的警报功能，可以根据 Log Analytics 数
 将警报从 Log Analytics 移到 Azure 警报中这一过程不涉及以任何方式更改警报定义、查询或配置。 唯一需要进行的更改是，在 Azure 中，你使用操作组执行所有操作。 如果操作组已与警报相关联，则在扩展到 Azure 中时，操作组也会包括进去。
 
 > [!NOTE]
-> 从 2018 年 5 月 14 日开始，Microsoft 会将 Log Analytics 中创建的警报自动扩展到 Azure 警报，此过程会一直重复到完成为止。 如果在创建[操作组](monitoring-action-groups.md)的过程中出现任何问题，请执行[这些修正步骤](monitoring-alerts-extend-tool.md#troubleshooting)，以便自动创建操作组。 在 2018 年 7 月 5 日之前，一直可以使用这些步骤。 
+> 从 2018 年 5 月 14 日开始，Microsoft 会将 Log Analytics 公有云实例中创建的警报自动扩展到 Azure 警报，此过程会一直重复到完成为止。 如果在创建[操作组](monitoring-action-groups.md)的过程中出现任何问题，请执行[这些修正步骤](monitoring-alerts-extend-tool.md#troubleshooting)，以便自动创建操作组。 在 2018 年 7 月 5 日之前，一直可以使用这些步骤。 不适用于 Azure 政府和 Log Analytics 的 Soveriegn 云用户。 
 > 
 
 在计划将 Log Analytics 工作区中的警报扩展到 Azure 中时，这些警报可以一直使用，不会以任何方式影响你的配置。 在计划以后，警报可能暂时不可修改；但在此期间，可以继续创建新的 Azure 警报。 如果尝试在 Operations Management Suite 门户中编辑或创建警报，可以选择在 Log Analytics 工作区中继续创建它们。 也可选择在 Azure 门户的 Azure 警报中创建它们。

@@ -9,34 +9,34 @@ ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 03d622e3c7a3315238f2bceedae529bbe06af299
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7ef4de749d5b9152bbe043a26d3c60fe7f09f869
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35366847"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951808"
 ---
 # <a name="call-bing-custom-search-endpoint-java"></a>调用必应自定义搜索终结点 (Java)
 
-本快速入门演示如何通过使用 Java 调用必应自定义搜索终结点来从自定义搜索实例中请求搜索结果。 
+这篇快速入门演示了如何通过 Java 调用必应自定义搜索终结点来从自定义搜索实例中请求搜索结果。 
 
 ## <a name="prerequisites"></a>先决条件
+
 若要完成本快速入门，你需要：
-- 自定义搜索实例。 请参阅[创建第一个必应自定义搜索实例](quick-start.md)。
 
+- 现成的自定义搜索实例。 请参阅[创建第一个必应自定义搜索实例](quick-start.md)。
 - 安装 [Java](https://www.java.com)。
-
-- 具有必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)足以满足此快速入门的要求。 需要激活免费试用版时提供的访问密钥，或使用 Azure 仪表板中的付费订阅密钥。
+- 订阅密钥。 可在激活[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)时获取订阅密钥，也可使用 Azure 仪表板中的付费订阅密钥（请参阅[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)）。    
 
 ## <a name="run-the-code"></a>运行代码
 
-要调用必应自定义搜索终结点，请执行以下步骤：
+若要运行该示例，请遵循以下步骤：
 
-1. 使用所选的 Java IDE 创建包。
-2. 创建 CustomSrchJava.java 文件并向其中复制以下代码。
-3. 用密钥和配置 ID 替换“YOUR-SUBSCRIPTION-KEY”和“YOUR-CUSTOM-CONFIG-ID”。
-
-    ``` Java
+1. 使用所选的 Java IDE 创建一个包。  
+  
+2. 在包中创建一个名为 CustomSrchJava.java 的文件，并向其复制以下代码。 将 YOUR-SUBSCRIPTION-KEY 和 YOUR-CUSTOM-CONFIG-ID 替换为订阅密钥和配置 ID。  
+  
+    ```java
     import java.io.InputStream;
     import java.net.URL;
     import java.net.URLEncoder;
@@ -58,9 +58,9 @@ ms.locfileid: "35366847"
         static String subscriptionKey = "YOUR-SUBSCRIPTION-KEY"; 
         static String customConfigId = "YOUR-CUSTOM-CONFIG-ID";  
     
-        static String searchTerm = "Microsoft";  // Replace with search term specific to your defined sources.
+        static String searchTerm = "Microsoft";  // Replace with search term specific to your search scenario.
     
-        public static SearchResults SearchImages (String searchQuery) throws Exception {
+        public static SearchResults SearchWeb (String searchQuery) throws Exception {
             // construct URL of search request (endpoint + query string)
             URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchTerm, "UTF-8") + "&CustomConfig=" + customConfigId);
             HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
@@ -96,15 +96,15 @@ ms.locfileid: "35366847"
     
         public static void main (String[] args) {
             if (subscriptionKey.length() != 32) {
-                System.out.println("Invalid Bing Search API subscription key!");
+                System.out.println("Invalid Custom Search subscription key!");
                 System.out.println("Please paste yours into the source code.");
                 System.exit(1);
             }
     
             try {
-                System.out.println("Searching the Web for: " + searchTerm);
+                System.out.println("Searching your slice of the Web for: " + searchTerm);
     
-                SearchResults result = SearchImages(searchTerm);
+                SearchResults result = SearchWeb(searchTerm);
     
                 System.out.println("\nRelevant HTTP Headers:\n");
                 for (String header : result.relevantHeaders.keySet())
@@ -130,8 +130,8 @@ ms.locfileid: "35366847"
         }
     
     }
-    
-    ```
+    ```  
+  
 4. 运行该程序。
     
 ## <a name="next-steps"></a>后续步骤

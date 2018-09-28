@@ -5,17 +5,17 @@ services: azure-stack
 keywords: ''
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 09/05/2018
+ms.date: 09/26/2018
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
-ms.openlocfilehash: 930bd37ceef2f379a3967eae17a8c82e84644022
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 3e35b0d9ba697b54b0fb85096caceeaa024b1f3d
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542136"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405234"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>准备适用于 Azure Stack 扩展主机
 
@@ -70,7 +70,7 @@ Azure Stack 就绪状态检查器工具提供的功能来创建证书签名请�
     ```PowerShell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
 
-    Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD -ExtensionHostFeature $true
+    Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD -ExtensionHostFeature
     ```
 
 5. 将证书放在相应目录。

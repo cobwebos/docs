@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 7e71b279d6681696b8666846cfbd27007f464679
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 8e8ad913c6e5b8e947b17ed8920285de3fcfd8ae
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37864853"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964354"
 ---
 # <a name="load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>Azure 容器服务 DC/OS 群集中的负载均衡容器
 
@@ -27,7 +27,7 @@ ms.locfileid: "37864853"
 
 需要 ACS DC/OS 群集来完成本教程中的步骤。 必要时，[此脚本示例](./../kubernetes/scripts/container-service-cli-deploy-dcos.md)可为你创建一个。
 
-本教程需要 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
+本教程需要 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

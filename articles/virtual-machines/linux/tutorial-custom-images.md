@@ -1,6 +1,6 @@
 ---
 title: 教程 - 使用 Azure CLI 创建自定义 VM 映像 | Microsoft Docs
-description: 本教程介绍如何使用 Azure CLI 2.0 在 Azure 中创建自定义虚拟机映像
+description: 本教程介绍如何使用 Azure CLI 在 Azure 中创建自定义虚拟机映像
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 68c0dec2ff9d5da2d4e4abeab435bdb70c33ba48
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: d8e6afb61fd9fa25b220f3267ee718f0859ae9a4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42810185"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948785"
 ---
-# <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli-20"></a>教程：使用 Azure CLI 2.0 创建 Azure VM 的自定义映像
+# <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>教程：使用 Azure CLI 创建 Azure VM 的自定义映像
 
 自定义映像类似于市场映像，不同的是自定义映像的创建者是自己。 自定义映像可用于启动配置，例如预加载应用程序、应用程序配置和其他 OS 配置。 在本教程中，将创建自己的 Azure 虚拟机自定义映像。 学习如何：
 
@@ -36,7 +36,7 @@ ms.locfileid: "42810185"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="before-you-begin"></a>开始之前
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 027204065429a9eebd2e8121cbac8bc18b9d9ce6
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 91be34468dae0fb1c24080fbe53c3c8056e8c1a3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43091429"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967840"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>将 Azure 存储与 Azure HDInsight 群集配合使用
 
@@ -133,11 +133,11 @@ Blob 可用于结构化和非结构化数据。 Blob 容器将数据存储为键
     $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey  
     New-AzureStorageContainer -Name $containerName -Context $destContext
 
-### <a name="use-azure-cli"></a>使用 Azure CLI
+### <a name="use-azure-classic-cli"></a>使用 Azure 经典 CLI
 
-[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
-如果 [已安装并配置 Azure CLI](../cli-install-nodejs.md)，则以下命令可以用于存储帐户和容器。
+如果[已安装并配置了 Azure 经典 CLI](../cli-install-nodejs.md)，可将以下命令用于存储帐户和容器。
 
     azure storage account create <storageaccountname> --type LRS
 
@@ -264,24 +264,24 @@ $clusterName = "<HDInsightClusterName>"
 
     Invoke-AzureRmHDInsightHiveJob -Defines $defines -Query "dfs -ls wasb://$undefinedContainer@$undefinedStorageAccount.blob.core.windows.net/;"
 
-### <a name="use-azure-cli"></a>使用 Azure CLI
+### <a name="use-azure-classic-cli"></a>使用 Azure 经典 CLI
 使用以下命令列出与 Blob 有关的命令：
 
     azure storage blob
 
-**使用 Azure CLI 上传文件的示例**
+**使用 Azure 经典 CLI 上传文件的示例**
 
     azure storage blob upload <sourcefilename> <containername> <blobname> --account-name <storageaccountname> --account-key <storageaccountkey>
 
-**使用 Azure CLI 下载文件的示例**
+**使用 Azure 经典 CLI 下载文件的示例**
 
     azure storage blob download <containername> <blobname> <destinationfilename> --account-name <storageaccountname> --account-key <storageaccountkey>
 
-**使用 Azure CLI 删除文件的示例**
+**使用 Azure 经典 CLI 删除文件的示例**
 
     azure storage blob delete <containername> <blobname> --account-name <storageaccountname> --account-key <storageaccountkey>
 
-**使用 Azure CLI 列出文件的示例**
+**使用 Azure 经典 CLI 列出文件的示例**
 
     azure storage blob list <containername> <blobname|prefix> --account-name <storageaccountname> --account-key <storageaccountkey>
 

@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 19dd6a693daf0b54c7df448f21bdb098d9bbdcac
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1efe5a12da665901cdf1d09d45c36a1e3272c367
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34653495"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948666"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>规划将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
-尽管 Azure 资源管理器提供了大量令人惊叹的功能，但规划好迁移过程以确保一切顺利仍至关重要。 花时间进行规划可确保执行迁移活动时不会遇到问题。 
+尽管 Azure Resource Manager 提供了大量令人惊叹的功能，但规划好迁移过程以确保一切顺利仍至关重要。 花时间进行规划可确保执行迁移活动时不会遇到问题。 
 
 > [!NOTE] 
 > 以下指导的主要参与者为 Azure 客户顾问团队，以及与客户合作迁移大型环境的云解决方案架构师。 此文档将随着出现新的成功模式而持续更新，因此，请不时地回来查看，了解是否有新的推荐内容。
@@ -122,7 +122,7 @@ ms.locfileid: "34653495"
     - 网络安全组
     - 路由表
 
-    可以通过最新版 Azure CLI 2.0 使用以下命令查看当前的 Azure 资源管理器配额。
+    可以通过最新版 Azure CLI 使用以下命令查看当前的 Azure 资源管理器配额。
 
     **计算***（核心数、可用性集数）*
 

@@ -1,6 +1,6 @@
 ---
-title: Azure CLI 2.0 示例 - 附加并使用数据磁盘 | Microsoft Docs
-description: Azure CLI 2.0 示例
+title: Azure CLI 示例 - 附加并使用数据磁盘 | Microsoft Docs
+description: Azure CLI 示例
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 63811e01145999077506914ab646576eeb511116
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4dd87cf705d17700bf4903dcbc5e08aaf309a810
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38308065"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956846"
 ---
-# <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>使用 Azure CLI 2.0 为虚拟机规模集附加并使用数据磁盘
+# <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 为虚拟机规模集附加并使用数据磁盘
 此脚本创建虚拟机规模集并附加和准备数据磁盘。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
@@ -52,6 +52,6 @@ az group delete --name myResourceGroup
 | [az group delete](/cli/azure/ad/group#delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure CLI 2.0 的详细信息，请参阅 [Azure CLI 2.0 文档](https://docs.microsoft.com/cli/azure/overview)。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/overview)。
 
-可以在 [Azure 虚拟机规模集文档](../cli-samples.md)中找到其他虚拟机规模集 Azure CLI 2.0 脚本示例。
+可以在 [Azure 虚拟机规模集文档](../cli-samples.md)中找到其他虚拟机规模集 Azure CLI 脚本示例。

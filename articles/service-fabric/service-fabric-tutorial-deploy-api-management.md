@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 3/9/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 1b0588e25c0d156080a2e879185b76714d8691b2
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 61909c7f6858c7411e01019edda22d7676b44943
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113368"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46955038"
 ---
 # <a name="tutorial-integrate-api-management-with-service-fabric-in-azure"></a>教程：在 Azure 中将 API 管理与 Service Fabric 集成
 
@@ -49,7 +49,7 @@ ms.locfileid: "37113368"
 在开始学习本教程之前：
 
 * 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* 安装 [Azure PowerShell 模块 4.1 或更高版本](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)或 [Azure CLI 2.0](/cli/azure/install-azure-cli)。
+* 安装 [Azure Powershell 模块版本 4.1 或更高版本](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)或者 [Azure CLI](/cli/azure/install-azure-cli)。
 * 在 Azure 上创建安全的 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)或 [Linux 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 * 如果部署 Windows 群集，请设置 Windows 开发环境。 安装 [Visual Studio 2017](http://www.visualstudio.com) 和 **Azure 开发**、**ASP.NET 和 Web 开发**以及 **.NET Core 跨平台开发**工作负荷。  然后设置 [.NET 开发环境](service-fabric-get-started.md)。
 * 如果部署 Linux 群集，请在 [Linux](service-fabric-get-started-linux.md) 或 [MacOS](service-fabric-get-started-mac.md) 上设置一个 Java 开发环境。  安装 [Service Fabric CLI](service-fabric-cli.md)。

@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: a93467404232b0fff51136cb7648d84a81165bdb
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4ae9d8053f7463c069a7305bbd07a91a387e31d2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38697953"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972294"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>在 Azure 门户中自动缩放虚拟机规模集
 创建规模集时，可定义想运行的 VM 实例数。 若应用程序需要更改，可自动增加或减少 VM 实例数。 通过自动缩放功能，可随客户需求的改变而进行调整，或在应用的整个生命周期内响应应用程序性能更改。
 
-本文演示如何在 Azure 门户中创建自动缩放规则，以监视规模集中 VM 实例的性能。 这些缩放规则根据性能指标增加或减少 VM 实例数。 也可使用 [Azure PowerShell](tutorial-autoscale-powershell.md) 或 [Azure CLI 2.0](tutorial-autoscale-cli.md) 完成这些步骤。
+本文演示如何在 Azure 门户中创建自动缩放规则，以监视规模集中 VM 实例的性能。 这些缩放规则根据性能指标增加或减少 VM 实例数。 也可使用 [Azure PowerShell](tutorial-autoscale-powershell.md) 或 [Azure CLI](tutorial-autoscale-cli.md) 完成这些步骤。
 
 
 ## <a name="prerequisites"></a>先决条件
-需要现有虚拟机规模集，才能创建自动缩放规则。 可使用 [Azure 门户](quick-create-portal.md)、[Azure PowerShell](quick-create-powershell.md) 或 [Azure CLI 2.0](quick-create-cli.md) 创建规模集。
+需要现有虚拟机规模集，才能创建自动缩放规则。 可使用 [Azure 门户](quick-create-portal.md)、[Azure PowerShell](quick-create-powershell.md) 或 [Azure CLI](quick-create-cli.md) 创建规模集。
 
 
 ## <a name="create-a-rule-to-automatically-scale-out"></a>创建规则，以便自动横向扩展

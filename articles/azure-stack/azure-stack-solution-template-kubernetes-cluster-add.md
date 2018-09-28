@@ -11,26 +11,26 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: e0a96d947bce579d2c1d7d31de83c7ef53eabd3a
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 978cce4642dc61143bd829fcae03357fd8c969c2
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165800"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405506"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>将 Kubernetes 添加到 Azure Stack Marketplace
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 > [!note]  
-> Azure Stack 上的 Kubernetes 处于预览状态。 若要请求访问此文章介绍了执行指令所需的 Kubernetes 群集 Marketplace 项[提交请求以获取访问权限](https://aka.ms/azsk8)。
+> Azure Stack 上的 Kubernetes 处于预览状态。
 
 你可以向用户提供作为 Marketplace 项的 Kubernetes。 用户可以通过单个协调的操作部署 Kubernetes。
 
-下面的文章着眼于使用 Azure 资源管理器模板为独立的 Kubernetes 群集部署和预配资源。 在开始之前，请检查 Azure Stack 和全球 Azure 租户设置。 收集关于 Azure Stack 的必需信息。 将所需资源添加到租户和 Azure Stack 市场。 群集取决于 Ubuntu 服务器、 自定义脚本，以及要在 marketplace 中的 Kubernetes 项。
+下面的文章着眼于使用 Azure 资源管理器模板为独立的 Kubernetes 群集部署和预配资源。 Kubernetes 群集 Marketplace 项 0.3.0 需要 1808年的 Azure Stack 版本。 在开始之前，请检查 Azure Stack 和全球 Azure 租户设置。 收集关于 Azure Stack 的必需信息。 将所需资源添加到租户和 Azure Stack 市场。 群集取决于 Ubuntu 服务器、 自定义脚本，以及要在 marketplace 中的 Kubernetes 项。
 
 ## <a name="create-a-plan-an-offer-and-a-subscription"></a>创建计划、套餐和订阅
 

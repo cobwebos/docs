@@ -16,14 +16,18 @@ ms.workload: identity
 ms.date: 04/20/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 48d03b590d718cf82d692dc177a69f6d54de43d1
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 4afd4ce5b8a0ab4c076ebc3c587605dfe1204b8a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495911"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966378"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>从通用 Windows 平台应用程序 (XAML) 调用 Microsoft 图形 API
+
+
+> [!div renderon="docs"]
+> [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
 本指南介绍本机通用 Windows 平台 (UWP) 应用程序如何请求访问令牌，然后调用 Microsoft 图形 API。 本指南也适用于其他需要从 Azure Active Directory v2 终结点请求访问令牌的 API。
 
@@ -71,11 +75,14 @@ ms.locfileid: "39495911"
 2. 在“包管理器控制台”窗口中复制并粘贴以下命令：
 
     ```powershell
-    Install-Package Microsoft.Identity.Client -Pre
+    Install-Package Microsoft.Identity.Client -Pre -Version 1.1.4-preview0002
     ```
 
 > [!NOTE]
 > 此命令将安装 [Microsoft 身份验证库](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)。 MSAL 获取、缓存和刷新用于访问受 Azure Active Directory v2 保护的 API 的用户令牌。
+
+> [!NOTE]
+> 本教程尚未使用最新版本的 MSAL.NET，但我们正在努力对它进行更新。
 
 ## <a name="initialize-msal"></a>初始化 MSAL
 此步骤帮助创建用于处理与 MSAL 的交互（例如处理令牌）的类。

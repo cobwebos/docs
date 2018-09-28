@@ -10,18 +10,18 @@ ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: ec56f9fdf21459857c8115222da921b6681a3ac5
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 1726cf947ad027eabd79aa35da92df37e1681003
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247230"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959608"
 ---
-# <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>使用 Azure 成本管理激活 Azure 订阅和帐户
+# <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>使用 Cloudyn 激活 Azure 订阅和帐户
 
-添加或更新 Azure 资源管理器凭据可让 Azure 成本管理发现 Azure 租户中的所有帐户和订阅。 如果还在虚拟机上启用了 Azure 诊断扩展，则 Azure 成本管理可以收集 CPU 和内存等扩展指标。 本文介绍如何使用适用于新帐户和现有帐户的 Azure 资源管理器 API 实现访问。 此外，还介绍如何解决常见的帐户问题。
+添加或更新 Azure 资源管理器凭据可让 Cloudyn 发现 Azure 租户中的所有帐户和订阅。 如果还在虚拟机上启用了 Azure 诊断扩展，则 Cloudyn 可以收集 CPU 和内存等扩展指标。 本文介绍如何使用适用于新帐户和现有帐户的 Azure 资源管理器 API 实现访问。 此外，还介绍如何解决常见的帐户问题。
 
-当订阅处于未激活状态时，Azure 成本管理无法访问大多数 Azure 订阅数据。 必须编辑未激活的帐户，以便 Azure 成本管理可以访问它们。
+当订阅处于未激活状态时，Cloudyn 无法访问大多数 Azure 订阅数据。 你必须编辑未激活的帐户，以便 Cloudyn 可以访问它们。
 
 ## <a name="required-azure-permissions"></a>所需的 Azure 权限
 
@@ -47,17 +47,17 @@ ms.locfileid: "43247230"
 
 ## <a name="add-an-account-or-update-a-subscription"></a>添加帐户或更新订阅
 
-添加帐户或更新订阅时，需授予 Azure 成本管理对你的 Azure 数据的访问权限。
+添加帐户或更新订阅时，需授予 Cloudyn 对 Azure 数据的访问权限。
 
 ### <a name="add-a-new-account-subscription"></a>添加新帐户（订阅）
 
-1. 在 Azure 成本管理门户中，单击右上方的齿轮符号，然后选择“云帐户”。
+1. 在 Cloudyn 门户中，单击右上方的齿轮符号，然后选择“云帐户”。
 2. 单击“添加新帐户”，随即会显示“添加新帐户”框。 输入所需的信息。  
     ![添加新帐户框](./media/activate-subs-accounts//add-new-account.png)
 
 ### <a name="update-a-subscription"></a>更新订阅
 
-1. 若要在“帐户管理”中更新 Azure 成本管理中已存在的_未激活_订阅，请单击父_租户 GUID_ 右侧的编辑铅笔符号。 订阅已归属于父租户，因此应避免单独激活订阅。
+1. 要在“帐户管理”中更新 Cloudyn 中已存在的未激活订阅，请单击父租户 GUID 右侧的编辑铅笔符号。 订阅已归属于父租户，因此应避免单独激活订阅。
     ![重新发现订阅](./media/activate-subs-accounts/existing-sub.png)
 2. 根据必要输入租户 ID。 如果不知道自己的租户 ID，可使用以下步骤找到它：
     1. 登录到 [Azure 门户](https://portal.azure.com)。
@@ -71,39 +71,42 @@ ms.locfileid: "43247230"
     3. 在“我的订阅”下选择订阅。
     4. 费率 ID 显示在“套餐 ID”下。 复制订阅的套餐 ID。
 4. 在“添加新帐户”（或“编辑订阅”）框中，单击“保存”（或“下一步”）。 随后将重定向到 Azure 门户。
-5. 登录到门户。 单击“接受”授权 Azure 成本管理收集器访问你的 Azure 帐户。
+5. 登录到门户。 单击“接受”，授权 Cloudyn 收集器访问 Azure 帐户。
 
-    随后会重定向到 Azure 成本管理的帐户管理页，订阅中的帐户状态已更新为“活动”。 “资源管理器”列下应会显示一个绿色的勾选标记符号。
+    随后会重定向到 Cloudyn 帐户管理页，订阅中的帐户状态已更新为“活动”。 “资源管理器”列下应会显示一个绿色的勾选标记符号。
 
     如果有一个或多个订阅未显示绿色勾选标记符号，则表示你无权为订阅创建读取器应用 (CloudynCollector)。 具有更高订阅权限的用户需要重复此过程。
 
-观看[使用 Azure 成本管理连接到 Azure 资源管理器](https://youtu.be/oCIwvfBB6kk)视频，其中逐步演示了该过程。
+观看[使用 Cloudyn 连接到 Azure 资源管理器](https://youtu.be/oCIwvfBB6kk)视频，其中逐步演示了该过程。
 
 >[!VIDEO https://www.youtube.com/embed/oCIwvfBB6kk?ecver=1]
 
 ## <a name="resolve-common-indirect-enterprise-set-up-problems"></a>解决常见的间接企业设置问题
 
-首次使用 Azure 成本管理门户时，企业协议或云解决方案提供商 (CSP) 用户可能会看到以下消息：
+首次使用 Cloudyn 门户时，企业协议或云解决方案提供商 (CSP) 用户可能会看到以下消息：
 
-- “设置 Azure 成本管理”向导中显示“指定的 API 密钥不是顶级登记密钥”。
+- “设置 Cloudyn”向导中显示“指定的 API 密钥不是顶级登记密钥”。
 - 企业协议门户中显示“直接登记 - 否”。
-- Cloudyn 门户中显示“找不到过去 30 天的使用情况数据。请与分发商联系，确保为 Azure 成本管理门户中显示的 Azure 帐户启用了标记。
+- Cloudyn 门户中显示“找不到过去 30 天的使用情况数据。请与分发商联系，确保你的 Azure 帐户已启用标记”。
 
-上面的错误消息表示 Azure 企业协议是通过经销商或 CSP 购买的。 经销商或 CSP 需为你的 Azure 帐户启用标记，这样，你才能在 Azure 成本管理中查看自己的数据。
+上面的错误消息表示 Azure 企业协议是通过经销商或 CSP 购买的。 经销商或 CSP 需为你的 Azure 帐户启用标记，这样，你才能在 Cloudyn 中查看自己的数据。
 
 下面是修复问题的方法：
 
 1. 经销商需为你的帐户启用标记。 有关说明，请参阅[间接客户加入指南](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide)。
-2. 生成要在 Azure 成本管理中使用的 Azure 企业协议密钥。 有关说明，请参阅[注册 Azure 企业协议并查看成本数据](https://docs.microsoft.com/azure/cost-management/quick-register-ea)。
+2. 生成可在 Cloudyn 中使用的 Azure 企业协议密钥。 有关说明，请参阅[注册 Azure 企业协议并查看成本数据](https://docs.microsoft.com/azure/cost-management/quick-register-ea)。
 
-在生成用于设置 Azure 成本管理的 Azure 企业协议 API 密钥之前，必须遵照以下主题中的说明启用 Azure 计费 API：
+在生成用于设置 Cloudyn 的 Azure 企业协议 API 密钥之前，必须遵照以下主题中的说明启用 Azure 计费 API：
 
 - [面向企业客户的报告 API 概述](../billing/billing-enterprise-api.md)
 - **实现对 API 的数据访问**中的 [Microsoft Azure Enterprise Portal 报告 API](https://ea.azure.com/helpdocs/reportingAPI)
 
 可能还需要向部门管理员、帐户所有者和企业管理员授予使用计费 API 查看费用的权限。
 
-只有 Azure 服务管理员可以启用成本管理。 协同管理员的权限不足。 但是，你可以绕过管理员要求。 你可以使用 PowerShell 脚本请求 Azure Active Directory 管理员授予对 **CloudynAzureCollector** 进行授权所需的权限。 以下脚本授予注册 Azure Active Directory 服务主体 **CloudynAzureCollector** 所需的权限。 成功运行后，操作结束，浏览器显示 URL http://localhost:8080/CloudynJava。
+<<<<<<< HEAD 只有 Azure 服务管理员可以启用成本管理。 协同管理员的权限不足。 但是，你可以绕过管理员要求。 你可以使用 PowerShell 脚本请求 Azure Active Directory 管理员授予对 **CloudynAzureCollector** 进行授权所需的权限。 以下脚本授予注册 Azure Active Directory 服务主体 **CloudynAzureCollector** 所需的权限。 成功运行后，操作结束，浏览器显示 URL http://localhost:8080/CloudynJava。
+======= 只有 Azure 服务管理员可以启用 Cloudyn。 协同管理员的权限不足。 但是，你可以绕过管理员要求。 你可以使用 PowerShell 脚本请求 Azure Active Directory 管理员授予对 **CloudynAzureCollector** 进行授权所需的权限。 以下脚本授予注册 Azure Active Directory 服务主体 **CloudynAzureCollector** 所需的权限。
+
+>>>>>>> 9f3b4a46614ba7306c044dce8be6ee7cc3bf101d
 
 ```
 #THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
@@ -132,4 +135,4 @@ $url = "https://login.windows.net/"+$tenant+"/oauth2/authorize?api-version=1&res
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果尚未完成有关成本管理的第一本教程，请阅读[查看使用情况和成本](tutorial-review-usage.md)。
+- 如果尚未完成首个 Cloudyn 教程，请阅读[查看使用情况和成本](tutorial-review-usage.md)。

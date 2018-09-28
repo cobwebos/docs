@@ -12,19 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/28/2018
+ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: celested
-ms.openlocfilehash: c9db5169a978875cf639f6c534ce7920909c896e
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 3b799cde0a696b4a764893c545a8d55d363a4800
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188234"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989016"
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>将应用程序与 Azure Active Directory 集成
-[!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
+
+[!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
 企业开发人员和软件即服务 (SaaS) 提供商可以开发能够与 Azure Active Directory (Azure AD) 集成的商业云服务或业务线应用程序，以针对其服务提供安全的登录和授权。 若要将某个应用程序或服务与 Azure AD 进行集成，开发人员必须先将该应用程序注册到 Azure AD。
 
@@ -33,9 +34,11 @@ ms.locfileid: "43188234"
 若要详细了解表示已注册应用程序的两个 Azure AD 对象及其关系，请参阅[应用程序对象和服务主体对象](app-objects-and-service-principals.md)；若要详细了解利用 Azure Active Directory 开发应用程序时应使用的品牌准则，请参阅[适用于集成应用的品牌准则](howto-add-branding-in-azure-ad-apps.md)。
 
 ## <a name="adding-an-application"></a>添加应用程序
+
 任何想要使用 Azure AD 功能的应用程序都必须先在 Azure AD 租户中注册。 此注册过程涉及到提供有关应用程序的 Azure AD 详细信息，例如，该应用程序所在位置的 URL、对用户进行身份验证后用于发送答复的 URL、用于标识应用程序的 URI，等等。
 
 ### <a name="to-register-a-new-application-using-the-azure-portal"></a>使用 Azure 门户注册新应用程序
+
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 如果你的帐户有权访问多个租户，请在右上角单击该帐户，并将门户会话设置为所需的 Azure AD 租户。
 3. 在左侧导航窗格中，依次单击“Azure Active Directory”服务、“应用注册”、“新建应用程序注册”。
@@ -59,10 +62,9 @@ ms.locfileid: "43188234"
 
   > [!NOTE]
   > 默认情况下，新注册的 Web 应用程序配置为只允许同一租户中的用户登录到应用程序。
-  > 
-  > 
 
 ## <a name="updating-an-application"></a>更新应用程序
+
 将应用程序注册到 Azure AD 后，可能需要更新该应用程序，以提供对 Web API 的访问权限、使其可在其他组织中使用，等等。 本部分介绍可以通过哪些不同的方法来进一步配置应用程序。 首先概述许可框架，在生成其他用户或应用程序需要使用的应用程序时，必须理解此概念。
 
 ### <a name="overview-of-the-consent-framework"></a>同意框架概述
@@ -93,7 +95,7 @@ ms.locfileid: "43188234"
    
   ![用户同意体验](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
 
-5. 用户授予许可后，授权代码会返回到应用程序，应用程序可凭此获取访问令牌和刷新令牌。 有关此流程的详细信息，请参阅[“Azure AD 的身份验证方案”中的“从 Web 应用程序到 Web API”部分](authentication-scenarios.md#web-application-to-web-api)。
+5. 用户授予许可后，授权代码会返回到应用程序，应用程序可凭此获取访问令牌和刷新令牌。 有关此流程的详细信息，请参阅 [Web API]](web-api.md)。
 
 6. 作为管理员，还可以代表租户中的所有用户同意应用程序的委派权限。 管理许可可防止针对租户中的每个用户显示许可对话框，可通过具有管理员角色的用户在 [Azure 门户](https://portal.azure.com)中执行。 在应用程序的“设置”页中，单击“所需权限”，再单击“授予权限”按钮。 
 
@@ -103,6 +105,7 @@ ms.locfileid: "43188234"
   > 使用 ADAL.js 的单页应用程序 (SPA) 目前要求使用“授予权限”按钮授予显式许可。 否则，在请求访问令牌时应用程序会失败。 
 
 ### <a name="configure-a-client-application-to-access-web-apis"></a>将客户端应用程序配置为访问 Web API
+
 为使 Web/机密客户端应用程序能够参与要求身份验证的授权流程（以及获取访问令牌），必须建立安全凭据。 Azure 门户支持的默认身份验证方法为“客户端 ID + 机密密钥”。 本部分介绍需要执行哪些配置步骤来提供客户端凭据的机密密钥。
 
 此外，在客户端可以访问资源应用程序公开的 Web API（例如 Microsoft Graph API）之前，许可框架可确保客户端根据请求的权限获取所需的授权。 默认情况下，所有应用程序可以从“Windows Azure Active Directory”（图形 API）和“Windows Azure 服务管理 API”中选择权限。 此外，默认已选择[图形 API 的“登录并读取用户配置文件”权限](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes#PermissionScopeDetails)。 如果正在某个租户中注册客户端，并且该租户包含已订阅 Office 365 的帐户，则可以选择 SharePoint 与 Exchange Online 的 Web API 和权限。 可以从每个所需 Web API 的[两种类型的权限](developer-glossary.md#permissions)中进行选择：
@@ -115,6 +118,7 @@ ms.locfileid: "43188234"
   > 将委托权限添加到应用程序不会自动向租户中的用户授予许可。 除非管理员代表所有用户授予许可，否则用户仍必须在运行时手动同意添加的委派权限。
 
 #### <a name="to-add-application-credentials-or-permissions-to-access-web-apis"></a>添加用于访问 Web API 的应用程序凭据或权限
+
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 如果你的帐户有权访问多个租户，请在右上角单击该帐户，并将门户会话设置为所需的 Azure AD 租户。
 3. 在左侧导航窗格中，依次单击“Azure Active Directory”服务、“应用注册”，并找到/单击想要配置的应用程序。
@@ -213,8 +217,6 @@ ms.locfileid: "43188234"
 
 > [!NOTE]
 > 由于当前存在的限制，如果本机客户端应用程序使用“访问组织的目录”权限，则它们只能调用 Azure AD 图形 API。 此限制不适用于 Web 应用程序。
-> 
-> 
 
 ### <a name="configuring-multi-tenant-applications"></a>配置多租户应用程序
 
@@ -260,9 +262,9 @@ Web 应用程序还可以：
 - [多租户代码示例](https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multi-tenant)列表。 
 - [快速入门：在 Azure AD 的登录页中添加公司品牌](../fundamentals/customize-branding.md)
 
-### <a name="enabling-oauth-20-implicit-grant-for-single-page-applications"></a>为单页面应用程序启用 OAuth 2.0 隐式授权
+### <a name="enabling-oauth-20-implicit-grant-for-single-page-applications"></a>为单页应用程序启用 OAuth 2.0 隐式授权
 
-通常将单页面应用程序 (SPA) 构建为一个在浏览器中运行的 JavaScript 重型前端，该前端调用应用程序的 Web API 后端来执行其业务逻辑。 对于托管在 Azure AD 中的 SPA，可以使用 OAuth 2.0 隐式授权对具有 Azure AD 的用户进行身份验证，并获取可用来保护从应用程序 JavaScript 客户端到其后端 Web API 的调用的令牌。 
+通常将单页应用程序 (SPA) 构建为一个在浏览器中运行的 JavaScript 重型前端，该前端调用应用程序的 Web API 后端来执行其业务逻辑。 对于托管在 Azure AD 中的 SPA，可以使用 OAuth 2.0 隐式授权对具有 Azure AD 的用户进行身份验证，并获取可用来保护从应用程序 JavaScript 客户端到其后端 Web API 的调用的令牌。 
 
 用户授予同意之后，可以使用同一个身份验证协议来获取令牌以保护客户端与针对应用程序配置的其他 Web API 资源之间的调用。 若要了解有关隐式授权授予的详细信息，并帮助确定其是否适合应用程序方案，请参阅[了解 Azure Active Directory 中的 OAuth2 隐式授权流](v1-oauth2-implicit-grant-flow.md)。
 
@@ -272,7 +274,6 @@ Web 应用程序还可以：
 
 > [!NOTE]
 > 有关如何编辑应用程序清单的详细信息，请务必先阅读前一部分[将资源应用程序配置为公开 Web API](#configuring-a-resource-application-to-expose-web-apis)。
->
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 如果你的帐户有权访问多个租户，请在右上角单击该帐户，并将门户会话设置为所需的 Azure AD 租户。
@@ -285,12 +286,15 @@ Web 应用程序还可以：
 5. 保存更新的清单。 保存后，Web API 即已配置为使用 OAuth 2.0 隐式授权来对用户进行身份验证。
 
 ## <a name="removing-an-application"></a>删除应用程序
+
 本部分介绍如何从 Azure AD 租户中删除应用程序的注册。
 
 ### <a name="removing-an-application-authored-by-your-organization"></a>删除组织编写的应用程序
+
 组织已注册的应用程序显示在租户的“应用注册”主页上的“我的应用”筛选器下。 这些应用程序是通过 Azure 门户手动注册的，或者通过 PowerShell 或图形 API 以编程方式注册的。 更具体地说，它们由租户中的应用程序与服务主体对象表示。 有关详细信息，请参阅[应用程序对象和服务主体对象](app-objects-and-service-principals.md)。
 
 #### <a name="to-remove-a-single-tenant-application-from-your-directory"></a>从目录中删除单租户应用程序
+
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 如果你的帐户有权访问多个租户，请在右上角单击该帐户，并将门户会话设置为所需的 Azure AD 租户。
 3. 在左侧导航窗格中，依次单击“Azure Active Directory”服务、“应用注册”，并找到/单击想要配置的应用程序。 随后会转到应用程序的注册主页，并打开应用程序的“设置”页。
@@ -298,6 +302,7 @@ Web 应用程序还可以：
 5. 在确认消息中单击“是”。
 
 #### <a name="to-remove-a-multi-tenant-application-from-its-home-directory"></a>将多租户应用程序从其主目录中删除
+
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 如果你的帐户有权访问多个租户，请在右上角单击该帐户，并将门户会话设置为所需的 Azure AD 租户。
 3. 在左侧导航窗格中，依次单击“Azure Active Directory”服务、“应用注册”，并找到/单击想要配置的应用程序。 随后会转到应用程序的注册主页，并打开应用程序的“设置”页。
@@ -306,15 +311,16 @@ Web 应用程序还可以：
 6. 在确认消息中单击“是”。
 
 ### <a name="removing-a-multi-tenant-application-authorized-by-another-organization"></a>删除其他组织授权的多租户应用程序
+
 在租户的“应用注册”主页上的“所有应用”筛选器下面显示的一部分应用程序（“我的应用”注册除外）是多租户应用程序。 从技术上讲，这些多租户应用程序来自另一个租户，并已在许可过程中注册到你的租户。 更具体地说，它们仅由租户中的服务主体对象表示，没有相应的应用程序对象。 有关应用程序对象与服务主体对象之间的差别的详细信息，请参阅 [Azure AD 中的应用程序对象和服务主体对象](app-objects-and-service-principals.md)。
 
 若要删除多租户应用程序对目录的访问权限（在授予许可后），公司管理员必须删除该应用程序的服务主体。 管理员必须拥有全局管理员访问权限，并可以通过 Azure 门户或使用 [Azure AD PowerShell Cmdlet](http://go.microsoft.com/fwlink/?LinkId=294151) 删除访问权限。
 
 ## <a name="next-steps"></a>后续步骤
+
 - 有关 Azure AD 中的身份验证工作原理的详细信息，请参阅 [Azure AD 的身份验证方案](authentication-scenarios.md)。
 - 有关应用的视觉指南的提示，请参阅[集成应用的品牌准则](howto-add-branding-in-azure-ad-apps.md)。
 - 有关应用程序的应用程序对象与服务主体对象之间关系的详细信息，请参阅[应用程序对象和服务主体对象](app-objects-and-service-principals.md)。
 - 若要了解有关应用程序清单扮演的角色的详细信息，请参阅[了解 Azure Active Directory 应用程序清单](reference-app-manifest.md)
 - 请参阅 [Azure AD 开发人员术语表](developer-glossary.md)，了解某些核心的 Azure AD 开发人员概念的定义。
 - 请访问 [Active Directory 开发人员指南](azure-ad-developers-guide.md)，了解与所有开发人员相关内容的概述。
-

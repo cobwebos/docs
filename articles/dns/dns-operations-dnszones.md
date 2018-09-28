@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: victorh
-ms.openlocfilehash: 59f76d4c06a2a60cb513fc37a9ca3e27e13820b9
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 2cdf6ea0a992c996f4aeeb117c440e94b55ff8a8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173602"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961954"
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>如何使用 PowerShell 管理 DNS 区域
 
 > [!div class="op_single_selector"]
 > * [门户](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
-> * [Azure CLI 1.0](dns-operations-dnszones-cli-nodejs.md)
-> * [Azure CLI 2.0](dns-operations-dnszones-cli.md)
+> * [Azure 经典 CLI](dns-operations-dnszones-cli-nodejs.md)
+> * [Azure CLI](dns-operations-dnszones-cli.md)
 
 本文介绍如何使用 Azure PowerShell 管理 DNS 区域。 也可使用跨平台的 [Azure CLI](dns-operations-dnszones-cli.md) 或 Azure 门户管理 DNS 区域。
 

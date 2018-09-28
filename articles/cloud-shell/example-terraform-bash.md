@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: tarcher
-ms.openlocfilehash: 6df6a3a5242e0a5fc5c03136e1cd20967a93487a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8512c04cb0efc698ca688724c3806291bb02d200
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29386514"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947631"
 ---
 # <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>通过 Terraform 和 Azure Cloud Shell 中的 Bash 进行部署
 本文逐步讲解如何使用 [Terraform AzureRM 提供程序](https://www.terraform.io/docs/providers/azurerm/index.html)创建资源组。 
@@ -26,9 +26,9 @@ ms.locfileid: "29386514"
 [Hashicorp Terraform](https://www.terraform.io/) 是一个开放工具，可将 API 编码成能够在团队成员之间共享的声明性配置文件，让他们对其进行编辑、审阅和版本控制。 使用 Microsoft AzureRM 提供程序可以通过 AzureRM API 来与 Azure 资源管理器支持的资源交互。 
 
 ## <a name="automatic-authentication"></a>自动化身份验证
-Terraform 默认已安装在 Cloud Shell 中的 Bash 内。 此外，Cloud Shell 会自动对默认的 Azure CLI 2.0 订阅进行身份验证，以通过 Terraform Azure 模块部署资源。
+Terraform 默认已安装在 Cloud Shell 中的 Bash 内。 此外，Cloud Shell 会自动对默认的 Azure CLI 订阅进行身份验证，以通过 Terraform Azure 模块部署资源。
 
-Terraform 使用设置的默认 Azure CLI 2.0 订阅。 若要更新默认订阅，请运行：
+Terraform 使用设置的默认 Azure CLI 订阅。 若要更新默认订阅，请运行：
 
 ```azurecli-interactive
 az account set --subscription mySubscriptionName
@@ -144,7 +144,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 [terraform apply 命令](https://www.terraform.io/docs/commands/apply.html)用于应用达到所需配置状态而需要执行的更改。
 
-### <a name="verify-deployment-with-azure-cli-20"></a>使用 Azure CLI 2.0 验证部署
+### <a name="verify-deployment-with-azure-cli"></a>使用 Azure CLI 验证部署
 运行 `az group show -n myRgName` 验证是否已成功预配资源。
 
 ```azcliinteractive

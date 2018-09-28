@@ -3,8 +3,8 @@ title: 获准对 Azure CDN 启用自定义 HTTPS 的证书颁发机构 | Microso
 description: 若要使用自己的证书对自定义域启用 HTTPS，必须使用获准的证书颁发机构 (CA) 来创建证书。
 services: cdn
 documentationcenter: ''
-author: KumudD
-manager: jeconnoc
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
-ms.author: kumud
+ms.date: 09/17/2018
+ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 28d6d24266c11b1295c57c8ec46c2bd5ec690b28
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e9d9f5b053537b3d6881763bcb39d7894ba78869
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005911"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46969487"
 ---
 # <a name="allowed-certificate-authorities-for-enabling-custom-https-on-azure-cdn"></a>获准对 Azure CDN 启用自定义 HTTPS 的证书颁发机构
 
@@ -33,6 +33,10 @@ ms.locfileid: "39005911"
 创建自己的证书时，以下 CA 获准：
 
 - AddTrust 外部 CA 根
+- AlphaSSL 根 CA
+- AME 基础结构 CA 01
+- AME 基础结构 CA 02
+- Ameroot
 - AP 根 CA
 - AP 根证书颁发机构 2013
 - AP 根证书颁发机构 2014
@@ -47,16 +51,25 @@ ms.locfileid: "39005911"
 - DigiCert 全局根 CA
 - DigiCert 高保障 CA-3
 - DigiCert 高保障 EV 根 CA
+- DigiCert SHA2 扩展验证服务器 CA
 - DigiCert SHA2 高保障服务器 CA
 - DigiCert SHA2 安全服务器 CA
+- DST 根 CA X3
+- D-TRUST 根类 3 CA 2 2009
+- 加密无处不在 DV TLS CA
+- 委托根证书颁发机构
+- 委托根证书颁发机构 - G2
+- Entrust.net 证书颁发机构 (2048)
 - GeoTrust 全局 CA
 - GeoTrust 主要证书颁发机构
 - GeoTrust 主要证书颁发机构 - G2
+- Geotrust RSA CA 2018
 - GlobalSign
 - GlobalSign 扩展验证n CA - SHA256 - G2
 - GlobalSign 组织验证 CA - G2
 - GlobalSign 根 CA
 - Go Daddy 根证书颁发机构 - G2
+- Go Daddy 安全证书颁发机构 - G2
 - Microsoft Authenticode(tm) 根颁发机构
 - Microsoft Exchange Services CA 2015
 - Microsoft 内部企业根
@@ -78,6 +91,7 @@ ms.locfileid: "39005911"
 - MSIT CA Z2
 - MSIT 企业 CA 1
 - MSIT 企业 CA 3
+- RapidSSL RSA CA 2018
 - 根代理
 - Symantec 类 3 EV SSL CA - G3
 - Symantec 类 3 安全服务器 CA - G4
@@ -85,7 +99,9 @@ ms.locfileid: "39005911"
 - Thawte 主要根 CA
 - Thawte 主要根 CA - G2
 - Thawte 主要根 CA - G3
+- Thawte RSA CA 2018
 - Thawte 时间戳 CA
+- TrustAsia TLS RSA CA
 - UTN-USERFirst-Object
 - VeriSign 类 3 扩展验证 SSL CA
 - VeriSign 类 3 扩展验证 SSL SGC CA

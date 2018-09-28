@@ -1,155 +1,152 @@
 ---
-title: Azure 门户中的 Azure 计划程序入门 | Microsoft Docs
-description: Azure 门户中的 Azure 计划程序入门
+title: 使用 Azure 计划程序创建计划的作业 - Azure 门户 | Microsoft Docs
+description: 了解如何在 Azure 门户中使用 Azure 计划程序创建、计划和运行第一个自动化作业
 services: scheduler
-documentationcenter: .NET
-author: derek1ee
-manager: kevinlam1
-editor: ''
-ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
 ms.service: scheduler
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
-ms.topic: hero-article
-ms.date: 08/10/2016
+ms.suite: infrastructure-services
+author: derek1ee
 ms.author: deli
-ms.openlocfilehash: f03ddb475835b30e9b931b7f057c062b57ac45f3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.reviewer: klam
+ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
+ms.topic: hero-article
+ms.date: 09/17/2018
+ms.openlocfilehash: f1f7e67fbd5d8a9ebfae03c00eb0de36e86d9a97
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31413424"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949581"
 ---
-# <a name="get-started-with-azure-scheduler-in-azure-portal"></a>Azure 门户中的 Azure 计划程序入门
-在 Azure 计划程序中创建计划的作业很简单。 在本教程中，将了解如何创建作业。 还将学习计划程序的监视和管理功能。
+# <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>使用 Azure 计划程序创建和计划第一个作业 - Azure 门户
 
-## <a name="create-a-job"></a>创建作业
+> [!IMPORTANT]
+> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)将替换将即将停用的 Azure 计划程序。 若要计划作业，请[改为试用 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+
+本教程演示了如何轻松创建和计划作业，然后监视并管理该作业。 
+
+如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。
+
+## <a name="create-job"></a>创建作业
+
 1. 登录到 [Azure 门户](https://portal.azure.com/)。  
-2. 单击“+新建”> 在搜索框中键入“计划程序”> 在结果中选择“计划程序”> 单击“创建”。
-   
-    ![][marketplace-create]
-3. 让我们来创建一个作业，该作业只需要使用 GET 请求访问 http://www.microsoft.com/。 在“计划程序作业”  屏幕上，输入以下信息：
-   
-   1. **名称：**`getmicrosoft`  
-   2. **订阅：** Azure 订阅   
-   3. **作业集合：** 选择现有的作业集合，或者单击“新建”>“输入名称”。
-4. 接下来，在“操作设置” 中，定义以下值：
-   
-   1. **操作类型：**` HTTP`  
-   2. **方法：**`GET`  
-   3. **URL：**` http://www.microsoft.com`  
-      
-      ![][action-settings]
-5. 最后，让我们来定义一个计划。 该作业可定义为一次性作业，但是我们选择了重复执行的计划：
-   
-   1. **重复周期**：`Recurring`
-   2. **开始日期**：今天的日期
-   3. **执行间隔**：`12 Hours`
-   4. **结束日期**：从今天起两天后的日期  
-      
-      ![][recurrence-schedule]
-6. 单击“创建” 
 
-## <a name="manage-and-monitor-jobs"></a>管理和监视作业
-作业创建完成后，将出现在 Azure 主仪表板中。 单击该作业，将打开具有以下选项卡的新窗口：
+1. 在 Azure 主菜单上选择“创建资源”。 在搜索框中输入“计划程序”。 在结果列表中，选择“计划程序”，然后选择“创建”。
 
-1. 属性  
-2. 操作设置  
-3. 计划  
-4. 历史记录
-5. 用户
+   ![创建计划程序资源](./media/scheduler-get-started-portal/scheduler-v2-portal-marketplace-create.png)
+
+   现在，创建一个将 GET 请求发送到此 URL 的作业：`http://www.microsoft.com/` 
+
+1. 在“计划程序作业”下，输入这些信息：
+
+   | 属性 | 示例值 | Description |
+   |----------|---------------|-------------| 
+   | **Name** | getMicrosoft | 作业的名称 | 
+   | **作业集合** | <job-collection-name> | 创建一个作业集合，或选择现有的集合。 | 
+   | **订阅** | <*Azure-subscription-name*> | Azure 订阅的名称 | 
+   |||| 
+
+1. 选择“操作设置 - 配置”，提供此信息，完成后选择“确定”：
+
+   | 属性 | 示例值 | Description |
+   |----------|---------------|-------------| 
+   | **Action** | Http | 要运行的操作类型 | 
+   | **方法** | Get | 要调用的方法 | 
+   | **URL** | **http://www.microsoft.com** | 目标 URL | 
+   |||| 
    
-   ![][job-overview]
+   ![定义作业](./media/scheduler-get-started-portal/scheduler-v2-portal-action-settings.png)
+
+1. 选择“日程安排 - 配置”，定义计划，完成后选择“确定”：
+
+   尽管可以创建一次性作业，但此示例设置的是定期计划。
+
+   | 属性 | 示例值 | Description |
+   |----------|---------------|-------------| 
+   | **定期** | 定期 | 一次性或定期作业 | 
+   | **Start on** | <今天的日期> | 作业的开始日期 | 
+   | **Recur every** | 1 小时 | 执行间隔和频率 | 
+   | **End** | 结束日期：从今天起两天后的日期 | 作业的结束日期 | 
+   | **UTC offset** | UTC +08:00 | 协调世界时 (UTC) 与所在位置的观察时间之间的时差 | 
+   |||| 
+
+   ![定义计划](./media/scheduler-get-started-portal/scheduler-v2-portal-recurrence-schedule.png)
+
+1. 准备就绪后，选择“创建”。
+
+   创建作业后，Azure 会部署作业，该作业将显示在 Azure 仪表板上。 
+
+1. 当 Azure 显示部署成功的通知时，请选择“固定到仪表板”。 或者，请在 Azure 工具栏上选择“通知”图标（铃铛），然后选择“固定到仪表板”。
+
+## <a name="monitor-and-manage-jobs"></a>监视和管理作业
+
+要查看、监视和管理工作，请在 Azure 仪表板上选择作业。 在“设置”下，可以查看和管理作业的区域如下：
+
+![作业设置](./media/scheduler-get-started-portal/scheduler-v2-portal-job-overview-1.png)
+
+有关这些区域的详细信息，请选择一个区域：
+
+* [**属性**](#properties)
+* [**操作设置**](#action-settings)
+* [**计划**](#schedule)
+* [**历史记录**](#history)
+* [**用户**](#users)
+
+<a name="properties"></a>
 
 ### <a name="properties"></a>属性
-这些只读属性描述计划程序作业的管理元数据。
 
-   ![][job-properties]
+要查看描述作业的管理元数据的只读属性，请选择“属性”。
+
+![查看作业属性](./media/scheduler-get-started-portal/scheduler-v2-portal-job-properties.png)
+
+<a name="action-settings"></a>
 
 ### <a name="action-settings"></a>操作设置
-在“作业”屏幕中单击某个作业可以配置该作业。 如果未在快速创建向导中配置它们，此操作可配置高级设置。
 
-对于所有操作类型，都可以更改重试策略和错误操作。
+要更改作业的高级设置，请选择“操作设置”。 
 
-对于 HTTP 和 HTTPS 作业操作类型，可以将方法更改为允许的任何 HTTP 谓词。 还可以添加、删除或更改标头及基本身份验证信息。
+![查看操作设置](./media/scheduler-get-started-portal/scheduler-v2-portal-job-action-settings.png)
 
-对于存储队列操作类型，可以更改存储帐户、队列名称、SAS 令牌和正文。
+| 操作类型 | Description | 
+|-------------|-------------| 
+| 所有类型 | 可以更改“重试策略”和“错误操作”设置。 | 
+| HTTP 和 HTTPS | 可以将“方法”更改为任何允许的方法。 还可以添加、删除或更改标头及基本身份验证信息。 | 
+| 存储队列| 可以更改存储帐户、队列名称、SAS 令牌和正文。 | 
+| 服务总线 | 可以更改命名空间、主题或队列路径、身份验证设置、传输类型、消息属性和消息正文。 | 
+||| 
 
-对于服务总线操作类型，可以更改命名空间、主题/队列路径、身份验证设置、传输类型、消息属性和消息正文。
-
-   ![][job-action-settings]
+<a name="schedule"></a>
 
 ### <a name="schedule"></a>计划
-如果想要更改快速创建向导中创建的计划，此处能够重新配置该计划。
 
-这是 [作业中生成复杂计划和高级重复执行](scheduler-advanced-complexity.md)
+如果通过作业向导设置了计划，则可以更改该计划，例如开始日期和时间、定期计划以及定期作业的结束日期和时间。
+可以构建更多[复杂的计划和高级的定期计划](scheduler-advanced-complexity.md)。
 
-可以更改开始日期与时间、重复计划以及结束日期与时间（如果该作业是重复进行的。）
+要更改视图，或更改作业的计划，请选择“计划”：
 
-   ![][job-schedule]
+![查看作业计划](./media/scheduler-get-started-portal/scheduler-v2-portal-job-schedule.png)
+
+<a name="history"></a>
 
 ### <a name="history"></a>历史记录
-“历史记录”  选项卡显示在所选作业的系统中每次作业执行的所选度量值。 这些度量值提供有关计划程序的运行状况实时值：
 
-1. 状态  
-2. 详细信息  
-3. 重试次数
-4. 发生次数：第 1 次、第 2 次、第 3 次等
-5. 执行开始时间  
-6. 执行结束时间
-   
-   ![][job-history]
+要查看有关所选作业每次运行的指标，请选择“历史记录”。 这些指标能提供有关作业健康状况的实时值，例如状态、重试次数、发生次数、开始时间和结束时间。
 
-可单击运行以查看 **历史记录详情**，包括每次执行的整个响应情况。 此对话框还允许将响应复制到剪贴板。
+![查看作业历史记录和指标](./media/scheduler-get-started-portal/scheduler-v2-portal-job-history.png)
 
-   ![][job-history-details]
+要查看每次运行的历史记录详细信息，例如每次运行的完整响应，请在“历史记录”下选择每次运行。 
+
+![查看作业历史记录详细信息](./media/scheduler-get-started-portal/scheduler-v2-portal-job-history-details.png)
+
+<a name="users"></a>
 
 ### <a name="users"></a>用户
-Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 计划程序进行细致的访问管理。 若要了解如何使用“用户”选项卡，请参阅 [Azure 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)
 
-## <a name="see-also"></a>另请参阅
- [计划程序是什么？](scheduler-intro.md)
+可以使用 Azure 基于角色的访问控制 (RBAC) 在粒度级别管理每个用户对 Azure 计划程序的访问。 要了解如何根据角色设置访问权限，请参阅[使用 RBAC 管理访问权限](../role-based-access-control/role-assignments-portal.md)
 
- [计划程序概念、术语和实体层次结构](scheduler-concepts-terms.md)
+## <a name="next-steps"></a>后续步骤
 
- [Azure 计划程序中的计划和计费](scheduler-plans-billing.md)
-
- [如何使用 Azure 计划程序生成复杂的计划和高级循环](scheduler-advanced-complexity.md)
-
- [计划程序 REST API 参考](https://msdn.microsoft.com/library/mt629143)
-
- [计划程序 PowerShell Cmdlet 参考](scheduler-powershell-reference.md)
-
- [计划程序高可用性和可靠性](scheduler-high-availability-reliability.md)
-
- [计划程序限制、默认值和错误代码](scheduler-limits-defaults-errors.md)
-
- [计划程序出站身份验证](scheduler-outbound-authentication.md)
-
-[marketplace-create]: ./media/scheduler-get-started-portal/scheduler-v2-portal-marketplace-create.png
-[action-settings]: ./media/scheduler-get-started-portal/scheduler-v2-portal-action-settings.png
-[recurrence-schedule]: ./media/scheduler-get-started-portal/scheduler-v2-portal-recurrence-schedule.png
-[job-properties]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-properties.png
-[job-overview]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-overview-1.png
-[job-action-settings]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-action-settings.png
-[job-schedule]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-schedule.png
-[job-history]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-history.png
-[job-history-details]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-history-details.png
-
-
-[1]: ./media/scheduler-get-started-portal/scheduler-get-started-portal001.png
-[2]: ./media/scheduler-get-started-portal/scheduler-get-started-portal002.png
-[3]: ./media/scheduler-get-started-portal/scheduler-get-started-portal003.png
-[4]: ./media/scheduler-get-started-portal/scheduler-get-started-portal004.png
-[5]: ./media/scheduler-get-started-portal/scheduler-get-started-portal005.png
-[6]: ./media/scheduler-get-started-portal/scheduler-get-started-portal006.png
-[7]: ./media/scheduler-get-started-portal/scheduler-get-started-portal007.png
-[8]: ./media/scheduler-get-started-portal/scheduler-get-started-portal008.png
-[9]: ./media/scheduler-get-started-portal/scheduler-get-started-portal009.png
-[10]: ./media/scheduler-get-started-portal/scheduler-get-started-portal010.png
-[11]: ./media/scheduler-get-started-portal/scheduler-get-started-portal011.png
-[12]: ./media/scheduler-get-started-portal/scheduler-get-started-portal012.png
-[13]: ./media/scheduler-get-started-portal/scheduler-get-started-portal013.png
-[14]: ./media/scheduler-get-started-portal/scheduler-get-started-portal014.png
-[15]: ./media/scheduler-get-started-portal/scheduler-get-started-portal015.png
+* 了解[概念、术语和实体层次结构](scheduler-concepts-terms.md)
+* [构建复杂的计划和高级的定期计划](scheduler-advanced-complexity.md)
+* 了解[计划程序的高可用性和可靠性](scheduler-high-availability-reliability.md)
+* 了解[限制、配额、默认值和错误代码](scheduler-limits-defaults-errors.md)

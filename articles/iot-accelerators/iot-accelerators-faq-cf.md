@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: d2f5ce97ee81deaf590771f4794af4adf0fdbd1b
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 737a76ba313dddaa58c302f1df501f16a5c4e9e8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248581"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966533"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>连接的工厂解决方案加速器的常见问题解答
 
@@ -111,7 +111,7 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 * publisher.rio.corp.contoso
 * publisher.seattle.corp.contoso
 
-使用 [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) 或[适用于 Azure CLI 2.0 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)工具，可以查看解决方案当前所用的 IoT 中心中注册了哪些设备。 若要使用设备资源管理器，则部署中需要 IoT 中心的连接字符串。 若要使用适用于 Azure CLI 2.0 的 IoT 扩展，则需要 IoT 中心的名称。
+使用 [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) 或[适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)工具，可以查看解决方案当前所用的 IoT 中心中注册了哪些设备。 若要使用设备资源管理器，则部署中需要 IoT 中心的连接字符串。 若要使用适用于 Azure CLI 的 IoT 扩展，则需要 IoT 中心的名称。
 
 ### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>如何从模拟组件获取日志数据？
 

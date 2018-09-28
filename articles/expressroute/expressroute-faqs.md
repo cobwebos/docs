@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: 5f40b4c9fff57b105b7d96de69780fea83871032
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 2a7842a50690049507e00b85c8736e63da002503
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302290"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950159"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
 
@@ -66,15 +66,25 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 >在新的 ExpressRoute 线路上已禁用公共对等互连。 Azure 服务在 Microsoft 对等互连上可用。
 >
 
+* Power BI
+* Dynamics 365 for Finance and Operations（以前称为 Dynamics AX Online）
+* 支持大多数 Azure 服务。 请直接对要使用的服务进行确认来验证是否支持。<br>
+  不支持以下服务：
+    * CDN
+    * Azure DevOps Services 负载测试
+    * 多重身份验证
+    * 流量管理器
+
 ### <a name="microsoft-peering"></a>Microsoft 对等互连
 
 * [Office 365](http://aka.ms/ExpressRouteOffice365)
 * Dynamics 365 
 * Power BI
 * Azure Active Directory
-* Visual Studio Team Services 负载测试
+* Azure DevOps Services 负载测试
 * 支持大多数 Azure 服务。 请直接对要使用的服务进行确认来验证是否支持。<br>不支持以下服务：
     * CDN
+    * Azure DevOps Services 负载测试
     * 多重身份验证
     * 流量管理器
 
@@ -337,3 +347,11 @@ Office 365 服务要求启用高级版外接程序。 有关费用，请参阅[�
 * 在 2017 年 8 月 1 日之前配置的 ExpressRoute 线路的 Microsoft 对等互连会通过 Microsoft 对等互连播发所有服务前缀，即使未定义路由筛选器。
 
 * 在 2017 年 8 月 1 日或之后配置的 ExpressRoute 线路的 Microsoft 对等互连的任何前缀只在将路由筛选器附加到线路之后才会播发。 默认情况下，不会显示任何前缀。
+
+## <a name="globalreach"></a>ExpressRoute Direct（预览版）
+
+[!INCLUDE [Global Reach](../../includes/expressroute-direct-faq-include.md)]
+
+## <a name="globalreach"></a>Global Reach（预览版）
+
+[!INCLUDE [Global Reach](../../includes/expressroute-global-reach-faq-include.md)]

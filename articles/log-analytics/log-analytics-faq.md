@@ -12,28 +12,83 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 09/18/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: eb1a60ff533e9e24f3dc80057129da47a2d9a726
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 06b30d1381d8fba1d6f053576f6556e6d02f2ae9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128521"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949156"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics 常见问题解答
 此 Microsoft 常见问题解答是有关 Microsoft Azure 中 Log Analytics 的常见问题列表。 如果有与 Log Analytics 有关的任何其他问题，请转到[论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
 
+
+## <a name="new-logs-experience"></a>新的日志体验
+
+### <a name="q-whats-the-difference-between-the-new-logs-experience-and-log-analytics"></a>问：新的日志体验和 Log Analytics 的区别在哪里？
+
+答：没有区别。 [Log Analytics 是作为一项功能集成到 Azure Monitor 中的](../azure-monitor/azure-monitor-rebrand.md)，目的是提供更统一的监视体验。 Azure Monitor 中的新的日志体验与许多客户一直在使用的 Log Analytics 查询完全相同。
+
+### <a name="q-can-i-still-use-log-search"></a>问：是否仍然可以使用日志搜索？ 
+
+答：日志搜索目前仍可在 OMS 门户和 Azure 门户中使用，采用的名称是“日志(经典)”。 OMS 门户将在 2019 年 1 月 15 日正式停用。 Azure 门户中的经典日志体验将会逐渐停用并被新的日志体验代替。 
+
+### <a name="q-can-i-still-use-advanced-analytics-portal"></a>问： 是否仍然能够使用高级分析门户？ 
+Azure 门户中的新的日志体验基于[高级分析门户](https://portal.loganalytics.io/)，但是仍然可以在 Azure 门户之外访问。 停用此外部门户的路线图将很快宣布。
+
+### <a name="q-why-cant-i-see-query-explorer-and-save-buttons-in-the-new-logs-experience"></a>问： 为何在新的日志体验中看不到“查询资源管理器”按钮和“保存”按钮？
+
+在特定资源的上下文中浏览日志时，“查询资源管理器”、“保存”和“设置警报”按钮不可用。 若要创建警报以及保存或加载查询，日志的范围必须局限于某个工作区。 若要在工作区上下文中打开日志，请选择“所有服务” > “监视” > “日志”。 选择的是上次使用的工作区，但可以选择任何其他的工作区。 有关详细信息，请参阅[查看和分析 Log Analytics 中的数据](../log-analytics/log-analytics-log-search-portals.md)。
+
+### <a name="q-how-do-i-extract-custom-fields-in-the-new-logs-experience"></a>问： 在新的日志体验中，如何提取自定义字段？ 
+
+答：经典日志体验目前支持自定义字段提取。 
+
+### <a name="q-where-do-i-find-list-view-in-the-new-logs"></a>问： 在新日志中，何处可以找到“列表”视图？ 
+
+答：新日志中没有“列表”视图可用。 在结果表中，每条记录的左侧有一个箭头。 单击此箭头可以打开特定记录的详细信息。 
+
+### <a name="q-after-running-a-query-a-list-of-suggested-filters-shows-up-but-it-doesnt-include-all-filters-how-can-i-see-the-rest"></a>问： 运行查询以后，会显示一个建议的筛选器的列表，但其中并未包含所有筛选器。 如何才能查看其他的筛选器？ 
+
+答：你现在看到的是新筛选器实现的预览版。 它现在是基于你的完整结果集，没有 UI 的 10,000 记录的限制。 它目前列出了最常用的筛选器以及每个筛选器的 10 个最常用值。 
+
+### <a name="q-why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-in-logs-after-drilling-in-from-vm"></a>问： 为什么我在从 VM 钻取进去以后，会在日志中发现错误“请为此订阅注册资源提供程序 'Microsoft.Insights' 以启用此查询”？ 
+
+答：默认情况下，会自动注册多个资源提供程序，但可能需要手动注册某些资源提供程序。 这样可以配置订阅，使之适合资源提供程序。 注册的作用域始终是订阅。 有关详细信息，请参阅[资源提供程序和类型](../azure-resource-manager/resource-manager-supported-services.md#portal)。
+
+### <a name="q-why-am-i-am-getting-no-access-error-message-when-accessing-logs-from-a-vm-page"></a>问： 为什么在从 VM 页访问日志时，会出现“无法访问”错误消息？ 
+
+答：若要查看 VM 日志，需获得存储 VM 日志的工作区的读取权限。 在这些示例中，管理员必须在 Azure 中为你授予相关权限。
+
+### <a name="q-why-can-i-can-access-my-workspace-in-oms-portal-but-i-get-the-error-you-have-no-access-in-the-azure-portal"></a>问： 为什么我可以访问 OMS 门户中的工作区，但在 Azure 门户中却获得“你没有访问权限”错误？  
+
+答：若要访问 Azure 中的工作区，必须获得 Azure 权限。 在某些情况下，你可能没有相应的访问权限。 在这些示例中，管理员必须在 Azure 中为你授予相关权限。有关详细信息，请参阅[从 OMS 门户转到 Azure](../log-analytics/log-analytics-oms-portal-transition.md)。
+
+### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>问： 为什么在日志中看不到“视图设计器”条目？ 
+答：视图设计器在日志中仅供分配了“参与者”权限或更高权限的用户使用。
+
+
 ## <a name="general"></a>常规
+
+### <a name="q-how-can-i-see-my-views-and-solutions-in-azure-portal"></a>问： 如何在 Azure 门户中查看视图和解决方案？ 
+
+答：可以在 Azure 门户中查看视图和已安装解决方案的列表。 单击“所有服务”。 在资源列表中，选择“监视”，然后单击“...更多”。 选择的是上次使用的工作区，但可以选择任何其他的工作区。 
+
+### <a name="q-why-i-cant-create-workspaces-in-west-central-us-region"></a>问： 为何无法在“美国中西部”区域创建工作区？ 
+
+答：此区域有暂时的容量限制。 计划在 2019 年上半年解决此限制问题。
+
 
 ### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>问： Log Analytics 是否与 Azure 安全中心使用同一代理？
 
-A. 2017 年 6 月初，Azure 安全中心开始使用 Microsoft Monitoring Agent 收集和存储数据。 要了解详细信息，请参阅 [Azure 安全中心平台迁移常见问题解答](../security-center/security-center-platform-migration-faq.md)。
+答：2017 年 6 月初，Azure 安全中心开始使用 Microsoft Monitoring Agent 收集和存储数据。 要了解详细信息，请参阅 [Azure 安全中心平台迁移常见问题解答](../security-center/security-center-platform-migration-faq.md)。
 
 ### <a name="q-what-checks-are-performed-by-the-ad-and-sql-assessment-solutions"></a>问： AD 和 SQL 评估解决方案会执行哪些检查？
 
-答： 以下查询显示了当前执行的所有检查的说明：
+答：以下查询显示了当前执行的所有检查的说明：
 
 ```
 (Type=SQLAssessmentRecommendation OR Type=ADAssessmentRecommendation) | dedup RecommendationId | select FocusArea, ActionArea, Recommendation, Description | sort Type, FocusArea,ActionArea, Recommendation
@@ -41,7 +96,7 @@ A. 2017 年 6 月初，Azure 安全中心开始使用 Microsoft Monitoring Agent
 
 可以将结果导出到 Excel，以便深入查看。
 
-### <a name="q-why-do-i-see-something-different-than-oms-in-the-system-center-operations-manager-console"></a>问：为何我在 System Center Operations Manager 控制台中看到了不同于 OMS 的内容？
+### <a name="q-why-do-i-see-something-different-than-oms-in-the-system-center-operations-manager-console"></a>问： 为何我在 System Center Operations Manager 控制台中看到了不同于 OMS 的内容？
 
 答：你可能会看到*系统中心顾问*、*操作见解*或 *Log Analytics* 节点，具体取决于所使用的 Operations Manager 更新汇总。
 

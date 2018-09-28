@@ -1,5 +1,6 @@
 ---
-title: 在 Azure 中使用 Bot Builder SDK for Node.js 将 LUIS 与机器人进行集成 | Microsoft Docs
+title: 使用 Node.js 的 LUIS 机器人 - Web 应用机器人 - Bot Framework SDK 3.0
+titleSuffix: Azure Cognitive Services
 description: 使用 Bot Framework 生成与 LUIS 应用程序集成的机器人。
 services: cognitive-services
 author: diberry
@@ -7,18 +8,18 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 6d6937105b11d94138b51660dc9f3c5e682e19bc
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 4967c6c8eb9f849006beb78cfd2e41eba53b6867
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224069"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952964"
 ---
-# <a name="integrate-luis-with-a-bot-using-the-bot-builder-sdk-for-nodejs"></a>使用 Bot Builder SDK for Node.js 将 LUIS 与机器人进行集成
+# <a name="luis-bot-in-nodejs"></a>Node.js 中的 LUIS 机器人
 
-本教程介绍如何使用 [Bot Framework][BotFramework]来生成与 LUIS 应用集成的机器人。
+使用 Node.js，生成集成了语言理解 (LUIS) 的聊天机器人。 此聊天机器人使用预生成的 HomeAutomation 域来快速实现机器人解决方案。 该机器人是使用 Bot Framework 3.x 和 Azure Web 应用机器人生成的。
 
 ## <a name="prerequisite"></a>先决条件
 
@@ -45,7 +46,10 @@ ms.locfileid: "39224069"
 3. 在“机器人服务边栏选项卡”中，提供所需信息，然后选择“创建”。 此操作可创建机器人服务和 LUIS 应用并将其部署到 Azure。 如果想要使用[语音启动](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)，请在创建机器人前查看[区域要求](luis-resources-faq.md#what-luis-regions-support-bot-framework-speech-priming)。 
     * 将“应用名称”设置为机器人名称。 将机器人部署到云（例如，mynotesbot.azurewebsites.net）时，该名称用作子域。 <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
     * 选择“订阅”、“[资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)”、“应用服务计划”和“[位置](https://azure.microsoft.com/regions/)”。
-    * 对于“机器人模板”字段，选择“语言理解 (Node.js)”模板。
+    * 对于“机器人模板”，请选择：
+        * **SDK v3**
+        * **Node.js**
+        * **语言理解**
     * 选择“LUIS 应用位置”。 这是创建应用的创作[区域][LUIS]。
     * 勾选法律声明的确认复选框。 法律声明条款在该复选框下方。
 

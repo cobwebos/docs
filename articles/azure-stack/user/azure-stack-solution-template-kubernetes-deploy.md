@@ -11,22 +11,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 89c72e21733b01a3e42c0e58d65cb7877e47d374
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 82d99f575837b47a29bd6d8330ee58f442b6110a
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163488"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409348"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>将 Kubernetes 部署到 Azure Stack
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 > [!Note]  
-> Azure Stack 上的 Kubernetes 处于预览状态。 Azure Stack 操作员需要请求访问所需执行本文中说明的 Kubernetes 群集 Marketplace 项。
+> Azure Stack 上的 Kubernetes 处于预览状态。
 
 下面的文章着眼于使用 Azure 资源管理器解决方案模板通过单个协调的操作为 Kubernetes 部署和预配资源。 需收集有关 Azure Stack 安装的必需信息，生成模板，然后再部署到云。 请注意该模板不提供全球 Azure 中的相同托管的 AKS 服务。
 
@@ -55,6 +55,8 @@ ms.locfileid: "47163488"
 1. 检查你在 Azure Stack 租户门户中是否有有效的订阅，以及是否有足够的公共 IP 地址来添加新的应用程序。
 
     此群集不能部署到 Azure Stack **管理员**订阅。 必须使用**用户**订阅。 
+
+1. 如果您没有在 marketplace 中的 Kubernetes 群集，与 Azure Stack 的管理员联系。
 
 ## <a name="create-a-service-principal-in-azure-ad"></a>在 Azure AD 中创建服务主体
 

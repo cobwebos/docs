@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: jasonh
-ms.openlocfilehash: d8816965fb1ab870d7bd93cd1ace45c4e6e57de6
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 8a9dd45a8d5ebf506899c733107ff2fd01b08a2c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43040907"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964524"
 ---
 # <a name="run-hive-queries-with-hadoop-in-hdinsight-using-rest"></a>使用 REST 在 HDInsight 中通过 Hadoop 运行 Hive 查询
 
@@ -171,7 +171,7 @@ ms.locfileid: "43040907"
 
 6. 在作业的状态更改为“SUCCEEDED”后，可以从 Azure Blob 存储中检索作业的结果。 随查询一起传递的 `statusdir` 参数包含输出文件的位置；在本例中，该位置为 `/example/rest`。 此地址将输出存储在群集默认存储中的 `example/curl` 目录。
 
-    可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 列出并下载这些文件。 有关将 Azure CLI 与 Azure 存储配合使用的详细信息，请参阅[将 Azure CLI 2.0 与 Azure 存储配合使用](https://docs.microsoft.com/azure/storage/storage-azure-cli#create-and-manage-blobs)文档。
+    可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 列出并下载这些文件。 有关将 Azure CLI 与 Azure 存储配合使用的详细信息，请参阅[将 Azure CLI 与 Azure 存储配合使用](https://docs.microsoft.com/azure/storage/storage-azure-cli#create-and-manage-blobs)文档。
 
 ## <a id="nextsteps"></a>后续步骤
 

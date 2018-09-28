@@ -12,48 +12,68 @@ ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/21/2018
+ms.topic: conceptual
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: hirsin, jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: f83ca06843b94aecf44a4e4a58959d35f00532c2
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: da8eebb2fc6b87b8916e944495679b45aa34dbf2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125110"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960322"
 ---
-# <a name="scopes-permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Azure Active Directory v2.0 终结点中的范围、权限和同意
+# <a name="permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Azure Active Directory v2.0 终结点中的权限和许可
 
-与 Azure Active Directory (Azure AD) 集成的应用遵循一种授权模型，该模型可让用户控制应用访问其数据的方式。 此授权模型的 v2.0 实现已更新，其中更改了应用程序必须与 Azure AD 交互的方式。 本文涵盖此授权模型的基本概念，包括范围、权限和同意。
+[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
+
+与 Microsoft 标识平台集成的应用程序遵循的授权模型可让用户和管理员控制数据的访问方式。 该授权模型的实现已在 v2.0 终结点中更新，它改变了应用与 Microsoft 标识平台交互的方式。 本文涵盖此授权模型的基本概念，包括范围、权限和同意。
 
 > [!NOTE]
-> v2.0 终结点并不支持所有 Azure Active Directory 方案和功能。 若要确定是否应使用 v2.0 终结点，请阅读 [v2.0 限制](active-directory-v2-limitations.md)。
+> v2.0 终结点并非支持所有方案和功能。 若要确定是否应使用 v2.0 终结点，请阅读 [v2.0 限制](active-directory-v2-limitations.md)。
 
 ## <a name="scopes-and-permissions"></a>范围和权限
 
-Azure AD 实现 [OAuth 2.0](active-directory-v2-protocols.md) 授权协议。 OAuth 2.0 是一种方法，通过此方法，第三方应用可以代表用户访问 Web 托管资源。 任何与 Azure AD 集成的 Web 托管资源都有资源标识符或*应用程序 ID URI*。 例如，Microsoft 的某些 Web 托管资源包括：
+Microsoft 标识平台实现 [OAuth 2.0](active-directory-v2-protocols.md) 授权协议。 OAuth 2.0 是一种方法，通过此方法，第三方应用可以代表用户访问 Web 托管资源。 与 Microsoft 标识平台集成的任何 Web 托管资源都有一个资源标识符，也称为“应用程序 ID URI”。 例如，Microsoft 的某些 Web 托管资源包括：
 
-* Office 365 统一邮件 API：`https://outlook.office.com`
-* Azure AD 图形 API：`https://graph.windows.net`
 * Microsoft Graph：`https://graph.microsoft.com`
+* Office 365 邮件 API：`https://outlook.office.com`
+* Azure AD Graph：`https://graph.windows.net`
 
-同样适用于已与 Azure AD 集成的任何第三方资源。 这些资源还可以定义一组可用于将该资源的功能分成较小区块的权限。 例如，[Microsoft Graph](https://graph.microsoft.io) 定义了执行以下（以及其他）任务的权限：
+> [!NOTE]
+> 我们强烈建议使用 Microsoft Graph，而不要使用 Azure AD Graph、Office 365 邮件 API 等。
+
+这同样适用于已与 Microsoft 标识平台集成的任何第三方资源。 这些资源还可以定义一组可用于将该资源的功能分成较小区块的权限。 例如，[Microsoft Graph](https://graph.microsoft.com) 定义了执行以下（以及其他）任务的权限：
 
 * 读取用户的日历
 * 写入用户的日历
 * 以用户身份发送邮件
 
-通过定义这些类型的权限，资源可以更细微地掌控其数据以及公开数据的方式。 第三方应用可以向应用用户请求这些权限。 应用用户必须先审批权限，应用才能代表用户执行操作。 将资源的功能切割成较小的权限集，即可将第三方应用构建为只请求执行其功能所需的特定权限。 应用用户可以准确了解应用将如何使用其数据，并且会更加相信该应用没有恶意行为。
+通过定义这些类型的权限，资源可以更精细地控制其数据以及 API 功能的公开方式。 第三方应用可以从用户和管理员请求这些权限，只有在用户或管理员批准该请求之后，应用才能代表用户访问或处理数据。 将资源的功能切割成较小的权限集，即可将第三方应用构建为只请求执行其功能所需的特定权限。 用户和管理员可以确切地知道应用有权访问哪些数据，并且他们可以更加确信应用不会怀有恶意的企图。 开发人员应始终遵守“最低特权”的概念，仅请求分配正常运行应用程序所需的权限。
 
-在 Azure AD 和 OAuth 中，将这些类型的权限称为范围。 它们有时也被称为 *oAuth2Permissions*。 在 Azure AD 中范围以字符串值表示。 仍以 Microsoft Graph 为例，每个权限的范围值如下：
+在 OAuth 中，这些类型的权限称为“范围”， 并且往往简称为“权限”。 权限在 Microsoft 标识平台中以字符串值表示。 仍以 Microsoft Graph 为例，每个权限的字符串值为：
 
 * 使用 `Calendars.Read` 读取用户的日历
 * 使用 `Calendars.ReadWrite` 写入用户的日历
 * 使用 `Mail.Send` 以用户身份发送邮件
 
-在对 v2.0 终结点的请求中指定范围，应用即可请求这些权限。
+应用往往是通过在发往 v2.0 授权终结点的请求中指定范围来请求这些权限。 但是，某些高特权权限只能通过管理员许可来授予，并且通常是使用[管理员许可终结点](v2-permissions-and-consent.md#admin-restricted-scopes)来请求/授予的。 请继续阅读了解更多信息。
+
+## <a name="permission-types"></a>权限类型
+
+Microsoft 标识平台支持两种类型的权限：**委托的权限**和**应用程序权限**。
+
+- **委托的权限**由包含登录用户的应用使用。 对于这些应用，用户或管理员需许可应用请求的权限，并向应用授予委托的权限，以便在对目标资源发出调用时，该应用可充当登录的用户。 某些委托的权限可由非管理用户许可，但某些更高特权的权限需要[管理员许可](v2-permissions-and-consent.md#admin-restricted-scopes)。  
+
+- **应用程序权限**由无需存在登录用户即可运行的应用使用；例如，以后台服务或守护程序形式运行的应用。  应用程序权限只能[由管理员许可](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)。 
+
+有效权限是应用在对目标资源发出请求时拥有的权限。 在对目标资源发出调用时，必须了解应用授予的委托权限和应用程序权限与其有效权限之间的差别。
+
+- 对于委托的权限，应用的有效权限是（通过许可）授予应用的委托权限与当前登录用户的特权的最低特权交集。 应用的特权永远不会超过登录用户的特权。 在组织内部，可以通过策略或者一个或多个管理员角色的成员身份来确定登录用户的特权。 有关管理员角色的详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](../users-groups-roles/directory-assign-admin-roles.md)。
+  例如，假设为应用授予了 Microsoft Graph 中的 _User.ReadWrite.All_ 委托权限。 此权限在名义上会授予应用读取和更新组织中每个用户的个人资料的权限。 如果登录用户是全局管理员，则应用可以更新组织中每个用户的个人资料。 但是，如果登录用户不是充当管理员角色，则应用只能更新登录用户的个人资料。 它无法更新组织中其他用户的个人资料，因为该应用有权代表的用户没有这些特权。
+  
+- 对于应用程序权限，应用的有效权限是权限默示的完整特权级别。 例如，拥有 _User.ReadWrite.All_ 应用程序权限的应用可以更新组织中每个用户的个人资料。 
 
 ## <a name="openid-connect-scopes"></a>OpenID Connect 范围
 
@@ -69,7 +89,7 @@ OpenID Connect 的 v2.0 实现有一些明确定义但未应用到指定资源�
 
 ### <a name="profile"></a>profile
 
-`profile` 范围可与 `openid` 范围和任何其他范围一起使用。 它使应用可以访问大量关于用户的信息。 可访问的信息包括但不限于用户的名字、姓氏、首选用户名、对象 ID。 有关指定用户的 id_token 参数中可用配置文件声明的完整列表，请参阅 [v2.0 令牌参考](v2-id-and-access-tokens.md)。
+`profile` 范围可与 `openid` 范围和任何其他范围一起使用。 它使应用可以访问大量关于用户的信息。 可访问的信息包括但不限于用户的名字、姓氏、首选用户名、对象 ID。 有关指定用户的 id_token 参数中可用配置文件声明的完整列表，请参阅 [`id_tokens` 参考](id-tokens.md)。
 
 ### <a name="offlineaccess"></a>offline_access
 
@@ -78,19 +98,6 @@ OpenID Connect 的 v2.0 实现有一些明确定义但未应用到指定资源�
 如果应用未请求 `offline_access` 范围，则收不到 refresh_tokens。 这意味着，当在 [OAuth 2.0 授权代码流](active-directory-v2-protocols.md)中兑换 authorization_code 时，只从 `/token` 终结点接收 access_token。 访问令牌在短期内有效。 访问令牌的有效期通常为一小时。 到时，应用需要将用户重定向回到 `/authorize` 终结点以获取新的 authorization_code。 在此重定向期间，根据应用的类型，用户或许无需再次输入其凭据或重新同意权限。
 
 有关如何获取及使用刷新令牌的详细信息，请参阅 [v2.0 协议参考](active-directory-v2-protocols.md)。
-
-## <a name="accessing-v10-resources"></a>访问 v1.0 资源
-v2.0 应用程序可以请求 v1.0 应用程序（例如 PowerBI API `https://analysis.windows.net/powerbi/api` 或 Sharepoint API `https://{tenant}.sharepoint.com`）的令牌和同意。  若要执行此操作，可以在 `scope` 参数中引用应用 URI 和作用域字符串。  例如，`scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All` 将为应用程序请求 PowerBI `View all Datasets` 权限。 
-
-若要请求多个权限，请附加带空格或 `+` 的完整 URI， 例如 `scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All+https://analysis.windows.net/powerbi/api/Report.Read.All`。  这同时请求 `View all Datasets` 和 `View all Reports` 权限。  请注意，与所有 Azure AD 作用域和权限一样，应用程序一次只能对一个资源发出请求， 因此，请求 `scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All+https://api.skypeforbusiness.com/Conversations.Initiate`（它同时请求 PowerBI `View all Datasets` 权限和 Skype for Business `Initiate conversations` 权限）将由于请求对两个不同资源的权限而被拒绝。  
-
-### <a name="v10-resources-and-tenancy"></a>v1.0 资源和租赁
-v1.0 和 v2.0 Azure AD 协议都使用嵌入在 URI (`https://login.microsoftonline.com/{tenant}/oauth2/`) 中的 `{tenant}` 参数。  使用 v2.0 终结点访问 v1.0 组织资源时，无法使用 `common` 和 `consumers` 租户，因为这些资源只能通过组织 (Azure AD) 帐户进行访问。  因此，访问这些资源时，只能将租户 GUID 或 `organizations` 用作 `{tenant}` 参数。  
-
-如果应用程序尝试使用不正确的租户访问组织 v1.0 资源，则会返回类似于以下错误的错误。 
-
-`AADSTS90124: Resource 'https://analysis.windows.net/powerbi/api' (Microsoft.Azure.AnalysisServices) is not supported over the /common or /consumers endpoints. Please use the /organizations or tenant-specific endpoint.`
-
 
 ## <a name="requesting-individual-user-consent"></a>请求单个用户的同意
 
@@ -108,40 +115,51 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 &state=12345
 ```
 
-`scope` 参数是应用程序所请求的范围列表（以空格分隔）。 将范围值附加到资源的标识符（应用程序 ID URI）可指示范围。 在请求示例中，应用需要相应的权限来读取用户的邮箱和以用户身份发送邮件。
+`scope` 参数是应用程序所请求的委托权限列表（以空格分隔）。 将权限值附加到资源的标识符（应用程序 ID URI）可指示权限。 在请求示例中，应用需要相应的权限来读取用户的邮箱和以用户身份发送邮件。
 
-在用户输入其凭据之后，v2.0 终结点会检查是否有匹配的用户同意记录。 如果用户未曾同意所请求权限的任何一项，v2.0 终结点将请求用户授予请求的权限。
+在用户输入其凭据之后，v2.0 终结点会检查是否有匹配的用户同意记录。 如果用户未曾许可所请求权限的任何一项，并且管理员尚未代表整个组织许可这些权限，则 v2.0 终结点将请求用户授予请求的权限。
 
 ![工作帐户同意](./media/v2-permissions-and-consent/work_account_consent.png)
 
-当用户批准权限时，会记录同意，以便用户在后续帐户登录时无需重新同意。
+当用户批准权限请求时，会记录许可，使用户在后续登录到应用程序时无需再次许可。
 
 ## <a name="requesting-consent-for-an-entire-tenant"></a>请求整个租户的同意
 
-组织购买应用程序的许可证或订阅时，通常会为其员工完全预配应用程序。 在此过程中，管理员可以代表任何员工授予对该应用程序的同意。 如果管理员为整个租户授予许可，则组织的员工不会看到该应用程序的同意页。
+组织购买应用程序的许可证或订阅时，需要主动设置组织所有成员使用的应用程序。 在此过程中，管理员可以代表租户中的任何用户授予对该应用程序的许可。 如果管理员为整个租户授予许可，则组织的用户不会看到该应用程序的许可页。
 
-若要请求租户中所有用户的同意，应用可使用管理员同意终结点。
+若要为租户中的所有用户请求许可委托的权限，应用可以使用管理员许可终结点。
 
-## <a name="admin-restricted-scopes"></a>受管理员限制的范围
+此外，应用程序必须使用管理员许可终结点来请求应用程序权限。
 
-Microsoft 生态系统中的某些高特权权限可以设置为受管理员限制。 这些类型的范围的示例包括以下权限：
+## <a name="admin-restricted-permissions"></a>管理员限制的权限
 
-* 使用 `Directory.Read` 读取组织的目录数据
-* 使用 `Directory.ReadWrite` 将数据写入组织的目录
-* 使用 `Groups.Read.All` 读取组织目录中的安全组
+Microsoft 生态系统中的某些高特权权限可以设置为受管理员限制。 此类权限的示例包括：
+
+* 使用 `User.Read.All` 读取所有用户的完整个人资料
+* 使用 `Directory.ReadWrite.All` 将数据写入组织的目录
+* 使用 `Groups.Read.All` 读取组织目录中的所有组
 
 虽然使用者用户可以授予应用程序对此类数据的访问权限，但组织用户会受到限制，无法授予对同一敏感公司数据集的访问权限。 如果应用程序向组织用户请求访问以下权限之一，则用户会收到错误消息，显示他们未经授权，无法同意应用的权限。
 
 如果应用需要访问组织的这些受管理员限制的范围，同样应该使用管理员同意终结点直接向公司管理员请求相关权限，如下所述。
 
-管理员通过管理员同意终结点授予这些权限时，会代表租户中的所有用户授予同意。
+如果应用程序请求高特权的委托权限，而管理员通过管理员许可终结点授予这些权限，则为租户中的所有用户授予许可。
+
+如果应用程序请求应用程序权限，而管理员通过管理员许可终结点授予这些权限，则不会代表任何特定用户进行此授权， 而是直接为客户端应用程序授予权限。 这些类型的权限通常只由守护程序服务以及后台运行的其他非交互式应用程序使用。
 
 ## <a name="using-the-admin-consent-endpoint"></a>使用管理员同意终结点
 
-若遵循这些步骤，应用就可以收集租户中所有用户的权限，包括受管理员限制的范围。 若要查看实现步骤的代码示例，请参阅[受管理员限制的范围示例](https://github.com/Azure-Samples/active-directory-dotnet-admin-restricted-scopes-v2)。
+当公司管理员使用你的应用程序并定向到授权终结点时，Microsoft 标识平台将检测用户的角色，并询问他们是否要代表整个租户许可请求的权限。 但是，如果你想要主动请求管理员代表整个租户授予权限，则还可以使用一个专用的管理员许可终结点。 请求应用程序权限（不能使用授权终结点来请求）时，也必须使用此终结点。
+
+如果你遵循了这些步骤，则应用就能为租户中的所有用户请求权限，包括受管理员限制的范围。 这是一个高特权操作，只能根据方案的需要来执行。
+
+若要查看实现步骤的代码示例，请参阅[受管理员限制的范围示例](https://github.com/Azure-Samples/active-directory-dotnet-admin-restricted-scopes-v2)。
 
 ### <a name="request-the-permissions-in-the-app-registration-portal"></a>在应用注册门户中请求权限
 
+管理员许可不接受范围参数，因此，必须在应用程序的注册中以静态方式定义所请求的任何权限。 通常，最佳做法是确保为给定应用程序静态定义的权限是它动态/增量请求的权限的超集。
+
+配置应用程序的静态请求权限列表： 
 1. 在[应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)中，转到应用，或[创建一个应用](quickstart-v2-register-an-app.md)（如尚未创建）。
 2. 找到“Microsoft Graph 权限”部分并添加应用所需的权限。
 3. **保存**应用注册。
@@ -233,3 +251,7 @@ Content-Type: application/json
 可以在对资源的 HTTP 请求中使用生成的访问令牌。 它会向资源可靠地指示应用具有执行特定任务的适当权限。 
 
 有关 OAuth 2.0 协议以及如何获取访问令牌的详细信息，请参阅 [v2.0 终结点协议参考](active-directory-v2-protocols.md)。
+
+## <a name="troubleshooting"></a>故障排除
+
+如果你或应用程序的用户在许可过程中看到意外的错误，请参阅以下文章获取故障排除步骤：[对应用程序执行许可时发生意外错误](../manage-apps/application-sign-in-unexpected-user-consent-error.md)。

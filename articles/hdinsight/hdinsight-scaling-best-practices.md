@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: ashish
-ms.openlocfilehash: d554cdf5e89898874811ea113985fac4b332fac6
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 93eb6fb0da86909dfc880db2a9bb2331abe4418a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109925"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948107"
 ---
 # <a name="scale-hdinsight-clusters"></a>缩放 HDInsight 群集
 
@@ -28,11 +28,13 @@ HDInsight 提供弹性，可让你选择扩展和缩减群集中的工作节点�
     Set-AzureRmHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <NewSize>
     ```
     
-* 通过 [Azure CLI](hdinsight-administer-use-command-line.md) 缩放群集：
+* 通过 [Azure 经典 CLI](hdinsight-administer-use-command-line.md) 缩放群集：
 
     ```
     azure hdinsight cluster resize [options] <clusterName> <Target Instance Count>
     ```
+
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
     
 * 若要通过 [Azure 门户](https://portal.azure.com)缩放群集，请打开 HDInsight 群集的窗格，在左侧菜单中选择“缩放群集”，然后在“缩放群集”窗格中键入工作节点数并选择“保存”。
 

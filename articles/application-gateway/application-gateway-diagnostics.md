@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 6/20/2018
 ms.author: amitsriva
-ms.openlocfilehash: 256eac99feacc18a51e45c3f07cdceb7d687cacf
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 563194ea0b3e4bda2021c75c544d068f00d74ba7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293615"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963826"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>应用程序网关的后端运行状况、诊断日志和指标
 
@@ -58,7 +58,7 @@ ms.locfileid: "36293615"
 Get-AzureRmApplicationGatewayBackendHealth -Name ApplicationGateway1 -ResourceGroupName Contoso
 ```
 
-### <a name="view-back-end-health-through-azure-cli-20"></a>通过 Azure CLI 2.0 查看后端运行状况
+### <a name="view-back-end-health-through-azure-cli"></a>通过 Azure CLI 查看后端运行状况
 
 ```azurecli
 az network application-gateway show-backend-health --resource-group AdatumAppGatewayRG --name AdatumAppGateway
@@ -167,7 +167,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 只有在每个应用程序网关实例上启用了访问日志，才会生成此日志，如上述步骤所示。 数据存储在启用日志记录时指定的存储帐户中。 应用程序网关的每次访问均以 JSON 格式记录，如以下示例所示：
 
 
-|值  |说明  |
+|值  |Description  |
 |---------|---------|
 |instanceId     | 为请求服务的应用程序网关实例。        |
 |clientIP     | 请求的初始 IP。        |
@@ -211,7 +211,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 只有在每个应用程序网关实例上启用了性能日志，才会生成此日志，如上述步骤所示。 数据存储在启用日志记录时指定的存储帐户中。 每隔 1 分钟生成性能日志数据。 将记录以下数据：
 
 
-|值  |说明  |
+|值  |Description  |
 |---------|---------|
 |instanceId     |  正在为其生成性能数据的应用程序网关实例。 对于多实例应用程序网关，每个实例有一行性能数据。        |
 |healthyHostCount     | 后端池中运行正常的主机数。        |
@@ -248,7 +248,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 只有为每个应用程序网关启用了防火墙日志，才会生成此日志，如上述步骤所示。 此日志还需在应用程序网关上配置 Web 应用程序防火墙。 数据存储在启用日志记录时指定的存储帐户中。 将记录以下数据：
 
 
-|值  |说明  |
+|值  |Description  |
 |---------|---------|
 |instanceId     | 正在为其生成防火墙数据的应用程序网关实例。 对于多实例应用程序网关，每个实例有一行性能数据。         |
 |clientIp     |   请求的初始 IP。      |
@@ -311,6 +311,10 @@ Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.
 > 如果熟悉 Visual Studio 和更改 C# 中的常量和变量值的基本概念，则可以使用 GitHub 提供的[日志转换器工具](https://github.com/Azure-Samples/networking-dotnet-log-converter)。
 > 
 > 
+
+#### <a name="analyzing-access-logs-through-goaccess"></a>通过 GoAccess 分析访问日志
+
+我们发布了一个资源管理器模板，用于安装和运行应用程序网关访问日志的常用 [GoAccess](https://goaccess.io/) 日志分析器。 GoAccess 提供了宝贵的 HTTP 流量统计信息，例如唯一访问者、请求的文件、主机、操作系统、浏览器和 HTTP 状态代码等。 有关更多详细信息，请参阅 [GitHub 的资源管理器模板文件夹中的自述文件](https://aka.ms/appgwgoaccessreadme)。
 
 ## <a name="metrics"></a>度量值
 

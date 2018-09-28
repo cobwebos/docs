@@ -1,6 +1,6 @@
 ---
-title: 创建内部的基本负载均衡器 - Azure CLI 2.0 | Microsoft Docs
-description: 了解如何使用 Azure CLI 2.0 创建内部负载均衡器
+title: 创建内部基本负载均衡器 - Azure CLI | Microsoft Docs
+description: 了解如何使用 Azure CLI 创建内部负载均衡器
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -15,20 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: kumud
-ms.openlocfilehash: bd4dda835279a21509f77814f4d5f9e30e8a42c1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7e556d3900d257410050e37b714d2005675e185d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439192"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967704"
 ---
-# <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>使用 Azure CLI 2.0 创建内部负载均衡器以对 VM 进行负载均衡
+# <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>使用 Azure CLI 创建内部负载均衡器以对 VM 进行负载均衡
 
 本文介绍如何创建内部负载均衡器，以便对 VM 进行负载均衡。 为了测试负载均衡器，请部署两个运行 Ubuntu 服务器的虚拟机 (VM)，以便对 Web 应用进行负载均衡。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.28 版或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.28 版或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 09/27/2018
 ms.author: sethm
-ms.reviewer: jeffgo
-ms.openlocfilehash: bb4a34e7036c532ca1800c70347a4f2c55a33da2
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.reviewer: ''
+ms.openlocfilehash: 8e9d40451cd0d9c3a6505ee24ca02852d9d4c527
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221717"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423462"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>适用于 Azure Stack 的 Azure 市场项
 
@@ -143,6 +143,7 @@ Microsoft Azure Stack 支持以下 Azure Marketplace 虚拟机和解决方案模
 | ![Kafka](media/azure-stack-marketplace-azure-items/kafka.png) | [Kafka](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.kafka) | 强大的分布式发布-订阅消息传送系统。 | Bitnami |
 | ![Kafka 群集](media/azure-stack-marketplace-azure-items/kafka.png) | [Kafka 群集](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.kafka-cluster) | Apache Kafka 是一种发布-订阅式消息传送，已经重新构思为一种分布式提交日志。 此解决方案通过预配多个 Kafka 中转站和 Zookeeper 实例来改进 Kafka 群集的可靠性。 **此解决方案模板还需要 Debian 8 以及适用于 Linux 2.0 扩展的自定义脚本。** | Bitnami |
 | ![Kaspersky](media/azure-stack-marketplace-azure-items/kaspersky.png) | [Kaspersky 的混合云安全性](https://azuremarketplace.microsoft.com/marketplace/apps/kaspersky_lab.kaspersky_hybrid_cloud_security?tab=Overview) | Kaspersky 的混合云安全性启用无缝地协调和自适应网络安全生态系统。 | Kaspersky 实验室 |
+| ![Kubernetes](media/azure-stack-marketplace-azure-items/kubernetes.png) | [Kubernetes](azure-stack-solution-template-kubernetes-cluster-add.md) | 此解决方案部署为独立群集使用模板生成使用 ACS 引擎运行的 Kubernetes 群集。<br>**此解决方案模板还要求 Ubuntu Server 16.04 LTS 和自定义脚本 Linux 2.0。**| Microsoft |
 | ![LAMP](media/azure-stack-marketplace-azure-items/lamp.png) | [LAMP](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.lampstack) | 完全集成且已做好运行准备的开发环境。 | Bitnami |
 | ![LAPP](media/azure-stack-marketplace-azure-items/lapp.png) | [LAPP](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.lappstack) | 完整的 PHP、PostgreSQL 和 Apache 开发环境。 | Bitnami |
 | ![Let's Chat](media/azure-stack-marketplace-azure-items/letschat.png) | [Let's Chat](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.letschat) | 开源持久消息传送应用程序。 | Bitnami |
@@ -207,6 +208,7 @@ Microsoft Azure Stack 支持以下 Azure Marketplace 虚拟机和解决方案模
 | ![ResourceSpace](media/azure-stack-marketplace-azure-items/resourcespace.png) | [ResourceSpace](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.resourcespace) | 改进了协作的数字资产管理系统。 | Bitnami |
 | ![Roundcube](media/azure-stack-marketplace-azure-items/roundcube.png) | [Roundcube](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.roundcube) | 基于浏览器的 IMAP 客户端，包含 MIME 支持之类的功能。 | Bitnami |
 | ![Ruby](media/azure-stack-marketplace-azure-items/ruby.png) | [Ruby](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.rubystack) | 适用于 Ruby on Rails 的易用开发环境。 | Bitnami |
+| ![Service Fabric 群集](media/azure-stack-marketplace-azure-items/servicefrabric.png) | [Service Fabric 群集](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceFabricCluster?tab=Overview) | 此解决方案部署 Service Fabric 独立群集以在虚拟机规模集上运行。 <br>**此解决方案模板需要下载 Windows Server 2016 Datacenter**| Microsoft |
 | ![SEO Panel](media/azure-stack-marketplace-azure-items/seopanel.png) | [SEO Panel](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.seopanel) | 适用于跟踪多个网站的开源 SEO 管理应用程序。 | Bitnami |
 | ![Shopware](media/azure-stack-marketplace-azure-items/shopware.png) | [Shopware](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.shopware) | 开源电子商务平台。 | Bitnami |
 | ![Simple Machines Forum](media/azure-stack-marketplace-azure-items/simplemachinesforum.png) | [Simple Machines Forum](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.simplemachinesforum) | 简单的论坛软件，适用于生成自己的在线论坛。 | Bitnami |
@@ -241,6 +243,7 @@ Microsoft Azure Stack 支持以下 Azure Marketplace 虚拟机和解决方案模
 | ![KEMP LoadMaster 负载均衡器 ADC 内容交换机](media/azure-stack-marketplace-azure-items/kemp.png) | [KEMP LoadMaster 负载均衡器 ADC 内容交换机](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure) | 第 4-7 层应用程序传送控制器 (ADC) 负载均衡器、内容交换机和流量管理器。 | KEMP Technologies Inc. |
 | ![NRI mPLAT Suite - Multi-Cloud Conductor](media/azure-stack-marketplace-azure-items/nri.png) | [mPLAT Suite - Multi-Cloud Conductor](https://azuremarketplace.microsoft.com/marketplace/apps/nri.mplatmc2018-vm) | 单一虚拟管理平台，用于监视、配置、预配、自动化和控制任何工作负荷或云。 | NRI |
 | ![NooBaa Hybrid AWS S3 compatible - Community Edition](media/azure-stack-marketplace-azure-items/noobaa.png) | [NooBaa Hybrid AWS S3 compatible - Community Edition](https://azuremarketplace.microsoft.com/marketplace/apps/noobaa.noobaa-hybrid-s3-archive-05) | 兼容 S3 的存储服务，涵盖公用的和本地的容量资源。 | NooBaa |
+| ![Multipoint，零 NetFoundry 网关信任 Azure Stack 连接](media/azure-stack-marketplace-azure-items/netfoundry.png) | [Multipoint，零 NetFoundry 网关信任 Azure Stack 连接](https://azuremarketplace.microsoft.com/marketplace/apps/tata_communications.netfoundry_cloud_gateway) | Azure Stack 和任何位置通过任何网络连接，通过行业领先零信任安全，5 倍的吞吐量的 VPN 和无限多个并发用户之间的纯软件、 多点连接。 | NetFoundry |
 | ![Palo Alto VM 系列下一代防火墙](media/azure-stack-marketplace-azure-items/paloalto.png) | [Palo Alto VM 系列下一代防火墙](https://azuremarketplace.microsoft.com/marketplace/apps/paloaltonetworks.vmseries-ngfw) | VM 系列下一代防火墙可以让客户安全地将其应用程序和数据迁移到 Azure Stack，使用应用程序允许列表和威胁防范策略，使客户能够防范已知的和未知的威胁。 **此映像需要模板来部署；请参阅此[文章](https://www.paloaltonetworks.com/documentation/81/virtualization/virtualization/set-up-the-vm-series-firewall-on-azure/deploy-the-vm-series-firewalls-on-azure-stack)以获取重要信息。**| Palo Alto Networks, Inc. |
 | ![PT 应用程序防火墙](media/azure-stack-marketplace-azure-items/pt.png) | [PT 应用程序防火墙](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.ptaf) | PT 应用程序防火墙检测已知的和未知的漏洞，防范对 Web 应用的攻击。 **下载两种 PT 市场项。** | Positive Technologies |
 | ![Puppet Enterprise](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | 使用 Puppet Enterprise 可以实现 Azure Stack 基础结构整个生命周期的自动化。 **下载两种 Puppet 市场项。** | Puppet |

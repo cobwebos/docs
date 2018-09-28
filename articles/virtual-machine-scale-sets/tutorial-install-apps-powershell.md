@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4f162dcf58316e6d9f39b71be37abf5626e93c75
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: b74e001a0430adc45d06776f2c2f5383acae5856
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38295818"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960016"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-azure-powershell"></a>教程：使用 Azure PowerShell 在虚拟机规模集中安装应用程序
 若要在规模集中的虚拟机 (VM) 实例上运行应用程序，首先需要安装应用程序组件和所需文件。 前一篇教程介绍了如何创建自定义 VM 映像并使用它来部署 VM 实例。 使用此自定义映像可以手动安装和配置应用程序。 也可以在部署每个 VM 实例之后，将应用程序自动安装到规模集，或者更新已在规模集中运行的应用程序。 本教程介绍如何执行下列操作：
@@ -41,7 +41,7 @@ ms.locfileid: "38295818"
 ## <a name="what-is-the-azure-custom-script-extension"></a>什么是 Azure 自定义脚本扩展？
 自定义脚本扩展在 Azure VM 上下载和执行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或 GitHub 下载脚本，或者在扩展运行时将脚本提供给 Azure 门户。
 
-自定义脚本扩展与 Azure 资源管理器模板集成，也可以与 Azure CLI 2.0、Azure PowerShell、Azure 门户或 REST API 配合使用。 有关详细信息，请参阅[自定义脚本扩展概述](../virtual-machines/windows/extensions-customscript.md)。
+自定义脚本扩展与 Azure 资源管理器模板集成，也可以与 Azure CLI、Azure PowerShell、Azure 门户或 REST API 配合使用。 有关详细信息，请参阅[自定义脚本扩展概述](../virtual-machines/windows/extensions-customscript.md)。
 
 若要查看自定义脚本扩展的运行方式，请创建一个可以安装 IIS Web 服务器并输出规模集 VM 实例主机名的规模集。 自定义脚本扩展定义从 GitHub 下载示例脚本，安装所需的包，然后将 VM 实例主机名写入一个基本的 HTML 页面。
 

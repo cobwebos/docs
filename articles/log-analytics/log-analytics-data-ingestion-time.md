@@ -11,23 +11,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/10/2018
+ms.date: 09/14/2018
 ms.author: bwren
-ms.openlocfilehash: 0e513cc4f6a7d5d030ded807870de9eb0fdc0ed8
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: f40c8ed7eb6bfae958b3b57c4b7d525963ab9741
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38973179"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46955231"
 ---
 # <a name="data-ingestion-time-in-log-analytics"></a>Log Analytics 中的数据引入时间
-Azure Log Analytics 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 关于数据收集后需要多长时间才能在 Log Analytics 中使用，大家通常存有疑问。 本文将对影响此延迟的不同因素进行说明。
+Azure Log Analytics 是 Azure Monitor 中的一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 关于数据收集后需要多长时间才能在 Log Analytics 中使用，大家通常存有疑问。 本文将对影响此延迟的不同因素进行说明。
 
 ## <a name="typical-latency"></a>典型延迟
-延迟是指在受监视系统上创建数据的时间以及可在 Log Analytics 中使用该数据进行分析的时间。 将数据引入 Log Analytics 的典型延迟时间为 3 到 10 分钟，可在 7 分钟内引入 95% 的数据。 任何特定数据的特定延迟将根据下面介绍的各种因素而变化。
+延迟是指在受监视系统上创建数据的时间以及可在 Log Analytics 中使用该数据进行分析的时间。 将数据引入 Log Analytics 的典型延迟时间为 2 到 5 分钟。 任何特定数据的特定延迟将根据下面介绍的各种因素而变化。
 
-## <a name="sla-for-log-analytics"></a>Log Analytics 的 SLA
-[Log Analytics 服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/)是一项有法律约束力的协议，用于定义在服务未达到目标的情况下，Microsoft 应于何时向客户退款。 这并不是基于系统的典型性能，而是基于可能会导致发生灾难性状况的最糟糕情况。
 
 ## <a name="factors-affecting-latency"></a>影响延迟的因素
 特定数据集的总引入时间可以细分为以下几个高级别区域。 
@@ -60,7 +58,7 @@ Azure Log Analytics 是一种大规模数据服务，每月为成千上万的客
 请参阅各解决方案的文档，确定其收集频率。
 
 ### <a name="pipeline-process-time"></a>管道处理时间
-将日志记录引入到 Log Analytics 管道后，会将其写入临时存储，以确保租户隔离并确保数据不会丢失。 此过程通常会花费 5-15 秒的时间。 一些管理解决方案实施了更复杂的算法来聚合数据，并在数据流入时获得见解。 例如，网络性能监视器以 3 分钟的时间间隔聚合传入数据，有效地增加了 3 分钟的延迟。
+将日志记录引入到 Log Analytics 管道后，会将其写入临时存储，以确保租户隔离并确保数据不会丢失。 此过程通常会花费 5-15 秒的时间。 一些管理解决方案实施了更复杂的算法来聚合数据，并在数据流入时获得见解。 例如，网络性能监视器以 3 分钟的时间间隔聚合传入数据，有效地增加了 3 分钟的延迟。 处理自定义日志是另一个增加延迟的过程。 在某些情况下，此过程可能会为代理从文件收集的日志增加几分钟延迟。
 
 ### <a name="new-custom-data-types-provisioning"></a>新的自定义数据类型预配
 从[自定义日志](../log-analytics/log-analytics-data-sources-custom-logs.md)或[数据收集器 API ](../log-analytics/log-analytics-data-collector-api.md)创建新的自定义数据类型时，系统会创建专用存储容器。 这是一次性开销，仅在此数据类型第一次出现时支付。

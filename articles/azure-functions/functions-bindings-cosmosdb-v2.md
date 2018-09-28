@@ -1,5 +1,5 @@
 ---
-title: 适用于 Functions 2.x（预览版）的 Azure Cosmos DB 绑定
+title: 适用于 Functions 2.x 的 Azure Cosmos DB 绑定
 description: 了解如何在 Azure Functions 中使用 Azure Cosmos DB 触发器和绑定。
 services: functions
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: ea1403ed8afe6e84a3118d891e8c2d34b390d158
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: d39c27614fd4d534db36df1af61b2d419493c4d3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093424"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953463"
 ---
-# <a name="azure-cosmos-db-bindings-for-azure-functions-2x-preview"></a>适用于 Azure Functions 2.x（预览版）的 Azure Cosmos DB 绑定
+# <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>适用于 Azure Functions 2.x 的 Azure Cosmos DB 绑定
 
 > [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
 > * [版本 1 - 正式版](functions-bindings-cosmosdb.md)
@@ -27,7 +27,7 @@ ms.locfileid: "44093424"
 本文介绍如何在 Azure Functions 2.x 中使用 [Azure Cosmos DB](..\cosmos-db\serverless-computing-database.md) 绑定。 Azure Functions 支持 Azure Cosmos DB 的触发器、输入和输出绑定。
 
 > [!NOTE]
-> 本文适用于 [Azure Functions 2.x 版](functions-versions.md)（预览版）。  若要了解如何在 Functions 1.x 中使用这些绑定，请参阅[适用于 Azure Functions 1.x 的 Azure Cosmos DB 绑定](functions-bindings-cosmosdb.md)。
+> 本文适用于 [Azure Functions 2.x](functions-versions.md)。  若要了解如何在 Functions 1.x 中使用这些绑定，请参阅[适用于 Azure Functions 1.x 的 Azure Cosmos DB 绑定](functions-bindings-cosmosdb.md)。
 >
 > 此绑定最初名为 DocumentDB。 在 Functions 2.x 版中，触发器、绑定和包均称为 Cosmos DB。
 

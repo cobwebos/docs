@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e8005da056c08b21bf0b91dc71b3dafac281de1f
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: c0c215c4c599bbd5551891cdf6f999719983d31e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40237568"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060333"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>有关 Azure IaaS VM 磁盘以及托管和非托管高级磁盘的常见问题解答
 
@@ -101,7 +101,7 @@ ms.locfileid: "40237568"
 
 是的，非托管磁盘和托管磁盘均受支持。 我们建议你对新的工作负荷使用托管磁盘，并将当前的工作负荷迁移到托管磁盘。
 
-如果创建 128 GB 磁盘，然后将大小增加到 130 GB，是否会针对下一磁盘大小 (256 GB) 进行收费？
+**如果创建 128 GB 磁盘，然后将该大小增加到 130 GiB，是否会针对下一磁盘大小 (256 GiB) 进行收费？**
 
 是的。
 
@@ -137,10 +137,10 @@ Azure 托管磁盘当前仅支持本地冗余存储托管磁盘。
 
 对于托管磁盘，无法对其进行重命名。 但是，可以对非托管磁盘进行重命名，只要它当前未附加到 VHD 或 VM。
 
-## <a name="standard-ssd-disks-preview"></a>标准 SSD 盘（预览）
+## <a name="standard-ssd-disks"></a>标准 SSD 盘
 
 Azure 标准 SSD 盘是什么？
-标准 SSD 盘是受固态介质支持的标准磁盘，经过优化而作为在较低 IOPS 级别需要一致性能的工作负载的高性价比存储。 在预览期间，标准 SSD 盘已在有限数量的区域内推出，其具有有限的可管理性（通过资源管理器模板提供）。
+标准 SSD 盘是受固态介质支持的标准磁盘，经过优化而作为在较低 IOPS 级别需要一致性能的工作负载的高性价比存储。
 
 <a id="standard-ssds-azure-regions"></a>**当前支持标准 SSD 盘的区域有哪些？**
 所有 Azure 区域现在都支持标准 SSD 盘。
@@ -275,7 +275,7 @@ Microsoft 管理加密密钥。
 
 可从磁盘缓存获取的 IOPS 和吞吐量限制是多少？
 
-DS 系列的缓存和本地 SSD 合并限制是每个核心 4,000 IOPS，以及每个核心每秒 33 MB。 GS 系列提供每个核心 5,000 IOPS，以及每个核心每秒 50 MB。
+DS 系列的缓存和本地 SSD 合并限制是每个核心 4,000 IOPS，以及每个核心每秒 33 MiB。 GS 系列提供每个核心 5,000 IOPS，每个核心每秒 50 MiB。
 
 托管磁盘 VM 是否支持本地 SSD？
 
@@ -287,38 +287,60 @@ DS 系列的缓存和本地 SSD 合并限制是每个核心 4,000 IOPS，以及�
 
 ## <a name="new-disk-sizes-managed-and-unmanaged"></a>新磁盘大小：托管和非托管
 
-操作系统和数据磁盘支持的最大磁盘大小是多少？
+**操作系统和数据磁盘支持的最大托管磁盘大小是多少？**
 
-Azure 支持的操作系统磁盘的分区类型是主启动记录 (MBR)。 MBR 格式支持的磁盘最大大小为 2 TB。 Azure 支持的操作系统磁盘的最大大小为 2 TB。 Azure 支持的数据磁盘最大大小为 4 TB。 
+Azure 支持的操作系统磁盘的分区类型是主启动记录 (MBR)。 MBR 格式支持的磁盘最大大小为 2 TiB。 Azure 支持的操作系统磁盘的最大大小为 2 TiB。 Azure 支持的托管数据磁盘最大大小为 32 TiB。 大于 4 TiB 的托管磁盘大小处于预览状态。 有关详细信息，请参阅我们的[博客文章](http://aka.ms/azure-large-disk-32TB-preview-blog)。
+
+**操作系统和数据磁盘支持的最大非托管磁盘大小是多少？**
+
+Azure 支持的操作系统磁盘的分区类型是主启动记录 (MBR)。 MBR 格式支持的磁盘最大大小为 2 TiB。 Azure 支持的操作系统非托管磁盘的最大大小为 2 TiB。 Azure 支持的非托管数据磁盘最大大小为 4 TiB。
 
 支持的最大页 blob 大小是多少？
 
-Azure 支持的最大页 blob 大小是 8 TB (8,191 GB)。 附加到 VM 作为数据或操作系统磁盘时，最大页面博客大小为 4 TB (4,095 GB)。
+Azure 支持的最大页 blob 大小是 8 TiB (8,191 GiB)。 附加到 VM 作为数据或操作系统磁盘时，最大页面博客大小为 4 TiB (4,095 GiB)。
 
-是否需要使用新版本的 Azure 工具来创建、附加、上传大于 1 TB 的磁盘并重设其大小？
+**是否需要使用新版本的 Azure 工具来创建、附加、上传大于 1 TiB 的磁盘并重设其大小？**
 
-无需升级现有 Azure 工具即可创建、附加大于 1 TB 的磁盘或重设其大小。 若要直接从本地将 VHD 文件作为页 blob 或非托管磁盘上传到到 Azure，需要使用最新工具集：
+无需升级现有 Azure 工具即可创建、附加大于 1 TiB 的磁盘或重设其大小。 若要直接从本地将 VHD 文件作为页 blob 或非托管磁盘上传到到 Azure，需要使用下方列出的最新工具集。 我们仅支持最大大小为 8 TiB 的 VHD 上传。
 
 |Azure 工具      | 支持的版本                                |
 |-----------------|---------------------------------------------------|
 |Azure PowerShell | 版本号 4.1.0：2017 年 6 月版本或更高版本|
 |Azure CLI v1     | 版本号 0.10.13：2017 年 5 月版本或更高版本|
+|Azure CLI v2     | 版本号 2.0.12：2017 年 7 月版本或更高版本|
 |AzCopy           | 版本号 6.1.0：2017 年 6 月版本或更高版本|
-
-即将提供 Azure CLI v2 和 Azure 存储资源管理器支持。 
 
 非托管磁盘或页 blob 是否支持 P4 和 P6 磁盘大小？
 
-不可以。 仅托管磁盘支持 P4 (32 GB) 和 P6 (64 GB) 磁盘大小。 即将提供非托管磁盘和页 blob 支持。
+非托管磁盘和页 blob 不支持 P4 (32 GiB) 和 P6 (64 GiB) 磁盘大小作为默认磁盘层。 需要显式[设置 Blob 层](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier)，将其设为 P4 和 P6，以便存储映射到这些层的磁盘。 如果使用少于 32 GiB 或介于 32 GiB 到 64 GiB 之间的磁盘大小或内容长度部署非托管磁盘或页 blob 而不设置 Blob 层，则将继续停留在 P10（500 IOPS 和 100 MiB/秒）和映射的定价层。
 
-如果在支持较小磁盘（约 2017 年 6 月 15 日）之前创建了小于 64 GB 的高级托管磁盘，将如何计费？
+**如果在支持较小磁盘（约 2017 年 6 月 15 日）之前创建了小于 64 GiB 的高级托管磁盘，将如何计费？**
 
-根据 P10 定价层继续对小于 64 GB 的现有高级小磁盘计费。 
+根据 P10 定价层继续对小于 64 GiB 的现有高级小磁盘计费。
 
-如何将小于 64 GB 的高级小磁盘的磁盘层级从 P10 切换到 P4 或 P6？
+**如何将小于 64 GiB 的高级小磁盘的磁盘层级从 P10 切换到 P4 或 P6？**
 
-你可以拍摄小磁盘的快照，然后创建磁盘以自动根据预配大小将定价层切换到 P4 或 P6。 
+你可以拍摄小磁盘的快照，然后创建磁盘以自动根据预配大小将定价层切换到 P4 或 P6。
 
+**是否可以将托管磁盘的大小从小于 4 TiB 调整到最新引入的磁盘大小（最大大小为 32 TiB）？**
+
+新的托管磁盘大小 8 TiB、16 TiB 和 32 TiB 目前处于预览状态。 我们尚不支持将现有磁盘大小调整到新磁盘大小。
+
+**Azure 备份和 Azure Site Recovery 服务支持的最大磁盘大小是多少？**
+
+Azure 备份和 Azure Site Recovery 服务支持的最大磁盘大小为 4 TiB。
+
+**标准 SSD 和标准 HDD 磁盘大磁盘大小 (>4TiB) 用于实现优化磁盘 IOPS 和带宽建议的 VM 大小是多少？**
+
+要实现标准 SSD 和标准 HDD 磁盘大磁盘大小 (>4TB) 的磁盘吞吐量超过 500 IOPS 和 60 MiB/秒，应使用以下一种 VM 大小来优化性能：B 系列、DSv2 系列、Dsv3 系列、ESv3 系列、Fs 系列、Fsv2 系列、M 系列、GS 系列、NCv2 系列、NCv3 系列或 Ls 系列 VM。
+
+**哪些区域中支持大于 4 TiB 的托管磁盘大小？**
+
+在预览期间，目前仅美国中西部支持该托管磁盘大小。
+
+**我们是否支持在较新的磁盘大小上启用主机缓存？**
+
+我们支持在小于 4TiB 的磁盘大小上启用只读和读/写主机缓存。 对于超过 4 TiB 的磁盘大小，除提供“无”选项外，我们并不支持设置缓存选项。 建议利用较小磁盘大小的缓存，以便通过缓存到 VM 的数据观察到明显的性能提升。
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>如果未在此处找到相关问题怎么办？
 

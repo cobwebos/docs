@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: aa031b87df51bd9f7dec40a6c3e56023e2d82d96
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 55274b08695bacf0b63b937f9e8e21c8565f1715
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579490"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967381"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录 
 Azure SQL 数据库可发出指标和诊断日志，以便更轻松地进行监视。 可配置 SQL 数据库，将资源使用情况、辅助角色和会话以及连接性存储到以下 Azure 资源之一：
 
 * **Azure 存储**：用于低价存档大量遥测数据。
 * **Azure 事件中心**：用于将 SQL 数据库遥测与自定义监视解决方案或热门管道集成。
-* **Azure Log Analytics**：用于具有报告、警报和缓解功能的立即可用的监视解决方案。 这是 [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) 的一项功能
+* **Azure Log Analytics**：用于具有报告、警报和缓解功能的立即可用的监视解决方案。 Azure Log Analytics 是 [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) 的一项功能
 
     ![体系结构](./media/sql-database-metrics-diag-logging/architecture.png)
 

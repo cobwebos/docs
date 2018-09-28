@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure CLI 1.0 创建完整的 Linux 环境 | Microsoft 文档
-description: 使用 Azure CLI 1.0 从头开始创建存储、Linux VM、虚拟网络和子网、负载均衡器、NIC、公共 IP 和网络安全组。
+title: 使用 Azure 经典 CLI 创建完整的 Linux 环境 | Microsoft Docs
+description: 使用 Azure 经典 CLI 从头开始创建存储、Linux VM、虚拟网络和子网、负载均衡器、NIC、公共 IP 和网络安全组。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: cynthn
-ms.openlocfilehash: 1fb5542af77fbb584effca24a74b9e233359cf0e
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 560d1c55b159ed817c0b080171862c28ebe73f3e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932319"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952794"
 ---
-# <a name="create-a-complete-linux-environment-with-the-azure-cli-10"></a>使用 Azure CLI 1.0 创建完整的 Linux 环境
+# <a name="create-a-complete-linux-environment-with-the-azure-classic-cli"></a>使用 Azure 经典 CLI 创建完整的 Linux 环境
 在本文中，我们将构建一个简单网络，其中包含一个负载均衡器，以及一对可用于开发和简单计算的 VM。 将以逐条命令的方式完成整个过程，直到创建两个可以从 Internet 上的任何位置连接的有效且安全的 Linux VM。 然后，便可以继续构建更复杂的网络和环境。
 
 在此过程中，你将了解 Resource Manager 部署模型提供的依赖性层次结构及其提供的功能。 明白系统是如何构建的以后，即可使用 [Azure 资源管理器模板](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)更快速地重新构建系统。 此外，在了解环境的部件如何彼此配合运行后，可以更轻松地创建模板来将它们自动化。
@@ -33,20 +33,20 @@ ms.locfileid: "37932319"
 * 端口 80 上有一个带负载均衡规则的负载均衡器。
 * 网络安全组 (NSG) 规则，阻止 VM 接受不需要的流量。
 
-若要创建此自定义环境，需要在 Resource Manager 模式 (`azure config mode arm`) 下安装最新的 [Azure CLI 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 此外，还需要一个 JSON 分析工具。 本示例使用 [jq](https://stedolan.github.io/jq/)。
+若要创建此自定义环境，需要在资源管理器模式 (`azure config mode arm`) 下安装最新的 [Azure 经典 CLI](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 此外，还需要一个 JSON 分析工具。 本示例使用 [jq](https://stedolan.github.io/jq/)。
 
 
 ## <a name="cli-versions-to-complete-the-task"></a>用于完成任务的 CLI 版本
 可以使用以下 CLI 版本之一完成任务：
 
-- [Azure CLI 1.0](#quick-commands) – 用于经典部署模型和资源管理部署模型（本文）的 CLI
-- [Azure CLI 2.0](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - 适用于资源管理部署模型的下一代 CLI
+- [Azure 经典 CLI](#quick-commands) – 用于经典部署模型和资源管理部署模型（本文）的 CLI
+- [Azure CLI](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - 适用于资源管理部署模型的下一代 CLI
 
 
 ## <a name="quick-commands"></a>快速命令
 如果需要快速完成任务，请参阅以下部分，其中详细说明了用于将 VM 上载到 Azure 的基本命令。 本文档的余下部分（从[此处](#detailed-walkthrough)开始）提供了每个步骤的更详细信息和上下文。
 
-确保已登录 [Azure CLI 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 并使用 Resource Manager 模式：
+确保已登录 [Azure 经典 CLI](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 并使用资源管理器模式：
 
 ```azurecli
 azure config mode arm
@@ -270,7 +270,7 @@ azure group export myResourceGroup
 ## <a name="detailed-walkthrough"></a>详细演练
 下面的详细步骤说明构建环境时每条命令的作用。 了解这些概念有助于构建自己的自定义开发或生产环境。
 
-确保已登录 [Azure CLI 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 并使用 Resource Manager 模式：
+确保已登录 [Azure 经典 CLI](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 并使用资源管理器模式：
 
 ```azurecli
 azure config mode arm

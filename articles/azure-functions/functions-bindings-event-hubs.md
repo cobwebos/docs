@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/08/2017
 ms.author: glenga
-ms.openlocfilehash: ef7eae503eaf8194b287b9f080d8f635d9b3a485
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 2c78e1d39227153dd65f145512fab4769b09e5c0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094776"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966541"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Functions 的 Azure 事件中心绑定
 
@@ -129,14 +129,15 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 以下示例演示 *function.json* 文件中的一个事件中心触发器绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 该函数记录事件中心触发器的消息正文。
 
-以下示例显示了 *function.json* 文件中的事件中心绑定数据。 第一个示例适用于 Functions 1.x，第二个示例适用于 Functions 2.x。 
+以下示例显示了 *function.json* 文件中的事件中心绑定数据。 第一个示例适用于 Functions 2.x，第二个示例适用于 Functions 1.x。 
+
 
 ```json
 {
   "type": "eventHubTrigger",
   "name": "myEventHubMessage",
   "direction": "in",
-  "path": "MyEventHub",
+  "eventHubName": "MyEventHub",
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
@@ -145,7 +146,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
   "type": "eventHubTrigger",
   "name": "myEventHubMessage",
   "direction": "in",
-  "eventHubName": "MyEventHub",
+  "path": "MyEventHub",
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
@@ -203,14 +204,15 @@ public static void Run(string[] eventHubMessages, TraceWriter log)
 
 以下示例演示 *function.json* 文件中的一个事件中心触发器绑定以及使用该绑定的 [F# 函数](functions-reference-fsharp.md)。 该函数记录事件中心触发器的消息正文。
 
-以下示例显示了 *function.json* 文件中的事件中心绑定数据。 第一个示例适用于 Functions 1.x，第二个示例适用于 Functions 2.x。 
+以下示例显示了 *function.json* 文件中的事件中心绑定数据。 第一个示例适用于 Functions 2.x，第二个示例适用于 Functions 1.x。 
+
 
 ```json
 {
   "type": "eventHubTrigger",
   "name": "myEventHubMessage",
   "direction": "in",
-  "path": "MyEventHub",
+  "eventHubName": "MyEventHub",
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
@@ -219,7 +221,7 @@ public static void Run(string[] eventHubMessages, TraceWriter log)
   "type": "eventHubTrigger",
   "name": "myEventHubMessage",
   "direction": "in",
-  "eventHubName": "MyEventHub",
+  "path": "MyEventHub",
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
@@ -235,14 +237,15 @@ let Run(myEventHubMessage: string, log: TraceWriter) =
 
 以下示例演示 *function.json* 文件中的一个事件中心触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 此函数将读取[事件元数据](#trigger---event-metadata)并记录消息。
 
-以下示例显示了 *function.json* 文件中的事件中心绑定数据。 第一个示例适用于 Functions 1.x，第二个示例适用于 Functions 2.x。 
+以下示例显示了 *function.json* 文件中的事件中心绑定数据。 第一个示例适用于 Functions 2.x，第二个示例适用于 Functions 1.x。 
+
 
 ```json
 {
   "type": "eventHubTrigger",
   "name": "myEventHubMessage",
   "direction": "in",
-  "path": "MyEventHub",
+  "eventHubName": "MyEventHub",
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
@@ -251,7 +254,7 @@ let Run(myEventHubMessage: string, log: TraceWriter) =
   "type": "eventHubTrigger",
   "name": "myEventHubMessage",
   "direction": "in",
-  "eventHubName": "MyEventHub",
+  "path": "MyEventHub",
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
@@ -269,14 +272,14 @@ module.exports = function (context, eventHubMessage) {
 };
 ```
 
-若要批量接收事件，请将 function.json 文件中的 `cardinality` 设为 `many`，如以下示例所示。 第一个示例适用于 Functions 1.x，第二个示例适用于 Functions 2.x。 
+若要批量接收事件，请将 function.json 文件中的 `cardinality` 设为 `many`，如以下示例所示。 第一个示例适用于 Functions 2.x，第二个示例适用于 Functions 1.x。 
 
 ```json
 {
   "type": "eventHubTrigger",
   "name": "eventHubMessages",
   "direction": "in",
-  "path": "MyEventHub",
+  "eventHubName": "MyEventHub",
   "cardinality": "many",
   "connection": "myEventHubReadConnectionAppSetting"
 }
@@ -286,7 +289,7 @@ module.exports = function (context, eventHubMessage) {
   "type": "eventHubTrigger",
   "name": "eventHubMessages",
   "direction": "in",
-  "eventHubName": "MyEventHub",
+  "path": "MyEventHub",
   "cardinality": "many",
   "connection": "myEventHubReadConnectionAppSetting"
 }
@@ -426,13 +429,13 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, Trac
 
 以下示例演示 *function.json* 文件中的一个事件中心触发器绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 该函数将消息写入事件中心。
 
-以下示例显示了 *function.json* 文件中的事件中心绑定数据。 第一个示例适用于 Functions 1.x，第二个示例适用于 Functions 2.x。 
+以下示例显示了 *function.json* 文件中的事件中心绑定数据。 第一个示例适用于 Functions 2.x，第二个示例适用于 Functions 1.x。 
 
 ```json
 {
     "type": "eventHub",
     "name": "outputEventHubMessage",
-    "path": "myeventhub",
+    "eventHubName": "myeventhub",
     "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }
@@ -441,7 +444,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, Trac
 {
     "type": "eventHub",
     "name": "outputEventHubMessage",
-    "eventHubName": "myeventhub",
+    "path": "myeventhub",
     "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }
@@ -476,13 +479,13 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
 
 以下示例演示 *function.json* 文件中的一个事件中心触发器绑定以及使用该绑定的 [F# 函数](functions-reference-fsharp.md)。 该函数将消息写入事件中心。
 
-以下示例显示了 *function.json* 文件中的事件中心绑定数据。 第一个示例适用于 Functions 1.x，第二个示例适用于 Functions 2.x。 
+以下示例显示了 *function.json* 文件中的事件中心绑定数据。 第一个示例适用于 Functions 2.x，第二个示例适用于 Functions 1.x。 
 
 ```json
 {
     "type": "eventHub",
     "name": "outputEventHubMessage",
-    "path": "myeventhub",
+    "eventHubName": "myeventhub",
     "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }
@@ -491,7 +494,7 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
 {
     "type": "eventHub",
     "name": "outputEventHubMessage",
-    "eventHubName": "myeventhub",
+    "path": "myeventhub",
     "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }
@@ -510,13 +513,13 @@ let Run(myTimer: TimerInfo, outputEventHubMessage: byref<string>, log: TraceWrit
 
 以下示例演示 *function.json* 文件中的一个事件中心触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数将消息写入事件中心。
 
-以下示例显示了 *function.json* 文件中的事件中心绑定数据。 第一个示例适用于 Functions 1.x，第二个示例适用于 Functions 2.x。 
+以下示例显示了 *function.json* 文件中的事件中心绑定数据。 第一个示例适用于 Functions 2.x，第二个示例适用于 Functions 1.x。 
 
 ```json
 {
     "type": "eventHub",
     "name": "outputEventHubMessage",
-    "path": "myeventhub",
+    "eventHubName": "myeventhub",
     "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }
@@ -525,7 +528,7 @@ let Run(myTimer: TimerInfo, outputEventHubMessage: byref<string>, log: TraceWrit
 {
     "type": "eventHub",
     "name": "outputEventHubMessage",
-    "eventHubName": "myeventhub",
+    "path": "myeventhub",
     "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }

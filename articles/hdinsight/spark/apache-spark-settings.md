@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/26/2018
-ms.openlocfilehash: 5678cc17cde833c02c21090a7b5f7b70c01eec9e
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 926ce58872b06b41a0c7942b7090dcb4d5c8df03
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045307"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956483"
 ---
 # <a name="configure-spark-settings"></a>配置 Spark 设置
 
@@ -37,7 +37,7 @@ HDInsight 群集中节点的 VM 数目和 VM 大小也可能影响 Spark 配置�
 Spark 2.x 的运行性能比 Spark 1.x 要好得多。 Spark 2.x 包含大量的性能优化功能，例如 Tungsten、Catalyst Query Optimization，等等。  
 
 > [!NOTE]
-> HDInsight 服务中的默认 Apache Spark 版本可随时更改，恕不另行通知。 如果你依赖某个版本，Microsoft 建议在使用 .NET SDK/Azure PowerShell 和 Azure CLI 创建群集时指定该特定版本。
+> HDInsight 服务中的默认 Apache Spark 版本可随时更改，恕不另行通知。 如果你依赖某个版本，Microsoft 建议在使用 .NET SDK、Azure PowerShell 和 Azure 经典 CLI 创建群集时指定该特定版本。
 
 Apache Spark 有三个系统配置位置：
 

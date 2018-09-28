@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: sngun
-ms.openlocfilehash: acc327bd9fa6828a65243b6d0ad0c6da4b98f48d
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 68eb567235897641d5d4027160f62c5aa6e7e4f9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857093"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963383"
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Azure Cosmos DB 诊断日志记录
 
@@ -29,9 +29,9 @@ ms.locfileid: "37857093"
 
 ![不同种类的 Azure 日志](./media/logging/azurelogging.png)
 
-在上图中，**计算资源**表示可以访问其 Microsoft 来宾 OS 的 Azure 资源。 例如，Azure 虚拟机、虚拟机规模集、Azure 容器服务等都视为计算资源。 计算资源生成活动日志、诊断日志和应用程序日志。 要了解详细信息，请参阅文章 [Azure 监视：计算资源](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#azure-monitor-sources---compute-subset)。
+在上图中，**计算资源**表示可以访问其 Microsoft 来宾 OS 的 Azure 资源。 例如，Azure 虚拟机、虚拟机规模集、Azure 容器服务等都视为计算资源。 计算资源生成活动日志、诊断日志和应用程序日志。 若要了解详细信息，请参阅 [Azure 中的监视数据源](../monitoring/monitoring-data-sources.md#)一文。
 
-“非计算资源”是在其中无法访问基础 OS，但可直接使用资源的资源。 例如网络安全组、逻辑应用等。 Azure Cosmos DB 是一种非计算资源。 在活动日志中或者通过在门户中启用“诊断日志”选项可以查看非计算资源。 要了解详细信息，请参阅文章 [Azure 监视：非计算资源](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#azure-monitor-sources---everything-else)。
+“非计算资源”是在其中无法访问基础 OS，但可直接使用资源的资源。 例如网络安全组、逻辑应用等。 Azure Cosmos DB 是一种非计算资源。 在活动日志中或者通过在门户中启用“诊断日志”选项可以查看非计算资源。 若要了解详细信息，请参阅 [Azure Monitor 中的数据源](../monitoring/monitoring-data-sources.md)一文。
 
 活动日志记录 Azure Cosmos DB 订阅级别的操作。 将记录 ListKeys、Write DatabaseAccounts 等操作。 诊断日志提供更精细的日志记录并允许记录 DataPlaneRequests（创建、读取、查询等）和 MongoRequests。
 
@@ -437,7 +437,7 @@ $blobs | Get-AzureStorageBlobContent `
 
 下表描述了每个日志条目的内容。
 
-| Azure 存储字段或属性 | Log Analytics 属性 | 说明 |
+| Azure 存储字段或属性 | Log Analytics 属性 | Description |
 | --- | --- | --- |
 | **time** | **TimeGenerated** | 操作发生时的日期和时间 (UTC)。 |
 | **resourceId** | **资源** | 为其启用日志的 Azure Cosmos DB 帐户。|

@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: negat
-ms.openlocfilehash: abad57856db63c954f963a28b1dbd3c95395c9bd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8b3956860a38057771770b965006606ffb3e24f8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652580"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963775"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集的网络
 
 通过门户部署 Azure 虚拟机规模集时，某些网络属性（例如带入站 NAT 规则的 Azure 负载均衡器）是默认设置的。 本文介绍如何使用部分较高级的可以对规模集配置的网络功能。
 
-可以使用 Azure 资源管理器模板配置本文介绍的所有功能。 此外，还为选定功能提供了 Azure CLI 和 PowerShell 示例。 使用 CLI 2.10 和 PowerShell 4.2.0 或更高版本。
+可以使用 Azure 资源管理器模板配置本文介绍的所有功能。 此外，还为选定功能提供了 Azure CLI 和 PowerShell 示例。 使用 Azure CLI 2.0.10 或更高版本以及 PowerShell 4.2.0 或更高版本。
 
 ## <a name="accelerated-networking"></a>加速网络
 Azure 加速网络可以实现对虚拟机的单根 I/O 虚拟化 (SR-IOV)，从而提升网络性能。 若要详细了解如何使用加速网络，请查看适用于 [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) 或 [Linux](../virtual-network/create-vm-accelerated-networking-cli.md) 虚拟机的加速网络。 若要对规模集使用加速网络，请在规模集的 networkInterfaceConfigurations 设置中将 enableAcceleratedNetworking 设置为 true。 例如：
@@ -79,7 +79,7 @@ az vmss create -g lbtest -n myvmss --image Canonical:UbuntuServer:16.04-LTS:late
 默认情况下，规模集采用其创建时所在的 VNET 和子网的特定 DNS 设置。 但是，你可以直接配置规模集的 DNS 设置。
 
 ### <a name="creating-a-scale-set-with-configurable-dns-servers"></a>通过可配置的 DNS 服务器创建规模集
-若要通过 CLI 2.0 使用自定义 DNS 配置创建规模集，请将 **--dns-servers** 参数添加到 **vmss create** 命令中，后接空格分隔的服务器 IP 地址。 例如：
+若要通过 Azure CLI 使用自定义 DNS 配置创建规模集，请将 --dns-servers 参数添加到 vmss create 命令中，后接空格分隔的服务器 IP 地址。 例如：
 ```bash
 --dns-servers 10.0.0.6 10.0.0.5
 ```
@@ -91,7 +91,7 @@ az vmss create -g lbtest -n myvmss --image Canonical:UbuntuServer:16.04-LTS:late
 ```
 
 ### <a name="creating-a-scale-set-with-configurable-virtual-machine-domain-names"></a>使用可配置的虚拟机域名创建规模集
-若要通过 CLI 2.0 使用自定义 DNS 名称为虚拟机创建规模集，请将 --vm-domain-name 参数添加到 vmss create 命令中，后跟表示域名的字符串。
+若要通过 CLI 使用自定义 DNS 名称为虚拟机创建规模集，请将 --vm-domain-name 参数添加到 vmss create 命令中，后接表示域名的字符串。
 
 若要在 Azure 模板中设置域名，请将 **dnsSettings** 属性添加到规模集的 **networkInterfaceConfigurations** 节。 例如：
 
@@ -136,7 +136,7 @@ az vmss create -g lbtest -n myvmss --image Canonical:UbuntuServer:16.04-LTS:late
 但某些情况下，确实需要规模集虚拟机拥有自己的公共 IP 地址。 例如，玩游戏时，主机需直接连接到云虚拟机进行游戏的物理处理。 再举例来说，虚拟机有时需在分布式数据库中跨区域进行外部互连。
 
 ### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>使用公共 IP 为每个虚拟机创建规模集
-若要通过 CLI 2.0 创建向每个虚拟机分配公共 IP 地址的规模集，请将 --public-ip-per-vm 参数添加到 vmss create 命令中。 
+若要通过 CLI 创建向每个虚拟机分配公共 IP 地址的规模集，请将 --public-ip-per-vm 参数添加到 vmss create 命令中。 
 
 若要使用 Azure 模板创建规模集，请确保 Microsoft.Compute/virtualMachineScaleSets 资源的 API 版本至少为 **2017-03-30**，并将 **publicIpAddressConfiguration** JSON 属性添加到规模集的 ipConfigurations 节。 例如：
 
@@ -151,7 +151,7 @@ az vmss create -g lbtest -n myvmss --image Canonical:UbuntuServer:16.04-LTS:late
 示例模板：[201-vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-public-ip-linux)
 
 ### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>在规模集中查询虚拟机的公共 IP 地址
-若要通过 CLI 2.0 列出分配到规模集虚拟机的公共 IP 地址，请使用 az vmss list-instance-public-ips 命令。
+若要通过 CLI 列出分配到规模集虚拟机的公共 IP 地址，请使用 az vmss list-instance-public-ips 命令。
 
 若要使用 PowerShell 列出规模集的公共 IP 地址，请使用_Get-AzureRmPublicIpAddress_ 命令。 例如：
 ```PowerShell
@@ -165,7 +165,7 @@ PS C:\> Get-AzureRmPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
 
 使用 [Azure 资源浏览器](https://resources.azure.com)或者 Azure REST API **2017-03-30** 或更高版本查询分配到规模集虚拟机的公共 IP 地址。
 
-若要使用资源浏览器查看规模集的公共 IP 地址，请找到规模集下的 publicipaddresses 节。 例如：https://resources.azure.com/subscriptions/_your_sub_id_/resourceGroups/_your_rg_/providers/Microsoft.Compute/virtualMachineScaleSets/_your_vmss_/publicipaddresses
+若要使用资源浏览器查看规模集的公共 IP 地址，请找到规模集下的 publicipaddresses 节。 例如： https://resources.azure.com/subscriptions/_your_sub_id_/resourceGroups/_your_rg_/providers/Microsoft.Compute/virtualMachineScaleSets/_your_vmss_/publicipaddresses
 
 ```
 GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG name}/providers/Microsoft.Compute/virtualMachineScaleSets/{scale set name}/publicipaddresses?api-version=2017-03-30

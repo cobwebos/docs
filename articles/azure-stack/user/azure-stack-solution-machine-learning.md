@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 30dbdff584f1bea955072e96a5e0f03cfe4c92c1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c195f2ee24b61a57c098d5214a37f65e80845074
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963724"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47410198"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>教程： 创建边缘机器学习使用 Azure 和 Azure Stack 解决方案
 
@@ -53,7 +53,7 @@ ms.locfileid: "46963724"
 > 
 > 本白皮书[混合应用程序的设计注意事项](https://aka.ms/hybrid-cloud-applications-pillars)评审 （放置、 可伸缩性、 可用性、 复原能力、 可管理性和安全性） 的软件质量的构成要素进行设计、 部署和操作混合应用程序。 设计注意事项，帮助您优化混合应用程序设计，最大程度减少在生产环境中的挑战。
 
-## <a name="prerequisites"></a>必备项
+## <a name="prerequisites"></a>必备组件
 
 几个组件生成此用例所需组件，可能需要一些时间来准备：
 
@@ -71,7 +71,7 @@ ms.locfileid: "46963724"
 
  -  [Azure Stack 的重要概念](https://docs.microsoft.com/azure/azure-stack/azure-stack-key-features)
 
- -  [Azure Stack 混合 CI/CD 解决方案指南](/azure-stack-solution-pipeline.md)
+ -  [Azure Stack 混合 CI/CD 解决方案指南](/azure/azure-stack/user/azure-stack-solution-pipeline)
 
 **Azure**
 
@@ -212,7 +212,7 @@ ms.locfileid: "46963724"
 
     e.  注意： 使用 AAD 启用并配置 Azure 订阅，托管服务标识可以启用也。
 
-2.  选择“确定” 。
+2.  选择“确定”。
 
 ### <a name="connect-to-the-dsvm"></a>连接到 DSVM
 
@@ -284,7 +284,7 @@ Azure 机器学习服务（预览版）是集成式的端到端数据科学和�
 
 1.  在中**机器学习试验**窗格配置机器学习试验帐户。
 
-    | 设置 | 针对教程建议的值 | 描述 |
+    | 设置 | 针对教程建议的值 | 说明 |
     |---------------------------------------|----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | 试验帐户名称 | 唯一名称 | 输入用于标识帐户的唯一名称。 使用最好地标识试验的部门或项目名称。 名称应介于 2 到 32 个字符之间， 只应包含字母数字字符和短划线 (-) 字符。 |
     | 订阅 | 订阅 | 选择要用于试验的 Azure 订阅。 如果存在多个订阅，请选择计费的资源所在的相应订阅。 |
@@ -353,7 +353,7 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
 1.  填充各窗体字段，然后选择“创建”按钮在 Workbench 中创建新项目。
 
-    | 字段 | 针对教程建议的值 | 描述 |
+    | 字段 | 针对教程建议的值 | 说明 |
     |-------------------------------------|------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | 项目名称 | myIris | 输入用于标识帐户的唯一名称。 使用部门或项目最好地标识试验的名称。 名称应介于 2 到 32 个字符之间， 只应包含字母数字字符和短划线 (-) 字符。 |
     | 项目目录 | c:\Temp\ | 指定在其中创建项目的目录。 |
@@ -1144,7 +1144,7 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
 从 Linux 会话的 Windows 子系统中使用以下命令生成身份验证密钥： 
 
-1. 类型:
+1. 键入：
 
     ```Bash  
     ssh-keygen -t rsa
@@ -1185,15 +1185,15 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
     2. 输入应用程序的“名称”。 
     3. 选择“Web 应用/API”。 
     4. 输入 `http://localhost` 作为“登录 URL”。 
-    5. 选择“创建” 。
+    5. 选择**创建**。
 
-1.  记下“应用程序 ID”。 创建群集时需要此 ID，作为引用**服务主体客户端 ID**。
+1.  请记下**应用程序 ID**。 创建群集时需要此 ID，作为引用**服务主体客户端 ID**。
 
 2.  选择“设置” > “密钥”。
 
     1. 输入“说明”。 
     2. 对于“过期”这一项，请选择“永不过期”。 
-    3. 选择“其他安全性验证” 。 记下密钥字符串。 创建群集时需要键的字符串，作为引用**服务主体客户端机密**。
+    3. 选择“保存”。 记下密钥字符串。 创建群集时需要键的字符串，作为引用**服务主体客户端机密**。
 
 ### <a name="give-the-service-principal-access"></a>为服务主体提供访问权限
 
@@ -1211,11 +1211,11 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
 6.  选择创建服务主体的应用程序名称。 如果需要请在搜索框中键入名称。
 
-7.  选择“其他安全性验证” 。
+7.  选择“保存”。
 
 8.  打开 [Azure Stack 门户](https://portal.local.azurestack.external)。
 
-9.  选择“+新建” > “计算” > “Kubernetes 群集”。 选择“创建” 。
+9.  选择“+新建” > “计算” > “Kubernetes 群集”。 选择**创建**。
 
     ![部署解决方案模板](media\azure-stack-solution-machine-learning\image59.png)
 
@@ -1494,7 +1494,7 @@ Kubectl get deployments
 
 ### <a name="prepare-the-private-build-and-release-agent-for-vsts-integration"></a>为 VSTS 集成准备专用生成和发布代理
 
-#### <a name="prerequisites"></a>必备项
+#### <a name="prerequisites"></a>必备组件
 
 VSTS 进行身份验证针对 Azure 资源管理器使用服务主体。 VSTS 能够预配 Azure Stack 订阅中的资源需要参与者状态。 \**需要配置才能启用此类身份验证的高级步骤如下：**
 
@@ -1530,11 +1530,11 @@ VSTS 进行身份验证针对 Azure 资源管理器使用服务主体。 VSTS �
 
     ![选择密钥](media\azure-stack-solution-machine-learning\image80.png)
 
-1.  提供密钥说明和密钥持续时间。 完成后，选择“保存” 。
+1.  提供密钥说明和密钥持续时间。 完成后，选择“保存”。
 
     ![保存密钥](media\azure-stack-solution-machine-learning\image81.png)
 
-保存密钥后，密钥的值显示。 复制此值，因为稍后需要它。 **键值**与应用程序时需要登录的应用程序 ID。 存储应用程序可在其中检索密钥值。
+保存密钥后, 会显示密钥的值。 复制此值，因为稍后需要它。 **键值**与应用程序时需要登录的应用程序 ID。 存储应用程序可在其中检索密钥值。
 
 ![Alt text](media\azure-stack-solution-machine-learning\image82.png)
 
@@ -1542,7 +1542,7 @@ VSTS 进行身份验证针对 Azure 资源管理器使用服务主体。 VSTS �
 
 VSTS 服务终结点配置的一部分，需要**租户 ID** ，对应于 Azure Stack 戳已部署到的 AAD 目录。 请遵循本部分所述的步骤收集租户 ID。
 
-1.  选择“Azure Active Directory” 。
+1.  选择“Azure Active Directory”。
 
     ![选择 azure active directory](media\azure-stack-solution-machine-learning\image83.png)
 
@@ -1550,7 +1550,7 @@ VSTS 服务终结点配置的一部分，需要**租户 ID** ，对应于 Azure 
 
     ![选择 Azure AD 属性](media\azure-stack-solution-machine-learning\image84.png)
 
-1.  复制“目录 ID” 。 此值是租户 id。
+1.  复制“目录 ID”。 此值是租户 id。
 
     ![租户 ID](media\azure-stack-solution-machine-learning\image85.png)
 
@@ -1558,9 +1558,9 @@ VSTS 服务终结点配置的一部分，需要**租户 ID** ，对应于 Azure 
 
 若要访问订阅中的资源，将分配到角色的应用程序。 决定哪个角色表示应用程序的相应权限。 若要了解有关可用角色的信息，请参阅 [RBAC：内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
 
-在订阅、 资源组或资源的级别设置作用域。 较低级别的作用域会继承权限。 例如，添加到资源组的读取者角色的应用程序使得它可以读取资源组和它所包含的所有资源。
+在订阅、 资源组或资源的级别设置作用域。 较低级别的作用域将继承权限。 例如，添加到资源组的读取者角色的应用程序使得它可以读取资源组和它所包含的所有资源。
 
-1.  导航到所需级别的作用域为应用程序分配。 例如，若要在订阅范围内分配角色，选择“订阅” 。
+1.  导航到所需级别的作用域为应用程序分配。 例如，若要在订阅范围内分配角色，选择“订阅”。
 
     ![Alt text](media\azure-stack-solution-machine-learning\image86.jpeg)
 
@@ -1568,11 +1568,11 @@ VSTS 服务终结点配置的一部分，需要**租户 ID** ，对应于 Azure 
 
     ![选择进行分配的订阅](media\azure-stack-solution-machine-learning\image87.png)
 
-1.  选择“访问控制(IAM)”。
+1.  选择“访问控制 (IAM)”。
 
     ![选择访问权限](media\azure-stack-solution-machine-learning\image88.png)
 
-1.  选择“设置” （应用程序对象和服务主体对象）。
+1.  选择 **添加** 。
 
     ![选择添加](media\azure-stack-solution-machine-learning\image89.png)
 
@@ -2148,7 +2148,7 @@ kubectl proxy
 
 1.  选择上**集成**函数，并取消选中**获取**选项。
 
-2.  选择“其他安全性验证” 。
+2.  选择“保存”。
 
 3.  然后选择 **+ 新建输出**从输出。
 

@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: b011dd5993e63fe9bce36ec8b8c1b4739dbf704b
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 617f60345fb2a349eddb0db697604ba383794591
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39037662"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060810"
 ---
 # <a name="azure-managed-disks-overview"></a>Azure 托管磁盘概述
 
-Azure 托管磁盘通过管理与 VM 磁盘关联的[存储帐户](../articles/storage/common/storage-introduction.md)简化了 Azure IaaS VM 的磁盘管理。 只需指定所需的磁盘类型（[标准 HDD](../articles/virtual-machines/windows/standard-storage.md)、标准 SSD 或[高级 SSD](../articles/virtual-machines/windows/premium-storage.md)）和大小，Azure 即可创建和管理磁盘。
+Azure 托管磁盘通过管理与 VM 磁盘关联的[存储帐户](../articles/storage/common/storage-introduction.md)简化了 Azure IaaS VM 的磁盘管理。 只需指定所需的磁盘类型（[标准 HDD](../articles/virtual-machines/windows/standard-storage.md)、[标准 SSD](../articles/virtual-machines/windows/disks-standard-ssd.md) 或[高级 SSD](../articles/virtual-machines/windows/premium-storage.md)）和大小，Azure 即可创建和管理磁盘。
 
 ## <a name="benefits-of-managed-disks"></a>托管磁盘的好处
 
@@ -29,7 +29,7 @@ Azure 托管磁盘通过管理与 VM 磁盘关联的[存储帐户](../articles/s
 
 托管磁盘在幕后处理存储。 以前，必须创建存储帐户来存储 Azure VM 的磁盘（VHD 文件）。 进行扩展时，必须确保创建了额外的存储帐户，以便任何磁盘都不会超出对存储的 IOPS 限制。 使用托管磁盘处理存储时，不再受限于存储帐户限制（例如 20,000 IOPS / 帐户）。 也不再需要将自定义映像（VHD 文件）复制到多个存储帐户。 可以在一个中心位置管理自定义映像（每个 Azure 区域一个存储帐户），并使用它们在一个订阅中创建数百台 VM。
 
-托管磁盘支持在每个区域中的一个订阅中创建最多 50,000 个同一类型的 VM 磁盘，这使得可以在单个订阅中创建数以万计的 VM。 通过允许使用某个市场映像在一个虚拟机规模集中创建多达一千台 VM，此功能还可以进一步增加[虚拟机规模集](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)的可伸缩性。 
+托管磁盘支持在每个区域中的一个订阅中创建最多 50,000 个同一类型的 VM 磁盘，这使得可以在单个订阅中创建数以万计的 VM。 通过允许使用某个市场映像在一个虚拟机规模集中创建多达一千台 VM，此功能还可以进一步增加[虚拟机规模集](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)的可伸缩性。
 
 ### <a name="better-reliability-for-availability-sets"></a>可用性集更加可靠
 
@@ -44,11 +44,13 @@ Azure 磁盘具备 99.999% 的可用性。 数据具有三个副本，高持久�
 可以使用 [Azure 基于角色的访问控制 (RBAC)](../articles/role-based-access-control/overview.md) 将对托管磁盘的特定权限分配给一个或多个用户。 托管磁盘公开了各种操作，包括读取、写入（创建/更新）、删除，以及检索磁盘的[共享访问签名 (SAS) URI](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)。 可以仅将某人员执行其工作所需的操作的访问权限授予该人员。 例如，如果不希望某人员将某个托管磁盘复制到存储帐户，则可以选择不授予对该托管磁盘的导出操作的访问权限。 类似地，如果不希望某人员使用 SAS URI 复制某个托管磁盘，则可以选择不授予对该托管磁盘的该权限。
 
 ### <a name="azure-backup-service-support"></a>Azure 备份服务支持
-将 Azure 备份服务与托管磁盘配合使用，创建具有基于时间的备份、轻松 VM 还原和备份保留策略的备份作业。 托管存储仅支持使用本地冗余存储 (LRS) 作为复制选项。 数据的三个副本保留在同一个区域中。 对于区域性灾难恢复，必须使用 [Azure 备份服务](../articles/backup/backup-introduction-to-azure-backup.md)和作为备份保管库的 GRS 存储帐户来备份不同区域中的 VM 磁盘。 当前 Azure 备份支持所有磁盘大小（包括 4TB 磁盘）。 若要支持 4TB 磁盘，需[将 VM 备份堆栈升级到 V2](../articles/backup/backup-upgrade-to-vm-backup-stack-v2.md)。 有关详细信息，请参阅[为具有托管磁盘的 VM 使用 Azure 备份服务](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)。
+
+将 Azure 备份服务与托管磁盘配合使用，创建具有基于时间的备份、轻松 VM 还原和备份保留策略的备份作业。 托管存储仅支持使用本地冗余存储 (LRS) 作为复制选项。 数据的三个副本保留在同一个区域中。 对于区域性灾难恢复，必须使用 [Azure 备份服务](../articles/backup/backup-introduction-to-azure-backup.md)和作为备份保管库的 GRS 存储帐户来备份不同区域中的 VM 磁盘。 当前 Azure 备份支持最大达 4TB 的磁盘大小。 若要支持 4TB 磁盘，需[将 VM 备份堆栈升级到 V2](../articles/backup/backup-upgrade-to-vm-backup-stack-v2.md)。 有关详细信息，请参阅[为具有托管磁盘的 VM 使用 Azure 备份服务](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)。
 
 ## <a name="pricing-and-billing"></a>定价和计费
 
 使用托管磁盘时，将考虑以下计费事项：
+
 * 存储类型
 
 * 磁盘大小
@@ -61,29 +63,27 @@ Azure 磁盘具备 99.999% 的可用性。 数据具有三个副本，高持久�
 
 下面将更详细地介绍各选项。
 
-**存储类型：** 托管磁盘提供 3 个性能层：[标准 HDD](../articles/virtual-machines/windows/standard-storage.md)、标准 SSD（预览）和[高级](../articles/virtual-machines/windows/premium-storage.md)。 托管磁盘的计费取决于为磁盘选择的存储类型。
-
+**存储类型：** 托管磁盘提供 3 个性能层：[标准 HDD](../articles/virtual-machines/windows/standard-storage.md)、[标准 SSD](../articles/virtual-machines/windows/disks-standard-ssd.md) 和[高级](../articles/virtual-machines/windows/premium-storage.md). 托管磁盘的计费取决于为磁盘选择的存储类型。
 
 **磁盘大小**：托管磁盘的计费取决于磁盘的预配大小。 Azure 会将预配大小映射（向上舍入）到下面各表中指定的最接近的托管磁盘选项。 每个托管磁盘都映射到其中一种受支持的预配大小并相应地进行计费。 例如，如果创建了一个标准托管磁盘并将预配大小指定为 200 GB，则会根据 S15 磁盘类型的定价向你收费。
 
 下面是高级托管磁盘可用的磁盘大小：
 
-| **高级托管<br>磁盘类型** | **P4** | **P6** |**P10** | **P15** | **P20** | **P30** | **P40** | **P50** | 
-|------------------|---------|---------|---------|---------|---------|----------------|----------------|----------------|  
-| 磁盘大小        | 32 GiB   | 64 GiB   | 128 GiB  | 256 GiB  | 512 GiB  | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 
+| **高级 HDD 托管<br>磁盘类型** | **P4** | **P6** | **P10** | **P15** | **P20** | **P30** | **P40** | **P50** | **P60** | **P70** | **P80** |
+|------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
+| 磁盘大小        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1,024 GiB (1 TiB) | 2,048 GiB (2 TiB) | 4,095 GiB (4 TiB) | 8,192 GiB (8 TiB) | 16,384 GiB (16 TiB) | 32,767 GiB (TiB) |
 
 下面是标准 SSD 托管磁盘可用的磁盘大小：
 
-| 标准 SSD 托管<br>磁盘类型 | E10 | E15 | E20 | E30 | E40 | E50 |
-|------------------|--------|--------|--------|----------------|----------------|----------------| 
-| 磁盘大小        | 128 GiB | 256 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 
+| 标准 SSD 托管<br>磁盘类型 | E10 | E15 | E20 | E30 | E40 | E50 | **E60** | **E70** | **E80** |
+|------------------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
+| 磁盘大小        | 128 GiB | 256 GiB | 512 GiB | 1,024 GiB (1 TiB) | 2,048 GiB (2 TiB) | 4,095 GiB (4 TiB) | 8,192 GiB (8 TiB) | 16,384 GiB (16 TiB) | 32,767 GiB (TiB) |
 
 下面是标准 HDD 托管磁盘可用的磁盘大小：
 
-| 标准 HDD 托管<br>磁盘类型 | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** |
-|------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------| 
-| 磁盘大小        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 
-
+| 标准 HDD 托管<br>磁盘类型 | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** | **S60** | **S70** | **S80** |
+|------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
+| 磁盘大小        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1,024 GiB (1 TiB) | 2,048 GiB (2 TiB) | 4,095 GiB (4 TiB) | 8,192 GiB (8 TiB) | 16,384 GiB (16 TiB) | 32,767 GiB (TiB) |
 
 **事务数**：会根据你对标准托管磁盘执行的事务数向你收费。
 
@@ -107,14 +107,14 @@ Azure 磁盘具备 99.999% 的可用性。 数据具有三个副本，高持久�
 * [在 Windows 中使用快照创建存储为托管磁盘的 VHD 的副本](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
 * [在 Linux 中使用快照创建存储为托管磁盘的 VHD 的副本](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
 
-
 ## <a name="images"></a>映像
 
 托管磁盘还支持创建托管自定义映像。 可以从存储帐户中的自定义 VHD 创建映像或者直接从通用化 (sys-prepped) VM 创建映像。 该过程会将与 VM 关联的所有托管磁盘捕获到单个映像中，包括 OS 和数据磁盘。 该托管自定义映像支持使用自定义映像创建数百台 VM，且不需要复制或管理任何存储帐户。
 
 有关创建映像的信息，请查看以下文章：
+
 * [如何在 Azure 中捕获通用 VM 的托管映像](../articles/virtual-machines/windows/capture-image-resource.md)
-* [如何使用 Azure CLI 2.0 用化和捕获 Linux 虚拟机](../articles/virtual-machines/linux/capture-image.md)
+* [如何使用 Azure CLI 生成和捕获 Linux 虚拟机](../articles/virtual-machines/linux/capture-image.md)
 
 ## <a name="images-versus-snapshots"></a>映像与快照
 
@@ -132,7 +132,6 @@ Azure 磁盘具备 99.999% 的可用性。 数据具有三个副本，高持久�
 
 [Azure 存储服务加密](../articles/storage/common/storage-service-encryption.md) 可提供静态加密和保护你的数据，使你的组织能够信守在安全性与符合性方面所做的承诺。 默认情况下，所有托管磁盘都启用了 SSE，所有可用托管磁盘的区域都有快照和映像。 从 2017 年 6 月 10 日起，所有新的托管磁盘/快照/映像和写入到现有托管磁盘的新数据默认情况下都会使用由 Microsoft 托管的密钥自动静态加密。 有关详细信息请访问[托管磁盘常见问题解答页](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption)。
 
-
 ### <a name="azure-disk-encryption-ade"></a>Azure 磁盘加密 (ADE)
 
 Azure 磁盘加密允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。 此加密包括托管磁盘。 对于 Windows，驱动器是使用行业标准 BitLocker 加密技术加密的。 对于 Linux，磁盘是使用 DM-Crypt 技术加密的。 加密过程与 Azure Key Vault 集成，可让你控制和管理磁盘加密密钥。 有关详细信息，请参阅[适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密](../articles/security/azure-security-disk-encryption.md)。
@@ -145,7 +144,7 @@ Azure 磁盘加密允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘�
 
 * [使用资源管理器和 PowerShell 创建 VM](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md)
 
-* [使用 Azure CLI 2.0 创建 Linux VM](../articles/virtual-machines/linux/quick-create-cli.md)
+* [Create a Linux VM using the Azure CLI（使用 Azure CLI 创建 Linux VM）](../articles/virtual-machines/linux/quick-create-cli.md)
 
 * [使用 PowerShell 将托管数据磁盘附加到 Windows VM](../articles/virtual-machines/windows/attach-disk-ps.md)
 

@@ -10,40 +10,30 @@ ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/31/2018
+ms.date: 09/14/2018
 ms.author: celested
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev
-ms.openlocfilehash: d5c00e9df9c1bfee0c665cafc763c52a36f98052
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 3d6692808bad2010779323cecc42778def32a38c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345839"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46980264"
 ---
-# <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>在 Azure Active Directory 应用程序库中列出你的应用程序
+# <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>如何：在 Azure Active Directory 应用程序库中列出应用程序
 
+## <a name="what-is-the-azure-ad-application-gallery"></a>什么是 Azure AD 应用程序库？
 
-##  <a name="what-is-the-azure-ad-application-gallery"></a>什么是 Azure AD 应用程序库？
-
-Azure Active Directory (Azure AD) 是一种基于云的标识服务。 [Azure AD 应用程序库](https://azure.microsoft.com/marketplace/active-directory/all/)位于 Azure 市场中，所有应用程序连接器都发布在其中以用于实现单一登录和用户预配。 使用 Azure AD 作为标识提供者的客户可以查找发布在这里的各种 SaaS 应用程序连接器。 IT 管理员从应用库中添加连接器，然后对连接器进行配置并将其用于单一登录和预配。 Azure AD 支持使用所有主要的联合身份验证协议（包括 SAML 2.0、OpenID Connect、OAuth 和 WS-Fed）进行单一登录。
-
-## <a name="what-are-the-benefits-of-listing-an-application-in-the-gallery"></a>将应用程序列在该库中有什么好处？
-
-*  可以为客户提供尽可能最佳的单一登录体验。
-
-*  简化并最小化了应用程序的配置。
-
-*  在库中快速搜索应用程序。
-
-*  免费、基本和高级 Azure AD 客户都可以使用此集成。
-
-*  共同客户可以获得分步配置教程。
-
-*  使用 SCIM 的客户可以将预配用于同一应用。
+- 可以为客户提供尽可能最佳的单一登录体验。
+- 简化并最小化了应用程序的配置。
+- 在库中快速搜索应用程序。
+- 免费、基本和高级 Azure AD 客户都可以使用此集成。
+- 共同客户可以获得分步配置教程。
+- 使用 SCIM 的客户可以将预配用于同一应用。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -57,24 +47,43 @@ Azure Active Directory (Azure AD) 是一种基于云的标识服务。 [Azure AD
 
 - 对于自动用户预配请求，应在库中列出应用程序，并使用上面所述的任何联合身份验证协议启用单一登录功能。 如果尚未列出，可以在门户上一起请求 SSO 和用户预配。
 
-##  <a name="implementing-sso-using-federation-protocol"></a>使用联合身份验证协议实现 SSO
+## <a name="submit-the-request-in-the-portal"></a>在门户中提交请求
 
-若要将某个应用程序列在 Azure AD 应用库中，首先需要实现 Azure AD 支持的以下联合身份验证协议之一并同意 Azure AD 应用程序库条款和条件。 请在[此处](https://azure.microsoft.com/en-us/support/legal/active-directory-app-gallery-terms/)阅读 Azure AD 应用程序库的条款和条件。
+在测试你的应用程序集成可以使用 Azure AD 正常工作后，在[应用程序网络门户](https://microsoft.sharepoint.com/teams/apponboarding/Apps)上提交你的访问请求。 如果你有 Office 365 帐户，请使用该帐户登录到此门户。 如果没有，请使用 Microsoft 帐户（例如 Outlook 或 Hotmail）进行登录。
 
-*   OpenID Connect：若要使用 Open ID Connect 协议将应用程序与 Azure AD 集成，请遵循[开发人员的说明](authentication-scenarios.md)。
+如果登录后显示以下页面，请联系 [Azure AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)并提供要用于提交请求的电子邮件帐户。 然后 Azure AD 团队将在 Microsoft Application Network Portal 中添加该帐户。
+
+![SharePoint 门户上的访问请求](./media/howto-app-gallery-listing/errorimage.png)
+
+添加帐户后，你可以登录到 Microsoft Application Network Portal。
+
+如果登录后出现以下页面，请在文本框中提供需要进行访问的业务理由，然后选择“请求访问”。
+
+  ![SharePoint 门户上的访问请求](./media/howto-app-gallery-listing/accessrequest.png)
+
+我们的团队将审核详细信息并相应地为你提供访问权限。 请求获得批准后，单击主页上的“提交请求(ISV)”磁贴即可登录门户并提交请求。
+
+![SharePoint 门户主页](./media/howto-app-gallery-listing/homepage.png)
+
+> [!NOTE]
+> 如果你有关于访问的任何问题，请联系 [Azure AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。
+
+## <a name="implementing-sso-using-federation-protocol"></a>使用联合身份验证协议实现 SSO
+
+若要将某个应用程序列在 Azure AD 应用库中，首先需要实现 Azure AD 支持的以下联合身份验证协议之一并同意 Azure AD 应用程序库条款和条件。 请在[此处](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/)阅读 Azure AD 应用程序库的条款和条件。
+
+- OpenID Connect：若要使用 Open ID Connect 协议将应用程序与 Azure AD 集成，请遵循[开发人员的说明](authentication-scenarios.md)。
 
     ![将 OpenID Connect 应用程序列到库中的时间线](./media/howto-app-gallery-listing/openid.png)
 
     * 如果想要使用 OpenID Connect 将你的应用程序添加到库中的列表，请如上所述选择“OpenID Connect & OAuth 2.0”。
-
     * 如果你有关于访问的任何问题，请联系 [Azure AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。 
 
-*   SAML 2.0 或 WS-Fed：如果你的应用支持 SAML 2.0，则可以根据[用来添加自定义应用程序的说明](../manage-apps/configure-single-sign-on-non-gallery-applications.md)将其直接与 Azure AD 租户集成。
+*   SAML 2.0 或 WS-Fed：如果你的应用支持 SAML 2.0，则可以根据[用来添加自定义应用程序的说明](../active-directory-saas-custom-apps.md)将其直接与 Azure AD 租户集成。
 
     ![将 SAML 2.0 或 WS-Fed 应用程序列到库中的时间线](./media/howto-app-gallery-listing/saml.png)
 
     * 如果想要使用 SAML 2.0 或 WS-Fed 将你的应用程序添加到库中的列表，请如上所述选择“SAMl 2.0/WS-Fed”。
-
     * 如果你有关于访问的任何问题，请联系 [Azure AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。
 
 ## <a name="implementing-sso-using-password-sso"></a>使用密码 SSO 实现 SSO
@@ -84,35 +93,22 @@ Azure Active Directory (Azure AD) 是一种基于云的标识服务。 [Azure AD
 ![将 Password SSO 应用程序列到库中的时间线](./media/howto-app-gallery-listing/passwordsso.png)
 
 * 如果想要使用 Password SSO 将你的应用程序添加到库中的列表，请如上所述选择“Password SSO”。
-
 * 如果你有关于访问的任何问题，请联系 [Azure AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。
 
-##  <a name="updateremove-existing-listing"></a>更新/删除现有列表
+## <a name="updateremove-existing-listing"></a>更新/删除现有列表
 
 若要更新或删除 Azure AD 应用库中的现有应用程序，首先需要在[应用程序网络门户](https://microsoft.sharepoint.com/teams/apponboarding/Apps)中提交请求。 如果你有 Office 365 帐户，请使用该帐户登录到此门户。 如果没有，请使用 Microsoft 帐户（例如 Outlook 或 Hotmail）进行登录。
 
-* 从下图中选择合适的选项
+- 选择适当的选项，如下图所示：
 
     ![将 SAML 应用程序列到库中的时间线](./media/howto-app-gallery-listing/updateorremove.png)
 
     * 如果要更新现有应用程序，请选择“更新现有应用程序列表”。
-
-    * 如果要从 Azure AD 库中删除现有应用程序，请选择“删除现有应用程序列表”
-
+    * 如果要从 Azure AD 库中删除现有应用程序，请选择“删除现有应用程序列表”。
     * 如果你有关于访问的任何问题，请联系 [Azure AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。 
 
-## <a name="submit-the-request-in-the-portal"></a>在门户中提交请求
-
-在测试你的应用程序集成可以使用 Azure AD 正常工作后，在[应用程序网络门户](https://microsoft.sharepoint.com/teams/apponboarding/Apps)上提交你的访问请求。 如果你有 Office 365 帐户，请使用该帐户登录到此门户。 如果没有，请使用 Microsoft 帐户（例如 Outlook 或 Hotmail）进行登录。
-
-在登录后，将显示以下页面。 在文本框中提供需要进行访问的业务理由，然后选择“请求访问”。 我们的团队将审核详细信息并相应地为你提供访问权限。 之后，你可以登录到该门户并为应用程序提交详细请求。
-
-如果你有关于访问的任何问题，请联系 [Azure AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。
-
-![SharePoint 门户上的访问请求](./media/howto-app-gallery-listing/accessrequest.png)
-
 ## <a name="timelines"></a>时间线
-    
+
 在库中列出 SAML 2.0 或 WS-Fed 应用程序这一过程的时间线是 7-10 个工作日。
 
    ![将 SAML 应用程序列到库中的时间线](./media/howto-app-gallery-listing/timeline.png)

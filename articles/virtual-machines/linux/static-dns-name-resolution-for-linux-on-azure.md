@@ -1,6 +1,6 @@
 ---
-title: 通过 Azure CLI 2.0 使用内部 DNS 进行 VM 名称解析 | Microsoft 文档
-description: 如何创建虚拟网络接口卡，以及如何通过 Azure CLI 2.0 在 Azure 上使用内部 DNS 进行 VM 名称解析
+title: 通过 Azure CLI 使用内部 DNS 进行 VM 名称解析 | Microsoft 文档
+description: 如何创建虚拟网络接口卡，以及如何通过 Azure CLI 在 Azure 上使用内部 DNS 进行 VM 名称解析
 services: virtual-machines-linux
 documentationcenter: ''
 author: vlivech
@@ -15,15 +15,16 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: v-livech
-ms.openlocfilehash: c1ca250d7255877cc811bf7c03034ecbb8f1f372
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: acfdd9070b49805c20b8ef921b5387c151448aa1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36936898"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961495"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>创建虚拟网络接口卡，以及在 Azure 上使用内部 DNS 进行 VM 名称解析
-本文介绍了如何通过 Azure CLI 2.0 使用虚拟网络接口卡 (vNic) 和 DNS 标签名称为 Linux VM 设置静态内部 DNS 名称。 静态 DNS 名称用于永久基础结构服务，如本文档所使用的 Jenkins 生成服务器或 Git 服务器。
+
+本文介绍了如何通过 Azure CLI 使用虚拟网络接口卡 (vNic) 和 DNS 标签名称为 Linux VM 设置静态内部 DNS 名称。 静态 DNS 名称用于永久基础结构服务，如本文档所使用的 Jenkins 生成服务器或 Git 服务器。
 
 要求如下：
 
@@ -31,7 +32,7 @@ ms.locfileid: "36936898"
 * [SSH 公钥和私钥文件](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="quick-commands"></a>快速命令
-如果需要快速完成任务，以下部分详细介绍所需的命令。 本文档的余下部分（[从此处开始](#detailed-walkthrough)）提供了每个步骤的更详细信息和上下文。 若要执行这些步骤，需要安装最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2)，并使用 [az login](/cli/azure/reference-index#az_login) 登录到 Azure 帐户。
+如果需要快速完成任务，以下部分详细介绍所需的命令。 本文档的余下部分（[从此处开始](#detailed-walkthrough)）提供了每个步骤的更详细信息和上下文。 若要执行这些步骤，需要安装最新的 [Azure CLI](/cli/azure/install-az-cli2)，并使用 [az login](/cli/azure/reference-index#az_login) 登录到 Azure 帐户。
 
 先决条件：资源组、虚拟网络和子网、带 SSH 入站的网络安全组。
 

@@ -1,6 +1,6 @@
 ---
-title: 教程 - 使用 Azure CLI 2.0 控制 Azure 虚拟机 | Microsoft Docs
-description: 本教程介绍如何通过使用 Azure CLI 2.0 应用 RBAC、策略、锁和标记管理 Azure 虚拟机
+title: 教程 - 使用 Azure CLI 管理 Azure 虚拟机 | Microsoft Docs
+description: 本教程介绍了如何在 Azure CLI 上应用 RBAC、策略、锁和标记来管理 Azure 虚拟机
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: tfitzmac
@@ -14,20 +14,20 @@ ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 18ea9920ef3f3602721bc27001a66bcd2fc2b0fd
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 2d19488d9b4d6ae6c71610788345b45c38e51cfa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205691"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46968809"
 ---
-# <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli-20"></a>教程：了解如何使用 Azure CLI 2.0 控制 Linux 虚拟机
+# <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>教程：了解如何使用 Azure CLI 管理 Linux 虚拟机
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="understand-scope"></a>了解范围
 

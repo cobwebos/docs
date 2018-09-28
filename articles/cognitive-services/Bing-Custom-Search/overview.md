@@ -9,12 +9,12 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: v-brapel
-ms.openlocfilehash: 7cd61fc63d0d7734b842ed222c67c6753da9a418
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b6f50844d6571cca6d63c1db7a85863e3d22d411
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365894"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948071"
 ---
 # <a name="what-is-bing-custom-search"></a>什么是必应自定义搜索？
 
@@ -30,18 +30,34 @@ ms.locfileid: "35365894"
 
 ![图片替换文字](./media/bcs-overview.png "必应自定义搜索的工作原理。")
 
-## <a name="customize-search-suggestions"></a>自定义搜索建议
+## <a name="adding-custom-search-box-suggestions"></a>添加自定义搜索框建议
 
-如果已订阅相应级别的自定义搜索（请参阅[定价页](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)），则可以自定义在自定义搜索体验中显示的搜索建议。 自定义自动建议 API 根据用户提供的部分查询字符串返回建议查询的列表。 借助自定义自动建议，可以提供与搜索体验相关的自定义搜索建议。 指定只返回自定义建议还是包括必应建议。 如果包括必应建议，则自定义建议显示在必应所提供的建议之前。 必应建议仅限于自定义搜索实例的上下文。
+通过定义搜索框建议可丰富自定义搜索体验。 此功能可提供与搜索体验相关的自定义搜索建议。 用户在搜索框中键入内容时，下拉列表会根据用户键入的部分查询字符串提供查询字符串建议。 可指定是仅返回自定义建议还是包含必应建议。 [了解详细信息](define-custom-suggestions.md)。
+
+## <a name="adding-custom-image-search-experience"></a>添加自定义图像搜索体验
+
+可通过图像丰富自定义搜索体验。 与 Web 结果类似，自定义搜索支持在实例的网站列表中搜索图像。 [了解详细信息](get-images-from-instance.md)。
+
+## <a name="adding-custom-video-search-experience"></a>添加自定义视频搜索体验
+
+可通过视频来丰富自定义搜索体验。 与 Web 结果类似，自定义搜索支持在实例的网站列表中搜索视频。 [了解详细信息](get-videos-from-instance.md)。
+
+## <a name="sharing-your-custom-search-instance-with-others"></a>与他人共享自定义搜索实例
+
+与团队成员共享实例，即可轻松实现对实例的协作编辑和测试。 [了解详细信息](share-your-custom-search.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 若要快速开始使用，请参阅[创建第一个必应自定义搜索实例](quick-start.md)。
 
-若要深入了解自定义搜索实例时提供的选项，请参阅[定义自定义搜索实例](define-your-custom-view.md)。
+若要深入了解自定义搜索实例，请参阅[定义自定义搜索实例](define-your-custom-view.md)。
 
-自行熟悉[自定义搜索 API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference) 参考文档。 此参考文档包含可以用来请求搜索结果的终结点、标头和查询参数的列表。 此外还包含响应对象的定义。
+了解每个自定义搜索终结点的参考内容。 该参考内容包含用于请求搜索结果的终结点、标头和查询参数。 此外还包含响应对象的定义。
 
-若要了解如何自定义建议，请参阅[定义自定义搜索建议](define-custom-suggestions.md)。
+- [自定义搜索 API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference)
+- [自定义图像 API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference)
+- [自定义视频 API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference)
+- [自定义自动建议 API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference)
+
 
 确保阅读[必应使用和显示要求](./use-and-display-requirements.md)，以免违反关于搜索结果使用要求的任何规则。

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: jasonh
-ms.openlocfilehash: cb2ca9ac3be0034f5a90add58249a2c2043975d0
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: ee97d2005752c9e0cd40de238d1f4a946bb9ee3d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43094078"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948411"
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>从基于 Windows 的 HDInsight 群集迁移到基于 Linux 的群集
 
@@ -33,11 +33,11 @@ ms.locfileid: "43094078"
 
 1. 请阅读本文档的每个部分，了解在迁移时可能需要进行的更改。
 
-2. 创建基于 Linux 的群集作为测试/质量保证环境。 有关创建基于 Linux 的群集的详细信息，请参阅 [在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-provision-linux-clusters.md)。
+2. 创建基于 Linux 的群集作为测试/质量保证环境。 要详细了解如何创建基于 Linux 的群集，请参阅 [在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
 3. 将现有作业、数据源及接收器复制到新环境。
 
-4. 执行验证测试，以确保作业在新群集上按预期工作。
+4. 执行验证测试，确保作业在新群集上按预期工作。
 
 验证一切都按预期工作后，请为迁移安排停机时间。 在停机期间，请执行以下操作：
 
@@ -53,11 +53,11 @@ ms.locfileid: "43094078"
 
 ### <a name="copy-data-to-the-test-environment"></a>将数据复制到测试环境
 
-复制数据和作业的方法有很多，不过，本部分所述的两种方法是将文件直接移到测试群集的最简单方法。
+可采用多种方式来复制数据和作业，但本部分所述的两种方法是将文件直接移到测试群集的最简便方式。
 
 #### <a name="hdfs-copy"></a>HDFS 副本
 
-使用以下步骤将数据从生产群集复制到测试群集。 这些步骤使用 HDInsight 附带的 `hdfs dfs` 实用程序。
+按以下步骤将数据从生产群集复制到测试群集。 这些步骤使用 HDInsight 附带的 `hdfs dfs` 实用程序。
 
 1. 查找现有群集的存储帐户和默认容器信息。 以下示例使用 PowerShell 来检索此信息：
 
@@ -76,14 +76,14 @@ ms.locfileid: "43094078"
 
 5. 创建群集后，使用 **SSH** 连接到该群集。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
-6. 从 SSH 会话中，使用以下命令来将文件从链接的存储帐户复制到新的默认存储帐户。 将 CONTAINER 替换为 PowerShell 返回的容器信息。 将 __ACCOUNT__ 替换为帐户名称。 将数据的路径替换为数据文件的路径。
+6. 在 SSH 会话中，使用以下命令将文件从链接的存储帐户复制到新的默认存储帐户。 将 CONTAINER 替换为 PowerShell 返回的容器信息。 将 __ACCOUNT__ 替换为帐户名称。 将数据的路径替换为数据文件的路径。
 
     ```bash
     hdfs dfs -cp wasb://CONTAINER@ACCOUNT.blob.core.windows.net/path/to/old/data /path/to/new/location
     ```
 
     > [!NOTE]
-    > 如果包含数据的目录结构不在测试环境中，可以使用以下命令创建它：
+    > 如果测试环境中没有包含数据的目录结构，可使用以下命令创建该结构：
 
     ```bash
     hdfs dfs -mkdir -p /new/path/to/create
@@ -97,7 +97,7 @@ ms.locfileid: "43094078"
 
 ## <a name="client-side-technologies"></a>客户端技术
 
-诸如 [Azure PowerShell cmdlet](/powershell/azureps-cmdlets-docs)、[Azure CLI](../cli-install-nodejs.md) 或 [.NET SDK for Hadoop](https://hadoopsdk.codeplex.com/) 等客户端技术将继续处理基于 Linux 的群集。 这些技术依赖于在两种群集操作系统类型上都一致的 REST API。
+[Azure PowerShell cmdlet](/powershell/azureps-cmdlets-docs)、[Azure 经典 CLI](../cli-install-nodejs.md) 或 [.NET SDK for Hadoop](https://hadoopsdk.codeplex.com/) 等客户端技术将继续操作基于 Linux 的群集。 这些技术依赖于在两种群集操作系统类型上都一致的 REST API。
 
 ## <a name="server-side-technologies"></a>服务器端技术
 
@@ -106,7 +106,7 @@ ms.locfileid: "43094078"
 | 如果使用此技术... | 请执行此操作... |
 | --- | --- |
 | **PowerShell**（服务器端脚本，包含群集创建期间使用的脚本操作） |重新编写为 Bash 脚本。 有关脚本操作的信息，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)和[针对基于 Linux 的 HDInsight 的脚本操作开发](hdinsight-hadoop-script-actions-linux.md)。 |
-| **Azure CLI**（服务器端脚本） |尽管 Azure CLI 可在 Linux 上使用，但它并没有预先安装在 HDInsight 群集头节点上。 有关安装 Azure CLI 的详细信息，请参阅 [Azure CLI 2.0 入门](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)。 |
+| **Azure 经典 CLI**（服务器端脚本） |虽然可在 Linux 上使用 Azure 经典 CLI，但它并未预装到 HDInsight 群集头节点上。 要详细了解如何安装 Azure 经典 CLI，请参阅 [Azure 经典 CLI 入门](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)。 |
 | **.NET 组件** |.NET 在基于 Linux 的 HDInsight 上通过 [Mono](https://mono-project.com) 受支持。 有关详细信息，请参阅[将 .NET 解决方案迁移到基于 Linux 的 HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md)。 |
 | **Win32 组件或其他仅限 Windows 的技术** |指南因组件或技术而异。 你也许能够找到与 Linux 兼容的版本。 如果未找到，则必须找到一个替代解决方案或重写此组件。 |
 

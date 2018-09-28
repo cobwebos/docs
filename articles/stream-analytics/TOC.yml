@@ -45,6 +45,8 @@ items:
       href: stream-analytics-documentdb-output.md
     - name: 输出到 Azure SQL DB
       href: stream-analytics-sql-output-perf.md
+    - name: Blob 自定义路径模式
+      href: stream-analytics-custom-path-patterns-blob-storage-output.md
   - name: 开窗函数
     href: stream-analytics-window-functions.md
   - name: 地理空间函数
@@ -77,6 +79,8 @@ items:
       href: stream-analytics-clean-up-your-job.md
     - name: 进行作业配对以确保可靠性
       href: stream-analytics-job-reliability.md
+    - name: 使用托管标识进行身份验证
+      href: stream-analytics-managed-identities-adls.md
   - name: 构建解决方案
     items:
     - name: Twitter 情绪分析
@@ -194,9 +198,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: 白皮书 - 实时事件处理
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: 9974539b9c787d322bca131c8fec74b4e67c2326
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 28f7acf4db96fd8c839eaff288cee9a19559c201
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054857"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408925"

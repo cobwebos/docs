@@ -7,22 +7,22 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 7/25/2018
 ms.author: victorh
-ms.openlocfilehash: 023a1ecb6afc49dd20a14d57558d72a44779dbe9
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 27a27cfb81362b070deb0bad367ff62e8c39460c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257559"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964371"
 ---
-# <a name="create-an-azure-dns-private-zone-using-azure-cli"></a>使用 Azure CLI 创建 Azure DNS 专用区域
+# <a name="create-an-azure-dns-private-zone-using-the-azure-cli"></a>使用 Azure CLI 创建 Azure DNS 专用区域
 
-本教程将引导你完成使用 Azure CLI 创建你的第一个专用 DNS 区域和记录的步骤。
+本教程将引导完成使用 Azure CLI 创建第一个专用 DNS 区域和记录的步骤。
 
 [!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
 DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS 中托管域，需要为该域名创建 DNS 区域。 随后会在此 DNS 区域内为每个 DNS 记录创建域。 若要向虚拟网络发布专用 DNS 区域，请指定一个列表，其中包含允许在区域中解析记录的虚拟网络。  这些虚拟网络称为“解析虚拟网络”。 也可指定一个虚拟网络，让 Azure DNS 在创建 VM、更改 IP 或删除 VM 时为其保留主机名记录。  这称为“注册虚拟网络”。
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建 DNS 专用区域
@@ -39,7 +39,7 @@ DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS
 
 ## <a name="create-the-resource-group"></a>创建资源组
 
-首先，创建一个资源组来包含 DNS 区域： 
+首先，创建一个资源组，使之包含 DNS 区域： 
 
 ```azurecli
 az group create --name MyAzureResourceGroup --location "East US"

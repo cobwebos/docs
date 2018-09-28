@@ -5,26 +5,26 @@ services: storage
 author: ramankumarlive
 ms.service: storage
 ms.topic: include
-ms.date: 06/05/2018
+ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: e6a2493b0bc9e2b4c9695e29ae0c175dac9814fe
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: ea312002a9a1a39505cd4748864ca9dfc1da43dd
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40237726"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060842"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>VM 的高性能高级存储和托管磁盘
+
 Azure 高级存储为运行输入/输出 (I/O) 密集型工作负荷的虚拟机 (VM) 提供高性能、低延迟的磁盘支持。 使用高级存储的 VM 磁盘在固态硬盘 (SSD) 上存储数据。 要利用高级存储磁盘的速度和性能优势，可将现有的 VM 磁盘迁移到高级存储。
 
-在 Azure 中，可将多个高级存储磁盘附加到 VM。 使用多个磁盘可以让应用程序的存储上限为每个 VM 256 TB。 如果使用高级存储，每个 VM 上的应用程序可实现 80,000 次 I/O 操作/秒 (IOPS)，每个 VM 可实现高达 2,000 MB/秒的磁盘吞吐量。 执行读取操时延迟极低。
+在 Azure 中，可将多个高级存储磁盘附加到 VM。 使用多个磁盘应用程序享有每 VM 高达 256 TB 的存储空间，如果使用预览版大小，则应用程序享有每 VM 约 2 PiB 的存储空间。 如果使用高级存储，每个 VM 上的应用程序可实现 80,000 次 I/O 操作/秒 (IOPS)，每个 VM 可实现高达 2,000 MB/秒的磁盘吞吐量。 执行读取操时延迟极低。
 
 使用高级存储时，Azure 提供的功能可真正将要求苛刻的企业应用程序（例如 Dynamics AX、Dynamics CRM、Exchange Server、SAP Business Suite 和 SharePoint 场）直接转移到云中。 可以在要求保持一贯高性能和低延迟的应用程序（例如 SQL Server、Oracle、MongoDB、MySQL 和 Redis）中运行性能密集型数据库工作负荷。
 
 > [!NOTE]
 > 为了实现应用程序的最佳性能，我们建议将需要高 IOPS 的 VM 磁盘迁移到高级存储。 如果磁盘不需要高 IOPS，可以通过将其保留在标准 Azure 存储中来帮助限制成本。 在标准存储中，VM 磁盘数据存储在硬盘驱动器 (HDD) 而不是 SSD 上。
-> 
 
 Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 
@@ -44,7 +44,6 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 
 > [!NOTE]
 > 大多数区域推出了高级存储。 有关可用区域的列表，请参阅[可用 Azure 产品(按区域)](https://azure.microsoft.com/regions/#services) 中的**磁盘存储**所在的行。
-> 
 
 ## <a name="features"></a>功能
 
@@ -52,7 +51,7 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 
 * **高级存储磁盘**
 
-    高级存储支持可附加到特定大小系列 VM 的 VM 磁盘。 高级存储支持各种 Azure VM。 可以选择七种磁盘大小：P4 (32 GB)、P6 (64 GB)、P10 (128 GB)、P15 (256 GB)、P20 (512 GB)、P30 (1024 GB)、P40 (2048 GB)、P50 (4095 GB)。 不过，仅托管磁盘支持 P4 和 P6 磁盘大小。 每种磁盘大小都有自身的性能规范。 根据应用程序的要求，可将一个或多个磁盘附加到 VM。 [高级存储的可伸缩性和性能目标](#scalability-and-performance-targets)中更详细介绍了规范。
+    高级存储支持可附加到特定大小系列 VM 的 VM 磁盘。 高级存储支持各种 Azure VM。 有 8 种 GA 磁盘大小可选：P4 (32 GiB)、P6 (64 GiB)、P10 (128 GiB)、P15 (256 GiB)、P20 (512 GiB)、P30 (1,024 GiB)、P40 (2,048 GiB)、P50 (4,095 GiB)。 以及 3 种预览磁盘大小：P60 8,192 GiB (8 TiB)、P70 16,348 GiB (16 TiB)、P80 32,767 GiB (32 TiB)。 目前，仅托管磁盘支持 P4、P6、P60、P70 和 P80 磁盘大小。 每种磁盘大小都有自身的性能规范。 根据应用程序的要求，可将一个或多个磁盘附加到 VM。 [高级存储的可伸缩性和性能目标](#scalability-and-performance-targets)中更详细介绍了规范。
 
 * **高级页 Blob**
 
@@ -152,16 +151,11 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 ### <a name="premium-storage-disk-limits"></a>高级存储磁盘限制
 预配高级存储磁盘时，磁盘的大小将确定最大 IOPS 和吞吐量（带宽）。 Azure 提供了八种类型的高级存储磁盘：P4（仅适用于托管磁盘）、P6（仅适用于托管磁盘）、P10、P15、P20、P30、P40 和 P50。 每种高级存储磁盘类型在 IOPS 和吞吐量方面存在具体的限制。 下表描述了磁盘类型的限制：
 
-| 高级磁盘类型  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
-|---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
-| 磁盘大小           | 32 GB| 64 GB| 128 GB| 256 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
-| 每个磁盘的 IOPS       | 120   | 240   | 500   | 1100   | 2300              | 5000              | 7500              | 7500              | 
-| 每个磁盘的吞吐量 | 每秒 25 MB  | 每秒 50 MB  | 每秒 100 MB | 每秒 125 MB | 每秒 150 MB | 每秒 200 MB | 每秒 250 MB | 每秒 250 MB | 
+| 高级磁盘类型  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | P60   | P70   | P80   | |---------------------|-------|-------|-------|-------|-------|-------|-------|-------||-------||-------||-------| | 磁盘大小           | 32 GiB| 64 GiB| 128 GiB| 256 GiB| 512 GiB            | 1024 GiB (1 TiB)    | 2048 GiB (2 TiB)    | 4095 GiB (4 TiB)    | 8192 GiB (8 TiB)    | 16,384 GiB (16 TiB)    | 32,767 GiB (32 TiB)    | | IOPS/磁盘       | 120   | 240   | 500   | 1100   | 2300              | 5000              | 7500              | 7500              | 12,500              | 15,000              | 20,000              | | 每磁盘吞吐量 | 25 MB/秒  | 50 MB/秒  | 100 MB/秒 | 125 MB/秒 | 150 MB/秒 | 200 MB/秒 | 250 MB/秒 | 250 MB/秒 | 480 MB/秒 | 750 MB/秒 | 750 MB/秒 |
 
 > [!NOTE]
 > 请确保 VM 上有足够的带宽可用来驱动磁盘流量，如[高级存储支持的 VM](#premium-storage-supported-vms) 中所述。 否则，磁盘吞吐量和 IOPS 将限制为较小的值。 最大吞吐量和 IOPS 基于 VM 限制，而不是上表中所述的磁盘限制。  
-> 
-> 
+> Azure 将高级存储平台设计为可以进行大规模并行处理。 将应用程序设计为多线程有助于实现较大磁盘大小提供的高性能目标。
 
 下面是在高级存储可伸缩性和性能目标方面需要知道的一些重要事项：
 
@@ -172,11 +166,10 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 * **磁盘大小**
 
     Azure 会将磁盘大小映射（向上舍入）到上一部分的表格中指定的最接近高级存储磁盘选项。 例如，大小为 100 GB 的磁盘将分类为 P10 选项。 该选项可执行的 IOPS 最高为 500，吞吐量最高为 100-MB/秒。 同样，大小为 400 GB 的磁盘将分类为 P20 选项。 该选项可执行的 IOPS 最高为 2,300，吞吐量最高为 150-MB/秒。
-    
+
     > [!NOTE]
     > 可以轻松增加现有磁盘的大小。 例如，可能想要将 30-GB 大小的磁盘增加到 128 GB 甚至 1 TB。 或者，可能想要将 P20 磁盘转换为 P30 磁盘，因为需要更高的容量或更高的 IOPS 和吞吐量。 
-    > 
- 
+
 * **I/O 大小**
 
     一个 I/O 的大小为 256 KB。 如果要传输的数据小于 256 KB，该数据会被视为 1 个 I/O 单位。 更大的 I/O 大小被视为多个 256 KB 大小的 I/O。 例如，1,100 KB 的 I/O 被视为 5 个 I/O 单位。
@@ -193,9 +186,10 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 
 * **缓存命中数**
 
-    缓存命中数不受磁盘已分配 IOPS 或吞吐量的限制。 例如，在高级存储支持的 VM 上使用具有 ReadOnly 缓存设置的数据磁盘时，缓存提供的读取数不受磁盘的 IOPS 和吞吐量上限的约束。 如果磁盘的工作负荷以读取为主，可以获得极高的吞吐量。 缓存根据 VM 大小在 VM 级别受到不同 IOPS 和吞吐量的限制。 DS 系列 VM 大约有 4,000 IOPS，缓存与本地 SSD I/O 的吞吐量为每个核心 33-MB/秒。 GS 系列 VM 限制为 5,000 IOPS，缓存与本地 SSD I/O 的吞吐量为每个核心 50-MB/秒。 
+    缓存命中数不受磁盘已分配 IOPS 或吞吐量的限制。 例如，在高级存储支持的 VM 上使用具有 ReadOnly 缓存设置的数据磁盘时，缓存提供的读取数不受磁盘的 IOPS 和吞吐量上限的约束。 如果磁盘的工作负荷以读取为主，可以获得极高的吞吐量。 缓存根据 VM 大小在 VM 级别受到不同 IOPS 和吞吐量的限制。 DS 系列 VM 大约有 4,000 IOPS，缓存与本地 SSD I/O 的吞吐量为每个核心 33-MB/秒。 GS 系列 VM 限制为 5,000 IOPS，缓存与本地 SSD I/O 的吞吐量为每个核心 50-MB/秒。
 
 ## <a name="throttling"></a>限制
+
 如果应用程序的 IOPS 或吞吐量超过高级存储磁盘的分配限制，可能会发生限制。 此外，如果 VM 上所有磁盘的总磁盘流量超过 VM 可用的磁盘带宽限制，也可能会发生限制。 为了避免限制，我们建议限制磁盘的挂起 I/O 请求数。 请根据预配磁盘的可伸缩性和性能目标，以及 VM 可用的磁盘带宽使用限制。  
 
 当应用程序设计为避免限制情况时，可以达到最低延迟。 但是，如果磁盘的挂起 I/O 请求数过小，应用程序将无法利用磁盘可用的最大 IOPS 和吞吐量级别。
@@ -203,17 +197,19 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 以下示例演示如何计算限制级别。 所有计算基于 256 KB 的 I/O 单位大小。
 
 ### <a name="example-1"></a>示例 1
+
 在 P10 磁盘上，应用程序在一秒内已处理 495 个 16-KB 大小的 I/O 单位。 这些 I/O 单位被统计为 495 IOPS。 如果在该秒内尝试 2-MB 的 I/O，I/O 单位的总数等于 495 + 8 IOPS。 这是因为当 I/O 单位大小为 256 KB 时，2 MB I/O = 2,048 KB / 256 KB = 8 个 I/O 单位。 由于 495 + 8 的总和超出磁盘的 500 IOPS 限制，因此会发生限制。
 
 ### <a name="example-2"></a>示例 2
+
 在 P10 磁盘上，应用程序已处理 400 个 256 KB 大小的 I/O 单位。 使用的总带宽为 (400 &#215; 256) / 1,024 KB = 100 MB/秒。 P10 磁盘的吞吐量限制为 100 MB/秒。 如果应用程序尝试在该秒内执行更多 I/O 操作，则会发生限制，因为这超出了分配的限制。
 
 ### <a name="example-3"></a>示例 3
+
 某个 DS4 VM 附加了两个 P30 磁盘。 每个 P30 磁盘的吞吐量可达到 200-MB/秒。 但是，DS4 VM 的总磁盘带宽容量为 256 MB/秒。 无法在此 DS4 VM 上同时以最大吞吐量驱动两个附加的磁盘。 若要解决此问题，可在一个磁盘上保持 200 MB/秒的流量，在另一个磁盘上保持 56 MB/秒的流量。 如果磁盘流量的总和超过 256 MB/秒，磁盘流量将受到限制。
 
 > [!NOTE]
 > 如果磁盘流量主要包括小型 I/O，应用程序在发生吞吐量限制之前可能会先达到 IOPS 限制。 但是，如果磁盘流量主要包括大型 I/O，应用程序可能会先达到吞吐量限制，而不是 IOPS 限制。 可以使用最佳的 I/O 大小来最大化应用程序的 IOPS 和吞吐量容量。 此外，可以限制磁盘的挂起 I/O 请求数。
-> 
 
 若要详细了解如何使用高级存储实现高性能设计，请阅读[使用高级存储实现高性能设计](../articles/virtual-machines/windows/premium-storage-performance.md)一文。
 
@@ -312,11 +308,12 @@ sudo yum install microsoft-hyper-v
 * [虚拟机定价](https://azure.microsoft.com/pricing/details/virtual-machines/)
 * [托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/)
 
-## <a name="azure-backup-support"></a>Azure 备份支持 
+## <a name="azure-backup-support"></a>Azure 备份支持
 
 对于区域性灾难恢复，必须使用 [Azure 备份](../articles/backup/backup-introduction-to-azure-backup.md)和用作备份保管库的 GRS 存储帐户来备份不同区域中的 VM 磁盘。
 
 若要创建可执行基于时间的备份、轻松实现 VM 还原并采用备份保留策略的备份作业，请使用 Azure 备份。 可对非托管磁盘和托管磁盘使用备份。 有关详细信息，请参阅[对包含非托管磁盘的 VM 使用 Azure 备份](../articles/backup/backup-azure-vms-first-look-arm.md)和[对包含托管磁盘的 VM 使用 Azure 备份](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)。 
 
 ## <a name="next-steps"></a>后续步骤
+
 有关高级存储的详细信息，请参阅以下文章。

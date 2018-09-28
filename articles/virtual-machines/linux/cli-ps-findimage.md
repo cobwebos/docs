@@ -16,19 +16,19 @@ ms.workload: infrastructure
 ms.date: 02/28/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f1091b9d252f32086c237e7c62f11c166eb558a6
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 33ffb9d1685f3d76e884ae0d90545f659b5ec87c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345151"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953338"
 ---
 # <a name="how-to-find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>如何使用 Azure CLI 在 Azure 市场中查找 Linux VM 映像
-本主题介绍如何使用 Azure CLI 2.0 在 Azure 市场中查找 VM 映像。 使用 CLI、资源管理器模板或其他工具以编程方式创建 VM 时，使用此信息指定市场映像。
+本主题介绍如何使用 Azure CLI 在 Azure 市场中查找 VM 映像。 使用 CLI、资源管理器模板或其他工具以编程方式创建 VM 时，使用此信息指定市场映像。
 
 还可以使用 [Azure 市场](https://azuremarketplace.microsoft.com/)店面、[Azure 门户](https://portal.azure.com)或 [Azure PowerShell](../windows/cli-ps-findimage.md) 浏览可用的映像和产品/服务。 
 
-确保已安装最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2) 并已登录到 Azure 帐户 (`az login`)。
+请确保已安装最新版的 [Azure CLI](/cli/azure/install-azure-cli) 且已登录到 Azure 帐户 (`az login`)。
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 

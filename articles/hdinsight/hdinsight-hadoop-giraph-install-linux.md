@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: jasonh
-ms.openlocfilehash: 5fbc325e0b0b0e3cdf0d9156ab115d3cbf77f6dd
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: f5d7a5587d47f7601f8dc3f65318a6b7d486f58e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104799"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953287"
 ---
 # <a name="install-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>在 HDInsight Hadoop 群集上安装 Giraph 并使用 Giraph 处理大型图形
 
@@ -58,7 +58,7 @@ ms.locfileid: "43104799"
 > [!NOTE]
 > 可以通过下列任一方法应用脚本操作：
 > * Azure PowerShell
-> * Azure CLI
+> * Azure 经典 CLI
 > * HDInsight .NET SDK
 > * Azure 资源管理器模板
 > 

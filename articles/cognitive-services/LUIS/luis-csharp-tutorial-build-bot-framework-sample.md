@@ -1,24 +1,25 @@
 ---
-title: 使用 C# 通过 Bot Builder SDK 将 LUIS 与机器人集成 - Azure 认知服务 | Microsoft Docs
-description: 使用 C# 构建集成了语言理解 (LUIS) 的聊天机器人。 此聊天机器人使用预建的 HomeAutomation 域来快速实现机器人解决方案。
+title: 使用 C# 的 LUIS 机器人 - Web 应用机器人 - Bot Framework SDK 3.0
+titleSuffix: Azure Cognitive Services
+description: 使用 C# 构建集成了语言理解 (LUIS) 的聊天机器人。 此聊天机器人使用预生成的 HomeAutomation 域来快速实现机器人解决方案。
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 08/13/2018
+ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: d0010ccf51fc688fa66e1be82c735ae38455509b
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 2779c4109201cf40a8771f9e339d60680cb3ef31
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41929710"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950993"
 ---
-# <a name="web-app-bot-using-the-luis-template-for-c"></a>使用适用于 C# 的 LUIS 模板的 Web 应用机器人
+# <a name="luis-bot-in-c"></a>采用 C# 的 LUIS 机器人
 
-使用 C# 构建集成了语言理解 (LUIS) 的聊天机器人。 此聊天机器人使用预建的 HomeAutomation 域来快速实现机器人解决方案。 
+使用 C# 构建集成了语言理解 (LUIS) 的聊天机器人。 此聊天机器人使用预生成的 HomeAutomation 域来快速实现机器人解决方案。 该机器人是使用 Bot Framework 3.x 和 Azure Web 应用机器人生成的。
 
 ## <a name="prerequisite"></a>先决条件
 
@@ -46,7 +47,10 @@ ms.locfileid: "41929710"
 4. 在“机器人服务”中，提供所需信息，然后单击“创建”。 此操作可创建机器人服务和 LUIS 应用并将其部署到 Azure。 如果想要使用[语音启动](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)，请在创建机器人前查看[区域要求](luis-resources-faq.md#what-luis-regions-support-bot-framework-speech-priming)。 
     * 将“应用名称”设置为机器人名称。 将机器人部署到云（例如，mynotesbot.azurewebsites.net）时，该名称用作子域。 <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
     * 选择“订阅”、“[资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)”、“应用服务计划”和“[位置](https://azure.microsoft.com/regions/)”。
-    * 对于“机器人模板”字段，选择“语言理解(C#)”模板。
+    * 对于“机器人模板”，请选择：
+        * **SDK v3**
+        * **C#**
+        * **语言理解**
     * 选择“LUIS 应用位置”。 这是创建应用的创作[区域](luis-reference-regions.md)。
     * 勾选法律声明的确认复选框。 法律声明条款在该复选框下方。
 

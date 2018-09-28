@@ -1,29 +1,29 @@
 ---
-title: 教程 - 在 Azure 成本管理中分配访问权限 | Microsoft Docs
-description: 本教程介绍如何使用定义对实体的访问级别的用户帐户分配对成本管理数据的访问权限。
+title: 教程 - 使用 Azure 中的 Cloudyn 分配访问权限 | Microsoft Docs
+description: 本教程介绍如何使用定义实体访问级别的用户帐户分配对 Cloudyn 数据的访问权限。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 07/10/2018
+ms.date: 09/18/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: 4b45d917118d5be1252c3bb232e4b24e68d7857f
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: b3dcfc1756932d75f9885490baa8d09af54d111c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188176"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46957459"
 ---
-# <a name="tutorial-assign-access-to-cost-management-data"></a>教程：分配对成本管理数据的访问权限
+# <a name="tutorial-assign-access-to-cloudyn-data"></a>教程：分配对 Cloudyn 数据的访问权限
 
-对成本管理数据的访问权限通过用户或实体管理提供。 Cloudyn 用户帐户确定对实体和管理功能的访问权限。 有两种类型的访问权限：管理员和用户。 除非按用户进行修改，否则管理员访问权限允许用户在 Cloudyn 门户中不受限制地使用所有功能，包括：用户管理、收件人列表管理以及对所有实体数据的根实体访问权限。 用户访问权限旨在供最终用户使用他们对实体数据拥有的访问权限来查看报表和创建报表。
+对 Cloudyn 的访问权限通过用户或实体管理提供。 Cloudyn 用户帐户确定对实体和管理功能的访问权限。 有两种类型的访问权限：管理员和用户。 除非按用户进行修改，否则管理员访问权限允许用户在 Cloudyn 门户中不受限制地使用所有功能，包括：用户管理、收件人列表管理以及对所有实体数据的根实体访问权限。 用户访问权限旨在供最终用户使用他们对实体数据拥有的访问权限来查看报表和创建报表。
 
 实体用于反映业务组织的层次结构。 它们在 Cloudyn 中标识组织中的部门、分支机构和团队。 实体层次结构可帮助准确跟踪实体的花费。
 
-当你注册了 Azure 协议或帐户时，拥有管理员权限的帐户会在 Cloudyn 中进行创建，以便你可以执行本教程中的所有步骤。 本教程介绍对成本管理数据（包括用户管理和实体管理）的访问权限。 学习如何：
+当你注册了 Azure 协议或帐户时，拥有管理员权限的帐户会在 Cloudyn 中进行创建，以便你可以执行本教程中的所有步骤。 本教程介绍了对 Cloudyn 数据的访问，包括用户管理和实体管理。 学习如何：
 
 > [!div class="checklist"]
 > * 创建拥有管理员访问权限的用户
@@ -38,7 +38,7 @@ ms.locfileid: "39188176"
 ## <a name="prerequisites"></a>先决条件
 
 - 必须具有 Azure 帐户。
-- 必须有 Azure 成本管理的试用注册版或付费订阅版。
+- 必须有 Cloudyn 的试用注册版或付费订阅版。
 
 ## <a name="create-a-user-with-admin-access"></a>创建拥有管理员访问权限的用户
 
@@ -50,7 +50,7 @@ ms.locfileid: "39188176"
   ![添加拥有管理员访问权限的新用户](.\media\tutorial-user-access\new-admin-access.png)
 
 ## <a name="create-a-user-with-user-access"></a>创建拥有用户访问权限的用户
-需要访问成本管理数据（如仪表板和报表）的典型用户应拥有用户访问权限来查看这些内容。 创建拥有用户访问权限的新用户，这与使用管理员访问权限创建的用户类似，不过具有以下差异：
+需要访问 Cloudyn 数据（如仪表板和报表）的典型用户应拥有用户访问权限来查看这些内容。 创建拥有用户访问权限的新用户，这与使用管理员访问权限创建的用户类似，不过具有以下差异：
 
 - 清除“允许用户管理”、“允许收件人列表管理”，然后清除**用户拥有管理员访问权限**列表中的所有内容。
 - 在“用户拥有用户访问权限”列表中选择用户需要访问的实体。
@@ -58,7 +58,7 @@ ms.locfileid: "39188176"
 
 ![添加拥有用户访问权限的新用户](.\media\tutorial-user-access\new-user-access.png)
 
-若要观看有关如何添加用户的教程视频，请参阅[将用户添加到 Azure 成本管理](https://youtu.be/Nzn7GLahx30)。
+若要观看有关如何添加用户的教程视频，请参阅[将用户添加到 Cloudyn](https://youtu.be/Nzn7GLahx30)。
 
 ## <a name="delete-a-user"></a>删除用户
 
@@ -114,9 +114,9 @@ ms.locfileid: "39188176"
 
 还可以将多个帐户关联到一个实体。 选择这些帐户，然后单击“移动”。 在“移动帐户”框中，选择要将帐户移到的实体，然后单击“保存”。 “移动帐户”框会要求你确认是否要移动帐户。 单击“是”，然后单击“确定”。
 
-若要观看有关如何创建成本实体层次结构的教程视频，请参阅[在 Azure 成本管理中创建成本实体层次结构](https://youtu.be/dAd9G7u0FmU)。
+若要观看有关如何创建成本实体层次结构的教程视频，请参阅[在 Cloudyn 中创建成本实体层次结构](https://youtu.be/dAd9G7u0FmU)。
 
-如果是 Azure 企业协议用户，请在[使用 Azure 成本管理连接到 Azure 资源管理器](https://youtu.be/oCIwvfBB6kk)中观看教程视频，了解如何将帐户和订阅关联到实体。
+如果是 Azure 企业协议用户，请在[使用 Cloudyn 连接到 Azure 资源管理器](https://youtu.be/oCIwvfBB6kk)中观看教程视频，了解如何将帐户和订阅关联到实体。
 
 ## <a name="next-steps"></a>后续步骤
 
