@@ -49,7 +49,7 @@ ms.locfileid: "42888620"
 
 此数据集可以下载，与之前上传用于批处理测试的文件相同。
 
-|省/直辖市/自治区|含义|
+|状态|含义|
 |--|--|
 |![测试成功绿色圆圈图标](./media/luis-how-to-batch-test/batch-test-result-green.png)|所有陈述都成功完成。|
 |![测试未通过红色 x 图标](./media/luis-how-to-batch-test/batch-test-result-red.png)|至少一个陈述意向与预测不匹配。|
