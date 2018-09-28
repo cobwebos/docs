@@ -1,5 +1,5 @@
 ---
-title: Azure 中的监视数据的源 | Microsoft Docs
+title: Azure Monitor 中的数据的来源 | Microsoft Docs
 description: 介绍用于监视 Azure 资源及其上运行的应用程序的运行状况和性能的数据。
 documentationcenter: ''
 author: bwren
@@ -10,27 +10,35 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/05/2018
+ms.date: 09/15/2018
 ms.author: bwren
-ms.openlocfilehash: 48cbfac78b41b47419799584837e094d45757628
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: b10236a1e0307c9464d58e50eb0c7b4e6a60b5e5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627451"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987746"
 ---
-# <a name="sources-of-monitoring-data-in-azure"></a>Azure 中的监视数据源
-本文介绍用于监视 Azure 资源及其上运行的应用程序的运行状况和性能的数据。  使用[收集 Azure 中的监视数据](monitoring-data-collection.md)中介绍的工具收集和分析该数据
+# <a name="sources-of-data-in-azure-monitor"></a>Azure Monitor 中的数据的来源
+本文介绍了由 Azure Monitor 收集的用于监视资源及其上运行的应用程序的运行状况和性能的数据的来源。 这些资源可能在 Azure 中，在其他云中或在本地。  有关此数据如何存储以及如何查看它的详细信息，请参阅 [Azure Monitor 收集的数据](monitoring-data-collection.md)。
 
-Azure 中的监视数据来自多个源，这些源可以整理成层，最高的层是你的应用程序，最低的层是 Azure 平台。 下图对此进行了描述，每个层在以下各部分详细说明。
+Azure 中的监视数据来自各种来源，这些来源可以组织为层，最高的层是你的应用程序和任何操作系统，较低的层是 Azure 平台的组件。 下图对此进行了描述，每个层在以下各部分详细说明。
 
 ![监视数据的层](media/monitoring-data-sources/monitoring-tiers.png)
 
+## <a name="azure-tenant"></a>Azure 租户
+与你的 Azure 租户相关的遥测数据是从租户级服务（例如 Azure Active Directory）中收集的。
+
+![Azure 租户集合](media/monitoring-data-sources/tenant-collection.png)
+
+### <a name="azure-active-directory-audit-logs"></a>Azure Active Directory 审核日志
+[Azure Active Directory 报告](../active-directory/reports-monitoring/overview-reports.md)包含特定租户中的登录活动历史记录和更改审核日志。 可以将这些审核日志写入到 Log Analytics 中，以便将其与其他日志数据一起进行分析。
+
 
 ## <a name="azure-platform"></a>Azure 平台
-与 Azure 本身的运行状况和操作相关的遥测数据包含 Azure 订阅或租户的操作和管理数据。 它包括存储在 Azure 活动日志中的服务运行状况数据，以及 Azure Active Directory 中的审核日志。
+与 Azure 本身的运行状况和操作相关的遥测数据包含 Azure 订阅的操作和管理数据。 它包括存储在 Azure 活动日志中的服务运行状况数据，以及 Azure Active Directory 中的审核日志。
 
-![Azure 集合](media/monitoring-data-sources/azure-collection.png)
+![Azure 订阅集合](media/monitoring-data-sources/azure-collection.png)
 
 ### <a name="azure-service-health"></a>Azure 服务运行状况
 [Azure 服务运行状况](../monitoring-and-diagnostics/monitoring-service-notifications.md)提供订阅中应用程序和资源所依赖的 Azure 服务的运行状况信息。 可以根据当前的以及预期的可能会影响应用程序的关键问题创建警报，以便到时获得通知。 服务运行状况记录存储在 [Azure 活动日志](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)中，你可以在活动日志资源管理器中查看，并将其复制到 Log Analytics 中。
@@ -41,9 +49,6 @@ Azure 中的监视数据来自多个源，这些源可以整理成层，最高�
 可以在 Azure 门户中特定资源的页面上查看其活动日志，或在[活动日志资源管理器](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)中的多个资源处查看日志。 可以将日志项目复制到 Log Analytics 中，与其他监视数据组合在一起，这特别有用。 也可使用[事件中心](../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md)将其发送到其他位置。
 
 
-### <a name="azure-active-directory-audit-logs"></a>Azure Active Directory 审核日志
-[Azure Active Directory 报告](../active-directory/reports-monitoring/overview-reports.md)包含特定租户中的登录活动历史记录和更改审核日志。 目前不能将 Azure Active Directory 审核数据与其他监视数据组合在一起，因为该审核数据只能通过 Azure Active Directory 和 [Azure Active Directory 报告 API](../active-directory/reports-monitoring/concept-reporting-api.md) 进行访问。
-
 
 ## <a name="azure-services"></a>Azure 服务
 指标和资源级诊断日志提供 Azure 资源的内部操作的信息。 这些适用于大多数 Azure 服务。管理解决方案提供特定服务的更多见解。
@@ -52,7 +57,7 @@ Azure 中的监视数据来自多个源，这些源可以整理成层，最高�
 
 
 ### <a name="metrics"></a>度量值
-大多数 Azure 服务会生成反映其性能和运行的指标。 具体[指标因资源类型而异](../monitoring-and-diagnostics/monitoring-supported-metrics.md)。  这些指标可以在指标资源管理器中访问，并且可以复制到 Log Analytics 中进行趋势推断和其他分析。
+大多数 Azure 服务会生成反映其性能和运行的[平台指标](monitoring-data-collection.md#metrics)。 具体[指标因资源类型而异](../monitoring-and-diagnostics/monitoring-supported-metrics.md)。  这些指标可以在指标资源管理器中访问，并且可以复制到 Log Analytics 中进行趋势推断和其他分析。
 
 
 ### <a name="resource-diagnostic-logs"></a>资源诊断日志
@@ -60,11 +65,11 @@ Azure 中的监视数据来自多个源，这些源可以整理成层，最高�
 
 不能直接在 Azure 门户中查看诊断日志，但可以[将它们发送到 Azure 存储进行存档](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)，然后将它们导出到[事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)以便重定向到其他服务，或者导出[到 Log Analytics](../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) 进行分析。 某些资源可以直接写入到 Log Analytics 中，而另一些资源则只能先写入到存储帐户，然后再[导入 Log Analytics 中](../log-analytics/log-analytics-azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage)。
 
-### <a name="management-solutions"></a>管理解决方案
- [管理解决方案](../monitoring/monitoring-solutions.md)通过收集数据来提供特定服务的更多操作见解。 这些解决方案将数据收集到 Log Analytics，以便在其中使用[查询语言](../log-analytics/log-analytics-log-search.md)或通常包括在解决方案中的视图对这些数据进行分析。
+### <a name="monitoring-solutions"></a>监视解决方案
+ [监视解决方案](../monitoring/monitoring-solutions.md)通过收集数据来提供针对特定服务或应用程序的更多操作见解。 这些解决方案将数据收集到 Log Analytics，以便在其中使用[查询语言](../log-analytics/log-analytics-log-search.md)或通常包括在解决方案中的[视图](../log-analytics/log-analytics-view-designer.md)对这些数据进行分析。
 
 ## <a name="guest-operating-system"></a>来宾操作系统
-除了所有 Azure 服务生成的遥测数据，计算资源还有来宾操作系统需要监视。 安装一个或多个代理以后，即可将来宾的遥测数据收集到与 Azure 服务本身相同的监视工具中。
+Azure 中的、其他云中的以及本地的计算资源都有要监视的来宾操作系统。 安装一个或多个代理以后，即可将来宾的遥测数据收集到与 Azure 服务本身相同的监视工具中。
 
 ![Azure 计算资源收集](media/monitoring-data-sources/compute-resource-collection.png)
 
@@ -73,7 +78,7 @@ Azure 中的监视数据来自多个源，这些源可以整理成层，最高�
 
 
 ### <a name="log-analytics-agent"></a>Log Analytics 代理
-可以将 Log Analytics 代理安装在任何 Windows 或 Linux 虚拟机或物理计算机上。 虚拟机可以在 Azure 中运行，也可以在其他云中或本地运行。  代理可以直接连接到 Log Analytics，也可以通过[连接的 System Center Operations Manager 管理组](../log-analytics/log-analytics-om-agents.md)进行连接，适用于从配置的[数据源](../log-analytics/log-analytics-data-sources.md)收集数据，或者从[管理解决方案](../monitoring/monitoring-solutions.md)收集数据，以便提供在虚拟机上运行的应用程序的更多见解。
+可以将 Log Analytics 代理安装在任何 [Windows](../log-analytics/log-analytics-agent-windows.md) 或 [Linux]() 虚拟机或物理计算机上。 虚拟机可以在 Azure 中运行，也可以在其他云中或本地运行。  代理可以直接连接到 Log Analytics，也可以通过[连接的 System Center Operations Manager 管理组](../log-analytics/log-analytics-om-agents.md)进行连接，适用于从配置的[数据源](../log-analytics/log-analytics-data-sources.md)收集数据，或者从[管理解决方案](../monitoring/monitoring-solutions.md)收集数据，以便提供在虚拟机上运行的应用程序的更多见解。
 
 ### <a name="service-map"></a>服务映射
 [服务映射](../operations-management-suite/operations-management-suite-service-map.md)要求在 Windows 和 Linux 虚拟机上有一个依赖项代理。 它可以与 Log Analytics 代理配合使用，用于收集在虚拟机上运行的进程的数据，以及收集外部进程上的依赖项的数据。 它将此数据存储在 Log Analytics 中，并且还包括一个控制台，可以直观地显示所收集的数据以及其他存储在 Log Analytics 中的数据。
@@ -84,17 +89,25 @@ Azure 中的监视数据来自多个源，这些源可以整理成层，最高�
 ![应用程序数据收集](media/monitoring-data-sources/application-collection.png)
 
 
-#### <a name="application-data"></a>应用程序数据
+### <a name="application-data"></a>应用程序数据
 通过安装检测包为应用程序启用 Application Insights 后，它就会收集与应用程序的性能和运行相关的指标 和日志。 这包括有关页面视图、应用程序请求和异常的详细信息。 Application Insights 将收集的数据存储在 Azure 指标和 Log Analytics 中。 它包括各种用于分析此数据的工具，但是也可使用指标资源管理器和日志搜索之类的工具分析来自其他源的数据。
 
 也可使用 Application Insights [创建自定义指标](../application-insights/app-insights-api-custom-events-metrics.md)。  这样就可以定义你自己的逻辑，以便计算出一个数字值，然后将该值与其他可以从指标资源管理器访问的指标一起存储，用于[自动缩放](../monitoring-and-diagnostics/monitoring-autoscale-scale-by-custom-metric.md)和指标警报。
 
-#### <a name="dependencies"></a>依赖项
+### <a name="dependencies"></a>依赖项
 若要监视应用程序的不同逻辑操作，必须[跨多个组件收集遥测数据](../application-insights/app-insights-transaction-diagnostics.md)。 Application Insights 支持[分布式遥测关联](../application-insights/application-insights-correlation.md)，该关联用于确定组件之间的依赖关系，这样就可以将它们放在一起进行分析。
 
-#### <a name="availability-tests"></a>可用性测试
+### <a name="availability-tests"></a>可用性测试
 使用 Application Insights 中的[可用性测试](../application-insights/app-insights-monitor-web-app-availability.md)，可以从公共 Internet 的不同位置测试应用程序的可用性和响应能力。 可以通过简单的 ping 测试来验证应用程序是否处于活动状态，也可以使用 Visual Studio 创建一个模拟用户方案的 Web 测试。  可用性测试不需应用程序中有任何检测。
+
+## <a name="custom-sources"></a>自定义来源
+除了应用程序的标准层之外，还可能需要监视具有不能与其他数据源一起收集的遥测数据的其他资源。 对于这些资源，你需要使用 Azure Monitor API 为此数据进行编码。
+
+![自定义收集数据](media/monitoring-data-sources/custom-collection.png)
+
+### <a name="data-collector-api"></a>数据收集器 API
+Azure Monitor 可以使用[数据收集器 API](../log-analytics/log-analytics-data-collector-api.md) 从任何 REST 客户端收集日志数据。 这样，便可以创建自定义监视方案，并将监视范围扩展到不通过其他源公开遥测数据的资源。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解[监视数据的类型以及用于收集和分析监视数据的 Azure 工具的类型](monitoring-data-collection.md)。
+- 详细了解 [Azure Monitor 收集的监视数据的类型](monitoring-data-collection.md)以及如何查看和分析此数据。
