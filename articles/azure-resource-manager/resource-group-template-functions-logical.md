@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/05/2017
+ms.date: 09/24/2018
 ms.author: tomfitz
-ms.openlocfilehash: d8a7ae412fc80dff7bd91c1cdc5d4fcd985e07f4
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 8745519f1a0fdda7a5feb6ffb3f61e5250bb260a
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359061"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47164781"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的逻辑函数
 
@@ -38,7 +38,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | Type | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |布尔值 |第一个值，需检查其是否为 true。 |
 | arg2 |是 |布尔值 |第二个值，需检查其是否为 true。 |
@@ -75,7 +75,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 前述示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -100,7 +100,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | Type | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字符串或整数 |要转换为布尔值的值。 |
 
@@ -139,7 +139,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | trueString | Bool | True |
 | falseString | Bool | False |
@@ -165,7 +165,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | Type | Description |
 |:--- |:--- |:--- |:--- |
 | 条件 |是 |布尔值 |要检查是否为 true 的值。 |
 | trueValue |是 | 字符串、int、对象或数组 |条件为 true 时返回的值。 |
@@ -239,6 +239,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
         "noOutput": {
             "type": "string",
             "value": "[if(equals('a', 'b'), 'yes', 'no')]"
+        },
+        "objectOutput": {
+            "type": "object",
+            "value": "[if(equals('a', 'a'), json('{\"test\": \"value1\"}'), json('null'))]"
         }
     }
 }
@@ -246,10 +250,11 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 前述示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | yesOutput | String | 是 |
 | noOutput | String | 否 |
+| objectOutput | 对象 | { "test": "value1" } |
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
@@ -270,7 +275,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | Type | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |布尔值 |要转换的值。 |
 
@@ -306,7 +311,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 前述示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -342,7 +347,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 前述示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 
@@ -365,7 +370,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | Type | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |布尔值 |第一个值，需检查其是否为 true。 |
 | arg2 |是 |布尔值 |第二个值，需检查其是否为 true。 |
@@ -402,7 +407,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 前述示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |

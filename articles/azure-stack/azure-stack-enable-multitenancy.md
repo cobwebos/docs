@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: patricka
-ms.openlocfilehash: 0a10662e359379356ecc8d82af1b7d6331c41a65
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 0c49a895a3cd214bb6f9c88b5365cf980c60bf0a
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720049"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451765"
 ---
 # <a name="multi-tenancy-in-azure-stack"></a>Azure Stack 中的多租户
 
@@ -101,7 +101,8 @@ Register-AzSWithMyDirectoryTenant `
 > 如果你的 Azure Stack 管理员将来安装新服务或更新，则你可能需要再次运行此脚本。
 >
 > 随时可以再次运行此脚本来检查目录中的 Azure Stack 应用程序的状态。
-
+> 
+> 如果您已经注意中 （在 1808年更新中引入），托管磁盘创建 Vm 的问题到一个新**磁盘资源提供程序**已添加，需要再次运行此脚本。
 
 ### <a name="activate-the-administrator-and-tenant-portals"></a>激活管理员门户和租户门户
 在完成使用 Azure AD 的部署以后，必须激活 Azure Stack 管理员门户和租户门户。 对于目录的所有用户来说，此激活是指同意为 Azure Stack 门户和 Azure 资源管理器提供正确的权限（已在同意页上列出）。

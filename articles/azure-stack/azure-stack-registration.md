@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2018
+ms.date: 09/28/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 6a929c0226734a95e088e78307f2bbcc0571adef
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 09f5dbdb173e1613ed942391da7baaeb045654e4
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364595"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452524"
 ---
 # <a name="register-azure-stack-with-azure"></a>将 Azure Stack 注册到 Azure
 
@@ -94,6 +94,19 @@ Azure Stack 部署可能处于“已连接”或“已断开连接”状态。
  - **已断开连接**  
  使用从 Azure 部署断开连接选项，可以在没有 Internet 连接的情况下部署和使用 Azure Stack。 但是，使用断开连接部署，你将受限于一个 AD FS 标识存储和基于容量的计费模型。
     - [断开连接的 Azure Stack 使用注册**容量**计费模型 ](#register-disconnected-with-capacity-billing)
+
+### <a name="determine-a-unique-registration-name-to-use"></a>确定要使用的唯一注册名称 
+时将 Azure Stack 注册到 Azure 时，必须提供唯一的注册名称。 若要将 Azure Stack 订阅与 Azure 注册相关联的简单方法是使用 Azure Stack**的云 ID**。 
+
+> [!NOTE]
+> 使用基于容量的计费模型的 azure Stack 注册将需要重新注册这些每年的订阅过期后时更改的唯一名称。
+
+若要确定 Azure Stack 部署的云 ID，先打开 PowerShell，在计算机上的管理员不是可以访问特权终结点，运行以下命令，并记录**CloudID**值： 
+
+```powershell
+Run: Enter-PSSession -ComputerName <privileged endpoint computer name> -ConfigurationName PrivilegedEndpoint
+Run: get-azurestackstampinformation 
+```
 
 ## <a name="register-connected-with-pay-as-you-go-billing"></a>使用即用即付计费模型注册连接的 Azure Stack
 
@@ -257,7 +270,7 @@ Azure Stack 部署可能处于“已连接”或“已断开连接”状态。
 若要获取激活密钥，请运行以下 PowerShell cmdlet:  
 
   ```Powershell
-  $RegistrationResourceName = "AzureStack-<Cloud Id for the Environment to register>"
+  $RegistrationResourceName = "AzureStack-<unique-registration-name>"
   $KeyOutputFilePath = "$env:SystemDrive\ActivationKey.txt"
   $ActivationKey = Get-AzsActivationKey -RegistrationName $RegistrationResourceName -KeyOutputFilePath $KeyOutputFilePath
   ```
@@ -351,7 +364,7 @@ Azure Stack 部署可能处于“已连接”或“已断开连接”状态。
 或者，可以使用注册名称：
 
   ```Powershell
-  $registrationName = "AzureStack-<Cloud ID of Azure Stack Environment>"
+  $registrationName = "AzureStack-<unique-registration-name>"
   Unregister-AzsEnvironment -RegistrationName $registrationName
   ```
 

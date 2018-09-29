@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 09/28/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: b5a876ea8b5cc70ee0ca0dcac8628c12dc2b009b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: ffd22f3612d55258737cb9c004b2b0f4e9326f07
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47414944"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452507"
 ---
 # <a name="use-api-version-profiles-with-java-in-azure-stack"></a>通过 Java 在 Azure Stack 中使用 API 版本配置文件
 
@@ -63,7 +63,7 @@ Java SDK 为 Azure Stack 资源管理器提供了工具来帮助你构建和管�
 
 1.  请按照官方说明安装 Git。 有关说明，请参阅[入门 - 安装 Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)。
 
-2.  按照官方安装说明[Java SDK](http://zulu.org/download/)) 和[Maven](https://maven.apache.org/)。 正确的版本是 Java 开发人员工具包版本 8。 正确的 Apache Maven 是版本 3.0 或更高版本。 JAVA_HOME 环境变量必须设置为 Java 开发工具包的安装位置，若要完成本快速入门。 有关详细信息，请参阅[通过 Java 和 Maven 创建第一个函数](../../azure-functions/functions-create-first-java-maven.md)。
+2.  按照官方安装说明[Java SDK](http://zulu.org/download/)并[Maven](https://maven.apache.org/)。 正确的版本是 Java 开发人员工具包版本 8。 正确的 Apache Maven 是版本 3.0 或更高版本。 JAVA_HOME 环境变量必须设置为 Java 开发工具包的安装位置，若要完成本快速入门。 有关详细信息，请参阅[通过 Java 和 Maven 创建第一个函数](../../azure-functions/functions-create-first-java-maven.md)。
 
 3.  若要安装正确的依赖项包，请在 Java 应用程序中打开 Pom.xml 文件。 添加依赖项，如下面的代码中所示：
 
@@ -89,7 +89,7 @@ Java SDK 为 Azure Stack 资源管理器提供了工具来帮助你构建和管�
 
 ## <a name="prerequisites"></a>必备组件
 
-若要使用.NET 的 Azure SDK 的 Azure Stack，必须提供以下值，并将使用环境变量的值。 若要设置环境变量，请参阅下表为操作系统的说明进行操作。
+若要使用 Azure Java SDK 的 Azure Stack，必须提供以下值，并将使用环境变量的值。 若要设置环境变量，请参阅下表为操作系统的说明进行操作。
 
 | 值                     | 环境变量 | 说明                                                                                                                                                                                                          |
 | ------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -128,7 +128,9 @@ Microsoft Azure 资源管理器是一种管理框架，允许管理员部署、 
 
 - Azure Stack 开发工具包 (ASDK) 中的 **ResourceManagerUrl** 为： https://management.local.azurestack.external/
 
-- **ResourceManagerUrl**在集成系统是：`https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`来检索所需的元数据： `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
+- 集成系统中的 **ResourceManagerUrl** 为：`https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`
+
+若要检索所需的元数据： `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`。
 
 示例 JSON 文件：
 
@@ -149,9 +151,7 @@ Microsoft Azure 资源管理器是一种管理框架，允许管理员部署、 
 
 1.  **com.microsoft.azure.profile\_2018年\_03\_01\_混合**： 构建于 Azure Stack 的最新配置文件。 使用服务的此配置文件是最，只要是 1808年戳记上与 Azure Stack 兼容或更多。
 
-2.  **com.microsoft.azure.profile\_2017年\_03\_09\_配置文件**： 如果您是在低于 1808年生成标记上，使用此配置文件。
-
-3.  **com.microsoft.azure**： 包含的所有服务的最新版本的配置文件。 使用所有服务的最新版本。
+2.  **com.microsoft.azure**： 包含的所有服务的最新版本的配置文件。 使用所有服务的最新版本。
 
 有关 Azure Stack 和 API 的配置文件的详细信息，请参阅[摘要的 API 配置文件](../user/azure-stack-version-profiles.md#summary-of-api-profiles)。
 
@@ -231,14 +231,14 @@ HttpResponse response = httpClient.execute(getRequest);
 
 2.  创建 Azure 服务主体并分配角色以访问订阅。 有关如何创建服务主体的说明，请参阅[使用 Azure PowerShell 创建具有证书的服务主体](../azure-stack-create-service-principals.md)。
 
-3.  检索所需的以下值：
+3.  检索以下必需的环境变量值：
     
-   1.  租户 ID
-   2.  客户端 ID
-   3.  客户端机密
-   4.  订阅 ID
-   5.  资源管理器终结点
-   6.  资源位置
+   1.  TENANT_ID
+   2.  CLIENT_ID
+   3.  CLIENT_SECRET
+   4.  SUBSCRIPTION_ID
+   5.  ARM_ENDPOINT
+   6.  RESOURCE_LOCATION
 
 4.  设置以下环境变量使用检索到使用命令提示符创建从服务主体中的信息：
     
@@ -273,10 +273,8 @@ HttpResponse response = httpClient.execute(getRequest);
    HttpResponse response = httpClient.execute(getRequest);
    ```
 
-7.  在 pom.xml 文件中，添加以下用于 Azure Stack 2018-03-01-混合配置文件的依赖关系。 此依赖项将安装与此配置文件关联的计算、 网络、 存储、 密钥保管库和应用服务资源提供程序的模块。
-    
-   请注意，您可以使用最新的配置文件目标 Azure:
-        
+6.  在 pom.xml 文件中，添加以下用于 Azure Stack 2018-03-01-混合配置文件的依赖关系。 此依赖项将安装与此配置文件关联的计算、 网络、 存储、 密钥保管库和应用服务资源提供程序的模块。
+      
    ```xml
    <dependency>
    <groupId>com.microsoft.azure.profile_2018_03_01_hybrid</groupId>

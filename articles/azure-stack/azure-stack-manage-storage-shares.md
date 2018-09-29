@@ -6,23 +6,22 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: b0e694e4-3575-424c-afda-7d48c2025a62
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 05/10/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: cdfdaf9195f14e3cbe3db2a4507bd91a3133a26e
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: d979692ba32c596058d28c88f32e7e5872ab7ef9
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071379"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452320"
 ---
-# <a name="manage-storage-capacity-for-azure-stack"></a>管理 Azure Stack 的存储容量
+# <a name="manage-storage-capacity-for-azure-stack"></a>管理 Azure Stack 的存储容量 
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
@@ -86,10 +85,15 @@ VM 磁盘包括操作系统磁盘，由租户添加到容器。 VM 还可能包�
 - “已用容量”是存储租户数据和相关元数据的文件中所有盘区使用的数据量（以字节为单位）。
 
 ### <a name="use-the-administrator-portal"></a>使用管理员门户
-云操作员可以使用管理员门户来查看所有共享的存储容量。 转到“存储” > “文件共享”打开文件共享列表，可在其中查看用量信息。
-![示例：存储文件共享](media/azure-stack-manage-storage-shares/storage-file-shares.png)
-- “总计”是共享中可用的总空间（以字节为单位）。 此空间用于存储服务维护的数据和元数据。
-- “已用”是存储租户数据和相关元数据的文件中所有盘区使用的数据量（以字节为单位）。
+云操作员可以使用管理员门户来查看所有共享的存储容量。
+
+1. 登录到[管理门户](https://adminportal.local.azurestack.external)。
+2. 选择**所有服务** > **存储**，打开您可以在其中查看使用情况信息的文件共享列表。 
+
+  ![示例： 存储文件共享](media/azure-stack-manage-storage-shares/storage-file-shares.png)
+
+  - “总计”是共享中可用的总空间（以字节为单位）。 此空间用于存储服务维护的数据和元数据。
+  - “已用”是存储租户数据和相关元数据的文件中所有盘区使用的数据量（以字节为单位）。
 
 ### <a name="storage-space-alerts"></a>存储空间警报
 使用管理员门户时，会收到有关共享空间不足的警报。
