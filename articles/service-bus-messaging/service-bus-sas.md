@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/14/2018
+ms.date: 09/14/2018
 ms.author: spelluru
-ms.openlocfilehash: 2905bff56c5ab49c91f85e0816b84018b27bbb57
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: d75f8654a33d670f107508b9e91661b1a7719755
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700233"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408538"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>使用共享访问签名进行服务总线访问控制
 

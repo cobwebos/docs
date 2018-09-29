@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/14/2018
-ms.author: tonguyen
-ms.openlocfilehash: c782cadadb0250e6c3ca4912dbf8f81e19cb88c5
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.author: cwatson
+ms.openlocfilehash: be2e774bc4220d5d93f555263fa9f342f449f8b2
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42919048"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423436"
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>了解 Microsoft Azure 帐单
 要了解 Azure 帐单，请在 Azure 门户中将发票与每日使用情况明细文件和成本管理报表进行比较。
@@ -141,7 +141,6 @@ Azure 第一方费用针对的是直接由 Azure 开发并提供的资源。 Azu
 
 ## <a name="tips-for-cost-management"></a>成本管理建议
 - 通过使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)和[总拥有成本计算器](https://aka.ms/azure-tco-calculator)估计成本，获取[每项服务的定价信息明细](https://azure.microsoft.com/pricing/)。
-- [设置计费警报](billing-set-up-alerts.md)。
 - [在 Azure 门户中定期查看使用情况和成本](billing-getting-started.md#costs)。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。

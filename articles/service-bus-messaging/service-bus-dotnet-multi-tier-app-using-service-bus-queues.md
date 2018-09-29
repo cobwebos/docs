@@ -8,14 +8,14 @@ manager: timlt
 ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: cd451f50406c8ee9e20420b02988fd63366f9061
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 6ec59c8af290a9ff7b7d9640b2253a0f91886256
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699907"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394346"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>使用 Azure 服务总线队列创建 .NET 多层应用程序
 

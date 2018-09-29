@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 08/06/2018
 ms.author: bahariri
-ms.openlocfilehash: 7c09656f62f3a8a2efd889cf28f12bd5a42e309a
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 063f8bc050064d191dd502b74156be85df4f0031
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745490"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182192"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>将 Akka Streams 与适用于 Apache Kafka 的事件中心配合使用
 本教程演示如何在不更改协议客户端或运行自己的群集的情况下，将 Akka Streams 连接到已启用 Kafka 的事件中心。 适用于 Kafka 的 Azure 事件中心支持 [Apache Kafka 版本 1.0](https://kafka.apache.org/10/documentation.html)。
@@ -27,8 +27,8 @@ ms.locfileid: "42745490"
 > [!div class="checklist"]
 > * 创建事件中心命名空间
 > * 克隆示例项目
-> * 运行 Flink 制造者 
-> * 运行 Flink 使用者
+> * 运行 Akka Streams 生产者 
+> * 运行 Akka Streams 使用者
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -142,8 +142,8 @@ mvn exec:java -Dexec.mainClass="AkkaTestConsumer"
 > [!div class="checklist"]
 > * 创建事件中心命名空间
 > * 克隆示例项目
-> * 运行 Flink 制造者 
-> * 运行 Flink 使用者
+> * 运行 Akka Streams 生产者 
+> * 运行 Akka Streams 使用者
 
 若要详细了解事件中心和适用于 Kafka 的事件中心，请参阅以下主题：  
 

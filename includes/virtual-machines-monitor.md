@@ -1,4 +1,4 @@
-通过收集、查看和分析诊断与日志数据，可以利用很多机会来监视 VM。 若要执行简单的 VM [监视](../articles/monitoring-and-diagnostics/monitoring-overview-azure-monitor.md)，可以在 Azure 门户中使用 VM 的“概述”屏幕。 可以使用[扩展](../articles/virtual-machines/windows/extensions-features.md)配置 VM 的诊断以收集更多指标数据。 还可以使用更为高级的监视选项，如 [Application Insights](../articles/application-insights/app-insights-overview.md) 和 [Log Analytics](../articles/log-analytics/log-analytics-overview.md)。
+通过收集、查看和分析诊断与日志数据，可以利用很多机会来监视 VM。 若要执行简单的 VM [监视](../articles/azure-monitor/overview.md)，可以在 Azure 门户中使用 VM 的“概述”屏幕。 可以使用[扩展](../articles/virtual-machines/windows/extensions-features.md)配置 VM 的诊断以收集更多指标数据。 还可以使用更多高级监视选项，如 [Application Insights](../articles/application-insights/app-insights-overview.md) 和 [Log Analytics](../articles/log-analytics/log-analytics-queries.md)。
 
 ## <a name="diagnostics-and-metrics"></a>诊断和指标 
 

@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
-ms.author: tonguyen
-ms.openlocfilehash: 6601ade7db52043de8150a3fca671591b9b469fd
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.author: cwatson
+ms.openlocfilehash: 4bfaaa51e39a7db297626a8009306eef9e3efa80
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063453"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393775"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>了解 Microsoft Azure 发票的条款
 
@@ -44,7 +44,7 @@ ms.locfileid: "37063453"
 
 ![发票的帐户信息部分](./media/billing-understand-your-invoice/1.png)
 
-| 术语 | 说明 |
+| 术语 | Description |
 | --- | --- |
 | 客户 PO 号 |可选采购订单号，由你分配用于跟踪 |
 | 发票号 |由 Microsoft 生成的唯一发票号，用于跟踪 |
@@ -52,7 +52,7 @@ ms.locfileid: "37063453"
 | 发票日期 |生成发票的日期，通常是计费周期截止的后一天 |
 | 付款方式 |在帐户中使用的付款类型（“发票”或“信用卡”） |
 | 帐单邮寄地址 |列出的帐户的帐单地址 |
-| 订阅产品/服务（“即用即付”） |购买的订阅产品/服务的类型（即用即付、BizSpark Plus、Azure Pass 等）。 有关详细信息，请参阅 [Azure 产品/服务类型](https://azure.microsoft.com/support/legal/offer-details/)。 |
+| 订阅套餐（“即用即付”） |购买的订阅套餐的类型（即用即付、BizSpark Plus、Azure Pass 等）。 有关详细信息，请参阅 [Azure 套餐类型](https://azure.microsoft.com/support/legal/offer-details/)。 |
 | 帐户所有者电子邮件地址 | 注册 Microsoft Azure 帐户时使用的帐户电子邮件地址。 <br /><br />如何更改电子邮件地址，请参阅[如何更改联系人电子邮件、地址和电话号码等 Azure 帐户的个人资料信息](billing-how-to-change-azure-account-profile.md)。 |
 
 ### <a name="understand-the-invoice-summary"></a>了解发票汇总
@@ -65,7 +65,7 @@ ms.locfileid: "37063453"
 #### <a name="understand-the-previous-charges"></a>了解过去的收费
 发票的前期结余、付款和未付余额部分汇总了上次计费周期之后的交易。
 
-| 术语 | 说明 |
+| 术语 | Description |
 | --- | --- |
 | 前期结余 |上次计费周期中结余的总金额 |
 | 付款 |应用到上次计费周期的总付款金额和信用额度 |
@@ -74,17 +74,17 @@ ms.locfileid: "37063453"
 #### <a name="understand-the-current-charges"></a>了解当前费用
 发票的“当前费用”部分显示有关当前计费周期中每月费用的详细信息。
 
-| 术语 | 说明 |
+| 术语 | Description |
 | --- | --- |
 | 使用费 |使用费是当前计费周期中，对订阅收取的每月总费用|
 | 折扣 |应用到当前计费周期的服务折扣|
-| 调整 |应用于当前计费周期的其他信用额度（免费使用、信用额度等）或未付费用。<br/><br/>例如，如果享有 Visual Studio Enterprise with MSDN 优惠，会看到每月信用额度。 如果取消订阅，会看到超出通过订阅产品/服务获得的每月信用额度的所有每月使用费用。 从当前计费周期的开始计费，直到订阅取消日期。 |
+| 调整 |应用于当前计费周期的其他信用额度（免费使用、信用额度等）或未付费用。<br/><br/>例如，如果你享有 Visual Studio Enterprise with MSDN 优惠，就会看到每月信用额度。 如果取消订阅，你会看到超出通过订阅套餐获得的每月信用额度的所有每月使用费用。 从当前计费周期的开始计费，直到订阅取消日期。 |
 
 #### <a name="sold-to-and-payment-instructions"></a>买方和付款说明
 
 下表介绍发票第二页中显示的买方和付款说明。
 
-| 术语 |说明 |
+| 术语 |Description |
 | --- | --- |
 | 买方 |该帐户上的配置文件地址。 <br/><br/>如果需要更改地址，请参阅[如何更改联系人电子邮件、地址和电话号码等 Azure 帐户的个人资料信息](billing-how-to-change-azure-account-profile.md)。|
 | 付款说明 |关于付款方式的说明（例如通过信用卡或通过发票付款）。 |
@@ -97,7 +97,7 @@ ms.locfileid: "37063453"
 
 下表介绍了显示在发票中的使用费列标题。
 
-| 术语 |说明 |
+| 术语 |Description |
 | --- | --- |
 | 名称 |标识该次使用的最上层服务 |
 | Type |定义 Azure 服务类型，该类型可能会影响费率 |

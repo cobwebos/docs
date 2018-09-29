@@ -13,18 +13,18 @@ ms.custom: mvc
 ms.date: 04/01/2018
 ms.workload: data-services
 ms.author: rodrigoa
-ms.openlocfilehash: a50b96f128fb32b8ac7b7b9971beeb3b12397b5f
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 56ac08593d29a9003f5509f2be52f50fa250bd75
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39184972"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431589"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>教程：Azure 流分析 JavaScript 用户定义的函数
  
 Azure 流分析支持以 JavaScript 编写的用户定义的函数。 利用 JavaScript 提供的丰富 **String**、**RegExp**、**Math**、**Array** 和 **Date** 方法，可以更轻松地创建包含流分析作业的复杂数据转换。
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 定义 JavaScript 用户定义的函数
@@ -60,7 +60,7 @@ JavaScript 用户定义的函数支持仅用于计算的且不需要外部连接
 
     ```
     // Convert Hex value to integer.
-    function main(hexValue) {
+    function hex2Int(hexValue) {
         return parseInt(hexValue, 16);
     }
     ```

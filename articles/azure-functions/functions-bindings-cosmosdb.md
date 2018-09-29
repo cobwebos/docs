@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 50a8e491998b37a7ffebd5551cf755e8a9ca738a
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 281d74b6836516e03771d82c96fab628eac12f1a
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093290"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395825"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>适用于 Azure Functions 1.x 的 Azure Cosmos DB 绑定
 
@@ -1607,11 +1607,10 @@ F# 代码如下所示：
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [转到有关使用 Cosmos DB 触发器的快速入门](functions-create-cosmos-db-triggered-function.md)
+* [详细了解如何使用 Cosmos DB 执行无服务器数据库计算](..\cosmos-db\serverless-computing-database.md)
+* [详细了解 Azure Functions 触发器和绑定](functions-triggers-bindings.md)
 
+<!---
 > [!div class="nextstepaction"]
-> [详细了解如何使用 Cosmos DB 执行无服务器数据库计算](..\cosmos-db\serverless-computing-database.md)
-
-> [!div class="nextstepaction"]
-> [详细了解 Azure Functions 触发器和绑定](functions-triggers-bindings.md)
+> [Go to a quickstart that uses a Cosmos DB trigger](functions-create-cosmos-db-triggered-function.md)
+--->

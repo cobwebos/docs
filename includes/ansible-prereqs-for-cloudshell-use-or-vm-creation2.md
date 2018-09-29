@@ -2,13 +2,13 @@
 author: tomarcher
 ms.service: ansible
 ms.topic: include
-ms.date: 08/23/2018
+ms.date: 09/28/2018
 ms.author: tarcher
-ms.openlocfilehash: f6e763f3220205ee00a80db70802cb30fd896998
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: fe747500f19284f019ab6512581a6eea67816f94
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42819082"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47454572"
 ---
- 另外，如果无法访问 Linux 虚拟机，请[使用 Ansible 创建虚拟机](/azure/virtual-machines/linux/ansible-create-vm.md)。
+ 另外，如果无法访问 Linux 虚拟机，请[使用 Ansible 创建虚拟机](/azure/virtual-machines/linux/ansible-create-vm)。

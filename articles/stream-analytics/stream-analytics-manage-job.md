@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/04/2018
-ms.openlocfilehash: 6b924e0555ea7a57f8d5e5309a266b6d2fb44f44
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 1955fc033e0351be9da89bbee11dc41d6281a63a
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702521"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433984"
 ---
 # <a name="create-a-stream-analytics-job-to-analyze-phone-call-data-and-visualize-results-in-a-power-bi-dashboard"></a>通过创建流分析作业来分析电话呼叫数据并在 Power BI 仪表板中将结果可视化
  
@@ -101,12 +101,12 @@ ms.locfileid: "43702521"
 5. 接下来打开一个命令窗口，转到在其中解压缩了 TelcoGenerator 应用程序的文件夹，然后输入以下命令：
 
    ```
-   telcodatagen.exe 1000 .2 2
+   telcodatagen.exe 1000 0.2 2
    ```
 
    此命令采用以下参数：
    * **每小时的呼叫数据记录数**。  
-   * **欺诈概率 (%)** - 应用模拟欺诈呼叫的频率。 值 .2 表示大约有 20% 的通话记录似乎是欺诈性的。  
+   * **欺诈概率 (%)** - 应用模拟欺诈呼叫的频率。 值 0.2 表示大约有 20% 的通话记录似乎具有欺诈性。  
    * **持续时间（小时）**- 应用应运行的小时数。 还可以通过在命令行终止此过程 (Ctrl+C) 来随时停止该应用。
 
    几秒钟后，当应用将电话通话记录发送到事件中心时，应用将开始在屏幕上显示通话记录。 这些电话呼叫数据包含以下字段：
@@ -228,7 +228,7 @@ ms.locfileid: "43702521"
 
 3. 将“分钟”设置为 3，然后选择“确定”。 系统会从输入流中进行 3 分钟的数据采样，并会在示例数据准备就绪时发出通知。 可以在通知栏中查看采样的状态。 
 
-   查询窗口打开时，示例数据会临时存储并可供使用。 如果关闭查询窗口，示例数据将被丢弃，必须创建一组新的示例数据。 或者，也可以从 [GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample Data/telco.json) 获取包含示例数据的 .json 文件，然后上传该 .json 文件，将其用作 CallStream 输入的示例数据。  
+   查询窗口打开时，示例数据会临时存储并可供使用。 如果关闭查询窗口，示例数据将被丢弃，必须创建一组新的示例数据。 或者，也可以从 [GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json) 获取包含示例数据的 .json 文件，然后上传该 .json 文件，将其用作 CallStream 输入的示例数据。  
 
 4. 选择“测试”，对查询进行测试，此时会看到如以下屏幕截图所示的输出结果：  
 
@@ -262,7 +262,7 @@ ms.locfileid: "43702521"
 
 在本教程的此部分，请使用 PowerBI 团队创建的示例性 [ASP.NET](http://asp.net/) Web 应用程序来嵌入仪表板。 有关如何嵌入仪表板的详细信息，请参阅[使用 Power BI 嵌入](https://docs.microsoft.com/power-bi/developer/embedding)一文。
 
-在本教程中，我们将按照用户拥有数据应用程序的情况执行相关步骤。 若要设置应用程序，请访问 [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) Github 存储库，然后按照“用户拥有数据”部分的说明操作（请使用 **integrate-dashboard-web-app** 子部分的重定向 URL 和主页 URL）。 由于我们使用的是“仪表板”示例，因此请使用 [GitHub 存储库](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User Owns Data/integrate-dashboard-web-app)中的 integrate-dashboard-web-app 示例代码。
+在本教程中，我们将按照用户拥有数据应用程序的情况执行相关步骤。 若要设置应用程序，请访问 [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) Github 存储库，然后按照“用户拥有数据”部分的说明操作（请使用 **integrate-dashboard-web-app** 子部分的重定向 URL 和主页 URL）。 由于我们使用的是“仪表板”示例，因此请使用 [GitHub 存储库](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User%20Owns%20Data/integrate-dashboard-web-app)中的 integrate-dashboard-web-app 示例代码。
 在浏览器中运行应用程序以后，请执行以下步骤，将此前创建的仪表板嵌入网页中：
 
 1. 选择“登录到 Power BI”，以便授予应用程序访问 PowerBI 帐户中的仪表板的权限。  

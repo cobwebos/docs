@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
-ms.author: alleonar
-ms.openlocfilehash: cc29d1f613af67604d50654be794cc90080098bb
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.author: erikre
+ms.openlocfilehash: d0199711370dae6a23626337946e45e84fd33047
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064253"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394708"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>使用 REST API 查看订阅计费
 
@@ -45,7 +45,7 @@ Authorization: Bearer
 
 以下标头是必需的： 
 
-|请求标头|说明|  
+|请求标头|Description|  
 |--------------------|-----------------|  
 |Content-Type：|必需。 设置为 `application/json`。|  
 |Authorization：|必需。 设置为有效的 `Bearer` [访问令牌](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
@@ -81,7 +81,7 @@ Authorization: Bearer
 
 **值**中的每一项均表示有关服务使用的详细信息：
 
-|响应属性|说明|
+|响应属性|Description|
 |----------------|----------|
 |**subscriptionGuid** | 订阅的的全局唯一 ID。 | 
 |**startDate** | 使用开始日期。 |

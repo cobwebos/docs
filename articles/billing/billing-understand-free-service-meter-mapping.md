@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
-ms.author: amberb
-ms.openlocfilehash: 3019fe5f8b44eaa32d4ab309f296d6b4574df1d3
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.author: cwatson
+ms.openlocfilehash: 4a8b2c07754b1a1c9679f7b044f112bf03dfb433
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061364"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392102"
 ---
 # <a name="understand-free-service-to-meter-mapping"></a>了解免费服务测定仪映射
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 0ad22562bd1f36bba7c0ab99fe504e82645033d3
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: dcdc84f100ce534ea517f0201b0c090c3059a318
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131404"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160922"
 ---
 # <a name="filters-in-log-analytics-views"></a>Log Analytics 视图中的筛选器
 [Log Analytics 视图](log-analytics-view-designer.md) 中的筛选器使得用户可以在不修改视图本身的情况下，以特定属性的值在视图中筛选数据。  例如，可以允许视图的用户在视图中筛选仅来自特定计算机或特定计算器组的数据。  可以在单个视图上创建多个筛选器，以便用户按多个属性筛选数据。  本文介绍如何使用筛选器并添加一个筛选器到自定义视图。
@@ -46,10 +46,10 @@ ms.locfileid: "37131404"
 
 下表描述了筛选器的设置。
 
-| 设置 | 说明 |
+| 设置 | Description |
 |:---|:---|
 | 字段名称 | 用于筛选的字段的名称。  字段名称必须与“查询值”中的汇总字段匹配。 |
-| 查询值 | 运行查询以填充用户的筛选器下拉列表。  必须使用 [summarize](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) 或 [distinct](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/distinct-operator) 提供特定字段的唯一值，且必须与“字段名称”匹配。  可以使用 [sort](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/sort-operator) 对显示给用户的值进行排序。 |
+| 查询值 | 运行查询以填充用户的筛选器下拉列表。  必须使用 [summarize](/azure/kusto/query/summarizeoperator) 或 [distinct](/azure/kusto/query/distinctoperator) 提供特定字段的唯一值，且必须与“字段名称”匹配。  可以使用 [sort](/azure/kusto/query/sortoperator) 对显示给用户的值进行排序。 |
 | 标记 | 在支持筛选器的查询中使用同时向用户显示的字段的名称。 |
 
 ### <a name="examples"></a>示例
