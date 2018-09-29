@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/18/2017
+ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 00c8b30b5351b7a6e4388b186fab70e3a3357ef4
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: dc1ca62ce184ac290f289975ff609b8240351099
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366301"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035090"
 ---
 # <a name="azure-encryption-overview"></a>Azure 加密概述
 
@@ -29,7 +29,7 @@ ms.locfileid: "34366301"
 
 静态数据包括以任何数字格式驻留在物理介质上的永久性存储中的信息。 该介质可包括磁性介质或光学介质上的文件、归档数据和数据备份。 Microsoft Azure 提供各种数据存储解决方案，以满足不同需求，包括文件、磁盘、blob 和表存储。 Microsoft 还提供加密以保护 [Azure SQL 数据库](../sql-database/sql-database-technical-overview.md)、[Azure Cosmos DB](../cosmos-db/introduction.md) 和 Azure Data Lake。
 
-静态数据加密可用于服务型软件 (SaaS)、平台即服务 (PaaS) 和服务架构 (IaaS) 云模型中的服务。 本文总结并提供资源，以帮助使用 Azure 加密选项。
+静态数据加密可用于服务型软件 (SaaS)、平台即服务 (PaaS) 和基础结构即服务 (IaaS) 云模型中的服务。 本文总结并提供资源，以帮助使用 Azure 加密选项。
 
 有关如何在 Azure 中加密静态数据的更详细的讨论，请参阅 [Azure 静态数据加密](azure-security-encryption-atrest.md)。
 

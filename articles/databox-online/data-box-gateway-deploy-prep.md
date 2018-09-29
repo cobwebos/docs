@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/24/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: f4c3cf5329c10cda3691370e946b8397662a8d66
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4c21245e05625f65b6b5dcf5f7081f5f5d1abb52
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953406"
+ms.locfileid: "47030587"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway-preview"></a>教程：准备部署 Azure Data Box Gateway（预览版）
 
@@ -89,7 +89,7 @@ ms.locfileid: "46953406"
 
 ## <a name="create-a-new-resource"></a>创建新资源
 
-Data Box Gateway 资源的单个实例可以管理多个 Data Box Gateway 虚拟设备。 执行以下步骤，创建新的 Data Box Gateway 资源。 
+执行以下步骤，创建新的 Data Box Gateway 资源。 
 
 如果现有的 Data Box Gateway 资源可以管理虚拟设备，请跳过此步骤并转到[获取激活密钥](#get-the-activation-key)。
 

@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: e6b263c1eb9fe3b151f0a51b5da9a92b8ced4549
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: a4758e5597876112fa7a85850786491e22af8c83
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109736"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037126"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>使用 Azure 虚拟网络服务终结点保护对 Azure Cosmos DB 帐户的访问
 
@@ -25,9 +25,6 @@ Azure Cosmos DB 是一种全球分布式多模型数据库服务。 可将 Azure
 ![虚拟网络服务终结点体系结构](./media/vnet-service-endpoint/vnet-service-endpoint-architecture.png)
 
 使用虚拟网络服务终结点配置 Azure Cosmos DB 帐户后，只能从指定的子网访问该帐户，所有公共/Internet 访问权限将被删除。 若要详细了解服务终结点，请参阅 Azure [虚拟网络服务终结点概述](../virtual-network/virtual-network-service-endpoints-overview.md)一文。
-
-> [!NOTE]
-> 目前可为 Azure Cosmos DB SQL API 或 Mongo API 帐户配置虚拟网络服务终结点。 不久之后，可为其他 API 和主权云（例如 Azure 德国版或 Azure 政府版）配置服务终结点。 如果为 Azure Cosmos DB 帐户配置了现有的 IP 防火墙，请记下防火墙配置，删除 IP 防火墙，然后配置服务终结点 ACL。 配置服务终结点后，可根据需要重新启用 IP 防火墙。
 
 ## <a name="configure-service-endpoint-by-using-azure-portal"></a>使用 Azure 门户配置服务终结点
 ### <a name="configure-service-endpoint-for-an-existing-azure-virtual-network-and-subnet"></a>为现有的 Azure 虚拟网络和子网配置服务终结点

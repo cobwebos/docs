@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 04/29/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9d24e37642a41e4d60b33f42a60d7e56cb4b35b5
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 9a9a86d445deaea4872615f443ad53f76638a758
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446718"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056511"
 ---
 #<a name="using-age-gating-in-azure-ad-b2c"></a>在 Azure AD B2C 中使用年龄门控
 
 >[!IMPORTANT]
->此功能在个人预览版中提供。  当此功能变得可用时，请参阅我们的[服务博客](https://blogs.msdn.microsoft.com/azureadb2c/)了解详细信息，或联系 AADB2CFeedback@microsoft.com。  在我们正式发布前，请勿将此功能用于生产目录，使用这些新功能可能会导致数据丢失，并可能会出现意外的行为更改。  
+>此功能在个人预览版中提供。  当此功能变得可用时，请参阅我们的[服务博客](https://blogs.msdn.microsoft.com/azureadb2c/)了解详细信息，或联系 AADB2CPreview@microsoft.com。  在我们正式发布前，请勿将此功能用于生产目录，使用这些新功能可能会导致数据丢失，并可能会出现意外的行为更改。  
 >
 
 ##<a name="age-gating"></a>年龄门控
@@ -56,13 +56,3 @@ ms.locfileid: "37446718"
 对于允许注册和/或登录的用户流，可以选择阻止未经同意的未成年人进入应用程序。  在 Azure AD B2C 中有两个用于处理被阻止用户的选项：
 * 将 JSON 发送回应用程序 - 此选项会将响应发送回阻止了未成年人的应用程序。
 * 显示错误页 - 向用户显示一个页面，通知他们不能访问该应用程序
-
-##<a name="known-issues"></a>已知问题
-###<a name="format-for-the-response-when-a-minor-is-blocked"></a>未成年人被阻止时响应的格式。
-响应的格式目前不正确，此 bug 将在未来的更新中解决。
-
-###<a name="deleting-specific-attributes-that-were-added-during-setup-can-make-your-directory-unable-to-use-age-gating"></a>删除在设置过程中添加的特定属性可能会使目录无法使用年龄门控。
-在年龄限制的设置过程中，你通过 `Properties` 中的一个选项配置了目录。  如果通过图形删除 `legalCountry` 或 `dateOfBirth`，则租户将无法再使用年龄限制，并且这些属性无法重新创建。
-
-###<a name="list-of-countries-is-incomplete"></a>国家/地区列表不完整
-legalCountry 的国家/地区列表目前不完整，我们将在未来的更新中添加其余的国家/地区。

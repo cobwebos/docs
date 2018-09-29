@@ -8,7 +8,7 @@ manager: swadhwa
 editor: ''
 ms.assetid: b7ceca0d-5c9d-45c4-942c-b3a9b6bad36c
 ms.service: active-directory
-ms.component: protection
+ms.component: user-help
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: femila
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: fbd728ec8cd2c8c4cd7ca74ecd84fd4d0d41cbd0
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 0e7965ddf7be78f8683bd27e28c57eb4373891b5
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42143980"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063432"
 ---
 # <a name="azure-authenticator-for-android"></a>适用于 Android 的 Azure 验证器
 IT 管理员可能会建议使用 Microsoft Azure 验证器登录以访问工作资源。 此应用程序提供以下两个登录选项：

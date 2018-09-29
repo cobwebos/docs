@@ -15,12 +15,12 @@ ms.date: 07/31/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: na
-ms.openlocfilehash: 31e9e6b173a578b09f656850271ed5a8f0f2baa8
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: b5d7b71b76eebc0c14fe1403791c3d4b6cefd7f4
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391325"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161027"
 ---
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>查看或分析使用 Log Analytics 日志搜索收集的数据
 
@@ -85,7 +85,7 @@ Syslog | where (SeverityLevel == "err")
 
 将鼠标悬停在名称为蓝色的属性上时，只具有“筛选器”选项。  这些是“可搜索”字段，针对搜索条件编制了索引。  灰色字段是“自定义文本搜索”字段，只具有“显示引用”选项。  此选项返回任一属性中具有该值的记录。
 
-通过在“记录”菜单中选择“分组依据”选项，可以根据单个属性对结果进行分组。  这会向查询中添加一个 [summarize](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) 运算符，会将结果显示为一个图表。  可以根据多个属性进行分组，但需要直接编辑查询。  选择“计算机”属性旁边的“记录”菜单，并选择“按‘计算机’分组”。  
+通过在“记录”菜单中选择“分组依据”选项，可以根据单个属性对结果进行分组。  这会向查询中添加一个 [summarize](/azure/kusto/query/summarizeoperator) 运算符，会将结果显示为一个图表。  可以根据多个属性进行分组，但需要直接编辑查询。  选择“计算机”属性旁边的“记录”菜单，并选择“按‘计算机’分组”。  
 
 ![按计算机分组](media/log-analytics-tutorial-viewdata/log-analytics-portal-eventlist-04.png)
 
@@ -130,7 +130,7 @@ Perf | where ObjectName == "Processor"  | where CounterName == "% Processor Time
 
 ![处理器利用率](media/log-analytics-tutorial-viewdata/log-analytics-portal-perfsearch-02.png)
 
-这会将数据限制到一个特定的计数器，但数据的显示方式仍不会很有用。  可以折线图的形式显示数据，但首先需要按“计算机”和“TimeGenerated”对数据进行分组。  若要按多个字段进行分组，需要直接修改查询，所以请将查询修改为以下内容。  这会在“CounterValue”属性上使用 [avg](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions/avg()) 函数来计算每小时的平均值。
+这会将数据限制到一个特定的计数器，但数据的显示方式仍不会很有用。  可以折线图的形式显示数据，但首先需要按“计算机”和“TimeGenerated”对数据进行分组。  若要按多个字段进行分组，需要直接修改查询，所以请将查询修改为以下内容。  这会在“CounterValue”属性上使用 [avg](/azure/kusto/query/avg-aggfunction) 函数来计算每小时的平均值。
 
 ```
 Perf  
@@ -140,7 +140,7 @@ Perf
 
 ![性能数据图表](media/log-analytics-tutorial-viewdata/log-analytics-portal-perfsearch-03.png)
 
-现已对数据进行适当分组，通过添加 [render](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/render-operator) 运算符，可在可视图表中显示数据。  
+现已对数据进行适当分组，通过添加 [render](/azure/kusto/query/renderoperator) 运算符，可在可视图表中显示数据。  
 
 ```
 Perf  

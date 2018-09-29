@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/30/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 8edb35b91327bde1fa824ec456b8a98962adb7ce
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 1a18b6f627a28b912baeda6f180297dc703e665e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38634081"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031197"
 ---
 # <a name="tutorial-push-an-updated-image-to-regional-deployments"></a>教程：将已更新的映像推送到区域部署
 
@@ -138,7 +138,7 @@ Webhook 通知 Web 应用，新的映像已推送到注册表，后者会自动�
 
 除了异地复制外，ACR Build 是 Azure 容器注册表的另一项功能，可帮助优化容器部署管道。 从 ACR Build 概述着手，了解其功能：
 
-[使用 ACR Build 自动执行 OS 和框架修补](container-registry-build-overview.md)
+[使用 ACR Build 自动执行 OS 和框架修补](container-registry-tasks-overview.md)
 
 <!-- IMAGES -->
 [deployed-app-eastus-modified]: ./media/container-registry-tutorial-deploy-update/deployed-app-eastus-modified.png

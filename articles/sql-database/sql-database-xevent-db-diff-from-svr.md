@@ -2,20 +2,22 @@
 title: SQL 数据库中的扩展事件 | Microsoft 文档
 description: 介绍 Azure SQL 数据库中的扩展事件 (XEvents)，以及这些事件会话与 Microsoft SQL Server 中的事件会话有怎样的细微差别。
 services: sql-database
-author: MightyPen
-manager: craigg
 ms.service: sql-database
-ms.custom: monitor & tune
-ms.workload: On Demand
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: MightyPen
 ms.author: genemi
-ms.openlocfilehash: 9c0115254fc3368868584e76ead8da812656e4d1
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 8852fc75658298a2c6887d8fef154d5a0b59affd
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37028840"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159901"
 ---
 # <a name="extended-events-in-sql-database"></a>SQL 数据库中的扩展事件
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -80,7 +82,7 @@ ms.locfileid: "37028840"
 
 扩展事件功能受多个[目录视图](http://msdn.microsoft.com/library/ms174365.aspx)的支持。 目录视图告诉你有关当前数据库中用户创建的事件会话的*元数据或定义*的信息。 视图不会返回有关活动事件会话的实例的信息。
 
-| 目录视图<br/>名称 | 说明 |
+| 目录视图<br/>名称 | Description |
 |:--- |:--- |
 | **sys.database_event_session_actions** |返回针对事件会话的每个事件执行的每个操作所对应的行。 |
 | **sys.database_event_session_events** |返回事件会话中每个事件所对应的行。 |
@@ -94,7 +96,7 @@ ms.locfileid: "37028840"
 
 Azure SQL 数据库具有支持扩展事件的[动态管理视图 (DMV)](http://msdn.microsoft.com/library/bb677293.aspx)。 DMV 告诉你有关*活动*事件会话的信息。
 
-| DMV 的名称 | 说明 |
+| DMV 的名称 | Description |
 |:--- |:--- |
 | **sys.dm_xe_database_session_event_actions** |返回有关事件会话操作的信息。 |
 | **sys.dm_xe_database_session_events** |返回有关会话事件的信息。 |

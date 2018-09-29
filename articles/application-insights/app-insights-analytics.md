@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: 170cd76c72e8aeb5de48c711ae4637a0244742fb
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 6db98332fc7d896613a3318421e9a96bbb50cd15
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294194"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159136"
 ---
 # <a name="analytics-in-application-insights"></a>Application Insights 中的 Analytics
 Analytics 是 [Application Insights](app-insights-overview.md) 的强大搜索和查询工具。 Analytics 是一个 Web 工具，因此不需要安装。 如果已经为某个应用配置了 Application Insights，则可以通过从该应用的[概述边栏选项卡](app-insights-dashboards.md)打开 Analytics 来对应用数据进行分析。
@@ -48,9 +48,9 @@ requests
 
 该语言具有许多相当不错的功能：
 
-* 按任何字段（包括自定义属性和指标）[筛选](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator)原始应用遥测。
-* [加入](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/join-operator)多个表 – 将请求与页面视图、依赖项调用、 异常和日志跟踪关联起来。
-* 功能强大的统计[聚合](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions)。
+* 按任何字段（包括自定义属性和指标）[筛选](/azure/kusto/query/whereoperator)原始应用遥测。
+* [加入](/azure/kusto/query/joinoperator)多个表 – 将请求与页面视图、依赖项调用、 异常和日志跟踪关联起来。
+* 功能强大的统计[聚合](/azure/kusto/query/summarizeoperator)。
 * 功能强大的即时可视化效果。
 * 可以用来以编程方式运行查询的 [REST API](https://dev.applicationinsights.io/)，例如通过 PowerShell。
 

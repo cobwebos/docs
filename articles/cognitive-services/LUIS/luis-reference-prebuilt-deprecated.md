@@ -4,18 +4,18 @@ titleSuffix: Azure
 description: 本文包含了语言理解 (LUIS) 中已弃用的预构建实体的信息。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: diberry
-ms.openlocfilehash: 8fbd2e7ea0998a6a3dc141b97d64341c8140fa61
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: ae23e6b8fd1d2f6d63293a9626880ae3823afc61
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237054"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033271"
 ---
 # <a name="deprecated-entities"></a>已弃用的实体
 以下预构建实体已被弃用，不能添加到新的 LUIS 应用中。

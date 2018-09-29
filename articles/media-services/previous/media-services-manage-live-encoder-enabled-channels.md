@@ -4,7 +4,7 @@ description: 本主题介绍如何设置频道，以从本地编码器接收单�
 services: media-services
 documentationcenter: ''
 author: anilmur
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 30ce6556-b0ff-46d8-a15d-5f10e4c360e2
 ms.service: media-services
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: 008fac84eedfd58cbcfe563504a50bc19d519382
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: ada5f55cf356ca79efb7cb45c76a4812804400c5
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246448"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222057"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>使用 Azure 媒体服务执行实时流式处理以创建多比特率流
 
@@ -166,7 +166,7 @@ ms.locfileid: "40246448"
 
 创建频道后，可以获得引入 URL。 若要获取这些 URL，频道不一定要处于“正在运行”状态。 准备好开始将数据推送到频道时，频道必须处于“正在运行”状态。 在频道开始引入数据后，可以通过预览 URL 来预览流。
 
-可以选择通过 SSL 连接引入分片 MP4（平滑流）实时流。 要通过 SSL 进行摄取，请确保将摄取 URL 更新为 HTTPS。 请注意，目前，AMS 对自定义域不支持 SSL。  
+可以选择通过 SSL 连接引入分片 MP4（平滑流）实时流。 要通过 SSL 进行摄取，请确保将摄取 URL 更新为 HTTPS。 目前，AMS 对自定义域不支持 SSL。  
 
 ### <a name="allowed-ip-addresses"></a>允许的 IP 地址
 可以定义允许向此频道发布视频的 IP 地址。 允许的 IP 地址可以指定为单个 IP 地址（例如“10.0.0.1”）、使用一个 IP 地址和 CIDR 子网掩码的 IP 范围（例如“10.0.0.1/22”）或使用一个 IP 地址和点分十进制子网掩码的 IP 范围（例如“10.0.0.1(255.255.252.0)”）。

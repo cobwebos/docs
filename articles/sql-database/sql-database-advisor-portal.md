@@ -2,20 +2,22 @@
 title: 应用性能建议 - Azure SQL 数据库 | Microsoft Docs
 description: 可以使用 Azure 门户查找可优化 Azure SQL 数据库性能的性能建议。
 services: sql-database
-author: danimir
-manager: craigg
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: danimir
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: 67432c8751cd8809649d41195957a7d68b392074
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: d06d29fb43ea8d8971c3f013c1e66406a30798d3
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665593"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064248"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>查找并应用性能建议
 
@@ -127,7 +129,7 @@ Azure SQL 数据库允许通过以下三个选项之一完全控制建议的启�
 | 挂起 |已经接收应用建议命令并计划执行。 |
 | 执行 |正在应用建议。 |
 | 正在验证 |已成功应用建议，并且该服务正在衡量优点。 |
-| 成功 |已成功应用建议并已衡量优点。 |
+| Success |已成功应用建议并已衡量优点。 |
 | 错误 |在应用建议的过程期间发生了错误。 这可能是暂时性问题，或可能是表的架构更改所致，并且脚本不再有效。 |
 | 还原 |已应用建议，但该建议被认为是非性能的且正在被自动还原。 |
 | 已还原 |已还原建议。 |

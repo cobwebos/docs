@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 3d2607fe154b599d818738ddddd12983255a1470
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 6cee6db66fc4146e9c799394e40c72ab2ce665dc
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35631327"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47092929"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>请求遥测：Application Insights 数据模型
 
@@ -62,7 +62,7 @@ ms.locfileid: "35631327"
 
 最大长度：1024 个字符
 
-## <a name="success"></a>成功
+## <a name="success"></a>Success
 
 指示调用成功还是失败。 此字段是必填的。 如果未显式设置为 `false` - 将请求视为成功。 如果操作被异常中断或者返回错误结果代码，请将此值设置为 `false`。
 

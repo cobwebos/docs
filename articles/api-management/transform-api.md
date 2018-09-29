@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: b94f6ad4c7c6f3b5e93cdb890e053a3d1678e161
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38722943"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47094422"
 ---
 # <a name="transform-and-protect-your-api"></a>转换和保护 API 
 
@@ -27,7 +27,7 @@ ms.locfileid: "38722943"
 
 本教程介绍如何使用 Azure API 管理配置速率限制，轻松为后端 API 添加保护。 例如，可以限制 API 的调用次数，以防开发人员过度使用它。 有关详细信息，请参阅 [API 管理策略](api-management-policies.md)
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 转换 API 以剥离响应标头

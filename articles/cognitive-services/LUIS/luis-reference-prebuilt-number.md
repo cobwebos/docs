@@ -4,18 +4,18 @@ titleSuffix: Azure
 description: 本文包含了语言理解 (LUIS) 中的数字预构建实体信息。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: diberry
-ms.openlocfilehash: c1a263f21ae249ea80c0798ac81818c9e9cf1319
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 4d14a3490d87693a4785111035b62e7ae59ee669
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39236799"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041840"
 ---
 # <a name="number-entity"></a>数字实体
 有许多方式使用数字值来量化、表达和描述信息片段。 本文仅包括了其中一些可能的示例。 LUIS 解释用户陈述中的变体并返回一致的数字值。 此实体已定型，因此不需要将包含数字的陈述示例添加到应用程序意向中。 

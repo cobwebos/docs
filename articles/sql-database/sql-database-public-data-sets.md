@@ -2,19 +2,22 @@
 title: Azure 分析的公共数据集 | Microsoft Docs
 description: 了解可用于设计 Azure 分析服务和解决方案原型并进行测试的公共数据集。
 services: sql-database
-author: douglaslMS
-manager: craigg
-ms.custom: reference
 ms.service: sql-database
-ms.topic: conceptual
-ms.date: 04/01/2018
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
+ms.topic: reference
+author: douglaslMS
 ms.author: douglasl
-ms.openlocfilehash: be93dbff39c47ed1d8834efa3ef6c033525b4bea
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 6977995fb33d221b48a633076f61d3ee39d6ba40
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648908"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160411"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>用于测试和原型设计的公共数据集
 
@@ -51,5 +54,5 @@ ms.locfileid: "34648908"
 | 数据源 | 关于数据 | 关于文件 |
 |---|---|---|
 | [GitHub Archive](https://www.githubarchive.org/) | “GitHub Archive 是一个用于记录事件公共 GitHub 时间轴，将其存档，并使其易于进行进一步分析的项目。” | 从 Web 客户端下载 .gz (Gzip) 格式的以 JSON 编码的事件存档。 |
-| [来自 GHTorrent 项目的 GitHub 活动数据](http://ghtorrent.org/) | “GHTorrent 项目正努力创建一种通过 GitHub REST API 提供的、可扩展的、可查询的脱机镜像数据。 GHTorrent 可监视 GitHub 公共事件时间轴。 它会彻底检索每个事件的内容及其依赖项。” | MySQL 数据库转储采用 CSV 格式。 |
+| [来自 GHTorrent 项目的 GitHub 活动数据](http://ghtorrent.org/) | “GHTorrent 项目正努力创建一种通过 GitHub REST API 提供的、可缩放的、可查询的脱机镜像数据。 GHTorrent 可监视 GitHub 公共事件时间轴。 它会彻底检索每个事件的内容及其依赖项。” | MySQL 数据库转储采用 CSV 格式。 |
 | [Stack Overflow 数据转储](https://archive.org/details/stackexchange) | “这是指将用户贡献的所有内容匿名转储在 Stack Exchange 网络（包括 Stack Overflow）上。” | “每个站点（如 Stack Overflow）都被格式化为一个单独的存档，其中包含通过 7-zip 使用 bzip2 压缩的 XML 文件。 每个站点存档都包括帖子、用户、投票、评论、发布历史和发布链接。” |

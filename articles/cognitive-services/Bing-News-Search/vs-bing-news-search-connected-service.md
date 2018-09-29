@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: ghogen
 ms.openlocfilehash: 5cfa82067d28b05f32bd87e0e83d55a03da8d508
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38663855"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47095423"
 ---
 # <a name="connect-to-bing-news-search-api-by-using-connected-services-in-visual-studio"></a>使用 Visual Studio 中的连接服务连接到必应新闻搜索 API
 
@@ -32,10 +32,10 @@ ms.locfileid: "38663855"
 
 ## <a name="add-support-to-your-project-for-bing-news-search-api"></a>为项目添加对必应新闻搜索 API 的支持
 
-1. 创建名为 MyWebApplication 的新 ASP.NET Core Web 项目。 使用 Web 应用（模型 - 视图 - 控制器）项目模板，所有设置采用默认设置。 务必将项目命名为 MyWebApplication，以便在将代码复制到项目中时，命名空间可匹配。 
+1. 创建名为 MyWebApplication 的新 ASP.NET Core Web 项目。 使用 Web 应用（模型 - 视图 - 控制器）项目模板，所有设置采用默认设置。 有必要将项目命名为 MyWebApplication；这样，将代码复制到项目中时，命名空间会匹配。 
 
 1. 在“解决方案资源管理器”中，选择“添加” > “连接服务”。
-   此时会显示“连接服务”页，其中包含可添加到项目的服务。
+   此时显示“连接服务”页，其中包含可添加到项目的服务。
 
    ![“添加连接服务”菜单项的屏幕截图](../media/vs-common/Connected-Service-Menu.PNG)
 
@@ -260,7 +260,7 @@ ms.locfileid: "38663855"
            
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要资源组时，可将其删除。 这会删除认知服务和相关资源。 若要通过门户删除资源组，请执行以下操作：
+不再需要资源组时，可将其删除。 这会删除认知服务及相关资源。 若要通过门户删除资源组，请执行以下操作：
 
 1. 在门户顶部的“搜索”框中输入资源组的名称。 选择要删除的资源组。
 2. 选择“删除资源组”。

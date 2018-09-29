@@ -16,11 +16,11 @@ ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
 ms.openlocfilehash: a92621d852ec60fb4773957d71dc6a55caaf991c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38674880"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47092192"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>快速入门：创建 ASP.NET Web 应用 
 
@@ -46,7 +46,7 @@ ms.locfileid: "38674880"
 
     ![创建项目](./media/cache-web-app-howto/cache-create-project.png)
 
-    a. 在“模板”列表中展开“Visual C#”节点。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“模板”列表中展开“Visual C#”节点。
 
     b. 选择“云”。
 
@@ -274,7 +274,7 @@ ASP.NET 运行时合并了外部文件的内容以及 `<appSettings>` 元素中�
 
 3. 在“创建应用服务”对话框中进行以下更改：
 
-    | 设置 | 建议的值 | 说明 |
+    | 设置 | 建议的值 | Description |
     | ------- | :---------------: | ----------- |
     | **应用名称** | 使用默认值。 | 应用名称是应用部署到 Azure 时对应的主机名。 如果需要让该名称保持唯一，可在其后添加一个时间戳后缀。 |
     | **订阅** | 选择自己的 Azure 订阅。 | 将对此订阅收取任何相关的托管费用。 如果有多个 Azure 订阅，请验证是否选择了所需的订阅。|

@@ -2,18 +2,22 @@
 title: 使用 PowerShell 创建 Azure SQL 数据库弹性作业代理 | Microsoft Docs
 description: 了解如何使用 PowerShell 创建弹性作业代理。
 services: sql-database
-author: johnpaulkee
-manager: craigg
 ms.service: sql-database
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: tutorial
-ms.date: 06/14/2018
+author: johnpaulkee
 ms.author: joke
-ms.openlocfilehash: 2cc8db0ce849e0f0d376824665aac7dbc2af29db
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.reviwer: ''
+manager: craigg
+ms.date: 06/14/2018
+ms.openlocfilehash: 56dd6eff7744ddddf57b747574ee9800174d6365
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035211"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055486"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>使用 PowerShell 创建弹性作业代理
 
@@ -35,7 +39,7 @@ ms.locfileid: "39035211"
 
 如果还没有 Azure 订阅，请在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-安装 **AzureRM.Sql** 4.8.1-preview 模块以获得最新弹性作业 cmdlet。 以管理员访问权限在 PowerShell 中运行以下命令：
+安装 **AzureRM.Sql** 4.8.1-preview 模块以获得最新弹性作业 cmdlet。 以管理员访问权限在 PowerShell 中运行以下命令。
 
 ```powershell
 # Installs the latest PackageManagement powershell package which PowershellGet v1.6.5 is dependent on
@@ -60,7 +64,7 @@ Get-Module AzureRM.Sql
 
 创建弹性作业代理需要一个用作[作业数据库](elastic-jobs-overview.md#job-database)的数据库（S0 或更高级别）。 
 
-下面的脚本创建新的资源组、服务器以及可用作作业数据库的数据库。下面的脚本还创建了另外一个服务器，其中包含 2 个可以对其执行作业的空数据库。
+*下面的脚本创建新的资源组、服务器以及可用作作业数据库的数据库。下面的脚本还创建了另外一个服务器，其中包含 2 个可以对其执行作业的空数据库。
 
 弹性作业没有特定的命名要求，因此可以使用所需的任何命名约定，只要其符合 [Azure 要求](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)即可。
 

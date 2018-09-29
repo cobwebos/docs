@@ -2,19 +2,22 @@
 title: 跨数据库查询（垂直分区）入门 | Microsoft 文档
 description: 如何在垂直分区数据库中使用弹性数据库查询
 services: sql-database
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
+subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 07/03/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 62dda46f2f78b01722016a9bbd1e6db05814a0bf
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.reviewer: ''
+manager: craigg
+ms.date: 07/03/2018
+ms.openlocfilehash: d78767f9360c8cb3a304af19f619dd9f74d3fb8e
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448554"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162978"
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>跨数据库查询（纵向分区）入门（预览）
 

@@ -2,19 +2,22 @@
 title: 在 Azure SQL 数据库中操作 Query Store
 description: 了解如何在 Azure SQL 数据库中操作 Query Store
 services: sql-database
-author: bonova
-manager: craigg
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: bonova
 ms.author: bonova
-ms.openlocfilehash: 37cb77b6738ba1354034dcf77d22a19b96c4ef23
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 8795930c6b676e7e710f112e8d9eedd6ab9084b5
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903092"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47164559"
 ---
 # <a name="operating-the-query-store-in-azure-sql-database"></a>在 Azure SQL 数据库中操作 Query Store
 Azure 中的 Query Store 是完全托管的数据库功能，可持续收集和提供有关所有查询的详细历史信息。 可以将 Query Store 视为一个航班数据记录器，它可以大幅简化云与本地客户的查询性能故障排除。 本文说明在 Azure 中操作 Query Store 的具体方法。 使用这些预先收集的查询数据，可以快速诊断并解决性能问题，因此将更多的时间投入到业务上。 
@@ -29,7 +32,7 @@ Azure 中的 Query Store 是完全托管的数据库功能，可持续收集和�
 ## <a name="optimal-query-store-configuration"></a>最佳的 Query Store 配置
 本部分描述最佳的配置默认值，这些默认值旨在确保 Query Store 以及依赖功能（例如 [SQL 数据库顾问和性能仪表板](https://azure.microsoft.com/updates/sqldatabaseadvisorga/)）能够可靠运行。 默认配置已针对持续数据收集操作进行优化，即，在 OFF/READ_ONLY 状态下花费最少的时间。
 
-| 配置 | 说明 | 默认 | 注释 |
+| 配置 | Description | 默认 | 注释 |
 | --- | --- | --- | --- |
 | MAX_STORAGE_SIZE_MB |指定 Query Store 在客户数据库中占用的数据空间的限制 |100 |对新数据库强制实施 |
 | INTERVAL_LENGTH_MINUTES |定义聚合和持久化查询计划收集运行时统计信息的时段大小。 每个活动查询计划将为此配置定义的时间段包含最多一行 |60 |对新数据库强制实施 |

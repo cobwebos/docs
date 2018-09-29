@@ -14,11 +14,11 @@ ms.date: 08/02/2017
 ms.reviewer: abgreg
 ms.author: mbullwin
 ms.openlocfilehash: 14322162d3f78f0cb90ecaf077d1d85f7cbba581
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35633464"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47091526"
 ---
 #  <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>发送用户上下文 ID 以启用 Azure Application Insights 中的使用体验
 

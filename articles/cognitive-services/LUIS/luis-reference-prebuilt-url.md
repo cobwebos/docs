@@ -4,18 +4,18 @@ titleSuffix: Azure
 description: 本文包含语言理解 (LUIS) 中的 URL 预构建实体信息。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: diberry
-ms.openlocfilehash: 86989abab1dcf64384b8b26b9484bc508f2ce31f
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 1615d7e37119f185ebbb3bd674bc006d96d72e4d
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39236782"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47030163"
 ---
 # <a name="url-entity"></a>URL 实体
 URL 实体提取带域名或 IP 地址的 URL。 此实体已定型，因此不需要将包含 URL 的示例陈述添加到应用程序。 仅在 `en-us` 区域性中支持 URL 实体。 

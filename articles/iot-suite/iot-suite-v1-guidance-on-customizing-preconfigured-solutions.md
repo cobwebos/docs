@@ -1,12 +1,12 @@
 ---
-title: "自定义预配置解决方案 | Microsoft Docs"
-description: "提供有关如何自定义 Azure IoT 套件预配置解决方案的指导。"
-services: 
+title: 自定义预配置解决方案 | Microsoft Docs
+description: 提供有关如何自定义 Azure IoT 套件预配置解决方案的指导。
+services: ''
 suite: iot-suite
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4653ae53-4110-4a10-bd6c-7dc034c293a8
 ms.service: iot-suite
 ms.devlang: dotnet
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: corywink
-ms.openlocfilehash: ba965b9bc23b96adb2b1b7c9306cb7f508f820bf
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: cb5955111cb3954f71f11602042b5153ccee3473
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47106310"
 ---
 # <a name="customize-a-preconfigured-solution"></a>自定义预配置解决方案
 
@@ -30,8 +31,8 @@ Azure IoT 套件提供的预配置解决方案演示了套件中的服务如何�
 预配置解决方案的源代码可在以下 GitHub 存储库获得：
 
 * 远程监视：[https://www.github.com/Azure/azure-iot-remote-monitoring](https://github.com/Azure/azure-iot-remote-monitoring)
-* 预见性维护：[https://github.com/Azure/azure-iot-predictive-maintenance](https://github.com/Azure/azure-iot-predictive-maintenance)
-* 已连接的工厂：[https://github.com/Azure/azure-iot-connected-factory](https://github.com/Azure/azure-iot-connected-factory)
+* 预测性维护：[https://github.com/Azure/azure-iot-predictive-maintenance](https://github.com/Azure/azure-iot-predictive-maintenance)
+* 连接工厂：[https://github.com/Azure/azure-iot-connected-factory](https://github.com/Azure/azure-iot-connected-factory)
 
 提供预配置解决方案源代码的目的，在于演示实现使用 Azure IoT 套件的 IoT 解决方案的端到端功能时所采用的模式和做法。 可以找到有关如何在 GitHub 存储库中生成和部署解决方案的详细信息。
 
@@ -49,7 +50,7 @@ Azure IoT 套件提供的预配置解决方案演示了套件中的服务如何�
 4. 在命令集中选择“停止”以停止作业。 
 5. 编辑输入、查询及输出。
    
-    简单修改的目的在于更改**规则**作业的查询，以便使用**“<”**而不是**“>”**。 编辑规则时，解决方案门户仍会显示**“>”**，不过请注意因为基础作业中的更改，行为是如何发生翻转的。
+    简单修改的目的在于更改**规则**作业的查询，以便使用 **“<”** 而不是 **“>”**。 编辑规则时，解决方案门户仍会显示 **“>”**，不过请注意因为基础作业中的更改，行为是如何发生翻转的。
 6. 启动作业
 
 > [!NOTE]
@@ -252,4 +253,4 @@ public async Task<MethodResponse> OnInitiateFirmwareUpdate(MethodRequest methodR
 [lnk-telemetry-api-controller-02]: https://github.com/Azure/azure-iot-remote-monitoring/blob/e7003339f73e21d3930f71ceba1e74fb5c0d9ea0/DeviceAdministration/Web/WebApiControllers/TelemetryApiController.cs#L25 
 [lnk-sample-device-factory]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Common/Factory/SampleDeviceFactory.cs#L40
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
-[lnk-cf-customize]: iot-suite-connected-factory-customize.md
+[lnk-cf-customize]:../iot-accelerators/iot-accelerators-connected-factory-customize.md

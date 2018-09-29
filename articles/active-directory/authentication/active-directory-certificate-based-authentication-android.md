@@ -11,11 +11,11 @@ author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: annaba
 ms.openlocfilehash: ef58fd6c4701f367c6b8664c9cf9ee76e15fbd70
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43346758"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47106340"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Android 上 Azure Active Directory 基于证书的身份验证
 

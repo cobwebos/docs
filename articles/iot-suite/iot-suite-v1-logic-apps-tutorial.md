@@ -1,12 +1,12 @@
 ---
-title: "Azure IoT 套件和逻辑应用 | Microsoft Docs"
-description: "有关如何在业务流程中将逻辑应用挂接到 Azure IoT 套件的教程。"
-services: 
+title: Azure IoT 套件和逻辑应用 | Microsoft Docs
+description: 有关如何在业务流程中将逻辑应用挂接到 Azure IoT 套件的教程。
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4629a7af-56ca-4b21-a769-5fa18bc3ab07
 ms.service: iot-suite
 ms.devlang: na
@@ -16,10 +16,11 @@ ms.workload: na
 ms.date: 11/02/2017
 ms.author: corywink
 ms.openlocfilehash: 4a1db86f4b715533dfea545365eaf66de0574c5e
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47106314"
 ---
 # <a name="tutorial-connect-logic-app-to-your-azure-iot-suite-remote-monitoring-preconfigured-solution"></a>教程：将逻辑应用连接到 Azure IoT 套件远程监视预配置解决方案
 [Microsoft Azure IoT 套件][lnk-internetofthings]远程监视预配置解决方案以一套端到端功能集演示 IoT 解决方案，是快速入门的好工具。 本教程引导将逻辑应用连接到 Microsoft Azure IoT 套件远程监视预配置解决方案。 下述步骤演示了如何将 IoT 解决方案连接到业务流程，更进一步地利用该方案。

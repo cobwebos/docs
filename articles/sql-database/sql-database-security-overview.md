@@ -2,20 +2,22 @@
 title: Azure SQL 数据库安全概述 | Microsoft 文档
 description: 了解 Azure SQL 数据库和 SQL Server 的安全性，包括云与本地 SQL Server 之间的差异。
 services: sql-database
-author: giladm
-manager: craigg
-ms.reviewer: vanto
 ms.service: sql-database
-ms.custom: security
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/20/2018
+author: giladm
 ms.author: giladm
-ms.openlocfilehash: b4a2894c92b85d777d2be3b1f5ffd53e2c92b88e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.reviewer: vanto, carlrab
+manager: craigg
+ms.date: 04/20/2018
+ms.openlocfilehash: 01399544dc4817060ca797383743e673182e3653
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951621"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163063"
 ---
 # <a name="securing-your-sql-database"></a>保护 SQL 数据库
 
