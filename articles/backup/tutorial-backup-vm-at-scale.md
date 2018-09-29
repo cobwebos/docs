@@ -9,12 +9,12 @@ ms.date: 2/14/2018
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: 4fb8d45c285ee3c1651039619808b8964c5313cd
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: dfe561e7a7231c8e7f9465819a01cd4b0a35f47c
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983074"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434529"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>使用 Azure 门户备份多个虚拟机
 
@@ -42,15 +42,15 @@ ms.locfileid: "45983074"
 
     ![打开保管库菜单](./media/tutorial-backup-vm-at-scale/provide-vault-detail-2.png)
 
-3. 在“恢复服务保管库”菜单中， 
+3. 在“恢复服务保管库”菜单中，
 
-    - 在“名称”中键入“myRecoveryServicesVault”，
+    - 在“名称”中键入“myRecoveryServicesVault”。
     - 当前订阅 ID 显示在“订阅”中。 如有其他订阅，可为新保管库选择另一订阅。
     - 对于“资源组”，请选择“使用现有”，然后选择“myResourceGroup”。 如果没有“myResourceGroup”，请选择“新建”，然后键入“myResourceGroup”。
     - 从“位置”下拉菜单中选择“西欧”。
     - 单击“创建”，创建恢复服务保管库。
 
-恢复服务保管库必须与受保护的虚拟机处于相同位置。 如果虚拟机位于多个区域中，请在每个区域中创建恢复服务保管库。 本教程在西欧创建恢复服务保管库的原因在于，西欧是创建“myVM”（通过快速入门创建的虚拟机）的位置。
+恢复服务保管库必须与受保护的虚拟机处于相同位置。 如果多个区域中有虚拟机，请在每个区域中创建恢复服务保管库。 本教程在西欧创建恢复服务保管库的原因在于，西欧是创建“myVM”（通过快速入门创建的虚拟机）的位置。
 
 创建恢复服务保管库可能需要数分钟。 可以在门户右上区域监视状态通知。 创建保管库后，它会显示在“恢复服务保管库”的列表中。
 
@@ -76,7 +76,7 @@ ms.locfileid: "45983074"
 
     ![选择工作负荷](./media/tutorial-backup-vm-at-scale/create-new-policy.png)
 
-5. 对于“备份策略”菜单中的“策略名称”，请键入“财务”。 对备份策略输入以下更改： 
+5. 对于“备份策略”菜单中的“策略名称”，请键入“财务”。 对备份策略输入以下更改：
     - 对于“备份频率”，请将时区设置为“中部时间”。 由于此综合体育中心位于德克萨斯，其所有者希望时间为当地时间。 将备份频率设置为每日凌晨 3:30。
     - 对于“每日备份点的保留期”，请将时间段设置为 90 天。
     - 对于“每周备份点的保留期”，请使用“星期一”还原点并将其保留 52 周。
@@ -84,21 +84,21 @@ ms.locfileid: "45983074"
     - 取消选中“每年备份点的保留期”选项。 财务主管不希望数据保留期超过 36 个月。
     - 单击“确定”以创建备份策略。
 
-    ![选择工作负荷](./media/tutorial-backup-vm-at-scale/set-new-policy.png) 
+    ![选择工作负荷](./media/tutorial-backup-vm-at-scale/set-new-policy.png)
 
     创建备份策略后，将策略与虚拟机关联。
 
-6. 在“选择虚拟机”对话框中选择“myVM”，然后单击“确定”，将备份策略部署到虚拟机。 
+6. 在“选择虚拟机”对话框中选择“myVM”，然后单击“确定”，将备份策略部署到虚拟机。
 
     随即显示位于同一位置且尚未与备份策略关联的所有虚拟机。 选择“myVMH1”和“myVMR1”，将其与“财务”策略关联。
 
-    ![选择工作负荷](./media/tutorial-backup-vm-at-scale/choose-vm-to-protect.png) 
+    ![选择工作负荷](./media/tutorial-backup-vm-at-scale/choose-vm-to-protect.png)
 
     部署完成后，会收到告知部署已成功完成的通知。
 
 ## <a name="initial-backup"></a>初始备份
 
-已启用恢复服务保管库备份，但尚未创建初始备份。 根据灾难恢复最佳做法，应该触发首次备份，让数据受到保护。 
+已启用恢复服务保管库备份，但尚未创建初始备份。 根据灾难恢复最佳做法，应该触发首次备份，让数据受到保护。
 
 运行按需备份作业：
 
@@ -130,10 +130,10 @@ ms.locfileid: "45983074"
 
     部署通知会告知你备份作业已触发，并且可以在“备份作业”页面上监视作业的进度。 创建初始备份可能需要一些时间，具体取决于虚拟机的大小。
 
-    初始备份作业完成后，可在“备份作业”菜单中查看其状态。 按需备份作业已为“myVM”创建初始还原点。 若要备份其他虚拟机，请对每个虚拟机重复上述操作。 
+    初始备份作业完成后，可在“备份作业”菜单中查看其状态。 按需备份作业已为“myVM”创建初始还原点。 若要备份其他虚拟机，请对每个虚拟机重复上述操作。
 
     ![“备份作业”磁贴](./media/tutorial-backup-vm-at-scale/initial-backup-complete.png)
-  
+
 ## <a name="clean-up-resources"></a>清理资源
 
 如果计划继续使用后续教程，请勿清除在本教程中创建的资源。 如果不打算继续，请在 Azure 门户中执行以下步骤来删除此教程创建的所有资源。
@@ -153,15 +153,15 @@ ms.locfileid: "45983074"
 
     ![“设置”图标](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
 
-4. 在上下文菜单上，选择“停止备份”以打开“停止备份”菜单。 
+4. 在上下文菜单上，选择“停止备份”以打开“停止备份”菜单。
 
     ![“设置”图标](./media/tutorial-backup-vm-at-scale/context-menu-for-delete.png)
 
 5. 在“停止备份”菜单上，选择上部的下拉列表菜单，然后选择“删除备份数据”。
 
 6. 在“输入备份项名称”对话框中，键入“myVM”。
- 
-7. 验证备份项（显示勾号）后，“停止备份”按钮处于启用状态。 单击“停止备份”，停用策略并删除还原点。 
+
+7. 验证备份项（显示勾号）后，“停止备份”按钮处于启用状态。 单击“停止备份”，停用策略并删除还原点。
 
     ![单击“停止备份”以删除保管库](./media/tutorial-backup-vm-at-scale/provide-reason-for-delete.png)
 
@@ -183,7 +183,7 @@ ms.locfileid: "45983074"
 > * 分配策略以保护多个虚拟机
 > * 触发虚拟机的按需备份
 
-继续阅读下一教程，学习如何从磁盘还原 Azure 虚拟机。 
+继续阅读下一教程，学习如何从磁盘还原 Azure 虚拟机。
 
 > [!div class="nextstepaction"]
 > [使用 CLI 还原 VM](./tutorial-restore-disk.md)

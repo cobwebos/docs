@@ -7,14 +7,14 @@ manager: kfile
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: rimman
+ms.author: cwatson
 ms.reviewer: sngun
-ms.openlocfilehash: 8c5e9c8437c516a5e6d1d97494b21bfc8e90d88e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: adcd91a8f1b3368d03f4b634e7aef40104d953e3
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960254"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393632"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>了解如何将预留折扣应用于 Azure Cosmos DB
 

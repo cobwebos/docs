@@ -14,19 +14,19 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/09/2017
-ms.author: mobandyo
-ms.openlocfilehash: 487636ffb0efc35c282e14d835c6669ed9d47315
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: erikre
+ms.openlocfilehash: 95d90e898ddc8766cf96a5a72c315407cd596393
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32771491"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393853"
 ---
 # <a name="cloud-cruiser-and-microsoft-azure-billing-api-integration"></a>Cloud Cruiser 和 Microsoft Azure 计费 API 集成
 本文介绍如何在 Cloud Cruiser 中使用从新的 Microsoft Azure 计费 API 中收集到的信息，以进行工作流成本模拟和分析。
 
 ## <a name="azure-ratecard-api"></a>Azure RateCard API
-RateCard API 提供来自 Azure 的费率信息。 在使用正确的凭据进行身份验证之后，可以查询此 API 以收集关于 Azure 上可用服务的元数据以及与产品/服务 ID 相关联的费率。
+RateCard API 提供来自 Azure 的费率信息。 在使用正确的凭据进行身份验证之后，可以查询此 API 以收集关于 Azure 上可用服务的元数据以及与套餐 ID 相关联的费率。
 
 以下是来自该 API 的示例响应，显示了 A0 (Windows) 实例的价格：
 

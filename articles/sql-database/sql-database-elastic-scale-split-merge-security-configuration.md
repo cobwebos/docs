@@ -1,21 +1,23 @@
 ---
 title: 拆分/合并安全配置 | Microsoft 文档
 description: 使用拆分/合并服务设置用于加密的 x409 证书以实现弹性缩放。
-metakeywords: Elastic Database certificates security
 services: sql-database
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: bb2090aba61f32e79fe3a9fd950e6e3688193d7d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: ca93d97c3e0ddab0377ef437a04e7e3e31197b97
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647079"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166348"
 ---
 # <a name="split-merge-security-configuration"></a>拆分/合并安全配置
 若要使用拆分/合并服务，必须正确配置安全性。 该服务是 Microsoft Azure SQL 数据库弹性扩展功能的一部分。 有关详细信息，请参阅[弹性缩放拆分和合并服务教程](sql-database-elastic-scale-configure-deploy-split-and-merge.md)。
@@ -386,7 +388,7 @@ ms.locfileid: "34647079"
 3. 选择“证书”。
 4. 单击 **“添加”**。
 5. 选择证书存储位置。
-6. 单击“完成” 。
+6. 单击“完成”。
 7. 单击“确定”。
 8. 展开“证书”。
 9. 展开证书存储节点。
@@ -396,17 +398,17 @@ ms.locfileid: "34647079"
 ## <a name="export-certificate"></a>导出证书
 在**证书导出向导**中：
 
-1. 单击“资源组名称” 的 Azure 数据工厂。
+1. 单击“下一步”。
 2. 选择“是”，并选择“导出私钥”。
-3. 单击“资源组名称” 的 Azure 数据工厂。
+3. 单击“下一步”。
 4. 选择所需的输出文件格式。
 5. 选中所需的选项。
 6. 选中“密码”。
 7. 输入强密码并进行确认。
-8. 单击“资源组名称” 的 Azure 数据工厂。
+8. 单击“下一步”。
 9. 在证书的存储位置键入或浏览文件名（使用 .PFX 扩展名）。
 10. 单击“下一步”。
-11. 单击“完成” 。
+11. 单击“完成”。
 12. 单击“确定”。
 
 ## <a name="import-certificate"></a>导入证书
@@ -416,7 +418,7 @@ ms.locfileid: "34647079"
    
    * 如果只有在当前用户下运行的进程将访问该服务，请选择“当前用户”
    * 如果此计算机中的其他进程将访问该服务，请选择“本地计算机”
-2. 单击“资源组名称” 的 Azure 数据工厂。
+2. 单击“下一步”。
 3. 如果要从文件中导入，请确认文件路径。
 4. 如果要导入 .PFX 文件，请执行以下操作：
    1. 输入用于保护私钥的密码
@@ -424,7 +426,7 @@ ms.locfileid: "34647079"
 5. 选择“将证书放入以下存储”
 6. 单击“浏览”。
 7. 选择所需的存储。
-8. 单击“完成” 。
+8. 单击“完成”。
    
    * 如果已选中“受信任的根证书颁发机构”存储，请单击“是”。
 9. 在所有对话框窗口上单击“确定”。

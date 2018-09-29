@@ -8,12 +8,12 @@ ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: d21a235602c425cef77b26d8c60f1e3562411095
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 09bddd1c1d9589dbba0acf319ba43ea54c0c737b
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36961666"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221445"
 ---
 # <a name="back-up-azure-file-shares"></a>备份 Azure 文件共享
 本文介绍如何使用 Azure 门户备份和还原 [Azure 文件共享](../storage/files/storage-files-introduction.md)。
@@ -32,7 +32,7 @@ ms.locfileid: "36961666"
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>预览版期间 Azure 文件共享备份的限制
 Azure 文件共享备份处于预览状态。 Azure 文件共享不支持以下备份场景：
-- 不能保护具有[读取访问异地冗余存储](../storage/common/storage-redundancy-grs.md) (RA-GRS) 复制功能的存储帐户中的 Azure 文件共享\*。
+- 不能保护具有[读取访问异地冗余存储](../storage/common/storage-redundancy-grs.md) (RA-GRS) 复制功能\*的存储帐户中的 Azure 文件共享。
 - 不能保护已启用虚拟网络或防火墙的存储帐户中的 Azure 文件共享。
 - 无法使用 PowerShell 或 CLI 通过 Azure 备份来保护 Azure 文件。
 - 每天的计划备份数上限为 1。
@@ -195,3 +195,5 @@ Azure 备份提供在 Azure 门户中浏览还原点的功能。 若要还原所
 有关 Azure 文件共享的其他信息，请参阅
 - [Azure 文件共享备份常见问题解答](backup-azure-files-faq.md)
 - [排查 Azure 文件共享备份问题](troubleshoot-azure-files.md)
+ 
+

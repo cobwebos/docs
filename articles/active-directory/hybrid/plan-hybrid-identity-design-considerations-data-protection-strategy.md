@@ -16,12 +16,12 @@ ms.date: 11/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 7999dc15fbe1af9d23b47971db03cf6b197f110f
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a3cbbf887c4b7df57f2df89dfb8649967d6d9b1b
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306106"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434749"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>为混合标识解决方案定义数据保护策略
 在此任务中，会根据规定的业务要求，为混合标识解决方案定义数据保护策略。
@@ -58,8 +58,6 @@ ms.locfileid: "46306106"
 
 ## <a name="define-content-management-options"></a>定义内容管理选项
 
-<a name="one-advantage-of-using-azure-ad-to-manage-a-hybrid-identity-infrastructure-is-that-the-process-is-fully-transparent-from-the-end-users-perspective-the-user-tries-to-access-a-shared-resource-the-resource-requires-authentication-the-user-has-to-send-an-authentication-request-to-azure-ad-in-order-to-obtain-the-token-and-access-the-resource-this-entire-process-happens-in-the-background-without-user-interaction"></a>使用 Azure AD 管理混合标识基础结构的优点之一是整个过程对用户而言是完全透明的。 用户尝试访问共享资源，资源需要身份验证，因此用户必须将身份验证请求发送到 Azure AD 才能够获取令牌和访问资源。 整个过程在后台发生，无需用户交互。 
-=======
 使用 Azure AD 管理混合标识基础结构的优点之一是整个过程对用户而言是完全透明的。 用户尝试访问共享资源，资源需要身份验证，因此用户必须将身份验证请求发送到 Azure AD 才能够获取令牌和访问资源。 整个过程在后台发生，无需用户交互。 
 
 有数据隐私顾虑的组织通常需要对其解决方案进行数据分类。 如果其当前本地基础结构已使用数据分类，就能够使用 Azure AD 作为用户标识的主要存储库。 在 Windows Server 2012 R2 中，本地用于数据分类的常用工具称为[数据分类工具包](https://msdn.microsoft.com/library/Hh204743.aspx)。 借助此工具可以标识、分类和保护私有云中文件服务器上的数据。 还可以使用 Windows Server 2012 中的[自动文件分类](https://technet.microsoft.com/library/hh831672.aspx)来完成此任务。

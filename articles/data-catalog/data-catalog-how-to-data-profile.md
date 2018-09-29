@@ -2,18 +2,18 @@
 title: 如何在 Azure 数据目录中使用数据分析数据源
 description: 操作指南文章重点说明在“Azure 数据目录”中注册数据源时如何包括表和列级数据配置文件，以及如何使用数据配置文件来了解数据源。
 services: data-catalog
-author: spelluru
-ms.author: spelluru
+author: markingmyname
+ms.author: maghan
 ms.assetid: 94a8274b-5c9c-4962-a4b1-2fed38a3d919
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 2f628367e2e5b0e6a4481a6212ff201b11a7105a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: b40bbe7d1eb89f934d6ae07688e698f1949f8e76
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43053187"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47410232"
 ---
 # <a name="data-profile-data-sources"></a>数据配置文件数据源
 ## <a name="introduction"></a>介绍

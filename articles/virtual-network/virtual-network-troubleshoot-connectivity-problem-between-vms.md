@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 6decb0e9188db00608be35d9ba4e84df92ceb671
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 02f6e2648c007cfe87984e8de886b8b76e1e8d16
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409909"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>排查 Azure VM 间的连接问题
 
@@ -102,7 +103,7 @@ Azure 虚拟机 (VM) 间可能出现连接问题。 本文提供解决此问题�
 
 ### <a name="step-8-try-to-connect-to-a-vm-network-share"></a>步骤 8：尝试连接到 VM 网络共享
 
-如果无法连接到 VM 网络共享，问题可能由 VM 中不可用的 NIC 引起。 要删除不可用的 NIC，请参阅[如何删除不可用的 NIC](../virtual-machines/windows/reset-network-interface.md#delete-the-unavailable-nics)
+如果无法连接到 VM 网络共享，问题可能由 VM 中不可用的 NIC 引起。 要删除不可用的 NIC，请参阅[如何删除不可用的 NIC](../virtual-machines/troubleshooting/reset-network-interface.md#delete-the-unavailable-nics)
 
 ### <a name="step-9-check-inter-vnet-connectivity"></a>步骤 9：检查 Vnet 间连接
 

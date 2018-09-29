@@ -2,18 +2,18 @@
 title: Azure 数据目录术语
 description: 本文介绍 Azure 数据目录文档中使用的概念和术语。
 services: data-catalog
-author: steelanddata
-ms.author: maroche
+author: markingmyname
+ms.author: maghan
 ms.assetid: 6fec74d9-4a3c-4b4b-88ba-cad5ad143331
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 70772ae07c4a8a6e87b4fa6f119acf2d51a5c23e
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 0ef83af3df942b456d0036321cf88e4a1ce7afa7
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43053033"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407750"
 ---
 # <a name="azure-data-catalog-terminology"></a>Azure 数据目录术语
 ## <a name="catalog"></a>目录

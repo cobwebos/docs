@@ -4,18 +4,18 @@ description: 了解如何导出或删除 Azure 门户中的用户设置、专用
 services: azure-portal
 keywords: ''
 author: santhoshsomayajula
-ms.author: santhosh.somayajulu
 ms.date: 05/18/2018
 ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: e9bf6e69b439f5201d66cabb9bc87fe5c9faa610
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: cwatson
+ms.openlocfilehash: b2bf674dbb253c7ec698b18776d8752ed6a4c1c8
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658932"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394067"
 ---
 # <a name="export-or-delete-settings-in-the-azure-portal"></a>导出或删除 Azure 门户中的设置
 可以从 Azure 门户设置菜单中导出并删除以下设置：
@@ -39,7 +39,7 @@ ms.locfileid: "34658932"
 
       下表对这些设置进行了说明。 
 
-      | 设置 | 说明 |
+      | 设置 | Description |
       | --- | --- |
       | **导出所有设置** | 创建包含诸如仪表板主题的用户设置的 .json 文件。|
       | **删除所有设置和专用仪表板** | 删除指向专用仪表板的所有链接以及你对门户仪表板所做的其他用户自定义项。 |

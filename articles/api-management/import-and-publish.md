@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: 538977b9057a5699d61d6c2cc44209367e3550e2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38722841"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47093396"
 ---
 # <a name="import-and-publish-your-first-api"></a>导入和发布第一个 API 
 
@@ -27,7 +27,7 @@ ms.locfileid: "38722841"
 
 后端 API 导入到 API 管理 (APIM) 之后，APIM API 即成为后端 API 的外观。 在导入后端 API 时，源 API 和 APIM API 均相同。 通过 APIM，无需触摸后端 API 即可根据需要自定义外观。 有关详细信息，请参阅[转换和保护 API](transform-api.md)。 
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 导入第一个 API
@@ -55,7 +55,7 @@ ms.locfileid: "38722841"
 
     使用下表中的值来创建第一个 API。
 
-    |设置|值|说明|
+    |设置|值|Description|
     |---|---|---|
     |**OpenAPI 规范**|http://conferenceapi.azurewebsites.net?format=json|引用实现 API 的服务。 API 管理将请求转发到此地址。|
     |**显示名称**|演示会议 API|如果在输入服务 URL 后按 Tab 键，APIM 将根据 json 中的内容填充此字段。 <br/>此名称显示在开发人员门户中。|

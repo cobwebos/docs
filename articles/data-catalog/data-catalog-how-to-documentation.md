@@ -2,18 +2,18 @@
 title: 如何在 Azure 数据目录中记录数据源
 description: 操作指南文章重点说明如何在 Azure 数据目录中记录数据资产。
 services: data-catalog
-author: spelluru
-ms.author: spelluru
+author: markingmyname
+ms.author: maghan
 ms.assetid: 053b1701-b848-4ada-b726-6f485caa9961
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 4d3dfac425caf36e9ca9a4d3593bba336b18b7a3
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a7379ffea173cdae3b10a751b0d83e06e679e3c5
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43053134"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406203"
 ---
 # <a name="document-data-sources"></a>记录数据源
 ## <a name="introduction"></a>介绍

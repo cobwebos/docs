@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 01/03/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2a486da73d00ddaebee5c1fe32fc6112c177f01e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8753463f90ae97d4b98d557eec5bd737b4853480
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992331"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433967"
 ---
 # <a name="deploying-a-machine-learning-model-as-a-web-service"></a>将机器学习模型部署为 Web 服务
 
@@ -137,6 +137,7 @@ run 函数使用模型和输入数据来返回预测。
 
 ```python
 def run(input_df):
+    # clf2 is the same model as clf1, but loaded from the model.pkl file
     global clf2, inputs_dc, prediction_dc
     try:
         prediction = model.predict(input_df)

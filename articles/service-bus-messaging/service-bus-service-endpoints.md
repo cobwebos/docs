@@ -8,14 +8,14 @@ manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2018
+ms.date: 09/05/2018
 ms.author: clemensv
-ms.openlocfilehash: f8874a1d9db754485e9624596465560981bd6425
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 05930dfce64378d792213ccaefa3d15057bd5dfd
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37858039"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47404990"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>使用具有 Azure 服务总线的虚拟网络服务终结点
 

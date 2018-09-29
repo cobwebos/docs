@@ -1,7 +1,5 @@
 # 概述
 ## [关于 Azure 门户](../azure-portal-overview.md)
-# 教程
-## [将 DevOps 与 Azure 门户配合使用](tutorial-azureportal-devops.md)
 # 概念
 ## [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)
 ## [键盘快捷方式](azure-portal-keyboard-shortcuts.md)

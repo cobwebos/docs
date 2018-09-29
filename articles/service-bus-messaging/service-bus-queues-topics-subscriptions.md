@@ -7,14 +7,14 @@ author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 06/18/2018
+ms.date: 09/18/2018
 ms.author: spelluru
-ms.openlocfilehash: f4b94e210430c20409e9227bbab51ff2ec117291
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 047c4c37090db77f7a7a692604dd63c5effff9fa
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702164"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409755"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>服务总线队列、主题和订阅
 
@@ -46,7 +46,7 @@ Microsoft Azure 服务总线支持一组基于云的、面向消息的中间件�
 
 如果应用程序出于某种原因无法处理消息，则它可对收到的消息调用 [AbandonAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.abandonasync) 方法（而不是 [CompleteAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) 方法）。 此方法可使服务总线解锁消息并使其能够重新被同一个使用方或其他竞争使用方接收。 此外，还存在与锁定关联的超时，并且如果应用程序无法在锁定超时到期之前处理消息（例如，如果应用程序崩溃），则服务总线将解锁该消息并使其可再次被接收（实质上是默认执行一个 [AbandonAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.abandonasync) 操作）。
 
-如果应用程序在处理消息之后，但在发出 **CompleteAsync** 请求之前发生崩溃，则在应用程序重新启动时会将该消息重新传送给它。 此过程通常称作“至少处理一次”，即每条消息将至少被处理一次。 但是，在某些情况下，同一消息可能会被重新传送。 如果方案不允许重复处理，则应用程序中需具备其他逻辑用于检测重复，这可通过消息中的 MessageId 属性实现（在整个传输尝试中，该属性保持不变）[](/dotnet/api/microsoft.azure.servicebus.message.messageid)。 此功能称为“仅一次”处理。
+如果应用程序在处理消息之后，但在发出 **CompleteAsync** 请求之前发生崩溃，则在应用程序重新启动时会将该消息重新传送给它。 此过程通常称作“至少处理一次”，即每条消息将至少被处理一次。 但是，在某些情况下，同一消息可能会被重新传送。 如果方案不容许重复处理，则应用程序中需要用于检测重复的其他逻辑，此重复可基于消息的 [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) 属性实现，无论传送次数多少，均保持不变。 此功能称为“仅一次”处理。
 
 ## <a name="topics-and-subscriptions"></a>主题和订阅
 

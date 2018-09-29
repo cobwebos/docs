@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
-ms.author: genli
+ms.author: cwatson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bce9e7de13ff95024685ccf916541357f5362727
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 622a8777f5ed329636c7023bb52790756f8d7206
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070645"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422620"
 ---
 # <a name="change-your-azure-account-profile-information-such-as-contact-email-address-and-phone-number"></a>更改 Azure 帐户的个人资料信息，如联系人电子邮件、地址和电话号码等
 
@@ -46,7 +46,7 @@ Microsoft 使用帐户管理员个人资料中的电子邮件地址来通知与�
 
 ### <a name="does-updating-my-profile-email-also-update-my-login-email-address"></a>更新个人资料电子邮件也会更新登录电子邮件地址吗？
 
-不会。 更新个人资料电子邮件不会更新登录电子邮件地址。 若要更改登录电子邮件地址，必须转移帐户的所有权。
+不是。 更新个人资料电子邮件不会更新登录电子邮件地址。 若要更改登录电子邮件地址，必须转移帐户的所有权。
 
 ### <a name="does-updating-my-profile-address-also-update-my-credit-card-billing-address"></a>更新个人资料地址也会更新信用卡帐单寄送地址吗？
 
@@ -55,10 +55,6 @@ Microsoft 使用帐户管理员个人资料中的电子邮件地址来通知与�
 ### <a name="why-cant-i-update-the-country"></a>为什么不能更新国家/地区？
 
 由于技术限制，我们无法更改现有帐户的国家/地区。 但是，用户可以在所需的国家/地区创建帐户，然后联系 Azure 支持将服务迁移到该帐户。
-
-### <a name="what-email-address-does-the-azure-billing-alerts-preview-feature-use"></a>Azure 计费警报预览版功能使用哪个电子邮件地址？
-
-用户会在注册警报时添加的电子邮件地址收到警报通知。 用于警报的电子邮件地址不同于帐户管理员电子邮件地址。 有关详细信息，请参阅[为 Microsoft Azure 订阅设置计费警报](billing-set-up-alerts.md)。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 

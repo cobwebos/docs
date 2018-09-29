@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 02/15/2018
+ms.date: 09/15/2018
 ms.author: spelluru
-ms.openlocfilehash: ca4a6bfcc0f1041e76c07b3b240d7c641ef8f587
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 55798af8d8e2b50614a3eee51b330c5b4fa0f918
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699856"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409570"
 ---
 # <a name="azure-service-bus-to-azure-event-grid-integration-examples"></a>Azure 服务总线到 Azure 事件网格集成示例
 
@@ -197,7 +197,7 @@ ms.locfileid: "43699856"
 
 1. 若要添加信息，请执行以下操作：
 
-    a. 在“资源名称”框中，输入自己的命名空间名称。 
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“资源名称”框中，输入自己的命名空间名称。 
 
     b. 在“高级选项”下的“后缀筛选器”框中，输入订阅的筛选器。
 

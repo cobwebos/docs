@@ -2,24 +2,18 @@
 title: 适用于 VMware 到 Azure 部署的 Azure Site Recovery Deployment Planner | Microsoft Docs
 description: 本文介绍针对 VMware 到 Azure 方案运行 Azure Site Recovery 部署规划器的模式。
 services: site-recovery
-documentationcenter: ''
 author: nsoneji
 manager: garavd
-editor: ''
-ms.assetid: ''
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: 8298f4a31db974f75e80aef7589bfd31fd7c7491
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 9408323e58ec4df8ca806aea39fdf40c2ddb8a4f
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921046"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226749"
 ---
 # <a name="run-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>运行适用于 VMware 到 Azure 部署的 Azure Site Recovery 部署规划器
 本文为适用于 VMware 到 Azure 生产部署的 Azure Site Recovery Deployment Planner 用户指南。
@@ -72,7 +66,7 @@ ms.locfileid: "37921046"
 ASRDeploymentPlanner.exe -Operation StartProfiling /?
 ```
 
-| 参数名称 | 说明 |
+| 参数名称 | Description |
 |---|---|
 | -Operation | StartProfiling |
 | -Server | 要分析其 VM 的 vCenter 服务器/vSphere ESXi 主机的完全限定域名或 IP 地址。|
@@ -149,7 +143,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Direc
 
 `ASRDeploymentPlanner.exe -Operation GenerateReport /?`
 
-|参数名称 | 说明 |
+|参数名称 | Description |
 |-|-|
 | -Operation | GenerateReport |
 | -Server |  vCenter/vSphere 服务器完全限定域名或 IP 地址（使用的名称或 IP 地址与分析时使用的相同），其中包含需要生成其报告的已分析 VM。 请注意，如果在分析时使用了 vCenter 服务器，则不能使用 vSphere 服务器来生成报告，反之亦然。|
@@ -259,7 +253,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Dire
 
 `ASRDeploymentPlanner.exe -Operation GetThroughput /?`
 
-|参数名称 | 说明 |
+|参数名称 | Description |
 |-|-|
 | -Operation | GetThroughput |
 |-Virtualization|指定虚拟化类型（VMware 或 Hyper-V）。|
@@ -275,7 +269,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Dire
 
 ### <a name="example"></a>示例
 ```
-ASRDeploymentPlanner.exe -Operation GetThroughput -Directory  E:\vCenter1_ProfiledData -VMListFile E:\vCenter1_ProfiledData\ProfileVMList1.txt  -StorageAccountName  asrspfarm1 -StorageAccountKey by8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
+ASRDeploymentPlanner.exe -Operation GetThroughput -Directory  E:\vCenter1_ProfiledData -Virtualization VMware -VMListFile E:\vCenter1_ProfiledData\ProfileVMList1.txt  -StorageAccountName  asrspfarm1 -StorageAccountKey by8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
 ```
 
 >[!NOTE]

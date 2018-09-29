@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: kumud
-ms.openlocfilehash: 424782be2d814df6d598591198b5005fb494d3da
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: fe4cc3c06af6868396f5db6fd88804022f5f9793
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35302362"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432463"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>流量管理器指标和警报
 
@@ -46,7 +46,7 @@ ms.locfileid: "35302362"
 *图 2：其中显示了按终结点返回的查询量的拆分视图*
 
 ## <a name="endpoint-status-by-endpoint"></a>按终结点显示的终结点状态
-使用[此指标](../monitoring-and-diagnostics/monitoring-supported-metrics.md)可以了解配置文件中的终结点的运行状况状态。 它采用两个值：
+使用[此指标](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworktrafficmanagerprofiles)可以了解配置文件中的终结点的运行状况状态。 它采用两个值：
  - 如果终结点正常运行，则使用 **1**。
  - 如果终结点发生故障，则使用 **0**。
 

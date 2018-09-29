@@ -1,21 +1,22 @@
 ---
-title: Azure 上的自定义语音服务概述 | Microsoft Docs
+title: 什么是自定义语音服务？
+titlesuffix: Azure Cognitive Services
 description: 自定义语音服务是一种基于云的服务，借助该服务，可自定义语音到文本转换的语音模型。
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: article
+ms.topic: overview
 ms.date: 02/07/2017
 ms.author: panosper
 ROBOTS: NOINDEX
-ms.openlocfilehash: da88989753069f7ba8ca2c2e2806a648f3df4e3c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f90fc40a42806cfb002da2d9943eaa41736df4d7
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948360"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222737"
 ---
 # <a name="what-is-custom-speech-service"></a>什么是自定义语音服务？
 

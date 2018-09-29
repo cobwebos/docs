@@ -1,22 +1,23 @@
 ---
 title: 将 Log Analytics 用于 SQL 数据库多租户应用 | Microsoft Docs
 description: 通过多租户 Azure SQL 数据库 SaaS 应用设置和使用 Log Analytics
-keywords: sql 数据库教程
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
-ms.openlocfilehash: 3ca2f811ff0ac81ea70ec0b22d7429cdc5604171
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 60139915e8d8dca382f4ef62b5129f1a84e7e80d
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420176"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056703"
 ---
 # <a name="set-up-and-use-log-analytics-with-a-multitenant-sql-database-saas-app"></a>通过多租户 SQL 数据库 SaaS 应用设置和使用 Log Analytics
 
@@ -48,13 +49,13 @@ Log Analytics 工作区和分析解决方案可以在 Azure 门户和 Operations
 1. 在 PowerShell ISE 中，打开 *..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\Performance Monitoring and Management\\Demo-PerformanceMonitoringAndManagement.ps1*。 请将此脚本保持打开状态，因为在此教程中可能需要运行多个负载生成方案。
 1. 如果尚未这样做，请预配一批租户，以使监视上下文更为微妙。 此过程需要花费几分钟时间。
 
-   a. 设置 **$DemoScenario = 1**，_预配一批租户_。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 设置 **$DemoScenario = 1**，_预配一批租户_。
 
    b. 若要运行此脚本并再部署 17 个租户，请按 F5。
 
 1. 现在请启动负载生成器，在所有租户上运行模拟的负载。
 
-    a. 设置 $DemoScenario = 2，生成正常强度负载（约 30 DTU）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 设置 $DemoScenario = 2，生成正常强度负载（约 30 DTU）。
 
     b. 若要运行脚本，请按 F5。
 

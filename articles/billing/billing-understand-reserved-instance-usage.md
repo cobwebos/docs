@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
-ms.author: manshuk
-ms.openlocfilehash: 1226b2f73d556da2ff7d73f6f322e0bd1590f915
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.author: cwatson
+ms.openlocfilehash: c81db66637a4c56a36b6995ad8df0fe1967d08ef
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307052"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47391654"
 ---
 # <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>了解即用即付订阅的 Azure 预留使用情况
 
@@ -93,15 +93,15 @@ CSV 文件的此部分显示预留的总体使用情况。 将筛选器应用到
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 Azure 预留的详细信息，请参阅以下文章：
+若要了解有关 Azure 预订的详细信息，请参阅以下文章：
 
-- [什么是 Azure 预留？](billing-save-compute-costs-reservations.md)
+- [什么是 Azure 预订？](billing-save-compute-costs-reservations.md)
 - [通过 Azure 虚拟机预留实例为虚拟机预付费](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../sql-database/sql-database-reserved-capacity.md)
 - [管理 Azure 预留项](billing-manage-reserved-vm-instance.md)
 - [了解预留折扣的应用方式](billing-understand-vm-reservation-charges.md)
 - [了解企业合约的预留使用情况](billing-understand-reserved-instance-usage-ea.md)
-- [预留未包含的 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)
+- [预订未包含的 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 

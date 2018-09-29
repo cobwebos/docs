@@ -2,19 +2,22 @@
 title: Azure SQL 数据同步故障排除| Microsoft 文档
 description: 了解如何排查 Azure SQL 数据同步的常见问题。
 services: sql-database
-ms.date: 07/16/2018
-ms.topic: conceptual
 ms.service: sql-database
+ms.subservice: data-movement
+ms.custom: data sync
+ms.devlang: ''
+ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
+ms.reviewer: douglasl
 manager: craigg
-ms.custom: data-sync
-ms.openlocfilehash: 8ba4b32f45dd978439b08650e498c3030c618aab
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.date: 07/16/2018
+ms.openlocfilehash: 0f836a857d6f9748416fda1526a1957af4fc51e4
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618703"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163590"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>排查 SQL 数据同步的问题
 
@@ -175,7 +178,7 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
 - **解决方法**。 将代理的密码更新为当前服务器密码：
 
   1. 找到 SQL 数据同步客户端代理服务。  
-    a. 选择“启动”。  
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“启动”。  
     b. 在搜索框中输入 **services.msc**。  
     c. 在搜索结果中，选择“服务”。  
     d. 在“服务”窗口中，滚动到 **SQL 数据同步代理**所对应的条目。  
@@ -241,7 +244,7 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
 
   1. 退出应用。  
   1. 打开组件服务面板。  
-    a. 在任务栏上的搜索框中输入 **services.msc**。  
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在任务栏上的搜索框中输入 **services.msc**。  
     b. 在搜索结果中，双击“服务”。  
   1. 停止“SQL 数据同步”服务。
   1. 重启“SQL 数据同步”服务。  
@@ -285,7 +288,7 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
 - **原因**。 客户端代理已卸载或缺失。
 
 - **解决方法**。 客户端代理是否已卸载或缺失：  
-    a. 将代理 XML 文件（如果存在）从 SQL 数据同步安装文件夹中删除。  
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将代理 XML 文件（如果存在）从 SQL 数据同步安装文件夹中删除。  
     b. 在某台本地计算机（可以是相同或不同的计算机）上安装代理。 然后，提交门户中针对显示为脱机的代理生成的代理密钥。
 
 - **原因**。 数据库处于脱机状态。
@@ -305,7 +308,7 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
   如果此操作无法从同步组中删除数据库：
 
   1. 请停止再重启客户端代理主机服务。  
-    a. 选择“开始”菜单。  
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“开始”菜单。  
     b. 在搜索框中输入 **services.msc**。  
     c. 在搜索结果窗格的“程序”部分，双击“服务”。  
     d. 右键单击“SQL 数据同步”服务。  
@@ -361,7 +364,7 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
   1. 在关联的同步代理处于联机状态时删除同步组（推荐）。
   1. 如果代理处于脱机状态但已安装，请在本地计算机上将其联机。 等待代理状态在 SQL 数据同步门户中显示为“联机”。 然后删除同步组。
   1. 如果代理因为被卸载而处于脱机状态：  
-    a.  将代理 XML 文件（如果存在）从 SQL 数据同步安装文件夹中删除。  
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  将代理 XML 文件（如果存在）从 SQL 数据同步安装文件夹中删除。  
     b.  在某台本地计算机（可以是相同或不同的计算机）上安装代理。 然后，提交门户中针对显示为脱机的代理生成的代理密钥。  
     c. 尝试删除同步组。
 

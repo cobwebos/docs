@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
-ms.author: amberb
-ms.openlocfilehash: 7fa0196b7a44ef20ecd63797869dffea55f92c3d
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.author: cwatson
+ms.openlocfilehash: df049a87763f3aae8da2db153f876b88ed39b988
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061310"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47390232"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>检查 Azure 免费帐户中包含的免费服务的使用情况 
 
@@ -31,13 +31,13 @@ ms.locfileid: "37061310"
 
 2.  在左侧的导航区域中，选择“所有服务”。
 
-3.  选择“订阅”。
+3.  选择 **订阅**。
 
 4.  选择注册免费帐户时创建的订阅。
 
     ![显示所有订阅的屏幕截图](./media/billing-check-usage-of-free-services/select-free-account-subscription.png)
 
-5.  概述部分显示有关订阅的基本信息，比如订阅 ID、提供类型和订阅名称。 还可找到有关免费帐户信用额度何时过期的信息。
+5.  概述部分显示有关订阅的基本信息，比如订阅 ID、套餐类型和订阅名称。 还可找到有关免费帐户信用额度何时过期的信息。
 
     ![显示订阅基本信息的屏幕截图](./media/billing-check-usage-of-free-services/subscription-essential-information.png)
 

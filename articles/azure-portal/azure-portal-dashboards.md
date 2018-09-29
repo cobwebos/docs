@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/06/2016
-ms.author: sewatson
-ms.openlocfilehash: 3bdeb3255c8dc97d2867eca0b9cdec8223d31b21
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.author: cwatson
+ms.openlocfilehash: 6062e54f0fb584dec4c2db540565c5860ae92a2d
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34165343"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394941"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>在 Azure 门户中创建和共享仪表板
 可以创建多个仪表板，并与对 Azure 订阅有访问权限的其他用户共享。  本文介绍创建、编辑、发布和管理仪表板访问权限的基础知识。

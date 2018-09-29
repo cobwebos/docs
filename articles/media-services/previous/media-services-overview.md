@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/24/2017
+ms.date: 09/24/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: d79a8937c0190246218153e42ead74ada619b121
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 65f38ca477cf1a861c1285e6195598be705005d7
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33940857"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163743"
 ---
 # <a name="azure-media-services-overview"></a>Azure 媒体服务概述 
 
@@ -29,15 +29,7 @@ ms.locfileid: "33940857"
 
 Microsoft Azure 媒体服务 (AMS) 是一个可扩展的基于云的平台，使开发人员能够生成可缩放的媒体管理和传送应用程序。 媒体服务基于 REST API，你可以使用这些 API 安全地上传、存储、编码和打包视频或音频内容，以供点播以及以实时流形式传送到各种客户端（例如，电视、电脑和移动设备）。
 
-可以完全使用媒体服务构建端到端工作流。 也可以选择使用第三方组件来构建工作流的某些组成部分。 例如，使用第三方编码器进行编码。 然后，使用媒体服务进行上传、保护、打包和传送。
-
-可以选择实时流式播放你的内容，或者根据点播情况交付内容。 本主题还提供了其他相关主题的链接。
-
-## <a name="media-services-learning-paths"></a>媒体服务学习路径
-可以在此处查看 AMS 学习路径：
-
-* [AMS 实时流式处理工作流](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-* [AMS 按需流式处理工作流](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+可以完全使用媒体服务构建端到端工作流。 也可以选择使用第三方组件来构建工作流的某些组成部分。 例如，使用第三方编码器进行编码。 然后，使用媒体服务进行上传、保护、打包和传送。 可以选择实时流式播放你的内容，或者根据点播情况交付内容。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -86,7 +78,7 @@ Microsoft Azure 媒体服务 (AMS) 是一个可扩展的基于云的平台，使
 * 如果客户购买了标准或高级流式处理终结点，则对于流式处理，我们以 99.9% 的可用性保证成功处理现有媒体内容的请求。
 * 对于实时频道，我们保证运行中的频道在至少 99.9% 的时间都能建立外部连接。
 * 对于内容保护，我们保证会在至少 99.9% 的时间成功满足密钥请求。
-* 对于索引器，我们将使用编码保留单位在 99.9% 的时间成功处理索引器任务请求。
+* 对于索引器，我们将使用编码预留单位在 99.9% 的时间成功处理索引器任务请求。
 
 有关详细信息，请参阅 [Microsoft Azure SLA](https://azure.microsoft.com/support/legal/sla/)。
 

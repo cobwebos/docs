@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 777c52276ca767ee1fb4d05666850350c02c1e00
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 062478783465edc2d3afa4b80a22f119e68da049
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35631321"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47091700"
 ---
 # <a name="event-telemetry-application-insights-data-model"></a>事件遥测：Application Insights 数据模型
 

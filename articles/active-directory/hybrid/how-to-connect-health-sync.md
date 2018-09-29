@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dc7ee4e7a6975722458ed12f636cdc8f4777614a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 8ca3c0524873e4c7a1326095eb1cc28f63f59a27
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46301932"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431927"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>使用 Azure AD Connect Health 监视 Azure AD Connect 同步
 以下文档专门介绍如何使用 Azure AD Connect Health 来监视 Azure AD Connect (Sync)。  有关使用 Azure AD Connect Health 监视 AD FS 的信息，请参阅 [在 AD FS 中使用 Azure AD Connect Health](how-to-connect-health-adfs.md)。 此外，有关使用 Azure AD Connect Health 监视 Active Directory 域服务的信息，请参阅 [在 AD DS 中使用 Azure AD Connect Health](how-to-connect-health-adds.md)。
@@ -36,7 +36,7 @@ ms.locfileid: "46301932"
 ### <a name="limited-evaluation-of-alerts"></a>警报的受限评估
 如果 Azure AD Connect 未使用默认配置（例如，如果属性筛选已从默认配置更改为自定义配置），则 Azure AD Connect Health 代理将不会上传与 Azure AD Connect 相关的错误事件。
 
-这会限制服务对警报进行评估。 将在服务的 Azure 门户中看到一条指示这种状态的横幅消息。
+这会限制服务对警报进行评估。 用户会在服务的 Azure 门户中看到一条指示这种状态的横幅消息。
 
 ![用于同步的 Azure AD Connect Health](./media/how-to-connect-health-sync/banner.png)
 

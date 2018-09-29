@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
-ms.author: yashar
-ms.openlocfilehash: 923337291d297832e03892b505f4efa8d3bb3f36
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.author: cwatson
+ms.openlocfilehash: ee73cb3164ce59136dd268853b8caa967a6f42e9
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43300708"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393377"
 ---
 # <a name="understand-how-an-azure-reservation-discount-is-applied-to-sql-databases"></a>了解如何对 SQL 数据库应用 Azure 预留折扣
 
@@ -44,9 +44,9 @@ ms.locfileid: "43300708"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 Azure 预留的详细信息，请参阅以下文章：
+若要了解有关 Azure 预订的详细信息，请参阅以下文章：
 
-- [什么是 Azure 预留？](billing-save-compute-costs-reservations.md)
+- [什么是 Azure 预订？](billing-save-compute-costs-reservations.md)
 - [通过 Azure 虚拟机预留实例为虚拟机预付费](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../sql-database/sql-database-reserved-capacity.md)
 - [管理 Azure 预留项](billing-manage-reserved-vm-instance.md)

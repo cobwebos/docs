@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 575326ee3bd2cb64b2cb65168f23f7fe97dad029
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 52aabcfd908afeea3bb9bf36eefad706b74d8ba9
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954392"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227140"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT 中心术语词汇表
 本文列出了一些在 IoT 中心文章中使用的常用术语。
@@ -219,7 +219,7 @@ Azure IoT 解决方案加速器将多个 Azure 服务一起打包到解决方案
 [Azure 资源管理器](#azure-resource-manager)使用资源组将相关的资源组合在一起。 通过使用资源组，可以对组中的所有资源同时执行操作。
 
 ## <a name="retry-policy"></a>重试策略
-连接到云服务时使用重试策略来处理[暂时性错误](https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx)。
+连接到云服务时使用重试策略来处理[暂时性错误](/azure/architecture/best-practices/transient-faults)。
 
 ## <a name="routing-rules"></a>路由规则
 需要在 IoT 中心配置[路由规则](iot-hub-devguide-messages-read-custom.md)，将设备到云消息路由到[内置终结点](#built-in-endpoints)或[自定义终结点](#custom-endpoints)，以供解决方案后端处理。

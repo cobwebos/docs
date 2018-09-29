@@ -6,14 +6,14 @@ author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 06/14/2018
+ms.date: 09/14/2018
 ms.author: spelluru
-ms.openlocfilehash: 5401d43f11c8afc02f48dd643fd4ff2f9611e06e
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 85481deceeadaf4154659d35fccf777f489bd782
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696711"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393701"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>使应用程序免受服务总线中断和灾难影响的最佳实践
 

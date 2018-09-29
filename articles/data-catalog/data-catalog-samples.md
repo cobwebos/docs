@@ -2,18 +2,18 @@
 title: Azure 数据目录开发人员示例
 description: 本文概述了数据目录 REST API 可用的开发人员示例。
 services: data-catalog
-author: spelluru
-ms.author: spelluru
+author: markingmyname
+ms.author: maghan
 ms.assetid: 0dc23edd-04d8-49fc-841e-d132fb109ce7
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 98d17e5fc8b2348887d6a9e361a455474d666db4
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a4f88b63fa91dcec52b86be568ef4c98ee82c277
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43053133"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47404319"
 ---
 # <a name="data-catalog-developer-samples"></a>数据目录开发人员示例
 使用数据目录 REST API 开始开发数据目录应用。 数据目录 REST API 是基于 REST 的 API，提供对数据目录资源的编程访问，以编程方式注册、批注和搜索数据资产。

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 9b0c58fdbfb0d55b3b8998f4edfc1222b9a3d4aa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3a90fa5fb9eadd56b6b01306b251ff9581256bab
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988591"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161159"
 ---
 # <a name="working-with-date-time-values-in-log-analytics-queries"></a>在 Log Analytics 查询中使用日期时间值
 
@@ -47,7 +47,7 @@ Log Analytics 查询语言主要具有两种与日期和时间相关的数据类
 |微秒 | 微秒  |
 |时钟周期        | 纳秒   |
 
-可使用 `todatetime` 运算符强制转换字符串，从而创建日期/时间。 例如，要查看在特定时间范围内发送的 VM 检测信号，可使用便于指定时间范围的 [between 运算符](https://docs.loganalytics.io/docs/Language-Reference/Scalar-operators/between-operator)。
+可使用 `todatetime` 运算符强制转换字符串，从而创建日期/时间。 例如，要查看在特定时间范围内发送的 VM 检测信号，可使用便于指定时间范围的 [between 运算符](/azure/kusto/query/betweenoperator)。
 
 ```Kusto
 Heartbeat
@@ -156,11 +156,11 @@ Event
 
 | 类别 | 函数 |
 |:---|:---|
-| 转换数据类型 | [todatetime](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/todatetime())  [totimespan](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/totimespan())  |
-| 将值舍入到箱大小 | [bin](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/bin()) |
-| 获取特定的日期或时间 | [ago](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/ago()) [now](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/now())   |
-| 获取部分值 | [datetime_part](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/datetime_part()) [getmonth](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/getmonth()) [monthofyear](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/monthofyear()) [getyear](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/getyear()) [dayofmonth](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/dayofmonth()) [dayofweek](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/dayofweek()) [dayofyear](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/dayofyear()) [weekofyear](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/weekofyear()) |
-| 获取与值对应的日期  | [endofday](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/endofday()) [endofweek](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/endofweek()) [endofmonth](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/endofmonth()) [endofyear](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/endofyear()) [startofday](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/startofday()) [startofweek](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/startofweek()) [startofmonth](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/startofmonth()) [startofyear](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/startofyear()) |
+| 转换数据类型 | [todatetime](/azure/kusto/query/todatetimefunction)  [totimespan](/azure/kusto/query/totimespanfunction)  |
+| 将值舍入到箱大小 | [bin](/azure/kusto/query/binfunction) |
+| 获取特定的日期或时间 | [ago](/azure/kusto/query/agofunction) [now](/azure/kusto/query/nowfunction)   |
+| 获取部分值 | [datetime_part](/azure/kusto/query/datetime-partfunction) [getmonth](/azure/kusto/query/getmonthfunction) [monthofyear](/azure/kusto/query/monthofyearfunction) [getyear](/azure/kusto/query/getyearfunction) [dayofmonth](/azure/kusto/query/dayofmonthfunction) [dayofweek](/azure/kusto/query/dayofweek) [dayofyear](/azure/kusto/query/dayofyearfunction) [weekofyear](/azure/kusto/query/weekofyearfunction) |
+| 获取与值对应的日期  | [endofday](/azure/kusto/query/endofdayfunction) [endofweek](/azure/kusto/query/endofweekfunction) [endofmonth](/azure/kusto/query/endofmonthfunction) [endofyear](/azure/kusto/query/endofyearfunction) [startofday](/azure/kusto/query/startofdayfunction) [startofweek](/azure/kusto/query/startofweekfunction) [startofmonth](/azure/kusto/query/startofmonthfunction) [startofyear](/azure/kusto/query/startofyearfunction) |
 
 ## <a name="next-steps"></a>后续步骤
 有关 Log Analytics 查询语言的用法，请参阅其他课程：

@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 09/24/2018
-ms.openlocfilehash: dddda5a222bf4e9fd81a3e13987ccdf443302083
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6e0294f99d1c2291e84bf2ac5d5b1f771222b551
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978890"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433406"
 ---
 # <a name="what-is-azure-machine-learning-service-preview"></a>什么是 Azure 机器学习服务（预览版）？
 
@@ -26,7 +26,7 @@ Azure 机器学习服务（预览版）是一款可用于开发和部署机器�
 
 机器学习的预测可让应用和设备变得更聪明。 例如，在网上购物时，机器学习可根据你购买的产品帮助推荐其他产品。 或者，在刷信用卡时，机器学习可将这笔交易与交易数据库进行比较，帮助检测诈骗。 当吸尘器机器人打扫房间时，机器学习可帮助它确定作业是否已完成。
 
-## <a name="what-is-azure-machine-learning"></a>什么是 Azure 机器学习？
+## <a name="what-is-azure-machine-learning-service"></a>什么是 Azure 机器学习服务？
 
 Azure 机器学习服务提供了一个基于云的环境，你可以使用这一环境来开发、培训、测试、部署、管理和跟踪机器学习模型。
 

@@ -12,12 +12,12 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: f6cfb7bb988b080189da444cb77e0c258417b1ac
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 9a07fa2010eef22c4d1477641d07dee70ab5a9cb
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574702"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227416"
 ---
 # <a name="how-to-manage-connectivity-and-reliable-messaging-using-azure-iot-hub-device-sdks"></a>如何使用 Azure IoT 中心设备 SDK 管理连接和可靠的消息传送
 
@@ -54,7 +54,7 @@ Azure IoT 中心设备 SDK 旨在提供可靠而全面的方法来连接 Azure I
 - HTTP、AMQP 和 MQTT 传输的协议级错误，如链接断开或会话过期
 - 由本地错误（如无效凭据）或服务行为（如超出配额或限制）导致的应用程序级错误
 
-设备 SDK 在所有三个级别中检测错误。  设备 SDK 不会检测和处理与 OS 相关的错误和硬件错误。  该设计基于 Azure 体系结构中心的[暂时性故障处理指南](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines)。
+设备 SDK 在所有三个级别中检测错误。  设备 SDK 不会检测和处理与 OS 相关的错误和硬件错误。  该设计基于 Azure 体系结构中心的[暂时性故障处理指南](/azure/architecture/best-practices/transient-faults#general-guidelines)。
 
 ### <a name="retry-patterns"></a>重试模式
 

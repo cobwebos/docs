@@ -4,18 +4,18 @@ titleSuffix: Azure
 description: 本文包含了语言理解 (LUIS) 中的百分比预构建实体信息。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: diberry
-ms.openlocfilehash: d445dbf69e3d2163b5d44b894f8795d41fbd34e3
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 6929fc3cc41db4e4bd4a1f8bda62c953a3722eff
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238958"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041154"
 ---
 # <a name="percentage-entity"></a>百分比实体
 百分比数字可以显示为分数 `3 1/2` 或百分比 `2%`。 此实体已定型，因此不需要将包含百分比的陈述示例添加到应用程序意向中。 [许多语言区域](luis-reference-prebuilt-entities.md)都支持百分比实体。 

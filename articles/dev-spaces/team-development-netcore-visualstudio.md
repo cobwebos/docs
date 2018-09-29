@@ -13,12 +13,12 @@ ms.topic: tutorial
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
 manager: douge
-ms.openlocfilehash: 97b052833946b373e2333491c4b516b3a088130b
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 2a04b80e728ecf0af39cb46041a005a86ea1abec
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158460"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406101"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>使用 Azure Dev Spaces 进行团队开发
 
@@ -163,6 +163,23 @@ ms.locfileid: "44158460"
 
 现在，请将“scott.s.” 部分添加到 URL，使其类似于 http://scott.s.webfrontend.123456abcdef.eastus.aksapp.io；然后刷新浏览器。 随后应会命中 `mywebapi` 项目中设置的断点。 按 F5 继续，浏览器中应会显示新消息“Hello from webfrontend and mywebapi now says something new”。 这是因为，`default/scott` 中已更新的代码的路径正在 `mywebapi` 空间中运行。
 
-[!INCLUDE [](includes/well-done.md)]
+### <a name="well-done"></a>干得不错！
+你已完成入门指南！ 你已了解如何：
 
-[!INCLUDE [](includes/clean-up.md)]
+> [!div class="checklist"]
+> * 使用 Azure 中的托管 Kubernetes 群集设置 Azure Dev Spaces。
+> * 在容器中以迭代方式开发代码。
+> * 独立开发两个独立的服务，并使用 Kubernetes 的 DNS 服务发现来调用另一个服务。
+> * 在团队环境中高效地开发和测试代码。
+
+现在，已探索了 Azure Dev Spaces，请[与团队成员共享你的开发空间](how-to/share-dev-spaces.md)，并帮助他们了解一起协作是多么容易。
+
+## <a name="clean-up"></a>清理
+若要完全删除群集中的某个 Azure Dev Spaces 实例，包括所有设备空间以及其中正在运行的服务，请使用 `az aks remove-dev-spaces` 命令。 请记住，此操作是不可逆的。 可以再次在群集上添加 Azure Dev Spaces 支持，但这就像重新开始一样。 旧服务和空间不会还原。
+
+下面的示例列出你的活动订阅中的 Azure Dev Spaces 控制器，然后删除与资源组“myaks-rg”中的 AKS 群集“myaks”关联的 Azure Dev Spaces 控制器。
+
+```cmd
+    azds controller list
+    az aks remove-dev-spaces --name myaks --resource-group myaks-rg
+```

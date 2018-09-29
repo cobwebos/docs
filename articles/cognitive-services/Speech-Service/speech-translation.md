@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 3559a25f3073f88e99379e98bc4562209b0c0825
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: f80c0f3cdc114b53c002266820e8d9b8773acc5d
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42108438"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432183"
 ---
 # <a name="about-the-speech-translation-api"></a>关于语音翻译 API
 
@@ -32,7 +32,7 @@ ms.locfileid: "42108438"
 
 基础 Microsoft 翻译引擎有两种不同的方法：统计机器翻译 (SMT) 和神经机器翻译 (NMT)。 后者是采用神经网络的人工智能方法，是更现代的机器翻译方法。 NMT 提供更好的翻译 — 不仅更准确，而且更流畅、更自然。 这种流动性的主要原因在于 NMT 使用一个句子的完整上下文来翻译单词。
 
-今天，Microsoft 已迁移到涵盖最热门语言的 NMT，SMT 仅用于不太频繁使用的语言。 NMT 支持所有[可用于语音到语音转换的语言](supported-languages.md#speech-translation)。 语音到文本转换可能会使用 SMT 或 NMT，具体取决于语言对。 如果 NMT 支持目标语言，则 NMT 支持全译。 如果 NMT 不支持目标语言，则翻译是 NMT 和 SMT 的结合，将英语作为两种语言之间的“枢轴”。
+今天，Microsoft 已迁移到涵盖最热门语言的 NMT，SMT 仅用于不太频繁使用的语言。 NMT 支持所有[可用于语音到语音转换的语言](language-support.md#speech-translation)。 语音到文本转换可能会使用 SMT 或 NMT，具体取决于语言对。 如果 NMT 支持目标语言，则 NMT 支持全译。 如果 NMT 不支持目标语言，则翻译是 NMT 和 SMT 的结合，将英语作为两种语言之间的“枢轴”。
 
 模型之间的差异在于翻译引擎内部。 最终用户只需注意改进的翻译质量，尤其是中文、日语和阿拉伯语。
 

@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/21/2018
 ms.author: ramamill
-ms.openlocfilehash: f8368aab1bc979492143d77a191a31afef754c4c
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: b3c6f1d130a6f5427fe8377bd70de743f0700052
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213004"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434834"
 ---
 # <a name="manage-process-servers"></a>管理进程服务器
 
@@ -56,7 +56,7 @@ ms.locfileid: "39213004"
 
 1. 登录到进程服务器计算机。 
 2. 打开管理员 PowerShell 命令窗口并运行以下命令：
-  ```
+  ```powershell
   $pwd = ConvertTo-SecureString -String MyProxyUserPassword
   Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $pwd
   net stop obengine

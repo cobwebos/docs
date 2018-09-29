@@ -2,18 +2,18 @@
 title: Azure 数据目录发行说明
 description: Azure 数据目录的发行说明。
 services: data-catalog
-author: steelanddata
-ms.author: maroche
+author: markingmyname
+ms.author: maghan
 ms.assetid: 3aca9c49-45a4-4352-92e6-bd25ee3eacf7
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 539ef4f591a1ef0c6ab344e1d93a750133d9e089
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 12b8161cc5845bca749c34188835cef1d92b299a
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43053113"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47404545"
 ---
 # <a name="azure-data-catalog-release-notes"></a>Azure 数据目录发行说明
 ## <a name="notes-for-the-november-20-2015-release-of-azure-data-catalog"></a>Azure 数据目录 2015 年 11 月 20 日发行说明

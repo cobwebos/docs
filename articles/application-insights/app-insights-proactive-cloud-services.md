@@ -15,11 +15,11 @@ ms.date: 06/07/2018
 ms.reviewer: harelbr
 ms.author: mbullwin
 ms.openlocfilehash: cdb395a590fb200a24c68e56728a270b968e53b5
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35631649"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47091417"
 ---
 # <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>使用 Azure 诊断与 Azure Application Insights 的集成针对 Azure 云服务中的问题发出警报
 

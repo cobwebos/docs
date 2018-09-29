@@ -13,12 +13,12 @@ ms.topic: tutorial
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
 manager: douge
-ms.openlocfilehash: ac1872cf3f5ee8b83da9fa4c489188504aa8ad22
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 43cf75d875b2f5fbfea46fb2c8fbae809668057d
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161537"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405166"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>在 .NET Core 和 Visual Studio 中开始使用 Azure Dev Spaces
 
@@ -29,9 +29,39 @@ ms.locfileid: "44161537"
 - 独立开发两个独立的服务，并使用 Kubernetes 的 DNS 服务发现来调用另一个服务。
 - 在团队环境中高效地开发和测试代码。
 
-[!INCLUDE [](includes/see-troubleshooting.md)]
+> [!Note]
+> **如果在任何时候遇到问题**，请参阅[故障排除](troubleshooting.md)部分，或在此页上发表评论。
 
-[!INCLUDE [](includes/portal-aks-cluster.md)]
+
+## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>创建为 Azure Dev Spaces 启用的 Kubernetes 群集
+
+1. 通过 http://portal.azure.com 登录到 Azure 门户。
+1. 选择“创建资源”，搜索“Kubernetes”，选择“Kubernetes 服务” > “创建”。
+
+   在创建 AKS 群集窗体的每个标题下完成以下步骤。
+
+    - **项目详细信息**：选择 Azure 订阅和一个新的或现有的 Azure 资源组。
+    - **群集详细信息**：输入 AKS 群集的名称、区域（当前必须选择 EastUS、Central US、WestEurope、WestUS2、CanadaCentral 或 CanadaEast）、版本和 DNS 名称前缀。
+    - **规模**：选择 AKS 代理节点的 VM 大小和节点数。 如果是刚开始使用 Azure Dev Spaces，则采用一个节点来公开所有功能就足够了。 在部署群集后，随时可以轻松调整节点数。 请注意，在部署 AKS 群集后无法更改 VM 大小。 但是，在部署 AKS 群集后，如果需要纵向扩展，可以轻松创建具有更大 VM 的新 AKS 群集并使用 Dev Spaces 重新部署到该更大的群集。
+
+   请确保选择 Kubernetes 版本 1.9.6 或更高版本。
+
+   ![Kubernetes 配置设置](media/common/Kubernetes-Create-Cluster-2.PNG)
+
+   在完成时选择“下一步: 身份验证”。
+
+1. 为基于角色的访问控制 (RBAC) 选择所需设置。 Azure Dev Spaces 支持启用或禁用了 RBAC 的群集。
+
+    ![RBAC 设置](media/common/k8s-RBAC.PNG)
+
+1. 请确保启用 Http 应用程序路由。
+
+   ![启用 Http 应用程序路由](media/common/Kubernetes-Create-Cluster-3.PNG)
+
+    > [!Note]
+    > 若要在现有群集上启用 [Http 应用程序路由](/azure/aks/http-application-routing)，请使用命令：`az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addons http_application_routing`
+
+1. 完成时依次选择“评审 + 创建”、“创建”。
 
 ## <a name="get-the-visual-studio-tools"></a>获取 Visual Studio 工具
 1. 安装最新版本的 [Visual Studio 2017](https://www.visualstudio.com/vs/)
@@ -52,7 +82,6 @@ ms.locfileid: "44161537"
 选择“Web 应用程序(模型-视图-控制器)”模板，确保以对话框顶部两个下拉列表中的 **.NET Core** 和 **ASP.NET Core 2.0** 为目标。 单击“确定”以创建该项目  。
 
 ![](media/get-started-netcore-visualstudio/NewProjectDialog2.png)
-
 
 ### <a name="enable-dev-spaces-for-an-aks-cluster"></a>为 AKS 群集启用 Dev Spaces
 

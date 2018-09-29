@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/27/2017
-ms.openlocfilehash: 8cc19cc95a620d59def240dfd298cd87953028fa
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: b8d298938d9b3ed0089eb52aed47c7086983a9ce
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630572"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422926"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure 时序见解 API 的身份验证和授权
 
@@ -83,9 +83,11 @@ ms.locfileid: "39630572"
     如果正在使用 C#，可使用以下代码代表应用程序获取令牌。 有关完整示例，请参阅[使用 C# 查询数据](time-series-insights-query-data-csharp.md)。
 
     ```csharp
+    var tenant = "YOUR_AD_TENANT.onmicrosoft.com";
+
     var authenticationContext = new AuthenticationContext(
-        "https://login.microsoftonline.com/common",
-        TokenCache.DefaultShared);
+    $"https://login.microsoftonline.com/{tenant}",
+    TokenCache.DefaultShared);
 
     AuthenticationResult token = await authenticationContext.AcquireTokenAsync(
         // Set the resource URI to the Azure Time Series Insights API

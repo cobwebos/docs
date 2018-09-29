@@ -18,11 +18,11 @@ ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
 ms.openlocfilehash: cf8de9e6061df59782a6edbccf47341222d256f4
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39580073"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162214"
 ---
 # <a name="federation-metadata"></a>联合元数据
 对于配置为接受 Azure Active Directory 颁发的安全令牌的服务，Azure Active Directory (Azure AD) 发布了一个联合元数据文档。 在扩展了 [OASIS 安全断言标记语言 (SAML) v2.0 元数据](http://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf)的 [Web 服务联合语言（WS 联合身份验证）版本 1.2](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html) 中描述了联合元数据文档格式。

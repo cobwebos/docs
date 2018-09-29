@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.reviewer: daviste
 ms.author: mbullwin
-ms.openlocfilehash: 2157af8d6c3b8eea372c060a70c78559d8ffe6ad
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 30ef00fa1bfd2933df5e5c966cb8266d7c598a47
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35631326"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162162"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights 队列
 
@@ -110,7 +110,7 @@ ms.locfileid: "35631326"
 
     * 一个查询部分，可在其中使用分析查询定义队列。
 
-    在查询部分[编写一个分析查询](https://docs.loganalytics.io/index)。 该查询选择描述所要定义的队列的行集。 然后，“队列”工具将在查询中隐式添加一个“| summarize by user_Id”子句。 表中查询的下面提供了此数据的预览，使你能够确保查询返回结果。
+    在查询部分[编写一个分析查询](/azure/kusto/query)。 该查询选择描述所要定义的队列的行集。 然后，“队列”工具将在查询中隐式添加一个“| summarize by user_Id”子句。 表中查询的下面提供了此数据的预览，使你能够确保查询返回结果。
 
     > [!NOTE]
     > 如果看不到查询，请尝试调整部分的大小，以增加其高度并显示查询。 本部分开头的 .gif 动画演示了大小调整行为。

@@ -2,20 +2,22 @@
 title: 内存中 OLTP 改善了 SQL 事务性能 | Microsoft 文档
 description: 利用内存中 OLTP 改善现有 SQL 数据库中的事务性能。
 services: sql-database
-author: jodebrui
-manager: craigg
-ms.reviewer: MightyPen
 ms.service: sql-database
-ms.custom: develop databases
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: jodebrui
 ms.author: jodebrui
-ms.openlocfilehash: a2f0d901abfa0013a6f53bacd72a9f8db2e0fd99
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: MightyPen
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 8c683e86cd78f4c4ebe7a537c469c875b8ca07fe
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648041"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159833"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>使用内存中 OLTP 改善 SQL 数据库中的应用程序性能
 [内存中 OLTP](sql-database-in-memory.md) 可以用来改善[高级和业务关键层](sql-database-service-tiers-vcore.md)数据库中事务处理、数据引入和暂时性数据方案的性能，而不需要提高定价层。 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
 manager: douge
-ms.openlocfilehash: 600625f143041eaf983b7ec7e945c5a968b522f5
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 0e58fb23aded66a44deb0d520151c98903cffe18
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42024221"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433321"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-visual-studio"></a>快速入门：使用 Azure Dev Spaces 创建 Kubernetes 开发空间（.NET Core 和 Visual Studio）
 
@@ -39,7 +39,7 @@ ms.locfileid: "42024221"
 
 ## <a name="set-up-azure-dev-spaces"></a>设置 Azure Dev Spaces
 
-安装 [Visual Studio Tools for Kubernetes](https://aka.ms/get-azds-visualstudio)。
+安装 [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools)。
 
 ## <a name="connect-to-a-cluster"></a>连接到群集
 

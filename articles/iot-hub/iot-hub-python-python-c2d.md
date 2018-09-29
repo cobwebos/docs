@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: kgremban
-ms.openlocfilehash: 316a8cd9ebf58e06ba39ba18fa19ede4b6a62229
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: cab3e5ee64ced59e9eb861e468f7a3c1dc600e8e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187292"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220732"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>使用 IoT 中心发送云到设备消息 (Python)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -317,6 +317,5 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 [Azure IoT 开发人员中心]: http://www.azure.com/develop/iot
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
-[Transient Fault Handling]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [Azure 门户]: https://portal.azure.com
 [Azure IoT 远程监视解决方案加速器]: https://azure.microsoft.com/documentation/suites/iot-suite/

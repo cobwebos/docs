@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/28/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: d467bc88e1ed3b8dbe42a17095e4f0d14f14fe9a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2191ffabee31d12fb5b581280f924546b0078255
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950227"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405458"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>教程：升级 Azure 中 Service Fabric 群集的运行时
 
@@ -42,7 +42,7 @@ ms.locfileid: "46950227"
 > * 使用模板在 Azure 上创建安全的 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)或 [Linux 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 > * [缩小或扩大群集](service-fabric-tutorial-scale-cluster.md)
 > * 升级群集的运行时
-> * [部署 API 管理与 Service Fabric](service-fabric-tutorial-deploy-api-management.md)
+> * [删除群集](service-fabric-tutorial-delete-cluster.md)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -204,6 +204,3 @@ sfctl cluster upgrade-status
 > * 升级群集运行时
 > * 监视升级
 
-接下来，转到以下教程了解如何使用 Service Fabric 群集部署 API 管理。
-> [!div class="nextstepaction"]
-> [部署 API 管理与 Service Fabric](service-fabric-tutorial-deploy-api-management.md)

@@ -2,7 +2,7 @@
 title: Azure Cosmos DB 自动化 — 使用 Powershell 管理 | Microsoft Docs
 description: 使用 Azure Powershell 管理 Azure Cosmos DB 帐户。
 services: cosmos-db
-author: dmakwana
+author: SnehaGunda
 manager: kfile
 editor: ''
 tags: azure-resource-manager
@@ -10,13 +10,13 @@ ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/21/2017
-ms.author: dimakwan
-ms.openlocfilehash: 60b13c8284708ce46d62b6659b2631a4f551c2ab
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: sngun
+ms.openlocfilehash: 82ab30ebab1b69d5ae636702b3b56d3792c09010
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983101"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394567"
 ---
 # <a name="create-an-azure-cosmos-db-account-using-powershell"></a>使用 PowerShell 创建 Azure Cosmos DB 帐户
 

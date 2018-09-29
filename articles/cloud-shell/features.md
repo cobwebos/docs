@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: juluk
-ms.openlocfilehash: 5087b8a1d675fb6fb2bbfb2b46a09c215bf5e9ae
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2184d006bb99d57f50e71c0096d68b7a0b69a219
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998757"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162281"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell 的功能和工具
 
@@ -44,7 +44,7 @@ Cloud Shell 安全、自动地验证帐户对 Azure CLI 和 Azure PowerShell 的
 
 ### <a name="azure-drive-azure"></a>Azure 驱动器 (Azure:)
 
-PowerShell in Cloud Shell（预览版）启动后，用户会进入 Azure 驱动器 (`Azure:`) 路径下。
+Cloud Shell 中的 PowerShell 在启动时会打开 Azure 驱动器 (`Azure:`)。
 使用 Azure 驱动器可以轻松发现和浏览 Azure 资源（例如计算、网络、存储等），类似于文件系统导航。
 无论位于何种驱动器，都可以继续使用熟悉的 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure) 来管理这些资源。
 直接在 Azure 门户中或者通过 Azure PowerShell cmdlet 对 Azure 资源所做的任何更改会反映在 Azure 驱动器中。  可以运行 `dir -Force` 刷新资源。
@@ -81,6 +81,6 @@ Cloud Shell 预先配置了开放源代码工具（如 Terraform、Ansible 和 C
 
 ## <a name="next-steps"></a>后续步骤
 [Cloud Shell 中的 Bash 快速入门](quickstart.md) <br>
-[PowerShell in Cloud Shell（预览版）快速入门](quickstart-powershell.md) <br>
-[了解 Azure CLI](https://docs.microsoft.com/cli/azure/) <br>
+[Cloud Shell 中的 PowerShell 快速入门](quickstart-powershell.md) <br>
+[了解 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/) <br>
 [了解 Azure PowerShell](https://docs.microsoft.com/powershell/azure/) <br>

@@ -3,7 +3,7 @@ title: Azure 上的 OpenShift 部署后任务 | Microsoft Docs
 description: 部署 OpenShift 群集之后的附加任务。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: haroldw
+author: haroldwongms
 manager: najoshi
 editor: ''
 tags: azure-resource-manager
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: bdfd075b9438ee12e940f3ec4fddebf467c93ca8
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d400512c2e96e0e24bbf965b2e201adf92ccbb0f
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31796153"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434885"
 ---
 # <a name="post-deployment-tasks"></a>部署后任务
 
@@ -41,13 +41,13 @@ ms.locfileid: "31796153"
 - 显示名称：应用注册名称（例如 OCPAzureAD）
 - 主页：OpenShift 控制台 URL（例如 https://masterdns343khhde.westus.cloudapp.azure.com:8443/console)
 - 标识符 URI：OpenShift 控制台 URL（例如 https://masterdns343khhde.westus.cloudapp.azure.com:8443/console)
-- 答复 URL：主公用 URL 和应用注册名称（例如 https://masterdns343khhde.westus.cloudapp.azure.com:8443/oauth2callback/OCPAzureAD)
+- 答复 URL：主公用 URL 和应用注册名称（例如 https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD)
 - 密码：安全密码（使用强密码）
 
 以下示例使用上述信息创建应用注册：
 
 ```azurecli
-az ad app create --display-name OCPAzureAD --homepage https://masterdns343khhde.westus.cloudapp.azure.com:8443/console --reply-urls https://masterdns343khhde.westus.cloudapp.azure.com:8443/oauth2callback/hwocpadint --identifier-uris https://masterdns343khhde.westus.cloudapp.azure.com:8443/console --password {Strong Password}
+az ad app create --display-name OCPAzureAD --homepage https://masterdns343khhde.westus.cloudapp.azure.com:8443/console --reply-urls https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD --identifier-uris https://masterdns343khhde.westus.cloudapp.azure.com:8443/console --password {Strong Password}
 ```
 
 如果命令成功，将显示类似于下面的 JSON 输出：
@@ -65,7 +65,7 @@ az ad app create --display-name OCPAzureAD --homepage https://masterdns343khhde.
   "objectId": "62cd74c9-42bb-4b9f-b2b5-b6ee88991c80",
   "objectType": "Application",
   "replyUrls": [
-    "https://masterdns343khhde.westus.cloudapp.azure.com:8443/oauth2callback/OCPAzureAD"
+    "https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD"
   ]
 }
 ```
@@ -284,9 +284,9 @@ oc create -f ocp-omsagent.yml
 
 ## <a name="configure-metrics-and-logging"></a>配置指标和日志记录
 
-OpenShift 容器平台的 Azure 资源管理器模板提供输入参数用于启用指标和日志记录。 OpenShift 容器平台 Marketplace 产品和 OpenShift Origin 资源管理器模板不提供这些参数。
+OpenShift 容器平台的 Azure 资源管理器模板提供输入参数用于启用指标和日志记录。 OpenShift Container Platform Marketplace 产品和 OpenShift Origin 资源管理器模板不提供这些参数。
 
-如果使用了 OCP 资源管理器模板并且在安装时未启用指标和日志记录，或使用了 OCP Marketplace 产品，则事后也可以轻松启用这些功能。 如果使用 OpenShift Origin 资源管理器模板，则需要完成一些准备工作。
+如果使用了 OCP 资源管理器模板并且在安装时未启用指标和日志记录，或使用了 OCP 市场产品，则事后也可以轻松启用这些功能。 如果使用 OpenShift Origin 资源管理器模板，则需要完成一些准备工作。
 
 ### <a name="openshift-origin-template-pre-work"></a>OpenShift Origin 模板的准备工作
 

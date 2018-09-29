@@ -2,21 +2,22 @@
 title: Azure SQL 数据超大规模库概述 | Microsoft Docs
 description: 本主题介绍 Azure SQL 数据库中基于 vCore 的采购模型中的超大规模服务层，并说明它与常规用途服务层和业务关键服务层的不同之处。
 services: sql-database
-author: CarlRabeler
-ms.reviewer: carlrab
-manager: craigg
 ms.service: sql-database
-ms.subservice: managed-instance
-ms.custom: DBs & servers
+ms.subservice: ''
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/23/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: b50d049d051a57ba12239d4619572dc0dbd7e32f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/23/2018
+ms.openlocfilehash: 314a2182c3be5c5f10e075cdbda27f4a716f2536
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962958"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160394"
 ---
 # <a name="what-is-the-hyperscale-service-tier-preview-in-azure-sql-database"></a>Azure SQL 数据库中的超大规模服务层（预览版）是什么？
 

@@ -2,17 +2,17 @@
 title: 如何查看 Azure 数据目录中的相关数据资产
 description: 本文介绍如何在 Azure 数据目录中查看所选数据资产的相关数据资产。
 services: data-catalog
-author: steelanddata
-ms.author: maroche
+author: markingmyname
+ms.author: maghan
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: d680cc69d27681883014a414255ad0ea4d022cd4
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 156673bfac9bfa38772e4daca166e3431f81c09a
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43052830"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47404991"
 ---
 # <a name="how-to-view-related-data-assets-in-azure-data-catalog"></a>如何查看 Azure 数据目录中的相关数据资产？
 借助 Azure 数据目录，可以查看与所选数据资产相关的数据资产，并查看它们之间的关系。 

@@ -1,21 +1,23 @@
 ---
 title: Azure SQL 数据库多租户应用示例 - Wingtip SaaS | Microsoft Docs
 description: 借助使用 Azure SQL 数据库的示例多租户应用程序，了解 Wingtip SaaS 示例
-keywords: sql 数据库教程
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: ccac68fb22baed668ed786fd594eda122f2522ee
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: dd67e49a80c403e807b24276cf14b9e8c47037b9
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643910"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055503"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>多租户 SaaS 应用简介，该应用通过“每个租户各有数据库”模式使用 SQL 数据库
 
@@ -38,7 +40,7 @@ Wingtip SaaS 应用使用“每个租户各有数据库”模型。 它使用 SQ
 部署应用后，请浏览基于初始部署制作的以下教程。 这些教程探索常见 SaaS 模式，这些模式利用 SQL 数据库、Azure SQL 数据仓库和其他 Azure 服务的内置功能。 教程包括 PowerShell 脚本及详细说明。 这些说明可简化对应用程序中相同 SaaS 管理模式的理解和实现。
 
 
-| 教程 | 说明 |
+| 教程 | Description |
 |:--|:--|
 | [SQL 数据库多租户 SaaS 应用示例指南和提示](saas-tenancy-wingtip-app-guidance-tips.md) | 下载并运行 PowerShell 脚本，准备应用程序部件。 |
 |[部署和浏览 Wingtip SaaS 应用程序](saas-dbpertenant-get-started-deploy.md)|  使用 Azure 订阅部署并浏览 Wingtip SaaS 应用程序。 |

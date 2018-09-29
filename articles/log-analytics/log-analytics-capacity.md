@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: e9163b3c29fd304c80eff46426a30c4fa0ce3b15
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 0244673d50e22124e8a0678e202004f06b0bca00
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130337"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182614"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>使用容量和性能解决方案（预览版）计划 Hyper-V 虚拟机容量
 
@@ -48,7 +48,7 @@ ms.locfileid: "37130337"
 
 下表介绍了该解决方案支持的连接的源。
 
-| 连接的源 | 支持 | 说明 |
+| 连接的源 | 支持 | Description |
 |---|---|---|
 | [Windows 代理](log-analytics-windows-agent.md) | 是 | 解决方案从 Windows 代理收集容量和性能数据信息。 |
 | [Linux 代理](log-analytics-linux-agents.md) | 否    | 解决方案不从直接 Linux 代理收集容量和性能数据信息。|
@@ -126,7 +126,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 下表提供的示例日志搜索针对该解决方案所收集和计算的容量和性能数据。
 
 
-| 查询 | 说明 |
+| 查询 | Description |
 |:--- |:--- |
 | 所有主机内存配置 | Perf | 其中 ObjectName == "Capacity and Performance" 且 CounterName == "Host Assigned Memory MB" | summarize MB = avg(CounterValue) by InstanceName |
 | 所有 VM 内存配置 | Perf | 其中 ObjectName == "Capacity and Performance" 且 CounterName == "VM Assigned Memory MB" | summarize MB = avg(CounterValue) by InstanceName |

@@ -2,18 +2,18 @@
 title: Azure 数据目录开发人员概念
 description: Azure 数据目录概念模型中关键概念的简介，如目录 REST API 中所示。
 services: data-catalog
-author: spelluru
-ms.author: spelluru
+author: markingmyname
+ms.author: maghan
 ms.assetid: 89de9137-a0a4-40d1-9f8d-625acad31619
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 753b4660c8ca47f12aace87a254b93a88db8aaa7
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 97dafe01db4779332a530dc8981b3d6ada8c9df9
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43053259"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406509"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure 数据目录开发人员概念
 Microsoft **Azure 数据目录** 是一种完全托管的云服务，提供了数据源发现和众包数据源元数据的功能。 开发人员可通过其 REST API 使用此服务。 了解在服务中实现的概念对于开发人员能成功与 **Azure 数据目录**集成非常重要。

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/14/2017
 ms.author: echuvyrov
-ms.openlocfilehash: dfebda8f92837f8573fb3362c9210bce9b70d23d
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: cf0fad78613d063a0f1270597cf67eadd996124a
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42751551"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406900"
 ---
 # <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>在 Azure 中使用 Terraform 创建完整的 Linux 虚拟机基础结构
 
@@ -141,6 +141,7 @@ resource "azurerm_network_interface" "myterraformnic" {
     name                = "myNIC"
     location            = "eastus"
     resource_group_name = "${azurerm_resource_group.myterraformgroup.name}"
+    network_security_group_id = "${azurerm_network_security_group.myterraformnsg.id}"
 
     ip_configuration {
         name                          = "myNicConfiguration"
@@ -244,10 +245,6 @@ resource "azurerm_virtual_machine" "myterraformvm" {
 若要将所有这些部分组合在一起，并在操作中看到 Terraform，请创建名为 terraform_azure.tf 的文件并粘贴以下内容：
 
 ```tf
-variable "resourcename" {
-  default = "myResourceGroup"
-}
-
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
     subscription_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"

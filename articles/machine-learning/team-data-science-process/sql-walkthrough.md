@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: deguhath
-ms.openlocfilehash: 6e58429567e447002b1c9191bb8e50a4351649a9
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 6e9813d989a54dbb1609a58dd502a7493d973faa
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246450"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433712"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>团队数据科学过程实务：使用 SQL Server
 在本教程中，将逐步指导完成使用 SQL Server 和可公开取得的数据集 [NYC 出租车行程](http://www.andresmh.com/nyctaxitrips/)，构建和部署机器学习模型的过程。 该程序遵循标准数据科学工作流，包括：引入和浏览数据，设计功能以促进学习，并构建和部署模型。
@@ -582,7 +582,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 2. 在“**属性**”面板中，选择“**Azure SQL 数据库**”作为**数据源**。
 3. 在“**数据库服务器名称**”字段中输入数据库 DNS 名称。 格式：`tcp:<your_virtual_machine_DNS_name>,1433`
 4. 在相应字段中输入**数据库名称**。
-5. 在\*\*服务器用户帐户名中输入 SQL 用户名，在“服务器用户帐户密码”中输入密码。
+5. 在“服务器用户帐户名”中输入 **SQL 用户名**，在“服务器用户帐户密码”中输入**密码**。
 7. 在**数据库查询**编辑文本区域，粘贴提取必要数据库字段（包括任何计算的字段，例如标签）的查询，并向下采样数据至所需样本大小。
 
 二元分类实验直接从 SQL Server 数据库读取数据，示例如下图所示。 可以针对多类分类和回归问题构建类似实验。
