@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: a734eb7b4efecf14a4d47a660c00d561a5fa6677
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c23646bca6109d27e57b2f928363e65c83c634eb
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971801"
+ms.locfileid: "47031146"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>教程：了解如何使用 Visual Studio 升级 Service Fabric 应用程序
 
@@ -46,7 +46,7 @@ ms.locfileid: "46971801"
 
 * 如果尚未部署待办事项应用，请按照[发布 Service Fabric 网格 Web 应用程序](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)中的说明操作。
 
-# <a name="upgrade-a-service-fabric-mesh-service-by-using-visual-studio"></a>使用 Visual Studio 升级 Service Fabric 网格服务
+## <a name="upgrade-a-service-fabric-mesh-service-by-using-visual-studio"></a>使用 Visual Studio 升级 Service Fabric 网格服务
 
 本文介绍如何在应用程序中独立升级微服务。  在本示例中，我们将修改 `WebFrontEnd` 服务以显示任务类别。 然后，升级已部署的服务。
 

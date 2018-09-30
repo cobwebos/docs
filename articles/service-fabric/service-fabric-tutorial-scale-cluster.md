@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/06/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 26930ccb80545b80ab047ef9bc51b7122009ec1f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: da9e1ce17e21f4d87286c0be5d425419f6ed0300
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967330"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408504"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>教程：在 Azure 中缩放 Service Fabric 群集
 
@@ -38,7 +38,7 @@ ms.locfileid: "46967330"
 > * 使用模板在 Azure 上创建安全的 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)或 [Linux 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 > * 缩小或扩大群集
 > * [升级群集的运行时](service-fabric-tutorial-upgrade-cluster.md)
-> * [部署 API 管理与 Service Fabric](service-fabric-tutorial-deploy-api-management.md)
+> * [删除群集](service-fabric-tutorial-delete-cluster.md)
 
 ## <a name="prerequisites"></a>先决条件
 
