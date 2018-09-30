@@ -8,7 +8,6 @@ ms.author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
-ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.component: core
 ms.workload: data-services
@@ -16,17 +15,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
-ms.openlocfilehash: 05cb2a62cf0f001012f5faa022de233d7cbdce97
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2fd0fe55b975010a1eaafeb455d61a6cb3ebff77
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42140230"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46970917"
 ---
 # <a name="structure-projects-with-the-team-data-science-process-template"></a>使用团队数据科学过程模板构建项目
 
-本文档介绍如何在 Azure 机器学习中使用团队数据科学过程 (TDSP) 模板创建数据科学项目。 这些模板有助于构建项目以实现协作和可再现性。 
+本文档介绍如何在 Azure 机器学习的早期版本中使用团队数据科学过程 (TDSP) 模板创建数据科学项目。 这些模板有助于构建项目以实现协作和可再现性。 
 
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
 
 ## <a name="what-is-the-team-data-science-process"></a>什么是团队数据科学过程？
 TDSP 是一种执行并交付高级分析解决方案的敏捷、迭代的数据科学过程。 它旨在改进企业组织中数据科学团队的协作和效率。 它通过四个关键组件支持这些目标：
@@ -52,7 +53,7 @@ TDSP 是一种执行并交付高级分析解决方案的敏捷、迭代的数据
 * 审查 TDSP 机器学习[模板](https://aka.ms/tdspamlgithubrepo)。
 * 内容（“docs”文件夹中已存在的内容除外）大小需要小于 25 MB。 请参阅此列表后面的说明。
 * sample\_data 文件夹只能存放用于测试代码或开始早期开发的小型数据文件（小于 5 MB）。
-* 存储 Word 和 PowerPoint 等文件会大幅增加“docs”文件夹的大小。 建议查找协作 Wiki、[SharePoint](https://products.office.com/en-us/sharepoint/collaboration) 或其他协作资源来存储此类文件。
+* 存储 Word 和 PowerPoint 等文件会大幅增加“docs”文件夹的大小。 建议查找协作 Wiki、[SharePoint](https://products.office.com/sharepoint/collaboration) 或其他协作资源来存储此类文件。
 * 若要了解如何在机器学习中处理大型文件和输出的信息，请阅读[持久保存更改和处理大型文件](http://aka.ms/aml-largefiles)。
 
 > [!NOTE]

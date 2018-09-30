@@ -1,82 +1,78 @@
 ---
-title: 计划程序高可用性和可靠性
-description: 计划程序高可用性和可靠性
+title: 高可用性和可靠性 - Azure 计划程序
+description: 了解 Azure 计划程序中的高可用性和可靠性
 services: scheduler
-documentationcenter: .NET
-author: derek1ee
-manager: kevinlam1
-editor: ''
-ms.assetid: 5ec78e60-a9b9-405a-91a8-f010f3872d50
 ms.service: scheduler
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+author: derek1ee
+ms.author: deli
+ms.reviewer: klam
+ms.assetid: 5ec78e60-a9b9-405a-91a8-f010f3872d50
 ms.topic: article
 ms.date: 08/16/2016
-ms.author: deli
-ms.openlocfilehash: 7e7fe49de7814b6058468d630f8638720e5864f3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d647de379972bac317a213e2f8925c0ff8c3372c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23039902"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947918"
 ---
-# <a name="scheduler-high-availability-and-reliability"></a>计划程序高可用性和可靠性
-## <a name="azure-scheduler-high-availability"></a>Azure 计划程序高可用性
-作为一个核心 Azure 平台服务，Azure 计划程序高度可用，并提供地域冗余服务部署和地理区域作业复制功能。
+# <a name="high-availability-and-reliability-for-azure-scheduler"></a>Azure 计划程序的高可用性和可靠性
+
+> [!IMPORTANT]
+> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)将替换即将停用的 Azure 计划程序。 若要计划作业，请[改为试用 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+
+Azure 计划程序为作业提供了[高可用性](https://docs.microsoft.com/azure/architecture/guide/pillars#availability)和可靠性。 有关详细信息，请参阅 [SLA 计划程序](https://azure.microsoft.com/support/legal/sla/scheduler)。
+
+## <a name="high-availability"></a>高可用性
+
+Azure 计划程序[高度可用]，并使用地域冗余服务部署和地理区域作业复制。
 
 ### <a name="geo-redundant-service-deployment"></a>异地冗余的服务部署
-现在几乎可在 Azure 中的每个地理区域中通过 UI 使用Azure 计划程序。 Azure 计划程序可用的区域列表[在此处列出](https://azure.microsoft.com/regions/#services)。 如果呈现托管区域中的数据中心不可用，Azure 计划程序的故障转移功能是，从另一个数据中心获得服务。
+
+Azure 计划程序在 Azure 门户中提供，几乎适用于[目前 Azure 支持的每个地理区域](https://azure.microsoft.com/global-infrastructure/regions/#services)。 因此，如果托管区域中的 Azure 数据中心变得不可用，仍可以使用 Azure 计划程序，因为该服务的故障转移功能使计划程序可在另一个数据中心提供。
 
 ### <a name="geo-regional-job-replication"></a>地理区域作业复制
-不只是 Azure 计划程序前端可用于管理请求，自己的作业也会经过地域复制。 当一个区域中的服务中断时，Azure 计划程序将故障转移，并确保配对地理区域中的另一个数据中心运行作业。
 
-例如，如果已在美国中南部创建了一个作业，Azure 计划程序会自动在美国中北部复制该作业。 如果美国中南部发生故障，Azure 计划程序可确保从美国中北部运行该作业。 
+在 Azure 计划程序中，你自己的作业在 Azure 区域中复制。 因此如果一个中断，Azure 计划程序将进行故障转移，并确保配对地理区域中的另一个数据中心运行作业。
 
-![][1]
+例如，如果在美国中南部创建了一个作业，Azure 计划程序会自动在美国中北部复制该作业。 如果在美国中南部发生故障，Azure 计划程序将在美国中北部运行作业。 
 
-因此，在 Azure 发生故障时，Azure 计划程序可确保数据始终位于同样广泛的地理区域内。 不需要复制作业而只是为了增加高可用性 – Azure 计划程序会自动为作业提供高可用性功能。
+![地理区域作业复制](./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image1.png)
 
-## <a name="azure-scheduler-reliability"></a>Azure 计划程序可靠性
-Azure 计划程序可保证其自身的高可用性，并提供不同的途径访问用户创建的作业。 例如，工作可能会调用不可用的 HTTP 终结点。 尽管如此，Azure 计划程序会通过提供处理故障的替代选项，尝试成功执行作业。 Azure 计划程序通过两种方式实现此目的：
+Azure 计划程序还可确保数据仍保留在同一个但更广泛的地理区域，以防 Azure 发生故障。 因此，只需要高可用性时无需重复作业。 Azure 计划程序会自动为作业提供高可用性。
 
-### <a name="configurable-retry-policy-via-retrypolicy"></a>通过“retryPolicy”实现的可配置重试策略
-Azure 计划程序允许配置重试策略。 默认情况下，如果某个作业失败，计划程序会在 30 秒的时间间隔内重试该作业四次。 可以将此重试策略重新配置为更频繁（例如，在 30 秒时间间隔内重试 10 次）或更松散（例如，每天重试两次）。
+## <a name="reliability"></a>可靠性
 
-举例来说，如果创建的作业每周运行一次并调用 HTTP 终结点，则此配置可能会有帮助。 如果当作业运行时 HTTP 终结点已关闭了几个小时，则你可能不希望再等待一周来再次运行作业，因为默认重试策略会失败。 在这种情况下，可以重新配置标准的重试策略，以便每隔三个小时（举例）而不是每隔 30 秒重试。
+Azure 计划程序可保证其自身的高可用性，但提供不同的途径访问用户创建的作业。 例如，假设你的作业调用不可用的 HTTP 终结点。 Azure 计划程序仍尝试通过为你提供处理故障的替代方法来成功运行作业： 
 
-若要了解如何配置重试策略，请参阅 [retryPolicy](scheduler-concepts-terms.md#retrypolicy)。
+* 设置重试策略。
+* 设置备用终结点。
 
-### <a name="alternate-endpoint-configurability-via-erroraction"></a>通过“errorAction”实现的备用终结点可配置性
-如果 Azure 计划程序作业的目标终结点仍然无法访问，Azure 计划程序将回退到备用的错误处理终结点后重试策略。 如果配置了备用错误处理终结点，则 Azure 计划程序将调用该终结点。 有了备用终结点，在发生故障时自己的作业将高度可用。
+<a name="retry-policies"></a>
 
-例如，在下图中，Azure 计划程序遵循其重试策略来访问位于纽约的 Web 服务。 重试失败后，它会检查是否有备用终结点。 然后，它将使用相同的重试策略继续向备用终结点发出请求。
+### <a name="retry-policies"></a>重试策略
 
-![][2]
+Azure 计划程序允许你设置重试策略。 如果作业失败，默认情况下，计划程序以 30 秒的间隔继续重试作业四次。 可以放宽此重试策略，例如每 30 秒重试 10 次，或者提高限制，例如每日重试两次。
 
-请注意，相同的重试策略适用于原始操作和备用错误操作。 备用错误操作的操作类型还可以不同于主要操作的操作类型。 例如，虽然主要操作可能调用 HTTP 终结点，但错误操作可能是执行错误日志记录的存储队列、服务总线队列或服务总线主题操作。
+例如，假设你创建了一个调用 HTTP 终结点的每周作业。 如果在作业运行时，HTTP 终结点变得不可用并持续几个小时，你可能不希望再等一个星期再次运行该作业，这是因为默认重试策略在此情况下不起作用。 因此，你可能想要更改标准重试策略，以便进行重试，例如，每三个小时，而不是每 30 秒。 
 
-若要了解如何配置备用终结点，请参阅 [errorAction](scheduler-concepts-terms.md#action-and-erroraction)。
+若要了解如何设置重试策略，请参阅 [retryPolicy](scheduler-concepts-terms.md#retrypolicy)。
+
+### <a name="alternate-endpoints"></a>备用终结点
+
+如果 Azure 计划程序作业调用无法访问的终结点，即使已遵循重试策略，计划程序会回到可以处理此类错误的备用终结点。 因此，如果设置此终结点，计划程序就会调用该终结点，这使得你自己的作业在发生故障时高度可用。
+
+例如，下图显示了在调用纽约的 Web 服务时，计划程序如何遵循重试策略。 如果重试失败，计划程序将检查备用终结点。 如果终结点存在，计划程序就会开始向备用终结点发送请求。 相同的重试策略适用于原始操作和备用操作。
+
+![使用重试策略和备用终结点的计划程序行为](./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image2.png)
+
+备用操作的操作类型可能不同于原始操作。 例如，虽然原始操作调用 HTTP 终结点，但备用操作可以通过使用存储队列、服务总线队列或服务总线主题操作来记录错误。
+
+若要了解如何设置备用终结点，请参阅 [errorAction](scheduler-concepts-terms.md#error-action)。
 
 ## <a name="see-also"></a>另请参阅
- [计划程序是什么？](scheduler-intro.md)
 
- [Azure 计划程序的概念、术语和实体层次结构](scheduler-concepts-terms.md)
-
- [开始在 Azure 门户中使用计划程序](scheduler-get-started-portal.md)
-
- [Azure 计划程序中的计划和计费](scheduler-plans-billing.md)
-
- [如何使用 Azure 计划程序生成复杂的计划和高级循环](scheduler-advanced-complexity.md)
-
- [Azure 计划程序 REST API 参考](https://msdn.microsoft.com/library/mt629143)
-
- [Azure 计划程序 PowerShell cmdlet 参考](scheduler-powershell-reference.md)
-
- [Azure 计划程序的限制、默认值和错误代码](scheduler-limits-defaults-errors.md)
-
- [Azure 计划程序出站身份验证](scheduler-outbound-authentication.md)
-
-[1]: ./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image1.png
-
-[2]: ./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image2.png
+* [什么是 Azure 计划程序？](scheduler-intro.md)
+* [概念、术语和实体层次结构](scheduler-concepts-terms.md)
+* [构建复杂的计划和高级重复周期](scheduler-advanced-complexity.md)
+* [限制、配额、默认值和错误代码](scheduler-limits-defaults-errors.md)

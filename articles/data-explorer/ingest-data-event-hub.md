@@ -1,0 +1,199 @@
+---
+title: 快速入门：将数据从事件中心引入到 Azure 数据资源管理器
+description: 在本快速入门中，将了解如何将数据从事件中心引入（加载）到 Azure 数据资源管理器。
+services: data-explorer
+author: mgblythe
+ms.author: mblythe
+ms.reviewer: mblythe
+ms.service: data-explorer
+ms.topic: quickstart
+ms.date: 09/24/2018
+ms.openlocfilehash: acc18b6414e62a1f8239562158b4b80219c5d7c1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46976816"
+---
+# <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>快速入门：将数据从事件中心引入到 Azure 数据资源管理器
+
+Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器可从事件中心引入（加载数据），是一个大数据流式处理平台和事件引入服务。 事件中心每秒可以近实时处理数百万个事件。 在本快速入门中，将创建事件中心，从 Azure 数据资源管理器中连接到该事件中心，并查看系统中的数据流。
+
+如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
+
+## <a name="prerequisites"></a>先决条件
+
+除 Azure 订阅外，还需以下条件才能完成此快速入门：
+
+* [测试群集和数据库](create-cluster-database-portal.md)
+
+* 生成数据的[示例应用](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)
+
+* 运行示例应用的 [Visual Studio 2017 版本 15.3.2 或更高版本](https://www.visualstudio.com/vs/)
+
+## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
+
+登录到 [Azure 门户](https://portal.azure.com/)。
+
+## <a name="create-an-event-hub"></a>创建事件中心
+
+在本快速入门中，生成示例数据并将其发送到事件中心。 第一步是创建事件中心。 通过使用 Azure 资源管理器 (ARM) 模板在 Azure 门户中执行此操作。
+
+1. 选择下面的按钮以开始部署。
+
+    [![部署到 Azure](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
+
+    “部署到 Azure”按钮将转到 Azure 门户以填写部署窗体。
+
+    ![“部署到 Azure”](media/ingest-data-event-hub/deploy-to-azure.png)
+
+1. 选择要在其中创建事件中心的订阅，并创建名为 test-hub-rg 的资源组。
+
+    ![创建资源组](media/ingest-data-event-hub/create-resource-group.png)
+
+1. 使用以下信息填写窗体。
+
+    ![部署窗体](media/ingest-data-event-hub/deployment-form.png)
+
+    对下表中未列出的任何设置使用默认值。
+
+    **设置** | 建议的值 | 字段说明
+    |---|---|---|
+    | 订阅 | 订阅 | 选择要用于事件中心的 Azure 订阅。|
+    | 资源组 | test-hub-rg | 创建新的资源组。 |
+    | 位置 | *美国西部* | 为此快速入门选择美国西部。 对于生产系统，请选择最能满足你需求的区域。
+    | 命名空间名称 | 唯一的命名空间名称 | 选择用于标识命名空间的唯一名称。 例如，mytestnamespace。 域名 servicebus.windows.net 将追加到所提供的名称。 该名称只能包含字母、数字和连字符。 名称必须以字母开头，并且必须以字母或数字结尾。 值长度必须介于 6 到 50 个字符之间。
+    | 事件中心名称 | test-hub | 事件中心位于命名空间下，该命名空间提供唯一的范围容器。 事件中心名称在命名空间中必须唯一。 |
+    | 使用者组名称 | test-group | 使用者组允许多个使用应用程序各自具有事件流的单独视图。 |
+    | | |
+
+1. 选择“购买”，确认你要在订阅中创建资源。
+
+1. 在工具栏上选择“通知”（钟形图标）以监视预配过程。 部署成功可能需要几分钟时间，但现在可以继续执行下一步。
+
+## <a name="create-a-target-table-in-azure-data-explorer"></a>在 Azure 数据资源管理器中创建目标表
+
+现在，在 Azure 数据资源管理器中创建一个表，事件中心会向该表发送数据。 在“先决条件”中预配的群集和数据库中创建表。
+
+1. 在 Azure 门户中的群集下，选择“查询”。
+
+    ![查询应用程序链接](media/ingest-data-event-hub/query-explorer-link.png)
+
+1. 将以下命令复制到窗口中，然后选择“运行”。
+
+    ```Kusto
+    .create table TestTable (TimeStamp: datetime, Name: string, Metric: int, Source:string)
+    ```
+
+    ![运行创建查询](media/ingest-data-event-hub/run-create-query.png)
+
+1. 将以下命令复制到窗口中，然后选择“运行”。
+
+    ```Kusto
+    .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"datetime"},{"column":"Name","path":"$.name","datatype":"string"},{"column":"Metric","path":"$.metric","datatype":"int"},{"column":"Source","path":"$.source","datatype":"string"}]'
+    ```
+    此命令将传入的 JSON 数据映射到创建表时使用的列名称和数据类型。
+
+## <a name="connect-to-the-event-hub"></a>连接到事件中心
+
+现在，从 Azure 数据资源管理器连接到事件中心，以便流入事件中心的数据流式传输到测试表。
+
+1. 在工具栏上选择“通知”，以验证事件中心部署是否成功。
+
+1. 在创建的群集下，选择“数据库”，然后选择“TestDatabase”。
+
+    ![选择测试数据库](media/ingest-data-event-hub/select-test-database.png)
+
+1. 选择“数据引入”，然后选择“添加数据连接”。
+
+    ![数据引入](media/ingest-data-event-hub/data-ingestion-create.png)
+
+1. 使用以下信息填写窗体，然后选择“创建”。
+
+    ![事件中心连接](media/ingest-data-event-hub/event-hub-connection.png)
+
+    **设置** | 建议的值 | 字段说明
+    |---|---|---|
+    | 数据连接名称 | test-hub-connection | 要在 Azure 数据资源管理器中创建的连接的名称。|
+    | 事件中心命名空间 | 唯一的命名空间名称 | 先前选择的用于标识命名空间的名称。 |
+    | 事件中心 | test-hub | 你创建的事件中心。 |
+    | 使用者组 | test-group | 在创建的事件中心定义的使用者组。 |
+    | 表 | TestTable | 在“TestDatabase”中创建的表。 |
+    | 数据格式 | *JSON* | 支持 JSON 和 CSV 格式。 |
+    | 列映射 | TestMapping | 在“TestDatabase”中创建的映射。 |
+
+    对于此快速入门，从事件中心使用静态路由，在事件中心可指定表名、文件格式和映射。 还可以使用动态路由，应用程序在其中设置这些属性。
+
+## <a name="copy-the-connection-string"></a>复制连接字符串
+
+运行应用以生成示例数据时，需要事件中心命名空间的连接字符串。
+
+1. 在创建的事件中心命名空间下，选择“共享访问策略”，然后选择“RootManageSharedAccessKey”。
+
+    ![共享访问策略](media/ingest-data-event-hub/shared-access-policies.png)
+
+1. 复制“连接字符串 - 主键”。
+
+    ![连接字符串](media/ingest-data-event-hub/connection-string.png)
+
+## <a name="generate-sample-data"></a>生成示例数据
+
+现在，Azure 数据资源管理器和事件中心已连接，可以使用下载的示例应用来生成数据。
+
+1. 在 Visual Studio 中打开示例应用解决方案。
+
+1. 在 program.cs 文件中，将 `connectionString` 常量更新为从事件中心命名空间复制的连接字符串。
+
+    ```csharp
+    const string eventHubName = "test-hub";
+    // Copy the connection string ("Connection string-primary key") from your Event Hub namespace.
+    const string connectionString = @"<YourConnectionString>";
+    ```
+
+1. 构建并运行应用程序。 应用将消息发送到事件中心，并且每十秒显示一次状态。
+
+1. 应用发送一些消息后，继续执行下一步：查看到事件中心和测试表的数据流。
+
+## <a name="review-the-data-flow"></a>查看数据流
+
+1. 在 Azure 门户中的事件中心下，可以看到应用运行时活动的峰值。
+
+    ![事件中心图](media/ingest-data-event-hub/event-hub-graph.png)
+
+1. 返回应用并在其到达消息 99 后将其停止。
+
+1. 在测试数据库中运行以下查询，以检查到目前为止已向数据库发送的消息数。
+
+    ```Kusto
+    TestTable
+    | count
+    ```
+
+1. 运行以下查询以查看消息的内容。
+
+    ```Kusto
+    TestTable
+    ```
+
+    结果集应如下所示。
+
+    ![消息结果集](media/ingest-data-event-hub/message-result-set.png)
+
+## <a name="clean-up-resources"></a>清理资源
+
+如果不打算再次使用事件中心，请清理 test-hub-rg，以避免产生费用。
+
+1. 在 Azure 门户的最左侧选择“资源组”，，然后选择创建的资源组。  
+
+    如果左侧菜单处于折叠状态，请选择 ![“展开”按钮](media/ingest-data-event-hub/expand.png) 将其展开。
+
+   ![选择要删除的资源组](media/ingest-data-event-hub/delete-resources-select.png)
+
+1. 在“test-resource-group”下，选择“删除资源组”。
+
+1. 在新窗口中，键入要删除的资源组的名称 (test-hub-rg)，然后选择“删除”。
+
+## <a name="next-steps"></a>后续步骤
+
+> [!div class="nextstepaction"]
+> [快速入门：在 Azure 数据资源管理器中查询数据](web-query-data.md)

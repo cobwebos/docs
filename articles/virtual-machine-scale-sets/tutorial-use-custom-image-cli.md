@@ -1,6 +1,6 @@
 ---
-title: 教程 - 通过 Azure CLI 2.0 使用规模集中的自定义 VM 映像 | Microsoft Docs
-description: 了解如何使用 Azure CLI 2.0 来创建可用于部署虚拟机规模集的自定义 VM 映像
+title: 教程 - 通过 Azure CLI 使用规模集中的自定义 VM 映像 | Microsoft Docs
+description: 了解如何使用 Azure CLI 来创建可用于部署虚拟机规模集的自定义 VM 映像
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d5ee37b8ab79e29efcb4d12f36e927b2ed9e9e71
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 5eee55846bd6f5821be1e40b969a35f5e50bd205
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41918045"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967364"
 ---
-# <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli-20"></a>教程：通过 Azure CLI 2.0 创建和使用虚拟机规模集的自定义映像
+# <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>教程：通过 Azure CLI 创建和使用虚拟机规模集的自定义映像
 创建规模集时，需指定部署 VM 实例时要使用的映像。 若要在部署 VM 实例之后减少任务数目，可以使用自定义 VM 映像。 在此自定义 VM 映像中可以完成全部所需的应用程序安装或配置步骤。 在规模集中创建的任何 VM 实例使用自定义 VM 映像，并随时可为应用程序流量提供服务。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
@@ -36,7 +36,7 @@ ms.locfileid: "41918045"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装和使用 CLI，本教程要求运行 Azure CLI 2.0.29 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
+如果选择在本地安装和使用 CLI，本教程要求运行 Azure CLI 2.0.29 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 
 ## <a name="create-and-configure-a-source-vm"></a>创建并配置源 VM
@@ -160,7 +160,7 @@ az group delete --name myResourceGroup --no-wait --yes
 
 
 ## <a name="next-steps"></a>后续步骤
-本教程已介绍如何通过 Azure CLI 2.0 创建和使用规模集的自定义 VM 映像：
+本教程已介绍如何通过 Azure CLI 创建和使用规模集的自定义 VM 映像：
 
 > [!div class="checklist"]
 > * 创建和自定义 VM

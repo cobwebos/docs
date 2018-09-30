@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/06/2017
+ms.date: 9/25/2018
 ms.author: victorh
-ms.openlocfilehash: 747b2e2499a9bafcf7a7b03bc2ce144828c55c75
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 66e04e7f0b272f19788e79805ef06d11e2eda572
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172494"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948020"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS 常见问题解答
 
@@ -63,6 +63,10 @@ DNS 区域用来托管某个特定域的 DNS 记录。 例如，域“contoso.co
 
 ## <a name="azure-dns-features"></a>Azure DNS 功能
 
+### <a name="are-there-any-restrictions-when-using-alias-records-for-a-domain-name-apex-with-traffic-manager"></a>在流量管理器中使用域名顶点的别名记录时，是否存在任何限制？
+
+是的。 必须在流量管理器中使用静态公共 IP 地址。 使用静态 IP 地址配置外部终结点目标。 
+
 ### <a name="does-azure-dns-support-dns-based-traffic-routing-or-endpoint-failover"></a>Azure DNS 是否支持基于 DNS 的流量路由或终结点故障转移？
 
 Azure 流量管理器提供基于 DNS 的流量路由和终结点故障转移。 Azure 流量管理器是一项独立服务，可与 Azure DNS 配合使用。 有关详细信息，请参阅[流量管理器概述](../traffic-manager/traffic-manager-overview.md)。
@@ -93,13 +97,41 @@ Azure DNS 仅支持托管“静态”DNS 域，其中对某给定的 DNS 记录�
 
 我们正在 Azure DNS 积压工作中跟踪 URL 重定向功能。 可以使用反馈站点来[表示你对此功能的支持](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape)。
 
-### <a name="does-azure-dns-support-extended-ascii-encoding-8-bit-set-for-txt-recordset-"></a>Azure DNS 是否支持适用于 TXT 记录集的扩展型 ASCII 编码（8 位）集？
+### <a name="does-azure-dns-support-extended-ascii-encoding-8-bit-set-for-txt-recordset"></a>Azure DNS 是否支持适用于 TXT 记录集的扩展型 ASCII 编码（8 位）集？
 
 是的。 Azure DNS 支持适用于 TXT 记录集的扩展型 ASCII 编码集，前提是使用最新版的 Azure REST API、SDK、PowerShell 和 CLI（比 2017-10-01 或 SDK 2.1 更早的版本不支持扩展型 ASCII 集）。 例如，如果用户提供一个字符串作为 TXT 记录的值，其中包含扩展型 ASCII 字符 \128（例如：“abcd\128efgh”），Azure DNS 会在内部表示形式中使用该字符的字节值（即 128）。 在进行 DNS 解析时，此字节值也会在响应中返回。 另请注意，在考虑到解析的情况下，“abc”和“\097\098\099”是可以互换的。 
 
 我们遵循适用于 TXT 记录的 [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) 区域文件母版格式转义规则。 例如，按照 RFC 规则，“\”现在实际上可以对所有内容进行转义操作。 如果指定“A\B”作为 TXT 记录值，则会在呈现时，仅将其解析为“AB”。 如果确实需要让 TXT 记录在解析时呈现为“A\B”，则需对 "\" 再次执行转义操作，即 将其指定为“A\\B”。 
 
-请注意，此支持目前不适用于通过 Azure 门户创建的 TXT 记录。 
+此支持目前不适用于通过 Azure 门户创建的 TXT 记录。 
+
+## <a name="alias-records"></a>别名记录
+
+### <a name="what-are-some-scenarios-where-alias-records-are-useful"></a>别名记录在哪些方案中有用？
+请参阅 [Azure DNS 别名记录概述](dns-alias.md)中的方案部分。
+
+### <a name="what-record-types-are-supported-for-alias-record-sets"></a>别名记录集支持哪些记录类型？
+在 Azure DNS 区域中，别名记录集支持以下记录类型：A、AAAA 和 CNAME。 
+
+### <a name="what-resources-are-supported-as-targets-for-alias-record-sets"></a>支持哪些资源作为别名记录集的目标？
+- 从 DNS A/AAAA 记录集指向公共 IP 资源。 可以创建一个 A/AAAA 记录集，并使其成为指向公共 IP 资源的别名记录集。
+- 从 DNS A/AAAA/CNAME 记录集指向流量管理器配置文件。 除了能够从 DNS CNAME 记录集指向流量管理器配置文件的 CNAME（例如：contoso.trafficmanager.net）外，现在还可以从 DNS 区域中的 A 或 AAAA 记录集指向具有外部终结点的流量管理器配置文件。
+- 指向同一区域中的另一 DNS 记录集。 别名记录可引用相同类型的其他记录集。 例如，可以使 DNS CNAME 记录集成为相同类型的另一 CNAME 记录集的别名。 如果要使部分记录集成为别名，部分成为有关行为的非别名，这将有所帮助。
+
+### <a name="can-i-create-and-update-alias-records-from-the-azure-portal"></a>是否可以从 Azure 门户创建和更新别名记录？
+是的。 除 Azure REST API、Azure PowerShell、CLI 和 SDK 之外，还可以在 Azure 门户中创建或管理别名记录。
+
+### <a name="will-alias-records-help-ensure-my-dns-record-set-is-deleted-when-the-underlying-public-ip-is-deleted"></a>别名记录是否有助于确保在删除基础公共 IP 时，删除我的 DNS 记录集？
+是的。 实际上，这是别名记录的一项核心功能。 它们可帮助为应用程序的最终用户避免潜在中断。
+
+### <a name="will-alias-records-help-ensure-my-dns-record-set-is-updated-to-the-correct-ip-address-when-the-underlying-public-ip-address-changes"></a>当基础公共 IP 地址发生变化时，别名记录是否有助于确保我的 DNS 记录集更新为正确的 IP 地址？
+是的。 正如前面的问题一样，这是别名记录的一项核心功能，可帮助避免应用程序的潜在中断或安全风险。
+
+### <a name="are-there-any-restrictions-when-using-alias-record-sets-for-an-a-or-aaaa-records-to-point-to-traffic-manager"></a>使用 A 或 AAAA 记录的别名记录集指向流量管理器时，是否存在任何限制？
+是的。 如果要将流量管理器配置文件指向 A 或 AAAA 记录集的别名，则必须确保流量管理器配置文件仅使用外部终结点。 在流量管理器中创建外部终结点时，请确保提供终结点的实际 IP 地址。
+
+### <a name="is-there-an-additional-charge-for-using-alias-records"></a>使用别名记录是否会额外收费？
+别名记录是对有效 DNS 记录集的限定，并且别名记录没有额外计费。
 
 ## <a name="using-azure-dns"></a>使用 Azure DNS
 
@@ -179,7 +211,7 @@ Azure DNS 由 Azure 资源管理器管理，且受益于 Azure 资源管理器�
 是的。 客户最多可将 10 个解析虚拟网络关联到一个专用区域。
 
 ### <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-added-as-a-resolution-virtual-network-to-a-private-zone"></a>是否可以在专用区域中，将属于不同订阅的虚拟网络添加为解析虚拟网络？ 
-可以，前提是用户对虚拟网络以及专用 DNS 区域拥有“写入”操作权限。 请注意，“写入”权限可能已分配到多个 RBAC 角色。 例如，经典网络参与者 RBAC 角色对虚拟网络拥有写入权限。 有关 RBAC 角色的详细信息，请阅读[基于角色的访问控制](../role-based-access-control/overview.md)。
+可以，前提是用户对虚拟网络以及专用 DNS 区域拥有“写入”操作权限。 “写入”权限可能已分配到多个 RBAC 角色。 例如，经典网络参与者 RBAC 角色对虚拟网络拥有写入权限。 有关 RBAC 角色的详细信息，请阅读[基于角色的访问控制](../role-based-access-control/overview.md)。
 
 ### <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-the-virtual-machines-are-deleted-by-the-customer"></a>客户删除虚拟机后，是否会自动删除在专用区域中自动注册的虚拟机 DNS 记录？
 是的。 如果删除注册虚拟网络中的虚拟机，我们会自动删除已注册到区域中的 DNS 记录，因为这是一个注册虚拟网络。 
@@ -190,10 +222,10 @@ Azure DNS 由 Azure 资源管理器管理，且受益于 Azure 资源管理器�
 ### <a name="what-happens-when-we-attempt-to-manually-create-a-new-dns-record-into-a-private-zone-that-has-the-same-hostname-as-an-automatically-registered-existing-virtual-machine-in-a-registration-virtual-network"></a>在主机名与注册虚拟网络中（自动注册的）现有虚拟机相同的专用区域中尝试手动创建新的 DNS 记录时，会发发生什么情况？ 
 如果在主机名与注册虚拟网络中（自动注册的）现有虚拟机相同的专用区域中尝试手动创建新的 DNS 记录，我们允许新的 DNS 记录覆盖自动注册的虚拟机记录。 此外，如果随后尝试从区域中删除这条手动创建的 DNS 记录，则删除操作将会成功，并且会再次发生自动注册（在区域中自动重新创建 DNS 记录），前提是虚拟机仍然存在并且其上已附加专用 IP。 
 
-### <a name="what-happens-when-we-unlink-a-registration-virtual-network-from-a-private-zone--would-the-automatically-registered-virtual-machine-records-from-the-virtual-network-be-removed-from-the-zone-as-well"></a>从专用区域中取消链接注册虚拟网络时会发生什么情况？ 该虚拟网络中自动注册的虚拟机记录是否也会从该区域中删除？
+### <a name="what-happens-when-we-unlink-a-registration-virtual-network-from-a-private-zone-would-the-automatically-registered-virtual-machine-records-from-the-virtual-network-be-removed-from-the-zone-as-well"></a>从专用区域中取消链接注册虚拟网络时会发生什么情况？ 该虚拟网络中自动注册的虚拟机记录是否也会从该区域中删除？
 是的。 如果从某个专用区域中取消链接注册虚拟网络（更新 DNS 区域以删除关联的注册虚拟网络），则 Azure 会从该区域中删除所有自动注册的虚拟机记录。 
 
-### <a name="what-happens-when-we-delete-a-registration-or-resolution-virtual-network-that-is-linked-to-a-private-zone--do-we-have-to-manually-update-the-private-zone-to-un-link-the-virtual-network-as-a-registration-or-resolution--virtual-network-from-the-zone"></a>删除已链接到专用区域的注册（或解析）虚拟网络时，会发生什么情况？ 是否必须手动更新该专用区域，才能从该区域中取消链接用作注册（或解析）虚拟网络的虚拟网络？
+### <a name="what-happens-when-we-delete-a-registration-or-resolution-virtual-network-that-is-linked-to-a-private-zone-do-we-have-to-manually-update-the-private-zone-to-unlink-the-virtual-network-as-a-registration-or-resolution--virtual-network-from-the-zone"></a>删除已链接到专用区域的注册（或解析）虚拟网络时，会发生什么情况？ 是否必须手动更新该专用区域，才能从该区域中取消链接用作注册（或解析）虚拟网络的虚拟网络？
 是的。 删除注册（或解析）虚拟网络但事先未将它从专用区域中取消链接时，Azure 可让删除操作成功，但虚拟网络不会从专用区域中自动取消链接（如果存在这种链接）。 需要手动从专用区域中取消链接虚拟网络。 出于此原因，我们建议在删除虚拟网络之前，先从专用区域中取消其链接。
 
 ### <a name="would-dns-resolution-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-contosolocal-is-linked-to-a-virtual-network"></a>是否即使专用区域（例如：contoso.local）已链接到虚拟网络，也仍可使用默认 FQDN (internal.cloudapp.net) 进行 DNS 解析？ 
@@ -204,7 +236,7 @@ Azure DNS 由 Azure 资源管理器管理，且受益于 Azure 资源管理器�
 
 ### <a name="are-there-any-limitations-for-private-zones-during-this-preview"></a>专用区域预览版是否有任何限制？
 是的。 公共预览版存在以下限制：
-* 每个专用区域只能包含 1 个注册虚拟网络
+* 每个专用区域只能包含一个注册虚拟网络
 * 每个专用区域最多包含 10 个解析虚拟网络
 * 一个给定的虚拟网络只能作为注册虚拟网络链接到一个专用区域
 * 一个给定的虚拟网络可以作为解析虚拟网络链接到最多 10 个专用区域
@@ -212,7 +244,7 @@ Azure DNS 由 Azure 资源管理器管理，且受益于 Azure 资源管理器�
 * 反向 DNS 仅适用于注册虚拟网络中的专用 IP 空间
 * 未注册到专用区域中的专用 IP（例如，作为解析虚拟网络链接到专用区域的虚拟网络中的虚拟机专用 IP）的反向 DNS 将返回“internal.cloudapp.net”作为 DNS 后缀，但此后缀不可解析。   
 * 在最初（即首次）作为 注册或解析虚拟网络链接到 专用区域的虚拟网络需是空的（即，所有虚拟网络上都没有附加 NIC）。 但是，以后作为注册或解析虚拟网络链接到其他专用区域时，虚拟网络可以是非空的。 
-* 目前不支持条件转发，例如，为了启用 Azure 与本地网络之间的解析。 有关客户可以如何通过其他机制实现此方案的文档，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
+* 目前不支持条件转发，例如，为了启用 Azure 与本地网络之间的解析。 有关客户如何通过其他机制实现此方案的文档，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
 
 ### <a name="are-there-any-quotas-or-limits-on-zones-or-records-for-private-zones"></a>专用区域的区域数或记录数是否存在任何配额或限制？
 专用区域中每个订阅允许的区域数或每个区域允许的记录集数没有单独的限制。 公共和专用区域数将会计入[此处](../azure-subscription-service-limits.md#dns-limits)所述的总体 DNS 限制

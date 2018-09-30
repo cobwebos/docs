@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure CLI 管理 Hadoop 群集 - Azure HDInsight
-description: 了解如何使用 Azure 命令行接口管理 Azure HDInsight 中的 Hadoop 群集。 Azure CLI 适用于 Windows、Mac 和 Linux。
+title: 使用 Azure 经典 CLI 管理 Hadoop 群集 - Azure HDInsight
+description: 了解如何使用 Azure 经典 CLI 管理 Azure HDInsight 中的 Hadoop 群集。
 services: hdinsight
 ms.reviewer: jasonh
 author: jasonwhowell
@@ -9,32 +9,32 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jasonh
-ms.openlocfilehash: 8d77f6f902ad0d1f6ee2b3dd1da5a38364f1da9b
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 2586b9219eb145b2033fe2d8fc64b8ae72f34eda
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43103738"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958282"
 ---
-# <a name="manage-hadoop-clusters-in-hdinsight-using-the-azure-cli"></a>使用 Azure CLI 管理 HDInsight 中的 Hadoop 群集
+# <a name="manage-hadoop-clusters-in-hdinsight-using-the-azure-classic-cli"></a>使用 Azure 经典 CLI 管理 HDInsight 中的 Hadoop 群集
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-了解如何使用 [Azure 命令行接口](../cli-install-nodejs.md)管理 Azure HDInsight 中的 Hadoop 群集。 Azure CLI 是以 Node.js 实现的。 可以在支持 Node.js 的任意平台（包括 Windows、Mac 和 Linux）上使用它。 HDInsight 目前不支持 [Azure CLI 2.0](https://docs.microsoft.com/cli/azure)。
+了解如何使用 [Azure 经典 CLI](../cli-install-nodejs.md) 管理 Azure HDInsight 中的 Hadoop 群集。 经典 CLI 是以 Node.js 实现的。 可以在支持 Node.js 的任意平台（包括 Windows、Mac 和 Linux）上使用它。
 
-本文仅介绍如何将 Azure CLI 与 HDInsight 配合使用。 有关如何使用 Azure CLI 的常规指南，请参阅[安装和配置 Azure CLI][azure-command-line-tools]。
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 ## <a name="prerequisites"></a>先决条件
 在开始阅读本文前，必须具有：
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-* **Azure CLI** - 有关安装和配置信息，请参阅 [安装和配置 Azure CLI](../cli-install-nodejs.md) 。
+* Azure 经典 CLI - 有关安装和配置信息，请参阅[安装和配置 Azure 经典 CLI](../cli-install-nodejs.md)。
 * 使用以下命令**连接到 Azure**：
 
     ```cli
     azure login
     ```
   
-    有关使用工作或学校帐户进行身份验证的详细信息，请参阅 [从 Azure CLI 连接到 Azure 订阅](/cli/azure/authenticate-azure-cli)。
+    有关使用公司或学校帐户进行身份验证的详细信息，请参阅 [从 Azure 经典 CLI 连接到 Azure 订阅](/cli/azure/authenticate-azure-cli)。
 * 使用以下命令**切换到 Azure 资源管理器模式**：
   
     ```cli
@@ -48,7 +48,7 @@ azure hdinsight cluster create -h
 ```
 
 ## <a name="create-clusters-with-the-cli"></a>使用 CLI 创建群集
-请参阅[使用 Azure CLI 在 HDInsight 中创建群集](hdinsight-hadoop-create-linux-clusters-azure-cli.md)。
+请参阅[使用 Azure 经典 CLI 在 HDInsight 中创建群集](hdinsight-hadoop-create-linux-clusters-azure-cli.md)。
 
 ## <a name="list-and-show-cluster-details"></a>列出并显示群集详细信息
 使用以下命令来列出和显示群集详细信息：
@@ -101,7 +101,7 @@ azure hdinsight cluster disable-rdp-access [options] <Cluster Name>
 * [使用 Azure 门户管理 HDInsight][hdinsight-admin-portal]
 * [使用 Azure PowerShell 管理 HDInsight][hdinsight-admin-powershell]
 * [Azure HDInsight 入门][hdinsight-get-started]
-* [如何使用 Azure CLI][azure-command-line-tools]
+* [如何使用 Azure 经典 CLI][azure-command-line-tools]
 
 [azure-command-line-tools]: ../cli-install-nodejs.md
 [azure-create-storageaccount]:../storage/common/storage-create-storage-account.md

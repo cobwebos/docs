@@ -11,14 +11,17 @@ ms.component: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/10/2018
-ms.openlocfilehash: 0e37e1839d2248507a30de08e2ac4c975bd3b859
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 06e85845d41b240638a5b5b4d75d64fd460a99bf
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35631599"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953321"
 ---
 # <a name="install-and-use-the-machine-learning-cli-for-top-tasks-in-azure-machine-learning"></a>在 Azure 机器学习中为最常见的任务安装和使用机器学习 CLI
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
 Azure 机器学习服务是集成式的端到端数据科学和高级分析解决方案。 专业数据科学家可以使用 Azure 机器学习服务以云的规模准备数据、开发试验和部署模型。 
 
@@ -201,7 +204,7 @@ az ml env set -n <environment name> -g <resource group name>
 ## <a name="next-steps"></a>后续步骤
 
 参阅以下入门文章之一： 
-+ [安装和开始使用 Azure 机器学习](../service/quickstart-installation.md)
++ [安装和开始使用 Azure 机器学习](quickstart-installation.md)
 + [鸢尾花数据分类教程：第 1 部分](tutorial-classifying-iris-part-1.md)
 
 参阅以下深度文章之一：
