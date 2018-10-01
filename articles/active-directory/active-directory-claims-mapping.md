@@ -318,7 +318,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 |用户|othermail|其他邮件|
 |用户|country|国家/地区|
 |用户|city|城市|
-|用户|state|省/直辖市/自治区|
+|用户|state|状态|
 |用户|jobtitle|职务|
 |用户|employeeid|员工 ID|
 |用户|facsimiletelephonenumber|传真电话号码|
