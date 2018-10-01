@@ -29,10 +29,10 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 <table>
 <tr>
 <th>
-省/直辖市/自治区
+状态
 </th>
 <th>
-Description
+描述
 </th>
 <th>
 实例使用计费
@@ -178,7 +178,7 @@ Description
 <p><b>状态</b></p>
 </td>
 <td width="366">
-<p>Description</p>
+<p>描述</p>
 </td>
 </tr>
 <tr>
