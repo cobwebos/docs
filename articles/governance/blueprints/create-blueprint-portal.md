@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: ca3f689ef91c0a1bcb751c78d4fa1d799ed3888b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7af0d4819d4044f4cccc43cde1cffe7dff7982a7
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984615"
+ms.locfileid: "47056431"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>在门户中定义和分配 Azure 蓝图
 
@@ -119,7 +119,7 @@ ms.locfileid: "46984615"
 
 ## <a name="edit-a-blueprint"></a>编辑蓝图
 
-在[创建蓝图](#create_a_blueprint)中，未提供说明，也未将角色分配添加到新资源组。 可以通过执行以下步骤来解决上述问题：
+在[创建蓝图](#create-a-blueprint)中，未提供说明，也未将角色分配添加到新资源组。 可以通过执行以下步骤来解决上述问题：
 
 1. 从左侧页面中选择“蓝图定义”。
 
@@ -205,7 +205,7 @@ ms.locfileid: "46984615"
 
 ## <a name="unassign-a-blueprint"></a>取消分配蓝图
 
-如果蓝图不再需要或由更新的蓝图替换为具有更新后的模式、策略和设计的蓝图时，可从订阅中将其删除。 删除蓝图，作为该蓝图的一部分分配的项目将保留。 要删除蓝图分配，请按照下列步骤操作：
+如果不再需要蓝图或由更新的蓝图替换为具有更新后的模式、策略和设计的蓝图时，可从订阅中将其删除。 删除蓝图，作为该蓝图的一部分分配的项目将保留。 要删除蓝图分配，请按照下列步骤操作：
 
 1. 从左侧页面选择“分配的蓝图”。
 
