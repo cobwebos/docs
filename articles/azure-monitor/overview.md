@@ -10,15 +10,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/14/2018
+ms.topic: conceptual
+ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: 97cc6d6e922ab0bedd729eddca754ae016f041bf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0413357b6e17bf66b0ae9b504bc23b9702d03c91
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958010"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220969"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor 概述
 
@@ -47,7 +47,7 @@ Log Analytics 查询语言适用于简单的日志查询，但也包括高级功
 ![日志](media/overview/logs.png)
 
 ## <a name="what-data-does-azure-monitor-collect"></a>Azure Monitor 收集哪些数据？
-Log Analytics 可从各种源收集数据。 可将应用程序的监视数据视为划分了层次，范围为应用程序、应用程序依赖的任何操作系统和服务，直到平台本身。 Azure Monitor 从以下每个层收集数据：
+Azure Monitor 可从各种源收集数据。 可将应用程序的监视数据视为划分了层次，范围为应用程序、应用程序依赖的任何操作系统和服务，直到平台本身。 Azure Monitor 从以下每个层收集数据：
 
 - **应用程序监视数据**：有关编写的代码的性能和功能的数据，不管平台是什么。
 - **来宾 OS 监视数据**：有关运行应用程序的操作系统的数据。 此应用程序可以在 Azure 中运行，也可以在其他云中或本地运行。 
@@ -145,9 +145,6 @@ Azure Monitor 中的警报规则使用[操作组](../monitoring-and-diagnostics/
 ## <a name="next-steps"></a>后续步骤
 了解有关以下方面的详细信息：
 
-* [Azure Monitor](https://azure.microsoft.com/services/monitor/)，以便开始使用核心监视指标和警报。
-* [Application Insights](https://azure.microsoft.com/documentation/services/application-insights/)：如果要尝试诊断应用服务 Web 应用中的问题。
-* [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/)，以便分析所收集的监视数据和日志。
-
-
-
+* [指标和日志](../monitoring/monitoring-data-collection.md)，了解由 Azure Monitor 收集的数据。
+* [数据源](../monitoring/monitoring-data-sources.md)，了解应用程序的不同组件如何发送遥测数据。
+* [Log Analytics](../log-analytics/log-analytics-queries.md)，以便分析所收集的数据。

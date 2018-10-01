@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 06b30d1381d8fba1d6f053576f6556e6d02f2ae9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d873d28ec772735b8f21551cde1c7d0eab79a18c
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949156"
+ms.locfileid: "47035133"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics 常见问题解答
 此 Microsoft 常见问题解答是有关 Microsoft Azure 中 Log Analytics 的常见问题列表。 如果有与 Log Analytics 有关的任何其他问题，请转到[论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
@@ -69,6 +69,10 @@ Azure 门户中的新的日志体验基于[高级分析门户](https://portal.lo
 
 ### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>问： 为什么在日志中看不到“视图设计器”条目？ 
 答：视图设计器在日志中仅供分配了“参与者”权限或更高权限的用户使用。
+
+### <a name="q-can-i-still-use-the-analytics-portal-outside-of-azure"></a>问： 我仍可以在 Azure 之外使用分析门户吗？
+A. 可以，Azure 中的“日志”页和[高级分析门户](https://portal.loganalytics.io)基于相同的代码。 Log Analytics 作为一项功能集成到 Azure Monitor 中，目的是提供更统一的监视体验。 仍可以使用以下 URL 访问分析门户： https://portal.loganalytics.io/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/workspaces/{workspaceName}。
+
 
 
 ## <a name="general"></a>常规

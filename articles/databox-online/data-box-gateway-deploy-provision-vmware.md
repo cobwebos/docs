@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 09/26/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: d0c6f8723909b71501894c9363932c752c1e130c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5a173340be424c74c76da659816b1b95b74c465f
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989849"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419536"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>教程：在 VMware（预览版）中预配 Azure Data Box Gateway
 
@@ -34,7 +34,7 @@ ms.locfileid: "46989849"
 
 > [!div class="checklist"]
 > * 确保主机满足最低设备要求
-> * 预配虚拟机监控程序中的虚拟设备
+> * 在 VMware 中预配虚拟设备
 > * 启动虚拟设备并获取 IP 地址
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -198,7 +198,7 @@ ms.locfileid: "46989849"
 
 6. 步骤 5-7 仅适用于在非 DHCP 环境中启动的情况。 如果是在 DHCP 环境中，则请跳过这些步骤，转到步骤 8。 如果已在非 DHCP 环境中启动设备，则会看到指示此内容的消息：“使用 Set-HcsIPAddress cmdlet 来配置网络”。 
    
-7. 若要配置网络，请在命令提示符处使用 `Get-HcsIpAddress` 命令列出在虚拟设备上启用的网络接口。 如果设备启用了单个网络接口，则分配到该接口的默认名称为 `DATA1`。
+7. 若要配置网络，请在命令提示符处使用 `Get-HcsIpAddress` 命令列出在虚拟设备上启用的网络接口。 如果设备启用了单个网络接口，则分配到该接口的默认名称为 `Ethernet`。
 
 8. 使用 `Set-HcsIpAddress` cmdlet 配置网络。 下面显示了一个示例：
 
@@ -208,7 +208,7 @@ ms.locfileid: "46989849"
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image24.png)
 
-如果设备不符合最低配置要求，则会在横幅文本中显示错误（如下所示）。 需修改设备配置，使之有足够的资源来满足最低要求。 然后即可重新启动设备并与之进行连接。 请参阅[步骤 1：确保主机系统满足最小虚拟设备要求](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements)中的最低配置要求。
+如果设备不符合最低配置要求，则会在横幅文本中显示错误（如下所示）。 需修改设备配置，使之有足够的资源来满足最低要求。 然后即可重新启动设备并与之进行连接。 请参阅[检查主机系统是否满足最小虚拟设备要求](#check-the-host-system)中的最低配置要求。
 
 <!---If you face any other error during the initial configuration using the local web UI, refer to the following workflows:
 
@@ -217,11 +217,11 @@ ms.locfileid: "46989849"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已了解了多个 Data Box Gateway 主题，例如：
+在本教程中，我们已了解有关 Data Box Gateway 的主题，例如：
 
 > [!div class="checklist"]
 > * 确保主机满足最低设备要求
-> * 预配虚拟机监控程序中的虚拟设备
+> * 在 VMware 中预配虚拟设备
 > * 启动虚拟设备并获取 IP 地址
 
 请继续学习下一教程，了解如何连接、设置和激活虚拟设备。

@@ -1,8 +1,8 @@
 ---
-title: "智能检测 - Azure Application Insights 中跟踪严重性比下降 | Microsoft Docs"
-description: "使用 Azure Application Insights 监视应用程序跟踪，了解跟踪遥测数据的异常模式。"
+title: 智能检测 - Azure Application Insights 中跟踪严重性比下降 | Microsoft Docs
+description: 使用 Azure Application Insights 监视应用程序跟踪，了解跟踪遥测数据的异常模式。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: mbullwin
-ms.openlocfilehash: 29ed195dadb7230df425d6d981a0a482e09ee79f
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 41e972145d2404e46b62521c7d40d997be74a7f9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47093836"
 ---
 # <a name="degradation-in-trace-severity-ratio-preview"></a>跟踪严重性比下降（预览）
 
@@ -34,7 +35,7 @@ ms.lasthandoff: 12/09/2017
 ## <a name="how-do-i-fix-it"></a>如何解决问题？
 通知包括诊断信息，以在诊断进程中提供支持：
 1. **会审。** 通知会显示有多少操作受到影响。 这可以帮助你对问题分配优先级。
-2. **范围。** 该问题是影响所有流量，还是只影响某些操作？ 可以从通知中获取此信息。
+2. **划分范围。** 该问题是影响所有流量，还是只影响某些操作？ 可以从通知中获取此信息。
 3. **诊断。** 可以使用链接到支持信息的相关项和报告，帮助进一步诊断问题。
 
 

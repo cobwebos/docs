@@ -1,21 +1,22 @@
 ---
-title: Azure 上的自定义语音服务中支持的区域设置和语言 | Microsoft Docs
+title: 支持的区域设置和语言 - 自定义语音服务
+titlesuffix: Azure Cognitive Services
 description: 认知服务中自定义语音服务的支持语言的概述。
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: panosper
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1f186681c7e46d2e47ed7eee55c8f61290c48fcb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 34af6673689244364ab3a1fe3f2a6ab056ea8598
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987520"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223949"
 ---
 # <a name="supported-locales-in-custom-speech-service"></a>自定义语音服务中支持的区域设置
 自定义语音服务目前支持下列区域设置中的模型自定义项：

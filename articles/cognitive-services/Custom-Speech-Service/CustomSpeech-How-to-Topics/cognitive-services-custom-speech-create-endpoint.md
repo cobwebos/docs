@@ -1,21 +1,22 @@
 ---
-title: 使用 Azure 上的自定义语音服务创建自定义语音终结点 | Microsoft Docs
-description: 了解如何使用认知服务中的自定义语音服务创建自定义语音转文本终结点。
+title: 创建自定义语音终结点 - 自定义语音服务
+titlesuffix: Azure Cognitive Services
+description: 了解如何使用自定义语音服务创建自定义语音转文本终结点。
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/08/2017
 ms.author: panosper
 ROBOTS: NOINDEX
-ms.openlocfilehash: ed93afa8e10fdfbb0d45f4500b4a648716e25e00
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 958e97f708e7c6920bcb0d65d91656fcf00cd71a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952216"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219017"
 ---
 # <a name="create-a-custom-speech-to-text-endpoint"></a>创建自定义语音转文本终结点
 创建自定义声学模型或语言模型后，可以将它们部署到自定义语音转文本终结点。 

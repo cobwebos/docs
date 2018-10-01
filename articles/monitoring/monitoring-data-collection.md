@@ -7,17 +7,17 @@ manager: carmonm
 editor: tysonn
 ms.service: monitoring
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/11/2018
+ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: d71dc77eac89fef3ae7f8aeb69a05197456ac865
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 19a611ca88310f06503bea2b8606699fe3e1c709
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962924"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406033"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Azure Monitor 收集的监视数据
 [Azure Monitor](../azure-monitor/overview.md) 是可以帮助你监视应用程序及其依赖的资源的服务。 存储来自受监视源的遥测数据和其他数据是此功能的核心所在。 本文提供有关 Azure Monitor 如何存储和使用此类数据的完整说明。
@@ -155,7 +155,7 @@ Log Analytics 可从 Azure 和本地资源中的各种源收集数据。 写入 
 可以使用日志执行的任务包括：
 
 - 使用 Azure 门户中的 [Log Analytics 页](../log-analytics/query-language/get-started-analytics-portal.md)编写查询用于分析日志数据。  将以表格或图表形式呈现的结果固定到 [Azure 仪表板](../azure-portal/azure-portal-dashboards.md)。
-- 配置[日志警报规则](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)，以便在查询结果与特定的结果匹配时发送通知或执行[自动化操作](../monitoring-and-diagnostics/monitoring-action-groups.md)。
+- 配置[日志警报规则](../monitoring-and-diagnostics/alert-log.md)，以便在查询结果与特定的结果匹配时发送通知或执行[自动化操作](../monitoring-and-diagnostics/monitoring-action-groups.md)。
 - 使用[逻辑应用]()基于 Log Analytics 中的数据生成工作流。
 - 将查询结果导出到 [Power BI](../log-analytics/log-analytics-powerbi.md)，以使用不同的可视化效果并与 Azure 外部的用户共享。
 - 使用 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/?view=azurermps-6.8.1) 或 [REST API](https://dev.loganalytics.io/) 从命令行或自定义应用程序访问指标值。
@@ -175,7 +175,7 @@ Log Analytics 可从 Azure 和本地资源中的各种源收集数据。 写入 
 ### <a name="logs-to-metrics"></a>从日志传输到指标
 如前所述，指标的响应速度快于日志，因此在创建警报时延迟更低，成本也更低。 Log Analytics 收集的很多数字数据本来是适合指标的，但并不存储在 Azure 指标存储中。  一个常见的示例是从代理和管理解决方案收集的性能数据。 某些这样的数据可以复制到 Azure 指标存储中，以便通过指标资源管理器发送警报以及进行分析。
 
-有关此功能的说明，请参阅 [Faster Metric Alerts for Logs now in limited public preview](https://azure.microsoft.com/blog/faster-metric-alerts-for-logs-now-in-limited-public-preview/)（针对日志的更快速指标警报现已推出限制性的公开预览版）。 如需支持的值的列表，请参阅[新型指标警报支持的指标和创建方法](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md)。
+有关此功能的说明，请参见[在 Azure Monitor 中为日志创建指标警报](../monitoring-and-diagnostics/monitoring-metric-alerts-logs.md)。 值支持列表可以在 [Azure Monitor 支持的指标](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces)中获得。
 
 ## <a name="stream-data-to-external-systems"></a>将数据流式传输到外部系统
 除了使用 Azure 中的工具分析监视数据以外，可能还需要将这些数据转发到外部工具，例如某个安全信息和事件管理 (SIEM) 产品。 通常，这种转发是通过 [Azure 事件中心](https://docs.microsoft.com/azure/event-hubs/)直接从受监视资源完成的。 

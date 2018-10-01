@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/25/2018
+ms.date: 09/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e449e6e457c4fa568b5a4de5823014b4dcea82d0
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: c94fd0bb68a03c64935c20fef1fab7b68c9c2c9b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064274"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032982"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>部署 Windows 混合 Runbook 辅助角色
 
@@ -30,7 +30,7 @@ ms.locfileid: "37064274"
 Windows 混合 Runbook 辅助角色的最低要求如下：
 
 * Windows Server 2012 或更高版本。
-* Windows PowerShell 4.0 或更高版本（[下载 WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855)）。 为提高可靠性，建议使用 Windows PowerShell 5.1（[下载 WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616)）。
+* Windows PowerShell 5.1 或更高版本（[下载 WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616)）。
 * .NET Framework 4.6.2 或更高版本。
 * 双核。
 * 4 GB RAM。
@@ -49,13 +49,13 @@ Windows 混合 Runbook 辅助角色的最低要求如下：
 
 执行以下步骤，以便自动完成 Windows 混合辅助角色的安装和配置：
 
-1. 直接从运行混合 Runbook 辅助角色的计算机或环境中的其他计算机的 [PowerShell 库](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker/DisplayScript)下载 New-OnPremiseHybridWorker.ps1 脚本， 并将该脚本复制到辅助角色。
+1. 直接从运行混合 Runbook 辅助角色的计算机或环境中的其他计算机的 [PowerShell 库](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker)下载 New-OnPremiseHybridWorker.ps1 脚本， 并将该脚本复制到辅助角色。
 
    在执行期间，New-OnPremiseHybridWorker.ps1 脚本需要以下参数：
 
    * AutomationAccountName（必需）：自动化帐户的名称。
    * AAResourceGroupName（必需）：与自动化帐户关联的资源组的名称。
-   * OMSResourceGroupName（可选）：Operations Management Suite 工作区的资源组名称。 如果未指定此资源组，则使用 AAResourceGroupName。
+   * OMSResourceGroupName（可选）：Log Analytics 工作区的资源组名称。 如果未指定此资源组，则使用 AAResourceGroupName。
    * HybridGroupName（必需）：混合 Runbook 辅助角色组的名称，可将其指定为支持此方案的 Runbook 的目标。
    * SubscriptionID（必需）：包含自动化帐户的 Azure 订阅 ID。
    * WorkspaceName（可选）：Log Analytics 工作区名称。 如果没有 Log Analytics 工作区，该脚本会创建并配置一个。
@@ -63,8 +63,8 @@ Windows 混合 Runbook 辅助角色的最低要求如下：
      > [!NOTE]
      > 目前可与 Log Analytics 集成的自动化区域仅限：澳大利亚东南部、美国东部 2、东南亚以及西欧。 如果自动化帐户不在其中的某个区域，脚本会创建 Log Analytics 工作区，但会警告用户：无法将这些区域链接到一起。
 
-1. 在计算机的“管理员”模式下，从“开始”屏幕打开 Windows PowerShell。
-1. 在 PowerShell 命令行外壳中，浏览到包含已下载脚本的文件夹。 更改这些参数的值：-AutomationAccountName、-AAResourceGroupName、-OMSResourceGroupName、-HybridGroupName、-SubscriptionId 和 -WorkspaceName。 然后运行脚本。
+2. 在计算机的“管理员”模式下，从“开始”屏幕打开 Windows PowerShell。
+3. 在 PowerShell 命令行外壳中，浏览到包含已下载脚本的文件夹。 更改这些参数的值：-AutomationAccountName、-AAResourceGroupName、-OMSResourceGroupName、-HybridGroupName、-SubscriptionId 和 -WorkspaceName。 然后运行脚本。
 
      > [!NOTE]
      > 运行脚本后，系统会提示在 Azure 上进行身份验证。 必须以订阅管理员角色成员和订阅共同管理员的帐户登录。
@@ -75,9 +75,9 @@ Windows 混合 Runbook 辅助角色的最低要求如下：
    -SubscriptionId <AzureSubscriptionId> -WorkspaceName <NameOfLogAnalyticsWorkspace>
    ```
 
-1. 系统会提示用户同意安装 NuGet 并使用 Azure 凭据进行身份验证。
+4. 系统会提示用户同意安装 NuGet 并使用 Azure 凭据进行身份验证。
 
-1. 脚本完成后，“混合辅助角色组”页面会显示新组和成员数。 如果这是现有的组，则成员数会递增。 可以从“混合辅助角色组”页上的列表中选择组，并选择“混合辅助角色”磁贴。 在“混合辅助角色”页上，会列出组的每个成员。
+5. 脚本完成后，“混合辅助角色组”页面会显示新组和成员数。 如果这是现有的组，则成员数会递增。 可以从“混合辅助角色组”页上的列表中选择组，并选择“混合辅助角色”磁贴。 在“混合辅助角色”页上，会列出组的每个成员。
 
 ### <a name="manual-deployment"></a>手动部署
 

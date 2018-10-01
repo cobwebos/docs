@@ -1,21 +1,22 @@
 ---
-title: 教程：使用自定义语音服务创建声学模型 - Microsoft 认知服务 | Microsoft Docs
-description: 本教程介绍如何在 Microsoft 认证服务中使用自定义语音服务创建声学模型。
+title: 教程：创建声学模型 - 自定义语音服务
+titlesuffix: Azure Cognitive Services
+description: 本教程介绍如何使用自定义语音服务创建声学模型。
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-speech
 ms.topic: tutorial
 ms.date: 05/03/2017
 ms.author: panosper
 ROBOTS: NOINDEX
-ms.openlocfilehash: 60fea175e8dffeefeb9cb3ecaadad5d8fc7caeb9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 72c5a0dfb8f33f273ba850378c1fefeef82b4d7a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971529"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220196"
 ---
 # <a name="tutorial-create-a-custom-acoustic-model"></a>教程：创建自定义声学模型
 

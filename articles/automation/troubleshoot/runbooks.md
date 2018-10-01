@@ -8,12 +8,12 @@ ms.date: 07/13/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 78f9ba817008a28e63ec167c4e2ccc7f3859be16
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: b02f1b04756f1e3f01426e58c5f8c625cb746f05
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42141455"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163896"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook 错误故障排除
 
@@ -94,10 +94,17 @@ The subscription named <subscription name> cannot be found.
 为了确定是否已正确向 Azure 进行身份验证并有权访问尝试选择的订阅，请执行以下步骤：  
 
 1. 确保先运行 **Add-AzureAccount** cmdlet，再运行 **Select-AzureSubscription** cmdlet。  
-2. 如果仍显示此错误消息，可通过添加 **Get-AzureSubscription** cmdlet（在 **Add-AzureAccount** cmdlet 后）来修改代码，并执行代码。 现在，请验证 Get-AzureSubscription 的输出是否包含订阅详细信息。  
+2. 如果仍显示此错误消息，可通过在 **Add-AzureAccount** cmdlet 后添加 **-AzureRmContext** 参数来修改代码，并执行代码。
 
-   * 如果在输出中看不到任何订阅详细信息，则说明该订阅尚未初始化。  
-   * 如果在输出中看到了订阅详细信息，请确认你对 Select-AzureSubscription cmdlet 使用了正确的订阅名称或 ID。
+   ```powershell
+   $Conn = Get-AutomationConnection -Name AzureRunAsConnection
+   Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID `
+-ApplicationID $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+
+   $context = Get-AzureRmContext
+
+   Get-AzureRmVM -ResourceGroupName myResourceGroup -AzureRmContext $context
+   ```
 
 ### <a name="auth-failed-mfa"></a>场景：无法向 Azure 进行身份验证，因为已启用多重身份验证
 
@@ -151,7 +158,7 @@ Exception: A task was canceled.
 
 #### <a name="resolution"></a>解决方法
 
-如果使用多个订阅，则在调用子 Runbook 时可能会丢失订阅上下文。 若要确保将订阅上下文传递给子 Runbook，请将 `DefaultProfile` 参数添加到 cmdlet 并将上下文传递给它。
+如果使用多个订阅，则在调用子 Runbook 时可能会丢失订阅上下文。 若要确保将订阅上下文传递给子 Runbook，请将 `AzureRmContext` 参数添加到 cmdlet 并将上下文传递给它。
 
 ```azurepowershell-interactive
 # Connect to Azure with RunAs account
@@ -171,7 +178,7 @@ Start-AzureRmAutomationRunbook `
     –AutomationAccountName 'MyAutomationAccount' `
     –Name 'Test-ChildRunbook' `
     -ResourceGroupName 'LabRG' `
-    -DefaultProfile $AzureContext `
+    -AzureRmContext $AzureContext `
     –Parameters $params –wait
 ```
 
@@ -216,17 +223,19 @@ The job was tried three times but it failed
 
 1. 内存限制。 [自动化服务限制](../../azure-subscription-service-limits.md#automation-limits)中规定了对可以分配给沙盒的内存量的限制，因此，如果使用超过 400 MB 的内存，作业可能会失败。
 
-2. 模块不兼容。 如果模块依赖关系不正确，则可能会发生这种情况，并且如果它们不正确，则 runbook 通常会返回“找不到命令”或“无法绑定参数”消息。
+1. 网络套接字。 如[自动化服务限制](../../azure-subscription-service-limits.md#automation-limits)中所述，Azure 沙盒限制为 1000 个并发网络套接字。
+
+1. 模块不兼容。 如果模块依赖关系不正确，则可能会发生这种情况，并且如果它们不正确，则 runbook 通常会返回“找不到命令”或“无法绑定参数”消息。
 
 #### <a name="resolution"></a>解决方法
 
 下述解决方案中的任何一种都可以解决此问题：
 
-* 在内存限制内工作的建议方法是拆分多个 runbook 之间的工作负载，不作为内存中的诸多数据进行处理，不从 runbook 写入不必要的输出，或考虑在 PowerShell 工作流 runbook 中写入多少个检查点。  
+* 在内存限制内工作的建议方法是拆分多个 runbook 之间的工作负载，不作为内存中的诸多数据进行处理，不写入不必要的 runbook 输出，或考虑在 PowerShell 工作流 runbook 中写入多少个检查点。 可以使用 clear 方法（例如 `$myVar.clear()`）清除变量并使用 `[GC]::Collect()` 立即运行垃圾收集，这将减少运行时期间 Runbook 的内存占用量。
 
 * 按照[如何更新 Azure 自动化中的 Azure PowerShell 模块](../automation-update-azure-modules.md)中的步骤更新 Azure 模块。  
 
-* 另一个解决方案是在[混合 Runbook 辅助角色](../automation-hrw-run-runbooks.md)上运行 runbook。 混合辅助角色不受[公平份额](../automation-runbook-execution.md#fair-share)限制，而 Azure 沙盒受限于此限制。
+* 另一个解决方案是在[混合 Runbook 辅助角色](../automation-hrw-run-runbooks.md)上运行 runbook。 混合辅助角色不受内存和网络限制，而 Azure 沙盒则受限于此限制。
 
 ### <a name="fails-deserialized-object"></a>场景：Runbook 因反序列化的对象而失败
 

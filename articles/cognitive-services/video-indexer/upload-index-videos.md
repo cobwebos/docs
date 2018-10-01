@@ -57,7 +57,7 @@ ms.locfileid: "45983880"
 
 ### <a name="callbackurl"></a>callbackUrl
 
-一个 POST URL，用于通知索引编制何时完成。 视频索引器向其添加两个查询字符串参数：id 和 state。 例如，如果回调 URL 为“https://test.com/notifyme?projectName=MyProject”，则通知会和其他参数一起发送至“https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed”。
+一个 POST URL，用于通知索引编制何时完成。 视频索引器向其添加两个查询字符串参数：id 和 state。 例如，如果回调 URL 为“https://test.com/notifyme?projectName=MyProject” ，则通知会和其他参数一起发送至“ https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed”。
 
 也可在 POST 对视频索引器的调用之前将更多参数添加到 URL，然后这些参数就会包括在回调中。 随后即可在代码中分析查询字符串，并取回查询字符串中的所有指定参数（最初追加到 URL 的数据以及视频索引器提供的信息）。需要对 URL 进行编码。
 

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/19/2018
+ms.date: 09/13/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 45e8668ce0a7eb2edd79271096f58b56ca1af5f0
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 02b36d8f8c8c9be2532b440bd9858766e8b524ca
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "36205563"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060720"
 ---
 ## <a name="set-up-your-project"></a>设置项目
 
@@ -37,7 +37,7 @@ ms.locfileid: "36205563"
 1.  在 Android Studio 中，选择“Gradle 脚本” > “build.gradle (模块: 应用)”。
 2.  在“依存关系”下，粘贴以下代码：
 
-    ```ruby  
+    ```gradle  
     compile ('com.microsoft.identity.client:msal:0.1.+') {
         exclude group: 'com.android.support', module: 'appcompat-v7'
     }
@@ -47,10 +47,10 @@ ms.locfileid: "36205563"
 <!--start-collapse-->
 ### <a name="about-this-package"></a>关于此包
 
-以上代码中的包安装 Microsoft 身份验证库。 MSAL 负责获取、缓存和刷新用于访问受 Azure Active Directory v2 终结点保护的 API 的用户令牌。
+以上代码中的包安装 Microsoft 身份验证库。 MSAL 处理所有令牌操作，包括获取、缓存、刷新和删除。  需要令牌才能访问受 Microsoft 标识平台保护的 API。
 <!--end-collapse-->
 
-## <a name="create-the-application-ui"></a>创建应用程序 UI
+## <a name="create-the-apps-ui"></a>创建应用的 UI
 
 1. 转到“资源” > “布局”，然后打开 **activity_main.xml**。 
 2. 将活动布局从 `android.support.constraint.ConstraintLayout` 或其他布局更改为 `LinearLayout`。

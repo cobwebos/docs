@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 479fd902ef68bf24306bcd699da0be08415592a0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6ac31818a68aa2b4624410b423b7559b84275777
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956983"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409365"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理指标警报
 
@@ -20,7 +20,7 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
 
 可以在[指标警报概述](alert-metric-overview.md)中详细了解指标警报的工作原理。
 
-## <a name="create-a-metric-alert-rule-using-azure-portal"></a>Azure 门户创建指标警报规则
+## <a name="create-with-azure-portal"></a>使用 Azure 门户进行创建
 
 以下过程说明如何在 Azure 门户中创建指标警报规则：
 
@@ -58,7 +58,7 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
 > [!NOTE]
 > 通过门户创建的指标警报规则将在目标资源所在的同一个资源组中创建。
 
-## <a name="view-and-manage-metric-alert-rules-using-azure-portal"></a>使用 Azure 门户查看和管理指标警报规则
+## <a name="view-and-manage-with-azure-portal"></a>使用 Azure 门户查看和管理
 
 可以使用“警报”下的“管理规则”边栏选项卡查看和管理指标警报规则。 以下过程说明如何查看指标警报规则，以及编辑其中的某个规则。
 
@@ -80,7 +80,7 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
 
 6. 单击“完成”保存所做的编辑。
 
-## <a name="create-view-and-manage-metric-alert-rules-using-azure-cli"></a>使用 Azure CLI 创建、查看和管理指标警报规则
+## <a name="with-azure-cli"></a>使用 Azure CLI
 
 前面几个部分介绍了如何使用 Azure 门户创建、查看和管理指标警报规则。 本部分将介绍如何使用跨平台 [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) 实现相同的结果。 使用 Azure CLI 的最快捷方式是通过 [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview?view=azure-cli-latest)。 本文将使用 Cloud Shell。
 

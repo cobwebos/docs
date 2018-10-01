@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fd96a6cfebe44bd02e3f44a44d91119ad1c2c5a9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fe35f26fe73661901fa85da65e353fe66adf5d47
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598746"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47094211"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Azure 自动化中基于角色的访问控制
 
@@ -47,7 +47,7 @@ ms.locfileid: "34598746"
 
 所有者可管理所有内容，包括访问权限。 下表显示了授予角色的权限：
 
-|操作|说明|
+|操作|Description|
 |---|---|
 |Microsoft.Automation/automationAccounts/|创建和管理所有类型的资源。|
 
@@ -78,12 +78,21 @@ ms.locfileid: "34598746"
 |**操作**  |**说明**  |
 |---------|---------|
 |Microsoft.Authorization/*/read|读取授权。|
+|Microsoft.Automation/automationAccounts/hybridRunbookWorkerGroups/read|读取混合 Runbook 辅助角色资源。|
 |Microsoft.Automation/automationAccounts/jobs/read|列出 runbook 的作业。|
 |Microsoft.Automation/automationAccounts/jobs/resume/action|恢复已暂停的作业。|
 |Microsoft.Automation/automationAccounts/jobs/stop/action|取消正在进行的作业。|
 |Microsoft.Automation/automationAccounts/jobs/streams/read|读取作业流和输出。|
+|Microsoft.Automation/automationAccounts/jobs/output/read|获取作业的输出。|
 |Microsoft.Automation/automationAccounts/jobs/suspend/action|暂停正在进行的作业。|
 |Microsoft.Automation/automationAccounts/jobs/write|创建作业。|
+|Microsoft.Automation/automationAccounts/jobSchedules/read|获取 Azure 自动化作业计划。|
+|Microsoft.Automation/automationAccounts/jobSchedules/write|创建 Azure 自动化作业计划。|
+|Microsoft.Automation/automationAccounts/linkedWorkspace/read|获取链接到自动化帐户的工作区。|
+|Microsoft.Automation/automationAccounts/read|获取 Azure 自动化帐户。|
+|Microsoft.Automation/automationAccounts/runbooks/read|获取 Azure 自动化 Runbook。|
+|Microsoft.Automation/automationAccounts/schedules/read|获取 Azure 自动化计划资产。|
+|Microsoft.Automation/automationAccounts/schedules/write|创建或更新 Azure 自动化计划资产。|
 |Microsoft.Resources/subscriptions/resourceGroups/read      |读取角色和角色分配。         |
 |Microsoft.Resources/deployments/*      |创建和管理资源组部署。         |
 |Microsoft.Insights/alertRules/*      | 创建和管理警报规则。        |

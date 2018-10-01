@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/16/2018
+ms.date: 09/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e98012a012c8569a40fe454a777e5f108bfe0e2e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 72503c9f073a046b81001322cdbb4fb8a1af76cf
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46304586"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224114"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect：自动升级
 此功能是随内部版本 [1.1.105.0（于 2016 年 2 月发布）](reference-connect-version-history.md#111050)一起推出的。  此功能已在[内部版本 1.1.561](reference-connect-version-history.md#115610) 中更新，现在支持以前不支持的其他方案。
@@ -39,7 +39,7 @@ ms.locfileid: "46304586"
 | 状态 | 注释 |
 | --- | --- |
 | Enabled |自动升级已启用。 |
-| Suspended |只能由系统设置。 系统不再能够接收自动升级。 |
+| Suspended |只能由系统设置。 系统**目前没有**资格接收自动升级。 |
 | Disabled |自动升级已禁用。 |
 
 可以使用 `Set-ADSyncAutoUpgrade` 在“已启用”与“已禁用”之间切换。 应该只有系统才能设置“暂停”状态。
@@ -66,7 +66,7 @@ ms.locfileid: "46304586"
 
 结果代码前面会有包含状态概述的前缀。
 
-| 结果代码前缀 | 说明 |
+| 结果代码前缀 | Description |
 | --- | --- |
 | Success |安装已成功升级。 |
 | UpgradeAborted |某种临时状态停止了升级。 升级会重试，预期稍后会成功。 |
@@ -74,7 +74,7 @@ ms.locfileid: "46304586"
 
 下面是最常见的消息列表。 该列表并不完整，但结果消息应会明确说明问题所在。
 
-| 结果消息 | 说明 |
+| 结果消息 | Description |
 | --- | --- |
 | **UpgradeAborted** | |
 | UpgradeAbortedCouldNotSetUpgradeMarker |无法写入注册表。 |

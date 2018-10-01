@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 08/27/2018
+ms.date: 09/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 2d7226f18eb922eaba3c8184656560c33202ef56
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 77a57afda3859de4a246c15d3b5c0b4ba8e2a8c8
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665428"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038982"
 ---
 # <a name="configure-azure-ad-directory-role-settings-in-pim"></a>在 PIM 中配置 Azure AD 目录角色设置
 
@@ -63,24 +63,23 @@ ms.locfileid: "43665428"
 * 使用 Microsoft 帐户作为电子邮件地址（通常是 @outlook.com，但不一定）的用户无法注册 Azure MFA。 如果想要将角色分配到使用 Microsoft 帐户的用户，应将其设置为永久管理员，或者为该角色禁用 MFA。
 * 无法对 Azure AD 和 Office365 中的高特权角色禁用 MFA。 这是一项安全功能，因为这些角色应该受到严密的保护：  
   
-  * 应用程序管理员
-  * 应用程序代理服务器管理员
-  * 计费管理员  
-  * 法规管理员  
+  * 计费管理员
+  * 云应用管理员
+  * 符合性管理员
+  * 条件访问管理员
   * CRM 服务管理员
-  * 客户密码箱访问审批人
-  * 目录写入者  
-  * Exchange 管理员  
-  * 全局管理员
+  * 客户密码箱访问审批者
+  * 目录编写人员
+  * Exchange 管理员
+  * 全局管理员角色
+  * 信息保护管理员
   * Intune 服务管理员
-  * 邮箱管理员  
-  * 合作伙伴一线支持人员  
-  * 合作伙伴二线支持人员  
+  * Power BI 服务管理员
   * 特权角色管理员
-  * 安全管理员  
-  * SharePoint 管理员  
-  * Skype for Business 管理员  
-  * 用户帐户管理员  
+  * 安全管理员
+  * SharePoint 服务管理员
+  * Skype for Business 管理员
+  * 用户管理员
 
 有关详细信息，请参阅[多重身份验证 (MFA) 和 PIM](pim-how-to-require-mfa.md)。
 

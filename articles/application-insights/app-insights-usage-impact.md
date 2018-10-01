@@ -1,22 +1,24 @@
 ---
-title: "在 Azure Application Insights 中使用 Impact | Microsoft docs"
-description: "分析不同的属性对应用部件的转换率造成的潜在影响。"
+title: 在 Azure Application Insights 中使用 Impact | Microsoft docs
+description: 分析不同的属性对应用部件的转换率造成的潜在影响。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/25/2018
-ms.author: mbullwin ; daviste
-ms.openlocfilehash: d76db02647ce878343f60fc84cf063c5b7833438
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.reviewer: daviste
+ms.author: mbullwin
+ms.openlocfilehash: 9188776fdd213f01523069b08bd898f48bee57a4
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47091475"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Application Insights 中的 Impact 分析功能
 
@@ -66,7 +68,7 @@ Impact 支持标准和自定义的属性与度量值。 可以任意使用这两
 
 ## <a name="how-does-the-impact-tool-calculate-these-conversion-rates"></a>Impact 工具如何计算这些转换率？
 
-Impact 工具在幕后依赖于 [皮尔逊相关系数] (https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)。 结果是在 -1 与 1 之间计算的，-1 表示零相关，1 表示正相关。
+在底层，Impact 工具依赖于 [皮尔逊相关系数] (https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)。 结果是在 -1 与 1 之间计算的，-1 表示零相关，1 表示正相关。
 
 简单而言，Impact Analysis 工作原理的分解如下：
 

@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 09/12/2018
+ms.date: 09/26/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporoate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 46a48c6e06f37968ab3f41b30d983f2664785811
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0b8de4d04d9cca47423634164e458e8699154f30
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990546"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405302"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>教程：使用 Azure 虚拟 WAN（预览版）创建 ExpressRoute 关联
 
@@ -39,6 +39,30 @@ ms.locfileid: "46990546"
 
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
 
+## <a name="register"></a>注册此功能
+
+单击“试用”以使用 Azure Cloud Shell 轻松注册此功能。
+
+>[!NOTE]
+>如果未注册此功能，则将无法使用它，也无法在门户中看到它。
+>
+>
+
+单击“试用”打开 Azure Cloud Shell后，复制并粘贴以下命令：
+
+```azurepowershell-interactive
+Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowCortexExpressRouteGateway
+```
+ 
+```azurepowershell-interactive
+Get-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowCortexExpressRouteGateway
+```
+
+该功能显示为已注册后，请将订阅重新注册到 Microsoft.Network 命名空间。
+
+```azurepowershell-interactive
+Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
+```
 
 ## <a name="vnet"></a>1.创建虚拟网络
 
@@ -46,7 +70,7 @@ ms.locfileid: "46990546"
 
 ## <a name="openvwan"></a>2.创建虚拟 WAN
 
-从浏览器导航到 [Azure 门户](https://portal.azure.com)并使用 Azure 帐户登录。
+从浏览器导航到 [Azure 门户（预览版）](http://aka.ms/azurevirtualwanpreviewfeatures)并使用 Azure 帐户登录。
 
 [!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
 

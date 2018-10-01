@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 09/25/2018
 ms.author: alkohli
-ms.openlocfilehash: 0204445464a9d61b4e25be1d71373ce8394b32f0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9bc84a9b08c4cfbdf7f24416c923e0dbd7076556
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957665"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161924"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box"></a>教程：将数据复制到 Azure Data Box 
 
@@ -38,14 +38,14 @@ ms.locfileid: "46957665"
 
 1. 已完成[教程：设置 Azure Data Box](data-box-deploy-set-up.md)。
 2. 已收到 Data Box，并且门户中的订单状态为“已送达”。
-3. 有一台主机，其中的数据需复制到 Data Box。 该主机必须
+3. 你有一台主机，其中的数据需复制到 Data Box。 该主机必须
     - 运行[支持的操作系统](data-box-system-requirements.md)。
     - 连接到高速网络。 强烈建议至少建立一个 10 GbE 连接。 如果 10 GbE 连接不可用，可以使用 1 GbE 数据链路，但复制速度会受影响。 
 
 ## <a name="connect-to-data-box"></a>连接到 Data Box
 
 根据选择的存储帐户，Data Box 将会：
-- 为每个关联的存储帐户（GPv1 和 GPv2）最多三个共享。
+- 为每个关联的 GPv1 和 GPv2 存储帐户最多创建三个共享。
 - 为高级或 Blob 存储帐户创建一个共享。 
 
 块 Blob 和页 Blob 共享下的一级实体为容器，二级实体为 Blob。 在 Azure 文件共享下，一级实体为共享，二级实体为文件。
@@ -233,7 +233,7 @@ ms.locfileid: "46957665"
 
 如果使用 Linux 主机，请使用类似于 Robocopy 的复制实用工具。 在 Linux 中可用的一些替代工具包括 [rsync](https://rsync.samba.org/)、[FreeFileSync](https://www.freefilesync.org/)、[Unison](https://www.cis.upenn.edu/~bcpierce/unison/) 或 [Ultracopier](https://ultracopier.first-world.info/)。  
 
-cp 命令是用于复制目录的最佳选项之一。 有关用法详细信息，请转到 [cp 手册页](http://man7.org/linux/man-pages/man1/cp.1.html)。
+`cp` 命令是用于复制目录的最佳选项之一。 有关用法详细信息，请转到 [cp 手册页](http://man7.org/linux/man-pages/man1/cp.1.html)。
 
 如果使用 rsync 选项进行多线程复制，请遵循以下准则：
 
@@ -273,7 +273,7 @@ cp 命令是用于复制目录的最佳选项之一。 有关用法详细信息�
    
     ![准备交付 1](media/data-box-deploy-copy-data/prepare-to-ship1.png)
 
-2. 如果未启用校验和，此时会显示用于启用校验和的选项。 我们建议执行校验和验证以确保数据完整性。 选择“启用校验和”随即会触发校验和计算，根据数据的大小，此过程可能需要一段时间。 单击“开始准备”。
+2. 默认情况下，校验和是在准备交付期间以内联方式计算的。 校验和计算可能需要一些时间，具体取决于数据的大小。 单击“开始准备”。
     1. 在准备交付时，设备共享将会脱机，设备将会锁定。
         
         ![准备交付 1](media/data-box-deploy-copy-data/prepare-to-ship2.png) 

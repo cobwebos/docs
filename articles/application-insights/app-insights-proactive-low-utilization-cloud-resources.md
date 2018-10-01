@@ -1,8 +1,8 @@
 ---
-title: "智能检测 - Azure Application Insights 检测到的云资源使用率低下 | Microsoft Docs"
-description: "使用 Azure Application Insights 监视应用程序是否存在云资源使用率低下的情况。"
+title: 智能检测 - Azure Application Insights 检测到的云资源使用率低下 | Microsoft Docs
+description: 使用 Azure Application Insights 监视应用程序是否存在云资源使用率低下的情况。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
@@ -10,20 +10,21 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8382f6047ae222a01cc0e8d6ca9dcf5593d0dff6
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: ca4f944f605db96a2cedf2682f3ff4c811007ffb
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47094906"
 ---
-# <a name="low-utilization-of-cloud-resources-preview"></a>云资源使用率低下（预览）
+# <a name="low-cpu-utilization-in-cloud-resources-preview"></a>云资源（预览）CPU 使用率低下
 
 Application Insights 自动分析应用程序中每个角色实例的 CPU 使用情况，并检测 CPU 使用率低下的实例。 通过此检测，用户可以通过减少每个角色使用的角色实例数，或通过减少角色数来减少 Azure 资源并降低成本。
 
-此功能需要[配置性能计数器](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters)，除此之外，不需要其他特殊设置。 当应用生成足够的 CPU 性能计数器遥测（占处理器时间的百分比）时，它处于活动状态。
+此功能需要[配置性能计数器](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters)，除此之外，不需要其他特殊设置。 当应用生成足够的 CPU 性能计数器遥测数据（处理器时间百分比）时，它处于活动状态。
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>何时会收到此类型的智能检测通知？
 当很多 Web/辅助角色实例出现 CPU 利用率低下的情况时，系统会发出典型通知。

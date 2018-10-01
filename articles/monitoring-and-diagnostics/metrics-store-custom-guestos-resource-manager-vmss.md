@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: d896cb01c7dc2cd4ed028db418f838809c7ce25c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b9808233e08e545c31e171afe104173dccc6abed
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986993"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434919"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>使用 Windows 虚拟机规模集的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
 
@@ -83,7 +83,7 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 
 在 **extensionProfile** 中，将 **VMSS-WAD-extension section** 所示的新扩展添加到模板。  此节是托管服务标识 (MSI) 扩展，确保 Azure Monitor 接受所发出的指标。 **name** 字段可以包含任何名称。 
 
-MSI 扩展下面的代码还会将诊断扩展和配置作为扩展资源添加到虚拟机规模集资源。 根据需要任意添加/删除性能计数器。 
+MSI 扩展中的以下代码还会将诊断扩展和配置作为扩展资源添加到虚拟机规模集资源。 根据需要任意添加/删除性能计数器。 
 
 ```json
           "extensionProfile": { 

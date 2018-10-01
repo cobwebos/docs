@@ -14,37 +14,37 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/02/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 4d0c8a4395ee70881ffee56f9ed030943c6fa557
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.component: ''
+ms.openlocfilehash: ba15ecdb59eb98094367d8cd4760323d863332c4
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495367"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222703"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>将 Operations Manager 连接到 Log Analytics
-若要保持 System Center Operations Manager 中的现有投资并将扩展功能用于 Log Analytics，可将 Operations Manager 与 Log Analytics 工作区集成。  这样既可以利用 Log Analytics，又可以继续使用 Operations Manager 执行以下操作：
+若要保持 System Center Operations Manager 中的现有投资并将扩展功能用于 Log Analytics，可将 Operations Manager 与 Log Analytics 工作区集成。 这样既可以利用 Log Analytics，又可以继续使用 Operations Manager 执行以下操作：
 
 * 使用 Operations Manager 监视 IT 服务的运行状况
 * 保持与支持事件和问题管理的 ITSM 解决方案集成
 * 管理部署到本地和公有云 IaaS 虚拟机（使用 Operations Manager 监视）的代理的生命周期
 
-与 System Center Operations Manager 集成时，可以利用 Log Analytics 在收集、存储和分析 Operations Manager 数据方面的速度和效率优势，提高服务操作策略的价值。  Log Analytics 可以帮助你确定问题的相关因素和根本原因，并重现其发生过程，为现有问题管理过程提供支持。  搜索引擎在检查性能、事件和警报数据方面非常灵活，丰富的仪表板和报告功能可以有意义的方式公开此数据，这均展示了 Log Analytics 为使 Operations Manager 锦上添花所引入的强大优势。
+与 System Center Operations Manager 集成时，可以利用 Log Analytics 在收集、存储和分析 Operations Manager 数据方面的速度和效率优势，提高服务操作策略的价值。 Log Analytics 可以帮助你确定问题的相关因素和根本原因，并重现其发生过程，为现有问题管理过程提供支持。 搜索引擎在检查性能、事件和警报数据方面非常灵活，丰富的仪表板和报告功能可以有意义的方式公开此数据，这均展示了 Log Analytics 为使 Operations Manager 锦上添花所引入的强大优势。
 
-向 Operations Manager 管理组报告的代理基于在工作区中启用的 Log Analytics 数据源和解决方案收集来自服务器的数据。  根据已启用的解决方案，其数据可直接从 Operations Manager 管理服务器发送到服务，或者出于在代理托管系统上收集的数据量的考虑，直接从代理发送到 Log Analytics。 管理服务器直接将数据转发到服务，数据永远不会写入操作数据库或数据仓库数据库。  管理服务器在断开与 Log Analytics 的连接后，会将数据缓存在本地，直到与 Log Analytics 重新建立通信。  如果管理服务器由于计划内维护或计划外停机而处于脱机状态，管理组中的另一台管理服务器将恢复与 Log Analytics 的连接。  
+向 Operations Manager 管理组报告的代理基于在工作区中启用的 Log Analytics 数据源和解决方案收集来自服务器的数据。 根据已启用的解决方案，其数据可直接从 Operations Manager 管理服务器发送到服务，或者出于在代理托管系统上收集的数据量的考虑，直接从代理发送到 Log Analytics。 管理服务器直接将数据转发到服务，数据永远不会写入操作数据库或数据仓库数据库。 管理服务器在断开与 Log Analytics 的连接后，会将数据缓存在本地，直到与 Log Analytics 重新建立通信。 如果管理服务器由于计划内维护或计划外停机而处于脱机状态，管理组中的另一台管理服务器将恢复与 Log Analytics 的连接。  
 
 下图显示了 System Center Operations Manager 管理组中的管理服务器及代理与 Log Analytics 之间的连接，包括方向和端口。   
 
 ![oms-operations-manager-integration-diagram](./media/log-analytics-om-agents/oms-operations-manager-connection.png)
 
-如果 IT 安全策略不允许网络上的计算机连接到 Internet，可将管理服务器配置为连接到 OMS 网关，以根据启用的解决方案接收配置信息并发送收集的数据。  有关如何将 Operations Manager 管理组配置为通过 OMS 网关与 Log Analytics 服务通信的详细信息和步骤，请参阅[使用 OMS 网关将计算机连接到 OMS](log-analytics-oms-gateway.md)。  
+如果 IT 安全策略不允许网络上的计算机连接到 Internet，可将管理服务器配置为连接到 OMS 网关，以根据启用的解决方案接收配置信息并发送收集的数据。 有关如何将 Operations Manager 管理组配置为通过 OMS 网关与 Log Analytics 服务通信的详细信息和步骤，请参阅[使用 OMS 网关将计算机连接到 OMS](log-analytics-oms-gateway.md)。  
 
 ## <a name="prerequisites"></a>先决条件 
 在开始之前，请查看以下要求。
 
-* Log Analytics 仅支持 System Center Operations Manager 1807、System Center Operations Manager 1801、Operations Manager 2016、Operations Manager 2012 SP1 UR6 或更高版本，以及 Operations Manager 2012 R2 UR2 或更高版本。  Operations Manager 2012 SP1 UR7 和 Operations Manager 2012 R2 UR3 中添加了代理服务器支持。
+* Log Analytics 仅支持 System Center Operations Manager 1807、System Center Operations Manager 1801、Operations Manager 2016、Operations Manager 2012 SP1 UR6 或更高版本，以及 Operations Manager 2012 R2 UR2 或更高版本。 Operations Manager 2012 SP1 UR7 和 Operations Manager 2012 R2 UR3 中添加了代理服务器支持。
 * 所有 Operations Manager 代理必须满足最低支持要求。 确保代理中安装了最起码的更新，否则 Windows 代理通信可能失败，并在 Operations Manager 事件日志中生成错误。
-* Log Analytics 工作区。  有关详细信息，请查看[将环境中的计算机连接到 Log Analytics](log-analytics-concept-hybrid.md)。
+* Log Analytics 工作区。 有关详细信息，请查看[将环境中的计算机连接到 Log Analytics](log-analytics-concept-hybrid.md)。
 * 使用 [Log Analytics 参与者角色](log-analytics-manage-access.md#manage-accounts-and-users)成员帐户在 Azure 中进行身份验证。  
 
 >[!NOTE]
@@ -55,7 +55,7 @@ ms.locfileid: "39495367"
 >* 对于 System Center Operations Manager 2012 R2，请从[此处](https://www.microsoft.com/en-us/download/details.aspx?id=57171)下载管理包  
 
 ### <a name="network"></a>网络
-下面的信息列出了 Operations Manager 代理、管理服务器和操作控制台与 Log Analytics 通信时必需的代理和防火墙配置信息。  来自每个组件的流量将从网络传出到 Log Analytics 服务。     
+下面的信息列出了 Operations Manager 代理、管理服务器和操作控制台与 Log Analytics 通信时必需的代理和防火墙配置信息。 来自每个组件的流量将从网络传出到 Log Analytics 服务。   
 
 |资源 | 端口号| 绕过 HTTP 检查|  
 |---------|------|-----------------------|  
@@ -82,7 +82,7 @@ ms.locfileid: "39495367"
 |docs.loganalytics.io| 80 和 443||  
 
 ### <a name="tls-12-protocol"></a>TLS 1.2 协议
-为了确保传输到 Log Analytics 的数据的安全性，强烈建议将代理和管理组配置为至少使用传输层安全性 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们**不建议使用**。  有关其他信息，请查看[使用 TLS 1.2 安全地发送数据](log-analytics-data-security.md#sending-data-securely-using-tls-12)。 
+为了确保传输到 Log Analytics 的数据的安全性，强烈建议将代理和管理组配置为至少使用传输层安全性 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们**不建议使用**。 有关其他信息，请查看[使用 TLS 1.2 安全地发送数据](log-analytics-data-security.md#sending-data-securely-using-tls-12)。 
 
 ## <a name="connecting-operations-manager-to-log-analytics"></a>将 Operations Manager 连接到 Log Analytics
 执行以下一系列步骤，将 Operations Manager 管理组配置为连接到你的一个 Log Analytics 工作区。
@@ -90,7 +90,7 @@ ms.locfileid: "39495367"
 首次向 Log Analytics 工作区注册 Operations Manager 管理组期间，为管理组指定代理配置的选项在操作控制台中不可用。  必须成功向服务注册管理组后，此选项才可用。  若要解决此问题，需使用 Netsh，对运行操作控制台以配置集成的系统，以及管理组中的所有管理服务器进行系统代理配置的更新。  
 
 1. 打开提升的命令指示符。
-   a. 转到“启动”，然后键入“cmd”。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 转到“启动”，然后键入“cmd”。
    b. 右键单击“命令提示符”然后选择“以管理员身份运行”**。
 1. 键入以下命令并按 Enter：
 
@@ -102,7 +102,7 @@ ms.locfileid: "39495367"
 1. 展开 Operations Management Suite 节点，并单击“**连接**”。
 1. 单击“**向 Operations Management Suite 注册**”链接。
 1. 在“**Operations Management Suite 载入向导: 身份验证**”页面上，输入电子邮件地址或电话号码以及与 OMS 订阅关联的管理员帐户的密码，并单击“**登录**”。
-1. 成功进行身份验证后，在“Operations Management Suite 载入向导: 选择工作区”页面上，系统会提示选择 Azure 租户、订阅和 Log Analytics 工作区。  如果有多个工作区，从下拉列表中选择想要在 Operations Manager 管理组中注册的工作区，并单击“**下一步**”。
+1. 成功进行身份验证后，在“Operations Management Suite 载入向导: 选择工作区”页面上，系统会提示选择 Azure 租户、订阅和 Log Analytics 工作区。 如果有多个工作区，从下拉列表中选择想要在 Operations Manager 管理组中注册的工作区，并单击“**下一步**”。
    
    > [!NOTE]
    > Operations Manager 一次仅支持一个 Log Analytics 工作区。 连接以及通过上一个工作区注册到 Log Analytics 的计算机将从 Log Analytics 中删除。
@@ -119,10 +119,10 @@ ms.locfileid: "39495367"
 1. 在窗格右侧的“操作”标题下单击“**添加计算机/组**”链接。
 1. 在“计算机搜索”对话框中，可以搜索 Operations Manager 监视的计算机或组。 选择要载入到 Log Analytics 的计算机或组，单击“添加”，然后单击“确定”。
 
-可以在 Operations 控制台“**管理**”工作区中的 Operations Management Suite 下，查看配置为从“受管理计算机”节点收集数据的计算机和组。  在此处，可根据需要添加或移除计算机和组。
+可以在 Operations 控制台“**管理**”工作区中的 Operations Management Suite 下，查看配置为从“受管理计算机”节点收集数据的计算机和组。 在此处，可根据需要添加或移除计算机和组。
 
 ### <a name="configure-proxy-settings-in-the-operations-console"></a>在操作控制台中配置代理设置
-如果内部代理服务器位于管理组和 Log Analytics 服务之间，请执行以下步骤。  这些设置可通过管理组集中进行管理并分发到代理托管系统，这些代理托管系统包含在收集 Log Analytics 数据的范围之中。  当某些解决方案绕过管理服务器并将数据直接发送到服务时，这很有用。
+如果内部代理服务器位于管理组和 Log Analytics 服务之间，请执行以下步骤。 这些设置可通过管理组集中进行管理并分发到代理托管系统，这些代理托管系统包含在收集 Log Analytics 数据的范围之中。  当某些解决方案绕过管理服务器并将数据直接发送到服务时，这很有用。
 
 1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
 1. 展开 Operations Management Suite，并单击“**连接**”。
@@ -136,25 +136,25 @@ ms.locfileid: "39495367"
 1. 打开 **System Center Advisor Run As Profile Proxy** 配置文件。
 1. 在运行方式配置文件向导中，单击“添加”以使用运行方式帐户。 可以创建一个[运行方式帐户](https://technet.microsoft.com/library/hh321655.aspx)或使用现有帐户。 此帐户需要有足够的权限以通过代理服务器。
 1. 若要设置管理的帐户，请选择“**选定的类、组或对象**”，单击“**选择...**” 然后单击“**组...**” 打开“**组搜索**”框。
-1. 搜索然后选择 **Microsoft System Center Advisor Monitoring Server Group**。  选择组后单击“**确定**”以关闭“**组搜索**”框。
+1. 搜索然后选择 **Microsoft System Center Advisor Monitoring Server Group**。 选择组后单击“**确定**”以关闭“**组搜索**”框。
 1. 单击“**确定**”以关闭“**添加运行方式帐户**”框。
 1. 单击“**保存**”以完成该向导并保存更改。
 
 在创建连接并配置将收集数据并将数据报告给 Log Analytics 的代理后，会在管理组中应用以下配置（不一定按顺序）：
 
-* 运行方式帐户 **Microsoft.SystemCenter.Advisor.RunAsAccount.Certificate** 随即创建。  它与运行方式配置文件 **Microsoft System Center Advisor Run As Profile Blob** 相关联且目标为两个类 - **收集服务器**和 **Operations Manager 管理组**。
+* 运行方式帐户 **Microsoft.SystemCenter.Advisor.RunAsAccount.Certificate** 随即创建。 它与运行方式配置文件 **Microsoft System Center Advisor Run As Profile Blob** 相关联且目标为两个类 - **收集服务器**和 **Operations Manager 管理组**。
 * 两个连接器已创建。  第一个连接器命名为 **Microsoft.SystemCenter.Advisor.DataConnector**。可以为其自动配置一个订阅，以便将管理组中所有类的实例生成的所有警报转发到 Log Analytics。 第二个连接器是 **Advisor Connector**，此连接器负责与 OMS Web 服务通信和共享数据。
 * 选择的要在管理组中收集数据的代理和组将添加到 **Microsoft System Center Advisor Monitoring Server Group**。
 
 ## <a name="management-pack-updates"></a>管理包更新
-配置完成后，Operations Manager 管理组会与 Log Analytics 服务建立连接。  管理服务器将与 Web 服务同步，针对与 Operations Manager 集成的已启用解决方案，以管理包的形式接收更新的配置信息。   Operations Manager 会自动检查这些管理包的更新，并在更新可用时下载和导入。  特别是，有两个控制此行为的规则：
+配置完成后，Operations Manager 管理组会与 Log Analytics 服务建立连接。 管理服务器将与 Web 服务同步，针对与 Operations Manager 集成的已启用解决方案，以管理包的形式接收更新的配置信息。 Operations Manager 会自动检查这些管理包的更新，并在更新可用时下载和导入。 特别是，有两个控制此行为的规则：
 
 * **Microsoft.SystemCenter.Advisor.MPUpdate** - 更新 Log Analytics 基础管理包。 默认情况下，每 12 小时运行一次。
 * **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** - 更新在工作区中启用的解决方案管理包。 默认情况下，每五 (5) 分钟运行一次。
 
-可以重写这两个规则：通过禁用规则防止自动下载，或者修改管理服务器与 OMS 同步确定新管理包是否可用且是否应下载的频率。  请按照“[如何重写规则或监视器](https://technet.microsoft.com/library/hh212869.aspx)”的步骤，通过以秒为单位的值修改“**频率**”参数来更改同步计划，或修改“**已启用**”参数禁用规则。  锁定 Operations Manager 管理组类所有对象的替代项。
+可以重写这两个规则：通过禁用规则防止自动下载，或者修改管理服务器与 OMS 同步确定新管理包是否可用且是否应下载的频率。 请按照“[如何重写规则或监视器](https://technet.microsoft.com/library/hh212869.aspx)”的步骤，通过以秒为单位的值修改“**频率**”参数来更改同步计划，或修改“**已启用**”参数禁用规则。 锁定 Operations Manager 管理组类所有对象的替代项。
 
-若要继续按照现有更改控制过程控制生产管理组中的管理包版本，可以禁用规则并在允许更新的特定时间段内将其启用。 如果环境中有开发或 QA 管理组，并且该组已连接到 Internet，则通过 Log Analytics 工作区配置该管理组，使之支持此方案。  这样，在将 Log Analytics 管理包发布到生产管理组之前，就可以查看和评估其迭代版本。
+若要继续按照现有更改控制过程控制生产管理组中的管理包版本，可以禁用规则并在允许更新的特定时间段内将其启用。 如果环境中有开发或 QA 管理组，并且该组已连接到 Internet，则通过 Log Analytics 工作区配置该管理组，使之支持此方案。 这样，在将 Log Analytics 管理包发布到生产管理组之前，就可以查看和评估其迭代版本。
 
 ## <a name="switch-an-operations-manager-group-to-a-new-log-analytics-workspace"></a>将 Operations Manager 组切换到新的 Log Analytics 工作区
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
@@ -189,9 +189,9 @@ ms.locfileid: "39495367"
    ![oms-opsmgr-mg-authsvcuri-property-ms](./media/log-analytics-om-agents/oms-opsmgr-mg-authsvcuri-property-ms.png)
 
 ## <a name="remove-integration-with-log-analytics"></a>删除与 Log Analytics 的集成
-当不再需要 Operations Manager 管理组和 Log Analytics 工作区之间的集成时，正确移除管理组中的连接和配置需要几个步骤。 下面的过程通过删除管理组的引用来更新 Log Analytics 工作区，然后删除 Log Analytics 连接器，再删除支持与服务集成的管理包。   
+当不再需要 Operations Manager 管理组和 Log Analytics 工作区之间的集成时，正确移除管理组中的连接和配置需要几个步骤。 下面的过程通过删除管理组的引用来更新 Log Analytics 工作区，然后删除 Log Analytics 连接器，再删除支持与服务集成的管理包。  
 
-对于与 Operations Manager 集成的已启用解决方案的管理包以及提供 Log Analytics 服务集成支持所需的管理包，无法轻松地将其从管理组中删除。  这是因为某些 Log Analytics 管理包依赖于其他相关的管理包。  若要删除与其他管理包具有依赖关系的管理包，请从 TechNet 脚本中心下载脚本 [remove a management pack with dependencies](https://gallery.technet.microsoft.com/scriptcenter/Script-to-remove-a-84f6873e)（删除具有依赖关系的管理包）。  
+对于与 Operations Manager 集成的已启用解决方案的管理包以及提供 Log Analytics 服务集成支持所需的管理包，无法轻松地将其从管理组中删除。 这是因为某些 Log Analytics 管理包依赖于其他相关的管理包。 若要删除与其他管理包具有依赖关系的管理包，请从 TechNet 脚本中心下载脚本 [remove a management pack with dependencies](https://gallery.technet.microsoft.com/scriptcenter/Script-to-remove-a-84f6873e)（删除具有依赖关系的管理包）。  
 
 1. 使用属于 Operations Manager 管理员角色成员的帐户打开 Operations Manager 命令外壳。
    
@@ -215,7 +215,7 @@ ms.locfileid: "39495367"
 
 1. 在 OMS 门户中，单击“设置”磁贴。
 1. 选择“**相连的源**”。
-1. 在 System Center Operations Manager 部分下的表中，应该可看到想要从工作区移除的管理组的名称。  在“**最后的数据**”列下，单击“**移除**”。  
+1. 在 System Center Operations Manager 部分下的表中，应该可看到想要从工作区移除的管理组的名称。 在“**最后的数据**”列下，单击“**移除**”。  
    
     > [!NOTE]
     > 如果没有从连接的管理组中检测到活动，“移除”链接在 14 天后才可用。  
@@ -321,10 +321,10 @@ ms.locfileid: "39495367"
     Remove-Connector $connectorName
 ```
 
-以后如果打算将管理组重新连接到 Log Analytics 工作区，需重新导入 `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` 管理包文件。  可在以下位置找到此文件，具体取决于部署在环境中的 System Center Operations Manager 的版本：
+以后如果打算将管理组重新连接到 Log Analytics 工作区，需重新导入 `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` 管理包文件。 可在以下位置找到此文件，具体取决于部署在环境中的 System Center Operations Manager 的版本：
 
 * System Center 2016 的 `\ManagementPacks` 文件夹下的源媒体 - Operations Manager 及更高版本。
-* 适用于管理组的最新更新汇总。  Operations Manager 2012 的源文件夹为` %ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups`，而 2012 R2 的源文件夹则位于 `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups` 中。
+* 适用于管理组的最新更新汇总。 Operations Manager 2012 的源文件夹为` %ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups`，而 2012 R2 的源文件夹则位于 `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups` 中。
 
 ## <a name="next-steps"></a>后续步骤
 若要添加功能并收集数据，请参阅[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)。

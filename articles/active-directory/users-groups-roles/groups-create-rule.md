@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 08/02/2018
+ms.date: 09/20/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 9a2eb8ab4e3ee65e97de578c825bf106aee1b829
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: e418316a74ccf27ec730261957a8b6c64de5d063
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480334"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040595"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>创建动态组并检查状态
 
@@ -29,7 +29,7 @@ ms.locfileid: "39480334"
 
 ## <a name="to-create-a-group-membership-rule"></a>要创建组成员资格规则，请执行以下操作：
 
-1. 使用全局管理员或用户帐户管理员的帐户登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
+1. 在租户中使用全局管理员、Intune 服务管理员或用户帐户管理员角色中的帐户登录 [Azure AD 管理中心](https://aad.portal.azure.com)。
 2. 选择“组”。
 3. 选择“所有组”，然后选择“新组”。
 

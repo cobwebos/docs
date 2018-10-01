@@ -9,15 +9,16 @@ ms.author: gwallace
 ms.date: 06/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 12628b5a552b864784d780e5f2adc00aac579911
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 13ba4d774cbc347830c32385ba4927a0df687159
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215027"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035464"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>将作业状态和作业流从自动化转发到 Log Analytics
-自动化可以将 Runbook 作业状态和作业流发送到 Log Analytics 工作区。 可在 Azure 门户中或使用 PowerShell 查看单个作业的作业日志和作业流，这使用户可执行简单的调查。 现在，使用 Log Analytics，可以：
+
+自动化可以将 Runbook 作业状态和作业流发送到 Log Analytics 工作区。 此过程不涉及工作区链接，并且完全独立。 可在 Azure 门户中或使用 PowerShell 查看单个作业的作业日志和作业流，这使用户可执行简单的调查。 现在，使用 Log Analytics，可以：
 
 * 获取有关自动化作业的见解。
 * 基于 Runbook 作业状态（例如失败或暂停）触发电子邮件或警报。
@@ -26,12 +27,12 @@ ms.locfileid: "39215027"
 * 可视化不同时间段的作业历史记录。
 
 ## <a name="prerequisites-and-deployment-considerations"></a>先决条件和部署注意事项
+
 要开始会自动化日志发送到 Log Analytics，需要准备：
 
 * 2016 年 11 月或之后发布的 [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) (v2.3.0) 版本。
 * Log Analytics 工作区。 有关详细信息，请参阅 [Log Analytics 入门](../log-analytics/log-analytics-get-started.md)。 
 * Azure 自动化帐户的 ResourceId。
-
 
 若要查找 Azure 自动化帐户的 ResourceId，请执行以下操作：
 
@@ -159,7 +160,18 @@ Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and ResultType != "started" | summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h)`  
 <br> ![Log Analytics 历史作业状态图标](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)<br>
 
+## <a name="remove-diagnostic-settings"></a>删除诊断设置
+
+若要从自动化帐户中删除诊断设置，请运行以下命令：
+
+```powershell-interactive
+$automationAccountId = "[resource id of your automation account]"
+
+Remove-AzureRmDiagnosticSetting -ResourceId $automationAccountId
+```
+
 ## <a name="summary"></a>摘要
+
 将自动化作业状态和流数据发送到 Log Analytics 后，可以通过以下操作更好地了解自动化作业的状态：
 + 设置警报，以便在出现问题时获得通知。
 + 使用自定义视图和搜索查询直观地显示 Runbook 结果、Runbook 作业状态，以及其他相关的关键指标。  

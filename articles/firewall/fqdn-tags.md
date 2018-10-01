@@ -7,19 +7,16 @@ ms.service: firewall
 ms.topic: article
 ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: 536c0915cae17aa6f4201c62eae5f5b077805274
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6dc7d20d31d9399355b2b3de90ea90f2f3e07af5
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999471"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224641"
 ---
 # <a name="fqdn-tags-overview"></a>FQDN 标记概述
 
 FQDN 标记表示与已知的 Microsoft 服务关联的一组完全限定的域名 (FQDN)。 可以在应用程序规则中使用 FQDN 标记，以允许所需出站网络流量通过防火墙。
-
->[!NOTE]
->FQDN 标记功能目前仅在 Azure PowerShell 和 REST 中可用。
 
 例如，若要手动允许 Windows 更新网络流量通过防火墙，需要根据 Microsoft 文档创建多个应用程序规则。 使用 FQDN 标记，可以创建一个应用程序规则，其中包括 **Windows 更新**标记，现在到 Microsoft Windows 更新终结点的网络流量可以流经防火墙。
 
@@ -36,6 +33,9 @@ FQDN 标记表示与已知的 Microsoft 服务关联的一组完全限定的域�
 |Microsoft 主动保护服务 (MAPS)|允许出站访问 [MAPS](https://cloudblogs.microsoft.com/enterprisemobility/2016/05/31/important-changes-to-microsoft-active-protection-service-maps-endpoint/)。|
 |应用服务环境 (ASE)|允许出站访问 ASE 平台流量。 此标记未涵盖由 ASE 创建的特定于客户的存储和 SQL 终结点。 这些应通过[服务终结点](../virtual-network/tutorial-restrict-network-access-to-resources.md)启用或手动添加。|
 |Azure 备份|允许对 Azure 备份服务进行出站访问。
+
+> [!NOTE]
+> 在应用程序规则中选择 FQDN 标记时，“协议:端口”字段必须设置为 **https**。
 
 ## <a name="next-steps"></a>后续步骤
 

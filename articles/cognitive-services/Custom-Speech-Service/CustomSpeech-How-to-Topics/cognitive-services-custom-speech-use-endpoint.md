@@ -1,21 +1,22 @@
 ---
-title: 通过 Azure 上的自定义语音服务使用自定义语音终结点 | Microsoft Docs
-description: 了解如何通过认知服务中的自定义语音服务使用自定义语音转文本终结点。
+title: 使用自定义语音终结点 - 自定义语音服务
+titlesuffix: Azure Cognitive Services
+description: 了解如何将自定义语音转文本终结点与自定义语音服务配合使用。
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: panosper
 ROBOTS: NOINDEX
-ms.openlocfilehash: 55583952df3b83331f1f622a4fce269713ecf2a6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 98c1b58e58490199b0258dfcc8df183c3fe9a8bd
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966514"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223366"
 ---
 # <a name="use-a-custom-speech-to-text-endpoint"></a>使用自定义语音转文本终结点
 可以向 Azure 自定义语音服务语音转文本终结点发送请求，方式与向默认认知服务语音终结点发送请求类似。 这些终结点在功能上与语音 API 的默认终结点相同。 因此，通过语音 API 的客户端库或 REST API 提供的功能也适用于自定义终结点。

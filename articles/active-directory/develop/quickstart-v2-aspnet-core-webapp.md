@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/25/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: f57dc1707a9e25e4ea308142e804cdbc80d4308a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ba67acec778a48c084897095aa457e5637240a57
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984936"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227413"
 ---
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>向 ASP.NET Core Web 应用添加 Microsoft 登录功能
 
@@ -40,7 +40,7 @@ ms.locfileid: "46984936"
 > 
 > 1. 转到 [Microsoft 应用程序注册门户](https://apps.dev.microsoft.com/portal/register-app)。
 > 1. 输入应用程序的名称，确保未选中“引导式设置”选项，然后单击“创建”。
-> 1. 单击 `Add Platform`，并选择 `Web`。
+> 1. 单击 `Add Platform`，然后选择 `Web`。
 > 1. 确保“允许隐式流”保持选中状态。
 > 1. 在“重定向 URL”中输入 `https://localhost:3110/`。
 > 1. 滚动到页面底部，单击“保存”。
@@ -68,7 +68,7 @@ ms.locfileid: "46984936"
     "ClientId": "Enter_the_Application_Id_here"
     "TenantId": "common"
     ```
-1. 如果你的应用程序为单租户应用程序（仅限当前目录中的账户），则在 appsettings.json 文件中，查找 `TenantId` 的值，并将 `common` 替换为租户 ID 和租户名称（例如，contoso.microsoft.com）。 可在“概述页”中获取租户名称。
+1. 如果你的应用程序为单租户应用程序（仅限当前目录中的账户），则在 appsettings.json 文件中，查找 `TenantId` 的值，并将 `common` 替换为租户 ID 和租户名称（例如，contoso.microsoft.com）。 可在“概览”页中获取租户名称。
 
 ## <a name="more-information"></a>详细信息
 

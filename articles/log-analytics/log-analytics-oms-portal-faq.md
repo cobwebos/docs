@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/17/2018
+ms.date: 09/25/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 503d5913efe67bd0de738f68921b9631c63acfa8
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.component: ''
+ms.openlocfilehash: d1ad629ff5c6909256baa94573d045a8c2c09fb5
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116038"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223825"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Log Analytics 用户从 OMS 门户转到 Azure 门户的常见问题
 Log Analytics 一开始使用其自己的门户（称为 OMS 门户）来管理其配置并分析收集的数据。  此门户的所有功能已移至 Azure 门户，在其中继续进行开发。
@@ -83,7 +83,7 @@ OMS 门户的“设置”部分的许多设置在 Azure 门户的工作区的“
 | Azure 存储     | 工作区的“高级设置”菜单。 |
 | System Center     | 工作区的“高级设置”菜单。 |
 | Office 365        | 请参阅 [Office 365 管理解决方案的文档](../operations-management-suite/oms-solution-office-365.md)，了解配置详细信息。 |
-| Windows 遥测 | Azure 门户中尚未提供。 |
+| Windows 遥测 | 解决方案的“设置”菜单。 有关配置详细信息，请参阅 [Azure 门户中的 Windows 分析](/windows/deployment/update/windows-analytics-azure-portal)。 |
 | ITSM 连接器    | 请参阅[使用 IT 服务管理连接器连接 ITSM 产品/服务](../log-analytics/log-analytics-itsmc-connections.md)，了解如何将 ITSM 服务与 Log Analytics 连接。 |
 
 ### <a name="data"></a>数据
@@ -122,7 +122,7 @@ Log Analytics 中的[仪表板](../log-analytics/log-analytics-dashboards.md)已
 
 
 ## <a name="can-i-still-use-the-classic-portal"></a>是否仍可使用经典门户？
-在有限的时间内，仍可通过以下 URL 使用你自己的工作区名称访问门户：https://\<你的工作区名称\>.portal.mms.microsoft.com。 不过，我们仍建议你使用 Azure 门户。如果碰到阻塞性问题，请通过 LAUpgradeFeedback@microsoft.com 向我们提供反馈。
+在有限的时间内，仍可通过以下 URL 使用你自己的工作区名称访问门户： https://\<你的工作区名称\>.portal.mms.microsoft.com。 不过，我们仍建议你使用 Azure 门户。如果碰到阻塞性问题，请通过 LAUpgradeFeedback@microsoft.com 向我们提供反馈。
 
 ## <a name="next-steps"></a>后续步骤
 

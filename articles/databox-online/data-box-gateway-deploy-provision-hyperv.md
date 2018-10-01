@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 09/26/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: bf744d2aaab168b8ce918f7b776d8855cdc5ad16
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ad498dc8c5bea9516bef5a62495fc0d0cc8f7399
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975235"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419689"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v-preview"></a>教程：在 Hyper-V（预览版）中预配 Azure Data Box Gateway
 
@@ -87,7 +87,7 @@ ms.locfileid: "46975235"
 
     * 至少 4 个核心。
     * 至少 8 GB 的 RAM。
-    * 一个连接到网络的网络接口，可以将流量路由到 Internet。 .
+    * 一个连接到网络的网络接口，可以将流量路由到 Internet。 
     * 一个 250 GB 的 OS 磁盘。
     * 一个 2 TB 的用于系统数据的虚拟磁盘。
 
@@ -105,9 +105,6 @@ ms.locfileid: "46975235"
    ![](./media/data-box-gateway-deploy-provision-hyperv/image2.png)
 4. 在新建虚拟机向导的“准备工作”页上，单击“下一步”。
 5. 在“指定名称和位置”页上，提供虚拟设备的“名称”。 单击“下一步”。
-   
-   > [!IMPORTANT]
-   > 在此版本中，虚拟设备的名称只能使用大写字母。
 
    ![](./media/data-box-gateway-deploy-provision-hyperv/image3.png)
 6. 在“指定代数”页上选择“第 2 代”作为 .vhdx 设备映像类型，然后单击“下一步”。    
@@ -171,17 +168,10 @@ ms.locfileid: "46975235"
 3. 可能需要等待 10-15 分钟设备才能准备就绪。 控制台会显示指示进度的状态消息。 设备就绪后，转到“操作”。 按 `Ctrl + Alt + Delete` 登录到虚拟设备。 默认用户为 *EdgeUser*，默认密码为 *Password1*。
 
    ![](./media/data-box-gateway-deploy-provision-hyperv/image21.png)
-4. 出于安全原因，设备管理员密码在第一次登录后过期。 系统会提示用户更改密码。
-
-   请输入至少包含 8 个字符的密码。 密码必须满足以下 4 个要求中的至少 3 个：大写、小写、数字、特殊字符。 再次输入密码进行确认。 用户会收到密码已更改的通知。
    
-5. 成功更改密码后，虚拟设备会重新启动。 等待设备启动。  将显示设备的 Windows PowerShell 控制台和进度栏。
-
-   ![](./media/data-box-gateway-deploy-provision-hyperv/image22.png)
-
-6. 步骤 6-8 仅适用于在非 DHCP 环境中启动的情况。 如果是在 DHCP 环境中，则请跳过这些步骤，转到步骤 9。 如果已在非 DHCP 环境中启动设备，则会看到指示此内容的消息。
+6. 步骤 5-7 仅适用于在非 DHCP 环境中启动的情况。 如果是在 DHCP 环境中，请跳过这些步骤。 如果已在非 DHCP 环境中启动设备，则会看到指示此内容的消息。
     
-7. 若要配置网络，请使用 `Get-HcsIpAddress` 命令列出在虚拟设备上启用的网络接口。 如果设备启用了单个网络接口，则分配到该接口的默认名称为 `DATA1`。
+7. 若要配置网络，请使用 `Get-HcsIpAddress` 命令列出在虚拟设备上启用的网络接口。 如果设备启用了单个网络接口，则分配到该接口的默认名称为 `Ethernet`。
 
 8. 使用 `Set-HcsIpAddress` cmdlet 配置网络。 请参阅以下示例：
 
@@ -192,7 +182,7 @@ ms.locfileid: "46975235"
    ![](./media/data-box-gateway-deploy-provision-hyperv/image23.png)
       
 
-如果设备不符合最低配置要求，则会在横幅文本中显示错误。 修改设备配置，使虚拟机有足够的资源来满足最低要求。 然后即可重新启动设备并与之进行连接。 请参阅[步骤 1：确保主机系统满足最小虚拟设备要求](#step-1-ensure-that-the-host-system-meets-minimum-virtual-device-requirements)中的最低配置要求。
+如果设备不符合最低配置要求，则会在横幅文本中显示错误。 修改设备配置，使虚拟机有足够的资源来满足最低要求。 然后即可重新启动设备并与之进行连接。 请参阅[检查主机系统是否满足最小虚拟设备要求](#check-the-host-system)中的最低配置要求。
 
 <!--If you face any other error during the initial configuration using the local web UI, refer to the following workflows:
 
@@ -201,7 +191,7 @@ ms.locfileid: "46975235"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已了解了多个 Data Box Gateway 主题，例如：
+在本教程中，我们已了解有关 Data Box Gateway 的主题，例如：
 
 > [!div class="checklist"]
 > * 确保主机满足最低设备要求

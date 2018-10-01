@@ -1,21 +1,22 @@
 ---
-title: 结合使用自定义发音和 Azure 上的自定义语音服务 | Microsoft Docs
-description: 了解如何使用认知服务中的自定义语音服务创建语言模型。
+title: 使用自定义发音 - 自定义语音服务
+titlesuffix: Azure Cognitive Services
+description: 了解如何使用自定义语音服务创建语言模型。
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/23/2017
 ms.author: panosper
 ROBOTS: NOINDEX
-ms.openlocfilehash: c51ef6b25b454d0b8bf450b791f5c0fa9c6dfdee
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6442eec3e622282ecf6a3bf884110cd435fc18be
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999369"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223468"
 ---
 # <a name="enable-custom-pronunciation"></a>启用自定义发音
 借助自定义发音，用户可以定义语音形式和字词或术语显示。 它适用于处理自定义术语，如产品名称或首字母缩略词。 只需使用发音文件（简单的 .txt 文件）即可。

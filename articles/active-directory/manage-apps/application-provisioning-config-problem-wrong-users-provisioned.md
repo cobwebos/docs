@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2017
+ms.date: 09/20/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 2c2dd2208cf910456fa8f94ca739b7ef8875d475
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: df32ed7a6d3bc0c9e349f576f5f48832bf9906dd
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354611"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041915"
 ---
 # <a name="wrong-set-of-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>预配到 Azure AD 库应用程序的用户组错误
 
@@ -109,7 +109,7 @@ ms.locfileid: "44354611"
 >
 >
 
-如果启用了预配组，请务必查看属性映射以确保相应字段正用于“匹配 ID”。 这可以是显示名称或电子邮件别名，因为如果匹配属性为空或未为 Azure AD 中的组填充该属性，就不会预配组及其成员。
+如果启用预配组，请务必查看属性映射以确保相应字段用于“匹配 ID”。 此匹配 ID 可以是显示名称或电子邮件别名。 如果匹配属性为空，或没有为 Azure AD 中的某个组填写时，该组及组成员将不会进行预配。
 
 ## <a name="next-steps"></a>后续步骤
 [Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配](user-provisioning.md)

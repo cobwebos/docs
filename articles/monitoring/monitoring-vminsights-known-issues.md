@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: magoedte
-ms.openlocfilehash: c03adc239ea7025fe154db315daa17b26f8237f1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 819c3e74355cf80c7a998abb8b02b10c9e077059
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980183"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47062761"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms"></a>用于 VM 的 Azure Monitor 的已知问题
 
@@ -39,3 +39,6 @@ ms.locfileid: "46980183"
 - 某些 Windows 运行状况条件（例如 DNS 客户端服务运行状况）的阈值不可修改，因为其运行状况已根据上下文锁定为服务或实体的“正在运行”、“可用”状态。  在未来版本中，此值不由数字 4 来代表，而是会转换为实际的显示字符串。  
 - 某些 Linux 运行状况条件（例如逻辑磁盘运行状况）的阈值不可修改，因为它们已经设置为在状况不正常时触发。  这些条件指示某个项目是联机还是脱机，是启用还是禁用，并通过显示值 1 或 0 来代表和指示相同的意思。
 - 在对预先选择的订阅和资源组使用“Azure Monitor”->“虚拟机”->“运行状况”-> 任何列表视图在任何资源组中大规模更新“资源组”筛选器时，会导致列表视图显示“无结果”。  返回到“Azure Monitor”->“虚拟机”->“运行状况”选项卡，选择所需的订阅和资源组，然后导航到列表视图。
+
+## <a name="next-steps"></a>后续步骤
+查看[载入用于 VM 的 Azure Monitor](monitoring-vminsights-onboard.md)，以了解启用虚拟机监视的要求和方法。

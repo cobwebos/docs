@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 08/1/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f272ac7ee6432b43d0c9a72daf620a46e52366f8
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 2f990f22d762c5f95d3274b740caf30691ded90e
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399043"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409838"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure 自动化中的在空闲时间启动/停止 VM 解决方案
 
@@ -31,6 +31,9 @@ ms.locfileid: "39399043"
 - 此解决方案可管理任何区域中的 VM，但只能在 Azure 自动化帐户所在的同一订阅中使用。
 - 此解决方案可在支持 Log Analytics 工作区、Azure 自动化帐户和警报的任何 Azure 和 AzureGov 区域中使用。 AzureGov 区域目前不支持电子邮件功能。
 
+> [!NOTE]
+> 如果使用的是经典 VM 解决方案，则每个云服务将按顺序处理所有 VM。 仍然支持跨不同的云服务进行并行作业处理。
+
 ## <a name="prerequisites"></a>先决条件
 
 此解决方案的 Runbook 使用 [Azure 运行方式帐户](automation-create-runas-account.md)。 运行方式帐户是首选的身份验证方法，因为它使用证书身份验证，而不是可能会过期或经常更改的密码。
@@ -45,28 +48,28 @@ ms.locfileid: "39399043"
 
    > [!NOTE]
    > 也可以单击“创建资源”，在 Azure 门户中的任意位置创建该解决方案。 在“市场”页面中，键入类似于“启动”或“启动/停止”的关键字。 开始键入时，会根据输入筛选该列表。 或者，可以键入解决方案完整名称中的一个或多个关键，然后按 Enter。 在搜索结果中选择“在空闲时间启动/停止 VM”。
-1. 在所选解决方案的“在空闲时间启动/停止 VM”页中查看摘要信息，并单击“创建”。
+2. 在所选解决方案的“在空闲时间启动/停止 VM”页中查看摘要信息，并单击“创建”。
 
    ![Azure 门户](media/automation-solution-vm-management/azure-portal-01.png)
 
-1. 此时会显示“添加解决方案”页面。 系统会提示先要配置解决方案，然后才可以将它导入自动化订阅。
+3. 此时会显示“添加解决方案”页面。 系统会提示先要配置解决方案，然后才可以将它导入自动化订阅。
 
    ![VM 管理中的“添加解决方案”页面](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
 
-1. 在“添加解决方案”页面上，选择“工作区”。 选择链接到自动化帐户所在的同一个 Azure 订阅的 Log Analytics 工作区。 如果没有工作区，请选择“新建工作区”。 在“OMS 工作区”页上，执行以下步骤：
-   - 指定新 **OMS 工作区**的名称。
+4. 在“添加解决方案”页面上，选择“工作区”。 选择链接到自动化帐户所在的同一个 Azure 订阅的 Log Analytics 工作区。 如果没有工作区，请选择“新建工作区”。 在“Log Analytics 工作区”页上，执行以下步骤：
+   - 指定新 **Log Analytics 工作区**的名称。
    - 如果选择的默认值不合适，请从下拉列表中选择要链接到的**订阅**。
    - 对于“资源组”，可以创建新资源组，或选择现有的资源组。
    - 选择“位置” 。 目前可用的位置仅为：澳大利亚东南部、加拿大中部、印度中部、美国东部、日本东部、东南亚、英国南部和西欧。
    - 选择“定价层”。 选择“每 GB (独立)”选项。 Log Analytics 已更新[定价](https://azure.microsoft.com/pricing/details/log-analytics/)，“每 GB”层级是唯一的选项。
 
-1. 在“OMS 工作区”页面上提供所需信息后，单击“创建”。 可以在菜单中的“通知”下面跟踪操作进度，完成后将返回到“添加解决方案”页面。
-1. 在“添加解决方案”页面中，选择“自动化帐户”。 如果要创建新的 Log Analytics 工作区，可以创建与它关联的新自动化帐户，或选择尚未链接到 Log Analytics 工作区的现有自动化帐户。 选择现有的自动化帐户，或者单击“创建自动化帐户”，并在“添加自动化帐户”页上提供以下信息：
+5. 在“Log Analytics 工作区”页上提供所需信息后，单击“创建”。 可以在菜单中的“通知”下面跟踪操作进度，完成后将返回到“添加解决方案”页面。
+6. 在“添加解决方案”页面中，选择“自动化帐户”。 如果要创建新的 Log Analytics 工作区，可以创建与它关联的新自动化帐户，或选择尚未链接到 Log Analytics 工作区的现有自动化帐户。 选择现有的自动化帐户，或者单击“创建自动化帐户”，并在“添加自动化帐户”页上提供以下信息：
    - 在“名称”字段中输入自动化帐户的名称。
 
     系统会根据所选的 Log Analytics 工作区自动填充所有其他选项。 无法修改这些选项。 “Azure 运行方式帐户”是此解决方案为 Runbook 包含的默认身份验证方法。 单击“确定”后，系统会验证配置选项并创建自动化帐户。 可以在菜单中的“通知”下面跟踪操作进度。
 
-1. 最后，在“添加解决方案”页面上，选择“配置”。 此时会显示“参数”页面。
+7. 最后，在“添加解决方案”页面上，选择“配置”。 此时会显示“参数”页面。
 
    ![解决方案的“参数”页面](media/automation-solution-vm-management/azure-portal-add-solution-02.png)
 
@@ -83,7 +86,7 @@ ms.locfileid: "39399043"
      > [!IMPORTANT]
      > “目标资源组名称”的默认值是 &ast;。 这面向订阅中的所有 VM。 如果不希望解决方案面向订阅中的所有 VM，则需要在启用计划前，将此值更新到资源组名称列表。
 
-1. 配置解决方案所需的初始设置后，单击“确定”以关闭“参数”页面并选择“创建”。 系统会验证所有设置，然后在订阅中部署该解决方案。 此过程需要几秒钟才能完成，可以在菜单中的“通知”下面跟踪进度。
+8. 配置解决方案所需的初始设置后，单击“确定”以关闭“参数”页面并选择“创建”。 系统会验证所有设置，然后在订阅中部署该解决方案。 此过程需要几秒钟才能完成，可以在菜单中的“通知”下面跟踪进度。
 
 ## <a name="scenarios"></a>方案
 

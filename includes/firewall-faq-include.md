@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 9/14/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 4c6aaea836302732b1af3d22923c965575cfc9d2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1242cf80ffd283471eb507612949a81d4b3fd594
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47020466"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47401607"
 ---
 ### <a name="what-is-azure-firewall"></a>什么是 Azure 防火墙？
 
@@ -101,6 +101,9 @@ $publicip = Get-AzureRmPublicIpAddress -Name "Public IP Name" -ResourceGroupName
 $azfw.Allocate($vnet,$publicip)
 Set-AzureRmFirewall -AzureFirewall $azfw
 ```
+
+> [!NOTE]
+> 必须将防火墙和公共 IP 重新分配到原始资源组和订阅。
 
 ### <a name="what-are-the-known-service-limits"></a>有哪些已知的服务限制？
 

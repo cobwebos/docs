@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: magoedte
-ms.openlocfilehash: 30f9a874853f4cb492d7a562d0d2439b73cf62dc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e75409e791c00dc0a5bec591aecfbaa019df8f81
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989968"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225156"
 ---
 # <a name="using-azure-monitor-for-vms-map-to-understand-application-components"></a>使用适用于 VM 的 Azure Monitor 映射了解应用程序组件
-查看在 Azure 中运行的 Windows 和 Linux 虚拟机上发现的应用程序组件，并且可使用适用于 VM 的 Azure Monitor 通过两种方式观察环境，直接从虚拟机中或通过 VM 组在 Azure Monitor 中观察。 
+查看在 Azure 环境中运行的 Windows 和 Linux 虚拟机上发现的应用程序组件，可使用用于 VM 的 Azure Monitor 通过两种方式观察，直接从虚拟机中或通过 VM 组在 Azure Monitor 中观察。 
 
-可以通过本文了解这两个角度的不同体验，以及如何使用映射功能。 有关配置适用于 VM 的 Azure Monitor 的信息，请参阅[启用适用于 VM 的 Azure Monitor](monitoring-vminsights-onboard.md)。
+可以通过本文了解这两个角度的不同体验，以及如何使用映射功能。 有关配置用于 VM 的 Azure Monitor 的信息，请参阅[启用用于 VM 的 Azure Monitor](monitoring-vminsights-onboard.md)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。

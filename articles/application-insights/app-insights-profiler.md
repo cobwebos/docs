@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6048a17bf50ecac691c7cf687f87e454c54ee9d9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 839e462522be4f492010ca1c22631cb4dd6affe4
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521877"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064414"
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>使用 Application Insights 探查实时 Azure Web 应用
 
-Azure Application Insights 的此功能已分别面向 Azure 应用服务的 Web 应用功能和 Azure 计算资源提供正式版和预览版。 有关[在本地使用 Profiler](https://docs.microsoft.com/azure/application-insights/enable-profiler-compute#enable-profiler-on-on-premises-servers) 的信息。
+Azure Application Insights 的此功能已面向 Azure 应用服务的 Web 应用功能和 Azure 计算资源提供正式版。 有关[在本地使用 Profiler](https://docs.microsoft.com/azure/application-insights/enable-profiler-compute#enable-profiler-on-on-premises-servers) 的信息。
 
 本文介绍了使用 [Application Insights](app-insights-overview.md) 时在实时 Web 应用程序的每个方法上花费的时间。 Application Insights Profiler 工具显示了由应用处理的实时请求的详细配置文件。 Profiler 突出显示使用时间最多的热路径。 将会根据采样分析响应时间各不相同的请求。 可以通过各种技术尽量降低与应用程序相关联的开销。
 
@@ -45,9 +45,9 @@ Profiler 目前适用于 Web 应用上运行的 ASP.NET 和 ASP.NET Core Web 应
 
     ![Profiler 的应用设置][profiler-app-setting]
 
-### <a name="enable-profiler-for-azure-compute-resources-preview"></a>为 Azure 计算资源启用 Profiler（预览）
+### <a name="enable-profiler-for-azure-compute-resources"></a>为 Azure 计算资源启用 Profiler
 
-有关信息，请参阅[用于 Azure 计算资源的 Profiler 的预览版本](https://go.microsoft.com/fwlink/?linkid=848155)。
+有关信息，请参阅[用于 Azure 计算资源的 Profiler 版本](https://go.microsoft.com/fwlink/?linkid=848155)。
 
 ## <a name="view-profiler-data"></a>查看探查器数据
 
@@ -204,7 +204,7 @@ Profiler 在 Web 应用中以连续 Web 作业的形式运行。 可以在 [Azur
 
 *目录不为空“D:\\home\\site\\wwwroot\\App_Data\\jobs”*
 
-如果通过脚本或通过 Visual Studio Team Services 部署管道运行 Web 部署，则会发生此错误。 解决方法是将以下附加部署参数添加到 Web 部署任务：
+如果通过脚本或通过 Azure DevOps 部署管道运行 Web 部署，则会发生此错误。 解决方法是将以下附加部署参数添加到 Web 部署任务：
 
 ```
 -skip:Directory='.*\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler.*' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs\\continuous$' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs$'  -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data$'

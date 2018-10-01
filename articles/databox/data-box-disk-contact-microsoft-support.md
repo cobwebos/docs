@@ -5,19 +5,19 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.topic: article
-ms.date: 08/28/2018
+ms.date: 09/27/2018
 ms.author: alkohli;
 ms.component: ''
-ms.openlocfilehash: afb7de78a30367b0cc12e621019f1e8be975e63f
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 9bab8a55301a5eb40b38bec984205fff2a52559e
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43191515"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422807"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>为 Azure Data Box 开具支持票证 
 
-如果在使用 Azure Data Box 服务时遇到任何问题，可以创建服务请求以获取技术支持。 本文介绍：
+本文适用于 Azure Data Box 和 Azure Data Box Disk，这两者都由 Azure Data Box 服务管理。 如果在使用 Azure Data Box 服务时遇到任何问题，可以创建服务请求以获取技术支持。 本文介绍：
 
 * 如何创建支持请求。
 * 如何从门户内部管理支持请求生命周期。

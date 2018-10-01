@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 7619056ace5d9b3cf083a40a6cfa06a0cac0561e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2668279b33d2d8d1c0adf92c138cc6347c95bd4d
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949683"
+ms.locfileid: "47035345"
 ---
 # <a name="azure-data-box-gateway-preview-release-notes"></a>Azure Data Box Gateway 预览版发行说明
 
@@ -52,9 +52,11 @@ ms.locfileid: "46949683"
 | **4.** |重命名 |不支持对象重命名。 |如果此功能对你的工作流极其重要，请联系 Microsoft 支持部门。 |
 | **5.** |复制| 如何将只读文件复制到设备，则不会保留只读属性。 | |
 | **6.** |日志| 由于此版本中的一个 bug，在 *error.xml* 中可能会看到错误代码 110 的实例以及不可识别的项名称。 | |
-| **7.** |上传 | 由于此版本中的一个 bug，在上传某些文件时，可能会看到错误代码 2003 的实例。 | |
-| **8.** |删除 | 由于此版本中的一个 bug，删除 NFS 共享时，可能不会将其删除。 共享状态将显示“正在删除”。  |只有当该共享使用了不受支持的文件名时，才会发生这种情况。 |
-| **9.** |联机帮助 |Azure 门户中的“帮助”链接可能无法链接到文档。|在正式发布版中，帮助链接将正常工作。 |
+| **7.** |上载 | 由于此版本中的一个 bug，在上传某些文件时，可能会看到错误代码 2003 的实例。 | |
+| **8.** |文件类型 | 不支持以下 Linux 文件类型：字符文件、块文件、套接字、管道、符号链接。  |复制这些文件会导致在 NFS 共享上创建 0 长度文件。 这些文件仍处于错误状态，并将在 *error.xml* 中报告。 |
+| **9.** |删除 | 由于此版本中的一个 bug，删除 NFS 共享时，可能不会将其删除。 共享状态将显示“正在删除”。  |只有当该共享使用了不受支持的文件名时，才会发生这种情况。 |
+| **10.** |刷新 | 权限和访问控制列表 (ACL) 不会通过刷新操作保存。  | |
+| **11.** |联机帮助 |Azure 门户中的“帮助”链接可能无法链接到文档。|在正式发布版中，帮助链接将正常工作。 |
 
 
 

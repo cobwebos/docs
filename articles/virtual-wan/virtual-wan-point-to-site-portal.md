@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 09/21/2018
+ms.date: 09/26/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect remote users to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: bf0e766f082b2e137c90b5ea66bb7570bea2e1e6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8a4c0c1426200e6c2d5041131fd0dd9cde4761cf
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963366"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409280"
 ---
 # <a name="tutorial-create-a-point-to-site-connection-using-azure-virtual-wan-preview"></a>教程：使用 Azure 虚拟 WAN（预览版）创建点到站点连接
 
@@ -40,6 +40,38 @@ ms.locfileid: "46963366"
 
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
 
+## <a name="register"></a>注册此功能
+
+单击“试用”以使用 Azure Cloud Shell 轻松注册此功能。
+
+>[!NOTE]
+>如果未注册此功能，则将无法使用它，也无法在门户中看到它。
+>
+>
+
+单击“试用”打开 Azure Cloud Shell后，复制并粘贴以下命令：
+
+```azurepowershell-interactive
+Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowP2SCortexAccess
+```
+ 
+```azurepowershell-interactive
+Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
+```
+
+```azurepowershell-interactive
+Get-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowP2SCortexAccess
+```
+
+```azurepowershell-interactive
+Get-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
+```
+
+该功能显示为已注册后，请将订阅重新注册到 Microsoft.Network 命名空间。
+
+```azurepowershell-interactive
+Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
+```
 
 ## <a name="vnet"></a>1.创建虚拟网络
 
@@ -47,7 +79,7 @@ ms.locfileid: "46963366"
 
 ## <a name="openvwan"></a>2.创建虚拟 WAN
 
-从浏览器导航到 [Azure 门户](https://portal.azure.com)并使用 Azure 帐户登录。
+从浏览器导航到 [Azure 门户（预览版）](http://aka.ms/azurevirtualwanpreviewfeatures)并使用 Azure 帐户登录。
 
 [!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
 
@@ -121,7 +153,7 @@ P2S 配置定义连接远程客户端的参数。
 5.  使用 base64 中的 P2S 客户端证书私钥填写私钥部分。 请参阅此处，了解如何提取私钥。
 6.  不要更改任何其他字段。 使用客户端输入中的已填充的配置连接到 VPN。
 7.  将 vpnconfig.ovpn 文件复制到 C:\Program Files\OpenVPN\config 文件夹。
-8.  右键单击在系统托盘中的 OpenVPN 图标，然后单击“连接”。
+8.  右键单击系统托盘中的 OpenVPN 图标，然后单击“连接”。
 
 #### <a name="ikev2"></a>IKEv2
 

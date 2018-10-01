@@ -15,12 +15,12 @@ ms.topic: conceptal
 ms.date: 08/23/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: bdf1d1a62bd8e2e1d0a0a8ad30f2d4c4833be0e4
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: a52654ab620908b9c8c07edf3fcdfbf70068528d
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125087"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220782"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>在 Azure 门户中创建 Log Analytics 工作区
 在 Azure 门户中可以设置 Log Analytics 工作区，该工作区是一个具有其自己的数据存储库、数据源和解决方案的独特 Log Analytics 环境。  如果要从以下源中收集数据，本文中所述的步骤是必需的：
@@ -48,7 +48,7 @@ ms.locfileid: "43125087"
   
 2. 单击“创建”，然后为以下各项选择选项：
 
-  * 为新的 OMS 工作区提供名称，如 DefaultLAWorkspace。 
+  * 为新的 Log Analytics 工作区提供名称，如 DefaultLAWorkspace。 
   * 如果选择的默认值不合适，请从下拉列表中选择要链接到的**订阅**。
   * 对于**资源组**，选择要使用已设置的现有资源组，还是要创建一个新资源组。  
   * 选择可用**位置**。  有关详细信息，请参阅[提供 Log Analytics 的区域](https://azure.microsoft.com/regions/services/)。
@@ -56,7 +56,7 @@ ms.locfileid: "43125087"
 
         ![Create Log Analytics resource blade](media/log-analytics-quick-collect-azurevm/create-loganalytics-workspace-02.png)  
 
-3. 在“OMS 工作区”窗格上提供所需信息后，单击“确定”。  
+3. 在“Log Analytics 工作区”窗格上提供所需信息后，单击“确定”。  
 
 在验证信息和创建工作区时，可以在菜单中的“通知”下面跟踪操作进度。 
 
@@ -66,4 +66,4 @@ ms.locfileid: "43125087"
 * 若要启用通过 Azure 诊断或 Azure 存储从 Azure 资源收集数据，请参阅[在 Log Analytics 中收集要使用的 Azure 服务日志和指标](log-analytics-azure-storage.md)。  
 * [将 System Center Operations Manager 添加为数据源](log-analytics-om-agents.md)以从报告 Operations Manager 管理组的代理收集数据并将其存储在 Log Analytics 工作区中。 
 * 连接 [Configuration Manager](log-analytics-sccm.md) 以导入作为层次结构中集合成员的计算机。  
-* 查看可用的[管理解决方案](log-analytics-add-solutions.md)以及如何从工作区添加或删除解决方案。
+* 查看可用的[管理解决方案](https://docs.microsoft.com/azure/monitoring/monitoring-solutions-inventory?toc=%2fazure%2flog-analytics%2ftoc.json)以及如何从工作区添加或删除解决方案。

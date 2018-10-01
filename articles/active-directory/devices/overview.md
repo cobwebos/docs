@@ -16,12 +16,12 @@ ms.topic: overview
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 456b28c50bd5e7d69c3f16dd3e76a9ced20112f9
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 3baa48113022bed1bdc7caa5854a231334c975af
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048856"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224624"
 ---
 # <a name="what-is-device-management-in-azure-active-directory"></a>什么是 Azure Active Directory 中的设备管理？
 
@@ -121,7 +121,7 @@ Azure AD 加入适用于希望成为云优先（即主要使用云服务，旨�
 
 通常，具有本地占用空间的组织依靠映像方法预配设备，并常常使用 System Center Configuration Manager (SCCM) 或组策略 (GP) 管理这些设备。
 
-如果你的环境具有本地 AD 占用空间并且你希望利用 Azure Active Directory 提供的功能所带来的优势，则可选择实现混合 Azure AD 加入设备。 这些设备同时加入到本地 Active Directory 和 Azure Active Directory。
+如果你的环境具有本地 AD 占用空间并且你希望利用 Azure Active Directory 提供的功能所带来的优势，则可选择实现混合 Azure AD 加入设备。 这些设备将加入到本地 Active Directory 并在 Azure Active Directory 中注册。
 
 ![Azure AD 注册设备](./media/overview/01.png)
 

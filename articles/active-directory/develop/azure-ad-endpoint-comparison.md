@@ -3,7 +3,7 @@ title: Azure AD v2.0 终结点与 v1.0 终结点的比较 | Microsoft Docs
 description: 了解 Azure AD v2.0 终结点与 v1.0 终结点之间的差异
 services: active-directory
 documentationcenter: ''
-author: andretms
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 5060da46-b091-4e25-9fa8-af4ae4359b6c
@@ -13,23 +13,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2018
+ms.date: 09/27/2018
 ms.author: andret
-ms.reviewer: hirsin, celested
+ms.reviewer: hirsin, andret
 ms.custom: aaddev
-ms.openlocfilehash: 02c7edc84d2ac3a91c33d8f266d022db5cd5cb40
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b75b31ddfc77be5ed651e7b8484e41a4ae73d8d8
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948946"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406526"
 ---
-# <a name="comparing-the-azure-ad-v20-endpoint-with-v10-endpoint"></a>Azure AD v2.0 终结点与 v1.0 终结点的比较
+# <a name="comparing-the-azure-ad-v20-endpoint-with-the-v10-endpoint"></a>Azure AD v2.0 终结点与 v1.0 终结点的比较
 
 开发新应用程序时，必须知道 v1.0 与 v2.0 终结点之间的差异。 下面是两者的主要差异，以及 v2.0 终结点现存的一些限制。
 
 > [!NOTE]
-> 请注意，v2.0 终结点并非支持所有 Azure AD 方案和功能。 若要确定是否应使用 v2.0 终结点，请阅读 [v2.0 限制](#limitations)。
+> v2.0 终结点并不支持所有 Azure Active Directory (Azure AD) 方案和功能。 若要确定是否应使用 v2.0 终结点，请阅读 [v2.0 限制](#limitations)。
 
 ## <a name="who-can-sign-in"></a>谁可以登录
 
@@ -37,7 +37,7 @@ ms.locfileid: "46948946"
 
 * v1.0 终结点仅允许使用工作和学校帐户登录到应用程序 (Azure AD)
 
-* v2.0 终结点允许使用 Azure Active Directory 中的工作和学校帐户以及使用个人帐户 (MSA)（hotmail.com、outlook.com、msn.com）登录。
+* v2.0 终结点允许使用 Azure AD 中的工作和学校帐户以及使用个人帐户 (MSA)（hotmail.com、outlook.com、msn.com）登录。
 
 * 对于配置为[单租户](single-and-multi-tenant-apps.md)的应用程序，或者配置为指向租户特定的终结点 (`https://login.microsoftonline.com/{TenantId_or_Name}`) 的多租户应用程序，v1.0 和 v2.0 终结点还接受 Azure AD 目录的[来宾用户](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)登录。
 
@@ -214,15 +214,13 @@ v2.0 终结点目前不支持以下应用类型。 有关受支持应用类型�
 
 v2.0 终结点不支持 SAML 或 WS 联合身份验证；它仅支持 Open ID Connect 和 OAuth 2.0。 并非每个 OAuth 协议的所有特性与功能都已合并到 v2.0 终结点中。
 
-以下协议的特性和功能目前在 v2.0 终结点中不可用：
+在 v2.0 终结点中，以下协议特性和功能目前*不可用*或*不受支持*：
 
-* 目前，仅当配置了可选声明并在请求中指定了范围为 scope=email 时，才会返回 `email` 声明。 但是，此行为会随着 v2.0 终结点的更新而更改，以进一步符合 Open ID Connect 和 OAuth2.0 标准。
+* 仅当配置了可选声明并在请求中指定了范围为 scope=email 时，才会返回 `email` 声明。 但是，此行为应会随着 v2.0 终结点的更新而更改，以进一步符合 Open ID Connect 和 OAuth2.0 标准。
 
 * v2.0 终结点不支持在 ID 令牌中发布角色或组声明。
 
 * v2.0 终结点不支持 [OAuth 2.0 资源所有者密码凭据授予](https://tools.ietf.org/html/rfc6749#section-4.3)。
-
-此外，v2.0 终结点不支持任何形式的 SAML 或 WS 联合身份验证协议。
 
 若要进一步了解 v2.0 终结点支持的协议功能范围，请阅读 [OpenID Connect 和 OAuth 2.0 协议参考](active-directory-v2-protocols.md)。
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: f4659d2dc8dfd52ae6f7ec19dc29ec31c9b3ca6b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: bc2b391457d7652b62558c9a752376b07b50a8c1
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047336"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47391792"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>教程：为联盟域配置混合 Azure Active Directory 联接
 
@@ -120,9 +120,9 @@ ms.locfileid: "43047336"
 
     ![SCP](./media/hybrid-azuread-join-federated-domains/16.png)
 
-    a. 选择林。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择林。
 
-    b. 选择身份验证服务。
+    b. 选择身份验证服务。 除非你的组织仅有 Windows 10 客户端，否则必须选择 AD FS 服务器。
 
     c. 单击“添加”，输入企业管理员凭据。
 
@@ -170,7 +170,7 @@ ms.locfileid: "43047336"
 
 ### <a name="configure-the-local-intranet-settings-for-device-registration"></a>配置设备注册的本地 Intranet 设置
 
-要成功完成 Windows 下层设备的混合 Azure AD 联接，同时避免在设备对 Azure AD 进行身份验证时出现证书提示，可将一个策略推送到已加入域的设备，从而在 Internet Explorer 中将以下 URL 添加到本地 Intranet 区域：
+若要成功完成 Windows 下层设备的混合 Azure AD 联接，同时避免在设备向 Azure AD 进行身份验证时出现证书提示，可将一个策略推送到已加入域的设备，从而在 Internet Explorer 中将以下 URL 添加到本地 Intranet 区域：
 
 - `https://device.login.microsoftonline.com`
 

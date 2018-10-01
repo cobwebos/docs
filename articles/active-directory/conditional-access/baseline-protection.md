@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 57fef112186834ead76f6223e32cb358e4d6d053
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: ef2b5dd393974ddf700235991b60ec66031e34c2
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024067"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222261"
 ---
 # <a name="what-is-baseline-protection-preview"></a>何为基线保护（预览）？  
 
@@ -56,7 +56,7 @@ ms.locfileid: "44024067"
 
 ## <a name="enable-a-baseline-policy"></a>启用基线策略 
 
-在基线策略处于预览版时，它们不会默认激活。 如果要激活策略，需要手动将其启用。 一旦此功能正式发布，策略会默认激活。 由于计划了此行为更改，因此，你必须另外激活和停用另一个选项来设置策略状态：**将来自动启用策略**。 通过选择此选项，可以让 Microsoft 决定何时激活策略。      
+在基线策略处于预览版时，它们不会默认激活。 如果要激活策略，需要手动将其启用。 如果在预览阶段显式启用了基线策略，则当此功能正式发布时，这些策略将保持活动状态。 由于计划了行为更改，因此，除了激活和停用之外，你还有第三个选项来设置策略的状态：**将来自动启用策略**。 通过选择此选项，你可以在预览期间使这些策略处于禁用状态，但是当此功能正式发布时，Microsoft 会自动启用它们。 如果现在未显式启用基线策略，并且未选择“将来自动启用策略”选项，则当此功能正式发布时，这些策略将保持禁用状态。
 
 
 **若要启用基线策略，请执行以下操作：**  

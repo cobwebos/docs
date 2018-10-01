@@ -1,21 +1,22 @@
 ---
-title: 有关 Azure 中自定义语音服务的常见问题解答 | Microsoft Docs
+title: 常见问题解答 - 自定义语音服务
+titlesuffix: Azure Cognitive Services
 description: 以下是有关自定义语音服务的最常见问题的解答。
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: article
+ms.topic: faq
 ms.date: 11/21/2016
 ms.author: panosper
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5ab4adefbfbfa1a295f980fd31bffaeaa957ce0c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2de2efe3287cbb0b915434c2c9ad982fe162d741
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955276"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223708"
 ---
 # <a name="custom-speech-service-frequently-asked-questions"></a>自定义语音服务常见问题解答
 

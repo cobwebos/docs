@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/26/2018
+ms.date: 09/24/2018
 ms.author: magoedte
-ms.openlocfilehash: 0d511c1f6dfd482e5754741da15b2852ee77c11e
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: db85f85011154dcc7adfa9d569e9015a9c5c33ca
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33207521"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055031"
 ---
 # <a name="overview-of-monitoring-containers-in-azure"></a>监视 Azure 容器的概述
-借助 Azure，可以有效地监视和管理运行 Kubernetes 或 Docker 的 Azure 容器上部署的工作负载。 请务必了解如何执行包含多个微服务应用程序的容器，以大规模提供可靠的服务并支持监视计划。 本文简要概述 Azure 的管理和监视功能，有助于了解每个功能，从而帮助你根据需求选择合适的功能。
+借助 Azure，可以有效地监视和管理运行 Kubernetes 或 Docker 的 Azure 容器上部署的工作负载。 请务必了解如何执行包含多个微服务应用程序的容器，以大规模提供可靠的服务并支持监视计划。 本文简要概述 Azure 的管理和监视功能，有助于了解这些功能，从而帮助你根据需求选择合适的功能。
 
-使用 [Azure Monitor 容器运行状况](monitoring-container-health.md)，可以一目了然地查看 Linux 容器基础结构的性能和运行状况并快速调查问题。 遥测数据存储在 Log Analytics 工作区中并集成在 Azure 门户中，在 Azure 门户中，可以借助仪表板浏览、筛选和分隔聚合数据以监视负载、性能和运行状况。  
+使用[用于容器的 Azure Monitor](monitoring-container-insights-overview.md)，可以一目了然地查看 Linux 容器基础结构的性能和运行状况并快速调查问题。 遥测数据存储在 Log Analytics 工作区中并集成在 Azure 门户中，在 Azure 门户中，可以借助仪表板浏览、筛选和分隔聚合数据以监视负载、性能和运行状况。  
 
 对于在托管的 Azure Kubernetes 服务外运行的容器，Log Analytics [Windows 和 Docker 容器解决方案](../log-analytics/log-analytics-containers.md)有助于查看和管理 Windows 和 Docker 容器主机。 从 Log Analytics 工作区，可以在环境中查看节点和容器的清单详细信息、性能和事件。 可以查看详细的审核信息，显示用于容器的命令，并且可以通过查看和搜索集中式日志对容器进行故障排除，而无需远程访问 Docker 或 Windows 主机。
 

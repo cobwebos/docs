@@ -1,4 +1,27 @@
-
+---
+title: include 文件
+description: include 文件
+services: active-directory
+documentationcenter: dev-center-name
+author: navyasric
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/17/2018
+ms.author: nacanuma
+ms.custom: include file
+ms.openlocfilehash: 07aac49e7aed7c95863a2058a9de3d1e8f2cd1ad
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060840"
+---
 ## <a name="register-your-application"></a>注册应用程序
 
 可以通过多种方法来创建应用程序，请选择其中一种方法：
@@ -6,46 +29,46 @@
 ### <a name="option-1-register-your-application-express-mode"></a>选项 1：注册应用程序（快速模式）
 现在需要在 Microsoft 应用程序注册门户中注册应用程序：
 
-1.  通过 [Microsoft 应用程序注册门户](https://apps.dev.microsoft.com/portal/register-app?appType=singlePageApp&appTech=javascriptSpa&step=configure)注册应用程序
-2.  输入应用程序的名称和电子邮件
-3.  确保选中“指导式设置”选项
-4.  按照说明获取应用程序 ID，并将其粘贴到代码中
+1.  通过 [Microsoft 应用程序注册门户](https://apps.dev.microsoft.com/portal/register-app?appType=singlePageApp&appTech=javascriptSpa&step=configure)注册应用程序。
+2.  输入应用程序的名称和电子邮件。
+3.  确保选中“指导式设置”选项。
+4.  按照说明获取应用程序 ID，并将其粘贴到代码中。
 
 ### <a name="option-2-register-your-application-advanced-mode"></a>选项 2：注册应用程序（高级模式）
 
-1. 转到 [Microsoft 应用程序注册门户](https://apps.dev.microsoft.com/portal/register-app)注册应用程序
-2. 输入应用程序的名称和电子邮件 
-3. 确保取消选中“指导式设置”选项
-4.  单击 `Add Platform`，并选择 `Web`
-5. 基于 Web 服务器，添加与应用程序 URL 对应的 `Redirect URL`。 有关如何设置/ 获取 Visual Studio 和 Python 中的重定向 URL，请参阅下面部分的相关说明。
-6. 单击“保存”
+1. 转到 [Microsoft 应用程序注册门户](https://apps.dev.microsoft.com/portal/register-app)注册应用程序。
+2. 输入应用程序的名称和电子邮件。
+3. 确保取消选中“指导式设置”选项。
+4.  单击“添加平台”，然后选择“Web”。
+5. 基于 Web 服务器，添加与应用程序 URL 对应的**重定向 URL**。 有关如何在 Visual Studio 和 Node 中设置和获取重定向 URL 的说明，请参阅以下部分。
+6. 选择“保存”。
 
-> #### <a name="visual-studio-instructions-for-obtaining-redirect-url"></a>获取重定向 URL 的 Visual Studio 说明
-> 要获取重定向 URL，请根据以下说明进行操作：
-> 1.    在解决方案资源管理器中，选择项目并查看 `Properties` 窗口（如果看不到“属性”窗口，请按 `F4`）
-> 2.    将 `URL` 中的值复制到剪贴板：<br/> ![项目属性](media/active-directory-develop-guidedsetup-javascriptspa-configure/vs-project-properties-screenshot.png)<br />
-> 3.    切换回“应用程序注册门户”，并将值粘贴为 `Redirect URL`，然后单击“保存”
+> #### <a name="setting-redirect-url-for-node"></a>设置 Node 的重定向 URL
+> 对于 Node.js，可以在 *server.js* 文件中设置 Web 服务器端口。 本教程使用端口 30662 作为参考，但可以随意使用任何可用的其他端口。 在任何情况下，都请按照以下说明在应用程序注册信息中设置重定向 URL：<br/>
+> - 切换回“应用程序注册门户”并将 `http://localhost:30662/` 设置为 `Redirect URL`，或者，如果你使用的是自定义 TCP 端口（其中[端口]为自定义 TCP 端口号），则使用 `http://localhost:[port]/`，然后单击“保存”
 
 <p/>
 
-> #### <a name="setting-redirect-url-for-python"></a>设置 Python 的重定向 URL
-> 对于 Python，可通过命令行设置 Web 服务器端口。 此指南设置使用端口 8080 作为参考，但可以随意使用任何可用的其他端口。 在任何情况下，都请按照以下说明在应用程序注册信息中设置重定向 URL：<br/>
-> - 切换回“应用程序注册门户”并将 `http://localhost:8080/` 设置为 `Redirect URL`，或者，如果你使用的是自定义 TCP 端口（其中[端口]为自定义 TCP 端口号），则使用 `http://localhost:[port]/`，然后单击“保存”
+> #### <a name="visual-studio-instructions-for-obtaining-the-redirect-url"></a>用于获取重定向 URL 的 Visual Studio 说明
+> 按照以下步骤获取重定向 URL：
+> 1.    在解决方案资源管理器中，选择项目并查看“属性”窗口。 如果没有看到“属性”窗口，请按 **F4**。
+> 2.    将 **URL** 中的值复制到剪贴板：<br/> ![项目属性](media/active-directory-develop-guidedsetup-javascriptspa-configure/vs-project-properties-screenshot.png)<br />
+> 3.    切换回*应用程序注册门户*并将该值粘贴为**重定向 URL**，然后选择“保存”
 
 
 #### <a name="configure-your-javascript-spa"></a>配置 JavaScript SPA
 
-1.  创建包含应用程序注册信息且名为 `msalconfig.js` 的文件。 如果使用的是 Visual Studio，请选择项目（项目根文件夹），然后右键单击并选择：`Add` > `New Item` > `JavaScript File`。 将其命名为 `msalconfig.js`
-2.  将以下代码添加到 `msalconfig.js` 文件：
+1.  在项目设置期间创建的 `index.html` 文件中，添加应用程序注册信息。 在 `index.html` 文件正文的 `<script></script>` 标记顶部添加以下代码：
 
 ```javascript
-var msalconfig = {
-    clientID: "Enter_the_Application_Id_here",
-    redirectUri: location.origin
+var applicationConfig = {
+    clientID: "[Enter the application Id here]",
+    graphScopes: ["user.read"],
+    graphEndpoint: "https://graph.microsoft.com/v1.0/me"
 };
 ```
 <ol start="3">
 <li>
-用刚注册的应用程序 ID 替换 <code>Enter_the_Application_Id_here</code>
+将 <code>Enter the application Id here</code> 替换为刚注册的应用程序 ID。
 </li>
 </ol>

@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 09/27/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: e2fe7c375525389da865a3c85b52fad4dd11e333
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 77ccc6ebbb48ab3d7ce22d6c593bd62aa8dec3ac
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957465"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419469"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway-preview"></a>教程：连接、设置、激活 Azure Data Box Gateway（预览版） 
 
@@ -122,12 +122,12 @@ ms.locfileid: "46957465"
        
          ![](./media/data-box-gateway-deploy-connect-setup-activate/image10.png)
     
-    3. 这将重启设备。 可能需要等待 2-3 分钟才能成功激活设备。 重新启动设备后，会转到登录页。
+    3. 可能需要等一会儿才能成功激活设备。 激活后，页面会更新以指示设备已成功激活。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已了解了多个 Data Box Gateway 主题，例如：
+在本教程中，我们已了解有关 Data Box Gateway 的主题，例如：
 
 > [!div class="checklist"]
 > * 连接到虚拟设备

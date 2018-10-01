@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: ''
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/24/2018
+ms.date: 09/27/2018
 ms.author: alkohli
-ms.openlocfilehash: d0da9107fe1dd34481ca0bf1aa9a0b260bb10951
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e47ffbe15291275a7104d5e201a597d084cdbdd9
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946623"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422858"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box：常见问题解答
 
@@ -117,7 +117,7 @@ A.
 A.-->
 
 ### <a name="q-the-system-fault-indicator-led-on-the-front-operating-panel-is-on-what-should-i-do"></a>问： 前操作面板上的系统故障指示器 LED 灯亮起。 我该怎么办？
-A. 如果系统故障指示器 LED 灯亮起，则表示系统不正常。 联系 Microsoft 支持部门了解后续步骤。
+A. 如果系统故障指示器 LED 灯亮起，则表示系统不正常。 [联系 Microsoft 支持部门](data-box-disk-contact-microsoft-support.md)以了解后续步骤。
 
 ### <a name="q-i-cant-access-the-data-box-unlock-password-in-the-azure-portal-why-would-this-be"></a>问： 无法在 Azure 门户中访问 Data Box 解锁密码。 这是为什么？
 A. 如果无法在 Azure 门户中访问解锁密码，请检查订阅和存储帐户的权限。 请确保具有资源组级别的参与者或所有者权限。 如果没有，则至少需要 Data Box 操作员角色权限才能查看访问凭据。
@@ -127,8 +127,8 @@ A. 如果无法在 Azure 门户中访问解锁密码，请检查订阅和存储�
 ### <a name="q-how-do-i-track-the-data-box-from-when-i-placed-the-order-to-shipping-the-device-back"></a>问： 在从下单到寄回设备的整个过程中，如何跟踪 Data Box 的订单状态？ 
 A.  可以在 Azure 门户中跟踪 Data Box 的订单状态。 创建订单时，系统还会提示你提供通知电子邮件。 如果已提供，则在订单状态发生任何变化时，你都会收到电子邮件通知。 详细了解如何[配置通知电子邮件](data-box-portal-ui-admin.md#edit-notification-details)。
 
-### <a name="q-how-do-i-return-the-disks"></a>问： 如何退回磁盘？ 
-A.  Microsoft 将在电子墨迹显示器上显示发货标签。 在快递公司寄件时，请将该标签贴在包装箱上，并密封包装。 如果该标签已损坏或丢失，请转到“概述”>“下载发货标签”，并下载新的退货标签。
+### <a name="q-how-do-i-return-the-device"></a>问： 如何退回设备？ 
+A.  Microsoft 将在电子墨水显示屏上显示发货标签。 如果发货标签未显示在电子墨水显示屏上，请转至“概述”>“下载发货标签”。 下载并打印标签，将标签插入设备上的透明塑料标签中，然后将设备放在运输承运商位置。 
 
 ### <a name="q-i-received-an-email-notification-that-my-device-has-reached-the-azure-datacenter-how-do-i-find-out-if-the-data-upload-is-in-progress"></a>问： 我收到电子邮件通知，提示我的设备已到达 Azure 数据中心。 如何了解数据是否正在上传？
 A. 可转到 Azure 门户中的 Data Box 订单，然后转到“概况”。 如果将数据上传到 Azure 已启动，将在右窗格中看到复制进度。 
@@ -181,11 +181,11 @@ A. 如果设备到达时已损坏或存在被篡改的证据，请不要使用�
 ### <a name="q-can-i-use-my-own-shipping-carrier-to-ship-data-box"></a>问： 能否使用我自己的承运人运送 Data Box？
 A. Microsoft 负责将 Data Box 服务寄回和寄出 Azure 数据中心。 如果想要使用你自己的承运人，可以使用 Azure 导入/导出服务。 有关详细信息，请转到[什么是 Azure 导入/导出服务？](../storage/common/storage-import-export-service.md)
 
-### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>问： 电子墨迹显示器未显示退货发货标签。 我该怎么办？
-A. 如果电子墨迹显示器未显示退货发货标签，请执行以下步骤：
+### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>问： 电子墨水显示屏未显示退货发货标签。 我该怎么办？
+A. 如果电子墨水显示屏未显示退货发货标签，请执行以下步骤：
 - 取下上一次发货留下的旧发货标签和任何便签。
-- 在 Azure 门户中转到订单。 转到“概况”并下载发货标签。 有关详细信息，请转到[下载发货标签](data-box-portal-admin.md#download-shipping-label)。
-- 打印发货标签并将其插入设备附带的透明封套。 
+- 在 Azure 门户中转到订单。 转到“概述”和“下载发货标签”。 有关详细信息，请转到[下载发货标签](data-box-portal-admin.md#download-shipping-label)。
+- 打印发货标签并将其插入附加到设备的透明塑料封套中。 
 - 请确保发货标签清晰可见。 
 
 ### <a name="q-how-is-my-data-protected-during-transit"></a>问： 在传输期间我的数据会受到怎样的保护？ 
@@ -204,12 +204,11 @@ A. 是的。 可以打开设备并添加更多数据。 完成数据复制后，
 A.  一旦“数据复制”的订单状态显示为“已完成”，应该立即就能访问数据。
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>问： 上传后，我的数据位于 Azure 中的哪个位置？
-A.  将数据复制到 Data Box 中时，数据将上传到 Azure 存储帐户中的以下一个路径，具体取决于数据是块 blob、页 blob 还是 Azure 文件：
- - `<You_storage_account_name_BlockBlob>/<my_container>/Blob` 
- - `<Your_storage_account_name_PageBlob>/<my_container>/Blob`
- - `<Your_storage_account_name_AzFile>/` 
-
-在块 blob 和页 blob 共享下，一级实体为容器，二级实体为 blob。 在 Azure 文件共享下，一级实体为共享，二级实体为文件。
+A.  将数据复制到 Data Box 中时，数据将上传到 Azure 存储帐户中的以下一个路径，具体取决于数据是块 blob、页 blob 还是 Azure 文件。
+ - `https://<storage_account_name>.blob.core.windows.net/<containername>` 
+ -  `https://<storage_account_name>.file.core.windows.net/<sharename>`
+ 
+ 或者，可以转到 Azure 门户中的 Azure 存储帐户并从那里导航。
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>问： 我刚刚发现，我并未遵循容器的 Azure 命名要求。 我的数据是否无法上传到 Azure？
 A.  如果容器名称包含大写字母，这些字母会自动转换为小写。 如果名称存在其他方面的不合规情况（包含特殊字符、采用其他语言，等等），则上传将会失败。 有关命名共享、容器、文件的最佳做法的详细信息，请转到： 

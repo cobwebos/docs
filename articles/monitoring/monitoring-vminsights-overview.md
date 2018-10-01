@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
+ms.date: 09/24/2018
 ms.author: magoedte
-ms.openlocfilehash: 79f507c342f5a13c4d3784cf312f0bf8aeffa3e3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 26fcc3eb78af53360cca57382b4c06b017f36c0e
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957240"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063262"
 ---
-## <a name="what-is-azure-monitor-for-vms"></a>什么是用于 VM 的 Azure Monitor？
+# <a name="what-is-azure-monitor-for-vms"></a>什么是用于 VM 的 Azure Monitor？
 
 用于 VM 的 Azure Monitor 分析 Windows 和 Linux VM 的性能与运行状况，包括其不同的进程以及与其他资源和外部进程之间的相互依赖关系，可以大规模监视 Azure 虚拟机 (VM)。 该解决方案支持监视本地或其他云提供程序中托管的 VM 的性能和应用程序依赖项。  它包括了用来提供此深度见解的三个主要功能：
 
@@ -57,4 +57,4 @@ DevOps 可以通过查明严重的操作系统事件和性能瓶颈、网络问�
 日志大小根据计数器的字符串长度变化，并且可能会随逻辑磁盘和网络适配器的数量而增大。  如果你已有一个工作区并且正在收集这些计数器，则不会重复收费。  如果已在使用服务映射，则你看到的唯一变化是发送到 Azure Monitor 的额外连接数据。
 
 ## <a name="next-steps"></a>后续步骤
-[载入用于 VM 的 Azure Monitor](monitoring-vminsights-onboard.md) 以开始监视 Azure 虚拟机。
+查看[载入用于 VM 的 Azure Monitor](monitoring-vminsights-onboard.md)，以了解启用虚拟机监视的要求和方法。

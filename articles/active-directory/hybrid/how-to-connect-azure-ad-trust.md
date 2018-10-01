@@ -17,12 +17,12 @@ ms.date: 07/28/2018
 ms.author: billmath
 author: billmath
 ms.custom: ''
-ms.openlocfilehash: 4eeb716e4eeae8dc560f9588c6c3ce252daf741e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5ac69c53a6b6c1e4695b88e5806f8e883cd52c66
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46309756"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432046"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>使用 Azure AD Connect 管理 AD FS 与 Azure AD 之间的信任关系
 
@@ -41,7 +41,7 @@ Azure AD Connect **仅**管理与 Azure AD 信任相关的设置。 Azure AD Con
 | 设置 | Description |
 | :--- | :--- |
 | 令牌签名证书 | Azure AD Connect 可用于重置和重新创建与 Azure AD 之间的信任关系。 Azure AD Connect 针对 AD FS 的令牌签名证书执行一次性的立即滚动更新，并更新 Azure AD 域联合设置。|
-| 令牌签名算法 | Microsoft 建议使用 SHA-256 作为令牌签名算法。 Azure AD Connect 可以检测令牌签名算法是否设置为安全性不如 SHA-256 的值。 在下一个可能的配置操作中，它会将设置更新为 SHA-256。 |
+| 令牌签名算法 | Microsoft 建议使用 SHA-256 作为令牌签名算法。 Azure AD Connect 可以检测令牌签名算法是否设置为安全性不如 SHA-256 的值。 在下一个可能的配置操作中，它会将设置更新为 SHA-256。 必须更新其他信赖方信任，才能使用新的令牌签名证书。 |
 | Azure AD 信任标识符 | Azure AD Connect 为 Azure AD 信任设置正确的标识符值。 AD FS 使用该标识符值唯一标识 Azure AD 信任。 |
 | Azure AD 终结点 | Azure AD Connect 确保为 Azure AD 信任配置的终结点始终符合最新建议的复原能力和性能值。 |
 | 颁发转换规则 | 为确保联合设置中的 Azure AD 性能和功能达到最佳，需要用到许多的声明规则。 Azure AD Connect 确保始终使用适当的建议声明规则集来配置 Azure AD 信任。 |

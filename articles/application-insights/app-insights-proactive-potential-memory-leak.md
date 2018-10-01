@@ -1,8 +1,8 @@
 ---
-title: "智能检测 - Azure Application Insights 检测到的可能内存泄漏 | Microsoft Docs"
-description: "使用 Azure Application Insights 监视应用程序是否存在可能的内存泄漏。"
+title: 智能检测 - Azure Application Insights 检测到的可能内存泄漏 | Microsoft Docs
+description: 使用 Azure Application Insights 监视应用程序是否存在可能的内存泄漏。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: e98caaa387418d746905990436b69925a591b260
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 25d26db3cd11fff7f7e9ba472247a920ecddea33
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47090728"
 ---
 # <a name="memory-leak-detection-preview"></a>内存泄漏检测（预览）
 
@@ -25,12 +26,10 @@ Application Insights 自动分析应用程序中每个进程的内存消耗量�
 
 此功能需要[配置性能计数器](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters)，除此之外，不需要其他特殊设置。 当应用生成的内存性能计数器遥测数据（例如，专用字节数）足够多时，它处于活动状态。
 
-
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>何时会收到此类型的智能检测通知？
-在属于你应用程序的一个或多个进程和/或一个或多个计算机中，如果内存消耗量在较长的时间段（几个小时）内持续增加，将发出一个典型的通知。
-与由于应用程序使用量自然增长而导致的内存消耗量增加不同，机器学习算法用于检测与内存泄漏模式匹配的内存消耗量增加。
+在属于你应用程序的一个或多个进程和/或一个或多个计算机中，如果内存消耗量在较长的时间段内持续增加，将发出一个典型的通知。 机器学习算法用于检测与内存泄漏模式匹配的内存消耗增加。
 
-## <a name="does-my-app-definitely-have-a-problem"></a>收到通知是否意味着我的应用肯定有问题？
+## <a name="does-my-app-really-have-a-problem"></a>我的应用真的有问题吗？
 不是，通知并不意味着应用肯定有问题。 虽然内存泄漏模式通常指示应用程序有问题，但这些模式可能对特定进程而言是非常典型的，或者可能有自然的业务理由，并且可以被忽略。
 
 ## <a name="how-do-i-fix-it"></a>如何解决问题？

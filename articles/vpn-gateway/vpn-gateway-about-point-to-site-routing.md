@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/16/2018
 ms.author: anzaman
-ms.openlocfilehash: a0576e00d22b731f7ee9de3a9b021c0f52fc8ef9
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 620a2bf9221bdb7c46dc36a2b3ed23d853faff35
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34702170"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031701"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>关于点到站点 VPN 路由
 
@@ -148,7 +148,7 @@ Azure 当前支持两种远程访问协议：IKEv2 和 SSTP。 IKEv2 可用于�
 
 在此示例中，点到站点 VPN 网关连接适用于 VNet1。 VNet1 不与其他任何虚拟网络连接/对等互连，但通过未运行 BGP 的站点到站点 VPN 连接连接到本地站点。
 
-Windows 客户端可以访问 VNet1 和其他分支机构 (Site1)，但必须将到 Site1 的路由手动添加到客户端。 非 Windows 客户端可以访问 VNet1 以及本地 Site1。
+Windows 客户端和非 Windows 客户端只能访问 VNet1。
 
 ![VNet 和分支机构的路由](./media/vpn-gateway-about-point-to-site-routing/5.jpg "routing with a VNet and a branch office")
 
@@ -162,7 +162,7 @@ Windows 客户端可以访问 VNet1 和其他分支机构 (Site1)，但必须将
 
 * 已添加到 Windows 客户端的路由：10.1.0.0/16、192.168.0.0/24
 
-* 已添加到非 Windows 客户端的路由：10.1.0.0/16、10.101.0.0/16、192.168.0.0/24
+* 已添加到非 Windows 客户端的路由：10.1.0.0/16、192.168.0.0/24
 
 ### <a name="access"></a>Access
 

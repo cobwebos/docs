@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/11/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 0055968e4333f5ac7653a37fcd728b040024ee55
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: e44b68a2ed2786b449e2680ca4a8ca531058b85c
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629841"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432779"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory 条件访问设置参考
 
@@ -64,7 +64,7 @@ ms.locfileid: "39629841"
 
 - Microsoft Power BI 
 
-- Microsoft Visual Studio Team Services
+- Azure DevOps
 
 - Microsoft Teams
 
@@ -192,7 +192,7 @@ ms.locfileid: "39629841"
 |Outlook 移动应用|Office 365 Exchange Online|Android、iOS|
 |PowerBI 应用|PowerBI 服务|Windows 10、Windows 8.1、Windows 7、Android 和 iOS|
 |Skype for Business|Office 365 Exchange Online|Android、IOS |
-|Visual Studio Team Services 应用|Visual Studio Team Services|Windows 10、Windows 8.1、Windows 7、iOS 和 Android|
+|Azure DevOps 应用|Azure DevOps|Windows 10、Windows 8.1、Windows 7、iOS 和 Android|
 
 
 
@@ -223,6 +223,9 @@ ms.locfileid: "39629841"
 - Microsoft Teams
 - Microsoft Visio
 - Microsoft Word
+- 微软待办
+- Microsoft Stream
+- Microsoft Edge
 
 
 
