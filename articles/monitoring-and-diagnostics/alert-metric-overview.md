@@ -7,16 +7,16 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: alerts
-ms.openlocfilehash: 1ec47ddf5769dd8ed624277a86db57f449581b90
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 586ced5b239b77dd9ae596a754613a66cee371a9
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948683"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405914"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解指标警报在 Azure Monitor 中的工作原理
 
-Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些指标可能是平台指标、自定义指标（预览版）、Log Analytics 中已转换为指标的常用日志，以及 Application Insights 标准指标。 指标警报定期评估，以检查某个指标时序的条件是否属实，并在符合评估条件时发出通知。 指标警报是有状态的，即，它们只会在状态有更改时才发出通知。
+Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些指标可能是平台指标、[自定义指标](metrics-custom-overview.md) 、[Log Analytics 中已转换为指标的常用日志，以及](monitoring-metric-alerts-logs.md) Application Insights 标准指标。 指标警报定期评估，以检查一个或多个指标时序的条件是否属实，并在符合评估条件时发出通知。 指标警报是有状态的，即，它们只会在状态有更改时才发出通知。
 
 ## <a name="how-do-metric-alerts-work"></a>指标警报的工作原理
 
@@ -75,11 +75,17 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 
 此规则将自动监视实例的所有值，即， 可以在实例联机时对其进行监视，而无需再次修改指标警报规则。
 
-### <a name="monitoring-multiple-resource-using-metric-alerts"></a>使用指标警报监视多个资源
+### <a name="monitoring-multiple-resources-using-metric-alerts"></a>使用指标警报监视多个资源
 
-如前一部分中所述，可以使用单个指标警报规则来监视每个维度组合（即 指标时序）。 但是，仍受限于每次对一个资源进行监视。 指标警报预览版现在还支持使用一个规则监视多个资源。 如果订阅中有数百个 VM，此新功能可以帮助快速设置这些 VM 的监视。 
+如前一部分中所述，可以使用单个指标警报规则来监视每个维度组合（即 指标时序）。 但是，以前还受限于每次只能对一个资源进行监视。 Azure Monitor 还支持使用一个指标警报规则监视多个资源。 此功能目前为预览版，并且仅在虚拟机上受支持。 此外，单个指标警报可以监视一个 Azure 区域中的资源。
 
-此功能目前处于预览状态。 目前，不支持通过 Azure 门户创建用于监视多个资源的指标警报规则。 可以通过 Azure 资源管理器模板创建这些规则。
+可以通过以下三种方式之一指定单个指标警报的监视范围：
+
+- 指定为单个订阅中单个 Azure 区域中的虚拟机列表
+- 指定为单个订阅中一个或多个资源组中的所有虚拟机（在单个 Azure 区域中）
+- 指定为单个订阅中的所有虚拟机（在单个 Azure 区域中）
+
+目前，不支持通过 Azure 门户创建用于监视多个资源的指标警报规则。 可以通过 [Azure 资源管理器模板](monitoring-create-metric-alerts-with-templates.md#resource-manager-template-for-metric-alert-that-monitors-multiple-resources)创建这些规则。 对于每台虚拟机，你将收到单独的通知。 
 
 ## <a name="typical-latency"></a>典型延迟
 
