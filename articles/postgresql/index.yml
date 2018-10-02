@@ -45,7 +45,7 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: '设计数据库& #58; <a href="/azure/postgresql/tutorial-design-database-using-azure-portal">Azure 门户</a> | <a href="/azure/postgresql/tutorial-design-database-using-azure-cli">Azure CLI</a>'
+    - html: 设计数据库&#58; <a href="/azure/postgresql/tutorial-design-database-using-azure-portal">Azure 门户</a> | <a href="/azure/postgresql/tutorial-design-database-using-azure-cli">Azure CLI</a>
     - html: <a href="/azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json">使用 Python 和 CLI 生成 Web 应用</a>
 - title: 利用 Microsoft Learn 掌握技能
   items:
