@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/07/2018
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: 2c7dc650109ecc3844ee2ae90e50b2267f5716c4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 59856418adde1ea29a0513a1ca7c0c60531768d8
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996513"
+ms.locfileid: "47036535"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>如何：从 Azure 访问控制服务迁移
 
@@ -61,6 +61,51 @@ https://<mynamespace>.accesscontrol.windows.net
 抵达 `https://accounts.accesscontrol.windows.net` 的任何流量除外。 流至此 URL 的流量已由其他服务进行处理，**不受**访问控制弃用影响。 
 
 有关访问控制的详细信息，请参阅[访问控制服务 2.0（已存档）](https://msdn.microsoft.com/library/hh147631.aspx)。
+
+## <a name="find-out-which-of-your-apps-will-be-impacted"></a>查明哪些应用将受影响
+
+按照本部分中的步骤查明哪些应用程序将受 ACS 停用影响。
+
+### <a name="download-and-install-acs-powershell"></a>下载并安装 ACS PowerShell
+
+1. 转到 PowerShell 库并下载 [Acs.Namespaces](https://www.powershellgallery.com/packages/Acs.Namespaces/1.0.2)。
+1. 通过运行以下命令安装模块
+
+    ```powershell
+    Install-Module -Name Acs.Namespaces
+    ```
+
+1. 通过运行以下命令获取所有可能的命令的列表
+
+    ```powershell
+    Get-Command -Module Acs.Namespaces
+    ```
+
+    若要获取有关特定命令的帮助，请运行：
+
+    ```
+     Get-Help [Command-Name] -Full
+    ```
+    
+    其中，`[Command-Name]` 是 ACS 命令的名称。
+
+### <a name="list-your-acs-namespaces"></a>列出 ACS 命名空间
+
+1. 使用 **Connect-AcsAccount** cmdlet 连接到 ACS。
+  
+    您可能需要运行 `Set-ExecutionPolicy -ExecutionPolicy Bypass`，然后才能执行命令，并且需要是那些订阅的管理员，才能执行命令。
+
+1. 使用 **Get-AcsSubscription** cmdlet 列出可用的 Azure 订阅。
+1. 使用 **Get-AcsNamespace** cmdlet 列出 ACS 命名空间。
+
+### <a name="check-which-applications-will-be-impacted"></a>检查哪些应用程序将受影响
+
+1. 使用上一步中的命名空间并转到 `https://<namespace>.accesscontrol.windows.net`
+
+    例如，如果某个命名空间是 contoso-test，请转到 `https://contoso-test.accesscontrol.windows.net`
+
+1. 在“信任关系”下，选择“信赖方应用”以查看将受 ACS 停用影响的应用列表。
+1. 对于你拥有的任何其他 ACS 命名空间，重复步骤 1-2。
 
 ## <a name="retirement-schedule"></a>停用计划
 

@@ -3,7 +3,7 @@ title: Azure AD v2 JavaScript 快速入门 | Microsoft Docs
 description: 了解 JavaScript 应用程序如何才能通过 Azure Active Directory v2.0 终结点调用需要访问令牌的 API
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
+author: navyasric
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/21/2018
-ms.author: andret
+ms.date: 09/24/2018
+ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 4c64552ab23331755bf1d292bede61e78b339df0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1b884571707aab71e8a8d124ba68f938e5a63a43
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987418"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063738"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-application"></a>快速入门：通过 JavaScript 应用程序登录用户并获取访问令牌
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
-本快速入门介绍如何使用代码示例来演示 JavaScript 单页应用程序 (SPA) 如何登录个人、工作和学校帐户，获取访问令牌以及调用 Microsoft Graph API。
+在本快速入门中，你将了解如何使用代码示例来演示 JavaScript 单页应用程序 (SPA) 如何使个人、工作和学校帐户登录，获取访问令牌来调用 Microsoft Graph API 或任何 Web API。
 
-![本快速入门生成的示例应用的工作原理](media/quickstart-v2-javascript/javascriptspa-intro.png)
+![本快速入门生成的示例应用如何工作](media/quickstart-v2-javascript/javascriptspa-intro.png)
 
 > [!div renderon="docs"]
 > ## <a name="register-your-application-and-download-your-quickstart-app"></a>注册应用程序并下载快速入门应用
@@ -55,40 +55,41 @@ ms.locfileid: "46987418"
 #### <a name="step-2-download-the-project"></a>步骤 2：下载项目
 
 可以根据开发环境选择这些选项之一。
-* [下载核心项目文件 - 针对 Web 服务器，例如 Node.js](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/core.zip)
-* [下载 Visual Studio 项目](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/VisualStudio.zip)
+* [下载核心项目文件 - 针对 Web 服务器，例如 Node.js](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)
+* [下载 Visual Studio 项目](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip)
 
 将 zip 文件提取到本地文件夹（例如，C:\Azure-Samples）。
 
 #### <a name="step-3-configure-your-javascript-app"></a>步骤 3：配置 JavaScript 应用
 
 > [!div renderon="docs"]
-> 编辑 `msalconfig.js`，将 `Enter_the_Application_Id_here` 替换为刚注册应用的应用程序 ID。 可以在“概览”页上找到“应用程序 ID”。
+> 编辑 `index.html` 并将 `applicationConfig` 下的 `Enter_the_Application_Id_here` 替换为你刚才注册的应用的应用程序 ID。
 
 > [!div class="sxs-lookup" renderon="portal"]
-> 编辑 `msalconfig.js`，将 msalconfig 替换为：
+> 编辑 `index.html` 并将 `applicationConfig` 替换为：
 
 ```javascript
-var msalconfig = {
+var applicationConfig = {
     clientID: "Enter_the_Application_Id_here",
-    redirectUri: location.origin
+    graphScopes: ["user.read"],
+    graphEndpoint: "https://graph.microsoft.com/v1.0/me"
 };
 ```
 > [!NOTE]
-> 如果使用 [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)，则重定向 URI 会被设置为 `http://localhost:30662/`，就像在代码示例的项目中配置一样。 如果使用 [Node.js](https://nodejs.org/en/download/) 或任何其他的 Web 服务器，请将重定向 URI 设置为 `http://localhost:30662/`，然后将服务器配置为开始在此端口上侦听。
+>如果使用 [Node.js](https://nodejs.org/en/download/)，则需要配置 *server.js* 文件，以便服务器开始在端口 30662 上进行侦听。
+> 如果使用 [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)，则需要配置代码示例的 *.csproj* 文件，以便服务器开始在端口 30662 上进行侦听。
 >
 
 #### <a name="step-4-run-the-project"></a>步骤 4：运行项目
-
-如果使用 Visual Studio，请按 F5 运行项目。
 
 如果使用 Node.js，则可在命令行上通过项目的目录运行以下命令，以便启动服务器：
  ```batch
  npm install
  node server.js
  ```
-打开 Web 浏览器并导航到 `http://localhost:30662/`。 单击“调用 Microsoft Graph API”按钮，启动登录。
+打开 Web 浏览器并导航到 `http://localhost:30662/`。 单击“登录”按钮以开始登录，然后调用 Microsoft Graph API。
 
+如果使用 Visual Studio，请确保选择项目解决方案，然后按 **F5** 来运行项目。
 
 ## <a name="more-information"></a>更多信息
 
@@ -98,7 +99,7 @@ MSAL 是一个库，用于用户登录和请求令牌，此类令牌用于访问
 
 ```html
 <script src="https://secure.aadcdn.microsoftonline-p.com/lib/0.2.3/js/msal.min.js"></script>
-````
+```
 
 或者，如果已安装 Node，则可通过 npm 下载它：
 
@@ -111,32 +112,33 @@ npm install msal
 快速入门代码也演示了如何初始化库：
 
 ```javascript
-var userAgentApplication = new Msal.UserAgentApplication(msalconfig.clientID, null, loginCallback, {
-    redirectUri: msalconfig.redirectUri
-});
+var myMSALObj = new Msal.UserAgentApplication(applicationConfig.clientID, null, acquireTokenRedirectCallBack, {storeAuthStateInCookie: true, cacheLocation: "localStorage"});
 ```
 
 > |其中  |  |
 > |---------|---------|
 > |`ClientId`     |Azure 门户中注册的应用程序的应用程序 ID|
 > |`authority`    |它是颁发机构 URL。 传递 *null* 会将默认颁发机构设置为 `https://login.microsoftonline.com/common`。 如果应用为单租户（只以一个目录中的帐户为目标），请将此值设置为 `https://login.microsoftonline.com/<tenant name or ID>`|
-> |`loginCallBack`| 在身份验证之后调用的回调方法会重定向回应用|
-> |`redirectUri`  |一个 URL，在通过 Azure AD 进行身份验证之后，用户会重定向回此 URL|
+> |`tokenReceivedCallback`| 在身份验证之后调用的回调方法会重定向回应用。 此处传递了 `acquireTokenRedirectCallBack`。 如果使用 loginPopup，则此项为空。|
+> |`options`  |可选参数的集合。 在本例中，`storeAuthStateInCookie` 和 `cacheLocation` 是可选配置。 有关选项的更多详细信息，请参阅 [wiki](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/MSAL-basics#configuration-options)。 |
 
 ### <a name="sign-in-users"></a>用户登录
 
 以下代码片段演示如何进行用户登录：
 
 ```javascript
-userAgentApplication.loginRedirect(graphAPIScopes);
+myMSALObj.loginPopup(applicationConfig.graphScopes).then(function (idToken) {
+    //Callback code here
+})
 ```
 
 > |其中  |  |
 > |---------|---------|
-> | `graphAPIScopes`   | （可选）包含在登录时为了获得用户同意而请求的作用域（例如：`[ "user.read" ]` 适用于 Microsoft Graph，`[ "api://<Application ID>/access_as_user" ]` 适用于自定义 Web API）。 |
+> | `scopes`   | （可选）包含在登录时为了获得用户同意而请求的作用域（例如：用于 Microsoft Graph 的 `[ "user.read" ]`，或用于自定义 Web API 的 `[ "<Application ID URL>/scope" ]`（即 `api://<Application ID>/access_as_user`））。 此处传递了 `applicationConfig.graphScopes`。 |
 
 > [!TIP]
-> 或者，可能需要使用 `loginPopup` 方法来显示一个弹出窗口，方便用户登录。
+> 另外，你可能希望使用 `loginRedirect` 方法来将当前页面重定向到登录页面而非重定向到弹出窗口。
+
 
 ### <a name="request-tokens"></a>请求令牌
 
@@ -147,13 +149,14 @@ MSAL 有三种用于获取令牌的方法，即 `acquireTokenRedirect`、`acquir
 `acquireTokenSilent` 方法处理令牌获取和续订，无需进行任何用户交互。 首次执行 `loginRedirect` 或 `loginPopup` 方法后，通常使用 `acquireTokenSilent` 方法获取用于访问受保护资源的令牌，以便进行后续调用。 进行请求或续订令牌的调用时，以静默方式进行。
 
 ```javascript
-// Try to acquire the token used to query Graph API silently first:
-userAgentApplication.acquireTokenSilent(graphAPIScopes)
+myMSALObj.acquireTokenSilent(applicationConfig.graphScopes).then(function (accessToken) {
+    // Callback code here
+})
 ```
 
 > |其中  |  |
 > |---------|---------|
-> | `graphAPIScopes`   | 包含请求的需要在 API 的访问令牌中返回的作用域（例如：`[ "user.read" ]` 适用于 Microsoft Graph，`[ "api://<Application ID>/access_as_user" ]` 适用于自定义 Web API）。 |
+> | `scopes`   | 包含请求的需要在 API 的访问令牌中返回的作用域（例如：用于 Microsoft Graph 的 `[ "user.read" ]`，或用于自定义 Web API 的 `[ "<Application ID URL>/scope" ]`（即 `api://<Application ID>/access_as_user`））。 此处传递了 `applicationConfig.graphScopes`。|
 
 #### <a name="get-a-user-token-interactively"></a>以交互方式获取用户令牌
 
@@ -164,11 +167,16 @@ userAgentApplication.acquireTokenSilent(graphAPIScopes)
 
 建议用于大多数应用程序的常用模式是先调用 `acquireTokenSilent`，然后捕获异常，然后再调用 `acquireTokenRedirect`（或 `acquireTokenPopup`），以便启动交互式请求。
 
-调用 `acquireTokenRedirect(scope)` 导致将用户重定向到 Azure AD v2.0 终结点（调用 `acquireTokenPopup(scope)` 则会导致出现一个弹出窗口），在这种情况下，用户需要进行交互，即确认凭证、同意所需资源或完成双重身份验证。
+调用 `acquireTokenPopup(scope)` 将导致显示一个用于登录的弹出窗口（调用 `acquireTokenRedirect(scope)` 则会导致将用户重定向到 Azure AD v2.0 终结点），在这种情况下，用户需要进行交互，即确认凭证、同意所需资源或完成双重身份验证。
 
 ```javascript
-userAgentApplication.acquireTokenRedirect(graphAPIScopes);
+myMSALObj.acquireTokenPopup(applicationConfig.graphScopes).then(function (accessToken) {
+    // Callback code here
+})
 ```
+
+> [!NOTE]
+> 由于存在与 Internet Explorer 浏览器处理弹出窗口有关的[已知问题](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)，当使用的浏览器是 Internet Explorer 时，本快速入门使用 `loginRedirect` 和 `acquireTokenRedirect` 方法。
 
 ## <a name="next-steps"></a>后续步骤
 

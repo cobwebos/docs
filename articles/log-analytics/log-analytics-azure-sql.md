@@ -15,14 +15,14 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: na
-ms.openlocfilehash: 82845f475857f9a911febd496e86eb2a60f69c25
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: b7a7e2787128c74cd7d016c01b751d15628fb4b2
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782220"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181985"
 ---
-# <a name="monitor-azure-sql-databases-using-azure-sql-analytics-preview"></a>使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
+# <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
 
 ![Azure SQL Analytics 符号](./media/log-analytics-azure-sql/azure-sql-symbol.png)
 
@@ -30,16 +30,17 @@ Azure SQL Analytics 是一种云监视解决方案，用于跨多个订阅大规
 
 使用解决方案收集指标后，即可利用这些指标创建自定义监视规则和警报。 该解决方案可以帮助你确定应用程序堆栈的每个层的问题。 它使用 Azure 诊断指标和 Log Analytics 视图，在单个 Log Analytics 工作区中呈现有关所有 Azure SQL 数据库和弹性池和托管实例中的数据库的数据。 Log Analytics 可帮助用户收集、关联和可视化结构化和非结构化数据。
 
-此预览版解决方案目前支持每个工作区使用多达 200,000 个 Azure SQL 数据库和 5,000 个 SQL 弹性池。
-
 有关使用 Azure SQL Analytics 解决方案的实践概述和典型使用方案，请观看嵌入视频：
+
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player]
 >
 
 ## <a name="connected-sources"></a>连接的源
 
-Azure SQL Analytics 是一种仅云监视解决方案，它支持流式传输 Azure SQL 数据库、弹性池和托管实例的诊断遥测。 由于该解决方案不使用代理连接到 Log Analytics 服务，因此它不支持监视本地 SQL Server 或 VM，请参阅下面的兼容性表。
+Azure SQL Analytics 是一种仅限云的监视解决方案，支持流式传输 Azure SQL 数据库、托管实例数据库和弹性池的诊断遥测数据。
+
+由于该解决方案不使用代理连接到 Log Analytics 服务，因此它不支持监视本地或 VM 中托管的 SQL Server，具体请参阅下面的兼容性表。
 
 | 连接的源 | 支持 | Description |
 | --- | --- | --- |
@@ -51,7 +52,7 @@ Azure SQL Analytics 是一种仅云监视解决方案，它支持流式传输 Az
 
 ## <a name="configuration"></a>配置
 
-执行以下步骤，将 Azure SQL Analytics 解决方案添加到你的工作区。
+执行以下步骤，将 Azure SQL Analytics 解决方案添加到 Azure 仪表板。
 
 1. 从 [Azure 市场](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureSQLAnalyticsOMS?tab=Overview)将 Azure SQL Analytics 解决方案添加到你的工作区。
 2. 在 Azure 门户中，单击“+ 创建资源”，然后搜索 **Azure SQL Analytics**。  
@@ -59,17 +60,18 @@ Azure SQL Analytics 是一种仅云监视解决方案，它支持流式传输 Az
 3. 从列表中选择“Azure SQL Analytics (预览版)”
 4. 在“Azure SQL Analytics (预览版)”区域中，单击“创建”。  
     ![创建](./media/log-analytics-azure-sql/portal-create.png)
-5. 在“创建新的解决方案”区域中，创建新工作区或选择要向其添加解决方案的现有工作区，并单击“创建”。  
+5. 在“创建新的解决方案”区域中，创建新工作区或选择要向其添加解决方案的现有工作区，并单击“创建”。
+
     ![添加到工作区](./media/log-analytics-azure-sql/add-to-workspace.png)
 
-### <a name="configure-azure-sql-databases-and-elastic-pools-to-stream-diagnostics-telemetry"></a>配置 Azure SQL 数据库和弹性池以流式传输诊断遥测数据
+### <a name="configure-azure-sql-databases-elastic-pools-and-managed-instances-to-stream-diagnostics-telemetry"></a>配置 Azure SQL 数据库、弹性池和托管实例以流式传输诊断遥测数据
 
-在工作区中创建 Azure SQL Analytics 解决方案后，为了监视 Azure SQL 数据库和/或弹性池的性能，需要**配置每个**要监视的 Azure SQL 数据库和弹性池资源以将其诊断遥测数据流式传输到解决方案。
+在工作区中创建 Azure SQL Analytics 解决方案后，为了监视 Azure SQL 数据库、托管实例数据库和弹性池的性能，需要**配置其中每个**要监视的资源，以将其诊断遥测数据流式传输到解决方案。
 
-- 为 Azure SQL 数据库和弹性池启用 Azure 诊断，并[将其配置为发送数据到 Log Analytics](../sql-database/sql-database-metrics-diag-logging.md)。
+- 为 Azure SQL 数据库、托管实例数据库和弹性池启用 Azure 诊断，以便[将诊断遥测数据流式传输到 Azure SQL Analytics](../sql-database/sql-database-metrics-diag-logging.md)。
 
 ### <a name="to-configure-multiple-azure-subscriptions"></a>配置多个 Azure 订阅
-
+ 
 若要支持多个订阅，请使用 [Enable Azure resource metrics logging using PowerShell](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell/)（通过 PowerShell 启用 Azure 资源指标日志记录）中的 PowerShell 脚本。 在执行脚本时提供工作区资源 ID 作为参数，以便将诊断数据从一个 Azure 订阅中的资源发送到另一 Azure 订阅中的工作区。
 
 **示例**
@@ -84,13 +86,23 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 
 ## <a name="using-the-solution"></a>使用解决方案
 
-将解决方案添加到工作区时，“Azure SQL Analytics”磁贴也会添加到工作区并显示在“概览”中。 该磁贴显示解决方案连接到的 Azure SQL 数据库和 Azure SQL 弹性池的数目。
+将解决方案添加到工作区时，“Azure SQL Analytics”磁贴也会添加到工作区并显示在“概览”中。 该磁贴显示解决方案从中接收诊断遥测数据的 Azure SQL 数据库、弹性池、托管实例和托管实例中数据库的数目。
 
 ![“Azure SQL Analytics”磁贴](./media/log-analytics-azure-sql/azure-sql-sol-tile.png)
 
+该解决方案提供两个独立的视图 - 一个视图用于监视 Azure SQL 数据库和弹性池，另一个视图用于监视托管实例以及托管实例中的数据库。
+
+若要查看 Azure SQL 数据库和弹性池的 Azure SQL Analytics 监视仪表板，请单击磁贴的上半部分。 若要查看托管实例和托管实例中数据库的 Azure SQL Analytics 监视仪表板，请单击磁贴的下半部分。
+
 ### <a name="viewing-azure-sql-analytics-data"></a>查看 Azure SQL Analytics 数据
 
-单击“Azure SQL Analytics”磁贴打开“Azure SQL Analytics”仪表板。 该仪表板包含通过不同透视监视的所有数据库的概览。 要使不同透视起效，必须允许将有关 SQL 资源的适当指标或日志流式传输到 Azure Log Analytics 工作区。
+该仪表板包含通过不同透视监视的所有数据库的概览。 要使不同透视起效，必须允许将有关 SQL 资源的适当指标或日志流式传输到 Azure Log Analytics 工作区。
+
+请注意，如果某些指标或日志未流式传输到 Azure Log Analytics，则解决方案中的磁贴不会填充监视信息。
+
+### <a name="azure-sql-database-and-elastic-pool-view"></a>Azure SQL 数据库和弹性池视图
+
+选择 Azure SQL 数据库和弹性池的 Azure SQL Analytics 磁贴后，会显示监视仪表板。
 
 ![Azure SQL Analytics 概述](./media/log-analytics-azure-sql/azure-sql-sol-overview.png)
 
@@ -98,32 +110,48 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 
 ![Azure SQL Analytics 超时](./media/log-analytics-azure-sql/azure-sql-sol-metrics.png)
 
-每个透视都提供了有关订阅、服务器、弹性池和数据库级别的概述。 此外，每个透视在右侧都显示了特定于透视的报表。 从列表选择订阅、服务器、池或数据库会继续向下钻取。
+此视图中的每个透视图提供订阅、服务器、弹性池和数据库级别的摘要。 此外，每个透视在右侧都显示了特定于透视的报表。 从列表选择订阅、服务器、池或数据库会继续向下钻取。
 
-| 透视 | Description |
-| --- | --- |
-| 资源（按类型） | 对监视的所有资源进行计数的透视。 向下钻取会提供 DTU 和 GB 指标的摘要。 |
-| 洞察力 | 提供对智能见解的分层向下钻取。 详细了解智能见解。 |
-| Errors | 提供对数据库上发生的 SQL 错误的分层向下钻取。 |
-| 超时 | 提供对数据库上发生的 SQL 超时的分层向下钻取。 |
-| 阻止 | 提供对数据库上发生的 SQL 阻止的分层向下钻取。 |
-| 数据库等待 | 提供对数据库级别上的 SQL 等待统计信息的分层向下钻取。 包含总等待时间汇总和每个类型的等待时间。 |
-| 查询持续时间 | 提供对查询执行统计信息的分层向下钻取，例如查询持续时间、CPU 使用情况、数据 IO 使用情况和日志 IO 使用情况。 |
-| 查询等待 | 按等待类型提供对查询等待统计信息的分层向下钻取。 |
+### <a name="managed-instance-and-databases-in-managed-instance-view"></a>“托管实例”视图中的托管实例和数据库
+
+选择托管实例和托管实例数据库的 Azure SQL Analytics 磁贴后，会显示监视仪表板。
+
+![Azure SQL Analytics 概述](./media/log-analytics-azure-sql/azure-sql-sol-overview-mi.png)
+
+选择任意磁贴，打开特定透视的向下钻取报告。 选择透视后，可看到向下钻取报表。
+
+选择“托管实例”视图会显示有关托管实例利用率及其包含的数据库的详细信息，以及有关在整个实例中执行的查询的遥测数据。
+
+![Azure SQL Analytics 超时](./media/log-analytics-azure-sql/azure-sql-sol-metrics-mi.png)
+
+### <a name="perspectives"></a>透视图
+
+下表概述了两个仪表板版本支持的透视图，一个版本适用于 Azure SQL 数据库和弹性池，另一个版本适用于托管实例。
+
+| 透视 | Description | SQL 数据库和弹性池支持 | 托管实例支持 |
+| --- | ------- | ----- | ----- |
+| 资源（按类型） | 对监视的所有资源进行计数的透视。 | 是 | 是 | 
+| 洞察力 | 提供对性能智能见解的分层向下钻取。 | 是 | 是 |
+| Errors | 提供对数据库上发生的 SQL 错误的分层向下钻取。 | 是 | 是 |
+| 超时 | 提供对数据库上发生的 SQL 超时的分层向下钻取。 | 是 | 否 |
+| 阻止 | 提供对数据库上发生的 SQL 阻止的分层向下钻取。 | 是 | 否 |
+| 数据库等待 | 提供对数据库级别上的 SQL 等待统计信息的分层向下钻取。 包含总等待时间汇总和每个类型的等待时间。 |是 | 是 |
+| 查询持续时间 | 提供对查询执行统计信息的分层向下钻取，例如查询持续时间、CPU 使用情况、数据 IO 使用情况和日志 IO 使用情况。 | 是 | 是 |
+| 查询等待 | 按等待类型提供对查询等待统计信息的分层向下钻取。 | 是 | 是 |
 
 ### <a name="intelligent-insights-report"></a>智能见解报告
 
-使用 Azure SQL 数据库 [Intelligent Insights](../sql-database/sql-database-intelligent-insights.md) 可以知道数据库发生了什么情况。 可通过见解透视，对收集的所有智能见解进行可视化和访问。
+使用 Azure SQL 数据库的[智能见解](../sql-database/sql-database-intelligent-insights.md)可以了解 Azure SQL 数据库和托管实例数据库的性能如何。 可通过见解透视，对收集的所有智能见解进行可视化和访问。
 
 ![Azure SQL Analytics 见解](./media/log-analytics-azure-sql/azure-sql-sol-insights.png)
 
-### <a name="elastic-pool-and-database-reports"></a>弹性池和数据库报表
+### <a name="elastic-pool-and-database-reports"></a>弹性池和数据库报告
 
-弹性池和数据库都有其特定的报表，这些报表显示特定时间内对该资源收集的所有数据。
+弹性池和 SQL 数据库提供特定于自身的报告，其中显示了指定时间内对该资源收集的所有数据。
 
 ![Azure SQL Analytics 数据库](./media/log-analytics-azure-sql/azure-sql-sol-database.png)
 
-![Azure SQL Analytics 弹性池](./media/log-analytics-azure-sql/azure-sql-sol-pool.png)
+![Azure SQL 弹性池](./media/log-analytics-azure-sql/azure-sql-sol-pool.png)
 
 ### <a name="query-reports"></a>查询报表
 
@@ -132,6 +160,8 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 ![Azure SQL Analytics 查询](./media/log-analytics-azure-sql/azure-sql-sol-queries.png)
 
 ### <a name="analyze-data-and-create-alerts"></a>分析数据和创建警报
+
+### <a name="creating-alerts-for-azure-sql-database"></a>针对 Azure SQL 数据库创建警报
 
 可以使用来自 Azure SQL 数据库资源的数据轻松[创建警报](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)。 以下是部分有用的可用于日志警报的[日志搜索](log-analytics-log-searches.md)查询：
 
@@ -150,7 +180,7 @@ AzureMetrics
 > - 设置此警报的前提要求是受监视的数据库将诊断指标（“所有指标”选项）流式传输到解决方案。
 > - 若要改为获取高 DTU 结果，请将 MetricName 值 cpu_percent 替换为 dtu_consumption_percent。
 
-*Azure SQL 数据库弹性池上的高 CPU*
+*Azure SQL 数据库弹性池的 CPU 利用率较高*
 
 ```
 AzureMetrics 
@@ -206,6 +236,23 @@ AzureDiagnostics
 | where Category == "SQLInsights" and status_s == "Active" 
 | distinct rootCauseAnalysis_s
 ```
+
+### <a name="creating-alerts-for-managed-instance"></a>针对托管实例创建警报
+
+*托管实例存储超过 90%
+
+```
+let storage_percentage_treshold = 90;
+AzureDiagnostics
+| where Category =="ResourceUsageStats"
+| summarize (TimeGenerated, calculated_storage_percentage) = arg_max(TimeGenerated, todouble(storage_space_used_mb_s) *100 / todouble (reserved_storage_mb_s))
+   by ResourceId
+| where calculated_storage_percentage > storage_percentage_treshold
+```
+
+> [!NOTE]
+> - 设置此警报的先决条件是，已在解决方案中为受监视的托管实例启用了 ResourceUsageStats 日志的流式传输。
+> - 此查询要求将警报规则设置为当存在来自查询的结果时（> 0 个结果，表示托管实例满足该条件）触发。 输出是托管实例上的存储消耗量百分比。
 
 ## <a name="next-steps"></a>后续步骤
 

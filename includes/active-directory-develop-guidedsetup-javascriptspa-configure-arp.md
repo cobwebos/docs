@@ -1,3 +1,27 @@
+---
+title: include 文件
+description: include 文件
+services: active-directory
+documentationcenter: dev-center-name
+author: navyasric
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/17/2018
+ms.author: nacanuma
+ms.custom: include file
+ms.openlocfilehash: eead4c6a66a317c7404205415cbf04c442ffe8d1
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060862"
+---
 ## <a name="add-the-applications-registration-information-to-your-app"></a>向应用添加应用程序的注册信息
 
 在此步骤中，需要配置应用程序注册信息的重定向 URL，然后将应用程序 ID 添加到 JavaScript SPA 应用程序。
@@ -7,26 +31,26 @@
 使用基于 Web 服务器的 index.html 页的 URL 配置 `Redirect URL` 字段，然后单击“更新”。
 
 
-> #### <a name="visual-studio-instructions-for-obtaining-redirect-url"></a>获取重定向 URL 的 Visual Studio 说明
-> 若要获取重定向 URL，请执行以下操作：
-> 1.    在解决方案资源管理器中，选择项目并查看 `Properties` 窗口（如果看不到“属性”窗口，请按 `F4`）
-> 2.    将 `URL` 中的值复制到剪贴板：<br/> ![项目属性](media/active-directory-develop-guidedsetup-javascriptspa-configure/vs-project-properties-screenshot.png)<br />
-> 3.    将此值粘贴到此页顶部的 `Redirect URL`，然后单击 `Update`
+> #### <a name="visual-studio-instructions-for-obtaining-the-redirect-url"></a>用于获取重定向 URL 的 Visual Studio 说明
+> 按照以下步骤获取重定向 URL：
+> 1.    在解决方案资源管理器中，选择项目并查看“属性”窗口。 如果没有看到“属性”窗口，请按 **F4**。
+> 2.    将 **URL** 中的值复制到剪贴板：<br/> ![项目属性](media/active-directory-develop-guidedsetup-javascriptspa-configure/vs-project-properties-screenshot.png)<br />
+> 3.    将此值粘贴为此页面顶部的“重定向 URL”字段，然后单击“更新”
 
 <p/>
 
-> #### <a name="setting-redirect-url-for-python"></a>设置 Python 的重定向 URL
-> 对于 Python，可通过命令行设置 Web 服务器端口。 此指南设置使用端口 8080 作为参考，但可以随意使用任何可用的其他端口。 在任何情况下，都请按照以下说明在应用程序注册信息中设置重定向 URL：<br/>
-> 将此页面顶部的 `Redirect URL` 设置为 `http://localhost:8080/`，如果使用自定义 TCP 端口（其中 [端口] 是自定义 TCP 端口号），则使用 `http://localhost:[port]/`，然后单击“更新”
+> #### <a name="setting-redirect-url-for-node"></a>设置 Node 的重定向 URL
+> 对于 Node.js，可以在 *server.js* 文件中设置 Web 服务器端口。 本教程使用端口 30662 作为参考，但可以使用任何其他可用的端口。 请按照以下说明在应用程序注册信息中设置重定向 URL：<br/>
+> 将此页面顶部的“重定向 URL”设置为 `http://localhost:30662/`，如果使用自定义 TCP 端口，则设置为 `http://localhost:[port]/`（其中 *[port]* 是自定义 TCP 端口号），然后单击“更新”
 
 ### <a name="configure-your-javascript-spa-application"></a>配置 JavaScript SPA 应用程序
 
-1.  创建包含应用程序注册信息且名为 `msalconfig.js` 的文件。 如果使用的是 Visual Studio，请选择项目（项目根文件夹），然后右键单击并选择：`Add` > `New Item` > `JavaScript File`。 将其命名为 `msalconfig.js`
-2.  将以下代码添加到 `msalconfig.js` 文件：
+1.  在设置项目期间创建的 `index.html` 文件中，添加应用程序注册信息。 在 `index.html` 文件正文中的 `<script></script>` 标记顶部添加以下代码：
 
 ```javascript
-var msalconfig = {
+var applicationConfig = {
     clientID: "[Enter the application Id here]",
-    redirectUri: location.origin
+    graphScopes: ["user.read"],
+    graphEndpoint: "https://graph.microsoft.com/v1.0/me"
 };
-``` 
+```

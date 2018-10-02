@@ -1,25 +1,25 @@
 ---
-title: 将 Azure 自动化与 Visual Stuido Team Services 源代码管理集成
-description: 本方案逐步讲解如何设置 Azure 自动化帐户与 Visual Stuido Team Services 源代码管理的集成。
+title: 将 Azure 自动化与 Azure DevOps Services 源代码管理进行集成
+description: 本方案分步讲解了如何设置 Azure 自动化帐户与 Azure DevOps Services 源代码管理的集成。
 services: automation
 author: eamonoreilly
 ms.author: eamono
-keywords: azure powershell, VSTS, 源代码管理, 自动化
+keywords: azure powershell, Azure DevOps Services, 源代码管理, 自动化
 ms.service: automation
 ms.component: process-automation
 ms.topic: conceptual
 ms.date: 03/19/2017
-ms.openlocfilehash: f34267490a0db71e05ece97c23b86467dbf7dbeb
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ef21060e98972dd7bc561f9a4311fa0c4bdec3b4
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194295"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227055"
 ---
-# <a name="azure-automation-scenario---automation-source-control-integration-with-visual-studio-team-services"></a>Azure 自动化方案 - 自动化源代码管理与 Visual Studio Team Services 的集成
+# <a name="azure-automation-scenario---automation-source-control-integration-with-azure-devops"></a>Azure 自动化方案 - 与 Azure DevOps 集成的自动化源代码管理
 
-在本方案中，要使用一个 Visual Studio Team Services 项目来管理源代码管理中的 Azure 自动化 Runbook 或 DSC 配置。
-本文介绍如何将 VSTS 与 Azure 自动化环境集成，以便每次签入时都能发生持续集成。
+在本方案中，你将使用一个 Azure DevOps 项目来管理源代码管理中的 Azure 自动化 Runbook 或 DSC 配置。
+本文介绍乐如何将 Azure DevOps 与 Azure 自动化环境集成，以便每次签入时都能发生持续集成。
 
 ## <a name="getting-the-scenario"></a>获取方案
 
@@ -27,72 +27,73 @@ ms.locfileid: "34194295"
 
 ### <a name="runbooks"></a>Runbook
 
-Runbook | 说明| 
+Runbook | Description| 
 --------|------------|
-Sync-VSTS | 执行签入时从 VSTS 源代码管理导入 Runbook 或配置。 如果手动运行，它会将所有 Runbook 或配置导入并发布到自动化帐户。| 
-Sync-VSTSGit | 执行签入时从 Git 源代码管理中的 VSTS 导入 Runbook 或配置。 如果手动运行，它会将所有 Runbook 或配置导入并发布到自动化帐户。|
+Sync-VSTS | 执行签入时从 Azure DevOps 源代码管理导入 Runbook 或配置。 如果手动运行，它会将所有 Runbook 或配置导入并发布到自动化帐户。| 
+Sync-VSTSGit | 执行签入时在 Git 源代码管理下从 Azure DevOps 导入 Runbook 或配置。 如果手动运行，它会将所有 Runbook 或配置导入并发布到自动化帐户。|
 
 ### <a name="variables"></a>变量
 
-变量 | 说明|
+变量 | Description|
 -----------|------------|
-VSToken | 所创建的安全变量资产，包含 VSTS 个人访问令牌。 可在 [VSTS 身份验证页](/vsts/accounts/use-personal-access-tokens-to-authenticate)上了解如何创建 VSTS 个人访问令牌。
+VSToken | 所创建的安全变量资产，包含 Azure DevOps 个人访问令牌。 可在 [Azure DevOps 身份验证页](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)上了解如何创建 Azure DevOps 个人访问令牌。
 ## <a name="installing-and-configuring-this-scenario"></a>安装和配置此方案
 
-在 VSTS 中创建[个人访问令牌](/vsts/accounts/use-personal-access-tokens-to-authenticate)，到时需要使用它来将 Runbook 或配置同步到自动化帐户。
+在 Azure DevOps 中创建[个人访问令牌](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)，它用来将 Runbook 或配置同步到自动化帐户。
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSPersonalToken.png) 
 
-在自动化帐户中创建一个[安全变量](automation-variables.md)用于保存个人访问令牌，使 Runbook 能够向 VSTS 进行身份验证，将 Runbook 或配置同步到自动化帐户。 可将此变量命名为 VSToken。 
+在自动化帐户中创建一个[安全变量](automation-variables.md)用于保存个人访问令牌，使 Runbook 能够向 Azure DevOps 进行身份验证，将 Runbook 或配置同步到自动化帐户。 可将此变量命名为 VSToken。
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSTokenVariable.png)
 
-导入用于将 Runbook 或配置同步到自动化帐户的 Runbook。 根据是要使用 VSTS 源代码管理还是包含 Git 的 VSTS 以及是否要部署到自动化帐户，可以从 PowerShellGallery.com 使用 [VSTS 示例 Runbook](https://www.powershellgallery.com/packages/Sync-VSTS/1.0/DisplayScript) 或 [包含 Git 的 VSTS 示例 Runbook] (https://www.powershellgallery.com/packages/Sync-VSTSGit/1.0/DisplayScript))。
+导入用于将 Runbook 或配置同步到自动化帐户的 Runbook。 根据是要使用 Azure DevOps 源代码管理还是要使用包含 Git 的 Azure DevOps 以及是否要部署到自动化帐户，可以从 [PowerShell 库](https://www.powershellgallery.com)使用 [Azure DevOps 示例 Runbook](https://www.powershellgallery.com/packages/Sync-VSTS) 或[包含 Git 的 Azure DevOps 示例 Runbook](https://www.powershellgallery.com/packages/Sync-VSTSGit)。
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSPowerShellGallery.png)
 
 现在，可以[发布](automation-creating-importing-runbook.md#publishing-a-runbook)此 Runbook，以便创建 Webhook。 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSPublishRunbook.png)
 
-为此 Sync-VSTS Runbook 创建 [Webhook](automation-webhooks.md) 并按如下所示填写参数。 请务必复制 Webhook URL，因为到时需要使用它在 VSTS 中创建服务挂钩。 VSAccessTokenVariableName 是前面创建用来保存个人访问令牌的安全变量的名称 (VSToken)。 
+为此 Sync-VSTS Runbook 创建 [Webhook](automation-webhooks.md) 并按如下所示填写参数。 请务必复制 Webhook URL，因为到时需要使用它在 Azure DevOps 中创建服务挂钩。 VSAccessTokenVariableName 是前面创建用来保存个人访问令牌的安全变量的名称 (VSToken)。 
 
-与 VSTS (Sync-VSTS.ps1) 的集成会采用以下参数：
+与 Azure DevOps (Sync-VSTS.ps1) 的集成会采用以下参数：
 ### <a name="sync-vsts-parameters"></a>Sync-VSTS 参数
 
-参数 | 说明| 
+参数 | Description| 
 --------|------------|
-WebhookData | 此项包含从 VSTS 服务挂钩发送的签入信息。 应将此参数留空。| 
+WebhookData | 此项包含从 Azure DevOps 服务挂钩发送的签入信息。 应将此参数留空。| 
 resourceGroup | 这是自动化帐户所在的资源组的名称。|
-AutomationAccountName | 与 VSTS 同步的自动化帐户的名称。|
-VSFolder | VSTS 中的、Runbook 和配置所在的文件夹的名称。|
-VSAccount | Visual Studio Team Services 帐户的名称。| 
-VSAccessTokenVariableName | 保存 VSTS 个人访问令牌的安全变量的名称 (VSToken)。| 
+AutomationAccountName | 与 Azure DevOps 同步的自动化帐户的名称。|
+VSFolder | Azure DevOps 中的、Runbook 和配置所在的文件夹的名称。|
+VSAccount | Azure DevOps 组织的名称。| 
+VSAccessTokenVariableName | 保存 Azure DevOps 个人访问令牌的安全变量的名称 (VSToken)。| 
 
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSWebhook.png)
 
-如果使用的是包含 GIT 的 VSTS (Sync-VSTSGit.ps1)，该集成会采用以下参数。
+如果使用的是包含 GIT 的 Azure DevOps (Sync-VSTSGit.ps1)，该集成会采用以下参数。
 
 参数 | 说明|
 --------|------------|
-WebhookData | 包含 VSTS 服务挂钩发送的签入信息。 应将此参数留空。| resourceGroup | 这是自动化帐户所在的资源组的名称。|
-AutomationAccountName | 与 VSTS 同步的自动化帐户的名称。|
-VSAccount | Visual Studio Team Services 帐户的名称。|
-VSProject | VSTS 中的、Runbook 和配置所在的项目的名称。|
+WebhookData | 这将包含从 Azure DevOps 服务挂钩发送的签入信息。 应将此参数留空。| 
+resourceGroup | 这是自动化帐户所在的资源组的名称。|
+AutomationAccountName | 与 Azure DevOps 同步的自动化帐户的名称。|
+VSAccount | Azure DevOps 组织的名称。|
+VSProject | Azure DevOps 中的、Runbook 和配置所在的项目的名称。|
 GitRepo | Git 存储库的名称。|
-GitBranch | VSTS Git 存储库中的分支名称。|
-文件夹 | VSTS Git 分支中的文件夹的名称。|
-VSAccessTokenVariableName | 保存 VSTS 个人访问令牌的安全变量的名称 (VSToken)。|
+GitBranch | Azure DevOps Git 存储库中的分支名称。|
+文件夹 | Azure DevOps Git 分支中的文件夹的名称。|
+VSAccessTokenVariableName | 保存 Azure DevOps 个人访问令牌的安全变量的名称 (VSToken)。|
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSGitWebhook.png)
 
-在 VSTS 中为文件夹签入创建服务挂钩，以便在签入代码时触发此 Webhook。 选择“Web 挂钩”作为创建新订阅时要集成的服务。 可以通过 [VSTS 服务挂钩文档](https://www.visualstudio.com/en-us/docs/marketplace/integrate/service-hooks/get-started)了解有关服务挂钩的详细信息。
+在 Azure DevOps 中为文件夹签入创建服务挂钩，以便在签入代码时触发此 Webhook。 选择“Web 挂钩”作为创建新订阅时要集成的服务。 可以通过 [Azure DevOps 服务挂钩文档](https://www.visualstudio.com/en-us/docs/marketplace/integrate/service-hooks/get-started)了解有关服务挂钩的详细信息。
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSServiceHook.png)
 
-现在，应该可以向 VSTS 执行所有的 Runbook 和配置签入，让这些 Runbook 和配置自动同步到自动化帐户。
+现在，应该可以向 Azure DevOps 执行所有的 Runbook 和配置签入，让这些 Runbook 和配置自动同步到自动化帐户。
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSSyncRunbookOutput.png)
 
-如果在未由 VSTS 触发的情况下手动运行此 Runbook，可将 webhookdata 参数留空，这样就会从指定的 VSTS 文件夹执行完全同步。
+如果在未由 Azure DevOps 触发的情况下手动运行此 Runbook，可将 webhookdata 参数留空，这样就会从指定的 Azure DevOps 文件夹执行完全同步。
 
-如果想要卸载本方案，请从 VSTS 中删除服务挂钩，并删除 Runbook 和 VSToken 变量。
+如果想要卸载本方案，请从 Azure DevOps 中删除服务挂钩，并删除 Runbook 和 VSToken 变量。

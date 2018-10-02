@@ -1,87 +1,105 @@
 ---
-title: 将自定义域添加到 Azure AD |Microsoft Docs
-description: 介绍如何在 Azure Active Directory 中添加自定义域。
+title: 如何将自定义域添加到 Azure Active Directory | Microsoft Docs
+description: 了解如何使用 Azure Active Directory 门户添加自定义域。
 services: active-directory
 author: eross-msft
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
-ms.topic: quickstart
-ms.date: 11/14/2017
+ms.topic: conceptual
+ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: b8963ba45d84013feb81341980c6d537c8a43dc5
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: dc28263fca5c6854ffad12678b472804f074addd
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37767332"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035736"
 ---
-# <a name="quickstart-add-a-custom-domain-name-to-azure-active-directory"></a>快速入门：将自定义域名添加到 Azure Active Directory
+# <a name="how-to-add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>如何：使用 Azure Active Directory 门户添加自定义域名
+每个新的 Azure AD 租户都附带了初始域名 *domainname*.onmicrosoft.com。 无法更改或删除初始域名，但可以将组织的名称添加到列表中。 添加自定义域名有助于创建用户所熟悉的用户名，例如 *alain@contoso.com*。
 
-每个 Azure AD 都直接随附 domainname.onmicrosoft.com 形式的初始域名。 无法更改或删除初始域名，但可以将企业域名添加到 Azure AD。 例如，你的组织可能具有用来从事商业经营的其他域名和使用公司域名登录的用户。 通过在 Azure AD 中添加自定义域名可以在目录中分配用户熟悉的用户名，例如“alice@contoso.com”。 而不是“alice@*域名*.onmicrosoft.com”。 过程很简单：
+## <a name="before-you-begin"></a>开始之前
+添加自定义域名之前，必须在域注册机构处创建域名。 有关认证的域注册机构，请参阅 [ICANN 认证的注册机构](https://www.icann.org/registrar-reports/accredited-list.html)。
 
-1. 将自定义域名添加到目录
-2. 在域名注册机构中为域名添加 DNS 条目
-3. 在 Azure AD 中验证自定义域名
+## <a name="create-your-directory-in-azure-ad"></a>在 Azure AD 中创建目录
+获取域名后，可以创建第一个 Azure AD 目录。
 
-## <a name="add-the-custom-domain-name-to-your-directory"></a>将自定义域名添加到目录
-1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
-2. 在左侧选择“自定义域名”。
-3. 选择“添加自定义域”。
-   
-   ![选择“添加”命令](./media/add-custom-domain/add-custom-domain.png)
-5. 在“自定义域名”上的框中输入自定义域的名称（例如“contoso.com”），然后选择“添加域”。 请务必包含 .com、.net 或其他顶级扩展名。
-6. 在“domainname”（新域名即为标题）中，收集稍后用于在 Azure AD 中验证自定义域名的 DNS 条目信息。
-   
-   ![获取 DNS 条目信息](./media/add-custom-domain/get-dns-info.png)
+1. 使用目录的订阅所有者帐户登录到 [Azure 门户](https://portal.azure.com/)，然后选择“Azure Active Directory”。
 
-> [!TIP]
-> 如果计划使用 Azure AD 联合你的本地 Windows Server AD，则需要在运行 Azure AD Connect 工具来同步目录时选中“我计划将此域配置为使用本地 Active Directory 进行单一登录”复选框。 还需要在向导的“Azure AD 域”步骤中注册选择用于与本地目录进行联合的域名。 [这些说明](./../connect/active-directory-aadconnect-get-started-custom.md#verify-the-azure-ad-domain-selected-for-federation)中示范了向导中该步骤的大致情形。 如果没有 Azure AD Connect 工具，可以 [在此处下载](http://go.microsoft.com/fwlink/?LinkId=615771)。
+    ![Azure 门户屏幕](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
 
-## <a name="add-a-dns-entry-for-the-domain-name-at-the-domain-name-registrar"></a>在域名注册机构中为域名添加 DNS 条目
-在 Azure AD 中使用自定义域名的下一个步骤就是更新域的 DNS 区域文件。 然后 Azure AD 可验证你的组织是否拥有该自定义域名。 可将 [Azure DNS](https://docs.microsoft.com/azure/dns/dns-getstarted-portal) 用于 Azure 中的 Azure/Office 365/外部 DNS 记录，或在[其他 DNS 注册机构](https://support.office.com/article/Create-DNS-records-for-Office-365-when-you-manage-your-DNS-records-b0f3fdca-8a80-4e8e-9ef3-61e8a2a9ab23/)中添加 DNS 条目。
+    >[!TIP]
+    > 如果计划使用 Azure AD 联合你的本地 Windows Server AD，则需要在运行 Azure AD Connect 工具来同步目录时选中“我计划将此域配置为使用本地 Active Directory 进行单一登录”复选框。 还需要在向导的“Azure AD 域”步骤中注册选择用于与本地目录进行联合的域名。 [这些说明](../hybrid/how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation)中示范了向导中该步骤的大致情形。 如果没有 Azure AD Connect 工具，可以 [在此处下载](http://go.microsoft.com/fwlink/?LinkId=615771)。
 
-1. 登录到域的域名注册机构。 如果无权访问域名注册机构以更新 DNS 条目，请让具有此访问权限的个人或团队完成步骤 2 并在完成时通知你。
-2. 通过添加 Azure AD 提供给 DNS 条目来更新域的 DNS 区域文件。 DNS 条目不会更改任何行为，例如邮件路由或 Web 托管。
+2. 遵循[为组织创建新租户](active-directory-access-create-new-tenant.md#create-a-new-tenant-for-your-organization)中的步骤创建新目录。
 
-## <a name="verify-the-custom-domain-name-in-azure-ad"></a>在 Azure AD 中验证自定义域名
-一旦添加了 DNS 条目，就可以使用 Azure AD 验证域名。 只有在 DNS 记录传播完成之后，才能验证域名。 此传播通常只需要几秒钟，但有时可能需要一小时以上。 如果第一次验证不成功，请稍后重试。
+    >[!Important]
+    >租户的创建者将自动成为该租户的全局管理员。 全局管理员可将其他管理员添加到租户中。
 
-1. 使用租户的全局管理员帐户登录到 [Azure AD](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
-2. 选择“自定义域名”。
-3. 选择需要验证但尚未验证的域名。
-4. 检查条目，然后选择“验证”完成验证。
+## <a name="add-your-custom-domain-name-to-azure-ad"></a>将自定义域名添加到 Azure AD
+创建目录后，可以添加自定义域名。
 
-现在，可以 [分配包含自定义域名的用户名](../users-groups-roles/domains-manage.md)。 可使用自定义域名创建基于云的用户帐户，或更新先前同步的本地用户帐户信息。 还可以使用 [Microsoft PowerShell](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains) 或[图形 API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations) 更改已同步的用户帐户域后缀信息。
+1. 依次选择“自定义域名”、“添加自定义域”。
 
-> [!TIP]
-> 最多可添加 900 个托管域名。 若要配置所有域以便与 Active Directory 本地联合，最多可在每个目录中添加 450 个域名。 有关详细信息，请参阅[联合域名和托管域名](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain-concepts#federated-and-managed-domain-names)。
+    ![“Fabrikam - 自定义域名”页，其中突出显示了“添加自定义域”选项](media/add-custom-domain/add-custom-domain.png)
 
-## <a name="troubleshooting"></a>故障排除
-如果无法验证自定义域名，请尝试以下故障排除步骤：
+2. 在“自定义域名”框中键入组织的新域名（例如 _contoso.com_），然后选择“添加域”。
 
-1. **等候一小时**。 必须先传播 DNS 记录，Azure AD 才能验证域。 此过程可能需要一小时以上。
-2. **确保已输入正确的 DNS 记录**。 请在该域的域名注册机构网站上完成此步骤。 出现以下情况时 Azure AD 无法验证域名 
-  * DNS 条目不在 DNS 区域文件中
-  * DNS 条目与 Azure AD 提供的 DNS 条目不完全匹配。 
-  
-  如果无权访问域名注册机构以更新域的 DNS 记录，请与组织内具有此访问权限的个人或团队共享 DNS 条目，并请他们添加 DNS 条目。
-3. **从 Azure AD 的另一个目录删除域名**。 域名只能在单个目录中验证。 如果域名当前已在其他目录中经过验证，则在此目录中将其删除前，它无法在新目录上进行验证。 若要了解如何删除域名，请参阅 [管理自定义域名](../users-groups-roles/domains-manage.md)。    
+    随即会添加未验证的域，并出现“Contoso”页，其中显示了 DNS 信息。
 
-重复执行本文中的相关步骤添加每个域名。
+    >[!Important]
+    >若要正常完成此过程，必须包含 .com、.net 或其他任何顶级扩展名。
 
-## <a name="learn-more"></a>了解详细信息
-[Azure AD 中自定义域名的概念性概述](../users-groups-roles/domains-manage.md)
+    ![“Fabrikam - 自定义域名”页，其中突出显示了“添加域”按钮](media/add-custom-domain/add-custom-domain-blade.png)
 
-[管理自定义域名](../users-groups-roles/domains-manage.md)
+4. 复制“Contoso”页中的 DNS 信息。 例如 MS=ms64983159。
+
+    ![包含 DNS 条目信息的“Contoso”页](media/add-custom-domain/contoso-blade-with-dns-info.png)
+
+## <a name="add-your-dns-information-to-the-domain-registrar"></a>将 DNS 信息添加到域注册机构
+将自定义域名添加到 Azure AD 之后，必须返回到域注册机构，并添加已复制的 TXT 文件中的 Azure AD DNS 信息。 为域创建此 TXT 记录可以“验证”域名的所有权。
+
+-  返回到域注册机构，根据复制的 DNS 信息为域创建新的 TXT 记录，将“TTL”（生存时间）设置为 60 分钟，然后保存信息。
+
+    >[!Important]
+    >可以注册任意数目的域名。 但是，每个域将从 Azure AD 获取其自身的 TXT 记录。 在域注册机构处输入 TXT 文件信息时请小心。 如果输入了错误或重复的信息，则必须等到 TTL 超时（60 分钟），然后才能重试。
+
+## <a name="verify-your-custom-domain-name"></a>验证自定义域名
+注册自定义域名后，需确保它在 Azure AD 中有效。 将信息从域注册机构传播到 Azure AD 有时可以瞬间完成，有时需要几天时间，具体取决于域注册机构的状况。
+
+### <a name="to-verify-your-custom-domain-name"></a>验证自定义域名
+1. 使用目录的全局管理员帐户登录到 [Azure 门户](https://portal.azure.com/)。
+
+2. 依次选择“Azure Active Directory”、“自定义域名”。
+
+3. 在“Fabrikam - 自定义域名”页上，选择自定义域名“Contoso”。
+
+    ![“Fabrikam - 自定义域名”页，其中突出显示了“Contoso”](media/add-custom-domain/custom-blade-with-contoso-highlighted.png)
+
+4. 在“Contoso”页上，选择“验证”以确保自定义域已正确注册并且在 Azure AD 中有效。
+
+    ![包含 DNS 条目信息和“验证”按钮的“Contoso”页](media/add-custom-domain/contoso-blade-with-dns-info-verify.png)
+
+### <a name="common-verification-issues"></a>常见验证问题
+- 如果 Azure AD 无法验证自定义域名，请尝试以下建议的方法：
+    - **至少等待一小时，然后重试**。 只有在传播 DNS 记录之后，Azure AD 才能验证域，而此过程可能需要一小时或更长时间。
+
+    - **确保 DNS 记录正确。** 返回到域名注册机构站点，确保其中包含该条目，并且该条目与 Azure AD 提供的 DNS 条目信息相匹配。
+
+    如果无法在注册机构站点上更新记录，必须与有权添加条目并验证其准确性的某人共享该条目。
+
+- **确保域名尚未在另一目录中使用。** 只能在一个目录中验证一个域名，这意味着，如果当前在另一目录中验证你的域名，则无法同时在新目录中验证该域名。 若要解决此重复问题，必须从旧目录中删除该域名。 有关删除域名的详细信息，请参阅[管理自定义域名](../users-groups-roles/domains-manage.md)。 
 
 ## <a name="next-steps"></a>后续步骤
-在本快速入门中，你已了解如何将自定义域添加到 Azure AD。 
 
-可使用以下链接在 Azure 门户中的 Azure AD 中添加新的自定义域。
+- 将另一个全局管理员添加到目录。 有关详细信息，请参阅[如何分配角色和管理员](active-directory-users-assign-role-azure-portal.md)
 
-> [!div class="nextstepaction"]
-> [添加自定义域](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/QuickStart) 
+- 将用户添加到域，具体请参阅[如何添加或删除用户](add-users-azure-active-directory.md)
+
+- 在 Azure AD 中管理域名信息。 有关详细信息，请参阅[管理自定义域名](../users-groups-roles/domains-manage.md)
+
+- 若要结合 Azure Active Directory 使用 Windows Server 的本地版本，请参阅[将本地目录与 Azure Active Directory 集成](../connect/active-directory-aadconnect.md)。

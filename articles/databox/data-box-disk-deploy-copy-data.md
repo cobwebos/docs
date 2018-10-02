@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/05/2018
+ms.date: 09/28/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: f25d0b3522658d5fcd4b34110cb03b624dd9e7b1
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 776f70b6b24288006d52cb0e91797d1074180160
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841499"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452609"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>教程：将数据复制到 Azure Data Box 磁盘并验证
 
@@ -30,17 +30,14 @@ ms.locfileid: "43841499"
 
 > [!div class="checklist"]
 > * 将数据复制到 Data Box 磁盘
-> * 验证数据完整性
+> * 验证数据
 
 ## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保：
 - 已完成[教程：安装和配置 Azure Data Box 磁盘](data-box-disk-deploy-set-up.md)。
-- 磁盘已拆包并已通电。
-- 有一台要将数据复制到磁盘的主机。 该主机必须
-    - 运行[支持的操作系统](data-box-disk-system-requirements.md)。
-    - [装有 Windows PowerShell 4](https://www.microsoft.com/download/details.aspx?id=40855)。
-    - [装有 .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)。
+- 磁盘已解锁，并且已连接到客户端计算机。
+- 用来将数据复制到磁盘的客户端计算机必须运行[受支持的操作系统](data-box-disk-system-requirements.md)。
 
 
 ## <a name="copy-data-to-disks"></a>将数据复制到磁盘
@@ -59,6 +56,7 @@ ms.locfileid: "43841499"
 
     在容器和 Blob 名称方面遵循 Azure 命名要求。
 
+    #### <a name="azure-naming-conventions-for-container-and-blob-names"></a>Azure 针对容器和 blob 名称的命名约定
     |实体   |约定  |
     |---------|---------|
     |容器名称：块 Blob 和页 Blob     |必须以字母或数字开头，只能包含小写字母、数字和连字符 (-)。 每个连字符 (-) 字符的前后必须紧接字母或数字。 名称中不允许连续的连字符。 <br>必须是有效的 DNS 名称，长度为 3 到 63 个字符。          |
@@ -165,17 +163,21 @@ ms.locfileid: "43841499"
 > -  复制数据时，请确保数据大小符合 [Azure 存储和 Data Box 磁盘限制](data-box-disk-limits.md)中所述的大小限制。 
 > - 如果 Data Box 磁盘正在上传的数据同时已由 Data Box 磁盘外部的其他应用程序上传，则可能会导致上传作业失败和数据损坏。
 
-## <a name="verify-data-integrity"></a>验证数据完整性
+## <a name="verify-data"></a>验证数据 
 
-若要验证数据完整性，请执行以下步骤。
+若要验证数据，请执行以下步骤。
 
-1. 运行 `AzureExpressDiskService.ps1` 执行校验和验证。 在文件资源管理器中，转到驱动器的 *AzureImportExport* 文件夹。 单击右键并选择“使用 PowerShell 运行”。 
+1. 运行 `DataBoxDiskValidation.cmd` 以在驱动器的 *AzureImportExport* 文件夹中进行校验和验证。 
+    
+    ![Data Box Disk 验证工具输出](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 
-    ![运行校验和](media/data-box-disk-deploy-copy-data/data-box-disk-checksum.png)
-
-2. 根据具体的数据大小，此步骤可能需要一段时间。 脚本完成后，将显示数据完整性检查过程的摘要，以及完成该过程所花费的时间。 可以按 **Enter** 退出命令窗口。
+2. 选择合适的选项。 **建议你始终选择选项 2 来验证文件并生成校验和**。 根据具体的数据大小，此步骤可能需要一段时间。 在脚本完成后，退出命令窗口。 如果在验证和校验和生成过程中出现任何错误，则会向你发送通知并提供指向错误日志的链接。
 
     ![校验和输出](media/data-box-disk-deploy-copy-data/data-box-disk-checksum-output.png)
+
+    > [!TIP]
+    > - 在两次运行之间请重置工具。
+    > - 只有在处理包含小文件（数 KB）的大型数据集时才使用选项 1 来验证文件。 在这些情况下，校验和生成可能需要很长时间，并且执行速度可能会非常慢。
 
 3. 如果使用了多个磁盘，请对每个磁盘运行该命令。
 

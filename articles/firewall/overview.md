@@ -6,14 +6,14 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 9/24/2018
+ms.date: 9/26/2018
 ms.author: victorh
-ms.openlocfilehash: 2961f6cc8607ba7ec670b297a1858bf433c3ec89
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1527ed9c0a83577da9a231cb91a93ad7f182061c
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960781"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392681"
 ---
 # <a name="what-is-azure-firewall"></a>什么是 Azure 防火墙？
 
@@ -68,7 +68,9 @@ Azure 防火墙存在以下已知问题：
 |使用全局对等互连的中心辐射模型不起作用|不支持中心辐射模型，其中，中心和防火墙部署在一个 Azure 区域，分支部署在另一个 Azure 区域，分支通过全局 VNet 对等互连连接到中心。|有关详细信息，请参阅[创建、更改或删除虚拟网络对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints)|
 针对 TCP/UDP 协议（例如 ICMP）的网络筛选规则不适用于 Internet 绑定的流量|针对非 TCP/UDP 协议的网络筛选规则不支持公共 IP 地址的 SNAT。 在分支子网与 VNet 之间支持非 TCP/UDP 协议。|Azure 防火墙使用[目前不支持 IP 协议 SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#limitations) 的标准负载均衡器。 我们正在探索如何在将来的版本中推出支持此方案的选项。|
 |目标 NAT (DNAT) 不适用于端口 80 和 22。|NAT 规则集合中的“目标端口”字段不能包括端口 80 或端口 22。|我们正在努力在不久的将来解决此问题。 同时，在 NAT 规则中使用任何其他端口作为目标端口。 端口 80 或 22 仍可用作转换端口（例如，可以将公共 ip:81 映射到专用 ip:80）。|
-|
+|缺少对 ICMP 的 PowerShell 和 CLI 支持|Azure PowerShell 和 CLI 不支持使用 ICMP 作为网络规则中的有效协议。|仍然可以通过门户和 REST API 使用 ICMP 作为协议。 我们正在致力于在不久之后在 PowerShell 和 CLI 中添加 ICMP。|
+|FQDN 标记要求设置 protocol: port|带有 FQDN 标记的应用程序规则需要 port:protocol 定义。|可以将 **https** 用作 port: protocol 值。 我们正在致力于使此字段在使用了 FQDN 标记时可选。|
+|不支持将防火墙移动到不同的资源组或订阅。|不支持将防火墙移动到不同的资源组或订阅。|我们的路线图中没有打算支持此功能。 若要将防火墙移动到不同的资源组或订阅，必须删除当前实例并在新的资源组或订阅中重新创建它。|
 
 ## <a name="next-steps"></a>后续步骤
 

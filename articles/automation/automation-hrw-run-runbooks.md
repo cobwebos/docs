@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 07/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8f21457a63470b88e93ead97454f996cea38073a
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a0b5188605874a04f0341cde1a68487c8a50df84
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43103762"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431808"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色上运行 runbook
 
@@ -39,7 +39,8 @@ Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" �
 
 ## <a name="runbook-permissions"></a>Runbook 权限
 
-在混合 Runbook 辅助角色上运行的 Runbook 不能使用通常用于针对 Azure 资源进行 Runbook 身份验证的方法，因为它们会访问位于 Azure 之外的资源。 Runbook 可将自身的身份验证提供给本地资源，或者可以指定 RunAs 帐户以便为所有 Runbook 提供用户上下文。
+在混合 Runbook 辅助角色上运行的 Runbook 不能使用通常用于针对 Azure 资源进行 Runbook 身份验证的方法，因为它们会访问位于 Azure 之外的资源。 Runbook 可以针对本地资源提供其自己的身份验证，也可以配置使用 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager
+)的身份验证，还可以指定运行方式帐户来为所有 Runbook 提供用户上下文。
 
 ### <a name="runbook-authentication"></a>Runbook 身份验证
 
@@ -56,9 +57,9 @@ Restart-Computer -ComputerName $Computer -Credential $Cred
 
 还可以利用 [InlineScript](automation-powershell-workflow.md#inlinescript)，以便在其他由 [PSCredential 通用参数](/powershell/module/psworkflow/about/about_workflowcommonparameters)指定凭据的计算机上运行代码块。
 
-### <a name="runas-account"></a>RunAs 帐户
+### <a name="runas-account"></a>运行方式帐户
 
-默认情况下，混合 Runbook 辅助角色使用本地系统（对于 Windows）和特殊用户帐户 nxautomation（对于 Linux）来执行 Runbook。 不需要让 Runbook 将自身的身份验证提供给本地资源，而可以针对混合辅助角色组指定 **RunAs** 帐户。 指定具有本地资源访问权限的[凭据资产](automation-credentials.md)，在组中的混合 Runbook 辅助角色运行时，所有 Runbook 会在这些凭据下运行。
+默认情况下，混合 Runbook 辅助角色使用本地系统（对于 Windows）和特殊用户帐户 nxautomation（对于 Linux）来执行 Runbook。 不需要让 Runbook 将自身的身份验证提供给本地资源，而可以针对混合辅助角色组指定**运行方式**帐户。 指定具有本地资源访问权限的[凭据资产](automation-credentials.md)，在组中的混合 Runbook 辅助角色运行时，所有 Runbook 会在这些凭据下运行。
 
 凭据的用户名必须采用以下格式之一：
 
@@ -66,7 +67,7 @@ Restart-Computer -ComputerName $Computer -Credential $Cred
 * username@domain
 * 用户名（适用于本地计算机的本地帐户）
 
-使用以下过程针对混合辅助角色组指定 RunAs 帐户：
+使用以下过程针对混合辅助角色组指定运行方式帐户：
 
 1. 创建具有本地资源访问权限的[凭据资产](automation-credentials.md)。
 2. 在 Azure 门户中打开自动化帐户。
@@ -74,6 +75,32 @@ Restart-Computer -ComputerName $Computer -Credential $Cred
 4. 选择“所有设置”，并选择“混合辅助角色组设置”。
 5. 将“运行身份”从“默认”更改为“自定义”。
 6. 选择凭据，并单击“保存”。
+
+### <a name="managed-identities-for-azure-resources"></a>Azure 资源的托管标识
+
+在 Azure 虚拟机上运行的混合 Runbook 辅助角色可以使用 Azure 资源的托管标识来向 Azure 资源进行身份验证。 与使用运行方式帐户相比，使用 Azure 资源的托管标识有许多优势。
+
+* 不需要导出运行方式证书再将其导入到混合 Runbook 辅助角色中
+* 不需要续订运行方式帐户使用的证书
+* 不需要在 runbook 代码中处理运行方式连接对象
+
+若要在混合 Runbook 辅助角色上使用 Azure 资源的托管标识，则需要完成以下步骤：
+
+1. 创建 Azure VM
+2. [在 VM 上配置 Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm)
+3. [授予 VM 对资源管理器中资源组的访问权限](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)
+4. [使用 VM 的系统分配托管标识获取访问令牌] (../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager)
+5. 在虚拟机上[安装 Windows 混合 Runbook 辅助角色](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)。
+
+完成前面的步骤后，可以在 Runbook 中使用 `Connect-AzureRmAccount -Identity` 向 Azure 资源进行身份验证。 这减少了利用运行方式帐户以及为运行方式帐户管理证书的需求。
+
+```powershell
+# Connect to Azure using the Managed identities for Azure resources identity configured on the Azure VM that is hosting the hybrid runbook worker
+Connect-AzureRmAccount -Identity
+
+# Get all VM names from the subscription
+Get-AzureRmVm | Select Name
+```
 
 ### <a name="automation-run-as-account"></a>自动化运行方式帐户
 

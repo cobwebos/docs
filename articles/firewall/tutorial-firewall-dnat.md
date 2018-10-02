@@ -5,26 +5,22 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 9/25/2018
+ms.date: 9/27/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 766ad04251fbe404d43734115e41e23ae0a4be28
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 894389ec07fb8e371a269f895473fe82985de7c3
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982024"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405965"
 ---
 # <a name="tutorial-filter-inbound-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>教程：使用 Azure 门户通过 Azure 防火墙 DNAT 筛选入站流量
 
-可以对 Azure 防火墙目标网络地址转换 (DNAT) 进行配置，以便转换和筛选到子网的入站流量。 Azure 防火墙没有入站规则和出站规则的概念。 有应用程序规则和网络规则，它们适用于进入防火墙的任何流量。 首先应用网络规则，然后应用应用程序规则，规则将终止。
+可以对 Azure 防火墙目标网络地址转换 (DNAT) 进行配置，以便转换和筛选到子网的入站流量。 配置 DNAT 时，NAT 规则收集操作设置为“目标网络地址转换(DNAT)”。 然后，可以使用 NAT 规则集合中的每个规则将防火墙公用 IP 和端口转换为专用 IP 和端口。 DNAT 规则会隐式添加一个对应的网络规则来允许转换后的流量。 可以通过以下方法替代此行为：显式添加一个网络规则集合并在其中包含将匹配转换后流量的拒绝规则。 若要详细了解 Azure 防火墙规则处理逻辑，请参阅 [Azure 防火墙规则处理逻辑](rule-processing.md)。
 
->[!NOTE]
->防火墙 DNAT 功能目前仅在 Azure PowerShell 和 REST 中可用。
-
-例如，如果匹配网络规则，则不会按应用程序规则评估数据包。 如果没有网络规则匹配项，并且数据包协议是 HTTP/HTTPS，则不会按应用程序规则评估数据包。 如果仍未找到匹配项，则会根据[基础结构规则集合](infrastructure-fqdns.md)评估数据包。 如果仍然没有匹配项，则默认情况下会拒绝该数据包。
-
-配置 DNAT 时，NAT 规则收集操作设置为“目标网络地址转换(DNAT)”。 防火墙公共 IP 和端口转换为专用 IP 地址和端口。 然后按正常情况应用规则，首先应用网络规则，然后应用应用程序规则。 例如，可以将网络规则配置为在 TCP 端口 3389 上允许远程桌面流量。 先进行地址转换，然后使用转换的地址应用网络和应用程序规则。
+> [!NOTE]
+> DNAT 不适用于端口 80 和 22。 我们正在努力在不久的将来解决此问题。 同时，在 NAT 规则中使用任何其他端口作为目标端口。 端口 80 或 22 仍可以用作转换的端口。 例如，可以将公用 ip:81 映射到专用 ip:80。
 
 本教程介绍如何执行下列操作：
 
@@ -33,7 +29,6 @@ ms.locfileid: "46982024"
 > * 部署防火墙
 > * 创建默认路由
 > * 配置 DNAT 规则
-> * 配置网络规则
 > * 测试防火墙
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -199,48 +194,18 @@ ms.locfileid: "46982024"
 
 ## <a name="configure-a-dnat-rule"></a>配置 DNAT 规则
 
-```azurepowershell-interactive
- $rgName  = "RG-DNAT-Test"
- $firewallName = "FW-DNAT-test"
- $publicip = type the Firewall public ip
- $newAddress = type the private IP address for the Srv-Workload virtual machine 
- 
-# Get Firewall
-    $firewall = Get-AzureRmFirewall -ResourceGroupName $rgName -Name $firewallName
-  # Create NAT rule
-    $natRule = New-AzureRmFirewallNatRule -Name RL-01 -SourceAddress * -DestinationAddress $publicip -DestinationPort 3389 -Protocol TCP -TranslatedAddress $newAddress -TranslatedPort 3389
-  # Create NAT rule collection
-    $natRuleCollection = New-AzureRmFirewallNatRuleCollection -Name RC-DNAT-01 -Priority 200 -Rule $natRule
-  # Add NAT Rule collection to firewall:
-    $firewall.AddNatRuleCollection($natRuleCollection)
-  # Save:
-    $firewall | Set-AzureRmFirewall
-```
-## <a name="configure-a-network-rule"></a>配置网络规则
-
-1. 打开“RG-DNAT-Test”，然后单击“FW-DNAT-test”防火墙。
-1. 在“FW-DNAT-test”页的“设置”下，单击“规则”。
-2. 单击“添加网络规则集合”。
-
-使用下表配置规则，然后单击“添加”：
-
-
-|参数  |值  |
-|---------|---------|
-|名称     |**RC-Net-01**|
-|Priority     |**200**|
-|操作     |**Allow**|
-
-在“规则”下：
-
-|参数  |设置  |
-|---------|---------|
-|名称     |**RL-RDP**|
-|协议     |**TCP**|
-|源地址     |*|
-|目标地址     |**Srv-Workload** 专用 IP 地址|
-|目标端口|**3389**|
-
+1. 打开“RG-DNAT-Test”，然后单击“FW-DNAT-test”防火墙。 
+1. 在“FW-DNAT-test”页的“设置”下，单击“规则”。 
+2. 单击“添加 DNAT 规则集合”。 
+3. 对于“名称”，键入 **RC-DNAT-01**。 
+1. 对于“优先级”，请键入 **200**。 
+6. 在“规则”下，对于“名称”，键入 **RL-01**。 
+7. 对于“源地址”，键入 *。 
+8. 对于“目标地址”，键入防火墙的公用 IP 地址。 
+9. 对于“目标端口”，键入 **3389**。 
+10. 对于“已翻译的地址”，键入 Srv-Workload 虚拟机的专用 IP 地址。 
+11. 对于“已翻译的端口”，键入 **3389**。 
+12. 单击 **“添加”**。 
 
 ## <a name="test-the-firewall"></a>测试防火墙
 
@@ -262,7 +227,6 @@ ms.locfileid: "46982024"
 > * 部署防火墙
 > * 创建默认路由
 > * 配置 DNAT 规则
-> * 配置网络规则
 > * 测试防火墙
 
 接下来，可以监视 Azure 防火墙日志。

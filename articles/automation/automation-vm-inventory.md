@@ -10,11 +10,12 @@ ms.author: jehunte
 ms.date: 03/30/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d5f9bae34dabba71861adc9b2aeb0d33b8a1e226
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 30569c3a89de320769d433b5b3a4af9cf4e08e66
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47091400"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>使用清单收集管理 Azure 虚拟机
 
@@ -87,6 +88,24 @@ ms.lasthandoff: 05/16/2018
 |递归     | 确定在查找要跟踪的项时是否使用递归。        |
 |使用 Sudo     | 此设置决定了在查找该项时是否使用 Sudo。         |
 |链接     | 此设置决定了在遍历目录时如何处理符号链接。<br> **忽略** - 忽略符号链接，不包括引用的文件/目录<br>**追随** - 在递归期间追随符号链接，并且包括引用的文件/目录<br>**管理** - 追随符号链接并允许修改返回内容的处置方式      |
+
+## <a name="manage-machine-groups"></a>管理计算机组
+
+使用清单，可以在 Log Analytics 中创建和查看计算机组。 计算机组是由 Log Analytics 中的查询定义的计算机集合。
+
+要查看计算机组，请在清单页面上选择“计算机组”选项卡。
+
+![在库存页面上查看计算机组](./media/automation-vm-inventory/inventory-machine-groups.png)
+
+从列表中选择一个计算机组将打开“计算机组”页面。 此页面显示有关计算机组的详细信息。 这些详细信息包括用来定义组的 Log Analytics 查询。 此页面的底部显示了属于该组的计算机的分页列表。
+
+![查看计算机组页面](./media/automation-vm-inventory/machine-group-page.png)
+
+单击“+ 克隆”按钮可以克隆计算机组。 此处，必须为组提供一个新名称并为组提供别名。 此时可以更改定义。 在更改查询后，按“验证查询”来预览将被选择的计算机。 当对组感到满意时，单击“创建”来创建计算机组
+
+如果希望创建一个新的计算机组，请选择“+ 创建计算机组”。 此按钮将打开“创建计算机组”页面，可以在其中定义新组。 单击“创建”以创建组。
+
+![创建新的计算机组](./media/automation-vm-inventory/create-new-group.png)
 
 ## <a name="disconnect-your-virtual-machine-from-management"></a>将虚拟机与管理断开连接
 

@@ -11,17 +11,18 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/14/2017
-ms.reviewer: Soubhagya.Dash
+ms.date: 06/14/2018
+ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 539becf272194a116355c6a0491042d40e1e7494
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 9b39eef5accec4764f61ab31dd894d368242ee3d
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293956"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47094644"
 ---
 # <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
+
 应用程序映射可帮助你发现的性能瓶颈或热点失败的所有组件的分布式应用程序。 在地图上的每个节点表示应用程序组件或其依赖项;并且有运行状况 KPI 和警报状态。 可从任何组件单击以获得更详细的诊断，如 Application Insights 事件。 如果应用使用了 Azure 服务，还可以单击获得 Azure 诊断，如 SQL 数据库顾问建议。
 
 ## <a name="what-is-a-component"></a>组件是什么？
@@ -32,105 +33,63 @@ ms.locfileid: "35293956"
 * 组件在任意数目的服务器/角色/容器实例上运行。
 * 组件可以是单独的 Application Insights 检测密钥（即使订阅并不相同），或是向单个 Application Insights 检测密钥报告的不同角色。 预览地图体验显示了组件而不考虑如何设置它们。
 
-## <a name="composite-application-map-preview"></a>复合应用程序映射 （预览版）
-*这是早期预览版中，并且我们将将更多的功能添加到此映射。我们期待你的反馈获取新体验。可以轻松地切换之间的预览和经典经验。*
-
-从启用"复合应用程序映射"[预览列表](app-insights-previews.md)，或者在右上角的切换按钮中单击"预览图"上。 此开关可用于切换回经典体验。
-![启用预览映射](media/app-insights-app-map/preview-from-classic.png)
-
->[!Note]
-此预览版将替换以前的“多角色应用程序映射”预览版。 在此期间，使用此跨多个级别的应用程序组件依赖项查看整个拓扑。 向我们提供反馈，我们将添加更多的功能类似于经典映射的支持。
+## <a name="composite-application-map"></a>复合应用程序映射
 
 你可以跨多个级别的相关应用程序组件中查看完整的应用程序拓扑。 组件可以是不同的 Application Insights 资源或不同的角色在单个资源。 应用映射通过跟踪已安装 Application Insights SDK 的服务器之间进行的任何 HTTP 依赖项调用来查找服务器节点。 
 
-这种体验开头渐进式发现的组件。 当首次加载预览时，将触发一组查询发现与此组件相关的组件。 在左上角的按钮将使用更新你的应用程序中的组件数量发现它们。 
-![预览映射](media/app-insights-app-map/preview.png)
+这种体验开头渐进式发现的组件。 当首次加载应用程序映射时，将触发一组查询来发现与此组件相关的组件。 在左上角的按钮将使用更新你的应用程序中的组件数量发现它们。 
 
 单击"更新映射组件"，发现在该点之前的所有组件刷新映射。
-![预览加载的映射](media/app-insights-app-map/components-loaded-hierarchical.png)
 
 如果所有组件都是单个的 Application Insights 资源中的角色，则不需要此发现步骤。 这样的应用程序的初始负载将具有所有组件。
 
-与新体验的主要目标之一是能够实现可视化效果具有数百个组件的复杂拓扑。 新体验支持缩放，并根据你放大添加详细信息。 可以缩小以查看详细一眼的组件和仍发现组件具有更高版本的失败率。 
+![应用程序映射屏幕截图](media/app-insights-app-map/001.png)
 
-![缩放级别](media/app-insights-app-map/zoom-levels.png)
+使用此体验的主要目标之一是能够实现可视化效果具有数百个组件的复杂拓扑。
 
 单击以查看相关的见解，转到的性能和失败的该组件的会审体验的任何组件。
 
-![浮出控件](media/app-insights-app-map/preview-flyout.png)
+![浮出控件](media/app-insights-app-map/application-map-001.png)
 
+### <a name="investigate-failures"></a>调查故障
 
-## <a name="classic-application-map"></a>经典应用程序映射
+选择“调查故障”以启动故障窗格。
 
-该映射显示：
+![“调查故障”按钮的屏幕截图](media/app-insights-app-map/investigate-failures.png)
 
-* 可用性测试
-* 客户端组件（使用 JavaScript SDK 监视）
-* 服务器端组件
-* 客户端和服务器组件的依赖项
+![故障体验的屏幕截图](media/app-insights-app-map/failures.png)
 
-![应用映射](./media/app-insights-app-map/02.png)
+### <a name="investigate-performance"></a>调查性能
 
-可展开和折叠依赖项链接组：
+若要排查性能问题，请选择“调查性能”
 
-![折叠](./media/app-insights-app-map/03.png)
+![“调查性能”按钮的屏幕截图](media/app-insights-app-map/investigate-performance.png)
 
-如果一种类型（SQL、HTTP 等）有许多依赖项，它们可能分组显示。 
+![性能体验的屏幕截图](media/app-insights-app-map/performance.png)
 
-![分组依赖项](./media/app-insights-app-map/03-2.png)
+### <a name="go-to-details"></a>转到详细信息
 
-## <a name="spot-problems"></a>发现问题
-每个节点都有相关的性能指标，例如该组件的负载、性能和故障率。 
+选择“转到详细信息”可探索端到端事务体验，从而可以查看深入到调用堆栈级别的信息。
 
-警告图标突出显示可能的问题。 橙色警告表示请求、页面视图或依赖项调用中出现故障。 红色表示故障率高于 5%。 如果要调整这些阈值，请打开“选项”。
+![“转到详细信息”按钮的屏幕截图](media/app-insights-app-map/go-to-details.png)
 
-![故障图标](./media/app-insights-app-map/04.png)
+![端到端事务详细信息的屏幕截图](media/app-insights-app-map/end-to-end-transaction.png)
 
-活动警报还显示： 
+### <a name="view-in-analytics"></a>在 Analytics 中查看
 
-![活动警报](./media/app-insights-app-map/05.png)
+若要进一步查询和调查应用程序数据，请单击“在 Analytics 中查看”。
 
-如果使用 SQL Azure，在对性能改进方式有建议时，会显示一个图标。 
+![“在 Analytics 中查看”按钮的屏幕截图](media/app-insights-app-map/view-in-analytics.png)
 
-![Azure 建议](./media/app-insights-app-map/06.png)
+![分析体验的屏幕截图](media/app-insights-app-map/analytics.png)
 
-单击任何图标，获取更多详细信息：
+### <a name="alerts"></a>警报
 
-![Azure 建议](./media/app-insights-app-map/07.png)
+若要查看活动警报和导致警报触发的基础规则，请选择“警报”。
 
-## <a name="diagnostic-click-through"></a>诊断单击
-映射上的每个节点都提供诊断的定向单击。 选项因节点类型而异。
+![“警报”按钮的屏幕截图](media/app-insights-app-map/alerts.png)
 
-![服务器选项](./media/app-insights-app-map/09.png)
-
-对于在 Azure 中托管的组件，选项包括指向它们的直接链接。
-
-## <a name="filters-and-time-range"></a>筛选器和时间范围
-默认情况下，映射概括了可用于所选时间范围的所有数据。 但可以进行筛选，以便仅包含特定操作名称或依赖项。
-
-* 操作名称：这包括页面视图和服务器端请求类型。 使用此选项，映射将仅显示所选操作的服务器端/客户端节点上的 KPI。 它显示在这些特定操作的上下文中调用的依赖项。
-* 依赖项基名称：这包括 AJAX 浏览器依赖项和服务器端依赖项。 如果使用 TrackDependency API 报告自定义依赖项遥测，它们也会显示在此处。 可以选择要显示在映射上的依赖项。 此选择当前不会筛选服务器端请求或客户端页面视图。
-
-![设置筛选器](./media/app-insights-app-map/11.png)
-
-## <a name="save-filters"></a>保存筛选器
-要保存已应用的筛选器，请将筛选的视图固定到[仪表板](app-insights-dashboards.md)。
-
-![固定到仪表板](./media/app-insights-app-map/12.png)
-
-## <a name="error-pane"></a>错误窗格
-单击映射中的节点，会在右侧显示汇总该节点故障的错误窗格。 故障首先按操作 ID 分组，然后按问题 ID 分组。
-
-![错误窗格](./media/app-insights-app-map/error-pane.png)
-
-单击故障可转到该故障的最新实例。
-
-## <a name="resource-health"></a>资源运行状况
-对于某些资源类型，资源运行状况会显示在错误窗格的顶部。 例如，单击 SQL 节点会显示数据库运行状况和触发的任何警报。
-
-![资源运行状况](./media/app-insights-app-map/resource-health.png)
-
-可以单击资源名称，查看该资源的标准概述指标。
+![分析体验的屏幕截图](media/app-insights-app-map/alerts-view.png)
 
 ## <a name="video"></a>视频
 
@@ -140,7 +99,6 @@ ms.locfileid: "35293956"
 请通过门户反馈选项提供反馈。
 
 ![MapLink-1 图](./media/app-insights-app-map/13.png)
-
 
 ## <a name="next-steps"></a>后续步骤
 
