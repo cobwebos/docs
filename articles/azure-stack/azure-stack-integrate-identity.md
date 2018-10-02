@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 08/07/2018
+ms.date: 09/28/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 9bbe55e08d7a005d38c5608df39f9285d79eb203
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
-ms.translationtype: MT
+ms.openlocfilehash: 5d002ae84334219d636448e8c78a791fa9c230e7
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42139488"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586132"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack 数据中心集成 - 标识
 可以使用 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识提供者来部署 Azure Stack。 必须在部署 Azure Stack 之前做出选择。 使用 AD FS 的部署也称为在断开连接模式下部署 Azure Stack。
@@ -151,7 +151,7 @@ Azure Stack 中的 Graph 服务使用以下协议和端口来与目标 Active Di
 
 ## <a name="setting-up-ad-fs-integration-by-providing-federation-metadata-file"></a>通过提供联合元数据文件来设置 AD FS 集成
 
-从版本 1807年开始，使用此方法，如果以下条件之一成立：
+从版本 1807 开始，如果符合以下任一条件，则可以使用此方法：
 
 - AD FS 的证书链不同于 Azure Stack 中的其他所有终结点。
 - 未在 Azure Stack 的 AD FS 实例与现有 AD FS 服务器之间建立网络连接。
@@ -162,7 +162,7 @@ Azure Stack 中的 Graph 服务使用以下协议和端口来与目标 Active Di
 |参数|说明|示例|
 |---------|---------|---------|
 |CustomAdfsName|声明提供程序的名称。 AD FS 登录页上会显示此名称。|Contoso|
-|CustomADFSFederationMetadataFileContent|元数据内容|$using: federationMetadataFileContent|
+|CustomADFSFederationMetadataFileContent|元数据内容|$using:federationMetadataFileContent|
 
 
 
@@ -173,16 +173,16 @@ Azure Stack 中的 Graph 服务使用以下协议和端口来与目标 Active Di
 1. 打开权限提升的 Windows PowerShell 会话，并使用适用于环境的参数运行以下命令：
 
    ```PowerShell  
-   [XML]$Metadata = Invoke-WebRequest -URI https://win-SQOOJN70SGL.contoso.com/federationmetadata/2007-06/federationmetadata.xml -UseBasicParsing
+    $metadata = (Invoke-WebRequest -URI " https://win-SQOOJN70SGL.contoso.com/federationmetadata/2007-06/federationmetadata.xml " -UseBasicParsing).Content
+    Set-Content -Path c:\metadata.xml -Encoding Unicode -Value $metadata 
 
-   $Metadata.outerxml|out-file c:\metadata.xml
    ```
 
-2. 将元数据文件复制到可以与特权终结点进行通信的计算机。
+2. 将元数据文件复制到可以与特权终结点通信的计算机。
 
 ### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack"></a>触发自动化以便在 Azure Stack 中配置声明提供程序信任
 
-对于此过程，使用能够与 Azure Stack 中特权终结点和到上一步中创建的元数据文件具有访问权限的计算机。
+对于此过程，请使用可以与 Azure Stack 中的特权终结点进行通信的计算机，并且该计算机可以访问在上一步中创建的元数据文件。
 
 1. 打开提升的 Windows PowerShell 会话。
 
@@ -240,24 +240,27 @@ Microsoft 提供了用于配置信赖方信任（包括声明转换规则）的�
    => issue(claim = c);
    ```
 
-2. 若要启用基于 Windows 窗体的身份验证，请以权限提升的用户身份打开 Windows PowerShell 会话，并运行以下命令：
+2. 验证基于 Windows 窗体的身份验证的 extranet 和 intranet 已启用。 首先验证是否其已启用通过运行以下 cmdlet:
 
    ```PowerShell  
-   Set-AdfsProperties -WIASupportedUserAgents @("MSAuthHost/1.0/In-Domain","MSIPC","Windows Rights Management Client","Kloud")
+   Get-AdfsAuthenticationProvider | where-object { $_.name -eq "FormsAuthentication" } | select Name, AllowedForPrimaryExtranet, AllowedForPrimaryIntranet
    ```
+
+    > [!Note]  
+    > Windows 集成身份验证 (WIA) 受支持的用户代理字符串可能会过时，AD FS 部署可能需要更新，以支持最新的客户端。 你可以阅读更多有关更新 WIA 的文章中支持用户代理字符串[配置 intranet 基于窗体的身份验证不支持 WIA 的设备](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-intranet-forms-based-authentication-for-devices-that-do-not-support-wia)。<br>在本文中，介绍了这些步骤来启用基于窗体的身份验证策略[配置身份验证策略](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-authentication-policies)。
 
 3. 若要添加信赖方信任，请在 AD FS 实例或场成员上运行以下 Windows PowerShell 命令。 请务必更新 AD FS 终结点，并指向步骤 1 中创建的文件。
 
    **对于 AD FS 2016**
 
    ```PowerShell  
-   Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -AccessControlPolicyName "Permit everyone"
+   Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -AccessControlPolicyName "Permit everyone" -TokenLifeTime 1440
    ```
 
    **对于 AD FS 2012/2012 R2**
 
    ```PowerShell  
-   Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true
+   Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -TokenLifeTime 1440
    ```
 
    > [!IMPORTANT]
@@ -270,12 +273,6 @@ Microsoft 提供了用于配置信赖方信任（包括声明转换规则）的�
 
    ```PowerShell  
    Set-AdfsProperties -IgnoreTokenBinding $true
-   ```
-
-5. Azure Stack 门户和工具 (Visual Studio) 需要使用刷新令牌。 必须通过信赖方信任配置这些令牌。 打开权限提升的 Windows PowerShell 会话，并运行以下命令：
-
-   ```PowerShell  
-   Set-ADFSRelyingPartyTrust -TargetName AzureStack -TokenLifeTime 1440
    ```
 
 ## <a name="spn-creation"></a>创建 SPN

@@ -6,39 +6,38 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 23322a49-fb7e-4dc2-8d0e-43de8cd41f80
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/07/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: 4239eb31afd4abc8b3555f0ee353f5d96716d623
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: e35a63a36a84316815d609afa178f9a896415c2b
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34068969"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47584110"
 ---
-# <a name="create-a-virtual-machine-using-a-secure-password-stored-in-azure-stack-key-vault"></a>创建使用 Azure 堆栈密钥保管库中存储的安全密码的虚拟机
+# <a name="create-a-virtual-machine-using-a-secure-password-stored-in-azure-stack-key-vault"></a>使用存储在 Azure Stack 密钥保管库中的安全密码创建虚拟机
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-此文章逐句通过部署 Windows Server 虚拟机使用 Azure 堆栈密钥保管库中存储的密码。 使用密钥保管库密码是比传递纯文本密码更安全。
+本文介绍如何使用存储在 Azure Stack 密钥保管库中的密码部署 Windows Server 虚拟机。 使用密钥保管库密码比传递纯文本密码更安全。
 
 ## <a name="overview"></a>概述
 
-可以将如密码的值存储为 Azure 堆栈密钥保管库中的机密。 创建密钥后，您可以在 Azure 资源管理器模板中引用它。 使用与资源管理器的机密提供以下好处：
+可以将密码等值作为机密存储在 Azure Stack 密钥保管库中。 创建机密后，可以在 Azure 资源管理器模板中引用它。 通过资源管理器使用机密提供以下好处：
 
-* 你无需手动输入机密每次部署资源。
-* 你可以指定哪些用户或服务主体可以访问机密。
+* 每次部署资源时不必手动输入机密。
+* 可以指定哪些用户或服务主体可以访问机密。
 
 ## <a name="prerequisites"></a>必备组件
 
 * 必须订阅包含 Key Vault 服务的产品/服务。
 * [安装适用于 Azure Stack 的 PowerShell。](azure-stack-powershell-install.md)
-* [配置 Azure Stack 用户的 PowerShell 环境。](azure-stack-powershell-configure-user.md)
+* [将 PowerShell 环境配置。](azure-stack-powershell-configure-user.md)
 
 以下步骤说明通过检索 Key Vault 中存储的密码创建虚拟机所需的过程：
 
@@ -46,13 +45,14 @@ ms.locfileid: "34068969"
 2. 更新 azuredeploy.parameters.json 文件。
 3. 部署模板。
 
->[注意]如果你通过 VPN 连接，你可以使用以下步骤从 Azure 堆栈开发工具包中，或者从外部客户端。
+> ![注意]  
+> 可以通过 Azure Stack 开发工具包或者外部客户端（如果已通过 VPN 建立连接）执行这些步骤。
 
 ## <a name="create-a-key-vault-secret"></a>创建 Key Vault 机密
 
 以下脚本创建密钥保管库，并将密码作为机密存储在密钥保管库中。 创建密钥保管库时，请使用 `-EnabledForDeployment` 参数。 此参数可确保能够从 Azure 资源管理器模板引用密钥保管库。
 
-```powershell
+```PowerShell
 
 $vaultName = "contosovault"
 $resourceGroup = "contosovaultrg"
@@ -117,7 +117,7 @@ Set-AzureKeyVaultSecret `
 
 现在，使用以下 PowerShell 脚本部署模板：
 
-```powershell
+```PowerShell  
 New-AzureRmResourceGroupDeployment `
   -Name KVPwdDeployment `
   -ResourceGroupName $resourceGroup `

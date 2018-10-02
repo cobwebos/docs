@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/28/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 09f5dbdb173e1613ed942391da7baaeb045654e4
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: d59de5beb01da3b23de0a7e177fd1cb1887694fc
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452524"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586047"
 ---
 # <a name="register-azure-stack-with-azure"></a>将 Azure Stack 注册到 Azure
 
@@ -99,7 +99,7 @@ Azure Stack 部署可能处于“已连接”或“已断开连接”状态。
 时将 Azure Stack 注册到 Azure 时，必须提供唯一的注册名称。 若要将 Azure Stack 订阅与 Azure 注册相关联的简单方法是使用 Azure Stack**的云 ID**。 
 
 > [!NOTE]
-> 使用基于容量的计费模型的 azure Stack 注册将需要重新注册这些每年的订阅过期后时更改的唯一名称。
+> 使用基于容量的计费模型的 azure Stack 注册将需要更改的唯一名称时重新注册后这些每年的订阅过期，除非你[删除过期的注册](azure-stack-registration.md#change-the-subscription-you-use)，然后重新注册Azure 中。
 
 若要确定 Azure Stack 部署的云 ID，先打开 PowerShell，在计算机上的管理员不是可以访问特权终结点，运行以下命令，并记录**CloudID**值： 
 
@@ -318,12 +318,12 @@ Run: get-azurestackstampinformation
 
 #### <a name="change-the-subscription-you-use"></a>更改使用的订阅
 
-若要更改使用的订阅，必须先运行 **Remove-AzsRegistration** cmdlet，然后确保登录到正确的 Azure PowerShell 上下文，最后使用任何已更改的参数来运行 **Set-AzsRegistration**：
+如果你想要更改的订阅使用，必须先运行**Remove-azsregistration** cmdlet，然后，确保已登录到正确的 Azure PowerShell 上下文，并最终运行**Set-azsregistration**包括任何已更改的参数与\<计费模型\>:
 
   ```PowerShell  
   Remove-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint
   Set-AzureRmContext -SubscriptionId $NewSubscriptionId
-  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel PayAsYouUse -RegistrationName $RegistrationName
+  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel <billing model> -RegistrationName $RegistrationName
   ```
 
 #### <a name="change-the-billing-model-or-how-to-offer-features"></a>更改计费模型或功能提供方式
@@ -331,7 +331,7 @@ Run: get-azurestackstampinformation
 若要更改安装的计费模型或功能提供方式，可以调用注册函数来设置新值。 不需要先删除当前注册：
 
   ```PowerShell  
-  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel PayAsYouUse -RegistrationName $RegistrationName
+  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel <billing model> -RegistrationName $RegistrationName
   ```
 
 ### <a name="renew-or-change-registration-in-disconnected-environments"></a>在离线环境中续订或更改注册

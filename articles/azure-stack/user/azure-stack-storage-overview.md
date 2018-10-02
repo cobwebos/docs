@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/21/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: d97a5f8aff57f4bbfd7d5222a87d258fa5c92da8
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 13fdf3257ed44212f45eeb3d2820a2022f54d777
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604380"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585232"
 ---
 # <a name="introduction-to-azure-stack-storage"></a>Azure Stack 存储简介
 
@@ -50,7 +50,7 @@ Azure Stack 存储帐户是可让你访问 Azure Stack 存储服务的安全帐�
 
 ### <a name="blob-storage"></a>Blob 存储
 
-要在云中存储有大量非结构化的对象数据的用户，blob 存储提供一个有效且可伸缩的解决方案。 可以使用 blob 存储来存储如下内容：
+对于有大量非结构化对象数据要存储在云中的用户，Blob 存储提供有效且可缩放的解决方案。 可以使用 Blob 存储来存储如下内容：
 
 - 文档
 - 社交数据，例如照片、视频、音乐和博客
@@ -77,11 +77,11 @@ Blob 存储提供三种类型的 blob：
 
 ### <a name="table-storage"></a>表存储
 
-与前几代的必需软件相比，现代应用程序通常要求数据存储具有更高的可伸缩性和灵活性。 表存储提供了具有高可用性且可大规模伸缩的存储，因此应用程序可以自动伸缩以满足用户需求。 表存储是 Microsoft 的 NoSQL 键/属性存储--它具有无模式的设计，使其不同于传统的关系数据库。 采用无模式的数据存储，可以很容易地随着应用程序需求的发展使数据适应存储。 表存储易于使用，因此开发人员可以快速创建应用程序。
+与前几代的必需软件相比，现代应用程序通常要求数据存储具有更高的可伸缩性和灵活性。 表存储提供了具有高可用性且可大规模伸缩的存储，因此应用程序可以自动伸缩以满足用户需求。 表存储是 Microsoft 的 NoSQL 键/属性存储 - 它的无架构设计让它不同于传统的关系数据库。 采用无模式的数据存储，可以很容易地随着应用程序需求的发展使数据适应存储。 表存储易于使用，因此开发人员可以快速创建应用程序。
 
-表存储是一种“键-属性”存储，这意味着表中的每个值都是随所键入的一个属性名称存储的。 属性名称可以用来筛选和指定选择条件。 属性集合及其值构成了实体。 由于表存储是无模式，同一个表中的两个实体可以包含不同的属性集合，这些属性可以是不同的类型。
+表存储是一种“键-属性”存储，这意味着表中的每个值都是随所键入的一个属性名称存储的。 属性名称可以用来筛选和指定选择条件。 属性集合及其值构成了实体。 由于表存储是无模式的，因此同一表中的两个实体可以包含不同的属性集合，并且这些属性可以属于不同的类型。
 
-你可以使用表存储来存储灵活的数据集，例如 web 应用程序、 通讯簿、 设备信息和的元数据，您的服务需要的任何其他类型的用户数据。 对于当前的基于 Internet 的应用程序，例如表存储的 NoSQL 数据库提供传统的关系数据库常用替代方法。
+可以使用表存储来存储灵活的数据集，例如 Web 应用程序的用户数据、通讯簿、设备信息，以及服务需要的任何其他类型的元数据。 对于当前的基于 Internet 的应用程序，NoSQL 数据库（例如表存储）提供了一种用于替代传统的关系数据库的主流方式。
 
 一个存储帐户可以包含任意数目的表，一个表可以包含任意数目的实体，最高可达存储帐户的容量限制。
 
@@ -95,4 +95,4 @@ Blob 存储提供三种类型的 blob：
 
 - [与 Azure 一致的存储：差异和注意事项](azure-stack-acs-differences.md)
 
-- 若要了解有关 Azure 存储空间的详细信息，请参阅[Microsoft Azure 存储空间简介](../../storage/common/storage-introduction.md)
+- 若要了解有关 Azure 存储的详细信息，请参阅[Microsoft Azure 存储简介](../../storage/common/storage-introduction.md)

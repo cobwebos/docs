@@ -12,23 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/06/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: c1932f2ed0486fb56e467466c0fed53702e8f9b0
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 1cdf013325afe4b217f5f56043e06f60a4933419
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248680"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585622"
 ---
-# <a name="connect-to-azure-stack-development-kit"></a>连接到 Azure 的堆栈开发工具包
+# <a name="connect-to-azure-stack-development-kit"></a>连接到 Azure Stack 开发工具包
 
 *适用于：Azure Stack 开发工具包*
 
 若要管理资源，必须先连接到 Azure Stack 开发工具包。 本文将介绍连接到开发工具包所需执行的步骤。 可以使用以下连接选项之一：
 
-* [远程桌面连接](#connect-with-remote-desktop)。 在使用远程桌面连接进行连接，单个用户可以快速连接到开发工具包。
-* [虚拟专用网络 (VPN)](#connect-with-vpn)。 当你连接时使用 VPN 时，多个用户可以同时连接从 Azure 堆栈基础结构外部的客户端。 VPN 连接需要进行一些设置。
+* [远程桌面连接](#connect-with-remote-desktop)。 使用远程桌面连接进行连接时，单个用户可以快速连接到开发工具包。
+* [虚拟专用网络 (VPN)](#connect-with-vpn)。 使用 VPN 进行连接时，多个用户可以同时从 Azure Stack 基础结构外部的客户端进行连接。 VPN 连接需要一些设置。
 
 <a name="connect-to-azure-stack-with-remote-desktop"></a>
 ##  <a name="connect-to-azure-stack-by-using-remote-desktop-connection"></a>使用远程桌面连接连接到 Azure Stack
@@ -39,12 +39,12 @@ ms.locfileid: "35248680"
 
 2. 在开发工具包所在的计算机上，打开“服务器管理器”。 选择“本地服务器”，清除“Internet Explorer 增强的安全性”复选框，然后关闭“服务器管理器”。
 
-3. 若要打开[用户门户](azure-stack-key-features.md#portal)，请转到https://portal.local.azurestack.external/。 使用用户凭据登录。 若要打开 Azure 堆栈[运算符门户](azure-stack-key-features.md#portal)，请转到https://adminportal.local.azurestack.external/。 使用在安装期间指定的 Azure Active Directory (Azure AD) 凭据登录。
+3. 若要打开[用户门户](azure-stack-key-features.md#portal)，请转到 https://portal.local.azurestack.external/。 使用用户凭据登录。 若要打开 Azure Stack [操作员门户](azure-stack-key-features.md#portal)，请转到 https://adminportal.local.azurestack.external/。 使用在安装期间指定的 Azure Active Directory (Azure AD) 凭据登录。
 
 <a name="connect-to-azure-stack-with-vpn"></a>
 ## <a name="connect-to-azure-stack-by-using-vpn"></a>使用 VPN 连接到 Azure Stack
 
-可以与 Azure Stack 开发工具包建立拆分隧道 VPN 连接。 可以使用 VPN 连接来访问 Azure Stack 运营商门户、用户门户，并使用本地安装的工具（如 Visual Studio 和 PowerShell）来管理 Azure Stack 资源。 在 Azure AD 中支持 VPN 连接和 Active Directory 联合身份验证服务 (AD FS) 部署。 使用 VPN 连接，多个客户端能够同时连接到 Azure Stack。
+可以与 Azure Stack 开发工具包建立拆分隧道 VPN 连接。 可以使用 VPN 连接来访问 Azure Stack 运营商门户、用户门户，并使用本地安装的工具（如 Visual Studio 和 PowerShell）来管理 Azure Stack 资源。 Azure AD 部署和 Active Directory 联合身份验证服务 (AD FS) 部署支持 VPN 连接。 使用 VPN 连接，多个客户端能够同时连接到 Azure Stack。
 
 > [!NOTE]
 > VPN 连接不提供与 Azure Stack 基础结构 VM 的连接。
@@ -108,7 +108,7 @@ Add-AzsVpnConnection `
 
 ### <a name="test-vpn-connectivity"></a>测试 VPN 连接
 
-若要测试的门户连接，打开 web 浏览器，，然后转到用户门户 (https://portal.local.azurestack.external/)或运算符门户 (https://adminportal.local.azurestack.external/)。 登录并创建资源。  
+若要测试门户连接，请打开 Web 浏览器，然后转到用户门户 (https://portal.local.azurestack.external/) 或操作员门户 (https://adminportal.local.azurestack.external/)。 登录并创建资源。  
 
 ## <a name="next-steps"></a>后续步骤
 

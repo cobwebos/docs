@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 09/28/2018
 ms.author: patricka
-ms.openlocfilehash: 0c49a895a3cd214bb6f9c88b5365cf980c60bf0a
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: c9b9e569cf643b85b41698bf29429d0b7ceec37e
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451765"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585095"
 ---
 # <a name="multi-tenancy-in-azure-stack"></a>Azure Stack 中的多租户
 
@@ -103,17 +103,6 @@ Register-AzSWithMyDirectoryTenant `
 > 随时可以再次运行此脚本来检查目录中的 Azure Stack 应用程序的状态。
 > 
 > 如果您已经注意中 （在 1808年更新中引入），托管磁盘创建 Vm 的问题到一个新**磁盘资源提供程序**已添加，需要再次运行此脚本。
-
-### <a name="activate-the-administrator-and-tenant-portals"></a>激活管理员门户和租户门户
-在完成使用 Azure AD 的部署以后，必须激活 Azure Stack 管理员门户和租户门户。 对于目录的所有用户来说，此激活是指同意为 Azure Stack 门户和 Azure 资源管理器提供正确的权限（已在同意页上列出）。
-
-- 管理员门户中，导航到 https://adminportal.local.azurestack.external/guest/signup，阅读信息，然后单击接受。 接受后即可添加服务管理员，但这些管理员不能也是目录租户管理员。
-- 租户门户中，导航到 https://portal.local.azurestack.external/guest/signup，阅读信息，然后单击接受。 接受后，目录中的用户即可登录到租户门户。 
- 
-> [!NOTE] 
-> 如果门户未激活，则只有目录管理员可以登录并使用门户。 其他用户在登录时会看到错误，指出管理员尚未授予其他用户权限。 如果管理员原本不属于 Azure Stack 注册到的目录，则必须将 Azure Stack 目录追加到激活 URL。 例如，如果 Azure Stack 注册到 fabrikam.onmicrosoft.com 和管理员用户是admin@contoso.com，导航到 https://portal.local.azurestack.external/guest/signup/fabrikam.onmicrosoft.com来激活门户。
-
-
 
 ### <a name="direct-users-to-sign-in"></a>指导用户登录
 
