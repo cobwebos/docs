@@ -45,7 +45,7 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: '设计数据库& #58; <a href="/azure/mysql/tutorial-design-database-using-portal">Azure 门户</a> | <a href="/azure/mysql/tutorial-design-database-using-cli">Azure CLI</a>'
+    - html: 设计数据库&#58; <a href="/azure/mysql/tutorial-design-database-using-portal">Azure 门户</a> | <a href="/azure/mysql/tutorial-design-database-using-cli">Azure CLI</a>
     - html: 创建 Web 应用&#58; <a href="https://portal.azure.com/#create/hub">Wordpress - 门户</a> | <a href="../app-service-web/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json">PHP - Azure CLI</a>
 - title: 引用
   items:
