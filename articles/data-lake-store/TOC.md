@@ -58,7 +58,7 @@
 ### [使用 Azure PowerShell](data-lake-store-performance-tuning-powershell.md)
 ### [在 HDInsight 上使用 Spark](data-lake-store-performance-tuning-spark.md)
 ### [在 HDInsight 上使用 Hive](data-lake-store-performance-tuning-hive.md)
-### [在 HDInsight 上使用](data-lake-store-performance-tuning-mapreduce.md)
+### [在 HDInsight 上使用 MapReduce](data-lake-store-performance-tuning-mapreduce.md)
 ### [在 HDInsight 上使用 Storm](data-lake-store-performance-tuning-storm.md)
 
 ## 与 Azure 服务集成

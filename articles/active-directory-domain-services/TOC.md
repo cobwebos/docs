@@ -22,6 +22,8 @@
 ## [检查托管域的运行状况](active-directory-ds-check-health.md)
 ## [使用 Azure CSP 订阅中的 Azure AD 域服务](active-directory-ds-csp.md)
 ## [使用 PowerShell 启用 Azure AD 域服务](active-directory-ds-enable-using-powershell.md)
+## [配置从 Azure AD 到托管域的作用域内同步](active-directory-ds-scoped-synchronization.md)
+## [保护托管域](active-directory-ds-secure-your-domain.md)
 ## 加入托管域
 ### [Windows Server VM](active-directory-ds-admin-guide-join-windows-vm-portal.md)
 ### [通过模板将 Windows Server VM 加入托管域](active-directory-ds-join-windows-vm-template.md)
@@ -44,7 +46,6 @@
 ### [在托管域上创建组托管服务帐户](active-directory-ds-create-gmsa.md)
 ### [管理托管域中的组策略](active-directory-ds-admin-guide-administer-group-policy.md)
 ### [配置托管域上的密码策略](active-directory-ds-password-policy.md)
-### [配置从 Azure AD 到托管域的作用域内同步](active-directory-ds-scoped-synchronization.md)
 ## [选择虚拟网络](active-directory-ds-networking.md)
 ## 部署应用程序
 ### [为 SharePoint Server 配置对配置文件同步的支持](active-directory-ds-enable-sharepoint-profile-sync.md)
