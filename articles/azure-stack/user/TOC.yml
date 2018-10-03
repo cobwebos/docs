@@ -22,28 +22,32 @@ items:
   expanded: true
 - name: 教程
   items:
-  - name: 创建高度可用的 SQL 数据库
-    href: azure-stack-tutorial-sql.md
-  - name: 创建高可用性的 MySQL 数据库
-    href: azure-stack-tutorial-mysql.md
-  - name: 将应用部署到 Azure 和 Azure Stack
-    href: azure-stack-solution-pipeline.md
-  - name: 配置混合云标识
-    href: azure-stack-solution-hybrid-identity.md
-  - name: 配置混合云连接
-    href: azure-stack-solution-hybrid-connectivity.md
-  - name: 订阅产品
-    href: azure-stack-subscribe-services.md
-  - name: 从模板创建 VM
-    href: azure-stack-create-vm-template.md
-  - name: 创建边缘机器学习解决方案
-    href: azure-stack-solution-machine-learning.md
-  - name: 创建临时的数据分析解决方案
-    href: azure-stack-solution-staged-data-analytics.md
-  - name: 使用 Azure 创建跨云缩放解决方案
-    href: azure-stack-solution-cloud-burst.md
-  - name: 创建异地分布式应用程序解决方案
-    href: azure-stack-solution-geo-distributed.md
+  - name: 常见任务
+    items:
+    - name: 订阅产品
+      href: azure-stack-subscribe-services.md
+    - name: 从模板创建 VM
+      href: azure-stack-create-vm-template.md
+    - name: 创建高度可用的 SQL 数据库
+      href: azure-stack-tutorial-sql.md
+    - name: 创建高可用性的 MySQL 数据库
+      href: azure-stack-tutorial-mysql.md
+  - name: 混合云模式
+    items:
+    - name: 将应用部署到 Azure 和 Azure Stack
+      href: azure-stack-solution-pipeline.md
+    - name: 配置混合云标识
+      href: azure-stack-solution-hybrid-identity.md
+    - name: 配置混合云连接
+      href: azure-stack-solution-hybrid-connectivity.md
+    - name: 创建边缘机器学习解决方案
+      href: azure-stack-solution-machine-learning.md
+    - name: 创建临时的数据分析解决方案
+      href: azure-stack-solution-staged-data-analytics.md
+    - name: 使用 Azure 创建跨云缩放解决方案
+      href: azure-stack-solution-cloud-burst.md
+    - name: 创建异地分布式应用程序解决方案
+      href: azure-stack-solution-geo-distributed.md
 - name: 操作指南
   items:
   - name: 使用 Azure Stack 门户
@@ -208,9 +212,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: 培训和认证
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: a67adb5f0b641f5f4eadfeb08c9802214d9f217b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 52dbfaf7b7ea7b6f264dcb9ac3d75aec782c8bff
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405404"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239398"

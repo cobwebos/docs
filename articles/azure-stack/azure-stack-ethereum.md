@@ -11,12 +11,12 @@ ms.service: azure-stack
 ms.reviewer: seyadava
 ms.custom: mvc
 manager: femila
-ms.openlocfilehash: b21a9ca58fc29a3da62ea08e81e628368fe5385f
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: acfa94799f36728f4e0041f1a51403edf6ffe37e
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580763"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239466"
 ---
 # <a name="tutorial-use-the-azure-stack-ethereum-blockchain-solution-template"></a>教程： 使用 Azure Stack 以太坊区块链解决方案模板
 
@@ -39,7 +39,7 @@ Ethereum 解决方案模板旨在利用最少的 Azure 和 Ethereum 知识，使
 * 适用于 Linux 的自定义脚本 2.0
 * 适用于 Windows 的自定义脚本扩展
 
-了解区块链方案的详细信息，请参阅[以太坊证明工作联盟解决方案模板](../blockchain-workbench/ethereum-deployment-guide.md)。
+了解区块链方案的详细信息，请参阅[以太坊证明工作联盟解决方案模板](../blockchain/templates/ethereum-deployment.md)。
 
 ## <a name="deployment-architecture"></a>部署体系结构
 

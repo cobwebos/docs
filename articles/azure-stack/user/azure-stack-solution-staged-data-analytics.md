@@ -11,25 +11,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 10/02/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: b704db0b79d056f5c7081d3fed117e1d1f22b336
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b4b81546a267e6fd082f83db8b23010f0742771f
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978822"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237887"
 ---
 # <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>教程： 使用 Azure 和 Azure Stack 中创建临时的数据分析解决方案 
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-了解如何使用在本地和公有云环境来满足多设施企业的需求。 Azure Stack 提供了一个快速、 安全且灵活的解决方案，用于收集、 处理、 存储和分配本地和远程数据，尤其是在安全、 保密性、 企业策略和法规要求可能不同位置之间时，用户。
+了解如何使用在本地和公有云环境来满足多设施企业的需求。 Azure Stack 提供了一个快速、 安全且灵活的解决方案，用于收集、 处理、 存储和分配本地和远程数据，尤其是在安全、 保密性、 企业策略和法规要求可能不同位置之间时和用户。
 
 在此模式下，你的客户收集，以便可以进行快速决定执行哪些将需要在集合时进行分析的数据。 通常此数据收集发生在没有 Internet 访问。 建立连接后，你可能需要执行占用大量资源的分析数据以获取更多见解。 公共云已经太晚了，或者不可用时，你仍可以分析数据。
 
-在本教程中，我们将构建一个示例环境来完成以下任务：
+在本教程中，生成到一个示例环境：
 
 > [!div class="checklist"]
 > - 创建的原始数据存储 blob。
@@ -45,7 +45,7 @@ ms.locfileid: "46978822"
 > 
 > 本白皮书[混合应用程序的设计注意事项](https://aka.ms/hybrid-cloud-applications-pillars)评审 （放置、 可伸缩性、 可用性、 复原能力、 可管理性和安全性） 的软件质量的构成要素进行设计、 部署和操作混合应用程序。 设计注意事项，帮助您优化混合应用程序设计，最大程度减少在生产环境中的挑战。
 
-## <a name="prerequisites"></a>必备项
+## <a name="prerequisites"></a>必备组件
 
 生成此解决方案时需要一些准备工作：
 
@@ -55,7 +55,7 @@ ms.locfileid: "46978822"
 
 -   下载并安装 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)。
 
--   未提供这些函数处理的数据。 数据必须可生成可用于上传到 Azure Stack 存储 blob 容器。
+-   需要提供你自己的数据处理的函数。 数据必须可生成可用于上传到 Azure Stack 存储 blob 容器。
 
 ## <a name="issues-and-considerations"></a>问题和注意事项
 
@@ -95,7 +95,7 @@ Azure functions 和存储解决方案扩展以满足数据量和处理需求。 
 
     g.  需要安全传输：**已禁用**
 
-    h.如果该值不存在，请单击“添加行”。  订阅： 选择其中一个
+    h.  订阅： 选择其中一个
 
     i.  资源组： 指定新的资源组或选择现有资源组
 
@@ -117,38 +117,32 @@ Azure functions 和存储解决方案扩展以满足数据量和处理需求。 
 
 9.  公共访问级别：**容器**（容器和 blob 的匿名读取访问）
 
-10.  选择“确定” 。
+10.  选择“确定”。
 
 ## <a name="create-an-azure-stack-function"></a>创建 Azure Stack 函数
 
 创建一个新的 Azure Stack 函数来清理数据从 Azure Stack 移到 Azure。
 
-1.  通过单击创建新的函数**函数**，然后 **+ 新建函数**按钮。
+### <a name="create-the-azure-stack-function-app"></a>创建 Azure Stack function app
 
-    ![Alt text](media\azure-stack-solution-staged-data-analytics\image3.png)
-
-2.  选择**计时器触发器**。
-
-    ![Alt text](media\azure-stack-solution-staged-data-analytics\image4.png)
-
-3.  选择**C\#** 作为语言，并将函数命名：`upload-to-azure`将计划设置为`0 0 * * * *`，这在 CRON 表示法是一次一小时。
-
-    ![Alt text](media\azure-stack-solution-staged-data-analytics\image5.png)
+1. 登录到[Azure Stack 门户](https://portal.local.azurestack.external)。
+2. 选择“所有服务”。
+3. 选择**Function App**中**Web + 移动**组。
 
 4.  创建函数应用使用图像下的表中指定的设置。
 
-    | 设置 | 建议的值 | 描述 |
+    | 设置 | 建议的值 | 说明 |
     | ---- | ---- | ---- |
-    | 应用名称 | 全局唯一名称 | 用于标识新 Function App 的名称。 有效字符是`a` - `z`， `0``-9`，和`-`。 |
-    | 订阅 | 你的订阅 | 要在其下创建此新函数应用的订阅。 |
+    | 应用程序名称 | 全局唯一名称 | 用于标识新 Function App 的名称。 有效字符是`a` - `z`， `0``-9`，和`-`。 |
+    | 订阅 | 订阅 | 要在其下创建此新函数应用的订阅。 |
     | **资源组** |  |  |
-    | MyResourceGroup | 要在其中创建 Function App 的新资源组的名称。 |  |
-    | OS | 窗口 | 仅当在 Windows 上运行时，才能使用无服务器托管。 |
+    | myResourceGroup | 要在其中创建 Function App 的新资源组的名称。 |  |
+    | 操作系统 | Windows | 仅当在 Windows 上运行时，才能使用无服务器托管。 |
     | **托管计划** |  |  |
     | 消耗量计划 | 定义如何将资源分配给 Function App 的托管计划。 在默认消耗计划中，根据函数需求动态添加资源。 在此无服务器托管，只需支付函数运行的时间。 |  |
     | 位置 | 离你最近的区域 | 选择靠近你或其他服务近的区域你函数的访问权限。 |
     | **存储帐户** |  |  |
-    | \<在上面创建的存储帐户 > | Function App 使用的新存储帐户的名称。 存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。 也可以使用现有帐户。 |  |
+    | \<在上面创建的存储帐户 > | Function App 使用的新存储帐户的名称。 存储帐户名称必须是长度为 3 到 24 个字符之间。 名称只能使用数字和小写字母。 也可以使用现有帐户。 |  |
 
     **示例：**
 
@@ -164,21 +158,33 @@ Azure functions 和存储解决方案扩展以满足数据量和处理需求。 
 
 ![已成功创建 Function App。](media\azure-stack-solution-staged-data-analytics\image8.png)
 
+### <a name="add-a-function-to-the-azure-stack-function-app"></a>将函数添加到 Azure Stack 函数应用
+
+1.  通过单击创建新的函数**函数**，然后 **+ 新建函数**按钮。
+
+    ![Alt text](media\azure-stack-solution-staged-data-analytics\image3.png)
+
+2.  选择**计时器触发器**。
+
+    ![Alt text](media\azure-stack-solution-staged-data-analytics\image4.png)
+
+3.  选择**C\#** 作为语言，并将函数命名：`upload-to-azure`将计划设置为`0 0 * * * *`，这在 CRON 表示法是一次一小时。
+
+    ![Alt text](media\azure-stack-solution-staged-data-analytics\image5.png)
+
 ## <a name="create-a-blob-storage-triggered-function"></a>创建 Blob 存储触发的函数
 
-1.  展开函数应用，然后选择**+** 按钮旁边**函数**。 如果函数应用中的第一个函数，请选择**自定义函数**。 此时将显示函数模板的完整集合。
+1.  展开函数应用，然后选择**+** 按钮旁边**函数**。
 
-  ![Azure 门户中的 Functions 快速入门页](media\azure-stack-solution-staged-data-analytics\image9.png)
-
-2.  在搜索字段中，键入 blob，然后选择用于 Blob 存储触发器模板所需的语言。
+2.  在搜索字段中，键入`blob`，然后选择所需的语言**Blob 触发器**模板。
 
   ![选择 Blob 存储触发器模板。](media\azure-stack-solution-staged-data-analytics\image10.png)
 
 3.  使用下表中指定的设置：
 
-    | 设置 | 建议的值 | 描述 |
+    | 设置 | 建议的值 | 说明 |
     | ------- | ------- | ------- |
-    | 姓名 | 在 Function App 中唯一 | 此 Blob 触发函数的名称。 |
+    | 名称 | 在 Function App 中唯一 | 此 Blob 触发函数的名称。 |
     | 路径 | \<从上面的存储位置的路径 > | 所监视的 Blob 存储中的位置。 为名称参数绑定中传递的 blob 的文件名称。 |
     | 存储帐户连接 | 函数应用的连接 | 可以使用函数应用已使用的存储帐户连接，也可以创建一个新。 |
 
@@ -236,9 +242,9 @@ Azure functions 和存储解决方案扩展以满足数据量和处理需求。 
 
 2.  使用下表中指定的设置：
 
-    | 设置 | 建议的值 | 描述 |
+    | 设置 | 建议的值 | 说明 |
     | ------- | ------- | ------- |
-    | 姓名 | 在 Function App 中唯一 | 此队列触发函数的名称。 |
+    | 名称 | 在 Function App 中唯一 | 此队列触发函数的名称。 |
     | 路径 | \<从上面的存储位置的路径 > | 正在监视的存储中的位置。 为名称参数绑定中传递的队列的文件名称。 |
     | 存储帐户连接 | 函数应用的连接 | 可以使用函数应用已使用的存储帐户连接，也可以创建一个新。 |
 

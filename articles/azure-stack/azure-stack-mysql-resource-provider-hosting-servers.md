@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: b11ce8bbbf4b270f7a3b9689f95b0cbfca3b14c9
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 72824e5afb9f8d77c2f7d3bd01e6ff2035e95a95
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408872"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237258"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>为 MySQL 资源提供程序添加托管服务器
 
 可以在 [Azure Stack](azure-stack-poc.md) 中的虚拟机 (VM) 上或者在 Azure Stack 环境外部的 VM 上托管 MySQL 实例，前提是 MySQL 资源提供程序能够连接到该实例。
 
 > [!NOTE]
-> MySQL 数据库应会创建在 MySQL 资源提供程序服务器上。 MySQL 资源提供程序应默认提供商订阅中创建，而应计费的用户订阅中创建 MySQL 宿主服务器。 资源提供程序服务器不应承载用户数据库。
+> 应在 MySQL 资源提供程序服务器上创建 MySQL 数据库。 MySQL 资源提供程序应默认提供商订阅中创建，而应计费的用户订阅中创建 MySQL 宿主服务器。 资源提供程序服务器不应承载用户数据库。
 
 可以将 MySQL 版本 5.6、5.7 和 8.0 用于宿主服务器。 MySQL RP 不支持 caching_sha2_password 身份验证；下一版本会添加此功能。 必须将 MySQL 8.0 服务器配置为使用 mysql_native_password。 也支持 MariaDB。
 

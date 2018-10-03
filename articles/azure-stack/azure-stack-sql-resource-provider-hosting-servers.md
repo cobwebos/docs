@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 8fc24e58af51a249e3305dbe1496c499387be6b1
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 57033de3224b5966b2dfa80dd1cb45fafd83b26b
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407899"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238709"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>为 SQL 资源提供程序添加托管服务器
 
 可以在 [Azure Stack](azure-stack-poc.md) 中的虚拟机 (VM) 上或者在 Azure Stack 环境外部的 VM 上托管 SQL 实例，前提是 SQL 资源提供程序能够连接到该实例。
 
 > [!NOTE]
-> SQL 数据库应会创建 SQL 资源提供程序服务器上。 SQL 资源提供程序应默认提供商订阅中创建，而应计费的用户订阅中创建 SQL 宿主服务器。 资源提供程序服务器不应承载用户数据库。
+> 应在 SQL 资源提供程序服务器上创建 SQL 数据库。 SQL 资源提供程序应默认提供商订阅中创建，而应计费的用户订阅中创建 SQL 宿主服务器。 资源提供程序服务器不应承载用户数据库。
 
 ## <a name="overview"></a>概述
 

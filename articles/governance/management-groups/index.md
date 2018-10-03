@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 9/18/2018
+ms.date: 9/28/2018
 ms.author: rithorn
-ms.openlocfilehash: d031059f9811cedb703fec4920e00fd1b2e3f877
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 6b369c8209e62ff3c98b3fdf78378b403b0a0d2d
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47045337"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017647"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>使用 Azure 管理组来组织资源
 
@@ -62,19 +62,30 @@ ms.locfileid: "47045337"
   - 有权访问订阅的每个人都可看到订阅位于层次结构中的位置的上下文。  
   - 未对任何人授予对根管理组的默认访问权限。 只有目录全局管理员可将自身提升为拥有访问权限的角色。  拥有访问权限后，目录管理员可向要管理的其他用户分配任何 RBAC 角色。  
 
-> [!NOTE]
-> 如果你的目录在 2018 年 6 月 25 日之前开始使用管理组服务，则你的目录可能未在层次结构中包含所有订阅。 管理组团队正在以追溯方式更新在 2018 年 7 月/8 月之前开始在公共预览中使用管理组的每个目录。 目录中的所有订阅都将成为根管理组下的子级。
->
-> 如果你有关于此追溯过程的问题，请联系：managementgroups@microsoft.com  
-  
-## <a name="initial-setup-of-management-groups"></a>管理组的初始设置
-
-任何用户都需在开始使用管理组时进行初始设置。 第一步是在目录中创建根管理组。 创建此组后，目录中存在的所有现有订阅都成为根管理组的子级。 执行此过程是为了确保一个目录中只有一个管理组层次结构。 目录中的单个层次结构可让管理客户应用目录内其他客户无法绕开的全局访问权限和策略。 通过在目录中包含一个层次结构，在根上分配的任何内容都适用于该目录中的所有管理组、订阅、资源组和资源。
-
 > [!IMPORTANT]
 > 对根管理组进行的任何用户访问权限分配或策略分配都适用于在目录中的所有资源。
 > 因此，所有客户都应评估在此作用域中定义项目的需求。
 > 用户访问权限和策略分配应仅在此作用域内“必须拥有”。  
+
+## <a name="initial-setup-of-management-groups"></a>管理组的初始设置
+
+任何用户都需在开始使用管理组时进行初始设置。 第一步是在目录中创建根管理组。 创建此组后，目录中存在的所有现有订阅都成为根管理组的子级。 执行此过程是为了确保一个目录中只有一个管理组层次结构。 目录中的单个层次结构可让管理客户应用目录内其他客户无法绕开的全局访问权限和策略。 通过在目录中包含一个层次结构，在根上分配的任何内容都适用于该目录中的所有管理组、订阅、资源组和资源。
+
+## <a name="trouble-seeing-all-subscriptions"></a>查看所有订阅时遇到问题
+
+一些在以前的预览版（2018 年 6 月 25 日）中较早开始使用管理组的目录可能会遇到问题，即并非所有订阅都会强制实施到层次结构中。  这是因为将订阅强制实施到层次结构中的过程是在角色或策略分配已针对目录中的根管理组执行后实施的。
+
+### <a name="how-to-resolve-the-issue"></a>如何解决问题
+
+有两个自助服务选项可用于解决此问题。
+
+1. 删除根管理组的所有角色和策略分配
+    1. 通过删除根管理组的所有策略和角色分配，服务会在下一个隔夜周期将所有订阅回填到层次结构中。  执行此项检查是为了确保所有租户订阅都不存在意外的访问权限授予或策略分配情况。
+    1. 在不影响服务的情况下执行此过程的最佳方法是在根管理组的下一个级别应用角色或策略分配。 然后可以从根范围删除所有分配。
+1. 直接调用 API 以开始回填过程
+    1. 目录中的任何已授权客户都可以调用 *TenantBackfillStatusRequest* 或 *StartTenantBackfillRequest* API。 调用 StartTenantBackfillRequest API 时，它会启动将所有订阅移到层次结构中的初始设置过程。 此过程还会开始强制所有新订阅成为根管理组的子级。 当你表示同意将针对根的任何策略或权限分配应用到所有订阅时，此过程可被执行而不会更改根级别上的任何分配。
+
+如果对此回填过程有疑问，请联系：managementgroups@microsoft.com  
   
 ## <a name="management-group-access"></a>访问管理组
 
