@@ -11,19 +11,19 @@ ms.devlang: azure-cli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
-ms.openlocfilehash: 391e3126fe3f4e02083e609b7e5f9bbe5f33605d
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: b696eefd36eb83154f5bdf6629a68d5f26b7aa51
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41917524"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46994184"
 ---
 # <a name="restore-an-azure-database-for-postgresql-server-using-azure-cli"></a>使用 Azure CLI 还原 Azure Database for PostgreSQL 服务器
 此示例 CLI 脚本可将单个 Azure Database for PostgreSQL 服务器还原到前一个时间点。
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地运行 CLI，本文要求使用 Azure CLI 2.0 或更高版本。 通过运行 `az --version` 来查看版本。 请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)，了解如何安装或升级 Azure CLI 的版本。
+如果选择在本地运行 CLI，本文要求使用 Azure CLI 2.0 或更高版本。 通过运行 `az --version` 来查看版本。 请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)，了解如何安装或升级 Azure CLI 的版本。
 
 ## <a name="sample-script"></a>示例脚本
 在此示例脚本中，编辑突出显示的行，将管理员用户名和密码更新为你自己的。 将 `az monitor` 命令中使用的订阅 ID 替换为自己的订阅 ID。

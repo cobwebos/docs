@@ -11,19 +11,19 @@ ms.devlang: azure-cli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
-ms.openlocfilehash: 75b1228df8bc19ced1d8377768c08048e6ef9150
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 011178f539fcb826e0e6fb60925d740945461ea9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441650"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952885"
 ---
 # <a name="list-and-update-configurations-of-an-azure-database-for-mysql-server-using-azure-cli"></a>使用 Azure CLI 列出和更新用于 MySQL 服务器的 Azure 数据库的配置
 此示例 CLI 脚本列出了 Azure 数据库所有适用于 MySQL 服务器的可用配置参数及其允许的值，并将 innodb_lock_wait_timeout 设置为默认值以外的值。
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地运行 CLI，本文要求使用 Azure CLI 2.0 或更高版本。 通过运行 `az --version` 来查看版本。 请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)，了解如何安装或升级 Azure CLI 的版本。 
+如果选择在本地运行 CLI，本文要求使用 Azure CLI 2.0 或更高版本。 通过运行 `az --version` 来查看版本。 请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)，了解如何安装或升级 Azure CLI 的版本。 
 
 ## <a name="sample-script"></a>示例脚本
 在此示例脚本中，编辑突出显示的行，将管理员用户名和密码更新为你自己的。

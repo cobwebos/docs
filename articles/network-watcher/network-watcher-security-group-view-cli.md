@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 网络观察程序安全组视图分析网络安全性 - Azure CLI 2.0 | Microsoft Docs
-description: 本文将介绍如何使用 Azure CLI 2.0 通过安全组视图分析虚拟机安全性。
+title: 使用 Azure 网络观察程序安全组视图分析网络安全性 - Azure CLI | Microsoft 文档
+description: 本文介绍如何使用 Azure CLI 通过安全组视图分析虚拟机安全性。
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 82cd0d97a64819ae8528850ba9a44800bf960afc
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 2b96c82f92ea49fa5bcb35d180240eb939d29d04
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090545"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46962889"
 ---
-# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli-20"></a>使用 Azure CLI 2.0 通过安全组视图分析虚拟机安全性
+# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli"></a>使用 Azure CLI 通过安全组视图分析虚拟机安全性
 
 > [!div class="op_single_selector"]
 > - [PowerShell](network-watcher-security-group-view-powershell.md)
@@ -30,10 +30,7 @@ ms.locfileid: "39090545"
 
 安全组视图返回已应用于虚拟机的已配置的有效网络安全规则。 此功能可用于审核和诊断已在 VM 上配置以确保正确允许或拒绝流量的网络安全组和规则。 在本文中，我们将说明如何使用 Azure CLI 检索虚拟机的已配置的有效安全规则
 
-
-本文使用资源管理部署模型的新一代 CLI (Azure CLI 2.0)，其适用于 Windows、Mac 和 Linux。
-
-若要执行本文中的步骤，需要[安装适用于 Mac、Linux 和 Windows 的 Azure 命令行接口 (Azure CLI)](https://docs.microsoft.com/cli/azure/install-az-cli2)。
+若要执行本文中的步骤，需要[安装适用于 Mac、Linux 和 Windows 的 Azure 命令行接口 (CLI)](/cli/azure/install-azure-cli)。
 
 ## <a name="before-you-begin"></a>开始之前
 

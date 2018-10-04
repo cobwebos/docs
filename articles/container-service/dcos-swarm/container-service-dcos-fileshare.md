@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/07/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: c1c318f4204efd24a2d9d3d83bb1cb71f5775bdb
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 4e03a0b450c9806edfb81a867fba97052659ec44
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
-ms.locfileid: "26331196"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46973486"
 ---
 # <a name="create-and-mount-a-file-share-to-a-dcos-cluster"></a>创建文件共享并将其装载到 DC/OS 群集
 
@@ -27,7 +27,7 @@ ms.locfileid: "26331196"
 
 需要 ACS DC/OS 群集才能完成本教程中的步骤。 必要时，[此脚本示例](./../kubernetes/scripts/container-service-cli-deploy-dcos.md)可为你创建一个。
 
-本教程需要 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
+本教程需要 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
