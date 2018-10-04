@@ -35,6 +35,7 @@ items:
   - name: 9 - 备份虚拟机
     href: tutorial-backup-vms.md
   - name: 10 - 控制 VM
+    displayName: scope policy RBAC lock tag
     href: tutorial-govern-resources.md
   - name: 11 - 监视和更新 VM
     href: tutorial-monitoring.md
@@ -62,27 +63,34 @@ items:
     href: sizes.md
     items:
     - name: 常规用途
+      displayName: Dsv3 Dv3 DSv2 Dv2 Av2
       href: sizes-general.md
       items:
       - name: B 系列可突增
         href: b-series-burstable.md
     - name: 计算优化
+      displayName: Fsv2 Fs F-series
       href: sizes-compute.md
     - name: 内存优化
+      displayName: Esv3 Ev3 M-series GS G-series DSv2 Dv2
       href: sizes-memory.md
       items:
       - name: 约束的 vCPU
         href: constrained-vcpu.md
     - name: 存储优化
+      displayName: ls
       href: sizes-storage.md
     - name: GPU 优化
+      displayName: NV NVv2 NC NCv2 NCv3 ND
       href: sizes-gpu.md
       items:
       - name: 安装 GPU 驱动程序
         href: n-series-driver-setup.md
     - name: 高性能计算
+      displayName: H-series
       href: sizes-hpc.md
     - name: 前几代
+      displayName: D-series Ds-series A-series Basic
       href: sizes-previous-gen.md
     - name: Azure 计算单元 (ACU)
       href: acu.md
@@ -162,6 +170,7 @@ items:
   - name: 保护 VM
     items:
     - name: 加密
+      displayName: encryption
       href: encrypt-disks.md
     - name: 使用 WinRM
       href: winrm.md
@@ -442,9 +451,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: 常见问题解答
     href: faq.md
-ms.openlocfilehash: a991b7edc35256823a45b8ad65f9aa99eb7477c9
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 69cc971935efa05201591adb81b3b7aeb49c020d
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408464"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268100"
