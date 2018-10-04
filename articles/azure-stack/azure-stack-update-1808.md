@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2018
+ms.date: 10/02/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 94e18b6a4fc367a9697078f8e0c1a307ae15d4be
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 5370b2e49b400211dd30804db3a07e646cfe312c
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017935"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249241"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 更新
 
@@ -205,6 +205,8 @@ Azure Stack 1808 更新内部版本号是**1.1808.0.97**。
 
 ### <a name="compute"></a>计算
 
+- <!-- 3099544 – IS, ASDK --> 美元/月列时创建新虚拟机 (VM) 使用 Azure Stack 门户中，并选择 VM 大小，将显示的**不可用**消息。 此列不应出现;显示 VM 定价的列不支持在 Azure Stack 中。
+
 - <!-- 3090289 – IS, ASDK --> 更新后应用 1808年，部署包含托管磁盘的 Vm 时可能遇到以下问题：
 
    1. 如果部署包含托管磁盘 VM 在 1808年更新之前创建的订阅可能会因内部错误消息。 若要解决此错误，按照每个订阅的以下步骤：
@@ -213,7 +215,6 @@ Azure Stack 1808 更新内部版本号是**1.1808.0.97**。
    2. 如果已配置多租户环境中，在与来宾目录关联的订阅中部署 Vm 可能会因内部错误消息。 若要解决此错误，请按照下列步骤：
       1. 将应用[1808 Azure Stack 修补程序](https://support.microsoft.com/help/4465859)。
       2. 按照中的步骤[这篇文章](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)重新配置每个来宾目录。
-
 
 - <!-- 2869209 – IS, ASDK --> 使用时[**添加 AzsPlatformImage** cmdlet](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0)，则必须使用 **-OsUri**参数作为存储帐户上传到磁盘的 URI。 如果使用的磁盘的本地路径，该 cmdlet 会失败并出现以下错误：*长时间运行的操作失败，状态为 '失败'*。 
 

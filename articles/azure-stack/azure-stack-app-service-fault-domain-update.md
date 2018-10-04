@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: anwestg
-ms.openlocfilehash: acadd1adec93d10d64712a2fbedb89e098998294
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: d361b4165c1fbbf79321e3f6d2ade711f9173c56
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025956"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267209"
 ---
 # <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>如何跨容错域在 Azure Stack 上重新分配 Azure 应用服务
 
@@ -32,7 +32,7 @@ ms.locfileid: "44025956"
 
 ## <a name="rebalance-an-app-service-resource-provider-across-fault-domains"></a>跨容错域重新均衡应用服务资源提供程序
 
-若要为应用服务资源提供程序重新分配部署的规模集，必须针对每个规模集执行本文中的步骤。 默认情况下，规模集名称为：
+若要为应用服务资源提供程序重新分配部署的规模集，必须针对每个规模集执行本文中的步骤。 默认情况下，规模集名是：
 
 * ManagementServersScaleSet
 * FrontEndsScaleSet

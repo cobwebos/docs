@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: anwestg
-ms.openlocfilehash: 69b025a06abb24bfa3b8ff6b692a2559b3947681
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9f584213a65b9f2408d4ca2a06108cf18222376d
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995242"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268793"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>将应用服务资源提供程序添加到 Azure Stack
 
@@ -97,7 +97,7 @@ ms.locfileid: "46995242"
 8. 输入文件共享的信息，然后选择“下一步”。 文件共享的地址必须使用文件服务器的完全限定域名 (FQDN) 或 IP 地址。 例如 \\\appservicefileserver.local.cloudapp.azurestack.external\websites，或 \\\10.0.0.1\websites。
 
    >[!NOTE]
-   >在继续下一步之前，安装程序会尝试测试与文件共享的连接。 但是，如果你正在部署到现有的虚拟网络，此连接测试可能会失败。 系统会发出警告，并提示你继续操作。 如果文件共享信息是正确的，请继续部署。
+   >安装程序会尝试测试与继续操作之前的文件共享的连接。 但是，如果你正在部署到现有的虚拟网络，此连接测试可能会失败。 系统会发出警告，并提示你继续操作。 如果文件共享信息正确无误，请继续部署。
 
    ![应用服务安装程序][7]
 
@@ -151,12 +151,12 @@ ms.locfileid: "46995242"
     >[!NOTE]
     >对于生产部署，请按照 [Azure Stack 中 Azure 应用服务服务器角色的容量规划](azure-stack-app-service-capacity-planning.md)中的指南进行操作。
 
-    | 职位 | 最小实例数 | 最小 SKU | 说明 |
+    | 角色 | 最小实例数 | 最小 SKU | 说明 |
     | --- | --- | --- | --- |
     | 控制器 | 1 | Standard_A2 -（2 个 vCPU，3584 MB） | 管理和维护应用服务云的运行状况。 |
     | 管理 | 1 | Standard_A2 -（2 vCPU，3584 MB） | 管理应用服务 Azure 资源管理器和 API 终结点、门户扩展（管理员门户、租户门户、Functions 门户）和数据服务。 为了支持故障转移，已将建议的实例数增加到 2 个。 |
     | 发布者 | 1 | Standard_A1 -（1 vCPU，1792 MB） | 通过 FTP 和 Web 部署发布内容。 |
-    | 前端 | 1 | Standard_A1 -（1 vCPU，1792 MB） | 将请求路由到应用服务应用程序。 |
+    | FrontEnd | 1 | Standard_A1 -（1 vCPU，1792 MB） | 将请求路由到应用服务应用程序。 |
     | 共享辅助角色 | 1 | Standard_A1 -（1 vCPU，1792 MB） | 托管 Web 应用程序或 API 应用程序和 Azure Functions 应用。 可能需要添加更多实例。 作为操作员，可以定义产品/服务，并选择任何 SKU 层。 这些层必须至少具有一个 vCPU。 |
 
     ![应用服务安装程序][13]

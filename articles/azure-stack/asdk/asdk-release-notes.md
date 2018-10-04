@@ -11,22 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2018
+ms.date: 10/02/2018
 ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: d322fe378e7f662c233e9572dfc79dcd961137bd
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 72c28f8d4f8d867d16c374e3dd659d845010813e
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237800"
+ms.locfileid: "48249088"
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Azure Stack 开发工具包发行说明  
 本文提供了有关改进、 修复程序和 Azure Stack 开发工具包中的已知的问题的信息。 如果不确定所运行的版本，可以[使用门户检查版本](.\.\azure-stack-updates.md#determine-the-current-version)。
 
 > 请订阅 [![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [源](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#)，随时了解 ASDK 的新增功能。
 
-## <a name="build-11809xxx"></a>生成 1.1809.x.xx
+## <a name="build-11808097"></a>生成 1.1808.0.97
 
 ### <a name="new-features"></a>新增功能
 此内部版本包含以下适用于 Azure Stack 的改进和修复。  
@@ -86,6 +86,8 @@ ms.locfileid: "48237800"
 
 
 #### <a name="compute"></a>计算  
+
+- <!-- 3099544 – IS, ASDK --> 美元/月列时创建新虚拟机 (VM) 使用 Azure Stack 门户中，并选择 VM 大小，将显示的**不可用**消息。 此列不应出现;显示 VM 定价的列不支持在 Azure Stack 中。
 
 - <!-- 3090289 – IS, ASDK --> 更新后应用 1808年，部署包含托管磁盘的 Vm 时可能遇到以下问题：
 
