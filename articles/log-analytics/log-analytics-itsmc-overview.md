@@ -180,7 +180,7 @@ ServiceDeskWorkItemType_s="Incident"
 
 - 服务台连接名称
 - 服务台 ID
-- 省/直辖市/自治区
+- 状态
 - 紧急性
 - 影响
 - Priority
@@ -238,7 +238,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Log Analytics 字段 | ServiceNow 字段 |
 |:--- |:--- |
 | ServiceDeskId_s| Number |
-| IncidentState_s | 省/直辖市/自治区 |
+| IncidentState_s | 状态 |
 | Urgency_s |紧急性 |
 | Impact_s |影响|
 | Priority_s | Priority |
@@ -251,7 +251,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Title_s|  简短说明 |
 | Description_s|  说明 |
 | CreatedDate_t|  已打开 |
-| ClosedDate_t| closed|
+| ClosedDate_t| 已关闭|
 | ResolvedDate_t|已解决|
 | Computer  | 配置项 |
 
@@ -266,9 +266,9 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Title_s|  简短说明 |
 | Type_s|  Type |
 | Category_s|  类别 |
-| CRState_s|  省/直辖市/自治区|
+| CRState_s|  状态|
 | Urgency_s|  紧急性 |
-| Priority_s| Priority|
+| Priority_s| 优先度|
 | Risk_s| 风险|
 | Impact_s| 影响|
 | RequestedDate_t  | 请求日期 |
