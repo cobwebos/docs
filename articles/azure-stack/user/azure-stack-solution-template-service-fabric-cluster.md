@@ -14,18 +14,18 @@ ms.topic: tutorial
 ms.date: 09/12/2018
 ms.author: mattbriggs
 ms.reviewer: shnatara
-ms.openlocfilehash: 3d3701c670236d67697f4109a59fa31900037a0d
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: d402b2bcd5187cbb6ece78d7e981068c279c1f75
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720916"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804423"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>在 Azure Stack 中部署 Service Fabric 群集
 
 使用 Azure 市场中的“Service Fabric 群集”项在 Azure Stack 中部署受保护的 Service Fabric 群集。 
 
-有关使用 Service Fabric 的详细信息，请参阅 Azure 文档中的 [Azure Service Frabric 概述](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview)和 [Service Fabric 群集安全方案](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)。
+有关使用 Service Fabric 的详细信息，请参阅[的 Azure Service Fabric 概述](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview)并[Service Fabric 群集安全方案](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)，Azure 文档中。
 
 ## <a name="prerequisites"></a>必备组件
 
