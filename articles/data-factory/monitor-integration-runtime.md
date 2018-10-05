@@ -157,13 +157,13 @@ Azure-SSIS 集成运行时是完全托管的 Azure 虚拟机（或节点）群�
 
 ### <a name="properties"></a>属性
 
-| 属性/状态 | Description |
+| 属性/状态 | 说明 |
 | --------------- | ----------- |
 | CreateTime | Azure-SSIS 集成运行时的创建时间（UTC 时间）。 |
 | Nodes | Azure-SSIS 集成运行时的已分配/可用节点、特定于节点的状态 (starting/available/recycling/unavailable) 和可采取措施的错误。 |
 | OtherErrors | Azure-SSIS 集成运行时中发生的非特定于节点且可采取措施的错误。 |
 | LastOperation | 上次对 Azure-SSIS 集成运行时执行的启动/停止操作的结果，以及可采取措施的错误（如果操作失败）。 |
-| 省/直辖市/自治区 | Azure-SSIS 集成运行时的总体状态 (initial/starting/started/stopping/stopped)。 |
+| 状态 | Azure-SSIS 集成运行时的总体状态 (initial/starting/started/stopping/stopped)。 |
 | 位置 | Azure-SSIS 集成运行时的位置。 |
 | NodeSize | Azure-SSIS 集成运行时的每个节点的大小。 |
 | NodeCount | Azure-SSIS 集成运行时中的节点数目。 |
@@ -184,7 +184,7 @@ Azure-SSIS 集成运行时是完全托管的 Azure 虚拟机（或节点）群�
   
 ### <a name="status-per-node"></a>状态（每个节点）
 
-| 状态 | Description |
+| 状态 | 说明 |
 | ------ | ----------- | 
 | 正在启动 | 正在准备此节点。 |
 | 可用 | 此节点已准备就绪，可在其中部署/执行 SSIS 包。 |
@@ -193,7 +193,7 @@ Azure-SSIS 集成运行时是完全托管的 Azure 虚拟机（或节点）群�
 
 ### <a name="status-overall-azure-ssis-integration-runtime"></a>状态（整个 Azure-SSIS 集成运行时）
 
-| 总体状态 | Description | 
+| 总体状态 | 说明 | 
 | -------------- | ----------- | 
 | Initial | 尚未分配/准备 Azure-SSIS 集成运行时的节点。 | 
 | 正在启动 | 正在分配/准备 Azure-SSIS 集成运行时的节点，计费已开始。 |
