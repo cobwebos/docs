@@ -22,7 +22,7 @@ ms.lasthandoff: 09/19/2018
 ms.locfileid: "46310576"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect 同步：了解用户、组和联系人
-有几个不同的原因导致你会有多个 Active Directory 林，并且还有几个不同的部署拓扑。 常见的模型包括合并和收购之后的帐户-资源部署和 GAL 同步的林。 但即使有纯模型，混合模型也是常见的模型。 Azure AD Connect 同步中的默认配置不会假定任何特定模型，但具体取决于安装指南中如何选择用户匹配，可以观察到不同的行为。
+有几个不同的原因导致你会有多个 Active Directory 林，并且还有几个不同的部署拓扑。 常见的模型包括合并和收购之后的帐户-资源部署和 GAL 同步的林。 但即使有纯模型，混合模型也是常见的模型。 Azure AD Connect 同步中的默认配置是不会假定任何特定模型，但观察到的行为可能会有所不同，这具体取决于安装指南中如何选择用户匹配。
 
 本主题讨论默认配置在某些拓扑中的行为方式。 我们将讨论配置，并且同步规则编辑器可用于查看配置。
 
@@ -31,7 +31,7 @@ ms.locfileid: "46310576"
 * 活动帐户会始终提供登录信息，包括 **userPrincipalName** 和 **sourceAnchor**。
 * 如果找不到活动的帐户，已禁用帐户会提供 userPrincipalName 和 sourceAnchor，除非该帐户为已链接邮箱。
 * 具有已链接邮箱的帐户永远不会用于 userPrincipalName 和 sourceAnchor。 据推测，更高版本中会找到有效帐户。
-* 可能为 Azure AD 设置联系人对象，作为联系人或用户。 在处理完所有源 Active Directory 林之前，确实不会知道。
+* 可能为 Azure AD 设置联系人对象，作为联系人或用户。 在处理完所有源 Active Directory 林之前，你不会知道是哪一种。
 
 ## <a name="groups"></a>组
 将组从 Active Directory 同步到 Azure AD 时，注意的要点是：
