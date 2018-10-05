@@ -88,7 +88,7 @@ ms.locfileid: "39618863"
 
 <table>
 <tr>
-    <th align="left">省/直辖市/自治区</th><th align="left">子状态</th><th align="left">Description</th>
+    <th align="left">状态</th><th align="left">子状态</th><th align="left">Description</th>
 </tr>
 <tr>
     <td rowspan="8">等待</td><td>ScheduleTime</td><td>未到运行切片的时间。</td>
