@@ -72,6 +72,25 @@ items:
       href: devtest-lab-store-secrets-in-key-vault.md
     - name: 在 Azure 中测试应用
       href: test-app-azure.md
+    - name: 设置企业中的开发测试实验室基础结构
+      href: devtest-lab-guidance-prescriptive-adoption.md
+      items:
+      - name: 开始使用开发测试实验室
+        href: devtest-lab-guidance-get-started.md
+      - name: 纵向扩展开发测试实验室部署
+        href: devtest-lab-guidance-scale.md
+      - name: 安排实现开发测试实验室
+        href: devtest-lab-guidance-orchestrate-implementation.md
+      - name: 开发测试实验室基础结构治理
+        items:
+        - name: 资源
+          href: devtest-lab-guidance-governance-resources.md
+        - name: 成本和所有权
+          href: devtest-lab-guidance-governance-cost-ownership.md
+        - name: 策略和符合性
+          href: devtest-lab-guidance-governance-policy-compliance.md
+        - name: 应用程序迁移和集成
+          href: devtest-lab-guidance-governance-application-migration-integration.md
     - name: 在实验室中使用 VM
       items:
       - name: 创建 VM
@@ -194,9 +213,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab
   - name: 定价
     href: https://azure.microsoft.com/pricing/details/devtest-lab/
-ms.openlocfilehash: c2e701b16c67be86d3e8d2463b8ad45646f0ed0b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 401c41d1b91d6373dfb3c743e0c6f56332030b45
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988625"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247560"

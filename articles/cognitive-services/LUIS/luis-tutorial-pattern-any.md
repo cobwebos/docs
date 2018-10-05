@@ -1,42 +1,29 @@
 ---
-title: 使用 pattern.any 实体改进 LUIS 预测的教程 - Azure | Microsoft Docs
-titleSuffix: Cognitive Services
-description: 本教程介绍如何使用 pattern.any 实体改进 LUIS 意向和实体预测。
+title: 教程 5：自由格式文本的 Pattern.any 实体
+titleSuffix: Azure Cognitive Services
+description: 对于格式良好且数据结尾可能容易与话语的剩余单词混淆的话语，使用 pattern.any 实体可从中提取数据。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: luis
+ms.technology: language-understanding
 ms.topic: article
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 43f169ae11191c2e98c4538189bce781821de980
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 4ff4a7085a8caeedebe2a734014afb1cb46d9fbf
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44157848"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47164389"
 ---
-# <a name="tutorial-improve-app-with-patternany-entity"></a>教程：使用 pattern.any 实体改进应用
+# <a name="tutorial-5-extract-free-form-data"></a>教程 5：提取自由格式数据
 
-本教程介绍如何使用 pattern.any 实体改进意向和实体预测。  
+在本教程中，对于格式良好且数据结尾可能容易与话语的剩余单词混淆的话语，我们使用 pattern.any 实体从这些话语中提取数据。 
 
-> [!div class="checklist"]
-* 了解何时以及如何使用 pattern.any
-* 创建使用 pattern.any 的模式
-* 如何验证预测改进
+通过 pattern.any 实体，可找到自由格式数据，其中实体的用语方式比较晦涩，难以从话语的其余部分来确定实体的结尾。 
 
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>开始之前
-如果还没有[模式角色](luis-tutorial-pattern-roles.md)教程中所述的人力资源应用，请将 JSON [导入](luis-how-to-start-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。 要导入的应用位于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-roles-HumanResources.json) GitHub 存储库中。
-
-若要保留原始人力资源应用，请在[设置](luis-how-to-manage-versions.md#clone-a-version)页上克隆版本，并将其命名为 `patt-any`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 
-
-## <a name="the-purpose-of-patternany"></a>Pattern.any 的用途
-通过 pattern.any 实体，可找到任意形式的数据，其中实体的用语方式比较晦涩，难以从话语的其余部分来确定实体的结尾。 
-
-此人力资源应用有助于员工查找公司表单。 [正则表达式教程](luis-quickstart-intents-regex-entity.md)中已添加这些表单。 该教程中的表单名称使用正则表达式来提取格式正确的表单名称，如以下话语表中为粗体的表单名称：
+此人力资源应用有助于员工查找公司表单。 
 
 |话语|
 |--|
@@ -54,11 +41,38 @@ ms.locfileid: "44157848"
 |“公司新员工请求调职 2018 年第 5 版”的作者是谁？|
 |“公司新员工请求调职 2018 年第 5 版”是以法语发布的吗？|
 
-此可变长度包含可能导致 LUIS 无法正确识别实体结尾位置的短语。 在模式中使用 Pattern.any 实体，可指定表单名称的开头和结尾，以便 LUIS 正确提取表单名称。
+此可变长度包含可能导致 LUIS 无法正确识别实体结尾位置的单词。 在模式中使用 Pattern.any 实体，可指定表单名称的开头和结尾，以便 LUIS 正确提取表单名称。
 
-**尽管模式允许提供较少的示例话语，但如果未检测到实体，则该模式将不匹配。**
+|模板话语示例|
+|--|
+|{FormName} 在哪里[？]|
+|{FormName} 的作者是谁[？]|
+|{FormName} 是以法语发布的吗[？]|
 
-## <a name="add-example-utterances-to-the-existing-intent-findform"></a>将示例话语添加到现有意向 FindForm 
+**本教程介绍如何执行下列操作：**
+
+> [!div class="checklist"]
+> * 使用现有的教程应用
+> * 将示例话语添加到现有实体
+> * 创建 Pattern.any 实体
+> * 创建模式
+> * 训练
+> * 测试新模式
+
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="use-existing-app"></a>使用现有应用
+继续使用上一个教程中创建的名为 **HumanResources** 的应用。 
+
+如果没有上一个教程中的 HumanResources 应用，请执行以下步骤：
+
+1.  下载并保存[应用 JSON 文件](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-roles-HumanResources.json)。
+
+2. 将 JSON 导入到新应用中。
+
+3. 在“管理”部分的“版本”选项卡上，克隆版本并将其命名为 `patt-any`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。
+
+## <a name="add-example-utterances"></a>添加示例话语 
 如果很难创建和标记 FormName 实体，请删除预生成的 keyPhrase 实体。 
 
 1. 从顶部导航栏中选择“生成”，然后从左侧导航栏中选择“意向”。
@@ -128,6 +142,8 @@ Pattern.any 实体提取不同长度的实体。 它仅适用于模式，因为�
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
+
+本教程将示例话语添加到了现有的意向，然后针对表单名称创建了新 Pattern.any。 然后，本教程使用新的示例话语和实体创建了现有意向的模式。 交互式测试显示，由于找到了该实体，模式及其意向已被预测。 
 
 > [!div class="nextstepaction"]
 > [了解如何结合使用角色和模式](luis-tutorial-pattern-roles.md)
