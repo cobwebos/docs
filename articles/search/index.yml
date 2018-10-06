@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 6995022626e2abe52e4fd72b401cbb01b5bc92e6
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 6297e92b9e20d42a914795e8ebcb77bb19d1eb4b
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714929"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829879"
 documentType: LandingData
 title: Azure 搜索文档
 metadata:
@@ -71,6 +71,6 @@ sections:
     className: cardsD
     items:
     - title: 语言
-      html: <p><a href="/dotnet/api/?term=microsoft.azure.search">.NET</a></p><p><a href="/dotnet/api/?term=microsoft.azure.management.search">.NET（管理）</a></p><p><a href="https://docs.microsoft.com/python/api/azure.mgmt.search">Python（管理）</a></p>
+      html: <p><a href="/dotnet/api/?term=microsoft.azure.search">.NET</a></p><p><a href="/dotnet/api/?term=microsoft.azure.management.search">.NET（管理）</a></p><p><a href="https://docs.microsoft.com/python/api/?view=azure-python&term=search">Python（管理）</a></p>
     - title: REST
       html: <p><a href="/rest/api/searchservice">服务 API 参考</a></p><p><a href="/rest/api/searchmanagement">管理 API 参考</a></p>
