@@ -225,7 +225,7 @@ items:
           href: ../monitoring-and-diagnostics/metrics-store-custom-guestos-resource-manager-vm.md?toc=/azure/azure-monitor/toc.json
         - name: VM 规模集来宾到指标存储
           href: ../monitoring-and-diagnostics/metrics-store-custom-guestos-resource-manager-vmss.md?toc=/azure/azure-monitor/toc.json
-        - name: 经典 VM 来宾到指标存储
+        - name: VM 经典来宾到指标存储
           href: ../monitoring-and-diagnostics/metrics-store-custom-guestos-classic-vm.md?toc=/azure/azure-monitor/toc.json
         - name: 云服务来宾到指标存储
           href: ../monitoring-and-diagnostics/metrics-store-custom-guestos-classic-cloud-service.md?toc=/azure/azure-monitor/toc.json
@@ -700,14 +700,6 @@ items:
       items:
       - name: 创建警报规则
         items:
-        - name: 在 Azure 门户中配置新指标或日志警报
-          href: ../monitoring-and-diagnostics/monitor-alerts-unified-usage.md?toc=/azure/azure-monitor/toc.json
-        - name: 在 Azure 门户中配置经典警报
-          href: ../monitoring-and-diagnostics/insights-alerts-portal.md?toc=/azure/azure-monitor/toc.json
-        - name: 使用 CLI 配置经典警报
-          href: ../monitoring-and-diagnostics/insights-alerts-command-line-interface.md?toc=/azure/azure-monitor/toc.json
-        - name: 使用 Azure PowerShell 配置经典警报
-          href: ../monitoring-and-diagnostics/insights-alerts-powershell.md?toc=/azure/azure-monitor/toc.json
         - name: 将警报从 OMS 门户复制到 Azure 门户
           href: ../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md?toc=/azure/azure-monitor/toc.json
       - name: 使用指标警报
@@ -977,9 +969,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: 代码示例
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: ecb930a1dc50b1a613533068846be2d7cfaeb748
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 7b26143e0fa2acc44636eb30afc6d3a76a05c2ec
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018887"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48784910"

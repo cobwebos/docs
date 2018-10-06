@@ -8,21 +8,24 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 1606b5e38b79cb535108ca747783a05de1fbc982
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: eac6c6d76bcc3b3d9cfeda7d8ca4e52e28ba9d8f
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40026090"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44369551"
 ---
 常规用途 VM 大小提供均衡的 CPU 与内存之比。 适用于测试和开发、小到中型数据库和低到中等流量 Web 服务器。 本文介绍了此分组中各个大小的 vCPU 数、数据磁盘数、NIC 数以及存储吞吐量的相关信息。 
 
-- Av2 系列 VM 可以部署在各种不同的硬件类型和处理器上。 根据硬件限制大小，为运行中的实例提供一致的处理器性能，不论硬件部署的位置。 若要判断此大小部署所在的物理硬件，请从虚拟机中查询虚拟硬件。
+- Av2 系列 VM 可以部署在各种不同的硬件类型和处理器上。 A 系列 VM 的 CPU 性能和内存配置非常适合部署和测试等入门级工作负荷。 根据硬件限制大小，为运行中的实例提供一致的处理器性能，不论硬件部署的位置。 若要判断此大小部署所在的物理硬件，请从虚拟机中查询虚拟硬件。
 
-- Dv2 系列是原 D 系列的后续系列，其特点是 CPU 功能更强大。 Dv2 系列 CPU 比 D 系列 CPU 快大约 35%。 它基于最新一代的 2.4 GHz Intel Xeon® E5-2673 v3 2.4 GHz (Haswell) 或 E5-2673 v4 2.3 GHz (Broadwell) 处理器，通过英特尔睿频加速技术 2.0 可以达到 3.1 GHz。 Dv2 系列的内存和磁盘配置与 D 系列相同。
+  示例用例包括开发和测试服务器、低流量 Web 服务器、中小型数据库、概念证明和代码存储库。
+
+- Dv2 系列（原始 D 系列的后续产品）提供更强大的 CPU 和最优 CPU 到内存的配置，使其可适合大多数生产工作负荷。 Dv2 系列 CPU 比 D 系列 CPU 快大约 35%。 它基于最新一代的 2.4 GHz Intel Xeon® E5-2673 v3 2.4 GHz (Haswell) 或 E5-2673 v4 2.3 GHz (Broadwell) 处理器，通过英特尔睿频加速技术 2.0 可以达到 3.1 GHz。 Dv2 系列的内存和磁盘配置与 D 系列相同。
 
 - Dv3 系列在超线程配置中采用 2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) 处理器或最新的 2.3 GHz Intel XEON ® E5-2673 v4 (Broadwell) 处理器，针对最常规用途的工作负荷提供了更好的价值主张。  在磁盘和网络限制已基于核心进行了调整以适应超线程技术的同时，内存已扩展（从 ~3.5 GiB/vCPU 到 4 GiB/vCPU）。  Dv3 不再有 D/Dv2 系列的高内存 VM 大小，那些已成为新的 EV3 系列。
 
+  示例 D 系列用例包括企业级应用程序、关系数据库、内存中缓存和分析。 
 
 ## <a name="b-series"></a>B 系列
 
@@ -31,6 +34,8 @@ ms.locfileid: "40026090"
 高级存储缓存：不支持
 
 对于并非持续需要 CPU 完全性能的工作负荷（如 Web 服务器、小型数据库以及开发和测试环境）而言，B 系列可突增 VM 十分理想。 这些工作负荷通常具有可突增的性能要求。 B 系列使这些客户能够购买具有高性价比基线性能的 VM 大小，允许 VM 实例在 VM 使用的性能小于其基线性能时积累积分。 如果 VM 已累积了积分，则 VM 可以在应用程序需要更高的 CPU 性能时突增到 VM 的基线之上，使用最多达到 100% 的 vCPU。
+
+示例用例包括开发和测试服务器、低流量 Web 服务器、小型数据库、微服务、概念证明服务器和生成服务器。
 
 
 | 大小             | vCPU  | 内存：GiB | 本地 SSD：GiB | 核心的基本性能 | 累积的积分/小时 | 最大累积积分 | 最大数据磁盘数 | 本地磁盘最大性能：IOPS/MBps | 非缓存磁盘最大性能：IOPS/MBps | 最大 NIC 数 |          

@@ -7,14 +7,16 @@ items:
     href: overview.md
 - name: 快速入门
   items:
-  - name: 创建托管应用程序
-    href: managed-apps-quickstart-cli.md
+  - name: 发布应用程序定义
+    href: publish-managed-app-definition-quickstart.md
+  - name: 部署服务目录应用
+    href: deploy-service-catalog-quickstart.md
   expanded: true
 - name: 教程
   items:
-  - name: 创建托管应用程序文件
+  - name: 创建定义文件
     href: publish-service-catalog-app.md
-  - name: 创建市场应用程序
+  - name: 发布市场应用程序
     href: publish-marketplace-app.md
 - name: 示例
   items:
@@ -26,16 +28,22 @@ items:
     href: sample-projects.md
 - name: 操作指南
   items:
-  - name: 创建门户界面
-    href: create-uidefinition-overview.md
-  - name: 测试门户界面
-    href: test-createuidefinition.md
-  - name: 更新托管资源
-    href: update-managed-resources.md
-  - name: 使用门户发布
-    href: publish-portal.md
-  - name: 使用来自 Key Vault 的机密
-    href: key-vault-access.md
+  - name: 发布者
+    items:
+    - name: 创建门户界面
+      href: create-uidefinition-overview.md
+    - name: 测试门户界面
+      href: test-createuidefinition.md
+    - name: 更新托管资源
+      href: update-managed-resources.md
+    - name: 使用门户发布应用程序定义
+      href: publish-portal.md
+    - name: 使用来自 Key Vault 的机密
+      href: key-vault-access.md
+  - name: 使用者
+    items:
+    - name: 监视托管应用程序
+      href: monitor-managed-application-portal.md
 - name: 引用
   items:
   - name: Azure CLI
@@ -97,9 +105,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: 堆栈溢出
     href: http://stackoverflow.com/questions/tagged/azure-managedapps
-ms.openlocfilehash: 03a385046c0f30932e6ba99fdce46fbdc9849eb6
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: b74cfed4f0208a1b70980d34284fd7f9ff207ca4
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365292"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801551"
