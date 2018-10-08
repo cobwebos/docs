@@ -41,14 +41,14 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 ### <a name="properties"></a>属性
 下表说明该 cmdlet 针对 Azure 集成运行时返回的属性：
 
-| 属性 | Description |
+| 属性 | 说明 |
 -------- | ------------- | 
 | 名称 | Azure 集成运行时的名称。 |  
 | State | Azure 集成运行时的状态。 | 
 | Location | Azure 集成运行时的位置。 有关 Azure 集成运行时位置的详细信息，请参阅[集成运行时简介](concepts-integration-runtime.md)。 |
 | DataFactoryName | Azure 集成运行时所属的数据工厂的名称。 | 
 | ResourceGroupName | 数据工厂所属的资源组的名称。  |
-| Description | Azure 集成运行时的说明。  |
+| 说明 | Azure 集成运行时的说明。  |
 
 ### <a name="status"></a>状态
 下表提供了 Azure 集成运行时的可能状态：
@@ -68,7 +68,7 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 
 下表提供了**每个节点**的监视属性的说明：
 
-| 属性 | Description | 
+| 属性 | 说明 | 
 | -------- | ----------- | 
 | 名称 | 自承载集成运行时的名称及其关联的节点。 节点是装有自承载集成运行时的本地 Windows 计算机。 |  
 | 状态 | 整个自承载集成运行时和每个节点的状态。 示例：联机/脱机/受限等。有关这些状态的信息，请参阅下一个部分。 | 
@@ -92,7 +92,7 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 ### <a name="status-per-node"></a>状态（每个节点）
 下表提供了自承载集成运行时节点的可能状态：
 
-| 状态 | Description |
+| 状态 | 说明 |
 | ------ | ------------------ | 
 | 联机 | 节点已连接到数据工厂服务。 |
 | 脱机 | 节点处于脱机状态。 |
@@ -105,7 +105,7 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 ### <a name="status-overall-self-hosted-integration-runtime"></a>状态（整个自承载集成运行时）
 下表提供了自承载集成运行时的可能状态： 此状态取决于属于运行时的所有节点的状态。 
 
-| 状态 | Description |
+| 状态 | 说明 |
 | ------ | ----------- | 
 | 需要注册 | 尚未将任何节点注册到此自承载集成运行时。 |
 | 联机 | 所有节点处于联机状态。 |
@@ -179,7 +179,7 @@ Azure-SSIS 集成运行时是完全托管的 Azure 虚拟机（或节点）群�
 | ResourceGroupName | 在其中创建了数据工厂和 Azure-SSIS 集成运行时的 Azure 资源组的名称。 |
 | DataFactoryName | Azure 数据工厂的名称。 |
 | 名称 | Azure-SSIS 集成运行时的名称。 |
-| Description | Azure-SSIS 集成运行时的说明。 |
+| 说明 | Azure-SSIS 集成运行时的说明。 |
 
   
 ### <a name="status-per-node"></a>状态（每个节点）

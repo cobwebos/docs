@@ -183,7 +183,7 @@ ServiceDeskWorkItemType_s="Incident"
 - 状态
 - 紧急性
 - 影响
-- Priority
+- 优先度
 - 升级
 - 创建者
 - 解决者
@@ -218,7 +218,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - 升级
 - 冲突状态
 - 紧急性
-- Priority
+- 优先度
 - 风险
 - 影响
 - 分配给
@@ -241,7 +241,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | IncidentState_s | 状态 |
 | Urgency_s |紧急性 |
 | Impact_s |影响|
-| Priority_s | Priority |
+| Priority_s | 优先度 |
 | CreatedBy_s | 打开者 |
 | ResolvedBy_s | 解决者|
 | ClosedBy_s  | 关闭者 |
