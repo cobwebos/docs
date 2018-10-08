@@ -131,8 +131,6 @@ items:
       href: ../monitoring-and-diagnostics/monitor-alerts-unified-log.md?toc=/azure/azure-monitor/toc.json
     - name: 活动日志警报
       href: ../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=/azure/azure-monitor/toc.json
-    - name: 将警报从 Log Analytics 扩展到 Azure
-      href: ../monitoring-and-diagnostics/monitoring-alerts-extend.md?toc=/azure/azure-monitor/toc.json
   - name: 可视化数据
     href: visualizations.md?toc=/azure/azure-monitor/toc.json
   - name: 合作伙伴集成
@@ -700,8 +698,14 @@ items:
       items:
       - name: 创建警报规则
         items:
-        - name: 将警报从 OMS 门户复制到 Azure 门户
-          href: ../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md?toc=/azure/azure-monitor/toc.json
+        - name: 在 Azure 门户中配置新指标或日志警报
+          href: ../monitoring-and-diagnostics/monitor-alerts-unified-usage.md?toc=/azure/azure-monitor/toc.json
+        - name: 在 Azure 门户中配置经典警报
+          href: ../monitoring-and-diagnostics/insights-alerts-portal.md?toc=/azure/azure-monitor/toc.json
+        - name: 使用 CLI 配置经典警报
+          href: ../monitoring-and-diagnostics/insights-alerts-command-line-interface.md?toc=/azure/azure-monitor/toc.json
+        - name: 使用 Azure PowerShell 配置经典警报
+          href: ../monitoring-and-diagnostics/insights-alerts-powershell.md?toc=/azure/azure-monitor/toc.json
       - name: 使用指标警报
         items:
         - name: 在 Azure Monitor 中创建、查看和管理指标警报
@@ -904,6 +908,14 @@ items:
       href: ../application-insights/application-insights-data-model-metric-telemetry.md?toc=/azure/azure-monitor/toc.json
     - name: 上下文
       href: ../application-insights/application-insights-data-model-context.md?toc=/azure/azure-monitor/toc.json
+  - name: 警报
+    items:
+    - name: 将警报从 Log Analytics 扩展到 Azure
+      href: ../monitoring-and-diagnostics/monitoring-alerts-extend.md?toc=/azure/azure-monitor/toc.json
+    - name: 将警报从 OMS 门户复制到 Azure 门户
+      href: ../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md?toc=/azure/azure-monitor/toc.json
+    - name: 停用经典警报和监视
+      href: ../monitoring-and-diagnostics/monitoring-classic-retirement.md?toc=/azure/azure-monitor/toc.json
   - name: Azure CLI
     href: /cli/azure/monitor?view=azure-cli-latest
   - name: Azure PowerShell
@@ -969,9 +981,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: 代码示例
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 7b26143e0fa2acc44636eb30afc6d3a76a05c2ec
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 50c8eac84be9df29bc15ea9b1fb177ad99cc77e8
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48784910"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815953"
