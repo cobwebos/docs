@@ -103,7 +103,7 @@ ACS-Engine 使用 Azure 资源管理器模板部署 Kubernetes 群集。 群集�
    确保为你希望在虚拟机上出现的所有 Pod 添加足够的 IP 地址。
 
 3. 通过在群集创建期间向 Kubelet 传递 `–network-plugin=cni` 命令行选项，选择用于为群集提供网络的插件。 默认情况下，Kubernetes 在已安装插件和配置文件的目录中查找它们。
-4. 如果希望 Pod 可以访问互联网，请在 Linux 虚拟机上添加以下 iptables 规则，对 Internet 流量进行源 NAT。 在以下示例中，指定的 IP 范围是 10.0.0.0/8.。
+4. 如果希望 Pod 可以访问互联网，请在 Linux 虚拟机上添加以下 iptables 规则，对 Internet 流量进行源 NAT。 在以下示例中，指定的 IP 范围是 10.0.0.0/8。
 
    ```bash
    iptables -t nat -A POSTROUTING -m iprange ! --dst-range 168.63.129.16 -m
