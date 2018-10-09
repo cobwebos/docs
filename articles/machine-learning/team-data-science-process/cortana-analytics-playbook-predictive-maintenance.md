@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: 816ba560ccb9b06414dff8ffaea054e88d216b10
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 7802aa8ea9798b18d5424c2342ba63c01406b25a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972377"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221700"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>针对预测性维护解决方案的 Azure AI 指南
 
@@ -232,12 +232,12 @@ PdM 中的另一个有用技术是使用检测数据异常的算法来捕获趋�
 
 | 资产 ID | 时间 | <Feature Columns> | 标签 |
 | ---- | ---- | --- | --- |
-| A123 |第 1 天 | 。 。 。 | 。 |
-| A123 |第 2 天 | 。 。 。 | 。 |
-| ...  |...   | 。 。 。 | 。 |
-| B234 |第 1 天 | 。 。 。 | 。 |
-| B234 |第 2 天 | 。 。 。 | 。 |
-| ...  |...   | 。 。 。 | 。 |
+| A123 |第 1 天 | . . . | . |
+| A123 |第 2 天 | . . . | . |
+| ...  |...   | . . . | . |
+| B234 |第 1 天 | . . . | . |
+| B234 |第 2 天 | . . . | . |
+| ...  |...   | . . . | . |
 
 特征工程的最后一个步骤是将目标变量加上**标签**。 此过程依赖于建模技术。 而建模技术又依赖于业务问题和可用数据的性质。 下一部分将介绍标签。
 
@@ -387,7 +387,7 @@ PdM 的建议方法是以时间相关的方式将示例拆分为训练、验证�
 - [接收方操作曲线 (ROC)](https://en.wikipedia.org/wiki/Receiver_operating_characteristic) 也是一个常用的指标。 在 ROC 曲线中，模型性能根据 ROC 上的固定操作点来解释。
 - 但对于 PdM 问题，十分位表和提升图更具参考性。 它们只注重正类（故障），提供的算法性能图比 ROC 曲线更复杂。
   - 十分位表是使用文本示例根据故障概率的降序创建的。 然后，将排序的示例分组成十分位（具有最高概率的样本的 10%、20%、30%，依此类推）。 每个十分位的比率（真实正比率）/（随机基线）可帮助估计每个十分位的算法性能。 随机基线采用值 0.1、0.2，依此类推。
-  - 提升图绘制十分位的真实正比率，而不是所有十分位的随机真实正比率。[](http://www2.cs.uregina.ca/~dbd/cs831/notes/lift_chart/lift_chart.html) 最前面的十分位是结果的重点，因为它们展示了最大增益。 用于 PdM 时，也可以将最前面的十分位视为“有风险”的代表。
+  - [提升图](http://www2.cs.uregina.ca/~dbd/cs831/notes/lift_chart/lift_chart.html)绘制十分位的真实正比率，而不是所有十分位的随机真实正比率。 最前面的十分位是结果的重点，因为它们展示了最大增益。 用于 PdM 时，也可以将最前面的十分位视为“有风险”的代表。
 
 ## <a name="model-operationalization-for-predictive-maintenance"></a>预测性维护的模型操作化
 
@@ -426,19 +426,19 @@ PdM 的建议方法是以时间相关的方式将示例拆分为训练、验证�
 
 ## <a name="training-resources-for-predictive-maintenance"></a>预测性维护的培训资源
 
-[预防性维护的 Azure AI 学习路径](https://github.com/Azure/AI-PredictiveMaintenance/blob/master/docs/azure-ai-learning-path-for-predictive-maintenance.md)提供了培训材料，让读者更深入地了解 PdM 问题中使用的算法和技术幕后的概念与数学原理。 
-
-Microsoft Azure 免费提供有关一般性 AI 概念和做法的内容与培训。
+除了有关一般 AI 概念和实践的内容和培训之外，Microsoft Azure 还为 PdM 技术背后的基础概念提供了学习路径。
 
 | 培训资源  | 可用性 |
 |:-------------------|--------------|
+| [使用树和随机林学习 PdM 的路径](https://aischool.microsoft.com/learning-paths/1H5vH5wAYcAy88CoQWQcA8) | 公共 | 
+| [使用深度学习学习 PdM 的路径](https://aischool.microsoft.com/learning-paths/FSIXxYkOGcauo0eUO8qAS) | 公共 |
 | [Azure 上的 AI 开发人员](http://azure.microsoft.com/training/learning-paths/azure-ai-developer) | 公共 |
 | [Microsoft AI 学校](http://aischool.microsoft.com/learning-paths) | 公共 |
 | [GitHub 中的 Azure AI 学习资源](https://github.com/Azure/connectthedots/blob/master/readme.md) | 公共 |
 | [LinkedIn Learning](http://www.linkedin.com/learning) | 公共 |
 | [Microsoft AI YouTube 网络研讨会](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | 公共 |
 | [Microsoft AI 展示](http://channel9.msdn.com/Shows/AI-Show) | 公共 |
-| [LearnAI@MS](http://learnanalytics.microsoft.com) | 面向 Microsoft 合作伙伴 |
-| [Microsoft 合作伙伴网络](http://learningportal.microsoft.com) | 面向 Microsoft 合作伙伴 |
+| [LearnAI@MS](http://learnanalytics.microsoft.com) | 合作伙伴 |
+| [Microsoft 合作伙伴网络](http://learningportal.microsoft.com) | 合作伙伴 |
 
 此外，Stanford 和 MIT 等学术机构以及其他培训公司也在线提供了有关 AI 的免费 MOOCS（大型开放式在线课程）。

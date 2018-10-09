@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/23/2018
 ms.author: kumud
-ms.openlocfilehash: 89518d30b862e18fb7c989c95144ffa7f1c294fc
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 087dcda5826d96ad064c472fc897be7e61133387
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40024599"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392495"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>教程：使用流量管理器改善网站响应 
 
@@ -171,7 +171,7 @@ ms.locfileid: "40024599"
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | 名称                   | 此名称必须在 trafficmanager.net 区域中唯一，并可生成用于访问流量管理器配置文件的 DNS 名称 (trafficmanager.net)。                                   |
-    | 路由方法          | 选择“优先级”路由方法。                                       |
+    | 路由方法          | 选择“性能”路由方法。                                       |
     | 订阅            | 选择订阅。                          |
     | 资源组          | 选择“新建”，然后输入 *myResourceGroupTM1*。 |
     | 位置                | 选择“美国东部”。  此设置指的是资源组的位置，对将全局部署的流量管理器配置文件没有影响。                              |
