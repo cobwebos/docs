@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2018
 ms.author: dekapur
-ms.openlocfilehash: 529df0147d2563c62c4a9578e47184bd98b01761
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: da4a779bca806fe6aa392db96eafc6c20f8ddcf6
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182155"
 ---
 # <a name="list-of-service-fabric-events"></a>Service Fabric 事件列表 
 
@@ -33,180 +34,177 @@ Service Fabric 公开一组主要的群集事件，以通知群集的状态为 [
 
 **群集升级事件**
 
-| EventId | 名称 | 源（任务） | 级别 | 版本 |
-| --- | --- | --- | --- | --- |
-| 29627 | ClusterUpgradeStartOperational | CM | 信息性 | 1 |
-| 29628 | ClusterUpgradeCompleteOperational | CM | 信息性 | 1 |
-| 29629 | ClusterUpgradeRollbackStartOperational | CM | 信息性 | 1 |
-| 29630 | ClusterUpgradeRollbackCompleteOperational | CM | 信息性 | 1 |
-| 29631 | ClusterUpgradeDomainCompleteOperational | CM | 信息性 | 1 |
-
-**群集运行状况报告事件**
-
-| EventId | 名称 | 源（任务） | 级别 | 版本 |
-| --- | --- | --- | --- | --- |
-| 54428 | ProcessClusterReportOperational | HM | 信息性 | 1 |
-| 54437 | ExpiredClusterEventOperational | HM | 信息性 | 1 |
-
-**混沌服务事件**
-
-| EventId | 名称 | 源（任务） | 级别 | 版本 |
-| --- | --- | --- | --- | --- |
-| 50021 | ChaosStartedEvent | Testability | 信息性 | 1 |
-| 50023 | ChaosStoppedEvent | Testability | 信息性 | 1 |
+| EventId | 名称 | Description |源（任务） | 级别 | 版本 |
+| --- | --- | --- | --- | --- | --- |
+| 29627 | ClusterUpgradeStarted | 群集升级已启动 | CM | 信息性 | 1 |
+| 29628 | ClusterUpgradeCompleted | 群集升级已完成| CM | 信息性 | 1 |
+| 29629 | ClusterUpgradeRollbackStarted | 群集升级已开始回退 | CM | 信息性 | 1 |
+| 29630 | ClusterUpgradeRollbackCompleted | 群集升级已完成回退 | CM | 信息性 | 1 |
+| 29631 | ClusterUpgradeDomainCompleted | 域升级已在群集升级过程中完成 | CM | 信息性 | 1 |
 
 ## <a name="node-events"></a>节点事件
 
 **节点生命周期事件** 
 
-| EventId | 名称 | 源（任务） | 级别 | 版本 |
-| --- | --- | --- | --- | --- |
-| 18602 | DeactivateNodeCompletedOperational | FM | 信息性 | 1 |
-| 18603 | NodeUpOperational | FM | 信息性 | 1 |
-| 18604 | NodeDownOperational | FM | 信息性 | 1 |
-| 18605 | NodeAddedOperational | FM | 信息性 | 1 |
-| 18606 | NodeRemovedOperational | FM | 信息性 | 1 |
-| 18607 | DeactivateNodeStartOperational | FM | 信息性 | 1 |
-| 25620 | NodeOpening | FabricNode | 信息性 | 1 |
-| 25621 | NodeOpenedSuccess | FabricNode | 信息性 | 1 |
-| 25622 | NodeOpenedFailed | FabricNode | 信息性 | 1 |
-| 25623 | NodeClosing | FabricNode | 信息性 | 1 |
-| 25624 | NodeClosed | FabricNode | 信息性 | 1 |
-| 25625 | NodeAborting | FabricNode | 信息性 | 1 |
-| 25626 | NodeAborted | FabricNode | 信息性 | 1 |
-
-**节点运行状况报告事件**
-
-| EventId | 名称 | 源（任务） | 级别 | 版本 |
-| --- | --- | --- | --- | --- |
-| 54423 | ProcessNodeReportOperational | HM | 信息性 | 1 |
-| 54432 | ExpiredNodeEventOperational | HM | 信息性 | 1 |
-
-**混沌节点事件**
-
-| EventId | 名称 | 源（任务） | 级别 | 版本 |
-| --- | --- | --- | --- | --- |
-| 50033 | ChaosRestartNodeFaultScheduledEvent | Testability | 信息性 | 1 |
-| 50087 | ChaosRestartNodeFaultCompletedEvent | Testability | 信息性 | 1 |
+| EventId | 名称 | Description |源（任务） | 级别 | 版本 |
+| --- | --- | ---| --- | --- | --- |
+| 18602 | NodeDeactivateCompleted | 节点停用已完成 | FM | 信息性 | 1 |
+| 18603 | NodeUp | 群集检测到节点已启动 | FM | 信息性 | 1 |
+| 18604 | NodeDown | 群集检测到节点已关闭 |  FM | 信息性 | 1 |
+| 18605 | NodeAddedToCluster | 新节点已添加到群集 | FM | 信息性 | 1 |
+| 18606 | NodeRemovedFromCluster | 从群集中删除了一个节点 | FM | 信息性 | 1 |
+| 18607 | NodeDeactivateStarted | 节点停用已启动 | FM | 信息性 | 1 |
+| 25620 | NodeOpening | 一个节点正在启动。 节点生命周期的第一阶段 | FabricNode | 信息性 | 1 |
+| 25621 | NodeOpenSucceeded | 节点已成功启动 | FabricNode | 信息性 | 1 |
+| 25622 | NodeOpenFailed | 节点未能启动 | FabricNode | 信息性 | 1 |
+| 25623 | NodeClosing | 节点正在关闭。 节点生命周期的最后阶段开始 | FabricNode | 信息性 | 1 |
+| 25624 | NodeClosed | 节点已成功关闭 | FabricNode | 信息性 | 1 |
+| 25625 | NodeAborting | 一个节点正在开始以非正常方式关闭 | FabricNode | 信息性 | 1 |
+| 25626 | NodeAborted | 一个节点已经以非正常方式关闭 | FabricNode | 信息性 | 1 |
 
 ## <a name="application-events"></a>应用程序事件
 
 **应用程序生命周期事件**
 
-| EventId | 名称 | 源（任务） | 级别 | 版本 |
-| --- | --- | --- | --- | --- |
-| 29620 | ApplicationCreatedOperational | CM | 信息性 | 1 |
-| 29625 | ApplicationDeletedOperational | CM | 信息性 | 1 |
-| 23083 | ProcessExitedOperational | Hosting | 信息性 | 1 |
+| EventId | 名称 | Description |源（任务） | 级别 | 版本 |
+| --- | --- | ---| --- | --- | --- |
+| 29620 | ApplicationCreated | 新应用程序已创建 | CM | 信息性 | 1 |
+| 29625 | ApplicationDeleted | 一个现有的应用程序已删除 | CM | 信息性 | 1 |
+| 23083 | ApplicationProcessExited | 应用程序中的一个进程已退出 | Hosting | 信息性 | 1 |
 
 **应用程序升级事件**
 
-| EventId | 名称 | 源（任务） | 级别 | 版本 |
-| --- | --- | --- | --- | --- |
-| 29621 | ApplicationUpgradeStartOperational | CM | 信息性 | 1 |
-| 29622 | ApplicationUpgradeCompleteOperational | CM | 信息性 | 1 |
-| 29623 | ApplicationUpgradeRollbackStartOperational | CM | 信息性 | 1 |
-| 29624 | ApplicationUpgradeRollbackCompleteOperational | CM | 信息性 | 1 |
-| 29626 | ApplicationUpgradeDomainCompleteOperational | CM | 信息性 | 1 |
-
-**应用程序运行状况报告事件**
-
-| EventId | 名称 | 源（任务） | 级别 | 版本 |
-| --- | --- | --- | --- | --- |
-| 54425 | ProcessApplicationReportOperational | HM | 信息性 | 1 |
-| 54426 | ProcessDeployedApplicationReportOperational | HM | 信息性 | 1 |
-| 54427 | ProcessDeployedServicePackageReportOperational | HM | 信息性 | 1 |
-| 54434 | ExpiredApplicationEventOperational | HM | 信息性 | 1 |
-| 54435 | ExpiredDeployedApplicationEventOperational | HM | 信息性 | 1 |
-| 54436 | ExpiredDeployedServicePackageEventOperational | HM | 信息性 | 1 |
-
-**混沌应用程序事件**
-
-| EventId | 名称 | 源（任务） | 级别 | 版本 |
-| --- | --- | --- | --- | --- |
-| 50053 | ChaosRestartCodePackageFaultScheduledEvent | Testability | 信息性 | 1 |
-| 50101 | ChaosRestartCodePackageFaultCompletedEvent | Testability | 信息性 | 1 |
+| EventId | 名称 | Description |源（任务） | 级别 | 版本 |
+| --- | --- | ---| --- | --- | --- |
+| 29621 | ApplicationUpgradeStarted | 应用程序升级已启动 | CM | 信息性 | 1 |
+| 29622 | ApplicationUpgradeCompleted | 应用程序升级已完成 | CM | 信息性 | 1 |
+| 29623 | ApplicationUpgradeRollbackStarted | 应用程序升级已开始回退 |CM | 信息性 | 1 |
+| 29624 | ApplicationUpgradeRollbackCompleted | 应用程序升级已完成回退 | CM | 信息性 | 1 |
+| 29626 | ApplicationUpgradeDomainCompleted | 域升级已在应用程序升级过程中完成 | CM | 信息性 | 1 |
 
 ## <a name="service-events"></a>服务事件
 
 **服务生命周期事件**
 
-| EventId | 名称 | 源（任务） | 级别 | 版本 |
-| --- | --- | --- | --- | --- |
-| 18602 | ServiceCreatedOperational | FM | 信息性 | 1 |
-| 18658 | ServiceDeletedOperational | FM | 信息性 | 1 |
-
-**服务运行状况报告事件**
-
-| EventId | 名称 | 源（任务） | 级别 | 版本 |
-| --- | --- | --- | --- | --- |
-| 54424 | ProcessServiceReportOperational | HM | 信息性 | 1 |
-| 54433 | ExpiredServiceEventOperational | HM | 信息性 | 1 |
+| EventId | 名称 | Description |源（任务） | 级别 | 版本 |
+| --- | --- | ---| --- | --- | --- |
+| 18657 | ServiceCreated | 已创建新服务 | FM | 信息性 | 1 |
+| 18658 | ServiceDeleted | 已删除一个现有的服务 | FM | 信息性 | 1 |
 
 ## <a name="partition-events"></a>分区事件
 
 **分区移动事件**
 
-| EventId | 名称 | 源（任务） | 级别 | 版本 |
-| --- | --- | --- | --- | --- |
-| 18940 | ReconfigurationCompleted | RA | 信息性 | 1 |
-
-**分区运行状况报告事件**
-
-| EventId | 名称 | 源（任务） | 级别 | 版本 |
-| --- | --- | --- | --- | --- |
-| 54422 | ProcessPartitionReportOperational | HM | 信息性 | 1 |
-| 54431 | ExpiredPartitionEventOperational | HM | 信息性 | 1 |
-
-**混沌分区事件**
-
-| EventId | 名称 | 源（任务） | 级别 | 版本 |
-| --- | --- | --- | --- | --- |
-| 50069 | ChaosMovePrimaryFaultScheduledEvent | Testability | 信息性 | 1 |
-| 50077 | ChaosMoveSecondaryFaultScheduledEvent | Testability | 信息性 | 1 |
-
-**分区分析事件**
-
-| EventId | 名称 | 源（任务） | 级别 | 版本 |
-| --- | --- | --- | --- | --- |
-| 65003 | PrimaryMoveAnalysisEvent | Testability | 信息性 | 1 |
-
-## <a name="replica-events"></a>副本事件
-
-**副本运行状况报告事件**
-
-| EventId | 名称 | 源（任务） | 级别 | 版本 |
-| --- | --- | --- | --- | --- |
-| 54429 | ProcessStatefulReplicaReportOperational | HM | 信息性 | 1 |
-| 54430 | ProcessStatelessInstanceReportOperational | HM | 信息性 | 1 |
-| 54438 | ExpiredStatefulReplicaEventOperational | HM | 信息性 | 1 |
-| 54439 | ExpiredStatelessInstanceEventOperational | HM | 信息性 | 1 |
-
-**混沌副本事件**
-
-| EventId | 名称 | 源（任务） | 级别 | 版本 |
-| --- | --- | --- | --- | --- |
-| 50047 | ChaosRestartReplicaFaultScheduledEvent | Testability | 信息性 | 1 |
-| 50051 | ChaosRemoveReplicaFaultScheduledEvent | Testability | 信息性 | 1 |
-| 50093 | ChaosRemoveReplicaFaultCompletedEvent | Testability | 信息性 | 1 |
+| EventId | 名称 | Description |源（任务） | 级别 | 版本 |
+| --- | --- | ---| --- | --- | --- |
+| 18940 | PartitionReconfigured | 分区重新配置已完成 | RA | 信息性 | 1 |
 
 ## <a name="container-events"></a>容器事件
 
 **容器生命周期事件** 
 
-| EventId | 名称 | 源（任务） | 级别 | 版本 |
-| --- | --- | --- | --- | --- |
-| 23074 | ContainerActivatedOperational | Hosting | 信息性 | 1 |
-| 23075 | ContainerDeactivatedOperational | Hosting | 信息性 | 1 |
-| 23082 | ContainerExitedOperational | Hosting | 信息性 | 1 |
+| EventId | 名称 | Description |源（任务） | 级别 | 版本 |
+| --- | --- | ---| --- | --- | --- |
+| 23074 | ContainerActivated | 容器已启动 | Hosting | 信息性 | 1 |
+| 23075 | ContainerDeactivated | 容器已停止 | Hosting | 信息性 | 1 |
+| 23082 | ContainerExited | 容器已退出 - 请检查 UnexpectedTermination 标志 | Hosting | 信息性 | 1 |
+
+## <a name="health-reports"></a>运行状况报告
+
+**群集运行状况报告事件**
+
+| EventId | 名称 | Description |源（任务） | 级别 | 版本 |
+| --- | --- | --- | --- | --- | --- |
+| 54428 | ClusterNewHealthReport | 新的群集运行状况报告可用 | HM | 信息性 | 1 |
+| 54437 | ClusterHealthReportExpired | 现有的群集运行状况报告已过期 | HM | 信息性 | 1 |
+
+**节点运行状况报告事件**
+
+| EventId | 名称 | Description |源（任务） | 级别 | 版本 |
+| --- | --- | ---| --- | --- | --- |
+| 54423 | NodeNewHealthReport | 新的节点运行状况报告可用 | HM | 信息性 | 1 |
+| 54432 | NodeHealthReportExpired | 现有的节点运行状况报告已过期 | HM | 信息性 | 1 |
+
+**应用程序运行状况报告事件**
+
+| EventId | 名称 | Description |源（任务） | 级别 | 版本 |
+| --- | --- | ---| --- | --- | --- |
+| 54425 | ApplicationNewHealthReport | 新的应用程序运行状况报告已创建。 这适用于未部署的应用程序。 | HM | 信息性 | 1 |
+| 54426 | DeployedApplicationNewHealthReport | 新的已部署应用程序运行状况报告已创建 | HM | 信息性 | 1 |
+| 54427 | DeployedServicePackageNewHealthReport | 新的已部署服务运行状况报告已创建 | HM | 信息性 | 1 |
+| 54434 | ApplicationHealthReportExpired | 现有的应用程序运行状况报告已过期 | HM | 信息性 | 1 |
+| 54435 | DeployedApplicationHealthReportExpired | 现有的已部署应用程序运行状况报告已过期 | HM | 信息性 | 1 |
+| 54436 | DeployedServicePackageHealthReportExpired | 现有的已部署服务运行状况报告已过期 | HM | 信息性 | 1 |
+
+**服务运行状况报告事件**
+
+| EventId | 名称 | Description |源（任务） | 级别 | 版本 |
+| --- | --- | ---| --- | --- | --- |
+| 54424 | ServiceNewHealthReport | 新的服务运行状况报告已创建 | HM | 信息性 | 1 |
+| 54433 | ServiceHealthReportExpired | 现有的服务运行状况报告已过期 | HM | 信息性 | 1 |
+
+**分区运行状况报告事件**
+
+| EventId | 名称 | Description |源（任务） | 级别 | 版本 |
+| --- | --- | ---| --- | --- | --- |
+| 54422 | PartitionNewHealthReport | 新的分区运行状况报告已创建 | HM | 信息性 | 1 |
+| 54431 | PartitionHealthReportExpired | 现有的分区运行状况报告已过期 | HM | 信息性 | 1 |
+
+**副本运行状况报告事件**
+
+| EventId | 名称 | Description |源（任务） | 级别 | 版本 |
+| --- | --- | ---| --- | --- | --- |
+| 54429 | StatefulReplicaNewHealthReport | 有状态副本运行状况报告已创建 | HM | 信息性 | 1 |
+| 54430 | StatelessInstanceNewHealthReport | 新的无状态实例运行状况报告已创建 | HM | 信息性 | 1 |
+| 54438 | StatefulReplicaHealthReportExpired | 现有的有状态副本运行状况报告已过期 | HM | 信息性 | 1 |
+| 54439 | StatelessInstanceHealthReportExpired | 现有的无状态实例运行状况报告已过期 | HM | 信息性 | 1 |
+
+## <a name="chaos-testing-events"></a>混沌测试事件 
+
+**混沌会话事件**
+
+| EventId | 名称 | Description |源（任务） | 级别 | 版本 |
+| --- | --- | ---| --- | --- | --- |
+| 50021 | ChaosStarted | 混沌测试会话已启动 | Testability | 信息性 | 1 |
+| 50023 | ChaosStopped | 混沌测试会话已停止 | Testability | 信息性 | 1 |
+
+**混沌节点事件**
+
+| EventId | 名称 | Description |源（任务） | 级别 | 版本 |
+| --- | --- | ---| --- | --- | --- |
+| 50033 | ChaosNodeRestartScheduled | 节点已计划在混沌测试会话过程中重启 | Testability | 信息性 | 1 |
+| 50087 | ChaosNodeRestartCompleted | 节点已在混沌测试会话过程中完成重启 | Testability | 信息性 | 1 |
+
+**混沌应用程序事件**
+
+| EventId | 名称 | Description |源（任务） | 级别 | 版本 |
+| --- | --- | ---| --- | --- | --- |
+| 50053 | ChaosCodePackageRestartScheduled | 已计划在混沌测试会话过程中进行代码包重启 | Testability | 信息性 | 1 |
+| 50101 | ChaosCodePackageRestartCompleted | 代码包重启已在混沌测试会话过程中完成 | Testability | 信息性 | 1 |
+
+**混沌分区事件**
+
+| EventId | 名称 | Description |源（任务） | 级别 | 版本 |
+| --- | --- | ---| --- | --- | --- |
+| 50069 | ChaosPartitionPrimaryMoveScheduled | 主分区已计划在混沌测试会话过程中移动 | Testability | 信息性 | 1 |
+| 50077 | ChaosPartitionSecondaryMoveScheduled | 辅助分区已计划在混沌测试会话过程中移动 | Testability | 信息性 | 1 |
+| 65003 | PartitionPrimaryMoveAnalysis | 可以对主分区移动进行更深入的分析 | Testability | 信息性 | 1 |
+
+**混沌副本事件**
+
+| EventId | 名称 | Description |源（任务） | 级别 | 版本 |
+| --- | --- | ---| --- | --- | --- |
+| 50047 | ChaosReplicaRestartScheduled | 已计划在混沌测试会话过程中进行副本重启 | Testability | 信息性 | 1 |
+| 50051 | ChaosReplicaRemovalScheduled | 已计划在混沌测试会话过程中进行副本删除 | Testability | 信息性 | 1 |
+| 50093 | ChaosReplicaRemovalCompleted | 已完成在混沌测试会话过程中进行副本删除的操作 | Testability | 信息性 | 1 |
 
 ## <a name="other-events"></a>其他事件
 
 **相关事件**
 
-| EventId | 名称 | 源（任务） | 级别 | 版本 |
-| --- | --- | --- | --- | --- |
-| 65011 | CorrelationOperational | Testability | 信息性 | 1 |
+| EventId | 名称 | Description |源（任务） | 级别 | 版本 |
+| --- | --- | ---| --- | --- | --- |
+| 65011 | CorrelationOperational | 关联性已分离 | Testability | 信息性 | 1 |
 
 ## <a name="events-prior-to-version-62"></a>6.2 版本之前的事件
 

@@ -1,63 +1,63 @@
 ---
-title: 使用两个意向创建一个简单的应用 - Azure | Microsoft Docs
-description: 本教程介绍如何使用两个意向但不使用任何实体来创建一个简单的 LUIS 应用，以识别用户陈述。
+title: 教程 1：在自定义 LUIS 应用中查找意图
+titleSuffix: Azure Cognitive Services
+description: 创建可预测用户意图的自定义应用。 此应用是最简单类型的 LUIS 应用，因为它不从话语文本（例如电子邮件地址或日期）提取各种数据元素。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 3f23ade2b0256c72c344e2a619227a79e3c79a47
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: b229dbc90f3f6ecc226c88ee393114f233bcf1a2
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160109"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035396"
 ---
-# <a name="tutorial-1-build-app-with-custom-domain"></a>教程：1. 使用自定义域生成应用
-在本教程中，我们将创建一个应用，用于演示如何使用**意向**，根据用户提交到应用的陈述（文本），来确定该用户的_意向_。 完成本教程后，会在云中运行一个 LUIS 终结点。
+# <a name="tutorial-1-build-custom-app-to-determine-user-intentions"></a>教程 1：生成可确定用户意图的自定义应用
 
-此应用是最简单类型的 LUIS 应用，因为它不会从陈述中提取数据。 它只确定用户的陈述意向。
+在本教程中，请创建一个自定义人力资源 (HR) 应用，以便根据话语（文本）预测用户的意图。 完成本教程后，会在云中运行一个 LUIS 终结点。
 
-<!-- green checkmark -->
+此应用的目的是确定聊天性的自然语言文本的意图。 这些意图可以归类为**意向**。 此应用具有多个意向。 第一个意向 **`GetJobInformation`** 识别用户何时需要公司内部提供的作业的信息。 第二个意向为 **`None`**，用于用户不在本应用领域（范围）内的任何话语。 稍后会添加第三个意向：**`ApplyForJob`**，适用于任何与申请工作有关的话语。 这第三个意向不同于 `GetJobInformation`，因为当某人申请工作时，工作信息应该已经公开。 但是，确定意向可能很困难，因为二者都是关于工作的，具体取决于单词的选择。
+
+LUIS 在返回 JSON 响应后，就已经完成了此请求。 LUIS 不提供用户话语的应答，只会识别以自然语言请求的信息类型。 
+
+**本教程介绍如何执行下列操作：**
+
 > [!div class="checklist"]
-> * 创建适用于人力资源 (HR) 领域的新应用 
-> * 添加 GetJobInformation 意向
-> * 将示例陈述添加到 GetJobInformation 意向 
-> * 训练并发布应用
-> * 查询应用终结点以查看 LUIS JSON 响应
-> * 添加 ApplyForJob 意向
-> * 将示例陈述添加到 ApplyForJob 意向 
-> * 再次训练、发布并查询终结点 
+> * 创建新应用 
+> * 创建意向
+> * 添加示例话语
+> * 训练应用
+> * 发布应用
+> * 从终结点获取意向
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="purpose-of-the-app"></a>应用的用途
-此应用具有多个意向。 第一个意向 **`GetJobInformation`** 识别用户何时需要公司内部提供的作业的信息。 第二个意向 **`None`** 识别其他每种类型的陈述。 本快速入门稍后会添加第三个意向 `ApplyForJob`。 
-
 ## <a name="create-a-new-app"></a>创建新应用
-1. 登录到 [LUIS](luis-reference-regions.md#luis-website) 网站。 确保登录到需要发布 LUIS 终结点的[区域](luis-reference-regions.md#publishing-regions)。
 
-2. 在 [LUIS](luis-reference-regions.md#luis-website) 网站上，选择“创建新应用”。  
+1. 使用 URL [https://www.luis.ai](https://www.luis.ai) 登录到 LUIS 门户。 
 
-    [![](media/luis-quickstart-intents-only/app-list.png "“我的应用”页的屏幕截图")](media/luis-quickstart-intents-only/app-list.png#lightbox)
+2. 选择“创建新应用”。  
 
-3. 在弹出的对话框中，输入名称 `HumanResources`。 此应用涵盖了有关公司人力资源部门的问题。 此类部门处理招聘相关的问题，例如公司的空缺职位。
+    [![](media/luis-quickstart-intents-only/app-list.png "语言理解 (LUIS) 的“我的应用”页的屏幕截图")](media/luis-quickstart-intents-only/app-list.png#lightbox)
+
+3. 在弹出的对话框中输入名称 `HumanResources`，保留默认的区域性“英语”。 将说明保留为空。
 
     ![LUIS 新应用](./media/luis-quickstart-intents-only/create-app.png)
 
-4. 过程完成后，应用会显示具有 **None** 意向的“意向”页。 
+    接下来，应用会显示具有 **None** 意向的“意向”页。
 
-## <a name="create-getjobinformation-intention"></a>创建 GetJobInformation 意向
-1. 选择“创建新意向”。 输入新意向名称 `GetJobInformation`。 每当某个用户想要获取有关贵公司的空缺职位的信息时，就会预测此意向。
+## <a name="getjobinformation-intent"></a>GetJobInformation 意向
 
-    ![](media/luis-quickstart-intents-only/create-intent.png "“新建意向”对话框的屏幕截图")
+1. 选择“创建新意向”。 输入新意向名称 `GetJobInformation`。 每当某个用户想要获取公司空缺职位的信息时，就会预测此意向。
 
-    创建意向会创建想要识别的信息类别。 为类别命名可让使用 LUIS 查询结果的其他任何应用程序使用该类别名称来查找相应的答案。 LUIS 不会回答这些问题，而只会识别以自然语言请求的信息类型。 
+    ![](media/luis-quickstart-intents-only/create-intent.png "语言理解 (LUIS) 的“新建意向”对话框的屏幕截图")
 
-2. 将 7 个陈述添加到用户预期会请求此意向，例如：
+2. 可以通过提供示例话语来训练 LUIS，让其了解应该根据哪些类型的话语预测出此意向。 将多个示例话语添加到你预期用户会请求的此意向，例如：
 
     | 示例陈述|
     |--|
@@ -71,9 +71,17 @@ ms.locfileid: "44160109"
 
     [![](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "为 MyStore 意向输入新陈述的屏幕截图")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
 
-3. LUIS 应用当前没有 **None** 意向的陈述。 它需要应用不会回答的陈述。 请不要将此项留空。 在左侧面板中选择“意向”。 
+    [!include[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]    
 
-4. 选择“None”意向。 添加用户可能会输入的、但与应用无关的 3 个陈述。 如果应用与作业发布内容有关，则下面是一些合理的 **None** 陈述：
+
+## <a name="none-intent"></a>None 意向 
+客户端应用程序需要了解某个话语是否超出应用程序的主题领域。 如果 LUIS 返回某个话语的 **None** 意向，客户端应用程序可以询问用户是否要结束聊天。 如果用户不想要结束聊天，客户端应用程序还能提供有关继续聊天的更多指示。 
+
+这些超出主题领域的示例话语归到 **None** 意向中。 请不要将此意向留空。 
+
+1. 在左侧面板中选择“意向”。
+
+2. 选择“None”意向。 添加用户可能会输入但与人力资源应用无关的 3 个话语。 如果应用与职位发布有关，则下面是一些合理的 **None** 话语：
 
     | 示例陈述|
     |--|
@@ -81,25 +89,24 @@ ms.locfileid: "44160109"
     |Order a pizza for me|
     |Penguins in the ocean|
 
-    在 LUIS 调用方应用程序（例如聊天机器人）中，如果 LUIS 返回陈述的 **None** 意向，机器人可以询问用户是否要结束对话。 如果用户不想要结束对话，聊天机器人还能提供有关继续对话的更多指示。 
 
-## <a name="train-and-publish-the-app"></a>训练并发布应用
+## <a name="train"></a>训练 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-app-to-endpoint"></a>将应用发布到终结点
+## <a name="publish"></a>发布
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
 
-## <a name="query-endpoint-for-getjobinformation-intent"></a>查询 GetJobInformation 意向的终结点
+## <a name="get-intent"></a>获取意向
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. 将光标定位到地址中 URL 的末尾，并输入 `I'm looking for a job with Natual Language Processing`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 此陈述不同于步骤 4 中的任何示例陈述，因此，它非常适合用于测试，测试结果应返回 `GetJobInformation` 意向（评分最高的意向）。 
+2. 将光标定位到地址栏中 URL 的末尾，并输入 `I'm looking for a job with Natural Language Processing`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 此话语不同于任何示例话语。 它非常适合用于测试，测试结果应返回 `GetJobInformation` 意向（评分最高的意向）。 
 
-    ```
+    ```JSON
     {
-      "query": "I'm looking for a job with Natual Language Processing",
+      "query": "I'm looking for a job with Natural Language Processing",
       "topScoringIntent": {
         "intent": "GetJobInformation",
         "score": 0.8965092
@@ -118,8 +125,12 @@ ms.locfileid: "44160109"
     }
     ```
 
-## <a name="create-applyforjob-intention"></a>创建 ApplyForJob 意向
-返回到 LUIS 网站的浏览器选项卡，并创建要应用到作业的新意向。
+    结果包含应用中的**所有意向**，目前为 2 个意向。 实体数组为空，因为此应用当前没有任何实体。 
+
+    JSON 结果中标识了评分最高的意向作为 **`topScoringIntent`** 属性。 所有评分介于 1 和 0 之间，评分越接近 1 越好。 
+
+## <a name="applyforjob-intent"></a>ApplyForJob 意向
+返回到 LUIS 网站并创建一个新的意向，以便确定用户话语是否与申请工作有关。
 
 1. 在右上侧菜单中选择“生成”，返回到应用生成界面。
 
@@ -143,15 +154,21 @@ ms.locfileid: "44160109"
 
     带标签的意向框在红色框中，因为 LUIS 目前并不确定该意向是否正确。 训练应用可让 LUIS 知道这些陈述位于正确的意向中。 
 
-    再次[训练并发布](#train-and-publish-the-app)。 
+## <a name="train-again"></a>再次训练
 
-## <a name="query-endpoint-for-applyforjob-intent"></a>查询 ApplyForJob 意向的终结点
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+
+## <a name="publish-again"></a>再次发布
+
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
+
+## <a name="get-intent-again"></a>再次获取意向
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. 在新浏览器窗口中，在 URL 的末尾输入 `Can I submit my resume for job 235986`。 
 
-    ```
+    ```JSON
     {
       "query": "Can I submit my resume for job 235986",
       "topScoringIntent": {
@@ -176,19 +193,15 @@ ms.locfileid: "44160109"
     }
     ```
 
-## <a name="what-has-this-luis-app-accomplished"></a>此 LUIS 应用实现了哪些目的？
-此应用只包含几个意向，它识别了一个意向相同、但措辞不同的自然语言查询。 
-
-JSON 结果中标识了评分最高的意向。 所有评分介于 1 和 0 之间，评分越接近 1 越好。 `GetJobInformation` 和 `None` 意向的评分非常接近于零。 
-
-## <a name="where-is-this-luis-data-used"></a>在何处使用此 LUIS 数据？ 
-LUIS 已完成此请求。 调用方应用程序（例如聊天机器人）可以提取 topScoringIntent 结果，并查找用于回答问题的信息（未存储在 LUIS 中）或结束对话。 这是机器人或调用方应用程序的编程选项。 LUIS 不执行此类工作。 LUIS 只确定用户的意向是什么。 
+    结果包含新意向 **ApplyForJob** 和现有意向。 
 
 ## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
+
+本教程创建了人力资源 (HR) 应用、创建了 2 个意向、向每个意向添加了示例话语、向 None 意向添加了示例话语，并在终结点上进行了训练、发布和测试操作。 这些是生成 LUIS 模型的基本步骤。 
 
 > [!div class="nextstepaction"]
 > [将预生成的意向和实体添加到此应用](luis-tutorial-prebuilt-intents-entities.md)

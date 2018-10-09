@@ -9,18 +9,18 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 3b35f78d66a6ae66b0a56818f5d4be455ce00de5
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 8f594be67c4677fae00cb01598d3899e30dae1e8
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181158"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433218"
 ---
 # <a name="design-process-overview"></a>设计流程概述
-用户可以在 Project Acoustics 工作流的以下三个阶段中表示达设计意图：预先制作设计、声源放置和后期制作设计。 该过程需要更少的与放置混响音量相关的标记，同时保持设计器控制场景的音响效果。
+可以在 Project Acoustics 工作流的以下三个阶段中表达设计意向：预先制作场景设置、声源放置和后期制作设计。 该过程需要更少的与放置混响音量相关的标记，同时保持设计器控制场景的音响效果。
 
 ## <a name="pre-bake-design"></a>预先制作设计
-预先制作设计过程可生成用于声波模拟的场景和元数据，包括选择要参与模拟的场景元素以提供声笼、反射和混响。 场景的元数据是针对每个场景元素所选的声学材料。 声学材料控制从每个表面反射回来的声音能量的大小。
+预先制作场景设置过程可生成用于声波模拟的场景和元数据，这包括选择要参与模拟的场景元素以提供声笼、反射和混响。 场景的元数据是针对每个场景元素所选的声学材料。 声学材料控制从每个表面反射回来的声音能量的大小。
 
 所有表面的默认吸收系数均为 0.04，表示反射性很强。 通过优化整个场景中不同材料的吸收系数可实现美感和游戏效果，当侦听器听到从场景的某个区域转换到另一区域时，这种效果尤为突出。 例如，从黑暗的混响房间转换到明亮的非混响户外场景会增强转换的影响。 要实现此效果，请调高户外场景材料的吸收系数。
 

@@ -2,34 +2,36 @@
 title: Azure SQL 数据库指标和诊断日志记录 | Microsoft Docs
 description: 了解如何配置 Azure SQL 数据库以存储资源使用情况、连接性和查询执行统计信息。
 services: sql-database
-documentationcenter: ''
-author: danimir
-manager: craigg
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 03/16/2018
+author: danimir
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: 55274b08695bacf0b63b937f9e8e21c8565f1715
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+manager: craigg
+ms.date: 09/20/2018
+ms.openlocfilehash: bf9185ece171ef0595aa3470fd52b839eb5d6136
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967381"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165953"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录 
-Azure SQL 数据库可发出指标和诊断日志，以便更轻松地进行监视。 可配置 SQL 数据库，将资源使用情况、辅助角色和会话以及连接性存储到以下 Azure 资源之一：
 
-* **Azure 存储**：用于低价存档大量遥测数据。
+Azure SQL 数据库和托管实例数据库可发出指标和诊断日志，以便更轻松地进行性能监视。 可配置数据库，将资源使用情况、辅助角色和会话以及连接性流式传输到以下 Azure 资源之一：
+
+* **Azure SQL Analytics**：用于具有报告、警报和缓解功能的集成式 Azure 数据库智能性能监视解决方案。
 * **Azure 事件中心**：用于将 SQL 数据库遥测与自定义监视解决方案或热门管道集成。
-* **Azure Log Analytics**：用于具有报告、警报和缓解功能的立即可用的监视解决方案。 Azure Log Analytics 是 [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) 的一项功能
+* **Azure 存储**：用于低价存档大量遥测数据。
 
     ![体系结构](./media/sql-database-metrics-diag-logging/architecture.png)
 
-## <a name="enable-logging"></a>启用日志记录
+## <a name="enable-logging-for-a-database"></a>为数据库启用日志记录功能
 
-默认情况下，不启用指标和诊断日志记录。 可使用以下方法之一启用并管理指标和诊断日志记录：
+默认情况下，不在 SQL 数据库或托管实例数据库上启用指标和诊断日志记录功能。 可使用以下方法之一在数据库上启用并管理指标和诊断遥测日志记录：
 
 - Azure 门户
 - PowerShell
@@ -39,38 +41,54 @@ Azure SQL 数据库可发出指标和诊断日志，以便更轻松地进行监�
 
 启用指标和诊断日志记录时，需要指定收集所选数据的 Azure 资源。 可用选项包括：
 
-- Log Analytics
+- SQL Analytics
 - 事件中心
 - 存储 
 
-可预配新的 Azure 资源或选择现有资源。 选择存储资源后，需要指定要收集的数据。 可用选项包括：
+可预配新的 Azure 资源或选择现有资源。 在使用数据库诊断设置选项选择资源之后，需指定要收集的数据。 支持 Azure SQL 数据库和托管实例数据库的可用选项包括：
 
-- [所有指标](sql-database-metrics-diag-logging.md#all-metrics)：包含 DTU 百分比、DTU 限制、CPU 百分比、物理数据读取百分比、日志写入百分比、成功/失败/防火墙阻止的连接数、会话百分比、辅助角色百分比、存储、存储百分比和 XTP 存储百分比。
-- [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics)：包含有关查询运行时统计信息（如 CPU 使用率、查询持续时间等）的信息。
-- [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics)：包含有关查询等待统计信息的信息，可告知用户查询在什么项上等待，如 CPU、日志、锁定。
-- [错误](sql-database-metrics-diag-logging.md#errors-dataset)：包含有关此数据库发生的 SQL 错误的信息。
-- [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset)：包含有关数据库针对不同等待类型花费多少时间等待的信息。
-- [超时](sql-database-metrics-diag-logging.md#time-outs-dataset)：包含有关在数据库上发生的超时的信息。
-- [阻塞](sql-database-metrics-diag-logging.md#blockings-dataset)：包含有关在数据库上发生的阻塞事件的信息。
-- [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset)：包含 Intelligent Insights。 [详细了解 Intelligent Insights](sql-database-intelligent-insights.md)。
-- Audit / SQLSecurityAuditEvents当前不可用。
+| 监视遥测数据 | Azure SQL 数据库支持 | 托管实例中的数据库支持 |
+| :------------------- | ------------------- | ------------------- |
+| [所有指标](sql-database-metrics-diag-logging.md#all-metrics)：包含 DTU/CPU 百分比、DTU/CPU 限制、物理数据读取百分比、日志写入百分比、成功/失败/防火墙阻止的连接数、会话百分比、辅助角色百分比、存储、存储百分比和 XTP 存储百分比。 | 是 | 否 |
+| [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics)：包含有关查询运行时统计信息（如 CPU 使用率、查询持续时间统计信息等）的信息。 | 是 | 是 |
+| [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics)：包含有关查询等待统计信息的信息，可告知用户查询在什么项上等待，如 CPU、日志、锁定。 | 是 | 是 |
+| [错误](sql-database-metrics-diag-logging.md#errors-dataset)：包含有关此数据库发生的 SQL 错误的信息。 | 是 | 否 |
+| [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset)：包含有关数据库针对不同等待类型花费多少时间等待的信息。 | 是 | 否 |
+| [超时](sql-database-metrics-diag-logging.md#time-outs-dataset)：包含有关在数据库上发生的超时的信息。 | 是 | 否 |
+| [阻塞](sql-database-metrics-diag-logging.md#blockings-dataset)：包含有关在数据库上发生的阻塞事件的信息。 | 是 | 否 |
+| [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset)：包含性能方面的智能见解。 [详细了解 Intelligent Insights](sql-database-intelligent-insights.md)。 | 是 | 是 |
+
+**请注意**：若要使用审核日志和 SQLSecurityAuditEvents 日志，则虽然这些选项仅在数据库“诊断”设置中提供，但只能通过“SQL 审核”解决方案来启用这些日志，以便配置将遥测数据流式传输到 Log Analytics、事件中心或存储的功能。
 
 如果选择事件中心或存储帐户，可以指定保留策略。 此策略删除早于选定时间段的数据。 如果指定 Log analytics，保留策略将取决于所选的定价层。 有关详细信息，请参阅 [Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)。 
 
-若要了解如何启用日志记录并了解各种 Azure 服务支持的指标和日志类别，建议阅读以下主题： 
+## <a name="enable-logging-for-elastic-pools-or-managed-instance"></a>为弹性池或托管实例启用日志记录
+
+默认情况下，不在弹性池或托管实例上启用指标和诊断日志记录功能。 可以为弹性池或托管实例启用并管理指标和诊断遥测日志记录。 以下数据可以收集：
+
+| 监视遥测数据 | 弹性池支持 | 托管实例支持 |
+| :------------------- | ------------------- | ------------------- |
+| [所有指标](sql-database-metrics-diag-logging.md#all-metrics)（弹性池）：包含 eDTU/CPU 百分比、eDTU/CPU 限制、物理数据读取百分比、日志写入百分比、会话百分比、辅助角色百分比、存储、存储百分比、存储限制，以及 XTP 存储百分比。 | 是 | 不适用 |
+| [ResourceUsageStats](sql-database-metrics-diag-logging.md#resource-usage-stats)（托管实例）：包含 vCore 计数、平均 CPU 百分比、IO 请求数、读取/写入的字节数、保留的存储空间、已使用的存储空间。 | 不适用 | 是 |
+
+若要了解各种 Azure 服务支持的指标和日志类别，建议阅读以下主题：
 
 * [Microsoft Azure 中的指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
 * [Azure 诊断日志概述](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) 
 
 ### <a name="azure-portal"></a>Azure 门户
 
-1. 若要在门户中启用指标和诊断日志集合，请转到 SQL 数据库或弹性池页，然后选择“诊断设置”。
+- 若要为 SQL 数据库或托管实例启用指标和诊断日志集合，请转到数据库，然后选择“诊断设置”。 如果配置新设置，请选择“+添加诊断设置”；若要要编辑现有设置，请选择“编辑设置”。
 
    ![在 Azure 门户中启用](./media/sql-database-metrics-diag-logging/enable-portal.png)
 
-2. 通过选择目标和遥测数据来新建或编辑现有诊断设置。
+- 对于 **Azure SQL 数据库**，请通过选择目标和遥测数据来新建或编辑现有诊断设置。
 
    ![诊断设置](./media/sql-database-metrics-diag-logging/diagnostics-portal.png)
+
+- 对于**托管实例数据库**，请通过选择目标和遥测数据来新建或编辑现有诊断设置。
+
+   ![诊断设置](./media/sql-database-metrics-diag-logging/diagnostics-portal-mi.png)
 
 ### <a name="powershell"></a>PowerShell
 
@@ -174,7 +192,7 @@ Azure SQL 数据库可发出指标和诊断日志，以便更轻松地进行监�
 
 2. 将数据库配置为将指标和诊断日志记录到创建的 Log Analytics 资源中。
 
-3. 在 Log Analytics 中，从库中安装 Azure SQL Analytics 解决方案。
+3. 从 Azure Marketplace 安装 **Azure SQL Analytics** 解决方案。
 
 ### <a name="create-a-log-analytics-resource"></a>创建 Log Analytics 资源
 
@@ -259,15 +277,52 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ## <a name="metrics-and-logs-available"></a>可用的指标和日志
 
-### <a name="all-metrics"></a>所有指标
+请查找可供 Azure SQL 数据库、弹性池、托管实例以及托管实例中的数据库使用的有关指标和日志的详细监视遥测内容。
+
+## <a name="all-metrics"></a>所有指标
+
+### <a name="all-metrics-for-elastic-pools"></a>弹性池的所有指标
 
 |**资源**|**指标**|
 |---|---|
-|数据库|DTU 百分比、已用 DTU、DTU 限制、CPU 百分比、物理数据读取百分比、日志写入百分比、成功/失败/防火墙阻止的连接数、会话百分比、辅助角色百分比、存储、存储百分比、XTP 存储百分比和死锁 |
 |弹性池|eDTU 百分比、已用 eDTU、eDTU 限制、CPU 百分比、物理数据读取百分比、日志写入百分比、会话百分比、辅助角色百分比、存储、存储百分比、存储限制、XTP存储百分比 |
-|||
 
-### <a name="logs"></a>日志
+### <a name="all-metrics-for-azure-sql-database"></a>Azure SQL 数据库的所有指标
+
+|**资源**|**指标**|
+|---|---|
+|Azure SQL 数据库|DTU 百分比、已用 DTU、DTU 限制、CPU 百分比、物理数据读取百分比、日志写入百分比、成功/失败/防火墙阻止的连接数、会话百分比、辅助角色百分比、存储、存储百分比、XTP 存储百分比和死锁 |
+
+## <a name="logs"></a>日志
+
+### <a name="logs-for-managed-instance"></a>托管实例的日志
+
+### <a name="resource-usage-stats"></a>资源使用情况统计
+
+|属性|Description|
+|---|---|
+|TenantId|租户 ID。|
+|SourceSystem|始终是：Azure|
+|TimeGenerated [UTC]|记录日志时的时间戳。|
+|Type|始终是：AzureDiagnostics|
+|ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL|
+|类别|类别的名称。 始终是：ResourceUsageStats|
+|资源|资源的名称。|
+|ResourceType|资源类型的名称。 始终是：MANAGEDINSTANCES|
+|SubscriptionId|数据库所属的订阅 GUID。|
+|resourceGroup|数据库所属的资源组的名称。|
+|LogicalServerName_s|托管实例的名称。|
+|ResourceId|资源 URI。|
+|SKU_s|托管实例产品 SKU|
+|virtual_core_count_s|可用 vCore 的数目|
+|avg_cpu_percent_s|CPU 平均百分比|
+|reserved_storage_mb_s|托管实例上的保留存储容量|
+|storage_space_used_mb_s|托管实例上的已使用存储|
+|io_requests_s|IOPS 计数|
+|io_bytes_read_s|已读取的 IOPS 字节数|
+|io_bytes_written_s|已写入的 IOPS 字节数|
+
+### <a name="logs-for-azure-sql-database-and-managed-instance-database"></a>Azure SQL 数据库和托管实例数据库的日志
 
 ### <a name="query-store-runtime-statistics"></a>查询数据存储运行时统计信息
 

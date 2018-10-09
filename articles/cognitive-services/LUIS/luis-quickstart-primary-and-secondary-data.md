@@ -1,54 +1,71 @@
 ---
-title: 教程：创建 LUIS 应用以提取数据 - Azure | Microsoft Docs
-description: 本教程介绍如何使用意向和简单实体创建一个简单的 LUIS 应用，以提取机器学习的数据。
+title: 教程 7：LUIS 中使用短语列表的简单实体
+titleSuffix: Azure Cognitive Services
+description: 从话语中提取机器学习的数据
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: luis
+ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: a69ea8ea45a02399b7c6ad22f0dc514ad8537e06
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 941c29506aa8f17dcb6262495b28dd26e78194d5
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159650"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036044"
 ---
-# <a name="tutorial-7-add-simple-entity-and-phrase-list"></a>教程：7. 添加简单实体和短语列表
-在本教程中，我们将使用**简单**实体创建一个应用，用于演示如何从陈述中提取机器学习的数据。
+# <a name="tutorial-7-extract-names-with-simple-entity-and-phrase-list"></a>教程 7：通过简单实体和短语列表提取名称
+
+在本教程中，请使用**简单**实体从话语中提取雇佣工作名称的机器学习数据。 若要提高提取的准确性，请添加一个短语列表，其中包含特定于简单实体的术语。
+
+本教程会添加用于提取工作名称的新的简单实体。 在此 LUIS 应用中，简单实体的用途是让 LUIS 知道工作名称是什么，以及在陈述中的哪个位置可以找到该工作名称。 根据选择的词汇和话语的长度，工作名称在话语中的位置因话语而异。 LUIS 需要跨所有意向的工作名称的示例，而这些意向使用工作名称。  
+
+出现以下情况时，简单实体适用于此类数据：
+
+* 数据是单一概念。
+* 数据没有严格的格式，例如正则表达式。
+* 数据不常见，例如电话号码或数据的预生成实体。
+* 数据并不与已知单词的列表完全匹配，例如列表实体。
+* 数据不包含其他数据项，例如复合实体或层次结构实体。
+
+**本教程介绍如何执行下列操作：**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * 了解简单实体 
-> * 创建适用于人力资源 (HR) 领域的新 LUIS 应用 
+> * 使用现有的教程应用
 > * 添加用于从应用提取工作的简单实体
-> * 训练并发布应用
-> * 查询应用终结点以查看 LUIS JSON 响应
 > * 添加用于增强工作词汇信号的短语列表
-> * 训练、发布应用并反复查询终结点
+> * 训练 
+> * 发布 
+> * 从终结点获取意向和实体
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="before-you-begin"></a>开始之前
-如果尚未获得[复合实体](luis-tutorial-composite-entity.md)教程中所述的人力资源应用，请将 JSON [导入](luis-how-to-start-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。 要导入的应用位于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-composite-HumanResources.json) Github 存储库中。
+## <a name="use-existing-app"></a>使用现有应用
 
-若要保留原始人力资源应用，请在[设置](luis-how-to-manage-versions.md#clone-a-version)页上克隆版本，并将其命名为 `simple`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。  
+继续使用上一个教程中创建的名为 **HumanResources** 的应用。 
 
-## <a name="purpose-of-the-app"></a>应用的用途
-此应用演示如何从陈述中提取数据。 假设某个聊天机器人包含以下陈述：
+如果没有上一个教程中的 HumanResources 应用，请执行以下步骤：
+
+1.  下载并保存[应用 JSON 文件](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-composite-HumanResources.json)。
+
+2. 将 JSON 导入到新应用中。
+
+3. 在“管理”部分的“版本”选项卡上，克隆版本并将其命名为 `simple`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。
+
+## <a name="simple-entity"></a>简单实体
+简单实体检测在单词或短语中包含的单个数据概念。
+
+假设某个聊天机器人包含以下话语：
 
 |话语|可提取的工作名称|
 |:--|:--|
 |我想要申请新的会计工作。|会计|
-|请提交我的申请工程职位的简历。|工程|
+|提交我的申请工程职位的简历。|工程|
 |填写 123456 工作的申请|123456|
-
-本教程会添加用于提取工作名称的新实体。 
-
-## <a name="purpose-of-the-simple-entity"></a>简单实体的用途
-在此 LUIS 应用中，简单实体的用途是让 LUIS 知道工作名称是什么，以及在陈述中的哪个位置可以找到该工作名称。 根据选择的词汇和陈述的长度，工作在陈述中的位置因陈述而异。 LUIS 需要跨所有意向获取任一陈述的工作示例。  
 
 工作名称很难确定，因为它可以是名词、动词，也可以是包含多个词汇的短语。 例如：
 
@@ -65,15 +82,13 @@ ms.locfileid: "44159650"
 |挤压机操作员|
 |技工|
 
-此 LUIS 应用包含多个意向的工作名称。 通过在所有意向的陈述中标记这些词汇，LUIS 可以深入了解什么是工作，以及在陈述的什么位置找到它。
+此 LUIS 应用包含多个意向的工作名称。 通过在所有意向的话语中标记这些词汇，LUIS 可以深入了解什么是工作名称，以及在话语的什么位置找到它。
 
-## <a name="create-job-simple-entity"></a>创建工作简单实体
+在示例话语中标记实体以后，必须添加短语列表来加强简单实体的信号。 短语列表**不**用作完全匹配，不需要是预期的每个可能的值。 
 
-1. LUIS 的“生成”部分包含你的人力资源应用。 在右上方的菜单栏中选择“生成”可切换到此部分。 
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 在“意向”页上，选择“ApplyForJob”意向。 
-
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-select-applyforjob.png "LUIS 的屏幕截图，其中已突出显示“ApplyForJob”意向")](media/luis-quickstart-primary-and-secondary-data/hr-select-applyforjob.png#lightbox)
 
 3. 在陈述`I want to apply for the new accounting job`中选择`accounting`，在弹出菜单的顶部字段中输入`Job`，然后在弹出菜单中选择“创建新实体”。 
 
@@ -110,7 +125,10 @@ ms.locfileid: "44159650"
     |我申请生物学教授的简历已包括在内。|生物学教授|
     |我想要申请摄影方面的职位。|摄影|git 
 
-## <a name="label-entity-in-example-utterances-for-getjobinformation-intent"></a>针对 GetJobInformation 意向标记示例陈述中的实体
+## <a name="label-entity-in-example-utterances"></a>在示例话语中标记实体
+
+对实体进行标记可以向 LUIS 显示实体在示例话语中位于何处。
+
 1. 在左侧菜单中选择“意向”。
 
 2. 从意向列表中选择“GetJobInformation”。 
@@ -125,80 +143,83 @@ ms.locfileid: "44159650"
 
     还有其他示例陈述，但这些陈述不包含工作词汇。
 
-## <a name="train-the-luis-app"></a>训练 LUIS 应用
+## <a name="train"></a>训练
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-get-the-endpoint-url"></a>发布应用以获取终结点 URL
+## <a name="publish"></a>发布
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>使用不同的话语查询终结点
+## <a name="get-intent-and-entities-from-endpoint"></a>从终结点获取意向和实体 
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. 将光标定位到地址中 URL 的末尾，并输入 `Here is my c.v. for the programmer job`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 此陈述不同于标记的任何陈述，因此，它非常适合用于测试，测试结果应返回 `ApplyForJob` 陈述。
 
-```JSON
-{
-  "query": "Here is my c.v. for the programmer job",
-  "topScoringIntent": {
-    "intent": "ApplyForJob",
-    "score": 0.9826467
-  },
-  "intents": [
+    ```JSON
     {
-      "intent": "ApplyForJob",
-      "score": 0.9826467
-    },
-    {
-      "intent": "GetJobInformation",
-      "score": 0.0218927357
-    },
-    {
-      "intent": "MoveEmployee",
-      "score": 0.007849265
-    },
-    {
-      "intent": "Utilities.StartOver",
-      "score": 0.00349470088
-    },
-    {
-      "intent": "Utilities.Confirm",
-      "score": 0.00348804821
-    },
-    {
-      "intent": "None",
-      "score": 0.00319909188
-    },
-    {
-      "intent": "FindForm",
-      "score": 0.00222647213
-    },
-    {
-      "intent": "Utilities.Help",
-      "score": 0.00211193133
-    },
-    {
-      "intent": "Utilities.Stop",
-      "score": 0.00172086991
-    },
-    {
-      "intent": "Utilities.Cancel",
-      "score": 0.00138010911
+      "query": "Here is my c.v. for the programmer job",
+      "topScoringIntent": {
+        "intent": "ApplyForJob",
+        "score": 0.9826467
+      },
+      "intents": [
+        {
+          "intent": "ApplyForJob",
+          "score": 0.9826467
+        },
+        {
+          "intent": "GetJobInformation",
+          "score": 0.0218927357
+        },
+        {
+          "intent": "MoveEmployee",
+          "score": 0.007849265
+        },
+        {
+          "intent": "Utilities.StartOver",
+          "score": 0.00349470088
+        },
+        {
+          "intent": "Utilities.Confirm",
+          "score": 0.00348804821
+        },
+        {
+          "intent": "None",
+          "score": 0.00319909188
+        },
+        {
+          "intent": "FindForm",
+          "score": 0.00222647213
+        },
+        {
+          "intent": "Utilities.Help",
+          "score": 0.00211193133
+        },
+        {
+          "intent": "Utilities.Stop",
+          "score": 0.00172086991
+        },
+        {
+          "intent": "Utilities.Cancel",
+          "score": 0.00138010911
+        }
+      ],
+      "entities": [
+        {
+          "entity": "programmer",
+          "type": "Job",
+          "startIndex": 24,
+          "endIndex": 33,
+          "score": 0.5230502
+        }
+      ]
     }
-  ],
-  "entities": [
-    {
-      "entity": "programmer",
-      "type": "Job",
-      "startIndex": 24,
-      "endIndex": 33,
-      "score": 0.5230502
-    }
-  ]
-}
-```
+    ```
+    
+    LUIS 发现了正确的意向 **ApplyForJob** 并提取了正确的实体 **Job**，其值为 `programmer`。
+
 
 ## <a name="names-are-tricky"></a>名称很微妙
 LUIS 应用通过高置信度来查找正确的意向，然后提取工作名称，但名称是很微妙的。 试试这个陈述：`This is the lead welder paperwork`。  
@@ -260,18 +281,15 @@ LUIS 应用通过高置信度来查找正确的意向，然后提取工作名称
 
 由于名称可以是任何词汇，因此如果有一个包含词汇的短语列表来增强信号，则 LUIS 在预测实体时会更准确。
 
-## <a name="to-boost-signal-add-jobs-phrase-list"></a>若要增强信号，请添加工作短语列表
+## <a name="to-boost-signal-add-phrase-list"></a>若要增强信号，请添加短语列表
+
 打开 LUIS-Samples Github 存储库中的 [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/job-phrase-list.csv)。 此列表的工作词汇和短语超过一千个。 查看列表中是否有对你有意义的工作词汇。 如果列表中没有你的词汇或短语，请添加你自己的词汇或短语。
 
 1. 在 LUIS 应用的“生成”部分，选择“提高应用性能”菜单下的“短语列表”。
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-select-phrase-list-left-nav.png "突出显示的“短语列表”左侧导航按钮的屏幕截图")](media/luis-quickstart-primary-and-secondary-data/hr-select-phrase-list-left-nav.png#lightbox)
-
 2. 选择“创建新的短语列表”。 
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-new-phrase-list.png "突出显示的“创建新的短语列表”按钮的屏幕截图")](media/luis-quickstart-primary-and-secondary-data/hr-create-new-phrase-list.png#lightbox)
-
-3. 将新的短语列表命名为`Jobs`，然后将列表从 jobs-phrase-list.csv 复制到“值”文本框中。 按 Enter。 
+3. 将新的短语列表命名为`Job`，然后将列表从 jobs-phrase-list.csv 复制到“值”文本框中。 按 Enter。 
 
     [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "“创建新的短语列表”弹出对话框的屏幕截图")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
@@ -348,22 +366,13 @@ LUIS 应用通过高置信度来查找正确的意向，然后提取工作名称
     }
     ```
 
-## <a name="phrase-lists"></a>短语列表
-添加短语列表增强了列表中词汇的信号，但**不可**将其用作完全匹配。 短语列表中有多个工作的第一个字为 `lead`，而且也有名为 `welder` 的工作，但是没有名为 `lead welder` 的工作。 此工作短语列表可能不完整。 在定期[查看终结点陈述](luis-how-to-review-endoint-utt.md)和查找其他工作词汇时，请将其添加到短语列表， 然后重新训练并重新发布。
-
-## <a name="what-has-this-luis-app-accomplished"></a>此 LUIS 应用实现了哪些目的？
-此应用包含一个简单实体和一个由词汇组成的短语列表，识别了自然语言查询意向并返回了作业数据。 
-
-现在，聊天机器人已获得足够的信息，可以确定申请工作的主要操作、该操作的参数以及所推荐的具体工作。 
-
-## <a name="where-is-this-luis-data-used"></a>在何处使用此 LUIS 数据？ 
-LUIS 已完成此请求。 通话应用程序（例如聊天机器人）可以提取 topScoringIntent 结果和实体中的数据，以便使用第三方 API 向人力资源代表发送工作信息。 如果机器人或调用方应用程序有其他编程选项，LUIS 不会执行相关的工作。 LUIS 只确定用户的意向是什么。 
-
 ## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
+
+在本教程中，人力资源应用使用一个机器学习的简单实体来查找话语中的工作名称。 由于工作名称可能包含各种单词或短语，因此应用需要一个短语列表来增强工作名称单词的信号。 
 
 > [!div class="nextstepaction"]
 > [添加预生成的 keyphrase 实体](luis-quickstart-intent-and-key-phrase.md)

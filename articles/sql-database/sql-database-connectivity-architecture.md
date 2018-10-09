@@ -2,19 +2,22 @@
 title: Azure SQL 数据库连接体系结构 | Microsoft Docs
 description: 本文档介绍 Azure 内部或 Azure 外部的 Azure SQLDB 连接体系结构。
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: DBs & servers
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
+author: DhruvMsft
+ms.author: dhruv
+ms.reviewer: carlrab
+manager: craigg
 ms.date: 01/24/2018
-ms.author: carlrab
-ms.openlocfilehash: afc82ea666fdbef89348e7453df92b8d8e1adc86
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 66f558db713ab951864fe694f27f2e60d52e875a
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493666"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064116"
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Azure SQL 数据库连接体系结构 
 
@@ -51,13 +54,16 @@ ms.locfileid: "39493666"
 ![体系结构概述](./media/sql-database-connectivity-architecture/connectivity-from-outside-azure.png)
 
 > [!IMPORTANT]
-> 在 Azure SQL 数据库中使用服务终结点时，默认情况下策略为“代理”。 若要从 Vnet 内启用连接，请允许指向下面列表中指定的 Azure SQL 数据库网关 IP 地址的出站连接。 使用服务终结点时，我们强烈建议将连接策略更改为“重定向”，以实现更好的性能。 如果将连接策略更改为“重定向”，允许 NSG 出站到下面列出的 Azure SQLDB 网关 IP 将还不够，必须允许出站到所有 Azure SQLDB IP。 这可以借助 NSG（网络安全组）服务标记实现。 有关详细信息，请参阅[服务标记](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags)。
+> 在 Azure SQL 数据库中使用服务终结点时，默认情况下策略为“代理”。 若要从 VNet 内启用连接，必须允许到下面列表中指定的 Azure SQL 数据库网关 IP 地址的出站连接。 使用服务终结点时，我们强烈建议将连接策略更改为“重定向”，以实现更好的性能。 如果将连接策略更改为“重定向”，允许 NSG 出站到下面列出的 Azure SQLDB 网关 IP 将还不够，必须允许出站到所有 Azure SQLDB IP。 这可以借助 NSG（网络安全组）服务标记实现。 有关详细信息，请参阅[服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)。
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Azure SQL 数据库网关 IP 地址
 
 若要从本地资源连接到 Azure SQL 数据库，需要允许到你的 Azure 区域的 Azure SQL 数据库网关的出站网络流量。 在代理模式下连接时，连接仅通过网关建立，从本地资源进行连接时这是默认设置。
 
 下表列出了所有数据区域的 Azure SQL 数据库网关的主 IP 和次要 IP。 某些区域中存在两个 IP 地址。 在这些区域中，主 IP 地址是网关的当前 IP 地址，第二个 IP 地址是故障转移 IP 地址。 故障转移地址是我们可能会将服务器移动到该位置以保持服务的高可用性的地址。 对于这些区域，我们建议允许出站到这两个 IP 地址。 第二个 IP 地址由 Microsoft 拥有，并且不侦听任何服务，除非 Azure SQL 数据库激活该地址以接受连接。
+
+> [!IMPORTANT]
+> 如果从 Azure 中进行连接，则默认情况下连接策略将为**重定向**（除非使用的是服务终结点）。 仅允许以下 IP 是不够的。 必须允许所有 Azure SQL 数据库 IP。 如果从 VNet 内部进行连接，则可以借助 NSG（网络安全组）服务标记完成此操作。 有关详细信息，请参阅[服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)。
 
 | 区域名称 | 主 IP 地址 | 次要 IP 地址 |
 | --- | --- |--- |
@@ -160,10 +166,10 @@ $body = @{properties=@{connectionType=$connectionType}} | ConvertTo-Json
 Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Sql/servers/$serverName/connectionPolicies/Default?api-version=2014-04-01-preview" -Method PUT -Headers $authHeader -Body $body -ContentType "application/json"
 ```
 
-## <a name="script-to-change-connection-settings-via-azure-cli-20"></a>通过 Azure CLI 2.0 编写脚本以更改连接设置
+## <a name="script-to-change-connection-settings-via-azure-cli"></a>通过 Azure CLI 编写脚本以更改连接设置
 
 > [!IMPORTANT]
-> 此脚本需要 [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+> 此脚本需要 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 >
 
 以下 CLI 脚本演示如何更改连接策略。

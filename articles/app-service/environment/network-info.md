@@ -11,13 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 08/29/2018
 ms.author: ccompy
-ms.openlocfilehash: d099163cdc34624afd8f01b8f1978c5ee902d1ff
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 6d4f7fab0c36095d96cec0038a39744102e8972b
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433746"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>应用服务环境的网络注意事项 #
 
@@ -28,9 +29,9 @@ ms.lasthandoff: 05/20/2018
 - 外部 ASE：在 Internet 可访问的 IP 地址上公开 ASE 托管的应用。 有关详细信息，请参阅[创建外部 ASE][MakeExternalASE]。
 - ILB ASE：在 VNet 中的 IP 地址上公开 ASE 托管的应用。 内部终结点是一个内部负载均衡器 (ILB)，因此该类部署被称为 ILB ASE。 有关详细信息，请参阅[创建和使用 ILB ASE][MakeILBASE]。
 
-目前，有两个版本的应用服务环境：ASEv1 和 ASEv2。 有关 ASEv1 的信息，请参阅[应用服务环境 v1 简介][ASEv1Intro]。 可在经典 VNet 或资源管理器 VNet 中部署 ASEv1。 而 ASEv2 只能部署到资源管理器 VNet 中。
+应用服务环境有两个版本：ASEv1 和 ASEv2。 有关 ASEv1 的信息，请参阅[应用服务环境 v1 简介][ASEv1Intro]。 可在经典 VNet 或资源管理器 VNet 中部署 ASEv1。 而 ASEv2 只能部署到资源管理器 VNet 中。
 
-从 ASE 发出的、转到 Internet 的所有调用将通过分配给 ASE 的 VIP 离开 VNet。 然后，此 VIP 的公共 IP 将成为从 ASE 发出的、转到 Internet 的所有调用的源 IP。 如果 ASE 中的应用调用了 VNet 中的资源或通过 VNet 发出调用，则源 IP 是 ASE 使用的子网中的某个 IP。 由于 ASE 在 VNet 中，因此可以访问 VNet 中的资源，而不需要进行其他任何配置。 如果 VNet 连接到本地网络，则 ASE 中的应用也可访问此处的资源。 无需再进一步配置 ASE 或自己的应用。
+从 ASE 发出的、转到 Internet 的所有调用将通过分配给 ASE 的 VIP 离开 VNet。 此 VIP 的公共 IP 将成为从 ASE 发出的、转到 Internet 的所有调用的源 IP。 如果 ASE 中的应用调用了 VNet 中的资源或通过 VNet 发出调用，则源 IP 是 ASE 使用的子网中的某个 IP。 由于 ASE 在 VNet 中，因此也可以访问 VNet 中的资源，而不需要进行任何额外配置。 如果 VNet 连接到本地网络，则 ASE 中的应用也可访问此处的资源，不需其他配置。
 
 ![外部 ASE][1] 
 
@@ -43,9 +44,9 @@ ms.lasthandoff: 05/20/2018
 
 ![ILB ASE][2]
 
-如果拥有 ILB ASE，则 ILB 的 IP 地址是用于 HTTP/S、FTP/S、Web 部署和远程调试的终结点。
+如果拥有 ILB ASE，则 ILB 的地址是用于 HTTP/S、FTP/S、Web 部署和远程调试的终结点。
 
-普通的应用访问端口为：
+常规应用访问端口为：
 
 | 用途 | 源 | 目标 |
 |----------|---------|-------------|
@@ -57,12 +58,16 @@ ms.lasthandoff: 05/20/2018
 
 ## <a name="ase-subnet-size"></a>ASE 子网大小 ##
 
-用于托管 ASE 的子网的大小在部署 ASE 后不能更改。  ASE 使用每个基础结构角色以及每个独立应用服务计划实例的地址。  此外，还有创建的每个子网的 Azure 网络使用的 5 个地址。  在创建应用前，根本不带应用服务计划的 ASE 将使用 12 个地址。  如果它是 ILB ASE，则在该 ASE 中创建应用前将使用 13 个地址。 扩大应用服务计划时，添加的每个前端将需要额外的地址。  默认情况下，为每 15 个总应用服务计划实例添加前端服务器。 
+用于托管 ASE 的子网的大小在部署 ASE 后不能更改。  ASE 使用每个基础结构角色以及每个独立应用服务计划实例的地址。  此外，还有创建的每个子网的 Azure 网络使用的 5 个地址。  在创建应用前，根本不带应用服务计划的 ASE 将使用 12 个地址。  如果它是 ILB ASE，则在该 ASE 中创建应用前将使用 13 个地址。 横向扩展 ASE 时，基础结构角色按应用服务计划实例的 15 和 20 的倍数添加。
 
    > [!NOTE]
-   > 子网中仅可具有 ASE。 请务必选择一个容许将来扩展的地址空间。 以后无法更改此设置。 建议大小是地址长度为 128 位的 `/25`。
+   > 子网中仅可具有 ASE。 请务必选择一个容许将来扩展的地址空间。 以后无法更改此设置。 建议使用包含 256 个地址的大小 `/24`。
+
+纵向扩展或缩减时，将会添加具有相应大小的新角色，然后将工作负荷从当前大小迁移到目标大小。 只有在应用进行迁移以后，才会删除原始 VM。 这意味着，如果你的 ASE 有 100 个 ASP 实例，则在一段时间你需要双倍数目的 VM。  出于这个原因，建议使用“/24”来应对可能需要进行的任何更改。  
 
 ## <a name="ase-dependencies"></a>ASE 依赖项 ##
+
+### <a name="ase-inbound-dependencies"></a>ASE 入站依赖项 ###
 
 ASE 入站访问依赖项如下：
 
@@ -73,7 +78,7 @@ ASE 入站访问依赖项如下：
 |  允许 Azure 负载均衡器入站流量 | Azure 负载均衡器 | ASE 子网：所有端口
 |  应用分配的 IP 地址 | 应用分配的地址 | ASE 子网：所有端口
 
-除系统监视以外，入站流量还提供对 ASE 的指挥与控制。 [ASE 管理地址][ASEManagement]文档中列出了此流量的源 IP。 网络安全配置需要允许通过端口 454 和 455 上的所有 IP 进行访问。
+除系统监视以外，入站管理流量还提供对 ASE 的指挥与控制。 [ASE 管理地址][ASEManagement]文档中列出了此流量的源地址。 网络安全配置需要允许通过端口 454 和 455 上的所有 IP 进行访问。 如果阻止从这些地址进行访问，则 ASE 会变得不正常，然后变成暂停状态。
 
 在 ASE 子网内，有多个用于内部组件通信的端口，并且可以更改。  这要求 ASE 子网中的所有端口均可从 ASE 子网访问。 
 
@@ -81,26 +86,23 @@ ASE 入站访问依赖项如下：
 
 如果使用应用分配的 IP 地址，则需要允许从分配给应用的 IP 到 ASE 子网的流量。
 
-对于出站访问，ASE 依赖于多个外部系统。 这些系统依赖项是使用 DNS 名称定义的，不会映射到一组固定的 IP 地址。 因此，ASE 需要从 ASE 子网跨各种端口对所有外部 IP 进行出站访问。 ASE 具有以下出站依赖项：
+从端口 454 和 455 进来的 TCP 流量必须从同一 VIP 回去，否则会出现非对称路由问题。 
 
-| 用途 | 源 | 目标 |
-|-----|------|----|
-| Azure 存储 | ASE 子网 | table.core.windows.net、blob.core.windows.net、queue.core.windows.net、file.core.windows.net：80、443、445（只有 ASEv1 需要 445。） |
-| Azure SQL 数据库 | ASE 子网 | database.windows.net：1433、11000-11999、14000-14999（有关详细信息，请参阅 [SQL 数据库 V12 端口用法](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md)。）|
-| Azure 管理 | ASE 子网 | management.core.windows.net、management.azure.com：443 
-| SSL 证书验证 |  ASE 子网            |  ocsp.msocsp.com、mscrl.microsoft.com、crl.microsoft.com：443
-| Azure Active Directory        | ASE 子网            |  Internet：443
-| 应用服务管理        | ASE 子网            |  Internet：443
-| Azure DNS                     | ASE 子网            |  Internet：53
-| ASE 内部通信    | ASE 子网：所有端口 |  ASE 子网：所有端口
+### <a name="ase-outbound-dependencies"></a>ASE 出站依赖项 ###
 
-如果 ASE 失去这些依赖项的访问权限，将会停止工作。 如果长时间发生此情况，将暂停 ASE。
+对于出站访问，ASE 依赖于多个外部系统。 在这些系统依赖项中，许多是使用 DNS 名称定义的，不会映射到一组固定的 IP 地址。 因此，ASE 需要从 ASE 子网跨各种端口对所有外部 IP 进行出站访问。 
+
+出站依赖项的完整列表在介绍如何[锁定应用服务环境出站流量](./firewall-integration.md)的文档中列出。 如果失去其依赖项的访问权限，ASE 就会停止工作。 如果长时间发生此情况，将暂停 ASE。 
 
 ### <a name="customer-dns"></a>客户 DNS ###
 
 如果在 VNet 中配置了客户定义的 DNS 服务器，则租户工作负荷将使用该服务器。 ASE 仍需出于管理目的与 Azure DNS 通信。 
 
 如果在 VNet 中配置了 VPN 另一端上的客户 DNS，则必须可从包含 ASE 的子网访问 DNS 服务器。
+
+若要测试从 Web 应用进行的解决方法，可以使用控制台命令 *nameresolver*。 转到应用的 scm 站点的调试窗口，或者在门户中转到应用，然后选择控制台。 可以从 shell 提示窗口发出命令 *nameresolver* 以及要查看的地址。 你取回的结果与应用进行同一查找时获取的结果相同。 如果使用 nslookup，则会改用 Azure DNS 进行查找。
+
+如果更改 ASE 所在的 VNet 的 DNS 设置，则需重启 ASE。 为了避免重启 ASE，强烈建议在创建 ASE 之前配置 VNet 的 DNS 设置。  
 
 <a name="portaldep"></a>
 
@@ -140,6 +142,9 @@ ASE 具有一些需要注意的 IP 地址。 它们是：
 - 应用分配的基于 IP 的 SSL 地址：仅当配置了基于 IP 的 SSL 时在外部 ASE 上使用。
 
 在 ASE UI 上的 Azure 门户中的 ASEv2 内可以轻松查看所有这些 IP 地址。 若使用 ILB ASE，将列出 ILB 的 IP。
+
+   > [!NOTE]
+   > 只要 ASE 处于启动和运行状态，这些 IP 地址就不会更改。  如果 ASE 变成暂停和还原状态，ASE 所使用的地址就会更改。 ASE 变成暂停状态的通常原因是阻止了入站管理访问或阻止了对 ASE 依赖项的访问。 
 
 ![IP 地址][3]
 

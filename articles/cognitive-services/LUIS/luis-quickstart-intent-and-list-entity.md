@@ -1,75 +1,63 @@
 ---
-title: 教程：创建 LUIS 应用以获取与所列数据完全匹配的文本 - Azure | Microsoft Docs
-description: 本教程介绍如何使用意向和列表实体创建一个简单的 LUIS 应用，以提取本快速入门中的数据。
+title: 教程 4：提取文本匹配项 - LUIS 列表实体
+titleSuffix: Azure Cognitive Services
+description: 获取与项的预定义列表匹配的数据。 列表中的每个项可以有也是完全匹配的同义词
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: luis
+ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 04411f415b7cfe07d893c43e758bd2a4a226472a
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: b4fdf094653a4b16dead6397fe8e1a9f1a0258b9
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162192"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162077"
 ---
-# <a name="tutorial-4-add-list-entity"></a>教程：4. 添加列表实体
-在本教程中，我们将创建一个应用，用于演示如何获取与预定义列表匹配的数据。 
+# <a name="tutorial-4-extract-exact-text-matches"></a>教程 4：提取确切的文本匹配项
+本教程介绍如何获取与项的预定义列表匹配的数据。 列表中的每个项可以包含一个同义词列表。 就人力资源应用来说，可以通过多项信息（例如姓名、电子邮件、电话号码、美国联邦税务 ID）来确定员工身份。 
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * 了解列表实体 
-> * 创建意向为 MoveEmployee 且适用于人力资源 (HR) 领域的新 LUIS 应用
-> * 添加列表实体以从陈述中提取员工
-> * 训练并发布应用
-> * 查询应用终结点以查看 LUIS JSON 响应
+人力资源应用需确定哪位员工在从一个建筑移到另一个建筑。 对于有关员工移动情况的话语，LUIS 会先确定意向，然后提取员工，以便通过客户端应用程序创建一个进行员工移动的标准顺序。
 
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>开始之前
-如果尚未获得 [regex 实体](luis-quickstart-intents-regex-entity.md)教程中所述的人力资源应用，请将 JSON [导入](luis-how-to-start-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。 要导入的应用位于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-regex-HumanResources.json) Github 存储库中。
-
-若要保留原始人力资源应用，请在[设置](luis-how-to-manage-versions.md#clone-a-version)页上克隆版本，并将其命名为 `list`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 
-
-## <a name="purpose-of-the-list-entity"></a>列表实体的用途
-此应用预测的陈述涉及将员工从一个大楼移到另一个大楼。 此应用使用列表实体来提取员工。 可以使用姓名、电话号码、电子邮件或美国联邦社会安全号码来表示员工。 
-
-列表实体可以存储许多项，每个项都有同义项。 对于中小型公司来说，列表实体用于提取员工信息。 
-
-每个项的规范名称是员工编号。 就此域来说，同义项的示例如下： 
-
-|同义项用途|同义项值|
-|--|--|
-|名称|John W. Smith|
-|电子邮件地址|john.w.smith@mycompany.com|
-|电话分机|x12345|
-|个人移动电话号码|425-555-1212|
-|美国联邦社会安全号码|123-45-6789|
+此应用使用列表实体来提取员工。 可以使用姓名、公司电话分机、移动电话号码、电子邮件或美国联邦社会安全号码来表示员工。 
 
 出现以下情况时，列表实体非常适合此类数据：
 
 * 数据值是已知的集。
 * 此集不超出此实体类型的最大 LUIS [边界](luis-boundaries.md)。
-* 陈述中的文本是同义项的完全匹配。 
+* 话语中的文本是同义项或规范名称的完全匹配。 
 
-LUIS 采用特定的方式来提取员工，因此可以由客户端应用程序创建一个进行员工移动的标准顺序。
-<!--
-## Example utterances
-Simple example utterances for a `MoveEmployee` inent:
+**本教程介绍如何执行下列操作：**
 
-```
-move John W. Smith from B-1234 to H-4452
-mv john.w.smith@mycompany from office b-1234 to office h-4452
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * 使用现有的教程应用
+> * 添加 MoveEmployee 意向
+> * 添加列表实体 
+> * 训练 
+> * 发布
+> * 从终结点获取意向和实体
 
-```
--->
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="add-moveemployee-intent"></a>添加 MoveEmployee 意向
+## <a name="use-existing-app"></a>使用现有应用
+继续使用上一个教程中创建的名为 **HumanResources** 的应用。 
 
-1. LUIS 的“生成”部分包含你的人力资源应用。 在右上方的菜单栏中选择“生成”可切换到此部分。 
+如果没有上一个教程中的 HumanResources 应用，请执行以下步骤：
+
+1.  下载并保存[应用 JSON 文件](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-regex-HumanResources.json)。
+
+2. 将 JSON 导入到新应用中。
+
+3. 在“管理”部分的“版本”选项卡上，克隆版本并将其命名为 `list`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。 
+
+
+## <a name="moveemployee-intent"></a>MoveEmployee 意向
+
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 选择“创建新意向”。 
 
@@ -94,8 +82,23 @@ mv john.w.smith@mycompany from office b-1234 to office h-4452
 
     [![“意向”页的屏幕截图，其中已突出显示新陈述](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png)](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png#lightbox)
 
-## <a name="create-an-employee-list-entity"></a>创建员工列表实体
-**MoveEmployee** 意向有陈述以后，LUIS 需了解什么是员工。 
+    请记住，数字和 datetimeV2 是在前面的某个教程中添加的，因此在示例话语中发现它们时，系统会自动对其进行标记。
+
+    [!include[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
+
+## <a name="employee-list-entity"></a>员工列表实体
+**MoveEmployee** 意向有示例话语以后，LUIS 需了解什么是员工。 
+
+每个项的主规范名称是员工编号。 就此域来说，每个规范名称的同义项的示例如下： 
+
+|同义项用途|同义项值|
+|--|--|
+|名称|John W. Smith|
+|电子邮件地址|john.w.smith@mycompany.com|
+|电话分机|x12345|
+|个人移动电话号码|425-555-1212|
+|美国联邦社会安全号码|123-45-6789|
+
 
 1. 在左侧面板中选择“实体”。
 
@@ -133,15 +136,15 @@ mv john.w.smith@mycompany from office b-1234 to office h-4452
     |个人移动电话号码|425-555-0000|
     |美国联邦社会安全号码|234-56-7891|
 
-## <a name="train-the-luis-app"></a>训练 LUIS 应用
+## <a name="train"></a>训练
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-get-the-endpoint-url"></a>发布应用以获取终结点 URL
+## <a name="publish"></a>发布
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>使用不同的话语查询终结点
+## <a name="get-intent-and-entities-from-endpoint"></a>从终结点获取意向和实体
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
@@ -259,22 +262,12 @@ mv john.w.smith@mycompany from office b-1234 to office h-4452
 
   此员工已找到并已作为 `Employee` 类型返回，其解析值为 `Employee-24612`。
 
-## <a name="where-is-the-natural-language-processing-in-the-list-entity"></a>列表实体中的自然语言处理在何处发生？ 
-由于列表实体是准确的文本匹配项，因此它不依赖于自然语言处理（或机器学习）。 LUIS 确实使用自然语言处理（或机器学习）来选择评分最高的正确意向。 此外，陈述中可能混合多个实体，甚至多个实体类型。 将为应用中的所有实体（包括自然语言处理（或机器学习）实体）处理每个陈述。
-
-## <a name="what-has-this-luis-app-accomplished"></a>此 LUIS 应用实现了哪些目的？
-此应用（包含列表实体）提取了正确的员工。 
-
-现在，聊天机器人已获得足够的信息，可以确定主要操作 `MoveEmployee`，以及要移动的员工。 
-
-## <a name="where-is-this-luis-data-used"></a>在何处使用此 LUIS 数据？ 
-LUIS 已完成此请求。 调用方应用程序（例如聊天机器人）可以提取 topScoringIntent 结果和实体中的数据，以执行下一步骤。 LUIS 不会针对机器人或调用方应用程序执行编程工作。 LUIS 只确定用户的意向是什么。 
-
 ## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
+本教程创建了新意向，添加了示例话语，然后创建了列表实体以便从话语中提取确切的文本匹配项。 在训练并发布应用后，向终结点发出的查询识别了意向，并返回了提取的数据。
 
 > [!div class="nextstepaction"]
 > [将分层实体添加到应用](luis-quickstart-intent-and-hier-entity.md)

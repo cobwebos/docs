@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/02/2018
 ms.author: brenduns
-ms.openlocfilehash: 0ff3402115ae9f4c736bf9058fc09de16eaefb1e
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: ed405a0f8892b278d81f2494ad90f776ad5faa41
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347178"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857085"
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>关于 Azure Stack 的 VPN 网关
 
@@ -33,7 +33,7 @@ VPN 网关是一种虚拟网络网关，可以通过公共连接发送加密的�
 
 每个虚拟网络可以使用两个虚拟网络网关，但每种类型的网关只能有一个网关。 根据选择的设置，可与一个 VPN 网关建立多个连接。 一个示例是多站点连接配置。
 
-创建和配置 Azure Stack 的 VPN 网关之前，请查看[Azure Stack 网络注意事项](/azure/azure-stack/user/azure-stack-network-differences)若要了解与 Azure 的 Azure Stack 配置有何区别。
+在为 Azure Stack 创建和配置 VPN 网关之前，请查看 [Azure Stack 网络的注意事项](/articles/azure-stack/user/azure-stack-network-differences.md)，以了解 Azure Stack 的配置与 Azure 的不同之处。
 
 >[!NOTE]
 >在 Azure 中，所选 VPN 网关 SKU 的带宽吞吐量必须分配给连接到网关的所有连接。 但在 Azure Stack 中，VPN 网关 SKU 的带宽值会应用于连接到网关的每个连接资源。

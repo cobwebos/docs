@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/26/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 7cf3e08caad93bb7fb7fd221b6fdb9b2fc39397a
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: b6cb095736bbf41d53359bf7d07206703de5335c
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816729"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869988"
 ---
 # <a name="azure-stack-1805-update"></a>Azure Stack 1805 更新
 
@@ -72,8 +72,8 @@ Azure Stack 1805 更新内部版本号为 **1.1805.1.47**。
 ## <a name="before-you-begin"></a>开始之前    
 
 ### <a name="prerequisites"></a>必备组件
-- 在应用 Azure Stack 1805 更新之前安装 Azure Stack [1804 更新](azure-stack-update-1804.md)。  
-- 安装最新可用的 [1804 版更新或修补程序](azure-stack-update-1804.md#post-update-steps)。   
+- 应用 Azure Stack 1805 更新之前，请安装 Azure Stack 1804 更新。  
+- 安装最新可用的更新或修补程序版本 1804年。   
 - 开始安装更新 1805 之前，请先运行 [Test-AzureStack](azure-stack-diagnostic-test.md) 来验证 Azure Stack 的状态，并解决出现的所有操作问题。 另外，请查看活动警报，并解决所有需要采取措施的警报。 
 
 ### <a name="known-issues-with-the-update-process"></a>更新过程的已知问题   
@@ -117,7 +117,7 @@ Azure Stack 1805 更新内部版本号为 **1.1805.1.47**。
   解决方法：若要在安装此更新后解决该问题，请使用[触发自动化以便在 Azure Stack 中配置声明提供程序信任](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1)过程中的步骤 3 来重置默认提供程序订阅的所有者。   
 
 <!-- TBD - IS ASDK --> 
-- 某些管理订阅类型不可用。  将 Azure Stack 升级到此版本时，控制台中不会显示[版本 1804 引入](azure-stack-update-1804.md#new-features)的两个订阅类型。 这是正常情况。 不可用的订阅类型为“计量订阅”和“消耗订阅”。 从版本 1804 开始，这些订阅类型会在新的 Azure Stack 环境中显示，但尚不可用。 请继续使用“默认提供程序”订阅类型。  
+- 某些管理订阅类型不可用。 当你升级到此版本的 Azure Stack 时，引入了版本 1804年的两种订阅类型不在控制台中可见。 这是正常情况。 不可用的订阅类型为“计量订阅”和“消耗订阅”。 从版本 1804 开始，这些订阅类型会在新的 Azure Stack 环境中显示，但尚不可用。 请继续使用“默认提供程序”订阅类型。  
 
 <!-- 2403291 - IS ASDK --> 
 - 您可能没有使用的管理员和用户门户底部的水平滚动条。 如果无法访问水平滚动条，请使用痕迹导航到门户中的上一边栏选项卡，只需从门户左上角的痕迹列表中选择要查看的边栏选项卡的名称即可。

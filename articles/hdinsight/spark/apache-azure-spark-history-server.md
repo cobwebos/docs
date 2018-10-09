@@ -8,30 +8,30 @@ ms.author: jejiang
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 07/12/2018
-ms.openlocfilehash: b514f23f2e8a43f99fd5bf5c3afb5ed625ad4472
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 09/14/2018
+ms.openlocfilehash: 4627593e4ab96c63423a7afd6152f3a004bc6c3f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046569"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042357"
 ---
 # <a name="use-extended-spark-history-server-to-debug-and-diagnose-spark-applications"></a>使用扩展的 Spark History Server 调试和诊断 Spark 应用程序
 
-本文提供有关如何使用扩展的 Spark History Server 来调试和诊断已完成的和正在运行的 Spark 应用程序的指导。 该扩展目前包含数据选项卡和图形选项卡。在数据选项卡中，用户可以检查 Spark 作业的输入和输出数据。 在图形选项卡中，用户可以检查数据流和重播作业图形。
+本文提供有关如何使用扩展的 Spark History Server 来调试和诊断已完成的和正在运行的 Spark 应用程序的指导。 该扩展包含数据选项卡、图形选项卡和诊断选项卡。在“数据”选项卡中，用户可以检查 Spark 作业的输入和输出数据。 在“图形”选项卡中，用户可以检查数据流和重播作业图形。 在“诊断”选项卡中，用户可以参阅“数据偏斜”、“时间偏斜”和“执行程序使用情况分析”。
 
-## <a name="open-the-spark-history-server"></a>打开 Spark History Server
+## <a name="get-access-to-spark-history-server"></a>获取 Spark History Server 的访问权限
 
 Spark History Server 是已完成和正在运行的 Spark 应用程序的 Web UI。 
 
-### <a name="to-open-the-spark-history-server-web-ui-from-azure-portal"></a>从 Azure 门户打开 Spark History Server Web UI
+### <a name="open-the-spark-history-server-web-ui-from-azure-portal"></a>从 Azure 门户打开 Spark History Server Web UI
 
 1. 从 [Azure 门户](https://portal.azure.com/)打开 Spark 群集。 有关详细信息，请参阅[列出和显示群集](../hdinsight-administer-use-portal-linux.md#list-and-show-clusters)。
 2. 在“快速链接”中，依次单击“群集仪表板”、“Spark History Server”。 出现提示时，输入 Spark 群集的管理员凭据。 
 
     ![Spark History Server](./media/apache-azure-spark-history-server/launch-history-server.png "Spark History Server")
 
-### <a name="to-open-the-spark-history-server-web-ui-by-url"></a>通过 URL 打开 Spark History Server Web UI
+### <a name="open-the-spark-history-server-web-ui-by-url"></a>通过 URL 打开 Spark History Server Web UI
 浏览到以下 URL（将 <ClusterName> 替换为客户的 Spark 群集名称），打开 Spark History Server。
 
    ```
@@ -43,7 +43,7 @@ Spark History Server Web UI 如下所示：
 ![HDInsight Spark History Server](./media/apache-azure-spark-history-server/hdinsight-spark-history-server.png)
 
 
-## <a name="open-the-data-tab-from-spark-history-server"></a>打开 Spark History Server 中的“数据”选项卡
+## <a name="data-tab-in-spark-history-server"></a>Spark History Server 中的“数据”选项卡
 选择作业 ID，然后单击工具菜单中的“数据”获取数据视图。
 
 + 分别选择“输入”、“输出”和“表操作”选项卡，以检查其中的信息。
@@ -87,7 +87,7 @@ Spark History Server Web UI 如下所示：
     ![图形 - 反馈](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
 
-## <a name="open-the-graph-tab-from-spark-history-server"></a>打开 Spark History Server 中的“图形”选项卡
+## <a name="graph-tab-in-spark-history-server"></a>Spark History Server 中的“图形”选项卡
 选择作业 ID，然后单击工具菜单中的“图形”获取作业图形视图。
 
 + 通过生成的作业图形检查作业概述。 
@@ -108,16 +108,19 @@ Spark History Server Web UI 如下所示：
 
     + 绿色表示成功：作业已成功完成。
     + 橙色表示已重试：失败的任务实例，但不影响作业的最终结果。 这些任务具有稍后可能成功的重复实例或重试实例。
-    + 红色表示失败：任务失败。
     + 蓝色表示正在运行：任务正在运行。
-    + 白色表示已跳过或正在等待：任务正在等待运行，或已跳过执行阶段。
+    + 白色表示正在等待或已跳过：任务正在等待运行，或已跳过执行阶段。
+    + 红色表示失败：任务失败。
 
     ![图形颜色示例：正在运行](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
  
+    跳过的阶段显示为白色。
+    ![图形颜色示例，跳过](./media/apache-azure-spark-history-server/sparkui-graph-color-skip.png)
+
     ![图形颜色示例：失败](./media/apache-azure-spark-history-server/sparkui-graph-color-failed.png)
  
     > [!NOTE]
-    > 允许播放每个作业。 如果某个作业不包含任何阶段或尚未完成，则不支持播放。
+    > 允许播放每个作业。 不完整的作业不支持播放。
 
 
 + 滚动鼠标滚轮以缩小/放大作业图形，或者单击“缩放到合适大小”使图形适合屏幕大小。
@@ -127,6 +130,12 @@ Spark History Server Web UI 如下所示：
 + 如果存在失败的任务，将鼠标悬停在图形节点可查看工具提示；单击阶段可打开阶段页。
 
     ![图形 - 工具提示](./media/apache-azure-spark-history-server/sparkui-graph-tooltip.png)
+
++ 在作业图形选项卡中，如果阶段的任务满足以下条件，则会显示该阶段的工具提示和小图标：
+    + 数据倾斜：数据读取大小 > 此阶段所有任务的平均数据读取大小 * 2 且数据读取大小 > 10 MB
+    + 时间倾斜：执行时间 > 此阶段所有任务的平均执行时间 * 2 且执行时间 > 2 分钟
+
+    ![图形倾斜图标](./media/apache-azure-spark-history-server/sparkui-graph-skew-icon.png)
 
 + 作业图形节点显示每个阶段的以下信息：
     + ID。
@@ -147,6 +156,47 @@ Spark History Server Web UI 如下所示：
 + 单击“向我们提供反馈”发送问题反馈。
 
     ![图形 - 反馈](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
+
+
+## <a name="diagnosis-tab-in-spark-history-server"></a>Spark History Server 中的“诊断”选项卡
+选择作业 ID，然后单击工具菜单中的“诊断”以获取作业的“诊断”视图。 “诊断”选项卡包括“数据偏斜”、“时间偏斜”和“执行程序使用情况分析”。
+    
++ 通过选择相应的选项卡来查看“数据偏斜”、“时间偏斜”和“执行程序使用情况分析”。
+
+    ![诊断选项卡](./media/apache-azure-spark-history-server/sparkui-diagnosis-tabs.png)
+
+### <a name="data-skew"></a>数据倾斜
+单击“数据倾斜”选项卡，系统会根据指定的参数显示相应的已倾斜任务。 
+
++ **指定参数** - 第一部分显示用于检测数据倾斜的参数。 内置规则为：任务数据读取大于 3 倍任务数据读取平均值，且任务数据读取大于 10MB。 如需针对倾斜的任务定义自己的规则，可以选择参数，然后“倾斜的阶段”和“倾斜字符型”部分会相应地进行刷新。
+
++ **倾斜的阶段** - 第二部分显示阶段，这些阶段的倾斜的任务符合上面指定的条件。 如果某个阶段有多个倾斜的任务，则倾斜的阶段表仅显示最倾斜的任务（例如，数据倾斜对应的最大数据）。
+
+    ![数据倾斜第 2 部分](./media/apache-azure-spark-history-server/sparkui-diagnosis-dataskew-section2.png)
+
++ **倾斜图表** - 当倾斜阶段表中的某一行处于选中状态时，倾斜图表会根据数据读取和执行时间显示更多任务分发详细信息。 倾斜的任务标记为红色，正常任务标记为蓝色。 出于性能考虑，此图表最多只显示 100 个示例任务。 任务详细信息显示在右下面板中。
+
+    ![数据倾斜第 3 部分](./media/apache-azure-spark-history-server/sparkui-diagnosis-dataskew-section3.png)
+
+### <a name="time-skew"></a>时间倾斜
+“时间倾斜”选项卡根据任务执行时间显示倾斜的任务。 
+
++ **指定参数** - 第一部分显示用于检测时间倾斜的参数。 用于检测时间倾斜的默认条件是：任务执行时间长于平均执行时间的 3 倍，且任务执行时间长于 30 秒。 可以根据需要更改参数。 “倾斜的阶段”和“倾斜图表”显示相应的阶段和任务信息，就像上面的“数据倾斜”选项卡一样。
+
++ 单击“时间倾斜”，然后筛选的结果就会根据在“指定参数”部分设置的参数显示在“倾斜的阶段”部分。 单击“倾斜的阶段”部分的一个项目，然后相应的图表就会在第 3 部分绘制，任务详细信息显示在右下面板中。
+
+    ![时间倾斜第 2 部分](./media/apache-azure-spark-history-server/sparkui-diagnosis-timeskew-section2.png)
+
+### <a name="executor-usage-analysis"></a>执行程序使用情况分析
+执行程序使用图会可视化 Spark 作业实际执行程序分配和运行状态。  
+
++ 单击“执行程序使用情况分析”，然后系统就会绘制四种类型的有关执行程序使用情况的曲线，包括**已分配的执行程序**、**正在运行的执行程序**、**空闲执行程序**，以及**最大执行程序实例数**。 关于分配的执行程序，每个“执行程序已添加”或“执行程序已删除”事件都会增加或减少已分配执行程序数。如需详细的比较，可查看“作业”选项卡中的“事件时间线”。
+
+    ![“执行程序”选项卡](./media/apache-azure-spark-history-server/sparkui-diagnosis-executors.png)
+
++ 单击彩色图标即可选中或取消选中所有草稿中的相应内容。
+
+    ![选择图表](./media/apache-azure-spark-history-server/sparkui-diagnosis-select-chart.png)
 
 
 ## <a name="faq"></a>常见问题解答
@@ -247,7 +297,7 @@ Spark History Server Web UI 如下所示：
 
 **示例**：
 
-`upgrade_spark_enhancement.sh https://${account_name}.blob.core.windows.net/packages/jars/spark-enhancement-${version}.tgz` 
+`upgrade_spark_enhancement.sh https://${account_name}.blob.core.windows.net/packages/jars/spark-enhancement-${version}.jar` 
 
 **在 Azure 门户中使用 bash 文件**
 
@@ -268,7 +318,7 @@ Spark History Server Web UI 如下所示：
     ![上传日志或升级修补程序](./media/apache-azure-spark-history-server/sparkui-upload2.png)
 
 
-## <a name="known-issue"></a>已知问题
+## <a name="known-issues"></a>已知问题
 
 1.  目前，该服务仅适用于 Spark 2.3 群集。
 

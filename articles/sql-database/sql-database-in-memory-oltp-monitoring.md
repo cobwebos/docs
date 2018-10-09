@@ -2,24 +2,27 @@
 title: 监视 XTP 内存中存储 | Microsoft Docs
 description: 估算和监视 XTP 内存中存储用量与容量；解决容量错误 41823
 services: sql-database
-author: jodebrui
-manager: craigg
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 06/20/2018
+author: jodebrui
 ms.author: jodebrui
-ms.openlocfilehash: f74c9bf06cad8b84d08baf7a0a0504b9cb729bf4
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.reviewer: genemi
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 2a9c01eb2c237a7c79464b930c9258f791d8f3ce
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308673"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161618"
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>监视内存中 OLTP 存储
 使用[内存中 OLTP](sql-database-in-memory.md) 时，内存优化表中的数据和表变量将驻留在内存中 OLTP 存储内。 每个高级和业务关键服务层都具有最大内存中 OLTP 存储大小。 请参阅[基于 DTU 的资源限制 - 单一数据库](sql-database-dtu-resource-limits-single-databases.md)、[基于 DTU 的资源限制 - 弹性池](sql-database-dtu-resource-limits-elastic-pools.md)、[基于 vCore 的资源限制 - 单一数据库](sql-database-vcore-resource-limits-single-databases.md)和[基于 vCore 的资源限制 - 弹性池](sql-database-vcore-resource-limits-elastic-pools.md)。
 
-一旦超过此限制，可能会导致插入和更新操作失败，出现错误 41823（针对独立数据库）和错误 41840（针对弹性池）。 到时，需要删除数据以回收内存，或升级数据库的性能层。
+一旦超过此限制，可能会导致插入和更新操作失败，出现错误 41823（针对单一数据库）和错误 41840（针对弹性池）。 到时，需要删除数据以回收内存，或升级数据库的服务层或计算大小。
 
 ## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>确定数据是否在内存中 OLTP 存储容量限制范围内
 确定不同服务层的存储上限。 请参阅[基于 DTU 的资源限制 - 单一数据库](sql-database-dtu-resource-limits-single-databases.md)、[基于 DTU 的资源限制 - 弹性池](sql-database-dtu-resource-limits-elastic-pools.md)、[基于 vCore 的资源限制 - 单一数据库](sql-database-vcore-resource-limits-single-databases.md)和[基于 vCore 的资源限制 - 弹性池](sql-database-vcore-resource-limits-elastic-pools.md)。
@@ -29,7 +32,7 @@ ms.locfileid: "36308673"
 表和表变量行以及索引都将计入最大用户数据大小。 此外，ALTER TABLE 需要足够的空间来创建新版的完整表及其索引。
 
 ## <a name="monitoring-and-alerting"></a>监视和警报
-可以在 [Azure 门户](https://portal.azure.com/)中，通过性能层的存储上限百分比来监视内存中存储用量： 
+可以在 [Azure 门户](https://portal.azure.com/)中，通过计算大小的存储上限百分比来监视内存中存储用量： 
 
 1. 在“数据库”边栏选项卡上，找出“资源使用率”框并单击“编辑”。
 2. 选择指标 `In-Memory OLTP Storage percentage`。
@@ -41,7 +44,7 @@ ms.locfileid: "36308673"
 
 
 ## <a name="correct-out-of-in-memory-oltp-storage-situations---errors-41823-and-41840"></a>更正超过内存中 OLTP 存储的情况 - 错误 41823 和 41840
-数据库达到内存中 OLTP 存储限制会导致插入、更新、修改和创建操作失败，出现错误消息 41823 （针对独立数据库）或错误 41840 （针对弹性池）。 这两个错误均会导致活动的事务中止。
+数据库达到内存中 OLTP 存储上限会导致 INSERT、UPDATE、ALTER 和 CREATE 操作失败，出现错误消息 41823（针对单一数据库）或错误 41840（针对弹性池）。 这两个错误均会导致活动的事务中止。
 
 错误消息 41823 和 41840 指示数据库或池中的内存优化表和表变量已达到最大的内存中 OLTP 存储大小。
 
