@@ -138,13 +138,13 @@ ms.locfileid: "45576198"
     Get-AzureRmVMUsage -Location <azure-region>
     ```
 
-    **网络***（虚拟网络、静态公共 IP、公共 IP、网络安全组、网络接口、负载均衡器和路由表）*
+    **网络** *（虚拟网络、静态公共 IP、公共 IP、网络安全组、网络接口、负载均衡器和路由表）*
 
     ```powershell
     Get-AzureRmUsage /subscriptions/<subscription-id>/providers/Microsoft.Network/locations/<azure-region> -ApiVersion 2016-03-30 | Format-Table
     ```
 
-    **存储***（存储帐户）*
+    **存储** *（存储帐户）*
 
     ```powershell
     Get-AzureRmStorageUsage

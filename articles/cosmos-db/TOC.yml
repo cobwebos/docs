@@ -311,7 +311,7 @@ items:
         href: cassandra-spark-create-ops.md
       - name: 读取数据
         href: cassandra-spark-read-ops.md
-      - name: 更新数据
+      - name: 更新插入数据
         href: cassandra-spark-upsert-ops.md
       - name: 删除数据
         href: cassandra-spark-delete-ops.md
@@ -474,6 +474,8 @@ items:
     href: faq.md
   - name: 白皮书
     href: whitepapers.md
+  - name: 合作伙伴
+    href: partners-migration-cosmosdb.md
   - name: 视频
     href: https://azure.microsoft.com/resources/videos/index/?services=cosmos-db
   - name: Azure 路线图
@@ -488,9 +490,9 @@ items:
       href: use-cases.md
     - name: 社交媒体应用
       href: social-media-apps.md
-ms.openlocfilehash: 8d217ae35c38017061bbb1fb96d09de5928b2205
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 8111949d7069066b63c12a851324d21feda8bac2
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042306"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868586"
